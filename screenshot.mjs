@@ -8,20 +8,11 @@ function cs(path) {
   const t = execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/code-snippets/v1/${path}"`, { encoding: "utf8", env, maxBuffer: 10*1024*1024 });
   return JSON.parse(t);
 }
-const out = { matches: [] };
-try {
-  const all = cs("snippets");
-  out.total = all.length;
-  const rx = /(kontekstas|pilnas|filtrai|filtru|zaislai|žaislai|dubeneliai|attribute|atribut|rikiavimas|rele|relė|app password|baltymu|baltymų|audit)/i;
-  const hits = all.filter(s => rx.test(s.name || ""));
-  out.hit_list = hits.map(s => ({ id: s.id, name: s.name, active: !!s.active, scope: s.scope }));
-  // pilnas kodas tik svarbiems (Kontekstas + PILNAS/Filtrai)
-  const deep = hits.filter(s => /(kontekstas|pilnas|filtrai|filtru)/i.test(s.name));
-  for (const s of deep.slice(0, 4)) {
-    try {
-      const full = cs("snippets/" + s.id);
-      out.matches.push({ id: s.id, name: s.name, active: !!full.active, code_len: (full.code||"").length, code_head: (full.code||"").slice(0, 600) });
-    } catch (e) { out.matches.push({ id: s.id, name: s.name, error: String(e).slice(0,100) }); }
-  }
-} catch (e) { out.error = String(e).slice(0, 200); }
-fs.writeFileSync("screenshots/snips.txt", JSON.stringify(out, null, 2));
+const out = {};
+for (const id of [332, 329]) {
+  try { const s = cs("snippets/" + id); out["s" + id] = { name: s.name, active: !!s.active, scope: s.scope, code: s.code }; }
+  catch (e) { out["s" + id] = { error: String(e).slice(0,150) }; }
+}
+fs.writeFileSync("screenshots/full332.txt", out.s332 ? out.s332.code || "" : "");
+fs.writeFileSync("screenshots/full329.txt", out.s329 ? out.s329.code || "" : "");
+fs.writeFileSync("screenshots/meta.txt", JSON.stringify({ s332: { name: out.s332?.name, len: (out.s332?.code||"").length }, s329: { name: out.s329?.name, len: (out.s329?.code||"").length } }, null, 2));
