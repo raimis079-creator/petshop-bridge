@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -36,7 +38,11 @@ jobs:
         run: |
           git config user.name "petshop-bot"
           git config user.email "bot@petshop.local"
-          git add screenshots/
+          git add -A
           git commit -m "screenshot $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "no changes"
-          git pull --rebase origin main
-          git push
+          for i in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main || git rebase --abort
+            if git push origin HEAD:main; then echo "PUSHED"; break; fi
+            echo "retry $i"; sleep 4
+          done
