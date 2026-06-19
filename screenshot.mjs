@@ -1,33 +1,33 @@
 import { chromium } from "playwright";
 import fs from "fs";
-const url = process.argv[2];
+const base = process.argv[2];
 fs.mkdirSync("screenshots", { recursive: true });
 const b = await chromium.launch({ args: ["--no-sandbox"] });
-const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", locale: "lt-LT", ignoreHTTPSErrors: true });
+const ctx = await b.newContext({ viewport: { width: 1440, height: 1200 }, userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", locale: "lt-LT", ignoreHTTPSErrors: true });
 const page = await ctx.newPage();
-await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
-try { await page.waitForLoadState("networkidle", { timeout: 15000 }); } catch {}
-await page.waitForTimeout(2800);
-const m = await page.evaluate(() => {
-  const res = {};
-  // PILNAS JS markeriai (ps-niche, ps-collapsed, data-ps-init)
-  res.pilnas_js_active = !!document.querySelector(".yith-wcan-filter[data-ps-init], .yith-wcan-filter.ps-niche, .yith-wcan-filter.ps-collapsed");
-  res.ps_niche_count = document.querySelectorAll(".yith-wcan-filter.ps-niche").length;
-  res.ps_init_count = document.querySelectorAll(".yith-wcan-filter[data-ps-init]").length;
-  // spacing (v13 CSS markeris)
-  const filt = [...document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter")].find(f => f.querySelector("li"));
-  if (filt) {
-    const ul = filt.querySelector("ul");
-    const lis = [...ul.children].filter(e => e.tagName === "LI");
-    if (lis.length >= 2) res.rowPitch_px = Math.round(lis[1].getBoundingClientRect().top - lis[0].getBoundingClientRect().top);
-    const lab = filt.querySelector("li label, li a");
-    if (lab) { const L = getComputedStyle(lab); res.label_display = L.display; res.label_lineHeight = L.lineHeight; }
-  }
-  // shop-sidebar vieta (desktop turi likti kolonoje)
-  const sb = document.getElementById("shop-sidebar");
-  res.shop_sidebar_parent = sb && sb.parentElement ? (sb.parentElement.tagName + "." + (sb.parentElement.className||"").split(" ").slice(0,2).join(".")) : "nera";
-  res.yith_filters = document.querySelectorAll(".yith-wcan-filters").length;
-  return res;
-});
-fs.writeFileSync("screenshots/pstate.txt", JSON.stringify(m, null, 2));
+const all = new Set();
+let count = "", finalUrl = "", reached = 0;
+for (let n = 1; n <= 6; n++) {
+  const url = n === 1 ? base : base.replace(/\/$/, "") + "/page/" + n + "/";
+  let ok = true;
+  try {
+    const r = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
+    if (r) { reached = r.status(); finalUrl = page.url(); }
+  } catch (e) { ok = false; }
+  if (!ok) break;
+  try { await page.waitForLoadState("networkidle", { timeout: 12000 }); } catch {}
+  await page.waitForTimeout(800);
+  const data = await page.evaluate(() => {
+    const sels = ".product-small .name a, p.name.product-title a, .woocommerce-loop-product__title, .product-title a, .box-text .name a";
+    const out = [];
+    document.querySelectorAll(sels).forEach(e => { const t = e.textContent.trim(); if (t) out.push(t); });
+    const rc = document.querySelector(".woocommerce-result-count");
+    return { titles: out, count: rc ? rc.textContent.trim() : "" };
+  });
+  if (n === 1) count = data.count;
+  if (data.titles.length === 0) break;
+  data.titles.forEach(t => all.add(t));
+  if (all.size >= 120) break;
+}
+fs.writeFileSync("screenshots/recon.txt", JSON.stringify({ base, finalUrl, status: reached, count, unique_titles: all.size, titles: [...all] }, null, 2));
 await b.close();
