@@ -7,35 +7,27 @@ const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, userAge
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
 try { await page.waitForLoadState("networkidle", { timeout: 15000 }); } catch {}
-await page.waitForTimeout(2500);
+await page.waitForTimeout(2800);
 const m = await page.evaluate(() => {
   const res = {};
+  // PILNAS JS markeriai (ps-niche, ps-collapsed, data-ps-init)
+  res.pilnas_js_active = !!document.querySelector(".yith-wcan-filter[data-ps-init], .yith-wcan-filter.ps-niche, .yith-wcan-filter.ps-collapsed");
+  res.ps_niche_count = document.querySelectorAll(".yith-wcan-filter.ps-niche").length;
+  res.ps_init_count = document.querySelectorAll(".yith-wcan-filter[data-ps-init]").length;
+  // spacing (v13 CSS markeris)
   const filt = [...document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter")].find(f => f.querySelector("li"));
-  if (!filt) return { err: "no filter with li" };
-  res.filter_class = filt.className;
-  res.has_filter_content = !!filt.querySelector(".filter-content");
-  // visi ul su jU klasem
-  res.uls = [...filt.querySelectorAll("ul")].map(u => u.className || "(no-class)");
-  const ul = filt.querySelector("ul");
-  const li = ul ? ul.querySelector("li") : null;
-  if (li) {
-    res.ul_class = ul.className || "(no-class)";
-    res.li_class = li.className || "(no-class)";
-    const lab = li.querySelector("label, a");
-    res.label_tag = lab ? lab.tagName : "none";
-    res.label_class = lab ? (lab.className || "(no-class)") : "";
-    res.label_display = lab ? getComputedStyle(lab).display : "";
-    res.label_lineHeight = lab ? getComputedStyle(lab).lineHeight : "";
-    // ar nera filter-content tarp ul ir filter?
-    res.ul_parent_class = ul.parentElement ? (ul.parentElement.className || ul.parentElement.tagName) : "?";
+  if (filt) {
+    const ul = filt.querySelector("ul");
+    const lis = [...ul.children].filter(e => e.tagName === "LI");
+    if (lis.length >= 2) res.rowPitch_px = Math.round(lis[1].getBoundingClientRect().top - lis[0].getBoundingClientRect().top);
+    const lab = filt.querySelector("li label, li a");
+    if (lab) { const L = getComputedStyle(lab); res.label_display = L.display; res.label_lineHeight = L.lineHeight; }
   }
-  const lis = [...ul.children].filter(e => e.tagName === "LI");
-  if (lis.length >= 2) {
-    res.rowPitch_px = Math.round(lis[1].getBoundingClientRect().top - lis[0].getBoundingClientRect().top);
-  }
-  // ar v13 selektorius butu pataikes?
-  res.test_sel_match = !!filt.querySelector(".filter-content ul:not(.filter-label) li label, .filter-content ul:not(.filter-label) li > a");
+  // shop-sidebar vieta (desktop turi likti kolonoje)
+  const sb = document.getElementById("shop-sidebar");
+  res.shop_sidebar_parent = sb && sb.parentElement ? (sb.parentElement.tagName + "." + (sb.parentElement.className||"").split(" ").slice(0,2).join(".")) : "nera";
+  res.yith_filters = document.querySelectorAll(".yith-wcan-filters").length;
   return res;
 });
-fs.writeFileSync("screenshots/struct.txt", JSON.stringify(m, null, 2));
+fs.writeFileSync("screenshots/pstate.txt", JSON.stringify(m, null, 2));
 await b.close();
