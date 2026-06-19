@@ -1,33 +1,48 @@
-import { chromium } from "playwright";
-import fs from "fs";
+name: Screenshot
 
-const url = process.argv[2];
-if (!url) { console.error("Truksta URL"); process.exit(1); }
-fs.mkdirSync("screenshots", { recursive: true });
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Puslapio URL (pvz. dev.avesa.lt kategorija)"
+        required: true
+        default: "https://dev.avesa.lt/kategorija/katems/dubeneliai-katems/"
 
-const browser = await chromium.launch();
-const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+permissions:
+  contents: write
 
-const ctx = await browser.newContext({ viewport: { width: 1366, height: 900 }, userAgent: UA, locale: "lt-LT" });
-const page = await ctx.newPage();
+jobs:
+  shot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-let status = 0;
-try {
-  const resp = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
-  status = resp ? resp.status() : 0;
-} catch (e) { console.log("goto warn:", e.message); }
-try { await page.waitForLoadState("networkidle", { timeout: 20000 }); } catch {}
-await page.waitForTimeout(3000);
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-const title = await page.title();
-const html = await page.content();
-const bodyText = await page.evaluate(() => document.body ? document.body.innerText.slice(0, 1500) : "NO BODY");
-const finalUrl = page.url();
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm i playwright
+          npx playwright install --with-deps chromium
 
-fs.writeFileSync("screenshots/page.html", html);
-fs.writeFileSync("screenshots/diag.txt",
-  `requested: ${url}\nfinal: ${finalUrl}\nstatus: ${status}\ntitle: ${title}\nhtml_len: ${html.length}\n\n--- bodyText ---\n${bodyText}\n`);
+      - name: Take screenshots
+        run: node screenshot.mjs "${{ github.event.inputs.url }}"
 
-await page.screenshot({ path: "screenshots/desktop.png", fullPage: true });
-await browser.close();
-console.log("Done. status=", status, "title=", title);
+      - name: Commit screenshots
+        run: |
+          git config user.name "petshop-bot"
+          git config user.email "bot@petshop.local"
+          git add -A
+          git commit -m "screenshot $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "no changes"
+          for i in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main || git rebase --abort
+            if git push origin HEAD:main; then echo "PUSHED"; break; fi
+            echo "retry $i"; sleep 4
+          done
