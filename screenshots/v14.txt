@@ -1,0 +1,32 @@
+{
+  "update_code": "200",
+  "upd_name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+  "upd_active": true,
+  "has_v14": true,
+  "filters": [
+    {
+      "title": "Žaislo tipas",
+      "tax": "filter_zaislo_tipas",
+      "niche": true,
+      "collapsed": false
+    },
+    {
+      "title": "Medžiaga",
+      "tax": "filter_medziaga",
+      "niche": false,
+      "collapsed": true
+    },
+    {
+      "title": "Dydis",
+      "tax": "filter_dydis",
+      "niche": false,
+      "collapsed": true
+    },
+    {
+      "title": "Prekės ženklas",
+      "tax": "product_brand",
+      "niche": false,
+      "collapsed": true
+    }
+  ]
+}
