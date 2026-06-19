@@ -2,22 +2,32 @@ import { chromium } from "playwright";
 import fs from "fs";
 const url = process.argv[2];
 fs.mkdirSync("screenshots", { recursive: true });
-const browser = await chromium.launch({ args: ["--no-sandbox"] });
-const UA_D = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
-const UA_M = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1";
-async function shot(name, viewport, isMobile, ua) {
-  const ctx = await browser.newContext({ viewport, isMobile, userAgent: ua, locale: "lt-LT", ignoreHTTPSErrors: true });
-  const page = await ctx.newPage();
-  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
-  try { await page.waitForLoadState("networkidle", { timeout: 15000 }); } catch {}
-  await page.evaluate(async()=>{await new Promise(r=>{let y=0;const t=setInterval(()=>{window.scrollBy(0,500);y+=500;if(y>=document.body.scrollHeight-window.innerHeight){clearInterval(t);r();}},120);});});
-  await page.waitForTimeout(1200);
-  await page.evaluate(()=>window.scrollTo(0,0));
-  await page.waitForTimeout(700);
-  await page.screenshot({ path: `screenshots/${name}.png`, fullPage: true });
-  await ctx.close();
-}
-await shot("desktop", { width: 1440, height: 900 }, false, UA_D);
-await shot("mobile", { width: 390, height: 844 }, true, UA_M);
-await browser.close();
-fs.writeFileSync("screenshots/info.txt", `url: ${url}\ntime: ${new Date().toISOString()}\n`);
+const b = await chromium.launch({ args: ["--no-sandbox"] });
+const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", locale: "lt-LT", ignoreHTTPSErrors: true });
+const page = await ctx.newPage();
+await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
+try { await page.waitForLoadState("networkidle", { timeout: 15000 }); } catch {}
+await page.waitForTimeout(2500);
+const m = await page.evaluate(() => {
+  const res = {};
+  const group = document.querySelector(".yith-wcan-filters .yith-wcan-filter");
+  if (group) { const gs = getComputedStyle(group); res.group = { marginBottom: gs.marginBottom, paddingBottom: gs.paddingBottom }; }
+  const filt = [...document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter")].find(f => f.querySelector("ul li"));
+  if (filt) {
+    const ul = filt.querySelector("ul");
+    const lis = [...ul.children].filter(e => e.tagName === "LI");
+    res.itemCount = lis.length;
+    if (lis.length >= 2) {
+      const r0 = lis[0].getBoundingClientRect(), r1 = lis[1].getBoundingClientRect();
+      res.rowPitch_px = Math.round(r1.top - r0.top);
+      res.liHeight_px = Math.round(r0.height);
+      const ls = getComputedStyle(lis[0]);
+      res.li = { marginBottom: ls.marginBottom, paddingTop: ls.paddingTop, paddingBottom: ls.paddingBottom, minHeight: ls.minHeight, lineHeight: ls.lineHeight };
+      const lab = lis[0].querySelector("label, a");
+      if (lab) { const L = getComputedStyle(lab); res.label = { lineHeight: L.lineHeight, fontSize: L.fontSize, paddingTop: L.paddingTop, paddingBottom: L.paddingBottom, minHeight: L.minHeight, marginBottom: L.marginBottom, display: L.display }; res.labelTag = lab.tagName; }
+    }
+  }
+  return res;
+});
+fs.writeFileSync("screenshots/measure.txt", JSON.stringify(m, null, 2));
+await b.close();
