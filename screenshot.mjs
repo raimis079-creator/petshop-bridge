@@ -10,24 +10,32 @@ try { await page.waitForLoadState("networkidle", { timeout: 15000 }); } catch {}
 await page.waitForTimeout(2500);
 const m = await page.evaluate(() => {
   const res = {};
-  const group = document.querySelector(".yith-wcan-filters .yith-wcan-filter");
-  if (group) { const gs = getComputedStyle(group); res.group = { marginBottom: gs.marginBottom, paddingBottom: gs.paddingBottom }; }
-  const filt = [...document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter")].find(f => f.querySelector("ul li"));
-  if (filt) {
-    const ul = filt.querySelector("ul");
-    const lis = [...ul.children].filter(e => e.tagName === "LI");
-    res.itemCount = lis.length;
-    if (lis.length >= 2) {
-      const r0 = lis[0].getBoundingClientRect(), r1 = lis[1].getBoundingClientRect();
-      res.rowPitch_px = Math.round(r1.top - r0.top);
-      res.liHeight_px = Math.round(r0.height);
-      const ls = getComputedStyle(lis[0]);
-      res.li = { marginBottom: ls.marginBottom, paddingTop: ls.paddingTop, paddingBottom: ls.paddingBottom, minHeight: ls.minHeight, lineHeight: ls.lineHeight };
-      const lab = lis[0].querySelector("label, a");
-      if (lab) { const L = getComputedStyle(lab); res.label = { lineHeight: L.lineHeight, fontSize: L.fontSize, paddingTop: L.paddingTop, paddingBottom: L.paddingBottom, minHeight: L.minHeight, marginBottom: L.marginBottom, display: L.display }; res.labelTag = lab.tagName; }
-    }
+  const filt = [...document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter")].find(f => f.querySelector("li"));
+  if (!filt) return { err: "no filter with li" };
+  res.filter_class = filt.className;
+  res.has_filter_content = !!filt.querySelector(".filter-content");
+  // visi ul su jU klasem
+  res.uls = [...filt.querySelectorAll("ul")].map(u => u.className || "(no-class)");
+  const ul = filt.querySelector("ul");
+  const li = ul ? ul.querySelector("li") : null;
+  if (li) {
+    res.ul_class = ul.className || "(no-class)";
+    res.li_class = li.className || "(no-class)";
+    const lab = li.querySelector("label, a");
+    res.label_tag = lab ? lab.tagName : "none";
+    res.label_class = lab ? (lab.className || "(no-class)") : "";
+    res.label_display = lab ? getComputedStyle(lab).display : "";
+    res.label_lineHeight = lab ? getComputedStyle(lab).lineHeight : "";
+    // ar nera filter-content tarp ul ir filter?
+    res.ul_parent_class = ul.parentElement ? (ul.parentElement.className || ul.parentElement.tagName) : "?";
   }
+  const lis = [...ul.children].filter(e => e.tagName === "LI");
+  if (lis.length >= 2) {
+    res.rowPitch_px = Math.round(lis[1].getBoundingClientRect().top - lis[0].getBoundingClientRect().top);
+  }
+  // ar v13 selektorius butu pataikes?
+  res.test_sel_match = !!filt.querySelector(".filter-content ul:not(.filter-label) li label, .filter-content ul:not(.filter-label) li > a");
   return res;
 });
-fs.writeFileSync("screenshots/measure.txt", JSON.stringify(m, null, 2));
+fs.writeFileSync("screenshots/struct.txt", JSON.stringify(m, null, 2));
 await b.close();
