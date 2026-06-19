@@ -1,0 +1,32 @@
+[
+  {
+    "label": "A unauth root",
+    "code": "200",
+    "head": "{\"name\":\"Petshop.lt\",\"description\":\"Gyv\\u016bn\\u0173 parduotuv\\u0117\",\"url\":\"http:\\/\\/dev.avesa.lt\",\"home\":\"https:\\/\\/dev.avesa.lt\",\"gmt_off"
+  },
+  {
+    "label": "B auth root (-u)",
+    "code": "200",
+    "head": "{\"name\":\"Petshop.lt\",\"description\":\"Gyv\\u016bn\\u0173 parduotuv\\u0117\",\"url\":\"http:\\/\\/dev.avesa.lt\",\"home\":\"https:\\/\\/dev.avesa.lt\",\"gmt_off"
+  },
+  {
+    "label": "C auth wc/v3 products",
+    "code": "200",
+    "head": "[{\"id\":34098,\"name\":\"Josera \\u00a0Herring sausas pa\\u0161aras \\u0161unims su silke, 900kg\",\"slug\":\"josera-herring-sausas-pasaras-sunims-su-s"
+  },
+  {
+    "label": "D auth wp/v2 users/me",
+    "code": "403",
+    "head": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>403 Forbidden</title><meta name=\"viewport\" content=\"width=device-width, in"
+  },
+  {
+    "label": "E unauth wc/v3 products",
+    "code": "401",
+    "head": "{\"code\":\"woocommerce_rest_cannot_view\",\"message\":\"Deja, J\\u016bs negalite per\\u017ei\\u016br\\u0117ti i\\u0161tekli\\u0173.\",\"data\":{\"status\":40"
+  },
+  {
+    "label": "F explicit Auth header",
+    "code": "200",
+    "head": "{\"name\":\"Petshop.lt\",\"description\":\"Gyv\\u016bn\\u0173 parduotuv\\u0117\",\"url\":\"http:\\/\\/dev.avesa.lt\",\"home\":\"https:\\/\\/dev.avesa.lt\",\"gmt_off"
+  }
+]
