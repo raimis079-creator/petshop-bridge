@@ -1,18 +1,26 @@
 import { execSync } from "child_process";
 import fs from "fs";
 fs.mkdirSync("screenshots", { recursive: true });
-const base = (process.argv[2] || "https://dev.avesa.lt").replace(/\/$/, "");
-let out = { base };
+const base = "https://dev.avesa.lt";
+const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
+const out = { user_set: !!process.env.WP_USER, pass_len: passClean.length };
 try {
-  const body = execSync(`curl -sk --max-time 30 "${base}/wp-json/"`, { encoding: "utf8", maxBuffer: 10*1024*1024 });
-  out.raw_len = body.length;
+  const env = { ...process.env, WP_PASS_CLEAN: passClean };
+  const body = execSync(
+    `curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wp/v2/users/me?context=edit"`,
+    { encoding: "utf8", env, maxBuffer: 5 * 1024 * 1024 }
+  );
   try {
     const j = JSON.parse(body);
-    out.name = j.name;
-    out.namespaces = j.namespaces || [];
-    out.has_wc = (j.namespaces || []).some(n => String(n).startsWith("wc/"));
-    out.has_wp = (j.namespaces || []).some(n => String(n).startsWith("wp/"));
-    out.authentication = j.authentication || {};
-  } catch (e) { out.parse_error = String(e); out.head = body.slice(0, 400); }
-} catch (e) { out.error = String(e).slice(0,300); }
-fs.writeFileSync("screenshots/rest.txt", JSON.stringify(out, null, 2));
+    if (j.id) {
+      out.auth = "OK";
+      out.id = j.id;
+      out.slug = j.slug;
+      out.roles = j.roles;
+      out.can_edit_products = j.capabilities ? !!j.capabilities.edit_products : "?";
+    } else {
+      out.auth = "FAIL"; out.code = j.code; out.message = j.message;
+    }
+  } catch (e) { out.auth = "PARSE_ERR"; out.head = body.slice(0, 300); }
+} catch (e) { out.error = String(e).slice(0, 200); }
+fs.writeFileSync("screenshots/auth.txt", JSON.stringify(out, null, 2));
