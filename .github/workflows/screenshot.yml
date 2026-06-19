@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        description: "Puslapio URL (pvz. dev.avesa.lt kategorija)"
+        description: "URL arba parametras skriptui"
         required: true
-        default: "https://dev.avesa.lt/kategorija/katems/dubeneliai-katems/"
+        default: "https://dev.avesa.lt"
 
 permissions:
   contents: write
@@ -31,15 +31,18 @@ jobs:
           npm i playwright
           npx playwright install --with-deps chromium
 
-      - name: Take screenshots
+      - name: Run task
+        env:
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASS: ${{ secrets.WP_APP_PASS }}
         run: node screenshot.mjs "${{ github.event.inputs.url }}"
 
-      - name: Commit screenshots
+      - name: Commit results
         run: |
           git config user.name "petshop-bot"
           git config user.email "bot@petshop.local"
           git add -A
-          git commit -m "screenshot $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "no changes"
+          git commit -m "task $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "no changes"
           for i in 1 2 3; do
             git fetch origin main
             git rebase origin/main || git rebase --abort
