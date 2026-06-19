@@ -1,0 +1,545 @@
+
+/**
+ * Petshop Filtrai PILNAS v13 (CSS + JS viename)
+ *
+ * Code Snippets pavadinimas: Petshop Filtrai PILNAS v13 [VISADA AKTYVUS]
+ * Tipas: "Run snippet everywhere" (front-end)
+ *
+ * v13 PATAISA (filtro tarpu sutraukimas - pamatuota tiltu: rowPitch 41px,
+ *  label display:block su temos line-height 28.8px -> musu CSS nepataike):
+ *  - Pridetas stipresnis (!important, platesnis) tarpu sutraukimas checkbox
+ *    sarasams. Label-pill sarasai (filter-label) NEPALIESTI.
+ *
+ * v12 PATAISA (desktop filtro regreso fix - patvirtinta tiltu 2026-06-19):
+ *  - v11 perkele #shop-sidebar i <body> VISADA -> desktop'e filtras dingo is
+ *    kairio sono ir nukrito i puslapio apacia. FIX: perkelima leisti TIK
+ *    off-canvas plociuose (innerWidth < 850). Desktop nepaliestas.
+ *
+ * v11 PRIDETA (mobile off-canvas TIKRAS fix - patvirtinta gyvai per DevTools):
+ *  - SAKNIS (v10 prielaida buvo NETEISINGA): mygtuko event listener NEMIRSTA.
+ *    YITH AJAX perpiesia turinio bloka ir SUNAIKINA #shop-sidebar (off-canvas
+ *    taikini). Flatsome "Filtruoti" handleris suveikia, bet Magnific Popup
+ *    nebeturi i ka nukreipti (#shop-sidebar = null) -> tyliai neatsidaro.
+ *  - FIX: pakrovus puslapi #shop-sidebar perkeliamas i <body>, kad YITH AJAX
+ *    jo nebepasiektu/nesunaikintu. YITH atnaujina filtru widget'a JO VIDUJE
+ *    (filtru busena lieka teisinga). Po kiekvieno AJAX: persistOffcanvas() +
+ *    process() (perstilizuojam, nes widget innerHTML pasikeite).
+ *  - v10 'current-lightbox-clicked' valymo / reopen logika PASALINTA (gyde ne ta).
+ *  - Veikia tik kur yra #shop-sidebar (mobile off-canvas). Desktop nepaliestas.
+ *
+ * v9 baze (nepakeista):
+ *  - Tipas (pa_tipas) nisa atidaroma ir GULOLIU/TRANSPORTO/NARVU puslapyje (isGuolPage()).
+ *  - Tipas (pa_tipas) nisa atidaroma ir DUBENELIU puslapyje (isDubPage()).
+ *    pa_tipas dalinasi antkakliai+dubeneliai (+ ateities aksesuarai).
+ *
+ * v7 baze:
+ *  - Tipas (pa_tipas) accordion ISSKLEISTA antkakliu puslapyje (isAnkPage()).
+ *  - pa_dydis rusiavimas: XS -> S -> M -> L -> XL -> XXL (ne abecele).
+ *  - pa_pavadelio_ilgis rusiavimas: 1m -> 2m -> ... -> Automatinis
+ *    (atskirta nuo skanestu pa_ilgis cm logikos).
+ *
+ * v6 baze (nepakeista):
+ *  - Paskirtis (pa_paskirtis) ISSKLEISTA tik vitaminu/papildu (isVitaminPage()).
+ *  - Veidrodine logika skanestu "Baltymui" (isTreatPage()).
+ *
+ * v5 baze (nepakeista):
+ *  - Kramtuko dydis (pa_ilgis): Iki 10 cm -> 10-15 -> 16-25 -> Virs 25
+ *  - Kiekis (pa_kiekis_pakuoteje): 1 vnt -> 2-5 -> 6-10 -> 11-25 -> 26+
+ *  - skanestu niša (Monoprotein + Baltymas) - accordion atidaro
+ *  - nisos bruksnys+fonas, zalios rodykles, kompaktiskas.
+ *
+ * PAKEICIA "Petshop Filtrai PILNAS v1-v12".
+ *
+ * jQuery noConflict safe. ASCII-only PHP komentarai.
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+add_action( 'wp_footer', function () {
+	if ( is_admin() ) return;
+	?>
+	<style>
+	:root {
+		--ps-green:       #2d5a3d;
+		--ps-green-light: #e8f0ea;
+		--ps-border:      #d8dcd9;
+		--ps-text:        #2a2a2a;
+		--ps-muted:       #6b6b6b;
+		--ps-neutral-bg:  #f4f5f4;
+	}
+
+	/* ===== BLOKAS ===== */
+	.yith-wcan-filters .yith-wcan-filter {
+		margin-bottom: 14px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid var(--ps-border);
+	}
+	.yith-wcan-filters .yith-wcan-filter:last-child { border-bottom: none; }
+
+	/* ===== ANTRASTE + ACCORDION ===== */
+	.yith-wcan-filters .yith-wcan-filter .filter-title {
+		font-size: 14px !important;
+		font-weight: 700 !important;
+		color: var(--ps-text) !important;
+		margin: 0 0 8px !important;
+		text-transform: none;
+		line-height: 1.3;
+		cursor: pointer;
+		position: relative;
+		padding-right: 26px !important;
+		user-select: none;
+	}
+	.yith-wcan-filters .yith-wcan-filter .filter-title::after {
+		content: '';
+		position: absolute;
+		right: 4px; top: 50%;
+		width: 7px; height: 7px;
+		border-right: 2px solid var(--ps-green);
+		border-bottom: 2px solid var(--ps-green);
+		transform: translateY(-65%) rotate(45deg);
+		transition: transform .2s ease;
+	}
+	.yith-wcan-filters .yith-wcan-filter.ps-collapsed .filter-title::after {
+		transform: translateY(-50%) rotate(-45deg);
+	}
+	.yith-wcan-filters .yith-wcan-filter.ps-collapsed .filter-content {
+		display: none !important;
+	}
+	.yith-wcan-filters .filter-content { margin-top: 4px; }
+
+	/* ===== NISOS AKCENTAS (kairinis zalias bruksnys + svelnus fonas) ===== */
+	.yith-wcan-filters .yith-wcan-filter.ps-niche {
+		position: relative;
+		padding-left: 12px;
+		padding-top: 8px;
+		padding-right: 8px;
+		background: #f8fbf9;          /* labai svelnus zalsvas fonas */
+		border-radius: 6px;
+	}
+	.yith-wcan-filters .yith-wcan-filter.ps-niche::before {
+		content: '';
+		position: absolute;
+		left: 0; top: 6px; bottom: 10px;
+		width: 2px;                    /* plonesnis: 3 -> 2 */
+		background: var(--ps-green);
+		border-radius: 3px;
+	}
+
+	/* ===== LABEL PILL (TIKROS klases: filter-label) ===== */
+	.yith-wcan-filters ul.filter-label,
+	.yith-wcan-filters .filter-items.filter-label {
+		display: flex; flex-wrap: wrap; gap: 6px;
+		list-style: none; margin: 0; padding: 0;
+	}
+	/* PANAIKINTI YITH kvadratini remа nuo li */
+	.yith-wcan-filters ul.filter-label li.filter-item,
+	.yith-wcan-filters ul.filter-label li.label {
+		margin: 0 !important;
+		padding: 0 !important;
+		border: none !important;
+		background: none !important;
+		box-shadow: none !important;
+		list-style: none;
+		width: auto !important;
+	}
+	/* apvalus pill ant <a> */
+	.yith-wcan-filters ul.filter-label li a {
+		display: inline-block;
+		padding: 5px 12px;
+		border: 1.5px solid var(--ps-border);
+		border-radius: 999px;
+		background: #fff;
+		color: var(--ps-text);
+		font-size: 13px; line-height: 1.2;
+		cursor: pointer;
+		transition: all .15s ease;
+		white-space: nowrap;
+		text-decoration: none;
+	}
+	.yith-wcan-filters ul.filter-label li a .term-label {
+		font-size: 13px;
+		color: inherit;
+	}
+	.yith-wcan-filters ul.filter-label li a:hover {
+		border-color: var(--ps-green); color: var(--ps-green);
+	}
+	.yith-wcan-filters ul.filter-label li a:hover .term-label { color: var(--ps-green); }
+	/* aktyvus */
+	.yith-wcan-filters ul.filter-label li.chosen a,
+	.yith-wcan-filters ul.filter-label li a.active,
+	.yith-wcan-filters ul.filter-label li.yith-wcan-active a {
+		background: var(--ps-green); border-color: var(--ps-green); color: #fff;
+	}
+	.yith-wcan-filters ul.filter-label li.chosen a .term-label,
+	.yith-wcan-filters ul.filter-label li a.active .term-label {
+		color: #fff;
+	}
+
+	/* GRUDU TIPAS - ZALI akcentas (pagal taxonomy IR per a href) */
+	.yith-wcan-filter[data-taxonomy="filter_be_grudu"] ul.filter-label li a,
+	.yith-wcan-filter[data-taxonomy*="grudu"] ul.filter-label li a {
+		border-color: var(--ps-green);
+		font-weight: 600;
+	}
+	.yith-wcan-filter[data-taxonomy="filter_be_grudu"] ul.filter-label li a .term-label,
+	.yith-wcan-filter[data-taxonomy*="grudu"] ul.filter-label li a .term-label {
+		color: var(--ps-green);
+	}
+	.yith-wcan-filter[data-taxonomy*="grudu"] ul.filter-label li a:hover {
+		background: var(--ps-green-light);
+	}
+	.yith-wcan-filter[data-taxonomy*="grudu"] ul.filter-label li.chosen a,
+	.yith-wcan-filter[data-taxonomy*="grudu"] ul.filter-label li a.active {
+		background: var(--ps-green);
+	}
+	.yith-wcan-filter[data-taxonomy*="grudu"] ul.filter-label li.chosen a .term-label,
+	.yith-wcan-filter[data-taxonomy*="grudu"] ul.filter-label li a.active .term-label {
+		color: #fff;
+	}
+
+	/* AMZIUS - neutralus */
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li a {
+		background: var(--ps-neutral-bg);
+		border-color: var(--ps-neutral-bg);
+	}
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li a .term-label {
+		color: var(--ps-muted);
+	}
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li a:hover {
+		border-color: var(--ps-green); background: #fff;
+	}
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li a:hover .term-label {
+		color: var(--ps-green);
+	}
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li.chosen a,
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li a.active {
+		background: var(--ps-green); border-color: var(--ps-green);
+	}
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li.chosen a .term-label,
+	.yith-wcan-filter[data-taxonomy*="amzius"] ul.filter-label li a.active .term-label {
+		color: #fff;
+	}
+
+	/* ===== CHECKBOX SARASAI ===== */
+	.yith-wcan-filters ul.filter-checkbox,
+	.yith-wcan-filters .checkbox-design ul { list-style: none; margin: 0; padding: 0; }
+	.yith-wcan-filters ul.filter-checkbox li,
+	.yith-wcan-filters .checkbox-design ul li {
+		margin: 0 0 4px; padding: 0; list-style: none;
+		border: none !important; background: none !important;
+	}
+	.yith-wcan-filters ul.filter-checkbox li a,
+	.yith-wcan-filters ul.filter-checkbox li label,
+	.yith-wcan-filters .checkbox-design ul li label {
+		display: flex; align-items: center; gap: 7px;
+		font-size: 13px; line-height: 1.35; color: var(--ps-text);
+		cursor: pointer; transition: color .12s ease;
+		text-decoration: none;
+	}
+	.yith-wcan-filters ul.filter-checkbox li a:hover,
+	.yith-wcan-filters .checkbox-design ul li label:hover { color: var(--ps-green); }
+	.yith-wcan-filters ul.filter-checkbox li.chosen a,
+	.yith-wcan-filters .checkbox-design ul li.chosen label {
+		color: var(--ps-green); font-weight: 600;
+	}
+	.yith-wcan-filters input[type="checkbox"] {
+		accent-color: var(--ps-green);
+		width: 15px; height: 15px; margin: 0; flex-shrink: 0; cursor: pointer;
+	}
+
+	/* ===== SHOW MORE ===== */
+	.yith-wcan-filters .show-more,
+	.yith-wcan-filters a.shorten-link {
+		display: inline-block; margin-top: 6px;
+		color: var(--ps-green); font-size: 12px; font-weight: 600;
+		cursor: pointer; text-decoration: none;
+	}
+	.yith-wcan-filters .show-more:hover { text-decoration: underline; }
+
+	/* ===== BRANDAS (Select) ===== */
+	.yith-wcan-filters select {
+		width: 100%; padding: 7px 11px;
+		border: 1.5px solid var(--ps-border); border-radius: 8px;
+		font-size: 13px; color: var(--ps-text); background: #fff;
+	}
+	.yith-wcan-filters .yith-wcan-dropdown ul li { margin: 0 0 3px; }
+	.yith-wcan-filters .yith-wcan-dropdown ul li label {
+		display: flex; align-items: center; gap: 7px; font-size: 13px; line-height: 1.3;
+	}
+
+	/* ===== AKTYVUS FILTRAI ===== */
+	.yith-wcan-active-filters { margin-bottom: 12px; }
+
+	/* ===== v13: FILTRO TARPU SUTRAUKIMAS (checkbox sarasai; pill NEPALIESTI) ===== */
+	.yith-wcan-filters .yith-wcan-filter {
+		margin-bottom: 12px !important;
+		padding-bottom: 10px !important;
+	}
+	.yith-wcan-filters .filter-content { margin-top: 4px !important; }
+	.yith-wcan-filters .filter-content ul:not(.filter-label) li {
+		margin: 0 !important;
+		padding: 0 !important;
+		line-height: 1.3 !important;
+		min-height: 0 !important;
+	}
+	.yith-wcan-filters .filter-content ul:not(.filter-label) li label,
+	.yith-wcan-filters .filter-content ul:not(.filter-label) li > a {
+		display: flex !important;
+		align-items: center !important;
+		gap: 7px !important;
+		margin: 0 0 2px !important;
+		padding: 2px 0 !important;
+		font-size: 13px !important;
+		line-height: 1.3 !important;
+		min-height: 0 !important;
+	}
+	.yith-wcan-filters .filter-content ul:not(.filter-label) input[type="checkbox"] {
+		margin: 0 !important;
+	}
+	</style>
+	<script>
+	(function() {
+		'use strict';
+
+		function parseSize(txt) {
+			txt = txt.trim();
+			var m = txt.match(/^([\d]+(?:[.,]\d+)?)\s*(kg|g)\b/i);
+			if (!m) return null;
+			var num = parseFloat(m[1].replace(',', '.'));
+			return m[2].toLowerCase() === 'kg' ? num * 1000 : num;
+		}
+		function ageWeight(txt) {
+			var t = txt.toLowerCase();
+			if (t.indexOf('jaun') !== -1) return 1;
+			if (t.indexOf('suaug') !== -1) return 2;
+			if (t.indexOf('senjor') !== -1 || t.indexOf('senst') !== -1) return 3;
+			return 99;
+		}
+		function pkgWeight(txt) { var g = parseSize(txt); return g === null ? 999999 : g; }
+		// Kramtuko dydis (cm grupes) - fiksuota tvarka
+		function cmWeight(txt) {
+			var t = txt.toLowerCase();
+			if (t.indexOf('iki 10') !== -1) return 1;
+			if (t.indexOf('10-15') !== -1) return 2;
+			if (t.indexOf('16-25') !== -1) return 3;
+			if (t.indexOf('virs 25') !== -1 || t.indexOf('25 cm') !== -1) return 4;
+			return 99;
+		}
+		// Kiekis (vnt grupes) - fiksuota tvarka
+		function vntWeight(txt) {
+			var t = txt.toLowerCase();
+			if (t.indexOf('1 vnt') !== -1 && t.indexOf('11') === -1) return 1;
+			if (t.indexOf('2-5') !== -1) return 2;
+			if (t.indexOf('6-10') !== -1) return 3;
+			if (t.indexOf('11-25') !== -1) return 4;
+			if (t.indexOf('26+') !== -1 || t.indexOf('26 ') !== -1) return 5;
+			return 99;
+		}
+		// Dydis (XS..XXL) - fiksuota tvarka
+		function sizeWeight(txt) {
+			var t = txt.trim().toUpperCase();
+			var m = { 'XS':0, 'S':1, 'M':2, 'L':3, 'XL':4, 'XXL':5 };
+			return m.hasOwnProperty(t) ? m[t] : 99;
+		}
+		// Pavadelio ilgis (metrai) - skaitine tvarka, Automatinis i pabaiga
+		function meterWeight(txt) {
+			var t = txt.toLowerCase().trim();
+			if (t.indexOf('automat') !== -1) return 999;
+			var m = t.match(/(\d+(?:[.,]\d+)?)\s*m/);
+			if (m) return parseFloat(m[1].replace(',', '.'));
+			return 99;
+		}
+		function liText(li) {
+			var l = li.querySelector('.term-label, label, a, span');
+			return (l ? l.textContent : li.textContent).trim();
+		}
+		function applyOrder(filterEl, weightFn) {
+			var content = filterEl.querySelector('.filter-content');
+			if (!content) return;
+			var list = content.querySelector('ul');
+			if (!list) return;
+			var items = Array.prototype.slice.call(list.children).filter(function(el){ return el.tagName === 'LI'; });
+			if (items.length < 2) return;
+			var isLabel = (list.className.indexOf('filter-label') !== -1);
+			if (!isLabel) { list.style.display = 'flex'; list.style.flexDirection = 'column'; }
+			var weighted = items.map(function(li){ return { li: li, w: weightFn(liText(li)) }; });
+			weighted.sort(function(a, b){
+				if (a.w === b.w) return liText(a.li).localeCompare(liText(b.li));
+				return a.w - b.w;
+			});
+			weighted.forEach(function(o, idx){ o.li.style.order = idx; });
+		}
+		function orderOne(filterEl) {
+			var tax = (filterEl.getAttribute('data-taxonomy') || '').toLowerCase();
+			if (tax.indexOf('pavadelio_ilgis') !== -1) applyOrder(filterEl, meterWeight);
+			else if (tax.indexOf('pakuotes') !== -1) applyOrder(filterEl, pkgWeight);
+			else if (tax.indexOf('amzius') !== -1) applyOrder(filterEl, ageWeight);
+			else if (tax === 'pa_dydis') applyOrder(filterEl, sizeWeight);
+			else if (tax.indexOf('ilgis') !== -1) applyOrder(filterEl, cmWeight);
+			else if (tax.indexOf('kiekis') !== -1) applyOrder(filterEl, vntWeight);
+		}
+		function orderAll() {
+			document.querySelectorAll('.yith-wcan-filter[data-taxonomy]').forEach(orderOne);
+		}
+
+		function isMobile() { return window.innerWidth <= 768; }
+		function titleText(f) { var h = f.querySelector('.filter-title'); return h ? h.textContent.trim() : ''; }
+		function isTreatPage() {
+			// skanestu kategorijos puslapis (URL ar body klase)
+			var u = (location.pathname || '').toLowerCase();
+			var b = (document.body.className || '').toLowerCase();
+			return u.indexOf('skanest') !== -1 || u.indexOf('kramt') !== -1 ||
+			       b.indexOf('skanest') !== -1 || b.indexOf('kramt') !== -1;
+		}
+		function isVitaminPage() {
+			// vitaminu/papildu kategorijos puslapis (URL ar body klase)
+			var u = (location.pathname || '').toLowerCase();
+			var b = (document.body.className || '').toLowerCase();
+			return u.indexOf('vitamin') !== -1 || u.indexOf('papild') !== -1 ||
+			       b.indexOf('vitamin') !== -1 || b.indexOf('papild') !== -1;
+		}
+		function isAnkPage() {
+			// antkakliu/pavadeliu kategorijos puslapis (URL ar body klase)
+			var u = (location.pathname || '').toLowerCase();
+			var b = (document.body.className || '').toLowerCase();
+			return u.indexOf('antkakl') !== -1 || u.indexOf('pavadel') !== -1 ||
+			       b.indexOf('antkakl') !== -1 || b.indexOf('pavadel') !== -1;
+		}
+		function isDubPage() {
+			// dubeneliu kategorijos puslapis (URL ar body klase)
+			var u = (location.pathname || '').toLowerCase();
+			var b = (document.body.className || '').toLowerCase();
+			return u.indexOf('dubenel') !== -1 || b.indexOf('dubenel') !== -1;
+		}
+		function isGuolPage() {
+			// guoliu/transporto/narvu/kelioniu kategorijos puslapis
+			var u = (location.pathname || '').toLowerCase();
+			var b = (document.body.className || '').toLowerCase();
+			var hit = function(x){ return u.indexOf(x)!==-1 || b.indexOf(x)!==-1; };
+			return hit('guoliai') || hit('transportavimo-dezes') || hit('kelioniu-iranga') || hit('narvai');
+		}
+		function nicheState(f) {
+			var tax = (f.getAttribute('data-taxonomy') || '').toLowerCase();
+			var t = titleText(f).toLowerCase();
+			// Monoprotein - visada nisa
+			if (tax.indexOf('monoprotein') !== -1 || t.indexOf('monoprotein') !== -1) return 'always';
+			// Grudu tipas - nisa (maiste)
+			if (tax.indexOf('grudu') !== -1 || t.indexOf('grudu') !== -1) return 'always';
+			// Baltymu saltinis - nisa TIK skanestu puslapyje
+			if (tax.indexOf('baltymu') !== -1 || t.indexOf('baltymo saltinis') !== -1 || t.indexOf('baltymu saltinis') !== -1) {
+				return isTreatPage() ? 'always' : 'closed';
+			}
+			// Paskirtis - nisa TIK vitaminu/papildu puslapyje
+			if (tax.indexOf('paskirtis') !== -1 || t.indexOf('paskirtis') !== -1) {
+				return isVitaminPage() ? 'always' : 'closed';
+			}
+			// Tipas - nisa antkakliu, dubeneliu IR guoliu/transporto puslapyje
+			if (tax === 'pa_tipas' || t === 'tipas') {
+				return (isAnkPage() || isDubPage() || isGuolPage()) ? 'always' : 'closed';
+			}
+			// Speciali mityba - desktop (maiste)
+			if (tax.indexOf('speciali') !== -1 || t.indexOf('speciali mityba') !== -1) return 'desktop';
+			return 'closed';
+		}
+		function setInitialState(f) {
+			if (f.hasAttribute('data-ps-init')) return;
+			f.setAttribute('data-ps-init', '1');
+			var s = nicheState(f);
+			// nisos akcentas (kairinis bruksnys) - 3 virsutiniai
+			if (s === 'always' || s === 'desktop') {
+				f.classList.add('ps-niche');
+			}
+			var open = (s === 'always') ? true : (s === 'desktop') ? !isMobile() : false;
+			if (!open) f.classList.add('ps-collapsed');
+		}
+		function bindToggle(f) {
+			var title = f.querySelector('.filter-title');
+			if (!title || title.hasAttribute('data-ps-bound')) return;
+			title.setAttribute('data-ps-bound', '1');
+			title.addEventListener('click', function() {
+				f.classList.toggle('ps-collapsed');
+				if (!f.classList.contains('ps-collapsed')) {
+					setTimeout(function(){ orderOne(f); }, 30);
+				}
+			});
+		}
+		function process() {
+			document.querySelectorAll('.yith-wcan-filters .yith-wcan-filter').forEach(function(f) {
+				setInitialState(f);
+				bindToggle(f);
+			});
+			orderAll();
+		}
+
+		// ===== v11: MOBILE off-canvas (#shop-sidebar) islaikymas per YITH AJAX =====
+		// SAKNIS (patvirtinta gyvai per DevTools): YITH AJAX perpiesia turinio
+		// bloka ir SUNAIKINA #shop-sidebar (off-canvas taikini). Flatsome mygtuko
+		// (data-open="#shop-sidebar") handleris suveikia, bet Magnific Popup
+		// nebeturi i ka nukreipti -> tyliai neatsidaro. Sprendimas: perkelti
+		// #shop-sidebar i <body>, kad YITH AJAX jo nebepasiektu/nesunaikintu.
+		// YITH atnaujina filtru widget'a JO VIDUJE (busena lieka teisinga).
+		function persistOffcanvas() {
+			// v12: TIK off-canvas plociuose (< 850px). Desktop'e #shop-sidebar
+			// privalo likti savo kolonoje - kitaip dingsta desktop filtras.
+			if (window.innerWidth >= 850) return;
+			var oc = document.getElementById('shop-sidebar');
+			if (!oc) return;
+			// jei siuo metu atidarytas (Magnific perkele i .mfp-content) - neliesti
+			if (oc.closest && oc.closest('.mfp-content')) return;
+			if (oc.parentElement !== document.body) {
+				document.body.appendChild(oc);
+			}
+		}
+		// Po YITH AJAX: uztikrinam taikini + perstilizuojam widget'a (innerHTML pasikeite)
+		function afterAjax() {
+			setTimeout(function(){
+				persistOffcanvas();
+				process();
+			}, 30);
+		}
+
+		function init() {
+			process();
+			persistOffcanvas();
+			var container = document.querySelector('.filters-container, aside, .widget-area') || document.body;
+			if (container && window.MutationObserver) {
+				var timer = null;
+				var obs = new MutationObserver(function() {
+					clearTimeout(timer);
+					timer = setTimeout(process, 120);
+				});
+				obs.observe(container, { childList: true, subtree: true });
+			}
+
+			// v11: po YITH AJAX - islaikom #shop-sidebar taikini + perstilizuojam
+			if (window.jQuery) {
+				window.jQuery(document).on(
+					'yith-wcan-ajax-loaded yith_wcan_ajax_loaded yith-wcan-ajax-success ajaxComplete',
+					afterAjax
+				);
+			}
+
+			document.addEventListener('click', function(e) {
+				var t = e.target; if (!t) return;
+				var txt = (t.textContent || '').toLowerCase();
+				var cls = (t.className || '').toString().toLowerCase();
+				if (txt.indexOf('show more') !== -1 || txt.indexOf('show less') !== -1 ||
+				    cls.indexOf('show-more') !== -1 || cls.indexOf('shorten') !== -1) {
+					setTimeout(orderAll, 60);
+					setTimeout(orderAll, 250);
+				}
+			}, true);
+			var ticks = 0;
+			var iv = setInterval(function() {
+				orderAll();
+				persistOffcanvas();
+				if (++ticks >= 8) clearInterval(iv);
+			}, 500);
+		}
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', init);
+		} else { init(); }
+	})();
+	</script>
+	<?php
+}, 100 );
