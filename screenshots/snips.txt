@@ -1,0 +1,317 @@
+{
+  "matches": [
+    {
+      "id": 318,
+      "name": "Filtru Terminu Tvarka v1",
+      "active": false,
+      "code_len": 5392,
+      "code_head": "\n/**\n * Filtru Terminu Tvarka v1 (dry-run -> confirm)\n *\n * Code Snippets pavadinimas: Filtru Terminu Tvarka v1\n * Paleidimas DRY-RUN: /wp-admin/?term_order=1\n * Paleidimas APPLY:   /wp-admin/?term_order=1&confirm=DARYK\n *\n * Nustato terminu tvarka (term_order), kad YITH rodytu logiska tvarka:\n *  - pa_amzius: Jauniems -> Suaugusiems -> Senjorams (pagal gyvenimo eiga)\n *  - pa_pakuotes_dydis: skaitine (g grupe didejimo, tada kg grupe didejimo)\n *\n * SVARBU: term_order veikia tik jei tema/YITH paiso WP terminu tvarkos.\n * Dry-run parodo planuojama tvarka pries taikant.\n *\n * Po naudojimo deakty"
+    },
+    {
+      "id": 322,
+      "name": "Filtru Accordion JS v1",
+      "active": false,
+      "code_len": 4096,
+      "code_head": "\n/**\n * Filtru Accordion JS v1\n *\n * Code Snippets pavadinimas: Filtru Accordion JS v1\n * Tipas: \"Run snippet everywhere\" (front-end JS)\n *\n * Accordion: antraste paspaudziama -> turinys rodosi/slepiasi -> rodykle pasisuka.\n *  - JS TIK dizainui (rodo/slepia), filtravima daro YITH\n *  - atidaryti pagal nutylejima (nisa): Monoprotein, Grudu tipas, Speciali mityba\n *  - mobile: tik Monoprotein + Grudu tipas (Speciali uzdaryta)\n *  - islieka po YITH AJAX (MutationObserver atstato busena)\n *\n * Filtrai atpazistami pagal taxonomy IR antrastes teksta (universalu).\n *\n * jQuery noConflict safe. ASCII"
+    },
+    {
+      "id": 323,
+      "name": "Filtru Funkcijos JS v1 (order + accordion)",
+      "active": false,
+      "code_len": 6577,
+      "code_head": "\n/**\n * Filtru Funkcijos JS v1 (order + accordion)\n *\n * Code Snippets pavadinimas: Filtru Funkcijos JS v1 (order + accordion)\n * Tipas: \"Run snippet everywhere\" (front-end JS)\n *\n * SUJUNGIA i viena (kad nebutu konflikto tarp atskiru snippet'u):\n *  1) RUSIAVIMAS (CSS order): pakuotes dydis skaitiskai, amzius gyvenimo eiga\n *  2) ACCORDION: niša atidaryta, kita uzdaryta, antraste paspaudziama\n *  3) Kai accordion ATIDARO filtra -> order perskaiciuojamas tam filtrui\n *     (issprendzia: pakuotes maisosi po atidarymo)\n *\n * PAKEICIA: \"Filtru Rusiavimas JS v3\" + \"Filtru Accordion JS v1\"\n * (tuos"
+    },
+    {
+      "id": 324,
+      "name": "Petshop Filtrai PILNAS v1",
+      "active": false,
+      "code_len": 11447,
+      "code_head": "\n/**\n * Petshop Filtrai PILNAS v1 (CSS + JS viename)\n *\n * Code Snippets pavadinimas: Petshop Filtrai PILNAS v1\n * Tipas: \"Run snippet everywhere\" (front-end)\n *\n * VISKAS VIENAME (kad nebutu konfliktu / nusimusimu):\n *  1) KOMPAKTISKAS dizainas (4px tarpai, 13px sriftas)\n *  2) ZALI pill (Grudu tipas akcentas) + neutralus (Amzius)\n *  3) ACCORDION (nisa atidaryta, kita uzdaryta)\n *  4) ORDER (pakuotes skaitiskai, amzius gyvenimo eiga)\n *  5) BRANDAS (Select) stilius - tarpai, checkbox\n *  6) Accordion atidaro -> order perskaiciuoja\n *\n * PAKEICIA visus ankstesnius filtru snippet'us:\n *  - \"Pe"
+    }
+  ],
+  "total": 233,
+  "hit_list": [
+    {
+      "id": 468,
+      "name": "Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 469,
+      "name": "Petshop Dev App Passwords v1",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 393,
+      "name": "Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 385,
+      "name": "Baltymu Saltinis Apply Sausas Aprasymai v1 (32 svarus)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 386,
+      "name": "Baltymu Saltinis Apply Sausas EXOTIC v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 387,
+      "name": "Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 388,
+      "name": "Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 389,
+      "name": "Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 373,
+      "name": "Atributai Inventorius v2 (tikslus slug)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 461,
+      "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 462,
+      "name": "Petshop Atributu Auditas v1.0 (read-only, ko truksta)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 463,
+      "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 443,
+      "name": "Dubeneliai sunims (111) - zvalgyba",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 444,
+      "name": "Dubeneliai (111) - PARSE-TEST (diagnoze)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 445,
+      "name": "Dubeneliai (111) - ATRIBUTU APPLY",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 403,
+      "name": "Atributu dengties diagnostika (maistas/konservai/skanestai)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 410,
+      "name": "Baltymu saltinis - likucio zvalgyba",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 411,
+      "name": "Baltymu saltinis is pavadinimo - DRY RUN (likutis)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 412,
+      "name": "Baltymu saltinis is pavadinimo - APPLY (likutis)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 390,
+      "name": "Baltymu Saltinis Apply Sausas Skonis v5 (multi + Paukstiena)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 391,
+      "name": "Baltymu Saltinis Konservai Skonis Dry-Run v1 (platus, v5 variklis)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 392,
+      "name": "Baltymu Saltinis Apply Konservai Skonis v1 (multi)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 467,
+      "name": "Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 464,
+      "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 465,
+      "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 466,
+      "name": "Petshop Attr Modulis: Zaislai Sunims v1.0 (parseris + dry/apply)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 384,
+      "name": "Baltymu Saltinis Sausas Aprasymai Dry-Run v2 (aliej/tauk isimtis)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 375,
+      "name": "Baltymu Saltinis Dry-Run Konservai v2",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 374,
+      "name": "Baltymu Saltinis Dry-Run Konservai v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 303,
+      "name": "Maisto Atributu Rasymas v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 318,
+      "name": "Filtru Terminu Tvarka v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 322,
+      "name": "Filtru Accordion JS v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 323,
+      "name": "Filtru Funkcijos JS v1 (order + accordion)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 324,
+      "name": "Petshop Filtrai PILNAS v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 325,
+      "name": "Petshop Filtrai PILNAS v2",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 380,
+      "name": "Baltymu Saltinis Dry-Run Sausas v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 381,
+      "name": "Baltymu Saltinis Apply Sausas v1 (SINGLE)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 382,
+      "name": "Baltymu Saltinis Sausas Aprasymai Dry-Run v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 383,
+      "name": "Baltymu Saltinis Apply Sausas RoyalCanin v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 329,
+      "name": "Petshop Filtrai PILNAS v13 [VISADA AKTYVUS]",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 332,
+      "name": "Petshop Filtru Kontekstas v5 [VISADA AKTYVUS]",
+      "active": true,
+      "scope": "global"
+    },
+    {
+      "id": 440,
+      "name": "Antkakliai/pavadeliai (116) - ATRIBUTU APPLY",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 379,
+      "name": "Baltymu Saltinis Apply Skanestai v2 (SINGLE)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 378,
+      "name": "Baltymu Saltinis Apply Skanestai v1 (SINGLE)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 377,
+      "name": "Baltymu Saltinis Dry-Run Skanestai v1",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 376,
+      "name": "Baltymu Saltinis Apply Konservai v1 (SINGLE)",
+      "active": false,
+      "scope": "global"
+    },
+    {
+      "id": 343,
+      "name": "Visos Kategorijos Pilnas Sarasas v1",
+      "active": false,
+      "scope": "global"
+    }
+  ]
+}
