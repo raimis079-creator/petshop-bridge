@@ -1,0 +1,31 @@
+{
+  "maker_create": "200",
+  "maker_id": 483,
+  "preset": "{\"preset_id\":34104,\"slug\":\"apranga-filtras\",\"filters\":3}",
+  "apr_cat": {
+    "id": 305,
+    "slug": "apranga-sunims",
+    "count": 39,
+    "parent": 70
+  },
+  "url": "https://dev.avesa.lt/kategorija/sunims/apranga-sunims/?z=1782067165395",
+  "http": 200,
+  "h1": "",
+  "filters": [
+    {
+      "title": "Tipas",
+      "tax": "filter_tipas",
+      "nterms": 6
+    },
+    {
+      "title": "Dydis",
+      "tax": "filter_dydis",
+      "nterms": 5
+    },
+    {
+      "title": "Prekės ženklas",
+      "tax": "product_brand",
+      "nterms": 0
+    }
+  ]
+}
