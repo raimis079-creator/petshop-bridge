@@ -4,14 +4,9 @@ fs.mkdirSync("screenshots", { recursive: true });
 const base = "https://dev.avesa.lt";
 const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
 const env = { ...process.env, WP_PASS_CLEAN: passClean };
-function wc(p){ return JSON.parse(execSync(`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/${p}"`,{encoding:"utf8",env,maxBuffer:20*1024*1024})); }
-const out={};
-// A) breed prekiu statusas
-try {
-  out.breeds=[17333,15709,15706,15703,15700,15697,15674,15671,15694,15692,15659,15662,15689].map(id=>{
-    const p=wc(`products/${id}?_fields=id,name,status`);
-    return {id,st:p.status,n:(p.name||'').slice(0,42)};
-  });
-} catch(e){ out.breed_err=String(e).slice(0,90); }
-// B) preset toggle skirtumas: deploy laikina inspector snippet? Ne - naudosim koda-snippet maker'i kuris ISPAUSDINA _filters
-fs.writeFileSync("screenshots/samp_diag.txt", JSON.stringify(out,null,1));
+const code = Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19zYW1wX2luc3BlY3QnXSkgKSByZXR1cm47CiAgaWYgKCAoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICkgeyBzdGF0dXNfaGVhZGVyKDQwMyk7IGVjaG8gJ25vJzsgZXhpdDsgfQogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgJG91dCA9IGFycmF5KCk7CiAgZm9yZWFjaCAoIGFycmF5KCdkcmFza3lrbGl1LWZpbHRyYXMnLCdzYW1wdW51LWZpbHRyYXMnLCdhcHJhbmdhLWZpbHRyYXMnKSBhcyAkc2x1ZyApIHsKICAgICRwID0gZ2V0X3BhZ2VfYnlfcGF0aCgkc2x1ZywgT0JKRUNULCAneWl0aF93Y2FuX3ByZXNldCcpOwogICAgaWYoISRwKXsgJG91dFsncHJlc2V0cyddWyRzbHVnXT0nTk8nOyBjb250aW51ZTsgfQogICAgJGYgPSBnZXRfcG9zdF9tZXRhKCRwLT5JRCwnX2ZpbHRlcnMnLHRydWUpOwogICAgaWYoaXNfc3RyaW5nKCRmKSkgJGYgPSBtYXliZV91bnNlcmlhbGl6ZSgkZik7CiAgICAkZjEgPSBpc19hcnJheSgkZikmJmlzc2V0KCRmWzFdKSA/ICRmWzFdIDogYXJyYXkoKTsKICAgICRvdXRbJ3ByZXNldHMnXVskc2x1Z10gPSBhcnJheSgKICAgICAgJ2lkJz0+JHAtPklELAogICAgICAnZjFfdGF4Jz0+JGYxWyd0YXhvbm9teSddPz8nPycsCiAgICAgICdmMV9rZXlzJz0+YXJyYXlfa2V5cygkZjEpLAogICAgICAnZjFfdG9nZ2xlJz0+JGYxWyd0b2dnbGVfc3R5bGUnXT8/Jyhub25lKScsCiAgICAgICdmMV9zaG93X3RvZ2dsZSc9PiRmMVsnc2hvd190b2dnbGUnXT8/Jyhub25lKScsCiAgICApOwogIH0KICAkYnJlZWRzID0gYXJyYXkoMTczMzMsMTU3MDksMTU3MDYsMTU3MDMsMTU3MDAsMTU2OTcsMTU2NzQsMTU2NzEsMTU2OTQsMTU2OTIsMTU2NTksMTU2NjIsMTU2ODkpOwogIGZvcmVhY2ggKCRicmVlZHMgYXMgJGlkKSB7CiAgICAkb3V0WydicmVlZHMnXVskaWRdID0gYXJyYXkoJ3N0Jz0+Z2V0X3Bvc3Rfc3RhdHVzKCRpZCksICduJz0+bWJfc3Vic3RyKGdldF90aGVfdGl0bGUoJGlkKSwwLDQwKSk7CiAgfQogIGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7CiAgZXhpdDsKfSwgOTkpOwo=","base64").toString("utf8");
+const out = {};
+fs.writeFileSync("/tmp/snip.json", JSON.stringify({ name:"TEMP Samp Inspect", code, scope:"global", active:true }));
+try { const cr=execSync(`curl -sk -o /tmp/cr.txt -w "%{http_code}" --max-time 45 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/snip.json "${base}/wp-json/code-snippets/v1/snippets"`,{encoding:"utf8",env}).trim(); out.create=cr; try{out.insp_id=JSON.parse(fs.readFileSync("/tmp/cr.txt","utf8")).id;}catch(e){} } catch(e){ out.create_err=(e.stderr||String(e)).slice(0,100); }
+try { execSync("sleep 2"); out.data = execSync(`curl -sk --max-time 40 "${base}/?ps_samp_inspect=1&k=ps2026"`,{encoding:"utf8",env,maxBuffer:5*1024*1024}); } catch(e){ out.run_err=(e.stderr||String(e)).slice(0,100); }
+fs.writeFileSync("screenshots/samp_inspect.txt", JSON.stringify(out,null,1));
