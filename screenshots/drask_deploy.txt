@@ -1,4 +1,12 @@
 {
-  "create_err": "Error: Command failed: curl -sk -o /tmp/cr.txt -w \"%{http_code}\" --max-time 30 -u \"$WP_USER:$WP_PASS_CLEAN\" -H \"Content-Type: application/json\" -X POS",
-  "dry_err": "Error: Command failed: curl -sk --max-time 50 \"https://dev.avesa.lt/?petshop_attr_drask=dry&k=ps2026\""
+  "create_code": "200",
+  "snippet_id": 480,
+  "active": true,
+  "summary": "Viso: 52 &middot; PARSED: 49 &middot; REVIEW: 3",
+  "tipai": {
+    "Stovas-bokštas": 19,
+    "Stulpas": 19,
+    "Lenta": 7,
+    "Kartoninė": 4
+  }
 }
