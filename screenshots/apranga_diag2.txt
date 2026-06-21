@@ -1,0 +1,42 @@
+{
+  "attrs": [
+    "pa_amzius:4",
+    "pa_baltymu_saltinis:6",
+    "pa_be_grudu:7",
+    "pa_brendas:1",
+    "pa_dydis:15",
+    "pa_forma:13",
+    "pa_gyvuno_rusis:2",
+    "pa_ilgis:10",
+    "pa_kiekis_pakuoteje:11",
+    "pa_kraiko_tipas:19",
+    "pa_kvapas:20",
+    "pa_medziaga:16",
+    "pa_monoprotein:9",
+    "pa_pakuotes_dydis:3",
+    "pa_paskirtis:12",
+    "pa_pavadelio_ilgis:17",
+    "pa_speciali_mityba:8",
+    "pa_tipas:14",
+    "pa_veisles_dydis:5",
+    "pa_zaislo_tipas:18"
+  ],
+  "filters": [
+    {
+      "title": "Tipas",
+      "tax": "filter_tipas",
+      "nterms": 6
+    },
+    {
+      "title": "Dydis",
+      "tax": "filter_dydis",
+      "nterms": 5
+    },
+    {
+      "title": "Prekės ženklas",
+      "tax": "product_brand",
+      "nterms": 0
+    }
+  ],
+  "raw_has_tipas": true
+}
