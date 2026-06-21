@@ -1,17 +1,12 @@
-import { chromium } from "playwright";
+import { execSync } from "child_process";
 import fs from "fs";
 fs.mkdirSync("screenshots", { recursive: true });
-const out={};
-const b = await chromium.launch({ args:["--no-sandbox"] });
-const page = await (await b.newContext({ viewport:{width:1300,height:1250}, ignoreHTTPSErrors:true })).newPage();
-try {
-  await page.goto("https://dev.avesa.lt/kategorija/sunims/sampunai-sunims/",{waitUntil:"domcontentloaded",timeout:40000});
-  await page.waitForTimeout(6500);
-  const txt = await page.evaluate(()=>{const el=document.querySelector('.yith-wcan-filters,.widget-area,aside');return el?el.innerText.slice(0,500):'NORA';});
-  out.sidebar=txt;
-  out.paskirtis_opened = /Antiparazitinis|Universalus/.test(txt);
-  out.veisles = (txt.match(/Labradorai|Maltos|Cu|Škotijos|aviganiai/g)||[]).length;
-  await page.screenshot({ path:"screenshots/samp_done.png", clip:{x:88,y:120,width:440,height:660} });
-} catch(e){ out.err=String(e).slice(0,100); }
-await b.close();
-fs.writeFileSync("screenshots/samp_done.txt", JSON.stringify(out,null,1));
+const base = "https://dev.avesa.lt";
+const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
+const env = { ...process.env, WP_PASS_CLEAN: passClean };
+const code = Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc195aXRoX3JlbmRlciddKSApIHJldHVybjsKICBpZiAoICgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgKSB7IHN0YXR1c19oZWFkZXIoNDAzKTsgZWNobyAnbm8nOyBleGl0OyB9CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAkb3V0ID0gYXJyYXkoKTsKICAkb3V0WydwcmVzZXRfbWV0aG9kcyddID0gY2xhc3NfZXhpc3RzKCdZSVRIX1dDQU5fUHJlc2V0JykgPyBnZXRfY2xhc3NfbWV0aG9kcygnWUlUSF9XQ0FOX1ByZXNldCcpIDogJ05PJzsKICAvLyBnbG9iYWx1cyBZSVRIIG51c3RhdHltYWkgZGVsIHRvZ2dsZS9hamF4CiAgJG91dFsnb3B0X2FqYXgnXSAgICAgICAgPSBnZXRfb3B0aW9uKCd5aXRoX3djYW5fZW5hYmxlX2FqYXhfZmlsdGVycycsICcobmlsKScpOwogICRvdXRbJ29wdF9pbnN0YW50J10gICAgID0gZ2V0X29wdGlvbigneWl0aF93Y2FuX2luc3RhbnRfZmlsdGVycycsICcobmlsKScpOwogICRvdXRbJ29wdF9zaG93X3RvZ2dsZSddID0gZ2V0X29wdGlvbigneWl0aF93Y2FuX2ZpbHRlcnNfc2hvd190b2dnbGUnLCAnKG5pbCknKTsKICAkb3V0WydvcHRfZGVmYXVsdF90b2dnbGUnXT0gZ2V0X29wdGlvbigneWl0aF93Y2FuX2ZpbHRlcnNfZGVmYXVsdF90b2dnbGUnLCAnKG5pbCknKTsKICAvLyB2aXNpIHlpdGhfd2Nhbl8gb3B0aW9uYWkgKHJha3RhaSkKICBnbG9iYWwgJHdwZGI7CiAgJHJvd3MgPSAkd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIG9wdGlvbl9uYW1lIEZST00geyR3cGRiLT5vcHRpb25zfSBXSEVSRSBvcHRpb25fbmFtZSBMSUtFICd5aXRoX3djYW5fJScgQU5EIChvcHRpb25fbmFtZSBMSUtFICcldG9nZ2xlJScgT1Igb3B0aW9uX25hbWUgTElLRSAnJWFqYXglJyBPUiBvcHRpb25fbmFtZSBMSUtFICclY29sbGFwcyUnIE9SIG9wdGlvbl9uYW1lIExJS0UgJyVvcGVuJScpIik7CiAgJG91dFsndG9nZ2xlX29wdGlvbnMnXSA9IGFycmF5KCk7CiAgZm9yZWFjaCgoYXJyYXkpJHJvd3MgYXMgJHIpeyAkb3V0Wyd0b2dnbGVfb3B0aW9ucyddWyRyXSA9IGdldF9vcHRpb24oJHIpOyB9CiAgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsKICBleGl0Owp9LCA5OSk7Cg==","base64").toString("utf8");
+const out = {};
+fs.writeFileSync("/tmp/snip.json", JSON.stringify({ name:"TEMP YITH Render Probe", code, scope:"global", active:true }));
+try { execSync(`curl -sk -o /tmp/cr.txt -w "%{http_code}" --max-time 45 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/snip.json "${base}/wp-json/code-snippets/v1/snippets"`,{encoding:"utf8",env}); } catch(e){ out.create_err=String(e).slice(0,80); }
+try { execSync("sleep 2"); out.data=execSync(`curl -sk --max-time 40 "${base}/?ps_yith_render=1&k=ps2026"`,{encoding:"utf8",env,maxBuffer:5*1024*1024}); } catch(e){ out.run_err=String(e).slice(0,90); }
+fs.writeFileSync("screenshots/yith_render.txt", JSON.stringify(out,null,1));
