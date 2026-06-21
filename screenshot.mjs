@@ -1,54 +1,15 @@
-import { chromium } from "playwright";
 import { execSync } from "child_process";
 import fs from "fs";
 fs.mkdirSync("screenshots", { recursive: true });
 const base = "https://dev.avesa.lt";
 const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
 const env = { ...process.env, WP_PASS_CLEAN: passClean };
-function wc(p){ return JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/${p}"`,{encoding:"utf8",env,maxBuffer:10*1024*1024})); }
+const code = Buffer.from("LyoqCiAqIFBldHNob3AgTWVudTogQXByYW5nYSAtPiBTVU5JTVMvQUtTRVNVQVJBSSB2MS4wIChkcnkvYXBwbHkpCiAqCiAqIFByaWRlZGEga2F0ZWdvcmlqYSAiQXByYW5nYSBzdW5pbXMiICh0ZXJtIDMwNSkgaSBuYXZpZ2FjaWpvcyBtZW5pdQogKiBrYWlwIEFLU0VTVUFSQUkgZ3J1cGVzIHZhaWthLCBwbyB2aXN1IGtpdHUgYWtzZXN1YXJ1LgogKiBBcGRvcm9qYSBWSVNVUyBtZW5pdSwga3VyaXVvc2UgeXJhIFNVTklNUyAtPiBBS1NFU1VBUkFJIHNha2EKICogKGRlc2t0b3AgKyBtb2JpbGUsIGplaSBhdHNraXJpKS4KICoKICogSWRlbXBvdGVudGlza2FzOiBqZWkgQXByYW5nYSAoMzA1KSBqYXUgeXJhIHBvIHRhIEFLU0VTVUFSQUkgLSBwcmFsZWlkemlhLgogKiBEaWFrcml0aWtvcyB2ZW5naWFtYSAtIGx5Z2luYW1hIGFzY2lpLWZvbGQgdXBwZXJjYXNlIGZvcm1hLgogKgogKiAgID9wc19tZW51X2FwcmFuZ2E9MSZrPXBzMjAyNiAgICAgICAgICAgICAgICAgLT4gRFJZICh0aWsgcGFyb2RvIHBsYW5hKQogKiAgID9wc19tZW51X2FwcmFuZ2E9MSZjb25maXJtPUFQUExZJms9cHMyMDI2ICAgLT4gcmVhbGlhaSBwcmlkZWRhCiAqLwoKaWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyBleGl0OyB9CgppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAncHNfbWVudV9kZWFjY1UnICkgKSB7CiAgICBmdW5jdGlvbiBwc19tZW51X2RlYWNjVSggJHMgKSB7CiAgICAgICAgJHMgID0gd3Bfc3RyaXBfYWxsX3RhZ3MoIChzdHJpbmcpICRzICk7CiAgICAgICAgJGx0ID0gYXJyYXkoICJceEM0XHg4NSIsIlx4QzRceDhEIiwiXHhDNFx4OTkiLCJceEM0XHg5NyIsIlx4QzRceEFGIiwiXHhDNVx4QTEiLCJceEM1XHhCMyIsIlx4QzVceEFCIiwiXHhDNVx4QkUiLAogICAgICAgICAgICAgICAgICAgICAiXHhDNFx4ODQiLCJceEM0XHg4QyIsIlx4QzRceDk4IiwiXHhDNFx4OTYiLCJceEM0XHhBRSIsIlx4QzVceEEwIiwiXHhDNVx4QjIiLCJceEM1XHhBQSIsIlx4QzVceEJEIiApOwogICAgICAgICRlbiA9IGFycmF5KCAnYScsJ2MnLCdlJywnZScsJ2knLCdzJywndScsJ3UnLCd6JywnQScsJ0MnLCdFJywnRScsJ0knLCdTJywnVScsJ1UnLCdaJyApOwogICAgICAgICRzICA9IHN0cl9yZXBsYWNlKCAkbHQsICRlbiwgJHMgKTsKICAgICAgICByZXR1cm4gc3RydG91cHBlciggdHJpbSggJHMgKSApOwogICAgfQp9CgphZGRfYWN0aW9uKCAnaW5pdCcsIGZ1bmN0aW9uICgpIHsKICAgIGlmICggISBpc3NldCggJF9HRVRbJ3BzX21lbnVfYXByYW5nYSddICkgKSB7IHJldHVybjsgfQogICAgaWYgKCAoICRfR0VUWydrJ10gPz8gJycgKSAhPT0gJ3BzMjAyNicgKSB7IHN0YXR1c19oZWFkZXIoIDQwMyApOyBlY2hvICdubyc7IGV4aXQ7IH0KICAgIGhlYWRlciggJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcgKTsKCiAgICAkYXBwbHkgID0gKCBpc3NldCggJF9HRVRbJ2NvbmZpcm0nXSApICYmICRfR0VUWydjb25maXJtJ10gPT09ICdBUFBMWScgKTsKICAgICRDQVRfSUQgPSAzMDU7IC8qIEFwcmFuZ2Egc3VuaW1zICovCgogICAgJGNhdCA9IGdldF90ZXJtKCAkQ0FUX0lELCAncHJvZHVjdF9jYXQnICk7CiAgICBpZiAoICEgJGNhdCB8fCBpc193cF9lcnJvciggJGNhdCApICkgeyBlY2hvIHdwX2pzb25fZW5jb2RlKCBhcnJheSggJ2Vycm9yJyA9PiAnbm8gY2F0IDMwNScgKSApOyBleGl0OyB9CiAgICAkdGl0bGUgPSAkY2F0LT5uYW1lOyAvKiBpcyBEQiAtIHRlaXNpbmdhcyBVVEYtOCAqLwoKICAgICRvdXQgPSBhcnJheSggJ21vZGUnID0+ICRhcHBseSA/ICdhcHBseScgOiAnZHJ5JywgJ3RpdGxlX3RvX2FkZCcgPT4gJHRpdGxlLCAndGFyZ2V0cycgPT4gYXJyYXkoKSwgJ3Jlc3VsdHMnID0+IGFycmF5KCkgKTsKCiAgICAkbWVudXMgPSB3cF9nZXRfbmF2X21lbnVzKCk7CiAgICBpZiAoIGVtcHR5KCAkbWVudXMgKSApIHsgZWNobyB3cF9qc29uX2VuY29kZSggYXJyYXkoICdlcnJvcicgPT4gJ25vIG1lbnVzJyApICk7IGV4aXQ7IH0KCiAgICBmb3JlYWNoICggJG1lbnVzIGFzICRtICkgewogICAgICAgICRpdGVtcyA9IHdwX2dldF9uYXZfbWVudV9pdGVtcyggJG0tPnRlcm1faWQgKTsKICAgICAgICBpZiAoIGVtcHR5KCAkaXRlbXMgKSApIHsgY29udGludWU7IH0KICAgICAgICAkYnlJZCA9IGFycmF5KCk7CiAgICAgICAgZm9yZWFjaCAoICRpdGVtcyBhcyAkaXQgKSB7ICRieUlkWyAkaXQtPklEIF0gPSAkaXQ7IH0KCiAgICAgICAgZm9yZWFjaCAoICRpdGVtcyBhcyAkaXQgKSB7CiAgICAgICAgICAgIGlmICggcHNfbWVudV9kZWFjY1UoICRpdC0+dGl0bGUgKSAhPT0gJ0FLU0VTVUFSQUknICkgeyBjb250aW51ZTsgfQogICAgICAgICAgICAvKiBhciBBS1NFU1VBUkFJIHByb3RldmlzIHlyYSBTVU5JTVMgKi8KICAgICAgICAgICAgJGN1ciA9ICRpdDsgJGd1YXJkID0gMDsgJGlzVW5kZXJTdW5pbXMgPSBmYWxzZTsgJGNoYWluID0gYXJyYXkoKTsKICAgICAgICAgICAgd2hpbGUgKCAkY3VyICYmIChpbnQpICRjdXItPm1lbnVfaXRlbV9wYXJlbnQgJiYgaXNzZXQoICRieUlkWyAkY3VyLT5tZW51X2l0ZW1fcGFyZW50IF0gKSAmJiAkZ3VhcmQgPCAxMiApIHsKICAgICAgICAgICAgICAgICRjdXIgPSAkYnlJZFsgJGN1ci0+bWVudV9pdGVtX3BhcmVudCBdOwogICAgICAgICAgICAgICAgJGNoYWluW10gPSB0cmltKCB3cF9zdHJpcF9hbGxfdGFncyggJGN1ci0+dGl0bGUgKSApOwogICAgICAgICAgICAgICAgaWYgKCBwc19tZW51X2RlYWNjVSggJGN1ci0+dGl0bGUgKSA9PT0gJ1NVTklNUycgKSB7ICRpc1VuZGVyU3VuaW1zID0gdHJ1ZTsgfQogICAgICAgICAgICAgICAgJGd1YXJkKys7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgaWYgKCAhICRpc1VuZGVyU3VuaW1zICkgeyBjb250aW51ZTsgfQoKICAgICAgICAgICAgLyogQUtTRVNVQVJBSSB2YWlrYWkgKyBhciBhcHJhbmdhIGphdSB5cmEgKyBtYXhwb3MgKi8KICAgICAgICAgICAgJGV4aXN0cyA9IGZhbHNlOyAkbWF4cG9zID0gKGludCkgJGl0LT5tZW51X29yZGVyOyAka2lkcyA9IGFycmF5KCk7CiAgICAgICAgICAgIGZvcmVhY2ggKCAkaXRlbXMgYXMgJGMgKSB7CiAgICAgICAgICAgICAgICBpZiAoIChpbnQpICRjLT5tZW51X2l0ZW1fcGFyZW50ICE9PSAoaW50KSAkaXQtPklEICkgeyBjb250aW51ZTsgfQogICAgICAgICAgICAgICAgJGtpZHNbXSA9IHRyaW0oIHdwX3N0cmlwX2FsbF90YWdzKCAkYy0+dGl0bGUgKSApOwogICAgICAgICAgICAgICAgaWYgKCAoaW50KSAkYy0+bWVudV9vcmRlciA+ICRtYXhwb3MgKSB7ICRtYXhwb3MgPSAoaW50KSAkYy0+bWVudV9vcmRlcjsgfQogICAgICAgICAgICAgICAgaWYgKCAkYy0+b2JqZWN0ID09PSAncHJvZHVjdF9jYXQnICYmIChpbnQpICRjLT5vYmplY3RfaWQgPT09ICRDQVRfSUQgKSB7ICRleGlzdHMgPSB0cnVlOyB9CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgICR0Z3QgPSBhcnJheSgKICAgICAgICAgICAgICAgICdtZW51JyAgICAgICAgPT4gJG0tPm5hbWUsCiAgICAgICAgICAgICAgICAnbWVudV9pZCcgICAgID0+IChpbnQpICRtLT50ZXJtX2lkLAogICAgICAgICAgICAgICAgJ2Frc2VzdWFyYWlfaXRlbV9pZCcgPT4gKGludCkgJGl0LT5JRCwKICAgICAgICAgICAgICAgICdha3NfY2hhaW4nICAgPT4gYXJyYXlfcmV2ZXJzZSggJGNoYWluICksCiAgICAgICAgICAgICAgICAnYWtzX2NoaWxkcmVuJyA9PiAka2lkcywKICAgICAgICAgICAgICAgICdhbHJlYWR5X2V4aXN0cycgPT4gJGV4aXN0cywKICAgICAgICAgICAgICAgICduZXdfcG9zaXRpb24nICAgPT4gJG1heHBvcyArIDEsCiAgICAgICAgICAgICk7CgogICAgICAgICAgICBpZiAoICRhcHBseSAmJiAhICRleGlzdHMgKSB7CiAgICAgICAgICAgICAgICAkbmV3X2lkID0gd3BfdXBkYXRlX25hdl9tZW51X2l0ZW0oIChpbnQpICRtLT50ZXJtX2lkLCAwLCBhcnJheSgKICAgICAgICAgICAgICAgICAgICAnbWVudS1pdGVtLXRpdGxlJyAgICAgPT4gJHRpdGxlLAogICAgICAgICAgICAgICAgICAgICdtZW51LWl0ZW0tb2JqZWN0JyAgICA9PiAncHJvZHVjdF9jYXQnLAogICAgICAgICAgICAgICAgICAgICdtZW51LWl0ZW0tb2JqZWN0LWlkJyA9PiAkQ0FUX0lELAogICAgICAgICAgICAgICAgICAgICdtZW51LWl0ZW0tdHlwZScgICAgICA9PiAndGF4b25vbXknLAogICAgICAgICAgICAgICAgICAgICdtZW51LWl0ZW0tcGFyZW50LWlkJyA9PiAoaW50KSAkaXQtPklELAogICAgICAgICAgICAgICAgICAgICdtZW51LWl0ZW0tc3RhdHVzJyAgICA9PiAncHVibGlzaCcsCiAgICAgICAgICAgICAgICAgICAgJ21lbnUtaXRlbS1wb3NpdGlvbicgID0+ICRtYXhwb3MgKyAxLAogICAgICAgICAgICAgICAgKSApOwogICAgICAgICAgICAgICAgaWYgKCBpc193cF9lcnJvciggJG5ld19pZCApICkgeyAkdGd0WydhcHBseV9lcnJvciddID0gJG5ld19pZC0+Z2V0X2Vycm9yX21lc3NhZ2UoKTsgfQogICAgICAgICAgICAgICAgZWxzZSB7ICR0Z3RbJ2NyZWF0ZWRfaXRlbV9pZCddID0gKGludCkgJG5ld19pZDsgfQogICAgICAgICAgICB9CiAgICAgICAgICAgICRvdXRbJ3RhcmdldHMnXVtdID0gJHRndDsKICAgICAgICB9CiAgICB9CgogICAgaWYgKCBlbXB0eSggJG91dFsndGFyZ2V0cyddICkgKSB7ICRvdXRbJ3dhcm4nXSA9ICdTVU5JTVMvQUtTRVNVQVJBSSBzYWthIG5lcmFzdGEgbmVpIHZpZW5hbWUgbWVuaXUnOyAkb3V0WydtZW51c19zY2FubmVkJ10gPSB3cF9saXN0X3BsdWNrKCAkbWVudXMsICduYW1lJyApOyB9CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCAkb3V0LCBKU09OX1VORVNDQVBFRF9VTklDT0RFICk7CiAgICBleGl0Owp9LCA5OSApOwo=","base64").toString("utf8");
 const out = {};
-// 1) apranga + Sunims kat nustatymai
+fs.writeFileSync("/tmp/snip.json", JSON.stringify({ name:"Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)", code, scope:"global", active:true }));
 try {
-  const ap = wc("products/categories/305");
-  out.apranga = {id:ap.id,name:ap.name,slug:ap.slug,parent:ap.parent,count:ap.count,menu_order:ap.menu_order,display:ap.display};
-  const sun = wc("products/categories/70");
-  out.sunims = {id:sun.id,name:sun.name,slug:sun.slug,parent:sun.parent,count:sun.count,display:sun.display};
-} catch(e){ out.cat_err=String(e).slice(0,80); }
-// 2) Sunims pokategoriai (parent=70)
-try {
-  const subs = wc("products/categories?parent=70&per_page=100&orderby=menu_order&_fields=id,name,slug,count,menu_order,display");
-  out.sunims_subs = subs.map(s=>({id:s.id,name:s.name,slug:s.slug,count:s.count,mo:s.menu_order,disp:s.display}));
-} catch(e){ out.subs_err=String(e).slice(0,80); }
-// 3) Meniu po SUNIMS (homepage nav)
-try {
-  const b = await chromium.launch({ args:["--no-sandbox"] });
-  const ctx = await b.newContext({ viewport:{width:1440,height:1000}, locale:"lt-LT", ignoreHTTPSErrors:true });
-  const page = await ctx.newPage();
-  await page.goto(base+"/?z="+Date.now(), { waitUntil:"domcontentloaded", timeout:60000 });
-  await page.waitForTimeout(2500);
-  // top meniu top-level + SUNIMS submenu
-  out.nav = await page.evaluate(()=>{
-    const res={top:[],sunims_sub:[]};
-    document.querySelectorAll("header li.menu-item > a, header nav li > a").forEach(()=>{});
-    // top-level
-    const items=document.querySelectorAll("ul.header-nav > li, ul.nav > li.menu-item");
-    items.forEach(li=>{
-      const a=li.querySelector(":scope > a"); if(!a) return;
-      const txt=a.textContent.trim();
-      res.top.push(txt);
-      if(/sunims/i.test(txt) || /šunims/i.test(txt)){
-        li.querySelectorAll("ul li > a").forEach(sa=>res.sunims_sub.push(sa.textContent.trim()));
-      }
-    });
-    return res;
-  });
-  // 4) Sunims kategorijos puslapis - pokategoriju plyteles
-  await page.goto(base+"/kategorija/sunims/?z="+Date.now(), { waitUntil:"domcontentloaded", timeout:60000 });
-  await page.waitForTimeout(2500);
-  out.sunims_page_tiles = await page.evaluate(()=>{
-    const t=[]; document.querySelectorAll(".product-category a, li.product-category h2, .category-grid a").forEach(a=>{const x=a.textContent.trim(); if(x)t.push(x);}); return [...new Set(t)];
-  });
-  await page.screenshot({ path:"screenshots/sunims_page.png", fullPage:false });
-  await b.close();
-} catch(e){ out.nav_err=(e.stderr||String(e)).slice(0,120); }
-fs.writeFileSync("screenshots/apranga_diag.txt", JSON.stringify(out,null,2));
+  const cr = execSync(`curl -sk -o /tmp/cr.txt -w "%{http_code}" --max-time 45 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/snip.json "${base}/wp-json/code-snippets/v1/snippets"`,{encoding:"utf8",env}).trim();
+  out.create=cr; try { out.snippet_id=JSON.parse(fs.readFileSync("/tmp/cr.txt","utf8")).id; } catch(e){ out.head=fs.readFileSync("/tmp/cr.txt","utf8").slice(0,150); }
+} catch(e){ out.create_err=(e.stderr||String(e)).slice(0,120); }
+try { execSync("sleep 2"); out.dry = JSON.parse(execSync(`curl -sk --max-time 45 "${base}/?ps_menu_apranga=1&k=ps2026"`,{encoding:"utf8",env,maxBuffer:5*1024*1024})); } catch(e){ out.dry_err=(e.stderr||String(e)).slice(0,120); }
+fs.writeFileSync("screenshots/menu_dry.txt", JSON.stringify(out,null,2));
