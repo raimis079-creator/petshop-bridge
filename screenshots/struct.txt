@@ -1,16 +1,3 @@
 {
-  "filter_class": "yith-wcan-filter filter-tax checkbox-design",
-  "has_filter_content": true,
-  "uls": [
-    "filter-items filter-checkbox  level-0"
-  ],
-  "ul_class": "filter-items filter-checkbox  level-0",
-  "li_class": "filter-item checkbox  level-0 no-color",
-  "label_tag": "LABEL",
-  "label_class": "(no-class)",
-  "label_display": "block",
-  "label_lineHeight": "28.8px",
-  "ul_parent_class": "filter-content",
-  "rowPitch_px": 41,
-  "test_sel_match": true
+ "block": "<div class=\"yith-wcan-filters no-title\" id=\"preset_34107\" data-preset-id=\"34107\" data-target=\"\"> <div class=\"filters-container\"> <form method=\"POST\"> <div class=\"yith-wcan-filter filter-tax checkbox-design\" id=\"filter_34107_1\" data-filter-type=\"tax\" data-filter-id=\"1\" data-taxonomy=\"filter_paskirtis\" data-multiple=\"yes\" data-relation=\"or\" > <h4 class=\"filter-title\">Paskirtis</h4> <div class=\"filter-content\"> <ul class=\"filter-items filter-checkbox level-0\"> <li class=\"filter-item checkbox level-0 no-color\"> <label for=\"filter_34107_1_622\"> <input type=\"checkbox\" id=\"filter_34107_1_622\" name=\"filter[34107][1]\" value=\"antiparazitinis\" /> <a href=\"https://dev.avesa.lt/kategorija/sunims/sampunai-sunims?yith_wcan=1&#038;product_cat=sampunai-sunims&#038;query_type_paskirtis=or&#038;filter_paskirtis=antiparazitinis\" role=\"button\" class=\"term-label\" > Antiparazitinis </a> </label> </li> <li class=\"filter-item checkbox level-0 no-color\"> <label for=\"filter_34107_1_627\"> <input type=\"checkbox\" id=\"filter_34107_1_627\" name=\"filter[34107][1]\" value=\"baltam-kailiui\" /> <a href=\"https://dev.avesa.lt/kategorija/sunims/sampunai-sunims?yith_wcan=1&#038;product_cat=sampunai-sunims&#038;query_type_paskirtis=or&#038;filter_paskir"
 }
