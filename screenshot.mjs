@@ -1,24 +1,44 @@
+import { chromium } from "playwright";
 import { execSync } from "child_process";
+import fs from "fs";
+fs.mkdirSync("screenshots", { recursive: true });
 const base = "https://dev.avesa.lt";
 const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
 const env = { ...process.env, WP_PASS_CLEAN: passClean };
-function wc(p){ return JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/${p}"`,{encoding:"utf8",env,maxBuffer:10*1024*1024})); }
+const makerPhp = Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19tYWtlX2FwcmFuZ2FfcHJlc2V0J10pICkgcmV0dXJuOwogIGlmICggKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyApIHsgc3RhdHVzX2hlYWRlcig0MDMpOyBlY2hvICdubyc7IGV4aXQ7IH0KICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICR0cGwgPSBnZXRfcGFnZV9ieV9wYXRoKCdkdWJlbmVsaXUtZmlsdHJhcycsIE9CSkVDVCwgJ3lpdGhfd2Nhbl9wcmVzZXQnKTsKICBpZighJHRwbCl7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycm9yJz0+J25vIHRwbCcpKTsgZXhpdDsgfQogICRmID0gZ2V0X3Bvc3RfbWV0YSgkdHBsLT5JRCwnX2ZpbHRlcnMnLHRydWUpOwogIGlmKGlzX3N0cmluZygkZikpICRmID0gbWF5YmVfdW5zZXJpYWxpemUoJGYpOwogIGlmKCFpc19hcnJheSgkZikpeyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnJvcic9PidiYWQgZmlsdGVycycpKTsgZXhpdDsgfQogICRmMSA9ICRmWzFdOyAkZjFbJ3RheG9ub215J109J3BhX3RpcGFzJzsgICRmMVsndGl0bGUnXT0nVGlwYXMnOyAgJGYxWyd0b2dnbGVfc3R5bGUnXT0nb3BlbmVkJzsKICAkZjIgPSAkZlsyXTsgJGYyWyd0YXhvbm9teSddPSdwYV9keWRpcyc7ICAkZjJbJ3RpdGxlJ109J0R5ZGlzJzsgICRmMlsndG9nZ2xlX3N0eWxlJ109J2Nsb3NlZCc7CiAgJGYzID0gJGZbM107CiAgJG5mID0gYXJyYXkoMT0+JGYxLCAyPT4kZjIsIDM9PiRmMyk7CiAgJGV4ID0gZ2V0X3BhZ2VfYnlfcGF0aCgnYXByYW5nYS1maWx0cmFzJywgT0JKRUNULCAneWl0aF93Y2FuX3ByZXNldCcpOwogICRwaWQgPSAkZXggPyAkZXgtPklEIDogd3BfaW5zZXJ0X3Bvc3QoYXJyYXkoJ3Bvc3RfdGl0bGUnPT4nQXByYW5nb3MgZmlsdHJhcycsJ3Bvc3RfbmFtZSc9PidhcHJhbmdhLWZpbHRyYXMnLCdwb3N0X3R5cGUnPT4neWl0aF93Y2FuX3ByZXNldCcsJ3Bvc3Rfc3RhdHVzJz0+J3B1Ymxpc2gnKSk7CiAgaWYoISRwaWQgfHwgaXNfd3BfZXJyb3IoJHBpZCkpeyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnJvcic9PidpbnNlcnQgZmFpbCcpKTsgZXhpdDsgfQogIHVwZGF0ZV9wb3N0X21ldGEoJHBpZCwnX2VuYWJsZWQnLCd5ZXMnKTsKICB1cGRhdGVfcG9zdF9tZXRhKCRwaWQsJ19sYXlvdXQnLCdkZWZhdWx0Jyk7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkcGlkLCdfZmlsdGVycycsJG5mKTsKICBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdwcmVzZXRfaWQnPT4kcGlkLCdzbHVnJz0+J2FwcmFuZ2EtZmlsdHJhcycsJ2ZpbHRlcnMnPT5jb3VudCgkbmYpKSk7CiAgZXhpdDsKfSwgOTkpOwo=","base64").toString("utf8");
 const out = {};
-try { const c=wc("products/categories?per_page=100&search=apranga"); out.cats=c.map(x=>({id:x.id,name:x.name,slug:x.slug,count:x.count})); } catch(e){ out.cat_err=String(e).slice(0,80); }
-try { const s=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/code-snippets/v1/snippets/332"`,{encoding:"utf8",env,maxBuffer:5*1024*1024})); out.snip332=s.name; out.has_apranga=(s.code||"").indexOf("apranga-filtras")>=0; out.has_drask=(s.code||"").indexOf("draskykliu-filtras")>=0; } catch(e){ out.s_err=String(e).slice(0,60); }
-// ar apranga-filtras presetas egzistuoja? per yith preset slug paieska (wp/v2 negalim - WAF). Naudojam REST custom? Tikrinam per kategorijos puslapio HTML.
-let slug=(out.cats||[]).filter(c=>c.slug.indexOf('apranga')>=0).sort((a,b)=>b.count-a.count)[0];
-out.target=slug;
+// 1) apranga preset maker
+fs.writeFileSync("/tmp/mk.json", JSON.stringify({ name:"Petshop Apranga Preset Maker TEMP", code: makerPhp, scope:"global", active:true }));
 try {
-  const url="https://dev.avesa.lt/kategorija/sunims/"+(slug?slug.slug:"apranga-sunims")+"/?z="+Date.now();
+  const cr = execSync(`curl -sk -o /tmp/cr.txt -w "%{http_code}" --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/mk.json "${base}/wp-json/code-snippets/v1/snippets"`,{encoding:"utf8",env}).trim();
+  out.maker_create=cr; try { out.maker_id=JSON.parse(fs.readFileSync("/tmp/cr.txt","utf8")).id; } catch(e){}
+} catch(e){ out.maker_err=(e.stderr||String(e)).slice(0,80); }
+try { execSync("sleep 2"); out.preset = execSync(`curl -sk --max-time 35 "${base}/?ps_make_apranga_preset=1&k=ps2026"`,{encoding:"utf8",env}).slice(0,160); } catch(e){ out.preset_err=(e.stderr||String(e)).slice(0,80); }
+if(out.maker_id){ try { execSync(`curl -sk -o /dev/null --max-time 20 -u "$WP_USER:$WP_PASS_CLEAN" -X DELETE "${base}/wp-json/code-snippets/v1/snippets/${out.maker_id}"`,{encoding:"utf8",env}); } catch(e){} }
+// 2) apranga slug + parent
+let slug="apranga-sunims", parent="sunims";
+try {
+  const cats=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/products/categories?per_page=100&search=apranga"`,{encoding:"utf8",env,maxBuffer:10*1024*1024}));
+  const ap=cats.filter(c=>c.slug.indexOf('apranga')>=0).sort((a,b)=>b.count-a.count)[0];
+  if(ap){ slug=ap.slug; out.apr_cat={id:ap.id,slug:ap.slug,count:ap.count,parent:ap.parent};
+    if(ap.parent){ try { const p=JSON.parse(execSync(`curl -sk --max-time 20 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/products/categories/${ap.parent}"`,{encoding:"utf8",env})); parent=p.slug; } catch(e){} }
+  }
+} catch(e){ out.cat_err=String(e).slice(0,60); }
+// 3) puslapis
+try {
+  const b = await chromium.launch({ args:["--no-sandbox"] });
+  const ctx = await b.newContext({ viewport:{width:1440,height:1100}, locale:"lt-LT", ignoreHTTPSErrors:true });
+  const page = await ctx.newPage();
+  const url="https://dev.avesa.lt/kategorija/"+parent+"/"+slug+"/?z="+Date.now();
   out.url=url;
-  const html=execSync(`curl -sk --max-time 40 "${url}"`,{encoding:"utf8",env,maxBuffer:15*1024*1024});
-  out.http_has_yith = html.indexOf("yith-wcan-filters")>=0;
-  // istraukti filtru titulus
-  const titles=[...html.matchAll(/class="[^"]*filter-title[^"]*"[^>]*>([^<]+)</g)].map(m=>m[1].trim());
-  out.filter_titles = titles;
-  out.has_tipas = html.indexOf("pa_tipas")>=0 || titles.some(t=>/tipas/i.test(t));
-} catch(e){ out.page_err=(e.stderr||String(e)).slice(0,100); }
-console.log("===PSRESULT===");
-console.log(JSON.stringify(out));
-console.log("===PSEND===");
+  const resp=await page.goto(url, { waitUntil:"domcontentloaded", timeout:60000 });
+  out.http=resp?resp.status():0;
+  if(out.http===404){ const u2="https://dev.avesa.lt/kategorija/"+slug+"/?z="+Date.now(); out.url2=u2; const r2=await page.goto(u2,{waitUntil:"domcontentloaded",timeout:60000}); out.http2=r2?r2.status():0; }
+  try { await page.waitForLoadState("networkidle",{timeout:14000}); } catch {}
+  await page.waitForTimeout(3000);
+  out.h1=await page.evaluate(()=>(document.querySelector("h1")||{}).textContent?.trim()||"");
+  out.filters=await page.evaluate(()=>{const r=[];document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter").forEach(f=>{const h=f.querySelector(".filter-title");r.push({title:h?h.textContent.trim():"?",tax:f.getAttribute("data-taxonomy")||"",nterms:f.querySelectorAll(".filter-content li").length});});return r;});
+  await page.screenshot({ path:"screenshots/apranga_fix.png" });
+  await b.close();
+} catch(e){ out.page_err=(e.stderr||String(e)).slice(0,120); }
+fs.writeFileSync("screenshots/apranga_fix.txt", JSON.stringify(out,null,2));
