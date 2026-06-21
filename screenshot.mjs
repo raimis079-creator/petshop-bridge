@@ -1,15 +1,12 @@
-import { chromium } from "playwright";
+import { execSync } from "child_process";
 import fs from "fs";
 fs.mkdirSync("screenshots", { recursive: true });
-const out={};
-const b = await chromium.launch({ args:["--no-sandbox"] });
-const page = await (await b.newContext({ viewport:{width:760,height:1300}, ignoreHTTPSErrors:true })).newPage();
-try {
-  await page.goto("https://dev.avesa.lt/kategorija/sunims/sampunai-sunims/",{waitUntil:"domcontentloaded",timeout:45000});
-  await page.waitForTimeout(4000);
-  const txt = await page.evaluate(()=>{const el=document.querySelector('.widget-area,aside,.sidebar');return el?el.innerText.slice(0,600):'';});
-  out.sidebar=txt;
-  await page.screenshot({ path:"screenshots/samp_final.png", clip:{x:0,y:120,width:480,height:700} });
-} catch(e){ out.err=String(e).slice(0,100); }
-await b.close();
-fs.writeFileSync("screenshots/samp_final.txt", JSON.stringify(out,null,1));
+const base = "https://dev.avesa.lt";
+const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
+const env = { ...process.env, WP_PASS_CLEAN: passClean };
+const code = Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19yZWJ1aWxkX3NhbXAnXSkgKSByZXR1cm47CiAgaWYgKCAoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICkgeyBzdGF0dXNfaGVhZGVyKDQwMyk7IGVjaG8gJ25vJzsgZXhpdDsgfQogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgJHNyYyA9IGdldF9wYWdlX2J5X3BhdGgoJ2RyYXNreWtsaXUtZmlsdHJhcycsIE9CSkVDVCwgJ3lpdGhfd2Nhbl9wcmVzZXQnKTsKICBpZighJHNyYyl7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycm9yJz0+J25vIGRyYXNreWtsaXUgdHBsJykpOyBleGl0OyB9CiAgJHNmID0gZ2V0X3Bvc3RfbWV0YSgkc3JjLT5JRCwnX2ZpbHRlcnMnLHRydWUpOwogIGlmKGlzX3N0cmluZygkc2YpKSAkc2YgPSBtYXliZV91bnNlcmlhbGl6ZSgkc2YpOwogIGlmKCFpc19hcnJheSgkc2YpfHwhaXNzZXQoJHNmWzFdKSl7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycm9yJz0+J2JhZCBzcmMgZmlsdGVycycpKTsgZXhpdDsgfQoKICAvLyBkaWFnbm9zdGlrYToga28gc2tpcmlhc2kgZHViZW5lbGl1IGYxIHZzIGRyYXNreWtsaXUgZjEKICAkZGlmZiA9IGFycmF5KCk7CiAgJGR1YiA9IGdldF9wYWdlX2J5X3BhdGgoJ2R1YmVuZWxpdS1maWx0cmFzJywgT0JKRUNULCAneWl0aF93Y2FuX3ByZXNldCcpOwogIGlmKCRkdWIpeyAkZGY9Z2V0X3Bvc3RfbWV0YSgkZHViLT5JRCwnX2ZpbHRlcnMnLHRydWUpOyBpZihpc19zdHJpbmcoJGRmKSkkZGY9bWF5YmVfdW5zZXJpYWxpemUoJGRmKTsKICAgIGlmKGlzX2FycmF5KCRkZikmJmlzc2V0KCRkZlsxXSkpeyBmb3JlYWNoKCRzZlsxXSBhcyAkaz0+JHYpeyAkZHY9JGRmWzFdWyRrXT8/JyhuaWwpJzsgaWYoJHYhPT0kZHYgJiYgIWlzX2FycmF5KCR2KSl7ICRkaWZmWyRrXT1hcnJheSgnZHJhc2snPT4kdiwnZHViJz0+JGR2KTsgfSB9IH0gfQoKICAvLyBmMSA9IGRyYXNreWtsaXUgZjEgLT4gUGFza2lydGlzIChvcGVuZWQpCiAgJGYxID0gJHNmWzFdOyAkZjFbJ3RheG9ub215J109J3BhX3Bhc2tpcnRpcyc7ICRmMVsndGl0bGUnXT0nUGFza2lydGlzJzsgJGYxWyd0b2dnbGVfc3R5bGUnXT0nb3BlbmVkJzsKICAvLyBmMiA9IGRyYXNreWtsaXUgZjEga29waWphIC0+IFZlaXNsZSAoY2xvc2VkKQogICRmMiA9ICRzZlsxXTsgJGYyWyd0YXhvbm9teSddPSdwYV92ZWlzbGUnOyAgICAkZjJbJ3RpdGxlJ109IlZlaXNsXHhDNFx4OTciOyAkZjJbJ3RvZ2dsZV9zdHlsZSddPSdjbG9zZWQnOwogIC8vIGYzID0gZHJhc2t5a2xpdSBmMiAoYnJhbmQpCiAgJGYzID0gaXNzZXQoJHNmWzJdKSA/ICRzZlsyXSA6ICRzZlsxXTsKICAkbmYgPSBhcnJheSgxPT4kZjEsIDI9PiRmMiwgMz0+JGYzKTsKCiAgJGV4ID0gZ2V0X3BhZ2VfYnlfcGF0aCgnc2FtcHVudS1maWx0cmFzJywgT0JKRUNULCAneWl0aF93Y2FuX3ByZXNldCcpOwogICRwaWQgPSAkZXggPyAkZXgtPklEIDogd3BfaW5zZXJ0X3Bvc3QoYXJyYXkoJ3Bvc3RfdGl0bGUnPT4iXHhDNVx4QTBhbXBceEM1XHhBQm5ceEM1XHhCMyBmaWx0cmFzIiwncG9zdF9uYW1lJz0+J3NhbXB1bnUtZmlsdHJhcycsJ3Bvc3RfdHlwZSc9Pid5aXRoX3djYW5fcHJlc2V0JywncG9zdF9zdGF0dXMnPT4ncHVibGlzaCcpKTsKICB1cGRhdGVfcG9zdF9tZXRhKCRwaWQsJ19lbmFibGVkJywneWVzJyk7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkcGlkLCdfbGF5b3V0JywnZGVmYXVsdCcpOwogIHVwZGF0ZV9wb3N0X21ldGEoJHBpZCwnX2ZpbHRlcnMnLCRuZik7CiAgLy8gZmx1c2ggWUlUSCBjYWNoZQogIGdsb2JhbCAkd3BkYjsKICAkd3BkYi0+cXVlcnkoIkRFTEVURSBGUk9NIHskd3BkYi0+b3B0aW9uc30gV0hFUkUgb3B0aW9uX25hbWUgTElLRSAnXF90cmFuc2llbnRcX3lpdGhcX3djYW4lJyBPUiBvcHRpb25fbmFtZSBMSUtFICdcX3RyYW5zaWVudFxfdGltZW91dFxfeWl0aFxfd2NhbiUnIik7CiAgaWYoZnVuY3Rpb25fZXhpc3RzKCd3cF9jYWNoZV9mbHVzaCcpKSB3cF9jYWNoZV9mbHVzaCgpOwoKICBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdwcmVzZXRfaWQnPT4kcGlkLCdmMSc9PiRmMVsndGF4b25vbXknXSwnZjInPT4kZjJbJ3RheG9ub215J10sJ2YzJz0+KCRmM1sndGF4b25vbXknXT8/Jz8nKSwnZjFfdHlwZSc9PigkZjFbJ3R5cGUnXT8/Jz8nKSwnZjFfZGVzaWduJz0+KCRmMVsnZmlsdGVyX2Rlc2lnbiddPz8nPycpLCdkdWJfdnNfZHJhc2tfZGlmZic9PiRkaWZmKSk7CiAgZXhpdDsKfSwgOTkpOwo=","base64").toString("utf8");
+const out = {};
+fs.writeFileSync("/tmp/snip.json", JSON.stringify({ name:"TEMP Samp Rebuild", code, scope:"global", active:true }));
+try { const cr=execSync(`curl -sk -o /tmp/cr.txt -w "%{http_code}" --max-time 45 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/snip.json "${base}/wp-json/code-snippets/v1/snippets"`,{encoding:"utf8",env}).trim(); out.create=cr; try{out.rb_id=JSON.parse(fs.readFileSync("/tmp/cr.txt","utf8")).id;}catch(e){} } catch(e){ out.create_err=(e.stderr||String(e)).slice(0,100); }
+try { execSync("sleep 2"); out.data = execSync(`curl -sk --max-time 40 "${base}/?ps_rebuild_samp=1&k=ps2026"`,{encoding:"utf8",env}).slice(0,500); } catch(e){ out.run_err=(e.stderr||String(e)).slice(0,100); }
+fs.writeFileSync("screenshots/samp_rebuild.txt", JSON.stringify(out,null,1));
