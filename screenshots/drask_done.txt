@@ -1,0 +1,17 @@
+{
+  "post": "200",
+  "filters": [
+    {
+      "title": "Tipas",
+      "tax": "filter_tipas",
+      "niche": true,
+      "nterms": 4
+    },
+    {
+      "title": "Prekės ženklas",
+      "tax": "product_brand",
+      "niche": false,
+      "nterms": 0
+    }
+  ]
+}
