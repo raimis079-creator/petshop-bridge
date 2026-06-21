@@ -6,18 +6,20 @@ const base = "https://dev.avesa.lt";
 const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
 const env = { ...process.env, WP_PASS_CLEAN: passClean };
 const out={};
-// patikra: ar pa_veisle yra wc attribute + ar turi terminus
+let url=null;
 try {
-  const at=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/products/attributes"`,{encoding:"utf8",env}));
-  out.attrs=at.map(a=>({id:a.id,slug:a.slug,name:a.name}));
-  const v=at.find(a=>a.slug==='pa_veisle'||a.slug==='veisle');
-  if(v){ const terms=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/products/attributes/${v.id}/terms?per_page=50"`,{encoding:"utf8",env})); out.veisle_terms=terms.map(t=>({name:t.name,count:t.count})); }
-} catch(e){ out.attr_err=String(e).slice(0,100); }
-// screenshot kategorijos
+  const c=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wp/v2/product_cat?slug=sampunai-sunims&_fields=link,name,count"`,{encoding:"utf8",env}));
+  if(c&&c[0]){ url=c[0].link; out.link=c[0].link; out.cat_count=c[0].count; }
+} catch(e){ out.link_err=String(e).slice(0,100); }
+if(!url) url=`${base}/produktu-kategorija/sampunai-sunims/`;
 const b = await chromium.launch({ args:["--no-sandbox"] });
-const page = await (await b.newContext({ viewport:{width:1280,height:1400}, ignoreHTTPSErrors:true })).newPage();
-await page.goto(`${base}/produktu-kategorija/sunims/prieziura-ir-sveikata/sampunai-sunims/`,{waitUntil:"networkidle",timeout:60000});
+const page = await (await b.newContext({ viewport:{width:1280,height:1500}, ignoreHTTPSErrors:true })).newPage();
+const resp = await page.goto(url,{waitUntil:"networkidle",timeout:60000});
+out.status = resp ? resp.status() : 0;
 await page.waitForTimeout(3500);
-await page.screenshot({ path:"screenshots/samp_filter.png", fullPage:false });
+// HTML tekste paieskoti filtru titulu
+const txt = await page.evaluate(()=>document.body.innerText);
+out.has_paskirtis=/Paskirtis/i.test(txt); out.has_veisle=/Veisl/i.test(txt);
+await page.screenshot({ path:"screenshots/samp_filter2.png", fullPage:false });
 await b.close();
-fs.writeFileSync("screenshots/samp_filter.txt", JSON.stringify(out,null,1));
+fs.writeFileSync("screenshots/samp_filter2.txt", JSON.stringify(out,null,1));
