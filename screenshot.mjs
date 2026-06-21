@@ -4,9 +4,24 @@ fs.mkdirSync("screenshots", { recursive: true });
 const base = "https://dev.avesa.lt";
 const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
 const env = { ...process.env, WP_PASS_CLEAN: passClean };
-const code = Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc195aXRoX3NhdmUnXSkgKSByZXR1cm47CiAgaWYgKCAoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICkgeyBzdGF0dXNfaGVhZGVyKDQwMyk7IGVjaG8gJ25vJzsgZXhpdDsgfQogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgJG91dCA9IGFycmF5KCdwcm9iZSc9PmFycmF5KCksICd0cmllZCc9PmFycmF5KCkpOwogIC8vIFBST0JFCiAgJG91dFsncHJvYmUnXVsnZm5fZ2V0X3ByZXNldCddICAgPSBmdW5jdGlvbl9leGlzdHMoJ3lpdGhfd2Nhbl9nZXRfcHJlc2V0Jyk7CiAgJG91dFsncHJvYmUnXVsnY2xzX1ByZXNldCddICAgICAgPSBjbGFzc19leGlzdHMoJ1lJVEhfV0NBTl9QcmVzZXQnKTsKICAkb3V0Wydwcm9iZSddWydjbHNfUHJlc2V0cyddICAgICA9IGNsYXNzX2V4aXN0cygnWUlUSF9XQ0FOX1ByZXNldHMnKTsKICAkb3V0Wydwcm9iZSddWydjbHNfUHJlbVByZXNldHMnXSA9IGNsYXNzX2V4aXN0cygnWUlUSF9XQ0FOX1ByZXNldHNfUHJlbWl1bScpOwogICRvdXRbJ3Byb2JlJ11bJ2Nsc19JbmRleCddICAgICAgID0gY2xhc3NfZXhpc3RzKCdZSVRIX1dDQU5fSW5kZXgnKTsKICAkb3V0Wydwcm9iZSddWydjbHNfQ2FjaGUnXSAgICAgICA9IGNsYXNzX2V4aXN0cygnWUlUSF9XQ0FOX0NhY2hlX0hlbHBlcicpOwogICRvdXRbJ3Byb2JlJ11bJ2ZuX1ByZXNldHMoKSddICAgID0gZnVuY3Rpb25fZXhpc3RzKCdZSVRIX1dDQU5fUHJlc2V0cycpOwoKICAkcCA9IGdldF9wYWdlX2J5X3BhdGgoJ3NhbXB1bnUtZmlsdHJhcycsIE9CSkVDVCwgJ3lpdGhfd2Nhbl9wcmVzZXQnKTsKICBpZighJHApeyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnJvcic9PidubyBwcmVzZXQnKSk7IGV4aXQ7IH0KICAkcGlkID0gJHAtPklEOwoKICAvLyBtZXRvZHUgc2FyYXNhcyBhbnQgcHJlc2V0IG9iamVrdG8KICBpZiAoIGZ1bmN0aW9uX2V4aXN0cygneWl0aF93Y2FuX2dldF9wcmVzZXQnKSApIHsKICAgICRvYmogPSB5aXRoX3djYW5fZ2V0X3ByZXNldCgkcGlkKTsKICAgIGlmICggaXNfb2JqZWN0KCRvYmopICkgewogICAgICAkb3V0WydwcmVzZXRfY2xhc3MnXSA9IGdldF9jbGFzcygkb2JqKTsKICAgICAgJG91dFsncHJlc2V0X21ldGhvZHMnXSA9IGFycmF5X3ZhbHVlcyhhcnJheV9maWx0ZXIoZ2V0X2NsYXNzX21ldGhvZHMoJG9iaiksIGZ1bmN0aW9uKCRtKXsKICAgICAgICByZXR1cm4gcHJlZ19tYXRjaCgnL3NhdmV8aW5kZXh8Y2FjaGV8c3RvcmV8cGVyc2lzdHx1cGRhdGUvaScsJG0pOwogICAgICB9KSk7CiAgICAgIC8vIFRSWSAxOiBvYmpla3RvIHNhdmUoKQogICAgICBpZiAoIG1ldGhvZF9leGlzdHMoJG9iaiwnc2F2ZScpICkgeyB0cnkgeyAkb2JqLT5zYXZlKCk7ICRvdXRbJ3RyaWVkJ11bJ29ial9zYXZlJ109J09LJzsgfSBjYXRjaChcVGhyb3dhYmxlICRlKXsgJG91dFsndHJpZWQnXVsnb2JqX3NhdmUnXT0kZS0+Z2V0TWVzc2FnZSgpOyB9IH0KICAgIH0gZWxzZSB7ICRvdXRbJ3ByZXNldF9vYmonXT0nbmUgb2JqZWt0YXMnOyB9CiAgfQogIC8vIFRSWSAyOiB3cF91cGRhdGVfcG9zdCAoZmlyZSBzYXZlX3Bvc3QgLT4gWUlUSCBob29rKQogIHRyeSB7IHdwX3VwZGF0ZV9wb3N0KGFycmF5KCdJRCc9PiRwaWQpKTsgJG91dFsndHJpZWQnXVsnd3BfdXBkYXRlX3Bvc3QnXT0nT0snOyB9IGNhdGNoKFxUaHJvd2FibGUgJGUpeyAkb3V0Wyd0cmllZCddWyd3cF91cGRhdGVfcG9zdCddPSRlLT5nZXRNZXNzYWdlKCk7IH0KICAvLyBUUlkgMzogSW5kZXggcmVidWlsZCBqZWkgeXJhCiAgaWYgKCBjbGFzc19leGlzdHMoJ1lJVEhfV0NBTl9JbmRleCcpICkgewogICAgZm9yZWFjaCAoYXJyYXkoJ2luZGV4JywncmVidWlsZCcsJ3JlYnVpbGRfaW5kZXgnLCdjcmVhdGVfaW5kZXgnLCdsb29rdXAnKSBhcyAkbSkgewogICAgICBpZiAoIG1ldGhvZF9leGlzdHMoJ1lJVEhfV0NBTl9JbmRleCcsJG0pICkgeyB0cnkgeyBZSVRIX1dDQU5fSW5kZXg6OiRtKCk7ICRvdXRbJ3RyaWVkJ11bJ0luZGV4OjonLiRtXT0nT0snOyB9IGNhdGNoKFxUaHJvd2FibGUgJGUpeyAkb3V0Wyd0cmllZCddWydJbmRleDo6Jy4kbV09c3Vic3RyKCRlLT5nZXRNZXNzYWdlKCksMCw2MCk7IH0gfQogICAgfQogIH0KICAvLyBmbHVzaAogIGdsb2JhbCAkd3BkYjsKICAkd3BkYi0+cXVlcnkoIkRFTEVURSBGUk9NIHskd3BkYi0+b3B0aW9uc30gV0hFUkUgb3B0aW9uX25hbWUgTElLRSAnXF90cmFuc2llbnRcX3lpdGhcX3djYW4lJyBPUiBvcHRpb25fbmFtZSBMSUtFICdcX3RyYW5zaWVudFxfdGltZW91dFxfeWl0aFxfd2NhbiUnIik7CiAgaWYoZnVuY3Rpb25fZXhpc3RzKCd3cF9jYWNoZV9mbHVzaCcpKSB3cF9jYWNoZV9mbHVzaCgpOwogIGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7CiAgZXhpdDsKfSwgOTkpOwo=","base64").toString("utf8");
-const out = {};
-fs.writeFileSync("/tmp/snip.json", JSON.stringify({ name:"TEMP YITH Save", code, scope:"global", active:true }));
-try { const cr=execSync(`curl -sk -o /tmp/cr.txt -w "%{http_code}" --max-time 45 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/snip.json "${base}/wp-json/code-snippets/v1/snippets"`,{encoding:"utf8",env}).trim(); out.create=cr; } catch(e){ out.create_err=(e.stderr||String(e)).slice(0,100); }
-try { execSync("sleep 2"); out.data=execSync(`curl -sk --max-time 40 "${base}/?ps_yith_save=1&k=ps2026"`,{encoding:"utf8",env,maxBuffer:5*1024*1024}); } catch(e){ out.run_err=String(e).slice(0,90); }
-fs.writeFileSync("screenshots/yith_save.txt", JSON.stringify(out,null,1));
+const out={};
+function grabFilterClass(html, title){
+  // randame filtro antraste ir ziurim apsupanti wrapper klase
+  const idx = html.indexOf('>'+title+'<');
+  if(idx<0) return 'TITLE_NOT_FOUND';
+  // atgal ieskom artimiausio class="..." (filtro wrapperio)
+  const before = html.slice(Math.max(0,idx-600), idx);
+  const classes = [...before.matchAll(/class="([^"]*(?:filter|toggle|collaps|opened|closed)[^"]*)"/gi)].map(m=>m[1]);
+  return classes.slice(-3).join(' || ');
+}
+for(const [tag,url,title] of [
+  ["samp","https://dev.avesa.lt/kategorija/sunims/sampunai-sunims/","Paskirtis"],
+  ["drask","https://dev.avesa.lt/kategorija/katems/draskykles-katems/","Tipas"],
+]){
+  try {
+    const html=execSync(`curl -sk --max-time 40 "${url}"`,{encoding:"utf8",env,maxBuffer:15*1024*1024});
+    out[tag+"_len"]=html.length;
+    out[tag+"_class"]=grabFilterClass(html,title);
+  } catch(e){ out[tag+"_err"]=String(e).slice(0,80); }
+}
+fs.writeFileSync("screenshots/toggle_class.txt", JSON.stringify(out,null,1));
