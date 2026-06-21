@@ -10,4 +10,5 @@ try {
   const rows = [...dry.matchAll(/<tr><td>(\d+)<\/td><td>(.*?)<\/td><td class="\w+">(\w+)<\/td>/g)];
   out.review = rows.filter(r=>r[3]==='REVIEW').map(r=>({id:r[1], name:r[2].replace(/&[a-z]+;/g,'')}));
 } catch(e){ out.err=(e.stderr||String(e)).slice(0,120); }
-fs.writeFileSync("screenshots/drask_review.txt", JSON.stringify(out,null,2));
+fs.writeFileSync("screenshots/drask_rev_"+Date.now()+".txt", JSON.stringify(out,null,2));
+fs.writeFileSync("screenshots/drask_rev_latest.txt", JSON.stringify(out,null,2));
