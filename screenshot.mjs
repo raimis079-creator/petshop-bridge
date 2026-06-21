@@ -1,16 +1,21 @@
-import { execSync } from "child_process";
+import { chromium } from "playwright";
 import fs from "fs";
 fs.mkdirSync("screenshots", { recursive: true });
-const base = "https://dev.avesa.lt";
-const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
-const env = { ...process.env, WP_PASS_CLEAN: passClean };
-const makerPhp = Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19tYWtlX2FwcmFuZ2FfcHJlc2V0J10pICkgcmV0dXJuOwogIGlmICggKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyApIHsgc3RhdHVzX2hlYWRlcig0MDMpOyBlY2hvICdubyc7IGV4aXQ7IH0KICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICR0cGwgPSBnZXRfcGFnZV9ieV9wYXRoKCdkdWJlbmVsaXUtZmlsdHJhcycsIE9CSkVDVCwgJ3lpdGhfd2Nhbl9wcmVzZXQnKTsKICBpZighJHRwbCl7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycm9yJz0+J25vIHRwbCcpKTsgZXhpdDsgfQogICRmID0gZ2V0X3Bvc3RfbWV0YSgkdHBsLT5JRCwnX2ZpbHRlcnMnLHRydWUpOwogIGlmKGlzX3N0cmluZygkZikpICRmID0gbWF5YmVfdW5zZXJpYWxpemUoJGYpOwogIGlmKCFpc19hcnJheSgkZikpeyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnJvcic9PidiYWQgZmlsdGVycycpKTsgZXhpdDsgfQogICRmMSA9ICRmWzFdOyAkZjFbJ3RheG9ub215J109J3BhX3RpcGFzJzsgICRmMVsndGl0bGUnXT0nVGlwYXMnOyAgJGYxWyd0b2dnbGVfc3R5bGUnXT0nb3BlbmVkJzsKICAkZjIgPSAkZlsyXTsgJGYyWyd0YXhvbm9teSddPSdwYV9keWRpcyc7ICAkZjJbJ3RpdGxlJ109J0R5ZGlzJzsgICRmMlsndG9nZ2xlX3N0eWxlJ109J2Nsb3NlZCc7CiAgJGYzID0gJGZbM107CiAgJG5mID0gYXJyYXkoMT0+JGYxLCAyPT4kZjIsIDM9PiRmMyk7CiAgJGV4ID0gZ2V0X3BhZ2VfYnlfcGF0aCgnYXByYW5nYS1maWx0cmFzJywgT0JKRUNULCAneWl0aF93Y2FuX3ByZXNldCcpOwogICRwaWQgPSAkZXggPyAkZXgtPklEIDogd3BfaW5zZXJ0X3Bvc3QoYXJyYXkoJ3Bvc3RfdGl0bGUnPT4nQXByYW5nb3MgZmlsdHJhcycsJ3Bvc3RfbmFtZSc9PidhcHJhbmdhLWZpbHRyYXMnLCdwb3N0X3R5cGUnPT4neWl0aF93Y2FuX3ByZXNldCcsJ3Bvc3Rfc3RhdHVzJz0+J3B1Ymxpc2gnKSk7CiAgaWYoISRwaWQgfHwgaXNfd3BfZXJyb3IoJHBpZCkpeyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnJvcic9PidpbnNlcnQgZmFpbCcpKTsgZXhpdDsgfQogIHVwZGF0ZV9wb3N0X21ldGEoJHBpZCwnX2VuYWJsZWQnLCd5ZXMnKTsKICB1cGRhdGVfcG9zdF9tZXRhKCRwaWQsJ19sYXlvdXQnLCdkZWZhdWx0Jyk7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkcGlkLCdfZmlsdGVycycsJG5mKTsKICBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdwcmVzZXRfaWQnPT4kcGlkLCdzbHVnJz0+J2FwcmFuZ2EtZmlsdHJhcycsJ2ZpbHRlcnMnPT5jb3VudCgkbmYpKSk7CiAgZXhpdDsKfSwgOTkpOwo=","base64").toString("utf8");
+const b = await chromium.launch({ args:["--no-sandbox"] });
+const ctx = await b.newContext({ viewport:{width:1440,height:1200}, locale:"lt-LT", ignoreHTTPSErrors:true });
+const page = await ctx.newPage();
+await page.goto("https://dev.avesa.lt/kategorija/sunims/apranga-sunims/", { waitUntil:"domcontentloaded", timeout:60000 });
+try { await page.waitForLoadState("networkidle",{timeout:15000}); } catch {}
+await page.waitForTimeout(2500);
 const out = {};
-fs.writeFileSync("/tmp/mk.json", JSON.stringify({ name:"Petshop Apranga Preset Maker TEMP", code: makerPhp, scope:"global", active:true }));
-try {
-  const cr = execSync(`curl -sk -o /tmp/cr.txt -w "%{http_code}" --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/mk.json "${base}/wp-json/code-snippets/v1/snippets"`,{encoding:"utf8",env}).trim();
-  out.maker_create=cr; try { out.maker_id=JSON.parse(fs.readFileSync("/tmp/cr.txt","utf8")).id; } catch(e){}
-} catch(e){ out.maker_err=String(e).slice(0,100); }
-try { execSync("sleep 2"); out.preset = execSync(`curl -sk --max-time 25 "${base}/?ps_make_apranga_preset=1&k=ps2026"`,{encoding:"utf8",env}).slice(0,200); } catch(e){ out.preset_err=String(e).slice(0,100); }
-if(out.maker_id){ try { execSync(`curl -sk -o /dev/null --max-time 18 -u "$WP_USER:$WP_PASS_CLEAN" -X DELETE "${base}/wp-json/code-snippets/v1/snippets/${out.maker_id}"`,{encoding:"utf8",env}); out.maker_deactivated=true; } catch(e){} }
-fs.writeFileSync("screenshots/preset_fix.txt", JSON.stringify(out,null,2));
+out.count = await page.evaluate(()=> (document.querySelector(".woocommerce-result-count")||{}).textContent?.trim()||"");
+out.filters = await page.evaluate(()=>{
+  const r=[]; document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter").forEach(f=>{
+    const h=f.querySelector(".filter-title"); const terms=[];
+    f.querySelectorAll(".filter-content li").forEach(li=>{const t=(li.querySelector("label,a,span")||li).textContent.trim().replace(/\s+/g,' ');if(t)terms.push(t.slice(0,18));});
+    r.push({title:h?h.textContent.trim():"?", tax:f.getAttribute("data-taxonomy")||"", niche:f.classList.contains("ps-niche"), collapsed:f.classList.contains("ps-collapsed"), terms:terms.slice(0,8)});
+  }); return r;
+});
+await page.screenshot({ path:"screenshots/apranga_filtras.png" });
+await b.close();
+fs.writeFileSync("screenshots/apranga_done.txt", JSON.stringify(out,null,2));
