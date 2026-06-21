@@ -3,39 +3,37 @@ import { execSync } from "child_process";
 import fs from "fs";
 fs.mkdirSync("screenshots", { recursive: true });
 const base = "https://dev.avesa.lt";
+const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
+const env = { ...process.env, WP_PASS_CLEAN: passClean };
 const out = {};
+let prods=[];
+try {
+  for(let p=1;p<=2;p++){
+    const r=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wp-json/wc/v3/products?category=124&per_page=100&page=${p}&status=any&_fields=id,name,images,attributes"`,{encoding:"utf8",env,maxBuffer:25*1024*1024}));
+    prods=prods.concat(r.map(x=>{
+      const t=(x.attributes||[]).filter(a=>/tipas/i.test(a.name)).map(a=>(a.options||[]).join(",")).join("");
+      return {id:x.id,name:x.name,img:(x.images&&x.images[0]?x.images[0].src:""),t};
+    }));
+    if(r.length<100) break;
+  }
+  out.n=prods.length;
+} catch(e){ out.err=String(e).slice(0,100); }
+// HTML tinklelis
+const cells = prods.map(p=>`<div class="c"><img src="${p.img}" loading="eager"><div class="id">#${p.id} <b>[${p.t||'—'}]</b></div><div class="nm">${(p.name||'').replace(/</g,'')}</div></div>`).join("");
+const html=`<!doctype html><meta charset="utf-8"><style>
+body{font:12px Arial;margin:0;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:8px}
+.c{border:1px solid #ccc;padding:5px;text-align:center}
+.c img{width:150px;height:150px;object-fit:contain;background:#f7f7f7}
+.id{margin-top:4px;color:#0a6}.nm{font-size:11px;color:#333;line-height:1.2;margin-top:2px}
+</style><div class="grid">${cells}</div>`;
+fs.writeFileSync("/tmp/grid.html", html);
 try {
   const b = await chromium.launch({ args:["--no-sandbox"] });
-  const ctx = await b.newContext({ viewport:{width:1440,height:1300}, locale:"lt-LT", ignoreHTTPSErrors:true });
-  const page = await ctx.newPage();
-  await page.goto(base+"/kategorija/katems/draskykles-katems/?z="+Date.now(), { waitUntil:"domcontentloaded", timeout:60000 });
-  try { await page.waitForLoadState("networkidle",{timeout:14000}); } catch {}
-  await page.waitForTimeout(2500);
-  // filtro terminu skaiciai
-  out.tipas_terms = await page.evaluate(()=>{
-    const r=[]; document.querySelectorAll(".yith-wcan-filters .yith-wcan-filter").forEach(f=>{
-      const h=f.querySelector(".filter-title"); if(!h||!/tipas/i.test(h.textContent))return;
-      f.querySelectorAll(".filter-content li").forEach(li=>{ r.push(li.textContent.trim().replace(/\s+/g,' ')); });
-    }); return r;
-  });
-  await page.screenshot({ path:"screenshots/drask_filter_full.png" });
-  // paspaudziam "Lenta"
-  const clicked = await page.evaluate(()=>{
-    const els=[...document.querySelectorAll(".yith-wcan-filters .filter-content li a, .yith-wcan-filters .filter-content li label")];
-    const lenta=els.find(e=>/^\s*Lenta\b/i.test(e.textContent.trim()));
-    if(lenta){ lenta.click(); return true; } return false;
-  });
-  out.lenta_clicked = clicked;
-  if(clicked){
-    try { await page.waitForLoadState("networkidle",{timeout:15000}); } catch {}
-    await page.waitForTimeout(3500);
-    out.lenta_url = page.url();
-    out.lenta_count = await page.evaluate(()=> (document.querySelector(".woocommerce-result-count")||{}).textContent?.trim()||"");
-    out.lenta_products = await page.evaluate(()=>{
-      const r=[]; document.querySelectorAll("li.product .woocommerce-loop-product__title, li.product h2, .product-title").forEach(t=>{const x=t.textContent.trim();if(x)r.push(x.slice(0,55));}); return r.slice(0,15);
-    });
-    await page.screenshot({ path:"screenshots/drask_lenta.png" });
-  }
+  const page = await (await b.newContext({ viewport:{width:820,height:1000}, ignoreHTTPSErrors:true })).newPage();
+  await page.goto("file:///tmp/grid.html", { waitUntil:"networkidle", timeout:60000 });
+  await page.waitForTimeout(4000);
+  await page.screenshot({ path:"screenshots/drask_grid.png", fullPage:true });
   await b.close();
-} catch(e){ out.err=(e.stderr||String(e)).slice(0,140); }
-fs.writeFileSync("screenshots/drask_visual.txt", JSON.stringify(out,null,2));
+} catch(e){ out.png_err=(e.stderr||String(e)).slice(0,120); }
+fs.writeFileSync("screenshots/drask_grid.txt", JSON.stringify(prods.map(p=>({id:p.id,t:p.t,name:p.name})),null,1));
