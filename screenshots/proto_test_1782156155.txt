@@ -1,0 +1,70 @@
+{
+ "snippet": {
+  "id": 512,
+  "active": true,
+  "name": "Petshop Aprasymu Accordion PROTO v1 (test ps_desc)"
+ },
+ "tests": [
+  {
+   "id": 33394,
+   "src": "ZB/Farmina",
+   "cat": "maistas",
+   "dom": {
+    "has_accordion": true,
+    "section_titles": [
+     "Aprašymas",
+     "Priedai",
+     "Priedai",
+     "Priedai"
+    ],
+    "tab_text_sample": "Aprašymas <p><span>Dietinis visavertis pašaras suaugusioms katėms žarnyno absorbcijos sutrikimų mažinimui.</span></p> <p><strong>Sudėtis</strong><span>: dehidratuoti vištų baltymai",
+    "junk_visible": false
+   },
+   "png": "201"
+  },
+  {
+   "id": 13869,
+   "src": "Monge",
+   "cat": "maistas",
+   "dom": {
+    "has_accordion": true,
+    "section_titles": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Priedai",
+     "Priedai",
+     "Priedai",
+     "Šėrimo instrukcija"
+    ],
+    "tab_text_sample": "Aprašymas <p>Sausas visavertis pašaras su ėriena ir ryžiais skirtas mažų veislių šuniukams ir jauniems šunims. Specialiai sukurtas jūsų šuns gerovei, remiantis Italijoje atliktais ",
+    "junk_visible": false
+   },
+   "png": "201"
+  },
+  {
+   "id": 33900,
+   "src": "ZB",
+   "cat": "narvas",
+   "dom": {
+    "has_accordion": false,
+    "section_titles": [],
+    "tab_text_sample": "<p>Idealiai tinka trumpalaikiam apgyvendinimui namuose; 2 durys, priekinės ir šoninės; durelės su 2 saugiais uždarymais. Sulankstomas. Su plastikinis padėklu (ABS). Cinkuotas.</p>",
+    "junk_visible": false
+   },
+   "png": "201"
+  },
+  {
+   "id": 27879,
+   "src": "VF",
+   "cat": "tualetas",
+   "dom": {
+    "has_accordion": false,
+    "section_titles": [],
+    "tab_text_sample": "Trumpas prekės aprašymas Happet atviras kačių tualetas su paaukštintu borteliu. Išmatavimai: 44,5 x 34 x 18,5 cm Spalva: pilka / žalsva. Norimą spalvą įrašykite užsakymo komentare.",
+    "junk_visible": true
+   },
+   "png": "201"
+  }
+ ]
+}
