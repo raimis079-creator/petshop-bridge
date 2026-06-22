@@ -1,0 +1,199 @@
+/**
+ * Petshop Filtru Kontekstas v12 [VISADA AKTYVUS]
+ *
+ * Code Snippets pavadinimas: Petshop Filtru Kontekstas v12 [VISADA AKTYVUS]
+ * Tipas: "Run snippet everywhere"
+ *
+ * Parenka YITH preset pagal kategorija:
+ *   - skanestu kategorijos    -> skanestu-filtras
+ *   - vitaminu/papildu kat.   -> vitaminu-filtras
+ *   - antkakliu/pavadeliu kat -> antkakliu-filtras
+ *   - dubeneliu kat           -> dubeneliu-filtras
+ *   - guoliu/transp/narvu kat -> guoliu-transporto-filtras  (NAUJA v5)
+ *   - zaislu kategorijos      -> zaislu-filtras              (NAUJA v6)
+ *   - kraiku kategorija        -> kraiku-filtras              (NAUJA v7)
+ *   - apranga sunims           -> apranga-filtras             (NAUJA v8)
+ *   - draskykles katems        -> draskykliu-filtras          (NAUJA v9)
+ *   - sampunai sunims          -> sampunu-filtras             (NAUJA v10)
+ *   - sukos/sepeciai/zirkles   -> suku-filtras                (NAUJA v11)
+ *   - higienos priemones sunims-> suku-filtras (pa_tipas reuse)  (NAUJA v12)
+ *   - maisto kategorijos      -> maisto-filtras
+ *   - kitos                   -> NEKEICIA (lieka widget numatytasis)
+ *
+ * Veikia per widget_display_callback: kai renderinamas YITH preset
+ * widget, pakeicia preset slug pagal dabartine kategorija.
+ *
+ * Tvarko maista + skanestus + papildus. Aksesuarai / dp misri -
+ * nepaliesta, kol joms bus sukurti atskiri preset'ai.
+ *
+ * Slug'ai: maisto-filtras, skanestu-filtras, vitaminu-filtras, antkakliu-filtras, dubeneliu-filtras, guoliu-transporto-filtras, zaislu-filtras, kraiku-filtras, apranga-filtras, draskykliu-filtras, sampunu-filtras.
+ * ASCII-only PHP komentarai.
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * Nustato, kuris preset slug tinka dabartinei kategorijai.
+ * Grazina '' jei kategorija netvarkoma (nekeiciam).
+ */
+function petshop_filter_preset_for_current() {
+
+	if ( ! is_product_category() && ! is_tax('product_cat') ) {
+		return '';
+	}
+	$term = get_queried_object();
+	if ( ! $term || empty($term->slug) ) {
+		return '';
+	}
+	$slug = strtolower( $term->slug );
+
+	// SKANESTAI (tikrinam pirma - "skanest" aiskus signalas)
+	$skanest_words = array('skanest','kramt');
+	foreach ( $skanest_words as $w ) {
+		if ( strpos($slug, $w) !== false ) {
+			return 'skanestu-filtras';
+		}
+	}
+
+	// VITAMINAI / PAPILDAI (NAUJA v2 - pries maista, kad nesusikirstu)
+	// papildu slug'ai: vitaminai-ir-papildai-sunims / -katems
+	$papild_words = array('papild','vitamin');
+	foreach ( $papild_words as $w ) {
+		if ( strpos($slug, $w) !== false ) {
+			return 'vitaminu-filtras';
+		}
+	}
+
+	// ANTKAKLIAI / PAVADELIAI (NAUJA v3 - pries maista)
+	// slug'ai: antkakliai-pavadeliai-sunims
+	$ank_words = array('antkakl','pavadel','petnes');
+	foreach ( $ank_words as $w ) {
+		if ( strpos($slug, $w) !== false ) {
+			return 'antkakliu-filtras';
+		}
+	}
+
+	// DUBENELIAI (NAUJA v4)
+	// slug: dubeneliai-sunims
+	$dub_words = array('dubenel');
+	foreach ( $dub_words as $w ) {
+		if ( strpos($slug, $w) !== false ) {
+			return 'dubeneliu-filtras';
+		}
+	}
+
+	// GULOLIAI / TRANSPORTAS / NARVAI / KELIONIU (NAUJA v5)
+	// slug'ai: guoliai-boksai-sunims, guoliai-katems, transportavimo-dezes-*,
+	//          narvai (TIKSLIAI, ne narvai-grauzikams), kelioniu-iranga
+	if ( strpos($slug, 'guoliai') !== false
+	  || strpos($slug, 'transportavimo-dezes') !== false
+	  || strpos($slug, 'kelioniu-iranga') !== false
+	  || $slug === 'narvai' ) {
+		return 'guoliu-transporto-filtras';
+	}
+
+	// ZAISLAI (NAUJA v6)
+	// slug'ai: zaislai-sunims, zaislai-katems
+	if ( strpos($slug, 'zaisl') !== false ) {
+		return 'zaislu-filtras';
+	}
+
+	// KRAIKAI (NAUJA v7)
+	// slug: kraikai-kaciu-tualetams
+	if ( strpos($slug, 'kraikai-kaciu') !== false ) {
+		return 'kraiku-filtras';
+	}
+
+	// APRANGA (NAUJA v8)
+	// slug: apranga-sunims
+	if ( strpos($slug, 'apranga') !== false ) {
+		return 'apranga-filtras';
+	}
+
+	// DRASKYKLES (NAUJA v9)
+	// slug: draskykles-katems
+	if ( strpos($slug, 'draskykl') !== false ) {
+		return 'draskykliu-filtras';
+	}
+
+	// SAMPUNAI (NAUJA v10)
+	// slug: sampunai-sunims
+	if ( strpos($slug, 'sampun') !== false ) {
+		return 'sampunu-filtras';
+	}
+
+	// SUKOS/SEPECIAI/ZIRKLES (NAUJA v11) - sunims + katems
+	// slug: sukos-sepeciai-zirkles-sunims / -katems
+	if ( strpos($slug, 'sukos-sepeci') !== false ) {
+		return 'suku-filtras';
+	}
+
+	// HIGIENA (NAUJA v12) - sunims
+	// slug: higienos-priemones-sunims ; reuse suku-filtras (pa_tipas Tipas + brand)
+	if ( strpos($slug, 'higienos-priemon') !== false ) {
+		return 'suku-filtras';
+	}
+
+	// MAISTAS
+	$maistas_words = array('maist','sausas','konserv','premium','lesal');
+	foreach ( $maistas_words as $w ) {
+		if ( strpos($slug, $w) !== false ) {
+			return 'maisto-filtras';
+		}
+	}
+	// specifines maisto kategorijos be aiskaus zodzio
+	$maistas_exact = array(
+		'akvariumo-zuvyciu-maistas',
+		'tvenkiniu-zuvu-maistas',
+		'animonda-konservai-sunims',
+		'hipoalerginis-maistas-sunims',
+	);
+	if ( in_array($slug, $maistas_exact, true) ) {
+		return 'maisto-filtras';
+	}
+
+	// kita - nekeiciam
+	return '';
+}
+
+/**
+ * YITH widget renderina preset pagal pasirinkta slug.
+ * Pakeiciam slug pagal konteksta (jei tvarkoma kategorija).
+ */
+add_filter( 'widget_display_callback', function( $instance, $widget, $args ) {
+
+	// tik YITH Ajax filter preset widget
+	$wid = is_object($widget) ? ( $widget->id_base ?? '' ) : '';
+	if ( strpos( (string) $wid, 'yith' ) === false && strpos( (string) $wid, 'ywcan' ) === false ) {
+		return $instance;
+	}
+	if ( ! is_array($instance) ) {
+		return $instance;
+	}
+
+	$want = petshop_filter_preset_for_current();
+	if ( $want === '' ) {
+		return $instance; // nekeiciam
+	}
+
+	// rasti preset ID pagal slug
+	$preset = get_page_by_path( $want, OBJECT, 'yith_wcan_preset' );
+	if ( ! $preset ) {
+		return $instance;
+	}
+
+	// YITH instance laukas gali buti 'preset', 'preset_id' arba 'preset_slug'
+	if ( array_key_exists('preset', $instance) ) {
+		$instance['preset'] = $preset->ID;
+	}
+	if ( array_key_exists('preset_id', $instance) ) {
+		$instance['preset_id'] = $preset->ID;
+	}
+	if ( array_key_exists('preset_slug', $instance) ) {
+		$instance['preset_slug'] = $want;
+	}
+
+	return $instance;
+
+}, 20, 3 );
+
