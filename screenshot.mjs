@@ -12,11 +12,11 @@ function putResult(name, obj){
 }
 const TS="1782158594";
 const PRODS=[
- {n:'01',slug:'monge',url:'https://dev.avesa.lt/product/monge-mini-puppy-sausas-pasaras-eriena-ir-ryziai-75kg/?ps_desc=1'},
- {n:'02',slug:'farmina',url:'https://dev.avesa.lt/product/farmina-vet-life-cat-dry-hypoallergenic-porkpotato-adult-15-kg/?ps_desc=1'},
- {n:'03',slug:'eukanuba',url:'https://dev.avesa.lt/product/eukanuba-evd-dog-dermatosis-fp-formula-5kg/?ps_desc=1'},
- {n:'04',slug:'josera',url:'https://dev.avesa.lt/product/josera-nature-energetic-125-kg-begrudis-sausas-maistas-suaugusiems-aktyviems-sunims/?ps_desc=1'},
- {n:'05',slug:'exclusion',url:'https://dev.avesa.lt/product/exclusion-mediterraneo-mono-noble-sausas-pasaras-sunims-s-su-eriena-7-kg/?ps_desc=1'},
+ {n:'06',slug:'sampunas',url:'https://dev.avesa.lt/product/naturalus-sampunas-jorksyro-terjerams-super-beno-york-300-ml/?ps_desc=1'},
+ {n:'07',slug:'narvas',url:'https://dev.avesa.lt/product/trixie-metalinis-narvas-xl-116x86x77-cm/?ps_desc=1'},
+ {n:'08',slug:'draskykle',url:'https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/?ps_desc=1'},
+ {n:'09',slug:'tualetas',url:'https://dev.avesa.lt/product/nobleza-atviras-tualetas-katems-44-5x34x18-5cm/?ps_desc=1'},
+ {n:'10',slug:'dubenelis',url:'https://dev.avesa.lt/product/dvigubas-chromuotas-dubenelis-sunims/?ps_desc=1'},
 ];
 const { chromium } = await import('playwright');
 const browser = await chromium.launch({ args:['--no-sandbox','--disable-setuid-sandbox'] });
@@ -49,7 +49,6 @@ for(const p of PRODS){
       return {title,short_html,short_text_sample:short_text.slice(0,200),desc_html,has_accordion:!!acc,sections,fallback:!acc,fbt_present:!!fbtEl,fbt_html,has_feeding_table:has_table,stray_short,stray_desc,page_height:document.body.scrollHeight};
     });
     rec.png_desktop=putResult('aud_'+p.n+'_desktop_'+p.slug+'_'+TS+'.png', await dpage.screenshot({fullPage:true}));
-    // mobile
     await mpage.goto(p.url,{waitUntil:'domcontentloaded',timeout:70000}); await mpage.waitForTimeout(2200);
     await openDesc(mpage); await autoscroll(mpage);
     rec.png_mobile=putResult('aud_'+p.n+'_mobile_'+p.slug+'_'+TS+'.png', await mpage.screenshot({fullPage:true}));
@@ -57,4 +56,4 @@ for(const p of PRODS){
   data.push(rec);
 }
 await browser.close();
-putResult('auddata_A_'+TS+'.json', data);
+putResult('auddata_B_'+TS+'.json', data);
