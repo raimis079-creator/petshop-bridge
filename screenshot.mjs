@@ -10,7 +10,7 @@ function putResult(name, obj){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p_'+name+'.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p_'+name+'.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782121141";
+const TS="1782121445";
 const out={steps:[]};
 putResult('hvsent_'+TS+'.txt','START');
 try{
@@ -22,7 +22,7 @@ try{
   catch(e){ try{ ({ chromium } = await import('playwright-core')); out.steps.push('pwcore_ok'); }catch(e2){ out.steps.push('NO_PLAYWRIGHT:'+String(e).slice(0,40)); throw e2; } }
   const browser = await chromium.launch({ args:['--no-sandbox','--disable-setuid-sandbox'] });
   out.steps.push('launched');
-  const page = await browser.newPage({ viewport:{ width:1280, height:1700 } });
+  const ctx = await browser.newContext({ viewport:{ width:1280, height:1700 }, ignoreHTTPSErrors:true }); const page = await ctx.newPage();
   await page.goto(url,{ waitUntil:'domcontentloaded', timeout:60000 });
   out.steps.push('goto_ok');
   await page.waitForTimeout(7000);
