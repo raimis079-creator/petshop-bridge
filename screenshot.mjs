@@ -9,20 +9,16 @@ function putResult(name, obj){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782150859";
-function gj(u){ return JSON.parse(execSync(`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" "${u}"`,{encoding:'utf8',env,maxBuffer:25000000})); }
+const TS="1782150989";
+function wc(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/b.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/b.json "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } else { cmd=`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
 const out={};
-const all=gj('https://dev.avesa.lt/wp-json/wc/v3/products/categories?per_page=100&_fields=id,name,slug,parent,count');
-// 93 medis - visi palikuonys (rekursyviai)
-function descendants(root){ let ids=[root]; let added=true; while(added){ added=false; for(const c of all){ if(ids.includes(c.parent)&&!ids.includes(c.id)){ ids.push(c.id); added=true; } } } return ids; }
-const tree93=descendants(93);
-out.tree93=all.filter(c=>tree93.includes(c.id)).map(c=>c.id+' '+c.name+' ('+c.slug+') parent='+c.parent+' count='+c.count);
-// akvarium* prekes (per visa parduotuve, bet cia ZUVIMS kontekstas)
-function searchName(term){ const p=gj('https://dev.avesa.lt/wp-json/wc/v3/products?search='+encodeURIComponent(term)+'&per_page=100&status=any&_fields=id,name,status,categories,shipping_class'); return p; }
-const akv=searchName('akvariumas');
-const akv2=searchName('akvarium');
-const map={};
-[...akv,...akv2].forEach(p=>{ map[p.id]=p; });
-out.akvarium_count=Object.keys(map).length;
-out.akvarium=Object.values(map).map(p=>p.id+' ['+p.status[0]+'] '+p.name.slice(0,60)+' cat={'+(p.categories||[]).map(c=>c.id).join(',')+'} ship='+(p.shipping_class||'-'));
-out.fin=putResult('zuv_chaos_'+TS+'.txt', out);
+// pilnas 371 turinys
+const p371=wc('GET','products?category=371&per_page=100&status=any&_fields=id,name,status,type');
+out.cat371=p371.map(p=>p.id+' ['+p.status[0]+'] '+p.name);
+// identifikuoti talpyklas: pavadinimas prasideda "Akvariumas"
+const tanks=p371.filter(p=>/^\s*Akvariumas/i.test(p.name));
+out.tanks_found=tanks.map(t=>t.id+' '+t.name);
+// uzgesinti (draft) talpyklas
+out.turned_off=[];
+for(const t of tanks){ try{ const r=wc('PUT','products/'+t.id,{status:'draft'}); out.turned_off.push(r.id+' -> '+r.status); }catch(e){ out.turned_off.push(t.id+' ERR'); } }
+out.fin=putResult('tanks_off_'+TS+'.txt', out);
