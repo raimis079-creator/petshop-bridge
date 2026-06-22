@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -46,16 +46,17 @@ jobs:
         run: |
           git config user.name "petshop-bot"
           git config user.email "bot@petshop.local"
-          if git ls-files --error-unmatch node_modules >/dev/null 2>&1; then
-            git rm -r --cached -q node_modules package.json package-lock.json 2>/dev/null || true
-          fi
-          git add screenshots/ .gitignore
-          git commit -m "task $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "no changes"
+          mkdir -p /tmp/res && cp -r screenshots/* /tmp/res/ 2>/dev/null || true
           git checkout -- . 2>/dev/null || true
-          git clean -fd -e screenshots 2>/dev/null || true
-          for i in 1 2 3 4 5 6; do
+          git clean -fdx -e screenshots 2>/dev/null || true
+          PUSHED=0
+          for i in 1 2 3 4 5 6 7 8; do
             git fetch origin main
-            git rebase origin/main || git rebase --abort
-            if git push origin HEAD:main; then echo "PUSHED"; break; fi
-            echo "retry $i"; sleep 4
+            git reset --hard origin/main
+            mkdir -p screenshots && cp -r /tmp/res/* screenshots/ 2>/dev/null || true
+            git add screenshots/
+            git commit -m "task $(date -u +%Y-%m-%dT%H:%M:%SZ)" || { echo "no changes"; PUSHED=1; break; }
+            if git push origin HEAD:main; then echo "PUSHED"; PUSHED=1; break; fi
+            echo "retry $i"; sleep 3
           done
+          if [ "$PUSHED" = "0" ]; then echo "PUSH FAILED"; fi
