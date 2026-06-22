@@ -2,31 +2,27 @@ import { execSync } from "child_process";
 import fs from "fs";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 function putResult(name, obj){
-  const b64=Buffer.from((typeof obj==='string')?obj:JSON.stringify(obj,null,1),'utf8').toString('base64');
+  const isBuf=Buffer.isBuffer(obj);
+  const b64=isBuf?obj.toString('base64'):Buffer.from((typeof obj==='string')?obj:JSON.stringify(obj,null,1),'utf8').toString('base64');
   const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   function getSha(){try{return JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){return '';}}
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782124645";
-function wc(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/b.json',JSON.stringify(body)); cmd=`curl -sk --max-time 50 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/b.json "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } else { cmd=`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
-function wp(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/w.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/w.json "https://dev.avesa.lt/wp-json/wp/v2/${p}"`; } else { cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/wp/v2/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
+const TS="1782124728";
 const out={};
-// 1) kategorija (idempotent)
-let pp=null; try{ const r=wc('GET','products/categories?slug=pirmoji-pagalba-sunims&_fields=id,name,slug,parent'); if(Array.isArray(r)&&r[0]) pp=r[0]; }catch(e){}
-if(!pp){ pp=wc('POST','products/categories',{ name:"Pirmoji pagalba \u0161unims", slug:"pirmoji-pagalba-sunims", parent:70 }); }
-out.cat={id:pp.id,name:pp.name,slug:pp.slug,parent:pp.parent};
-// 2) perkelti 23609, 22275
-const ids=[23609,22275];
-const upd=[];
-for(const id of ids){ const prod=wc('GET','products/'+id+'?_fields=id,name,categories'); let cats=prod.categories.map(c=>c.id).filter(x=>x!==82); if(!cats.includes(pp.id)) cats.push(pp.id); upd.push({id,categories:cats.map(x=>({id:x}))}); }
-const mr=wc('POST','products/batch',{update:upd});
-out.moved=(mr&&Array.isArray(mr.update))?mr.update.length:mr;
-out.pp_count=wc('GET','products/categories/'+pp.id+'?_fields=count').count;
-out.higiena_count=wc('GET','products/categories/82?_fields=count').count;
-// 3) meniu - i PRIEZIURA IR SVEIKATA stulpeli (3158), po Sukos (order 12)
-let mi=null; try{ const ex=wp('GET','menu-items?menus=232&search=Pirmoji&per_page=10&_fields=id,title,object_id'); if(Array.isArray(ex)) mi=ex.find(x=>x.object_id===pp.id); }catch(e){}
-if(!mi){ mi=wp('POST','menu-items',{ title:"Pirmoji pagalba \u0161unims", type:'taxonomy', object:'product_cat', object_id:pp.id, parent:3158, menus:232, status:'publish', menu_order:13 }); }
-out.menu_item={id:mi.id,t:mi.title&&mi.title.rendered,parent:mi.parent,oid:mi.object_id};
-out.fin=putResult('firstaid_'+TS+'.txt', out);
+// produktai cat 656
+try{ out.cat656=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?category=656&per_page=10&status=any&_fields=id,name"`,{encoding:'utf8',env})).map(p=>p.id+' '+p.name.slice(0,42)); }catch(e){ out.cat656='err'; }
+const { chromium } = await import('playwright');
+const browser = await chromium.launch({ args:['--no-sandbox','--disable-setuid-sandbox'] });
+const ctx = await browser.newContext({ viewport:{ width:1280, height:760 }, ignoreHTTPSErrors:true });
+const page = await ctx.newPage();
+await page.goto('https://dev.avesa.lt/',{ waitUntil:'domcontentloaded', timeout:60000 });
+await page.waitForTimeout(3000);
+out.prieziura_links = await page.evaluate(()=>{ let res=[]; const heads=[...document.querySelectorAll('li.menu-item')].filter(li=>{ const a=li.querySelector(':scope > a'); return a && /PRIEŽIŪRA IR SVEIKATA/i.test(a.textContent.trim()); }); for(const h of heads){ const sub=h.querySelector('ul'); if(sub){ res=[...sub.querySelectorAll(':scope > li > a')].map(a=>a.textContent.trim()); break; } } return res; });
+try{ await page.evaluate(()=>{ const top=[...document.querySelectorAll('li.menu-item')].find(li=>{const a=li.querySelector(':scope>a');return a&&/^\s*ŠUNIMS\s*$/i.test(a.textContent);}); if(top){ top.classList.add('current-dropdown'); const dd=top.querySelector('.nav-dropdown,ul.sub-menu,.mega-menu'); if(dd){ dd.style.display='block'; dd.style.opacity='1'; dd.style.visibility='visible'; } } }); await page.waitForTimeout(700); }catch(e){}
+const png=await page.screenshot({fullPage:false});
+out.png=putResult('faver_'+TS+'.png', png);
+await browser.close();
+out.fin=putResult('faver_'+TS+'.txt', out);
