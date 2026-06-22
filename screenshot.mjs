@@ -13,13 +13,8 @@ function putResult(name, obj){
   return code;
 }
 const out={};
-let html=''; try{ html=execSync('curl -sk --max-time 60 "https://dev.avesa.lt/?petshop_attr_higiena=dry&k=ps2026"',{encoding:'utf8',env,maxBuffer:20000000}); }catch(e){ html='ERR '+String(e).slice(0,80); }
+let html=''; try{ html=execSync('curl -sk --max-time 90 "https://dev.avesa.lt/?petshop_attr_higiena=apply&confirm=APPLY&k=ps2026"',{encoding:'utf8',env,maxBuffer:20000000}); }catch(e){ html='ERR '+String(e).slice(0,80); }
 const mp=html.match(/PARSED:\s*<b>(\d+)<\/b>/); const mr=html.match(/REVIEW:\s*<b>(\d+)<\/b>/); const mt=html.match(/Viso:\s*<b>(\d+)<\/b>/);
-out.dry={ total:mt?+mt[1]:null, parsed:mp?+mp[1]:null, review:mr?+mr[1]:null };
-const rows=[...html.matchAll(/<tr><td>(\d+)<\/td><td>([^<]*)<\/td><td class="(\w)">(PARSED|REVIEW)<\/td><td>([^<]*)<\/td><\/tr>/g)];
-const byTipas={}; const review=[];
-for(const r of rows){ const id=r[1],nm=r[2],st=r[4],tp=r[5]; if(st==='REVIEW'){ review.push(id+' '+nm.slice(0,46)); } else { (byTipas[tp]=byTipas[tp]||[]).push(id); } }
-out.byTipas={}; for(const k of Object.keys(byTipas)) out.byTipas[k]=byTipas[k].length;
-out.review=review;
-if(!rows.length) out.head=html.slice(0,400);
-out.put=putResult('higiena_dry2.txt', out);
+out.apply={ total:mt?+mt[1]:null, parsed:mp?+mp[1]:null, review:mr?+mr[1]:null, header:html.includes('APPLY') };
+if(!mp) out.head=html.slice(0,300);
+out.put=putResult('higiena_apply.txt', out);
