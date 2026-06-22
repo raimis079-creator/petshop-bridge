@@ -2,27 +2,26 @@ import { execSync } from "child_process";
 import fs from "fs";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 function putResult(name, obj){
-  const b64=Buffer.from((typeof obj==='string')?obj:JSON.stringify(obj,null,1),'utf8').toString('base64');
+  const isBuf=Buffer.isBuffer(obj);
+  const b64=isBuf?obj.toString('base64'):Buffer.from((typeof obj==='string')?obj:JSON.stringify(obj,null,1),'utf8').toString('base64');
   const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   function getSha(){try{return JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){return '';}}
-  function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
+  function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p_'+name+'.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p_'+name+'.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782136753";
-function wp(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/w.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/w.json "https://dev.avesa.lt/wp-json/wp/v2/${p}"`; } else { cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/wp/v2/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
+const TS="1782136833";
 const out={};
-const all=wp('GET','menu-items?menus=232&per_page=100&_fields=id,title,parent,menu_order,object_id,object');
-out.all_count=all.length;
-const top=all.find(m=>m.object_id===87 && m.object==='product_cat');
-out.top=top?{id:top.id,t:top.title.rendered}:null;
-if(top){ out.children=all.filter(m=>m.parent===top.id).sort((a,b)=>a.menu_order-b.menu_order).map(m=>m.menu_order+': '+m.title.rendered+' (oid'+m.object_id+', id'+m.id+')'); }
-out.kraikas_exists=all.filter(m=>m.object_id===657).map(m=>({id:m.id,t:m.title.rendered,parent:m.parent,o:m.menu_order}));
-const narvai=all.find(m=>m.object_id===304);
-out.narvai=narvai?{id:narvai.id,parent:narvai.parent,o:narvai.menu_order}:null;
-// jei kraikas dar neegzistuoja IR narvai yra -> sukurti
-if(!out.kraikas_exists.length && narvai){
-  const mi=wp('POST','menu-items',{ title:"Kraikas ir \u0161ienas grau\u017eikams", type:'taxonomy', object:'product_cat', object_id:657, parent:narvai.parent, menus:232, status:'publish', menu_order:narvai.menu_order+1 });
-  out.created={id:mi.id,t:mi.title&&mi.title.rendered,parent:mi.parent,o:mi.menu_order};
-}
-out.fin=putResult('grmenu2_'+TS+'.txt', out);
+out.cat657=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?category=657&per_page=10&status=any&_fields=id,name"`,{encoding:'utf8',env})).map(p=>p.id+' '+p.name.slice(0,46));
+const { chromium } = await import('playwright');
+const browser = await chromium.launch({ args:['--no-sandbox','--disable-setuid-sandbox'] });
+const ctx = await browser.newContext({ viewport:{ width:1280, height:760 }, ignoreHTTPSErrors:true });
+const page = await ctx.newPage();
+await page.goto('https://dev.avesa.lt/',{ waitUntil:'domcontentloaded', timeout:60000 });
+await page.waitForTimeout(3000);
+out.grauz_menu = await page.evaluate(()=>{ let res=[]; const heads=[...document.querySelectorAll('li.menu-item')].filter(li=>{ const a=li.querySelector(':scope > a'); return a && /GRAU\u017dIKAMS/i.test(a.textContent.trim()) && a.textContent.trim().length<14; }); for(const h of heads){ const subs=h.querySelectorAll('ul li a'); res=[...subs].map(a=>a.textContent.trim()); break; } return res; });
+try{ await page.evaluate(()=>{ const top=[...document.querySelectorAll('li.menu-item')].find(li=>{const a=li.querySelector(':scope>a');return a&&/^\s*GRAU\u017dIKAMS\s*$/i.test(a.textContent);}); if(top){ top.classList.add('current-dropdown'); const dd=top.querySelector('.nav-dropdown,ul.sub-menu,.mega-menu'); if(dd){ dd.style.display='block'; dd.style.opacity='1'; dd.style.visibility='visible'; } } }); await page.waitForTimeout(700); }catch(e){}
+const png=await page.screenshot({fullPage:false});
+out.png=putResult('grfin_'+TS+'.png', png);
+await browser.close();
+out.fin=putResult('grfin_'+TS+'.txt', out);
