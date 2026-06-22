@@ -1,5 +1,5 @@
 <?php
-/** Petshop Aprasymu Accordion PROTO v2 (test gate ps_desc) */
+/** Petshop Aprasymu Accordion PROTO v3 (test gate ps_desc) */
 if (!defined('ABSPATH')) return;
 
 /* Pasalina <style>/<script> siuksles ir "Trumpas prekes aprasymas" etikete */
@@ -56,7 +56,7 @@ function psdp_split($html){
            '\x{0160}\x{0117}rim(?:o|as)?(?:\s+(?:instrukcija|norma|rekomendacijos))?|' .
            '\x{012E}sp\x{0117}jim(?:ai|as)?|Pagaminta|Med\x{017E}iagos|' .
            'Naudojim(?:o)?(?:\s+instrukcija)?)' .
-           '(?:<[^>]+>\s*)*\s*:/iu';
+           '\s*(?:<[^>]+>\s*)*\s*:/iu';
 
     $parts = preg_split($pat, $html, -1, PREG_SPLIT_DELIM_CAPTURE);
     if (!is_array($parts) || count($parts) < 2) return array(); // markeriu nerasta -> fallback
