@@ -1,15 +1,15 @@
-import { execSync } from "child_process";
+import { chromium } from "playwright";
 import fs from "fs";
 fs.mkdirSync("screenshots", { recursive: true });
-const base = "https://dev.avesa.lt";
-const passClean = (process.env.WP_APP_PASS || "").replace(/\s+/g, "");
-const env = { ...process.env, WP_PASS_CLEAN: passClean };
 const out={};
+const b = await chromium.launch({ args:["--no-sandbox"] });
+const page = await (await b.newContext({ viewport:{width:1300,height:1250}, ignoreHTTPSErrors:true })).newPage();
 try {
-  const html=execSync(`curl -sk --max-time 40 "${base}/kategorija/sunims/sukos-sepeciai-zirkles-sunims/"`,{encoding:"utf8",env,maxBuffer:15*1024*1024});
-  out.titles=[...html.matchAll(/filter-title">([^<]+)</g)].map(m=>m[1]);
-  const pm=html.match(/preset_(\d+)/); out.preset=pm?pm[1]:'none';
-  const tm=html.match(/data-taxonomy="([^"]+)"/g); out.taxonomies=tm?tm.slice(0,4):[];
-} catch(e){ out.err=String(e).slice(0,80); }
-// patikra ar suku-filtras presetas egzistuoja per code-snippets nera; tikrinam per WP REST yith? ne. Pamatuojam per titulus.
-fs.writeFileSync("screenshots/titles.txt", JSON.stringify(out,null,1));
+  await page.goto("https://dev.avesa.lt/kategorija/katems/sukos-sepeciai-zirkles-katems/",{waitUntil:"domcontentloaded",timeout:45000});
+  await page.waitForTimeout(4000);
+  out.sidebar = await page.evaluate(()=>{const el=document.querySelector('.yith-wcan-filters');return el?el.innerText.slice(0,400):'NORA';});
+  out.heading = await page.evaluate(()=>{const h=document.querySelector('.page-title,h1');return h?h.innerText:'?';});
+  await page.screenshot({ path:"screenshots/CAT_GROOM.png", clip:{x:88,y:120,width:460,height:720} });
+} catch(e){ out.err=String(e).slice(0,110); }
+await b.close();
+fs.writeFileSync("screenshots/cat_groom_shot.txt", JSON.stringify(out,null,1));
