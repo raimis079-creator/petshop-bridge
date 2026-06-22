@@ -1,11 +1,12 @@
 <?php
-/** Petshop Aprasymu Accordion PROTO v3 (test gate ps_desc) */
+/** Petshop Aprasymu Accordion PROTO v4 (test gate ps_desc) */
 if (!defined('ABSPATH')) return;
 
 /* Pasalina <style>/<script> siuksles ir "Trumpas prekes aprasymas" etikete */
 if (!function_exists('psdp_clean')) {
 function psdp_clean($html){
     if (!is_string($html)) return '';
+    $html = html_entity_decode($html, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     $html = preg_replace('#<style[^>]*>.*?</style>#is', ' ', $html);
     $html = preg_replace('#<script[^>]*>.*?</script>#is', ' ', $html);
     $html = preg_replace('/Trumpas\s+prek\x{0117}s\s+apra\x{0161}ymas/iu', ' ', $html);
@@ -112,7 +113,7 @@ function psdp_render($key = '', $tab = array()){
     foreach ($sections as $s) {
         // PROTO: visi atidaryti, kad matytusi turinys per patikra
         echo '<details open><summary>' . esc_html($s[0]) . '</summary>'
-           . '<div class="ps-desc-body">' . wpautop($s[1]) . '</div></details>';
+           . '<div class="ps-desc-body">' . wpautop(force_balance_tags(trim($s[1]))) . '</div></details>';
     }
     echo '</div>';
 }
