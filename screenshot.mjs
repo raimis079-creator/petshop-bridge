@@ -9,16 +9,25 @@ function putResult(name, obj){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782147818";
-function gj(u){ return JSON.parse(execSync(`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" "${u}"`,{encoding:'utf8',env,maxBuffer:25000000})); }
+const TS="1782148152";
 const out={};
-const all=gj('https://dev.avesa.lt/wp-json/wc/v3/products/categories?per_page=100&_fields=id,name,slug,parent,count');
-function info(id){ const c=all.find(x=>x.id===id); return c?(c.id+' '+c.name+' ('+c.slug+') parent='+c.parent+' count='+c.count):id+' NOT FOUND'; }
-out.c91=info(91); out.c94=info(94); out.c100=info(100); out.c103=info(103);
-// 91 medis (visi vaikai)
-const ch91=all.filter(c=>c.parent===91);
-out.under_91=ch91.map(c=>c.id+' '+c.name+' ('+c.slug+') count='+c.count);
-// 94 ir 100 tevai
-const p94=all.find(x=>x.id===94), p100=all.find(x=>x.id===100);
-out.c94_parent=p94?info(p94.parent):'?'; out.c100_parent=p100?info(p100.parent):'?';
-out.fin=putResult('zuv_cats_'+TS+'.txt', out);
+function wc(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/b.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/b.json "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } else { cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
+function cs(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/c.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/c.json "https://dev.avesa.lt/wp-json/code-snippets/v1/${p}"`; } else { cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/code-snippets/v1/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
+// atributas
+let attr=null; try{ const al=wc('GET','products/attributes?per_page=100&_fields=id,name,slug'); attr=al.find(a=>a.slug==='pa_zuvies_rusis'||a.slug==='zuvies_rusis'); }catch(e){}
+if(!attr){ attr=wc('POST','products/attributes',{ name:"\u017duvies r\u016b\u0161is", slug:"zuvies_rusis", type:"select", order_by:"name", has_archives:false }); }
+out.attribute={id:attr.id,name:attr.name,slug:attr.slug};
+// snippet
+let php=fs.readFileSync('modules/zuvrusis.php','utf8').replace(/^\uFEFF?<\?php\s*/,'');
+let snip=null; try{ const list=cs('GET','snippets?per_page=100'); if(Array.isArray(list)) snip=list.find(s=>s.name==='Zuvies Rusis Modulis v1.0'); }catch(e){}
+let r; if(snip){ r=cs('PUT','snippets/'+snip.id,{name:'Zuvies Rusis Modulis v1.0',scope:'global',priority:11,active:true,code:php}); } else { r=cs('POST','snippets',{name:'Zuvies Rusis Modulis v1.0',scope:'global',priority:11,active:true,code:php}); }
+out.snippet={id:r.id,active:r.active};
+execSync('sleep 2');
+// DRY
+const html=execSync(`curl -sk --max-time 60 "https://dev.avesa.lt/?petshop_attr_zuvrusis=dry&k=ps2026"`,{encoding:'utf8',maxBuffer:10000000});
+const m=html.match(/Viso:\s*<b>(\d+)<\/b>.*?PARSED:\s*<b>(\d+)<\/b>.*?REVIEW:\s*<b>(\d+)<\/b>/s);
+out.summary=m?{viso:+m[1],parsed:+m[2],review:+m[3]}:html.slice(0,200);
+out.rows=[...html.matchAll(/<td>(\d+)<\/td><td>([^<]*)<\/td><td class="[pr]">(PARSED|REVIEW)<\/td><td>([^<]*)<\/td>/g)].map(r=>r[1]+' ['+r[3][0]+'] '+r[2].slice(0,50)+' => '+r[4].replace('pa_zuvies_rusis =&gt; ',''));
+out.dist={};
+[...html.matchAll(/=&gt; ([^<]+)<\/td>/g)].forEach(x=>{ x[1].split(' | ').forEach(t=>{ t=t.trim(); out.dist[t]=(out.dist[t]||0)+1; }); });
+out.fin=putResult('zuvdry_'+TS+'.txt', out);
