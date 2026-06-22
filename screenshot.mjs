@@ -9,23 +9,20 @@ function putResult(name, obj){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782144969";
+const TS="1782145076";
 const out={};
-function wc(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/b.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/b.json "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } else { cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/wc/v3/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
 function cs(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/c.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/c.json "https://dev.avesa.lt/wp-json/code-snippets/v1/${p}"`; } else { cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/code-snippets/v1/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
-// 1) atributas
-let attr=null; try{ const al=wc('GET','products/attributes?per_page=100&_fields=id,name,slug'); attr=al.find(a=>a.slug==='pa_paukscio_rusis'||a.slug==='paukscio_rusis'); }catch(e){}
-if(!attr){ attr=wc('POST','products/attributes',{ name:"Pauk\u0161\u010dio r\u016b\u0161is", slug:"paukscio_rusis", type:"select", order_by:"name", has_archives:false }); }
-out.attribute={id:attr.id,name:attr.name,slug:attr.slug};
-// 2) snippet
 let php=fs.readFileSync('modules/pauksrusis.php','utf8').replace(/^\uFEFF?<\?php\s*/,'');
-let snip=null; try{ const list=cs('GET','snippets?per_page=100'); if(Array.isArray(list)) snip=list.find(s=>s.name==='Paukscio Rusis Modulis v1.0'); }catch(e){}
-let r; if(snip){ r=cs('PUT','snippets/'+snip.id,{name:'Paukscio Rusis Modulis v1.0',scope:'global',priority:11,active:true,code:php}); } else { r=cs('POST','snippets',{name:'Paukscio Rusis Modulis v1.0',scope:'global',priority:11,active:true,code:php}); }
+const r=cs('PUT','snippets/507',{name:'Paukscio Rusis Modulis v1.1',scope:'global',priority:11,active:true,code:php});
 out.snippet={id:r.id,active:r.active};
 execSync('sleep 2');
-// 3) DRY
 const html=execSync(`curl -sk --max-time 60 "https://dev.avesa.lt/?petshop_attr_pauksrusis=dry&k=ps2026"`,{encoding:'utf8',maxBuffer:10000000});
 const m=html.match(/Viso:\s*<b>(\d+)<\/b>.*?PARSED:\s*<b>(\d+)<\/b>.*?REVIEW:\s*<b>(\d+)<\/b>/s);
-out.summary=m?{viso:+m[1],parsed:+m[2],review:+m[3]}:html.slice(0,300);
-out.rows=[...html.matchAll(/<td>(\d+)<\/td><td>([^<]*)<\/td><td class="[pr]">(PARSED|REVIEW)<\/td><td>([^<]*)<\/td>/g)].map(r=>r[1]+' ['+r[3][0]+'] '+r[2].slice(0,46)+' => '+r[4].replace('pa_paukscio_rusis =&gt; ',''));
-out.fin=putResult('pauksdry_'+TS+'.txt', out);
+out.summary=m?{viso:+m[1],parsed:+m[2],review:+m[3]}:'no';
+// term skaiciai
+out.dist={};
+[...html.matchAll(/=&gt; ([^<]+)<\/td>/g)].forEach(x=>{ x[1].split(' | ').forEach(t=>{ t=t.trim(); out.dist[t]=(out.dist[t]||0)+1; }); });
+// patikrinti 12796
+const r12796=html.match(/12796<\/td><td>[^<]*<\/td><td[^>]*>PARSED<\/td><td>([^<]*)</);
+out.check_12796=r12796?r12796[1].replace('pa_paukscio_rusis =&gt; ',''):'?';
+out.fin=putResult('pauksdry2_'+TS+'.txt', out);
