@@ -1,0 +1,109 @@
+{
+ "total": 63,
+ "cat75_chain": "75:Šukos, šepečiai, žirklės šunims < 70:ŠUNIMS",
+ "cat75": {
+  "id": 75,
+  "name": "Šukos, šepečiai, žirklės šunims",
+  "slug": "sukos-sepeciai-zirkles-sunims",
+  "parent": 70
+ },
+ "katems_top": {
+  "id": 77,
+  "name": "KATĖMS",
+  "slug": "katems"
+ },
+ "katems_children": [
+  {
+   "id": 109,
+   "name": "Antiparazitinės priemonės katėms",
+   "slug": "antiparazitines-priemones-katems",
+   "count": 5
+  },
+  {
+   "id": 117,
+   "name": "Antkakliai ir petnešos katėms",
+   "slug": "antkakliai-ir-petnesos-katems",
+   "count": 9
+  },
+  {
+   "id": 124,
+   "name": "Draskyklės katėms",
+   "slug": "draskykles-katems",
+   "count": 45
+  },
+  {
+   "id": 112,
+   "name": "Dubenėliai katėms",
+   "slug": "dubeneliai-katems",
+   "count": 35
+  },
+  {
+   "id": 569,
+   "name": "Guoliai katėms",
+   "slug": "guoliai-katems",
+   "count": 13
+  },
+  {
+   "id": 107,
+   "name": "Kraikai kačių tualetams",
+   "slug": "kraikai-kaciu-tualetams",
+   "count": 89
+  },
+  {
+   "id": 78,
+   "name": "Maistas katėms",
+   "slug": "maistas-katems",
+   "count": 346
+  },
+  {
+   "id": 130,
+   "name": "Priežiūros priemonės katėms",
+   "slug": "prieziuros-priemones-katems",
+   "count": 25
+  },
+  {
+   "id": 96,
+   "name": "Skanėstai katėms",
+   "slug": "skanestai-katems",
+   "count": 86
+  },
+  {
+   "id": 121,
+   "name": "Transportavimo dėžės katėms",
+   "slug": "transportavimo-dezes-katems",
+   "count": 51
+  },
+  {
+   "id": 106,
+   "name": "Tualetai, kraikai, semtuvėliai",
+   "slug": "tualetai-kraikai-semtuveliai",
+   "count": 66
+  },
+  {
+   "id": 102,
+   "name": "Vitaminai ir papildai katėms",
+   "slug": "vitaminai-ir-papildai-katems",
+   "count": 19
+  },
+  {
+   "id": 114,
+   "name": "Žaislai katėms",
+   "slug": "zaislai-katems",
+   "count": 61
+  }
+ ],
+ "katems_prieziura": [
+  {
+   "id": 130,
+   "name": "Priežiūros priemonės katėms",
+   "slug": "prieziuros-priemones-katems",
+   "parent": 77,
+   "count": 25,
+   "display": "default"
+  }
+ ],
+ "sunims_top": {
+  "id": 86,
+  "name": "Animonda konservai šunims"
+ }
+}
