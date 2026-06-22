@@ -9,10 +9,17 @@ function putResult(name, obj){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782137454";
+const TS="1782138415";
 const out={};
+// redeploy snippet 503
+let php=fs.readFileSync('modules/grauzrusis.php','utf8').replace(/^\uFEFF?<\?php\s*/,'');
+function cs(method,p,body){ let cmd; if(body){ fs.writeFileSync('/tmp/c.json',JSON.stringify(body)); cmd=`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X ${method} -d @/tmp/c.json "https://dev.avesa.lt/wp-json/code-snippets/v1/${p}"`; } else { cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/code-snippets/v1/${p}"`; } return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
+const r=cs('PUT','snippets/503',{ name:'Grauziko Rusis Modulis v1.1', scope:'global', priority:11, active:true, code:php });
+out.snippet={id:r.id,active:r.active};
+// DRY
 const html=execSync(`curl -sk --max-time 60 "https://dev.avesa.lt/?petshop_attr_grauzrusis=dry&k=ps2026"`,{encoding:'utf8',maxBuffer:10000000});
 const m=html.match(/Viso:\s*<b>(\d+)<\/b>.*?PARSED:\s*<b>(\d+)<\/b>.*?REVIEW:\s*<b>(\d+)<\/b>/s);
 out.summary=m?{viso:+m[1],parsed:+m[2],review:+m[3]}:'no match';
-out.rows=[...html.matchAll(/<td>(\d+)<\/td><td>([^<]*)<\/td><td class="[pr]">(PARSED|REVIEW)<\/td><td>([^<]*)<\/td>/g)].map(r=>r[1]+' ['+r[3][0]+'] '+r[2].slice(0,42)+' => '+r[4]);
-out.fin=putResult('grdry_'+TS+'.txt', out);
+// tik prekes su keliom rusim arba dekoratyvinis triusis pavyzdziai
+out.rows=[...html.matchAll(/<td>(\d+)<\/td><td>([^<]*)<\/td><td class="[pr]">(PARSED|REVIEW)<\/td><td>([^<]*)<\/td>/g)].map(r=>r[1]+' => '+r[4]).filter(x=>/Dekoratyvinis|Visiems|,/.test(x)).slice(0,20);
+out.fin=putResult('grdry2_'+TS+'.txt', out);
