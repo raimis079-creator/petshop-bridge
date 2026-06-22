@@ -1,0 +1,143 @@
+{
+ "list": [
+  {
+   "id": 34108,
+   "slug": "suku-filtras",
+   "title": "Šukų filtras"
+  },
+  {
+   "id": 34107,
+   "slug": "sampunu-filtras",
+   "title": "Šampūnų filtras"
+  },
+  {
+   "id": 34105,
+   "slug": "draskykliu-filtras",
+   "title": "Draskyklių filtras"
+  },
+  {
+   "id": 34104,
+   "slug": "apranga-filtras",
+   "title": "Aprangos filtras"
+  },
+  {
+   "id": 34103,
+   "slug": "kraiku-filtras",
+   "title": "Kraikų filtras"
+  },
+  {
+   "id": 34102,
+   "slug": "zaislu-filtras",
+   "title": "Žaislų filtras"
+  },
+  {
+   "id": 34083,
+   "slug": "guoliu-transporto-filtras",
+   "title": "Guolių/transporto filtras"
+  },
+  {
+   "id": 34082,
+   "slug": "dubeneliu-filtras",
+   "title": "Dubenėlių filtras"
+  },
+  {
+   "id": 34081,
+   "slug": "antkakliu-filtras",
+   "title": "Antkaklių filtras"
+  },
+  {
+   "id": 34080,
+   "slug": "vitaminu-filtras",
+   "title": "Vitaminų filtras"
+  },
+  {
+   "id": 34070,
+   "slug": "skanestu-filtras",
+   "title": "Skanėstų filtras"
+  },
+  {
+   "id": 34063,
+   "slug": "maisto-filtras",
+   "title": "Maisto filtras"
+  },
+  {
+   "id": 6644,
+   "slug": "default-preset",
+   "title": "Pagrindinis"
+  }
+ ],
+ "suku_meta": {
+  "_enabled": "yes",
+  "_layout": "default",
+  "_filters": {
+   "1": {
+    "title": "Tipas",
+    "customize_terms": "no",
+    "terms": [],
+    "price_ranges": [],
+    "filter_design": "checkbox",
+    "label_position": "below",
+    "column_number": 4,
+    "show_toggle": "no",
+    "show_search": "yes",
+    "toggle_style": "opened",
+    "order_by": "name",
+    "order": "asc",
+    "show_count": "no",
+    "hierarchical": "no",
+    "multiple": "yes",
+    "relation": "or",
+    "adoptive": "hide",
+    "enabled": "yes",
+    "price_slider_design": "slider",
+    "price_slider_adaptive_limits": "no",
+    "price_slider_min": 0,
+    "price_slider_max": 100,
+    "price_slider_step": 1,
+    "order_options": [
+     "menu_order"
+    ],
+    "show_stock_filter": "yes",
+    "show_sale_filter": "yes",
+    "show_featured_filter": "no",
+    "taxonomy": "pa_tipas",
+    "use_all_terms": "yes",
+    "type": "tax"
+   },
+   "2": {
+    "title": "Prekės ženklas",
+    "customize_terms": "yes",
+    "terms": [],
+    "price_ranges": [],
+    "filter_design": "select",
+    "label_position": "below",
+    "column_number": 4,
+    "show_toggle": "no",
+    "show_search": "yes",
+    "toggle_style": "closed",
+    "order_by": "name",
+    "order": "asc",
+    "show_count": "no",
+    "hierarchical": "no",
+    "multiple": "no",
+    "relation": "and",
+    "adoptive": "hide",
+    "enabled": "yes",
+    "price_slider_design": "slider",
+    "price_slider_adaptive_limits": "no",
+    "price_slider_min": 0,
+    "price_slider_max": 100,
+    "price_slider_step": 1,
+    "order_options": [
+     "menu_order"
+    ],
+    "show_stock_filter": "yes",
+    "show_sale_filter": "yes",
+    "show_featured_filter": "no",
+    "taxonomy": "product_brand",
+    "use_all_terms": "yes",
+    "type": "tax"
+   }
+  }
+ }
+}
