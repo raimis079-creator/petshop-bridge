@@ -11,9 +11,9 @@ function putResult(name, obj){
   fs.writeFileSync('/tmp/put.json',JSON.stringify(body));
   return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/put.json "'+url+'"',{encoding:'utf8'}).trim();
 }
-function wc(p){ try{ return JSON.parse(execSync('curl -sk --max-time 30 -u "'+process.env.WP_USER+':'+env.WP_PASS_CLEAN+'" "https://dev.avesa.lt/wp-json/wc/v3/'+p+'"',{encoding:'utf8',maxBuffer:20000000})); }catch(e){ return null; } }
+function wc(p){ try{ return JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/${p}"`,{encoding:'utf8',env,maxBuffer:20000000})); }catch(e){ return null; } }
 const out={};
-const cat=wc('products/categories/82?_fields=id,name,slug,count'); out.cat=cat;
+out.cat=wc('products/categories/82?_fields=id,name,slug,count');
 let prods=[];
 for(let p=1;p<=2;p++){ const r=wc('products?category=82&per_page=100&page='+p+'&status=any&_fields=id,name'); if(Array.isArray(r)){ prods=prods.concat(r.map(x=>({id:x.id,name:x.name}))); if(r.length<100)break; } else break; }
 out.n=prods.length; out.products=prods;
