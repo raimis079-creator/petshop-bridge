@@ -2,16 +2,59 @@ import { execSync } from "child_process";
 import fs from "fs";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 function putResult(name, obj){
-  const b64=Buffer.from(JSON.stringify(obj,null,1),'utf8').toString('base64');
+  const isBuf=Buffer.isBuffer(obj);
+  const b64=isBuf?obj.toString('base64'):Buffer.from((typeof obj==='string')?obj:JSON.stringify(obj,null,1),'utf8').toString('base64');
   const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   function getSha(){try{return JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){return '';}}
-  function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
+  function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:200000000}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782157496";
-function wc(p){ return JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/${p}"`,{encoding:'utf8',env,maxBuffer:20000000})); }
-const ids=[13869,33390,33452,18014,25227,17333,33900,33990,27879,31874];
-const out=[];
-for(const id of ids){ try{ const p=wc('products/'+id+'?_fields=id,name,permalink'); out.push({id,name:p.name,url:p.permalink}); }catch(e){ out.push({id,err:1}); } }
-putResult('links_'+TS+'.txt', out);
+const TS="1782158594";
+const PRODS=[
+ {n:'01',slug:'monge',url:'https://dev.avesa.lt/product/monge-mini-puppy-sausas-pasaras-eriena-ir-ryziai-75kg/?ps_desc=1'},
+ {n:'02',slug:'farmina',url:'https://dev.avesa.lt/product/farmina-vet-life-cat-dry-hypoallergenic-porkpotato-adult-15-kg/?ps_desc=1'},
+ {n:'03',slug:'eukanuba',url:'https://dev.avesa.lt/product/eukanuba-evd-dog-dermatosis-fp-formula-5kg/?ps_desc=1'},
+ {n:'04',slug:'josera',url:'https://dev.avesa.lt/product/josera-nature-energetic-125-kg-begrudis-sausas-maistas-suaugusiems-aktyviems-sunims/?ps_desc=1'},
+ {n:'05',slug:'exclusion',url:'https://dev.avesa.lt/product/exclusion-mediterraneo-mono-noble-sausas-pasaras-sunims-s-su-eriena-7-kg/?ps_desc=1'},
+];
+const { chromium } = await import('playwright');
+const browser = await chromium.launch({ args:['--no-sandbox','--disable-setuid-sandbox'] });
+const dctx = await browser.newContext({ viewport:{width:1440,height:1000}, ignoreHTTPSErrors:true, deviceScaleFactor:1 });
+const mctx = await browser.newContext({ viewport:{width:390,height:844}, isMobile:true, hasTouch:true, ignoreHTTPSErrors:true, deviceScaleFactor:1 });
+const dpage=await dctx.newPage(); const mpage=await mctx.newPage();
+async function autoscroll(page){ await page.evaluate(async()=>{ await new Promise(r=>{ let y=0; const t=setInterval(()=>{ window.scrollBy(0,700); y+=700; if(y>document.body.scrollHeight+1500){clearInterval(t);r();} },120); }); }); await page.evaluate(()=>window.scrollTo(0,0)); await page.waitForTimeout(500); }
+async function openDesc(page){ try{ const tl=await page.$('li.description_tab a, a[href="#tab-description"]'); if(tl){ await tl.click(); await page.waitForTimeout(600);} }catch(e){} }
+const data=[];
+for(const p of PRODS){
+  const rec={n:p.n,slug:p.slug,url:p.url};
+  try{
+    await dpage.goto(p.url,{waitUntil:'domcontentloaded',timeout:70000}); await dpage.waitForTimeout(2200);
+    await openDesc(dpage); await autoscroll(dpage);
+    rec.html = await dpage.evaluate(()=>{
+      const q=s=>document.querySelector(s);
+      const t=(q('h1.product-title')||q('h1.product_title')||q('.product-title')||{}); const title=(t.innerText||document.title||'').trim();
+      const se=q('.woocommerce-product-details__short-description')||q('.product-short-description')||q('div[itemprop=description]');
+      const short_html=se?se.innerHTML.trim():''; const short_text=se?se.innerText:'';
+      const te=q('#tab-description')||q('.woocommerce-tabs')||q('.product-tabs');
+      let desc_html=te?te.innerHTML:''; const desc_text=te?te.innerText:'';
+      if(desc_html.length>9000) desc_html=desc_html.slice(0,9000)+'\n<!-- TRUNCATED -->';
+      const acc=q('.ps-desc-acc'); const sections=[...document.querySelectorAll('.ps-desc-acc summary')].map(s=>s.textContent.trim());
+      let fbtEl=q('.related.products')||q('.up-sells')||q('.cross-sells')||q('.petshop-fbt')||q('.ps-fbt');
+      if(!fbtEl){ const hs=[...document.querySelectorAll('h2,h3,h4,.title-wrapper,section')]; for(const e of hs){ if(/Da\u017Enai perkama kartu|Susij\u0119 prek|Pana\u0161ios prek|perkama kartu/i.test(e.textContent||'')){ fbtEl=e.closest('section')||e.parentElement; break; } } }
+      let fbt_html=fbtEl?fbtEl.outerHTML:''; if(fbt_html.length>3500) fbt_html=fbt_html.slice(0,3500)+' <!-- TRUNC -->';
+      const has_table=/<table/i.test(desc_html);
+      const stray_short=/<\/?(p|strong|span|em|div|ul|li|br)\b|&lt;|&nbsp;|<style|\.b2b-/i.test(short_text);
+      const stray_desc=/<\/?(p|strong|span|em|div)\b|&lt;|<style|\.b2b-/i.test(desc_text);
+      return {title,short_html,short_text_sample:short_text.slice(0,200),desc_html,has_accordion:!!acc,sections,fallback:!acc,fbt_present:!!fbtEl,fbt_html,has_feeding_table:has_table,stray_short,stray_desc,page_height:document.body.scrollHeight};
+    });
+    rec.png_desktop=putResult('aud_'+p.n+'_desktop_'+p.slug+'_'+TS+'.png', await dpage.screenshot({fullPage:true}));
+    // mobile
+    await mpage.goto(p.url,{waitUntil:'domcontentloaded',timeout:70000}); await mpage.waitForTimeout(2200);
+    await openDesc(mpage); await autoscroll(mpage);
+    rec.png_mobile=putResult('aud_'+p.n+'_mobile_'+p.slug+'_'+TS+'.png', await mpage.screenshot({fullPage:true}));
+  }catch(e){ rec.err=e.message.slice(0,90); }
+  data.push(rec);
+}
+await browser.close();
+putResult('auddata_A_'+TS+'.json', data);
