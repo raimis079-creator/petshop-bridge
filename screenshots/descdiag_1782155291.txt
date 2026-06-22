@@ -1,0 +1,67 @@
+{
+ "meta": {
+  "17333": {
+   "desc_fields": "NONE",
+   "short": "99 proc. natūralios kilmės medžiagų. Be "
+  },
+  "18014": {
+   "desc_fields": "NONE",
+   "short": "Daug paukštienos baltymų &#8211; daugiau"
+  },
+  "27879": {
+   "desc_fields": "NONE",
+   "short": ""
+  },
+  "31874": {
+   "desc_fields": "NONE",
+   "short": ""
+  },
+  "33452": {
+   "desc_fields": "NONE",
+   "short": "&lt;p&gt;Sausas visavertis pašaras su žu"
+  },
+  "33900": {
+   "desc_fields": "NONE",
+   "short": "&lt;p&gt;Metalinis narvas augintiniams.&"
+  },
+  "33990": {
+   "desc_fields": "NONE",
+   "short": "&lt;p&gt;Draskyklė katėms.&lt;/p&gt;\n"
+  }
+ },
+ "coverage": {
+  "sample": 200,
+  "with_composition": 0,
+  "with_any_desc_field": 0
+ },
+ "markup": {
+  "18014": {
+   "found": true,
+   "chain": "strong.- > p.- > div.woocommerce-Tabs-panel.woocommerce-Tabs-panel--description.panel.entry-content.active > div.tab-panels > div.woocommerce-tabs.wc-tabs-wrapper.container.tabbed-content > ",
+   "mk": "<div class=\"woocommerce-tabs wc-tabs-wrapper container tabbed-content\"> <ul class=\"tabs wc-tabs product-tabs small-nav-collapse nav nav-uppercase nav-line nav-left\" role=\"tablist\"> <li role=\"presentation\" class=\"description_tab active\" id=\"tab-title-description\"> <a href=\"#tab-description\" role=\"tab\" aria-selected=\"true\" aria-controls=\"tab-description\"> Aprašymas </a> </li> <li role=\"presentation\" class=\"additional_information_tab\" id=\"tab-title-additional_information\"> <a href=\"#tab-additional_information\" role=\"tab\" aria-selected=\"false\" aria-controls=\"tab-additional_information\" tabindex=\"-1\"> Papildoma informacija </a> </li> </ul> <div class=\"tab-panels\"> <div class=\"woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active\" id=\"tab-description\" role=\"tabpanel\" aria-labelledby=\"tab-title-description\"> <p>Šio pašaro gamybai nenaudojama jokia grūdinė kultūra",
+   "accs": [
+    ".accordion:0",
+    ".ux-accordion:0",
+    ".tabbed-content:1",
+    ".woocommerce-tabs:1"
+   ],
+   "hasSudetis": true,
+   "hasKomp": false
+  },
+  "27879": {
+   "found": false,
+   "chain": "",
+   "mk": "",
+   "accs": [
+    ".accordion:0",
+    ".ux-accordion:0",
+    ".tabbed-content:1",
+    ".woocommerce-tabs:1"
+   ],
+   "hasSudetis": false,
+   "hasKomp": false
+  }
+ },
+ "png_18014": "201",
+ "png_27879": "201"
+}
