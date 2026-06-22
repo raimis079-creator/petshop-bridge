@@ -1,0 +1,8 @@
+{
+ "steps": [
+  "pw_import_ok",
+  "launched"
+ ],
+ "url": "https://dev.avesa.lt/kategorija/sunims/higienos-priemones-sunims/",
+ "ERROR": "page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/kategorija/sunims/higienos-priemones-sunims/\nCall log:\n  - navigating to \"https://dev.avesa.lt/kategorija/sunims/higienos-priemones-sunims/\", waiting until \"domcontentloaded\"\n\n    at /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:26:14"
+}
