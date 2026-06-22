@@ -9,27 +9,15 @@ function putResult(name, obj){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782126736";
-const prods=JSON.parse(execSync(`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?category=106&per_page=100&status=any&_fields=id,name,status"`,{encoding:'utf8',env,maxBuffer:25000000}));
-// spalvu leksikonas (saknys -> kanonine reiksme)
-const lex=[
- [/antracit/i,'Antracito'],[/pilk\u0161v/i,'Pilk\u0161va'],[/tamsiai pilk/i,'Tamsiai pilka'],[/\u0161viesiai pilk/i,'\u0161viesiai pilka'],[/pilkai ro\u017ein/i,'Pilkai ro\u017ein\u0117'],[/pilk/i,'Pilka'],
- [/m\u0117lynai pilk/i,'M\u0117lynai pilka'],[/m\u0117lyn/i,'M\u0117lyna'],[/melsv/i,'Melsva'],[/\u017eydr/i,'\u017dydra'],[/turkio/i,'Turkio'],[/j\u016bros vand/i,'J\u016bros vandens'],
- [/balt/i,'Balta'],[/krem/i,'Kremin\u0117'],[/sm\u0117li/i,'Sm\u0117lio'],[/kapu\u010din/i,'Kapu\u010dino'],[/garsty\u010di/i,'Garsty\u010di\u0173'],
- [/juod/i,'Juoda'],[/rausvai rud/i,'Rausvai ruda'],[/rud/i,'Ruda'],[/ro\u017ein/i,'Ro\u017ein\u0117'],[/raudon/i,'Raudona'],[/aviet/i,'Avietin\u0117'],
- [/\u017ealsv/i,'\u017dalsva'],[/salotin/i,'Salotin\u0117'],[/\u017eal/i,'\u017dalia'],[/oran\u017ein/i,'Oran\u017ein\u0117'],[/violetin/i,'Violetin\u0117'],[/sidabr/i,'Sidabrin\u0117'],[/\u0161viesus/i,'\u0161viesi']
-];
-function kind(n){ const s=n.toLowerCase(); if(/semtuv|mentel|lopetel|kastuv/.test(s))return 'SEMTUVELIS'; if(/kilim/.test(s))return 'KILIMELIS'; if(/stovas|laikikl|priedas|filtr/.test(s))return 'PRIEDAS'; if(/tualet|namelis/.test(s))return 'TUALETAS'; if(/guolis|sleptuve/.test(s))return 'STRAGLERIS'; return 'KITA'; }
-function colors(n){ const found=[]; for(const [re,val] of lex){ if(re.test(n) && !found.includes(val)) found.push(val); } return found; }
-const out={tualetai:[],semtuveliai:[],kita:[]};
-let noColor=0;
-for(const p of prods){
-  const k=kind(p.name); const c=colors(p.name);
-  if(!c.length) noColor++;
-  const row={id:p.id,kind:k,colors:c,name:p.name.slice(0,55)};
-  if(k==='TUALETAS') out.tualetai.push(row);
-  else if(k==='SEMTUVELIS') out.semtuveliai.push(row);
-  else out.kita.push(row);
-}
-out.summary={viso:prods.length,tualetai:out.tualetai.length,semtuveliai:out.semtuveliai.length,kita:out.kita.length,be_spalvos:noColor};
-out.fin=putResult('spalvos_recon_'+TS+'.txt', out);
+const TS="1782128717";
+function gj(u){ return JSON.parse(execSync(`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" "${u}"`,{encoding:'utf8',env,maxBuffer:25000000})); }
+const out={};
+// visos kategorijos su parent 87 (grauzikams) ir 89 (pauksciams) + patys
+const all=gj('https://dev.avesa.lt/wp-json/wc/v3/products/categories?per_page=100&_fields=id,name,slug,parent,count');
+out.grauzikams=all.filter(c=>c.id===87||c.parent===87).map(c=>({id:c.id,name:c.name,slug:c.slug,parent:c.parent,count:c.count}));
+out.pauksciams=all.filter(c=>c.id===89||c.parent===89).map(c=>({id:c.id,name:c.name,slug:c.slug,parent:c.parent,count:c.count}));
+// sample produktu is kiekvienos vaikines kategorijos
+function sample(cid){ try{ const p=gj('https://dev.avesa.lt/wp-json/wc/v3/products?category='+cid+'&per_page=12&status=any&_fields=id,name,attributes'); return {n:p.length, names:p.map(x=>x.name.slice(0,55)), attrs:[...new Set(p.flatMap(x=>(x.attributes||[]).map(a=>a.name)))]}; }catch(e){ return {err:1}; } }
+out.samples={};
+for(const c of [...out.grauzikams,...out.pauksciams]){ if(c.parent!==0 && c.count>0){ out.samples[c.id+' '+c.name]=sample(c.id); } }
+out.fin=putResult('gp_recon_'+TS+'.txt', out);
