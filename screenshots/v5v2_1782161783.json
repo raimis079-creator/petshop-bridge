@@ -1,4 +1,139 @@
 {
- "steps": [],
- "fatal": "ENOENT: no such file or directory, open 'descproto_v5.php'"
+ "steps": [
+  "deploy ok"
+ ],
+ "snippet": {
+  "id": 512,
+  "active": true
+ },
+ "tests": [
+  {
+   "n": "01",
+   "slug": "monge",
+   "status": 200,
+   "d": {
+    "acc": true,
+    "titles": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Priedai",
+     "Šėrimo instrukcija"
+    ],
+    "openStates": [
+     true,
+     false,
+     false,
+     false,
+     false
+    ],
+    "stray_short": false,
+    "stray_desc": false,
+    "pkgdims": false,
+    "short": "Sausas visavertis pašaras su ėriena ir ryžiais skirtas mažų veislių šuniukams ir"
+   }
+  },
+  {
+   "n": "02",
+   "slug": "farmina",
+   "status": 200,
+   "d": {
+    "acc": true,
+    "titles": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Priedai",
+     "Šėrimo instrukcija"
+    ],
+    "openStates": [
+     true,
+     false,
+     false,
+     false,
+     false
+    ],
+    "stray_short": false,
+    "stray_desc": false,
+    "pkgdims": false,
+    "short": "Dietinis visavertis pašaras suaugusioms katėms, skirtas sudedamųjų dalių ir mais"
+   }
+  },
+  {
+   "n": "04",
+   "slug": "josera",
+   "status": 200,
+   "d": {
+    "acc": true,
+    "titles": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Šėrimo instrukcija"
+    ],
+    "openStates": [
+     true,
+     false,
+     false,
+     false
+    ],
+    "stray_short": false,
+    "stray_desc": false,
+    "pkgdims": false,
+    "short": "Daug paukštienos baltymų – daugiau energijos. Be grūdų. Su saldžiosiomis bulvėmi"
+   }
+  },
+  {
+   "n": "05",
+   "slug": "exclusion",
+   "status": 200,
+   "d": {
+    "acc": true,
+    "titles": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Šėrimo instrukcija"
+    ],
+    "openStates": [
+     true,
+     false,
+     false,
+     false
+    ],
+    "stray_short": false,
+    "stray_desc": false,
+    "pkgdims": false,
+    "short": ""
+   }
+  },
+  {
+   "n": "07",
+   "slug": "narvas",
+   "status": 200,
+   "d": {
+    "acc": false,
+    "titles": [],
+    "openStates": [],
+    "stray_short": false,
+    "stray_desc": false,
+    "pkgdims": false,
+    "short": "Metalinis narvas augintiniams."
+   }
+  },
+  {
+   "n": "09",
+   "slug": "tualetas",
+   "status": 200,
+   "d": {
+    "acc": false,
+    "titles": [],
+    "openStates": [],
+    "stray_short": false,
+    "stray_desc": false,
+    "pkgdims": false,
+    "short": ""
+   }
+  }
+ ]
 }
