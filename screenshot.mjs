@@ -12,13 +12,12 @@ function putResult(name, obj){
 }
 const TS="1782162041";
 const PRODS=[
- {n:'01',slug:'monge',url:'https://dev.avesa.lt/product/monge-mini-puppy-sausas-pasaras-eriena-ir-ryziai-75kg/?ps_desc=1'},
- {n:'02',slug:'farmina',url:'https://dev.avesa.lt/product/farmina-vet-life-cat-dry-hypoallergenic-porkpotato-adult-15-kg/?ps_desc=1'},
- {n:'03',slug:'eukanuba',url:'https://dev.avesa.lt/product/eukanuba-evd-dog-dermatosis-fp-formula-5kg/?ps_desc=1'},
- {n:'04',slug:'josera',url:'https://dev.avesa.lt/product/josera-nature-energetic-125-kg-begrudis-sausas-maistas-suaugusiems-aktyviems-sunims/?ps_desc=1'},
- {n:'05',slug:'exclusion',url:'https://dev.avesa.lt/product/exclusion-mediterraneo-mono-noble-sausas-pasaras-sunims-s-su-eriena-7-kg/?ps_desc=1'},
+ {n:'06',slug:'sampunas',url:'https://dev.avesa.lt/product/naturalus-sampunas-jorksyro-terjerams-super-beno-york-300-ml/?ps_desc=1'},
+ {n:'07',slug:'narvas',url:'https://dev.avesa.lt/product/trixie-metalinis-narvas-xl-116x86x77-cm/?ps_desc=1'},
+ {n:'08',slug:'draskykle',url:'https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/?ps_desc=1'},
+ {n:'09',slug:'tualetas',url:'https://dev.avesa.lt/product/nobleza-atviras-tualetas-katems-44-5x34x18-5cm/?ps_desc=1'},
+ {n:'10',slug:'dubenelis',url:'https://dev.avesa.lt/product/dvigubas-chromuotas-dubenelis-sunims/?ps_desc=1'},
 ];
-function wc(p){ return JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/${p}"`,{encoding:'utf8',env,maxBuffer:30000000})); }
 const { chromium } = await import('playwright');
 const browser = await chromium.launch({ args:['--no-sandbox','--disable-setuid-sandbox'] });
 const dctx = await browser.newContext({ viewport:{width:1440,height:1000}, ignoreHTTPSErrors:true, deviceScaleFactor:1 });
@@ -42,13 +41,13 @@ for(const p of PRODS){
       const dets=[...document.querySelectorAll('.ps-desc-acc details')];
       const sections=dets.map(d=>d.querySelector('summary').textContent.trim());
       const openStates=dets.map(d=>d.hasAttribute('open'));
-      let fbtEl=q('.related.products')||q('.up-sells')||q('.cross-sells')||q('.petshop-fbt')||q('.ps-fbt');
+      let fbtEl=q('.related.products')||q('.up-sells')||q('.cross-sells');
       if(!fbtEl){ for(const e of [...document.querySelectorAll('h2,h3,h4,section')]){ if(/Da\u017Enai perkama kartu|perkama kartu|Susij\u0119 prek/i.test(e.textContent||'')){ fbtEl=e.closest('section')||e.parentElement; break; } } }
       let fbt_html=fbtEl?fbtEl.outerHTML:''; if(fbt_html.length>3000) fbt_html=fbt_html.slice(0,3000)+' <!-- TRUNC -->';
       const stray_short=/<\/?(p|strong|span|em|div|ul|li|br)\b|&lt;|&nbsp;|<style|\.b2b-/i.test(short_text);
       const stray_desc=/<\/?(p|strong|span|em|div)\b|&lt;|<style|\.b2b-/i.test(desc_text);
-      const pkgdims=/Pakuot\u0117s dydis|\d+\s*[x\u00D7]\s*\d+\s*[x\u00D7]\s*\d+\s*cm/i.test(desc_text);
-      return {title,short_html,desc_html,sections,openStates,fbt_present:!!fbtEl,fbt_html,stray_short,stray_desc,pkgdims,has_table:/<table/i.test(desc_html)};
+      const empty_bullets=[...document.querySelectorAll('#tab-description li')].filter(li=>!li.textContent.trim()).length;
+      return {title,short_html,desc_html,sections,openStates,fbt_present:!!fbtEl,fbt_html,stray_short,stray_desc,empty_bullets,desc_text_sample:desc_text.slice(0,160)};
     });
     rec.png_desktop=putResult('v5_'+p.n+'_desktop_'+p.slug+'_'+TS+'.png', await dpage.screenshot({fullPage:true}));
     await mpage.goto(p.url,{waitUntil:'domcontentloaded',timeout:70000}); await mpage.waitForTimeout(2200);
@@ -58,4 +57,4 @@ for(const p of PRODS){
   data.push(rec);
 }
 await browser.close();
-putResult('v5data_A_'+TS+'.json', data);
+putResult('v5data_B_'+TS+'.json', data);
