@@ -9,14 +9,21 @@ function putResult(name, obj){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/p.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/p.json "'+url+'"',{encoding:'utf8'}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782141627";
+const TS="1782141910";
 const out={};
-function cs(method,p){ const cmd=`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" -X ${method} "https://dev.avesa.lt/wp-json/code-snippets/v1/${p}"`; return JSON.parse(execSync(cmd,{encoding:'utf8',env,maxBuffer:20000000})); }
-// istrinti temp snippetus 504, 505
-for(const id of [504,505]){ try{ const r=cs('DELETE','snippets/'+id); out['del_'+id]=r&&(r.id||r.deleted||'ok'); }catch(e){ out['del_'+id]='err'; } }
-// patvirtinti DRY rodo triusiukas
-const html=execSync(`curl -sk --max-time 50 "https://dev.avesa.lt/?petshop_attr_grauzrusis=dry&k=ps2026"`,{encoding:'utf8',maxBuffer:10000000});
+// 1) APPLY
+const html=execSync(`curl -sk --max-time 90 "https://dev.avesa.lt/?petshop_attr_grauzrusis=apply&confirm=APPLY&k=ps2026"`,{encoding:'utf8',maxBuffer:10000000});
 const m=html.match(/Viso:\s*<b>(\d+)<\/b>.*?PARSED:\s*<b>(\d+)<\/b>.*?REVIEW:\s*<b>(\d+)<\/b>/s);
-out.dry=m?{viso:+m[1],parsed:+m[2],review:+m[3]}:'no match';
-out.has_triusiukas = /Dekoratyvinis triu\u0161iukas/.test(html);
-out.fin=putResult('cleanup_'+TS+'.txt', out);
+out.apply=m?{viso:+m[1],parsed:+m[2],review:+m[3]}:'no match';
+out.mode_apply = /APPLY<\/h2>/.test(html);
+// 2) verify - patikrinti terminus ant keliu prekiu per wc/v3
+function wc(p){ return JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/${p}"`,{encoding:'utf8',env,maxBuffer:20000000})); }
+out.verify=[];
+for(const id of [14447,18975,12936,20666,18919]){ try{ const p=wc('products/'+id+'?_fields=id,name,attributes'); const ga=(p.attributes||[]).find(a=>a.name==='Graužiko rūšis'||a.slug==='pa_grauziko_rusis'); out.verify.push(id+' '+p.name.slice(0,34)+' => '+(ga?ga.options.join(', '):'NONE')); }catch(e){ out.verify.push(id+' ERR'); } }
+// 3) terminu skaiciai
+const terms=wc('products/attributes/22/terms?per_page=50&_fields=name,count');
+out.terms=Array.isArray(terms)?terms.map(t=>t.name+': '+t.count):terms;
+// 4) deaktyvuoti temp snippetus 504/505
+function csput(id){ const body={active:false}; fs.writeFileSync('/tmp/d.json',JSON.stringify(body)); try{ const r=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X PUT -d @/tmp/d.json "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/${id}"`,{encoding:'utf8',env})); return r.active===false?'off':('a='+r.active); }catch(e){ return 'err'; } }
+out.temp504=csput(504); out.temp505=csput(505);
+out.fin=putResult('apply_'+TS+'.txt', out);
