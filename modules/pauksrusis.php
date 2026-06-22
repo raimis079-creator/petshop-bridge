@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Attr Modulis: Paukscio Rusis v1.2 (multi-tag parseris + dry/apply)
+ * Petshop Attr Modulis: Paukscio Rusis v1.3 (multi-tag parseris + dry/apply)
  *
  * Asis: pa_paukscio_rusis (NAUJA taksonomija, multi-value).
  * Konsoliduota schema (NEskaidyta pagal dydi):
@@ -25,11 +25,10 @@ function petshop_pauksrusis_norm( $s ) {
 function petshop_pauksrusis_species( $hay ) {
     /* $hay - normalizuotas (ASCII, su tarpais) */
     $out = array();
-    $is_bang = ( strpos( $hay, 'bang' ) !== false );
-    if ( $is_bang ) { $out[] = "Banguotosios pap\xC5\xABg\xC4\x97l\xC4\x97s"; } /* Banguotosios papugeles */
-    /* Papugos: jei papug/nimfa IR ne banguotos kontekstas */
-    if ( ! $is_bang && ( strpos( $hay, 'papug' ) !== false || strpos( $hay, 'nimf' ) !== false || strpos( $hay, 'sauleg' ) !== false ) ) {
-        $out[] = "Pap\xC5\xABgos"; /* Papugos (+ sauleg - saulegrazos prie papugu) */
+    /* Papugos: banguotosios, nimfos, visos papugos + saulegrazos */
+    if ( strpos( $hay, 'papug' ) !== false || strpos( $hay, 'bang' ) !== false
+        || strpos( $hay, 'nimf' ) !== false || strpos( $hay, 'sauleg' ) !== false ) {
+        $out[] = "Pap\xC5\xABgos"; /* Papugos */
     }
     /* Kanareles ir amadinai (+ tropiniai/egzotiniai giesmininkai) */
     if ( strpos( $hay, 'kanarel' ) !== false || strpos( $hay, 'amadin' ) !== false
@@ -92,7 +91,7 @@ add_action( 'init', function () {
 
     header( 'Content-Type: text/html; charset=utf-8' );
     echo '<!doctype html><meta charset="utf-8"><style>body{font:13px system-ui,Arial;margin:24px}table{border-collapse:collapse;margin-top:10px;width:100%;max-width:1100px}td,th{border:1px solid #ddd;padding:4px 8px;text-align:left}th{background:#f4f4f2}.p{color:#0f6e56}.r{background:#fff6e5}</style>';
-    echo '<h2>Pau_kscio Rusis v1.2 &mdash; ' . ( $do_write ? 'APPLY' : 'DRY-RUN' ) . '</h2>';
+    echo '<h2>Pau_kscio Rusis v1.3 &mdash; ' . ( $do_write ? 'APPLY' : 'DRY-RUN' ) . '</h2>';
     echo '<p>Viso: <b>' . count( $rows ) . '</b> &middot; PARSED: <b>' . $cnt['parsed'] . '</b> &middot; REVIEW: <b>' . $cnt['review'] . '</b></p>';
     echo '<table><tr><th>ID</th><th>Pavadinimas</th><th>Busena</th><th>Pauks_cio rusis</th></tr>';
     foreach ( $rows as $r ) {
