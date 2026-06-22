@@ -1,6 +1,17 @@
 <?php
-/** Petshop Aprasymu Accordion PROTO v1 (test gate ps_desc) */
+/** Petshop Aprasymu Accordion PROTO v2 (test gate ps_desc) */
 if (!defined('ABSPATH')) return;
+
+/* Pasalina <style>/<script> siuksles ir "Trumpas prekes aprasymas" etikete */
+if (!function_exists('psdp_clean')) {
+function psdp_clean($html){
+    if (!is_string($html)) return '';
+    $html = preg_replace('#<style[^>]*>.*?</style>#is', ' ', $html);
+    $html = preg_replace('#<script[^>]*>.*?</script>#is', ' ', $html);
+    $html = preg_replace('/Trumpas\s+prek\x{0117}s\s+apra\x{0161}ymas/iu', ' ', $html);
+    return $html;
+}
+}
 
 /* Transliteruoja LT -> ascii lowercase (markeriu atpazinimui) */
 if (!function_exists('psdp_ascii')) {
@@ -36,11 +47,7 @@ function psdp_title($m){
 if (!function_exists('psdp_split')) {
 function psdp_split($html){
     if (!is_string($html) || $html === '') return array();
-    // pasalinti pasleptas siuksles
-    $html = preg_replace('#<style[^>]*>.*?</style>#is', ' ', $html);
-    $html = preg_replace('#<script[^>]*>.*?</script>#is', ' ', $html);
-    // pasalinti "Trumpas prekes aprasymas" etikete (LT)
-    $html = preg_replace('/Trumpas\s+prek\x{0117}s\s+apra\x{0161}ymas/iu', ' ', $html);
+    $html = psdp_clean($html);
 
     // markeris = (galimai tag'uose) zodis + dvitaskis
     $pat = '/(?:<(?:strong|b|h[1-6]|span|em|p)[^>]*>\s*)*\s*' .
@@ -49,7 +56,7 @@ function psdp_split($html){
            '\x{0160}\x{0117}rim(?:o|as)?(?:\s+(?:instrukcija|norma|rekomendacijos))?|' .
            '\x{012E}sp\x{0117}jim(?:ai|as)?|Pagaminta|Med\x{017E}iagos|' .
            'Naudojim(?:o)?(?:\s+instrukcija)?)' .
-           '\s*(?:<\/(?:strong|b|span|em)>\s*)*\s*:/iu';
+           '(?:<[^>]+>\s*)*\s*:/iu';
 
     $parts = preg_split($pat, $html, -1, PREG_SPLIT_DELIM_CAPTURE);
     if (!is_array($parts) || count($parts) < 2) return array(); // markeriu nerasta -> fallback
@@ -65,7 +72,14 @@ function psdp_split($html){
         if (strlen(trim(wp_strip_all_tags($body))) < 2) continue; // tuscia -> nerodom
         $sections[] = array(psdp_title($marker), $body);
     }
-    return $sections;
+    // sujungti gretimas vienodo pavadinimo sekcijas (pvz. keli Priedai)
+    $merged = array();
+    foreach ($sections as $sec) {
+        $n = count($merged);
+        if ($n > 0 && $merged[$n-1][0] === $sec[0]) { $merged[$n-1][1] .= ' ' . $sec[1]; }
+        else { $merged[] = $sec; }
+    }
+    return $merged;
 }
 }
 
@@ -78,7 +92,7 @@ function psdp_render($key = '', $tab = array()){
 
     // fallback: nera markeriu -> paprastas tekstas (kaip buvo)
     if (count($sections) < 2) {
-        echo apply_filters('the_content', $content);
+        echo apply_filters('the_content', psdp_clean($content));
         return;
     }
 
