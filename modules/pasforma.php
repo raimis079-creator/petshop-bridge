@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Attr Modulis: Pasaro Forma v1.0 (parseris + dry/apply)
+ * Petshop Attr Modulis: Pasaro Forma v1.1 (parseris + dry/apply)
  *
  * Asis: pa_pasaro_forma (NAUJA taksonomija).
  * Schema: Granules, Vafliai, Lazdeles.
@@ -24,8 +24,13 @@ function petshop_pasforma_norm( $s ) {
 
 function petshop_pasforma_value( $hay ) {
     /* $hay - normalizuotas (ASCII). Viena reiksme prekei. */
+    /* NIUANSAS: micro wafers = smulkus, smulkioms zuvims -> Granules (ne tabletes) */
+    if ( strpos( $hay, 'micro wafers' ) !== false ) {
+        return "Granul\xC4\x97s"; /* Granules - micro wafers */
+    }
+    /* Kiti wafers (algae/sinking/mini algae) = dugno tabletes */
     if ( strpos( $hay, 'wafers' ) !== false || strpos( $hay, 'vafl' ) !== false ) {
-        return "Vafliai"; /* Vafliai */
+        return "Tablet\xC4\x97s"; /* Tabletes */
     }
     if ( strpos( $hay, 'sticks' ) !== false || strpos( $hay, 'stics' ) !== false
         || strpos( $hay, 'lazdel' ) !== false || strpos( $hay, 'vibra' ) !== false
@@ -88,7 +93,7 @@ add_action( 'init', function () {
 
     header( 'Content-Type: text/html; charset=utf-8' );
     echo '<!doctype html><meta charset="utf-8"><style>body{font:13px system-ui,Arial;margin:24px}table{border-collapse:collapse;margin-top:10px;width:100%;max-width:1100px}td,th{border:1px solid #ddd;padding:4px 8px;text-align:left}th{background:#f4f4f2}.p{color:#0f6e56}.r{background:#fff6e5}</style>';
-    echo '<h2>Pas_aro Forma v1.0 &mdash; ' . ( $do_write ? 'APPLY' : 'DRY-RUN' ) . '</h2>';
+    echo '<h2>Pas_aro Forma v1.1 &mdash; ' . ( $do_write ? 'APPLY' : 'DRY-RUN' ) . '</h2>';
     echo '<p>Viso: <b>' . count( $rows ) . '</b> &middot; PARSED: <b>' . $cnt['parsed'] . '</b> &middot; REVIEW: <b>' . $cnt['review'] . '</b></p>';
     echo '<table><tr><th>ID</th><th>Pavadinimas</th><th>Busena</th><th>Pas_aro forma</th></tr>';
     foreach ( $rows as $r ) {
