@@ -9,8 +9,14 @@ function putResult(name, str){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782197364";
-const ids="14772,14478,12463,12462,12461,12460,17947,19785,19770,19765,19730,19725,19760,19756,19751,19747,19720,19715,19780,19775,19740,19735,18623,21531,18572,18521,21123,18385,18382,18372,18369,18366,18354,18338,18332,18323,18320,18314,18302,18272,18254,18212,18206,18203,18197,18188,18181,18178,18172,18169,27128,18159,18154,27130,27132,18149,18058,18054,18051,17965,17969,17959,26899,17751,17748,27126,16889,16886,16881,16876,16871,16868,16865,16862,16857,16854,16745,16824,16810,16794,16791,16788,16785,16782,16779,16776,16772,16763,16751,16727,16724,16718,16712,16702,16609,16591,16645,16633,16627,16624,16588,16585,16582,16573,16431,16425,16422,16411,16402,14795,16326,16329,16534,16525,16481,16478,16475,16472,16469,16466,16270,16265,16259,16254";
-let json='';
-try{ json=execSync(`curl -sk --max-time 120 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/?ps_imprisk=1&k=ps2026&ids=${ids}"`,{encoding:'utf8',env,maxBuffer:50000000}); }catch(e){ json='{"fatal":"'+e.message.slice(0,100)+'"}'; }
-putResult('imprisk2_'+TS+'.json', json);
+const TS="1782197442";
+const out={};
+// 1) ar snippetas aktyvus?
+try{ const ls=execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets?per_page=100"`,{encoding:'utf8',env,maxBuffer:20000000});
+  const arr=JSON.parse(ls); out.imprisk_snippets=arr.filter(s=>/Import-Risk/i.test(s.name)).map(s=>({id:s.id,active:s.active}));
+}catch(e){ out.ls_err=e.message.slice(0,80); }
+// 2) be ids - http kodas + body pradzia
+try{ const r=execSync(`curl -sk --max-time 60 -w "\nHTTP:%{http_code}" -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/?ps_imprisk=1&k=ps2026"`,{encoding:'utf8',env,maxBuffer:50000000});
+  out.noids_resp=r.slice(0,2500);
+}catch(e){ out.noids_err=e.message.slice(0,120); }
+putResult('imprisk3_'+TS+'.json', JSON.stringify(out));
