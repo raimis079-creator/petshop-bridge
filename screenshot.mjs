@@ -11,31 +11,37 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
-function readRaw(id){const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}
+const out={ts:TS,checks:{}};
 
-const analitines='\n<p><strong>Analitin\u0117s sudedamosios dalys:</strong></p>\n<p>Baltymai 26,0 %, riebal\u0173 kiekis 16,0 %, \u017dalia l\u0105stelien\u0105 2,5 %, \u017dali pelenai 6,7 %, kalcis 1,40 %, fosforas 0,95 %, natris 0,40 %, magnis 0,10 %. Metabolizuojama energija: 16,1 MJ/kg.</p>';
-const serimas='\n<p><strong>\u0160\u0117rimo instrukcija:</strong></p>\n<table>\n<tr><th>\u0160uns svoris</th><th>Neaktyvus / senyvas</th><th>Normaliai aktyvus</th><th>Aktyvus</th></tr>\n<tr><td>5 kg</td><td>45 g</td><td>60 g</td><td>75 g</td></tr>\n<tr><td>10 kg</td><td>80 g</td><td>110 g</td><td>135 g</td></tr>\n<tr><td>20 kg</td><td>135 g</td><td>180 g</td><td>230 g</td></tr>\n<tr><td>30 kg</td><td>180 g</td><td>250 g</td><td>315 g</td></tr>\n<tr><td>40 kg</td><td>225 g</td><td>310 g</td><td>390 g</td></tr>\n<tr><td>60 kg</td><td>305 g</td><td>420 g</td><td>530 g</td></tr>\n<tr><td>80 kg</td><td>380 g</td><td>520 g</td><td>655 g</td></tr>\n</table>\n<p>Nurodyti kiekiai \u2014 vienam gyv\u016bnui per par\u0105, pagal suaugusio \u0161uns svor\u012f. Pritaikykite pagal \u0161uns b\u016bkl\u0119 ir aktyvum\u0105. Visada turi b\u016bti \u0161vie\u017eio geriamojo vandens.</p>';
+// 1. wc/v3 skaitymas - zinoma preke 19751 (Ambrosia, ka taisem)
+try{
+  const p=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products/19751?_fields=id,name,status,sku"`,{encoding:'utf8',env,maxBuffer:20000000}));
+  out.checks.wc_v3_read={ok:!!p.id, id:p.id, sku:p.sku, status:p.status, name:(p.name||"").slice(0,50)};
+}catch(e){out.checks.wc_v3_read={ok:false,err:String(e).slice(0,120)};}
 
-const out={ts:TS, items:[]};
-for(const ID of [18154, 26449]){
-  const rec={id:ID};
-  const orig=readRaw(ID); rec.orig_md5=md5(orig);
-  let m=orig;
-  rec.had_anal=/analitin/i.test(m); rec.had_table=/<table/i.test(m);
-  if(!rec.had_anal) m=m+analitines;
-  if(!rec.had_table) m=m+serimas;
-  rec.changed=(orig!==m); rec.len_diff=m.length-orig.length;
-  rec.sud_intact=((orig.match(/Sud\u0117tis\s*:/gi)||[]).length===(m.match(/Sud\u0117tis\s*:/gi)||[]).length);
-  if(rec.changed && rec.sud_intact){
-    fs.writeFileSync('/tmp/upd.json', JSON.stringify({content:m}));
-    const w=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/upd.json "https://dev.avesa.lt/wp-json/wp/v2/product/${ID}"`,{encoding:'utf8',env,maxBuffer:20000000});
-    try{ rec.write_ok=!!JSON.parse(w).id; }catch(e){ rec.write_ok=false; }
-    const after=readRaw(ID); rec.lossless=(md5(m)===md5(after));
-    rec.after_anal=/analitin/i.test(after); rec.after_table=/<table[\s\S]*?kg/i.test(after);
-  }
-  out.items.push(rec);
-  execSync('sleep 0.4');
-}
-putResult('festival_'+TS+'.json', JSON.stringify(out,null,2));
-console.log(JSON.stringify(out.items.map(i=>({id:i.id,write:i.write_ok,loss:i.lossless,anal:i.after_anal,table:i.after_table}))));
+// 2. wc/v3 rasymas (saugiai - perskaitau ir parasau ta pacia reiksme, jokio realaus pakeitimo)
+try{
+  const before=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products/19751?_fields=catalog_visibility"`,{encoding:'utf8',env,maxBuffer:20000000}));
+  const vis=before.catalog_visibility||"visible";
+  const w=execSync(`curl -sk --max-time 30 -X PUT -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -d '{"catalog_visibility":"${vis}"}' "https://dev.avesa.lt/wp-json/wc/v3/products/19751?_fields=id,catalog_visibility"`,{encoding:'utf8',env,maxBuffer:20000000});
+  const wj=JSON.parse(w);
+  out.checks.wc_v3_write={ok:wj.id===19751, wrote_back:wj.catalog_visibility, note:"ta pati reiksme, jokio pakeitimo"};
+}catch(e){out.checks.wc_v3_write={ok:false,err:String(e).slice(0,120)};}
+
+// 3. code-snippets/v1 - snippet 512 (v5 accordion)
+try{
+  const s=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/512?k=ps2026"`,{encoding:'utf8',env,maxBuffer:20000000}));
+  out.checks.snippet_512={ok:!!s.id, id:s.id, name:(s.name||"").slice(0,50), active:s.active};
+}catch(e){out.checks.snippet_512={ok:false,err:String(e).slice(0,120)};}
+
+// 4. wp/v2 raw lossless skaitymas + ar Ambrosia zymekliai vietoje
+try{
+  const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/19751?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));
+  const raw=(r.content&&r.content.raw)||"";
+  out.checks.wp_v2_raw={ok:raw.length>0, len:raw.length, md5:crypto.createHash('md5').update(raw,'utf8').digest('hex'),
+    has_analitines: raw.indexOf("Analitin")>-1, has_serimo: raw.indexOf("\u0160\u0117rimo")>-1, has_sudetis: raw.indexOf("Sud\u0117tis")>-1,
+    broken_base64: (raw.match(/src="image\/png;base64/g)||[]).length};
+}catch(e){out.checks.wp_v2_raw={ok:false,err:String(e).slice(0,120)};}
+
+putResult("sanity_"+TS+".json", JSON.stringify(out,null,2));
+console.log("SANITY DONE "+TS);
