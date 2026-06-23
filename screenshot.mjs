@@ -9,40 +9,52 @@ function putResult(name, str){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
+const env2=env;
+const START=parseInt(process.env.SCAN_START||'0');
+const COUNT=parseInt(process.env.SCAN_COUNT||'400');
 const TS=String(Date.now());
-function wc(path){return execSync(`curl -sk --max-time 50 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/${path}"`,{encoding:'utf8',env,maxBuffer:80000000});}
 
-// 1. Surandu maisto+konservu kategorijas
-let cats=[];
-for(let page=1;page<=3;page++){
+// Imu food ID is anksciau issaugoto failo repo
+const idsRaw=execSync(`curl -s -H "Authorization: Bearer ${process.env.GH_TOKEN}" "https://api.github.com/repos/${process.env.GH_REPO}/contents/screenshots?ref=main&t=${Date.now()}"`,{encoding:'utf8'});
+const idsFile=(idsRaw.match(/"foodids_\d+\.json"/g)||[]).map(s=>s.replace(/"/g,'')).sort().pop();
+const idsContent=execSync(`curl -s "https://raw.githubusercontent.com/${process.env.GH_REPO}/main/screenshots/${idsFile}"`,{encoding:'utf8'});
+let allIds=JSON.parse(idsContent);
+const ids=allIds.slice(START, START+COUNT);
+
+function wpraw(id){
   try{
-    const r=JSON.parse(wc(`products/categories?per_page=100&page=${page}&_fields=id,name,slug,count`));
-    if(!Array.isArray(r)||r.length===0)break;
-    cats=cats.concat(r);
-    if(r.length<100)break;
-  }catch(e){break;}
+    const r=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=id,title,content"`,{encoding:'utf8',env:env2,maxBuffer:20000000}));
+    return {raw:(r.content&&r.content.raw)||'', title:(r.title&&r.title.raw)||''};
+  }catch(e){ return {raw:'',title:'',err:1}; }
 }
-// filtruoju maisto/konservu kategorijas pagal pavadinima
-const foodRe=/maist|pašar|pasar|konserv|sausas|šlapias|slapias|food|skanest|skanėst/i;
-const foodCats=cats.filter(c=>foodRe.test(c.name)||foodRe.test(c.slug));
-const out={ts:TS, food_categories:foodCats.map(c=>({id:c.id,name:c.name,count:c.count})), summary:{}, items:[]};
 
-// 2. Surandu prekiu ID is tu kategoriju (tik publish)
-const catIds=foodCats.map(c=>c.id);
-let prodIds=new Set();
-for(const cid of catIds){
-  for(let page=1;page<=10;page++){
-    try{
-      const r=JSON.parse(wc(`products?category=${cid}&status=publish&per_page=100&page=${page}&_fields=id`));
-      if(!Array.isArray(r)||r.length===0)break;
-      r.forEach(p=>prodIds.add(p.id));
-      if(r.length<100)break;
-    }catch(e){break;}
-  }
+// Sudetis: standartinis "Sudetis:" ARBA "Sudedamosios dalys:" ARBA tekste ingredientu sarasas
+function hasSudetis(h){
+  const l=h.toLowerCase();
+  return /sud\u0117tis\s*:|sudedamosios\s+dalys|ingredient|sestav/i.test(l);
 }
-out.summary.total_food_products = prodIds.size;
-putResult('foodaudit_cats_'+TS+'.json', JSON.stringify(out,null,2));
-console.log('cats:'+foodCats.length+' products:'+prodIds.size);
-// issaugau ID sarasa kitam zingsniui
-fs.writeFileSync('/tmp/foodids.json', JSON.stringify([...prodIds]));
-putResult('foodids_'+TS+'.json', JSON.stringify([...prodIds]));
+// Serimas: visi variantai
+function hasSerimas(h){
+  const l=h.toLowerCase();
+  return /\u0161\u0117rim|serim|maitinimo\s+norma|paros\s+norma|rekomenduojamas\s+kiekis|g\/per\s+dien|\u0161uns\s+svoris|kat\u0117s\s+svoris/i.test(l);
+}
+// Analitines
+function hasAnalitines(h){
+  const l=h.toLowerCase();
+  return /analitin|\u017eali\s+baltym|\u017ealieji\s+riebal|\u017ealias\s+baltym/i.test(l);
+}
+
+const out={ts:TS, start:START, count:ids.length, total:allIds.length, items:[]};
+for(const id of ids){
+  const d=wpraw(id);
+  const empty=d.raw.length<30;
+  out.items.push({
+    id, len:d.raw.length, empty,
+    sudetis:hasSudetis(d.raw),
+    analitines:hasAnalitines(d.raw),
+    serimas:hasSerimas(d.raw)
+  });
+  execSync('sleep 0.15');
+}
+putResult('foodscan_'+START+'_'+TS+'.json', JSON.stringify(out));
+console.log('scanned '+ids.length+' from '+START);
