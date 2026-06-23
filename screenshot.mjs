@@ -12,35 +12,26 @@ function putResult(name, str){
 }
 const TS=String(Date.now());
 const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
-const ID=27130;
+const ID=18154;
 function readRaw(id){const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}
-
 const orig=readRaw(ID);
 const out={ts:TS, id:ID, orig_len:orig.length, orig_md5:md5(orig)};
 
-// Tiksli josera.de Kids lentele (svoris x amzius)
-const newTable='<table>\n<tr><th>Suaugusio svoris</th><th>2 m\u0117n.</th><th>3 m\u0117n.</th><th>4 m\u0117n.</th><th>5\u20136 m\u0117n.</th><th>7\u201312 m\u0117n.</th></tr>\n<tr><td>10 kg</td><td>90\u2013120 g</td><td>140\u2013160 g</td><td>170\u2013180 g</td><td>165\u2013190 g</td><td>160\u2013180 g</td></tr>\n<tr><td>20 kg</td><td>140\u2013170 g</td><td>240\u2013295 g</td><td>310\u2013375 g</td><td>320\u2013390 g</td><td>300\u2013360 g</td></tr>\n<tr><td>30 kg</td><td>190\u2013230 g</td><td>290\u2013350 g</td><td>370\u2013450 g</td><td>410\u2013480 g</td><td>400\u2013450 g</td></tr>\n<tr><td>40 kg</td><td>255\u2013310 g</td><td>400\u2013440 g</td><td>410\u2013530 g</td><td>490\u2013570 g</td><td>480\u2013540 g</td></tr>\n<tr><td>60 kg</td><td>290\u2013355 g</td><td>490\u2013560 g</td><td>580\u2013720 g</td><td>660\u2013800 g</td><td>800\u2013900 g</td></tr>\n<tr><td>80 kg</td><td>390\u2013475 g</td><td>550\u2013650 g</td><td>690\u2013900 g</td><td>820\u20131000 g</td><td>930\u20131000 g</td></tr>\n</table>';
+const analitines='\n<p><strong>Analitin\u0117s sudedamosios dalys:</strong></p>\n<p>Baltymai 26,0 %, riebal\u0173 kiekis 16,0 %, \u017dalia l\u0105stelien\u0105 2,5 %, \u017dali pelenai 6,7 %, kalcis 1,40 %, fosforas 0,95 %, natris 0,40 %, magnis 0,10 %. Metabolizuojama energija: 16,1 MJ/kg (3849 kcal/kg).</p>';
+const serimas='\n<p><strong>\u0160\u0117rimo instrukcija:</strong></p>\n<table>\n<tr><th>\u0160uns svoris</th><th>Aktyvumas iki 1 val./d.</th><th>Aktyvumas iki 3 val./d.</th></tr>\n<tr><td>5 kg</td><td>85 g</td><td>95 g</td></tr>\n<tr><td>10 kg</td><td>140 g</td><td>160 g</td></tr>\n<tr><td>20 kg</td><td>235 g</td><td>270 g</td></tr>\n<tr><td>30 kg</td><td>315 g</td><td>365 g</td></tr>\n<tr><td>40 kg</td><td>395 g</td><td>455 g</td></tr>\n<tr><td>60 kg</td><td>530 g</td><td>615 g</td></tr>\n<tr><td>80 kg</td><td>660 g</td><td>765 g</td></tr>\n</table>\n<p>Nurodyti kiekiai \u2014 vienam gyv\u016bnui per par\u0105, pagal suaugusio \u0161uns svor\u012f. Duodant skanest\u0173, kiek\u012f suma\u017einkite. Visada turi b\u016bti \u0161vie\u017eio geriamojo vandens.</p>';
 
-// pakeiciu ESAMA lentele nauja
 let m=orig;
-out.had_table=/<table[\s\S]*?<\/table>/i.test(m);
-if(out.had_table){
-  m=m.replace(/<table[\s\S]*?<\/table>/i, newTable);
-  out.method='replaced';
-} else { out.method='NO_TABLE_FOUND'; }
+out.had_anal=/analitin/i.test(m); out.had_table=/<table/i.test(m);
+if(!out.had_anal) m=m+analitines;
+if(!out.had_table) m=m+serimas;
 out.changed=(orig!==m); out.len_diff=m.length-orig.length;
-// saugiklis: tik 1 lentele pakeista, analitines/sudetis nepaliesta
-out.tables_before=(orig.match(/<table/gi)||[]).length;
-out.tables_after=(m.match(/<table/gi)||[]).length;
-out.anal_intact=/analitin/i.test(m);
 out.sud_intact=((orig.match(/Sud\u0117tis\s*:/gi)||[]).length===(m.match(/Sud\u0117tis\s*:/gi)||[]).length);
-
-if(out.changed && out.method==='replaced' && out.tables_before===out.tables_after && out.sud_intact){
+if(out.changed && out.sud_intact){
   fs.writeFileSync('/tmp/upd.json', JSON.stringify({content:m}));
   const w=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/upd.json "https://dev.avesa.lt/wp-json/wp/v2/product/${ID}"`,{encoding:'utf8',env,maxBuffer:20000000});
   try{ out.write_ok=!!JSON.parse(w).id; }catch(e){ out.write_ok=false; }
   const after=readRaw(ID); out.lossless=(md5(m)===md5(after));
-  out.after_has_90120=/90\u2013120 g|90.120 g/.test(after);
+  out.after_anal=/analitin/i.test(after); out.after_table=/<table[\s\S]*?kg/i.test(after);
 }
-putResult('kidsfix_'+TS+'.json', JSON.stringify(out,null,2));
-console.log(JSON.stringify({method:out.method,write:out.write_ok,lossless:out.lossless,t_before:out.tables_before,t_after:out.tables_after}));
+putResult('festival1_'+TS+'.json', JSON.stringify(out,null,2));
+console.log(JSON.stringify({write:out.write_ok,lossless:out.lossless,anal:out.after_anal,table:out.after_table}));
