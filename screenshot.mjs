@@ -9,17 +9,8 @@ function putResult(name, str){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS=process.env.RUN_TS;
-const out={};
-try{
-  let php=fs.readFileSync('psimprisk.php','utf8').replace(/^\uFEFF?<\?php\s*/,'');
-  fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'Petshop Import-Risk Recon v1 (read-only)',scope:'global',active:true,code:php}));
-  const cr=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/sn.json "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets"`,{encoding:'utf8',env,maxBuffer:20000000});
-  try{ out.snid=JSON.parse(cr).id; }catch(e){ out.cr=cr.slice(0,150); }
-  execSync('sleep 3');
-  const ids="14772,14478,12463,12462,12461,12460,17947,19785,19770,19765,19730,19725,19760,19756,19751,19747,19720,19715,19780,19775,19740,19735,18623,21531,18572,18521,21123,18385,18382,18372,18369,18366,18354,18338,18332,18323,18320,18314,18302,18272,18254,18212,18206,18203,18197,18188,18181,18178,18172,18169,27128,18159,18154,27130,27132,18149,18058,18054,18051,17965,17969,17959,26899,17751,17748,27126,16889,16886,16881,16876,16871,16868,16865,16862,16857,16854,16745,16824,16810,16794,16791,16788,16785,16782,16779,16776,16772,16763,16751,16727,16724,16718,16712,16702,16609,16591,16645,16633,16627,16624,16588,16585,16582,16573,16431,16425,16422,16411,16402,14795,16326,16329,16534,16525,16481,16478,16475,16472,16469,16466,16270,16265,16259,16254";
-  const json=execSync(`curl -sk --max-time 120 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/?ps_imprisk=1&k=ps2026&ids=${ids}"`,{encoding:'utf8',env,maxBuffer:50000000});
-  putResult('imprisk_'+TS+'.json', json);
-  out.len=json.length;
-}catch(e){ out.fatal=e.message.slice(0,200); }
-putResult('imprisk_meta_'+TS+'.json', JSON.stringify(out));
+const TS="1782197364";
+const ids="14772,14478,12463,12462,12461,12460,17947,19785,19770,19765,19730,19725,19760,19756,19751,19747,19720,19715,19780,19775,19740,19735,18623,21531,18572,18521,21123,18385,18382,18372,18369,18366,18354,18338,18332,18323,18320,18314,18302,18272,18254,18212,18206,18203,18197,18188,18181,18178,18172,18169,27128,18159,18154,27130,27132,18149,18058,18054,18051,17965,17969,17959,26899,17751,17748,27126,16889,16886,16881,16876,16871,16868,16865,16862,16857,16854,16745,16824,16810,16794,16791,16788,16785,16782,16779,16776,16772,16763,16751,16727,16724,16718,16712,16702,16609,16591,16645,16633,16627,16624,16588,16585,16582,16573,16431,16425,16422,16411,16402,14795,16326,16329,16534,16525,16481,16478,16475,16472,16469,16466,16270,16265,16259,16254";
+let json='';
+try{ json=execSync(`curl -sk --max-time 120 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/?ps_imprisk=1&k=ps2026&ids=${ids}"`,{encoding:'utf8',env,maxBuffer:50000000}); }catch(e){ json='{"fatal":"'+e.message.slice(0,100)+'"}'; }
+putResult('imprisk2_'+TS+'.json', json);
