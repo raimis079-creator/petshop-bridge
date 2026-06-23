@@ -19,42 +19,52 @@ for(let page=1;page<=3;page++){
   }catch(e){break;}
 }
 const seen={}; products=products.filter(p=>{if(seen[p.id])return false;seen[p.id]=1;return true;});
-
-// FILTRAS: tik TIKRA Josera/Josi/JosiDog/JosiCat (pavadinime), NE Ambrosia/Trixie/skanestai
 products=products.filter(p=>{
   const n=p.name.toLowerCase();
-  if(/ambrosia|trixie|biovet/i.test(n)) return false; // svetimi brendai
-  if(!/josera|josi|josidog|josicat/i.test(n)) return false; // tik josera seima
-  // atmetu skanestus (kojos, trachejos, sausgysles)
-  if(/koj|trach|sausgysl|ausis|kramt|skanest|snack/i.test(n)) return false;
+  if(/ambrosia|trixie|biovet/i.test(n)) return false;
+  if(!/josera|josi|josidog|josicat/i.test(n)) return false;
+  if(/koj|trach|sausgysl|ausis|kramt/i.test(n)) return false;
   return true;
 });
-
-// klasifikuoju: sausas vs konservai
-function isKonservai(n){return /konserv|pat[eé]|filet|meat lovers|85\s*g|400\s*g\b|pure/i.test(n.toLowerCase());}
-
-fs.writeFileSync('/tmp/jcids.txt', products.map(p=>p.id).join('\n'));
+fs.writeFileSync('/tmp/jfids.txt', products.map(p=>p.id).join('\n'));
 const user=process.env.WP_USER, pass=env.WP_PASS_CLEAN;
-execSync('mkdir -p /tmp/jc');
-execSync(`cat /tmp/jcids.txt | xargs -P 10 -I{} sh -c 'curl -sk --max-time 20 -u "${user}:${pass}" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=content" -o /tmp/jc/{}.json 2>/dev/null'`,{maxBuffer:200000000, timeout:300000});
+execSync('mkdir -p /tmp/jf');
+execSync(`cat /tmp/jfids.txt | xargs -P 10 -I{} sh -c 'curl -sk --max-time 20 -u "${user}:${pass}" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=content" -o /tmp/jf/{}.json 2>/dev/null'`,{maxBuffer:200000000, timeout:300000});
 
 function hasFeedTable(h){const tables=h.match(/<table[\s\S]*?<\/table>/gi)||[];for(const t of tables){const txt=t.replace(/<[^>]+>/g,' ');if(/\d+\s*kg/i.test(txt)&&/\d+\s*[-\u2013\u2014]?\s*\d*\s*g\b/i.test(txt))return true;}return false;}
+// Sudetis: zymeklis ARBA ingredientu sarasas
+function hasSudetis(h){return /sud\u0117tis\s*:|sudedamosios\s+dalys|sudedam/i.test(h);}
+// Analitines: garantuota analize - "Zali baltymai X%" arba "baltymai X %" su procentais
+function hasAnalitines(h){
+  const l=h.toLowerCase();
+  // tikra analize - baltymai + procentai
+  return /(\u017eali\s+baltym|\u017ealias?\s+baltym|analitin)/i.test(l) && /\d+[\.,]?\d*\s*%/.test(h);
+}
+function isKonservai(n){return /konserv|pat[eé]|filet|meat lovers|85\s*g|pure beef/i.test(n.toLowerCase());}
 
 const out={ts:TS, items:[]};
 for(const p of products){
-  let h=''; try{ h=(JSON.parse(fs.readFileSync('/tmp/jc/'+p.id+'.json','utf8')).content||{}).raw||''; }catch(e){}
-  const kons=isKonservai(p.name);
-  out.items.push({id:p.id, name:p.name.slice(0,55), kons, feedTable:hasFeedTable(h), empty:h.length<30});
+  let h=''; try{ h=(JSON.parse(fs.readFileSync('/tmp/jf/'+p.id+'.json','utf8')).content||{}).raw||''; }catch(e){}
+  out.items.push({
+    id:p.id, name:p.name.slice(0,52), len:h.length, empty:h.length<30,
+    kons:isKonservai(p.name),
+    sud:hasSudetis(h), anal:hasAnalitines(h), table:hasFeedTable(h)
+  });
 }
-const sausas=out.items.filter(i=>!i.kons);
-const kons=out.items.filter(i=>i.kons);
+const sausas=out.items.filter(i=>!i.kons&&!i.empty);
 out.summary={
-  total_josera:out.items.length,
   sausas_total:sausas.length,
-  sausas_su_lentele:sausas.filter(i=>i.feedTable).length,
-  sausas_BE_lenteles:sausas.filter(i=>!i.feedTable&&!i.empty).length,
-  konservai:kons.length
+  no_sudetis:sausas.filter(i=>!i.sud).length,
+  no_analitines:sausas.filter(i=>!i.anal).length,
+  no_feed_table:sausas.filter(i=>!i.table).length,
+  // prekes kurioms truksta KELIU dalyku
+  no_sud_AND_anal:sausas.filter(i=>!i.sud&&!i.anal).length,
+  pilnai_truksta:sausas.filter(i=>!i.sud&&!i.anal&&!i.table).length
 };
-out.sausas_be_lenteles_ids=sausas.filter(i=>!i.feedTable&&!i.empty).map(i=>({id:i.id,name:i.name}));
-putResult('josclean_'+TS+'.json', JSON.stringify(out,null,2));
+// detalus problematisku sarasas
+out.problems=sausas.filter(i=>!i.sud||!i.anal||!i.table).map(i=>({
+  id:i.id, name:i.name,
+  truksta:[!i.sud?'Sudetis':null,!i.anal?'Analitines':null,!i.table?'Serimas':null].filter(Boolean).join('+')
+}));
+putResult('josfull_'+TS+'.json', JSON.stringify(out,null,2));
 console.log(JSON.stringify(out.summary));
