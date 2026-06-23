@@ -10,47 +10,34 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-// Josera + JosiDog + JosiCat
+// viena paieska "Josera" pakanka (JosiDog/JosiCat irgi turi "Josera" varda dazniausiai), + lygiagretus raw
 let products=[];
-for(const term of ['Josera','JosiDog','JosiCat','Josi']){
-  for(let page=1;page<=3;page++){
-    try{
-      const r=JSON.parse(execSync(`curl -sk --max-time 50 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?search=${term}&per_page=50&page=${page}&status=publish&_fields=id,name"`,{encoding:'utf8',env,maxBuffer:50000000}));
-      if(!Array.isArray(r)||r.length===0)break;
-      products=products.concat(r); if(r.length<50)break;
-    }catch(e){break;}
-  }
+for(let page=1;page<=3;page++){
+  try{
+    const r=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?search=Jose&per_page=100&page=${page}&status=publish&_fields=id,name"`,{encoding:'utf8',env,maxBuffer:50000000}));
+    if(!Array.isArray(r)||r.length===0)break;
+    products=products.concat(r); if(r.length<100)break;
+  }catch(e){break;}
 }
 const seen={}; products=products.filter(p=>{if(seen[p.id])return false;seen[p.id]=1;return true;});
+// lygiagretus raw skaitymas
+fs.writeFileSync('/tmp/jids.txt', products.map(p=>p.id).join('\n'));
+const user=process.env.WP_USER, pass=env.WP_PASS_CLEAN;
+execSync('mkdir -p /tmp/jp');
+execSync(`cat /tmp/jids.txt | xargs -P 10 -I{} sh -c 'curl -sk --max-time 20 -u "${user}:${pass}" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=content" -o /tmp/jp/{}.json 2>/dev/null'`,{maxBuffer:200000000, timeout:300000});
 
-function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}catch(e){return 'ERR';}}
-
-// tikra serimo lentele su kg+gramai
-function hasFeedTable(h){
-  const tables=h.match(/<table[\s\S]*?<\/table>/gi)||[];
-  for(const t of tables){const txt=t.replace(/<[^>]+>/g,' ');if(/\d+\s*kg/i.test(txt)&&/\d+\s*[-\u2013\u2014]?\s*\d*\s*g\b/i.test(txt))return true;}
-  return false;
-}
+function hasFeedTable(h){const tables=h.match(/<table[\s\S]*?<\/table>/gi)||[];for(const t of tables){const txt=t.replace(/<[^>]+>/g,' ');if(/\d+\s*kg/i.test(txt)&&/\d+\s*[-\u2013\u2014]?\s*\d*\s*g\b/i.test(txt))return true;}return false;}
 const out={ts:TS, total:products.length, items:[]};
 for(const p of products){
-  const h=readRaw(p.id);
+  let h=''; try{ h=(JSON.parse(fs.readFileSync('/tmp/jp/'+p.id+'.json','utf8')).content||{}).raw||''; }catch(e){}
   const l=h.toLowerCase();
-  out.items.push({
-    id:p.id, name:p.name.slice(0,50), len:h.length, empty:h.length<30,
-    has_sudetis:/sud\u0117tis\s*:|sudedamosios\s+dalys/i.test(l),
-    has_analitines:/analitin|\u017eali\s+baltym/i.test(l),
-    has_serimo_word:/\u0161\u0117rim|maitinimo\s+norma|paros\s+norma/i.test(l),
-    has_feed_table:hasFeedTable(h),
-    broken_imgs:(h.match(/src="image\/(?:png|jpe?g|gif|webp);base64/gi)||[]).length
-  });
-  execSync('sleep 0.25');
+  out.items.push({id:p.id, name:p.name.slice(0,50), len:h.length, empty:h.length<30,
+    sud:/sud\u0117tis\s*:|sudedamosios\s+dalys/i.test(l), anal:/analitin|\u017eali\s+baltym/i.test(l),
+    serW:/\u0161\u0117rim|maitinimo\s+norma|paros\s+norma/i.test(l), feedTable:hasFeedTable(h),
+    broken:(h.match(/src="image\/(?:png|jpe?g|gif|webp);base64/gi)||[]).length});
 }
-out.summary={
-  total:out.items.length, empty:out.items.filter(i=>i.empty).length,
-  no_sudetis:out.items.filter(i=>!i.has_sudetis&&!i.empty).length,
-  no_analitines:out.items.filter(i=>!i.has_analitines&&!i.empty).length,
-  no_feed_table:out.items.filter(i=>!i.has_feed_table&&!i.empty).length,
-  broken_imgs:out.items.filter(i=>i.broken_imgs>0).length
-};
-putResult('josscan_'+TS+'.json', JSON.stringify(out,null,2));
+out.summary={total:out.items.length, empty:out.items.filter(i=>i.empty).length,
+  no_sud:out.items.filter(i=>!i.sud&&!i.empty).length, no_anal:out.items.filter(i=>!i.anal&&!i.empty).length,
+  no_table:out.items.filter(i=>!i.feedTable&&!i.empty).length, broken:out.items.filter(i=>i.broken>0).length};
+putResult('josscan2_'+TS+'.json', JSON.stringify(out,null,2));
 console.log(JSON.stringify(out.summary));
