@@ -9,10 +9,9 @@ function putResult(name, str){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const TS="1782200294";
+const TS="1782200511";
 const out={writes:[]};
-const ids=['14772','12463','14478'];
-for(const pid of ids){
+for(const pid of ['12461','12462']){
   const rec={id:pid};
   try{
     const html=fs.readFileSync('desc_'+pid+'.html','utf8');
@@ -22,11 +21,6 @@ for(const pid of ids){
     const u=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X PUT -d @/tmp/upd.json "https://dev.avesa.lt/wp-json/wc/v3/products/${pid}"`,{encoding:'utf8',env,maxBuffer:20000000}));
     rec.after=(u.description||'').length; rec.ok=true;
   }catch(e){ rec.err=e.message.slice(0,80); }
-  out.writes.push(rec);
-  execSync('sleep 1');
+  out.writes.push(rec); execSync('sleep 1');
 }
-// patvirtinti josidog 17947 dar irasytas
-try{ const j=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products/17947?_fields=id,description"`,{encoding:'utf8',env,maxBuffer:20000000}));
-  out.josidog_17947_len=(j.description||'').length;
-}catch(e){ out.josidog_err=e.message.slice(0,60); }
-putResult('apply3_'+TS+'.json', JSON.stringify(out));
+putResult('apply2_'+TS+'.json', JSON.stringify(out));
