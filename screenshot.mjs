@@ -10,21 +10,20 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content,name"`,{encoding:'utf8',env,maxBuffer:20000000}));return {raw:(r.content&&r.content.raw)||'', name:r.name||''};}catch(e){return {raw:'ERR', name:''};}}
-const ids={27132:"Kitten",27130:"Kids",27128:"A/S Lamb+Rice",18159:"Balance",18154:"Festival",18149:"Lamb&Rice 12,5kg",18058:"Leger 10kg",18054:"Leger 2kg",18051:"Leger 0,9kg"};
-const items=[];
+function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}catch(e){return 'ERR';}}
+const ids={27132:"Kitten(kat)",27130:"Kids(slob)",27128:"A/S Lamb+Rice",18159:"Balance",18154:"Festival",18149:"Lamb&Rice 12,5kg",18058:"Leger 10kg(kat)",18054:"Leger 2kg(kat)",18051:"Leger 0,9kg(kat)"};
+const out={};
 for(const id of Object.keys(ids)){
-  const d=readRaw(id); const h=d.raw;
-  // skaiciuoju serimo lenteles stulpelius (pirmoje <tr> kiek <th>)
-  let cols=0; const tm=h.match(/<table>[\s\S]*?<\/table>/);
-  if(tm){ const fr=tm[0].match(/<tr>[\s\S]*?<\/tr>/); if(fr) cols=(fr[0].match(/<th>/g)||[]).length; }
-  const hasTable=/<table>/.test(h);
-  items.push({id, label:ids[id], len:h.length,
-    sudetis:h.indexOf("Sud\u0117tis")>-1,
-    analitines:h.indexOf("Analitin")>-1,
-    serimo:h.indexOf("\u0160\u0117rimo")>-1,
-    table:hasTable, table_cols:cols,
-    title:(d.name||"").slice(0,45)});
+  const h=readRaw(id);
+  // istraukiu analitiniu eilute
+  let anal="";
+  const am=h.match(/Analitin[\s\S]{0,30}?<\/p>\s*<p>([\s\S]*?)<\/p>/);
+  if(am) anal=am[1].replace(/<[^>]+>/g,"").trim();
+  // istraukiu lentele kaip teksta (eilutemis)
+  let tbl="";
+  const tm=h.match(/<table>[\s\S]*?<\/table>/);
+  if(tm){ tbl=tm[0].replace(/<\/tr>/g,"\n").replace(/<[^>]+>/g," ").replace(/[ \t]+/g," ").replace(/\n /g,"\n").trim(); }
+  out[id]={label:ids[id], anal:anal.slice(0,200), tbl};
 }
-putResult("groupA_state_"+TS+".json", JSON.stringify(items,null,2));
+putResult("tables9_"+TS+".json", JSON.stringify(out,null,1));
 console.log("DONE "+TS);
