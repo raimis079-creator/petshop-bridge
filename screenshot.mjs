@@ -1,42 +1,37 @@
-import { execSync } from 'child_process';
-import fs from 'fs';
-const url = process.argv[2] || 'https://dev.avesa.lt';
-const TS = String(Date.now());
-function commit(name, b64){
-  const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-  const apiurl='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
-  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+apiurl+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
+import { execSync } from "child_process";
+import fs from "fs";
+const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
+function commit(name, str){
+  const b64=Buffer.from(str,'utf8').toString('base64');
+  const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
+  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
+  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
   const body={message:'r',content:b64,branch:'main'}; if(sha)body.sha=sha;
   fs.writeFileSync('/tmp/cb.json', JSON.stringify(body));
-  return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+apiurl+'"',{encoding:'utf8',maxBuffer:80000000}).trim();
+  return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000}).trim();
 }
-const meta={ts:TS, url};
-(async()=>{
+const TS=String(Date.now());
+// 1. Surenku visas Josera prekes (search=Josera)
+let prods=[];
+for(let page=1;page<=5;page++){
   try{
-    const pw=await import('playwright');
-    const browser=await pw.chromium.launch({args:['--no-sandbox']});
-    const ctx=await browser.newContext({viewport:{width:1100,height:1400},ignoreHTTPSErrors:true});
-    const page=await ctx.newPage();
-    await page.goto(url,{waitUntil:'domcontentloaded',timeout:45000});
-    await page.waitForTimeout(3500);
-    // isskleidziu visus accordion headerius per teksta (robustiska)
-    meta.expanded=await page.evaluate(()=>{
-      let n=0;
-      const wanted=['Sud\u0117tis','Analitin','\u0160\u0117rimo'];
-      document.querySelectorAll('*').forEach(el=>{
-        const t=(el.childNodes.length===1 && el.firstChild && el.firstChild.nodeType===3)?el.textContent.trim():'';
-        if(t && wanted.some(w=>t.startsWith(w)) && t.length<40){ try{el.click(); n++;}catch(e){} }
-      });
-      return n;
-    });
-    await page.waitForTimeout(1200);
-    meta.serTable=await page.evaluate(()=>{ for(const t of document.querySelectorAll('table')){ if(/svoris/i.test(t.innerText)) return t.innerText.replace(/\s*\n\s*/g,' | ').slice(0,500);} return 'NERA'; });
-    const buf=await page.screenshot({fullPage:true, timeout:30000});
-    meta.png_http=commit('festshot_'+TS+'.png', buf.toString('base64'));
-    meta.png_name='festshot_'+TS+'.png';
-    meta.ok=true;
-    await browser.close();
-  }catch(e){ meta.ok=false; meta.error=String(e&&e.stack||e).slice(0,500); }
-  commit('festmeta_'+TS+'.json', Buffer.from(JSON.stringify(meta,null,2)).toString('base64'));
-  console.log('DONE ok='+meta.ok+' '+TS);
-})();
+    const r=JSON.parse(execSync(`curl -sk --max-time 50 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?search=Josera&per_page=100&page=${page}&status=publish&_fields=id,name"`,{encoding:'utf8',env,maxBuffer:50000000}));
+    if(!Array.isArray(r)||r.length===0)break;
+    prods=prods.concat(r); if(r.length<100)break;
+  }catch(e){break;}
+}
+const seen={}; prods=prods.filter(p=>{if(seen[p.id])return false;seen[p.id]=1;return true;});
+// 2. Kiekvienai skaitau raw ir tikrinu sekcijas + lentele
+function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}catch(e){return 'ERR';}}
+const items=[];
+for(const p of prods){
+  const h=readRaw(p.id);
+  const hasTable=/<table>/.test(h);
+  const hasSerimo=h.indexOf("\u0160\u0117rimo")>-1;
+  const hasAnal=h.indexOf("Analitin")>-1;
+  const hasSud=h.indexOf("Sud\u0117tis")>-1;
+  items.push({id:p.id, name:(p.name||"").replace(/\s+/g," ").trim(), sud:hasSud, anal:hasAnal, ser:hasSerimo, table:hasTable, len:h.length});
+}
+const needFeeding=items.filter(i=>!i.table); // be lenteles
+commit("josera_recon_"+TS+".json", JSON.stringify({total:items.length, need_feeding:needFeeding.length, items}, null, 1));
+console.log("DONE "+TS+" total="+items.length+" need_feeding="+needFeeding.length);
