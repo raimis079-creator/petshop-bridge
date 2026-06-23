@@ -9,52 +9,40 @@ function putResult(name, str){
   function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
-const env2=env;
-const START=parseInt(process.env.SCAN_START||'0');
-const COUNT=parseInt(process.env.SCAN_COUNT||'400');
 const TS=String(Date.now());
-
-// Imu food ID is anksciau issaugoto failo repo
 const idsRaw=execSync(`curl -s -H "Authorization: Bearer ${process.env.GH_TOKEN}" "https://api.github.com/repos/${process.env.GH_REPO}/contents/screenshots?ref=main&t=${Date.now()}"`,{encoding:'utf8'});
 const idsFile=(idsRaw.match(/"foodids_\d+\.json"/g)||[]).map(s=>s.replace(/"/g,'')).sort().pop();
-const idsContent=execSync(`curl -s "https://raw.githubusercontent.com/${process.env.GH_REPO}/main/screenshots/${idsFile}"`,{encoding:'utf8'});
-let allIds=JSON.parse(idsContent);
-const ids=allIds.slice(START, START+COUNT);
+const allIds=JSON.parse(execSync(`curl -s "https://raw.githubusercontent.com/${process.env.GH_REPO}/main/screenshots/${idsFile}"`,{encoding:'utf8'}));
 
-function wpraw(id){
-  try{
-    const r=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=id,title,content"`,{encoding:'utf8',env:env2,maxBuffer:20000000}));
-    return {raw:(r.content&&r.content.raw)||'', title:(r.title&&r.title.raw)||''};
-  }catch(e){ return {raw:'',title:'',err:1}; }
-}
+// Sukuriu URL sarasa visom prekem, skaitau LYGIAGRECIAI per xargs
+fs.writeFileSync('/tmp/ids.txt', allIds.join('\n'));
+const user=process.env.WP_USER, pass=env.WP_PASS_CLEAN;
+// kiekvienai prekei: parsisiunciu raw i atskira faila /tmp/p/<id>.html
+execSync('mkdir -p /tmp/p');
+const cmd=`cat /tmp/ids.txt | xargs -P 12 -I{} sh -c 'curl -sk --max-time 20 -u "${user}:${pass}" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=content" -o /tmp/p/{}.json 2>/dev/null'`;
+execSync(cmd, {maxBuffer:200000000, timeout:600000});
 
-// Sudetis: standartinis "Sudetis:" ARBA "Sudedamosios dalys:" ARBA tekste ingredientu sarasas
-function hasSudetis(h){
-  const l=h.toLowerCase();
-  return /sud\u0117tis\s*:|sudedamosios\s+dalys|ingredient|sestav/i.test(l);
+function check(h){
+  return {
+    sudetis: /sud\u0117tis\s*:|sudedamosios\s+dalys|ingredient/i.test(h),
+    analitines: /analitin|\u017eali\s+baltym|\u017ealieji\s+riebal/i.test(h),
+    serimas: /\u0161\u0117rim|maitinimo\s+norma|paros\s+norma|rekomenduojamas\s+kiekis|\u0161uns\s+svoris|kat\u0117s\s+svoris|g\/per\s+dien/i.test(h)
+  };
 }
-// Serimas: visi variantai
-function hasSerimas(h){
-  const l=h.toLowerCase();
-  return /\u0161\u0117rim|serim|maitinimo\s+norma|paros\s+norma|rekomenduojamas\s+kiekis|g\/per\s+dien|\u0161uns\s+svoris|kat\u0117s\s+svoris/i.test(l);
+const out={ts:TS, total:allIds.length, items:[]};
+for(const id of allIds){
+  let raw='';
+  try{ const j=JSON.parse(fs.readFileSync('/tmp/p/'+id+'.json','utf8')); raw=(j.content&&j.content.raw)||''; }catch(e){}
+  const empty=raw.length<30;
+  const c=check(raw);
+  out.items.push({id, len:raw.length, empty, sudetis:c.sudetis, analitines:c.analitines, serimas:c.serimas});
 }
-// Analitines
-function hasAnalitines(h){
-  const l=h.toLowerCase();
-  return /analitin|\u017eali\s+baltym|\u017ealieji\s+riebal|\u017ealias\s+baltym/i.test(l);
-}
-
-const out={ts:TS, start:START, count:ids.length, total:allIds.length, items:[]};
-for(const id of ids){
-  const d=wpraw(id);
-  const empty=d.raw.length<30;
-  out.items.push({
-    id, len:d.raw.length, empty,
-    sudetis:hasSudetis(d.raw),
-    analitines:hasAnalitines(d.raw),
-    serimas:hasSerimas(d.raw)
-  });
-  execSync('sleep 0.15');
-}
-putResult('foodscan_'+START+'_'+TS+'.json', JSON.stringify(out));
-console.log('scanned '+ids.length+' from '+START);
+out.summary={
+  total:out.items.length,
+  empty:out.items.filter(i=>i.empty).length,
+  no_sudetis:out.items.filter(i=>!i.sudetis&&!i.empty).length,
+  no_analitines:out.items.filter(i=>!i.analitines&&!i.empty).length,
+  no_serimas:out.items.filter(i=>!i.serimas&&!i.empty).length
+};
+putResult('foodfast_'+TS+'.json', JSON.stringify(out));
+console.log(JSON.stringify(out.summary));
