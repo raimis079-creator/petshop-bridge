@@ -10,14 +10,33 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/14772?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));
-const h=(r.content&&r.content.raw)||'';
-const out={ts:TS, len:h.length};
-// randu serimo zona
-const idx=h.search(/\u0160\u0117rimo\s+instrukcija|\u0161\u0117rimo|maitinimo\s+norma/i);
-out.serimo_pos=idx;
-out.serimo_context = idx>0 ? h.slice(idx-30, idx+400).replace(/\s+/g,' ') : 'NERASTA';
-out.has_table_already = /<table/i.test(h);
-out.full = h; // visa, kad galeciau apdoroti lokaliai
-putResult('read14772_'+TS+'.json', JSON.stringify(out));
-console.log('len:'+h.length+' serimo_pos:'+idx);
+// 12 prekiu is anksto - tikrinu TIKSLIAI ar turi serimo lentele
+const ids=[14793,14791,14768,14478,14477,12915,12464,12463,12462,12461,12460,12459];
+function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}catch(e){return 'ERR';}}
+const out={ts:TS, items:[]};
+for(const id of ids){
+  const h=readRaw(id);
+  // serimo lentele: <table> kurioje yra "kg" ir gramu (g su bet kokiu dash)
+  const tables=h.match(/<table[\s\S]*?<\/table>/gi)||[];
+  let feedTable=false, rows=0;
+  for(const t of tables){
+    const txt=t.replace(/<[^>]+>/g,' ');
+    const hasKg=/\d+\s*kg/i.test(txt);
+    const hasG=/\d+\s*[-–—]?\s*\d*\s*g\b/i.test(txt);
+    if(hasKg && hasG){ feedTable=true; rows=(t.match(/<tr/gi)||[]).length; break; }
+  }
+  out.items.push({
+    id, len:h.length,
+    has_serimo_word:/\u0160\u0117rimo\s+instrukcija|maitinimo\s+norma/i.test(h),
+    has_feed_table:feedTable, table_rows:rows,
+    total_tables:tables.length
+  });
+  execSync('sleep 0.25');
+}
+out.summary={
+  total:out.items.length,
+  has_feed_table:out.items.filter(i=>i.has_feed_table).length,
+  NO_feed_table:out.items.filter(i=>!i.has_feed_table).length
+};
+putResult('euktable2_'+TS+'.json', JSON.stringify(out,null,2));
+console.log(JSON.stringify(out.summary));
