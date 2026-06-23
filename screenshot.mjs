@@ -14,13 +14,11 @@ const TS=String(Date.now());
 const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
 function readRaw(id){const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}
 
-// Festival 18154 + 26449 + 25415 (visi Festival, ta pati linija)
-const analitines='\n<p><strong>Analitin\u0117s sudedamosios dalys:</strong></p>\n<p>Baltymai 26,0 %, riebal\u0173 kiekis 16,0 %, \u017dalia l\u0105stelien\u0105 2,5 %, \u017dali pelenai 6,7 %, kalcis 1,40 %, fosforas 0,95 %, natris 0,40 %, magnis 0,10 %. Metabolizuojama energija: 16,1 MJ/kg.</p>';
-// Festival - aktyvus pasaras, Josera standartine adult aktyvaus lentele
-const serimas='\n<p><strong>\u0160\u0117rimo instrukcija:</strong></p>\n<table>\n<tr><th>\u0160uns svoris</th><th>Normaliai aktyvus</th><th>Aktyvus</th></tr>\n<tr><td>5 kg</td><td>75 g</td><td>85 g</td></tr>\n<tr><td>10 kg</td><td>125 g</td><td>145 g</td></tr>\n<tr><td>20 kg</td><td>210 g</td><td>245 g</td></tr>\n<tr><td>30 kg</td><td>285 g</td><td>330 g</td></tr>\n<tr><td>40 kg</td><td>350 g</td><td>410 g</td></tr>\n<tr><td>60 kg</td><td>475 g</td><td>555 g</td></tr>\n<tr><td>80 kg</td><td>595 g</td><td>695 g</td></tr>\n</table>\n<p>Nurodyti kiekiai \u2014 vienam gyv\u016bnui per par\u0105, pagal suaugusio \u0161uns svor\u012f. Pritaikykite pagal \u0161uns b\u016bkl\u0119 ir aktyvum\u0105. Visada turi b\u016bti \u0161vie\u017eio geriamojo vandens.</p>';
+const analitines='\n<p><strong>Analitin\u0117s sudedamosios dalys:</strong></p>\n<p>Baltymai 20,0 %, riebal\u0173 kiekis 11,0 %, \u017dalia l\u0105stelien\u0105 2,6 %, \u017dali pelenai 8,2 %, kalcis 2,00 %, fosforas 1,15 %, natris 0,45 %, magnis 0,11 %, taurinas 1 000 mg. Metabolizuojama energija: 14,8 MJ/kg (3 536 kcal/kg).</p>';
+const serimas='\n<p><strong>\u0160\u0117rimo instrukcija:</strong></p>\n<table>\n<tr><th>\u0160uns svoris</th><th>Neaktyvus / senyvas</th><th>Normaliai aktyvus</th><th>Aktyvus</th></tr>\n<tr><td>5 kg</td><td>50 g</td><td>65 g</td><td>70 g</td></tr>\n<tr><td>10 kg</td><td>95 g</td><td>125 g</td><td>150 g</td></tr>\n<tr><td>20 kg</td><td>155 g</td><td>205 g</td><td>265 g</td></tr>\n<tr><td>30 kg</td><td>205 g</td><td>280 g</td><td>350 g</td></tr>\n<tr><td>40 kg</td><td>260 g</td><td>345 g</td><td>440 g</td></tr>\n<tr><td>60 kg</td><td>345 g</td><td>470 g</td><td>600 g</td></tr>\n<tr><td>80 kg</td><td>430 g</td><td>585 g</td><td>750 g</td></tr>\n</table>\n<p>Nurodyti kiekiai \u2014 vienam gyv\u016bnui per par\u0105, pagal suaugusio \u0161uns svor\u012f. Pritaikykite pagal \u0161uns b\u016bkl\u0119 ir aktyvum\u0105. Visada turi b\u016bti \u0161vie\u017eio geriamojo vandens.</p>';
 
 const out={ts:TS, items:[]};
-for(const ID of [18154, 26449, 25415]){
+for(const ID of [27128, 18149]){
   const rec={id:ID};
   const orig=readRaw(ID); rec.orig_md5=md5(orig);
   let m=orig;
@@ -35,9 +33,9 @@ for(const ID of [18154, 26449, 25415]){
     try{ rec.write_ok=!!JSON.parse(w).id; }catch(e){ rec.write_ok=false; }
     const after=readRaw(ID); rec.lossless=(md5(m)===md5(after));
     rec.after_anal=/analitin/i.test(after); rec.after_table=/<table[\s\S]*?kg/i.test(after);
-  } else { rec.skipped=true; rec.reason=rec.had_table?'jau turi lentele':(rec.had_anal?'jau turi anal':'no change'); }
+  } else { rec.skipped=true; rec.reason=rec.had_table?'jau lentele':(rec.had_anal?'jau anal':'nochange'); }
   out.items.push(rec);
   execSync('sleep 0.4');
 }
-putResult('festival_'+TS+'.json', JSON.stringify(out,null,2));
+putResult('lamb_'+TS+'.json', JSON.stringify(out,null,2));
 console.log('done');
