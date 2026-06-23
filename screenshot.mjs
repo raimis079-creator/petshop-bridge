@@ -1,6 +1,5 @@
 import { execSync } from "child_process";
 import fs from "fs";
-import crypto from "crypto";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 function putResult(name, str){
   const b64=Buffer.from(str,'utf8').toString('base64');
@@ -11,31 +10,9 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
-function readRaw(id){const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}
-
-const analitines='\n<p><strong>Analitin\u0117s sudedamosios dalys:</strong></p>\n<p>Baltymai 20,0 %, riebal\u0173 kiekis 11,0 %, \u017dalia l\u0105stelien\u0105 2,6 %, \u017dali pelenai 8,2 %, kalcis 2,00 %, fosforas 1,15 %, natris 0,45 %, magnis 0,11 %, taurinas 1 000 mg. Metabolizuojama energija: 14,8 MJ/kg (3 536 kcal/kg).</p>';
-const serimas='\n<p><strong>\u0160\u0117rimo instrukcija:</strong></p>\n<table>\n<tr><th>\u0160uns svoris</th><th>Neaktyvus / senyvas</th><th>Normaliai aktyvus</th><th>Aktyvus</th></tr>\n<tr><td>5 kg</td><td>50 g</td><td>65 g</td><td>70 g</td></tr>\n<tr><td>10 kg</td><td>95 g</td><td>125 g</td><td>150 g</td></tr>\n<tr><td>20 kg</td><td>155 g</td><td>205 g</td><td>265 g</td></tr>\n<tr><td>30 kg</td><td>205 g</td><td>280 g</td><td>350 g</td></tr>\n<tr><td>40 kg</td><td>260 g</td><td>345 g</td><td>440 g</td></tr>\n<tr><td>60 kg</td><td>345 g</td><td>470 g</td><td>600 g</td></tr>\n<tr><td>80 kg</td><td>430 g</td><td>585 g</td><td>750 g</td></tr>\n</table>\n<p>Nurodyti kiekiai \u2014 vienam gyv\u016bnui per par\u0105, pagal suaugusio \u0161uns svor\u012f. Pritaikykite pagal \u0161uns b\u016bkl\u0119 ir aktyvum\u0105. Visada turi b\u016bti \u0161vie\u017eio geriamojo vandens.</p>';
-
-const out={ts:TS, items:[]};
-for(const ID of [27128, 18149]){
-  const rec={id:ID};
-  const orig=readRaw(ID); rec.orig_md5=md5(orig);
-  let m=orig;
-  rec.had_anal=/analitin/i.test(m); rec.had_table=/<table/i.test(m);
-  if(!rec.had_anal) m=m+analitines;
-  if(!rec.had_table) m=m+serimas;
-  rec.changed=(orig!==m); rec.len_diff=m.length-orig.length;
-  rec.sud_intact=((orig.match(/Sud\u0117tis\s*:/gi)||[]).length===(m.match(/Sud\u0117tis\s*:/gi)||[]).length);
-  if(rec.changed && rec.sud_intact){
-    fs.writeFileSync('/tmp/upd.json', JSON.stringify({content:m}));
-    const w=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/upd.json "https://dev.avesa.lt/wp-json/wp/v2/product/${ID}"`,{encoding:'utf8',env,maxBuffer:20000000});
-    try{ rec.write_ok=!!JSON.parse(w).id; }catch(e){ rec.write_ok=false; }
-    const after=readRaw(ID); rec.lossless=(md5(m)===md5(after));
-    rec.after_anal=/analitin/i.test(after); rec.after_table=/<table[\s\S]*?kg/i.test(after);
-  } else { rec.skipped=true; rec.reason=rec.had_table?'jau lentele':(rec.had_anal?'jau anal':'nochange'); }
-  out.items.push(rec);
-  execSync('sleep 0.4');
-}
-putResult('lamb_'+TS+'.json', JSON.stringify(out,null,2));
-console.log('done');
+const p=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products/27128?_fields=permalink"`,{encoding:'utf8',env,maxBuffer:20000000}));
+const url=p.permalink+(p.permalink.includes('?')?'&':'?')+'ps_desc=1';
+const html=execSync(`curl -sk --max-time 45 "${url}"`,{encoding:'utf8',maxBuffer:50000000});
+const secs=[];const re=/<summary[^>]*>([^<]+)</gi;let m;while((m=re.exec(html))){secs.push(m[1].trim());}
+putResult('lambdom_'+TS+'.json', JSON.stringify({ts:TS, sections:secs, table:/<table/i.test(html), kg:/\d+\s*kg/i.test(html)}));
+console.log(JSON.stringify(secs));
