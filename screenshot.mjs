@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import fs from "fs";
+import crypto from "crypto";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 function putResult(name, str){
   const b64=Buffer.from(str,'utf8').toString('base64');
@@ -10,6 +11,51 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-const r=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/512?_fields=id,name,code,active"`,{encoding:'utf8',env,maxBuffer:20000000});
-putResult('v5code_'+TS+'.json', r);
-console.log('done len='+r.length);
+const ID=19751;
+const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
+const out={ts:TS, id:ID};
+
+// 1. Skaitau raw (lossless)
+const r=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${ID}?context=edit&_fields=id,content"`,{encoding:'utf8',env,maxBuffer:20000000}));
+const orig=(r.content&&r.content.raw)||'';
+out.orig_len=orig.length;
+out.orig_md5=md5(orig);
+
+// 2. Du tikslus zymekliu pakeitimai (tik antrastes, ne turinys)
+// a) "Sudedamosios dalys:" (analitines) -> "Analitines sudedamosios dalys:"
+//    SVARBU: keiciu tik kur antraste yra <h3>...Sudedamosios dalys:... (analitiniu blokas)
+//    "Sudetis:" lieka nepaliesta
+let modified=orig;
+// Tikslus: <h3>...>Sudedamosios dalys:</...></h3> -> Analitines variantas
+modified=modified.replace(/(<h3[^>]*>(?:<[^>]+>)*\s*)(Sudedamosios\s+dalys\s*:)/giu,
+  '$1Analitin\u0117s sudedamosios dalys:');
+// b) "Maitinimo norma:" -> "Serimo instrukcija:" (su LT raidemis)
+modified=modified.replace(/Maitinimo\s+norma\s*:/giu, '\u0160\u0117rimo instrukcija:');
+
+out.mod_len=modified.length;
+out.mod_md5=md5(modified);
+out.changed = (orig!==modified);
+out.len_diff = modified.length - orig.length;
+
+// 3. SAUGIKLIS: patikrinu, kad pakeista TIK tai, ka norejom.
+// Suskaiciuoju, kiek kartu pasikeite kiekvienas zymeklis
+out.replaced_analitines = (orig.match(/Sudedamosios\s+dalys\s*:/giu)||[]).length;
+out.replaced_serimas = (orig.match(/Maitinimo\s+norma\s*:/giu)||[]).length;
+// Patikrinu kad "Sudetis:" liko nepaliesta
+out.sudetis_intact = (orig.match(/(?<!sudedamosios\s)Sud\u0117tis\s*:/giu)||[]).length === (modified.match(/(?<!sudedamosios\s)Sud\u0117tis\s*:/giu)||[]).length;
+
+// 4. RASAU per wp/v2 raw (lossless PUT)
+fs.writeFileSync('/tmp/upd.json', JSON.stringify({content: modified}));
+const w=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/upd.json "https://dev.avesa.lt/wp-json/wp/v2/product/${ID}"`,{encoding:'utf8',env,maxBuffer:20000000});
+try{ const wj=JSON.parse(w); out.write_ok=!!wj.id; out.write_raw_len=(wj.content&&wj.content.raw||'').length; }
+catch(e){ out.write_ok=false; out.write_err=w.slice(0,150); }
+
+// 5. Perskaitau atgal ir patikrinu MD5 (ar issaugojo lossless)
+const r2=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${ID}?context=edit&_fields=id,content"`,{encoding:'utf8',env,maxBuffer:20000000}));
+const after=(r2.content&&r2.content.raw)||'';
+out.after_len=after.length;
+out.after_md5=md5(after);
+out.lossless_match = (md5(modified)===md5(after)); // ar issaugota tiksliai ka rasem
+
+putResult('amb1_'+TS+'.json', JSON.stringify(out,null,2));
+console.log(JSON.stringify(out));
