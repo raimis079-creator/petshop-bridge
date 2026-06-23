@@ -15,7 +15,7 @@ const meta={ts:TS, url};
   try{
     const pw=await import('playwright');
     const browser=await pw.chromium.launch({args:['--no-sandbox']});
-    const ctx=await browser.newContext({viewport:{width:1100,height:1400}});
+    const ctx=await browser.newContext({viewport:{width:1100,height:1400},ignoreHTTPSErrors:true});
     const page=await ctx.newPage();
     await page.goto(url,{waitUntil:'domcontentloaded',timeout:45000});
     await page.waitForTimeout(3500);
