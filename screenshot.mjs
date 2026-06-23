@@ -17,19 +17,18 @@ for(let i=0;i<ids.length;i+=100){
   const chunk=ids.slice(i,i+100).join(',');
   try{ const r=wc('products?include='+chunk+'&per_page=100&_fields=id,name,description'); prods=prods.concat(r); }catch(e){}
 }
-const out={fetched:prods.length, analitines:{parser_gap:0,data_gap:0}, sudetis:{parser_gap:0,data_gap:0}, serimo:{parser_gap:0,data_gap:0}, examples_pg:[], examples_dg:[]};
 const dec=s=>String(s||'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+const rows=[];
 for(const p of prods){
   const raw=dec(p.description||'');
-  const hasAnal=/analitin/i.test(raw)||/\u017Eali\s+baltymai|\u017Eali\u0173\s+baltym/i.test(raw);
-  const hasSud=/sud\u0117tis/i.test(raw);
-  const hasSer=/\u0161\u0117rim|rekomenduojamas\s+kiekis|paros\s+norm/i.test(raw);
-  // is missing what? remčiamės audito CSV nereikia — tiesiog klasifikuojam visus tris
-  // analitines: jei keyword yra bet sekcija nebuvo atpazinta -> tikriausiai parser-gap
-  if(hasAnal) out.analitines.parser_gap++; else out.analitines.data_gap++;
-  if(hasSud) out.sudetis.parser_gap++; else out.sudetis.data_gap++;
-  if(hasSer) out.serimo.parser_gap++; else out.serimo.data_gap++;
-  if(hasAnal && out.examples_pg.length<6) out.examples_pg.push({id:p.id,name:(p.name||'').slice(0,40),snip:raw.replace(/\s+/g,' ').slice(0,180)});
-  if(!hasAnal && !hasSud && out.examples_dg.length<6) out.examples_dg.push({id:p.id,name:(p.name||'').slice(0,40),snip:raw.replace(/\s+/g,' ').slice(0,140)});
+  const plain=raw.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  rows.push({
+    id:p.id, name:(p.name||''),
+    hasSud:/sud\u0117tis/i.test(raw),
+    hasAnal:(/analitin/i.test(raw)||/\u017Eali\s+baltymai|\u017Eali\u0173\s+baltym|crude\s+protein/i.test(raw)),
+    hasSer:(/\u0161\u0117rim/i.test(raw)||/rekomenduojamas\s+kiekis/i.test(raw)||/paros\s+norm/i.test(raw)),
+    empty:(plain.length<20),
+    plen:plain.length
+  });
 }
-putResult('fooddiag_'+TS+'.json', JSON.stringify(out,null,1));
+putResult('datagaps_'+TS+'.json', JSON.stringify(rows));
