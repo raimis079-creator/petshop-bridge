@@ -1,0 +1,6 @@
+{
+  "ts": "1782251373890",
+  "url": "https://dev.avesa.lt/product/?p=18154&ps_desc=1",
+  "ok": false,
+  "error": "page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/product/?p=18154&ps_desc=1\nCall log:\n  - navigating to \"https://dev.avesa.lt/product/?p=18154&ps_desc=1\", waiting until \"domcontentloaded\"\n\n    at /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:20:16"
+}
