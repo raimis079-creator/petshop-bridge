@@ -10,14 +10,6 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-// Skaitau 19751 ir 19785 (po viena is kiekvienos grupes) raw
-function wpraw(id){
-  const r=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=id,content"`,{encoding:'utf8',env,maxBuffer:20000000}));
-  return (r.content&&r.content.raw)||'';
-}
-const out={};
-for(const id of [19751, 19785]){
-  out[id]=wpraw(id);
-}
-putResult('ambread_'+TS+'.json', JSON.stringify(out));
-console.log('done');
+const r=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/512?_fields=id,name,code,active"`,{encoding:'utf8',env,maxBuffer:20000000});
+putResult('v5code_'+TS+'.json', r);
+console.log('done len='+r.length);
