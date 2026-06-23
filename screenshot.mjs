@@ -6,29 +6,20 @@ function putResult(name, str){
   const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   function getSha(){try{return JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){return '';}}
-  function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:200000000}).trim();}
+  function doPut(sha){const body={message:'r',content:b64,branch:'main'};if(sha)body.sha=sha;fs.writeFileSync('/tmp/pp.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/pp.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000}).trim();}
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=process.env.RUN_TS;
-const ids="12454,12460,12461,12462,12463,12464,12565,12661,12685,14278,14478,14516,14517,14546,14547,14553,14630,14633,14634,14650,14651,14772,14795,16207,16210,16217,16225,16228,16248,16254,16259,16265,16270,16326,16329,16402,16411,16422,16425,16431,16466,16469,16472,16475,16478,16481,16516,16519,16525,16534,16573,16576,16579,16582,16585,16588,16591,16594,16606,16609,16624,16627,16630,16633,16642,16645,16699,16702,16708,16712,16715,16718,16721,16724,16727,16745,16751,16763,16772,16776,16779,16782,16785,16788,16791,16794,16810,16824,16854,16857,16862,16865,16868,16871,16876,16881,16886,16889,17748,17751,17903,17947,17950,17959,17965,17969,18051,18054,18058,18080,18084,18149,18154,18159,18169,18172,18178,18181,18188,18191,18197,18203,18206,18212,18218,18221,18227,18233,18236,18245,18248,18254,18257,18260,18263,18266,18269,18272,18278,18281,18284,18290,18296,18302,18314,18320,18323,18326,18329,18332,18335,18338,18341,18354,18366,18369,18372,18379,18382,18385,18521,18524,18527,18530,18533,18536,18539,18542,18572,18617,18623,19199,19201,19204,19207,19210,19213,19715,19720,19725,19730,19735,19740,19747,19751,19756,19760,19765,19770,19775,19780,19785,21123,21531,26899,27126,27128,27130,27132,33231,33370,33394".split(',');
-function wc(p){ return JSON.parse(execSync(`curl -sk --max-time 60 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/${p}"`,{encoding:'utf8',env,maxBuffer:80000000})); }
-let prods=[];
-for(let i=0;i<ids.length;i+=100){
-  const chunk=ids.slice(i,i+100).join(',');
-  try{ const r=wc('products?include='+chunk+'&per_page=100&_fields=id,name,description'); prods=prods.concat(r); }catch(e){}
-}
-const dec=s=>String(s||'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-const rows=[];
-for(const p of prods){
-  const raw=dec(p.description||'');
-  const plain=raw.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-  rows.push({
-    id:p.id, name:(p.name||''),
-    hasSud:/sud\u0117tis/i.test(raw),
-    hasAnal:(/analitin/i.test(raw)||/\u017Eali\s+baltymai|\u017Eali\u0173\s+baltym|crude\s+protein/i.test(raw)),
-    hasSer:(/\u0161\u0117rim/i.test(raw)||/rekomenduojamas\s+kiekis/i.test(raw)||/paros\s+norm/i.test(raw)),
-    empty:(plain.length<20),
-    plen:plain.length
-  });
-}
-putResult('datagaps_'+TS+'.json', JSON.stringify(rows));
+const out={};
+try{
+  let php=fs.readFileSync('psimprisk.php','utf8').replace(/^\uFEFF?<\?php\s*/,'');
+  fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'Petshop Import-Risk Recon v1 (read-only)',scope:'global',active:true,code:php}));
+  const cr=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/sn.json "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets"`,{encoding:'utf8',env,maxBuffer:20000000});
+  try{ out.snid=JSON.parse(cr).id; }catch(e){ out.cr=cr.slice(0,150); }
+  execSync('sleep 3');
+  const ids="14772,14478,12463,12462,12461,12460,17947,19785,19770,19765,19730,19725,19760,19756,19751,19747,19720,19715,19780,19775,19740,19735,18623,21531,18572,18521,21123,18385,18382,18372,18369,18366,18354,18338,18332,18323,18320,18314,18302,18272,18254,18212,18206,18203,18197,18188,18181,18178,18172,18169,27128,18159,18154,27130,27132,18149,18058,18054,18051,17965,17969,17959,26899,17751,17748,27126,16889,16886,16881,16876,16871,16868,16865,16862,16857,16854,16745,16824,16810,16794,16791,16788,16785,16782,16779,16776,16772,16763,16751,16727,16724,16718,16712,16702,16609,16591,16645,16633,16627,16624,16588,16585,16582,16573,16431,16425,16422,16411,16402,14795,16326,16329,16534,16525,16481,16478,16475,16472,16469,16466,16270,16265,16259,16254";
+  const json=execSync(`curl -sk --max-time 120 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/?ps_imprisk=1&k=ps2026&ids=${ids}"`,{encoding:'utf8',env,maxBuffer:50000000});
+  putResult('imprisk_'+TS+'.json', json);
+  out.len=json.length;
+}catch(e){ out.fatal=e.message.slice(0,200); }
+putResult('imprisk_meta_'+TS+'.json', JSON.stringify(out));
