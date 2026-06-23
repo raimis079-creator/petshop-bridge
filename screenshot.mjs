@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import fs from "fs";
+import crypto from "crypto";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 function putResult(name, str){
   const b64=Buffer.from(str,'utf8').toString('base64');
@@ -10,20 +11,60 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-// Skenuoju Ambrosia 15 prekiu - kiek turi sugadinta base64 (src="image/png;base64 be data:)
-const ids=[19785,19780,19775,19770,19765,19760,19756,19751,19747,19740,19735,19730,19725,19720,19715];
+const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
+const IDS=[19751, 19747];
 const out={ts:TS, items:[]};
-for(const id of ids){
-  try{
-    const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));
-    const h=(r.content&&r.content.raw)||'';
-    const broken=(h.match(/src="image\/(png|jpe?g|gif|webp);base64/gi)||[]).length;
-    const good=(h.match(/src="data:image\//gi)||[]).length;
-    out.items.push({id, broken_base64:broken, good_base64:good});
-  }catch(e){ out.items.push({id, err:e.message.slice(0,50)}); }
-  execSync('sleep 0.3');
+
+function readRaw(id){
+  const r=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=id,content"`,{encoding:'utf8',env,maxBuffer:20000000}));
+  return (r.content&&r.content.raw)||'';
 }
-out.total_broken = out.items.reduce((s,i)=>s+(i.broken_base64||0),0);
-out.products_affected = out.items.filter(i=>i.broken_base64>0).length;
-putResult('imgscan_'+TS+'.json', JSON.stringify(out,null,2));
-console.log('affected:'+out.products_affected+' total_broken:'+out.total_broken);
+
+for(const ID of IDS){
+  const rec={id:ID};
+  const orig=readRaw(ID);
+  rec.orig_len=orig.length;
+  rec.orig_md5=md5(orig);
+
+  let m=orig;
+
+  // FIX 1: base64 paveiksliukai - prideti trukstama "data:" prefiksa
+  // src="image/png;base64,..." -> src="data:image/png;base64,..."
+  const before_broken=(m.match(/src="image\/(png|jpe?g|gif|webp);base64/gi)||[]).length;
+  m=m.replace(/src="image\/((?:png|jpe?g|gif|webp);base64)/gi, 'src="data:image/$1');
+  const after_broken=(m.match(/src="image\/(png|jpe?g|gif|webp);base64/gi)||[]).length;
+  rec.img_fixed = before_broken - after_broken;
+
+  // FIX 2: zymekliai (jei dar nepakeisti)
+  // a) Sudedamosios dalys: -> Analitines sudedamosios dalys: (tik <h3> kontekste)
+  const had_analitines = /Analitin\u0117s\s+sudedamosios\s+dalys/i.test(m);
+  if(!had_analitines){
+    m=m.replace(/(<h3[^>]*>(?:<[^>]+>)*\s*)(Sudedamosios\s+dalys\s*:)/giu, '$1Analitin\u0117s sudedamosios dalys:');
+  }
+  rec.analitines_replaced = (orig.match(/(?<!Analitin\u0117s\s)Sudedamosios\s+dalys\s*:/giu)||[]).length;
+  // b) Maitinimo norma: -> Serimo instrukcija:
+  rec.serimas_replaced = (m.match(/Maitinimo\s+norma\s*:/giu)||[]).length;
+  m=m.replace(/Maitinimo\s+norma\s*:/giu, '\u0160\u0117rimo instrukcija:');
+
+  rec.mod_len=m.length;
+  rec.mod_md5=md5(m);
+  rec.changed=(orig!==m);
+  rec.len_diff=m.length-orig.length;
+  rec.sudetis_intact = (orig.match(/(?<!sudedamosios\s)Sud\u0117tis\s*:/giu)||[]).length === (m.match(/(?<!sudedamosios\s)Sud\u0117tis\s*:/giu)||[]).length;
+
+  // RASAU per wp/v2 raw lossless
+  if(rec.changed){
+    fs.writeFileSync('/tmp/upd.json', JSON.stringify({content: m}));
+    const w=execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -X POST -d @/tmp/upd.json "https://dev.avesa.lt/wp-json/wp/v2/product/${ID}"`,{encoding:'utf8',env,maxBuffer:20000000});
+    try{ const wj=JSON.parse(w); rec.write_ok=!!wj.id; }catch(e){ rec.write_ok=false; rec.write_err=w.slice(0,100); }
+    // perskaitau ir patikrinu lossless
+    const after=readRaw(ID);
+    rec.after_md5=md5(after);
+    rec.lossless_match=(md5(m)===md5(after));
+    rec.after_broken_imgs=(after.match(/src="image\/(png|jpe?g|gif|webp);base64/gi)||[]).length;
+  }
+  out.items.push(rec);
+  execSync('sleep 0.5');
+}
+putResult('ambfix2_'+TS+'.json', JSON.stringify(out,null,2));
+console.log('done');
