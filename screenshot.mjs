@@ -10,10 +10,15 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}catch(e){return 'ERR:'+e;}}
-const out={};
-for(const id of [27130, 18159]){
-  out[id]=readRaw(id);
-}
-putResult("kidsfmt_"+TS+".json", JSON.stringify(out));
+function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content,name"`,{encoding:'utf8',env,maxBuffer:20000000}));return {raw:(r.content&&r.content.raw)||'', name:r.name||''};}catch(e){return {raw:'ERR:'+e,name:''};}}
+const d=readRaw(18154);
+const h=d.raw;
+const out={
+  name:d.name, len:h.length,
+  has_sudetis: h.indexOf("Sud\u0117tis")>-1,
+  has_analitines: h.indexOf("Analitin")>-1,
+  has_serimo: h.indexOf("\u0160\u0117rimo")>-1,
+  full: h
+};
+putResult("fest_read_"+TS+".json", JSON.stringify(out));
 console.log("DONE "+TS);
