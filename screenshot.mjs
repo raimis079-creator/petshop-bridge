@@ -10,19 +10,24 @@ function putResult(name, str){
   let code='';for(let i=0;i<5;i++){const sha=getSha();code=doPut(sha);if(code==='200'||code==='201')return code;execSync('sleep 2');}return 'FAIL:'+code;
 }
 const TS=String(Date.now());
-// Imu rendered HTML su ps_desc=1
-const html=execSync(`curl -sk --max-time 50 "https://dev.avesa.lt/product/ambrosia-begrudis-su-eriena-ir-sviezia-lasisa-sausas-maistas-sunims/?ps_desc=1"`,{encoding:'utf8',maxBuffer:50000000});
-// Istraukiu accordion sekciju pavadinimus
-const sections=[];
-const re=/class="[^"]*psdp-acc-head[^"]*"[^>]*>([^<]+)</gi;
-let m; while((m=re.exec(html))){ sections.push(m[1].trim()); }
-// alternatyvus - ieskau pagal psdp struktura
-const out={ts:TS, found_psdp: html.includes('psdp'), sections};
-// bandau kitus selektorius jei tuscia
-if(sections.length===0){
-  const re2=/<(?:button|div|h[2-4])[^>]*psdp[^>]*>([^<]{3,50})</gi;
-  let m2; while((m2=re2.exec(html))){ out.sections.push(m2[1].trim()); }
-}
-out.html_snippet = html.slice(html.indexOf('psdp')>0?html.indexOf('psdp')-50:0, html.indexOf('psdp')+800);
-putResult('ambdom_'+TS+'.json', JSON.stringify(out,null,2));
-console.log('sections:'+JSON.stringify(out.sections));
+// 1. gaunu teisinga URL is wc/v3
+const p=JSON.parse(execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products/19751?_fields=id,name,slug,permalink"`,{encoding:'utf8',env,maxBuffer:20000000}));
+const out={ts:TS, slug:p.slug, permalink:p.permalink};
+// 2. fetch su ps_desc=1
+const url=p.permalink + (p.permalink.includes('?')?'&':'?') + 'ps_desc=1';
+out.fetched_url=url;
+const html=execSync(`curl -sk --max-time 50 "${url}"`,{encoding:'utf8',maxBuffer:50000000});
+out.html_len=html.length;
+// 3. ieskau v5 markup pozymiu - bet kokios psdp/accordion klases
+out.has_psdp = html.includes('psdp');
+out.has_accordion = /accordion/i.test(html);
+out.has_analitines = html.includes('Analitin');
+out.has_serimo = /\u0160\u0117rimo|\u0160erimo/.test(html) || html.includes('rimo instrukcija');
+// istraukiu klases su "psdp" ar accordion antrasciu
+const cls=[...new Set((html.match(/class="[^"]*(?:psdp|acc|desc-section)[^"]*"/gi)||[]).slice(0,10))];
+out.classes_found=cls;
+// rodau gabala kur yra "Analitin" (ar tapo sekcija)
+const ai=html.indexOf('Analitin');
+out.analitin_context = ai>0 ? html.slice(ai-100, ai+150).replace(/\s+/g,' ') : 'NERASTA';
+putResult('ambdom2_'+TS+'.json', JSON.stringify(out,null,2));
+console.log('psdp:'+out.has_psdp+' analitin:'+out.has_analitines);
