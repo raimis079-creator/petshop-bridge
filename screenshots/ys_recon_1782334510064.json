@@ -1,0 +1,105 @@
+{
+  "direct": [
+    {
+      "id": 25439,
+      "name": "Josera Young Star begrūdis sausas pašaras jauniems šunims su paukštiena, 900 g",
+      "sku": "JOS0948",
+      "status": "publish",
+      "catalog_visibility": "visible",
+      "stock_quantity": 10,
+      "manage_stock": true,
+      "date_modified": "2026-06-24T23:16:14",
+      "price": "5.99",
+      "stock_status": "instock",
+      "_links": {
+        "self": [
+          {
+            "href": "https://dev.avesa.lt/wp-json/wc/v3/products/25439",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://dev.avesa.lt/wp-json/wc/v3/products"
+          }
+        ]
+      }
+    },
+    {
+      "id": 25261,
+      "name": "Josera Young Star begrūdis sausas pašaras jauniems šunims su paukštiena,  12,5kg",
+      "sku": "JOS0908",
+      "status": "publish",
+      "catalog_visibility": "visible",
+      "stock_quantity": 98,
+      "manage_stock": true,
+      "date_modified": "2026-06-24T23:16:18",
+      "price": "48.99",
+      "stock_status": "instock",
+      "_links": {
+        "self": [
+          {
+            "href": "https://dev.avesa.lt/wp-json/wc/v3/products/25261",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://dev.avesa.lt/wp-json/wc/v3/products"
+          }
+        ]
+      }
+    }
+  ],
+  "search": [
+    {
+      "q": "YoungStar",
+      "id": 25439,
+      "name": "Josera Young Star begrūdis sausas pašaras jauniems šunims su paukštiena, 900 g",
+      "sku": "JOS0948",
+      "status": "publish",
+      "catalog_visibility": "visible",
+      "stock_quantity": 10,
+      "date_modified": "2026-06-24T23:16:14",
+      "stock_status": "instock"
+    },
+    {
+      "q": "YoungStar",
+      "id": 25261,
+      "name": "Josera Young Star begrūdis sausas pašaras jauniems šunims su paukštiena,  12,5kg",
+      "sku": "JOS0908",
+      "status": "publish",
+      "catalog_visibility": "visible",
+      "stock_quantity": 98,
+      "date_modified": "2026-06-24T23:16:18",
+      "stock_status": "instock"
+    },
+    {
+      "q": "Young Star",
+      "id": 17975,
+      "name": "Josera Young Star 15 kg - begrūdis sausas maistas jauniems šunims",
+      "sku": "JOS0181",
+      "status": "draft",
+      "catalog_visibility": "visible",
+      "stock_quantity": 0,
+      "date_modified": null,
+      "stock_status": "outofstock"
+    }
+  ]
+}
