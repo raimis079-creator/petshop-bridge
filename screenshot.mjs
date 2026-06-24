@@ -14,49 +14,24 @@ function commit(name, str){
 const TS=String(Date.now());
 function readRaw(id){const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}
 function writeRaw(id, content){fs.writeFileSync('/tmp/body.json',JSON.stringify({content}));return execSync(`curl -sk --max-time 40 -o /dev/null -w "%{http_code}" -X PUT -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -d @/tmp/body.json "https://dev.avesa.lt/wp-json/wp/v2/product/${id}"`,{encoding:'utf8',env,maxBuffer:50000000}).trim();}
+function extractSerimo(h){const m=h.match(/<p><strong>\u0160\u0117rimo instrukcija[\s\S]*?<\/table>(\s*<p>[\s\S]*?<\/p>)?/);return m?m[0]:null;}
 
-// Serimo bloko istraukimas is source
-function extractSerimo(h){
-  const m=h.match(/<p><strong>\u0160\u0117rimo instrukcija[\s\S]*?<\/table>(\s*<p>[\s\S]*?<\/p>)?/);
-  return m?m[0]:null;
-}
-
-const pairs=[
-  {t:24644,s:27130,line:"Kids"},{t:25471,s:27130,line:"Kids"},{t:25475,s:27130,line:"Kids"},
-  {t:26449,s:18154,line:"Festival"},{t:25415,s:18154,line:"Festival"},
-  {t:25419,s:27128,line:"Lamb+Rice A/S"},
-  {t:21707,s:18051,line:"Leger"}
-];
-// cache source serimo
-const srcCache={};
+const ser=extractSerimo(readRaw(18154)); // Festival standartine lentele
+const targets=[{t:25443,line:"Active Nature"},{t:26423,line:"Active Nature"}];
 const results=[];
-for(const p of pairs){
+for(const p of targets){
   try{
-    if(!srcCache[p.s]){ const sh=readRaw(p.s); srcCache[p.s]=extractSerimo(sh); }
-    const ser=srcCache[p.s];
-    if(!ser){ results.push({t:p.t,line:p.line,SKIP:"source neturi Serimo bloko"}); continue; }
     let T=readRaw(p.t);
-    if(/<table>/.test(T)){ results.push({t:p.t,line:p.line,SKIP:"jau turi lentele"}); continue; }
-    const sm=T.match(/Sud\u0117tis:[\s\S]*?<\/p>/); const sud_md5=sm?md5(sm[0]):"NONE";
-    // iterpiu po Analitiniu bloko; jei nera - prie galo
-    let newT;
+    if(/<table>/.test(T)){results.push({t:p.t,SKIP:"jau turi lentele"});continue;}
+    const sm=T.match(/Sud\u0117tis:[\s\S]*?<\/p>/);const sud_md5=sm?md5(sm[0]):"NONE";
     const am=T.match(/<p><strong>Analitin[\s\S]*?<\/p>\s*<p>[\s\S]*?<\/p>/);
-    if(am){ newT=T.replace(am[0], am[0]+"\n"+ser); }
-    else { newT=T.trimEnd()+"\n"+ser+"\n"; }
-    // guards
+    let newT = am ? T.replace(am[0], am[0]+"\n"+ser) : T.trimEnd()+"\n"+ser+"\n";
     const sm2=newT.match(/Sud\u0117tis:[\s\S]*?<\/p>/);
-    const sudOk = sm2 && md5(sm2[0])===sud_md5;
-    const tableOk = /<table>/.test(newT);
-    if(!sudOk || !tableOk){ results.push({t:p.t,line:p.line,SKIP:"guard fail",sudOk,tableOk}); continue; }
+    if(!(sm2&&md5(sm2[0])===sud_md5) || !/<table>/.test(newT)){results.push({t:p.t,SKIP:"guard"});continue;}
     const wc=writeRaw(p.t,newT);
-    // verify
     const after=readRaw(p.t);
-    const ver_table=/<table>/.test(after);
-    const ver_sud = (after.match(/Sud\u0117tis:[\s\S]*?<\/p>/)||[""])[0];
-    const ver_sud_ok = md5(ver_sud)===sud_md5;
-    const lossless = md5(after)===md5(newT);
-    results.push({t:p.t,line:p.line,write:wc,ver_table,ver_sud_ok,lossless,len:after.length});
-  }catch(e){ results.push({t:p.t,line:p.line,ERR:String(e).slice(0,120)}); }
+    results.push({t:p.t,line:p.line,write:wc,ver_table:/<table>/.test(after),ver_sud:md5((after.match(/Sud\u0117tis:[\s\S]*?<\/p>/)||[""])[0])===sud_md5,lossless:md5(after)===md5(newT)});
+  }catch(e){results.push({t:p.t,ERR:String(e).slice(0,100)});}
 }
-commit("clone1_"+TS+".json", JSON.stringify(results,null,2));
+commit("clone2_"+TS+".json",JSON.stringify(results,null,2));
 console.log("DONE "+TS);
