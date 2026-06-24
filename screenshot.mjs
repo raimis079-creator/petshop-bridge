@@ -18,8 +18,8 @@ function build2(rows){
   rows.forEach(r=>{t+='<tr><td>'+r[0]+' kg</td><td>'+r[1]+' g</td><td>'+r[2]+' g</td></tr>\n';});
   return t+'</table>\n<p>Nurodyti kiekiai \u2014 vienam gyv\u016bnui per par\u0105 (pagal aktyvum\u0105). Pritaikykite pagal gyv\u016bno b\u016bkl\u0119. Visada u\u017etikrinkite prieig\u0105 prie \u0161vie\u017eio geriamojo vandens.</p>';
 }
-const id=25229;
-const ser=build2([[5,85,95],[10,140,160],[20,235,275],[30,320,370],[40,395,460],[60,535,620],[80,665,770]]);
+const id=26362;
+const ser=build2([[10,140,165],[20,240,275],[30,325,375],[40,400,465],[60,545,630],[80,675,780]]);
 let res;
 try{
   const T=readRaw(id);
@@ -31,9 +31,9 @@ try{
     if(!newT.startsWith(T)||!(sm2&&md5(sm2[0])===sud)||(newT.indexOf("Analitin")>-1)!==analP||!/<th>\u0160uns svoris<\/th>/.test(newT)) res={id,SKIP:"guard"};
     else{
       const wc=writeRaw(id,newT); const after=readRaw(id);
-      res={id,recipe:"FiestaPlus",write:wc,ver_table:after!==null&&/<td>5 kg<\/td>/.test(after),ver_sud:after!==null&&md5((after.match(/Sud\u0117tis:[\s\S]*?<\/p>/)||[""])[0])===sud,ver_anal:after!==null&&after.indexOf("Analitin")>-1,lossless:after!==null&&md5(after)===md5(newT)};
+      res={id,recipe:"M/M Duck & Sweet Potato",write:wc,ver_table:after!==null&&/<td>10 kg<\/td>/.test(after)&&/<td>165 g<\/td>/.test(after),ver_sud:after!==null&&md5((after.match(/Sud\u0117tis:[\s\S]*?<\/p>/)||[""])[0])===sud,ver_anal:after!==null&&after.indexOf("Analitin")>-1,lossless:after!==null&&md5(after)===md5(newT)};
     }
   }
 }catch(e){res={id,ERR:String(e).slice(0,100)};}
-commit("waveC_"+TS+".json", JSON.stringify(res,null,2));
+commit("waveD_"+TS+".json", JSON.stringify(res,null,2));
 console.log("DONE "+TS);
