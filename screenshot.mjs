@@ -10,45 +10,57 @@ function commit(name, str){
 }
 const TS=String(Date.now());
 const ids=[18112,18109,18106,18101,18098,18095,18092,18088,18077,18074,18065,18062,21707,18046,18043,18040,18036,18032,18029,18026,18022,18018,18014,18011,18000,17995,17992,17986,17983,17978];
+
+// pilnas parsavimas viso turinio
+function parse(h){
+  const z=h.replace(/&nbsp;/g,' ').replace(/&ndash;/g,'\u2013');
+  // visi <p> blokai su pozicijomis
+  const pRe=/<p[^>]*>([\s\S]*?)<\/p>/g; let m;
+  const ps=[];
+  while((m=pRe.exec(z))!==null){ ps.push({inner:m[1], start:m.index, end:m.index+m[0].length}); }
+  // klasifikuojam kiekviena <p>
+  let hasRange=false, hasAge=false, hasPreg=false;
+  const rowsIdx=[];
+  ps.forEach((p,i)=>{
+    if(/Kal\u0117s|N\u0117\u0161tum/i.test(p.inner)) hasPreg=true;
+    if(/Am\u017eius|m\u0117nesiais|kg k\u016bno|k\u016bno svorio/i.test(p.inner)) hasAge=true;
+    if(/\d+\s*\u2013\s*\d+\s*kg/i.test(p.inner)) hasRange=true;
+    const wt=p.inner.match(/(\d+)\s*kg/i);
+    const isRange=/\d+\s*\u2013\s*\d+\s*kg/i.test(p.inner);
+    const grams=[...p.inner.matchAll(/(\d+)\s*g\b/gi)].map(x=>+x[1]);
+    if(wt && !isRange && grams.length===3){ rowsIdx.push(i); }
+  });
+  if(hasPreg) return {cls:"SPECIAL_pregnancy"};
+  if(hasAge) return {cls:"SPECIAL_age"};
+  if(hasRange) return {cls:"SPECIAL_range"};
+  if(rowsIdx.length<4) return {cls:"FEW_ROWS", n:rowsIdx.length};
+  // tikrinam ar eilutes gretimos (consecutive indeksai)
+  let consecutive=true;
+  for(let k=1;k<rowsIdx.length;k++){ if(rowsIdx[k]!==rowsIdx[k-1]+1){consecutive=false;break;} }
+  const rows=rowsIdx.map(i=>{
+    const inner=ps[i].inner;
+    const wt=+inner.match(/(\d+)\s*kg/i)[1];
+    const g=[...inner.matchAll(/(\d+)\s*g\b/gi)].map(x=>+x[1]);
+    return [wt,g[0],g[1],g[2]];
+  });
+  // header <p> pries pirma eilute?
+  const firstRow=rowsIdx[0];
+  const hdr = firstRow>0 && /Svoris|neaktyvus|aktyvus/i.test(ps[firstRow-1].inner) && !/\d+\s*kg/.test(ps[firstRow-1].inner);
+  return {cls:"STD_DOG", rows, consecutive, hasHeader:hdr,
+    spanStart: hdr? ps[firstRow-1].start : ps[firstRow].start,
+    spanEnd: ps[rowsIdx[rowsIdx.length-1]].end };
+}
+const out=[];
 fs.mkdirSync('/tmp/p',{recursive:true});
 fs.writeFileSync('/tmp/ids.txt', ids.join("\n"));
 const U=process.env.WP_USER,P=env.WP_PASS_CLEAN;
 try{execSync(`cat /tmp/ids.txt | xargs -P 8 -I {} curl -sk --max-time 30 -u "${U}:${P}" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=content" -o /tmp/p/{}.json`,{encoding:'utf8',maxBuffer:200000000,timeout:200000});}catch(e){}
-
-function analyze(h){
-  // serimo zona (po pirmo serimo markerio)
-  const si=h.search(/\u0160\u0117rimo rekomendacija|\u0160\u0117rimo norm|Rekomenduojam[a-z]* pa\u0161aro/i);
-  if(si<0) return {cls:"NO_ZONE"};
-  const zoneEnd = Math.min(h.length, si+2000);
-  const zone=h.slice(si, zoneEnd);
-  // specialios
-  if(/Kal\u0117s|N\u0117\u0161tum/i.test(zone)) return {cls:"SPECIAL_pregnancy"};
-  if(/Am\u017eius|m\u0117nesiais|k\u016bno svorio|kg k\u016bno/i.test(zone)) return {cls:"SPECIAL_age"};
-  if(/\d+\s*(&ndash;|[-\u2013])\s*\d+\s*kg/i.test(zone.replace(/&nbsp;/g,' '))) return {cls:"SPECIAL_range"};
-  // standartine: header su Svoris...aktyvus
-  const hm=zone.match(/<p>[^<]*Svoris[^<]*aktyvus[^<]*<\/p>/i);
-  if(!hm) return {cls:"NO_HEADER"};
-  // eilutes
-  const z2=zone.replace(/&nbsp;/g,' ');
-  const pRe=/<p>([\s\S]*?)<\/p>/g; let m; const rows=[]; let started=false;
-  while((m=pRe.exec(z2))!==null){
-    const inner=m[1];
-    if(/Svoris[\s\S]*aktyvus/i.test(inner)){started=true;continue;}
-    if(!started) continue;
-    const wt=inner.match(/(\d+)\s*kg/i);
-    const grams=[...inner.matchAll(/(\d+)\s*g\b/gi)].map(x=>+x[1]);
-    if(wt && grams.length===3){ rows.push([+wt[1],grams[0],grams[1],grams[2]]); }
-    else if(rows.length>0 && inner.replace(/[\s]/g,'')!=='') break;
-  }
-  const kgCount=(zone.replace(/&nbsp;/g,' ').match(/\b\d+\s*kg\b/gi)||[]).length;
-  if(rows.length<4) return {cls:"FEW_ROWS",rows:rows.length};
-  return {cls:"STD_DOG", rows, kgInZone:kgCount, rowsMatchKg: rows.length===kgCount};
-}
-const out=[];
 for(const id of ids){
   let h="";try{h=(JSON.parse(fs.readFileSync('/tmp/p/'+id+'.json','utf8')).content||{}).raw||"";}catch(e){}
   if(!h){out.push({id,cls:"ERR"});continue;}
-  out.push({id, ...analyze(h)});
+  const r=parse(h);
+  out.push({id, cls:r.cls, n:r.rows?r.rows.length:(r.n||0), consecutive:r.consecutive, hasHeader:r.hasHeader,
+    rows:r.rows? r.rows.map(x=>x[0]+":"+x[1]+"/"+x[2]+"/"+x[3]).join(" ") : undefined});
 }
-commit("dryconv_"+TS+".json", JSON.stringify(out,null,1));
+commit("dryconv2_"+TS+".json", JSON.stringify(out,null,1));
 console.log("DONE "+TS);
