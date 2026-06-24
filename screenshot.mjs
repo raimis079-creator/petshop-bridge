@@ -1,6 +1,8 @@
 import { execSync } from "child_process";
 import fs from "fs";
+import crypto from "crypto";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
+const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
 function commit(name, str){
   const b64=Buffer.from(str,'utf8').toString('base64');const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
@@ -9,21 +11,31 @@ function commit(name, str){
   return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000}).trim();
 }
 const TS=String(Date.now());
-function readRaw(id){try{const r=JSON.parse(execSync(`curl -sk --max-time 25 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}catch(e){return '';}}
-// mano irasytos prekes
-const mine=[24644,25471,25475,26449,25415,25419,21707,25443,26423, 19921,19920,17978,25463,26395,20450,26445,26391,25617, 20445,27019,25625,18046,26403,25241,17995,21024];
-// keletas neliestu "trukstamu"
-const untouched=[18112,26407,25233,26362,18000,25439];
-const out={mine:[],untouched:[]};
-for(const id of mine){
-  const h=readRaw(id);
-  const oldText=/(\u0160\u0117rimo rekomendacija|Svoris\s*(&nbsp;|\s)*neaktyvus|Vienam gyv\u016bnui rekomenduojamas)/i.test(h);
-  const myTable=/<th>\u0160uns svoris<\/th>/.test(h);
-  out.mine.push({id, oldText, myTable, dup: oldText&&myTable});
+function readRaw(id){const r=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content"`,{encoding:'utf8',env,maxBuffer:20000000}));return (r.content&&r.content.raw)||'';}
+function writeRaw(id, content){fs.writeFileSync('/tmp/body.json',JSON.stringify({content}));return execSync(`curl -sk --max-time 40 -o /dev/null -w "%{http_code}" -X PUT -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -d @/tmp/body.json "https://dev.avesa.lt/wp-json/wp/v2/product/${id}"`,{encoding:'utf8',env,maxBuffer:50000000}).trim();}
+
+const results=[];
+for(const id of [17978,18046,17995]){
+  try{
+    let h=readRaw(id);
+    const marker='<p><strong>\u0160\u0117rimo instrukcija:</strong></p>';
+    const idx=h.lastIndexOf(marker);
+    if(idx<0){ results.push({id,SKIP:"mano marker nerastas"}); continue; }
+    // nukerpu nuo mano bloko (su pries ji esanciu \n)
+    let newH=h.slice(0,idx).replace(/\s+$/,'');
+    // guards: mano lentele dingo, senas tekstinis serimas liko, turinys trumpesnis
+    const myTableGone = newH.indexOf('<th>\u0160uns svoris</th>')<0;
+    const oldTextStays = /(\u0160\u0117rimo rekomendacija|Vienam gyv\u016bnui rekomenduojamas)/i.test(newH);
+    const shorter = newH.length < h.length;
+    if(!myTableGone || !shorter){ results.push({id,SKIP:"guard",myTableGone,oldTextStays,shorter}); continue; }
+    const wc=writeRaw(id,newH);
+    const after=readRaw(id);
+    results.push({id,write:wc,
+      removed_chars:h.length-newH.length,
+      my_table_gone:after.indexOf('<th>\u0160uns svoris</th>')<0,
+      old_text_stays:/(\u0160\u0117rimo rekomendacija|Vienam gyv\u016bnui rekomenduojamas)/i.test(after),
+      lossless:md5(after)===md5(newH)});
+  }catch(e){ results.push({id,ERR:String(e).slice(0,100)}); }
 }
-for(const id of untouched){
-  const h=readRaw(id);
-  out.untouched.push({id, hasTextFeeding:/(\u0160\u0117rimo rekomendacija|Svoris\s*(&nbsp;|\s)*neaktyvus|Vienam gyv\u016bnui rekomenduojamas|paros norma)/i.test(h), hasTable:/<table>/.test(h)});
-}
-commit("dupscan_"+TS+".json", JSON.stringify(out,null,1));
+commit("dupfix_"+TS+".json", JSON.stringify(results,null,2));
 console.log("DONE "+TS);
