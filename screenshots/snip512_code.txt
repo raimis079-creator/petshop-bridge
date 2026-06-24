@@ -1,0 +1,189 @@
+/** Petshop Aprasymu Accordion PROTO v5 (test gate ps_desc) */
+if (!defined('ABSPATH')) return;
+
+/* ---------- LT -> ascii (markeriu atpazinimui) ---------- */
+if (!function_exists('psdp_ascii')) {
+function psdp_ascii($s){
+    $s = wp_strip_all_tags($s);
+    $map = array(
+        "\xC4\x85"=>'a',"\xC4\x8D"=>'c',"\xC4\x99"=>'e',"\xC4\x97"=>'e',"\xC4\xAF"=>'i',
+        "\xC5\xA1"=>'s',"\xC5\xB3"=>'u',"\xC5\xAB"=>'u',"\xC5\xBE"=>'z',
+        "\xC4\x84"=>'a',"\xC4\x8C"=>'c',"\xC4\x98"=>'e',"\xC4\x96"=>'e',"\xC4\xAE"=>'i',
+        "\xC5\xA0"=>'s',"\xC5\xB2"=>'u',"\xC5\xAA"=>'u',"\xC5\xBD"=>'z'
+    );
+    return strtolower(strtr($s, $map));
+}
+}
+
+/* ---------- markerio fraze -> kanonine antraste ---------- */
+if (!function_exists('psdp_title')) {
+function psdp_title($m){
+    $t = psdp_ascii($m);
+    if (strpos($t,'pagrindinis aprasymas')!==false) return "Apra\xC5\xA1ymas";
+    if (strpos($t,'sud')===0) return "Sud\xC4\x97tis";
+    if (strpos($t,'analitin')===0) return "Analitin\xC4\x97s sudedamosios dalys";
+    if (strpos($t,'pried')!==false || strpos($t,'maisto pried')!==false || strpos($t,'technologiniai pried')!==false) return "Priedai";
+    if (strpos($t,'serim')===0 || strpos($t,'rekomenduojamas kiekis')===0) return "\xC5\xA0\xC4\x97rimo instrukcija";
+    if (strpos($t,'ispejim')!==false) return "\xC4\xAEsp\xC4\x97jimai";
+    if (strpos($t,'pagaminta')!==false) return "Pagaminta";
+    return trim(wp_strip_all_tags($m));
+}
+}
+
+/* ---------- bendras valymas: dekodavimas + siuksles ---------- */
+if (!function_exists('psdp_clean')) {
+function psdp_clean($html){
+    if (!is_string($html)) return '';
+    $html = html_entity_decode($html, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $html = preg_replace('#<style[^>]*>.*?</style>#is', ' ', $html);
+    $html = preg_replace('#<script[^>]*>.*?</script>#is', ' ', $html);
+    $html = preg_replace('#<!--.*?-->#s', ' ', $html);
+    $html = preg_replace('/Trumpas\s+prek\x{0117}s\s+apra\x{0161}ymas/iu', ' ', $html);
+    return $html;
+}
+}
+
+/* ---------- MAISTUI: kirpti tik fizinius pakuotes matmenis (x x cm), svori palikti ---------- */
+if (!function_exists('psdp_cut_dims')) {
+function psdp_cut_dims($html){
+    // su etikete: "Pakuotes dydis/matmenys: 10,5 x 19 x 36 cm" arba "Ismatavimai: ..."
+    $html = preg_replace('/(?:Pakuot\x{0117}s\s+(?:dydis|matmenys)|I\x{0161}matavimai|Matmenys)\s*:?\s*\d+[.,]?\d*\s*[x\x{00D7}]\s*\d+[.,]?\d*(?:\s*[x\x{00D7}]\s*\d+[.,]?\d*)?\s*(?:cm|mm)\.?/iu', ' ', $html);
+    // be etiketes: "10,5 x 19 x 36 cm" (3 matmenys)
+    $html = preg_replace('/\b\d+[.,]?\d*\s*[x\x{00D7}]\s*\d+[.,]?\d*\s*[x\x{00D7}]\s*\d+[.,]?\d*\s*(?:cm|mm)\b\.?/iu', ' ', $html);
+    $html = preg_replace('#<p>\s*</p>#i', '', $html);
+    return $html;
+}
+}
+
+/* ---------- FALLBACK valymas (aksesuarams) ---------- */
+if (!function_exists('psdp_fallback_clean')) {
+function psdp_fallback_clean($html){
+    $html = preg_replace('#<li>\s*</li>#i', ' ', $html);
+    $html = preg_replace('/<(h[1-6]|strong|b|p)[^>]*>\s*Pagrindinis\s+apra\x{0161}ymas\s*<\/\1>/iu', ' ', $html);
+    $html = preg_replace('#<p>\s*</p>#i', '', $html);
+    $html = preg_replace('#<ul>\s*</ul>#i', '', $html);
+    return $html;
+}
+}
+
+/* ---------- skaidymas: du keliai (dvitaskis + heading) + kanonine tvarka ---------- */
+if (!function_exists('psdp_split')) {
+function psdp_split($html){
+    if (!is_string($html) || $html === '') return array();
+
+    // dvitaskio kelias (rizikingi trumpi markeriai - PRIVALO dvitaskis)
+    $patC = '/(?:<(?:strong|b|h[1-6]|p|span|em|div)[^>]*>\s*)*\s*('
+          . 'Sud\x{0117}tis'
+          . '|Maisto\s+pried[a-z\x{0105}-\x{017E}]*'
+          . '|Technologiniai\s+pried[a-z\x{0105}-\x{017E}]*'
+          . '|Pried[a-z\x{0105}-\x{017E}]*\/kg[^:<\n]{0,30}'
+          . '|Pried[a-z\x{0105}-\x{017E}]*'
+          . '|Pagaminta'
+          . '|\x{012E}sp\x{0117}jim[a-z\x{0105}-\x{017E}]*'
+          . ')\s*(?:<\/(?:strong|b|span|em)>\s*)*\s*:/iu';
+
+    // heading kelias (konkrecios frazes - dvitaskis ARBA uzdaromasis heading tag'as)
+    $patH = '/(?:<(?:strong|b|h[1-6]|p|span|em|div)[^>]*>\s*)*\s*('
+          . 'Analitin\x{0117}s(?:\s+sudedamosios(?:\s+(?:dalys|med\x{017E}iagos))?)?'
+          . '|\x{0160}\x{0117}rim(?:o|as)?(?:\s+(?:instrukcija|rekomendacij[ao]s?|norma|normos|nurodymai))?'
+          . '|Rekomenduojamas\s+kiekis\s+per\s+par[a\x{0105}]'
+          . '|Pagrindinis\s+apra\x{0161}ymas'
+          . ')\s*(?::|<\/(?:strong|b|h[1-6])>)/iu';
+
+    $marks = array();
+    foreach (array($patC, $patH) as $pat) {
+        if (preg_match_all($pat, $html, $mm, PREG_OFFSET_CAPTURE | PREG_SET_ORDER)) {
+            foreach ($mm as $m) {
+                $full = $m[0][0]; $off = $m[0][1]; $phrase = $m[1][0];
+                $marks[] = array('start'=>$off, 'cstart'=>$off + strlen($full), 'phrase'=>$phrase);
+            }
+        }
+    }
+    if (empty($marks)) return array();
+    usort($marks, function($a,$b){ return $a['start'] - $b['start']; });
+
+    $raw = array();
+    $intro = trim(substr($html, 0, $marks[0]['start']));
+    if (strlen(trim(wp_strip_all_tags($intro))) >= 15) $raw[] = array("Apra\xC5\xA1ymas", $intro);
+    $n = count($marks);
+    for ($i=0; $i<$n; $i++) {
+        $cstart = $marks[$i]['cstart'];
+        $cend   = ($i+1 < $n) ? $marks[$i+1]['start'] : strlen($html);
+        $body   = trim(substr($html, $cstart, $cend - $cstart));
+        $raw[]  = array(psdp_title($marks[$i]['phrase']), $body);
+    }
+
+    // sujungti pagal pavadinima (visus, ne tik gretimus)
+    $map = array(); $seen = array();
+    foreach ($raw as $s) {
+        $t = $s[0];
+        if (!isset($map[$t])) { $map[$t] = $s[1]; $seen[] = $t; }
+        else { $map[$t] .= ' ' . $s[1]; }
+    }
+    // nerodyti beveik tusciu (<15 simb.)
+    foreach ($map as $t=>$c) { if (strlen(trim(wp_strip_all_tags($c))) < 15) unset($map[$t]); }
+
+    // kanonine tvarka
+    $canon = array("Apra\xC5\xA1ymas","Sud\xC4\x97tis","Analitin\xC4\x97s sudedamosios dalys","Priedai","\xC5\xA0\xC4\x97rimo instrukcija","\xC4\xAEsp\xC4\x97jimai","Pagaminta");
+    $final = array();
+    foreach ($canon as $t) { if (isset($map[$t])) { $final[] = array($t, $map[$t]); unset($map[$t]); } }
+    foreach ($map as $t=>$c) { $final[] = array($t, $c); }
+    return $final;
+}
+}
+
+/* ---------- aprasymo tab'o renderis ---------- */
+if (!function_exists('psdp_render')) {
+function psdp_render($key = '', $tab = array()){
+    global $post;
+    $content = ($post && isset($post->post_content)) ? $post->post_content : '';
+
+    $clean = psdp_cut_dims(psdp_clean($content));   // maisto kelias (su matmenu kirpimu)
+    $sections = psdp_split($clean);
+
+    if (count($sections) < 2) {
+        // FALLBACK (aksesuarai): matmenu NEkirpti, tik svariai sutvarkyti
+        $fb = psdp_fallback_clean(psdp_clean($content));
+        echo apply_filters('the_content', $fb);
+        return;
+    }
+
+    $open_all = (!empty($_GET['ps_desc_open']) && $_GET['ps_desc_open'] === 'all');
+    echo '<div class="ps-desc-acc">';
+    $first = true;
+    foreach ($sections as $s) {
+        $op = ($open_all || $first) ? ' open' : '';
+        echo '<details' . $op . '><summary>' . esc_html($s[0]) . '</summary>'
+           . '<div class="ps-desc-body">' . wpautop(force_balance_tags(trim($s[1]))) . '</div></details>';
+        $first = false;
+    }
+    echo '</div>';
+}
+}
+
+/* ---------- short description valymas (P0) ---------- */
+add_filter('woocommerce_short_description', function($html){
+    if (empty($_GET['ps_desc'])) return $html;
+    return psdp_clean($html);
+}, 99);
+
+/* ---------- aprasymo tab'as TIK kai ?ps_desc=1 ---------- */
+add_filter('woocommerce_product_tabs', function($tabs){
+    if (empty($_GET['ps_desc'])) return $tabs;
+    if (isset($tabs['description'])) $tabs['description']['callback'] = 'psdp_render';
+    return $tabs;
+}, 98);
+
+/* ---------- CSS viena karta per wp_head (ne inline aprasyme) ---------- */
+add_action('wp_head', function(){
+    if (empty($_GET['ps_desc'])) return;
+    echo '<style id="psdp-css">'
+        . '.ps-desc-acc details{border-top:1px solid #4a8a3f;padding:16px 2px;}'
+        . '.ps-desc-acc details:last-child{border-bottom:1px solid #4a8a3f;}'
+        . '.ps-desc-acc summary{list-style:none;cursor:pointer;font-weight:700;font-size:19px;color:#1d5e1d;display:flex;align-items:center;padding:4px 0;}'
+        . '.ps-desc-acc summary::-webkit-details-marker{display:none;}'
+        . '.ps-desc-acc summary::after{content:"";margin-left:auto;border:5px solid transparent;border-left-color:#4a8a3f;transition:transform .2s;}'
+        . '.ps-desc-acc details[open] summary::after{transform:rotate(90deg);}'
+        . '.ps-desc-acc .ps-desc-body{padding-top:10px;color:#333;font-size:15px;line-height:1.6;}'
+         . '.ps-desc-acc .ps-desc-body p{margin:0 0 8px}' . '.ps-desc-acc .ps-desc-body table{border-collapse:collapse;width:auto;margin:8px 0}' . '.ps-desc-acc .ps-desc-body td{padding:1px 14px 1px 0;vertical-align:top;border:0}' . '.ps-desc-acc .ps-desc-body td p{margin:0;line-height:1.4}' . '.ps-desc-acc .ps-desc-body td strong{white-space:nowrap}' . '.ps-desc-acc .ps-desc-body ul{margin:6px 0 8px;padding-left:20px}' . '.ps-desc-acc .ps-desc-body li{margin:2px 0}'. '</style>';
+}, 99);
