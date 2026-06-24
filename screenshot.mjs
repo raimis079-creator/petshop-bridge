@@ -9,33 +9,22 @@ function commit(name, str){
   return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000}).trim();
 }
 const TS=String(Date.now());
-// visi josera
-let prods=[];
-for(let page=1;page<=5;page++){
-  try{const r=JSON.parse(execSync(`curl -sk --max-time 50 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?search=Josera&per_page=50&page=${page}&status=publish&_fields=id,name"`,{encoding:'utf8',env,maxBuffer:50000000}));if(!Array.isArray(r)||r.length===0)break;prods=prods.concat(r);if(r.length<50)break;}catch(e){break;}
-}
-const seen={};prods=prods.filter(p=>{if(seen[p.id])return false;seen[p.id]=1;return true;});
+const ids=[27130,26925,26901,26884,26457,26453,26441,26438,26435,26431,26418,26414,26411,26407,26399,26387,26383,26375,26371,26368,26365,26362,26296,25479,25475,25471,25455,25451,25439,25411,25407,25403,25399,25391,25387,25383,25261,25237,25233,25229,24644,21321,21045,21043,21041];
 fs.mkdirSync('/tmp/p',{recursive:true});
-fs.writeFileSync('/tmp/ids.txt', prods.map(p=>p.id).join("\n"));
+fs.writeFileSync('/tmp/ids.txt', ids.join("\n"));
 const U=process.env.WP_USER,P=env.WP_PASS_CLEAN;
-try{execSync(`cat /tmp/ids.txt | xargs -P 10 -I {} curl -sk --max-time 25 -u "${U}:${P}" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=content" -o /tmp/p/{}.json`,{encoding:'utf8',maxBuffer:200000000,timeout:240000});}catch(e){}
-const isWet=n=>/konserv|pate|Meat Lovers|filet|Soup|, 85|, 70|85 ?g|70 ?g|400 ?g\b|800 ?g/i.test(n);
-let dryClean=0,dryTextStd=0,dryTextSpecial=0,dryEmpty=0,dryTotal=0, wet=0;
-const emptyIds=[],specialIds=[];
-for(const p of prods){
-  let h="";try{h=(JSON.parse(fs.readFileSync('/tmp/p/'+p.id+'.json','utf8')).content||{}).raw||"";}catch(e){}
-  if(isWet(p.name)){wet++;continue;}
-  dryTotal++;
-  if(!h)continue;
-  const clean=/<th[^>]*>\s*\u0160uns svoris/i.test(h) || /<table[^>]*>[\s\S]*?<td[^>]*>\s*\d+\s*kg\s*<\/td>[\s\S]*?<td[^>]*>\s*\d+\s*g\s*<\/td>/i.test(h);
-  if(clean){dryClean++;continue;}
+try{execSync(`cat /tmp/ids.txt | xargs -P 8 -I {} curl -sk --max-time 30 -u "${U}:${P}" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=content,title" -o /tmp/p/{}.json`,{encoding:'utf8',maxBuffer:200000000,timeout:200000});}catch(e){}
+const out=[];
+for(const id of ids){
+  let h="",nm="";try{const j=JSON.parse(fs.readFileSync('/tmp/p/'+id+'.json','utf8'));h=(j.content&&j.content.raw)||"";nm=((j.title&&j.title.raw)||"").slice(0,55);}catch(e){}
   const z=h.replace(/&nbsp;/g,' ').replace(/&ndash;/g,'\u2013');
-  const range=/\d+\s*\u2013\s*\d+\s*kg/i.test(z), age=/Am\u017eius|m\u0117nesiais|kg k\u016bno/i.test(z), preg=/Kal\u0117s|N\u0117\u0161tum/i.test(z);
-  const single=(z.match(/<p[^>]*>[^<]*\d+\s*kg[\s\S]{0,400}?\d+\s*g[\s\S]{0,200}?\d+\s*g/gi)||[]).length;
-  if(range||age||preg){dryTextSpecial++;specialIds.push(p.id);}
-  else if(single>=3){dryTextStd++;specialIds.push(p.id);}
-  else {dryEmpty++;emptyIds.push(p.id);}
+  const kgTable=/<table[^>]*>[\s\S]*?<td[^>]*>\s*\d+\s*kg\s*<\/td>[\s\S]*?<td[^>]*>\s*\d+\s*g/i.test(h) || /<th[^>]*>\s*\u0160uns svoris/i.test(h);
+  const anyTable=/<table/i.test(h);
+  const ageTable=/Am\u017eius|m\u0117nesiais|savait/i.test(z) && anyTable;
+  const textKg=(z.match(/\d+\s*kg[\s\S]{0,300}?\d+\s*g/gi)||[]).length;
+  const range=/\d+\s*\u2013\s*\d+\s*kg/i.test(z);
+  let form = kgTable?"KG_TABLE": ageTable?"AGE_TABLE": range?"RANGE_TEXT": (textKg>=3?"TEXT_KG": (anyTable?"TABLE_other":"EMPTY"));
+  out.push({id,nm,form,textKg,anyTable});
 }
-const out={total:prods.length,dryTotal,dryClean,dryTextStd,dryTextSpecial,dryEmpty,wet,emptyIds,specialIds};
-commit("finalstate_"+TS+".json", JSON.stringify(out));
+commit("recon45_"+TS+".json", JSON.stringify(out,null,1));
 console.log("DONE "+TS);
