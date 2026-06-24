@@ -1,0 +1,11 @@
+{
+  "id": 512,
+  "name": "Petshop Aprasymu Accordion PROTO v5 (test ps_desc)",
+  "active": true,
+  "scope": "global",
+  "len": 9168,
+  "has_media": false,
+  "has_overflow": false,
+  "style_markers": 2,
+  "css_tail": ".ps-desc-acc details{border-top:1px solid #4a8a3f;padding:16px 2px;}'\n        . '.ps-desc-acc details:last-child{border-bottom:1px solid #4a8a3f;}'\n        . '.ps-desc-acc summary{list-style:none;cursor:pointer;font-weight:700;font-size:19px;color:#1d5e1d;display:flex;align-items:center;padding:4px 0;}'\n        . '.ps-desc-acc summary::-webkit-details-marker{display:none;}'\n        . '.ps-desc-acc summary::after{content:\"\";margin-left:auto;border:5px solid transparent;border-left-color:#4a8a3f;transition:transform .2s;}'\n        . '.ps-desc-acc details[open] summary::after{transform:rotate(90deg);}'\n        . '.ps-desc-acc .ps-desc-body{padding-top:10px;color:#333;font-size:15px;line-height:1.6;}'\n         . '.ps-desc-acc .ps-desc-body p{margin:0 0 8px}' . '.ps-desc-acc .ps-desc-body table{border-collapse:collapse;width:auto;margin:8px 0}' . '.ps-desc-acc .ps-desc-body td{padding:1px 14px 1px 0;vertical-align:top;border:0}' . '.ps-desc-acc .ps-desc-body td p{margin:0;line-height:1.4}' . '.ps-desc-acc .ps-desc-body td strong{white-space:nowrap}' . '.ps-desc-acc .ps-desc-body ul{margin:6px 0 8px;padding-left:20px}' . '.ps-desc-acc .ps-desc-body li{margin:2px 0}'. '</style>';\n}, 99);\n"
+}
