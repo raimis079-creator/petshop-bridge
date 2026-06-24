@@ -12,8 +12,8 @@ function build(fmt,rows){
   else{let t='\n<p><strong>\u0160\u0117rimo instrukcija:</strong></p>\n<table>\n<tr><th>\u0160uns svoris</th><th>Neaktyvus / senyvas</th><th>Normaliai aktyvus</th><th>Aktyvus</th></tr>\n';rows.forEach(r=>{t+='<tr><td>'+r[0]+' kg</td><td>'+r[1]+' g</td><td>'+r[2]+' g</td><td>'+r[3]+' g</td></tr>\n';});return t+'</table>\n<p>Nurodyti kiekiai \u2014 vienam gyv\u016bnui per par\u0105. Pritaikykite pagal gyv\u016bno aktyvum\u0105 ir k\u016bno b\u016bkl\u0119. Visada u\u017etikrinkite prieig\u0105 prie \u0161vie\u017eio geriamojo vandens.</p>';}
 }
 const DATA=[
- {recipe:"Mini Chicken & Rice", fmt:2, ids:[25403,25399], rows:[[2,40,50],[4,70,80],[6,95,110],[8,115,135],[10,140,160]]},
- {recipe:"Mini Duck & Potato", fmt:3, ids:[26296,21045], rows:[[2,20,30,30],[4,40,55,65],[6,60,85,95],[8,70,90,110],[10,85,115,140]]}
+ {recipe:"Mini Salmon & Chicken", fmt:3, ids:[26901,25391], rows:[[2,20,25,30],[4,35,50,60],[6,55,70,90],[8,65,90,110],[10,80,110,135]]},
+ {recipe:"Mini Senior Chicken & Rice", fmt:2, ids:[26435], rows:[[2,45,50],[4,75,85],[6,100,115],[8,120,140],[10,145,165]]}
 ];
 const results=[];
 for(const D of DATA){
@@ -30,5 +30,5 @@ for(const D of DATA){
     }catch(e){results.push({id,ERR:String(e).slice(0,100)});}
   }
 }
-commit("waveK_"+Date.now()+".json", JSON.stringify(results,null,2));
+commit("waveL_"+Date.now()+".json", JSON.stringify(results,null,2));
 console.log("DONE");
