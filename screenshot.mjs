@@ -1,9 +1,12 @@
 import { execSync } from "child_process";
 import fs from "fs";
+import crypto from "crypto";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
+const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 function commit(name, str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}
 function readRaw(id){for(let i=0;i<4;i++){try{execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${id}?context=edit&_fields=content" -o /tmp/r.json`,{encoding:'utf8',env,maxBuffer:50000000});return (JSON.parse(fs.readFileSync('/tmp/r.json','utf8')).content||{}).raw||'';}catch(e){execSync('sleep 3');}}return null;}
+function writeRaw(id,content){fs.writeFileSync('/tmp/body.json',JSON.stringify({content}));return execSync(`curl -sk --max-time 45 -o /dev/null -w "%{http_code}" -X PUT -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" -d @/tmp/body.json "https://dev.avesa.lt/wp-json/wp/v2/product/${id}"`,{encoding:'utf8',env,maxBuffer:50000000}).trim();}
 const MARK='<p><strong>\u0160\u0117rimo instrukcija:</strong></p>';
 const D='\u2013', EM='\u2014', DEG='\u00b0';
 const W=["5 kg","10 kg","20 kg","30 kg","40 kg"];
@@ -25,28 +28,24 @@ const JUN_ROWS=[
  {age:"6"+D+"12",v:["450"+D+"490","750"+D+"800","1250"+D+"1370","1580"+D+"1720","2100"+D+"2290"]}
 ];
 const results=[];
-for(const r of ADULT){ const block=buildWet(r.c); const new5=r.c[0]+" g";
-  for(const id of r.ids){ try{
-    const T=readRaw(id); if(T===null){results.push({id,recipe:r.n,ERR:"read"});continue;}
-    const idx=T.lastIndexOf(MARK); const has=idx>=0;
-    let cut=idx; if(has&&T[idx-1]==="\n")cut=idx-1;
-    const base=has?T.slice(0,cut):T; const oldBlock=has?T.slice(idx):"";
-    const m=oldBlock.match(/5 kg<\/td><td>([^<]+)<\/td>/); const old5=m?m[1]:null;
-    const newT=base+block;
-    const g_single=(newT.split(MARK).length-1)===1, g_base=newT.startsWith(base), g_anal=(T.indexOf("Analitin")>-1)===(newT.indexOf("Analitin")>-1), g_probe=newT.indexOf("<td>"+new5+"</td>")>-1, g_realdesc=(base.indexOf("Analitin")>-1||/Sud\u0117tis/.test(base));
-    results.push({id,recipe:r.n,act:has?"REPLACE":"APPEND",old5k:old5,new5k:new5,g_single,g_base,g_anal,g_probe,g_realdesc});
-  }catch(e){results.push({id,recipe:r.n,ERR:String(e).slice(0,100)});}}
-}
-const jblock=buildJrWet(JUN_ROWS); const jnew5="150"+D+"200 g";
-for(const id of JUN_IDS){ try{
-  const T=readRaw(id); if(T===null){results.push({id,recipe:"Junior",ERR:"read"});continue;}
+function applyOne(id, block, new5, recipe){
+  const T=readRaw(id); if(T===null){return {id,recipe,ERR:"read"};}
   const idx=T.lastIndexOf(MARK); const has=idx>=0;
   let cut=idx; if(has&&T[idx-1]==="\n")cut=idx-1;
   const base=has?T.slice(0,cut):T; const oldBlock=has?T.slice(idx):"";
-  const m=oldBlock.match(/<td>1[\u2013\-]2<\/td><td>([^<]+ g)<\/td>/); const old1=m?m[1]:null;
-  const newT=base+jblock;
-  const g_single=(newT.split(MARK).length-1)===1, g_base=newT.startsWith(base), g_anal=(T.indexOf("Analitin")>-1)===(newT.indexOf("Analitin")>-1), g_probe=newT.indexOf("<td>"+jnew5+"</td>")>-1, g_realdesc=(base.indexOf("Analitin")>-1||/Sud\u0117tis/.test(base));
-  results.push({id,recipe:"Junior(shared)",act:has?"REPLACE":"APPEND",old_1_2_5k:old1,new_1_2_5k:jnew5,g_single,g_base,g_anal,g_probe,g_realdesc});
-}catch(e){results.push({id,recipe:"Junior",ERR:String(e).slice(0,100)});}}
-commit("konsde_dry_"+Date.now()+".json", JSON.stringify(results,null,1));
+  const realdesc=(base.indexOf("Analitin")>-1||/Sud\u0117tis/.test(base));
+  if(!realdesc){return {id,recipe,SKIP:"no-realdesc"};}
+  const newT=base+block;
+  const g_single=(newT.split(MARK).length-1)===1, g_base=newT.startsWith(base), g_anal=(T.indexOf("Analitin")>-1)===(newT.indexOf("Analitin")>-1), g_probe=newT.indexOf("<td>"+new5+"</td>")>-1;
+  if(!g_single||!g_base||!g_anal||!g_probe){return {id,recipe,SKIP:"guard-pre",g_single,g_base,g_anal,g_probe};}
+  const wc=writeRaw(id,newT); const after=readRaw(id);
+  return {id,recipe,act:has?"REPLACE":"APPEND",write:wc,
+    ver_probe:after!==null&&after.indexOf("<td>"+new5+"</td>")>-1,
+    ver_single:after!==null&&(after.split(MARK).length-1)===1,
+    ver_anal:after!==null?(after.indexOf("Analitin")>-1)===(T.indexOf("Analitin")>-1):false,
+    lossless:after!==null&&md5(after)===md5(newT)};
+}
+for(const r of ADULT){ const block=buildWet(r.c); const new5=r.c[0]+" g"; for(const id of r.ids){ try{results.push(applyOne(id,block,new5,r.n));}catch(e){results.push({id,recipe:r.n,ERR:String(e).slice(0,100)});}}}
+const jblock=buildJrWet(JUN_ROWS); const jnew5="150"+D+"200 g"; for(const id of JUN_IDS){ try{results.push(applyOne(id,jblock,jnew5,"Junior(shared)"));}catch(e){results.push({id,recipe:"Junior",ERR:String(e).slice(0,100)});}}
+commit("konsde_apply_"+Date.now()+".json", JSON.stringify(results,null,1));
 console.log("DONE");
