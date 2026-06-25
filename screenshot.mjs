@@ -6,10 +6,15 @@ function commit(name, str){const url='https://api.github.com/repos/'+repo+'/cont
 execSync(`curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/20445?context=edit&_fields=content" -o /tmp/r.json`,{env,maxBuffer:50000000});
 const T=(JSON.parse(fs.readFileSync('/tmp/r.json','utf8')).content||{}).raw||'';
 const MARK='<p><strong>\u0160\u0117rimo instrukcija:</strong></p>';
-const out={len:T.length, markCount:T.split(MARK).length-1, neaktyvusCount:T.split("Neaktyvus").length-1, tableCount:T.split("<table>").length-1};
-// show context around each Neaktyvus
-const ctx=[]; let p=0; while((p=T.indexOf("Neaktyvus",p))>=0){ctx.push(T.slice(Math.max(0,p-120),p+60));p+=9;}
-out.neaktyvus_ctx=ctx;
-out.tail=T.slice(-700);
-commit("dbg20445_"+Date.now()+".json", JSON.stringify(out,null,2));
+// locate legacy table: the <table ...> whose content has "Neaktyvus / pagyven" (before MARK)
+const np=T.indexOf("Neaktyvus / pagyven");
+// find <table start before np
+const tStart=T.lastIndexOf("<table", np);
+const tEnd=T.indexOf("</table>", np); const tEndFull=tEnd>=0?tEnd+8:-1;
+const out={ legacy_table_start_idx:tStart, legacy_table_end_idx:tEndFull,
+  before_120: T.slice(Math.max(0,tStart-160), tStart),
+  legacy_table_html: T.slice(tStart, tEndFull),
+  after_120: T.slice(tEndFull, tEndFull+200),
+  markIdx:T.lastIndexOf(MARK) };
+commit("dbg2_20445_"+Date.now()+".json", JSON.stringify(out,null,2));
 console.log("DONE");
