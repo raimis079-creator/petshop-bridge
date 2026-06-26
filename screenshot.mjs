@@ -11,33 +11,32 @@ const MARK='<p><strong>\u0160\u0117rimo instrukcija:</strong></p>';
 const TD='border-bottom: 2px solid #d3d3d3;padding: 7px;';
 const STY='<style>.b2b-black, .b2b-black * { color:#000 !important; }</style>';
 const D='\u2013';
-const WCAT=["2"+D+"3 kg","3"+D+"4 kg","4"+D+"5 kg","5"+D+"7 kg","7"+D+"10 kg"];
-const NAT=["30"+D+"45","45"+D+"60","60"+D+"80","80"+D+"105","105"+D+"135"];
-function buildAdultS(cells){let t=MARK+'\n'+STY+'<div class="b2b-black"><table style="width:450px;" cellspacing="0">\n<tr><td style="'+TD+'"><b>Kat\u0117s svoris</b></td><td style="'+TD+'"><b>Kiekis per par\u0105</b></td></tr>\n';for(let i=0;i<5;i++){t+='<tr><td style="'+TD+'">'+WCAT[i]+'</td><td style="'+TD+'">'+cells[i]+' g</td></tr>\n';}t+='</table>\n<p>Nurodyti kiekiai \u2014 vienai suaugusiai katei per par\u0105 (orientaciniai). Pritaikykite pagal kat\u0117s aktyvum\u0105, am\u017e\u012f ir k\u016bno b\u016bkl\u0119. Visada u\u017etikrinkite prieig\u0105 prie \u0161vie\u017eio geriamojo vandens.</p></div>';return t;}
-const results={indoor:[],kg_recon:{}};
-// INDOOR apply 18084,18080
-for(const id of [18084,18080]){try{
-  const T=readRaw(id);if(T===null){results.indoor.push({id,ERR:"read"});continue;}
-  const iH=T.indexOf("\u0160\u0117rimo rekomendacijos (");
-  if(iH<0){results.indoor.push({id,SKIP:"no_header"});continue;}
-  const iStart=T.lastIndexOf("<p",iH);
-  const iTab=T.indexOf("</table>",iH);
-  if(iStart<0||iTab<0){results.indoor.push({id,SKIP:"bounds",iStart,iTab});continue;}
-  const iEnd=iTab+8;
-  const chunk=T.slice(iStart,iEnd);
-  if(chunk.indexOf("Pa\u0161aro kiekis parai")<0){results.indoor.push({id,SKIP:"no_table_in_chunk"});continue;}
-  const block=buildAdultS(NAT);
-  const newT=T.slice(0,iStart)+block+T.slice(iEnd);
-  const probe='7px;">30'+D+'45 g</td>';
-  const g={hdr_gone:newT.indexOf("\u0160\u0117rimo rekomendacijos (")<0,oldtab_gone:newT.indexOf("Pa\u0161aro kiekis parai")<0,sud:newT.indexOf("Sud\u0117tis")>-1,anal:newT.indexOf("Analitin")>-1,single:(newT.split(MARK).length-1)===1,probe:newT.indexOf(probe)>-1};
-  if(!g.hdr_gone||!g.oldtab_gone||!g.sud||!g.anal||!g.single||!g.probe){results.indoor.push({id,SKIP:"guard",g});continue;}
-  const wc=writeRaw(id,newT);const after=readRaw(id);
-  results.indoor.push({id,act:"CONVERTED",write:wc,lossless:after!==null&&md5(after)===md5(newT),ver_hdr_gone:after!==null&&after.indexOf("\u0160\u0117rimo rekomendacijos (")<0,ver_oldtab_gone:after!==null&&after.indexOf("Pa\u0161aro kiekis parai")<0,ver_single:after!==null&&(after.split(MARK).length-1)===1,ver_probe:after!==null&&after.indexOf(probe)>-1});
-}catch(e){results.indoor.push({id,ERR:String(e).slice(0,80)});}}
-// KittenGrainfree recon real section 18065
-for(const id of [18065]){const T=readRaw(id);if(T===null){results.kg_recon[id]={ERR:1};continue;}
+const KIT_AGE=[["2","50"],["3","45"],["4","40"],["5","35"],["6","30"],["7"+D+"12","20"+D+"30"]];
+const KIT_PREG=[["2"+D+"4 kg","40"+D+"90"],["4"+D+"6 kg","90"+D+"140"],["6"+D+"8 kg","140"+D+"180"]];
+function buildKittenS(){let t=MARK+'\n'+STY+'<div class="b2b-black"><table style="width:450px;" cellspacing="0">\n<tr><td style="'+TD+'"><b>Am\u017eius (m\u0117n.)</b></td><td style="'+TD+'"><b>Kiekis per par\u0105</b></td></tr>\n';KIT_AGE.forEach(r=>{t+='<tr><td style="'+TD+'">'+r[0]+'</td><td style="'+TD+'">'+r[1]+' g</td></tr>\n';});t+='</table>\n<table style="width:450px;" cellspacing="0">\n<tr><td style="'+TD+'"><b>Vaikingos kat\u0117s svoris</b></td><td style="'+TD+'"><b>Kiekis per par\u0105</b></td></tr>\n';KIT_PREG.forEach(r=>{t+='<tr><td style="'+TD+'">'+r[0]+'</td><td style="'+TD+'">'+r[1]+' g</td></tr>\n';});t+='</table>\n<p>Kiekiai vienam augintiniui per par\u0105 (orientaciniai). Vaikingoms ir \u017eindan\u010dioms kat\u0117ms poreikis priklauso nuo ka\u010diuk\u0173 skai\u010diaus \u2014 venkite per\u0161\u0117rimo. Visada u\u017etikrinkite prieig\u0105 prie \u0161vie\u017eio geriamojo vandens.</p></div>';return t;}
+const OLD_GARB='<p>36% baltym\u0173 ir 22%\u0160\u0117rimo rekomendacijos ka\u010diukams:</p>\n\n<p>&nbsp;riebal\u0173, i\u0161 j\u0173 84% gyvulin\u0117s kilm\u0117s baltym\u0173.</p>';
+const NEW_GARB='<p>36% baltym\u0173 ir 22% riebal\u0173, i\u0161 j\u0173 84% gyvulin\u0117s kilm\u0117s baltym\u0173.</p>';
+function stripTags(b){return b.replace(/<[^>]+>/g,"").replace(/&nbsp;/g," ").replace(/&ndash;/g,"\u2013").replace(/\s+/g," ").trim();}
+function isFeed(s){return /^\d/.test(s)&&/g$/.test(s)&&s.length<70;}
+const results=[];
+for(const id of [18065,18062]){try{
+  let T=readRaw(id);if(T===null){results.push({id,ERR:"read"});continue;}
+  const hadGarb=T.indexOf(OLD_GARB)>=0;
+  if(hadGarb)T=T.replace(OLD_GARB,NEW_GARB);
   const iReal=T.indexOf("<strong>\u0160\u0117rimo rekomendacijos ka\u010diukams:</strong>");
-  results.kg_recon[id]={iReal,len:T.length,dump:iReal>=0?T.slice(iReal,iReal+1100):"NO_REAL_HDR"};
-}
-commit("indoor_kg_"+Date.now()+".json", JSON.stringify(results,null,1));
+  if(iReal<0){results.push({id,SKIP:"no_real_hdr",hadGarb});continue;}
+  const iStart=T.lastIndexOf("<p",iReal);
+  let pos=iStart,consumed=0,first=true,rems=[];
+  while(consumed<16){const ws=(T.slice(pos).match(/^\s*/)||[""])[0];const bstart=pos+ws.length;if(T.slice(bstart,bstart+2)!=="<p")break;const endP=T.indexOf("</p>",bstart);if(endP<0)break;const inner=stripTags(T.slice(bstart,endP+4));const keep=first||isFeed(inner)||/am\u017eius|dienos norma|vaikingoms/i.test(inner)||inner===""||inner==="\u2013";if(!keep)break;rems.push(inner.slice(0,40));pos=endP+4;consumed++;first=false;}
+  const iEnd=pos;
+  if(consumed<4){results.push({id,SKIP:"consumed_low",consumed,hadGarb,rems});continue;}
+  const block=buildKittenS();
+  const newT=T.slice(0,iStart)+block+T.slice(iEnd);
+  const probe='7px;">2</td><td style="'+TD+'">50 g</td>';
+  const g={rekom_gone:newT.indexOf("\u0160\u0117rimo rekomendacij")<0,garb_gone:newT.indexOf("22%\u0160\u0117rimo")<0,sud:newT.indexOf("Sud\u0117tis")>-1,anal:newT.indexOf("Analitin")>-1,single:(newT.split(MARK).length-1)===1,probe:newT.indexOf(probe)>-1};
+  if(!g.rekom_gone||!g.garb_gone||!g.sud||!g.anal||!g.single||!g.probe){results.push({id,SKIP:"guard",g,consumed,hadGarb,rems});continue;}
+  const wc=writeRaw(id,newT);const after=readRaw(id);
+  results.push({id,act:"CONVERTED",hadGarb,consumed,rem0:rems[0],remL:rems[rems.length-1],write:wc,lossless:after!==null&&md5(after)===md5(newT),ver_rekom_gone:after!==null&&after.indexOf("\u0160\u0117rimo rekomendacij")<0,ver_single:after!==null&&(after.split(MARK).length-1)===1,ver_probe:after!==null&&after.indexOf(probe)>-1});
+}catch(e){results.push({id,ERR:String(e).slice(0,80)});}}
+commit("kg_apply_"+Date.now()+".json", JSON.stringify(results,null,1));
 console.log("DONE");
