@@ -2,17 +2,23 @@ import { execSync } from "child_process";
 import fs from "fs";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function put(name,buf){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:buf.toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}
-function front(id){for(let i=0;i<3;i++){try{execSync(`curl -skL --max-time 45 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/?p=${id}&ps_desc=1" -o /tmp/h.html`,{encoding:'utf8',env,maxBuffer:90000000});return fs.readFileSync('/tmp/h.html','utf8');}catch(e){execSync('sleep 2');}}return null;}
-const out={};
-const H=front(18014);
-out.live_lh145 = H?H.indexOf("line-height:1.45")>-1:null;
-out.live_important = H?H.indexOf("width:auto !important")>-1:null;
-out.live_old_16 = H?H.indexOf("line-height:1.6;}")>-1:null;
-// save full snippet code
-execSync(`curl -sk --max-time 35 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/512" -o /tmp/s.json`,{env,maxBuffer:50000000});
-const o=JSON.parse(fs.readFileSync('/tmp/s.json','utf8'));
-put("snip512_final_"+Date.now()+".txt", Buffer.from(o.code||'','utf8'));
-fs.writeFileSync('/tmp/o.json',JSON.stringify(out));
-put("snip512_live_"+Date.now()+".json", Buffer.from(JSON.stringify(out),'utf8'));
-console.log("DONE");
+function commit(name, str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}
+function wc(page){for(let i=0;i<3;i++){try{execSync(`curl -sk --max-time 50 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?search=Eukanuba&per_page=100&page=${page}&_fields=id,name,sku,status,categories,images" -o /tmp/w.json`,{encoding:'utf8',env,maxBuffer:80000000});return JSON.parse(fs.readFileSync('/tmp/w.json','utf8'));}catch(e){execSync('sleep 2');}}return null;}
+let all=[];for(let p=1;p<=3;p++){const r=wc(p);if(!r||!Array.isArray(r)||r.length===0)break;all=all.concat(r);if(r.length<100)break;}
+execSync('rm -rf /tmp/p && mkdir -p /tmp/p',{env});
+fs.writeFileSync('/tmp/ids.txt', all.map(d=>d.id).join("\n"));
+try{execSync(`cat /tmp/ids.txt | xargs -P 10 -I{} curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products/{}?_fields=id,description" -o /tmp/p/{}.json`,{env,maxBuffer:200000000});}catch(e){}
+const res=all.map(d=>{let desc="";try{desc=(JSON.parse(fs.readFileSync('/tmp/p/'+d.id+'.json','utf8')).description||"");}catch(e){desc="__FAIL__";}
+  const cats=(d.categories||[]).map(c=>c.name).join(" / ");
+  const txt=desc.replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
+  return {id:d.id,sku:d.sku,status:d.status,name:(d.name||"").slice(0,50),cats,
+    img:(d.images||[]).length,
+    dlen:desc.length, txtlen:txt.length,
+    sud:desc.indexOf("Sud\u0117tis")>-1||desc.indexOf("sud\u0117t")>-1,
+    anal:desc.indexOf("Analitin")>-1,
+    mark:desc.indexOf("\u0160\u0117rimo instrukcija")>-1,
+    feed_any:desc.indexOf("\u0160\u0117rim")>-1||desc.indexOf("Rekomenduojamas kiekis")>-1||desc.indexOf("&Scaron;\u0117rim")>-1,
+    tab:desc.split("<table").length-1,
+    fail:desc==="__FAIL__"};});
+commit("euk_audit_"+Date.now()+".json", JSON.stringify(res,null,1));
+console.log("DONE n="+res.length);
