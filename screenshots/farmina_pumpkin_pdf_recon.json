@@ -1,0 +1,171 @@
+{
+ "recipes": [
+  {
+   "key": "lamb_blueberry_adult_mini",
+   "wpIds": [
+    33239,
+    14532
+   ],
+   "url": "392-lamb-&-blueberry-adult-mini"
+  },
+  {
+   "key": "lamb_blueberry_adult_med_max",
+   "wpIds": [
+    14535
+   ],
+   "url": "393-lamb-&-blueberry-adult-medium-&-maxi",
+   "knownPdf": "393_19_nd-pumpkin-canine-8-lamb-medium-maxi.pdf",
+   "done": true
+  },
+  {
+   "key": "lamb_blueberry_puppy_mini",
+   "wpIds": [
+    33235,
+    14528,
+    14530
+   ],
+   "url": "388-lamb-&-blueberry-puppy-mini",
+   "knownPdf": "388_47_nd-pumpkin-canine-1-puppy-lamb-mini.pdf"
+  },
+  {
+   "key": "wild_boar_apple_adult_mini",
+   "wpIds": [
+    33243,
+    14537
+   ],
+   "url": null
+  },
+  {
+   "key": "wild_boar_apple_adult_med_max",
+   "wpIds": [
+    14540,
+    14539
+   ],
+   "url": null
+  },
+  {
+   "key": "quail_pomegr_adult_mini",
+   "wpIds": [
+    14543
+   ],
+   "url": null
+  },
+  {
+   "key": "quail_pomegr_adult_med_max",
+   "wpIds": [
+    14544
+   ],
+   "url": null
+  },
+  {
+   "key": "venison_apple_adult_med_max",
+   "wpIds": [
+    14715
+   ],
+   "url": null
+  },
+  {
+   "key": "venison_apple_adult_mini",
+   "wpIds": [
+    14545
+   ],
+   "url": null
+  },
+  {
+   "key": "duck_cantaloupe_adult_med_max",
+   "wpIds": [
+    14542
+   ],
+   "url": null
+  },
+  {
+   "key": "duck_cantaloupe_adult_mini",
+   "wpIds": [
+    14541
+   ],
+   "url": null
+  },
+  {
+   "key": "lamb_blueberry_puppy_med_max",
+   "wpIds": [
+    14534
+   ],
+   "url": null
+  },
+  {
+   "key": "chicken_pomegranate_puppy_mini",
+   "wpIds": [
+    14526
+   ],
+   "url": null
+  },
+  {
+   "key": "chicken_pomegranate_starter_all_br",
+   "wpIds": [
+    14525,
+    14524
+   ],
+   "url": null
+  }
+ ],
+ "fetched": {
+  "lamb_blueberry_adult_mini": {
+   "pdf": "392_07_nd-pumpkin-canine-7-lamb-mini.pdf",
+   "bytes": 109793
+  },
+  "lamb_blueberry_adult_med_max": {
+   "status": "already_done",
+   "pdf": "393_19_nd-pumpkin-canine-8-lamb-medium-maxi.pdf"
+  },
+  "lamb_blueberry_puppy_mini": {
+   "pdf": "388_47_nd-pumpkin-canine-1-puppy-lamb-mini.pdf",
+   "bytes": 115013
+  }
+ },
+ "failed": [
+  {
+   "k": "wild_boar_apple_adult_mini",
+   "err": "no_url"
+  },
+  {
+   "k": "wild_boar_apple_adult_med_max",
+   "err": "no_url"
+  },
+  {
+   "k": "quail_pomegr_adult_mini",
+   "err": "no_url"
+  },
+  {
+   "k": "quail_pomegr_adult_med_max",
+   "err": "no_url"
+  },
+  {
+   "k": "venison_apple_adult_med_max",
+   "err": "no_url"
+  },
+  {
+   "k": "venison_apple_adult_mini",
+   "err": "no_url"
+  },
+  {
+   "k": "duck_cantaloupe_adult_med_max",
+   "err": "no_url"
+  },
+  {
+   "k": "duck_cantaloupe_adult_mini",
+   "err": "no_url"
+  },
+  {
+   "k": "lamb_blueberry_puppy_med_max",
+   "err": "no_url"
+  },
+  {
+   "k": "chicken_pomegranate_puppy_mini",
+   "err": "no_url"
+  },
+  {
+   "k": "chicken_pomegranate_starter_all_br",
+   "err": "no_url"
+  }
+ ]
+}
