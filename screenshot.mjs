@@ -3,12 +3,16 @@ import fs from "fs";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 function commit(name, str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
-// reps: dog matrix, cat 2-row, dog+storage, age-matrix(fixhead)
-const CHK={17299:'375 g',16210:'117 g',17296:'Laikyti v\u0117sioje',17216:'b2b-black'};
-const out={};
-for(const id of Object.keys(CHK)){
-  let h="";try{execSync(`curl -skL -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/?p=${id}&ps_desc=1" -o /tmp/fe.html`,{env,maxBuffer:200000000});h=fs.readFileSync('/tmp/fe.html','utf8');}catch(e){}
-  out[id]={panel: h.includes('\u0160\u0117rimo')||h.includes('rekomendacij'), b2b: h.includes('b2b-black'), table: h.includes('<table'), check: h.includes(CHK[id]), len:h.length};
-}
-commit("ont_B_fe_"+Date.now()+".json",JSON.stringify(out,null,1));
-console.log(JSON.stringify(out,null,1));
+const IDS=[16222,17210];
+execSync('rm -rf /tmp/c && mkdir -p /tmp/c',{env});
+fs.writeFileSync('/tmp/ids.txt',IDS.join("\n"));
+try{execSync(`cat /tmp/ids.txt | xargs -P 4 -I{} curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=id,content" -o /tmp/c/{}.json`,{env,maxBuffer:200000000});}catch(e){}
+const HEAD=/(\u0160\u0117rim(?:o|as)\s+(?:rekomendacij|instrukcij|norm))/i;
+function clean(s){return s.replace(/<[^>]+>/g,' ').replace(/&amp;nbsp;|&nbsp;/g,' ').replace(/\xa0/g,' ').replace(/&ndash;/g,'\u2013').replace(/&amp;/g,'&').replace(/\s+/g,' ').trim();}
+const out=IDS.map(id=>{let T="";try{T=(JSON.parse(fs.readFileSync('/tmp/c/'+id+'.json','utf8')).content||{}).raw||"";}catch(e){return{id,err:1};}
+  const hp=T.search(HEAD);let s=-1;for(const tg of ['<p','<h2','<h3','<h4']){const k=T.lastIndexOf(tg,hp);if(k>s)s=k;}
+  const raw=T.slice(s,s+2600);
+  return {id, clean:clean(raw), raw};
+});
+commit("ont_B_d2_"+Date.now()+".json",JSON.stringify(out,null,1));
+console.log("DONE");
