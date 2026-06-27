@@ -10,19 +10,18 @@ try{execSync(`cat /tmp/ids.txt | xargs -P 8 -I{} curl -sk --max-time 40 -u "$WP_
 const HEAD=/\u0160\u0117rimo\s+(?:rekomendacij|instrukcij)/i;
 function clean(s){
   s=s.replace(/<!--[\s\S]*?-->/g,' ');
-  // protect bound entities (&lt;/&gt; followed by space+digit) BEFORE tag strip
-  s=s.replace(/&lt;\s*(?=\d)/g,'< ').replace(/&gt;\s*(?=\d)/g,'> ');
-  s=s.replace(/&lt;[^&]*?&gt;/g,' ');  // encoded tags
-  s=s.replace(/<[^>]+>/g,' ');         // real tags
+  s=s.replace(/<[^>]+>/g,' ');                          // real tags FIRST (bounds still entities)
+  s=s.replace(/&lt;\s*\/?[a-zA-Z][^&]*?&gt;/g,' ');     // encoded tags (letter/slash start only)
   s=s.replace(/&amp;nbsp;|&nbsp;/g,' ').replace(/&#8211;|&ndash;/g,'\u2013').replace(/&amp;/g,'&');
+  s=s.replace(/&lt;\s*(?=\d)/g,'< ').replace(/&gt;\s*(?=\d)/g,'> ');  // bounds AFTER tag strip
   s=s.replace(/&lt;/g,'<').replace(/&gt;/g,'>');
   s=s.replace(/\s+/g,' ').trim();
   return s;
 }
 const ROW=/(<|>)?\s*(\d+(?:,\d+)?)\s*(?:[-\u2013]\s*(\d+(?:,\d+)?))?\s*kg\s+(\d+(?:,\d+)?)\s*(?:[-\u2013]\s*(\d+(?:,\d+)?))?\s*g\s*(\+)?/gi;
-function wlabel(b,lo,hi){if(b==='<')return 'iki '+lo+' kg';if(b==='>')return 'virš '+lo+' kg';if(hi)return lo+'\u2013'+hi+' kg';return lo+' kg';}
+function wlabel(b,lo,hi){if(b==='<')return 'iki '+lo+' kg';if(b==='>')return 'vir\u0161 '+lo+' kg';if(hi)return lo+'\u2013'+hi+' kg';return lo+' kg';}
 function glabel(lo,hi,plus){let s=hi?(lo+'\u2013'+hi+' g'):(lo+' g');if(plus)s+='+';return s;}
-function parse(txt){const rows=[];let m;const re=new RegExp(ROW);let lastEnd=0;let firstStart=-1;
+function parse(txt){const rows=[];let m;const re=new RegExp(ROW);let lastEnd=0,firstStart=-1;
   while((m=re.exec(txt))){if(firstStart<0)firstStart=m.index;rows.push({w:wlabel(m[1],m[2],m[3]),g:glabel(m[4],m[5],m[6])});lastEnd=re.lastIndex;}
   return {rows,firstStart,lastEnd};}
 const out=IDS.map(id=>{let o={};try{o=JSON.parse(fs.readFileSync('/tmp/c/'+id+'.json','utf8'));}catch(e){return {id,ERR:1};}
@@ -30,11 +29,10 @@ const out=IDS.map(id=>{let o={};try{o=JSON.parse(fs.readFileSync('/tmp/c/'+id+'.
   const m=T.match(HEAD);const pos=m?m.index:-1;
   const region=pos>-1?clean(T.slice(pos,pos+700)):'';
   const p=parse(region);
-  // note = preamble (after heading colon, before first row, minus header words) + trailing
   let pre=region.slice(0,p.firstStart>-1?p.firstStart:0).replace(/^[^:]*:/,'').replace(/\u0160uns svoris|Dienos norma|Svoris\s*\(kg\)|Paros doz[\u0117e]\s*\(g\)|dienos norna|dienos norma/gi,'').trim();
   let post=region.slice(p.lastEnd).replace(/^[\s.+]+/,'').trim();
   const note=[pre,post].filter(x=>x&&x.length>8).join(' ');
-  return {id,status:st,rows:p.rows,n:p.rows.length,note:note.slice(0,150)};
+  return {id,status:st,rows:p.rows,n:p.rows.length,note:note.slice(0,140)};
 });
-commit("ont_A_dry2_"+Date.now()+".json", JSON.stringify(out,null,1));
+commit("ont_A_dry3_"+Date.now()+".json", JSON.stringify(out,null,1));
 console.log("DONE");
