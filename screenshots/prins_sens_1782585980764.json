@@ -1,0 +1,60 @@
+{
+ "rep": {
+  "16865": {
+   "status": "publish",
+   "introLen": 544,
+   "newLen": 2740,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16868": {
+   "status": "publish",
+   "introLen": 527,
+   "newLen": 2723,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16865": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16868": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  }
+ }
+}
