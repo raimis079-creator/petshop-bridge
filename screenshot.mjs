@@ -8,11 +8,13 @@ execSync('rm -rf /tmp/c && mkdir -p /tmp/c',{env});
 fs.writeFileSync('/tmp/ids.txt',IDS.join("\n"));
 try{execSync(`cat /tmp/ids.txt | xargs -P 4 -I{} curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/{}?context=edit&_fields=id,content" -o /tmp/c/{}.json`,{env,maxBuffer:200000000});}catch(e){}
 const HEAD=/(\u0160\u0117rim(?:o|as)\s+(?:rekomendacij|instrukcij|norm))/i;
+const STOP=/(Sud\u0117tis|Analitin|Energin|\u012esp\u0117jim|Priedai|Maisting|Trumpas prek|Pagrindinis apra)/i;
 function clean(s){return s.replace(/<[^>]+>/g,' ').replace(/&amp;nbsp;|&nbsp;/g,' ').replace(/\xa0/g,' ').replace(/&ndash;/g,'\u2013').replace(/&amp;/g,'&').replace(/\s+/g,' ').trim();}
 const out=IDS.map(id=>{let T="";try{T=(JSON.parse(fs.readFileSync('/tmp/c/'+id+'.json','utf8')).content||{}).raw||"";}catch(e){return{id,err:1};}
   const hp=T.search(HEAD);let s=-1;for(const tg of ['<p','<h2','<h3','<h4']){const k=T.lastIndexOf(tg,hp);if(k>s)s=k;}
-  const raw=T.slice(s,s+2600);
-  return {id, clean:clean(raw), raw};
+  // span until STOP heading
+  let region=T.slice(s, s+6000);const sm=region.search(STOP);if(sm>80)region=region.slice(0,sm);
+  return {id, clean:clean(region)};
 });
-commit("ont_B_d2_"+Date.now()+".json",JSON.stringify(out,null,1));
+commit("ont_B_d3_"+Date.now()+".json",JSON.stringify(out,null,1));
 console.log("DONE");
