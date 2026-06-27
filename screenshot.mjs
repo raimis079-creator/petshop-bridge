@@ -6,13 +6,15 @@ function commit(name, str){const url='https://api.github.com/repos/'+repo+'/cont
 const BASE="https://dev.avesa.lt/wp-json";
 function cj(u){try{execSync(`curl -sk --max-time 50 -u "$WP_USER:$WP_PASS_CLEAN" "${u}" -o /tmp/r.json`,{env,maxBuffer:200000000});return JSON.parse(fs.readFileSync('/tmp/r.json','utf8'));}catch(e){return {err:String(e).slice(0,120)};}}
 let acc=[],page=1;
-while(page<=3){const p=cj(`${BASE}/wp/v2/product?product_brand=301&per_page=100&page=${page}&_fields=id,title`);if(!Array.isArray(p)||!p.length)break;acc=acc.concat(p.map(x=>({id:x.id,title:(x.title&&x.title.rendered||'').replace(/&amp;/g,'&').replace(/&#8211;/g,'-')})));if(p.length<100)break;page++;}
+while(page<=3){const p=cj(`${BASE}/wp/v2/product?product_brand=301&per_page=100&page=${page}&_fields=id,title`);if(!Array.isArray(p)||!p.length)break;acc=acc.concat(p);if(p.length<100)break;page++;}
+// Raw titles - pažiūrim pirmus 5 ir paieškau Quinoa
+const t=acc.map(x=>x.title&&x.title.rendered||'').filter(t=>t.toUpperCase().includes('QUINOA'));
 const groups={
-  quinoa:acc.filter(x=>/QUINOA/.test(x.title)&&/DOG/.test(x.title)),
-  brown:acc.filter(x=>/BROWN/.test(x.title)&&/DOG/.test(x.title)),
-  white:acc.filter(x=>/WHITE/.test(x.title)&&/DOG/.test(x.title)),
-  tropical:acc.filter(x=>/TROPICAL/.test(x.title)&&/DOG/.test(x.title)),
-  ancestral:acc.filter(x=>/ANCESTRAL/.test(x.title)&&/DOG/.test(x.title))
+  quinoa:acc.filter(x=>(x.title&&x.title.rendered||'').toUpperCase().includes('QUINOA')&&(x.title&&x.title.rendered||'').toUpperCase().includes('DOG')).map(x=>({id:x.id,title:x.title.rendered})),
+  brown:acc.filter(x=>(x.title&&x.title.rendered||'').toUpperCase().includes('BROWN')&&(x.title&&x.title.rendered||'').toUpperCase().includes('DOG')).map(x=>({id:x.id,title:x.title.rendered})),
+  white:acc.filter(x=>(x.title&&x.title.rendered||'').toUpperCase().includes('WHITE')&&(x.title&&x.title.rendered||'').toUpperCase().includes('DOG')).map(x=>({id:x.id,title:x.title.rendered})),
+  tropical:acc.filter(x=>(x.title&&x.title.rendered||'').toUpperCase().includes('TROPICAL')&&(x.title&&x.title.rendered||'').toUpperCase().includes('DOG')).map(x=>({id:x.id,title:x.title.rendered})),
+  ancestral:acc.filter(x=>(x.title&&x.title.rendered||'').toUpperCase().includes('ANCESTRAL')&&(x.title&&x.title.rendered||'').toUpperCase().includes('DOG')).map(x=>({id:x.id,title:x.title.rendered}))
 };
-commit("farmina_dog_groups.json",JSON.stringify(groups,null,1));
-console.log("LIST DONE");
+commit("farmina_dog_groups2.json",JSON.stringify({total:acc.length,sampleTitle:acc[0]&&acc[0].title&&acc[0].title.rendered, groups},null,1));
+console.log("LIST2 DONE");
