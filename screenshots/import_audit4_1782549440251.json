@@ -1,0 +1,85 @@
+{
+ "upd517": "200",
+ "audit": {
+  "imports": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "friendly": "",
+    "scheduled": "",
+    "flags": {
+     "is_update_content": "1",
+     "is_update_title": "1",
+     "is_keep_former_posts": "no",
+     "update_all_data": "yes"
+    }
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "friendly": "",
+    "scheduled": "",
+    "flags": {
+     "is_update_content": "0",
+     "is_update_title": "0",
+     "is_keep_former_posts": "no",
+     "update_all_data": "no"
+    }
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "friendly": "",
+    "scheduled": "",
+    "flags": {
+     "is_update_content": "0",
+     "is_update_title": "0",
+     "is_keep_former_posts": "no",
+     "update_all_data": "no"
+    }
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "friendly": "",
+    "scheduled": "",
+    "flags": {
+     "is_update_content": "0",
+     "is_update_title": "0",
+     "is_keep_former_posts": "no",
+     "update_all_data": "no"
+    }
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "friendly": "",
+    "scheduled": "",
+    "flags": {
+     "is_update_content": "0",
+     "is_update_title": "0",
+     "is_keep_former_posts": "no",
+     "update_all_data": "no"
+    }
+   }
+  ],
+  "err": ""
+ },
+ "force_del": {
+  "516": "204",
+  "517": "204"
+ },
+ "temps_remaining": [
+  {
+   "id": 516,
+   "name": "Petshop Import Audit TEMP",
+   "active": false
+  },
+  {
+   "id": 517,
+   "name": "PS Import Audit TEMP",
+   "active": false
+  }
+ ],
+ "total_snippets": 281
+}
