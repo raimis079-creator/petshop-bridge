@@ -1,0 +1,54 @@
+{
+ "rep": {
+  "16833": {
+   "status": "draft",
+   "introLen": 823,
+   "newLen": 4481,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tblCount": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16839": {
+   "status": "draft",
+   "introLen": 805,
+   "newLen": 4463,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tblCount": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16833": {
+   "lossless": true,
+   "fe": "draft"
+  },
+  "16839": {
+   "lossless": true,
+   "fe": "draft"
+  }
+ }
+}
