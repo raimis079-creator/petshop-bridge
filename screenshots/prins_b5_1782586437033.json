@@ -1,0 +1,143 @@
+{
+ "rep": {
+  "16737": {
+   "status": "draft",
+   "type": "std",
+   "introLen": 916,
+   "newLen": 2924,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16742": {
+   "status": "draft",
+   "type": "std",
+   "introLen": 899,
+   "newLen": 2907,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16871": {
+   "status": "publish",
+   "type": "matrix",
+   "introLen": 953,
+   "newLen": 3562,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16876": {
+   "status": "publish",
+   "type": "std",
+   "introLen": 942,
+   "newLen": 2904,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16881": {
+   "status": "publish",
+   "type": "std",
+   "introLen": 925,
+   "newLen": 2887,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16737": {
+   "lossless": true,
+   "fe": "draft"
+  },
+  "16742": {
+   "lossless": true,
+   "fe": "draft"
+  },
+  "16871": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16876": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16881": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  }
+ }
+}
