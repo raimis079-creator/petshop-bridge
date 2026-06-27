@@ -1,0 +1,105 @@
+{
+ "abort": 1,
+ "rep": {
+  "16748": {
+   "status": "draft",
+   "recipe": "SA",
+   "introLen": 1021,
+   "newLen": 3000,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": false,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": false
+  },
+  "16751": {
+   "status": "publish",
+   "recipe": "SA",
+   "introLen": 1092,
+   "newLen": 3071,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": false,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": false
+  },
+  "16754": {
+   "status": "draft",
+   "recipe": "SA",
+   "introLen": 1092,
+   "newLen": 3071,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": false,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": false
+  },
+  "16797": {
+   "status": "draft",
+   "recipe": "SA-MINI",
+   "introLen": 954,
+   "newLen": 2816,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": false,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": false
+  },
+  "16800": {
+   "status": "draft",
+   "recipe": "SA-MINI",
+   "introLen": 954,
+   "newLen": 2816,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": false,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": false
+  }
+ }
+}
