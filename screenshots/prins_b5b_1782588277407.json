@@ -1,0 +1,143 @@
+{
+ "rep": {
+  "16745": {
+   "status": "publish",
+   "type": "std",
+   "introLen": 1026,
+   "newLen": 3093,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16772": {
+   "status": "publish",
+   "type": "matrix",
+   "introLen": 847,
+   "newLen": 3457,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16776": {
+   "status": "publish",
+   "type": "matrix",
+   "introLen": 861,
+   "newLen": 3471,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16813": {
+   "status": "draft",
+   "type": "matrix",
+   "introLen": 820,
+   "newLen": 3146,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16816": {
+   "status": "draft",
+   "type": "matrix",
+   "introLen": 820,
+   "newLen": 3146,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16745": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16772": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16776": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16813": {
+   "lossless": true,
+   "fe": "draft"
+  },
+  "16816": {
+   "lossless": true,
+   "fe": "draft"
+  }
+ }
+}
