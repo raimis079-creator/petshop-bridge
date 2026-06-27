@@ -1,0 +1,130 @@
+{
+ "planned": 146,
+ "skipped": [
+  {
+   "id": 33370,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 2991
+  },
+  {
+   "id": 33231,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3139
+  },
+  {
+   "id": 14651,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3198
+  },
+  {
+   "id": 14650,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3254
+  },
+  {
+   "id": 14634,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3085
+  },
+  {
+   "id": 14633,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3144
+  },
+  {
+   "id": 14630,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3120
+  },
+  {
+   "id": 14516,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3403
+  },
+  {
+   "id": 14517,
+   "reason": "guard",
+   "guards": {
+    "weightValid": true,
+    "contentNotEmpty": true,
+    "pakuoteRemovedIfWasPresent": false,
+    "noBreakage": true,
+    "contentHashChangedIfPakWas": false,
+    "contentSameIfNoPak": true
+   },
+   "len": 3508
+  }
+ ],
+ "wres": {
+  "ok": 146,
+  "contentOnly": 0,
+  "weightOnly": 15,
+  "both": 131,
+  "fail": 0,
+  "errs": []
+ }
+}
