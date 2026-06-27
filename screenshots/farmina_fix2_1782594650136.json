@@ -1,0 +1,37 @@
+{
+ "total": 155,
+ "wres": {
+  "dims_ok": 154,
+  "dims_fail": 1,
+  "excerpt_changed": 155,
+  "excerpt_unchanged": 0,
+  "excerpt_fail": 0,
+  "errs": [
+   {
+    "id": 14510,
+    "kind": "dims",
+    "got": {}
+   }
+  ]
+ },
+ "sample": [
+  {
+   "id": 33394,
+   "old": "&lt;p&gt;&lt;span style=\"font-weight: 400;\"&gt;Dietinis visavertis pašaras suaugusioms katėms žarnyno absorbcijos sutrikimų mažinimui.&lt;/span&gt;&lt;/p&gt;",
+   "new": "<p><span style=\"font-weight: 400;\">Dietinis visavertis pašaras suaugusioms katėms žarnyno absorbcijos sutrikimų mažinimui.</span></p>",
+   "back": "<p><span style=\"font-weight: 400;\">Dietinis visavertis pašaras suaugusioms katėms žarnyno absorbcijos sutrikimų mažinimui.</span></p>"
+  },
+  {
+   "id": 33390,
+   "old": "&lt;p&gt;Dietinis visavertis pašaras suaugusioms katėms, skirtas sudedamųjų dalių ir maistinių medžiagų netoleravimui mažinti; odos funkcijai palaikyti, kai gyvūnas serga dermatoze ir gausiai šeriasi.&lt;/p&gt;",
+   "new": "<p>Dietinis visavertis pašaras suaugusioms katėms, skirtas sudedamųjų dalių ir maistinių medžiagų netoleravimui mažinti; odos funkcijai palaikyti, kai gyvūnas serga dermatoze ir gausiai šeriasi.</p>",
+   "back": "<p>Dietinis visavertis pašaras suaugusioms katėms, skirtas sudedamųjų dalių ir maistinių medžiagų netoleravimui mažinti; odos funkcijai palaikyti, kai gyvūnas serga dermatoze ir gausiai šeriasi.</p>"
+  },
+  {
+   "id": 33370,
+   "old": "&lt;p&gt;&lt;span style=\"font-weight: 400;\"&gt;Dietinis visavertis pašaras suaugusiems šunims cukraus apykaitai reguliuoti (Diabetes mellitus).&lt;/span&gt;&lt;/p&gt;",
+   "new": "<p><span style=\"font-weight: 400;\">Dietinis visavertis pašaras suaugusiems šunims cukraus apykaitai reguliuoti (Diabetes mellitus).</span></p>",
+   "back": "<p><span style=\"font-weight: 400;\">Dietinis visavertis pašaras suaugusiems šunims cukraus apykaitai reguliuoti (Diabetes mellitus).</span></p>"
+  }
+ ]
+}
