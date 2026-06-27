@@ -1,0 +1,114 @@
+{
+ "rep": {
+  "16791": {
+   "status": "publish",
+   "type": "notable",
+   "introLen": 1066,
+   "newLen": 2237,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "introMin": true,
+    "noTable": true
+   },
+   "pass": true
+  },
+  "16794": {
+   "status": "publish",
+   "type": "notable",
+   "introLen": 1066,
+   "newLen": 2237,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "introMin": true,
+    "noTable": true
+   },
+   "pass": true
+  },
+  "16805": {
+   "status": "draft",
+   "type": "std",
+   "introLen": 781,
+   "newLen": 2688,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "introMin": true,
+    "tbl": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16810": {
+   "status": "publish",
+   "type": "std",
+   "introLen": 711,
+   "newLen": 2618,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "introMin": true,
+    "tbl": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16791": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": "n/a"
+   }
+  },
+  "16794": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": "n/a"
+   }
+  },
+  "16805": {
+   "lossless": true,
+   "fe": "draft"
+  },
+  "16810": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  }
+ }
+}
