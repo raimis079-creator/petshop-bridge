@@ -20,28 +20,27 @@ function lastEnd(t){const re=new RegExp(RE,'gi');let l=0,m;while((m=re.exec(t)))
 function gv(p){return p.hi?(p.lo+D+p.hi+' g'):(p.lo+' g');}
 function build2(rows,note){let t=MARK+'\n'+STY+'<div class="b2b-black"><table style="width:100%;" cellspacing="0">\n<tr><td style="'+TD+'"><b>\u0160uns svoris</b></td><td style="'+TD+'"><b>Kiekis per par\u0105</b></td></tr>\n';rows.forEach(r=>{t+='<tr><td style="'+TD+'">'+r.w+' kg</td><td style="'+TD+'">'+r.val+'</td></tr>\n';});t+='</table>'+(note?'\n<p>'+note+'</p>':'')+'</div>';return t;}
 const openerRe=/(?:\s|&lt;br ?\/?&gt;|&lt;p&gt;|&lt;span[^&]*&gt;|&lt;strong&gt;|<br ?\/?>|<p>|<span[^>]*>|<strong>)+$/;
-const IDS=[33822,33452,14794,14818,14817,14792,14771,14770,14769,14717,14476,14475,13019,12930,12468,12467,12466,12458,12457,12456,12455,12454,12453];
+const IDS=[33822,33452,14794,14818,14817,14792,14771,14770,14769,14717,14476,14475,13019,12930,12468,12467,12466,12458,12457,12456,12455,12453];
 const res=[];
 for(const id of IDS){try{
   const T=readRaw(id);if(T===null){res.push({id,ERR:"read"});continue;}
   const iM=T.indexOf(MARKTXT);if(iM<0){res.push({id,SKIP:"no_mark"});continue;}
   const pre=T.slice(0,iM);const mm=pre.match(openerRe);const iStart=mm?iM-mm[0].length:iM;
   const before=T.slice(0,iStart);
-  const brShared=!/(&lt;\/p&gt;|<\/p>)\s*$/.test(before);
-  if(brShared){res.push({id,SKIP:"br_shared"});continue;}
+  if(!/(&lt;\/p&gt;|<\/p>)\s*$/.test(before)){res.push({id,SKIP:"br_shared"});continue;}
   const txt=clean(T.slice(iM));const ps=pairs(txt);
   if(ps.length<2){res.push({id,SKIP:"few_pairs",n:ps.length});continue;}
   const note=txt.slice(lastEnd(txt)).replace(/^[\s.,*:]+/,'').trim();
   const block=build2(ps.map(p=>({w:p.w,val:gv(p)})),note);
   const newT=before+block;
+  const fromMark=newT.slice(newT.lastIndexOf(MARK));
   const firstVal=gv(ps[0]);
-  const g={single:(newT.split(MARK).length-1)===1, cruftgone:newT.indexOf('&lt;/strong&gt;')<0, notionvc:newT.indexOf('notionvc')<0, sud:newT.indexOf('Sud\u0117tis')>-1, probe:newT.indexOf('<b>\u0160uns svoris</b>')>-1, dataval:newT.indexOf(firstVal)>-1};
-  if(!g.single||!g.cruftgone||!g.notionvc||!g.sud||!g.probe||!g.dataval){res.push({id,SKIP:"guard",g});continue;}
+  const g={single:(newT.split(MARK).length-1)===1, cleanblock:fromMark.indexOf('&lt;')<0&&fromMark.indexOf('notionvc')<0&&fromMark.indexOf('&amp;nbsp;')<0, sud:newT.indexOf('Sud\u0117tis')>-1, probe:newT.indexOf('<b>\u0160uns svoris</b>')>-1, dataval:newT.indexOf(firstVal)>-1};
+  if(!g.single||!g.cleanblock||!g.sud||!g.probe||!g.dataval){res.push({id,SKIP:"guard",g});continue;}
   const wc=writeRaw(id,newT);const af=readRaw(id);
-  res.push({id,act:"BUILT",n:ps.length,write:wc,lossless:af!==null&&md5(af)===md5(newT),ver_single:af!==null&&(af.split(MARK).length-1)===1,ver_cruft:af!==null&&af.indexOf('&lt;/strong&gt;')<0});
+  res.push({id,act:"BUILT",n:ps.length,write:wc,lossless:af!==null&&md5(af)===md5(newT),ver_single:af!==null&&(af.split(MARK).length-1)===1,ver_clean:af!==null&&af.slice(af.lastIndexOf(MARK)).indexOf('&lt;')<0});
 }catch(e){res.push({id,ERR:String(e).slice(0,80)});}}
-// frontend sample
 const fe={};
-for(const id of [33822,14794,12458,12466,12454]){const H=front(id);fe[id]=H?{panel:H.indexOf(MARKTXT)>-1,b2b:H.indexOf('b2b-black')>-1,cruft:H.indexOf('&lt;/strong&gt;')>-1}:{ERR:1};}
-commit("euk_batch_"+Date.now()+".json", JSON.stringify({res,fe},null,1));
+for(const id of [33452,14794,12458,12466,12453]){const H=front(id);fe[id]=H?{panel:H.indexOf(MARKTXT)>-1,b2b:H.indexOf('b2b-black')>-1,strongcruft:H.indexOf('&lt;/strong&gt;')>-1}:{ERR:1};}
+commit("euk_batch2_"+Date.now()+".json", JSON.stringify({res,fe},null,1));
 console.log("DONE");
