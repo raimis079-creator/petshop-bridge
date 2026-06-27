@@ -1,0 +1,112 @@
+{
+ "out": [
+  {
+   "id": 12454,
+   "act": "BUILT",
+   "kind": "single",
+   "write": "200",
+   "lossless": true,
+   "ver_single": true,
+   "ver_clean": true,
+   "rep": {
+    "rows": [
+     {
+      "label": "2 kg",
+      "val": "45–50 g"
+     },
+     {
+      "label": "4 kg",
+      "val": "70–75 g"
+     },
+     {
+      "label": "6 kg",
+      "val": "90–100 g"
+     },
+     {
+      "label": "8 kg",
+      "val": "110–120 g"
+     },
+     {
+      "label": "10 kg",
+      "val": "125–140 g"
+     },
+     {
+      "label": "15 kg",
+      "val": "165–185 g"
+     },
+     {
+      "label": "20 kg",
+      "val": "200–225 g"
+     },
+     {
+      "label": "25 kg",
+      "val": "235–260 g"
+     },
+     {
+      "label": "30 kg*",
+      "val": "265–290 g"
+     }
+    ],
+    "note": "Šunims, sveriantiems daugiau kaip 25 kg, rekomenduojame sausą granuliuotą ėdalą suaugusiems didelių veislių šunims, kuriame gausu ėrienos ir ryžių. Pateiktos vertės yra orientacinės ir turėtų būti koreguojamos konkretiems asmenims, atsižvelgiant į jų fizinį aktyvumą, amžių ir bendrą būklę. Duodant ėdalą pirmą kartą, jis turėtų būti palaipsniui įvedamas į šuns racioną per 4 dienas. Priklausomai nuo amžiaus, temperamento ir aktyvumo lygio, šuo gali ėsti daugiau arba mažiau. Užtikrinkite, kad šuo turėtų galimybę gauti šviežio vandens dideliais kiekiais. Augintinio indelyje visada turi būti švaraus geriamo vandens."
+   }
+  },
+  {
+   "id": 12928,
+   "act": "BUILT",
+   "kind": "double",
+   "write": "200",
+   "lossless": true,
+   "ver_single": true,
+   "ver_clean": true,
+   "rep": {
+    "rows": [
+     {
+      "w": 5,
+      "maz": "80 g",
+      "pal": "90–100 g"
+     },
+     {
+      "w": 10,
+      "maz": "125 g",
+      "pal": "145–160 g"
+     },
+     {
+      "w": 20,
+      "maz": "205 g",
+      "pal": "230–255 g"
+     },
+     {
+      "w": 30,
+      "maz": "265 g",
+      "pal": "305–335 g"
+     },
+     {
+      "w": 40,
+      "maz": "325 g",
+      "pal": "365–410 g"
+     },
+     {
+      "w": 60,
+      "maz": "425 g",
+      "pal": "480–535 g"
+     }
+    ],
+    "note": "Pradedant šerti Eukanuba pirmą kartą, rekomenduojame pereiti nuo kito pašaro palaipsniui, ne trumpiau, kaip per 7 dienas, senojo pašaro kiekį mažinant, o naujojo kiekį didinant. Jūsų šuo gali valgyti daugiau ar mažiau, priklausomai nuo amžiaus, temperamento ir aktyvumo lygio. Augintinio indelyje visada turi būti švaraus geriamo vandens. Pakoreguokite savo šuns šėrimo kiekį, kad išlaikytumėte idealų kūno svorį."
+   }
+  }
+ ],
+ "fe": {
+  "12454": {
+   "panel": true,
+   "b2b": true,
+   "strongcruft": false,
+   "dval": true
+  },
+  "12928": {
+   "panel": true,
+   "b2b": true,
+   "strongcruft": false,
+   "dval": true
+  }
+ }
+}
