@@ -1,0 +1,12 @@
+{
+ "has_codesnippets": true,
+ "root_code": "200",
+ "snip512": {
+  "code": "200",
+  "sample": "{\"id\":512,\"name\":\"Petshop Aprasymu Accordion PROTO v5 (test ps_desc)\",\"desc\":\"\",\"code\":\"\\/** Petshop Aprasymu Accordion PROTO v5 (test gate ps_desc) *\\/\\nif (!defined('ABSPATH')) return;\\n\\n\\/* ---------- LT -> ascii (markeriu atpazinimui) ---------- *\\/\\nif (!function_exists('psdp_ascii')) {\\nfunct"
+ },
+ "list": {
+  "code": "200",
+  "sample": "[{\"id\":1,\"name\":\"Make upload filenames lowercase\",\"desc\":\"Makes sure that image and file uploads have lowercase filenames.\\n\\nThis is a sample snippet. Feel free to use it, edit it, or remove it.\",\"co"
+ }
+}
