@@ -1,0 +1,36 @@
+{
+ "res": [
+  {
+   "id": 18593,
+   "tbl_len": 702,
+   "tbl_head": "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:450px\">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t<p><strong>S",
+   "act": "BUILT",
+   "write": "200",
+   "lossless": true,
+   "ver_tbl": true,
+   "ver_b2b": true
+  },
+  {
+   "id": 18530,
+   "tbl_len": 513,
+   "tbl_head": "<table>\n\t<thead>\n\t\t<tr>\n\t\t\t<th>Katės svoris</th>\n\t\t\t<th>Kiekis palaikant svorį / 24 val.</th>\n\t\t\t<th>Kiekis ma",
+   "act": "BUILT",
+   "write": "200",
+   "lossless": true,
+   "ver_tbl": true,
+   "ver_b2b": true
+  }
+ ],
+ "fe": {
+  "18530": {
+   "panel": true,
+   "b2b": true,
+   "table": true
+  },
+  "18593": {
+   "panel": true,
+   "b2b": true,
+   "table": true
+  }
+ }
+}
