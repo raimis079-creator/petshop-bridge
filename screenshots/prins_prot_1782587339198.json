@@ -1,0 +1,134 @@
+{
+ "gcsProbe": {
+  "prins-procare-protection-lamb-hypoallergic-voedingswijzer.webp": {
+   "c": "404",
+   "ct": "application/xml;",
+   "sz": "charset=UTF-8"
+  },
+  "prins-procare-protection-lamb-voedingswijzer.webp": {
+   "c": "404",
+   "ct": "application/xml;",
+   "sz": "charset=UTF-8"
+  }
+ },
+ "rep": {
+  "16779": {
+   "status": "publish",
+   "type": "std",
+   "introLen": 1109,
+   "newLen": 3403,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16782": {
+   "status": "publish",
+   "type": "std",
+   "introLen": 1075,
+   "newLen": 3369,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16785": {
+   "status": "publish",
+   "type": "matrix",
+   "introLen": 1112,
+   "newLen": 4050,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  },
+  "16788": {
+   "status": "publish",
+   "type": "matrix",
+   "introLen": 1112,
+   "newLen": 4050,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "tbl": true,
+    "introMin": true,
+    "rowCount": true,
+    "colCount": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16779": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16782": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16785": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  },
+  "16788": {
+   "lossless": true,
+   "fe": {
+    "analitin": true,
+    "tbl": true,
+    "sample": true
+   }
+  }
+ }
+}
