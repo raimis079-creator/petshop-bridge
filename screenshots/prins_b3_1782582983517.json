@@ -1,0 +1,102 @@
+{
+ "rep": {
+  "16821": {
+   "status": "draft",
+   "introLen": 925,
+   "newLen": 3021,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16824": {
+   "status": "publish",
+   "introLen": 925,
+   "newLen": 3021,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16851": {
+   "status": "draft",
+   "introLen": 158,
+   "newLen": 2394,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16854": {
+   "status": "publish",
+   "introLen": 158,
+   "newLen": 2394,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "introNoKcal": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "colCount": true,
+    "introMin": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16821": {
+   "lossless": true,
+   "fe_tbl": false,
+   "fe_sample": false
+  },
+  "16824": {
+   "lossless": true,
+   "fe_tbl": true,
+   "fe_sample": true
+  },
+  "16851": {
+   "lossless": true,
+   "fe_tbl": false,
+   "fe_sample": false
+  },
+  "16854": {
+   "lossless": true,
+   "fe_tbl": true,
+   "fe_sample": true
+  }
+ }
+}
