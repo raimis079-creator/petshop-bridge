@@ -1,0 +1,130 @@
+{
+ "rep": {
+  "16760": {
+   "status": "draft",
+   "recipe": "SF",
+   "hadSalmon": true,
+   "introLen": 1048,
+   "newLen": 3308,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "noOldEnergy": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16763": {
+   "status": "publish",
+   "recipe": "SF",
+   "hadSalmon": true,
+   "introLen": 1048,
+   "newLen": 3308,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "noOldEnergy": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16766": {
+   "status": "draft",
+   "recipe": "SF-MINI",
+   "hadSalmon": true,
+   "introLen": 1051,
+   "newLen": 3163,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "noOldEnergy": true,
+    "introMin": true
+   },
+   "pass": true
+  },
+  "16769": {
+   "status": "draft",
+   "recipe": "SF-MINI",
+   "hadSalmon": true,
+   "introLen": 1059,
+   "newLen": 3171,
+   "guards": {
+    "introNoAnaliz": true,
+    "introNoNurodym": true,
+    "introNoSalmon": true,
+    "hasSud": true,
+    "hasAnalitin": true,
+    "hasSerimo": true,
+    "hasPagaminta": true,
+    "rowCount": true,
+    "noOldEnergy": true,
+    "introMin": true
+   },
+   "pass": true
+  }
+ },
+ "wres": {
+  "16760": {
+   "lossless": true,
+   "fe_sudetis": false,
+   "fe_analitin": false,
+   "fe_serimo": false,
+   "fe_tbl": false,
+   "fe_sample": false,
+   "fe_pagaminta": false,
+   "fe_no_old_energy": true,
+   "fe_no_salmon": false
+  },
+  "16763": {
+   "lossless": true,
+   "fe_sudetis": true,
+   "fe_analitin": true,
+   "fe_serimo": true,
+   "fe_tbl": true,
+   "fe_sample": true,
+   "fe_pagaminta": true,
+   "fe_no_old_energy": true,
+   "fe_no_salmon": false
+  },
+  "16766": {
+   "lossless": true,
+   "fe_sudetis": false,
+   "fe_analitin": false,
+   "fe_serimo": false,
+   "fe_tbl": false,
+   "fe_sample": false,
+   "fe_pagaminta": false,
+   "fe_no_old_energy": true,
+   "fe_no_salmon": false
+  },
+  "16769": {
+   "lossless": true,
+   "fe_sudetis": false,
+   "fe_analitin": false,
+   "fe_serimo": false,
+   "fe_tbl": false,
+   "fe_sample": false,
+   "fe_pagaminta": false,
+   "fe_no_old_energy": true,
+   "fe_no_salmon": false
+  }
+ }
+}
