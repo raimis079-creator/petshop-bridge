@@ -1,17 +1,89 @@
 import { execSync } from "child_process";
+import crypto from "crypto";
 import fs from "fs";
 const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 function commit(name, str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
+const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
 const BASE="https://dev.avesa.lt/wp-json";
-const out={};
-for(const id of [12707,12708,12687,12685]){
-  try{
-    const j=JSON.parse(execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${BASE}/wp/v2/product/${id}?context=edit&_fields=id,content,title"`,{env,encoding:'utf8',maxBuffer:200000000}));
-    const raw=(j.content&&j.content.raw)||"";
-    // Pirmi 1500 simbolio + paskutiniai 500
-    out[id]={title:(j.title&&j.title.rendered)||'',len:raw.length,head:raw.slice(0,1500),tail:raw.slice(-500),hasSerimo:/Šėrimo|Šerimo|šerimo|šeriam/.test(raw),hasInstr:/instrukcij/i.test(raw)};
-  }catch(e){out[id]={err:String(e).slice(0,150)};}
+function decodeOnce(s){return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;amp;/g,'&amp;').replace(/&amp;nbsp;/g,'&nbsp;').replace(/&amp;quot;/g,'"').replace(/&amp;#39;/g,"'");}
+function decodeRepeated(s){let prev;let iter=0;do{prev=s;s=decodeOnce(s);iter++;}while(prev!==s&&iter<5);return s;}
+
+// Monge VetSolution rekomendacijos blokas (analogiskas Farmina Vet Life)
+const BLOCK = '<style>.b2b-vetlife { color:#000 !important; padding:12px 16px; background:#f7f9fb; border-left:3px solid #2e7d32; margin:14px 0; }</style>\n<div class="b2b-vetlife">\n<p><b>Šėrimo rekomendacija (Monge VetSolution):</b></p>\n<p>Šis dietetinis pašaras skirtas specialiems mitybos poreikiams ir naudojamas pagal veterinarijos gydytojo rekomendaciją. Tikslią paros normą turi nustatyti <b>veterinarijos gydytojas</b>, atsižvelgdamas į gyvūno svorį, amžių, fizinę būklę bei sveikatos būklę.</p>\n</div>';
+
+// 24 VetSolution SKU (15 DOG + 9 CAT)
+const IDS=[
+  // DOG (15)
+  12985,12696,14805,14804,12707,12706,12708,12702,12703,12694,12701,12697,12699,12698,12695,12700,
+  // CAT (9)
+  12679,12693,12691,12689,12687,12685,12683,12681
+];
+// Pataisymas - DOG yra 16 (su 12700 Renal 12kg). Tikrinu pirma sąraše:
+// 12985,12696,14805,14804,12707,12706,12708,12702,12703,12694,12701,12697,12699,12698,12695,12700 = 16 DOG
+// CAT: 12679,12693,12691,12689,12687,12685,12683,12681 = 8 CAT
+// Plus 1 dar - Dermatosis 12kg = 12695 jau yra
+// Total: 16 DOG + 8 CAT = 24 ✓
+
+fs.writeFileSync('/tmp/ids.txt',IDS.join("\n"));
+execSync('rm -rf /tmp/c && mkdir -p /tmp/c',{env});
+try{execSync(`cat /tmp/ids.txt | xargs -P 12 -I{} curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "${BASE}/wp/v2/product/{}?context=edit&_fields=id,content,status,title" -o /tmp/c/{}.json`,{env,maxBuffer:200000000});}catch(e){}
+
+const rep={planned:[],apply:[]};
+const builds={};
+let allPass=true;
+for(const id of IDS){
+  let j={};try{j=JSON.parse(fs.readFileSync('/tmp/c/'+id+'.json','utf8'));}catch(e){rep.planned.push({id,err:'read'});allPass=false;continue;}
+  const raw=(j.content&&j.content.raw)||"";
+  let zb=raw;
+  // pasalinam jei buvo b2b-black ar b2b-vetlife (neturetu buti, bet saugiklis)
+  const tblStart=zb.indexOf('<style>.b2b-black');
+  if(tblStart>=0){const tblEnd=zb.indexOf('</table></div>',tblStart);if(tblEnd>=0){zb=zb.slice(0,tblStart).replace(/\s+$/,'')+zb.slice(tblEnd+'</table></div>'.length);}}
+  const vlStart=zb.indexOf('<style>.b2b-vetlife');
+  if(vlStart>=0){const vlEnd=zb.indexOf('</div>',vlStart);if(vlEnd>=0){zb=zb.slice(0,vlStart).replace(/\s+$/,'')+zb.slice(vlEnd+'</div>'.length);}}
+  const decoded=decodeRepeated(zb);
+  const sIdx=decoded.search(/Šėrimo\s+instrukcij/);
+  let pEnd=-1;
+  if(sIdx>=0){
+    const pP=decoded.indexOf('</p>',sIdx);
+    const pD=decoded.indexOf('</div>',sIdx);
+    if(pP<0&&pD<0) pEnd=-1;
+    else if(pP<0) pEnd=pD;
+    else if(pD<0) pEnd=pP;
+    else pEnd=Math.min(pP,pD);
+  }
+  if(sIdx<0||pEnd<0){rep.planned.push({id,err:'marker',title:(j.title&&j.title.rendered)||''});allPass=false;continue;}
+  // Pasalinkim tikslias uzdaryma: </p> = 4, </div> = 6
+  const closeTag=decoded.slice(pEnd,pEnd+6)==='</div>'?6:4;
+  const cut=pEnd+closeTag;
+  const newT=decoded.slice(0,cut)+'\n'+BLOCK+decoded.slice(cut);
+  const g={
+    noEncP:!/&lt;p&gt;|&lt;\/p&gt;|&lt;strong&gt;/.test(newT),
+    noDoubleEnt:!/&amp;amp;|&amp;nbsp;/.test(newT),
+    hasRealP:/<p>/.test(newT)&&/<\/p>/.test(newT),
+    hasSerimo:/Šėrimo\s+instrukcij/.test(newT),
+    noTable:!/<table/.test(newT),
+    oneVetlifeBlock:(newT.match(/<div class="b2b-vetlife">/g)||[]).length===1,
+    hasRecText:newT.includes('Šėrimo rekomendacija')&&newT.includes('veterinarijos gydytojas')&&newT.includes('Monge VetSolution'),
+    introMin:newT.length>=1500,
+    pakuoteAbsent:!/Pakuotės dydis.*cm/.test(newT)
+  };
+  const pass=Object.values(g).every(Boolean);
+  rep.planned.push({id,title:(j.title&&j.title.rendered)||'',guards:g,pass});
+  if(!pass){allPass=false;continue;}
+  builds[id]={newT,status:j.status};
 }
-commit("monge_fail_check.json",JSON.stringify(out,null,1));
-console.log("DONE");
+if(!allPass){commit("monge_vs_apply_"+Date.now()+".json",JSON.stringify({abort:1,rep},null,1));console.log("ABORT");process.exit(0);}
+
+for(const id of IDS){
+  const b=builds[id];
+  fs.writeFileSync('/tmp/body.json',JSON.stringify({content:b.newT}));
+  try{
+    execSync(`curl -sk -X POST -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" "${BASE}/wp/v2/product/${id}" -d @/tmp/body.json -o /tmp/w.json`,{env,maxBuffer:200000000});
+    execSync(`curl -sk -u "$WP_USER:$WP_PASS_CLEAN" "${BASE}/wp/v2/product/${id}?context=edit&_fields=content" -o /tmp/rb.json`,{env});
+    const rb=(JSON.parse(fs.readFileSync('/tmp/rb.json','utf8')).content||{}).raw||"";
+    rep.apply.push({id,lossless:md5(rb)===md5(b.newT)});
+  }catch(e){rep.apply.push({id,err:String(e).slice(0,100)});}
+}
+commit("monge_vs_apply_"+Date.now()+".json",JSON.stringify(rep,null,1));
+console.log("MONGE VS DONE",IDS.length);
