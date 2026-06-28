@@ -1,89 +1,93 @@
 import { execSync } from "child_process";
-import crypto from "crypto";
 import fs from "fs";
-const env = { ...process.env, WP_PASS_CLEAN: (process.env.WP_APP_PASS||"").replace(/\s+/g,"") };
+import { chromium } from "playwright";
+const env = { ...process.env };
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 function commit(name, str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
-const md5=s=>crypto.createHash('md5').update(s,'utf8').digest('hex');
-const BASE="https://dev.avesa.lt/wp-json";
-function decodeOnce(s){return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;amp;/g,'&amp;').replace(/&amp;nbsp;/g,'&nbsp;').replace(/&amp;quot;/g,'"').replace(/&amp;#39;/g,"'");}
-function decodeRepeated(s){let prev;let iter=0;do{prev=s;s=decodeOnce(s);iter++;}while(prev!==s&&iter<5);return s;}
-
-// Monge VetSolution rekomendacijos blokas (analogiskas Farmina Vet Life)
-const BLOCK = '<style>.b2b-vetlife { color:#000 !important; padding:12px 16px; background:#f7f9fb; border-left:3px solid #2e7d32; margin:14px 0; }</style>\n<div class="b2b-vetlife">\n<p><b>Šėrimo rekomendacija (Monge VetSolution):</b></p>\n<p>Šis dietetinis pašaras skirtas specialiems mitybos poreikiams ir naudojamas pagal veterinarijos gydytojo rekomendaciją. Tikslią paros normą turi nustatyti <b>veterinarijos gydytojas</b>, atsižvelgdamas į gyvūno svorį, amžių, fizinę būklę bei sveikatos būklę.</p>\n</div>';
-
-// 24 VetSolution SKU (15 DOG + 9 CAT)
-const IDS=[
-  // DOG (15)
-  12985,12696,14805,14804,12707,12706,12708,12702,12703,12694,12701,12697,12699,12698,12695,12700,
-  // CAT (9)
-  12679,12693,12691,12689,12687,12685,12683,12681
+function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:buf.toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
+const urls=[
+  // Natural Superpremium DOG (~25)
+  'all-breeds-light-al-salmone-e-riso',
+  'all-breeds-adult-salmon-and-rice',
+  'all-breeds-adult-duck-rice-and-potatoes',
+  'maxi-adult-rich-in-chicken',
+  'all-breeds-adult-lamb-rice-and-potatoes',
+  'all-breeds-adult-monoprotein-beef-with-rice',
+  'all-breeds-adult-monoprotein-trout-with-rice-and-potatoes',
+  'all-breeds-adult-pork-rice-and-potatoes',
+  'all-breeds-active-chicken',
+  'medium-adult-rich-in-chicken',
+  'all-breeds-hypoallergenic-al-salmone-e-tonno',
+  'monge-natural-superpremium-all-breeds-adult-monoprotein-turkey-with-rice-and-potatoes',
+  'all-breeds-puppy-junior-agnello-riso-e-patate',
+  'all-breeds-puppy-junior-con-salmone-e-riso',
+  'mini-senior-ricco-in-pollo',
+  'mini-starter-con-pollo',
+  'extra-small-adult-con-pollo',
+  'mini-adult-con-salmone-e-riso',
+  'extra-small-puppy-junior-rich-in-chicken',
+  'all-breeds-adult-rich-in-chicken',  // spejimas
+  'mini-adult-rich-in-chicken',         // spejimas
+  'mini-puppy-junior-rich-in-chicken',  // spejimas
+  'medium-puppy-junior-rich-in-chicken',// spejimas
+  'maxi-puppy-junior-rich-in-chicken',  // spejimas
+  // BWild
+  'low-grain-deer-all-breeds-puppy-junior',
+  'grain-free-anchovies-with-potatoes-and-peas-mini-adult',
+  'low-grain-wild-boar-all-breeds-adult',
+  'grain-free-anchovies-with-potatoes-and-peas-all-breeds-adult',
+  'grain-free-duck-with-potatoes-all-breeds-puppy-junior',
+  'low-grain-wild-boar-all-breeds-puppy-junior',  // spejimas
+  'low-grain-deer-all-breeds-adult',                // spejimas
+  // CAT
+  'hairball-rich-in-chicken',
+  'sterilized-con-pollo',
+  'sterilized-monoprotein-beef',  // spejimas
+  'sterilized-monoprotein-duck',  // spejimas
+  'sterilized-monoprotein-codfish', // spejimas
+  'monoprotein-sterilised-cat-beef',  // spejimas alternatyva
+  'monoprotein-sterilised-cat-duck',  // spejimas alternatyva
+  'urinary-rich-in-chicken',
+  'kitten-rich-in-chicken',
+  'adult-cat-rich-in-chicken',
+  'monoprotein-rich-in-chicken-cat'
 ];
-// Pataisymas - DOG yra 16 (su 12700 Renal 12kg). Tikrinu pirma sąraše:
-// 12985,12696,14805,14804,12707,12706,12708,12702,12703,12694,12701,12697,12699,12698,12695,12700 = 16 DOG
-// CAT: 12679,12693,12691,12689,12687,12685,12683,12681 = 8 CAT
-// Plus 1 dar - Dermatosis 12kg = 12695 jau yra
-// Total: 16 DOG + 8 CAT = 24 ✓
-
-fs.writeFileSync('/tmp/ids.txt',IDS.join("\n"));
-execSync('rm -rf /tmp/c && mkdir -p /tmp/c',{env});
-try{execSync(`cat /tmp/ids.txt | xargs -P 12 -I{} curl -sk --max-time 40 -u "$WP_USER:$WP_PASS_CLEAN" "${BASE}/wp/v2/product/{}?context=edit&_fields=id,content,status,title" -o /tmp/c/{}.json`,{env,maxBuffer:200000000});}catch(e){}
-
-const rep={planned:[],apply:[]};
-const builds={};
-let allPass=true;
-for(const id of IDS){
-  let j={};try{j=JSON.parse(fs.readFileSync('/tmp/c/'+id+'.json','utf8'));}catch(e){rep.planned.push({id,err:'read'});allPass=false;continue;}
-  const raw=(j.content&&j.content.raw)||"";
-  let zb=raw;
-  // pasalinam jei buvo b2b-black ar b2b-vetlife (neturetu buti, bet saugiklis)
-  const tblStart=zb.indexOf('<style>.b2b-black');
-  if(tblStart>=0){const tblEnd=zb.indexOf('</table></div>',tblStart);if(tblEnd>=0){zb=zb.slice(0,tblStart).replace(/\s+$/,'')+zb.slice(tblEnd+'</table></div>'.length);}}
-  const vlStart=zb.indexOf('<style>.b2b-vetlife');
-  if(vlStart>=0){const vlEnd=zb.indexOf('</div>',vlStart);if(vlEnd>=0){zb=zb.slice(0,vlStart).replace(/\s+$/,'')+zb.slice(vlEnd+'</div>'.length);}}
-  const decoded=decodeRepeated(zb);
-  const sIdx=decoded.search(/Šėrimo\s+instrukcij/);
-  let pEnd=-1;
-  if(sIdx>=0){
-    const pP=decoded.indexOf('</p>',sIdx);
-    const pD=decoded.indexOf('</div>',sIdx);
-    if(pP<0&&pD<0) pEnd=-1;
-    else if(pP<0) pEnd=pD;
-    else if(pD<0) pEnd=pP;
-    else pEnd=Math.min(pP,pD);
+(async()=>{
+  const browser=await chromium.launch({args:['--no-sandbox']});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0'});
+  const page=await ctx.newPage();
+  // Pirma homepage cookies
+  await page.goto('https://www.monge.it/en/',{waitUntil:'domcontentloaded',timeout:45000});
+  await page.waitForTimeout(3000);
+  const out={};
+  let totalDownloaded=0;
+  for(const slug of urls){
+    const u='https://www.monge.it/en/product/'+slug+'/';
+    try{
+      const r=await page.goto(u,{waitUntil:'domcontentloaded',timeout:45000});
+      await page.waitForTimeout(2500);
+      if(r&&r.status()===404){out[slug]={status:404};continue;}
+      const pdf=await page.evaluate(()=>{
+        // Ieskom PDF link is product page
+        const a=Array.from(document.querySelectorAll('a[href]')).find(a=>/\.pdf/i.test(a.href)&&/Monge/i.test(a.href)&&!/Informativa/i.test(a.href));
+        return a?a.href:null;
+      });
+      if(pdf){
+        try{
+          const buf=await ctx.request.get(pdf);
+          const body=await buf.body();
+          if(buf.status()===200 && body.length>3000){
+            const fn='monge_'+slug+'.pdf';
+            putBin(fn,Buffer.from(body));
+            out[slug]={status:200,pdf,bytes:body.length,fn};
+            totalDownloaded++;
+          } else out[slug]={status:r.status(),pdf,err:'small_or_bad_'+body.length};
+        }catch(e){out[slug]={status:r.status(),pdf,dlErr:String(e).slice(0,80)};}
+      } else out[slug]={status:r.status(),err:'no_pdf'};
+    }catch(e){out[slug]={err:String(e).slice(0,150)};}
   }
-  if(sIdx<0||pEnd<0){rep.planned.push({id,err:'marker',title:(j.title&&j.title.rendered)||''});allPass=false;continue;}
-  // Pasalinkim tikslias uzdaryma: </p> = 4, </div> = 6
-  const closeTag=decoded.slice(pEnd,pEnd+6)==='</div>'?6:4;
-  const cut=pEnd+closeTag;
-  const newT=decoded.slice(0,cut)+'\n'+BLOCK+decoded.slice(cut);
-  const g={
-    noEncP:!/&lt;p&gt;|&lt;\/p&gt;|&lt;strong&gt;/.test(newT),
-    noDoubleEnt:!/&amp;amp;|&amp;nbsp;/.test(newT),
-    hasRealP:/<p>/.test(newT)&&/<\/p>/.test(newT),
-    hasSerimo:/Šėrimo\s+instrukcij/.test(newT),
-    noTable:!/<table/.test(newT),
-    oneVetlifeBlock:(newT.match(/<div class="b2b-vetlife">/g)||[]).length===1,
-    hasRecText:newT.includes('Šėrimo rekomendacija')&&newT.includes('veterinarijos gydytojas')&&newT.includes('Monge VetSolution'),
-    introMin:newT.length>=1500,
-    pakuoteAbsent:!/Pakuotės dydis.*cm/.test(newT)
-  };
-  const pass=Object.values(g).every(Boolean);
-  rep.planned.push({id,title:(j.title&&j.title.rendered)||'',guards:g,pass});
-  if(!pass){allPass=false;continue;}
-  builds[id]={newT,status:j.status};
-}
-if(!allPass){commit("monge_vs_apply_"+Date.now()+".json",JSON.stringify({abort:1,rep},null,1));console.log("ABORT");process.exit(0);}
-
-for(const id of IDS){
-  const b=builds[id];
-  fs.writeFileSync('/tmp/body.json',JSON.stringify({content:b.newT}));
-  try{
-    execSync(`curl -sk -X POST -u "$WP_USER:$WP_PASS_CLEAN" -H "Content-Type: application/json" "${BASE}/wp/v2/product/${id}" -d @/tmp/body.json -o /tmp/w.json`,{env,maxBuffer:200000000});
-    execSync(`curl -sk -u "$WP_USER:$WP_PASS_CLEAN" "${BASE}/wp/v2/product/${id}?context=edit&_fields=content" -o /tmp/rb.json`,{env});
-    const rb=(JSON.parse(fs.readFileSync('/tmp/rb.json','utf8')).content||{}).raw||"";
-    rep.apply.push({id,lossless:md5(rb)===md5(b.newT)});
-  }catch(e){rep.apply.push({id,err:String(e).slice(0,100)});}
-}
-commit("monge_vs_apply_"+Date.now()+".json",JSON.stringify(rep,null,1));
-console.log("MONGE VS DONE",IDS.length);
+  await ctx.close();
+  await browser.close();
+  commit('monge_pdfs.json',JSON.stringify({totalDownloaded,results:out},null,1));
+  console.log("DONE",totalDownloaded);
+})();
