@@ -13,7 +13,7 @@ function decodeRepeated(s){let prev;let iter=0;do{prev=s;s=decodeOnce(s);iter++;
 const shResp=execSync(`curl -s -H "Authorization: Bearer ${tok}" "https://api.github.com/repos/${repo}/contents/screenshots/monge_sku_html.json?ref=main&t=${Date.now()}"`,{encoding:'utf8',maxBuffer:300000000});
 const shJson=JSON.parse(shResp);
 const sh=JSON.parse(Buffer.from(shJson.content,'base64').toString('utf-8'));
-const SKIP=new Set([16217,16248,17415,17418]);
+const SKIP=new Set([16217,16248,17415,17418,16225,16228]);
 const IDS=Object.keys(sh).map(k=>parseInt(k)).filter(id=>!SKIP.has(id));
 fs.writeFileSync('/tmp/ids.txt',IDS.join("\n"));
 execSync('rm -rf /tmp/c && mkdir -p /tmp/c',{env});
