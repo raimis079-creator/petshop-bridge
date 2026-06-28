@@ -7,16 +7,16 @@ function commit(name, str){const url='https://api.github.com/repos/'+repo+'/cont
 function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:buf.toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
 (async()=>{
   const browser=await chromium.launch({args:['--no-sandbox']});
-  // Brute scan – bandysim per known produktų URL'us is Google paieškos + alternatyvas
-  // Pumpkin CAT zinome: 710 (Neutered Lamb Pumpkin Blueberry Adult)
-  // Bandysim "browse" URL per N&D Cat brand puslapį
-  const seedUrls=[
-    {key:'pumpkin_cat', url:'https://www.farmina.com/us/eshop/cat-food/n&d-pumpkin-feline/'},
-    {key:'prime_cat', url:'https://www.farmina.com/us/eshop/cat-food/n&d-prime-feline/'},
-    {key:'ocean_cat', url:'https://www.farmina.com/us/eshop/cat-food/n&d-ocean-feline/'},
-    {key:'quinoa_cat', url:'https://www.farmina.com/us/eshop/cat-food/n&d-quinoa-functional-feline/'},
-    {key:'tropical_cat', url:'https://www.farmina.com/us/eshop/cat-food/n&d-tropical-selection-feline/'},
-    {key:'matisse', url:'https://www.farmina.com/us/eshop/cat-food/matisse-feline/'},
+  // IT puslapis veikia: /it/eshop-cat/alimenti-per-gatti/{ID}-{slug}.html
+  // ID 55 = Pumpkin feline (mūsų US buvo 51 — neegzistuoja)
+  // Bandysim auto-discover IT ID per pirmą puslapį iš Farmina N&D brand IT
+  const cats=[
+    {key:'pumpkin_cat', url:'https://www.farmina.com/it/eshop-cat/alimenti-per-gatti/55-n&d-pumpkin-feline.html'},
+    {key:'prime_cat', url:'https://www.farmina.com/it/eshop-cat/alimenti-per-gatti/53-n&d-prime-feline.html'},
+    {key:'ocean_cat', url:'https://www.farmina.com/it/eshop-cat/alimenti-per-gatti/56-n&d-ocean-feline.html'},
+    {key:'quinoa_cat', url:'https://www.farmina.com/it/eshop-cat/alimenti-per-gatti/57-n&d-quinoa-functional-feline.html'},
+    {key:'tropical_cat', url:'https://www.farmina.com/it/eshop-cat/alimenti-per-gatti/95-n&d-tropical-selection-feline.html'},
+    {key:'matisse', url:'https://www.farmina.com/it/eshop-cat/alimenti-per-gatti/8-matisse-feline.html'}
   ];
   async function scanCat(cat){
     const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0'});
@@ -25,22 +25,20 @@ function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/conte
     try{
       const resp=await page.goto(cat.url,{waitUntil:'domcontentloaded',timeout:45000});
       await page.waitForTimeout(7000);
-      // Scroll bottom (lazy load)
       await page.evaluate(()=>{return new Promise(r=>{let t=0;const iv=setInterval(()=>{window.scrollBy(0,500);t+=500;if(t>15000){clearInterval(iv);r();}},80);});});
       await page.waitForTimeout(2000);
-      const allLinks=await page.evaluate(()=>{
+      const links=await page.evaluate(()=>{
         const a=Array.from(document.querySelectorAll('a[href]')).map(x=>x.href);
-        return [...new Set(a.filter(h=>/eshop\/cat-food\/[^/]+\/\d+/i.test(h)))];
+        return [...new Set(a.filter(h=>/eshop\/alimenti-per-gatti\/[^/]+\/\d+/i.test(h)))].slice(0,30);
       });
-      // Filter: tik šios kategorijos linijos
-      const slug=cat.url.match(/cat-food\/([^/]+)\/?/)[1];
-      prods=allLinks.filter(h=>h.toLowerCase().includes('/cat-food/'+slug.toLowerCase()+'/')).map(href=>{
+      // Take only this category
+      const slug=cat.url.match(/\d+-([^.]+)\.html/)[1];
+      prods=links.filter(h=>h.toLowerCase().includes('/'+slug.toLowerCase()+'/')).map(href=>{
         const m=href.match(/\/(\d+)-([^.]+)\.html/i);
         return m?{id:m[1],slug:m[2],href}:null;
       }).filter(Boolean);
-      // Dedupe
       const seen=new Set();prods=prods.filter(p=>{if(seen.has(p.id))return false;seen.add(p.id);return true;});
-      if(!prods.length){errMsg='no_products_in_category_'+slug+'_status_'+(resp?resp.status():'?');}
+      if(!prods.length){errMsg='no_products_in_'+slug+'_status_'+(resp?resp.status():'?');}
     }catch(e){errMsg=String(e).slice(0,200);}
     const map={};
     for(const p of prods){
@@ -48,7 +46,6 @@ function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/conte
         await page.goto(p.href,{waitUntil:'domcontentloaded',timeout:45000});
         await page.waitForTimeout(2500);
         const pdf=await page.evaluate(()=>{
-          // Ieskom dosi PDF/IMG arba feeding guide table image
           const a=document.querySelector('a[href*="fotoprodotti/dosi/"]');
           if(a)return a.href;
           const img=document.querySelector('img[src*="fotoprodotti/dosi/"]');
@@ -69,9 +66,8 @@ function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/conte
     await ctx.close();
     return {key:cat.key, products:prods.length, map, errMsg};
   }
-  // Padalinam i 3 paralelinius batchus po 2
-  const results=await Promise.all(seedUrls.map(scanCat));
+  const results=await Promise.all(cats.map(scanCat));
   await browser.close();
-  commit('par6_run.json',JSON.stringify({results},null,1));
-  console.log("PAR6 DONE");
+  commit('par7_run.json',JSON.stringify({results},null,1));
+  console.log("PAR7 DONE");
 })();
