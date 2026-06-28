@@ -1,0 +1,24 @@
+{
+ "planned": [
+  {
+   "id": 14700,
+   "guards": {
+    "noEncP": true,
+    "noDoubleEnt": true,
+    "hasRealP": true,
+    "hasSerimo": true,
+    "oneTable": true,
+    "hasB2bDiv": true,
+    "hasHeader": true,
+    "pakuoteAbsent": true
+   },
+   "pass": true
+  }
+ ],
+ "apply": [
+  {
+   "id": 14700,
+   "lossless": true
+  }
+ ]
+}
