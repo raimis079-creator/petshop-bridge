@@ -7,35 +7,64 @@ function commit(name, str){const url='https://api.github.com/repos/'+repo+'/cont
 function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:buf.toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
 (async()=>{
   const browser=await chromium.launch({args:['--no-sandbox']});
-  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0',viewport:{width:1400,height:1000}});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0'});
   const page=await ctx.newPage();
-  // Mix: VetSolution + b2b-black lentele + bare + draft
-  // 14805 VetSolution Dog Struvite 12kg | 12533 Maxi puppy (lentele) | 12522 Extra Small adult | 12581 Urinary (bare) | 17400 Wet konservai
-  const ids=[14805, 12533, 12522, 12581, 17400, 12534];
+  await page.goto('https://www.monge.it/en/',{waitUntil:'domcontentloaded',timeout:45000});
+  await page.waitForTimeout(2000);
+  const slugs=[
+    // CAT confirmed
+    'sterilised-monoprotein-trout','sterilised-monoprotein-beef','sterilised-monoprotein-duck',
+    'urinary-con-pollo','indoor-rich-in-chicken',
+    // DOG confirmed
+    'mini-adult-ricco-in-pollo','low-grain-goose-all-breeds-adult','low-grain-goose-kitten',
+    'medium-adult',  // Special Dog Excellence Medium Adult Chicken
+    // CAT spejimai
+    'monoprotein-rabbit','adult-cat','adult-cat-rich-in-chicken','low-grain-hare-all-breeds-adult',
+    'low-grain-buffalo','grain-free-buffalo-cat','large-breeds-cat',
+    'bwild-adult-cat-anchovies','low-grain-anchovies-cat','sensitive-sterilised',
+    // DOG spejimai
+    'medium-puppy-junior-ricco-in-pollo','low-grain-wild-boar-all-breeds-puppy-junior','low-grain-hare-puppy',
+    'low-grain-goose-puppy-junior','mini-puppy-ricco-in-pollo',
+    'all-breeds-adult-monoprotein-rabbit','spec-line-monoprotein-rabbit',
+    'grain-free-irregular-cut-chunks-in-gravy-duck-with-pumpkin-and-zucchini-puppy-junior',
+    'medium-puppy-junior-rich-in-chicken-2','mini-adult-rich-in-chicken-rice',
+    // Spec Line Puppy
+    'all-breeds-puppy-junior-monoprotein-duck-with-rice-and-potatoes',
+    'all-breeds-puppy-junior-monoprotein-pork-with-rice-and-potatoes',
+    'mini-puppy-junior-con-salmone-e-riso',
+    'extra-small-puppy-junior-con-pollo',
+    // Wet konservai pirmokai
+    'fresh-paté-and-chunkies-chicken','fresh-paté-and-chunkies-veal',
+    'monoproteico-solo-agnello','monoproteico-solo-anatra','monoproteico-solo-tacchino'
+  ];
   const out={};
-  for(const id of ids){
+  let total=0;
+  for(const slug of slugs){
+    const u='https://www.monge.it/en/product/'+slug+'/';
     try{
-      await page.goto(`https://dev.avesa.lt/?p=${id}`,{waitUntil:'domcontentloaded',timeout:60000});
-      await page.waitForTimeout(3000);
-      try{
-        await page.evaluate(()=>{
-          document.querySelectorAll('.tabs li a, [data-tab-id], .accordion-header, .accordion-title').forEach(a=>{
-            const t=(a.innerText||'').toLowerCase();
-            if(t.includes('informacij')||t.includes('information')||t.includes('papildom')||t.includes('savyb')) a.click();
-          });
-        });
-      }catch(e){}
-      await page.waitForTimeout(1500);
-      await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
-      await page.waitForTimeout(1500);
-      const text=await page.evaluate(()=>document.body.innerText);
-      const hasSvoris=/(?:^|\n)\s*Svoris\s*\n?\s*\d/i.test(text)||/Svoris[\s:]+\d+[,.]?\d*\s*kg/i.test(text);
-      const hasIsmat=/(?:^|\n)\s*Išmatavim[ai]+\s*\n?\s*\d/i.test(text)||/Išmatavimai[\s:]+\d/i.test(text);
-      out[id]={hasSvoris,hasIsmat,title:await page.title()};
-    }catch(e){out[id]={err:String(e).slice(0,200)};}
+      const r=await page.goto(u,{waitUntil:'domcontentloaded',timeout:45000});
+      await page.waitForTimeout(2000);
+      if(r&&r.status()===404){out[slug]={status:404};continue;}
+      const pdf=await page.evaluate(()=>{
+        const a=Array.from(document.querySelectorAll('a[href]')).find(a=>/\.pdf/i.test(a.href)&&/Monge/i.test(a.href)&&!/Informativa/i.test(a.href));
+        return a?a.href:null;
+      });
+      if(pdf){
+        try{
+          const buf=await ctx.request.get(pdf);
+          const body=await buf.body();
+          if(buf.status()===200 && body.length>3000){
+            const fn='monge_'+slug+'.pdf';
+            putBin(fn,Buffer.from(body));
+            out[slug]={status:200,pdf,bytes:body.length,fn};
+            total++;
+          } else out[slug]={status:r.status(),pdf,err:'small_'+body.length};
+        }catch(e){out[slug]={status:r.status(),dlErr:String(e).slice(0,80)};}
+      } else out[slug]={status:r.status(),err:'no_pdf'};
+    }catch(e){out[slug]={err:String(e).slice(0,150)};}
   }
   await ctx.close();
   await browser.close();
-  commit('verify_hide_multi.json',JSON.stringify(out,null,1));
-  console.log("DONE");
+  commit('monge_pdfs3.json',JSON.stringify({total,results:out},null,1));
+  console.log("DONE",total);
 })();
