@@ -4,57 +4,42 @@ import { chromium } from "playwright";
 const env = { ...process.env };
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 function commit(name, str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
-function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:buf.toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "User-Agent: r" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
 (async()=>{
   const browser=await chromium.launch({args:['--no-sandbox']});
-  // 7 kategorijos veikia paraleliai
-  const cats=[
-    {key:'pumpkin_cat', url:'https://www.farmina.com/us/eshop-cat/Cat-food/51-N&D-Pumpkin-Grain-Free-Feline.html', re:/eshop\/cat-food\/n&d-pumpkin-grain-free-feline\/(\d+)-([^.]+)\.html/i},
-    {key:'prime_cat', url:'https://www.farmina.com/us/eshop-cat/Cat-food/49-N&D-Prime-Feline.html', re:/eshop\/cat-food\/n&d-prime-feline\/(\d+)-([^.]+)\.html/i},
-    {key:'ocean_cat', url:'https://www.farmina.com/us/eshop-cat/Cat-food/52-N&D-Ocean-Feline.html', re:/eshop\/cat-food\/n&d-ocean-feline\/(\d+)-([^.]+)\.html/i},
-    {key:'quinoa_cat', url:'https://www.farmina.com/us/eshop-cat/Cat-food/53-N&D-Quinoa-Functional-Feline.html', re:/eshop\/cat-food\/n&d-quinoa-functional-feline\/(\d+)-([^.]+)\.html/i},
-    {key:'tropical_cat', url:'https://www.farmina.com/us/eshop-cat/Cat-food/91-N&D-Tropical-Selection-feline.html', re:/eshop\/cat-food\/n&d-tropical-selection-feline\/(\d+)-([^.]+)\.html/i},
-    {key:'matisse', url:'https://www.farmina.com/us/eshop-cat/Cat-food/8-Matisse-Feline.html', re:/eshop\/cat-food\/matisse-feline\/(\d+)-([^.]+)\.html/i},
-    {key:'vetlife_dog', url:'https://www.farmina.com/us/eshop-dog/Dog-food/74-Farmina-Vet-Life-Canine.html', re:/eshop\/dog-food\/farmina-vet-life-canine\/(\d+)-([^.]+)\.html/i},
-    {key:'vetlife_cat', url:'https://www.farmina.com/us/eshop-cat/Cat-food/75-Farmina-Vet-Life-Feline.html', re:/eshop\/cat-food\/farmina-vet-life-feline\/(\d+)-([^.]+)\.html/i}
-  ];
-  async function scanCat(cat){
+  // Probe 1: Pumpkin CAT — nuskanok visus link kandidatus
+  const out={};
+  for(const u of [
+    'https://www.farmina.com/us/eshop-cat/Cat-food/51-N&D-Pumpkin-Grain-Free-Feline.html',
+    'https://www.farmina.com/us/eshop-cat/cat-food/51-n&d-pumpkin-grain-free-feline.html',
+    'https://www.farmina.com/us/eshop-cat/Cat-food/8-Matisse-Feline.html',
+    'https://www.farmina.com/us/eshop-dog/Dog-food/74-Farmina-Vet-Life-Canine.html',
+  ]){
     const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0'});
     const page=await ctx.newPage();
-    let prods=[];
     try{
-      await page.goto(cat.url,{waitUntil:'domcontentloaded',timeout:45000});
+      await page.goto(u,{waitUntil:'domcontentloaded',timeout:45000});
       await page.waitForTimeout(8000);
-      prods=await page.evaluate((reSrc)=>{
-        const re=new RegExp(reSrc,'i');
-        const links=Array.from(document.querySelectorAll('a[href]'));
-        const seen=new Set();const out=[];
-        for(const a of links){const m=a.href.match(re);if(m && !seen.has(m[1])){seen.add(m[1]);out.push({id:m[1],slug:m[2],href:a.href});}}
-        return out;
-      }, cat.re.source);
-    }catch(e){await ctx.close();return {key:cat.key,err:String(e).slice(0,150)};}
-    const map={};
-    for(const p of prods){
-      try{
-        await page.goto(p.href,{waitUntil:'domcontentloaded',timeout:45000});
-        await page.waitForTimeout(2500);
-        const pdf=await page.evaluate(()=>{const a=document.querySelector('a[href*="fotoprodotti/dosi/"]');return a?a.href:null;});
-        if(pdf){
-          try{
-            const buf=await page.context().request.get(pdf);
-            const body=await buf.body();
-            const fn=pdf.split('/').pop();
-            putBin(cat.key+'_'+fn, Buffer.from(body));
-            map[p.id]={slug:p.slug, downloaded:fn, bytes:body.length};
-          }catch(e){map[p.id]={slug:p.slug, dlErr:String(e).slice(0,100)};}
-        } else map[p.id]={slug:p.slug, err:'no_pdf_link'};
-      }catch(e){map[p.id]={err:String(e).slice(0,100)};}
-    }
+      const links=await page.evaluate(()=>{
+        const arr=Array.from(document.querySelectorAll('a[href]'));
+        // imam visus URL kuriose yra "eshop" + "cat-food" arba "dog-food"
+        return [...new Set(arr.map(a=>a.href).filter(h=>/eshop\/(cat|dog)-food\/[^/]+\/\d+/i.test(h)))].slice(0,12);
+      });
+      out[u]={links};
+      // Take 1 product link, get PDF link from Vet Life style
+      if(links.length){
+        await page.goto(links[0],{waitUntil:'domcontentloaded',timeout:45000});
+        await page.waitForTimeout(3500);
+        const pdfs=await page.evaluate(()=>{
+          const arr=Array.from(document.querySelectorAll('a[href]'));
+          return [...new Set(arr.map(a=>a.href).filter(h=>/fotoprodotti|\.pdf|\.jpg|\.png|dosi|feeding|guide/i.test(h)))].slice(0,8);
+        });
+        out[u].sampleProduct=links[0];
+        out[u].sampleProductPdfs=pdfs;
+      }
+    }catch(e){out[u]={err:String(e).slice(0,150)};}
     await ctx.close();
-    return {key:cat.key, products:prods.length, map};
   }
-  const results=await Promise.all(cats.map(scanCat));
   await browser.close();
-  commit('par5_run.json',JSON.stringify({results},null,1));
-  console.log("PAR5 DONE");
+  commit('cat_probe.json',JSON.stringify(out,null,1));
+  console.log("PROBE DONE");
 })();
