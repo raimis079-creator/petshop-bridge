@@ -45,7 +45,7 @@ for(const id of IDS){
     hasRealP:/<p>/.test(newT)&&/<\/p>/.test(newT),
     hasSerimo:/Šėrimo instrukcija/.test(newT),
     noTable:!/<table/.test(newT),
-    oneVetlifeBlock:(newT.match(/b2b-vetlife/g)||[]).length===3, // style + class style + class div = 3 occurrences
+    oneVetlifeBlock:(newT.match(/<div class="b2b-vetlife">/g)||[]).length===1,
     hasRecText:newT.includes('Šėrimo rekomendacija')&&newT.includes('veterinarijos gydytojas'),
     introMin:newT.length>=1500,
     pakuoteAbsent:!/Pakuotės dydis.*cm/.test(newT)
