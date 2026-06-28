@@ -1,0 +1,7 @@
+{
+ "id": 518,
+ "active": true,
+ "scope": "global",
+ "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)",
+ "raw": "{\"id\":518,\"name\":\"Petshop Slėpti svorį ir dimensijas v1 (display only)\",\"desc\":\"Paslepia Svoris/Išmatavimai eilutes iš Additional Information; DB meta lieka\",\"code\":\"/**\\n * Petshop Slėpti svorį ir dimensijas v1 (display only)\\n * Paslepia \\\"Svoris\\\" ir \\\"Išmatavimai\\\" eilutes iš Additional Information tab'o.\\n * DB meta (_weight/_length/_width/_height) lieka nepakeisti - siuntimo skaiciavimas veikia.\\n */\\nadd_filter( 'woocommerce_display_product_attributes', function( $product_attributes, $pro"
+}
