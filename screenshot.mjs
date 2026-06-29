@@ -18,50 +18,41 @@ function call(method, path, bodyObj){
   let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
   try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
 }
-function createCat(name, slug, parent){
-  const body={name, slug}; if(parent) body.parent=parent;
-  const r = call('POST','/wp-json/wc/v3/products/categories', body);
-  return {req:{name,slug,parent:parent||0}, id:(r&&r.id)||null, err:(r&&(r.__exc||r.code||(r.__pe?r.raw:null)))||null};
+function newItem(title, catId, order, parent){
+  const body={ title, type:'taxonomy', object:'product_cat', object_id:catId, menus:232, status:'publish', menu_order:order, parent:parent||0 };
+  const r=call('POST','/wp-json/wp/v2/menu-items', body);
+  return {title, catId, id:(r&&r.id)||null, err:(r&&(r.__exc||r.code||(r.__pe?r.raw:null)))||null};
+}
+function reparent(itemId, parentId, order){
+  const r=call('POST','/wp-json/wp/v2/menu-items/'+itemId, {parent:parentId, menu_order:order});
+  return {itemId, newParent:(r&&r.parent), order:(r&&r.menu_order), err:(r&&(r.__exc||r.code||(r.__pe?r.raw:null)))||null};
 }
 (async()=>{
-  const out={ts:new Date().toISOString(), menus:{}, created:{tops:[], subs:[]}};
+  const out={ts:new Date().toISOString(), tops:[], children:[], reparent:[]};
+  // 1. TOP items after ŽUVIMS (order 48)
+  const R = newItem('RINKINIAI', 679, 49, 0);
+  const S = newItem('SPRENDIMAI', 680, 50, 0);
+  const P = newItem('PASIŪLYMAI', 681, 51, 0);
+  out.tops=[R,S,P];
 
-  // --- RECON MENUS ---
-  const menus = call('GET','/wp-json/wp/v2/menus?per_page=50&context=edit');
-  if(Array.isArray(menus)){
-    out.menus.list = menus.map(m=>({id:m.id, name:m.name, slug:m.slug, locations:m.locations, count:m.count}));
-    // fetch items for each menu
-    out.menus.items = {};
-    for(const m of menus){
-      const it = call('GET','/wp-json/wp/v2/menu-items?menus='+m.id+'&per_page=100&context=edit&orderby=menu_order&order=asc');
-      if(Array.isArray(it)){
-        out.menus.items[m.id] = it.map(x=>({id:x.id, title:(x.title&&x.title.rendered)||x.title, parent:x.menu_order!==undefined?undefined:undefined, order:x.menu_order, type:x.type, object:x.object, obj_id:x.object_id, url:x.url, menu_parent:x.parent}));
-      } else { out.menus.items[m.id]={err:it}; }
-    }
-  } else { out.menus.raw = menus; }
-
-  // --- CREATE TOP CATEGORIES ---
-  const T1 = createCat('RINKINIAI','rinkiniai',0);
-  const T2 = createCat('SPRENDIMAI','sprendimai',0);
-  const T3 = createCat('PASIŪLYMAI','pasiulymai',0);
-  out.created.tops=[T1,T2,T3];
-
-  // --- CREATE SUBCATEGORIES (first-pass, renamable) ---
-  if(T1.id){
-    out.created.subs.push(createCat('Konservų rinkiniai','konservu-rinkiniai',T1.id));
-    out.created.subs.push(createCat('Skanėstų rinkiniai','skanestu-rinkiniai',T1.id));
-    out.created.subs.push(createCat('Kramtalų rinkiniai','kramtalu-rinkiniai',T1.id));
+  // 2. CHILDREN
+  if(R.id){
+    out.children.push(newItem('Konservų rinkiniai',682,1,R.id));
+    out.children.push(newItem('Skanėstų rinkiniai',683,2,R.id));
+    out.children.push(newItem('Kramtalų rinkiniai',684,3,R.id));
   }
-  if(T2.id){
-    out.created.subs.push(createCat('Naujas šuniukas','naujas-suniukas',T2.id));
-    out.created.subs.push(createCat('Naujas kačiukas','naujas-kaciukas',T2.id));
-    out.created.subs.push(createCat('Jautrus virškinimas','jautrus-virskinimas',T2.id));
-    out.created.subs.push(createCat('Šuo kasosi','suo-kasosi',T2.id));
+  if(S.id){
+    out.children.push(newItem('Naujas šuniukas',685,1,S.id));
+    out.children.push(newItem('Naujas kačiukas',686,2,S.id));
+    out.children.push(newItem('Jautrus virškinimas',687,3,S.id));
+    out.children.push(newItem('Šuo kasosi',688,4,S.id));
   }
-  if(T3.id){
-    out.created.subs.push(createCat('Akcijiniai pasiūlymai','akcijiniai-pasiulymai',T3.id));
+  if(P.id){
+    out.children.push(newItem('Akcijiniai pasiūlymai',689,1,P.id));
+    // 3. RE-PARENT existing DOVANOS(2972) + DAUGIAU=PIGIAU(2971) under PASIŪLYMAI menu item
+    out.reparent.push(reparent(2972, P.id, 2)); // DOVANOS
+    out.reparent.push(reparent(2971, P.id, 3)); // DAUGIAU=PIGIAU
   }
-
-  commit('build_cats.json', JSON.stringify(out,null,1));
+  commit('build_menu.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
