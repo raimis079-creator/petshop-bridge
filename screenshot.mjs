@@ -3,37 +3,50 @@ import fs from "fs";
 import { chromium } from "playwright";
 const env={...process.env};
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:buf.toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});}
+function commit(name,str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
 
 (async()=>{
   const browser=await chromium.launch({args:['--no-sandbox']});
-  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0',viewport:{width:1400,height:900}});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0'});
   const page=await ctx.newPage();
-  // Surask visus produktus su jų pakuotės nuotraukomis (back side gali rodyti šerimo lenteles)
-  // Vienas pavyzdys: Adult Sensitive Lamb&Rice
-  const urls=[
-    {sku:'89004',u:'https://www.realdog.lt/89004-real-dog-adult-sensitive-lambrice-15-kg'},
-    {sku:'01110',u:'https://www.realdog.lt/01110-real-dog-adult-sensitive-with-duck-vegetables-15-kg'},
-    {sku:'702700',u:'https://www.realdog.lt/702700-real-dog-food-for-adult-dogs-with-poultry-20-kg'},
-    {sku:'695097',u:'https://www.realdog.lt/695097-real-dog-small-breeds-10-kg'}
+  
+  const products=[
+    {petshopId:12828,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/3277-real-dog-sensitive-pasaras-suaugusiems-sunims-su-eriena-ir-ryziais-15kg.html'},
+    {petshopId:12719,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/3279-real-dog-sensitive-pasaras-suaugusiems-sunims-su-antiena-.html'},
+    {petshopId:12718,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/3281-real-dog-small-breeds-visavertis-pasaras-mazu-veisliu-suaugusiems-sunims-su-vistiena-10kg.html'},
+    {petshopId:14276,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5616-real-dog-adult-all-breeds-horse-rice-sausas-pasaras-sunims-20kg.html'},
+    {petshopId:14277,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5617-real-dog-adult-all-breeds-pork-rice-sausas-pasaras-sunims-20kg.html'},
+    {petshopId:14278,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5618-real-dog-adult-all-breeds-salmon-rice-sausas-pasaras-sunims-20kg.html'},
+    {petshopId:14279,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5619-real-dog-adult-all-breeds-chicken-rice-sausas-pasaras-sunims-20kg.html'},
+    {petshopId:14280,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5621-real-dog-adult-large-giant-breeds-chicken-rice-sausas-pasaras-sunims-20kg.html'},
+    {petshopId:14281,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5622-real-dog-puppy-junior-all-breeds-pork-rice-sausas-pasaras-suniukam-su-20kg.html'},
+    {petshopId:14467,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7103-real-dog-sp-puppy-all-breeds-lamb-pork-buffalo-with-brown-rice-sausas-pasaras-suniukams-12-kg-.html'},
+    {petshopId:14468,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7104-real-dog-sp-adult-mini-lambrice-sausas-pasaras-sunims-12-kg.html'},
+    {petshopId:14469,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7105-real-dog-sp-adult-medium-lambrice-sausas-pasaras-sunims-12-kg.html'},
+    {petshopId:14470,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7106--real-dog-sp-adult-maxi-lambrice-sausas-pasaras-sunims-12-kg.html'},
+    {petshopId:14471,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7107-real-dog-sp-adult-all-breeds-venisonrice-sausas-pasaras-sunims-12-kg.html'},
+    {petshopId:14472,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7108-real-dog-sp-adult-all-breeds-buffalorice-sausas-pasaras-sunims-12-kg.html'}
   ];
-  const results={};
-  for(const {sku,u} of urls){
+  
+  const out={};
+  for(const p of products){
     try{
-      await page.goto(u,{waitUntil:'domcontentloaded',timeout:45000});
-      await page.waitForTimeout(2000);
-      // Surask visas nuotraukas
-      const imgs=await page.evaluate(()=>{
-        const arr=Array.from(document.querySelectorAll('img'));
-        return arr.map(img=>img.src).filter(src=>src.includes('uploads')||src.includes('thumbs'));
+      const r=await page.goto(p.url,{waitUntil:'domcontentloaded',timeout:45000});
+      if(r&&r.status()===404){out[p.petshopId]={status:404};continue;}
+      await page.waitForTimeout(1500);
+      // Surask šerimo lenteles - paimkim viso teksto bloko apatinę dalį (po "Šėrimo")
+      const data=await page.evaluate(()=>{
+        const main=document.body.innerText;
+        const idx=main.search(/Šėrimo\s+(?:rekomendacij|instrukcij|norm)/i);
+        if(idx<0)return {err:'no_marker'};
+        const block=main.substring(idx,idx+2500);
+        return {block};
       });
-      results[sku]={imgs};
-    }catch(e){results[sku]={err:String(e).slice(0,100)};}
+      out[p.petshopId]=data;
+    }catch(e){out[p.petshopId]={err:String(e).slice(0,100)};}
   }
-  // Commit results
-  const body=Buffer.from(JSON.stringify(results,null,1),'utf8');
-  putBin('real_imgs.json',body);
   await ctx.close();
   await browser.close();
+  commit('real_feed_data.json',JSON.stringify(out,null,1));
   console.log("done");
 })();
