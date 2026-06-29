@@ -1,0 +1,18 @@
+{
+ "ts": "2026-06-29T15:22:16.818Z",
+ "type_mix_and_match": {
+  "status": 400,
+  "params": {
+   "type": "type nėra vienas iš simple, grouped, external, variable ir mix-and-match."
+  },
+  "details": {
+   "type": {
+    "code": "rest_not_in_enum",
+    "message": "type nėra vienas iš simple, grouped, external, variable ir mix-and-match.",
+    "data": null
+   }
+  }
+ },
+ "mnm_namespaces": [],
+ "mnm_routes": []
+}
