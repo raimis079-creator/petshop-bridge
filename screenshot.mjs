@@ -7,21 +7,24 @@ function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/conte
 
 (async()=>{
   const browser=await chromium.launch({args:['--no-sandbox']});
-  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0',viewport:{width:1200,height:1100}});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0',viewport:{width:1200,height:900}});
   const page=await ctx.newPage();
-  // 3 produktai - po vieną iš Animondos, Real Dog, Monge - su accordion
   for(const id of [19479,14276,12660]){
     await page.goto(`https://dev.avesa.lt/?p=${id}&ps_desc=1`,{waitUntil:'domcontentloaded',timeout:45000});
     await page.waitForTimeout(3500);
-    // Scrollas iki pagrindinio aprašymo
+    // Scrollas iki APRAŠYMAS tab section
     await page.evaluate(()=>{
-      // Šukok pirmas accordion atrast'a
-      const el=document.querySelector('.ps-desc, .ps_desc, .accordion, [class*="desc"]');
-      if(el)el.scrollIntoView({block:'center'});
+      // Šokti į apačią tab area
+      const tabs=document.querySelector('#tab-description, .woocommerce-Tabs-panel--description, #tab-title-description, .ps-accordion, [class*="ps-desc"]');
+      if(tabs)tabs.scrollIntoView({block:'start'});
+      else window.scrollTo(0,window.scrollY+800);
     });
     await page.waitForTimeout(800);
     const buf=await page.screenshot({fullPage:false});
     putBin(`acc_${id}.png`,buf);
+    // Take a second screenshot of fullPage to see all accordion blocks
+    const fullBuf=await page.screenshot({fullPage:true});
+    putBin(`acc_${id}_full.png`,fullBuf);
   }
   await ctx.close();
   await browser.close();
