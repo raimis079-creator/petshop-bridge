@@ -1,0 +1,196 @@
+{
+ "ts": "2026-06-29T15:26:30.094Z",
+ "all_prop_count": 85,
+ "mnm_fields": {
+  "mnm_layout_override": {
+   "type": "boolean",
+   "desc": "Has product-specific layouts that override global setting. Applicable only for Mix and Match type products.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_layout": {
+   "type": "string",
+   "desc": "Single-product details page layout. Applicable only for Mix and Match type products.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_form_location": {
+   "type": "string",
+   "desc": "Single-product details page add to cart form location. Applicable only for Mix and Match type products.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_content_source": {
+   "type": "string",
+   "desc": "Source of child products. Applicable only for Mix and Match type products.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_child_category_ids": {
+   "type": "array",
+   "desc": "List of child categories allowed in this product.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_child_items": {
+   "type": "array",
+   "desc": "List of child items contained in this product.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_min_container_size": {
+   "type": "integer",
+   "desc": "Minimum container size.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_max_container_size": {
+   "type": "mixed",
+   "desc": "Maximum container quantity.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_discount": {
+   "type": "string",
+   "desc": "Indicates the percentage discount to apply to each child product when per-product pricing is enabled.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_priced_per_product": {
+   "type": "boolean",
+   "desc": "Indicates whether the container price is calculated from the price of the selected child products.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_packing_mode": {
+   "type": "boolean",
+   "desc": "Indicates how the child products are packed/shipped.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "mnm_shipped_per_product": {
+   "type": "boolean",
+   "desc": "Deprecated: Indicates whether the child products are shipped individually.",
+   "context": [
+    "view"
+   ]
+  },
+  "mnm_weight_cumulative": {
+   "type": "boolean",
+   "desc": "Shipping weight calculation mode.",
+   "context": [
+    "view",
+    "edit"
+   ]
+  }
+ },
+ "all_props": [
+  "id",
+  "name",
+  "slug",
+  "permalink",
+  "date_created",
+  "date_created_gmt",
+  "date_modified",
+  "date_modified_gmt",
+  "type",
+  "status",
+  "featured",
+  "catalog_visibility",
+  "description",
+  "short_description",
+  "sku",
+  "global_unique_id",
+  "price",
+  "regular_price",
+  "sale_price",
+  "date_on_sale_from",
+  "date_on_sale_from_gmt",
+  "date_on_sale_to",
+  "date_on_sale_to_gmt",
+  "price_html",
+  "on_sale",
+  "purchasable",
+  "total_sales",
+  "virtual",
+  "downloadable",
+  "downloads",
+  "download_limit",
+  "download_expiry",
+  "external_url",
+  "button_text",
+  "tax_status",
+  "tax_class",
+  "manage_stock",
+  "stock_quantity",
+  "stock_status",
+  "backorders",
+  "backorders_allowed",
+  "backordered",
+  "low_stock_amount",
+  "sold_individually",
+  "weight",
+  "dimensions",
+  "shipping_required",
+  "shipping_taxable",
+  "shipping_class",
+  "shipping_class_id",
+  "reviews_allowed",
+  "post_password",
+  "average_rating",
+  "rating_count",
+  "related_ids",
+  "upsell_ids",
+  "cross_sell_ids",
+  "parent_id",
+  "purchase_note",
+  "categories",
+  "brands",
+  "tags",
+  "images",
+  "has_options",
+  "attributes",
+  "default_attributes",
+  "variations",
+  "grouped_products",
+  "menu_order",
+  "meta_data",
+  "permalink_template",
+  "generated_slug",
+  "mnm_layout_override",
+  "mnm_layout",
+  "mnm_form_location",
+  "mnm_content_source",
+  "mnm_child_category_ids",
+  "mnm_child_items",
+  "mnm_min_container_size",
+  "mnm_max_container_size",
+  "mnm_discount",
+  "mnm_priced_per_product",
+  "mnm_packing_mode",
+  "mnm_shipped_per_product",
+  "mnm_weight_cumulative"
+ ]
+}
