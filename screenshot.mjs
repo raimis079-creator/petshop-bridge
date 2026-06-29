@@ -11,47 +11,26 @@ function commit(name, str){
   fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
-function call(method, path, bodyObj){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -H "Accept: application/json"';
-  if(bodyObj!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(bodyObj)); cmd+=' -d @/tmp/b.json'; }
-  cmd+=' "'+BASE+path+'"';
-  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
+function jget(path){
+  const cmd = 'curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
+  let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
+  try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,300)}; }
 }
-const PHP = [
-"add_action('rest_api_init', function () {",
-"  register_rest_route('petshop/v1', '/wccom', array(",
-"    'methods' => 'GET',",
-"    'permission_callback' => function () { return current_user_can('manage_options'); },",
-"    'callback' => function () {",
-"      $out = array();",
-"      $out['helper_class'] = class_exists('WC_Helper');",
-"      if (class_exists('WC_Helper') && method_exists('WC_Helper','is_site_connected')) { $out['is_site_connected'] = (bool) WC_Helper::is_site_connected(); } else { $out['is_site_connected'] = 'method_missing'; }",
-"      $hd = get_option('woocommerce_helper_data');",
-"      $out['helper_data_present'] = !empty($hd);",
-"      if (class_exists('WC_Helper') && method_exists('WC_Helper','get_subscriptions')) {",
-"        $subs = WC_Helper::get_subscriptions();",
-"        $out['subscriptions_count'] = is_array($subs) ? count($subs) : 'n/a';",
-"        if (is_array($subs)) { $out['subscriptions'] = array_values(array_map(function($s){ return array('product_name'=>isset($s['product_name'])?$s['product_name']:'', 'expires'=>isset($s['expires'])?$s['expires']:'', 'expired'=>isset($s['expired'])?$s['expired']:null, 'product_id'=>isset($s['product_id'])?$s['product_id']:''); }, array_slice($subs,0,40))); }",
-"      } else { $out['subscriptions_count']='no_method'; }",
-"      return $out;",
-"    }",
-"  ));",
-"});"
-].join("\n");
 (async()=>{
-  const log={ts:new Date().toISOString()};
-  const cr = call('POST','/wp-json/code-snippets/v1/snippets', {name:'TEMP WCCOM Check v1 (read-only)', desc:'temp; delete after', code:PHP, scope:'global', active:false, priority:10});
-  const sid = cr && cr.id ? cr.id : null;
-  log.create_id = sid; if(cr&&cr.code) log.create_err=cr.code;
-  if(!sid){ commit('wccom.json', JSON.stringify({log, fatal:'no id', cr},null,1)); console.log('NOID'); return; }
-  call('POST','/wp-json/code-snippets/v1/snippets/'+sid+'/activate', {});
-  const res = call('GET','/wp-json/petshop/v1/wccom');
-  // cleanup
-  call('POST','/wp-json/code-snippets/v1/snippets/'+sid+'/deactivate', {});
-  call('DELETE','/wp-json/code-snippets/v1/snippets/'+sid);
-  const after = call('GET','/wp-json/petshop/v1/wccom');
-  log.route_after = (after && after.code) ? after.code : 'still_present';
-  commit('wccom.json', JSON.stringify({log, result:res},null,1));
-  console.log("DONE sid="+sid);
+  const out={ts:new Date().toISOString()};
+  // 1. plugins — find mix and match
+  const p = jget('/wp-json/wp/v2/plugins?per_page=100');
+  if(Array.isArray(p.data)){
+    out.mnm = p.data.filter(x=>/mix.?and.?match|mix-?match/i.test((x.plugin||'')+' '+(x.name||''))).map(x=>({plugin:x.plugin,name:x.name,status:x.status,version:x.version}));
+    out.total_plugins = p.data.length;
+  } else { out.plugins_err = p.data; }
+  // 2. product types registered (wc/v3 doesnt list types directly; check via products?type=mix_and_match)
+  const t1 = jget('/wp-json/wc/v3/products?type=mix_and_match&per_page=1');
+  out.type_mix_and_match = Array.isArray(t1.data) ? ('ok, count='+t1.data.length) : t1.data;
+  // 3. namespaces — MnM may add wc-mnm route
+  const root = jget('/wp-json/');
+  out.mnm_namespaces = (root.namespaces||[]).filter(n=>/mnm|mix/i.test(n));
+  out.mnm_routes = root.routes ? Object.keys(root.routes).filter(r=>/mnm|mix-and-match|mix_and_match/i.test(r)) : [];
+  commit('mnm_check.json', JSON.stringify(out,null,1));
+  console.log("DONE");
 })();
