@@ -1,17 +1,17 @@
 {
- "loopCnt": 30,
+ "loopCnt": 40,
  "stages": {
   "start": 0,
-  "fetched": 29,
-  "planned": 29,
-  "passed": 29,
+  "fetched": 39,
+  "planned": 39,
+  "passed": 39,
   "failed": 0,
-  "applied": 29
+  "applied": 39
  },
  "planned": [
   {
-   "id": "19504",
-   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
+   "id": "19562",
+   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 800 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -22,13 +22,13 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 2673,
-   "newLen": 4230,
+   "oldLen": 2798,
+   "newLen": 4355,
    "type": "HTML_TABLE"
   },
   {
-   "id": "19508",
-   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 400 g",
+   "id": "19566",
+   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -39,13 +39,13 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 2647,
-   "newLen": 4204,
+   "oldLen": 2835,
+   "newLen": 4392,
    "type": "HTML_TABLE"
   },
   {
-   "id": "19530",
-   "title": "Animonda GranCarno Adult Sensitive Turkey + Potato: konservai jautriems šunims su gryna kalakutiena ir bulvėmis, 400 g",
+   "id": "19570",
+   "title": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 800 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -56,34 +56,34 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 2658,
-   "newLen": 4215,
+   "oldLen": 2787,
+   "newLen": 4342,
    "type": "HTML_TABLE"
   }
  ],
  "apply": [
   {
-   "id": "19504",
-   "verLen": 4274,
-   "newLen": 4230,
+   "id": "19562",
+   "verLen": 4406,
+   "newLen": 4355,
    "lossless": true,
-   "oldLen": 2673,
+   "oldLen": 2798,
    "type": "HTML_TABLE"
   },
   {
-   "id": "19508",
-   "verLen": 4248,
-   "newLen": 4204,
+   "id": "19566",
+   "verLen": 4443,
+   "newLen": 4392,
    "lossless": true,
-   "oldLen": 2647,
+   "oldLen": 2835,
    "type": "HTML_TABLE"
   },
   {
-   "id": "19530",
-   "verLen": 4289,
-   "newLen": 4215,
+   "id": "19570",
+   "verLen": 4410,
+   "newLen": 4342,
    "lossless": true,
-   "oldLen": 2658,
+   "oldLen": 2787,
    "type": "HTML_TABLE"
   }
  ]
