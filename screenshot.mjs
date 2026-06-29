@@ -11,50 +11,57 @@ function commit(name, str){
   fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
-function jget(path){
-  const cmd='curl -sk -D /tmp/h.txt -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
-  let body=''; let tp='1'; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000});
-    const h=fs.existsSync('/tmp/h.txt')?fs.readFileSync('/tmp/h.txt','utf8'):''; const m=h.match(/x-wp-totalpages:\s*(\d+)/i); if(m) tp=m[1];
-  }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return {data:JSON.parse(body), tp}; }catch(e){ return {data:{__pe:true, raw:body.slice(0,300)}, tp}; }
+function call(method, path, bodyObj){
+  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -H "Accept: application/json"';
+  if(bodyObj!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(bodyObj)); cmd+=' -d @/tmp/b.json'; }
+  cmd+=' "'+BASE+path+'"';
+  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
+  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
+}
+function createCat(name, slug, parent){
+  const body={name, slug}; if(parent) body.parent=parent;
+  const r = call('POST','/wp-json/wc/v3/products/categories', body);
+  return {req:{name,slug,parent:parent||0}, id:(r&&r.id)||null, err:(r&&(r.__exc||r.code||(r.__pe?r.raw:null)))||null};
 }
 (async()=>{
-  const out={ts:new Date().toISOString()};
+  const out={ts:new Date().toISOString(), menus:{}, created:{tops:[], subs:[]}};
 
-  // 1. THEMES
-  const th = jget('/wp-json/wp/v2/themes?status=active');
-  if(Array.isArray(th.data)){
-    out.active_theme = th.data.map(t=>({stylesheet:t.stylesheet, template:t.template, name:(t.name&&t.name.rendered)||t.name, version:(t.version)||'', status:t.status}));
-  } else { out.themes_raw = th.data; }
-
-  // 2. PAGES
-  let pages=[]; let page=1; let tp=1;
-  do{
-    const p = jget('/wp-json/wp/v2/pages?per_page=100&status=publish,draft,private&context=edit&page='+page);
-    if(!Array.isArray(p.data)){ out.pages_err={page, data:p.data}; break; }
-    for(const pg of p.data){
-      const raw = (pg.content && pg.content.raw) || '';
-      pages.push({id:pg.id, slug:pg.slug, title:(pg.title&&pg.title.rendered)||'', status:pg.status, template:pg.template||'(default)',
-        uses_ux:/\[ux_/.test(raw), uses_products:/\[products|\[ux_products/.test(raw), uses_row:/\[row|\[col/.test(raw), len:raw.length});
+  // --- RECON MENUS ---
+  const menus = call('GET','/wp-json/wp/v2/menus?per_page=50&context=edit');
+  if(Array.isArray(menus)){
+    out.menus.list = menus.map(m=>({id:m.id, name:m.name, slug:m.slug, locations:m.locations, count:m.count}));
+    // fetch items for each menu
+    out.menus.items = {};
+    for(const m of menus){
+      const it = call('GET','/wp-json/wp/v2/menu-items?menus='+m.id+'&per_page=100&context=edit&orderby=menu_order&order=asc');
+      if(Array.isArray(it)){
+        out.menus.items[m.id] = it.map(x=>({id:x.id, title:(x.title&&x.title.rendered)||x.title, parent:x.menu_order!==undefined?undefined:undefined, order:x.menu_order, type:x.type, object:x.object, obj_id:x.object_id, url:x.url, menu_parent:x.parent}));
+      } else { out.menus.items[m.id]={err:it}; }
     }
-    tp=parseInt(p.tp||'1',10); page++;
-  } while(page<=tp && page<=5);
-  out.pages_total = pages.length;
-  out.pages = pages;
-  out.shortcode_users = pages.filter(p=>p.uses_ux||p.uses_products||p.uses_row).map(p=>({id:p.id,slug:p.slug,ux:p.uses_ux,prod:p.uses_products,row:p.uses_row}));
+  } else { out.menus.raw = menus; }
 
-  // 3. product_cat: sprendimai / rinkiniai exist?
-  const cats = jget('/wp-json/wc/v3/products/categories?per_page=100&search=');
-  // search sprendimai + rinkiniai specifically
-  const c1 = jget('/wp-json/wc/v3/products/categories?search=sprendim&per_page=10');
-  const c2 = jget('/wp-json/wc/v3/products/categories?search=rinkin&per_page=10');
-  out.cat_sprendimai = Array.isArray(c1.data)? c1.data.map(c=>({id:c.id,name:c.name,slug:c.slug,parent:c.parent,count:c.count})):c1.data;
-  out.cat_rinkiniai  = Array.isArray(c2.data)? c2.data.map(c=>({id:c.id,name:c.name,slug:c.slug,parent:c.parent,count:c.count})):c2.data;
+  // --- CREATE TOP CATEGORIES ---
+  const T1 = createCat('RINKINIAI','rinkiniai',0);
+  const T2 = createCat('SPRENDIMAI','sprendimai',0);
+  const T3 = createCat('PASIŪLYMAI','pasiulymai',0);
+  out.created.tops=[T1,T2,T3];
 
-  // 4. page templates available from theme (types -> page supports?)
-  const types = jget('/wp-json/wp/v2/types/page');
-  out.page_template_field = (types.data && types.data.supports) ? Object.keys(types.data.supports) : (types.data && types.data.__pe ? 'pe' : 'n/a');
+  // --- CREATE SUBCATEGORIES (first-pass, renamable) ---
+  if(T1.id){
+    out.created.subs.push(createCat('Konservų rinkiniai','konservu-rinkiniai',T1.id));
+    out.created.subs.push(createCat('Skanėstų rinkiniai','skanestu-rinkiniai',T1.id));
+    out.created.subs.push(createCat('Kramtalų rinkiniai','kramtalu-rinkiniai',T1.id));
+  }
+  if(T2.id){
+    out.created.subs.push(createCat('Naujas šuniukas','naujas-suniukas',T2.id));
+    out.created.subs.push(createCat('Naujas kačiukas','naujas-kaciukas',T2.id));
+    out.created.subs.push(createCat('Jautrus virškinimas','jautrus-virskinimas',T2.id));
+    out.created.subs.push(createCat('Šuo kasosi','suo-kasosi',T2.id));
+  }
+  if(T3.id){
+    out.created.subs.push(createCat('Akcijiniai pasiūlymai','akcijiniai-pasiulymai',T3.id));
+  }
 
-  commit('recon_theme.json', JSON.stringify(out,null,1));
+  commit('build_cats.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
