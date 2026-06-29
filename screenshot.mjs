@@ -16,23 +16,11 @@ function jget(path){
   let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
   try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,150)}; }
 }
+function summ(arr){ return (arr||[]).map(p=>({id:p.id, name:(p.name||'').slice(0,60), sku:p.sku, type:p.type, status:p.status, price:p.price, qty:p.stock_quantity, cats:(p.categories||[]).map(c=>c.name).join('|')})); }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const p = jget('/wp-json/wp/v2/plugins?per_page=100');
-  if(Array.isArray(p)){
-    out.plugin_count = p.length;
-    out.variable_gone = !p.some(x=>/wc-mnm-variable/.test(x.plugin||''));
-    out.core_mnm_present = p.some(x=>/woocommerce-mix-and-match-products/.test(x.plugin||''));
-    out.core_mnm = p.filter(x=>/mix-and-match/i.test((x.plugin||'')+(x.name||''))).map(x=>({name:x.name,status:x.status,version:x.version}));
-  } else out.plugins_err=p;
-  // snippets check
-  const s = jget('/wp-json/code-snippets/v1/snippets?per_page=100');
-  if(Array.isArray(s)){
-    out.temp_snippets_remaining = s.filter(x=>/TEMP|519|521/.test(x.name||'')||[519,521].includes(x.id)).map(x=>({id:x.id,name:x.name,active:x.active}));
-  } else out.snippets_note='endpoint na';
-  // type enum — should no longer include variable-mix-and-match
-  const t = jget('/wp-json/wc/v3/products?type=__x__&per_page=1');
-  out.type_enum = (t&&t.data&&t.data.params&&t.data.params.type)?t.data.params.type:(t&&t.details&&t.details.type&&t.details.type.message)?t.details.type.message:'?';
-  commit('verify_clean.json', JSON.stringify(out,null,1));
-  console.log("DONE");
+  out.search_rinkinys = summ(jget('/wp-json/wc/v3/products?search=rinkinys&per_page=40&status=any'));
+  out.search_6vnt = summ(jget('/wp-json/wc/v3/products?search=6%20vnt&per_page=30&status=any'));
+  commit('rinkiniai_recon.json', JSON.stringify(out,null,1));
+  console.log("DONE rinkinys="+out.search_rinkinys.length+" 6vnt="+out.search_6vnt.length);
 })();
