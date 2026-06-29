@@ -1,0 +1,83 @@
+{
+ "ts": "2026-06-29T17:59:28.669Z",
+ "create": {
+  "id": 34143,
+  "type": "variable-mix-and-match",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/test-variable-rinkinys-6-12-15-varmnm/",
+  "err": null
+ },
+ "parent": {
+  "id": 34143,
+  "type": "variable-mix-and-match",
+  "attributes": [
+   {
+    "name": "Dydis",
+    "variation": true,
+    "options": [
+     "6",
+     "12",
+     "15"
+    ]
+   }
+  ],
+  "mnm_child_items": "",
+  "mnm_content_source": "",
+  "mnm_min": "",
+  "mnm_max": ""
+ },
+ "variation_mnm_fields": {
+  "mnm_layout_override": {
+   "type": "boolean",
+   "desc": "Has product-specific layouts that override global setting. Applicable only for Mix and Mat"
+  },
+  "mnm_layout": {
+   "type": "string",
+   "desc": "Single-product details page layout. Applicable only for Mix and Match type products."
+  },
+  "mnm_form_location": {
+   "type": "string",
+   "desc": "Single-product details page add to cart form location. Applicable only for Mix and Match t"
+  },
+  "mnm_content_source": {
+   "type": "string",
+   "desc": "Source of child products. Applicable only for Mix and Match type products."
+  },
+  "mnm_child_category_ids": {
+   "type": "array",
+   "desc": "List of child categories allowed in this product."
+  },
+  "mnm_child_items": {
+   "type": "array",
+   "desc": "List of child items contained in this product."
+  },
+  "mnm_min_container_size": {
+   "type": "integer",
+   "desc": "Minimum container size."
+  },
+  "mnm_max_container_size": {
+   "type": "mixed",
+   "desc": "Maximum container quantity."
+  },
+  "mnm_discount": {
+   "type": "string",
+   "desc": "Indicates the percentage discount to apply to each child product when per-product pricing "
+  },
+  "mnm_priced_per_product": {
+   "type": "boolean",
+   "desc": "Indicates whether the container price is calculated from the price of the selected child p"
+  },
+  "mnm_packing_mode": {
+   "type": "boolean",
+   "desc": "Indicates how the child products are packed/shipped."
+  },
+  "mnm_shipped_per_product": {
+   "type": "boolean",
+   "desc": "Deprecated: Indicates whether the child products are shipped individually."
+  },
+  "mnm_weight_cumulative": {
+   "type": "boolean",
+   "desc": "Shipping weight calculation mode."
+  }
+ }
+}
