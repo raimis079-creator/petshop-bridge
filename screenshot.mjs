@@ -19,33 +19,21 @@ function call(method, path, bodyObj){
   try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
 }
 const PID=34143;
-const POOL=[{product_id:17397},{product_id:17394},{product_id:17400}];
-const SIZES=[{sz:6,price:'14.99'},{sz:12,price:'26.99'},{sz:15,price:'31.99'}];
+const MAP=[{id:34144,sz:6,price:'14.99'},{id:34145,sz:12,price:'26.99'},{id:34146,sz:15,price:'31.99'}];
 (async()=>{
-  const out={ts:new Date().toISOString(), created:[]};
-  for(const s of SIZES){
-    const body={
-      attributes:[{name:'Dydis', option:String(s.sz)}],
-      regular_price:s.price,
-      mnm_content_source:'products',
-      mnm_child_items:POOL,
-      mnm_min_container_size:s.sz,
-      mnm_max_container_size:s.sz,
-      mnm_priced_per_product:false
-    };
-    const v = call('POST','/wp-json/wc/v3/products/'+PID+'/variations', body);
-    out.created.push({size:s.sz, id:(v&&v.id)||null, err:(v&&(v.__exc||v.code||(v.__pe?v.raw:null)))||null});
+  const out={ts:new Date().toISOString(), updates:[]};
+  for(const m of MAP){
+    const body={ regular_price:m.price, mnm_min_container_size:m.sz, mnm_max_container_size:m.sz, mnm_priced_per_product:false };
+    const u = call('PUT','/wp-json/wc/v3/products/'+PID+'/variations/'+m.id, body);
+    out.updates.push({id:m.id, size:m.sz, ret_price:u&&u.regular_price, ret_min:u&&u.mnm_min_container_size, ret_max:u&&u.mnm_max_container_size, err:(u&&(u.__exc||u.code))||null});
   }
-  // read back all variations
+  // read back
   const vs = call('GET','/wp-json/wc/v3/products/'+PID+'/variations?context=edit&per_page=20');
-  out.variations = Array.isArray(vs)? vs.map(v=>({
-    id:v.id,
-    dydis:(v.attributes||[]).map(a=>a.option).join(','),
-    price:v.regular_price,
-    mnm_min:v.mnm_min_container_size, mnm_max:v.mnm_max_container_size,
-    priced_per:v.mnm_priced_per_product,
-    pool: Array.isArray(v.mnm_child_items)? v.mnm_child_items.map(c=>c.product_id) : v.mnm_child_items
-  })) : vs;
-  commit('varmnm_variations.json', JSON.stringify(out,null,1));
+  out.final = Array.isArray(vs)? vs.map(v=>({id:v.id, dydis:(v.attributes||[]).map(a=>a.option).join(','), price:v.regular_price, min:v.mnm_min_container_size, max:v.mnm_max_container_size, pool:Array.isArray(v.mnm_child_items)?v.mnm_child_items.length:v.mnm_child_items})).sort((a,b)=>a.price-b.price) : vs;
+  // also parent purchasable
+  const par = call('GET','/wp-json/wc/v3/products/'+PID);
+  out.parent_price_html = (par&&par.price_html||'').replace(/<[^>]+>/g,'').slice(0,80);
+  out.parent_permalink = par&&par.permalink;
+  commit('varmnm_fix.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
