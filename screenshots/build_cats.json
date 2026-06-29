@@ -1,0 +1,753 @@
+{
+ "ts": "2026-06-29T14:12:45.173Z",
+ "menus": {
+  "list": [
+   {
+    "id": 68,
+    "name": "Main",
+    "slug": "main",
+    "locations": []
+   },
+   {
+    "id": 232,
+    "name": "Pagrindinis meniu",
+    "slug": "pagrindinis-meniu",
+    "locations": [
+     "primary",
+     "primary_mobile"
+    ]
+   },
+   {
+    "id": 67,
+    "name": "Secondary",
+    "slug": "secondary",
+    "locations": [
+     "footer",
+     "top_bar_nav"
+    ]
+   }
+  ],
+  "items": {
+   "67": [],
+   "68": [
+    {
+     "id": 236,
+     "title": "Shop",
+     "order": 49,
+     "type": "post_type",
+     "object": "page",
+     "obj_id": 11,
+     "url": "https://dev.avesa.lt/",
+     "menu_parent": 0
+    }
+   ],
+   "232": [
+    {
+     "id": 3114,
+     "title": "ŠUNIMS",
+     "order": 1,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 70,
+     "url": "https://dev.avesa.lt/kategorija/sunims/",
+     "menu_parent": 0
+    },
+    {
+     "id": 3152,
+     "title": "MAISTAS ŠUNIMS",
+     "order": 2,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3152,
+     "url": "#",
+     "menu_parent": 3114
+    },
+    {
+     "id": 3153,
+     "title": "Sausas maistas šunims",
+     "order": 3,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 72,
+     "url": "https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+     "menu_parent": 3152
+    },
+    {
+     "id": 3154,
+     "title": "Konservai šunims",
+     "order": 4,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 73,
+     "url": "https://dev.avesa.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+     "menu_parent": 3152
+    },
+    {
+     "id": 3155,
+     "title": "SKANĖSTAI IR PAPILDAI",
+     "order": 5,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3155,
+     "url": "#",
+     "menu_parent": 3114
+    },
+    {
+     "id": 3156,
+     "title": "Skanėstai šunims",
+     "order": 6,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 95,
+     "url": "https://dev.avesa.lt/kategorija/sunims/skanestai-sunims/",
+     "menu_parent": 3155
+    },
+    {
+     "id": 3157,
+     "title": "Vitaminai ir papildai šunims",
+     "order": 7,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 101,
+     "url": "https://dev.avesa.lt/kategorija/sunims/vitaminai-ir-papildai-sunims/",
+     "menu_parent": 3155
+    },
+    {
+     "id": 3158,
+     "title": "PRIEŽIŪRA IR SVEIKATA",
+     "order": 8,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3158,
+     "url": "#",
+     "menu_parent": 3114
+    },
+    {
+     "id": 3159,
+     "title": "Antiparazitinės priemonės šunims",
+     "order": 9,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 108,
+     "url": "https://dev.avesa.lt/kategorija/sunims/antiparazitines-priemones-sunims/",
+     "menu_parent": 3158
+    },
+    {
+     "id": 3160,
+     "title": "Higienos priemonės šunims",
+     "order": 10,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 82,
+     "url": "https://dev.avesa.lt/kategorija/sunims/higienos-priemones-sunims/",
+     "menu_parent": 3158
+    },
+    {
+     "id": 3161,
+     "title": "Šampūnai šunims",
+     "order": 11,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 76,
+     "url": "https://dev.avesa.lt/kategorija/sunims/sampunai-sunims/",
+     "menu_parent": 3158
+    },
+    {
+     "id": 3162,
+     "title": "Šukos, šepečiai, žirklės šunims",
+     "order": 12,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 75,
+     "url": "https://dev.avesa.lt/kategorija/sunims/sukos-sepeciai-zirkles-sunims/",
+     "menu_parent": 3158
+    },
+    {
+     "id": 3163,
+     "title": "AKSESUARAI",
+     "order": 13,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3163,
+     "url": "#",
+     "menu_parent": 3114
+    },
+    {
+     "id": 34112,
+     "title": "Pirmoji pagalba šunims",
+     "order": 13,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 656,
+     "url": "https://dev.avesa.lt/kategorija/sunims/pirmoji-pagalba-sunims/",
+     "menu_parent": 3158
+    },
+    {
+     "id": 3164,
+     "title": "Dubenėliai šunims",
+     "order": 14,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 111,
+     "url": "https://dev.avesa.lt/kategorija/sunims/dubeneliai-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 3165,
+     "title": "Antkakliai, pavadėliai šunims",
+     "order": 15,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 116,
+     "url": "https://dev.avesa.lt/kategorija/sunims/antkakliai-pavadeliai-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 3166,
+     "title": "Žaislai šunims",
+     "order": 16,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 115,
+     "url": "https://dev.avesa.lt/kategorija/sunims/zaislai-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 6642,
+     "title": "Guoliai šunims",
+     "order": 17,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 233,
+     "url": "https://dev.avesa.lt/kategorija/sunims/guoliai-boksai-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 34110,
+     "title": "Vėsinantys kilimėliai šunims",
+     "order": 18,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 654,
+     "url": "https://dev.avesa.lt/kategorija/sunims/vesinantys-kilimeliai-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 34111,
+     "title": "Baseinai šunims",
+     "order": 19,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 655,
+     "url": "https://dev.avesa.lt/kategorija/sunims/baseinai-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 34089,
+     "title": "Transportavimo dėžės šunims",
+     "order": 20,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 122,
+     "url": "https://dev.avesa.lt/kategorija/sunims/transportavimo-dezes-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 3112,
+     "title": "KATĖMS",
+     "order": 21,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 77,
+     "url": "https://dev.avesa.lt/kategorija/katems/",
+     "menu_parent": 0
+    },
+    {
+     "id": 3168,
+     "title": "Kelionių įranga",
+     "order": 21,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 123,
+     "url": "https://dev.avesa.lt/kategorija/sunims/kelioniu-iranga/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 3169,
+     "title": "Narvai",
+     "order": 22,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 125,
+     "url": "https://dev.avesa.lt/kategorija/sunims/narvai/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 3170,
+     "title": "MAISTAS KATĖMS",
+     "order": 22,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3170,
+     "url": "#",
+     "menu_parent": 3112
+    },
+    {
+     "id": 3171,
+     "title": "Sausas maistas katėms",
+     "order": 23,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 81,
+     "url": "https://dev.avesa.lt/kategorija/katems/maistas-katems/sausas-maistas-katems/",
+     "menu_parent": 3170
+    },
+    {
+     "id": 34106,
+     "title": "Apranga šunims",
+     "order": 23,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 305,
+     "url": "https://dev.avesa.lt/kategorija/sunims/apranga-sunims/",
+     "menu_parent": 3163
+    },
+    {
+     "id": 3172,
+     "title": "Konservai katėms",
+     "order": 24,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 79,
+     "url": "https://dev.avesa.lt/kategorija/katems/maistas-katems/konservai-katems/",
+     "menu_parent": 3170
+    },
+    {
+     "id": 3173,
+     "title": "SKANĖSTAI IR PAPILDAI",
+     "order": 25,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3173,
+     "url": "#",
+     "menu_parent": 3112
+    },
+    {
+     "id": 3174,
+     "title": "Skanėstai katėms",
+     "order": 26,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 96,
+     "url": "https://dev.avesa.lt/kategorija/katems/skanestai-katems/",
+     "menu_parent": 3173
+    },
+    {
+     "id": 3175,
+     "title": "Vitaminai ir papildai katėms",
+     "order": 27,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 102,
+     "url": "https://dev.avesa.lt/kategorija/katems/vitaminai-ir-papildai-katems/",
+     "menu_parent": 3173
+    },
+    {
+     "id": 3176,
+     "title": "KRAIKAI IR TUALETAI",
+     "order": 28,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3176,
+     "url": "#",
+     "menu_parent": 3112
+    },
+    {
+     "id": 3177,
+     "title": "Kraikai kačių tualetams",
+     "order": 29,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 107,
+     "url": "https://dev.avesa.lt/kategorija/katems/kraikai-kaciu-tualetams/",
+     "menu_parent": 3176
+    },
+    {
+     "id": 3178,
+     "title": "Tualetai, kraikai, semtuvėliai",
+     "order": 30,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 106,
+     "url": "https://dev.avesa.lt/kategorija/katems/tualetai-kraikai-semtuveliai/",
+     "menu_parent": 3176
+    },
+    {
+     "id": 3179,
+     "title": "PRIEŽIŪRA IR AKSESUARAI",
+     "order": 31,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3179,
+     "url": "#",
+     "menu_parent": 3112
+    },
+    {
+     "id": 3180,
+     "title": "Antiparazitinės priemonės katėms",
+     "order": 32,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 109,
+     "url": "https://dev.avesa.lt/kategorija/katems/antiparazitines-priemones-katems/",
+     "menu_parent": 3179
+    },
+    {
+     "id": 3181,
+     "title": "Dubenėliai katėms",
+     "order": 33,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 112,
+     "url": "https://dev.avesa.lt/kategorija/katems/dubeneliai-katems/",
+     "menu_parent": 3179
+    },
+    {
+     "id": 3182,
+     "title": "Antkakliai ir petnešos katėms",
+     "order": 34,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 117,
+     "url": "https://dev.avesa.lt/kategorija/katems/antkakliai-ir-petnesos-katems/",
+     "menu_parent": 3179
+    },
+    {
+     "id": 3183,
+     "title": "Žaislai katėms",
+     "order": 35,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 114,
+     "url": "https://dev.avesa.lt/kategorija/katems/zaislai-katems/",
+     "menu_parent": 3179
+    },
+    {
+     "id": 3184,
+     "title": "Draskyklės katėms",
+     "order": 36,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 124,
+     "url": "https://dev.avesa.lt/kategorija/katems/draskykles-katems/",
+     "menu_parent": 3179
+    },
+    {
+     "id": 34087,
+     "title": "Guoliai katėms",
+     "order": 37,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 569,
+     "url": "https://dev.avesa.lt/kategorija/katems/guoliai-katems/",
+     "menu_parent": 3179
+    },
+    {
+     "id": 34086,
+     "title": "Transportavimo dėžės katėms",
+     "order": 38,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 121,
+     "url": "https://dev.avesa.lt/kategorija/katems/transportavimo-dezes-katems/",
+     "menu_parent": 3179
+    },
+    {
+     "id": 2973,
+     "title": "GRAUŽIKAMS",
+     "order": 39,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 87,
+     "url": "https://dev.avesa.lt/kategorija/grauzikams/",
+     "menu_parent": 0
+    },
+    {
+     "id": 3188,
+     "title": "MAISTAS IR SKANĖSTAI",
+     "order": 40,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3188,
+     "url": "#",
+     "menu_parent": 2973
+    },
+    {
+     "id": 3189,
+     "title": "Pašaras graužikams",
+     "order": 41,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 88,
+     "url": "https://dev.avesa.lt/kategorija/grauzikams/pasaras-grauzikams/",
+     "menu_parent": 3188
+    },
+    {
+     "id": 3190,
+     "title": "Skanėstai graužikams",
+     "order": 42,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 97,
+     "url": "https://dev.avesa.lt/kategorija/grauzikams/skanestai-grauzikams/",
+     "menu_parent": 3188
+    },
+    {
+     "id": 34084,
+     "title": "Narvai ir aksesuarai graužikams",
+     "order": 43,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 304,
+     "url": "https://dev.avesa.lt/kategorija/grauzikams/narvai-grauzikams/",
+     "menu_parent": 3188
+    },
+    {
+     "id": 3113,
+     "title": "PAUKŠČIAMS",
+     "order": 44,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 89,
+     "url": "https://dev.avesa.lt/kategorija/pauksciams/",
+     "menu_parent": 0
+    },
+    {
+     "id": 34113,
+     "title": "Kraikas ir šienas graužikams",
+     "order": 44,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 657,
+     "url": "https://dev.avesa.lt/kategorija/grauzikams/kraikas-ir-sienas-grauzikams/",
+     "menu_parent": 3188
+    },
+    {
+     "id": 3185,
+     "title": "MAISTAS IR SKANĖSTAI",
+     "order": 45,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3185,
+     "url": "#",
+     "menu_parent": 3113
+    },
+    {
+     "id": 3186,
+     "title": "Lesalas paukščiams",
+     "order": 46,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 90,
+     "url": "https://dev.avesa.lt/kategorija/pauksciams/lesalas-pauksciams/",
+     "menu_parent": 3185
+    },
+    {
+     "id": 3187,
+     "title": "Skanėstai paukščiams",
+     "order": 47,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 98,
+     "url": "https://dev.avesa.lt/kategorija/pauksciams/skanestai-pauksciams/",
+     "menu_parent": 3185
+    },
+    {
+     "id": 34116,
+     "title": "Aksesuarai paukščiams",
+     "order": 48,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 666,
+     "url": "https://dev.avesa.lt/kategorija/pauksciams/aksesuarai-pauksciams/",
+     "menu_parent": 3185
+    },
+    {
+     "id": 3115,
+     "title": "ŽUVIMS",
+     "order": 48,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 93,
+     "url": "https://dev.avesa.lt/kategorija/zuvims/",
+     "menu_parent": 0
+    },
+    {
+     "id": 3191,
+     "title": "MAISTAS",
+     "order": 49,
+     "type": "custom",
+     "object": "custom",
+     "obj_id": 3191,
+     "url": "#",
+     "menu_parent": 3115
+    },
+    {
+     "id": 3192,
+     "title": "Akvariumo žuvyčių maistas",
+     "order": 50,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 94,
+     "url": "https://dev.avesa.lt/kategorija/zuvims/akvariumo-zuvyciu-maistas/",
+     "menu_parent": 3191
+    },
+    {
+     "id": 3193,
+     "title": "Tvenkinių žuvų maistas",
+     "order": 51,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 100,
+     "url": "https://dev.avesa.lt/kategorija/zuvims/tvenkiniu-zuvu-maistas/",
+     "menu_parent": 3191
+    },
+    {
+     "id": 2972,
+     "title": "DOVANOS",
+     "order": 52,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 119,
+     "url": "https://dev.avesa.lt/kategorija/dovanos/",
+     "menu_parent": 0
+    },
+    {
+     "id": 2971,
+     "title": "DAUGIAU=PIGIAU",
+     "order": 53,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 91,
+     "url": "https://dev.avesa.lt/kategorija/daugiau-pigiau/",
+     "menu_parent": 0
+    },
+    {
+     "id": 34109,
+     "title": "Šukos, šepečiai, žirklės",
+     "order": 56,
+     "type": "taxonomy",
+     "object": "product_cat",
+     "obj_id": 639,
+     "url": "https://dev.avesa.lt/kategorija/katems/sukos-sepeciai-zirkles-katems/",
+     "menu_parent": 3179
+    }
+   ]
+  }
+ },
+ "created": {
+  "tops": [
+   {
+    "req": {
+     "name": "RINKINIAI",
+     "slug": "rinkiniai",
+     "parent": 0
+    },
+    "id": 679,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "SPRENDIMAI",
+     "slug": "sprendimai",
+     "parent": 0
+    },
+    "id": 680,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "PASIŪLYMAI",
+     "slug": "pasiulymai",
+     "parent": 0
+    },
+    "id": 681,
+    "err": null
+   }
+  ],
+  "subs": [
+   {
+    "req": {
+     "name": "Konservų rinkiniai",
+     "slug": "konservu-rinkiniai",
+     "parent": 679
+    },
+    "id": 682,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "Skanėstų rinkiniai",
+     "slug": "skanestu-rinkiniai",
+     "parent": 679
+    },
+    "id": 683,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "Kramtalų rinkiniai",
+     "slug": "kramtalu-rinkiniai",
+     "parent": 679
+    },
+    "id": 684,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "Naujas šuniukas",
+     "slug": "naujas-suniukas",
+     "parent": 680
+    },
+    "id": 685,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "Naujas kačiukas",
+     "slug": "naujas-kaciukas",
+     "parent": 680
+    },
+    "id": 686,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "Jautrus virškinimas",
+     "slug": "jautrus-virskinimas",
+     "parent": 680
+    },
+    "id": 687,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "Šuo kasosi",
+     "slug": "suo-kasosi",
+     "parent": 680
+    },
+    "id": 688,
+    "err": null
+   },
+   {
+    "req": {
+     "name": "Akcijiniai pasiūlymai",
+     "slug": "akcijiniai-pasiulymai",
+     "parent": 681
+    },
+    "id": 689,
+    "err": null
+   }
+  ]
+ }
+}
