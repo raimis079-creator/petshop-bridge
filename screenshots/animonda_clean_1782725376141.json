@@ -1,0 +1,639 @@
+{
+ "stages": {
+  "fetched": 29,
+  "planned": 29,
+  "passed": 27,
+  "failed": 2,
+  "applied": 27
+ },
+ "planned": [
+  {
+   "id": 19471,
+   "title": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4239,
+   "newLen": 2594,
+   "removed": 1645
+  },
+  {
+   "id": 19475,
+   "title": "Animonda GranCarno Adult: konservai šunims su širdimis, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4106,
+   "newLen": 2454,
+   "removed": 1652
+  },
+  {
+   "id": 19479,
+   "title": "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4175,
+   "newLen": 2537,
+   "removed": 1638
+  },
+  {
+   "id": 19483,
+   "title": "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 400g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4228,
+   "newLen": 2919,
+   "removed": 1309
+  },
+  {
+   "id": 19488,
+   "title": "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4202,
+   "newLen": 2563,
+   "removed": 1639
+  },
+  {
+   "id": 19492,
+   "title": "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4207,
+   "newLen": 2898,
+   "removed": 1309
+  },
+  {
+   "id": 19496,
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4159,
+   "newLen": 2527,
+   "removed": 1632
+  },
+  {
+   "id": 19500,
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 400 g",
+   "pass": false,
+   "guards": {
+    "removedSomething": false,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 1990,
+   "newLen": 1990,
+   "removed": 0
+  },
+  {
+   "id": 19504,
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4230,
+   "newLen": 2597,
+   "removed": 1633
+  },
+  {
+   "id": 19508,
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4204,
+   "newLen": 2565,
+   "removed": 1639
+  },
+  {
+   "id": 19530,
+   "title": "Animonda GranCarno Adult Sensitive Turkey + Potato: konservai jautriems šunims su gryna kalakutiena ir bulvėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4215,
+   "newLen": 2576,
+   "removed": 1639
+  },
+  {
+   "id": 19534,
+   "title": "Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4244,
+   "newLen": 2586,
+   "removed": 1658
+  },
+  {
+   "id": 19538,
+   "title": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4106,
+   "newLen": 2467,
+   "removed": 1639
+  },
+  {
+   "id": 19542,
+   "title": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 400 g",
+   "pass": false,
+   "guards": {
+    "removedSomething": false,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 2021,
+   "newLen": 2021,
+   "removed": 0
+  },
+  {
+   "id": 19545,
+   "title": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4441,
+   "newLen": 2810,
+   "removed": 1631
+  },
+  {
+   "id": 19549,
+   "title": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4433,
+   "newLen": 2794,
+   "removed": 1639
+  },
+  {
+   "id": 19553,
+   "title": "Animonda GranCarno Adult Multi-Meat Coctail: konservai suaugusiems šunims Mėsos kokteilis, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4474,
+   "newLen": 2837,
+   "removed": 1637
+  },
+  {
+   "id": 19557,
+   "title": "Animonda GranCarno Adult Multi-Meat Coctail: konservai suaugusiems šunims Mėsos kokteilis, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4484,
+   "newLen": 2832,
+   "removed": 1652
+  },
+  {
+   "id": 19562,
+   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4355,
+   "newLen": 3046,
+   "removed": 1309
+  },
+  {
+   "id": 19566,
+   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4392,
+   "newLen": 2752,
+   "removed": 1640
+  },
+  {
+   "id": 19570,
+   "title": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4342,
+   "newLen": 2704,
+   "removed": 1638
+  },
+  {
+   "id": 19574,
+   "title": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4374,
+   "newLen": 2723,
+   "removed": 1651
+  },
+  {
+   "id": 19578,
+   "title": "Animonda GranCarno Adult Beef + Rabbit with Herbs: konservai suaugusiems šunims su šviežia jautiena ir triušiena, paskaninta žolelėmis, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4413,
+   "newLen": 2783,
+   "removed": 1630
+  },
+  {
+   "id": 19582,
+   "title": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4362,
+   "newLen": 2725,
+   "removed": 1637
+  },
+  {
+   "id": 19586,
+   "title": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4378,
+   "newLen": 2742,
+   "removed": 1636
+  },
+  {
+   "id": 19590,
+   "title": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4414,
+   "newLen": 2784,
+   "removed": 1630
+  },
+  {
+   "id": 19594,
+   "title": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4412,
+   "newLen": 2774,
+   "removed": 1638
+  },
+  {
+   "id": 19598,
+   "title": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 800 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4435,
+   "newLen": 2803,
+   "removed": 1632
+  },
+  {
+   "id": 19602,
+   "title": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 400 g",
+   "pass": true,
+   "guards": {
+    "removedSomething": true,
+    "stillHasB2B": true,
+    "stillHasShaltinis": true,
+    "stillHasSerimo": true,
+    "noOriginalTable": true,
+    "noScript": true
+   },
+   "oldLen": 4501,
+   "newLen": 2838,
+   "removed": 1663
+  }
+ ],
+ "apply": [
+  {
+   "id": 19471,
+   "verLen": 2690,
+   "newLen": 2594,
+   "oldLen": 4239
+  },
+  {
+   "id": 19475,
+   "verLen": 2550,
+   "newLen": 2454,
+   "oldLen": 4106
+  },
+  {
+   "id": 19479,
+   "verLen": 2615,
+   "newLen": 2537,
+   "oldLen": 4175
+  },
+  {
+   "id": 19483,
+   "verLen": 2990,
+   "newLen": 2919,
+   "oldLen": 4228
+  },
+  {
+   "id": 19488,
+   "verLen": 2641,
+   "newLen": 2563,
+   "oldLen": 4202
+  },
+  {
+   "id": 19492,
+   "verLen": 2975,
+   "newLen": 2898,
+   "oldLen": 4207
+  },
+  {
+   "id": 19496,
+   "verLen": 2605,
+   "newLen": 2527,
+   "oldLen": 4159
+  },
+  {
+   "id": 19504,
+   "verLen": 2669,
+   "newLen": 2597,
+   "oldLen": 4230
+  },
+  {
+   "id": 19508,
+   "verLen": 2637,
+   "newLen": 2565,
+   "oldLen": 4204
+  },
+  {
+   "id": 19530,
+   "verLen": 2678,
+   "newLen": 2576,
+   "oldLen": 4215
+  },
+  {
+   "id": 19534,
+   "verLen": 2688,
+   "newLen": 2586,
+   "oldLen": 4244
+  },
+  {
+   "id": 19538,
+   "verLen": 2546,
+   "newLen": 2467,
+   "oldLen": 4106
+  },
+  {
+   "id": 19545,
+   "verLen": 2887,
+   "newLen": 2810,
+   "oldLen": 4441
+  },
+  {
+   "id": 19549,
+   "verLen": 2866,
+   "newLen": 2794,
+   "oldLen": 4433
+  },
+  {
+   "id": 19553,
+   "verLen": 2910,
+   "newLen": 2837,
+   "oldLen": 4474
+  },
+  {
+   "id": 19557,
+   "verLen": 2905,
+   "newLen": 2832,
+   "oldLen": 4484
+  },
+  {
+   "id": 19562,
+   "verLen": 3124,
+   "newLen": 3046,
+   "oldLen": 4355
+  },
+  {
+   "id": 19566,
+   "verLen": 2831,
+   "newLen": 2752,
+   "oldLen": 4392
+  },
+  {
+   "id": 19570,
+   "verLen": 2800,
+   "newLen": 2704,
+   "oldLen": 4342
+  },
+  {
+   "id": 19574,
+   "verLen": 2819,
+   "newLen": 2723,
+   "oldLen": 4374
+  },
+  {
+   "id": 19578,
+   "verLen": 2862,
+   "newLen": 2783,
+   "oldLen": 4413
+  },
+  {
+   "id": 19582,
+   "verLen": 2803,
+   "newLen": 2725,
+   "oldLen": 4362
+  },
+  {
+   "id": 19586,
+   "verLen": 2819,
+   "newLen": 2742,
+   "oldLen": 4378
+  },
+  {
+   "id": 19590,
+   "verLen": 2862,
+   "newLen": 2784,
+   "oldLen": 4414
+  },
+  {
+   "id": 19594,
+   "verLen": 2852,
+   "newLen": 2774,
+   "oldLen": 4412
+  },
+  {
+   "id": 19598,
+   "verLen": 2887,
+   "newLen": 2803,
+   "oldLen": 4435
+  },
+  {
+   "id": 19602,
+   "verLen": 2908,
+   "newLen": 2838,
+   "oldLen": 4501
+  }
+ ]
+}
