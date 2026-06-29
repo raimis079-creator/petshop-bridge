@@ -18,22 +18,24 @@ function call(method, path, bodyObj){
   let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
   try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
 }
-const PID=34143;
-const MAP=[{id:34144,sz:6,price:'14.99'},{id:34145,sz:12,price:'26.99'},{id:34146,sz:15,price:'31.99'}];
+const PID=34143, VID=34144;
 (async()=>{
-  const out={ts:new Date().toISOString(), updates:[]};
-  for(const m of MAP){
-    const body={ regular_price:m.price, mnm_min_container_size:m.sz, mnm_max_container_size:m.sz, mnm_priced_per_product:false };
-    const u = call('PUT','/wp-json/wc/v3/products/'+PID+'/variations/'+m.id, body);
-    out.updates.push({id:m.id, size:m.sz, ret_price:u&&u.regular_price, ret_min:u&&u.mnm_min_container_size, ret_max:u&&u.mnm_max_container_size, err:(u&&(u.__exc||u.code))||null});
-  }
-  // read back
-  const vs = call('GET','/wp-json/wc/v3/products/'+PID+'/variations?context=edit&per_page=20');
-  out.final = Array.isArray(vs)? vs.map(v=>({id:v.id, dydis:(v.attributes||[]).map(a=>a.option).join(','), price:v.regular_price, min:v.mnm_min_container_size, max:v.mnm_max_container_size, pool:Array.isArray(v.mnm_child_items)?v.mnm_child_items.length:v.mnm_child_items})).sort((a,b)=>a.price-b.price) : vs;
-  // also parent purchasable
-  const par = call('GET','/wp-json/wc/v3/products/'+PID);
-  out.parent_price_html = (par&&par.price_html||'').replace(/<[^>]+>/g,'').slice(0,80);
-  out.parent_permalink = par&&par.permalink;
-  commit('varmnm_fix.json', JSON.stringify(out,null,1));
+  const out={ts:new Date().toISOString()};
+  // try multiple candidate meta keys
+  const body={ meta_data:[
+    {key:'_mnm_min_container_size', value:'6'},
+    {key:'_mnm_max_container_size', value:'6'},
+    {key:'_min_container_size', value:'6'},
+    {key:'_max_container_size', value:'6'}
+  ]};
+  const u = call('PUT','/wp-json/wc/v3/products/'+PID+'/variations/'+VID, body);
+  out.put_min = u && u.mnm_min_container_size;
+  out.put_max = u && u.mnm_max_container_size;
+  // read back full meta to see what stuck
+  const rb = call('GET','/wp-json/wc/v3/products/'+PID+'/variations/'+VID+'?context=edit');
+  out.field_min = rb.mnm_min_container_size; out.field_max = rb.mnm_max_container_size;
+  out.meta = (rb.meta_data||[]).filter(m=>/container|mnm|size/i.test(m.key)).map(m=>({k:m.key,v:m.value}));
+  out.all_meta_keys = (rb.meta_data||[]).map(m=>m.key);
+  commit('varmnm_meta.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
