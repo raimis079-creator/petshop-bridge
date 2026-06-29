@@ -1,0 +1,8 @@
+{
+ "ts": "2026-06-29T12:56:52.639Z",
+ "before": "{\"id\":519,\"name\":\"TEMP Plugin Source Dump v1 (read-only)\",\"desc\":\"temporary read-only recon; delete after use\",\"code\":\"add_action('rest_api_init', function () {\\n  register_rest_route('petshop\\/v1', '",
+ "deact": "{}\n__HTTP__200",
+ "del": "\n__HTTP__204",
+ "after": "{\"id\":519,\"name\":\"TEMP Plugin Source Dump v1 (read-only)\",\"desc\":\"temporary read-only recon; delete after use\",\"code\":\"add_action('rest_api_init', function () {\\n  register_rest_route('petshop\\/v1', '",
+ "route_after": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}\n__HTTP__404"
+}
