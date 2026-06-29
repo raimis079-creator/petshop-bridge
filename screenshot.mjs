@@ -15,38 +15,38 @@ function call(method, path, bodyObj){
   let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -H "Accept: application/json"';
   if(bodyObj!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(bodyObj)); cmd+=' -d @/tmp/b.json'; }
   cmd+=' "'+BASE+path+'"';
-  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
+  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
+  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,200)}; }
 }
-const PID=34148;
-const POOL=[{product_id:17397},{product_id:17394},{product_id:17400}];
-const MAP=[{id:34149,sz:6,price:'14.99'},{id:34150,sz:12,price:'26.99'},{id:34151,sz:15,price:'31.99'}];
 (async()=>{
-  const out={ts:new Date().toISOString()};
-  // pool + size on PARENT (1.x shares contents at parent)
-  const pp = call('PUT','/wp-json/wc/v3/products/'+PID, {
-    mnm_content_source:'products',
-    mnm_child_items:POOL,
-    mnm_priced_per_product:false,
-    meta_data:[{key:'_mnm_min_container_size',value:'6'},{key:'_mnm_max_container_size',value:'15'}]
-  });
-  const par = call('GET','/wp-json/wc/v3/products/'+PID+'?context=edit');
-  out.parent = { pool: Array.isArray(par.mnm_child_items)?par.mnm_child_items.map(c=>c.product_id):par.mnm_child_items, content_source:par.mnm_content_source, min:par.mnm_min_container_size, max:par.mnm_max_container_size };
-  // price + size on variations
-  out.var=[];
-  for(const m of MAP){
-    call('PUT','/wp-json/wc/v3/products/'+PID+'/variations/'+m.id, {
-      regular_price:m.price,
-      mnm_min_container_size:m.sz, mnm_max_container_size:m.sz,
-      meta_data:[{key:'_mnm_min_container_size',value:String(m.sz)},{key:'_mnm_max_container_size',value:String(m.sz)}]
-    });
+  const out={ts:new Date().toISOString(), actions:{}};
+  // 1. delete test products + order
+  out.actions.del_34140 = (()=>{ const r=call('DELETE','/wp-json/wc/v3/products/34140?force=true'); return r&&r.id?('deleted '+r.id):(r.code||r.__exc||'?'); })();
+  out.actions.del_34141_order = (()=>{ const r=call('DELETE','/wp-json/wc/v3/orders/34141?force=true'); return r&&r.id?('deleted '+r.id):(r.code||r.__exc||'?'); })();
+  out.actions.del_34148 = (()=>{ const r=call('DELETE','/wp-json/wc/v3/products/34148?force=true'); return r&&r.id?('deleted '+r.id):(r.code||r.__exc||'?'); })();
+  // also stray variations if parent delete didn't cascade
+  for(const vid of [34149,34150,34151,34143,34144,34145,34146]){
+    const r=call('DELETE','/wp-json/wc/v3/products/'+vid+'?force=true');
+    out.actions['del_'+vid] = r&&r.id?'deleted':(r.code||'gone/na');
   }
-  const vs = call('GET','/wp-json/wc/v3/products/'+PID+'/variations?context=edit&per_page=20');
-  out.variations = Array.isArray(vs)? vs.map(v=>({id:v.id,dydis:(v.attributes||[]).map(a=>a.option).join(','),price:v.regular_price,min:v.mnm_min_container_size,max:v.mnm_max_container_size,status:v.status})).sort((a,b)=>parseFloat(a.price||0)-parseFloat(b.price||0)) : vs;
-  const par2 = call('GET','/wp-json/wc/v3/products/'+PID);
-  out.parent_price_html = (par2&&par2.price_html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,90);
-  out.parent_purchasable = par2 && par2.purchasable;
-  out.permalink = par2 && par2.permalink;
-  commit('v1_fix.json', JSON.stringify(out,null,1));
+  // 2. deactivate + delete Variable MnM plugin
+  const PLUG='wc-mnm-variable/wc-mnm-variable';
+  const deact = call('PUT','/wp-json/wp/v2/plugins/'+encodeURIComponent(PLUG), {status:'inactive'});
+  out.actions.plugin_deactivate = deact && deact.status ? deact.status : (deact.code||deact.__exc||'?');
+  const delp = call('DELETE','/wp-json/wp/v2/plugins/'+encodeURIComponent(PLUG));
+  out.actions.plugin_delete = (delp && delp.deleted) ? 'deleted' : (delp.code || delp.__exc || JSON.stringify(delp).slice(0,80));
+  // 3. TEMP snippets best-effort
+  for(const sid of [519,521]){
+    call('POST','/wp-json/code-snippets/v1/snippets/'+sid+'/deactivate', {});
+    const d=call('DELETE','/wp-json/code-snippets/v1/snippets/'+sid);
+    out.actions['snippet_'+sid] = (d && (d.id||d.deleted))?'deleted':(d.code||'500/manual');
+  }
+  // verify
+  const p = call('GET','/wp-json/wp/v2/plugins?per_page=100');
+  out.var_plugin_still = Array.isArray(p)? p.some(x=>/wc-mnm-variable/.test(x.plugin||'')) : 'check_fail';
+  out.plugin_count = Array.isArray(p)? p.length : '?';
+  const chk = call('GET','/wp-json/wc/v3/products?include=34140,34148&per_page=5');
+  out.test_products_remaining = Array.isArray(chk)? chk.map(x=>x.id) : 'na';
+  commit('cleanup.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
