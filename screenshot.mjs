@@ -39,8 +39,8 @@ function commit(name,str){const url='https://api.github.com/repos/'+repo+'/conte
   const out={};
   for(const p of products){
     try{
-      await page.goto(p.u,{waitUntil:'networkidle',timeout:60000});
-      await page.waitForTimeout(2500);
+      await page.goto(p.u,{waitUntil:'domcontentloaded',timeout:45000});
+      await page.waitForTimeout(6000);
       const data=await page.evaluate(()=>{
         const fullText=document.body.innerText||document.body.textContent;
         const idx=fullText.search(/Šėrimo\s*(?:rekomendacij|instrukcij|norm)|Šuns svoris/i);
