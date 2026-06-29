@@ -1,0 +1,1365 @@
+{
+ "loopCnt": 54,
+ "stages": {
+  "start": 0,
+  "fetched": 54,
+  "planned": 54,
+  "passed": 54,
+  "failed": 0,
+  "applied": 54
+ },
+ "planned": [
+  {
+   "id": "19355",
+   "title": "Animonda Vom Feinsten Kitten with Poultry – konservai kačiukams su paukštiena, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1103,
+   "newLen": 2427,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19358",
+   "title": "Animonda Vom Feinsten Kitten with Lamb – konservai kačiukams su ėriena, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1122,
+   "newLen": 2446,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19361",
+   "title": "Animonda Vom Feinsten Kitten with Beef – konservai kačiukams su jautiena, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1096,
+   "newLen": 2420,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19381",
+   "title": "Animonda Vom Feinsten Adult with Turkey in Yougurt Sauce – konservai katėms su kalakutiena jogurto padaže, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1260,
+   "newLen": 2282,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19387",
+   "title": "Animonda Vom Feinsten Adult with Turkey and Rabbit – konservai katėms su kalakutiena ir triušiena, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1087,
+   "newLen": 2109,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19393",
+   "title": "Animonda Vom Feinsten Adult with Turkey and Lamb – konservai suaugusiems šunims su kalakutiena ir ėriena, 150 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1143,
+   "newLen": 2165,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19396",
+   "title": "Animonda Vom Feinsten Adult with Turkey and Ham – konservai suaugusiems šunims su kalakutiena ir kumpiu, 150 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1092,
+   "newLen": 2114,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19399",
+   "title": "Animonda Vom Feinsten Adult with Turkey Hearts – konservai katėms su kalakutų širdimis, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1093,
+   "newLen": 2115,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19405",
+   "title": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konservai katėms su lašiša ir krevetėmis, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1129,
+   "newLen": 2151,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19408",
+   "title": "Animonda Vom Feinsten Adult with Rabbit in Cream Sauce – konservai katėms su triušiena grietinėlės padaže, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1143,
+   "newLen": 2165,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19411",
+   "title": "Animonda Vom Feinsten Adult with Rabbit &#8211; konservai suaugusiems šunims su triušiena, 150 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1106,
+   "newLen": 1983,
+   "type": "RANGE"
+  },
+  {
+   "id": "19414",
+   "title": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai suaugusiems šunims su paukštiena ir veršiena, 150 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1149,
+   "newLen": 2171,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19417",
+   "title": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1113,
+   "newLen": 2135,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19425",
+   "title": "Animonda Vom Feinsten Adult with Deer &#8211; konservai suaugusiems šunims su elniena, 150 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1110,
+   "newLen": 2132,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19440",
+   "title": "Animonda Vom Feinsten Adult with Chicken Liver – konservai katėms su vištienos kepenėlėmis, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1099,
+   "newLen": 2121,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19446",
+   "title": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su jautiena ir kalakutų širdimis, 150 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1148,
+   "newLen": 2170,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19449",
+   "title": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Turkey – konservai katėms Švelnusis meniu su gryna kalakutiena, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1120,
+   "newLen": 2142,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19452",
+   "title": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and Salmon – konservai katėms Švelnusis meniu su kalakutiena ir lašiša, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1202,
+   "newLen": 2224,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19471",
+   "title": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2682,
+   "newLen": 4239,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19475",
+   "title": "Animonda GranCarno Adult: konservai šunims su širdimis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2549,
+   "newLen": 4106,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19479",
+   "title": "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2618,
+   "newLen": 4175,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19483",
+   "title": "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 400g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2671,
+   "newLen": 4228,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19488",
+   "title": "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2645,
+   "newLen": 4202,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19492",
+   "title": "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2650,
+   "newLen": 4207,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19496",
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2602,
+   "newLen": 4159,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19500",
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1110,
+   "newLen": 1990,
+   "type": "RANGE"
+  },
+  {
+   "id": "19504",
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2673,
+   "newLen": 4230,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19508",
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2647,
+   "newLen": 4204,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19530",
+   "title": "Animonda GranCarno Adult Sensitive Turkey + Potato: konservai jautriems šunims su gryna kalakutiena ir bulvėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2658,
+   "newLen": 4215,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19534",
+   "title": "Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2688,
+   "newLen": 4244,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19538",
+   "title": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2549,
+   "newLen": 4106,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19542",
+   "title": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1140,
+   "newLen": 2021,
+   "type": "RANGE"
+  },
+  {
+   "id": "19545",
+   "title": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2884,
+   "newLen": 4441,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19549",
+   "title": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2876,
+   "newLen": 4433,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19553",
+   "title": "Animonda GranCarno Adult Multi-Meat Coctail: konservai suaugusiems šunims Mėsos kokteilis, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2918,
+   "newLen": 4474,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19557",
+   "title": "Animonda GranCarno Adult Multi-Meat Coctail: konservai suaugusiems šunims Mėsos kokteilis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2928,
+   "newLen": 4484,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19562",
+   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2798,
+   "newLen": 4355,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19566",
+   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2835,
+   "newLen": 4392,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19570",
+   "title": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2787,
+   "newLen": 4342,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19574",
+   "title": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2819,
+   "newLen": 4374,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19578",
+   "title": "Animonda GranCarno Adult Beef + Rabbit with Herbs: konservai suaugusiems šunims su šviežia jautiena ir triušiena, paskaninta žolelėmis, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2858,
+   "newLen": 4413,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19582",
+   "title": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2807,
+   "newLen": 4362,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19586",
+   "title": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2823,
+   "newLen": 4378,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19590",
+   "title": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2859,
+   "newLen": 4414,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19594",
+   "title": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2857,
+   "newLen": 4412,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19598",
+   "title": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2879,
+   "newLen": 4435,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19602",
+   "title": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2945,
+   "newLen": 4501,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19609",
+   "title": "Animonda Carny Kitten – konservai kačiukams su paukštiena ir jautiena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 2863,
+   "newLen": 4185,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19613",
+   "title": "Animonda Carny Kitten – konservai kačiukams su jautiena, vištiena ir triušiena, 200 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 975,
+   "newLen": 2001,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19620",
+   "title": "Animonda Carny Kitten – konservai kačiukams su jautiena ir kalakutiena, 200 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 960,
+   "newLen": 1986,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19672",
+   "title": "Animonda Carny Adult Beef + Turkey + Shrimp – konservai katėms su šviežia jautiena, kalakutiena ir krevetėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1044,
+   "newLen": 2066,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19685",
+   "title": "Animonda Carny Adult Beef + Lamb – konservai katėms su šviežia jautiena ir ėriena, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 998,
+   "newLen": 2020,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19692",
+   "title": "Animonda Carny Adult Beef + Heart – konservai katėms su šviežia jautiena ir širdimis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 993,
+   "newLen": 2015,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19708",
+   "title": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1011,
+   "newLen": 2033,
+   "type": "KG_PAIRS"
+  }
+ ],
+ "apply": [
+  {
+   "id": "19355",
+   "verLen": 2457,
+   "newLen": 2427,
+   "lossless": true,
+   "oldLen": 1103,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19358",
+   "verLen": 2476,
+   "newLen": 2446,
+   "lossless": true,
+   "oldLen": 1122,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19361",
+   "verLen": 2450,
+   "newLen": 2420,
+   "lossless": true,
+   "oldLen": 1096,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19381",
+   "verLen": 2296,
+   "newLen": 2282,
+   "lossless": true,
+   "oldLen": 1260,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19387",
+   "verLen": 2123,
+   "newLen": 2109,
+   "lossless": true,
+   "oldLen": 1087,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19393",
+   "verLen": 2195,
+   "newLen": 2165,
+   "lossless": true,
+   "oldLen": 1143,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19396",
+   "verLen": 2145,
+   "newLen": 2114,
+   "lossless": true,
+   "oldLen": 1092,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19399",
+   "verLen": 2129,
+   "newLen": 2115,
+   "lossless": true,
+   "oldLen": 1093,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19405",
+   "verLen": 2165,
+   "newLen": 2151,
+   "lossless": true,
+   "oldLen": 1129,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19408",
+   "verLen": 2179,
+   "newLen": 2165,
+   "lossless": true,
+   "oldLen": 1143,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19411",
+   "verLen": 2010,
+   "newLen": 1983,
+   "lossless": true,
+   "oldLen": 1106,
+   "type": "RANGE"
+  },
+  {
+   "id": "19414",
+   "verLen": 2202,
+   "newLen": 2171,
+   "lossless": true,
+   "oldLen": 1149,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19417",
+   "verLen": 2148,
+   "newLen": 2135,
+   "lossless": true,
+   "oldLen": 1113,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19425",
+   "verLen": 2163,
+   "newLen": 2132,
+   "lossless": true,
+   "oldLen": 1110,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19440",
+   "verLen": 2135,
+   "newLen": 2121,
+   "lossless": true,
+   "oldLen": 1099,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19446",
+   "verLen": 2201,
+   "newLen": 2170,
+   "lossless": true,
+   "oldLen": 1148,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19449",
+   "verLen": 2156,
+   "newLen": 2142,
+   "lossless": true,
+   "oldLen": 1120,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19452",
+   "verLen": 2238,
+   "newLen": 2224,
+   "lossless": true,
+   "oldLen": 1202,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19471",
+   "verLen": 4307,
+   "newLen": 4239,
+   "lossless": true,
+   "oldLen": 2682,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19475",
+   "verLen": 4174,
+   "newLen": 4106,
+   "lossless": true,
+   "oldLen": 2549,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19479",
+   "verLen": 4225,
+   "newLen": 4175,
+   "lossless": true,
+   "oldLen": 2618,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19483",
+   "verLen": 4272,
+   "newLen": 4228,
+   "lossless": true,
+   "oldLen": 2671,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19488",
+   "verLen": 4252,
+   "newLen": 4202,
+   "lossless": true,
+   "oldLen": 2645,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19492",
+   "verLen": 4257,
+   "newLen": 4207,
+   "lossless": true,
+   "oldLen": 2650,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19496",
+   "verLen": 4209,
+   "newLen": 4159,
+   "lossless": true,
+   "oldLen": 2602,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19500",
+   "verLen": 2028,
+   "newLen": 1990,
+   "lossless": true,
+   "oldLen": 1110,
+   "type": "RANGE"
+  },
+  {
+   "id": "19504",
+   "verLen": 4274,
+   "newLen": 4230,
+   "lossless": true,
+   "oldLen": 2673,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19508",
+   "verLen": 4248,
+   "newLen": 4204,
+   "lossless": true,
+   "oldLen": 2647,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19530",
+   "verLen": 4289,
+   "newLen": 4215,
+   "lossless": true,
+   "oldLen": 2658,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19534",
+   "verLen": 4318,
+   "newLen": 4244,
+   "lossless": true,
+   "oldLen": 2688,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19538",
+   "verLen": 4157,
+   "newLen": 4106,
+   "lossless": true,
+   "oldLen": 2549,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19542",
+   "verLen": 2072,
+   "newLen": 2021,
+   "lossless": true,
+   "oldLen": 1140,
+   "type": "RANGE"
+  },
+  {
+   "id": "19545",
+   "verLen": 4490,
+   "newLen": 4441,
+   "lossless": true,
+   "oldLen": 2884,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19549",
+   "verLen": 4477,
+   "newLen": 4433,
+   "lossless": true,
+   "oldLen": 2876,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19553",
+   "verLen": 4519,
+   "newLen": 4474,
+   "lossless": true,
+   "oldLen": 2918,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19557",
+   "verLen": 4529,
+   "newLen": 4484,
+   "lossless": true,
+   "oldLen": 2928,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19562",
+   "verLen": 4406,
+   "newLen": 4355,
+   "lossless": true,
+   "oldLen": 2798,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19566",
+   "verLen": 4443,
+   "newLen": 4392,
+   "lossless": true,
+   "oldLen": 2835,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19570",
+   "verLen": 4410,
+   "newLen": 4342,
+   "lossless": true,
+   "oldLen": 2787,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19574",
+   "verLen": 4442,
+   "newLen": 4374,
+   "lossless": true,
+   "oldLen": 2819,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19578",
+   "verLen": 4464,
+   "newLen": 4413,
+   "lossless": true,
+   "oldLen": 2858,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19582",
+   "verLen": 4412,
+   "newLen": 4362,
+   "lossless": true,
+   "oldLen": 2807,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19586",
+   "verLen": 4427,
+   "newLen": 4378,
+   "lossless": true,
+   "oldLen": 2823,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19590",
+   "verLen": 4464,
+   "newLen": 4414,
+   "lossless": true,
+   "oldLen": 2859,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19594",
+   "verLen": 4462,
+   "newLen": 4412,
+   "lossless": true,
+   "oldLen": 2857,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19598",
+   "verLen": 4491,
+   "newLen": 4435,
+   "lossless": true,
+   "oldLen": 2879,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19602",
+   "verLen": 4512,
+   "newLen": 4501,
+   "lossless": true,
+   "oldLen": 2945,
+   "type": "HTML_TABLE"
+  },
+  {
+   "id": "19609",
+   "verLen": 4031,
+   "newLen": 4185,
+   "lossless": true,
+   "oldLen": 2863,
+   "type": "KITTEN_AGE"
+  },
+  {
+   "id": "19613",
+   "verLen": 2015,
+   "newLen": 2001,
+   "lossless": true,
+   "oldLen": 975,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19620",
+   "verLen": 2000,
+   "newLen": 1986,
+   "lossless": true,
+   "oldLen": 960,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19672",
+   "verLen": 2078,
+   "newLen": 2066,
+   "lossless": true,
+   "oldLen": 1044,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19685",
+   "verLen": 2032,
+   "newLen": 2020,
+   "lossless": true,
+   "oldLen": 998,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19692",
+   "verLen": 2026,
+   "newLen": 2015,
+   "lossless": true,
+   "oldLen": 993,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19708",
+   "verLen": 2046,
+   "newLen": 2033,
+   "lossless": true,
+   "oldLen": 1011,
+   "type": "KG_PAIRS"
+  }
+ ]
+}
