@@ -1,0 +1,45 @@
+{
+ "ts": "2026-06-29T15:28:01.041Z",
+ "create": {
+  "id": 34140,
+  "type": "mix-and-match",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/test-konservu-rinkinys-6-vnt-mnm/",
+  "err": null
+ },
+ "readback": {
+  "id": 34140,
+  "type": "mix-and-match",
+  "regular_price": "14.99",
+  "mnm_min": 6,
+  "mnm_max": 6,
+  "mnm_content_source": "products",
+  "mnm_priced_per_product": false,
+  "child_items": [
+   {
+    "product_id": 17397,
+    "item_id": 1
+   },
+   {
+    "product_id": 17394,
+    "item_id": 2
+   },
+   {
+    "product_id": 17400,
+    "item_id": 3
+   },
+   {
+    "product_id": 33550,
+    "item_id": 4
+   }
+  ],
+  "categories": [
+   {
+    "id": 682,
+    "name": "Konservų rinkiniai"
+   }
+  ],
+  "purchasable": true,
+  "stock_status": "instock"
+ }
+}
