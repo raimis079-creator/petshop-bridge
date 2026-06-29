@@ -1,0 +1,78 @@
+{
+ "ts": "2026-06-29T20:11:30.582Z",
+ "components": [
+  {
+   "id": 17421,
+   "name": "Monge BWild begrūdžiai konservai šunims su antiena, mol",
+   "sku": "m12638",
+   "status": "publish",
+   "qty": 20,
+   "price": "1.99"
+  },
+  {
+   "id": 19586,
+   "name": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+   "sku": "82733",
+   "status": "publish",
+   "qty": 93,
+   "price": "2.36"
+  },
+  {
+   "id": 19574,
+   "name": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+   "sku": "82735",
+   "status": "publish",
+   "qty": 55,
+   "price": "2.2"
+  },
+  {
+   "id": 17179,
+   "name": "Ontario konservai šunims su jautiena, paskaninta žolelė",
+   "sku": "2799",
+   "status": "publish",
+   "qty": 18,
+   "price": "2.49"
+  },
+  {
+   "id": 19530,
+   "name": "Animonda GranCarno Adult Sensitive Turkey + Potato: kon",
+   "sku": "82415",
+   "status": "publish",
+   "qty": 2,
+   "price": "2.69"
+  },
+  {
+   "id": 17156,
+   "name": "Ontario konservai šunims su ėriena, paskaninta šaltalan",
+   "sku": "2800",
+   "status": "publish",
+   "qty": 12,
+   "price": "2.49"
+  }
+ ],
+ "created": {
+  "id": 34153,
+  "sku": "RINK-ISRANK-6x400",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/rinkinys-isrankiems-sunims-%c2%b7-6x400g/",
+  "err": null
+ },
+ "verify": {
+  "type": "mix-and-match",
+  "price": "13.90",
+  "min": 6,
+  "max": 6,
+  "priced_per": false,
+  "pool": [
+   17421,
+   19586,
+   19574,
+   17179,
+   19530,
+   17156
+  ],
+  "pool_count": 6,
+  "cats": "682:Konservų rinkiniai",
+  "purchasable": true
+ }
+}
