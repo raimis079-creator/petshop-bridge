@@ -1,0 +1,102 @@
+{
+ "steps": [
+  "loaded product",
+  "filled input[name=\"mnm_quantity[17397]\"]",
+  "addbtn button.single_add_to_cart_button enabled=true",
+  "clicked add"
+ ],
+ "form_inputs": {
+  "inputs": [
+   {
+    "tag": "INPUT",
+    "name": "",
+    "type": "button",
+    "cls": "ux-quantity__button ux-quantity__button-",
+    "value": "-",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "mnm_quantity[17397]",
+    "type": "number",
+    "cls": "qty mnm-quantity input-text",
+    "value": "",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "",
+    "type": "button",
+    "cls": "ux-quantity__button ux-quantity__button-",
+    "value": "+",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "",
+    "type": "button",
+    "cls": "ux-quantity__button ux-quantity__button-",
+    "value": "-",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "mnm_quantity[17394]",
+    "type": "number",
+    "cls": "qty mnm-quantity input-text",
+    "value": "",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "",
+    "type": "button",
+    "cls": "ux-quantity__button ux-quantity__button-",
+    "value": "+",
+    "readonly": false
+   },
+   {
+    "tag": "BUTTON",
+    "name": "",
+    "type": "button",
+    "cls": "mnm_reset button wp-element-button",
+    "value": "",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "",
+    "type": "button",
+    "cls": "ux-quantity__button ux-quantity__button-",
+    "value": "-",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "quantity",
+    "type": "number",
+    "cls": "input-text qty text",
+    "value": "1",
+    "readonly": false
+   },
+   {
+    "tag": "INPUT",
+    "name": "",
+    "type": "button",
+    "cls": "ux-quantity__button ux-quantity__button-",
+    "value": "+",
+    "readonly": false
+   },
+   {
+    "tag": "BUTTON",
+    "name": "add-to-cart",
+    "type": "submit",
+    "cls": "single_add_to_cart_button button alt wp-",
+    "value": "34140",
+    "readonly": false
+   }
+  ]
+ },
+ "cart_has_test": true,
+ "payment_methods": "Mokėjimas internetu | Paysera sąskaita | Revolut (LT) | N26 Bank (LT) | Intesa SanPaolo | Alpha Bank | BKT Bank | Credins Bank | Fibank Bank | OTP Bank | ProCredit Bank | Raiffeisen Bank | Tirana Bank | Union Bank | ABI Bank | Paysera sąskaita | ING Bank | Revolut (AT) | UniCredit Bank Austria | Erste Bank und Sparkassen, Austrija | Paysera sąskaita | ABN AMRO Belgium N.V. | Revolut (BE) | Triodos Bank N.V. | ING Bank | Paysera sąskaita | UniCredit Bulbank | Банка ДСК | UBB | PostBank | ING Bank | Revolut (BG) | Allianz Bank Bulgaria | First Investment Bank AD | D Commerce Bank AD | ProCredit Bank Bulgaria | Investbank AD | Bulgarian-American Credit Bank | Tokuda Bank | T.C. Ziraat Bank | TBI Bank | Bulgarian Development Bank | Bankinis mokėjimas | Paysera sąskaita | Paysera sąskaita | Paysera sąskaita | UniCredit Bank AG (\"HypoVereinsbank\") | ING Bank | Revolut (DE) | ABN AMRO Bank N.V. Germany | Paysera sąskaita | Paysera sąskaita | AB Swedbank bankas | AB SEB bankas | AB Nordea bankas | AS Citadele banka | AS Coop Pank | AS LHV PANK | Revolut (EE) | Revolut (ES) | Paysera sąskaita | CaixaBank (ES) | Banco Santander (ES) | Banco Sabadell (ES) | Unicaja Banco (ES) | Banco Bilbao Vizcaya Argentaria (ES) | Bankinter (ES) | Ibercaja Banco (ES) | Kutxabank (ES) | ING Bank | Cajamar Caja Rural (ES) | Arquia Banca (ES) | Colonya Caixa Pollença (ES) | Eurocaja Rural (ES) | EVO Banco (ES) | Fiare Banca Etica (ES) | Banco Pichincha (ES) | CajaSur Banco (ES) | Renta 4 Banco (ES) | Laboral Kutxa (ES) | Banco Mediolanum (ES) | Openbank (ES) | Self Bank | Banco Inversis (ES) | Andbank (ES) | WiZink Bank (ES) | Nordea | Revolut (FI) | Paysera sąskaita | ING Bank | Revolut (FR) | Paysera sąskaita | Paysera sąskaita | Paysera sąskaita | Bank of Georgia | Liberty Bank | TBC Bank | Revolut (GR) | Paysera sąskaita | Paysera sąskaita | Paysera sąskaita | ING Bank | Revolut (IE) | Paysera sąskaita | ING Bank | Revolut (IT) | UniCredit SpA | Paysera sąskaita | Paysera sąskaita | AB „Swedbank“ | AB „SEB bankas“ | Luminor | AS Citadele bankas | Revolut (LT) | Artea | UAB Urbo bankas | Lietuvos centrinė kredito unija | Paprastu pervedimu arba grynaisiais banke | ING Bank | Revolut (LU) | Paysera sąskaita | Paysera sąskaita | AS Swedbank bankas | AB SEB bankas | Luminor | Citadele bankas | Revolut (LV) | Paysera sąskaita | Revolut (MT) | Paysera sąskaita | ING Bank | Rabobank (NL) | ABN AMRO Bank N.V. | Revolut (NL) | Triodos Bank N.V. (NL) | ASN Bank | ASN Bank | ASN Bank | Paysera sąskaita | Paysera sąskaita | SafetyPay sistema | BLIK | Bank Ochrony Środowiska | Citi Handlowy | Credit Agricole | Deutsche Bank | DnB Nord | Euro Bank | Getin Bank | IdeaBank | ING | Inteligo | Millennium | Nest Bank | Noble Pay | Orange | BNP Paribas Poland | Podkarpacki BS | Plus Bank | e-transfer Pocztowy24 | Lenkijos bankai | Raiffeisen Polbank | Banki Spółdzielcze | SkyCash | T-Mobile | Toyota Bank | Volkswagen Bank | Żabka | Paysera sąskaita | mBank bankas | BANK ZACHODNI WBK | PEKAO bankas | PKO bankas | Alior | ING Bank | Revolut (PT) | Paysera sąskaita | Paysera sąskaita | Banca Transilvania | ING Bank | Unicredit Bank | Raiffeisen Bank Romania | Libra Bank | Revolut (RO) | Paysera sąskaita | Revolut (SI) | UniCredit Bank Slovenia | Paysera sąskaita | ING Bank | Revolut (SK) | Paysera sąskaita | Paysera sąskaita | Paysera sąskaita | Paysera sąskaita | Bankinis pavedimas"
+}
