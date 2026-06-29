@@ -4,28 +4,21 @@ const env={...process.env};
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 function commit(name,str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
 
-const base='https://dev.avesa.lt/wp-json';
+const IDS=[19602,19574,19500,19479,19452,19708,19692,19620,19361];
+const base='https://dev.avesa.lt/wp-json/wp/v2/product';
 const env2={...process.env,WP_PASS_CLEAN:(process.env.WP_APP_PASS||'').replace(/\s+/g,'')};
+function dec(s){return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;amp;/g,'&amp;').replace(/&amp;nbsp;/g,'&nbsp;').replace(/&amp;quot;/g,'"').replace(/&amp;#39;/g,"'").replace(/&ndash;/g,'–');}
 
-// Surask Animonda brand
-let brands=[];
-try{
-  const r=execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wc/v3/products/brands?per_page=100&search=Animonda"`,{env:env2,encoding:'utf8',maxBuffer:50000000});
-  brands=JSON.parse(r);
-}catch(e){}
-
-const skus=[];
-for(const b of brands){
-  for(let p=1;p<=5;p++){
-    try{
-      const r=execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/wc/v3/products?per_page=100&page=${p}&brand=${b.id}&_fields=id,name,status,sku,categories"`,{env:env2,encoding:'utf8',maxBuffer:50000000});
-      const arr=JSON.parse(r);
-      if(!arr||!arr.length)break;
-      skus.push(...arr);
-      if(arr.length<100)break;
-    }catch(e){break;}
-  }
+const out={};
+for(const id of IDS){
+  try{
+    const r=execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "${base}/${id}?context=edit&_fields=id,title,content"`,{env:env2,encoding:'utf8',maxBuffer:50000000});
+    const j=JSON.parse(r);
+    let c=(j.content&&j.content.raw)||'';
+    let prev;let it=0;do{prev=c;c=dec(c);it++;}while(prev!==c&&it<5);
+    const sIdx=c.search(/Šėrim|Rekomenduo|Šuns svoris|Katės svoris|dienos norma|paros norma/i);
+    out[id]={title:(j.title&&j.title.rendered)||'',cLen:c.length,ctx:sIdx>=0?c.substring(sIdx,sIdx+1000):'NONE'};
+  }catch(e){out[id]={err:String(e).slice(0,100)};}
 }
-
-commit('animonda_recon.json',JSON.stringify({brands,skus},null,1));
+commit('animonda_check.json',JSON.stringify(out,null,1));
 console.log("done");
