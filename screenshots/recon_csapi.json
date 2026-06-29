@@ -1,0 +1,214 @@
+{
+ "ts": "2026-06-29T12:53:52.063Z",
+ "code_snippets_routes": {
+  "/code-snippets/v1": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": [
+     "namespace",
+     "context"
+    ]
+   }
+  ],
+  "/code-snippets/v1/snippets": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": [
+     "context",
+     "page",
+     "per_page",
+     "search"
+    ]
+   },
+   {
+    "methods": [
+     "POST"
+    ],
+    "args": [
+     "name",
+     "desc",
+     "code",
+     "tags",
+     "scope",
+     "condition_id",
+     "active",
+     "priority",
+     "network",
+     "shared_network"
+    ]
+   }
+  ],
+  "/code-snippets/v1/snippets/(?P<id>[\\d]+)": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   },
+   {
+    "methods": [
+     "POST",
+     "PUT",
+     "PATCH"
+    ],
+    "args": [
+     "name",
+     "desc",
+     "code",
+     "tags",
+     "scope",
+     "condition_id",
+     "active",
+     "priority",
+     "network",
+     "shared_network"
+    ]
+   },
+   {
+    "methods": [
+     "DELETE"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/snippets/schema": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/snippets/(?P<id>[\\d]+)/activate": [
+   {
+    "methods": [
+     "POST",
+     "PUT",
+     "PATCH"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/snippets/(?P<id>[\\d]+)/deactivate": [
+   {
+    "methods": [
+     "POST",
+     "PUT",
+     "PATCH"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/snippets/(?P<id>[\\d]+)/export": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/snippets/(?P<id>[\\d]+)/export-code": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/insert-headers-and-footers": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/insert-headers-and-footers/import": [
+   {
+    "methods": [
+     "POST"
+    ],
+    "args": [
+     "ids",
+     "network",
+     "auto_add_tags",
+     "tag_value"
+    ]
+   }
+  ],
+  "/code-snippets/v1/header-footer-code-manager": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/header-footer-code-manager/import": [
+   {
+    "methods": [
+     "POST"
+    ],
+    "args": [
+     "ids",
+     "network",
+     "auto_add_tags",
+     "tag_value"
+    ]
+   }
+  ],
+  "/code-snippets/v1/insert-php-code-snippet": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/insert-php-code-snippet/import": [
+   {
+    "methods": [
+     "POST"
+    ],
+    "args": [
+     "ids",
+     "network",
+     "auto_add_tags",
+     "tag_value"
+    ]
+   }
+  ],
+  "/code-snippets/v1/importers": [
+   {
+    "methods": [
+     "GET"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/file-upload/parse": [
+   {
+    "methods": [
+     "POST"
+    ],
+    "args": []
+   }
+  ],
+  "/code-snippets/v1/file-upload/import": [
+   {
+    "methods": [
+     "POST"
+    ],
+    "args": [
+     "snippets",
+     "duplicate_action",
+     "network"
+    ]
+   }
+  ]
+ }
+}
