@@ -1,0 +1,35 @@
+{
+ "ts": "2026-06-29T17:53:14.599Z",
+ "all_count": 26,
+ "mnm_plugins": [
+  {
+   "plugin": "wc-mnm-variable/wc-mnm-variable",
+   "name": "WC Mix and Match - Variable Mix and Match",
+   "status": "active",
+   "version": "2.3.0-beta.1"
+  },
+  {
+   "plugin": "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products",
+   "name": "WooCommerce Mix and Match Products",
+   "status": "active",
+   "version": "2.8.7"
+  }
+ ],
+ "type_enum": {
+  "code": "rest_invalid_param",
+  "message": "Blogas(i) parametras(ai): type",
+  "data": {
+   "status": 400,
+   "params": {
+    "type": "type nėra vienas iš simple, grouped, external, variable, mix-and-match ir variable-mix-and-match."
+   },
+   "details": {
+    "type": {
+     "code": "rest_not_in_enum",
+     "message": "type nėra vienas iš simple, grouped, external, variable, mix-and-match ir variable-mix-and-match.",
+     "data": null
+    }
+   }
+  }
+ }
+}
