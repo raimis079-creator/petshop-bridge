@@ -10,66 +10,50 @@ function commit(name,str){const url='https://api.github.com/repos/'+repo+'/conte
   const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0'});
   const page=await ctx.newPage();
   
+  // Mapping: petshopId -> boniveta URL
   const products=[
-    {petshopId:12828,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/3277-real-dog-sensitive-pasaras-suaugusiems-sunims-su-eriena-ir-ryziais-15kg.html'},
-    {petshopId:12719,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/3279-real-dog-sensitive-pasaras-suaugusiems-sunims-su-antiena-.html'},
-    {petshopId:12718,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/3281-real-dog-small-breeds-visavertis-pasaras-mazu-veisliu-suaugusiems-sunims-su-vistiena-10kg.html'},
-    {petshopId:14276,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5616-real-dog-adult-all-breeds-horse-rice-sausas-pasaras-sunims-20kg.html'},
-    {petshopId:14277,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5617-real-dog-adult-all-breeds-pork-rice-sausas-pasaras-sunims-20kg.html'},
-    {petshopId:14278,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5618-real-dog-adult-all-breeds-salmon-rice-sausas-pasaras-sunims-20kg.html'},
-    {petshopId:14279,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5619-real-dog-adult-all-breeds-chicken-rice-sausas-pasaras-sunims-20kg.html'},
-    {petshopId:14280,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5621-real-dog-adult-large-giant-breeds-chicken-rice-sausas-pasaras-sunims-20kg.html'},
-    {petshopId:14281,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/5622-real-dog-puppy-junior-all-breeds-pork-rice-sausas-pasaras-suniukam-su-20kg.html'},
-    {petshopId:14467,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7103-real-dog-sp-puppy-all-breeds-lamb-pork-buffalo-with-brown-rice-sausas-pasaras-suniukams-12-kg-.html'},
-    {petshopId:14468,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7104-real-dog-sp-adult-mini-lambrice-sausas-pasaras-sunims-12-kg.html'},
-    {petshopId:14469,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7105-real-dog-sp-adult-medium-lambrice-sausas-pasaras-sunims-12-kg.html'},
-    {petshopId:14470,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7106--real-dog-sp-adult-maxi-lambrice-sausas-pasaras-sunims-12-kg.html'},
-    {petshopId:14471,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7107-real-dog-sp-adult-all-breeds-venisonrice-sausas-pasaras-sunims-12-kg.html'},
-    {petshopId:14472,url:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7108-real-dog-sp-adult-all-breeds-buffalorice-sausas-pasaras-sunims-12-kg.html'}
+    {pid:14467,u:'https://boniveta.lt/real-dog-puppy-all-breeds-lamb-pork-buffalo-with-brown-rice-12-kg/'},
+    {pid:14279,u:'https://boniveta.lt/real-dog-adult-all-breeds-chickenrice-20kg/'},
+    {pid:14276,u:'https://boniveta.lt/real-dog-adult-all-breeds-horserice-20kg/'},
+    {pid:14277,u:'https://boniveta.lt/real-dog-adult-all-breeds-porkrice-20kg/'},
+    {pid:14278,u:'https://boniveta.lt/real-dog-adult-all-breeds-salmon-rice-20kg/'},
+    {pid:14280,u:'https://boniveta.lt/real-dog-adult-largegiant-breeds-chickenrice-20kg/'},
+    {pid:12718,u:'https://boniveta.lt/real-dog-adult-small-breeds-10kg/'},
+    {pid:14281,u:'https://boniveta.lt/real-dog-puppyjunior-all-breeds-porkrice-20kg/'},
+    {pid:12719,u:'https://boniveta.lt/real-dog-sensitive-duck-vegetables-15kg/'},
+    {pid:12828,u:'https://boniveta.lt/real-dog-sensitive-ramb-rice-15kg/'},
+    {pid:14472,u:'https://boniveta.lt/real-dog-sp-all-breeds-buffalorice-12kg/'},
+    {pid:14473,u:'https://boniveta.lt/real-dog-sp-all-breeds-horserice-12kg/'},
+    {pid:14471,u:'https://boniveta.lt/real-dog-sp-all-breeds-venisonrice-12kg/'},
+    {pid:14470,u:'https://boniveta.lt/real-dog-sp-maxi-adult-lambrice-12kg/'},
+    {pid:14469,u:'https://boniveta.lt/real-dog-sp-medium-adult-lambrice-12kg/'},
+    {pid:14468,u:'https://boniveta.lt/real-dog-sp-mini-adult-lambrice-12kg/'},
+    {pid:12720,u:'https://boniveta.lt/real-dog-adult-breeds/'},
+    {pid:12721,u:'https://boniveta.lt/real-dog-adult-breeds/'},
   ];
   
   const out={};
   for(const p of products){
     try{
-      const r=await page.goto(p.url,{waitUntil:'domcontentloaded',timeout:45000});
-      if(r&&r.status()===404){out[p.petshopId]={status:404};continue;}
+      const r=await page.goto(p.u,{waitUntil:'domcontentloaded',timeout:45000});
       await page.waitForTimeout(1500);
-      // Surask šerimo lenteles - paimkim viso teksto bloko apatinę dalį (po "Šėrimo")
-      // Skip cookie consent
-      try{
-        const buttons=await page.$$("button");
-        for(const b of buttons){
-          const t=(await b.textContent())||"";
-          if(/sutinku|accept|leisti|allow|priimti|gerai|ok\b/i.test(t)){
-            await b.click({timeout:1500}).catch(()=>{});
-            break;
-          }
-        }
-        await page.waitForTimeout(800);
-      }catch(e){}
-      await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
-      await page.waitForTimeout(1000);
-      // Paspaudžiam Description tab
-      try{await page.click('a[href="#description"]',{timeout:3000});await page.waitForTimeout(500);}catch(e){}
+      // Paimkim HTML lentelę (paros norma)
       const data=await page.evaluate(()=>{
-        const main=document.body.innerText;
-        // Bandymai keliais markeriais
-        let idx=main.search(/Šėrimo\s*rekomendacij/i);
-        if(idx<0)idx=main.search(/Šėrimo\s*instrukcij/i);
-        if(idx<0)idx=main.search(/Šėrimo\s*norm/i);
-        if(idx<0)idx=main.search(/Šuns svoris/i);
-        if(idx<0){
-          const html=document.body.innerHTML.substring(0,3000);
-          return {err:'no_marker',hint:html.substring(0,500)};
-        }
-        const block=main.substring(idx,idx+2500);
-        return {block};
+        const tables=Array.from(document.querySelectorAll('table'));
+        const feedTables=tables.filter(t=>{
+          const tx=t.innerText.toLowerCase();
+          return tx.includes('paros norm')||tx.includes('dienos norm')||tx.includes('šuns svoris')||tx.includes('svoris');
+        }).map(t=>t.outerHTML);
+        const fullText=document.body.innerText;
+        const idx=fullText.search(/REKOMENDUOJAMA PAROS NORMA|Šėrimo|Šuns svoris/i);
+        const ctx=idx>=0?fullText.substring(idx,idx+1500):'NONE';
+        return {tables:feedTables,ctx};
       });
-      out[p.petshopId]=data;
-    }catch(e){out[p.petshopId]={err:String(e).slice(0,100)};}
+      out[p.pid]=data;
+    }catch(e){out[p.pid]={err:String(e).slice(0,100)};}
   }
   await ctx.close();
   await browser.close();
-  commit('real_feed_data.json',JSON.stringify(out,null,1));
+  commit('real_boniveta.json',JSON.stringify(out,null,1));
   console.log("done");
 })();
