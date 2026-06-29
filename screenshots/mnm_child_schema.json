@@ -1,0 +1,52 @@
+{
+ "ts": "2026-06-29T20:04:28.839Z",
+ "mnm_child_items_schema": {
+  "type": "array",
+  "desc": "List of child items contained in this product.",
+  "items_props": [
+   "child_id",
+   "child_item_id",
+   "delete",
+   "product_id",
+   "variation_id"
+  ],
+  "items_full": {
+   "child_id": {
+    "type": "integer",
+    "desc": "Child product|variation ID. Deprecated 2.0, use child_item_id instead."
+   },
+   "child_item_id": {
+    "type": "integer",
+    "desc": "Child item ID."
+   },
+   "delete": {
+    "type": "boolean",
+    "desc": "Set to true to delete the child item with the specified child item ID."
+   },
+   "product_id": {
+    "type": "integer",
+    "desc": "Child product ID."
+   },
+   "variation_id": {
+    "type": "integer",
+    "desc": "Child variation ID."
+   }
+  }
+ },
+ "probe_id": 34152,
+ "probe_err": null,
+ "child_back": [
+  [
+   "child_item_id",
+   "child_id",
+   "product_id",
+   "variation_id"
+  ]
+ ],
+ "child_back_full": {
+  "child_item_id": 11,
+  "child_id": 17421,
+  "product_id": 17421,
+  "variation_id": 0
+ }
+}
