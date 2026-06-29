@@ -1,0 +1,118 @@
+{
+ "stages": {
+  "fetched": 5,
+  "planned": 5,
+  "passed": 5,
+  "failed": 0,
+  "applied": 5
+ },
+ "planned": [
+  {
+   "id": "17735",
+   "title": "Konservų rinkinys IŠRANKIEMS šunims, 6 x 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasTable": true,
+    "noScript": true
+   },
+   "oldLen": 934,
+   "newLen": 2599,
+   "hadMarker": false
+  },
+  {
+   "id": "19513",
+   "title": "Animonda GranCarno Adult konservų rinkinys 6 x 800 g, #2",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasTable": true,
+    "noScript": true
+   },
+   "oldLen": 2634,
+   "newLen": 4299,
+   "hadMarker": false
+  },
+  {
+   "id": "19516",
+   "title": "Animonda GranCarno Adult konservų rinkinys 6 x 800 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasTable": true,
+    "noScript": true
+   },
+   "oldLen": 2531,
+   "newLen": 4196,
+   "hadMarker": false
+  },
+  {
+   "id": "19520",
+   "title": "Animonda GranCarno Adult konservų rinkinys 6 x 400 g, #2",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasTable": true,
+    "noScript": true
+   },
+   "oldLen": 2634,
+   "newLen": 4299,
+   "hadMarker": false
+  },
+  {
+   "id": "19526",
+   "title": "Animonda GranCarno Adult konservų rinkinys 6 x 400 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasTable": true,
+    "noScript": true
+   },
+   "oldLen": 2497,
+   "newLen": 4162,
+   "hadMarker": false
+  }
+ ],
+ "apply": [
+  {
+   "id": "17735",
+   "verLen": 2621,
+   "newLen": 2599,
+   "oldLen": 934
+  },
+  {
+   "id": "19513",
+   "verLen": 4409,
+   "newLen": 4299,
+   "oldLen": 2634
+  },
+  {
+   "id": "19516",
+   "verLen": 4350,
+   "newLen": 4196,
+   "oldLen": 2531
+  },
+  {
+   "id": "19520",
+   "verLen": 4409,
+   "newLen": 4299,
+   "oldLen": 2634
+  },
+  {
+   "id": "19526",
+   "verLen": 4316,
+   "newLen": 4162,
+   "oldLen": 2497
+  }
+ ]
+}
