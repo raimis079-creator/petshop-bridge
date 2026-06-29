@@ -18,45 +18,35 @@ function call(method, path, bodyObj){
   let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
   try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
 }
+const PID=34148;
 const POOL=[{product_id:17397},{product_id:17394},{product_id:17400}];
-const SIZES=[{sz:6,price:'14.99'},{sz:12,price:'26.99'},{sz:15,price:'31.99'}];
+const MAP=[{id:34149,sz:6,price:'14.99'},{id:34150,sz:12,price:'26.99'},{id:34151,sz:15,price:'31.99'}];
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // cleanup old 2.x test
-  call('DELETE','/wp-json/wc/v3/products/34143?force=true');
-  // create fresh parent
-  const cr = call('POST','/wp-json/wc/v3/products', {
-    name:'TEST Variable v1 (6/12/15)',
-    type:'variable-mix-and-match',
-    status:'publish', sku:'TEST-VARMNM-V1',
+  // pool + size on PARENT (1.x shares contents at parent)
+  const pp = call('PUT','/wp-json/wc/v3/products/'+PID, {
     mnm_content_source:'products',
-    attributes:[{ name:'Dydis', visible:true, variation:true, options:['6','12','15'] }],
-    categories:[{id:682}]
+    mnm_child_items:POOL,
+    mnm_priced_per_product:false,
+    meta_data:[{key:'_mnm_min_container_size',value:'6'},{key:'_mnm_max_container_size',value:'15'}]
   });
-  const pid = cr && cr.id ? cr.id : null;
-  out.parent_id = pid; out.parent_err=(cr&&(cr.__exc||cr.code))||null;
-  if(!pid){ commit('v1_box.json', JSON.stringify(out,null,1)); console.log('NOPID'); return; }
-  out.created=[];
-  for(const s of SIZES){
-    const v = call('POST','/wp-json/wc/v3/products/'+pid+'/variations', {
-      attributes:[{name:'Dydis', option:String(s.sz)}],
-      regular_price:s.price,
-      mnm_content_source:'products',
-      mnm_child_items:POOL,
-      mnm_min_container_size:s.sz,
-      mnm_max_container_size:s.sz,
-      mnm_priced_per_product:false,
-      meta_data:[{key:'_mnm_min_container_size',value:String(s.sz)},{key:'_mnm_max_container_size',value:String(s.sz)}]
+  const par = call('GET','/wp-json/wc/v3/products/'+PID+'?context=edit');
+  out.parent = { pool: Array.isArray(par.mnm_child_items)?par.mnm_child_items.map(c=>c.product_id):par.mnm_child_items, content_source:par.mnm_content_source, min:par.mnm_min_container_size, max:par.mnm_max_container_size };
+  // price + size on variations
+  out.var=[];
+  for(const m of MAP){
+    call('PUT','/wp-json/wc/v3/products/'+PID+'/variations/'+m.id, {
+      regular_price:m.price,
+      mnm_min_container_size:m.sz, mnm_max_container_size:m.sz,
+      meta_data:[{key:'_mnm_min_container_size',value:String(m.sz)},{key:'_mnm_max_container_size',value:String(m.sz)}]
     });
-    out.created.push({sz:s.sz, id:(v&&v.id)||null, err:(v&&(v.__exc||v.code))||null});
   }
-  const vs = call('GET','/wp-json/wc/v3/products/'+pid+'/variations?context=edit&per_page=20');
-  out.variations = Array.isArray(vs)? vs.map(v=>({id:v.id,dydis:(v.attributes||[]).map(a=>a.option).join(','),price:v.regular_price,min:v.mnm_min_container_size,max:v.mnm_max_container_size,pool:Array.isArray(v.mnm_child_items)?v.mnm_child_items.length:0})).sort((a,b)=>parseFloat(a.price||0)-parseFloat(b.price||0)) : vs;
-  const par = call('GET','/wp-json/wc/v3/products/'+pid);
-  out.parent_status = par && par.status;
-  out.parent_purchasable = par && par.purchasable;
-  out.parent_price_html = (par&&par.price_html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,80);
-  out.permalink = par && par.permalink;
-  commit('v1_box.json', JSON.stringify(out,null,1));
-  console.log("DONE pid="+pid);
+  const vs = call('GET','/wp-json/wc/v3/products/'+PID+'/variations?context=edit&per_page=20');
+  out.variations = Array.isArray(vs)? vs.map(v=>({id:v.id,dydis:(v.attributes||[]).map(a=>a.option).join(','),price:v.regular_price,min:v.mnm_min_container_size,max:v.mnm_max_container_size,status:v.status})).sort((a,b)=>parseFloat(a.price||0)-parseFloat(b.price||0)) : vs;
+  const par2 = call('GET','/wp-json/wc/v3/products/'+PID);
+  out.parent_price_html = (par2&&par2.price_html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,90);
+  out.parent_purchasable = par2 && par2.purchasable;
+  out.permalink = par2 && par2.permalink;
+  commit('v1_fix.json', JSON.stringify(out,null,1));
+  console.log("DONE");
 })();
