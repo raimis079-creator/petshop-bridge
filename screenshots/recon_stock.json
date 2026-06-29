@@ -1,0 +1,282 @@
+{
+ "ts": "2026-06-29T12:40:41.080Z",
+ "namespaces": [
+  "oembed/1.0",
+  "code-snippets/v1",
+  "unisend",
+  "wcdn/v1",
+  "wc/v3",
+  "wc/v1",
+  "wc/pos/v1/catalog",
+  "wp-all-import/v1",
+  "paysera/v1",
+  "jetpack/v4",
+  "wc-admin",
+  "wc-analytics",
+  "wc/store",
+  "wc/store/v1",
+  "wc/private",
+  "wc/v2",
+  "wc-admin-email",
+  "wc-push-notifications",
+  "wc-telemetry",
+  "wccom-site/v3",
+  "wp-abilities/v1",
+  "wp/v2",
+  "wp-site-health/v1",
+  "wp-block-editor/v1"
+ ],
+ "custom_routes": [
+  "/wc-analytics/admin/notes/experimental-activate-promo/(?P<promo_note_name>[\\w-]+)"
+ ],
+ "monge_solo": [
+  {
+   "id": 33550,
+   "name": "Monge Monoproteico \"Solo\" - Wet Dog Pate 100% turkey 400g",
+   "sku": "01M210202",
+   "type": "simple",
+   "status": "draft",
+   "manage_stock": true,
+   "stock_quantity": 247,
+   "stock_status": "instock",
+   "legacy_manuf": null,
+   "legacy_src": null,
+   "zb_sku": "01M210202",
+   "vf_sku": null
+  },
+  {
+   "id": 33546,
+   "name": "Monge Monoproteico \"Solo\" - Wet Dog Pate 100% beef 150g",
+   "sku": "01M210109",
+   "type": "simple",
+   "status": "draft",
+   "manage_stock": true,
+   "stock_quantity": 1212,
+   "stock_status": "instock",
+   "legacy_manuf": null,
+   "legacy_src": null,
+   "zb_sku": "01M210109",
+   "vf_sku": null
+  },
+  {
+   "id": 33542,
+   "name": "Monge Monoproteico \"Solo\" - Wet Dog Pate 100% pork 150g",
+   "sku": "01M210107",
+   "type": "simple",
+   "status": "draft",
+   "manage_stock": true,
+   "stock_quantity": 646,
+   "stock_status": "instock",
+   "legacy_manuf": null,
+   "legacy_src": null,
+   "zb_sku": "01M210107",
+   "vf_sku": null
+  },
+  {
+   "id": 32574,
+   "name": "Monge Monoproteico \"Solo\" - Wet Dog Pate 100% PORK 400g",
+   "sku": "01M210206",
+   "type": "simple",
+   "status": "draft",
+   "manage_stock": true,
+   "stock_quantity": 410,
+   "stock_status": "instock",
+   "legacy_manuf": null,
+   "legacy_src": null,
+   "zb_sku": "01M210206",
+   "vf_sku": null
+  },
+  {
+   "id": 17732,
+   "name": "Konservų rinkinys šunims Monoproteinas #1",
+   "sku": "82700714501",
+   "type": "simple",
+   "status": "publish",
+   "manage_stock": true,
+   "stock_quantity": 4,
+   "stock_status": "instock",
+   "legacy_manuf": "Plaček Pet Products s.r.o.",
+   "legacy_src": "excel_v2_20260604",
+   "zb_sku": null,
+   "vf_sku": null
+  },
+  {
+   "id": 17400,
+   "name": "Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g",
+   "sku": "M14236",
+   "type": "simple",
+   "status": "publish",
+   "manage_stock": true,
+   "stock_quantity": 0,
+   "stock_status": "outofstock",
+   "legacy_manuf": "Monge & C. S.p.a.",
+   "legacy_src": "excel_v2_20260604",
+   "zb_sku": null,
+   "vf_sku": null
+  },
+  {
+   "id": 17397,
+   "name": "Monge Monoproteico Solo Anatra – Monoproteininiai konservai šunims su gryna antiena, 400 g",
+   "sku": "M14434",
+   "type": "simple",
+   "status": "publish",
+   "manage_stock": true,
+   "stock_quantity": 19,
+   "stock_status": "instock",
+   "legacy_manuf": "Monge & C. S.p.a.",
+   "legacy_src": "excel_v2_20260604",
+   "zb_sku": null,
+   "vf_sku": null
+  },
+  {
+   "id": 17394,
+   "name": "Monge Monoproteico Solo Tacchino – Monoproteininiai konservai šunims su gryna kalakutiena, 400 g",
+   "sku": "M14229",
+   "type": "simple",
+   "status": "publish",
+   "manage_stock": true,
+   "stock_quantity": 18,
+   "stock_status": "instock",
+   "legacy_manuf": "Monge & C. S.p.a.",
+   "legacy_src": "excel_v2_20260604",
+   "zb_sku": null,
+   "vf_sku": null
+  }
+ ],
+ "total_products": "3660",
+ "stats": {
+  "total_seen": 400,
+  "manage_on": 400,
+  "manage_off": 0,
+  "stock_status": {
+   "outofstock": 52,
+   "instock": 348
+  },
+  "types": {
+   "simple": 400
+  }
+ },
+ "legacy": {
+  "seen": 40,
+  "manage_on": 40,
+  "manage_off": 0,
+  "examples": [
+   {
+    "id": 12814,
+    "sku": "HM-8101-1",
+    "name": "Hau&amp;Miau vištienos file 500g",
+    "manage_stock": true,
+    "qty": 42,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12815,
+    "sku": "HM-8102-1",
+    "name": "Hau&amp;Miau antienos file 500g",
+    "manage_stock": true,
+    "qty": 0,
+    "ss": "outofstock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12816,
+    "sku": "HM-8103",
+    "name": "Hau&amp;Miau vištų šlaunelės 500g",
+    "manage_stock": true,
+    "qty": 7,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12817,
+    "sku": "HM-8104-1",
+    "name": "Hau&amp;Miau ančių šlaunelės 500g",
+    "manage_stock": true,
+    "qty": 8,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12818,
+    "sku": "HM-8105",
+    "name": "Hau&amp;Miau kalcio kauliukai 500g",
+    "manage_stock": true,
+    "qty": 26,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12819,
+    "sku": "HM-8106-1",
+    "name": "Hau&amp;Miau kalcio kauliukai su antiena",
+    "manage_stock": true,
+    "qty": 46,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12820,
+    "sku": "HM-8113-1",
+    "name": "Hau&amp;Miau diskai su Antiena 500g",
+    "manage_stock": true,
+    "qty": 9,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12821,
+    "sku": "HM-8115",
+    "name": "Hau&amp;Miau mėsos kauliukai su Antiena ",
+    "manage_stock": true,
+    "qty": 21,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12822,
+    "sku": "HM-8118",
+    "name": "Hau&amp;Miau sumuštinis su vištiena 500g",
+    "manage_stock": true,
+    "qty": 19,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12823,
+    "sku": "HM-8119",
+    "name": "Hau&amp;Miau balti pagaliukai apsukti vi",
+    "manage_stock": true,
+    "qty": 0,
+    "ss": "outofstock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12824,
+    "sku": "HM-8121-1",
+    "name": "Hau&amp;Miau baltos žuvies juostelės 500",
+    "manage_stock": true,
+    "qty": 74,
+    "ss": "instock",
+    "lm": "Hau&Miau"
+   },
+   {
+    "id": 12825,
+    "sku": "HM-8122-1",
+    "name": "Hau&amp;Miau Vištienos file ant baltų pa",
+    "manage_stock": true,
+    "qty": 0,
+    "ss": "outofstock",
+    "lm": "Hau&Miau"
+   }
+  ]
+ },
+ "zb": {
+  "seen": 360,
+  "manage_on": 360
+ },
+ "vf": {
+  "seen": 0,
+  "manage_on": 0
+ }
+}
