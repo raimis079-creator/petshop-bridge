@@ -1,17 +1,17 @@
 {
- "loopCnt": 40,
+ "loopCnt": 50,
  "stages": {
   "start": 0,
-  "fetched": 39,
-  "planned": 39,
-  "passed": 39,
+  "fetched": 49,
+  "planned": 49,
+  "passed": 49,
   "failed": 0,
-  "applied": 39
+  "applied": 49
  },
  "planned": [
   {
-   "id": "19562",
-   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 800 g",
+   "id": "19602",
+   "title": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 400 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -22,13 +22,13 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 2798,
-   "newLen": 4355,
+   "oldLen": 2945,
+   "newLen": 4501,
    "type": "HTML_TABLE"
   },
   {
-   "id": "19566",
-   "title": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g",
+   "id": "19609",
+   "title": "Animonda Carny Kitten – konservai kačiukams su paukštiena ir jautiena, 400 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -39,13 +39,13 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 2835,
-   "newLen": 4392,
-   "type": "HTML_TABLE"
+   "oldLen": 2863,
+   "newLen": 4185,
+   "type": "KITTEN_AGE"
   },
   {
-   "id": "19570",
-   "title": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 800 g",
+   "id": "19613",
+   "title": "Animonda Carny Kitten – konservai kačiukams su jautiena, vištiena ir triušiena, 200 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -56,35 +56,35 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 2787,
-   "newLen": 4342,
-   "type": "HTML_TABLE"
+   "oldLen": 975,
+   "newLen": 2001,
+   "type": "KG_PAIRS"
   }
  ],
  "apply": [
   {
-   "id": "19562",
-   "verLen": 4406,
-   "newLen": 4355,
+   "id": "19602",
+   "verLen": 4512,
+   "newLen": 4501,
    "lossless": true,
-   "oldLen": 2798,
+   "oldLen": 2945,
    "type": "HTML_TABLE"
   },
   {
-   "id": "19566",
-   "verLen": 4443,
-   "newLen": 4392,
+   "id": "19609",
+   "verLen": 4031,
+   "newLen": 4185,
    "lossless": true,
-   "oldLen": 2835,
-   "type": "HTML_TABLE"
+   "oldLen": 2863,
+   "type": "KITTEN_AGE"
   },
   {
-   "id": "19570",
-   "verLen": 4410,
-   "newLen": 4342,
+   "id": "19613",
+   "verLen": 2015,
+   "newLen": 2001,
    "lossless": true,
-   "oldLen": 2787,
-   "type": "HTML_TABLE"
+   "oldLen": 975,
+   "type": "KG_PAIRS"
   }
  ]
 }
