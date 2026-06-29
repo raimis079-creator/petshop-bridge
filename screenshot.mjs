@@ -16,41 +16,36 @@ function call(method, path, bodyObj){
   if(bodyObj!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(bodyObj)); cmd+=' -d @/tmp/b.json'; }
   cmd+=' "'+BASE+path+'"';
   let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,400)}; }
+  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
 }
+const PID=34143;
+const POOL=[{product_id:17397},{product_id:17394},{product_id:17400}];
+const SIZES=[{sz:6,price:'14.99'},{sz:12,price:'26.99'},{sz:15,price:'31.99'}];
 (async()=>{
-  const out={ts:new Date().toISOString()};
-  // create parent variable-mnm
-  const body={
-    name:'TEST Variable rinkinys 6/12/15 (VarMnM)',
-    type:'variable-mix-and-match',
-    status:'publish',
-    sku:'TEST-VARMNM',
-    mnm_content_source:'products',
-    mnm_child_items:[{product_id:17397},{product_id:17394},{product_id:17400}],
-    attributes:[{ name:'Dydis', visible:true, variation:true, options:['6','12','15'] }],
-    categories:[{id:682}]
-  };
-  const cr = call('POST','/wp-json/wc/v3/products', body);
-  const pid = cr && cr.id ? cr.id : null;
-  out.create = {id:pid, type:cr&&cr.type, status:cr&&cr.status, permalink:cr&&cr.permalink, err:(cr&&(cr.__exc||cr.code||(cr.__pe?cr.raw:null)))||null};
-  if(pid){
-    const rb = call('GET','/wp-json/wc/v3/products/'+pid+'?context=edit');
-    out.parent = {
-      id:rb.id, type:rb.type,
-      attributes:(rb.attributes||[]).map(a=>({name:a.name, variation:a.variation, options:a.options})),
-      mnm_child_items: Array.isArray(rb.mnm_child_items)? rb.mnm_child_items.map(c=>c.product_id) : rb.mnm_child_items,
-      mnm_content_source: rb.mnm_content_source,
-      mnm_min: rb.mnm_min_container_size, mnm_max: rb.mnm_max_container_size
+  const out={ts:new Date().toISOString(), created:[]};
+  for(const s of SIZES){
+    const body={
+      attributes:[{name:'Dydis', option:String(s.sz)}],
+      regular_price:s.price,
+      mnm_content_source:'products',
+      mnm_child_items:POOL,
+      mnm_min_container_size:s.sz,
+      mnm_max_container_size:s.sz,
+      mnm_priced_per_product:false
     };
-    // OPTIONS the variations endpoint to see mnm fields
-    const opt = call('OPTIONS','/wp-json/wc/v3/products/'+pid+'/variations');
-    const props = (opt && opt.schema && opt.schema.properties) ? opt.schema.properties : null;
-    if(props){
-      const rx=/mnm|mix|container|priced_per|content/i;
-      out.variation_mnm_fields = Object.keys(props).filter(k=>rx.test(k)).reduce((o,k)=>{o[k]={type:props[k].type,desc:(props[k].description||'').slice(0,90)};return o;},{});
-    } else { out.variation_opts = (opt&&opt.__pe)?opt.raw:Object.keys(opt||{}); }
+    const v = call('POST','/wp-json/wc/v3/products/'+PID+'/variations', body);
+    out.created.push({size:s.sz, id:(v&&v.id)||null, err:(v&&(v.__exc||v.code||(v.__pe?v.raw:null)))||null});
   }
-  commit('varmnm_recon.json', JSON.stringify(out,null,1));
-  console.log("DONE pid="+pid);
+  // read back all variations
+  const vs = call('GET','/wp-json/wc/v3/products/'+PID+'/variations?context=edit&per_page=20');
+  out.variations = Array.isArray(vs)? vs.map(v=>({
+    id:v.id,
+    dydis:(v.attributes||[]).map(a=>a.option).join(','),
+    price:v.regular_price,
+    mnm_min:v.mnm_min_container_size, mnm_max:v.mnm_max_container_size,
+    priced_per:v.mnm_priced_per_product,
+    pool: Array.isArray(v.mnm_child_items)? v.mnm_child_items.map(c=>c.product_id) : v.mnm_child_items
+  })) : vs;
+  commit('varmnm_variations.json', JSON.stringify(out,null,1));
+  console.log("DONE");
 })();
