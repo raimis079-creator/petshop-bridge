@@ -1,14 +1,7 @@
 import { execSync } from "child_process";
 import fs from "fs";
 
-// Install playwright-extra and stealth if missing
-try {
-  execSync('node -e "require(\'playwright-extra\')"',{stdio:'pipe'});
-} catch(e) {
-  console.log("Installing playwright-extra...");
-  execSync('npm install playwright-extra puppeteer-extra-plugin-stealth',{stdio:'inherit'});
-}
-
+try {execSync('node -e "require(\'playwright-extra\')"',{stdio:'pipe'});}catch(e){execSync('npm install playwright-extra puppeteer-extra-plugin-stealth',{stdio:'inherit'});}
 const { chromium } = await import("playwright-extra");
 const stealth = (await import("puppeteer-extra-plugin-stealth")).default();
 chromium.use(stealth);
@@ -32,24 +25,15 @@ function commit(name,str){const url='https://api.github.com/repos/'+repo+'/conte
   });
   const page=await ctx.newPage();
   
+  // gyvunams24.lt URL'ai - tik SP + 12718 + 12720
   const products=[
-    {pid:14279,u:'https://boniveta.lt/real-dog-adult-all-breeds-chickenrice-20kg/'},
-    {pid:14276,u:'https://boniveta.lt/real-dog-adult-all-breeds-horserice-20kg/'},
-    {pid:14277,u:'https://boniveta.lt/real-dog-adult-all-breeds-porkrice-20kg/'},
-    {pid:14278,u:'https://boniveta.lt/real-dog-adult-all-breeds-salmon-rice-20kg/'},
-    {pid:14280,u:'https://boniveta.lt/real-dog-adult-largegiant-breeds-chickenrice-20kg/'},
-    {pid:12718,u:'https://boniveta.lt/real-dog-adult-small-breeds-10kg/'},
-    {pid:14281,u:'https://boniveta.lt/real-dog-puppyjunior-all-breeds-porkrice-20kg/'},
-    {pid:12719,u:'https://boniveta.lt/real-dog-sensitive-duck-vegetables-15kg/'},
-    {pid:12828,u:'https://boniveta.lt/real-dog-sensitive-ramb-rice-15kg/'},
-    {pid:14467,u:'https://boniveta.lt/real-dog-puppy-all-breeds-lamb-pork-buffalo-with-brown-rice-12-kg/'},
-    {pid:14472,u:'https://boniveta.lt/real-dog-sp-all-breeds-buffalorice-12kg/'},
-    {pid:14473,u:'https://boniveta.lt/real-dog-sp-all-breeds-horserice-12kg/'},
-    {pid:14471,u:'https://boniveta.lt/real-dog-sp-all-breeds-venisonrice-12kg/'},
-    {pid:14470,u:'https://boniveta.lt/real-dog-sp-maxi-adult-lambrice-12kg/'},
-    {pid:14469,u:'https://boniveta.lt/real-dog-sp-medium-adult-lambrice-12kg/'},
-    {pid:14468,u:'https://boniveta.lt/real-dog-sp-mini-adult-lambrice-12kg/'},
-    {pid:12720,u:'https://boniveta.lt/real-dog-adult-breeds/'},
+    {pid:12718,u:'https://www.gyvunams24.lt/sausas-pasaras-sunims/3281-real-dog-small-breeds-visavertis-pasaras-mazu-veisliu-suaugusiems-sunims-su-vistiena-10kg.html'},
+    {pid:14467,u:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7103-real-dog-sp-puppy-all-breeds-lamb-pork-buffalo-with-brown-rice-sausas-pasaras-suniukams-12-kg-.html'},
+    {pid:14468,u:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7104-real-dog-sp-adult-mini-lambrice-sausas-pasaras-sunims-12-kg.html'},
+    {pid:14469,u:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7105-real-dog-sp-adult-medium-lambrice-sausas-pasaras-sunims-12-kg.html'},
+    {pid:14470,u:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7106--real-dog-sp-adult-maxi-lambrice-sausas-pasaras-sunims-12-kg.html'},
+    {pid:14471,u:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7107-real-dog-sp-adult-all-breeds-venisonrice-sausas-pasaras-sunims-12-kg.html'},
+    {pid:14472,u:'https://www.gyvunams24.lt/sausas-pasaras-sunims/7108-real-dog-sp-adult-all-breeds-buffalorice-sausas-pasaras-sunims-12-kg.html'},
   ];
   
   const out={};
@@ -57,24 +41,18 @@ function commit(name,str){const url='https://api.github.com/repos/'+repo+'/conte
     try{
       await page.goto(p.u,{waitUntil:'networkidle',timeout:60000});
       await page.waitForTimeout(2500);
-      try{await page.click('a[href="#tab-description"]',{timeout:2000});await page.waitForTimeout(500);}catch(e){}
       const data=await page.evaluate(()=>{
-        const tables=Array.from(document.querySelectorAll('table'));
-        const feedTables=tables.filter(t=>{
-          const tx=(t.innerText||t.textContent||'').toLowerCase();
-          return tx.includes('paros norm')||tx.includes('dienos norm')||tx.includes('šuns svoris')||tx.includes('svoris');
-        }).map(t=>t.outerHTML);
         const fullText=document.body.innerText||document.body.textContent;
-        const idx=fullText.search(/REKOMENDUOJAMA PAROS NORMA|Šėrimo|Šuns svoris/i);
+        const idx=fullText.search(/Šėrimo\s*(?:rekomendacij|instrukcij|norm)|Šuns svoris/i);
         const ctx=idx>=0?fullText.substring(idx,idx+1500):'NONE';
-        return {tables:feedTables,ctx,bodyLen:fullText.length};
+        return {ctx,bodyLen:fullText.length};
       });
       out[p.pid]=data;
-      console.log(`${p.pid}: tables=${data.tables.length} bodyLen=${data.bodyLen}`);
+      console.log(`${p.pid}: bodyLen=${data.bodyLen} hasCtx=${data.ctx!=='NONE'}`);
     }catch(e){out[p.pid]={err:String(e).slice(0,100)};}
   }
   await ctx.close();
   await browser.close();
-  commit('real_stealth.json',JSON.stringify(out,null,1));
+  commit('real_stealth_gy.json',JSON.stringify(out,null,1));
   console.log("done");
 })();
