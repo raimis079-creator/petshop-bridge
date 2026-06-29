@@ -1,0 +1,1986 @@
+{
+ "brands": [
+  {
+   "id": 308,
+   "name": "Animonda",
+   "slug": "animonda",
+   "parent": 0,
+   "description": "",
+   "display": "default",
+   "image": null,
+   "menu_order": 0,
+   "count": 64,
+   "_links": {
+    "self": [
+     {
+      "href": "https://dev.avesa.lt/wp-json/wc/v3/products/brands/308",
+      "targetHints": {
+       "allow": [
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE"
+       ]
+      }
+     }
+    ],
+    "collection": [
+     {
+      "href": "https://dev.avesa.lt/wp-json/wc/v3/products/brands"
+     }
+    ]
+   }
+  }
+ ],
+ "skus": [
+  {
+   "id": 19861,
+   "name": "5+1 DOVANŲ. Animonda konservai katėms su antienos ir kalakutienos filė, 85 g,  Vom Feinsten Adult Feines with Duck and Turkey Fillet",
+   "status": "draft",
+   "sku": "83063127",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    },
+    {
+     "id": 120,
+     "name": "Ypatingi pasiūlymai",
+     "slug": "ypatingi-pasiulymai"
+    }
+   ]
+  },
+  {
+   "id": 19859,
+   "name": "5+1 DOVANŲ. Animonda konservai katėms su jautienos ir kalakutienos filė, 85 g, Vom Feinsten Adult Feines with Beef and Turkey Fillet",
+   "status": "draft",
+   "sku": "83060103",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    },
+    {
+     "id": 120,
+     "name": "Ypatingi pasiūlymai",
+     "slug": "ypatingi-pasiulymai"
+    }
+   ]
+  },
+  {
+   "id": 19856,
+   "name": "5+1 DOVANŲ. Animonda konservai katėms su paukštienos ir menkės filė, 85 g,  Vom Feinsten Adult Feines with Poultry and Pollock Fillet",
+   "status": "draft",
+   "sku": "83061746",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    },
+    {
+     "id": 120,
+     "name": "Ypatingi pasiūlymai",
+     "slug": "ypatingi-pasiulymai"
+    }
+   ]
+  },
+  {
+   "id": 19854,
+   "name": "5+1 DOVANŲ. Animonda konservai katėms su veršienos ir vištienos filė, 85 g,  Vom Feinsten Adult Feines with Veal and Chicken Fillet",
+   "status": "draft",
+   "sku": "8306287",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    },
+    {
+     "id": 120,
+     "name": "Ypatingi pasiūlymai",
+     "slug": "ypatingi-pasiulymai"
+    }
+   ]
+  },
+  {
+   "id": 19852,
+   "name": "5+1 DOVANŲ. Animonda konservai katėms su žvėriena ir kalakutienos filė, 85 g,  Vom Feinsten Adult Feines with Wild and Turkey Fillet",
+   "status": "draft",
+   "sku": "8306499",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    },
+    {
+     "id": 120,
+     "name": "Ypatingi pasiūlymai",
+     "slug": "ypatingi-pasiulymai"
+    }
+   ]
+  },
+  {
+   "id": 19712,
+   "name": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir anties širdelėmis, 200 g",
+   "status": "draft",
+   "sku": "83706",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19708,
+   "name": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+   "status": "publish",
+   "sku": "83722",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19705,
+   "name": "Animonda Carny Adult Beef + Chicken – konservai katėms su šviežia jautiena ir vištiena, 200 g",
+   "status": "draft",
+   "sku": "83703",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19702,
+   "name": "Animonda Carny Adult Beef + Cod with Parsley Roots - konservai katėms su šviežia jautiena, menke su petražolių šaknimis, 200 g",
+   "status": "draft",
+   "sku": "83701",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19699,
+   "name": "Animonda Carny Adult Beef + Cod with Parsley Roots - konservai katėms su šviežia jautiena, menke su petražolių šaknimis, 400 g",
+   "status": "draft",
+   "sku": "83717",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19696,
+   "name": "Animonda Carny Adult Beef + Heart – konservai katėms su šviežia jautiena ir širdimis, 200 g",
+   "status": "draft",
+   "sku": "83704",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19692,
+   "name": "Animonda Carny Adult Beef + Heart – konservai katėms su šviežia jautiena ir širdimis, 400 g",
+   "status": "publish",
+   "sku": "83720",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19689,
+   "name": "Animonda Carny Adult Beef + Lamb – konservai katėms su šviežia jautiena ir ėriena, 200 g",
+   "status": "draft",
+   "sku": "83705",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19685,
+   "name": "Animonda Carny Adult Beef + Lamb – konservai katėms su šviežia jautiena ir ėriena, 400 g",
+   "status": "publish",
+   "sku": "83721",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19682,
+   "name": "Animonda Carny Adult Beef + Turkey + Rabbit – konservai katėms su šviežia jautiena, kalakutiena ir triušiena, 200 g",
+   "status": "draft",
+   "sku": "83709",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19679,
+   "name": "Animonda Carny Adult Beef + Turkey + Rabbit – konservai katėms su šviežia jautiena, kalakutiena ir triušiena, 400 g",
+   "status": "draft",
+   "sku": "83725",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19676,
+   "name": "Animonda Carny Adult Beef + Turkey + Shrimp – konservai katėms su šviežia jautiena, kalakutiena ir krevetėmis, 200 g",
+   "status": "draft",
+   "sku": "83708",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19672,
+   "name": "Animonda Carny Adult Beef + Turkey + Shrimp – konservai katėms su šviežia jautiena, kalakutiena ir krevetėmis, 400 g",
+   "status": "publish",
+   "sku": "83724",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19669,
+   "name": "Animonda Carny Adult Beef + Venison with Cranberries – konservai katėms su šviežia jautiena, elniena ir spanguolėmis, 200 g",
+   "status": "draft",
+   "sku": "83700",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19666,
+   "name": "Animonda Carny Adult Beef + Venison with Cranberries – konservai katėms su šviežia jautiena, elniena ir spanguolėmis, 400 g",
+   "status": "draft",
+   "sku": "83716",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19663,
+   "name": "Animonda Carny Adult Beef – konservai katėms su šviežia jautiena, 200 g",
+   "status": "draft",
+   "sku": "83707",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19660,
+   "name": "Animonda Carny Adult Chicken + Salmon – konservai katėms su vištiena ir lašiša, 200 g",
+   "status": "draft",
+   "sku": "83822",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19657,
+   "name": "Animonda Carny Adult Chicken + Turkey + Rabbit – konservai katems su vištiena, kalakutiena ir triušiena, 200 g",
+   "status": "draft",
+   "sku": "83739",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19654,
+   "name": "Animonda Carny Adult Chicken, Turkey + Duck Hearts – konservai katėms su vištiena, kalakutiena ir ančių širdelėmis, 200 g",
+   "status": "draft",
+   "sku": "83738",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19651,
+   "name": "Animonda Carny Adult Multi-Meat-Cocktail – konservai katėms Mėsos kokteilis, 200 g",
+   "status": "draft",
+   "sku": "83702",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19648,
+   "name": "Animonda Carny Adult Ocean konservai katėms - baltasis tunas ir jūros gėrybės, 80 g",
+   "status": "draft",
+   "sku": "83302",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19645,
+   "name": "Animonda Carny Adult Ocean konservai katėms - baltasis tunas ir krevetės, 80 g",
+   "status": "draft",
+   "sku": "83300",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19642,
+   "name": "Animonda Carny Adult Ocean konservai katėms - lašiša ir jaunos sardinės, 80 g",
+   "status": "draft",
+   "sku": "83299",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19639,
+   "name": "Animonda Carny Adult Ocean konservai katėms – baltasis tunas ir jautiena, 80 g",
+   "status": "draft",
+   "sku": "83322",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19636,
+   "name": "Animonda Carny Adult Ocean konservai katėms – baltasis tunas ir karibinis rifešeris, 80 g",
+   "status": "draft",
+   "sku": "83321",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19633,
+   "name": "Animonda Carny Adult Turkey + Chicken + Shrimp – konservai katėms su kalakutiena, vištiena ir krevetėmis, 200 g",
+   "status": "draft",
+   "sku": "83737",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19630,
+   "name": "Animonda Carny Adult Turkey + Lamb – konservai katėms su kalakutiena ir ėriena, 200 g",
+   "status": "draft",
+   "sku": "83820",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19627,
+   "name": "Animonda Carny Adult Turkey + Lamb – konservai katėms su kalakutiena ir ėriena, 400 g",
+   "status": "draft",
+   "sku": "83823",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19624,
+   "name": "Animonda Carny Adult Turkey and Chicken Liver – konservai katėms su kalakutiena ir vištienos kepenėlėmis, 200 g",
+   "status": "draft",
+   "sku": "83821",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19620,
+   "name": "Animonda Carny Kitten – konservai kačiukams su jautiena ir kalakutiena, 200 g",
+   "status": "publish",
+   "sku": "83966",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19617,
+   "name": "Animonda Carny Kitten – konservai kačiukams su jautiena ir paukštiena, 200 g",
+   "status": "draft",
+   "sku": "83964",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19613,
+   "name": "Animonda Carny Kitten – konservai kačiukams su jautiena, vištiena ir triušiena, 200 g",
+   "status": "publish",
+   "sku": "83967",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19609,
+   "name": "Animonda Carny Kitten – konservai kačiukams su paukštiena ir jautiena, 400 g",
+   "status": "publish",
+   "sku": "83969",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19606,
+   "name": "Animonda Carny Kitten – konservai kačiukams su veršiena, vištiena ir kalakutiena, 200 g",
+   "status": "draft",
+   "sku": "83965",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19602,
+   "name": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 400 g",
+   "status": "publish",
+   "sku": "82732",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19598,
+   "name": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 800 g",
+   "status": "publish",
+   "sku": "82741",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19594,
+   "name": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 400 g",
+   "status": "publish",
+   "sku": "82746",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19590,
+   "name": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 800 g",
+   "status": "publish",
+   "sku": "82747",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19586,
+   "name": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g",
+   "status": "publish",
+   "sku": "82733",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19582,
+   "name": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 800 g",
+   "status": "publish",
+   "sku": "82742",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19578,
+   "name": "Animonda GranCarno Adult Beef + Rabbit with Herbs: konservai suaugusiems šunims su šviežia jautiena ir triušiena, paskaninta žolelėmis, 800 g",
+   "status": "publish",
+   "sku": "82767",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19574,
+   "name": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g",
+   "status": "publish",
+   "sku": "82735",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19570,
+   "name": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 800 g",
+   "status": "publish",
+   "sku": "82744",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19566,
+   "name": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g",
+   "status": "publish",
+   "sku": "82801",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19562,
+   "name": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 800 g",
+   "status": "publish",
+   "sku": "82804",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19557,
+   "name": "Animonda GranCarno Adult Multi-Meat Coctail: konservai suaugusiems šunims Mėsos kokteilis, 400 g",
+   "status": "publish",
+   "sku": "82730",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19553,
+   "name": "Animonda GranCarno Adult Multi-Meat Coctail: konservai suaugusiems šunims Mėsos kokteilis, 800 g",
+   "status": "publish",
+   "sku": "82739",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19549,
+   "name": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 400 g",
+   "status": "publish",
+   "sku": "82802",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19545,
+   "name": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 800 g",
+   "status": "publish",
+   "sku": "82805",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19542,
+   "name": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 400 g",
+   "status": "publish",
+   "sku": "82803",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19538,
+   "name": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 800 g",
+   "status": "publish",
+   "sku": "82806",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19534,
+   "name": "Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g",
+   "status": "publish",
+   "sku": "82409",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19530,
+   "name": "Animonda GranCarno Adult Sensitive Turkey + Potato: konservai jautriems šunims su gryna kalakutiena ir bulvėmis, 400 g",
+   "status": "publish",
+   "sku": "82415",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19526,
+   "name": "Animonda GranCarno Adult konservų rinkinys 6 x 400 g",
+   "status": "publish",
+   "sku": "82700",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    },
+    {
+     "id": 70,
+     "name": "ŠUNIMS",
+     "slug": "sunims"
+    }
+   ]
+  },
+  {
+   "id": 19523,
+   "name": "Animonda GranCarno Adult konservų rinkinys 6 x 400 g (2)",
+   "status": "draft",
+   "sku": "82700549",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    },
+    {
+     "id": 70,
+     "name": "ŠUNIMS",
+     "slug": "sunims"
+    }
+   ]
+  },
+  {
+   "id": 19520,
+   "name": "Animonda GranCarno Adult konservų rinkinys 6 x 400 g, #2",
+   "status": "publish",
+   "sku": "82700160#2",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    },
+    {
+     "id": 70,
+     "name": "ŠUNIMS",
+     "slug": "sunims"
+    }
+   ]
+  },
+  {
+   "id": 19516,
+   "name": "Animonda GranCarno Adult konservų rinkinys 6 x 800 g",
+   "status": "publish",
+   "sku": "82700121",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    },
+    {
+     "id": 70,
+     "name": "ŠUNIMS",
+     "slug": "sunims"
+    }
+   ]
+  },
+  {
+   "id": 19513,
+   "name": "Animonda GranCarno Adult konservų rinkinys 6 x 800 g, #2",
+   "status": "publish",
+   "sku": "82700549#2",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    },
+    {
+     "id": 70,
+     "name": "ŠUNIMS",
+     "slug": "sunims"
+    }
+   ]
+  },
+  {
+   "id": 19508,
+   "name": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 400 g",
+   "status": "publish",
+   "sku": "82734",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19504,
+   "name": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
+   "status": "publish",
+   "sku": "82743",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19500,
+   "name": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 400 g",
+   "status": "publish",
+   "sku": "82736",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19496,
+   "name": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g",
+   "status": "publish",
+   "sku": "82745",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19492,
+   "name": "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 400 g",
+   "status": "publish",
+   "sku": "82753",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19488,
+   "name": "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 800 g",
+   "status": "publish",
+   "sku": "82764",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19483,
+   "name": "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 400g",
+   "status": "publish",
+   "sku": "82751",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19479,
+   "name": "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 800 g",
+   "status": "publish",
+   "sku": "82765",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19475,
+   "name": "Animonda GranCarno Adult: konservai šunims su širdimis, 400 g",
+   "status": "publish",
+   "sku": "82731",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19471,
+   "name": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+   "status": "publish",
+   "sku": "82740",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19469,
+   "name": "Animonda GranCarno Junior Beef + Chicken: konservai šuniukams/jauniems šunims su šviežia jautiena ir vištiena, 400g",
+   "status": "draft",
+   "sku": "82729",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19467,
+   "name": "Animonda GranCarno Junior Beef + Chicken: konservai šuniukams/jauniems šunims su šviežia jautiena ir vištiena, 800 g",
+   "status": "draft",
+   "sku": "82769",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19464,
+   "name": "Animonda GranCarno Junior Beef + Turkey Hearts: konservai šuniukams/jauniems šunims su šviežia jautiena ir kalakutų širdimis, 400g",
+   "status": "draft",
+   "sku": "82728",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19461,
+   "name": "Animonda GranCarno Junior Beef + Turkey Hearts: konservai šuniukams/jauniems šunims su šviežia jautiena ir kalakutų širdimis, 800 g",
+   "status": "draft",
+   "sku": "82768",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19458,
+   "name": "Animonda Vom Feinsten Adult Gourmet centre with Beef, egg and ham - konservai suaugusiems šunims su jautienos, kiaušinių ir kumpio įdaru, 150 g",
+   "status": "draft",
+   "sku": "82667",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19455,
+   "name": "Animonda Vom Feinsten Adult Gourmet centre with Turkey and Ham - konservai suaugusiems šunims su kalakutienos ir kumpio įdaru, 150 g",
+   "status": "draft",
+   "sku": "82332",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19452,
+   "name": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and Salmon – konservai katėms Švelnusis meniu su kalakutiena ir lašiša, 100 g",
+   "status": "publish",
+   "sku": "83941",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19449,
+   "name": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Turkey – konservai katėms Švelnusis meniu su gryna kalakutiena, 100 g",
+   "status": "publish",
+   "sku": "83862",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19446,
+   "name": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su jautiena ir kalakutų širdimis, 150 g",
+   "status": "publish",
+   "sku": "82966",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19443,
+   "name": "Animonda Vom Feinsten Adult with Beef in Milk Sauce – konservai katėms su jautiena pieno padaže, 100 g",
+   "status": "draft",
+   "sku": "83043",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19440,
+   "name": "Animonda Vom Feinsten Adult with Chicken Liver – konservai katėms su vištienos kepenėlėmis, 100 g",
+   "status": "publish",
+   "sku": "83443",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19437,
+   "name": "Animonda Vom Feinsten Adult with Chicken and Milk Core – konservai katėms su vištiena ir pieno įdaru, 100 g",
+   "status": "draft",
+   "sku": "84239",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19434,
+   "name": "Animonda Vom Feinsten Adult with Chicken and Yougurt Core – konservai katėms su vištiena ir jogurto įdaru, 100 g",
+   "status": "draft",
+   "sku": "84241",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19431,
+   "name": "Animonda Vom Feinsten Adult with Chicken in Carrot Sauce – konservai katėms su vištiena morkų padaže, 100 g",
+   "status": "draft",
+   "sku": "84228",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19428,
+   "name": "Animonda Vom Feinsten Adult with Chicken in Milk Sauce – konservai katėms su vištiena pieno padaže, 100 g",
+   "status": "draft",
+   "sku": "83042",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19425,
+   "name": "Animonda Vom Feinsten Adult with Deer - konservai suaugusiems šunims su elniena, 150 g",
+   "status": "publish",
+   "sku": "82979",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19423,
+   "name": "Animonda Vom Feinsten Adult with Lamb in Herbs Sauce – konservai katėms su ėriena žolelių padaže, 100 g",
+   "status": "draft",
+   "sku": "83046",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19420,
+   "name": "Animonda Vom Feinsten Adult with Poultry and Pasta – konservai katėms su paukštiena ir makaronais, 100 g",
+   "status": "draft",
+   "sku": "84221",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19417,
+   "name": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g",
+   "status": "publish",
+   "sku": "83437",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19414,
+   "name": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai suaugusiems šunims su paukštiena ir veršiena, 150 g",
+   "status": "publish",
+   "sku": "82964",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19411,
+   "name": "Animonda Vom Feinsten Adult with Rabbit - konservai suaugusiems šunims su triušiena, 150 g",
+   "status": "publish",
+   "sku": "82980",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19408,
+   "name": "Animonda Vom Feinsten Adult with Rabbit in Cream Sauce – konservai katėms su triušiena grietinėlės padaže, 100 g",
+   "status": "publish",
+   "sku": "83010",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19405,
+   "name": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konservai katėms su lašiša ir krevetėmis, 100 g",
+   "status": "publish",
+   "sku": "83202",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19402,
+   "name": "Animonda Vom Feinsten Adult with Salmon in Herbs Sauce – konservai katėms su lašiša žolelių padaže, 100 g",
+   "status": "draft",
+   "sku": "84229",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19399,
+   "name": "Animonda Vom Feinsten Adult with Turkey Hearts – konservai katėms su kalakutų širdimis, 100 g",
+   "status": "publish",
+   "sku": "83438",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19396,
+   "name": "Animonda Vom Feinsten Adult with Turkey and Ham – konservai suaugusiems šunims su kalakutiena ir kumpiu, 150 g",
+   "status": "publish",
+   "sku": "82989",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19393,
+   "name": "Animonda Vom Feinsten Adult with Turkey and Lamb – konservai suaugusiems šunims su kalakutiena ir ėriena, 150 g",
+   "status": "publish",
+   "sku": "82965",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19390,
+   "name": "Animonda Vom Feinsten Adult with Turkey and Milk Core – konservai katėms su kalakutiena ir pieno įdaru, 100 g",
+   "status": "draft",
+   "sku": "84240",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19387,
+   "name": "Animonda Vom Feinsten Adult with Turkey and Rabbit – konservai katėms su kalakutiena ir triušiena, 100 g",
+   "status": "publish",
+   "sku": "83442",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19384,
+   "name": "Animonda Vom Feinsten Adult with Turkey in Tomato Sauce – konservai katėms su kalakutiena pomidorų padaže, 100 g",
+   "status": "draft",
+   "sku": "84230",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19381,
+   "name": "Animonda Vom Feinsten Adult with Turkey in Yougurt Sauce – konservai katėms su kalakutiena jogurto padaže, 100 g",
+   "status": "publish",
+   "sku": "83013",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19378,
+   "name": "Animonda Vom Feinsten Adult with beef and lamb in sauce – konservai suaugusiems šunims su jautiena ir ėriena padaže, 150 g",
+   "status": "draft",
+   "sku": "82337",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19375,
+   "name": "Animonda Vom Feinsten Adult with chicken and rabbit in sauce - konservai suaugusiems šunims su vištiena ir triušiena padaže, 150 g",
+   "status": "draft",
+   "sku": "82335",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19372,
+   "name": "Animonda Vom Feinsten Adult with turkey and duck in sauce - konservai suaugusiems šunims su kalakutiena ir antiena padaže, 150 g",
+   "status": "draft",
+   "sku": "82336",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19369,
+   "name": "Animonda Vom Feinsten Junior - konservai šuniukams/jauniems šunims su jautiena ir paukštiena, 150 g",
+   "status": "draft",
+   "sku": "82972",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19366,
+   "name": "Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena ir kalakutų širdimis, 150 g",
+   "status": "publish",
+   "sku": "82973",
+   "categories": [
+    {
+     "id": 86,
+     "name": "Animonda konservai šunims",
+     "slug": "animonda-konservai-sunims"
+    },
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19364,
+   "name": "Animonda Vom Feinsten Junior with Turkey and Lamb - konservai šuniukams/jauniems šunims su kalakutiena ir ėriena, 150 g",
+   "status": "draft",
+   "sku": "82316",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19361,
+   "name": "Animonda Vom Feinsten Kitten with Beef – konservai kačiukams su jautiena, 100 g",
+   "status": "publish",
+   "sku": "83448",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19358,
+   "name": "Animonda Vom Feinsten Kitten with Lamb – konservai kačiukams su ėriena, 100 g",
+   "status": "publish",
+   "sku": "83453",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19355,
+   "name": "Animonda Vom Feinsten Kitten with Poultry – konservai kačiukams su paukštiena, 100 g",
+   "status": "publish",
+   "sku": "83449",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19353,
+   "name": "Animonda Vom Feinsten Mousse Adult with Beef and Duck – konservai katėms: Putėsiai su jautiena ir antiena, 85 g",
+   "status": "draft",
+   "sku": "83035",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19351,
+   "name": "Animonda Vom Feinsten Mousse Adult with Chicken and Lamb – konservai katėms: Putėsiai su vištiena ir ėriena, 85 g",
+   "status": "draft",
+   "sku": "83034",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19349,
+   "name": "Animonda Vom Feinsten Mousse Adult with Chicken and Rabbit – konservai katėms: Putėsiai su vištiena ir triušiena, 85 g",
+   "status": "draft",
+   "sku": "83030",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19347,
+   "name": "Animonda Vom Feinsten Mousse Adult with Chicken and Tuna – konservai katėms: Putėsiai su vištiena ir tunu, 85 g",
+   "status": "draft",
+   "sku": "83033",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19345,
+   "name": "Animonda Vom Feinsten Mousse Adult with Salmon and Poultry – konservai katėms: Putėsiai su lašiša ir paukštiena, 85 g",
+   "status": "draft",
+   "sku": "83032",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19343,
+   "name": "Animonda Vom Feinsten Mousse Adult with Turkey and Pheasant – konservai katėms: Putėsiai su kalakutiena ir fazaniena, 85 g",
+   "status": "draft",
+   "sku": "83031",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19340,
+   "name": "Animonda Vom Feinsten Senior with Beef and Chicken – konservai vyresniems šunims su jautiena ir vištiena, 150 g",
+   "status": "draft",
+   "sku": "82321",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19337,
+   "name": "Animonda Vom Feinsten Senior with Poultry and Lamb – konservai vyresniems šunims su paukštiena ir ėriena, 150 g",
+   "status": "draft",
+   "sku": "82623",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    }
+   ]
+  },
+  {
+   "id": 19335,
+   "name": "Animonda konservai katėms su antienos ir kalakutienos filė, 85 g,  Vom Feinsten Adult Feines with Duck and Turkey Fillet",
+   "status": "draft",
+   "sku": "83063",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19333,
+   "name": "Animonda konservai katėms su jautienos ir kalakutienos filė, 85 g, Vom Feinsten Adult Feines with Beef and Turkey Fillet",
+   "status": "draft",
+   "sku": "83060",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19330,
+   "name": "Animonda konservai katėms su paukštienos ir menkės filė, 85 g,  Vom Feinsten Adult Feines with Poultry and Pollock Fillet",
+   "status": "draft",
+   "sku": "83061",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19327,
+   "name": "Animonda konservai katėms su veršienos ir vištienos filė, 85 g,  Vom Feinsten Adult Feines with Veal and Chicken Fillet",
+   "status": "draft",
+   "sku": "83062",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19324,
+   "name": "Animonda konservai katėms su žvėriena ir kalakutienos filė, 85 g,  Vom Feinsten Adult Feines with Wild and Turkey Fillet",
+   "status": "draft",
+   "sku": "83064",
+   "categories": [
+    {
+     "id": 79,
+     "name": "Konservai katėms",
+     "slug": "konservai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19321,
+   "name": "Animonda skanėstai katėms dantų priežiūrai - Milkies Adult Fresh, 30 g",
+   "status": "publish",
+   "sku": "83117",
+   "categories": [
+    {
+     "id": 96,
+     "name": "Skanėstai katėms",
+     "slug": "skanestai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19318,
+   "name": "Animonda skanėstai katėms gerai savijautai - Milkies Adult Wellness, 30 g",
+   "status": "publish",
+   "sku": "83116",
+   "categories": [
+    {
+     "id": 96,
+     "name": "Skanėstai katėms",
+     "slug": "skanestai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19315,
+   "name": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milkies Adult Harmony Anti-Hairball, 30 g",
+   "status": "publish",
+   "sku": "83119",
+   "categories": [
+    {
+     "id": 96,
+     "name": "Skanėstai katėms",
+     "slug": "skanestai-katems"
+    }
+   ]
+  },
+  {
+   "id": 19312,
+   "name": "Animonda skanėstai katėms su Omega-3 - Milkies Adult Balance, 30 g",
+   "status": "publish",
+   "sku": "83118",
+   "categories": [
+    {
+     "id": 96,
+     "name": "Skanėstai katėms",
+     "slug": "skanestai-katems"
+    }
+   ]
+  },
+  {
+   "id": 17735,
+   "name": "Konservų rinkinys IŠRANKIEMS šunims, 6 x 400 g",
+   "status": "publish",
+   "sku": "82700714",
+   "categories": [
+    {
+     "id": 73,
+     "name": "Konservai šunims",
+     "slug": "konservai-sunims"
+    },
+    {
+     "id": 70,
+     "name": "ŠUNIMS",
+     "slug": "sunims"
+    }
+   ]
+  }
+ ]
+}
