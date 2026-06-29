@@ -16,12 +16,23 @@ function jget(path){
   let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
   try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,150)}; }
 }
-function summ(arr){ return (arr||[]).map(p=>({id:p.id, name:(p.name||'').slice(0,70), sku:p.sku, type:p.type, status:p.status, price:p.price, qty:p.stock_quantity, cats:(p.categories||[]).map(c=>c.name).join('|')})); }
+function strip(h){ return (h||'').replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,' ').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim(); }
 (async()=>{
-  const out={ts:new Date().toISOString()};
-  out.q_konservu_rinkinys = summ(jget('/wp-json/wc/v3/products?search=konserv%C5%B3%20rinkinys&per_page=20&status=any'));
-  out.q_mix = summ(jget('/wp-json/wc/v3/products?search=mix&per_page=25&status=any'));
-  out.q_rinkinys_konser = summ(jget('/wp-json/wc/v3/products?search=rinkinys%20konserv&per_page=20&status=any'));
-  commit('konser_search.json', JSON.stringify(out,null,1));
+  const out={ts:new Date().toISOString(), sets:{}};
+  for(const id of [17735, 19526, 19516, 17732, 17729]){
+    const wc = jget('/wp-json/wc/v3/products/'+id);
+    const wp = jget('/wp-json/wp/v2/product/'+id+'?context=edit');
+    out.sets[id] = {
+      name: wc && wc.name,
+      sku: wc && wc.sku,
+      price: wc && wc.price,
+      qty: wc && wc.stock_quantity,
+      images: (wc && wc.images || []).length,
+      cats: (wc&&wc.categories||[]).map(c=>c.name).join('|'),
+      short: strip(wc && wc.short_description).slice(0,400),
+      desc: strip(wp && wp.content && wp.content.raw).slice(0,900)
+    };
+  }
+  commit('sets_detail.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
