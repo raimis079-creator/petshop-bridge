@@ -12,25 +12,19 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function jget(path){
-  const cmd = 'curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
+  const cmd='curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
   let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,300)}; }
+  try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,200)}; }
 }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // 1. plugins — find mix and match
-  const p = jget('/wp-json/wp/v2/plugins?per_page=100');
-  if(Array.isArray(p.data)){
-    out.mnm = p.data.filter(x=>/mix.?and.?match|mix-?match/i.test((x.plugin||'')+' '+(x.name||''))).map(x=>({plugin:x.plugin,name:x.name,status:x.status,version:x.version}));
-    out.total_plugins = p.data.length;
-  } else { out.plugins_err = p.data; }
-  // 2. product types registered (wc/v3 doesnt list types directly; check via products?type=mix_and_match)
-  const t1 = jget('/wp-json/wc/v3/products?type=mix_and_match&per_page=1');
-  out.type_mix_and_match = Array.isArray(t1.data) ? ('ok, count='+t1.data.length) : t1.data;
-  // 3. namespaces — MnM may add wc-mnm route
-  const root = jget('/wp-json/');
-  out.mnm_namespaces = (root.namespaces||[]).filter(n=>/mnm|mix/i.test(n));
-  out.mnm_routes = root.routes ? Object.keys(root.routes).filter(r=>/mnm|mix-and-match|mix_and_match/i.test(r)) : [];
-  commit('mnm_check.json', JSON.stringify(out,null,1));
+  const p = jget('/wp-json/wp/v2/plugins?search=mix');
+  out.plugins_search_mix = Array.isArray(p)? p.map(x=>({plugin:x.plugin,name:x.name,status:x.status,version:x.version})) : p;
+  const p2 = jget('/wp-json/wp/v2/plugins?per_page=100');
+  out.all_count = Array.isArray(p2)? p2.length : 'err';
+  if(Array.isArray(p2)) out.mnm = p2.filter(x=>/mix/i.test((x.plugin||'')+(x.name||''))).map(x=>({plugin:x.plugin,name:x.name,status:x.status,version:x.version}));
+  const t = jget('/wp-json/wc/v3/products?type=mix-and-match&per_page=5');
+  out.existing_mnm_products = Array.isArray(t)? t.map(x=>({id:x.id,name:x.name,status:x.status})) : t;
+  commit('mnm_check2.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
