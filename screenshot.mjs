@@ -11,24 +11,18 @@ function commit(name, str){
   fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
-function curlRaw(method, path){
-  const cmd='curl -sk -w "\\n__HTTP__%{http_code}" -X '+method+' -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
-  try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return '__EXC__'+String(e).slice(0,150); }
+function http(method, path){
+  const cmd='curl -sk -o /dev/null -w "%{http_code}" -X '+method+' -H "Authorization: '+AUTH+'" "'+BASE+path+'"';
+  try{ return execSync(cmd,{encoding:'utf8'}).trim(); }catch(e){ return 'EXC'; }
 }
 (async()=>{
   const log={ts:new Date().toISOString()};
-  // before: does 519 exist?
-  const before = curlRaw('GET','/wp-json/code-snippets/v1/snippets/519');
-  log.before = before.slice(0,200);
-  // deactivate then delete
-  log.deact = curlRaw('POST','/wp-json/code-snippets/v1/snippets/519/deactivate').slice(0,120);
-  log.del = curlRaw('DELETE','/wp-json/code-snippets/v1/snippets/519').slice(0,200);
-  // after: confirm gone
-  const after = curlRaw('GET','/wp-json/code-snippets/v1/snippets/519');
-  log.after = after.slice(0,200);
-  // also confirm the rest route is gone
-  const route = curlRaw('GET','/wp-json/petshop/v1/plugsrc');
-  log.route_after = route.slice(0,160);
-  commit('cleanup519.json', JSON.stringify(log,null,1));
+  log.get_before = http('GET','/wp-json/code-snippets/v1/snippets/519');
+  log.delete_force = http('DELETE','/wp-json/code-snippets/v1/snippets/519?force=true');
+  log.get_after_force = http('GET','/wp-json/code-snippets/v1/snippets/519');
+  log.delete_plain = http('DELETE','/wp-json/code-snippets/v1/snippets/519');
+  log.get_final = http('GET','/wp-json/code-snippets/v1/snippets/519');
+  log.route_final = http('GET','/wp-json/petshop/v1/plugsrc');
+  commit('cleanup519b.json', JSON.stringify(log,null,1));
   console.log("DONE");
 })();
