@@ -15,40 +15,58 @@ function call(method, path, bodyObj){
   let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -H "Accept: application/json"';
   if(bodyObj!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(bodyObj)); cmd+=' -d @/tmp/b.json'; }
   cmd+=' "'+BASE+path+'"';
-  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
+  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
   try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
 }
+const POOL=[17421, 19586, 19574, 17179, 19530, 17156];
+const SHORT='6 skirtingos skardinės po 1. Su daug jautienos, ėrienos, antienos. Be grūdų, sojų, cukraus, dirbtinių dažiklių ir konservantų.';
+const DESC='<h3>Rinkinyje rasite (6 skardinės po 1):</h3><ol>'
+  +'<li>Monge BWild begrūdžiai konservai šunims su antiena, moliūgu ir cukinija, 400 g</li>'
+  +'<li>Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g</li>'
+  +'<li>Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g</li>'
+  +'<li>Ontario konservai šunims su jautiena, paskaninta žolelėmis, 400 g</li>'
+  +'<li>Animonda GranCarno Adult Sensitive Turkey + Potato: konservai jautriems šunims, 400 g</li>'
+  +'<li>Ontario konservai šunims su ėriena, paskaninta šaltalankiu, 400 g</li>'
+  +'</ol><p><em>Gyvūnas visuomet turi turėti šviežio geriamo vandens.</em></p>';
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // OPTIONS on products endpoint to see mnm_child_items schema details
-  const opt = call('OPTIONS','/wp-json/wc/v3/products');
-  const props = opt && opt.schema && opt.schema.properties || {};
-  const ci = props.mnm_child_items || {};
-  out.mnm_child_items_schema = {
-    type: ci.type,
-    desc: (ci.description||'').slice(0,120),
-    items_props: ci.items && ci.items.properties ? Object.keys(ci.items.properties) : null,
-    items_full: ci.items && ci.items.properties ? Object.fromEntries(Object.entries(ci.items.properties).map(([k,v])=>[k,{type:v.type,desc:(v.description||'').slice(0,100)}])) : null
-  };
-  // also any meta hints from existing test (none) - inspect a quickly-created test product's child items raw
-  // create + read + delete probe product
-  const cr = call('POST','/wp-json/wc/v3/products', {
-    name:'PROBE child item schema (delete me)',
-    type:'mix-and-match',
-    status:'draft',
-    sku:'PROBE-CHILD-'+Date.now(),
-    mnm_content_source:'products',
-    mnm_child_items:[{product_id:17421, min_quantity:1, max_quantity:1, default_quantity:1, optional:false}],
-    mnm_min_container_size:1, mnm_max_container_size:1
-  });
-  const pid = cr && cr.id ? cr.id : null;
-  out.probe_id = pid; out.probe_err = (cr && (cr.code||cr.__exc))||null;
-  if(pid){
-    const rb = call('GET','/wp-json/wc/v3/products/'+pid+'?context=edit');
-    out.child_back = (rb.mnm_child_items||[]).map(c=>Object.keys(c));
-    out.child_back_full = (rb.mnm_child_items||[])[0] || null;
-    call('DELETE','/wp-json/wc/v3/products/'+pid+'?force=true');
+  // verify components exist & published
+  out.components=[];
+  for(const id of POOL){
+    const r=call('GET','/wp-json/wc/v3/products/'+id);
+    out.components.push({id, name:(r.name||'').slice(0,55), sku:r.sku, status:r.status, qty:r.stock_quantity, price:r.price});
   }
-  commit('mnm_child_schema.json', JSON.stringify(out,null,1));
-  console.log("DONE pid="+pid);
+  // create MnM box
+  const cr = call('POST','/wp-json/wc/v3/products', {
+    name:'Rinkinys išrankiems šunims · 6×400g',
+    type:'mix-and-match',
+    status:'publish',
+    sku:'RINK-ISRANK-6x400',
+    regular_price:'13.90',
+    short_description: SHORT,
+    description: DESC,
+    categories:[{id:682}],
+    mnm_content_source:'products',
+    mnm_child_items: POOL.map(pid=>({product_id:pid})),
+    mnm_min_container_size:6,
+    mnm_max_container_size:6,
+    mnm_priced_per_product:false
+  });
+  out.created = {id:(cr&&cr.id)||null, sku:cr&&cr.sku, status:cr&&cr.status, permalink:cr&&cr.permalink, err:(cr&&(cr.code||cr.__exc||(cr.__pe?cr.raw:null)))||null};
+  if(cr && cr.id){
+    const rb = call('GET','/wp-json/wc/v3/products/'+cr.id+'?context=edit');
+    out.verify = {
+      type: rb.type,
+      price: rb.price,
+      min: rb.mnm_min_container_size,
+      max: rb.mnm_max_container_size,
+      priced_per: rb.mnm_priced_per_product,
+      pool: (rb.mnm_child_items||[]).map(c=>c.product_id),
+      pool_count: (rb.mnm_child_items||[]).length,
+      cats: (rb.categories||[]).map(c=>c.id+':'+c.name).join('|'),
+      purchasable: rb.purchasable
+    };
+  }
+  commit('rinkinys_built.json', JSON.stringify(out,null,1));
+  console.log("DONE id="+(cr&&cr.id));
 })();
