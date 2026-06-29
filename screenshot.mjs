@@ -35,10 +35,19 @@ function commit(name,str){const url='https://api.github.com/repos/'+repo+'/conte
       if(r&&r.status()===404){out[p.petshopId]={status:404};continue;}
       await page.waitForTimeout(1500);
       // Surask šerimo lenteles - paimkim viso teksto bloko apatinę dalį (po "Šėrimo")
+      // Paspaudžiam Description tab
+      try{await page.click('a[href="#description"]',{timeout:3000});await page.waitForTimeout(500);}catch(e){}
       const data=await page.evaluate(()=>{
         const main=document.body.innerText;
-        const idx=main.search(/Šėrimo\s+(?:rekomendacij|instrukcij|norm)/i);
-        if(idx<0)return {err:'no_marker'};
+        // Bandymai keliais markeriais
+        let idx=main.search(/Šėrimo\s*rekomendacij/i);
+        if(idx<0)idx=main.search(/Šėrimo\s*instrukcij/i);
+        if(idx<0)idx=main.search(/Šėrimo\s*norm/i);
+        if(idx<0)idx=main.search(/Šuns svoris/i);
+        if(idx<0){
+          const html=document.body.innerHTML.substring(0,3000);
+          return {err:'no_marker',hint:html.substring(0,500)};
+        }
         const block=main.substring(idx,idx+2500);
         return {block};
       });
