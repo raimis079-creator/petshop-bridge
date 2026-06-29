@@ -11,20 +11,31 @@ function commit(name, str){
   fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
-function jget(path){
-  const cmd='curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
-  let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,200)}; }
+function curlRaw(method, path){
+  const cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
+  let b=''; try{ b=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
+  try{ return JSON.parse(b); }catch(e){ return {__pe:true, raw:b.slice(0,300)}; }
 }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const p = jget('/wp-json/wp/v2/plugins?search=mix');
-  out.plugins_search_mix = Array.isArray(p)? p.map(x=>({plugin:x.plugin,name:x.name,status:x.status,version:x.version})) : p;
-  const p2 = jget('/wp-json/wp/v2/plugins?per_page=100');
-  out.all_count = Array.isArray(p2)? p2.length : 'err';
-  if(Array.isArray(p2)) out.mnm = p2.filter(x=>/mix/i.test((x.plugin||'')+(x.name||''))).map(x=>({plugin:x.plugin,name:x.name,status:x.status,version:x.version}));
-  const t = jget('/wp-json/wc/v3/products?type=mix-and-match&per_page=5');
-  out.existing_mnm_products = Array.isArray(t)? t.map(x=>({id:x.id,name:x.name,status:x.status})) : t;
-  commit('mnm_check2.json', JSON.stringify(out,null,1));
+  // OPTIONS on products endpoint to read schema
+  const opt = curlRaw('OPTIONS','/wp-json/wc/v3/products');
+  const props = (opt && opt.schema && opt.schema.properties) ? opt.schema.properties : null;
+  if(props){
+    out.all_prop_count = Object.keys(props).length;
+    // MnM-related fields
+    const rx = /mnm|mix|container|contents|priced_per|shipped_per|min_container|max_container|child/i;
+    out.mnm_fields = {};
+    for(const k of Object.keys(props)){
+      if(rx.test(k)){
+        out.mnm_fields[k] = { type: props[k].type, desc: (props[k].description||'').slice(0,120), context: props[k].context };
+      }
+    }
+    // also list ALL property keys (compact) to spot anything
+    out.all_props = Object.keys(props);
+  } else {
+    out.options_raw = (opt&&opt.__pe)? opt.raw : (opt? Object.keys(opt): opt);
+  }
+  commit('mnm_schema.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
