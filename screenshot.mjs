@@ -16,23 +16,24 @@ function jget(path){
   let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
   try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,150)}; }
 }
-function strip(h){ return (h||'').replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,' ').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim(); }
+function srch(q){ return jget('/wp-json/wc/v3/products?search='+encodeURIComponent(q)+'&per_page=8&status=any'); }
+function brief(arr){ return (arr||[]).filter(p=>p&&p.id).map(p=>({id:p.id, name:(p.name||'').slice(0,62), sku:p.sku, type:p.type, st:p.status, price:p.price, qty:p.stock_quantity, cat:(p.categories||[]).map(c=>c.name).slice(0,2).join('|')})); }
 (async()=>{
-  const out={ts:new Date().toISOString(), sets:{}};
-  for(const id of [17735, 19526, 19516, 17732, 17729]){
-    const wc = jget('/wp-json/wc/v3/products/'+id);
-    const wp = jget('/wp-json/wp/v2/product/'+id+'?context=edit');
-    out.sets[id] = {
-      name: wc && wc.name,
-      sku: wc && wc.sku,
-      price: wc && wc.price,
-      qty: wc && wc.stock_quantity,
-      images: (wc && wc.images || []).length,
-      cats: (wc&&wc.categories||[]).map(c=>c.name).join('|'),
-      short: strip(wc && wc.short_description).slice(0,400),
-      desc: strip(wp && wp.content && wp.content.raw).slice(0,900)
-    };
-  }
-  commit('sets_detail.json', JSON.stringify(out,null,1));
+  const out={ts:new Date().toISOString(), queries:{}};
+  const Q = {
+    '1_monge_bwild_antiena':'BWild antiena',
+    '2_animonda_beef_lamb':'GranCarno Beef Lamb',
+    '3_animonda_beef':'GranCarno Adult Beef',
+    '4_ontario_beef_zoleles':'Ontario jautiena žolel',
+    '5_animonda_sens_turkey':'GranCarno Sensitive kalakut',
+    '6_ontario_lamb_saltalankis':'Ontario ėriena šaltalank'
+  };
+  for(const k in Q){ out.queries[k] = brief(srch(Q[k])); }
+  // also broad Animonda GranCarno 400g landscape + Ontario + Monge BWild
+  out.broad_animonda = brief(jget('/wp-json/wc/v3/products?search=GranCarno&per_page=15&status=any'));
+  // MnM per-item quantity capability: inspect child item schema on a real MnM product (none exist now) -> check product schema OPTIONS
+  const opt = jget('/wp-json/wc/v3/products');
+  // instead inspect mnm_child_items definition via OPTIONS
+  commit('komponentu_paieska.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
