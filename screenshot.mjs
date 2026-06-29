@@ -11,31 +11,48 @@ function commit(name, str){
   fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
-function curlRaw(method, path){
-  const cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
-  let b=''; try{ b=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return JSON.parse(b); }catch(e){ return {__pe:true, raw:b.slice(0,300)}; }
+function call(method, path, bodyObj){
+  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -H "Accept: application/json"';
+  if(bodyObj!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(bodyObj)); cmd+=' -d @/tmp/b.json'; }
+  cmd+=' "'+BASE+path+'"';
+  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
+  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,400)}; }
 }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // OPTIONS on products endpoint to read schema
-  const opt = curlRaw('OPTIONS','/wp-json/wc/v3/products');
-  const props = (opt && opt.schema && opt.schema.properties) ? opt.schema.properties : null;
-  if(props){
-    out.all_prop_count = Object.keys(props).length;
-    // MnM-related fields
-    const rx = /mnm|mix|container|contents|priced_per|shipped_per|min_container|max_container|child/i;
-    out.mnm_fields = {};
-    for(const k of Object.keys(props)){
-      if(rx.test(k)){
-        out.mnm_fields[k] = { type: props[k].type, desc: (props[k].description||'').slice(0,120), context: props[k].context };
-      }
-    }
-    // also list ALL property keys (compact) to spot anything
-    out.all_props = Object.keys(props);
-  } else {
-    out.options_raw = (opt&&opt.__pe)? opt.raw : (opt? Object.keys(opt): opt);
+  const body={
+    name:'TEST Konservų rinkinys 6 vnt (MnM)',
+    type:'mix-and-match',
+    status:'publish',
+    sku:'TEST-MNM-6',
+    regular_price:'14.99',
+    mnm_priced_per_product:false,
+    mnm_min_container_size:6,
+    mnm_max_container_size:6,
+    mnm_content_source:'products',
+    mnm_child_items:[
+      {product_id:17397},
+      {product_id:17394},
+      {product_id:17400},
+      {product_id:33550}
+    ],
+    categories:[{id:682}]
+  };
+  const cr = call('POST','/wp-json/wc/v3/products', body);
+  out.create = {id:(cr&&cr.id)||null, type:cr&&cr.type, status:cr&&cr.status, permalink:cr&&cr.permalink, err:(cr&&(cr.__exc||cr.code||(cr.__pe?cr.raw:null)))||null};
+  const pid = cr && cr.id ? cr.id : null;
+  if(pid){
+    // read back with context=edit to confirm mnm config
+    const rb = call('GET','/wp-json/wc/v3/products/'+pid+'?context=edit');
+    out.readback = {
+      id:rb.id, type:rb.type, regular_price:rb.regular_price,
+      mnm_min:rb.mnm_min_container_size, mnm_max:rb.mnm_max_container_size,
+      mnm_content_source:rb.mnm_content_source, mnm_priced_per_product:rb.mnm_priced_per_product,
+      child_items: Array.isArray(rb.mnm_child_items)? rb.mnm_child_items.map(c=>({product_id:c.product_id, item_id:c.child_item_id||c.id, sku:c.sku})) : rb.mnm_child_items,
+      categories: (rb.categories||[]).map(c=>({id:c.id,name:c.name})),
+      purchasable: rb.purchasable, stock_status: rb.stock_status
+    };
   }
-  commit('mnm_schema.json', JSON.stringify(out,null,1));
-  console.log("DONE");
+  commit('mnm_box.json', JSON.stringify(out,null,1));
+  console.log("DONE pid="+pid);
 })();
