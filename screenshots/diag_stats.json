@@ -1,6 +1,988 @@
 {
- "total": 0,
- "processed": 0,
- "brandStats": {},
- "bareCount": 0
+ "total": 2709,
+ "processed": 1459,
+ "brandStats": {
+  "GENIA": {
+   "total": 8,
+   "b2b": 8,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 8,
+   "err": 0
+  },
+  "Super Benek": {
+   "total": 15,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 7,
+   "err": 8
+  },
+  "Josera": {
+   "total": 214,
+   "b2b": 167,
+   "shaltinis": 0,
+   "hasSerim": 121,
+   "hasTable": 163,
+   "bare": 4,
+   "err": 47
+  },
+  "K-9": {
+   "total": 11,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 2,
+   "err": 9
+  },
+  "Trixie": {
+   "total": 276,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 223,
+   "err": 53
+  },
+  "Eukanuba": {
+   "total": 37,
+   "b2b": 22,
+   "shaltinis": 0,
+   "hasSerim": 35,
+   "hasTable": 35,
+   "bare": 0,
+   "err": 2
+  },
+  "Farmina": {
+   "total": 155,
+   "b2b": 117,
+   "shaltinis": 0,
+   "hasSerim": 155,
+   "hasTable": 117,
+   "bare": 0,
+   "err": 0
+  },
+  "Dogoteka": {
+   "total": 19,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 1,
+   "hasTable": 0,
+   "bare": 17,
+   "err": 1
+  },
+  "Chewllagen": {
+   "total": 21,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 18,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Nobby": {
+   "total": 80,
+   "b2b": 76,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 76,
+   "err": 4
+  },
+  "NO_BRAND": {
+   "total": 139,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 139
+  },
+  "NOBLEZA": {
+   "total": 67,
+   "b2b": 67,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 67,
+   "err": 0
+  },
+  "HAPPET": {
+   "total": 49,
+   "b2b": 49,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 4,
+   "bare": 45,
+   "err": 0
+  },
+  "GreenPetFood": {
+   "total": 8,
+   "b2b": 8,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 8,
+   "bare": 0,
+   "err": 0
+  },
+  "Churu": {
+   "total": 64,
+   "b2b": 56,
+   "shaltinis": 0,
+   "hasSerim": 14,
+   "hasTable": 56,
+   "bare": 0,
+   "err": 8
+  },
+  "CIAO": {
+   "total": 5,
+   "b2b": 5,
+   "shaltinis": 0,
+   "hasSerim": 2,
+   "hasTable": 5,
+   "bare": 0,
+   "err": 0
+  },
+  "FURMINATOR": {
+   "total": 29,
+   "b2b": 29,
+   "shaltinis": 0,
+   "hasSerim": 7,
+   "hasTable": 0,
+   "bare": 22,
+   "err": 0
+  },
+  "VETOQUINOL": {
+   "total": 10,
+   "b2b": 10,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 10,
+   "err": 0
+  },
+  "NATURE'S MIR": {
+   "total": 10,
+   "b2b": 10,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 10,
+   "err": 0
+  },
+  "COMFY": {
+   "total": 39,
+   "b2b": 39,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 2,
+   "bare": 37,
+   "err": 0
+  },
+  "WANPY": {
+   "total": 18,
+   "b2b": 18,
+   "shaltinis": 0,
+   "hasSerim": 13,
+   "hasTable": 17,
+   "bare": 1,
+   "err": 0
+  },
+  "JOE'S_CAT": {
+   "total": 2,
+   "b2b": 2,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 2,
+   "err": 0
+  },
+  "FLEXI": {
+   "total": 66,
+   "b2b": 66,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 66,
+   "err": 0
+  },
+  "DRAKONAPE": {
+   "total": 1,
+   "b2b": 1,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 1,
+   "err": 0
+  },
+  "KAROO WILD": {
+   "total": 3,
+   "b2b": 3,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 3,
+   "bare": 0,
+   "err": 0
+  },
+  "CHIPSI": {
+   "total": 2,
+   "b2b": 2,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 2,
+   "err": 0
+  },
+  "HAP": {
+   "total": 14,
+   "b2b": 14,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 9,
+   "bare": 5,
+   "err": 0
+  },
+  "CAZO": {
+   "total": 4,
+   "b2b": 4,
+   "shaltinis": 0,
+   "hasSerim": 4,
+   "hasTable": 4,
+   "bare": 0,
+   "err": 0
+  },
+  "Exclusion": {
+   "total": 78,
+   "b2b": 37,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 37,
+   "bare": 0,
+   "err": 41
+  },
+  "CANDIOLI": {
+   "total": 16,
+   "b2b": 16,
+   "shaltinis": 0,
+   "hasSerim": 3,
+   "hasTable": 6,
+   "bare": 9,
+   "err": 0
+  },
+  "MERVUE": {
+   "total": 11,
+   "b2b": 11,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 11,
+   "bare": 0,
+   "err": 0
+  },
+  "SANTOVITA": {
+   "total": 2,
+   "b2b": 2,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 2,
+   "bare": 0,
+   "err": 0
+  },
+  "GIGI": {
+   "total": 14,
+   "b2b": 14,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 12,
+   "bare": 2,
+   "err": 0
+  },
+  "BAZYL": {
+   "total": 3,
+   "b2b": 3,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 3,
+   "err": 0
+  },
+  "COSYPET": {
+   "total": 1,
+   "b2b": 1,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 1,
+   "err": 0
+  },
+  "COSYCAT": {
+   "total": 2,
+   "b2b": 1,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 1,
+   "err": 1
+  },
+  "ECOMFY": {
+   "total": 13,
+   "b2b": 13,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 13,
+   "err": 0
+  },
+  "ANTOS": {
+   "total": 21,
+   "b2b": 21,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 21,
+   "bare": 0,
+   "err": 0
+  },
+  "TRULY": {
+   "total": 15,
+   "b2b": 15,
+   "shaltinis": 0,
+   "hasSerim": 10,
+   "hasTable": 15,
+   "bare": 0,
+   "err": 0
+  },
+  "8IN1": {
+   "total": 21,
+   "b2b": 21,
+   "shaltinis": 0,
+   "hasSerim": 5,
+   "hasTable": 17,
+   "bare": 2,
+   "err": 0
+  },
+  "Vetocanis": {
+   "total": 12,
+   "b2b": 7,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 7,
+   "err": 5
+  },
+  "EXPERTUS": {
+   "total": 4,
+   "b2b": 4,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 4,
+   "err": 0
+  },
+  "BIOVETA": {
+   "total": 5,
+   "b2b": 5,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 5,
+   "err": 0
+  },
+  "LAND FLEISCH": {
+   "total": 20,
+   "b2b": 20,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 20,
+   "bare": 0,
+   "err": 0
+  },
+  "SMART BONES": {
+   "total": 13,
+   "b2b": 13,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 13,
+   "err": 0
+  },
+  "LITTLE ONE": {
+   "total": 24,
+   "b2b": 24,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 20,
+   "bare": 4,
+   "err": 0
+  },
+  "CAT'S_BEST": {
+   "total": 11,
+   "b2b": 11,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 11,
+   "err": 0
+  },
+  "Real Dog": {
+   "total": 21,
+   "b2b": 2,
+   "shaltinis": 2,
+   "hasSerim": 6,
+   "hasTable": 2,
+   "bare": 0,
+   "err": 15
+  },
+  "Family Cat": {
+   "total": 5,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 2,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Monge": {
+   "total": 119,
+   "b2b": 53,
+   "shaltinis": 53,
+   "hasSerim": 77,
+   "hasTable": 53,
+   "bare": 0,
+   "err": 42
+  },
+  "Family Dog": {
+   "total": 7,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 2,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 5
+  },
+  "Duvo+": {
+   "total": 47,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 47
+  },
+  "Romar": {
+   "total": 27,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 1,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 26
+  },
+  "Gnatek": {
+   "total": 29,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 1,
+   "hasTable": 0,
+   "bare": 1,
+   "err": 27
+  },
+  "Miamor": {
+   "total": 33,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 33
+  },
+  "BeloCat": {
+   "total": 61,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 61
+  },
+  "Ambrosia": {
+   "total": 15,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 15
+  },
+  "Animonda": {
+   "total": 64,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 64
+  },
+  "Hau&amp;Miau": {
+   "total": 25,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 25
+  },
+  "Matteo": {
+   "total": 3,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Apollo": {
+   "total": 3,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Aquaris": {
+   "total": 6,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 6
+  },
+  "Georplast": {
+   "total": 69,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 69
+  },
+  "Catit": {
+   "total": 8,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 8
+  },
+  "Dingo": {
+   "total": 13,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 13
+  },
+  "bioVETERINARY": {
+   "total": 6,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 6
+  },
+  "Bosch": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 1
+  },
+  "Deli Nature": {
+   "total": 16,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 16
+  },
+  "Dolina Noteci": {
+   "total": 5,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 5
+  },
+  "Barry King": {
+   "total": 3,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Yarro": {
+   "total": 4,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 4
+  },
+  "Ziarnko": {
+   "total": 3,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Frendi": {
+   "total": 8,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 8
+  },
+  "GimCat": {
+   "total": 36,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 6,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 30
+  },
+  "Green Petfood": {
+   "total": 3,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Hikari": {
+   "total": 40,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 40
+  },
+  "MPS": {
+   "total": 7,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 7
+  },
+  "Chuckit!": {
+   "total": 2,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 2
+  },
+  "Katrinex": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 1
+  },
+  "Dog Fantasy": {
+   "total": 3,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "4Dogs": {
+   "total": 11,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 11
+  },
+  "Ontario": {
+   "total": 56,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 56
+  },
+  "ALDA": {
+   "total": 5,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 5
+  },
+  "Ad Bi": {
+   "total": 12,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 12
+  },
+  "Nina Ottosson": {
+   "total": 7,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 7
+  },
+  "Zolux": {
+   "total": 15,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 15
+  },
+  "PET NOVA": {
+   "total": 8,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 8
+  },
+  "GimDog": {
+   "total": 7,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 1,
+   "err": 6
+  },
+  "Lessie Land": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 1
+  },
+  "Pess": {
+   "total": 6,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 6
+  },
+  "Prins": {
+   "total": 23,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 23
+  },
+  "Quattro": {
+   "total": 64,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 64
+  },
+  "Royal Canin": {
+   "total": 25,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 25
+  },
+  "Rasco": {
+   "total": 11,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 11
+  },
+  "Bon Appetit": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 1
+  },
+  "SEECURITY": {
+   "total": 10,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 10
+  },
+  "CHAMP RICHER": {
+   "total": 2,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 2
+  },
+  "One Wish": {
+   "total": 3,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 3
+  },
+  "Petshop.lt": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 1
+  },
+  "Coockoo": {
+   "total": 24,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 24
+  },
+  "Sum-Plast": {
+   "total": 36,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 36
+  },
+  "BEEZTEES": {
+   "total": 4,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 4
+  },
+  "ShinyCat": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 1
+  },
+  "DoggyeBag": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 1,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 0
+  },
+  "Vitapol": {
+   "total": 5,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 4,
+   "hasTable": 0,
+   "bare": 1,
+   "err": 0
+  },
+  "Gimborn": {
+   "total": 2,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 2,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 0
+  },
+  "Gemon": {
+   "total": 17,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 17,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 0
+  },
+  "Biokat's": {
+   "total": 1,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 0,
+   "hasTable": 0,
+   "bare": 1,
+   "err": 0
+  },
+  "IAMS": {
+   "total": 5,
+   "b2b": 0,
+   "shaltinis": 0,
+   "hasSerim": 5,
+   "hasTable": 0,
+   "bare": 0,
+   "err": 0
+  }
+ },
+ "bareCount": 684
 }
