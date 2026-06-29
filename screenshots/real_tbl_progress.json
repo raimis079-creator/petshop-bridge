@@ -1,0 +1,90 @@
+{
+ "loopCnt": 5,
+ "stages": {
+  "start": 0,
+  "fetched": 4,
+  "planned": 4,
+  "passed": 4,
+  "failed": 0,
+  "applied": 4
+ },
+ "planned": [
+  {
+   "id": "12828",
+   "title": "Real Dog Sensitive 15kg pašaras suaugusiems šunims su ėriena ir ryžiais",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "oldContentPreserved": true,
+    "md5Changed": true,
+    "noScript": true,
+    "htmlIntact": true
+   },
+   "oldLen": 3409,
+   "newLen": 6470
+  },
+  {
+   "id": "14276",
+   "title": "Real Dog Adult All Breeds su arkliena ir ryžiais 20kg",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "oldContentPreserved": true,
+    "md5Changed": true,
+    "noScript": true,
+    "htmlIntact": true
+   },
+   "oldLen": 2217,
+   "newLen": 3592
+  },
+  {
+   "id": "14277",
+   "title": "Real Dog Adult All Breeds su kiauliena ir ryžiais 20kg",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "oldContentPreserved": true,
+    "md5Changed": true,
+    "noScript": true,
+    "htmlIntact": true
+   },
+   "oldLen": 2093,
+   "newLen": 3468
+  }
+ ],
+ "apply": [
+  {
+   "id": "12828",
+   "verLen": 6543,
+   "newLen": 6470,
+   "lossless": true,
+   "oldLen": 3409
+  },
+  {
+   "id": "14276",
+   "verLen": 3624,
+   "newLen": 3592,
+   "lossless": true,
+   "oldLen": 2217
+  },
+  {
+   "id": "14277",
+   "verLen": 3500,
+   "newLen": 3468,
+   "lossless": true,
+   "oldLen": 2093
+  }
+ ]
+}
