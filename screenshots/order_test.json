@@ -1,0 +1,33 @@
+{
+ "steps": [
+  "added to cart",
+  "selected bacs #payment_method_bacs",
+  "clicked place_order"
+ ],
+ "anatra_before": 19,
+ "final_url": "https://dev.avesa.lt/checkout/order-received/34141/?key=wc_order_2kGuRihkNKv99",
+ "order_id": 34141,
+ "anatra_after": 13,
+ "order": {
+  "id": 34141,
+  "status": "on-hold",
+  "total": "18.98",
+  "payment": "Bankinis pavedimas",
+  "line_items": [
+   {
+    "name": "TEST Konservų rinkinys 6 vnt (MnM)",
+    "qty": 1,
+    "sku": "TEST-MNM-6",
+    "product_id": 34140,
+    "total": "12.39"
+   },
+   {
+    "name": "Monge Monoproteico Solo Anatra – Monoproteini",
+    "qty": 6,
+    "sku": "M14434",
+    "product_id": 17397,
+    "total": "0.00"
+   }
+  ]
+ }
+}
