@@ -1,27 +1,54 @@
 import { execSync } from "child_process";
 import fs from "fs";
-import { chromium } from "playwright";
 const env={...process.env};
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function putBin(name,buf){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:buf.toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});}
+function commit(name,str){const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')};if(sha)body.sha=sha;fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));try{return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}).trim();}catch(e){return 'ERR';}}
 
-(async()=>{
-  const browser=await chromium.launch({args:['--no-sandbox']});
-  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0',viewport:{width:1200,height:900}});
-  const page=await ctx.newPage();
-  // BE ?ps_desc=1 — globalus testas
-  for(const id of [19479,19574,17394,14276,12660,12586,19355,19708]){
-    await page.goto(`https://dev.avesa.lt/?p=${id}`,{waitUntil:'domcontentloaded',timeout:45000});
-    await page.waitForTimeout(3500);
-    await page.evaluate(()=>{
-      const el=document.querySelector('.ps-desc-acc, #tab-description, .woocommerce-Tabs-panel--description');
-      if(el)el.scrollIntoView({block:'start'});
-    });
-    await page.waitForTimeout(800);
-    const buf=await page.screenshot({fullPage:true});
-    putBin(`gl_${id}.png`,buf);
+const env2={...process.env,WP_PASS_CLEAN:(process.env.WP_APP_PASS||'').replace(/\s+/g,'')};
+
+// Surask Rasco brend ID
+const brR=execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products/brands?per_page=100&search=Rasco"`,{env:env2,encoding:'utf8',maxBuffer:50000000});
+const brands=JSON.parse(brR);
+console.log("Rasco brands:",brands.map(b=>`${b.id}=${b.name}(${b.count})`).join(', '));
+
+const skus=[];
+for(const b of brands){
+  for(let p=1;p<=3;p++){
+    try{
+      const r=execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wc/v3/products?per_page=100&page=${p}&brand=${b.id}&status=publish&_fields=id,name,sku,categories"`,{env:env2,encoding:'utf8',maxBuffer:50000000});
+      const arr=JSON.parse(r);
+      if(!arr||!arr.length)break;
+      skus.push(...arr);
+      if(arr.length<100)break;
+    }catch(e){break;}
   }
-  await ctx.close();
-  await browser.close();
-  console.log("done");
-})();
+}
+
+// Paimkim turinį kiekvieno
+function dec(s){return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;amp;/g,'&amp;').replace(/&amp;nbsp;/g,'&nbsp;');}
+const out=[];
+for(const s of skus){
+  try{
+    const r=execSync(`curl -sk --max-time 30 -u "$WP_USER:$WP_PASS_CLEAN" "https://dev.avesa.lt/wp-json/wp/v2/product/${s.id}?context=edit&_fields=id,title,content"`,{env:env2,encoding:'utf8',maxBuffer:50000000});
+    const j=JSON.parse(r);
+    let c=(j.content&&j.content.raw)||'';
+    let prev;let it=0;do{prev=c;c=dec(c);it++;}while(prev!==c&&it<5);
+    const sIdx=c.search(/Šėrim/i);
+    out.push({
+      id:s.id,
+      name:s.name,
+      sku:s.sku||'',
+      cat:(s.categories||[]).map(c=>c.name).join('|'),
+      cLen:c.length,
+      hasB2B:c.includes('b2b-black'),
+      hasSerim:sIdx>=0,
+      hasTable:/<table/i.test(c),
+      hasSudet:/Sudėt/i.test(c),
+      hasAnalit:/Analitin/i.test(c),
+      ser_ctx:sIdx>=0?c.substring(sIdx,sIdx+200):'NO_SERIM',
+      content_head:c.substring(0,1200)
+    });
+  }catch(e){out.push({id:s.id,err:String(e).slice(0,100)});}
+}
+commit('rasco_recon.json',JSON.stringify({brands,skus:out},null,1));
+console.log("done");
