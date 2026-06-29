@@ -1,0 +1,28 @@
+{
+ "log": {
+  "ts": "2026-06-29T15:02:24.069Z",
+  "create_id": 521,
+  "create_err": "add_action('rest_api_init', function () {\n  register_rest_route('petshop/v1', '/wccom', array(\n    'methods' => 'GET',\n    'permission_callback' => function () { return current_user_can('manage_options'); },\n    'callback' => function () {\n      $out = array();\n      $out['helper_class'] = class_exists('WC_Helper');\n      if (class_exists('WC_Helper') && method_exists('WC_Helper','is_site_connected')) { $out['is_site_connected'] = (bool) WC_Helper::is_site_connected(); } else { $out['is_site_connected'] = 'method_missing'; }\n      $hd = get_option('woocommerce_helper_data');\n      $out['helper_data_present'] = !empty($hd);\n      if (class_exists('WC_Helper') && method_exists('WC_Helper','get_subscriptions')) {\n        $subs = WC_Helper::get_subscriptions();\n        $out['subscriptions_count'] = is_array($subs) ? count($subs) : 'n/a';\n        if (is_array($subs)) { $out['subscriptions'] = array_values(array_map(function($s){ return array('product_name'=>isset($s['product_name'])?$s['product_name']:'', 'expires'=>isset($s['expires'])?$s['expires']:'', 'expired'=>isset($s['expired'])?$s['expired']:null, 'product_id'=>isset($s['product_id'])?$s['product_id']:''); }, array_slice($subs,0,40))); }\n      } else { $out['subscriptions_count']='no_method'; }\n      return $out;\n    }\n  ));\n});",
+  "route_after": "rest_no_route"
+ },
+ "result": {
+  "helper_class": true,
+  "is_site_connected": true,
+  "helper_data_present": true,
+  "subscriptions_count": 2,
+  "subscriptions": [
+   {
+    "product_name": "WooPayments",
+    "expires": 1814281068,
+    "expired": false,
+    "product_id": 5278104
+   },
+   {
+    "product_name": "WooCommerce.com Update Manager",
+    "expires": 1814281068,
+    "expired": false,
+    "product_id": 18734003407318
+   }
+  ]
+ }
+}
