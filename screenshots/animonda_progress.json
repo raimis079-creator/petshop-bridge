@@ -1,0 +1,90 @@
+{
+ "loopCnt": 10,
+ "stages": {
+  "start": 0,
+  "fetched": 9,
+  "planned": 9,
+  "passed": 9,
+  "failed": 0,
+  "applied": 9
+ },
+ "planned": [
+  {
+   "id": "19396",
+   "title": "Animonda Vom Feinsten Adult with Turkey and Ham – konservai suaugusiems šunims su kalakutiena ir kumpiu, 150 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1092,
+   "newLen": 2114,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19399",
+   "title": "Animonda Vom Feinsten Adult with Turkey Hearts – konservai katėms su kalakutų širdimis, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1093,
+   "newLen": 2115,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19405",
+   "title": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konservai katėms su lašiša ir krevetėmis, 100 g",
+   "pass": true,
+   "guards": {
+    "lengthGrew": true,
+    "hasShaltinis": true,
+    "hasB2B": true,
+    "hasSerimo": true,
+    "hasTable": true,
+    "md5Changed": true,
+    "noScript": true
+   },
+   "oldLen": 1129,
+   "newLen": 2151,
+   "type": "KG_PAIRS"
+  }
+ ],
+ "apply": [
+  {
+   "id": "19396",
+   "verLen": 2145,
+   "newLen": 2114,
+   "lossless": true,
+   "oldLen": 1092,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19399",
+   "verLen": 2129,
+   "newLen": 2115,
+   "lossless": true,
+   "oldLen": 1093,
+   "type": "KG_PAIRS"
+  },
+  {
+   "id": "19405",
+   "verLen": 2165,
+   "newLen": 2151,
+   "lossless": true,
+   "oldLen": 1129,
+   "type": "KG_PAIRS"
+  }
+ ]
+}
