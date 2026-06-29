@@ -1,6 +1,720 @@
 {
- "ts": "2026-06-29T12:04:23.176Z",
+ "ts": "2026-06-29T12:06:08.495Z",
  "base": "https://dev.avesa.lt",
- "plugins_exc": "TypeError: fetch failed",
- "cats_exc": "TypeError: fetch failed"
+ "plugins_status": 200,
+ "plugins_count": 23,
+ "mix_match": [],
+ "composite": [],
+ "bundles": [],
+ "plugins": [
+  {
+   "plugin": "code-snippets/code-snippets",
+   "status": "active",
+   "version": "3.9.6"
+  },
+  {
+   "plugin": "loco-translate/loco",
+   "status": "active",
+   "version": "2.8.5"
+  },
+  {
+   "plugin": "woo-payment-gateway-paysera/paysera",
+   "status": "active",
+   "version": "3.12.0"
+  },
+  {
+   "plugin": "woocommerce-pdf-invoices-packing-slips/woocommerce-pdf-invoices-packingslips",
+   "status": "inactive",
+   "version": "5.14.0"
+  },
+  {
+   "plugin": "petshop-fonts/petshop-fonts",
+   "status": "active",
+   "version": "1.0"
+  },
+  {
+   "plugin": "petshop-attributes/petshop-attributes",
+   "status": "active",
+   "version": "1.0.0"
+  },
+  {
+   "plugin": "petshop-fbt/petshop-fbt",
+   "status": "active",
+   "version": "1.4.3"
+  },
+  {
+   "plugin": "petshop-feeds/petshop-feeds",
+   "status": "active",
+   "version": "1.0.0"
+  },
+  {
+   "plugin": "petshop-pragma/petshop-pragma",
+   "status": "active",
+   "version": "1.0.0"
+  },
+  {
+   "plugin": "petshop-promotions/petshop-promotions",
+   "status": "active",
+   "version": "1.1"
+  },
+  {
+   "plugin": "petshop-xml/petshop-xml",
+   "status": "active",
+   "version": "1.5.18"
+  },
+  {
+   "plugin": "postit/postit",
+   "status": "active",
+   "version": "1.1.1"
+  },
+  {
+   "plugin": "woocommerce-delivery-notes/woocommerce-delivery-notes",
+   "status": "active",
+   "version": "7.2.0"
+  },
+  {
+   "plugin": "wc-venipak-shipping/woocommerce-shopup-venipak-shipping",
+   "status": "active",
+   "version": "1.26.3"
+  },
+  {
+   "plugin": "shortpixel-image-optimiser/wp-shortpixel",
+   "status": "inactive",
+   "version": "6.5.3"
+  },
+  {
+   "plugin": "woo-lithuaniapost-main/woo-lithuaniapost",
+   "status": "active",
+   "version": "4.0.32"
+  },
+  {
+   "plugin": "woocommerce/woocommerce",
+   "status": "active",
+   "version": "10.9.1"
+  },
+  {
+   "plugin": "wordpress-importer/wordpress-importer",
+   "status": "active",
+   "version": "0.9.5"
+  },
+  {
+   "plugin": "woocommerce-xml-csv-product-import/plugin",
+   "status": "active",
+   "version": "1.5.5"
+  },
+  {
+   "plugin": "wp-all-import-pro/wp-all-import-pro",
+   "status": "active",
+   "version": "5.0.6"
+  },
+  {
+   "plugin": "wpforms-lite/wpforms",
+   "status": "active",
+   "version": "1.10.2.1"
+  },
+  {
+   "plugin": "wp-mail-smtp/wp_mail_smtp",
+   "status": "active",
+   "version": "4.9.0"
+  },
+  {
+   "plugin": "yith-woocommerce-ajax-navigation/init",
+   "status": "active",
+   "version": "5.21.0"
+  }
+ ],
+ "cats_total": 69,
+ "cats_relevant": [
+  {
+   "id": 91,
+   "name": "DAUGIAU=PIGIAU",
+   "slug": "daugiau-pigiau",
+   "parent": 0,
+   "count": 0
+  },
+  {
+   "id": 119,
+   "name": "DOVANOS",
+   "slug": "dovanos",
+   "parent": 0,
+   "count": 4
+  }
+ ],
+ "cats_top_level": [
+  {
+   "id": 86,
+   "name": "Animonda konservai šunims",
+   "slug": "animonda-konservai-sunims",
+   "count": 35
+  },
+  {
+   "id": 91,
+   "name": "DAUGIAU=PIGIAU",
+   "slug": "daugiau-pigiau",
+   "count": 0
+  },
+  {
+   "id": 119,
+   "name": "DOVANOS",
+   "slug": "dovanos",
+   "count": 4
+  },
+  {
+   "id": 87,
+   "name": "GRAUŽIKAMS",
+   "slug": "grauzikams",
+   "count": 61
+  },
+  {
+   "id": 85,
+   "name": "Hipoalerginis maistas šunims",
+   "slug": "hipoalerginis-maistas-sunims",
+   "count": 33
+  },
+  {
+   "id": 77,
+   "name": "KATĖMS",
+   "slug": "katems",
+   "count": 882
+  },
+  {
+   "id": 16,
+   "name": "Kita",
+   "slug": "uncategorized",
+   "count": 11
+  },
+  {
+   "id": 131,
+   "name": "kita",
+   "slug": "kita",
+   "count": 0
+  },
+  {
+   "id": 84,
+   "name": "Kitos prekes Žalios Bangos",
+   "slug": "kitos-prekes-zalios-bangos",
+   "count": 0
+  },
+  {
+   "id": 80,
+   "name": "Miamor katėms",
+   "slug": "miamor-katems",
+   "count": 28
+  },
+  {
+   "id": 89,
+   "name": "PAUKŠČIAMS",
+   "slug": "pauksciams",
+   "count": 16
+  },
+  {
+   "id": 70,
+   "name": "ŠUNIMS",
+   "slug": "sunims",
+   "count": 1786
+  },
+  {
+   "id": 83,
+   "name": "Super Premium šunų maistas",
+   "slug": "super-premium-sunu-maistas",
+   "count": 5
+  },
+  {
+   "id": 120,
+   "name": "Ypatingi pasiūlymai",
+   "slug": "ypatingi-pasiulymai",
+   "count": 0
+  },
+  {
+   "id": 93,
+   "name": "ŽUVIMS",
+   "slug": "zuvims",
+   "count": 50
+  }
+ ],
+ "cats_all": [
+  {
+   "id": 666,
+   "name": "Aksesuarai paukščiams",
+   "slug": "aksesuarai-pauksciams",
+   "parent": 89,
+   "count": 2
+  },
+  {
+   "id": 94,
+   "name": "Akvariumo žuvyčių maistas",
+   "slug": "akvariumo-zuvyciu-maistas",
+   "parent": 93,
+   "count": 36
+  },
+  {
+   "id": 371,
+   "name": "Akvariumų įranga",
+   "slug": "akvariumai-iranga",
+   "parent": 93,
+   "count": 3
+  },
+  {
+   "id": 86,
+   "name": "Animonda konservai šunims",
+   "slug": "animonda-konservai-sunims",
+   "parent": 0,
+   "count": 35
+  },
+  {
+   "id": 109,
+   "name": "Antiparazitinės priemonės katėms",
+   "slug": "antiparazitines-priemones-katems",
+   "parent": 77,
+   "count": 5
+  },
+  {
+   "id": 108,
+   "name": "Antiparazitinės priemonės šunims",
+   "slug": "antiparazitines-priemones-sunims",
+   "parent": 70,
+   "count": 8
+  },
+  {
+   "id": 117,
+   "name": "Antkakliai ir petnešos katėms",
+   "slug": "antkakliai-ir-petnesos-katems",
+   "parent": 77,
+   "count": 9
+  },
+  {
+   "id": 116,
+   "name": "Antkakliai, pavadėliai šunims",
+   "slug": "antkakliai-pavadeliai-sunims",
+   "parent": 70,
+   "count": 211
+  },
+  {
+   "id": 305,
+   "name": "Apranga šunims",
+   "slug": "apranga-sunims",
+   "parent": 70,
+   "count": 39
+  },
+  {
+   "id": 655,
+   "name": "Baseinai šunims",
+   "slug": "baseinai-sunims",
+   "parent": 70,
+   "count": 1
+  },
+  {
+   "id": 91,
+   "name": "DAUGIAU=PIGIAU",
+   "slug": "daugiau-pigiau",
+   "parent": 0,
+   "count": 0
+  },
+  {
+   "id": 119,
+   "name": "DOVANOS",
+   "slug": "dovanos",
+   "parent": 0,
+   "count": 4
+  },
+  {
+   "id": 124,
+   "name": "Draskyklės katėms",
+   "slug": "draskykles-katems",
+   "parent": 77,
+   "count": 45
+  },
+  {
+   "id": 112,
+   "name": "Dubenėliai katėms",
+   "slug": "dubeneliai-katems",
+   "parent": 77,
+   "count": 35
+  },
+  {
+   "id": 111,
+   "name": "Dubenėliai šunims",
+   "slug": "dubeneliai-sunims",
+   "parent": 70,
+   "count": 54
+  },
+  {
+   "id": 113,
+   "name": "Graužikams",
+   "slug": "dp-grauzikams",
+   "parent": 91,
+   "count": 0
+  },
+  {
+   "id": 87,
+   "name": "GRAUŽIKAMS",
+   "slug": "grauzikams",
+   "parent": 0,
+   "count": 61
+  },
+  {
+   "id": 569,
+   "name": "Guoliai katėms",
+   "slug": "guoliai-katems",
+   "parent": 77,
+   "count": 13
+  },
+  {
+   "id": 233,
+   "name": "Guoliai šunims",
+   "slug": "guoliai-boksai-sunims",
+   "parent": 70,
+   "count": 43
+  },
+  {
+   "id": 82,
+   "name": "Higienos priemonės šunims",
+   "slug": "higienos-priemones-sunims",
+   "parent": 70,
+   "count": 44
+  },
+  {
+   "id": 85,
+   "name": "Hipoalerginis maistas šunims",
+   "slug": "hipoalerginis-maistas-sunims",
+   "parent": 0,
+   "count": 33
+  },
+  {
+   "id": 77,
+   "name": "KATĖMS",
+   "slug": "katems",
+   "parent": 0,
+   "count": 882
+  },
+  {
+   "id": 99,
+   "name": "Katėms",
+   "slug": "dp-katems",
+   "parent": 91,
+   "count": 0
+  },
+  {
+   "id": 123,
+   "name": "Kelionių įranga",
+   "slug": "kelioniu-iranga",
+   "parent": 70,
+   "count": 20
+  },
+  {
+   "id": 16,
+   "name": "Kita",
+   "slug": "uncategorized",
+   "parent": 0,
+   "count": 11
+  },
+  {
+   "id": 104,
+   "name": "Kita",
+   "slug": "kita-grauzikams",
+   "parent": 87,
+   "count": 0
+  },
+  {
+   "id": 126,
+   "name": "Kita",
+   "slug": "kita-sunims",
+   "parent": 70,
+   "count": 0
+  },
+  {
+   "id": 105,
+   "name": "Kita",
+   "slug": "kita-pauksciams",
+   "parent": 89,
+   "count": 0
+  },
+  {
+   "id": 131,
+   "name": "kita",
+   "slug": "kita",
+   "parent": 0,
+   "count": 0
+  },
+  {
+   "id": 84,
+   "name": "Kitos prekes Žalios Bangos",
+   "slug": "kitos-prekes-zalios-bangos",
+   "parent": 0,
+   "count": 0
+  },
+  {
+   "id": 79,
+   "name": "Konservai katėms",
+   "slug": "konservai-katems",
+   "parent": 78,
+   "count": 139
+  },
+  {
+   "id": 73,
+   "name": "Konservai šunims",
+   "slug": "konservai-sunims",
+   "parent": 71,
+   "count": 125
+  },
+  {
+   "id": 107,
+   "name": "Kraikai kačių tualetams",
+   "slug": "kraikai-kaciu-tualetams",
+   "parent": 77,
+   "count": 89
+  },
+  {
+   "id": 657,
+   "name": "Kraikas ir šienas graužikams",
+   "slug": "kraikas-ir-sienas-grauzikams",
+   "parent": 87,
+   "count": 4
+  },
+  {
+   "id": 90,
+   "name": "Lesalas paukščiams",
+   "slug": "lesalas-pauksciams",
+   "parent": 89,
+   "count": 11
+  },
+  {
+   "id": 78,
+   "name": "Maistas katėms",
+   "slug": "maistas-katems",
+   "parent": 77,
+   "count": 346
+  },
+  {
+   "id": 71,
+   "name": "Maistas šunims",
+   "slug": "maistas-sunims",
+   "parent": 70,
+   "count": 639
+  },
+  {
+   "id": 80,
+   "name": "Miamor katėms",
+   "slug": "miamor-katems",
+   "parent": 0,
+   "count": 28
+  },
+  {
+   "id": 125,
+   "name": "Narvai",
+   "slug": "narvai",
+   "parent": 70,
+   "count": 7
+  },
+  {
+   "id": 304,
+   "name": "Narvai ir aksesuarai graužikams",
+   "slug": "narvai-grauzikams",
+   "parent": 87,
+   "count": 15
+  },
+  {
+   "id": 88,
+   "name": "Pašaras graužikams",
+   "slug": "pasaras-grauzikams",
+   "parent": 87,
+   "count": 20
+  },
+  {
+   "id": 89,
+   "name": "PAUKŠČIAMS",
+   "slug": "pauksciams",
+   "parent": 0,
+   "count": 16
+  },
+  {
+   "id": 110,
+   "name": "Paukščiams",
+   "slug": "dp-pauksciams",
+   "parent": 91,
+   "count": 0
+  },
+  {
+   "id": 656,
+   "name": "Pirmoji pagalba šunims",
+   "slug": "pirmoji-pagalba-sunims",
+   "parent": 70,
+   "count": 2
+  },
+  {
+   "id": 130,
+   "name": "Priežiūros priemonės katėms",
+   "slug": "prieziuros-priemones-katems",
+   "parent": 77,
+   "count": 25
+  },
+  {
+   "id": 76,
+   "name": "Šampūnai šunims",
+   "slug": "sampunai-sunims",
+   "parent": 70,
+   "count": 42
+  },
+  {
+   "id": 81,
+   "name": "Sausas maistas katėms",
+   "slug": "sausas-maistas-katems",
+   "parent": 78,
+   "count": 206
+  },
+  {
+   "id": 72,
+   "name": "Sausas maistas šunims",
+   "slug": "sausas-maistas-sunims",
+   "parent": 71,
+   "count": 514
+  },
+  {
+   "id": 97,
+   "name": "Skanėstai graužikams",
+   "slug": "skanestai-grauzikams",
+   "parent": 87,
+   "count": 22
+  },
+  {
+   "id": 96,
+   "name": "Skanėstai katėms",
+   "slug": "skanestai-katems",
+   "parent": 77,
+   "count": 86
+  },
+  {
+   "id": 98,
+   "name": "Skanėstai paukščiams",
+   "slug": "skanestai-pauksciams",
+   "parent": 89,
+   "count": 3
+  },
+  {
+   "id": 95,
+   "name": "Skanėstai šunims",
+   "slug": "skanestai-sunims",
+   "parent": 70,
+   "count": 270
+  },
+  {
+   "id": 639,
+   "name": "Šukos, šepečiai, žirklės katėms",
+   "slug": "sukos-sepeciai-zirkles-katems",
+   "parent": 77,
+   "count": 47
+  },
+  {
+   "id": 75,
+   "name": "Šukos, šepečiai, žirklės šunims",
+   "slug": "sukos-sepeciai-zirkles-sunims",
+   "parent": 70,
+   "count": 60
+  },
+  {
+   "id": 92,
+   "name": "Šunims",
+   "slug": "dp-sunims",
+   "parent": 91,
+   "count": 0
+  },
+  {
+   "id": 70,
+   "name": "ŠUNIMS",
+   "slug": "sunims",
+   "parent": 0,
+   "count": 1786
+  },
+  {
+   "id": 83,
+   "name": "Super Premium šunų maistas",
+   "slug": "super-premium-sunu-maistas",
+   "parent": 0,
+   "count": 5
+  },
+  {
+   "id": 121,
+   "name": "Transportavimo dėžės katėms",
+   "slug": "transportavimo-dezes-katems",
+   "parent": 77,
+   "count": 51
+  },
+  {
+   "id": 122,
+   "name": "Transportavimo dėžės šunims",
+   "slug": "transportavimo-dezes-sunims",
+   "parent": 70,
+   "count": 57
+  },
+  {
+   "id": 106,
+   "name": "Tualetai, kraikai, semtuvėliai",
+   "slug": "tualetai-kraikai-semtuveliai",
+   "parent": 77,
+   "count": 66
+  },
+  {
+   "id": 100,
+   "name": "Tvenkinių žuvų maistas",
+   "slug": "tvenkiniu-zuvu-maistas",
+   "parent": 93,
+   "count": 11
+  },
+  {
+   "id": 654,
+   "name": "Vėsinantys kilimėliai šunims",
+   "slug": "vesinantys-kilimeliai-sunims",
+   "parent": 70,
+   "count": 7
+  },
+  {
+   "id": 102,
+   "name": "Vitaminai ir papildai katėms",
+   "slug": "vitaminai-ir-papildai-katems",
+   "parent": 77,
+   "count": 19
+  },
+  {
+   "id": 101,
+   "name": "Vitaminai ir papildai šunims",
+   "slug": "vitaminai-ir-papildai-sunims",
+   "parent": 70,
+   "count": 73
+  },
+  {
+   "id": 120,
+   "name": "Ypatingi pasiūlymai",
+   "slug": "ypatingi-pasiulymai",
+   "parent": 0,
+   "count": 0
+  },
+  {
+   "id": 114,
+   "name": "Žaislai katėms",
+   "slug": "zaislai-katems",
+   "parent": 77,
+   "count": 61
+  },
+  {
+   "id": 115,
+   "name": "Žaislai šunims",
+   "slug": "zaislai-sunims",
+   "parent": 70,
+   "count": 203
+  },
+  {
+   "id": 93,
+   "name": "ŽUVIMS",
+   "slug": "zuvims",
+   "parent": 0,
+   "count": 50
+  },
+  {
+   "id": 103,
+   "name": "Žuvims",
+   "slug": "dp-zuvims",
+   "parent": 91,
+   "count": 0
+  }
+ ]
 }
