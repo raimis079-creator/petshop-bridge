@@ -1,17 +1,17 @@
 {
- "loopCnt": 20,
+ "loopCnt": 30,
  "stages": {
   "start": 0,
-  "fetched": 19,
-  "planned": 19,
-  "passed": 19,
+  "fetched": 29,
+  "planned": 29,
+  "passed": 29,
   "failed": 0,
-  "applied": 19
+  "applied": 29
  },
  "planned": [
   {
-   "id": "19449",
-   "title": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Turkey – konservai katėms Švelnusis meniu su gryna kalakutiena, 100 g",
+   "id": "19504",
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -22,13 +22,13 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 1120,
-   "newLen": 2142,
-   "type": "KG_PAIRS"
+   "oldLen": 2673,
+   "newLen": 4230,
+   "type": "HTML_TABLE"
   },
   {
-   "id": "19452",
-   "title": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and Salmon – konservai katėms Švelnusis meniu su kalakutiena ir lašiša, 100 g",
+   "id": "19508",
+   "title": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 400 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -39,13 +39,13 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 1202,
-   "newLen": 2224,
-   "type": "KG_PAIRS"
+   "oldLen": 2647,
+   "newLen": 4204,
+   "type": "HTML_TABLE"
   },
   {
-   "id": "19471",
-   "title": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+   "id": "19530",
+   "title": "Animonda GranCarno Adult Sensitive Turkey + Potato: konservai jautriems šunims su gryna kalakutiena ir bulvėmis, 400 g",
    "pass": true,
    "guards": {
     "lengthGrew": true,
@@ -56,34 +56,34 @@
     "md5Changed": true,
     "noScript": true
    },
-   "oldLen": 2682,
-   "newLen": 4239,
+   "oldLen": 2658,
+   "newLen": 4215,
    "type": "HTML_TABLE"
   }
  ],
  "apply": [
   {
-   "id": "19449",
-   "verLen": 2156,
-   "newLen": 2142,
+   "id": "19504",
+   "verLen": 4274,
+   "newLen": 4230,
    "lossless": true,
-   "oldLen": 1120,
-   "type": "KG_PAIRS"
+   "oldLen": 2673,
+   "type": "HTML_TABLE"
   },
   {
-   "id": "19452",
-   "verLen": 2238,
-   "newLen": 2224,
+   "id": "19508",
+   "verLen": 4248,
+   "newLen": 4204,
    "lossless": true,
-   "oldLen": 1202,
-   "type": "KG_PAIRS"
+   "oldLen": 2647,
+   "type": "HTML_TABLE"
   },
   {
-   "id": "19471",
-   "verLen": 4307,
-   "newLen": 4239,
+   "id": "19530",
+   "verLen": 4289,
+   "newLen": 4215,
    "lossless": true,
-   "oldLen": 2682,
+   "oldLen": 2658,
    "type": "HTML_TABLE"
   }
  ]
