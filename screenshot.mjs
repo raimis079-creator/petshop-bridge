@@ -16,13 +16,12 @@ function jget(path){
   let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
   try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,150)}; }
 }
-function summ(arr){ return (arr||[]).map(p=>({id:p.id, name:(p.name||'').slice(0,65), sku:p.sku, type:p.type, status:p.status, price:p.price, qty:p.stock_quantity, cats:(p.categories||[]).map(c=>c.id+':'+c.name).join('|')})); }
+function summ(arr){ return (arr||[]).map(p=>({id:p.id, name:(p.name||'').slice(0,70), sku:p.sku, type:p.type, status:p.status, price:p.price, qty:p.stock_quantity, cats:(p.categories||[]).map(c=>c.name).join('|')})); }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // products in RINKINIAI tree categories
-  for(const cid of [679,682,683,684,685,686,687,688]){
-    out['cat_'+cid] = summ(jget('/wp-json/wc/v3/products?category='+cid+'&per_page=30&status=any'));
-  }
-  commit('cat_products.json', JSON.stringify(out,null,1));
+  out.q_konservu_rinkinys = summ(jget('/wp-json/wc/v3/products?search=konserv%C5%B3%20rinkinys&per_page=20&status=any'));
+  out.q_mix = summ(jget('/wp-json/wc/v3/products?search=mix&per_page=25&status=any'));
+  out.q_rinkinys_konser = summ(jget('/wp-json/wc/v3/products?search=rinkinys%20konserv&per_page=20&status=any'));
+  commit('konser_search.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
