@@ -16,11 +16,13 @@ function jget(path){
   let body=''; try{ body=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
   try{ return JSON.parse(body); }catch(e){ return {__pe:true, raw:body.slice(0,150)}; }
 }
-function summ(arr){ return (arr||[]).map(p=>({id:p.id, name:(p.name||'').slice(0,60), sku:p.sku, type:p.type, status:p.status, price:p.price, qty:p.stock_quantity, cats:(p.categories||[]).map(c=>c.name).join('|')})); }
+function summ(arr){ return (arr||[]).map(p=>({id:p.id, name:(p.name||'').slice(0,65), sku:p.sku, type:p.type, status:p.status, price:p.price, qty:p.stock_quantity, cats:(p.categories||[]).map(c=>c.id+':'+c.name).join('|')})); }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  out.search_rinkinys = summ(jget('/wp-json/wc/v3/products?search=rinkinys&per_page=40&status=any'));
-  out.search_6vnt = summ(jget('/wp-json/wc/v3/products?search=6%20vnt&per_page=30&status=any'));
-  commit('rinkiniai_recon.json', JSON.stringify(out,null,1));
-  console.log("DONE rinkinys="+out.search_rinkinys.length+" 6vnt="+out.search_6vnt.length);
+  // products in RINKINIAI tree categories
+  for(const cid of [679,682,683,684,685,686,687,688]){
+    out['cat_'+cid] = summ(jget('/wp-json/wc/v3/products?category='+cid+'&per_page=30&status=any'));
+  }
+  commit('cat_products.json', JSON.stringify(out,null,1));
+  console.log("DONE");
 })();
