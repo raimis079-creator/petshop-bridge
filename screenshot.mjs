@@ -1,72 +1,56 @@
 import { execSync } from "child_process";
 import fs from "fs";
-const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
-const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
-const BASE = "https://dev.avesa.lt";
-const AUTH = "Basic " + Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
-function commit(name, str){
+import { chromium } from "playwright";
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function putBin(name,buf){
+  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
+  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
+  const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha;
+  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
+  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
+}
+function commitTxt(name,str){
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
   const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha;
-  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
-  execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
+  fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body));
+  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
 }
-function call(method, path, bodyObj){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -H "Accept: application/json"';
-  if(bodyObj!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(bodyObj)); cmd+=' -d @/tmp/b.json'; }
-  cmd+=' "'+BASE+path+'"';
-  let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,150)}; }
-  try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,300)}; }
-}
-const POOL=[17421, 19586, 19574, 17179, 19530, 17156];
-const SHORT='6 skirtingos skardinės po 1. Su daug jautienos, ėrienos, antienos. Be grūdų, sojų, cukraus, dirbtinių dažiklių ir konservantų.';
-const DESC='<h3>Rinkinyje rasite (6 skardinės po 1):</h3><ol>'
-  +'<li>Monge BWild begrūdžiai konservai šunims su antiena, moliūgu ir cukinija, 400 g</li>'
-  +'<li>Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g</li>'
-  +'<li>Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g</li>'
-  +'<li>Ontario konservai šunims su jautiena, paskaninta žolelėmis, 400 g</li>'
-  +'<li>Animonda GranCarno Adult Sensitive Turkey + Potato: konservai jautriems šunims, 400 g</li>'
-  +'<li>Ontario konservai šunims su ėriena, paskaninta šaltalankiu, 400 g</li>'
-  +'</ol><p><em>Gyvūnas visuomet turi turėti šviežio geriamo vandens.</em></p>';
+const URL='https://dev.avesa.lt/product/rinkinys-isrankiems-sunims-%c2%b7-6x400g/';
+const log={steps:[]};
 (async()=>{
-  const out={ts:new Date().toISOString()};
-  // verify components exist & published
-  out.components=[];
-  for(const id of POOL){
-    const r=call('GET','/wp-json/wc/v3/products/'+id);
-    out.components.push({id, name:(r.name||'').slice(0,55), sku:r.sku, status:r.status, qty:r.stock_quantity, price:r.price});
-  }
-  // create MnM box
-  const cr = call('POST','/wp-json/wc/v3/products', {
-    name:'Rinkinys išrankiems šunims · 6×400g',
-    type:'mix-and-match',
-    status:'publish',
-    sku:'RINK-ISRANK-6x400',
-    regular_price:'13.90',
-    short_description: SHORT,
-    description: DESC,
-    categories:[{id:682}],
-    mnm_content_source:'products',
-    mnm_child_items: POOL.map(pid=>({product_id:pid})),
-    mnm_min_container_size:6,
-    mnm_max_container_size:6,
-    mnm_priced_per_product:false
-  });
-  out.created = {id:(cr&&cr.id)||null, sku:cr&&cr.sku, status:cr&&cr.status, permalink:cr&&cr.permalink, err:(cr&&(cr.code||cr.__exc||(cr.__pe?cr.raw:null)))||null};
-  if(cr && cr.id){
-    const rb = call('GET','/wp-json/wc/v3/products/'+cr.id+'?context=edit');
-    out.verify = {
-      type: rb.type,
-      price: rb.price,
-      min: rb.mnm_min_container_size,
-      max: rb.mnm_max_container_size,
-      priced_per: rb.mnm_priced_per_product,
-      pool: (rb.mnm_child_items||[]).map(c=>c.product_id),
-      pool_count: (rb.mnm_child_items||[]).length,
-      cats: (rb.categories||[]).map(c=>c.id+':'+c.name).join('|'),
-      purchasable: rb.purchasable
-    };
-  }
-  commit('rinkinys_built.json', JSON.stringify(out,null,1));
-  console.log("DONE id="+(cr&&cr.id));
+  const browser=await chromium.launch({args:['--no-sandbox']});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:1400}, userAgent:'Mozilla/5.0'});
+  const page=await ctx.newPage();
+  try{
+    await page.goto(URL+'?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:60000});
+    await page.waitForTimeout(5000);
+    log.steps.push('loaded');
+  }catch(e){ log.steps.push('goto '+String(e).slice(0,60)); }
+  putBin('rink_desk_full.png', await page.screenshot({fullPage:true}));
+  putBin('rink_desk_top.png', await page.screenshot({clip:{x:0,y:0,width:1440,height:1100}}));
+  // mobile
+  await ctx.close();
+  const mctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:390,height:1800}, userAgent:'Mozilla/5.0 iPhone'});
+  const mp=await mctx.newPage();
+  try{
+    await mp.goto(URL+'?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:60000});
+    await mp.waitForTimeout(4500);
+    log.steps.push('mobile loaded');
+  }catch(e){}
+  putBin('rink_mob_full.png', await mp.screenshot({fullPage:true}));
+  // grab visible text + form structure
+  try{
+    const info = await mp.evaluate(()=>({
+      title: document.querySelector('h1')?.textContent?.trim().slice(0,80),
+      hasOos: /out of stock|nebėra|šio produkto/i.test(document.body.innerText||''),
+      hasAddBtn: !!document.querySelector('button.single_add_to_cart_button, .single_add_to_cart_button'),
+      hasMnmForm: !!document.querySelector('.mnm_form, form.cart, .mnm-child-products, .mnm_child_product, .wc-mnm-child'),
+      qtyInputs: document.querySelectorAll('input.qty, input[type=number]').length,
+      bodyTextSample: (document.querySelector('main')||document.body).innerText.slice(0,1200)
+    }));
+    commitTxt('rink_dom.txt', JSON.stringify(info,null,2));
+  }catch(e){}
+  commitTxt('rink_visual_log.json', JSON.stringify(log,null,1));
+  await mctx.close(); await browser.close();
 })();
