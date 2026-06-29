@@ -36,18 +36,26 @@ function commit(name,str){const url='https://api.github.com/repos/'+repo+'/conte
   for(const p of products){
     try{
       const r=await page.goto(p.u,{waitUntil:'domcontentloaded',timeout:45000});
+      await page.waitForTimeout(3000);
+      // Spausdam "Aprašymas" tab jeigu yra
+      try{await page.click('a[href="#tab-description"]',{timeout:2000});await page.waitForTimeout(800);}catch(e){}
+      // Skroll iki visa lentele
+      await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
       await page.waitForTimeout(1500);
-      // Paimkim HTML lentelę (paros norma)
+      // Paimkim HTML su table tagais ir pilna text'a
       const data=await page.evaluate(()=>{
+        const html=document.body.innerHTML;
         const tables=Array.from(document.querySelectorAll('table'));
         const feedTables=tables.filter(t=>{
-          const tx=t.innerText.toLowerCase();
+          const tx=(t.innerText||t.textContent||'').toLowerCase();
           return tx.includes('paros norm')||tx.includes('dienos norm')||tx.includes('šuns svoris')||tx.includes('svoris');
         }).map(t=>t.outerHTML);
-        const fullText=document.body.innerText;
+        const fullText=document.body.innerText||document.body.textContent;
         const idx=fullText.search(/REKOMENDUOJAMA PAROS NORMA|Šėrimo|Šuns svoris/i);
         const ctx=idx>=0?fullText.substring(idx,idx+1500):'NONE';
-        return {tables:feedTables,ctx};
+        // Hint: pirmi 200 simbolių jeigu nera lentelės
+        const hint=feedTables.length===0?html.substring(0,300):'';
+        return {tables:feedTables,ctx,tablesCount:tables.length,bodyLen:fullText.length,hint};
       });
       out[p.pid]=data;
     }catch(e){out[p.pid]={err:String(e).slice(0,100)};}
