@@ -1,0 +1,298 @@
+{
+ "ts": "2026-06-30T21:19:39.595Z",
+ "konserv_cats": [
+  {
+   "id": 86,
+   "name": "Animonda konservai šunims",
+   "slug": "animonda-konservai-sunims",
+   "parent": 0,
+   "count": 35
+  },
+  {
+   "id": 79,
+   "name": "Konservai katėms",
+   "slug": "konservai-katems",
+   "parent": 78,
+   "count": 139
+  },
+  {
+   "id": 73,
+   "name": "Konservai šunims",
+   "slug": "konservai-sunims",
+   "parent": 71,
+   "count": 125
+  },
+  {
+   "id": 682,
+   "name": "Konservų rinkiniai",
+   "slug": "konservu-rinkiniai",
+   "parent": 679,
+   "count": 3
+  }
+ ],
+ "attributes": [
+  {
+   "id": 4,
+   "name": "Amžius",
+   "slug": "pa_amzius"
+  },
+  {
+   "id": 6,
+   "name": "Baltymų šaltinis",
+   "slug": "pa_baltymu_saltinis"
+  },
+  {
+   "id": 7,
+   "name": "Be grūdų",
+   "slug": "pa_be_grudu"
+  },
+  {
+   "id": 1,
+   "name": "Brendas",
+   "slug": "pa_brendas"
+  },
+  {
+   "id": 15,
+   "name": "Dydis",
+   "slug": "pa_dydis"
+  },
+  {
+   "id": 13,
+   "name": "Forma",
+   "slug": "pa_forma"
+  },
+  {
+   "id": 22,
+   "name": "Graužiko rūšis",
+   "slug": "pa_grauziko_rusis"
+  },
+  {
+   "id": 2,
+   "name": "Gyvūno rūšis",
+   "slug": "pa_gyvuno_rusis"
+  },
+  {
+   "id": 10,
+   "name": "Kramtuko dydis",
+   "slug": "pa_ilgis"
+  },
+  {
+   "id": 11,
+   "name": "Kiekis pakuoteje",
+   "slug": "pa_kiekis_pakuoteje"
+  },
+  {
+   "id": 19,
+   "name": "Kraiko tipas",
+   "slug": "pa_kraiko_tipas"
+  },
+  {
+   "id": 20,
+   "name": "Kvapas",
+   "slug": "pa_kvapas"
+  },
+  {
+   "id": 16,
+   "name": "Medžiaga",
+   "slug": "pa_medziaga"
+  },
+  {
+   "id": 9,
+   "name": "Monoprotein",
+   "slug": "pa_monoprotein"
+  },
+  {
+   "id": 3,
+   "name": "Pakuotės dydis",
+   "slug": "pa_pakuotes_dydis"
+  },
+  {
+   "id": 25,
+   "name": "Pašaro forma",
+   "slug": "pa_pasaro_forma"
+  },
+  {
+   "id": 12,
+   "name": "Paskirtis",
+   "slug": "pa_paskirtis"
+  },
+  {
+   "id": 23,
+   "name": "Paukščio rūšis",
+   "slug": "pa_paukscio_rusis"
+  },
+  {
+   "id": 17,
+   "name": "Pavadėlio ilgis",
+   "slug": "pa_pavadelio_ilgis"
+  },
+  {
+   "id": 8,
+   "name": "Speciali mityba",
+   "slug": "pa_speciali_mityba"
+  },
+  {
+   "id": 14,
+   "name": "Tipas",
+   "slug": "pa_tipas"
+  },
+  {
+   "id": 21,
+   "name": "Veisle",
+   "slug": "pa_veisle"
+  },
+  {
+   "id": 5,
+   "name": "Veislės dydis",
+   "slug": "pa_veisles_dydis"
+  },
+  {
+   "id": 18,
+   "name": "Zaislo tipas",
+   "slug": "pa_zaislo_tipas"
+  },
+  {
+   "id": 24,
+   "name": "Žuvies rūšis",
+   "slug": "pa_zuvies_rusis"
+  }
+ ],
+ "dog_can_cat_used": 86,
+ "sample_products": [
+  {
+   "id": 19602,
+   "name": "Animonda GranCarno Adult Beef + Chicken: konservai šuni",
+   "sku": "82732",
+   "price": "2.2",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Jautiena,Vištiena || Be grūdų:Be grūdų || Pakuotės dydis:400 g"
+  },
+  {
+   "id": 19598,
+   "name": "Animonda GranCarno Adult Beef + Chicken: konservai šuni",
+   "sku": "82741",
+   "price": "3.35",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Jautiena,Vištiena || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  },
+  {
+   "id": 19594,
+   "name": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+   "sku": "82746",
+   "price": "2.36",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Antiena,Jautiena || Be grūdų:Be grūdų || Pakuotės dydis:400 g"
+  },
+  {
+   "id": 19590,
+   "name": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+   "sku": "82747",
+   "price": "3.35",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Antiena,Jautiena || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  },
+  {
+   "id": 19586,
+   "name": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+   "sku": "82733",
+   "price": "2.36",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Ėriena,Jautiena || Be grūdų:Be grūdų || Pakuotės dydis:400 g"
+  },
+  {
+   "id": 19582,
+   "name": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+   "sku": "82742",
+   "price": "3.59",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Ėriena,Jautiena || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  },
+  {
+   "id": 19578,
+   "name": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+   "sku": "82767",
+   "price": "3.49",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Jautiena,Triušiena || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  },
+  {
+   "id": 19574,
+   "name": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+   "sku": "82735",
+   "price": "2.2",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Jautiena || Be grūdų:Be grūdų || Pakuotės dydis:400 g"
+  },
+  {
+   "id": 19570,
+   "name": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+   "sku": "82744",
+   "price": "3.39",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Jautiena || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  },
+  {
+   "id": 19566,
+   "name": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+   "sku": "82801",
+   "price": "2.45",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Antiena || Be grūdų:Be grūdų || Pakuotės dydis:400 g"
+  },
+  {
+   "id": 19562,
+   "name": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+   "sku": "82804",
+   "price": "3.49",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Antiena || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  },
+  {
+   "id": 19557,
+   "name": "Animonda GranCarno Adult Multi-Meat Coctail: konservai ",
+   "sku": "82730",
+   "price": "2.36",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Be grūdų:Be grūdų || Pakuotės dydis:400 g"
+  },
+  {
+   "id": 19553,
+   "name": "Animonda GranCarno Adult Multi-Meat Coctail: konservai ",
+   "sku": "82739",
+   "price": "3.35",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  },
+  {
+   "id": 19549,
+   "name": "Animonda GranCarno Adult Poultry Hearts: konservai suau",
+   "sku": "82802",
+   "price": "2.36",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Vištiena || Be grūdų:Be grūdų || Pakuotės dydis:400 g"
+  },
+  {
+   "id": 19545,
+   "name": "Animonda GranCarno Adult Poultry Hearts: konservai suau",
+   "sku": "82805",
+   "price": "3.39",
+   "cats": "Animonda konservai šunims|Konservai šunims",
+   "tags": "",
+   "attributes": "Gyvūno rūšis:Šunims || Amžius:Suaugusiems || Baltymų šaltinis:Vištiena || Be grūdų:Be grūdų || Pakuotės dydis:800 g"
+  }
+ ]
+}
