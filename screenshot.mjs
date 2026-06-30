@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import fs from "fs";
+import { chromium } from "playwright";
 const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
 const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
 const BASE = "https://dev.avesa.lt";
@@ -11,6 +12,13 @@ function commit(name, str){
   fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
+function putBin(name,buf){
+  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
+  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
+  const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha;
+  fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body));
+  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
+}
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
 function api(method, path, body){
   let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
@@ -19,87 +27,44 @@ function api(method, path, body){
   let raw=exec(cmd);
   try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
 }
+(async()=>{
+  const out={ts:new Date().toISOString()};
+  // Atnaujinu aprašymą rinkiniui 34168
+  const newDesc = `<h3>Rinkinyje rasite (15 vnt.):</h3>
+<ol>
+  <li>5 × Balta jaučio ausis, 1 vnt.</li>
+  <li>5 × Ruda jaučio ausis, 1 vnt.</li>
+  <li>5 × Ruda kiaulės ausis, 1 vnt.</li>
+</ol>`;
+  const upd = api('PUT','/wp-json/wc/v3/products/34168', { description: newDesc });
+  out.desc_updated = upd && upd.id ? 'OK' : (upd.__raw||'?');
 
-// Pirma — gaunu dabartinį snippet 524 kodą, kad tik pakeisčiau JS dalį
-const cur = api('GET','/wp-json/code-snippets/v1/snippets/524');
-let code = cur.code || '';
-
-// Pakeičiu component_quantities šaltinį: vietoj get_quantity_min() naudoju _petshop_component_quantities meta
-const OLD_PHP = `        // STOCK CHECK + kompoziciniai kiekiai
-        $all_in_stock = true;
-        $component_quantities = array(); // [product_id => required_qty]
-        if (method_exists($product, 'get_child_items')) {
-            $child_items = $product->get_child_items();
-            if (!empty($child_items)) {
-                foreach ($child_items as $child) {
-                    $child_product = $child->get_product();
-                    if (!$child_product) continue;
-                    $child_id = $child_product->get_id();
-                    $req_qty = method_exists($child, 'get_quantity_min') ? $child->get_quantity_min() : 1;
-                    if (!$req_qty) $req_qty = 1;
-                    $component_quantities[$child_id] = $req_qty;
-                    if (!$child_product->is_in_stock()) {
-                        $all_in_stock = false;
-                    }
-                    $stock_qty = $child_product->get_stock_quantity();
-                    if ($stock_qty !== null && $stock_qty < $req_qty) {
-                        $all_in_stock = false;
-                    }
-                }
-            }
-        }`;
-
-const NEW_PHP = `        // STOCK CHECK + kompoziciniai kiekiai
-        // Kiekiai imami iš _petshop_component_quantities meta (tą patį skaito snippet'as #532)
-        $all_in_stock = true;
-        $component_quantities = array(); // [product_id => required_qty]
-        $fixed_raw = get_post_meta($pid, '_petshop_component_quantities', true);
-        $fixed_map = array();
-        if (!empty($fixed_raw)) {
-            $decoded = json_decode($fixed_raw, true);
-            if (is_array($decoded)) $fixed_map = $decoded;
-        }
-        if (method_exists($product, 'get_child_items')) {
-            $child_items = $product->get_child_items();
-            if (!empty($child_items)) {
-                foreach ($child_items as $child) {
-                    $child_product = $child->get_product();
-                    if (!$child_product) continue;
-                    $child_id = $child_product->get_id();
-                    // Kiekis iš meta (jei yra), kitaip 1
-                    $req_qty = isset($fixed_map[$child_id]) ? (int)$fixed_map[$child_id] : 1;
-                    if ($req_qty < 1) $req_qty = 1;
-                    $component_quantities[$child_id] = $req_qty;
-                    if (!$child_product->is_in_stock()) {
-                        $all_in_stock = false;
-                    }
-                    $stock_qty = $child_product->get_stock_quantity();
-                    if ($stock_qty !== null && $stock_qty < $req_qty) {
-                        $all_in_stock = false;
-                    }
-                }
-            }
-        }`;
-
-if (code.includes(OLD_PHP)) {
-  code = code.replace(OLD_PHP, NEW_PHP);
-} else {
-  // fallback - rasti pagal get_quantity_min
-  code = code.replace(/\$req_qty = method_exists\(\$child, 'get_quantity_min'\)[^;]*;/, 
-    "\$req_qty = isset(\$fixed_map[\$child_id]) ? (int)\$fixed_map[\$child_id] : 1;");
-  // ir įdėti fixed_map skaitymą prieš child loop - bet tai sudėtinga regex'u, todėl tikrinam:
-}
-
-const out={ts:new Date().toISOString(), replaced: code !== (cur.code||''), new_len: code.length};
-
-if (out.replaced) {
-  const u = api('PUT','/wp-json/code-snippets/v1/snippets/524', {
-    name:'Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)',
-    code: code,
-    desc:'Vitrina v8. Kiekiai imami iš _petshop_component_quantities meta. Dinaminis ×N, stock-aware, 3 kat gating.',
-    scope: 'global', active: true
+  // Vizualus patikrinimas
+  const browser=await chromium.launch({args:['--no-sandbox']});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:1100}});
+  const page=await ctx.newPage();
+  await page.goto('https://dev.avesa.lt/product/jaucio-ir-kiaules-ausu-rinkinys-sunims-%c2%b7-15-vnt/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:50000}).catch(()=>{});
+  await page.waitForTimeout(6000);
+  const probe = await page.evaluate(()=>{
+    const rows = document.querySelectorAll('.mnm_child_products tbody tr.mnm_item, form.cart tbody tr[data-mnm_item_id]');
+    var data = [];
+    rows.forEach(function(row){
+      var input = row.querySelector('input[type="number"], input.qty');
+      data.push({
+        pid: row.getAttribute('data-mnm_item_id'),
+        input_value: input ? input.value : '?',
+        input_min: input ? input.getAttribute('min') : '?',
+        input_max: input ? input.getAttribute('max') : '?',
+        data_kiekis: row.getAttribute('data-kiekis-rodyti')
+      });
+    });
+    var btn = document.querySelector('.single_add_to_cart_button');
+    return { rows: data, btn_text: btn?btn.textContent.trim():'?', btn_disabled: btn?btn.disabled:'?' };
   });
-  out.update = u && u.id ? ('updated len='+(u.code||'').length) : (u.__raw||'?');
-}
-commit('v8_update.json', JSON.stringify(out,null,1));
-console.log("DONE replaced="+out.replaced);
+  out.probe = probe;
+  putBin('skan_v8.png', await page.screenshot({fullPage:false}));
+  commit('skan_v8_result.json', JSON.stringify(out,null,1));
+  console.log(JSON.stringify(probe).slice(0,500));
+  await ctx.close();
+  await browser.close();
+})();
