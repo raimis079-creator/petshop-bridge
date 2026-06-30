@@ -1,6 +1,6 @@
 {
- "ts": "2026-06-30T18:15:24.775Z",
- "mode": "dry",
+ "ts": "2026-06-30T18:16:28.984Z",
+ "mode": "apply",
  "receptas": {
   "pavadinimas": "Churu įvairių skonių rinkinys katėms · 7 vnt.",
   "sku": "RINK-CHURU-MIX-7",
@@ -90,5 +90,32 @@
  },
  "aprasymo_preview": "Rinkinyje rasite (7 vnt.): 2 × Churu Luxury kreminis skanėstas katėms su tunu ir karališkosiomis krevetėmis N4 2 × Churu Pops skanėstas katėms su tunu ir vištiena, 60 g., 4 vnt. Churu Tidbits skanėstai katėms su tunu ir lašiša, 36g 3 vnt Churu Fun Bites skanėstas katėms su tunu ir sūriu suktinukai 96g Churu kreminis skanėstas kačiukams su vištiena, 4vnt",
  "kompozicijos_layout": "3×2 (paskutinė eilutė: 2)",
- "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
+ "created": {
+  "id": 34172,
+  "sku": "RINK-CHURU-MIX-7",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/churu-ivairiu-skoniu-rinkinys-katems-%c2%b7-7-vnt/",
+  "err": null
+ },
+ "composition_tiles": 5,
+ "python_out": "OK\n",
+ "composed_size": 187140,
+ "media_id": 34173,
+ "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-churu-mix-7.jpg",
+ "featured_assigned": 34173,
+ "verify": {
+  "id": 34172,
+  "name": "Churu įvairių skonių rinkinys katėms · 7 vnt.",
+  "sku": "RINK-CHURU-MIX-7",
+  "type": "mix-and-match",
+  "status": "publish",
+  "price": "21.29",
+  "purchasable": true,
+  "min": 7,
+  "max": 7,
+  "pool_count": 5,
+  "cats": "683:skanestu-rinkiniai",
+  "images": 1,
+  "permalink": "https://dev.avesa.lt/product/churu-ivairiu-skoniu-rinkinys-katems-%c2%b7-7-vnt/"
+ }
 }
