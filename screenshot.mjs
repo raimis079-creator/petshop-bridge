@@ -13,105 +13,108 @@ function commit(name, str){
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
 
-// Naudoju PHP snippet'ą — tikras MnM cart->order flow per WC API
-// nes REST orders nesukuria MnM child item struktūros teisingai
+// Tikras MnM cart flow: pridedam į cart per WC()->cart->add_to_cart su mnm_config,
+// tada sukuriam order iš cart, tada completed
 const PROBE = `<?php
 add_action('init', function(){
-    if (!isset($_GET['koju_test']) || $_GET['koju_test'] !== 'go') return;
+    if (!isset($_GET['koju2']) || $_GET['koju2'] !== 'go') return;
     $out = array();
     $cid = 34175;
     $product = wc_get_product($cid);
-    if (!$product) { update_option('koju_result', json_encode(array('error'=>'no product'))); wp_die('x'); }
-
-    // 1. Komponentų kiekiai iš meta
     $fixed_raw = get_post_meta($cid, '_petshop_component_quantities', true);
     $fixed_map = json_decode($fixed_raw, true) ?: array();
-    $out['fixed_map'] = $fixed_map;
 
-    // 2. PRIEŠ — likučiai
+    // PRIEŠ
     $out['before'] = array();
     foreach ($product->get_child_items() as $child) {
         $cp = $child->get_product();
-        if (!$cp) continue;
         $pid = $cp->get_id();
-        $out['before'][$pid] = array(
-            'name' => substr($cp->get_name(),0,45),
-            'qty_in_set' => isset($fixed_map[$pid]) ? (int)$fixed_map[$pid] : 1,
-            'stock' => $cp->get_stock_quantity(),
-        );
+        $out['before'][$pid] = $cp->get_stock_quantity();
     }
 
-    // 3. Sukuriam užsakymą su MnM struktūra
-    $order = wc_create_order();
-
-    // Pridedam MnM container į užsakymą su konfigūracija
-    $configuration = array();
+    // Surenkam MnM konfigūraciją formatu child_item_id => qty
+    $config = array();
     foreach ($product->get_child_items() as $child) {
-        $child_id = $child->get_id();
+        $child_item_id = $child->get_child_item_id();
         $cp = $child->get_product();
-        if (!$cp) continue;
         $pid = $cp->get_id();
         $qty = isset($fixed_map[$pid]) ? (int)$fixed_map[$pid] : 1;
-        $configuration[$child_id] = array(
-            'product_id' => $pid,
-            'quantity' => $qty,
-        );
+        $config[$child_item_id] = $qty;
     }
-    $out['configuration'] = $configuration;
+    $out['config'] = $config;
 
-    // wc_mnm pateikia funkciją pridėti container į order su konfigūracija
-    if (function_exists('wc_mnm_add_container_to_order')) {
-        $out['add_method'] = 'wc_mnm_add_container_to_order';
-        wc_mnm_add_container_to_order($order, $product, 1, $configuration);
-    } else {
-        // fallback - standartinis add_product + MnM cart item data
-        $out['add_method'] = 'manual';
-        $item_id = $order->add_product($product, 1, array(
-            'mnm_config' => $configuration
+    // Inicializuojam cart jei reikia
+    if (is_null(WC()->cart)) {
+        wc_load_cart();
+    }
+    WC()->cart->empty_cart();
+
+    // MnM add to cart su konfigūracija
+    $cart_item_data = array('mnm_config' => $config);
+    $added = WC()->cart->add_to_cart($cid, 1, 0, array(), $cart_item_data);
+    $out['cart_add_result'] = $added ? 'OK:'.$added : 'FAIL';
+    $out['cart_count'] = WC()->cart->get_cart_contents_count();
+
+    // Sukuriam order iš cart
+    if ($added) {
+        $checkout = WC()->checkout();
+        $order_id = $checkout->create_order(array(
+            'payment_method' => 'bacs',
+            'customer_id' => 0,
         ));
+        $out['order_id'] = is_wp_error($order_id) ? ('ERR:'.$order_id->get_error_message()) : $order_id;
+
+        if (!is_wp_error($order_id)) {
+            $order = wc_get_order($order_id);
+            // Patikrinam order items
+            $out['order_items'] = array();
+            foreach ($order->get_items() as $item) {
+                $out['order_items'][] = array(
+                    'name' => $item->get_name(),
+                    'qty' => $item->get_quantity(),
+                    'product_id' => $item->get_product_id(),
+                );
+            }
+            // Completed -> stock reduction
+            $order->update_status('completed', 'Test likučių nurašymas');
+        }
     }
 
-    $order->calculate_totals();
-    $order->save();
-    $out['order_id'] = $order->get_id();
-
-    // 4. Pakeičiam statusą į completed -> tai sukelia stock reduction
-    $order->update_status('completed', 'Testas - tikrinam likučių nurašymą');
-
-    // Palaukiam ir perskaitom PO
+    WC()->cart->empty_cart();
     wc_delete_product_transients();
 
+    // PO
     $out['after'] = array();
     $product2 = wc_get_product($cid);
     foreach ($product2->get_child_items() as $child) {
         $cp = wc_get_product($child->get_product()->get_id());
-        if (!$cp) continue;
         $pid = $cp->get_id();
         $out['after'][$pid] = $cp->get_stock_quantity();
     }
+    $out['fixed_map'] = $fixed_map;
 
-    update_option('koju_result', json_encode($out));
+    update_option('koju2_result', json_encode($out));
     wp_die('DONE');
 });
 add_action('init', function(){
-    if (!isset($_GET['koju_read']) || $_GET['koju_read'] !== 'go') return;
+    if (!isset($_GET['koju2r']) || $_GET['koju2r'] !== 'go') return;
     header('Content-Type: application/json');
-    echo get_option('koju_result', '{}');
+    echo get_option('koju2_result', '{}');
     exit;
 });
 `;
 (async()=>{
   const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Koju Test', code: PROBE, desc:'temp', scope:'global', active:true}));
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Koju2', code: PROBE, desc:'temp', scope:'global', active:true}));
   let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
   let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
   out.snippet_id = snip && snip.id;
   await new Promise(r=>setTimeout(r,2500));
-  exec('curl -sk "'+BASE+'/?koju_test=go" -o /dev/null');
-  await new Promise(r=>setTimeout(r,4000));
-  const res = exec('curl -sk "'+BASE+'/?koju_read=go"');
+  exec('curl -sk "'+BASE+'/?koju2=go" -o /dev/null');
+  await new Promise(r=>setTimeout(r,5000));
+  const res = exec('curl -sk "'+BASE+'/?koju2r=go"');
   try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
   if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('koju_test.json', JSON.stringify(out,null,1));
+  commit('koju2.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
