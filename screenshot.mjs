@@ -12,114 +12,75 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-function api(method, path, body){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
-  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
-  cmd+=' "'+BASE+path+'"';
-  let raw=exec(cmd);
-  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
-}
 
-const SNIPPET_V7 = `<?php
-// Petshop MnM Sutaupymo žymeklis v7
-// A) Produkto puslapyje: "Sutaupote X,XX € (Y%)" po kaina
-// B) Perbraukta senoji kaina (komponentų suma) kortelėse ir produkto puslapyje
-// C) JOKIO badge ant nuotraukos — klientas jau žino, kad rinkinys
-
-function petshop_mnm_calc_savings($product) {
-    if (!$product || $product->get_type() !== 'mix-and-match') return false;
-    $allowed_cats = array('konservu-rinkiniai', 'skanestu-rinkiniai', 'kramtalu-rinkiniai');
-    $matched = false;
-    foreach ($allowed_cats as $slug) {
-        if (has_term($slug, 'product_cat', $product->get_id())) { $matched = true; break; }
+const PROBE = `<?php
+add_action('init', function(){
+    if (!isset($_GET['gd_probe']) || $_GET['gd_probe'] !== 'go') return;
+    $out = array();
+    
+    // 1. PHP GD
+    $out['gd_loaded'] = extension_loaded('gd');
+    if (function_exists('gd_info')) {
+        $info = gd_info();
+        $out['gd_version'] = $info['GD Version'] ?? '?';
+        $out['jpeg'] = $info['JPEG Support'] ?? false;
+        $out['png'] = $info['PNG Support'] ?? false;
+        $out['webp'] = $info['WebP Support'] ?? false;
+        $out['freetype'] = $info['FreeType Support'] ?? false;
     }
-    if (!$matched) return false;
-    $container_id = $product->get_id();
-    $fixed_raw = get_post_meta($container_id, '_petshop_component_quantities', true);
-    $fixed_map = array();
-    if (!empty($fixed_raw)) {
-        $decoded = json_decode($fixed_raw, true);
-        if (is_array($decoded)) $fixed_map = $decoded;
+    
+    // 2. Reikalingos funkcijos
+    $funcs = array('imagecreatetruecolor','imagecreatefromjpeg','imagecreatefrompng',
+                   'imagecopyresampled','imagejpeg','imagedestroy','getimagesize',
+                   'imagesx','imagesy','imagecolorallocate','imagefilledrectangle');
+    $out['functions'] = array();
+    foreach ($funcs as $f) {
+        $out['functions'][$f] = function_exists($f);
     }
-    $total_separate = 0.0;
-    if (method_exists($product, 'get_child_items')) {
-        foreach ($product->get_child_items() as $child) {
-            $cp = $child->get_product();
-            if (!$cp) continue;
-            $cid = $cp->get_id();
-            $qty = isset($fixed_map[$cid]) ? (int)$fixed_map[$cid] : 1;
-            if ($qty < 1) $qty = 1;
-            $fresh = wc_get_product($cid);
-            if (!$fresh) continue;
-            $raw_price = (float) $fresh->get_price();
-            if ($raw_price <= 0) $raw_price = (float) $fresh->get_regular_price();
-            $display_price = (float) wc_get_price_to_display($fresh, array('price' => $raw_price));
-            $total_separate += $display_price * $qty;
-        }
-    }
-    if ($total_separate <= 0) return false;
-    $bundle_price = (float) wc_get_price_to_display($product);
-    $savings = $total_separate - $bundle_price;
-    if ($savings < 0.01) return false;
-    return array(
-        'amount'  => $savings,
-        'percent' => round(($savings / $total_separate) * 100),
-        'total'   => $total_separate,
-    );
-}
-
-// === A) Produkto puslapyje: tekstas po kaina ===
-add_action('woocommerce_single_product_summary', function() {
-    global $product;
-    $sav = petshop_mnm_calc_savings($product);
-    if (!$sav) return;
-    $savings_str = number_format($sav['amount'], 2, ',', ' ');
-    echo '<p class="petshop-savings" style="margin: -0.5rem 0 1.2rem; font-size: 15px; font-weight: 600; color: #4a8a3f;">'
-        . 'Sutaupote ' . esc_html($savings_str) . ' &euro; (' . esc_html($sav['percent']) . '%)'
-        . '</p>';
-}, 11);
-
-// === B) is_on_sale = true (kad WC rodytų perbrauktą kainą) ===
-add_filter('woocommerce_product_is_on_sale', function($on_sale, $product) {
-    if (!$product || $product->get_type() !== 'mix-and-match') return $on_sale;
-    static $cache = array();
-    $pid = $product->get_id();
-    if (!isset($cache[$pid])) {
-        $cache[$pid] = (bool) petshop_mnm_calc_savings($product);
-    }
-    return $cache[$pid] ? true : $on_sale;
-}, 20, 2);
-
-// === C) regular_price = komponentų suma (kad ~~23,41~~ 21,99) ===
-add_filter('woocommerce_product_get_regular_price', function($price, $product) {
-    if (!$product || $product->get_type() !== 'mix-and-match') return $price;
-    static $cache = array();
-    $pid = $product->get_id();
-    if (!isset($cache[$pid])) {
-        $sav = petshop_mnm_calc_savings($product);
-        $cache[$pid] = $sav ? $sav['total'] : false;
-    }
-    return $cache[$pid] !== false ? $cache[$pid] : $price;
-}, 20, 2);
-
-// === D) PASLĖPTI sale badge ant nuotraukos (grąžinam tuščią) ===
-add_filter('woocommerce_sale_flash', function($html, $post, $product) {
-    if (!$product || $product->get_type() !== 'mix-and-match') return $html;
-    $sav = petshop_mnm_calc_savings($product);
-    if (!$sav) return $html;
-    return ''; // jokio badge
-}, 20, 3);
+    
+    // 3. Memory limit
+    $out['memory_limit'] = ini_get('memory_limit');
+    $out['max_execution_time'] = ini_get('max_execution_time');
+    $out['upload_max_filesize'] = ini_get('upload_max_filesize');
+    
+    // 4. WP upload dir
+    $upload = wp_upload_dir();
+    $out['upload_path'] = $upload['path'];
+    $out['upload_url'] = $upload['url'];
+    $out['upload_writable'] = is_writable($upload['path']);
+    
+    // 5. PHP versija
+    $out['php_version'] = PHP_VERSION;
+    
+    // 6. WC MnM REST endpoint'ai — ar galima kurti MnM produktą per wc_get_product + save
+    $out['wc_mnm_class_exists'] = class_exists('WC_Product_Mix_and_Match');
+    
+    // 7. Ar Code Snippets leidžia admin_menu hook'ą
+    $out['is_admin'] = is_admin();
+    $out['current_user_can_manage'] = current_user_can('manage_woocommerce');
+    
+    update_option('gd_probe_result', wp_json_encode($out));
+    wp_die('DONE');
+});
+add_action('init', function(){
+    if (!isset($_GET['gd_read']) || $_GET['gd_read'] !== 'go') return;
+    header('Content-Type: application/json');
+    echo get_option('gd_probe_result', '{}');
+    exit;
+});
 `;
-
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const u = api('PUT','/wp-json/code-snippets/v1/snippets/535', {
-    name:'Petshop MnM Sutaupymo žymeklis v7 (be badge)',
-    code: SNIPPET_V7,
-    desc:'v7: perbraukta kaina + sutaupymo tekstas, BET jokio badge ant nuotraukos.',
-    scope: 'global', active: true
-  });
-  out.update = u && u.id ? ('updated len='+(u.code||'').length) : (u.__raw||'?');
-  commit('snip535_v7.json', JSON.stringify(out,null,1));
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP GD Probe', code: PROBE, desc:'temp', scope:'global', active:true}));
+  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
+  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
+  out.snippet_id = snip && snip.id;
+  await new Promise(r=>setTimeout(r,2500));
+  exec('curl -sk "'+BASE+'/?gd_probe=go" -o /dev/null');
+  await new Promise(r=>setTimeout(r,2500));
+  const res = exec('curl -sk "'+BASE+'/?gd_read=go"');
+  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
+  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
+  commit('gd_probe.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
