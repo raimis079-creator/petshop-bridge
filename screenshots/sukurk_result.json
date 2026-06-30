@@ -1,36 +1,56 @@
 {
- "ts": "2026-06-30T06:40:10.777Z",
- "mode": "apply",
+ "ts": "2026-06-30T07:56:17.381Z",
+ "mode": "dry",
  "receptas": {
-  "pavadinimas": "Animonda GranCarno rinkinys · 6×400g",
-  "sku": "RINK-ANIMONDA-GC-6x400",
-  "kaina": 13.49,
-  "dydis": 6,
+  "pavadinimas": "Vandenynas — kačių jūros konservų rinkinys",
+  "sku": "RINK-VANDENYNAS-CAT-11",
+  "kaina": 17.99,
+  "dydis": 11,
   "kategorija_slug": "konservu-rinkiniai",
-  "trumpas_aprasymas": "6 skirtingi Animonda GranCarno skoniai — su jautiena, antiena, žvėriena, elniena, lašiša, jautiena+ėriena. Be grūdų, sojų, cukraus, dirbtinių dažiklių ir konservantų.",
+  "trumpas_aprasymas": "11 skirtingų jūros gėrybių skonių katėms. Lengvai virškinami konservai rekomenduojami išrankioms, vyresnėms, sterilizuotoms ir antsvorio turinčioms katėms.",
   "komponentai": [
    {
-    "id": 19574,
+    "id": 16942,
     "kiekis": 1
    },
    {
-    "id": 19566,
+    "id": 17057,
     "kiekis": 1
    },
    {
-    "id": 19500,
+    "id": 17499,
     "kiekis": 1
    },
    {
-    "id": 19492,
+    "id": 17493,
     "kiekis": 1
    },
    {
-    "id": 19483,
+    "id": 18369,
     "kiekis": 1
    },
    {
-    "id": 19586,
+    "id": 19045,
+    "kiekis": 1
+   },
+   {
+    "id": 19452,
+    "kiekis": 1
+   },
+   {
+    "id": 17550,
+    "kiekis": 1
+   },
+   {
+    "id": 17547,
+    "kiekis": 1
+   },
+   {
+    "id": 17538,
+    "kiekis": 1
+   },
+   {
+    "id": 17541,
     "kiekis": 1
    }
   ]
@@ -38,56 +58,101 @@
  "kategorija_id": 682,
  "komponentai_details": [
   {
-   "id": 19574,
-   "sku": "82735",
-   "name": "Animonda GranCarno Adult Beef: konservai šunims su šviežia j",
+   "id": 16942,
+   "sku": "42822",
+   "name": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90",
    "status": "publish",
-   "qty": 54,
+   "qty": 40,
    "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 19566,
-   "sku": "82801",
-   "name": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims ",
+   "id": 17057,
+   "sku": "640319",
+   "name": "Ontario super premium konservai katėms su vištiena ir lašiša",
    "status": "publish",
-   "qty": 101,
+   "qty": 23,
    "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 19500,
-   "sku": "82736",
-   "name": "Animonda GranCarno Adult: konservai suaugusiems šunims su žv",
+   "id": 17499,
+   "sku": "2632",
+   "name": "Miamor Super premium konservai katėms su tunu ir kalmarais, ",
    "status": "publish",
-   "qty": 83,
+   "qty": 19,
    "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 19492,
-   "sku": "82753",
-   "name": "Animonda GranCarno Adult: konservai šunims su elniena, pagar",
+   "id": 17493,
+   "sku": "640367",
+   "name": "Miamor Super premium konservai katėms su tunu ir krevetėmis,",
    "status": "publish",
-   "qty": 77,
+   "qty": 19,
    "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 19483,
-   "sku": "82751",
-   "name": "Animonda GranCarno Adult: konservai šunims su lašiša, pratur",
+   "id": 18369,
+   "sku": "40829",
+   "name": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
    "status": "publish",
-   "qty": 63,
+   "qty": 24,
    "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 19586,
-   "sku": "82733",
-   "name": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šv",
+   "id": 19045,
+   "sku": "42136",
+   "name": "CATIT CUISINE tuno paštetas su sardinėmis ir daržovėmis, 95 ",
    "status": "publish",
-   "qty": 92,
+   "qty": 12,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 19452,
+   "sku": "83941",
+   "name": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and S",
+   "status": "publish",
+   "qty": 0,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 17550,
+   "sku": "74080",
+   "name": "Miamor Feine Filets konservai katėms, tunas krabų drebučiuos",
+   "status": "publish",
+   "qty": 34,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 17547,
+   "sku": "2835",
+   "name": "Miamor Feine Filets konservai katėms, tunas lašišos drebučiu",
+   "status": "publish",
+   "qty": 22,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 17538,
+   "sku": "2837",
+   "name": "Miamor Feine Filets konservai katėms, tunas su krabais drebu",
+   "status": "publish",
+   "qty": 26,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 17541,
+   "sku": "2838",
+   "name": "Miamor Feine Filets konservai katėms, tunas su kalmarais dre",
+   "status": "publish",
+   "qty": 38,
    "kiekis": 1,
    "has_image": true
   }
@@ -97,38 +162,11 @@
   "errors": []
  },
  "kainos_analize": {
-  "atskirai_eur": "13.93",
-  "rinkinyje_eur": "13.49",
-  "sutaupymas_pct": "3%"
+  "atskirai_eur": "18.89",
+  "rinkinyje_eur": "17.99",
+  "sutaupymas_pct": "5%"
  },
- "aprasymo_preview": "Rinkinyje rasite (6 skardinės): Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 400 g Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 400 g Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 400g Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
- "kompozicijos_layout": "3×2",
- "created": {
-  "id": 34156,
-  "sku": "RINK-ANIMONDA-GC-6x400",
-  "status": "publish",
-  "permalink": "https://dev.avesa.lt/product/animonda-grancarno-rinkinys-%c2%b7-6x400g/",
-  "err": null
- },
- "composition_tiles": 6,
- "python_out": "OK\n",
- "composed_size": 170886,
- "media_id": 34157,
- "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-animonda-gc-6x400-1.jpg",
- "featured_assigned": 34157,
- "verify": {
-  "id": 34156,
-  "name": "Animonda GranCarno rinkinys · 6×400g",
-  "sku": "RINK-ANIMONDA-GC-6x400",
-  "type": "mix-and-match",
-  "status": "publish",
-  "price": "13.49",
-  "purchasable": true,
-  "min": 6,
-  "max": 6,
-  "pool_count": 6,
-  "cats": "682:konservu-rinkiniai",
-  "images": 1,
-  "permalink": "https://dev.avesa.lt/product/animonda-grancarno-rinkinys-%c2%b7-6x400g/"
- }
+ "aprasymo_preview": "Rinkinyje rasite (11 skardinės): Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90 g Ontario super premium konservai katėms su vištiena ir lašiša, 95 g Miamor Super premium konservai katėms su tunu ir kalmarais, 100 g Miamor Super premium konservai katėms su tunu ir krevetėmis, 100 g Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml CATIT CUISINE tuno paštetas su sardinėmis ir daržovėmis, 95 g Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and Salmon – konservai katėms Švelnusis meniu su kalakutiena ir lašiša, 100 g Miamor Feine Filets konservai katėms, tunas krabų drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas lašišos drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, 100 g Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
+ "kompozicijos_layout": "4×3 (paskutinė eilutė: 3)",
+ "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
 }
