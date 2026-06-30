@@ -12,41 +12,29 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-function api(method, path, body){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
-  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
-  cmd+=' "'+BASE+path+'"';
+function api(method, path){
+  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
   let raw=exec(cmd);
-  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
+  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,300)}; }
 }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // Pažiūriu rinkinio 34158 stock settings + manage_stock
-  const p = api('GET','/wp-json/wc/v3/products/34158?nc='+Date.now());
-  out.rinkinys_34158 = {
-    type: p.type,
-    manage_stock: p.manage_stock,
-    stock_status: p.stock_status,
-    stock_quantity: p.stock_quantity,
-    sold_individually: p.sold_individually,
-    backorders: p.backorders,
-    purchasable: p.purchasable
-  };
-  // Visi 11 komponentų - jų stock settings
   const COMPS = [16942, 17057, 17499, 17493, 18369, 19045, 19452, 17550, 17547, 17538, 17541];
-  out.komponentai = [];
+  out.stock = [];
   for(const id of COMPS){
-    const c = api('GET','/wp-json/wc/v3/products/'+id+'?nc='+Date.now());
-    out.komponentai.push({
-      id: c.id,
-      name: (c.name||'').slice(0,50),
-      manage_stock: c.manage_stock,
-      stock_status: c.stock_status,
-      stock_quantity: c.stock_quantity,
-      backorders: c.backorders,
-      purchasable: c.purchasable
+    const p = api('GET','/wp-json/wc/v3/products/'+id+'?nc='+Date.now());
+    out.stock.push({
+      id: id,
+      name: (p.name||'').slice(0,60),
+      stock_qty: p.stock_quantity,
+      stock_status: p.stock_status,
+      manage_stock: p.manage_stock
     });
   }
-  commit('stock_diag.json', JSON.stringify(out,null,1));
+  // Patikrinu pačio rinkinio MnM child_items
+  const r = api('GET','/wp-json/wc/v3/products/34158?nc='+Date.now());
+  out.rinkinys_purchasable = r.purchasable;
+  out.rinkinys_stock_status = r.stock_status;
+  commit('stock_check.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
