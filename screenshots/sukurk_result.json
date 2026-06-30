@@ -1,55 +1,68 @@
 {
- "ts": "2026-06-30T14:38:48.331Z",
- "mode": "apply",
+ "ts": "2026-06-30T16:11:00.495Z",
+ "mode": "dry",
  "receptas": {
-  "pavadinimas": "Jaučio ir kiaulės ausų rinkinys šunims · 15 vnt.",
-  "sku": "RINK-AUSYS-15",
-  "kaina": 18.39,
-  "dydis": 15,
+  "pavadinimas": "Churu kreminių skanėstų rinkinys katėms · 9 vnt.",
+  "sku": "RINK-CHURU-9",
+  "kaina": 21.99,
+  "dydis": 9,
   "kategorija_slug": "skanestu-rinkiniai",
-  "trumpas_aprasymas": "Natūralių, džiovintų skanėstų rinkinys — 5 baltos jaučio ausys, 5 rudos jaučio ausys, 5 kiaulės ausys. Tinka kasdieniam apdovanojimui ar kramtymui.",
+  "trumpas_aprasymas": "Mišrus Churu kreminių skanėstų rinkinys katėms — 9 skirtingų skonių pakeliai. Įvairūs skoniai vienam ar keliems gardiems momentams.",
   "komponentai": [
    {
-    "id": 19098,
-    "kiekis": 5
+    "id": 21583,
+    "kiekis": 1
    },
    {
-    "id": 16311,
-    "kiekis": 5
+    "id": 21617,
+    "kiekis": 1
    },
    {
-    "id": 16305,
-    "kiekis": 5
+    "id": 21589,
+    "kiekis": 3
+   },
+   {
+    "id": 21577,
+    "kiekis": 4
    }
   ]
  },
  "kategorija_id": 683,
  "komponentai_details": [
   {
-   "id": 19098,
-   "sku": "341000",
-   "name": "Balta jaučio ausis, 1 vnt.",
+   "id": 21583,
+   "sku": "EU114",
+   "name": "Churu kreminis skanėstas katėms su tunu ir krabu, 56g N4",
    "status": "publish",
-   "qty": 71,
-   "kiekis": 5,
+   "qty": 234,
+   "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 16311,
-   "sku": "723000",
-   "name": "Ruda jaučio ausis, 1 vnt.",
+   "id": 21617,
+   "sku": "EU731",
+   "name": "Churu Rolls skanėstas katėms su vištiena ir tunu, lazdelės, ",
    "status": "publish",
-   "qty": 300,
-   "kiekis": 5,
+   "qty": 1349,
+   "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 16305,
-   "sku": "338000",
-   "name": "Ruda kiaulės ausis, 1 vnt.",
+   "id": 21589,
+   "sku": "EU671",
+   "name": "Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt",
    "status": "publish",
-   "qty": 48,
-   "kiekis": 5,
+   "qty": 1984,
+   "kiekis": 3,
+   "has_image": true
+  },
+  {
+   "id": 21577,
+   "sku": "EU108",
+   "name": "Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4",
+   "status": "publish",
+   "qty": 455,
+   "kiekis": 4,
    "has_image": true
   }
  ],
@@ -58,38 +71,11 @@
   "errors": []
  },
  "kainos_analize": {
-  "atskirai_eur": "19.35",
-  "rinkinyje_eur": "18.39",
-  "sutaupymas_pct": "5%"
+  "atskirai_eur": "23.41",
+  "rinkinyje_eur": "21.99",
+  "sutaupymas_pct": "6%"
  },
- "aprasymo_preview": "Rinkinyje rasite (15 skardinės): Balta jaučio ausis, 1 vnt. Ruda jaučio ausis, 1 vnt. Ruda kiaulės ausis, 1 vnt. Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
- "kompozicijos_layout": "5×3",
- "created": {
-  "id": 34168,
-  "sku": "RINK-AUSYS-15",
-  "status": "publish",
-  "permalink": "https://dev.avesa.lt/product/jaucio-ir-kiaules-ausu-rinkinys-sunims-%c2%b7-15-vnt/",
-  "err": null
- },
- "composition_tiles": 3,
- "python_out": "OK\n",
- "composed_size": 59717,
- "media_id": 34169,
- "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-ausys-15.jpg",
- "featured_assigned": 34169,
- "verify": {
-  "id": 34168,
-  "name": "Jaučio ir kiaulės ausų rinkinys šunims · 15 vnt.",
-  "sku": "RINK-AUSYS-15",
-  "type": "mix-and-match",
-  "status": "publish",
-  "price": "18.39",
-  "purchasable": true,
-  "min": 15,
-  "max": 15,
-  "pool_count": 3,
-  "cats": "683:skanestu-rinkiniai",
-  "images": 1,
-  "permalink": "https://dev.avesa.lt/product/jaucio-ir-kiaules-ausu-rinkinys-sunims-%c2%b7-15-vnt/"
- }
+ "aprasymo_preview": "Rinkinyje rasite (9 vnt.): Churu kreminis skanėstas katėms su tunu ir krabu, 56g N4 Churu Rolls skanėstas katėms su vištiena ir tunu, lazdelės, 4 vnt. 3 × Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt 4 × Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4vnt",
+ "kompozicijos_layout": "2×2",
+ "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
 }
