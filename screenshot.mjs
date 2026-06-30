@@ -36,7 +36,7 @@ const RECEPTAS = {
     { id: 21577, kiekis: 4 }  // su vištiena ir krevetėmis (2.49)
   ]
 };
-const MODE = "dry"; // "dry" arba "apply"
+const MODE = "apply"; // "dry" arba "apply"
 
 // === HELPERS ===
 function commit(name, str) {
