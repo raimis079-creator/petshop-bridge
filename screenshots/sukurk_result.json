@@ -1,6 +1,6 @@
 {
- "ts": "2026-06-30T06:36:12.142Z",
- "mode": "dry",
+ "ts": "2026-06-30T06:40:10.777Z",
+ "mode": "apply",
  "receptas": {
   "pavadinimas": "Animonda GranCarno rinkinys · 6×400g",
   "sku": "RINK-ANIMONDA-GC-6x400",
@@ -103,5 +103,32 @@
  },
  "aprasymo_preview": "Rinkinyje rasite (6 skardinės): Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 400 g Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 400 g Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 400g Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
  "kompozicijos_layout": "3×2",
- "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
+ "created": {
+  "id": 34156,
+  "sku": "RINK-ANIMONDA-GC-6x400",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/animonda-grancarno-rinkinys-%c2%b7-6x400g/",
+  "err": null
+ },
+ "composition_tiles": 6,
+ "python_out": "OK\n",
+ "composed_size": 170886,
+ "media_id": 34157,
+ "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-animonda-gc-6x400-1.jpg",
+ "featured_assigned": 34157,
+ "verify": {
+  "id": 34156,
+  "name": "Animonda GranCarno rinkinys · 6×400g",
+  "sku": "RINK-ANIMONDA-GC-6x400",
+  "type": "mix-and-match",
+  "status": "publish",
+  "price": "13.49",
+  "purchasable": true,
+  "min": 6,
+  "max": 6,
+  "pool_count": 6,
+  "cats": "682:konservu-rinkiniai",
+  "images": 1,
+  "permalink": "https://dev.avesa.lt/product/animonda-grancarno-rinkinys-%c2%b7-6x400g/"
+ }
 }
