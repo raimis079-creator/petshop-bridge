@@ -1,0 +1,74 @@
+{
+ "ts": "2026-06-30T20:43:45.503Z",
+ "all_cats": [
+  {
+   "id": 682,
+   "name": "Konservų rinkiniai",
+   "slug": "konservu-rinkiniai",
+   "parent": 679,
+   "count": 3,
+   "menu_order": 0
+  },
+  {
+   "id": 684,
+   "name": "Kramtalų rinkiniai",
+   "slug": "kramtalu-rinkiniai",
+   "parent": 679,
+   "count": 1,
+   "menu_order": 0
+  },
+  {
+   "id": 679,
+   "name": "RINKINIAI",
+   "slug": "rinkiniai",
+   "parent": 0,
+   "count": 7,
+   "menu_order": 0
+  },
+  {
+   "id": 683,
+   "name": "Skanėstų rinkiniai",
+   "slug": "skanestu-rinkiniai",
+   "parent": 679,
+   "count": 3,
+   "menu_order": 0
+  }
+ ],
+ "bundles": [
+  {
+   "id": 34175,
+   "name": "Stirnos ir avies kojų rinkinys šunims · 14 vnt.",
+   "cats": "kramtalu-rinkiniai:Kramtalų rinkiniai"
+  },
+  {
+   "id": 34172,
+   "name": "Churu įvairių skonių rinkinys katėms · 7 vnt.",
+   "cats": "skanestu-rinkiniai:Skanėstų rinkiniai"
+  },
+  {
+   "id": 34170,
+   "name": "Churu kreminių skanėstų rinkinys katėms · 9 vnt.",
+   "cats": "skanestu-rinkiniai:Skanėstų rinkiniai"
+  },
+  {
+   "id": 34168,
+   "name": "Jaučio ir kiaulės ausų rinkinys šunims · 15 vnt.",
+   "cats": "skanestu-rinkiniai:Skanėstų rinkiniai"
+  },
+  {
+   "id": 34158,
+   "name": "Vandenynas konservų rinkinys katėms",
+   "cats": "konservu-rinkiniai:Konservų rinkiniai"
+  },
+  {
+   "id": 34156,
+   "name": "Animonda GranCarno rinkinys · 6×400g",
+   "cats": "konservu-rinkiniai:Konservų rinkiniai"
+  },
+  {
+   "id": 34153,
+   "name": "Rinkinys išrankiems šunims · 6×400g",
+   "cats": "konservu-rinkiniai:Konservų rinkiniai"
+  }
+ ]
+}
