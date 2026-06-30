@@ -12,43 +12,105 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-function api(path){
-  let cmd='curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
-  let raw=exec(cmd);
-  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,300)}; }
-}
+
+// Sukuriu testinį MnM "choice" rinkinį: pool iš kelių 800g Animonda konservų,
+// min=max=12, per_product_pricing=no, fiksuota kaina 44.99
+// Patikrinu: ar leidžia laisvai rinktis, ar leidžia 12 vienodų, ar kaina fiksuota
+const PROBE = `<?php
+add_action('init', function(){
+    if (!isset($_GET['choice_probe']) || $_GET['choice_probe'] !== 'go') return;
+    $out = array();
+
+    // 800g Animonda konservai iš recon (pool kandidatai)
+    $pool = array(19598, 19590, 19582, 19570, 19562, 19553, 19545);
+    $out['pool'] = $pool;
+
+    // Patikrinu, ar jie egzistuoja ir jų kainos
+    $out['pool_details'] = array();
+    foreach ($pool as $pid) {
+        $p = wc_get_product($pid);
+        if ($p) {
+            $out['pool_details'][] = array(
+                'id' => $pid,
+                'name' => substr($p->get_name(), 0, 45),
+                'price' => $p->get_price(),
+                'stock' => $p->get_stock_quantity(),
+                'gramatura' => wc_get_product_terms($pid, 'pa_pakuotes_dydis', array('fields'=>'names'))
+            );
+        }
+    }
+
+    // Sukuriu testinį MnM choice rinkinį
+    $product = new WC_Product_Mix_and_Match();
+    $product->set_name('TEST Susidėjimo konservų rinkinys 800g · 12 vnt');
+    $product->set_sku('TEST-CHOICE-800-12');
+    $product->set_status('publish');
+    $product->set_catalog_visibility('hidden'); // tik testas
+    $product->set_price(44.99);
+    $product->set_regular_price(44.99);
+    $product->set_min_container_size(12);
+    $product->set_max_container_size(12);
+    $product->update_meta_data('_mnm_content_source', 'products');
+    $product->update_meta_data('_mnm_per_product_pricing', 'no'); // fiksuota kaina
+    $product->save();
+    $cid = $product->get_id();
+    $out['created_id'] = $cid;
+
+    // Pridedu pool per DB
+    global $wpdb;
+    $table = $wpdb->prefix . 'wc_mnm_child_items';
+    $order = 0;
+    foreach ($pool as $pid) {
+        $order++;
+        $wpdb->insert($table, array('product_id'=>$pid, 'container_id'=>$cid, 'menu_order'=>$order), array('%d','%d','%d'));
+    }
+
+    // Perskaitau atgal — ar MnM teisingai sukonfigūravo
+    wc_delete_product_transients($cid);
+    $check = wc_get_product($cid);
+    $out['verify'] = array(
+        'type' => $check->get_type(),
+        'price' => $check->get_price(),
+        'min' => $check->get_min_container_size(),
+        'max' => $check->get_max_container_size(),
+        'per_product_pricing' => get_post_meta($cid, '_mnm_per_product_pricing', true),
+        'purchasable' => $check->is_purchasable(),
+        'child_count' => count($check->get_child_items()),
+    );
+
+    // KRITIŠKA: ar komponento max quantity leidžia 12 vienodų?
+    // get_quantity('max') komponentui — turi būti >= 12, kad galima 12 vienodų
+    $first_child = null;
+    foreach ($check->get_child_items() as $ci) { $first_child = $ci; break; }
+    if ($first_child) {
+        $out['child_max_qty'] = $first_child->get_quantity('max');
+        $out['child_min_qty'] = $first_child->get_quantity('min');
+    }
+
+    $out['permalink'] = get_permalink($cid);
+
+    update_option('choice_probe_result', wp_json_encode($out));
+    wp_die('DONE');
+});
+add_action('init', function(){
+    if (!isset($_GET['choice_read']) || $_GET['choice_read'] !== 'go') return;
+    header('Content-Type: application/json');
+    echo get_option('choice_probe_result', '{}');
+    exit;
+});
+`;
 (async()=>{
   const out={ts:new Date().toISOString()};
-
-  // 1. Šunų konservų kategorijos
-  const cats = api('/wp-json/wc/v3/products/categories?per_page=100&search=konserv');
-  out.konserv_cats = Array.isArray(cats) ? cats.map(c=>({id:c.id, name:c.name, slug:c.slug, parent:c.parent, count:c.count})) : [];
-
-  // 2. Visi produktų atributai (ar yra "gramatūra", "tipas", "hipoalerginis")
-  const attrs = api('/wp-json/wc/v3/products/attributes');
-  out.attributes = Array.isArray(attrs) ? attrs.map(a=>({id:a.id, name:a.name, slug:a.slug})) : [];
-
-  // 3. Pavyzdys šunų konservų (pirmi 15) — žiūriu jų struktūrą
-  // Ieskom pagal kategoriją "konservai šunims" arba panašiai
-  const dogCanCat = (out.konserv_cats.find(c=>/sun|šun/i.test(c.name)) || {}).id;
-  out.dog_can_cat_used = dogCanCat;
-
-  let prods;
-  if(dogCanCat){
-    prods = api('/wp-json/wc/v3/products?category='+dogCanCat+'&per_page=15&status=publish');
-  } else {
-    prods = api('/wp-json/wc/v3/products?search=konservai&per_page=15&status=publish');
-  }
-  out.sample_products = Array.isArray(prods) ? prods.map(p=>({
-    id: p.id,
-    name: (p.name||'').slice(0,55),
-    sku: p.sku,
-    price: p.price,
-    cats: (p.categories||[]).map(c=>c.name).join('|'),
-    tags: (p.tags||[]).map(t=>t.name).join('|'),
-    attributes: (p.attributes||[]).map(a=>a.name+':'+(a.options||[]).join(',')).join(' || ')
-  })) : [];
-
-  commit('dog_can_recon.json', JSON.stringify(out,null,1));
-  console.log("DONE");
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Choice Probe', code: PROBE, desc:'temp', scope:'global', active:true}));
+  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
+  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
+  out.snippet_id = snip && snip.id;
+  await new Promise(r=>setTimeout(r,2500));
+  exec('curl -sk "'+BASE+'/?choice_probe=go" -o /dev/null');
+  await new Promise(r=>setTimeout(r,3000));
+  const res = exec('curl -sk "'+BASE+'/?choice_read=go"');
+  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
+  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
+  commit('choice_probe.json', JSON.stringify(out,null,1));
+  console.log("DONE id="+(out.probe&&out.probe.created_id));
 })();
