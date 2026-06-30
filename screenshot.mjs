@@ -29,68 +29,89 @@ function api(method, path, body){
 
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
+  // 11 komponentų ID — tie patys, ką padarėm VANDENYNAS rinkiniui
+  const COMPS = [16942, 17057, 17499, 17493, 18369, 19045, 19452, 17550, 17547, 17538, 17541];
 
-  // 1. Parsisiunčiu superzoo CDN — bandysiu skirtingus dydžius
-  const urls = [
-    'https://cdn.superzoo.cz/detect/modal-1110/o-213-2002',
-    'https://cdn.superzoo.cz/detect/product-650/o-213-2002',
-    'https://cdn.superzoo.cz/detect/main-benefits-450/o-213-2002'
-  ];
-  out.tries = {};
-  let best = null; let best_size = 0;
-  for(const u of urls){
-    const f='/tmp/im_'+Math.random().toString(36).slice(2,8);
-    exec(`curl -sk -A "${UA}" -H "Referer: https://www.superzoo.cz/" "${u}" -o "${f}"`);
-    const sz = fs.existsSync(f) ? fs.statSync(f).size : 0;
-    out.tries[u] = sz;
-    // Patikrinu, ar tikrai paveiksliukas (ne HTML)
-    if(sz > 5000){
-      const buf = fs.readFileSync(f);
-      const hex = buf.slice(0,4).toString('hex');
-      const isImg = hex.startsWith('ffd8') || hex.startsWith('8950') || hex === '52494646'; // jpg/png/webp
-      if(isImg && sz > best_size){ best = f; best_size = sz; }
-    }
+  // 1. Parsisiunčiu visus komponentus
+  const tmpDir='/tmp/rinkimg_regen'; try{ fs.mkdirSync(tmpDir,{recursive:true}); }catch(e){}
+  const dl=[];
+  for(const id of COMPS){
+    const p = api('GET','/wp-json/wc/v3/products/'+id);
+    const url = p && p.images && p.images[0] && p.images[0].src;
+    if(!url){ continue; }
+    const f = tmpDir+'/c'+id+'.jpg';
+    exec('curl -sk "'+url+'" -o "'+f+'"');
+    if(fs.existsSync(f) && fs.statSync(f).size>1000){ dl.push(f); }
   }
-  if(!best){
-    out.fatal = 'Nepavyko gauti tikros nuotraukos. Tries: ' + JSON.stringify(out.tries);
-    commit('ontario_v2_result.json', JSON.stringify(out,null,1));
-    return;
-  }
-  out.chosen_size = best_size;
+  out.downloaded = dl.length;
 
-  // 2. Konvertuoju į JPG per Pillow (tarkim, gali būti webp ar bet kas)
+  if(dl.length !== 11){ out.fatal = 'Tikėjausi 11, gavau '+dl.length; commit('regen.json', JSON.stringify(out,null,1)); return; }
+
+  // 2. Python+PIL — 4x3 grid su last_row_count=3 (3 viduryje)
   exec('python3 -c "from PIL import Image" 2>/dev/null || pip3 install --quiet --break-system-packages Pillow 2>&1');
-  const conv = exec(`python3 -c "from PIL import Image; im=Image.open('${best}').convert('RGB'); im.save('/tmp/new.jpg', 'JPEG', quality=92); print(im.size)" 2>&1`);
-  out.convert = conv.slice(0,200);
-  if(!fs.existsSync('/tmp/new.jpg')){
-    out.fatal = 'Konversija nepavyko: '+conv;
-    commit('ontario_v2_result.json', JSON.stringify(out,null,1));
-    return;
-  }
-  out.jpg_size = fs.statSync('/tmp/new.jpg').size;
-  putBin('ontario_new_preview.jpg', fs.readFileSync('/tmp/new.jpg'));
+  const composedPath = tmpDir+'/composition.jpg';
+  const tile_size = 380;
+  const gap = 30;
+  const cols = 4;
+  const rows = 3;
+  const last_row_count = 3;
+  const W = cols * tile_size + (cols - 1) * gap + 60;
+  const H = rows * tile_size + (rows - 1) * gap + 60;
+  const py = `
+from PIL import Image
+tile_size = ${tile_size}
+gap = ${gap}
+W, H = ${W}, ${H}
+cols = ${cols}
+rows = ${rows}
+last_row_count = ${last_row_count}
+files = ${JSON.stringify(dl)}
+canvas = Image.new('RGB', (W, H), (248, 248, 248))
+pad_x = (W - cols * tile_size - (cols - 1) * gap) // 2
+pad_y = (H - rows * tile_size - (rows - 1) * gap) // 2
+for i, f in enumerate(files):
+    img = Image.open(f).convert('RGB')
+    w, h = img.size
+    ratio = min(tile_size / w, tile_size / h)
+    nw, nh = int(w * ratio), int(h * ratio)
+    img = img.resize((nw, nh), Image.LANCZOS)
+    tile = Image.new('RGB', (tile_size, tile_size), (255, 255, 255))
+    tile.paste(img, ((tile_size - nw) // 2, (tile_size - nh) // 2))
+    row = i // cols
+    col = i % cols
+    if row == rows - 1 and last_row_count < cols:
+        row_pad_x = (W - last_row_count * tile_size - (last_row_count - 1) * gap) // 2
+        x = row_pad_x + col * (tile_size + gap)
+    else:
+        x = pad_x + col * (tile_size + gap)
+    y = pad_y + row * (tile_size + gap)
+    canvas.paste(tile, (x, y))
+canvas.save('${composedPath}', 'JPEG', quality=88)
+print('OK')
+`;
+  fs.writeFileSync('/tmp/compose.py', py);
+  const r = exec('python3 /tmp/compose.py 2>&1');
+  out.python_out = r.slice(0,200);
+  if(!fs.existsSync(composedPath)){ out.fatal='compose failed'; commit('regen.json', JSON.stringify(out,null,1)); return; }
+  out.composed_size = fs.statSync(composedPath).size;
+  putBin('vand_compo_v2_preview.jpg', fs.readFileSync(composedPath));
 
-  // 3. Įkeliu kaip WP media
-  const filename = 'ontario-chicken-salmon-95g-v2.jpg';
+  // 3. Upload kaip naują media + priskirti rinkiniui 34158
+  const filename = 'rink-vandenynas-cat-11-v2.jpg';
   const upCmd = `curl -sk -X POST -H "Authorization: ${AUTH}" `
     + `-H "Content-Disposition: attachment; filename=\\"${filename}\\"" `
     + `-H "Content-Type: image/jpeg" `
-    + `--data-binary @/tmp/new.jpg `
+    + `--data-binary @"${composedPath}" `
     + `"${BASE}/wp-json/wp/v2/media"`;
   const upRaw = exec(upCmd);
   let media; try{ media = JSON.parse(upRaw); }catch(e){ media={__raw:upRaw.slice(0,300)}; }
   out.new_media_id = media && media.id;
   out.new_media_url = media && media.source_url;
-
-  // 4. Priskirti komponentui 17057
   if(media && media.id){
-    const setImg = api('PUT','/wp-json/wc/v3/products/17057', {
-      images: [{id: media.id}]
-    });
+    const setImg = api('PUT','/wp-json/wc/v3/products/34158', { images: [{id: media.id}] });
     out.assigned = setImg && setImg.images && setImg.images[0] && setImg.images[0].id;
   }
 
-  commit('ontario_v2_result.json', JSON.stringify(out,null,1));
+  commit('regen.json', JSON.stringify(out,null,1));
   console.log("DONE media="+out.new_media_id);
 })();
