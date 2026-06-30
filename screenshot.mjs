@@ -12,29 +12,240 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-function api(method, path){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
+function api(method, path, body){
+  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
+  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
+  cmd+=' "'+BASE+path+'"';
   let raw=exec(cmd);
-  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,300)}; }
+  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
 }
+
+const SNIPPET_V6 = `<?php
+// Petshop MnM Rinkinio Vitrina v6 (Konservų rinkiniai + slėpia Greitą peržiūrą + ATSTATYTI + stock-aware)
+
+// === A) Vitrinos CSS/JS pilname produkto puslapyje ===
+add_action('wp_loaded', function () {
+    if ( ! function_exists('is_product') ) return;
+    add_action('wp_head', function () {
+        if ( ! is_product() ) return;
+        global $post;
+        if ( ! $post ) return;
+        $product = wc_get_product($post->ID);
+        if ( ! $product || $product->get_type() !== 'mix-and-match' ) return;
+        if ( ! has_term('konservu-rinkiniai', 'product_cat', $post->ID) ) return;
+        $pid = (int) $post->ID;
+
+        // === STOCK CHECK: tikrinam, ar VISI komponentai turi likučio ===
+        $all_in_stock = true;
+        $missing_components = array();
+        if (method_exists($product, 'get_child_items')) {
+            $child_items = $product->get_child_items();
+            if (!empty($child_items)) {
+                foreach ($child_items as $child) {
+                    $child_product = $child->get_product();
+                    if (!$child_product) continue;
+                    $is_in_stock = $child_product->is_in_stock();
+                    $qty = $child_product->get_stock_quantity();
+                    if (!$is_in_stock || ($qty !== null && $qty < 1)) {
+                        $all_in_stock = false;
+                        $missing_components[] = $child_product->get_name();
+                    }
+                }
+            }
+        }
+        ?>
+<style id="petshop-mnm-vitrine">
+/* === SLĖPIAM "ATSTATYTI" === */
+.single-product.postid-<?php echo $pid; ?> button.mnm_reset,
+.single-product.postid-<?php echo $pid; ?> .mnm_reset,
+.single-product.postid-<?php echo $pid; ?> button[class*="mnm_reset"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Grid */
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products,
+.single-product.postid-<?php echo $pid; ?> form.cart > table,
+.single-product.postid-<?php echo $pid; ?> form.cart .mnm_form_content { border: none !important; margin: 0 0 1.5rem !important; }
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products thead,
+.single-product.postid-<?php echo $pid; ?> form.cart thead,
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products th { display: none !important; }
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody {
+    display: grid !important; grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px !important; border: none !important; background: transparent !important;
+}
+@media (max-width: 900px) { .single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody, .single-product.postid-<?php echo $pid; ?> form.cart tbody { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 480px) { .single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody, .single-product.postid-<?php echo $pid; ?> form.cart tbody { grid-template-columns: 1fr !important; } }
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody tr,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody tr {
+    display: flex !important; flex-direction: column !important;
+    background: #fff !important; border: 1px solid #ececec !important;
+    border-radius: 10px !important; padding: 12px !important; margin: 0 !important; position: relative !important;
+}
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody td,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody td {
+    display: block !important; border: none !important; padding: 0 !important;
+    width: 100% !important; text-align: center !important; background: transparent !important;
+}
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody td.product-thumbnail,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody td:first-child { margin-bottom: 10px !important; }
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody td img,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody td img {
+    width: 100% !important; max-width: 180px !important; aspect-ratio: 1/1 !important;
+    object-fit: contain !important; background: #fafafa !important;
+    border-radius: 8px !important; margin: 0 auto !important; display: block !important;
+}
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody td.product-name,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody td:nth-child(2) {
+    font-size: 13px !important; line-height: 1.4 !important; color: #2c2c2c !important;
+    font-weight: 500 !important; text-align: center !important;
+}
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody td.product-name a,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody td:nth-child(2) a { color: #2c2c2c !important; text-decoration: none !important; }
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody tr::after {
+    content: "× 1"; position: absolute; top: 10px; right: 10px;
+    background: #b29051; color: #fff; font-size: 11px; font-weight: 600;
+    padding: 3px 9px; border-radius: 12px; line-height: 1;
+}
+/* Slėpia kiekio kontrolę */
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products tbody td.product-quantity,
+.single-product.postid-<?php echo $pid; ?> form.cart tbody td:last-child,
+.single-product.postid-<?php echo $pid; ?> .mnm_child_products .quantity,
+.single-product.postid-<?php echo $pid; ?> form.cart .mnm_child_products input.qty,
+.single-product.postid-<?php echo $pid; ?> form.cart .mnm_child_products .plus,
+.single-product.postid-<?php echo $pid; ?> form.cart .mnm_child_products .minus { display: none !important; visibility: hidden !important; width: 0 !important; height: 0 !important; overflow: hidden !important; }
+/* Slėpia status/message/reset linkus */
+.single-product.postid-<?php echo $pid; ?> .mnm_price_container,
+.single-product.postid-<?php echo $pid; ?> .mnm_message,
+.single-product.postid-<?php echo $pid; ?> .mnm_status,
+.single-product.postid-<?php echo $pid; ?> .mnm_container_status,
+.single-product.postid-<?php echo $pid; ?> .mnm_container_message,
+.single-product.postid-<?php echo $pid; ?> .mnm_reset_container,
+.single-product.postid-<?php echo $pid; ?> .mnm_reset_link,
+.single-product.postid-<?php echo $pid; ?> .reset_variations,
+.single-product.postid-<?php echo $pid; ?> a.reset,
+.single-product.postid-<?php echo $pid; ?> form.cart > a[href*="reset"],
+.single-product.postid-<?php echo $pid; ?> form.cart .button.reset,
+.single-product.postid-<?php echo $pid; ?> form.cart > p:not(.price):not(.cart):not(.stock) { display: none !important; }
+.single-product.postid-<?php echo $pid; ?> form.cart > .quantity { display: inline-flex !important; margin-right: 10px !important; }
+.single-product.postid-<?php echo $pid; ?> p.price, .single-product.postid-<?php echo $pid; ?> .price { font-size: 28px !important; font-weight: 500 !important; color: #2c2c2c !important; margin-bottom: 1rem !important; }
+
+<?php if ($all_in_stock): ?>
+/* === VISI KOMPONENTAI YRA - mygtukas aktyvus, žalias === */
+.single-product.postid-<?php echo $pid; ?> .single_add_to_cart_button {
+    background: #b29051 !important; color: #fff !important; font-size: 16px !important;
+    font-weight: 500 !important; padding: 14px 28px !important; border-radius: 6px !important;
+    border: none !important; text-transform: none !important; letter-spacing: 0 !important;
+    opacity: 1 !important; cursor: pointer !important;
+}
+.single-product.postid-<?php echo $pid; ?> .single_add_to_cart_button:hover { background: #9a7c44 !important; }
+.single-product.postid-<?php echo $pid; ?> .single_add_to_cart_button.disabled,
+.single-product.postid-<?php echo $pid; ?> .single_add_to_cart_button:disabled {
+    opacity: 1 !important; background: #b29051 !important; color: #fff !important;
+    cursor: pointer !important; pointer-events: auto !important;
+}
+<?php else: ?>
+/* === KAŽKAS NEAKTYVUS - mygtukas pilkas, neaktyvus === */
+.single-product.postid-<?php echo $pid; ?> .single_add_to_cart_button {
+    background: #cccccc !important; color: #666 !important; font-size: 16px !important;
+    font-weight: 500 !important; padding: 14px 28px !important; border-radius: 6px !important;
+    border: none !important; text-transform: none !important; letter-spacing: 0 !important;
+    opacity: 0.7 !important; cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+.single-product.postid-<?php echo $pid; ?> form.cart > .quantity { display: none !important; }
+/* Rodome aiškų pranešimą */
+.single-product.postid-<?php echo $pid; ?> form.cart::before {
+    content: "Šiuo metu nėra sandėlyje";
+    display: block;
+    background: #f8e8e8;
+    color: #c00;
+    border-left: 3px solid #c00;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+<?php endif; ?>
+</style>
+<script id="petshop-mnm-vitrine-js">
+(function(){
+    var ALL_IN_STOCK = <?php echo $all_in_stock ? 'true' : 'false'; ?>;
+    function fill(){
+        var inputs = document.querySelectorAll('.mnm_child_products input.qty, form.cart .mnm_child_products input[type="number"]');
+        if(!inputs.length) return false;
+        inputs.forEach(function(inp){
+            inp.value = '1';
+            try{ inp.dispatchEvent(new Event('input', {bubbles:true})); }catch(e){}
+            try{ inp.dispatchEvent(new Event('change', {bubbles:true})); }catch(e){}
+            try{ if(window.jQuery) jQuery(inp).trigger('change').trigger('input'); }catch(e){}
+        });
+        var btn = document.querySelector('.single_add_to_cart_button');
+        if(btn){
+            if(ALL_IN_STOCK){
+                btn.disabled = false;
+                btn.classList.remove('disabled');
+                btn.removeAttribute('disabled');
+            } else {
+                // ATVIRKŠČIAI - tikriname, kad mygtukas LIKTŲ disabled
+                btn.disabled = true;
+                btn.classList.add('disabled');
+                btn.setAttribute('disabled', 'disabled');
+                // pakeičiame tekstą
+                if(btn.textContent && btn.textContent.trim() !== 'Nėra sandėlyje'){
+                    btn.textContent = 'Nėra sandėlyje';
+                }
+            }
+        }
+        // JS belt-and-suspenders: slėpti reset mygtuką
+        var resetBtns = document.querySelectorAll('button.mnm_reset, .mnm_reset, button[class*="mnm_reset"]');
+        resetBtns.forEach(function(el){ el.style.display='none'; });
+        return true;
+    }
+    var tries = 0;
+    var iv = setInterval(function(){ tries++; var ok = fill(); if(ok || tries > 25){ clearInterval(iv); } }, 200);
+    if (document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', function(){ setTimeout(fill, 100); setTimeout(fill, 800); setTimeout(fill, 2000); });
+    } else { setTimeout(fill, 100); setTimeout(fill, 800); setTimeout(fill, 2000); }
+    window.addEventListener('load', function(){ setTimeout(fill, 300); setTimeout(fill, 1500); });
+})();
+</script>
+<?php
+    }, 99);
+}, 5);
+
+// === B) Slėpia "Greitą peržiūrą" mygtuką ant Konservų rinkinių kortelių ===
+add_action('wp_head', function () {
+    if ( ! function_exists('is_woocommerce') ) return;
+    ?>
+<style id="petshop-mnm-hide-quickview">
+.product-small.product_cat-konservu-rinkiniai .quick-view,
+.product-small.product_cat-konservu-rinkiniai a.button.quick-view,
+.product-small.product_cat-konservu-rinkiniai .image-tools .quick-view-button,
+.product-small.product_cat-konservu-rinkiniai .quick-view-button,
+.product.product_cat-konservu-rinkiniai .quick-view,
+.product.product_cat-konservu-rinkiniai .quick-view-button,
+li.product.product_cat-konservu-rinkiniai .quick-view,
+li.product.product_cat-konservu-rinkiniai .quick-view-button {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+</style>
+<?php
+});
+`;
+
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const COMPS = [16942, 17057, 17499, 17493, 18369, 19045, 19452, 17550, 17547, 17538, 17541];
-  out.stock = [];
-  for(const id of COMPS){
-    const p = api('GET','/wp-json/wc/v3/products/'+id+'?nc='+Date.now());
-    out.stock.push({
-      id: id,
-      name: (p.name||'').slice(0,60),
-      stock_qty: p.stock_quantity,
-      stock_status: p.stock_status,
-      manage_stock: p.manage_stock
-    });
-  }
-  // Patikrinu pačio rinkinio MnM child_items
-  const r = api('GET','/wp-json/wc/v3/products/34158?nc='+Date.now());
-  out.rinkinys_purchasable = r.purchasable;
-  out.rinkinys_stock_status = r.stock_status;
-  commit('stock_check.json', JSON.stringify(out,null,1));
+  const u = api('PUT','/wp-json/code-snippets/v1/snippets/524', {
+    name:'Petshop MnM Rinkinio Vitrina v6 (stock-aware)',
+    code: SNIPPET_V6,
+    desc:'CSS+JS visiems MnM Konservų rinkiniai. Tikrina komponentų likučius - jei trūksta, mygtukas neaktyvus',
+    scope: 'global', active: true
+  });
+  out.update = u && u.id ? ('updated id='+u.id+' active='+u.active+' code_len='+(u.code||'').length) : (u.__raw||u.code||'?');
+  commit('v6_update.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
