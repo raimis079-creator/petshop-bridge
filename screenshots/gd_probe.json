@@ -1,0 +1,35 @@
+{
+ "ts": "2026-06-30T19:57:43.225Z",
+ "snippet_id": 538,
+ "probe": {
+  "gd_loaded": true,
+  "gd_version": "bundled (2.1.0 compatible)",
+  "jpeg": true,
+  "png": true,
+  "webp": true,
+  "freetype": true,
+  "functions": {
+   "imagecreatetruecolor": true,
+   "imagecreatefromjpeg": true,
+   "imagecreatefrompng": true,
+   "imagecopyresampled": true,
+   "imagejpeg": true,
+   "imagedestroy": true,
+   "getimagesize": true,
+   "imagesx": true,
+   "imagesy": true,
+   "imagecolorallocate": true,
+   "imagefilledrectangle": true
+  },
+  "memory_limit": "256M",
+  "max_execution_time": "300",
+  "upload_max_filesize": "64M",
+  "upload_path": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/2026/06",
+  "upload_url": "http://dev.avesa.lt/wp-content/uploads/2026/06",
+  "upload_writable": true,
+  "php_version": "8.3.20",
+  "wc_mnm_class_exists": true,
+  "is_admin": false,
+  "current_user_can_manage": false
+ }
+}
