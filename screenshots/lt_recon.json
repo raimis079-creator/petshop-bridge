@@ -1,0 +1,52 @@
+{
+  "ts": "2026-06-30T06:46:41.958Z",
+  "found": {
+    "product": {
+      "clear_html": "<button type=\"button\" class=\"mnm_reset button wp-element-button\" style=\"\">Clear selections</button>",
+      "clear_by_text": [
+        {
+          "tag": "BUTTON",
+          "cls": "mnm_reset button wp-element-button",
+          "href": null,
+          "txt": "Clear selections"
+        }
+      ],
+      "atc_text": "Add to cart",
+      "atc_attrs": "type=submit, name=add-to-cart, value=34156, class=single_add_to_cart_button button alt wp-"
+    },
+    "category": {
+      "btns_sample": [
+        {
+          "tag": "BUTTON",
+          "cls": "ux-search-submit submit-button secondary button  icon mb-0",
+          "txt": "",
+          "href": null
+        },
+        {
+          "tag": "A",
+          "cls": "button primary wc-backward",
+          "txt": "Grįžti į parduotuvę",
+          "href": "https://dev.avesa.lt/"
+        },
+        {
+          "tag": "A",
+          "cls": "button primary wc-backward",
+          "txt": "Grįžti į parduotuvę",
+          "href": "https://dev.avesa.lt/"
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "button",
+          "txt": "Filtruoti",
+          "href": null
+        },
+        {
+          "tag": "A",
+          "cls": "primary is-small mb-0 button product_type_mix-and-match add_to_cart_button is-outline",
+          "txt": "Select options",
+          "href": "https://dev.avesa.lt/product/animonda-grancarno-rinkinys-%c2%b7-6x400g/"
+        }
+      ]
+    }
+  }
+}
