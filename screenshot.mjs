@@ -1,116 +1,65 @@
 import { execSync } from "child_process";
 import fs from "fs";
-const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
+import { chromium } from "playwright";
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
 const BASE = "https://dev.avesa.lt";
 const AUTH = "Basic " + Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+function putBin(name,buf){
+  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
+  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
+  const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha;
+  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
+  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
+}
 function commit(name, str){
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
   const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha;
-  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
-  execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
+  fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body));
+  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-
-// Sukuriu testinį MnM "choice" rinkinį: pool iš kelių 800g Animonda konservų,
-// min=max=12, per_product_pricing=no, fiksuota kaina 44.99
-// Patikrinu: ar leidžia laisvai rinktis, ar leidžia 12 vienodų, ar kaina fiksuota
-const PROBE = `<?php
-add_action('init', function(){
-    if (!isset($_GET['choice_probe']) || $_GET['choice_probe'] !== 'go') return;
-    $out = array();
-
-    // 800g Animonda konservai iš recon (pool kandidatai)
-    $pool = array(19598, 19590, 19582, 19570, 19562, 19553, 19545);
-    $out['pool'] = $pool;
-
-    // Patikrinu, ar jie egzistuoja ir jų kainos
-    $out['pool_details'] = array();
-    foreach ($pool as $pid) {
-        $p = wc_get_product($pid);
-        if ($p) {
-            $out['pool_details'][] = array(
-                'id' => $pid,
-                'name' => substr($p->get_name(), 0, 45),
-                'price' => $p->get_price(),
-                'stock' => $p->get_stock_quantity(),
-                'gramatura' => wc_get_product_terms($pid, 'pa_pakuotes_dydis', array('fields'=>'names'))
-            );
-        }
-    }
-
-    // Sukuriu testinį MnM choice rinkinį
-    $product = new WC_Product_Mix_and_Match();
-    $product->set_name('TEST Susidėjimo konservų rinkinys 800g · 12 vnt');
-    $product->set_sku('TEST-CHOICE-800-12');
-    $product->set_status('publish');
-    $product->set_catalog_visibility('hidden'); // tik testas
-    $product->set_price(44.99);
-    $product->set_regular_price(44.99);
-    $product->set_min_container_size(12);
-    $product->set_max_container_size(12);
-    $product->update_meta_data('_mnm_content_source', 'products');
-    $product->update_meta_data('_mnm_per_product_pricing', 'no'); // fiksuota kaina
-    $product->save();
-    $cid = $product->get_id();
-    $out['created_id'] = $cid;
-
-    // Pridedu pool per DB
-    global $wpdb;
-    $table = $wpdb->prefix . 'wc_mnm_child_items';
-    $order = 0;
-    foreach ($pool as $pid) {
-        $order++;
-        $wpdb->insert($table, array('product_id'=>$pid, 'container_id'=>$cid, 'menu_order'=>$order), array('%d','%d','%d'));
-    }
-
-    // Perskaitau atgal — ar MnM teisingai sukonfigūravo
-    wc_delete_product_transients($cid);
-    $check = wc_get_product($cid);
-    $out['verify'] = array(
-        'type' => $check->get_type(),
-        'price' => $check->get_price(),
-        'min' => $check->get_min_container_size(),
-        'max' => $check->get_max_container_size(),
-        'per_product_pricing' => get_post_meta($cid, '_mnm_per_product_pricing', true),
-        'purchasable' => $check->is_purchasable(),
-        'child_count' => count($check->get_child_items()),
-    );
-
-    // KRITIŠKA: ar komponento max quantity leidžia 12 vienodų?
-    // get_quantity('max') komponentui — turi būti >= 12, kad galima 12 vienodų
-    $first_child = null;
-    foreach ($check->get_child_items() as $ci) { $first_child = $ci; break; }
-    if ($first_child) {
-        $out['child_max_qty'] = $first_child->get_quantity('max');
-        $out['child_min_qty'] = $first_child->get_quantity('min');
-    }
-
-    $out['permalink'] = get_permalink($cid);
-
-    update_option('choice_probe_result', wp_json_encode($out));
-    wp_die('DONE');
-});
-add_action('init', function(){
-    if (!isset($_GET['choice_read']) || $_GET['choice_read'] !== 'go') return;
-    header('Content-Type: application/json');
-    echo get_option('choice_probe_result', '{}');
-    exit;
-});
-`;
+function api(method, path, body){
+  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
+  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
+  cmd+=' "'+BASE+path+'"';
+  let raw=exec(cmd);
+  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
+}
 (async()=>{
-  const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Choice Probe', code: PROBE, desc:'temp', scope:'global', active:true}));
-  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
-  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
-  out.snippet_id = snip && snip.id;
-  await new Promise(r=>setTimeout(r,2500));
-  exec('curl -sk "'+BASE+'/?choice_probe=go" -o /dev/null');
-  await new Promise(r=>setTimeout(r,3000));
-  const res = exec('curl -sk "'+BASE+'/?choice_read=go"');
-  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
-  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('choice_probe.json', JSON.stringify(out,null,1));
-  console.log("DONE id="+(out.probe&&out.probe.created_id));
+  // Pirma — padarau produktą matomą (catalog visible) ir patikrinu child_count po cache flush
+  api('PUT','/wp-json/wc/v3/products/34179', {catalog_visibility:'visible'});
+  await new Promise(r=>setTimeout(r,1500));
+
+  const browser=await chromium.launch({args:['--no-sandbox']});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:1500}});
+  const page=await ctx.newPage();
+  await page.goto('https://dev.avesa.lt/?p=34179&nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:50000}).catch(()=>{});
+  await page.waitForTimeout(6000);
+  const probe = await page.evaluate(()=>{
+    const rows = document.querySelectorAll('.mnm_child_products tbody tr.mnm_item, form.cart tbody tr[data-mnm_item_id]');
+    var inputs = [];
+    rows.forEach(function(row){
+      var inp = row.querySelector('input[type="number"], input.qty');
+      inputs.push({
+        pid: row.getAttribute('data-mnm_item_id'),
+        min: inp?inp.getAttribute('min'):'?',
+        max: inp?inp.getAttribute('max'):'?',
+        value: inp?inp.value:'?'
+      });
+    });
+    var btn = document.querySelector('.single_add_to_cart_button');
+    var status = document.querySelector('.mnm_status, .mnm_container_status, .mnm_message');
+    return {
+      child_rows: rows.length,
+      inputs: inputs.slice(0,3),
+      btn_text: btn?btn.textContent.trim():'NĖRA',
+      status_text: status?status.textContent.trim().slice(0,80):'?'
+    };
+  });
+  commit('choice_visual.json', JSON.stringify(probe,null,1));
+  putBin('choice_visual.png', await page.screenshot({fullPage:false}));
+  console.log(JSON.stringify(probe).slice(0,500));
+  await ctx.close(); await browser.close();
 })();
