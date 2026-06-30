@@ -12,54 +12,33 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-
-const PROBE = `<?php
-add_action('init', function(){
-    if (!isset($_GET['kc']) || $_GET['kc'] !== 'go') return;
-    $out = array();
-    $cid = 34175;
-    $product = wc_get_product($cid);
-    $out['type'] = $product->get_type();
-    $out['sku'] = $product->get_sku();
-    $out['price'] = $product->get_price();
-    $out['min'] = method_exists($product,'get_min_container_size') ? $product->get_min_container_size() : '?';
-    $out['max'] = method_exists($product,'get_max_container_size') ? $product->get_max_container_size() : '?';
-    // KRITIŠKA — ar meta įrašytas formos
-    $out['petshop_quantities'] = get_post_meta($cid, '_petshop_component_quantities', true);
-    $out['mnm_content_source'] = get_post_meta($cid, '_mnm_content_source', true);
-    $out['mnm_per_product_pricing'] = get_post_meta($cid, '_mnm_per_product_pricing', true);
-    // Child items
-    $out['children'] = array();
-    foreach ($product->get_child_items() as $child) {
-        $cp = $child->get_product();
-        $out['children'][] = array('id'=>$cp->get_id(), 'name'=>substr($cp->get_name(),0,40), 'stock'=>$cp->get_stock_quantity());
-    }
-    // DB child items lentelė
-    global $wpdb;
-    $rows = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}wc_mnm_child_items WHERE container_id = %d", $cid), ARRAY_A);
-    $out['db_child_rows'] = $rows;
-    update_option('kc_result', json_encode($out));
-    wp_die('DONE');
-});
-add_action('init', function(){
-    if (!isset($_GET['kcr']) || $_GET['kcr'] !== 'go') return;
-    header('Content-Type: application/json');
-    echo get_option('kc_result', '{}');
-    exit;
-});
-`;
+function api(path){
+  let cmd='curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'?nc='+Date.now()+'"';
+  let raw=exec(cmd);
+  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,300)}; }
+}
 (async()=>{
   const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP KC', code: PROBE, desc:'temp', scope:'global', active:true}));
-  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
-  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
-  out.snippet_id = snip && snip.id;
-  await new Promise(r=>setTimeout(r,2500));
-  exec('curl -sk "'+BASE+'/?kc=go" -o /dev/null');
-  await new Promise(r=>setTimeout(r,2500));
-  const res = exec('curl -sk "'+BASE+'/?kcr=go"');
-  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
-  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('kc.json', JSON.stringify(out,null,1));
+  const comps = [
+    {id:19092, name:'Balta stirnos koja', kiekis:5, buvo:60},
+    {id:16298, name:'Ruda stirnos koja', kiekis:5, buvo:20},
+    {id:16317, name:'Ruda avies koja', kiekis:2, buvo:51},
+    {id:19104, name:'Balta avies koja', kiekis:2, buvo:76}
+  ];
+  out.results = [];
+  for(const c of comps){
+    const p = api('/wp-json/wc/v3/products/'+c.id);
+    out.results.push({
+      id: c.id, name: c.name, kiekis: c.kiekis, buvo: c.buvo,
+      dabar: p.stock_quantity, stock_status: p.stock_status
+    });
+  }
+  // Taip pat patikrinu naujausią užsakymą
+  const orders = api('/wp-json/wc/v3/orders?per_page=3&orderby=date&order=desc');
+  out.recent_orders = Array.isArray(orders) ? orders.map(o=>({
+    id:o.id, status:o.status, total:o.total, date:o.date_created,
+    items: (o.line_items||[]).map(li=>li.name)
+  })) : [];
+  commit('koju_final.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
