@@ -1,0 +1,31 @@
+{
+ "ts": "2026-06-30T21:45:41.608Z",
+ "snippet_id": 545,
+ "probe": {
+  "hidden_6": 34180,
+  "hidden_12": 34181,
+  "parent_id": 34182,
+  "config": {
+   "800": {
+    "6": {
+     "product_id": 34180,
+     "price": 23.99
+    },
+    "12": {
+     "product_id": 34181,
+     "price": 44.99
+    }
+   }
+  },
+  "mnm_ajax_actions": {
+   "wc_mnm_get_container_form": false,
+   "mnm_get_form": false,
+   "wc_mnm_container_form": false
+  },
+  "mnm_ajax_endpoints": {
+   "woocommerce_configure_container_order_item": "class-wc-mnm-ajax.php",
+   "woocommerce_edit_container_in_order": "class-wc-mnm-admin-ajax.php"
+  },
+  "parent_permalink": "https://dev.avesa.lt/product/test-susidejimo-konservu-rinkinys-sunims-800g/"
+ }
+}
