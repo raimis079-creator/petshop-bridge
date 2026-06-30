@@ -1,0 +1,84 @@
+{
+ "ts": "2026-06-30T14:25:08.858Z",
+ "snippet_id": 526,
+ "reader_id": 527,
+ "probe": {
+  "mnm_tables": [
+   "gaj6_wc_mnm_child_items"
+  ],
+  "child_count": 11,
+  "child_item_methods": [
+   "get_child_item_id",
+   "get_product_id",
+   "get_variation_id",
+   "get_the_id",
+   "get_container_id",
+   "get_menu_order",
+   "get_discount",
+   "get_priced_individually",
+   "get_product",
+   "get_raw_price",
+   "get_raw_regular_price",
+   "get_container",
+   "get_data_attributes",
+   "get_quantity",
+   "get_availability_html",
+   "get_availability",
+   "get_title",
+   "get_permalink",
+   "set_child_item_id",
+   "set_product_id",
+   "set_variation_id",
+   "set_container_id",
+   "set_menu_order",
+   "get_input_name",
+   "set_clone_mode",
+   "get_clone_mode",
+   "get_data_store",
+   "get_id",
+   "get_data",
+   "get_data_keys",
+   "get_extra_data_keys",
+   "get_meta_data",
+   "get_meta",
+   "set_meta_data",
+   "get_meta_cache_key",
+   "set_id",
+   "set_defaults",
+   "set_object_read",
+   "get_object_read",
+   "set_props",
+   "get_changes"
+  ],
+  "child_item_class": "WC_MNM_Child_Item",
+  "sample_get_quantity": "",
+  "sample_child_id": 24,
+  "sample_product_id": 16942,
+  "columns_gaj6_wc_mnm_child_items": [
+   "child_item_id",
+   "product_id",
+   "container_id",
+   "menu_order"
+  ],
+  "sample_rows_gaj6_wc_mnm_child_items": [
+   {
+    "child_item_id": "18",
+    "product_id": "19574",
+    "container_id": "34156",
+    "menu_order": "0"
+   },
+   {
+    "child_item_id": "17",
+    "product_id": "17156",
+    "container_id": "34153",
+    "menu_order": "5"
+   },
+   {
+    "child_item_id": "16",
+    "product_id": "19530",
+    "container_id": "34153",
+    "menu_order": "4"
+   }
+  ]
+ }
+}
