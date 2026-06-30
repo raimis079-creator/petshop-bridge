@@ -13,47 +13,45 @@ function commit(name, str){
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
 
-const PROBE4 = `<?php
+const PROBE5 = `<?php
 add_action('init', function(){
-    if (!isset($_GET['mnm_probe4']) || $_GET['mnm_probe4'] !== 'go') return;
+    if (!isset($_GET['mnm_probe5']) || $_GET['mnm_probe5'] !== 'go') return;
     $out = array();
-    $plugin_dir = '/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woocommerce-mix-and-match-products';
-
-    // 1. template-functions.php - apply_filters('wc_mnm_child_item_quantity_input_args', ...)
-    $tf = $plugin_dir . '/includes/wc-mnm-template-functions.php';
-    if (file_exists($tf)) {
-        $content = file_get_contents($tf);
-        // Surandu konteksta apie quantity_input_args
-        $pos = strpos($content, 'wc_mnm_child_item_quantity_input_args');
+    $f = '/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woocommerce-mix-and-match-products/includes/data/class-wc-mnm-child-item.php';
+    if (file_exists($f)) {
+        $content = file_get_contents($f);
+        // Pilna get_quantity funkcija
+        $pos = strpos($content, 'function get_quantity');
         if ($pos !== false) {
-            // 1500 simbolių prieš ir 500 po
-            $start = max(0, $pos - 1500);
-            $out['quantity_input_args_context'] = substr($content, $start, 2000);
+            $out['get_quantity_full'] = substr($content, $pos, 1800);
+        }
+        // Ieskau visu apply_filters siame faile
+        if (preg_match_all('/apply_filters\\(\\s*[\\'\"]([^\\'\"]+)[\\'\"]/', $content, $m)) {
+            $out['all_filters_in_child_item'] = array_unique($m[1]);
         }
     }
-
-    update_option('mnm_probe4_result', wp_json_encode($out));
-    wp_die('PROBE4 DONE');
+    update_option('mnm_probe5_result', wp_json_encode($out));
+    wp_die('DONE');
 });
 add_action('init', function(){
-    if (!isset($_GET['mnm_read4']) || $_GET['mnm_read4'] !== 'go') return;
+    if (!isset($_GET['mnm_read5']) || $_GET['mnm_read5'] !== 'go') return;
     header('Content-Type: application/json');
-    echo get_option('mnm_probe4_result', '{}');
+    echo get_option('mnm_probe5_result', '{}');
     exit;
 });
 `;
 (async()=>{
   const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Probe4', code: PROBE4, desc:'temp', scope:'global', active:true}));
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Probe5', code: PROBE5, desc:'temp', scope:'global', active:true}));
   let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
   let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
   out.snippet_id = snip && snip.id;
   await new Promise(r=>setTimeout(r,2000));
-  exec('curl -sk "'+BASE+'/?mnm_probe4=go" -o /dev/null');
+  exec('curl -sk "'+BASE+'/?mnm_probe5=go" -o /dev/null');
   await new Promise(r=>setTimeout(r,2000));
-  const res = exec('curl -sk "'+BASE+'/?mnm_read4=go"');
+  const res = exec('curl -sk "'+BASE+'/?mnm_read5=go"');
   try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,3000); }
   if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('mnm_probe4.json', JSON.stringify(out,null,1));
+  commit('mnm_probe5.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
