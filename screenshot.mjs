@@ -12,53 +12,87 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
+function api(method, path, body){
+  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
+  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
+  cmd+=' "'+BASE+path+'"';
+  let raw=exec(cmd);
+  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
+}
 
-const PROBE = `<?php
-add_action('init', function(){
-    if (!isset($_GET['pp']) || $_GET['pp'] !== 'go') return;
-    $out = array();
-    // Tikrinu komponentą 19098 (Balta jaučio ausis) ĮVAIRIAIS būdais
-    $cid = 19098;
+const SNIPPET_V3 = `<?php
+// Petshop MnM Sutaupymo žymeklis v3
+// SVARBU: komponentų objektai iš get_child_items() turi MnM-nunulintą kainą (0).
+// Sprendimas: kainą imame iš ŠVIEŽIO wc_get_product(\$id) pagal komponento ID.
 
-    // 1. wc_get_product (gali būti MnM child wrapper)
-    $p = wc_get_product($cid);
-    $out['get_price'] = $p ? $p->get_price() : 'no';
-    $out['get_regular_price'] = $p ? $p->get_regular_price() : 'no';
-    $out['get_class'] = $p ? get_class($p) : 'no';
+add_action('woocommerce_single_product_summary', function() {
+    global $product;
+    if (!$product || $product->get_type() !== 'mix-and-match') return;
 
-    // 2. Tiesiai iš post_meta (apeina visus filtrus)
-    $out['meta_price'] = get_post_meta($cid, '_price', true);
-    $out['meta_regular_price'] = get_post_meta($cid, '_regular_price', true);
-    $out['meta_sale_price'] = get_post_meta($cid, '_sale_price', true);
+    $allowed_cats = array('konservu-rinkiniai', 'skanestu-rinkiniai', 'kramtalu-rinkiniai');
+    $matched = false;
+    foreach ($allowed_cats as $slug) {
+        if (has_term($slug, 'product_cat', $product->get_id())) { $matched = true; break; }
+    }
+    if (!$matched) return;
 
-    // 3. Su nauju produkto objektu (be MnM konteksto)
-    remove_all_filters('woocommerce_product_get_price');
-    remove_all_filters('woocommerce_product_get_regular_price');
-    $p2 = wc_get_product($cid);
-    $out['after_remove_filters_get_price'] = $p2 ? $p2->get_price() : 'no';
+    $container_id = $product->get_id();
 
-    update_option('pp_result', wp_json_encode($out));
-    wp_die('DONE');
-});
-add_action('init', function(){
-    if (!isset($_GET['pr']) || $_GET['pr'] !== 'go') return;
-    header('Content-Type: application/json');
-    echo get_option('pp_result', '{}');
-    exit;
-});
+    $fixed_raw = get_post_meta($container_id, '_petshop_component_quantities', true);
+    $fixed_map = array();
+    if (!empty($fixed_raw)) {
+        $decoded = json_decode($fixed_raw, true);
+        if (is_array($decoded)) $fixed_map = $decoded;
+    }
+
+    $total_separate = 0.0;
+    if (method_exists($product, 'get_child_items')) {
+        $child_items = $product->get_child_items();
+        foreach ($child_items as $child) {
+            $child_product = $child->get_product();
+            if (!$child_product) continue;
+            $cid = $child_product->get_id();
+            $qty = isset($fixed_map[$cid]) ? (int)$fixed_map[$cid] : 1;
+            if ($qty < 1) $qty = 1;
+
+            // Šviežias produkto objektas pagal ID -> reali katalogo kaina (ne MnM-nunulinta)
+            $fresh = wc_get_product($cid);
+            if (!$fresh) continue;
+            $raw_price = (float) $fresh->get_price();
+            if ($raw_price <= 0) {
+                $raw_price = (float) $fresh->get_regular_price();
+            }
+            $display_price = (float) wc_get_price_to_display($fresh, array('price' => $raw_price));
+
+            $total_separate += $display_price * $qty;
+        }
+    }
+
+    if ($total_separate <= 0) return;
+
+    $bundle_price = (float) wc_get_price_to_display($product);
+    $savings = $total_separate - $bundle_price;
+
+    if ($savings < 0.01) return;
+
+    $savings_pct = round(($savings / $total_separate) * 100);
+    $savings_str = number_format($savings, 2, ',', ' ');
+
+    echo '<p class="petshop-savings" style="margin: -0.5rem 0 1.2rem; font-size: 15px; font-weight: 600; color: #4a8a3f;">'
+        . 'Sutaupote ' . esc_html($savings_str) . ' &euro; (' . esc_html($savings_pct) . '%)'
+        . '</p>';
+}, 11);
 `;
+
 (async()=>{
   const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP PP', code: PROBE, desc:'temp', scope:'global', active:true}));
-  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
-  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
-  out.snippet_id = snip && snip.id;
-  await new Promise(r=>setTimeout(r,2500));
-  exec('curl -sk "'+BASE+'/?pp=go" -o /dev/null');
-  await new Promise(r=>setTimeout(r,2500));
-  const res = exec('curl -sk "'+BASE+'/?pr=go"');
-  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,1500); }
-  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('pp_probe.json', JSON.stringify(out,null,1));
+  const u = api('PUT','/wp-json/code-snippets/v1/snippets/535', {
+    name:'Petshop MnM Sutaupymo žymeklis v3',
+    code: SNIPPET_V3,
+    desc:'Sutaupymo žymeklis. Kaina iš šviežio wc_get_product(id) - MnM child objektai turi nunulintą kainą.',
+    scope: 'global', active: true
+  });
+  out.update = u && u.id ? ('updated len='+(u.code||'').length) : (u.__raw||'?');
+  commit('snip535_v3.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
