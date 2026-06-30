@@ -1,0 +1,19 @@
+{
+ "ts": "2026-06-30T22:08:27.436Z",
+ "snippet_id": 548,
+ "probe": {
+  "func_woocommerce_mnm_add_to_cart": false,
+  "func_wc_mnm_template_add_to_cart": true,
+  "func_wc_mnm_content_loop": true,
+  "hook_exists": true,
+  "hook_callbacks": [
+   "-10: _wc_mnm_add_template_backcompatibility",
+   "10: WC_MNM_Flatsome_Compatibility::filter_plus_minus_buttons",
+   "10: wc_mnm_template_add_to_cart"
+  ],
+  "hidden_type": "mix-and-match",
+  "hidden_child_count": 12,
+  "rendered_html_length": 50776,
+  "rendered_html_sample": "\n<form\n\tclass=\"mnm_form cart cart_group layout_tabular\"\n\taction=\"https://dev.avesa.lt/product/konservu-rinkinys-400g-%c2%b7-12-vnt-pasleptas/\"\n\tmethod=\"post\"\n\tenctype=\"multipart/form-data\"\n\tdata-per_product_pricing=\"false\" data-product_id=\"34184\" data-container_id=\"34184\" data-min_container_size=\"12"
+ }
+}
