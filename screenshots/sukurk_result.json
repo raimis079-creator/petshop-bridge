@@ -1,68 +1,81 @@
 {
- "ts": "2026-06-30T16:12:13.470Z",
- "mode": "apply",
+ "ts": "2026-06-30T18:15:24.775Z",
+ "mode": "dry",
  "receptas": {
-  "pavadinimas": "Churu kreminių skanėstų rinkinys katėms · 9 vnt.",
-  "sku": "RINK-CHURU-9",
-  "kaina": 21.99,
-  "dydis": 9,
+  "pavadinimas": "Churu įvairių skonių rinkinys katėms · 7 vnt.",
+  "sku": "RINK-CHURU-MIX-7",
+  "kaina": 21.29,
+  "dydis": 7,
   "kategorija_slug": "skanestu-rinkiniai",
-  "trumpas_aprasymas": "Mišrus Churu kreminių skanėstų rinkinys katėms — 9 skirtingų skonių pakeliai. Įvairūs skoniai vienam ar keliems gardiems momentams.",
+  "trumpas_aprasymas": "Penkių skirtingų Churu formatų rinkinys katėms: Luxury, Pops, TidBits, Fun Bites ir kreminis. Idealus, norint išbandyti įvairius skonius ir tekstūras.",
   "komponentai": [
    {
-    "id": 21583,
+    "id": 26077,
+    "kiekis": 2
+   },
+   {
+    "id": 21609,
+    "kiekis": 2
+   },
+   {
+    "id": 26064,
     "kiekis": 1
    },
    {
-    "id": 21617,
+    "id": 24009,
     "kiekis": 1
    },
    {
-    "id": 21589,
-    "kiekis": 3
-   },
-   {
-    "id": 21577,
-    "kiekis": 4
+    "id": 21599,
+    "kiekis": 1
    }
   ]
  },
  "kategorija_id": 683,
  "komponentai_details": [
   {
-   "id": 21583,
-   "sku": "EU114",
-   "name": "Churu kreminis skanėstas katėms su tunu ir krabu, 56g N4",
+   "id": 26077,
+   "sku": "EU652",
+   "name": "Churu Luxury kreminis skanėstas katėms su tunu ir karališkos",
    "status": "publish",
-   "qty": 234,
+   "qty": 553,
+   "kiekis": 2,
+   "has_image": true
+  },
+  {
+   "id": 21609,
+   "sku": "EU713",
+   "name": "Churu Pops skanėstas katėms su tunu ir vištiena, 60 g., 4 vn",
+   "status": "publish",
+   "qty": 1567,
+   "kiekis": 2,
+   "has_image": true
+  },
+  {
+   "id": 26064,
+   "sku": "EU717",
+   "name": "Churu Tidbits skanėstai katėms su tunu ir lašiša, 36g 3 vnt",
+   "status": "publish",
+   "qty": 360,
    "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 21617,
-   "sku": "EU731",
-   "name": "Churu Rolls skanėstas katėms su vištiena ir tunu, lazdelės, ",
+   "id": 24009,
+   "sku": "EU744",
+   "name": "Churu Fun Bites skanėstas katėms su tunu ir sūriu suktinukai",
    "status": "publish",
-   "qty": 1349,
+   "qty": 128,
    "kiekis": 1,
    "has_image": true
   },
   {
-   "id": 21589,
-   "sku": "EU671",
-   "name": "Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt",
+   "id": 21599,
+   "sku": "EU692",
+   "name": "Churu kreminis skanėstas kačiukams su vištiena, 4vnt",
    "status": "publish",
-   "qty": 1984,
-   "kiekis": 3,
-   "has_image": true
-  },
-  {
-   "id": 21577,
-   "sku": "EU108",
-   "name": "Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4",
-   "status": "publish",
-   "qty": 455,
-   "kiekis": 4,
+   "qty": 458,
+   "kiekis": 1,
    "has_image": true
   }
  ],
@@ -71,38 +84,11 @@
   "errors": []
  },
  "kainos_analize": {
-  "atskirai_eur": "23.41",
-  "rinkinyje_eur": "21.99",
+  "atskirai_eur": "22.63",
+  "rinkinyje_eur": "21.29",
   "sutaupymas_pct": "6%"
  },
- "aprasymo_preview": "Rinkinyje rasite (9 vnt.): Churu kreminis skanėstas katėms su tunu ir krabu, 56g N4 Churu Rolls skanėstas katėms su vištiena ir tunu, lazdelės, 4 vnt. 3 × Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt 4 × Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4vnt",
- "kompozicijos_layout": "2×2",
- "created": {
-  "id": 34170,
-  "sku": "RINK-CHURU-9",
-  "status": "publish",
-  "permalink": "https://dev.avesa.lt/product/churu-kreminiu-skanestu-rinkinys-katems-%c2%b7-9-vnt/",
-  "err": null
- },
- "composition_tiles": 4,
- "python_out": "OK\n",
- "composed_size": 135977,
- "media_id": 34171,
- "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-churu-9.jpg",
- "featured_assigned": 34171,
- "verify": {
-  "id": 34170,
-  "name": "Churu kreminių skanėstų rinkinys katėms · 9 vnt.",
-  "sku": "RINK-CHURU-9",
-  "type": "mix-and-match",
-  "status": "publish",
-  "price": "21.99",
-  "purchasable": true,
-  "min": 9,
-  "max": 9,
-  "pool_count": 4,
-  "cats": "683:skanestu-rinkiniai",
-  "images": 1,
-  "permalink": "https://dev.avesa.lt/product/churu-kreminiu-skanestu-rinkinys-katems-%c2%b7-9-vnt/"
- }
+ "aprasymo_preview": "Rinkinyje rasite (7 vnt.): 2 × Churu Luxury kreminis skanėstas katėms su tunu ir karališkosiomis krevetėmis N4 2 × Churu Pops skanėstas katėms su tunu ir vištiena, 60 g., 4 vnt. Churu Tidbits skanėstai katėms su tunu ir lašiša, 36g 3 vnt Churu Fun Bites skanėstas katėms su tunu ir sūriu suktinukai 96g Churu kreminis skanėstas kačiukams su vištiena, 4vnt",
+ "kompozicijos_layout": "3×2 (paskutinė eilutė: 2)",
+ "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
 }
