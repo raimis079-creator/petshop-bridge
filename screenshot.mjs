@@ -3,133 +3,24 @@ import fs from "fs";
 const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
 const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
 const BASE = "https://dev.avesa.lt";
-const AUTH = "Basic " + Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+const AUTH = "Basic " + Buffer.from(WP_USER+":"+WP_PASS).toString("base64");
 function commit(name, str){
-  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
-  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
-  const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha;
-  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
-  execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
+  const url="https://api.github.com/repos/"+repo+"/contents/screenshots/"+name;
+  let sha=""; try{ sha=JSON.parse(execSync("curl -s -H \\"Authorization: Bearer "+tok+"\\" \\""+url+"?ref=main&t="+Date.now()+"\\"",{encoding:"utf8"})).sha||""; }catch(e){}
+  const body={message:"r",branch:"main",content:Buffer.from(str,"utf8").toString("base64")}; if(sha) body.sha=sha;
+  fs.writeFileSync("/tmp/cb.json",JSON.stringify(body));
+  execSync("curl -s -o /dev/null -X PUT -H \\"Authorization: Bearer "+tok+"\\" -H \\"Accept: application/vnd.github+json\\" -d @/tmp/cb.json \\""+url+"\\"",{encoding:"utf8"});
 }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-
-// Sukuriu REALŲ testinį pagrindą: 6 paslėpti MnM (400g×{6,12,15} + 800g×{6,12,15})
-// + 1 tėvinį su config. Pool filtruojamas pagal gramatūrą iš atributo.
-const BUILD = `<?php
-add_action('init', function(){
-    if (!isset($_GET['build_choice']) || $_GET['build_choice'] !== 'go') return;
-    $out = array();
-    global $wpdb;
-    $table = $wpdb->prefix . 'wc_mnm_child_items';
-
-    // Surenkam pool'us pagal gramatūrą iš kategorijos 73 (Konservai šunims)
-    function get_pool_by_gramatura($gramatura_g) {
-        $args = array(
-            'post_type' => 'product',
-            'post_status' => 'publish',
-            'posts_per_page' => 30,
-            'fields' => 'ids',
-            'tax_query' => array(
-                array('taxonomy'=>'product_cat', 'field'=>'term_id', 'terms'=>73),
-                array('taxonomy'=>'pa_pakuotes_dydis', 'field'=>'name', 'terms'=>$gramatura_g.' g'),
-            ),
-        );
-        $q = new WP_Query($args);
-        return $q->posts;
-    }
-
-    $pool_400 = get_pool_by_gramatura('400');
-    $pool_800 = get_pool_by_gramatura('800');
-    $out['pool_400_count'] = count($pool_400);
-    $out['pool_800_count'] = count($pool_800);
-
-    // Ribojam pool iki 12 skonių (kad puslapis nebūtų milžiniškas testui)
-    $pool_400 = array_slice($pool_400, 0, 12);
-    $pool_800 = array_slice($pool_800, 0, 10);
-
-    function make_hidden_mnm($name, $sku, $price, $size, $pool, $table) {
-        global $wpdb;
-        // Patikrinam ar SKU jau yra
-        $existing = wc_get_product_id_by_sku($sku);
-        if ($existing) { wp_delete_post($existing, true); }
-        $p = new WC_Product_Mix_and_Match();
-        $p->set_name($name);
-        $p->set_sku($sku);
-        $p->set_status('publish');
-        $p->set_catalog_visibility('hidden');
-        $p->set_price($price);
-        $p->set_regular_price($price);
-        $p->set_min_container_size($size);
-        $p->set_max_container_size($size);
-        $p->update_meta_data('_mnm_content_source', 'products');
-        $p->update_meta_data('_mnm_per_product_pricing', 'no');
-        $p->save();
-        $cid = $p->get_id();
-        $o = 0;
-        foreach ($pool as $pid) { $o++; $wpdb->insert($table, array('product_id'=>$pid,'container_id'=>$cid,'menu_order'=>$o), array('%d','%d','%d')); }
-        return $cid;
-    }
-
-    // Kainos (testui): 400g pigesni, 800g brangesni; dydžio laipteliai
-    $config = array();
-    $prices = array(
-        '400' => array('6'=>17.99, '12'=>34.99, '15'=>42.99),
-        '800' => array('6'=>23.99, '12'=>44.99, '15'=>54.99),
-    );
-    $pools = array('400'=>$pool_400, '800'=>$pool_800);
-
-    foreach (array('400','800') as $gram) {
-        $config[$gram] = array();
-        foreach (array('6','12','15') as $size) {
-            $price = $prices[$gram][$size];
-            $name = "Konservų rinkinys {$gram}g · {$size} vnt (paslėptas)";
-            $sku = "HIDDEN-DOG-{$gram}-{$size}";
-            $id = make_hidden_mnm($name, $sku, $price, intval($size), $pools[$gram], $table);
-            $config[$gram][$size] = array('product_id'=>$id, 'price'=>$price);
-        }
-    }
-    $out['config'] = $config;
-
-    // Tėvinis produktas
-    $existing_parent = wc_get_product_id_by_sku('DOG-CHOICE-KONSERVAI');
-    if ($existing_parent) { wp_delete_post($existing_parent, true); }
-    $parent = new WC_Product_Simple();
-    $parent->set_name('Susidėk konservų rinkinį šunims');
-    $parent->set_sku('DOG-CHOICE-KONSERVAI');
-    $parent->set_status('publish');
-    $parent->set_catalog_visibility('visible');
-    $parent->set_price($prices['800']['6']);
-    $parent->set_category_ids(array(682)); // konservu-rinkiniai
-    $parent->save();
-    $parent_id = $parent->get_id();
-    update_post_meta($parent_id, '_petshop_choice_config', wp_json_encode($config));
-    update_post_meta($parent_id, '_petshop_is_choice_bundle', 'yes');
-    update_post_meta($parent_id, '_petshop_choice_category', '73'); // šaltinio kategorija
-    $out['parent_id'] = $parent_id;
-    $out['parent_permalink'] = get_permalink($parent_id);
-
-    update_option('build_choice_result', wp_json_encode($out));
-    wp_die('DONE');
-});
-add_action('init', function(){
-    if (!isset($_GET['build_read']) || $_GET['build_read'] !== 'go') return;
-    header('Content-Type: application/json');
-    echo get_option('build_choice_result', '{}');
-    exit;
-});
-`;
+function exec(cmd){ try{ return execSync(cmd,{encoding:"utf8",maxBuffer:300000000}); }catch(e){ return "EXC:"+String(e).slice(0,200); } }
+const CODE_B64 = "Ly8gUGV0c2hvcCBTdXNpZMSXamltbyBSaW5raW5pbyBWaXRyaW5hIHYxCi8vIFTEl3ZpbmlvIHByb2R1a3RvIHB1c2xhcHlqZSByZW5kZXJpbmEgR1JBTUFUxapSQS9EWURJUyBteWd0dWt1cyArIHZpc2FzIHBhc2zEl3B0YXMgTW5NIGZvcm1hcy4KLy8gSlMgcGVyanVuZ2lhIG1hdG9txIUgZm9ybcSFLiBLbGllbnRhcyBtYXRvIHZpZW50aXPEhSBrb25zdHJ1a3RvcmnFsy4KCi8vIMSuanVuZ2lhbSB0aWsgdMSXdmluaWFtcyBjaG9pY2UgcHJvZHVrdGFtcwphZGRfYWN0aW9uKCd3b29jb21tZXJjZV9iZWZvcmVfc2luZ2xlX3Byb2R1Y3QnLCBmdW5jdGlvbigpIHsKICAgIGdsb2JhbCAkcHJvZHVjdDsKICAgIGlmICghJHByb2R1Y3QpIHJldHVybjsKICAgICRwaWQgPSBpc19vYmplY3QoJHByb2R1Y3QpID8gJHByb2R1Y3QtPmdldF9pZCgpIDogMDsKICAgIGlmICghJHBpZCkgcmV0dXJuOwogICAgaWYgKGdldF9wb3N0X21ldGEoJHBpZCwgJ19wZXRzaG9wX2lzX2Nob2ljZV9idW5kbGUnLCB0cnVlKSAhPT0gJ3llcycpIHJldHVybjsKCiAgICAvLyBQYcW+eW1pbSwga2FkIMWhaXMgcHVzbGFwaXMgeXJhIGNob2ljZSBidW5kbGUgKG5hdWRvc2ltIHbEl2xpYXUpCiAgICAkR0xPQkFMU1sncGV0c2hvcF9pc19jaG9pY2VfcGFnZSddID0gJHBpZDsKfSk7CgovLyBQYWdyaW5kaW5pcyByZW5kZXJpbmltYXMg4oCUIHZpZXRvaiBzdGFuZGFydGluaW8gYWRkX3RvX2NhcnQKYWRkX2FjdGlvbignd29vY29tbWVyY2Vfc2luZ2xlX3Byb2R1Y3Rfc3VtbWFyeScsIGZ1bmN0aW9uKCkgewogICAgZ2xvYmFsICRwcm9kdWN0OwogICAgaWYgKCEkcHJvZHVjdCkgcmV0dXJuOwogICAgJHBhcmVudF9pZCA9ICRwcm9kdWN0LT5nZXRfaWQoKTsKICAgIGlmIChnZXRfcG9zdF9tZXRhKCRwYXJlbnRfaWQsICdfcGV0c2hvcF9pc19jaG9pY2VfYnVuZGxlJywgdHJ1ZSkgIT09ICd5ZXMnKSByZXR1cm47CgogICAgJGNvbmZpZ19yYXcgPSBnZXRfcG9zdF9tZXRhKCRwYXJlbnRfaWQsICdfcGV0c2hvcF9jaG9pY2VfY29uZmlnJywgdHJ1ZSk7CiAgICAkY29uZmlnID0ganNvbl9kZWNvZGUoJGNvbmZpZ19yYXcsIHRydWUpOwogICAgaWYgKCFpc19hcnJheSgkY29uZmlnKSB8fCBlbXB0eSgkY29uZmlnKSkgewogICAgICAgIGVjaG8gJzxwIHN0eWxlPSJjb2xvcjojYzAwOyI+S29uc3RydWt0b3JpYXVzIGtvbmZpZ8WrcmFjaWphIG5lcmFzdGEuPC9wPic7CiAgICAgICAgcmV0dXJuOwogICAgfQoKICAgIC8vIEdyYW1hdMWrcm9zIGlyIGR5ZMW+aWFpIGnFoSBjb25maWcKICAgICRncmFtYXR1cm9zID0gYXJyYXlfa2V5cygkY29uZmlnKTsKICAgIHNvcnQoJGdyYW1hdHVyb3MsIFNPUlRfTlVNRVJJQyk7CiAgICAkZmlyc3RfZ3JhbSA9ICRncmFtYXR1cm9zWzBdOwogICAgJGR5ZHppYWkgPSBhcnJheV9rZXlzKCRjb25maWdbJGZpcnN0X2dyYW1dKTsKICAgIHNvcnQoJGR5ZHppYWksIFNPUlRfTlVNRVJJQyk7CgogICAgLy8gTnVtYXR5dGFzaXM6IHBpcm1hIGdyYW1hdMWrcmEsIHZpZHVyaW5pcyBkeWRpcyAoYXJiYSBwaXJtYXMpCiAgICAkZGVmYXVsdF9ncmFtID0gJGdyYW1hdHVyb3NbMF07CiAgICAkZGVmYXVsdF9zaXplID0gaXNzZXQoJGR5ZHppYWlbMV0pID8gJGR5ZHppYWlbMV0gOiAkZHlkemlhaVswXTsKCiAgICBlY2hvICc8ZGl2IGNsYXNzPSJwZXRzaG9wLWNob2ljZS1jb25zdHJ1Y3RvciIgZGF0YS1wYXJlbnQ9IicuZXNjX2F0dHIoJHBhcmVudF9pZCkuJyI+JzsKCiAgICAvLyA9PT0gR1JBTUFUxapSQSBteWd0dWthaSA9PT0KICAgIGVjaG8gJzxkaXYgY2xhc3M9InBzYy1zZWN0aW9uIj48ZGl2IGNsYXNzPSJwc2MtbGFiZWwiPkdSQU1BVMWqUkE8L2Rpdj48ZGl2IGNsYXNzPSJwc2MtYnRuLXJvdyBwc2MtZ3JhbS1yb3ciPic7CiAgICBmb3JlYWNoICgkZ3JhbWF0dXJvcyBhcyAkZykgewogICAgICAgICRhY3RpdmUgPSAoJGcgPT09ICRkZWZhdWx0X2dyYW0pID8gJyBwc2MtYWN0aXZlJyA6ICcnOwogICAgICAgIGVjaG8gJzxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0icHNjLWJ0biBwc2MtZ3JhbS1idG4nLiRhY3RpdmUuJyIgZGF0YS1ncmFtPSInLmVzY19hdHRyKCRnKS4nIj4nCiAgICAgICAgICAgIC4gJzxzcGFuIGNsYXNzPSJwc2MtYnRuLWJpZyI+Jy5lc2NfaHRtbCgkZykuJ2c8L3NwYW4+JwogICAgICAgICAgICAuICc8c3BhbiBjbGFzcz0icHNjLWJ0bi1zbWFsbCI+a29uc2VydsWzIHJpbmtpbnlzPC9zcGFuPicKICAgICAgICAgICAgLiAnPC9idXR0b24+JzsKICAgIH0KICAgIGVjaG8gJzwvZGl2PjwvZGl2Pic7CgogICAgLy8gPT09IERZRElTIG15Z3R1a2FpIChrYWlub3MgacWhIGNvbmZpZykgPT09CiAgICBlY2hvICc8ZGl2IGNsYXNzPSJwc2Mtc2VjdGlvbiI+PGRpdiBjbGFzcz0icHNjLWxhYmVsIj5EWURJUzwvZGl2PjxkaXYgY2xhc3M9InBzYy1idG4tcm93IHBzYy1zaXplLXJvdyI+JzsKICAgIGZvcmVhY2ggKCRkeWR6aWFpIGFzICRzKSB7CiAgICAgICAgJGFjdGl2ZSA9ICgkcyA9PT0gJGRlZmF1bHRfc2l6ZSkgPyAnIHBzYy1hY3RpdmUnIDogJyc7CiAgICAgICAgLy8gS2FpbmEgdcW+IHZudCAoacWhIG51bWF0eXRvc2lvcyBncmFtYXTFq3JvcykKICAgICAgICAkYm94X3ByaWNlID0gJGNvbmZpZ1skZGVmYXVsdF9ncmFtXVskc11bJ3ByaWNlJ107CiAgICAgICAgJHBlcl91bml0ID0gJGJveF9wcmljZSAvIGludHZhbCgkcyk7CiAgICAgICAgZWNobyAnPGJ1dHRvbiB0eXBlPSJidXR0b24iIGNsYXNzPSJwc2MtYnRuIHBzYy1zaXplLWJ0bicuJGFjdGl2ZS4nIiBkYXRhLXNpemU9IicuZXNjX2F0dHIoJHMpLiciPicKICAgICAgICAgICAgLiAnPHNwYW4gY2xhc3M9InBzYy1idG4tYmlnIj4nLmVzY19odG1sKCRzKS4nIHZudDwvc3Bhbj4nCiAgICAgICAgICAgIC4gJzxzcGFuIGNsYXNzPSJwc2MtYnRuLXNtYWxsIHBzYy1wZXItdW5pdCI+Jy5udW1iZXJfZm9ybWF0KCRwZXJfdW5pdCwgMiwgJywnLCAnICcpLicg4oKsL3ZudDwvc3Bhbj4nCiAgICAgICAgICAgIC4gJzwvYnV0dG9uPic7CiAgICB9CiAgICBlY2hvICc8L2Rpdj48L2Rpdj4nOwoKICAgIC8vID09PSBLYWluYSArIGNvdW50ZXJpcyAoYXRuYXVqaW5hbWEgSlMpID09PQogICAgZWNobyAnPGRpdiBjbGFzcz0icHNjLXByaWNlLWJsb2NrIj4nOwogICAgZWNobyAnPHNwYW4gY2xhc3M9InBzYy1ib3gtcHJpY2UiPicubnVtYmVyX2Zvcm1hdCgkY29uZmlnWyRkZWZhdWx0X2dyYW1dWyRkZWZhdWx0X3NpemVdWydwcmljZSddLCAyLCAnLCcsICcgJykuJyDigqw8L3NwYW4+JzsKICAgIGVjaG8gJzxzcGFuIGNsYXNzPSJwc2MtZml4ZWQtbm90ZSI+Rmlrc3VvdGEgZMSXxb7El3Mga2FpbmEgwrcgcGFzaXJpbmsgPHNwYW4gY2xhc3M9InBzYy10YXJnZXQtY291bnQiPicuZXNjX2h0bWwoJGRlZmF1bHRfc2l6ZSkuJzwvc3Bhbj4ga29uc2VydsWzPC9zcGFuPic7CiAgICBlY2hvICc8L2Rpdj4nOwoKICAgIC8vID09PSBWaXNvcyBwYXNsxJdwdG9zIE1uTSBmb3Jtb3MgPT09CiAgICBlY2hvICc8ZGl2IGNsYXNzPSJwc2MtZm9ybXMiPic7CiAgICBmb3JlYWNoICgkY29uZmlnIGFzICRncmFtID0+ICRzaXplcykgewogICAgICAgIGZvcmVhY2ggKCRzaXplcyBhcyAkc2l6ZSA9PiAkaW5mbykgewogICAgICAgICAgICAkaGlkZGVuX2lkID0gJGluZm9bJ3Byb2R1Y3RfaWQnXTsKICAgICAgICAgICAgJGhpZGRlbl9wcm9kdWN0ID0gd2NfZ2V0X3Byb2R1Y3QoJGhpZGRlbl9pZCk7CiAgICAgICAgICAgIGlmICghJGhpZGRlbl9wcm9kdWN0KSBjb250aW51ZTsKICAgICAgICAgICAgJGlzX2RlZmF1bHQgPSAoJGdyYW0gPT09ICRkZWZhdWx0X2dyYW0gJiYgJHNpemUgPT09ICRkZWZhdWx0X3NpemUpOwogICAgICAgICAgICAkc3R5bGUgPSAkaXNfZGVmYXVsdCA/ICcnIDogJ3N0eWxlPSJkaXNwbGF5Om5vbmU7Iic7CiAgICAgICAgICAgIGVjaG8gJzxkaXYgY2xhc3M9InBzYy1mb3JtIiBkYXRhLWdyYW09IicuZXNjX2F0dHIoJGdyYW0pLiciIGRhdGEtc2l6ZT0iJy5lc2NfYXR0cigkc2l6ZSkuJyIgJy4kc3R5bGUuJz4nOwogICAgICAgICAgICAvLyBSZW5kZXJpbmFtIE1uTSBhZGQtdG8tY2FydCBmb3JtxIUgxaFpdGFtIHBhc2zEl3B0YW0gcHJvZHVrdHVpCiAgICAgICAgICAgIC8vIE5hdWRvamFtIE1uTSDFoWFibG9uxIUKICAgICAgICAgICAgJEdMT0JBTFNbJ3Byb2R1Y3QnXSA9ICRoaWRkZW5fcHJvZHVjdDsKICAgICAgICAgICAgaWYgKGZ1bmN0aW9uX2V4aXN0cygnd29vY29tbWVyY2VfbW5tX2FkZF90b19jYXJ0JykpIHsKICAgICAgICAgICAgICAgIHdvb2NvbW1lcmNlX21ubV9hZGRfdG9fY2FydCgpOwogICAgICAgICAgICB9CiAgICAgICAgICAgICRHTE9CQUxTWydwcm9kdWN0J10gPSB3Y19nZXRfcHJvZHVjdCgkcGFyZW50X2lkKTsgLy8gZ3LEhcW+aW5hbSB0xJd2aW7ErwogICAgICAgICAgICBlY2hvICc8L2Rpdj4nOwogICAgICAgIH0KICAgIH0KICAgIGVjaG8gJzwvZGl2Pic7IC8vIC5wc2MtZm9ybXMKCiAgICBlY2hvICc8L2Rpdj4nOyAvLyAucGV0c2hvcC1jaG9pY2UtY29uc3RydWN0b3IKCiAgICAvLyA9PT0gQ1NTID09PQogICAgPz4KICAgIDxzdHlsZT4KICAgIC5wZXRzaG9wLWNob2ljZS1jb25zdHJ1Y3RvciB7IG1hcmdpbjogMXJlbSAwOyB9CiAgICAucHNjLXNlY3Rpb24geyBtYXJnaW4tYm90dG9tOiAxLjVyZW07IH0KICAgIC5wc2MtbGFiZWwgeyBmb250LXNpemU6IDEycHg7IGZvbnQtd2VpZ2h0OiA3MDA7IGxldHRlci1zcGFjaW5nOiAwLjA1ZW07IGNvbG9yOiAjODg4OyBtYXJnaW4tYm90dG9tOiAwLjZyZW07IH0KICAgIC5wc2MtYnRuLXJvdyB7IGRpc3BsYXk6IGZsZXg7IGdhcDogMTJweDsgZmxleC13cmFwOiB3cmFwOyB9CiAgICAucHNjLWJ0biB7CiAgICAgICAgZmxleDogMTsgbWluLXdpZHRoOiAxMjBweDsgcGFkZGluZzogMTRweCAxNnB4OyBib3JkZXI6IDJweCBzb2xpZCAjZTBlMGUwOwogICAgICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7IGJhY2tncm91bmQ6ICNmZmY7IGN1cnNvcjogcG9pbnRlcjsgdGV4dC1hbGlnbjogY2VudGVyOwogICAgICAgIGRpc3BsYXk6IGZsZXg7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGdhcDogMnB4OyB0cmFuc2l0aW9uOiBhbGwgMC4xNXM7CiAgICB9CiAgICAucHNjLWJ0bjpob3ZlciB7IGJvcmRlci1jb2xvcjogI2IwZDBiMDsgfQogICAgLnBzYy1idG4ucHNjLWFjdGl2ZSB7IGJvcmRlci1jb2xvcjogIzRhOGEzZjsgYmFja2dyb3VuZDogI2YwZjdmMDsgfQogICAgLnBzYy1idG4tYmlnIHsgZm9udC1zaXplOiAxN3B4OyBmb250LXdlaWdodDogNzAwOyBjb2xvcjogIzIyMjsgfQogICAgLnBzYy1idG4tc21hbGwgeyBmb250LXNpemU6IDEycHg7IGNvbG9yOiAjODg4OyB9CiAgICAucHNjLXByaWNlLWJsb2NrIHsgbWFyZ2luOiAxLjJyZW0gMDsgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGJhc2VsaW5lOyBnYXA6IDEycHg7IGZsZXgtd3JhcDogd3JhcDsgfQogICAgLnBzYy1ib3gtcHJpY2UgeyBmb250LXNpemU6IDI4cHg7IGZvbnQtd2VpZ2h0OiA4MDA7IGNvbG9yOiAjMjIyOyB9CiAgICAucHNjLWZpeGVkLW5vdGUgeyBmb250LXNpemU6IDEzcHg7IGNvbG9yOiAjNjY2OyB9CiAgICAvKiBQYXNsZXBpYW0gc3RhbmRhcnRpbsSvIHTEl3ZpbmlvIGFkZC10by1jYXJ0ICovCiAgICAucGV0c2hvcC1jaG9pY2UtY29uc3RydWN0b3IgfiBmb3JtLmNhcnQ6bm90KC5tbm1fZm9ybSkgeyBkaXNwbGF5OiBub25lOyB9CiAgICA8L3N0eWxlPgogICAgPD9waHAKfSwgMjUpOwoKLy8gPT09IEpTIHBlcmp1bmdpbWFzID09PQphZGRfYWN0aW9uKCd3cF9mb290ZXInLCBmdW5jdGlvbigpIHsKICAgIGlmIChlbXB0eSgkR0xPQkFMU1sncGV0c2hvcF9pc19jaG9pY2VfcGFnZSddKSkgcmV0dXJuOwogICAgJGNvbmZpZ19yYXcgPSBnZXRfcG9zdF9tZXRhKCRHTE9CQUxTWydwZXRzaG9wX2lzX2Nob2ljZV9wYWdlJ10sICdfcGV0c2hvcF9jaG9pY2VfY29uZmlnJywgdHJ1ZSk7CiAgICA/PgogICAgPHNjcmlwdD4KICAgIChmdW5jdGlvbigpewogICAgICAgIHZhciBjb25zdHJ1Y3RvciA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5wZXRzaG9wLWNob2ljZS1jb25zdHJ1Y3RvcicpOwogICAgICAgIGlmICghY29uc3RydWN0b3IpIHJldHVybjsKICAgICAgICB2YXIgY29uZmlnID0gPD9waHAgZWNobyAkY29uZmlnX3JhdyA/OiAne30nOyA/PjsKCiAgICAgICAgdmFyIGN1cnJlbnRHcmFtID0gY29uc3RydWN0b3IucXVlcnlTZWxlY3RvcignLnBzYy1ncmFtLWJ0bi5wc2MtYWN0aXZlJyk/LmRhdGFzZXQuZ3JhbTsKICAgICAgICB2YXIgY3VycmVudFNpemUgPSBjb25zdHJ1Y3Rvci5xdWVyeVNlbGVjdG9yKCcucHNjLXNpemUtYnRuLnBzYy1hY3RpdmUnKT8uZGF0YXNldC5zaXplOwoKICAgICAgICBmdW5jdGlvbiB1cGRhdGVWaWV3KCkgewogICAgICAgICAgICAvLyBSb2RvbSB0aWsgYXRpdGlua2FuxI1pxIUgZm9ybcSFCiAgICAgICAgICAgIGNvbnN0cnVjdG9yLnF1ZXJ5U2VsZWN0b3JBbGwoJy5wc2MtZm9ybScpLmZvckVhY2goZnVuY3Rpb24oZil7CiAgICAgICAgICAgICAgICBmLnN0eWxlLmRpc3BsYXkgPSAoZi5kYXRhc2V0LmdyYW0gPT09IGN1cnJlbnRHcmFtICYmIGYuZGF0YXNldC5zaXplID09PSBjdXJyZW50U2l6ZSkgPyAnJyA6ICdub25lJzsKICAgICAgICAgICAgfSk7CiAgICAgICAgICAgIC8vIEF0bmF1amluYW0ga2FpbsSFCiAgICAgICAgICAgIHZhciBpbmZvID0gY29uZmlnW2N1cnJlbnRHcmFtXSAmJiBjb25maWdbY3VycmVudEdyYW1dW2N1cnJlbnRTaXplXTsKICAgICAgICAgICAgaWYgKGluZm8pIHsKICAgICAgICAgICAgICAgIHZhciBwcmljZUVsID0gY29uc3RydWN0b3IucXVlcnlTZWxlY3RvcignLnBzYy1ib3gtcHJpY2UnKTsKICAgICAgICAgICAgICAgIGlmIChwcmljZUVsKSBwcmljZUVsLnRleHRDb250ZW50ID0gaW5mby5wcmljZS50b0ZpeGVkKDIpLnJlcGxhY2UoJy4nLCAnLCcpICsgJyDigqwnOwogICAgICAgICAgICAgICAgdmFyIHRhcmdldEVsID0gY29uc3RydWN0b3IucXVlcnlTZWxlY3RvcignLnBzYy10YXJnZXQtY291bnQnKTsKICAgICAgICAgICAgICAgIGlmICh0YXJnZXRFbCkgdGFyZ2V0RWwudGV4dENvbnRlbnQgPSBjdXJyZW50U2l6ZTsKICAgICAgICAgICAgfQogICAgICAgICAgICAvLyBBdG5hdWppbmFtIGR5ZMW+aW8gbXlndHVrxbMg4oKsL3ZudCBwYWdhbCBkYWJhcnRpbsSZIGdyYW1hdMWrcsSFCiAgICAgICAgICAgIGNvbnN0cnVjdG9yLnF1ZXJ5U2VsZWN0b3JBbGwoJy5wc2Mtc2l6ZS1idG4nKS5mb3JFYWNoKGZ1bmN0aW9uKGJ0bil7CiAgICAgICAgICAgICAgICB2YXIgc3ogPSBidG4uZGF0YXNldC5zaXplOwogICAgICAgICAgICAgICAgdmFyIGluZiA9IGNvbmZpZ1tjdXJyZW50R3JhbV0gJiYgY29uZmlnW2N1cnJlbnRHcmFtXVtzel07CiAgICAgICAgICAgICAgICBpZiAoaW5mKSB7CiAgICAgICAgICAgICAgICAgICAgdmFyIHBlclVuaXQgPSAoaW5mLnByaWNlIC8gcGFyc2VJbnQoc3opKS50b0ZpeGVkKDIpLnJlcGxhY2UoJy4nLCAnLCcpOwogICAgICAgICAgICAgICAgICAgIHZhciBwdUVsID0gYnRuLnF1ZXJ5U2VsZWN0b3IoJy5wc2MtcGVyLXVuaXQnKTsKICAgICAgICAgICAgICAgICAgICBpZiAocHVFbCkgcHVFbC50ZXh0Q29udGVudCA9IHBlclVuaXQgKyAnIOKCrC92bnQnOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9KTsKICAgICAgICB9CgogICAgICAgIGNvbnN0cnVjdG9yLnF1ZXJ5U2VsZWN0b3JBbGwoJy5wc2MtZ3JhbS1idG4nKS5mb3JFYWNoKGZ1bmN0aW9uKGJ0bil7CiAgICAgICAgICAgIGJ0bi5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsIGZ1bmN0aW9uKCl7CiAgICAgICAgICAgICAgICBjb25zdHJ1Y3Rvci5xdWVyeVNlbGVjdG9yQWxsKCcucHNjLWdyYW0tYnRuJykuZm9yRWFjaChmdW5jdGlvbihiKXsgYi5jbGFzc0xpc3QucmVtb3ZlKCdwc2MtYWN0aXZlJyk7IH0pOwogICAgICAgICAgICAgICAgYnRuLmNsYXNzTGlzdC5hZGQoJ3BzYy1hY3RpdmUnKTsKICAgICAgICAgICAgICAgIGN1cnJlbnRHcmFtID0gYnRuLmRhdGFzZXQuZ3JhbTsKICAgICAgICAgICAgICAgIHVwZGF0ZVZpZXcoKTsKICAgICAgICAgICAgfSk7CiAgICAgICAgfSk7CiAgICAgICAgY29uc3RydWN0b3IucXVlcnlTZWxlY3RvckFsbCgnLnBzYy1zaXplLWJ0bicpLmZvckVhY2goZnVuY3Rpb24oYnRuKXsKICAgICAgICAgICAgYnRuLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgZnVuY3Rpb24oKXsKICAgICAgICAgICAgICAgIGNvbnN0cnVjdG9yLnF1ZXJ5U2VsZWN0b3JBbGwoJy5wc2Mtc2l6ZS1idG4nKS5mb3JFYWNoKGZ1bmN0aW9uKGIpeyBiLmNsYXNzTGlzdC5yZW1vdmUoJ3BzYy1hY3RpdmUnKTsgfSk7CiAgICAgICAgICAgICAgICBidG4uY2xhc3NMaXN0LmFkZCgncHNjLWFjdGl2ZScpOwogICAgICAgICAgICAgICAgY3VycmVudFNpemUgPSBidG4uZGF0YXNldC5zaXplOwogICAgICAgICAgICAgICAgdXBkYXRlVmlldygpOwogICAgICAgICAgICB9KTsKICAgICAgICB9KTsKCiAgICAgICAgdXBkYXRlVmlldygpOwogICAgfSkoKTsKICAgIDwvc2NyaXB0PgogICAgPD9waHAKfSwgMTAwKTsK";
+const code = Buffer.from(CODE_B64, "base64").toString("utf8").trim();
 (async()=>{
-  const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Build Choice', code: BUILD, desc:'temp', scope:'global', active:true}));
-  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
-  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
-  out.snippet_id = snip && snip.id;
-  await new Promise(r=>setTimeout(r,2500));
-  exec('curl -sk "'+BASE+'/?build_choice=go" -o /dev/null');
-  await new Promise(r=>setTimeout(r,5000));
-  const res = exec('curl -sk "'+BASE+'/?build_read=go"');
-  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
-  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('build_choice.json', JSON.stringify(out,null,1));
-  console.log("DONE");
+  const out={ts:new Date().toISOString(), code_length: code.length};
+  const body = JSON.stringify({ name:"Petshop Susidėjimo Rinkinio Vitrina v1", code:code, desc:"Tėvinio choice produkto puslapyje: gramatūra/dydis mygtukai + paslėptos MnM formos + JS perjungimas.", scope:"global", active:true });
+  fs.writeFileSync("/tmp/b.json", body);
+  const raw = exec("curl -sk -X POST -H \\"Authorization: "+AUTH+"\\" -H \\"Content-Type: application/json\\" -d @/tmp/b.json \\""+BASE+"/wp-json/code-snippets/v1/snippets\\"");
+  let cr; try{ cr=JSON.parse(raw); }catch(e){ cr={__raw:raw.slice(0,500)}; }
+  out.created = cr && cr.id ? {id:cr.id, active:cr.active, name:cr.name} : (cr.__raw||JSON.stringify(cr).slice(0,300));
+  commit("choice_vitrina_deploy.json", JSON.stringify(out,null,1));
+  console.log("DONE id="+(cr&&cr.id));
 })();
