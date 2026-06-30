@@ -16,44 +16,49 @@ function jget(path){
   let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
   try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,200)}; }
 }
-function strip(h){ return (h||'').replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,' ').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim(); }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // 1. Pradinis VANDENYNAS rinkinio detali (per wp/v2 - context=edit)
-  const orig = jget('/wp-json/wp/v2/product/17748?context=edit');
-  const origWC = jget('/wp-json/wc/v3/products/17748');
-  out.original = {
-    id: 17748,
-    name: origWC && origWC.name,
-    sku: origWC && origWC.sku,
-    price: origWC && origWC.price,
-    qty: origWC && origWC.stock_quantity,
-    cats: (origWC && origWC.categories||[]).map(c=>c.name).join('|'),
-    short_desc: strip(origWC && origWC.short_description),
-    full_desc: strip(orig && orig.content && orig.content.raw).slice(0,1500),
-    images: (origWC && origWC.images||[]).length
-  };
-  // 2. Visi tinkami kačių konservai - paieška
-  let all=[];
-  for(let pg=1; pg<=3; pg++){
-    const arr = jget('/wp-json/wc/v3/products?category=79&per_page=100&page='+pg+'&status=publish');
-    if(!Array.isArray(arr) || arr.length===0) break;
-    all = all.concat(arr.filter(p=>p&&p.id));
+  // 11 kandidatų — patikrinti pagal ID, juos jau radau anksčiau:
+  // 1. 16942 Ontario lašišos pasta 90g
+  // 2. 17057 Ontario vištiena+lašiša 95g
+  // 3. 17499 Miamor tunas+kalmarai 100g
+  // 4. 17493 Miamor tunas+krevetės 100g
+  // 5. Miamor Vitaldrink TUNO 135ml — nematėm dev'e, ieškau
+  // 6. 19045 CATIT tuno paštetas + sardinės 95g
+  // 7. Animonda Vom Feinsten Mild Menu kalakutiena+lašiša 100g — ieškau
+  // 8. 17550 Miamor Feine Filets tunas krabų drebučiuose
+  // 9. 17547 Miamor Feine Filets tunas lašišos drebučiuose
+  // 10. 17538 Miamor Feine Filets tunas su krabais (skirtumas nuo #8?)
+  // 11. 17541 Miamor Feine Filets tunas su kalmarais
+
+  const ID_LIST = [16942, 17057, 17499, 17493, 19045, 17550, 17547, 17538, 17541];
+  out.found = [];
+  for(const id of ID_LIST){
+    const p = jget('/wp-json/wc/v3/products/'+id);
+    if(p && p.id) out.found.push({
+      id:p.id, name:(p.name||'').slice(0,80), sku:p.sku,
+      price:p.price, qty:p.stock_quantity, status:p.status
+    });
   }
-  // Filtruoju: simple, su likučiu, ne rinkinys pavadinime
-  out.kaciu_konservai = all.filter(p=>
-    p.type==='simple' &&
-    p.stock_quantity !== null && p.stock_quantity >= 5 &&
-    (p.images||[]).length > 0 &&
-    !/rinkin/i.test(p.name)
-  ).map(p=>({
-    id:p.id,
-    name:(p.name||'').slice(0,80),
-    sku:p.sku,
-    price:p.price,
-    qty:p.stock_quantity
+
+  // Ieškau Miamor Trinkfein Vitaldrink TUNO
+  const miamor = jget('/wp-json/wc/v3/products?search=Miamor%20Trinkfein&per_page=10&status=publish');
+  out.miamor_trinkfein = (miamor||[]).filter(p=>p&&p.id).map(p=>({
+    id:p.id, name:(p.name||'').slice(0,80), sku:p.sku, price:p.price, qty:p.stock_quantity
   }));
-  out.total_kaciu_konservai = all.length;
-  commit('vandenynas_recon.json', JSON.stringify(out,null,1));
-  console.log("DONE total="+all.length+" tinkami="+out.kaciu_konservai.length);
+
+  // Ieškau Animonda Vom Feinsten Mild Menu - kalakutiena+lašiša
+  const anim = jget('/wp-json/wc/v3/products?search=Mild%20Menu&per_page=20&status=publish');
+  out.animonda_mild_menu = (anim||[]).filter(p=>p&&p.id).map(p=>({
+    id:p.id, name:(p.name||'').slice(0,80), sku:p.sku, price:p.price, qty:p.stock_quantity
+  }));
+
+  // Tikrinu ar 17538 yra "tunas su krabais drebučiuose" - pažiūrim aprašymą
+  for(const id of [17538, 17550]){
+    const p = jget('/wp-json/wc/v3/products/'+id);
+    if(p && p.id) out['detail_'+id] = {name:p.name, sku:p.sku};
+  }
+
+  commit('vandenynas_check.json', JSON.stringify(out,null,1));
+  console.log("DONE");
 })();
