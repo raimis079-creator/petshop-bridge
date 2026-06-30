@@ -12,26 +12,106 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-function api(method, path){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
-  let raw=exec(cmd);
-  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,300)}; }
-}
+
+// Naudoju PHP snippet'ą — tikras MnM cart->order flow per WC API
+// nes REST orders nesukuria MnM child item struktūros teisingai
+const PROBE = `<?php
+add_action('init', function(){
+    if (!isset($_GET['koju_test']) || $_GET['koju_test'] !== 'go') return;
+    $out = array();
+    $cid = 34175;
+    $product = wc_get_product($cid);
+    if (!$product) { update_option('koju_result', json_encode(array('error'=>'no product'))); wp_die('x'); }
+
+    // 1. Komponentų kiekiai iš meta
+    $fixed_raw = get_post_meta($cid, '_petshop_component_quantities', true);
+    $fixed_map = json_decode($fixed_raw, true) ?: array();
+    $out['fixed_map'] = $fixed_map;
+
+    // 2. PRIEŠ — likučiai
+    $out['before'] = array();
+    foreach ($product->get_child_items() as $child) {
+        $cp = $child->get_product();
+        if (!$cp) continue;
+        $pid = $cp->get_id();
+        $out['before'][$pid] = array(
+            'name' => substr($cp->get_name(),0,45),
+            'qty_in_set' => isset($fixed_map[$pid]) ? (int)$fixed_map[$pid] : 1,
+            'stock' => $cp->get_stock_quantity(),
+        );
+    }
+
+    // 3. Sukuriam užsakymą su MnM struktūra
+    $order = wc_create_order();
+
+    // Pridedam MnM container į užsakymą su konfigūracija
+    $configuration = array();
+    foreach ($product->get_child_items() as $child) {
+        $child_id = $child->get_id();
+        $cp = $child->get_product();
+        if (!$cp) continue;
+        $pid = $cp->get_id();
+        $qty = isset($fixed_map[$pid]) ? (int)$fixed_map[$pid] : 1;
+        $configuration[$child_id] = array(
+            'product_id' => $pid,
+            'quantity' => $qty,
+        );
+    }
+    $out['configuration'] = $configuration;
+
+    // wc_mnm pateikia funkciją pridėti container į order su konfigūracija
+    if (function_exists('wc_mnm_add_container_to_order')) {
+        $out['add_method'] = 'wc_mnm_add_container_to_order';
+        wc_mnm_add_container_to_order($order, $product, 1, $configuration);
+    } else {
+        // fallback - standartinis add_product + MnM cart item data
+        $out['add_method'] = 'manual';
+        $item_id = $order->add_product($product, 1, array(
+            'mnm_config' => $configuration
+        ));
+    }
+
+    $order->calculate_totals();
+    $order->save();
+    $out['order_id'] = $order->get_id();
+
+    // 4. Pakeičiam statusą į completed -> tai sukelia stock reduction
+    $order->update_status('completed', 'Testas - tikrinam likučių nurašymą');
+
+    // Palaukiam ir perskaitom PO
+    wc_delete_product_transients();
+
+    $out['after'] = array();
+    $product2 = wc_get_product($cid);
+    foreach ($product2->get_child_items() as $child) {
+        $cp = wc_get_product($child->get_product()->get_id());
+        if (!$cp) continue;
+        $pid = $cp->get_id();
+        $out['after'][$pid] = $cp->get_stock_quantity();
+    }
+
+    update_option('koju_result', json_encode($out));
+    wp_die('DONE');
+});
+add_action('init', function(){
+    if (!isset($_GET['koju_read']) || $_GET['koju_read'] !== 'go') return;
+    header('Content-Type: application/json');
+    echo get_option('koju_result', '{}');
+    exit;
+});
+`;
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // Ieskau koju rinkinio - mix-and-match tipo, naujausi
-  const arr = api('GET','/wp-json/wc/v3/products?type=mix-and-match&per_page=20&orderby=date&order=desc');
-  out.bundles = [];
-  if(Array.isArray(arr)){
-    for(const p of arr){
-      out.bundles.push({
-        id: p.id,
-        name: (p.name||''),
-        sku: p.sku,
-        date_created: p.date_created
-      });
-    }
-  }
-  commit('find_koju.json', JSON.stringify(out,null,1));
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Koju Test', code: PROBE, desc:'temp', scope:'global', active:true}));
+  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
+  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
+  out.snippet_id = snip && snip.id;
+  await new Promise(r=>setTimeout(r,2500));
+  exec('curl -sk "'+BASE+'/?koju_test=go" -o /dev/null');
+  await new Promise(r=>setTimeout(r,4000));
+  const res = exec('curl -sk "'+BASE+'/?koju_read=go"');
+  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
+  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
+  commit('koju_test.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
