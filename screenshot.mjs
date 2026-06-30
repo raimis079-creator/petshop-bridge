@@ -13,32 +13,33 @@ function commit(name, str){
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
 function api(path){
-  let cmd='curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'?nc='+Date.now()+'"';
+  let cmd='curl -sk -H "Authorization: '+AUTH+'" -H "Accept: application/json" "'+BASE+path+'"';
   let raw=exec(cmd);
   try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,300)}; }
 }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const comps = [
-    {id:19092, name:'Balta stirnos koja', kiekis:5, buvo:60},
-    {id:16298, name:'Ruda stirnos koja', kiekis:5, buvo:20},
-    {id:16317, name:'Ruda avies koja', kiekis:2, buvo:51},
-    {id:19104, name:'Balta avies koja', kiekis:2, buvo:76}
-  ];
-  out.results = [];
-  for(const c of comps){
-    const p = api('/wp-json/wc/v3/products/'+c.id);
-    out.results.push({
-      id: c.id, name: c.name, kiekis: c.kiekis, buvo: c.buvo,
-      dabar: p.stock_quantity, stock_status: p.stock_status
-    });
+  // Visos product kategorijos, susijusios su rinkiniais
+  const cats = api('/wp-json/wc/v3/products/categories?per_page=100&orderby=name');
+  out.all_cats = [];
+  if(Array.isArray(cats)){
+    for(const c of cats){
+      // Ieskau "rinkin" pavadinime/slug arba parent yra rinkiniai
+      const isRinkinys = (c.slug||'').includes('rinkin') || (c.name||'').toLowerCase().includes('rinkin');
+      if(isRinkinys){
+        out.all_cats.push({
+          id: c.id, name: c.name, slug: c.slug,
+          parent: c.parent, count: c.count, menu_order: c.menu_order
+        });
+      }
+    }
   }
-  // Taip pat patikrinu naujausią užsakymą
-  const orders = api('/wp-json/wc/v3/orders?per_page=3&orderby=date&order=desc');
-  out.recent_orders = Array.isArray(orders) ? orders.map(o=>({
-    id:o.id, status:o.status, total:o.total, date:o.date_created,
-    items: (o.line_items||[]).map(li=>li.name)
+  // Visi MnM rinkiniai ir jų kategorijos
+  const bundles = api('/wp-json/wc/v3/products?type=mix-and-match&per_page=30');
+  out.bundles = Array.isArray(bundles) ? bundles.map(p=>({
+    id:p.id, name:p.name,
+    cats:(p.categories||[]).map(c=>c.slug+':'+c.name).join(' | ')
   })) : [];
-  commit('koju_final.json', JSON.stringify(out,null,1));
+  commit('cat_recon.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
