@@ -37,7 +37,7 @@ const RECEPTAS = {
     { id: 21599, kiekis: 1 }  // Kreminis kačiukams su vištiena (2.49)
   ]
 };
-const MODE = "dry"; // "dry" arba "apply"
+const MODE = "apply"; // "dry" arba "apply"
 
 // === HELPERS ===
 function commit(name, str) {
