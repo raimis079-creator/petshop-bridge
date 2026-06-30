@@ -18,25 +18,27 @@ function jget(path){
 }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // Animonda GranCarno paieška — visi publish su likučiu
-  const all = jget('/wp-json/wc/v3/products?search=GranCarno&per_page=50&status=publish');
-  out.found = (all||[]).filter(p=>p&&p.id).map(p=>({
+  // Visa Animonda GranCarno (per_page 100)
+  let all=[]; for(let pg=1; pg<=3; pg++){
+    const arr = jget('/wp-json/wc/v3/products?search=GranCarno&per_page=100&page='+pg+'&status=publish');
+    if(!Array.isArray(arr) || arr.length===0) break;
+    all = all.concat(arr.filter(p=>p&&p.id));
+  }
+  // Filtruoju: simple, su nuotrauka, NE rinkinys pavadinime, su likučiu
+  out.tinka_visi = all.filter(p=>
+    p.type==='simple' &&
+    p.stock_quantity !== null && p.stock_quantity >= 5 &&
+    (p.images||[]).length > 0 &&
+    !/rinkin/i.test(p.name)
+  ).map(p=>({
     id:p.id,
-    name:(p.name||'').slice(0,80),
+    name:(p.name||'').slice(0,90),
     sku:p.sku,
     price:p.price,
     qty:p.stock_quantity,
-    type:p.type,
-    cats:(p.categories||[]).map(c=>c.name).slice(0,2).join('|'),
-    has_image: (p.images||[]).length > 0
+    cats:(p.categories||[]).map(c=>c.name).slice(0,2).join('|')
   }));
-  // filtruoju 400g + publish + qty > 5 + simple
-  out.tinka_400g = out.found.filter(p =>
-    p.type === 'simple' &&
-    p.qty !== null && p.qty >= 5 &&
-    /400\s?g/i.test(p.name) &&
-    p.has_image
-  );
-  commit('animonda_search.json', JSON.stringify(out,null,1));
-  console.log("DONE found="+out.found.length+" tinka="+out.tinka_400g.length);
+  out.total_grancarno = all.length;
+  commit('animonda_full.json', JSON.stringify(out,null,1));
+  console.log("DONE total="+all.length+" tinka="+out.tinka_visi.length);
 })();
