@@ -1,57 +1,96 @@
 import { execSync } from "child_process";
 import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function putBin(name,buf){
-  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
-  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
-  const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha;
-  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
-  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
-}
+const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
+const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
+const BASE = "https://dev.avesa.lt";
+const AUTH = "Basic " + Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 function commit(name, str){
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
   const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha;
+  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
+  execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
+}
+function putBin(name,buf){
+  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
+  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
+  const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha;
   fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body));
   try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
+function api(method, path, body){
+  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
+  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
+  cmd+=' "'+BASE+path+'"';
+  let raw=exec(cmd);
+  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
+}
+
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // pirma — kaip atrodo 4.5KB failas?
-  exec(`curl -sk -A "${UA}" "https://ontario.pet/en/wp-content/uploads/213-2002.webp" -o /tmp/o.webp`);
-  out.size_first = fs.existsSync('/tmp/o.webp') ? fs.statSync('/tmp/o.webp').size : 0;
-  // Patikrinu, kas viduje (hex prefix)
-  if(out.size_first > 0){
-    const buf = fs.readFileSync('/tmp/o.webp');
-    out.hex_prefix = buf.slice(0, 16).toString('hex');
-    out.is_webp = buf.slice(0,4).toString() === 'RIFF';
-  }
-  // bandysiu kitas dimensijų versijas (WP automatiškai daro 300x300, 600x600, 800x800)
+  const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
+
+  // 1. Parsisiunčiu superzoo CDN — bandysiu skirtingus dydžius
   const urls = [
-    'https://ontario.pet/en/wp-content/uploads/213-2002-768x1024.webp',
-    'https://ontario.pet/en/wp-content/uploads/213-2002-1500x2000.webp',
-    'https://ontario.pet/en/wp-content/uploads/213-2002-300x400.webp',
-    'https://ontario.pet/en/wp-content/uploads/213-2002-scaled.webp',
-    'https://ontario.pet/en/wp-content/uploads/213-2002.png',
-    'https://ontario.pet/en/wp-content/uploads/213-2002.jpg'
+    'https://cdn.superzoo.cz/detect/modal-1110/o-213-2002',
+    'https://cdn.superzoo.cz/detect/product-650/o-213-2002',
+    'https://cdn.superzoo.cz/detect/main-benefits-450/o-213-2002'
   ];
   out.tries = {};
-  for(let i=0;i<urls.length;i++){
-    const f = '/tmp/v'+i+'.bin';
-    exec(`curl -sk -A "${UA}" -w "%{http_code}" "${urls[i]}" -o "${f}" 2>&1`);
+  let best = null; let best_size = 0;
+  for(const u of urls){
+    const f='/tmp/im_'+Math.random().toString(36).slice(2,8);
+    exec(`curl -sk -A "${UA}" -H "Referer: https://www.superzoo.cz/" "${u}" -o "${f}"`);
     const sz = fs.existsSync(f) ? fs.statSync(f).size : 0;
-    out.tries[urls[i]] = sz;
+    out.tries[u] = sz;
+    // Patikrinu, ar tikrai paveiksliukas (ne HTML)
+    if(sz > 5000){
+      const buf = fs.readFileSync(f);
+      const hex = buf.slice(0,4).toString('hex');
+      const isImg = hex.startsWith('ffd8') || hex.startsWith('8950') || hex === '52494646'; // jpg/png/webp
+      if(isImg && sz > best_size){ best = f; best_size = sz; }
+    }
   }
-  // dar bandau be prefikso "en" (gal originalo path'as kitoks)
-  out.tries['https://ontario.pet/wp-content/uploads/213-2002.webp'] = (() => {
-    exec(`curl -sk -A "${UA}" "https://ontario.pet/wp-content/uploads/213-2002.webp" -o /tmp/cz.webp`);
-    return fs.existsSync('/tmp/cz.webp') ? fs.statSync('/tmp/cz.webp').size : 0;
-  })();
-  // pateikiu maziausią failą inspekcijai (4.5KB versiją)
-  if(out.size_first > 0){
-    putBin('ontario_213.webp', fs.readFileSync('/tmp/o.webp'));
+  if(!best){
+    out.fatal = 'Nepavyko gauti tikros nuotraukos. Tries: ' + JSON.stringify(out.tries);
+    commit('ontario_v2_result.json', JSON.stringify(out,null,1));
+    return;
   }
-  commit('ontario_diag.json', JSON.stringify(out,null,1));
+  out.chosen_size = best_size;
+
+  // 2. Konvertuoju į JPG per Pillow (tarkim, gali būti webp ar bet kas)
+  exec('python3 -c "from PIL import Image" 2>/dev/null || pip3 install --quiet --break-system-packages Pillow 2>&1');
+  const conv = exec(`python3 -c "from PIL import Image; im=Image.open('${best}').convert('RGB'); im.save('/tmp/new.jpg', 'JPEG', quality=92); print(im.size)" 2>&1`);
+  out.convert = conv.slice(0,200);
+  if(!fs.existsSync('/tmp/new.jpg')){
+    out.fatal = 'Konversija nepavyko: '+conv;
+    commit('ontario_v2_result.json', JSON.stringify(out,null,1));
+    return;
+  }
+  out.jpg_size = fs.statSync('/tmp/new.jpg').size;
+  putBin('ontario_new_preview.jpg', fs.readFileSync('/tmp/new.jpg'));
+
+  // 3. Įkeliu kaip WP media
+  const filename = 'ontario-chicken-salmon-95g-v2.jpg';
+  const upCmd = `curl -sk -X POST -H "Authorization: ${AUTH}" `
+    + `-H "Content-Disposition: attachment; filename=\\"${filename}\\"" `
+    + `-H "Content-Type: image/jpeg" `
+    + `--data-binary @/tmp/new.jpg `
+    + `"${BASE}/wp-json/wp/v2/media"`;
+  const upRaw = exec(upCmd);
+  let media; try{ media = JSON.parse(upRaw); }catch(e){ media={__raw:upRaw.slice(0,300)}; }
+  out.new_media_id = media && media.id;
+  out.new_media_url = media && media.source_url;
+
+  // 4. Priskirti komponentui 17057
+  if(media && media.id){
+    const setImg = api('PUT','/wp-json/wc/v3/products/17057', {
+      images: [{id: media.id}]
+    });
+    out.assigned = setImg && setImg.images && setImg.images[0] && setImg.images[0].id;
+  }
+
+  commit('ontario_v2_result.json', JSON.stringify(out,null,1));
+  console.log("DONE media="+out.new_media_id);
 })();
