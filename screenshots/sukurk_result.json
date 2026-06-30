@@ -1,6 +1,6 @@
 {
- "ts": "2026-06-30T14:10:57.779Z",
- "mode": "dry",
+ "ts": "2026-06-30T14:38:48.331Z",
+ "mode": "apply",
  "receptas": {
   "pavadinimas": "Jaučio ir kiaulės ausų rinkinys šunims · 15 vnt.",
   "sku": "RINK-AUSYS-15",
@@ -64,5 +64,32 @@
  },
  "aprasymo_preview": "Rinkinyje rasite (15 skardinės): Balta jaučio ausis, 1 vnt. Ruda jaučio ausis, 1 vnt. Ruda kiaulės ausis, 1 vnt. Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
  "kompozicijos_layout": "5×3",
- "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
+ "created": {
+  "id": 34168,
+  "sku": "RINK-AUSYS-15",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/jaucio-ir-kiaules-ausu-rinkinys-sunims-%c2%b7-15-vnt/",
+  "err": null
+ },
+ "composition_tiles": 3,
+ "python_out": "OK\n",
+ "composed_size": 59717,
+ "media_id": 34169,
+ "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-ausys-15.jpg",
+ "featured_assigned": 34169,
+ "verify": {
+  "id": 34168,
+  "name": "Jaučio ir kiaulės ausų rinkinys šunims · 15 vnt.",
+  "sku": "RINK-AUSYS-15",
+  "type": "mix-and-match",
+  "status": "publish",
+  "price": "18.39",
+  "purchasable": true,
+  "min": 15,
+  "max": 15,
+  "pool_count": 3,
+  "cats": "683:skanestu-rinkiniai",
+  "images": 1,
+  "permalink": "https://dev.avesa.lt/product/jaucio-ir-kiaules-ausu-rinkinys-sunims-%c2%b7-15-vnt/"
+ }
 }
