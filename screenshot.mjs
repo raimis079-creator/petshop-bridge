@@ -16,26 +16,44 @@ function jget(path){
   let raw=''; try{ raw=execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return {__exc:String(e).slice(0,120)}; }
   try{ return JSON.parse(raw); }catch(e){ return {__pe:true, raw:raw.slice(0,200)}; }
 }
-function brief(arr){ return (arr||[]).filter(p=>p&&p.id).map(p=>({
-  id:p.id, name:(p.name||'').slice(0,80), sku:p.sku, type:p.type, status:p.status,
-  price:p.price, qty:p.stock_quantity,
-  cats:(p.categories||[]).map(c=>c.id+':'+c.slug).join('|')
-})); }
+function strip(h){ return (h||'').replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,' ').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim(); }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // 1. visos RINKINIAI kategorijos vaikai
-  out.rinkiniai_679 = brief(jget('/wp-json/wc/v3/products?category=679&per_page=100&status=any'));
-  out.konservu_682 = brief(jget('/wp-json/wc/v3/products?category=682&per_page=100&status=any'));
-  out.skanestu_683 = brief(jget('/wp-json/wc/v3/products?category=683&per_page=100&status=any'));
-  out.kramtalu_684 = brief(jget('/wp-json/wc/v3/products?category=684&per_page=100&status=any'));
-  // 2. paieška pagal "rinkinys" — kad surasčiau tuos, kurie kitose kategorijose
-  let by_name = [];
+  // 1. Pradinis VANDENYNAS rinkinio detali (per wp/v2 - context=edit)
+  const orig = jget('/wp-json/wp/v2/product/17748?context=edit');
+  const origWC = jget('/wp-json/wc/v3/products/17748');
+  out.original = {
+    id: 17748,
+    name: origWC && origWC.name,
+    sku: origWC && origWC.sku,
+    price: origWC && origWC.price,
+    qty: origWC && origWC.stock_quantity,
+    cats: (origWC && origWC.categories||[]).map(c=>c.name).join('|'),
+    short_desc: strip(origWC && origWC.short_description),
+    full_desc: strip(orig && orig.content && orig.content.raw).slice(0,1500),
+    images: (origWC && origWC.images||[]).length
+  };
+  // 2. Visi tinkami kačių konservai - paieška
+  let all=[];
   for(let pg=1; pg<=3; pg++){
-    const arr = jget('/wp-json/wc/v3/products?search=rinkinys&per_page=100&page='+pg+'&status=any');
+    const arr = jget('/wp-json/wc/v3/products?category=79&per_page=100&page='+pg+'&status=publish');
     if(!Array.isArray(arr) || arr.length===0) break;
-    by_name = by_name.concat(arr.filter(p=>p&&p.id));
+    all = all.concat(arr.filter(p=>p&&p.id));
   }
-  out.by_name = brief(by_name).filter(p => /rinkinys/i.test(p.name));
-  commit('rinkiniai_inventory.json', JSON.stringify(out,null,1));
-  console.log("DONE");
+  // Filtruoju: simple, su likučiu, ne rinkinys pavadinime
+  out.kaciu_konservai = all.filter(p=>
+    p.type==='simple' &&
+    p.stock_quantity !== null && p.stock_quantity >= 5 &&
+    (p.images||[]).length > 0 &&
+    !/rinkin/i.test(p.name)
+  ).map(p=>({
+    id:p.id,
+    name:(p.name||'').slice(0,80),
+    sku:p.sku,
+    price:p.price,
+    qty:p.stock_quantity
+  }));
+  out.total_kaciu_konservai = all.length;
+  commit('vandenynas_recon.json', JSON.stringify(out,null,1));
+  console.log("DONE total="+all.length+" tinkami="+out.kaciu_konservai.length);
 })();
