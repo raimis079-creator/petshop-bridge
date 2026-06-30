@@ -1,0 +1,107 @@
+{
+ "ts": "2026-06-30T06:36:12.142Z",
+ "mode": "dry",
+ "receptas": {
+  "pavadinimas": "Animonda GranCarno rinkinys · 6×400g",
+  "sku": "RINK-ANIMONDA-GC-6x400",
+  "kaina": 13.49,
+  "dydis": 6,
+  "kategorija_slug": "konservu-rinkiniai",
+  "trumpas_aprasymas": "6 skirtingi Animonda GranCarno skoniai — su jautiena, antiena, žvėriena, elniena, lašiša, jautiena+ėriena. Be grūdų, sojų, cukraus, dirbtinių dažiklių ir konservantų.",
+  "komponentai": [
+   {
+    "id": 19574,
+    "kiekis": 1
+   },
+   {
+    "id": 19566,
+    "kiekis": 1
+   },
+   {
+    "id": 19500,
+    "kiekis": 1
+   },
+   {
+    "id": 19492,
+    "kiekis": 1
+   },
+   {
+    "id": 19483,
+    "kiekis": 1
+   },
+   {
+    "id": 19586,
+    "kiekis": 1
+   }
+  ]
+ },
+ "kategorija_id": 682,
+ "komponentai_details": [
+  {
+   "id": 19574,
+   "sku": "82735",
+   "name": "Animonda GranCarno Adult Beef: konservai šunims su šviežia j",
+   "status": "publish",
+   "qty": 54,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 19566,
+   "sku": "82801",
+   "name": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims ",
+   "status": "publish",
+   "qty": 101,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 19500,
+   "sku": "82736",
+   "name": "Animonda GranCarno Adult: konservai suaugusiems šunims su žv",
+   "status": "publish",
+   "qty": 83,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 19492,
+   "sku": "82753",
+   "name": "Animonda GranCarno Adult: konservai šunims su elniena, pagar",
+   "status": "publish",
+   "qty": 77,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 19483,
+   "sku": "82751",
+   "name": "Animonda GranCarno Adult: konservai šunims su lašiša, pratur",
+   "status": "publish",
+   "qty": 63,
+   "kiekis": 1,
+   "has_image": true
+  },
+  {
+   "id": 19586,
+   "sku": "82733",
+   "name": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šv",
+   "status": "publish",
+   "qty": 92,
+   "kiekis": 1,
+   "has_image": true
+  }
+ ],
+ "validation": {
+  "ok": true,
+  "errors": []
+ },
+ "kainos_analize": {
+  "atskirai_eur": "13.93",
+  "rinkinyje_eur": "13.49",
+  "sutaupymas_pct": "3%"
+ },
+ "aprasymo_preview": "Rinkinyje rasite (6 skardinės): Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 400 g Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 400 g Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 400g Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
+ "kompozicijos_layout": "3×2",
+ "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
+}
