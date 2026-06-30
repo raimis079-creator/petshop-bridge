@@ -1,35 +1,43 @@
 import { execSync } from "child_process";
 import fs from "fs";
-const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
-const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
-const BASE = "https://dev.avesa.lt";
-const AUTH = "Basic " + Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+import { chromium } from "playwright";
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function putBin(name,buf){
+  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
+  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
+  const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha;
+  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
+  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
+}
 function commit(name, str){
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
   const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha;
-  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
-  execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
-}
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-function api(method, path, body){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
-  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
-  cmd+=' "'+BASE+path+'"';
-  let raw=exec(cmd);
-  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
+  fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body));
+  try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){}
 }
 (async()=>{
-  const out={ts:new Date().toISOString()};
-  // Kategorija 684 = kramtalu-rinkiniai
-  const upd = api('PUT','/wp-json/wc/v3/products/34168', {
-    categories: [{id: 684}]
+  const browser=await chromium.launch({args:['--no-sandbox']});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:1100}});
+  const page=await ctx.newPage();
+  await page.goto('https://dev.avesa.lt/?p=34168&nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:50000}).catch(()=>{});
+  await page.waitForTimeout(6000);
+  const probe = await page.evaluate(()=>{
+    const rows = document.querySelectorAll('.mnm_child_products tbody tr.mnm_item, form.cart tbody tr[data-mnm_item_id]');
+    var kiekiai = [];
+    rows.forEach(function(row){ kiekiai.push(row.getAttribute('data-kiekis-rodyti')); });
+    var btn = document.querySelector('.single_add_to_cart_button');
+    var sav = document.querySelector('.petshop-savings');
+    var bc = document.querySelector('.breadcrumbs, .woocommerce-breadcrumb');
+    return {
+      kiekiai: kiekiai,
+      btn: btn?btn.textContent.trim():'?',
+      savings: sav?sav.textContent.trim():'NĖRA',
+      breadcrumb: bc?bc.textContent.trim().replace(/\s+/g,' '):'?'
+    };
   });
-  out.updated = upd && upd.id ? {
-    id: upd.id,
-    name: upd.name,
-    cats: (upd.categories||[]).map(c=>c.id+':'+c.slug).join(', ')
-  } : (upd.__raw||'?');
-  commit('move_ausys.json', JSON.stringify(out,null,1));
-  console.log("DONE");
+  commit('ausys_kramt.json', JSON.stringify(probe,null,1));
+  putBin('ausys_kramt.png', await page.screenshot({fullPage:false}));
+  console.log(JSON.stringify(probe));
+  await ctx.close(); await browser.close();
 })();
