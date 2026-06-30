@@ -43,7 +43,7 @@ const RECEPTAS = {
     { id: 17541, kiekis: 1 }  // Miamor Feine Filets tunas SU kalmarais drebučiuose
   ]
 };
-const MODE = "dry"; // "dry" arba "apply"
+const MODE = "apply"; // "dry" arba "apply"
 
 // === HELPERS ===
 function commit(name, str) {
