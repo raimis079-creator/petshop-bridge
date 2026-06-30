@@ -38,7 +38,7 @@ const RECEPTAS = {
     { id: 19586, kiekis: 1 }  // GranCarno Beef + Lamb
   ]
 };
-const MODE = "dry"; // "dry" arba "apply"
+const MODE = "apply"; // "dry" arba "apply"
 
 // === HELPERS ===
 function commit(name, str) {
