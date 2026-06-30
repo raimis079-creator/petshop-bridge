@@ -1,6 +1,6 @@
 {
- "ts": "2026-06-30T07:56:17.381Z",
- "mode": "dry",
+ "ts": "2026-06-30T07:59:47.501Z",
+ "mode": "apply",
  "receptas": {
   "pavadinimas": "Vandenynas — kačių jūros konservų rinkinys",
   "sku": "RINK-VANDENYNAS-CAT-11",
@@ -116,7 +116,7 @@
    "sku": "83941",
    "name": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and S",
    "status": "publish",
-   "qty": 0,
+   "qty": 32,
    "kiekis": 1,
    "has_image": true
   },
@@ -168,5 +168,32 @@
  },
  "aprasymo_preview": "Rinkinyje rasite (11 skardinės): Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90 g Ontario super premium konservai katėms su vištiena ir lašiša, 95 g Miamor Super premium konservai katėms su tunu ir kalmarais, 100 g Miamor Super premium konservai katėms su tunu ir krevetėmis, 100 g Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml CATIT CUISINE tuno paštetas su sardinėmis ir daržovėmis, 95 g Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and Salmon – konservai katėms Švelnusis meniu su kalakutiena ir lašiša, 100 g Miamor Feine Filets konservai katėms, tunas krabų drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas lašišos drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, 100 g Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
  "kompozicijos_layout": "4×3 (paskutinė eilutė: 3)",
- "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
+ "created": {
+  "id": 34158,
+  "sku": "RINK-VANDENYNAS-CAT-11",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/vandenynas-kaciu-juros-konservu-rinkinys/",
+  "err": null
+ },
+ "composition_tiles": 11,
+ "python_out": "/home/runner/.local/lib/python3.12/site-packages/PIL/Image.py:1137: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images\n  warnings.warn(\nOK\n",
+ "composed_size": 314823,
+ "media_id": 34159,
+ "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-vandenynas-cat-11.jpg",
+ "featured_assigned": 34159,
+ "verify": {
+  "id": 34158,
+  "name": "Vandenynas — kačių jūros konservų rinkinys",
+  "sku": "RINK-VANDENYNAS-CAT-11",
+  "type": "mix-and-match",
+  "status": "publish",
+  "price": "17.99",
+  "purchasable": true,
+  "min": 11,
+  "max": 11,
+  "pool_count": 11,
+  "cats": "682:konservu-rinkiniai",
+  "images": 1,
+  "permalink": "https://dev.avesa.lt/product/vandenynas-kaciu-juros-konservu-rinkinys/"
+ }
 }
