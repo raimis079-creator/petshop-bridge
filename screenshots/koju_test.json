@@ -1,0 +1,60 @@
+{
+ "ts": "2026-06-30T20:23:49.194Z",
+ "snippet_id": 541,
+ "probe": {
+  "fixed_map": {
+   "16298": 5,
+   "16317": 2,
+   "19092": 5,
+   "19104": 2
+  },
+  "before": {
+   "16298": {
+    "name": "Ruda stirnos koja, 1 vnt.",
+    "qty_in_set": 5,
+    "stock": 20
+   },
+   "16317": {
+    "name": "Ruda avies koja, 1 vnt.",
+    "qty_in_set": 2,
+    "stock": 51
+   },
+   "19092": {
+    "name": "Balta stirnos koja, 1 vnt.",
+    "qty_in_set": 5,
+    "stock": 60
+   },
+   "19104": {
+    "name": "Balta avies koja, 1 vnt.",
+    "qty_in_set": 2,
+    "stock": 76
+   }
+  },
+  "configuration": {
+   "47": {
+    "product_id": 19092,
+    "quantity": 5
+   },
+   "48": {
+    "product_id": 16298,
+    "quantity": 5
+   },
+   "49": {
+    "product_id": 16317,
+    "quantity": 2
+   },
+   "50": {
+    "product_id": 19104,
+    "quantity": 2
+   }
+  },
+  "add_method": "manual",
+  "order_id": 34177,
+  "after": {
+   "16298": 20,
+   "16317": 51,
+   "19092": 60,
+   "19104": 76
+  }
+ }
+}
