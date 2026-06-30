@@ -1,159 +1,55 @@
 {
- "ts": "2026-06-30T07:59:47.501Z",
- "mode": "apply",
+ "ts": "2026-06-30T14:10:57.779Z",
+ "mode": "dry",
  "receptas": {
-  "pavadinimas": "Vandenynas — kačių jūros konservų rinkinys",
-  "sku": "RINK-VANDENYNAS-CAT-11",
-  "kaina": 17.99,
-  "dydis": 11,
-  "kategorija_slug": "konservu-rinkiniai",
-  "trumpas_aprasymas": "11 skirtingų jūros gėrybių skonių katėms. Lengvai virškinami konservai rekomenduojami išrankioms, vyresnėms, sterilizuotoms ir antsvorio turinčioms katėms.",
+  "pavadinimas": "Jaučio ir kiaulės ausų rinkinys šunims · 15 vnt.",
+  "sku": "RINK-AUSYS-15",
+  "kaina": 18.39,
+  "dydis": 15,
+  "kategorija_slug": "skanestu-rinkiniai",
+  "trumpas_aprasymas": "Natūralių, džiovintų skanėstų rinkinys — 5 baltos jaučio ausys, 5 rudos jaučio ausys, 5 kiaulės ausys. Tinka kasdieniam apdovanojimui ar kramtymui.",
   "komponentai": [
    {
-    "id": 16942,
-    "kiekis": 1
+    "id": 19098,
+    "kiekis": 5
    },
    {
-    "id": 17057,
-    "kiekis": 1
+    "id": 16311,
+    "kiekis": 5
    },
    {
-    "id": 17499,
-    "kiekis": 1
-   },
-   {
-    "id": 17493,
-    "kiekis": 1
-   },
-   {
-    "id": 18369,
-    "kiekis": 1
-   },
-   {
-    "id": 19045,
-    "kiekis": 1
-   },
-   {
-    "id": 19452,
-    "kiekis": 1
-   },
-   {
-    "id": 17550,
-    "kiekis": 1
-   },
-   {
-    "id": 17547,
-    "kiekis": 1
-   },
-   {
-    "id": 17538,
-    "kiekis": 1
-   },
-   {
-    "id": 17541,
-    "kiekis": 1
+    "id": 16305,
+    "kiekis": 5
    }
   ]
  },
- "kategorija_id": 682,
+ "kategorija_id": 683,
  "komponentai_details": [
   {
-   "id": 16942,
-   "sku": "42822",
-   "name": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90",
+   "id": 19098,
+   "sku": "341000",
+   "name": "Balta jaučio ausis, 1 vnt.",
    "status": "publish",
-   "qty": 40,
-   "kiekis": 1,
+   "qty": 71,
+   "kiekis": 5,
    "has_image": true
   },
   {
-   "id": 17057,
-   "sku": "640319",
-   "name": "Ontario super premium konservai katėms su vištiena ir lašiša",
+   "id": 16311,
+   "sku": "723000",
+   "name": "Ruda jaučio ausis, 1 vnt.",
    "status": "publish",
-   "qty": 23,
-   "kiekis": 1,
+   "qty": 300,
+   "kiekis": 5,
    "has_image": true
   },
   {
-   "id": 17499,
-   "sku": "2632",
-   "name": "Miamor Super premium konservai katėms su tunu ir kalmarais, ",
+   "id": 16305,
+   "sku": "338000",
+   "name": "Ruda kiaulės ausis, 1 vnt.",
    "status": "publish",
-   "qty": 19,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 17493,
-   "sku": "640367",
-   "name": "Miamor Super premium konservai katėms su tunu ir krevetėmis,",
-   "status": "publish",
-   "qty": 19,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 18369,
-   "sku": "40829",
-   "name": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
-   "status": "publish",
-   "qty": 24,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 19045,
-   "sku": "42136",
-   "name": "CATIT CUISINE tuno paštetas su sardinėmis ir daržovėmis, 95 ",
-   "status": "publish",
-   "qty": 12,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 19452,
-   "sku": "83941",
-   "name": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and S",
-   "status": "publish",
-   "qty": 32,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 17550,
-   "sku": "74080",
-   "name": "Miamor Feine Filets konservai katėms, tunas krabų drebučiuos",
-   "status": "publish",
-   "qty": 34,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 17547,
-   "sku": "2835",
-   "name": "Miamor Feine Filets konservai katėms, tunas lašišos drebučiu",
-   "status": "publish",
-   "qty": 22,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 17538,
-   "sku": "2837",
-   "name": "Miamor Feine Filets konservai katėms, tunas su krabais drebu",
-   "status": "publish",
-   "qty": 26,
-   "kiekis": 1,
-   "has_image": true
-  },
-  {
-   "id": 17541,
-   "sku": "2838",
-   "name": "Miamor Feine Filets konservai katėms, tunas su kalmarais dre",
-   "status": "publish",
-   "qty": 38,
-   "kiekis": 1,
+   "qty": 48,
+   "kiekis": 5,
    "has_image": true
   }
  ],
@@ -162,38 +58,11 @@
   "errors": []
  },
  "kainos_analize": {
-  "atskirai_eur": "18.89",
-  "rinkinyje_eur": "17.99",
+  "atskirai_eur": "19.35",
+  "rinkinyje_eur": "18.39",
   "sutaupymas_pct": "5%"
  },
- "aprasymo_preview": "Rinkinyje rasite (11 skardinės): Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90 g Ontario super premium konservai katėms su vištiena ir lašiša, 95 g Miamor Super premium konservai katėms su tunu ir kalmarais, 100 g Miamor Super premium konservai katėms su tunu ir krevetėmis, 100 g Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml CATIT CUISINE tuno paštetas su sardinėmis ir daržovėmis, 95 g Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and Salmon – konservai katėms Švelnusis meniu su kalakutiena ir lašiša, 100 g Miamor Feine Filets konservai katėms, tunas krabų drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas lašišos drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, 100 g Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
- "kompozicijos_layout": "4×3 (paskutinė eilutė: 3)",
- "created": {
-  "id": 34158,
-  "sku": "RINK-VANDENYNAS-CAT-11",
-  "status": "publish",
-  "permalink": "https://dev.avesa.lt/product/vandenynas-kaciu-juros-konservu-rinkinys/",
-  "err": null
- },
- "composition_tiles": 11,
- "python_out": "/home/runner/.local/lib/python3.12/site-packages/PIL/Image.py:1137: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images\n  warnings.warn(\nOK\n",
- "composed_size": 314823,
- "media_id": 34159,
- "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-vandenynas-cat-11.jpg",
- "featured_assigned": 34159,
- "verify": {
-  "id": 34158,
-  "name": "Vandenynas — kačių jūros konservų rinkinys",
-  "sku": "RINK-VANDENYNAS-CAT-11",
-  "type": "mix-and-match",
-  "status": "publish",
-  "price": "17.99",
-  "purchasable": true,
-  "min": 11,
-  "max": 11,
-  "pool_count": 11,
-  "cats": "682:konservu-rinkiniai",
-  "images": 1,
-  "permalink": "https://dev.avesa.lt/product/vandenynas-kaciu-juros-konservu-rinkinys/"
- }
+ "aprasymo_preview": "Rinkinyje rasite (15 skardinės): Balta jaučio ausis, 1 vnt. Ruda jaučio ausis, 1 vnt. Ruda kiaulės ausis, 1 vnt. Gyvūnas visuomet turi turėti šviežio geriamo vandens.",
+ "kompozicijos_layout": "5×3",
+ "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
 }
