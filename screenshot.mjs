@@ -26,71 +26,83 @@ function api(method, path, body){
   let raw=exec(cmd);
   try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
 }
-
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
-  
-  // Bandysiu daugiau dydžių iš myshoptet (default + originalas)
-  const urls = [
-    'https://cdn.myshoptet.com/usr/www.zoo4you.cz/user/shop/big/334_konzerva-ontario-chicken-pieces-salmon-95g-default.png',
-    'https://cdn.myshoptet.com/usr/www.zoo4you.cz/user/shop/big/334_konzerva-ontario-chicken-pieces-salmon-95g-default.png?ff=1&x=1024&y=768&q=85'
-  ];
-  out.tries = {};
-  let best=null; let best_size=0;
-  for(const u of urls){
-    const f = '/tmp/im_'+Math.random().toString(36).slice(2,8);
-    exec(`curl -sk -A "${UA}" -H "Referer: https://www.zoo4you.cz/" "${u}" -o "${f}"`);
-    const sz = fs.existsSync(f) ? fs.statSync(f).size : 0;
-    out.tries[u] = sz;
-    if(sz > 5000){
-      const buf = fs.readFileSync(f);
-      const hex = buf.slice(0,4).toString('hex');
-      const isImg = hex.startsWith('ffd8') || hex.startsWith('8950') || hex === '52494646';
-      if(isImg && sz > best_size){ best=f; best_size=sz; }
-    }
+  const COMPS = [16942, 17057, 17499, 17493, 18369, 19045, 19452, 17550, 17547, 17538, 17541];
+  const tmpDir='/tmp/rinkimg_regen3'; try{ fs.mkdirSync(tmpDir,{recursive:true}); }catch(e){}
+  const dl=[];
+  for(const id of COMPS){
+    const p = api('GET','/wp-json/wc/v3/products/'+id);
+    const url = p && p.images && p.images[0] && p.images[0].src;
+    if(!url){ continue; }
+    const f = tmpDir+'/c'+id+'.jpg';
+    exec('curl -sk "'+url+'" -o "'+f+'"');
+    if(fs.existsSync(f) && fs.statSync(f).size>1000){ dl.push(f); }
   }
-  out.chosen_size = best_size;
-  if(!best){ out.fatal='no image'; commit('z4y2.json', JSON.stringify(out,null,1)); return; }
+  out.downloaded = dl.length;
+  if(dl.length !== 11){ out.fatal = 'Tikėjausi 11, gavau '+dl.length; commit('regen3.json', JSON.stringify(out,null,1)); return; }
 
   exec('python3 -c "from PIL import Image" 2>/dev/null || pip3 install --quiet --break-system-packages Pillow 2>&1');
-  // Universalus konversija - palaiko ir PNG su alpha, ir JPG
+  const composedPath = tmpDir+'/composition.jpg';
+  const tile_size = 380;
+  const gap = 30;
+  const cols = 4;
+  const rows = 3;
+  const last_row_count = 3;
+  const W = cols * tile_size + (cols - 1) * gap + 60;
+  const H = rows * tile_size + (rows - 1) * gap + 60;
   const py = `
 from PIL import Image
-im = Image.open('${best}')
-print('orig mode:', im.mode, 'size:', im.size)
-if im.mode in ('RGBA', 'LA') or (im.mode == 'P' and 'transparency' in im.info):
-    im = im.convert('RGBA')
-    bg = Image.new('RGB', im.size, (255, 255, 255))
-    bg.paste(im, mask=im.split()[3])
-    bg.save('/tmp/clean.jpg', 'JPEG', quality=92)
-else:
-    im.convert('RGB').save('/tmp/clean.jpg', 'JPEG', quality=92)
-print('OK saved')
+tile_size = ${tile_size}
+gap = ${gap}
+W, H = ${W}, ${H}
+cols = ${cols}
+rows = ${rows}
+last_row_count = ${last_row_count}
+files = ${JSON.stringify(dl)}
+canvas = Image.new('RGB', (W, H), (248, 248, 248))
+pad_x = (W - cols * tile_size - (cols - 1) * gap) // 2
+pad_y = (H - rows * tile_size - (rows - 1) * gap) // 2
+for i, f in enumerate(files):
+    img = Image.open(f).convert('RGB')
+    w, h = img.size
+    ratio = min(tile_size / w, tile_size / h)
+    nw, nh = int(w * ratio), int(h * ratio)
+    img = img.resize((nw, nh), Image.LANCZOS)
+    tile = Image.new('RGB', (tile_size, tile_size), (255, 255, 255))
+    tile.paste(img, ((tile_size - nw) // 2, (tile_size - nh) // 2))
+    row = i // cols
+    col = i % cols
+    if row == rows - 1 and last_row_count < cols:
+        row_pad_x = (W - last_row_count * tile_size - (last_row_count - 1) * gap) // 2
+        x = row_pad_x + col * (tile_size + gap)
+    else:
+        x = pad_x + col * (tile_size + gap)
+    y = pad_y + row * (tile_size + gap)
+    canvas.paste(tile, (x, y))
+canvas.save('${composedPath}', 'JPEG', quality=88)
+print('OK')
 `;
-  fs.writeFileSync('/tmp/conv.py', py);
-  out.convert = exec('python3 /tmp/conv.py 2>&1').slice(0,300);
-  if(!fs.existsSync('/tmp/clean.jpg')){ out.fatal='conversion failed'; commit('z4y2.json', JSON.stringify(out,null,1)); return; }
-  out.jpg_size = fs.statSync('/tmp/clean.jpg').size;
-  putBin('ontario_z4y_v2.jpg', fs.readFileSync('/tmp/clean.jpg'));
+  fs.writeFileSync('/tmp/compose.py', py);
+  out.python_out = exec('python3 /tmp/compose.py 2>&1').slice(0,200);
+  if(!fs.existsSync(composedPath)){ out.fatal='compose failed'; commit('regen3.json', JSON.stringify(out,null,1)); return; }
+  out.composed_size = fs.statSync(composedPath).size;
+  putBin('vand_compo_v3_preview.jpg', fs.readFileSync(composedPath));
 
-  const filename = 'ontario-chicken-salmon-95g-v3.jpg';
+  const filename = 'rink-vandenynas-cat-11-v3.jpg';
   const upCmd = `curl -sk -X POST -H "Authorization: ${AUTH}" `
     + `-H "Content-Disposition: attachment; filename=\\"${filename}\\"" `
     + `-H "Content-Type: image/jpeg" `
-    + `--data-binary @/tmp/clean.jpg `
+    + `--data-binary @"${composedPath}" `
     + `"${BASE}/wp-json/wp/v2/media"`;
   const upRaw = exec(upCmd);
   let media; try{ media = JSON.parse(upRaw); }catch(e){ media={__raw:upRaw.slice(0,300)}; }
   out.new_media_id = media && media.id;
   out.new_media_url = media && media.source_url;
-
   if(media && media.id){
-    const setImg = api('PUT','/wp-json/wc/v3/products/17057', {
-      images: [{id: media.id}]
-    });
+    const setImg = api('PUT','/wp-json/wc/v3/products/34158', { images: [{id: media.id}] });
     out.assigned = setImg && setImg.images && setImg.images[0] && setImg.images[0].id;
   }
-  commit('z4y2.json', JSON.stringify(out,null,1));
+  commit('regen3.json', JSON.stringify(out,null,1));
   console.log("DONE media="+out.new_media_id);
 })();
