@@ -1,0 +1,38 @@
+{
+ "ts": "2026-06-30T15:16:11.011Z",
+ "snippet_id": 536,
+ "probe": {
+  "product_type": "mix-and-match",
+  "has_skanestu": true,
+  "fixed_raw": "{\"16305\":5,\"16311\":5,\"19098\":5}",
+  "fixed_decoded": {
+   "16305": 5,
+   "16311": 5,
+   "19098": 5
+  },
+  "child_count": 3,
+  "component_details": [
+   {
+    "pid": 19098,
+    "qty": 5,
+    "price": 0,
+    "subtotal": 0
+   },
+   {
+    "pid": 16311,
+    "qty": 5,
+    "price": 0,
+    "subtotal": 0
+   },
+   {
+    "pid": 16305,
+    "qty": 5,
+    "price": 0,
+    "subtotal": 0
+   }
+  ],
+  "total_separate": 0,
+  "bundle_price": 18.39,
+  "hook_registered": true
+ }
+}
