@@ -1,0 +1,6 @@
+{
+ "ts": "2026-06-30T10:47:00.035Z",
+ "webp_size": 4547,
+ "convert": "EXC:Error: Command failed: python3 -c \"from PIL import Image; im=Image.open(\\\"/tmp/orig.webp\\\").convert(\\\"RGB\\\"); im.save(\\\"/tmp/new.jpg\\\", \\\"JPEG\\\", quality=92); print(im.size)\" 2>&1",
+ "fatal": "Konversija nepavyko"
+}
