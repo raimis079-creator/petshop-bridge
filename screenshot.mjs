@@ -18,19 +18,25 @@ function jget(path){
 }
 (async()=>{
   const out={ts:new Date().toISOString()};
-  // 1. pirmasis rinkinys vis dar OK?
-  const r = jget('/wp-json/wc/v3/products/34153');
-  out.rinkinys_34153 = r && r.id ? {id:r.id, name:r.name, sku:r.sku, type:r.type, status:r.status, price:r.price, qty:r.stock_quantity, min:r.mnm_min_container_size, max:r.mnm_max_container_size, pool_count:(r.mnm_child_items||[]).length, cats:(r.categories||[]).map(c=>c.id+':'+c.slug).join('|'), images:(r.images||[]).length} : 'NOT FOUND';
-  // 2. kategorijos slug'ai
-  for(const cid of [679,682,683,684]){
-    const c = jget('/wp-json/wc/v3/products/categories/'+cid);
-    out['cat_'+cid] = c && c.id ? {name:c.name, slug:c.slug, parent:c.parent, count:c.count} : c;
-  }
-  // 3. snippet 524 vis dar OK?
-  const s = jget('/wp-json/code-snippets/v1/snippets/524');
-  out.snippet_524 = s && s.id ? {id:s.id, active:s.active, name:(s.name||'').slice(0,80), code_len:(s.code||'').length} : 'NOT FOUND';
-  // 4. python+PIL ant runner'io
-  try{ execSync('python3 -c "from PIL import Image; print(Image.__version__ if hasattr(Image,\"__version__\") else \"PIL OK\")"',{encoding:'utf8'}); out.pil = 'OK'; }catch(e){ out.pil = 'NA'; }
-  commit('rinkinys_recon.json', JSON.stringify(out,null,1));
-  console.log("DONE");
+  // Animonda GranCarno paieška — visi publish su likučiu
+  const all = jget('/wp-json/wc/v3/products?search=GranCarno&per_page=50&status=publish');
+  out.found = (all||[]).filter(p=>p&&p.id).map(p=>({
+    id:p.id,
+    name:(p.name||'').slice(0,80),
+    sku:p.sku,
+    price:p.price,
+    qty:p.stock_quantity,
+    type:p.type,
+    cats:(p.categories||[]).map(c=>c.name).slice(0,2).join('|'),
+    has_image: (p.images||[]).length > 0
+  }));
+  // filtruoju 400g + publish + qty > 5 + simple
+  out.tinka_400g = out.found.filter(p =>
+    p.type === 'simple' &&
+    p.qty !== null && p.qty >= 5 &&
+    /400\s?g/i.test(p.name) &&
+    p.has_image
+  );
+  commit('animonda_search.json', JSON.stringify(out,null,1));
+  console.log("DONE found="+out.found.length+" tinka="+out.tinka_400g.length);
 })();
