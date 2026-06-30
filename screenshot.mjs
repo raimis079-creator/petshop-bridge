@@ -13,105 +13,78 @@ function commit(name, str){
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
 
-// Naudoju Code Snippets plugin'ą kaip "PHP eval" kanalą — sukuriu laikiną snippet'ą,
-// kuris ištiria MnM child_item objekto struktūrą ir DB schemą, rezultatą įrašo į option'ą,
-// kurį perskaitau per REST.
-const PROBE_CODE = `<?php
-// PROBE: MnM child item struktūra + DB lentelės
+const PROBE2 = `<?php
 add_action('init', function(){
-    if (!isset($_GET['mnm_probe']) || $_GET['mnm_probe'] !== 'go1') return;
+    if (!isset($_GET['mnm_probe2']) || $_GET['mnm_probe2'] !== 'go') return;
     global $wpdb;
     $out = array();
+    $cid = 34158; // VANDENYNAS rinkinys
 
-    // 1. Ar yra wc_mnm child items lentelė?
-    $tables = $wpdb->get_col("SHOW TABLES LIKE '%mnm%'");
-    $out['mnm_tables'] = $tables;
+    // 1. VISI post_meta rinkinio (ieškau mnm/quantity raktų)
+    $metas = $wpdb->get_results($wpdb->prepare(
+        "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d AND (meta_key LIKE '%%mnm%%' OR meta_key LIKE '%%quantit%%' OR meta_key LIKE '%%container%%')",
+        $cid
+    ), ARRAY_A);
+    $out['container_metas'] = $metas;
 
-    // 2. Paimu egzistuojantį rinkinį 34158 (11 konservų) ir žiūriu jo child items
-    if (function_exists('wc_get_product')) {
-        $p = wc_get_product(34158);
-        if ($p && method_exists($p, 'get_child_items')) {
+    // 2. WC_MNM_Child_Item->get_quantity() šaltinis - žiūriu, ar jis ima iš container settings
+    $p = wc_get_product($cid);
+    if ($p) {
+        // MnM produktai turi get_min_container_size / get_max_container_size
+        foreach (array('get_min_container_size','get_max_container_size','get_container_size') as $m) {
+            if (method_exists($p, $m)) $out['product_'.$m] = $p->$m();
+        }
+        // Ar yra child_quantities meta?
+        $out['meta_child_item_quantities'] = get_post_meta($cid, '_mnm_child_item_quantities', true);
+        $out['meta_mnm_data'] = get_post_meta($cid, '_mnm_data', true);
+        // get_child_items su quantity
+        if (method_exists($p, 'get_child_items')) {
             $items = $p->get_child_items();
-            $out['child_count'] = count($items);
-            $sample = array();
             $first = reset($items);
             if ($first) {
-                // Visi viešieji metodai
-                $methods = get_class_methods($first);
-                $out['child_item_methods'] = array_values(array_filter($methods, function($m){
-                    return strpos($m, 'get_') === 0 || strpos($m, 'set_') === 0;
-                }));
-                $out['child_item_class'] = get_class($first);
-                // Bandau iškviesti kiekio metodus
-                foreach (array('get_quantity','get_quantity_min','get_quantity_max','get_quantity_default') as $meth) {
-                    if (method_exists($first, $meth)) {
-                        $out['sample_'.$meth] = $first->$meth();
-                    }
+                // get_quantity priima min/max kaip parametrą?
+                $rc = new ReflectionMethod($first, 'get_quantity');
+                $params = array();
+                foreach ($rc->getParameters() as $param) {
+                    $params[] = $param->getName() . ($param->isOptional() ? '='.json_encode($param->getDefaultValue()) : '');
                 }
-                $out['sample_child_id'] = method_exists($first,'get_id') ? $first->get_id() : '?';
-                $out['sample_product_id'] = ($first->get_product()) ? $first->get_product()->get_id() : '?';
+                $out['get_quantity_signature'] = $params;
+                // Bandau su 'min', 'max'
+                foreach (array('min','max','default') as $ctx) {
+                    try { $out['get_quantity_'.$ctx] = $first->get_quantity($ctx); } catch(Exception $e) { $out['get_quantity_'.$ctx] = 'ERR:'.$e->getMessage(); }
+                }
+                // child item meta data
+                $out['first_child_meta'] = $first->get_meta_data();
             }
         }
     }
 
-    // 3. Ar yra child items DB lentelė su quantity stulpeliais?
-    foreach ($tables as $t) {
-        $cols = $wpdb->get_results("SHOW COLUMNS FROM $t", ARRAY_A);
-        $out['columns_'.$t] = array_map(function($c){ return $c['Field']; }, $cols);
-        // Pirma eilute pavyzdys is 34158
-        $rows = $wpdb->get_results("SELECT * FROM $t LIMIT 3", ARRAY_A);
-        $out['sample_rows_'.$t] = $rows;
-    }
+    // 3. Plugin'o versija + ar yra "per item quantities" funkcionalumas
+    if (defined('WC_Mix_and_Match::VERSION')) $out['mnm_version'] = WC_Mix_and_Match::VERSION;
+    $out['mnm_const'] = defined('WC_MNM_VERSION') ? WC_MNM_VERSION : 'n/a';
 
-    update_option('mnm_probe_result', wp_json_encode($out));
-    wp_die('PROBE DONE');
+    update_option('mnm_probe2_result', wp_json_encode($out));
+    wp_die('PROBE2 DONE');
 });
-`;
-
-(async()=>{
-  const out={ts:new Date().toISOString()};
-  // Sukuriu probe snippet'ą
-  let cmd='curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({
-    name:'TEMP MnM Probe', code: PROBE_CODE, desc:'temp', scope:'global', active:true
-  }));
-  cmd += ' -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"';
-  let raw = exec(cmd);
-  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={__raw:raw.slice(0,300)}; }
-  out.snippet_id = snip && snip.id;
-
-  // Trigerinu probe per GET
-  await new Promise(r=>setTimeout(r,2000));
-  exec('curl -sk "'+BASE+'/?mnm_probe=go1" -o /dev/null');
-  await new Promise(r=>setTimeout(r,2000));
-
-  // Perskaitau rezultatą per options REST (jei yra) - bandau per snippet'o eval alternatyvą:
-  // sukuriu antrą snippet'ą kuris grąžina option per REST... arba paprasčiau - per wp/v2 settings nepasieks.
-  // Naudoju kitą būdą: probe įrašė į option, skaitau per dar vieną GET endpoint'ą
-  const READER = `<?php
 add_action('init', function(){
-    if (!isset($_GET['mnm_read']) || $_GET['mnm_read'] !== 'go1') return;
+    if (!isset($_GET['mnm_read2']) || $_GET['mnm_read2'] !== 'go') return;
     header('Content-Type: application/json');
-    echo get_option('mnm_probe_result', '{}');
+    echo get_option('mnm_probe2_result', '{}');
     exit;
 });
 `;
-  fs.writeFileSync('/tmp/snip2.json', JSON.stringify({
-    name:'TEMP MnM Reader', code: READER, desc:'temp', scope:'global', active:true
-  }));
-  let cmd2='curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip2.json "'+BASE+'/wp-json/code-snippets/v1/snippets"';
-  let raw2 = exec(cmd2);
-  let snip2; try{ snip2=JSON.parse(raw2); }catch(e){ snip2={}; }
-  out.reader_id = snip2 && snip2.id;
+(async()=>{
+  const out={ts:new Date().toISOString()};
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Probe2', code: PROBE2, desc:'temp', scope:'global', active:true}));
+  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
+  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
+  out.snippet_id = snip && snip.id;
   await new Promise(r=>setTimeout(r,2000));
-
-  const probeResult = exec('curl -sk "'+BASE+'/?mnm_read=go1"');
-  try{ out.probe = JSON.parse(probeResult); }catch(e){ out.probe_raw = probeResult.slice(0,2000); }
-
-  // Išvalau temp snippet'us
+  exec('curl -sk "'+BASE+'/?mnm_probe2=go" -o /dev/null');
+  await new Promise(r=>setTimeout(r,2000));
+  const res = exec('curl -sk "'+BASE+'/?mnm_read2=go"');
+  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2500); }
   if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  if(out.reader_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.reader_id+'"');
-
-  commit('mnm_probe.json', JSON.stringify(out,null,1));
+  commit('mnm_probe2.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
