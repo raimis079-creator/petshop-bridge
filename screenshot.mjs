@@ -13,78 +13,67 @@ function commit(name, str){
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
 
-const PROBE2 = `<?php
+// Ieskau MnM source faile filtrų, susijusių su child item quantity
+const PROBE3 = `<?php
 add_action('init', function(){
-    if (!isset($_GET['mnm_probe2']) || $_GET['mnm_probe2'] !== 'go') return;
-    global $wpdb;
+    if (!isset($_GET['mnm_probe3']) || $_GET['mnm_probe3'] !== 'go') return;
     $out = array();
-    $cid = 34158; // VANDENYNAS rinkinys
+    // Surandu MnM plugin'o kelią
+    $plugin_dir = WP_PLUGIN_DIR . '/woocommerce-mix-and-match-products';
+    if (!is_dir($plugin_dir)) {
+        // bandau kitus pavadinimus
+        foreach (glob(WP_PLUGIN_DIR.'/*mix-and-match*', GLOB_ONLYDIR) as $d) { $plugin_dir = $d; break; }
+    }
+    $out['plugin_dir'] = $plugin_dir;
 
-    // 1. VISI post_meta rinkinio (ieškau mnm/quantity raktų)
-    $metas = $wpdb->get_results($wpdb->prepare(
-        "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d AND (meta_key LIKE '%%mnm%%' OR meta_key LIKE '%%quantit%%' OR meta_key LIKE '%%container%%')",
-        $cid
-    ), ARRAY_A);
-    $out['container_metas'] = $metas;
-
-    // 2. WC_MNM_Child_Item->get_quantity() šaltinis - žiūriu, ar jis ima iš container settings
-    $p = wc_get_product($cid);
-    if ($p) {
-        // MnM produktai turi get_min_container_size / get_max_container_size
-        foreach (array('get_min_container_size','get_max_container_size','get_container_size') as $m) {
-            if (method_exists($p, $m)) $out['product_'.$m] = $p->$m();
-        }
-        // Ar yra child_quantities meta?
-        $out['meta_child_item_quantities'] = get_post_meta($cid, '_mnm_child_item_quantities', true);
-        $out['meta_mnm_data'] = get_post_meta($cid, '_mnm_data', true);
-        // get_child_items su quantity
-        if (method_exists($p, 'get_child_items')) {
-            $items = $p->get_child_items();
-            $first = reset($items);
-            if ($first) {
-                // get_quantity priima min/max kaip parametrą?
-                $rc = new ReflectionMethod($first, 'get_quantity');
-                $params = array();
-                foreach ($rc->getParameters() as $param) {
-                    $params[] = $param->getName() . ($param->isOptional() ? '='.json_encode($param->getDefaultValue()) : '');
-                }
-                $out['get_quantity_signature'] = $params;
-                // Bandau su 'min', 'max'
-                foreach (array('min','max','default') as $ctx) {
-                    try { $out['get_quantity_'.$ctx] = $first->get_quantity($ctx); } catch(Exception $e) { $out['get_quantity_'.$ctx] = 'ERR:'.$e->getMessage(); }
-                }
-                // child item meta data
-                $out['first_child_meta'] = $first->get_meta_data();
+    // grep'inu filtrus su 'quantity' child item kontekste
+    $hits = array();
+    $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($plugin_dir));
+    foreach ($rii as $file) {
+        if ($file->isDir()) continue;
+        if (substr($file->getFilename(), -4) !== '.php') continue;
+        $content = file_get_contents($file->getPathname());
+        // Ieškau apply_filters su quantity
+        if (preg_match_all('/apply_filters\\(\\s*[\\'\"]([^\\'\"]*quantity[^\\'\"]*)[\\'\"]/i', $content, $m)) {
+            foreach ($m[1] as $filter) {
+                $hits[$filter] = basename($file->getFilename());
             }
         }
     }
+    $out['quantity_filters'] = $hits;
 
-    // 3. Plugin'o versija + ar yra "per item quantities" funkcionalumas
-    if (defined('WC_Mix_and_Match::VERSION')) $out['mnm_version'] = WC_Mix_and_Match::VERSION;
-    $out['mnm_const'] = defined('WC_MNM_VERSION') ? WC_MNM_VERSION : 'n/a';
+    // Taip pat ieškau child item get_quantity metodo implementacijos
+    $child_item_file = $plugin_dir . '/includes/data/class-wc-mnm-child-item.php';
+    if (file_exists($child_item_file)) {
+        $content = file_get_contents($child_item_file);
+        // Ištraukiu get_quantity funkciją
+        if (preg_match('/function get_quantity\\([^)]*\\)\\s*\\{(.*?)\\n\\t\\}/s', $content, $m)) {
+            $out['get_quantity_body'] = substr(trim($m[1]), 0, 800);
+        }
+    }
 
-    update_option('mnm_probe2_result', wp_json_encode($out));
-    wp_die('PROBE2 DONE');
+    update_option('mnm_probe3_result', wp_json_encode($out));
+    wp_die('PROBE3 DONE');
 });
 add_action('init', function(){
-    if (!isset($_GET['mnm_read2']) || $_GET['mnm_read2'] !== 'go') return;
+    if (!isset($_GET['mnm_read3']) || $_GET['mnm_read3'] !== 'go') return;
     header('Content-Type: application/json');
-    echo get_option('mnm_probe2_result', '{}');
+    echo get_option('mnm_probe3_result', '{}');
     exit;
 });
 `;
 (async()=>{
   const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Probe2', code: PROBE2, desc:'temp', scope:'global', active:true}));
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP Probe3', code: PROBE3, desc:'temp', scope:'global', active:true}));
   let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
   let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
   out.snippet_id = snip && snip.id;
   await new Promise(r=>setTimeout(r,2000));
-  exec('curl -sk "'+BASE+'/?mnm_probe2=go" -o /dev/null');
+  exec('curl -sk "'+BASE+'/?mnm_probe3=go" -o /dev/null');
   await new Promise(r=>setTimeout(r,2000));
-  const res = exec('curl -sk "'+BASE+'/?mnm_read2=go"');
+  const res = exec('curl -sk "'+BASE+'/?mnm_read3=go"');
   try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2500); }
   if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('mnm_probe2.json', JSON.stringify(out,null,1));
+  commit('mnm_probe3.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
