@@ -12,73 +12,51 @@ function commit(name, str){
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
-function api(method, path, body){
-  let cmd='curl -sk -X '+method+' -H "Authorization: '+AUTH+'" -H "Content-Type: application/json"';
-  if(body!==undefined){ fs.writeFileSync('/tmp/b.json', JSON.stringify(body)); cmd+=' -d @/tmp/b.json'; }
-  cmd+=' "'+BASE+path+'"';
-  let raw=exec(cmd);
-  try{ return JSON.parse(raw); }catch(e){ return {__raw:raw.slice(0,400)}; }
-}
 
-const SNIPPET_530 = `<?php
-// Petshop MnM Fiksuoti komponentų kiekiai v1
-// Skaito rinkinio meta '_petshop_component_quantities' (JSON {product_id: kiekis})
-// ir nustato kiekvienam komponentui min = max = kiekis.
-// Kai min===max, MnM automatiškai užfiksuoja kiekį (required) ir rodo "×N" žymeklį.
-
-// Helper: gauti fiksuotų kiekių masyvą rinkiniui
-function petshop_get_fixed_quantities($container_id) {
-    $raw = get_post_meta($container_id, '_petshop_component_quantities', true);
-    if (empty($raw)) return array();
-    $decoded = json_decode($raw, true);
-    return is_array($decoded) ? $decoded : array();
-}
-
-// === Filtras: nustatom kiekvieno komponento min/max/default kiekį ===
-add_filter('wc_mnm_child_item_quantity', function($quantity, $type, $child_item) {
-    if (!$child_item) return $quantity;
-    $container_id = $child_item->get_container_id();
-    $product = $child_item->get_product();
-    if (!$product) return $quantity;
-    $pid = $product->get_id();
-
-    $fixed = petshop_get_fixed_quantities($container_id);
-    if (empty($fixed) || !isset($fixed[$pid])) return $quantity;
-
-    $fixed_qty = (int) $fixed[$pid];
-    if ($fixed_qty < 1) return $quantity;
-
-    // min = max = value = default = fiksuotas kiekis
-    switch ($type) {
-        case 'min':
-        case 'max':
-        case 'value':
-        case 'default':
-            return $fixed_qty;
-        case 'step':
-            return 1;
+// Patikrinu tikslų get_quantity body + ar wc_mnm_child_item_quantity filtras egzistuoja
+const PROBE6 = `<?php
+add_action('init', function(){
+    if (!isset($_GET['mnm_p6']) || $_GET['mnm_p6'] !== 'go') return;
+    $out = array();
+    $f = '/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woocommerce-mix-and-match-products/includes/data/class-wc-mnm-child-item.php';
+    $content = file_get_contents($f);
+    // Surandu "public function get_quantity"
+    $pos = strpos($content, 'function get_quantity');
+    $out['found_pos'] = $pos;
+    if ($pos !== false) {
+        // Imu nuo pos iki kitos "public function" arba 2000 simboliu
+        $chunk = substr($content, $pos, 2000);
+        $next = strpos($chunk, 'public function', 20);
+        $out['get_quantity_body'] = $next ? substr($chunk, 0, $next) : $chunk;
     }
-    return $quantity;
-}, 10, 3);
-
-// === Saugiklis: container validacija (jei kažkas apeitų UI) ===
-// Patikrinam, kad cart'e kiekvieno komponento kiekis = fiksuotas
-add_filter('woocommerce_add_to_cart_validation', function($passed, $product_id, $quantity, $variation_id = 0, $cart_item_data = array()) {
-    // MnM container validacija jau vyksta plugin'e; čia tik papildomas saugiklis
-    // Jei reikės - galima pridėti tikslesnę logiką. Kol kas paliekam MnM built-in.
-    return $passed;
-}, 10, 5);
+    // Ar yra string 'wc_mnm_child_item_quantity' faile?
+    $out['has_filter_string'] = strpos($content, 'wc_mnm_child_item_quantity') !== false;
+    // Visi 'wc_mnm_child_item_quantity*' paminejimai
+    if (preg_match_all('/wc_mnm_child_item_quantity[a-z_]*/', $content, $m)) {
+        $out['quantity_strings'] = array_unique($m[0]);
+    }
+    update_option('mnm_p6_result', wp_json_encode($out));
+    wp_die('DONE');
+});
+add_action('init', function(){
+    if (!isset($_GET['mnm_r6']) || $_GET['mnm_r6'] !== 'go') return;
+    header('Content-Type: application/json');
+    echo get_option('mnm_p6_result', '{}');
+    exit;
+});
 `;
-
 (async()=>{
   const out={ts:new Date().toISOString()};
-  const cr = api('POST','/wp-json/code-snippets/v1/snippets', {
-    name:'Petshop MnM Fiksuoti komponentų kiekiai v1',
-    code: SNIPPET_530,
-    desc:'Skaito rinkinio _petshop_component_quantities meta ir nustato kiekvienam komponentui min=max=kiekis (fiksuoja, rodo ×N)',
-    scope: 'global', active: true
-  });
-  out.created = cr && cr.id ? {id:cr.id, active:cr.active, name:cr.name} : (cr.__raw||cr.code||'?');
-  commit('snippet530.json', JSON.stringify(out,null,1));
-  console.log("DONE id="+(cr&&cr.id));
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP P6', code: PROBE6, desc:'temp', scope:'global', active:true}));
+  let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
+  let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
+  out.snippet_id = snip && snip.id;
+  await new Promise(r=>setTimeout(r,2500));
+  exec('curl -sk "'+BASE+'/?mnm_p6=go" -o /dev/null');
+  await new Promise(r=>setTimeout(r,2500));
+  const res = exec('curl -sk "'+BASE+'/?mnm_r6=go"');
+  try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2500); }
+  if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
+  commit('mnm_p6.json', JSON.stringify(out,null,1));
+  console.log("DONE");
 })();
