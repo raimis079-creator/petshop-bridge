@@ -10,11 +10,16 @@ function putBin(name,buf){
 }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,200); } }
 (async()=>{
-  // parsisiunčiu kompozicijos JPG nuotrauką ir įkeliu į GitHub
-  exec('curl -sk "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-vandenynas-cat-11.jpg" -o /tmp/compo.jpg');
-  const stat = fs.existsSync('/tmp/compo.jpg') ? fs.statSync('/tmp/compo.jpg').size : 0;
-  console.log("size:", stat);
+  // 1. parsisiunčiu webp + konvertuoju į jpg per Pillow (kad būtų matomas patikrinimui)
+  exec('curl -sk -A "Mozilla/5.0" "https://ontario.pet/en/wp-content/uploads/213-2002.webp" -o /tmp/orig.webp');
+  const stat = fs.existsSync('/tmp/orig.webp') ? fs.statSync('/tmp/orig.webp').size : 0;
+  console.log("webp size:", stat);
   if(stat > 1000){
-    putBin('vand_compo_only.jpg', fs.readFileSync('/tmp/compo.jpg'));
+    exec('python3 -c "from PIL import Image; im=Image.open(\\"/tmp/orig.webp\\").convert(\\"RGB\\"); im.save(\\"/tmp/preview.jpg\\", \\"JPEG\\", quality=92)"');
+    if(fs.existsSync('/tmp/preview.jpg')){
+      const sz = fs.statSync('/tmp/preview.jpg').size;
+      console.log("jpg size:", sz);
+      putBin('ontario_new_image.jpg', fs.readFileSync('/tmp/preview.jpg'));
+    }
   }
 })();
