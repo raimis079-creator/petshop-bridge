@@ -30,44 +30,50 @@ function api(method, path, body){
 (async()=>{
   const out={ts:new Date().toISOString()};
   const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
-  const URL = 'https://cdn.myshoptet.com/usr/www.zoo4you.cz/user/shop/big/334_konzerva-ontario-chicken-pieces-salmon-95g-default.png';
-  exec(`curl -sk -A "${UA}" -H "Referer: https://www.zoo4you.cz/" "${URL}" -o /tmp/png.png`);
-  out.size = fs.existsSync('/tmp/png.png') ? fs.statSync('/tmp/png.png').size : 0;
-  if(out.size < 1000){ out.fatal='download failed'; commit('z4y.json', JSON.stringify(out,null,1)); return; }
   
-  // Patikrinu hex prefix - ar tikrai PNG
-  const buf = fs.readFileSync('/tmp/png.png');
-  out.hex = buf.slice(0,8).toString('hex');
-  out.is_png = out.hex.startsWith('89504e47');
-
-  if(!out.is_png){ out.fatal='not PNG'; commit('z4y.json', JSON.stringify(out,null,1)); return; }
+  // Bandysiu daugiau dydžių iš myshoptet (default + originalas)
+  const urls = [
+    'https://cdn.myshoptet.com/usr/www.zoo4you.cz/user/shop/big/334_konzerva-ontario-chicken-pieces-salmon-95g-default.png',
+    'https://cdn.myshoptet.com/usr/www.zoo4you.cz/user/shop/big/334_konzerva-ontario-chicken-pieces-salmon-95g-default.png?ff=1&x=1024&y=768&q=85'
+  ];
+  out.tries = {};
+  let best=null; let best_size=0;
+  for(const u of urls){
+    const f = '/tmp/im_'+Math.random().toString(36).slice(2,8);
+    exec(`curl -sk -A "${UA}" -H "Referer: https://www.zoo4you.cz/" "${u}" -o "${f}"`);
+    const sz = fs.existsSync(f) ? fs.statSync(f).size : 0;
+    out.tries[u] = sz;
+    if(sz > 5000){
+      const buf = fs.readFileSync(f);
+      const hex = buf.slice(0,4).toString('hex');
+      const isImg = hex.startsWith('ffd8') || hex.startsWith('8950') || hex === '52494646';
+      if(isImg && sz > best_size){ best=f; best_size=sz; }
+    }
+  }
+  out.chosen_size = best_size;
+  if(!best){ out.fatal='no image'; commit('z4y2.json', JSON.stringify(out,null,1)); return; }
 
   exec('python3 -c "from PIL import Image" 2>/dev/null || pip3 install --quiet --break-system-packages Pillow 2>&1');
-  // KRITIŠKAI: jei PNG turi alfa kanalą, RGBA→RGB su BALTU fonu (ne juodu)
+  // Universalus konversija - palaiko ir PNG su alpha, ir JPG
   const py = `
 from PIL import Image
-im = Image.open('/tmp/png.png')
+im = Image.open('${best}')
 print('orig mode:', im.mode, 'size:', im.size)
-if im.mode in ('RGBA', 'LA', 'P'):
-    # konvertuoju į RGBA jei dar ne
+if im.mode in ('RGBA', 'LA') or (im.mode == 'P' and 'transparency' in im.info):
     im = im.convert('RGBA')
-    # padaru baltą foną
     bg = Image.new('RGB', im.size, (255, 255, 255))
-    bg.paste(im, mask=im.split()[3])  # alfa kanalas kaip maska
+    bg.paste(im, mask=im.split()[3])
     bg.save('/tmp/clean.jpg', 'JPEG', quality=92)
 else:
     im.convert('RGB').save('/tmp/clean.jpg', 'JPEG', quality=92)
-print('OK')
+print('OK saved')
 `;
   fs.writeFileSync('/tmp/conv.py', py);
   out.convert = exec('python3 /tmp/conv.py 2>&1').slice(0,300);
-  if(!fs.existsSync('/tmp/clean.jpg')){ out.fatal='conversion failed'; commit('z4y.json', JSON.stringify(out,null,1)); return; }
+  if(!fs.existsSync('/tmp/clean.jpg')){ out.fatal='conversion failed'; commit('z4y2.json', JSON.stringify(out,null,1)); return; }
   out.jpg_size = fs.statSync('/tmp/clean.jpg').size;
+  putBin('ontario_z4y_v2.jpg', fs.readFileSync('/tmp/clean.jpg'));
 
-  // Įkeliu preview
-  putBin('ontario_z4y_preview.jpg', fs.readFileSync('/tmp/clean.jpg'));
-
-  // Upload kaip media
   const filename = 'ontario-chicken-salmon-95g-v3.jpg';
   const upCmd = `curl -sk -X POST -H "Authorization: ${AUTH}" `
     + `-H "Content-Disposition: attachment; filename=\\"${filename}\\"" `
@@ -79,14 +85,12 @@ print('OK')
   out.new_media_id = media && media.id;
   out.new_media_url = media && media.source_url;
 
-  // Priskirti komponentui 17057
   if(media && media.id){
     const setImg = api('PUT','/wp-json/wc/v3/products/17057', {
       images: [{id: media.id}]
     });
     out.assigned = setImg && setImg.images && setImg.images[0] && setImg.images[0].id;
   }
-
-  commit('z4y.json', JSON.stringify(out,null,1));
+  commit('z4y2.json', JSON.stringify(out,null,1));
   console.log("DONE media="+out.new_media_id);
 })();
