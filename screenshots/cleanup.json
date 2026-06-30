@@ -1,22 +1,17 @@
 {
- "ts": "2026-06-29T19:10:56.192Z",
- "actions": {
-  "del_34140": "deleted 34140",
-  "del_34141_order": "deleted 34141",
-  "del_34148": "deleted 34148",
-  "del_34149": "woocommerce_rest_product_invalid_id",
-  "del_34150": "woocommerce_rest_product_invalid_id",
-  "del_34151": "woocommerce_rest_product_invalid_id",
-  "del_34143": "woocommerce_rest_product_invalid_id",
-  "del_34144": "woocommerce_rest_product_invalid_id",
-  "del_34145": "woocommerce_rest_product_invalid_id",
-  "del_34146": "woocommerce_rest_product_invalid_id",
-  "plugin_deactivate": "?",
-  "plugin_delete": "{\"__pe\":true,\"raw\":\"<!DOCTYPE html><html lang=\\\"en\\\"><head><meta charset=\\\"UTF-8",
-  "snippet_519": "rest_cannot_delete",
-  "snippet_521": "rest_cannot_delete"
- },
- "var_plugin_still": true,
- "plugin_count": 26,
- "test_products_remaining": []
+ "ts": "2026-06-30T21:49:17.649Z",
+ "deleted": [
+  {
+   "id": 34180,
+   "result": "OK"
+  },
+  {
+   "id": 34181,
+   "result": "OK"
+  },
+  {
+   "id": 34182,
+   "result": "OK"
+  }
+ ]
 }
