@@ -1,6 +1,6 @@
 {
- "ts": "2026-06-30T16:11:00.495Z",
- "mode": "dry",
+ "ts": "2026-06-30T16:12:13.470Z",
+ "mode": "apply",
  "receptas": {
   "pavadinimas": "Churu kreminių skanėstų rinkinys katėms · 9 vnt.",
   "sku": "RINK-CHURU-9",
@@ -77,5 +77,32 @@
  },
  "aprasymo_preview": "Rinkinyje rasite (9 vnt.): Churu kreminis skanėstas katėms su tunu ir krabu, 56g N4 Churu Rolls skanėstas katėms su vištiena ir tunu, lazdelės, 4 vnt. 3 × Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt 4 × Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4vnt",
  "kompozicijos_layout": "2×2",
- "dry_run_status": "OK — receptas validus, bet WP NEpakeistas. Pakeisti MODE = \"apply\" ir paleisti dar kartą, jei viskas tinka."
+ "created": {
+  "id": 34170,
+  "sku": "RINK-CHURU-9",
+  "status": "publish",
+  "permalink": "https://dev.avesa.lt/product/churu-kreminiu-skanestu-rinkinys-katems-%c2%b7-9-vnt/",
+  "err": null
+ },
+ "composition_tiles": 4,
+ "python_out": "OK\n",
+ "composed_size": 135977,
+ "media_id": 34171,
+ "media_url": "https://dev.avesa.lt/wp-content/uploads/2026/06/rink-churu-9.jpg",
+ "featured_assigned": 34171,
+ "verify": {
+  "id": 34170,
+  "name": "Churu kreminių skanėstų rinkinys katėms · 9 vnt.",
+  "sku": "RINK-CHURU-9",
+  "type": "mix-and-match",
+  "status": "publish",
+  "price": "21.99",
+  "purchasable": true,
+  "min": 9,
+  "max": 9,
+  "pool_count": 4,
+  "cats": "683:skanestu-rinkiniai",
+  "images": 1,
+  "permalink": "https://dev.avesa.lt/product/churu-kreminiu-skanestu-rinkinys-katems-%c2%b7-9-vnt/"
+ }
 }
