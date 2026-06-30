@@ -1,0 +1,62 @@
+{
+ "ts": "2026-06-30T20:26:49.404Z",
+ "snippet_id": 543,
+ "probe": {
+  "type": "mix-and-match",
+  "sku": "Rink-skanestai-kojos",
+  "price": "20.29",
+  "min": 14,
+  "max": 14,
+  "petshop_quantities": "{\"19092\":5,\"16298\":5,\"16317\":2,\"19104\":2}",
+  "mnm_content_source": "products",
+  "mnm_per_product_pricing": "no",
+  "children": [
+   {
+    "id": 19092,
+    "name": "Balta stirnos koja, 1 vnt.",
+    "stock": 60
+   },
+   {
+    "id": 16298,
+    "name": "Ruda stirnos koja, 1 vnt.",
+    "stock": 20
+   },
+   {
+    "id": 16317,
+    "name": "Ruda avies koja, 1 vnt.",
+    "stock": 51
+   },
+   {
+    "id": 19104,
+    "name": "Balta avies koja, 1 vnt.",
+    "stock": 76
+   }
+  ],
+  "db_child_rows": [
+   {
+    "child_item_id": "47",
+    "product_id": "19092",
+    "container_id": "34175",
+    "menu_order": "1"
+   },
+   {
+    "child_item_id": "48",
+    "product_id": "16298",
+    "container_id": "34175",
+    "menu_order": "2"
+   },
+   {
+    "child_item_id": "49",
+    "product_id": "16317",
+    "container_id": "34175",
+    "menu_order": "3"
+   },
+   {
+    "child_item_id": "50",
+    "product_id": "19104",
+    "container_id": "34175",
+    "menu_order": "4"
+   }
+  ]
+ }
+}
