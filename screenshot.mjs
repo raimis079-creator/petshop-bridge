@@ -10,23 +10,35 @@ function commit(name, str){ const url='https://api.github.com/repos/'+repo+'/con
   await page.goto('https://dev.avesa.lt/product/susirink-konservu-rinkini-sunims-pats/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:50000}).catch(()=>{});
   await page.waitForTimeout(8000);
   const probe = await page.evaluate(()=>{
-    var bodyText = document.body.textContent;
-    // Suskaičiuoju likusius angliškus visose formose (matomose+paslėptose)
-    var engCount = 0, engSamples = [];
-    document.querySelectorAll('.psc-form').forEach(function(f){
-      var t = f.textContent;
-      if(t.includes('Please select')){ engCount++; }
-      if(/\bProduct\b/.test(t)) engSamples.push('Product th');
-    });
-    return {
-      has_please_select_en: bodyText.includes('Please select'),
-      has_you_have_selected_en: bodyText.includes('You have selected'),
-      has_items_en: /\d+ items/.test(bodyText),
-      forms_with_english: engCount,
-      still_has_product_th: engSamples.length
-    };
+    // Randu KUR yra "Please select" - ar matomame elemente, ar script/template
+    var locations = [];
+    function walk(node){
+      if(node.nodeType===3){ // text node
+        if(node.textContent.includes('Please select')){
+          var parent = node.parentElement;
+          var inScript = false, el = parent;
+          while(el){ if(el.tagName==='SCRIPT'||el.tagName==='TEMPLATE'){inScript=true;break;} el=el.parentElement; }
+          // Ar matomas?
+          var visible = false;
+          if(parent){
+            var rect = parent.getBoundingClientRect();
+            var st = window.getComputedStyle(parent);
+            visible = st.display!=='none' && st.visibility!=='hidden' && rect.width>0 && rect.height>0;
+          }
+          locations.push({
+            parentTag: parent?.tagName,
+            parentClass: (parent?.className||'').slice(0,40),
+            inScriptOrTemplate: inScript,
+            visible: visible
+          });
+        }
+      }
+      for(var i=0;i<node.childNodes.length;i++) walk(node.childNodes[i]);
+    }
+    walk(document.body);
+    return {locations: locations.slice(0,8), total: locations.length};
   });
-  commit('v9_check.json', JSON.stringify(probe,null,1));
-  console.log(JSON.stringify(probe));
+  commit('please_loc.json', JSON.stringify(probe,null,1));
+  console.log(JSON.stringify(probe).slice(0,700));
   await ctx.close(); await browser.close();
 })();
