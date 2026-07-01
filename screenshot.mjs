@@ -1,14 +1,33 @@
-import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
+import { execSync } from "child_process";
+import fs from "fs";
 const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'fixslash',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }
+function commitB64(name,b64){
+  const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
+  let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
+  const body={message:'verify2',branch:'main',content:b64}; if(sha) body.sha=sha;
+  fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
+  execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
+}
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+e.message; } }
-const code=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2ZpeDM0MjA3J10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogICRhcHBseSA9ICgoJF9HRVRbJ2NvbmZpcm0nXSA/PyAnJykgPT09ICdUQUlQJyk7CiAgJHBpZCA9IDM0MjA3OwogIHdwX2NhY2hlX2RlbGV0ZSgkcGlkLCdwb3N0X21ldGEnKTsKICAkb3V0ID0gWydhcHBseSc9PiRhcHBseSwncGFyZW50Jz0+JHBpZF07CiAgJGNmZyA9IGpzb25fZGVjb2RlKGdldF9wb3N0X21ldGEoJHBpZCwnX3BldHNob3BfY2hvaWNlX2NvbmZpZycsdHJ1ZSksIHRydWUpOwogIGlmICghaXNfYXJyYXkoJGNmZykgfHwgIWlzc2V0KCRjZmdbJ2JlX2dydWR1J10pKSB7ICRvdXRbJ2Vycm9yJ109J2JlX2dydWR1IG5lcmFzdGFzJzsgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsgfQogICRvdXRbJ2xhYmVsX2JlZm9yZSddID0gJGNmZ1snYmVfZ3J1ZHUnXVsnbGFiZWwnXTsKICBpZiAoJGFwcGx5KSB7CiAgICAkY2ZnWydiZV9ncnVkdSddWydsYWJlbCddID0gJ0JlIGdyxatkxbMnOwogICAgLy8gS1JJVElOSVM6IHdwX3NsYXNoIHByaWXFoSB1cGRhdGVfcG9zdF9tZXRhIChrYWQgd3BfdW5zbGFzaCBuZXN1Z2FkaW50xbMgXHUgZXNjYXBlJ8WzKQogICAgdXBkYXRlX3Bvc3RfbWV0YSgkcGlkLCdfcGV0c2hvcF9jaG9pY2VfY29uZmlnJywgd3Bfc2xhc2god3BfanNvbl9lbmNvZGUoJGNmZykpKTsKICAgIHdwX2NhY2hlX2RlbGV0ZSgkcGlkLCdwb3N0X21ldGEnKTsKICAgICRyZXJlYWQgPSBqc29uX2RlY29kZShnZXRfcG9zdF9tZXRhKCRwaWQsJ19wZXRzaG9wX2Nob2ljZV9jb25maWcnLHRydWUpLCB0cnVlKTsKICAgICRvdXRbJ2xhYmVsX2FmdGVyX3JlYWRiYWNrJ10gPSAkcmVyZWFkWydiZV9ncnVkdSddWydsYWJlbCddID8/ICcobm9uZSknOwogIH0KICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC FIX34207 slash', code:code, scope:'global', active:true}));
-  exec('curl -sk -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk "'+BASE+'/?psc_fix34207=1&k=ps2026&confirm=TAIP"');
-  var m=r.match(/(\{.*\})/s); commit('fix34207_slash.json', m?m[0]:r.slice(0,500)); console.log(m?m[0]:r.slice(0,300));
+  // resolve permalink then fetch with -L
+  var html = exec('curl -skL "'+BASE+'/?p=34207"');
+  var labels=[]; var re=/psc-group-btn[^>]*>\s*<span class="psc-btn-big">([^<]+)<\/span>/g, mm;
+  while((mm=re.exec(html))!==null){ labels.push(mm[1].trim()); }
+  var res={final_url_len:html.length, group_labels:labels, has_garbage: html.indexOf('016bdu0173')>=0, has_begrudu: html.indexOf('Be grūdų')>=0};
+  commitB64('verify34207.json', Buffer.from(JSON.stringify(res),'utf8').toString('base64'));
+  console.log(JSON.stringify(res));
+  try{
+    const { chromium } = await import('playwright');
+    const browser = await chromium.launch({args:['--no-sandbox']});
+    const ctx = await browser.newContext({ ignoreHTTPSErrors:true, viewport:{width:1300,height:980} });
+    const page = await ctx.newPage();
+    await page.goto(BASE+'/?p=34207',{waitUntil:'domcontentloaded'});
+    await page.waitForTimeout(4000);
+    const buf = await page.screenshot({fullPage:false});
+    commitB64('verify34207.png', buf.toString('base64'));
+    await browser.close();
+    console.log('shot OK bytes='+buf.length);
+  }catch(e){ console.log('shot EXC:'+e.message); }
 })();
