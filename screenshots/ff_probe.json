@@ -1,0 +1,178 @@
+{
+ "ts": "2026-07-01T07:29:58.282Z",
+ "snippet_id": 555,
+ "probe": {
+  "josera_lamb": [
+   {
+    "id": "18018",
+    "name": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg - s",
+    "sku": "JOS0931",
+    "wc_stock": 487,
+    "manage_stock": true,
+    "meta": {
+     "_manage_stock": "yes",
+     "_stock": "487.000000",
+     "_stock_status": "instock",
+     "_vf_enabled": "yes",
+     "_active_fulfillment_source": "vf_dropship",
+     "_vf_qty": "487"
+    }
+   },
+   {
+    "id": "18014",
+    "name": "Josera Nature energetic 12,5 kg - begrūdis sausas",
+    "sku": "JOS0731",
+    "wc_stock": 94,
+    "manage_stock": true,
+    "meta": {
+     "_manage_stock": "yes",
+     "_stock": "94",
+     "_stock_status": "instock"
+    }
+   },
+   {
+    "id": "18000",
+    "name": "Josera Optiness 12,5 kg - begrūdis sausas maistas",
+    "sku": "JOS0910",
+    "wc_stock": 449,
+    "manage_stock": true,
+    "meta": {
+     "_manage_stock": "yes",
+     "_stock": "449.000000",
+     "_stock_status": "instock",
+     "_vf_enabled": "yes",
+     "_active_fulfillment_source": "vf_dropship",
+     "_vf_qty": "449"
+    }
+   },
+   {
+    "id": "17995",
+    "name": "Josera Salmon & Potato 12,5 kg - begrūdis sausas ",
+    "sku": "JOS0982",
+    "wc_stock": 116,
+    "manage_stock": true,
+    "meta": {
+     "_manage_stock": "yes",
+     "_stock": "116.000000",
+     "_stock_status": "instock",
+     "_vf_enabled": "yes",
+     "_active_fulfillment_source": "vf_dropship",
+     "_vf_qty": "116"
+    }
+   },
+   {
+    "id": "17978",
+    "name": "Josera Sensiplus 12,5 kg - sausas maistas šunims ",
+    "sku": "JOS0914",
+    "wc_stock": 796,
+    "manage_stock": true,
+    "meta": {
+     "_manage_stock": "yes",
+     "_stock": "796.000000",
+     "_stock_status": "instock",
+     "_vf_enabled": "yes",
+     "_active_fulfillment_source": "vf_dropship",
+     "_own_stock_qty": "0",
+     "_vf_qty": "796"
+    }
+   }
+  ],
+  "stock_comparison": [
+   {
+    "id": "17978",
+    "name": "Josera Sensiplus 12,5 kg - sausas m",
+    "wc_stock": 796,
+    "vf_qty": "796",
+    "zb_qty": "",
+    "own_qty": "0",
+    "fulfillment": "vf_dropship"
+   },
+   {
+    "id": "19920",
+    "name": "Josera SensiPlus sausas pašaras ja",
+    "wc_stock": 235,
+    "vf_qty": "235",
+    "zb_qty": "",
+    "own_qty": "",
+    "fulfillment": "vf_dropship"
+   },
+   {
+    "id": "19921",
+    "name": "Josera SensiPlus sausas pašaras ja",
+    "wc_stock": 141,
+    "vf_qty": "141",
+    "zb_qty": "",
+    "own_qty": "",
+    "fulfillment": "vf_dropship"
+   },
+   {
+    "id": "32087",
+    "name": "Josera Lamb + Sweet Potato begrūdi",
+    "wc_stock": 0,
+    "vf_qty": "0",
+    "zb_qty": "",
+    "own_qty": "",
+    "fulfillment": "out_of_stock"
+   },
+   {
+    "id": "27816",
+    "name": "Nobleza vandens fontanas gyvūnui, ",
+    "wc_stock": 0,
+    "vf_qty": "0",
+    "zb_qty": "",
+    "own_qty": "",
+    "fulfillment": "out_of_stock"
+   }
+  ],
+  "relevant_snippets": [],
+  "own_stock_field_count": "6",
+  "duplicate_eans": [
+   {
+    "ean": "000000000000",
+    "cnt": "3"
+   }
+  ],
+  "fulfillment_keys": [
+   {
+    "meta_key": "_active_fulfillment_source",
+    "cnt": "2178"
+   },
+   {
+    "meta_key": "_legacy_source",
+    "cnt": "1627"
+   },
+   {
+    "meta_key": "_weight_source",
+    "cnt": "1046"
+   },
+   {
+    "meta_key": "_cost_price_source",
+    "cnt": "362"
+   },
+   {
+    "meta_key": "_wc_order_attribution_source_type",
+    "cnt": "53"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_source",
+    "cnt": "53"
+   },
+   {
+    "meta_key": "_wc_attachment_source",
+    "cnt": "21"
+   },
+   {
+    "meta_key": "_mnm_content_source",
+    "cnt": "20"
+   },
+   {
+    "meta_key": "_fulfillment_carrier",
+    "cnt": "17"
+   },
+   {
+    "meta_key": "_own_stock_qty",
+    "cnt": "6"
+   }
+  ]
+ }
+}
