@@ -1,18 +1,33 @@
 import { execSync } from "child_process";
 import fs from "fs";
-const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
-const BASE = "https://dev.avesa.lt";
-const AUTH = "Basic " + Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+import { chromium } from "playwright";
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name, str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+String(e).slice(0,300); } }
-const CODE_B64 = "Ly8gVGVzdHVvamEgQUpBWCBwYWllxaFrb3MgZmlsdHLEhSB0aWVzaW9naWFpIChiZSBub25jZSwgdGlrIHRlc3R1aSkKYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgICBpZiAoIWlzc2V0KCRfR0VUWydwc2NfdGVzdGZpbHRlciddKSkgcmV0dXJuOwogICAgJHRlcm0gPSAna29uc2VydmFpJzsKICAgICRncmFtYXR1cmEgPSAnNDAwJzsKICAgICRyZXN1bHRzID0gW107CiAgICBmb3JlYWNoIChbJycsICdtb25vJywgJ2JlX2dydWR1JywgJ2phdXRydXMnLCAnaGlwbyddIGFzICRmaWx0ZXIpIHsKICAgICAgICAkdGF4X3F1ZXJ5ID0gYXJyYXkoJ3JlbGF0aW9uJyA9PiAnQU5EJyk7CiAgICAgICAgaWYgKCRncmFtYXR1cmEpICR0YXhfcXVlcnlbXSA9IGFycmF5KCd0YXhvbm9teSc9PidwYV9wYWt1b3Rlc19keWRpcycsICdmaWVsZCc9PiduYW1lJywgJ3Rlcm1zJz0+JGdyYW1hdHVyYS4nIGcnKTsKICAgICAgICBpZiAoJGZpbHRlciA9PT0gJ21vbm8nKSAkdGF4X3F1ZXJ5W10gPSBhcnJheSgndGF4b25vbXknPT4ncGFfbW9ub3Byb3RlaW4nLCAnZmllbGQnPT4nc2x1ZycsICd0ZXJtcyc9Pid0YWlwJyk7CiAgICAgICAgZWxzZWlmICgkZmlsdGVyID09PSAnYmVfZ3J1ZHUnKSAkdGF4X3F1ZXJ5W10gPSBhcnJheSgndGF4b25vbXknPT4ncGFfYmVfZ3J1ZHUnLCAnZmllbGQnPT4nc2x1ZycsICd0ZXJtcyc9PidiZS1ncnVkdScpOwogICAgICAgIGVsc2VpZiAoJGZpbHRlciA9PT0gJ2phdXRydXMnKSAkdGF4X3F1ZXJ5W10gPSBhcnJheSgndGF4b25vbXknPT4ncGFfc3BlY2lhbGlfbWl0eWJhJywgJ2ZpZWxkJz0+J3NsdWcnLCAndGVybXMnPT4namF1dHJpYW0tdmlyc2tpbmltdWknKTsKICAgICAgICBlbHNlaWYgKCRmaWx0ZXIgPT09ICdoaXBvJykgJHRheF9xdWVyeVtdID0gYXJyYXkoJ3RheG9ub215Jz0+J3BhX3NwZWNpYWxpX21pdHliYScsICdmaWVsZCc9PidzbHVnJywgJ3Rlcm1zJz0+J2hpcG9hbGVyZ2luaXMnKTsKICAgICAgICAkYXJncyA9IGFycmF5KCdwb3N0X3R5cGUnPT4ncHJvZHVjdCcsJ3Bvc3Rfc3RhdHVzJz0+J3B1Ymxpc2gnLCdzJz0+JHRlcm0sJ3Bvc3RzX3Blcl9wYWdlJz0+MTAwLAogICAgICAgICAgICAndGF4X3F1ZXJ5Jz0+YXJyYXkoYXJyYXkoJ3RheG9ub215Jz0+J3Byb2R1Y3RfdHlwZScsJ2ZpZWxkJz0+J3NsdWcnLCd0ZXJtcyc9PmFycmF5KCdzaW1wbGUnKSkpKTsKICAgICAgICBpZiAoY291bnQoJHRheF9xdWVyeSkgPiAxKSAkYXJnc1sndGF4X3F1ZXJ5J10gPSBhcnJheV9tZXJnZSgkYXJnc1sndGF4X3F1ZXJ5J10sIGFycmF5KCR0YXhfcXVlcnkpKTsKICAgICAgICAkcSA9IG5ldyBXUF9RdWVyeSgkYXJncyk7CiAgICAgICAgJHJlc3VsdHNbJGZpbHRlciA/OiAndmlzaSddID0gJHEtPmZvdW5kX3Bvc3RzOwogICAgICAgIHdwX3Jlc2V0X3Bvc3RkYXRhKCk7CiAgICB9CiAgICB1cGRhdGVfb3B0aW9uKCdwc2NfYXR0cl9yZXN1bHQnLCB3cF9qc29uX2VuY29kZSgkcmVzdWx0cykpOwogICAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsKICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHJlc3VsdHMpOwogICAgZXhpdDsKfSk7Cg==";
-const code = Buffer.from(CODE_B64, 'base64').toString('utf8').trim();
+const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
+function commit(name, str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body)); try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function putBin(name,buf){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb.json',JSON.stringify(body)); try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC PROBE meta', code:code, scope:'global', active:true}));
-  exec('curl -sk -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r = exec('curl -sk "'+BASE+'/?psc_testfilter=1"');
-  var m = r.match(/\{.*\}/s);
-  commit('filter_test.json', m ? m[0] : r.slice(0,300));
-  console.log(m ? m[0] : r.slice(0,300));
+  const browser=await chromium.launch({args:['--no-sandbox']});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1400,height:1000}, httpCredentials:{username:WP_USER, password:WP_PASS}});
+  const page=await ctx.newPage();
+  // Bandau prisijungti per wp-login (interaktyvus)
+  await page.goto('https://dev.avesa.lt/wp-login.php?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:40000}).catch(()=>{});
+  await page.waitForTimeout(2000);
+  var hasLogin = await page.evaluate(()=>!!document.querySelector('#user_login'));
+  var adminReachable = false;
+  if (hasLogin) {
+    // app-password neveiks interaktyviam login; tiesiog pažymim
+    adminReachable = false;
+  }
+  // Bandau tiesiogiai admin puslapį (jei sesija yra)
+  await page.goto('https://dev.avesa.lt/wp-admin/edit.php?post_type=product&page=petshop-choice-create&nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:40000}).catch(()=>{});
+  await page.waitForTimeout(3000);
+  var probe = await page.evaluate(()=>({
+    is_login: !!document.querySelector('#user_login'),
+    has_form: !!document.getElementById('pcf-title'),
+    title: document.title
+  }));
+  commit('admin_probe.json', JSON.stringify(probe,null,1));
+  putBin('admin_probe.png', await page.screenshot({fullPage:false}));
+  console.log(JSON.stringify(probe));
+  await ctx.close(); await browser.close();
 })();
