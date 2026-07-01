@@ -15,100 +15,98 @@ function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:30000000
 
 const PROBE = `<?php
 add_action('init', function(){
-    if (!isset($_GET['wh2_probe']) || $_GET['wh2_probe'] !== 'go') return;
+    if (!isset($_GET['fs_probe']) || $_GET['fs_probe'] !== 'go') return;
     $out = array();
     global $wpdb;
 
-    // 1. VISI meta raktai, kurie prasideda _vf, _zb, arba turi warehouse/sandelis
-    // Skaičiuojam kiek produktų turi kiekvieną
-    $meta_keys = $wpdb->get_results("
-        SELECT meta_key, COUNT(DISTINCT post_id) as cnt
-        FROM {$wpdb->postmeta}
-        WHERE meta_key REGEXP '_(vf|zb|legacy|wareh|sandel|stock_loc)'
-        GROUP BY meta_key
-        ORDER BY cnt DESC
-    ", ARRAY_A);
-    $out['warehouse_meta_keys'] = $meta_keys;
-
-    // 2. _vf_enabled reikšmių pasiskirstymas
-    $vf_vals = $wpdb->get_results("
+    // 1. _active_fulfillment_source reikšmių pasiskirstymas
+    $fs_vals = $wpdb->get_results("
         SELECT meta_value, COUNT(*) as cnt
         FROM {$wpdb->postmeta}
-        WHERE meta_key = '_vf_enabled'
+        WHERE meta_key = '_active_fulfillment_source'
         GROUP BY meta_value
+        ORDER BY cnt DESC
     ", ARRAY_A);
-    $out['vf_enabled_values'] = $vf_vals;
+    $out['fulfillment_source_values'] = $fs_vals;
 
-    // 3. Ar yra _zb_enabled ar panašu?
-    $zb_check = $wpdb->get_results("
-        SELECT meta_key, COUNT(*) as cnt
-        FROM {$wpdb->postmeta}
-        WHERE meta_key LIKE '%zb%' OR meta_value LIKE '%ZB%' AND meta_key LIKE '\\_%'
-        GROUP BY meta_key
-        LIMIT 20
-    ", ARRAY_A);
-    $out['zb_related'] = $zb_check;
-
-    // 4. Kiek iš viso publikuotų produktų
+    // 2. Kiek produktų NEturi šio lauko
     $total = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type='product' AND post_status='publish'");
+    $with_fs = $wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_active_fulfillment_source'");
     $out['total_products'] = $total;
+    $out['with_fulfillment_source'] = $with_fs;
+    $out['without_fulfillment_source'] = $total - $with_fs;
 
-    // 5. Kiek turi _vf_enabled=yes
-    $vf_yes = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->postmeta} WHERE meta_key='_vf_enabled' AND meta_value='yes'");
-    $out['vf_enabled_yes_count'] = $vf_yes;
+    // 3. _own_stock_qty reikšmių pasiskirstymas (kiek turi >0)
+    $own_stock = $wpdb->get_row("
+        SELECT
+            COUNT(*) as total,
+            SUM(CASE WHEN CAST(meta_value AS DECIMAL(10,2)) > 0 THEN 1 ELSE 0 END) as positive
+        FROM {$wpdb->postmeta}
+        WHERE meta_key = '_own_stock_qty'
+    ", ARRAY_A);
+    $out['own_stock'] = $own_stock;
 
-    // 6. Paimu 3 produktus SU _vf_enabled=yes ir 3 BE — pažiūriu skirtumus
-    $vf_products = $wpdb->get_col("SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_vf_enabled' AND meta_value='yes' LIMIT 3");
-    $non_vf = $wpdb->get_col("
-        SELECT p.ID FROM {$wpdb->posts} p
-        WHERE p.post_type='product' AND p.post_status='publish'
-        AND p.ID NOT IN (SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_vf_enabled')
-        LIMIT 3
+    // 4. Kryžminė analizė: kaip fulfillment_source siejasi su vf/zb/own
+    // Paimu produktus su kiekviena fulfillment_source reikšme ir tikrinu jų vf/zb/own žymes
+    foreach ($fs_vals as $fv) {
+        $val = $fv['meta_value'];
+        $sample_ids = $wpdb->get_col($wpdb->prepare("
+            SELECT post_id FROM {$wpdb->postmeta}
+            WHERE meta_key='_active_fulfillment_source' AND meta_value=%s
+            LIMIT 3
+        ", $val));
+        $samples = array();
+        foreach ($sample_ids as $pid) {
+            $p = wc_get_product($pid);
+            $vf = get_post_meta($pid, '_vf_enabled', true);
+            $zb = get_post_meta($pid, '_zb_enabled', true);
+            $own = get_post_meta($pid, '_own_stock_qty', true);
+            $stock = $p ? $p->get_stock_quantity() : '?';
+            $vf_qty = get_post_meta($pid, '_vf_qty', true);
+            $zb_qty = get_post_meta($pid, '_zb_qty', true);
+            $samples[] = array(
+                'id'=>$pid,
+                'name'=>substr($p?$p->get_name():'?',0,35),
+                'vf_enabled'=>$vf?:'-', 'zb_enabled'=>$zb?:'-', 'own_stock_qty'=>$own?:'-',
+                'vf_qty'=>$vf_qty?:'-', 'zb_qty'=>$zb_qty?:'-', 'wc_stock'=>$stock
+            );
+        }
+        $out['fs_'.$val] = $samples;
+    }
+
+    // 5. Ar yra produktų su keliais šaltiniais aktyviais (vf+zb+own)?
+    // Kiek turi ir vf_enabled=yes IR zb_enabled=yes
+    $both = $wpdb->get_var("
+        SELECT COUNT(DISTINCT p1.post_id)
+        FROM {$wpdb->postmeta} p1
+        JOIN {$wpdb->postmeta} p2 ON p1.post_id = p2.post_id
+        WHERE p1.meta_key='_vf_enabled' AND p1.meta_value='yes'
+        AND p2.meta_key='_zb_enabled' AND p2.meta_value='yes'
     ");
+    $out['both_vf_and_zb'] = $both;
 
-    $out['vf_sample'] = array();
-    foreach ($vf_products as $pid) {
-        $p = wc_get_product($pid);
-        $meta = get_post_meta($pid);
-        $wh_meta = array();
-        foreach ($meta as $k=>$v) {
-            if (preg_match('/_(vf|zb|legacy|wareh|sandel|stock)/', $k)) $wh_meta[$k] = is_array($v)?$v[0]:$v;
-        }
-        $out['vf_sample'][] = array('id'=>$pid, 'name'=>substr($p?$p->get_name():'?',0,40), 'wh_meta'=>$wh_meta);
-    }
-    $out['non_vf_sample'] = array();
-    foreach ($non_vf as $pid) {
-        $p = wc_get_product($pid);
-        $meta = get_post_meta($pid);
-        $wh_meta = array();
-        foreach ($meta as $k=>$v) {
-            if (preg_match('/_(vf|zb|legacy|wareh|sandel|stock)/', $k)) $wh_meta[$k] = is_array($v)?$v[0]:$v;
-        }
-        $out['non_vf_sample'][] = array('id'=>$pid, 'name'=>substr($p?$p->get_name():'?',0,40), 'wh_meta'=>$wh_meta);
-    }
-
-    update_option('wh2_probe_result', wp_json_encode($out));
+    update_option('fs_probe_result', wp_json_encode($out));
     wp_die('DONE');
 });
 add_action('init', function(){
-    if (!isset($_GET['wh2_read']) || $_GET['wh2_read'] !== 'go') return;
+    if (!isset($_GET['fs_read']) || $_GET['fs_read'] !== 'go') return;
     header('Content-Type: application/json');
-    echo get_option('wh2_probe_result', '{}');
+    echo get_option('fs_probe_result', '{}');
     exit;
 });
 `;
 (async()=>{
   const out={ts:new Date().toISOString()};
-  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP WH2 Probe', code: PROBE, desc:'temp', scope:'global', active:true}));
+  fs.writeFileSync('/tmp/snip.json', JSON.stringify({name:'TEMP FS Probe', code: PROBE, desc:'temp', scope:'global', active:true}));
   let raw = exec('curl -sk -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"');
   let snip; try{ snip=JSON.parse(raw); }catch(e){ snip={}; }
   out.snippet_id = snip && snip.id;
   await new Promise(r=>setTimeout(r,2500));
-  exec('curl -sk "'+BASE+'/?wh2_probe=go" -o /dev/null');
+  exec('curl -sk "'+BASE+'/?fs_probe=go" -o /dev/null');
   await new Promise(r=>setTimeout(r,3000));
-  const res = exec('curl -sk "'+BASE+'/?wh2_read=go"');
+  const res = exec('curl -sk "'+BASE+'/?fs_read=go"');
   try{ out.probe = JSON.parse(res); }catch(e){ out.probe_raw = res.slice(0,2000); }
   if(out.snippet_id) exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/'+out.snippet_id+'"');
-  commit('wh2_probe.json', JSON.stringify(out,null,1));
+  commit('fs_probe.json', JSON.stringify(out,null,1));
   console.log("DONE");
 })();
