@@ -1,0 +1,124 @@
+{
+ "ts": "2026-07-01T06:46:49.583Z",
+ "snippet_id": 553,
+ "probe": {
+  "fulfillment_source_values": [
+   {
+    "meta_value": "vf_dropship",
+    "cnt": "979"
+   },
+   {
+    "meta_value": "zb_dropship",
+    "cnt": "921"
+   },
+   {
+    "meta_value": "out_of_stock",
+    "cnt": "278"
+   }
+  ],
+  "total_products": "2723",
+  "with_fulfillment_source": "2178",
+  "without_fulfillment_source": 545,
+  "own_stock": {
+   "total": "6",
+   "positive": "0"
+  },
+  "fs_vf_dropship": [
+   {
+    "id": "19920",
+    "name": "Josera SensiPlus sausas pašaras ja",
+    "vf_enabled": "yes",
+    "zb_enabled": "-",
+    "own_stock_qty": "-",
+    "vf_qty": "235",
+    "zb_qty": "-",
+    "wc_stock": 235
+   },
+   {
+    "id": "19921",
+    "name": "Josera SensiPlus sausas pašaras ja",
+    "vf_enabled": "yes",
+    "zb_enabled": "-",
+    "own_stock_qty": "-",
+    "vf_qty": "141",
+    "zb_qty": "-",
+    "wc_stock": 141
+   },
+   {
+    "id": "31977",
+    "name": "Retesnės šukos su medine rankena ",
+    "vf_enabled": "-",
+    "zb_enabled": "-",
+    "own_stock_qty": "-",
+    "vf_qty": "2",
+    "zb_qty": "-",
+    "wc_stock": 2
+   }
+  ],
+  "fs_zb_dropship": [
+   {
+    "id": "14669",
+    "name": "FARMINA VET LIFE - CAT Dry ULTRAHYP",
+    "vf_enabled": "-",
+    "zb_enabled": "yes",
+    "own_stock_qty": "-",
+    "vf_qty": "-",
+    "zb_qty": "5",
+    "wc_stock": 5
+   },
+   {
+    "id": "33390",
+    "name": "FARMINA VET LIFE - CAT Dry HYPOALLE",
+    "vf_enabled": "-",
+    "zb_enabled": "yes",
+    "own_stock_qty": "-",
+    "vf_qty": "-",
+    "zb_qty": "6",
+    "wc_stock": 6
+   },
+   {
+    "id": "14622",
+    "name": "FARMINA N&amp;D TROPICAL SELECTION ",
+    "vf_enabled": "-",
+    "zb_enabled": "yes",
+    "own_stock_qty": "-",
+    "vf_qty": "-",
+    "zb_qty": "8",
+    "wc_stock": 8
+   }
+  ],
+  "fs_out_of_stock": [
+   {
+    "id": "14595",
+    "name": "FARMINA N&amp;D PRIME - CAT Dry Chi",
+    "vf_enabled": "-",
+    "zb_enabled": "-",
+    "own_stock_qty": "-",
+    "vf_qty": "-",
+    "zb_qty": "-",
+    "wc_stock": 0
+   },
+   {
+    "id": "14842",
+    "name": "Hau&amp;Miau Puzzo Snack, triušio ",
+    "vf_enabled": "-",
+    "zb_enabled": "-",
+    "own_stock_qty": "-",
+    "vf_qty": "-",
+    "zb_qty": "-",
+    "wc_stock": 0
+   },
+   {
+    "id": "14841",
+    "name": "Hau&amp;Miau Puzzo Snack, triušio ",
+    "vf_enabled": "-",
+    "zb_enabled": "-",
+    "own_stock_qty": "-",
+    "vf_qty": "-",
+    "zb_qty": "-",
+    "wc_stock": 0
+   }
+  ],
+  "both_vf_and_zb": "0"
+ }
+}
