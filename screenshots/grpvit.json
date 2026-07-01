@@ -1,0 +1,21 @@
+{
+ "mix": {
+  "group_buttons": [
+   {
+    "label": "Mix",
+    "active": true
+   },
+   {
+    "label": "Hipoalerginis",
+    "active": false
+   }
+  ],
+  "active_group": "mix",
+  "box_price": "29,30 €"
+ },
+ "hipo": {
+  "active_group": "hipo",
+  "box_price": "38,30 €",
+  "visible_form": "hipo_400_12"
+ }
+}
