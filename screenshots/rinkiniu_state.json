@@ -1,0 +1,83 @@
+{
+ "ts": "2026-07-01T07:43:40.286Z",
+ "choice_parents": [
+  {
+   "id": 34196,
+   "name": "Susirink konservų rinkinį šunims pats",
+   "slug": "susirink-konservu-rinkini-sunims-pats",
+   "price": "14.99",
+   "is_choice": "yes",
+   "type": "simple"
+  },
+  {
+   "id": 34195,
+   "name": "Susirink konservų rinkinį šunims pats 800g · 15 vnt (paslėptas)",
+   "slug": "susirink-konservu-rinkini-sunims-pats-800g-%c2%b7-15-vnt-pasleptas",
+   "price": "48.75",
+   "is_choice": "ne",
+   "type": "mix-and-match"
+  },
+  {
+   "id": 34194,
+   "name": "Susirink konservų rinkinį šunims pats 800g · 12 vnt (paslėptas)",
+   "slug": "susirink-konservu-rinkini-sunims-pats-800g-%c2%b7-12-vnt-pasleptas",
+   "price": "39.6",
+   "is_choice": "ne",
+   "type": "mix-and-match"
+  },
+  {
+   "id": 34193,
+   "name": "Susirink konservų rinkinį šunims pats 800g · 6 vnt (paslėptas)",
+   "slug": "susirink-konservu-rinkini-sunims-pats-800g-%c2%b7-6-vnt-pasleptas",
+   "price": "20.4",
+   "is_choice": "ne",
+   "type": "mix-and-match"
+  },
+  {
+   "id": 34192,
+   "name": "Susirink konservų rinkinį šunims pats 400g · 15 vnt (paslėptas)",
+   "slug": "susirink-konservu-rinkini-sunims-pats-400g-%c2%b7-15-vnt-pasleptas",
+   "price": "35.89",
+   "is_choice": "ne",
+   "type": "mix-and-match"
+  },
+  {
+   "id": 34191,
+   "name": "Susirink konservų rinkinį šunims pats 400g · 12 vnt (paslėptas)",
+   "slug": "susirink-konservu-rinkini-sunims-pats-400g-%c2%b7-12-vnt-pasleptas",
+   "price": "29.3",
+   "is_choice": "ne",
+   "type": "mix-and-match"
+  },
+  {
+   "id": 34190,
+   "name": "Susirink konservų rinkinį šunims pats 400g · 6 vnt (paslėptas)",
+   "slug": "susirink-konservu-rinkini-sunims-pats-400g-%c2%b7-6-vnt-pasleptas",
+   "price": "14.99",
+   "is_choice": "ne",
+   "type": "mix-and-match"
+  }
+ ],
+ "choice_snippets": [
+  {
+   "id": 544,
+   "name": "TEMP Choice Probe",
+   "active": false
+  },
+  {
+   "id": 546,
+   "name": "TEMP Build Choice",
+   "active": false
+  },
+  {
+   "id": 547,
+   "name": "Petshop Susidėjimo Rinkinio Vitrina v2",
+   "active": true
+  },
+  {
+   "id": 550,
+   "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v3",
+   "active": true
+  }
+ ]
+}
