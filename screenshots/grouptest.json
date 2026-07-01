@@ -1,0 +1,41 @@
+{
+ "trigger": "OK parent=34197",
+ "result": {
+  "parent_id": 34197,
+  "hidden_count": 4,
+  "group_count": 2,
+  "config": {
+   "mix": {
+    "label": "Mix",
+    "gramaturos": {
+     "400": {
+      "6": {
+       "product_id": 34198,
+       "price": 14.99
+      },
+      "12": {
+       "product_id": 34199,
+       "price": 29.3
+      }
+     }
+    }
+   },
+   "hipo": {
+    "label": "Hipoalerginis",
+    "gramaturos": {
+     "400": {
+      "6": {
+       "product_id": 34200,
+       "price": 19.99
+      },
+      "12": {
+       "product_id": 34201,
+       "price": 38.3
+      }
+     }
+    }
+   }
+  },
+  "view_url": "https://dev.avesa.lt/product/testas-grupiu-rinkinys/"
+ }
+}
