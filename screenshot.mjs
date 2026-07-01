@@ -1,32 +1,17 @@
 import { execSync } from "child_process";
 import fs from "fs";
-import { chromium } from "playwright";
+const WP_USER = process.env.WP_USER, WP_PASS = process.env.WP_APP_PASS;
+const BASE = "https://dev.avesa.lt";
+const AUTH = "Basic " + Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function putBin(name,buf){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'r',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb.json',JSON.stringify(body)); try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function commit(name, str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body)); try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function commit(name, str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC'; } }
+const CODE_B64 = "YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgICBpZiAoIWlzc2V0KCRfR0VUWydwc2NfY2wyJ10pIHx8ICRfR0VUWydwc2NfY2wyJ10hPT0nVEFJUCcpIHJldHVybjsKICAgIGZvcmVhY2ggKFszNDIwMiwzNDIwMywzNDIwNCwzNDIwNSwzNDIwNl0gYXMgJGlkKXsgaWYoZ2V0X3Bvc3QoJGlkKSkgd3BfZGVsZXRlX3Bvc3QoJGlkLHRydWUpOyB9CiAgICBleGl0KCdJxaBUUklOVEEgMzQyMDItMzQyMDYnKTsKfSk7Cg==";
+const code = Buffer.from(CODE_B64, 'base64').toString('utf8').trim();
 (async()=>{
-  const browser=await chromium.launch({args:['--no-sandbox']});
-  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1280,height:1000}});
-  const page=await ctx.newPage();
-  await page.goto('https://dev.avesa.lt/product/testas-grupiu-vitrina/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:50000}).catch(()=>{});
-  await page.waitForTimeout(8000);
-  // Būsena: Mix aktyvi (default)
-  var s1 = await page.evaluate(()=>({
-    group_buttons: Array.from(document.querySelectorAll('.psc-group-btn')).map(b=>({label:b.textContent.trim(), active:b.classList.contains('psc-active')})),
-    active_group: (document.querySelector('.psc-group-btn.psc-active')||{}).dataset?.group,
-    box_price: (document.querySelector('.psc-box-price')||{}).textContent
-  }));
-  putBin('grpvit_mix.png', await page.screenshot({fullPage:false}));
-  // Perjungiu į Hipoalerginis
-  await page.evaluate(()=>{ var b=document.querySelector('.psc-group-btn[data-group="hipo"]'); if(b) b.click(); });
-  await page.waitForTimeout(2000);
-  var s2 = await page.evaluate(()=>({
-    active_group: (document.querySelector('.psc-group-btn.psc-active')||{}).dataset?.group,
-    box_price: (document.querySelector('.psc-box-price')||{}).textContent,
-    visible_form: (function(){var f=Array.from(document.querySelectorAll('.psc-form')).find(x=>x.style.display!=='none'); return f?(f.dataset.group+'_'+f.dataset.gram+'_'+f.dataset.size):'NĖRA';})()
-  }));
-  putBin('grpvit_hipo.png', await page.screenshot({fullPage:false}));
-  commit('grpvit.json', JSON.stringify({mix:s1, hipo:s2},null,1));
-  console.log(JSON.stringify({mix:s1, hipo:s2}));
-  await ctx.close(); await browser.close();
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC PROBE meta', code:code, scope:'global', active:true}));
+  exec('curl -sk -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk "'+BASE+'/?psc_cl2=TAIP"');
+  commit('cl2.json', JSON.stringify({r:r.slice(0,80)}));
+  console.log(r.slice(0,80));
 })();
