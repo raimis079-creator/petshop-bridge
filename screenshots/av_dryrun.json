@@ -1,0 +1,69 @@
+{
+ "ts": "2026-07-01T06:56:01.313Z",
+ "snippet_id": 554,
+ "probe": {
+  "total": "2723",
+  "buckets": {
+   "vf_active": 905,
+   "zb_active": 614,
+   "oos_but_vf": 53,
+   "oos_but_zb": 48,
+   "oos_neither": 8,
+   "nofield_but_vf": 0,
+   "nofield_but_zb": 0,
+   "nofield_neither": 1095
+  },
+  "av_loose_count": 1204,
+  "av_strict_count": 1103,
+  "sample_oos_but_vf": [
+   {
+    "id": "17959",
+    "name": "Josidog Economy 15 kg sausas maistas šu"
+   },
+   {
+    "id": "17965",
+    "name": "Josicat Classic Sterilised 10 kg sausas "
+   },
+   {
+    "id": "17983",
+    "name": "Josera Sensicat 2 kg - sausas maistas ka"
+   },
+   {
+    "id": "18051",
+    "name": "Josera Leger 2 kg - sausas maistas katė"
+   }
+  ],
+  "sample_av_strict": [
+   {
+    "id": "14929",
+    "name": "Žirklės nagams (giljotina), 11 cm",
+    "stock": 5
+   },
+   {
+    "id": "14932",
+    "name": "Žirklės gyvūno kailiui, 16 cm",
+    "stock": 5
+   },
+   {
+    "id": "14935",
+    "name": "Žirklės gyvūno kailiui filiruoti, 16 cm",
+    "stock": 3
+   },
+   {
+    "id": "14937",
+    "name": "Žirklutės gyvūno nagams kirpti, vidutinės",
+    "stock": 2
+   },
+   {
+    "id": "14941",
+    "name": "Žirklutės gyvūno nagams kirpti, mažos, S,",
+    "stock": 1
+   },
+   {
+    "id": "14945",
+    "name": "Žirklutės gyvūno nagams kirpti, mažos, 8 ",
+    "stock": 2
+   }
+  ]
+ }
+}
