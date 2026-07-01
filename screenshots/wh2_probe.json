@@ -1,0 +1,454 @@
+{
+ "ts": "2026-07-01T06:42:53.638Z",
+ "snippet_id": 552,
+ "probe": {
+  "warehouse_meta_keys": [
+   {
+    "meta_key": "_legacy_product_id",
+    "cnt": "4966"
+   },
+   {
+    "meta_key": "_legacy_source",
+    "cnt": "1627"
+   },
+   {
+    "meta_key": "_legacy_seo_title",
+    "cnt": "1561"
+   },
+   {
+    "meta_key": "_legacy_weight_raw",
+    "cnt": "1543"
+   },
+   {
+    "meta_key": "_legacy_manufacturer",
+    "cnt": "1533"
+   },
+   {
+    "meta_key": "_legacy_related_ids",
+    "cnt": "1286"
+   },
+   {
+    "meta_key": "_vf_brand_raw",
+    "cnt": "1119"
+   },
+   {
+    "meta_key": "_vf_cost_xml",
+    "cnt": "1119"
+   },
+   {
+    "meta_key": "_vf_last_sync",
+    "cnt": "1119"
+   },
+   {
+    "meta_key": "_vf_personal_xml",
+    "cnt": "1119"
+   },
+   {
+    "meta_key": "_vf_qty",
+    "cnt": "1119"
+   },
+   {
+    "meta_key": "_vf_supplier_sku",
+    "cnt": "1119"
+   },
+   {
+    "meta_key": "_vf_barcode",
+    "cnt": "1119"
+   },
+   {
+    "meta_key": "_vf_brand_normalized",
+    "cnt": "1109"
+   },
+   {
+    "meta_key": "_vf_cost",
+    "cnt": "1109"
+   },
+   {
+    "meta_key": "_vf_enabled",
+    "cnt": "1109"
+   },
+   {
+    "meta_key": "_vf_personal_cost",
+    "cnt": "1109"
+   },
+   {
+    "meta_key": "_vf_supplier_discount",
+    "cnt": "1109"
+   },
+   {
+    "meta_key": "_zb_weight",
+    "cnt": "1054"
+   },
+   {
+    "meta_key": "_zb_width",
+    "cnt": "1054"
+   },
+   {
+    "meta_key": "_zb_height",
+    "cnt": "1054"
+   },
+   {
+    "meta_key": "_zb_length",
+    "cnt": "1054"
+   },
+   {
+    "meta_key": "_vf_category_raw",
+    "cnt": "1041"
+   },
+   {
+    "meta_key": "_vf_description_base64",
+    "cnt": "1041"
+   },
+   {
+    "meta_key": "_vf_price_initialized",
+    "cnt": "1031"
+   },
+   {
+    "meta_key": "_vf_price_rule_used",
+    "cnt": "1031"
+   },
+   {
+    "meta_key": "_vf_price_initialized_at",
+    "cnt": "1029"
+   },
+   {
+    "meta_key": "_vf_wc_sku",
+    "cnt": "1026"
+   },
+   {
+    "meta_key": "_zb_qty",
+    "cnt": "990"
+   },
+   {
+    "meta_key": "_zb_last_sync",
+    "cnt": "990"
+   },
+   {
+    "meta_key": "_zb_rrp",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_supplier_sku",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_brand",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_category",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_cost",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_ean",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_enabled",
+    "cnt": "984"
+   },
+   {
+    "meta_key": "_zb_skip_reason",
+    "cnt": "316"
+   },
+   {
+    "meta_key": "_zb_draft_reason",
+    "cnt": "316"
+   },
+   {
+    "meta_key": "_zb_price_initialized",
+    "cnt": "248"
+   },
+   {
+    "meta_key": "_vf_match_type",
+    "cnt": "80"
+   },
+   {
+    "meta_key": "_legacy_origin_country",
+    "cnt": "79"
+   },
+   {
+    "meta_key": "_vf_has_supplier",
+    "cnt": "78"
+   },
+   {
+    "meta_key": "_vf_last_matched_import_post_id",
+    "cnt": "78"
+   },
+   {
+    "meta_key": "_vf_attached_to_existing",
+    "cnt": "78"
+   },
+   {
+    "meta_key": "_petshop_legacy_slug",
+    "cnt": "67"
+   },
+   {
+    "meta_key": "_petshop_legacy_url",
+    "cnt": "34"
+   },
+   {
+    "meta_key": "_zb_qty_zero_since",
+    "cnt": "18"
+   },
+   {
+    "meta_key": "_zb_cost_prev",
+    "cnt": "17"
+   },
+   {
+    "meta_key": "_vf_skip_reason",
+    "cnt": "11"
+   }
+  ],
+  "vf_enabled_values": [
+   {
+    "meta_value": "yes",
+    "cnt": "1109"
+   }
+  ],
+  "zb_related": [
+   {
+    "meta_key": "_active_fulfillment_source",
+    "cnt": "921"
+   },
+   {
+    "meta_key": "_legacy_source",
+    "cnt": "65"
+   },
+   {
+    "meta_key": "_sku",
+    "cnt": "13"
+   },
+   {
+    "meta_key": "_vf_description_base64",
+    "cnt": "622"
+   },
+   {
+    "meta_key": "_zb_brand",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_category",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_cost",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_cost_prev",
+    "cnt": "17"
+   },
+   {
+    "meta_key": "_zb_draft_reason",
+    "cnt": "316"
+   },
+   {
+    "meta_key": "_zb_ean",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_enabled",
+    "cnt": "984"
+   },
+   {
+    "meta_key": "_zb_height",
+    "cnt": "1054"
+   },
+   {
+    "meta_key": "_zb_last_sync",
+    "cnt": "990"
+   },
+   {
+    "meta_key": "_zb_length",
+    "cnt": "1054"
+   },
+   {
+    "meta_key": "_zb_price_initialized",
+    "cnt": "248"
+   },
+   {
+    "meta_key": "_zb_qty",
+    "cnt": "990"
+   },
+   {
+    "meta_key": "_zb_qty_zero_since",
+    "cnt": "18"
+   },
+   {
+    "meta_key": "_zb_rrp",
+    "cnt": "989"
+   },
+   {
+    "meta_key": "_zb_skip_reason",
+    "cnt": "316"
+   },
+   {
+    "meta_key": "_zb_supplier_sku",
+    "cnt": "989"
+   }
+  ],
+  "total_products": "2723",
+  "vf_enabled_yes_count": "1109",
+  "vf_sample": [
+   {
+    "id": "17978",
+    "name": "Josera Sensiplus 12,5 kg - sausas maista",
+    "wh_meta": {
+     "_manage_stock": "yes",
+     "_stock": "796.000000",
+     "_stock_status": "instock",
+     "_legacy_product_id": "47798",
+     "_legacy_source": "excel_v2_20260604",
+     "_legacy_manufacturer": "Josera petfood GmbH",
+     "_legacy_related_ids": "46588, 46712, 47010, 47011, 47012, 47127, 47129, 47166, 47202, 47203, 47204, 47206, 47209, 47425, 47469, 47594, 47752, 47794, 47795, 47799, 47803, 47804, 47805, 47806, 47815, 47824, 47825, 47827, 48282, 48283, 48284, 48285, 48286, 48287, 48288, 48289, 48290, 48291, 48292, 48293, 48316, 48442, 48526, 48658, 48659",
+     "_legacy_weight_raw": "12.6",
+     "_legacy_seo_title": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema",
+     "_vf_enabled": "yes",
+     "_vf_cost": "27.512",
+     "_vf_personal_cost": "27.512",
+     "_vf_cost_xml": "34.39",
+     "_vf_personal_xml": "34.39",
+     "_vf_supplier_discount": "0.2",
+     "_vf_supplier_sku": "JOS0914",
+     "_vf_barcode": "403225478598",
+     "_vf_brand_raw": "JOSERA",
+     "_vf_brand_normalized": "Josera",
+     "_vf_last_sync": "2026-06-30 16:16:58",
+     "_vf_attached_to_existing": "yes",
+     "_vf_has_supplier": "yes",
+     "_vf_match_type": "ean",
+     "_vf_last_matched_import_post_id": "33014",
+     "_own_stock_qty": "0",
+     "_vf_qty": "796"
+    }
+   },
+   {
+    "id": "19920",
+    "name": "Josera SensiPlus sausas pašaras jautrie",
+    "wh_meta": {
+     "_manage_stock": "yes",
+     "_stock": "235.000000",
+     "_stock_status": "instock",
+     "_vf_supplier_sku": "JOS0946",
+     "_vf_barcode": "403225478792",
+     "_vf_brand_raw": "JOSERA",
+     "_vf_category_raw": "Reguliarus sausas jaunų šunų maistas",
+     "_vf_cost_xml": "11.94",
+     "_vf_personal_xml": "11.94",
+     "_vf_description_base64": "PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5Kb3NlcmEgc2F1c2FzIG1haXN0YXMgxaF1bmltcyBzdSBnYXJkxb5pYSBhbnRpZW5hLCBiZSBnbGl0aW1vLiBMZW5ndmFpIHZpcsWha2luYW1hcyBpciBnZXJhaSB0b2xlcnVvamFtYXMgcGHFoWFyYXMsIHB1aWtpYWkgdGlua2FudGlzIGphdXRyacSFIHZpcsWha2luaW1vIHNpc3RlbcSFIHR1cmludGllbXMgxaF1bmltcy4gPC9wPg0KPC9kaXY+PC9kaXY+PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxzdHlsZT4uYjJiLWJsYWNrLCAuYjJiLWJsYWNrICogeyBjb2xvcjojMDAwICFpbXBvcnRhbnQ7IH08L3N0eWxlPjxkaXYgY2xhc3M9ImIyYi1ibGFjayI+PHA+PGI+U3VkxJd0aXM6PC9iPiBkxb5pb3ZpbnRpIHBhdWvFoXRpZW5vcyBiYWx0eW1haSAocGF1a8WhdGllbmEgMjQgJSwgYW50aWVuYSA0ICUpLCB2aXNvIGdyxatkbyBrdWt1csWremFpLCByecW+aWFpLCBwYXVrxaHEjWnFsyByaWViYWxhaSwgY3VrcmluacWzIHJ1bmtlbGnFsyBtaWx0YWksIGhpZHJvbGl6dW90aSBwYXVrxaHEjWnFsyBiYWx0eW1haSwgbWluZXJhbGFpLCBtYWx0b3MgY2lrb3JpasWzIMWhYWtueXMgKG5hdMWrcmFsdXMgaW51bGlubyDFoWFsdGluaXMpLjwvcD48L2Rpdj48L2Rpdj48ZGl2IHN0eWxlPSJtYXJnaW4tdG9wOjE1cHg7IGNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5BbmFsaXRpbsSXcyBzdWRlZGFtb3Npb3MgZGFseXM8L2g0PjxzdHlsZT4uYjJiLWJsYWNrLCAuYjJiLWJsYWNrICogeyBjb2xvcjojMDAwICFpbXBvcnRhbnQ7IH08L3N0eWxlPjxkaXYgY2xhc3M9ImIyYi1ibGFjayI+PHRhYmxlIHN0eWxlPSJ3aWR0aDo0NTBweDsiIGNlbGxzcGFjaW5nPSIwIj4NCiAgICA8L3RyPg0KICAgIDx0cj4NCiAgICAgICAgPHRkIHN0eWxlPSJib3JkZXItYm90dG9tOiAycHggc29saWQgI2QzZDNkMztwYWRkaW5nOiA3cHg7Ij5iYWx0eW1haTwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MjQgJTwvdGQ+DQogICAgPC90cj4NCiAgICA8dHI+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+cmllYmFsYWk8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjEyICU8L3RkPg0KICAgIDwvdHI+DQogICAgPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPsW+YWxpYSBsxIVzdGVsaWVuYTwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MiwzICU8L3RkPg0KICAgIDwvdHI+DQogICAgPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPsW+YWxpIHBlbGVuYWk8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjYsNSAlPC90ZD4NCiAgICA8L3RyPg0KICAgIDx0cj4NCiAgICAgICAgPHRkIHN0eWxlPSJib3JkZXItYm90dG9tOiAycHggc29saWQgI2QzZDNkMztwYWRkaW5nOiA3cHg7Ij5rYWxjaXM8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjEsNCAlPC90ZD4NCiAgICA8L3RyPg0KICAgIDx0cj4NCiAgICAgICAgPHRkIHN0eWxlPSJib3JkZXItYm90dG9tOiAycHggc29saWQgI2QzZDNkMztwYWRkaW5nOiA3cHg7Ij5mb3Nmb3JhczwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MCw5ICU8L3RkPg0KICAgIDwvdHI+DQogPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPm1hZ25pczwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MCwxICU8L3RkPg0KICAgIDwvdHI+DQogPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPm5hdHJpczwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MCw0ICU8L3RkPg0KICAgIDwvdHI+DQo8L3RhYmxlPjwvZGl2PjwvZGl2PjxzdHlsZT4uYjJiLXRpZ2h0LCAuYjJiLXRpZ2h0ICogeyBtYXJnaW46MCAhaW1wb3J0YW50OyBwYWRkaW5nOjAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLXRpZ2h0IiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsgbWFyZ2luOjA7IHBhZGRpbmc6MDsiPjxoNCBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsgbWFyZ2luOjA7IHBhZGRpbmc6MDsiPlBhZ3JpbmRpbmlzIGFwcmHFoXltYXM8L2g0PjxzdHlsZT4uYjJiLWJsYWNrLCAuYjJiLWJsYWNrICogeyBjb2xvcjojMDAwICFpbXBvcnRhbnQ7IH08L3N0eWxlPjxkaXYgY2xhc3M9ImIyYi1ibGFjayI+PHA+PGI+Sm9zZXJhIFNlbnNpUGx1cyDigJMgPC9iPiBzYXVzYXMgcGHFoWFyYXMsIHByaXRhaWt5dGFzIGphdXRyacSFIHZpcsWha2luaW1vIHNpc3RlbcSFIHR1cmludGllbXMgxaF1bmltcy48L3A+DQoNCjx1bD4NCg0KPGxpIHN0eWxlPSJwYWRkaW5nOiAxcHggNXB4IDFweCAxMHB4OyI+PGI+DQpMZW5ndmFpIHZpcsWha2luYW1pLCBhdWvFoXRvcyBrb2t5YsSXcyBpbmdyZWRpZW50YWk8L2I+IHBhbGVuZ3ZpbmEgamF1dHJpb3MgdmlyxaFraW5pbW8gc2lzdGVtb3MgZGFyYsSFLg0KPC9saT4NCg0KPGxpIHN0eWxlPSJwYWRkaW5nOiAxcHggNXB4IDFweCAxMHB4OyI+PGI+DQpQYWRlZGEgcGFsYWlreXRpIHN2ZWlrxIUgb2TEhSBpciBrYWlsxK86PC9iPiDFoXVuxbMgcGHFoWFyYXMgZ2F1c3VzIGJpb3Rpbm8sIHJpZWJhbMWzIHLFq2fFocSNacWzIGlyIHZpdGFtaW7Fsy4NCjwvbGk+DQoNCjxsaSBzdHlsZT0icGFkZGluZzogMXB4IDVweCAxcHggMTBweDsiPjxiPg0KVmlkdXRpbmlzIHJpZWJhbMWzIGtpZWtpczo8L2I+IG1haXN0YXMgc3ViYWxhbnN1b3RhcyBub3JtYWxhdXMgYWt0eXZ1bW8gxaF1bmltcy4NCjwvbGk+DQoNCjxsaSBzdHlsZT0icGFkZGluZzogMXB4IDVweCAxcHggMTBweDsiPjxiPg0KR2VyYWkgdG9sZXJ1b2phbWFzOjwvYj4gc3VkZWRhbW9zaW9zIGRhbHlzIG5lYXBzdW5raW5hIGphdXRyaW9zIHZpcsWha2luaW1vIHNpc3RlbW9zLg0KPC9saT4NCg0KPGxpIHN0eWxlPSJwYWRkaW5nOiAxcHggNXB4IDFweCAxMHB4OyI+PGI+DQpCZSBnbGl0aW1vLjwvYj4NCjwvbGk+DQoNCjwvdWw+PC9kaXY+PC9kaXY+PC9kaXY+",
+     "_vf_enabled": "yes",
+     "_vf_cost": "9.552",
+     "_vf_personal_cost": "9.552",
+     "_vf_supplier_discount": "0.2",
+     "_vf_brand_normalized": "Josera",
+     "_vf_last_sync": "2026-06-30 06:31:57",
+     "_vf_wc_sku": "JOS0946",
+     "_vf_price_initialized": "yes",
+     "_vf_price_initialized_at": "2026-06-06 15:56:50",
+     "_vf_price_rule_used": "BRAND:Josera +DISC:20%",
+     "_vf_qty": "235"
+    }
+   },
+   {
+    "id": "19921",
+    "name": "Josera SensiPlus sausas pašaras jautrie",
+    "wh_meta": {
+     "_manage_stock": "yes",
+     "_stock": "141.000000",
+     "_stock_status": "instock",
+     "_vf_supplier_sku": "JOS0947",
+     "_vf_barcode": "403225478596",
+     "_vf_brand_raw": "JOSERA",
+     "_vf_category_raw": "Reguliarus sausas jaunų šunų maistas",
+     "_vf_cost_xml": "4.08",
+     "_vf_personal_xml": "4.08",
+     "_vf_description_base64": "PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5Kb3NlcmEgc2F1c2FzIG1haXN0YXMgxaF1bmltcyBzdSBnYXJkxb5pYSBhbnRpZW5hLCBiZSBnbGl0aW1vLiBMZW5ndmFpIHZpcsWha2luYW1hcyBpciBnZXJhaSB0b2xlcnVvamFtYXMgcGHFoWFyYXMsIHB1aWtpYWkgdGlua2FudGlzIGphdXRyacSFIHZpcsWha2luaW1vIHNpc3RlbcSFIHR1cmludGllbXMgxaF1bmltcy4gPC9wPg0KPC9kaXY+PC9kaXY+PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxzdHlsZT4uYjJiLWJsYWNrLCAuYjJiLWJsYWNrICogeyBjb2xvcjojMDAwICFpbXBvcnRhbnQ7IH08L3N0eWxlPjxkaXYgY2xhc3M9ImIyYi1ibGFjayI+PHA+PGI+U3VkxJd0aXM6PC9iPiBkxb5pb3ZpbnRpIHBhdWvFoXRpZW5vcyBiYWx0eW1haSAocGF1a8WhdGllbmEgMjQgJSwgYW50aWVuYSA0ICUpLCB2aXNvIGdyxatkbyBrdWt1csWremFpLCByecW+aWFpLCBwYXVrxaHEjWnFsyByaWViYWxhaSwgY3VrcmluacWzIHJ1bmtlbGnFsyBtaWx0YWksIGhpZHJvbGl6dW90aSBwYXVrxaHEjWnFsyBiYWx0eW1haSwgbWluZXJhbGFpLCBtYWx0b3MgY2lrb3JpasWzIMWhYWtueXMgKG5hdMWrcmFsdXMgaW51bGlubyDFoWFsdGluaXMpLjwvcD48L2Rpdj48L2Rpdj48ZGl2IHN0eWxlPSJtYXJnaW4tdG9wOjE1cHg7IGNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5BbmFsaXRpbsSXcyBzdWRlZGFtb3Npb3MgZGFseXM8L2g0PjxzdHlsZT4uYjJiLWJsYWNrLCAuYjJiLWJsYWNrICogeyBjb2xvcjojMDAwICFpbXBvcnRhbnQ7IH08L3N0eWxlPjxkaXYgY2xhc3M9ImIyYi1ibGFjayI+PHRhYmxlIHN0eWxlPSJ3aWR0aDo0NTBweDsiIGNlbGxzcGFjaW5nPSIwIj4NCiAgICA8L3RyPg0KICAgIDx0cj4NCiAgICAgICAgPHRkIHN0eWxlPSJib3JkZXItYm90dG9tOiAycHggc29saWQgI2QzZDNkMztwYWRkaW5nOiA3cHg7Ij5iYWx0eW1haTwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MjQgJTwvdGQ+DQogICAgPC90cj4NCiAgICA8dHI+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+cmllYmFsYWk8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjEyICU8L3RkPg0KICAgIDwvdHI+DQogICAgPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPsW+YWxpYSBsxIVzdGVsaWVuYTwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MiwzICU8L3RkPg0KICAgIDwvdHI+DQogICAgPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPsW+YWxpIHBlbGVuYWk8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjYsNSAlPC90ZD4NCiAgICA8L3RyPg0KICAgIDx0cj4NCiAgICAgICAgPHRkIHN0eWxlPSJib3JkZXItYm90dG9tOiAycHggc29saWQgI2QzZDNkMztwYWRkaW5nOiA3cHg7Ij5rYWxjaXM8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjEsNCAlPC90ZD4NCiAgICA8L3RyPg0KICAgIDx0cj4NCiAgICAgICAgPHRkIHN0eWxlPSJib3JkZXItYm90dG9tOiAycHggc29saWQgI2QzZDNkMztwYWRkaW5nOiA3cHg7Ij5mb3Nmb3JhczwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MCw5ICU8L3RkPg0KICAgIDwvdHI+DQogPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPm1hZ25pczwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MCwxICU8L3RkPg0KICAgIDwvdHI+DQogPHRyPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPm5hdHJpczwvdGQ+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+MCw0ICU8L3RkPg0KICAgIDwvdHI+DQo8L3RhYmxlPjwvZGl2PjwvZGl2PjxzdHlsZT4uYjJiLXRpZ2h0LCAuYjJiLXRpZ2h0ICogeyBtYXJnaW46MCAhaW1wb3J0YW50OyBwYWRkaW5nOjAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLXRpZ2h0IiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsgbWFyZ2luOjA7IHBhZGRpbmc6MDsiPjxoNCBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsgbWFyZ2luOjA7IHBhZGRpbmc6MDsiPlBhZ3JpbmRpbmlzIGFwcmHFoXltYXM8L2g0PjxzdHlsZT4uYjJiLWJsYWNrLCAuYjJiLWJsYWNrICogeyBjb2xvcjojMDAwICFpbXBvcnRhbnQ7IH08L3N0eWxlPjxkaXYgY2xhc3M9ImIyYi1ibGFjayI+PHA+PGI+Sm9zZXJhIFNlbnNpUGx1cyDigJMgPC9iPiBzYXVzYXMgcGHFoWFyYXMsIHByaXRhaWt5dGFzIGphdXRyacSFIHZpcsWha2luaW1vIHNpc3RlbcSFIHR1cmludGllbXMgxaF1bmltcy48L3A+DQoNCjx1bD4NCg0KPGxpIHN0eWxlPSJwYWRkaW5nOiAxcHggNXB4IDFweCAxMHB4OyI+PGI+DQpMZW5ndmFpIHZpcsWha2luYW1pLCBhdWvFoXRvcyBrb2t5YsSXcyBpbmdyZWRpZW50YWk8L2I+IHBhbGVuZ3ZpbmEgamF1dHJpb3MgdmlyxaFraW5pbW8gc2lzdGVtb3MgZGFyYsSFLg0KPC9saT4NCg0KPGxpIHN0eWxlPSJwYWRkaW5nOiAxcHggNXB4IDFweCAxMHB4OyI+PGI+DQpQYWRlZGEgcGFsYWlreXRpIHN2ZWlrxIUgb2TEhSBpciBrYWlsxK86PC9iPiDFoXVuxbMgcGHFoWFyYXMgZ2F1c3VzIGJpb3Rpbm8sIHJpZWJhbMWzIHLFq2fFocSNacWzIGlyIHZpdGFtaW7Fsy4NCjwvbGk+DQoNCjxsaSBzdHlsZT0icGFkZGluZzogMXB4IDVweCAxcHggMTBweDsiPjxiPg0KVmlkdXRpbmlzIHJpZWJhbMWzIGtpZWtpczo8L2I+IG1haXN0YXMgc3ViYWxhbnN1b3RhcyBub3JtYWxhdXMgYWt0eXZ1bW8gxaF1bmltcy4NCjwvbGk+DQoNCjxsaSBzdHlsZT0icGFkZGluZzogMXB4IDVweCAxcHggMTBweDsiPjxiPg0KR2VyYWkgdG9sZXJ1b2phbWFzOjwvYj4gc3VkZWRhbW9zaW9zIGRhbHlzIG5lYXBzdW5raW5hIGphdXRyaW9zIHZpcsWha2luaW1vIHNpc3RlbW9zLg0KPC9saT4NCg0KPGxpIHN0eWxlPSJwYWRkaW5nOiAxcHggNXB4IDFweCAxMHB4OyI+PGI+DQpCZSBnbGl0aW1vLjwvYj4NCjwvbGk+DQoNCjwvdWw+PC9kaXY+PC9kaXY+PC9kaXY+",
+     "_vf_enabled": "yes",
+     "_vf_cost": "3.264",
+     "_vf_personal_cost": "3.264",
+     "_vf_supplier_discount": "0.2",
+     "_vf_brand_normalized": "Josera",
+     "_vf_last_sync": "2026-06-26 06:32:02",
+     "_vf_wc_sku": "JOS0947",
+     "_vf_price_initialized": "yes",
+     "_vf_price_initialized_at": "2026-06-06 15:56:51",
+     "_vf_price_rule_used": "BRAND:Josera +DISC:20%",
+     "_vf_qty": "141"
+    }
+   }
+  ],
+  "non_vf_sample": [
+   {
+    "id": "12452",
+    "name": "Eukanuba Active Small Adult (vištiena) ",
+    "wh_meta": {
+     "_stock_status": "instock",
+     "_manage_stock": "yes",
+     "_stock": "8.000000",
+     "_zb_cost": "9.792",
+     "_zb_rrp": "15.89",
+     "_zb_qty": "8",
+     "_zb_ean": "8710255120072",
+     "_zb_brand": "Eukanuba",
+     "_zb_supplier_sku": "01A1B01030",
+     "_zb_enabled": "yes",
+     "_zb_weight": "1,0000",
+     "_zb_length": "20,0000",
+     "_zb_width": "20,0000",
+     "_zb_height": "20,0000",
+     "_zb_category": "Šunims / Šunų maistas ir skanėstai / Sausas maistas šunims",
+     "_zb_last_sync": "2026-07-01 07:02:02"
+    }
+   },
+   {
+    "id": "12453",
+    "name": "Eukanuba Medium Adult visavertis pašara",
+    "wh_meta": {
+     "_stock_status": "instock",
+     "_manage_stock": "yes",
+     "_stock": "13.000000",
+     "_zb_cost": "9.792",
+     "_zb_rrp": "15.89",
+     "_zb_qty": "13",
+     "_zb_ean": "8710255119786",
+     "_zb_brand": "Eukanuba",
+     "_zb_supplier_sku": "01A1B02031",
+     "_zb_enabled": "yes",
+     "_zb_weight": "3,0000",
+     "_zb_length": "20,0000",
+     "_zb_width": "25,0000",
+     "_zb_height": "25,0000",
+     "_zb_category": "Šunims / Šunų maistas ir skanėstai / Sausas maistas šunims",
+     "_zb_last_sync": "2026-07-01 07:02:02"
+    }
+   },
+   {
+    "id": "12454",
+    "name": "Eukanuba Mini &amp; Medium Adult (ėrien",
+    "wh_meta": {
+     "_stock_status": "instock",
+     "_manage_stock": "yes",
+     "_stock": "11.000000",
+     "_zb_cost": "9.468",
+     "_zb_rrp": "15.29",
+     "_zb_qty": "11",
+     "_zb_ean": "8710255121246",
+     "_zb_brand": "Eukanuba",
+     "_zb_supplier_sku": "01A1B09032",
+     "_zb_enabled": "yes",
+     "_zb_weight": "2,5000",
+     "_zb_length": "10,0000",
+     "_zb_width": "22,0000",
+     "_zb_height": "22,0000",
+     "_zb_category": "Šunims / Šunų maistas ir skanėstai / Sausas maistas šunims",
+     "_zb_last_sync": "2026-07-01 07:02:03"
+    }
+   }
+  ]
+ }
+}
