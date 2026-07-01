@@ -6,18 +6,29 @@ function putBin(name,buf){ const url='https://api.github.com/repos/'+repo+'/cont
 function commit(name, str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'r',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb2.json',JSON.stringify(body)); try{ execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb2.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
 (async()=>{
   const browser=await chromium.launch({args:['--no-sandbox']});
-  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1280,height:750}});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1280,height:800}});
   const page=await ctx.newPage();
-  // Krepšelyje jau turėtų būti prekė iš praeito testo; jei ne, atidarom cart
-  await page.goto('https://dev.avesa.lt/cart/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:50000}).catch(()=>{});
+  await page.goto('https://dev.avesa.lt/product/susirink-konservu-rinkini-sunims-pats/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:50000}).catch(()=>{});
+  await page.waitForTimeout(8000);
+  await page.evaluate(()=>{
+    var form = Array.from(document.querySelectorAll('.psc-form')).find(f=>f.style.display!=='none');
+    if(form){ var inputs=Array.from(form.querySelectorAll('.mnm_child_products input.qty, input[type=number]')).filter(i=>!i.disabled); if(inputs[0]){ inputs[0].value=12; inputs[0].dispatchEvent(new Event('change',{bubbles:true})); } }
+  });
+  await page.waitForTimeout(2000);
+  await page.evaluate(()=>{ var p=document.querySelector('.psc-proxy-cta'); if(p) p.click(); });
   await page.waitForTimeout(5000);
-  var probe = await page.evaluate(()=>({
-    has_edit_selections_en: document.body.textContent.includes('Edit selections') || document.body.textContent.includes('Edit Selections'),
-    has_keisti_lt: document.body.textContent.includes('Keisti pasirinkimus'),
-    cart_empty: document.body.textContent.includes('Jūsų krepšelis tuščias') || document.body.textContent.includes('krepšelyje nėra')
-  }));
-  commit('edit_check.json', JSON.stringify(probe,null,1));
-  putBin('edit_check.png', await page.screenshot({fullPage:false}));
+  // Turėtų būti krepšelyje
+  var probe = await page.evaluate(()=>{
+    var editLinks = Array.from(document.querySelectorAll('a')).filter(a=>/Edit selections|Keisti pasirinkimus/i.test(a.textContent)).map(a=>a.textContent.trim());
+    return {
+      url: window.location.href,
+      edit_links: editLinks,
+      has_en: document.body.textContent.includes('Edit selections'),
+      has_lt: document.body.textContent.includes('Keisti pasirinkimus')
+    };
+  });
+  commit('edit_final.json', JSON.stringify(probe,null,1));
+  putBin('edit_final.png', await page.screenshot({fullPage:false}));
   console.log(JSON.stringify(probe));
   await ctx.close(); await browser.close();
 })();
