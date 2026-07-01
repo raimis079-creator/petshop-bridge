@@ -1,0 +1,22 @@
+{
+ "has_add_button": true,
+ "add_button_text": "Į krepšelį",
+ "add_button_class": "single_add_to_cart_button button alt wp-element-button disabled",
+ "add_button_disabled": true,
+ "has_status": true,
+ "status_class": "mnm_cart mnm_data mnm_status",
+ "qty_input_count": 8,
+ "form_class": "mnm_form cart cart_group layout_tabular",
+ "form_data_attrs": [
+  "per_product_pricing",
+  "product_id",
+  "container_id",
+  "min_container_size",
+  "max_container_size",
+  "base_price",
+  "base_regular_price",
+  "price_data",
+  "input_name",
+  "validation_context"
+ ]
+}
