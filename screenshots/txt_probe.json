@@ -1,0 +1,42 @@
+{
+ "ts": "2026-07-01T07:49:05.995Z",
+ "snippet_id": 556,
+ "probe": {
+  "strings_location": {
+   "class-wc-mnm-meta-box-product-data.php": [
+    "Please select at least one category to use for this Mix and Match product.",
+    "Please select at least one product to use for this Mix and Match product."
+   ],
+   "class-wc-mnm-display.php": [
+    "%s items",
+    "You have selected %s items.",
+    "You have selected %s item.",
+    "%v Add to cart to continue&hellip;",
+    "%v You can select more or add to cart to continue&hellip;",
+    "%v You can select up to %max or add to cart to continue&hellip;",
+    "%v You may select between %min and %max items or add to cart to continue&hellip;",
+    "%v Please select %s items to continue&hellip;"
+   ],
+   "wc-mnm-core-functions.php": [
+    "Please select %d item to continue&hellip;",
+    "Please select %d items to continue&hellip;",
+    "Please choose between %1$d and %2$d items to continue&hellip;",
+    "Please choose at least %d item to continue&hellip;",
+    "Please choose at least %d items to continue&hellip;",
+    "Please choose fewer than %d item to continue&hellip;",
+    "Please choose fewer than %d items to continue&hellip;"
+   ],
+   "trait-wc-mnm-container-validation.php": [
+    "The configuration you have selected is not valid since &quot; %1$s(#%2$d)&quot; is not allowed as a selection. Please review your selections.",
+    "The configuration you have selected is not valid since Product #%d does not exist. Please review your selections.",
+    "The configuration you have selected is not valid since &quot;%s&quot; has a quantity of zero. Please review your selections.",
+    "The configuration you have selected is not valid since &quot;%s&quot; cannot be purchased.",
+    "The configuration you have selected is not valid since you cannot select more than %1$d of &quot;%2$s&quot;.",
+    "The configuration you have selected is not valid since you must select at least %1$d of &quot;%2$s&quot;.",
+    "The configuration you have selected is not valid since you must select &quot;%1$s&quot; in quantities of %2$d.",
+    "The configuration you have selected is not valid since &quot;%s&quot; cannot be selected."
+   ]
+  },
+  "note": "Jei string'ai .js faile — reikia wp_localize arba JS override, ne gettext"
+ }
+}
