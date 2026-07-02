@@ -1,29 +1,15 @@
 import { execSync } from "child_process"; import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'mv',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbmv.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbmv.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'jr',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbjr.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbjr.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:55000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2phdXRydXMnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CgogIGZ1bmN0aW9uIHBzY19yZXMoJHBpZCl7CiAgICBpZiAoY2xhc3NfZXhpc3RzKCdQZXRzaG9wX0Z1bGZpbGxtZW50X1NvdXJjZScpKSB7CiAgICAgIHRyeSB7ICRyID0gUGV0c2hvcF9GdWxmaWxsbWVudF9Tb3VyY2U6OnJlc29sdmUoJHBpZCk7CiAgICAgICAgaWYgKGlzX2FycmF5KCRyKSAmJiAhZW1wdHkoJHJbJ3NvdXJjZSddKSkgcmV0dXJuICRyWydzb3VyY2UnXTsKICAgICAgICBpZiAoaXNfb2JqZWN0KCRyKSAmJiAhZW1wdHkoJHItPnNvdXJjZSkpIHJldHVybiAkci0+c291cmNlOwogICAgICB9IGNhdGNoIChcVGhyb3dhYmxlICRlKSB7fQogICAgfQogICAgaWYgKGdldF9wb3N0X21ldGEoJHBpZCwnX3ZmX2VuYWJsZWQnLHRydWUpPT09J3llcycpIHJldHVybiAndmYnOwogICAgaWYgKGdldF9wb3N0X21ldGEoJHBpZCwnX3piX2VuYWJsZWQnLHRydWUpPT09J3llcycpIHJldHVybiAnemInOwogICAgJG1hbiA9IG1iX3N0cnRvbG93ZXIoZ2V0X3Bvc3RfbWV0YSgkcGlkLCdfbGVnYWN5X21hbnVmYWN0dXJlcicsdHJ1ZSkpOwogICAgaWYgKHN0cnBvcygkbWFuLCdxdWF0dHJvJykhPT1mYWxzZSkgcmV0dXJuICdxdWF0dHJvJzsKICAgIGlmIChzdHJwb3MoJG1hbiwncHJpbnMnKSE9PWZhbHNlKSByZXR1cm4gJ3ByaW5zJzsKICAgIGlmIChzdHJwb3MoJG1hbiwnYmVsYWNvcicpIT09ZmFsc2UpIHJldHVybiAnYmVsY29yX3RvZnUnOwogICAgcmV0dXJuICdsZWdhY3knOwogIH0KICBmdW5jdGlvbiBwc2NfYmxvY2soJGNhdHMsICRhdHRyX3RheCwgJGF0dHJfdGVybSl7CiAgICAkdHEgPSBhcnJheSgncmVsYXRpb24nPT4nQU5EJywgYXJyYXkoJ3RheG9ub215Jz0+J3Byb2R1Y3RfY2F0JywnZmllbGQnPT4nc2x1ZycsJ3Rlcm1zJz0+JGNhdHMsJ29wZXJhdG9yJz0+J0lOJykpOwogICAgaWYgKCRhdHRyX3RheCkgJHRxW10gPSBhcnJheSgndGF4b25vbXknPT4kYXR0cl90YXgsJ2ZpZWxkJz0+J3NsdWcnLCd0ZXJtcyc9PiRhdHRyX3Rlcm0pOwogICAgJHEgPSBuZXcgV1BfUXVlcnkoYXJyYXkoJ3Bvc3RfdHlwZSc9Pidwcm9kdWN0JywncG9zdF9zdGF0dXMnPT4ncHVibGlzaCcsJ3Bvc3RzX3Blcl9wYWdlJz0+LTEsJ2ZpZWxkcyc9PidpZHMnLCd0YXhfcXVlcnknPT4kdHEpKTsKICAgICRpZHMgPSAkcS0+cG9zdHM7IHdwX3Jlc2V0X3Bvc3RkYXRhKCk7CiAgICAkdGFsbHkgPSBhcnJheSgnbGVnYWN5Jz0+MCwndmYnPT4wLCd6Yic9PjAsJ3ByaW5zJz0+MCwncXVhdHRybyc9PjAsJ2JlbGNvcl90b2Z1Jz0+MCwna2l0YSc9PjApOwogICAgJGluc3RvY2tfYXYgPSAwOwogICAgZm9yZWFjaCAoJGlkcyBhcyAkcGlkKXsKICAgICAgJHNyYyA9IHBzY19yZXMoJHBpZCk7CiAgICAgIGlmIChpc3NldCgkdGFsbHlbJHNyY10pKSAkdGFsbHlbJHNyY10rKzsgZWxzZSAkdGFsbHlbJ2tpdGEnXSsrOwogICAgICBpZiAoJHNyYz09PSdsZWdhY3knKXsgJHA9d2NfZ2V0X3Byb2R1Y3QoJHBpZCk7IGlmKCRwICYmICRwLT5pc19pbl9zdG9jaygpKSAkaW5zdG9ja19hdisrOyB9CiAgICB9CiAgICAkdG90YWwgPSBjb3VudCgkaWRzKTsKICAgICRzb3VyY2VzX3VzZWQgPSAwOyBmb3JlYWNoKCR0YWxseSBhcyAkaz0+JHYpeyBpZigkdj4wKSAkc291cmNlc191c2VkKys7IH0KICAgIHJldHVybiBhcnJheSgndG90YWwnPT4kdG90YWwsJ3RhbGx5Jz0+JHRhbGx5LCdhdl9pbnN0b2NrJz0+JGluc3RvY2tfYXYsJ3NvdXJjZXNfdXNlZCc9PiRzb3VyY2VzX3VzZWQpOwogIH0KCiAgJHN1bmltcyA9IGFycmF5KCdtYWlzdGFzLXN1bmltcycsJ2tvbnNlcnZhaS1zdW5pbXMnLCdzYXVzYXMtbWFpc3Rhcy1zdW5pbXMnKTsKICAka2F0ZW1zID0gYXJyYXkoJ21haXN0YXMta2F0ZW1zJywna29uc2VydmFpLWthdGVtcycsJ3NhdXNhcy1tYWlzdGFzLWthdGVtcycpOwoKICAkb3V0ID0gYXJyYXkoKTsKICAkb3V0WydqYXV0cnVzX3N1bmltcyddID0gcHNjX2Jsb2NrKCRzdW5pbXMsJ3BhX3NwZWNpYWxpX21pdHliYScsJ2phdXRyaWFtLXZpcnNraW5pbXVpJyk7CiAgJG91dFsnamF1dHJ1c19rYXRlbXMnXSA9IHBzY19ibG9jaygka2F0ZW1zLCdwYV9zcGVjaWFsaV9taXR5YmEnLCdqYXV0cmlhbS12aXJza2luaW11aScpOwogICRvdXRbJ2hpcG9fc3VuaW1zJ10gICAgPSBwc2NfYmxvY2soJHN1bmltcywncGFfc3BlY2lhbGlfbWl0eWJhJywnaGlwb2FsZXJnaW5pcycpOwogICRvdXRbJ2hpcG9fa2F0ZW1zJ10gICAgPSBwc2NfYmxvY2soJGthdGVtcywncGFfc3BlY2lhbGlfbWl0eWJhJywnaGlwb2FsZXJnaW5pcycpOwogICRvdXRbJ2JlZ3J1ZHVfc3VuaW1zJ10gPSBwc2NfYmxvY2soJHN1bmltcywncGFfYmVfZ3J1ZHUnLCdiZS1ncnVkdScpOwogICRvdXRbJ2JlZ3J1ZHVfa2F0ZW1zJ10gPSBwc2NfYmxvY2soJGthdGVtcywncGFfYmVfZ3J1ZHUnLCdiZS1ncnVkdScpOwogICRvdXRbJ21vbm9fc3VuaW1zJ10gICAgPSBwc2NfYmxvY2soJHN1bmltcywncGFfbW9ub3Byb3RlaW4nLCd0YWlwJyk7CiAgJG91dFsnbW9ub19rYXRlbXMnXSAgICA9IHBzY19ibG9jaygka2F0ZW1zLCdwYV9tb25vcHJvdGVpbicsJ3RhaXAnKTsKCiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  // curl isrankaus puslapio (lengviau nei homepage), su ilgesniu timeout
-  var html = exec('curl -sk -m 30 "'+BASE+'/sprendimai/isrankus-augintinis/?nc='+Date.now()+'"');
-  out.html_len = (html||'').length;
-  out.http_ok = out.html_len > 5000;
-  // israsom Sprendimai submenu punktus is nav
-  // ieskom <a ...>Naujas šuniukas</a> ir kt. nav kontekste
-  var names = ['Naujas šuniukas','Naujas kačiukas','Išrankus augintinis','Jautrus virškinimas','Sterilizuotas augintinis','Kraiko pasirinkimas','Šuo kasosi'];
-  out.menu_presence = {};
-  names.forEach(function(n){ out.menu_presence[n] = (html.indexOf('>'+n+'<')>=0) || (html.indexOf(n)>=0 && html.indexOf('menu-item')>=0 ? html.indexOf(n)>=0 : false); });
-  // tiksliau: ar yra menu-item su siais pavadinimais
-  out.menu_exact = {};
-  names.forEach(function(n){
-    var re = new RegExp('menu-item[^>]*>\\\\s*<a[^>]*>'+n.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&'), 'i');
-    out.menu_exact[n] = re.test(html) || html.indexOf('>'+n+'</a>')>=0;
-  });
-  // page content check
-  out.hero_h1 = html.indexOf('psc-sol-hero-title')>=0;
-  out.products = (html.match(/psc-sol-product"/g)||[]).length;
-  out.bundle_cards = (html.match(/psc-sol-card"/g)||[]).length;
-  commit('menu_verify.json', JSON.stringify(out));
-  console.log(JSON.stringify(out).slice(0,400));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC JAUTRUS RECON', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 50 "'+BASE+'/?psc_jautrus=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('jautrus_recon.json', m?m[0]:(r||'').slice(0,400)); console.log('matched',!!m);
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
