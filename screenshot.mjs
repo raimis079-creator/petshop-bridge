@@ -5,7 +5,7 @@ function commitB64(name,b64){ const url='https://api.github.com/repos/'+repo+'/c
 const STAMP=process.env.STAMP||'x';
 (async()=>{
   var out={};
-  var url=BASE+'/kategorija/sunims/skanestai-sunims/';
+  var url=BASE+'/kategorija/sunims/skanestai-sunims/?nocache='+Date.now();
   try{
     const { chromium } = await import('playwright');
     const b=await chromium.launch({args:['--no-sandbox']});
