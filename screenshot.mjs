@@ -3,37 +3,13 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commitB64(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'chapply',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cba.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cba.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'menu',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbm.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbm.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000}); }catch(e){ return 'EXC:'+e.message; } }
+const code=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX21lbnUnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJG1lbnVzPXdwX2dldF9uYXZfbWVudXMoKTsKICAkb3V0PWFycmF5KCdtZW51cyc9PmFycmF5KCkpOwogIGZvcmVhY2goJG1lbnVzIGFzICRtbil7CiAgICAkaXRlbXM9d3BfZ2V0X25hdl9tZW51X2l0ZW1zKCRtbi0+dGVybV9pZCk7CiAgICAkbGlzdD1hcnJheSgpOwogICAgaWYoJGl0ZW1zKSBmb3JlYWNoKCRpdGVtcyBhcyAkaXQpewogICAgICAkbGlzdFtdPWFycmF5KCdpZCc9PiRpdC0+SUQsJ3RpdGxlJz0+JGl0LT50aXRsZSwndXJsJz0+JGl0LT51cmwsJ3BhcmVudCc9PiRpdC0+bWVudV9pdGVtX3BhcmVudCwnb3JkZXInPT4kaXQtPm1lbnVfb3JkZXIsJ3R5cGUnPT4kaXQtPnR5cGUsJ29iamVjdCc9PiRpdC0+b2JqZWN0LCdvYmplY3RfaWQnPT4kaXQtPm9iamVjdF9pZCk7CiAgICB9CiAgICAkb3V0WydtZW51cyddW109YXJyYXkoJ25hbWUnPT4kbW4tPm5hbWUsJ3NsdWcnPT4kbW4tPnNsdWcsJ3Rlcm1faWQnPT4kbW4tPnRlcm1faWQsJ2NvdW50Jz0+Y291bnQoJGxpc3QpLCdpdGVtcyc9PiRsaXN0KTsKICB9CiAgLy8gbWVuaXUgdmlldG9zIChsb2NhdGlvbnMpCiAgJG91dFsnbG9jYXRpb25zJ109Z2V0X25hdl9tZW51X2xvY2F0aW9ucygpOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  var r=exec('curl -sk "'+BASE+'/?psc_chewbuild=1&k=ps2026&confirm=TAIP"');
-  var m=r.match(/(\{.*\})/s); try{ out.apply=JSON.parse(m[0]); }catch(e){ out.raw=r.slice(0,300); }
-  // deaktyvuojam probe
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC MENU', code:code, scope:'global', active:true}));
+  exec('curl -sk -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk "'+BASE+'/?psc_menu=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('menu.json', m?m[0]:r.slice(0,500)); console.log((m?m[0]:r).slice(0,100));
   exec('curl -sk -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var pid = out.apply ? out.apply.parent_id : 0;
-  if(pid){
-    // publish
-    fs.writeFileSync('/tmp/pub.json', JSON.stringify({status:'publish'}));
-    exec('curl -sk -o /dev/null -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/pub.json "'+BASE+'/wp-json/wp/v2/product/'+pid+'"');
-    var link=exec('curl -sk -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/wp/v2/product/'+pid+'"');
-    var url=BASE+'/?p='+pid; try{ var j=JSON.parse(link); if(j.link) url=j.link; }catch(e){}
-    out.url=url;
-    try{
-      const { chromium } = await import('playwright');
-      const b=await chromium.launch({args:['--no-sandbox']});
-      const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1300,height:950}});
-      const p=await c.newPage();
-      await p.goto(url,{waitUntil:'domcontentloaded'}); await p.waitForTimeout(4500);
-      out.sections = await p.evaluate(()=> [].slice.call(document.querySelectorAll('.psc-section .psc-label')).map(function(l){return l.textContent.trim();}));
-      out.groups = await p.evaluate(()=> [].slice.call(document.querySelectorAll('.psc-group-row .psc-group-btn')).map(function(b){return b.textContent.trim();}));
-      out.sizes = await p.evaluate(()=> [].slice.call(document.querySelectorAll('.psc-size-row .psc-size-btn')).map(function(b){return b.textContent.replace(/\s+/g,' ').trim();}));
-      out.gram_hidden = await p.evaluate(()=>{ var rows=[].slice.call(document.querySelectorAll('.psc-section')); var gr=rows.find(function(s){return s.querySelector('.psc-gram-row');}); return gr?getComputedStyle(gr).display:'nėra'; });
-      const buf=await p.screenshot({fullPage:false});
-      commitB64('chewshot_1782985569.png', buf.toString('base64'));
-      await b.close();
-    }catch(e){ out.shot_err=e.message; }
-  }
-  commitB64('chapply_1782985569.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
-  console.log(JSON.stringify(out));
 })();
