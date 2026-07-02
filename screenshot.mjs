@@ -1,15 +1,39 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ar',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbar.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbar.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:30000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2F0dHJyZWNvbiddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAkb3V0PWFycmF5KCk7CgogIC8vIDEuIEtva2llIHBhXyBhdHJpYnV0YWkgZWd6aXN0dW9qYSArIGFyIHB1YmxpYy9hcmNoeXZhcwogICR0YXhlcyA9IGFycmF5KCdwYV9zcGVjaWFsaV9taXR5YmEnLCdwYV9iZV9ncnVkdScsJ3BhX21vbm9wcm90ZWluJyk7CiAgJG91dFsndGF4b25vbWllcyddPWFycmF5KCk7CiAgZm9yZWFjaCAoJHRheGVzIGFzICR0eCl7CiAgICBpZiAoIXRheG9ub215X2V4aXN0cygkdHgpKXsgJG91dFsndGF4b25vbWllcyddWyR0eF09YXJyYXkoJ2V4aXN0cyc9PmZhbHNlKTsgY29udGludWU7IH0KICAgICR0ID0gZ2V0X3RheG9ub215KCR0eCk7CiAgICAkdGVybXMgPSBnZXRfdGVybXMoYXJyYXkoJ3RheG9ub215Jz0+JHR4LCdoaWRlX2VtcHR5Jz0+ZmFsc2UpKTsKICAgICR0ZXJtbGlzdD1hcnJheSgpOwogICAgZm9yZWFjaCAoKGFycmF5KSR0ZXJtcyBhcyAkdGVybSl7CiAgICAgICRsaW5rID0gZ2V0X3Rlcm1fbGluaygkdGVybSk7CiAgICAgICR0ZXJtbGlzdFtdID0gYXJyYXkoJ25hbWUnPT4kdGVybS0+bmFtZSwnc2x1Zyc9PiR0ZXJtLT5zbHVnLCdjb3VudCc9PiR0ZXJtLT5jb3VudCwnbGluayc9PmlzX3dwX2Vycm9yKCRsaW5rKT8nRVJSJzokbGluayk7CiAgICB9CiAgICAkb3V0Wyd0YXhvbm9taWVzJ11bJHR4XT1hcnJheSgnZXhpc3RzJz0+dHJ1ZSwncHVibGljJz0+JHQtPnB1YmxpYywnaGFzX2FyY2hpdmUnPT4kdC0+cmV3cml0ZSwncXVlcnlfdmFyJz0+JHQtPnF1ZXJ5X3ZhciwndGVybXMnPT4kdGVybWxpc3QpOwogIH0KCiAgLy8gMi4gS2FpcCB2ZWlraWEgWUlUSCBmaWx0cmFzIC0ga29rcyBxdWVyeSBwYXJhbT8gUGF0aWtyaW5hbSBhciB5cmEgWUlUSCBwcmVzZXRhaQogICRvdXRbJ3lpdGhfYWN0aXZlJ10gPSBjbGFzc19leGlzdHMoJ1lJVEhfV0NBTicpIHx8IGRlZmluZWQoJ1lJVEhfV0NBTl9WRVJTSU9OJyk7CgogIC8vIDMuIEthdGVnb3JpasWzIGJhesSXcyBVUkwgKGt1ciBrbGllbnRhcyBlaXTFsyBmaWx0cnVvdGkpCiAgZm9yZWFjaCAoYXJyYXkoJ21haXN0YXMtc3VuaW1zJywnbWFpc3Rhcy1rYXRlbXMnLCdzYXVzYXMtbWFpc3Rhcy1zdW5pbXMnLCdzYXVzYXMtbWFpc3Rhcy1rYXRlbXMnKSBhcyAkY3NsdWcpewogICAgJHRlcm0gPSBnZXRfdGVybV9ieSgnc2x1ZycsJGNzbHVnLCdwcm9kdWN0X2NhdCcpOwogICAgJG91dFsnY2F0XycuJGNzbHVnXSA9ICR0ZXJtID8gZ2V0X3Rlcm1fbGluaygkdGVybSkgOiAnKG7El3JhKSc7CiAgfQoKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
+const BASE="https://dev.avesa.lt";
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ut',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbut.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbut.json "'+url+'"',{encoding:'utf8'}); }
+function testUrl(u){
+  try {
+    var code = execSync('curl -sk -o /dev/null -w "%{http_code}" -m 25 "'+u+'"',{encoding:'utf8',timeout:30000}).trim();
+    var html = execSync('curl -sk -m 25 "'+u+'"',{encoding:'utf8',maxBuffer:100000000,timeout:30000});
+    // WooCommerce produktu korteles: li.product arba .product-small
+    var prodCount = (html.match(/class="[^"]*\bproduct\b[^"]*"/g)||[]).length;
+    var liProduct = (html.match(/<li[^>]*class="[^"]*product[^"]*"/g)||[]).length;
+    var noResults = /nerasta|no products|Rezultat.*nerasta|Nieko nerasta/i.test(html);
+    var addCartBtns = (html.match(/add_to_cart_button/g)||[]).length;
+    var title = (html.match(/<title>([\s\S]*?)<\/title>/i)||[])[1]||'';
+    return {code:code, li_product:liProduct, add_cart:addCartBtns, no_results:noResults, title:title.slice(0,60), html_len:html.length};
+  } catch(e){ return {code:'EXC', err:e.message.slice(0,80)}; }
+}
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC ATTR RECON', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 25 "'+BASE+'/?psc_attrrecon=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('attr_recon.json', m?m[0]:(r||'').slice(0,400)); console.log('matched',!!m);
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var tests = {
+    // Jautriam virškinimui — kandidatai
+    'jautrus_sun_A_tax_archive': BASE+'/?taxonomy=pa_speciali_mityba&term=jautriam-virskinimui',
+    'jautrus_sun_B_cat_yith': BASE+'/kategorija/sunims/maistas-sunims/?filter_speciali-mityba=jautriam-virskinimui',
+    'jautrus_sun_C_cat_ya': BASE+'/kategorija/sunims/maistas-sunims/?product_speciali_mityba=jautriam-virskinimui',
+    'jautrus_sun_D_cat_pa': BASE+'/kategorija/sunims/maistas-sunims/?pa_speciali_mityba=jautriam-virskinimui',
+    // Be grūdų — kandidatai
+    'begrudu_sun_B_cat_yith': BASE+'/kategorija/sunims/maistas-sunims/?filter_be-grudu=be-grudu',
+    'begrudu_sun_D_cat_pa': BASE+'/kategorija/sunims/maistas-sunims/?pa_be_grudu=be-grudu',
+    // Hipoalerginis
+    'hipo_sun_B_cat_yith': BASE+'/kategorija/sunims/maistas-sunims/?filter_speciali-mityba=hipoalerginis',
+    // Monoprotein
+    'mono_sun_B_cat_yith': BASE+'/kategorija/sunims/maistas-sunims/?filter_monoprotein=taip',
+    // baseline: pati kategorija be filtro (kontrolė)
+    'baseline_maistas_sunims': BASE+'/kategorija/sunims/maistas-sunims/',
+  };
+  var out={};
+  for (var k in tests){ out[k] = {url: tests[k], ...testUrl(tests[k])}; }
+  commit('url_test.json', JSON.stringify(out));
+  console.log('done');
 })();
