@@ -1,15 +1,45 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'rm2',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbrm2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbrm2.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:30000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3JlYnVpbGRtZW51J10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogICRtZW51X2lkID0gMjMyOwogICRwYXJlbnRfaXRlbSA9IDM0MTI3OyAvLyBTUFJFTkRJTUFJIG1lbml1IHB1bmt0YXMKICAkb3V0PWFycmF5KCk7CgogIC8vIDEuIFRldmluaSBTUFJFTkRJTUFJIHB1bmt0YSBwZXJrcmVpcGlhbSBpIFdQIHB1c2xhcGkgMzQyNTMgKGJ1dm8gcHJvZHVjdF9jYXQpCiAgd3BfdXBkYXRlX25hdl9tZW51X2l0ZW0oJG1lbnVfaWQsICRwYXJlbnRfaXRlbSwgYXJyYXkoCiAgICAnbWVudS1pdGVtLXRpdGxlJz0+J1NQUkVORElNQUknLAogICAgJ21lbnUtaXRlbS1vYmplY3QnPT4ncGFnZScsCiAgICAnbWVudS1pdGVtLW9iamVjdC1pZCc9PjM0MjUzLAogICAgJ21lbnUtaXRlbS10eXBlJz0+J3Bvc3RfdHlwZScsCiAgICAnbWVudS1pdGVtLXBhcmVudC1pZCc9PjAsCiAgICAnbWVudS1pdGVtLXN0YXR1cyc9PidwdWJsaXNoJywKICApKTsKCiAgLy8gMi4gNiB2YWlrYWkgcGxhbm8gdHZhcmthIC0+IFdQIHB1c2xhcGlhaQogIC8vIHJldXNlIGVzYW11cyA0ICgzNDEzMiwzNDEzMywzNDEzNCwzNDEzNSkgKyBzdWt1cmlhbSAyIG5hdWp1cwogICRpdGVtcyA9IGFycmF5KAogICAgYXJyYXkoJ2l0ZW0nPT4zNDEzMiwgJ3RpdGxlJz0+J05hdWphcyDFoXVuaXVrYXMnLCAgICAgICAgJ3BhZ2UnPT4zNDI1OCwgJ3Bvcyc9PjEpLAogICAgYXJyYXkoJ2l0ZW0nPT4zNDEzMywgJ3RpdGxlJz0+J05hdWphcyBrYcSNaXVrYXMnLCAgICAgICAgJ3BhZ2UnPT4zNDI1OSwgJ3Bvcyc9PjIpLAogICAgYXJyYXkoJ2l0ZW0nPT4wLCAgICAgJ3RpdGxlJz0+J0nFoXJhbmt1cyBhdWdpbnRpbmlzJywgICAgJ3BhZ2UnPT4zNDI1NCwgJ3Bvcyc9PjMpLAogICAgYXJyYXkoJ2l0ZW0nPT4zNDEzNCwgJ3RpdGxlJz0+J0phdXRydXMgdmlyxaFraW5pbWFzJywgICAgJ3BhZ2UnPT4zNDI2MCwgJ3Bvcyc9PjQpLAogICAgYXJyYXkoJ2l0ZW0nPT4wLCAgICAgJ3RpdGxlJz0+J1N0ZXJpbGl6dW90YXMgYXVnaW50aW5pcycsJ3BhZ2UnPT4zNDI2MSwgJ3Bvcyc9PjUpLAogICAgYXJyYXkoJ2l0ZW0nPT4zNDEzNSwgJ3RpdGxlJz0+J0tyYWlrbyBwYXNpcmlua2ltYXMnLCAgICAncGFnZSc9PjM0MjYyLCAncG9zJz0+NiksIC8vIGJ1dm8gIsWgdW8ga2Fzb3NpIgogICk7CiAgJG91dFsnaXRlbXMnXT1hcnJheSgpOwogIGZvcmVhY2ggKCRpdGVtcyBhcyAkaXQpewogICAgJHJlcyA9IHdwX3VwZGF0ZV9uYXZfbWVudV9pdGVtKCRtZW51X2lkLCAkaXRbJ2l0ZW0nXSwgYXJyYXkoCiAgICAgICdtZW51LWl0ZW0tdGl0bGUnPT4kaXRbJ3RpdGxlJ10sCiAgICAgICdtZW51LWl0ZW0tb2JqZWN0Jz0+J3BhZ2UnLAogICAgICAnbWVudS1pdGVtLW9iamVjdC1pZCc9PiRpdFsncGFnZSddLAogICAgICAnbWVudS1pdGVtLXR5cGUnPT4ncG9zdF90eXBlJywKICAgICAgJ21lbnUtaXRlbS1wYXJlbnQtaWQnPT4kcGFyZW50X2l0ZW0sCiAgICAgICdtZW51LWl0ZW0tc3RhdHVzJz0+J3B1Ymxpc2gnLAogICAgICAnbWVudS1pdGVtLXBvc2l0aW9uJz0+JGl0Wydwb3MnXSwKICAgICkpOwogICAgJG91dFsnaXRlbXMnXVtdID0gYXJyYXkoJ3RpdGxlJz0+JGl0Wyd0aXRsZSddLCdwYWdlJz0+JGl0WydwYWdlJ10sJ3Bvcyc9PiRpdFsncG9zJ10sJ21lbnVfaXRlbV9pZCc9PmlzX3dwX2Vycm9yKCRyZXMpPygnRVJSOicuJHJlcy0+Z2V0X2Vycm9yX21lc3NhZ2UoKSk6JHJlcyk7CiAgfQoKICAvLyAzLiBQZXJza2FpdG9tIGdhbHV0aW5lIG1lbml1IHN0cnVrdHVyYSBwYXR2aXJ0aW5pbXVpCiAgJGZpbmFsID0gd3BfZ2V0X25hdl9tZW51X2l0ZW1zKCRtZW51X2lkKTsKICAkc3ByZW5kaW1haV90cmVlID0gYXJyYXkoKTsKICBmb3JlYWNoICgoYXJyYXkpJGZpbmFsIGFzICRmKXsKICAgIGlmICgkZi0+SUQgPT0gJHBhcmVudF9pdGVtIHx8ICRmLT5tZW51X2l0ZW1fcGFyZW50ID09ICRwYXJlbnRfaXRlbSl7CiAgICAgICRzcHJlbmRpbWFpX3RyZWVbXSA9IGFycmF5KCdpZCc9PiRmLT5JRCwndGl0bGUnPT4kZi0+dGl0bGUsJ3BhcmVudCc9PiRmLT5tZW51X2l0ZW1fcGFyZW50LCdvcmRlcic9PiRmLT5tZW51X29yZGVyLCd1cmwnPT4kZi0+dXJsLCdvYmonPT4kZi0+b2JqZWN0LCdvYmpfaWQnPT4kZi0+b2JqZWN0X2lkKTsKICAgIH0KICB9CiAgdXNvcnQoJHNwcmVuZGltYWlfdHJlZSwgZnVuY3Rpb24oJGEsJGIpeyByZXR1cm4gJGFbJ29yZGVyJ10tJGJbJ29yZGVyJ107IH0pOwogICRvdXRbJ2ZpbmFsX3RyZWUnXSA9ICRzcHJlbmRpbWFpX3RyZWU7CgogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
+const BASE="https://dev.avesa.lt";
+function commitB64(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'menushot',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbms.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbms.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC REBUILDMENU', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 25 "'+BASE+'/?psc_rebuildmenu=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('rebuild_menu.json', m?m[0]:(r||'').slice(0,300)); console.log('matched',!!m);
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var out={};
+  try{
+    const { chromium } = await import('playwright');
+    const b=await chromium.launch({args:['--no-sandbox']});
+    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1440,height:1000}});
+    const p=await c.newPage();
+    // atidarom pagrindini puslapi ir hover ant SPRENDIMAI
+    await p.goto(BASE+'/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:25000});
+    await p.waitForTimeout(2500);
+    // surandam SPRENDIMAI meniu punkta ir hover
+    var found = await p.evaluate(()=>{
+      var links = [].slice.call(document.querySelectorAll('a'));
+      var el = links.find(function(a){ return a.textContent.trim().toUpperCase()==='SPRENDIMAI'; });
+      if(!el) return null;
+      var r = el.getBoundingClientRect();
+      return {x: r.x + r.width/2, y: r.y + r.height/2};
+    });
+    out.sprendimai_found = !!found;
+    if (found){
+      await p.mouse.move(found.x, found.y);
+      await p.waitForTimeout(1200);
+      // surenkam dropdown punktus
+      out.dropdown_items = await p.evaluate(()=>{
+        var subs = [].slice.call(document.querySelectorAll('.nav-dropdown a, ul.sub-menu a, .sub-menu li a'));
+        return subs.map(function(a){return a.textContent.trim();}).filter(function(t){return t.length>0;});
+      });
+      const buf = await p.screenshot({clip:{x:Math.max(0,found.x-350), y:0, width:750, height:520}});
+      commitB64('menu_dropdown.png', buf.toString('base64'));
+    }
+    // patikrinam ar Isrankus puslapis atsidaro (anon, published)
+    var resp = await p.goto(BASE+'/sprendimai/isrankus-augintinis/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:25000});
+    out.isrankus_http = resp?resp.status():0;
+    await p.waitForTimeout(2000);
+    out.isrankus_h1 = await p.evaluate(()=>{ var h=document.querySelector('.psc-sol-hero-title'); return h?h.textContent.trim():'(nerasta)'; });
+    out.isrankus_products = await p.evaluate(()=> document.querySelectorAll('.psc-sol-product').length);
+    await b.close();
+  }catch(e){ out.err=e.message.slice(0,200); }
+  commitB64('menu_shot.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
+  console.log(JSON.stringify(out));
 })();
