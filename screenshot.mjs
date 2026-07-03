@@ -1,15 +1,23 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
+const WP_USER=process.env.WP_USER, WP_PASS=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbsp.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbsp.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3NwYWx2YSddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAkb3V0PWFycmF5KCk7CgogIC8vIDEuIEFyIHBhX3NwYWx2YSBhdHJpYnV0YXMgZWd6aXN0dW9qYQogICR0eD0ncGFfc3BhbHZhJzsKICBpZiAodGF4b25vbXlfZXhpc3RzKCR0eCkpewogICAgJHQ9Z2V0X3RheG9ub215KCR0eCk7CiAgICAkdGVybXM9Z2V0X3Rlcm1zKGFycmF5KCd0YXhvbm9teSc9PiR0eCwnaGlkZV9lbXB0eSc9PmZhbHNlKSk7CiAgICAkdGw9YXJyYXkoKTsKICAgIGZvcmVhY2goKGFycmF5KSR0ZXJtcyBhcyAkdGVybSl7ICR0bFtdPWFycmF5KCduYW1lJz0+JHRlcm0tPm5hbWUsJ3NsdWcnPT4kdGVybS0+c2x1ZywnY291bnQnPT4kdGVybS0+Y291bnQpOyB9CiAgICAkb3V0WydwYV9zcGFsdmEnXT1hcnJheSgnZXhpc3RzJz0+dHJ1ZSwndGVybXMnPT4kdGwpOwogIH0gZWxzZSB7CiAgICAkb3V0WydwYV9zcGFsdmEnXT1hcnJheSgnZXhpc3RzJz0+ZmFsc2UpOwogIH0KCiAgLy8gMi4gQXIgeXJhIFdvb0NvbW1lcmNlIGdsb2JhbCBhdHJpYnV0YXMgInNwYWx2YSIKICAkYXR0cl90YXhvbm9taWVzID0gd2NfZ2V0X2F0dHJpYnV0ZV90YXhvbm9taWVzKCk7CiAgJGdsb2JhbF9hdHRycz1hcnJheSgpOwogIGZvcmVhY2goJGF0dHJfdGF4b25vbWllcyBhcyAkYXQpeyAkZ2xvYmFsX2F0dHJzW109YXJyYXkoJ25hbWUnPT4kYXQtPmF0dHJpYnV0ZV9uYW1lLCdsYWJlbCc9PiRhdC0+YXR0cmlidXRlX2xhYmVsLCd0eXBlJz0+JGF0LT5hdHRyaWJ1dGVfdHlwZSk7IH0KICAkb3V0WydnbG9iYWxfYXR0cnMnXT0kZ2xvYmFsX2F0dHJzOwoKICAvLyAzLiBBciB5cmEgc3dhdGNoIHBsdWdpbiAoRmxhdHNvbWUgdmFyaWFjaWrFsyBzd2F0Y2gsIFlJVEgsIGFyIGt0KQogICRvdXRbJ2ZsYXRzb21lX2FjdGl2ZSddPWZ1bmN0aW9uX2V4aXN0cygnZmxhdHNvbWVfb3B0aW9uJykgfHwgZGVmaW5lZCgnRkxBVFNPTUVfVkVSU0lPTicpOwogICRvdXRbJ2FjdGl2ZV9wbHVnaW5zJ109YXJyYXkoKTsKICBmb3JlYWNoKGdldF9vcHRpb24oJ2FjdGl2ZV9wbHVnaW5zJyxhcnJheSgpKSBhcyAkcGwpewogICAgaWYgKHN0cmlwb3MoJHBsLCdzd2F0Y2gnKSE9PWZhbHNlIHx8IHN0cmlwb3MoJHBsLCd2YXJpYXRpb24nKSE9PWZhbHNlIHx8IHN0cmlwb3MoJHBsLCdhdHRyaWJ1dGUnKSE9PWZhbHNlKXsKICAgICAgJG91dFsnYWN0aXZlX3BsdWdpbnMnXVtdPSRwbDsKICAgIH0KICB9CgogIC8vIDQuIFRlc3RpbsSXcyBwcmVrxJdzIDY0MDQwNSBlc2FtYSBixatzZW5hIGRldGFsaWFpCiAgJHBpZD13Y19nZXRfcHJvZHVjdF9pZF9ieV9za3UoJzY0MDQwNScpOwogIGlmKCRwaWQpewogICAgJHA9d2NfZ2V0X3Byb2R1Y3QoJHBpZCk7CiAgICAkb3V0Wyd0ZXN0X3Byb2R1Y3QnXT1hcnJheSgKICAgICAgJ2lkJz0+JHBpZCwndHlwZSc9PiRwLT5nZXRfdHlwZSgpLCduYW1lJz0+JHAtPmdldF9uYW1lKCksCiAgICAgICdwcmljZSc9PiRwLT5nZXRfcHJpY2UoKSwncmVndWxhcic9PiRwLT5nZXRfcmVndWxhcl9wcmljZSgpLAogICAgICAnc2t1Jz0+JHAtPmdldF9za3UoKSwnc3RvY2snPT4kcC0+Z2V0X3N0b2NrX3F1YW50aXR5KCksCiAgICAgICdtYW5hZ2Vfc3RvY2snPT4kcC0+Z2V0X21hbmFnZV9zdG9jaygpLAogICAgICAnaW1hZ2VfaWQnPT4kcC0+Z2V0X2ltYWdlX2lkKCkKICAgICk7CiAgfQoKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'excl-audit',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cb.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/cb.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:60000}); }catch(e){ return 'EXC:'+e.message; } }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC SPALVA', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_spalva=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('spalva_recon.json', m?m[0]:(r||'').slice(0,400)); console.log('matched',!!m);
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var out={};
+  var pj = exec('curl -s -H "Authorization: Bearer '+tok+'" "https://api.github.com/repos/'+repo+'/contents/probe_payload.json?ref=main&t='+Date.now()+'"');
+  // fallback: ref=main jei SHA netinkamas
+  try{ JSON.parse(pj).content; }catch(e){ pj = exec('curl -s -H "Authorization: Bearer '+tok+'" "https://api.github.com/repos/'+repo+'/contents/probe_payload.json?ref=main&t='+Date.now()+'"'); }
+  fs.writeFileSync('/tmp/probe.json', Buffer.from(JSON.parse(pj).content.replace(/\n/g,''),'base64').toString('utf8'));
+  var up = exec('curl -sk -m 30 -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/probe.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  try{ var uj=JSON.parse(up); out.snippet={name:uj.name,active:uj.active}; }catch(e){ out.snippet_err=up.slice(0,200); }
+  await new Promise(r=>setTimeout(r,2000));
+  var pr = exec('curl -sk -m 50 "'+BASE+'/?ps_probe=ps2026"');
+  try{ out.probe=JSON.parse(pr); }catch(e){ out.probe_raw=pr.slice(0,800); }
+  var de = exec('curl -sk -m 30 -X POST -H "Authorization: '+AUTH+'" -d \'{"active":false}\' -H "Content-Type: application/json" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  try{ out.deactivated = JSON.parse(de).active===false; }catch(e){}
+  commit('excl_audit.json', JSON.stringify(out));
+  console.log('done');
 })();
