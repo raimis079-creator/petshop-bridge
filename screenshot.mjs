@@ -1,13 +1,15 @@
 import { execSync } from "child_process"; import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'yt',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbyt.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbyt.json "'+url+'"',{encoding:'utf8'}); }
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ypc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbypc.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbypc.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3l0aGNoZWNrJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogICRvdXQ9YXJyYXkoKTsKICAvLyBZSVRIIGFqYXggZmlsdGVyIHByZXNldHMgLSBkYcW+bmlhdXNpYWkgY3VzdG9tIHBvc3QgdHlwZSB5aXRoX3djYW5fcHJlc2V0CiAgJHByZXNldHMgPSBnZXRfcG9zdHMoYXJyYXkoJ3Bvc3RfdHlwZSc9Pid5aXRoX3djYW5fcHJlc2V0JywncG9zdHNfcGVyX3BhZ2UnPT4tMSwncG9zdF9zdGF0dXMnPT4nYW55JykpOwogICRwbD1hcnJheSgpOwogIGZvcmVhY2goJHByZXNldHMgYXMgJHApewogICAgJG1ldGEgPSBnZXRfcG9zdF9tZXRhKCRwLT5JRCk7CiAgICAkZmlsdGVycyA9IGdldF9wb3N0X21ldGEoJHAtPklELCd5aXRoX3djYW5fZmlsdGVycycsdHJ1ZSk7CiAgICAkcGxbXT1hcnJheSgnaWQnPT4kcC0+SUQsJ3RpdGxlJz0+JHAtPnBvc3RfdGl0bGUsJ3N0YXR1cyc9PiRwLT5wb3N0X3N0YXR1cywnaGFzX2ZpbHRlcnNfbWV0YSc9PiFlbXB0eSgkZmlsdGVycykpOwogIH0KICAkb3V0WydwcmVzZXRzJ109JHBsOwoKICAvLyBLYXRlZ29yaWphaSAxMDYgcHJpc2tpcnRhcyBwcmVzZXQgKGRhxb5uYWkgcGVyIHRlcm0gbWV0YSkKICAkdGVybV9tZXRhID0gZ2V0X3Rlcm1fbWV0YSgxMDYpOwogICRvdXRbJ2NhdF8xMDZfdGVybV9tZXRhX2tleXMnXT1hcnJheV9rZXlzKCR0ZXJtX21ldGEpOwogIGZvcmVhY2goJHRlcm1fbWV0YSBhcyAkaz0+JHYpewogICAgaWYoc3RyaXBvcygkaywneWl0aCcpIT09ZmFsc2UgfHwgc3RyaXBvcygkaywnZmlsdGVyJykhPT1mYWxzZSB8fCBzdHJpcG9zKCRrLCdwcmVzZXQnKSE9PWZhbHNlKXsKICAgICAgJG91dFsnY2F0XzEwNl9yZWxldmFudF9tZXRhJ11bJGtdPSR2OwogICAgfQogIH0KCiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  // Ištraukiam href su filter_tipas iš kategorijos HTML
-  var html = execSync('curl -sk -m 40 "'+BASE+'/kategorija/katems/tualetai-kraikai-semtuveliai/?nc='+Date.now()+'"',{encoding:'utf8',maxBuffer:50000000});
-  var hrefs = html.match(/href="[^"]*filter_tipas[^"]*"/gi) || [];
-  out.raw_hrefs = [...new Set(hrefs)].slice(0,10);
-  commit('yith_tipas_hrefs.json', JSON.stringify(out));
-  console.log('hrefs:', out.raw_hrefs.length);
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC YTHCHECK', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_ythcheck=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('yith_preset_check.json', m?m[0]:(r||'').slice(0,600)); console.log('matched',!!m,r.length);
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
