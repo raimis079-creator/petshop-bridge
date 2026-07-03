@@ -1,15 +1,21 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cwc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcwc.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcwc.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:40000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2NsZWFyY2FjaGUnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJG91dD1hcnJheSgpOwoKICAvLyAxLiBQZXJza2FpxI1pdW90aSBwYV90aXBhcyB0ZXJtaW7FsyBjb3VudAogICR0ZXJtcyA9IGdldF90ZXJtcyhhcnJheSgndGF4b25vbXknPT4ncGFfdGlwYXMnLCdoaWRlX2VtcHR5Jz0+ZmFsc2UsJ2ZpZWxkcyc9PidpZHMnKSk7CiAgd3BfdXBkYXRlX3Rlcm1fY291bnRfbm93KCR0ZXJtcywgJ3BhX3RpcGFzJyk7CiAgJG91dFsncmVjb3VudGVkX3Rlcm1zJ109Y291bnQoJHRlcm1zKTsKCiAgLy8gMi4gScWhdmFseXRpIFdDIHByb2R1a3TFsyB0cmFuc2llbnQndXMKICB3Y19kZWxldGVfcHJvZHVjdF90cmFuc2llbnRzKCk7CiAgJG91dFsndHJhbnNpZW50c19jbGVhcmVkJ109dHJ1ZTsKCiAgLy8gMy4gSmVpIHlyYSBsb29rdXAgdGFibGUgYXRuYXVqaW5pbW8gZnVua2NpamEKICBpZiAoZnVuY3Rpb25fZXhpc3RzKCd3Y191cGRhdGVfcHJvZHVjdF9sb29rdXBfdGFibGVzJykpIHsKICAgIC8vIMWhaXRhcyBnYWxpIHXFvnRydWt0aSAtIHByYWxlaWTFvmlhbSBwaWxuxIUsIGJldCBwYXRpa3JpbmFtIGFyIGZ1bmtjaWphIHlyYQogICAgJG91dFsnbG9va3VwX2ZuX2V4aXN0cyddPXRydWU7CiAgfQoKICAvLyA0LiBJxaF2YWxvbSBiZXQga29rxK8gb2JqZWN0IGNhY2hlCiAgd3BfY2FjaGVfZmx1c2goKTsKICAkb3V0WydvYmplY3RfY2FjaGVfZmx1c2hlZCddPXRydWU7CgogIC8vIDUuIFlJVEggc3BlY2lmaW5pcyBjYWNoZSAoamVpIHlyYSB0cmFuc2llbnQgcmFrdMWzIHN1IHdjYW4pCiAgZ2xvYmFsICR3cGRiOwogICRkZWwgPSAkd3BkYi0+cXVlcnkoIkRFTEVURSBGUk9NIHskd3BkYi0+b3B0aW9uc30gV0hFUkUgb3B0aW9uX25hbWUgTElLRSAnX3RyYW5zaWVudF95aXRoX3djYW4lJyBPUiBvcHRpb25fbmFtZSBMSUtFICdfdHJhbnNpZW50X3RpbWVvdXRfeWl0aF93Y2FuJSciKTsKICAkb3V0Wyd5aXRoX3RyYW5zaWVudHNfZGVsZXRlZCddPSRkZWw7CgogIC8vIDYuIFBhdGlrcmEgcG8gacWhdmFseW1vIC0ga2llayBwcm9kdWt0xbMgcmVhbGlhaSBrYXRlZ29yaWpvamUgMTA2IHN1IHRlcm1pbnUgdXpkYXJhcy1uYW1lbGlzCiAgJHRlcm0gPSBnZXRfdGVybV9ieSgnc2x1ZycsJ3V6ZGFyYXMtbmFtZWxpcycsJ3BhX3RpcGFzJyk7CiAgJG91dFsndGVybV9jb3VudF9hZnRlciddPSAkdGVybSA/ICR0ZXJtLT5jb3VudCA6ICdOT1RfRk9VTkQnOwoKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
+const BASE="https://dev.avesa.lt";
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cac',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcac.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcac.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC CLEARCACHE', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 35 "'+BASE+'/?psc_clearcache=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('clear_cache.json', m?m[0]:(r||'').slice(0,400)); console.log('matched',!!m);
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var out={};
+  var url = 'https://dev.avesa.lt/kategorija/katems/tualetai-kraikai-semtuveliai?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai&query_type_tipas=or&filter_tipas=uzdaras-namelis';
+  try{
+    const { chromium } = await import('playwright');
+    const b=await chromium.launch({args:['--no-sandbox']});
+    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:900}});
+    const p=await c.newPage();
+    await p.goto(url,{waitUntil:'domcontentloaded',timeout:40000});
+    await p.waitForTimeout(5000);
+    out.result = await p.evaluate(()=>{ var rc=document.querySelector('.woocommerce-result-count'); return rc?rc.textContent.trim():'(nerasta)'; });
+    out.product_count = await p.evaluate(()=>document.querySelectorAll('ul.products li.product').length);
+    await b.close();
+  }catch(e){ out.err=e.message.slice(0,150); }
+  commit('click_after_cache.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
+  console.log(JSON.stringify(out));
 })();
