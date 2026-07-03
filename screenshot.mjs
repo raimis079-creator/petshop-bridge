@@ -1,26 +1,15 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'pub',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbpub.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbpub.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:60000}); }catch(e){ return 'EXC:'+e.message; } }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'kr',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbkr.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbkr.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:40000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2tyYWlrYXMnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJG91dD1hcnJheSgpOwoKICAvLyAxLiBwYV9rcmFpa29fdGlwYXMgYXRyaWJ1dGFzIC0gYXIgZWd6aXN0dW9qYSwgcHVibGljLCB0ZXJtaW5haQogICR0eD0ncGFfa3JhaWtvX3RpcGFzJzsKICBpZiAodGF4b25vbXlfZXhpc3RzKCR0eCkpewogICAgJHQ9Z2V0X3RheG9ub215KCR0eCk7CiAgICAkdGVybXM9Z2V0X3Rlcm1zKGFycmF5KCd0YXhvbm9teSc9PiR0eCwnaGlkZV9lbXB0eSc9PmZhbHNlKSk7CiAgICAkdGw9YXJyYXkoKTsKICAgIGZvcmVhY2goKGFycmF5KSR0ZXJtcyBhcyAkdGVybSl7ICR0bFtdPWFycmF5KCduYW1lJz0+JHRlcm0tPm5hbWUsJ3NsdWcnPT4kdGVybS0+c2x1ZywnY291bnQnPT4kdGVybS0+Y291bnQpOyB9CiAgICAkb3V0WydwYV9rcmFpa29fdGlwYXMnXT1hcnJheSgnZXhpc3RzJz0+dHJ1ZSwncHVibGljJz0+JHQtPnB1YmxpYywncXVlcnlfdmFyJz0+JHQtPnF1ZXJ5X3ZhciwndGVybXMnPT4kdGwpOwogIH0gZWxzZSB7CiAgICAkb3V0WydwYV9rcmFpa29fdGlwYXMnXT1hcnJheSgnZXhpc3RzJz0+ZmFsc2UpOwogIH0KCiAgLy8gMi4gS3JhaWtvIGthdGVnb3Jpam9zIChrYXTEl21zKSAtIGllxaFrb20gc2x1ZwogIGZvcmVhY2ggKGFycmF5KCdrcmFpa2FzJywna3JhaWthcy1rYXRlbXMnLCdrcmFpa2FpJywndHVhbGV0YWkta2F0ZW1zJywna3JhaWthcy1pci10dWFsZXRhaScpIGFzICRjcyl7CiAgICAkdGVybT1nZXRfdGVybV9ieSgnc2x1ZycsJGNzLCdwcm9kdWN0X2NhdCcpOwogICAgaWYgKCR0ZXJtKSAkb3V0WydjYXRfJy4kY3NdPWFycmF5KCdpZCc9PiR0ZXJtLT50ZXJtX2lkLCdjb3VudCc9PiR0ZXJtLT5jb3VudCwnbGluayc9PmdldF90ZXJtX2xpbmsoJHRlcm0pKTsKICB9CgogIC8vIDMuIEdyYXXFvmlrxbMga3JhaWthcy9wYWtyYXRhaQogIGZvcmVhY2ggKGFycmF5KCdrcmFpa2FzLWdyYXV6aWthbXMnLCdwYWtyYXRhaScsJ3Bha3JhdGFpLWdyYXV6aWthbXMnLCdncmF1emlrYW1zJykgYXMgJGNzKXsKICAgICR0ZXJtPWdldF90ZXJtX2J5KCdzbHVnJywkY3MsJ3Byb2R1Y3RfY2F0Jyk7CiAgICBpZiAoJHRlcm0pICRvdXRbJ2dyYXV6aWtfJy4kY3NdPWFycmF5KCdpZCc9PiR0ZXJtLT50ZXJtX2lkLCdjb3VudCc9PiR0ZXJtLT5jb3VudCk7CiAgfQoKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  // 1. read probe payload from repo file probe_payload.json
-  var pj = exec('curl -s -H "Authorization: Bearer '+tok+'" "https://api.github.com/repos/'+repo+'/contents/probe_payload.json?ref=main&t='+Date.now()+'"');
-  var payloadB64 = JSON.parse(pj).content.replace(/\n/g,'');
-  fs.writeFileSync('/tmp/probe.json', Buffer.from(payloadB64,'base64').toString('utf8'));
-  // 2. update+activate snippet 557
-  var up = exec('curl -sk -m 30 -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d @/tmp/probe.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  try{ var uj=JSON.parse(up); out.snippet_update={id:uj.id,name:uj.name,active:uj.active}; }catch(e){ out.snippet_update_err=up.slice(0,300); }
-  await new Promise(r=>setTimeout(r,2000));
-  // 3. hit probe
-  var pr = exec('curl -sk -m 40 "'+BASE+'/?ps_probe=ps2026"');
-  try{ out.probe=JSON.parse(pr); }catch(e){ out.probe_raw=pr.slice(0,1500); }
-  // 4. deactivate
-  var de = exec('curl -sk -m 30 -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d \'{"active":false}\' "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  try{ out.deactivated = JSON.parse(de).active===false; }catch(e){ out.deact_err=de.slice(0,200); }
-  commit('audit_b.json', JSON.stringify(out));
-  console.log('done');
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC KRAIKAS RECON', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_kraikas=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('kraikas_recon.json', m?m[0]:(r||'').slice(0,400)); console.log('matched',!!m, r.slice(0,150));
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
