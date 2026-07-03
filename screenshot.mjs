@@ -1,18 +1,25 @@
 import { execSync } from "child_process"; import fs from "fs";
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const BASE="https://dev.avesa.lt";
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'au',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbau.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbau.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:45000}); }catch(e){ return 'EXC:'+e.message; } }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'at',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbat.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbat.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
   var out={};
-  // 1. Ištraukiam href su "jauniems" iš maistas-sunims kategorijos HTML
-  var html = exec('curl -sk -m 40 "'+BASE+'/kategorija/sunims/maistas-sunims/?nc='+Date.now()+'"');
-  out.html_len=html.length;
-  var hrefs = html.match(/href="[^"]*jauniems[^"]*"/gi) || [];
-  out.jauniems_hrefs = hrefs.slice(0,4);
-  // ieškom ir kitų amzius param variantų
-  var amzHrefs = html.match(/href="[^"]*filter_amzius[^"]*"/gi) || [];
-  out.filter_amzius_hrefs = amzHrefs.slice(0,4);
-  commit('amzius_url.json', JSON.stringify(out));
-  console.log('hrefs found:', out.jauniems_hrefs.length);
+  var url = BASE+'/kategorija/sunims/maistas-sunims?yith_wcan=1&product_cat=maistas-sunims&query_type_amzius=or&filter_amzius=jauniems';
+  try{
+    const { chromium } = await import('playwright');
+    const b=await chromium.launch({args:['--no-sandbox']});
+    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:900}});
+    const p=await c.newPage();
+    var ok=false;
+    for(var i=0;i<3&&!ok;i++){
+      try{ await p.goto(url,{waitUntil:'domcontentloaded',timeout:40000}); await p.waitForTimeout(4000);
+        out.result=await p.evaluate(()=>{ var rc=document.querySelector('.woocommerce-result-count'); return rc?rc.textContent.trim():''; });
+        out.first_titles=await p.evaluate(()=> [].slice.call(document.querySelectorAll('ul.products li.product .name a, ul.products li.product h2')).slice(0,3).map(function(e){return e.textContent.trim().slice(0,50);}));
+        ok=true;
+      }catch(e){ out.err=(out.err||'')+' | '+e.message.slice(0,40); await p.waitForTimeout(6000); }
+    }
+    await b.close();
+  }catch(e){ out.fatal=e.message.slice(0,150); }
+  commit('amzius_test.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
+  console.log(JSON.stringify(out));
 })();
