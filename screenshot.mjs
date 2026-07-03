@@ -3,13 +3,30 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcc.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcc.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'elt',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbelt.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbelt.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2NtcGNhdCddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAkb3V0PWFycmF5KCk7CgogIC8vIFZFSUtJQToga2F0IDEwNyBrcmFpa2FpLWthY2l1LXR1YWxldGFtcyArIGtyYWlrb190aXBhcwogIC8vIE5FVkVJS0lBOiBrYXQgMTA2IHR1YWxldGFpLWtyYWlrYWktc2VtdHV2ZWxpYWkgKyB0aXBhcwogIGZvcmVhY2goYXJyYXkoJzEwNic9Pid0dWFsZXRhaS1rcmFpa2FpLXNlbXR1dmVsaWFpJywnMTA3Jz0+J2tyYWlrYWkta2FjaXUtdHVhbGV0YW1zJykgYXMgJGNpZD0+JGNzbHVnKXsKICAgICRpbmZvPWFycmF5KCdzbHVnJz0+JGNzbHVnKTsKICAgICR0ZXJtID0gZ2V0X3Rlcm0oJGNpZCwncHJvZHVjdF9jYXQnKTsKICAgICRpbmZvWyduYW1lJ109JHRlcm0tPm5hbWU7CiAgICAkaW5mb1snY291bnQnXT0kdGVybS0+Y291bnQ7CgogICAgLy8ga29rcyBwcmVzZXQgcHJpc2tpcnRhcyAocGVyIHNuaXBwZXQgZnVua2NpasSFLCBqZWkgamkgZWd6aXN0dW9qYSB2ZWlraWFuxI1pYW0ga29udGVrc3RlIC0gbmVnYWxpbSDEjWlhLCBiZXQgZ2FsaW0gdGlrcmludGkgZGlzcGxheV90eXBlKQogICAgJGluZm9bJ2Rpc3BsYXlfdHlwZSddPWdldF90ZXJtX21ldGEoJGNpZCwnZGlzcGxheV90eXBlJyx0cnVlKTsKCiAgICAvLyBwYXZ5emRpbmlzIHByb2R1a3RhcyBzdSB0aXB1L2tyYWlrb190aXB1IC0gYXIgdGVybWluYXMgdGVpc2luZ29qIHRha3Nvbm9taWpvagogICAgJHEgPSBuZXcgV1BfUXVlcnkoYXJyYXkoJ3Bvc3RfdHlwZSc9Pidwcm9kdWN0JywncG9zdF9zdGF0dXMnPT4ncHVibGlzaCcsJ3Bvc3RzX3Blcl9wYWdlJz0+MywnZmllbGRzJz0+J2lkcycsCiAgICAgICd0YXhfcXVlcnknPT5hcnJheShhcnJheSgndGF4b25vbXknPT4ncHJvZHVjdF9jYXQnLCdmaWVsZCc9Pid0ZXJtX2lkJywndGVybXMnPT4kY2lkKSksJ25vX2ZvdW5kX3Jvd3MnPT50cnVlKSk7CiAgICAkc2FtcGxlcz1hcnJheSgpOwogICAgZm9yZWFjaCgkcS0+cG9zdHMgYXMgJHBpZCl7CiAgICAgICR0aXBhcyA9IHdwX2dldF9wb3N0X3Rlcm1zKCRwaWQsJ3BhX3RpcGFzJyxhcnJheSgnZmllbGRzJz0+J3NsdWdzJykpOwogICAgICAka3RpcGFzID0gd3BfZ2V0X3Bvc3RfdGVybXMoJHBpZCwncGFfa3JhaWtvX3RpcGFzJyxhcnJheSgnZmllbGRzJz0+J3NsdWdzJykpOwogICAgICAkc2FtcGxlc1tdPWFycmF5KCdpZCc9PiRwaWQsJ3BhX3RpcGFzJz0+JHRpcGFzLCdwYV9rcmFpa29fdGlwYXMnPT4ka3RpcGFzKTsKICAgIH0KICAgIHdwX3Jlc2V0X3Bvc3RkYXRhKCk7CiAgICAkaW5mb1snc2FtcGxlcyddPSRzYW1wbGVzOwogICAgJG91dFskY2lkXT0kaW5mbzsKICB9CgogIC8vIEFyIHBhX3RpcGFzIHRha3Nvbm9taWphIHB1YmxpYy9xdWVyeV92YXIgKGdhbGkgYsWrdGkgcHJpZcW+YXN0aXMpCiAgJHRheF90aXBhcyA9IGdldF90YXhvbm9teSgncGFfdGlwYXMnKTsKICAkdGF4X2tyYWlrbyA9IGdldF90YXhvbm9teSgncGFfa3JhaWtvX3RpcGFzJyk7CiAgJG91dFsndGF4X3BhX3RpcGFzJ109YXJyYXkoJ3B1YmxpYyc9PiR0YXhfdGlwYXMtPnB1YmxpYywncXVlcnlfdmFyJz0+JHRheF90aXBhcy0+cXVlcnlfdmFyLCdyZXdyaXRlJz0+JHRheF90aXBhcy0+cmV3cml0ZSk7CiAgJG91dFsndGF4X3BhX2tyYWlrb190aXBhcyddPWFycmF5KCdwdWJsaWMnPT4kdGF4X2tyYWlrby0+cHVibGljLCdxdWVyeV92YXInPT4kdGF4X2tyYWlrby0+cXVlcnlfdmFyLCdyZXdyaXRlJz0+JHRheF9rcmFpa28tPnJld3JpdGUpOwoKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3RyYWNlJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogIC8vIE51c3RhdG9tIHNhdm8gbG9nIGZhaWzEhSBpciDEr2p1bmdpYW0ga2xhaWTFsyBmaWtzYXZpbcSFCiAgQGluaV9zZXQoJ2xvZ19lcnJvcnMnLCcxJyk7CiAgQGluaV9zZXQoJ2Vycm9yX2xvZycsIFdQX0NPTlRFTlRfRElSLicvcHNjX3RyYWNlLmxvZycpOwogIGVycm9yX3JlcG9ydGluZyhFX0FMTCk7CiAgLy8gacWhdmFsb20gc2VuxIUKICBAdW5saW5rKFdQX0NPTlRFTlRfRElSLicvcHNjX3RyYWNlLmxvZycpOwogIC8vIHByaWRlZGFtIGhvb2snxIUga3VyaXMgZmlrc3VvcyBZSVRIIGZpbHRlciBxdWVyeQogIGFkZF9hY3Rpb24oJ3ByZV9nZXRfcG9zdHMnLCBmdW5jdGlvbigkcSl7CiAgICBpZiAoaXNzZXQoJF9SRVFVRVNUWydmaWx0ZXJfdGlwYXMnXSkpIHsKICAgICAgZXJyb3JfbG9nKCdZSVRIX1RSQUNFIHByZV9nZXRfcG9zdHM6IHRheF9xdWVyeT0nLndwX2pzb25fZW5jb2RlKCRxLT5nZXQoJ3RheF9xdWVyeScpKS4nIHwgZmlsdGVyX3RpcGFzPScuJF9SRVFVRVNUWydmaWx0ZXJfdGlwYXMnXSk7CiAgICB9CiAgfSwgOTk5KTsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCd0cmFjZV9lbmFibGVkJz0+dHJ1ZSwnbG9nJz0+V1BfQ09OVEVOVF9ESVIuJy9wc2NfdHJhY2UubG9nJykpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC CMPCAT', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_cmpcat=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('compare_cats.json', m?m[0]:(r||'').slice(0,600)); console.log('matched',!!m);
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var out={};
+  // Šitas snippet turi likti AKTYVUS per AJAX, tad NEtriname jo iškart. Naudojam kitą slot - 556.
+  fs.writeFileSync('/tmp/b556.json', JSON.stringify({name:'PSC TRACE', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b556.json "'+BASE+'/wp-json/code-snippets/v1/snippets/556"');
+  // aktyvuojam trace
+  var r=exec('curl -sk -m 25 "'+BASE+'/?psc_trace=1&k=ps2026"');
+  out.enable = r.slice(0,150);
+  // dabar simuliuojam filtro AJAX per naršyklę
+  try{
+    const { chromium } = await import('playwright');
+    const b=await chromium.launch({args:['--no-sandbox']});
+    const c=await b.newContext({ignoreHTTPSErrors:true});
+    const p=await c.newPage();
+    await p.goto(BASE+'/kategorija/katems/tualetai-kraikai-semtuveliai/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:40000});
+    await p.waitForTimeout(4000);
+    var links = await p.$$('a');
+    for (var l of links){ var txt=await l.textContent(); if(txt && txt.trim()==='Uždaras tualetas / namelis'){ await l.click(); break; } }
+    await p.waitForTimeout(6000);
+    await b.close();
+  }catch(e){ out.click_err=e.message.slice(0,80); }
+  commit('trace_enabled.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
+  console.log(JSON.stringify(out).slice(0,300));
 })();
