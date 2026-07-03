@@ -1,16 +1,13 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'c20f',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbc20f.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbc20f.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:25000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2MyMDEwNWYnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJHBpZCA9IHdjX2dldF9wcm9kdWN0X2lkX2J5X3NrdSgnMjAxMDUnKTsKICAkdGlwYXMgPSB3cF9nZXRfcG9zdF90ZXJtcygkcGlkLCdwYV90aXBhcycsYXJyYXkoJ2ZpZWxkcyc9PiduYW1lcycpKTsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdpZCc9PiRwaWQsJ3BhX3RpcGFzJz0+JHRpcGFzKSk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
+const BASE="https://dev.avesa.lt";
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'yt',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbyt.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbyt.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC C20105F', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 20 "'+BASE+'/?psc_c20105f=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('c20105f.json', m?m[0]:(r||'').slice(0,300));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  console.log(m?m[0]:r);
+  var out={};
+  // Ištraukiam href su filter_tipas iš kategorijos HTML
+  var html = execSync('curl -sk -m 40 "'+BASE+'/kategorija/katems/tualetai-kraikai-semtuveliai/?nc='+Date.now()+'"',{encoding:'utf8',maxBuffer:50000000});
+  var hrefs = html.match(/href="[^"]*filter_tipas[^"]*"/gi) || [];
+  out.raw_hrefs = [...new Set(hrefs)].slice(0,10);
+  commit('yith_tipas_hrefs.json', JSON.stringify(out));
+  console.log('hrefs:', out.raw_hrefs.length);
 })();
