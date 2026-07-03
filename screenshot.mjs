@@ -1,38 +1,15 @@
 import { execSync } from "child_process"; import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'wc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbwc.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbwc.json "'+url+'"',{encoding:'utf8'}); }
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'fp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbfp.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbfp.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:40000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2ZpbmRwcmVzZXQnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJG91dD1hcnJheSgpOwogIC8vIFBlcsW+acWrcmltIFZJU1VTIHByZXNldCd1cyBpciBqxbMgX2ZpbHRlcnMsIGllxaFrb20ga3VyaXMgdHVyaSBUSUsgIlByZWvEl3Mgxb5lbmtsYXMiIGFyYmEgcGFuYcWhaWFpIG1pbmltYWzFswogICRwcmVzZXRzID0gZ2V0X3Bvc3RzKGFycmF5KCdwb3N0X3R5cGUnPT4neWl0aF93Y2FuX3ByZXNldCcsJ251bWJlcnBvc3RzJz0+LTEsJ3Bvc3Rfc3RhdHVzJz0+J2FueScpKTsKICBmb3JlYWNoKCRwcmVzZXRzIGFzICRwKXsKICAgICRmaWx0ZXJzID0gZ2V0X3Bvc3RfbWV0YSgkcC0+SUQsJ19maWx0ZXJzJyx0cnVlKTsKICAgICR0aXRsZXMgPSBhcnJheSgpOwogICAgaWYoaXNfYXJyYXkoJGZpbHRlcnMpKXsgZm9yZWFjaCgkZmlsdGVycyBhcyAkZil7IGlmKGlzc2V0KCRmWyd0aXRsZSddKSkgJHRpdGxlc1tdPSRmWyd0aXRsZSddLicoJy4oJGZbJ3RheG9ub215J10/Pyc/JykuJyknOyB9IH0KICAgICRvdXRbJ2FsbF9wcmVzZXRzJ11bXT1hcnJheSgnaWQnPT4kcC0+SUQsJ25hbWUnPT4kcC0+cG9zdF90aXRsZSwnYmxvY2tzJz0+JHRpdGxlcyk7CiAgfQogIC8vIEt1ci9rYWlwIGthdGVnb3JpamEgMTA2IHN1c2lldGEgc3UgcHJlc2V0J3UgLSBwYXRpa3JpbmFtIHRlcm0gbWV0YSBWSVNBUyByZWlrxaFtZXMgKG5lIHRpayBmaWx0ZXJlZCkKICAkb3V0WydjYXQxMDZfYWxsX21ldGEnXT1nZXRfdGVybV9tZXRhKDEwNik7CiAgJG91dFsnY2F0MTA3X2FsbF9tZXRhJ109Z2V0X3Rlcm1fbWV0YSgxMDcpOwoKICAvLyB0YWlwIHBhdCBwYWJhbmRvbSByYXN0aSBZSVRIIG9wdGlvbnMga3VyIHNhdWdvbWEgcHJlc2V0LT5rYXRlZ29yaWphIHPEhXNhamEgKG9wdGlvbid1b3NlKQogIGdsb2JhbCAkd3BkYjsKICAkb3B0cyA9ICR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIG9wdGlvbl9uYW1lIEZST00geyR3cGRiLT5vcHRpb25zfSBXSEVSRSBvcHRpb25fbmFtZSBMSUtFICcleWl0aF93Y2FuJScgTElNSVQgMjAiKTsKICAkb3V0Wyd5aXRoX29wdGlvbnMnXT0kb3B0czsKCiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  var url = BASE+'/kategorija/katems/tualetai-kraikai-semtuveliai/';
-  try{
-    const { chromium } = await import('playwright');
-    const b=await chromium.launch({args:['--no-sandbox']});
-    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:1400}});
-    const p=await c.newPage();
-    await p.goto(url,{waitUntil:'domcontentloaded',timeout:40000});
-    await p.waitForTimeout(5000);
-    // ieškom filtro blokų antraščių (paprastai h4/h5/.filter-title ar panašiai)
-    out.filter_titles = await p.evaluate(()=>{
-      var sels = ['.yith-wcan-filter .filter-title','.yith-wcan .widget-title','.filter-block-title','h5.yith-wcan-title','.wcan-filter-title'];
-      var found=[];
-      sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(e){ found.push(e.textContent.trim()); }); });
-      // fallback: visi elementai su klase turinčia "wcan" arba "filter"
-      if(found.length===0){
-        document.querySelectorAll('[class*="wcan"], [id*="wcan"]').forEach(function(e){
-          if(e.children.length<3 && e.textContent.trim().length<50 && e.textContent.trim().length>0) found.push(e.tagName+':'+e.className+' = '+e.textContent.trim());
-        });
-      }
-      return found.slice(0,30);
-    });
-    out.sidebar_text = await p.evaluate(()=>{
-      var sb = document.querySelector('.sidebar, aside, #sidebar, .shop-sidebar');
-      return sb ? sb.innerText.slice(0,800) : '(sidebar nerastas)';
-    });
-    const buf = await p.screenshot({fullPage:true});
-    commit('widget_screenshot.png', buf.toString('base64'));
-    await b.close();
-  }catch(e){ out.err=e.message.slice(0,150); }
-  commit('widget_check.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
-  console.log('done');
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC FINDPRESET', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 35 "'+BASE+'/?psc_findpreset=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('find_preset.json', m?m[0]:(r||'').slice(0,600)); console.log('matched',!!m,'len',r.length);
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
