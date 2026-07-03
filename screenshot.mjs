@@ -1,31 +1,15 @@
 import { execSync } from "child_process"; import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ft',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbft.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbft.json "'+url+'"',{encoding:'utf8'}); }
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'dc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbdc.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbdc.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2RpYWdjYWNoZSddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAkb3V0PWFycmF5KCk7CiAgZ2xvYmFsICR3cGRiOwoKICAvLyAxLiBBciBzbmlwcGV0IDMzMiBrb2RlIERCIHJlYWxpYWkgdHVyaSB2MTggKHBhdGlrcmEgacWhIG5hdWpvKQogICRyb3cgPSAkd3BkYi0+Z2V0X3JvdygiU0VMRUNUIGlkLCBuYW1lLCBjb2RlLCBhY3RpdmUgRlJPTSB7JHdwZGItPnByZWZpeH1zbmlwcGV0cyBXSEVSRSBpZD0zMzIiKTsKICAkb3V0WydkYl9uYW1lJ109JHJvdy0+bmFtZTsKICAkb3V0WydkYl9hY3RpdmUnXT0kcm93LT5hY3RpdmU7CiAgJG91dFsnZGJfaGFzX3YxOF9ydWxlJ109IChzdHJwb3MoJHJvdy0+Y29kZSwgInR1YWxldGFpLWtyYWlrYWknKSAhPT0gZmFsc2UiKSAhPT0gZmFsc2UpID8gJ3llcycgOiAnbm8nOwoKICAvLyAyLiBjb2RlIHNuaXBwZXRzIHRyYW5zaWVudCAvIGNhY2hlIHJha3RhaQogICR0cmFucyA9ICR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIG9wdGlvbl9uYW1lIEZST00geyR3cGRiLT5vcHRpb25zfSBXSEVSRSBvcHRpb25fbmFtZSBMSUtFICclc25pcHBldHMlY2FjaGUlJyBPUiBvcHRpb25fbmFtZSBMSUtFICclX3RyYW5zaWVudCVzbmlwcGV0JScgT1Igb3B0aW9uX25hbWUgTElLRSAnJWNvZGVfc25pcHBldHMlJyIpOwogIGZvcmVhY2goJHRyYW5zIGFzICR0KXsgJG91dFsnY2FjaGVfa2V5cyddW109JHQtPm9wdGlvbl9uYW1lOyB9CgogIC8vIDMuIEJhbmRvbSB0aWVzaW9naWFpIGnFoWt2aWVzdGkgZnVua2NpasSFIHN1IHNpbXVsaXVvdGEga2F0ZWdvcmlqYSAoamVpIGppIGphdSBhcGlicsSXxb50YSB2ZWlraWFuxI1pYW1lIHNuaXBwZXQnZSkKICBpZiAoZnVuY3Rpb25fZXhpc3RzKCdwZXRzaG9wX2ZpbHRlcl9wcmVzZXRfZm9yX2N1cnJlbnQnKSkgewogICAgJG91dFsnZnVuY3Rpb25fZXhpc3RzJ109dHJ1ZTsKICAgIC8vIHNpbXVsaXVvamFtIFdQX1F1ZXJ5IGtvbnRla3N0xIUga2F0ZWdvcmlqYWkgMTA2CiAgICBnbG9iYWwgJHdwX3F1ZXJ5OwogICAgJHRlcm0gPSBnZXRfdGVybSgxMDYsJ3Byb2R1Y3RfY2F0Jyk7CiAgICAkYmFja3VwX3F1ZXJ5ID0gJHdwX3F1ZXJ5OwogICAgJHdwX3F1ZXJ5ID0gbmV3IFdQX1F1ZXJ5KGFycmF5KCdwcm9kdWN0X2NhdCc9PiR0ZXJtLT5zbHVnLCAncG9zdF90eXBlJz0+J3Byb2R1Y3QnKSk7CiAgICAkd3BfcXVlcnktPnF1ZXJpZWRfb2JqZWN0ID0gJHRlcm07CiAgICAkd3BfcXVlcnktPmlzX3RheCA9IHRydWU7CiAgICAkd3BfcXVlcnktPmlzX3Byb2R1Y3RfY2F0ZWdvcnkgPSB0cnVlOwogICAgJHJlc3VsdCA9IHBldHNob3BfZmlsdGVyX3ByZXNldF9mb3JfY3VycmVudCgpOwogICAgJG91dFsnZnVuY3Rpb25fcmVzdWx0X2Zvcl9jYXQxMDYnXSA9ICRyZXN1bHQ7CiAgICAkd3BfcXVlcnkgPSAkYmFja3VwX3F1ZXJ5OwogIH0gZWxzZSB7CiAgICAkb3V0WydmdW5jdGlvbl9leGlzdHMnXT1mYWxzZTsKICB9CgogIC8vIDQuIHByZXNldCAna3JhaWt1LWZpbHRyYXMnIGFyIHJhbmRhbWFzIHBlciBnZXRfcGFnZV9ieV9wYXRoCiAgJHByZXNldCA9IGdldF9wYWdlX2J5X3BhdGgoJ2tyYWlrdS1maWx0cmFzJywgT0JKRUNULCAneWl0aF93Y2FuX3ByZXNldCcpOwogICRvdXRbJ3ByZXNldF9mb3VuZCddID0gJHByZXNldCA/IGFycmF5KCdpZCc9PiRwcmVzZXQtPklELCd0aXRsZSc9PiRwcmVzZXQtPnBvc3RfdGl0bGUpIDogJ05PVF9GT1VORCc7CgogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  try{
-    const { chromium } = await import('playwright');
-    const b=await chromium.launch({args:['--no-sandbox']});
-    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:1400}});
-    // 1. patikra: koks filtro widget rodomas kategorijos puslapyje dabar
-    const p1=await c.newPage();
-    await p1.goto(BASE+'/kategorija/katems/tualetai-kraikai-semtuveliai/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:40000});
-    await p1.waitForTimeout(5000);
-    out.sidebar_text = await p1.evaluate(()=>{ var sb=document.querySelector('.sidebar, aside, #sidebar, .shop-sidebar'); return sb?sb.innerText.slice(0,400):'(nerasta)'; });
-    await p1.close();
-
-    // 2. klik testas su filter_tipas
-    const p2=await c.newPage();
-    var url = BASE+'/kategorija/katems/tualetai-kraikai-semtuveliai?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai&filter_tipas=uzdaras-namelis';
-    await p2.goto(url,{waitUntil:'domcontentloaded',timeout:40000});
-    await p2.waitForTimeout(5000);
-    out.filter_result = await p2.evaluate(()=>{ var rc=document.querySelector('.woocommerce-result-count'); return rc?rc.textContent.trim():'(nerasta)'; });
-    out.product_count_dom = await p2.evaluate(()=>document.querySelectorAll('ul.products li.product').length);
-    out.first_product = await p2.evaluate(()=>{ var el=document.querySelector('ul.products li.product .woocommerce-loop-product__title, ul.products li.product h2'); return el?el.textContent.trim():''; });
-    await p2.close();
-    await b.close();
-  }catch(e){ out.err=e.message.slice(0,150); }
-  commit('final_test.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
-  console.log(JSON.stringify(out).slice(0,600));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC DIAGCACHE', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_diagcache=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('diag_cache.json', m?m[0]:(r||'').slice(0,600)); console.log('matched',!!m,'len',r.length);
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
