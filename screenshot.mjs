@@ -1,24 +1,44 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'kr2',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbkr2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbkr2.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:45000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2tyYWlrYXMyJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogICRvdXQ9YXJyYXkoKTsKCiAgLy8gMS4gUmFzdGkgdmlzYXMga2F0ZWdvcmlqYXMgc3UgImtyYWlrIiBhcmJhICJ0dWFsZXQiIHBhdmFkaW5pbWUvc2x1ZwogICRhbGw9Z2V0X3Rlcm1zKGFycmF5KCd0YXhvbm9teSc9Pidwcm9kdWN0X2NhdCcsJ2hpZGVfZW1wdHknPT5mYWxzZSkpOwogICRtYXRjaGVzPWFycmF5KCk7CiAgZm9yZWFjaCgoYXJyYXkpJGFsbCBhcyAkdCl7CiAgICAkbj1tYl9zdHJ0b2xvd2VyKCR0LT5uYW1lKTsgJHM9bWJfc3RydG9sb3dlcigkdC0+c2x1Zyk7CiAgICBpZiAoc3RycG9zKCRuLCdrcmFpaycpIT09ZmFsc2UgfHwgc3RycG9zKCRzLCdrcmFpaycpIT09ZmFsc2UgfHwgc3RycG9zKCRuLCd0dWFsZXQnKSE9PWZhbHNlIHx8IHN0cnBvcygkcywndHVhbGV0JykhPT1mYWxzZSB8fCBzdHJwb3MoJG4sJ3Bha3JhdCcpIT09ZmFsc2UgfHwgc3RycG9zKCRzLCdwYWtyYXQnKSE9PWZhbHNlKXsKICAgICAgJHBhcmVudCA9ICR0LT5wYXJlbnQgPyBnZXRfdGVybSgkdC0+cGFyZW50LCdwcm9kdWN0X2NhdCcpIDogbnVsbDsKICAgICAgJG1hdGNoZXNbXT1hcnJheSgnbmFtZSc9PiR0LT5uYW1lLCdzbHVnJz0+JHQtPnNsdWcsJ2lkJz0+JHQtPnRlcm1faWQsJ2NvdW50Jz0+JHQtPmNvdW50LCdwYXJlbnQnPT4kcGFyZW50PyRwYXJlbnQtPm5hbWU6Jyhyb290KScpOwogICAgfQogIH0KICAkb3V0WydrcmFpa19jYXRzJ109JG1hdGNoZXM7CgogIC8vIDIuIExvZ2lzdGlrYSBwZXIga3JhaWtvIHRpcHVzICh2aXNhbWUga2F0YWxvZ2UsIG5lcyBrcmFpa2FzIGdhbGkgYsWrdGkga2VsaW9zZSBrYXQpCiAgZnVuY3Rpb24gcHNjX3Jlc19rKCRwaWQpewogICAgaWYgKGNsYXNzX2V4aXN0cygnUGV0c2hvcF9GdWxmaWxsbWVudF9Tb3VyY2UnKSkgewogICAgICB0cnkgeyAkcj1QZXRzaG9wX0Z1bGZpbGxtZW50X1NvdXJjZTo6cmVzb2x2ZSgkcGlkKTsKICAgICAgICBpZihpc19hcnJheSgkcikmJiFlbXB0eSgkclsnc291cmNlJ10pKXJldHVybiAkclsnc291cmNlJ107CiAgICAgICAgaWYoaXNfb2JqZWN0KCRyKSYmIWVtcHR5KCRyLT5zb3VyY2UpKXJldHVybiAkci0+c291cmNlOwogICAgICB9IGNhdGNoKFxUaHJvd2FibGUgJGUpe30KICAgIH0KICAgIGlmKGdldF9wb3N0X21ldGEoJHBpZCwnX3ZmX2VuYWJsZWQnLHRydWUpPT09J3llcycpcmV0dXJuICd2Zic7CiAgICBpZihnZXRfcG9zdF9tZXRhKCRwaWQsJ196Yl9lbmFibGVkJyx0cnVlKT09PSd5ZXMnKXJldHVybiAnemInOwogICAgcmV0dXJuICdsZWdhY3knOwogIH0KICBmdW5jdGlvbiBwc2NfdGlwYXMoJHNsdWcpewogICAgJHE9bmV3IFdQX1F1ZXJ5KGFycmF5KCdwb3N0X3R5cGUnPT4ncHJvZHVjdCcsJ3Bvc3Rfc3RhdHVzJz0+J3B1Ymxpc2gnLCdwb3N0c19wZXJfcGFnZSc9Pi0xLCdmaWVsZHMnPT4naWRzJywKICAgICAgJ3RheF9xdWVyeSc9PmFycmF5KGFycmF5KCd0YXhvbm9teSc9PidwYV9rcmFpa29fdGlwYXMnLCdmaWVsZCc9PidzbHVnJywndGVybXMnPT4kc2x1ZykpLCdub19mb3VuZF9yb3dzJz0+dHJ1ZSkpOwogICAgJGlkcz0kcS0+cG9zdHM7IHdwX3Jlc2V0X3Bvc3RkYXRhKCk7CiAgICAkYXY9MDskdmY9MDskemI9MDska2l0YT0wOwogICAgZm9yZWFjaCgkaWRzIGFzICRwaWQpeyAkcz1wc2NfcmVzX2soJHBpZCk7CiAgICAgIGlmKCRzPT09J2xlZ2FjeScpeyAkcD13Y19nZXRfcHJvZHVjdCgkcGlkKTsgaWYoJHAmJiRwLT5pc19pbl9zdG9jaygpKSRhdisrOyB9CiAgICAgIGVsc2VpZigkcz09PSd2ZicpJHZmKys7IGVsc2VpZigkcz09PSd6YicpJHpiKys7IGVsc2UgJGtpdGErKzsKICAgIH0KICAgIHJldHVybiBhcnJheSgndG90YWwnPT5jb3VudCgkaWRzKSwnYXYnPT4kYXYsJ3ZmJz0+JHZmLCd6Yic9PiR6Yiwna2l0YSc9PiRraXRhKTsKICB9CiAgJHdoaWNoPSRfR0VUWyd3aGljaCddPz8nJzsKICAkdGlwYWk9YXJyYXkoJ3RvZnUnLCdiZW50b25pdGluaXMnLCdtZWR6aW8nLCdhdWdhbGluaXMnLCdzaWxpa29uaW5pcycpOwogIGlmIChpbl9hcnJheSgkd2hpY2gsJHRpcGFpKSl7ICRvdXQ9YXJyYXkoJHdoaWNoPT5wc2NfdGlwYXMoJHdoaWNoKSk7IH0KCiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
+const BASE="https://dev.avesa.lt";
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ku',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbku.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbku.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC KRAIKAS2', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var all={};
-  // pirma kategorijos
-  var rc=exec('curl -sk -m 35 "'+BASE+'/?psc_kraikas2=1&k=ps2026"');
-  var mc=rc.match(/(\{.*\})/s); if(mc){ try{ all.cats=JSON.parse(mc[0]).kraik_cats; }catch(e){ all.cats_err=1; } }
-  // tada tipai po vieną
-  for (var t of ['tofu','bentonitinis','medzio','augalinis','silikoninis']){
-    var r=exec('curl -sk -m 40 "'+BASE+'/?psc_kraikas2=1&k=ps2026&which='+t+'"');
-    var m=r.match(/(\{.*\})/s); if(m){ try{ Object.assign(all, JSON.parse(m[0])); }catch(e){ all[t]={err:1}; } }
-  }
-  commit('kraikas2.json', JSON.stringify(all));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  console.log('done');
+  var out={};
+  // kraiko kategorija: kraikai-kaciu-tualetams. Bet reikia rasti pilną kelią (parent KATĖMS).
+  // YITH formatas su pa_kraiko_tipas. Bandom kelis kelio variantus.
+  var base_paths = [
+    BASE+'/kategorija/katems/kraikai-kaciu-tualetams',
+    BASE+'/kategorija/kraikai-kaciu-tualetams'
+  ];
+  var tipai = ['tofu','bentonitinis','medzio','augalinis','silikoninis'];
+  try{
+    const { chromium } = await import('playwright');
+    const b=await chromium.launch({args:['--no-sandbox']});
+    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:900}});
+    // pirma nustatom teisingą kelią (baseline be filtro)
+    var goodPath=null;
+    for (var bp of base_paths){
+      var p=await c.newPage();
+      try{ var code=await p.goto(bp+'/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000});
+        if(code && code.status()<400){ goodPath=bp; out.base_status=code.status(); }
+      }catch(e){}
+      await p.close();
+      if(goodPath) break;
+    }
+    out.good_path=goodPath;
+    if(goodPath){
+      // testuojam kiekvieną tipą
+      for (var t of tipai){
+        var url=goodPath+'?yith_wcan=1&product_cat=kraikai-kaciu-tualetams&filter_kraiko_tipas='+t;
+        var p=await c.newPage();
+        try{ await p.goto(url,{waitUntil:'domcontentloaded',timeout:35000}); await p.waitForTimeout(4000);
+          out[t]=await p.evaluate(()=>{ var rc=document.querySelector('.woocommerce-result-count'); return rc?rc.textContent.trim():''; });
+        }catch(e){ out[t]={err:e.message.slice(0,40)}; }
+        await p.close();
+      }
+    }
+    await b.close();
+  }catch(e){ out.fatal=e.message.slice(0,150); }
+  commit('kraikas_url.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
+  console.log(JSON.stringify(out).slice(0,400));
 })();
