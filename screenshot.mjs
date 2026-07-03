@@ -3,32 +3,13 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'kl',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbkl.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbkl.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:30000}); }catch(e){ return 'EXC:'+e.message; } }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sk',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbsk.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbsk.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3N1bmthdCddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAkb3V0PWFycmF5KCk7CgogIC8vIFZpc29zIMWhdW7FsyBrYXRlZ29yaWpvcyBzdSBjb3VudCAocmFzdGkgc3RhcnRlciBrYXRlZ29yaWphcykKICAkYWxsPWdldF90ZXJtcyhhcnJheSgndGF4b25vbXknPT4ncHJvZHVjdF9jYXQnLCdoaWRlX2VtcHR5Jz0+ZmFsc2UpKTsKICAkc3VuPWFycmF5KCk7CiAgZm9yZWFjaCgoYXJyYXkpJGFsbCBhcyAkdCl7CiAgICAkbj1tYl9zdHJ0b2xvd2VyKCR0LT5uYW1lKTsgJHM9bWJfc3RydG9sb3dlcigkdC0+c2x1Zyk7CiAgICAvLyBpZcWha29tIHN0YXJ0ZXItcmVsZXZhbnQ6IGd1b2wsIGR1YmVuLCBwYXZhZCwgYW50a2FrLCBwZXRuZSwgemFpc2wsIGtyYW10LCBwYWx1dCwgdmFseW0sIHN1aywgcHJpZXppdXIsIHRyYW5zcG9ydCwgZHJlc3VyLCBza2FuZXN0LCBrb25zZXJ2LCBtYWlzdGFzIHN1IHN1bmltIGtvbnRla3N0dQogICAgJGt3ID0gYXJyYXkoJ2d1b2wnLCdkdWJlbicsJ3BhdmFkJywnYW50a2FrJywncGV0bmUnLCdcdTAxN2VhaXNsJywnemFpc2wnLCdrcmFtdCcsJ3BhbHV0JywndmFseW0nLCdcdTAxNjF1aycsJ3N1aycsJ3ByaWV6aXVyJywncHJpZVx1MDE3ZWl1cicsJ3RyYW5zcG9ydCcsJ2tyZXBcdTAxNjEnLCdrcmVwcycsJ2RyZXN1cicsJ3NrYW5cdTAxMTdzdCcsJ3NrYW5lc3QnLCduYXJ2ZWwnLCd2YWRcdTAxN2UnKTsKICAgICRtYXRjaD1mYWxzZTsKICAgIGZvcmVhY2goJGt3IGFzICRrKXsgaWYoc3RycG9zKCRuLCRrKSE9PWZhbHNlfHxzdHJwb3MoJHMsJGspIT09ZmFsc2UpeyAkbWF0Y2g9dHJ1ZTsgYnJlYWs7IH0gfQogICAgLy8gdGFpcCBwYXQgdmlzb3Mgc3VuaW1zIGthdGVnb3Jpam9zIChwYXJlbnQgdHVyaSBzdW5pbXMpCiAgICBpZigkbWF0Y2gpewogICAgICAkcGFyZW50ID0gJHQtPnBhcmVudCA/IGdldF90ZXJtKCR0LT5wYXJlbnQsJ3Byb2R1Y3RfY2F0JykgOiBudWxsOwogICAgICAkcG4gPSAkcGFyZW50ID8gJHBhcmVudC0+bmFtZSA6ICcocm9vdCknOwogICAgICAkc3VuW109YXJyYXkoJ25hbWUnPT4kdC0+bmFtZSwnc2x1Zyc9PiR0LT5zbHVnLCdpZCc9PiR0LT50ZXJtX2lkLCdjb3VudCc9PiR0LT5jb3VudCwncGFyZW50Jz0+JHBuKTsKICAgIH0KICB9CiAgJG91dFsnc3RhcnRlcl9jYXRzJ109JHN1bjsKCiAgLy8gcGFfYW16aXVzIHRlcm1pbmFpIChtYWlzdGFzIMWhdW5pdWthbXMpCiAgaWYgKHRheG9ub215X2V4aXN0cygncGFfYW16aXVzJykpewogICAgJHRlcm1zPWdldF90ZXJtcyhhcnJheSgndGF4b25vbXknPT4ncGFfYW16aXVzJywnaGlkZV9lbXB0eSc9PmZhbHNlKSk7CiAgICAkYWw9YXJyYXkoKTsKICAgIGZvcmVhY2goKGFycmF5KSR0ZXJtcyBhcyAkdCl7ICRhbFtdPWFycmF5KCduYW1lJz0+JHQtPm5hbWUsJ3NsdWcnPT4kdC0+c2x1ZywnY291bnQnPT4kdC0+Y291bnQpOyB9CiAgICAkb3V0WydwYV9hbXppdXMnXT0kYWw7CiAgfQoKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  exec('curl -sk -m 15 -o /dev/null -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d \'{"status":"publish"}\' "'+BASE+'/wp-json/wp/v2/pages/34262"');
-  await new Promise(r=>setTimeout(r,1200));
-  var url = BASE+'/sprendimai/kraiko-pasirinkimas/';
-  try{
-    const { chromium } = await import('playwright');
-    const b=await chromium.launch({args:['--no-sandbox']});
-    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1440,height:1000}});
-    const p=await c.newPage();
-    await p.goto(url+'?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:25000});
-    await p.waitForTimeout(3000);
-    out.card_pos = await p.evaluate(()=>{
-      return [].slice.call(document.querySelectorAll('.psc-sol-krypt-grid-3 .psc-sol-krypt')).map(function(c){
-        var r=c.getBoundingClientRect(); var t=c.querySelector('.psc-sol-krypt-title');
-        return {title:t?t.textContent.trim().slice(0,18):'', top:Math.round(r.top), left:Math.round(r.left)};
-      });
-    });
-    // footnote stilius - ar pilkas fonas, ne žalias
-    out.footnote_bg = await p.evaluate(()=>{ var f=document.querySelector('.psc-sol-footnote'); return f?getComputedStyle(f).backgroundColor:''; });
-    out.footnote_text = await p.evaluate(()=>{ var f=document.querySelector('.psc-sol-footnote'); return f?f.textContent.trim().slice(0,80):''; });
-    await b.close();
-  }catch(e){ out.err=e.message.slice(0,150); }
-  exec('curl -sk -m 15 -o /dev/null -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" -d \'{"status":"draft"}\' "'+BASE+'/wp-json/wp/v2/pages/34262"');
-  commit('kraiko_layout.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
-  console.log(JSON.stringify(out));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC SUNKAT', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_sunkat=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('suniukas_cats.json', m?m[0]:(r||'').slice(0,400)); console.log('matched',!!m);
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
