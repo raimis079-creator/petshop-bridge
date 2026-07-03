@@ -1,27 +1,15 @@
 import { execSync } from "child_process"; import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
-function commitB64(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'tvf',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbtvf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbtvf.json "'+url+'"',{encoding:'utf8'}); }
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sq',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbsq.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbsq.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3NpbXEnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJG91dD1hcnJheSgpOwoKICAvLyBUaWtzbGlhaSBrYWlwIFlJVEggZmlsdHJ1b2phOiBjYXQgMTA2ICsgcGFfdGlwYXM9dXpkYXJhcy1uYW1lbGlzCiAgJHEgPSBuZXcgV1BfUXVlcnkoYXJyYXkoCiAgICAncG9zdF90eXBlJz0+J3Byb2R1Y3QnLCdwb3N0X3N0YXR1cyc9PidwdWJsaXNoJywncG9zdHNfcGVyX3BhZ2UnPT4tMSwnZmllbGRzJz0+J2lkcycsCiAgICAndGF4X3F1ZXJ5Jz0+YXJyYXkoJ3JlbGF0aW9uJz0+J0FORCcsCiAgICAgIGFycmF5KCd0YXhvbm9teSc9Pidwcm9kdWN0X2NhdCcsJ2ZpZWxkJz0+J3NsdWcnLCd0ZXJtcyc9Pid0dWFsZXRhaS1rcmFpa2FpLXNlbXR1dmVsaWFpJyksCiAgICAgIGFycmF5KCd0YXhvbm9teSc9PidwYV90aXBhcycsJ2ZpZWxkJz0+J3NsdWcnLCd0ZXJtcyc9Pid1emRhcmFzLW5hbWVsaXMnKSwKICAgICksJ25vX2ZvdW5kX3Jvd3MnPT5mYWxzZSkpOwogICRvdXRbJ2RpcmVjdF9xdWVyeV9jb3VudCddPSRxLT5mb3VuZF9wb3N0czsKICB3cF9yZXNldF9wb3N0ZGF0YSgpOwoKICAvLyBBciBZSVRIIGxhenktbG9hZCDEr2p1bmd0YXMgKGdhbGkgYmxva3VvdGkpCiAgJG91dFsnbGF6eV9sb2FkJ10gPSBnZXRfb3B0aW9uKCd5aXRoX3djYW5fbGF6eV9sb2FkX2ZpbHRlcnMnLCAnbmVyYXN0YScpOwogICRvdXRbJ2NoYW5nZV91cmwnXSA9IGdldF9vcHRpb24oJ3lpdGhfd2Nhbl9jaGFuZ2VfYnJvd3Nlcl91cmwnLCAnbmVyYXN0YScpOwoKICAvLyBBciBrYXRlZ29yaWphIDEwNiB0dXJpIGtva8SvIGRpc3BsYXlfdHlwZSBhciBwZXItcGFnZSBtZXRhCiAgJG91dFsnY2F0MTA2X2Rpc3BsYXknXSA9IGdldF90ZXJtX21ldGEoMTA2LCdkaXNwbGF5X3R5cGUnLHRydWUpOwoKICAvLyBQYXRpa3JpbmFtIGFyICd0dWFsZXR1LWZpbHRyYXMnIHByZXNldCBfZmlsdGVycyB0ZWlzaW5nYXMgKFRpcGFzIGJsb2thcyBwaWxuYXMpCiAgJHByZXNldCA9IGdldF9wYWdlX2J5X3BhdGgoJ3R1YWxldHUtZmlsdHJhcycsIE9CSkVDVCwgJ3lpdGhfd2Nhbl9wcmVzZXQnKTsKICBpZigkcHJlc2V0KXsKICAgICRmaWx0ZXJzID0gZ2V0X3Bvc3RfbWV0YSgkcHJlc2V0LT5JRCwnX2ZpbHRlcnMnLHRydWUpOwogICAgJG91dFsncHJlc2V0X2ZpbHRlcnMnXT1hcnJheSgpOwogICAgZm9yZWFjaCgoYXJyYXkpJGZpbHRlcnMgYXMgJGs9PiRmKXsKICAgICAgJG91dFsncHJlc2V0X2ZpbHRlcnMnXVska109YXJyYXkoJ3RpdGxlJz0+JGZbJ3RpdGxlJ10/PycnLCd0YXgnPT4kZlsndGF4b25vbXknXT8/JycsJ3R5cGUnPT4kZlsndHlwZSddPz8nJywndXNlX2FsbCc9PiRmWyd1c2VfYWxsX3Rlcm1zJ10/PycnLCdyZWxhdGlvbic9PiRmWydyZWxhdGlvbiddPz8nJywnbXVsdGlwbGUnPT4kZlsnbXVsdGlwbGUnXT8/JycpOwogICAgfQogIH0KCiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  try{
-    const { chromium } = await import('playwright');
-    const b=await chromium.launch({args:['--no-sandbox']});
-    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:1400}});
-    // 1. patikra ar filtro blokas rodomas
-    const p1=await c.newPage();
-    await p1.goto(BASE+'/kategorija/katems/tualetai-kraikai-semtuveliai/?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:40000});
-    await p1.waitForTimeout(5000);
-    out.sidebar = await p1.evaluate(()=>{ var sb=document.querySelector('.sidebar, aside, #sidebar'); return sb?sb.innerText.slice(0,300):'(nerasta)'; });
-    // paspaudžiam Uždaras
-    var links = await p1.$$('a');
-    for (var l of links){ var txt=await l.textContent(); if(txt && txt.trim()==='Uždaras tualetas / namelis'){ await l.click(); break; } }
-    await p1.waitForTimeout(6000);
-    out.result = await p1.evaluate(()=>{ var rc=document.querySelector('.woocommerce-result-count'); return rc?rc.textContent.trim():'(nerasta)'; });
-    out.product_count = await p1.evaluate(()=>document.querySelectorAll('ul.products li.product').length);
-    const buf = await p1.screenshot({fullPage:false}); commitB64('v19_filter_result.png', buf.toString('base64'));
-    await b.close();
-  }catch(e){ out.err=e.message.slice(0,150); }
-  commitB64('test_v19.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
-  console.log(JSON.stringify(out).slice(0,400));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC SIMQ', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_simq=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('simulate_query.json', m?m[0]:(r||'').slice(0,400)); console.log('matched',!!m);
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
