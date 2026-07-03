@@ -2,13 +2,9 @@ import { execSync } from "child_process"; import fs from "fs";
 const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'pat',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbpat.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbpat.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2FkZHRpcGFzJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogICRkcnkgPSAoJF9HRVRbJ2NvbmZpcm0nXSA/PyAnJykgIT09ICdBUFBMWV9QUkVTRVQnOwogICRwaWQgPSAzNDEwMzsKICAkZmlsdGVycyA9IGdldF9wb3N0X21ldGEoJHBpZCwnX2ZpbHRlcnMnLHRydWUpOwogIGlmICghaXNfYXJyYXkoJGZpbHRlcnMpKSB7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycm9yJz0+J25lcmEgZmlsdGVycycpKTsgZXhpdDsgfQoKICAvLyBLbG9udW9qYW0gYmxva8SFIDEgKEtyYWlrbyB0aXBhcyksIGtlacSNaWFtIHRpayB0aXRsZSt0YXhvbm9teQogICRuZXdfYmxvY2sgPSAkZmlsdGVyc1sxXTsKICAkbmV3X2Jsb2NrWyd0aXRsZSddID0gJ1RpcGFzJzsKICAkbmV3X2Jsb2NrWyd0YXhvbm9teSddID0gJ3BhX3RpcGFzJzsKCiAgJG5leHRfa2V5ID0gbWF4KGFycmF5X2tleXMoJGZpbHRlcnMpKSArIDE7CiAgJG5ld19maWx0ZXJzID0gJGZpbHRlcnM7CiAgJG5ld19maWx0ZXJzWyRuZXh0X2tleV0gPSAkbmV3X2Jsb2NrOwoKICBpZiAoJGRyeSkgewogICAgZWNobyB3cF9qc29uX2VuY29kZShhcnJheSgnTU9ERSc9PidEUlktUlVOJywnY3VycmVudF9rZXlzJz0+YXJyYXlfa2V5cygkZmlsdGVycyksJ25ld19rZXknPT4kbmV4dF9rZXksJ25ld19ibG9jayc9PiRuZXdfYmxvY2spKTsKICAgIGV4aXQ7CiAgfQoKICB1cGRhdGVfcG9zdF9tZXRhKCRwaWQsICdfZmlsdGVycycsICRuZXdfZmlsdGVycyk7CiAgJHNhdmVkID0gZ2V0X3Bvc3RfbWV0YSgkcGlkLCdfZmlsdGVycycsdHJ1ZSk7CiAgZWNobyB3cF9qc29uX2VuY29kZShhcnJheSgnTU9ERSc9PidBUFBMWScsJ29rJz0+dHJ1ZSwna2V5c19hZnRlcic9PmFycmF5X2tleXMoJHNhdmVkKSwnYmxvY2s0X3RpdGxlJz0+JHNhdmVkWyRuZXh0X2tleV1bJ3RpdGxlJ10/P251bGwsJ2Jsb2NrNF90YXgnPT4kc2F2ZWRbJG5leHRfa2V5XVsndGF4b25vbXknXT8/bnVsbCkpOwogIGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC ADDTIPAS', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_addtipas=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('preset_add_dry.json', m?m[0]:(r||'').slice(0,800)); console.log(m?m[0].slice(0,300):r);
+  var r = exec('curl -sk -m 30 "'+BASE+'/?psc_addtipas=1&k=ps2026&confirm=APPLY_PRESET"');
+  console.log('APPLY:', r.slice(0,300));
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
