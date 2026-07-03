@@ -3,37 +3,13 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commitB64(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'vis',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbvis.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbvis.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'swr',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbswr.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbswr.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3N3cmVjb24nXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJG91dD1hcnJheSgpOwoKICAvLyAxLiBGbGF0c29tZSBzd2F0Y2ggbWVjaGFuaXptYXMgLSBpZcWha29tIGZ1bmtjaWrFsy9rbGFzacWzCiAgJG91dFsnZmxhdHNvbWVfc3dhdGNoX2ZucyddPWFycmF5KAogICAgJ2ZsYXRzb21lX2dldF9zd2F0Y2gnPT5mdW5jdGlvbl9leGlzdHMoJ2ZsYXRzb21lX2dldF9zd2F0Y2hfZGF0YScpLAogICAgJ3V4X3N3YXRjaGVzJz0+Y2xhc3NfZXhpc3RzKCdVWF9Td2F0Y2hlcycpIHx8IGZ1bmN0aW9uX2V4aXN0cygndXhfc3dhdGNoZXMnKSwKICAgICdmbGF0c29tZV92ZXJzaW9uJz0+ZGVmaW5lZCgnRkxBVFNPTUVfVkVSU0lPTicpP0ZMQVRTT01FX1ZFUlNJT046Jz8nCiAgKTsKCiAgLy8gMi4gQXIgYXRyaWJ1dGFzIHBhX3NwYWx2YSB0dXJpIHN3YXRjaCBudXN0YXR5bcSFIChGbGF0c29tZSBzYXVnbyBwZXIgYXR0cmlidXRlIG1ldGEpCiAgZ2xvYmFsICR3cGRiOwogICRhdHRyX2lkID0gd2NfYXR0cmlidXRlX3RheG9ub215X2lkX2J5X25hbWUoJ3NwYWx2YScpOwogICRvdXRbJ2F0dHJfaWQnXT0kYXR0cl9pZDsKICAvLyBGbGF0c29tZSBzd2F0Y2ggdGlwYXMgc2F1Z29tYXMgb3B0aW9uJ2UgYXJiYSBhdHRyaWJ1dGUgbGVudGVsxJdqCiAgJG91dFsnYXR0cl90eXBlJ109JHdwZGItPmdldF92YXIoJHdwZGItPnByZXBhcmUoIlNFTEVDVCBhdHRyaWJ1dGVfdHlwZSBGUk9NIHskd3BkYi0+cHJlZml4fXdvb2NvbW1lcmNlX2F0dHJpYnV0ZV90YXhvbm9taWVzIFdIRVJFIGF0dHJpYnV0ZV9pZD0lZCIsJGF0dHJfaWQpKTsKCiAgLy8gMy4gS29raWUgdGVybSBtZXRhIGphdSB5cmEgYW50IHphbHN2YSB0ZXJtaW5vCiAgJHQ9Z2V0X3Rlcm1fYnkoJ3NsdWcnLCd6YWxzdmEnLCdwYV9zcGFsdmEnKTsKICBpZigkdCl7CiAgICAkb3V0Wyd6YWxzdmFfbWV0YSddPWdldF90ZXJtX21ldGEoJHQtPnRlcm1faWQpOwogIH0KCiAgLy8gNC4gRmxhdHNvbWUgb3B0aW9uIGTEl2wgc3dhdGNoIC0gYXIgZ2xvYmFsaWFpIMSvanVuZ3RhCiAgJG91dFsnZmxhdHNvbWVfc3dhdGNoZXNfb3B0aW9uJ109Z2V0X29wdGlvbignZmxhdHNvbWVfc3dhdGNoZXNfbGF5b3V0JywgJ25lcmFzdGEnKTsKCiAgLy8gNS4gSWXFoWtvbSBrYWlwIEZsYXRzb21lIGF0cGHFvsSvc3RhIGNvbG9yIHN3YXRjaCAtIHRpa3JpbmFtIGVzYW11cyBwcm9kdWt0dXMgc3Ugc3BhbHZhCiAgLy8gQXIgeXJhIGtpdGFzIHByb2R1a3RhcyBzdSBjb2xvciBzd2F0Y2ggamF1IHN1a29uZmlnxatydW90dQogICRzYW1wbGUgPSAkd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCB0ZXJtX2lkLCBtZXRhX2tleSwgbWV0YV92YWx1ZSBGUk9NIHskd3BkYi0+cHJlZml4fXRlcm1tZXRhIFdIRVJFIG1ldGFfa2V5IExJS0UgJyVjb2xvciUnIE9SIG1ldGFfa2V5IExJS0UgJyVzd2F0Y2glJyBMSU1JVCAxMCIpOwogICRvdXRbJ2V4aXN0aW5nX2NvbG9yX21ldGEnXT0kc2FtcGxlOwoKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
 (async()=>{
-  var out={};
-  // gaunam permalink
-  var r=exec('curl -sk -m 20 "'+BASE+'/wp-json/wc/v3/products/17920" -H "Authorization: '+AUTH+'"');
-  var permalink=BASE+'/product/kampinis-tualetas-katems-shuttle/';
-  try{ var pj=JSON.parse(r); permalink=pj.permalink; out.type=pj.type; out.nvar=(pj.variations||[]).length; out.price=pj.price; out.price_html=(pj.price_html||'').replace(/<[^>]+>/g,'').slice(0,40); }catch(e){ out.api_err=r.slice(0,100); }
-  out.permalink=permalink;
-  try{
-    const { chromium } = await import('playwright');
-    const b=await chromium.launch({args:['--no-sandbox']});
-    // PRODUKTO PUSLAPIS desktop
-    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:1400}});
-    const p=await c.newPage();
-    await p.goto(permalink+'?nc='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000});
-    await p.waitForTimeout(3500);
-    // ar yra spalvų pasirinkimas (swatch ar dropdown)
-    out.swatches = await p.evaluate(()=>{
-      var swatch = document.querySelectorAll('.swatch, .ux-swatch, [class*="swatch"], .variable-items-wrapper li, ul.variable-items li');
-      var select = document.querySelector('select#pa_spalva, select[name*="spalva"], .variations select');
-      return {
-        swatch_count: swatch.length,
-        swatch_classes: [].slice.call(swatch).slice(0,4).map(function(s){return s.className;}),
-        has_select: !!select,
-        select_options: select ? [].slice.call(select.options).map(function(o){return o.textContent.trim();}) : []
-      };
-    });
-    const buf=await p.screenshot({fullPage:false}); commitB64('variacija_produktas.png', buf.toString('base64'));
-    await b.close();
-  }catch(e){ out.err=e.message.slice(0,150); }
-  commitB64('vis.json', Buffer.from(JSON.stringify(out),'utf8').toString('base64'));
-  console.log(JSON.stringify(out).slice(0,400));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC SWRECON', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_swrecon=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('swatch_recon.json', m?m[0]:(r||'').slice(0,500)); console.log('matched',!!m);
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
 })();
