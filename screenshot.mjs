@@ -1,16 +1,57 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'fm',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbfm.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbfm.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:60000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2ZpbmRtYW4nXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgJG91dD1hcnJheSgpOyBnbG9iYWwgJHdwZGI7CgogIC8vIDEuIE1ldGEgc2lnbmFsYWkga3VyaWUgZ2FsaSByZWlrxaF0aSAicmFua2luaXMiCiAgZm9yZWFjaChhcnJheSgnX21hbnVhbF9wcmljZV9vdmVycmlkZScsJ19wZXRzaG9wX2xvY2tfcHJpY2luZycsJ19wZXRzaG9wX3NhbGVfYmF0Y2gnLAogICAgICAgICAgICAgICAgJ192Zl9wcmljZV9pbml0aWFsaXplZCcsJ19wZXRzaG9wX25lZWRzX3ByaWNlX3JldmlldycsJ19wcmljZV9sb2NrZWQnLAogICAgICAgICAgICAgICAgJ19tYW51YWxfcHJpY2UnLCdfcGV0c2hvcF9tYW51YWxfb3ZlcnJpZGUnLCdfbG9ja2VkX3ByaWNlJykgYXMgJGtleSl7CiAgICAkY250ID0gJHdwZGItPmdldF92YXIoJHdwZGItPnByZXBhcmUoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskd3BkYi0+cG9zdG1ldGF9IFdIRVJFIG1ldGFfa2V5PSVzIEFORCBtZXRhX3ZhbHVlICE9ICcnIiwka2V5KSk7CiAgICBpZigkY250PjApICRvdXRbJ21ldGFfJy4ka2V5XT0kY250OwogIH0KCiAgLy8gMi4gQXIgeXJhIFZGIHByZWtpxbMga3VyIHJlZ3VsYXJfcHJpY2UgTkVBVElUSU5LQSBwbHVnaW4nbyBmb3JtdWzEl3M/CiAgLy8gICAgSmVpIGF0aXRpbmthIC0ga2FpbmEgYXV0b21hdGluxJcuIEplaSBuZSAtIHJhbmtpbsSXLgogIC8vICAgIFBhaW1hbSBwYXZ5emTFvmnFsyBpciBwYWx5Z2luYW0uCiAgaWYoIWNsYXNzX2V4aXN0cygnUGV0c2hvcF9QcmljaW5nX1ZGJykpeyAkb3V0Wydub19wcmljaW5nX2NsYXNzJ109dHJ1ZTsgfQogIGVsc2UgewogICAgJHByaWNpbmcgPSBuZXcgUGV0c2hvcF9QcmljaW5nX1ZGKCk7CiAgICAvLyAyMCBWRiBwcmVracWzIGnFoSB2aXPFswogICAgJHZmX3BpZHMgPSAkd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIERJU1RJTkNUIHBvc3RfaWQgRlJPTSB7JHdwZGItPnBvc3RtZXRhfSBXSEVSRSBtZXRhX2tleT0nX3ZmX3F0eScgT1JERVIgQlkgUkFORCgpIExJTUlUIDIwIik7CiAgICAkbWFudWFsX2NvdW50PTA7ICRhdXRvX2NvdW50PTA7ICRjaGVja2VkPTA7CiAgICBmb3JlYWNoKCR2Zl9waWRzIGFzICRwaWQpewogICAgICAkY29zdF94bWwgPSAoZmxvYXQpZ2V0X3Bvc3RfbWV0YSgkcGlkLCdfdmZfY29zdF94bWwnLHRydWUpOwogICAgICAkcGVyc194bWwgPSAoZmxvYXQpZ2V0X3Bvc3RfbWV0YSgkcGlkLCdfdmZfcGVyc29uYWxfeG1sJyx0cnVlKTsKICAgICAgJGJyYW5kID0gKHN0cmluZylnZXRfcG9zdF9tZXRhKCRwaWQsJ192Zl9icmFuZF9ub3JtYWxpemVkJyx0cnVlKTsKICAgICAgaWYoJGJyYW5kPT09JycpICRicmFuZD0oc3RyaW5nKWdldF9wb3N0X21ldGEoJHBpZCwnX3ZmX2JyYW5kX3JhdycsdHJ1ZSk7CiAgICAgICRjdXJyZW50X3JlZyA9IChmbG9hdClnZXRfcG9zdF9tZXRhKCRwaWQsJ19yZWd1bGFyX3ByaWNlJyx0cnVlKTsKICAgICAgJGNhdF9zbHVncyA9IGZ1bmN0aW9uX2V4aXN0cygncGV0c2hvcF94bWxfZ2V0X2NhdF9zbHVncycpP3BldHNob3BfeG1sX2dldF9jYXRfc2x1Z3MoJHBpZCk6YXJyYXkoKTsKICAgICAgaWYoJGNvc3RfeG1sPD0wIHx8ICRwZXJzX3htbDw9MCB8fCAkY3VycmVudF9yZWc8PTApIGNvbnRpbnVlOwogICAgICAkY2FsYyA9ICRwcmljaW5nLT5jYWxjdWxhdGVfZmluYWxfcHJpY2VfZnJvbV94bWwoJGNvc3RfeG1sLCRwZXJzX3htbCwkYnJhbmQsJGNhdF9zbHVncyk7CiAgICAgICRleHBlY3RlZCA9IChmbG9hdCkkY2FsY1sncmVndWxhciddOwogICAgICAkZGlmZiA9IGFicygkY3VycmVudF9yZWcgLSAkZXhwZWN0ZWQpOwogICAgICAkaXNfbWFudWFsID0gJGRpZmYgPiAwLjAyOwogICAgICBpZigkaXNfbWFudWFsKSAkbWFudWFsX2NvdW50Kys7IGVsc2UgJGF1dG9fY291bnQrKzsKICAgICAgJGNoZWNrZWQrKzsKICAgICAgaWYoY291bnQoJG91dFsnc2FtcGxlcyddPz9hcnJheSgpKTwxMCl7CiAgICAgICAgJG91dFsnc2FtcGxlcyddW109YXJyYXkoCiAgICAgICAgICAncGlkJz0+JHBpZCwndGl0bGUnPT5tYl9zdWJzdHIoZ2V0X3RoZV90aXRsZSgkcGlkKSwwLDMwKSwKICAgICAgICAgICdjdXJyZW50X3JlZyc9PiRjdXJyZW50X3JlZywnZXhwZWN0ZWQnPT4kZXhwZWN0ZWQsJ2RpZmYnPT5yb3VuZCgkZGlmZiwyKSwKICAgICAgICAgICdsb29rc19tYW51YWwnPT4kaXNfbWFudWFsPydNQU5VQUwnOidhdXRvJywKICAgICAgICApOwogICAgICB9CiAgICB9CiAgICAkb3V0WydndWVzc19tYW51YWwnXT0kbWFudWFsX2NvdW50OyAkb3V0WydndWVzc19hdXRvJ109JGF1dG9fY291bnQ7ICRvdXRbJ2NoZWNrZWQnXT0kY2hlY2tlZDsKICB9CgogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
+const BASE="https://dev.avesa.lt";
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ar',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbar.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbar.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:200000}); }catch(e){ return 'EXC:'+e.message; } }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC FINDMAN', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 45 "'+BASE+'/?psc_findman=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('find_manual.json', m?m[0]:(r||'').slice(0,600));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  console.log(m?m[0].slice(0,400):r.slice(0,400));
+  var totals={reprice:{applied:0, would_change_price:0, would_clear_sale:0, would_add_sale:0, skip_locked:0, skip_promo:0, skip_no_change:0, errors:0},
+              stock:{applied:0, would_change_qty:0, would_zero_out:0, would_refresh_only:0, errors:0},
+              publish:{applied:0, would_publish:0, errors:0}};
+
+  // 1. REPRICE APPLY (batch'ais)
+  for (var off=0; off<1500; off+=200){
+    var url = BASE+'/?psc_vf_sync=1&k=ps2026&path=reprice&mode=apply&confirm=YES&limit=200&offset='+off;
+    var r=exec('curl -sk -m 180 "'+url+'"');
+    var m=r.match(/(\{.*\})/s);
+    if(!m){ totals.reprice.errors++; totals.reprice.err_msg=(r||'').slice(0,200); break; }
+    var d=JSON.parse(m[0]); if(d.error){ totals.reprice.errors++; totals.reprice.err_msg=d.error; break; }
+    var s=d.stats||{};
+    totals.reprice.applied += s.applied||0;
+    totals.reprice.would_change_price += s.would_change_price||0;
+    totals.reprice.would_clear_sale += s.would_clear_sale||0;
+    totals.reprice.would_add_sale += s.would_add_sale||0;
+    totals.reprice.skip_locked += s.skip_locked||0;
+    totals.reprice.skip_promo += s.skip_promo||0;
+    totals.reprice.skip_no_change += s.skip_no_change||0;
+    if((s.products_scanned||0) < 200) break;
+  }
+
+  // 2. STOCK APPLY (batch'ais)
+  for (var off2=0; off2<1500; off2+=200){
+    var url2 = BASE+'/?psc_vf_sync=1&k=ps2026&path=stock&mode=apply&confirm=YES&limit=200&offset='+off2;
+    var r2=exec('curl -sk -m 180 "'+url2+'"');
+    var m2=r2.match(/(\{.*\})/s);
+    if(!m2){ totals.stock.errors++; totals.stock.err_msg=(r2||'').slice(0,200); break; }
+    var d2=JSON.parse(m2[0]); if(d2.error){ totals.stock.errors++; totals.stock.err_msg=d2.error; break; }
+    var s2=d2.stats||{};
+    totals.stock.applied += s2.applied||0;
+    totals.stock.would_change_qty += s2.would_change_qty||0;
+    totals.stock.would_zero_out += s2.would_zero_out||0;
+    totals.stock.would_refresh_only += s2.would_refresh_only||0;
+    if((s2.products_scanned||0) < 200) break;
+  }
+
+  // 3. PUBLISH APPLY (mažas, vienu kartu)
+  var r3=exec('curl -sk -m 90 "'+BASE+'/?psc_vf_sync=1&k=ps2026&path=publish&mode=apply&confirm=YES&limit=500&offset=0"');
+  var m3=r3.match(/(\{.*\})/s);
+  if(m3){ var d3=JSON.parse(m3[0]); if(d3.stats){ totals.publish.applied=d3.stats.applied||0; totals.publish.would_publish=d3.stats.would_publish||0; totals.publish.samples=d3.examples||[]; } }
+  else totals.publish.errors++;
+
+  // 4. CRON REGISTER
+  var cr=exec('curl -sk -m 30 "'+BASE+'/?psc_vf_sync=1&k=ps2026&cron=register"');
+  var mc=cr.match(/(\{.*\})/s);
+  totals.cron = mc?JSON.parse(mc[0]):(cr||'').slice(0,200);
+
+  commit('apply_all.json', Buffer.from(JSON.stringify(totals),'utf8').toString('base64'));
+  console.log(JSON.stringify(totals));
 })();
