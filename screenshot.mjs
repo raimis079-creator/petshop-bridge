@@ -1,16 +1,20 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+import { chromium } from "playwright";
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'da',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbda.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbda.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2FrYyddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAkb3V0ID0gYXJyYXkoKTsKICAKICAvLyAxLiBTVUtVUlRJIEFrY2lqdSBwdXNsYXDErwogICRjb250ZW50ID0gYmFzZTY0X2RlY29kZSgnUEdScGRpQmpiR0Z6Y3owaWNITmpMWE52YkMxb1pYSnZJajRLUEdneElHTnNZWE56UFNKd2MyTXRjMjlzTFdobGNtOHRkR2wwYkdVaVBrRnJZMmxxYjNNOEwyZ3hQZ284Y0NCamJHRnpjejBpY0hOakxYTnZiQzFvWlhKdkxYUmxlSFFpUGxacGMyOXpJTVdoYVhWdklHMWxkSFVnWjJGc2FXOXFZVzdFaldsdmN5QmhhMk5wYW05eklIWnBaVzV2YW1VZ2RtbGxkRzlxWlNEaWdKUWdiblZyWVdsdWIzUnZjeUJ3Y21WcnhKZHpMQ0JzWVdscmFXNXBJSEJoYzJuRnEyeDViV0ZwSUdseUlITndaV05wWVd6RnEzTWdhMkZwYnNXeklIQmhjMm5GcTJ4NWJXRnBMaUJUeElWeVljV2hZWE1nWVhSemFXNWhkV3BwYm1FZ1lYVjBiMjFoZEduRm9XdGhhUzQ4TDNBK0Nqd3ZaR2wyUGdvS1czTmhiR1ZmY0hKdlpIVmpkSE1nY0dWeVgzQmhaMlU5SWpJMElpQmpiMngxYlc1elBTSTBJaUJ2Y21SbGNtSjVQU0p3YjNCMWJHRnlhWFI1SWlCdmNtUmxjajBpUkVWVFF5SmRDZz09Jyk7CiAgJHBhZ2VfaWQgPSB3cF9pbnNlcnRfcG9zdChhcnJheSgKICAgICdwb3N0X3RpdGxlJyA9PiAnQWtjaWpvcycsCiAgICAncG9zdF9uYW1lJyA9PiAnYWtjaWpvcycsCiAgICAncG9zdF9jb250ZW50JyA9PiAkY29udGVudCwKICAgICdwb3N0X3N0YXR1cycgPT4gJ3B1Ymxpc2gnLAogICAgJ3Bvc3RfdHlwZScgPT4gJ3BhZ2UnLAogICAgJ3Bvc3RfYXV0aG9yJyA9PiAxLAogICksIHRydWUpOwogICRvdXRbJ3BhZ2UnXSA9IGlzX3dwX2Vycm9yKCRwYWdlX2lkKSA/ICRwYWdlX2lkLT5nZXRfZXJyb3JfbWVzc2FnZSgpIDogYXJyYXkoCiAgICAnaWQnPT4kcGFnZV9pZCwndXJsJz0+Z2V0X3Blcm1hbGluaygkcGFnZV9pZCksJ3N0YXR1cyc9PmdldF9wb3N0X3N0YXR1cygkcGFnZV9pZCkKICApOwogIAogIC8vIDIuIE1lbml1ICMzNDEzNiAtIGtlaWNpYW0gaXMga2F0ZWdvcmlqb3MgaSBjdXN0b20gVVJMLCBwYXZhZGluaW1hIEFrY2lqb3MKICAvLyAgICBSZWlraWE6IHBvc3RfdGl0bGU9IkFrY2lqb3MiLCBfbWVudV9pdGVtX3R5cGU9Y3VzdG9tLCBfbWVudV9pdGVtX29iamVjdD1jdXN0b20sCiAgLy8gICAgX21lbnVfaXRlbV9vYmplY3RfaWQ9PHBhZ2VfaWQ+IChhcmJhIDApLCBfbWVudV9pdGVtX3VybD08YWtjaWpvcyBVUkw+CiAgJG1lbnVfaWQgPSAzNDEzNjsKICAkbWlfciA9IHdwX3VwZGF0ZV9wb3N0KGFycmF5KCdJRCc9PiRtZW51X2lkLCdwb3N0X3RpdGxlJz0+J0FrY2lqb3MnKSwgdHJ1ZSk7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkbWVudV9pZCwnX21lbnVfaXRlbV90eXBlJywncG9zdF90eXBlJyk7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkbWVudV9pZCwnX21lbnVfaXRlbV9vYmplY3QnLCdwYWdlJyk7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkbWVudV9pZCwnX21lbnVfaXRlbV9vYmplY3RfaWQnLCRwYWdlX2lkKTsKICBkZWxldGVfcG9zdF9tZXRhKCRtZW51X2lkLCdfbWVudV9pdGVtX3VybCcpOwogICRvdXRbJ21lbnVfYWtjaWpvcyddID0gaXNfd3BfZXJyb3IoJG1pX3IpID8gJG1pX3ItPmdldF9lcnJvcl9tZXNzYWdlKCkgOiAnT0snOwogIAogIC8vIDMuIFBhc2zEl3B0aSBET1ZBTk9TICgjMjk3MikgaXIgREFVR0lBVT1QSUdJQVUgKCMyOTcxKQogICRoaWRlX3IxID0gd3BfdXBkYXRlX3Bvc3QoYXJyYXkoJ0lEJz0+Mjk3MiwncG9zdF9zdGF0dXMnPT4nZHJhZnQnKSwgdHJ1ZSk7CiAgJGhpZGVfcjIgPSB3cF91cGRhdGVfcG9zdChhcnJheSgnSUQnPT4yOTcxLCdwb3N0X3N0YXR1cyc9PidkcmFmdCcpLCB0cnVlKTsKICAkb3V0WydoaWRlX2RvdmFub3MnXSA9IGlzX3dwX2Vycm9yKCRoaWRlX3IxKSA/ICRoaWRlX3IxLT5nZXRfZXJyb3JfbWVzc2FnZSgpIDogJ09LIChkcmFmdCknOwogICRvdXRbJ2hpZGVfZGF1Z2lhdSddID0gaXNfd3BfZXJyb3IoJGhpZGVfcjIpID8gJGhpZGVfcjItPmdldF9lcnJvcl9tZXNzYWdlKCkgOiAnT0sgKGRyYWZ0KSc7CiAgCiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
+const URL="https://dev.avesa.lt/akcijos/";
+function commit(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'v',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbv.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbv.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC AKC', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 25 "'+BASE+'/?psc_akc=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('deploy_akcijos.json', m?m[0]:(r||'').slice(0,600));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  console.log('done');
+  const browser = await chromium.launch({ ignoreHTTPSErrors: true });
+  const ctx = await browser.newContext({ viewport:{width:1440,height:900}, ignoreHTTPSErrors:true });
+  const page = await ctx.newPage();
+  await page.goto(URL, { waitUntil:'domcontentloaded' });
+  await page.waitForTimeout(4000);
+  // Suskaiciuoti prekiu korteles
+  const productCount = await page.evaluate(() => document.querySelectorAll('ul.products li.product').length);
+  const h1 = await page.evaluate(() => (document.querySelector('h1')||{}).innerText);
+  const shot = await page.screenshot({ fullPage: true, type:'png' });
+  commit('akcijos_desktop.png', shot.toString('base64'));
+  commit('akcijos_debug.json', Buffer.from(JSON.stringify({productCount, h1}),'utf8').toString('base64'));
+  await browser.close();
+  console.log('done: products='+productCount);
 })();
