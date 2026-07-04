@@ -1,19 +1,16 @@
 import { execSync } from "child_process"; import fs from "fs";
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
+const BASE="https://dev.avesa.lt";
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cpk',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcpk.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcpk.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cpl',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcpl.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcpl.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3BsdWcnXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgCiAgaWYgKCFmdW5jdGlvbl9leGlzdHMoJ2dldF9wbHVnaW5zJykpIHJlcXVpcmVfb25jZSBBQlNQQVRILid3cC1hZG1pbi9pbmNsdWRlcy9wbHVnaW4ucGhwJzsKICAkYWxsID0gZ2V0X3BsdWdpbnMoKTsKICAkYWN0aXZlID0gZ2V0X29wdGlvbignYWN0aXZlX3BsdWdpbnMnKTsKICAKICAkcmVsZXZhbnQgPSBhcnJheSgpOwogIGZvcmVhY2ggKCRhbGwgYXMgJHBhdGggPT4gJGluZm8pIHsKICAgICRuYW1lX2wgPSBtYl9zdHJ0b2xvd2VyKCRpbmZvWydOYW1lJ10pOwogICAgaWYgKHByZWdfbWF0Y2goJy8oYnVuZGxlfGNvbXBvc2l0ZXxtaXguP2FuZC4/bWF0Y2h8bWl4Lj9tYXRjaHxncm91cC4/cHJvZHVjdHxxdWFudGl0eSkvaScsICRuYW1lX2wpIHx8IHByZWdfbWF0Y2goJy8oYnVuZGxlfGNvbXBvc2l0ZXxtaXgpL2knLCRwYXRoKSkgewogICAgICAkcmVsZXZhbnRbXSA9IGFycmF5KAogICAgICAgICdwYXRoJyA9PiAkcGF0aCwKICAgICAgICAnbmFtZScgPT4gJGluZm9bJ05hbWUnXSwKICAgICAgICAndmVyc2lvbicgPT4gJGluZm9bJ1ZlcnNpb24nXSwKICAgICAgICAnYWN0aXZlJyA9PiBpbl9hcnJheSgkcGF0aCwgJGFjdGl2ZSksCiAgICAgICk7CiAgICB9CiAgfQogIAogIC8vIElyIHZpc2kgYWt0eXbFq3MgcGx1Z2luJ2FpIChrYWQgbWF0eXR1bWUgdmlzxIUgc3RhY2snxIUpCiAgJGFjdGl2ZV9uYW1lcyA9IGFycmF5KCk7CiAgZm9yZWFjaCAoJGFjdGl2ZSBhcyAkcGF0aCkgewogICAgaWYgKGlzc2V0KCRhbGxbJHBhdGhdKSkgJGFjdGl2ZV9uYW1lc1tdID0gJGFsbFskcGF0aF1bJ05hbWUnXTsKICB9CiAgCiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZShhcnJheSgKICAgICdidW5kbGVfcmVsYXRlZCcgPT4gJHJlbGV2YW50LAogICAgJ2FsbF9hY3RpdmVfcGx1Z2lucycgPT4gJGFjdGl2ZV9uYW1lcywKICApKTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
 (async()=>{
-  var html = exec('curl -sk -m 25 "https://dev.avesa.lt/akcijos/"');
-  // Ieskom tik psc-akc-filter block turini (mano custom filter)
-  var m = html.match(/<div class="psc-akc-filter">([\s\S]*?)<\/div>/);
-  var filter_html = m ? m[1] : 'NOT FOUND';
-  // Ir countagam kur žodis "Paukš" atsiranda visam HTML
-  var pauksc_matches = html.match(/Paukš[a-ząčęėįšųū]*iam/g) || [];
-  commit('check_pauksc.json', JSON.stringify({
-    filter_html_block: filter_html.substring(0,2000),
-    pauksc_occurrences_in_html: pauksc_matches.length,
-    pauksc_in_filter_block: filter_html.includes('Paukš'),
-  }));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC PLUG', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 25 "'+BASE+'/?psc_plug=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('check_plugins.json', m?m[0]:(r||'').slice(0,600));
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
   console.log('done');
 })();
