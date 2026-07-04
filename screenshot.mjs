@@ -1,32 +1,16 @@
 import { execSync } from "child_process"; import fs from "fs";
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
+const BASE="https://dev.avesa.lt";
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcp.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcp.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ta',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbta.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbta.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3RhdXRvJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogIGdsb2JhbCAkd3BkYjsKICAKICAvLyAxLiBSYW5kYW0gbmUtc2FsZSBwcmVrZSB0ZXN0J3VpCiAgJHRlc3RfaWQgPSAkd3BkYi0+Z2V0X3ZhcigiCiAgICBTRUxFQ1QgcC5JRCBGUk9NIHskd3BkYi0+cG9zdHN9IHAKICAgIExFRlQgSk9JTiB7JHdwZGItPnBvc3RtZXRhfSBwbSBPTiBwbS5wb3N0X2lkPXAuSUQgQU5EIHBtLm1ldGFfa2V5PSdfc2FsZV9wcmljZScKICAgIFdIRVJFIHAucG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcC5wb3N0X3N0YXR1cz0ncHVibGlzaCcKICAgIEFORCAocG0ubWV0YV92YWx1ZSBJUyBOVUxMIE9SIHBtLm1ldGFfdmFsdWUgPSAnJyBPUiBwbS5tZXRhX3ZhbHVlID0gJzAnKQogICAgQU5EIHAucG9zdF90aXRsZSBOT1QgTElLRSAnJUFLQ0lKQSUnCiAgICBPUkRFUiBCWSBSQU5EKCkgTElNSVQgMSIpOwogIAogIGlmICghJHRlc3RfaWQpIHJldHVybiB3cF9zZW5kX2pzb24oYXJyYXkoJ2Vycm9yJz0+J25vIHRlc3QgcHJvZHVjdCcpKTsKICAKICAkYmVmb3JlX3RpdGxlID0gZ2V0X3RoZV90aXRsZSgkdGVzdF9pZCk7CiAgJGJlZm9yZV9yZWcgPSBnZXRfcG9zdF9tZXRhKCR0ZXN0X2lkLCdfcmVndWxhcl9wcmljZScsdHJ1ZSk7CiAgCiAgLy8gMi4gUHJpZXM6IHNob3J0Y29kZSBncmF6aW5hIFggSUQKICAkYmVmb3JlX2lkcyA9IGRvX3Nob3J0Y29kZSgnW3BzY19ha2Npam9zIHBlcl9wYWdlPSI1MCJdJyk7CiAgcHJlZ19tYXRjaF9hbGwoJy9wb3N0LShcZCspLycsICRiZWZvcmVfaWRzLCAkYm0pOwogICRiZWZvcmVfaWRfbGlzdCA9IGFycmF5X3VuaXF1ZSgkYm1bMV0pOwogICRiZWZvcmVfaGFzX3Rlc3QgPSBpbl9hcnJheSgkdGVzdF9pZCwgJGJlZm9yZV9pZF9saXN0KTsKICAKICAvLyAzLiBQYWRhcm9tIHByZWtlIFNBTEUKICAkc2FsZV9wcmljZSA9IHJvdW5kKChmbG9hdCkkYmVmb3JlX3JlZyAqIDAuOCwgMik7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkdGVzdF9pZCwgJ19zYWxlX3ByaWNlJywgJHNhbGVfcHJpY2UpOwogIHVwZGF0ZV9wb3N0X21ldGEoJHRlc3RfaWQsICdfcHJpY2UnLCAkc2FsZV9wcmljZSk7CiAgd2NfZGVsZXRlX3Byb2R1Y3RfdHJhbnNpZW50cygkdGVzdF9pZCk7CiAgCiAgLy8gV29vIHNhbGUgSURzIHRyYW5zaWVudCBtdXN0IGJlIGZsdXNoZWQKICBkZWxldGVfdHJhbnNpZW50KCd3Y19wcm9kdWN0c19vbnNhbGUnKTsKICAKICAvLyA0LiBQbzogYXIgc2hvcnRjb2RlIGRhYmFyIHJvZG8gc2kgcHJla2U/CiAgJGFmdGVyX2lkcyA9IGRvX3Nob3J0Y29kZSgnW3BzY19ha2Npam9zIHBlcl9wYWdlPSI1MCJdJyk7CiAgcHJlZ19tYXRjaF9hbGwoJy9wb3N0LShcZCspLycsICRhZnRlcl9pZHMsICRhbSk7CiAgJGFmdGVyX2lkX2xpc3QgPSBhcnJheV91bmlxdWUoJGFtWzFdKTsKICAkYWZ0ZXJfaGFzX3Rlc3QgPSBpbl9hcnJheSgkdGVzdF9pZCwgJGFmdGVyX2lkX2xpc3QpOwogIAogIC8vIDUuIEFUU1RBVE9NIGF0Z2FsIC0gaXN0cmluYW0gc2FsZSBtZXRhCiAgZGVsZXRlX3Bvc3RfbWV0YSgkdGVzdF9pZCwgJ19zYWxlX3ByaWNlJyk7CiAgdXBkYXRlX3Bvc3RfbWV0YSgkdGVzdF9pZCwgJ19wcmljZScsICRiZWZvcmVfcmVnKTsKICB3Y19kZWxldGVfcHJvZHVjdF90cmFuc2llbnRzKCR0ZXN0X2lkKTsKICBkZWxldGVfdHJhbnNpZW50KCd3Y19wcm9kdWN0c19vbnNhbGUnKTsKICAKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KAogICAgJ3Rlc3RfcHJvZHVjdF9pZCcgPT4gJHRlc3RfaWQsCiAgICAndGVzdF9wcm9kdWN0X3RpdGxlJyA9PiAkYmVmb3JlX3RpdGxlLAogICAgJ2JlZm9yZV9zYWxlJyA9PiBhcnJheSgKICAgICAgJ3RvdGFsX2lkcycgPT4gY291bnQoJGJlZm9yZV9pZF9saXN0KSwKICAgICAgJ2luY2x1ZGVkX2luX2FrY2lqb3MnID0+ICRiZWZvcmVfaGFzX3Rlc3QsCiAgICApLAogICAgJ2FjdGlvbicgPT4gJ3NldF9zYWxlX3ByaWNlIHRvICcgLiAkc2FsZV9wcmljZSAuICcgKHdhcyAnIC4gJGJlZm9yZV9yZWcgLiAnKScsCiAgICAnYWZ0ZXJfc2FsZScgPT4gYXJyYXkoCiAgICAgICd0b3RhbF9pZHMnID0+IGNvdW50KCRhZnRlcl9pZF9saXN0KSwKICAgICAgJ2luY2x1ZGVkX2luX2FrY2lqb3MnID0+ICRhZnRlcl9oYXNfdGVzdCwKICAgICksCiAgICAncmVzdWx0JyA9PiAkYWZ0ZXJfaGFzX3Rlc3QgPyAnUEFTUyAtIGF1dG8gaW5jbHVkZSB3b3JrcycgOiAnRkFJTCAtIG5ldyBzYWxlIG5vdCBkZXRlY3RlZCcsCiAgICAncmV2ZXJ0ZWQnID0+ICdzYWxlIHJlbW92ZWQsIHByaWNlIHJlc3RvcmVkJywKICApKTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8').trim();
 (async()=>{
-  var html = exec('curl -sk -m 25 "https://dev.avesa.lt/akcijos/"');
-  // Ieskom - kiek "product-small" korteliu (Flatsome tema)
-  var product_smalls = (html.match(/class="[^"]*product-small[^"]*"/g) || []).length;
-  // Slider vs grid
-  var has_slider = html.includes('row-slider') || html.includes('flickity');
-  var has_grid = html.includes('woocommerce columns-4');
-  // PHP warning viesai?
-  var php_warning = html.includes('Warning</b>') || html.includes('Undefined global variable');
-  // AKCIJA prekes matomos?
-  var josera_akcija = (html.match(/Josera[^<]*AKCIJA/g) || []).length;
-  var josidog_akcija = (html.match(/Josi[DC][ao][gt][^<]*AKCIJA/g) || []).length;
-  // Post ID's kortelese?
-  var post_ids = html.match(/product post-(\d+)/g) || [];
-  var unique_ids = [...new Set(post_ids)];
-  
-  commit('check_page.json', JSON.stringify({
-    product_small_count: product_smalls,
-    unique_product_cards_by_class: unique_ids.length,
-    has_slider_on_page: has_slider,
-    has_grid_on_page: has_grid,
-    php_warning_visible: php_warning,
-    josera_akcija_mentions: josera_akcija,
-    josi_akcija_mentions: josidog_akcija,
-    html_length: html.length,
-  }));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC TAUTO', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 40 "'+BASE+'/?psc_tauto=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('test_auto.json', m?m[0]:(r||'').slice(0,600));
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
   console.log('done');
 })();
