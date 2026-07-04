@@ -1,16 +1,26 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+import { chromium } from "playwright";
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ar',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbar.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbar.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2F2cmVjJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogIGdsb2JhbCAkd3BkYjsKICAkY2F0ZWdvcmllcyA9IGFycmF5KAogICAgJ21haXN0YXMta2F0ZW1zJz0+NzgsCiAgICAnc2F1c2FzLW1haXN0YXMta2F0ZW1zJz0+ODEsCiAgICAna29uc2VydmFpLWthdGVtcyc9Pjc5LAogICAgJ3NrYW5lc3RhaS1rYXRlbXMnPT45NiwKICAgICd0dWFsZXRhaS1rcmFpa2FpLXNlbXR1dmVsaWFpJz0+MTA2LAogICAgJ2d1b2xpYWkta2F0ZW1zJz0+NTY5LAogICAgJ2RyYXNreWtsZXMta2F0ZW1zJz0+MTI0LAogICAgJ3RyYW5zcG9ydGF2aW1vLWRlemVzLWthdGVtcyc9PjEyMSwKICAgICdwcmlleml1cm9zLXByaWVtb25lcy1rYXRlbXMnPT4xMzAsCiAgICAnc3Vrb3Mtc2VwZWNpYWktemlya2xlcy1rYXRlbXMnPT42MzksCiAgICAnZHViZW5lbGlhaS1rYXRlbXMnPT4xMTIsCiAgICAnemFpc2xhaS1rYXRlbXMnPT4xMTQsCiAgICAnYW50a2FrbGlhaS1pci1wZXRuZXNvcy1rYXRlbXMnPT4xMTcsCiAgICAndml0YW1pbmFpLWlyLXBhcGlsZGFpLWthdGVtcyc9PjEwMiwKICAgICdhbnRpcGFyYXppdGluZXMtcHJpZW1vbmVzLWthdGVtcyc9PjEwOSwKICApOwogICRvdXQ9YXJyYXkoKTsKICBmb3JlYWNoKCRjYXRlZ29yaWVzIGFzICRzbHVnPT4kdGVybV9pZCl7CiAgICAvLyBUb3RhbCBwdWJsaWt1b3TFsyBwcmVracWzIGthdGVnb3Jpam9qZQogICAgJHRvdGFsID0gJHdwZGItPmdldF92YXIoJHdwZGItPnByZXBhcmUoIgogICAgICBTRUxFQ1QgQ09VTlQoRElTVElOQ1QgcC5JRCkgRlJPTSB7JHdwZGItPnBvc3RzfSBwCiAgICAgIElOTkVSIEpPSU4geyR3cGRiLT50ZXJtX3JlbGF0aW9uc2hpcHN9IHRyIE9OIHRyLm9iamVjdF9pZD1wLklECiAgICAgIFdIRVJFIHAucG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcC5wb3N0X3N0YXR1cz0ncHVibGlzaCcgQU5EIHRyLnRlcm1fdGF4b25vbXlfaWQ9JWQiLCR0ZXJtX2lkKSk7CiAgICAKICAgIC8vIEFWIHByZWvEl3MgPSBvd24gc3RvY2sgKG5lIFZGLCBuZSBaQikgLSB0aWtyaW5hbSBwZXIgX3ZmX3N1cHBsaWVyX3NrdQogICAgJGF2ID0gJHdwZGItPmdldF92YXIoJHdwZGItPnByZXBhcmUoIgogICAgICBTRUxFQ1QgQ09VTlQoRElTVElOQ1QgcC5JRCkgRlJPTSB7JHdwZGItPnBvc3RzfSBwCiAgICAgIElOTkVSIEpPSU4geyR3cGRiLT50ZXJtX3JlbGF0aW9uc2hpcHN9IHRyIE9OIHRyLm9iamVjdF9pZD1wLklECiAgICAgIFdIRVJFIHAucG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcC5wb3N0X3N0YXR1cz0ncHVibGlzaCcgQU5EIHRyLnRlcm1fdGF4b25vbXlfaWQ9JWQKICAgICAgQU5EIHAuSUQgTk9UIElOIChTRUxFQ1QgcG9zdF9pZCBGUk9NIHskd3BkYi0+cG9zdG1ldGF9IFdIRVJFIG1ldGFfa2V5PSdfdmZfc3VwcGxpZXJfc2t1JyBBTkQgbWV0YV92YWx1ZSAhPSAnJykKICAgICAgQU5EIHAuSUQgTk9UIElOIChTRUxFQ1QgcG9zdF9pZCBGUk9NIHskd3BkYi0+cG9zdG1ldGF9IFdIRVJFIG1ldGFfa2V5PSdfemJfY29zdCcgQU5EIG1ldGFfdmFsdWUgIT0gJycgQU5EIG1ldGFfdmFsdWUgIT0gJzAnKSIsJHRlcm1faWQpKTsKICAgIAogICAgJG91dFskc2x1Z109YXJyYXkoJ2lkJz0+JHRlcm1faWQsJ3RvdGFsJz0+JHRvdGFsLCdhdic9PiRhdik7CiAgfQogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
+const URL="https://dev.avesa.lt/sprendimai/naujas-kaciukas/";
+function commit(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sc',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbsc.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbsc.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC AVREC', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 25 "'+BASE+'/?psc_avrec=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('av_recon.json', m?m[0]:(r||'').slice(0,600));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  const browser = await chromium.launch({ ignoreHTTPSErrors: true });
+  // Desktop 1440
+  const desk = await browser.newContext({ viewport:{width:1440,height:900}, ignoreHTTPSErrors:true });
+  const p1 = await desk.newPage();
+  await p1.goto(URL, { waitUntil:'domcontentloaded' });
+  await p1.waitForTimeout(3000);
+  const desk_shot = await p1.screenshot({ fullPage:true, type:'png' });
+  commit('kaciukas_FULL_desktop_1440.png', desk_shot.toString('base64'));
+  await desk.close();
+  // Mobile 390
+  const mob = await browser.newContext({ viewport:{width:390,height:844}, isMobile:true, ignoreHTTPSErrors:true, userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X)'});
+  const p2 = await mob.newPage();
+  await p2.goto(URL, { waitUntil:'domcontentloaded' });
+  await p2.waitForTimeout(3000);
+  const mob_shot = await p2.screenshot({ fullPage:true, type:'png' });
+  commit('kaciukas_FULL_mobile_390.png', mob_shot.toString('base64'));
+  await mob.close();
+  await browser.close();
   console.log('done');
 })();
