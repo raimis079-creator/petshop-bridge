@@ -1,0 +1,54 @@
+{
+  "default (be filtro)": {
+    "btn_labels": [
+      "Visos",
+      "Šunims",
+      "Katėms",
+      "Graužikams"
+    ],
+    "btn_count": 4,
+    "has_pauksciams_btn": true,
+    "has_zuvims_btn": false,
+    "active_filter": "Visos",
+    "product_cards": 30
+  },
+  "?gyvunas=sunims": {
+    "btn_labels": [
+      "Visos",
+      "Šunims",
+      "Katėms",
+      "Graužikams"
+    ],
+    "btn_count": 4,
+    "has_pauksciams_btn": true,
+    "has_zuvims_btn": false,
+    "active_filter": "Šunims",
+    "product_cards": 3
+  },
+  "?gyvunas=grauzikams": {
+    "btn_labels": [
+      "Visos",
+      "Šunims",
+      "Katėms",
+      "Graužikams"
+    ],
+    "btn_count": 4,
+    "has_pauksciams_btn": true,
+    "has_zuvims_btn": false,
+    "active_filter": "Graužikams",
+    "product_cards": 24
+  },
+  "?gyvunas=pauksciams (tuscia kat.)": {
+    "btn_labels": [
+      "Visos",
+      "Šunims",
+      "Katėms",
+      "Graužikams"
+    ],
+    "btn_count": 4,
+    "has_pauksciams_btn": true,
+    "has_zuvims_btn": false,
+    "active_filter": "Visos",
+    "product_cards": 30
+  }
+}
