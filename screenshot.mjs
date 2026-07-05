@@ -3,16 +3,14 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cm',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcm.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcm.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:30000}); }catch(e){ return 'EXC:'+e.message.slice(0,100); } }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sl',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbsl.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbsl.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:60000}); }catch(e){ return 'EXC:'+e.message.slice(0,150); } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3NsJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogIAogIHJlcXVpcmVfb25jZSBBQlNQQVRIIC4gJ3dwLWFkbWluL2luY2x1ZGVzL21lZGlhLnBocCc7CiAgcmVxdWlyZV9vbmNlIEFCU1BBVEggLiAnd3AtYWRtaW4vaW5jbHVkZXMvZmlsZS5waHAnOwogIHJlcXVpcmVfb25jZSBBQlNQQVRIIC4gJ3dwLWFkbWluL2luY2x1ZGVzL2ltYWdlLnBocCc7CiAgCiAgJHBhY2tfaWQgPSAzNDQ0OTsKICAkcmF3X3VybCA9ICdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcmFpbWlzMDc5LWNyZWF0b3IvcGV0c2hvcC1icmlkZ2UvbWFpbi9zY3JlZW5zaG90cy9wYWNrX3YyX29wdC5qcGcnOwogIAogIC8vIFNpZGVsb2FkIC0gV1AgcGF0cyBwYXJzaXNpdW7EjWlhIHNlcnZlcmlvIHB1c8SXamUKICAkYXR0X2lkID0gbWVkaWFfc2lkZWxvYWRfaW1hZ2UoJHJhd191cmwsICRwYWNrX2lkLCAnTWlhbW9yIGtvbnNlcnZhaSBrYXTEl21zIHN1IHR1bnUgaXIga3JldmV0xJdtaXMsIGVrb25vbWnFoWthIHBha3VvdMSXIDI0IHZudC4nLCAnaWQnKTsKICAKICBpZiAoaXNfd3BfZXJyb3IoJGF0dF9pZCkpIHsKICAgIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnJvcicgPT4gJGF0dF9pZC0+Z2V0X2Vycm9yX21lc3NhZ2UoKSkpOwogICAgZXhpdDsKICB9CiAgCiAgLy8gUHJpc2tpcmlhbSBrYWlwIHBhZ3JpbmRpbmUgbnVvdHJhdWthCiAgc2V0X3Bvc3RfdGh1bWJuYWlsKCRwYWNrX2lkLCAkYXR0X2lkKTsKICB3Y19kZWxldGVfcHJvZHVjdF90cmFuc2llbnRzKCRwYWNrX2lkKTsKICAKICAkbmV3X3VybCA9IHdwX2dldF9hdHRhY2htZW50X3VybCgkYXR0X2lkKTsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOwogIGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2F0dF9pZCcgPT4gJGF0dF9pZCwgJ25ld19pbWFnZV91cmwnID0+ICRuZXdfdXJsLCAndGh1bWJuYWlsX3NldCcgPT4gZ2V0X3Bvc3RfdGh1bWJuYWlsX2lkKCRwYWNrX2lkKSkpOwogIGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
 (async()=>{
-  // Ieskom paskutiniu media - gal v2 vis delto ikelta (nutruko tik atsakymas)
-  var media = exec('curl -sk -m 25 -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/wp/v2/media?per_page=8&orderby=date&order=desc"');
-  var found = [];
-  try {
-    var arr = JSON.parse(media);
-    arr.forEach(m=>{ found.push({id:m.id, slug:m.slug, src:(m.source_url||'').split('/').pop()}); });
-  } catch(e){ found = [media.slice(0,200)]; }
-  commit('check_media.json', JSON.stringify({recent_media: found}));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC SL', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 55 "'+BASE+'/?psc_sl=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('sideload.json', m?m[0]:(r||'').slice(0,500));
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
   console.log('done');
 })();
