@@ -1,24 +1,23 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ov2',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbov2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbov2.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:45000}); }catch(e){ return 'EXC:'+e.message.slice(0,150); } }
-const ov=Buffer.from("LyoqCiAqIFBldHNob3AgRFAgS29ydGVsxJdzIMW9ZW5rbGl1a2FzIHYyIChDU1Mgb3ZlcmxheSkKICogw5dOIFZOVC4gYmFkZ2UgKyBFS09OT01JxaBLQSBQQUtVT1TEliBqdW9zdGEg4oCUIENTUyBvdmVybGF5IGFudCAuYm94LWltYWdlIChpbWFnZSB3cmFwcGVyKS4KICogSW5qZWtjaWphIHBlciB3b29jb21tZXJjZV9wcm9kdWN0X2dldF9pbWFnZSBmaWx0cmEgKGxvb3Aga29udGVrc3RlKSAtPiBiYWRnZSBsaWVrYSBib3gtaW1hZ2UgdmlkdWplLgogKi8KCmlmICghZnVuY3Rpb25fZXhpc3RzKCdwZXRzaG9wX2RwX292X3NpemUnKSkgewpmdW5jdGlvbiBwZXRzaG9wX2RwX292X3NpemUoJG5hbWUpIHsKICAgIGlmIChwcmVnX21hdGNoKCcvKFxkKyg/OlsuLF1cZCspPylccyooa2d8ZylcYi9pdScsICRuYW1lLCAkbSkpIHsKICAgICAgICByZXR1cm4gc3RyX3JlcGxhY2UoJy4nLCAnLCcsICRtWzFdKSAuICcgJyAuIHN0cnRvbG93ZXIoJG1bMl0pOwogICAgfQogICAgcmV0dXJuICcnOwp9Cn0KCi8vIExvb3Aga29udGVrc3RhcwphZGRfYWN0aW9uKCd3b29jb21tZXJjZV9iZWZvcmVfc2hvcF9sb29wX2l0ZW0nLCBmdW5jdGlvbigpeyAkR0xPQkFMU1sncHNjX2RwX2xvb3AnXSA9IHRydWU7IH0sIDEpOwphZGRfYWN0aW9uKCd3b29jb21tZXJjZV9hZnRlcl9zaG9wX2xvb3BfaXRlbScsIGZ1bmN0aW9uKCl7ICRHTE9CQUxTWydwc2NfZHBfbG9vcCddID0gZmFsc2U7IH0sIDk5KTsKCi8vIEJhZGdlIEhUTUwgZ2VuZXJhdG9yaXVzCmlmICghZnVuY3Rpb25fZXhpc3RzKCdwZXRzaG9wX2RwX2JhZGdlX2h0bWwnKSkgewpmdW5jdGlvbiBwZXRzaG9wX2RwX2JhZGdlX2h0bWwoJHBpZCkgewogICAgJHF0eSA9IGdldF9wb3N0X21ldGEoJHBpZCwgJ19kcF9wYWNrX3F0eScsIHRydWUpOwogICAgaWYgKCEkcXR5KSByZXR1cm4gJyc7CiAgICAkcXR5ID0gaW50dmFsKCRxdHkpOwogICAgJGh0bWwgPSAnPGRpdiBjbGFzcz0icHNjLXF0eS1iYWRnZSI+PHNwYW4gY2xhc3M9InBzYy1xdHktbnVtIj4mdGltZXM7JyAuICRxdHkgLiAnPC9zcGFuPjxzcGFuIGNsYXNzPSJwc2MtcXR5LXZudCI+Vk5ULjwvc3Bhbj48L2Rpdj4nOwogICAgJGJhc2VfaWQgPSBnZXRfcG9zdF9tZXRhKCRwaWQsICdfZHBfYmFzZV9wcm9kdWN0X2lkJywgdHJ1ZSk7CiAgICAkc2l6ZSA9ICcnOwogICAgaWYgKCRiYXNlX2lkKSB7ICRiID0gd2NfZ2V0X3Byb2R1Y3QoJGJhc2VfaWQpOyBpZiAoJGIpICRzaXplID0gcGV0c2hvcF9kcF9vdl9zaXplKCRiLT5nZXRfbmFtZSgpKTsgfQogICAgJGJhbmQgPSAnRUtPTk9NScWgS0EgUEFLVU9UxJYgJm1pZGRvdDsgJyAuICRxdHkgLiAnICZ0aW1lczsgJyAuICgkc2l6ZSAhPT0gJycgPyBlc2NfaHRtbCgkc2l6ZSkgOiAkcXR5IC4gJyB2bnQuJyk7CiAgICAkaHRtbCAuPSAnPGRpdiBjbGFzcz0icHNjLWVjby1iYW5kIj4nIC4gJGJhbmQgLiAnPC9kaXY+JzsKICAgIHJldHVybiAkaHRtbDsKfQp9CgovLyBJbmpla2NpamEgaSBsb29wIG51b3RyYXVrYSAoYm94LWltYWdlIHZpZHVqZSkKYWRkX2ZpbHRlcignd29vY29tbWVyY2VfcHJvZHVjdF9nZXRfaW1hZ2UnLCBmdW5jdGlvbigkaHRtbCwgJHByb2R1Y3QpewogICAgaWYgKGVtcHR5KCRHTE9CQUxTWydwc2NfZHBfbG9vcCddKSkgcmV0dXJuICRodG1sOwogICAgaWYgKCEkcHJvZHVjdCkgcmV0dXJuICRodG1sOwogICAgJGJhZGdlID0gcGV0c2hvcF9kcF9iYWRnZV9odG1sKCRwcm9kdWN0LT5nZXRfaWQoKSk7CiAgICByZXR1cm4gJGJhZGdlID8gKCRodG1sIC4gJGJhZGdlKSA6ICRodG1sOwp9LCAyMCwgMik7CgovLyBDU1MKYWRkX2FjdGlvbignd3BfaGVhZCcsIGZ1bmN0aW9uKCkgewogICAgPz4KICAgIDxzdHlsZSBpZD0icHNjLXF0eS1iYWRnZS1jc3MiPgogICAgLmJveC1pbWFnZSB7IHBvc2l0aW9uOiByZWxhdGl2ZTsgfQogICAgLnBzYy1xdHktYmFkZ2UgewogICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTsgdG9wOiA4cHg7IHJpZ2h0OiA4cHg7IHotaW5kZXg6IDU7CiAgICAgICAgd2lkdGg6IDU0cHg7IGhlaWdodDogNTRweDsgYm9yZGVyLXJhZGl1czogNTAlOwogICAgICAgIGJhY2tncm91bmQ6ICMyZjVmNDY7IGNvbG9yOiAjZmZmOwogICAgICAgIGJvcmRlcjogMnB4IHNvbGlkIHJnYmEoMjU1LDI1NSwyNTUsMC44NSk7CiAgICAgICAgYm94LXNoYWRvdzogMCAycHggNnB4IHJnYmEoMCwwLDAsMC4yNSk7CiAgICAgICAgZGlzcGxheTogZmxleDsgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsKICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyOyBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsKICAgICAgICBsaW5lLWhlaWdodDogMTsgdGV4dC1hbGlnbjogY2VudGVyOyBmb250LXdlaWdodDogNzAwOwogICAgICAgIHBvaW50ZXItZXZlbnRzOiBub25lOwogICAgfQogICAgLnBzYy1xdHktYmFkZ2UgLnBzYy1xdHktbnVtIHsgZm9udC1zaXplOiAxOHB4OyB9CiAgICAucHNjLXF0eS1iYWRnZSAucHNjLXF0eS12bnQgeyBmb250LXNpemU6IDExcHg7IGxldHRlci1zcGFjaW5nOiAwLjNweDsgbWFyZ2luLXRvcDogMnB4OyB9CiAgICAucHNjLWVjby1iYW5kIHsKICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7IGxlZnQ6IDA7IHJpZ2h0OiAwOyBib3R0b206IDA7IHotaW5kZXg6IDQ7CiAgICAgICAgYmFja2dyb3VuZDogIzJmNWY0NjsgY29sb3I6ICNmZmY7IHRleHQtYWxpZ246IGNlbnRlcjsKICAgICAgICBmb250LXdlaWdodDogNzAwOyBmb250LXNpemU6IDExcHg7IGxldHRlci1zcGFjaW5nOiAwLjNweDsKICAgICAgICBwYWRkaW5nOiA1cHggNHB4OyB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyBsaW5lLWhlaWdodDogMS4xNTsKICAgICAgICBwb2ludGVyLWV2ZW50czogbm9uZTsKICAgIH0KICAgIDwvc3R5bGU+CiAgICA8P3BocAp9LCAyMCk7Cg==",'base64').toString('utf8');
+const BASE="https://dev.avesa.lt";
+function commitBin(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'shot',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbshot.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbshot.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'shot',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbshot2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbshot2.json "'+url+'"',{encoding:'utf8'}); }
 (async()=>{
-  fs.writeFileSync('/tmp/ov.json', JSON.stringify({name:'Petshop DP Kortelės Ženkliukas v2', code:ov, scope:'global', active:true}));
-  exec('curl -sk -m 30 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/ov.json "'+BASE+'/wp-json/code-snippets/v1/snippets/573"');
-  var page=exec('curl -sk -m 30 "'+BASE+'/daugiau-pigiau/"');
-  var out={};
-  out.has_badge = page.includes('psc-qty-badge');
-  // ar badge PRIES box-image uzdaryma? Randam box-image indeksa, badge indeksa, kitos box-text indeksa
-  var badge = page.indexOf('psc-qty-badge"');
-  var boxtext = page.indexOf('box-text', page.indexOf('box-image'));
-  // istrauka aplink badge
-  if(badge>=0) out.ctx = page.slice(badge-90, badge+140).replace(/\s+/g,' ');
-  out.badge_before_boxtext = (badge>=0 && badge < boxtext);
-  // ar badge yra <a> viduje (image link) - ieskom </a> po badge
-  commit('depov2.json', JSON.stringify(out));
+  let pw;
+  try { pw = await import('playwright'); } catch(e){
+    try { pw = await import('playwright-core'); } catch(e2){ commit('shot_meta.json', JSON.stringify({err:'no playwright: '+e.message})); return; }
+  }
+  try {
+    const browser = await pw.chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
+    const ctx = await browser.newContext({ ignoreHTTPSErrors:true, viewport:{width:1300,height:1200} });
+    const page = await ctx.newPage();
+    await page.goto(BASE+'/daugiau-pigiau/', { waitUntil:'networkidle', timeout:45000 });
+    await page.waitForTimeout(2500);
+    const buf = await page.screenshot({ clip:{x:0,y:150,width:1300,height:850} });
+    commitBin('dp_grid_shot.png', buf.toString('base64'));
+    commit('shot_meta.json', JSON.stringify({ok:true, len:buf.length}));
+    await browser.close();
+  } catch(e){ commit('shot_meta.json', JSON.stringify({err:e.message.slice(0,300)})); }
   console.log('done');
 })();
