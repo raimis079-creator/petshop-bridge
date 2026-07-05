@@ -1,16 +1,23 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'pp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbpp.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbpp.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'vl',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbvl.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbvl.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3B1YnBhY2snXSA/PyAnJykgIT09ICcxJykgcmV0dXJuOwogIGlmICgoJF9HRVRbJ2snXSA/PyAnJykgIT09ICdwczIwMjYnICYmICFjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpKSByZXR1cm47CiAgCiAgJHBhY2tfaWQgPSAzNDQ0OTsKICAkY2F0X2lkID0gOTE7IC8vIERBVUdJQVU9UElHSUFVCiAgJG91dCA9IGFycmF5KCk7CiAgCiAgLy8gMS4gS2F0ZWdvcmlqb3MgaW5mbyBwcmllcyBrZWl0aW1hCiAgJGNhdCA9IGdldF90ZXJtKCRjYXRfaWQsICdwcm9kdWN0X2NhdCcpOwogICRvdXRbJ2NhdGVnb3J5X2JlZm9yZSddID0gYXJyYXkoJ25hbWUnPT4kY2F0LT5uYW1lLCAnc2x1Zyc9PiRjYXQtPnNsdWcsICdjb3VudCc9PiRjYXQtPmNvdW50KTsKICAKICAvLyAyLiBNZW5pdSBwdW5rdG8gKCMyOTcxKSBidXNlbmEgLSBrYWQgemlub3R1bWUgYXIgamlzIHZpcyBkYXIgaGlkZGVuCiAgJG1lbnVfc3RhdHVzID0gZ2V0X3Bvc3Rfc3RhdHVzKDI5NzEpOwogICRvdXRbJ21lbnVfaXRlbV8yOTcxX3N0YXR1cyddID0gJG1lbnVfc3RhdHVzOwogIAogIC8vIDMuIFB1Ymxpa3VvamFtIHBhY2snYSArIHJvZG9tIHZpc2llbXMgKyBwcmlza2lyaWFtIGthdGVnb3JpamFpCiAgJHByb2R1Y3QgPSB3Y19nZXRfcHJvZHVjdCgkcGFja19pZCk7CiAgJHByb2R1Y3QtPnNldF9zdGF0dXMoJ3B1Ymxpc2gnKTsKICAkcHJvZHVjdC0+c2V0X2NhdGFsb2dfdmlzaWJpbGl0eSgndmlzaWJsZScpOwogICRwcm9kdWN0LT5zYXZlKCk7CiAgd3Bfc2V0X29iamVjdF90ZXJtcygkcGFja19pZCwgYXJyYXkoJGNhdF9pZCksICdwcm9kdWN0X2NhdCcpOwogIHdjX2RlbGV0ZV9wcm9kdWN0X3RyYW5zaWVudHMoJHBhY2tfaWQpOwogIAogICRwcm9kdWN0X2FmdGVyID0gd2NfZ2V0X3Byb2R1Y3QoJHBhY2tfaWQpOwogICRvdXRbJ3BhY2tfc3RhdHVzX2FmdGVyJ10gPSAkcHJvZHVjdF9hZnRlci0+Z2V0X3N0YXR1cygpOwogICRvdXRbJ3BhY2tfdmlzaWJpbGl0eV9hZnRlciddID0gJHByb2R1Y3RfYWZ0ZXItPmdldF9jYXRhbG9nX3Zpc2liaWxpdHkoKTsKICAkb3V0WydwYWNrX2NhdGVnb3JpZXNfYWZ0ZXInXSA9IHdwX2dldF9wb3N0X3Rlcm1zKCRwYWNrX2lkLCAncHJvZHVjdF9jYXQnLCBhcnJheSgnZmllbGRzJz0+J25hbWVzJykpOwogIAogIC8vIDQuIEthdGVnb3Jpam9zIGluZm8gcG8gcGFrZWl0aW1vCiAgY2xlYW5fdGVybV9jYWNoZSgkY2F0X2lkLCAncHJvZHVjdF9jYXQnKTsKICAkY2F0X2FmdGVyID0gZ2V0X3Rlcm0oJGNhdF9pZCwgJ3Byb2R1Y3RfY2F0Jyk7CiAgJG91dFsnY2F0ZWdvcnlfYWZ0ZXInXSA9IGFycmF5KCduYW1lJz0+JGNhdF9hZnRlci0+bmFtZSwgJ3NsdWcnPT4kY2F0X2FmdGVyLT5zbHVnLCAnY291bnQnPT4kY2F0X2FmdGVyLT5jb3VudCk7CiAgJG91dFsnY2F0ZWdvcnlfdXJsJ10gPSBnZXRfdGVybV9saW5rKCRjYXRfaWQsICdwcm9kdWN0X2NhdCcpOwogIAogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
+
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC PUBPACK', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 25 "'+BASE+'/?psc_pubpack=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('publish_pack.json', m?m[0]:(r||'').slice(0,700));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var status = exec('curl -sk -o /dev/null -w "%{http_code}" -m 20 "https://dev.avesa.lt/kategorija/daugiau-pigiau/"');
+  var html = exec('curl -sk -m 25 "https://dev.avesa.lt/kategorija/daugiau-pigiau/"');
+  var has_miamor = html.includes('Miamor');
+  var has_price = html.includes('40,81') || html.includes('40.81');
+  var has_no_products_msg = html.includes('Produkt') && html.includes('nerasta');
+  var addtocart = (html.match(/add_to_cart|Į krepšelį|i krepseli/gi) || []).length;
+  
+  commit('verify_live.json', JSON.stringify({
+    http_status: status,
+    has_miamor_in_html: has_miamor,
+    has_price_in_html: has_price,
+    has_no_products_message: has_no_products_msg,
+    add_to_cart_mentions: addtocart,
+    html_len: html.length,
+  }));
   console.log('done');
 })();
