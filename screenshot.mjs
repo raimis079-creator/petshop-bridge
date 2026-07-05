@@ -1,24 +1,16 @@
 import { execSync } from "child_process"; import fs from "fs";
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
+const BASE="https://dev.avesa.lt";
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ddp2',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbddp2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbddp2.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'tfl',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbtfl.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbtfl.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3RmbCddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICBnbG9iYWwgJHdwZGI7CiAgCiAgLy8gQXRrYXJ0b2phbSBzaG9ydGNvZGUgU1FMOiBzdW5pbXMgZmlsdHJhcwogICRhbGxfaWRzID0gJHdwZGItPmdldF9jb2woIgogICAgU0VMRUNUIERJU1RJTkNUIHAuSUQgRlJPTSB7JHdwZGItPnBvc3RzfSBwCiAgICBJTk5FUiBKT0lOIHskd3BkYi0+cG9zdG1ldGF9IHBtIE9OIHBtLnBvc3RfaWQ9cC5JRCBBTkQgcG0ubWV0YV9rZXk9J19kcF9iYXNlX3Byb2R1Y3RfaWQnCiAgICBXSEVSRSBwLnBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHAucG9zdF9zdGF0dXM9J3B1Ymxpc2gnIik7CiAgJGFsbF9pZHMgPSBhcnJheV9tYXAoJ2ludHZhbCcsJGFsbF9pZHMpOwogICRpbiA9IGltcGxvZGUoJywnLCRhbGxfaWRzKTsKICAKICAkb3V0ID0gYXJyYXkoJ2FsbF9kcF9pZHMnPT4kYWxsX2lkcyk7CiAgCiAgZm9yZWFjaCAoYXJyYXkoJ3N1bmltcycsJ2thdGVtcycpIGFzICRzbHVnKSB7CiAgICAkdCA9IGdldF90ZXJtX2J5KCdzbHVnJywkc2x1ZywncHJvZHVjdF9jYXQnKTsKICAgICRhbGxfY2F0ID0gYXJyYXlfbWVyZ2UoYXJyYXkoJHQtPnRlcm1faWQpLCBnZXRfdGVybV9jaGlsZHJlbigkdC0+dGVybV9pZCwncHJvZHVjdF9jYXQnKSk7CiAgICAkcGggPSBpbXBsb2RlKCcsJyxhcnJheV9tYXAoJ2ludHZhbCcsJGFsbF9jYXQpKTsKICAgICRpZHNfaGVyZSA9ICR3cGRiLT5nZXRfY29sKCIKICAgICAgU0VMRUNUIERJU1RJTkNUIHAuSUQgRlJPTSB7JHdwZGItPnBvc3RzfSBwCiAgICAgIElOTkVSIEpPSU4geyR3cGRiLT50ZXJtX3JlbGF0aW9uc2hpcHN9IHRyIE9OIHRyLm9iamVjdF9pZD1wLklECiAgICAgIElOTkVSIEpPSU4geyR3cGRiLT50ZXJtX3RheG9ub215fSB0dCBPTiB0dC50ZXJtX3RheG9ub215X2lkPXRyLnRlcm1fdGF4b25vbXlfaWQgQU5EIHR0LnRheG9ub215PSdwcm9kdWN0X2NhdCcKICAgICAgV0hFUkUgcC5JRCBJTiAoJGluKSBBTkQgdHQudGVybV9pZCBJTiAoJHBoKSIpOwogICAgJG91dFsnZmlsdGVyXycuJHNsdWddID0gYXJyYXkoCiAgICAgICdpZHMnID0+IGFycmF5X21hcCgnaW50dmFsJywkaWRzX2hlcmUpLAogICAgICAndGl0bGVzJyA9PiBhcnJheV9tYXAoZnVuY3Rpb24oJGlkKXsgcmV0dXJuICRpZC4nOicubWJfc3Vic3RyKGdldF90aGVfdGl0bGUoJGlkKSwwLDQwKTsgfSwgJGlkc19oZXJlKSwKICAgICk7CiAgfQogIAogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
 (async()=>{
-  var sunims = exec('curl -sk -m 25 "https://dev.avesa.lt/daugiau-pigiau/?gyvunas=sunims"');
-  // Istraukiam TIK filtro zona ir produktu zona (ne footer/meniu)
-  var filterStart = sunims.indexOf('psc-dp-filter');
-  var filterZone = filterStart>=0 ? sunims.substring(filterStart, filterStart+800).replace(/<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ') : 'NERA';
-  // Produktu zonoje - kiek kartu miamor ir excl (tik product linkuose)
-  var miamorProdLinks = (sunims.match(/product\/miamor-konservai-katems-su-tunu/g)||[]).length;
-  var exclProdLinks = (sunims.match(/product\/exclusion-hypoallergenic-mazu/g)||[]).length;
-  // Ar yra "Graužikams" filtro mygtuke (ne kitur)
-  var grauzInFilter = filterZone.includes('Graužikams');
-  var pauksInFilter = filterZone.includes('Paukščiams');
-  commit('debug_dp.json', JSON.stringify({
-    filter_zone_text: filterZone.substring(0,300),
-    grauz_in_filter: grauzInFilter,
-    pauks_in_filter: pauksInFilter,
-    miamor_product_links: miamorProdLinks,
-    excl_product_links: exclProdLinks,
-  }));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC TFL', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_tfl=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('test_filter_logic.json', m?m[0]:(r||'').slice(0,700));
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
   console.log('done');
 })();
