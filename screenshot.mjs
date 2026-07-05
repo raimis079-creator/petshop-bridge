@@ -3,44 +3,23 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'gvg',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbgvg.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbgvg.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:40000}); }catch(e){ return 'EXC:'+e.message; } }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sg',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbsg.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbsg.json "'+url+'"',{encoding:'utf8'}); }
+function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:40000}); }catch(e){ return 'EXC:'+e.message.slice(0,120); } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX3BnJ10gPz8gJycpICE9PSAnMScpIHJldHVybjsKICBpZiAoKCRfR0VUWydrJ10gPz8gJycpICE9PSAncHMyMDI2JyAmJiAhY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSkgcmV0dXJuOwogICRmbj0ncGV0c2hvcF9yaW5raW5pb19mb3JtYV9wYWdlJzsKICAkb3V0PWFycmF5KCdleGlzdHMnPT5mdW5jdGlvbl9leGlzdHMoJGZuKSk7CiAgaWYoZnVuY3Rpb25fZXhpc3RzKCRmbikpewogICAgJGVycnM9YXJyYXkoKTsKICAgIHNldF9lcnJvcl9oYW5kbGVyKGZ1bmN0aW9uKCRuLCRzKXVzZSgmJGVycnMpeyAkZXJyc1tdPSJbJG5dICRzIjsgcmV0dXJuIHRydWU7IH0pOwogICAgb2Jfc3RhcnQoKTsKICAgIHRyeXsgY2FsbF91c2VyX2Z1bmMoJGZuKTsgfWNhdGNoKFRocm93YWJsZSAkZSl7ICRlcnJzW109J0VYQzonLiRlLT5nZXRNZXNzYWdlKCk7IH0KICAgICRoPW9iX2dldF9jbGVhbigpOwogICAgcmVzdG9yZV9lcnJvcl9oYW5kbGVyKCk7CiAgICAkb3V0WydlcnJvcnMnXT0kZXJyczsKICAgICRvdXRbJ2xlbiddPXN0cmxlbigkaCk7CiAgICAkb3V0Wydicm93c2UnXT1zdHJwb3MoJGgsJ2JmLWJyb3dzZScpIT09ZmFsc2U7CiAgICAkb3V0WydjYXRmaWx0ZXInXT1zdHJwb3MoJGgsJ2JmLWNhdC1maWx0ZXInKSE9PWZhbHNlOwogICAgJG91dFsnYWRkY2hlY2tlZCddPXN0cnBvcygkaCwnYmYtYWRkLWNoZWNrZWQnKSE9PWZhbHNlOwogICAgJG91dFsnY2hrYWxsJ109c3RycG9zKCRoLCdiZi1jaGstYWxsJykhPT1mYWxzZTsKICAgICRvdXRbJ3J1bnNlYXJjaCddPXN0cnBvcygkaCwnZnVuY3Rpb24gcnVuU2VhcmNoJykhPT1mYWxzZTsKICAgICRvdXRbJ2Jyb3dzZWhhbmRsZXInXT1zdHJwb3MoJGgsInJ1blNlYXJjaCgnJywgdHJ1ZSkiKSE9PWZhbHNlOwogICAgaWYocHJlZ19tYXRjaCgnL3BldENhdHNccyo9XHMqKFxbLio/XF0pOy9zJywkaCwkbW0pKXsgJGRkPWpzb25fZGVjb2RlKCRtbVsxXSx0cnVlKTsgJG91dFsncGV0Y2F0cyddPWlzX2FycmF5KCRkZCk/Y291bnQoJGRkKTowOyAkb3V0WydzYW1wbGUnXT1pc19hcnJheSgkZGQpP2FycmF5X3NsaWNlKGFycmF5X2NvbHVtbigkZGQsJ25hbWUnKSwwLDUpOm51bGw7IH0gZWxzZSB7ICRvdXRbJ3BldGNhdHMnXT0nTUlTUyc7IH0KICB9CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsKfSk7Cg==",'base64').toString('utf8');
 (async()=>{
-  // 1. Perjungiam 539 i global scope laikinai
-  var cur = exec('curl -sk -m 20 -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/539"');
-  var code539=''; try{ code539=JSON.parse(cur).code; }catch(e){}
-  if (!code539) { commit('gen_via_global.json', JSON.stringify({err:'no 539 code'})); return; }
-  fs.writeFileSync('/tmp/g539.json', JSON.stringify({scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/g539.json "'+BASE+'/wp-json/code-snippets/v1/snippets/539"');
-  
-  // 2. Probe (global) kuris iskvieicia callback frontend'e
-  var probe = \`add_action('init', function(){
-    if ((\\$_GET['psc_gvg'] ?? '') !== '1') return;
-    if ((\\$_GET['k'] ?? '') !== 'ps2026' && !current_user_can('manage_options')) return;
-    \\$fn='petshop_rinkinio_forma_page'; \\$out=array('exists'=>function_exists(\\$fn));
-    if(function_exists(\\$fn)){
-      \\$errs=array(); set_error_handler(function(\\$n,\\$s)use(&\\$errs){\\$errs[]="[\\$n] \\$s";return true;});
-      ob_start(); try{ call_user_func(\\$fn); }catch(Throwable \\$e){\\$errs[]='EXC:'.\\$e->getMessage();}
-      \\$h=ob_get_clean(); restore_error_handler();
-      \\$out['errors']=\\$errs; \\$out['len']=strlen(\\$h);
-      \\$out['browse']=strpos(\\$h,'bf-browse')!==false;
-      \\$out['catfilter']=strpos(\\$h,'bf-cat-filter')!==false;
-      \\$out['addchecked']=strpos(\\$h,'bf-add-checked')!==false;
-      \\$out['chkall']=strpos(\\$h,'bf-chk-all')!==false;
-      \\$out['runsearch']=strpos(\\$h,'function runSearch')!==false;
-      \\$out['browsehandler']=strpos(\\$h,"runSearch('', true)")!==false;
-      if(preg_match('/petCats\\\\s*=\\\\s*(\\\\[.*?\\\\]);/s',\\$h,\\$mm)){ \\$dd=json_decode(\\$mm[1],true); \\$out['petcats']=is_array(\\$dd)?count(\\$dd):0; \\$out['sample']=is_array(\\$dd)?array_slice(array_column(\\$dd,'name'),0,5):null; } else { \\$out['petcats']='MISS'; }
-    }
-    header('Content-Type: application/json'); echo wp_json_encode(\\$out); exit;
-  });\`;
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC GVG', code:probe, scope:'global', active:true}));
+  // 1. 539 -> global
+  fs.writeFileSync('/tmp/g.json', JSON.stringify({scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/g.json "'+BASE+'/wp-json/code-snippets/v1/snippets/539"');
+  // 2. probe
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC PG', code:pcode, scope:'global', active:true}));
   exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_gvg=1&k=ps2026"');
-  var m=r.match(/(\\{.*\\})/s); commit('gen_via_global.json', m?m[0]:(r||'').slice(0,600));
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_pg=1&k=ps2026"');
+  var m=r.match(/(\{.*\})/s); commit('probe_gen.json', m?m[0]:(r||'').slice(0,600));
   exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  
-  // 3. GRAZINAM 539 atgal i admin scope
-  fs.writeFileSync('/tmp/a539.json', JSON.stringify({scope:'admin', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/a539.json "'+BASE+'/wp-json/code-snippets/v1/snippets/539"');
+  // 3. 539 -> admin (GRAZINAM)
+  fs.writeFileSync('/tmp/a.json', JSON.stringify({scope:'admin', active:true}));
+  var back=exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/a.json "'+BASE+'/wp-json/code-snippets/v1/snippets/539"');
+  var scopeNow=''; try{ scopeNow=JSON.parse(back).scope; }catch(e){}
+  commit('scope_back.json', JSON.stringify({scope_539_now:scopeNow}));
   console.log('done');
 })();
