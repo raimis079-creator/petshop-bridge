@@ -3,21 +3,14 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cb',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcb.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcb.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'fnp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbfnp.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbfnp.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
+const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2ZucCddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICBnbG9iYWwgJHdwZGI7CiAgLy8gRFAgcGFrYXMgc3UgMTA2Ljc5IGthaW5hIElSIGJhc2UgN2tnIGV4Y2x1c2lvbiwgc3VrdXJ0YXMgcGVyIGZvcm1hIChiZSBpa2VwdG8gYmFkZ2UpCiAgJGlkcyA9ICR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgcC5JRCBGUk9NIHskd3BkYi0+cG9zdHN9IHAKICAgIEpPSU4geyR3cGRiLT5wb3N0bWV0YX0gbSBPTiBtLnBvc3RfaWQ9cC5JRCBBTkQgbS5tZXRhX2tleT0nX2RwX2Jhc2VfcHJvZHVjdF9pZCcKICAgIFdIRVJFIHAucG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcC5wb3N0X3N0YXR1cz0ncHVibGlzaCcKICAgIE9SREVSIEJZIHAuSUQgREVTQyBMSU1JVCAzMCIpOwogICRvdXQ9YXJyYXkoKTsKICBmb3JlYWNoKCRpZHMgYXMgJHBpZCl7CiAgICAkcD13Y19nZXRfcHJvZHVjdCgkcGlkKTsKICAgIGlmKCEkcCkgY29udGludWU7CiAgICAkYmFzZV9pZCA9IGdldF9wb3N0X21ldGEoJHBpZCwnX2RwX2Jhc2VfcHJvZHVjdF9pZCcsdHJ1ZSk7CiAgICAkcXR5ID0gZ2V0X3Bvc3RfbWV0YSgkcGlkLCdfZHBfcGFja19xdHknLHRydWUpOwogICAgJHRodW1iX2lkID0gZ2V0X3Bvc3RfdGh1bWJuYWlsX2lkKCRwaWQpOwogICAgJHRodW1iX2ZpbGUgPSAkdGh1bWJfaWQgPyBiYXNlbmFtZShnZXRfYXR0YWNoZWRfZmlsZSgkdGh1bWJfaWQpKSA6ICcnOwogICAgLy8gQXIgdGFpIDdrZyBleGNsdXNpb24geDIgKGZvcm1vcyBzdWt1cnRhcykKICAgICRuYW1lID0gJHAtPmdldF9uYW1lKCk7CiAgICAkb3V0W10gPSBhcnJheSgnaWQnPT4kcGlkLCduYW1lJz0+bWJfc3Vic3RyKCRuYW1lLDAsNjApLCdwcmljZSc9PihmbG9hdCkkcC0+Z2V0X3ByaWNlKCksCiAgICAgICdiYXNlJz0+JGJhc2VfaWQsJ3F0eSc9PiRxdHksJ3RodW1iX2ZpbGUnPT4kdGh1bWJfZmlsZSk7CiAgfQogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG91dCk7IGV4aXQ7Cn0pOwo=",'base64').toString('utf8').trim();
 (async()=>{
-  // Snippet'ai su badge/ekonomiska/overlay
-  var all = exec('curl -sk -m 25 -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets?limit=200"');
-  var rel=[]; try{ JSON.parse(all).forEach(s=>{ var n=(s.name||''); if(n.match(/badge|Badge|ženkl|zenkl|overlay|Overlay|EKONOMI|ekonomi|Pakuot|Daugiau|pigiau|Pigiau/)) rel.push({id:s.id,name:n,active:s.active}); }); }catch(e){ rel=[{err:all.slice(0,150)}]; }
-  commit('badge_snippets.json', JSON.stringify(rel));
-  // 3 paku nuotrauku markup - istraukiam img tag'us DP puslapyje
-  var page = exec('curl -sk -m 30 "'+BASE+'/daugiau-pigiau/"');
-  // Randam produktu img src'us
-  var imgs = [];
-  var re = /product\/([a-z0-9-]+)[^"]*"[\s\S]{0,600}?<img[^>]+src="([^"]+)"/g; var mm;
-  while((mm=re.exec(page))!==null && imgs.length<8){ imgs.push({slug:mm[1].slice(0,45), img:mm[2].split('/').pop()}); }
-  // Ar yra kokiu nors overlay elementu (badge div/span) product boxe
-  var hasOverlayHtml = page.includes('dp-badge') || page.includes('ekonomiska-badge') || page.includes('pack-badge') || page.includes('dp-overlay');
-  commit('dp_page_imgs.json', JSON.stringify({imgs:imgs, has_overlay_html:hasOverlayHtml}));
+  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC FNP', code:pcode, scope:'global', active:true}));
+  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_fnp=1&k=ps2026"');
+  var m=r.match(/(\[.*\])/s); commit('find_new_pack.json', m?m[0]:(r||'').slice(0,900));
+  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
   console.log('done');
 })();
