@@ -1,16 +1,26 @@
 import { execSync } from "child_process"; import fs from "fs";
-const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
-const BASE="https://dev.avesa.lt";
-const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'fm2',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbfm2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbfm2.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'vm',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbvm.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbvm.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2ZtMiddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAKICAkbWVudV9pdGVtX2lkID0gMjk3MTsKICAkcGFnZV9pZCA9IDM0NDc2OyAvLyBEYXVnaWF1ID0gcGlnaWF1IHB1c2xhcGlzCiAgJHBhZ2VfdXJsID0gZ2V0X3Blcm1hbGluaygkcGFnZV9pZCk7CiAgCiAgLy8gUGFrZWljaWFtIG1lbml1IHB1bmt0YSBpcyB0YXhvbm9teSBpIGN1c3RvbSBVUkwsIG51a3JlaXBpYW50IGkgcHVzbGFwaQogIHVwZGF0ZV9wb3N0X21ldGEoJG1lbnVfaXRlbV9pZCwgJ19tZW51X2l0ZW1fdHlwZScsICdjdXN0b20nKTsKICB1cGRhdGVfcG9zdF9tZXRhKCRtZW51X2l0ZW1faWQsICdfbWVudV9pdGVtX29iamVjdCcsICdjdXN0b20nKTsKICB1cGRhdGVfcG9zdF9tZXRhKCRtZW51X2l0ZW1faWQsICdfbWVudV9pdGVtX29iamVjdF9pZCcsICRtZW51X2l0ZW1faWQpOwogIHVwZGF0ZV9wb3N0X21ldGEoJG1lbnVfaXRlbV9pZCwgJ19tZW51X2l0ZW1fdXJsJywgJHBhZ2VfdXJsKTsKICAKICAvLyBVenRpa3JpbmFtIGthZCBwdW5rdGFzIHB1Ymxpa3VvdGFzIChtYXRvbWFzKQogIHdwX3VwZGF0ZV9wb3N0KGFycmF5KCdJRCc9PiRtZW51X2l0ZW1faWQsICdwb3N0X3N0YXR1cyc9PidwdWJsaXNoJykpOwogIAogIC8vIElzdmFsb20gbWVuaXUgY2FjaGUKICB3cF9jYWNoZV9kZWxldGUoJ25hdl9tZW51X2l0ZW1zJywgJ2RlZmF1bHQnKTsKICAKICAvLyBQYXRpa3JpbmFtCiAgJGNoZWNrID0gYXJyYXkoCiAgICAnbWVudV9pdGVtX2lkJyA9PiAkbWVudV9pdGVtX2lkLAogICAgJ25ld190eXBlJyA9PiBnZXRfcG9zdF9tZXRhKCRtZW51X2l0ZW1faWQsJ19tZW51X2l0ZW1fdHlwZScsdHJ1ZSksCiAgICAnbmV3X3VybCcgPT4gZ2V0X3Bvc3RfbWV0YSgkbWVudV9pdGVtX2lkLCdfbWVudV9pdGVtX3VybCcsdHJ1ZSksCiAgICAnc3RhdHVzJyA9PiBnZXRfcG9zdF9zdGF0dXMoJG1lbnVfaXRlbV9pZCksCiAgICAndGFyZ2V0X3BhZ2VfdXJsJyA9PiAkcGFnZV91cmwsCiAgICAndGFyZ2V0X3BhZ2Vfc3RhdHVzJyA9PiBnZXRfcG9zdF9zdGF0dXMoJHBhZ2VfaWQpLAogICk7CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkY2hlY2spOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC FM2', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_fm2=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('fix_menu.json', m?m[0]:(r||'').slice(0,600));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  // 1. Pagrindinis puslapis - ar meniu HTML turi teisinga DAUGIAU=PIGIAU nuoroda
+  var home = exec('curl -sk -m 25 "https://dev.avesa.lt/"');
+  var menuHasNewUrl = home.includes('/daugiau-pigiau/');
+  var menuHasOldUrl = home.includes('/kategorija/daugiau-pigiau/');
+  // 2. Puslapio HTTP status
+  var pageStatus = exec('curl -sk -m 20 -o /dev/null -w "%{http_code}" "https://dev.avesa.lt/daugiau-pigiau/"');
+  // 3. Ar puslapyje yra filtras ir prekes
+  var page = exec('curl -sk -m 25 "https://dev.avesa.lt/daugiau-pigiau/"');
+  var hasFilter = page.includes('psc-dp-filter');
+  var hasVisos = page.includes('Visos');
+  var is404 = page.includes('page can') || page.includes('404');
+  commit('verify_menu.json', JSON.stringify({
+    menu_has_new_url: menuHasNewUrl,
+    menu_has_old_url_bad: menuHasOldUrl,
+    page_http_status: pageStatus,
+    page_has_filter: hasFilter,
+    page_has_visos: hasVisos,
+    page_is_404: is404,
+  }));
   console.log('done');
 })();
