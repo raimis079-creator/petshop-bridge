@@ -3,14 +3,25 @@ const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cep',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbcep.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbcep.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ve',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbve.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbve.json "'+url+'"',{encoding:'utf8'}); }
 function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:35000}); }catch(e){ return 'EXC:'+e.message; } }
-const pcode=Buffer.from("YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCgkX0dFVFsncHNjX2NlcCddID8/ICcnKSAhPT0gJzEnKSByZXR1cm47CiAgaWYgKCgkX0dFVFsnayddID8/ICcnKSAhPT0gJ3BzMjAyNicgJiYgIWN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykpIHJldHVybjsKICAKICAkYmFzZV9pZCA9IDE4NTkwOyAvLyBFeGNsdXNpb24gSHlwbyAya2cgdmllbmV0YXMKICAkYmFzZSA9IHdjX2dldF9wcm9kdWN0KCRiYXNlX2lkKTsKICBpZiAoISRiYXNlKSB7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycm9yJz0+J2Jhc2Ugbm90IGZvdW5kJykpOyBleGl0OyB9CiAgCiAgJHBhY2tfcXR5ID0gMjsKICAkdW5pdF9wcmljZSA9IChmbG9hdCkgJGJhc2UtPmdldF9yZWd1bGFyX3ByaWNlKCk7IC8vIDIwLjg5CiAgJHBhY2tfcHJpY2UgPSByb3VuZCgkdW5pdF9wcmljZSAqICRwYWNrX3F0eSAqIDAuOTUsIDIpOyAvLyB0ZXN0aW5lIDUlIG51b2xhaWRhCiAgCiAgJHByb2R1Y3QgPSBuZXcgV0NfUHJvZHVjdF9TaW1wbGUoKTsKICAkcHJvZHVjdC0+c2V0X25hbWUoJ0V4Y2x1c2lvbiBIeXBvYWxsZXJnZW5pYyBtYcW+xbMgdmVpc2xpxbMgxaF1bsWzIG1haXN0YXMgc3Uga2lhdWxpZW5hIGlyIMW+aXJuZWxpYWlzLCAyIGtnIMOXIDIgdm50LicpOwogICRwcm9kdWN0LT5zZXRfc3RhdHVzKCdwdWJsaXNoJyk7CiAgJHByb2R1Y3QtPnNldF9jYXRhbG9nX3Zpc2liaWxpdHkoJ3Zpc2libGUnKTsKICAkcHJvZHVjdC0+c2V0X3NrdSgnRFAtRVhDTC1IWVBPLUtJQVVMLTJLRy14MicpOwogICRwcm9kdWN0LT5zZXRfcmVndWxhcl9wcmljZSgkcGFja19wcmljZSk7CiAgJHByb2R1Y3QtPnNldF9tYW5hZ2Vfc3RvY2soZmFsc2UpOwogICRwcm9kdWN0LT5zZXRfc3RvY2tfc3RhdHVzKCdpbnN0b2NrJyk7CiAgJHByb2R1Y3RfaWQgPSAkcHJvZHVjdC0+c2F2ZSgpOwogIAogIHVwZGF0ZV9wb3N0X21ldGEoJHByb2R1Y3RfaWQsICdfZHBfYmFzZV9wcm9kdWN0X2lkJywgJGJhc2VfaWQpOwogIHVwZGF0ZV9wb3N0X21ldGEoJHByb2R1Y3RfaWQsICdfZHBfcGFja19xdHknLCAkcGFja19xdHkpOwogIAogIC8vIEthdGVnb3JpamEgREFVR0lBVT1QSUdJQVUgKDkxKQogIHdwX3NldF9vYmplY3RfdGVybXMoJHByb2R1Y3RfaWQsIGFycmF5KDkxKSwgJ3Byb2R1Y3RfY2F0Jyk7CiAgCiAgLy8gQXByYXN5bWFzID0gcGFjayBpbnRybyArIGJhemluaXMgYXByYXN5bWFzCiAgJGJhc2VfZGVzYyA9IGdldF9wb3N0X2ZpZWxkKCdwb3N0X2NvbnRlbnQnLCAkYmFzZV9pZCk7CiAgJGludHJvID0gJzxwPjxzdHJvbmc+RWtvbm9tacWha2EgMiB2aWVuZXTFsyBwYWt1b3TEly48L3N0cm9uZz4gVGFzIHBhdHMgRXhjbHVzaW9uIEh5cG9hbGxlcmdlbmljIG1haXN0YXMgZGlkZXNuaXUga2lla2l1IGlyIGdlcmVzbmUgdmllbmV0byBrYWluYS4gUGF0b2d1LCBqZWkgxaFlcmlhdGUgxaFpdW8gbWFpc3R1IHJlZ3VsaWFyaWFpLjwvcD4nCiAgICAuICc8cD48c3Ryb25nPkthcyDEr2VpbmEgxK8gcGFrdW90xJk6PC9zdHJvbmc+IDIgw5cgRXhjbHVzaW9uIEh5cG9hbGxlcmdlbmljIG1hxb7FsyB2ZWlzbGnFsyDFoXVuxbMgbWFpc3RhcyBzdSBraWF1bGllbmEgaXIgxb5pcm5lbGlhaXMsIHBvIDIga2cuIEJlbmRyYXMga2lla2lzIOKAkyA0IGtnLjwvcD4nCiAgICAuICc8aHIgLz4nOwogICRwcm9kdWN0MiA9IHdjX2dldF9wcm9kdWN0KCRwcm9kdWN0X2lkKTsKICAkcHJvZHVjdDItPnNldF9kZXNjcmlwdGlvbigkaW50cm8gLiAkYmFzZV9kZXNjKTsKICAkcHJvZHVjdDItPnNhdmUoKTsKICAKICB3Y19kZWxldGVfcHJvZHVjdF90cmFuc2llbnRzKCRwcm9kdWN0X2lkKTsKICAKICAkb3V0ID0gYXJyYXkoCiAgICAncGFja19pZCcgPT4gJHByb2R1Y3RfaWQsCiAgICAncGFja19za3UnID0+ICRwcm9kdWN0Mi0+Z2V0X3NrdSgpLAogICAgJ3BhY2tfcHJpY2UnID0+ICRwYWNrX3ByaWNlLAogICAgJ2Jhc2VfaWQnID0+ICRiYXNlX2lkLAogICAgJ2Jhc2VfdGl0bGUnID0+ICRiYXNlLT5nZXRfbmFtZSgpLAogICAgJ2Jhc2Vfc3RvY2snID0+ICRiYXNlLT5nZXRfc3RvY2tfcXVhbnRpdHkoKSwKICAgICdiYXNlX3VuaXRfcHJpY2UnID0+ICR1bml0X3ByaWNlLAogICAgJ3BhY2tfcXR5JyA9PiAkcGFja19xdHksCiAgICAnYmFzZV9oYXNfZGVzYycgPT4gc3RybGVuKCRiYXNlX2Rlc2MpID4gNTAsCiAgKTsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQpOyBleGl0Owp9KTsK",'base64').toString('utf8').trim();
 (async()=>{
-  fs.writeFileSync('/tmp/b557.json', JSON.stringify({name:'PSC CEP', code:pcode, scope:'global', active:true}));
-  exec('curl -sk -m 20 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/b557.json "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
-  var r=exec('curl -sk -m 30 "'+BASE+'/?psc_cep=1&k=ps2026"');
-  var m=r.match(/(\{.*\})/s); commit('create_excl_pack.json', m?m[0]:(r||'').slice(0,600));
-  exec('curl -sk -m 20 -X DELETE -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets/557"');
+  // Randam pack permalinka
+  var pj = exec('curl -sk -m 20 -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/wc/v3/products/34471"');
+  var permalink=null; try{ permalink=JSON.parse(pj).permalink; }catch(e){}
+  if(!permalink) permalink = BASE+'/?p=34471';
+  var html = exec('curl -sk -m 25 "'+permalink+'"');
+  var boxStart = html.indexOf('dp-savings-box');
+  var box = boxStart>=0 ? html.substring(boxStart, boxStart+700).replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,'').replace(/&euro;/g,'EUR').replace(/\s+/g,' ') : 'NERA BLOKO';
+  commit('verify_excl.json', JSON.stringify({
+    permalink: permalink,
+    savings_box: box.substring(0,320),
+    has_bendras_kiekis: html.includes('Bendras kiekis'),
+    has_4kg: html.includes('4 kg'),
+    has_sudetis: html.includes('Sudėtis') || html.includes('Sudetis') || html.includes('sudėt'),
+    has_ekonomiska: html.includes('Ekonomiška 2'),
+    price_3969: html.includes('39,69') || html.includes('39.69'),
+    in_stock: html.includes('Yra sandėlyje') || html.includes('krepšel'),
+  }));
   console.log('done');
 })();
