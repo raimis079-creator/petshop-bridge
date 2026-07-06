@@ -1,31 +1,41 @@
 import { execSync } from "child_process"; import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+const WP_USER=process.env.WP_USER, WP_PASS=process.env.WP_APP_PASS;
 const BASE="https://dev.avesa.lt";
 const SINGLE="https://dev.avesa.lt/product/miamor-konservai-katems-su-tunu-ir-krevetemis-100-g-x-24-vnt/";
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'rc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbrc.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbrc.json "'+url+'"',{encoding:'utf8'}); }
-function exec(cmd){ try{ return execSync(cmd,{encoding:'utf8',maxBuffer:300000000,timeout:40000}); }catch(e){ return 'EXC'; } }
-function between(s, startStr, len){ var i=s.indexOf(startStr); if(i<0) return ''; var b=s.lastIndexOf('<div', i); return s.slice(b<0?i:b, (b<0?i:b)+len).replace(/\s+/g,' '); }
+const AUTH="Basic "+Buffer.from(`${WP_USER}:${WP_PASS}`).toString("base64");
+const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function cbin(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ui',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbui.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbui.json "'+url+'"',{encoding:'utf8'}); }
+function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ui',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbui2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbui2.json "'+url+'"',{encoding:'utf8'}); }
+function exec(c){ try{ return execSync(c,{encoding:'utf8',maxBuffer:300000000,timeout:240000}); }catch(e){ return 'EXC'; } }
+const ui=Buffer.from("LyoqCiAqIFBldHNob3AgVUk6IChBKSBrb3J0ZWxpxbMgbXlndHVrxbMgc3VseWdpYXZpbWFzICsgKEIpIG1vYmlsZSBzdGlja3kgYWRkLXRvLWNhcnQKICogQSkgVmlzb3NlIHByb2R1a3TFsyBrb3J0ZWzEl3NlIGthaW5hICsg4oCexK4ga3JlcMWhZWzEryIgdmlzYWRhIGFwYcSNaW9qZSwgdmllbm9kYW1lIGF1a8WhdHlqZQogKiAgICAobmVwcmlrbGF1c29tYWkgbnVvIHBhdmFkaW5pbW8gaWxnaW8pLCB2aXN1b3NlIGVrcmFudW9zZS4KICogQikgUHJvZHVrdG8gcHVzbGFweWplIHRlbGVmb25lIOKAlCBmaWtzdW90YSBhcGF0aW7ElyBqdW9zdGEgKGthaW5hICsg4oCexK4ga3JlcMWhZWzEryIpLAogKiAgICBtYXRvbWEga2FpIHJlYWx1cyBteWd0dWthcyBudXNsaW5rdGFzIGnFoSBla3Jhbm87IGRlc2t0b3AnZSBuZXJvZG9tYS4KICovCgovLyAtLS0tLS0tLS0tIEEpIEtvcnRlbGnFsyBDU1MgKHZpc2kgZWtyYW5haSkgKyBCKSBzdGlja3kgQ1NTICh0aWsgbW9iaWxlKSAtLS0tLS0tLS0tCmFkZF9hY3Rpb24oJ3dwX2hlYWQnLCBmdW5jdGlvbiAoKSB7CiAgICA/PgogICAgPHN0eWxlIGlkPSJwc2MtdWktY3NzIj4KICAgIC8qIEEpIFByb2R1a3TFsyBrb3J0ZWzEl3M6IGthaW5hICsgbXlndHVrYXMgYXBhxI1pb2plLCBzdWx5Z2l1b3RpICovCiAgICAucHJvZHVjdHMgLnByb2R1Y3Qtc21hbGwuYm94IHsgZGlzcGxheTogZmxleDsgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgaGVpZ2h0OiAxMDAlOyB9CiAgICAucHJvZHVjdHMgLnByb2R1Y3Qtc21hbGwgLmJveC1pbWFnZSB7IGZsZXg6IDAgMCBhdXRvOyB9CiAgICAucHJvZHVjdHMgLnByb2R1Y3Qtc21hbGwgLmJveC10ZXh0IHsgZGlzcGxheTogZmxleDsgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgZmxleDogMSAxIGF1dG87IH0KICAgIC5wcm9kdWN0cyAucHJvZHVjdC1zbWFsbCAuYm94LXRleHQgLnByaWNlLXdyYXBwZXIgeyBtYXJnaW4tdG9wOiBhdXRvOyB9CiAgICAucHJvZHVjdHMgLnByb2R1Y3Qtc21hbGwgLmJveC10ZXh0IC5hZGQtdG8tY2FydC1idXR0b24geyBtYXJnaW4tdG9wOiA4cHg7IH0KICAgIC8qIFZpZW5vZG8gYXVrxaHEjWlvIGtvcnRlbMSXcyBlaWzEl2plICovCiAgICAucHJvZHVjdHMucm93LCB1bC5wcm9kdWN0cyB7IGFsaWduLWl0ZW1zOiBzdHJldGNoOyB9CiAgICAucHJvZHVjdHMgLmNvbC1pbm5lciB7IGhlaWdodDogMTAwJTsgfQoKICAgIC8qIEIpIE1vYmlsZSBzdGlja3kgYWRkLXRvLWNhcnQganVvc3RhICovCiAgICAucHNjLXN0aWNreS1hdGMgeyBkaXNwbGF5OiBub25lOyB9CiAgICBAbWVkaWEgKG1heC13aWR0aDogODQ5cHgpIHsKICAgICAgICAucHNjLXN0aWNreS1hdGMgewogICAgICAgICAgICBwb3NpdGlvbjogZml4ZWQ7IGxlZnQ6IDA7IHJpZ2h0OiAwOyBib3R0b206IDA7IHotaW5kZXg6IDk5OwogICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyOyBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47IGdhcDogMTJweDsKICAgICAgICAgICAgcGFkZGluZzogOXB4IDE0cHggY2FsYyg5cHggKyBlbnYoc2FmZS1hcmVhLWluc2V0LWJvdHRvbSwgMHB4KSk7CiAgICAgICAgICAgIGJhY2tncm91bmQ6ICNmZmY7IGJvcmRlci10b3A6IDFweCBzb2xpZCAjZTNlM2UzOwogICAgICAgICAgICBib3gtc2hhZG93OiAwIC0ycHggMTBweCByZ2JhKDAsMCwwLDAuMTApOwogICAgICAgIH0KICAgICAgICAucHNjLXN0aWNreS1hdGMgLnBzYy1zdGlja3ktcHJpY2UgeyBmb250LXNpemU6IDE4cHg7IGZvbnQtd2VpZ2h0OiA3MDA7IGNvbG9yOiAjMjIyOyB3aGl0ZS1zcGFjZTogbm93cmFwOyB9CiAgICAgICAgLnBzYy1zdGlja3ktYXRjIC5wc2Mtc3RpY2t5LXByaWNlIGRlbCB7IGZvbnQtd2VpZ2h0OiA0MDA7IG9wYWNpdHk6IC41NTsgZm9udC1zaXplOiAxNHB4OyBtYXJnaW4tcmlnaHQ6IDZweDsgfQogICAgICAgIC5wc2Mtc3RpY2t5LWF0YyAucHNjLXN0aWNreS1idG4gewogICAgICAgICAgICBmbGV4OiAxIDEgYXV0bzsgbWF4LXdpZHRoOiA2MiU7CiAgICAgICAgICAgIGJhY2tncm91bmQ6ICMyZjVmNDY7IGNvbG9yOiAjZmZmOyBib3JkZXI6IDA7IGJvcmRlci1yYWRpdXM6IDZweDsKICAgICAgICAgICAgcGFkZGluZzogMTNweCAxOHB4OyBmb250LXNpemU6IDE1cHg7IGZvbnQtd2VpZ2h0OiA3MDA7IHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7CiAgICAgICAgICAgIGxldHRlci1zcGFjaW5nOiAuM3B4OyBjdXJzb3I6IHBvaW50ZXI7IGxpbmUtaGVpZ2h0OiAxOwogICAgICAgIH0KICAgICAgICAucHNjLXN0aWNreS1hdGMgLnBzYy1zdGlja3ktYnRuOmFjdGl2ZSB7IG9wYWNpdHk6IC45OyB9CiAgICB9CiAgICA8L3N0eWxlPgogICAgPD9waHAKfSwgMjEpOwoKLy8gLS0tLS0tLS0tLSBCKSBTdGlja3kganVvc3RvcyBIVE1MICh0aWsgcHJvZHVrdG8gcHVzbGFweWplKSAtLS0tLS0tLS0tCmFkZF9hY3Rpb24oJ3dwX2Zvb3RlcicsIGZ1bmN0aW9uICgpIHsKICAgIGlmICghZnVuY3Rpb25fZXhpc3RzKCdpc19wcm9kdWN0JykgfHwgIWlzX3Byb2R1Y3QoKSkgcmV0dXJuOwogICAgZ2xvYmFsICRwcm9kdWN0OwogICAgaWYgKCEkcHJvZHVjdCkgcmV0dXJuOwogICAgaWYgKCEkcHJvZHVjdC0+aXNfcHVyY2hhc2FibGUoKSB8fCAhJHByb2R1Y3QtPmlzX2luX3N0b2NrKCkpIHJldHVybjsKICAgID8+CiAgICA8ZGl2IGNsYXNzPSJwc2Mtc3RpY2t5LWF0YyIgaWQ9InBzY1N0aWNreUF0YyIgYXJpYS1oaWRkZW49InRydWUiPgogICAgICAgIDxzcGFuIGNsYXNzPSJwc2Mtc3RpY2t5LXByaWNlIj48P3BocCBlY2hvIHdwX2tzZXNfcG9zdCgkcHJvZHVjdC0+Z2V0X3ByaWNlX2h0bWwoKSk7ID8+PC9zcGFuPgogICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0icHNjLXN0aWNreS1idG4iIGlkPSJwc2NTdGlja3lCdG4iPsSuIGtyZXDFoWVsxK88L2J1dHRvbj4KICAgIDwvZGl2PgogICAgPHNjcmlwdD4KICAgIChmdW5jdGlvbiAoKSB7CiAgICAgICAgdmFyIGJhciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwc2NTdGlja3lBdGMnKTsKICAgICAgICBpZiAoIWJhcikgcmV0dXJuOwogICAgICAgIHZhciBidG4gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncHNjU3RpY2t5QnRuJyk7CiAgICAgICAgdmFyIHJlYWxCdG4gPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdmb3JtLmNhcnQgLnNpbmdsZV9hZGRfdG9fY2FydF9idXR0b24nKSB8fCBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcuc2luZ2xlX2FkZF90b19jYXJ0X2J1dHRvbicpOwogICAgICAgIHZhciBmb290ZXIgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcuZm9vdGVyLXdyYXBwZXInKSB8fCBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdmb290ZXInKSB8fCBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcjZm9vdGVyJyk7CiAgICAgICAgaWYgKGJ0bikgYnRuLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgZnVuY3Rpb24gKCkgewogICAgICAgICAgICBpZiAocmVhbEJ0bikgeyByZWFsQnRuLmNsaWNrKCk7IH0KICAgICAgICAgICAgZWxzZSB7IHdpbmRvdy5sb2NhdGlvbi5ocmVmID0gJz9hZGQtdG8tY2FydD08P3BocCBlY2hvIChpbnQpICRwcm9kdWN0LT5nZXRfaWQoKTsgPz4nOyB9CiAgICAgICAgfSk7CiAgICAgICAgZnVuY3Rpb24gaW5WaWV3KGVsKSB7IGlmICghZWwpIHJldHVybiBmYWxzZTsgdmFyIHIgPSBlbC5nZXRCb3VuZGluZ0NsaWVudFJlY3QoKTsgcmV0dXJuIHIudG9wIDwgd2luZG93LmlubmVySGVpZ2h0ICYmIHIuYm90dG9tID4gMDsgfQogICAgICAgIGZ1bmN0aW9uIHVwZGF0ZSgpIHsKICAgICAgICAgICAgdmFyIGhpZGUgPSBmYWxzZTsKICAgICAgICAgICAgaWYgKHdpbmRvdy5pbm5lcldpZHRoID4gODQ5KSBoaWRlID0gdHJ1ZTsgICAgICAgICAgICAgIC8vIHRpayBtb2JpbGUKICAgICAgICAgICAgaWYgKGluVmlldyhyZWFsQnRuKSkgaGlkZSA9IHRydWU7ICAgICAgICAgICAgICAgICAgICAgICAvLyByZWFsdXMgbXlndHVrYXMgbWF0b21hcyAtPiBuZXJlaWtpYQogICAgICAgICAgICBpZiAoaW5WaWV3KGZvb3RlcikpIGhpZGUgPSB0cnVlOyAgICAgICAgICAgICAgICAgICAgICAgIC8vIG5ldcW+ZGVuZ2lhbSBmb290ZXIKICAgICAgICAgICAgYmFyLnN0eWxlLmRpc3BsYXkgPSBoaWRlID8gJ25vbmUnIDogJ2ZsZXgnOwogICAgICAgIH0KICAgICAgICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcignc2Nyb2xsJywgdXBkYXRlLCB7IHBhc3NpdmU6IHRydWUgfSk7CiAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ3Jlc2l6ZScsIHVwZGF0ZSk7CiAgICAgICAgc2V0VGltZW91dCh1cGRhdGUsIDMwMCk7CiAgICAgICAgdXBkYXRlKCk7CiAgICB9KSgpOwogICAgPC9zY3JpcHQ+CiAgICA8P3BocAp9LCAzMCk7Cg==",'base64').toString('utf8');
 (async()=>{
-  var out={};
-  // GRID kortele
-  var grid=exec('curl -sk -m 30 "'+BASE+'/daugiau-pigiau/"');
-  // istraukiam viena product-small kortele - nuo class="product-small iki kito product
-  var gi=grid.indexOf('box-text box-text-products');
-  if(gi>=0){ var s=grid.lastIndexOf('<div class="box-text', gi); out.card_boxtext = grid.slice(s, s+900).replace(/\s+/g,' '); }
-  out.grid_has_add_to_cart = grid.includes('add_to_cart_button');
-  out.grid_has_price = grid.includes('class="price');
-
-  // SINGLE puslapis
-  var sp=exec('curl -sk -m 30 "'+SINGLE+'"');
-  out.single_has_single_atc = sp.includes('single_add_to_cart_button');
-  out.single_has_qty = sp.includes('quantity');
-  out.single_has_form_cart = sp.includes('cart');
-  // istraukiam form.cart bloka
-  var fi=sp.indexOf('<form');
-  while(fi>=0){ var chunk=sp.slice(fi, fi+120); if(chunk.includes('cart')){ out.form_cart = sp.slice(fi, fi+700).replace(/\s+/g,' '); break; } fi=sp.indexOf('<form', fi+1); }
-  // kainos elementas summary
-  var pi=sp.indexOf('product_title');
-  if(pi>=0){ out.summary_price = between(sp.slice(pi, pi+1500), 'price', 300); }
-  commit('recon_cards.json', JSON.stringify(out));
+  // Ar snippet jau yra?
+  var list=exec('curl -sk -m 20 -H "Authorization: '+AUTH+'" "'+BASE+'/wp-json/code-snippets/v1/snippets?limit=200"');
+  var id=null; try{ JSON.parse(list).forEach(s=>{ if((s.name||'').indexOf('Petshop UI')>=0) id=s.id; }); }catch(e){}
+  fs.writeFileSync('/tmp/ui.json', JSON.stringify({name:'Petshop UI: kortelės + mobile sticky ATC', code:ui, scope:'global', active:true}));
+  if(id) exec('curl -sk -m 40 -X PUT -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/ui.json "'+BASE+'/wp-json/code-snippets/v1/snippets/'+id+'"');
+  else { var cr=exec('curl -sk -m 40 -X POST -H "Authorization: '+AUTH+'" -H "Content-Type: application/json" --data-binary @/tmp/ui.json "'+BASE+'/wp-json/code-snippets/v1/snippets"'); try{ id=JSON.parse(cr).id; }catch(e){} }
+  var meta={snippet_id:id};
+  exec('npm i playwright@1.44.0 2>&1 | tail -1'); exec('npx playwright@1.44.0 install chromium 2>&1 | tail -1');
+  let pw; try{ pw=await import('playwright'); }catch(e){ meta.pw='no'; commit('ui_meta.json', JSON.stringify(meta)); return; }
+  try{
+    const b=await pw.chromium.launch({headless:true,args:['--no-sandbox','--ignore-certificate-errors','--disable-gpu','--disable-dev-shm-usage']});
+    const c=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:390,height:844},isMobile:true,deviceScaleFactor:2});
+    const p=await c.newPage();
+    // GRID mobile
+    await p.goto(BASE+'/daugiau-pigiau/',{waitUntil:'domcontentloaded',timeout:50000}); await p.waitForTimeout(3500);
+    cbin('m_grid.png', (await p.screenshot({fullPage:true})).toString('base64'));
+    // SINGLE mobile - virsuje (sticky turi buti PASLEPTA)
+    await p.goto(SINGLE,{waitUntil:'domcontentloaded',timeout:50000}); await p.waitForTimeout(3500);
+    var stickyTop = await p.evaluate(()=>{ var b=document.getElementById('pscStickyAtc'); return b?getComputedStyle(b).display:'no-el'; });
+    cbin('m_single_top.png', (await p.screenshot({}).catch(()=>Buffer.from(''))).toString('base64'));
+    // scroll zemyn (uz add-to-cart) - sticky turi ATSIRASTI
+    await p.evaluate(()=>window.scrollTo(0, 1400)); await p.waitForTimeout(800);
+    var stickyMid = await p.evaluate(()=>{ var b=document.getElementById('pscStickyAtc'); return b?getComputedStyle(b).display:'no-el'; });
+    cbin('m_single_scroll.png', (await p.screenshot({})).toString('base64'));
+    meta.sticky_top=stickyTop; meta.sticky_scrolled=stickyMid; meta.ok=true;
+    await b.close();
+  }catch(e){ meta.err=e.message.slice(0,180); }
+  commit('ui_meta.json', JSON.stringify(meta));
   console.log('done');
 })();
