@@ -3,36 +3,45 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const BASE="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putResult(name,obj){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'recon0707',branch:'main',content:Buffer.from(JSON.stringify(obj),'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pr.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pr.json "'+url+'"',{encoding:'utf8'}); }
-function wp(path,extra){ try{ return execSync('curl -sk -u "$WPU:$WPP" '+(extra||'')+' "'+BASE+path+'"',{encoding:'utf8',maxBuffer:100000000,timeout:120000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC:'+(e.message||'').slice(0,200); } }
-function wpHead(path){ try{ return execSync('curl -skI -u "$WPU:$WPP" "'+BASE+path+'"',{encoding:'utf8',timeout:60000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
-const out={env:{wpu:!!WPU,wpp:!!WPP},ts:new Date().toISOString()};
-try{
-  // 1. Snippetu inventorius
-  let raw=wp('/wp-json/code-snippets/v1/snippets');
-  try{ const arr=JSON.parse(raw); out.snip_total=arr.length; out.snip_active=arr.filter(s=>s.active).map(s=>({id:s.id,name:(s.name||'').slice(0,60)})); }catch(e){ out.snip_err=String(raw).slice(0,300); }
-  // 2. Plugin versijos
-  raw=wp('/wp-json/wp/v2/plugins');
-  try{ const arr=JSON.parse(raw); out.plugins=arr.map(p=>({n:(p.name||'').slice(0,40),v:p.version,s:p.status})); }catch(e){ out.plug_err=String(raw).slice(0,200); }
-  // 3. Katalogo skaiciai
-  let h=wpHead('/wp-json/wc/v3/products?status=publish&per_page=1'); out.publish=(h.match(/x-wp-total:\s*(\d+)/i)||[])[1]||h.slice(0,100);
-  h=wpHead('/wp-json/wc/v3/products?status=draft&per_page=1'); out.draft=(h.match(/x-wp-total:\s*(\d+)/i)||[])[1]||null;
-  // 4. Probe: sukurti, aktyvuoti, kviesti, deaktyvuoti
-  const php=`add_action('wp_loaded', function(){ if ( ($_GET['ps_probe'] ?? '') !== 'ps2026' ) return; if ( is_admin() ) return; global $wpdb; $r=array(); $r['zb_cost']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_zb_cost'"); $r['zb_init']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_zb_price_initialized' AND meta_value='yes'"); $r['manual_override']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_manual_price_override' AND meta_value='yes'"); $r['cost_price_filled']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_cost_price' AND meta_value<>''"); $r['src_vf']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_active_fulfillment_source' AND meta_value='vf_dropship'"); $r['src_zb']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_active_fulfillment_source' AND meta_value='zb_dropship'"); wp_send_json($r); });`;
-  const body=JSON.stringify({name:'PS Recon Probe 0707 (laikinas)',code:php,scope:'global',active:true,priority:10});
-  fs.writeFileSync('/tmp/snip.json',body);
-  raw=execSync('curl -sk -u "$WPU:$WPP" -X POST -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"',{encoding:'utf8',timeout:60000,env:{...process.env,WPU,WPP}});
-  let sid=null; try{ sid=JSON.parse(raw).id; }catch(e){ out.probe_create_err=String(raw).slice(0,300); }
-  out.probe_id=sid;
-  if(sid){
-    const pr=wp('/?ps_probe=ps2026');
-    try{ out.zb=JSON.parse(pr); }catch(e){ out.probe_call_err=String(pr).slice(0,300); }
-    // deaktyvuoti
-    const d=execSync('curl -sk -u "$WPU:$WPP" -X DELETE "'+BASE+'/wp-json/code-snippets/v1/snippets/'+sid+'"',{encoding:'utf8',timeout:60000,env:{...process.env,WPU,WPP}});
-    out.probe_deactivated=String(d).slice(0,120);
-    // patikra ar tikrai neaktyvus
-    const chk=wp('/wp-json/code-snippets/v1/snippets/'+sid);
-    try{ out.probe_active_after=JSON.parse(chk).active; }catch(e){}
-  }
-}catch(e){ out.fatal=String(e.message||e).slice(0,400); }
-putResult('recon0707.json',out);
+function putResult(name,obj){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'recon2',branch:'main',content:Buffer.from(JSON.stringify(obj),'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pr.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pr.json "'+url+'"',{encoding:'utf8'}); }
+function wp(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+BASE+path+'"',{encoding:'utf8',maxBuffer:200000000,timeout:120000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC:'+(e.message||'').slice(0,150); } }
+const out={ts:new Date().toISOString()};
+
+// A. Visi snippetai su kodu (skenuojam pricing keywords VF Sync #565)
+function snipCode(id){ try{ const r=JSON.parse(wp('/wp-json/code-snippets/v1/snippets/'+id)); return r.code||''; }catch(e){ return ''; } }
+function scan(code,words){ const f={}; words.forEach(w=>{ f[w]=(code.match(new RegExp(w,'gi'))||[]).length; }); return f; }
+
+// #565 VF Sync — ar liecia kainas?
+const c565=snipCode(565);
+out.s565={len:c565.length, hits:scan(c565,['_price','regular_price','sale_price','set_price','_zb_price','reprice','Pricing','update_meta.*price','_manual_price'])};
+
+// #525 mobile sticky ATC — ar tikrai yra sticky
+const c525=snipCode(525);
+out.s525={len:c525.length, hits:scan(c525,['sticky','pscStickyAtc','add-to-cart','position:.?fixed'])};
+
+// B. Reprice irankis — ieskau tarp VISU snippetu (aktyvus+neaktyvus)
+let allSnips=[]; try{ allSnips=JSON.parse(wp('/wp-json/code-snippets/v1/snippets?per_page=400')); }catch(e){ out.allsnip_err=String(e).slice(0,100); }
+out.reprice_candidates=allSnips.filter(s=>/repric|zb.*price|price.*init|masin/i.test(s.name||'')).map(s=>({id:s.id,name:(s.name||'').slice(0,70),active:s.active}));
+out.snip_all_count=allSnips.length;
+
+// C. 3 draft Sprendimai puslapiai — turinys + statusas
+for (const pid of [34258,34259,34262]){
+  try{ const p=JSON.parse(wp('/wp-json/wp/v2/pages/'+pid+'?context=edit')); out['page_'+pid]={status:p.status,title:(p.title&&p.title.raw||'').slice(0,40),content_len:(p.content&&p.content.raw||'').length}; }
+  catch(e){ out['page_'+pid]='ERR:'+String(wp('/wp-json/wp/v2/pages/'+pid)).slice(0,120); }
+}
+
+// D. Paysera / mokejimai — test vs production, recurring
+try{ const gws=JSON.parse(wp('/wp-json/wc/v3/payment_gateways')); out.gateways=gws.filter(g=>g.enabled).map(g=>({id:g.id,title:(g.title||'').slice(0,30),enabled:g.enabled})); }catch(e){ out.gw_err=String(e).slice(0,100); }
+
+// E. DP puslapis + cat 91 (Daugiau=Pigiau) prekiu skaicius
+try{ const h=execSync('curl -sk -u "$WPU:$WPP" -I "'+BASE+'/wp-json/wc/v3/products?category=91&per_page=1"',{encoding:'utf8',timeout:60000,env:{...process.env,WPU,WPP}}); out.dp_cat91=(h.match(/x-wp-total:\s*(\d+)/i)||[])[1]||'n/a'; }catch(e){ out.dp_err=String(e).slice(0,80); }
+
+// F. Loco / lokalizacija — snippet #525 UI lokalizacija? patikrinam ar yra likusiu EN eiluciu checkout REST negalim; tik fiksuojam Loco pluginа aktyvu
+out.loco_active=allSnips.length? 'see plugins':'?';
+
+// G. Rinkiniu sistema — ar /daugiau-pigiau/ ir rinkinys puslapiai atsako 200
+function httpCode(url){ try{ return execSync('curl -sk -o /dev/null -w "%{http_code}" "'+url+'"',{encoding:'utf8',timeout:40000}); }catch(e){ return 'EXC'; } }
+out.http_dp = httpCode(BASE+'/daugiau-pigiau/');
+out.http_sprendimai = httpCode(BASE+'/sprendimai/');
+
+putResult('recon2_0707.json',out);
