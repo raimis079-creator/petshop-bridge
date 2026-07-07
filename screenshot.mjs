@@ -1,19 +1,13 @@
 import { execSync } from "child_process"; import fs from "fs";
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'hb',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); const r=execSync('curl -s -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); return r; }catch(e){ return 'PUTERR:'+String(e.message||e).slice(0,200); } }
+const r1=putFile('heartbeat1.json', JSON.stringify({step:1,ts:Date.now()}));
+fs.writeFileSync('/tmp/hb1.log', String(r1).slice(0,500));
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-const TARGETS=["/auksciausios-kokybes-sausi-maistai-konservai-sunims-katems-ontario/", "/miamor-is-meiles-katems/", "/susipazinkime-prins/", "/auksciausios-kokybes-pasarai-sunims-katems-rasco/", "/saugus-biologiniai-antiparazitiniai-preparatai-gyvunams/", "/jorksyro-terjeras/", "/rusu-melynoji/", "/siamo-kate/", "/geriausias-sausas-sunu-maistas/", "/josera-kaciu-maistas/", "/rotveileris-s-v/", "/cvergsnauceris/", "/mastifas/", "/taksas/", "/biglis/", "/kaukazo-aviganis/", "/samojedas/", "/senbernaras/", "/amerikieciu-putbulterjeras/", "/tibeto-mastifas/", "/dzeko-raselo-terjeras/", "/ciau-ciau/", "/havanu-bisonai/", "/josera-sunu-maistas/", "/kinu-kuduotasis-suo/", "/amerikieciu-buldogas/", "/bokseris/", "/dalmantinas/", "/kolis/", "/suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/", "/hipoalerginis-maistas-senjoru-sunims-kaip-issirinkti-be-burtu/", "/monoproteininis-maistas-sunims-kas-tai-ir-kada-verta-rinktis/", "/suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/"];
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'gate3',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function wp(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+DEV+path+'"',{encoding:'utf8',maxBuffer:5000000,timeout:30000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
-const res=[];
-for(const t of TARGETS){
-  const slug=t.replace(/^\/|\/$/g,'');
-  let status='none',ep='';
-  for(const e of ['pages','posts']){
-    const raw=wp('/wp-json/wp/v2/'+e+'?slug='+slug+'&status=any&_fields=status,slug');
-    try{ const a=JSON.parse(raw); if(Array.isArray(a)&&a.length){ status=a[0].status; ep=e; break; } }catch(e){}
-  }
-  res.push({target:t,status,ep});
-}
-putFile('publishgate3.json',JSON.stringify({ts:new Date().toISOString(),res}));
+let wpresult='';
+try{
+  wpresult=execSync('curl -sk -u "$WPU:$WPP" "'+DEV+'/wp-json/wp/v2/pages?slug=jorksyro-terjeras&status=any&_fields=status,slug"',{encoding:'utf8',maxBuffer:5000000,timeout:30000,env:{...process.env,WPU,WPP}});
+}catch(e){ wpresult='WPERR:'+String(e.message||e).slice(0,200); }
+const r2=putFile('heartbeat2.json', JSON.stringify({step:2,wpresult}));
