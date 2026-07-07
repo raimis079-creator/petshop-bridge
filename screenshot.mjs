@@ -1,41 +1,38 @@
 import { execSync } from "child_process"; import fs from "fs";
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const BASE="https://dev.avesa.lt";
-function cbin(name,b64){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'vu',branch:'main',content:b64}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbvu.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbvu.json "'+url+'"',{encoding:'utf8'}); }
-function commit(name,str){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'vu',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/cbvu2.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/cbvu2.json "'+url+'"',{encoding:'utf8'}); }
-function exec(c){ try{ return execSync(c,{encoding:'utf8',maxBuffer:300000000,timeout:240000}); }catch(e){ return 'EXC'; } }
-(async()=>{
-  exec('npm i playwright@1.44.0 2>&1 | tail -1'); exec('npx playwright@1.44.0 install chromium 2>&1 | tail -1');
-  let pw; try{ pw=await import('playwright'); }catch(e){ commit('vu_meta.json', JSON.stringify({pw:'no'})); return; }
-  var meta={};
-  try{
-    const b=await pw.chromium.launch({headless:true,args:['--no-sandbox','--ignore-certificate-errors','--disable-gpu','--disable-dev-shm-usage']});
-    // DESKTOP grid - mygtuku sulygiavimas
-    const cd=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:1400,height:1100}});
-    const pd=await cd.newPage();
-    await pd.goto(BASE+'/daugiau-pigiau/',{waitUntil:'domcontentloaded',timeout:50000}); await pd.waitForTimeout(3500);
-    var btns = await pd.evaluate(()=>{
-      return Array.from(document.querySelectorAll('.products .product-small .add-to-cart-button')).map(el=>{ var r=el.getBoundingClientRect(); return Math.round(r.top); });
-    });
-    meta.button_tops = btns;
-    cbin('d_grid_align.png', (await pd.screenshot({clip:{x:0,y:130,width:1400,height:820}})).toString('base64'));
-    await cd.close();
-    // MOBILE single - turima preke (kiaules ausys #34510)
-    const cm=await b.newContext({ignoreHTTPSErrors:true,viewport:{width:390,height:844},isMobile:true,deviceScaleFactor:2});
-    const pm=await cm.newPage();
-    await pm.goto(BASE+'/?p=34510',{waitUntil:'domcontentloaded',timeout:50000}); await pm.waitForTimeout(3500);
-    meta.single_url = pm.url();
-    meta.has_sticky_el = await pm.evaluate(()=>!!document.getElementById('pscStickyAtc'));
-    meta.sticky_at_top = await pm.evaluate(()=>{ var el=document.getElementById('pscStickyAtc'); return el?getComputedStyle(el).display:'no-el'; });
-    await pm.evaluate(()=>window.scrollTo(0,1500)); await pm.waitForTimeout(900);
-    meta.sticky_scrolled = await pm.evaluate(()=>{ var el=document.getElementById('pscStickyAtc'); return el?getComputedStyle(el).display:'no-el'; });
-    cbin('m_sticky_scroll.png', (await pm.screenshot({})).toString('base64'));
-    // prie footer - turi paslepti
-    await pm.evaluate(()=>window.scrollTo(0, document.body.scrollHeight)); await pm.waitForTimeout(900);
-    meta.sticky_at_footer = await pm.evaluate(()=>{ var el=document.getElementById('pscStickyAtc'); return el?getComputedStyle(el).display:'no-el'; });
-    meta.ok=true;
-    await b.close();
-  }catch(e){ meta.err=e.message.slice(0,180); }
-  commit('vu_meta.json', JSON.stringify(meta));
-  console.log('done');
-})();
+const WPU=(process.env.WP_USER||"").trim();
+const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
+function putResult(name,obj){ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'recon0707',branch:'main',content:Buffer.from(JSON.stringify(obj),'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pr.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pr.json "'+url+'"',{encoding:'utf8'}); }
+function wp(path,extra){ try{ return execSync('curl -sk -u "$WPU:$WPP" '+(extra||'')+' "'+BASE+path+'"',{encoding:'utf8',maxBuffer:100000000,timeout:120000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC:'+(e.message||'').slice(0,200); } }
+function wpHead(path){ try{ return execSync('curl -skI -u "$WPU:$WPP" "'+BASE+path+'"',{encoding:'utf8',timeout:60000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
+const out={env:{wpu:!!WPU,wpp:!!WPP},ts:new Date().toISOString()};
+try{
+  // 1. Snippetu inventorius
+  let raw=wp('/wp-json/code-snippets/v1/snippets');
+  try{ const arr=JSON.parse(raw); out.snip_total=arr.length; out.snip_active=arr.filter(s=>s.active).map(s=>({id:s.id,name:(s.name||'').slice(0,60)})); }catch(e){ out.snip_err=String(raw).slice(0,300); }
+  // 2. Plugin versijos
+  raw=wp('/wp-json/wp/v2/plugins');
+  try{ const arr=JSON.parse(raw); out.plugins=arr.map(p=>({n:(p.name||'').slice(0,40),v:p.version,s:p.status})); }catch(e){ out.plug_err=String(raw).slice(0,200); }
+  // 3. Katalogo skaiciai
+  let h=wpHead('/wp-json/wc/v3/products?status=publish&per_page=1'); out.publish=(h.match(/x-wp-total:\s*(\d+)/i)||[])[1]||h.slice(0,100);
+  h=wpHead('/wp-json/wc/v3/products?status=draft&per_page=1'); out.draft=(h.match(/x-wp-total:\s*(\d+)/i)||[])[1]||null;
+  // 4. Probe: sukurti, aktyvuoti, kviesti, deaktyvuoti
+  const php=`add_action('wp_loaded', function(){ if ( ($_GET['ps_probe'] ?? '') !== 'ps2026' ) return; if ( is_admin() ) return; global $wpdb; $r=array(); $r['zb_cost']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_zb_cost'"); $r['zb_init']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_zb_price_initialized' AND meta_value='yes'"); $r['manual_override']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_manual_price_override' AND meta_value='yes'"); $r['cost_price_filled']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_cost_price' AND meta_value<>''"); $r['src_vf']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_active_fulfillment_source' AND meta_value='vf_dropship'"); $r['src_zb']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key='_active_fulfillment_source' AND meta_value='zb_dropship'"); wp_send_json($r); });`;
+  const body=JSON.stringify({name:'PS Recon Probe 0707 (laikinas)',code:php,scope:'global',active:true,priority:10});
+  fs.writeFileSync('/tmp/snip.json',body);
+  raw=execSync('curl -sk -u "$WPU:$WPP" -X POST -H "Content-Type: application/json" -d @/tmp/snip.json "'+BASE+'/wp-json/code-snippets/v1/snippets"',{encoding:'utf8',timeout:60000,env:{...process.env,WPU,WPP}});
+  let sid=null; try{ sid=JSON.parse(raw).id; }catch(e){ out.probe_create_err=String(raw).slice(0,300); }
+  out.probe_id=sid;
+  if(sid){
+    const pr=wp('/?ps_probe=ps2026');
+    try{ out.zb=JSON.parse(pr); }catch(e){ out.probe_call_err=String(pr).slice(0,300); }
+    // deaktyvuoti
+    const d=execSync('curl -sk -u "$WPU:$WPP" -X DELETE "'+BASE+'/wp-json/code-snippets/v1/snippets/'+sid+'"',{encoding:'utf8',timeout:60000,env:{...process.env,WPU,WPP}});
+    out.probe_deactivated=String(d).slice(0,120);
+    // patikra ar tikrai neaktyvus
+    const chk=wp('/wp-json/code-snippets/v1/snippets/'+sid);
+    try{ out.probe_active_after=JSON.parse(chk).active; }catch(e){}
+  }
+}catch(e){ out.fatal=String(e.message||e).slice(0,400); }
+putResult('recon0707.json',out);
