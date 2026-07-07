@@ -3,15 +3,22 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'brandpull',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function wp(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+DEV+path+'"',{encoding:'utf8',maxBuffer:80000000,timeout:60000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
-const out={ts:new Date().toISOString()};
-// visi product_brand terms su count + slug + name + link
-let all=[]; let p=1;
-while(p<=4){ const r=wp('/wp-json/wp/v2/product_brand?per_page=100&page='+p+'&_fields=slug,name,count,link'); let a; try{a=JSON.parse(r);}catch(e){break;} if(!Array.isArray(a)||!a.length)break; all=all.concat(a); if(a.length<100)break; p++; }
-out.total=all.length;
-let csv='slug,name,count,link\n';
-all.forEach(t=>csv+='"'+t.slug+'","'+(t.name||'').replace(/"/g,'')+'",'+t.count+',"'+(t.link||'').replace(DEV,'')+'"\n');
-putFile('product_brand_terms.csv',csv);
-out.sample=all.slice(0,5).map(t=>t.slug+':'+t.count);
-putFile('brandpull_meta.json',JSON.stringify(out));
+const URLS=["/gamintojas/josera/", "/gamintojas/deli-nature/", "/gamintojas/ziarnko/", "/gamintojas/trixie/", "/gamintojas/hikari/", "/gamintojas/katrinex/", "/gamintojas/belocat/", "/gamintojas/gimborn/", "/gamintojas/animonda/", "/gamintojas/animonda/", "/gamintojas/animonda/", "/gamintojas/dolina-noteci/"];
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'brandcheck',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+const out={ts:new Date().toISOString(),res:[]};
+const seen=new Set();
+for(const u of URLS){
+  if(seen.has(u)) continue; seen.add(u);
+  let code='?',hasProd=false,noindex=false,title='';
+  try{
+    const html=execSync('curl -sk -u ":" -L "'+DEV+u+'"',{encoding:'utf8',maxBuffer:50000000,timeout:40000,env:{...process.env,WPU,WPP}});
+    hasProd=/(add_to_cart|product_cat|li class="product|woocommerce-loop|add-to-cart)/i.test(html);
+    noindex=/noindex/i.test((html.match(/<meta[^>]*robots[^>]*>/i)||[''])[0]);
+    title=((html.match(/<title>([^<]*)<\/title>/i)||[])[1]||'').slice(0,50);
+    const hc=execSync('curl -sk -o /dev/null -w "%{http_code}" -u ":" -L "'+DEV+u+'"',{encoding:'utf8',timeout:30000,env:{...process.env,WPU,WPP}});
+    code=hc.trim();
+  }catch(e){ code='EXC'; }
+  out.res.push({u,code,hasProd,noindex,title});
+  putFile('brandcheck.json',JSON.stringify(out));
+}
+putFile('brandcheck.json',JSON.stringify(out));
