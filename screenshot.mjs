@@ -18,7 +18,7 @@ const out={};
 // PHP probe: wp_loaded + early exit + is_user_logged_in + dumpina shipping options
 const php = `add_action('wp_loaded', function(){
   if (!isset($_GET['pkey']) || $_GET['pkey'] !== 'ship_9x7') { return; }
-  if (!is_user_logged_in()) { return; }
+
   global $wpdb;
   $rows = $wpdb->get_results("SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE '%venipak%' OR option_name LIKE '%lpexpress%' OR option_name LIKE '%lp_express%' OR option_name LIKE '%lithuaniapost%' OR (option_name LIKE 'woocommerce_%settings' AND (option_value LIKE '%venipak%' OR option_value LIKE '%pastomat%' OR option_value LIKE '%kurjer%'))", ARRAY_A);
   header('Content-Type: application/json');
