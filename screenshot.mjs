@@ -1,23 +1,27 @@
 import { execSync } from "child_process"; import fs from "fs";
 const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
+const OLD="https://petshop.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-const IDS="34484,12883,16311,23502,16959,18131,34510,15832,34471,23904,19089,15754,18221,22877,15856,18372,16189,17440,15734,19902,19866,17657,14031,17574,19692,19570,19875,17446,15547,15671,15039,34486,19134,13144,15184,17723,15336,17386,16528,19393,19869,15942,18674,17305,15484,23247,26512,15309,19872,16922,20911,19878,18955,13143,15706,24072,24080,18719,16782,19863,17805,15976,15543,18679,15312,26819,15746,18745,15181,17932,15345,18346,34488,15351,15342,15539,16889,13635,34500,15271,15515,23452,12564,16122,26987,16329,21599,17732,12895,19095,13751".split(",");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'dupattr',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function wp(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+DEV+path+'"',{encoding:'utf8',maxBuffer:50000000,timeout:90000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
-let all=[];
-for(let i=0;i<IDS.length;i+=45){
-  const chunk=IDS.slice(i,i+45).join(',');
-  const r=wp('/wp-json/wc/v3/products?include='+chunk+'&per_page=45&_fields=id,slug,name,attributes,meta_data');
-  let a; try{ a=JSON.parse(r); }catch(e){ continue; }
-  if(Array.isArray(a)) a.forEach(p=>{
-    const pak=(p.attributes||[]).find(x=>/pakuot|dydis/i.test(x.name||''));
-    const dpq=(p.meta_data||[]).find(m=>m.key==='_dp_pack_qty');
-    all.push({id:p.id,slug:p.slug,name:(p.name||'').slice(0,80),pak:pak?pak.options:[],dpq:dpq?dpq.value:''});
-  });
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'bp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function wp(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+DEV+path+'"',{encoding:'utf8',maxBuffer:10000000,timeout:40000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
+function code(u){ try{ return execSync('curl -sk -o /dev/null -w "%{http_code}" -u "$WPU:$WPP" "'+DEV+u+'"',{encoding:'utf8',timeout:25000,env:{...process.env,WPU,WPP}}).trim(); }catch(e){ return 'EXC'; } }
+function oldtitle(u){ try{ const h=execSync('curl -s -L "'+OLD+u+'"',{encoding:'utf8',maxBuffer:10000000,timeout:30000}); return ((h.match(/<title>([^<]*)<\/title>/i)||[])[1]||'').slice(0,70); }catch(e){ return 'EXC'; } }
+const out={};
+// 1. sprendimai/sterilizuotas-augintinis
+out.sprendimai_ster_code=code('/sprendimai/sterilizuotas-augintinis/');
+// 2. ar 3 P0 egzistuoja bet kokiu statusu
+for(const s of ['sterilizuotu-kaciu-maistas','royal-canin-kaciu-maistas','maistas-sterilizuotai-katei-su-antsvorio-problema']){
+  for(const e of ['pages','posts']){
+    const r=wp('/wp-json/wp/v2/'+e+'?slug='+s+'&status=any&_fields=slug,status,link');
+    try{ const a=JSON.parse(r); if(Array.isArray(a)&&a.length){ out['p0_'+s]={status:a[0].status,ep:e}; break; } }catch(err){}
+  }
+  if(!out['p0_'+s]) out['p0_'+s]='NERA';
 }
-let out='id\tslug\tname\tpak\tdpq\n';
-all.forEach(p=>out+=p.id+'\t'+p.slug+'\t'+p.name.replace(/\t/g,' ')+'\t'+JSON.stringify(p.pak)+'\t'+p.dpq+'\n');
-putFile('dupattr.tsv',out);
-putFile('dupattr_meta.json',JSON.stringify({n:all.length}));
+// 3. blogid=24 senas turinys
+out.blogid24_title=oldtitle('/index.php?route=blog/article/prints&blogid=24');
+out.blogid11_title=oldtitle('/index.php?route=blog/article/prints&blogid=11');
+// 4. royal canin brand
+out.rc_brand_code=code('/gamintojas/royal-canin/');
+putFile('bprecon.json',JSON.stringify(out));
