@@ -3,18 +3,40 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-const PHP=Buffer.from("YWRkX2FjdGlvbigid3BfbG9hZGVkIiwgZnVuY3Rpb24oKXsKICBpZiAoIWlzc2V0KCRfR0VUWyJsb29rdXBmaXgiXSkgfHwgJF9HRVRbImxvb2t1cGZpeCJdICE9PSAicHMyMDI2IikgcmV0dXJuOwogIGdsb2JhbCAkd3BkYjsKICAkbG9nID0gYXJyYXkoKTsKICAvLyAxLiBLb2tpZSB0YXhvbm9teSB2YXJkYWkgbG9va3VwIGxlbnRlbGVqZSBkYWJhcj8KICAkbG9nWyJkaXN0aW5jdF90YXhvbm9taWVzIl0gPSAkd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIERJU1RJTkNUIHRheG9ub215IEZST00geyR3cGRiLT5wcmVmaXh9d2NfcHJvZHVjdF9hdHRyaWJ1dGVzX2xvb2t1cCIpOwogICRsb2dbImNvdW50X2JlLWdydWR1Il0gPSAoaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHdwZGItPnByZWZpeH13Y19wcm9kdWN0X2F0dHJpYnV0ZXNfbG9va3VwIFdIRVJFIHRheG9ub215ID0gXCJwYV9iZS1ncnVkdVwiIik7CiAgJGxvZ1siY291bnRfYmVfZ3J1ZHUiXSA9IChpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskd3BkYi0+cHJlZml4fXdjX3Byb2R1Y3RfYXR0cmlidXRlc19sb29rdXAgV0hFUkUgdGF4b25vbXkgPSBcInBhX2JlX2dydWR1XCIiKTsKICAkbG9nWyJjb3VudF9zcGVjaWFsaS1taXR5YmEiXSA9IChpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskd3BkYi0+cHJlZml4fXdjX3Byb2R1Y3RfYXR0cmlidXRlc19sb29rdXAgV0hFUkUgdGF4b25vbXkgPSBcInBhX3NwZWNpYWxpLW1pdHliYVwiIik7CiAgJGxvZ1siY291bnRfc3BlY2lhbGlfbWl0eWJhIl0gPSAoaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHdwZGItPnByZWZpeH13Y19wcm9kdWN0X2F0dHJpYnV0ZXNfbG9va3VwIFdIRVJFIHRheG9ub215ID0gXCJwYV9zcGVjaWFsaV9taXR5YmFcIiIpOwogIC8vIDIuIEtpZWsgdGVybWludSBzdSBuYXVqYWlzIHNsdWcnYWlzCiAgZm9yZWFjaChhcnJheSgicGFfYmVfZ3J1ZHUiLCJwYV9zcGVjaWFsaV9taXR5YmEiKSBhcyAkdGF4KXsKICAgIGlmKHRheG9ub215X2V4aXN0cygkdGF4KSl7CiAgICAgICR0ZXJtcyA9IGdldF90ZXJtcyhhcnJheSgidGF4b25vbXkiPT4kdGF4LCJoaWRlX2VtcHR5Ij0+ZmFsc2UpKTsKICAgICAgJGxvZ1sidGVybXNfIi4kdGF4XSA9IGlzX3dwX2Vycm9yKCR0ZXJtcykgPyAkdGVybXMtPmdldF9lcnJvcl9tZXNzYWdlKCkgOiBhcnJheV9tYXAoZnVuY3Rpb24oJHQpe3JldHVybiAkdC0+bmFtZS4iKCIuJHQtPmNvdW50LiIpIjt9LCAkdGVybXMpOwogICAgfSBlbHNlIHsKICAgICAgJGxvZ1sidGVybXNfIi4kdGF4XSA9ICJUQVhPTk9NWSBOT1QgUkVHSVNURVJFRCI7CiAgICB9CiAgfQogICR1cCA9IHdwX3VwbG9hZF9kaXIoKTsKICBmaWxlX3B1dF9jb250ZW50cygkdXBbImJhc2VkaXIiXS4iL2xvb2t1cGRpYWcuanNvbiIsIHdwX2pzb25fZW5jb2RlKCRsb2cpKTsKICB3cF9kaWUoIkxPT0tVUERJQUdfRE9ORSIpOwp9KTs=","base64").toString("utf8");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ld',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function api(path,method,obj){ let cmd='curl -sk -u "$WPU:$WPP" -H "Content-Type: application/json" '; if(method) cmd+='-X '+method+' '; if(obj){ fs.writeFileSync('/tmp/body.json', JSON.stringify(obj)); cmd+='-d @/tmp/body.json '; } cmd+='"'+DEV+path+'"'; try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:60000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; }}
-function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 40 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:20000000,timeout:45000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
-const out={};
-const c=api('/wp-json/code-snippets/v1/snippets','POST',{name:'TEMP lookupdiag',code:PHP,scope:'global',active:false});
-let sid=0,err=''; try{ const j=JSON.parse(c); sid=j.id; err=j.code_error||''; }catch(e){ err='parse'; }
-out.sid=sid; out.err=err;
-if(sid && !err){
-  api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:true});
-  get('/?lookupfix=ps2026');
-  out.result=get('/wp-content/uploads/lookupdiag.json').slice(0,5000);
-  api('/wp-json/code-snippets/v1/snippets/'+sid,'DELETE');
-}
-putFile('runlookupdiag.json',JSON.stringify(out));
+const PHP=Buffer.from("YWRkX2FjdGlvbigid3BfbG9hZGVkIiwgZnVuY3Rpb24oKXsKICBpZiAoIWlzc2V0KCRfR0VUWyJsb29rdXBmaXgyIl0pIHx8ICRfR0VUWyJsb29rdXBmaXgyIl0gIT09ICJwczIwMjYiKSByZXR1cm47CiAgZ2xvYmFsICR3cGRiOwogICRsb2cgPSBhcnJheSgpOwogIC8vIDEuIFVwZGF0ZSB3Y19wcm9kdWN0X2F0dHJpYnV0ZXNfbG9va3VwOiBwYV9iZS1ncnVkdSAtPiBwYV9iZV9ncnVkdQogICRyMSA9ICR3cGRiLT51cGRhdGUoJHdwZGItPnByZWZpeC4id2NfcHJvZHVjdF9hdHRyaWJ1dGVzX2xvb2t1cCIsIGFycmF5KCJ0YXhvbm9teSI9PiJwYV9iZV9ncnVkdSIpLCBhcnJheSgidGF4b25vbXkiPT4icGFfYmUtZ3J1ZHUiKSk7CiAgJGxvZ1sidXBkYXRlZF9iZyJdID0gJHIxOwogICRyMiA9ICR3cGRiLT51cGRhdGUoJHdwZGItPnByZWZpeC4id2NfcHJvZHVjdF9hdHRyaWJ1dGVzX2xvb2t1cCIsIGFycmF5KCJ0YXhvbm9teSI9PiJwYV9zcGVjaWFsaV9taXR5YmEiKSwgYXJyYXkoInRheG9ub215Ij0+InBhX3NwZWNpYWxpLW1pdHliYSIpKTsKICAkbG9nWyJ1cGRhdGVkX3NtIl0gPSAkcjI7CiAgLy8gMi4gY2xlYXIgY2FjaGUKICB3cF9jYWNoZV9mbHVzaCgpOwogIGlmKGZ1bmN0aW9uX2V4aXN0cygid2NfZGVsZXRlX3Byb2R1Y3RfdHJhbnNpZW50cyIpKSB3Y19kZWxldGVfcHJvZHVjdF90cmFuc2llbnRzKCk7CiAgZGVsZXRlX3RyYW5zaWVudCgid2NfYXR0cmlidXRlX3RheG9ub21pZXMiKTsKICBmbHVzaF9yZXdyaXRlX3J1bGVzKHRydWUpOwogICRsb2dbImRvbmUiXSA9IHRydWU7CiAgLy8gMy4gcGF0dmlydGluaW1hcwogICRsb2dbImxvb2t1cF9iZ19hZnRlciJdID0gKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9d2NfcHJvZHVjdF9hdHRyaWJ1dGVzX2xvb2t1cCBXSEVSRSB0YXhvbm9teSA9IFwicGFfYmVfZ3J1ZHVcIiIpOwogICRsb2dbImxvb2t1cF9zbV9hZnRlciJdID0gKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9d2NfcHJvZHVjdF9hdHRyaWJ1dGVzX2xvb2t1cCBXSEVSRSB0YXhvbm9teSA9IFwicGFfc3BlY2lhbGlfbWl0eWJhXCIiKTsKICAkdXAgPSB3cF91cGxvYWRfZGlyKCk7CiAgZmlsZV9wdXRfY29udGVudHMoJHVwWyJiYXNlZGlyIl0uIi9sb29rdXBmaXgyX3Jlc3VsdC5qc29uIiwgd3BfanNvbl9lbmNvZGUoJGxvZykpOwogIHdwX2RpZSgiTE9PS1VQRklYMl9ET05FIik7Cn0pOw==","base64").toString("utf8");
+function putBin(name,buf){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'lf2',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function putFile(name,str){ putBin(name, Buffer.from(str,'utf8')); }
+function api(path,method,obj){ let cmd='curl -sk -u "$WPU:$WPP" -H "Content-Type: application/json" '; if(method) cmd+='-X '+method+' '; if(obj){ fs.writeFileSync('/tmp/body.json', JSON.stringify(obj)); cmd+='-d @/tmp/body.json '; } cmd+='"'+DEV+path+'"'; try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:90000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; }}
+function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 60 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:20000000,timeout:65000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
+(async()=>{
+  const out={};
+  const c=api('/wp-json/code-snippets/v1/snippets','POST',{name:'TEMP lookupfix2',code:PHP,scope:'global',active:false});
+  let sid=0,err=''; try{ const j=JSON.parse(c); sid=j.id; err=j.code_error||''; }catch(e){ err='parse'; }
+  out.sid=sid; out.err=err;
+  if(sid && !err){
+    api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:true});
+    get('/?lookupfix2=ps2026');
+    out.result=get('/wp-content/uploads/lookupfix2_result.json').slice(0,1500);
+    api('/wp-json/code-snippets/v1/snippets/'+sid,'DELETE');
+  }
+  await new Promise(r=>setTimeout(r,4000));
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
+  const ctx = await browser.newContext({ httpCredentials:{ username:WPU, password:WPP }, ignoreHTTPSErrors:true, viewport:{width:1280,height:1600} });
+  const page = await ctx.newPage();
+  await page.goto(DEV+'/kategorija/sunims/maistas-sunims/?nc='+Date.now(), { waitUntil:'domcontentloaded', timeout:60000 });
+  await page.waitForTimeout(4000);
+  out.filters = await page.evaluate(()=>{
+    const arr=[];
+    document.querySelectorAll('.yith-wcan-filter').forEach(f=>{
+      const tax=f.getAttribute('data-taxonomy')||'';
+      const title=(f.querySelector('.yith-wcan-filter-title')||{}).innerText||'';
+      const terms=[]; f.querySelectorAll('.term,li,label').forEach(t=>{const l=(t.innerText||'').trim();if(l&&l.length<40)terms.push(l);});
+      arr.push({title:title.trim(), tax, terms:[...new Set(terms)].slice(0,15)});
+    });
+    return arr;
+  });
+  putBin('finalfix_desktop.png', await page.screenshot({ fullPage:false, clip:{x:0,y:0,width:500,height:1600} }));
+  await browser.close();
+  putFile('runlookupfix2.json', JSON.stringify(out));
+})().catch(e=>{ console.log('ERR', String(e).slice(0,200)); });
