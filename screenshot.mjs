@@ -3,17 +3,17 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'pr',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 45 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:30000000,timeout:50000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cu',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function code(u){ try{ return execSync('curl -sk -o /dev/null -w "%{http_code}" -u "$WPU:$WPP" -L "'+DEV+u+'"',{encoding:'utf8',timeout:20000,env:{...process.env,WPU,WPP}}).trim(); }catch(e){ return 'EXC'; } }
 const out={};
-// 1. Sprendimai puslapiai (parent kategorijos SPRENDIMAI)
-out.sprendimai=get('/wp-json/wp/v2/pages?search=sprend&per_page=20&_fields=id,title,slug,status,link').slice(0,3000);
-// 2. Top-level produktu kategorijos (parent=0)
-out.top_cats=get('/wp-json/wc/v3/products/categories?parent=0&per_page=30&_fields=id,name,slug,count&orderby=count&order=desc').slice(0,3000);
-// 3. Speciali mityba / alergenu atributai - pa_speciali_mityba terminai
-out.speciali=get('/wp-json/wc/v3/products/attributes/terms?per_page=30&_fields=id,name,slug,count').slice(0,500);
-// atributu sarasas
-out.attrs=get('/wp-json/wc/v3/products/attributes?_fields=id,name,slug').slice(0,1500);
-// 4. logo / site identity
-out.logo_check=get('/?nc='+Date.now()).match(/site_logo|logo/i)?'yra':'nerastas';
-putFile('planrecon.json',JSON.stringify(out));
+const cats={
+  'sunims':'/kategorija/sunims/',
+  'katems':'/kategorija/katems/',
+  'grauzikams':'/kategorija/grauzikams/',
+  'pauksciams':'/kategorija/pauksciams/',
+  'zuvims':'/kategorija/zuvims/',
+  'sprendimai':'/sprendimai/'
+};
+out.urls={};
+for(const [k,u] of Object.entries(cats)) out.urls[k]={url:u, http:code(u)};
+putFile('caturls.json',JSON.stringify(out));
