@@ -3,38 +3,53 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-const BODY=Buffer.from("PGgxPlByaWXFvmnFq3JvcyBwcmllbW9uxJdzIMWhdW5pbXM8L2gxPgoKPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRUFGM0U4O2JvcmRlci1sZWZ0OjRweCBzb2xpZCAjMkQ1RjNGO2JvcmRlci1yYWRpdXM6OHB4O3BhZGRpbmc6MTZweCAyMHB4O21hcmdpbjoxNnB4IDAgMjhweDsiPgogIDxwIHN0eWxlPSJtYXJnaW46MDsiPjxzdHJvbmc+VHJ1bXBhaTo8L3N0cm9uZz4gVmlza2FzIMWhdW5zIHByaWXFvmnFq3JhaSB2aWVub2plIHZpZXRvamUg4oCTIGthaWxpbyBwcmllxb5pxatyYSwgaGlnaWVuYSwgxaFhbXDFq25haSwgdml0YW1pbmFpIGlyIGFwc2F1Z2EgbnVvIHBhcmF6aXTFsy4gUGFzaXJpbmtpdGUga2F0ZWdvcmlqxIUgaXIgcmFza2l0ZSB0aW5rYW1hcyBwcmllbW9uZXMuPC9wPgo8L2Rpdj4KCjxwPlRpbmthbWEgcHJpZcW+acWrcmEg4oCTIHN2ZWlrbyBpciBsYWltaW5nbyDFoXVucyBwYWdyaW5kYXMuIMSMaWEgcmFzaXRlIHByaWVtb25lcyBrYXNkaWVuZWkga2FpbGlvLCBkYW50xbMgaXIgb2RvcyBwcmllxb5pxatyYWksIHRhaXAgcGF0IHBhcGlsZHVzIHN2ZWlrYXRhaSBwYWxhaWt5dGkgYmVpIGFwc2F1Z8SFIG51byBwYXJheml0xbMuPC9wPgoKPHN0eWxlPi5wZXRzaG9wLWNhcmUtZ3JpZHtkaXNwbGF5OmdyaWQgIWltcG9ydGFudDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDMsbWlubWF4KDAsMWZyKSkgIWltcG9ydGFudDtnYXA6MTZweCAhaW1wb3J0YW50O21hcmdpbjoyNHB4IDAgIWltcG9ydGFudDthbGlnbi1pdGVtczpzdHJldGNoICFpbXBvcnRhbnQ7fS5wZXRzaG9wLWNhcmUtZ3JpZCAucGV0c2hvcC1jYXJlLWNhcmR7d2lkdGg6MTAwJSAhaW1wb3J0YW50O21heC13aWR0aDpub25lICFpbXBvcnRhbnQ7ZGlzcGxheTpmbGV4ICFpbXBvcnRhbnQ7ZmxleC1kaXJlY3Rpb246Y29sdW1uICFpbXBvcnRhbnQ7cGFkZGluZzoyMHB4IDIycHggIWltcG9ydGFudDtiYWNrZ3JvdW5kOiNmZmYgIWltcG9ydGFudDtib3JkZXI6MXB4IHNvbGlkICNFNUU3RUIgIWltcG9ydGFudDtib3JkZXItcmFkaXVzOjhweCAhaW1wb3J0YW50O3RleHQtZGVjb3JhdGlvbjpub25lICFpbXBvcnRhbnQ7dHJhbnNpdGlvbjphbGwgLjE1cyBlYXNlICFpbXBvcnRhbnQ7ZmxvYXQ6bm9uZSAhaW1wb3J0YW50O30ucGV0c2hvcC1jYXJlLWdyaWQgLnBldHNob3AtY2FyZS1jYXJkOmhvdmVye2JvcmRlci1jb2xvcjojMkQ1RjNGICFpbXBvcnRhbnQ7YmFja2dyb3VuZDojRjdGQkY2ICFpbXBvcnRhbnQ7dHJhbnNmb3JtOnRyYW5zbGF0ZVkoLTJweCkgIWltcG9ydGFudDtib3gtc2hhZG93OjAgNHB4IDEycHggcmdiYSg0NSw5NSw2MywuMTIpICFpbXBvcnRhbnQ7fS5wZXRzaG9wLWNhcmUtZ3JpZCAucGNjLXRpdGxle2ZvbnQtc2l6ZToxLjFyZW0gIWltcG9ydGFudDtmb250LXdlaWdodDo3MDAgIWltcG9ydGFudDtjb2xvcjojMkQ1RjNGICFpbXBvcnRhbnQ7bWFyZ2luLWJvdHRvbTo2cHggIWltcG9ydGFudDt9LnBldHNob3AtY2FyZS1ncmlkIC5wY2MtZGVzY3tmb250LXNpemU6MC45MnJlbSAhaW1wb3J0YW50O2NvbG9yOiM0YjU1NjMgIWltcG9ydGFudDttYXJnaW4tYm90dG9tOjEwcHggIWltcG9ydGFudDtsaW5lLWhlaWdodDoxLjQgIWltcG9ydGFudDt9LnBldHNob3AtY2FyZS1ncmlkIC5wY2MtY291bnR7Zm9udC1zaXplOjAuODJyZW0gIWltcG9ydGFudDtjb2xvcjojOWNhM2FmICFpbXBvcnRhbnQ7Zm9udC13ZWlnaHQ6NjAwICFpbXBvcnRhbnQ7bWFyZ2luLXRvcDphdXRvICFpbXBvcnRhbnQ7fUBtZWRpYShtYXgtd2lkdGg6OTAwcHgpey5wZXRzaG9wLWNhcmUtZ3JpZHtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDIsbWlubWF4KDAsMWZyKSkgIWltcG9ydGFudDt9fUBtZWRpYShtYXgtd2lkdGg6NjAwcHgpey5wZXRzaG9wLWNhcmUtZ3JpZHtncmlkLXRlbXBsYXRlLWNvbHVtbnM6MWZyICFpbXBvcnRhbnQ7fX08L3N0eWxlPgoKPGRpdiBjbGFzcz0icGV0c2hvcC1jYXJlLWdyaWQiPjxhIGhyZWY9Ii9rYXRlZ29yaWphL3N1bmltcy9zdWtvcy1zZXBlY2lhaS16aXJrbGVzLXN1bmltcy8iIGNsYXNzPSJwZXRzaG9wLWNhcmUtY2FyZCI+PHNwYW4gY2xhc3M9InBjYy10aXRsZSI+xaB1a29zLCDFoWVwZcSNaWFpLCDFvmlya2zEl3M8L3NwYW4+PHNwYW4gY2xhc3M9InBjYy1kZXNjIj5LYWlsaW8gcHJpZcW+acWrcmFpIOKAkyDFoXVrb3MsIMWhZXBlxI1pYWksIGtpcnBpbW8gxK9yYW5raWFpLjwvc3Bhbj48c3BhbiBjbGFzcz0icGNjLWNvdW50Ij42MCBwcmVracWzPC9zcGFuPjwvYT48YSBocmVmPSIva2F0ZWdvcmlqYS9zdW5pbXMvaGlnaWVub3MtcHJpZW1vbmVzLXN1bmltcy8iIGNsYXNzPSJwZXRzaG9wLWNhcmUtY2FyZCI+PHNwYW4gY2xhc3M9InBjYy10aXRsZSI+SGlnaWVub3MgcHJpZW1vbsSXczwvc3Bhbj48c3BhbiBjbGFzcz0icGNjLWRlc2MiPkthc2RpZW5laSBoaWdpZW5haSDigJMgc2VydmV0xJdsxJdzLCBkYW50xbMgcHJpZcW+acWrcmEgaXIga3QuPC9zcGFuPjxzcGFuIGNsYXNzPSJwY2MtY291bnQiPjQ0IHByZWvEl3M8L3NwYW4+PC9hPjxhIGhyZWY9Ii9rYXRlZ29yaWphL3N1bmltcy9zYW1wdW5haS1zdW5pbXMvIiBjbGFzcz0icGV0c2hvcC1jYXJlLWNhcmQiPjxzcGFuIGNsYXNzPSJwY2MtdGl0bGUiPsWgYW1wxatuYWk8L3NwYW4+PHNwYW4gY2xhc3M9InBjYy1kZXNjIj5QcmF1c2ltdWkgaXIga2FpbGlvIHByaWXFvmnFq3JhaSBwYWdhbCBwb3JlaWvEry48L3NwYW4+PHNwYW4gY2xhc3M9InBjYy1jb3VudCI+NDIgcHJla8SXczwvc3Bhbj48L2E+PGEgaHJlZj0iL2thdGVnb3JpamEvc3VuaW1zL3ZpdGFtaW5haS1pci1wYXBpbGRhaS1zdW5pbXMvIiBjbGFzcz0icGV0c2hvcC1jYXJlLWNhcmQiPjxzcGFuIGNsYXNzPSJwY2MtdGl0bGUiPlZpdGFtaW5haSBpciBwYXBpbGRhaTwvc3Bhbj48c3BhbiBjbGFzcz0icGNjLWRlc2MiPlN2ZWlrYXRhaSBwYWxhaWt5dGkg4oCTIHBhcGlsZGFpLCB2aXRhbWluYWkuPC9zcGFuPjxzcGFuIGNsYXNzPSJwY2MtY291bnQiPjczIHByZWvEl3M8L3NwYW4+PC9hPjxhIGhyZWY9Ii9rYXRlZ29yaWphL3N1bmltcy9hbnRpcGFyYXppdGluZXMtcHJpZW1vbmVzLXN1bmltcy8iIGNsYXNzPSJwZXRzaG9wLWNhcmUtY2FyZCI+PHNwYW4gY2xhc3M9InBjYy10aXRsZSI+QW50aXBhcmF6aXRpbsSXcyBwcmllbW9uxJdzPC9zcGFuPjxzcGFuIGNsYXNzPSJwY2MtZGVzYyI+QXBzYXVnYWkgbnVvIGJsdXPFsywgZXJracWzIGlyIGtpdMWzIHBhcmF6aXTFsy48L3NwYW4+PHNwYW4gY2xhc3M9InBjYy1jb3VudCI+OCBwcmVrxJdzPC9zcGFuPjwvYT48YSBocmVmPSIva2F0ZWdvcmlqYS9zdW5pbXMvcGlybW9qaS1wYWdhbGJhLXN1bmltcy8iIGNsYXNzPSJwZXRzaG9wLWNhcmUtY2FyZCI+PHNwYW4gY2xhc3M9InBjYy10aXRsZSI+UGlybW9qaSBwYWdhbGJhPC9zcGFuPjxzcGFuIGNsYXNzPSJwY2MtZGVzYyI+QsWrdGluaWF1c2lvcyBwcmllbW9uxJdzIG5ldGlrxJd0aWVtcyBhdHZlamFtcy48L3NwYW4+PHNwYW4gY2xhc3M9InBjYy1jb3VudCI+MiBwcmVrxJdzPC9zcGFuPjwvYT48L2Rpdj4KCjxwIHN0eWxlPSJtYXJnaW4tdG9wOjI4cHg7Ij5JZcWha290ZSBtYWlzdG8gYXIga2l0xbMgcHJla2nFsz8gUGVyxb5pxatyxJdraXRlIHZpc2FzIDxhIGhyZWY9Ii9rYXRlZ29yaWphL3N1bmltcy8iPnByZWtlcyDFoXVuaW1zPC9hPi48L3A+Cg==","base64").toString("utf8");
-function putBin(name,buf){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'cf3',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function putFile(name,str){ putBin(name, Buffer.from(str,'utf8')); }
-function api(path,method,obj){ let cmd='curl -sk -u "$WPU:$WPP" -H "Content-Type: application/json" '; if(method) cmd+='-X '+method+' '; if(obj){ fs.writeFileSync('/tmp/body.json', JSON.stringify(obj)); cmd+='-d @/tmp/body.json '; } cmd+='"'+DEV+path+'"'; try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:90000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; }}
-function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 50 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:20000000,timeout:55000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
-(async()=>{
-  const out={};
-  api('/wp-json/wp/v2/pages/34539','POST',{content:BODY,status:'publish'});
-  const html=get('/prieziuros-priemones-sunims/?nc='+Date.now());
-  // ar wpautop pridejo <br> grid viduje?
-  const gridStart=html.indexOf('petshop-care-grid">');
-  const gridEnd=html.indexOf('</div>', gridStart);
-  const gridHtml=gridStart>=0?html.slice(gridStart, gridEnd):'';
-  out.br_in_grid=(gridHtml.match(/<br/gi)||[]).length;
-  out.p_in_grid=(gridHtml.match(/<p>/gi)||[]).length;
-  const { chromium } = await import('playwright');
-  const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
-  const ctx = await browser.newContext({ httpCredentials:{ username:WPU, password:WPP }, ignoreHTTPSErrors:true, viewport:{width:1280,height:1000} });
-  const page = await ctx.newPage();
-  await page.goto(DEV+'/prieziuros-priemones-sunims/?nc='+Date.now(), { waitUntil:'domcontentloaded', timeout:60000 });
-  await page.waitForTimeout(3000);
-  const gridInfo = await page.evaluate(()=>{
-    const grid=document.querySelector('.petshop-care-grid');
-    if(!grid) return {found:false};
-    const cards=[...grid.querySelectorAll('.petshop-care-card')];
-    const rects=cards.map(c=>{ const r=c.getBoundingClientRect(); return {left:Math.round(r.left), top:Math.round(r.top)}; });
-    // ar yra kitu vaiku (br, p) grid viduje?
-    const allChildren=[...grid.children].map(c=>c.tagName);
-    return {found:true, cardCount:cards.length, rects, childTags:allChildren};
-  });
-  out.gridInfo=gridInfo;
-  putBin('care_hub_v5.png', await page.screenshot({ fullPage:false, clip:{x:0,y:0,width:1280,height:1000} }));
-  await browser.close();
-  putFile('carefix3.json', JSON.stringify(out));
-})().catch(e=>{ console.log('ERR', String(e).slice(0,200)); });
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'hr',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function api(path,method,obj){ let cmd='curl -sk -u "$WPU:$WPP" -H "Content-Type: application/json" '; if(method) cmd+='-X '+method+' '; if(obj){ fs.writeFileSync('/tmp/body.json', JSON.stringify(obj)); cmd+='-d @/tmp/body.json '; } cmd+='"'+DEV+path+'"'; try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:60000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; }}
+function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 45 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:30000000,timeout:50000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
+
+const out={};
+// 1. WP Reading settings - front page display (probe per snippet, file rezultatas)
+const php = `add_action('init', function(){
+  if (!isset($_GET['pkey']) || $_GET['pkey'] !== 'home_r7') { return; }
+  $r = array();
+  $r['show_on_front'] = get_option('show_on_front'); // 'posts' arba 'page'
+  $r['page_on_front'] = get_option('page_on_front'); // page ID jei 'page'
+  $r['page_for_posts'] = get_option('page_for_posts');
+  $r['blogname'] = get_option('blogname');
+  // WooCommerce shop page
+  if (function_exists('wc_get_page_id')) {
+    $r['woo_shop_page_id'] = wc_get_page_id('shop');
+  }
+  // front page turinys jei page
+  if ($r['show_on_front']==='page' && $r['page_on_front']) {
+    $fp = get_post($r['page_on_front']);
+    $r['front_title'] = $fp ? $fp->post_title : '?';
+    $r['front_content_len'] = $fp ? strlen($fp->post_content) : 0;
+    $r['front_template'] = $fp ? get_post_meta($fp->ID, '_wp_page_template', true) : '';
+  }
+  // meniu struktura
+  $menus = wp_get_nav_menus();
+  $r['menus'] = array();
+  foreach($menus as $m){
+    $items = wp_get_nav_menu_items($m->term_id);
+    $r['menus'][$m->name] = array('count'=>count($items), 'top'=>array());
+    foreach($items as $it){
+      if(empty($it->menu_item_parent) || $it->menu_item_parent=='0'){
+        $r['menus'][$m->name]['top'][] = $it->title;
+      }
+    }
+  }
+  $up = wp_upload_dir();
+  file_put_contents($up['basedir'].'/home_recon_r7.json', wp_json_encode($r));
+  wp_die('HOME_DONE');
+});`;
+const c=api('/wp-json/code-snippets/v1/snippets','POST',{name:'TEMP home recon',code:php,scope:'global',active:false});
+let sid=0; try{ sid=JSON.parse(c).id; }catch(e){}
+out.sid=sid;
+if(sid){
+  api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:true});
+  get('/?pkey=home_r7');
+  out.result=get('/wp-content/uploads/home_recon_r7.json').slice(0,4000);
+  api('/wp-json/code-snippets/v1/snippets/'+sid,'DELETE');
+}
+putFile('homerecon.json',JSON.stringify(out));
