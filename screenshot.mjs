@@ -3,7 +3,7 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'wp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sd',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
 function api(path,method,dataStr){
   fs.writeFileSync('/tmp/body.json', dataStr||'{}');
   let cmd='curl -sk -u "$WPU:$WPP" ';
@@ -14,22 +14,39 @@ function api(path,method,dataStr){
 }
 function get(url){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+url+'"',{encoding:'utf8',maxBuffer:20000000,timeout:50000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
 const out={};
-// probe: pilni PILNI serialized values visu shipping method + globaliu plugin settings su weight
+// DRY-RUN: enumeruoja VISUS shipping methodus + zonas + max_weight. Read-only.
 const php = `add_action('wp_loaded', function(){
-  if (!isset($_GET['pkey']) || $_GET['pkey'] !== 'wt_5k2') { return; }
+  if (!isset($_GET['pkey']) || $_GET['pkey'] !== 'dry_7q3') { return; }
   global $wpdb;
-  $rows = $wpdb->get_results("SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE '%venipak%' OR option_name LIKE '%lithuaniapost%' OR option_name LIKE '%lpexpress%'", ARRAY_A);
+  $result=array();
+  // visos zonos ir ju methodai per WC_Shipping_Zones
+  if (class_exists('WC_Shipping_Zones')) {
+    $zones = WC_Shipping_Zones::get_zones();
+    $all = $zones;
+    // pridedam zone 0
+    $z0 = WC_Shipping_Zones::get_zone(0);
+    $all['0'] = array('zone_name'=>$z0->get_zone_name(),'shipping_methods'=>$z0->get_shipping_methods());
+    foreach ($all as $zid=>$z) {
+      $zname = isset($z['zone_name'])?$z['zone_name']:'';
+      $methods = isset($z['shipping_methods'])?$z['shipping_methods']:array();
+      foreach ($methods as $m) {
+        $mw = isset($m->instance_settings['maximum_weight'])?$m->instance_settings['maximum_weight']:'(nera)';
+        $title = isset($m->instance_settings['title'])?$m->instance_settings['title']:$m->method_title;
+        $result[] = array('zone'=>$zname,'instance_id'=>$m->instance_id,'method_id'=>$m->id,'title'=>$title,'enabled'=>$m->enabled,'max_weight'=>$mw);
+      }
+    }
+  }
   header('Content-Type: application/json');
-  echo json_encode($rows);
+  echo json_encode($result);
   exit;
 });`;
-const create=api('/wp-json/code-snippets/v1/snippets','POST', JSON.stringify({name:'TEMP weight probe',code:php,scope:'global',active:true}));
+const create=api('/wp-json/code-snippets/v1/snippets','POST', JSON.stringify({name:'TEMP ship dry',code:php,scope:'global',active:true}));
 let sid=''; try{ sid=JSON.parse(create).id; }catch(e){}
-out.create_id=sid;
+out.create_id=sid; out.create_raw=create.slice(0,150);
 if(sid){
-  out.probe=get(DEV+'/?pkey=wt_5k2');
+  out.dry=get(DEV+'/?pkey=dry_7q3');
   api('/wp-json/code-snippets/v1/snippets/'+sid,'DELETE');
   out.deleted=true;
 }
-putFile('weightprobe.json',JSON.stringify(out));
+putFile('shipdry.json',JSON.stringify(out));
 console.log('done',sid);
