@@ -3,15 +3,20 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putBin(name,buf){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'v4',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-(async()=>{
-  const { chromium } = await import('playwright');
-  const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
-  const ctx = await browser.newContext({ httpCredentials:{ username:WPU, password:WPP }, ignoreHTTPSErrors:true, viewport:{width:1280,height:1600} });
-  const page = await ctx.newPage();
-  await page.goto(DEV+'/apie-mus/', { waitUntil:'domcontentloaded', timeout:60000 });
-  await page.waitForTimeout(3500);
-  const buf = await page.screenshot({ fullPage:true });
-  putBin('apie_mus_v4.png', buf);
-  await browser.close();
-})().catch(e=>{ console.log('ERR', String(e).slice(0,150)); });
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ver',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+DEV+path+'?nocache='+Date.now()+'"',{encoding:'utf8',maxBuffer:20000000,timeout:50000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
+const html=get('/apie-mus/');
+const out={
+  has_hero_cta:html.indexOf('Peržiūrėti prekes')>=0,
+  has_shop_grid:html.indexOf('pa-shop-grid')>=0,
+  has_shop_btn_sunims:html.indexOf('/kategorija/sunims/')>=0,
+  has_shop_btn_katems:html.indexOf('/kategorija/katems/')>=0,
+  has_pasiulymai:html.indexOf('/pasiulymai/')>=0,
+  has_full_address:html.indexOf('Liucionių g. 46')>=0,
+  has_tel_link:html.indexOf('tel:+37068187787')>=0,
+  has_mailto:html.indexOf('mailto:terra@petshop.lt')>=0,
+  h2_count:(html.match(/<h2[\s>]/gi)||[]).length,
+  h1_count:(html.match(/<h1[\s>]/gi)||[]).length,
+  title:((html.match(/<title>([^<]*)<\/title>/i)||[])[1]||'').slice(0,60),
+};
+putFile('verifyv3.json',JSON.stringify(out));
