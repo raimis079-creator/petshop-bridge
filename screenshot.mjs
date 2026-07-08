@@ -3,32 +3,32 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'b3',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function code(u){ try{ return execSync('curl -sk -o /dev/null -w "%{http_code}" -u "$WPU:$WPP" "'+DEV+u+'"',{encoding:'utf8',timeout:20000,env:{...process.env,WPU,WPP}}).trim(); }catch(e){ return 'EXC'; } }
-// slug -> grazus pavadinimas
-const breeds={
-  'amerikieciu-buldogas':'Amerikiečių buldogas',
-  'amerikieciu-putbulterjeras':'Amerikiečių pitbulterjeras',
-  'biglis':'Biglis',
-  'bokseris':'Bokseris',
-  'ciau-ciau':'Čiau čiau',
-  'cvergsnauceris':'Cvergšnauceris',
-  'dalmantinas':'Dalmatinas',
-  'dzeko-raselo-terjeras':'Džeko Raselo terjeras',
-  'havanu-bisonai':'Havanų bišonai',
-  'jorksyro-terjeras':'Jorkšyro terjeras',
-  'kaukazo-aviganis':'Kaukazo aviganis',
-  'kinu-kuduotasis-suo':'Kinų kuduotasis šuo',
-  'kolis':'Kolis',
-  'mastifas':'Mastifas',
-  'rotveileris-s-v':'Rotveileris',
-  'samojedas':'Samojedas',
-  'senbernaras':'Senbernaras',
-  'taksas':'Taksas',
-  'tibeto-mastifas':'Tibeto mastifas'
-};
-const out={};
-for(const [slug,name] of Object.entries(breeds)){
-  out[slug]={name, http:code('/'+slug+'/')};
-}
-putFile('breeds3.json',JSON.stringify(out));
+const BODY=Buffer.from("PGgxPsWgdW7FsyB2ZWlzbMSXczwvaDE+Cgo8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNFQUYzRTg7Ym9yZGVyLWxlZnQ6NHB4IHNvbGlkICMyRDVGM0Y7Ym9yZGVyLXJhZGl1czo4cHg7cGFkZGluZzoxNnB4IDIwcHg7bWFyZ2luOjE2cHggMCAyOHB4OyI+CiAgPHAgc3R5bGU9Im1hcmdpbjowOyI+PHN0cm9uZz5UcnVtcGFpOjwvc3Ryb25nPiBUcnVtcGkgxaF1bsWzIHZlaXNsacWzIGFwcmHFoXltYWkg4oCTIGlzdG9yaWphLCBjaGFyYWt0ZXJpcywgcHJpZcW+acWrcmEgaXIgbWl0eWJvcyB5cGF0dW1haS4gUGFzaXJpbmtpdGUgdmVpc2zEmSBpciBzdcW+aW5va2l0ZSwga2FpcCBnZXJpYXVzaWFpIHBhc2lyxatwaW50aSBzYXZvIGF1Z2ludGluaXUuPC9wPgo8L2Rpdj4KCjxwPktpZWt2aWVuYSDFoXVuxbMgdmVpc2zElyB0dXJpIHNhdm8gY2hhcmFrdGVyxK8sIGVuZXJnaWpvcyBseWfEryBpciBzdmVpa2F0b3MgeXBhdHVtdXMsIMSvIGt1cml1b3MgdmVydGEgYXRzacW+dmVsZ3RpIHJlbmthbnRpcyBtYWlzdMSFIGJlaSBwcmllxb5pxatyb3MgcHJpZW1vbmVzLiBQZXLFvmnFq3LEl2tpdGUgbcWrc8WzIHBhcmVuZ3R1cyB2ZWlzbGnFsyBhcHJhxaF5bXVzIOKAkyBqaWUgcGFkxJdzIGdlcmlhdSBzdXByYXN0aSBzYXZvIGF1Z2ludGluaW8gcG9yZWlraXVzLjwvcD4KCjxzdHlsZT4KLnN2LWdyaWR7CiAgZGlzcGxheTpncmlkOwogIGdyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoYXV0by1maWxsLG1pbm1heCgyMjBweCwxZnIpKTsKICBnYXA6MTJweDsKICBtYXJnaW46MjRweCAwOwp9Ci5zdi1jYXJkewogIGRpc3BsYXk6YmxvY2s7CiAgcGFkZGluZzoxNnB4IDE4cHg7CiAgYmFja2dyb3VuZDojZmZmOwogIGJvcmRlcjoxcHggc29saWQgI0U1RTdFQjsKICBib3JkZXItcmFkaXVzOjhweDsKICBjb2xvcjojMkQ1RjNGICFpbXBvcnRhbnQ7CiAgZm9udC13ZWlnaHQ6NjAwOwogIHRleHQtZGVjb3JhdGlvbjpub25lICFpbXBvcnRhbnQ7CiAgdHJhbnNpdGlvbjphbGwgLjE1cyBlYXNlOwp9Ci5zdi1jYXJkOmhvdmVyewogIGJvcmRlci1jb2xvcjojMkQ1RjNGOwogIGJhY2tncm91bmQ6I0Y3RkJGNjsKICB0cmFuc2Zvcm06dHJhbnNsYXRlWSgtMnB4KTsKICBib3gtc2hhZG93OjAgNHB4IDEycHggcmdiYSg0NSw5NSw2MywuMTIpOwp9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJzdi1ncmlkIj4KICAgIDxhIGhyZWY9Ii9hbWVyaWtpZWNpdS1idWxkb2dhcy8iIGNsYXNzPSJzdi1jYXJkIj5BbWVyaWtpZcSNacWzIGJ1bGRvZ2FzPC9hPgogICAgPGEgaHJlZj0iL2FtZXJpa2llY2l1LXB1dGJ1bHRlcmplcmFzLyIgY2xhc3M9InN2LWNhcmQiPkFtZXJpa2llxI1pxbMgcGl0YnVsdGVyamVyYXM8L2E+CiAgICA8YSBocmVmPSIvYmlnbGlzLyIgY2xhc3M9InN2LWNhcmQiPkJpZ2xpczwvYT4KICAgIDxhIGhyZWY9Ii9ib2tzZXJpcy8iIGNsYXNzPSJzdi1jYXJkIj5Cb2tzZXJpczwvYT4KICAgIDxhIGhyZWY9Ii9jaWF1LWNpYXUvIiBjbGFzcz0ic3YtY2FyZCI+xIxpYXUgxI1pYXU8L2E+CiAgICA8YSBocmVmPSIvY3ZlcmdzbmF1Y2VyaXMvIiBjbGFzcz0ic3YtY2FyZCI+Q3ZlcmfFoW5hdWNlcmlzPC9hPgogICAgPGEgaHJlZj0iL2RhbG1hbnRpbmFzLyIgY2xhc3M9InN2LWNhcmQiPkRhbG1hdGluYXM8L2E+CiAgICA8YSBocmVmPSIvZHpla28tcmFzZWxvLXRlcmplcmFzLyIgY2xhc3M9InN2LWNhcmQiPkTFvmVrbyBSYXNlbG8gdGVyamVyYXM8L2E+CiAgICA8YSBocmVmPSIvaGF2YW51LWJpc29uYWkvIiBjbGFzcz0ic3YtY2FyZCI+SGF2YW7FsyBiacWhb25haTwvYT4KICAgIDxhIGhyZWY9Ii9qb3Jrc3lyby10ZXJqZXJhcy8iIGNsYXNzPSJzdi1jYXJkIj5Kb3JrxaF5cm8gdGVyamVyYXM8L2E+CiAgICA8YSBocmVmPSIva2F1a2F6by1hdmlnYW5pcy8iIGNsYXNzPSJzdi1jYXJkIj5LYXVrYXpvIGF2aWdhbmlzPC9hPgogICAgPGEgaHJlZj0iL2tpbnUta3VkdW90YXNpcy1zdW8vIiBjbGFzcz0ic3YtY2FyZCI+S2luxbMga3VkdW90YXNpcyDFoXVvPC9hPgogICAgPGEgaHJlZj0iL2tvbGlzLyIgY2xhc3M9InN2LWNhcmQiPktvbGlzPC9hPgogICAgPGEgaHJlZj0iL21hc3RpZmFzLyIgY2xhc3M9InN2LWNhcmQiPk1hc3RpZmFzPC9hPgogICAgPGEgaHJlZj0iL3JvdHZlaWxlcmlzLXMtdi8iIGNsYXNzPSJzdi1jYXJkIj5Sb3R2ZWlsZXJpczwvYT4KICAgIDxhIGhyZWY9Ii9zYW1vamVkYXMvIiBjbGFzcz0ic3YtY2FyZCI+U2Ftb2plZGFzPC9hPgogICAgPGEgaHJlZj0iL3NlbmJlcm5hcmFzLyIgY2xhc3M9InN2LWNhcmQiPlNlbmJlcm5hcmFzPC9hPgogICAgPGEgaHJlZj0iL3Rha3Nhcy8iIGNsYXNzPSJzdi1jYXJkIj5UYWtzYXM8L2E+CiAgICA8YSBocmVmPSIvdGliZXRvLW1hc3RpZmFzLyIgY2xhc3M9InN2LWNhcmQiPlRpYmV0byBtYXN0aWZhczwvYT4KPC9kaXY+Cgo8cCBzdHlsZT0ibWFyZ2luLXRvcDoyOHB4OyI+SWXFoWtvdGUgbWFpc3RvIHBhZ2FsIGF1Z2ludGluaW8gcG9yZWlraXVzPyBQZXLFvmnFq3LEl2tpdGUgPGEgaHJlZj0iL2thdGVnb3JpamEvc3VuaW1zLyI+cHJla2VzIMWhdW5pbXM8L2E+IGFyYmEgcGFzaW5hdWRva2l0ZSA8YSBocmVmPSIvc3Vucy1zZXJpbW8tbGVudGVsZS1ncmFtYWlzLyI+xaHEl3JpbW8gc2thacSNaXVva2xlPC9hPi48L3A+Cg==","base64").toString("utf8");
+function putBin(name,buf){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sv',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function putFile(name,str){ putBin(name, Buffer.from(str,'utf8')); }
+function api(path,method,obj){ let cmd='curl -sk -u "$WPU:$WPP" -H "Content-Type: application/json" '; if(method) cmd+='-X '+method+' '; if(obj){ fs.writeFileSync('/tmp/body.json', JSON.stringify(obj)); cmd+='-d @/tmp/body.json '; } cmd+='"'+DEV+path+'"'; try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:90000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; }}
+function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 50 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:20000000,timeout:55000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
+function code(u){ try{ return execSync('curl -sk -o /dev/null -w "%{http_code}" -u "$WPU:$WPP" "'+DEV+u+'"',{encoding:'utf8',timeout:30000,env:{...process.env,WPU,WPP}}).trim(); }catch(e){ return 'EXC'; } }
+(async()=>{
+  const out={};
+  const exist=get('/wp-json/wp/v2/pages?slug=sunu-veisles&status=any&_fields=id');
+  let existId=0; try{ const a=JSON.parse(exist); if(Array.isArray(a)&&a.length) existId=a[0].id; }catch(e){}
+  let pageId=existId;
+  if(existId){ api('/wp-json/wp/v2/pages/'+existId,'POST',{title:'Šunų veislės',content:BODY,status:'publish'}); out.action='updated'; }
+  else { const c=api('/wp-json/wp/v2/pages','POST',{title:'Šunų veislės',slug:'sunu-veisles',content:BODY,status:'publish'}); out.action='created'; try{ pageId=JSON.parse(c).id; }catch(e){} }
+  out.pageId=pageId;
+  const html=get('/sunu-veisles/?nc='+Date.now());
+  out.http=code('/sunu-veisles/');
+  out.h1=(html.match(/<h1[\s>]/gi)||[]).length;
+  out.cards=(html.match(/sv-card/gi)||[]).length;
+  out.foot1=html.indexOf('.footer-widgets.footer.footer-1{display:none')>=0;
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
+  const ctx = await browser.newContext({ httpCredentials:{ username:WPU, password:WPP }, ignoreHTTPSErrors:true, viewport:{width:1280,height:1400} });
+  const page = await ctx.newPage();
+  await page.goto(DEV+'/sunu-veisles/?nc='+Date.now(), { waitUntil:'domcontentloaded', timeout:60000 });
+  await page.waitForTimeout(3000);
+  putBin('sunu_veisles_v1.png', await page.screenshot({ fullPage:true }));
+  await browser.close();
+  putFile('mksunuveisles.json', JSON.stringify(out));
+})().catch(e=>{ console.log('ERR', String(e).slice(0,200)); });
