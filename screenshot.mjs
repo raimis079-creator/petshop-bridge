@@ -3,36 +3,18 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'fd',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function jget(path){ try{ return JSON.parse(execSync('curl -sk -u "$WPU:$WPP" --max-time 25 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:10000000,timeout:27000,env:{...process.env,WPU,WPP}})); }catch(e){ return null; } }
+const PHP=Buffer.from("YWRkX2FjdGlvbigiaW5pdCIsIGZ1bmN0aW9uKCl7CiAgaWYgKCFpc3NldCgkX0dFVFsieWRpYWciXSkgfHwgJF9HRVRbInlkaWFnIl0gIT09ICJwczIwMjYiKSByZXR1cm47CiAgZ2xvYmFsICR3cGRiOwogICRyID0gYXJyYXkoKTsKICAvLyAxLiBZSVRIIHByZXNldGFpCiAgJHByZXNldHMgPSBnZXRfcG9zdHMoYXJyYXkoInBvc3RfdHlwZSI9PiJ5aXRoX3djYW5fcHJlc2V0IiwibnVtYmVycG9zdHMiPT4yMCwicG9zdF9zdGF0dXMiPT4iYW55IikpOwogICRyWyJwcmVzZXRzIl0gPSBhcnJheSgpOwogIGZvcmVhY2goJHByZXNldHMgYXMgJHApewogICAgJGZpbHRlcnMgPSBnZXRfcG9zdF9tZXRhKCRwLT5JRCwgImZpbHRlcnMiLCB0cnVlKTsKICAgICRmc3VtID0gYXJyYXkoKTsKICAgIGlmKGlzX2FycmF5KCRmaWx0ZXJzKSl7CiAgICAgIGZvcmVhY2goJGZpbHRlcnMgYXMgJGYpewogICAgICAgICRmc3VtW10gPSBhcnJheSgKICAgICAgICAgICJ0aXRsZSI9Pmlzc2V0KCRmWyJ0aXRsZSJdKT8kZlsidGl0bGUiXToiIiwKICAgICAgICAgICJ0eXBlIj0+aXNzZXQoJGZbImZpbHRlcl90eXBlIl0pPyRmWyJmaWx0ZXJfdHlwZSJdOiIiLAogICAgICAgICAgInRheG9ub215Ij0+aXNzZXQoJGZbInRheG9ub215Il0pPyRmWyJ0YXhvbm9teSJdOiIiLAogICAgICAgICAgInRlcm1zX21vZGUiPT5pc3NldCgkZlsic2hvd190ZXJtcyJdKT8kZlsic2hvd190ZXJtcyJdOihpc3NldCgkZlsidGVybXNfbG9naWMiXSk/JGZbInRlcm1zX2xvZ2ljIl06IiIpLAogICAgICAgICAgInRlcm1zX2NvdW50Ij0+aXNzZXQoJGZbInRlcm1zIl0pJiZpc19hcnJheSgkZlsidGVybXMiXSk/Y291bnQoJGZbInRlcm1zIl0pOjAKICAgICAgICApOwogICAgICB9CiAgICB9CiAgICAkclsicHJlc2V0cyJdW10gPSBhcnJheSgiaWQiPT4kcC0+SUQsInRpdGxlIj0+JHAtPnBvc3RfdGl0bGUsInNsdWciPT4kcC0+cG9zdF9uYW1lLCJmaWx0ZXJzIj0+JGZzdW0pOwogIH0KICAvLyAyLiBsb29rdXAgbGVudGVsZQogICRsb29rdXAgPSAkd3BkYi0+cHJlZml4IC4gIndjX3Byb2R1Y3RfYXR0cmlidXRlc19sb29rdXAiOwogICRleGlzdHMgPSAkd3BkYi0+Z2V0X3ZhcigiU0hPVyBUQUJMRVMgTElLRSAneyRsb29rdXB9JyIpOwogICRyWyJsb29rdXBfZXhpc3RzIl0gPSAkZXhpc3RzID8gdHJ1ZSA6IGZhbHNlOwogIGlmKCRleGlzdHMpewogICAgJHJbImxvb2t1cF9yb3dzIl0gPSAoaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JGxvb2t1cH0iKTsKICAgIC8vIGtpZWsgZWlsdWNpdSBwYV9iZV9ncnVkdSwgcGFfc3BlY2lhbGlfbWl0eWJhCiAgICAkclsibG9va3VwX2JlX2dydWR1Il0gPSAoaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JGxvb2t1cH0gV0hFUkUgdGF4b25vbXk9J3BhX2JlX2dydWR1JyIpOwogICAgJHJbImxvb2t1cF9zcGVjaWFsaSJdID0gKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRsb29rdXB9IFdIRVJFIHRheG9ub215PSdwYV9zcGVjaWFsaV9taXR5YmEnIik7CiAgICAkclsibG9va3VwX3RheG9ub21pZXMiXSA9ICR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgRElTVElOQ1QgdGF4b25vbXkgRlJPTSB7JGxvb2t1cH0gTElNSVQgNDAiKTsKICB9CiAgLy8gMy4gdGVybWludSBza2FpY2lhaSByZWFsdXMgKHRlcm1fdGF4b25vbXkpCiAgJHJbInRlcm1fY291bnRzIl0gPSBhcnJheSgpOwogIGZvcmVhY2goYXJyYXkoInBhX2JlX2dydWR1IiwicGFfc3BlY2lhbGlfbWl0eWJhIiwicGFfbW9ub3Byb3RlaW4iKSBhcyAkdGF4KXsKICAgICR0ZXJtcyA9IGdldF90ZXJtcyhhcnJheSgidGF4b25vbXkiPT4kdGF4LCJoaWRlX2VtcHR5Ij0+ZmFsc2UpKTsKICAgIGlmKCFpc193cF9lcnJvcigkdGVybXMpKXsKICAgICAgJHRzdW09YXJyYXkoKTsKICAgICAgZm9yZWFjaCgkdGVybXMgYXMgJHQpeyAkdHN1bVtdPSR0LT5uYW1lLiIoIi4kdC0+Y291bnQuIikiOyB9CiAgICAgICRyWyJ0ZXJtX2NvdW50cyJdWyR0YXhdPSR0c3VtOwogICAgfSBlbHNlIHsKICAgICAgJHJbInRlcm1fY291bnRzIl1bJHRheF09IkVSUk9SOiAiLiR0ZXJtcy0+Z2V0X2Vycm9yX21lc3NhZ2UoKTsKICAgIH0KICB9CiAgJHVwID0gd3BfdXBsb2FkX2RpcigpOwogIGZpbGVfcHV0X2NvbnRlbnRzKCR1cFsiYmFzZWRpciJdLiIveWRpYWdfcmVzdWx0Lmpzb24iLCB3cF9qc29uX2VuY29kZSgkcikpOwogIHdwX2RpZSgiWURJQUdfRE9ORSIpOwp9KTs=","base64").toString("utf8");
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'yd',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function api(path,method,obj){ let cmd='curl -sk -u "$WPU:$WPP" -H "Content-Type: application/json" '; if(method) cmd+='-X '+method+' '; if(obj){ fs.writeFileSync('/tmp/body.json', JSON.stringify(obj)); cmd+='-d @/tmp/body.json '; } cmd+='"'+DEV+path+'"'; try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:60000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; }}
+function get(path){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 40 "'+DEV+path+'"',{encoding:'utf8',maxBuffer:20000000,timeout:45000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
 const out={};
-// 1. YITH filtro presetai/konfiguracija - kaip filtrai sukonfiguruoti?
-// YITH saugo filtrus kaip 'yith_wcan_filters' post type arba option
-// Tikrinam ka rodo puslapyje realiai per JS
-const { chromium } = await import('playwright');
-const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
-const ctx = await browser.newContext({ httpCredentials:{ username:WPU, password:WPP }, ignoreHTTPSErrors:true, viewport:{width:1280,height:1400} });
-const page = await ctx.newPage();
-await page.goto(DEV+'/kategorija/sunims/maistas-sunims/?nc='+Date.now(), { waitUntil:'domcontentloaded', timeout:60000 });
-await page.waitForTimeout(4000);
-// istraukiam VISAS filtru reiksmes is sidebar'o
-out.filterValues = await page.evaluate(()=>{
-  const result={};
-  // YITH filtru blokai
-  const blocks=document.querySelectorAll('.yith-wcan-filters .yith-wcan-filter, .widget_yith-wcan-filters, aside .widget, .sidebar .widget');
-  const all=[];
-  document.querySelectorAll('aside, .sidebar, #secondary, .shop-sidebar').forEach(sb=>{
-    sb.querySelectorAll('h3,h4,.widget-title,.yith-wcan-filter-title').forEach(h=>{
-      const title=h.innerText.trim();
-      // reiksmes po antraste
-      let values=[];
-      let sib=h.closest('.widget, .yith-wcan-filter')||h.parentElement;
-      if(sib){ sib.querySelectorAll('label,a,.term-name,li').forEach(l=>{ const t=l.innerText.trim(); if(t&&t.length<40) values.push(t); }); }
-      if(title) all.push({title, values:[...new Set(values)].slice(0,12)});
-    });
-  });
-  return all;
-});
-await browser.close();
-putFile('filtdiag.json',JSON.stringify(out));
-// 2. YITH filter preset config - per REST ar snippet
+const c=api('/wp-json/code-snippets/v1/snippets','POST',{name:'TEMP ydiag',code:PHP,scope:'global',active:false});
+let sid=0,err=''; try{ const j=JSON.parse(c); sid=j.id; err=j.code_error||''; }catch(e){ err='parse'; }
+out.sid=sid; out.err=err;
+if(sid && !err){
+  api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:true});
+  get('/?ydiag=ps2026');
+  out.result=get('/wp-content/uploads/ydiag_result.json').slice(0,7000);
+  api('/wp-json/code-snippets/v1/snippets/'+sid,'DELETE');
+}
+putFile('runydiag.json',JSON.stringify(out));
