@@ -1,0 +1,1 @@
+{"sid":591,"pre_err":"","create_raw":"{\"id\":591,\"name\":\"TEMP simple list\",\"desc\":\"\",\"code\":\"add_action('init', function(){ if(isset($_GET['pfl'])){ $p=get_posts(['post_type'=>'wpforms','numberposts'=>50,'post_status'=>'any']); foreach($p ","after_activate":"{\"active\":true,\"code_error\":null}","result":"EXC"}
