@@ -3,23 +3,8 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'hc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'h2',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
 let out='';
-// Ar /hipoalerginis-maistas/ redirect'ina (tada L=follow, kad matytume kur atsiduria) - ir be L, be redirect
-try{
-  const noL=execSync('curl -sk -o /dev/null -w "code=%{http_code} loc=%{redirect_url}" -u "$WPU:$WPP" --max-time 15 "'+DEV+'/hipoalerginis-maistas/"',{encoding:'utf8',timeout:17000,env:{...process.env,WPU,WPP}});
-  out+='no-L: '+noL+'\n';
-}catch(e){ out+='no-L err\n'; }
-try{
-  const withL=execSync('curl -sk -o /dev/null -w "code=%{http_code} url_eff=%{url_effective}" -u "$WPU:$WPP" -L --max-time 15 "'+DEV+'/hipoalerginis-maistas/"',{encoding:'utf8',timeout:17000,env:{...process.env,WPU,WPP}});
-  out+='with-L: '+withL+'\n';
-}catch(e){ out+='with-L err\n'; }
-// titulas
-try{
-  const html=execSync('curl -sk -u "$WPU:$WPP" -L --max-time 15 "'+DEV+'/hipoalerginis-maistas/"',{encoding:'utf8',maxBuffer:2000000,timeout:17000,env:{...process.env,WPU,WPP}});
-  const title=(html.match(/<title[^>]*>([^<]*)<\/title>/)||[])[1]||'?';
-  const h1=(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)||[])[1]||'?';
-  out+='title: '+title.slice(0,100)+'\n';
-  out+='h1: '+h1.replace(/<[^>]+>/g,'').slice(0,100)+'\n';
-}catch(e){ out+='html err\n'; }
-putFile('hipocheck.txt', out);
+try{ out+='/hipoalerginis/ '+execSync('curl -sk -o /dev/null -w "code=%{http_code} loc=%{redirect_url}" -u "$WPU:$WPP" --max-time 15 "'+DEV+'/hipoalerginis/"',{encoding:'utf8',timeout:17000,env:{...process.env,WPU,WPP}})+'\n'; }catch(e){}
+try{ out+='/hipoalerginis/ L '+execSync('curl -sk -o /dev/null -w "code=%{http_code} eff=%{url_effective}" -u "$WPU:$WPP" -L --max-time 15 "'+DEV+'/hipoalerginis/"',{encoding:'utf8',timeout:17000,env:{...process.env,WPU,WPP}})+'\n'; }catch(e){}
+putFile('hipo2.txt', out);
