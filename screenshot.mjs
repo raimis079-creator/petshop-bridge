@@ -3,7 +3,7 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'sc',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'wp',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
 function api(path,method,dataStr){
   fs.writeFileSync('/tmp/body.json', dataStr||'{}');
   let cmd='curl -sk -u "$WPU:$WPP" ';
@@ -13,28 +13,23 @@ function api(path,method,dataStr){
   try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:50000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC:'+String(e).slice(0,80); }
 }
 function get(url){ try{ return execSync('curl -sk -u "$WPU:$WPP" "'+url+'"',{encoding:'utf8',maxBuffer:20000000,timeout:50000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; } }
-
 const out={};
-// PHP probe: wp_loaded + early exit + is_user_logged_in + dumpina shipping options
+// probe: pilni PILNI serialized values visu shipping method + globaliu plugin settings su weight
 const php = `add_action('wp_loaded', function(){
-  if (!isset($_GET['pkey']) || $_GET['pkey'] !== 'ship_9x7') { return; }
-
+  if (!isset($_GET['pkey']) || $_GET['pkey'] !== 'wt_5k2') { return; }
   global $wpdb;
-  $rows = $wpdb->get_results("SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE '%venipak%' OR option_name LIKE '%lpexpress%' OR option_name LIKE '%lp_express%' OR option_name LIKE '%lithuaniapost%' OR (option_name LIKE 'woocommerce_%settings' AND (option_value LIKE '%venipak%' OR option_value LIKE '%pastomat%' OR option_value LIKE '%kurjer%'))", ARRAY_A);
+  $rows = $wpdb->get_results("SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE '%venipak%' OR option_name LIKE '%lithuaniapost%' OR option_name LIKE '%lpexpress%'", ARRAY_A);
   header('Content-Type: application/json');
   echo json_encode($rows);
   exit;
 });`;
-// 1. sukuriam snippet (active)
-const create=api('/wp-json/code-snippets/v1/snippets','POST', JSON.stringify({name:'TEMP ship probe',code:php,scope:'global',active:true}));
+const create=api('/wp-json/code-snippets/v1/snippets','POST', JSON.stringify({name:'TEMP weight probe',code:php,scope:'global',active:true}));
 let sid=''; try{ sid=JSON.parse(create).id; }catch(e){}
-out.create_id=sid; out.create_raw=create.slice(0,200);
-// 2. triggerinam
+out.create_id=sid;
 if(sid){
-  out.probe=get(DEV+'/?pkey=ship_9x7').slice(0,15000);
-  // 3. deaktyvuojam + trinam
+  out.probe=get(DEV+'/?pkey=wt_5k2');
   api('/wp-json/code-snippets/v1/snippets/'+sid,'DELETE');
   out.deleted=true;
 }
-putFile('shipconfig.json',JSON.stringify(out));
-console.log('done sid',sid);
+putFile('weightprobe.json',JSON.stringify(out));
+console.log('done',sid);
