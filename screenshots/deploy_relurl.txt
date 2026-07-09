@@ -1,0 +1,42 @@
+=== A: HTTPS ===
+tinklo /2026/07/:
+  200 07/hero-augintiniai-pagrindinis.webp
+  200 07/upl_logo-mark-v2.png
+  200 07/upl_cat-katems-v2.webp
+  200 07/upl_cat-sunims-v2.webp
+  200 07/upl_cat-pauksciams-v2.webp
+  200 07/upl_cat-zuvims-v2.webp
+  200 07/upl_cat-grauzikams-v2.webp
+  200 07/banner-deals.webp
+  200 07/banner-starter.webp
+DOM:
+{
+ "protocol": "https:",
+ "hero_bg": "url(\"https://dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b\")",
+ "badge_natural": "128x128",
+ "cats_loaded": "5/5",
+ "badge_src_start": "https://dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mar",
+ "first_cat_src_start": "https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-suni"
+}
+
+=== B: HTTP ===
+tinklo /2026/07/:
+  200 http://d.../07/hero-augintiniai-pagrindinis.webp
+  200 http://d.../07/upl_logo-mark-v2.png
+  200 http://d.../07/upl_cat-sunims-v2.webp
+  200 http://d.../07/upl_cat-katems-v2.webp
+  200 http://d.../07/upl_cat-pauksciams-v2.webp
+  200 http://d.../07/upl_cat-grauzikams-v2.webp
+  200 http://d.../07/upl_cat-zuvims-v2.webp
+  200 http://d.../07/banner-starter.webp
+  200 http://d.../07/banner-deals.webp
+DOM:
+{
+ "protocol": "http:",
+ "final_url": "http://dev.avesa.lt/?nc=1783617822102",
+ "hero_bg": "url(\"http://dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b\")",
+ "badge_natural": "128x128",
+ "cats_loaded": "5/5",
+ "badge_src_start": "http://dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mark"
+}
+
