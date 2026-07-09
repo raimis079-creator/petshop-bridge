@@ -1,0 +1,31 @@
+=== Dabartiniai WP settings (Reading) ===
+  show_on_front: "page"
+  page_on_front: 11
+  page_for_posts: 0
+  posts_per_page: 10
+  default_category: 1
+
+  (visų settings backup /tmp/settings_backup.json)
+
+=== dev.avesa.lt/ (kas rodoma DABAR) ===
+  <title>: Petshop.lt &#8211; Gyvūnų parduotuvė
+  <h1>: ?
+  body class: home archive post-type-archive post-type-archive-product wp-theme-flatsome wp-child-theme-flatsome-child theme-flatsome woocommerce-shop woocommerce w
+  canonical URL: 
+
+=== Homepage puslapis (ID 34543) ===
+  slug: pagrindinis-test | status: publish | link: https://dev.avesa.lt/pagrindinis-test/
+
+=== Shop puslapis ir /parduotuve/ ===
+  /parduotuve/ HTTP: 404
+  /shop/ HTTP: 200
+  WC Shop page_id: 11
+  ID 11: slug=shop | status=publish | link=https://dev.avesa.lt/
+
+=== Puslapiai su "front", "home", "pagrindin" ===
+  home: id=3222 slug=bokseris status=publish
+  pagrindin: id=34570 slug=naujas-augintinis status=publish
+  pagrindin: id=34549 slug=monoproteinis-maistas status=publish
+  pagrindin: id=34543 slug=pagrindinis-test status=publish
+  pagrindin: id=34525 slug=privatumo-politika status=publish
+  pagrindin: id=3223 slug=kolis status=publish
