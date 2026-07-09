@@ -1,0 +1,48 @@
+snippet 609 active=true code_error=null
+
+OK                     h1=1 auto=Y  LANDING       /naujas-augintinis/
+                       → Naujam augintiniui
+OK                     h1=1 auto=Y  LANDING       /hipoalerginis-maistas/
+                       → Hipoalerginis maistas augintiniui
+OK                     h1=1 auto=Y  LANDING       /monoproteinis-maistas/
+                       → Monoproteinis maistas
+OK                     h1=1 auto=Y  LANDING       /be-grudu-maistas/
+                       → Maistas be grūdų
+OK                     h1=1 auto=Y  LANDING       /odai-ir-kailiui/
+                       → Odai ir kailiui
+OK                     h1=1 auto=Y  JAU-TUREJO-H1 /sunu-veisles/
+                       → Šunų veislės
+OK                     h1=1 auto=Y  JAU-TUREJO-H1 /apie-mus/
+                       → Petshop.lt – lietuviška gyvūnų prekių e. pard
+OK                     h1=1 auto=Y  JAU-TUREJO-H1 /sprendimai/
+                       → Sprendimai jūsų augintiniui
+OK                     h1=1 auto=Y  HOMEPAGE      /pagrindinis-test/
+                       → Prekės augintiniui pagal realų poreikį
+OK                     h1=1 auto=Y  VEISLE        /kolis/
+                       → Kolis, šunų veislė: sveikata, priežiūra ir kt
+OK                     h1=1 auto=Y  VEISLE        /bokseris/
+                       → Bokseris (Šunų veislė) Informacija &#8211; Ch
+OK                     h1=1 auto=Y  VEISLE        /taksas/
+                       → Taksai: Veislės istorija, charakteristika, el
+OK                     h1=1 auto=Y  VEISLE        /siamo-kate/
+                       → Siamo katė: išvaizda, priežiūra, mityba ir li
+OK                     h1=1 auto=Y  INFO          /kontaktai/
+                       → Kontaktai
+OK                     h1=1 auto=Y  INFO          /pristatymas/
+                       → Pristatymas
+OK                     h1=1 auto=Y  INFO          /pasiulymai/
+                       → Pasiūlymai
+OK                     h1=1 auto=n  BLOG          /hipoalerginis-maistas-senjoru-sunims-kaip-issirinkti-be-burtu/
+                       → Hipoalerginis maistas šunims senjorams: kaip 
+OK                     h1=1 auto=Y  BLOG          /suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/
+                       → Šuo nuolat kasosi? 7 priežastys ir 3 minučių 
+INFO(woo)              h1=1 auto=n  WOO           /krepselis/
+                       → Oops! That page can&rsquo;t be found.
+INFO(woo)              h1=1 auto=n  WOO           /mano-paskyra/
+                       → Oops! That page can&rsquo;t be found.
+INFO(woo)              h1=1 auto=Y  WOO           /apmokejimas/
+                       → Apmokėjimas
+
+PASS=18 FAIL=0
+
+Published pages: 56
