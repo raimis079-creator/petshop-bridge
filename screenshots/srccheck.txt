@@ -1,0 +1,30 @@
+HTML ilgis: 176052
+
+=== <img> tagai puslapyje (ph-*) ===
+  [0] <img width="272" height="110" src="https://dev.avesa.lt/wp-content/uploads/2026/05/logo.jpg" class="header_logo header-logo" alt="Petshop.lt"/>
+  [1] <img  width="272" height="110" src="https://dev.avesa.lt/wp-content/uploads/2026/05/logo.jpg" class="header-logo-dark" alt="Petshop.lt"/>
+  [2] <img decoding="async" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mark-v2.png" alt="Petshop" width="22" height="22" loading="lazy"/>
+  [3] <img decoding="async" class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-sunims-v2.webp" alt="Šunims" width="96" height="96" loading="lazy"/>
+  [4] <img decoding="async" class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-katems-v2.webp" alt="Katėms" width="96" height="96" loading="lazy"/>
+  [5] <img decoding="async" class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-grauzikams-v2.webp" alt="Graužikams" width="96" height="96" loading="lazy"/>
+  [6] <img decoding="async" class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-pauksciams-v2.webp" alt="Paukščiams" width="96" height="96" loading="lazy"/>
+  [7] <img decoding="async" class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-zuvims-v2.webp" alt="Žuvims" width="96" height="96" loading="lazy"/>
+
+=== ar yra lazy-load perrasymas ===
+data-src: 0
+data-lazy: 0
+srcset: 11
+lazyload class: 0
+shortpixel: false
+
+=== raw ph-cat-img fragmentas ===
+"}.ph-cat-grid .ph-cat-card:hover{border-color:#2D5F3F !important;background:#F7FBF6 !important;transform:translateY(-3px) !important;box-shadow:0 6px 16px rgba(45,95,63,.12) !important;}.ph-cat-grid .ph-cat-img{width:96px !important;height:96px !important;border-radius:50% !important;object-fit:cover !important;border:3px solid #EAF3E8 !important;display:block !important;}.ph-cat-grid .ph-cat-name{font-size:1.05rem !important;font-weight:700 !important;color:#2D5F3F !important;}.ph-need-grid{display:grid !important"
+
+=== raw ph-hero-badge fragmentas ===
+"ph-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);color:#fff;font-size:.85rem;font-weight:600;padding:6px 14px 6px 10px;border-radius:100px;margin-bottom:18px;backdrop-filter:blur(4px);letter-spacing:.02em;}.ph-hero-badge img{width:22px;height:22px;display:block;}.ph-hero-text h1{color:#fff !important;font-size:2.7rem;line-height:1.12"
+
+=== DB content.raw pirmas ph-cat-img ===
+<img class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-sunims-v2.webp" alt="Šunims" width="96" height="96" loading="lazy"/>
+
+=== DB badge ===
+<span class="ph-hero-badge"><img src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mark-v2.png" alt="Petshop" width="22" height="22" loading="lazy"/>Nuo 2010 m.</span><h1>Prekės augintiniui pagal realų poreikį</h1><p
