@@ -1,0 +1,45 @@
+sukurta snippet id=611
+code_error: null (OK)
+snippet aktyvintas
+
+=== TRIGGER response ===
+<!DOCTYPE html>
+<html lang="lt-LT">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name='robots' content='noindex, nofollow' />
+	<title>FP setter</title>
+	<style type="text/css">
+		html {
+			background: #f1f1f1;
+		}
+		body {
+			background: #fff;
+			border: 1px solid #ccd0d4;
+			color: #444;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+			margin: 2em auto;
+			padding: 1em 2em;
+			max-width: 700px;
+	
+
+snippet deaktyvuotas
+
+PO PAKEITIMO: page_on_front=34543 show_on_front=page
+
+=== HTTP kodai ===
+  200  /
+  200  /pagrindinis-test/
+  200  /shop/
+
+=== dev.avesa.lt/ DOM ===
+{
+ "h1": "Prekės augintiniui pagal realų poreikį",
+ "hero": true,
+ "tb_items": 4,
+ "e5_exists": true,
+ "title": "Petshop.lt – Gyvūnų parduotuvė",
+ "body_home_class": true,
+ "body_woocommerce_shop": false
+}
