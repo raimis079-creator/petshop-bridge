@@ -1,0 +1,30 @@
+AUTH OK
+lib CT = accounts/6071827163/containers/101921278
+
+Workspace: Default Workspace (id 2)
+
+PRIES: tags=0 triggers=0 variables=0
+
+=== WRITE TEST: POST /variables ===
+  HTTP 200
+  sukurta variableId=3 name="TEMP API Write Test — istrinti"
+
+  patikra: RASTA saraše ✅
+
+=== DELETE TEST: DELETE /variables/3 ===
+  HTTP 200 (istrinta)
+
+PO:    tags=0 triggers=0 variables=0
+SVARA: container nepakitęs ✅
+
+LIVE version: #1 "Empty Container" (nepublikuota niekas)
+
+=== TEISES PATVIRTINTOS ===
+  READ  ✅   CREATE ✅   DELETE ✅
+
+=== UZFIKSUOTI ID ===
+  gtm        = GTM-MF3GZGT
+  ga4        = G-FMTKEGGLMG
+  gads       = AW-11117260149
+  metaPixel  = 1097111687955877
+  legacyGtm  = GTM-MZGDV75F
