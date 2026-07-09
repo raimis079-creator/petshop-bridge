@@ -1,41 +1,219 @@
-=== VISI snippet'ai (100 total, 2 aktyvūs) ===
+=== TOTAL: 359 snippet'u, aktyvūs: 48 ===
 
---- AKTYVŪS ---
+--- VISI AKTYVŪS ---
+  [239] Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti) (scope=global, prio=10)
+  [329] Petshop Filtrai PILNAS v14 [VISADA AKTYVUS] (scope=global, prio=10)
+  [332] Petshop Filtru Kontekstas v19 [VISADA AKTYVUS] (scope=global, prio=10)
+  [375] Baltymu Saltinis Dry-Run Konservai v2 (scope=global, prio=10)
+  [461] Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS (scope=global, prio=10)
+  [463] Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija) (scope=global, prio=10)
+  [464] Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply) (scope=global, prio=10)
+  [465]  Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo) (scope=global, prio=10)
   [469] Petshop Dev App Passwords v1 (scope=global, prio=10)
   [472] Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply) (scope=global, prio=10)
+  [492] Petshop Filtru Atidarymas v2 (CSS+JS) (scope=global, prio=10)
+  [493] Petshop Filtru Atidarymas v1 (no lazy-load) (scope=global, prio=10)
+  [494] Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply) (scope=global, prio=10)
+  [502] Higienos Modulis v1.0 (scope=global, prio=11)
+  [503] Grauziko Rusis Modulis v1.2 (scope=global, prio=11)
+  [507] Paukscio Rusis Modulis v1.3 (scope=global, prio=11)
+  [509] Zuvies Rusis Modulis v1.0 (scope=global, prio=11)
+  [510] Pasaro Forma Modulis v1.1 (scope=global, prio=11)
+  [512] Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems) (scope=global, prio=10)
+  [513] Petshop Katalogo Auditas v1 (read-only) (scope=global, prio=10)
+  [514] Petshop Import-Risk Recon v1 (read-only) (scope=global, prio=10)
+  [518] Petshop Slėpti svorį ir dimensijas v1 (display only) (scope=global, prio=10)
+  [520] Petshop Meniu Grupavimas v1 (komerciniai 3) (scope=front-end, prio=99)
+  [524] Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta) (scope=global, prio=10)
+  [525] Petshop UI: kortelės + mobile sticky ATC (scope=global, prio=10)
+  [532] Petshop MnM Fiksuoti komponentų kiekiai v2 (scope=global, prio=10)
+  [535] Petshop MnM Sutaupymo žymeklis v7 (be badge) (scope=global, prio=10)
+  [539] Petshop Rinkinių Kūrimo Forma v2 (scope=admin, prio=10)
+  [547] Petshop Susidėjimo Rinkinio Vitrina v19 (scope=global, prio=10)
+  [550] Petshop Susidėjimo Rinkinio Kūrimo Forma v15 (scope=admin, prio=10)
+  [558] Petshop Choice Krepšelio Elgsena (scope=global, prio=10)
+  [560] Petshop Rinkinio CTA Banneris kategorijose v7 (scope=front-end, prio=10)
+  [561] Petshop Rinkinių Gyvūno Filtras v1 (scope=front-end, prio=10)
+  [562] Petshop Sprendimai Shortcode Variklis v9 (scope=front-end, prio=10)
+  [563] Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva) (scope=front-end, prio=20)
+  [565] Petshop VF Sync v1.1 (reprice+stock+publish) (scope=global, prio=10)
+  [566] Petshop Akcijos Shortcode v1.3 (scope=global, prio=10)
+  [567] Petshop Daugiau=Pigiau Stock Sync v1.2 (scope=global, prio=10)
+  [568] Petshop Daugiau=Pigiau Display v1.2 (scope=global, prio=10)
+  [569] Petshop Pack/Rinkinys Auto-Categories v1.3 (scope=global, prio=10)
+  [570] Petshop Daugiau=Pigiau Puslapis Shortcode v1.0 (scope=global, prio=10)
+  [572] Petshop Daugiau=Pigiau Šablono Kūrimo Forma v8 (scope=admin, prio=10)
+  [573] Petshop DP Kortelės Ženkliukas v4 (scope=global, prio=10)
+  [582] Petshop LP Terminalu Svorio Riba v1 (29.90kg) (scope=global, prio=10)
+  [587] Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1 (scope=global, prio=10)
+  [594] Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1 (scope=global, prio=10)
+  [609] SEO Auto H1 v1 (page fallback + _petshop_h1) (scope=front-end, prio=10)
+  [610] Petshop Topbar v2 (scope=front-end, prio=10)
 
---- TEMP/test/probe KANDIDATAI VALYMUI ---
-  [137] ZB Sanity Check (modif=2026-06-04 10:15:00)
-total: 1 kandidatų
+--- TEMP KANDIDATAI (aktyvūs + neaktyvūs) ---
+  [off] [69] Diagnostinis snippet'as Du žingsniai2 | modif=2026-05-30
+  [off] [137] ZB Sanity Check | modif=2026-06-04
+  [off] [191] VF Pricing S70 Sanity Check v1 (deployed logic test) | modif=2026-06-08
+  [off] [438] Antkakliai/pavadeliai (116) - PARSE-TEST (diagnoze) | modif=2026-06-18
+  [off] [439] Antkakliai/pavadeliai (116) - PARSE-TEST v2 (pataisyta) | modif=2026-06-18
+  [off] [444] Dubeneliai (111) - PARSE-TEST (diagnoze) | modif=2026-06-18
+  [off] [456] Guoliu/transporto/narvu blokas - pa_tipas + pa_dydis PARSE-TEST (read-only) | modif=2026-06-18
+  [off] [487] TEMP Sampunu Preset Maker | modif=2026-06-21
+  [off] [488] TEMP Samp Inspect | modif=2026-06-21
+  [off] [489] TEMP Samp Fix Final | modif=2026-06-21
+  [off] [490] TEMP YITH Render Probe | modif=2026-06-21
+  [off] [491] TEMP YITH Render Probe | modif=2026-06-21
+  [off] [496] TEMP Suku Maker | modif=2026-06-22
+  [off] [497] TEMP Diag2 | modif=2026-06-22
+  [off] [498] TEMP Menu Fix | modif=2026-06-22
+  [off] [499] TEMP Menu Fix | modif=2026-06-22
+  [off] [500] TEMP Menu Check | modif=2026-06-22
+  [off] [501] TEMP Menu Move | modif=2026-06-22
+  [off] [504] TEMP Yith Dump | modif=2026-06-22
+  [off] [505] TEMP Make Tevine | modif=2026-06-22
+  [off] [506] TEMP Make GRR | modif=2026-06-22
+  [off] [508] TEMP Make PKR | modif=2026-06-22
+  [off] [511] TEMP Make ZUV | modif=2026-06-22
+  [off] [522] TEMP Petshop MnM Hooks Probe v1 (TEMP) | modif=2026-06-29
+  [off] [523] TEMP Petshop MnM Hooks Reader v1 (TEMP) | modif=2026-06-29
+  [off] [526] TEMP MnM Probe | modif=2026-06-30
+  [off] [527] TEMP MnM Reader | modif=2026-06-30
+  [off] [528] TEMP Probe2 | modif=2026-06-30
+  [off] [529] TEMP Probe3 | modif=2026-06-30
+  [off] [530] TEMP Probe4 | modif=2026-06-30
+  [off] [531] TEMP Probe5 | modif=2026-06-30
+  [off] [533] TEMP P6 | modif=2026-06-30
+  [off] [534] TEMP P7 | modif=2026-06-30
+  [off] [536] TEMP SavProbe | modif=2026-06-30
+  [off] [537] TEMP PP | modif=2026-06-30
+  [off] [538] TEMP GD Probe | modif=2026-06-30
+  [off] [540] TEMP Stock Probe | modif=2026-06-30
+  [off] [541] TEMP Koju Test | modif=2026-06-30
+  [off] [542] TEMP Koju2 | modif=2026-06-30
+  [off] [543] TEMP KC | modif=2026-06-30
+  [off] [544] TEMP Choice Probe | modif=2026-06-30
+  [off] [545] TEMP Switch Probe | modif=2026-06-30
+  [off] [546] TEMP Build Choice | modif=2026-06-30
+  [off] [548] TEMP MnM Render Probe | modif=2026-06-30
+  [off] [549] TEMP Cost Probe | modif=2026-06-30
+  [off] [551] TEMP WH Probe | modif=2026-06-30
+  [off] [552] TEMP WH2 Probe | modif=2026-07-01
+  [off] [553] TEMP FS Probe | modif=2026-07-01
+  [off] [554] TEMP AV Dryrun | modif=2026-07-01
+  [off] [574] PS Recon Probe 0707 (laikinas) | modif=2026-07-07
+  [off] [575] TEMP ship probe | modif=2026-07-07
+  [off] [576] TEMP ship probe | modif=2026-07-07
+  [off] [577] TEMP weight probe | modif=2026-07-08
+  [off] [578] TEMP ship dry | modif=2026-07-08
+  [off] [579] TEMP ship dry | modif=2026-07-08
+  [off] [580] TEMP verify w | modif=2026-07-08
+  [off] [581] TEMP vp weight | modif=2026-07-08
+  [off] [583] TEMP lp test | modif=2026-07-08
+  [off] [584] TEMP lp test2 | modif=2026-07-08
+  [off] [585] TEMP cart test | modif=2026-07-08
+  [off] [586] TEMP fee find | modif=2026-07-08
+  [off] [588] TEMP form probe | modif=2026-07-08
+  [off] [589] TEMP mk form | modif=2026-07-08
+  [off] [590] TEMP mk form | modif=2026-07-08
+  [off] [591] TEMP simple list | modif=2026-07-08
+  [off] [592] TEMP mkform x7 | modif=2026-07-08
+  [off] [593] TEMP fix form label | modif=2026-07-08
+  [off] [595] TEMP home recon | modif=2026-07-08
+  [off] [596] TEMP flush rewrites | modif=2026-07-08
+  [off] [597] TEMP ydiag | modif=2026-07-08
+  [off] [598] TEMP pdump | modif=2026-07-08
+  [off] [599] TEMP rawf | modif=2026-07-08
+  [off] [600] TEMP yfix | modif=2026-07-08
+  [off] [601] TEMP cmp | modif=2026-07-08
+  [off] [602] TEMP cmp2 | modif=2026-07-08
+  [off] [603] TEMP yresave | modif=2026-07-08
+  [off] [604] TEMP regen | modif=2026-07-08
+  [off] [605] TEMP waxfix | modif=2026-07-08
+  [off] [606] TEMP slugfix | modif=2026-07-08
+  [off] [607] TEMP lookupdiag | modif=2026-07-08
+  [off] [608] TEMP lookupfix2 | modif=2026-07-08
+  [off] [611] Petshop Frontpage Setter v1 (TEMP) | modif=2026-07-09
+total: 82 kandidatų
 
---- KITI NEAKTYVUS (jei įdomu, first 30) ---
-  [1] Make upload filenames lowercase
-  [2] Disable admin bar
-  [3] Allow smilies
-  [4] Current year
-  [5] petshop kategorijos v2
-  [8] petshop menu subcats v1
-  [9] etshop sunims menu v1
-  [10] petshop sunims menu v2
-  [11] petshop katems menu v1
-  [12] petshop remaining menus v1
-  [13] petshop remap categories v1
-  [14] petshop remap categories v2
-  [15] petshop cleanup empty cats v1
-  [16] Petshop reset menu options v1 
-  [72] del pauksciu
-  [71] Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis)
-  [70] Tikri slug
-  [40] ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas
-  [41] Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg
-  [42] ZB prekės be aprašymo
-  [69] Diagnostinis snippet'as Du žingsniai2
-  [44] Pataisyti prekes su per dideliais matmenimis - kurjeris
-  [47]  Base64 aprašymo pavyzdys
-  [48] Base64 nuotraukos išvalymas iš aprašymų
-  [50] ZB prekių skaičius1
-  [51] ZB brendų priskyrimas brand taksonomijoje1.1
-  [52] ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas
-  [53] ZB prekės be brando — priskirti iš pavadinimo
-  [54] 4 likusių prekių brandų priskyrimas
-  [55] ZB prekės be nuotraukos
+--- VERSIJU DUBLIKATAI (v1/v2/v3 senesnes) ---
+  "petshop remap categories" (2 versijos):
+    [off] [13] petshop remap categories v1
+    [off] [14] petshop remap categories v2
+  "assign_categories" (2 versijos):
+    [off] [134]  assign_categories v3
+    [off] [136] assign_categories v2
+  "guoliai/transportas/narvai - perkelimo dry-run (read-only)" (2 versijos):
+    [off] [451] Guoliai/transportas/narvai - PERKELIMO DRY-RUN (read-only)
+    [off] [452] Guoliai/transportas/narvai - PERKELIMO DRY-RUN v2 (read-only)
+  "monoprotein - tik akivaizdus -> taip (apply)" (3 versijos):
+    [off] [424] Monoprotein - TIK akivaizdus -> Taip (APPLY)
+    [off] [425] Monoprotein - TIK akivaizdus -> Taip (APPLY)
+    [off] [426] Monoprotein - TIK akivaizdus -> Taip (APPLY)
+  "fbt inspect (read-only)" (2 versijos):
+    [off] [219] FBT Inspect v1 (read-only)
+    [off] [220] FBT Inspect v2 (read-only)
+  "vitaminai/papildai - dry-run (paskirtis+forma)" (2 versijos):
+    [off] [428] Vitaminai/papildai - dry-run v1 (paskirtis+forma)
+    [off] [429] Vitaminai/papildai - dry-run v1 (paskirtis+forma)
+  "draft publish patikra" (2 versijos):
+    [off] [370] Draft Publish Patikra v2
+    [off] [369] Draft Publish Patikra v1
+  "aksesuaru grupes" (2 versijos):
+    [off] [366] Aksesuaru Grupes v2
+    [off] [364] Aksesuaru Grupes v1
+  "baltymu saltinis dry-run konservai" (2 versijos):
+    [ON ] [375] Baltymu Saltinis Dry-Run Konservai v2
+    [off] [374] Baltymu Saltinis Dry-Run Konservai v1
+  "brandu priskyrimas pagal pavadinima" (2 versijos):
+    [off] [296] Brandu Priskyrimas pagal Pavadinima v1
+    [off] [298] Brandu Priskyrimas pagal Pavadinima v1
+  "petshop filtrai pilnas" (2 versijos):
+    [off] [324] Petshop Filtrai PILNAS v1
+    [off] [325] Petshop Filtrai PILNAS v2
+  "baltymu saltinis apply skanestai (single)" (2 versijos):
+    [off] [379] Baltymu Saltinis Apply Skanestai v2 (SINGLE)
+    [off] [378] Baltymu Saltinis Apply Skanestai v1 (SINGLE)
+  "petshop attr modulis: apranga sunims (parseris + dry/apply)" (2 versijos):
+    [off] [476] Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)
+    [off] [477] Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)
+  "petshop menu: apranga -> sunims/aksesuarai (dry/apply)" (2 versijos):
+    [off] [484] Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)
+    [off] [485] Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)
+  "temp yith render probe" (2 versijos):
+    [off] [490] TEMP YITH Render Probe
+    [off] [491] TEMP YITH Render Probe
+  "petshop attr modulis: sukos sepeciai zirkles sunims (parseris + dry/apply)" (2 versijos):
+    [ON ] [494] Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)
+    [off] [495] Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)
+  "temp menu fix" (2 versijos):
+    [off] [498] TEMP Menu Fix
+    [off] [499] TEMP Menu Fix
+  "temp probe" (4 versijos):
+    [off] [528] TEMP Probe2
+    [off] [529] TEMP Probe3
+    [off] [530] TEMP Probe4
+    [off] [531] TEMP Probe5
+  "temp p" (2 versijos):
+    [off] [533] TEMP P6
+    [off] [534] TEMP P7
+  "temp wh probe" (2 versijos):
+    [off] [551] TEMP WH Probe
+    [off] [552] TEMP WH2 Probe
+  "petshop rinkinio cta banneris kategorijose" (2 versijos):
+    [ON ] [560] Petshop Rinkinio CTA Banneris kategorijose v7
+    [off] [559] Petshop Rinkinio CTA Banneris kategorijose v1
+  "temp ship probe" (2 versijos):
+    [off] [575] TEMP ship probe
+    [off] [576] TEMP ship probe
+  "temp ship dry" (2 versijos):
+    [off] [578] TEMP ship dry
+    [off] [579] TEMP ship dry
+  "temp lp test" (2 versijos):
+    [off] [583] TEMP lp test
+    [off] [584] TEMP lp test2
+  "temp mk form" (2 versijos):
+    [off] [589] TEMP mk form
+    [off] [590] TEMP mk form
+  "temp cmp" (2 versijos):
+    [off] [601] TEMP cmp
+    [off] [602] TEMP cmp2
