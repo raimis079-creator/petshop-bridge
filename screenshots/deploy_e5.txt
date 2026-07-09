@@ -1,0 +1,45 @@
+=== DESKTOP (anoniminis) ===
+tinklo /2026/07/:
+  200 /wp-content/uploads/2026/07/upl_logo-mark-v2.png
+  200 /wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp
+  200 /wp-content/uploads/2026/07/upl_cat-pauksciams-v2.webp
+  200 /wp-content/uploads/2026/07/banner-starter.webp
+  200 /wp-content/uploads/2026/07/upl_cat-katems-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-grauzikams-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-sunims-v2.webp
+  200 /wp-content/uploads/2026/07/banner-deals.webp
+  200 /wp-content/uploads/2026/07/upl_cat-zuvims-v2.webp
+DOM:
+{
+ "hero_bg_loaded": true,
+ "badge_natural": "128x128",
+ "cats_loaded": "5/5",
+ "tb_exists": true,
+ "tb_items": 4,
+ "e5_exists": true,
+ "e5_bg": "rgb(253, 249, 238)",
+ "e5_border": "rgb(234, 224, 199)",
+ "e5_title": "Nežinote, ką rinktis?",
+ "e5_body": "Parašykite arba paskambinkite — padėsime pasirinkti maistą, priežiūros priemones",
+ "btn_p_text": "Paskambinti",
+ "btn_p_href": "tel:+37068187787",
+ "btn_p_bg": "rgb(67, 145, 92)",
+ "btn_s_text": "Parašyti",
+ "btn_s_href": "mailto:terra@petshop.lt",
+ "btn_s_border": "rgb(45, 95, 63)",
+ "section_order": [
+  "ph-hero",
+  "ph-tb",
+  "ph-cat-grid",
+  "ph-banners",
+  "ph-need-grid",
+  "ph-e5"
+ ]
+}
+
+=== MOBILE ===
+{
+ "e5_exists": true,
+ "btns_direction": "column",
+ "btn_p_width": 318
+}
