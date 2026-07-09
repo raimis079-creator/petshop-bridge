@@ -40,6 +40,7 @@ jobs:
         env:
           WP_USER: ${{ secrets.WP_USER }}
           WP_APP_PASS: ${{ secrets.WP_APP_PASS }}
+          GTM_SA_JSON: ${{ secrets.GTM_SA_JSON }}
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: node screenshot.mjs "${{ github.event.inputs.url }}"
