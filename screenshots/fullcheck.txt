@@ -1,0 +1,48 @@
+=== 1. BE AUTH (anoniminis) ===
+puslapio HTTP: 200
+tinklo uzklausos (/2026/07/):
+  200 /pagrindinis-test/?nc=1783588860899
+  200 /wp-content/uploads/2026/07/upl_cat-katems-v2.webp
+  200 /wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp
+  200 /wp-content/uploads/2026/07/upl_logo-mark-v2.png
+  200 /wp-content/uploads/2026/07/upl_cat-sunims-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-zuvims-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-pauksciams-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-grauzikams-v2.webp
+  200 /wp-content/uploads/2026/07/banner-deals.webp
+  200 /wp-content/uploads/2026/07/banner-starter.webp
+DOM:
+{
+ "hero_bg_css": "url(\"https://dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp\")",
+ "badge_src": "https://dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mark-v2.png",
+ "badge_naturalWidth": 128,
+ "badge_complete": true,
+ "cats_total": 5,
+ "cats_loaded": 5,
+ "cats_broken": [],
+ "banners_total": 2,
+ "banner_bgs": [
+  "url(\"https://dev.avesa.lt/wp-content/uploads/2026/07/banner-starter.webp\")",
+  "url(\"https://dev.avesa.lt/wp-content/uploads/2026/07/banner-deals.webp\")"
+ ],
+ "body_start": "Skip to content Nemokamas pristatymas į paštomatą nuo €30 Akcija: -20% sausam maistui → Ieškoti: PRISIJUNGTI KREPŠELIS / 0,00 € 0 ŠUNIMS KATĖMS GRAUŽI"
+}
+
+=== 2. SU AUTH ===
+tinklo uzklausos:
+  200 /wp-content/uploads/2026/07/upl_cat-katems-v2.webp
+  200 /wp-content/uploads/2026/07/upl_logo-mark-v2.png
+  200 /wp-content/uploads/2026/07/upl_cat-sunims-v2.webp
+  200 /wp-content/uploads/2026/07/banner-starter.webp
+  200 /wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp
+  200 /wp-content/uploads/2026/07/upl_cat-grauzikams-v2.webp
+  200 /wp-content/uploads/2026/07/banner-deals.webp
+  200 /wp-content/uploads/2026/07/upl_cat-pauksciams-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-zuvims-v2.webp
+DOM:
+{
+ "hero_bg_loaded_test": "zr netlog",
+ "hero_bg_css": "url(\"https://dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp\")",
+ "badge_naturalWidth": 128,
+ "cats_loaded": "5/5"
+}
