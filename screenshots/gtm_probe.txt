@@ -3,10 +3,11 @@ AUTH OK
 ########## accountId 6071827163 ##########
 GET /accounts/6071827163 -> HTTP 200 | name=Avesa
 GET containers -> HTTP 200
-  container count: 0
+  container count: 1
+   - www.petshop.lt | publicId=GTM-MF3GZGT | containerId=101921278 | path=accounts/6071827163/containers/101921278
 GET user_permissions -> HTTP 200
-       raimis079@gmail.com | acct={"permission":"admin"} | cont=[]
-   >>> claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com | acct={"permission":"user"} | cont=[]
+       raimis079@gmail.com | acct={"permission":"admin"} | cont=[{"containerId":"101921278","permission":"publish"}]
+   >>> claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com | acct={"permission":"admin"} | cont=[{"containerId":"101921278","permission":"publish"}]
 
 ########## accountId 6065881322 ##########
 GET /accounts/6065881322 -> HTTP 404 | name={"error":{"code":404,"message":"Not found or permission denied.","errors":[{"message":"Not found or permission denied.",
