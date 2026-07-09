@@ -1,1 +1,41 @@
-ERR: {"code":"rest_invalid_param","message":"Blogas(i) parametras(ai): per_page","data":{"status":400,"params":{"per_page":"per_page turi b\u016bti tarp 1 (imtinai) ir 100 (imtinai)"},"details":{"per_page":{"code":"rest_out_of_bounds","message":"per_page turi b\u016bti tarp 1 (imtinai) ir 100 (imtinai)",
+=== VISI snippet'ai (100 total, 2 aktyvūs) ===
+
+--- AKTYVŪS ---
+  [469] Petshop Dev App Passwords v1 (scope=global, prio=10)
+  [472] Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply) (scope=global, prio=10)
+
+--- TEMP/test/probe KANDIDATAI VALYMUI ---
+  [137] ZB Sanity Check (modif=2026-06-04 10:15:00)
+total: 1 kandidatų
+
+--- KITI NEAKTYVUS (jei įdomu, first 30) ---
+  [1] Make upload filenames lowercase
+  [2] Disable admin bar
+  [3] Allow smilies
+  [4] Current year
+  [5] petshop kategorijos v2
+  [8] petshop menu subcats v1
+  [9] etshop sunims menu v1
+  [10] petshop sunims menu v2
+  [11] petshop katems menu v1
+  [12] petshop remaining menus v1
+  [13] petshop remap categories v1
+  [14] petshop remap categories v2
+  [15] petshop cleanup empty cats v1
+  [16] Petshop reset menu options v1 
+  [72] del pauksciu
+  [71] Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis)
+  [70] Tikri slug
+  [40] ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas
+  [41] Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg
+  [42] ZB prekės be aprašymo
+  [69] Diagnostinis snippet'as Du žingsniai2
+  [44] Pataisyti prekes su per dideliais matmenimis - kurjeris
+  [47]  Base64 aprašymo pavyzdys
+  [48] Base64 nuotraukos išvalymas iš aprašymų
+  [50] ZB prekių skaičius1
+  [51] ZB brendų priskyrimas brand taksonomijoje1.1
+  [52] ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas
+  [53] ZB prekės be brando — priskirti iš pavadinimo
+  [54] 4 likusių prekių brandų priskyrimas
+  [55] ZB prekės be nuotraukos
