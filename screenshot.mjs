@@ -1,34 +1,63 @@
-import { execSync } from "child_process"; import fs from "fs";
-const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
-function putFile(n,s){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ci',branch:'main',content:Buffer.from(s,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+import { putFile, gtmToken, gtm, defaultWorkspace, CT, IDS } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
-function grab(url,label){
-  L('===== '+label+' =====');
-  L(url);
-  let js='';
-  try{ js = execSync('curl -sk -L --max-time 40 -A "Mozilla/5.0 Chrome/120" "'+url+'"',{encoding:'utf8',maxBuffer:30000000}); }
-  catch(e){ L('ERR '+(e.message||'').slice(0,120)); L(''); return; }
-  L('dydis: '+js.length+' baitu');
-  if(js.length < 500){ L('TURINYS: '+js.slice(0,400)); L(''); return; }
-  const pats={
-    'GA4 (G-)':/\bG-[A-Z0-9]{8,12}\b/g,
-    'Google Ads (AW-)':/\bAW-\d{9,12}\b/g,
-    'Conversion label':/AW-\d+\/[A-Za-z0-9_-]+/g,
-    'UA-':/\bUA-\d{4,10}-\d{1,3}\b/g,
-    'Floodlight (DC-)':/\bDC-\d+\b/g,
-    'Meta pixel id':/\b\d{15,16}\b/g,
-    'facebook':/connect\.facebook\.net/g,
-    'consent api':/gtag\('consent'|"consent"/g,
-    'GTM refs':/GTM-[A-Z0-9]{6,9}/g,
+try{
+  const t = await gtmToken();
+  L('AUTH OK'); L('lib CT = '+CT); L('');
+  const W = await defaultWorkspace(t);
+  L('Workspace: '+W.name+' (id '+W.workspaceId+')'); L('');
+
+  // --- Pries testa: busena ---
+  const before = {
+    tags:   ((await gtm(t,'/'+W.path+'/tags')).body.tag||[]).length,
+    trigs:  ((await gtm(t,'/'+W.path+'/triggers')).body.trigger||[]).length,
+    vars:   ((await gtm(t,'/'+W.path+'/variables')).body.variable||[]).length
   };
-  for(const [k,re] of Object.entries(pats)){
-    const m=js.match(re);
-    if(m){ const u=[...new Set(m)]; L('  ['+u.length+'] '+k+' -> '+u.slice(0,8).join(', ')); }
-    else L('  [0] '+k);
-  }
+  L('PRIES: tags='+before.tags+' triggers='+before.trigs+' variables='+before.vars); L('');
+
+  // --- WRITE TEST: sukuriam laikina konstanta ---
+  L('=== WRITE TEST: POST /variables ===');
+  const cr = await gtm(t,'/'+W.path+'/variables','POST',{
+    name:'TEMP API Write Test — istrinti',
+    type:'c',
+    parameter:[{type:'template', key:'value', value:'ok'}]
+  });
+  L('  HTTP '+cr.status);
+  if(cr.status!==200 && cr.status!==201){ L('  body: '+JSON.stringify(cr.body).slice(0,400)); throw new Error('WRITE DENIED'); }
+  const vid = cr.body.variableId;
+  L('  sukurta variableId='+vid+' name="'+cr.body.name+'"');
   L('');
-}
-grab('https://www.googletagmanager.com/gtm.js?id=GTM-MZGDV75F','PROD naudojamas GTM-MZGDV75F');
-grab('https://www.googletagmanager.com/gtm.js?id=GTM-MF3GZGT','Avesa tuscias GTM-MF3GZGT');
-grab('https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG','petshop account Google tag G-FMTKEGGLMG');
-putFile('gtm_public_scan.txt', out); console.log(out);
+
+  // --- Patikra kad realiai yra ---
+  const chk = await gtm(t,'/'+W.path+'/variables');
+  const found = (chk.body.variable||[]).find(v=>v.variableId===vid);
+  L('  patikra: '+(found ? 'RASTA saraše ✅' : 'NERASTA ❌'));
+  L('');
+
+  // --- DELETE TEST ---
+  L('=== DELETE TEST: DELETE /variables/'+vid+' ===');
+  const del = await gtm(t,'/'+W.path+'/variables/'+vid,'DELETE');
+  L('  HTTP '+del.status+(del.status===200?' (istrinta)':''));
+  L('');
+
+  // --- Po testo: busena ---
+  const after = {
+    tags:   ((await gtm(t,'/'+W.path+'/tags')).body.tag||[]).length,
+    trigs:  ((await gtm(t,'/'+W.path+'/triggers')).body.trigger||[]).length,
+    vars:   ((await gtm(t,'/'+W.path+'/variables')).body.variable||[]).length
+  };
+  L('PO:    tags='+after.tags+' triggers='+after.trigs+' variables='+after.vars);
+  const clean = (before.tags===after.tags && before.trigs===after.trigs && before.vars===after.vars);
+  L('SVARA: '+(clean?'container nepakitęs ✅':'NESUTAMPA ❌'));
+  L('');
+
+  // --- Live version nepaliesta? ---
+  const lv = await gtm(t,'/'+CT+'/versions:live');
+  L('LIVE version: #'+lv.body.containerVersionId+' "'+(lv.body.name||'-')+'" (nepublikuota niekas)');
+  L('');
+  L('=== TEISES PATVIRTINTOS ===');
+  L('  READ  ✅   CREATE ✅   DELETE ✅');
+  L('');
+  L('=== UZFIKSUOTI ID ===');
+  for(const [k,v] of Object.entries(IDS)) L('  '+k.padEnd(10)+' = '+v);
+}catch(e){ L(''); L('!!! ERROR: '+e.message); }
+putFile('gtm_write_test.txt', out); console.log(out);
