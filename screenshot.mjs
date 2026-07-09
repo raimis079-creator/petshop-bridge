@@ -3,30 +3,81 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'ur',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function api(p){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 20 "'+DEV+p+'"',{encoding:'utf8',maxBuffer:10000000,timeout:22000,env:{...process.env,WPU,WPP}}); }catch(e){ return ''; } }
-let out='';
-// 1. Hero media ID? Iskeliu is HTML CSS background-image
-const html = (()=>{ try{ return execSync('curl -sk -u "$WPU:$WPP" -L --max-time 25 "'+DEV+'/pagrindinis-test/"',{encoding:'utf8',maxBuffer:20000000,timeout:27000,env:{...process.env,WPU,WPP}}); }catch(e){ return ''; }})();
-out += '=== URL is realaus puslapio HTML ===\n';
-const bg = [...html.matchAll(/background-image:\s*url\(([^)]+)\)/g)].map(m=>m[1].replace(/["']/g,''));
-bg.forEach(u=>{ if(u.includes('/2026/')) out += 'CSS bg : '+u+'\n'; });
-const imgs = [...html.matchAll(/<img[^>]+src="([^"]+2026\/07[^"]*)"/g)].map(m=>m[1]);
-imgs.forEach(u=>{ out += '<img>  : '+u+'\n'; });
-out += '\n';
+function putBin(name,buf){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'fc',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function putFile(n,s){ putBin(n, Buffer.from(s,'utf8')); }
+(async()=>{
+  const { chromium } = await import('playwright');
+  const b = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
+  let out = '';
 
-// 2. Media API source_url
-out += '=== WP media API source_url ===\n';
-for(const id of [34545,34561,34562,34563,34564,34565,34566,34577,34578]){
-  const r = api('/wp-json/wp/v2/media/'+id+'?_fields=id,source_url,title');
-  try{ const j=JSON.parse(r); out += id+' : '+(j.source_url||'NERA')+'\n'; }
-  catch(e){ out += id+' : ERR\n'; }
-}
-out += '\n=== HTTP kodai (be jokio auth) ===\n';
-const all = [...new Set([...bg.filter(u=>u.includes('/2026/')), ...imgs])];
-for(const u of all){
-  let c='?';
-  try{ c = execSync('curl -sk -o /dev/null -w "%{http_code}" --max-time 12 "'+u+'"',{encoding:'utf8',timeout:14000}).trim(); }catch(e){ c='ERR'; }
-  out += c+'  '+u+'\n';
-}
-putFile('urls.txt', out);
+  // === SVARBIAUSIA: kontekstas BE Basic auth — kaip anoniminis lankytojas ===
+  // Jei puslapis pats reikalauja auth, pamatysim. Jei tik media - irgi.
+  const ctxNoAuth = await b.newContext({ ignoreHTTPSErrors:true, viewport:{width:1280,height:900} });
+  const p1 = await ctxNoAuth.newPage();
+  const netlog = [];
+  p1.on('response', r => {
+    const u = r.url();
+    if(u.includes('/2026/07/') || u.includes('pagrindinis-test')) netlog.push(r.status()+' '+u.replace(DEV,''));
+  });
+  let pageStatus = '?';
+  try{
+    const resp = await p1.goto(DEV+'/pagrindinis-test/?nc='+Date.now(), { waitUntil:'load', timeout:60000 });
+    pageStatus = resp ? resp.status() : '?';
+  }catch(e){ pageStatus = 'ERR '+String(e).slice(0,80); }
+  await p1.waitForTimeout(4000);
+  out += '=== 1. BE AUTH (anoniminis) ===\n';
+  out += 'puslapio HTTP: '+pageStatus+'\n';
+  out += 'tinklo uzklausos (/2026/07/):\n';
+  netlog.forEach(l=>out += '  '+l+'\n');
+  const domNoAuth = await p1.evaluate(()=>{
+    const heroBg = document.querySelector('.ph-hero-bg');
+    const badge = document.querySelector('.ph-hero-badge img');
+    const cats = [...document.querySelectorAll('.ph-cat-img')];
+    const banners = [...document.querySelectorAll('.ph-banner-bg')];
+    return {
+      hero_bg_css: heroBg ? getComputedStyle(heroBg).backgroundImage.slice(0,140) : 'NERA .ph-hero-bg',
+      badge_src: badge ? badge.src : 'NERA badge img',
+      badge_naturalWidth: badge ? badge.naturalWidth : -1,
+      badge_complete: badge ? badge.complete : false,
+      cats_total: cats.length,
+      cats_loaded: cats.filter(i=>i.complete&&i.naturalWidth>0).length,
+      cats_broken: cats.filter(i=>!(i.complete&&i.naturalWidth>0)).map(i=>i.src.split('/').pop()),
+      banners_total: banners.length,
+      banner_bgs: banners.map(x=>(getComputedStyle(x).backgroundImage||'').slice(0,100)),
+      body_start: document.body.innerText.slice(0,150).replace(/\s+/g,' '),
+    };
+  });
+  out += 'DOM:\n'+JSON.stringify(domNoAuth,null,1)+'\n\n';
+  putBin('fc_noauth.png', await p1.screenshot({ fullPage:false }));
+  await ctxNoAuth.close();
+
+  // === 2. SU AUTH (palyginimui) ===
+  const ctxAuth = await b.newContext({ httpCredentials:{username:WPU,password:WPP}, ignoreHTTPSErrors:true, viewport:{width:1280,height:900} });
+  const p2 = await ctxAuth.newPage();
+  const netlog2 = [];
+  p2.on('response', r => {
+    const u = r.url();
+    if(u.includes('/2026/07/')) netlog2.push(r.status()+' '+u.replace(DEV,''));
+  });
+  await p2.goto(DEV+'/pagrindinis-test/?nc='+Date.now(), { waitUntil:'load', timeout:60000 });
+  await p2.waitForTimeout(4000);
+  const domAuth = await p2.evaluate(()=>{
+    const heroBg = document.querySelector('.ph-hero-bg');
+    const badge = document.querySelector('.ph-hero-badge img');
+    const cats = [...document.querySelectorAll('.ph-cat-img')];
+    return {
+      hero_bg_loaded_test: 'zr netlog',
+      hero_bg_css: heroBg ? getComputedStyle(heroBg).backgroundImage.slice(0,140) : 'NERA',
+      badge_naturalWidth: badge ? badge.naturalWidth : -1,
+      cats_loaded: cats.filter(i=>i.complete&&i.naturalWidth>0).length+'/'+cats.length,
+    };
+  });
+  out += '=== 2. SU AUTH ===\n';
+  out += 'tinklo uzklausos:\n';
+  netlog2.forEach(l=>out += '  '+l+'\n');
+  out += 'DOM:\n'+JSON.stringify(domAuth,null,1)+'\n';
+  putBin('fc_auth.png', await p2.screenshot({ fullPage:false }));
+  await ctxAuth.close();
+  await b.close();
+  putFile('fullcheck.txt', out);
+})().catch(e=>{ console.log('ERR', String(e).slice(0,250)); });
