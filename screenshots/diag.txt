@@ -1,10 +1,43 @@
-snippet 609: active=true code_error=null scope=front-end
+=== HEAD requests (be user-agent) ===
+  200|ct=image/webp|size=0|time=0.585309
+  URL: /wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp
+  200|ct=image/webp|size=0|time=0.549473
+  URL: /wp-content/uploads/2026/07/upl_cat-sunims-v2.webp
+  200|ct=image/png|size=0|time=0.456659
+  URL: /wp-content/uploads/2026/07/upl_logo-mark-v2.png
 
-/kolis/ (cache-bust) len=171155
-  turi "petshop-auto-h1": true
-  h1 tagu: 1
-  h1[0] = "<h1 class=\"entry-title petshop-auto-h1\">Kolis, šunų veislė: sveikata, priežiūra ir kt.</h1>"
+=== GET su Chrome UA ===
+  200|size=50188|time=0.989936  /wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp
+  200|size=20460|time=0.601735  /wp-content/uploads/2026/07/upl_cat-sunims-v2.webp
+  200|size=5799|time=0.716788  /wp-content/uploads/2026/07/upl_logo-mark-v2.png
 
-/kolis/ (be busterio) len=171121 turi auto-h1: true
-  h1 tagu: 1
-  h1[0] = "<h1 class=\"entry-title petshop-auto-h1\">Kolis, šunų veislė: sveikata, priežiūra ir kt.</h1>"
+=== hero.webp response headers ===
+HTTP/2 200 
+last-modified: Wed, 08 Jul 2026 16:31:24 GMT
+etag: "c40c-6561c09d9f6bb"
+accept-ranges: bytes
+content-length: 50188
+content-type: image/webp
+date: Thu, 09 Jul 2026 17:14:15 GMT
+server: Apache
+
+
+=== GET su Chrome UA + Referer ===
+  200|size=50188|time=0.875755  /wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp
+  200|size=20460|time=0.834541  /wp-content/uploads/2026/07/upl_cat-sunims-v2.webp
+  200|size=5799|time=0.734869  /wp-content/uploads/2026/07/upl_logo-mark-v2.png
+
+=== 5 GET iš eilės (rate-limit test) ===
+  [1] 200|0.575886s
+  [2] 200|1.121997s
+  [3] 200|0.807862s
+  [4] 200|0.802702s
+  [5] 200|0.582663s
+
+=== /pagrindinis-test/ HTML fragmentai ===
+  CSS bg: background-image:url(https://dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5)
+  CSS bg: background-image:url(https://dev.avesa.lt/wp-content/uploads/2026/07/banner-starter.webp?v=20260709-e5)
+  CSS bg: background-image:url(https://dev.avesa.lt/wp-content/uploads/2026/07/banner-deals.webp?v=20260709-e5)
+  IMG: <img decoding="async" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mark-v2.png?v=20260709-e5" alt="Petshop" width="22" height="22"/>
+  IMG: <img decoding="async" class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-sunims-v2.webp?v=20260709-e5" alt="Šunims" width="96" height="96"/>
+  IMG: <img decoding="async" class="ph-cat-img" src="https://dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-katems-v2.webp?v=20260709-e5" alt="Katėms" width="96" height="96"/>
