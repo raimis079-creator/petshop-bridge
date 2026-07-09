@@ -1,0 +1,39 @@
+=== WP media GET (_fields=id,source_url,title,date,mime_type) ===
+  34554: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34555: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34556: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34557: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34558: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34559: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34572: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34573: 404 rest_post_invalid_id (NEEGZISTUOJA)
+
+=== WP media GET (full response) ===
+  34554: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34555: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34556: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34557: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34558: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34559: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34572: 404 rest_post_invalid_id (NEEGZISTUOJA)
+  34573: 404 rest_post_invalid_id (NEEGZISTUOJA)
+
+=== Failai serveryje (HTTP status) ===
+  34554: 404  /wp-content/uploads/2026/07/upl_logo-mark-white.png
+  34555: 404  /wp-content/uploads/2026/07/upl_cat-sunims.webp
+  34556: 404  /wp-content/uploads/2026/07/upl_cat-katems.webp
+  34557: 404  /wp-content/uploads/2026/07/upl_cat-grauzikams.webp
+  34558: 404  /wp-content/uploads/2026/07/upl_cat-pauksciams.webp
+  34559: 404  /wp-content/uploads/2026/07/upl_cat-zuvims.webp
+  34572: 404  /wp-content/uploads/2026/07/upl_banner-pasiulymai-1.webp
+  34573: 404  /wp-content/uploads/2026/07/upl_banner-naujas.webp
+
+=== DELETE bandymai (mažiausias reiškinio testas) ===
+DELETE be force (34554):
+{"code":"rest_post_invalid_id","message":"Netinkamas \u012fra\u0161o ID.","data":{"status":404}}
+---STATUS:404---
+
+DELETE su force=true (34555):
+{"code":"rest_post_invalid_id","message":"Netinkamas \u012fra\u0161o ID.","data":{"status":404}}
+---STATUS:404---
+
