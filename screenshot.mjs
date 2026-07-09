@@ -15,31 +15,51 @@ async function getToken(sa){
 }
 const BASE='https://tagmanager.googleapis.com/tagmanager/v2';
 async function gtm(t,p){ const r=await fetch(BASE+p,{headers:{Authorization:'Bearer '+t}}); const x=await r.text(); let j; try{j=JSON.parse(x);}catch(e){j={_raw:x.slice(0,200)};} return {status:r.status, body:j}; }
+const CT='accounts/6071827163/containers/101921278';
 let out=''; const L=(s)=>{out+=s+'\n';};
 try{
   const sa=loadSA(); const t=await getToken(sa);
-  L('AUTH OK'); L('');
-  for(const aid of ['6071827163','6065881322']){
-    L('########## accountId '+aid+' ##########');
-    const a = await gtm(t,'/accounts/'+aid);
-    L('GET /accounts/'+aid+' -> HTTP '+a.status+' | name='+(a.body.name||JSON.stringify(a.body).slice(0,120)));
-    const c = await gtm(t,'/accounts/'+aid+'/containers');
-    L('GET containers -> HTTP '+c.status);
-    if(c.status===200){
-      const list=c.body.container||[];
-      L('  container count: '+list.length);
-      for(const ct of list) L('   - '+ct.name+' | publicId='+ct.publicId+' | containerId='+ct.containerId+' | path='+ct.path);
-    } else L('  body: '+JSON.stringify(c.body).slice(0,250));
-    const up = await gtm(t,'/accounts/'+aid+'/user_permissions');
-    L('GET user_permissions -> HTTP '+up.status);
-    if(up.status===200){
-      const perms=up.body.userPermission||[];
-      for(const p of perms){
-        const isSA = (p.emailAddress||'').includes('claude-gtm-manager');
-        L('   '+(isSA?'>>> ':'    ')+p.emailAddress+' | acct='+JSON.stringify(p.accountAccess)+' | cont='+JSON.stringify(p.containerAccess||[]));
-      }
-    } else L('  body: '+JSON.stringify(up.body).slice(0,250));
-    L('');
+  const ws=await gtm(t,'/'+CT+'/workspaces'); const wss=ws.body.workspace||[];
+  L('=== WORKSPACES ('+wss.length+') ===');
+  for(const w of wss) L('  ['+w.workspaceId+'] '+w.name+(w.description?' — '+w.description:''));
+  const W=wss.find(w=>w.name==='Default Workspace')||wss[0];
+  L('  -> naudojam: '+W.name+' (id '+W.workspaceId+')'); L('');
+
+  const tg=await gtm(t,'/'+W.path+'/tags'); const tags=tg.body.tag||[];
+  L('=== TAGS ('+tags.length+') ===');
+  for(const x of tags){
+    L('  ['+x.tagId+'] '+x.name);
+    L('       type='+x.type+'  paused='+(x.paused?'YES':'no')+'  fireOnce='+(x.firingTriggerId?'':''));
+    L('       firing=['+((x.firingTriggerId||[]).join(','))+']  blocking=['+((x.blockingTriggerId||[]).join(','))+']');
+    if(x.consentSettings) L('       consentSettings='+JSON.stringify(x.consentSettings));
+    const ps=(x.parameter||[]).filter(p=>/measurementId|tagId|pixelId|conversionId|conversionLabel|trackingId|streamId|serverContainerUrl/i.test(p.key));
+    if(ps.length) L('       key params: '+ps.map(p=>p.key+'='+(p.value||JSON.stringify(p.list||p.map||''))).join(' | '));
   }
+  L('');
+  const tr=await gtm(t,'/'+W.path+'/triggers'); const trigs=tr.body.trigger||[];
+  L('=== TRIGGERS ('+trigs.length+') ===');
+  for(const x of trigs){
+    L('  ['+x.triggerId+'] '+x.name+'  type='+x.type);
+    const cond=(x.filter||[]).concat(x.customEventFilter||[]);
+    for(const f of cond){
+      const a=(f.parameter||[]).map(p=>p.value).join(' ');
+      L('        cond: '+f.type+' -> '+a);
+    }
+  }
+  L('');
+  const vr=await gtm(t,'/'+W.path+'/variables'); const vars=vr.body.variable||[];
+  L('=== USER VARIABLES ('+vars.length+') ===');
+  for(const v of vars) L('  ['+v.variableId+'] '+v.name+'  type='+v.type);
+  L('');
+  const bv=await gtm(t,'/'+W.path+'/built_in_variables'); const bvars=bv.body.builtInVariable||[];
+  L('=== BUILT-IN VARIABLES ('+bvars.length+') ===');
+  L('  '+bvars.map(v=>v.type).join(', ')); L('');
+  const lv=await gtm(t,'/'+CT+'/versions:live');
+  L('=== LIVE VERSION HTTP '+lv.status+' ===');
+  if(lv.status===200){
+    L('  versionId='+lv.body.containerVersionId+'  name='+(lv.body.name||'-'));
+    L('  tags='+((lv.body.tag||[]).length)+'  triggers='+((lv.body.trigger||[]).length)+'  vars='+((lv.body.variable||[]).length));
+    L('  live tag names: '+((lv.body.tag||[]).map(x=>x.name).join(' | ')||'-'));
+  } else L('  '+JSON.stringify(lv.body).slice(0,300));
 }catch(e){ L('!!! ERROR: '+e.message); }
-putFile('gtm_probe.txt', out); console.log(out);
+putFile('gtm_recon.txt', out); console.log(out);
