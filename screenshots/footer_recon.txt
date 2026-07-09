@@ -1,0 +1,68 @@
+=== FOOTER HTML (ilgis 24755) ===
+nuorodos: 23
+  /product/ruda-avies-koja-1-vnt-x-20-vnt/ → 
+  /product/ruda-kiaules-ausis-1-vnt-x-20-vnt/ → 
+  /product/animonda-carny-adult-beef-turkey-shrimp-konservai-katems-su-sviezia-jautiena-kalakutiena-ir-krevetemis-400-g-x-6-vnt/ → 
+  /product/exclusion-mediterraneo-mono-protein-konservuotas-pasaras-katems-su-tunu-85-g-x-10-vnt/ → 
+  /product/ruda-stirnos-koja-1-vnt/ → 
+  /product/balta-stirnos-koja-1-vnt/ → 
+  /product/ruda-avies-koja-1-vnt/ → 
+  /product/balta-avies-koja-1-vnt/ → 
+  /product/exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-eriena-400-g/ → 
+  /product/comfy-appetit-fancy-skanestas-katems-vistienos-juosteles-50g/ → 
+  /product/comfy-uzdaras-tualetas-katei-kreminis-54x40x40/ → 
+  https://www.facebook.com → 
+  /mano-paskyra → Mano paskyra
+  /uzsakymai → Užsakymų istorija
+  /pristatymas → Pristatymas
+  /grazinimas → Grąžinimas
+  /duk → DUK
+  /sunims → Šunims
+  /katems → Katėms
+  /grauzikams → Graužikams
+  /paukstems → Paukščiams
+  /akcijos → Akcijos
+  mailto:terra@petshop.lt → terra@petshop.lt
+
+widget klasės:
+  class="footer-widgets footer footer-1"
+  class="col pb-0 widget woocommerce widget_products"
+  class="widget-title"
+  class="product_list_widget"
+  class="col pb-0 widget woocommerce widget_products"
+  class="widget-title"
+  class="product_list_widget"
+  class="col pb-0 widget woocommerce widget_top_rated_products"
+  class="widget-title"
+  class="product_list_widget"
+
+=== Snippet 587 (footer widget hider) — būklė ===
+  active: true | scope: global
+  code (pirmi 300):
+add_action('wp_head', function() {
+    if (!is_page(['apie-mus','kontaktai','pristatymas','apmokejimas','grazinimas','taisykles','privatumo-politika','slapuku-politika','sunu-veisles','prieziuros-priemones-sunims','pagrindinis-test','hipoalerginis-maistas','monoproteinis-maistas','be-grudu-maistas',
+
+=== Registruoti meniu ===
+  id=68 | Main | slug=main | locations=
+  id=232 | Pagrindinis meniu | slug=pagrindinis-meniu | locations=primary,primary_mobile
+  id=67 | Secondary | slug=secondary | locations=footer,top_bar_nav
+
+=== 9 puslapiai (owner nurodymas) ===
+  200 /apie-mus/                → Apie mus
+  200 /kontaktai/               → Kontaktai
+  200 /pristatymas/             → Pristatymas
+  200 /apmokejimas/             → Apmokėjimas
+  200 /grazinimas/              → Grąžinimas
+  200 /taisykles/               → Taisyklės
+  200 /privatumo-politika/      → Privatumo politika
+  200 /slapuku-politika/        → Slapukų politika
+  404 /duk/                     → DUK
+
+=== KATEGORIJŲ stulpelio nuorodos ===
+  200 /kategorija/sunims/          → Šunims
+  200 /kategorija/katems/          → Katėms
+  200 /kategorija/grauzikams/      → Graužikams
+  200 /kategorija/pauksciams/      → Paukščiams
+  200 /kategorija/zuvims/          → Žuvims
+  200 /akcijos/                    → Akcijos
+  200 /pasiulymai/                 → Pasiūlymai
