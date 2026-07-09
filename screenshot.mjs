@@ -8,7 +8,7 @@ function api(p){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 25 "'+
 let out='';
 
 // Visi snippet'ai
-const all = api('/wp-json/code-snippets/v1/snippets?per_page=200&_fields=id,name,active,scope,priority,modified');
+const all = api('/wp-json/code-snippets/v1/snippets?per_page=100&_fields=id,name,active,scope,priority,modified');
 try{
   const arr = JSON.parse(all);
   out += '=== VISI snippet\'ai ('+arr.length+' total, '+arr.filter(x=>x.active).length+' aktyvūs) ===\n\n';
