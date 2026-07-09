@@ -1,6 +1,10 @@
-requested: https://dev.avesa.lt/kategorija/katems/dubeneliai-katems/
-final: https://dev.avesa.lt/kategorija/katems/dubeneliai-katems/
-status: 200
-error: 
-title: Dubenėliai katėms – Petshop.lt
-html_len: 257417
+snippet 609: active=true code_error=null scope=front-end
+
+/kolis/ (cache-bust) len=171155
+  turi "petshop-auto-h1": true
+  h1 tagu: 1
+  h1[0] = "<h1 class=\"entry-title petshop-auto-h1\">Kolis, šunų veislė: sveikata, priežiūra ir kt.</h1>"
+
+/kolis/ (be busterio) len=171121 turi auto-h1: true
+  h1 tagu: 1
+  h1[0] = "<h1 class=\"entry-title petshop-auto-h1\">Kolis, šunų veislė: sveikata, priežiūra ir kt.</h1>"
