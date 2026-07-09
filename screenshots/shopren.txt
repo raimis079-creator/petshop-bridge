@@ -1,0 +1,37 @@
+=== BACKUP ID 11 ===
+  slug: shop
+  title: Shop
+  status: publish
+  content_len: 33
+
+=== PUT rezultatas ===
+  slug: parduotuve
+  title: Parduotuvė
+  link: https://dev.avesa.lt/parduotuve/
+
+=== Menu Main - Shop nuoroda ===
+
+Redirect snippet sukurtas id=613
+  aktyvintas
+
+=== HTTP kodai (po pakeitimų) ===
+  200|                            /parduotuve/
+  301|https://dev.avesa.lt/parduotuve/  /shop/
+  301|https://dev.avesa.lt/parduotuve/anything/  /shop/anything/
+  301|https://dev.avesa.lt/parduotuve  /shop
+
+woocommerce_shop_page_id: 11
+
+=== Homepage / patikra ===
+{
+  "hero": true,
+  "cats": 5,
+  "footer": 4,
+  "shop_link_count": 0,
+  "shop_links_sample": [],
+  "parduotuve_link_count": 2,
+  "parduotuve_links_sample": [
+    "https://dev.avesa.lt/parduotuve/",
+    "https://dev.avesa.lt/parduotuve/"
+  ]
+}
