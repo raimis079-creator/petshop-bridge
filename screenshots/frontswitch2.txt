@@ -1,0 +1,14 @@
+EXC su detalizacija:
+stdout: 
+---STATUS:000---
+stderr: -
+msg: Command failed: curl -sk -u "bdz487:nfRTI4pXV6WQpmd3RRZZn6sG" -H "Content-Type: application/json" -X POST -d @/tmp/body.json -w "\n---STATUS:%{http_code}---" --max-time 120 "https://dev.avesa.lt/wp-json/wp/v2/settings"
+code: undefined
+
+=== Alternatyva (POST inline body) ===
+ALT EXC: Command failed: curl -sk -u "bdz487:nfRTI4pXV6WQpmd3RRZZn6sG" -H "Content-Type: application/json" -X POST -d "{\"show_on_front\":\"page\",\"page_on_front\":34543}" -w "\n---STATUS:%{http_code}---" --max-time 60 "https://dev.avesa.lt/wp-json/wp/v2/settings"
+
+=== Dabartinis state ===
+HTTP: 200
+page_on_front: 11
+show_on_front: page
