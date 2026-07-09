@@ -1,0 +1,39 @@
+=== 1. BACKUP ===
+  34554: backed up (?)
+  34555: backed up (?)
+  34556: backed up (?)
+  34557: backed up (?)
+  34558: backed up (?)
+  34559: backed up (?)
+  34572: backed up (?)
+  34573: backed up (?)
+
+=== 2. DELETE ===
+  34554: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+  34555: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+  34556: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+  34557: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+  34558: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+  34559: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+  34572: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+  34573: UNEXPECTED response: {"code":"rest_post_invalid_id","message":"Netinkamas įrašo ID.","data":{"status":404}}
+
+  Ištrinta: 0 iš 8
+
+=== 3. Verifikacija (media endpoint) ===
+  34554: 404 rest_post_invalid_id ✓
+  34555: 404 rest_post_invalid_id ✓
+  34556: 404 rest_post_invalid_id ✓
+  34557: 404 rest_post_invalid_id ✓
+  34558: 404 rest_post_invalid_id ✓
+  34559: 404 rest_post_invalid_id ✓
+  34572: 404 rest_post_invalid_id ✓
+  34573: 404 rest_post_invalid_id ✓
+
+=== 4. Homepage patikra ===
+  HTML ilgis: 180459
+  hero URL: YRA ✓
+  upl_cat-sunims-v2: YRA ✓
+  upl_logo-mark-v2: YRA ✓
+  banner-starter: YRA ✓
+  banner-deals: YRA ✓
