@@ -1,0 +1,59 @@
+homepage deployed
+snippet created: id=610
+code_error: null (OK)
+snippet activated
+
+=== DESKTOP (anoniminis) ===
+tinklo /2026/07/:
+  200 /wp-content/uploads/2026/07/upl_logo-mark-v2.png
+  200 /wp-content/uploads/2026/07/upl_cat-grauzikams-v2.webp
+  200 /wp-content/uploads/2026/07/banner-deals.webp
+  200 /wp-content/uploads/2026/07/banner-starter.webp
+  200 /wp-content/uploads/2026/07/upl_cat-sunims-v2.webp
+  200 /wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp
+  200 /wp-content/uploads/2026/07/upl_cat-katems-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-zuvims-v2.webp
+  200 /wp-content/uploads/2026/07/upl_cat-pauksciams-v2.webp
+DOM:
+{
+ "topbar_left_text": "Nemokamas pristatymas į paštomatą nuo €30",
+ "topbar_right_exists": false,
+ "topbar_right_content": "-",
+ "hero_bg_loaded": true,
+ "badge_natural": "128x128",
+ "cats_loaded": "5/5",
+ "tb_exists": true,
+ "tb_bg": "rgb(247, 251, 246)",
+ "tb_items": 4,
+ "tb_texts": [
+  "Nemokamas pristatymas į paštomatus nuo 30 €",
+  "Konsultacija dėl produktų",
+  "Pagalba renkantis pagal poreikį",
+  "Saugus apmokėjimas"
+ ],
+ "old_e4_exists": false,
+ "old_guide_cards": 0,
+ "section_order": [
+  "ph-hero",
+  "ph-tb",
+  "ph-cat-grid",
+  "ph-banners",
+  "ph-need-grid"
+ ]
+}
+
+=== MOBILE ===
+{
+ "tb_exists": true,
+ "tb_display": "grid",
+ "tb_gridcols": "164px 164px",
+ "tb_items": 4,
+ "topbar_right_exists": false
+}
+
+=== KITAS PUSLAPIS (/apie-mus/) — globali patikra ===
+{
+ "tr_exists": false,
+ "tr_content": "-",
+ "tl_text": "Nemokamas pristatymas į paštomatą nuo €30"
+}
