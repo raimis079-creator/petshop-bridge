@@ -1,0 +1,49 @@
+=== BACKUP ===
+  34554: upl_logo-mark-white.png backed up
+  34555: upl_cat-sunims.webp backed up
+  34556: upl_cat-katems.webp backed up
+  34557: upl_cat-grauzikams.webp backed up
+  34558: upl_cat-pauksciams.webp backed up
+  34559: upl_cat-zuvims.webp backed up
+  34572: upl_banner-pasiulymai-1.webp backed up
+  34573: upl_banner-naujas.webp backed up
+backup: 8 items
+
+=== DELETE ===
+  34554: DELETED (force)
+  34555: DELETED (force)
+  34556: DELETED (force)
+  34557: DELETED (force)
+  34558: DELETED (force)
+  34559: DELETED (force)
+  34572: DELETED (force)
+  34573: DELETED (force)
+
+=== POST-DELETE patikra ===
+  34554: istrintas OK
+  34555: istrintas OK
+  34556: istrintas OK
+  34557: istrintas OK
+  34558: istrintas OK
+  34559: istrintas OK
+  34572: istrintas OK
+  34573: istrintas OK
+
+=== HOMEPAGE / verifikacija ===
+tinklo /2026/07/:
+  200 upl_cat-sunims-v2.webp
+  200 upl_logo-mark-v2.png
+  200 upl_cat-katems-v2.webp
+  200 hero-augintiniai-pagrindinis.webp
+  200 banner-starter.webp
+  200 banner-deals.webp
+  200 upl_cat-zuvims-v2.webp
+  200 upl_cat-pauksciams-v2.webp
+  200 upl_cat-grauzikams-v2.webp
+DOM:
+{
+ "hero_bg_loaded": true,
+ "badge_natural": "128x128",
+ "cats_loaded": "5/5",
+ "banners_bg": true
+}
