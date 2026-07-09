@@ -1,0 +1,19 @@
+update: code_error=null (OK) active=true
+
+Homepage:
+{
+ "topbar_left": "Nemokamas pristatymas į paštomatus nuo 30 €",
+ "topbar_right_exists": false,
+ "trust_bar_items": [
+  "Nemokamas pristatymas į paštomatus nuo 30 €",
+  "Konsultacija dėl produktų",
+  "Pagalba renkantis pagal poreikį",
+  "Saugus apmokėjimas"
+ ]
+}
+
+/apie-mus/ topbar:
+{
+ "left": "Nemokamas pristatymas į paštomatus nuo 30 €",
+ "right_exists": false
+}
