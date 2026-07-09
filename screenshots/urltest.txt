@@ -1,0 +1,55 @@
+=== URL kandidatai ===
+  404|https://dev.avesa.lt/mano-paskyra  /mano-paskyra
+  404|https://dev.avesa.lt/mano-paskyra/  /mano-paskyra/
+  200|https://dev.avesa.lt/my-account/  /my-account
+  200|https://dev.avesa.lt/my-account/  /my-account/
+  404|https://dev.avesa.lt/paskyra  /paskyra
+  404|https://dev.avesa.lt/paskyra/  /paskyra/
+  404|https://dev.avesa.lt/uzsakymai  /uzsakymai
+  404|https://dev.avesa.lt/uzsakymai/  /uzsakymai/
+  404|https://dev.avesa.lt/mano-paskyra/uzsakymai/  /mano-paskyra/uzsakymai/
+  404|https://dev.avesa.lt/orders  /orders
+  404|https://dev.avesa.lt/orders/  /orders/
+
+WC My Account page_id: 14
+  slug: my-account status: publish link: https://dev.avesa.lt/my-account/
+
+=== "paskyra" pages ===
+  id=14 slug=my-account status=publish link=https://dev.avesa.lt/my-account/
+
+=== "uzsak" pages ===
+  id=34527 slug=apmokejimas status=publish link=https://dev.avesa.lt/apmokejimas/
+  id=34525 slug=privatumo-politika status=publish link=https://dev.avesa.lt/privatumo-politika/
+  id=34524 slug=taisykles status=publish link=https://dev.avesa.lt/taisykles/
+  id=34523 slug=grazinimas status=publish link=https://dev.avesa.lt/grazinimas/
+  id=34521 slug=kontaktai status=publish link=https://dev.avesa.lt/kontaktai/
+  id=34515 slug=apie-mus status=publish link=https://dev.avesa.lt/apie-mus/
+  id=14894 slug=pristatymas status=publish link=https://dev.avesa.lt/pristatymas/
+  id=3233 slug=josera-kaciu-maistas status=publish link=https://dev.avesa.lt/josera-kaciu-maistas/
+
+=== "order" pages ===
+  id=34570 slug=naujas-augintinis status=publish link=https://dev.avesa.lt/naujas-augintinis/
+  id=34551 slug=odai-ir-kailiui status=publish link=https://dev.avesa.lt/odai-ir-kailiui/
+  id=34550 slug=be-grudu-maistas status=publish link=https://dev.avesa.lt/be-grudu-maistas/
+  id=34549 slug=monoproteinis-maistas status=publish link=https://dev.avesa.lt/monoproteinis-maistas/
+  id=34548 slug=hipoalerginis-maistas status=publish link=https://dev.avesa.lt/hipoalerginis-maistas/
+  id=34543 slug=pagrindinis-test status=publish link=https://dev.avesa.lt/pagrindinis-test/
+  id=34539 slug=prieziuros-priemones-sunims status=publish link=https://dev.avesa.lt/prieziuros-priemones-sunims/
+  id=34538 slug=sunu-veisles status=publish link=https://dev.avesa.lt/sunu-veisles/
+  id=34527 slug=apmokejimas status=publish link=https://dev.avesa.lt/apmokejimas/
+  id=34526 slug=slapuku-politika status=publish link=https://dev.avesa.lt/slapuku-politika/
+
+=== WC My Account endpoint'ai (setting) ===
+  woocommerce_checkout_pay_endpoint: order-pay
+  woocommerce_checkout_order_received_endpoint: order-received
+  woocommerce_myaccount_add_payment_method_endpoint: add-payment-method
+  woocommerce_myaccount_delete_payment_method_endpoint: delete-payment-method
+  woocommerce_myaccount_set_default_payment_method_endpoint: set-default-payment-method
+  woocommerce_myaccount_orders_endpoint: orders
+  woocommerce_myaccount_view_order_endpoint: view-order
+  woocommerce_myaccount_downloads_endpoint: downloads
+  woocommerce_myaccount_edit_account_endpoint: edit-account
+  woocommerce_myaccount_edit_address_endpoint: edit-address
+  woocommerce_myaccount_payment_methods_endpoint: payment-methods
+  woocommerce_myaccount_lost_password_endpoint: lost-password
+  woocommerce_logout_endpoint: customer-logout
