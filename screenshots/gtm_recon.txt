@@ -1,13 +1,17 @@
-client_email: claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
-AUTH OK (1024 chars)
+=== WORKSPACES (1) ===
+  [2] Default Workspace
+  -> naudojam: Default Workspace (id 2)
 
-=== GET /accounts -> HTTP 200 ===
-Accounts matomi: 1
-  - Avesa | accountId=6071827163
+=== TAGS (0) ===
 
---- containers @ Avesa -> HTTP 200 ---
-   (tuscia / nera prieigos)
+=== TRIGGERS (0) ===
 
-!!! GTM-MF3GZGT NERASTAS
+=== USER VARIABLES (0) ===
 
-!!! ERROR: target not found
+=== BUILT-IN VARIABLES (5) ===
+  pageUrl, pageHostname, pagePath, referrer, event
+
+=== LIVE VERSION HTTP 200 ===
+  versionId=1  name=Empty Container
+  tags=0  triggers=0  vars=0
+  live tag names: -
