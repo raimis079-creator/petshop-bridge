@@ -1,0 +1,33 @@
+=== Shop puslapis (ID 11) ===
+  id=11 slug=shop status=publish link=https://dev.avesa.lt/shop/
+  title=Shop
+
+=== WC settings susije su Shop ===
+  woocommerce_shop_page_id: 11
+
+=== Meniu-items, kur URL /shop/ arba nuoroda i shop page ===
+  Menu [Main]: Shop → https://dev.avesa.lt/shop/
+
+=== HTTP kodai ===
+  200 /shop/
+  404 /parduotuve/
+  200 /shop
+  404 /parduotuve
+
+=== "/shop/" paieška homepage HTML ===
+  homepage: https://dev.avesa.lt/shop/
+  homepage: https://dev.avesa.lt/shop/
+
+=== Pages su fullText "shop" arba "parduotuv" (top 5) ===
+  q="shop":
+    id=34551 slug=odai-ir-kailiui title=Odai ir kailiui
+    id=34550 slug=be-grudu-maistas title=Maistas be grūdų
+    id=34549 slug=monoproteinis-maistas title=Monoproteinis maistas
+    id=34548 slug=hipoalerginis-maistas title=Hipoalerginis maistas augintiniui
+    id=34543 slug=pagrindinis-test title=Pagrindinis (test)
+  q="parduotuv":
+    id=34570 slug=naujas-augintinis title=Naujam augintiniui
+    id=34526 slug=slapuku-politika title=Slapukų naudojimas
+    id=34525 slug=privatumo-politika title=Privatumo politika
+    id=34524 slug=taisykles title=Pirkimo sąlygos ir taisyklės
+    id=34515 slug=apie-mus title=Apie mus
