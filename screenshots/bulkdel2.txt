@@ -1,0 +1,109 @@
+update 612 code_error=null (OK)
+aktyvintas
+
+=== TRIGGER response ===
+BULK DELETE START
+Total ID: 81
+
+table: gaj6_snippets
+
+[69] DB delete -> OK
+[137] DB delete -> OK
+[191] DB delete -> OK
+[438] DB delete -> OK
+[439] DB delete -> OK
+[444] DB delete -> OK
+[456] DB delete -> OK
+[487] DB delete -> OK
+[488] DB delete -> OK
+[489] DB delete -> OK
+[490] DB delete -> OK
+[491] DB delete -> OK
+[496] DB delete -> OK
+[497] DB delete -> OK
+[498] DB delete -> OK
+[499] DB delete -> OK
+[500] DB delete -> OK
+[501] DB delete -> OK
+[504] DB delete -> OK
+[505] DB delete -> OK
+[506] DB delete -> OK
+[508] DB delete -> OK
+[511] DB delete -> OK
+[522] DB delete -> OK
+[523] DB delete -> OK
+[526] DB delete -> OK
+[527] DB delete -> OK
+[528] DB delete -> OK
+[529] DB delete -> OK
+[530] DB delete -> OK
+[531] DB delete -> OK
+[533] DB delete -> OK
+[534] DB delete -> OK
+[536] DB delete -> OK
+[537] DB delete -> OK
+[538] DB delete -> OK
+[540] DB delete -> OK
+[541] DB delete -> OK
+[542] DB delete -> OK
+[543] DB delete -> OK
+[544] DB delete -> OK
+[545] DB delete -> OK
+[546] DB delete -> OK
+[548] DB delete -> OK
+[549] DB delete -> OK
+[551] DB delete -> OK
+[552] DB delete -> OK
+[553] DB delete -> OK
+[554] DB delete -> OK
+[574] DB delete -> OK
+[575] DB delete -> OK
+[576] DB delete -> OK
+[577] DB delete -> OK
+[578] DB delete -> OK
+[579] DB delete -> OK
+[580] DB delete -> OK
+[581] DB delete -> OK
+[583] DB delete -> OK
+[584] DB delete -> OK
+[585] DB delete -> OK
+[586] DB delete -> OK
+[588] DB delete -> OK
+[589] DB delete -> OK
+[590] DB delete -> OK
+[591] DB delete -> OK
+[592] DB delete -> OK
+[593] DB delete -> OK
+[595] DB delete -> OK
+[596] DB delete -> OK
+[597] DB delete -> OK
+[598] DB delete -> OK
+[599] DB delete -> OK
+[600] DB delete -> OK
+[601] DB delete -> OK
+[602] DB delete -> OK
+[603] DB delete -> OK
+[604] DB delete -> OK
+[605] DB delete -> OK
+[606] DB delete -> OK
+[607] DB delete -> OK
+[608] DB delete -> OK
+
+OK: 81 / FAIL: 0
+
+
+deaktyvintas
+
+=== POST-VERIFY ===
+total: 279
+aktyvūs: 48
+iš 81 dar liko: 0
+
+=== Homepage / ===
+{
+ "hero": true,
+ "cats": "5/5",
+ "tb": 4,
+ "e5": true,
+ "footer": 4
+}
