@@ -1,0 +1,136 @@
+=== HTTP PRE-CHECK (17 URL) ===
+  200  /apie-mus/
+  200  /kontaktai/
+  200  /my-account/
+  200  /my-account/orders/
+  200  /pristatymas/
+  200  /apmokejimas/
+  200  /grazinimas/
+  200  /taisykles/
+  200  /privatumo-politika/
+  200  /slapuku-politika/
+  200  /kategorija/sunims/
+  200  /kategorija/katems/
+  200  /kategorija/grauzikams/
+  200  /kategorija/pauksciams/
+  200  /kategorija/zuvims/
+  200  /akcijos/
+  200  /pasiulymai/
+  visi 17 = 200 ✅
+
+=== PUT widgets ===
+  custom_html-2: title=APIE content_len=644
+  custom_html-3: title=KLIENTAMS content_len=901
+  custom_html-4: title=KATEGORIJOS content_len=780
+  custom_html-5: title=KONTAKTAI content_len=371
+
+=== VERIFIKACIJA (homepage) ===
+{
+  "custom_html-2": {
+    "title": "APIE",
+    "count": 3,
+    "links": [
+      {
+        "text": "f",
+        "href": "https://www.facebook.com"
+      },
+      {
+        "text": "Apie mus",
+        "href": "/apie-mus/"
+      },
+      {
+        "text": "Kontaktai",
+        "href": "/kontaktai/"
+      }
+    ]
+  },
+  "custom_html-3": {
+    "title": "KLIENTAMS",
+    "count": 8,
+    "links": [
+      {
+        "text": "Mano paskyra",
+        "href": "/my-account/"
+      },
+      {
+        "text": "Užsakymų istorija",
+        "href": "/my-account/orders/"
+      },
+      {
+        "text": "Pristatymas",
+        "href": "/pristatymas/"
+      },
+      {
+        "text": "Apmokėjimas",
+        "href": "/apmokejimas/"
+      },
+      {
+        "text": "Grąžinimas",
+        "href": "/grazinimas/"
+      },
+      {
+        "text": "Taisyklės",
+        "href": "/taisykles/"
+      },
+      {
+        "text": "Privatumo politika",
+        "href": "/privatumo-politika/"
+      },
+      {
+        "text": "Slapukų politika",
+        "href": "/slapuku-politika/"
+      }
+    ]
+  },
+  "custom_html-4": {
+    "title": "KATEGORIJOS",
+    "count": 7,
+    "links": [
+      {
+        "text": "Šunims",
+        "href": "/kategorija/sunims/"
+      },
+      {
+        "text": "Katėms",
+        "href": "/kategorija/katems/"
+      },
+      {
+        "text": "Graužikams",
+        "href": "/kategorija/grauzikams/"
+      },
+      {
+        "text": "Paukščiams",
+        "href": "/kategorija/pauksciams/"
+      },
+      {
+        "text": "Žuvims",
+        "href": "/kategorija/zuvims/"
+      },
+      {
+        "text": "Akcijos",
+        "href": "/akcijos/"
+      },
+      {
+        "text": "Pasiūlymai",
+        "href": "/pasiulymai/"
+      }
+    ]
+  },
+  "custom_html-5": {
+    "title": "KONTAKTAI",
+    "count": 2,
+    "links": [
+      {
+        "text": "+370 681 87787",
+        "href": "tel:+37068187787"
+      },
+      {
+        "text": "terra@petshop.lt",
+        "href": "mailto:terra@petshop.lt"
+      }
+    ]
+  }
+}
+
+=== /apie-mus/ (globali patikra) ===
+{"klientams_count":8,"kategorijos_count":7,"first_klientams_link":"/my-account/"}
