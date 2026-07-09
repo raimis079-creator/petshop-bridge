@@ -1,0 +1,31 @@
+
+=== SIDEBAR (Flatsome footer areas) ===
+  id: sidebar-footer-1 | name: Footer 1 | widgets: 4
+     → woocommerce_products-12
+     → woocommerce_products-11
+     → woocommerce_products-13
+     → woocommerce_top_rated_products-3
+  id: sidebar-footer-2 | name: Footer 2 | widgets: 4
+     → custom_html-2
+     → custom_html-3
+     → custom_html-4
+     → custom_html-5
+
+=== WIDGETS (visi, kur sidebar footer) ===
+  id: woocommerce_products-12 | sidebar: sidebar-footer-1 | type: woocommerce_products
+     rendered (pirmi 200): <div id="woocommerce_products-12" class="col pb-0 widget woocommerce widget_products"><span class="widget-title">Naujausi</span><div class="is-divider small"></div><ul class="product_list_widget"><li>
+  id: woocommerce_products-11 | sidebar: sidebar-footer-1 | type: woocommerce_products
+     rendered (pirmi 200): <div id="woocommerce_products-11" class="col pb-0 widget woocommerce widget_products"><span class="widget-title">Populiariausi</span><div class="is-divider small"></div><ul class="product_list_widget"
+  id: woocommerce_products-13 | sidebar: sidebar-footer-1 | type: woocommerce_products
+  id: woocommerce_top_rated_products-3 | sidebar: sidebar-footer-1 | type: woocommerce_top_rated_products
+     rendered (pirmi 200): <div id="woocommerce_top_rated_products-3" class="col pb-0 widget woocommerce widget_top_rated_products"><span class="widget-title">Geriausiai įvertinti</span><div class="is-divider small"></div><ul c
+  id: custom_html-2 | sidebar: sidebar-footer-2 | type: custom_html
+     rendered (pirmi 200): <div id="custom_html-2" class="widget_text col pb-0 widget widget_custom_html"><span class="widget-title">APIE</span><div class="is-divider small"></div><div class="textwidget custom-html-widget"><p>N
+  id: custom_html-3 | sidebar: sidebar-footer-2 | type: custom_html
+     rendered (pirmi 200): <div id="custom_html-3" class="widget_text col pb-0 widget widget_custom_html"><span class="widget-title">KLIENTAMS</span><div class="is-divider small"></div><div class="textwidget custom-html-widget"
+  id: custom_html-4 | sidebar: sidebar-footer-2 | type: custom_html
+     rendered (pirmi 200): <div id="custom_html-4" class="widget_text col pb-0 widget widget_custom_html"><span class="widget-title">KATEGORIJOS</span><div class="is-divider small"></div><div class="textwidget custom-html-widge
+  id: custom_html-5 | sidebar: sidebar-footer-2 | type: custom_html
+     rendered (pirmi 200): <div id="custom_html-5" class="widget_text col pb-0 widget widget_custom_html"><span class="widget-title">KONTAKTAI</span><div class="is-divider small"></div><div class="textwidget custom-html-widget"
+
+=== Menu 67 "Secondary" pilnas turinys ===
