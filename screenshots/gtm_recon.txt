@@ -1,3 +1,13 @@
-=== GTM_SA_JSON present: YES (2389 chars) ===
+client_email: claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
+AUTH OK (1024 chars)
 
-!!! ERROR: Unexpected non-whitespace character after JSON at position 6
+=== GET /accounts -> HTTP 200 ===
+Accounts matomi: 1
+  - Avesa | accountId=6071827163
+
+--- containers @ Avesa -> HTTP 200 ---
+   (tuscia / nera prieigos)
+
+!!! GTM-MF3GZGT NERASTAS
+
+!!! ERROR: target not found
