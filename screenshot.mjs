@@ -3,80 +3,89 @@ const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
 const DEV="https://dev.avesa.lt";
 const WPU=(process.env.WP_USER||"").trim();
 const WPP=(process.env.WP_APP_PASS||"").replace(/\s+/g,"");
-function putBin(name,buf){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'s3',branch:'main',content:buf.toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
-function putFile(name,str){ putBin(name, Buffer.from(str,'utf8')); }
-function api(path,method,obj){ let cmd='curl -sk -u "$WPU:$WPP" -H "Content-Type: application/json" '; if(method) cmd+='-X '+method+' '; if(obj){ fs.writeFileSync('/tmp/body.json', JSON.stringify(obj)); cmd+='-d @/tmp/body.json '; } cmd+='"'+DEV+path+'"'; try{ return execSync(cmd,{encoding:'utf8',maxBuffer:20000000,timeout:60000,env:{...process.env,WPU,WPP}}); }catch(e){ return 'EXC'; }}
-function get(u){ try{ return execSync('curl -sk -u "$WPU:$WPP" -L --max-time 25 "'+DEV+u+'"',{encoding:'utf8',maxBuffer:20000000,timeout:27000,env:{...process.env,WPU,WPP}}); }catch(e){ return ''; } }
-(async()=>{
-  let out='';
-  // === AKTYVUOJU snippet 609 ===
-  const act = api('/wp-json/code-snippets/v1/snippets/609','PUT',{active:true});
-  try{ const j=JSON.parse(act); out += 'snippet 609 active='+j.active+' code_error='+(j.code_error===null?'null':JSON.stringify(j.code_error))+'\n\n'; }
-  catch(e){ out += 'activate ERR: '+act.slice(0,200)+'\n\n'; }
-  execSync('sleep 4');
+function putFile(name,str){ try{ const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+name; let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){} const body={message:'s4',branch:'main',content:Buffer.from(str,'utf8').toString('base64')}; if(sha) body.sha=sha; fs.writeFileSync('/tmp/pf.json',JSON.stringify(body)); execSync('curl -s -o /dev/null -X PUT -H "Authorization: Bearer '+tok+'" -H "Accept: application/vnd.github+json" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'}); }catch(e){} }
+function api(p){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 30 "'+DEV+p+'"',{encoding:'utf8',maxBuffer:60000000,timeout:32000,env:{...process.env,WPU,WPP}}); }catch(e){ return ''; } }
+function get(u){ try{ return execSync('curl -sk -u "$WPU:$WPP" -L --max-time 20 "'+DEV+u+'"',{encoding:'utf8',maxBuffer:20000000,timeout:22000,env:{...process.env,WPU,WPP}}); }catch(e){ return ''; } }
+// TIKSLUS auto-H1: h1 tagas su klase (ne <style> turinys)
+function analyze(html){
+  const h1s = [...html.matchAll(/<h1\b[^>]*>([\s\S]{0,200}?)<\/h1>/gi)];
+  const autoH1 = h1s.filter(m => /class\s*=\s*["'][^"']*petshop-auto-h1/i.test(m[0])).length;
+  const is404 = /That page can.{0,6}t be found|Puslapis nerastas/i.test(html);
+  return { n: h1s.length, auto: autoH1, is404, texts: h1s.map(m=>m[1].replace(/<[^>]+>/g,'').trim().slice(0,50)) };
+}
+let out='';
 
-  // === VERIFIKACIJA ===
-  const tests = [
-    ['LANDING', '/naujas-augintinis/', 1],
-    ['LANDING', '/hipoalerginis-maistas/', 1],
-    ['LANDING', '/monoproteinis-maistas/', 1],
-    ['LANDING', '/be-grudu-maistas/', 1],
-    ['LANDING', '/odai-ir-kailiui/', 1],
-    ['JAU-TUREJO-H1', '/sunu-veisles/', 1],
-    ['JAU-TUREJO-H1', '/apie-mus/', 1],
-    ['JAU-TUREJO-H1', '/sprendimai/', 1],
-    ['HOMEPAGE', '/pagrindinis-test/', 1],
-    ['VEISLE', '/kolis/', 1],
-    ['VEISLE', '/bokseris/', 1],
-    ['VEISLE', '/taksas/', 1],
-    ['VEISLE', '/siamo-kate/', 1],
-    ['INFO', '/kontaktai/', 1],
-    ['INFO', '/pristatymas/', 1],
-    ['INFO', '/pasiulymai/', 1],
-    ['BLOG', '/hipoalerginis-maistas-senjoru-sunims-kaip-issirinkti-be-burtu/', 1],
-    ['BLOG', '/suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/', 1],
-    ['WOO', '/krepselis/', null],
-    ['WOO', '/mano-paskyra/', null],
-    ['WOO', '/apmokejimas/', null],
-  ];
-  let pass=0, fail=0;
-  for(const [grp, u, expect] of tests){
-    const html = get(u);
-    if(!html || html.length < 500){ out += 'FETCH-FAIL '+u+'\n'; fail++; continue; }
-    const h1s = [...html.matchAll(/<h1[^>]*>([\s\S]{0,150}?)<\/h1>/g)];
-    const n = h1s.length;
-    const auto = html.includes('petshop-auto-h1');
-    const texts = h1s.map(m=>m[1].replace(/<[^>]+>/g,'').trim().slice(0,45));
-    let verdict;
-    if(expect === null){ verdict = 'INFO(woo)'; }
-    else if(n === expect){ verdict='OK'; pass++; }
-    else { verdict='FAIL(tikėtasi '+expect+')'; fail++; }
-    out += verdict.padEnd(22)+' h1='+n+' auto='+(auto?'Y':'n')+'  '+grp.padEnd(14)+u+'\n';
-    if(texts.length) out += '                       → '+texts.join(' | ')+'\n';
-  }
-  out += '\nPASS='+pass+' FAIL='+fail+'\n';
+// === A. Woo sisteminiai TIKRAIS slug'ais ===
+out += '=== WOO SISTEMINIAI (snippet turi juos praleisti) ===\n';
+for(const u of ['/', '/cart/', '/checkout/', '/my-account/', '/shop/']){
+  const html = get(u);
+  if(!html || html.length<400){ out += '  FETCH-FAIL '+u+'\n'; continue; }
+  const a = analyze(html);
+  const verdict = a.auto === 0 ? 'OK (auto-H1 nepridetas)' : 'PROBLEMA: auto-H1 pridetas!';
+  out += '  '+verdict.padEnd(30)+' h1='+a.n+' auto='+a.auto+' 404='+a.is404+'  '+u+'\n';
+  if(a.texts.length) out += '        → '+a.texts.join(' | ')+'\n';
+}
+out += '\n';
 
-  // === Ar niekur nera >1 H1 (pilnas pages skenavimas) ===
-  let pages=[];
-  for(let p=1;p<=3;p++){
-    const r = api('/wp-json/wp/v2/pages?per_page=100&status=publish&_fields=id,slug,link&page='+p);
-    if(!r || r[0]!=='[') break;
-    let a; try{ a=JSON.parse(r); }catch(e){ break; }
-    if(!a.length) break; pages=pages.concat(a); if(a.length<100) break;
-  }
-  out += '\nPublished pages: '+pages.length+'\n';
-  putFile('step3.txt', out);
+// === B. Puslapiai kurie JAU turejo H1 - snippet NETURI prideti antro ===
+out += '=== JAU TUREJO H1 (auto turi buti 0) ===\n';
+for(const u of ['/pagrindinis-test/','/apie-mus/','/sprendimai/','/sunu-veisles/','/akcijos/','/jautrus-virskinimas/','/prieziuros-priemones-sunims/','/taisykles/']){
+  const html = get(u);
+  if(!html || html.length<400){ out += '  FETCH-FAIL '+u+'\n'; continue; }
+  const a = analyze(html);
+  const ok = (a.n === 1 && a.auto === 0);
+  out += '  '+(ok?'OK':'TIKRINTI').padEnd(10)+' h1='+a.n+' auto='+a.auto+'  '+u+'\n';
+  if(!ok && a.texts.length) out += '        → '+a.texts.join(' | ')+'\n';
+}
+out += '\n';
 
-  // === Screenshot: 1 veisle + 1 landing ===
-  const { chromium } = await import('playwright');
-  const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
-  for(const [name, u, w, h] of [['h1_veisle','/kolis/',1280,900],['h1_landing','/hipoalerginis-maistas/',1280,900],['h1_mobile','/kolis/',390,844]]){
-    const ctx = await browser.newContext({ httpCredentials:{ username:WPU, password:WPP }, ignoreHTTPSErrors:true, viewport:{width:w,height:h} });
-    const pg = await ctx.newPage();
-    await pg.goto(DEV+u+'?nc='+Date.now(), { waitUntil:'domcontentloaded', timeout:60000 });
-    await pg.waitForTimeout(3500);
-    putBin(name+'.png', await pg.screenshot({ fullPage:false }));
-    await ctx.close();
+// === C. Puslapiai kurie NETUREJO H1 - auto turi buti 1 ===
+out += '=== NETUREJO H1 (auto turi buti 1) ===\n';
+for(const u of ['/naujas-augintinis/','/hipoalerginis-maistas/','/monoproteinis-maistas/','/be-grudu-maistas/','/odai-ir-kailiui/','/kontaktai/','/pristatymas/','/pasiulymai/','/daugiau-pigiau/','/kolis/','/bokseris/','/taksas/','/siamo-kate/','/jorksyro-terjeras/','/senbernaras/']){
+  const html = get(u);
+  if(!html || html.length<400){ out += '  FETCH-FAIL '+u+'\n'; continue; }
+  const a = analyze(html);
+  const ok = (a.n === 1 && a.auto === 1);
+  out += '  '+(ok?'OK':'TIKRINTI').padEnd(10)+' h1='+a.n+' auto='+a.auto+'  '+u+'\n';
+  if(!ok && a.texts.length) out += '        → '+a.texts.join(' | ')+'\n';
+}
+out += '\n';
+
+// === D. BLOG postai - snippet NETURI liesti ===
+out += '=== BLOG POSTAI (auto turi buti 0) ===\n';
+const posts = api('/wp-json/wp/v2/posts?per_page=10&status=publish&_fields=id,slug,link');
+try{
+  const arr = JSON.parse(posts);
+  for(const p of arr.slice(0,4)){
+    const html = get('/'+p.slug+'/');
+    const a = analyze(html);
+    const ok = (a.n === 1 && a.auto === 0);
+    out += '  '+(ok?'OK':'TIKRINTI').padEnd(10)+' h1='+a.n+' auto='+a.auto+'  /'+p.slug+'/\n';
   }
-  await browser.close();
-})().catch(e=>{ console.log('ERR', String(e).slice(0,250)); });
+}catch(e){ out += '  posts read err\n'; }
+out += '\n';
+
+// === E. PILNAS SKENAVIMAS: visi published pages, ieskau >1 H1 ===
+out += '=== PILNAS SKENAVIMAS (visi published pages) ===\n';
+let pages=[];
+for(let p=1;p<=3;p++){
+  const r = api('/wp-json/wp/v2/pages?per_page=100&status=publish&_fields=id,slug,link&page='+p);
+  if(!r || r[0]!=='[') break;
+  let a; try{ a=JSON.parse(r); }catch(e){ break; }
+  if(!a.length) break; pages=pages.concat(a); if(a.length<100) break;
+}
+out += 'viso pages: '+pages.length+'\n';
+const zero=[], multi=[], ok1=[];
+for(const pg of pages){
+  const path = pg.link.replace(DEV,'');
+  const html = get(path);
+  if(!html || html.length<400){ out += '  FETCH-FAIL '+pg.slug+'\n'; continue; }
+  const a = analyze(html);
+  if(a.n === 0) zero.push(pg.slug);
+  else if(a.n > 1) multi.push(pg.slug+' ('+a.n+'): '+a.texts.join(' | '));
+  else ok1.push(pg.slug);
+}
+out += 'su 1 H1: '+ok1.length+'\n';
+out += 'BE H1 ('+zero.length+'): '+(zero.length?zero.join(', '):'-')+'\n';
+out += 'SU >1 H1 ('+multi.length+'): '+(multi.length?'\n  '+multi.join('\n  '):'-')+'\n';
+putFile('step4.txt', out);
