@@ -1,0 +1,107 @@
+=== VISI snippet'ai (100, aktyvūs 2) ===
+
+=== AKTYVŪS (2) ===
+  469 | Petshop Dev App Passwords v1 | scope=global
+  472 | Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply) | scope=global
+
+=== NEAKTYVŪS TEMP kandidatai (3) ===
+  86 | Tikrina kodėl ZB prekės su cost >= 8 yra draft | scope=global | modified=2026-06-01 14:59:33
+  87 | Kelia į publish ZB draft prekes, kurios atitinka VISUS kriterijus | scope=global | modified=2026-06-01 15:02:43
+  371 | Draft Publish Vykdymas v1 | scope=global | modified=2026-06-17 12:00:08
+
+=== KITI NEAKTYVŪS (95) ===
+  1 | Make upload filenames lowercase | scope=global
+  2 | Disable admin bar | scope=front-end
+  3 | Allow smilies | scope=global
+  4 | Current year | scope=content
+  5 | petshop kategorijos v2 | scope=global
+  8 | petshop menu subcats v1 | scope=global
+  9 | etshop sunims menu v1 | scope=global
+  10 | petshop sunims menu v2 | scope=global
+  11 | petshop katems menu v1 | scope=global
+  12 | petshop remaining menus v1 | scope=global
+  13 | petshop remap categories v1 | scope=global
+  14 | petshop remap categories v2 | scope=global
+  15 | petshop cleanup empty cats v1 | scope=global
+  16 | Petshop reset menu options v1  | scope=global
+  72 | del pauksciu | scope=global
+  71 | Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis) | scope=global
+  70 | Tikri slug | scope=global
+  40 | ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas | scope=global
+  41 | Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg | scope=global
+  42 | ZB prekės be aprašymo | scope=global
+  69 | Diagnostinis snippet'as Du žingsniai2 | scope=global
+  44 | Pataisyti prekes su per dideliais matmenimis - kurjeris | scope=global
+  47 |  Base64 aprašymo pavyzdys | scope=global
+  48 | Base64 nuotraukos išvalymas iš aprašymų | scope=global
+  50 | ZB prekių skaičius1 | scope=global
+  51 | ZB brendų priskyrimas brand taksonomijoje1.1 | scope=global
+  52 | ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas | scope=global
+  53 | ZB prekės be brando — priskirti iš pavadinimo | scope=global
+  54 | 4 likusių prekių brandų priskyrimas | scope=global
+  55 | ZB prekės be nuotraukos | scope=global
+  56 | ZB nuotraukų importas iš katalogo | scope=global
+  58 | Patikrinti paieškos HTML struktūrą | scope=global
+  59 | ZB nuotraukų importas — pataisytas URL | scope=global
+  60 | atikrinti filterSearch HTML | scope=global
+  61 | ZB nuotraukų indekso kūrimas iš brendų puslapių | scope=global
+  62 | Patikrinti brendų puslapio HTML struktūrą | scope=global
+  63 | ZB indekso kūrimas v2 — data-lazyloadsrc iš sąrašo | scope=global
+  64 | ZB indekso kūrimas v3 — su ilgesnėmis pauzėmis | scope=global
+  65 | ZB indekso kūrimas v3 — admin_init | scope=global
+  66 | ZB indekso kūrimas — per admin puslapį | scope=global
+  397 | Monoprotein Dry-Run v5 (daugiau brendu) | scope=global
+  75 | Masinis pa_pakuotes_dydis priskyrimas iš pavadinimų | scope=global
+  76 | Tikrina prekes kur kg = gyvūno svoris, ne pakuotė | scope=global
+  78 | Tikrina naujos prekės meta laukus | scope=global
+  79 | Palygina kainas tarp seno ir naujo XML | scope=global
+  80 | Perskaičiuoja visų ZB prekių kainas pagal naują logiką | scope=global
+  81 | Tikrina dublikatus pagal SKU | scope=global
+  82 | Perkelia aprašymus + nuotraukas iš NAUJŲ (2026-06-01) į SENUS (2026-05-27) | scope=global
+  83 | Parodo "Kita" prekių ZB kategorijų kelius iš XML | scope=global
+  84 | Priskiria WC kategorijas "Kita" prekėms pagal ZB XML <category> kelią | scope=global
+  88 | kiek iš paskelbtų yra ZB prekės | scope=global
+  90 | FBT pradinis konfigūravimas — sausas maistas → skanėstai | scope=global
+  92 | VetFarmas inventorizacija v3 | scope=global
+  94 | SKU \u2192 EAN matching i\u0161 VetFarmas XML | scope=global
+  95 | Vetocanis matching pagal pavadinim\u0105 | scope=global
+  96 | VetFarmas API helper | scope=global
+  98 | vf_desc_peek | scope=global
+  101 | vf_parser_v3 | scope=global
+  468 | Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply) | scope=global
+  473 | Petshop Attr Modulis: Kraikai Katems v1.0 (parseris + dry/apply) | scope=global
+  105 | EAN normalizacija — _global_unique_id 13→12 skaitm. | scope=global
+  106 | WooCommerce kategorijų eksportas — hierarchija + prekių skaičius | scope=global
+  393 | Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis) | scope=global
+  394 | Monoprotein Dry-Run v2 (isvestinis) | scope=global
+  395 | Monoprotein Dry-Run v3 (sudetis-grieztas) | scope=global
+  396 | Monoprotein Dry-Run v4 (brendai + riebalu fix) | scope=global
+  110 | ZB IMPORT LOG STEBĖJIMAS — realiu laiku | scope=global
+  385 | Baltymu Saltinis Apply Sausas Aprasymai v1 (32 svarus) | scope=global
+  386 | Baltymu Saltinis Apply Sausas EXOTIC v1 | scope=global
+  387 | Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi) | scope=global
+  116 | Trash zonos pakitimo tyrimas | scope=global
+  120 | Cleanup Excluded | scope=global
+  121 | trash_disappear | scope=global
+  388 | Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena) | scope=global
+  389 | Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem) | scope=global
+  124 | zb_disaster_recovery | scope=global
+  125 | publish_diag | scope=global
+  126 | zb_recovery2 | scope=global
+  127 | ZB analitinis snippet'as — DUOMENYS ZB politikai v2 | scope=global
+  373 | Atributai Inventorius v2 (tikslus slug) | scope=global
+  372 | tributai Inventorius v1 (read-only) | scope=global
+  129 | Today Changes | scope=global
+  130 | Duplicate analyze | scope=global
+  131 | ZB Nuke Option | scope=global
+  132 | New ZB Diag | scope=global
+  133 | zb_nuke_today | scope=global
+  134 |  assign_categories v3 | scope=global
+  136 | assign_categories v2 | scope=global
+  137 | ZB Sanity Check | scope=global
+  138 | Abakus Unpublish | scope=global
+  153 | petshop.lt WEIGHT NORMALIZER | scope=global
+  155 | petshop_brand_apply v7 | scope=global
+  156 | Prekių ženklai labels | scope=global
+  158 |  WC Categories — pre-VF-mapping cleanup | scope=global
+  460 | Transportavimo dezes rename - sunims/katems galune | scope=global
