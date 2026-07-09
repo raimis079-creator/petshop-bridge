@@ -10,81 +10,76 @@ function fetch(u){ try{ return execSync('curl -sk -u "$WPU:$WPP" --max-time 120 
 
 const IDS = [69,137,191,438,439,444,456,487,488,489,490,491,496,497,498,499,500,501,504,505,506,508,511,522,523,526,527,528,529,530,531,533,534,536,537,538,540,541,542,543,544,545,546,548,549,551,552,553,554,574,575,576,577,578,579,580,581,583,584,585,586,588,589,590,591,592,593,595,596,597,598,599,600,601,602,603,604,605,606,607,608];
 
-let out='';
+(async()=>{
+  let out='';
 
-// 1. Sukurti bulk_del snippet'a NEAKTYVU
-const cr = api('/wp-json/code-snippets/v1/snippets','POST',{
-  name: 'Petshop Bulk Snippet Delete v1 (TEMP)',
-  code: SNIP,
-  scope: 'global',
-  active: false,
-  priority: 5
-});
-let sid = null;
-try{ const j=JSON.parse(cr); sid=j.id; out += 'sukurta snippet id='+sid+'\n'; }
-catch(e){ out += 'CR ERR: '+cr.slice(0,200)+'\n'; putFile('bulkdel.txt', out); return; }
+  const cr = api('/wp-json/code-snippets/v1/snippets','POST',{
+    name: 'Petshop Bulk Snippet Delete v1 (TEMP)',
+    code: SNIP,
+    scope: 'global',
+    active: false,
+    priority: 5
+  });
+  let sid = null;
+  try{ const j=JSON.parse(cr); sid=j.id; out += 'sukurta snippet id='+sid+'\n'; }
+  catch(e){ out += 'CR ERR: '+cr.slice(0,200)+'\n'; putFile('bulkdel.txt', out); return; }
 
-// 2. Patikra code_error
-const rb = api('/wp-json/code-snippets/v1/snippets/'+sid);
-try{
-  const j = JSON.parse(rb);
-  out += 'code_error: '+(j.code_error === null ? 'null (OK)' : JSON.stringify(j.code_error))+'\n';
-  if(j.code_error !== null){ putFile('bulkdel.txt', out); return; }
-}catch(e){}
-
-// 3. Aktyvinu
-api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:true});
-await new Promise(r=>setTimeout(r,3000));
-out += 'aktyvintas\n\n';
-
-// 4. Trigger (81 ID)
-const idParam = IDS.join(',');
-out += '=== TRIGGER response ===\n';
-const res = fetch('/?bulk_snip_del='+idParam+'&nc='+Date.now());
-out += res.slice(0,6000)+'\n\n';
-
-// 5. DEAKTYVUOJU bulk_del snippet'a
-api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:false});
-out += 'deaktyvintas\n\n';
-
-// 6. Post-verify: sarasas dabar
-let all = [];
-for(let page=1; page<=10; page++){
-  const r = api('/wp-json/code-snippets/v1/snippets?per_page=100&page='+page+'&_fields=id,name,active');
+  const rb = api('/wp-json/code-snippets/v1/snippets/'+sid);
   try{
-    const arr = JSON.parse(r);
-    if(!Array.isArray(arr) || arr.length === 0) break;
-    all = all.concat(arr);
-    if(arr.length < 100) break;
-  }catch(e){ break; }
-}
-out += '=== POST-VERIFY ===\n';
-out += 'total: '+all.length+' (buvo 359+1)\n';
-out += 'aktyvūs: '+all.filter(x=>x.active).length+'\n';
-const stillExist = IDS.filter(id => all.find(x=>x.id===id));
-out += 'iš 81 dar liko: '+stillExist.length+'\n';
-if(stillExist.length > 0) out += 'likę ID: '+stillExist.slice(0,20).join(',')+'\n';
+    const j = JSON.parse(rb);
+    out += 'code_error: '+(j.code_error === null ? 'null (OK)' : JSON.stringify(j.code_error))+'\n';
+    if(j.code_error !== null){ putFile('bulkdel.txt', out); return; }
+  }catch(e){}
 
-// 7. Homepage verify
-const { chromium } = await import('playwright');
-const b = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
-const ctx = await b.newContext({ ignoreHTTPSErrors:true, viewport:{width:1280,height:900} });
-const p = await ctx.newPage();
-await p.goto(DEV+'/?nc='+Date.now(), { waitUntil:'load', timeout:60000 });
-await p.waitForTimeout(3500);
-const chk = await p.evaluate(()=>{
-  const heroBg = document.querySelector('.ph-hero-bg');
-  const cats = [...document.querySelectorAll('.ph-cat-img')];
-  return {
-    hero: heroBg ? getComputedStyle(heroBg).backgroundImage.includes('hero-augintiniai') : false,
-    cats: cats.filter(i=>i.complete&&i.naturalWidth>0).length+'/'+cats.length,
-    tb: document.querySelectorAll('.ph-tb-item').length,
-    e5: !!document.querySelector('.ph-e5'),
-    footer: document.querySelectorAll('#custom_html-2, #custom_html-3, #custom_html-4, #custom_html-5').length,
-  };
-});
-out += '\n=== Homepage / ===\n'+JSON.stringify(chk,null,1)+'\n';
-await ctx.close();
-await b.close();
+  api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:true});
+  await new Promise(r=>setTimeout(r,3000));
+  out += 'aktyvintas\n\n';
 
-putFile('bulkdel.txt', out);
+  const idParam = IDS.join(',');
+  out += '=== TRIGGER response ===\n';
+  const res = fetch('/?bulk_snip_del='+idParam+'&nc='+Date.now());
+  out += res.slice(0,6000)+'\n\n';
+
+  api('/wp-json/code-snippets/v1/snippets/'+sid,'PUT',{active:false});
+  out += 'bulk_del snippet deaktyvintas\n\n';
+
+  let all = [];
+  for(let page=1; page<=10; page++){
+    const r = api('/wp-json/code-snippets/v1/snippets?per_page=100&page='+page+'&_fields=id,name,active');
+    try{
+      const arr = JSON.parse(r);
+      if(!Array.isArray(arr) || arr.length === 0) break;
+      all = all.concat(arr);
+      if(arr.length < 100) break;
+    }catch(e){ break; }
+  }
+  out += '=== POST-VERIFY ===\n';
+  out += 'total: '+all.length+'\n';
+  out += 'aktyvūs: '+all.filter(x=>x.active).length+'\n';
+  const stillExist = IDS.filter(id => all.find(x=>x.id===id));
+  out += 'iš 81 dar liko: '+stillExist.length+'\n';
+  if(stillExist.length > 0 && stillExist.length < 20) out += 'ID: '+stillExist.join(',')+'\n';
+
+  const { chromium } = await import('playwright');
+  const b = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
+  const ctx = await b.newContext({ ignoreHTTPSErrors:true, viewport:{width:1280,height:900} });
+  const p = await ctx.newPage();
+  await p.goto(DEV+'/?nc='+Date.now(), { waitUntil:'load', timeout:60000 });
+  await p.waitForTimeout(3500);
+  const chk = await p.evaluate(()=>{
+    const heroBg = document.querySelector('.ph-hero-bg');
+    const cats = [...document.querySelectorAll('.ph-cat-img')];
+    return {
+      hero: heroBg ? getComputedStyle(heroBg).backgroundImage.includes('hero-augintiniai') : false,
+      cats: cats.filter(i=>i.complete&&i.naturalWidth>0).length+'/'+cats.length,
+      tb: document.querySelectorAll('.ph-tb-item').length,
+      e5: !!document.querySelector('.ph-e5'),
+      footer: document.querySelectorAll('#custom_html-2, #custom_html-3, #custom_html-4, #custom_html-5').length,
+    };
+  });
+  out += '\n=== Homepage / ===\n'+JSON.stringify(chk,null,1)+'\n';
+  await ctx.close();
+  await b.close();
+
+  putFile('bulkdel.txt', out);
+})().catch(e=>{ console.log('ERR', String(e).slice(0,300)); });
