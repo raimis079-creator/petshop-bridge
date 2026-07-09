@@ -1,0 +1,46 @@
+=== WOO SISTEMINIAI (snippet turi juos praleisti) ===
+  OK (auto-H1 nepridetas)        h1=0 auto=0 404=false  /
+  OK (auto-H1 nepridetas)        h1=0 auto=0 404=false  /cart/
+  OK (auto-H1 nepridetas)        h1=0 auto=0 404=false  /checkout/
+  OK (auto-H1 nepridetas)        h1=1 auto=0 404=false  /my-account/
+        → Mano paskyra
+  OK (auto-H1 nepridetas)        h1=0 auto=0 404=false  /shop/
+
+=== JAU TUREJO H1 (auto turi buti 0) ===
+  OK         h1=1 auto=0  /pagrindinis-test/
+  OK         h1=1 auto=0  /apie-mus/
+  OK         h1=1 auto=0  /sprendimai/
+  OK         h1=1 auto=0  /sunu-veisles/
+  OK         h1=1 auto=0  /akcijos/
+  OK         h1=1 auto=0  /jautrus-virskinimas/
+  OK         h1=1 auto=0  /prieziuros-priemones-sunims/
+  OK         h1=1 auto=0  /taisykles/
+
+=== NETUREJO H1 (auto turi buti 1) ===
+  OK         h1=1 auto=1  /naujas-augintinis/
+  OK         h1=1 auto=1  /hipoalerginis-maistas/
+  OK         h1=1 auto=1  /monoproteinis-maistas/
+  OK         h1=1 auto=1  /be-grudu-maistas/
+  OK         h1=1 auto=1  /odai-ir-kailiui/
+  OK         h1=1 auto=1  /kontaktai/
+  OK         h1=1 auto=1  /pristatymas/
+  OK         h1=1 auto=1  /pasiulymai/
+  OK         h1=1 auto=1  /daugiau-pigiau/
+  OK         h1=1 auto=1  /kolis/
+  OK         h1=1 auto=1  /bokseris/
+  OK         h1=1 auto=1  /taksas/
+  OK         h1=1 auto=1  /siamo-kate/
+  OK         h1=1 auto=1  /jorksyro-terjeras/
+  OK         h1=1 auto=1  /senbernaras/
+
+=== BLOG POSTAI (auto turi buti 0) ===
+  OK         h1=1 auto=0  /monoproteininis-maistas-sunims-kas-tai-ir-kada-verta-rinktis/
+  OK         h1=1 auto=0  /hipoalerginis-maistas-senjoru-sunims-kaip-issirinkti-be-burtu/
+  OK         h1=1 auto=0  /suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/
+  OK         h1=1 auto=0  /auksciausios-kokybes-pasarai-sunims-katems-rasco/
+
+=== PILNAS SKENAVIMAS (visi published pages) ===
+viso pages: 56
+su 1 H1: 53
+BE H1 (3): checkout, cart, shop
+SU >1 H1 (0): -
