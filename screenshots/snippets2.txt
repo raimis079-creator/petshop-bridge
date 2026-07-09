@@ -1,0 +1,157 @@
+Iš viso snippet'ų DB'ėje: 359
+Aktyvūs: 48
+
+=== VISI AKTYVŪS (48) ===
+  469 | Petshop Dev App Passwords v1 | scope=global
+  472 | Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply) | scope=global
+  461 | Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS | scope=global
+  463 | Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija) | scope=global
+  464 | Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply) | scope=global
+  239 | Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti) | scope=global
+  465 |  Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo) | scope=global
+  375 | Baltymu Saltinis Dry-Run Konservai v2 | scope=global
+  329 | Petshop Filtrai PILNAS v14 [VISADA AKTYVUS] | scope=global
+  332 | Petshop Filtru Kontekstas v19 [VISADA AKTYVUS] | scope=global
+  492 | Petshop Filtru Atidarymas v2 (CSS+JS) | scope=global
+  493 | Petshop Filtru Atidarymas v1 (no lazy-load) | scope=global
+  494 | Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply) | scope=global
+  502 | Higienos Modulis v1.0 | scope=global
+  503 | Grauziko Rusis Modulis v1.2 | scope=global
+  507 | Paukscio Rusis Modulis v1.3 | scope=global
+  509 | Zuvies Rusis Modulis v1.0 | scope=global
+  510 | Pasaro Forma Modulis v1.1 | scope=global
+  512 | Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems) | scope=global
+  513 | Petshop Katalogo Auditas v1 (read-only) | scope=global
+  514 | Petshop Import-Risk Recon v1 (read-only) | scope=global
+  518 | Petshop Slėpti svorį ir dimensijas v1 (display only) | scope=global
+  520 | Petshop Meniu Grupavimas v1 (komerciniai 3) | scope=front-end
+  524 | Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta) | scope=global
+  525 | Petshop UI: kortelės + mobile sticky ATC | scope=global
+  532 | Petshop MnM Fiksuoti komponentų kiekiai v2 | scope=global
+  535 | Petshop MnM Sutaupymo žymeklis v7 (be badge) | scope=global
+  539 | Petshop Rinkinių Kūrimo Forma v2 | scope=admin
+  547 | Petshop Susidėjimo Rinkinio Vitrina v19 | scope=global
+  550 | Petshop Susidėjimo Rinkinio Kūrimo Forma v15 | scope=admin
+  558 | Petshop Choice Krepšelio Elgsena | scope=global
+  560 | Petshop Rinkinio CTA Banneris kategorijose v7 | scope=front-end
+  561 | Petshop Rinkinių Gyvūno Filtras v1 | scope=front-end
+  566 | Petshop Akcijos Shortcode v1.3 | scope=global
+  563 | Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva) | scope=front-end
+  562 | Petshop Sprendimai Shortcode Variklis v9 | scope=front-end
+  565 | Petshop VF Sync v1.1 (reprice+stock+publish) | scope=global
+  567 | Petshop Daugiau=Pigiau Stock Sync v1.2 | scope=global
+  568 | Petshop Daugiau=Pigiau Display v1.2 | scope=global
+  569 | Petshop Pack/Rinkinys Auto-Categories v1.3 | scope=global
+  570 | Petshop Daugiau=Pigiau Puslapis Shortcode v1.0 | scope=global
+  572 | Petshop Daugiau=Pigiau Šablono Kūrimo Forma v8 | scope=admin
+  573 | Petshop DP Kortelės Ženkliukas v4 | scope=global
+  582 | Petshop LP Terminalu Svorio Riba v1 (29.90kg) | scope=global
+  587 | Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1 | scope=global
+  594 | Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1 | scope=global
+  609 | SEO Auto H1 v1 (page fallback + _petshop_h1) | scope=front-end
+  610 | Petshop Topbar v2 | scope=front-end
+
+=== NAUJI (id >= 587) (25) ===
+  [ON ] 587 | Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1 | scope=global
+  [off] 595 | TEMP home recon | scope=global
+  [off] 588 | TEMP form probe | scope=global
+  [off] 589 | TEMP mk form | scope=global
+  [off] 590 | TEMP mk form | scope=global
+  [off] 591 | TEMP simple list | scope=global
+  [off] 592 | TEMP mkform x7 | scope=global
+  [off] 593 | TEMP fix form label | scope=global
+  [ON ] 594 | Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1 | scope=global
+  [off] 596 | TEMP flush rewrites | scope=global
+  [off] 597 | TEMP ydiag | scope=global
+  [off] 598 | TEMP pdump | scope=global
+  [off] 599 | TEMP rawf | scope=global
+  [off] 600 | TEMP yfix | scope=global
+  [off] 601 | TEMP cmp | scope=global
+  [off] 602 | TEMP cmp2 | scope=global
+  [off] 603 | TEMP yresave | scope=global
+  [off] 604 | TEMP regen | scope=global
+  [off] 605 | TEMP waxfix | scope=global
+  [off] 606 | TEMP slugfix | scope=global
+  [off] 607 | TEMP lookupdiag | scope=global
+  [off] 608 | TEMP lookupfix2 | scope=global
+  [ON ] 609 | SEO Auto H1 v1 (page fallback + _petshop_h1) | scope=front-end
+  [ON ] 610 | Petshop Topbar v2 | scope=front-end
+  [off] 611 | Petshop Frontpage Setter v1 (TEMP) | scope=global
+
+=== TEMP kandidatai visame sąraše (76) ===
+  [off] 371 | Draft Publish Vykdymas v1
+  [off] 487 | TEMP Sampunu Preset Maker
+  [off] 488 | TEMP Samp Inspect
+  [off] 489 | TEMP Samp Fix Final
+  [off] 490 | TEMP YITH Render Probe
+  [off] 491 | TEMP YITH Render Probe
+  [off] 496 | TEMP Suku Maker
+  [off] 497 | TEMP Diag2
+  [off] 498 | TEMP Menu Fix
+  [off] 499 | TEMP Menu Fix
+  [off] 500 | TEMP Menu Check
+  [off] 501 | TEMP Menu Move
+  [off] 504 | TEMP Yith Dump
+  [off] 505 | TEMP Make Tevine
+  [off] 506 | TEMP Make GRR
+  [off] 508 | TEMP Make PKR
+  [off] 511 | TEMP Make ZUV
+  [off] 523 | TEMP Petshop MnM Hooks Reader v1 (TEMP)
+  [off] 522 | TEMP Petshop MnM Hooks Probe v1 (TEMP)
+  [off] 526 | TEMP MnM Probe
+  [off] 527 | TEMP MnM Reader
+  [off] 528 | TEMP Probe2
+  [off] 529 | TEMP Probe3
+  [off] 530 | TEMP Probe4
+  [off] 531 | TEMP Probe5
+  [off] 533 | TEMP P6
+  [off] 534 | TEMP P7
+  [off] 536 | TEMP SavProbe
+  [off] 537 | TEMP PP
+  [off] 538 | TEMP GD Probe
+  [off] 540 | TEMP Stock Probe
+  [off] 541 | TEMP Koju Test
+  [off] 542 | TEMP Koju2
+  [off] 543 | TEMP KC
+  [off] 544 | TEMP Choice Probe
+  [off] 545 | TEMP Switch Probe
+  [off] 546 | TEMP Build Choice
+  [off] 549 | TEMP Cost Probe
+  [off] 548 | TEMP MnM Render Probe
+  [off] 551 | TEMP WH Probe
+  [off] 552 | TEMP WH2 Probe
+  [off] 553 | TEMP FS Probe
+  [off] 554 | TEMP AV Dryrun
+  [off] 574 | PS Recon Probe 0707 (laikinas)
+  [off] 575 | TEMP ship probe
+  [off] 576 | TEMP ship probe
+  [off] 577 | TEMP weight probe
+  [off] 578 | TEMP ship dry
+  [off] 579 | TEMP ship dry
+  [off] 580 | TEMP verify w
+  [off] 581 | TEMP vp weight
+  [off] 583 | TEMP lp test
+  [off] 584 | TEMP lp test2
+  [off] 585 | TEMP cart test
+  [off] 586 | TEMP fee find
+  [off] 595 | TEMP home recon
+  [off] 588 | TEMP form probe
+  [off] 589 | TEMP mk form
+  [off] 590 | TEMP mk form
+  [off] 591 | TEMP simple list
+  [off] 592 | TEMP mkform x7
+  [off] 593 | TEMP fix form label
+  [off] 596 | TEMP flush rewrites
+  [off] 597 | TEMP ydiag
+  [off] 598 | TEMP pdump
+  [off] 599 | TEMP rawf
+  [off] 600 | TEMP yfix
+  [off] 601 | TEMP cmp
+  [off] 602 | TEMP cmp2
+  [off] 603 | TEMP yresave
+  [off] 604 | TEMP regen
+  [off] 605 | TEMP waxfix
+  [off] 606 | TEMP slugfix
+  [off] 607 | TEMP lookupdiag
+  [off] 608 | TEMP lookupfix2
+  [off] 611 | Petshop Frontpage Setter v1 (TEMP)
