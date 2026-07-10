@@ -1,0 +1,37 @@
+### CONSENT DIAGNOSTIKA ###
+
+=== 1. Uzklausu eiliskumas ===
+  1. https://www.googletagmanager.com/gtm.js?id=GTM-MF3GZGT
+  2. https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG&cx=c&gtm=4e6781
+  3. https://connect.facebook.net/en_US/fbevents.js
+  4. https://www.google-analytics.com/g/collect?v=2&tid=G-FMTKEGGLMG&gtm=45je6781v898
+  5. https://www.facebook.com/tr/?id=1097111687955877&ev=PageView&dl=https%3A%2F%2Fde
+
+=== 2. GA4 gcs parametras ===
+  gcs = G100   gcd = 13p3p3p3p5l1
+    G100 = ad_storage denied, analytics_storage denied
+    G111 = abu granted
+    -> reiskia: ✅ consent PERDUOTAS (denied)
+
+=== 3. GTM vidine consent busena ===
+  google_tag_manager keys: ["debugGroupId","tcf","pscdl","GTM-MF3GZGT","rm","dataLayer","mb","r","sequence","ads_pageview","dedupe_gclid","SANDBOXED_JS_SEMAPHORE","G-FMTKEGGLMG","autoEventsSettings","grl"]
+  dataLayer consent iraso pozicija ir turinys:
+    [idx 1] default -> {"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","personalization_storage":"granted","security_storage":"granted","wait_for_update":500}
+
+=== 4. dataLayer pilnas (pirmi 12 irasu) ===
+  0: event=gtm.js
+  1: ARGS[consent,default]
+  2: ARGS[set,ads_data_redaction]
+  3: ARGS[set,url_passthrough]
+  4: event=gtm.dom
+  5: event=gtm.load
+
+=== 5. Meta pixel busena ===
+  fbq: true   queue: []
+  facebook.com/tr uzklausu: 1
+
+=== 6. ISVADA ===
+  GA4 uzklausu: 1   Meta uzklausu: 1
+  gcs: G100
+  >>> Consent Mode VEIKIA: GA4 gauna denied, siuncia cookieless ping.
+  >>> Bet GTM consentSettings=needed NEBLOKUOJA tag'o (tikejomes blokuoti).
