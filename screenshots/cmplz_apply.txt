@@ -1,0 +1,50 @@
+############ BANERIO APPLY + VERIFIKACIJA ############
+
+=== 1. APPLY ===
+  HTTP 200
+  mode: APPLY
+  updated (eiluciu): 1
+  db_error: nera ✅
+  banner_version: 36 -> 37
+  cache isvalyta: ["transients","wp_cache_flush"]
+
+  PO ATNAUJINIMO (is DB):
+    header:  {"text":"Slapukai ir privatumas","show":1}
+    dismiss: {"text":"Atmesti","show":1}
+    hyperlink spalva: {"color":"#222222","hyperlink":"#2D5F3F"}
+    banner_version: 37
+    message_optin: "Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnė..."
+
+=== 2. Vizuali verifikacija (Playwright) ===
+  Antraste : "Slapukai ir privatumas"
+  Zinute   : "Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji "
+
+  Mygtukai:
+    accept: "PRIIMTI"   fonas: rgb(59, 41, 255)   tekstas: rgb(255, 255, 255)
+    deny  : "ATMESTI"
+    view  : "PERŽIŪRĖTI NUOSTATAS"
+
+  Nuorodu spalva: rgb(59, 41, 255)
+
+  Matomos nuorodos:
+    "Slapukų politika" -> /slapuku-politika-es/
+    "Slapukų naudojimas" -> /slapuku-politika/
+
+  ✅ antraste pakeista
+  ✅ atmesti mygtukas
+  ✅ zinute be dublio
+  ❌ zalias accept (45,95,63)
+  ❌ zalios nuorodos
+
+=== 3. Kategorijos (Peržiūrėti nuostatas) ===
+  [1] Funkcinis      eilute=MATOMA  jungiklis=paslėptas  (cmplz_functional)
+  [2] Parinktys      eilute=paslepta  jungiklis=paslėptas  (cmplz_preferences)
+  [3] Statistika     eilute=MATOMA  jungiklis=MATOMAS  (cmplz_statistics)
+  [4] Rinkodara      eilute=MATOMA  jungiklis=MATOMAS  (cmplz_marketing)
+
+  Matomu jungikliu: 2  ✅ (Statistika + Rinkodara)
+  „Parinktys" eilute: ✅ paslepta
+
+=== 4. legal_documents laukas (nuoroda "Slapukų naudojimas") ===
+  legal_documents: "1"
+  privacy-statement: "'custom'"
