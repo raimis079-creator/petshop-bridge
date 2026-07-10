@@ -1,0 +1,83 @@
+############ DUOMENU TRAUKIMAS I REPO ############
+periodas GSC: 2025-03-01 .. 2026-07-09   GA4: 2026-01-10 .. 2026-07-09
+
+=== GSC ===
+  page: 2445 eiluciu
+    viso clicks: 19735   impressions: 1160408   CTR: 1.70%
+  TOP 12 puslapiu:
+     1925  /                                                      impr= 81881  pos=11.4
+      876  /suns-serimo-lentele-gramais                           impr=  9808  pos=8.0
+      792  /jorksyro-terjeras                                     impr= 36794  pos=7.4
+      732  /taksas                                                impr= 33275  pos=7.6
+      695  /rusu-melynoji                                         impr= 39038  pos=6.7
+      468  /zuvims-2007550667/tvenkiniu-zuvu-maistas              impr= 21923  pos=10.2
+      456  /kaukazo-aviganis                                      impr= 48177  pos=4.4
+      413  /dzeko-raselo-terjeras                                 impr= 43596  pos=7.5
+      409  /sunims/antiparazitines-priemones-sunims               impr= 11939  pos=15.1
+      382  /katems/tualetai-kraiku-semtuveliai-kilimeliai         impr= 15994  pos=9.1
+      378  /amerikieciu-buldogas                                  impr= 18448  pos=6.0
+      327  /cvergsnauceris                                        impr= 27545  pos=8.2
+
+  query: 6488 eiluciu
+  TOP 12 uzklausu:
+      283  kaukazo aviganis                               impr= 34882  pos=3.9
+      273  petshop                                        impr=  2933  pos=2.3
+      225  gyvunu prekes                                  impr=  5325  pos=8.4
+      139  tibeto mastifas                                impr= 16731  pos=6.0
+      118  sepijos kaulas                                 impr=  1124  pos=1.8
+      109  kiek gramu maisto duoti suniui                 impr=  2626  pos=10.0
+      103  amerikiečių buldogas                           impr=  2880  pos=1.8
+      102  pet shop                                       impr=  2116  pos=2.9
+       99  mastifas                                       impr= 11279  pos=2.2
+       93  rotveileris                                    impr= 35609  pos=8.3
+       86  gyvūnų prekės                                  impr=  3193  pos=9.1
+       80  džeko raselo terjeras                          impr= 10550  pos=7.9
+
+  page x query: 12369 eiluciu
+
+=== GA4 (6 men.) ===
+  saltiniu: 45   viso pajamu: 64333.44 EUR
+  TOP 10 pagal pajamas:
+    google / cpc                     rev= 36308  sess=19227  tx= 870  konv=4.52%
+    (direct) / (none)                rev= 14812  sess= 1987  tx= 329  konv=16.56%
+    kaina24.lt / referral            rev=  4654  sess= 1166  tx= 115  konv=9.86%
+    google / organic                 rev=  4046  sess= 4605  tx= 140  konv=3.04%
+    kainos.lt / referral             rev=  1492  sess=  424  tx=  38  konv=8.96%
+    (data not available)             rev=  1347  sess=  233  tx=  31  konv=13.30%
+    m.facebook.com / referral        rev=   427  sess=  101  tx=  13  konv=12.87%
+    (not set)                        rev=   345  sess=  156  tx=   7  konv=4.49%
+    newsletter / email               rev=   182  sess=  144  tx=   3  konv=2.08%
+    bing / organic                   rev=   175  sess=   42  tx=   5  konv=11.90%
+
+  produktu: 1313
+  TOP 10 pagal pajamas:
+      4125 EUR    95 vnt  Exclusion Hypoallergenic mažų veislių šunų maist
+      1935 EUR    32 vnt  Exclusion Hypoallergenic sausas šunų maistas su 
+      1524 EUR    48 vnt  Josera Sensiplus 12,5 kg - sausas maistas šunims
+      1262 EUR    15 vnt  2 vnt. - Exclusion Hypoallergenic mažų veislių š
+      1092 EUR    30 vnt  JOSERA LAMB &amp; RICE pašaras šunims su ėriena,
+      1069 EUR    32 vnt  2 vnt. - Exclusion Hypoallergenic mažų veislių š
+       991 EUR    58 vnt  Exclusion Hypoallergenic mažų veislių šunų maist
+       760 EUR    17 vnt  Josera Salmon &amp; Potato 12,5 kg - begrūdis sa
+       700 EUR    11 vnt  Exclusion Hypoallergenic sausas šuniukų maistas 
+       692 EUR    17 vnt  AMBROSIA begrūdis su ėriena ir šviežia elniena s
+
+  Funnel (event counts, 6 men.):
+    session_start        28150
+    view_item            32489
+    add_to_cart           6857
+    begin_checkout        2685
+    purchase              1563
+
+    view_item -> add_to_cart:      21.1%
+    add_to_cart -> begin_checkout: 39.2%
+    begin_checkout -> purchase:    58.2%  ← CIA NUTEKA
+
+  Irenginiai:
+    mobile     sess= 23464  rev= 43464  konv=4.66%
+    desktop    sess=  4783  rev= 20012  konv=9.45%
+    tablet     sess=   265  rev=   857  konv=6.42%
+
+=== Failai repo: analize/ ===
+  gsc_pages.json  gsc_queries.json  gsc_page_query.json
+  ga4_source_medium.json  ga4_products.json  ga4_events.json  ga4_device.json
