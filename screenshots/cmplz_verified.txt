@@ -1,0 +1,27 @@
+############ FINALINE BANERIO PATIKRA ############
+
+  antraste : "Slapukai ir privatumas"
+  zinute   : "Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analit"
+  mygtukai : PRIIMTI="PRIIMTI"  DENY="ATMESTI"  VIEW="PERŽIŪRĖTI NUOSTATAS"
+  accept   : fonas=rgb(45, 95, 63)  tekstas=rgb(255, 255, 255)
+  nuorodos : spalva=rgb(45, 95, 63)
+
+  Matomos nuorodos:
+    "Slapukų politika"  ->  /slapuku-politika-es/
+    "Privatumo politika"  ->  /privatumo-politika/
+
+  JS config:
+    banner_version: 37
+    categories: {"statistics":"statistika","marketing":"rinkodara"}
+    page_links.eu: {"cookie-statement":{"title":"Slapukų politika ","url":"https://dev.avesa.lt/slapuku-politika-es/"},"privacy-statement":{"title":"Privatumo politika","url":"https://dev.avesa.lt/privatumo-politika/"}}
+
+  ✅ antraste "Slapukai ir privatumas"
+  ✅ mygtukas ATMESTI (ne Neigti)
+  ✅ zinute be "funkcijas ir funkcijas"
+  ✅ accept mygtukas zalias #2D5F3F
+  ✅ nuorodos zalios
+  ✅ nera nuorodos i sena /slapuku-politika/
+  ✅ privacy-statement -> /privatumo-politika/
+  ✅ tik 2 kategorijos config'e
+
+  8/8 patikru praejo
