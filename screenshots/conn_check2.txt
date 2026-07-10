@@ -1,0 +1,15 @@
+=== WORDPRESS dev.avesa.lt ===
+  WP_USER: bdz487   WP_APP_PASS: 24 chars
+
+  Auth (users/me)          HTTP 403
+      -> <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>403 Forbidden</title><meta name="viewport" content="width=device-width, in
+  Complianz plugin         HTTP 200
+      -> Complianz | BDAR/CCPA sutikimas naudoti slapukus v7.5.0 — inactive
+  Code Snippets API        HTTP 200
+      -> snippets API veikia (1 irasas)
+  WooCommerce              HTTP 200
+      -> WC 10.9.4 | WP 6.9.4 | PHP 8.3.20
+
+=== Aktyvus TEMP snippet check ===
+  aktyvus snippet: 100
+  aktyvus TEMP/probe/test: 0
