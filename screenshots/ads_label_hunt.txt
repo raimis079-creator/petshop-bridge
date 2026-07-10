@@ -1,0 +1,83 @@
+### IESKOM Google Ads conversion label AW-11117260149/XXXX ###
+
+===== GTM-MZGDV75F gtm.js (447732 B) =====
+  [ 1] G- ID
+        G-FMTKEGGLMG
+  [ 1] purchase
+        "purchase"
+
+===== G-FMTKEGGLMG gtag.js (561431 B) =====
+  [ 1] AW- ID
+        AW-11117260149
+  [ 1] conversion label kandidatai (aw.l / gcl)
+        "G-FMTKEGGLMG","AW-
+  [ 1] G- ID
+        G-FMTKEGGLMG
+  [ 2] GT- ID
+        GT-WPTSZS8
+        GT-5TQ4JZWM
+  [ 1] purchase
+        "purchase"
+
+===== AW-11117260149 gtag.js (561440 B) =====
+  [ 1] AW- ID
+        AW-11117260149
+  [ 1] conversion label kandidatai (aw.l / gcl)
+        "G-FMTKEGGLMG","AW-
+  [ 1] G- ID
+        G-FMTKEGGLMG
+  [ 2] GT- ID
+        GT-WPTSZS8
+        GT-5TQ4JZWM
+  [ 1] purchase
+        "purchase"
+
+===== GT-WPTSZS8 gtag.js (561428 B) =====
+  [ 1] AW- ID
+        AW-11117260149
+  [ 1] conversion label kandidatai (aw.l / gcl)
+        "G-FMTKEGGLMG","AW-
+  [ 1] G- ID
+        G-FMTKEGGLMG
+  [ 2] GT- ID
+        GT-WPTSZS8
+        GT-5TQ4JZWM
+  [ 1] purchase
+        "purchase"
+
+===== GT-5TQ4JZWM gtag.js (561430 B) =====
+  [ 1] AW- ID
+        AW-11117260149
+  [ 1] conversion label kandidatai (aw.l / gcl)
+        "G-FMTKEGGLMG","AW-
+  [ 1] G- ID
+        G-FMTKEGGLMG
+  [ 2] GT- ID
+        GT-WPTSZS8
+        GT-5TQ4JZWM
+  [ 1] purchase
+        "purchase"
+
+===== PROD puslapiu skenavimas =====
+  https://petshop.lt/index.php?route=checkout/success
+    dydis 13841 B
+    AW+label: -
+    send_to:  -
+    dataLayer.push: -
+
+  https://petshop.lt/index.php?route=checkout/checkout
+    dydis 45160 B
+    AW+label: -
+    send_to:  -
+    dataLayer.push: 2 vnt
+       dataLayer.push({ ecommerce: null 
+       dataLayer.push({ event: "view_cart", ecommerce: { currency: "EUR", value: 0, items: [] 
+
+  https://petshop.lt/index.php?route=checkout/cart
+    dydis 45152 B
+    AW+label: -
+    send_to:  -
+    dataLayer.push: 2 vnt
+       dataLayer.push({ ecommerce: null 
+       dataLayer.push({ event: "view_cart", ecommerce: { currency: "EUR", value: 0, items: [] 
+
