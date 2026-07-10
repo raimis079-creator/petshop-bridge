@@ -1,0 +1,29 @@
+=== A. GA4 purchase tag — PILNI parametrai ===
+    sendEcommerceData (boolean) = true
+    eventName (template) = purchase
+    measurementIdOverride (template) = {{Const — GA4 ID}}
+  ecommerceMacroData issaugotas: ❌ NE — reikia taisyti
+
+=== B. Google Ads Conversion tag ===
+  POST -> HTTP 200
+  ✅ id=30  type=awct
+      enableConversionLinker = true
+      conversionValue = {{DLV — value}}
+      orderId = {{DLV — transaction_id}}
+      conversionId = {{Const — Ads Conversion ID}}
+      currencyCode = {{DLV — currency}}
+      conversionLabel = {{Const — Ads Label}}
+
+=== C. VISI TAG'AI ===
+  [ 15] 00 — Consent Mode v2 Default           type=html     fire=[2147479573] block=[] consent=notSet
+  [ 16] 01 — Conversion Linker                 type=gclidw   fire=[2147479553] block=[] consent=notSet
+  [ 24] 02 — GA4 Config                        type=googtag  fire=[2147479553] block=[17,18] consent=analytics_storage
+  [ 30] 03 — Google Ads Conversion (Purchase)  type=awct     fire=[23] block=[17,18] consent=ad_storage+ad_user_data
+  [ 26] GA4 — add_to_cart                      type=gaawe    fire=[20] block=[17,18] consent=analytics_storage
+  [ 28] GA4 — begin_checkout                   type=gaawe    fire=[22] block=[17,18] consent=analytics_storage
+  [ 29] GA4 — purchase                         type=gaawe    fire=[23] block=[17,18] consent=analytics_storage
+  [ 27] GA4 — view_cart                        type=gaawe    fire=[21] block=[17,18] consent=analytics_storage
+  [ 25] GA4 — view_item                        type=gaawe    fire=[19] block=[17,18] consent=analytics_storage
+
+BENDRA: variables=10  tags=9  triggers=7
+LIVE: #1 — PROD nepaliestas ✅
