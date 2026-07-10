@@ -1,11 +1,13 @@
 /**
- * Petshop Consent Bridge v1.1 (Complianz -> GTM)
+ * Petshop Consent Bridge v1.2 (Complianz -> GTM)
  *
  * Vienas inline blokas wp_head'e, PRIES GTM snippet'a (prio 0 < prio 1):
  *   1. Google Consent Mode v2 DEFAULT (visi denied)
  *   2. Jei Complianz cookies jau yra (pakartotinis lankytojas) -> consent UPDATE
  *   3. Listener'iai cmplz_status_change / cmplz_fire_categories -> consent UPDATE + dataLayer event
- *   4. v1.1: po sutikimo pakartoja ecommerce event'a (view_item ir pan.), kuris ivyko pries sutikima
+ *   4. v1.2: po sutikimo pakartoja ecommerce event'a TIK jei consent pasikeite denied -> granted.
+ *      BUG v1.1: cmplz_fire_categories fire'ina kiekviename puslapyje, kur sutikimas jau duotas,
+ *      todel replay dubliuodavo purchase -> dvigubos konversijos.
  *
  * KODEL cia, o ne GTM tag'e:
  *   consent default privalo buti dataLayer'yje PRIES consent update.
@@ -91,9 +93,14 @@ if ( ! function_exists( 'petshop_consent_bridge' ) ) {
 	function schedule() {
 		if (timer) { clearTimeout(timer); }
 		timer = setTimeout(function () {
-			var wasDenied = !hasConsentSnapshot;
+			var wasGranted = hasConsentSnapshot;
 			sendConsentUpdate('event');
-			if (hasConsent('statistics')) { replayEcommerce(); }
+			var nowGranted = hasConsent('statistics');
+
+			/* Replay TIK jei sutikimas ka tik pasikeite denied -> granted.
+			 * Kitaip cmplz_fire_categories (fire'ina kas puslapi) dubliuotu ivykius. */
+			if (!wasGranted && nowGranted) { replayEcommerce(); }
+			hasConsentSnapshot = nowGranted;
 		}, 60);
 	}
 	document.addEventListener('cmplz_status_change', schedule);
