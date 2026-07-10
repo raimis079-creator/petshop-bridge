@@ -1,0 +1,12 @@
+=== Conversion Linker taisymas ===
+  pries: block=[]  consent={"consentStatus":"notSet"}
+  PUT -> HTTP 200
+  po:    block=[17,18]  consent={"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"}]}}
+
+=== Versija v2 + publish ===
+  create_version -> HTTP 200
+  versionId=3
+  publish -> HTTP 200
+
+  LIVE: #3 "v2 — Conversion Linker consent + DEV blocking"  tags=13
+  Conversion Linker live: block=[17,18]  consent={"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"}]}}
