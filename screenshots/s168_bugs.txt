@@ -1,0 +1,35 @@
+############ BUG DIAGNOSTIKA ############
+
+=== BUG 1: single_add_to_cart_button klases ===
+  HTTP 200
+  rasta mygtuku: 1
+    <button type="submit" name="add-to-cart" value="15484" class="single_add_to_cart_button button alt">
+
+  ajax_add_to_cart klase mygtuke: ❌ NE (forma submit'ina)
+  forma cart: yra
+  form tag: <form class="cart" action="https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-cm/" method="post" enctype='multipart/form-data'>
+
+  window.petshopGtmItem yra: ✅
+  added_to_cart listener yra: ✅
+  jQuery yra: ✅
+
+  Flatsome AJAX nustatymai:
+    ajax_add_to_cart is
+    ajax_add_to_cart is
+    ajax_add_to_cart is
+    ajax_add_to_cart is
+
+=== BUG 2: woocommerce_thankyou dvigubas kvietimas ===
+  Tikrinam thankyou HTML — kiek data-petshop-gtm bloku su purchase
+  HTTP 200  (232029 B)
+  data-petshop-gtm bloku: 1
+  su event=purchase: 0  (order meta jau nustatyta, tad 0 tiketina)
+
+  (Pastaba: si uzklausa be sesijos — order meta jau "yes", tad push'o neturi buti)
+
+=== Flatsome / plugin'u thankyou hook analize ===
+  Ieskom pozymiu, kad thankyou renderinamas 2x:
+      1× woocommerce-order-received
+      0× woocommerce-thankyou-order-details
+      4× order-received antraste
+      0× woocommerce-order
