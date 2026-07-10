@@ -1,0 +1,50 @@
+=== 1. dataLayer kintamieji ===
+  [OK] id=35  DLV — cmplz_marketing
+  [OK] id=36  DLV — cmplz_statistics
+
+=== 2. Trigger'iai ===
+  [OK] id=37  CE — cmplz_consent_update
+  [OK] id=38  CE — marketing granted
+  [OK] id=39  BLOCK — marketing nesutikta (events)
+
+  consent_update=37  marketing_granted=38  marketing_block=39
+
+=== 3. Tag'u atnaujinimas ===
+  [24] 02 — GA4 Config
+       prideta CE cmplz_consent_update -> fire'ina po sutikimo. oncePerLoad kad nedubliuotu.
+       HTTP 200  fire=[2147479553,37] block=[17,18] once=oncePerLoad
+  [16] 01 — Conversion Linker
+       All Pages -> CE marketing granted. _gcl_au tik po sutikimo.
+       HTTP 200  fire=[38] block=[17,18] once=oncePerLoad
+  [31] 04 — Meta Pixel Base + PageView
+       All Pages -> CE marketing granted. _fbp tik po sutikimo.
+       HTTP 200  fire=[38] block=[17,18] once=oncePerLoad
+  [32] Meta — add_to_cart
+       prideta BLOCK marketing nesutikta.
+       HTTP 200  fire=[20] block=[17,18,39] once=-
+  [33] Meta — begin_checkout
+       prideta BLOCK marketing nesutikta.
+       HTTP 200  fire=[22] block=[17,18,39] once=-
+  [34] Meta — purchase
+       prideta BLOCK marketing nesutikta.
+       HTTP 200  fire=[23] block=[17,18,39] once=-
+
+=== 4. Publish v4 ===
+  create_version HTTP 200
+  publish HTTP 200
+  LIVE #6 "v4 — consent-based triggers"
+
+=== 5. Galutine tag'u busena ===
+  [ 15] 00 — Consent Mode v2 Default         fire=[2147479573] block=[] PAUSED notSet
+  [ 16] 01 — Conversion Linker               fire=[38] block=[17,18]  ad_storage
+  [ 24] 02 — GA4 Config                      fire=[2147479553,37] block=[17,18]  analytics_storage
+  [ 30] 03 — Google Ads Conversion (Purchase) fire=[23] block=[17,18]  ad_storage+ad_user_data
+  [ 31] 04 — Meta Pixel Base + PageView      fire=[38] block=[17,18]  ad_storage+ad_personalization
+  [ 26] GA4 — add_to_cart                    fire=[20] block=[17,18]  analytics_storage
+  [ 28] GA4 — begin_checkout                 fire=[22] block=[17,18]  analytics_storage
+  [ 29] GA4 — purchase                       fire=[23] block=[17,18]  analytics_storage
+  [ 27] GA4 — view_cart                      fire=[21] block=[17,18]  analytics_storage
+  [ 25] GA4 — view_item                      fire=[19] block=[17,18]  analytics_storage
+  [ 32] Meta — add_to_cart                   fire=[20] block=[17,18,39]  ad_storage+ad_personalization
+  [ 33] Meta — begin_checkout                fire=[22] block=[17,18,39]  ad_storage+ad_personalization
+  [ 34] Meta — purchase                      fire=[23] block=[17,18,39]  ad_storage+ad_personalization
