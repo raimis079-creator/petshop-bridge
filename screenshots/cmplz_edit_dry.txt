@@ -1,0 +1,90 @@
+=== Deploy edit snippet ===
+  CREATE id=621
+  active=true code_error=null
+
+=== DRY-RUN ===
+HTTP 200
+
+{
+    "banner_id": 1,
+    "banner_version": "36",
+    "BACKUP": {
+        "header": {
+            "text": "Tvarkyti sutikimą",
+            "show": 1
+        },
+        "dismiss": {
+            "text": "Neigti",
+            "show": 1
+        },
+        "accept": "Priimti",
+        "message_optin": "Siekdami teikti geriausią patirtį, įrenginio informacijai saugoti ir (arba) pasiekti naudojame tokias technologijas kaip slapukus. Jei sutiksime su šiomis technologijomis, galėsime apdoroti duomenis, tokius kaip naršymo elgsena arba unikalūs ID šioje svetainėje. Nesutikimas arba sutikimo atšaukimas gali neigiamai paveikti tam tikras funkcijas ir funkcijas.",
+        "message_optout": "Siekdami teikti geriausią patirtį, įrenginio informacijai saugoti ir (arba) pasiekti naudojame tokias technologijas kaip slapukus. Jei sutiksime su šiomis technologijomis, galėsime apdoroti duomenis, tokius kaip naršymo elgsena arba unikalūs ID šioje svetainėje. Nesutikimas arba sutikimo atšaukimas gali neigiamai paveikti tam tikras funkcijas ir funkcijas.",
+        "view_preferences": "Peržiūrėti nuostatas",
+        "save_preferences": "Išsaugoti nuostatas",
+        "revoke": "Tvarkyti sutikimą",
+        "colorpalette_text": {
+            "color": "#222222",
+            "hyperlink": "#3B29FF"
+        },
+        "colorpalette_toggles": {
+            "background": "#3B29FF",
+            "bullet": "#ffffff",
+            "inactive": "#555"
+        },
+        "colorpalette_button_accept": {
+            "background": "#3B29FF",
+            "border": "#3B29FF",
+            "text": "#ffffff"
+        },
+        "colorpalette_button_deny": {
+            "background": "#f9f9f9",
+            "border": "#f2f2f2",
+            "text": "#222222"
+        },
+        "colorpalette_button_settings": {
+            "background": "#f9f9f9",
+            "border": "#f2f2f2",
+            "text": "#333333"
+        },
+        "colorpalette_background": {
+            "color": "#ffffff",
+            "border": "#f2f2f2"
+        },
+        "banner_version": "36",
+        "category_prefs": {
+            "text": "Parinktys",
+            "show": 1
+        }
+    },
+    "PLANUOJAMA": {
+        "header": {
+            "text": "Slapukai ir privatumas",
+            "show": 1
+        },
+        "dismiss": {
+            "text": "Atmesti",
+            "show": 1
+        },
+        "message_optin": "Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir rinkodaros slapukus įjungiame tik jums sutikus.",
+        "message_optout": "Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir rinkodaros slapukus įjungiame tik jums sutikus.",
+        "colorpalette_text": {
+            "color": "#222222",
+            "hyperlink": "#2D5F3F"
+        },
+        "colorpalette_toggles": {
+            "background": "#2D5F3F",
+            "bullet": "#ffffff",
+            "inactive": "#555"
+        },
+        "colorpalette_button_accept": {
+            "background": "#2D5F3F",
+            "border": "#2D5F3F",
+            "text": "#ffffff"
+        }
+    },
+    "mode": "DRY-RUN — niekas nepakeista",
+    "apply_url": "/?cmplz_edit=1&token=cmplz_6680aa2a42151d54fa8d64ec&confirm=APPLY_BANNER"
+}
+
+=== TEMP snippet id: 621 ===
