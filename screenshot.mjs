@@ -1,37 +1,62 @@
-import { execSync } from "child_process";
-import fs from "fs";
+import { chromium } from 'playwright';
 import { putFile } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
-const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH=U+':'+P;
-const API='https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
-function api(method,url,body){
-  let cmd='curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" -X '+method+' ';
-  if(body){ fs.writeFileSync('/tmp/b.json',JSON.stringify(body)); cmd+='-H "Content-Type: application/json" -d @/tmp/b.json '; }
-  cmd+='"'+url+'" 2>/dev/null || echo ERR';
-  const code=execSync(cmd,{encoding:'utf8'}).trim();
-  let b=''; try{ b=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
-  return {code, body:b};
-}
-function get(url){
-  const code=execSync('curl -sk -o /tmp/g.txt -w "%{http_code}" --max-time 40 "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
-  let b=''; try{ b=fs.readFileSync('/tmp/g.txt','utf8'); }catch(e){}
-  return {code, body:b};
-}
-const CODE=fs.readFileSync('petshop_cmplz_probe2.php','utf8');
-const TOKEN=fs.readFileSync('.cmplz_token','utf8').trim();
-try{
-  const list=api('GET',API+'?per_page=100'); const arr=JSON.parse(list.body);
-  const ex=arr.find(s=>s.name&&s.name.includes('Complianz integracijos probe'));
-  const payload={name:'TEMP — Complianz integracijos probe v2 (token)',desc:'Recon.',code:CODE,scope:'front-end',active:true,priority:6,tags:['temp']};
-  let id;
-  if(ex){ api('POST',API+'/'+ex.id,payload); id=ex.id; } else { const r=api('POST',API,payload); id=JSON.parse(r.body).id; }
-  L('probe2 snippet id='+id);
-  const chk=api('GET',API+'/'+id); if(chk.code==='200'){const j=JSON.parse(chk.body); L('active='+j.active+' code_error='+JSON.stringify(j.code_error||null));}
+const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
+
+async function scenario(label, action){
+  const ctx = await browser.newContext({ ignoreHTTPSErrors:true, userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120' });
+  const page = await ctx.newPage();
+  await page.goto('https://dev.avesa.lt/',{waitUntil:'domcontentloaded',timeout:60000});
+  await page.waitForTimeout(5000);
+  if(action) await action(page);
+  await page.waitForTimeout(4000);
+  const cookies = await ctx.cookies();
+  const cm = cookies.filter(c=>c.name.startsWith('cmplz'));
   L('');
-  await new Promise(r=>setTimeout(r,3000));
-  const p=get('https://dev.avesa.lt/?cmplz_probe2=1&token='+TOKEN);
-  L('HTTP '+p.code);
-  L(p.body.slice(0,6000));
-}catch(e){ L('!!! ERROR: '+e.message); }
-putFile('cmplz_integrations.txt', out); console.log(out);
+  L('=== '+label+' ===');
+  if(cm.length===0) L('  (cmplz cookies nera)');
+  cm.forEach(c=>L('  '+c.name.padEnd(28)+' = '+String(c.value).slice(0,60)));
+  const body = await page.evaluate(()=>document.body.className.split(' ').filter(c=>c.startsWith('cmplz')));
+  L('  body klases: '+JSON.stringify(body));
+  const api = await page.evaluate(()=>{
+    var r={};
+    if(typeof window.cmplz_has_consent==='function'){
+      ['functional','preferences','statistics','marketing'].forEach(function(c){
+        try{ r[c] = window.cmplz_has_consent(c); }catch(e){ r[c]='err'; }
+      });
+    } else r.err='cmplz_has_consent nera';
+    return r;
+  });
+  L('  cmplz_has_consent(): '+JSON.stringify(api));
+  const evts = await page.evaluate(()=>{
+    return { listeners: 'n/a', cmplzFns: Object.keys(window).filter(k=>/^cmplz_(has_consent|enable_category|set_cookie|get_cookie|fire)/.test(k)) };
+  });
+  L('  cmplz funkcijos: '+JSON.stringify(evts.cmplzFns));
+  await ctx.close();
+}
+
+await scenario('1) PRIES SUTIKIMA (baneris rodomas)', null);
+await scenario('2) PO "PRIIMTI" (accept all)', async p=>{ await p.click('.cmplz-accept',{timeout:10000}); });
+await scenario('3) PO "NEIGTI" (deny all)', async p=>{ await p.click('.cmplz-deny',{timeout:10000}); });
+
+L('');
+L('=== 4. cmplz_status_change event turinys ===');
+const ctx=await browser.newContext({ignoreHTTPSErrors:true});
+const page=await ctx.newPage();
+await page.goto('https://dev.avesa.lt/',{waitUntil:'domcontentloaded',timeout:60000});
+await page.evaluate(()=>{
+  window.__cmplzEvents = [];
+  ['cmplz_status_change','cmplz_fire_categories','cmplz_enable_category','cmplz_run_after_all_scripts','cmplz_cookie_warning_loaded'].forEach(function(n){
+    document.addEventListener(n, function(e){
+      window.__cmplzEvents.push({ name:n, detail: e.detail ? JSON.parse(JSON.stringify(e.detail)) : null });
+    });
+  });
+});
+await page.waitForTimeout(3000);
+await page.click('.cmplz-accept',{timeout:10000}).catch(()=>L('  accept click err'));
+await page.waitForTimeout(5000);
+const evs = await page.evaluate(()=>window.__cmplzEvents||[]);
+if(evs.length===0) L('  ❌ jokiu event\'u nepagauta');
+evs.forEach(e=>L('  event "'+e.name+'"  detail='+JSON.stringify(e.detail).slice(0,220)));
+await browser.close();
+putFile('cmplz_cookies.txt', out); console.log(out);
