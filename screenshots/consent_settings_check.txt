@@ -1,0 +1,50 @@
+=== LIVE versijos tag'u consentSettings ===
+  versija #2 "v1 — initial tracking setup"
+
+  [ 15] 00 — Consent Mode v2 Default          
+        consentSettings = {"consentStatus":"notSet"}
+  [ 16] 01 — Conversion Linker                
+        consentSettings = {"consentStatus":"notSet"}
+  [ 24] 02 — GA4 Config                       
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 30] 03 — Google Ads Conversion (Purchase) 
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_user_data"}]}}
+  [ 31] 04 — Meta Pixel Base + PageView       
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+  [ 26] GA4 — add_to_cart                     
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 28] GA4 — begin_checkout                  
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 29] GA4 — purchase                        
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 27] GA4 — view_cart                       
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 25] GA4 — view_item                       
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 32] Meta — add_to_cart                    
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+  [ 33] Meta — begin_checkout                 
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+  [ 34] Meta — purchase                       
+        consentSettings = {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+
+=== Workspace tag'u consentSettings (palyginimui) ===
+  [ 15] 00 — Consent Mode v2 Default           {"consentStatus":"notSet"}
+  [ 16] 01 — Conversion Linker                 {"consentStatus":"notSet"}
+  [ 24] 02 — GA4 Config                        {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 30] 03 — Google Ads Conversion (Purchase)  {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_user_data"}]}}
+  [ 31] 04 — Meta Pixel Base + PageView        {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+  [ 26] GA4 — add_to_cart                      {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 28] GA4 — begin_checkout                   {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 29] GA4 — purchase                         {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 27] GA4 — view_cart                        {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 25] GA4 — view_item                        {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"analytics_storage"}]}}
+  [ 32] Meta — add_to_cart                     {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+  [ 33] Meta — begin_checkout                  {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+  [ 34] Meta — purchase                        {"consentStatus":"needed","consentType":{"type":"list","list":[{"type":"template","value":"ad_storage"},{"type":"template","value":"ad_personalization"}]}}
+
+=== Ar Complianz siuncia dataLayer event'us? (plugin dar neaktyvus) ===
+  Complianz v7.5.0 — INACTIVE. Aktyvavus jis siuncia:
+    cmplz_event_functional / cmplz_event_statistics / cmplz_event_marketing
+    cmplz_status_change
+  Sie event'ai gali buti naudojami kaip GTM custom event trigger'iai.
