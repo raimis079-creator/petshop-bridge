@@ -1,0 +1,43 @@
+
+=== 1) PRIES SUTIKIMA (baneris rodomas) ===
+  (cmplz cookies nera)
+  body klases: ["cmplz-functional","cmplz-eu","cmplz-optin"]
+  cmplz_has_consent(): {"functional":true,"preferences":false,"statistics":false,"marketing":false}
+  cmplz funkcijos: ["cmplz_enable_category","cmplz_fire_before_categories_consent","cmplz_get_cookie_path","cmplz_get_cookie_domain","cmplz_fire_categories_event","cmplz_get_cookie","cmplz_set_cookie","cmplz_has_consent"]
+
+=== 2) PO "PRIIMTI" (accept all) ===
+  cmplz_consented_services     = 
+  cmplz_policy_id              = 35
+  cmplz_marketing              = allow
+  cmplz_statistics             = allow
+  cmplz_preferences            = allow
+  cmplz_functional             = allow
+  cmplz_banner-status          = dismissed
+  body klases: ["cmplz-marketing","cmplz-statistics","cmplz-preferences","cmplz-functional","cmplz-eu","cmplz-optin"]
+  cmplz_has_consent(): {"functional":true,"preferences":true,"statistics":true,"marketing":true}
+  cmplz funkcijos: ["cmplz_enable_category","cmplz_fire_before_categories_consent","cmplz_get_cookie_path","cmplz_get_cookie_domain","cmplz_fire_categories_event","cmplz_get_cookie","cmplz_set_cookie","cmplz_has_consent"]
+
+=== 3) PO "NEIGTI" (deny all) ===
+  cmplz_banner-status          = dismissed
+  cmplz_policy_id              = 35
+  cmplz_marketing              = deny
+  cmplz_statistics             = deny
+  cmplz_preferences            = deny
+  cmplz_functional             = allow
+  cmplz_consented_services     = 
+  body klases: ["cmplz-functional","cmplz-eu","cmplz-optin"]
+  cmplz_has_consent(): {"functional":true,"preferences":false,"statistics":false,"marketing":false}
+  cmplz funkcijos: ["cmplz_enable_category","cmplz_fire_before_categories_consent","cmplz_get_cookie_path","cmplz_get_cookie_domain","cmplz_fire_categories_event","cmplz_get_cookie","cmplz_set_cookie","cmplz_has_consent"]
+
+=== 4. cmplz_status_change event turinys ===
+  event "cmplz_enable_category"  detail={"category":"marketing","service":"do_not_match","categories":["marketing","functional"],"services":{},"region":"eu"}
+  event "cmplz_run_after_all_scripts"  detail="marketing"
+  event "cmplz_status_change"  detail={"category":"marketing","value":"allow","region":"eu","categories":["marketing","functional"]}
+  event "cmplz_enable_category"  detail={"category":"statistics","service":"do_not_match","categories":["marketing","statistics","functional"],"services":{},"region":"eu"}
+  event "cmplz_run_after_all_scripts"  detail="statistics"
+  event "cmplz_status_change"  detail={"category":"statistics","value":"allow","region":"eu","categories":["marketing","statistics","functional"]}
+  event "cmplz_enable_category"  detail={"category":"preferences","service":"do_not_match","categories":["marketing","statistics","preferences","functional"],"services":{},"region":"eu"}
+  event "cmplz_run_after_all_scripts"  detail="preferences"
+  event "cmplz_status_change"  detail={"category":"preferences","value":"allow","region":"eu","categories":["marketing","statistics","preferences","functional"]}
+  event "cmplz_status_change"  detail={"category":"functional","value":"allow","region":"eu","categories":["marketing","statistics","preferences","functional"]}
+  event "cmplz_fire_categories"  detail={"category":"marketing","categories":["marketing","statistics","preferences","functional"],"region":"eu"}
