@@ -4,8 +4,12 @@ import { putFile } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
 const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH=U+':'+P;
-function api(url){
-  const code=execSync('curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
+const API='https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
+function api(method,url,body){
+  let cmd='curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" -X '+method+' ';
+  if(body){ fs.writeFileSync('/tmp/b.json',JSON.stringify(body)); cmd+='-H "Content-Type: application/json" -d @/tmp/b.json '; }
+  cmd+='"'+url+'" 2>/dev/null || echo ERR';
+  const code=execSync(cmd,{encoding:'utf8'}).trim();
   let b=''; try{ b=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
   return {code, body:b};
 }
@@ -15,94 +19,67 @@ function page(url){
   return {code, html:h};
 }
 
-// ---- 1. Ar yra prekiu su product_brand? ----
-L('=== 1. product_brand terminai ===');
-const bt = api('https://dev.avesa.lt/wp-json/wp/v2/product_brand?per_page=8&orderby=count&order=desc&_fields=id,name,count');
-if(bt.code==='200'){
-  try{
-    const arr=JSON.parse(bt.body);
-    L('  Top brand terminai:');
-    arr.forEach(b=>L('    ['+b.id+'] '+String(b.name).padEnd(22)+' prekiu: '+b.count));
-    const top = arr.find(b=>b.count>0);
-    if(top){
-      L('');
-      L('  Imam preke is "'+top.name+'":');
-      const pr = api('https://dev.avesa.lt/wp-json/wp/v2/product?product_brand='+top.id+'&per_page=1&status=publish&_fields=id,link,title');
-      if(pr.code==='200'){
-        const parr=JSON.parse(pr.body);
-        if(parr.length){
-          const p=parr[0];
-          L('    ['+p.id+'] '+p.title.rendered.slice(0,45));
-          L('    '+p.link);
-          const h = page(p.link);
-          L('    puslapis HTTP '+h.code);
-          const m = h.html.match(/window\.dataLayer\.push\((\{"event":"view_item"[\s\S]*?\})\);/);
-          if(m){
-            L('    view_item push:');
-            L('      '+m[1].slice(0,500));
-            L('');
-            L('    item_brand yra: '+(/"item_brand"/.test(m[1])?'✅ TAIP':'❌ NE'));
-          } else L('    ❌ view_item push nerastas');
-        }
-      }
-    } else L('  ⚠️ VISI brand terminai turi 0 prekiu');
-  }catch(e){ L('  parse err: '+bt.body.slice(0,200)); }
-} else L('  HTTP '+bt.code+'  '+bt.body.slice(0,150));
-L('');
+const CODE=fs.readFileSync('petshop_gtm_snippet.php','utf8');
+L('GTM snippet PHP: '+CODE.length+' B'); L('');
 
-// ---- 2. Kiek prekiu is viso turi brand ----
-L('=== 2. Prekiu su brand kiekis ===');
-const cntAll = execSync('curl -sk -I -u "'+AUTH+'" "https://dev.avesa.lt/wp-json/wp/v2/product?per_page=1&status=publish" 2>/dev/null | grep -i "x-wp-total:" || echo "x-wp-total: ?"',{encoding:'utf8'}).trim();
-L('  '+cntAll);
-L('');
+try{
+  L('=== 1. Ar jau yra GTM snippet ===');
+  const list=api('GET',API+'?per_page=100');
+  const arr=JSON.parse(list.body);
+  const ex=arr.find(s=>s.name&&s.name.includes('GTM Snippet'));
+  L('  '+(ex?'rastas id='+ex.id:'nerasta'));
+  L('');
 
-// ---- 3. Loop mygtuko markup ----
-L('=== 3. Loop mygtuko markup (parduotuve) ===');
-const shop = page('https://dev.avesa.lt/parduotuve/');
-L('  HTTP '+shop.code+'  '+shop.html.length+' B');
-const patterns = {
-  '<a ... add_to_cart_button':  /<a[^>]{0,400}add_to_cart_button[^>]{0,400}>/g,
-  '<button ... add_to_cart':    /<button[^>]{0,400}add_to_cart[^>]{0,400}>/g,
-  'data-gtm-item bet kur':      /data-gtm-item=/g,
-  'data-product_id':            /data-product_id=/g,
-  'product_type_simple':        /product_type_simple/g,
-  'quick-view / lightbox':      /quick-view|lightbox/g,
-};
-for(const [k,re] of Object.entries(patterns)){
-  const m = shop.html.match(re);
-  L('  '+String(m?m.length:0).padStart(3)+'  '+k);
-}
-L('');
-L('  Pirmas mygtukas su data-product_id:');
-const btn = shop.html.match(/<[^>]{0,60}data-product_id[^>]{0,400}>/);
-if(btn) L('    '+btn[0].replace(/\s+/g,' ').slice(0,350));
-else L('    (nerasta)');
-L('');
-L('  Vieta su data-gtm-item:');
-const g = shop.html.match(/<[^>]{0,80}data-gtm-item[^>]{0,500}>/);
-if(g) L('    '+g[0].replace(/\s+/g,' ').slice(0,400));
-else L('    (nerasta)');
-L('');
+  L('=== 2. Deploy ===');
+  const payload={
+    name:'Petshop GTM Snippet v1.0 (GTM-MF3GZGT)',
+    desc:'Google Tag Manager idiegimas. DEV blokavimas — GTM viduje (trigger 17/18). Complianz NETURI ideti savo GTM/GA4/Meta.',
+    code:CODE, scope:'front-end', active:false, priority:5, tags:['tracking','gtm']
+  };
+  let id;
+  if(ex){ const r=api('POST',API+'/'+ex.id,payload); L('  UPDATE -> HTTP '+r.code); id=ex.id; }
+  else { const r=api('POST',API,payload); L('  CREATE -> HTTP '+r.code); if(r.code!=='200'&&r.code!=='201'){L('  '+r.body.slice(0,300)); throw new Error('create fail');} id=JSON.parse(r.body).id; L('  id='+id); }
+  L('');
 
-// ---- 4. Kategorijos URL struktura ----
-L('=== 4. Kategoriju permalink ===');
-const cc = api('https://dev.avesa.lt/wp-json/wc/v3/products/categories?per_page=3&orderby=count&order=desc');
-if(cc.code==='200'){
-  try{
-    const arr=JSON.parse(cc.body);
-    for(const c of arr){
-      for(const base of ['product-category','preke-kategorija','prekiu-kategorija','kategorija']){
-        const u='https://dev.avesa.lt/'+base+'/'+c.slug+'/';
-        const r=page(u);
-        if(r.code==='200'){
-          const n=(r.html.match(/data-gtm-item/g)||[]).length;
-          const li=(r.html.match(/class="[^"]*product[^"]*"/g)||[]).length;
-          L('  ✅ '+u);
-          L('       data-gtm-item='+n+'  (li.product-ish='+li+')');
-          break;
-        }
-      }
-    }
-  }catch(e){ L('  parse err'); }
-}
-putFile('e6_check2.txt', out); console.log(out);
+  L('=== 3. Aktyvavimas ===');
+  const act=api('POST',API+'/'+id,{active:true});
+  L('  HTTP '+act.code);
+  if(act.code!=='200'){ L('  ❌ '+act.body.slice(0,400)); throw new Error('activate fail'); }
+  const j=JSON.parse(act.body);
+  L('  active='+j.active+'  code_error='+JSON.stringify(j.code_error||null));
+  L('');
+
+  L('=== 4. Svetaines sveikata ===');
+  for(const [nm,u] of [['Homepage','https://dev.avesa.lt/'],['Preke','https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/'],['Kategorija','https://dev.avesa.lt/kategorija/sausas-maistas-sunims/'],['Krepselis','https://dev.avesa.lt/cart/']]){
+    const r=page(u);
+    const fatal=/Fatal error|Parse error|critical error/i.test(r.html);
+    L('  '+nm.padEnd(12)+' HTTP '+r.code+'  '+(fatal?'❌ FATAL':'✅'));
+  }
+  L('');
+
+  L('=== 5. GTM snippet HTML patikra ===');
+  const h=page('https://dev.avesa.lt/');
+  const checks={
+    'gtm.js loader':            /googletagmanager\.com\/gtm\.js/.test(h.html),
+    'GTM-MF3GZGT ID':           /GTM-MF3GZGT/.test(h.html),
+    'noscript iframe (ns.html)':/googletagmanager\.com\/ns\.html\?id=GTM-MF3GZGT/.test(h.html),
+    'data-petshop-gtm-loader':  /data-petshop-gtm-loader/.test(h.html),
+    'data-petshop-gtm-noscript':/data-petshop-gtm-noscript/.test(h.html),
+    'dataLayer inicijuotas':    /dataLayer/.test(h.html),
+    'NEra seno GTM-MZGDV75F':   !/GTM-MZGDV75F/.test(h.html),
+    'NEra tiesioginio gtag config': !/gtag\('config'/.test(h.html),
+    'NEra tiesioginio fbq init':    !/fbq\('init'/.test(h.html),
+  };
+  for(const [k,v] of Object.entries(checks)) L('  '+(v?'✅':'❌')+' '+k);
+  L('');
+  const pos_head = h.html.indexOf('googletagmanager.com/gtm.js');
+  const pos_body = h.html.indexOf('<body');
+  const pos_ns   = h.html.indexOf('ns.html');
+  L('  Poziciju patikra:');
+  L('    gtm.js @ '+pos_head+'   <body> @ '+pos_body+'   noscript @ '+pos_ns);
+  L('    gtm.js pries <body>: '+(pos_head>0 && pos_head<pos_body ? '✅' : '❌'));
+  L('    noscript po <body>:  '+(pos_ns>pos_body ? '✅' : (pos_ns<0?'❌ NERA (wp_body_open nepalaikomas)':'❌')));
+  L('');
+  L('=== SNIPPET ID: '+id+' ===');
+}catch(e){ L(''); L('!!! ERROR: '+e.message); }
+putFile('e7_result.txt', out); console.log(out);
