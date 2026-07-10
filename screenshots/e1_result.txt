@@ -1,0 +1,57 @@
+Workspace: Default Workspace (id 2)
+
+PRIES: variables=0 tags=0 triggers=0
+
+=== BUILT-IN VARIABLES ===
+  esami: pageUrl, pageHostname, pagePath, referrer, event
+  reikalingi: PAGE_HOSTNAME, PAGE_URL, PAGE_PATH, EVENT, REFERRER
+  trukstami: PAGE_HOSTNAME, PAGE_URL, PAGE_PATH, EVENT, REFERRER
+  ijungimas -> HTTP 404
+
+=== VARIABLES ===
+  [OK]   id=  5  Const — GA4 ID
+  [OK]   id=  6  Const — Ads Conversion ID
+  [OK]   id=  7  Const — Ads Label
+  [OK]   id=  8  Const — Meta Pixel ID
+  [OK]   id=  9  DLV — ecommerce
+  [OK]   id= 10  DLV — transaction_id
+  [OK]   id= 11  DLV — value
+  [OK]   id= 12  DLV — currency
+  [OK]   id= 13  DLV — items
+  [OK]   id= 14  DLV — user_email_hashed
+
+=== TAGS ===
+  [OK]   id= 15  00 — Consent Mode v2 Default  type=html
+  [FAIL] 01 — Conversion Linker HTTP 400 {"error":{"code":400,"message":"vendorTemplate.parameter.conversionId: The value must not be empty.\n","errors":[{"message":"vendorTemplate.parameter.conversionId: The value must not be empty.\n","domain":"global","reason":"badRequest"}],"status":"INVALID_ARGUMENT"}}
+
+=== VERIFIKACIJA (skaitom atgal) ===
+PO: variables=10 tags=1
+
+  Variables:
+    [  5] Const — GA4 ID                 type=c
+    [  6] Const — Ads Conversion ID      type=c
+    [  7] Const — Ads Label              type=c
+    [  8] Const — Meta Pixel ID          type=c
+    [  9] DLV — ecommerce                type=v
+    [ 10] DLV — transaction_id           type=v
+    [ 11] DLV — value                    type=v
+    [ 12] DLV — currency                 type=v
+    [ 13] DLV — items                    type=v
+    [ 14] DLV — user_email_hashed        type=v
+
+  Tags:
+    [ 15] 00 — Consent Mode v2 Default
+          type=html  firing=[2147479573]  priority=-  paused=no
+
+  Consent tag HTML patikra:
+    ✅ ad_storage
+    ✅ ad_user_data
+    ✅ ad_personalization
+    ✅ analytics_storage
+    ✅ wait_for_update
+    ✅ ads_data_redaction
+    ✅ url_passthrough
+    denied kartu: 4 (laukiama 4)
+    granted kartu: 3 (laukiama 3)
+
+LIVE version: #1 "Empty Container" — nepublikuota, PROD nepaliestas
