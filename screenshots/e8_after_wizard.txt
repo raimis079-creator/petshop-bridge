@@ -1,0 +1,54 @@
+############ PO COMPLIANZ WIZARD ############
+
+=== 1. Svetaines sveikata ===
+  Homepage     HTTP 200  ✅  195092 B
+  Preke        HTTP 200  ✅  238761 B
+  Krepselis    HTTP 200  ✅  216271 B
+  Kategorija   HTTP 200  ✅  313494 B
+
+=== 2. KRITINE: ar GTM islikes ir NEblokuotas ===
+  ✅ gtm.js loader yra
+  ✅ loader NEturi text/plain
+  ✅ loader NEturi data-service
+  ✅ noscript ns.html
+  ✅ dataLayer snippet (614)
+  loader tag: <script data-petshop-gtm-loader="1">
+
+=== 3. Ar Complianz ideje SAVO tracking koda ===
+  ✅ nera  gtag('config' (GA)
+  ✅ nera  fbq('init' (Meta)
+  ✅ nera  senas GTM-MZGDV75F
+  ✅ nera  antras GTM container
+  ✅ nera  analytics.js / ga(
+  GTM ID sarasas: ["GTM-MF3GZGT"]
+
+=== 4. Blokuoti scriptai (turi buti 0) ===
+  blokuotu: 0  ✅
+
+=== 5. Complianz baneris ===
+  ✅ cmplz JS
+  ✅ cmplz CSS
+  ✅ banner HTML (#cmplz-)
+  ✅ cmplz_banner_status JS
+  ✅ Priimti/Neigti mygtukai
+  ✅ Kategoriju checkboxai
+
+  Rastos kategorijos: ["cmplz-functional","cmplz-preferences","cmplz-statistics","cmplz-marketing"]
+
+=== 6. cmplz JS failai ===
+  (nerasta)
+
+=== 7. Complianz options po wizard ===
+  wizard_completed_once: '1'
+  cmplz_get_value:
+    regions                      = 'eu'
+    consenttype                  = false
+    uses_cookies                 = false
+    purpose_of_cookies           = false
+    compile_statistics           = 'yes'
+    compile_statistics_more_info = []
+    gtm_code                     = ''
+    use_categories               = 'view-preferences'
+    safe_mode                    = 1
+    block_recaptcha_service      = 'no'
+  options kiekis: 48
