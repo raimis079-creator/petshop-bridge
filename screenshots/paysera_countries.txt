@@ -1,0 +1,25 @@
+############ PAYSERA: SALIU FILTRAS + KORTELES ############
+
+  === PRIES billing_country nustatyma ===
+    pay_type is viso: 190   matomu: 10
+
+    LT bankai (matomi): wallet, hanza, lt_revolut
+
+    KORTELES (visame sarase): hanzaee ("AB Swedbank bankas")
+    KORTELES matomos: ❌ yra sarase bet paslėptos
+
+    Matomos saliu antrastes: ["ALBANIJA","AUSTRIJA","ESTIJA","LIETUVA","LATVIJA","LENKIJA"]
+    Pirmi 12 matomu: wallet, hanza, vb2, nord, parex, lt_revolut, sb, mb, lku, lthand
+
+  --- Nustatom billing_country = LT ---
+
+  === PO billing_country = LT ===
+    pay_type is viso: 190   matomu: 10
+
+    LT bankai (matomi): wallet, hanza, lt_revolut
+
+    KORTELES (visame sarase): hanzaee ("AB Swedbank bankas")
+    KORTELES matomos: ❌ yra sarase bet paslėptos
+
+    Matomos saliu antrastes: ["ALBANIJA","AUSTRIJA","ESTIJA","LIETUVA","LATVIJA","LENKIJA"]
+    Pirmi 12 matomu: wallet, hanza, vb2, nord, parex, lt_revolut, sb, mb, lku, lthand
