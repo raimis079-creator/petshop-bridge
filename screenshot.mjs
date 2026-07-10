@@ -1,3 +1,4 @@
+import { chromium } from 'playwright';
 import { execSync } from "child_process";
 import fs from "fs";
 function putFile(n,s){
@@ -32,18 +33,72 @@ function get(url){
 const CODE=fs.readFileSync('petshop_cmplz_css_fix.php','utf8');
 const TOKEN=fs.readFileSync('.cmplz_token','utf8').trim();
 try{
-  const payload={name:'TEMP — Complianz CSS regen v1 (token)',desc:'RECON/APPLY.',code:CODE,scope:'front-end',active:true,priority:6,tags:['temp']};
-  const chk=api('GET',API+'/622');
-  let id;
-  if(chk.code==='200'){ api('POST',API+'/622',payload); id=622; L('UPDATE 622'); }
-  else { const r=api('POST',API,payload); id=JSON.parse(r.body).id; L('CREATE id='+id); }
-  const v=api('GET',API+'/'+id);
-  if(v.code==='200'){ const j=JSON.parse(v.body); L('active='+j.active+' code_error='+JSON.stringify(j.code_error||null)); }
-  L('');
+  api('POST',API+'/622',{name:'TEMP — Complianz CSS regen v2 (token)',code:CODE,active:true,scope:'front-end',priority:6});
+  L('snippet 622 atnaujintas');
   await new Promise(r=>setTimeout(r,3000));
-  L('=== RECON ===');
-  const p=get('https://dev.avesa.lt/?cmplz_css=1&token='+TOKEN);
-  L('HTTP '+p.code); L(p.body.slice(0,4500));
-  L(''); L('=== TEMP id: '+id+' ===');
-}catch(e){ L('!!! ERROR: '+e.message); }
-putFile('cmplz_css_recon.txt', out); console.log(out);
+
+  L(''); L('=== RECON ===');
+  const rc=get('https://dev.avesa.lt/?cmplz_css=1&token='+TOKEN);
+  try{
+    const j=JSON.parse(rc.body);
+    L('  dabartinis privacy page: '+JSON.stringify(j.dabartinis_privacy_page));
+    L('  kandidatai: '+JSON.stringify(j.kandidatai));
+    L('  target ID: '+j.target_privacy_page_id);
+    L('  CSS pries: '+JSON.stringify(j.css_pries));
+  }catch(e){ L('  '+rc.body.slice(0,400)); }
+  L('');
+
+  L('=== APPLY ===');
+  const ap=get('https://dev.avesa.lt/?cmplz_css=1&token='+TOKEN+'&confirm=APPLY_CSS');
+  L('  HTTP '+ap.code);
+  try{
+    const j=JSON.parse(ap.body);
+    L('  privacy_updated: '+j.privacy_updated);
+    L('  privacy_page_po: '+j.privacy_page_po);
+    L('  istrinta CSS: '+JSON.stringify(j.istrinta_css));
+    L('  iskviesta: '+JSON.stringify(j.iskviesta));
+    if(j.banner_err) L('  ⚠️ banner_err: '+j.banner_err);
+    L('');
+    L('  CSS PO:');
+    (j.css_po||[]).forEach(f=>L('    '+f.file+'  '+f.size+' B  '+f.mtime+'   violetine: '+f.turi_3B29FF+'   zalia: '+f.turi_2D5F3F));
+  }catch(e){ L('  parse err: '+ap.body.slice(0,400)); }
+  L('');
+  await new Promise(r=>setTimeout(r,6000));
+
+  L('=== VIZUALI VERIFIKACIJA ===');
+  const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:900}, locale:'lt-LT'});
+  const page=await ctx.newPage();
+  await page.goto('https://dev.avesa.lt/?nocache='+Date.now(),{waitUntil:'domcontentloaded',timeout:60000});
+  await page.waitForTimeout(8000);
+  const b=await page.evaluate(()=>{
+    const el=document.querySelector('.cmplz-cookiebanner');
+    if(!el) return null;
+    const acc=el.querySelector('.cmplz-accept');
+    const lnk=el.querySelector('.cmplz-links a');
+    return {
+      title:(el.querySelector('.cmplz-title')||{}).innerText,
+      accept:(acc||{}).innerText, deny:(el.querySelector('.cmplz-deny')||{}).innerText,
+      acceptBg: acc?getComputedStyle(acc).backgroundColor:null,
+      linkColor: lnk?getComputedStyle(lnk).color:null,
+      links:[...el.querySelectorAll('a')].filter(a=>{let e=a,v=true;while(e&&e!==document.body){if(getComputedStyle(e).display==='none'){v=false;break;}e=e.parentElement;}return v;})
+            .map(a=>({t:a.innerText.trim(), h:(a.getAttribute('href')||'').replace(/^https?:\/\/dev\.avesa\.lt/,'')}))
+    };
+  });
+  if(!b){ L('  ❌ baneris nerastas'); }
+  else{
+    L('  antraste: '+JSON.stringify(b.title));
+    L('  accept: '+JSON.stringify(b.accept)+'  fonas: '+b.acceptBg);
+    L('  deny  : '+JSON.stringify(b.deny));
+    L('  nuorodu spalva: '+b.linkColor);
+    L('  matomos nuorodos:');
+    b.links.forEach(l=>L('    "'+l.t+'" -> '+l.h));
+    L('');
+    const green = /rgb\(45,\s*95,\s*63\)/;
+    L('  '+(green.test(b.acceptBg||'')?'✅':'❌')+' accept mygtukas zalias (45,95,63)');
+    L('  '+(green.test(b.linkColor||'')?'✅':'❌')+' nuorodos zalios');
+    L('  '+(!b.links.some(l=>l.h==='/slapuku-politika/')?'✅':'❌')+' nera nuorodos i sena "Slapukų naudojimas"');
+  }
+  await browser.close();
+}catch(e){ L('!!! ERROR: '+e.message.slice(0,150)); }
+putFile('cmplz_css_apply.txt', out); console.log(out);
