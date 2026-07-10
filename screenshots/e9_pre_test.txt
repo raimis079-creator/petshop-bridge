@@ -1,0 +1,72 @@
+##### CONSENT / BLOCKING TESTAS (Complianz DAR NEAKTYVUOTAS) #####
+Laukiama: jokiu tracking cookies abiem atvejais.
+  1) be gtm_test → blokuoja BLOCKING TRIGGER
+  2) su gtm_test → trigger nebeblokuoja, bet CONSENT MODE = denied
+
+#################################################
+### 1) DEV be gtm_test (blocking trigger aktyvus)
+### https://dev.avesa.lt/
+#################################################
+  goto err: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/
+Call log:
+  - navigating to "https://dev.avesa.lt/
+  GTM uzkrautas: undefined   containers: undefined
+  dataLayer irasu: undefined
+  event'ai: undefined
+  gtag funkcija: undefined   fbq funkcija: undefined
+  consent default: undefined
+
+  Cookies is viso: 0
+  ✅ TRACKING COOKIES: nera nei vieno
+
+  Visi cookie vardai: 
+
+  Tracking uzklausos (0):
+    ✅ nera
+
+#################################################
+### 2) DEV su gtm_test=1 (tik consent gina)
+### https://dev.avesa.lt/?gtm_test=1
+#################################################
+  goto err: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/?gtm_test=1
+Call log:
+  - navigating to "https://de
+  GTM uzkrautas: undefined   containers: undefined
+  dataLayer irasu: undefined
+  event'ai: undefined
+  gtag funkcija: undefined   fbq funkcija: undefined
+  consent default: undefined
+
+  Cookies is viso: 0
+  ✅ TRACKING COOKIES: nera nei vieno
+
+  Visi cookie vardai: 
+
+  Tracking uzklausos (0):
+    ✅ nera
+
+#################################################
+### 3) Prekes puslapis su gtm_test=1 (view_item)
+### https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/?gtm_test=1
+#################################################
+  goto err: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-5
+  GTM uzkrautas: undefined   containers: undefined
+  dataLayer irasu: undefined
+  event'ai: undefined
+  gtag funkcija: undefined   fbq funkcija: undefined
+  consent default: undefined
+
+  Cookies is viso: 0
+  ✅ TRACKING COOKIES: nera nei vieno
+
+  Visi cookie vardai: 
+
+  Tracking uzklausos (0):
+    ✅ nera
+
+#################################################
+### ISVADOS
+#################################################
+  1) be gtm_test:  tracking cookies=0  uzklausu=0  ✅
+  2) su gtm_test:  tracking cookies=0  uzklausu=0  ✅ consent gina
+  3) preke:        view_item dataLayer'yje: ❌   cookies=0
