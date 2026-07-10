@@ -1,0 +1,22 @@
+--- DNS ---
+79.98.29.24     dev.avesa.lt
+
+--- https root ---
+EXIT=60 ERR=curl: (60) SSL certificate problem: unable to get local issuer certificate
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could
+--- https -k ---
+200
+
+--- http ---
+200 
+
+--- avesa.lt ---
+EXIT=60 ERR=curl: (60) SSL certificate problem: unable to get local issuer certificate
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could
+probe https://dev.avesa.lt -> 200
+BEST=https://dev.avesa.lt
+audit rows=100
