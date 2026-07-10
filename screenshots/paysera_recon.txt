@@ -1,0 +1,96 @@
+snippet id=624
+code_error=null
+
+HTTP 200
+
+{
+    "option_names": [
+        "PAYSERA_DB_VERSION",
+        "paysera_delivery_extra_settings",
+        "paysera_delivery_settings",
+        "paysera_payment_extra_settings",
+        "paysera_payment_main_settings",
+        "woocommerce_paysera_settings"
+    ],
+    "options": {
+        "PAYSERA_DB_VERSION": "3.12.0",
+        "paysera_delivery_extra_settings": {
+            "hide_shipping_methods": "yes"
+        },
+        "paysera_delivery_settings": {
+            "delivery_enabled": "no",
+            "test_mode": "yes"
+        },
+        "paysera_payment_extra_settings": {
+            "title": "Mokėjimas internetu",
+            "description": "Pasirinkite mokėjimo būdą Paysera svetainėje",
+            "list_of_payments": "yes",
+            "grid_view": "no",
+            "buyer_consent": "yes",
+            "log_level": "error"
+        },
+        "paysera_payment_main_settings": {
+            "project_id": "29276",
+            "project_password": "[NUSTATYTA, 32 simb.]",
+            "test_mode": "yes"
+        },
+        "woocommerce_paysera_settings": {
+            "enabled": "yes"
+        }
+    },
+    "gateways": {
+        "paysera": {
+            "title": "Mokėjimas internetu",
+            "enabled": "yes",
+            "method": "Mokėjimas internetu"
+        },
+        "bacs": {
+            "title": "Bankinis pavedimas",
+            "enabled": "yes",
+            "method": "Bankinis pavedimas"
+        },
+        "cheque": {
+            "title": "Apmokėjimas čekiu",
+            "enabled": "no",
+            "method": "Apmokėjimas čekiu"
+        },
+        "cod": {
+            "title": "Apmokėjimas grynais atsiimant (COD)",
+            "enabled": "no",
+            "method": "Apmokėjimas grynais atsiimant (COD)"
+        }
+    },
+    "paysera_gateway_props": {
+        "plugin_id": "woocommerce_",
+        "id": "paysera",
+        "has_custom_place_order_button": false,
+        "enabled": "yes",
+        "title": "Mokėjimas internetu",
+        "description": "Pasirinkite mokėjimo būdą Paysera svetainėje",
+        "method_title": "Mokėjimas internetu",
+        "method_description": "Pasirinkite mokėjimo būdą Paysera svetainėje",
+        "has_fields": true,
+        "icon": "https://dev.avesa.lt/wp-content/plugins/woo-payment-gateway-paysera/assets/images/paysera.svg",
+        "max_amount": 0,
+        "view_transaction_url": "",
+        "new_method_label": "",
+        "pay_button_id": ""
+    },
+    "paysera_plugins": [
+        {
+            "file": "woo-payment-gateway-paysera/paysera.php",
+            "name": "Paysera Payment Gateway for WooCommerce",
+            "version": "3.12.0",
+            "active": true
+        }
+    ],
+    "callback_url_kandidatai": [
+        "https://dev.avesa.lt/?wc-api=wc_gateway_paysera",
+        "https://dev.avesa.lt/wc-api/wc_gateway_paysera/",
+        "https://dev.avesa.lt/?wc-api=paysera"
+    ],
+    "site_url": "https://dev.avesa.lt",
+    "home_url": "https://dev.avesa.lt"
+}
+
+TEMP 624 deaktyvuota: HTTP 200
