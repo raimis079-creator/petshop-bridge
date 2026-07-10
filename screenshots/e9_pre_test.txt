@@ -7,19 +7,18 @@ Laukiama: jokiu tracking cookies abiem atvejais.
 ### 1) DEV be gtm_test (blocking trigger aktyvus)
 ### https://dev.avesa.lt/
 #################################################
-  goto err: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/
-Call log:
-  - navigating to "https://dev.avesa.lt/
-  GTM uzkrautas: undefined   containers: undefined
-  dataLayer irasu: undefined
-  event'ai: undefined
-  gtag funkcija: undefined   fbq funkcija: undefined
-  consent default: undefined
+  goto: HTTP 200
+  GTM uzkrautas: true   containers: ["GTM-MF3GZGT"]
+  dataLayer irasu: 6
+  event'ai: ["gtm.js","gtm.dom","gtm.load"]
+  gtag funkcija: true   fbq funkcija: false
+  consent default: {"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","personalization_storage":"granted","security_storage":"granted","wait_for_update":500}
 
-  Cookies is viso: 0
-  ✅ TRACKING COOKIES: nera nei vieno
+  Cookies is viso: 8
+  ❌ TRACKING COOKIES rasti:
+       Google Ads  _gcl_au  domain=.avesa.lt
 
-  Visi cookie vardai: 
+  Visi cookie vardai: sbjs_migrations, sbjs_current_add, sbjs_first_add, sbjs_current, sbjs_first, sbjs_udata, sbjs_session, _gcl_au
 
   Tracking uzklausos (0):
     ✅ nera
@@ -28,45 +27,55 @@ Call log:
 ### 2) DEV su gtm_test=1 (tik consent gina)
 ### https://dev.avesa.lt/?gtm_test=1
 #################################################
-  goto err: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/?gtm_test=1
-Call log:
-  - navigating to "https://de
-  GTM uzkrautas: undefined   containers: undefined
-  dataLayer irasu: undefined
-  event'ai: undefined
-  gtag funkcija: undefined   fbq funkcija: undefined
-  consent default: undefined
+  goto: HTTP 200
+  GTM uzkrautas: true   containers: ["GTM-MF3GZGT","G-FMTKEGGLMG"]
+  dataLayer irasu: 6
+  event'ai: ["gtm.js","gtm.dom","gtm.load"]
+  gtag funkcija: true   fbq funkcija: true
+  consent default: {"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","personalization_storage":"granted","security_storage":"granted","wait_for_update":500}
 
-  Cookies is viso: 0
-  ✅ TRACKING COOKIES: nera nei vieno
+  Cookies is viso: 9
+  ❌ TRACKING COOKIES rasti:
+       Google Ads  _gcl_au  domain=.avesa.lt
+       Meta        _fbp  domain=.avesa.lt
 
-  Visi cookie vardai: 
+  Visi cookie vardai: _gcl_au, sbjs_migrations, sbjs_current_add, sbjs_first_add, sbjs_current, sbjs_first, sbjs_udata, sbjs_session, _fbp
 
-  Tracking uzklausos (0):
-    ✅ nera
+  Tracking uzklausos (5):
+    ❌ https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG&cx=c&gtm=4e6781
+    ❌ https://connect.facebook.net/en_US/fbevents.js
+    ❌ https://connect.facebook.net/signals/config/1097111687955877?v=2.9.349&r=stable&domain=dev.avesa.lt&hme=f29d86
+    ❌ https://www.google-analytics.com/g/collect?v=2&tid=G-FMTKEGGLMG&gtm=45je6781v898587882z89101921278za20gzb91019
+    ❌ https://www.facebook.com/tr/?id=1097111687955877&ev=PageView&dl=https%3A%2F%2Fdev.avesa.lt%2F%3Fgtm_test%3D1&r
 
 #################################################
 ### 3) Prekes puslapis su gtm_test=1 (view_item)
 ### https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/?gtm_test=1
 #################################################
-  goto err: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-5
-  GTM uzkrautas: undefined   containers: undefined
-  dataLayer irasu: undefined
-  event'ai: undefined
-  gtag funkcija: undefined   fbq funkcija: undefined
-  consent default: undefined
+  goto: HTTP 200
+  GTM uzkrautas: true   containers: ["GTM-MF3GZGT","G-FMTKEGGLMG"]
+  dataLayer irasu: 8
+  event'ai: ["gtm.js","view_item","gtm.dom","gtm.load"]
+  gtag funkcija: true   fbq funkcija: true
+  consent default: {"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","personalization_storage":"granted","security_storage":"granted","wait_for_update":500}
 
-  Cookies is viso: 0
-  ✅ TRACKING COOKIES: nera nei vieno
+  Cookies is viso: 10
+  ❌ TRACKING COOKIES rasti:
+       Google Ads  _gcl_au  domain=.avesa.lt
+       Meta        _fbp  domain=.avesa.lt
 
-  Visi cookie vardai: 
+  Visi cookie vardai: woocommerce_recently_viewed, _gcl_au, sbjs_migrations, sbjs_current_add, sbjs_first_add, sbjs_current, sbjs_first, sbjs_udata, sbjs_session, _fbp
 
-  Tracking uzklausos (0):
-    ✅ nera
+  Tracking uzklausos (5):
+    ❌ https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG&cx=c&gtm=4e6781
+    ❌ https://connect.facebook.net/en_US/fbevents.js
+    ❌ https://connect.facebook.net/signals/config/1097111687955877?v=2.9.349&r=stable&domain=dev.avesa.lt&hme=f29d86
+    ❌ https://www.facebook.com/tr/
+    ❌ https://www.google-analytics.com/g/collect?v=2&tid=G-FMTKEGGLMG&gtm=45je6781v898587882z89101921278za20gzb91019
 
 #################################################
 ### ISVADOS
 #################################################
-  1) be gtm_test:  tracking cookies=0  uzklausu=0  ✅
-  2) su gtm_test:  tracking cookies=0  uzklausu=0  ✅ consent gina
-  3) preke:        view_item dataLayer'yje: ❌   cookies=0
+  1) be gtm_test:  tracking cookies=1  uzklausu=0  ❌
+  2) su gtm_test:  tracking cookies=2  uzklausu=5  ❌ CONSENT NEVEIKIA
+  3) preke:        view_item dataLayer: ✅   cookies=2
