@@ -1,0 +1,64 @@
+CREATE id=622
+active=true code_error=null
+
+=== RECON ===
+HTTP 200
+{
+    "mode": "RECON",
+    "css_files": {
+        "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/complianz/css": [
+            {
+                "file": "banner-1-optin.css",
+                "size": 17083,
+                "mtime": "2026-07-10 12:39:51"
+            },
+            {
+                "file": "banner-preview-1-optin.css",
+                "size": 17083,
+                "mtime": "2026-07-10 08:51:04"
+            }
+        ],
+        "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/complianz": []
+    },
+    "cmplz_css_functions": [
+        "cmplz_get_cookiebanner",
+        "cmplz_get_default_banner_id",
+        "cmplz_get_cookiebanners",
+        "cmplz_resave_all_banners",
+        "cmplz_maybe_update_css",
+        "cmplz_rest_api_banner_data",
+        "cmplz_install_cookiebanner_table",
+        "cmplz_banner_color_schemes",
+        "cmplz_get_banner_color_scheme_options",
+        "cmplz_update_banner_text",
+        "cmplz_add_cookiebanner_settings",
+        "cmplz_wpforms_css"
+    ],
+    "cmplz_classes": [
+        "COMPLIANZ",
+        "cmplz_document",
+        "CMPLZ_COOKIE",
+        "CMPLZ_SERVICE",
+        "cmplz_proof_of_consent",
+        "CMPLZ_COOKIEBANNER",
+        "cmplz_banner_loader",
+        "cmplz_company",
+        "cmplz_DNSMPD",
+        "cmplz_config",
+        "cmplz_cookie_blocker",
+        "cmplz_wsc_api",
+        "cmplz_wsc_scanner",
+        "cmplz_wsc_logger",
+        "cmplz_wsc_auth",
+        "cmplz_mailer"
+    ],
+    "wizard_privacy": "complianz_options_wizard nera masyvas: boolean",
+    "privacy_options": [
+        {
+            "option_name": "cmplz_privacy-statement_custom_page",
+            "option_value": "34526"
+        }
+    ]
+}
+
+=== TEMP id: 622 ===
