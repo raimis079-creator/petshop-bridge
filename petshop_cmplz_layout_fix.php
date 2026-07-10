@@ -16,33 +16,42 @@ add_action( 'wp_loaded', function () {
 	if ( ! $row ) { wp_send_json( array( 'error' => 'nerastas' ) ); }
 
 	$css = '
-/* Petshop: mygtuku isdestymas — 3 mygtukai turi tilpti be scroll */
+/* Petshop: 3 mygtukai vienoje eiluteje (desktop), stack mobiliajame */
 .cmplz-cookiebanner .cmplz-buttons {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	overflow-x: hidden;
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
+	gap: 8px !important;
+	overflow-x: hidden !important;
+	width: 100% !important;
 }
 .cmplz-cookiebanner .cmplz-buttons .cmplz-btn {
-	flex: 1 1 auto;
-	min-width: 0;
-	white-space: nowrap;
-	padding-left: 12px;
-	padding-right: 12px;
-	font-size: 13px;
+	flex: 1 1 0 !important;
+	width: auto !important;
+	min-width: 0 !important;
+	max-width: none !important;
+	white-space: nowrap !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+	font-size: 13px !important;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
-.cmplz-cookiebanner {
-	overflow-x: hidden;
+.cmplz-cookiebanner,
+.cmplz-cookiebanner .cmplz-body,
+.cmplz-cookiebanner .cmplz-header {
+	overflow-x: hidden !important;
 }
-.cmplz-cookiebanner .cmplz-body {
-	overflow-x: hidden;
-}
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+	.cmplz-cookiebanner .cmplz-buttons {
+		flex-wrap: wrap !important;
+	}
 	.cmplz-cookiebanner .cmplz-buttons .cmplz-btn {
-		flex: 1 1 100%;
+		flex: 1 1 100% !important;
 	}
 }
 ';
+
 
 	$new = array(
 		'banner_width'          => 620,
@@ -91,6 +100,19 @@ add_action( 'wp_loaded', function () {
 	$called = array();
 	if ( function_exists( 'cmplz_resave_all_banners' ) ) { cmplz_resave_all_banners(); $called[] = 'resave'; }
 	if ( function_exists( 'cmplz_maybe_update_css' ) )   { cmplz_maybe_update_css();   $called[] = 'maybe_update_css'; }
+	$out['iskviesta'] = $called;
+
+	// Priverstinis regen: Complianz generuoja CSS frontend uzklausoje
+	if ( function_exists( 'cmplz_get_cookiebanner' ) ) {
+		$b = cmplz_get_cookiebanner( 1 );
+		if ( is_object( $b ) && method_exists( $b, 'save' ) ) { $b->save(); $called[] = 'cookiebanner::save'; }
+	}
+	if ( class_exists( 'CMPLZ_COOKIEBANNER' ) ) {
+		$b2 = new CMPLZ_COOKIEBANNER( 1 );
+		foreach ( array( 'generate_css', 'update_css', 'save' ) as $m ) {
+			if ( method_exists( $b2, $m ) ) { try { $b2->$m(); $called[] = 'CMPLZ::' . $m; } catch ( Throwable $e ) {} }
+		}
+	}
 	$out['iskviesta'] = $called;
 
 	$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_cmplz%' OR option_name LIKE '_transient_timeout_cmplz%'" );
