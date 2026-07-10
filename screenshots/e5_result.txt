@@ -1,0 +1,43 @@
+PRIES: tags=9
+
+=== KURIAM META TAG'US ===
+  [OK]   id= 31  04 — Meta Pixel Base + PageView
+  [OK]   id= 32  Meta — add_to_cart
+  [OK]   id= 33  Meta — begin_checkout
+  [OK]   id= 34  Meta — purchase
+
+=== HTML TURINIO PATIKRA ===
+  [31] 04 — Meta Pixel Base + PageView  (461 simb.)
+        ✅ fbq init
+        ✅ PageView
+  [32] Meta — add_to_cart  (623 simb.)
+        ✅ AddToCart
+        ✅ dataLayer skaitymas
+        ✅ fbq guard
+  [33] Meta — begin_checkout  (659 simb.)
+        ✅ InitiateCheckout
+        ✅ dataLayer skaitymas
+        ✅ fbq guard
+  [34] Meta — purchase  (668 simb.)
+        ✅ Purchase
+        ✅ dataLayer skaitymas
+        ✅ eventID (dedupe)
+        ✅ fbq guard
+
+=== GALUTINE BUSENA ===
+  [ 15] 00 — Consent Mode v2 Default           html     fire=[2147479573] block=[] notSet
+  [ 16] 01 — Conversion Linker                 gclidw   fire=[2147479553] block=[] notSet
+  [ 24] 02 — GA4 Config                        googtag  fire=[2147479553] block=[17,18] analytics_storage
+  [ 30] 03 — Google Ads Conversion (Purchase)  awct     fire=[23] block=[17,18] ad_storage+ad_user_data
+  [ 31] 04 — Meta Pixel Base + PageView        html     fire=[2147479553] block=[17,18] ad_storage+ad_personalization
+  [ 26] GA4 — add_to_cart                      gaawe    fire=[20] block=[17,18] analytics_storage
+  [ 28] GA4 — begin_checkout                   gaawe    fire=[22] block=[17,18] analytics_storage
+  [ 29] GA4 — purchase                         gaawe    fire=[23] block=[17,18] analytics_storage
+  [ 27] GA4 — view_cart                        gaawe    fire=[21] block=[17,18] analytics_storage
+  [ 25] GA4 — view_item                        gaawe    fire=[19] block=[17,18] analytics_storage
+  [ 32] Meta — add_to_cart                     html     fire=[20] block=[17,18] ad_storage+ad_personalization
+  [ 33] Meta — begin_checkout                  html     fire=[22] block=[17,18] ad_storage+ad_personalization
+  [ 34] Meta — purchase                        html     fire=[23] block=[17,18] ad_storage+ad_personalization
+
+BENDRA: variables=10  tags=13  triggers=7
+LIVE: #1 — PROD nepaliestas ✅
