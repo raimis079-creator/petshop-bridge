@@ -1,0 +1,1113 @@
+{
+ "exported": "2026-07-10T07:46:24.100Z",
+ "container": "accounts/6071827163/containers/101921278",
+ "counts": {
+  "tags": 13,
+  "triggers": 7,
+  "variables": 10,
+  "builtIn": 5
+ },
+ "tags": [
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/15",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "15",
+   "name": "00 — Consent Mode v2 Default",
+   "type": "html",
+   "priority": {
+    "type": "integer",
+    "value": "1000"
+   },
+   "parameter": [
+    {
+     "type": "template",
+     "key": "html",
+     "value": "<script>\nwindow.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('consent', 'default', {\n  'ad_storage': 'denied',\n  'ad_user_data': 'denied',\n  'ad_personalization': 'denied',\n  'analytics_storage': 'denied',\n  'functionality_storage': 'granted',\n  'personalization_storage': 'granted',\n  'security_storage': 'granted',\n  'wait_for_update': 500\n});\ngtag('set', 'ads_data_redaction', true);\ngtag('set', 'url_passthrough', true);\n</script>"
+    },
+    {
+     "type": "boolean",
+     "key": "supportDocumentWrite",
+     "value": "false"
+    }
+   ],
+   "fingerprint": "1783667772124",
+   "firingTriggerId": [
+    "2147479573"
+   ],
+   "tagFiringOption": "oncePerEvent",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/15?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "notSet"
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/16",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "16",
+   "name": "01 — Conversion Linker",
+   "type": "gclidw",
+   "priority": {
+    "type": "integer",
+    "value": "900"
+   },
+   "parameter": [
+    {
+     "type": "boolean",
+     "key": "enableCrossDomain",
+     "value": "false"
+    }
+   ],
+   "fingerprint": "1783667772509",
+   "firingTriggerId": [
+    "2147479553"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/16?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "notSet"
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/24",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "24",
+   "name": "02 — GA4 Config",
+   "type": "googtag",
+   "priority": {
+    "type": "integer",
+    "value": "800"
+   },
+   "parameter": [
+    {
+     "type": "template",
+     "key": "tagId",
+     "value": "{{Const — GA4 ID}}"
+    }
+   ],
+   "fingerprint": "1783667996178",
+   "firingTriggerId": [
+    "2147479553"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/24?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "analytics_storage"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/25",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "25",
+   "name": "GA4 — view_item",
+   "type": "gaawe",
+   "parameter": [
+    {
+     "type": "boolean",
+     "key": "sendEcommerceData",
+     "value": "true"
+    },
+    {
+     "type": "template",
+     "key": "eventName",
+     "value": "view_item"
+    },
+    {
+     "type": "template",
+     "key": "measurementIdOverride",
+     "value": "{{Const — GA4 ID}}"
+    }
+   ],
+   "fingerprint": "1783667996614",
+   "firingTriggerId": [
+    "19"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/25?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "analytics_storage"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/26",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "26",
+   "name": "GA4 — add_to_cart",
+   "type": "gaawe",
+   "parameter": [
+    {
+     "type": "boolean",
+     "key": "sendEcommerceData",
+     "value": "true"
+    },
+    {
+     "type": "template",
+     "key": "eventName",
+     "value": "add_to_cart"
+    },
+    {
+     "type": "template",
+     "key": "measurementIdOverride",
+     "value": "{{Const — GA4 ID}}"
+    }
+   ],
+   "fingerprint": "1783667996935",
+   "firingTriggerId": [
+    "20"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/26?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "analytics_storage"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/27",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "27",
+   "name": "GA4 — view_cart",
+   "type": "gaawe",
+   "parameter": [
+    {
+     "type": "boolean",
+     "key": "sendEcommerceData",
+     "value": "true"
+    },
+    {
+     "type": "template",
+     "key": "eventName",
+     "value": "view_cart"
+    },
+    {
+     "type": "template",
+     "key": "measurementIdOverride",
+     "value": "{{Const — GA4 ID}}"
+    }
+   ],
+   "fingerprint": "1783667997365",
+   "firingTriggerId": [
+    "21"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/27?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "analytics_storage"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/28",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "28",
+   "name": "GA4 — begin_checkout",
+   "type": "gaawe",
+   "parameter": [
+    {
+     "type": "boolean",
+     "key": "sendEcommerceData",
+     "value": "true"
+    },
+    {
+     "type": "template",
+     "key": "eventName",
+     "value": "begin_checkout"
+    },
+    {
+     "type": "template",
+     "key": "measurementIdOverride",
+     "value": "{{Const — GA4 ID}}"
+    }
+   ],
+   "fingerprint": "1783667997803",
+   "firingTriggerId": [
+    "22"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/28?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "analytics_storage"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/29",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "29",
+   "name": "GA4 — purchase",
+   "type": "gaawe",
+   "parameter": [
+    {
+     "type": "boolean",
+     "key": "sendEcommerceData",
+     "value": "true"
+    },
+    {
+     "type": "template",
+     "key": "eventName",
+     "value": "purchase"
+    },
+    {
+     "type": "template",
+     "key": "measurementIdOverride",
+     "value": "{{Const — GA4 ID}}"
+    }
+   ],
+   "fingerprint": "1783667998173",
+   "firingTriggerId": [
+    "23"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/29?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "analytics_storage"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/30",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "30",
+   "name": "03 — Google Ads Conversion (Purchase)",
+   "type": "awct",
+   "parameter": [
+    {
+     "type": "boolean",
+     "key": "enableConversionLinker",
+     "value": "true"
+    },
+    {
+     "type": "template",
+     "key": "conversionValue",
+     "value": "{{DLV — value}}"
+    },
+    {
+     "type": "template",
+     "key": "orderId",
+     "value": "{{DLV — transaction_id}}"
+    },
+    {
+     "type": "template",
+     "key": "conversionId",
+     "value": "{{Const — Ads Conversion ID}}"
+    },
+    {
+     "type": "template",
+     "key": "currencyCode",
+     "value": "{{DLV — currency}}"
+    },
+    {
+     "type": "template",
+     "key": "conversionLabel",
+     "value": "{{Const — Ads Label}}"
+    }
+   ],
+   "fingerprint": "1783668092908",
+   "firingTriggerId": [
+    "23"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/30?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "ad_storage"
+      },
+      {
+       "type": "template",
+       "value": "ad_user_data"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/31",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "31",
+   "name": "04 — Meta Pixel Base + PageView",
+   "type": "html",
+   "priority": {
+    "type": "integer",
+    "value": "700"
+   },
+   "parameter": [
+    {
+     "type": "template",
+     "key": "html",
+     "value": "<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};\nif(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\nn.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];\ns.parentNode.insertBefore(t,s)}(window,document,'script',\n'https://connect.facebook.net/en_US/fbevents.js');\nfbq('init', '1097111687955877');\nfbq('track', 'PageView');\n</script>"
+    },
+    {
+     "type": "boolean",
+     "key": "supportDocumentWrite",
+     "value": "false"
+    }
+   ],
+   "fingerprint": "1783668253207",
+   "firingTriggerId": [
+    "2147479553"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/31?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "ad_storage"
+      },
+      {
+       "type": "template",
+       "value": "ad_personalization"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/32",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "32",
+   "name": "Meta — add_to_cart",
+   "type": "html",
+   "parameter": [
+    {
+     "type": "template",
+     "key": "html",
+     "value": "<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window.dataLayer || [];\n  var ec = null;\n  for (var i = dl.length - 1; i >= 0; i--) {\n    if (dl[i] && dl[i].ecommerce) { ec = dl[i].ecommerce; break; }\n  }\n  if (!ec) return;\n  var items = ec.items || [];\n  var ids = items.map(function(x){ return String(x.item_id); });\n  var contents = items.map(function(x){ return { id: String(x.item_id), quantity: x.quantity || 1 }; });\n  fbq('track', 'AddToCart', {\n    value: ec.value,\n    currency: ec.currency,\n    content_type: 'product',\n    content_ids: ids,\n    contents: contents\n  });\n})();\n</script>"
+    },
+    {
+     "type": "boolean",
+     "key": "supportDocumentWrite",
+     "value": "false"
+    }
+   ],
+   "fingerprint": "1783668253506",
+   "firingTriggerId": [
+    "20"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/32?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "ad_storage"
+      },
+      {
+       "type": "template",
+       "value": "ad_personalization"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/33",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "33",
+   "name": "Meta — begin_checkout",
+   "type": "html",
+   "parameter": [
+    {
+     "type": "template",
+     "key": "html",
+     "value": "<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window.dataLayer || [];\n  var ec = null;\n  for (var i = dl.length - 1; i >= 0; i--) {\n    if (dl[i] && dl[i].ecommerce) { ec = dl[i].ecommerce; break; }\n  }\n  if (!ec) return;\n  var items = ec.items || [];\n  var ids = items.map(function(x){ return String(x.item_id); });\n  var contents = items.map(function(x){ return { id: String(x.item_id), quantity: x.quantity || 1 }; });\n  fbq('track', 'InitiateCheckout', {\n    value: ec.value,\n    currency: ec.currency,\n    content_type: 'product',\n    content_ids: ids,\n    contents: contents,\n    num_items: items.length\n  });\n})();\n</script>"
+    },
+    {
+     "type": "boolean",
+     "key": "supportDocumentWrite",
+     "value": "false"
+    }
+   ],
+   "fingerprint": "1783668253797",
+   "firingTriggerId": [
+    "22"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/33?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "ad_storage"
+      },
+      {
+       "type": "template",
+       "value": "ad_personalization"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/tags/34",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "tagId": "34",
+   "name": "Meta — purchase",
+   "type": "html",
+   "parameter": [
+    {
+     "type": "template",
+     "key": "html",
+     "value": "<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window.dataLayer || [];\n  var ec = null;\n  for (var i = dl.length - 1; i >= 0; i--) {\n    if (dl[i] && dl[i].ecommerce) { ec = dl[i].ecommerce; break; }\n  }\n  if (!ec) return;\n  var items = ec.items || [];\n  var ids = items.map(function(x){ return String(x.item_id); });\n  var contents = items.map(function(x){ return { id: String(x.item_id), quantity: x.quantity || 1 }; });\n  fbq('track', 'Purchase', {\n    value: ec.value,\n    currency: ec.currency,\n    content_type: 'product',\n    content_ids: ids,\n    contents: contents\n  }, { eventID: 'purchase_' + ec.transaction_id });\n})();\n</script>"
+    },
+    {
+     "type": "boolean",
+     "key": "supportDocumentWrite",
+     "value": "false"
+    }
+   ],
+   "fingerprint": "1783668254092",
+   "firingTriggerId": [
+    "23"
+   ],
+   "blockingTriggerId": [
+    "17",
+    "18"
+   ],
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/tags/34?apiLink=tag",
+   "consentSettings": {
+    "consentStatus": "needed",
+    "consentType": {
+     "type": "list",
+     "list": [
+      {
+       "type": "template",
+       "value": "ad_storage"
+      },
+      {
+       "type": "template",
+       "value": "ad_personalization"
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "triggers": [
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/triggers/17",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "triggerId": "17",
+   "name": "BLOCK — DEV (pageview)",
+   "type": "pageview",
+   "filter": [
+    {
+     "type": "contains",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{Page Hostname}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "dev.avesa.lt"
+      }
+     ]
+    },
+    {
+     "type": "matchRegex",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{Page URL}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "gtm_test=1"
+      },
+      {
+       "type": "boolean",
+       "key": "negate",
+       "value": "true"
+      }
+     ]
+    }
+   ],
+   "fingerprint": "1783667893796",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/triggers/17?apiLink=trigger"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/triggers/18",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "triggerId": "18",
+   "name": "BLOCK — DEV (visi custom events)",
+   "type": "customEvent",
+   "customEventFilter": [
+    {
+     "type": "matchRegex",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{_event}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": ".*"
+      }
+     ]
+    }
+   ],
+   "filter": [
+    {
+     "type": "contains",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{Page Hostname}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "dev.avesa.lt"
+      }
+     ]
+    },
+    {
+     "type": "matchRegex",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{Page URL}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "gtm_test=1"
+      },
+      {
+       "type": "boolean",
+       "key": "negate",
+       "value": "true"
+      }
+     ]
+    }
+   ],
+   "fingerprint": "1783667894568",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/triggers/18?apiLink=trigger"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/triggers/19",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "triggerId": "19",
+   "name": "CE — view_item",
+   "type": "customEvent",
+   "customEventFilter": [
+    {
+     "type": "equals",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{_event}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "view_item"
+      }
+     ]
+    }
+   ],
+   "fingerprint": "1783667895293",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/triggers/19?apiLink=trigger"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/triggers/20",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "triggerId": "20",
+   "name": "CE — add_to_cart",
+   "type": "customEvent",
+   "customEventFilter": [
+    {
+     "type": "equals",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{_event}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "add_to_cart"
+      }
+     ]
+    }
+   ],
+   "fingerprint": "1783667896073",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/triggers/20?apiLink=trigger"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/triggers/21",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "triggerId": "21",
+   "name": "CE — view_cart",
+   "type": "customEvent",
+   "customEventFilter": [
+    {
+     "type": "equals",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{_event}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "view_cart"
+      }
+     ]
+    }
+   ],
+   "fingerprint": "1783667896668",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/triggers/21?apiLink=trigger"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/triggers/22",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "triggerId": "22",
+   "name": "CE — begin_checkout",
+   "type": "customEvent",
+   "customEventFilter": [
+    {
+     "type": "equals",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{_event}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "begin_checkout"
+      }
+     ]
+    }
+   ],
+   "fingerprint": "1783667897273",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/triggers/22?apiLink=trigger"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/triggers/23",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "triggerId": "23",
+   "name": "CE — purchase",
+   "type": "customEvent",
+   "customEventFilter": [
+    {
+     "type": "equals",
+     "parameter": [
+      {
+       "type": "template",
+       "key": "arg0",
+       "value": "{{_event}}"
+      },
+      {
+       "type": "template",
+       "key": "arg1",
+       "value": "purchase"
+      }
+     ]
+    }
+   ],
+   "fingerprint": "1783667897753",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/triggers/23?apiLink=trigger"
+  }
+ ],
+ "variables": [
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/5",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "5",
+   "name": "Const — GA4 ID",
+   "type": "c",
+   "parameter": [
+    {
+     "type": "template",
+     "key": "value",
+     "value": "G-FMTKEGGLMG"
+    }
+   ],
+   "fingerprint": "1783667670052",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/5?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/6",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "6",
+   "name": "Const — Ads Conversion ID",
+   "type": "c",
+   "parameter": [
+    {
+     "type": "template",
+     "key": "value",
+     "value": "11117260149"
+    }
+   ],
+   "fingerprint": "1783667670275",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/6?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/7",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "7",
+   "name": "Const — Ads Label",
+   "type": "c",
+   "parameter": [
+    {
+     "type": "template",
+     "key": "value",
+     "value": "7JbYCNuThZIYEPXaj7Up"
+    }
+   ],
+   "fingerprint": "1783667670515",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/7?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/8",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "8",
+   "name": "Const — Meta Pixel ID",
+   "type": "c",
+   "parameter": [
+    {
+     "type": "template",
+     "key": "value",
+     "value": "1097111687955877"
+    }
+   ],
+   "fingerprint": "1783667670683",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/8?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/9",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "9",
+   "name": "DLV — ecommerce",
+   "type": "v",
+   "parameter": [
+    {
+     "type": "integer",
+     "key": "dataLayerVersion",
+     "value": "2"
+    },
+    {
+     "type": "template",
+     "key": "name",
+     "value": "ecommerce"
+    }
+   ],
+   "fingerprint": "1783667670818",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/9?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/10",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "10",
+   "name": "DLV — transaction_id",
+   "type": "v",
+   "parameter": [
+    {
+     "type": "integer",
+     "key": "dataLayerVersion",
+     "value": "2"
+    },
+    {
+     "type": "template",
+     "key": "name",
+     "value": "ecommerce.transaction_id"
+    }
+   ],
+   "fingerprint": "1783667671052",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/10?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/11",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "11",
+   "name": "DLV — value",
+   "type": "v",
+   "parameter": [
+    {
+     "type": "integer",
+     "key": "dataLayerVersion",
+     "value": "2"
+    },
+    {
+     "type": "template",
+     "key": "name",
+     "value": "ecommerce.value"
+    }
+   ],
+   "fingerprint": "1783667671303",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/11?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/12",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "12",
+   "name": "DLV — currency",
+   "type": "v",
+   "parameter": [
+    {
+     "type": "integer",
+     "key": "dataLayerVersion",
+     "value": "2"
+    },
+    {
+     "type": "template",
+     "key": "name",
+     "value": "ecommerce.currency"
+    }
+   ],
+   "fingerprint": "1783667671562",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/12?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/13",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "13",
+   "name": "DLV — items",
+   "type": "v",
+   "parameter": [
+    {
+     "type": "integer",
+     "key": "dataLayerVersion",
+     "value": "2"
+    },
+    {
+     "type": "template",
+     "key": "name",
+     "value": "ecommerce.items"
+    }
+   ],
+   "fingerprint": "1783667671829",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/13?apiLink=variable"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/variables/14",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "variableId": "14",
+   "name": "DLV — user_email_hashed",
+   "type": "v",
+   "parameter": [
+    {
+     "type": "integer",
+     "key": "dataLayerVersion",
+     "value": "2"
+    },
+    {
+     "type": "template",
+     "key": "name",
+     "value": "user_data.sha256_email_address"
+    }
+   ],
+   "fingerprint": "1783667671995",
+   "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071827163/containers/101921278/workspaces/2/variables/14?apiLink=variable"
+  }
+ ],
+ "builtInVariables": [
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/built_in_variables",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "type": "pageUrl",
+   "name": "Page URL"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/built_in_variables",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "type": "pageHostname",
+   "name": "Page Hostname"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/built_in_variables",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "type": "pagePath",
+   "name": "Page Path"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/built_in_variables",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "type": "referrer",
+   "name": "Referrer"
+  },
+  {
+   "path": "accounts/6071827163/containers/101921278/workspaces/2/built_in_variables",
+   "accountId": "6071827163",
+   "containerId": "101921278",
+   "workspaceId": "2",
+   "type": "event",
+   "name": "Event"
+  }
+ ]
+}
