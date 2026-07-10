@@ -1,0 +1,36 @@
+############ S169 CLEANUP ############
+
+=== TEMP snippet'u deaktyvavimas ===
+  [616] "TEMP — Complianz aktyvavimas v1 (token)"  jau neaktyvus ✅
+  [617] "TEMP — Complianz options probe v1 (token)"  jau neaktyvus ✅
+  [618] "TEMP — Complianz integracijos probe v2 (token"  jau neaktyvus ✅
+  [620] "TEMP — Complianz banner probe v1 (token)"  -> deaktyvuota HTTP 200
+  [621] "TEMP — Complianz banner edit v1 (token)"  -> deaktyvuota HTTP 200
+  [622] "TEMP — Complianz CSS regen v2 (token)"  -> deaktyvuota HTTP 200
+
+=== TEMP endpoint'u patikra (turi neveikti) ===
+  cmplz_do       ✅ neveikia
+  cmplz_probe    ✅ neveikia
+  cmplz_probe2   ✅ neveikia
+  cmplz_banner   ✅ neveikia
+  cmplz_edit     ✅ neveikia
+  cmplz_css      ✅ neveikia
+
+=== Aktyvus tracking snippet'ai ===
+  [614] ON  "Petshop DataLayer v1.1 (GA4 ecommerce)"  prio=10
+  [615] ON  "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)"  prio=5
+  [619] ON  "Petshop Consent Bridge v1.2 (Complianz -> GTM)"  prio=1
+
+=== Svetaines sveikata ===
+  Homepage             HTTP 200  ✅
+  Preke                HTTP 200  ✅
+  Krepselis            HTTP 200  ✅
+  Slapuku politika     HTTP 200  ✅
+  Privatumo politika   HTTP 200  ✅
+
+=== Banerio busena (HTML) ===
+  GTM loader: ✅
+  consent bridge: ✅
+  dataLayer snippet: ✅
+  banner_version: 37
+  blokuotu scriptu: 0
