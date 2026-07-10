@@ -1,6 +1,6 @@
+import { chromium } from 'playwright';
 import { execSync } from "child_process";
 import fs from "fs";
-import { gtmToken, gtm, defaultWorkspace, CT } from './gtm_lib.mjs';
 function putFile(n,s){
   const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
   for(let a=0;a<4;a++){ try{
@@ -14,80 +14,105 @@ function putFile(n,s){
   return false;
 }
 let out=''; const L=(s)=>{out+=s+'\n';};
-const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH=U+':'+P;
-const API='https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
-function api(m,u,b){
-  let c='curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" -X '+m+' ';
-  if(b){ fs.writeFileSync('/tmp/b.json',JSON.stringify(b)); c+='-H "Content-Type: application/json" -d @/tmp/b.json '; }
-  c+='"'+u+'" 2>/dev/null || echo ERR';
-  const code=execSync(c,{encoding:'utf8'}).trim();
-  let body=''; try{ body=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
-  return {code, body};
+function cls(n){
+  if(n==='_ga'||n.startsWith('_ga_')||n==='_gid'||n.startsWith('_gat')) return 'GA4';
+  if(n==='_fbp'||n==='_fbc'||n==='fr') return 'Meta';
+  if(n.startsWith('_gcl')) return 'Ads';
+  return null;
 }
-try{
-  // --- A. Bridge v1.1 update ---
-  L('=== A. Bridge snippet v1.1 ===');
-  const CODE=fs.readFileSync('petshop_consent_bridge.php','utf8');
-  const SNIP_ID = 619;
-  const chk = api('GET', API+'/'+SNIP_ID);
-  if(chk.code!=='200'){ L('  ❌ snippet '+SNIP_ID+' HTTP '+chk.code); throw new Error('snippet nerastas'); }
-  L('  rastas id='+SNIP_ID+' "'+JSON.parse(chk.body).name+'"');
-  const r=api('POST',API+'/'+SNIP_ID,{ name:'Petshop Consent Bridge v1.1 (Complianz -> GTM)', code:CODE, active:true, scope:'front-end', priority:1 });
-  L('  UPDATE id='+SNIP_ID+' -> HTTP '+r.code);
-  if(r.code==='200'){ const j=JSON.parse(r.body); L('  active='+j.active+' code_error='+JSON.stringify(j.code_error||null)); }
-  L('');
+const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
 
-  // --- B. GTM: CE statistics granted ---
-  L('=== B. GTM trigger CE — statistics granted ===');
-  const t=await gtmToken(); const W=await defaultWorkspace(t);
-  const trigs=(await gtm(t,'/'+W.path+'/triggers')).body.trigger||[];
-  let statTrig=trigs.find(x=>x.name==='CE — statistics granted');
-  if(statTrig){ L('  [skip] jau yra id='+statTrig.triggerId); }
-  else{
-    const cr=await gtm(t,'/'+W.path+'/triggers','POST',{
-      name:'CE — statistics granted', type:'customEvent',
-      customEventFilter:[{type:'equals',parameter:[{type:'template',key:'arg0',value:'{{_event}}'},{type:'template',key:'arg1',value:'cmplz_consent_update'}]}],
-      filter:[{type:'equals',parameter:[{type:'template',key:'arg0',value:'{{DLV — cmplz_statistics}}'},{type:'template',key:'arg1',value:'granted'}]}]
-    });
-    L('  POST HTTP '+cr.status);
-    if(cr.status!==200){ L('  ❌ '+JSON.stringify(cr.body).slice(0,250)); throw new Error('trig fail'); }
-    statTrig=cr.body; L('  ✅ id='+statTrig.triggerId);
-  }
-  const T_STAT=statTrig.triggerId;
-  L('');
-
-  // --- C. GA4 Config: firing tik CE statistics granted ---
-  L('=== C. GA4 Config perkonfiguravimas ===');
-  const tags=(await gtm(t,'/'+W.path+'/tags')).body.tag||[];
-  const g=tags.find(x=>x.name==='02 — GA4 Config');
-  L('  pries: fire=['+((g.firingTriggerId||[]).join(','))+'] once='+(g.tagFiringOption||'-'));
-  const up=await gtm(t,'/'+W.path+'/tags/'+g.tagId,'PUT',{
-    name:g.name, type:g.type, parameter:g.parameter,
-    firingTriggerId:[T_STAT], blockingTriggerId:['17','18'],
-    priority:g.priority, consentSettings:g.consentSettings, tagFiringOption:'oncePerLoad',
-    notes:'S167: firing tik CE statistics granted. All Pages pasalintas — su oncePerLoad blokuotas fire\'inimas uzskaitydavo limita.'
+async function T(n,label,url,action,expect){
+  L(''); L('═══════════════════════════════════════');
+  L(' TESTAS '+n+': '+label);
+  L('═══════════════════════════════════════');
+  const ctx=await browser.newContext({ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120'});
+  const p=await ctx.newPage();
+  const ga=[],fb=[],ads=[];
+  p.on('request',r=>{const u=r.url();
+    if(/\/g\/collect/.test(u)) ga.push(u);
+    if(/facebook\.com\/tr/.test(u)) fb.push(u);
+    if(/googleadservices|\/pagead\/|\/ccm\/collect/.test(u)) ads.push(u);});
+  const resp=await p.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
+  if(!resp||resp.status()>=400){ L('  ⚠️ NEUZSIKROVE'); await ctx.close(); return {ok:false}; }
+  await p.waitForTimeout(6000);
+  if(action){ try{ await action(p); }catch(e){ L('  ⚠️ veiksmas: '+e.message.slice(0,90)); } await p.waitForTimeout(9000); }
+  const cookies=await ctx.cookies();
+  const b={GA4:[],Meta:[],Ads:[]};
+  cookies.filter(c=>cls(c.name)).forEach(c=>b[cls(c.name)].push(c.name));
+  const st=await p.evaluate(()=>{
+    const dl=window.dataLayer||[]; const cons=[]; const evs=[];
+    for(const x of dl){ if(x&&x[0]==='consent') cons.push(x[2]); if(x&&x.event) evs.push(x.event+(x.cmplz_replay?'(replay)':'')); }
+    return { gtm: window.google_tag_manager?Object.keys(window.google_tag_manager).filter(k=>/^(GTM-|G-)/.test(k)):[],
+             last: cons[cons.length-1]||null, events: evs };
   });
-  L('  po:    HTTP '+up.status+'  fire=['+((up.body.firingTriggerId||[]).join(','))+'] once='+(up.body.tagFiringOption||'-'));
+  L('  cookies: GA4='+(b.GA4.join(',')||'—')+'  Meta='+(b.Meta.join(',')||'—')+'  Ads='+(b.Ads.join(',')||'—'));
+  L('  uzklausos: GA4='+ga.length+'  Meta='+fb.length+'  Ads='+ads.length);
+  L('  containers: '+JSON.stringify(st.gtm));
+  if(st.last) L('  consent: analytics='+st.last.analytics_storage+' ad_storage='+st.last.ad_storage);
+  L('  events: '+JSON.stringify(st.events));
+  if(ga.length){ const m=ga[0].match(/[?&]gcs=([^&]+)/); L('  gcs='+(m?m[1]:'—')); }
   L('');
-
-  // --- D. Publish v5 ---
-  L('=== D. Publish v5 ===');
-  const cv=await gtm(t,'/'+W.path+':create_version','POST',{
-    name:'v5 — GA4 Config fire tik po statistics sutikimo',
-    notes:'GA4 Config: All Pages pasalintas, firing = CE statistics granted. Bridge v1.1 prideda ecommerce replay. S167.' });
-  if(cv.status!==200){ L('  ❌ '+JSON.stringify(cv.body).slice(0,250)); throw new Error('cv'); }
-  const vid=cv.body.containerVersion.containerVersionId;
-  const pub=await gtm(t,'/'+CT+'/versions/'+vid+':publish','POST');
-  L('  publish HTTP '+pub.status);
-  const lv=await gtm(t,'/'+CT+'/versions:live');
-  L('  LIVE #'+lv.body.containerVersionId+' "'+lv.body.name+'"');
-  L('');
-  L('=== E. Tag\'u firing suvestine ===');
-  for(const x of (lv.body.tag||[]).sort((a,b)=>a.name.localeCompare(b.name))){
-    L('  ['+String(x.tagId).padStart(3)+'] '+x.name.padEnd(36)+' fire=['+((x.firingTriggerId||[]).join(','))+'] block=['+((x.blockingTriggerId||[]).join(','))+'] '+(x.paused?'PAUSED':''));
+  let pass=true;
+  for(const [k,fn] of Object.entries(expect)){
+    const ok=fn({ga:b.GA4,meta:b.Meta,ads:b.Ads,gaReq:ga.length,fbReq:fb.length,events:st.events});
+    L('    '+(ok?'✅':'❌')+' '+k); if(!ok) pass=false;
   }
-  L('');
-  L('  Trigger\'iai: 38=marketing granted, '+T_STAT+'=statistics granted, 37=consent_update, 39=marketing block, 17/18=DEV block');
-}catch(e){ L('!!! ERROR: '+e.message); }
-putFile('gtm_v5_'+Date.now()+'.txt', out); console.log(out);
+  L('  => '+(pass?'PRAEJO ✅':'NEPRAEJO ❌'));
+  await ctx.close();
+  return {ok:pass};
+}
+const accept=async p=>{ await p.click('.cmplz-accept',{timeout:12000}); };
+const deny  =async p=>{ await p.click('.cmplz-deny',{timeout:12000}); };
+const statsOnly=async p=>{
+  await p.click('.cmplz-view-preferences',{timeout:12000});
+  await p.waitForTimeout(2000);
+  const sel=['input.cmplz-consent-checkbox.statistics','input[data-category="cmplz_statistics"]','#cmplz-statistics-optin','input[name="cmplz_statistics"]','.cmplz-categories input[value="statistics"]'];
+  let done=false;
+  for(const s of sel){ try{ await p.check(s,{timeout:3000}); L('  [pazymeta: '+s+']'); done=true; break; }catch(e){} }
+  if(!done){
+    const found = await p.evaluate(()=>{
+      const inputs=[...document.querySelectorAll('.cmplz-cookiebanner input[type=checkbox]')];
+      const r=inputs.map(i=>({id:i.id,name:i.name,val:i.value,cls:i.className,disabled:i.disabled}));
+      const s=inputs.find(i=>/statistic/i.test(i.id+i.name+i.value+i.className));
+      if(s && !s.disabled){ s.click(); return {clicked:true, all:r}; }
+      return {clicked:false, all:r};
+    });
+    L('  [JS checkbox: '+(found.clicked?'pazymeta':'NEPAVYKO')+']');
+    L('  [rasti: '+JSON.stringify(found.all).slice(0,220)+']');
+  }
+  await p.waitForTimeout(1000);
+  await p.click('.cmplz-save-preferences',{timeout:8000});
+};
+
+const U='https://dev.avesa.lt/?gtm_test=1';
+const r=[];
+r.push(await T(1,'Jokio sutikimo',U,null,{
+  'nera _ga':x=>x.ga.length===0,'nera _fbp':x=>x.meta.length===0,'nera _gcl_au':x=>x.ads.length===0,
+  'nera GA4 uzklausu':x=>x.gaReq===0,'nera Meta uzklausu':x=>x.fbReq===0}));
+r.push(await T(2,'Reject all',U,deny,{
+  'nera _ga':x=>x.ga.length===0,'nera _fbp':x=>x.meta.length===0,'nera _gcl_au':x=>x.ads.length===0,
+  'nera uzklausu':x=>x.gaReq===0&&x.fbReq===0}));
+r.push(await T(3,'Accept ALL',U,accept,{
+  '_ga atsirado':x=>x.ga.length>0,'_fbp atsirado':x=>x.meta.length>0,'_gcl_au atsirado':x=>x.ads.length>0,
+  'GA4 uzklausa':x=>x.gaReq>0,'Meta uzklausa':x=>x.fbReq>0,
+  'nera Meta dubliu':x=>x.fbReq<=2}));
+r.push(await T(4,'Tik Analitika',U,statsOnly,{
+  '_ga atsirado':x=>x.ga.length>0,'NEra _fbp':x=>x.meta.length===0,
+  'NEra _gcl_au':x=>x.ads.length===0,'nera Meta uzklausu':x=>x.fbReq===0}));
+r.push(await T(5,'Be gtm_test — DEV blok.','https://dev.avesa.lt/',accept,{
+  'nera _ga':x=>x.ga.length===0,'nera _fbp':x=>x.meta.length===0,'nera _gcl_au':x=>x.ads.length===0,
+  'nera uzklausu':x=>x.gaReq===0&&x.fbReq===0}));
+r.push(await T(6,'Preke + Accept -> view_item replay','https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/?gtm_test=1',accept,{
+  '_ga atsirado':x=>x.ga.length>0,
+  'view_item replay dataLayer\'yje':x=>x.events.some(e=>e.includes('replay')),
+  'GA4 uzklausu >=2':x=>x.gaReq>=2}));
+
+L(''); L('═══════════════════════════════════════');
+L(' SUVESTINE');
+L('═══════════════════════════════════════');
+const nm=['1 Jokio sutikimo','2 Reject all','3 Accept all','4 Tik analitika','5 DEV blokavimas','6 view_item replay'];
+r.forEach((x,i)=>L('  '+(x.ok?'✅':'❌')+'  '+nm[i]));
+L(''); L('  '+r.filter(x=>x.ok).length+'/'+r.length+' praejo');
+await browser.close();
+putFile('e9_v2_'+Date.now()+'.txt', out); console.log(out);
