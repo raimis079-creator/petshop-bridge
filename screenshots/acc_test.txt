@@ -1,0 +1,32 @@
+############ FLATSOME ACCORDION SHORTCODE TESTAS ############
+
+Kuriam laikina puslapi su [accordion] shortcode, tikrinam ar renderinasi.
+
+  testinis puslapis id=34596
+  HTTP 200
+
+  ❌ shortcode NErenderintas (liko [accordion])
+  ✅ flatsome accordion HTML (.accordion)
+  ✅ accordion-item
+  ✅ accordion-title
+  ✅ accordion-inner
+  ✅ testinis tekstas matomas
+
+  >>> Flatsome accordion shortcode: ✅ VEIKIA
+
+  HTML pavyzdys:
+  <div class="accordion">	<div id="accordion-4155499849" class="accordion-item">
+		<a id="accordion-4155499849-label" class="accordion-title plain" href="#accordion-item-testinis-klausimas-1" aria-expanded="false" aria-controls="accordion-4155499849-content">
+			<button class="toggle" aria-label="Toggle">
+  <i class="icon-angle-down" aria-hidden="true">
+  </i>
+  </button>
+			<span>Testinis klausimas 1</span>
+		</a>
+		<div id="accordion-4155499849-content" class="accordion-inner" aria-labelledby="accordion-4155499849-label">
+			Testinis atsakymas 1.		</div>
+	</div>
+		<div id="accordion-2673646916
+
+=== Valymas: trinam testini puslapi ===
+  DELETE HTTP 200
