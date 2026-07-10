@@ -1,4 +1,3 @@
-import { chromium } from 'playwright';
 import { execSync } from "child_process";
 import fs from "fs";
 function putFile(n,s){
@@ -14,96 +13,38 @@ function putFile(n,s){
   return false;
 }
 let out=''; const L=(s)=>{out+=s+'\n';};
-const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
-const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:900}, locale:'lt-LT'});
-const page=await ctx.newPage();
-await page.goto('https://dev.avesa.lt/',{waitUntil:'domcontentloaded',timeout:60000});
-await page.waitForTimeout(7000);
-
-L('############ BANERIO DOM TIKSLI ANALIZE ############'); L('');
-
-L('=== 1. Nuorodu MATOMUMAS ===');
-const links = await page.evaluate(()=>{
-  const b=document.querySelector('.cmplz-cookiebanner');
-  return [...b.querySelectorAll('a')].map(a=>{
-    let el=a, vis=true;
-    while(el && el!==document.body){
-      const s=getComputedStyle(el);
-      if(s.display==='none'||s.visibility==='hidden'||s.opacity==='0'){ vis=false; break; }
-      el=el.parentElement;
-    }
-    return { txt:a.innerText.trim().slice(0,40), href:(a.getAttribute('href')||'').slice(0,60), visible:vis, cls:a.className.slice(0,40) };
-  });
-});
-links.forEach(l=>L('  '+(l.visible?'👁 MATOMA ':'   paslepta')+'  "'+l.txt+'"  -> '+l.href));
-L('');
-L('  Matomu nuorodu: '+links.filter(l=>l.visible).length+' is '+links.length);
-L('');
-
-L('=== 2. Kategoriju checkbox\'ai (po "Peržiūrėti nuostatas") ===');
-await page.click('.cmplz-view-preferences',{timeout:10000});
-await page.waitForTimeout(2500);
-const cats = await page.evaluate(()=>{
-  const b=document.querySelector('.cmplz-cookiebanner');
-  return [...b.querySelectorAll('input[type=checkbox]')].map(i=>{
-    let el=i.closest('.cmplz-category, .cmplz-service-header') || i.parentElement;
-    let vis=true, e2=i;
-    while(e2 && e2!==document.body){ const s=getComputedStyle(e2); if(s.display==='none'){vis=false;break;} e2=e2.parentElement; }
-    const lbl = el ? (el.querySelector('.cmplz-category-title, h3, label')||{}).innerText : null;
-    return {
-      dataCat: i.getAttribute('data-category'),
-      value: i.value, id: i.id, name: i.name,
-      checked: i.checked, disabled: i.disabled,
-      readonly: i.hasAttribute('readonly'),
-      cls: i.className.slice(0,50),
-      label: lbl?lbl.trim().slice(0,30):null,
-      visible: vis,
-      parentCls: el?el.className.slice(0,50):null
-    };
-  });
-});
-cats.forEach((c,i)=>{
-  L('  ['+(i+1)+'] '+String(c.dataCat||c.value).padEnd(20)+' "'+(c.label||'?')+'"');
-  L('       checked='+c.checked+'  disabled='+c.disabled+'  readonly='+c.readonly+'  matomas='+c.visible);
-  L('       class: '+c.cls);
-});
-L('');
-const func = cats.find(c=>/functional/.test(c.dataCat||c.value||''));
-L('  Funkcinis checkbox: '+(func? (func.disabled||func.readonly ? '✅ uzrakintas' : '❌ NEUZRAKINTAS — vartotojas gali isjungti') : 'nerastas'));
-const pref = cats.find(c=>/preferences/.test(c.dataCat||c.value||''));
-L('  Parinktys (preferences): '+(pref? (pref.visible?'❌ MATOMA (nenaudojama)':'✅ paslepta') : 'nerasta'));
-L('');
-
-L('=== 3. Ar realiai galima atjungti funkcini ===');
-if(func && !func.disabled){
-  try{
-    await page.evaluate(()=>{ const i=document.querySelector('.cmplz-cookiebanner input[data-category="cmplz_functional"]'); if(i) i.click(); });
-    await page.waitForTimeout(1000);
-    const after = await page.evaluate(()=>{ const i=document.querySelector('.cmplz-cookiebanner input[data-category="cmplz_functional"]'); return i?i.checked:null; });
-    L('  Po paspaudimo checked='+after+'   '+(after===false?'❌ PAVYKO ATJUNGTI (bloga)':'✅ liko ijungtas (Complianz apsaugo)'));
-  }catch(e){ L('  '+e.message.slice(0,60)); }
-} else L('  (praleista)');
-L('');
-
-L('=== 4. cmplz body klases ir TCF ===');
-const meta = await page.evaluate(()=>({
-  body: document.body.className.split(' ').filter(c=>c.startsWith('cmplz')),
-  tcfWrapper: !!document.querySelector('.cmplz-tcf-wrapper, #cmplz-tcf-wrapper'),
-  tcfVisible: (()=>{ const e=document.querySelector('.cmplz-tcf-wrapper, #cmplz-tcf-wrapper'); return e?getComputedStyle(e).display!=='none':null; })(),
-  vendorCount: (document.body.innerText.match(/\{vendor_count\}/g)||[]).length,
-  titlePlaceholder: (document.body.innerText.match(/\{title\}/g)||[]).length
-}));
-L('  body klases: '+JSON.stringify(meta.body));
-L('  TCF wrapper DOM\'e: '+meta.tcfWrapper+'   matomas: '+meta.tcfVisible);
-L('  {vendor_count} matomame tekste: '+meta.vendorCount);
-L('  {title} matomame tekste: '+meta.titlePlaceholder);
-L('');
-
-L('=== 5. Senojo "Slapukų naudojimas" puslapio busena ===');
-const old = await page.evaluate(async()=>{
-  try{ const r=await fetch('/slapuku-politika/',{method:'HEAD'}); return r.status; }catch(e){ return 'err'; }
-});
-L('  /slapuku-politika/ -> HTTP '+old);
-
-await browser.close();
-putFile('cmplz_dom.txt', out); console.log(out);
+const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH=U+':'+P;
+const API='https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
+function api(m,u,b){
+  let c='curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" -X '+m+' ';
+  if(b){ fs.writeFileSync('/tmp/b.json',JSON.stringify(b)); c+='-H "Content-Type: application/json" -d @/tmp/b.json '; }
+  c+='"'+u+'" 2>/dev/null || echo ERR';
+  const code=execSync(c,{encoding:'utf8'}).trim();
+  let body=''; try{ body=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
+  return {code, body};
+}
+function get(url){
+  const code=execSync('curl -sk -o /tmp/g.txt -w "%{http_code}" --max-time 40 "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
+  let b=''; try{ b=fs.readFileSync('/tmp/g.txt','utf8'); }catch(e){}
+  return {code, body:b};
+}
+const CODE=fs.readFileSync('petshop_cmplz_banner_probe.php','utf8');
+const TOKEN=fs.readFileSync('.cmplz_token','utf8').trim();
+try{
+  const chk=api('GET',API+'/620');
+  let id;
+  const payload={name:'TEMP — Complianz banner probe v1 (token)',desc:'Recon.',code:CODE,scope:'front-end',active:true,priority:6,tags:['temp']};
+  if(chk.code==='200'){ api('POST',API+'/620',payload); id=620; L('UPDATE 620'); }
+  else { const r=api('POST',API,payload); id=JSON.parse(r.body).id; L('CREATE id='+id); }
+  const v=api('GET',API+'/'+id);
+  if(v.code==='200'){ const j=JSON.parse(v.body); L('active='+j.active+' code_error='+JSON.stringify(j.code_error||null)); }
+  L('');
+  await new Promise(r=>setTimeout(r,3000));
+  const p=get('https://dev.avesa.lt/?cmplz_banner=1&token='+TOKEN);
+  L('HTTP '+p.code+'  ('+p.body.length+' B)'); L('');
+  L(p.body.slice(0,7000));
+  L('');
+  L('=== TEMP snippet id: '+id+' ===');
+}catch(e){ L('!!! ERROR: '+e.message); }
+putFile('cmplz_banner_probe.txt', out); console.log(out);
