@@ -29,11 +29,12 @@ try{
   // --- A. Bridge v1.1 update ---
   L('=== A. Bridge snippet v1.1 ===');
   const CODE=fs.readFileSync('petshop_consent_bridge.php','utf8');
-  const list=api('GET',API+'?per_page=100'); const arr=JSON.parse(list.body);
-  const ex=arr.find(s=>s.name&&s.name.includes('Consent Bridge'));
-  if(!ex) throw new Error('bridge snippet nerastas');
-  const r=api('POST',API+'/'+ex.id,{ name:'Petshop Consent Bridge v1.1 (Complianz -> GTM)', code:CODE, active:true, scope:'front-end', priority:1 });
-  L('  UPDATE id='+ex.id+' -> HTTP '+r.code);
+  const SNIP_ID = 619;
+  const chk = api('GET', API+'/'+SNIP_ID);
+  if(chk.code!=='200'){ L('  ❌ snippet '+SNIP_ID+' HTTP '+chk.code); throw new Error('snippet nerastas'); }
+  L('  rastas id='+SNIP_ID+' "'+JSON.parse(chk.body).name+'"');
+  const r=api('POST',API+'/'+SNIP_ID,{ name:'Petshop Consent Bridge v1.1 (Complianz -> GTM)', code:CODE, active:true, scope:'front-end', priority:1 });
+  L('  UPDATE id='+SNIP_ID+' -> HTTP '+r.code);
   if(r.code==='200'){ const j=JSON.parse(r.body); L('  active='+j.active+' code_error='+JSON.stringify(j.code_error||null)); }
   L('');
 
