@@ -1,0 +1,30 @@
+snippet 622 atnaujintas
+
+=== RECON ===
+  dabartinis privacy page: {"id":34526,"title":"Slapukų naudojimas","slug":"slapuku-politika"}
+  kandidatai: [{"id":34526,"title":"Slapukų naudojimas","slug":"slapuku-politika"},{"id":34525,"title":"Privatumo politika","slug":"privatumo-politika"},{"id":34524,"title":"Pirkimo sąlygos ir taisyklės","slug":"taisykles"}]
+  target ID: 34525
+  CSS pries: [{"file":"banner-1-optin.css","size":17083,"mtime":"12:39:51","turi_3B29FF":"TAIP (violetine)","turi_2D5F3F":"ne"},{"file":"banner-preview-1-optin.css","size":17083,"mtime":"08:51:04","turi_3B29FF":"TAIP (violetine)","turi_2D5F3F":"ne"}]
+
+=== APPLY ===
+  HTTP 200
+  privacy_updated: nuo 34526 i 34525
+  privacy_page_po: 34525
+  istrinta CSS: ["banner-1-optin.css","banner-preview-1-optin.css"]
+  iskviesta: ["cmplz_resave_all_banners","cmplz_maybe_update_css","CMPLZ_COOKIEBANNER::save","CMPLZ_COOKIEBANNER::generate_css"]
+
+  CSS PO:
+    banner-1-optin.css  17083 B  13:08:50   violetine: ✅ nera   zalia: ✅ zalia
+
+=== VIZUALI VERIFIKACIJA ===
+  antraste: "Slapukai ir privatumas"
+  accept: "PRIIMTI"  fonas: rgb(45, 95, 63)
+  deny  : "ATMESTI"
+  nuorodu spalva: rgb(45, 95, 63)
+  matomos nuorodos:
+    "Slapukų politika" -> /slapuku-politika-es/
+    "Slapukų naudojimas" -> /slapuku-politika/
+
+  ✅ accept mygtukas zalias (45,95,63)
+  ✅ nuorodos zalios
+  ❌ nera nuorodos i sena "Slapukų naudojimas"
