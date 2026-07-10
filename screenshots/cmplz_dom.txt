@@ -1,0 +1,42 @@
+############ BANERIO DOM TIKSLI ANALIZE ############
+
+=== 1. Nuorodu MATOMUMAS ===
+     paslepta  "Tvarkyti parinktis"  -> http://dev.avesa.lt/slapuku-politika-es/#cmplz-manage-consen
+     paslepta  "Tvarkyti paslaugas"  -> http://dev.avesa.lt/slapuku-politika-es/#cmplz-cookies-overv
+     paslepta  "Tvarkyti {vendor_count} pardavėjus"  -> http://dev.avesa.lt/slapuku-politika-es/#cmplz-tcf-wrapper
+     paslepta  "Skaitykite daugiau apie šiuos tikslus"  -> https://cookiedatabase.org/tcf/purposes/
+     paslepta  "Peržiūrėti nuostatas"  -> http://dev.avesa.lt/slapuku-politika-es/#cmplz-manage-consen
+  👁 MATOMA   "Slapukų politika"  -> http://dev.avesa.lt/slapuku-politika-es/
+  👁 MATOMA   "Slapukų naudojimas"  -> http://dev.avesa.lt/slapuku-politika/
+     paslepta  "{title}"  -> #
+
+  Matomu nuorodu: 2 is 8
+
+=== 2. Kategoriju checkbox'ai (po "Peržiūrėti nuostatas") ===
+  [1] cmplz_functional     "Funkcinis"
+       checked=true  disabled=false  readonly=false  matomas=false
+       class: cmplz-consent-checkbox cmplz-functional
+  [2] cmplz_preferences    "Parinktys"
+       checked=false  disabled=false  readonly=false  matomas=false
+       class: cmplz-consent-checkbox cmplz-preferences
+  [3] cmplz_statistics     "Statistika"
+       checked=false  disabled=false  readonly=false  matomas=true
+       class: cmplz-consent-checkbox cmplz-statistics
+  [4] cmplz_marketing      "Rinkodara"
+       checked=false  disabled=false  readonly=false  matomas=true
+       class: cmplz-consent-checkbox cmplz-marketing
+
+  Funkcinis checkbox: ❌ NEUZRAKINTAS — vartotojas gali isjungti
+  Parinktys (preferences): ✅ paslepta
+
+=== 3. Ar realiai galima atjungti funkcini ===
+  Po paspaudimo checked=false   ❌ PAVYKO ATJUNGTI (bloga)
+
+=== 4. cmplz body klases ir TCF ===
+  body klases: ["cmplz-functional","cmplz-eu","cmplz-optin"]
+  TCF wrapper DOM'e: false   matomas: null
+  {vendor_count} matomame tekste: 0
+  {title} matomame tekste: 0
+
+=== 5. Senojo "Slapukų naudojimas" puslapio busena ===
+  /slapuku-politika/ -> HTTP 200
