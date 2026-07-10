@@ -1,0 +1,40 @@
+=== 1. Produktu taksonomijos ===
+  product_brand                "Prekių ženklai"  rest=product_brand
+  product_cat                  "Produkto kategorijos"  rest=product_cat
+  product_tag                  "Produkto žyma"  rest=product_tag
+
+=== 2. view_item push (pilnas) ===
+  data-petshop-gtm bloku: 3
+  --- petshopGtmItem ---
+    {"item_id":"DP-710002-20","item_name":"Ruda avies koja, 1 vnt. × 20 vnt.","price":30,"quantity":1,"index":0,"item_category":"DAUGIAU=PIGIAU"}
+  --- dataLayer.push ---
+    { ecommerce: null });
+window.dataLayer.push({"event":"view_item","ecommerce":{"currency":"EUR","value":30,"items":[{"item_id":"DP-710002-20","item_name":"Ruda avies koja, 1 vnt. × 20 vnt.","price":30,"quantity":1,"index":0,"item_category":"DAUGIAU=PIGIAU"}]}}
+
+=== 3. Brand patikra keliose prekese ===
+  [34512] Ruda avies koja, 1 vnt. × 20 vnt.
+        brands=[]   _legacy_manufacturer=(nera)
+  [34510] Ruda kiaulės ausis, 1 vnt. × 20 vnt.
+        brands=[]   _legacy_manufacturer=(nera)
+  [34500] Animonda Carny Adult Beef + Turkey + Shr
+        brands=[]   _legacy_manufacturer=(nera)
+  [34498] Exclusion Mediterraneo Mono Protein kons
+        brands=[]   _legacy_manufacturer=(nera)
+  [34488] Animonda Vom Feinsten Adult with Poultry
+        brands=[]   _legacy_manufacturer=(nera)
+
+=== 4. Parduotuves loop mygtukai ===
+     1  data-gtm-item
+     7  add_to_cart_button
+     1  ajax_add_to_cart
+     0  product_type_simple
+     0  product_type_variable
+     0  button product_type
+     4  "Skaityti daugiau" / read more
+    11  li.product
+
+  Pirmi 3 add_to_cart mygtukai:
+
+=== 5. Kategorijos puslapis ===
+  Sausas maistas šunims    (count 516)  HTTP 404  data-gtm-item=1  add_to_cart_button=7
+  Skanėstai šunims         (count 274)  HTTP 301  data-gtm-item=0  add_to_cart_button=0
