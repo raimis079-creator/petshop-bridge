@@ -1,0 +1,36 @@
+GTM snippet PHP: 1705 B
+
+=== 1. Ar jau yra GTM snippet ===
+  nerasta
+
+=== 2. Deploy ===
+  CREATE -> HTTP 200
+  id=615
+
+=== 3. Aktyvavimas ===
+  HTTP 200
+  active=true  code_error=null
+
+=== 4. Svetaines sveikata ===
+  Homepage     HTTP 200  ✅
+  Preke        HTTP 200  ✅
+  Kategorija   HTTP 200  ✅
+  Krepselis    HTTP 200  ✅
+
+=== 5. GTM snippet HTML patikra ===
+  ✅ gtm.js loader
+  ✅ GTM-MF3GZGT ID
+  ✅ noscript iframe (ns.html)
+  ✅ data-petshop-gtm-loader
+  ✅ data-petshop-gtm-noscript
+  ✅ dataLayer inicijuotas
+  ✅ NEra seno GTM-MZGDV75F
+  ✅ NEra tiesioginio gtag config
+  ✅ NEra tiesioginio fbq init
+
+  Poziciju patikra:
+    gtm.js @ 1020   <body> @ 58019   noscript @ 58395
+    gtm.js pries <body>: ✅
+    noscript po <body>:  ✅
+
+=== SNIPPET ID: 615 ===
