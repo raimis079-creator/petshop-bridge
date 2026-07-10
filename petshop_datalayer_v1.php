@@ -1,12 +1,18 @@
 /**
- * Petshop DataLayer v1.0 (GA4 ecommerce)
+ * Petshop DataLayer v1.1 (GA4 ecommerce)
  *
  * Siuncia GA4 e-commerce ivykius i dataLayer, kuriuos pagauna GTM-MF3GZGT.
  * Ivykiai: view_item, add_to_cart, view_cart, begin_checkout, purchase
  *
  * Scope: front-end only
  * Priklausomybes: WooCommerce (klasikinis checkout, shortcode)
- * Idempotencija: purchase siunciamas vienabart per uzsakyma (_petshop_dl_purchase_sent)
+ * Idempotencija: purchase siunciamas vienakart per uzsakyma (_petshop_dl_purchase_sent + static guard)
+ *
+ * v1.1 pataisymai:
+ *   - add_to_cart: prekes puslapyje mygtukas NETURI ajax_add_to_cart -> forma submit'ina,
+ *     JS push'as dingsta su navigacija. Sprendimas: WC session queue + flush kitame page load.
+ *     AJAX atveju (loop mygtukai) queue NEpildoma — ten veikia JS listener.
+ *   - purchase: pridetas static guard nuo dvigubo hook kvietimo tame paciame request'e.
  */
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
@@ -166,7 +172,63 @@ if ( ! function_exists( 'petshop_gtm_single_item_data' ) ) {
 add_action( 'wp_footer', 'petshop_gtm_single_item_data', 19 );
 
 /* ============================================================
- * 3. add_to_cart — JS listener (AJAX ir formos)
+ * 2b. add_to_cart — WC session queue (NE-AJAX atvejis)
+ *
+ * Prekes puslapyje mygtukas neturi ajax_add_to_cart klases:
+ *   <button type="submit" class="single_add_to_cart_button button alt">
+ * Forma submit'ina, puslapis persikrauna, JS push'as dingsta.
+ * Todel PHP puseje irasom i sesija, o flush'inam kitame page load.
+ *
+ * AJAX atveju (kategoriju loop mygtukai) queue NEpildoma —
+ * ten suveikia JS `added_to_cart` listener'is (zr. 3 sekcija).
+ * ============================================================ */
+
+if ( ! function_exists( 'petshop_gtm_queue_atc' ) ) {
+	function petshop_gtm_queue_atc( $cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data ) {
+		if ( wp_doing_ajax() ) { return; }
+		if ( ! function_exists( 'WC' ) || ! WC()->session ) { return; }
+
+		$pid     = $variation_id ? $variation_id : $product_id;
+		$product = wc_get_product( $pid );
+		$item    = petshop_gtm_item( $product, $quantity, 0 );
+		if ( ! $item ) { return; }
+
+		$queue   = WC()->session->get( 'petshop_gtm_atc_queue', array() );
+		if ( ! is_array( $queue ) ) { $queue = array(); }
+		$queue[] = $item;
+		WC()->session->set( 'petshop_gtm_atc_queue', $queue );
+	}
+}
+add_action( 'woocommerce_add_to_cart', 'petshop_gtm_queue_atc', 10, 6 );
+
+if ( ! function_exists( 'petshop_gtm_flush_atc' ) ) {
+	function petshop_gtm_flush_atc() {
+		if ( is_admin() ) { return; }
+		if ( ! function_exists( 'WC' ) || ! WC()->session ) { return; }
+
+		$queue = WC()->session->get( 'petshop_gtm_atc_queue', array() );
+		if ( empty( $queue ) || ! is_array( $queue ) ) { return; }
+
+		WC()->session->set( 'petshop_gtm_atc_queue', array() );
+
+		foreach ( $queue as $item ) {
+			if ( empty( $item['price'] ) && 0 !== $item['price'] ) { continue; }
+			$value = round( (float) $item['price'] * (int) $item['quantity'], 2 );
+			petshop_gtm_push( array(
+				'event'     => 'add_to_cart',
+				'ecommerce' => array(
+					'currency' => petshop_gtm_currency(),
+					'value'    => $value,
+					'items'    => array( $item ),
+				),
+			) );
+		}
+	}
+}
+add_action( 'wp_footer', 'petshop_gtm_flush_atc', 18 );
+
+/* ============================================================
+ * 3. add_to_cart — JS listener (TIK AJAX mygtukams)
  * ============================================================ */
 
 if ( ! function_exists( 'petshop_gtm_atc_listener' ) ) {
@@ -329,11 +391,17 @@ if ( ! function_exists( 'petshop_gtm_purchase' ) ) {
 	function petshop_gtm_purchase( $order_id ) {
 		if ( ! $order_id ) { return; }
 
+		/* Guard 1: dvigubas hook kvietimas tame paciame request'e */
+		static $already_sent = array();
+		if ( isset( $already_sent[ $order_id ] ) ) { return; }
+
 		$order = wc_get_order( $order_id );
 		if ( ! $order ) { return; }
 
-		/* Idempotencija: HPOS-safe meta zyma */
+		/* Guard 2: HPOS-safe meta zyma (apsaugo nuo puslapio perkrovimo) */
 		if ( $order->get_meta( '_petshop_dl_purchase_sent' ) === 'yes' ) { return; }
+
+		$already_sent[ $order_id ] = true;
 
 		$items = array();
 		$i     = 0;
