@@ -1,27 +1,46 @@
 import { putFile, gtmToken, gtm, defaultWorkspace, CT } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
 try{
-  const t=await gtmToken();
-  L('=== LIVE versijos tag\'u consentSettings ===');
-  const lv=await gtm(t,'/'+CT+'/versions:live');
-  L('  versija #'+lv.body.containerVersionId+' "'+lv.body.name+'"'); L('');
-  for(const x of (lv.body.tag||[]).sort((a,b)=>a.name.localeCompare(b.name))){
-    const cs=x.consentSettings;
-    L('  ['+String(x.tagId).padStart(3)+'] '+x.name.padEnd(38));
-    L('        consentSettings = '+(cs?JSON.stringify(cs):'NERA'));
-  }
-  L('');
-  L('=== Workspace tag\'u consentSettings (palyginimui) ===');
-  const W=await defaultWorkspace(t);
+  const t=await gtmToken(); const W=await defaultWorkspace(t);
   const tags=(await gtm(t,'/'+W.path+'/tags')).body.tag||[];
-  for(const x of tags.sort((a,b)=>a.name.localeCompare(b.name))){
-    L('  ['+String(x.tagId).padStart(3)+'] '+x.name.padEnd(38)+' '+(x.consentSettings?JSON.stringify(x.consentSettings):'NERA'));
-  }
+  const cl = tags.find(x=>x.name.includes('Conversion Linker'));
+  if(!cl) throw new Error('Conversion Linker nerastas');
+
+  L('=== Conversion Linker taisymas ===');
+  L('  pries: block=['+((cl.blockingTriggerId||[]).join(','))+']  consent='+JSON.stringify(cl.consentSettings));
+  const upd = {
+    name: cl.name,
+    type: cl.type,
+    firingTriggerId: cl.firingTriggerId,
+    blockingTriggerId: ['17','18'],
+    priority: cl.priority,
+    parameter: cl.parameter,
+    consentSettings: {
+      consentStatus:'needed',
+      consentType:{ type:'list', list:[ {type:'template', value:'ad_storage'} ] }
+    }
+  };
+  const r = await gtm(t,'/'+W.path+'/tags/'+cl.tagId,'PUT',upd);
+  L('  PUT -> HTTP '+r.status);
+  if(r.status!==200){ L('  ❌ '+JSON.stringify(r.body).slice(0,300)); throw new Error('update fail'); }
+  L('  po:    block=['+((r.body.blockingTriggerId||[]).join(','))+']  consent='+JSON.stringify(r.body.consentSettings));
   L('');
-  L('=== Ar Complianz siuncia dataLayer event\'us? (plugin dar neaktyvus) ===');
-  L('  Complianz v7.5.0 — INACTIVE. Aktyvavus jis siuncia:');
-  L('    cmplz_event_functional / cmplz_event_statistics / cmplz_event_marketing');
-  L('    cmplz_status_change');
-  L('  Sie event\'ai gali buti naudojami kaip GTM custom event trigger\'iai.');
+
+  L('=== Versija v2 + publish ===');
+  const cv = await gtm(t,'/'+W.path+':create_version','POST',{
+    name:'v2 — Conversion Linker consent + DEV blocking',
+    notes:'Conversion Linker gavo blocking trigger (17,18) ir consentSettings ad_storage. Sprendziama _gcl_au cookie be sutikimo. S166.'
+  });
+  L('  create_version -> HTTP '+cv.status);
+  if(cv.status!==200){ L('  ❌ '+JSON.stringify(cv.body).slice(0,300)); throw new Error('cv fail'); }
+  const vid = cv.body.containerVersion.containerVersionId;
+  L('  versionId='+vid);
+  const pub = await gtm(t,'/'+CT+'/versions/'+vid+':publish','POST');
+  L('  publish -> HTTP '+pub.status);
+  L('');
+  const lv = await gtm(t,'/'+CT+'/versions:live');
+  L('  LIVE: #'+lv.body.containerVersionId+' "'+lv.body.name+'"  tags='+((lv.body.tag||[]).length));
+  const clLive = (lv.body.tag||[]).find(x=>x.name.includes('Conversion Linker'));
+  L('  Conversion Linker live: block=['+((clLive.blockingTriggerId||[]).join(','))+']  consent='+JSON.stringify(clLive.consentSettings));
 }catch(e){ L('!!! ERROR: '+e.message); }
-putFile('consent_settings_check.txt', out); console.log(out);
+putFile('cl_fix.txt', out); console.log(out);
