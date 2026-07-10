@@ -1,0 +1,57 @@
+##### COMPLIANZ SIGNALU TESTAS #####
+
+=== 1. Ikelimas su gtm_test=1 (blocking trigger isjungtas) ===
+  HTTP 200
+  --- PRIES SUTIKIMA ---
+    dataLayer: 6 irasu
+    event'ai: ["gtm.js","gtm.dom","gtm.load"]
+    consent iraso: ["default"]
+       default -> {"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","personalization_storage":"granted","security_storage":"granted","wait_for_update":500}
+    GTM containers: ["GTM-MF3GZGT","G-FMTKEGGLMG"]   fbq: true
+    baneris DOM: true  matomas: true
+    tracking cookies: Ads:_gcl_au, Meta:_fbp
+    cmplz cookies: 
+    tracking uzklausos: 4
+       https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG&cx=
+       https://connect.facebook.net/en_US/fbevents.js
+       https://www.google-analytics.com/g/collect?v=2&tid=G-FMTKEGG
+       https://www.facebook.com/tr/?id=1097111687955877&ev=PageView
+
+=== 2. Banerio mygtukai DOM'e ===
+    cmplz-btn cmplz-accept   "PRIIMTI"
+    cmplz-btn cmplz-deny   "NEIGTI"
+    cmplz-btn cmplz-view-preferences   "PERŽIŪRĖTI NUOSTATAS"
+    cmplz-btn cmplz-save-preferences   "Išsaugoti nuostatas"
+    cmplz-btn cmplz-manage-options tcf cookie-statement   "Peržiūrėti nuostatas"
+    cmplz-btn cmplz-manage-consent manage-consent-1 cmplz-dismis   "Tvarkyti sutikimą"
+
+=== 3. Spaudziam ACCEPT ALL ===
+  paspausta .cmplz-accept
+  --- PO ACCEPT ALL ---
+    dataLayer: 6 irasu
+    event'ai: ["gtm.js","gtm.dom","gtm.load"]
+    consent iraso: ["default"]
+       default -> {"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","personalization_storage":"granted","security_storage":"granted","wait_for_update":500}
+    GTM containers: ["GTM-MF3GZGT","G-FMTKEGGLMG"]   fbq: true
+    baneris DOM: true  matomas: false
+    tracking cookies: Ads:_gcl_au, Meta:_fbp
+    cmplz cookies: cmplz_consented_services, cmplz_policy_id, cmplz_marketing, cmplz_statistics, cmplz_preferences, cmplz_functional, cmplz_banner-status
+    naujos tracking uzklausos: 1
+       https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG&cx=
+       https://connect.facebook.net/en_US/fbevents.js
+       https://www.google-analytics.com/g/collect?v=2&tid=G-FMTKEGG
+       https://www.facebook.com/tr/?id=1097111687955877&ev=PageView
+       https://www.facebook.com/tr/
+
+=== 4. dataLayer PILNAS turinys po accept ===
+  0: event="gtm.js"
+  1: ARGS[consent , default] {"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_st
+  2: ARGS[set , ads_data_redaction] true
+  3: ARGS[set , url_passthrough] true
+  4: event="gtm.dom"
+  5: event="gtm.load"
+
+=== 5. Complianz JS API ===
+  body klases: ["cmplz-marketing","cmplz-statistics","cmplz-preferences","cmplz-functional","cmplz-eu","cmplz-optin"]
+  window cmplz raktai: ["cmplz_create_element","cmplz_add_event","cmplz_is_hidden","cmplz_html_decode","cmplz_sanitize_placeholder_html","cmplz_is_safe_script_src","cmplz_trap_focus","cmplz_handle_tab_navigation","cmplz_release_focus_trap","cmplzLoadConsentAreaContent","cmplz_original_active_element","cmplz_run_script","cmplz_maybe_run_waiting_scripts","cmplz_set_blocked_content_container","cmplz_insert_placeholder_text","cmplz_set_blocked_content_container_aspect_ratio","cmplz_has_blocked_scripts","cmplz_enable_category","cmplz_remove_placeholder","cmplz_get_waiting_script"]
+  cmplz_has_consent: fn
