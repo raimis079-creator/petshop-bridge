@@ -1,0 +1,66 @@
+############ PAYSERA REDIRECT PARAMETRU PATIKRA ############
+SVARBU: mokejimas NEVYKDOMAS. Perimame redirect ir ji blokuojame.
+
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/de_unicredit.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/wallet.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/hanza.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/vb2.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/nord.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/parex.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/revolut.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/artea.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/mb.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/lku.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/lthand.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/wallet.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/revolut.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/de_unicredit.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/wallet.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/hanza.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/vb2.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/nord.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/parex.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/revolut.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/artea.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/mb.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/lku.png
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/assets/image/payment_types/lthand.png
+  pasirinktas bankas: hanza (Swedbank)
+
+=== Pateikiam uzsakyma (redirect bus uzblokuotas) ===
+  🛑 UZBLOKUOTA uzklausa i Paysera: GET https://bank.paysera.com/pay/?data=b3JkZXJpZD0zNDU5NCZhbW91bnQ9NTY5JmN1cnJlbmN5PUVVUiZhY2N
+  URL po submit: chrome-error://chromewebdata/
+
+=== Perimta Paysera uzklausa ===
+  URL: https://bank.paysera.com/pay/?data=b3JkZXJpZD0zNDU5NCZhbW91bnQ9NTY5JmN1cnJlbmN5PUVVUiZhY2NlcHR1cmw9aHR0cHMlM0ElMkYlMkZkZXYuYXZlc2EubHQlMkZja
+
+  data parametras (base64, 932 simb.)
+  Dekoduota:
+    projectid      = 29276
+    orderid        = 34594
+    amount         = 569
+    currency       = EUR
+    test           = 1
+    accepturl      = https://dev.avesa.lt/checkout/order-received/34594/?key=wc_order_pfUZZIWajr1v2
+    cancelurl      = https://dev.avesa.lt/cart/?cancel_order=true&order=wc_order_pfUZZIWajr1v2&order_id=34594&redirect&_wpnonce=eb12532530
+    callbackurl    = https://dev.avesa.lt/?wc-api=wc_gateway_paysera
+    payment        = hanza
+    country        = LT
+    p_email        = paysera.test.1783691936747@petshop.lt
+    lang           = LIT
+    version        = 3.1.5
+
+  KRITINES PATIKROS:
+    ✅ projectid = 29276
+    ✅ TESTINIS REZIMAS
+    callbackurl: https://dev.avesa.lt/?wc-api=wc_gateway_paysera
+    ⚠️ rodo i dev.avesa.lt — po migracijos generuosis is home_url()
+    accepturl:  https://dev.avesa.lt/checkout/order-received/34594/?key=wc_order_pfUZZIWajr1v2
+    cancelurl:  https://dev.avesa.lt/cart/?cancel_order=true&order=wc_order_pfUZZIWajr1v2&order_
+    payment:    hanza
+
+=== Sukurto uzsakymo valymas ===
+  rasti uzsakymai: 1
+    #34594  pending  5.69  paysera  paysera.test.1783691936747@petshop.lt
+      -> istrinta, HTTP 200
+  uzsakymu liko: 0
