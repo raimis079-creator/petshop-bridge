@@ -1,0 +1,108 @@
+
+═══════════════════════════════════════
+ TESTAS 1: Jokio sutikimo
+═══════════════════════════════════════
+  cookies: GA4=—  Meta=—  Ads=—
+  uzklausos: GA4=0  Meta=0  Ads=0
+  containers: ["GTM-MF3GZGT"]
+  consent: analytics=denied ad_storage=denied
+  events: ["gtm.js","cmplz_consent_update","gtm.dom","gtm.load"]
+
+    ✅ nera _ga
+    ✅ nera _fbp
+    ✅ nera _gcl_au
+    ✅ nera GA4 uzklausu
+    ✅ nera Meta uzklausu
+  => PRAEJO ✅
+
+═══════════════════════════════════════
+ TESTAS 2: Reject all
+═══════════════════════════════════════
+  cookies: GA4=—  Meta=—  Ads=—
+  uzklausos: GA4=0  Meta=0  Ads=0
+  containers: ["GTM-MF3GZGT"]
+  consent: analytics=denied ad_storage=denied
+  events: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load","cmplz_consent_update"]
+
+    ✅ nera _ga
+    ✅ nera _fbp
+    ✅ nera _gcl_au
+    ✅ nera uzklausu
+  => PRAEJO ✅
+
+═══════════════════════════════════════
+ TESTAS 3: Accept ALL
+═══════════════════════════════════════
+  cookies: GA4=_ga_FMTKEGGLMG,_ga  Meta=_fbp  Ads=_gcl_au
+  uzklausos: GA4=2  Meta=1  Ads=5
+  containers: ["GTM-MF3GZGT","G-FMTKEGGLMG"]
+  consent: analytics=granted ad_storage=granted
+  events: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load","cmplz_consent_update"]
+  gcs=G111
+
+    ✅ _ga atsirado
+    ✅ _fbp atsirado
+    ✅ _gcl_au atsirado
+    ✅ GA4 uzklausa
+    ✅ Meta uzklausa
+    ✅ nera Meta dubliu
+  => PRAEJO ✅
+
+═══════════════════════════════════════
+ TESTAS 4: Tik Analitika
+═══════════════════════════════════════
+  [pazymeta: input[data-category="cmplz_statistics"]]
+  cookies: GA4=_ga_FMTKEGGLMG,_ga  Meta=—  Ads=—
+  uzklausos: GA4=1  Meta=0  Ads=1
+  containers: ["GTM-MF3GZGT","G-FMTKEGGLMG"]
+  consent: analytics=granted ad_storage=denied
+  events: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load","cmplz_consent_update"]
+  gcs=G101
+
+    ✅ _ga atsirado
+    ✅ NEra _fbp
+    ✅ NEra _gcl_au
+    ✅ nera Meta uzklausu
+  => PRAEJO ✅
+
+═══════════════════════════════════════
+ TESTAS 5: Be gtm_test — DEV blok.
+═══════════════════════════════════════
+  cookies: GA4=—  Meta=—  Ads=—
+  uzklausos: GA4=0  Meta=0  Ads=0
+  containers: ["GTM-MF3GZGT"]
+  consent: analytics=granted ad_storage=granted
+  events: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load","cmplz_consent_update"]
+
+    ✅ nera _ga
+    ✅ nera _fbp
+    ✅ nera _gcl_au
+    ✅ nera uzklausu
+  => PRAEJO ✅
+
+═══════════════════════════════════════
+ TESTAS 6: Preke + Accept -> view_item replay
+═══════════════════════════════════════
+  cookies: GA4=_ga,_ga_FMTKEGGLMG  Meta=_fbp  Ads=_gcl_au
+  uzklausos: GA4=4  Meta=1  Ads=5
+  containers: ["GTM-MF3GZGT","G-FMTKEGGLMG"]
+  consent: analytics=granted ad_storage=granted
+  events: ["gtm.js","view_item","gtm.dom","cmplz_consent_update","gtm.load","cmplz_consent_update","view_item(replay)"]
+  gcs=G111
+
+    ✅ _ga atsirado
+    ✅ view_item replay dataLayer'yje
+    ✅ GA4 uzklausu >=2
+  => PRAEJO ✅
+
+═══════════════════════════════════════
+ SUVESTINE
+═══════════════════════════════════════
+  ✅  1 Jokio sutikimo
+  ✅  2 Reject all
+  ✅  3 Accept all
+  ✅  4 Tik analitika
+  ✅  5 DEV blokavimas
+  ✅  6 view_item replay
+
+  6/6 praejo
