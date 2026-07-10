@@ -1,46 +1,39 @@
-import { putFile, gtmToken, gtm, defaultWorkspace, CT } from './gtm_lib.mjs';
+import { chromium } from 'playwright';
+import { putFile } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
-try{
-  const t=await gtmToken(); const W=await defaultWorkspace(t);
-  const tags=(await gtm(t,'/'+W.path+'/tags')).body.tag||[];
-  const cl = tags.find(x=>x.name.includes('Conversion Linker'));
-  if(!cl) throw new Error('Conversion Linker nerastas');
+function classify(n){
+  if(n==='_ga'||n.startsWith('_ga_')||n==='_gid'||n.startsWith('_gat')) return 'GA4';
+  if(n==='_fbp'||n==='_fbc'||n==='fr') return 'Meta';
+  if(n.startsWith('_gcl')) return 'Google Ads';
+  return null;
+}
+const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
 
-  L('=== Conversion Linker taisymas ===');
-  L('  pries: block=['+((cl.blockingTriggerId||[]).join(','))+']  consent='+JSON.stringify(cl.consentSettings));
-  const upd = {
-    name: cl.name,
-    type: cl.type,
-    firingTriggerId: cl.firingTriggerId,
-    blockingTriggerId: ['17','18'],
-    priority: cl.priority,
-    parameter: cl.parameter,
-    consentSettings: {
-      consentStatus:'needed',
-      consentType:{ type:'list', list:[ {type:'template', value:'ad_storage'} ] }
-    }
-  };
-  const r = await gtm(t,'/'+W.path+'/tags/'+cl.tagId,'PUT',upd);
-  L('  PUT -> HTTP '+r.status);
-  if(r.status!==200){ L('  ❌ '+JSON.stringify(r.body).slice(0,300)); throw new Error('update fail'); }
-  L('  po:    block=['+((r.body.blockingTriggerId||[]).join(','))+']  consent='+JSON.stringify(r.body.consentSettings));
-  L('');
+async function t(url,label){
+  L(''); L('=== '+label+' ==='); L('  '+url);
+  const ctx = await browser.newContext({ ignoreHTTPSErrors:true, userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120' });
+  const p = await ctx.newPage();
+  const req=[];
+  p.on('request', r=>{ const u=r.url(); if(/g\/collect|facebook\.com\/tr|fbevents|gtag\/js/.test(u)) req.push(u.slice(0,70)); });
+  let ok=false;
+  try{ const resp=await p.goto(url,{waitUntil:'domcontentloaded',timeout:60000}); ok=resp&&resp.status()<400; await p.waitForTimeout(8000);}catch(e){ L('  ❌ '+e.message.slice(0,90)); }
+  if(!ok){ L('  ⚠️ NEUZSIKROVE — negalioja'); await ctx.close(); return; }
+  const cookies = await ctx.cookies();
+  const tr = cookies.filter(c=>classify(c.name));
+  L('  cookies is viso: '+cookies.length);
+  if(tr.length===0) L('  ✅ TRACKING COOKIES: nera');
+  else { L('  ❌ tracking cookies:'); tr.forEach(c=>L('       '+classify(c.name)+'  '+c.name)); }
+  L('  tracking uzklausos: '+req.length);
+  [...new Set(req)].forEach(u=>L('     '+u));
+  await ctx.close();
+}
 
-  L('=== Versija v2 + publish ===');
-  const cv = await gtm(t,'/'+W.path+':create_version','POST',{
-    name:'v2 — Conversion Linker consent + DEV blocking',
-    notes:'Conversion Linker gavo blocking trigger (17,18) ir consentSettings ad_storage. Sprendziama _gcl_au cookie be sutikimo. S166.'
-  });
-  L('  create_version -> HTTP '+cv.status);
-  if(cv.status!==200){ L('  ❌ '+JSON.stringify(cv.body).slice(0,300)); throw new Error('cv fail'); }
-  const vid = cv.body.containerVersion.containerVersionId;
-  L('  versionId='+vid);
-  const pub = await gtm(t,'/'+CT+'/versions/'+vid+':publish','POST');
-  L('  publish -> HTTP '+pub.status);
-  L('');
-  const lv = await gtm(t,'/'+CT+'/versions:live');
-  L('  LIVE: #'+lv.body.containerVersionId+' "'+lv.body.name+'"  tags='+((lv.body.tag||[]).length));
-  const clLive = (lv.body.tag||[]).find(x=>x.name.includes('Conversion Linker'));
-  L('  Conversion Linker live: block=['+((clLive.blockingTriggerId||[]).join(','))+']  consent='+JSON.stringify(clLive.consentSettings));
-}catch(e){ L('!!! ERROR: '+e.message); }
-putFile('cl_fix.txt', out); console.log(out);
+L('##### PO CONVERSION LINKER TAISYMO (live v2 / versija #3) #####');
+await t('https://dev.avesa.lt/','1) Iprastas DEV lankytojas (be gtm_test)');
+await t('https://dev.avesa.lt/?gtm_test=1','2) Su gtm_test=1 (tik consent gina)');
+await browser.close();
+L('');
+L('LAUKIAMA:');
+L('  1) jokiu tracking cookies, jokiu uzklausu');
+L('  2) _fbp vis dar bus — Meta nepaiso Google consent. Sprendimas: Complianz trigger\'iai (E8).');
+putFile('cl_verify.txt', out); console.log(out);
