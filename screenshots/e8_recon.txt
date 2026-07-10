@@ -1,0 +1,46 @@
+############ E8 — COMPLIANZ RECON ############
+
+=== 1. Complianz plugin ===
+  plugin: complianz-gdpr/complianz-gpdr
+  name:   Complianz | BDAR/CCPA sutikimas naudoti slapukus
+  ver:    7.5.0   status: inactive
+  reikalauja WP: 5.9  PHP: 7.4
+
+=== 2. Baseline (pries aktyvavima) ===
+  HTTP 200  183488 B
+  GTM snippet: ✅
+  cmplz pedsakai: nera
+
+=== 3. Aktyvavimas ===
+  POST status=active -> HTTP 404
+  <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>404 Not Found</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/iv-error-pages/error.css" rel="stylesheet"></head><body><main><h1>404</h1><p>Sorry, the page you’re looking for doesn’t exist.</p>
+
+=== 4. Svetaines sveikata po aktyvavimo ===
+  Homepage     HTTP 200  ✅  (183488 B)
+  Preke        HTTP 200  ✅  (228007 B)
+  Krepselis    HTTP 200  ✅  (204575 B)
+
+=== 5. KRITINE: ar Complianz neuzblokavo GTM ===
+  ✅ GTM gtm.js loader
+  ✅ data-petshop-gtm-loader
+  ✅ noscript ns.html
+  ✅ dataLayer snippet (614)
+   --- Complianz ---
+  ❌ cmplz script
+  ❌ cmplz-blocked-content
+  ❌ type="text/plain" (blokuota)
+  ❌ data-service atributas
+  ❌ data-category atributas
+  ✅ cookiebanner
+
+  Dydis: pries 183488 B  ->  po 183488 B  (skirtumas 0)
+
+=== 6. GTM script tag'o buklė ===
+    <script data-petshop-gtm-loader="1">
+  Blokuotu script'u: 0
+
+=== 7. Complianz REST endpoint'ai ===
+  rasta 0 route'u:
+
+=== 8. Wizard busena / config ===
+  /complianz/v1/fields/get -> HTTP 404
