@@ -1,11 +1,13 @@
+import { chromium } from 'playwright';
 import { execSync } from "child_process";
 import fs from "fs";
-function putFile(n,s){
+function putFile(n,s,bin){
   const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
   for(let a=0;a<4;a++){ try{
     const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;
     let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
-    const b={message:'ci',branch:'main',content:Buffer.from(s,'utf8').toString('base64')}; if(sha) b.sha=sha;
+    const content = bin ? fs.readFileSync(s).toString('base64') : Buffer.from(s,'utf8').toString('base64');
+    const b={message:'ci',branch:'main',content}; if(sha) b.sha=sha;
     fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));
     const r=execSync('curl -s -w "\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});
     if(/HTTP:20[01]/.test(r)) return true;
@@ -13,83 +15,130 @@ function putFile(n,s){
   return false;
 }
 let out=''; const L=(s)=>{out+=s+'\n';};
-const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH=U+':'+P;
 
-const IDS=[3241,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3297,3298,3303,3305,6632,6634,6635,6636,6637,6638,6639,6640,6641,11417,27907,34155,34174,34177,34178,34472,34592,34593];
+const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
+const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:900}, locale:'lt-LT',
+  userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120'});
+const page=await ctx.newPage();
 
-function del(id){
-  const code=execSync('curl -sk -o /tmp/d.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" -X DELETE "https://dev.avesa.lt/wp-json/wc/v3/orders/'+id+'?force=true" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
-  let b=''; try{ b=fs.readFileSync('/tmp/d.json','utf8'); }catch(e){}
-  return {code, body:b};
+L('############ COMPLIANZ BANERIO TEKSTU RECON ############'); L('');
+
+await page.goto('https://dev.avesa.lt/',{waitUntil:'domcontentloaded',timeout:60000});
+await page.waitForTimeout(7000);
+
+// ---- 1. Pagrindinis baneris ----
+L('=== 1. Pagrindinis baneris ===');
+const banner = await page.evaluate(()=>{
+  const b=document.querySelector('.cmplz-cookiebanner');
+  if(!b) return null;
+  const g=s=>{const e=b.querySelector(s); return e?e.innerText.trim():null;};
+  return {
+    visible: getComputedStyle(b).display!=='none',
+    title: g('.cmplz-title'),
+    message: g('.cmplz-message'),
+    accept: g('.cmplz-accept'),
+    deny: g('.cmplz-deny'),
+    view: g('.cmplz-view-preferences'),
+    save: g('.cmplz-save-preferences'),
+    links: [...b.querySelectorAll('.cmplz-links a, .cmplz-documents a')].map(a=>({t:a.innerText.trim(), h:a.getAttribute('href')})),
+    fullText: b.innerText.trim().slice(0,600)
+  };
+});
+if(!banner){ L('  ❌ baneris nerastas'); }
+else{
+  L('  matomas: '+banner.visible);
+  L('  Antraste : '+JSON.stringify(banner.title));
+  L('  Zinute   : '+JSON.stringify(banner.message));
+  L('');
+  L('  Mygtukai:');
+  L('    accept          : '+JSON.stringify(banner.accept));
+  L('    deny            : '+JSON.stringify(banner.deny));
+  L('    view-preferences: '+JSON.stringify(banner.view));
+  L('    save-preferences: '+JSON.stringify(banner.save));
+  L('');
+  L('  Nuorodos:');
+  banner.links.forEach(l=>L('    "'+l.t+'" -> '+l.h));
 }
-function apiH(url){
-  return execSync('curl -sk -I -u "'+AUTH+'" "'+url+'" 2>/dev/null | tr -d "\r"',{encoding:'utf8'});
-}
-
-L('############ S168 — UZSAKYMU TRYNIMAS (APPLY) ############');
-L('laikas: '+new Date().toISOString());
-L('backup: screenshots/orders_backup_20260710.json');
-L('trinama: '+IDS.length+' uzsakymu, force=true'); L('');
-
-// Pries
-const h0=apiH('https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=1&status=any');
-const t0=(h0.match(/x-wp-total:\s*(\d+)/i)||[])[1];
-L('PRIES: x-wp-total = '+t0); L('');
-
-L('=== Trinimas ===');
-let ok=0, fail=0;
-const fails=[];
-for(let i=0;i<IDS.length;i++){
-  const id=IDS[i];
-  const r=del(id);
-  if(r.code==='200'){
-    ok++;
-    let num='?'; try{ num=JSON.parse(r.body).number; }catch(e){}
-    L('  ['+String(i+1).padStart(2)+'/'+IDS.length+'] ✅ '+String(id).padEnd(6)+' (#'+num+')');
-  } else {
-    fail++; fails.push({id, code:r.code, body:r.body.slice(0,120)});
-    L('  ['+String(i+1).padStart(2)+'/'+IDS.length+'] ❌ '+String(id).padEnd(6)+' HTTP '+r.code);
-  }
-  if(i%10===9) execSync('sleep 1');
-}
-L('');
-L('  pavyko: '+ok+'   nepavyko: '+fail);
-if(fails.length){
-  L('  Nepavykusieji:');
-  fails.forEach(f=>L('    '+f.id+'  HTTP '+f.code+'  '+f.body));
-}
-L('');
-
-// Po
-execSync('sleep 3');
-const h1=apiH('https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=1&status=any');
-const t1=(h1.match(/x-wp-total:\s*(\d+)/i)||[])[1];
-L('=== Verifikacija ===');
-L('  PO: x-wp-total = '+(t1||'0'));
-L('  Skirtumas: '+t0+' -> '+(t1||'0')+'   istrinta: '+(parseInt(t0)-parseInt(t1||'0')));
-L('  '+((t1==='0'||!t1)?'✅ Uzsakymu nebeliko':'⚠️ liko '+t1));
+await page.screenshot({path:'/tmp/banner.png', clip:{x:840,y:520,width:600,height:380}}).catch(async()=>{ await page.screenshot({path:'/tmp/banner.png'}); });
 L('');
 
-// Ar tikrai tusti
-const r=execSync('curl -sk -u "'+AUTH+'" "https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=5&status=any" 2>/dev/null',{encoding:'utf8'});
+// ---- 2. Perziureti nuostatas ----
+L('=== 2. "Peržiūrėti nuostatas" langas ===');
 try{
-  const arr=JSON.parse(r);
-  L('  GET /orders grazina: '+arr.length+' irasu');
-  arr.forEach(o=>L('    liko: #'+o.number+' '+o.status+' '+o.total));
-}catch(e){ L('  parse err'); }
+  await page.click('.cmplz-view-preferences',{timeout:10000});
+  await page.waitForTimeout(2500);
+  const prefs = await page.evaluate(()=>{
+    const b=document.querySelector('.cmplz-cookiebanner');
+    const cats=[...b.querySelectorAll('.cmplz-service-header, .cmplz-category')].map(c=>{
+      const t=c.querySelector('.cmplz-category-title, h3, .cmplz-title');
+      const d=c.querySelector('.cmplz-description, .cmplz-category-description, p');
+      const inp=c.querySelector('input[type=checkbox]');
+      return {
+        title: t?t.innerText.trim():null,
+        desc: d?d.innerText.trim().slice(0,160):null,
+        checked: inp?inp.checked:null,
+        disabled: inp?inp.disabled:null,
+        value: inp?(inp.getAttribute('data-category')||inp.value):null
+      };
+    });
+    return { cats, save: (b.querySelector('.cmplz-save-preferences')||{}).innerText };
+  });
+  L('  Kategoriju: '+prefs.cats.length);
+  prefs.cats.forEach((c,i)=>{
+    L('');
+    L('  ['+(i+1)+'] '+JSON.stringify(c.title)+'   value='+c.value);
+    L('      checked='+c.checked+'  disabled='+c.disabled);
+    L('      aprasas: '+JSON.stringify(c.desc));
+  });
+  L('');
+  L('  Issaugoti mygtukas: '+JSON.stringify(prefs.save));
+  await page.screenshot({path:'/tmp/prefs.png', fullPage:false});
+}catch(e){ L('  ❌ '+e.message.slice(0,90)); }
 L('');
 
-// Saskaitu skaitiklis
-L('=== Saskaitu skaitiklis (informacijai) ===');
-L('  WCDN skaitiklis saugomas atskirai ir NEPASIKEITE.');
-L('  Pries launch butina resetinti AVPN ir IAPV serijas i 101.');
-L('  (jau yra migracijos checklist\'e)');
+// ---- 3. Angliski likuciai ----
+L('=== 3. Angliski likuciai banerio DOM\'e ===');
+const en = await page.evaluate(()=>{
+  const b=document.querySelector('.cmplz-cookiebanner');
+  if(!b) return [];
+  const txt=b.innerText;
+  const words=['Accept','Deny','Save','Preferences','Functional','Statistics','Marketing','Cookie','Consent','Manage','View','Settings','Necessary','Always active'];
+  return words.filter(w=>new RegExp('\\b'+w+'\\b').test(txt));
+});
+L('  rasta: '+(en.length? JSON.stringify(en) : 'nerasta ✅'));
 L('');
 
-L('=== Svetaines sveikata ===');
-for(const [nm,u] of [['Homepage','https://dev.avesa.lt/'],['Krepselis','https://dev.avesa.lt/cart/'],['Mano paskyra','https://dev.avesa.lt/paskyra/']]){
-  const c=execSync('curl -skL -o /dev/null -w "%{http_code}" --max-time 30 "'+u+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
-  L('  '+nm.padEnd(14)+' HTTP '+c);
+// ---- 4. Slapuku politikos puslapis ----
+L('=== 4. Slapuku politikos puslapis ===');
+await page.goto('https://dev.avesa.lt/slapuku-politika-es/',{waitUntil:'domcontentloaded',timeout:60000});
+await page.waitForTimeout(5000);
+const policy = await page.evaluate(()=>{
+  const body=document.querySelector('.entry-content, .page-content, main') || document.body;
+  const txt=body.innerText;
+  const cookies=['_ga','_ga_FMTKEGGLMG','_gcl_au','_fbp','cmplz_','woocommerce_','wp_woocommerce_session'];
+  return {
+    len: txt.length,
+    headings: [...body.querySelectorAll('h2,h3')].map(h=>h.innerText.trim()).slice(0,12),
+    foundCookies: cookies.filter(c=>txt.includes(c)),
+    tables: body.querySelectorAll('table').length,
+    first300: txt.slice(0,300)
+  };
+});
+L('  turinio ilgis: '+policy.len+' simb.');
+L('  lenteliu: '+policy.tables);
+L('  antrastes: '+JSON.stringify(policy.headings));
+L('');
+L('  Ar isvardinti musu slapukai:');
+for(const c of ['_ga','_ga_FMTKEGGLMG','_gcl_au','_fbp','cmplz_','woocommerce_']){
+  L('    '+(policy.foundCookies.includes(c)?'✅':'❌')+' '+c);
 }
-putFile('s168_delete_orders.txt', out); console.log(out);
+L('');
+L('  Pradzia: '+JSON.stringify(policy.first300.slice(0,200)));
+await page.screenshot({path:'/tmp/policy.png', fullPage:false});
+
+await browser.close();
+putFile('cmplz_texts.txt', out);
+putFile('cmplz_banner.png','/tmp/banner.png',true);
+putFile('cmplz_prefs.png','/tmp/prefs.png',true);
+putFile('cmplz_policy.png','/tmp/policy.png',true);
+console.log(out);
