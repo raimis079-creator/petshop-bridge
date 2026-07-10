@@ -1,0 +1,81 @@
+##### CONSENT BRIDGE TESTAS (visi su gtm_test=1) #####
+
+##############################################
+### 1) PRIES SUTIKIMA
+##############################################
+  dataLayer: 8 irasu
+  consent irasai:
+    [0] default  analytics=denied  ad_storage=denied  ad_user_data=denied
+    [5] update  analytics=denied  ad_storage=denied  ad_user_data=denied
+  event'ai: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load"]
+  GTM containers: ["GTM-MF3GZGT"]
+
+  Tracking cookies:
+    (nera)
+  cmplz: 
+
+  GA4 uzklausu: 0
+  Meta uzklausu: 0
+
+##############################################
+### 2) ACCEPT ALL
+##############################################
+  [paspausta PRIIMTI]
+  dataLayer: 10 irasu
+  consent irasai:
+    [0] default  analytics=denied  ad_storage=denied  ad_user_data=denied
+    [5] update  analytics=denied  ad_storage=denied  ad_user_data=denied
+    [8] update  analytics=granted  ad_storage=granted  ad_user_data=granted
+  event'ai: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load","cmplz_consent_update"]
+  GTM containers: ["GTM-MF3GZGT"]
+
+  Tracking cookies:
+    (nera)
+  cmplz: cmplz_consented_services=, cmplz_policy_id=35, cmplz_marketing=allow, cmplz_statistics=allow, cmplz_preferences=allow, cmplz_functional=allo
+
+  GA4 uzklausu: 0
+  Meta uzklausu: 0
+
+##############################################
+### 3) DENY ALL
+##############################################
+  [paspausta NEIGTI]
+  dataLayer: 10 irasu
+  consent irasai:
+    [0] default  analytics=denied  ad_storage=denied  ad_user_data=denied
+    [5] update  analytics=denied  ad_storage=denied  ad_user_data=denied
+    [8] update  analytics=denied  ad_storage=denied  ad_user_data=denied
+  event'ai: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load","cmplz_consent_update"]
+  GTM containers: ["GTM-MF3GZGT"]
+
+  Tracking cookies:
+    (nera)
+  cmplz: cmplz_banner-status=dismissed, cmplz_policy_id=35, cmplz_marketing=deny, cmplz_statistics=deny, cmplz_preferences=deny, cmplz_functional=all
+
+  GA4 uzklausu: 0
+  Meta uzklausu: 0
+
+##############################################
+### 4) BE gtm_test (blocking trigger)
+##############################################
+  dataLayer: 8 irasu
+  consent irasai:
+    [0] default  analytics=denied  ad_storage=denied  ad_user_data=denied
+    [5] update  analytics=denied  ad_storage=denied  ad_user_data=denied
+  event'ai: ["gtm.js","gtm.dom","cmplz_consent_update","gtm.load"]
+  GTM containers: ["GTM-MF3GZGT"]
+
+  Tracking cookies:
+    (nera)
+  cmplz: 
+
+  GA4 uzklausu: 0
+  Meta uzklausu: 0
+
+##############################################
+### SUVESTINE
+##############################################
+  1) Pries sutikima:   cookies=0  gcs=undefined  meta_req=0   laukiama: gcs=G100
+  2) Accept All:       cookies=0  gcs=undefined  meta_req=0   laukiama: gcs=G111, _ga+_fbp
+  3) Deny All:         cookies=0  gcs=undefined  meta_req=0   laukiama: gcs=G100, jokiu cookies
+  4) Be gtm_test:      cookies=0  ga_req=0  meta_req=0   laukiama: viskas 0
