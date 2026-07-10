@@ -1,0 +1,104 @@
+
+═══════════════════════════════════════════════
+ TESTAS 1: Ijimas, jokio sutikimo
+═══════════════════════════════════════════════
+  cookies:  GA4=—   Meta=—   Ads=—
+  uzklausos: GA4=0  Meta=0  Ads=0
+  GTM containers: ["GTM-MF3GZGT"]
+  galutinis consent: analytics=denied  ad_storage=denied
+
+  KRITERIJAI:
+    ✅ nera _ga
+    ✅ nera _fbp
+    ✅ nera _gcl_au
+    ✅ nera Meta uzklausu
+  => PRAEJO ✅
+
+═══════════════════════════════════════════════
+ TESTAS 2: Reject all
+═══════════════════════════════════════════════
+  cookies:  GA4=—   Meta=—   Ads=—
+  uzklausos: GA4=0  Meta=0  Ads=0
+  GTM containers: ["GTM-MF3GZGT"]
+  galutinis consent: analytics=denied  ad_storage=denied
+
+  KRITERIJAI:
+    ✅ nera _ga
+    ✅ nera _fbp
+    ✅ nera _gcl_au
+    ✅ nera Meta uzklausu
+  => PRAEJO ✅
+
+═══════════════════════════════════════════════
+ TESTAS 3: Accept ALL
+═══════════════════════════════════════════════
+  cookies:  GA4=—   Meta=_fbp   Ads=_gcl_au
+  uzklausos: GA4=0  Meta=1  Ads=1
+  GTM containers: ["GTM-MF3GZGT"]
+  galutinis consent: analytics=granted  ad_storage=granted
+
+  KRITERIJAI:
+    ❌ _ga atsirado
+    ✅ _fbp atsirado
+    ✅ _gcl_au atsirado
+    ❌ GA4 uzklausa
+    ✅ Meta uzklausa
+    ✅ nera dubliu (Meta<=3 req)
+  => NEPRAEJO ❌
+
+═══════════════════════════════════════════════
+ TESTAS 4: Tik Analitika (statistics)
+═══════════════════════════════════════════════
+  veiksmo klaida: page.click: Timeout 6000ms exceeded.
+Call log:
+  - waiting for locator
+  cookies:  GA4=—   Meta=—   Ads=—
+  uzklausos: GA4=0  Meta=0  Ads=0
+  GTM containers: ["GTM-MF3GZGT"]
+  galutinis consent: analytics=denied  ad_storage=denied
+
+  KRITERIJAI:
+    ❌ _ga atsirado
+    ✅ NEra _fbp
+    ✅ nera Meta uzklausu
+  => NEPRAEJO ❌
+
+═══════════════════════════════════════════════
+ TESTAS 5: Be gtm_test — DEV blokavimas
+═══════════════════════════════════════════════
+  cookies:  GA4=—   Meta=—   Ads=—
+  uzklausos: GA4=0  Meta=0  Ads=0
+  GTM containers: ["GTM-MF3GZGT"]
+  galutinis consent: analytics=granted  ad_storage=granted
+
+  KRITERIJAI:
+    ✅ nera _ga
+    ✅ nera _fbp
+    ✅ nera _gcl_au
+    ✅ nera jokiu uzklausu
+  => PRAEJO ✅
+
+═══════════════════════════════════════════════
+ TESTAS 6: Prekes psl + Accept -> view_item
+═══════════════════════════════════════════════
+  cookies:  GA4=—   Meta=_fbp   Ads=_gcl_au
+  uzklausos: GA4=0  Meta=1  Ads=1
+  GTM containers: ["GTM-MF3GZGT"]
+  galutinis consent: analytics=granted  ad_storage=granted
+
+  KRITERIJAI:
+    ❌ _ga atsirado
+    ❌ GA4 uzklausu >=2 (config+view_item)
+  => NEPRAEJO ❌
+
+═══════════════════════════════════════════════
+ SUVESTINE
+═══════════════════════════════════════════════
+  ✅ 1 Jokio sutikimo
+  ✅ 2 Reject all
+  ❌ 3 Accept all
+  ❌ 4 Tik analitika
+  ✅ 5 DEV blokavimas
+  ❌ 6 view_item
+
+  3/6 testu praejo
