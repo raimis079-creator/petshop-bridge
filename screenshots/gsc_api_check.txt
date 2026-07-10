@@ -6,17 +6,14 @@ SA: claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
 
 === 1. GET /webmasters/v3/sites (kokias property mato SA) ===
   HTTP 200
-  matomu property: 0
-
-  ⚠️ API VEIKIA, bet SA nepridetas ne prie vienos property.
-     Reikia: GSC → Nustatymai → Naudotojai ir teises → Prideti naudotoja
-     El. pastas: claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
-     Teises: „Visos" (Full) arba „Ribotos" (Restricted) — uztenka Restricted
+  matomu property: 1
+    sc-domain:petshop.lt   permission=siteRestrictedUser
 
 === 2. Bandom searchanalytics.query (jei property matoma) ===
   https://petshop.lt/          -> HTTP 403
     { "error": { "code": 403, "message": "User does not have sufficient permission for site 'https://petshop.lt/'. See also: https://support.google.com/webmasters/answer/2451
-  sc-domain:petshop.lt         -> HTTP 403
-    { "error": { "code": 403, "message": "User does not have sufficient permission for site 'sc-domain:petshop.lt'. See also: https://support.google.com/webmasters/answer/245
-  http://petshop.lt/           -> HTTP 403
-    { "error": { "code": 403, "message": "User does not have sufficient permission for site 'http://petshop.lt/'. See also: https://support.google.com/webmasters/answer/24519
+  sc-domain:petshop.lt         -> HTTP 200
+    ✅ VEIKIA. eiluciu: 3
+      https://petshop.lt/  clicks=1905  impr=80943  pos=11.4
+      https://petshop.lt/suns-serimo-lentele-gramais  clicks=876  impr=9762  pos=8.0
+      https://petshop.lt/jorksyro-terjeras  clicks=783  impr=36566  pos=7.4
