@@ -1,4 +1,3 @@
-import { chromium } from 'playwright';
 import { execSync } from "child_process";
 import fs from "fs";
 function putFile(n,s){
@@ -14,72 +13,42 @@ function putFile(n,s){
   return false;
 }
 let out=''; const L=(s)=>{out+=s+'\n';};
+const html = execSync('curl -skL --max-time 40 "https://dev.avesa.lt/?x='+Date.now()+'"',{encoding:'utf8',maxBuffer:30000000});
 
-L('############ page_links + FINALINE BUSENA ############'); L('');
-
-const html = execSync('curl -skL --max-time 40 "https://dev.avesa.lt/?cb='+Date.now()+'"',{encoding:'utf8',maxBuffer:30000000});
-const m = html.match(/"page_links":\s*(\{[\s\S]*?\})\s*,\s*"/);
-L('=== page_links (inline config) ===');
-if(m){
+L('############ page_links PILNAS ############'); L('');
+const i = html.indexOf('"page_links"');
+if(i<0){ L('nerasta'); }
+else{
+  // randam balansuota JSON
+  let start = html.indexOf('{', i);
+  let depth=0, end=start;
+  for(let k=start;k<html.length && k<start+4000;k++){
+    if(html[k]==='{') depth++;
+    else if(html[k]==='}'){ depth--; if(depth===0){ end=k+1; break; } }
+  }
+  const raw = html.slice(start,end);
+  L('raw ilgis: '+raw.length); L('');
   try{
-    const pl = JSON.parse(m[1]);
+    const pl=JSON.parse(raw);
     for(const [region,docs] of Object.entries(pl)){
-      L('  region: '+region);
+      L('region "'+region+'":');
       for(const [type,d] of Object.entries(docs)){
-        L('    '+String(type).padEnd(20)+' "'+d.title+'"');
-        L('    '+' '.repeat(20)+' '+String(d.url).replace(/^https?:\/\/dev\.avesa\.lt/,''));
+        L('  '+String(type).padEnd(20)+' title="'+d.title+'"');
+        L('  '+' '.repeat(20)+' url='+String(d.url).replace(/^https?:\/\/dev\.avesa\.lt/,''));
       }
     }
   }catch(e){
-    L('  parse err, raw:');
-    L('  '+m[1].slice(0,600));
+    L('parse err: '+e.message);
+    L(raw.slice(0,1200));
   }
-} else {
-  const m2 = html.match(/page_links[\s\S]{0,600}/);
-  L('  '+(m2?m2[0].slice(0,600):'nerasta'));
 }
 L('');
-
-L('=== Vizuali patikra ===');
-const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
-const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:900}, locale:'lt-LT'});
-const page=await ctx.newPage();
-await page.goto('https://dev.avesa.lt/?cb2='+Date.now(),{waitUntil:'domcontentloaded',timeout:60000});
-await page.waitForTimeout(8000);
-const b = await page.evaluate(()=>{
-  const el=document.querySelector('.cmplz-cookiebanner');
-  if(!el) return null;
-  const acc=el.querySelector('.cmplz-accept');
-  return {
-    title:(el.querySelector('.cmplz-title')||{}).innerText,
-    msg:((el.querySelector('.cmplz-message')||{}).innerText||'').slice(0,80),
-    accept:(acc||{}).innerText, deny:(el.querySelector('.cmplz-deny')||{}).innerText,
-    view:(el.querySelector('.cmplz-view-preferences')||{}).innerText,
-    acceptBg: acc?getComputedStyle(acc).backgroundColor:null,
-    links:[...el.querySelectorAll('a')].filter(a=>{let e=a,v=true;while(e&&e!==document.body){if(getComputedStyle(e).display==='none'){v=false;break;}e=e.parentElement;}return v;})
-          .map(a=>({t:a.innerText.trim(), h:(a.getAttribute('href')||'').replace(/^https?:\/\/dev\.avesa\.lt/,'')}))
-  };
-});
-if(!b) L('  ❌ baneris nerastas');
-else{
-  L('  antraste : '+JSON.stringify(b.title));
-  L('  zinute   : '+JSON.stringify(b.msg)+'...');
-  L('  mygtukai : '+JSON.stringify([b.accept,b.deny,b.view]));
-  L('  accept fonas: '+b.acceptBg);
-  L('');
-  L('  Matomos nuorodos:');
-  b.links.forEach(l=>L('    "'+l.t+'"  ->  '+l.h));
-  L('');
-  const green=/rgb\(45,\s*95,\s*63\)/;
-  const senaNuoroda = b.links.some(l=>l.h==='/slapuku-politika/');
-  const checks={
-    'antraste "Slapukai ir privatumas"': b.title==='Slapukai ir privatumas',
-    'mygtukas ATMESTI':                  /ATMESTI/i.test(b.deny||''),
-    'zinute be dublio':                  !/funkcijas ir funkcijas/i.test(b.msg||''),
-    'accept zalias':                     green.test(b.acceptBg||''),
-    'nera senos nuorodos /slapuku-politika/': !senaNuoroda,
-  };
-  for(const [k,v] of Object.entries(checks)) L('  '+(v?'✅':'❌')+' '+k);
-}
-await browser.close();
-putFile('cmplz_final.txt', out); console.log(out);
+L('############ Susije options ############');
+const TOKEN=fs.readFileSync('.cmplz_token','utf8').trim();
+const p=execSync('curl -sk --max-time 40 "https://dev.avesa.lt/?cmplz_css=1&token='+TOKEN+'"',{encoding:'utf8'});
+try{
+  const j=JSON.parse(p);
+  L('  dabartinis privacy page option: '+JSON.stringify(j.dabartinis_privacy_page));
+  L('  privacy_options: '+JSON.stringify(j.privacy_options));
+}catch(e){ L('  '+p.slice(0,300)); }
+putFile('cmplz_pagelinks_full.txt', out); console.log(out);
