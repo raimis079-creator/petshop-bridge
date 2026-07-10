@@ -15,88 +15,87 @@ function putFile(n,s){
 let out=''; const L=(s)=>{out+=s+'\n';};
 const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH=U+':'+P;
-const API='https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
-function api(m,u,b){
-  let c='curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" -X '+m+' ';
-  if(b){ fs.writeFileSync('/tmp/b.json',JSON.stringify(b)); c+='-H "Content-Type: application/json" -d @/tmp/b.json '; }
-  c+='"'+u+'" 2>/dev/null || echo ERR';
-  const code=execSync(c,{encoding:'utf8'}).trim();
-  let body=''; try{ body=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
-  return {code, body};
-}
-function page(url){
-  const code=execSync('curl -skL -o /tmp/p.html -w "%{http_code}" --max-time 40 "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
-  let h=''; try{ h=fs.readFileSync('/tmp/p.html','utf8'); }catch(e){}
-  return {code, html:h};
+function api(url){
+  const code=execSync('curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
+  let b=''; try{ b=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
+  return {code, body:b};
 }
 
-L('############ S167 CLEANUP + FINALINE BUSENA ############'); L('');
+L('############ S168 RECON — uzsakymo testui ############'); L('');
 
-// ---- 1. TEMP snippet'u deaktyvavimas ----
-L('=== 1. TEMP snippet\'u deaktyvavimas ===');
-for(const id of [616,617,618]){
-  const g=api('GET',API+'/'+id);
-  if(g.code!=='200'){ L('  ['+id+'] HTTP '+g.code+' — praleidziam'); continue; }
-  const j=JSON.parse(g.body);
-  L('  ['+id+'] "'+j.name+'"  active='+j.active);
-  if(j.active){
-    const r=api('POST',API+'/'+id,{active:false});
-    L('        deaktyvuota -> HTTP '+r.code+'  '+(r.code==='200'?'✅':'❌'));
-  } else L('        jau neaktyvus ✅');
+// 1. Mokejimo budai
+L('=== 1. Mokejimo budai (payment_gateways) ===');
+const pg=api('https://dev.avesa.lt/wp-json/wc/v3/payment_gateways');
+if(pg.code==='200'){
+  try{
+    const arr=JSON.parse(pg.body);
+    for(const g of arr){
+      L('  '+(g.enabled?'✅ ON ':'   off')+'  id='+String(g.id).padEnd(24)+' "'+g.title+'"');
+      if(g.enabled) L('              method_title: '+g.method_title);
+    }
+    const on=arr.filter(g=>g.enabled);
+    L('');
+    L('  Ijungtu: '+on.length+'  -> '+on.map(g=>g.id).join(', '));
+  }catch(e){ L('  parse err: '+pg.body.slice(0,200)); }
+} else L('  HTTP '+pg.code);
+L('');
+
+// 2. Pristatymo zonos
+L('=== 2. Pristatymo zonos ===');
+const zn=api('https://dev.avesa.lt/wp-json/wc/v3/shipping/zones');
+if(zn.code==='200'){
+  try{
+    const zones=JSON.parse(zn.body);
+    for(const z of zones){
+      L('  [zone '+z.id+'] "'+z.name+'"  order='+z.order);
+      const m=api('https://dev.avesa.lt/wp-json/wc/v3/shipping/zones/'+z.id+'/methods');
+      if(m.code==='200'){
+        const ms=JSON.parse(m.body);
+        for(const x of ms) L('      '+(x.enabled?'✅':'  ')+' '+String(x.method_id).padEnd(22)+' "'+x.title+'"  instance='+x.instance_id);
+      }
+    }
+  }catch(e){ L('  parse err'); }
+} else L('  HTTP '+zn.code);
+L('');
+
+// 3. Tinkama preke testui: simple, in stock, purchasable, pigi
+L('=== 3. Kandidatai testui (simple, instock) ===');
+const pr=api('https://dev.avesa.lt/wp-json/wc/v3/products?per_page=20&status=publish&type=simple&stock_status=instock&orderby=price&order=asc');
+if(pr.code==='200'){
+  try{
+    const arr=JSON.parse(pr.body);
+    L('  rasta: '+arr.length);
+    for(const p of arr.slice(0,8)){
+      const src=(p.meta_data||[]).find(m=>m.key==='_fulfillment_source')?.value || '?';
+      const co =(p.meta_data||[]).find(m=>m.key==='_courier_only')?.value || '-';
+      const manuf=(p.meta_data||[]).find(m=>m.key==='_legacy_manufacturer')?.value || '-';
+      L('  ['+p.id+'] '+String(p.price).padStart(7)+' EUR  sku='+String(p.sku||'-').padEnd(16)+' "'+p.name.slice(0,38)+'"');
+      L('        purchasable='+p.purchasable+' in_stock='+p.in_stock+' virtual='+p.virtual+'  manuf='+manuf.slice(0,16)+'  courier_only='+co);
+    }
+  }catch(e){ L('  parse err: '+pr.body.slice(0,200)); }
+} else L('  HTTP '+pr.code);
+L('');
+
+// 4. Checkout laukai (per HTML — reikia sesijos, tad tik struktura)
+L('=== 4. WC nustatymai ===');
+for(const [nm,ep] of [['Salis','general/woocommerce_default_country'],['Guest checkout','account/woocommerce_enable_guest_checkout'],['Terms page','advanced/woocommerce_terms_page_id']]){
+  const r=api('https://dev.avesa.lt/wp-json/wc/v3/settings/'+ep);
+  if(r.code==='200'){ try{ const j=JSON.parse(r.body); L('  '+nm.padEnd(18)+' = '+JSON.stringify(j.value)); }catch(e){ L('  '+nm+' parse err'); } }
+  else L('  '+nm.padEnd(18)+' HTTP '+r.code);
 }
 L('');
 
-// ---- 2. Ar TEMP endpoint'ai nebeveikia ----
-L('=== 2. TEMP endpoint\'u patikra (turi neveikti) ===');
-for(const [nm,u] of [['cmplz_do=STATUS','https://dev.avesa.lt/?cmplz_do=STATUS'],['cmplz_probe','https://dev.avesa.lt/?cmplz_probe=1'],['cmplz_probe2','https://dev.avesa.lt/?cmplz_probe2=1']]){
-  const r=page(u);
-  const isJson = r.html.trim().startsWith('{');
-  L('  '+nm.padEnd(20)+' HTTP '+r.code+'  '+(isJson?'❌ VIS DAR VEIKIA':'✅ neveikia (grazina HTML)'));
-}
-L('');
-
-// ---- 3. Aktyvus tracking snippet'ai ----
-L('=== 3. Aktyvus tracking snippet\'ai ===');
-for(const id of [614,615,619]){
-  const g=api('GET',API+'/'+id);
-  if(g.code!=='200'){ L('  ['+id+'] HTTP '+g.code); continue; }
-  const j=JSON.parse(g.body);
-  L('  ['+id+'] '+(j.active?'ON ':'off')+'  "'+j.name+'"  scope='+j.scope+'  prio='+j.priority);
-}
-L('');
-
-// ---- 4. Svetaines sveikata ----
-L('=== 4. Svetaines sveikata ===');
-for(const [nm,u] of [['Homepage','https://dev.avesa.lt/'],['Preke','https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/'],['Kategorija','https://dev.avesa.lt/kategorija/sausas-maistas-sunims/'],['Krepselis','https://dev.avesa.lt/cart/'],['Slapuku politika','https://dev.avesa.lt/slapuku-politika-es/']]){
-  const r=page(u);
-  const fatal=/Fatal error|Parse error|critical error/i.test(r.html);
-  L('  '+nm.padEnd(18)+' HTTP '+r.code+'  '+(fatal?'❌ FATAL':'✅'));
-}
-L('');
-
-// ---- 5. HTML struktura ----
-L('=== 5. Tracking sluoksniai HTML\'e ===');
-const h=page('https://dev.avesa.lt/');
-const pos={
-  'consent bridge':   h.html.indexOf('data-petshop-consent-bridge'),
-  'consent default':  h.html.indexOf("'consent', 'default'"),
-  'gtm.js loader':    h.html.indexOf('googletagmanager.com/gtm.js'),
-  '<body>':           h.html.indexOf('<body'),
-  'noscript ns.html': h.html.indexOf('ns.html'),
-  'cmplz baneris':    h.html.indexOf('cmplz-cookiebanner'),
-};
-for(const [k,v] of Object.entries(pos)) L('  '+String(v).padStart(7)+'  '+k);
-L('');
-L('  bridge < gtm.js:  '+(pos['consent bridge']>0 && pos['consent bridge']<pos['gtm.js loader']?'✅':'❌'));
-L('  gtm.js < <body>:  '+(pos['gtm.js loader']<pos['<body>']?'✅':'❌'));
-L('  noscript > <body>: '+(pos['noscript ns.html']>pos['<body>']?'✅':'❌'));
-L('');
-const bad={
-  'antras GTM container': [...new Set(h.html.match(/GTM-[A-Z0-9]{6,9}/g)||[])].length>1,
-  'tiesioginis gtag config': /gtag\(\s*['"]config['"]/.test(h.html),
-  'tiesioginis fbq init': /fbq\(\s*['"]init['"]/.test(h.html),
-  'senas GTM-MZGDV75F': /GTM-MZGDV75F/.test(h.html),
-  'blokuoti scriptai (text/plain)': /type=["']text\/plain["']/.test(h.html),
-};
-for(const [k,v] of Object.entries(bad)) L('  '+(v?'❌ RASTA':'✅ nera')+'  '+k);
-putFile('s167_final.txt', out); console.log(out);
+// 5. Ar yra jau uzsakymu su _petshop_dl_purchase_sent
+L('=== 5. Esami uzsakymai (paskutiniai 3) ===');
+const or=api('https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=3&orderby=date&order=desc');
+if(or.code==='200'){
+  try{
+    const arr=JSON.parse(or.body);
+    L('  rasta: '+arr.length);
+    for(const o of arr){
+      const flag=(o.meta_data||[]).find(m=>m.key==='_petshop_dl_purchase_sent')?.value || '-';
+      L('  #'+o.number+'  '+o.status+'  '+o.total+' '+o.currency+'  dl_sent='+flag+'  '+o.date_created);
+    }
+  }catch(e){ L('  parse err: '+or.body.slice(0,150)); }
+} else L('  HTTP '+or.code+' '+or.body.slice(0,120));
+putFile('s168_recon.txt', out); console.log(out);
