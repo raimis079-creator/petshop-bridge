@@ -1,0 +1,44 @@
+############ S167 CLEANUP + FINALINE BUSENA ############
+
+=== 1. TEMP snippet'u deaktyvavimas ===
+  [616] "TEMP — Complianz aktyvavimas v1 (token)"  active=true
+        deaktyvuota -> HTTP 200  ✅
+  [617] "TEMP — Complianz options probe v1 (token)"  active=true
+        deaktyvuota -> HTTP 200  ✅
+  [618] "TEMP — Complianz integracijos probe v2 (token)"  active=true
+        deaktyvuota -> HTTP 200  ✅
+
+=== 2. TEMP endpoint'u patikra (turi neveikti) ===
+  cmplz_do=STATUS      HTTP 200  ✅ neveikia (grazina HTML)
+  cmplz_probe          HTTP 200  ✅ neveikia (grazina HTML)
+  cmplz_probe2         HTTP 200  ✅ neveikia (grazina HTML)
+
+=== 3. Aktyvus tracking snippet'ai ===
+  [614] ON   "Petshop DataLayer v1.0 (GA4 ecommerce)"  scope=front-end  prio=10
+  [615] ON   "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)"  scope=front-end  prio=5
+  [619] ON   "Petshop Consent Bridge v1.1 (Complianz -> GTM)"  scope=front-end  prio=1
+
+=== 4. Svetaines sveikata ===
+  Homepage           HTTP 200  ✅
+  Preke              HTTP 200  ✅
+  Kategorija         HTTP 200  ✅
+  Krepselis          HTTP 200  ✅
+  Slapuku politika   HTTP 200  ✅
+
+=== 5. Tracking sluoksniai HTML'e ===
+      225  consent bridge
+      445  consent default
+     4005  gtm.js loader
+    61261  <body>
+    61637  noscript ns.html
+   151577  cmplz baneris
+
+  bridge < gtm.js:  ✅
+  gtm.js < <body>:  ✅
+  noscript > <body>: ✅
+
+  ✅ nera  antras GTM container
+  ✅ nera  tiesioginis gtag config
+  ✅ nera  tiesioginis fbq init
+  ✅ nera  senas GTM-MZGDV75F
+  ✅ nera  blokuoti scriptai (text/plain)
