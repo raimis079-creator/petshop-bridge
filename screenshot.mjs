@@ -16,7 +16,7 @@ async function testUrl(browser, url, label){
   L('### '+label);
   L('### '+url);
   L('#################################################');
-  const ctx = await browser.newContext({ userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' });
+  const ctx = await browser.newContext({ ignoreHTTPSErrors:true, userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' });
   const page = await ctx.newPage();
 
   const requests = [];
@@ -25,10 +25,14 @@ async function testUrl(browser, url, label){
     if(/google-analytics\.com|analytics\.google\.com|googletagmanager\.com\/gtag|facebook\.com\/tr|connect\.facebook\.net|googleadservices|google\.com\/pagead/.test(u)) requests.push(u);
   });
 
+  let loaded = false;
   try{
-    await page.goto(url, { waitUntil:'domcontentloaded', timeout:60000 });
-    await page.waitForTimeout(7000);
-  }catch(e){ L('  goto err: '+e.message.slice(0,120)); }
+    const resp = await page.goto(url, { waitUntil:'domcontentloaded', timeout:60000 });
+    loaded = !!resp && resp.status() < 400;
+    L('  goto: HTTP '+(resp?resp.status():'?'));
+    await page.waitForTimeout(8000);
+  }catch(e){ L('  ❌ goto KLAIDA: '+e.message.slice(0,140)); }
+  if(!loaded){ L('  ⚠️⚠️ PUSLAPIS NEUZSIKROVE — testas NEGALIOJA'); await ctx.close(); return {tracking:-1, requests:-1, state:{}, loaded:false}; }
 
   // dataLayer / GTM busena
   const state = await page.evaluate(()=>{
@@ -78,10 +82,10 @@ async function testUrl(browser, url, label){
   else [...new Set(requests)].slice(0,10).forEach(u=>L('    ❌ '+u.slice(0,110)));
 
   await ctx.close();
-  return { tracking: tracking.length, requests: requests.length, state };
+  return { tracking: tracking.length, requests: requests.length, state, loaded:true };
 }
 
-const browser = await chromium.launch({ args:['--no-sandbox'] });
+const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
 L('##### CONSENT / BLOCKING TESTAS (Complianz DAR NEAKTYVUOTAS) #####');
 L('Laukiama: jokiu tracking cookies abiem atvejais.');
 L('  1) be gtm_test → blokuoja BLOCKING TRIGGER');
@@ -95,8 +99,8 @@ L('');
 L('#################################################');
 L('### ISVADOS');
 L('#################################################');
-L('  1) be gtm_test:  tracking cookies='+r1.tracking+'  uzklausu='+r1.requests+'  '+(r1.tracking===0?'✅':'❌'));
-L('  2) su gtm_test:  tracking cookies='+r2.tracking+'  uzklausu='+r2.requests+'  '+(r2.tracking===0?'✅ consent gina':'❌ CONSENT NEVEIKIA'));
-L('  3) preke:        view_item dataLayer\'yje: '+(r3.state.events&&r3.state.events.includes('view_item')?'✅':'❌')+'   cookies='+r3.tracking);
+L('  1) be gtm_test:  '+(!r1.loaded?'⚠️ NEGALIOJA':'tracking cookies='+r1.tracking+'  uzklausu='+r1.requests+'  '+(r1.tracking===0?'✅':'❌')));
+L('  2) su gtm_test:  '+(!r2.loaded?'⚠️ NEGALIOJA':'tracking cookies='+r2.tracking+'  uzklausu='+r2.requests+'  '+(r2.tracking===0?'✅ consent gina':'❌ CONSENT NEVEIKIA')));
+L('  3) preke:        '+(!r3.loaded?'⚠️ NEGALIOJA':'view_item dataLayer: '+(r3.state.events&&r3.state.events.includes('view_item')?'✅':'❌')+'   cookies='+r3.tracking));
 await browser.close();
 putFile('e9_pre_test.txt', out); console.log(out);
