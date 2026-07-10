@@ -1,6 +1,7 @@
 import { execSync } from "child_process";
 import fs from "fs";
 import crypto from "crypto";
+
 function putFile(n,s){
   const repo=process.env.GH_REPO, tok=process.env.GH_TOKEN;
   for(let a=0;a<5;a++){ try{
@@ -13,7 +14,7 @@ function putFile(n,s){
   }catch(e){} execSync('sleep 3'); }
   return false;
 }
-let out=''; const L=(s)=>{out+=s+'\n';};
+let out=''; const L=(s)=>{out+=s+'\n'; console.log(s);};
 function loadSA(){ let r=(process.env.GTM_SA_JSON||'').trim(); if(!r.startsWith('{'))r='{'+r; if(!r.endsWith('}'))r=r+'}'; return JSON.parse(r); }
 const b64url=(b)=>Buffer.from(b).toString('base64').replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 async function token(scopes){
@@ -26,120 +27,72 @@ async function token(scopes){
     body:new URLSearchParams({grant_type:'urn:ietf:params:oauth:grant-type:jwt-bearer',assertion:h+'.'+c+'.'+sig})});
   return (await r.json()).access_token;
 }
-const SITE='sc-domain%3Apetshop.lt';
+
 const PROP='346051580';
-const END='2026-07-09', START16='2025-03-01', START6='2026-01-10';
+const START='2026-01-10', END='2026-07-09';
 
-async function gsc(t, dims, rowLimit=25000){
-  let all=[], startRow=0;
-  for(let i=0;i<5;i++){
-    const r=await fetch('https://www.googleapis.com/webmasters/v3/sites/'+SITE+'/searchAnalytics/query',{
-      method:'POST',headers:{Authorization:'Bearer '+t,'Content-Type':'application/json'},
-      body:JSON.stringify({startDate:START16,endDate:END,dimensions:dims,rowLimit,startRow})});
-    if(r.status!==200){ L('    GSC '+dims+' HTTP '+r.status); break; }
-    const j=await r.json();
-    const rows=j.rows||[];
-    all=all.concat(rows);
-    if(rows.length<rowLimit) break;
-    startRow+=rowLimit;
-  }
-  return all;
-}
-async function ga4(t, dims, mets, start=START6){
+async function ga4(t, dims, mets, limit=1000, orderMet=null){
+  const body={dateRanges:[{startDate:START,endDate:END}],
+    dimensions:dims.map(d=>({name:d})), metrics:mets.map(m=>({name:m})), limit};
+  if(orderMet) body.orderBys=[{metric:{metricName:orderMet},desc:true}];
   const r=await fetch('https://analyticsdata.googleapis.com/v1beta/properties/'+PROP+':runReport',{
-    method:'POST',headers:{Authorization:'Bearer '+t,'Content-Type':'application/json'},
-    body:JSON.stringify({dateRanges:[{startDate:start,endDate:END}],
-      dimensions:dims.map(d=>({name:d})), metrics:mets.map(m=>({name:m})), limit:5000})});
-  if(r.status!==200){ const e=await r.text(); L('    GA4 '+dims+' HTTP '+r.status+' '+e.slice(0,120)); return null; }
-  return await r.json();
+    method:'POST',headers:{Authorization:'Bearer '+t,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(r.status!==200){ const e=await r.text(); L('  GA4 ERR '+dims.join(',')+' HTTP '+r.status+' '+e.slice(0,300)); return null; }
+  const j=await r.json();
+  return (j.rows||[]).map(row=>({
+    d: row.dimensionValues.map(v=>v.value),
+    m: row.metricValues.map(v=>isNaN(+v.value)?v.value:+v.value)
+  }));
 }
 
-L('############ DUOMENU TRAUKIMAS I REPO ############');
-L('periodas GSC: '+START16+' .. '+END+'   GA4: '+START6+' .. '+END); L('');
+(async()=>{
+  const t=await token('https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/webmasters.readonly');
+  if(!t){ L('NO TOKEN'); putFile('_run2_log.txt',out); return; }
+  L('token ok');
 
-try{
-  const tg=await token('https://www.googleapis.com/auth/webmasters.readonly');
-  const ta=await token('https://www.googleapis.com/auth/analytics.readonly');
+  // === A. saltinis x irenginys ===
+  const A=await ga4(t,['sessionSourceMedium','deviceCategory'],['sessions','transactions','purchaseRevenue'],400,'sessions');
+  if(A){ putFile('ga4_source_x_device.json',JSON.stringify(A)); L('A ok rows='+A.length); }
 
-  // ===== GSC =====
-  L('=== GSC ===');
-  const pages=await gsc(tg,['page']);
-  L('  page: '+pages.length+' eiluciu');
-  putFile('gsc_pages.json', JSON.stringify(pages));
-  const totC=pages.reduce((a,r)=>a+r.clicks,0), totI=pages.reduce((a,r)=>a+r.impressions,0);
-  L('    viso clicks: '+totC+'   impressions: '+totI+'   CTR: '+(100*totC/totI).toFixed(2)+'%');
-  L('  TOP 12 puslapiu:');
-  pages.slice(0,12).forEach(r=>L('    '+String(r.clicks).padStart(5)+'  '+r.keys[0].replace('https://petshop.lt','').slice(0,52).padEnd(54)+' impr='+String(r.impressions).padStart(6)+'  pos='+r.position.toFixed(1)));
-  L('');
+  // === B. funnel pagal irengini (sesiju-lygio metrikos) ===
+  const B=await ga4(t,['deviceCategory'],['sessions','itemsViewed','addToCarts','checkouts','ecommercePurchases','purchaseRevenue','bounceRate','averageSessionDuration'],20);
+  if(B){ putFile('ga4_funnel_x_device.json',JSON.stringify(B)); L('B ok rows='+B.length); }
 
-  const queries=await gsc(tg,['query']);
-  L('  query: '+queries.length+' eiluciu');
-  putFile('gsc_queries.json', JSON.stringify(queries));
-  L('  TOP 12 uzklausu:');
-  queries.slice(0,12).forEach(r=>L('    '+String(r.clicks).padStart(5)+'  '+r.keys[0].slice(0,44).padEnd(46)+' impr='+String(r.impressions).padStart(6)+'  pos='+r.position.toFixed(1)));
-  L('');
+  // === C. funnel pagal kanala ===
+  const C=await ga4(t,['sessionDefaultChannelGroup'],['sessions','addToCarts','checkouts','ecommercePurchases','purchaseRevenue'],50,'sessions');
+  if(C){ putFile('ga4_funnel_x_channel.json',JSON.stringify(C)); L('C ok rows='+C.length); }
 
-  const pq=await gsc(tg,['page','query'],25000);
-  L('  page x query: '+pq.length+' eiluciu');
-  putFile('gsc_page_query.json', JSON.stringify(pq.slice(0,8000)));
-  L('');
+  // === D. landing page: ar veisliu psl. nesa pardavimus ===
+  const D=await ga4(t,['landingPagePlusQueryString'],['sessions','addToCarts','ecommercePurchases','purchaseRevenue','bounceRate'],600,'sessions');
+  if(D){ putFile('ga4_landing.json',JSON.stringify(D)); L('D ok rows='+D.length); }
 
-  // ===== GA4 =====
-  L('=== GA4 (6 men.) ===');
-  const src=await ga4(ta,['sessionSourceMedium'],['sessions','totalRevenue','transactions','engagementRate']);
-  if(src){
-    const rows=(src.rows||[]).map(r=>({k:r.dimensionValues[0].value, s:+r.metricValues[0].value, rev:+r.metricValues[1].value, tx:+r.metricValues[2].value, eng:+r.metricValues[3].value}));
-    rows.sort((a,b)=>b.rev-a.rev);
-    putFile('ga4_source_medium.json', JSON.stringify(rows));
-    const tot=rows.reduce((a,r)=>a+r.rev,0);
-    L('  saltiniu: '+rows.length+'   viso pajamu: '+tot.toFixed(2)+' EUR');
-    L('  TOP 10 pagal pajamas:');
-    rows.slice(0,10).forEach(r=>L('    '+r.k.slice(0,30).padEnd(32)+' rev='+r.rev.toFixed(0).padStart(6)+'  sess='+String(r.s).padStart(5)+'  tx='+String(r.tx).padStart(4)+'  konv='+(r.s?(100*r.tx/r.s).toFixed(2):'0')+'%'));
+  // === E. eventai: sesiju skaicius, ne eventu ===
+  const E=await ga4(t,['eventName'],['sessions','eventCount','totalUsers'],60,'eventCount');
+  if(E){ putFile('ga4_event_sessions.json',JSON.stringify(E)); L('E ok rows='+E.length); }
+
+  // === F. eventai x irenginys (kur luzta checkout) ===
+  const F=await ga4(t,['eventName','deviceCategory'],['eventCount','sessions'],200,'eventCount');
+  if(F){ putFile('ga4_event_x_device.json',JSON.stringify(F)); L('F ok rows='+F.length); }
+
+  // === G. URL auditas: ar seni GSC puslapiai egzistuoja dev.avesa.lt ===
+  const paths=JSON.parse(fs.readFileSync('analize/_top_paths.json','utf8'));
+  const res=[];
+  for(const p of paths){
+    let line={p};
+    for(const host of ['https://dev.avesa.lt','https://petshop.lt']){
+      try{
+        const r=execSync('curl -s -o /dev/null -m 20 -w "%{http_code}|%{redirect_url}" -A "Mozilla/5.0" "'+host+p+'"',{encoding:'utf8'});
+        const [code,red]=r.split('|');
+        let final=code;
+        if(/^3/.test(code)&&red){
+          try{ final=execSync('curl -s -o /dev/null -m 20 -L -w "%{http_code}" -A "Mozilla/5.0" "'+host+p+'"',{encoding:'utf8'}).trim(); }catch(e){}
+        }
+        line[host.includes('dev')?'dev':'prod']={code,final,red:red||''};
+      }catch(e){ line[host.includes('dev')?'dev':'prod']={code:'ERR',final:'ERR',red:''}; }
+    }
+    res.push(line);
   }
-  L('');
-
-  const prod=await ga4(ta,['itemName'],['itemRevenue','itemsPurchased','itemsViewed']);
-  if(prod){
-    const rows=(prod.rows||[]).map(r=>({n:r.dimensionValues[0].value, rev:+r.metricValues[0].value, qty:+r.metricValues[1].value, views:+r.metricValues[2].value}));
-    rows.sort((a,b)=>b.rev-a.rev);
-    putFile('ga4_products.json', JSON.stringify(rows));
-    L('  produktu: '+rows.length);
-    L('  TOP 10 pagal pajamas:');
-    rows.slice(0,10).forEach(r=>L('    '+r.rev.toFixed(0).padStart(6)+' EUR  '+String(r.qty).padStart(4)+' vnt  '+r.n.slice(0,48)));
-  }
-  L('');
-
-  const funnel=await ga4(ta,['eventName'],['eventCount']);
-  if(funnel){
-    const rows=(funnel.rows||[]).map(r=>({e:r.dimensionValues[0].value, c:+r.metricValues[0].value}));
-    rows.sort((a,b)=>b.c-a.c);
-    putFile('ga4_events.json', JSON.stringify(rows));
-    L('  Funnel (event counts, 6 men.):');
-    ['session_start','view_item','add_to_cart','begin_checkout','purchase'].forEach(e=>{
-      const r=rows.find(x=>x.e===e);
-      L('    '+e.padEnd(18)+' '+String(r?r.c:0).padStart(7));
-    });
-    const vi=rows.find(x=>x.e==='view_item')?.c||0;
-    const atc=rows.find(x=>x.e==='add_to_cart')?.c||0;
-    const bc=rows.find(x=>x.e==='begin_checkout')?.c||0;
-    const pu=rows.find(x=>x.e==='purchase')?.c||0;
-    L('');
-    L('    view_item -> add_to_cart:      '+(vi?(100*atc/vi).toFixed(1):'?')+'%');
-    L('    add_to_cart -> begin_checkout: '+(atc?(100*bc/atc).toFixed(1):'?')+'%');
-    L('    begin_checkout -> purchase:    '+(bc?(100*pu/bc).toFixed(1):'?')+'%  ← CIA NUTEKA');
-  }
-  L('');
-
-  const dev=await ga4(ta,['deviceCategory'],['sessions','totalRevenue','transactions']);
-  if(dev){
-    const rows=(dev.rows||[]).map(r=>({d:r.dimensionValues[0].value,s:+r.metricValues[0].value,rev:+r.metricValues[1].value,tx:+r.metricValues[2].value}));
-    putFile('ga4_device.json', JSON.stringify(rows));
-    L('  Irenginiai:');
-    rows.forEach(r=>L('    '+r.d.padEnd(10)+' sess='+String(r.s).padStart(6)+'  rev='+r.rev.toFixed(0).padStart(6)+'  konv='+(r.s?(100*r.tx/r.s).toFixed(2):'0')+'%'));
-  }
-  L('');
-  L('=== Failai repo: analize/ ===');
-  L('  gsc_pages.json  gsc_queries.json  gsc_page_query.json');
-  L('  ga4_source_medium.json  ga4_products.json  ga4_events.json  ga4_device.json');
-}catch(e){ L('!!! '+e.message.slice(0,200)); }
-putFile('_santrauka.txt', out); console.log(out);
+  putFile('url_audit.json',JSON.stringify(res));
+  L('G ok rows='+res.length);
+  putFile('_run2_log.txt',out);
+})();
