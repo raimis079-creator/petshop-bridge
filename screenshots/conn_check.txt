@@ -1,0 +1,29 @@
+############ PRISIJUNGIMU PATIKRA ############
+laikas: 2026-07-10T06:12:54.771Z
+
+=== 1. GTM API ===
+  auth ............... OK (1024 chars)
+  GET /accounts ...... HTTP 200  (1 account)
+  workspace .......... Default Workspace (id 2)
+  container turinys .. tags=0 triggers=0 variables=0
+  live version ....... #1 "Empty Container"
+  RASYMO TESTAS:
+    CREATE ........... OK (variableId=4)
+    DELETE ........... HTTP 200
+    svara ............ variables=0 ✅
+
+=== 2. WORDPRESS (dev.avesa.lt) ===
+  WP_USER ............ bdz487
+  WP_APP_PASS ........ yra (24 chars)
+  ❌ WP ERROR: Command failed: curl -s -o /tmp/wp.json -w "%{http_code}" -u "bdz487:nfRTI4pXV6WQpmd3RRZZn6sG" "https://dev.avesa.lt/wp-json/wp/v2/users/me?context=edit"
+
+=== 3. SVETAINES ===
+  https://dev.avesa.lt/      200 2.108927s
+  https://petshop.lt/        200 1.545484s
+
+=== ID (is gtm_lib) ===
+  gtm        = GTM-MF3GZGT
+  ga4        = G-FMTKEGGLMG
+  gads       = AW-11117260149
+  metaPixel  = 1097111687955877
+  legacyGtm  = GTM-MZGDV75F
