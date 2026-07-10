@@ -1,0 +1,48 @@
+############ PAYSERA MOKEJIMO BUDAI ############
+
+=== 1. Paysera vieša mokėjimo būdų API (project 29276) ===
+  https://www.paysera.com/new/api/items?project=29276&currency=EUR&lang=...
+    atsakymas: 4442 B  ->  <!doctype html> <html> <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <meta name="ro
+    KORTELES: ❌ nerasta
+
+  https://bank.paysera.com/new/api/items?project=29276&currency=EUR&lang...
+    atsakymas: 4442 B  ->  <!doctype html> <html> <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <meta name="ro
+    KORTELES: ❌ nerasta
+
+  https://www.paysera.com/new/api/items?project_id=29276&currency=EUR&la...
+    atsakymas: 4442 B  ->  <!doctype html> <html> <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <meta name="ro
+    KORTELES: ❌ nerasta
+
+=== 2. Checkout: ar rodomas mokėjimo būdų sąrašas ===
+  Mokejimo budu radio: [{"val":"paysera","checked":true},{"val":"bacs","checked":false}]
+
+  Paysera blokas:
+    HTML ilgis: 84229
+    vidiniai radio (20): [{"name":"payment_method","val":"paysera"},{"name":"payment[pay_type]","val":"wallet"},{"name":"payment[pay_type]","val":"lt_revolut"},{"name":"payment[pay_type]","val":"lt_n26"},{"name":"payment[pay_type]","val":"al_intesa_sanpaolo"},{"name":"payment[pay_type]","val":"al_alfabank"},{"name":"payment
+    paveiksleliai (20):
+      "Mokėjimas internetu"  paysera.svg
+      "Paysera sąskaita"  wallet.png
+      "Revolut (LT)"  revolut.png
+      "N26 Bank (LT)"  lt_n26.png
+      "Intesa SanPaolo"  al_intesa_sanpaolo.png
+      "Alpha Bank"  al_alfabank.png
+      "BKT Bank"  al_bktbank.png
+      "Credins Bank"  al_credinsbank.png
+      "Fibank Bank"  al_fibank.png
+      "OTP Bank"  al_otpbank.png
+      "ProCredit Bank"  al_procreditbank.png
+      "Raiffeisen Bank"  al_raiffeisenbank.png
+      "Tirana Bank"  al_tiranabank.png
+      "Union Bank"  al_unionbank.png
+      "ABI Bank"  al_abibank.png
+      "Paysera sąskaita"  wallet.png
+      "ING Bank"  ingbankpl.png
+      "Revolut (AT)"  revolut.png
+      "UniCredit Bank Austria"  at_unicredit.png
+      "Erste Bank und Sparkassen, Austrija"  at_erste_group.png
+    tekstas: " Mokėjimas internetu \nALBANIJA\nAUSTRIJA\nBELGIJA\nBULGARIJA\nKANADA\nČEKIJA\nVOKIETIJA\nDANIJA\nESTIJA\nISPANIJA\nSUOMIJA\nPRANCūZIJA\nJUNGTINė KARALYSTė\nGRUZIJA\nGRAIKIJA\nKROATIJA\nVENGRIJA\nAIRIJA\nITALIJA\nLIETUVA"
+
+  >>> Mokejimo budu sarasas checkout'e: ✅ RODOMAS
+
+=== 3. Paysera pasirinkimas + redirect testas ===
+  po pasirinkimo: {"radios":191,"imgs":191}
