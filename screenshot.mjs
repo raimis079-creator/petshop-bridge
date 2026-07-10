@@ -1,3 +1,4 @@
+import { chromium } from 'playwright';
 import { execSync } from "child_process";
 import fs from "fs";
 function putFile(n,s){
@@ -13,60 +14,72 @@ function putFile(n,s){
   return false;
 }
 let out=''; const L=(s)=>{out+=s+'\n';};
-function get(url){
-  const code=execSync('curl -skL -o /tmp/g.txt -w "%{http_code}" --max-time 40 "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
-  let b=''; try{ b=fs.readFileSync('/tmp/g.txt','utf8'); }catch(e){}
-  return {code, body:b};
-}
 
-L('############ NUORODOS "Slapukų naudojimas" PAIESKA ############'); L('');
+L('############ page_links + FINALINE BUSENA ############'); L('');
 
-L('=== 1. Complianz REST banner endpoint ===');
-const r=get('https://dev.avesa.lt/wp-json/complianz/v1/banner/1/optin');
-L('  HTTP '+r.code+'  ('+r.body.length+' B)');
-if(r.code==='200'){
+const html = execSync('curl -skL --max-time 40 "https://dev.avesa.lt/?cb='+Date.now()+'"',{encoding:'utf8',maxBuffer:30000000});
+const m = html.match(/"page_links":\s*(\{[\s\S]*?\})\s*,\s*"/);
+L('=== page_links (inline config) ===');
+if(m){
   try{
-    const j=JSON.parse(r.body);
-    L('  raktai: '+Object.keys(j).join(', ').slice(0,300));
-    if(j.legal_documents) L('  legal_documents: '+JSON.stringify(j.legal_documents).slice(0,500));
-    if(j.documents) L('  documents: '+JSON.stringify(j.documents).slice(0,400));
-  }catch(e){ L('  parse err'); L('  '+r.body.slice(0,400)); }
+    const pl = JSON.parse(m[1]);
+    for(const [region,docs] of Object.entries(pl)){
+      L('  region: '+region);
+      for(const [type,d] of Object.entries(docs)){
+        L('    '+String(type).padEnd(20)+' "'+d.title+'"');
+        L('    '+' '.repeat(20)+' '+String(d.url).replace(/^https?:\/\/dev\.avesa\.lt/,''));
+      }
+    }
+  }catch(e){
+    L('  parse err, raw:');
+    L('  '+m[1].slice(0,600));
+  }
+} else {
+  const m2 = html.match(/page_links[\s\S]{0,600}/);
+  L('  '+(m2?m2[0].slice(0,600):'nerasta'));
 }
 L('');
 
-L('=== 2. Kiti complianz REST endpoint\'ai ===');
-const rt=get('https://dev.avesa.lt/wp-json/');
-if(rt.code==='200'){
-  try{
-    const j=JSON.parse(rt.body);
-    Object.keys(j.routes||{}).filter(x=>/complianz/i.test(x)).forEach(x=>L('  '+x));
-  }catch(e){}
-}
-L('');
-
-L('=== 3. HTML: is kur nuoroda ===');
-const h=get('https://dev.avesa.lt/');
-const idx=h.body.indexOf('Slapukų naudojimas');
-if(idx>0){
-  L('  rasta HTML pozicijoje '+idx);
-  L('  kontekstas:');
-  L('  '+h.body.slice(Math.max(0,idx-400), idx+200).replace(/\s+/g,' '));
-}else{
-  L('  HTML\'e nerasta (renderinama JS)');
-}
-L('');
-
-L('=== 4. Inline cmplz config JS ===');
-const cfg=h.body.match(/complianz[^<]{0,60}=\s*\{[\s\S]{0,1500}/);
-if(cfg){ L('  '+cfg[0].slice(0,900)); }
+L('=== Vizuali patikra ===');
+const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
+const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:900}, locale:'lt-LT'});
+const page=await ctx.newPage();
+await page.goto('https://dev.avesa.lt/?cb2='+Date.now(),{waitUntil:'domcontentloaded',timeout:60000});
+await page.waitForTimeout(8000);
+const b = await page.evaluate(()=>{
+  const el=document.querySelector('.cmplz-cookiebanner');
+  if(!el) return null;
+  const acc=el.querySelector('.cmplz-accept');
+  return {
+    title:(el.querySelector('.cmplz-title')||{}).innerText,
+    msg:((el.querySelector('.cmplz-message')||{}).innerText||'').slice(0,80),
+    accept:(acc||{}).innerText, deny:(el.querySelector('.cmplz-deny')||{}).innerText,
+    view:(el.querySelector('.cmplz-view-preferences')||{}).innerText,
+    acceptBg: acc?getComputedStyle(acc).backgroundColor:null,
+    links:[...el.querySelectorAll('a')].filter(a=>{let e=a,v=true;while(e&&e!==document.body){if(getComputedStyle(e).display==='none'){v=false;break;}e=e.parentElement;}return v;})
+          .map(a=>({t:a.innerText.trim(), h:(a.getAttribute('href')||'').replace(/^https?:\/\/dev\.avesa\.lt/,'')}))
+  };
+});
+if(!b) L('  ❌ baneris nerastas');
 else{
-  const sc=h.body.match(/<script[^>]*id=["']cmplz[^"']*["'][^>]*>[\s\S]{0,1200}?<\/script>/g)||[];
-  L('  cmplz script tag\'u: '+sc.length);
-  sc.slice(0,2).forEach(s=>L('  '+s.slice(0,700).replace(/\s+/g,' ')));
+  L('  antraste : '+JSON.stringify(b.title));
+  L('  zinute   : '+JSON.stringify(b.msg)+'...');
+  L('  mygtukai : '+JSON.stringify([b.accept,b.deny,b.view]));
+  L('  accept fonas: '+b.acceptBg);
+  L('');
+  L('  Matomos nuorodos:');
+  b.links.forEach(l=>L('    "'+l.t+'"  ->  '+l.h));
+  L('');
+  const green=/rgb\(45,\s*95,\s*63\)/;
+  const senaNuoroda = b.links.some(l=>l.h==='/slapuku-politika/');
+  const checks={
+    'antraste "Slapukai ir privatumas"': b.title==='Slapukai ir privatumas',
+    'mygtukas ATMESTI':                  /ATMESTI/i.test(b.deny||''),
+    'zinute be dublio':                  !/funkcijas ir funkcijas/i.test(b.msg||''),
+    'accept zalias':                     green.test(b.acceptBg||''),
+    'nera senos nuorodos /slapuku-politika/': !senaNuoroda,
+  };
+  for(const [k,v] of Object.entries(checks)) L('  '+(v?'✅':'❌')+' '+k);
 }
-L('');
-
-L('=== 5. Complianz JS failas su nuorodomis ===');
-const jsUrl = (h.body.match(/https?:\/\/[^"']*complianz[^"']*\.js[^"']*/g)||[]).slice(0,3);
-jsUrl.forEach(u=>L('  '+u.slice(0,120)));
-putFile('cmplz_link_hunt.txt', out); console.log(out);
+await browser.close();
+putFile('cmplz_final.txt', out); console.log(out);
