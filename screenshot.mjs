@@ -146,7 +146,8 @@ try{
   L('=== I. purchase patikra ===');
   e=await dl(page);
   const pur=e.filter(x=>x.event==='purchase');
-  L('  purchase push\'u kiekis: '+pur.length+'  '+(pur.length===1?'✅ TIKSLIAI VIENAS':'❌ '+(pur.length===0?'NERA':'DUBLIS'));
+  const verdict = pur.length===1 ? '✅ TIKSLIAI VIENAS' : (pur.length===0 ? '❌ NERA' : '❌ DUBLIS');
+  L('  purchase push\'u kiekis: '+pur.length+'  '+verdict);
   if(pur.length){
     const p0=pur[0]; orderNum=p0.tid;
     L('    transaction_id : '+p0.tid);
