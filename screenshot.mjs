@@ -24,64 +24,67 @@ async function token(scopes){
   const sig=s.sign(sa.private_key).toString('base64').replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
   const r=await fetch(sa.token_uri,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
     body:new URLSearchParams({grant_type:'urn:ietf:params:oauth:grant-type:jwt-bearer',assertion:h+'.'+c+'.'+sig})});
-  const j=await r.json(); if(!j.access_token) throw new Error('TOKEN FAIL: '+JSON.stringify(j).slice(0,200));
+  const j=await r.json(); if(!j.access_token) throw new Error('TOKEN FAIL '+JSON.stringify(j).slice(0,150));
   return j.access_token;
 }
 
-L('############ SEARCH CONSOLE API PATIKRA ############'); L('');
-L('SA: claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com'); L('');
+L('############ PRIEIGU SUVESTINE ############'); L('');
+const PROP='346051580';
 
 try{
-  const t = await token('https://www.googleapis.com/auth/webmasters.readonly');
-  L('✅ AUTH OK (webmasters.readonly scope gautas)'); L('');
-
-  L('=== 1. GET /webmasters/v3/sites (kokias property mato SA) ===');
-  const r = await fetch('https://www.googleapis.com/webmasters/v3/sites',{headers:{Authorization:'Bearer '+t}});
-  const txt = await r.text();
-  L('  HTTP '+r.status);
+  // ---- GA4 ----
+  L('=== GA4 Data API (property '+PROP+') ===');
+  const t=await token('https://www.googleapis.com/auth/analytics.readonly');
+  L('  auth ✅');
+  const r=await fetch('https://analyticsdata.googleapis.com/v1beta/properties/'+PROP+':runReport',{
+    method:'POST', headers:{Authorization:'Bearer '+t,'Content-Type':'application/json'},
+    body:JSON.stringify({
+      dateRanges:[{startDate:'30daysAgo',endDate:'yesterday'}],
+      metrics:[{name:'sessions'},{name:'totalRevenue'},{name:'transactions'},{name:'activeUsers'}]
+    })
+  });
+  const txt=await r.text();
+  L('  runReport -> HTTP '+r.status);
   if(r.status===200){
     const j=JSON.parse(txt);
-    const sites=j.siteEntry||[];
-    L('  matomu property: '+sites.length);
-    sites.forEach(s=>L('    '+s.siteUrl+'   permission='+s.permissionLevel));
-    if(sites.length===0){
-      L('');
-      L('  ⚠️ API VEIKIA, bet SA nepridetas ne prie vienos property.');
-      L('     Reikia: GSC → Nustatymai → Naudotojai ir teises → Prideti naudotoja');
-      L('     El. pastas: claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com');
-      L('     Teises: „Visos" (Full) arba „Ribotos" (Restricted) — uztenka Restricted');
-    }
-  } else if(r.status===403){
-    L('  ❌ 403');
-    L('  '+txt.slice(0,500));
-    if(/has not been used|is disabled|SERVICE_DISABLED/i.test(txt)){
-      L('');
-      L('  >>> Search Console API NEIJUNGTA Cloud projekte.');
-      L('      Ijungti: console.cloud.google.com/apis/library/searchconsole.googleapis.com');
-      L('      Projektas: prefab-envoy-482617-b4 (Petshop Google Ads)');
-    }
+    const row=(j.rows||[])[0];
+    if(row){
+      const m=row.metricValues.map(v=>v.value);
+      L('  ✅ VEIKIA. Paskutines 30 d.:');
+      L('     sesijos:     '+m[0]);
+      L('     pajamos:     '+parseFloat(m[1]).toFixed(2)+' EUR');
+      L('     transakcijos:'+m[2]);
+      L('     aktyvus vart:'+m[3]);
+    } else L('  200, bet 0 eiluciu');
   } else {
-    L('  '+txt.slice(0,400));
+    L('  ❌ '+txt.slice(0,400).replace(/\s+/g,' '));
+    if(/has not been used|SERVICE_DISABLED/i.test(txt)) L('  >>> analyticsdata.googleapis.com NEIJUNGTA');
+    if(/permission|PERMISSION_DENIED/i.test(txt)) L('  >>> SA nepridetas prie property arba propagacija (palauk 2-5 min)');
   }
   L('');
 
-  L('=== 2. Bandom searchanalytics.query (jei property matoma) ===');
-  for(const site of ['https://petshop.lt/','sc-domain:petshop.lt','http://petshop.lt/']){
-    const enc=encodeURIComponent(site);
-    const q=await fetch('https://www.googleapis.com/webmasters/v3/sites/'+enc+'/searchAnalytics/query',{
-      method:'POST', headers:{Authorization:'Bearer '+t,'Content-Type':'application/json'},
-      body: JSON.stringify({ startDate:'2025-03-01', endDate:'2026-07-01', dimensions:['page'], rowLimit:3 })
-    });
-    const qt=await q.text();
-    L('  '+site.padEnd(28)+' -> HTTP '+q.status);
-    if(q.status===200){
-      const j=JSON.parse(qt);
-      L('    ✅ VEIKIA. eiluciu: '+((j.rows||[]).length));
-      (j.rows||[]).forEach(row=>L('      '+row.keys[0].slice(0,60)+'  clicks='+row.clicks+'  impr='+row.impressions+'  pos='+row.position.toFixed(1)));
-      break;
-    } else {
-      L('    '+qt.slice(0,180).replace(/\s+/g,' '));
-    }
-  }
-}catch(e){ L('!!! '+e.message.slice(0,250)); }
-putFile('gsc_api_check.txt', out); console.log(out);
+  // ---- GSC ----
+  L('=== Search Console API ===');
+  const t2=await token('https://www.googleapis.com/auth/webmasters.readonly');
+  const s=await fetch('https://www.googleapis.com/webmasters/v3/sites',{headers:{Authorization:'Bearer '+t2}});
+  if(s.status===200){
+    const j=await s.json();
+    (j.siteEntry||[]).forEach(x=>L('  ✅ '+x.siteUrl+'   '+x.permissionLevel));
+  } else L('  ❌ HTTP '+s.status);
+  L('');
+
+  // ---- GTM ----
+  L('=== Tag Manager API ===');
+  const t3=await token('https://www.googleapis.com/auth/tagmanager.readonly');
+  const g=await fetch('https://tagmanager.googleapis.com/tagmanager/v2/accounts/6071827163/containers/101921278/versions:live',{headers:{Authorization:'Bearer '+t3}});
+  L('  '+(g.status===200?'✅ GTM-MF3GZGT live version pasiekiama':'❌ HTTP '+g.status));
+  L('');
+
+  L('=== SUVESTINE ===');
+  L('  Vienas Service Account, trys API:');
+  L('    claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com');
+  L('');
+  L('  Google Ads API — NEGALIMA (reikia developer token + OAuth2).');
+  L('  Alternatyva: Google Ads Script (veikia Ads viduje, token nereikia).');
+}catch(e){ L('!!! '+e.message.slice(0,200)); }
+putFile('access_summary.txt', out); console.log(out);
