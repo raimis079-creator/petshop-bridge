@@ -1,0 +1,44 @@
+############ E6 RECON — WooCommerce dataLayer aplinka ############
+
+=== 1. WooCommerce puslapiai ===
+  WC 10.9.4 | WP 6.9.4 | PHP 8.3.20
+  Tema: Flatsome Child v3.0  child=TAIP
+  Parent: Flatsome
+  HPOS / custom orders table: true
+  Pages:
+    Parduotuvės bazė id=11  set=true  exists=true  visible=true
+    Krepšelis        id=12  set=true  exists=true  visible=true
+    Apmokėjimas      id=13  set=true  exists=true  visible=true
+    Paskyra          id=14  set=true  exists=true  visible=true
+    Pirkimo taisyklės ir sąlygos id=  set=false  exists=false  visible=false
+
+=== 2. Tracking-related plugin'ai ===
+  is viso plugin'u: 26
+    [off] Complianz | BDAR/CCPA sutikimas naudoti slapukus v7.5.0
+    [off] ShortPixel Image Optimizer v6.5.4
+  aktyvus is viso: 23
+
+=== 3. Checkout / Cart tipas (Blocks ar klasikinis) ===
+  Krepselis      HTTP 404  (154094 B)
+  Kasa           HTTP 404  (154084 B)
+  Cart (en)      HTTP 200  (201712 B)
+      → Flatsome
+  Checkout (en)  HTTP 302  (0 B)
+  Parduotuve     HTTP 200  (186903 B)
+      → Flatsome
+
+=== 4. Prekes puslapio pavyzdys ===
+  id=34512  sku=DP-710002-20  "Ruda avies koja, 1 vnt. × 20 vnt."
+  permalink: https://dev.avesa.lt/product/ruda-avies-koja-1-vnt-x-20-vnt/
+  kaina: 30 EUR   tipas: simple
+  kategorijos: DAUGIAU=PIGIAU, Skanėstai šunims
+  brand tax: []
+  puslapis HTTP 200 (226133 B)
+    dataLayer: nera
+    ajax_add_to_cart: YRA
+    single_add_to_cart_button: YRA
+
+=== 5. WC nustatymai ===
+  Valiuta          = EUR
+  Kainos su PVM    HTTP 404
+  Mokesciai        = yes
