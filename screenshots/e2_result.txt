@@ -1,0 +1,36 @@
+Workspace: Default Workspace
+
+PRIES: triggers=0
+
+=== KURIAM TRIGGER'IUS ===
+  [OK]   id= 17  BLOCK — DEV (pageview)  type=pageview
+  [OK]   id= 18  BLOCK — DEV (visi custom events)  type=customEvent
+  [OK]   id= 19  CE — view_item  type=customEvent
+  [OK]   id= 20  CE — add_to_cart  type=customEvent
+  [OK]   id= 21  CE — view_cart  type=customEvent
+  [OK]   id= 22  CE — begin_checkout  type=customEvent
+  [OK]   id= 23  CE — purchase  type=customEvent
+
+=== VERIFIKACIJA ===
+  triggers=7
+
+  [ 17] BLOCK — DEV (pageview)   type=pageview
+        filter: contains  arg0={{Page Hostname}} arg1=dev.avesa.lt
+        filter: matchRegex  arg0={{Page URL}} arg1=gtm_test=1 negate=true
+  [ 18] BLOCK — DEV (visi custom events)   type=customEvent
+        event: matchRegex  arg0={{_event}} arg1=.*
+        filter: contains  arg0={{Page Hostname}} arg1=dev.avesa.lt
+        filter: matchRegex  arg0={{Page URL}} arg1=gtm_test=1 negate=true
+  [ 20] CE — add_to_cart   type=customEvent
+        event: equals  arg0={{_event}} arg1=add_to_cart
+  [ 22] CE — begin_checkout   type=customEvent
+        event: equals  arg0={{_event}} arg1=begin_checkout
+  [ 23] CE — purchase   type=customEvent
+        event: equals  arg0={{_event}} arg1=purchase
+  [ 21] CE — view_cart   type=customEvent
+        event: equals  arg0={{_event}} arg1=view_cart
+  [ 19] CE — view_item   type=customEvent
+        event: equals  arg0={{_event}} arg1=view_item
+
+BENDRA BUSENA: variables=10  tags=2  triggers=7
+LIVE: #1 — PROD nepaliestas ✅
