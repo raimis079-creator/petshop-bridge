@@ -2,105 +2,106 @@ import { chromium } from 'playwright';
 import { putFile } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
 
-const TRACK_COOKIES = ['_ga','_gid','_gat','_fbp','_fbc','fr','_gcl_au','_gcl_aw','IDE','test_cookie'];
-function classify(name){
-  if(name==='_ga' || name.startsWith('_ga_') || name==='_gid' || name.startsWith('_gat')) return 'GA4';
-  if(name==='_fbp' || name==='_fbc' || name==='fr') return 'Meta';
-  if(name.startsWith('_gcl')) return 'Google Ads';
-  return null;
-}
-
-async function testUrl(browser, url, label){
-  L('');
-  L('#################################################');
-  L('### '+label);
-  L('### '+url);
-  L('#################################################');
-  const ctx = await browser.newContext({ ignoreHTTPSErrors:true, userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' });
-  const page = await ctx.newPage();
-
-  const requests = [];
-  page.on('request', r=>{
-    const u = r.url();
-    if(/google-analytics\.com|analytics\.google\.com|googletagmanager\.com\/gtag|facebook\.com\/tr|connect\.facebook\.net|googleadservices|google\.com\/pagead/.test(u)) requests.push(u);
-  });
-
-  let loaded = false;
-  try{
-    const resp = await page.goto(url, { waitUntil:'domcontentloaded', timeout:60000 });
-    loaded = !!resp && resp.status() < 400;
-    L('  goto: HTTP '+(resp?resp.status():'?'));
-    await page.waitForTimeout(8000);
-  }catch(e){ L('  ❌ goto KLAIDA: '+e.message.slice(0,140)); }
-  if(!loaded){ L('  ⚠️⚠️ PUSLAPIS NEUZSIKROVE — testas NEGALIOJA'); await ctx.close(); return {tracking:-1, requests:-1, state:{}, loaded:false}; }
-
-  // dataLayer / GTM busena
-  const state = await page.evaluate(()=>{
-    var dl = window.dataLayer || [];
-    var events = dl.filter(function(x){ return x && x.event; }).map(function(x){ return x.event; });
-    var consent = null;
-    try{
-      // gtag consent state paieska dataLayer'yje
-      for(var i=0;i<dl.length;i++){
-        var a = dl[i];
-        if(a && a[0]==='consent' && a[1]==='default'){ consent = a[2]; }
-      }
-    }catch(e){}
-    return {
-      gtmLoaded: typeof window.google_tag_manager !== 'undefined',
-      containers: window.google_tag_manager ? Object.keys(window.google_tag_manager).filter(function(k){return k.indexOf('GTM-')===0 || k.indexOf('G-')===0;}) : [],
-      dlLength: dl.length,
-      events: events,
-      consentDefault: consent,
-      hasGtag: typeof window.gtag === 'function',
-      hasFbq: typeof window.fbq === 'function',
-      petshopItem: !!window.petshopGtmItem
-    };
-  }).catch(e=>({error:e.message}));
-
-  L('  GTM uzkrautas: '+state.gtmLoaded+'   containers: '+JSON.stringify(state.containers));
-  L('  dataLayer irasu: '+state.dlLength);
-  L('  event\'ai: '+JSON.stringify(state.events));
-  L('  gtag funkcija: '+state.hasGtag+'   fbq funkcija: '+state.hasFbq);
-  L('  consent default: '+JSON.stringify(state.consentDefault));
-  L('');
-
-  const cookies = await ctx.cookies();
-  L('  Cookies is viso: '+cookies.length);
-  const tracking = cookies.filter(c=>classify(c.name));
-  if(tracking.length===0){
-    L('  ✅ TRACKING COOKIES: nera nei vieno');
-  } else {
-    L('  ❌ TRACKING COOKIES rasti:');
-    tracking.forEach(c=>L('       '+classify(c.name).padEnd(11)+' '+c.name+'  domain='+c.domain));
-  }
-  L('');
-  L('  Visi cookie vardai: '+cookies.map(c=>c.name).join(', ').slice(0,300));
-  L('');
-  L('  Tracking uzklausos ('+requests.length+'):');
-  if(requests.length===0) L('    ✅ nera');
-  else [...new Set(requests)].slice(0,10).forEach(u=>L('    ❌ '+u.slice(0,110)));
-
-  await ctx.close();
-  return { tracking: tracking.length, requests: requests.length, state, loaded:true };
-}
-
 const browser = await chromium.launch({ args:['--no-sandbox','--ignore-certificate-errors'] });
-L('##### CONSENT / BLOCKING TESTAS (Complianz DAR NEAKTYVUOTAS) #####');
-L('Laukiama: jokiu tracking cookies abiem atvejais.');
-L('  1) be gtm_test → blokuoja BLOCKING TRIGGER');
-L('  2) su gtm_test → trigger nebeblokuoja, bet CONSENT MODE = denied');
+const ctx = await browser.newContext({ ignoreHTTPSErrors:true, userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36' });
+const page = await ctx.newPage();
 
-const r1 = await testUrl(browser,'https://dev.avesa.lt/','1) DEV be gtm_test (blocking trigger aktyvus)');
-const r2 = await testUrl(browser,'https://dev.avesa.lt/?gtm_test=1','2) DEV su gtm_test=1 (tik consent gina)');
-const r3 = await testUrl(browser,'https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/?gtm_test=1','3) Prekes puslapis su gtm_test=1 (view_item)');
+const ga = [], fb = [], order = [];
+page.on('request', r=>{
+  const u=r.url();
+  if(u.includes('google-analytics.com/g/collect') || u.includes('/g/collect')) ga.push(u);
+  if(u.includes('facebook.com/tr')) fb.push(u);
+  if(/gtm\.js|gtag\/js|fbevents|g\/collect|facebook\.com\/tr/.test(u)) order.push(u.slice(0,80));
+});
 
+L('### CONSENT DIAGNOSTIKA ###'); L('');
+await page.goto('https://dev.avesa.lt/?gtm_test=1', { waitUntil:'domcontentloaded', timeout:60000 });
+await page.waitForTimeout(9000);
+
+L('=== 1. Uzklausu eiliskumas ===');
+order.forEach((u,i)=>L('  '+(i+1)+'. '+u));
 L('');
-L('#################################################');
-L('### ISVADOS');
-L('#################################################');
-L('  1) be gtm_test:  '+(!r1.loaded?'⚠️ NEGALIOJA':'tracking cookies='+r1.tracking+'  uzklausu='+r1.requests+'  '+(r1.tracking===0?'✅':'❌')));
-L('  2) su gtm_test:  '+(!r2.loaded?'⚠️ NEGALIOJA':'tracking cookies='+r2.tracking+'  uzklausu='+r2.requests+'  '+(r2.tracking===0?'✅ consent gina':'❌ CONSENT NEVEIKIA')));
-L('  3) preke:        '+(!r3.loaded?'⚠️ NEGALIOJA':'view_item dataLayer: '+(r3.state.events&&r3.state.events.includes('view_item')?'✅':'❌')+'   cookies='+r3.tracking));
+
+L('=== 2. GA4 gcs parametras ===');
+if(ga.length===0) L('  (nera g/collect uzklausu)');
+for(const u of ga.slice(0,3)){
+  const m = u.match(/[?&]gcs=([^&]+)/);
+  const gcd = u.match(/[?&]gcd=([^&]+)/);
+  L('  gcs = '+(m?m[1]:'NERA')+'   gcd = '+(gcd?gcd[1]:'nera'));
+  if(m){
+    const v=m[1];
+    L('    G100 = ad_storage denied, analytics_storage denied');
+    L('    G111 = abu granted');
+    L('    -> reiskia: '+(v==='G100'?'✅ consent PERDUOTAS (denied)':(v==='G111'?'❌ consent NEPERDUOTAS arba granted':'? '+v)));
+  }
+}
+L('');
+
+L('=== 3. GTM vidine consent busena ===');
+const st = await page.evaluate(()=>{
+  var res = { keys:[], consentState:null, dlConsent:[], gtmDL:null };
+  try{
+    if(window.google_tag_manager){
+      res.keys = Object.keys(window.google_tag_manager);
+      var c = window.google_tag_manager['GTM-MF3GZGT'];
+      if(c && c.dataLayer && typeof c.dataLayer.get === 'function'){
+        try{ res.gtmDL = c.dataLayer.get('gtm.consent'); }catch(e){}
+      }
+    }
+  }catch(e){ res.err = e.message; }
+  try{
+    var dl = window.dataLayer||[];
+    for(var i=0;i<dl.length;i++){
+      var a = dl[i];
+      if(a && a[0]==='consent'){ res.dlConsent.push({ idx:i, mode:a[1], value:a[2] }); }
+    }
+  }catch(e){}
+  return res;
+});
+L('  google_tag_manager keys: '+JSON.stringify(st.keys));
+L('  dataLayer consent iraso pozicija ir turinys:');
+if(st.dlConsent.length===0) L('    ❌ NERA nei vieno consent iraso');
+st.dlConsent.forEach(c=>L('    [idx '+c.idx+'] '+c.mode+' -> '+JSON.stringify(c.value)));
+L('');
+
+L('=== 4. dataLayer pilnas (pirmi 12 irasu) ===');
+const dl = await page.evaluate(()=>{
+  var dl = window.dataLayer||[];
+  return dl.slice(0,12).map(function(x, i){
+    try{
+      if(x && x.length !== undefined && x[0]) return i+': ARGS['+x[0]+','+(x[1]||'')+']';
+      if(x && x.event) return i+': event='+x.event;
+      if(x && x['gtm.start']) return i+': gtm.start';
+      return i+': '+JSON.stringify(x).slice(0,70);
+    }catch(e){ return i+': ?'; }
+  });
+});
+dl.forEach(x=>L('  '+x));
+L('');
+
+L('=== 5. Meta pixel busena ===');
+const meta = await page.evaluate(()=>{
+  var r = { fbqExists: typeof window.fbq === 'function', queue: [] };
+  try{ if(window.fbq && window.fbq.queue) r.queue = window.fbq.queue.map(function(q){ return q[0]+':'+(q[1]||''); }); }catch(e){}
+  return r;
+});
+L('  fbq: '+meta.fbqExists+'   queue: '+JSON.stringify(meta.queue));
+L('  facebook.com/tr uzklausu: '+fb.length);
+L('');
+
+L('=== 6. ISVADA ===');
+const gcsFound = ga.length && /[?&]gcs=/.test(ga[0]);
+const gcsVal = gcsFound ? ga[0].match(/[?&]gcs=([^&]+)/)[1] : null;
+L('  GA4 uzklausu: '+ga.length+'   Meta uzklausu: '+fb.length);
+L('  gcs: '+(gcsVal||'nerastas'));
+if(gcsVal==='G100'){
+  L('  >>> Consent Mode VEIKIA: GA4 gauna denied, siuncia cookieless ping.');
+  L('  >>> Bet GTM consentSettings=needed NEBLOKUOJA tag\'o (tikejomes blokuoti).');
+} else if(gcsVal==='G111'){
+  L('  >>> Consent default NEPASIEKE GTM: tag\'ai laiko consent granted.');
+  L('  >>> Priezastis B: Custom HTML ant Consent Initialization per velai.');
+} else {
+  L('  >>> gcs nerastas — consent signalas visai neperduodamas.');
+}
 await browser.close();
-putFile('e9_pre_test.txt', out); console.log(out);
+putFile('consent_diag.txt', out); console.log(out);
