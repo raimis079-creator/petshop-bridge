@@ -1,0 +1,60 @@
+############ S168 — FIX DEPLOY + PILNAS FLOW ############
+
+=== A. Snippet'u atnaujinimas ===
+  [619] Petshop Consent Bridge v1.2 (Complianz -> GTM)
+        HTTP 200  code_error=null
+  [614] Petshop DataLayer v1.1 (GA4 ecommerce)
+        HTTP 200  code_error=null
+
+=== B. Svetaines sveikata ===
+  Homepage     HTTP 200  ✅
+  Preke        HTTP 200  ✅
+  Krepselis    HTTP 200  ✅
+
+=== C. Prekes psl + Accept ===
+  ✅ sutikimas
+  ecommerce: ["view_item","view_item(replay)"]
+  view_item kiekis: 2  (1 orig + 1 replay = 2 tiketina, nes consent pasikeite)
+
+=== D. Add to cart (forma submit) ===
+  URL po submit: https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-c
+  add_to_cart: ✅ RASTAS (1)
+    value=0.49 EUR  item={"item_id":"2782","item_name":"Žaislas katei - Plastikinis kamuoliukas, 4 cm","price":0.49,"quantity":1,"index":0,"item_brand":"Ara","item_category":"Žaislai katėms"}
+  visi event'ai: ["add_to_cart","view_item"]
+
+=== E. Krepselis ===
+  view_cart: ✅ (1)
+    value=0.49 items=1
+  add_to_cart cia (turi buti 0, jau flush'inta): 0
+  event'ai: ["view_cart"]
+
+=== F. Checkout ===
+  begin_checkout: ✅ (1)
+    value=0.49 items=1
+  event'ai: ["begin_checkout"]
+
+=== G. Formos pildymas ===
+  ✅ bacs
+
+=== H. Pateikti uzsakyma ===
+  URL: https://dev.avesa.lt/checkout/order-received/34593/?key=wc_order_auQVvda8klrJJ
+  thankyou: ✅
+
+=== I. purchase patikra ===
+  purchase push'u kiekis: 1  ✅ TIKSLIAI VIENAS
+    transaction_id : 34593
+    value          : 5.69 EUR
+    tax            : 0.99   shipping: 3.3
+    items          : 1
+    firstItem      : {"item_id":"2782","item_name":"Žaislas katei - Plastikinis kamuoliukas, 4 cm","price":0.49,"quantity":1,"index":0,"item_brand":"Ara","item_category":"Žaislai katėms"}
+    user_data      : ["sha256_email_address"]
+    replay flag    : false
+  visi ecommerce event'ai: ["purchase"]
+
+=== J. Perkrovimas (idempotencija) ===
+  purchase po perkrovimo: 0  ✅ (order meta veikia)
+
+=== K. Uzsakymas per API ===
+  #34593  on-hold  total=5.69  tax=0.99  ship=3.30
+  email: gtm.test.1783686443770@petshop.lt   payment: bacs
+  _petshop_dl_purchase_sent: "yes" ✅
