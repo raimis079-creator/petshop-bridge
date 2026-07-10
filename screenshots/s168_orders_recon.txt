@@ -1,0 +1,128 @@
+############ S168 — UZSAKYMU RECON + BACKUP ############
+
+=== 1. Uzsakymu kiekis ===
+  x-wp-total: 60   puslapiu: 60
+
+=== 2. Pilnas sarasas ===
+  surinkta: 60
+
+  Pagal busena:
+      29  on-hold
+      10  cancelled
+      10  processing
+      10  completed
+       1  refunded
+
+  Pagal mokejimo buda:
+      54  bacs
+       5  paysera
+       1  (nera)
+
+  Bendra suma: 2296.87 EUR
+
+=== 3. Detaliai ===
+  ID     Nr     Busena        Suma      Data                 El.pastas
+  ────────────────────────────────────────────────────────────────────────────────────────────
+  3241   3241   cancelled         3.17  2026-05-20T20:19:30  raimundas@gyvunai.lt
+  3258   3258   on-hold           5.88  2026-05-22T15:51:30  raimundas@gyvunai.lt
+  3259   3259   on-hold          40.80  2026-05-22T15:56:44  raimundas@gyvunai.lt
+  3260   3260   processing       16.95  2026-05-22T16:02:51  raimundas@gyvunai.lt
+  3261   3261   cancelled        35.00  2026-05-22T16:32:59  raimundas@gyvunai.lt
+  3262   3262   processing       42.82  2026-05-22T16:35:56  raimundas@gyvunai.lt
+  3263   3263   cancelled         8.12  2026-05-22T17:01:55  raimundas@gyvunai.lt
+  3264   3264   cancelled        63.40  2026-05-22T17:02:55  raimundas@gyvunai.lt
+  3265   3265   cancelled        46.50  2026-05-22T17:06:50  raimundas@gyvunai.lt
+  3266   3266   processing       46.50  2026-05-22T17:15:55  raimundas@gyvunai.lt
+  3267   3267   processing      143.80  2026-05-22T17:40:27  raimundas@gyvunai.lt
+  3268   3268   processing        8.42  2026-05-22T20:44:59  raimundas@gyvunai.lt
+  3269   3269   processing       12.00  2026-05-25T12:48:22  raimundas@gyvunai.lt
+  3270   3270   completed        25.00  2026-05-25T12:57:05  raimundas@gyvunai.lt
+  3271   3271   on-hold          35.00  2026-05-25T13:20:39  raimundas@gyvunai.lt
+  3272   3272   on-hold          40.80  2026-05-25T13:26:25  raimundas@gyvunai.lt
+  3273   3273   on-hold          28.85  2026-05-25T13:36:24  raimundas@gyvunai.lt
+  3274   3274   on-hold           4.15  2026-05-25T13:54:52  raimundas@gyvunai.lt
+  3275   3275   on-hold          11.28  2026-05-25T14:06:14  raimundas@gyvunai.lt
+  3276   3276   completed        34.40  2026-05-25T14:29:33  raimundas@gyvunai.lt
+  3277   3277   completed        12.00  2026-05-25T14:59:30  raimundas@gyvunai.lt
+  3278   3278   completed        33.99  2026-05-25T18:04:15  raimundas@gyvunai.lt
+  3279   3279   on-hold          13.49  2026-05-25T18:14:03  raimundas@gyvunai.lt
+  3280   3280   processing        7.95  2026-05-25T18:14:41  raimundas@gyvunai.lt
+  3282   3282   on-hold          58.99  2026-05-25T18:22:47  raimundas@gyvunai.lt
+  3283   3283   processing       21.50  2026-05-25T18:26:19  raimundas@gyvunai.lt
+  3284   3284   refunded         33.99  2026-05-25T18:37:38  raimundas@gyvunai.lt
+  3285   3285   completed        10.07  2026-05-25T18:40:55  raimundas@gyvunai.lt
+  3286   3286   completed        12.90  2026-05-25T18:49:12  raimundas@gyvunai.lt
+  3287   3287   completed        12.99  2026-05-25T18:53:45  raimundas@gyvunai.lt
+  3288   3288   cancelled         2.59  2026-05-25T20:11:08  raimundas@gyvunai.lt
+  3289   3289   on-hold          23.00  2026-05-25T20:56:55  raimundas@gyvunai.lt
+  3290   3290   cancelled        40.07  2026-05-25T21:11:11  gutulis@gmail.com
+  3291   3291   completed        33.99  2026-05-25T21:12:26  gutulis@gmail.com
+  3292   3292   on-hold          25.00  2026-05-25T21:53:30  raimundas@gyvunai.lt
+  3293   3293   cancelled        33.99  2026-05-25T22:04:03  raimundas@gyvunai.lt
+  3294   3294   cancelled        34.92  2026-05-25T23:13:24  raimundas@gyvunai.lt
+  3295   3295   cancelled        12.00  2026-05-25T23:14:19  raimundas@gyvunai.lt
+  3297   3297   on-hold           2.86  2026-05-26T11:41:24  gutulis@gmail.com
+  3298   3298   processing      143.80  2026-05-26T12:19:32  raimundas@gyvunai.lt
+  3303   3303   processing       41.30  2026-05-26T13:25:20  raimundas@gyvunai.lt
+  3305   3305   completed        93.60  2026-05-26T19:30:44  raimundas@gyvunai.lt
+  6632   6632   on-hold         325.55  2026-05-28T09:47:06  raimundas@gyvunai.lt
+  6634   6634   on-hold          17.93  2026-05-28T11:23:18  raimundas@gyvunai.lt
+  6635   6635   on-hold           7.08  2026-05-28T14:37:56  raimundas@gyvunai.lt
+  6636   6636   on-hold          14.15  2026-05-28T14:53:14  gutulis@gmail.com
+  6637   6637   on-hold           6.52  2026-05-28T14:54:13  raimundas@gyvunai.lt
+  6638   6638   on-hold          44.79  2026-05-28T14:59:22  raimundas@gyvunai.lt
+  6639   6639   on-hold          24.77  2026-05-28T15:06:18  raimundas@gyvunai.lt
+  6640   6640   on-hold           4.84  2026-05-28T15:19:28  raimundas@gyvunai.lt
+  6641   6641   on-hold          40.80  2026-05-28T15:29:57  raimundas@gyvunai.lt
+  11417  11417  on-hold         173.64  2026-06-01T21:49:13  testas123@gmail.com
+  27907  27907  on-hold         135.05  2026-06-11T11:58:14  testas123@gmail.com
+  34155  34155  on-hold          17.89  2026-06-30T01:04:28  testas123@gmail.com
+  34174  34174  on-hold          25.28  2026-06-30T22:06:06  testas123@gmail.com
+  34177  34177  completed        20.29  2026-06-30T23:23:54  —
+  34178  34178  on-hold          24.28  2026-06-30T23:40:09  testas123@gmail.com
+  34472  34472  on-hold          44.80  2026-07-05T18:52:17  testas123@gmail.com
+  34592  34592  on-hold           5.69  2026-07-10T15:18:25  gtm.test.1783685844003@petshop.lt
+  34593  34593  on-hold           5.69  2026-07-10T15:28:20  gtm.test.1783686443770@petshop.lt
+
+=== 4. Realumo patikra ===
+  Testiniu el. pastu (gtm.test/test@/example): 2
+  Busena completed/processing/refunded:        21
+  Mokejimas per Paysera:                       5
+  Su transaction_id (realus apmokejimas):      0
+  ⚠️ Apmoketi/ivykdyti uzsakymai:
+     #3260 processing 16.95 2026-05-22 raimundas@gyvunai.lt
+     #3262 processing 42.82 2026-05-22 raimundas@gyvunai.lt
+     #3266 processing 46.50 2026-05-22 raimundas@gyvunai.lt
+     #3267 processing 143.80 2026-05-22 raimundas@gyvunai.lt
+     #3268 processing 8.42 2026-05-22 raimundas@gyvunai.lt
+     #3269 processing 12.00 2026-05-25 raimundas@gyvunai.lt
+     #3270 completed 25.00 2026-05-25 raimundas@gyvunai.lt
+     #3276 completed 34.40 2026-05-25 raimundas@gyvunai.lt
+     #3277 completed 12.00 2026-05-25 raimundas@gyvunai.lt
+     #3278 completed 33.99 2026-05-25 raimundas@gyvunai.lt
+     #3280 processing 7.95 2026-05-25 raimundas@gyvunai.lt
+     #3283 processing 21.50 2026-05-25 raimundas@gyvunai.lt
+     #3284 refunded 33.99 2026-05-25 raimundas@gyvunai.lt
+     #3285 completed 10.07 2026-05-25 raimundas@gyvunai.lt
+     #3286 completed 12.90 2026-05-25 raimundas@gyvunai.lt
+     #3287 completed 12.99 2026-05-25 raimundas@gyvunai.lt
+     #3291 completed 33.99 2026-05-25 gutulis@gmail.com
+     #3298 processing 143.80 2026-05-26 raimundas@gyvunai.lt
+     #3303 processing 41.30 2026-05-26 raimundas@gyvunai.lt
+     #3305 completed 93.60 2026-05-26 raimundas@gyvunai.lt
+     #34177 completed 20.29 2026-06-30 —
+
+=== 5. Kas dar susije ===
+  Uzsakymu su grazinimais: 4
+  Uzsakymu su saskaitos meta: 56
+    raktai: _wcdn_invoice_number_counter, _wcdn_invoice_number, _wcdn_invoice_date, _wcdn_invoice_pdf_token, _wcdn_invoice_pdf, _wcdn_receipt_date, _wcdn_receipt_pdf_token, _wcdn_receipt_pdf, _wcdn_deliverynote_date, _wcdn_deliverynote_pdf_token, _wcdn_deliverynote_pdf, _wcdn_packingslip_date, _wcdn_packingslip_pdf_token, _wcdn_packingslip_pdf, _wcdn_creditnote_date, _wcdn_creditnote_pdf_token, _wcdn_creditnote_pdf, _petshop_invoice_document_type
+
+=== 6. Backup ===
+  screenshots/orders_backup_20260710.json  ✅ issaugota
+  dydis: ~305 KB
+
+=== 7. DRY-RUN — ka trintume ===
+  Trintume: 60 uzsakymu (force=true, negrizamai)
+  ID sarasas: 3241, 3258, 3259, 3260, 3261, 3262, 3263, 3264, 3265, 3266, 3267, 3268, 3269, 3270, 3271, 3272, 3273, 3274, 3275, 3276, 3277, 3278, 3279, 3280, 3282, 3283, 3284, 3285, 3286, 3287, 3288, 3289, 3290, 3291, 3292, 3293, 3294, 3295, 3297, 3298, 3303, 3305, 6632, 6634, 6635, 6636, 6637, 6638, 6639, 6640, 6641, 11417, 27907, 34155, 34174, 34177, 34178, 34472, 34592, 34593
+
+  ⚠️ NIEKO NEISTRINTA. Reikia Raimio patvirtinimo.
