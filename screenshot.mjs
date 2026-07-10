@@ -99,4 +99,4 @@ const bad={
   'blokuoti scriptai (text/plain)': /type=["']text\/plain["']/.test(h.html),
 };
 for(const [k,v] of Object.entries(bad)) L('  '+(v?'❌ RASTA':'✅ nera')+'  '+k);
-putFile('s167_cleanup_'+Date.now()+'.txt', out); console.log(out);
+putFile('s167_final.txt', out); console.log(out);
