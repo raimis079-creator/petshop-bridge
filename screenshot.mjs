@@ -15,99 +15,44 @@ function putFile(n,s){
 let out=''; const L=(s)=>{out+=s+'\n';};
 const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH=U+':'+P;
-function head(url){
-  const r=execSync('curl -sk -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 25 "'+url+'" 2>/dev/null || echo "ERR -"',{encoding:'utf8'}).trim();
-  return r;
-}
 function api(url){
   const code=execSync('curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 40 -u "'+AUTH+'" "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
   let b=''; try{ b=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
   return {code, body:b};
 }
 
-L('############ DUK NUORODU PATIKRA ############'); L('');
-L('=== 1. Devynios DUK nuorodos ===');
-const links=['/my-account/','/my-account/orders/','/kontaktai/','/pristatymas/','/apmokejimas/','/grazinimas/',
-             '/hipoalerginis-maistas/','/monoproteinis-maistas/','/be-grudu-maistas/'];
-const bad=[];
-for(const l of links){
-  const r=head('https://dev.avesa.lt'+l);
-  const [code,redir]=r.split(' ');
-  const ok = code==='200';
-  L('  '+(ok?'✅':'❌')+' '+String(code).padEnd(4)+' '+l.padEnd(28)+(redir&&redir!=='-'?' -> '+redir.replace('https://dev.avesa.lt',''):''));
-  if(!ok) bad.push({l,code,redir});
-}
-L('');
-
-L('=== 2. Alternatyvos neveikiancioms ===');
-const alts={
- '/my-account/':['/paskyra/','/mano-paskyra/','/account/'],
- '/my-account/orders/':['/paskyra/uzsakymai/','/my-account/orders'],
- '/hipoalerginis-maistas/':['/kategorija/hipoalerginis-maistas/','/preke-zyme/hipoalerginis/','/hipoalerginis/'],
- '/monoproteinis-maistas/':['/kategorija/monoproteinis-maistas/','/monoproteinis/'],
- '/be-grudu-maistas/':['/kategorija/be-grudu-maistas/','/be-grudu/'],
-};
-for(const b of bad){
-  const cands = alts[b.l]||[];
-  L('  '+b.l+' (HTTP '+b.code+'):');
-  for(const c of cands){
-    const r=head('https://dev.avesa.lt'+c);
-    const [code]=r.split(' ');
-    L('     '+(code==='200'?'✅':'  ')+' '+String(code).padEnd(4)+' '+c);
-  }
-}
-L('');
-
-L('=== 3. WC puslapiai (my-account) ===');
-const ss=api('https://dev.avesa.lt/wp-json/wc/v3/system_status');
-if(ss.code==='200'){
+L('############ /pristatymas/ ir /apmokejimas/ TURINYS ############'); L('');
+for(const [nm,slug] of [['Pristatymas','pristatymas'],['Apmokejimas','apmokejimas'],['Grazinimas','grazinimas']]){
+  const r=api('https://dev.avesa.lt/wp-json/wp/v2/pages?slug='+slug+'&_fields=id,title,content&context=edit');
+  L('=== '+nm+' ===');
+  if(r.code!=='200'){ L('  HTTP '+r.code); continue; }
   try{
-    const j=JSON.parse(ss.body);
-    for(const p of (j.pages||[])) L('  '+String(p.page_name).padEnd(16)+' id='+p.page_id+'  set='+p.page_set+'  exists='+p.page_exists+'  visible='+p.page_visible);
-  }catch(e){ L('  parse err'); }
-}
-L('');
-
-L('=== 4. Ar yra puslapiu su "hipoalerg/monoprotein/be-grudu" ===');
-for(const s of ['hipoalerg','monoprotein','be-grudu','grudu']){
-  const r=api('https://dev.avesa.lt/wp-json/wp/v2/pages?search='+s+'&per_page=5&_fields=id,slug,link,title');
-  if(r.code==='200'){
-    try{ const arr=JSON.parse(r.body);
-      L('  "'+s+'" puslapiai: '+(arr.length?arr.map(p=>p.slug).join(', '):'—'));
-    }catch(e){}
-  }
-  const c=api('https://dev.avesa.lt/wp-json/wc/v3/products/categories?search='+s+'&per_page=5');
-  if(c.code==='200'){
-    try{ const arr=JSON.parse(c.body);
-      L('  "'+s+'" kategorijos: '+(arr.length?arr.map(x=>x.slug+'('+x.count+')').join(', '):'—'));
-    }catch(e){}
-  }
-}
-L('');
-
-L('=== 5. Pristatymo kainos ===');
-const zn=api('https://dev.avesa.lt/wp-json/wc/v3/shipping/zones');
-if(zn.code==='200'){
-  try{
-    const zones=JSON.parse(zn.body);
-    for(const z of zones){
-      L('');
-      L('  [zone '+z.id+'] "'+z.name+'"');
-      const m=api('https://dev.avesa.lt/wp-json/wc/v3/shipping/zones/'+z.id+'/methods');
-      if(m.code==='200'){
-        const ms=JSON.parse(m.body);
-        for(const x of ms){
-          const cost = x.settings?.cost?.value ?? x.settings?.min_amount?.value ?? '?';
-          L('    '+(x.enabled?'✅':'  ')+' '+String(x.method_id).padEnd(38)+' "'+x.title+'"');
-          const s=x.settings||{};
-          for(const [k,v] of Object.entries(s)){
-            if(v && v.value!=='' && v.value!==undefined && /cost|min_amount|requires|free/.test(k)){
-              L('         '+k+' = '+JSON.stringify(v.value).slice(0,90));
-            }
-          }
-        }
-      } else L('    metodu HTTP '+m.code);
-    }
+    const arr=JSON.parse(r.body);
+    if(!arr.length){ L('  nerastas'); continue; }
+    const p=arr[0];
+    const raw=(p.content?.raw||p.content?.rendered||'');
+    const txt=raw.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+    L('  id='+p.id+'  turinys '+txt.length+' simb.');
+    // kainos
+    const prices=[...new Set(txt.match(/\d+[,.]\d{2}\s*€|\d+\s*€|€\s*\d+[,.]?\d*/g)||[])];
+    L('  rastos kainos: '+JSON.stringify(prices));
+    L('');
+    L('  Turinys (pirmi 1200 simb.):');
+    L('  '+txt.slice(0,1200));
+    L('');
   }catch(e){ L('  parse err: '+e.message.slice(0,80)); }
+  L('');
 }
-putFile('duk_recon.txt', out); console.log(out);
+
+L('############ Snippet 587 ir 594 (footer / nuorodu stilius) ############');
+for(const id of [587,594]){
+  const r=api('https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+id);
+  if(r.code!=='200'){ L('  ['+id+'] HTTP '+r.code); continue; }
+  const j=JSON.parse(r.body);
+  L('  ['+id+'] "'+j.name+'"  active='+j.active);
+  const slugs=[...new Set((j.code.match(/'([a-z0-9\-]+)'/g)||[]).map(s=>s.replace(/'/g,'')).filter(s=>s.length>3 && !/^(array|string|return|function|true|false|null)$/.test(s)))];
+  L('       slug\'ai kode: '+JSON.stringify(slugs.slice(0,16)));
+  L('       ar yra "duk": '+(/["']duk["']/.test(j.code)?'✅':'❌'));
+  L('');
+}
+putFile('duk_recon2.txt', out); console.log(out);
