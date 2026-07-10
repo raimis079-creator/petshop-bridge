@@ -1,54 +1,58 @@
 import { execSync } from "child_process";
 import { putFile } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
-// saugus curl: niekad nemeta, grazina {code, body}
-function req(url, auth){
-  const a = auth ? '-u "'+auth+'" ' : '';
-  try{
-    const r = execSync('curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 30 '+a+'"'+url+'" 2>/dev/null || echo "CURLFAIL"',{encoding:'utf8'}).trim();
-    let body=''; try{ body=execSync('cat /tmp/r.json',{encoding:'utf8'}); }catch(e){}
-    return {code:r, body};
-  }catch(e){ return {code:'ERR', body:(e.message||'').slice(0,120)}; }
-}
-const U=process.env.WP_USER||'';
-const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH=U+':'+P;
 
-L('=== WORDPRESS dev.avesa.lt ===');
-L('  WP_USER: '+U+'   WP_APP_PASS: '+P.length+' chars');
+function fetchTxt(url){
+  try{ return execSync('curl -sk -L --max-time 45 -A "Mozilla/5.0 Chrome/120" "'+url+'"',{encoding:'utf8',maxBuffer:60000000}); }
+  catch(e){ return ''; }
+}
+
+L('### IESKOM Google Ads conversion label AW-11117260149/XXXX ###');
 L('');
 
-const checks = [
-  ['/wp-json/wp/v2/users/me?context=edit','Auth (users/me)'],
-  ['/wp-json/wp/v2/plugins?search=complianz','Complianz plugin'],
-  ['/wp-json/code-snippets/v1/snippets?per_page=1','Code Snippets API'],
-  ['/wp-json/wc/v3/system_status','WooCommerce'],
+const targets = [
+  ['GTM-MZGDV75F gtm.js','https://www.googletagmanager.com/gtm.js?id=GTM-MZGDV75F'],
+  ['G-FMTKEGGLMG gtag.js','https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG'],
+  ['AW-11117260149 gtag.js','https://www.googletagmanager.com/gtag/js?id=AW-11117260149'],
+  ['GT-WPTSZS8 gtag.js','https://www.googletagmanager.com/gtag/js?id=GT-WPTSZS8'],
+  ['GT-5TQ4JZWM gtag.js','https://www.googletagmanager.com/gtag/js?id=GT-5TQ4JZWM'],
 ];
-for(const [path,label] of checks){
-  const r = req('https://dev.avesa.lt'+path, AUTH);
-  L('  '+label.padEnd(24)+' HTTP '+r.code);
-  if(r.code==='200'){
-    try{
-      const j=JSON.parse(r.body);
-      if(path.includes('users/me')) L('      -> '+j.name+' (id '+j.id+') roles='+(j.roles||[]).join(','));
-      if(path.includes('plugins')&&Array.isArray(j)) j.forEach(p=>L('      -> '+p.name+' v'+p.version+' — '+p.status));
-      if(path.includes('code-snippets')) L('      -> snippets API veikia ('+(Array.isArray(j)?j.length:'?')+' irasas)');
-      if(path.includes('system_status')) L('      -> WC '+(j.environment?.version||'?')+' | WP '+(j.environment?.wp_version||'?')+' | PHP '+(j.environment?.php_version||'?'));
-    }catch(e){ L('      -> (parse err)'); }
-  } else if(r.code!=='200'){
-    L('      -> '+r.body.slice(0,140).replace(/\n/g,' '));
+
+for(const [label,url] of targets){
+  const js = fetchTxt(url);
+  L('===== '+label+' ('+js.length+' B) =====');
+  if(js.length<300){ L('  (tuscia / klaida)'); L(''); continue; }
+  const pats = {
+    'AW-xxx/LABEL (pilnas)' : /AW-\d{9,12}\/[A-Za-z0-9_\-]{5,30}/g,
+    'AW- ID'                : /\bAW-\d{9,12}\b/g,
+    'send_to'               : /send_to["'\s:]+[A-Za-z0-9_\-\/]+/g,
+    'conversion label kandidatai (aw.l / gcl)' : /["'][A-Za-z0-9_\-]{11,22}["']\s*,\s*["']AW-/g,
+    'G- ID'                 : /\bG-[A-Z0-9]{8,12}\b/g,
+    'GT- ID'                : /\bGT-[A-Z0-9]{6,12}\b/g,
+    'conversion event'      : /gtag\(["']event["'],\s*["']conversion["']/g,
+    'purchase'              : /["']purchase["']/g,
+  };
+  for(const [k,re] of Object.entries(pats)){
+    const m = js.match(re);
+    if(m){ const u=[...new Set(m)]; L('  ['+String(u.length).padStart(2)+'] '+k);
+      u.slice(0,10).forEach(x=>L('        '+x.slice(0,90))); }
   }
+  L('');
 }
-L('');
-L('=== Aktyvus TEMP snippet check ===');
-const s = req('https://dev.avesa.lt/wp-json/code-snippets/v1/snippets?per_page=100&status=active', AUTH);
-if(s.code==='200'){
-  try{
-    const arr=JSON.parse(s.body);
-    L('  aktyvus snippet: '+arr.length);
-    const temp=arr.filter(x=>/TEMP|probe|test/i.test(x.name));
-    L('  aktyvus TEMP/probe/test: '+temp.length);
-    temp.forEach(x=>L('    ['+x.id+'] '+x.name));
-  }catch(e){ L('  parse err'); }
-} else L('  HTTP '+s.code);
-putFile('conn_check2.txt', out); console.log(out);
+
+// PROD checkout / success puslapiai
+L('===== PROD puslapiu skenavimas =====');
+for(const u of ['https://petshop.lt/index.php?route=checkout/success','https://petshop.lt/index.php?route=checkout/checkout','https://petshop.lt/index.php?route=checkout/cart']){
+  const h = fetchTxt(u);
+  L('  '+u);
+  L('    dydis '+h.length+' B');
+  const aw = h.match(/AW-\d{9,12}\/[A-Za-z0-9_\-]{5,30}/g);
+  const st = h.match(/send_to["'\s:]+[A-Za-z0-9_\-\/]+/g);
+  const dl = h.match(/dataLayer\.push\(\{[^}]{0,120}/g);
+  L('    AW+label: '+(aw?[...new Set(aw)].join(', '):'-'));
+  L('    send_to:  '+(st?[...new Set(st)].slice(0,3).join(' | '):'-'));
+  L('    dataLayer.push: '+(dl?dl.length+' vnt':'-'));
+  if(dl) dl.slice(0,4).forEach(x=>L('       '+x.replace(/\s+/g,' ').slice(0,100)));
+  L('');
+}
+putFile('ads_label_hunt.txt', out); console.log(out);
