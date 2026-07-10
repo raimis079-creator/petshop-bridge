@@ -1,0 +1,69 @@
+=== 1. Deploy TEMP aktyvatoriu ===
+  CREATE HTTP 200
+  snippet id=616
+  active=true  code_error=null
+
+=== 2. STATUS ===
+  HTTP 200
+  {
+    "action": "STATUS",
+    "complianz": [
+        {
+            "file": "complianz-gdpr\/complianz-gpdr.php",
+            "name": "Complianz | GDPR\/CCPA Cookie Consent",
+            "version": "7.5.0",
+            "active": false
+        }
+    ],
+    "total_plugins": 26
+}
+
+=== 3. ACTIVATE ===
+  HTTP 200
+  {
+    "action": "ACTIVATE",
+    "result": "activated",
+    "active": true
+}
+
+=== 4. Svetaines sveikata ===
+  Homepage     HTTP 200  ✅  183738 B
+  Preke        HTTP 200  ✅  228327 B
+  Krepselis    HTTP 200  ✅  204367 B
+  Kasa         HTTP 200  ✅  204367 B
+
+=== 5. KRITINE: ar GTM islikes ===
+  ✅ GTM gtm.js loader
+  ✅ GTM loader NEblokuotas
+  ✅ noscript ns.html
+  ✅ dataLayer snippet (614)
+  ✅ view_item / petshopGtmItem
+
+=== 6. Complianz pedsakai ===
+  ✅ yra  cmplz script/css
+  ❌ nera  cmplz-cookiebanner
+  ❌ nera  cmplz-blocked-content
+  ❌ nera  type="text/plain" blokuoti
+  ❌ nera  data-service atributas
+  ✅ yra  data-category atributas
+  ❌ nera  cmplz-status-change JS
+
+  Blokuotu script'u: 0
+
+  Dydis: 183280 B
+
+=== 7. Complianz REST route'ai ===
+  rasta: 11
+    /complianz/v1
+    /complianz/v1/documents
+    /complianz/v1/banner
+    /complianz/v1/track
+    /complianz/v1/manage_consent_html
+    /complianz/v1/store_cookies
+    /complianz/v1/consent-area/(?P<post_id>([0-9]+))/(?P<block_id>([a-z0-9-_]+))
+    /complianz/v1/datarequests
+    /complianz/v1/cookie_data
+    /complianz/v1/wsc-scan
+    /complianz/v1/wsc-checks
+
+=== TEMP snippet id: 616 — DEAKTYVUOTI po darbo ===
