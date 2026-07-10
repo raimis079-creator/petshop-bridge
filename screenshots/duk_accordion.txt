@@ -1,0 +1,31 @@
+############ DUK ACCORDION ############
+
+=== 1. Atnaujinam puslapi 34595 ===
+  HTTP 200
+
+=== 2. Vizuali patikra ===
+
+  --- DESKTOP (1440px) ---
+    accordion-item: 17   titles: 17   inners: 17
+    H2 sekcijos: ["Užsakymas","Pristatymas","Apmokėjimas","Grąžinimas","Prekių pasirinkimas","Neradote atsakymo?"]
+    atidaryta pradzioje: 0  (matomu inner: 0)
+    puslapio aukstis: 2324px
+    shortcode liko: ✅ ne
+    pirmas klausimas: "Kur galiu matyti savo užsakymo būseną?"
+    turinys DOM'e (SEO): "Užsakymo informaciją matysite prisijungę prie savo paskyros ..."
+    po paspaudimo: aria-expanded=true  inner matomas=true  h=150px
+    ✅ accordion veikia
+
+  --- MOBILE (390px) ---
+    accordion-item: 17   titles: 17   inners: 17
+    H2 sekcijos: ["Užsakymas","Pristatymas","Apmokėjimas","Grąžinimas","Prekių pasirinkimas","Neradote atsakymo?"]
+    atidaryta pradzioje: 0  (matomu inner: 0)
+    puslapio aukstis: 3401px
+    shortcode liko: ✅ ne
+    pirmas klausimas: "Kur galiu matyti savo užsakymo būseną?"
+    turinys DOM'e (SEO): "Užsakymo informaciją matysite prisijungę prie savo paskyros ..."
+    po paspaudimo: aria-expanded=true  inner matomas=true  h=202px
+    ✅ accordion veikia
+
+=== 3. Kriterijai ===
+  (zr. auksciau)
