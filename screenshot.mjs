@@ -1,72 +1,65 @@
 import { putFile, gtmToken, gtm, defaultWorkspace, CT } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
-const ALL_PAGES='2147479553';
 const BLOCK=['17','18'];
-const CE={ view_item:'19', add_to_cart:'20', view_cart:'21', begin_checkout:'22', purchase:'23' };
+const CE_PURCHASE='23';
 
-const CONSENT_ANALYTICS = {
-  consentStatus:'needed',
-  consentType:{ type:'list', list:[ {type:'template', value:'analytics_storage'} ] }
-};
-
-function ga4Event(ev, trg){
-  return {
-    name:'GA4 — '+ev,
-    type:'gaawe',
-    firingTriggerId:[trg],
-    blockingTriggerId:BLOCK,
-    consentSettings:CONSENT_ANALYTICS,
-    parameter:[
-      {type:'template', key:'eventName', value:ev},
-      {type:'template', key:'measurementIdOverride', value:'{{Const — GA4 ID}}'},
-      {type:'boolean',  key:'sendEcommerceData', value:'true'},
-      {type:'template', key:'ecommerceMacroData', value:'dataLayer'}
-    ]
-  };
-}
-
-const TAGS = [
-  {
-    name:'02 — GA4 Config',
-    type:'googtag',
-    firingTriggerId:[ALL_PAGES],
-    blockingTriggerId:BLOCK,
-    priority:{type:'integer', value:'800'},
-    consentSettings:CONSENT_ANALYTICS,
-    parameter:[
-      {type:'template', key:'tagId', value:'{{Const — GA4 ID}}'}
-    ]
+const TAG_ADS = {
+  name:'03 — Google Ads Conversion (Purchase)',
+  type:'awct',
+  firingTriggerId:[CE_PURCHASE],
+  blockingTriggerId:BLOCK,
+  consentSettings:{
+    consentStatus:'needed',
+    consentType:{ type:'list', list:[
+      {type:'template', value:'ad_storage'},
+      {type:'template', value:'ad_user_data'}
+    ]}
   },
-  ga4Event('view_item',      CE.view_item),
-  ga4Event('add_to_cart',    CE.add_to_cart),
-  ga4Event('view_cart',      CE.view_cart),
-  ga4Event('begin_checkout', CE.begin_checkout),
-  ga4Event('purchase',       CE.purchase),
-];
+  parameter:[
+    {type:'template', key:'conversionId',    value:'{{Const — Ads Conversion ID}}'},
+    {type:'template', key:'conversionLabel', value:'{{Const — Ads Label}}'},
+    {type:'template', key:'conversionValue', value:'{{DLV — value}}'},
+    {type:'template', key:'currencyCode',    value:'{{DLV — currency}}'},
+    {type:'template', key:'orderId',         value:'{{DLV — transaction_id}}'},
+    {type:'boolean',  key:'enableConversionLinker', value:'true'}
+  ]
+};
 
 try{
   const t=await gtmToken(); const W=await defaultWorkspace(t);
-  const ex=(await gtm(t,'/'+W.path+'/tags')).body.tag||[];
-  L('PRIES: tags='+ex.length); L('');
-  L('=== KURIAM GA4 TAG\'US ===');
-  for(const tag of TAGS){
-    const dup=ex.find(x=>x.name===tag.name);
-    if(dup){ L('  [skip] '+tag.name+' (id '+dup.tagId+')'); continue; }
-    const r=await gtm(t,'/'+W.path+'/tags','POST',tag);
-    if(r.status===200) L('  [OK]   id='+String(r.body.tagId).padStart(3)+'  '+tag.name);
-    else L('  [FAIL] '+tag.name+'  HTTP '+r.status+'\n         '+JSON.stringify(r.body).slice(0,400));
+
+  // --- A. gaawe pilnu parametru patikra ---
+  L('=== A. GA4 purchase tag — PILNI parametrai ===');
+  const tags=(await gtm(t,'/'+W.path+'/tags')).body.tag||[];
+  const gp = tags.find(x=>x.name==='GA4 — purchase');
+  if(gp){
+    for(const p of (gp.parameter||[])) L('    '+p.key+' ('+p.type+') = '+(p.value!==undefined?p.value:JSON.stringify(p.list||p.map||'')).toString().slice(0,80));
+    const hasEcom = (gp.parameter||[]).some(p=>p.key==='ecommerceMacroData');
+    L('  ecommerceMacroData issaugotas: '+(hasEcom?'✅ TAIP':'❌ NE — reikia taisyti'));
+  } else L('  ❌ tag nerastas');
+  L('');
+
+  // --- B. Ads Conversion tag ---
+  L('=== B. Google Ads Conversion tag ===');
+  const dup=tags.find(x=>x.name===TAG_ADS.name);
+  if(dup){ L('  [skip] jau yra id='+dup.tagId); }
+  else{
+    const r=await gtm(t,'/'+W.path+'/tags','POST',TAG_ADS);
+    L('  POST -> HTTP '+r.status);
+    if(r.status===200){
+      L('  ✅ id='+r.body.tagId+'  type='+r.body.type);
+      for(const p of (r.body.parameter||[])) L('      '+p.key+' = '+p.value);
+    } else L('  ❌ '+JSON.stringify(r.body).slice(0,500));
   }
   L('');
-  L('=== VERIFIKACIJA ===');
+
+  // --- C. Verifikacija ---
+  L('=== C. VISI TAG\'AI ===');
   const nt=(await gtm(t,'/'+W.path+'/tags')).body.tag||[];
-  L('  tags='+nt.length); L('');
   for(const x of nt.sort((a,b)=>a.name.localeCompare(b.name))){
-    L('  ['+String(x.tagId).padStart(3)+'] '+x.name);
-    L('        type='+x.type.padEnd(8)+' fire=['+((x.firingTriggerId||[]).join(','))+'] block=['+((x.blockingTriggerId||[]).join(','))+'] prio='+(x.priority?.value||'-'));
     const cs=x.consentSettings;
-    if(cs) L('        consent='+cs.consentStatus+(cs.consentType?.list?' -> '+cs.consentType.list.map(v=>v.value).join(','):''));
-    const ps=(x.parameter||[]).filter(p=>['eventName','tagId','measurementIdOverride','sendEcommerceData','ecommerceMacroData'].includes(p.key));
-    if(ps.length) L('        '+ps.map(p=>p.key+'='+p.value).join('  '));
+    const cons = cs && cs.consentType?.list ? cs.consentType.list.map(v=>v.value).join('+') : (cs?.consentStatus||'-');
+    L('  ['+String(x.tagId).padStart(3)+'] '+x.name.padEnd(38)+' type='+x.type.padEnd(8)+' fire=['+((x.firingTriggerId||[]).join(','))+'] block=['+((x.blockingTriggerId||[]).join(','))+'] consent='+cons);
   }
   L('');
   const nv=(await gtm(t,'/'+W.path+'/variables')).body.variable||[];
@@ -75,4 +68,4 @@ try{
   const lv=await gtm(t,'/'+CT+'/versions:live');
   L('LIVE: #'+lv.body.containerVersionId+' — PROD nepaliestas ✅');
 }catch(e){ L('!!! ERROR: '+e.message); }
-putFile('e3_result.txt', out); console.log(out);
+putFile('e4_result.txt', out); console.log(out);
