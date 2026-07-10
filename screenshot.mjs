@@ -37,59 +37,56 @@ function page(url){
 const CODE=fs.readFileSync('petshop_footer_duk.php','utf8');
 const TOKEN=fs.readFileSync('.cmplz_token','utf8').trim();
 try{
-  const payload={name:'TEMP — Footer KLIENTAMS + DUK (token)',desc:'DRY/APPLY.',code:CODE,scope:'front-end',active:true,priority:6,tags:['temp']};
-  const chk=api('GET',SNIP+'/625');
-  let id;
-  if(chk.code==='200'){ api('POST',SNIP+'/625',payload); id=625; } else { const r=api('POST',SNIP,payload); id=JSON.parse(r.body).id; }
-  L('snippet id='+id);
-  const v=api('GET',SNIP+'/'+id); if(v.code==='200'){ const j=JSON.parse(v.body); L('code_error='+JSON.stringify(j.code_error||null)); }
+  api('POST',SNIP+'/625',{name:'TEMP — Footer DUK fix (token)',code:CODE,active:true,scope:'front-end',priority:6});
+  const v=api('GET',SNIP+'/625'); L('code_error='+JSON.stringify(JSON.parse(v.body).code_error||null));
   await new Promise(r=>setTimeout(r,3000));
-  L('');
-  L('=== DRY ===');
-  const d=get('https://dev.avesa.lt/?footer_duk=1&token='+TOKEN);
-  L('HTTP '+d.code);
+
+  L(''); L('=== DRY ===');
+  const d=get('https://dev.avesa.lt/?footer_fix=1&token='+TOKEN);
   try{
     const j=JSON.parse(d.body);
-    L('  rasti widgetai: '+j.rasti_widgetai.length);
-    j.rasti_widgetai.forEach(w=>{
-      L('    option='+w.option+' idx='+w.index+'  title="'+(w.title||'')+'"  turi_duk='+w.has_duk);
-      L('      preview: '+String(w.content_preview).replace(/\s+/g,' ').slice(0,200));
-    });
+    L('  title: '+j.title);
+    L('  metodas: '+j.metodas);
+    L('  po_valymo_pakeista: '+j.po_valymo_pakeista);
+    L('  ilgis: '+j.ilgis+'   duk_li_kiekis: '+j.duk_li_kiekis);
+    L('');
+    L('  PO (HTML):');
+    L('  '+String(j.PO).replace(/></g,'>\n  <').slice(0,900));
   }catch(e){ L('  '+d.body.slice(0,400)); }
   L('');
   L('=== APPLY ===');
-  const a=get('https://dev.avesa.lt/?footer_duk=1&token='+TOKEN+'&confirm=APPLY_DUK');
+  const a=get('https://dev.avesa.lt/?footer_fix=1&token='+TOKEN+'&confirm=FIX_DUK');
   try{
     const j=JSON.parse(a.body);
-    L('  atnaujinta: '+JSON.stringify(j.atnaujinta));
-    L('  po: '+JSON.stringify(j.po));
-  }catch(e){ L('  '+a.body.slice(0,400)); }
+    L('  metodas: '+j.metodas);
+    L('  issaugota: '+j.issaugota+'   duk_kiekis_po: '+j.duk_kiekis_po+'  '+(j.duk_kiekis_po===1?'✅':'❌'));
+  }catch(e){ L('  '+a.body.slice(0,300)); }
   L('');
   await new Promise(r=>setTimeout(r,4000));
 
-  L('=== VERIFIKACIJA ===');
+  L('=== VERIFIKACIJA (frontend) ===');
   const h=page('https://dev.avesa.lt/');
   const footer=h.html.slice(h.html.lastIndexOf('<footer'));
   const i=footer.search(/KLIENTAMS/i);
-  if(i>0){
-    const seg=footer.slice(i,i+1000);
-    const links=[...(seg.match(/<a[^>]*href="([^"]+)"[^>]*>([^<]+)</g)||[])].slice(0,10);
-    L('  KLIENTAMS stulpelis:');
-    links.forEach(l=>{
-      const href=(l.match(/href="([^"]+)"/)||[])[1]||'';
-      const txt=l.replace(/<[^>]+>/g,'').trim();
-      L('    "'+txt+'"  ->  '+href.replace('https://dev.avesa.lt',''));
-    });
-    L('');
-    L('  '+(/\/duk\//.test(seg)?'✅ DUK yra footer\'yje':'❌ DUK nerastas'));
-  } else L('  KLIENTAMS nerastas');
+  const seg=footer.slice(i,i+1200);
+  const lis=[...(seg.match(/<li[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>\s*<\/li>/g)||[])];
+  L('  <li> nuorodu: '+lis.length);
+  lis.forEach(l=>{
+    const href=(l.match(/href="([^"]+)"/)||[])[1];
+    const txt=l.replace(/<[^>]+>/g,'').trim();
+    L('    "'+txt+'"'.padEnd(24)+' -> '+href);
+  });
   L('');
-  L('=== /duk/ sveikata ===');
-  const d2=page('https://dev.avesa.lt/duk/');
-  L('  HTTP '+d2.code+'  fatal: '+(/Fatal error|Parse error/i.test(d2.html)?'❌':'✅ ne'));
-  L('  H1: '+((d2.html.match(/<h1[^>]*>([^<]+)/)||[])[1]||'?'));
+  L('  '+(/href="\/duk\/"/.test(seg)?'✅ DUK footer\'yje':'❌')+'   '+(!/<br>\s*<a[^>]*duk/i.test(seg)?'✅ nera <br> artefakto':'❌ liko <br>'));
+  L('  DUK pasikartojimu: '+((seg.match(/href="\/duk\/"/g)||[]).length));
   L('');
-  const dz=api('POST',SNIP+'/'+id,{active:false});
-  L('TEMP '+id+' deaktyvuota: HTTP '+dz.code);
+  L('=== Puslapiu sveikata ===');
+  for(const [nm,u] of [['Homepage','https://dev.avesa.lt/'],['/duk/','https://dev.avesa.lt/duk/'],['/grazinimas/','https://dev.avesa.lt/grazinimas/']]){
+    const r=page(u);
+    L('  '+nm.padEnd(14)+' HTTP '+r.code+'  '+(/Fatal error|Parse error/i.test(r.html)?'❌ FATAL':'✅'));
+  }
+  L('');
+  const dz=api('POST',SNIP+'/625',{active:false});
+  L('TEMP 625 deaktyvuota: HTTP '+dz.code);
 }catch(e){ L('!!! '+e.message.slice(0,150)); }
-putFile('footer_duk.txt', out); console.log(out);
+putFile('footer_duk_fix.txt', out); console.log(out);
