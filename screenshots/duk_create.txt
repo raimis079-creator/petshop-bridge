@@ -1,0 +1,62 @@
+############ DUK PUSLAPIO KURIMAS ############
+turinys: 5358 B, naujos eilutes: 0
+
+=== 1. Ar /duk/ jau egzistuoja ===
+  nerastas — kuriam nauja
+
+=== 2. Kuriam / atnaujinam ===
+  CREATE -> HTTP 201
+  id=34595  slug=duk  status=publish
+  link: https://dev.avesa.lt/duk/
+
+=== 3. HTTP patikra ===
+  /duk/ -> HTTP 200  ✅
+
+=== 4. Turinio patikra ===
+  ✅ H1 "Dažniausiai užduodami klausimai"
+  ✅ "Trumpai" deze
+  ✅ 17 klausimu (h3)
+  ✅ 6 sekcijos (h2)
+  ✅ nera <br> tarp bloku
+  ✅ nuoroda /my-account/
+  ✅ nuoroda /pristatymas/
+  ✅ nuoroda /grazinimas/
+  ✅ nuoroda /hipoalerginis-maistas/
+  ✅ veterinaro rekomendacija
+  ✅ saskaita fakturai
+  ✅ pristatymo kaina
+
+  Klausimai (17):
+     1. Kur galiu matyti savo užsakymo būseną?
+     2. Ar gausiu užsakymo patvirtinimą el. paštu?
+     3. Ar galiu pakeisti užsakymą po pateikimo?
+     4. Ar galiu atšaukti užsakymą prieš išsiuntimą?
+     5. Per kiek laiko pristatomas užsakymas?
+     6. Kiek kainuoja pristatymas?
+     7. Ar pristatymas į paštomatus nemokamas?
+     8. Kaip galiu sekti siuntą?
+     9. Kaip galima atsiskaityti?
+    10. Ar išrašote sąskaitą faktūrą įmonei?
+    11. Ką daryti, jei mokėjimas nepavyko?
+    12. Kaip atsisakyti sutarties ir grąžinti prekę?
+    13. Ar galiu grąžinti prekę?
+    14. Ar galima grąžinti atidarytą maistą?
+    15. Ką daryti, jei gavau ne tą prekę arba nekokybišką prekę?
+    16. Kaip išsirinkti tinkamą maistą augintiniui?
+    17. Ar maistas be grūdų, hipoalerginis ar monoproteinis visada geresnis?
+
+=== 5. Visos nuorodos DUK puslapyje -> HTTP ===
+    ✅ 200  /my-account/
+    ✅ 200  /my-account/orders/
+    ✅ 200  /kontaktai/
+    ✅ 200  /pristatymas/
+    ✅ 200  /apmokejimas/
+    ✅ 200  /grazinimas/
+    ✅ 200  /hipoalerginis-maistas/
+    ✅ 200  /monoproteinis-maistas/
+    ✅ 200  /be-grudu-maistas/
+    ✅ 200  /apie-mus/
+    ✅ 200  /taisykles/
+    ✅ 200  /privatumo-politika/
+
+=== PAGE ID: 34595 ===
