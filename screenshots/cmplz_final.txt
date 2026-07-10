@@ -1,0 +1,21 @@
+############ page_links + FINALINE BUSENA ############
+
+=== page_links (inline config) ===
+  parse err, raw:
+  {"eu":{"cookie-statement":{"title":"Slapuk\u0173 politika ","url":"https://dev.avesa.lt/slapuku-politika-es/"}
+
+=== Vizuali patikra ===
+  antraste : "Slapukai ir privatumas"
+  zinute   : "Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų n"...
+  mygtukai : ["PRIIMTI","ATMESTI","PERŽIŪRĖTI NUOSTATAS"]
+  accept fonas: rgb(45, 95, 63)
+
+  Matomos nuorodos:
+    "Slapukų politika"  ->  /slapuku-politika-es/
+    "Slapukų naudojimas"  ->  /slapuku-politika/
+
+  ✅ antraste "Slapukai ir privatumas"
+  ✅ mygtukas ATMESTI
+  ✅ zinute be dublio
+  ✅ accept zalias
+  ❌ nera senos nuorodos /slapuku-politika/
