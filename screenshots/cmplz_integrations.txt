@@ -1,0 +1,26 @@
+probe2 snippet id=618
+active=true code_error=null
+
+HTTP 200
+{
+    "settings_keys": "nera",
+    "wizard_relevant": "nera",
+    "active_integrations": "2",
+    "integrations_changed": "1",
+    "values": {
+        "consent_mode": "false",
+        "google_consent_mode": "false",
+        "enable_google_consent_mode": "false",
+        "gtm_code": "''",
+        "compile_statistics": "'yes'",
+        "uses_ad_cookies": "'yes'",
+        "uses_ad_cookies_personalized": "'no'",
+        "safe_mode": "1",
+        "use_categories": "'view-preferences'",
+        "consenttype": "false",
+        "regions": "'eu'"
+    },
+    "has_consent_mode_fn": "yes",
+    "consent_mode_active": "FALSE",
+    "tcf_active": "FALSE"
+}
