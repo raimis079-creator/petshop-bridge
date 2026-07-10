@@ -6,7 +6,7 @@ function putFile(n,s){
   for(let a=0;a<5;a++){ try{
     const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;
     let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
-    const b={message:'diag3 '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')}; if(sha) b.sha=sha;
+    const b={message:'pmax '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')}; if(sha) b.sha=sha;
     fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));
     const r=execSync('curl -s -w "\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});
     if(/HTTP:20[01]/.test(r)) return true;
@@ -27,24 +27,36 @@ async function token(sc){
   return (await r.json()).access_token;
 }
 const PROP='346051580';
-(async()=>{
-  const t=await token('https://www.googleapis.com/auth/analytics.readonly');
-  // transactionId x revenue, liepos pradzia (kur yra 11481)
-  const body={dateRanges:[{startDate:'2026-07-01',endDate:'2026-07-09'}],
-    dimensions:[{name:'transactionId'}], metrics:[{name:'purchaseRevenue'},{name:'taxAmount'},{name:'grossPurchaseRevenue'}],
-    orderBys:[{dimension:{dimensionName:'transactionId'},desc:true}], limit:400};
+async function ga4(dims,mets,filt,limit=200,order){
+  const body={dateRanges:[{startDate:'2026-01-10',endDate:'2026-07-09'}],
+    dimensions:dims.map(d=>({name:d})),metrics:mets.map(m=>({name:m})),limit};
+  if(filt) body.dimensionFilter=filt;
+  if(order) body.orderBys=[{metric:{metricName:order},desc:true}];
   const r=await fetch('https://analyticsdata.googleapis.com/v1beta/properties/'+PROP+':runReport',{
     method:'POST',headers:{Authorization:'Bearer '+t,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(r.status!==200){ L('ERR '+dims+' '+r.status+' '+(await r.text()).slice(0,200)); return null; }
   const j=await r.json();
-  if(j.error){ L('ERR '+JSON.stringify(j.error).slice(0,300)); }
-  const rows=(j.rows||[]).map(x=>({id:x.dimensionValues[0].value, rev:+x.metricValues[0].value, tax:+x.metricValues[1].value, gross:+x.metricValues[2].value}));
-  L('transakciju: '+rows.length);
-  // ieskom 11481 / 10432 / AVP10432
-  const hit=rows.filter(x=>/11481|10432|AVP10432/i.test(x.id));
-  L('--- ieskomi order 11481 / AVP10432 ---');
-  hit.forEach(x=>L(JSON.stringify(x)));
-  L('--- pirmi 30 ID (formatui suprasti) ---');
-  rows.slice(0,30).forEach(x=>L(`  id=${x.id}  rev=${x.rev}  tax=${x.tax}  gross=${x.gross}`));
-  putFile('ga4_transactions_jul.json',JSON.stringify(rows));
-  putFile('_diag3_log.txt',out);
+  return (j.rows||[]).map(row=>({d:row.dimensionValues.map(v=>v.value),m:row.metricValues.map(v=>+v.value||v.value)}));
+}
+let t;
+(async()=>{
+  t=await token('https://www.googleapis.com/auth/analytics.readonly');
+  L('token '+(t?'ok':'FAIL'));
+
+  // A. itemsPurchased pagal sessionDefaultChannelGroup = Cross-network (PMax)
+  // GA4 item-scope + session-scope kartu ne visada leidziamas. Bandom itemName x sessionDefaultChannelGroup.
+  const pmaxFilter={filter:{fieldName:'sessionDefaultChannelGroup',stringFilter:{value:'Cross-network'}}};
+  const A=await ga4(['itemName'],['itemsPurchased','itemRevenue'],pmaxFilter,80,'itemRevenue');
+  if(A){ putFile('pmax_items.json',JSON.stringify(A)); L('A pmax items rows='+A.length); }
+
+  // B. palyginimui: tie patys itemai per Organic Search
+  const orgFilter={filter:{fieldName:'sessionDefaultChannelGroup',stringFilter:{value:'Organic Search'}}};
+  const B=await ga4(['itemName'],['itemsPurchased','itemRevenue'],orgFilter,80,'itemRevenue');
+  if(B){ putFile('organic_items.json',JSON.stringify(B)); L('B organic items rows='+B.length); }
+
+  // C. Visi itemai be filtro (bazei)
+  const C=await ga4(['itemName'],['itemsPurchased','itemRevenue'],null,150,'itemRevenue');
+  if(C){ putFile('all_items.json',JSON.stringify(C)); L('C all items rows='+C.length); }
+
+  putFile('_pmax_log.txt',out);
 })();
