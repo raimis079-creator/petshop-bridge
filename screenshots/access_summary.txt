@@ -1,0 +1,23 @@
+############ PRIEIGU SUVESTINE ############
+
+=== GA4 Data API (property 346051580) ===
+  auth ✅
+  runReport -> HTTP 200
+  ✅ VEIKIA. Paskutines 30 d.:
+     sesijos:     4628
+     pajamos:     9940.07 EUR
+     transakcijos:243
+     aktyvus vart:3495
+
+=== Search Console API ===
+  ✅ sc-domain:petshop.lt   siteRestrictedUser
+
+=== Tag Manager API ===
+  ✅ GTM-MF3GZGT live version pasiekiama
+
+=== SUVESTINE ===
+  Vienas Service Account, trys API:
+    claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
+
+  Google Ads API — NEGALIMA (reikia developer token + OAuth2).
+  Alternatyva: Google Ads Script (veikia Ads viduje, token nereikia).
