@@ -1,0 +1,28 @@
+############ SEARCH CONSOLE API PATIKRA ############
+
+SA: claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
+
+✅ AUTH OK (webmasters.readonly scope gautas)
+
+=== 1. GET /webmasters/v3/sites (kokias property mato SA) ===
+  HTTP 403
+  ❌ 403
+  {
+  "error": {
+    "code": 403,
+    "message": "Google Search Console API has not been used in project 683712074632 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/searchconsole.googleapis.com/overview?project=683712074632 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.",
+    "errors": [
+      {
+        "message": "Google Search Console API has not been used in project 6837120746
+
+  >>> Search Console API NEIJUNGTA Cloud projekte.
+      Ijungti: console.cloud.google.com/apis/library/searchconsole.googleapis.com
+      Projektas: prefab-envoy-482617-b4 (Petshop Google Ads)
+
+=== 2. Bandom searchanalytics.query (jei property matoma) ===
+  https://petshop.lt/          -> HTTP 403
+    { "error": { "code": 403, "message": "Google Search Console API has not been used in project 683712074632 before or it is disabled. Enable it by visiting https://console.
+  sc-domain:petshop.lt         -> HTTP 403
+    { "error": { "code": 403, "message": "Google Search Console API has not been used in project 683712074632 before or it is disabled. Enable it by visiting https://console.
+  http://petshop.lt/           -> HTTP 403
+    { "error": { "code": 403, "message": "Google Search Console API has not been used in project 683712074632 before or it is disabled. Enable it by visiting https://console.
