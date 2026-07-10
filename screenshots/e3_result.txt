@@ -1,0 +1,46 @@
+PRIES: tags=2
+
+=== KURIAM GA4 TAG'US ===
+  [OK]   id= 24  02 — GA4 Config
+  [OK]   id= 25  GA4 — view_item
+  [OK]   id= 26  GA4 — add_to_cart
+  [OK]   id= 27  GA4 — view_cart
+  [OK]   id= 28  GA4 — begin_checkout
+  [OK]   id= 29  GA4 — purchase
+
+=== VERIFIKACIJA ===
+  tags=8
+
+  [ 15] 00 — Consent Mode v2 Default
+        type=html     fire=[2147479573] block=[] prio=1000
+        consent=notSet
+  [ 16] 01 — Conversion Linker
+        type=gclidw   fire=[2147479553] block=[] prio=900
+        consent=notSet
+  [ 24] 02 — GA4 Config
+        type=googtag  fire=[2147479553] block=[17,18] prio=800
+        consent=needed -> analytics_storage
+        tagId={{Const — GA4 ID}}
+  [ 26] GA4 — add_to_cart
+        type=gaawe    fire=[20] block=[17,18] prio=-
+        consent=needed -> analytics_storage
+        sendEcommerceData=true  eventName=add_to_cart  measurementIdOverride={{Const — GA4 ID}}
+  [ 28] GA4 — begin_checkout
+        type=gaawe    fire=[22] block=[17,18] prio=-
+        consent=needed -> analytics_storage
+        sendEcommerceData=true  eventName=begin_checkout  measurementIdOverride={{Const — GA4 ID}}
+  [ 29] GA4 — purchase
+        type=gaawe    fire=[23] block=[17,18] prio=-
+        consent=needed -> analytics_storage
+        sendEcommerceData=true  eventName=purchase  measurementIdOverride={{Const — GA4 ID}}
+  [ 27] GA4 — view_cart
+        type=gaawe    fire=[21] block=[17,18] prio=-
+        consent=needed -> analytics_storage
+        sendEcommerceData=true  eventName=view_cart  measurementIdOverride={{Const — GA4 ID}}
+  [ 25] GA4 — view_item
+        type=gaawe    fire=[19] block=[17,18] prio=-
+        consent=needed -> analytics_storage
+        sendEcommerceData=true  eventName=view_item  measurementIdOverride={{Const — GA4 ID}}
+
+BENDRA: variables=10  tags=8  triggers=7
+LIVE: #1 — PROD nepaliestas ✅
