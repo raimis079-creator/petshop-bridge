@@ -1,0 +1,41 @@
+PHP kodas: 12724 baitu, 405 eiluciu
+
+=== 0. Esami DataLayer snippet'ai ===
+  is viso snippet'u: 100
+  nerasta — kuriam nauja
+
+=== 1. Deploy (inactive) ===
+  CREATE -> HTTP 200
+  naujas id=614
+
+=== 2. Aktyvavimas (sintakses testas) ===
+  ACTIVATE -> HTTP 200
+  active=true  scope=front-end  code_error=null
+
+=== 3. Svetaines sveikata ===
+  Homepage     HTTP 200  (182659 B)  ✅
+  Parduotuve   HTTP 200  (188937 B)  ✅
+  Preke        HTTP 200  (233934 B)  ✅
+  Krepselis    HTTP 200  (203746 B)  ✅
+
+=== 4. dataLayer HTML patikra ===
+  Prekes puslapis:
+    ✅ data-petshop-gtm zyma
+    ✅ dataLayer.push
+    ✅ event: view_item
+    ✅ ecommerce: null
+    ✅ window.petshopGtmItem
+    ✅ added_to_cart listener
+    ✅ item_id
+    ✅ item_name
+    ❌ item_brand
+    ✅ item_category
+
+  Realus push (pirmi 700 simb.):
+    window.dataLayer.push({ ecommerce: null });
+
+=== 5. data-gtm-item loop mygtukuose ===
+  Parduotuves puslapis: 1 mygtuku su data-gtm-item
+
+=== SNIPPET ID: 614 ===
+Jei reikia deaktyvuoti: POST https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/614 {"active":false}
