@@ -1,0 +1,38 @@
+=== A. GTM tag [15] pauzavimas ===
+  esamas: id=15 paused=no
+  PUT -> HTTP 200  paused=YES ✅
+
+=== B. Consent Bridge snippet ===
+  CREATE HTTP 200
+  id=619
+  ACTIVATE HTTP 200
+  active=true  code_error=null
+
+=== C. GTM publish v3 ===
+  create_version HTTP 200
+  publish HTTP 200  versionId=4
+  LIVE: #4 "v3 — consent default perkeltas i snippet"
+  tag [15] live paused: YES ✅
+
+=== D. Svetaines sveikata ===
+  Homepage     HTTP 200  ✅
+  Preke        HTTP 200  ✅
+  Krepselis    HTTP 200  ✅
+
+=== E. HTML eiliskumas ===
+  consent bridge @ 225
+  consent default @ 445
+  gtm.js @ 3118
+  <body> @ 60374
+  bridge PRIES gtm.js: ✅
+  viskas <head> viduje: ✅
+
+  ✅ consent default inline
+  ✅ consent update funkcija
+  ✅ cmplz_status_change
+  ✅ cmplz_fire_categories
+  ✅ dataLayer cmplz event
+  ✅ GTM loader islikes
+  ✅ dataLayer snippet (614)
+
+=== SNIPPET ID: 619 ===
