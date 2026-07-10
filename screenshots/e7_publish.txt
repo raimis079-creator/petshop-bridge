@@ -1,0 +1,45 @@
+=== 1. Workspace backup ===
+  issaugota: screenshots/gtm_workspace_backup.json
+  tags=13 triggers=7 variables=10
+
+=== 2. Dabartine LIVE versija ===
+  #1 "Empty Container"  tags=0
+
+=== 3. Kuriam versija ===
+  HTTP 200
+  versionId=2  name="v1 — initial tracking setup"
+  turinys: tags=13 triggers=7 variables=10
+
+=== 4. Publish ===
+  HTTP 200
+  ✅ publikuota
+
+=== 5. LIVE po publish ===
+  #2 "v1 — initial tracking setup"
+  tags=13 triggers=7 variables=10
+
+  Live tag'ai:
+    [15] 00 — Consent Mode v2 Default  (html)
+    [16] 01 — Conversion Linker  (gclidw)
+    [24] 02 — GA4 Config  (googtag)
+    [30] 03 — Google Ads Conversion (Purchase)  (awct)
+    [31] 04 — Meta Pixel Base + PageView  (html)
+    [26] GA4 — add_to_cart  (gaawe)
+    [28] GA4 — begin_checkout  (gaawe)
+    [29] GA4 — purchase  (gaawe)
+    [27] GA4 — view_cart  (gaawe)
+    [25] GA4 — view_item  (gaawe)
+    [32] Meta — add_to_cart  (html)
+    [33] Meta — begin_checkout  (html)
+    [34] Meta — purchase  (html)
+
+=== 6. Viesas gtm.js turinys ===
+  dydis: 427047 B  (pries publish buvo ~323 KB tuscias)
+  ✅ G-FMTKEGGLMG
+  ✅ AW-11117260149
+  ✅ conversion label
+  ✅ Meta pixel ID
+  ✅ connect.facebook
+  ✅ consent default
+  ✅ dev.avesa.lt block
+  ✅ gtm_test
