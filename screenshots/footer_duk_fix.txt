@@ -1,0 +1,59 @@
+code_error=null
+
+=== DRY ===
+  title: KLIENTAMS
+  metodas: idetas <li> po Grazinimas
+  po_valymo_pakeista: true
+  ilgis: 935 -> 990   duk_li_kiekis: 1
+
+  PO (HTML):
+  <ul style="list-style:none;padding:0;margin:0;">
+  <li style="margin-bottom:6px;">
+  <a href="/my-account/" style="color:#fffcec;">Mano paskyra</a>
+  </li>
+  <li style="margin-bottom:6px;">
+  <a href="/my-account/orders/" style="color:#fffcec;">Užsakymų istorija</a>
+  </li>
+  <li style="margin-bottom:6px;">
+  <a href="/pristatymas/" style="color:#fffcec;">Pristatymas</a>
+  </li>
+  <li style="margin-bottom:6px;">
+  <a href="/apmokejimas/" style="color:#fffcec;">Apmokėjimas</a>
+  </li>
+  <li style="margin-bottom:6px;">
+  <a href="/grazinimas/" style="color:#fffcec;">Grąžinimas</a>
+  </li>
+  <li style="margin-bottom:6px;">
+  <a href="/duk/" style="color:#fffcec;">DUK</a>
+  </li>
+  <li style="margin-bottom:6px;">
+  <a href="/taisykles/" style="color:#fffcec;">Taisyklės</a>
+  </li>
+  <li style="margin-bottom:6px;">
+  <a href="/privatumo-politika/" style="color:#fffcec;">Privatumo polit
+
+=== APPLY ===
+  metodas: idetas <li> po Grazinimas
+  issaugota: true   duk_kiekis_po: 1  ✅
+
+=== VERIFIKACIJA (frontend) ===
+  <li> nuorodu: 9
+    "Mano paskyra"                        -> /my-account/
+    "Užsakymų istorija"                        -> /my-account/orders/
+    "Pristatymas"                        -> /pristatymas/
+    "Apmokėjimas"                        -> /apmokejimas/
+    "Grąžinimas"                        -> /grazinimas/
+    "DUK"                        -> /duk/
+    "Taisyklės"                        -> /taisykles/
+    "Privatumo politika"                        -> /privatumo-politika/
+    "Slapukų politika"                        -> /slapuku-politika/
+
+  ✅ DUK footer'yje   ✅ nera <br> artefakto
+  DUK pasikartojimu: 1
+
+=== Puslapiu sveikata ===
+  Homepage       HTTP 200  ✅
+  /duk/          HTTP 200  ✅
+  /grazinimas/   HTTP 200  ✅
+
+TEMP 625 deaktyvuota: HTTP 200
