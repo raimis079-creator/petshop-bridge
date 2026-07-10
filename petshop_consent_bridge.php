@@ -1,10 +1,11 @@
 /**
- * Petshop Consent Bridge v1.0 (Complianz -> GTM)
+ * Petshop Consent Bridge v1.1 (Complianz -> GTM)
  *
  * Vienas inline blokas wp_head'e, PRIES GTM snippet'a (prio 0 < prio 1):
  *   1. Google Consent Mode v2 DEFAULT (visi denied)
  *   2. Jei Complianz cookies jau yra (pakartotinis lankytojas) -> consent UPDATE
  *   3. Listener'iai cmplz_status_change / cmplz_fire_categories -> consent UPDATE + dataLayer event
+ *   4. v1.1: po sutikimo pakartoja ecommerce event'a (view_item ir pan.), kuris ivyko pries sutikima
  *
  * KODEL cia, o ne GTM tag'e:
  *   consent default privalo buti dataLayer'yje PRIES consent update.
@@ -80,6 +81,7 @@ if ( ! function_exists( 'petshop_consent_bridge' ) ) {
 	}
 
 	/* ---- 3. Pakartotinis lankytojas: sutikimas jau issaugotas ---- */
+	var hasConsentSnapshot = hasConsent('statistics');
 	if (cookieVal('cmplz_banner-status') !== null) {
 		sendConsentUpdate('cookie');
 	}
@@ -88,10 +90,35 @@ if ( ! function_exists( 'petshop_consent_bridge' ) ) {
 	var timer = null;
 	function schedule() {
 		if (timer) { clearTimeout(timer); }
-		timer = setTimeout(function () { sendConsentUpdate('event'); }, 60);
+		timer = setTimeout(function () {
+			var wasDenied = !hasConsentSnapshot;
+			sendConsentUpdate('event');
+			if (hasConsent('statistics')) { replayEcommerce(); }
+		}, 60);
 	}
 	document.addEventListener('cmplz_status_change', schedule);
 	document.addEventListener('cmplz_fire_categories', schedule);
+
+	/* ---- 5. Ecommerce replay ----
+	 * view_item / view_cart ivyksta puslapio uzkrovime, pries sutikima.
+	 * Po sutikimo GA4 tag'as jau nebefire'ins, nes trigger'is praejo.
+	 * Todel paskutini ecommerce event'a pakartojam VIENA karta. */
+	var replayed = false;
+	function replayEcommerce() {
+		if (replayed) { return; }
+		var dl = window.dataLayer || [];
+		var last = null;
+		for (var i = dl.length - 1; i >= 0; i--) {
+			var x = dl[i];
+			if (x && x.event && x.ecommerce && x.event !== 'cmplz_consent_update') { last = x; break; }
+		}
+		if (!last) { return; }
+		replayed = true;
+		var copy = JSON.parse(JSON.stringify(last));
+		copy.cmplz_replay = true;
+		window.dataLayer.push({ ecommerce: null });
+		window.dataLayer.push(copy);
+	}
 })();
 </script>
 PETSHOPCONSENT;
