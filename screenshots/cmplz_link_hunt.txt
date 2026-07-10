@@ -1,0 +1,26 @@
+############ NUORODOS "Slapukų naudojimas" PAIESKA ############
+
+=== 1. Complianz REST banner endpoint ===
+  HTTP 404  (138 B)
+
+=== 2. Kiti complianz REST endpoint'ai ===
+  /complianz/v1
+  /complianz/v1/documents
+  /complianz/v1/banner
+  /complianz/v1/track
+  /complianz/v1/manage_consent_html
+  /complianz/v1/store_cookies
+  /complianz/v1/consent-area/(?P<post_id>([0-9]+))/(?P<block_id>([a-z0-9-_]+))
+  /complianz/v1/datarequests
+  /complianz/v1/cookie_data
+  /complianz/v1/wsc-scan
+  /complianz/v1/wsc-checks
+
+=== 3. HTML: is kur nuoroda ===
+  HTML'e nerasta (renderinama JS)
+
+=== 4. Inline cmplz config JS ===
+  complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"37","version":"7.5.0","store_consent":"","do_not_track_enabled":"","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https://dev.avesa.lt/wp-json/complianz/v1/","locale":"lang=lt&locale=lt_LT","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"35","cookie_path":"/","categories":{"statistics":"statistika","marketing":"rinkodara"},"tcf_active":"","placeholdertext":"Spustel\u0117kite, kad priimtum\u0117te {category} slapukus ir \u012fgalintum\u0117te \u0161\u012f turin\u012f","css_file":"https://dev.avesa.lt/wp-content/uploads/complianz/css/banner-{banner_id}-{type}.css?v=37","page_links":{"eu":{"cookie-statement":{"title":"Slapuk\u0173 politika ","url"
+
+=== 5. Complianz JS failas su nuorodomis ===
+  https://dev.avesa.lt/wp-content/plugins/complianz-gdpr/cookiebanner/js/complianz.min.js?ver=1783624795
