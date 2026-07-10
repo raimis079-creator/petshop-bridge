@@ -1,58 +1,139 @@
-import { execSync } from "child_process";
-import { putFile } from './gtm_lib.mjs';
+import { putFile, gtmToken, gtm, defaultWorkspace, CT, IDS } from './gtm_lib.mjs';
 let out=''; const L=(s)=>{out+=s+'\n';};
 
-function fetchTxt(url){
-  try{ return execSync('curl -sk -L --max-time 45 -A "Mozilla/5.0 Chrome/120" "'+url+'"',{encoding:'utf8',maxBuffer:60000000}); }
-  catch(e){ return ''; }
-}
+const TRG_ALL_PAGES = '2147479553';
+const TRG_CONSENT_INIT = '2147479573';
 
-L('### IESKOM Google Ads conversion label AW-11117260149/XXXX ###');
-L('');
+const CONSENT_HTML = `<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'functionality_storage': 'granted',
+  'personalization_storage': 'granted',
+  'security_storage': 'granted',
+  'wait_for_update': 500
+});
+gtag('set', 'ads_data_redaction', true);
+gtag('set', 'url_passthrough', true);
+<\/script>`;
 
-const targets = [
-  ['GTM-MZGDV75F gtm.js','https://www.googletagmanager.com/gtm.js?id=GTM-MZGDV75F'],
-  ['G-FMTKEGGLMG gtag.js','https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG'],
-  ['AW-11117260149 gtag.js','https://www.googletagmanager.com/gtag/js?id=AW-11117260149'],
-  ['GT-WPTSZS8 gtag.js','https://www.googletagmanager.com/gtag/js?id=GT-WPTSZS8'],
-  ['GT-5TQ4JZWM gtag.js','https://www.googletagmanager.com/gtag/js?id=GT-5TQ4JZWM'],
+const VARIABLES = [
+  { name:'Const — GA4 ID',            type:'c', parameter:[{type:'template',key:'value',value:IDS.ga4}] },
+  { name:'Const — Ads Conversion ID', type:'c', parameter:[{type:'template',key:'value',value:'11117260149'}] },
+  { name:'Const — Ads Label',         type:'c', parameter:[{type:'template',key:'value',value:'7JbYCNuThZIYEPXaj7Up'}] },
+  { name:'Const — Meta Pixel ID',     type:'c', parameter:[{type:'template',key:'value',value:IDS.metaPixel}] },
+  { name:'DLV — ecommerce',           type:'v', parameter:[{type:'template',key:'name',value:'ecommerce'},{type:'integer',key:'dataLayerVersion',value:'2'}] },
+  { name:'DLV — transaction_id',      type:'v', parameter:[{type:'template',key:'name',value:'ecommerce.transaction_id'},{type:'integer',key:'dataLayerVersion',value:'2'}] },
+  { name:'DLV — value',               type:'v', parameter:[{type:'template',key:'name',value:'ecommerce.value'},{type:'integer',key:'dataLayerVersion',value:'2'}] },
+  { name:'DLV — currency',            type:'v', parameter:[{type:'template',key:'name',value:'ecommerce.currency'},{type:'integer',key:'dataLayerVersion',value:'2'}] },
+  { name:'DLV — items',               type:'v', parameter:[{type:'template',key:'name',value:'ecommerce.items'},{type:'integer',key:'dataLayerVersion',value:'2'}] },
+  { name:'DLV — user_email_hashed',   type:'v', parameter:[{type:'template',key:'name',value:'user_data.sha256_email_address'},{type:'integer',key:'dataLayerVersion',value:'2'}] },
 ];
 
-for(const [label,url] of targets){
-  const js = fetchTxt(url);
-  L('===== '+label+' ('+js.length+' B) =====');
-  if(js.length<300){ L('  (tuscia / klaida)'); L(''); continue; }
-  const pats = {
-    'AW-xxx/LABEL (pilnas)' : /AW-\d{9,12}\/[A-Za-z0-9_\-]{5,30}/g,
-    'AW- ID'                : /\bAW-\d{9,12}\b/g,
-    'send_to'               : /send_to["'\s:]+[A-Za-z0-9_\-\/]+/g,
-    'conversion label kandidatai (aw.l / gcl)' : /["'][A-Za-z0-9_\-]{11,22}["']\s*,\s*["']AW-/g,
-    'G- ID'                 : /\bG-[A-Z0-9]{8,12}\b/g,
-    'GT- ID'                : /\bGT-[A-Z0-9]{6,12}\b/g,
-    'conversion event'      : /gtag\(["']event["'],\s*["']conversion["']/g,
-    'purchase'              : /["']purchase["']/g,
-  };
-  for(const [k,re] of Object.entries(pats)){
-    const m = js.match(re);
-    if(m){ const u=[...new Set(m)]; L('  ['+String(u.length).padStart(2)+'] '+k);
-      u.slice(0,10).forEach(x=>L('        '+x.slice(0,90))); }
+const TAGS = [
+  {
+    name:'00 — Consent Mode v2 Default',
+    type:'html',
+    tagFiringOption:'oncePerEvent',
+    tagFiringPriority:{type:'integer',value:'1000'},
+    firingTriggerId:[TRG_CONSENT_INIT],
+    parameter:[
+      {type:'template',key:'html',value:CONSENT_HTML},
+      {type:'boolean',key:'supportDocumentWrite',value:'false'}
+    ]
+  },
+  {
+    name:'01 — Conversion Linker',
+    type:'sp',
+    firingTriggerId:[TRG_ALL_PAGES],
+    parameter:[
+      {type:'boolean',key:'enableLinkerParameter',value:'false'},
+      {type:'boolean',key:'enableCrossDomain',value:'false'}
+    ]
+  }
+];
+
+try{
+  const t = await gtmToken();
+  const W = await defaultWorkspace(t);
+  L('Workspace: '+W.name+' (id '+W.workspaceId+')');
+  L('');
+
+  // --- Esama busena ---
+  const exVars = (await gtm(t,'/'+W.path+'/variables')).body.variable||[];
+  const exTags = (await gtm(t,'/'+W.path+'/tags')).body.tag||[];
+  const exTrig = (await gtm(t,'/'+W.path+'/triggers')).body.trigger||[];
+  L('PRIES: variables='+exVars.length+' tags='+exTags.length+' triggers='+exTrig.length);
+  L('');
+
+  // --- Built-in variables ---
+  const bv = (await gtm(t,'/'+W.path+'/built_in_variables')).body.builtInVariable||[];
+  const have = bv.map(v=>v.type);
+  L('=== BUILT-IN VARIABLES ===');
+  L('  esami: '+have.join(', '));
+  const wanted = ['PAGE_HOSTNAME','PAGE_URL','PAGE_PATH','EVENT','REFERRER'];
+  const missing = wanted.filter(x=>!have.includes(x));
+  L('  reikalingi: '+wanted.join(', '));
+  L('  trukstami: '+(missing.length?missing.join(', '):'nera ✅'));
+  if(missing.length){
+    const r = await gtm(t,'/'+W.path+'/built_in_variables:create?type='+missing.join('&type='),'POST');
+    L('  ijungimas -> HTTP '+r.status);
   }
   L('');
-}
 
-// PROD checkout / success puslapiai
-L('===== PROD puslapiu skenavimas =====');
-for(const u of ['https://petshop.lt/index.php?route=checkout/success','https://petshop.lt/index.php?route=checkout/checkout','https://petshop.lt/index.php?route=checkout/cart']){
-  const h = fetchTxt(u);
-  L('  '+u);
-  L('    dydis '+h.length+' B');
-  const aw = h.match(/AW-\d{9,12}\/[A-Za-z0-9_\-]{5,30}/g);
-  const st = h.match(/send_to["'\s:]+[A-Za-z0-9_\-\/]+/g);
-  const dl = h.match(/dataLayer\.push\(\{[^}]{0,120}/g);
-  L('    AW+label: '+(aw?[...new Set(aw)].join(', '):'-'));
-  L('    send_to:  '+(st?[...new Set(st)].slice(0,3).join(' | '):'-'));
-  L('    dataLayer.push: '+(dl?dl.length+' vnt':'-'));
-  if(dl) dl.slice(0,4).forEach(x=>L('       '+x.replace(/\s+/g,' ').slice(0,100)));
+  // --- Variables ---
+  L('=== VARIABLES ===');
+  for(const v of VARIABLES){
+    const exists = exVars.find(x=>x.name===v.name);
+    if(exists){ L('  [skip] '+v.name+' (jau yra, id '+exists.variableId+')'); continue; }
+    const r = await gtm(t,'/'+W.path+'/variables','POST',v);
+    if(r.status===200) L('  [OK]   id='+String(r.body.variableId).padStart(3)+'  '+v.name);
+    else L('  [FAIL] '+v.name+' HTTP '+r.status+' '+JSON.stringify(r.body).slice(0,200));
+  }
   L('');
-}
-putFile('ads_label_hunt.txt', out); console.log(out);
+
+  // --- Tags ---
+  L('=== TAGS ===');
+  for(const tag of TAGS){
+    const exists = exTags.find(x=>x.name===tag.name);
+    if(exists){ L('  [skip] '+tag.name+' (jau yra, id '+exists.tagId+')'); continue; }
+    const r = await gtm(t,'/'+W.path+'/tags','POST',tag);
+    if(r.status===200) L('  [OK]   id='+String(r.body.tagId).padStart(3)+'  '+tag.name+'  type='+r.body.type);
+    else L('  [FAIL] '+tag.name+' HTTP '+r.status+' '+JSON.stringify(r.body).slice(0,300));
+  }
+  L('');
+
+  // --- Verifikacija ---
+  L('=== VERIFIKACIJA (skaitom atgal) ===');
+  const nv = (await gtm(t,'/'+W.path+'/variables')).body.variable||[];
+  const nt = (await gtm(t,'/'+W.path+'/tags')).body.tag||[];
+  L('PO: variables='+nv.length+' tags='+nt.length);
+  L('');
+  L('  Variables:');
+  for(const v of nv) L('    ['+String(v.variableId).padStart(3)+'] '+v.name.padEnd(30)+' type='+v.type);
+  L('');
+  L('  Tags:');
+  for(const x of nt){
+    L('    ['+String(x.tagId).padStart(3)+'] '+x.name);
+    L('          type='+x.type+'  firing=['+((x.firingTriggerId||[]).join(','))+']  priority='+(x.tagFiringPriority?.value||'-')+'  paused='+(x.paused?'YES':'no'));
+  }
+  L('');
+  const consentTag = nt.find(x=>x.name.includes('Consent Mode'));
+  if(consentTag){
+    const html = (consentTag.parameter||[]).find(p=>p.key==='html')?.value||'';
+    L('  Consent tag HTML patikra:');
+    for(const k of ['ad_storage','ad_user_data','ad_personalization','analytics_storage','wait_for_update','ads_data_redaction','url_passthrough']){
+      L('    '+(html.includes(k)?'✅':'❌')+' '+k);
+    }
+    L('    denied kartu: '+((html.match(/denied/g)||[]).length)+' (laukiama 4)');
+    L('    granted kartu: '+((html.match(/granted/g)||[]).length)+' (laukiama 3)');
+  }
+  L('');
+  const lv = await gtm(t,'/'+CT+'/versions:live');
+  L('LIVE version: #'+lv.body.containerVersionId+' "'+(lv.body.name||'-')+'" — nepublikuota, PROD nepaliestas');
+}catch(e){ L(''); L('!!! ERROR: '+e.message); }
+putFile('e1_result.txt', out); console.log(out);
