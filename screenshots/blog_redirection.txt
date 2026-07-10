@@ -1,0 +1,60 @@
+############ BLOG INVENTORIUS + REDIRECTION ############
+
+=== 1. Kur gyvena "blog" straipsniai ===
+  posts (any):  8
+  pages (any):  65
+
+  --- Visi posts ---
+    [14876] publish  /hipoalerginis-maistas-senjoru-sunims-kaip-issirinkti-be-burtu/
+    [14878] publish  /auksciausios-kokybes-sausi-maistai-konservai-sunims-katems-ontario/
+    [14880] publish  /miamor-is-meiles-katems/
+    [14882] publish  /monoproteininis-maistas-sunims-kas-tai-ir-kada-verta-rinktis/
+    [14884] publish  /saugus-biologiniai-antiparazitiniai-preparatai-gyvunams/
+    [14886] publish  /auksciausios-kokybes-pasarai-sunims-katems-rasco/
+    [14888] publish  /susipazinkime-prins/
+    [14890] publish  /suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/
+    is viso: 8
+
+  --- Pages su veisliu/straipsniu pozymiais ---
+    rasta unikaliu pages: 40
+    pagal statusa: {"publish":37,"draft":3}
+
+    pirmi 25 slug'ai:
+      [3205] publish  /jorksyro-terjeras/
+      [3206] publish  /taksas/
+      [3207] publish  /rusu-melynoji/
+      [3208] publish  /dzeko-raselo-terjeras/
+      [3209] publish  /kaukazo-aviganis/
+      [3210] publish  /amerikieciu-buldogas/
+      [3211] publish  /cvergsnauceris/
+      [3212] publish  /tibeto-mastifas/
+      [3213] publish  /samojedas/
+      [3214] publish  /amerikieciu-putbulterjeras/
+      [3215] publish  /siamo-kate/
+      [3216] publish  /ciau-ciau/
+      [3217] publish  /mastifas/
+      [3218] publish  /rotveileris-s-v/
+      [3219] publish  /biglis/
+      [3220] publish  /dalmantinas/
+      [3221] publish  /senbernaras/
+      [3222] publish  /bokseris/
+      [3223] publish  /kolis/
+      [3224] publish  /kinu-kuduotasis-suo/
+      [3225] publish  /havanu-bisonai/
+      [3227] publish  /geriausias-sausas-sunu-maistas/
+      [3228] draft    /hipoalerginis-maistas-sunims/
+      [3229] publish  /suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/
+      [3230] draft    /prins-petfoods/
+
+=== 2. Redirection plugin ===
+  neidiegtas — diegiam
+  POST /plugins {slug:redirection} -> HTTP 201
+    ✅ idiegta: Redirection v5.8.1  plugin=redirection/redirection  status=inactive
+    (palikta INACTIVE — aktyvuosim kai reikes)
+
+=== 3. Patikra po diegimo ===
+  off  Redirection v5.8.1
+
+=== 4. Svetaines sveikata ===
+  Homepage     HTTP 200
+  /duk/        HTTP 200
