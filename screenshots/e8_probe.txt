@@ -1,0 +1,219 @@
+=== Deploy probe ===
+  CREATE id=617
+  active=true code_error=null
+
+=== PROBE ===
+  HTTP 200  (5513 B)
+
+{
+    "options": [
+        {
+            "name": "_transient_cmplz_cookies",
+            "len": 6
+        },
+        {
+            "name": "_transient_cmplz_pages_list",
+            "len": 169
+        },
+        {
+            "name": "_transient_cmplz_processed_pages_list",
+            "len": 21
+        },
+        {
+            "name": "_transient_cmplz_redirect_to_settings_page",
+            "len": 1
+        },
+        {
+            "name": "_transient_timeout_cmplz_cookies",
+            "len": 10
+        },
+        {
+            "name": "_transient_timeout_cmplz_pages_list",
+            "len": 10
+        },
+        {
+            "name": "_transient_timeout_cmplz_processed_pages_list",
+            "len": 10
+        },
+        {
+            "name": "_transient_timeout_cmplz_redirect_to_settings_page",
+            "len": 10
+        },
+        {
+            "name": "cmplz_activation_time",
+            "len": 10
+        },
+        {
+            "name": "cmplz_active_integrations",
+            "len": 1
+        },
+        {
+            "name": "cmplz_cbdb_version",
+            "len": 5
+        },
+        {
+            "name": "cmplz_cookietable_version",
+            "len": 5
+        },
+        {
+            "name": "cmplz_dnsmpd_db_version",
+            "len": 5
+        },
+        {
+            "name": "cmplz_first_version",
+            "len": 5
+        },
+        {
+            "name": "cmplz_generate_new_cookiepolicy_snapshot",
+            "len": 0
+        },
+        {
+            "name": "cmplz_integrations_changed",
+            "len": 1
+        },
+        {
+            "name": "cmplz_run_activation",
+            "len": 1
+        },
+        {
+            "name": "cmplz_wsc_onboarding_status",
+            "len": 62
+        },
+        {
+            "name": "cmplz-current-version",
+            "len": 5
+        }
+    ],
+    "options_count": 19,
+    "complianz_options_wizard": "FALSE/none",
+    "complianz_options_settings": "FALSE/none",
+    "important": {
+        "cmplz_wizard_completed_once": "false",
+        "cmplz_deleted_stats": "false",
+        "cmplz_documents_update_date": "false",
+        "cmplz_privacy_statement_generated": "false",
+        "cmplz_reviewed_regions": "false",
+        "cmplz_detected_countries": "false"
+    },
+    "cmplz_get_value": {
+        "regions": "false",
+        "consenttype": "false",
+        "uses_cookies": "false",
+        "purpose_of_cookies": "false",
+        "compile_statistics": "''",
+        "compile_statistics_more_info": "''",
+        "gtm_code": "''",
+        "use_categories": "'view-preferences'",
+        "safe_mode": "false",
+        "block_recaptcha_service": "'no'"
+    },
+    "integrations_plugins": [
+        "advanced-nocaptcha-recaptcha",
+        "advanced-ads",
+        "wp-consent-api",
+        "omnisend",
+        "bb-powerpack",
+        "content-views-plugin",
+        "divi",
+        "divi-plugin",
+        "agile-store-locator",
+        "lead-forensics",
+        "mailchimp-woocommerce",
+        "burst-statistics",
+        "beaver-builder",
+        "theeventscalendar",
+        "themify-builder",
+        "meks-easy-maps",
+        "wp-video-lightbox",
+        "woocommerce-variation-swatches",
+        "invisible-recaptcha",
+        "easy-fancybox",
+        "novo-map",
+        "wpadverts",
+        "citadela-directory",
+        "elementor",
+        "elementor-pro/elementor-pro",
+        "nudgify",
+        "generatepress-maps",
+        "avada-maps",
+        "volocation",
+        "trustpulse",
+        "addtoany",
+        "amp",
+        "podcast-player",
+        "google-maps-easy",
+        "flexible-map",
+        "activecampaign",
+        "google-site-kit",
+        "clarity",
+        "beehive",
+        "easy-liveblogs",
+        "simple-business-directory",
+        "acf",
+        "pixelyoursite",
+        "pixelyoursite-pro",
+        "pixelyoursite-pinterest",
+        "pixelyoursite-bing",
+        "weglot-translate",
+        "colibriwp",
+        "user-registration",
+        "user-registration-pro",
+        "contact-form-7",
+        "disable-and-remove-google-fonts",
+        "embed-google-fonts",
+        "omgf",
+        "local-google-fonts",
+        "olympus-google-fonts",
+        "use-any-font",
+        "facebook-for-wordpress",
+        "facebook-for-woocommerce",
+        "google-tagmanager-for-wordpress",
+        "jetpack",
+        "g1-gmaps",
+        "monsterinsights",
+        "map-multi-marker",
+        "caos-host-analytics-local",
+        "wp-google-maps",
+        "wp-google-map-plugin",
+        "woocommerce-google-analytics-pro",
+        "woocommerce-google-analytics-integration",
+        "woocommerce",
+        "geo-my-wp",
+        "google-analytics-dashboard-for-wp",
+        "wp-google-maps-widget",
+        "wp-donottrack",
+        "pixel-caffeine",
+        "rate-my-post",
+        "super-socializer",
+        "tidio-live-chat",
+        "sumo",
+        "wpforms",
+        "wp-rocket",
+        "uncode",
+        "forminator",
+        "happyforms",
+        "lazy-loader",
+        "osm",
+        "primavera",
+        "so-widgets-bundle",
+        "superfly-menu",
+        "wp-store-locator",
+        "thrive",
+        "gravity-forms",
+        "qtranslate",
+        "welaunch-store-locator",
+        "presto-player",
+        "yotu-wp",
+        "buttonizer",
+        "greenshift",
+        "funnelkit",
+        "pinterest-for-woocommerce"
+    ],
+    "cmplz_integrations_option": false,
+    "script_blocking": {
+        "cmplz_placeholder_markers": "no",
+        "safe_mode_const": "no"
+    }
+}
+
+=== TEMP snippet id: 617 ===
