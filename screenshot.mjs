@@ -1,4 +1,3 @@
-import { chromium } from 'playwright';
 import { execSync } from "child_process";
 import fs from "fs";
 function putFile(n,s){
@@ -16,118 +15,99 @@ function putFile(n,s){
 let out=''; const L=(s)=>{out+=s+'\n';};
 const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH=U+':'+P;
-
-L('############ PAYSERA REDIRECT PARAMETRU PATIKRA ############');
-L('SVARBU: mokejimas NEVYKDOMAS. Perimame redirect ir ji blokuojame.'); L('');
-
-const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
-const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:1000}, locale:'lt-LT'});
-const page=await ctx.newPage();
-
-let payseraUrl=null, payseraPost=null;
-// BLOKUOJAM bet koki isejima i paysera
-await ctx.route('**://*.paysera.com/**', async route=>{
-  const req=route.request();
-  payseraUrl = req.url();
-  if(req.method()==='POST'){ payseraPost = req.postData(); }
-  L('  🛑 UZBLOKUOTA uzklausa i Paysera: '+req.method()+' '+req.url().slice(0,90));
-  await route.abort();
-});
-
-let orderId=null;
-try{
-  await page.goto('https://dev.avesa.lt/?p=15484',{waitUntil:'domcontentloaded',timeout:60000});
-  await page.waitForTimeout(5000);
-  try{ await page.click('.cmplz-accept',{timeout:8000}); }catch(e){}
-  await page.click('button.single_add_to_cart_button',{timeout:12000});
-  await page.waitForTimeout(6000);
-  await page.goto('https://dev.avesa.lt/checkout/',{waitUntil:'domcontentloaded',timeout:60000});
-  await page.waitForTimeout(7000);
-
-  const f=async(s,v)=>{ try{ await page.fill(s,v,{timeout:6000}); }catch(e){} };
-  await f('#billing_first_name','Paysera'); await f('#billing_last_name','Testas');
-  await f('#billing_address_1','Testo g. 1'); await f('#billing_city','Vilnius');
-  await f('#billing_postcode','01001'); await f('#billing_phone','+37060000000');
-  await f('#billing_email','paysera.test.'+Date.now()+'@petshop.lt');
-  try{ await page.selectOption('#billing_country','LT',{timeout:5000}); }catch(e){}
-  await page.waitForTimeout(4000);
-  await page.check('#payment_method_paysera',{timeout:8000});
-  await page.waitForTimeout(3000);
-  // pasirenkam banka (hanza = Swedbank)
-  try{ await page.check('input[name="payment[pay_type]"][value="hanza"]',{timeout:6000}); L('  pasirinktas bankas: hanza (Swedbank)'); }
-  catch(e){ L('  bankas nepasirinktas: '+e.message.slice(0,50)); }
-  await page.waitForTimeout(2000);
-
-  L('');
-  L('=== Pateikiam uzsakyma (redirect bus uzblokuotas) ===');
-  await page.click('#place_order',{timeout:12000});
-  await page.waitForTimeout(14000);
-  L('  URL po submit: '+page.url().slice(0,110));
-
-  const m = page.url().match(/order-pay\/(\d+)/) || page.url().match(/order-received\/(\d+)/);
-  if(m) orderId = m[1];
-
-}catch(e){ L('  klaida: '+e.message.slice(0,120)); }
-
-L('');
-L('=== Perimta Paysera uzklausa ===');
-if(!payseraUrl){ L('  ❌ nepavyko perimti (gal redirect vyko per form POST)'); }
-else{
-  L('  URL: '+payseraUrl.slice(0,140));
-  // dekoduojam data parametra
-  let dataParam=null;
-  try{
-    const u = new URL(payseraUrl);
-    dataParam = u.searchParams.get('data');
-  }catch(e){}
-  if(!dataParam && payseraPost){
-    const pm = payseraPost.match(/data=([^&]+)/);
-    if(pm) dataParam = decodeURIComponent(pm[1]);
-  }
-  if(dataParam){
-    L('');
-    L('  data parametras (base64, '+dataParam.length+' simb.)');
-    try{
-      const b64 = dataParam.replace(/-/g,'+').replace(/_/g,'/');
-      const decoded = Buffer.from(b64,'base64').toString('utf8');
-      L('  Dekoduota:');
-      const params = new URLSearchParams(decoded);
-      const important = ['projectid','orderid','amount','currency','test','accepturl','cancelurl','callbackurl','payment','country','p_email','lang','version'];
-      for(const k of important){
-        const v = params.get(k);
-        if(v!==null) L('    '+k.padEnd(14)+' = '+v);
-      }
-      L('');
-      L('  KRITINES PATIKROS:');
-      L('    '+(params.get('projectid')==='29276'?'✅':'❌')+' projectid = 29276');
-      L('    '+(params.get('test')==='1'?'✅ TESTINIS REZIMAS':'❌ TEST=' + params.get('test') + ' — REALUS MOKEJIMAS!'));
-      const cb = params.get('callbackurl')||'';
-      L('    callbackurl: '+cb);
-      L('    '+(/dev\.avesa\.lt/.test(cb)?'⚠️ rodo i dev.avesa.lt — po migracijos generuosis is home_url()':'?'));
-      L('    accepturl:  '+(params.get('accepturl')||'').slice(0,80));
-      L('    cancelurl:  '+(params.get('cancelurl')||'').slice(0,80));
-      L('    payment:    '+(params.get('payment')||'(nenurodyta — vartotojas rinksis Paysera puslapyje)'));
-    }catch(e){ L('  dekodavimo klaida: '+e.message); }
-  } else L('  data parametras nerastas');
+function head(url){
+  const r=execSync('curl -sk -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 25 "'+url+'" 2>/dev/null || echo "ERR -"',{encoding:'utf8'}).trim();
+  return r;
+}
+function api(url){
+  const code=execSync('curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 40 -u "'+AUTH+'" "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
+  let b=''; try{ b=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
+  return {code, body:b};
 }
 
-await browser.close();
-
+L('############ DUK NUORODU PATIKRA ############'); L('');
+L('=== 1. Devynios DUK nuorodos ===');
+const links=['/my-account/','/my-account/orders/','/kontaktai/','/pristatymas/','/apmokejimas/','/grazinimas/',
+             '/hipoalerginis-maistas/','/monoproteinis-maistas/','/be-grudu-maistas/'];
+const bad=[];
+for(const l of links){
+  const r=head('https://dev.avesa.lt'+l);
+  const [code,redir]=r.split(' ');
+  const ok = code==='200';
+  L('  '+(ok?'✅':'❌')+' '+String(code).padEnd(4)+' '+l.padEnd(28)+(redir&&redir!=='-'?' -> '+redir.replace('https://dev.avesa.lt',''):''));
+  if(!ok) bad.push({l,code,redir});
+}
 L('');
-L('=== Sukurto uzsakymo valymas ===');
-try{
-  const r=execSync('curl -sk -u "'+AUTH+'" "https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=3&status=any&orderby=id&order=desc"',{encoding:'utf8'});
-  const arr=JSON.parse(r);
-  L('  rasti uzsakymai: '+arr.length);
-  for(const o of arr){
-    L('    #'+o.number+'  '+o.status+'  '+o.total+'  '+o.payment_method+'  '+o.billing.email);
-    if(/paysera\.test/.test(o.billing.email||'')){
-      const d=execSync('curl -sk -o /dev/null -w "%{http_code}" -u "'+AUTH+'" -X DELETE "https://dev.avesa.lt/wp-json/wc/v3/orders/'+o.id+'?force=true"',{encoding:'utf8'}).trim();
-      L('      -> istrinta, HTTP '+d);
-    }
+
+L('=== 2. Alternatyvos neveikiancioms ===');
+const alts={
+ '/my-account/':['/paskyra/','/mano-paskyra/','/account/'],
+ '/my-account/orders/':['/paskyra/uzsakymai/','/my-account/orders'],
+ '/hipoalerginis-maistas/':['/kategorija/hipoalerginis-maistas/','/preke-zyme/hipoalerginis/','/hipoalerginis/'],
+ '/monoproteinis-maistas/':['/kategorija/monoproteinis-maistas/','/monoproteinis/'],
+ '/be-grudu-maistas/':['/kategorija/be-grudu-maistas/','/be-grudu/'],
+};
+for(const b of bad){
+  const cands = alts[b.l]||[];
+  L('  '+b.l+' (HTTP '+b.code+'):');
+  for(const c of cands){
+    const r=head('https://dev.avesa.lt'+c);
+    const [code]=r.split(' ');
+    L('     '+(code==='200'?'✅':'  ')+' '+String(code).padEnd(4)+' '+c);
   }
-  const after=execSync('curl -sk -I -u "'+AUTH+'" "https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=1&status=any" 2>/dev/null | tr -d "\r"',{encoding:'utf8'});
-  const tot=(after.match(/x-wp-total:\s*(\d+)/i)||[])[1];
-  L('  uzsakymu liko: '+(tot||'?'));
-}catch(e){ L('  valymo klaida: '+e.message.slice(0,80)); }
-putFile('paysera_redirect.txt', out); console.log(out);
+}
+L('');
+
+L('=== 3. WC puslapiai (my-account) ===');
+const ss=api('https://dev.avesa.lt/wp-json/wc/v3/system_status');
+if(ss.code==='200'){
+  try{
+    const j=JSON.parse(ss.body);
+    for(const p of (j.pages||[])) L('  '+String(p.page_name).padEnd(16)+' id='+p.page_id+'  set='+p.page_set+'  exists='+p.page_exists+'  visible='+p.page_visible);
+  }catch(e){ L('  parse err'); }
+}
+L('');
+
+L('=== 4. Ar yra puslapiu su "hipoalerg/monoprotein/be-grudu" ===');
+for(const s of ['hipoalerg','monoprotein','be-grudu','grudu']){
+  const r=api('https://dev.avesa.lt/wp-json/wp/v2/pages?search='+s+'&per_page=5&_fields=id,slug,link,title');
+  if(r.code==='200'){
+    try{ const arr=JSON.parse(r.body);
+      L('  "'+s+'" puslapiai: '+(arr.length?arr.map(p=>p.slug).join(', '):'—'));
+    }catch(e){}
+  }
+  const c=api('https://dev.avesa.lt/wp-json/wc/v3/products/categories?search='+s+'&per_page=5');
+  if(c.code==='200'){
+    try{ const arr=JSON.parse(c.body);
+      L('  "'+s+'" kategorijos: '+(arr.length?arr.map(x=>x.slug+'('+x.count+')').join(', '):'—'));
+    }catch(e){}
+  }
+}
+L('');
+
+L('=== 5. Pristatymo kainos ===');
+const zn=api('https://dev.avesa.lt/wp-json/wc/v3/shipping/zones');
+if(zn.code==='200'){
+  try{
+    const zones=JSON.parse(zn.body);
+    for(const z of zones){
+      L('');
+      L('  [zone '+z.id+'] "'+z.name+'"');
+      const m=api('https://dev.avesa.lt/wp-json/wc/v3/shipping/zones/'+z.id+'/methods');
+      if(m.code==='200'){
+        const ms=JSON.parse(m.body);
+        for(const x of ms){
+          const cost = x.settings?.cost?.value ?? x.settings?.min_amount?.value ?? '?';
+          L('    '+(x.enabled?'✅':'  ')+' '+String(x.method_id).padEnd(38)+' "'+x.title+'"');
+          const s=x.settings||{};
+          for(const [k,v] of Object.entries(s)){
+            if(v && v.value!=='' && v.value!==undefined && /cost|min_amount|requires|free/.test(k)){
+              L('         '+k+' = '+JSON.stringify(v.value).slice(0,90));
+            }
+          }
+        }
+      } else L('    metodu HTTP '+m.code);
+    }
+  }catch(e){ L('  parse err: '+e.message.slice(0,80)); }
+}
+putFile('duk_recon.txt', out); console.log(out);
