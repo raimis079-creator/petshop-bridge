@@ -1,0 +1,33 @@
+=== A. Bridge snippet v1.1 ===
+  rastas id=619 "Petshop Consent Bridge v1.0 (Complianz -> GTM)"
+  UPDATE id=619 -> HTTP 200
+  active=true code_error=null
+
+=== B. GTM trigger CE — statistics granted ===
+  POST HTTP 200
+  ✅ id=40
+
+=== C. GA4 Config perkonfiguravimas ===
+  pries: fire=[2147479553,37] once=oncePerLoad
+  po:    HTTP 200  fire=[40] once=oncePerLoad
+
+=== D. Publish v5 ===
+  publish HTTP 200
+  LIVE #7 "v5 — GA4 Config fire tik po statistics sutikimo"
+
+=== E. Tag'u firing suvestine ===
+  [ 15] 00 — Consent Mode v2 Default         fire=[2147479573] block=[] PAUSED
+  [ 16] 01 — Conversion Linker               fire=[38] block=[17,18] 
+  [ 24] 02 — GA4 Config                      fire=[40] block=[17,18] 
+  [ 30] 03 — Google Ads Conversion (Purchase) fire=[23] block=[17,18] 
+  [ 31] 04 — Meta Pixel Base + PageView      fire=[38] block=[17,18] 
+  [ 26] GA4 — add_to_cart                    fire=[20] block=[17,18] 
+  [ 28] GA4 — begin_checkout                 fire=[22] block=[17,18] 
+  [ 29] GA4 — purchase                       fire=[23] block=[17,18] 
+  [ 27] GA4 — view_cart                      fire=[21] block=[17,18] 
+  [ 25] GA4 — view_item                      fire=[19] block=[17,18] 
+  [ 32] Meta — add_to_cart                   fire=[20] block=[17,18,39] 
+  [ 33] Meta — begin_checkout                fire=[22] block=[17,18,39] 
+  [ 34] Meta — purchase                      fire=[23] block=[17,18,39] 
+
+  Trigger'iai: 38=marketing granted, 40=statistics granted, 37=consent_update, 39=marketing block, 17/18=DEV block
