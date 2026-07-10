@@ -15,104 +15,81 @@ function putFile(n,s){
 let out=''; const L=(s)=>{out+=s+'\n';};
 const U=process.env.WP_USER||''; const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH=U+':'+P;
-function api(url){
-  const code=execSync('curl -sk -o /tmp/r.json -w "%{http_code}" --max-time 60 -u "'+AUTH+'" "'+url+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
-  let b=''; try{ b=fs.readFileSync('/tmp/r.json','utf8'); }catch(e){}
+
+const IDS=[3241,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3297,3298,3303,3305,6632,6634,6635,6636,6637,6638,6639,6640,6641,11417,27907,34155,34174,34177,34178,34472,34592,34593];
+
+function del(id){
+  const code=execSync('curl -sk -o /tmp/d.json -w "%{http_code}" --max-time 45 -u "'+AUTH+'" -X DELETE "https://dev.avesa.lt/wp-json/wc/v3/orders/'+id+'?force=true" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
+  let b=''; try{ b=fs.readFileSync('/tmp/d.json','utf8'); }catch(e){}
   return {code, body:b};
 }
 function apiH(url){
-  const h=execSync('curl -sk -I -u "'+AUTH+'" "'+url+'" 2>/dev/null | tr -d "\r"',{encoding:'utf8'});
-  return h;
+  return execSync('curl -sk -I -u "'+AUTH+'" "'+url+'" 2>/dev/null | tr -d "\r"',{encoding:'utf8'});
 }
 
-L('############ S168 — UZSAKYMU RECON + BACKUP ############'); L('');
+L('############ S168 — UZSAKYMU TRYNIMAS (APPLY) ############');
+L('laikas: '+new Date().toISOString());
+L('backup: screenshots/orders_backup_20260710.json');
+L('trinama: '+IDS.length+' uzsakymu, force=true'); L('');
 
-// ---- 1. Kiek is viso ----
-L('=== 1. Uzsakymu kiekis ===');
-const hdr = apiH('https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=1&status=any');
-const tot = (hdr.match(/x-wp-total:\s*(\d+)/i)||[])[1];
-const pgs = (hdr.match(/x-wp-totalpages:\s*(\d+)/i)||[])[1];
-L('  x-wp-total: '+(tot||'?')+'   puslapiu: '+(pgs||'?'));
-L('');
+// Pries
+const h0=apiH('https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=1&status=any');
+const t0=(h0.match(/x-wp-total:\s*(\d+)/i)||[])[1];
+L('PRIES: x-wp-total = '+t0); L('');
 
-// ---- 2. Visi uzsakymai (paginuotai) ----
-L('=== 2. Pilnas sarasas ===');
-let all=[];
-for(let p=1;p<=Math.min(parseInt(pgs||'1'),10);p++){
-  const r=api('https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=100&status=any&page='+p+'&orderby=id&order=asc');
-  if(r.code!=='200'){ L('  psl '+p+' HTTP '+r.code); break; }
-  const arr=JSON.parse(r.body);
-  all=all.concat(arr);
-  if(arr.length<100) break;
+L('=== Trinimas ===');
+let ok=0, fail=0;
+const fails=[];
+for(let i=0;i<IDS.length;i++){
+  const id=IDS[i];
+  const r=del(id);
+  if(r.code==='200'){
+    ok++;
+    let num='?'; try{ num=JSON.parse(r.body).number; }catch(e){}
+    L('  ['+String(i+1).padStart(2)+'/'+IDS.length+'] ✅ '+String(id).padEnd(6)+' (#'+num+')');
+  } else {
+    fail++; fails.push({id, code:r.code, body:r.body.slice(0,120)});
+    L('  ['+String(i+1).padStart(2)+'/'+IDS.length+'] ❌ '+String(id).padEnd(6)+' HTTP '+r.code);
+  }
+  if(i%10===9) execSync('sleep 1');
 }
-L('  surinkta: '+all.length);
 L('');
-const byStatus={};
-const byPayment={};
-let sum=0;
-for(const o of all){
-  byStatus[o.status]=(byStatus[o.status]||0)+1;
-  byPayment[o.payment_method||'(nera)']=(byPayment[o.payment_method||'(nera)']||0)+1;
-  sum+=parseFloat(o.total||0);
-}
-L('  Pagal busena:');
-for(const [k,v] of Object.entries(byStatus).sort((a,b)=>b[1]-a[1])) L('    '+String(v).padStart(4)+'  '+k);
-L('');
-L('  Pagal mokejimo buda:');
-for(const [k,v] of Object.entries(byPayment).sort((a,b)=>b[1]-a[1])) L('    '+String(v).padStart(4)+'  '+k);
-L('');
-L('  Bendra suma: '+sum.toFixed(2)+' EUR');
-L('');
-
-// ---- 3. Detalus sarasas ----
-L('=== 3. Detaliai ===');
-L('  ID     Nr     Busena        Suma      Data                 El.pastas');
-L('  ' + '─'.repeat(92));
-for(const o of all){
-  const em=(o.billing?.email||'—');
-  L('  '+String(o.id).padEnd(6)+' '+String(o.number).padEnd(6)+' '+String(o.status).padEnd(13)+' '+String(o.total).padStart(8)+'  '+String(o.date_created).slice(0,19)+'  '+em.slice(0,34));
+L('  pavyko: '+ok+'   nepavyko: '+fail);
+if(fails.length){
+  L('  Nepavykusieji:');
+  fails.forEach(f=>L('    '+f.id+'  HTTP '+f.code+'  '+f.body));
 }
 L('');
 
-// ---- 4. Ar yra realiu (ne testiniu) pozymiu ----
-L('=== 4. Realumo patikra ===');
-const testEmails = all.filter(o=>/gtm\.test|test@|@example|\+test/i.test(o.billing?.email||''));
-const paid = all.filter(o=>['completed','processing','refunded'].includes(o.status));
-const withPaysera = all.filter(o=>o.payment_method==='paysera');
-const withTx = all.filter(o=>o.transaction_id);
-L('  Testiniu el. pastu (gtm.test/test@/example): '+testEmails.length);
-L('  Busena completed/processing/refunded:        '+paid.length);
-L('  Mokejimas per Paysera:                       '+withPaysera.length);
-L('  Su transaction_id (realus apmokejimas):      '+withTx.length);
-if(withTx.length){ L('  ⚠️ Uzsakymai su transaction_id:'); withTx.forEach(o=>L('     #'+o.number+' '+o.status+' '+o.total+' tx='+o.transaction_id)); }
-if(paid.length){ L('  ⚠️ Apmoketi/ivykdyti uzsakymai:'); paid.forEach(o=>L('     #'+o.number+' '+o.status+' '+o.total+' '+String(o.date_created).slice(0,10)+' '+(o.billing?.email||'—'))); }
+// Po
+execSync('sleep 3');
+const h1=apiH('https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=1&status=any');
+const t1=(h1.match(/x-wp-total:\s*(\d+)/i)||[])[1];
+L('=== Verifikacija ===');
+L('  PO: x-wp-total = '+(t1||'0'));
+L('  Skirtumas: '+t0+' -> '+(t1||'0')+'   istrinta: '+(parseInt(t0)-parseInt(t1||'0')));
+L('  '+((t1==='0'||!t1)?'✅ Uzsakymu nebeliko':'⚠️ liko '+t1));
 L('');
 
-// ---- 5. Susije objektai ----
-L('=== 5. Kas dar susije ===');
-const refunds = all.filter(o=>(o.refunds||[]).length);
-L('  Uzsakymu su grazinimais: '+refunds.length);
-const invoiceMeta = all.filter(o=>(o.meta_data||[]).some(m=>/invoice|saskait|wcdn|pragma/i.test(m.key)));
-L('  Uzsakymu su saskaitos meta: '+invoiceMeta.length);
-if(invoiceMeta.length){
-  const keys=new Set();
-  invoiceMeta.forEach(o=>(o.meta_data||[]).forEach(m=>{ if(/invoice|saskait|wcdn|pragma/i.test(m.key)) keys.add(m.key); }));
-  L('    raktai: '+[...keys].join(', '));
+// Ar tikrai tusti
+const r=execSync('curl -sk -u "'+AUTH+'" "https://dev.avesa.lt/wp-json/wc/v3/orders?per_page=5&status=any" 2>/dev/null',{encoding:'utf8'});
+try{
+  const arr=JSON.parse(r);
+  L('  GET /orders grazina: '+arr.length+' irasu');
+  arr.forEach(o=>L('    liko: #'+o.number+' '+o.status+' '+o.total));
+}catch(e){ L('  parse err'); }
+L('');
+
+// Saskaitu skaitiklis
+L('=== Saskaitu skaitiklis (informacijai) ===');
+L('  WCDN skaitiklis saugomas atskirai ir NEPASIKEITE.');
+L('  Pries launch butina resetinti AVPN ir IAPV serijas i 101.');
+L('  (jau yra migracijos checklist\'e)');
+L('');
+
+L('=== Svetaines sveikata ===');
+for(const [nm,u] of [['Homepage','https://dev.avesa.lt/'],['Krepselis','https://dev.avesa.lt/cart/'],['Mano paskyra','https://dev.avesa.lt/paskyra/']]){
+  const c=execSync('curl -skL -o /dev/null -w "%{http_code}" --max-time 30 "'+u+'" 2>/dev/null || echo ERR',{encoding:'utf8'}).trim();
+  L('  '+nm.padEnd(14)+' HTTP '+c);
 }
-L('');
-
-// ---- 6. BACKUP ----
-L('=== 6. Backup ===');
-const backup = { exported:new Date().toISOString(), count:all.length, total:sum.toFixed(2), orders:all };
-const okB = putFile('orders_backup_20260710.json', JSON.stringify(backup,null,1));
-L('  screenshots/orders_backup_20260710.json  '+(okB?'✅ issaugota':'❌ nepavyko'));
-L('  dydis: ~'+Math.round(JSON.stringify(backup).length/1024)+' KB');
-L('');
-
-// ---- 7. DRY-RUN ----
-L('=== 7. DRY-RUN — ka trintume ===');
-L('  Trintume: '+all.length+' uzsakymu (force=true, negrizamai)');
-L('  ID sarasas: '+all.map(o=>o.id).join(', '));
-L('');
-L('  ⚠️ NIEKO NEISTRINTA. Reikia Raimio patvirtinimo.');
-putFile('s168_orders_recon.txt', out); console.log(out);
+putFile('s168_delete_orders.txt', out); console.log(out);
