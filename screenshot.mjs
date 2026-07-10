@@ -15,92 +15,75 @@ function putFile(n,s,bin){
   return false;
 }
 let out=''; const L=(s)=>{out+=s+'\n';};
-function fetchTxt(u){
-  try{ return execSync('curl -sk -L --max-time 30 -A "Mozilla/5.0" "'+u+'"',{encoding:'utf8',maxBuffer:10000000}); }
-  catch(e){ return 'ERR: '+(e.message||'').slice(0,80); }
-}
+const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
+const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:1200}, locale:'lt-LT'});
+const page=await ctx.newPage();
 
-L('############ PAYSERA MOKEJIMO BUDAI ############'); L('');
-
-L('=== 1. Paysera vieša mokėjimo būdų API (project 29276) ===');
-const urls = [
-  'https://www.paysera.com/new/api/items?project=29276&currency=EUR&lang=LIT&amount=1000',
-  'https://bank.paysera.com/new/api/items?project=29276&currency=EUR&lang=LIT&amount=1000',
-  'https://www.paysera.com/new/api/items?project_id=29276&currency=EUR&lang=lt',
-];
-for(const u of urls){
-  const r = fetchTxt(u);
-  L('  '+u.slice(0,70)+'...');
-  L('    atsakymas: '+r.length+' B  ->  '+r.slice(0,120).replace(/\s+/g,' '));
-  if(r.length>200 && !r.startsWith('ERR')){
-    const groups = [...new Set((r.match(/<group[^>]*key="([^"]+)"/g)||[]).map(x=>x.match(/key="([^"]+)"/)[1]))];
-    const keys   = [...new Set((r.match(/<payment[^>]*key="([^"]+)"/g)||[]).map(x=>x.match(/key="([^"]+)"/)[1]))];
-    if(groups.length) L('    grupes: '+groups.join(', '));
-    if(keys.length){ L('    mokejimo budai ('+keys.length+'): '+keys.slice(0,25).join(', ')); }
-    const cards = keys.filter(k=>/card|visa|master|hanza|maestro/i.test(k));
-    L('    KORTELES: '+(cards.length? '✅ '+cards.join(', ') : '❌ nerasta'));
+async function scan(label){
+  await page.waitForTimeout(4000);
+  const r = await page.evaluate(()=>{
+    const box=document.querySelector('.payment_method_paysera');
+    if(!box) return null;
+    const items=[...box.querySelectorAll('input[name="payment[pay_type]"]')].map(i=>{
+      const lbl=i.closest('label')||box.querySelector('label[for="'+i.id+'"]');
+      const img=lbl?lbl.querySelector('img'):null;
+      let vis=true,e=i; while(e&&e!==document.body){ if(getComputedStyle(e).display==='none'){vis=false;break;} e=e.parentElement; }
+      return { val:i.value, alt:img?img.alt:'', visible:vis };
+    });
+    // saliu antrastes
+    const countries=[...box.querySelectorAll('.paysera-country, h3, h4, .country-title, optgroup')].map(x=>x.innerText?x.innerText.trim():'').filter(Boolean);
+    const visCountries=[...box.querySelectorAll('*')].filter(e=>{
+      const t=(e.childNodes.length===1&&e.childNodes[0].nodeType===3)?e.innerText.trim():'';
+      return /^(LIETUVA|ALBANIJA|AUSTRIJA|LATVIJA|ESTIJA|LENKIJA)$/i.test(t) && getComputedStyle(e).display!=='none';
+    }).map(e=>e.innerText.trim());
+    return { total:items.length, visible:items.filter(i=>i.visible).length, items, countries:[...new Set(countries)].slice(0,30), visCountries:[...new Set(visCountries)] };
+  });
+  L('');
+  L('  === '+label+' ===');
+  if(!r){ L('    Paysera bloko nera'); return null; }
+  L('    pay_type is viso: '+r.total+'   matomu: '+r.visible);
+  const vis = r.items.filter(i=>i.visible);
+  const lt = vis.filter(i=>/^lt_|^hanza|^swedbank|^seb|^luminor|^siauliu|^medbank|^citadele|^wallet$/i.test(i.val));
+  const cards = r.items.filter(i=>/card|visa|master|maestro|hanzaee/i.test(i.val+i.alt));
+  L('');
+  L('    LT bankai (matomi): '+(lt.length?lt.map(i=>i.val).join(', '):'—'));
+  L('');
+  L('    KORTELES (visame sarase): '+(cards.length? cards.map(i=>i.val+' ("'+i.alt+'")').join(', ') : '❌ NERASTA'));
+  if(cards.length){
+    const cardsVis = cards.filter(c=>c.visible);
+    L('    KORTELES matomos: '+(cardsVis.length? '✅ '+cardsVis.map(c=>c.val).join(', ') : '❌ yra sarase bet paslėptos'));
   }
   L('');
+  L('    Matomos saliu antrastes: '+JSON.stringify(r.visCountries));
+  L('    Pirmi 12 matomu: '+vis.slice(0,12).map(i=>i.val).join(', '));
+  return r;
 }
 
-L('=== 2. Checkout: ar rodomas mokėjimo būdų sąrašas ===');
-const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
-const ctx=await browser.newContext({ignoreHTTPSErrors:true, viewport:{width:1440,height:1000}, locale:'lt-LT'});
-const page=await ctx.newPage();
 try{
+  L('############ PAYSERA: SALIU FILTRAS + KORTELES ############');
   await page.goto('https://dev.avesa.lt/?p=15484',{waitUntil:'domcontentloaded',timeout:60000});
   await page.waitForTimeout(5000);
   try{ await page.click('.cmplz-accept',{timeout:8000}); }catch(e){}
-  await page.waitForTimeout(2000);
   await page.click('button.single_add_to_cart_button',{timeout:12000});
   await page.waitForTimeout(6000);
   await page.goto('https://dev.avesa.lt/checkout/',{waitUntil:'domcontentloaded',timeout:60000});
   await page.waitForTimeout(8000);
 
-  const pay = await page.evaluate(()=>{
-    const radios=[...document.querySelectorAll('input[name="payment_method"]')].map(i=>({val:i.value,checked:i.checked}));
-    const psBox = document.querySelector('.payment_method_paysera, li.payment_method_paysera');
-    let inner=null;
-    if(psBox){
-      const subs=[...psBox.querySelectorAll('input[type=radio], .paysera-payment-method, .paysera-item, img')].slice(0,40);
-      inner = {
-        html_len: psBox.innerHTML.length,
-        sub_radios: [...psBox.querySelectorAll('input[type=radio]')].map(i=>({name:i.name,val:i.value})).slice(0,20),
-        images: [...psBox.querySelectorAll('img')].map(i=>({alt:i.alt, src:(i.src||'').split('/').pop()})).slice(0,20),
-        text: (psBox.innerText||'').slice(0,300)
-      };
-    }
-    return { radios, paysera_block: inner };
-  });
-  L('  Mokejimo budu radio: '+JSON.stringify(pay.radios));
-  L('');
-  if(!pay.paysera_block){ L('  ❌ Paysera bloko nerasta DOM\'e'); }
-  else{
-    L('  Paysera blokas:');
-    L('    HTML ilgis: '+pay.paysera_block.html_len);
-    L('    vidiniai radio ('+pay.paysera_block.sub_radios.length+'): '+JSON.stringify(pay.paysera_block.sub_radios).slice(0,300));
-    L('    paveiksleliai ('+pay.paysera_block.images.length+'):');
-    pay.paysera_block.images.forEach(i=>L('      "'+i.alt+'"  '+i.src));
-    L('    tekstas: '+JSON.stringify(pay.paysera_block.text.slice(0,200)));
-    L('');
-    const hasList = pay.paysera_block.sub_radios.length>0 || pay.paysera_block.images.length>1;
-    L('  >>> Mokejimo budu sarasas checkout\'e: '+(hasList?'✅ RODOMAS':'❌ NERODOMAS (tik logo)'));
-  }
-  await page.screenshot({path:'/tmp/checkout_pay.png', fullPage:false});
+  await scan('PRIES billing_country nustatyma');
 
   L('');
-  L('=== 3. Paysera pasirinkimas + redirect testas ===');
-  await page.check('#payment_method_paysera',{timeout:8000}).catch(e=>L('  radio klaida: '+e.message.slice(0,50)));
-  await page.waitForTimeout(3000);
-  const after = await page.evaluate(()=>{
-    const b=document.querySelector('.payment_method_paysera');
-    return b?{radios:[...b.querySelectorAll('input[type=radio]')].length, imgs:[...b.querySelectorAll('img')].length}:null;
-  });
-  L('  po pasirinkimo: '+JSON.stringify(after));
-  await page.screenshot({path:'/tmp/checkout_pay2.png', fullPage:false});
-}catch(e){ L('  ❌ '+e.message.slice(0,120)); }
+  L('  --- Nustatom billing_country = LT ---');
+  await page.selectOption('#billing_country','LT',{timeout:8000}).catch(e=>L('    klaida: '+e.message.slice(0,50)));
+  await page.fill('#billing_city','Vilnius').catch(()=>{});
+  await page.fill('#billing_postcode','01001').catch(()=>{});
+  // priverstinis WC update_checkout
+  await page.evaluate(()=>{ if(window.jQuery) jQuery(document.body).trigger('update_checkout'); });
+  await page.waitForTimeout(8000);
+  await scan('PO billing_country = LT');
+
+  await page.screenshot({path:'/tmp/ps_lt.png', fullPage:false});
+}catch(e){ L('!!! '+e.message.slice(0,140)); }
 await browser.close();
-putFile('paysera_methods.txt', out);
-try{ putFile('paysera_checkout.png','/tmp/checkout_pay.png',true); }catch(e){}
-try{ putFile('paysera_checkout2.png','/tmp/checkout_pay2.png',true); }catch(e){}
+putFile('paysera_countries.txt', out);
+try{ putFile('paysera_lt.png','/tmp/ps_lt.png',true); }catch(e){}
 console.log(out);
