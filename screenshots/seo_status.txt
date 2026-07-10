@@ -1,0 +1,53 @@
+############ SEO BUSENOS RECON ############
+
+=== 1. Redirection plugin ===
+  ❌ jokio redirect/SEO plugin'o nerasta
+
+  is viso plugin'u: 26  aktyviu: 24
+
+=== 2. Blog straipsniai (posts) ===
+  is viso posts (visi statusai): 8
+    publish    8
+    draft      0
+    pending    0
+    private    0
+
+=== 3. Trys "truksta" straipsniai — ar tikrai? ===
+  ❌ NERASTAS  royal-canin-kaciu-maistas   (/royal-canin-kaciu-maistas/ -> HTTP 404)
+  ❌ NERASTAS  sterilizuotu-kaciu-maistas   (/sterilizuotu-kaciu-maistas/ -> HTTP 404)
+  ❌ NERASTAS  maistas-sterilizuotai-katei-su-antsvorio-problema   (/maistas-sterilizuotai-katei-su-antsvorio-problema/ -> HTTP 404)
+
+=== 4. Blog draft/publish pavyzdziai ===
+  draft (0 rodoma):
+  publish (5 rodoma):
+    [14882] monoproteininis-maistas-sunims-kas-tai-ir-kada-verta-rinktis
+    [14876] hipoalerginis-maistas-senjoru-sunims-kaip-issirinkti-be-burtu
+    [14890] suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti
+    [14886] auksciausios-kokybes-pasarai-sunims-katems-rasco
+    [14884] saugus-biologiniai-antiparazitiniai-preparatai-gyvunams
+
+=== 5. noindex / blog_public busena ===
+  title: Petshop.lt
+  url: http://dev.avesa.lt
+  ⚠️ blog_public per REST nepasiekiamas — tikrinam per HTML
+  homepage robots meta: nerasta
+  noindex: ✅ TAIP (teisinga staging)
+
+  robots.txt:
+    User-agent: *
+    Disallow: /wp-content/uploads/wc-logs/
+    Disallow: /wp-content/uploads/woocommerce_transient_files/
+    Disallow: /wp-content/uploads/woocommerce_uploads/
+    Disallow: /*?add-to-cart=
+    Disallow: /*?*add-to-cart=
+    Disallow: /wp-admin/
+    Allow: /wp-admin/admin-ajax.php
+
+=== 6. Sitemap ===
+  404   /wp-sitemap.xml
+  301   /sitemap.xml
+  404   /sitemap_index.xml
+
+=== 7. Ar mapping.csv / SEO failai repo ===
+  (tikrinam GitHub repo per API)
+  Unterminated string in JSON at position 400000
