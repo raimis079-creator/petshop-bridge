@@ -1,0 +1,46 @@
+############ SNIPPET 587/594 + FOOTER ############
+
+=== 1. Snippet'ai: pridedam "duk" ===
+  [587] "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1"
+        UPDATE HTTP 200   kodas 458 -> 467 B
+        code_error=null  active=true
+        patikra: "duk" kode = ✅
+  [594] "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1"
+        UPDATE HTTP 200   kodas 881 -> 890 B
+        code_error=null  active=true
+        patikra: "duk" kode = ✅
+
+=== 2. Footer struktura ===
+  footer ilgis: 26428 B
+  col divu: 9
+
+  Footer antrastes:
+    "Naujausi<"
+    "Populiariausi<"
+    "Geriausiai įvertinti<"
+    "APIE<"
+    "KLIENTAMS<"
+    "KATEGORIJOS<"
+    "KONTAKTAI<"
+
+  Ar yra "KLIENTAMS": ✅
+  Nuorodos KLIENTAMS stulpelyje:
+    "Mano paskyra<"  ->  /my-account/
+    "Užsakymų istorija<"  ->  /my-account/orders/
+    "Pristatymas<"  ->  /pristatymas/
+    "Apmokėjimas<"  ->  /apmokejimas/
+    "Grąžinimas<"  ->  /grazinimas/
+    "Taisyklės<"  ->  /taisykles/
+    "Privatumo politika<"  ->  /privatumo-politika/
+
+  Ar jau yra DUK: ❌ reikia prideti
+
+=== 3. Footer meniu (WP) ===
+  [68] "Main"  slug=main  locations=[]
+  [232] "Pagrindinis meniu"  slug=pagrindinis-meniu  locations=["primary","primary_mobile"]
+  [67] "Secondary"  slug=secondary  locations=["footer","top_bar_nav"]
+
+=== 4. /duk/ su snippet'ais (587 footer widget slepimas) ===
+  /duk/ HTTP 200
+  footer-1 produktu widget'ai: ⚠️ gali buti
+  nuorodu stilius (594): ? patikrinti vizualiai
