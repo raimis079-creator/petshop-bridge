@@ -5,7 +5,7 @@ function putFile(n,s){
   for(let a=0;a<5;a++){ try{
     const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;
     let sha=''; try{ sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||''; }catch(e){}
-    const b={message:'diag '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')}; if(sha) b.sha=sha;
+    const b={message:'diag2 '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')}; if(sha) b.sha=sha;
     fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));
     const r=execSync('curl -s -w "\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});
     if(/HTTP:20[01]/.test(r)) return true;
@@ -13,24 +13,34 @@ function putFile(n,s){
   return false;
 }
 let out='';const L=s=>{out+=s+'\n';console.log(s);};
-function sh(c){ try{ return execSync(c,{encoding:'utf8',stdio:['pipe','pipe','pipe']}); }catch(e){ return 'EXIT='+e.status+' ERR='+String(e.stderr||e.message).slice(0,200); } }
-L('--- DNS ---'); L(sh('getent hosts dev.avesa.lt || echo NO_DNS'));
-L('--- https root ---'); L(sh('curl -sS -o /dev/null -m 20 -w "%{http_code} %{ssl_verify_result}\n" https://dev.avesa.lt/'));
-L('--- https -k ---'); L(sh('curl -sS -k -o /dev/null -m 20 -w "%{http_code}\n" https://dev.avesa.lt/'));
-L('--- http ---'); L(sh('curl -sS -o /dev/null -m 20 -w "%{http_code} %{redirect_url}\n" http://dev.avesa.lt/'));
-L('--- avesa.lt ---'); L(sh('curl -sS -o /dev/null -m 20 -w "%{http_code}\n" https://avesa.lt/'));
-const HOSTS=['https://dev.avesa.lt','http://dev.avesa.lt'];
-const paths=JSON.parse(fs.readFileSync('analize/_top_paths.json','utf8'));
-let best=null;
-for(const h of HOSTS){ const r=sh('curl -sS -k -o /dev/null -m 20 -w "%{http_code}" -A "Mozilla/5.0" "'+h+'/"'); L('probe '+h+' -> '+r); if(/^(200|30\d|40[13])/.test(r)) { best=h; break; } }
-L('BEST='+best);
-if(best){
-  const res=[];
-  for(const p of paths){
-    const r=sh('curl -sS -k -o /dev/null -m 25 -L -A "Mozilla/5.0" -w "%{http_code}|%{url_effective}|%{num_redirects}" "'+best+p+'"');
-    res.push({p,r});
+function sh(c){ try{ return execSync(c,{encoding:'utf8',stdio:['pipe','pipe','pipe']}); }catch(e){ return 'EXIT='+e.status+' '+String(e.stderr||'').slice(0,120); } }
+
+const PATHS=[
+ '/sunims','/katems','/sunims/maistas-sunims','/katems/maistas-katems',
+ '/sunims/maistas-sunims/sausas-maistas-sunims','/katems/maistas-katems/sausas-maistas-katems',
+ '/sunims/antiparazitines-priemones-sunims','/katems/tualetai-kraiku-semtuveliai-kilimeliai',
+ '/katems/antiparazitines-priemones-katems','/zuvims-2007550667/tvenkiniu-zuvu-maistas',
+ '/katems/kraikai-kaciu-tualetams','/katems/zaislai-katems',
+ '/exclusion','/prins-petfoods','/dovanos-sunims-bei-katems','/hipoalerginis-maistas-sunims',
+ '/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt','/athena-pienas-katems-200-ml'
+];
+const HOSTS=['https://dev.avesa.lt','https://petshop.lt'];
+const res=[];
+for(const p of PATHS){
+  for(const variant of [p, p+'/']){
+    for(const h of HOSTS){
+      // pilna grandine: statuso kodai + Location antrastes
+      const chain=sh('curl -sS -k -m 25 -o /dev/null -A "Mozilla/5.0 (iPhone)" -L -w "%{http_code}|%{num_redirects}|%{url_effective}" "'+h+variant+'"');
+      const heads=sh('curl -sS -k -m 25 -I -A "Mozilla/5.0 (iPhone)" "'+h+variant+'" | tr -d "\\r" | grep -Ei "^(HTTP/|location:|x-redirect-by:|link:)" | tr "\\n" " ; "');
+      res.push({path:variant,host:h,chain:chain.trim(),heads:heads.trim()});
+    }
   }
-  putFile('url_audit_dev.json',JSON.stringify(res));
-  L('audit rows='+res.length);
 }
-putFile('_diag_log.txt',out);
+putFile('redirect_probe.json',JSON.stringify(res,null,1));
+for(const r of res) L(`${r.host.replace('https://','')}${r.path}\n    -> ${r.chain}\n    hdr: ${r.heads}`);
+// ar Redirection pluginas apskritai idiegtas dev'e?
+L('--- WP plugin check per REST ---');
+L(sh('curl -sS -k -m 20 "https://dev.avesa.lt/wp-json/" | head -c 300'));
+L('--- robots/htaccess uzuominos ---');
+L(sh('curl -sS -k -m 20 "https://dev.avesa.lt/robots.txt" | head -c 400'));
+putFile('_diag2_log.txt',out);
