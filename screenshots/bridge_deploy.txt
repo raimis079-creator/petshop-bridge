@@ -1,17 +1,17 @@
 === A. GTM tag [15] pauzavimas ===
-  esamas: id=15 paused=no
+  esamas: id=15 paused=YES
   PUT -> HTTP 200  paused=YES ✅
 
 === B. Consent Bridge snippet ===
   CREATE HTTP 200
-  id=619
+  id=620
   ACTIVATE HTTP 200
   active=true  code_error=null
 
 === C. GTM publish v3 ===
   create_version HTTP 200
-  publish HTTP 200  versionId=4
-  LIVE: #4 "v3 — consent default perkeltas i snippet"
+  publish HTTP 200  versionId=5
+  LIVE: #5 "v3 — consent default perkeltas i snippet"
   tag [15] live paused: YES ✅
 
 === D. Svetaines sveikata ===
@@ -35,4 +35,4 @@
   ✅ GTM loader islikes
   ✅ dataLayer snippet (614)
 
-=== SNIPPET ID: 619 ===
+=== SNIPPET ID: 620 ===
