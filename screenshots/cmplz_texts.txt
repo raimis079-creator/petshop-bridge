@@ -1,0 +1,60 @@
+############ COMPLIANZ BANERIO TEKSTU RECON ############
+
+=== 1. Pagrindinis baneris ===
+  matomas: true
+  Antraste : "Tvarkyti sutikimą"
+  Zinute   : "Siekdami teikti geriausią patirtį, įrenginio informacijai saugoti ir (arba) pasiekti naudojame tokias technologijas kaip slapukus. Jei sutiksime su šiomis technologijomis, galėsime apdoroti duomenis, tokius kaip naršymo elgsena arba unikalūs ID šioje svetainėje. Nesutikimas arba sutikimo atšaukimas gali neigiamai paveikti tam tikras funkcijas ir funkcijas."
+
+  Mygtukai:
+    accept          : "PRIIMTI"
+    deny            : "NEIGTI"
+    view-preferences: "PERŽIŪRĖTI NUOSTATAS"
+    save-preferences: "Išsaugoti nuostatas"
+
+  Nuorodos:
+    "Tvarkyti parinktis" -> https://dev.avesa.lt/slapuku-politika-es/#cmplz-manage-consent-container
+    "Tvarkyti paslaugas" -> https://dev.avesa.lt/slapuku-politika-es/#cmplz-cookies-overview
+    "Tvarkyti {vendor_count} pardavėjus" -> https://dev.avesa.lt/slapuku-politika-es/#cmplz-tcf-wrapper
+    "Skaitykite daugiau apie šiuos tikslus" -> https://cookiedatabase.org/tcf/purposes/
+    "Slapukų politika" -> https://dev.avesa.lt/slapuku-politika-es/
+    "Slapukų naudojimas" -> https://dev.avesa.lt/slapuku-politika/
+    "{title}" -> #
+
+=== 2. "Peržiūrėti nuostatas" langas ===
+  Kategoriju: 4
+
+  [1] "Funkcinis"   value=cmplz_functional
+      checked=true  disabled=false
+      aprasas: "Techninė saugykla arba prieiga yra griežtai būtina siekiant teisėto tikslo – sudaryti sąlygas naudotis konkrečia paslauga, kurios aiškiai paprašė abonentas arba"
+
+  [2] "Parinktys"   value=cmplz_preferences
+      checked=false  disabled=false
+      aprasas: "Techninė saugykla arba prieiga yra būtina teisėtam tikslui išsaugoti nuostatas, kurių neprašo abonentas ar vartotojas."
+
+  [3] "Statistika"   value=cmplz_statistics
+      checked=false  disabled=false
+      aprasas: "Techninė saugykla arba prieiga, kuri naudojama tik statistiniais tikslais.\n\t\t\t\t\tTechninė saugykla arba prieiga, kuri naudojama tik anoniminiais statistikos tiks"
+
+  [4] "Rinkodara"   value=cmplz_marketing
+      checked=false  disabled=false
+      aprasas: "Techninė saugykla arba prieiga reikalinga norint sukurti naudotojo profilius reklamai siųsti arba sekti vartotoją svetainėje ar keliose svetainėse panašiais rin"
+
+  Issaugoti mygtukas: "IŠSAUGOTI NUOSTATAS"
+
+=== 3. Angliski likuciai banerio DOM'e ===
+  rasta: nerasta ✅
+
+=== 4. Slapuku politikos puslapis ===
+  turinio ilgis: 5519 simb.
+  lenteliu: 0
+  antrastes: ["1. Įvadas","2. Kas yra slapukai?","3. Kas yra skriptai?","4. Kas yra žiniatinklio švyturys?","5. Slapukai","5.1 Techniniai arba funkciniai slapukai","5.2 Statistikos slapukai","5.3 Reklaminiai slapukai","5.4 Rinkodaros / stebėjimo slapukai","6. Įdėti slapukai","7. Sutikimas","7.1 Tvarkykite sutikimo nustatymus"]
+
+  Ar isvardinti musu slapukai:
+    ❌ _ga
+    ❌ _ga_FMTKEGGLMG
+    ❌ _gcl_au
+    ❌ _fbp
+    ❌ cmplz_
+    ❌ woocommerce_
+
+  Pradzia: "Slapukų politika (ES)\n\nŠi slapukų politika paskutinį kartą buvo atnaujinta 2026-07-10 ir taikoma Europos ekonominės erdvės bei Šveicarijos piliečiams ir teisėtiems nuolatiniams gyventojams.\n\n\n1. Įvada"
