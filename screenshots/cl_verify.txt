@@ -1,0 +1,23 @@
+##### PO CONVERSION LINKER TAISYMO (live v2 / versija #3) #####
+
+=== 1) Iprastas DEV lankytojas (be gtm_test) ===
+  https://dev.avesa.lt/
+  cookies is viso: 7
+  ✅ TRACKING COOKIES: nera
+  tracking uzklausos: 0
+
+=== 2) Su gtm_test=1 (tik consent gina) ===
+  https://dev.avesa.lt/?gtm_test=1
+  cookies is viso: 9
+  ❌ tracking cookies:
+       Google Ads  _gcl_au
+       Meta  _fbp
+  tracking uzklausos: 4
+     https://www.googletagmanager.com/gtag/js?id=G-FMTKEGGLMG&cx=c&gtm=4e67
+     https://connect.facebook.net/en_US/fbevents.js
+     https://www.google-analytics.com/g/collect?v=2&tid=G-FMTKEGGLMG&gtm=45
+     https://www.facebook.com/tr/?id=1097111687955877&ev=PageView&dl=https%
+
+LAUKIAMA:
+  1) jokiu tracking cookies, jokiu uzklausu
+  2) _fbp vis dar bus — Meta nepaiso Google consent. Sprendimas: Complianz trigger'iai (E8).
