@@ -1,0 +1,41 @@
+snippet 623 atnaujintas + aktyvuotas
+code_error=null
+
+=== APPLY ===
+  updated=1  db_error=nera
+  iskviesta: ["resave","maybe_update_css","cookiebanner::save","CMPLZ::generate_css","CMPLZ::save"]
+  css_po: [{"file":"banner-1-optin.css","size":17890,"turi_flex_wrap":"✅","turi_zalia":"✅"}]
+  PO: {"banner_width":"620","view_preferences":"Nuostatos","banner_version":"39","use_custom_cookie_css":"1"}
+
+=== Priverstinis regen per frontend ===
+  banner-1-optin.css: HTTP 200  (17890 B)
+    turi flex-wrap/nowrap: ✅
+    turi #2D5F3F: ✅
+
+=== VIZUALI PATIKRA ===
+
+  --- DESKTOP (1440px) ---
+    plotis: 620px   overflow: ✅ nera
+    accept fonas: rgb(45, 95, 63)
+    mygtukai VIENOJE eiluteje
+      "PRIIMTI"  188px  ✅
+      "ATMESTI"  188px  ✅
+      "NUOSTATOS"  188px  ✅
+
+    ✅ desktop: 3 mygtukai vienoje eiluteje
+    ✅ nera nukirstu
+    ✅ nera horizontalaus scroll
+    ✅ zalias accept
+
+  --- MOBILE (390px) ---
+    plotis: 390px   overflow: ✅ nera
+    accept fonas: rgb(45, 95, 63)
+    mygtukai kelios eilutes
+      "PRIIMTI"  350px  ✅
+      "ATMESTI"  350px  ✅
+      "NUOSTATOS"  350px  ✅
+
+    ✅ mobile: nera scroll
+    ✅ zalias accept
+
+TEMP 623 deaktyvuota: HTTP 200
