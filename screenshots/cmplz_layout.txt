@@ -1,0 +1,36 @@
+snippet id=623
+active=true code_error=null
+
+=== DRY ===
+  PRIES: {"banner_width":"526","view_preferences":"Peržiūrėti nuostatas","use_custom_cookie_css":"0","banner_version":"37","custom_css_ilgis":1261}
+  PLANUOJAMA: {"banner_width":620,"view_preferences":"Nuostatos","use_custom_cookie_css":1,"banner_version":38,"custom_css_ilgis":544}
+
+=== APPLY ===
+  updated: 1  db_error: nera
+  istrinta CSS: ["banner-1-optin.css"]
+  iskviesta: ["resave","maybe_update_css"]
+  CSS po: []
+  PO: {"banner_width":"620","view_preferences":"Nuostatos","banner_version":"38","use_custom_cookie_css":"1"}
+
+=== VIZUALI PATIKRA ===
+
+  --- DESKTOP (1440px) ---
+    banerio plotis: 620px   scrollW=620  clientW=620
+    horizontalus overflow: ✅ NĖRA
+    flex-wrap: {"flexWrap":"wrap","overflowX":"hidden"}
+    mygtukai:
+      "PRIIMTI"  580px  ✅
+      "ATMESTI"  580px  ✅
+      "NUOSTATOS"  580px  ✅
+
+  --- MOBILE (390px) ---
+    banerio plotis: 390px   scrollW=390  clientW=390
+    horizontalus overflow: ✅ NĖRA
+    flex-wrap: {"flexWrap":"wrap","overflowX":"hidden"}
+    mygtukai:
+      "PRIIMTI"  350px  ✅
+      "ATMESTI"  350px  ✅
+      "NUOSTATOS"  350px  ✅
+
+=== TEMP snippet 623 — deaktyvuoju ===
+  HTTP 200
