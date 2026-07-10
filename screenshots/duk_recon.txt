@@ -1,0 +1,39 @@
+############ DUK NUORODU PATIKRA ############
+
+=== 1. Devynios DUK nuorodos ===
+  ✅ 200  /my-account/                
+  ✅ 200  /my-account/orders/         
+  ✅ 200  /kontaktai/                 
+  ✅ 200  /pristatymas/               
+  ✅ 200  /apmokejimas/               
+  ✅ 200  /grazinimas/                
+  ✅ 200  /hipoalerginis-maistas/     
+  ✅ 200  /monoproteinis-maistas/     
+  ✅ 200  /be-grudu-maistas/          
+
+=== 2. Alternatyvos neveikiancioms ===
+
+=== 3. WC puslapiai (my-account) ===
+  Parduotuvės bazė id=11  set=true  exists=true  visible=true
+  Krepšelis        id=12  set=true  exists=true  visible=true
+  Apmokėjimas      id=13  set=true  exists=true  visible=true
+  Paskyra          id=14  set=true  exists=true  visible=true
+  Pirkimo taisyklės ir sąlygos id=  set=false  exists=false  visible=false
+
+=== 4. Ar yra puslapiu su "hipoalerg/monoprotein/be-grudu" ===
+  "hipoalerg" puslapiai: be-grudu-maistas, hipoalerginis-maistas, pagrindinis-test, suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien, kolis
+  "hipoalerg" kategorijos: hipoalerginis-maistas-sunims(33)
+  "monoprotein" puslapiai: monoproteinis-maistas, pagrindinis-test, jautrus-virskinimas, sprendimai
+  "monoprotein" kategorijos: —
+  "be-grudu" puslapiai: pagrindinis-test, josera-kaciu-maistas, jautrus-virskinimas
+  "be-grudu" kategorijos: —
+  "grudu" puslapiai: be-grudu-maistas, hipoalerginis-maistas, pagrindinis-test, dzeko-raselo-terjeras, josera-kaciu-maistas
+  "grudu" kategorijos: —
+
+=== 5. Pristatymo kainos ===
+
+  [zone 0] "Vietovės, kurios nepatenka į kitas Jūsų zonas"
+
+  [zone 3] "Neringos savivaldybe"
+  parse err: Unexpected token '<', "<br />
+<b>"... is not valid JSON
