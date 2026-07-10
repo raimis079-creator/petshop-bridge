@@ -1,0 +1,73 @@
+############ S168 — PURCHASE FLOW TESTAS ############
+preke: 15484   el.pastas: gtm.test.1783685844003@petshop.lt
+
+=== 1. Prekes puslapis + sutikimas ===
+  URL: https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-cm/?gtm_tes
+  ✅ sutikimas duotas
+  dataLayer ecommerce: ["view_item","view_item(replay)"]
+
+=== 2. Add to cart ===
+  paspausta single_add_to_cart_button
+  add_to_cart: ❌
+
+=== 3. Krepselis (/cart/) ===
+  view_cart: ✅
+    value=0.49 EUR  items=1
+
+=== 4. Checkout (/checkout/) ===
+  URL: https://dev.avesa.lt/checkout/?gtm_test=1
+  begin_checkout: ✅
+    value=0.49 EUR  items=1  coupon=-
+
+=== 5. Checkout formos pildymas ===
+    ✅ vardas
+    ✅ pavarde
+    ✅ adresas
+    ✅ miestas
+    ✅ pastas
+    ✅ telefonas
+    ✅ el.pastas
+    ✅ salis LT
+
+  Pristatymo metodai:
+    ● shopup_venipak_shipping_courier_method:2
+    ○ shopup_venipak_shipping_pickup_method:3
+    ○ woo_lithuaniapost_lpexpress_terminal:12
+    ○ woo_lithuaniapost_lpexpress_terminal:15
+  Terminalu select'u nera
+
+  Mokejimo budas:
+    ● paysera
+    ○ bacs
+    ✅ pasirinkta: bacs
+
+=== 6. Pateikti uzsakyma ===
+  paspausta #place_order
+  URL po submit: https://dev.avesa.lt/checkout/order-received/34592/?key=wc_order_xu5mjRUn9PE4D
+  thankyou puslapis: ✅
+
+=== 7. purchase dataLayer push ===
+  ✅ purchase RASTAS
+    transaction_id : 34592
+    value          : 5.69 EUR
+    tax            : 0.99
+    shipping       : 3.3
+    coupon         : —
+    items          : 1
+    firstItem      : {"item_id":"2782","item_name":"Žaislas katei - Plastikinis kamuoliukas, 4 cm","price":0.49,"quantity":1,"index":0,"item_brand":"Ara","item_category":"Žaislai katėms"}
+    user_data      : ["sha256_email_address"]
+  purchase push'u kiekis: 2  ❌
+
+=== 8. Tinklo uzklausos thankyou puslapyje ===
+  GA4:  2   Meta: 1   Ads: 0
+  (be gtm_test param blocking trigger blokuoja — laukiama 0)
+
+=== 9. Uzsakymo patikra per API ===
+  #34592  status=on-hold  total=5.69 EUR
+  billing_email: gtm.test.1783685844003@petshop.lt
+  payment: bacs (Bankinis pavedimas)
+  shipping_total: 3.30  tax: 0.99
+  _petshop_dl_purchase_sent: "yes" ✅
+  ORDER_ID=34592
+
+thankyouUrl=https://dev.avesa.lt/checkout/order-received/34592/?key=wc_order_xu5mjRUn9PE4D
