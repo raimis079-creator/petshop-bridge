@@ -34,35 +34,29 @@ function get(url){
 const CODE=fs.readFileSync('petshop_cmplz_layout_fix.php','utf8');
 const TOKEN=fs.readFileSync('.cmplz_token','utf8').trim();
 try{
-  const payload={name:'TEMP — Complianz layout fix v1 (token)',desc:'DRY/APPLY.',code:CODE,scope:'front-end',active:true,priority:6,tags:['temp']};
-  const chk=api('GET',API+'/623');
-  let id;
-  if(chk.code==='200'){ api('POST',API+'/623',payload); id=623; }
-  else { const r=api('POST',API,payload); id=JSON.parse(r.body).id; }
-  L('snippet id='+id);
-  const v=api('GET',API+'/'+id);
-  if(v.code==='200'){ const j=JSON.parse(v.body); L('active='+j.active+' code_error='+JSON.stringify(j.code_error||null)); }
-  L('');
+  api('POST',API+'/623',{name:'TEMP — Complianz layout fix v2 (token)',code:CODE,active:true,scope:'front-end',priority:6});
+  L('snippet 623 atnaujintas + aktyvuotas');
+  const v=api('GET',API+'/623'); if(v.code==='200'){ const j=JSON.parse(v.body); L('code_error='+JSON.stringify(j.code_error||null)); }
   await new Promise(r=>setTimeout(r,3000));
 
-  L('=== DRY ===');
-  const d=get('https://dev.avesa.lt/?cmplz_layout=1&token='+TOKEN);
-  try{ const j=JSON.parse(d.body); L('  PRIES: '+JSON.stringify(j.PRIES)); L('  PLANUOJAMA: '+JSON.stringify(j.PLANUOJAMA)); }
-  catch(e){ L('  '+d.body.slice(0,300)); }
-  L('');
-
-  L('=== APPLY ===');
+  L(''); L('=== APPLY ===');
   const a=get('https://dev.avesa.lt/?cmplz_layout=1&token='+TOKEN+'&confirm=APPLY_LAYOUT');
   try{
     const j=JSON.parse(a.body);
-    L('  updated: '+j.updated+'  db_error: '+(j.db_error||'nera'));
-    L('  istrinta CSS: '+JSON.stringify(j.istrinta_css));
+    L('  updated='+j.updated+'  db_error='+(j.db_error||'nera'));
     L('  iskviesta: '+JSON.stringify(j.iskviesta));
-    L('  CSS po: '+JSON.stringify(j.css_po));
+    L('  css_po: '+JSON.stringify(j.css_po));
     L('  PO: '+JSON.stringify(j.PO));
-  }catch(e){ L('  '+a.body.slice(0,400)); }
+  }catch(e){ L('  '+a.body.slice(0,350)); }
   L('');
-  await new Promise(r=>setTimeout(r,6000));
+
+  L('=== Priverstinis regen per frontend ===');
+  for(let i=0;i<3;i++){ get('https://dev.avesa.lt/?regen='+Date.now()+i); await new Promise(r=>setTimeout(r,2000)); }
+  const css=get('https://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?v=38');
+  L('  banner-1-optin.css: HTTP '+css.code+'  ('+css.body.length+' B)');
+  L('    turi flex-wrap/nowrap: '+(/flex-wrap/.test(css.body)?'✅':'❌'));
+  L('    turi #2D5F3F: '+(/2D5F3F/i.test(css.body)?'✅':'❌'));
+  L('');
 
   L('=== VIZUALI PATIKRA ===');
   const browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
@@ -74,35 +68,48 @@ try{
     const r=await page.evaluate(()=>{
       const el=document.querySelector('.cmplz-cookiebanner');
       if(!el) return null;
-      const btns=[...el.querySelectorAll('.cmplz-btn')].filter(b=>{let e=b,v=true;while(e&&e!==document.body){if(getComputedStyle(e).display==='none'){v=false;break;}e=e.parentElement;}return v;});
-      const wrap=el.querySelector('.cmplz-buttons');
+      const vis=n=>{let e=n,v=true;while(e&&e!==document.body){if(getComputedStyle(e).display==='none'){v=false;break;}e=e.parentElement;}return v;};
+      const btns=[...el.querySelectorAll('.cmplz-btn')].filter(vis);
+      const acc=el.querySelector('.cmplz-accept');
+      const rects=btns.map(b=>b.getBoundingClientRect());
+      const sameRow = rects.length>1 ? Math.abs(rects[0].top - rects[rects.length-1].top) < 5 : true;
       return {
-        bannerW: el.getBoundingClientRect().width,
-        scrollW: el.scrollWidth, clientW: el.clientWidth,
+        bannerW: Math.round(el.getBoundingClientRect().width),
         overflow: el.scrollWidth > el.clientWidth + 2,
-        btns: btns.map(b=>({t:b.innerText.trim(), w:Math.round(b.getBoundingClientRect().width), clipped: b.scrollWidth > b.clientWidth+1})),
-        wrapStyle: wrap?{flexWrap:getComputedStyle(wrap).flexWrap, overflowX:getComputedStyle(wrap).overflowX}:null
+        acceptBg: acc?getComputedStyle(acc).backgroundColor:null,
+        title:(el.querySelector('.cmplz-title')||{}).innerText,
+        btns: btns.map(b=>({t:b.innerText.trim(), w:Math.round(b.getBoundingClientRect().width), clipped:b.scrollWidth>b.clientWidth+1})),
+        sameRow
       };
     });
     L('');
     L('  --- '+label+' ('+w+'px) ---');
-    if(!r){ L('    baneris nerastas'); }
+    if(!r) L('    baneris nerastas');
     else{
-      L('    banerio plotis: '+Math.round(r.bannerW)+'px   scrollW='+r.scrollW+'  clientW='+r.clientW);
-      L('    horizontalus overflow: '+(r.overflow?'❌ YRA':'✅ NĖRA'));
-      L('    flex-wrap: '+JSON.stringify(r.wrapStyle));
-      L('    mygtukai:');
-      r.btns.forEach(b=>L('      "'+b.t+'"  '+b.w+'px  '+(b.clipped?'❌ NUKIRSTAS':'✅')));
+      L('    plotis: '+r.bannerW+'px   overflow: '+(r.overflow?'❌':'✅ nera'));
+      L('    accept fonas: '+r.acceptBg);
+      L('    mygtukai '+(r.sameRow?'VIENOJE eiluteje':'kelios eilutes'));
+      r.btns.forEach(b=>L('      "'+b.t+'"  '+b.w+'px  '+(b.clipped?'❌ nukirstas':'✅')));
+      L('');
+      const green=/rgb\(45,\s*95,\s*63\)/.test(r.acceptBg||'');
+      if(label==='DESKTOP'){
+        L('    '+(r.sameRow?'✅':'❌')+' desktop: 3 mygtukai vienoje eiluteje');
+        L('    '+(!r.btns.some(b=>b.clipped)?'✅':'❌')+' nera nukirstu');
+        L('    '+(!r.overflow?'✅':'❌')+' nera horizontalaus scroll');
+        L('    '+(green?'✅':'❌')+' zalias accept');
+      } else {
+        L('    '+(!r.overflow?'✅':'❌')+' mobile: nera scroll');
+        L('    '+(green?'✅':'❌')+' zalias accept');
+      }
     }
-    await page.screenshot({path:'/tmp/b_'+label+'.png'});
+    await page.screenshot({path:'/tmp/l_'+label+'.png'});
     await ctx.close();
   }
   await browser.close();
-  putFile('cmplz_layout_desktop.png','/tmp/b_DESKTOP.png',true);
-  putFile('cmplz_layout_mobile.png','/tmp/b_MOBILE.png',true);
+  putFile('layout_desktop.png','/tmp/l_DESKTOP.png',true);
+  putFile('layout_mobile.png','/tmp/l_MOBILE.png',true);
   L('');
-  L('=== TEMP snippet '+id+' — deaktyvuoju ===');
-  const dz=api('POST',API+'/'+id,{active:false});
-  L('  HTTP '+dz.code);
+  const dz=api('POST',API+'/623',{active:false});
+  L('TEMP 623 deaktyvuota: HTTP '+dz.code);
 }catch(e){ L('!!! ERROR: '+e.message.slice(0,150)); }
-putFile('cmplz_layout.txt', out); console.log(out);
+putFile('cmplz_layout2.txt', out); console.log(out);
