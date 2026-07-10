@@ -29,22 +29,24 @@ function get(url){
   let b=''; try{ b=fs.readFileSync('/tmp/g.txt','utf8'); }catch(e){}
   return {code, body:b};
 }
-const CODE=fs.readFileSync('petshop_cmplz_banner_probe.php','utf8');
+const CODE=fs.readFileSync('petshop_cmplz_banner_edit.php','utf8');
 const TOKEN=fs.readFileSync('.cmplz_token','utf8').trim();
 try{
-  const chk=api('GET',API+'/620');
+  L('=== Deploy edit snippet ===');
+  const chk=api('GET',API+'/621');
+  const payload={name:'TEMP — Complianz banner edit v1 (token)',desc:'DRY/APPLY. Deaktyvuoti po naudojimo.',code:CODE,scope:'front-end',active:true,priority:6,tags:['temp']};
   let id;
-  const payload={name:'TEMP — Complianz banner probe v1 (token)',desc:'Recon.',code:CODE,scope:'front-end',active:true,priority:6,tags:['temp']};
-  if(chk.code==='200'){ api('POST',API+'/620',payload); id=620; L('UPDATE 620'); }
-  else { const r=api('POST',API,payload); id=JSON.parse(r.body).id; L('CREATE id='+id); }
+  if(chk.code==='200'){ api('POST',API+'/621',payload); id=621; L('  UPDATE 621'); }
+  else { const r=api('POST',API,payload); id=JSON.parse(r.body).id; L('  CREATE id='+id); }
   const v=api('GET',API+'/'+id);
-  if(v.code==='200'){ const j=JSON.parse(v.body); L('active='+j.active+' code_error='+JSON.stringify(j.code_error||null)); }
+  if(v.code==='200'){ const j=JSON.parse(v.body); L('  active='+j.active+' code_error='+JSON.stringify(j.code_error||null)); }
   L('');
   await new Promise(r=>setTimeout(r,3000));
-  const p=get('https://dev.avesa.lt/?cmplz_banner=1&token='+TOKEN);
-  L('HTTP '+p.code+'  ('+p.body.length+' B)'); L('');
-  L(p.body.slice(0,7000));
+  L('=== DRY-RUN ===');
+  const p=get('https://dev.avesa.lt/?cmplz_edit=1&token='+TOKEN);
+  L('HTTP '+p.code); L('');
+  L(p.body.slice(0,5500));
   L('');
   L('=== TEMP snippet id: '+id+' ===');
 }catch(e){ L('!!! ERROR: '+e.message); }
-putFile('cmplz_banner_probe.txt', out); console.log(out);
+putFile('cmplz_edit_dry.txt', out); console.log(out);
