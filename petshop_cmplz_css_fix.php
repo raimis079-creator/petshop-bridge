@@ -1,5 +1,5 @@
 /**
- * TEMP — Complianz CSS regen + privacy statement fix (token)
+ * TEMP — Complianz CSS regen + privacy statement fix v2 (token)
  * RECON: /?cmplz_css=1&token=cmplz_6680aa2a42151d54fa8d64ec
  * APPLY: /?cmplz_css=1&token=cmplz_6680aa2a42151d54fa8d64ec&confirm=APPLY_CSS
  */
@@ -10,47 +10,53 @@ add_action( 'wp_loaded', function () {
 	$token = isset( $_GET['token'] ) ? sanitize_text_field( wp_unslash( $_GET['token'] ) ) : '';
 	if ( $token !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }
 
+	global $wpdb;
 	$out = array();
 	$apply = isset( $_GET['confirm'] ) && $_GET['confirm'] === 'APPLY_CSS';
 	$out['mode'] = $apply ? 'APPLY' : 'RECON';
 
-	// ---- 1. CSS failai ----
-	$up = wp_upload_dir();
-	$dirs = array( $up['basedir'] . '/complianz/css', $up['basedir'] . '/complianz' );
-	$out['css_files'] = array();
-	foreach ( $dirs as $d ) {
-		if ( ! is_dir( $d ) ) { $out['css_files'][ $d ] = 'NERA KATALOGO'; continue; }
-		$files = glob( $d . '/*' );
-		$out['css_files'][ $d ] = array();
-		foreach ( (array) $files as $f ) {
-			if ( is_file( $f ) ) {
-				$out['css_files'][ $d ][] = array( 'file' => basename( $f ), 'size' => filesize( $f ), 'mtime' => date( 'Y-m-d H:i:s', filemtime( $f ) ) );
-			}
-		}
+	// ---- Privatumo politikos puslapis ----
+	$cur_id = (int) get_option( 'cmplz_privacy-statement_custom_page' );
+	$cur_post = $cur_id ? get_post( $cur_id ) : null;
+	$out['dabartinis_privacy_page'] = array(
+		'id'    => $cur_id,
+		'title' => $cur_post ? $cur_post->post_title : '(nerastas)',
+		'slug'  => $cur_post ? $cur_post->post_name : null,
+	);
+
+	// Ieskom "Privatumo politika"
+	$found = get_posts( array(
+		'post_type'   => 'page',
+		'post_status' => 'publish',
+		'numberposts' => 10,
+		's'           => 'Privatumo politika',
+	) );
+	$out['kandidatai'] = array();
+	$target_id = 0;
+	foreach ( $found as $p ) {
+		$out['kandidatai'][] = array( 'id' => $p->ID, 'title' => $p->post_title, 'slug' => $p->post_name );
+		if ( $p->post_title === 'Privatumo politika' && ! $target_id ) { $target_id = $p->ID; }
 	}
-
-	// ---- 2. Complianz klases/funkcijos ----
-	$fns = array();
-	foreach ( get_defined_functions()['user'] as $f ) {
-		if ( strpos( $f, 'cmplz' ) === 0 && ( strpos( $f, 'css' ) !== false || strpos( $f, 'banner' ) !== false ) ) { $fns[] = $f; }
+	if ( ! $target_id ) {
+		$by_slug = get_page_by_path( 'privatumo-politika' );
+		if ( $by_slug ) { $target_id = $by_slug->ID; $out['rasta_pagal_slug'] = $target_id; }
 	}
-	$out['cmplz_css_functions'] = $fns;
-	$out['cmplz_classes'] = array_values( array_filter( get_declared_classes(), function( $c ){ return stripos( $c, 'cmplz' ) !== false || stripos( $c, 'complianz' ) !== false; } ) );
+	$out['target_privacy_page_id'] = $target_id ? $target_id : 'NERASTA';
 
-	// ---- 3. Privacy statement nustatymai ----
-	$w = get_option( 'complianz_options_wizard' );
-	$out['wizard_privacy'] = array();
-	if ( is_array( $w ) ) {
-		foreach ( $w as $k => $v ) {
-			if ( stripos( $k, 'privacy' ) !== false || stripos( $k, 'statement' ) !== false || stripos( $k, 'document' ) !== false || stripos( $k, 'page' ) !== false ) {
-				$out['wizard_privacy'][ $k ] = $v;
-			}
-		}
-	} else { $out['wizard_privacy'] = 'complianz_options_wizard nera masyvas: ' . gettype($w); }
-
-	global $wpdb;
-	$rows = $wpdb->get_results( "SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE '%privacy%statement%' OR option_name LIKE 'cmplz_privacy%'", ARRAY_A );
-	$out['privacy_options'] = $rows;
+	// ---- CSS failai ----
+	$up  = wp_upload_dir();
+	$dir = $up['basedir'] . '/complianz/css';
+	$out['css_pries'] = array();
+	foreach ( (array) glob( $dir . '/*.css' ) as $f ) {
+		$c = file_get_contents( $f );
+		$out['css_pries'][] = array(
+			'file'  => basename( $f ),
+			'size'  => filesize( $f ),
+			'mtime' => date( 'H:i:s', filemtime( $f ) ),
+			'turi_3B29FF' => ( stripos( $c, '3B29FF' ) !== false ) ? 'TAIP (violetine)' : 'ne',
+			'turi_2D5F3F' => ( stripos( $c, '2D5F3F' ) !== false ) ? 'TAIP (zalia)' : 'ne',
+		);
+	}
 
 	if ( ! $apply ) {
 		header( 'Content-Type: application/json; charset=utf-8' );
@@ -58,42 +64,55 @@ add_action( 'wp_loaded', function () {
 		exit;
 	}
 
-	// ---- APPLY: trinam CSS ----
+	// ═══ APPLY ═══
+
+	// 1. Privacy statement puslapis
+	if ( $target_id ) {
+		update_option( 'cmplz_privacy-statement_custom_page', $target_id );
+		$out['privacy_updated'] = 'nuo ' . $cur_id . ' i ' . $target_id;
+	} else {
+		$out['privacy_updated'] = 'PRALEISTA — puslapis nerastas';
+	}
+
+	// 2. Trinam CSS
 	$deleted = array();
-	foreach ( $dirs as $d ) {
-		if ( ! is_dir( $d ) ) { continue; }
-		foreach ( (array) glob( $d . '/*.css' ) as $f ) {
-			if ( is_file( $f ) && @unlink( $f ) ) { $deleted[] = basename( $f ); }
-		}
+	foreach ( (array) glob( $dir . '/*.css' ) as $f ) {
+		if ( is_file( $f ) && @unlink( $f ) ) { $deleted[] = basename( $f ); }
 	}
-	$out['deleted_css'] = $deleted;
+	$out['istrinta_css'] = $deleted;
 
-	// Bandom regeneruoti
+	// 3. Regeneruojam
 	$called = array();
-	foreach ( array( 'cmplz_generate_css', 'cmplz_update_css_file', 'cmplz_regenerate_css' ) as $fn ) {
-		if ( function_exists( $fn ) ) { call_user_func( $fn ); $called[] = $fn; }
-	}
-	if ( class_exists( 'cmplz_cookiebanner' ) ) {
+	if ( function_exists( 'cmplz_resave_all_banners' ) ) { cmplz_resave_all_banners(); $called[] = 'cmplz_resave_all_banners'; }
+	if ( function_exists( 'cmplz_maybe_update_css' ) )   { cmplz_maybe_update_css();   $called[] = 'cmplz_maybe_update_css'; }
+	if ( class_exists( 'CMPLZ_COOKIEBANNER' ) ) {
 		try {
-			$b = new cmplz_cookiebanner( 1 );
-			if ( method_exists( $b, 'save' ) ) { $b->save(); $called[] = 'cmplz_cookiebanner::save'; }
-			if ( method_exists( $b, 'generate_css' ) ) { $b->generate_css(); $called[] = 'cmplz_cookiebanner::generate_css'; }
-		} catch ( Exception $e ) { $out['banner_class_error'] = $e->getMessage(); }
+			$b = new CMPLZ_COOKIEBANNER( 1 );
+			foreach ( array( 'save', 'generate_css', 'update_css' ) as $m ) {
+				if ( method_exists( $b, $m ) ) { $b->$m(); $called[] = 'CMPLZ_COOKIEBANNER::' . $m; }
+			}
+		} catch ( Throwable $e ) { $out['banner_err'] = $e->getMessage(); }
 	}
-	$out['called'] = $called;
+	$out['iskviesta'] = $called;
 
-	// transients
+	// 4. Cache
 	$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_cmplz%' OR option_name LIKE '_transient_timeout_cmplz%'" );
 	wp_cache_flush();
 
-	// po
-	$out['css_after'] = array();
-	foreach ( $dirs as $d ) {
-		if ( ! is_dir( $d ) ) { continue; }
-		foreach ( (array) glob( $d . '/*' ) as $f ) {
-			if ( is_file( $f ) ) { $out['css_after'][] = basename( $f ) . ' (' . filesize( $f ) . ' B)'; }
-		}
+	// 5. Verifikacija
+	clearstatcache();
+	$out['css_po'] = array();
+	foreach ( (array) glob( $dir . '/*.css' ) as $f ) {
+		$c = file_get_contents( $f );
+		$out['css_po'][] = array(
+			'file'  => basename( $f ),
+			'size'  => filesize( $f ),
+			'mtime' => date( 'H:i:s', filemtime( $f ) ),
+			'turi_3B29FF' => ( stripos( $c, '3B29FF' ) !== false ) ? '❌ VIS DAR violetine' : '✅ nera',
+			'turi_2D5F3F' => ( stripos( $c, '2D5F3F' ) !== false ) ? '✅ zalia' : '❌ nera',
+		);
 	}
+	$out['privacy_page_po'] = (int) get_option( 'cmplz_privacy-statement_custom_page' );
 
 	header( 'Content-Type: application/json; charset=utf-8' );
 	echo wp_json_encode( $out, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
