@@ -1,0 +1,434 @@
+[
+ {
+  "path": "/sunims",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/sunims",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/sunims/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/sunims",
+  "heads": "HTTP/2 301  location: https://petshop.lt/sunims"
+ },
+ {
+  "path": "/katems",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/katems",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/katems/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/katems",
+  "heads": "HTTP/2 301  location: https://petshop.lt/katems"
+ },
+ {
+  "path": "/sunims/maistas-sunims",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims/maistas-sunims",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims/maistas-sunims",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/sunims/maistas-sunims",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/sunims/maistas-sunims/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims/maistas-sunims/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims/maistas-sunims/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/sunims/maistas-sunims",
+  "heads": "HTTP/2 301  location: https://petshop.lt/sunims/maistas-sunims"
+ },
+ {
+  "path": "/katems/maistas-katems",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/maistas-katems",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/maistas-katems",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/katems/maistas-katems",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/katems/maistas-katems/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/maistas-katems/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/maistas-katems/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/katems/maistas-katems",
+  "heads": "HTTP/2 301  location: https://petshop.lt/katems/maistas-katems"
+ },
+ {
+  "path": "/sunims/maistas-sunims/sausas-maistas-sunims",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims/maistas-sunims/sausas-maistas-sunims",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims/maistas-sunims/sausas-maistas-sunims",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/sunims/maistas-sunims/sausas-maistas-sunims",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/sunims/maistas-sunims/sausas-maistas-sunims/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims/maistas-sunims/sausas-maistas-sunims/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims/maistas-sunims/sausas-maistas-sunims/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/sunims/maistas-sunims/sausas-maistas-sunims",
+  "heads": "HTTP/2 301  location: https://petshop.lt/sunims/maistas-sunims/sausas-maistas-sunims"
+ },
+ {
+  "path": "/katems/maistas-katems/sausas-maistas-katems",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/maistas-katems/sausas-maistas-katems",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/maistas-katems/sausas-maistas-katems",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/katems/maistas-katems/sausas-maistas-katems",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/katems/maistas-katems/sausas-maistas-katems/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/maistas-katems/sausas-maistas-katems/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/maistas-katems/sausas-maistas-katems/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/katems/maistas-katems/sausas-maistas-katems",
+  "heads": "HTTP/2 301  location: https://petshop.lt/katems/maistas-katems/sausas-maistas-katems"
+ },
+ {
+  "path": "/sunims/antiparazitines-priemones-sunims",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims/antiparazitines-priemones-sunims",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims/antiparazitines-priemones-sunims",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/sunims/antiparazitines-priemones-sunims",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/sunims/antiparazitines-priemones-sunims/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sunims/antiparazitines-priemones-sunims/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sunims/antiparazitines-priemones-sunims/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/sunims/antiparazitines-priemones-sunims",
+  "heads": "HTTP/2 301  location: https://petshop.lt/sunims/antiparazitines-priemones-sunims"
+ },
+ {
+  "path": "/katems/tualetai-kraiku-semtuveliai-kilimeliai",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/tualetai-kraiku-semtuveliai-kilimeliai",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/tualetai-kraiku-semtuveliai-kilimeliai",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/katems/tualetai-kraiku-semtuveliai-kilimeliai",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/katems/tualetai-kraiku-semtuveliai-kilimeliai/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/tualetai-kraiku-semtuveliai-kilimeliai/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/tualetai-kraiku-semtuveliai-kilimeliai/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/katems/tualetai-kraiku-semtuveliai-kilimeliai",
+  "heads": "HTTP/2 301  location: https://petshop.lt/katems/tualetai-kraiku-semtuveliai-kilimeliai"
+ },
+ {
+  "path": "/katems/antiparazitines-priemones-katems",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/antiparazitines-priemones-katems",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/antiparazitines-priemones-katems",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/katems/antiparazitines-priemones-katems",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/katems/antiparazitines-priemones-katems/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/antiparazitines-priemones-katems/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/antiparazitines-priemones-katems/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/katems/antiparazitines-priemones-katems",
+  "heads": "HTTP/2 301  location: https://petshop.lt/katems/antiparazitines-priemones-katems"
+ },
+ {
+  "path": "/zuvims-2007550667/tvenkiniu-zuvu-maistas",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/zuvims-2007550667/tvenkiniu-zuvu-maistas",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/zuvims-2007550667/tvenkiniu-zuvu-maistas",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/zuvims-2007550667/tvenkiniu-zuvu-maistas",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/zuvims-2007550667/tvenkiniu-zuvu-maistas/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/zuvims-2007550667/tvenkiniu-zuvu-maistas/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/zuvims-2007550667/tvenkiniu-zuvu-maistas/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/zuvims-2007550667/tvenkiniu-zuvu-maistas",
+  "heads": "HTTP/2 301  location: https://petshop.lt/zuvims-2007550667/tvenkiniu-zuvu-maistas"
+ },
+ {
+  "path": "/katems/kraikai-kaciu-tualetams",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/kraikai-kaciu-tualetams",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/kraikai-kaciu-tualetams",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/katems/kraikai-kaciu-tualetams",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/katems/kraikai-kaciu-tualetams/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/kraikai-kaciu-tualetams/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/kraikai-kaciu-tualetams/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/katems/kraikai-kaciu-tualetams",
+  "heads": "HTTP/2 301  location: https://petshop.lt/katems/kraikai-kaciu-tualetams"
+ },
+ {
+  "path": "/katems/zaislai-katems",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/zaislai-katems",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/zaislai-katems",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/katems/zaislai-katems",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/katems/zaislai-katems/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/katems/zaislai-katems/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/katems/zaislai-katems/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/katems/zaislai-katems",
+  "heads": "HTTP/2 301  location: https://petshop.lt/katems/zaislai-katems"
+ },
+ {
+  "path": "/exclusion",
+  "host": "https://dev.avesa.lt",
+  "chain": "200|1|https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/",
+  "heads": "HTTP/2 301  x-redirect-by: WordPress location: https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/"
+ },
+ {
+  "path": "/exclusion",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/exclusion",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/exclusion/",
+  "host": "https://dev.avesa.lt",
+  "chain": "200|1|https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/",
+  "heads": "HTTP/2 301  x-redirect-by: WordPress location: https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/"
+ },
+ {
+  "path": "/exclusion/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/exclusion",
+  "heads": "HTTP/2 301  location: https://petshop.lt/exclusion"
+ },
+ {
+  "path": "/prins-petfoods",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/prins-petfoods",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/prins-petfoods",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/prins-petfoods",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/prins-petfoods/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/prins-petfoods/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/prins-petfoods/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/prins-petfoods",
+  "heads": "HTTP/2 301  location: https://petshop.lt/prins-petfoods"
+ },
+ {
+  "path": "/dovanos-sunims-bei-katems",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/dovanos-sunims-bei-katems",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/dovanos-sunims-bei-katems",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/dovanos-sunims-bei-katems",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/dovanos-sunims-bei-katems/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/dovanos-sunims-bei-katems/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/dovanos-sunims-bei-katems/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/dovanos-sunims-bei-katems",
+  "heads": "HTTP/2 301  location: https://petshop.lt/dovanos-sunims-bei-katems"
+ },
+ {
+  "path": "/hipoalerginis-maistas-sunims",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/hipoalerginis-maistas-sunims",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/hipoalerginis-maistas-sunims",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/hipoalerginis-maistas-sunims",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/hipoalerginis-maistas-sunims/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/hipoalerginis-maistas-sunims/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/hipoalerginis-maistas-sunims/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/hipoalerginis-maistas-sunims",
+  "heads": "HTTP/2 301  location: https://petshop.lt/hipoalerginis-maistas-sunims"
+ },
+ {
+  "path": "/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt",
+  "host": "https://petshop.lt",
+  "chain": "200|0|https://petshop.lt/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt",
+  "heads": "HTTP/2 200"
+ },
+ {
+  "path": "/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt/",
+  "host": "https://petshop.lt",
+  "chain": "200|1|https://petshop.lt/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt",
+  "heads": "HTTP/2 301  location: https://petshop.lt/sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt"
+ },
+ {
+  "path": "/athena-pienas-katems-200-ml",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/athena-pienas-katems-200-ml",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/athena-pienas-katems-200-ml",
+  "host": "https://petshop.lt",
+  "chain": "404|0|https://petshop.lt/athena-pienas-katems-200-ml",
+  "heads": "HTTP/2 404"
+ },
+ {
+  "path": "/athena-pienas-katems-200-ml/",
+  "host": "https://dev.avesa.lt",
+  "chain": "404|0|https://dev.avesa.lt/athena-pienas-katems-200-ml/",
+  "heads": "HTTP/2 404  link: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\""
+ },
+ {
+  "path": "/athena-pienas-katems-200-ml/",
+  "host": "https://petshop.lt",
+  "chain": "404|1|https://petshop.lt/athena-pienas-katems-200-ml",
+  "heads": "HTTP/2 301  location: https://petshop.lt/athena-pienas-katems-200-ml"
+ }
+]
