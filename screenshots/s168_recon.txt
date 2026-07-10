@@ -1,0 +1,46 @@
+############ S168 RECON — uzsakymo testui ############
+
+=== 1. Mokejimo budai (payment_gateways) ===
+  ✅ ON   id=paysera                  "Mokėjimas internetu"
+              method_title: Mokėjimas internetu
+  ✅ ON   id=bacs                     "Bankinis pavedimas"
+              method_title: Bankinis pavedimas
+     off  id=cheque                   "Apmokėjimas čekiu"
+     off  id=cod                      "Apmokėjimas grynais atsiimant (COD)"
+
+  Ijungtu: 2  -> paysera, bacs
+
+=== 2. Pristatymo zonos ===
+  [zone 0] "Vietovės, kurios nepatenka į kitas Jūsų zonas"  order=0
+  [zone 3] "Neringos savivaldybe"  order=0
+  parse err
+
+=== 3. Kandidatai testui (simple, instock) ===
+  rasta: 20
+  [14824]         EUR  sku=01GIC510510      "GIMCAT GRAS BITS 425G"
+        purchasable=false in_stock=undefined virtual=false  manuf=-  courier_only=-
+  [20971]         EUR  sku=d0ef54405833     "Exclusion Hypo sausas pašaras šunims s"
+        purchasable=false in_stock=undefined virtual=false  manuf=-  courier_only=-
+  [23804]         EUR  sku=-                "Truly skanėstas šunims "Sushi" lašiša,"
+        purchasable=false in_stock=undefined virtual=false  manuf=-  courier_only=-
+  [15484]    0.49 EUR  sku=2782             "Žaislas katei - Plastikinis kamuoliuka"
+        purchasable=true in_stock=undefined virtual=false  manuf=Ara  courier_only=-
+  [15553]    0.53 EUR  sku=TX-4125          "Žaislas katei - Guminis minkštas kamuo"
+        purchasable=true in_stock=undefined virtual=false  manuf=Trixie  courier_only=-
+  [18488]    0.59 EUR  sku=1002050          "Frendi šlapias maistas katėms – gabali"
+        purchasable=true in_stock=undefined virtual=false  manuf=Frendi  courier_only=-
+  [18493]    0.59 EUR  sku=1002060          "Frendi šlapias maistas katėms – gabali"
+        purchasable=true in_stock=undefined virtual=false  manuf=Frendi  courier_only=-
+  [18498]    0.59 EUR  sku=1002080          "Frendi šlapias maistas katėms – gabali"
+        purchasable=true in_stock=undefined virtual=false  manuf=Frendi  courier_only=-
+
+=== 4. WC nustatymai ===
+  Salis              = "LT"
+  Guest checkout     = "yes"
+  Terms page         = ""
+
+=== 5. Esami uzsakymai (paskutiniai 3) ===
+  rasta: 3
+  #34472  on-hold  44.80 EUR  dl_sent=-  2026-07-05T18:52:17
+  #34178  on-hold  24.28 EUR  dl_sent=-  2026-06-30T23:40:09
+  #34177  completed  20.29 EUR  dl_sent=-  2026-06-30T23:23:54
