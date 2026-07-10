@@ -1,0 +1,61 @@
+=== Cart / Checkout puslapiu TURINYS (raw) ===
+
+--- Krepselis (id 12) HTTP 200 ---
+  slug: cart   status: publish
+  link: https://dev.avesa.lt/cart/
+  content.raw (61 simb.):
+    <!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->
+
+    ✅ shortcode [woocommerce_cart]
+       shortcode [woocommerce_checkout]
+       blocks wp:woocommerce/cart
+       blocks wp:woocommerce/checkout
+
+  >>> TIPAS: KLASIKINIS (shortcode)
+
+--- Apmokejimas (id 13) HTTP 200 ---
+  slug: checkout   status: publish
+  link: https://dev.avesa.lt/checkout/
+  content.raw (65 simb.):
+    <!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->
+
+       shortcode [woocommerce_cart]
+    ✅ shortcode [woocommerce_checkout]
+       blocks wp:woocommerce/cart
+       blocks wp:woocommerce/checkout
+
+  >>> TIPAS: KLASIKINIS (shortcode)
+
+=== Order-received (thankyou) endpoint ===
+  Permalinks:
+    product base: ?
+    category base: ?
+  API enabled: false
+  Currency: EUR (&euro;)
+  Taxes enabled: undefined
+  Force SSL: false
+
+  Active plugins (23):
+    Code Snippets v3.9.6
+    Loco Translate v2.8.5
+    Petshop Attribute Engine v1.0.0
+    Petshop FBT (Dažnai perkama kartu) v1.4.3
+    Petshop Feeds v1.0.0
+    Petshop.lt Open Sans (Self-hosted) v1.0
+    Petshop Pragma Export v1.0.0
+    Petshop Promotions v1.1
+    Petshop XML Import v1.5.18
+    Post codes by postit.lt v1.1.1
+    WooCommerce VENIPAK pristatymo modulis v1.26.3
+    UNISEND WooCommerce v4.0.32
+    Paysera Payment Gateway for WooCommerce v3.12.0
+    WooCommerce.com Update Manager v1.0.3
+    Print Invoice &amp; Delivery Notes for WooCommerce v7.2.1
+    WooCommerce Mix and Match Products v2.8.7
+    WP All Import - WooCommerce Add-On v1.5.5
+    WooCommerce v10.9.4
+    WordPress Importuotojas v0.9.5
+    WP All Import Pro v5.0.6
+    WP Mail SMTP v4.9.0
+    WPForms Lite v1.10.2.1
+    YITH WooCommerce Ajax Product Filter v5.21.0
