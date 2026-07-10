@@ -1,0 +1,45 @@
+=== 1. product_brand terminai ===
+  Top brand terminai:
+    [240] Trixie                 prekiu: 276
+    [314] Josera                 prekiu: 216
+    [301] Farmina                prekiu: 155
+    [239] Monge                  prekiu: 119
+    [367] Nobby                  prekiu: 80
+    [317] Exclusion              prekiu: 78
+    [310] Georplast              prekiu: 69
+    [381] NOBLEZA                prekiu: 67
+
+  Imam preke is "Trixie":
+    [33990] Trixie Baza draskyklė, 2 stulpai su guoliu 50
+    https://dev.avesa.lt/product/trixie-baza-draskykle-2-stulpai-su-guoliu-50-cm-sviesi/
+    puslapis HTTP 200
+    view_item push:
+      {"event":"view_item","ecommerce":{"currency":"EUR","value":37.99,"items":[{"item_id":"0TR362_44541","item_name":"Trixie Baza draskyklė, 2 stulpai su guoliu 50 cm, šviesi","price":37.99,"quantity":1,"index":0,"item_brand":"Trixie","item_category":"Draskyklės katėms"}]}}
+
+    item_brand yra: ✅ TAIP
+
+=== 2. Prekiu su brand kiekis ===
+  x-wp-total: 2771
+
+=== 3. Loop mygtuko markup (parduotuve) ===
+  HTTP 200  188937 B
+    0  <a ... add_to_cart_button
+    0  <button ... add_to_cart
+    0  data-gtm-item bet kur
+    0  data-product_id
+    0  product_type_simple
+   16  quick-view / lightbox
+
+  Pirmas mygtukas su data-product_id:
+    (nerasta)
+
+  Vieta su data-gtm-item:
+    (nerasta)
+
+=== 4. Kategoriju permalink ===
+  ✅ https://dev.avesa.lt/kategorija/sausas-maistas-sunims/
+       data-gtm-item=25  (li.product-ish=289)
+  ✅ https://dev.avesa.lt/product-category/skanestai-sunims/
+       data-gtm-item=9  (li.product-ish=203)
+  ✅ https://dev.avesa.lt/kategorija/antkakliai-pavadeliai-sunims/
+       data-gtm-item=25  (li.product-ish=289)
