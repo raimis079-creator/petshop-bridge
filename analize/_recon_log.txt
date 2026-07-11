@@ -1,22 +1,26 @@
-=== 1. BLOG P0 straipsniai (turi buti 404 pagal v1.55) ===
-  /royal-canin-kaciu-maistas/  -> status undefined (final undefined)
-  /sterilizuotu-kaciu-maistas/  -> status undefined (final undefined)
-  /maistas-sterilizuotai-katei-su-antsvorio-problema/  -> status undefined (final undefined)
-=== 2. /exclusion QA gap (v1.56 #4: WP slug spejimas, x-redirect-by:WordPress = FAIL) ===
-  /exclusion  -> status undefined (final undefined)
-  /exclusion/  -> status undefined (final undefined)
-  /gamintojas/exclusion/  -> status undefined (final undefined)
-=== 3. Slapuku politika URL (v1.55 #6a: senas 34526 vs Complianz /slapuku-politika-es/) ===
-  /slapuku-politika/  -> status undefined (final undefined)
-  /slapuku-politika-es/  -> status undefined (final undefined)
-  /privatumo-politika/  -> status undefined (final undefined)
-=== 4. Footer nuoroda i slapuku politika (kur rodo realiai) ===
-  home fetch klaida: TypeError: fetch failed
-=== 5. Complianz baneris - pozicija (v1.56 #1: mobile turi buti sticky APACIOJE) ===
-  cmplz markup homepage HTML: false
-=== 6. Indexavimas (turi buti UZBLOKUOTAS dev, atidaromas launch diena) ===
-  robots.txt: undefined
-=== 7. Sitemap busena ===
-  /wp-sitemap.xml -> undefined (final undefined)
-  /sitemap.xml -> undefined (final undefined)
-  /sitemap_index.xml -> undefined (final undefined)
+=== 0. DIAGNOSTIKA: ar dev.avesa.lt pasiekiamas / uz basic-auth? ===
+  homepage (be auth): code=200 err=nera
+  WP_USER set: yes | WP_PASS len: 24
+  -> naudosime auth: false
+=== 1. BLOG P0 straipsniai (v1.55: turi buti 404) ===
+  /royal-canin-kaciu-maistas/  -> 404
+  /sterilizuotu-kaciu-maistas/  -> 404
+  /maistas-sterilizuotai-katei-su-antsvorio-problema/  -> 404
+=== 2. /exclusion QA gap (v1.56 #4) ===
+  /exclusion  -> 301 -> https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/ [x-redirect-by:WordPress]
+  /exclusion/  -> 301 -> https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/ [x-redirect-by:WordPress]
+  /gamintojas/exclusion/  -> 200
+=== 3. Slapuku politika URL (v1.55 #6a) ===
+  /slapuku-politika/  -> 200
+  /slapuku-politika-es/  -> 200
+  /privatumo-politika/  -> 200
+=== 4. Footer slapuku nuoroda (homepage HTML) ===
+  homepage HTML dydis: 198103 baitu
+  slapuku nuorodos: ["/slapuku-politika/","https://dev.avesa.lt/slapuku-politika/"]
+  cmplz markup: true
+  cmplz klases: ["cmplz-bottom-right","cmplz-banner-checkbox"]
+  homepage noindex meta: true
+=== 5. robots.txt + sitemap ===
+  robots.txt (269b): User-agent: * | Disallow: /wp-content/uploads/wc-logs/ | Disallow: /wp-content/uploads/woocommerce_transient_files/ | Disallow: /wp-content/uploads/woocommerce_uploads/ | Disallow: /*?add-to-cart= | Disallow: /*?*add-to-cart= | Disallow: /wp-admin/ |
+  /wp-sitemap.xml -> 404
+  /sitemap_index.xml -> 404
