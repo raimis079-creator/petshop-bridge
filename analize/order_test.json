@@ -42,6 +42,167 @@
           "user_data_email_hashed": null
         }
       ]
+    },
+    "2_add_to_cart": {
+      "atc_click": {
+        "clicked": true,
+        "text": "Į krepšelį",
+        "classes": "single_add_to_cart_button button alt loading"
+      },
+      "atc_navigated": false,
+      "dl_len": 13,
+      "new_events": [],
+      "all_ecom": [
+        {
+          "event": "add_to_cart",
+          "ecommerce": {
+            "currency": "EUR",
+            "value": 73.9,
+            "items_count": 1,
+            "items_summary": [
+              {
+                "item_id": "HEPM11",
+                "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+                "quantity": 1,
+                "price": 73.9,
+                "item_brand": "Exclusion"
+              }
+            ]
+          },
+          "user_data_present": false,
+          "user_data_email_hashed": null
+        },
+        {
+          "event": "view_item",
+          "ecommerce": {
+            "currency": "EUR",
+            "value": 73.9,
+            "items_count": 1,
+            "items_summary": [
+              {
+                "item_id": "HEPM11",
+                "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+                "quantity": 1,
+                "price": 73.9,
+                "item_brand": "Exclusion"
+              }
+            ]
+          },
+          "user_data_present": false,
+          "user_data_email_hashed": null
+        }
+      ]
+    },
+    "3_view_cart": {
+      "url": "https://dev.avesa.lt/cart/",
+      "dl_len": 12,
+      "new_events": []
+    },
+    "4_begin_checkout": {
+      "url": "https://dev.avesa.lt/checkout/",
+      "dl_len": 12,
+      "new_events": []
+    },
+    "5_form_fill": {
+      "#billing_first_name": "set: Testas",
+      "#billing_last_name": "set: Testauskas",
+      "#billing_email": "set: terra@gyvunai.lt",
+      "#billing_phone": "set: +37060000000",
+      "#billing_address_1": "set: Bandymo g. 1",
+      "#billing_city": "set: Vilnius",
+      "#billing_postcode": "set: LT-01001"
+    },
+    "6_ship_pick": {
+      "radios_info": [
+        {
+          "value": "shopup_venipak_shipping_courier_method:2",
+          "checked": true,
+          "id": "shipping_method_0_shopup_venipak_shipping_courier_method2",
+          "label": " VENIPAK Kurjeris: 3,99 €"
+        },
+        {
+          "value": "shopup_venipak_shipping_pickup_method:3",
+          "checked": false,
+          "id": "shipping_method_0_shopup_venipak_shipping_pickup_method3",
+          "label": " VENIPAK paštomatai/atsiėmimo punktai"
+        },
+        {
+          "value": "woo_lithuaniapost_lpexpress_terminal:12",
+          "checked": false,
+          "id": "shipping_method_0_woo_lithuaniapost_lpexpress_terminal12",
+          "label": "LP Express"
+        },
+        {
+          "value": "woo_lithuaniapost_lpexpress_terminal:15",
+          "checked": false,
+          "id": "shipping_method_0_woo_lithuaniapost_lpexpress_terminal15",
+          "label": "LP Express kurjeris: 3,99 €"
+        }
+      ],
+      "picked": "woo_lithuaniapost_lpexpress_terminal:12",
+      "picked_label": "LP Express"
+    },
+    "6_add_shipping_info_events": {
+      "new_events": []
+    },
+    "6_terminal_pick": {
+      "found": true,
+      "selects": [
+        {
+          "name": "woo_lithuaniapost_lpexpress_terminal_id",
+          "options_first5": [
+            {
+              "v": "Pasirinkti paštomatą",
+              "t": "Pasirinkti paštomatą"
+            },
+            {
+              "v": "7531",
+              "t": "Aibė (Udrop) - Erfurto g. 1"
+            },
+            {
+              "v": "0101",
+              "t": "Akropolis - Ozo g. 25"
+            },
+            {
+              "v": "0003",
+              "t": "Amatų skveras - Švitrigailos g. 13"
+            },
+            {
+              "v": "0115",
+              "t": "BIG - Ukmergės g. 369"
+            }
+          ],
+          "picked": "Pasirinkti paštomatą | Pasirinkti paštomatą"
+        }
+      ]
+    },
+    "7_pay_pick": {
+      "radios_info": [
+        {
+          "value": "paysera",
+          "checked": true,
+          "label": "\n\t\tMokėjimas internetu \t"
+        },
+        {
+          "value": "bacs",
+          "checked": false,
+          "label": "\n\t\tBankinis pavedimas \t"
+        }
+      ],
+      "picked": "bacs"
+    },
+    "7_add_payment_info_events": {
+      "new_events": []
+    },
+    "8_submit_events": {
+      "url_after": "https://dev.avesa.lt/checkout/",
+      "new_events": []
+    },
+    "9_duplicate_check": {
+      "skipped": "ne thank-you psl"
     }
-  }
+  },
+  "errors": [
+    "Prašome pasirinkti paštomatą"
+  ]
 }
