@@ -5,5 +5,37 @@
     - view_item value=73.9 items=1
 === 2. add_to_cart ===
   ATC paspaustas: {"clicked":true,"text":"Į krepšelį","classes":"single_add_to_cart_button button alt loading"}
-!!! EXCEPTION: page.evaluate: Execution context was destroyed, most likely because of a navigation
-    at /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:83:26
+  ATC navigated: false | Nauji e-commerce events: 0
+=== 3. view_cart — atidarom /cart/ ===
+  URL: https://dev.avesa.lt/cart/
+  Nauji events: 0
+=== 4. begin_checkout — atidarom /checkout/ ===
+  URL: https://dev.avesa.lt/checkout/
+  Nauji events: 0
+  screenshot: order_step4_checkout_empty.png
+=== 5. Uzpildom checkout forma ===
+  {"#billing_first_name":"set: Testas","#billing_last_name":"set: Testauskas","#billing_email":"set: terra@gyvunai.lt","#billing_phone":"set: +37060000000","#billing_address_1":"set: Bandymo g. 1","#billing_city":"set: Vilnius","#billing_postcode":"set: LT-01001"}
+=== 6. add_shipping_info — LP Express pastomatas ===
+  radios matomi: 4
+    - shopup_venipak_shipping_courier_method:2 | VENIPAK Kurjeris: 3,99 € [checked]
+    - shopup_venipak_shipping_pickup_method:3 | VENIPAK paštomatai/atsiėmimo punktai
+    - woo_lithuaniapost_lpexpress_terminal:12 | LP Express
+    - woo_lithuaniapost_lpexpress_terminal:15 | LP Express kurjeris: 3,99 €
+  pasirinkta: woo_lithuaniapost_lpexpress_terminal:12 / LP Express
+  Nauji events po shipping pasirinkimo: 0
+  terminal select: {"found":true,"selects":[{"name":"woo_lithuaniapost_lpexpress_terminal_id","options_first5":[{"v":"Pasirinkti paštomatą","t":"Pasirinkti paštomatą"},{"v":"7531","t":"Aibė (Udrop) - Erfurto g. 1"},{"v":"0101","t":"Akropolis - Ozo g. 25"},{"v":"0003","t":"Amatų skveras - Švitrigailos g. 13"},{"v":"011
+=== 7. add_payment_info — Bankinis pavedimas ===
+    payment: paysera | Mokėjimas internetu [checked]
+    payment: bacs | Bankinis pavedimas
+  pasirinkta: bacs
+  Nauji events po pay pasirinkimo: 0
+=== 8. SUBMIT — Atlikti uzsakyma ===
+  submit: {"clicked":true,"text":"Apmokėti","disabled":false}
+  Navigacija netikslinga (page.waitForURL: Timeout 30000ms exceeded.
+=========================== logs ====); tikrinam esamos psl busena
+  KLAIDOS checkout: ["Prašome pasirinkti paštomatą"]
+  Nauji events po submit: 0
+  screenshot: order_step8_after_submit.png (ne thank-you)
+=== 9. Thank-you psl - dublikato patikra (F5 reload) ===
+=== UZSAKYMO ID: undefined ===
+DONE
