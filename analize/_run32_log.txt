@@ -1,0 +1,32 @@
+FIX snippet id=648 active=true
+WCDN completedAttach cfg: {
+    "before": true,
+    "after": false
+}
+verify uzsakymas #34607
+=== VERIFY PO FIX ===
+{
+    "PRIES": {
+        "status": "on-hold",
+        "doc_type": "proforma",
+        "iapv": "IAPV000131",
+        "avpn": "AVPN000137"
+    },
+    "PO": {
+        "status": "completed",
+        "doc_type": "invoice",
+        "iapv": "IAPV000131",
+        "avpn": "AVPN000137",
+        "completed_pdf": "invoice-34607-1783803032.pdf"
+    },
+    "pdf_raw_IAPV": false,
+    "pdf_raw_AVPN": false,
+    "pdf_size": 33599,
+    "HOOK_LOG": [
+        "[completed p4 — PRIES funkcijos p5 generacija] meta=invoice status=completed",
+        "[completed p6 — PO funkcijos p5 generacijos] meta=invoice completed_pdf=invoice-34607-1783803032.pdf",
+        "[changed on-hold->completed — CIA persijungia] meta=invoice"
+    ]
+}
+verify order #34607 trynimas HTTP 200
+test snippet deakt
