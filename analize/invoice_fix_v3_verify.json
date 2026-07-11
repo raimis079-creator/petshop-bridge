@@ -1,0 +1,9 @@
+{
+  "scopes": {
+    "f3": "global",
+    "f648": "global",
+    "ra": "global"
+  },
+  "order_id": 34611,
+  "result": "{\n    \"ps_last_completed_attach\": {\n        \"time\": 1783805840,\n        \"order\": 34611,\n        \"ctx\": \"rest\",\n        \"atts\": [\n            \"PVM-saskaita-AVPN000141.pdf\"\n        ]\n    },\n    \"order\": {\n        \"status\": \"completed\",\n        \"doc_type\": \"invoice\",\n        \"completed_pdf\": \"PVM-saskaita-AVPN000141.pdf\",\n        \"avpn\": \"AVPN000141\"\n    }\n}"
+}
