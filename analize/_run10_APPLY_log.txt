@@ -1,0 +1,45 @@
+konsolidacija snippet id=630 active=true HTTP 200
+=== APPLY (HTTP 200) ===
+{
+    "senas_34526": {
+        "id": 34526,
+        "title": "Slapukų naudojimas",
+        "slug": "slapuku-politika",
+        "status": "publish"
+    },
+    "complianz_es": {
+        "id": 34591,
+        "title": "Slapukų politika (ES)",
+        "slug": "slapuku-politika-es",
+        "status": "publish"
+    },
+    "dabartinis_clean_slug_savininkas": {
+        "id": 34526,
+        "title": "Slapukų naudojimas"
+    },
+    "cmplz_cookie_url_PRIES": "https://dev.avesa.lt/slapuku-politika-es/",
+    "mode": "APPLY",
+    "PLANAS": {
+        "1_senas_34526": "slug -> slapuku-politika-old, status -> draft",
+        "2_complianz_es_34591": "slug -> slapuku-politika, title -> \"Slapuku politika\"",
+        "3_rezultatas": "/slapuku-politika/ = Complianz valdomas cookie-statement; /slapuku-politika-es/ 301 -> /slapuku-politika/ (wp_old_slug)"
+    },
+    "step1_senas": "OK (draft, slug=slapuku-politika-old)",
+    "step2_complianz": "OK",
+    "PO_clean_slug_savininkas": {
+        "id": 34591,
+        "title": "Slapukų politika",
+        "status": "publish"
+    },
+    "PO_ar_complianz_puslapis": "✅ TAIP (Complianz valdomas)",
+    "PO_complianz_slug": "slapuku-politika",
+    "PO_senas_status": "draft / slapuku-politika-old",
+    "cmplz_cookie_url_PO": "https://dev.avesa.lt/slapuku-politika/",
+    "es_old_slugs": []
+}
+=== URL patikra ===
+  /slapuku-politika/ -> 200
+  /slapuku-politika-es/ -> 404
+  /slapuku-politika-old/ -> 404
+deactivate 630 -> 200
+DONE
