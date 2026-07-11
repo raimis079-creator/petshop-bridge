@@ -1,0 +1,56 @@
+id=652
+{
+    "snippet_648": {
+        "id": "648",
+        "name": "Petshop Invoice Doc Type Fix v1 (LIVE)",
+        "active": "1"
+    },
+    "wcdn_completedAttach": false,
+    "wcdn_processingAttach": false,
+    "wcdn_keys_su_attach": {
+        "email": "terra@petshop.lt",
+        "showCustomerEmailLink": true,
+        "customerEmailText": "Peržiūrėti ir spausdinti",
+        "showAdminEmailLink": true,
+        "adminEmailText": "Print order",
+        "processingAttach": false,
+        "completedAttach": false,
+        "refundedAttach": false
+    },
+    "order_34608": {
+        "status": "completed",
+        "payment": "bacs",
+        "doc_type": "invoice",
+        "iapv": "IAPV000132",
+        "avpn": "AVPN000138",
+        "_petshop_order_pdf": "Isankstine-saskaita-IAPV000132.pdf",
+        "_petshop_completed_pdf": "Isankstine-saskaita-IAPV000132.pdf",
+        "_wcdn_invoice_pdf": "Invoice -34608-bf0b05cd28ae1ecb2cb0a2f3.pdf",
+        "_wcdn_invoice_pdf_token": "bf0b05cd28ae1ecb2cb0a2f3"
+    },
+    "wcdn_invoice_files_recent": [
+        "Invoice -34608-bf0b05cd28ae1ecb2cb0a2f3.pdf (21:16:06)",
+        "Isankstine-saskaita-IAPV000132.pdf (21:16:00)",
+        "Invoice -34608-f7e22af7f3fb8fd19f0743a3.pdf (21:14:47)",
+        "invoice-34607-1783803032.pdf (20:50:32)",
+        "Invoice -34607-4172c905478380cb4081305d.pdf (20:50:23)",
+        "invoice-34606-1783802813.pdf (20:46:53)",
+        "Invoice -34606-6d55f345626b7cac6dc48dd2.pdf (20:46:45)",
+        "Invoice -34603-4b071e2fc2feabecd5160e66.pdf (19:49:21)",
+        "invoice-34603-1783799350.pdf (19:49:10)",
+        "Invoice -34605-fb6033a12f39dba9f91bc41b.pdf (19:48:42)",
+        "Invoice -34603-d718d46622f633fcbba453e5.pdf (19:48:28)",
+        "Invoice -34604-ad9c05461258bfc5f2428c32.pdf (19:40:02)"
+    ],
+    "email_attach_hooks_DABAR": [
+        "p10:Tyche\\WCDN\\Integrations\\Emails::attach_pdfs",
+        "p10:Closure @ functions.php:505",
+        "p9999:petshop_remove_invoice_from_processing_email"
+    ],
+    "wpo_wcpdf_attach": {
+        "new_order": "1",
+        "customer_completed_order": "1",
+        "customer_invoice": "1"
+    },
+    "wpo_wcpdf_enabled": "1"
+}
