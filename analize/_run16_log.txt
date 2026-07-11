@@ -1,0 +1,162 @@
+precheck snippet id=635 HTTP 200
+=== RECON ===
+{
+    "payment_gateways": [
+        {
+            "id": "paysera",
+            "title": "Mokėjimas internetu",
+            "enabled": "yes",
+            "class": "Paysera_Payment_Gateway"
+        },
+        {
+            "id": "bacs",
+            "title": "Bankinis pavedimas",
+            "enabled": "yes",
+            "class": "WC_Gateway_BACS"
+        },
+        {
+            "id": "cheque",
+            "title": "Apmokėjimas čekiu",
+            "enabled": "no",
+            "class": "WC_Gateway_Cheque"
+        },
+        {
+            "id": "cod",
+            "title": "Apmokėjimas grynais atsiimant (COD)",
+            "enabled": "no",
+            "class": "WC_Gateway_COD"
+        }
+    ],
+    "shipping_zones": [
+        {
+            "name": "Neringos savivaldybe",
+            "locations": [
+                {
+                    "code": "LT",
+                    "type": "country"
+                },
+                {
+                    "code": "931*",
+                    "type": "postcode"
+                }
+            ],
+            "methods": [
+                {
+                    "id": "shopup_venipak_shipping_pickup_method",
+                    "title": "VENIPAK paštomatai/atsiėmimo punktai",
+                    "enabled": "yes",
+                    "instance": 9,
+                    "cost": null
+                },
+                {
+                    "id": "shopup_venipak_shipping_courier_method",
+                    "title": "VENIPAK Kurjeris",
+                    "enabled": "yes",
+                    "instance": 10,
+                    "cost": null
+                },
+                {
+                    "id": "woo_lithuaniapost_lpexpress_terminal",
+                    "title": "LP Express",
+                    "enabled": "yes",
+                    "instance": 13,
+                    "cost": "flat"
+                }
+            ]
+        },
+        {
+            "name": "Lietuva",
+            "locations": [
+                {
+                    "code": "LT",
+                    "type": "country"
+                }
+            ],
+            "methods": [
+                {
+                    "id": "free_shipping",
+                    "title": "Nemokamas pristatymas",
+                    "enabled": "no",
+                    "instance": 1,
+                    "cost": null
+                },
+                {
+                    "id": "shopup_venipak_shipping_courier_method",
+                    "title": "VENIPAK Kurjeris",
+                    "enabled": "yes",
+                    "instance": 2,
+                    "cost": null
+                },
+                {
+                    "id": "shopup_venipak_shipping_pickup_method",
+                    "title": "VENIPAK paštomatai/atsiėmimo punktai",
+                    "enabled": "yes",
+                    "instance": 3,
+                    "cost": null
+                },
+                {
+                    "id": "shopup_venipak_shipping_courier_method",
+                    "title": "VENIPAK Kurjeris",
+                    "enabled": "yes",
+                    "instance": 6,
+                    "cost": null
+                },
+                {
+                    "id": "shopup_venipak_shipping_courier_method",
+                    "title": "VENIPAK Kurjeris",
+                    "enabled": "yes",
+                    "instance": 7,
+                    "cost": null
+                },
+                {
+                    "id": "shopup_venipak_shipping_courier_method",
+                    "title": "VENIPAK Kurjeris",
+                    "enabled": "yes",
+                    "instance": 8,
+                    "cost": null
+                },
+                {
+                    "id": "woo_lithuaniapost_lpexpress_terminal",
+                    "title": "LP Express",
+                    "enabled": "yes",
+                    "instance": 12,
+                    "cost": "flat"
+                },
+                {
+                    "id": "woo_lithuaniapost_lpexpress_terminal",
+                    "title": "LP Express kurjeris",
+                    "enabled": "yes",
+                    "instance": 15,
+                    "cost": "weight"
+                }
+            ]
+        },
+        {
+            "name": "Baltijos šalys, be LIetuvos",
+            "locations": [
+                {
+                    "code": "EE",
+                    "type": "country"
+                },
+                {
+                    "code": "LV",
+                    "type": "country"
+                }
+            ],
+            "methods": [
+                {
+                    "id": "shopup_venipak_shipping_pickup_method",
+                    "title": "VENIPAK paštomatai/atsiėmimo punktai",
+                    "enabled": "yes",
+                    "instance": 5,
+                    "cost": null
+                }
+            ]
+        }
+    ],
+    "numeracija": {
+        "wcdn_last_invoice_number": false,
+        "wcdn_invoice_number_prefix": false,
+        "wcdn_invoice_number_start": 
+deactivate 635 -> 200
+DONE
