@@ -1,0 +1,22 @@
+=== 1. BLOG P0 straipsniai (turi buti 404 pagal v1.55) ===
+  /royal-canin-kaciu-maistas/  -> status undefined (final undefined)
+  /sterilizuotu-kaciu-maistas/  -> status undefined (final undefined)
+  /maistas-sterilizuotai-katei-su-antsvorio-problema/  -> status undefined (final undefined)
+=== 2. /exclusion QA gap (v1.56 #4: WP slug spejimas, x-redirect-by:WordPress = FAIL) ===
+  /exclusion  -> status undefined (final undefined)
+  /exclusion/  -> status undefined (final undefined)
+  /gamintojas/exclusion/  -> status undefined (final undefined)
+=== 3. Slapuku politika URL (v1.55 #6a: senas 34526 vs Complianz /slapuku-politika-es/) ===
+  /slapuku-politika/  -> status undefined (final undefined)
+  /slapuku-politika-es/  -> status undefined (final undefined)
+  /privatumo-politika/  -> status undefined (final undefined)
+=== 4. Footer nuoroda i slapuku politika (kur rodo realiai) ===
+  home fetch klaida: TypeError: fetch failed
+=== 5. Complianz baneris - pozicija (v1.56 #1: mobile turi buti sticky APACIOJE) ===
+  cmplz markup homepage HTML: false
+=== 6. Indexavimas (turi buti UZBLOKUOTAS dev, atidaromas launch diena) ===
+  robots.txt: undefined
+=== 7. Sitemap busena ===
+  /wp-sitemap.xml -> undefined (final undefined)
+  /sitemap.xml -> undefined (final undefined)
+  /sitemap_index.xml -> undefined (final undefined)
