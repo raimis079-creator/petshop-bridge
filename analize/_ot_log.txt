@@ -18,6 +18,7 @@
     value=73.9 cur=EUR items=1
     item[0]: id=HEPM11 brand=Exclusion price=73.9 qty=1
 === 6. Forma ===
+  test email: ga4test1783790464134@petshop.lt
 === 7. add_shipping_info (LP Express pastomatas) ===
   shipping: woo_lithuaniapost_lpexpress_terminal:12
   pastomatas: {"found":true,"picked":"7531","label":"Aibė (Udrop) - Erfurto g. 1"}
@@ -27,17 +28,21 @@
   add_payment_info: 0 event  ❌ NE
 === 9. purchase (place_order) ===
   place_order: true
-  ⚠ nesulaukta thank-you. URL=https://dev.avesa.lt/checkout/
-  WC klaida: Paskyra su tokiu el. pašto adresu jau yra sukurta. Prisijunkite.
-  purchase: 0 event  ❌ NE
-  order_id is URL: null
+  -> thank-you psl
+  purchase: 1 event  ✅
+    value=73.9 cur=EUR txn=34601 tax=12.83 ship=0 items=1
+    item[0]: id=HEPM11 brand=Exclusion price=73.9 qty=1
+    user_data: sha256_email_address | email_hash=aef20a92ac850699...
+  order_id is URL: 34601
 === 10. RE-VISIT (dublikato patikra) ===
+  purchase per re-visit: 0  ✅ idempotent
 === SUVESTINE ===
+  purchase_revisit: 0
   view_item: 1
   add_to_cart: 1
   view_cart: 1
   begin_checkout: 1
   add_shipping_info: 0
   add_payment_info: 0
-  purchase: 0
+  purchase: 1
 DONE
