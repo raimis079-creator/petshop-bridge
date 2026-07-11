@@ -1,0 +1,21 @@
+--- X mygtukas (cmplz-close) ---
+  Baneris matomas pries veiksma: true
+  Cookies PRIES: []
+  X rastas ir paspaustas: true
+  Baneris matomas PO veiksmo: false
+  Cookies PO: ["cmplz_banner-status=dismissed"]
+  Po navigacijos i kita psl. baneris vel matomas: false
+  Cookies po navigacijos: ["cmplz_banner-status=dismissed"]
+--- ATMESTI mygtukas (cmplz-deny) ---
+  Baneris matomas pries veiksma: true
+  Cookies PRIES: []
+  ATMESTI rastas ir paspaustas: true
+  Baneris matomas PO veiksmo: false
+  Cookies PO: ["cmplz_banner-status=dismissed","cmplz_consented_services=","cmplz_functional=allow","cmplz_marketing=deny","cmplz_policy_id=35","cmplz_preferences=deny","cmplz_statistics=deny"]
+  Po navigacijos i kita psl. baneris vel matomas: false
+  Cookies po navigacijos: ["cmplz_banner-status=dismissed","cmplz_consented_services=","cmplz_functional=allow","cmplz_marketing=deny","cmplz_policy_id=35","cmplz_preferences=deny","cmplz_statistics=deny"]
+=== ISVADA: ar X == ATMESTI? ===
+  X consent cookies: ["cmplz_banner-status=dismissed"]
+  ATMESTI consent cookies: ["cmplz_banner-status=dismissed","cmplz_marketing=deny","cmplz_statistics=deny"]
+  X ir ATMESTI vienodi (be banner-status): false
+DONE
