@@ -1,6 +1,11 @@
 === Kraunam prekes puslapi (mobile 390x844, svarus kontekstas -> baneris turi rodytis) ===
-!!! EXCEPTION: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/
-Call log:
-  - navigating to "https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/", waiting until "domcontentloaded"
-
-    at /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:62:14
+  Baneris RASTAS: .cmplz-cookiebanner
+  Klases: cmplz-cookiebanner banner-1 baneris-a optin cmplz-bottom-right cmplz-categories-type-view-preferences cmplz-show
+  Computed: {"position":"fixed","bottom":"0px","right":"0px","left":"0px","top":"480.812px","width":"390px","maxWidth":"none","margin":"0px","borderRadius":"12px","zIndex":"99999"}
+  Rect (px): {"x":0,"y":481,"w":390,"h":363} | viewport {"w":390,"h":844}
+  Ar dengia virsutini turini (prekes nuotrauka/pavadinima)? y=481 vs viewport h=844 -> true
+  Uzima 43% ekrano ploto
+  Screenshot issaugotas: screenshots/mobile_before_product.png
+=== Homepage mobile (papildomai) ===
+  Screenshot issaugotas: screenshots/mobile_before_home.png
+DONE
