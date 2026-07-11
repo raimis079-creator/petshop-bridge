@@ -46,7 +46,9 @@ const PROD = '/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiaulie
 
 (async () => {
   const R = {};
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  let browser;
+  try {
+  browser = await chromium.launch({ args: ['--no-sandbox'] });
   const ctx = await browser.newContext({
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 2,
@@ -114,8 +116,12 @@ const PROD = '/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiaulie
   putBinary('screenshots/mobile_before_home.png', shot2);
   L('  Screenshot issaugotas: screenshots/mobile_before_home.png');
 
-  await browser.close();
-  putText('banner_recon.json', JSON.stringify(R, null, 2));
-  putText('_shot_log.txt', out);
   L('DONE');
+  } catch (e) {
+    L('!!! EXCEPTION: ' + (e && e.stack ? e.stack : String(e)));
+  } finally {
+    try { if (browser) await browser.close(); } catch (e) {}
+    putText('banner_recon.json', JSON.stringify(R, null, 2));
+    putText('_shot_log.txt', out);
+  }
 })();
