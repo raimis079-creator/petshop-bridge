@@ -1,0 +1,4 @@
+{
+  "snippet_id": 630,
+  "dry": "{\n    \"senas_34526\": {\n        \"id\": 34526,\n        \"title\": \"Slapukų naudojimas\",\n        \"slug\": \"slapuku-politika\",\n        \"status\": \"publish\"\n    },\n    \"complianz_es\": {\n        \"id\": 34591,\n        \"title\": \"Slapukų politika (ES)\",\n        \"slug\": \"slapuku-politika-es\",\n        \"status\": \"publish\"\n    },\n    \"dabartinis_clean_slug_savininkas\": {\n        \"id\": 34526,\n        \"title\": \"Slapukų naudojimas\"\n    },\n    \"cmplz_cookie_url_PRIES\": \"https://dev.avesa.lt/slapuku-politika-es/\",\n    \"mode\": \"DRY-RUN\",\n    \"PLANAS\": {\n        \"1_senas_34526\": \"slug -> slapuku-politika-old, status -> draft\",\n        \"2_complianz_es_34591\": \"slug -> slapuku-politika, title -> \\\"Slapuku politika\\\"\",\n        \"3_rezultatas\": \"/slapuku-politika/ = Complianz valdomas cookie-statement; /slapuku-politika-es/ 301 -> /slapuku-politika/ (wp_old_slug)\"\n    }\n}"
+}
