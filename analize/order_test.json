@@ -1,0 +1,47 @@
+{
+  "steps": {
+    "1_view_item": {
+      "dl_len": 14,
+      "ecom_events": [
+        {
+          "event": "view_item",
+          "ecommerce": {
+            "currency": "EUR",
+            "value": 73.9,
+            "items_count": 1,
+            "items_summary": [
+              {
+                "item_id": "HEPM11",
+                "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+                "quantity": 1,
+                "price": 73.9,
+                "item_brand": "Exclusion"
+              }
+            ]
+          },
+          "user_data_present": false,
+          "user_data_email_hashed": null
+        },
+        {
+          "event": "view_item",
+          "ecommerce": {
+            "currency": "EUR",
+            "value": 73.9,
+            "items_count": 1,
+            "items_summary": [
+              {
+                "item_id": "HEPM11",
+                "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+                "quantity": 1,
+                "price": 73.9,
+                "item_brand": "Exclusion"
+              }
+            ]
+          },
+          "user_data_present": false,
+          "user_data_email_hashed": null
+        }
+      ]
+    }
+  }
+}
