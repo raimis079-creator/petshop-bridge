@@ -1,4 +1,27 @@
-parse: <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>403 Forbidden</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/iv-error-pages/error.css" rel="stylesheet"></head><body><main><h1>403</h1><p>You don’t have permission to view this resource.</p><
-customer role useriai: 0
-=== Trinsim testinius: []
+=== 1. DEPLOY nauja base.php ===
+  deploy snippet id=640
+{
+    "target": "wp-content/themes/flatsome-child/woocommerce-delivery-notes/base.php",
+    "old_size": 19429,
+    "old_writable": true,
+    "bak_original_created": "base.php.bak",
+    "ts_backup": "base.php.20260711193959.bak",
+    "written_bytes": 21523,
+    "new_size": 21523,
+    "verify_v26": true,
+    "verify_apmokejimo_budas": true,
+    "verify_ps_eur": true,
+    "verify_paybox": true,
+    "verify_paskirtis": true,
+    "DEPLOY_OK": true
+}
+  DEPLOY_OK=true
+=== 2. Testinis proforma uzsakymas ===
+  #34604
+  render-live snippet id=641
+  logo: http://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg w=1000
+  screenshot LIVE issaugotas
 DONE
+  uzsakymas #34604 trynimas HTTP 200
+  po trynimo HTTP 404 (404 puiku)
+  render snippet deakt
