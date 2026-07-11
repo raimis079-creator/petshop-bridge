@@ -1,0 +1,34 @@
+QA snippet id=633 active=true HTTP 200
+=== VIENO (exclusion) ===
+{
+    "6_qa_salyga": "301 su x-redirect-by:WordPress bare brand slug'ui = FAIL",
+    "tikrinta": 2,
+    "brendu": 1,
+    "pass": 0,
+    "fail": 2,
+    "verdiktas": "❌ 2 MELAGINGU PRAEJIMU",
+    "fail_details": [
+        {
+            "brand": "exclusion",
+            "name": "Exclusion",
+            "count": 78,
+            "url": "/exclusion",
+            "code": 301,
+            "xrb": "WordPress",
+            "redirects_to": "https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/",
+            "expected": "/gamintojas/exclusi
+=== VISU BRENDU ===
+  tikrinta URL: 216
+  brendu:       108
+  pass:         72
+  fail:         144
+  verdiktas:    ❌ 144 MELAGINGU PRAEJIMU
+  paveiktos prekes (fail_total): 4262
+  pirmi 5 fail:
+    [/8in1] -> https://dev.avesa.lt/product/8in1-delights-pro-dental-xs-kaulas-mazu-veisliu-sunims-7-vnt/ | brand=8in1 count=21
+    [/8in1/] -> https://dev.avesa.lt/product/8in1-delights-pro-dental-xs-kaulas-mazu-veisliu-sunims-7-vnt/ | brand=8in1 count=21
+    [/ambrosia] -> https://dev.avesa.lt/product/ambrosia-begrudis-su-eriena-ir-sviezia-elniena-sausas-maistas-sunims-grain-free-lamb-fresh-venison-12-kg/ | brand=ambrosia count=15
+    [/ambrosia/] -> https://dev.avesa.lt/product/ambrosia-begrudis-su-eriena-ir-sviezia-elniena-sausas-maistas-sunims-grain-free-lamb-fresh-venison-12-kg/ | brand=ambrosia count=15
+    [/animonda] -> https://dev.avesa.lt/product/animonda-carny-adult-beef-chicken-duck-heart-konservai-katems-su-sviezia-jautiena-vistiena-ir-anciu-sirdelemis-400-g/ | brand=animonda count=64
+deactivate 633 -> 200
+DONE
