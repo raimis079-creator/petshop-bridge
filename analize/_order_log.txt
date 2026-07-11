@@ -1,0 +1,9 @@
+=== 1. view_item — atidarom prekes psl ===
+  PRIIMTI paspaustas: true
+  dataLayer len=14 | e-commerce events=2
+    - view_item value=73.9 items=1
+    - view_item value=73.9 items=1
+=== 2. add_to_cart ===
+  ATC paspaustas: {"clicked":true,"text":"Į krepšelį","classes":"single_add_to_cart_button button alt loading"}
+!!! EXCEPTION: page.evaluate: Execution context was destroyed, most likely because of a navigation
+    at /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:83:26
