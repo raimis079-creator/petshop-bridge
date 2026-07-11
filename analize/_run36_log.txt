@@ -1,0 +1,20 @@
+FIX v2 id=653 active=true
+uzsakymas #34609
+=== END-TO-END TEST (tikras priedas) ===
+{
+    "before": {
+        "status": "on-hold",
+        "doc_type": "proforma"
+    },
+    "after": {
+        "status": "completed",
+        "doc_type": "invoice",
+        "avpn": "AVPN000139"
+    },
+    "FINAL_ATTACHMENTS": [
+        "PVM-saskaita-AVPN000139.pdf"
+    ],
+    "completed_pdf_meta": "PVM-saskaita-AVPN000139.pdf"
+}
+order #34609 trynimas 200
+test deakt
