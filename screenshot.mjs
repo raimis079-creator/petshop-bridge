@@ -46,7 +46,7 @@ async function snapshotDL(page, tag){
   return dl;
 }
 
-// Naujus event'us (nuo prieso indekso iki dabar)
+// Naujus eventus (nuo prieso indekso iki dabar)
 function newSince(all, prev){
   return all.slice(prev.length);
 }
@@ -88,7 +88,7 @@ function newSince(all, prev){
     const viEvents = newAfterVI.filter(e=>e && e.event==='view_item');
     R.events.view_item = viEvents.map(trimEvent);
     R.counts.view_item = viEvents.length;
-    L('  view_item event'u fire'ino: '+viEvents.length);
+    L('  view_item eventu fireino: '+viEvents.length);
     if(viEvents.length){
       const e = viEvents[0];
       const it = e.ecommerce && e.ecommerce.items && e.ecommerce.items[0];
@@ -113,7 +113,7 @@ function newSince(all, prev){
     const atcEvents = newAfterATC.filter(e=>e && e.event==='add_to_cart');
     R.events.add_to_cart = atcEvents.map(trimEvent);
     R.counts.add_to_cart = atcEvents.length;
-    L('  add_to_cart fire\'ino: '+atcEvents.length+(atcEvents.length===0?'  ⚠️ S168 bug'as? (Flatsome ne-AJAX)':''));
+    L('  add_to_cart fire\'ino: '+atcEvents.length+(atcEvents.length===0?'  ⚠️ S168 bugas? (Flatsome ne-AJAX)':''));
 
     // === 4. VIEW CART ===
     L('=== 4. view_cart (/cart/) ===');
@@ -266,7 +266,7 @@ function newSince(all, prev){
     R.thankyou_url = page.url();
     putBinary('screenshots/order_6_thankyou.png', await page.screenshot({fullPage:false}));
 
-    // === 10. THANK-YOU RE-VISIT (S168 bug'as: replay ant kiekvieno psl) ===
+    // === 10. THANK-YOU RE-VISIT (S168 bugas: replay ant kiekvieno psl) ===
     L('=== 10. RE-VISIT thankyou (patikra ar purchase dubliuojasi) ===');
     if(page.url().match(/order-received|thank/i)) {
       const tyUrl = page.url();
