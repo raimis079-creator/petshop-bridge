@@ -50,6 +50,7 @@ const PROD = '/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiaulie
   try {
   browser = await chromium.launch({ args: ['--no-sandbox'] });
   const ctx = await browser.newContext({
+    ignoreHTTPSErrors: true,
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 2,
     isMobile: true,
