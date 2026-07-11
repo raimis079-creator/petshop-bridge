@@ -1,0 +1,53 @@
+=== 1. Home + Priimti sutikima (kad Consent Mode duotu granted) ===
+  Priimti paspaustas: true
+  DL snapshot [home_post_accept]: 10 irasu
+=== 2. view_item (prekes puslapis) ===
+  DL snapshot [product_page]: 12 irasu
+  view_item eventu fireino: 0
+=== 3. add_to_cart (spausti "I krepseli") ===
+  ATC spaustas: true
+  DL snapshot [post_atc]: 14 irasu
+  add_to_cart fire'ino: 0  ⚠️ S168 bugas? (Flatsome ne-AJAX)
+=== 4. view_cart (/cart/) ===
+  DL snapshot [cart_page]: 12 irasu
+  view_cart fire'ino: 0
+=== 5. begin_checkout (/checkout/) ===
+  DL snapshot [checkout_page]: 12 irasu
+  begin_checkout fire'ino: 0
+=== 6. Uzpildom checkout forma ===
+    #billing_first_name -> "Testas"
+    #billing_last_name -> "Testauskas"
+    #billing_address_1 -> "Testinė g. 1"
+    #billing_city -> "Vilnius"
+    #billing_postcode -> "01001"
+    #billing_phone -> "+37060000000"
+    #billing_email -> "terra@gyvunai.lt"
+=== 7. add_shipping_info (LP Express pastomatas) ===
+  shipping input info: [{"id":"shipping_method_0_shopup_venipak_shipping_courier_method2","val":"shopup_venipak_shipping_courier_method:2","checked":true},{"id":"shipping_method_0_shopup_venipak_shipping_pickup_method3","val":"shopup_venipak_shipping_pickup_method:3","checked":false},{"id":"shipping_method_0_woo_lithuaniapost_lpexpress_terminal12","val":"woo_lithuaniapost_lpexpress_terminal:12","checked":false},{"id":"s
+  pasirinkta: woo_lithuaniapost_lpexpress_terminal:12
+  paštomato select: {"found":true,"picked":"7531","label":"Aibė (Udrop) - Erfurto g. 1"}
+  DL snapshot [post_shipping]: 12 irasu
+  add_shipping_info fire'ino: 0
+=== 8. add_payment_info (bacs) ===
+  payment options: [{"id":"payment_method_paysera","val":"paysera","checked":true},{"id":"payment_method_bacs","val":"bacs","checked":false}]
+  pasirinkta: bacs
+  DL snapshot [post_payment]: 12 irasu
+  add_payment_info fire'ino: 0
+=== 9. purchase (Atlikti uzsakyma) ===
+  place_order spaustas: true
+  perkeltas i thank-you psl
+  DL snapshot [thankyou_page]: 12 irasu
+  purchase fire'ino: 0
+=== 10. RE-VISIT thankyou (patikra ar purchase dubliuojasi) ===
+  DL snapshot [thankyou_revisit]: 10 irasu
+  purchase revisit fire'ino: 0  ✅ idempotent
+=== SUVESTINE (event'u kiekiai) ===
+  view_item: 0
+  add_to_cart: 0
+  view_cart: 0
+  begin_checkout: 0
+  add_shipping_info: 0
+  add_payment_info: 0
+  purchase: 0
+  purchase_on_revisit: 0
+DONE
