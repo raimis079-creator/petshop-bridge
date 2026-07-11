@@ -1,0 +1,6 @@
+{
+  "fix_id": 648,
+  "wcdn_cfg": "{\n    \"before\": true,\n    \"after\": false\n}",
+  "order_id": 34607,
+  "verify": "{\n    \"PRIES\": {\n        \"status\": \"on-hold\",\n        \"doc_type\": \"proforma\",\n        \"iapv\": \"IAPV000131\",\n        \"avpn\": \"AVPN000137\"\n    },\n    \"PO\": {\n        \"status\": \"completed\",\n        \"doc_type\": \"invoice\",\n        \"iapv\": \"IAPV000131\",\n        \"avpn\": \"AVPN000137\",\n        \"completed_pdf\": \"invoice-34607-1783803032.pdf\"\n    },\n    \"pdf_raw_IAPV\": false,\n    \"pdf_raw_AVPN\": false,\n    \"pdf_size\": 33599,\n    \"HOOK_LOG\": [\n        \"[completed p4 — PRIES funkcijos p5 generacija] meta=invoice status=completed\",\n        \"[completed p6 — PO funkcijos p5 generacijos] meta=invoice completed_pdf=invoice-34607-1783803032.pdf\",\n        \"[changed on-hold->completed — CIA persijungia] meta=invoice\"\n    ]\n}"
+}
