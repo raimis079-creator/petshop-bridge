@@ -1,0 +1,306 @@
+=== 1. WP REST namespaces ===
+  namespaces: ["oembed/1.0","code-snippets/v1","unisend","wcdn/v1","wc/v3","wc/v1","wc/pos/v1/catalog","wp-all-import/v1","paysera/v1","jetpack/v4","complianz/v1","wc-admin","wc-analytics","wc/store","wc/store/v1","wc/private","wc/v2","wc-admin-email","wc-push-notifications","wc-telemetry","wccom-site/v3","wp-abilities/v1","wp/v2","wp-site-health/v1","wp-block-editor/v1"]
+  code-snippets yra: true
+=== 2. code-snippets REST snippets (jei yra) ===
+  GET /code-snippets/v1/snippets -> HTTP 200
+  snippet skaicius: 292
+    #1 [off] global :: Make upload filenames lowercase
+    #2 [off] front-end :: Disable admin bar
+    #3 [off] global :: Allow smilies
+    #4 [off] content :: Current year
+    #5 [off] global :: petshop kategorijos v2
+    #8 [off] global :: petshop menu subcats v1
+    #9 [off] global :: etshop sunims menu v1
+    #10 [off] global :: petshop sunims menu v2
+    #11 [off] global :: petshop katems menu v1
+    #12 [off] global :: petshop remaining menus v1
+    #13 [off] global :: petshop remap categories v1
+    #14 [off] global :: petshop remap categories v2
+    #15 [off] global :: petshop cleanup empty cats v1
+    #16 [off] global :: Petshop reset menu options v1 
+    #72 [off] global :: del pauksciu
+    #71 [off] global :: Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis)
+    #70 [off] global :: Tikri slug
+    #40 [off] global :: ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas
+    #41 [off] global :: Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg
+    #42 [off] global :: ZB prekės be aprašymo
+    #44 [off] global :: Pataisyti prekes su per dideliais matmenimis - kurjeris
+    #47 [off] global ::  Base64 aprašymo pavyzdys
+    #48 [off] global :: Base64 nuotraukos išvalymas iš aprašymų
+    #50 [off] global :: ZB prekių skaičius1
+    #51 [off] global :: ZB brendų priskyrimas brand taksonomijoje1.1
+    #52 [off] global :: ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas
+    #53 [off] global :: ZB prekės be brando — priskirti iš pavadinimo
+    #54 [off] global :: 4 likusių prekių brandų priskyrimas
+    #55 [off] global :: ZB prekės be nuotraukos
+    #56 [off] global :: ZB nuotraukų importas iš katalogo
+    #58 [off] global :: Patikrinti paieškos HTML struktūrą
+    #59 [off] global :: ZB nuotraukų importas — pataisytas URL
+    #60 [off] global :: atikrinti filterSearch HTML
+    #61 [off] global :: ZB nuotraukų indekso kūrimas iš brendų puslapių
+    #62 [off] global :: Patikrinti brendų puslapio HTML struktūrą
+    #63 [off] global :: ZB indekso kūrimas v2 — data-lazyloadsrc iš sąrašo
+    #64 [off] global :: ZB indekso kūrimas v3 — su ilgesnėmis pauzėmis
+    #65 [off] global :: ZB indekso kūrimas v3 — admin_init
+    #66 [off] global :: ZB indekso kūrimas — per admin puslapį
+    #397 [off] global :: Monoprotein Dry-Run v5 (daugiau brendu)
+    #75 [off] global :: Masinis pa_pakuotes_dydis priskyrimas iš pavadinimų
+    #76 [off] global :: Tikrina prekes kur kg = gyvūno svoris, ne pakuotė
+    #78 [off] global :: Tikrina naujos prekės meta laukus
+    #79 [off] global :: Palygina kainas tarp seno ir naujo XML
+    #80 [off] global :: Perskaičiuoja visų ZB prekių kainas pagal naują logiką
+    #81 [off] global :: Tikrina dublikatus pagal SKU
+    #82 [off] global :: Perkelia aprašymus + nuotraukas iš NAUJŲ (2026-06-01) į SENUS (2026-05-27)
+    #83 [off] global :: Parodo "Kita" prekių ZB kategorijų kelius iš XML
+    #84 [off] global :: Priskiria WC kategorijas "Kita" prekėms pagal ZB XML <category> kelią
+    #86 [off] global :: Tikrina kodėl ZB prekės su cost >= 8 yra draft
+    #87 [off] global :: Kelia į publish ZB draft prekes, kurios atitinka VISUS kriterijus
+    #88 [off] global :: kiek iš paskelbtų yra ZB prekės
+    #90 [off] global :: FBT pradinis konfigūravimas — sausas maistas → skanėstai
+    #92 [off] global :: VetFarmas inventorizacija v3
+    #94 [off] global :: SKU \u2192 EAN matching i\u0161 VetFarmas XML
+    #95 [off] global :: Vetocanis matching pagal pavadinim\u0105
+    #96 [off] global :: VetFarmas API helper
+    #98 [off] global :: vf_desc_peek
+    #101 [off] global :: vf_parser_v3
+    #468 [off] global :: Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)
+    #469 [ON ] global :: Petshop Dev App Passwords v1
+    #472 [ON ] global :: Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)
+    #473 [off] global :: Petshop Attr Modulis: Kraikai Katems v1.0 (parseris + dry/apply)
+    #105 [off] global :: EAN normalizacija — _global_unique_id 13→12 skaitm.
+    #106 [off] global :: WooCommerce kategorijų eksportas — hierarchija + prekių skaičius
+    #393 [off] global :: Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis)
+    #394 [off] global :: Monoprotein Dry-Run v2 (isvestinis)
+    #395 [off] global :: Monoprotein Dry-Run v3 (sudetis-grieztas)
+    #396 [off] global :: Monoprotein Dry-Run v4 (brendai + riebalu fix)
+    #110 [off] global :: ZB IMPORT LOG STEBĖJIMAS — realiu laiku
+    #385 [off] global :: Baltymu Saltinis Apply Sausas Aprasymai v1 (32 svarus)
+    #386 [off] global :: Baltymu Saltinis Apply Sausas EXOTIC v1
+    #387 [off] global :: Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi)
+    #116 [off] global :: Trash zonos pakitimo tyrimas
+    #120 [off] global :: Cleanup Excluded
+    #121 [off] global :: trash_disappear
+    #388 [off] global :: Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena)
+    #389 [off] global :: Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem)
+    #124 [off] global :: zb_disaster_recovery
+    #125 [off] global :: publish_diag
+    #126 [off] global :: zb_recovery2
+    #127 [off] global :: ZB analitinis snippet'as — DUOMENYS ZB politikai v2
+    #373 [off] global :: Atributai Inventorius v2 (tikslus slug)
+    #372 [off] global :: tributai Inventorius v1 (read-only)
+    #371 [off] global :: Draft Publish Vykdymas v1
+    #129 [off] global :: Today Changes
+    #130 [off] global :: Duplicate analyze
+    #131 [off] global :: ZB Nuke Option
+    #132 [off] global :: New ZB Diag
+    #133 [off] global :: zb_nuke_today
+    #134 [off] global ::  assign_categories v3
+    #136 [off] global :: assign_categories v2
+    #138 [off] global :: Abakus Unpublish
+    #153 [off] global :: petshop.lt WEIGHT NORMALIZER
+    #155 [off] global :: petshop_brand_apply v7
+    #156 [off] global :: Prekių ženklai labels
+    #158 [off] global ::  WC Categories — pre-VF-mapping cleanup
+    #460 [off] global :: Transportavimo dezes rename - sunims/katems galune
+    #461 [ON ] global :: Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS
+    #462 [off] global :: Petshop Atributu Auditas v1.0 (read-only, ko truksta)
+    #463 [ON ] global :: Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)
+    #454 [off] global :: Elmo (23996) -> Narvai ir aksesuarai grauzikams (304)
+    #455 [off] global :: Guoliai katems - gyvuno_rusis fix
+    #457 [off] global :: Guoliu/transporto/narvu blokas - pa_tipas + pa_dydis APPLY
+    #458 [off] global :: 233 pervadinimas: Guoliai sunims
+    #459 [off] global :: Guoliu/transporto YITH preset - guoliu-transporto-filtras
+    #161 [off] global ::  VF Brands List
+    #447 [off] global :: Guoliai (sunims + katems) - zvalgyba
+    #448 [off] global :: Kategoriju zemelapis - guoliai/boksai/transportavimas
+    #449 [off] global :: Transportas/guoliai/narvai CHAOS - kryzmine zvalgyba
+    #450 [off] global :: KATEMS -> Guoliai katems - VIENOS kategorijos sukurimas
+    #451 [off] global :: Guoliai/transportas/narvai - PERKELIMO DRY-RUN (read-only)
+    #452 [off] global :: Guoliai/transportas/narvai - PERKELIMO DRY-RUN v2 (read-only)
+    #163 [off] global :: VF Raw XML Sample
+    #433 [off] global :: YITH preset struktura - zvalgyba (read-only)
+    #434 [off] global :: Vitaminu YITH preset - sukurimas (klonas)
+    #441 [off] global :: Antkakliu YITH preset - sukurimas (klonas)
+    #442 [off] global :: Antkakliu MOVE-OUT - kategoriju perkelimas
+    #443 [off] global :: Dubeneliai sunims (111) - zvalgyba
+    #445 [off] global :: Dubeneliai (111) - ATRIBUTU APPLY
+    #446 [off] global :: Dubeneliu YITH preset - sukurimas (klonas)
+    #167 [off] global :: Account Wide Inode Scan v1
+    #401 [off] global :: Monoprotein Diag (kodel 183 -> 164)
+    #402 [off] global :: Monoprotein Apply v2 (n-acknowledgment)
+    #403 [off] global :: Atributu dengties diagnostika (maistas/konservai/skanestai)
+    #404 [off] global :: Kategoriju medis + gyvuno rusies terminai (zvalgyba)
+    #405 [off] global :: Gyvuno rusis is kategorijos - DRY RUN (visas katalogas)
+    #406 [off] global :: Gyvuno rusis is kategorijos - APPLY (visas katalogas)
+    #407 [off] global :: Pakuotes dydis - zvalgyba (maistui)
+    #408 [off] global :: Pakuotes dydis (maistui) - DRY RUN
+    #409 [off] global :: Pakuotes dydis (maistui) - APPLY
+    #410 [off] global :: Baltymu saltinis - likucio zvalgyba
+    #411 [off] global :: Baltymu saltinis is pavadinimo - DRY RUN (likutis)
+    #412 [off] global :: Baltymu saltinis is pavadinimo - APPLY (likutis)
+    #413 [off] global :: Amzius - zvalgyba (maistui)
+    #414 [off] global :: Amzius is pavadinimo - DRY RUN (maistui)
+    #415 [off] global :: Amzius is pavadinimo - APPLY (maistui)
+    #416 [off] global :: Grudai - zvalgyba (sudeties skeneriui)
+    #417 [off] global :: Grudai (3 pakopos) is sudeties - DRY RUN
+    #418 [off] global :: Grudai (3 pakopos) is sudeties - APPLY
+    #419 [off] global :: Speciali mityba - zvalgyba (maistui)
+    #420 [off] global :: Speciali mityba is pavadinimo - DRY RUN (maistui)
+    #421 [off] global :: Speciali mityba is pavadinimo - APPLY (maistui)
+    #422 [off] global :: Monoprotein - likucio zvalgyba
+    #423 [off] global :: Monoprotein - TIK akivaizdus (zvalgyba)
+    #424 [off] global :: Monoprotein - TIK akivaizdus -> Taip (APPLY)
+    #187 [off] global :: VF Price Sync
+    #190 [off] global :: VF Price Repair v2
+    #400 [off] global :: Monoprotein Apply v1 (183 Taip)
+    #193 [off] global :: Petshop SKU Supplier Info Lookup v1 (prekiu savikainai ieskoti)
+    #194 [off] global :: Venipak Shipping Lock v3
+    #196 [off] global :: Cart Cross-sell Source Filter v1 (tas pats sandelis)
+    #197 [off] global :: Petshop Find Crosssell v1 (diagnostika)
+    #198 [off] global :: Petshop Find Pricing Caller v1 (diagnostika)
+    #398 [off] global :: Monoprotein Dry-Run v6 (Farmina + Landfleisch)
+    #390 [off] global :: Baltymu Saltinis Apply Sausas Skonis v5 (multi + Paukstiena)
+    #391 [off] global :: Baltymu Saltinis Konservai Skonis Dry-Run v1 (platus, v5 variklis)
+    #392 [off] global :: Baltymu Saltinis Apply Konservai Skonis v1 (multi)
+    #205 [off] global :: ZB->Legacy Conversion v1 (excluded_brand trash -> Legacy draft)
+    #219 [off] global :: FBT Inspect v1 (read-only)
+    #220 [off] global :: FBT Inspect v2 (read-only)
+    #432 [off] global :: Vitaminai/papildai - APPLY (paskirtis+forma)
+    #224 [off] global :: Sale Clean v1 (Legacy akciju valymas)
+    #464 [ON ] global :: Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)
+    #234 [off] global :: VF Gallery Dup Clean v1
+    #239 [ON ] global :: Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)
+    #240 [off] global :: Clean Big Image Sizes v1
+    #465 [ON ] global ::  Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)
+    #425 [off] global :: Monoprotein - TIK akivaizdus -> Taip (APPLY)
+    #426 [off] global :: Monoprotein - TIK akivaizdus -> Taip (APPLY)
+    #427 [off] global :: Vitaminai/papildai - zvalgyba v1 (read-only)
+    #428 [off] global :: Vitaminai/papildai - dry-run v1 (paskirtis+forma)
+    #254 [off] global :: VF Block Before Create v2.0
+    #429 [off] global :: Vitaminai/papildai - dry-run v1 (paskirtis+forma)
+    #430 [off] global :: Vitaminai/papildai - dry-run v2 (NAME-ONLY)
+    #431 [off] global :: Vitaminai/papildai - REVIEW aprasymu dump (read-only)
+    #258 [off] global :: ZB Pricing State Check v1 (read-only)
+    #370 [off] global :: Draft Publish Patikra v2
+    #369 [off] global :: Draft Publish Patikra v1
+    #368 [off] global :: Kita Finalas v1
+    #367 [off] global :: Kita Liko Diagnostika v2
+    #365 [off] global :: Kategoriju Turinys v1
+    #366 [off] global :: Aksesuaru Grupes v2
+    #364 [off] global :: Aksesuaru Grupes v1
+    #384 [off] global :: Baltymu Saltinis Sausas Aprasymai Dry-Run v2 (aliej/tauk isimtis)
+    #375 [ON ] global :: Baltymu Saltinis Dry-Run Konservai v2
+    #374 [off] global :: Baltymu Saltinis Dry-Run Konservai v1
+    #281 [off] global :: ZB Trash Sutvarkymas v2
+    #453 [off] global :: Guoliai/transportas/narvai - PERKELIMO APPLY
+    #284 [off] global :: VF Supplier SKU Backfill v1
+    #286 [off] global :: VF Dublikatu Valymas v1
+    #289 [off] global :: ZB Excluded Dublikatu Valymas v1
+    #291 [off] global :: Kategoriju Zemelapis v1
+    #293 [off] global :: Legacy Publish Grazinimas v1
+    #296 [off] global :: Brandu Priskyrimas pagal Pavadinima v1
+    #298 [off] global :: Brandu Priskyrimas pagal Pavadinima v1
+    #301 [off] global :: Hau Miau Priskyrimas v1
+    #303 [off] global :: Maisto Atributu Rasymas v1
+    #306 [off] global :: Trash 2 Diagnoze v1
+    #310 [off] global :: Pakuotes Dydzio Rasymas v1
+    #313 [off] global :: Pakuotes Terminu Valymas v1
+    #317 [off] global :: Skanestu Gyvuno Ikelimas v1
+    #318 [off] global :: Filtru Terminu Tvarka v1
+    #322 [off] global :: Filtru Accordion JS v1
+    #323 [off] global :: Filtru Funkcijos JS v1 (order + accordion)
+    #324 [off] global :: Petshop Filtrai PILNAS v1
+    #325 [off] global :: Petshop Filtrai PILNAS v2
+    #380 [off] global :: Baltymu Saltinis Dry-Run Sausas v1
+    #381 [off] global :: Baltymu Saltinis Apply Sausas v1 (SINGLE)
+    #382 [off] global :: Baltymu Saltinis Sausas Aprasymai Dry-Run v1
+    #383 [off] global :: Baltymu Saltinis Apply Sausas RoyalCanin v1
+    #329 [ON ] global :: Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]
+    #399 [off] global :: Monoprotein Dry-Run v7 (Family / Monge kons. / Animonda VF / kt.)
+    #332 [ON ] global :: Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]
+    #435 [off] global :: Kategoriju medis - prieziura (zvalgyba)
+    #436 [off] global :: Vitaminu MOVE-OUT - kategoriju perkelimas
+    #437 [off] global :: Antkakliai/pavadeliai sunims (116) - zvalgyba
+    #440 [off] global :: Antkakliai/pavadeliai (116) - ATRIBUTU APPLY
+    #379 [off] global :: Baltymu Saltinis Apply Skanestai v2 (SINGLE)
+    #348 [off] global :: Nepriskirtu Prekiu Patikra v2
+    #378 [off] global :: Baltymu Saltinis Apply Skanestai v1 (SINGLE)
+    #377 [off] global :: Baltymu Saltinis Dry-Run Skanestai v1
+    #376 [off] global :: Baltymu Saltinis Apply Konservai v1 (SINGLE)
+    #343 [off] global :: Visos Kategorijos Pilnas Sarasas v1
+    #345 [off] global :: Snippetu Sarasas v1
+    #346 [off] global :: Snippetu Valymas v1
+    #476 [off] global :: Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)
+    #477 [off] global :: Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)
+    #480 [off] global :: Petshop Attr Modulis: Draskykles Katems v1.2 (image-verified map)
+    #481 [off] global :: Petshop Attr Modulis: Draskykles Katems v1.0 (parseris + dry/apply)
+    #484 [off] global :: Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)
+    #485 [off] global :: Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)
+    #486 [off] global :: Petshop Attr Modulis: Sampunai Sunims v1.0 (parseris + dry/apply)
+    #492 [ON ] global :: Petshop Filtru Atidarymas v2 (CSS+JS)
+    #493 [ON ] global :: Petshop Filtru Atidarymas v1 (no lazy-load)
+    #494 [ON ] global :: Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)
+    #495 [off] global :: Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)
+    #502 [ON ] global :: Higienos Modulis v1.0
+    #503 [ON ] global :: Grauziko Rusis Modulis v1.2
+    #507 [ON ] global :: Paukscio Rusis Modulis v1.3
+    #509 [ON ] global :: Zuvies Rusis Modulis v1.0
+    #510 [ON ] global :: Pasaro Forma Modulis v1.1
+    #512 [ON ] global :: Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)
+    #513 [ON ] global :: Petshop Katalogo Auditas v1 (read-only)
+    #514 [ON ] global :: Petshop Import-Risk Recon v1 (read-only)
+    #518 [ON ] global :: Petshop Slėpti svorį ir dimensijas v1 (display only)
+    #520 [ON ] front-end :: Petshop Meniu Grupavimas v1 (komerciniai 3)
+    #524 [ON ] global :: Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)
+    #525 [ON ] global :: Petshop UI: kortelės + mobile sticky ATC
+    #532 [ON ] global :: Petshop MnM Fiksuoti komponentų kiekiai v2
+    #535 [ON ] global :: Petshop MnM Sutaupymo žymeklis v7 (be badge)
+    #539 [ON ] admin :: Petshop Rinkinių Kūrimo Forma v2
+    #547 [ON ] global :: Petshop Susidėjimo Rinkinio Vitrina v19
+    #550 [ON ] admin :: Petshop Susidėjimo Rinkinio Kūrimo Forma v15
+    #625 [off] front-end :: TEMP — Footer DUK fix (token)
+    #624 [off] front-end :: TEMP — Paysera recon v1 (token)
+    #555 [off] global :: PSC LATERD
+    #556 [off] global :: PSC TEST170
+    #557 [off] global :: PSC VB
+    #571 [off] global :: Petshop Pasiulymai Bendras Shortcode v1.0
+    #558 [ON ] global :: Petshop Choice Krepšelio Elgsena
+    #560 [ON ] front-end :: Petshop Rinkinio CTA Banneris kategorijose v7
+    #559 [off] front-end :: Petshop Rinkinio CTA Banneris kategorijose v1
+    #561 [ON ] front-end :: Petshop Rinkinių Gyvūno Filtras v1
+    #566 [ON ] global :: Petshop Akcijos Shortcode v1.3
+    #563 [ON ] front-end :: Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)
+    #562 [ON ] front-end :: Petshop Sprendimai Shortcode Variklis v9
+    #565 [ON ] global :: Petshop VF Sync v1.1 (reprice+stock+publish)
+    #567 [ON ] global :: Petshop Daugiau=Pigiau Stock Sync v1.2
+    #568 [ON ] global :: Petshop Daugiau=Pigiau Display v1.2
+    #569 [ON ] global :: Petshop Pack/Rinkinys Auto-Categories v1.3
+    #570 [ON ] global :: Petshop Daugiau=Pigiau Puslapis Shortcode v1.0
+    #572 [ON ] admin :: Petshop Daugiau=Pigiau Šablono Kūrimo Forma v8
+    #573 [ON ] global :: Petshop DP Kortelės Ženkliukas v4
+    #623 [off] front-end :: TEMP — Complianz layout fix v2 (token)
+    #582 [ON ] global :: Petshop LP Terminalu Svorio Riba v1 (29.90kg)
+    #622 [off] front-end :: TEMP — Complianz CSS regen v2 (token)
+    #587 [ON ] global :: Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1
+    #621 [off] front-end :: TEMP — Complianz banner edit v1 (token)
+    #620 [off] front-end :: TEMP — Complianz banner probe v1 (token)
+    #619 [ON ] front-end :: Petshop Consent Bridge v1.2 (Complianz -> GTM)
+    #594 [ON ] global :: Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1
+    #618 [off] front-end :: TEMP — Complianz integracijos probe v2 (token)
+    #617 [off] front-end :: TEMP — Complianz options probe v1 (token)
+    #616 [off] front-end :: TEMP — Complianz aktyvavimas v1 (token)
+    #615 [ON ] front-end :: Petshop GTM Snippet v1.0 (GTM-MF3GZGT)
+    #614 [ON ] front-end :: Petshop DataLayer v1.1 (GA4 ecommerce)
+    #609 [ON ] front-end :: SEO Auto H1 v1 (page fallback + _petshop_h1)
+    #610 [ON ] front-end :: Petshop Topbar v2
+    #611 [off] global :: Petshop Frontpage Setter v1 (TEMP)
+    #612 [off] global :: Petshop Bulk Snippet Delete v2 (TEMP)
+    #613 [ON ] front-end :: Petshop Shop→Parduotuvė 301 v1 (LIVE)
+=== 3. Dabartinis banner custom_css (per layout_fix DRY token) ===
+  layout_fix DRY neatsake JSON (gal snippet deaktyvuotas): <!DOCTYPE html>
+<html lang="lt-LT" class="loading-site no-js">
+<head>
+	<meta charset="UTF-8" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://dev.avesa.lt/x
+DONE
