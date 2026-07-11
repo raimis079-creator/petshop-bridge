@@ -1,0 +1,18 @@
+=== CREATE snippet -> HTTP 200
+  snippet id=626 active=true code_len=5898
+  READBACK active=true code_len=5898 has_APPLY_MOBILE=true
+=== DRY trigger -> HTTP 200
+{
+    "mode": "DRY-RUN",
+    "PRIES": {
+        "banner_version": "39",
+        "use_custom_cookie_css": "1",
+        "custom_css_ilgis": 915,
+        "turi_mobile_42vh": "ne"
+    },
+    "PLANUOJAMA": {
+        "custom_css_ilgis": 2232,
+        "banner_version": 40
+    }
+}
+DONE
