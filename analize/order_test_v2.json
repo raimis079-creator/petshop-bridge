@@ -1,0 +1,94 @@
+{
+  "events": {
+    "view_item": [
+      {
+        "event": "view_item",
+        "ecommerce": {
+          "currency": "EUR",
+          "value": 73.9,
+          "items_count": 1,
+          "items": [
+            {
+              "item_id": "HEPM11",
+              "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+              "price": 73.9,
+              "quantity": 1,
+              "item_brand": "Exclusion"
+            }
+          ]
+        }
+      }
+    ],
+    "add_to_cart": [
+      {
+        "event": "add_to_cart",
+        "ecommerce": {
+          "currency": "EUR",
+          "value": 73.9,
+          "items_count": 1,
+          "items": [
+            {
+              "item_id": "HEPM11",
+              "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+              "price": 73.9,
+              "quantity": 1,
+              "item_brand": "Exclusion"
+            }
+          ]
+        }
+      }
+    ],
+    "view_cart": [
+      {
+        "event": "view_cart",
+        "ecommerce": {
+          "currency": "EUR",
+          "value": 73.9,
+          "items_count": 1,
+          "items": [
+            {
+              "item_id": "HEPM11",
+              "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+              "price": 73.9,
+              "quantity": 1,
+              "item_brand": "Exclusion"
+            }
+          ]
+        }
+      }
+    ],
+    "begin_checkout": [
+      {
+        "event": "begin_checkout",
+        "ecommerce": {
+          "currency": "EUR",
+          "value": 73.9,
+          "items_count": 1,
+          "items": [
+            {
+              "item_id": "HEPM11",
+              "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+              "price": 73.9,
+              "quantity": 1,
+              "item_brand": "Exclusion"
+            }
+          ]
+        }
+      }
+    ],
+    "add_shipping_info": [],
+    "add_payment_info": [],
+    "purchase": []
+  },
+  "counts": {
+    "view_item": 1,
+    "add_to_cart": 1,
+    "view_cart": 1,
+    "begin_checkout": 1,
+    "add_shipping_info": 0,
+    "add_payment_info": 0,
+    "purchase": 0
+  },
+  "thankyou_url": "https://dev.avesa.lt/checkout/",
+  "order_id": null
+}
