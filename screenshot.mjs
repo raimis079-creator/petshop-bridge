@@ -2,330 +2,279 @@ import { execSync } from "child_process";
 import fs from "fs";
 import { chromium } from "playwright";
 
-function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'ga4 '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
+function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'ord '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
 function putBinary(path,buf){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/'+path;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'img '+path,branch:'main',content:buf.toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));const r=execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
 
 let out='';const L=s=>{out+=s+'\n';console.log(s);};
 const BASE='https://dev.avesa.lt';
 const PROD='/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/';
 
-// Filtruoja dataLayer i tik e-commerce eventus
-function ecomEvents(dl) {
-  return (dl || []).filter(e => e && typeof e === 'object' && e.event && /view_item|add_to_cart|view_cart|begin_checkout|add_shipping_info|add_payment_info|purchase|remove_from_cart|select_item/.test(String(e.event)));
-}
-function summarize(events) {
-  return events.map(e => ({
-    event: e.event,
-    ecommerce: e.ecommerce ? {
-      currency: e.ecommerce.currency,
-      value: e.ecommerce.value,
-      transaction_id: e.ecommerce.transaction_id,
-      tax: e.ecommerce.tax,
-      shipping: e.ecommerce.shipping,
-      coupon: e.ecommerce.coupon,
-      items_count: (e.ecommerce.items || []).length,
-      items_summary: (e.ecommerce.items || []).map(i => ({
-        item_id: i.item_id, item_name: (i.item_name||'').slice(0,50), quantity: i.quantity, price: i.price, item_brand: i.item_brand
-      })),
-      payment_type: e.ecommerce.payment_type,
-      shipping_tier: e.ecommerce.shipping_tier
-    } : null,
-    user_data_present: !!e.user_data,
-    user_data_email_hashed: e.user_data && e.user_data.sha256_email_address ? String(e.user_data.sha256_email_address).slice(0,16)+'...' : null
+// Trumpina items masyva - tik kritinius laukus
+function trimItems(items){
+  if(!Array.isArray(items)) return items;
+  return items.map(it=>({
+    item_id: it.item_id||it.id,
+    item_name: (it.item_name||it.name||'').slice(0,60),
+    price: it.price,
+    quantity: it.quantity,
+    item_brand: it.item_brand,
+    item_category: it.item_category
   }));
 }
 
-(async () => {
-  const R = { steps: {} };
-  let browser, ctx, page;
+// Isskaido ir sutrumpina konkretu event objekta
+function trimEvent(e){
+  const cp = JSON.parse(JSON.stringify(e));
+  if(cp.ecommerce){
+    if(cp.ecommerce.items) cp.ecommerce.items = trimItems(cp.ecommerce.items);
+  }
+  // ilgas hash / user data - tik pirmi 20 simboliu
+  if(cp.user_data){
+    for(const k of Object.keys(cp.user_data)){
+      if(typeof cp.user_data[k]==='string' && cp.user_data[k].length>32){
+        cp.user_data[k] = cp.user_data[k].slice(0,20)+'...';
+      }
+    }
+  }
+  return cp;
+}
+
+// Nuskaito visus dataLayer irasus, filtruoja pagal event pavadinima
+async function snapshotDL(page, tag){
+  const dl = await page.evaluate(()=> (window.dataLayer||[]).slice());
+  L('  DL snapshot ['+tag+']: '+dl.length+' irasu');
+  return dl;
+}
+
+// Naujus event'us (nuo prieso indekso iki dabar)
+function newSince(all, prev){
+  return all.slice(prev.length);
+}
+
+(async()=>{
+  const R = { events: {}, timeline: [], counts: {} };
+  let browser;
   try {
-    browser = await chromium.launch({ args: ['--no-sandbox'] });
-    ctx = await browser.newContext({
+    browser = await chromium.launch({args:['--no-sandbox']});
+    const ctx = await browser.newContext({
       ignoreHTTPSErrors: true,
-      viewport: { width: 1366, height: 900 },
+      viewport: {width: 1440, height: 900},
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36'
     });
-    page = await ctx.newPage();
+    const page = await ctx.newPage();
+    let allDL = [];
 
-    // ═══ 1. VIEW_ITEM ═══
-    L('=== 1. view_item — atidarom prekes psl ===');
-    await page.goto(BASE + PROD, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    // === 1. HOME + Complianz Accept ===
+    L('=== 1. Home + Priimti sutikima (kad Consent Mode duotu granted) ===');
+    await page.goto(BASE+'/', {waitUntil:'domcontentloaded', timeout:60000});
     await page.waitForTimeout(4000);
-
-    // sutikimas: PRIIMTI
-    const acceptClicked = await page.evaluate(() => {
-      const btns = [...document.querySelectorAll('.cmplz-cookiebanner .cmplz-btn, .cmplz-cookiebanner button')];
-      const b = btns.find(x => /priimti/i.test((x.textContent || '').trim()));
-      if (b) { b.click(); return true; }
+    // Priimti slapukus
+    const accepted = await page.evaluate(()=>{
+      const btn = document.querySelector('.cmplz-cookiebanner .cmplz-accept');
+      if(btn){ btn.click(); return true; }
       return false;
     });
-    L('  PRIIMTI paspaustas: ' + acceptClicked);
+    L('  Priimti paspaustas: '+accepted);
     await page.waitForTimeout(2500);
+    allDL = await snapshotDL(page, 'home_post_accept');
 
-    let dl1 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-    let ev1 = ecomEvents(dl1);
-    R.steps['1_view_item'] = { dl_len: dl1.length, ecom_events: summarize(ev1) };
-    L('  dataLayer len=' + dl1.length + ' | e-commerce events=' + ev1.length);
-    ev1.forEach(e => L('    - ' + e.event + ' value=' + (e.ecommerce && e.ecommerce.value) + ' items=' + ((e.ecommerce && e.ecommerce.items || []).length)));
-
-    // ═══ 2. ADD_TO_CART ═══
-    L('=== 2. add_to_cart ===');
-    // Ieskom "I krepseli" mygtuko
-    const atcClicked = await page.evaluate(() => {
-      const btns = [...document.querySelectorAll('button, .single_add_to_cart_button, .button')];
-      const b = btns.find(x => /krepšel|krepsel|add to cart/i.test((x.textContent||'').trim()) && !x.disabled);
-      if (b) { b.click(); return { clicked: true, text: b.textContent.trim().slice(0,40), classes: b.className.slice(0,80) }; }
-      return { clicked: false };
-    });
-    L('  ATC paspaustas: ' + JSON.stringify(atcClicked));
-
-    // Flatsome ATC gali NAVIGUOTI (ne AJAX) - S168 patvirtinta. Lauksim iki 6s bet kokios navigacijos.
-    let atcNavigated = false;
-    try {
-      await page.waitForLoadState('domcontentloaded', { timeout: 6000 });
-      // Ar iš tikrųjų nunavigavo į kitą URL?
-      if (!/\/product\//.test(page.url())) {
-        atcNavigated = true;
-        L('  ATC NAVIGAVO (ne AJAX) -> ' + page.url());
-      }
-    } catch (e) {
-      L('  jokios navigacijos (AJAX rezimas)');
-    }
-    await page.waitForTimeout(2500);
-
-    let dl2 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-    let ev2 = ecomEvents(dl2);
-    let new2 = ev2.slice(atcNavigated ? 0 : ev1.length); // jei navigavo, dataLayer naujas
-    R.steps['2_add_to_cart'] = { atc_click: atcClicked, atc_navigated: atcNavigated, dl_len: dl2.length, new_events: summarize(new2), all_ecom: summarize(ev2) };
-    L('  ATC navigated: ' + atcNavigated + ' | Nauji e-commerce events: ' + new2.length);
-    new2.forEach(e => L('    - ' + e.event + ' value=' + (e.ecommerce && e.ecommerce.value)));
-
-    // ═══ 3. VIEW_CART ═══
-    L('=== 3. view_cart — atidarom /cart/ ===');
-    await page.goto(BASE + '/cart/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    // === 2. VIEW ITEM ===
+    L('=== 2. view_item (prekes puslapis) ===');
+    const dlBeforeVI = allDL;
+    await page.goto(BASE+PROD, {waitUntil:'domcontentloaded', timeout:60000});
     await page.waitForTimeout(3500);
+    allDL = await snapshotDL(page, 'product_page');
+    const newAfterVI = newSince(allDL, dlBeforeVI);
+    const viEvents = newAfterVI.filter(e=>e && e.event==='view_item');
+    R.events.view_item = viEvents.map(trimEvent);
+    R.counts.view_item = viEvents.length;
+    L('  view_item event'u fire'ino: '+viEvents.length);
+    if(viEvents.length){
+      const e = viEvents[0];
+      const it = e.ecommerce && e.ecommerce.items && e.ecommerce.items[0];
+      L('  value='+e.ecommerce?.value+' currency='+e.ecommerce?.currency+' items[0]={id:'+it?.item_id+', price:'+it?.price+', brand:'+it?.item_brand+'}');
+    }
+    // Screenshot
+    putBinary('screenshots/order_1_product.png', await page.screenshot({fullPage:false}));
 
-    let dl3 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-    let ev3 = ecomEvents(dl3);
-    let new3 = ev3.slice(ev2.length);
-    R.steps['3_view_cart'] = { url: page.url(), dl_len: dl3.length, new_events: summarize(new3) };
-    L('  URL: ' + page.url());
-    L('  Nauji events: ' + new3.length);
-    new3.forEach(e => L('    - ' + e.event + ' value=' + (e.ecommerce && e.ecommerce.value)));
+    // === 3. ADD TO CART ===
+    L('=== 3. add_to_cart (spausti "I krepseli") ===');
+    const dlBeforeATC = allDL;
+    // Flatsome: single_add_to_cart_button
+    const atcClicked = await page.evaluate(()=>{
+      const btn = document.querySelector('.single_add_to_cart_button, button.single_add_to_cart_button, [name="add-to-cart"]');
+      if(btn){ btn.click(); return true; }
+      return false;
+    });
+    L('  ATC spaustas: '+atcClicked);
+    await page.waitForTimeout(4500); // duodam laiko form submit/reload
+    allDL = await snapshotDL(page, 'post_atc');
+    const newAfterATC = newSince(allDL, dlBeforeATC);
+    const atcEvents = newAfterATC.filter(e=>e && e.event==='add_to_cart');
+    R.events.add_to_cart = atcEvents.map(trimEvent);
+    R.counts.add_to_cart = atcEvents.length;
+    L('  add_to_cart fire\'ino: '+atcEvents.length+(atcEvents.length===0?'  ⚠️ S168 bug'as? (Flatsome ne-AJAX)':''));
 
-    // ═══ 4. BEGIN_CHECKOUT ═══
-    L('=== 4. begin_checkout — atidarom /checkout/ ===');
-    await page.goto(BASE + '/checkout/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    // === 4. VIEW CART ===
+    L('=== 4. view_cart (/cart/) ===');
+    const dlBeforeVC = allDL;
+    await page.goto(BASE+'/cart/', {waitUntil:'domcontentloaded', timeout:60000});
+    await page.waitForTimeout(3500);
+    allDL = await snapshotDL(page, 'cart_page');
+    const newAfterVC = newSince(allDL, dlBeforeVC);
+    const vcEvents = newAfterVC.filter(e=>e && e.event==='view_cart');
+    R.events.view_cart = vcEvents.map(trimEvent);
+    R.counts.view_cart = vcEvents.length;
+    L('  view_cart fire\'ino: '+vcEvents.length);
+    if(vcEvents.length){L('  value='+vcEvents[0].ecommerce?.value+' items='+(vcEvents[0].ecommerce?.items?.length||0));}
+    putBinary('screenshots/order_2_cart.png', await page.screenshot({fullPage:false}));
+
+    // === 5. BEGIN CHECKOUT ===
+    L('=== 5. begin_checkout (/checkout/) ===');
+    const dlBeforeBC = allDL;
+    await page.goto(BASE+'/checkout/', {waitUntil:'domcontentloaded', timeout:60000});
     await page.waitForTimeout(5000);
+    allDL = await snapshotDL(page, 'checkout_page');
+    const newAfterBC = newSince(allDL, dlBeforeBC);
+    const bcEvents = newAfterBC.filter(e=>e && e.event==='begin_checkout');
+    R.events.begin_checkout = bcEvents.map(trimEvent);
+    R.counts.begin_checkout = bcEvents.length;
+    L('  begin_checkout fire\'ino: '+bcEvents.length);
+    if(bcEvents.length){L('  value='+bcEvents[0].ecommerce?.value+' items='+(bcEvents[0].ecommerce?.items?.length||0));}
+    putBinary('screenshots/order_3_checkout_empty.png', await page.screenshot({fullPage:false}));
 
-    let dl4 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-    let ev4 = ecomEvents(dl4);
-    let new4 = ev4.slice(ev3.length);
-    R.steps['4_begin_checkout'] = { url: page.url(), dl_len: dl4.length, new_events: summarize(new4) };
-    L('  URL: ' + page.url());
-    L('  Nauji events: ' + new4.length);
-    new4.forEach(e => L('    - ' + e.event + ' value=' + (e.ecommerce && e.ecommerce.value)));
+    // === 6. Užpildyti forma ===
+    L('=== 6. Uzpildom checkout forma ===');
+    async function safeType(sel, val){
+      try{ await page.fill(sel, val); L('    '+sel+' -> "'+val+'"'); }
+      catch(e){ L('    ⚠ '+sel+' nerastas'); }
+    }
+    // WC standartiniai laukai
+    await safeType('#billing_first_name','Testas');
+    await safeType('#billing_last_name','Testauskas');
+    await safeType('#billing_address_1','Testinė g. 1');
+    await safeType('#billing_city','Vilnius');
+    await safeType('#billing_postcode','01001');
+    await safeType('#billing_phone','+37060000000');
+    await safeType('#billing_email','terra@gyvunai.lt');
+    // Country - LT default; nediliojam jei jau LT
+    await page.waitForTimeout(3500); // ajax update — shipping perskaiciuojamas
 
-    // Screenshot pries pildyma
-    putBinary('screenshots/order_step4_checkout_empty.png', await page.screenshot({ fullPage: true }));
-    L('  screenshot: order_step4_checkout_empty.png');
-
-    // ═══ 5. UZPILDOM FORMA ═══
-    L('=== 5. Uzpildom checkout forma ===');
-    const fillReport = await page.evaluate(() => {
-      const report = {};
-      function setVal(sel, val) {
-        const el = document.querySelector(sel);
-        if (!el) { report[sel] = 'NOT FOUND'; return; }
-        el.focus();
-        el.value = val;
-        el.dispatchEvent(new Event('input', { bubbles: true }));
-        el.dispatchEvent(new Event('change', { bubbles: true }));
-        el.dispatchEvent(new Event('blur', { bubbles: true }));
-        report[sel] = 'set: ' + val;
-      }
-      setVal('#billing_first_name', 'Testas');
-      setVal('#billing_last_name', 'Testauskas');
-      setVal('#billing_email', 'terra@gyvunai.lt');
-      setVal('#billing_phone', '+37060000000');
-      setVal('#billing_address_1', 'Bandymo g. 1');
-      setVal('#billing_city', 'Vilnius');
-      setVal('#billing_postcode', 'LT-01001');
-      return report;
+    // === 7. ADD SHIPPING INFO — pasirinkti LP Express pastomata ===
+    L('=== 7. add_shipping_info (LP Express pastomatas) ===');
+    const dlBeforeSH = allDL;
+    // Rinksim pirmą LP Express radio
+    const shippingClicked = await page.evaluate(()=>{
+      const inputs = [...document.querySelectorAll('input[name^="shipping_method"]')];
+      const info = inputs.map(i=>({id:i.id, val:i.value, checked:i.checked}));
+      // ieskom LP Express pastomato
+      const target = inputs.find(i=>/lpexpress/i.test(i.value) && !/kurjeris/i.test(i.value))
+                  || inputs.find(i=>/paštom|pastom|pickup/i.test(i.value))
+                  || inputs.find(i=>/lpexpress/i.test(i.value))
+                  || inputs[0];
+      if(target){ target.click(); target.dispatchEvent(new Event('change',{bubbles:true})); return {ok:true, chosen:target.value, all:info}; }
+      return {ok:false, all:info};
     });
-    R.steps['5_form_fill'] = fillReport;
-    L('  ' + JSON.stringify(fillReport).slice(0, 400));
-    // Triggerinam WC checkout update
-    await page.evaluate(() => { if (window.jQuery) window.jQuery(document.body).trigger('update_checkout'); });
-    await page.waitForTimeout(4000);
+    L('  shipping input info: '+JSON.stringify(shippingClicked.all).slice(0,400));
+    L('  pasirinkta: '+shippingClicked.chosen);
+    await page.waitForTimeout(4500); // WC ajax update
+    allDL = await snapshotDL(page, 'post_shipping');
+    const newAfterSH = newSince(allDL, dlBeforeSH);
+    const shEvents = newAfterSH.filter(e=>e && e.event==='add_shipping_info');
+    R.events.add_shipping_info = shEvents.map(trimEvent);
+    R.counts.add_shipping_info = shEvents.length;
+    L('  add_shipping_info fire\'ino: '+shEvents.length);
+    if(shEvents.length){L('  shipping_tier='+shEvents[0].ecommerce?.shipping_tier);}
 
-    // ═══ 6. ADD_SHIPPING_INFO ═══
-    L('=== 6. add_shipping_info — LP Express pastomatas ===');
-    // Ieskom shipping radio arba select
-    const shipPick = await page.evaluate(() => {
-      // Radio inputs
-      const radios = [...document.querySelectorAll('input[name^="shipping_method"]')];
-      const info = radios.map(r => ({ value: r.value, checked: r.checked, id: r.id, label: (document.querySelector('label[for="'+r.id+'"]')||{}).textContent }));
-      // Bandom pasirinkti LP Express paštomata (instance 12 arba any lpexpress_terminal)
-      const lp = radios.find(r => /lpexpress_terminal/.test(r.value) && !/kurjer/i.test((document.querySelector('label[for="'+r.id+'"]')||{}).textContent||''));
-      if (lp) {
-        lp.checked = true;
-        lp.click();
-        lp.dispatchEvent(new Event('change', { bubbles: true }));
-        return { radios_info: info, picked: lp.value, picked_label: (document.querySelector('label[for="'+lp.id+'"]')||{}).textContent };
-      }
-      // Fallback - Venipak paštomatas
-      const vp = radios.find(r => /venipak.*pickup/i.test(r.value) || /pickup/i.test(r.value));
-      if (vp) { vp.checked = true; vp.click(); vp.dispatchEvent(new Event('change', { bubbles: true })); return { radios_info: info, picked: vp.value, picked_label: 'venipak-pickup' }; }
-      // Any first
-      if (radios.length) { radios[0].checked = true; radios[0].click(); radios[0].dispatchEvent(new Event('change', { bubbles: true })); return { radios_info: info, picked: radios[0].value, picked_label: 'first-fallback' }; }
-      return { radios_info: info, picked: null };
+    // === 8. ADD PAYMENT INFO - Bankinis pavedimas ===
+    L('=== 8. add_payment_info (bacs) ===');
+    const dlBeforePM = allDL;
+    const paymentClicked = await page.evaluate(()=>{
+      const inputs = [...document.querySelectorAll('input[name="payment_method"]')];
+      const info = inputs.map(i=>({id:i.id, val:i.value, checked:i.checked}));
+      const target = inputs.find(i=>i.value==='bacs');
+      if(target){ target.click(); target.dispatchEvent(new Event('change',{bubbles:true})); return {ok:true, chosen:target.value, all:info}; }
+      return {ok:false, all:info};
     });
-    R.steps['6_ship_pick'] = shipPick;
-    L('  radios matomi: ' + (shipPick.radios_info||[]).length);
-    (shipPick.radios_info||[]).forEach(r => L('    - ' + r.value + ' | ' + (r.label||'').trim().slice(0,60) + (r.checked?' [checked]':'')));
-    L('  pasirinkta: ' + shipPick.picked + ' / ' + shipPick.picked_label);
-    await page.evaluate(() => { if (window.jQuery) window.jQuery(document.body).trigger('update_checkout'); });
-    await page.waitForTimeout(4500);
+    L('  payment options: '+JSON.stringify(paymentClicked.all));
+    L('  pasirinkta: '+paymentClicked.chosen);
+    await page.waitForTimeout(3500);
+    allDL = await snapshotDL(page, 'post_payment');
+    const newAfterPM = newSince(allDL, dlBeforePM);
+    const pmEvents = newAfterPM.filter(e=>e && e.event==='add_payment_info');
+    R.events.add_payment_info = pmEvents.map(trimEvent);
+    R.counts.add_payment_info = pmEvents.length;
+    L('  add_payment_info fire\'ino: '+pmEvents.length);
+    if(pmEvents.length){L('  payment_type='+pmEvents[0].ecommerce?.payment_type);}
+    putBinary('screenshots/order_4_checkout_filled.png', await page.screenshot({fullPage:false}));
 
-    let dl6 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-    let ev6 = ecomEvents(dl6);
-    let new6 = ev6.slice(ev4.length);
-    R.steps['6_add_shipping_info_events'] = { new_events: summarize(new6) };
-    L('  Nauji events po shipping pasirinkimo: ' + new6.length);
-    new6.forEach(e => L('    - ' + e.event + ' shipping_tier=' + (e.ecommerce && e.ecommerce.shipping_tier) + ' value=' + (e.ecommerce && e.ecommerce.value)));
-
-    // Jei paštomato reikia pasirinkti konkretų — bandom
-    const terminalPick = await page.evaluate(() => {
-      const selects = [...document.querySelectorAll('select[name*="terminal"], select[id*="terminal"], select[name*="pickup"]')];
-      if (!selects.length) return { found: false };
-      const info = [];
-      for (const s of selects) {
-        const opts = [...s.options].slice(0, 5).map(o => ({v: o.value, t: (o.text||'').slice(0,50)}));
-        info.push({ name: s.name, options_first5: opts });
-        // Pasirenkam pirma ne tuscia option
-        for (const o of s.options) {
-          if (o.value && o.value !== '') { s.value = o.value; s.dispatchEvent(new Event('change', { bubbles: true })); info[info.length-1].picked = o.value + ' | ' + o.text.slice(0,40); break; }
-        }
-      }
-      return { found: true, selects: info };
+    // === 9. PURCHASE - spausti "Atlikti uzsakyma" ===
+    L('=== 9. purchase (Atlikti uzsakyma) ===');
+    const dlBeforePU = allDL;
+    // WC place order btn
+    const placed = await page.evaluate(()=>{
+      const btn = document.querySelector('#place_order, button#place_order');
+      if(btn){ btn.click(); return true; }
+      return false;
     });
-    R.steps['6_terminal_pick'] = terminalPick;
-    L('  terminal select: ' + JSON.stringify(terminalPick).slice(0, 300));
-    if (terminalPick.found) { await page.evaluate(() => { if (window.jQuery) window.jQuery(document.body).trigger('update_checkout'); }); await page.waitForTimeout(3500); }
-
-    // ═══ 7. ADD_PAYMENT_INFO ═══
-    L('=== 7. add_payment_info — Bankinis pavedimas ===');
-    const payPick = await page.evaluate(() => {
-      const radios = [...document.querySelectorAll('input[name="payment_method"]')];
-      const info = radios.map(r => ({ value: r.value, checked: r.checked, label: (document.querySelector('label[for="'+r.id+'"]')||{}).textContent }));
-      const bacs = radios.find(r => r.value === 'bacs');
-      if (bacs) { bacs.checked = true; bacs.click(); bacs.dispatchEvent(new Event('change', { bubbles: true })); return { radios_info: info, picked: 'bacs' }; }
-      return { radios_info: info, picked: null };
-    });
-    R.steps['7_pay_pick'] = payPick;
-    (payPick.radios_info||[]).forEach(r => L('    payment: ' + r.value + ' | ' + (r.label||'').trim().slice(0,40) + (r.checked?' [checked]':'')));
-    L('  pasirinkta: ' + payPick.picked);
-    await page.waitForTimeout(2500);
-
-    let dl7 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-    let ev7 = ecomEvents(dl7);
-    let new7 = ev7.slice(ev6.length);
-    R.steps['7_add_payment_info_events'] = { new_events: summarize(new7) };
-    L('  Nauji events po pay pasirinkimo: ' + new7.length);
-    new7.forEach(e => L('    - ' + e.event + ' payment_type=' + (e.ecommerce && e.ecommerce.payment_type) + ' value=' + (e.ecommerce && e.ecommerce.value)));
-
-    // Screenshot pries submit
-    putBinary('screenshots/order_step7_before_submit.png', await page.screenshot({ fullPage: true }));
-
-    // ═══ 8. SUBMIT ═══
-    L('=== 8. SUBMIT — Atlikti uzsakyma ===');
-    // Pazymim I've read the terms & conditions if present
-    await page.evaluate(() => {
-      const tc = document.querySelector('#terms');
-      if (tc && !tc.checked) { tc.checked = true; tc.dispatchEvent(new Event('change', { bubbles: true })); }
-    });
-
-    const beforeSubmitUrl = page.url();
-    const submitClicked = await page.evaluate(() => {
-      const btn = document.querySelector('#place_order') || document.querySelector('button[name="woocommerce_checkout_place_order"]');
-      if (btn) { btn.click(); return { clicked: true, text: btn.textContent.trim().slice(0,40), disabled: btn.disabled }; }
-      return { clicked: false };
-    });
-    L('  submit: ' + JSON.stringify(submitClicked));
-
-    // Palaukiam navigacijos i thank-you psl arba klaidos
-    let purchaseFireTime = null;
+    L('  place_order spaustas: '+placed);
+    // Palaukiam thank-you psl krovimo
     try {
-      await page.waitForURL(/\/checkout\/order-received\/|\/order-received\//, { timeout: 30000 });
-      L('  Navigavo i thank-you psl: ' + page.url());
-      purchaseFireTime = 'nav_success';
-    } catch (e) {
-      L('  Navigacija netikslinga (' + e.message.slice(0,80) + '); tikrinam esamos psl busena');
+      await page.waitForURL(/order-received|thank/i, {timeout: 30000});
+      L('  perkeltas i thank-you psl');
+    } catch(e) {
+      L('  ⚠ per 30s nesulaukta thank-you psl, tikrinam kur esame');
+      L('  dabartinis URL: '+page.url());
+      // Screenshot klaidoms
+      putBinary('screenshots/order_5_error.png', await page.screenshot({fullPage:false}));
+      const errText = await page.evaluate(()=>{
+        const err = document.querySelector('.woocommerce-error, .woocommerce-NoticeGroup-checkout');
+        return err ? err.innerText.slice(0,600) : 'nera err elemento';
+      });
+      L('  WC klaida: '+errText);
     }
-    await page.waitForTimeout(4000);
-
-    // Klaidu tikrinimas
-    const errCheck = await page.evaluate(() => {
-      const errs = [...document.querySelectorAll('.woocommerce-error li, .woocommerce-NoticeGroup-checkout .woocommerce-error li')];
-      return errs.map(e => e.textContent.trim().slice(0,200));
-    });
-    if (errCheck.length) {
-      L('  KLAIDOS checkout: ' + JSON.stringify(errCheck));
-      R.errors = errCheck;
+    await page.waitForTimeout(5000);
+    allDL = await snapshotDL(page, 'thankyou_page');
+    const newAfterPU = newSince(allDL, dlBeforePU);
+    const puEvents = newAfterPU.filter(e=>e && e.event==='purchase');
+    R.events.purchase = puEvents.map(trimEvent);
+    R.counts.purchase = puEvents.length;
+    L('  purchase fire\'ino: '+puEvents.length+(puEvents.length>1?'  ⚠️ DUBLIKATAS':''));
+    if(puEvents.length){
+      const p = puEvents[0];
+      L('  transaction_id='+p.ecommerce?.transaction_id);
+      L('  value='+p.ecommerce?.value+' tax='+p.ecommerce?.tax+' shipping='+p.ecommerce?.shipping);
+      L('  currency='+p.ecommerce?.currency+' items='+(p.ecommerce?.items?.length||0));
+      L('  user_data.sha256_email='+(p.user_data?.sha256_email_address?'yra ('+p.user_data.sha256_email_address.slice(0,16)+'...)':'NERA'));
     }
+    R.thankyou_url = page.url();
+    putBinary('screenshots/order_6_thankyou.png', await page.screenshot({fullPage:false}));
 
-    let dl8 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-    let ev8 = ecomEvents(dl8);
-    let new8 = ev8.slice(ev7.length);
-    R.steps['8_submit_events'] = { url_after: page.url(), new_events: summarize(new8) };
-    L('  Nauji events po submit: ' + new8.length);
-    new8.forEach(e => L('    - ' + e.event + ' transaction_id=' + (e.ecommerce && e.ecommerce.transaction_id) + ' value=' + (e.ecommerce && e.ecommerce.value) + ' user_data=' + e.user_data_present));
-
-    // Screenshot thank-you
-    if (/order-received/.test(page.url())) {
-      putBinary('screenshots/order_step8_thankyou.png', await page.screenshot({ fullPage: true }));
-      L('  screenshot: order_step8_thankyou.png');
-    } else {
-      putBinary('screenshots/order_step8_after_submit.png', await page.screenshot({ fullPage: true }));
-      L('  screenshot: order_step8_after_submit.png (ne thank-you)');
-    }
-
-    // ═══ 9. THANK-YOU DUPLICATE CHECK ═══
-    L('=== 9. Thank-you psl - dublikato patikra (F5 reload) ===');
-    if (/order-received/.test(page.url())) {
-      const beforeReload = ev8.length;
-      await page.reload({ waitUntil: 'domcontentloaded' });
+    // === 10. THANK-YOU RE-VISIT (S168 bug'as: replay ant kiekvieno psl) ===
+    L('=== 10. RE-VISIT thankyou (patikra ar purchase dubliuojasi) ===');
+    if(page.url().match(/order-received|thank/i)) {
+      const tyUrl = page.url();
+      const dlBeforeRV = allDL;
+      await page.goto(tyUrl, {waitUntil:'domcontentloaded', timeout:60000});
       await page.waitForTimeout(4000);
-      let dl9 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
-      let ev9 = ecomEvents(dl9);
-      // ar naujas purchase event'as fire'ino?
-      const purchaseCount = ev9.filter(e => e.event === 'purchase').length;
-      R.steps['9_duplicate_check'] = {
-        purchase_events_total: purchaseCount,
-        dedup_ok: purchaseCount <= 1,
-        message: purchaseCount > 1 ? 'DUBLIKATAS - S168 bug grize' : 'OK - purchase fireino tik karta'
-      };
-      L('  purchase eventu is viso: ' + purchaseCount);
-      L('  ' + R.steps['9_duplicate_check'].message);
-    } else {
-      R.steps['9_duplicate_check'] = { skipped: 'ne thank-you psl' };
+      allDL = await snapshotDL(page, 'thankyou_revisit');
+      const newAfterRV = newSince(allDL, dlBeforeRV);
+      const puAgain = newAfterRV.filter(e=>e && e.event==='purchase');
+      R.counts.purchase_on_revisit = puAgain.length;
+      L('  purchase revisit fire\'ino: '+puAgain.length+(puAgain.length>0?'  ⚠️ DUBLIKATAS':'  ✅ idempotent'));
     }
 
-    // Order ID extraction is thank-you URL arba is DL
-    const orderMatch = (page.url().match(/order-received\/(\d+)/) || []);
-    const orderIdFromUrl = orderMatch[1] || null;
-    const orderIdFromDl = ev8.filter(e => e.event === 'purchase')[0]?.ecommerce?.transaction_id;
-    R.order_id = orderIdFromUrl || orderIdFromDl;
-    L('=== UZSAKYMO ID: ' + R.order_id + ' ===');
+    // === Suvestine ===
+    L('=== SUVESTINE (event\'u kiekiai) ===');
+    for(const k of Object.keys(R.counts)) L('  '+k+': '+R.counts[k]);
 
+    R.total_dl_items = allDL.length;
     L('DONE');
-  } catch (e) {
-    L('!!! EXCEPTION: ' + (e && e.stack ? e.stack : String(e)));
-    try { if (page) putBinary('screenshots/order_error.png', await page.screenshot({ fullPage: true })); } catch(x){}
+  } catch(e){
+    L('!!! EXC: '+(e&&e.stack?e.stack:String(e)));
   } finally {
-    try { if (browser) await browser.close(); } catch (e) {}
+    try{ if(browser) await browser.close(); }catch(e){}
     putText('order_test.json', JSON.stringify(R, null, 2));
-    putText('_order_log.txt', out);
+    putText('_run17_log.txt', out);
   }
 })();
