@@ -1,0 +1,21 @@
+read snippet id=638 HTTP 200
+=== STATUS ===
+{
+    "wcdn_attach": {
+        "processingAttach": false,
+        "completedAttach": true,
+        "enablePDF": true,
+        "invoiceNumberFormat": "AVPN{order_number}"
+    },
+    "wcpdf_invoice_enabled": "1",
+    "wcpdf_template_path": "default/Simple",
+    "files_status": {
+        "base_child": "yra, 19429 B",
+        "wcdn_base_plugin": "yra, 55913 B",
+        "wcdn_invoice": "yra, 623 B",
+        "wcpdf_invoice": "yra, 8282 B"
+    }
+}
+=== base_child dydis: 20487 ===
+deactivate 638 -> 200
+DONE
