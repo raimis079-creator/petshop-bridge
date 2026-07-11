@@ -1,0 +1,27 @@
+pagemap snippet id=629 active=true HTTP 200
+=== PAGEMAP (HTTP 200) ===
+{
+    "legal_documents_raw": "1",
+    "legal_documents": "1",
+    "option_cmplz_cookie-statement_custom_page": false,
+    "option_cmplz_privacy-statement_custom_page": "34525",
+    "option_cmplz_cookie-statement": false,
+    "option_cmplz_privacy-statement": false,
+    "cmplz_generated_pages": false,
+    "page_34526": {
+        "title": "Slapukų naudojimas",
+        "slug": "slapuku-politika",
+        "status": "publish",
+        "modified": "2026-07-08 17:02:40",
+        "cmplz_meta": {
+            "_cmplz_scanned_post": "1"
+        },
+        "content_has_cookie_table": "ne",
+        "content_len": 3393
+    },
+    "page_35": "NERASTAS",
+    "cmplz_get_document_url_cookie": "https://dev.avesa.lt/slapuku-politika-es/",
+    "cmplz_get_document_url_privacy": "https://dev.avesa.lt/privatumo-politika/"
+}
+deactivate 629 -> 200
+DONE
