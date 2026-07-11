@@ -1,0 +1,6 @@
+=== Kraunam prekes puslapi (mobile 390x844, svarus kontekstas -> baneris turi rodytis) ===
+!!! EXCEPTION: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/
+Call log:
+  - navigating to "https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/", waiting until "domcontentloaded"
+
+    at /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:62:14
