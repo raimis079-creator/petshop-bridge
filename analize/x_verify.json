@@ -1,0 +1,40 @@
+{
+  "x": {
+    "label": "X mygtukas (cmplz-close)",
+    "before": [],
+    "after": [
+      "cmplz_banner-status=dismissed"
+    ],
+    "navCookies": [
+      "cmplz_banner-status=dismissed"
+    ],
+    "visBefore": true,
+    "visAfter": false,
+    "visNav": false
+  },
+  "deny": {
+    "label": "ATMESTI mygtukas (cmplz-deny)",
+    "before": [],
+    "after": [
+      "cmplz_banner-status=dismissed",
+      "cmplz_consented_services=",
+      "cmplz_functional=allow",
+      "cmplz_marketing=deny",
+      "cmplz_policy_id=35",
+      "cmplz_preferences=deny",
+      "cmplz_statistics=deny"
+    ],
+    "navCookies": [
+      "cmplz_banner-status=dismissed",
+      "cmplz_consented_services=",
+      "cmplz_functional=allow",
+      "cmplz_marketing=deny",
+      "cmplz_policy_id=35",
+      "cmplz_preferences=deny",
+      "cmplz_statistics=deny"
+    ],
+    "visBefore": true,
+    "visAfter": false,
+    "visNav": false
+  }
+}
