@@ -9,7 +9,7 @@ function putText(n, s) {
       const url = 'https://api.github.com/repos/' + repo + '/contents/analize/' + n;
       let sha = '';
       try { sha = JSON.parse(execSync('curl -s -H "Authorization: Bearer ' + tok + '" "' + url + '?ref=main&t=' + Date.now() + '"', { encoding: 'utf8' })).sha || ''; } catch (e) {}
-      const b = { message: 'shot ' + n, branch: 'main', content: Buffer.from(s, 'utf8').toString('base64') };
+      const b = { message: 'dry ' + n, branch: 'main', content: Buffer.from(s, 'utf8').toString('base64') };
       if (sha) b.sha = sha;
       fs.writeFileSync('/tmp/pf.json', JSON.stringify(b));
       const r = execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer ' + tok + '" -d @/tmp/pf.json "' + url + '"', { encoding: 'utf8', maxBuffer: 50000000 });
@@ -19,7 +19,6 @@ function putText(n, s) {
   }
   return false;
 }
-
 function putBinary(path, buf) {
   const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
   for (let a = 0; a < 5; a++) {
@@ -40,89 +39,99 @@ function putBinary(path, buf) {
 
 let out = '';
 const L = s => { out += s + '\n'; console.log(s); };
-
 const BASE = 'https://dev.avesa.lt';
 const PROD = '/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/';
+
+// KANDIDATINIS CSS: kompaktiska sticky juosta mobile <=768px
+const CANDIDATE_CSS = `
+@media (max-width: 768px) {
+  #cmplz-cookiebanner-container .cmplz-cookiebanner,
+  .cmplz-cookiebanner.cmplz-bottom-right {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 14px 14px 0 0 !important;
+    max-height: 42vh !important;
+    overflow-y: auto !important;
+    padding: 10px 14px 12px !important;
+    box-shadow: 0 -3px 16px rgba(0,0,0,.18) !important;
+  }
+  .cmplz-cookiebanner .cmplz-header { margin-bottom: 2px !important; }
+  .cmplz-cookiebanner .cmplz-title { font-size: 15px !important; line-height: 1.2 !important; margin: 0 !important; }
+  .cmplz-cookiebanner .cmplz-logo { display: none !important; }
+  .cmplz-cookiebanner .cmplz-divider { display: none !important; margin: 0 !important; }
+  .cmplz-cookiebanner .cmplz-body { margin: 4px 0 6px !important; }
+  .cmplz-cookiebanner .cmplz-message { font-size: 11.5px !important; line-height: 1.32 !important; }
+  .cmplz-cookiebanner .cmplz-buttons { display: flex !important; flex-wrap: wrap !important; gap: 6px !important; margin-top: 4px !important; }
+  .cmplz-cookiebanner .cmplz-buttons .cmplz-btn { flex: 1 1 30% !important; min-width: 90px !important; margin: 0 !important; padding: 9px 8px !important; font-size: 12.5px !important; }
+  .cmplz-cookiebanner .cmplz-links { margin-top: 4px !important; font-size: 10.5px !important; }
+  .cmplz-cookiebanner .cmplz-links a { font-size: 10.5px !important; }
+}
+`;
 
 (async () => {
   const R = {};
   let browser;
   try {
-  browser = await chromium.launch({ args: ['--no-sandbox'] });
-  const ctx = await browser.newContext({
-    ignoreHTTPSErrors: true,
-    viewport: { width: 390, height: 844 },
-    deviceScaleFactor: 2,
-    isMobile: true,
-    hasTouch: true,
-    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1'
-  });
-  const page = await ctx.newPage();
-
-  L('=== Kraunam prekes puslapi (mobile 390x844, svarus kontekstas -> baneris turi rodytis) ===');
-  await page.goto(BASE + PROD, { waitUntil: 'domcontentloaded', timeout: 60000 });
-  await page.waitForTimeout(4000); // leidziam Complianz JS suktis
-
-  // Ar baneris matomas?
-  const bannerInfo = await page.evaluate(() => {
-    const sels = ['.cmplz-cookiebanner', '#cmplz-cookiebanner-container .cmplz-cookiebanner', '.cmplz-cookiebanner.cmplz-bottom-right'];
-    let el = null, usedSel = '';
-    for (const s of sels) { const e = document.querySelector(s); if (e) { el = e; usedSel = s; break; } }
-    if (!el) return { found: false };
-    const cs = getComputedStyle(el);
-    const r = el.getBoundingClientRect();
-    return {
-      found: true,
-      selector: usedSel,
-      classes: el.className,
-      computed: {
-        position: cs.position, bottom: cs.bottom, right: cs.right, left: cs.left, top: cs.top,
-        width: cs.width, maxWidth: cs.maxWidth, margin: cs.margin, borderRadius: cs.borderRadius, zIndex: cs.zIndex
-      },
-      rect: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) },
-      viewport: { w: window.innerWidth, h: window.innerHeight },
-      outerHTML_head: el.outerHTML.slice(0, 500)
-    };
-  });
-  R.banner = bannerInfo;
-  if (bannerInfo.found) {
-    L('  Baneris RASTAS: ' + bannerInfo.selector);
-    L('  Klases: ' + bannerInfo.classes);
-    L('  Computed: ' + JSON.stringify(bannerInfo.computed));
-    L('  Rect (px): ' + JSON.stringify(bannerInfo.rect) + ' | viewport ' + JSON.stringify(bannerInfo.viewport));
-    const r = bannerInfo.rect, vp = bannerInfo.viewport;
-    const coversTop = r.y < vp.h * 0.6; // ar dengia virsutine turinio dali
-    L('  Ar dengia virsutini turini (prekes nuotrauka/pavadinima)? y=' + r.y + ' vs viewport h=' + vp.h + ' -> ' + coversTop);
-    L('  Uzima ' + Math.round((r.w * r.h) / (vp.w * vp.h) * 100) + '% ekrano ploto');
-  } else {
-    L('  Baneris NERASTAS (galbut consent cookie jau yra arba selektorius kitas). Dumpinam DOM fragmenta.');
-    const dump = await page.evaluate(() => {
-      const any = document.querySelector('[class*="cmplz"]');
-      return any ? any.outerHTML.slice(0, 800) : 'jokio cmplz elemento';
+    browser = await chromium.launch({ args: ['--no-sandbox'] });
+    const ctx = await browser.newContext({
+      ignoreHTTPSErrors: true,
+      viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true,
+      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1'
     });
-    R.banner_dump = dump;
-    L('  ' + dump.slice(0, 300));
-  }
+    const page = await ctx.newPage();
 
-  // Screenshot: viewport (pirmas ekranas) - matosi ar baneris dengia prekes virsu
-  const shot = await page.screenshot({ fullPage: false });
-  putBinary('screenshots/mobile_before_product.png', shot);
-  L('  Screenshot issaugotas: screenshots/mobile_before_product.png');
+    L('=== PROD puslapis, pilnas banerio DOM ===');
+    await page.goto(BASE + PROD, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(4000);
 
-  // Papildomai: homepage mobile
-  L('=== Homepage mobile (papildomai) ===');
-  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded', timeout: 60000 });
-  await page.waitForTimeout(3000);
-  const shot2 = await page.screenshot({ fullPage: false });
-  putBinary('screenshots/mobile_before_home.png', shot2);
-  L('  Screenshot issaugotas: screenshots/mobile_before_home.png');
+    const fullHtml = await page.evaluate(() => {
+      const el = document.querySelector('.cmplz-cookiebanner');
+      return el ? el.outerHTML : 'NOT FOUND';
+    });
+    R.full_banner_html = fullHtml;
+    L('  Banerio HTML ilgis: ' + fullHtml.length + ' (issaugota JSON)');
 
-  L('DONE');
+    // Prieduodam kandidatini CSS
+    await page.addStyleTag({ content: CANDIDATE_CSS });
+    await page.waitForTimeout(800);
+
+    const after = await page.evaluate(() => {
+      const el = document.querySelector('.cmplz-cookiebanner');
+      if (!el) return { found: false };
+      const r = el.getBoundingClientRect();
+      return { found: true, rect: { y: Math.round(r.y), h: Math.round(r.height) }, vh: window.innerHeight };
+    });
+    R.after = after;
+    if (after.found) {
+      const pct = Math.round((after.rect.h) / after.vh * 100);
+      L('  PO CSS: banerio y=' + after.rect.y + ' h=' + after.rect.h + 'px (' + pct + '% ekrano auksto) vs PRIES h=363px (43%)');
+      L('  Matomo turinio virs banerio: ' + after.rect.y + 'px is ' + after.vh + 'px');
+    }
+
+    const shotP = await page.screenshot({ fullPage: false });
+    putBinary('screenshots/mobile_after_product.png', shotP);
+    L('  screenshots/mobile_after_product.png issaugotas');
+
+    L('=== HOME puslapis su tuo paciu CSS ===');
+    await page.goto(BASE + '/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(3000);
+    await page.addStyleTag({ content: CANDIDATE_CSS });
+    await page.waitForTimeout(800);
+    const shotH = await page.screenshot({ fullPage: false });
+    putBinary('screenshots/mobile_after_home.png', shotH);
+    L('  screenshots/mobile_after_home.png issaugotas');
+
+    L('DONE');
   } catch (e) {
     L('!!! EXCEPTION: ' + (e && e.stack ? e.stack : String(e)));
   } finally {
     try { if (browser) await browser.close(); } catch (e) {}
-    putText('banner_recon.json', JSON.stringify(R, null, 2));
-    putText('_shot_log.txt', out);
+    putText('banner_dryrun.json', JSON.stringify(R, null, 2));
+    putText('_dry_log.txt', out);
   }
 })();
