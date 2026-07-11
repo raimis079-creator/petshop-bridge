@@ -1,0 +1,19 @@
+esfix snippet id=631 HTTP 200
+=== FIX (HTTP 200) ===
+{
+    "clean_slug_page": {
+        "id": 34591,
+        "title": "Slapukų politika",
+        "slug": "slapuku-politika"
+    },
+    "esami_old_slugs": [],
+    "pridetas": "slapuku-politika-es",
+    "po_old_slugs": [
+        "slapuku-politika-es"
+    ]
+}
+=== URL patikra PO ===
+  /slapuku-politika/ -> 200
+  /slapuku-politika-es/ -> 404
+deactivate 631 -> 200
+DONE
