@@ -1,0 +1,4 @@
+{
+  "order_id": 34606,
+  "test": "{\n    \"PRIES\": {\n        \"status\": \"on-hold\",\n        \"doc_type\": \"proforma\",\n        \"iapv\": \"IAPV000130\",\n        \"avpn\": \"AVPN000136\"\n    },\n    \"PO\": {\n        \"status\": \"completed\",\n        \"doc_type\": \"invoice\",\n        \"iapv\": \"IAPV000130\",\n        \"avpn\": \"AVPN000136\",\n        \"completed_pdf\": \"invoice-34606-1783802813.pdf\"\n    },\n    \"pdf_raw_IAPV\": false,\n    \"pdf_raw_AVPN\": false,\n    \"pdf_size\": 34350,\n    \"HOOK_LOG\": [\n        \"[completed p4 — PRIES funkcijos p5 generacija] meta=proforma status=completed\",\n        \"[completed p6 — PO funkcijos p5 generacijos] meta=proforma completed_pdf=invoice-34606-1783802813.pdf\",\n        \"[changed on-hold->completed — CIA persijungia] meta=invoice\"\n    ]\n}"
+}
