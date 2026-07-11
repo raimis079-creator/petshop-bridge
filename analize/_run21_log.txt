@@ -1,0 +1,138 @@
+recon2 snippet id=637 HTTP 200
+=== RECON2 ===
+{
+    "active_plugins": [
+        "code-snippets/code-snippets.php",
+        "complianz-gdpr/complianz-gpdr.php",
+        "loco-translate/loco.php",
+        "petshop-attributes/petshop-attributes.php",
+        "petshop-fbt/petshop-fbt.php",
+        "petshop-feeds/petshop-feeds.php",
+        "petshop-fonts/petshop-fonts.php",
+        "petshop-pragma/petshop-pragma.php",
+        "petshop-promotions/petshop-promotions.php",
+        "petshop-xml/petshop-xml.php",
+        "postit/postit.php",
+        "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+        "woo-lithuaniapost-main/woo-lithuaniapost.php",
+        "woo-payment-gateway-paysera/paysera.php",
+        "woo-update-manager/woo-update-manager.php",
+        "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+        "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+        "woocommerce-xml-csv-product-import/plugin.php",
+        "woocommerce/woocommerce.php",
+        "wordpress-importer/wordpress-importer.php",
+        "wp-all-import-pro/wp-all-import-pro.php",
+        "wp-mail-smtp/wp_mail_smtp.php",
+        "wpforms-lite/wpforms.php",
+        "yith-woocommerce-ajax-navigation/init.php"
+    ],
+    "snippets": [
+        {
+            "id": "637",
+            "name": "Petshop Saskaitos Recon LIGHT v2",
+            "active": "1",
+            "scope": "front-end",
+            "code_len": "2839"
+        }
+    ],
+    "template_dirs": {
+        "wp-content/themes/flatsome-child/woocommerce-delivery-notes": [
+            "base.php"
+        ],
+        "wp-content/plugins/woocommerce-delivery-notes/templates": [
+            "base.php",
+            "creditnote.php",
+            "css/",
+            "deliverynote.php",
+            "invoice.php",
+            "packingslip.php",
+            "receipt.php"
+        ],
+        "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/templates": [
+            "Simple/",
+            "Simple/html-document-wrapper.php",
+            "Simple/invoice.php",
+            "Simple/packing-slip.php",
+            "Simple/template-functions.php"
+        ],
+        "wp-content/plugins/petshop-pragma": [
+            "petshop-pragma.php"
+        ]
+    },
+    "plugin_dirs_matching": [
+        "petshop-pragma",
+        "woocommerce-delivery-notes",
+        "woocommerce-pdf-invoices-packing-slips"
+    ],
+    "opt_wcdn_settings": [
+        "storeName",
+        "storeLogo",
+        "storeAddress",
+        "email",
+        "phone",
+        "footerText",
+        "complimentaryClose",
+        "policies",
+        "printEndpoint",
+        "defaultDocumentLabel",
+        "textDirection",
+        "enablePDF",
+        "pdfPaperSize",
+        "pdfUseCurrencyCode",
+        "showCustomerEmailLink",
+        "customerEmailText",
+        "showAdminEmailLink",
+        "adminEmailText",
+        "showViewOrderButton",
+        "showPrintButtonMyAccountPage",
+        "autoPrintDialog",
+        "viewOrderButtonLabel",
+        "invoiceButtonLabel",
+        "deliveryNoteButtonLabel",
+        "receiptButtonLabel",
+        "creditNoteButtonLabel",
+        "packingSlipButtonLabel",
+        "processingTemplate",
+        "processingAuto",
+        "processingAttach",
+        "completedTemplate",
+        "completedAuto",
+        "completedAttach",
+        "refundedTemplate",
+        "refundedAuto",
+        "refundedAttach",
+        "enablePayNow",
+        "enablePDFStorage",
+        "invoiceNumberFormat",
+        "numberDaysPdfExpiration",
+        "myAccountPageButtonLabel",
+        "resetInvoiceNumberYearly"
+    ],
+    "opt_wpo_wcpdf_settings_general": [
+        "checkout_field_as_vat_number",
+        "download_display",
+        "paper_size",
+        "template_path",
+        "header_logo",
+        "header_logo_height",
+        "shop_name",
+        "shop_address_line_1",
+        "shop_address_line_2",
+        "shop_address_country",
+        "shop_address_city",
+        "shop_address_postcode",
+        "shop_address_additional",
+        "vat_number",
+        "coc_number",
+        "shop_phone_number",
+        "shop_email_address",
+        "footer",
+        "extra_1",
+        "extra_2",
+        "extra_3",
+        "checkout_field_label"
+    ]
+}
+deactivate 637 -> 200
+DONE
