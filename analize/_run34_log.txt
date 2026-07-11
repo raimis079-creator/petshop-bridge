@@ -1,0 +1,22 @@
+deploy snippet id=651
+=== DEPLOY REZULTATAS ===
+{
+    "new_len": 77030,
+    "syntax_ok": true,
+    "old_size": 76666,
+    "old_writable": true,
+    "bak_original_created": true,
+    "ts_backup": "functions.php.20260711211033.bak",
+    "written": 77030,
+    "new_size": 77030,
+    "verify_pvm": true,
+    "verify_isankstine": true,
+    "verify_no_old": true,
+    "DEPLOY_OK": true
+}
+DEPLOY_OK=true
+deploy snippet deakt
+homepage HTTP: 200
+parduotuve HTTP: 200
+fatal error homepage: false
+SVEIKATA OK - failas veikia
