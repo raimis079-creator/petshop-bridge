@@ -1,8 +1,40 @@
-token ok
-A ok rows=69
-B ok rows=3
-C ok rows=10
-D ok rows=600
-E ok rows=20
-F ok rows=54
-G ok rows=100
+=== APPLY ===
+{
+    "mode": "APPLY",
+    "PRIES": {
+        "banner_version": "39",
+        "use_custom_cookie_css": "1",
+        "custom_css_ilgis": 915,
+        "turi_mobile_42vh": "ne"
+    },
+    "PLANUOJAMA": {
+        "custom_css_ilgis": 2232,
+        "banner_version": 40
+    },
+    "updated": 1,
+    "db_error": "",
+    "istrinta_css": [
+        "banner-1-optin.css"
+    ],
+    "iskviesta": [
+        "resave",
+        "maybe_update_css",
+        "cb::save",
+        "CMPLZ::generate_css",
+        "CMPLZ::save"
+    ],
+    "css_po": [
+        {
+            "file": "banner-1-optin.css",
+            "size": 18994,
+            "turi_42vh": "✅ yra",
+            "turi_zalia": "✅"
+        }
+    ],
+    "PO": {
+        "banner_version": "40",
+        "use_custom_cookie_css": "1",
+        "css_len": "2232"
+    }
+}
+DONE
