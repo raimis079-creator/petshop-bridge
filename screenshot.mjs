@@ -292,7 +292,7 @@ function summarize(events) {
       R.steps['9_duplicate_check'] = {
         purchase_events_total: purchaseCount,
         dedup_ok: purchaseCount <= 1,
-        message: purchaseCount > 1 ? 'DUBLIKATAS! S168 bug grize' : 'OK - purchase fire'ino tik karta'
+        message: purchaseCount > 1 ? 'DUBLIKATAS - S168 bug grize' : 'OK - purchase fireino tik karta'
       };
       L('  purchase eventu is viso: ' + purchaseCount);
       L('  ' + R.steps['9_duplicate_check'].message);
