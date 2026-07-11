@@ -1,0 +1,5 @@
+{
+  "fix_id": 653,
+  "order_id": 34609,
+  "test": "{\n    \"before\": {\n        \"status\": \"on-hold\",\n        \"doc_type\": \"proforma\"\n    },\n    \"after\": {\n        \"status\": \"completed\",\n        \"doc_type\": \"invoice\",\n        \"avpn\": \"AVPN000139\"\n    },\n    \"FINAL_ATTACHMENTS\": [\n        \"PVM-saskaita-AVPN000139.pdf\"\n    ],\n    \"completed_pdf_meta\": \"PVM-saskaita-AVPN000139.pdf\"\n}"
+}
