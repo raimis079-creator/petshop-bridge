@@ -1,0 +1,23 @@
+FIX v3 id=653 active=true scope=global
+648 v2 id=648 active=true scope=global
+reader id=655 scope=global
+uzsakymas #34611 (bacs on-hold)
+REST update -> status=completed HTTP 200
+=== REALUS PRIEDAS (ne front-end) ===
+{
+    "ps_last_completed_attach": {
+        "time": 1783805840,
+        "order": 34611,
+        "ctx": "rest",
+        "atts": [
+            "PVM-saskaita-AVPN000141.pdf"
+        ]
+    },
+    "order": {
+        "status": "completed",
+        "doc_type": "invoice",
+        "completed_pdf": "PVM-saskaita-AVPN000141.pdf",
+        "avpn": "AVPN000141"
+    }
+}
+order #34611 trynimas 200
