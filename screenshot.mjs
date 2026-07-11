@@ -78,14 +78,26 @@ function summarize(events) {
       return { clicked: false };
     });
     L('  ATC paspaustas: ' + JSON.stringify(atcClicked));
-    await page.waitForTimeout(3500);
+
+    // Flatsome ATC gali NAVIGUOTI (ne AJAX) - S168 patvirtinta. Lauksim iki 6s bet kokios navigacijos.
+    let atcNavigated = false;
+    try {
+      await page.waitForLoadState('domcontentloaded', { timeout: 6000 });
+      // Ar iš tikrųjų nunavigavo į kitą URL?
+      if (!/\/product\//.test(page.url())) {
+        atcNavigated = true;
+        L('  ATC NAVIGAVO (ne AJAX) -> ' + page.url());
+      }
+    } catch (e) {
+      L('  jokios navigacijos (AJAX rezimas)');
+    }
+    await page.waitForTimeout(2500);
 
     let dl2 = await page.evaluate(() => (window.dataLayer || []).map(e => JSON.parse(JSON.stringify(e))));
     let ev2 = ecomEvents(dl2);
-    // Kas naujo po step1
-    let new2 = ev2.slice(ev1.length);
-    R.steps['2_add_to_cart'] = { atc_click: atcClicked, dl_len: dl2.length, new_events: summarize(new2), all_ecom: summarize(ev2) };
-    L('  Nauji e-commerce events po ATC: ' + new2.length);
+    let new2 = ev2.slice(atcNavigated ? 0 : ev1.length); // jei navigavo, dataLayer naujas
+    R.steps['2_add_to_cart'] = { atc_click: atcClicked, atc_navigated: atcNavigated, dl_len: dl2.length, new_events: summarize(new2), all_ecom: summarize(ev2) };
+    L('  ATC navigated: ' + atcNavigated + ' | Nauji e-commerce events: ' + new2.length);
     new2.forEach(e => L('    - ' + e.event + ' value=' + (e.ecommerce && e.ecommerce.value)));
 
     // ═══ 3. VIEW_CART ═══
