@@ -1,6 +1,52 @@
-cleanup snippet id=null HTTP ERR
+cleanup snippet id=636 HTTP 200
 === DRY ===
-[ERR]
+{
+    "rasti": [
+        {
+            "id": "5",
+            "email": "terra@gyvunai.lt",
+            "reg": "2026-07-11 17:06:53",
+            "login": "testas.testauskas"
+        },
+        {
+            "id": "6",
+            "email": "ga4test1783790464134@petshop.lt",
+            "reg": "2026-07-11 17:21:22",
+            "login": "testas.testauskas-1007"
+        }
+    ],
+    "istrinti": [],
+    "mode": "DRY-RUN"
+}
 === APPLY ===
-[ERR]
+{
+    "rasti": [
+        {
+            "id": "5",
+            "email": "terra@gyvunai.lt",
+            "reg": "2026-07-11 17:06:53",
+            "login": "testas.testauskas"
+        },
+        {
+            "id": "6",
+            "email": "ga4test1783790464134@petshop.lt",
+            "reg": "2026-07-11 17:21:22",
+            "login": "testas.testauskas-1007"
+        }
+    ],
+    "istrinti": [
+        {
+            "id": "5",
+            "email": "terra@gyvunai.lt",
+            "ok": "DELETED"
+        },
+        {
+            "id": "6",
+            "email": "ga4test1783790464134@petshop.lt",
+            "ok": "DELETED"
+        }
+    ],
+    "mode": "APPLY"
+}
+deactivate 636 -> 200
 DONE
