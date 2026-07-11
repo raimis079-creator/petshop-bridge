@@ -1,0 +1,28 @@
+konsolidacija snippet id=630 active=true HTTP 200
+=== DRY (HTTP 200) ===
+{
+    "senas_34526": {
+        "id": 34526,
+        "title": "Slapukų naudojimas",
+        "slug": "slapuku-politika",
+        "status": "publish"
+    },
+    "complianz_es": {
+        "id": 34591,
+        "title": "Slapukų politika (ES)",
+        "slug": "slapuku-politika-es",
+        "status": "publish"
+    },
+    "dabartinis_clean_slug_savininkas": {
+        "id": 34526,
+        "title": "Slapukų naudojimas"
+    },
+    "cmplz_cookie_url_PRIES": "https://dev.avesa.lt/slapuku-politika-es/",
+    "mode": "DRY-RUN",
+    "PLANAS": {
+        "1_senas_34526": "slug -> slapuku-politika-old, status -> draft",
+        "2_complianz_es_34591": "slug -> slapuku-politika, title -> \"Slapuku politika\"",
+        "3_rezultatas": "/slapuku-politika/ = Complianz valdomas cookie-statement; /slapuku-politika-es/ 301 -> /slapuku-politika/ (wp_old_slug)"
+    }
+}
+DONE
