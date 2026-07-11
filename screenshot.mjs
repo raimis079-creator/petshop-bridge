@@ -29,7 +29,7 @@ function sh(cmd) { try { return execSync(cmd, { encoding: 'utf8', maxBuffer: 300
 
 (async () => {
   const R = {};
-
+  try {
   L('=== 1. WP REST namespaces ===');
   const ns = sh('curl -s -k -u "' + U + ':' + P + '" "' + BASE + '/wp-json/" ');
   try {
@@ -62,7 +62,11 @@ function sh(cmd) { try { return execSync(cmd, { encoding: 'utf8', maxBuffer: 300
     L('  PRIES: ' + JSON.stringify(j.PRIES || {}));
   } catch (e) { L('  layout_fix DRY neatsake JSON (gal snippet deaktyvuotas): ' + dry.slice(0, 200)); }
 
-  putText('deploy_recon.json', JSON.stringify(R, null, 2));
-  putText('_deploy_recon_log.txt', out);
   L('DONE');
+  } catch (e) {
+    L('!!! EXCEPTION: ' + (e && e.stack ? e.stack : String(e)));
+  } finally {
+    putText('deploy_recon.json', JSON.stringify(R, null, 2));
+    putText('_deploy_recon_log.txt', out);
+  }
 })();
