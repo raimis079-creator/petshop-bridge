@@ -1,53 +1,22 @@
 import { execSync } from "child_process";
 import fs from "fs";
-function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'cp '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
+function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'pm '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
 let out='';const L=s=>{out+=s+'\n';console.log(s);};
-const BASE='https://dev.avesa.lt';
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-function getHtml(p){sh('curl -s -k -A "Mozilla/5.0" "'+BASE+p+'" -o /tmp/pg.html 2>/dev/null');try{return fs.readFileSync('/tmp/pg.html','utf8');}catch(e){return '';}}
-function analyze(html){
-  const title=(html.match(/<title>([^<]*)<\/title>/i)||[])[1]||'';
-  const h1=(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)||[])[1]||'';
-  // istraukiam matoma teksta is entry-content / page-content
-  let body=html;
-  const m=html.match(/<div[^>]*class="[^"]*(?:entry-content|page-content|the-content|post-content)[^"]*"[^>]*>([\s\S]*?)<\/(?:div|article|main)>/i);
-  if(m)body=m[1];
-  const text=body.replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-  return {
-    title:title.trim().slice(0,80),
-    h1:h1.replace(/<[^>]+>/g,'').trim().slice(0,80),
-    text_len:text.length,
-    // Complianz auto-doc zymes
-    cmplz_document: /cmplz-document|cmplz-cookie-statement|complianz\/legal-documents|cmplz-cookies/i.test(html),
-    cmplz_shortcode_out: /cmplz-cookies-overview|cookie-statement-type|cmplz-manage-consent/i.test(html),
-    lists_cookies: /(_ga|_gcl_au|_fbp|cmplz_|woocommerce_items_in_cart|PHPSESSID)/.test(text),
-    mentions_cookiedatabase: /cookiedatabase\.org|automati(s|z)/i.test(text),
-    // pirmi 300 simboliu teksto
-    excerpt: text.slice(0,300)
-  };
-}
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP=Buffer.from("LyoqCiAqIFBldHNob3AgQ29tcGxpYW56IENvb2tpZSBQYWdlIE1hcHBpbmcgdjEgKHRva2VuLCByZWFkLW9ubHkpCiAqIFJVTjogLz9wc19jbXBsel9wYWdlbWFwPTEmdG9rZW49Y21wbHpfNjY4MGFhMmE0MjE1MWQ1NGZhOGQ2NGVjCiAqLwppZiAoICEgZGVmaW5lZCggJ0FCU1BBVEgnICkgKSB7IHJldHVybjsgfQoKYWRkX2FjdGlvbiggJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uICgpIHsKCWlmICggISBpc3NldCggJF9HRVRbJ3BzX2NtcGx6X3BhZ2VtYXAnXSApICkgeyByZXR1cm47IH0KCSR0b2tlbiA9IGlzc2V0KCAkX0dFVFsndG9rZW4nXSApID8gc2FuaXRpemVfdGV4dF9maWVsZCggd3BfdW5zbGFzaCggJF9HRVRbJ3Rva2VuJ10gKSApIDogJyc7CglpZiAoICR0b2tlbiAhPT0gJ2NtcGx6XzY2ODBhYTJhNDIxNTFkNTRmYThkNjRlYycgKSB7IHJldHVybjsgfQoKCWdsb2JhbCAkd3BkYjsKCSRvdXQgPSBhcnJheSgpOwoKCS8vIDEuIGJhbm5lciBsZWdhbF9kb2N1bWVudHMgc3R1bHBlbGlzCgkkdGJsID0gJHdwZGItPnByZWZpeCAuICdjbXBsel9jb29raWViYW5uZXJzJzsKCSRsZCAgPSAkd3BkYi0+Z2V0X3ZhciggIlNFTEVDVCBsZWdhbF9kb2N1bWVudHMgRlJPTSAkdGJsIFdIRVJFIElEID0gMSIgKTsKCSRvdXRbJ2xlZ2FsX2RvY3VtZW50c19yYXcnXSA9ICRsZDsKCSR1biA9IEBtYXliZV91bnNlcmlhbGl6ZSggJGxkICk7Cgkkb3V0WydsZWdhbF9kb2N1bWVudHMnXSA9ICR1bjsKCgkvLyAyLiBDb21wbGlhbnogbnVzdGF0eW11IHBhZ2UgSUQKCWZvcmVhY2ggKCBhcnJheSgKCQknY21wbHpfY29va2llLXN0YXRlbWVudF9jdXN0b21fcGFnZScsCgkJJ2NtcGx6X3ByaXZhY3ktc3RhdGVtZW50X2N1c3RvbV9wYWdlJywKCQknY21wbHpfY29va2llLXN0YXRlbWVudCcsCgkJJ2NtcGx6X3ByaXZhY3ktc3RhdGVtZW50JywKCSkgYXMgJG9wdCApIHsKCQkkb3V0WydvcHRpb25fJyAuICRvcHRdID0gZ2V0X29wdGlvbiggJG9wdCApOwoJfQoKCS8vIDMuIENvbXBsaWFueiBnZW5lcmF0ZWQgcGFnZXMgKGplaSB0b2tzIG9wdGlvbiB5cmEpCgkkZ3AgPSBnZXRfb3B0aW9uKCAnY21wbHpfZ2VuZXJhdGVkX3BhZ2VzJyApOwoJJG91dFsnY21wbHpfZ2VuZXJhdGVkX3BhZ2VzJ10gPSAkZ3A7CgoJLy8gNC4gUHVzbGFwaXUgMzQ1MjYgaXIgMzUgYnVzZW5hICsgY21wbHogbWV0YQoJZm9yZWFjaCAoIGFycmF5KCAzNDUyNiwgMzUgKSBhcyAkcGlkICkgewoJCSRwID0gZ2V0X3Bvc3QoICRwaWQgKTsKCQlpZiAoICEgJHAgKSB7ICRvdXRbJ3BhZ2VfJyAuICRwaWRdID0gJ05FUkFTVEFTJzsgY29udGludWU7IH0KCQkkbWV0YSA9IGdldF9wb3N0X21ldGEoICRwaWQgKTsKCQkkY21wbHpfbWV0YSA9IGFycmF5KCk7CgkJZm9yZWFjaCAoIChhcnJheSkgJG1ldGEgYXMgJGsgPT4gJHYgKSB7CgkJCWlmICggc3RyaXBvcyggJGssICdjbXBseicgKSAhPT0gZmFsc2UgfHwgc3RyaXBvcyggJGssICdjb21wbGlhbnonICkgIT09IGZhbHNlICkgewoJCQkJJGNtcGx6X21ldGFbICRrIF0gPSBpc19hcnJheSggJHYgKSA/ICggaXNzZXQoICR2WzBdICkgPyAkdlswXSA6ICR2ICkgOiAkdjsKCQkJfQoJCX0KCQkkb3V0WydwYWdlXycgLiAkcGlkXSA9IGFycmF5KAoJCQkndGl0bGUnICAgPT4gJHAtPnBvc3RfdGl0bGUsCgkJCSdzbHVnJyAgICA9PiAkcC0+cG9zdF9uYW1lLAoJCQknc3RhdHVzJyAgPT4gJHAtPnBvc3Rfc3RhdHVzLAoJCQknbW9kaWZpZWQnPT4gJHAtPnBvc3RfbW9kaWZpZWQsCgkJCSdjbXBsel9tZXRhJyA9PiAkY21wbHpfbWV0YSwKCQkJJ2NvbnRlbnRfaGFzX2Nvb2tpZV90YWJsZScgPT4gKCBzdHJwb3MoICRwLT5wb3N0X2NvbnRlbnQsICdjbXBsei1jb29raWVzJyApICE9PSBmYWxzZSB8fCBzdHJwb3MoICRwLT5wb3N0X2NvbnRlbnQsICdjb29raWUtc3RhdGVtZW50JyApICE9PSBmYWxzZSApID8gJ3RhaXAnIDogJ25lJywKCQkJJ2NvbnRlbnRfbGVuJyA9PiBzdHJsZW4oICRwLT5wb3N0X2NvbnRlbnQgKSwKCQkpOwoJfQoKCS8vIDUuIENvbXBsaWFueiBvZmljaWFsaSBjb29raWUtc3RhdGVtZW50IG51b3JvZGEgKGplaSBmdW5rY2lqYSB5cmEpCglpZiAoIGZ1bmN0aW9uX2V4aXN0cyggJ2NtcGx6X2dldF9kb2N1bWVudF91cmwnICkgKSB7CgkJJG91dFsnY21wbHpfZ2V0X2RvY3VtZW50X3VybF9jb29raWUnXSA9IGNtcGx6X2dldF9kb2N1bWVudF91cmwoICdjb29raWUtc3RhdGVtZW50JyApOwoJCSRvdXRbJ2NtcGx6X2dldF9kb2N1bWVudF91cmxfcHJpdmFjeSddID0gY21wbHpfZ2V0X2RvY3VtZW50X3VybCggJ3ByaXZhY3ktc3RhdGVtZW50JyApOwoJfQoJaWYgKCBmdW5jdGlvbl9leGlzdHMoICdjbXBsel9nZXRfcGFnZV9pZCcgKSApIHsKCQkkb3V0WydjbXBsel9nZXRfcGFnZV9pZF9jb29raWUnXSA9IGNtcGx6X2dldF9wYWdlX2lkKCAnY29va2llLXN0YXRlbWVudCcsICdldScgKTsKCX0KCgloZWFkZXIoICdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnICk7CgllY2hvIHdwX2pzb25fZW5jb2RlKCAkb3V0LCBKU09OX1BSRVRUWV9QUklOVCB8IEpTT05fVU5FU0NBUEVEX1VOSUNPREUgfCBKU09OX1VORVNDQVBFRF9TTEFTSEVTICk7CglleGl0Owp9LCA2ICk7Cg==",'base64').toString('utf8');
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
 (async()=>{const R={};try{
-  for(const [key,p] of [['sena_34526','/slapuku-politika/'],['complianz_35','/slapuku-politika-es/']]){
-    const html=getHtml(p);
-    const a=analyze(html);
-    R[key]={path:p,html_len:html.length,...a};
-    L('=== '+key+' ('+p+') ===');
-    L('  title: '+a.title);
-    L('  h1: '+a.h1);
-    L('  matomo teksto ilgis: '+a.text_len+' simb.');
-    L('  Complianz auto-dokumentas: '+a.cmplz_document);
-    L('  Complianz cookie shortcode output: '+a.cmplz_shortcode_out);
-    L('  isvardija konkrecius slapukus (_ga/_fbp/cmplz...): '+a.lists_cookies);
-    L('  mini cookiedatabase/automatiskai: '+a.mentions_cookiedatabase);
-    L('   istrauka: '+a.excerpt.slice(0,220));
-    L('');
-  }
-  // Banerio nuorodos (i kuri slapuku psl rodo pats Complianz baneris)
-  const prod=getHtml('/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/');
-  const links=[...prod.matchAll(/class="cmplz-link[^"]*"[^>]*href="([^"]*)"|href="([^"]*)"[^>]*class="cmplz-link/gi)].map(x=>x[1]||x[2]);
-  const allCmplzLinks=[...prod.matchAll(/<a[^>]*href="([^"]*)"[^>]*>([^<]*(?:slapuk|privatum)[^<]*)<\/a>/gi)].map(x=>({href:x[1],text:x[2].trim()}));
-  R.banner_links=allCmplzLinks;
-  L('=== Banerio nuorodos (slapuku/privatumo) ===');
-  for(const l of allCmplzLinks) L('  "'+l.text+'" -> '+l.href);
+  const list=api('GET','/wp-json/code-snippets/v1/snippets?limit=300');
+  let ex=null;try{ex=JSON.parse(list.body).find(s=>/Cookie Page Mapping/i.test(s.name));}catch(e){}
+  const payload={name:'Petshop Complianz Cookie Page Mapping v1',desc:'read-only',code:PHP,scope:'front-end',active:true,priority:10};
+  const c=ex?api('POST','/wp-json/code-snippets/v1/snippets/'+ex.id,payload):api('POST','/wp-json/code-snippets/v1/snippets',payload);
+  let snip=null;try{snip=JSON.parse(c.body);}catch(e){}const id=snip&&snip.id?snip.id:(ex&&ex.id);
+  L('pagemap snippet id='+id+' active='+(snip?snip.active:'?')+' HTTP '+c.code);
+  execSync('sleep 2');
+  const rec=api('GET','/?ps_cmplz_pagemap=1&token=cmplz_6680aa2a42151d54fa8d64ec');
+  L('=== PAGEMAP (HTTP '+rec.code+') ===');
+  L(rec.body.slice(0,3000));
+  R.map=rec.body.slice(0,5000);
+  if(id){const d=api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});L('deactivate '+id+' -> '+d.code);}
   L('DONE');
-}catch(e){L('!!! '+(e&&e.stack?e.stack:e));}finally{putText('cookie_pages.json',JSON.stringify(R,null,2));putText('_run8_log.txt',out);}})();
+}catch(e){L('!!! '+(e&&e.stack?e.stack:e));}finally{putText('cookie_pagemap.json',JSON.stringify(R,null,2));putText('_run9_log.txt',out);}})();
