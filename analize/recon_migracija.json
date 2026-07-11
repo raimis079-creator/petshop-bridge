@@ -1,34 +1,91 @@
 {
+  "diag_noauth": {
+    "code": "200",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 200 \r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\nlink: <https://dev.avesa.lt/wp-json/wp/v2/pages/34543>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\"\r\nlink: <https://dev.avesa.lt/>; rel=shortlink\r\n"
+  },
   "blog_royal-canin-kaciu-maistas": {
-    "error": "TypeError: fetch failed"
+    "code": "404",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 404 \r\nexpires: Wed, 11 Jan 1984 05:00:00 GMT\r\ncache-control: no-cache, must-revalidate, max-age=0, no-store, private\r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\ncontent-type: text/html; charset=UTF-8\r\ndate: "
   },
   "blog_sterilizuotu-kaciu-maistas": {
-    "error": "TypeError: fetch failed"
+    "code": "404",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 404 \r\nexpires: Wed, 11 Jan 1984 05:00:00 GMT\r\ncache-control: no-cache, must-revalidate, max-age=0, no-store, private\r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\ncontent-type: text/html; charset=UTF-8\r\ndate: "
   },
   "blog_maistas-sterilizuotai-katei-su-antsvorio-problema": {
-    "error": "TypeError: fetch failed"
+    "code": "404",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 404 \r\nexpires: Wed, 11 Jan 1984 05:00:00 GMT\r\ncache-control: no-cache, must-revalidate, max-age=0, no-store, private\r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\ncontent-type: text/html; charset=UTF-8\r\ndate: "
   },
   "excl_/exclusion": {
-    "error": "TypeError: fetch failed"
+    "code": "301",
+    "redir": "https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/",
+    "xrb": "WordPress",
+    "err": "",
+    "headers": "HTTP/2 301 \r\nexpires: Wed, 11 Jan 1984 05:00:00 GMT\r\ncache-control: no-cache, must-revalidate, max-age=0, no-store, private\r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nx-redirect-by: WordPress\r\nlocation: https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas"
   },
   "excl_/exclusion/": {
-    "error": "TypeError: fetch failed"
+    "code": "301",
+    "redir": "https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/",
+    "xrb": "WordPress",
+    "err": "",
+    "headers": "HTTP/2 301 \r\nexpires: Wed, 11 Jan 1984 05:00:00 GMT\r\ncache-control: no-cache, must-revalidate, max-age=0, no-store, private\r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nx-redirect-by: WordPress\r\nlocation: https://dev.avesa.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas"
   },
   "excl_/gamintojas/exclusion/": {
-    "error": "TypeError: fetch failed"
+    "code": "200",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 200 \r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\nlink: <https://dev.avesa.lt/wp-json/wp/v2/product_brand/317>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\"\r\nvary: Accept-Encoding\r\ncontent-type: tex"
   },
   "cookie_/slapuku-politika/": {
-    "error": "TypeError: fetch failed"
+    "code": "200",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 200 \r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\nlink: <https://dev.avesa.lt/wp-json/wp/v2/pages/34526>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\"\r\nlink: <https://dev.avesa.lt/?p=34526>; rel=sho"
   },
   "cookie_/slapuku-politika-es/": {
-    "error": "TypeError: fetch failed"
+    "code": "200",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 200 \r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\nlink: <https://dev.avesa.lt/wp-json/wp/v2/pages/34591>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\"\r\nlink: <https://dev.avesa.lt/?p=34591>; rel=sho"
   },
   "cookie_/privatumo-politika/": {
-    "error": "TypeError: fetch failed"
+    "code": "200",
+    "redir": "",
+    "xrb": "",
+    "err": "",
+    "headers": "HTTP/2 200 \r\npermissions-policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")\r\nlink: <https://dev.avesa.lt/wp-json/>; rel=\"https://api.w.org/\"\r\nlink: <https://dev.avesa.lt/wp-json/wp/v2/pages/34525>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\"\r\nlink: <https://dev.avesa.lt/?p=34525>; rel=sho"
   },
-  "cmplz_present": false,
-  "robots": "TypeError: fetch failed",
-  "sitemap_/wp-sitemap.xml": {},
-  "sitemap_/sitemap.xml": {},
-  "sitemap_/sitemap_index.xml": {}
+  "footer_cookie_links": [
+    "/slapuku-politika/",
+    "https://dev.avesa.lt/slapuku-politika/"
+  ],
+  "cmplz_present": true,
+  "cmplz_hints": [
+    "cmplz-bottom-right",
+    "cmplz-banner-checkbox"
+  ],
+  "homepage_noindex": true,
+  "robots": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n",
+  "sitemap_/wp-sitemap.xml": {
+    "code": "404",
+    "redir": ""
+  },
+  "sitemap_/sitemap_index.xml": {
+    "code": "404",
+    "redir": ""
+  }
 }
