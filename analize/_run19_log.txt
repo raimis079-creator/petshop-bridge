@@ -1,4 +1,18 @@
-uzsakymu rasta: 1
-  #34600 status=on-hold total=73.90 EUR | Testas Testauskas <terra@gyvunai.lt> | 2026-07-11T20:06:53 | Bankinis pavedimas
-DETALES issaugotos order_before_delete.json
-DONE (tik peržiūra, NEtrina)
+=== 1. Uzsakymas #34600 (WC REST) ===
+  #undefined status=undefined total=undefined tax=undefined payment=undefined
+  email=undefined items=0
+  tracking meta keys: []
+=== 2. GA4 token: ok ===
+=== 3. GA4 Realtime (pask. 30 min) — eventName counts ===
+  ecommerce eventai realtime:
+  >>> purchase realtime count: 0 (dar neatvyko arba latency)
+=== 4. GA4 Standard — transactionId (siandien) ===
+  transakciju siandien: 6
+    txid= count=1009 revenue=0 purchaseRev=0
+    txid=11505 count=1 revenue=8.26 purchaseRev=8.26
+    txid=11506 count=1 revenue=0 purchaseRev=0
+    txid=11507 count=1 revenue=56.49 purchaseRev=56.49
+    txid=11508 count=1 revenue=59.99 purchaseRev=59.99
+    txid=11509 count=1 revenue=32.32 purchaseRev=32.32
+  >>> #34600 GA4: DAR NERASTA (GA4 standard latency iki 24-48h; realtime patikimesnis)
+DONE
