@@ -1,0 +1,68 @@
+snippet id=643
+=== dydis: 2562 ===
+{
+    "pragma_size": 22662,
+    "pragma_hits": [
+        "13: add_action( 'init', function() {",
+        "36: add_action( 'petshop_pragma_monthly_export', function() {",
+        "84: $doc_type = $order->get_meta( '_petshop_invoice_document_type' );",
+        "87: // Tik jei doc_type = 'invoice' IR turi AVPN numerį",
+        "88: if ( $doc_type === 'invoice' && $avpn ) {",
+        "379: add_action( 'admin_menu', function() {",
+        "484: if ( $o->get_meta( '_petshop_invoice_document_type' ) === 'proforma' ) continue;",
+        "486: $avpn = petshop_get_avpn_number( $o->get_id() );",
+        "488: $o->update_meta_data( '_petshop_invoice_document_type', 'invoice' );"
+    ],
+    "snippets_with_invoice_logic": [
+        {
+            "id": "643",
+            "name": "Petshop Invoice Bug Recon v1",
+            "active": "1"
+        }
+    ],
+    "wcdn_defaultDocumentLabel": "Document",
+    "wcdn_invoiceButtonLabel": "Spausdinti sąskaitą",
+    "wcdn_invoiceNumberFormat": "AVPN{order_number}",
+    "wcdn_completedAttach": true,
+    "wcdn_processingAttach": false,
+    "wcdn_completedTemplate": "invoice",
+    "wcdn_processingTemplate": "invoice",
+    "order_34603": {
+        "status": "completed",
+        "payment": "bacs",
+        "doc_type_meta": "invoice",
+        "avpn_meta": "AVPN000133",
+        "iapv_meta": "IAPV000128"
+    },
+    "status_hooks": {
+        "woocommerce_order_status_completed": [
+            "p5:Closure",
+            "p10:wc_paying_customer",
+            "p10:wc_downloadable_product_permissions",
+            "p10:wc_update_total_sales_counts",
+            "p10:wc_update_coupon_usage_counts",
+            "p10:wc_maybe_reduce_stock_levels",
+            "p10:WC_Emails::send_transactional_email",
+            "p11:wc_release_stock_for_order"
+        ],
+        "woocommerce_order_status_processing": [
+            "p10:wc_downloadable_product_permissions",
+            "p10:wc_update_total_sales_counts",
+            "p10:wc_update_coupon_usage_counts",
+            "p10:wc_maybe_reduce_stock_levels",
+            "p11:wc_release_stock_for_order"
+        ],
+        "woocommerce_order_status_on-hold": [
+            "p10:wc_update_total_sales_counts",
+            "p10:wc_update_coupon_usage_counts",
+            "p10:wc_maybe_reduce_stock_levels",
+            "p11:wc_release_stock_for_order"
+        ],
+        "woocommerce_email_attachments": [
+            "p10:Tyche\\WCDN\\Integrations\\Emails::attach_pdfs",
+            "p10:Closure",
+            "p9999:petshop_remove_invoice_from_processing_email"
+        ]
+    }
+}
+deakt 643
