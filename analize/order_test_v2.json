@@ -78,17 +78,42 @@
     ],
     "add_shipping_info": [],
     "add_payment_info": [],
-    "purchase": []
+    "purchase": [
+      {
+        "event": "purchase",
+        "ecommerce": {
+          "currency": "EUR",
+          "value": 73.9,
+          "transaction_id": "34601",
+          "tax": 12.83,
+          "shipping": 0,
+          "items_count": 1,
+          "items": [
+            {
+              "item_id": "HEPM11",
+              "item_name": "Exclusion Hepatic dietinis sausas šunų maistas su ",
+              "price": 73.9,
+              "quantity": 1,
+              "item_brand": "Exclusion"
+            }
+          ]
+        },
+        "user_data": {
+          "sha256_email_address": "aef20a92ac850699..."
+        }
+      }
+    ]
   },
   "counts": {
+    "purchase_revisit": 0,
     "view_item": 1,
     "add_to_cart": 1,
     "view_cart": 1,
     "begin_checkout": 1,
     "add_shipping_info": 0,
     "add_payment_info": 0,
-    "purchase": 0
+    "purchase": 1
   },
-  "thankyou_url": "https://dev.avesa.lt/checkout/",
-  "order_id": null
+  "thankyou_url": "https://dev.avesa.lt/checkout/order-received/34601/?key=wc_order_SgWvIfA6e0NTn",
+  "order_id": "34601"
 }
