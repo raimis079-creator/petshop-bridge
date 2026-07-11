@@ -1,7 +1,6 @@
 import { execSync } from "child_process";
 import fs from "fs";
 
-// putFile: raso i analize/ per Contents API (SHA fetch -> PUT), 5 bandymai
 function putFile(n, s) {
   const repo = process.env.GH_REPO, tok = process.env.GH_TOKEN;
   for (let a = 0; a < 5; a++) {
@@ -22,97 +21,102 @@ function putFile(n, s) {
 
 let out = '';
 const L = s => { out += s + '\n'; console.log(s); };
-
 const BASE = 'https://dev.avesa.lt';
+const UA = 'Mozilla/5.0 (recon)';
+const WP_USER = process.env.WP_USER || '';
+const WP_PASS = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
 
-// Grazina {status, location, xredirectby, finalStatus, finalUrl}
-async function trace(path) {
-  try {
-    const r = await fetch(BASE + path, { redirect: 'manual', headers: { 'User-Agent': 'Mozilla/5.0 recon' } });
-    const loc = r.headers.get('location') || '';
-    const xrb = r.headers.get('x-redirect-by') || '';
-    let finalStatus = r.status, finalUrl = BASE + path;
-    if (r.status >= 300 && r.status < 400 && loc) {
-      try {
-        const f = await fetch(loc.startsWith('http') ? loc : BASE + loc, { redirect: 'manual', headers: { 'User-Agent': 'Mozilla/5.0 recon' } });
-        finalStatus = f.status; finalUrl = loc;
-      } catch (e) {}
-    }
-    return { status: r.status, location: loc, xredirectby: xrb, finalStatus, finalUrl };
-  } catch (e) { return { error: String(e).slice(0, 120) }; }
-}
+function sh(cmd) { try { return execSync(cmd, { encoding: 'utf8', maxBuffer: 20000000 }); } catch (e) { return (e.stdout || '') + '\n[EXIT ' + (e.status) + '] ' + String(e.stderr || '').slice(0, 200); } }
 
-async function getHtml(path) {
-  try {
-    const r = await fetch(BASE + path, { headers: { 'User-Agent': 'Mozilla/5.0 recon' } });
-    return { status: r.status, html: await r.text() };
-  } catch (e) { return { error: String(e).slice(0, 120) }; }
+// Grazina headerius + status (be redirect sekimo)
+function head(path, auth) {
+  const a = auth ? ('-u "' + WP_USER + ':' + WP_PASS + '" ') : '';
+  const cmd = 'curl -s -k -I ' + a + '-A "' + UA + '" -o /tmp/h.txt -w "%{http_code}|%{redirect_url}" "' + BASE + path + '" 2>/tmp/err.txt; echo "==CODE=="; cat /tmp/err.txt';
+  const r = sh(cmd);
+  let headers = '';
+  try { headers = fs.readFileSync('/tmp/h.txt', 'utf8'); } catch (e) {}
+  const cw = r.split('==CODE==');
+  const codeline = (cw[0] || '').trim();
+  const err = (cw[1] || '').trim();
+  const [code, redir] = codeline.split('|');
+  const xrb = (headers.match(/x-redirect-by:\s*([^\r\n]+)/i) || [])[1] || '';
+  const loc = (headers.match(/^location:\s*([^\r\n]+)/im) || [])[1] || '';
+  return { code, redir: (redir || loc || '').trim(), xrb: xrb.trim(), err, headers: headers.slice(0, 600) };
 }
 
 (async () => {
   const R = {};
 
-  L('=== 1. BLOG P0 straipsniai (turi buti 404 pagal v1.55) ===');
+  L('=== 0. DIAGNOSTIKA: ar dev.avesa.lt pasiekiamas / uz basic-auth? ===');
+  const d0 = head('/', false);
+  L('  homepage (be auth): code=' + d0.code + ' err=' + (d0.err || 'nera'));
+  R.diag_noauth = d0;
+  if (d0.code === '401' || d0.code === '000' || !d0.code) {
+    const d1 = head('/', true);
+    L('  homepage (su WP basic auth): code=' + d1.code + ' err=' + (d1.err || 'nera'));
+    R.diag_auth = d1;
+  }
+  L('  WP_USER set: ' + (WP_USER ? 'yes' : 'NO') + ' | WP_PASS len: ' + WP_PASS.length);
+
+  // Nustatom ar naudoti auth visur
+  const useAuth = (d0.code === '401');
+  L('  -> naudosime auth: ' + useAuth);
+
+  L('=== 1. BLOG P0 straipsniai (v1.55: turi buti 404) ===');
   for (const slug of ['royal-canin-kaciu-maistas', 'sterilizuotu-kaciu-maistas', 'maistas-sterilizuotai-katei-su-antsvorio-problema']) {
-    const t = await trace('/' + slug + '/');
+    const t = head('/' + slug + '/', useAuth);
     R['blog_' + slug] = t;
-    L(`  /${slug}/  -> status ${t.status}${t.location ? ' -> ' + t.location : ''} (final ${t.finalStatus})${t.xredirectby ? ' [x-redirect-by:' + t.xredirectby + ']' : ''}`);
+    L(`  /${slug}/  -> ${t.code}${t.redir ? ' -> ' + t.redir : ''}${t.xrb ? ' [x-redirect-by:' + t.xrb + ']' : ''}`);
   }
 
-  L('=== 2. /exclusion QA gap (v1.56 #4: WP slug spejimas, x-redirect-by:WordPress = FAIL) ===');
+  L('=== 2. /exclusion QA gap (v1.56 #4) ===');
   for (const p of ['/exclusion', '/exclusion/', '/gamintojas/exclusion/']) {
-    const t = await trace(p);
+    const t = head(p, useAuth);
     R['excl_' + p] = t;
-    L(`  ${p}  -> status ${t.status}${t.location ? ' -> ' + t.location : ''} (final ${t.finalStatus})${t.xredirectby ? ' [x-redirect-by:' + t.xredirectby + ']' : ''}`);
+    L(`  ${p}  -> ${t.code}${t.redir ? ' -> ' + t.redir : ''}${t.xrb ? ' [x-redirect-by:' + t.xrb + ']' : ''}`);
   }
 
-  L('=== 3. Slapuku politika URL (v1.55 #6a: senas 34526 vs Complianz /slapuku-politika-es/) ===');
+  L('=== 3. Slapuku politika URL (v1.55 #6a) ===');
   for (const p of ['/slapuku-politika/', '/slapuku-politika-es/', '/privatumo-politika/']) {
-    const t = await trace(p);
+    const t = head(p, useAuth);
     R['cookie_' + p] = t;
-    L(`  ${p}  -> status ${t.status}${t.location ? ' -> ' + t.location : ''} (final ${t.finalStatus})`);
+    L(`  ${p}  -> ${t.code}${t.redir ? ' -> ' + t.redir : ''}${t.xrb ? ' [x-redirect-by:' + t.xrb + ']' : ''}`);
   }
 
-  L('=== 4. Footer nuoroda i slapuku politika (kur rodo realiai) ===');
-  const home = await getHtml('/');
-  if (home.html) {
-    const m = [...home.html.matchAll(/href="([^"]*slapuk[^"]*)"/gi)].map(x => x[1]);
-    R.footer_cookie_links = [...new Set(m)];
-    L('  Rasti slapuku nuorodos href: ' + JSON.stringify(R.footer_cookie_links));
-  } else { L('  home fetch klaida: ' + (home.error || home.status)); }
-
-  L('=== 5. Complianz baneris - pozicija (v1.56 #1: mobile turi buti sticky APACIOJE) ===');
-  // Fetch prekes puslapi ir istrauk cmplz banner markup + inline CSS
-  const prodHtml = home.html || '';
-  const hasCmplz = /cmplz/i.test(prodHtml);
-  R.cmplz_present = hasCmplz;
-  L('  cmplz markup homepage HTML: ' + hasCmplz);
-  if (hasCmplz) {
-    // istrauk pirmus cmplz-cookiebanner susijusius CSS/pozicijos raktazodzius
-    const posHints = [...prodHtml.matchAll(/cmplz-(bottom|top|center|banner)[^"'\s]*/gi)].map(x => x[0]);
-    R.cmplz_position_classes = [...new Set(posHints)].slice(0, 20);
-    L('  cmplz pozicijos klases/hints: ' + JSON.stringify(R.cmplz_position_classes));
-    // ar yra inline style su position:fixed / bottom
-    const styleBlocks = [...prodHtml.matchAll(/cmplz[^{]*\{[^}]*\}/gi)].map(x => x[0]).slice(0, 5);
-    R.cmplz_style_snippets = styleBlocks;
+  L('=== 4. Footer slapuku nuoroda (homepage HTML) ===');
+  const a = useAuth ? ('-u "' + WP_USER + ':' + WP_PASS + '" ') : '';
+  sh('curl -s -k ' + a + '-A "' + UA + '" "' + BASE + '/" -o /tmp/home.html 2>/dev/null');
+  let homeHtml = '';
+  try { homeHtml = fs.readFileSync('/tmp/home.html', 'utf8'); } catch (e) {}
+  L('  homepage HTML dydis: ' + homeHtml.length + ' baitu');
+  if (homeHtml.length > 500) {
+    const links = [...homeHtml.matchAll(/href="([^"]*slapuk[^"]*)"/gi)].map(x => x[1]);
+    R.footer_cookie_links = [...new Set(links)];
+    L('  slapuku nuorodos: ' + JSON.stringify(R.footer_cookie_links));
+    // Complianz baneris
+    const hasCmplz = /cmplz/i.test(homeHtml);
+    R.cmplz_present = hasCmplz;
+    L('  cmplz markup: ' + hasCmplz);
+    if (hasCmplz) {
+      const posHints = [...homeHtml.matchAll(/cmplz-(?:banner|bottom|top|center)[a-z-]*/gi)].map(x => x[0]);
+      R.cmplz_hints = [...new Set(posHints)].slice(0, 25);
+      L('  cmplz klases: ' + JSON.stringify(R.cmplz_hints));
+    }
+    // noindex
+    R.homepage_noindex = /<meta[^>]*name=["']robots["'][^>]*noindex/i.test(homeHtml);
+    L('  homepage noindex meta: ' + R.homepage_noindex);
   }
 
-  L('=== 6. Indexavimas (turi buti UZBLOKUOTAS dev, atidaromas launch diena) ===');
-  const robots = await getHtml('/robots.txt');
-  R.robots = robots.html ? robots.html.slice(0, 400) : (robots.error || robots.status);
-  L('  robots.txt: ' + (robots.html ? robots.html.replace(/\n/g, ' | ').slice(0, 200) : robots.status));
-  // noindex meta homepage
-  if (home.html) {
-    const noindex = /<meta[^>]*name=["']robots["'][^>]*noindex/i.test(home.html);
-    R.homepage_noindex = noindex;
-    L('  homepage <meta robots noindex>: ' + noindex);
-  }
-
-  L('=== 7. Sitemap busena ===');
-  for (const p of ['/wp-sitemap.xml', '/sitemap.xml', '/sitemap_index.xml']) {
-    const t = await trace(p);
-    R['sitemap_' + p] = { status: t.status, final: t.finalStatus };
-    L(`  ${p} -> ${t.status} (final ${t.finalStatus})`);
+  L('=== 5. robots.txt + sitemap ===');
+  sh('curl -s -k ' + a + '-A "' + UA + '" "' + BASE + '/robots.txt" -o /tmp/robots.txt 2>/dev/null');
+  let robots = '';
+  try { robots = fs.readFileSync('/tmp/robots.txt', 'utf8'); } catch (e) {}
+  R.robots = robots.slice(0, 500);
+  L('  robots.txt (' + robots.length + 'b): ' + robots.replace(/\n/g, ' | ').slice(0, 250));
+  for (const p of ['/wp-sitemap.xml', '/sitemap_index.xml']) {
+    const t = head(p, useAuth);
+    R['sitemap_' + p] = { code: t.code, redir: t.redir };
+    L(`  ${p} -> ${t.code}${t.redir ? ' -> ' + t.redir : ''}`);
   }
 
   putFile('recon_migracija.json', JSON.stringify(R, null, 2));
