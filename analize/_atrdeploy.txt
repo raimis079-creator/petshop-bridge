@@ -1,0 +1,8 @@
+MODULE snippet id=685 http=200
+verify snippet id=686
+VERIFY: {"shortcode_exists":1,"fn_exists":1,"render_len":14707,"picked_count":12,"picked":[26919,34156,33956,23934,27071,23705,27198,26500,26897,33994,14492,26640]}
+homepage HTTP: 200
+verify deactivated 686
+
+MODULE_ID=685
+VERIFY_ID=686
