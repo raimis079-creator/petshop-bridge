@@ -1,22 +1,5 @@
 import { execSync } from "child_process";
 import fs from "fs";
-function putBinary(n,buf){
-  const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
-  for(let a=0;a<4;a++){
-    try{
-      const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;
-      let sha='';
-      try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}
-      const b={message:'pf '+n,branch:'main',content:buf.toString('base64')};
-      if(sha)b.sha=sha;
-      fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));
-      const r=execSync('curl -s --max-time 45 -w "\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});
-      if(/HTTP:20[01]/.test(r))return true;
-    }catch(e){}
-    execSync('sleep 2');
-  }
-  return false;
-}
 function putText(n,s){
   const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;
   const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;
@@ -28,36 +11,19 @@ function putText(n,s){
   execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});
 }
 let out='';const L=s=>{out+=s+'\n';console.log(s);};
-const items=[
-  {id:34471,img:"https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34471-300x300.jpg"},
-  {id:34486,img:"https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34486-300x300.jpg"},
-  {id:34156,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/rink-animonda-gc-6x400-1-300x202.jpg"},
-  {id:34168,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/rink-ausys-15-300x105.jpg"},
-  {id:34175,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/rink-composition-34175-1782850649-300x300.jpg"},
-  {id:27198,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/70bf1c2c-2cd8-4bf9-a307-542aa4e7f9b1-300x300.png"},
-  {id:26500,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/bbbb5e50-f198-4a8d-a32f-ba4a8b23f80e-300x300.png"},
-  {id:33994,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/0003962_10_150401-k9powerharness-l1-6385-cm50-mm-juodos-300x300.jpeg"},
-  {id:33956,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/0007465_10_16271-trixie-comfort-soft-touring-petnesos-s-33-50cm20mm-juodos-300x300.jpeg"},
-  {id:26897,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/b8653d41-bf7c-48cc-b327-4682014699f6-300x300.png"},
-  {id:23934,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/42c79f9d-6ac3-4d88-a212-b79fc959291a-300x300.png"},
-  {id:27852,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/b6fc7a843aef461091aa1b83adfd23e0-300x300.jpg"},
-  {id:26640,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/4ec2c9d0-03d7-41d1-acce-0683752800f9-300x300.png"},
-  {id:27071,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/1bd77f53-1d13-4ca7-bc20-3b5909d18621-300x300.png"},
-  {id:23705,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/2100ae3d-73b3-4cad-956b-623e97b0dfb5-300x300.png"},
-  {id:24802,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/852ac5c8-2a95-4321-9508-77a824db99be-300x300.png"},
-  {id:26919,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/75180810-c574-4fe2-96c9-bfa2aaf1e69d-300x300.png"},
-  {id:26958,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/7a6dc3a6246b4e72bce28737da6a0f45-300x300.png"},
-  {id:14492,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/0005079_11_680201-trixie-vimy-lietpaltis-xs-30-cm-zydras-300x300.jpeg"},
-  {id:33894,img:"https://dev.avesa.lt/wp-content/uploads/2026/06/0006602_13_39821-trixie-capri-2-boksas-xs-s-37x34x55-cm-tamsiai-pilka-sviesiai-pilka-1-300x232.jpeg"}
-];
-(async()=>{
-  let ok=0;
-  for(const it of items){
-    try{
-      const b=execSync('curl -s -k --max-time 25 "'+it.img+'"',{encoding:'buffer',maxBuffer:20000000});
-      if(b.length>500){putBinary('p'+it.id+'.png',b);ok++;L('ok '+it.id+' '+b.length);}
-      else{L('small '+it.id);}
-    }catch(e){L('err '+it.id);}
-  }
-  putText('_dlrun.txt',out+'\nDONE ok='+ok);
-})();
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_atrdry']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n\n  $pool = array(\n    array(34471,'maistas'),array(34486,'maistas'),array(34156,'maistas'),\n    array(34168,'kramtalai'),array(34175,'kramtalai'),\n    array(27198,'zaislai'),array(26500,'zaislai'),\n    array(33994,'pavadeliai'),array(33956,'pavadeliai'),\n    array(26897,'higiena'),\n    array(23934,'sampunai'),\n    array(27852,'guoliai'),array(26640,'guoliai'),\n    array(27071,'dubeneliai'),array(23705,'dubeneliai'),\n    array(24802,'vitaminai'),array(26919,'vitaminai'),\n    array(26958,'sukos'),\n    array(14492,'apranga'),\n    array(33894,'transportavimas')\n  );\n\n  // validity map (live)\n  $valid=array(); $invalid=array();\n  foreach($pool as $it){\n    $p=wc_get_product($it[0]);\n    $ok = ($p && $p->get_status()==='publish' && $p->is_in_stock() && (float)$p->get_price()>0);\n    if($ok){$valid[$it[0]]=true;}else{\n      $reason=!$p?'nera':($p->get_status()!=='publish'?'draft':(!$p->is_in_stock()?'out':'price0'));\n      $invalid[]=array('id'=>$it[0],'cat'=>$it[1],'why'=>$reason);\n    }\n  }\n\n  $pick=function($seed) use($pool){\n    $arr=$pool; $n=count($arr);\n    mt_srand($seed);\n    for($i=$n-1;$i>0;$i--){ $j=mt_rand(0,$i); $t=$arr[$i];$arr[$i]=$arr[$j];$arr[$j]=$t; }\n    $picked=array(); $cc=array();\n    foreach($arr as $it){\n      if(count($picked)>=12) break;\n      $cat=$it[1];\n      if(isset($cc[$cat]) && $cc[$cat]>=2) continue;\n      $p=wc_get_product($it[0]);\n      if(!$p || $p->get_status()!=='publish' || !$p->is_in_stock() || (float)$p->get_price()<=0) continue;\n      $picked[]=array('id'=>$it[0],'cat'=>$cat,'t'=>mb_substr(html_entity_decode(get_the_title($it[0])),0,40));\n      $cc[$cat]=(isset($cc[$cat])?$cc[$cat]:0)+1;\n    }\n    return array('picked'=>$picked,'catcount'=>$cc);\n  };\n\n  $today = intval(date('Ymd'));\n  $days=array();\n  for($d=0;$d<4;$d++){\n    $ts=strtotime(\"+$d day\");\n    $seed=intval(date('Ymd',$ts));\n    $days[date('Y-m-d',$ts)] = $pick($seed);\n  }\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode(array(\n    'valid_count'=>count($valid),\n    'pool_total'=>count($pool),\n    'invalid'=>$invalid,\n    'days'=>$days\n  ), JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);\n  exit;\n}, 6);";
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
+(async()=>{try{
+  const payload={name:'Petshop Atrinktos Dry v1',desc:'token rotation dryrun',code:PHP,scope:'global',active:true,priority:10};
+  const c=api('POST','/wp-json/code-snippets/v1/snippets',payload);
+  let id=0;try{id=JSON.parse(c.body).id;}catch(e){}
+  L('id='+id); if(!id){L('fail '+c.body.slice(0,200));putText('_atrdry.txt',out);return;}
+  execSync('sleep 2');
+  const r=sh('curl -s -k --max-time 60 "'+BASE+'/?ps_atrdry=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  putText('atr_dry.json', r);
+  L('len='+r.length);
+  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});L('deactivated '+id);}
+  putText('_atrdry.txt',out+'\nATRDRY_ID='+id);
+}catch(e){L('!!! '+e);putText('_atrdry.txt',out);}})();
