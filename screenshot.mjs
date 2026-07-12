@@ -1,20 +1,24 @@
 import { execSync } from "child_process";
 import fs from "fs";
-function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'fc '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:50000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
-let out='';const L=s=>{out+=s+'\n';console.log(s);};
-const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP=Buffer.from("aWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyByZXR1cm47IH0KYWRkX2FjdGlvbiggJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uICgpIHsKCWlmICggISBpc3NldCggJF9HRVRbJ3BzX2ZjaGVjayddICkgKSB7IHJldHVybjsgfQoJJHRva2VuID0gaXNzZXQoICRfR0VUWyd0b2tlbiddICkgPyBzYW5pdGl6ZV90ZXh0X2ZpZWxkKCB3cF91bnNsYXNoKCAkX0dFVFsndG9rZW4nXSApICkgOiAnJzsKCWlmICggJHRva2VuICE9PSAnY21wbHpfNjY4MGFhMmE0MjE1MWQ1NGZhOGQ2NGVjJyApIHsgcmV0dXJuOyB9CgkkdGF4PSdwYV9zcGVjaWFsaV9taXR5YmEnOyAkc2x1Zz0naGlwb2FsZXJnaW5pcyc7Cgkkb3V0PWFycmF5KCk7CgkkbGluaz1nZXRfdGVybV9saW5rKCRzbHVnLCR0YXgpOwoJJG91dFsndGVybV9hcmNoaXZlX3VybCddPWlzX3dwX2Vycm9yKCRsaW5rKT8nRVJSJzokbGluazsKCSRxPW5ldyBXUF9RdWVyeShhcnJheSgncG9zdF90eXBlJz0+J3Byb2R1Y3QnLCdwb3N0X3N0YXR1cyc9PidwdWJsaXNoJywncG9zdHNfcGVyX3BhZ2UnPT4yNSwnbm9fZm91bmRfcm93cyc9PmZhbHNlLAoJCSd0YXhfcXVlcnknPT5hcnJheShhcnJheSgndGF4b25vbXknPT4kdGF4LCdmaWVsZCc9PidzbHVnJywndGVybXMnPT4kc2x1ZykpKSk7Cgkkb3V0WydwdWJsaXNoZWRfc3VfaGlwb2FsZXJnaW5pcyddPSRxLT5mb3VuZF9wb3N0czsKCSRuYW1lcz1hcnJheSgpOyAkaGFzX2V4Y2x1c2lvbj1mYWxzZTsKCWZvcmVhY2goJHEtPnBvc3RzIGFzICRwKXsgJHQ9Z2V0X3RoZV90aXRsZSgkcC0+SUQpOyAkbmFtZXNbXT0kcC0+SUQuJzogJy5tYl9zdWJzdHIoaHRtbF9lbnRpdHlfZGVjb2RlKCR0KSwwLDUwKTsgaWYoc3RyaXBvcygkdCwnZXhjbHVzaW9uJykhPT1mYWxzZSkkaGFzX2V4Y2x1c2lvbj10cnVlOyB9Cgkkb3V0WydwcmVrZXMnXT0kbmFtZXM7Cgkkb3V0WydFWENMVVNJT05fWVJBX1NBUkFTRSddPSRoYXNfZXhjbHVzaW9uOwoJd3BfcmVzZXRfcG9zdGRhdGEoKTsKCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CgllY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQsSlNPTl9QUkVUVFlfUFJJTlR8SlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsKCWV4aXQ7Cn0sIDYgKTsK",'base64').toString('utf8');
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{try{
-  const list=api('GET','/wp-json/code-snippets/v1/snippets?limit=300');
-  let ex=null;try{ex=JSON.parse(list.body).find(s=>/Filter Check/i.test(s.name));}catch(e){}
-  const payload={name:'Petshop Filter Check v1',desc:'token',code:PHP,scope:'global',active:true,priority:10};
-  const c=ex?api('POST','/wp-json/code-snippets/v1/snippets/'+ex.id,payload):api('POST','/wp-json/code-snippets/v1/snippets',payload);
-  let id=0;try{id=JSON.parse(c.body).id;}catch(e){}
-  L('id='+id); execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 40 "'+BASE+'/?ps_fcheck=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  L(r.slice(0,3500));
-  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
-  putText('filtercheck.json', r.slice(0,6000));
-}catch(e){L('!!! '+e);}finally{putText('_run52_log.txt',out);}})();
+import { chromium } from "playwright";
+function putBinary(n,buf){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'shot '+n,branch:'main',content:buf.toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));const r=execSync('curl -s -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
+function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'log',branch:'main',content:Buffer.from(s).toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pt.json',JSON.stringify(b));execSync('curl -s -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pt.json "'+url+'"');}catch(e){}}
+let log='';
+(async()=>{
+  const URL='https://dev.avesa.lt/?taxonomy=pa_speciali_mityba&term=hipoalerginis';
+  let browser;
+  try{
+    browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
+    const ctx=await browser.newContext({ignoreHTTPSErrors:true,viewport:{width:1440,height:2400}});
+    const page=await ctx.newPage();
+    await page.goto(URL,{waitUntil:'domcontentloaded',timeout:60000});
+    await page.waitForTimeout(6000);
+    const buf=await page.screenshot({fullPage:true});
+    log+='shot bytes '+buf.length+'\n';
+    putBinary('hipoalerginis_filtras.png',buf);
+    // taip pat istraukiam matomu prekiu pavadinimus
+    const titles=await page.$$eval('.product h2, .product .woocommerce-loop-product__title, li.product a.woocommerce-LoopProduct-link', els=>els.slice(0,20).map(e=>e.textContent.trim()));
+    log+='matomos prekes: '+JSON.stringify(titles).slice(0,1500)+'\n';
+  }catch(e){log+='ERR '+e+'\n';}
+  finally{if(browser)await browser.close();putText('_shot_log.txt',log);}
+})();
