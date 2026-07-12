@@ -1,0 +1,70 @@
+
+/**
+ * Speciali mityba - zvalgyba (maistui)
+ *
+ * READ-ONLY. Parodo:
+ *  1) esamus pa_speciali_mityba terminus (schema)
+ *  2) maisto prekiu BE jo pavadinimu pavyzdzius
+ *
+ * Trigger: /?spec_recon=1
+ */
+
+add_action('wp_loaded', function () {
+
+    if (empty($_GET['spec_recon'])) {
+        return;
+    }
+    if (!is_user_logged_in() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    $tax = 'pa_speciali_mityba';
+    $groups = array(
+        'Sausas (72,81)'    => array(72, 81),
+        'Konservai (73,79)' => array(73, 79),
+    );
+
+    echo '<!doctype html><meta charset="utf-8"><style>'
+       . 'body{font:13px system-ui,Arial;margin:24px;} '
+       . 'table{border-collapse:collapse;margin:6px 0 18px;} '
+       . 'td,th{border:1px solid #ccc;padding:4px 9px;} th{background:#f3f3f3;} '
+       . '.muted{color:#999;font-size:12px;}'
+       . '</style>';
+
+    echo '<h2>1) Esami pa_speciali_mityba terminai</h2>';
+    $terms = get_terms(array('taxonomy' => $tax, 'hide_empty' => false));
+    if (is_wp_error($terms) || empty($terms)) {
+        echo '<p class="muted">Terminu nerasta.</p>';
+    } else {
+        echo '<table><tr><th>term_id</th><th>Pavadinimas</th><th>slug</th><th>prekiu</th></tr>';
+        foreach ($terms as $t) {
+            echo '<tr><td>' . (int) $t->term_id . '</td><td>' . esc_html($t->name) . '</td>'
+               . '<td class="muted">' . esc_html($t->slug) . '</td><td>' . (int) $t->count . '</td></tr>';
+        }
+        echo '</table>';
+    }
+
+    foreach ($groups as $gname => $cats) {
+        $q = new WP_Query(array(
+            'post_type' => 'product', 'post_status' => array('publish', 'draft'),
+            'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
+            'tax_query' => array('relation' => 'AND',
+                array('taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $cats),
+                array('taxonomy' => $tax, 'operator' => 'NOT EXISTS'),
+            ),
+        ));
+        echo '<h2>2) ' . esc_html($gname) . ' BE specialios mitybos: ' . count($q->posts) . '</h2>';
+        echo '<table><tr><th>ID</th><th>SKU</th><th>Pavadinimas</th></tr>';
+        $shown = 0;
+        foreach ($q->posts as $pid) {
+            echo '<tr><td>' . (int) $pid . '</td><td class="muted">' . esc_html(get_post_meta($pid, '_sku', true)) . '</td>'
+               . '<td>' . esc_html(get_the_title($pid)) . '</td></tr>';
+            if (++$shown >= 50) { break; }
+        }
+        echo '</table>';
+        if (count($q->posts) > 50) { echo '<p class="muted">... rodoma 50 is ' . count($q->posts) . '</p>'; }
+    }
+
+    echo '<p class="muted">read-only. Niekas nepakeista.</p>';
+    exit;
+});
