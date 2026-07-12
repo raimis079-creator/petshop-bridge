@@ -1,0 +1,345 @@
+1:Make upload filenames lowercase:off
+2:Disable admin bar:off
+3:Allow smilies:off
+4:Current year:off
+5:petshop kategorijos v2:off
+8:petshop menu subcats v1:off
+9:etshop sunims menu v1:off
+10:petshop sunims menu v2:off
+11:petshop katems menu v1:off
+12:petshop remaining menus v1:off
+13:petshop remap categories v1:off
+14:petshop remap categories v2:off
+15:petshop cleanup empty cats v1:off
+16:Petshop reset menu options v1 :off
+72:del pauksciu:off
+71:Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis):off
+70:Tikri slug:off
+40:ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas:off
+41:Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg:off
+42:ZB prekės be aprašymo:off
+44:Pataisyti prekes su per dideliais matmenimis - kurjeris:off
+47: Base64 aprašymo pavyzdys:off
+48:Base64 nuotraukos išvalymas iš aprašymų:off
+50:ZB prekių skaičius1:off
+51:ZB brendų priskyrimas brand taksonomijoje1.1:off
+52:ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas:off
+53:ZB prekės be brando — priskirti iš pavadinimo:off
+54:4 likusių prekių brandų priskyrimas:off
+55:ZB prekės be nuotraukos:off
+56:ZB nuotraukų importas iš katalogo:off
+58:Patikrinti paieškos HTML struktūrą:off
+59:ZB nuotraukų importas — pataisytas URL:off
+60:atikrinti filterSearch HTML:off
+61:ZB nuotraukų indekso kūrimas iš brendų puslapių:off
+62:Patikrinti brendų puslapio HTML struktūrą:off
+63:ZB indekso kūrimas v2 — data-lazyloadsrc iš sąrašo:off
+64:ZB indekso kūrimas v3 — su ilgesnėmis pauzėmis:off
+65:ZB indekso kūrimas v3 — admin_init:off
+66:ZB indekso kūrimas — per admin puslapį:off
+397:Monoprotein Dry-Run v5 (daugiau brendu):off
+75:Masinis pa_pakuotes_dydis priskyrimas iš pavadinimų:off
+76:Tikrina prekes kur kg = gyvūno svoris, ne pakuotė:off
+78:Tikrina naujos prekės meta laukus:off
+79:Palygina kainas tarp seno ir naujo XML:off
+80:Perskaičiuoja visų ZB prekių kainas pagal naują logiką:off
+81:Tikrina dublikatus pagal SKU:off
+82:Perkelia aprašymus + nuotraukas iš NAUJŲ (2026-06-01) į SENUS (2026-05-27):off
+83:Parodo "Kita" prekių ZB kategorijų kelius iš XML:off
+84:Priskiria WC kategorijas "Kita" prekėms pagal ZB XML <category> kelią:off
+86:Tikrina kodėl ZB prekės su cost >= 8 yra draft:off
+87:Kelia į publish ZB draft prekes, kurios atitinka VISUS kriterijus:off
+88:kiek iš paskelbtų yra ZB prekės:off
+90:FBT pradinis konfigūravimas — sausas maistas → skanėstai:off
+92:VetFarmas inventorizacija v3:off
+94:SKU \u2192 EAN matching i\u0161 VetFarmas XML:off
+95:Vetocanis matching pagal pavadinim\u0105:off
+96:VetFarmas API helper:off
+98:vf_desc_peek:off
+101:vf_parser_v3:off
+468:Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply):off
+469:Petshop Dev App Passwords v1:ON
+472:Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply):ON
+473:Petshop Attr Modulis: Kraikai Katems v1.0 (parseris + dry/apply):off
+105:EAN normalizacija — _global_unique_id 13→12 skaitm.:off
+106:WooCommerce kategorijų eksportas — hierarchija + prekių skaičius:off
+393:Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis):off
+394:Monoprotein Dry-Run v2 (isvestinis):off
+395:Monoprotein Dry-Run v3 (sudetis-grieztas):off
+396:Monoprotein Dry-Run v4 (brendai + riebalu fix):off
+110:ZB IMPORT LOG STEBĖJIMAS — realiu laiku:off
+385:Baltymu Saltinis Apply Sausas Aprasymai v1 (32 svarus):off
+386:Baltymu Saltinis Apply Sausas EXOTIC v1:off
+387:Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi):off
+116:Trash zonos pakitimo tyrimas:off
+120:Cleanup Excluded:off
+121:trash_disappear:off
+388:Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena):off
+389:Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem):off
+124:zb_disaster_recovery:off
+125:publish_diag:off
+126:zb_recovery2:off
+127:ZB analitinis snippet'as — DUOMENYS ZB politikai v2:off
+373:Atributai Inventorius v2 (tikslus slug):off
+372:tributai Inventorius v1 (read-only):off
+371:Draft Publish Vykdymas v1:off
+129:Today Changes:off
+130:Duplicate analyze:off
+131:ZB Nuke Option:off
+132:New ZB Diag:off
+133:zb_nuke_today:off
+134: assign_categories v3:off
+136:assign_categories v2:off
+647:Petshop Invoice Timing Test v1:off
+648:Petshop Invoice Doc Type Fix v2 (LIVE):ON
+655:Petshop Read Attach v1:off
+649:Petshop WCDN Cfg v1:off
+650:Petshop Dump Functions v1:off
+651:Petshop Deploy Functions v1:off
+138:Abakus Unpublish:off
+153:petshop.lt WEIGHT NORMALIZER:off
+155:petshop_brand_apply v7:off
+156:Prekių ženklai labels:off
+158: WC Categories — pre-VF-mapping cleanup:off
+460:Transportavimo dezes rename - sunims/katems galune:off
+461:Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS:ON
+462:Petshop Atributu Auditas v1.0 (read-only, ko truksta):off
+463:Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija):ON
+454:Elmo (23996) -> Narvai ir aksesuarai grauzikams (304):off
+455:Guoliai katems - gyvuno_rusis fix:off
+457:Guoliu/transporto/narvu blokas - pa_tipas + pa_dydis APPLY:off
+458:233 pervadinimas: Guoliai sunims:off
+459:Guoliu/transporto YITH preset - guoliu-transporto-filtras:off
+161: VF Brands List:off
+447:Guoliai (sunims + katems) - zvalgyba:off
+448:Kategoriju zemelapis - guoliai/boksai/transportavimas:off
+449:Transportas/guoliai/narvai CHAOS - kryzmine zvalgyba:off
+450:KATEMS -> Guoliai katems - VIENOS kategorijos sukurimas:off
+451:Guoliai/transportas/narvai - PERKELIMO DRY-RUN (read-only):off
+452:Guoliai/transportas/narvai - PERKELIMO DRY-RUN v2 (read-only):off
+163:VF Raw XML Sample:off
+433:YITH preset struktura - zvalgyba (read-only):off
+434:Vitaminu YITH preset - sukurimas (klonas):off
+441:Antkakliu YITH preset - sukurimas (klonas):off
+442:Antkakliu MOVE-OUT - kategoriju perkelimas:off
+443:Dubeneliai sunims (111) - zvalgyba:off
+445:Dubeneliai (111) - ATRIBUTU APPLY:off
+446:Dubeneliu YITH preset - sukurimas (klonas):off
+167:Account Wide Inode Scan v1:off
+401:Monoprotein Diag (kodel 183 -> 164):off
+402:Monoprotein Apply v2 (n-acknowledgment):off
+403:Atributu dengties diagnostika (maistas/konservai/skanestai):off
+404:Kategoriju medis + gyvuno rusies terminai (zvalgyba):off
+405:Gyvuno rusis is kategorijos - DRY RUN (visas katalogas):off
+406:Gyvuno rusis is kategorijos - APPLY (visas katalogas):off
+407:Pakuotes dydis - zvalgyba (maistui):off
+408:Pakuotes dydis (maistui) - DRY RUN:off
+409:Pakuotes dydis (maistui) - APPLY:off
+410:Baltymu saltinis - likucio zvalgyba:off
+411:Baltymu saltinis is pavadinimo - DRY RUN (likutis):off
+412:Baltymu saltinis is pavadinimo - APPLY (likutis):off
+413:Amzius - zvalgyba (maistui):off
+414:Amzius is pavadinimo - DRY RUN (maistui):off
+415:Amzius is pavadinimo - APPLY (maistui):off
+416:Grudai - zvalgyba (sudeties skeneriui):off
+417:Grudai (3 pakopos) is sudeties - DRY RUN:off
+418:Grudai (3 pakopos) is sudeties - APPLY:off
+419:Speciali mityba - zvalgyba (maistui):off
+420:Speciali mityba is pavadinimo - DRY RUN (maistui):off
+421:Speciali mityba is pavadinimo - APPLY (maistui):off
+422:Monoprotein - likucio zvalgyba:off
+423:Monoprotein - TIK akivaizdus (zvalgyba):off
+424:Monoprotein - TIK akivaizdus -> Taip (APPLY):off
+187:VF Price Sync:off
+190:VF Price Repair v2:off
+644:Petshop Invoice Bug Recon2 v1:off
+645:Petshop Read Functions v1:off
+400:Monoprotein Apply v1 (183 Taip):off
+193:Petshop SKU Supplier Info Lookup v1 (prekiu savikainai ieskoti):off
+194:Venipak Shipping Lock v3:off
+196:Cart Cross-sell Source Filter v1 (tas pats sandelis):off
+197:Petshop Find Crosssell v1 (diagnostika):off
+198:Petshop Find Pricing Caller v1 (diagnostika):off
+398:Monoprotein Dry-Run v6 (Farmina + Landfleisch):off
+390:Baltymu Saltinis Apply Sausas Skonis v5 (multi + Paukstiena):off
+391:Baltymu Saltinis Konservai Skonis Dry-Run v1 (platus, v5 variklis):off
+392:Baltymu Saltinis Apply Konservai Skonis v1 (multi):off
+205:ZB->Legacy Conversion v1 (excluded_brand trash -> Legacy draft):off
+219:FBT Inspect v1 (read-only):off
+220:FBT Inspect v2 (read-only):off
+432:Vitaminai/papildai - APPLY (paskirtis+forma):off
+224:Sale Clean v1 (Legacy akciju valymas):off
+464:Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply):ON
+234:VF Gallery Dup Clean v1:off
+239:Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti):ON
+240:Clean Big Image Sizes v1:off
+465: Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo):ON
+425:Monoprotein - TIK akivaizdus -> Taip (APPLY):off
+426:Monoprotein - TIK akivaizdus -> Taip (APPLY):off
+427:Vitaminai/papildai - zvalgyba v1 (read-only):off
+428:Vitaminai/papildai - dry-run v1 (paskirtis+forma):off
+254:VF Block Before Create v2.0:off
+429:Vitaminai/papildai - dry-run v1 (paskirtis+forma):off
+430:Vitaminai/papildai - dry-run v2 (NAME-ONLY):off
+431:Vitaminai/papildai - REVIEW aprasymu dump (read-only):off
+258:ZB Pricing State Check v1 (read-only):off
+370:Draft Publish Patikra v2:off
+369:Draft Publish Patikra v1:off
+368:Kita Finalas v1:off
+367:Kita Liko Diagnostika v2:off
+365:Kategoriju Turinys v1:off
+366:Aksesuaru Grupes v2:off
+364:Aksesuaru Grupes v1:off
+384:Baltymu Saltinis Sausas Aprasymai Dry-Run v2 (aliej/tauk isimtis):off
+375:Baltymu Saltinis Dry-Run Konservai v2:ON
+374:Baltymu Saltinis Dry-Run Konservai v1:off
+281:ZB Trash Sutvarkymas v2:off
+453:Guoliai/transportas/narvai - PERKELIMO APPLY:off
+284:VF Supplier SKU Backfill v1:off
+286:VF Dublikatu Valymas v1:off
+289:ZB Excluded Dublikatu Valymas v1:off
+291:Kategoriju Zemelapis v1:off
+293:Legacy Publish Grazinimas v1:off
+296:Brandu Priskyrimas pagal Pavadinima v1:off
+298:Brandu Priskyrimas pagal Pavadinima v1:off
+301:Hau Miau Priskyrimas v1:off
+303:Maisto Atributu Rasymas v1:off
+306:Trash 2 Diagnoze v1:off
+310:Pakuotes Dydzio Rasymas v1:off
+313:Pakuotes Terminu Valymas v1:off
+317:Skanestu Gyvuno Ikelimas v1:off
+318:Filtru Terminu Tvarka v1:off
+322:Filtru Accordion JS v1:off
+323:Filtru Funkcijos JS v1 (order + accordion):off
+324:Petshop Filtrai PILNAS v1:off
+325:Petshop Filtrai PILNAS v2:off
+380:Baltymu Saltinis Dry-Run Sausas v1:off
+381:Baltymu Saltinis Apply Sausas v1 (SINGLE):off
+382:Baltymu Saltinis Sausas Aprasymai Dry-Run v1:off
+383:Baltymu Saltinis Apply Sausas RoyalCanin v1:off
+329:Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]:ON
+399:Monoprotein Dry-Run v7 (Family / Monge kons. / Animonda VF / kt.):off
+332:Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]:ON
+435:Kategoriju medis - prieziura (zvalgyba):off
+436:Vitaminu MOVE-OUT - kategoriju perkelimas:off
+437:Antkakliai/pavadeliai sunims (116) - zvalgyba:off
+641:Petshop Saskaitos Render LIVE v1:off
+642:Petshop Paper Size Recon v1:off
+643:Petshop Invoice Bug Recon v1:off
+440:Antkakliai/pavadeliai (116) - ATRIBUTU APPLY:off
+379:Baltymu Saltinis Apply Skanestai v2 (SINGLE):off
+348:Nepriskirtu Prekiu Patikra v2:off
+378:Baltymu Saltinis Apply Skanestai v1 (SINGLE):off
+377:Baltymu Saltinis Dry-Run Skanestai v1:off
+376:Baltymu Saltinis Apply Konservai v1 (SINGLE):off
+343:Visos Kategorijos Pilnas Sarasas v1:off
+345:Snippetu Sarasas v1:off
+346:Snippetu Valymas v1:off
+476:Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply):off
+477:Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply):off
+480:Petshop Attr Modulis: Draskykles Katems v1.2 (image-verified map):off
+481:Petshop Attr Modulis: Draskykles Katems v1.0 (parseris + dry/apply):off
+484:Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply):off
+485:Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply):off
+486:Petshop Attr Modulis: Sampunai Sunims v1.0 (parseris + dry/apply):off
+640:Petshop Saskaitos Sablono Deploy v1:off
+492:Petshop Filtru Atidarymas v2 (CSS+JS):ON
+493:Petshop Filtru Atidarymas v1 (no lazy-load):ON
+494:Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply):ON
+495:Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply):off
+502:Higienos Modulis v1.0:ON
+503:Grauziko Rusis Modulis v1.2:ON
+507:Paukscio Rusis Modulis v1.3:ON
+509:Zuvies Rusis Modulis v1.0:ON
+510:Pasaro Forma Modulis v1.1:ON
+512:Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems):ON
+513:Petshop Katalogo Auditas v1 (read-only):ON
+514:Petshop Import-Risk Recon v1 (read-only):ON
+518:Petshop Slėpti svorį ir dimensijas v1 (display only):ON
+520:Petshop Meniu Grupavimas v1 (komerciniai 3):ON
+524:Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta):ON
+525:Petshop UI: kortelės + mobile sticky ATC:ON
+532:Petshop MnM Fiksuoti komponentų kiekiai v2:ON
+535:Petshop MnM Sutaupymo žymeklis v7 (be badge):ON
+639:Petshop Saskaitos Render v1:off
+638:Petshop Saskaitos Failu Skaitymas v3:off
+539:Petshop Rinkinių Kūrimo Forma v2:ON
+636:Petshop Testiniu Useriu Valymas v1:off
+637:Petshop Saskaitos Recon LIGHT v2:off
+634:Petshop Brand Slug 301 Catch-All v1 (T-14 aktyvuoti):off
+635:Petshop Recon Pries Testini Uzsakyma v1:off
+632:Petshop Slapuku Politika ES 301 v1 (LIVE):ON
+633:Petshop QA 6-oji Salyga - Brand Slug Skeneris v1:off
+631:Petshop Complianz ES Redirect Fix v1:off
+629:Petshop Complianz Cookie Page Mapping v1:off
+630:Petshop Complianz Cookie Page Konsolidacija v1:off
+547:Petshop Susidėjimo Rinkinio Vitrina v19:ON
+627:Petshop Complianz Close Recon v1:off
+628:Petshop Complianz X = Atmesti v1:ON
+550:Petshop Susidėjimo Rinkinio Kūrimo Forma v15:ON
+626:Petshop Complianz Mobile Baris v1 (sticky juosta):off
+625:TEMP — Footer DUK fix (token):off
+624:TEMP — Paysera recon v1 (token):off
+555:PSC LATERD:off
+556:PSC TEST170:off
+557:PSC VB:off
+571:Petshop Pasiulymai Bendras Shortcode v1.0:off
+558:Petshop Choice Krepšelio Elgsena:ON
+560:Petshop Rinkinio CTA Banneris kategorijose v7:ON
+559:Petshop Rinkinio CTA Banneris kategorijose v1:off
+561:Petshop Rinkinių Gyvūno Filtras v1:ON
+566:Petshop Akcijos Shortcode v1.3:ON
+563:Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva):ON
+562:Petshop Sprendimai Shortcode Variklis v9:ON
+565:Petshop VF Sync v1.1 (reprice+stock+publish):ON
+567:Petshop Daugiau=Pigiau Stock Sync v1.2:ON
+568:Petshop Daugiau=Pigiau Display v1.2:ON
+569:Petshop Pack/Rinkinys Auto-Categories v1.3:ON
+570:Petshop Daugiau=Pigiau Puslapis Shortcode v1.0:ON
+572:Petshop Daugiau=Pigiau Šablono Kūrimo Forma v8:ON
+573:Petshop DP Kortelės Ženkliukas v4:ON
+623:TEMP — Complianz layout fix v2 (token):off
+582:Petshop LP Terminalu Svorio Riba v1 (29.90kg):ON
+622:TEMP — Complianz CSS regen v2 (token):off
+587:Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1:ON
+621:TEMP — Complianz banner edit v1 (token):off
+620:TEMP — Complianz banner probe v1 (token):off
+619:Petshop Consent Bridge v1.2 (Complianz -> GTM):ON
+594:Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1:ON
+618:TEMP — Complianz integracijos probe v2 (token):off
+617:TEMP — Complianz options probe v1 (token):off
+616:TEMP — Complianz aktyvavimas v1 (token):off
+615:Petshop GTM Snippet v1.0 (GTM-MF3GZGT):ON
+614:Petshop DataLayer v1.1 (GA4 ecommerce):ON
+609:SEO Auto H1 v1 (page fallback + _petshop_h1):ON
+610:Petshop Topbar v2:ON
+611:Petshop Frontpage Setter v1 (TEMP):off
+646:Petshop Read GenFn v1:off
+612:Petshop Bulk Snippet Delete v2 (TEMP):off
+613:Petshop Shop→Parduotuvė 301 v1 (LIVE):ON
+652:Petshop R608 Recon v1:off
+653:Petshop Invoice Completed Attach Fix v3 (LIVE):ON
+654:Petshop Invoice Test2 v1:off
+656:Petshop Deploy Base27 v1:off
+657:Petshop Real Render v1:off
+658:Petshop Sales Recon v1:off
+659:Petshop Popular Xcheck v1:off
+660:Petshop Find By Name v1:off
+661:Petshop Attrs Recon v1:off
+662:Petshop Attr Diag v1:off
+663:Petshop Attr Mech v1:off
+692:Petshop Maisto Tipo Mygtukai v1:ON
+691:Petshop FoodRecon tmp:off
+690:Petshop WidClear tmp:off
+686:Petshop Atrinktos Verify tmp:off
+687:Petshop CatRecon tmp:off
+688:Petshop Kategorijos Landing v1 (sunims):ON
+689:Petshop WidRecon tmp:off
+683:Petshop Atrinktos Proto v1:off
+684:Petshop Atrinktos Proto v1:off
+685:Atrinktos Prekės Modulis v1 (rotacija):ON
+682:Petshop Atrinktos Dry v1:off
+681:Petshop VarFetch v1:off
+679:Petshop CatImg Recon v1:off
+680:Petshop Prod Fetch v1:off
+678:Petshop Sunims Recon v1:off
