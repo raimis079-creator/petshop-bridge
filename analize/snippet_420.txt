@@ -1,0 +1,135 @@
+
+/**
+ * Speciali mityba is pavadinimo - DRY RUN (maistui)
+ *
+ * READ-ONLY. Maisto prekems be pa_speciali_mityba (sausas 72,81 + konservai 73,79).
+ * Multiselect -> 11 esamu terminu. Be-termino buklem (hepatic/cardiac/convalescence)
+ * surenkama atskirai (savininko sprendimui del nauju terminu). Be bukl0s -> SKIP.
+ *
+ * Trigger: /?spec_dr=1
+ */
+
+add_action('wp_loaded', function () {
+
+    if (empty($_GET['spec_dr'])) {
+        return;
+    }
+    if (!is_user_logged_in() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    $tax = 'pa_speciali_mityba';
+    $groups = array(
+        'Sausas (72,81)'    => array(72, 81),
+        'Konservai (73,79)' => array(73, 79),
+    );
+
+    $norm = function ($s) {
+        $s = function_exists('mb_strtolower') ? mb_strtolower($s, 'UTF-8') : strtolower($s);
+        $lt = array("\xC4\x85","\xC4\x8D","\xC4\x99","\xC4\x97","\xC4\xAF","\xC5\xA1","\xC5\xB3","\xC5\xAB","\xC5\xBE");
+        $en = array('a','c','e','e','i','s','u','u','z');
+        return ' ' . preg_replace('/\s+/u', ' ', str_replace($lt, $en, $s)) . ' ';
+    };
+
+    // term slug => keywords (esami terminai)
+    $map = array(
+        'inkstams'             => array('renal', 'inkst', 'kidney'),
+        'diabetui'             => array('diabet'),
+        'hipoalerginis'        => array('hypoallergenic', 'hipoalerg', 'hypoallergen', 'ultrahypo', 'ultra hypo'),
+        'jautriam-virskinimui' => array('gastrointestinal', 'gastro', 'sensitive digestion', 'jautr', 'virskinim', 'digestion', 'intestinal'),
+        'odai-ir-kailiui'      => array('dermatosis', 'derma', ' skin', 'coat', 'odai', 'kailiui'),
+        'plauku-gumulams'      => array('hairball', 'gumul'),
+        'sanariams'            => array('joint', 'mobility', 'sanari', 'osteo'),
+        'slapimo-takams'       => array('urinary', 'struvite', 'slapimo', 'oxalate', 'urolith'),
+        'sterilizuotiems'      => array('steril', 'neutered'),
+        'svorio-kontrolei'     => array('obesity', 'overweight', 'weight', 'svorio', 'satiety', 'nutukim'),
+        'dantims'              => array('dental', 'dantims', 'dantu'),
+    );
+
+    // be-termino buklзs
+    $noterm = array(
+        'Kepenims (hepatic)'        => array('hepatic', 'kepen', 'liver'),
+        'Sirdziai (cardiac)'        => array('cardiac', 'sird', 'heart'),
+        'Atsigavimui (recovery)'    => array('convalescence', 'recovery', 'atsigav'),
+    );
+
+    echo '<!doctype html><meta charset="utf-8"><style>'
+       . 'body{font:13px system-ui,Arial;margin:24px;} '
+       . 'table{border-collapse:collapse;margin:6px 0 18px;} '
+       . 'td,th{border:1px solid #ccc;padding:4px 9px;} th{background:#f3f3f3;} '
+       . '.muted{color:#999;font-size:12px;} h3{margin:16px 0 4px;}'
+       . '</style>';
+    echo '<h2>Speciali mityba is pavadinimo - DRY RUN</h2>';
+
+    $tally = array(); $noterm_tally = array(); $noterm_samples = array();
+    $assign_samples = array(); $assign_total = 0; $skip_total = 0;
+
+    foreach ($groups as $gname => $cats) {
+        $q = new WP_Query(array(
+            'post_type' => 'product', 'post_status' => array('publish', 'draft'),
+            'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
+            'tax_query' => array('relation' => 'AND',
+                array('taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $cats),
+                array('taxonomy' => $tax, 'operator' => 'NOT EXISTS'),
+            ),
+        ));
+        foreach ($q->posts as $pid) {
+            $t = $norm(get_the_title($pid));
+            $hit = array();
+            foreach ($map as $slug => $kws) {
+                foreach ($kws as $kw) {
+                    if (strpos($t, $kw) !== false) { $hit[] = $slug; break; }
+                }
+            }
+            // be-termino buklзs
+            foreach ($noterm as $label => $kws) {
+                foreach ($kws as $kw) {
+                    if (strpos($t, $kw) !== false) {
+                        if (!isset($noterm_tally[$label])) { $noterm_tally[$label] = 0; $noterm_samples[$label] = array(); }
+                        $noterm_tally[$label]++;
+                        if (count($noterm_samples[$label]) < 6) { $noterm_samples[$label][] = get_the_title($pid); }
+                        break;
+                    }
+                }
+            }
+
+            if (!empty($hit)) {
+                $assign_total++;
+                foreach ($hit as $slug) { if (!isset($tally[$slug])) { $tally[$slug] = 0; } $tally[$slug]++; }
+                if (count($assign_samples) < 25) {
+                    $assign_samples[] = array('title' => get_the_title($pid), 'hit' => $hit);
+                }
+            } else {
+                $skip_total++;
+            }
+        }
+    }
+
+    echo '<h3>PRISKIRTI (bent 1 buklз): ' . (int) $assign_total . ' | SKIP (be buklзs): ' . (int) $skip_total . '</h3>';
+
+    echo '<h3>Pagal termina</h3><table><tr><th>Terminas (slug)</th><th>kiek</th></tr>';
+    arsort($tally);
+    foreach ($tally as $slug => $c) { echo '<tr><td>' . esc_html($slug) . '</td><td>' . (int) $c . '</td></tr>'; }
+    echo '</table>';
+
+    echo '<h3>Pavyzdziai</h3><table><tr><th>Pavadinimas</th><th>Buklзs</th></tr>';
+    foreach ($assign_samples as $r) {
+        echo '<tr><td>' . esc_html($r['title']) . '</td><td>' . esc_html(implode(', ', $r['hit'])) . '</td></tr>';
+    }
+    echo '</table>';
+
+    echo '<h3 style="color:#c60">BE TERMINO buklзs (savininko sprendimas - kurti ar ne)</h3>';
+    if (empty($noterm_tally)) {
+        echo '<p class="muted">Nerasta.</p>';
+    } else {
+        echo '<table><tr><th>Buklз</th><th>kiek</th><th>pavyzdziai</th></tr>';
+        foreach ($noterm_tally as $label => $c) {
+            echo '<tr><td><b>' . esc_html($label) . '</b></td><td>' . (int) $c . '</td>'
+               . '<td class="muted">' . esc_html(implode(' | ', $noterm_samples[$label])) . '</td></tr>';
+        }
+        echo '</table>';
+    }
+
+    echo '<p class="muted">read-only. Niekas nepakeista.</p>';
+    exit;
+});
