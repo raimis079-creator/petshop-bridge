@@ -1,20 +1,20 @@
 import { execSync } from "child_process";
 import fs from "fs";
-import { chromium } from "playwright";
-function putBinary(n,buf){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'shot '+n,branch:'main',content:buf.toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));const r=execSync('curl -s --max-time 50 -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
-function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'log',branch:'main',content:Buffer.from(s).toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pt.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pt.json "'+url+'"');}catch(e){}}
-let log='';
-(async()=>{
-  const URL='https://dev.avesa.lt/?ps_poppreview=1&token=cmplz_6680aa2a42151d54fa8d64ec';
-  let browser;
-  try{
-    browser=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
-    const ctxD=await browser.newContext({ignoreHTTPSErrors:true,viewport:{width:1280,height:720}});
-    const pD=await ctxD.newPage(); await pD.goto(URL,{waitUntil:'domcontentloaded',timeout:60000}); await pD.waitForTimeout(4000);
-    const bD=await pD.screenshot({fullPage:true}); log+='desktop '+bD.length+'\n'; putBinary('pop3_desktop.png',bD); await ctxD.close();
-    const ctxM=await browser.newContext({ignoreHTTPSErrors:true,viewport:{width:390,height:720},isMobile:true});
-    const pM=await ctxM.newPage(); await pM.goto(URL,{waitUntil:'domcontentloaded',timeout:60000}); await pM.waitForTimeout(4000);
-    const bM=await pM.screenshot({fullPage:true}); log+='mobile '+bM.length+'\n'; putBinary('pop3_mobile.png',bM); await ctxM.close();
-  }catch(e){log+='ERR '+e+'\n';}
-  finally{if(browser)await browser.close();putText('_shot4_log.txt',log);}
-})();
+function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'hr '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s --max-time 40 -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
+let out='';const L=s=>{out+=s+'\n';console.log(s);};
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP=Buffer.from("aWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyByZXR1cm47IH0KYWRkX2FjdGlvbiggJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uICgpIHsKCWlmICggISBpc3NldCgkX0dFVFsncHNfaG9tZXJlY29uJ10pICkgeyByZXR1cm47IH0KCSR0b2sgPSBpc3NldCgkX0dFVFsndG9rZW4nXSkgPyBzYW5pdGl6ZV90ZXh0X2ZpZWxkKHdwX3Vuc2xhc2goJF9HRVRbJ3Rva2VuJ10pKSA6ICcnOwoJaWYgKCAkdG9rICE9PSAnY21wbHpfNjY4MGFhMmE0MjE1MWQ1NGZhOGQ2NGVjJyApIHsgcmV0dXJuOyB9CgkkZnBpZCA9IChpbnQpIGdldF9vcHRpb24oJ3BhZ2Vfb25fZnJvbnQnKTsKCSRzaG93ID0gZ2V0X29wdGlvbignc2hvd19vbl9mcm9udCcpOwoJJG91dCA9IGFycmF5KCdzaG93X29uX2Zyb250Jz0+JHNob3csJ3BhZ2Vfb25fZnJvbnQnPT4kZnBpZCk7CglpZiAoICRmcGlkICkgewoJCSRwID0gZ2V0X3Bvc3QoJGZwaWQpOwoJCSRjID0gJHAgPyAkcC0+cG9zdF9jb250ZW50IDogJyc7CgkJJG91dFsndGl0bGUnXT0kcD8kcC0+cG9zdF90aXRsZTonJzsKCQkkb3V0Wydjb250ZW50X2xlbiddPXN0cmxlbigkYyk7CgkJLy8gYnVpbGRlciBkZXRla2NpamEKCQkkb3V0Wyd1eF9idWlsZGVyJ10gPSAoIHN0cnBvcygkYywnW3NlY3Rpb24nKSE9PWZhbHNlIHx8IHN0cnBvcygkYywnW3V4XycpIT09ZmFsc2UgfHwgc3RycG9zKCRjLCdbcm93JykhPT1mYWxzZSApOwoJCSRvdXRbJ21ldGFfdXgnXSA9IGdldF9wb3N0X21ldGEoJGZwaWQsJ193cGJfdmNfanNfc3RhdHVzJyx0cnVlKSA/OiAoZ2V0X3Bvc3RfbWV0YSgkZnBpZCwnX3V4X2J1aWxkZXJfdmVyc2lvbicsdHJ1ZSkgPzogJycpOwoJCS8vIHNla2NpanUgb3V0bGluZToga2lla3ZpZW5hcyBbc2VjdGlvbi4uLl0gKyBwaXJtYXMgdGVrc3RhcyBwbyBqbwoJCSRzZWN0aW9ucz1hcnJheSgpOwoJCWlmICggcHJlZ19tYXRjaF9hbGwoJy9cW3NlY3Rpb25cYlteXF1dKlxdL2knLCRjLCRtLFBSRUdfT0ZGU0VUX0NBUFRVUkUpICkgewoJCQlmb3JlYWNoKCRtWzBdIGFzICRpPT4kbW0pewoJCQkJJHN0YXJ0PSRtbVsxXTsKCQkJCSRjaHVuaz1zdWJzdHIoJGMsJHN0YXJ0LDYwMCk7CgkJCQkvLyBpc3RyYXVraWFtIHBpcm1hIG1hdG9tYSB0ZWtzdGEgKGggYXIgcCB0dXJpbnlzKQoJCQkJJHR4dD0nJzsKCQkJCWlmKHByZWdfbWF0Y2goJy8oPzo8aFxkW14+XSo+fFxbdGl0bGVbXlxdXSp0ZXh0PSJ8dGV4dD0ifD4pKFtePFxbXCJdezQsNjB9KS91JywkY2h1bmssJHRtKSl7ICR0eHQ9dHJpbSgkdG1bMV0pOyB9CgkJCQkkc2VjdGlvbnNbXT1hcnJheSgnaWR4Jz0+JGksJ29mZnNldCc9PiRzdGFydCwncGlybWFzX3Rla3N0YXMnPT5tYl9zdWJzdHIoJHR4dCwwLDUwKSk7CgkJCX0KCQl9CgkJJG91dFsnc2VrY2lqdV9zayddPWNvdW50KCRzZWN0aW9ucyk7CgkJJG91dFsnc2VrY2lqb3MnXT0kc2VjdGlvbnM7CgkJLy8ga3VyICJQYWdyaW5kaW5lcyBrYXRlZ29yaWpvcyIKCQkkcG9zID0gbWJfc3RyaXBvcygkYywnUGFncmluZGluxJdzIGthdGVnb3Jpam9zJyk7CgkJJG91dFsncGFncmluZGluZXNfa2F0ZWdvcmlqb3NfcG9zJ10gPSAoJHBvcyE9PWZhbHNlKT8kcG9zOidORVJBU1RBJzsKCQkvLyBqZWkgcmFzdGEgLSBwYXJvZG9tIGtvbnRla3N0xIUKCQlpZigkcG9zIT09ZmFsc2UpeyAkb3V0Wydrb250ZWtzdGFzJ109bWJfc3Vic3RyKCRjLG1heCgwLCRwb3MtMTIwKSw0MDApOyB9Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwoJZWNobyB3cF9qc29uX2VuY29kZSgkb3V0LEpTT05fUFJFVFRZX1BSSU5UfEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7CglleGl0Owp9LCA2ICk7Cg==",'base64').toString('utf8');
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
+(async()=>{try{
+  const list=api('GET','/wp-json/code-snippets/v1/snippets?limit=300');
+  let ex=null;try{ex=JSON.parse(list.body).find(s=>/Home Recon/i.test(s.name));}catch(e){}
+  const payload={name:'Petshop Home Recon v1',desc:'token',code:PHP,scope:'global',active:true,priority:10};
+  const c=ex?api('POST','/wp-json/code-snippets/v1/snippets/'+ex.id,payload):api('POST','/wp-json/code-snippets/v1/snippets',payload);
+  let id=0;try{id=JSON.parse(c.body).id;}catch(e){}
+  L('recon id='+id); execSync('sleep 2');
+  const r=sh('curl -s -k --max-time 40 "'+BASE+'/?ps_homerecon=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  L(r.slice(0,5000));
+  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
+  putText('home_recon.json', r.slice(0,12000));
+}catch(e){L('!!! '+e);}finally{putText('_run61_log.txt',out);}})();
