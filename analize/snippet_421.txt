@@ -1,0 +1,166 @@
+
+/**
+ * Speciali mityba is pavadinimo - APPLY (maistui)
+ *
+ * Maisto prekems be pa_speciali_mityba (sausas 72,81 + konservai 73,79). Multiselect.
+ *  - pervadina termina 413 -> "Nuo plauku gumuliuku" (slug nekeiciamas)
+ *  - sukuria 3 naujus: Kepenims / Sirdziai / Atsistatymui
+ *  - cardiac/hepatic TIK kliniskai (ne sirdys/kepenys mesa)
+ *  - be buklзs -> praleidziama
+ *
+ * Be confirm = peilizura. Vykdymas: &confirm=SPEC&n=NNN
+ * Vienkartinis (option flag). Addityvu (tik NOT EXISTS).
+ *
+ * Trigger: /?spec_apply=1
+ */
+
+add_action('wp_loaded', function () {
+
+    if (empty($_GET['spec_apply'])) {
+        return;
+    }
+    if (!is_user_logged_in() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    $do = (isset($_GET['confirm']) && $_GET['confirm'] === 'SPEC');
+    $done_flag = 'petshop_spec_apply_done';
+    if ($do && get_option($done_flag)) {
+        echo 'Jau ivykdyta anksciau (' . esc_html(get_option($done_flag)) . '). Pakartotinai nevykdoma.';
+        exit;
+    }
+
+    $tax = 'pa_speciali_mityba';
+    $cats = array(72, 81, 73, 79);
+
+    $norm = function ($s) {
+        $s = function_exists('mb_strtolower') ? mb_strtolower($s, 'UTF-8') : strtolower($s);
+        $lt = array("\xC4\x85","\xC4\x8D","\xC4\x99","\xC4\x97","\xC4\xAF","\xC5\xA1","\xC5\xB3","\xC5\xAB","\xC5\xBE");
+        $en = array('a','c','e','e','i','s','u','u','z');
+        return ' ' . preg_replace('/\s+/u', ' ', str_replace($lt, $en, $s)) . ' ';
+    };
+
+    $map = array(
+        'inkstams'             => array('renal', 'inkst', 'kidney'),
+        'diabetui'             => array('diabet'),
+        'hipoalerginis'        => array('hypoallergenic', 'hipoalerg', 'hypoallergen', 'ultrahypo', 'ultra hypo'),
+        'jautriam-virskinimui' => array('gastrointestinal', 'gastro', 'sensitive digestion', 'jautr', 'virskinim', 'digestion', 'intestinal'),
+        'odai-ir-kailiui'      => array('dermatosis', 'derma', ' skin', 'coat', 'odai', 'kailiui'),
+        'plauku-gumulams'      => array('hairball', 'gumul'),
+        'sanariams'            => array('joint', 'mobility', 'sanari', 'osteo'),
+        'slapimo-takams'       => array('urinary', 'struvite', 'slapimo', 'oxalate', 'urolith'),
+        'sterilizuotiems'      => array('steril', 'neutered'),
+        'svorio-kontrolei'     => array('obesity', 'overweight', 'weight', 'svorio', 'satiety', 'nutukim'),
+        'dantims'              => array('dental', 'dantims', 'dantu'),
+        // nauji - TIK kliniskai
+        'kepenims'             => array('hepatic'),
+        'sirdziai'             => array('cardiac'),
+        'atsistatymui'         => array('convalescence', 'recovery'),
+    );
+
+    // nauji terminai: slug => name (LT raides per hex)
+    $new_terms = array(
+        'kepenims'     => 'Kepenims',
+        'sirdziai'     => "\xC5\xA0ird\xC5\xBEiai",      // Sirdziai
+        'atsistatymui' => 'Atsistatymui',
+    );
+    $rename_413 = "Nuo plauk\xC5\xB3 gumuliuk\xC5\xB3";  // Nuo plauku gumuliuku
+
+    $detect = function ($title) use ($map, $norm) {
+        $t = $norm($title);
+        $hit = array();
+        foreach ($map as $slug => $kws) {
+            foreach ($kws as $kw) {
+                if (strpos($t, $kw) !== false) { $hit[] = $slug; break; }
+            }
+        }
+        return $hit;
+    };
+
+    $q = new WP_Query(array(
+        'post_type' => 'product', 'post_status' => array('publish', 'draft'),
+        'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
+        'tax_query' => array('relation' => 'AND',
+            array('taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $cats),
+            array('taxonomy' => $tax, 'operator' => 'NOT EXISTS'),
+        ),
+    ));
+
+    $plan = array(); $tally = array();
+    foreach ($q->posts as $pid) {
+        $hit = $detect(get_the_title($pid));
+        if (empty($hit)) { continue; }
+        $plan[$pid] = $hit;
+        foreach ($hit as $slug) { if (!isset($tally[$slug])) { $tally[$slug] = 0; } $tally[$slug]++; }
+    }
+    $n = count($plan);
+
+    if (!$do) {
+        echo '<!doctype html><meta charset="utf-8"><style>body{font:14px system-ui,Arial;margin:24px;} table{border-collapse:collapse;} td,th{border:1px solid #ccc;padding:4px 9px;}</style>';
+        echo '<h2>Peilizura: speciali mityba bus priskirta <span style="color:#0a0">' . (int) $n . '</span> prekems (multiselect)</h2>';
+        echo '<p>Pervadinama: terminas #413 -> "Nuo plauku gumuliuku"</p>';
+        echo '<p>Nauji terminai: Kepenims, Sirdziai, Atsistatymui</p>';
+        arsort($tally);
+        echo '<table><tr><th>Terminas (slug)</th><th>priskyrimu</th><th></th></tr>';
+        foreach ($tally as $slug => $c) {
+            $isnew = isset($new_terms[$slug]) ? ' <b style="color:#06c">(naujas)</b>' : '';
+            echo '<tr><td>' . esc_html($slug) . '</td><td>' . (int) $c . '</td><td>' . $isnew . '</td></tr>';
+        }
+        echo '</table>';
+        echo '<p>Vykdyti: <code>&confirm=SPEC&n=' . (int) $n . '</code></p>';
+        echo '<p style="color:#888">read-only. Niekas nepakeista.</p>';
+        exit;
+    }
+
+    $n_in = isset($_GET['n']) ? (int) $_GET['n'] : -1;
+    if ($n_in !== $n) {
+        echo '<h2 style="color:#c00">STOP: n=' . (int) $n_in . ', o dabar suskaiciuota ' . (int) $n . '.</h2>';
+        echo '<p>Duomenys pasikeite. Paleisk peilizura is naujo. DB neliesta.</p>';
+        exit;
+    }
+
+    // 1) pervadinti 413
+    $t413 = get_term(413, $tax);
+    if ($t413 && !is_wp_error($t413)) {
+        wp_update_term(413, $tax, array('name' => $rename_413));
+    }
+
+    // 2) sukurti naujus terminus + surinkti slug->tid
+    $slug2tid = array();
+    foreach (array_keys($map) as $slug) {
+        $t = get_term_by('slug', $slug, $tax);
+        if ($t && !is_wp_error($t)) { $slug2tid[$slug] = (int) $t->term_id; continue; }
+        if (isset($new_terms[$slug])) {
+            $res = wp_insert_term($new_terms[$slug], $tax, array('slug' => $slug));
+            if (!is_wp_error($res)) { $slug2tid[$slug] = (int) $res['term_id']; }
+        }
+    }
+
+    // 3) priskirti
+    $ok = 0;
+    foreach ($plan as $pid => $hit) {
+        $tids = array();
+        foreach ($hit as $slug) { if (isset($slug2tid[$slug])) { $tids[] = $slug2tid[$slug]; } }
+        if (empty($tids)) { continue; }
+        wp_set_object_terms($pid, array_map('intval', $tids), $tax, false);
+        $pa = get_post_meta($pid, '_product_attributes', true);
+        if (!is_array($pa)) { $pa = array(); }
+        if (!isset($pa[$tax])) {
+            $pa[$tax] = array(
+                'name' => $tax, 'value' => '', 'position' => count($pa),
+                'is_visible' => 1, 'is_variation' => 0, 'is_taxonomy' => 1,
+            );
+            update_post_meta($pid, '_product_attributes', $pa);
+        }
+        if (function_exists('wc_delete_product_transients')) { wc_delete_product_transients($pid); }
+        $ok++;
+    }
+
+    update_option($done_flag, gmdate('Y-m-d H:i:s') . ' UTC');
+
+    echo '<!doctype html><meta charset="utf-8"><style>body{font:14px system-ui,Arial;margin:24px;}</style>';
+    echo '<h2 style="color:#0a0">Atlikta</h2>';
+    echo '<p>pa_speciali_mityba priskirta <b>' . (int) $ok . '</b> prekems. Terminas 413 pervadintas, 3 nauji sukurti.</p>';
+    echo '<p>Vienkartinis flagas uzdetas. Deaktyvuok snippeta.</p>';
+    exit;
+});
