@@ -1,20 +1,16 @@
 import { execSync } from "child_process";
 import fs from "fs";
-function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'ci '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s --max-time 40 -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
-let out='';const L=s=>{out+=s+'\n';console.log(s);};
-const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP=Buffer.from("aWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyByZXR1cm47IH0KYWRkX2FjdGlvbiggJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uICgpIHsKCWlmICggISBpc3NldCgkX0dFVFsncHNfY2F0aW1nJ10pICkgeyByZXR1cm47IH0KCSR0b2sgPSBpc3NldCgkX0dFVFsndG9rZW4nXSkgPyBzYW5pdGl6ZV90ZXh0X2ZpZWxkKHdwX3Vuc2xhc2goJF9HRVRbJ3Rva2VuJ10pKSA6ICcnOwoJaWYgKCAkdG9rICE9PSAnY21wbHpfNjY4MGFhMmE0MjE1MWQ1NGZhOGQ2NGVjJyApIHsgcmV0dXJuOyB9Cgkkc3VuaW1zID0gZ2V0X3Rlcm1fYnkoJ3NsdWcnLCdzdW5pbXMnLCdwcm9kdWN0X2NhdCcpOwoJJGtpZHMgPSBnZXRfdGVybXMoYXJyYXkoJ3RheG9ub215Jz0+J3Byb2R1Y3RfY2F0JywncGFyZW50Jz0+JHN1bmltcy0+dGVybV9pZCwnaGlkZV9lbXB0eSc9PmZhbHNlKSk7Cgkkb3V0PWFycmF5KCk7Cglmb3JlYWNoKCRraWRzIGFzICRrKXsKCQkkdGlkID0gZ2V0X3Rlcm1fbWV0YSgkay0+dGVybV9pZCwndGh1bWJuYWlsX2lkJyx0cnVlKTsKCQkkcmVjPWFycmF5KCdpZCc9PiRrLT50ZXJtX2lkLCdzbHVnJz0+JGstPnNsdWcsJ25hbWUnPT4kay0+bmFtZSwnY291bnQnPT4kay0+Y291bnQsJ3RodW1iX2lkJz0+JHRpZD86MCk7CgkJaWYoJHRpZCl7CgkJCSR1cmw9d3BfZ2V0X2F0dGFjaG1lbnRfdXJsKCR0aWQpOwoJCQkkbT13cF9nZXRfYXR0YWNobWVudF9tZXRhZGF0YSgkdGlkKTsKCQkJJHJlY1sndXJsJ109JHVybDsKCQkJJHJlY1sndyddPWlzc2V0KCRtWyd3aWR0aCddKT8kbVsnd2lkdGgnXTonPyc7CgkJCSRyZWNbJ2gnXT1pc3NldCgkbVsnaGVpZ2h0J10pPyRtWydoZWlnaHQnXTonPyc7CgkJCSRyZWNbJ2ZpbGUnXT1pc3NldCgkbVsnZmlsZSddKT9iYXNlbmFtZSgkbVsnZmlsZSddKTonJzsKCQl9CgkJJG91dFtdPSRyZWM7Cgl9CgkvLyBpciA1IGd5dnVudSAodG9wLWxldmVsKSB0aHVtYm5haWxpYWkgcGFseWdpbmltdWkKCSRhbmltYWxzPWFycmF5KCdzdW5pbXMnLCdrYXRlbXMnLCdncmF1emlrYW1zJywncGF1a3NjaWFtcycsJ3p1dmltcycpOwoJJGFuaW09YXJyYXkoKTsKCWZvcmVhY2goJGFuaW1hbHMgYXMgJGEpeyAkdD1nZXRfdGVybV9ieSgnc2x1ZycsJGEsJ3Byb2R1Y3RfY2F0Jyk7IGlmKCR0KXsgJHRpZD1nZXRfdGVybV9tZXRhKCR0LT50ZXJtX2lkLCd0aHVtYm5haWxfaWQnLHRydWUpOyAkYW5pbVskYV09JHRpZD9hcnJheSgndGh1bWJfaWQnPT4kdGlkLCd1cmwnPT53cF9nZXRfYXR0YWNobWVudF91cmwoJHRpZCkpOidORVJBX1RIVU1CJzsgfSB9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwoJZWNobyB3cF9qc29uX2VuY29kZShhcnJheSgnc3VuaW1zX3ZhaWthaSc9PiRvdXQsJ2d5dnVuYWlfdG9wbGV2ZWwnPT4kYW5pbSksSlNPTl9QUkVUVFlfUFJJTlR8SlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsKCWV4aXQ7Cn0sIDYgKTsK",'base64').toString('utf8');
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{try{
-  const payload={name:'Petshop CatImg Recon v1',desc:'token',code:PHP,scope:'global',active:true,priority:10};
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',payload);
-  let id=0;try{id=JSON.parse(c.body).id;}catch(e){}
-  L('recon id='+id); if(!id){L('fail '+c.body.slice(0,150));putText('_run73.txt',out);return;}
-  execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_catimg=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  L('resp len '+r.length);
-  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
-  putText('catimg_recon.json', r.slice(0,20000));
-  putText('_run73.txt',out+'\nRECON_ID='+id);
-}catch(e){L('!!! '+e);putText('_run73.txt',out);}})();
+function putBinary(n,buf){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<5;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'img '+n,branch:'main',content:buf.toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));const r=execSync('curl -s --max-time 50 -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 3');}return false;}
+function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'log',branch:'main',content:Buffer.from(s).toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pt.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pt.json "'+url+'"');}catch(e){}}
+let log='';
+(async()=>{
+  const imgs=['sunims','katems','maistas-sunims'];
+  for(const nm of ['upl_cat-sunims-v2.webp','upl_cat-katems-v2.webp']){
+    try{
+      const b=execSync('curl -s -k --max-time 30 "https://dev.avesa.lt/wp-content/uploads/2026/07/'+nm+'"',{encoding:'buffer',maxBuffer:20000000});
+      log+=nm+' bytes '+b.length+'\n';
+      putBinary('cat_'+nm.replace(/[^a-z0-9]/gi,'_')+'.png', b);
+    }catch(e){log+=nm+' ERR '+e+'\n';}
+  }
+  putText('_run74.txt',log);
+})();
