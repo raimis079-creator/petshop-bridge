@@ -1,0 +1,75 @@
+=== #421 (len 7275) ===
+    $map = array(
+        'inkstams'             => array('renal', 'inkst', 'kidney'),
+        'diabetui'             => array('diabet'),
+        'hipoalerginis'        => array('hypoallergenic', 'hipoalerg', 'hypoallergen', 'ultrahypo', 'ultra hypo'),
+        'jautriam-virskinimui' => array('gastrointestinal', 'gastro', 'sensitive digestion', 'jautr', 'virskinim', 'digestion', 'intestinal'),
+        'odai-ir-kailiui'      => array('dermatosis', 'derma', ' skin', 'coat', 'odai', 'kailiui'),
+        'plauku-gumulams'      => array('hairball', 'gumul'),
+        'sanariams'            => array('joint', 'mobility', 'sanari', 'osteo'),
+        'slapimo-takams'       => array('urinary', 'struvite', 'slapimo', 'oxalate', 'urolith'),
+        'sterilizuotiems'      => array('steril', 'neutered'),
+        'svorio-kontrolei'     => array('obesity', 'overweight', 'weight', 'svorio', 'satiety', 'nutukim'),
+        'dantims'              => array('dental', 'dantims', 'dantu'),
+        'kepenims'             => array('hepatic'),
+        'sirdziai'             => array('cardiac'),
+        'atsistatymui'         => array('convalescence', 'recovery'),
+    // nauji terminai: slug => name (LT raides per hex)
+        'kepenims'     => 'Kepenims',
+        'sirdziai'     => "\xC5\xA0ird\xC5\xBEiai",      // Sirdziai
+        'atsistatymui' => 'Atsistatymui',
+    $detect = function ($title) use ($map, $norm) {
+        foreach ($map as $slug => $kws) {
+        'post_type' => 'product', 'post_status' => array('publish', 'draft'),
+        'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
+        'tax_query' => array('relation' => 'AND',
+            array('taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $cats),
+            array('taxonomy' => $tax, 'operator' => 'NOT EXISTS'),
+        foreach ($tally as $slug => $c) {
+        wp_update_term(413, $tax, array('name' => $rename_413));
+    foreach (array_keys($map) as $slug) {
+            $res = wp_insert_term($new_terms[$slug], $tax, array('slug' => $slug));
+    foreach ($plan as $pid => $hit) {
+        wp_set_object_terms($pid, array_map('intval', $tids), $tax, false);
+                'name' => $tax, 'value' => '', 'position' => count($pa),
+                'is_visible' => 1, 'is_variation' => 0, 'is_taxonomy' => 1,
+=== #420 (len 5979) ===
+        'Sausas (72,81)'    => array(72, 81),
+        'Konservai (73,79)' => array(73, 79),
+    // term slug => keywords (esami terminai)
+    $map = array(
+        'inkstams'             => array('renal', 'inkst', 'kidney'),
+        'diabetui'             => array('diabet'),
+        'hipoalerginis'        => array('hypoallergenic', 'hipoalerg', 'hypoallergen', 'ultrahypo', 'ultra hypo'),
+        'jautriam-virskinimui' => array('gastrointestinal', 'gastro', 'sensitive digestion', 'jautr', 'virskinim', 'digestion', 'intestinal'),
+        'odai-ir-kailiui'      => array('dermatosis', 'derma', ' skin', 'coat', 'odai', 'kailiui'),
+        'plauku-gumulams'      => array('hairball', 'gumul'),
+        'sanariams'            => array('joint', 'mobility', 'sanari', 'osteo'),
+        'slapimo-takams'       => array('urinary', 'struvite', 'slapimo', 'oxalate', 'urolith'),
+        'sterilizuotiems'      => array('steril', 'neutered'),
+        'svorio-kontrolei'     => array('obesity', 'overweight', 'weight', 'svorio', 'satiety', 'nutukim'),
+        'dantims'              => array('dental', 'dantims', 'dantu'),
+        'Kepenims (hepatic)'        => array('hepatic', 'kepen', 'liver'),
+        'Sirdziai (cardiac)'        => array('cardiac', 'sird', 'heart'),
+        'Atsigavimui (recovery)'    => array('convalescence', 'recovery', 'atsigav'),
+    foreach ($groups as $gname => $cats) {
+            'post_type' => 'product', 'post_status' => array('publish', 'draft'),
+            'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
+            'tax_query' => array('relation' => 'AND',
+                array('taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $cats),
+                array('taxonomy' => $tax, 'operator' => 'NOT EXISTS'),
+            foreach ($map as $slug => $kws) {
+            foreach ($noterm as $label => $kws) {
+                    $assign_samples[] = array('title' => get_the_title($pid), 'hit' => $hit);
+    foreach ($tally as $slug => $c) { echo '<tr><td>' . esc_html($slug) . '</td><td>' . (int) $c . '</td></tr>'; }
+        foreach ($noterm_tally as $label => $c) {
+=== #419 (len 2683) ===
+        'Sausas (72,81)'    => array(72, 81),
+        'Konservai (73,79)' => array(73, 79),
+    $terms = get_terms(array('taxonomy' => $tax, 'hide_empty' => false));
+    foreach ($groups as $gname => $cats) {
+            'post_type' => 'product', 'post_status' => array('publish', 'draft'),
+            'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
+            'tax_query' => array('relation' => 'AND',
+                array('taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $cats),
+                array('taxonomy' => $tax, 'operator' => 'NOT EXISTS'),
