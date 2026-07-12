@@ -1,0 +1,161 @@
+verify snippet id=667
+{
+    "metodas": "NEPRIKLAUSOMA: tikrina APRASYMA (ne pavadinima). PASS = visi #1 terminai patvirtinti ir aprasyme.",
+    "viso_kandidatu": 139,
+    "PASS": 130,
+    "FLAG": 9,
+    "tally_PASS": {
+        "hipoalerginis": 27,
+        "jautriam-virskinimui": 22,
+        "slapimo-takams": 19,
+        "svorio-kontrolei": 11,
+        "inkstams": 11,
+        "diabetui": 10,
+        "kepenims": 9,
+        "odai-ir-kailiui": 7,
+        "sterilizuotiems": 7,
+        "atsistatymui": 4,
+        "sanariams": 3,
+        "sirdziai": 3
+    },
+    "FLAG_sarasas": [
+        {
+            "id": 33408,
+            "title": "F02802 FARMINA VET LIFE – DOG Wet HYPOALLERGENIC Duck&P",
+            "title_terms": [
+                "hipoalerginis"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "hipoalerginis"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33415,
+            "title": "F06398 FARMINA VET LIFE – DOG Wet OBESITY 300 g (pak.6)",
+            "title_terms": [
+                "svorio-kontrolei"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "svorio-kontrolei"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33390,
+            "title": "FARMINA VET LIFE – CAT Dry HYPOALLERGENIC Pork&Potato A",
+            "title_terms": [
+                "hipoalerginis"
+            ],
+            "desc_terms": [
+                "odai-ir-kailiui"
+            ],
+            "confirmed": [],
+            "unconfirmed": [
+                "hipoalerginis"
+            ],
+            "desc_len": 3676,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33369,
+            "title": "F02192 FARMINA N&D QUINOA – CAT Wet WEIGHT MANAGEMENT A",
+            "title_terms": [
+                "svorio-kontrolei"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "svorio-kontrolei"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33363,
+            "title": "F02130 FARMINA N&D QUINOA – CAT Wet DIGESTION ADULT 80 ",
+            "title_terms": [
+                "jautriam-virskinimui"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "jautriam-virskinimui"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33367,
+            "title": "F02178 FARMINA N&D QUINOA – CAT Wet URINARY 80 g (pak.2",
+            "title_terms": [
+                "slapimo-takams"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "slapimo-takams"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33339,
+            "title": "F07036 FARMINA N&D QUINOA – DOG Wet Pork NEUTERED ADULT",
+            "title_terms": [
+                "sterilizuotiems"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "sterilizuotiems"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33334,
+            "title": "F02369 FARMINA N&D QUINOA – DOG Wet DIGESTION ADULT MIN",
+            "title_terms": [
+                "jautriam-virskinimui"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "jautriam-virskinimui"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        },
+        {
+            "id": 33335,
+            "title": "F02611 FARMINA N&D QUINOA – DOG Wet DIGESTION ADULT 285",
+            "title_terms": [
+                "jautriam-virskinimui"
+            ],
+            "desc_terms": [],
+            "confirmed": [],
+            "unconfirmed": [
+                "jautriam-virskinimui"
+            ],
+            "desc_len": 0,
+            "term_exists": true,
+            "jau_turi": ""
+        }
+    ],
+    "issaugota_verified": 130
+}
