@@ -1,0 +1,86 @@
+apply snippet id=668
+=== APPLY REZULTATAS ===
+{
+    "rezimas": "APPLY (irasyta)",
+    "prekiu": 130,
+    "terminu_priskirta": 133,
+    "skipped_slugai": [],
+    "revert_log_saugotas": "ps_vetdiet_revert_log",
+    "samples": [
+        {
+            "id": 34484,
+            "set": [
+                "hipoalerginis"
+            ],
+            "po_apply": [
+                "Hipoalerginis"
+            ]
+        },
+        {
+            "id": 34471,
+            "set": [
+                "hipoalerginis"
+            ],
+            "po_apply": [
+                "Hipoalerginis"
+            ]
+        },
+        {
+            "id": 33984,
+            "set": [
+                "jautriam-virskinimui"
+            ],
+            "po_apply": [
+                "Jautriam virškinimui"
+            ]
+        },
+        {
+            "id": 33982,
+            "set": [
+                "diabetui",
+                "svorio-kontrolei"
+            ],
+            "po_apply": [
+                "Diabetui",
+                "Svorio kontrolei"
+            ]
+        },
+        {
+            "id": 33854,
+            "set": [
+                "sanariams"
+            ],
+            "po_apply": [
+                "Sąnariams"
+            ]
+        },
+        {
+            "id": 33674,
+            "set": [
+                "slapimo-takams"
+            ],
+            "po_apply": [
+                "Šlapimo takams"
+            ]
+        },
+        {
+            "id": 33676,
+            "set": [
+                "atsistatymui"
+            ],
+            "po_apply": [
+                "Atsistatymui"
+            ]
+        },
+        {
+            "id": 33678,
+            "set": [
+                "odai-ir-kailiui"
+            ],
+            "po_apply": [
+                "Odai ir kailiui"
+            ]
+        }
+    ]
+}
+apply deakt
