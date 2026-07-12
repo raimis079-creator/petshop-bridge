@@ -1,0 +1,36 @@
+identify snippet id=666
+{
+    "metodas": "A tipas: privalo buti vet dietine linija + specifinis dietos zymeklis + maisto kategorija",
+    "viso": 139,
+    "tally": {
+        "hipoalerginis": 29,
+        "jautriam-virskinimui": 25,
+        "slapimo-takams": 20,
+        "svorio-kontrolei": 13,
+        "inkstams": 11,
+        "diabetui": 10,
+        "kepenims": 9,
+        "sterilizuotiems": 8,
+        "odai-ir-kailiui": 7,
+        "atsistatymui": 4,
+        "sanariams": 3,
+        "sirdziai": 3
+    },
+    "term_names": {
+        "hipoalerginis": "Hipoalerginis",
+        "jautriam-virskinimui": "Jautriam virškinimui",
+        "inkstams": "Inkstams",
+        "slapimo-takams": "Šlapimo takams",
+        "kepenims": "Kepenims",
+        "sirdziai": "Širdžiai",
+        "diabetui": "Diabetui",
+        "svorio-kontrolei": "Svorio kontrolei",
+        "sanariams": "Sąnariams",
+        "odai-ir-kailiui": "Odai ir kailiui",
+        "sterilizuotiems": "Sterilizuotiems",
+        "atsistatymui": "Atsistatymui",
+        "plauku-gumulams": "Nuo plaukų gumuliukų"
+    },
+    "issaugota_i_option": "ps_vetdiet_candidates"
+}
+deakt (bet option issaugotas DB)
