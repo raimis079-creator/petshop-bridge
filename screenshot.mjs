@@ -1,27 +1,54 @@
 import { execSync } from "child_process";
 import fs from "fs";
-function putBinary(n,buf){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<4;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'pf '+n,branch:'main',content:buf.toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));const r=execSync('curl -s --max-time 45 -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 2');}return false;}
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<4;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'pf '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));const r=execSync('curl -s --max-time 40 -w "\\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 2');}return false;}
 let out='';const L=s=>{out+=s+'\n';console.log(s);};
 const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP=Buffer.from("aWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyByZXR1cm47IH0KYWRkX2FjdGlvbiggJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uICgpIHsKCWlmICggISBpc3NldCgkX0dFVFsncHNfcHJvZGZldGNoJ10pICkgeyByZXR1cm47IH0KCSR0b2sgPSBpc3NldCgkX0dFVFsndG9rZW4nXSkgPyBzYW5pdGl6ZV90ZXh0X2ZpZWxkKHdwX3Vuc2xhc2goJF9HRVRbJ3Rva2VuJ10pKSA6ICcnOwoJaWYgKCAkdG9rICE9PSAnY21wbHpfNjY4MGFhMmE0MjE1MWQ1NGZhOGQ2NGVjJyApIHsgcmV0dXJuOyB9CgkkY3VyYXRlZCA9IGFycmF5KDE4NTg3LDE3OTc4LDE5NTgyLDE3NDE1LDE5NzYwLDE3MDM4LDE5NDQ2LDE3MTcwLDE3ODIzKTsKCSRpZHMgPSAkY3VyYXRlZDsKCS8vIHV6cGlsZG9tIGlraSAxMiBraXRvbWlzIHN1bmltcyBwcmVrZW1pcyBzdSBudW90cmF1a2EKCWlmKGNvdW50KCRpZHMpPDEyKXsKCQkkc3VuaW1zX3RyZWUgPSBhcnJheSg3MCw3MSw5NSwxMTUsMTE2LDEwMSw3NSwxMjIsMTExLDgyLDIzMyw3NiwzMDUsMTIzKTsKCQkkcT1uZXcgV1BfUXVlcnkoYXJyYXkoJ3Bvc3RfdHlwZSc9Pidwcm9kdWN0JywncG9zdF9zdGF0dXMnPT4ncHVibGlzaCcsJ3Bvc3RzX3Blcl9wYWdlJz0+NDAsJ2ZpZWxkcyc9PidpZHMnLCdub19mb3VuZF9yb3dzJz0+dHJ1ZSwKCQkJJ3Bvc3RfX25vdF9pbic9PiRjdXJhdGVkLAoJCQkndGF4X3F1ZXJ5Jz0+YXJyYXkoYXJyYXkoJ3RheG9ub215Jz0+J3Byb2R1Y3RfY2F0JywnZmllbGQnPT4ndGVybV9pZCcsJ3Rlcm1zJz0+JHN1bmltc190cmVlLCdpbmNsdWRlX2NoaWxkcmVuJz0+dHJ1ZSkpLAoJCQknbWV0YV9xdWVyeSc9PmFycmF5KGFycmF5KCdrZXknPT4nX3RodW1ibmFpbF9pZCcsJ2NvbXBhcmUnPT4nRVhJU1RTJykpKSk7CgkJZm9yZWFjaCgkcS0+cG9zdHMgYXMgJHBpZCl7IGlmKGNvdW50KCRpZHMpPj0xMilicmVhazsgJHA9d2NfZ2V0X3Byb2R1Y3QoJHBpZCk7IGlmKCRwJiYkcC0+aXNfaW5fc3RvY2soKSYmKGZsb2F0KSRwLT5nZXRfcHJpY2UoKT4wKSAkaWRzW109JHBpZDsgfQoJfQoJJGlkcz1hcnJheV9zbGljZSgkaWRzLDAsMTIpOwoJLy8gdGl0bGUvYmVuZWZpdCBtYXAgKGlzIG1vZHVsaW8pCgkkdG1hcD1mdW5jdGlvbl9leGlzdHMoJ3BldHNob3BfcG9wdWxhcl90aXRsZV9tYXAnKT9wZXRzaG9wX3BvcHVsYXJfdGl0bGVfbWFwKCk6YXJyYXkoKTsKCSRibWFwPWZ1bmN0aW9uX2V4aXN0cygncGV0c2hvcF9wb3B1bGFyX2JlbmVmaXRfbWFwJyk/cGV0c2hvcF9wb3B1bGFyX2JlbmVmaXRfbWFwKCk6YXJyYXkoKTsKCSRvdXQ9YXJyYXkoKTsKCWZvcmVhY2goJGlkcyBhcyAkaWQpewoJCSRwPXdjX2dldF9wcm9kdWN0KCRpZCk7IGlmKCEkcCljb250aW51ZTsKCQkkaW1nPXdwX2dldF9hdHRhY2htZW50X2ltYWdlX3VybChnZXRfcG9zdF90aHVtYm5haWxfaWQoJGlkKSwnd29vY29tbWVyY2VfdGh1bWJuYWlsJyk7CgkJJHByaWNlPXRyaW0oc3RyaXBfdGFncygkcC0+Z2V0X3ByaWNlX2h0bWwoKSkpOwoJCSR0aXRsZT1pc3NldCgkdG1hcFskaWRdKT8kdG1hcFskaWRdOmh0bWxfZW50aXR5X2RlY29kZShnZXRfdGhlX3RpdGxlKCRpZCkpOwoJCSRiZW49aXNzZXQoJGJtYXBbJGlkXSk/JGJtYXBbJGlkXTonJzsKCQkkb3V0W109YXJyYXkoJ2lkJz0+JGlkLCd0aXRsZSc9Pm1iX3N1YnN0cigkdGl0bGUsMCw0OCksJ3ByaWNlJz0+JHByaWNlLCdpbWcnPT4kaW1nLCdiZW5lZml0Jz0+JGJlbik7Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwoJZWNobyB3cF9qc29uX2VuY29kZSgkb3V0LEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7CglleGl0Owp9LCA2ICk7Cg==",'base64').toString('utf8');
+const PHP=`if ( ! defined('ABSPATH') ) { return; }
+add_action('wp_loaded', function(){
+  if ( ! isset($_GET['ps_varfetch']) ) { return; }
+  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';
+  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }
+  $cats = array(
+    'maistas'=>71,'skanestai'=>95,'zaislai'=>115,'antkakliai'=>116,
+    'higiena'=>82,'sampunai'=>76,'guoliai'=>233,'dubeneliai'=>111,
+    'vitaminai'=>101,'sukos'=>75,'transportavimas'=>122,'apranga'=>305
+  );
+  $out = array();
+  foreach($cats as $label=>$tid){
+    $q = new WP_Query(array(
+      'post_type'=>'product','post_status'=>'publish','posts_per_page'=>25,'fields'=>'ids','no_found_rows'=>true,
+      'orderby'=>'date','order'=>'DESC',
+      'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'term_id','terms'=>$tid,'include_children'=>true)),
+      'meta_query'=>array(array('key'=>'_thumbnail_id','compare'=>'EXISTS'))
+    ));
+    $items=array();
+    foreach($q->posts as $pid){
+      $p = wc_get_product($pid);
+      if(!$p || !$p->is_in_stock()) continue;
+      if((float)$p->get_price()<=0) continue;
+      $img = wp_get_attachment_image_url(get_post_thumbnail_id($pid),'woocommerce_thumbnail');
+      $items[] = array('id'=>$pid,'title'=>html_entity_decode(get_the_title($pid)),'price'=>trim(strip_tags($p->get_price_html())),'img'=>$img);
+      if(count($items)>=5) break;
+    }
+    $out[$label]=$items;
+  }
+  header('Content-Type: application/json; charset=utf-8');
+  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+  exit;
+}, 6);`;
 function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
 function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
 (async()=>{try{
-  const payload={name:'Petshop Prod Fetch v1',desc:'token',code:PHP,scope:'global',active:true,priority:10};
+  const payload={name:'Petshop VarFetch v1',desc:'token recon variety',code:PHP,scope:'global',active:true,priority:10};
   const c=api('POST','/wp-json/code-snippets/v1/snippets',payload);
   let id=0;try{id=JSON.parse(c.body).id;}catch(e){}
-  L('id='+id); if(!id){L('fail '+c.body.slice(0,150));putText('_run75.txt',out);return;}
+  L('id='+id); if(!id){L('fail '+c.body.slice(0,200));putText('_varrun.txt',out);return;}
   execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_prodfetch=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  let prods=[];try{prods=JSON.parse(r);}catch(e){L('parse err '+r.slice(0,200));}
-  L('prekiu: '+prods.length);
-  putText('prod_data.json', JSON.stringify(prods));
-  // parsisiunciam nuotraukas
-  for(const p of prods){
-    if(!p.img)continue;
-    try{ const b=execSync('curl -s -k --max-time 20 "'+p.img+'"',{encoding:'buffer',maxBuffer:20000000}); if(b.length>500){ putBinary('prod_'+p.id+'.png', b); L('img '+p.id+' '+b.length); } }catch(e){L('img err '+p.id);}
-  }
-  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
-  putText('_run75.txt',out+'\nFETCH_ID='+id);
-}catch(e){L('!!! '+e);putText('_run75.txt',out);}})();
+  const r=sh('curl -s -k --max-time 60 "'+BASE+'/?ps_varfetch=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  let data={};try{data=JSON.parse(r);}catch(e){L('parse err '+r.slice(0,300));}
+  const cnt=Object.keys(data).map(k=>k+':'+(data[k]||[]).length).join(' ');
+  L('cats: '+cnt);
+  putText('var_data.json', JSON.stringify(data));
+  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});L('deactivated '+id);}
+  putText('_varrun.txt',out+'\nVARFETCH_ID='+id);
+}catch(e){L('!!! '+e);putText('_varrun.txt',out);}})();
