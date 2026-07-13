@@ -1,0 +1,12 @@
+=== 1. Kuriu grupe PS_TEST ===
+POST /groups HTTP 200
+  ✅ Grupe sukurta, ID: bDxp2q
+
+=== 2. Pridedu kontakta terra@gyvunai.lt ===
+POST /subscribers HTTP 200
+  ✅ Kontaktas pridetas
+
+=== 3. Patvirtinimas ===
+Grupes dabar: [{"title":"PS_TEST","id":"bDxp2q","subs":0}]
+
+GID=bDxp2q
