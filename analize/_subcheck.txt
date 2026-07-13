@@ -1,0 +1,5 @@
+GET /subscribers/terra@gyvunai.lt HTTP 200
+  email: terra@gyvunai.lt
+  status: [object Object]
+  groups: ["Test group (terra@petshop.lt)","PS_TEST"]
+  full (trumpai): {"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","type":"text","value":"Petshop"},{"id":"dwBVJb","title":"Last name","type":"text","value":"Test"}],"created":"2026-01-04 18:07:57","created_utc":"2026-01-04 16:07:57","email":"terra@gyvunai.lt","firstname":"Petshop","id":"AMYvBNl","ip_address":"","lastname":"Test","location":"","phone":"","phone_country":null,"
