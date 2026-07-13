@@ -27,6 +27,28 @@ function ps_atr_pool( $species ) {
 			array(14492,'apranga'),
 			array(33894,'transportavimas'),
 		),
+		'katems' => array(
+			array(34498,'maistas'),
+			array(34500,'maistas'),
+			array(34488,'maistas'),
+			array(34172,'skanestai'),
+			array(34170,'skanestai'),
+			array(24992,'zaislai'),
+			array(17305,'zaislai'),
+			array(26342,'kraikai'),
+			array(24790,'kraikai'),
+			array(32554,'tualetai'),
+			array(27866,'tualetai'),
+			array(33990,'draskykles'),
+			array(32578,'draskykles'),
+			array(25121,'dubeneliai'),
+			array(19140,'dubeneliai'),
+			array(18485,'vitaminai'),
+			array(26790,'sukos'),
+			array(26017,'guoliai'),
+			array(19268,'antkakliai'),
+			array(33894,'transportavimas'),
+		),
 	);
 	return isset( $pools[ $species ] ) ? $pools[ $species ] : array();
 }
@@ -129,16 +151,17 @@ function ps_atr_shortcode( $atts ) {
 	.ps-atr{padding:4px 0}
 	.ps-atr-grid{grid-template-columns:repeat(2,1fr);gap:10px}
 	.ps-atr-h{font-size:19px;margin-bottom:14px}
-	.ps-atr-card{padding:8px;border-radius:8px}
-	.ps-atr-title{font-size:12.5px;line-height:1.3;min-height:32px;margin:8px 0 4px}
-	.ps-atr-price{font-size:15px;margin-bottom:8px}
-	.ps-atr-price del{font-size:11.5px;margin-right:4px}
-	.ps-atr-btn{font-size:12.5px;padding:8px 4px;border-radius:6px}
+	.ps-atr-card{padding:10px;border-radius:8px}
+	.ps-atr-title{font-size:13.5px;line-height:1.32;min-height:36px;margin:9px 0 5px}
+	.ps-atr-price{font-size:16px;margin-bottom:9px}
+	.ps-atr-price del{font-size:12.5px;margin-right:5px}
+	.ps-atr-price ins{font-size:16px}
+	.ps-atr-btn{font-size:13.5px;padding:9px 4px;border-radius:6px}
 	.ps-atr-more{font-size:14px;padding:10px 22px}
 }
 </style>
 <div class="ps-atr">
-	<h2 class="ps-atr-h"><?php echo esc_html( $a['title'] ); ?></h2>
+	<?php if ( trim( (string) $a['title'] ) !== '' ) : ?><h2 class="ps-atr-h"><?php echo esc_html( $a['title'] ); ?></h2><?php endif; ?>
 	<div class="ps-atr-grid">
 		<?php
 		foreach ( $ids as $i => $id ) {
