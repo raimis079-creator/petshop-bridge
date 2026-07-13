@@ -1,0 +1,24 @@
+======================================
+TESTAS #4: Webhookai (Sender -> Woo)
+======================================
+
+--- 4a. Woo webhook receiver deploy ---
+  receiver snippet ID: 713 (HTTP 200)
+  webhook URL: https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook
+
+--- 4b. Endpoint self-test ---
+  self-test resp: {"received":true}
+
+--- 4c. Registruoju webhook Sender pusėje ---
+  POST /webhooks {url,topic:unsubscribe} HTTP 404 — {
+    "message": "The route v2/webhooks could not be found."
+}
+  POST /account/webhooks HTTP 422 — {"message":"The selected topic is invalid.","errors":{"topic":["The selected topic is invalid."]}}
+
+--- 4d. GET /webhooks (esami) ---
+  HTTP 404 — {
+    "message": "The route v2/webhooks could not be found."
+}
+
+  (receiver deaktyvuotas testo pabaigai — bet self-test log liko)
+  RECEIVER_ID=713
