@@ -78,7 +78,6 @@ function ps_atr_pool( $species ) {
 			array(17903,'tvenk'),
 			array(18218,'tvenk'),
 			array(18248,'tvenk'),
-			array(26471,'iranga'),
 			array(26479,'iranga'),
 			array(27114,'iranga'),
 		),
