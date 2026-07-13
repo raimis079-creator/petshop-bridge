@@ -4,10 +4,8 @@ function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;co
 let out='';const L=s=>{out+=s+'\n';};
 const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
-const PHP="if ( ! defined('ABSPATH') ) { return; }\n// Webhook receiver: /wp-json/petshop/v1/sender-webhook\nadd_action('rest_api_init', function(){\n  register_rest_route('petshop/v1', '/sender-webhook', array(\n    'methods' => 'POST',\n    'permission_callback' => '__return_true',\n    'callback' => function( $request ){\n      $body = $request->get_body();\n      $json = json_decode($body, true);\n      $sig = $request->get_header('X-Sender-Signature');\n      // log to option (testui)\n      $log = get_option('ps_sender_webhook_log', array());\n      $log[] = array(\n        'received_at' => current_time('mysql'),\n        'signature_present' => $sig ? 'yes' : 'no',\n        'body' => $body,\n        'parsed' => $json,\n      );\n      // keep last 20\n      if (count($log) > 20) { $log = array_slice($log, -20); }\n      update_option('ps_sender_webhook_log', $log, false);\n      return new WP_REST_Response(array('received'=>true), 200);\n    },\n  ));\n});\n// viewer: /?ps_webhook_log=1&token=...\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_webhook_log']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  if ( isset($_GET['clear']) ) { update_option('ps_sender_webhook_log', array(), false); }\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode(get_option('ps_sender_webhook_log', array()), JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function senderCall(method, path, body){
-  const SAPI='https://api.sender.net/v2';
+const SAPI='https://api.sender.net/v2';
+function scall(method, path, body){
   let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+SAPI+path+'"';
   if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+SAPI+path+'"';}
   let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
@@ -16,49 +14,52 @@ function senderCall(method, path, body){
   return {code, raw, j};
 }
 function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{let id=0;try{
-  L('======================================');
-  L('TESTAS #4: Webhookai (Sender -> Woo)');
-  L('======================================');
-  L('');
-  // 1. deploy webhook receiver snippet
-  L('--- 4a. Woo webhook receiver deploy ---');
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop Sender Webhook Receiver v1',desc:'test4 receiver',code:PHP,scope:'global',active:true,priority:10});
-  try{id=JSON.parse(c.body).id;}catch(e){}
-  L('  receiver snippet ID: '+id+' (HTTP '+c.code+')');
-  execSync('sleep 3');
-  // clear old log
-  sh('curl -s -k --max-time 30 "'+BASE+'/?ps_webhook_log=1&clear=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+function wpapi(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+(async()=>{
   const WH_URL = BASE + '/wp-json/petshop/v1/sender-webhook';
-  L('  webhook URL: '+WH_URL);
-  L('');
+  // re-activate receiver snippet 713
+  wpapi('POST','/wp-json/code-snippets/v1/snippets/713/activate',{});
+  execSync('sleep 2');
+  // clear log
+  sh('curl -s -k --max-time 30 "'+BASE+'/?ps_webhook_log=1&clear=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
 
-  // 2. self-test: POST to our own endpoint to confirm it logs
-  L('--- 4b. Endpoint self-test ---');
-  const selftest=sh('curl -s -k --max-time 30 -X POST -H "Content-Type: application/json" -d \'{"test":"selftest","type":"ping"}\' "'+WH_URL+'"');
-  L('  self-test resp: '+selftest.slice(0,100));
+  L('TESTAS #4 — webhookai su teisingais topics');
   L('');
-
-  // 3. register webhook in Sender
-  L('--- 4c. Registruoju webhook Sender pusėje ---');
-  // Sender webhook: POST /account (or /webhooks?) — probe
-  let reg=senderCall('POST','/webhooks',{url:WH_URL, topic:'subscribers/unsubscribe'});
-  L('  POST /webhooks {url,topic:unsubscribe} HTTP '+reg.code+' — '+reg.raw.slice(0,200));
-  if(reg.code==='404'){
-    // try alternate structures
-    let reg2=senderCall('POST','/account/webhooks',{url:WH_URL, topic:'unsubscribe'});
-    L('  POST /account/webhooks HTTP '+reg2.code+' — '+reg2.raw.slice(0,150));
+  // register 2 webhooks: subscribers/unsubscribed + bounces/new
+  const topics=['subscribers/unsubscribed','bounces/new','subscribers/updated'];
+  const created=[];
+  for(const t of topics){
+    const r=scall('POST','/account/webhooks',{url:WH_URL, topic:t});
+    let ok=(r.code==='200'||r.code==='201');
+    L('  register topic="'+t+'" HTTP '+r.code+' '+(ok?'✅':'❌ '+r.raw.slice(0,120)));
+    if(ok){try{const id=(r.j&&r.j.data&&r.j.data.id)||(r.j&&r.j.id);created.push({t,id});}catch(e){}}
   }
   L('');
-
-  // 4. list existing webhooks
-  L('--- 4d. GET /webhooks (esami) ---');
-  const list=senderCall('GET','/webhooks');
-  L('  HTTP '+list.code+' — '+list.raw.slice(0,300));
+  // list webhooks
+  L('--- Registruoti webhookai ---');
+  const list=scall('GET','/account/webhooks');
+  if(list.j){
+    const arr=(list.j.data||list.j||[]);
+    L('  Rasta: '+JSON.stringify(Array.isArray(arr)?arr.map(w=>({topic:w.topic,url:(w.url||'').slice(-40),id:w.id})):arr).slice(0,400));
+    // find signing secret
+    if(list.j.signing_secret||list.j.secret) L('  Signing secret yra: taip');
+  }
   L('');
-
-  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});L('  (receiver deaktyvuotas testo pabaigai — bet self-test log liko)');}
-  L('  RECEIVER_ID='+id);
-  putText('_test4.txt', out);
+  // trigger unsubscribe: update subscriber to unsubscribed (or re-subscribe then unsub)
+  L('--- Trigger: unsubscribe event ---');
+  // first resubscribe temail then unsubscribe to fire event... safer: PATCH subscriber to trigger updated
+  const trig=scall('PATCH','/subscribers/terra@gyvunai.lt',{fields:{PS_ORDER_COUNT:8}});
+  L('  PATCH subscriber (trigger updated) HTTP '+trig.code);
+  execSync('sleep 6');
+  L('');
+  // check webhook log
+  L('--- Woo webhook log (ką gavo) ---');
+  const log=sh('curl -s -k --max-time 30 "'+BASE+'/?ps_webhook_log=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  let logArr=[];try{logArr=JSON.parse(log);}catch(e){}
+  L('  Gauta webhook kvietimų: '+logArr.length);
+  for(const e of logArr.slice(-5)){
+    L('    ['+e.received_at+'] sig:'+e.signature_present+' | '+(JSON.stringify(e.parsed||e.body)).slice(0,180));
+  }
+  putText('_test4b.txt', out);
   console.log('done');
-}catch(e){putText('_test4.txt','!!! '+e+'\n'+out);}})();
+})();
