@@ -1,0 +1,19 @@
+======================================
+TESTAS #1: PS_ custom fields per API
+======================================
+
+--- 1a. Esami custom fields ---
+  Rasta 4 esamu fields: ["Email","Phone number","First name","Last name"]
+
+--- 1b. Kuriu 3 PS_ fields ---
+  ✅ PS_ORDER_COUNT (number) sukurtas, ID: egLxlj
+  ✅ PS_PET_SPECIES (text) sukurtas, ID: ejqvo4
+  ✅ PS_MARKETING_CONSENT (text) sukurtas, ID: bkZwpv
+
+--- 1c. Rasau reiksmes terra@gyvunai.lt ---
+  PATCH /subscribers HTTP 200
+
+--- 1d. Verifikacija (read-back) ---
+  PS_ laukai kontakte:
+
+  VERDIKTAS: 🟡 DALINAI — patikrink reiksmes auksciau
