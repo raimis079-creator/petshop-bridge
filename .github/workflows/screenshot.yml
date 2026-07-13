@@ -41,6 +41,8 @@ jobs:
           WP_USER: ${{ secrets.WP_USER }}
           WP_APP_PASS: ${{ secrets.WP_APP_PASS }}
           GTM_SA_JSON: ${{ secrets.GTM_SA_JSON }}
+          SENDER_MARKETING_TOKEN: ${{ secrets.SENDER_MARKETING_TOKEN }}
+          SENDER_TRANSACTIONAL_TOKEN: ${{ secrets.SENDER_TRANSACTIONAL_TOKEN }}
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: node screenshot.mjs "${{ github.event.inputs.url }}"
