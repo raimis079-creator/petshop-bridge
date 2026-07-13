@@ -4,6 +4,91 @@
 
 ---
 
+## 2026-07-13 — PRODUKTŲ NUOTRAUKŲ VIENODINIMAS + TEKSTO KLAIDA + UI LOKALIZACIJA + BUILD-A-BOX VALYMAS [S179]
+
+Post-launch klaidų taisymo sesija (Raimis pastebėjo screenshotais). Aukščiausias decision Nr.: S179.
+
+---
+
+### S179-A — Produktų nuotraukų aukščių vienodinimas (#705)
+
+Bugas: „Panašūs produktai" ir kategorijos loop'e nuotraukos skirtingo aukščio (kortelės nesulygiuoja). Recon: WC thumbnail = „uncropped" (crop=0, 300×0) → nuotraukos išlaiko native proporcijas. Vienetiniai konservai 600×600 / 1000×1000 → 300×300 (kvadratas), rinkiniai 1260×850 / 1280×880 → 300×202 (landscape). Todėl skirtingi aukščiai.
+
+Fix (CSS, ne crop+regeneracija — crop apkarpytų rinkinių kadrus): `aspect-ratio:1/1` + `object-fit:contain` visoms produktų loop nuotraukoms. Snippet #705 „Produktu Nuotrauku Vienodinimas v1". Nieko neapkarpo, rinkinių plačios nuotraukos lieka pilnos su baltu tarpu.
+
+Verifikuota (Playwright): related img heights [247,247,247,247] (buvo skirtingi).
+
+**Praplėsta v2 (žr. S179-D)**.
+
+---
+
+### S179-B — Teksto klaida „Ne būtinai" → „Nebūtinai" (puslapis 34261)
+
+Bugas: puslapyje /sprendimai/sterilizuotas-augintinis/ FAQ atsakymas „Ne būtinai. Po sterilizacijos..." (turi būti vienas žodis).
+
+Recon: DB paieška per wp_posts (LIKE) — 1 atvejis, page ID 34261. Full-page kontekstas patvirtintas.
+
+Fix: wp/v2/pages/34261?context=edit → content.raw skaityti (lossless, NE wc/v3), string replace „Ne būtinai" → „Nebūtinai" (tik 1 atvejis), POST atgal. Verifikacija: DB re-read + live HTML per tikrą URL (`/sprendimai/sterilizuotas-augintinis/`, ne `?page_id=` kuris redirect'ino nesėkmingai) — „Nebūtinai"=true, „Ne būtinai"=false.
+
+PAMOKA: verifikacijai visada naudoti tikrą permalink (link iš wp/v2 atsakymo), ne `?page_id=`.
+
+---
+
+### S179-C — UI Lokalizacija: neišversti angliški užrašai (#707)
+
+Bugas: matomi angliški užrašai — „SELECT OPTIONS", „Add to cart", „CLEAR SELECTIONS", „ACTIVE FILTERS", „Filter by".
+
+Fix: naujas snippet #707 „UI Lokalizacija v2" su `petshop_ui_l10n_map()` (EN→LT lentelė) per 3 filtrus:
+- `gettext` — WooCommerce/Flatsome eilutės (Select options, Add to cart, Read more, Clear)
+- `gettext_with_context` — plugin'ai naudojantys context
+- **`widget_title`** — kritinis: WC widget antraštės („Active Filters", „Filter by", „Filter by price") NEEINA per gettext. Praeitas bandymas nepataikė kol nepridėjau šio filtro.
+
+Specialūs atvejai (išmoktas kelias):
+- „Active Filters" (didžiąja F) — saugoma tokia, mano map turėjo „Active filters" mažąja → nepataikė. Pataisyta.
+- „Add to cart" liko HTML'e — JS parametras, ne matomas mygtukas. Matomi mygtukai visi lietuviški (patvirtinta Playwright'u).
+
+Plečiama: pridėti eilutę į `petshop_ui_l10n_map()`.
+
+---
+
+### S179-D — Build-a-box UI valymas + nuotraukų vienodinimas (#709, #705 v2)
+
+Bugas 1 (žinutė+kiekis): build-a-box produkto apačioje MNM default validacijos žinutė („Pasirinkote 0 vnt., pasirinkite 12 vnt., kad tęstumėte…") + container kiekis (`- 1 +`), nereikalingi nes viršuje custom „Jūsų rinkinys" suvestinė su proxy CTA.
+
+Trys iteracijos kol pataikė (recon buvo iššūkis nes product page hang'ina Playwright — sunkus JS):
+1. v1: `.mnm_message` + `form.cart > .quantity` — nepataikė (žinutė ne `.mnm_message`, container kiekis ne tiesioginis form vaikas)
+2. v2 (galutinis): `.psc-form .mnm_button_wrap .quantity/.ux-quantity` + `.psc-form .mnm_status/.mnm_message` — pataikė
+
+Custom snippet #547 „Susidėjimo Rinkinio Vitrina v19" iškelia pilną custom UI (psc-form), bet MNM default apatinį bloką nepilnai paslėpė. #709 pridėtas kaip CSS layer'is. Scope `body.petshop-choice-page .psc-form` — normalūs produktai nepaliesti. Tikras MNM add-to-cart mygtukas lieka (proxy jį spaudžia).
+
+Verifikuota (Playwright): container_qty_visible=0, msg_status_visible=0, item_qty_visible=12 (prekių kiekiai sąraše NEPALIESTI), proxy_cta=[„DAR PASIRINKITE 12 KONSERVŲ"].
+
+Bugas 2 (build-a-box prekių nuotraukos): sąraše skirtingo aukščio (83–133px). Priežastis: S179-A #705 v1 apėmė tik `.product-small`/`ul.products` — MNM prekės eina per `.mnm_child_product_images` (kita struktūra). Plius native proporcijos skirtingos (Animonda 300×461–483 landscape, kai kurios 300×300).
+
+Fix: #705 → v2 pridėtas `.mnm_child_product_images` selektorius (aspect-ratio:1/1 + contain, konteineris 90px). Verifikuota: visos 6 prekės 90×90; regresija /related/ = [247,247,247,247] nepaliesta.
+
+PAMOKOS:
+- Build-a-box produkto page (34207) hang'ina Playwright (MNM sunkus JS) — kartais reikia curl (browser=0) recon
+- „Active" fixe'us reikia patikrinti visose struktūrose (WC loop, MNM lentelė, YITH widget'ai — visi skirtingi selektoriai)
+- Verifikacija visada per Playwright DOM measurement (getBoundingClientRect), ne screenshot vizualiai
+
+---
+
+### S179 — LIVE SNIPPETAI (NELIESTI)
+
+Kartu su S175–S178 (landing sistema) — visų aktyvių pagalbinių snippetų sąrašas dev:
+#685 (Atrinktos modulis, 5 rūšys) · #688 (Landing, 5 rūšys) · #692 v2 (Maisto mygtukai) · #693 (Mobile filtrų fix) · **#705 v2 (Nuotraukų vienodinimas + build-a-box)** · **#707 v2 (UI lokalizacija — gettext/gettext_with_context/widget_title)** · **#709 v2 (Build-a-box apatinio bloko slėpimas)**
+
+Puslapiai su turinio pakeitimais: page 34261 (Nebūtinai fix, lossless per wp/v2).
+
+Backup optionai (visi šioje sesijoje sukurti fix'ai reversible): joks papildomas nereikalingas (visi #705/#707/#709 = pridedami snippet'ai, deaktyvuoji = grįžta į buvusią būseną; #547 nepaliestas).
+
+Repo naujienos (`moduliai/`): `produktu-nuotrauku-vienodinimas-v1.php` (v2 turinys), `ui-lokalizacija-v1.php` (v2 turinys), `boxui.php`.
+
+---
+
+
+
 ## 2026-07-12/13 — LANDING SISTEMA: KATĖS + GRAUŽIKAI + PAUKŠČIAI + ŽUVYS [S176–S178]
 
 Sesijos esmė: /sunims/ landing karkasas (S175) pritaikytas likusioms 4 rūšims. Karkasas paverstas pilnai config-driven — kortelių tinklelis, „poreikis" ir „Atrinktos" sekcijos prisitaiko pagal rūšį. VISOS 5 rūšys baigtos. Plius kategorijų puslapių valymas („Recently Viewed" vaiduoklis).
