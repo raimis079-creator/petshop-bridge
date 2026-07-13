@@ -50,6 +50,20 @@ function petshop_landing_map() {
 				102 => array( 34630, 'Vitaminai ir papildai' ),
 			),
 		),
+		87 => array(
+			'species'   => 'grauzikams',
+			'h1'        => 'Prekės graužikams',
+			'intro'     => 'Viskas jūsų graužikui vienoje vietoje. Pasirinkite kategoriją arba iškart žiūrėkite atrinktas prekes žemiau.',
+			'atr_title' => 'Atrinktos prekės graužikams',
+			'sub'       => 'Mūsų rekomenduojami pasirinkimai graužikui',
+			// NĖRA food_id/newbie -> „Rinkitės pagal poreikį" praleidžiama
+			'cards'     => array(
+				88  => array( 34631, 'Pašaras graužikams' ),
+				97  => array( 34632, 'Skanėstai graužikams' ),
+				304 => array( 34633, 'Narvai ir aksesuarai' ),
+				657 => array( 34634, 'Kraikas ir šienas' ),
+			),
+		),
 	);
 }
 
@@ -95,20 +109,22 @@ function petshop_render_landing( $cfg, $parent_id ) {
 		}
 	}
 
-	// „Rinkitės pagal poreikį" (MVP: nuorodos į maisto kategoriją; tikslūs filtrai — TODO)
-	$food = get_term_link( (int) $cfg['food_id'], 'product_cat' );
-	$food = is_wp_error( $food ) ? '#' : $food;
-	$poreikis = array(
-		array( 'Jautriam virškinimui', 'Sudėtis švelnesnė skrandžiui ir stabilesniam virškinimui.', $food ),
-		array( 'Vienas baltymo šaltinis', 'Monoproteininis maistas — viena mėsos rūšis, aiški sudėtis.', $food ),
-		array( 'Be grūdų', 'Grain-free receptūros angliavandeniams iš daržovių.', $food ),
-		array( $cfg['newbie'], 'Maistas ir svarbiausios priežiūros prekės pirmai pradžiai.', $food ),
-	);
+	// „Rinkitės pagal poreikį" — tik jei rūšis turi maisto dietą (food_id). Graužikams praleidžia.
 	$por_html = '';
-	foreach ( $poreikis as $p ) {
-		$por_html .= '<a class="pcl-por" href="' . esc_url( $p[2] ) . '">'
-			. '<span class="pcl-por-t">' . esc_html( $p[0] ) . '</span>'
-			. '<span class="pcl-por-d">' . esc_html( $p[1] ) . '</span></a>';
+	if ( ! empty( $cfg['food_id'] ) ) {
+		$food = get_term_link( (int) $cfg['food_id'], 'product_cat' );
+		$food = is_wp_error( $food ) ? '#' : $food;
+		$poreikis = array(
+			array( 'Jautriam virškinimui', 'Sudėtis švelnesnė skrandžiui ir stabilesniam virškinimui.', $food ),
+			array( 'Vienas baltymo šaltinis', 'Monoproteininis maistas — viena mėsos rūšis, aiški sudėtis.', $food ),
+			array( 'Be grūdų', 'Grain-free receptūros angliavandeniams iš daržovių.', $food ),
+			array( $cfg['newbie'], 'Maistas ir svarbiausios priežiūros prekės pirmai pradžiai.', $food ),
+		);
+		foreach ( $poreikis as $p ) {
+			$por_html .= '<a class="pcl-por" href="' . esc_url( $p[2] ) . '">'
+				. '<span class="pcl-por-t">' . esc_html( $p[0] ) . '</span>'
+				. '<span class="pcl-por-d">' . esc_html( $p[1] ) . '</span></a>';
+		}
 	}
 
 	$atr = do_shortcode( '[petshop_atrinktos species="' . esc_attr( $cfg['species'] ) . '" title=""]' );
@@ -176,11 +192,13 @@ function petshop_render_landing( $cfg, $parent_id ) {
 	<?php endif; ?>
 
 	<h2 class="pcl-h2"><?php echo esc_html( $cfg['atr_title'] ); ?></h2>
-	<p class="pcl-sub"><?php echo esc_html( $cfg['sub'] ); ?></p>
+	<?php if ( ! empty( $cfg['sub'] ) ) : ?><p class="pcl-sub"><?php echo esc_html( $cfg['sub'] ); ?></p><?php endif; ?>
 	<?php echo $atr; ?>
 
+	<?php if ( $por_html ) : ?>
 	<h2 class="pcl-h2">Rinkitės pagal poreikį</h2>
 	<div class="pcl-por-grid"><?php echo $por_html; ?></div>
+	<?php endif; ?>
 
 	<div class="pcl-cta">
 		<div><h3>Nežinote, ko ieškoti?</h3><p>Parašykite arba paskambinkite — padėsime išsirinkti pagal augintinio poreikį.</p></div>
