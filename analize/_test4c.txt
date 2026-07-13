@@ -1,0 +1,17 @@
+--- Registruoju subscribers/new + groups/new-subscriber ---
+  subscribers/new HTTP 200 ✅
+  groups/new-subscriber HTTP 422 {"message":"The relation id field is required.","errors":{"relation_id":["The re
+
+--- Trigger: naujas subscriber (fires subscribers/new) ---
+  pridetas webhooktest+1783976179722@example.com HTTP 201
+
+  laukiu 12s webhook pristatymui...
+
+--- Woo webhook log ---
+  Gauta kvietimų: 0
+
+--- Sender webhook delivery stats ---
+  subscribers/unsubscribed: deliveries=0 failures=0
+  bounces/new: deliveries=0 failures=0
+  subscribers/updated: deliveries=0 failures=0
+  subscribers/new: deliveries=0 failures=0
