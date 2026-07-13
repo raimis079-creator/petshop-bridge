@@ -64,6 +64,30 @@ function petshop_landing_map() {
 				657 => array( 34634, 'Kraikas ir šienas' ),
 			),
 		),
+		89 => array(
+			'species'   => 'pauksciams',
+			'h1'        => 'Prekės paukščiams',
+			'intro'     => 'Viskas jūsų paukščiui vienoje vietoje. Pasirinkite kategoriją arba iškart žiūrėkite atrinktas prekes žemiau.',
+			'atr_title' => 'Atrinktos prekės paukščiams',
+			'sub'       => 'Mūsų rekomenduojami pasirinkimai paukščiui',
+			'cards'     => array(
+				90  => array( 34635, 'Lesalas paukščiams' ),
+				98  => array( 34636, 'Skanėstai paukščiams' ),
+				666 => array( 34637, 'Aksesuarai paukščiams' ),
+			),
+		),
+		93 => array(
+			'species'   => 'zuvims',
+			'h1'        => 'Prekės žuvims',
+			'intro'     => 'Viskas jūsų žuvims vienoje vietoje. Pasirinkite kategoriją arba iškart žiūrėkite atrinktas prekes žemiau.',
+			'atr_title' => 'Atrinktos prekės žuvims',
+			'sub'       => 'Mūsų rekomenduojami pasirinkimai žuvims',
+			'cards'     => array(
+				94  => array( 34638, 'Akvariumo žuvyčių maistas' ),
+				100 => array( 34639, 'Tvenkinių žuvų maistas' ),
+				371 => array( 34640, 'Akvariumų įranga' ),
+			),
+		),
 	);
 }
 
@@ -142,7 +166,10 @@ function petshop_render_landing( $cfg, $parent_id ) {
 .pcl-hero{margin:4px 0 22px}
 .pcl-hero h1{font-size:32px;font-weight:700;color:#2D5F3F;margin:0 0 8px}
 .pcl-hero p{font-size:16px;color:#5a6b5e;margin:0;max-width:640px;line-height:1.5}
-.pcl-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pcl-cats{display:grid;gap:18px;align-items:stretch}
+.pcl-cats-c2{grid-template-columns:repeat(2,1fr)}
+.pcl-cats-c3{grid-template-columns:repeat(3,1fr)}
+.pcl-cats-c4{grid-template-columns:repeat(4,1fr)}
 .pcl-card{display:block;text-decoration:none;background:#fff;border:1px solid #E6ECE4;border-radius:12px;padding:16px;text-align:center;transition:box-shadow .18s,transform .18s}
 .pcl-card:hover{box-shadow:0 8px 22px rgba(45,95,63,.12);transform:translateY(-2px)}
 .pcl-imgwrap{display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:#F2F5EF}
@@ -169,11 +196,11 @@ function petshop_render_landing( $cfg, $parent_id ) {
 .pcl-cta-btn{background:#fff;color:#2D5F3F!important;font-weight:600;padding:12px 26px;border-radius:8px;text-decoration:none;transition:opacity .15s}
 .pcl-cta-btn:hover{opacity:.88}
 .pcl-cta-btn.alt{background:transparent;color:#fff!important;border:1.5px solid #fff}
-@media(max-width:900px){.pcl-cats{grid-template-columns:repeat(2,1fr);gap:14px}.pcl-por-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.pcl-cats[class*="pcl-cats-c"]{grid-template-columns:repeat(2,1fr)!important;gap:14px}.pcl-por-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){
 	.pcl{padding:16px 14px}
 	.pcl-hero h1{font-size:25px}.pcl-hero p{font-size:14px}
-	.pcl-cats{grid-template-columns:repeat(2,1fr);gap:12px}
+	.pcl-cats[class*="pcl-cats-c"]{grid-template-columns:repeat(2,1fr)!important;gap:12px}
 	.pcl-card{padding:10px}.pcl-name{font-size:13px}
 	.pcl-h2{font-size:20px}
 	.pcl-por-grid{grid-template-columns:1fr;gap:12px}
@@ -184,16 +211,19 @@ function petshop_render_landing( $cfg, $parent_id ) {
 <div class="pcl">
 	<div class="pcl-hero"><h1><?php echo esc_html( $cfg['h1'] ); ?></h1><p><?php echo esc_html( $cfg['intro'] ); ?></p></div>
 
-	<div class="pcl-cats"><?php echo $cards_html; ?></div>
+	<?php $ccols = min( count( $cfg['cards'] ), 4 ); ?>
+	<div class="pcl-cats pcl-cats-c<?php echo (int) $ccols; ?>"><?php echo $cards_html; ?></div>
 
 	<?php if ( $extras ) : ?>
 	<div class="pcl-showall-wrap"><button type="button" class="pcl-showall" onclick="var e=document.querySelector('.pcl-extras');e.classList.toggle('pcl-hidden');this.textContent=e.classList.contains('pcl-hidden')?'Rodyti visas kategorijas ▾':'Slėpti kategorijas ▴';">Rodyti visas kategorijas ▾</button></div>
 	<div class="pcl-extras pcl-hidden"><?php echo $extras; ?></div>
 	<?php endif; ?>
 
+	<?php if ( trim( (string) $atr ) !== '' ) : ?>
 	<h2 class="pcl-h2"><?php echo esc_html( $cfg['atr_title'] ); ?></h2>
 	<?php if ( ! empty( $cfg['sub'] ) ) : ?><p class="pcl-sub"><?php echo esc_html( $cfg['sub'] ); ?></p><?php endif; ?>
 	<?php echo $atr; ?>
+	<?php endif; ?>
 
 	<?php if ( $por_html ) : ?>
 	<h2 class="pcl-h2">Rinkitės pagal poreikį</h2>
