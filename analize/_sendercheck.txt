@@ -1,0 +1,13 @@
+=== SECRETS PRESENCE ===
+SENDER_MARKETING_TOKEN: YRA (len=988, prefix=eyJ0eX...)
+SENDER_TRANSACTIONAL_TOKEN: YRA (len=987, prefix=eyJ0eX...)
+
+MARKETING -> Sender /v2/groups HTTP 200
+  ✅ TOKENAS VEIKIA
+  Grupes rastos: []
+  PS_TEST yra: ❌ NE (reikia sukurti)
+
+TRANSACTIONAL -> Sender /v2/groups HTTP 200
+  ✅ TOKENAS VEIKIA
+  Grupes rastos: []
+  PS_TEST yra: ❌ NE (reikia sukurti)
