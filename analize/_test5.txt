@@ -1,0 +1,21 @@
+======================================
+TESTAS #5: Transakcinis atsisakiusiam marketingo
+======================================
+
+--- 5a. Verifikuoti domenai ---
+  Rasta domenu: 1
+    {"id":"eE9p2l","account_id":"azv2GY","domain_name" — auth/verified: {"dmarc":1}
+  Naudosiu from domeną: (NĖRA verifikuoto — testuosiu su petshop.lt bandymui)
+
+--- 5b. terra@gyvunai.lt būsena ---
+  status: {"email":"unsubscribed","temail":"active"}
+  unsubscribed_at: "2026-01-04 18:09:58"
+  unsubscribed flag: undefined
+
+--- 5c. Transakcinis siuntimas ---
+  from: terra@petshop.lt
+  [TRANSACTIONAL token] HTTP 200 — {"emailId":"azv2GY-.eE9p2l-AMYvBNl-JQKQmy29kAN9-1ZXd4Y","message":"Email sent","success":true}
+
+--- IŠVADA ---
+  ✅ Transakcinis PRIIMTAS (HTTP 200)
+  → svarbu: transakcinis endpoint atskiras nuo marketing consent
