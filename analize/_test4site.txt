@@ -1,0 +1,22 @@
+TESTAS #4 — izoliacinis (webhook.site, galiojantis SSL)
+
+--- Senų dev webhookų šalinimas ---
+  deleted subscribers/unsubscribed HTTP 200
+  deleted bounces/new HTTP 200
+  deleted subscribers/updated HTTP 200
+  deleted subscribers/new HTTP 200
+
+--- Registruoju webhook.site ---
+  subscribers/new -> webhook.site HTTP 200 ✅
+  subscribers/unsubscribed -> webhook.site HTTP 200 ✅
+
+--- Trigger: naujas subscriber ---
+  pridetas whsite+1783977112277@example.com HTTP 201
+
+  laukiu 20s Sender pristatymui...
+
+--- Sender delivery stats ---
+  subscribers/new: deliveries=0 failures=0 resp_time=0ms status=ACTIVE
+  subscribers/unsubscribed: deliveries=0 failures=0 resp_time=0ms status=ACTIVE
+
+  >>> Raimi, patikrink webhook.site puslapį — ar atėjo Sender payload <<<
