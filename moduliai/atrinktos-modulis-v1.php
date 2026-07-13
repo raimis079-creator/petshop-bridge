@@ -63,6 +63,25 @@ function ps_atr_pool( $species ) {
 			array(17555,'kraikas'),
 			array(15642,'kraikas'),
 		),
+		'pauksciams' => array(
+			array(18923,'lesalas'),
+			array(15792,'lesalas'),
+			array(18935,'lesalas'),
+			array(17372,'skanestai'),
+			array(16162,'skanestai'),
+			array(13903,'aksesuarai'),
+		),
+		'zuvims' => array(
+			array(18341,'akvmaistas'),
+			array(18326,'akvmaistas'),
+			array(18323,'akvmaistas'),
+			array(17903,'tvenk'),
+			array(18218,'tvenk'),
+			array(18248,'tvenk'),
+			array(26471,'iranga'),
+			array(26479,'iranga'),
+			array(27114,'iranga'),
+		),
 	);
 	return isset( $pools[ $species ] ) ? $pools[ $species ] : array();
 }
