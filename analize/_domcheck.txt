@@ -1,0 +1,29 @@
+=== petshop.lt domeno autentifikacija Sender pusėje ===
+Domenas: {
+  "id": "eE9p2l",
+  "account_id": "azv2GY",
+  "domain_name": "petshop.lt",
+  "domain_verified": 1,
+  "spf_verified": 1,
+  "dkim_verified": 1,
+  "created": "2026-01-04 13:44:51",
+  "modified": "2026-02-04 17:08:42",
+  "dmarc": 1,
+  "logo": null,
+  "spf_record": [
+    "v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all"
+  ],
+  "merged_spf_record": null,
+  "spf_error_messages": null,
+  "dns_records_changed": null,
+  "tracking_subdomain": null,
+  "registrar": {
+    "display_name": "Serveriai.lt",
+    "control_panel": "https://serveriai.lt/login/",
+    "instructions": "https://www.iv.lt/pagalba/Kategorija:Domenų_valdymas",
+    "id": "serveriai.lt"
+  },
+  "expected_dkim_value": "dkim.sendersrv.com",
+  "has_tracking_cname": 0,
+  "subdomain_ssl_working": false
+}
