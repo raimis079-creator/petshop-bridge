@@ -1,31 +1,17 @@
 import { execSync } from "child_process";
 import fs from "fs";
-import { chromium } from "playwright";
-function putBinary(n,buf){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;for(let a=0;a<4;a++){try{const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:buf.toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));const r=execSync('curl -s --max-time 45 -w "\nHTTP:%{http_code}" -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});if(/HTTP:20[01]/.test(r))return true;}catch(e){}execSync('sleep 2');}return false;}
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-let out='';const L=s=>{out+=s+'\n';};
-const BASE='https://dev.avesa.lt';
-(async()=>{try{
-  const b=await chromium.launch({args:['--no-sandbox']});
-  const d=await b.newContext({viewport:{width:1280,height:1000},ignoreHTTPSErrors:true});
-  const p=await d.newPage();
-  await p.goto(BASE+'/product/susidek-konservu-rinkini-sunims/',{waitUntil:'domcontentloaded',timeout:60000});
-  await p.waitForTimeout(5000);
-  // find visible add-to-cart button text
-  const btns=await p.evaluate(()=>{
-    const res=[];
-    document.querySelectorAll('button, .button, input[type=submit], a.button').forEach(el=>{
-      const t=(el.innerText||el.value||'').trim();
-      if(t && (/cart|krepšel|add|pridėti|pasirink|išvalyt|clear|select/i.test(t))) res.push(t);
-    });
-    return [...new Set(res)];
-  });
-  L('matomi mygtukai: '+JSON.stringify(btns));
-  // scroll to add to cart
-  await p.evaluate(()=>{const b=[...document.querySelectorAll('button,.button')].find(e=>/cart|krepšel/i.test(e.innerText||''));if(b)b.scrollIntoView({block:'center'});});
-  await p.waitForTimeout(1000);
-  putBinary('box_addtocart.png', await p.screenshot()); L('shot ok');
-  await d.close(); await b.close();
-}catch(e){L('!!! '+e);}
-finally{ putText('_boxbtn.txt',out); }
-})();
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_wtitle']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $out=array();\n  foreach(array('woocommerce_layered_nav_filters','woocommerce_layered_nav','woocommerce_price_filter') as $base){\n    $inst=get_option('widget_'.$base);\n    $out[$base]=array();\n    if(is_array($inst)){\n      foreach($inst as $k=>$v){\n        if(is_array($v)) $out[$base][$k]=isset($v['title'])?$v['title']:'(no title key)';\n      }\n    }\n  }\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);\n  exit;\n}, 6);";
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
+(async()=>{let id=0;try{
+  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop WTitle tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
+  try{id=JSON.parse(c.body).id;}catch(e){}
+  if(!id){putText('_wtitle.txt','fail '+c.body.slice(0,200));return;}
+  execSync('sleep 2');
+  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_wtitle=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  putText('wtitle.json', r);
+  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
+  putText('_wtitle.txt','len='+r.length+' ID='+id);
+}catch(e){putText('_wtitle.txt','!!! '+e);}})();
