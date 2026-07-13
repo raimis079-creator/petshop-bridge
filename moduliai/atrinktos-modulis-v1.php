@@ -49,6 +49,20 @@ function ps_atr_pool( $species ) {
 			array(19268,'antkakliai'),
 			array(33894,'transportavimas'),
 		),
+		'grauzikams' => array(
+			array(21099,'skanestai'),
+			array(20691,'skanestai'),
+			array(20703,'skanestai'),
+			array(20642,'pasaras'),
+			array(20648,'pasaras'),
+			array(20666,'pasaras'),
+			array(23983,'narvai'),
+			array(21401,'narvai'),
+			array(20846,'narvai'),
+			array(25993,'kraikas'),
+			array(17555,'kraikas'),
+			array(15642,'kraikas'),
+		),
 	);
 	return isset( $pools[ $species ] ) ? $pools[ $species ] : array();
 }
