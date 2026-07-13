@@ -12,43 +12,38 @@ function scall(method, path, body){
   return {code, raw};
 }
 (async()=>{
-  L('======================================');
-  L('TESTAS #6: WooCommerce/ecommerce duomenys');
-  L('======================================');
+  L('TESTAS #6 — ecommerce struktūros detalės');
   L('');
-  L('--- Zonduoju ecommerce endpoint\'us (GET) ---');
-  const eps=['/orders','/products','/carts','/ecommerce/orders','/ecommerce/products','/shops','/stores','/revenue'];
-  for(const e of eps){
-    const r=scall('GET',e);
-    const exists = r.code!=='404';
-    L('  GET '+e+' -> HTTP '+r.code+(exists?' (egzistuoja)':' (nera)'));
-  }
+  // what does GET /orders return (structure)
+  L('--- GET /orders struktūra ---');
+  const o=scall('GET','/orders');
+  L('  '+o.raw.slice(0,300));
   L('');
-  L('--- Bandau POST užsakymą (order_paid ecommerce) ---');
-  // Sender custom event with ecommerce semantics: type=purchase with order data
+  L('--- GET /stores struktūra ---');
+  const s=scall('GET','/stores');
+  L('  '+s.raw.slice(0,300));
+  L('');
+  L('--- GET /carts struktūra ---');
+  const c=scall('GET','/carts');
+  L('  '+c.raw.slice(0,250));
+  L('');
+  // GET /products error tells us required params
+  L('--- GET /products (ko reikia) ---');
+  const p=scall('GET','/products');
+  L('  '+p.raw.slice(0,200));
+  L('');
+  // try POST an order
+  L('--- POST /orders (struktūruotas užsakymas) ---');
   const order={
-    subscriber:{email:'terra@gyvunai.lt'},
-    type:'order_paid',
-    order_id:'TEST-6001',
+    email:'terra@gyvunai.lt',
+    external_id:'TEST-6001',
     total:42.50,
     currency:'EUR',
-    products:[
-      {sku:'EXCL-2KG', name:'Exclusion Monoprotein 2kg', price:21.60, qty:1},
-      {sku:'CHURU-4P', name:'Churu 4pack', price:20.90, qty:1}
-    ]
+    status:'paid',
+    items:[{product_id:'EXCL-2KG', name:'Exclusion 2kg', price:21.60, quantity:1}]
   };
-  const o=scall('POST','/events', JSON.stringify(order)?order:order);
-  L('  POST /events (order_paid su products) HTTP '+o.code+' — '+o.raw.slice(0,180));
-  L('');
-  // Product purchased ecommerce event
-  L('--- Product purchased event ---');
-  const pp=scall('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'product_purchased', sku:'EXCL-2KG', price:21.60});
-  L('  HTTP '+pp.code+' — '+pp.raw.slice(0,150));
-  L('');
-  // Cart abandoned event
-  L('--- Cart abandoned event ---');
-  const ca=scall('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'cart_abandoned', cart_total:42.50, items:2});
-  L('  HTTP '+ca.code+' — '+ca.raw.slice(0,150));
-  putText('_test6.txt', out);
+  const po=scall('POST','/orders', order);
+  L('  HTTP '+po.code+' — '+po.raw.slice(0,250));
+  putText('_test6b.txt', out);
   console.log('done');
 })();
