@@ -1,0 +1,22 @@
+======================================
+TESTAS #6: WooCommerce/ecommerce duomenys
+======================================
+
+--- Zonduoju ecommerce endpoint'us (GET) ---
+  GET /orders -> HTTP 200 (egzistuoja)
+  GET /products -> HTTP 422 (egzistuoja)
+  GET /carts -> HTTP 200 (egzistuoja)
+  GET /ecommerce/orders -> HTTP 404 (nera)
+  GET /ecommerce/products -> HTTP 404 (nera)
+  GET /shops -> HTTP 404 (nera)
+  GET /stores -> HTTP 200 (egzistuoja)
+  GET /revenue -> HTTP 404 (nera)
+
+--- Bandau POST užsakymą (order_paid ecommerce) ---
+  POST /events (order_paid su products) HTTP 200 — {"message":"Event created","success":true}
+
+--- Product purchased event ---
+  HTTP 200 — {"message":"Event created","success":true}
+
+--- Cart abandoned event ---
+  HTTP 200 — {"message":"Event created","success":true}
