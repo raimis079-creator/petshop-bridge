@@ -1,0 +1,19 @@
+======================================
+TESTAS #2: Custom events + property
+======================================
+
+--- A: POST /events ---
+  HTTP 422 resp: {"errors":{"type":"The type field is required."},"message":"The type field is required.","success":false,"type":"validation"}
+
+--- B: POST /activities ---
+  HTTP 404 resp: {
+    "message": "The route v2/activities could not be found."
+}
+
+--- C: POST /subscribers/{email}/events ---
+  HTTP 200 resp: 
+
+--- D: POST /track ---
+  HTTP 404 resp: {
+    "message": "The route v2/track could not be found."
+}
