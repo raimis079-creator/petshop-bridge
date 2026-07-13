@@ -14,46 +14,36 @@ function scall(method, path, body){
   return {code, raw, j};
 }
 (async()=>{
-  L('TESTAS #4 — izoliacinis (webhook.site, galiojantis SSL)');
+  L('TESTAS #4 — unsubscribe trigger + ilgas laukimas');
   L('');
-  // 1. delete old dev.avesa.lt webhooks first (cleanup)
-  L('--- Senų dev webhookų šalinimas ---');
-  const old=scall('GET','/account/webhooks');
-  const oldArr=(old.j&&(old.j.data||old.j))||[];
-  if(Array.isArray(oldArr)) for(const w of oldArr){
-    if((w.url||'').includes('dev.avesa.lt')){
-      const del=scall('DELETE','/account/webhooks/'+w.id);
-      L('  deleted '+w.topic+' HTTP '+del.code);
-    }
+  // trigger a real unsubscribe via API on a throwaway subscriber
+  const te='whunsub+'+Date.now()+'@example.com';
+  L('--- Pridedu + tada unsubscribe '+te+' ---');
+  const add=scall('POST','/subscribers',{email:te, firstname:'Unsub', groups:['bDxp2q']});
+  L('  add HTTP '+add.code);
+  execSync('sleep 3');
+  // unsubscribe: PATCH status or dedicated endpoint
+  let uns=scall('PATCH','/subscribers/'+te,{status:{email:'unsubscribed'}});
+  L('  unsubscribe (PATCH status) HTTP '+uns.code+' '+uns.raw.slice(0,120));
+  if(uns.code!=='200'){
+    // alt: POST /subscribers/{email}/unsubscribe
+    let uns2=scall('POST','/subscribers/'+te+'/unsubscribe',{});
+    L('  unsubscribe (POST /unsubscribe) HTTP '+uns2.code+' '+uns2.raw.slice(0,120));
   }
   L('');
-  // 2. register webhook.site URL for subscribers/new
-  L('--- Registruoju webhook.site ---');
-  const reg=scall('POST','/account/webhooks',{url:WH, topic:'subscribers/new'});
-  L('  subscribers/new -> webhook.site HTTP '+reg.code+(reg.code==='200'||reg.code==='201'?' ✅':' '+reg.raw.slice(0,120)));
-  const reg2=scall('POST','/account/webhooks',{url:WH, topic:'subscribers/unsubscribed'});
-  L('  subscribers/unsubscribed -> webhook.site HTTP '+reg2.code+(reg2.code==='200'||reg2.code==='201'?' ✅':''));
+  L('  laukiu 45s...');
+  execSync('sleep 45');
   L('');
-  // 3. trigger: add new subscriber
-  L('--- Trigger: naujas subscriber ---');
-  const te='whsite+'+Date.now()+'@example.com';
-  const add=scall('POST','/subscribers',{email:te, firstname:'WHSite', groups:['bDxp2q']});
-  L('  pridetas '+te+' HTTP '+add.code);
-  L('');
-  L('  laukiu 20s Sender pristatymui...');
-  execSync('sleep 20');
-  L('');
-  // 4. check delivery stats
   L('--- Sender delivery stats ---');
   const list=scall('GET','/account/webhooks');
   const arr=(list.j&&(list.j.data||list.j))||[];
   if(Array.isArray(arr)) for(const w of arr){
     if((w.url||'').includes('webhook.site')){
-      L('  '+w.topic+': deliveries='+w.total_deliveries+' failures='+w.total_failures+' resp_time='+w.response_time+'ms status='+w.status);
+      L('  '+w.topic+': deliveries='+w.total_deliveries+' failures='+w.total_failures+' resp='+w.response_time+'ms');
     }
   }
   L('');
-  L('  >>> Raimi, patikrink webhook.site puslapį — ar atėjo Sender payload <<<');
-  putText('_test4site.txt', out);
+  L('  >>> Patikrink webhook.site DAR KARTĄ <<<');
+  putText('_test4unsub.txt', out);
   console.log('done');
 })();
