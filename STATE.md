@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-13** (po S177 /grauzikams/ landing).
+> Paskutinį kartą atnaujinta: **2026-07-13** (po S178 — VISOS 5 rūšys landing baigtos).
 
 ---
 
@@ -26,9 +26,15 @@
 
 **Migracija ~87%. Internal launch 2026-10-01, kontraktinis 2026-10-15.**
 
-`/sunims/` (#70), `/katems/` (#77), `/grauzikams/` (#87) landing — **BAIGTI ir gyvi** (dev). Šunys/katės: 8 kortelės + maisto mygtukai + poreikis. Graužikai: 4 kortelės, BE maisto mygtukų, BE poreikio (config-driven — praleidžia jei nėra `food_id`). Karkasas reusable, patikrintas 3 rūšims.
+**VISOS 5 RŪŠYS BAIGTOS ir gyvos** (dev): `/sunims/` (#70, 8 kort.), `/katems/` (#77, 8 kort.), `/grauzikams/` (#87, 4 kort.), `/pauksciams/` (#89, 3 kort.), `/zuvims/` (#93, 3 kort.). Landing epika UŽBAIGTA.
 
-**Kitas žingsnis:** **Paukščiams (#89, count 16)** tada **Žuvims (#93, count 53)**. Recepto seka: (1) recon parent+vaikų (`ps_*recon`); (2) top-N kortelės (paukščiai/žuvys turbūt irgi mažai kat., kaip graužikai — lengvas variantas); (3) pool + Raimio N nuotraukų (promptai kaip `assets/*-kategoriju-promptai.md`); (4) #685 `ps_atr_pool()` += species, #688 `petshop_landing_map()` += parent (su/be food_id), #692 `$groups` += maisto grupė JEI yra Sausas/Konservai subkat.
+Karkasas pilnai config-driven, patikrintas 5 rūšims:
+- Kortelių tinklelis: `pcl-cats-c{N}` klasė, N=min(kortelių,4) — 3/4/8 kortelių automatiškai.
+- Maisto mygtukai (#692): tik jei yra maisto grupė (šunys 71/72/73, katės 78/81/79).
+- „Rinkitės pagal poreikį": tik jei config turi `food_id` (šunys/katės).
+- „Atrinktos": tik jei rūšis turi pool (visos turi; guard'as jei tuščia).
+
+**Kitas žingsnis:** landing epika baigta. Galimi: (1) deployment_log S176–S178 įrašai; (2) probe snippetų valymas; (3) MVP likučiai (poreikio filtrai, CTA telefonas); (4) kita TŽ sritis (pvz. subscription, retention, pricing — žr. TŽ MASTER).
 
 **Atviri MVP likučiai** (nekritiška): poreikio filtrai, CTA telefonas — žr. deployment_log S175. Probe snippetų valymas — neišvalyta.
 
@@ -40,8 +46,8 @@
 |---|---|
 | Atrinktos modulis (snippet #685) | `moduliai/atrinktos-modulis-v1.php` |
 | /sunims/ landing (snippet #688) | `moduliai/kategorijos-landing-v1.php` |
-| Atrinktos pool (šunims/katėms/graužikams) | `moduliai/sunims-pool20.json` · `katems-pool20.json` · `grauzikams-pool12.json` |
-| Kategorijų webp | `assets/sunims-kategorijos/` (8) · `katems-kategorijos/` (8) · `grauzikams-kategorijos/` (4) |
+| Atrinktos pool (5 rūšys) | `moduliai/{sunims-pool20,katems-pool20,grauzikams-pool12}.json` (paukščių/žuvų pool inline #685) |
+| Kategorijų webp (5 rūšys) | `assets/{sunims(8),katems(8),grauzikams(4),pauksciams(3),zuvims(3)}-kategorijos/` |
 | Maisto mygtukai v2 (#692) | `moduliai/maisto-mygtukai-v2.php` |
 | Šios sesijos sprendimai (S175 A–G) | `dokumentai/deployment_log_v1_3_45.md` |
 | Maisto mygtukai (#692), Mobile fix (#693) | kodas snippet'uose serveryje; santrauka S175-E/G |
@@ -76,9 +82,11 @@
 
 ## 5. NELIESTI — live snippetai (produkcija)
 
-**Landing sistema (S175–S177):** #685 (Atrinktos modulis — šunims+katėms+graužikams pool) · #688 (Landing — parent 70/77/87; poreikis config-driven) · #692 (Maisto mygtukai v2 — šunims+katėms) · #693 (Mobile filtrų fix)
+**Landing sistema (S175–S178, VISOS 5 rūšys):** #685 (Atrinktos modulis — 5 rūšių pool) · #688 (Landing — parent 70/77/87/89/93; grid+poreikis+atrinktos config-driven) · #692 (Maisto mygtukai v2 — šunims+katėms) · #693 (Mobile filtrų fix)
 Katės media ID: maistas 34623, kraikai 34624, tualetai 34625, skanėstai 34626, žaislai 34627, draskyklės 34628, dubenėliai 34629, vitaminai 34630.
 Graužikų media ID: pašaras 34631, skanėstai 34632, narvai 34633, kraikas/šienas 34634.
+Paukščių media ID: lesalas 34635, skanėstai 34636, aksesuarai 34637.
+Žuvų media ID: akvariumo maistas 34638, tvenkinių 34639, įranga 34640.
 
 **Buvę:** #329 (Filtrai PILNAS v14) · #332 (Filtrų Kontekstas v19) · #492/#493 (Filtrų Atidarymas) · #512 (Aprašymų Accordion) · #461 (Rikiavimas) · #565 (VF Sync) · #239 (Disable Image Sizes) · #648/#653 (sąskaitos)
 
