@@ -1,45 +1,17 @@
 import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-let out='';const L=s=>{out+=s+'\n';};
-const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
-const API='https://api.sender.net/v2';
-function call(method, path, body){
-  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+API+path+'"';
-  if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+API+path+'"';}
-  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
-  const code=(r.match(/HTTP:(\S+)$/)||[])[1]||'?';const raw=r.replace(/\nHTTP:\S+$/,'');
-  let j=null;try{j=JSON.parse(raw);}catch(e){}
-  return {code, raw, j};
-}
-(async()=>{
-  L('TESTAS #2 — property verifikacija');
-  L('');
-  // Send one clean event with clear properties
-  L('--- Emit refill_due su aiskiais property ---');
-  const e=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
-  L('  '+e.raw.slice(0,100));
-  execSync('sleep 3');
-  L('');
-  // Try to read events back - several possible endpoints
-  L('--- GET /subscribers/{email}/events ---');
-  const g1=call('GET','/subscribers/terra@gyvunai.lt/events');
-  L('  HTTP '+g1.code+' body: '+(g1.raw||'(tuscia)').slice(0,500));
-  L('');
-  L('--- GET /events?email= ---');
-  const g2=call('GET','/events?email=terra@gyvunai.lt');
-  L('  HTTP '+g2.code+' body: '+(g2.raw||'(tuscia)').slice(0,400));
-  L('');
-  // full subscriber record — events may be embedded
-  L('--- GET /subscribers/{email} (full) ---');
-  const g3=call('GET','/subscribers/terra@gyvunai.lt');
-  if(g3.j&&g3.j.data){
-    const d=g3.j.data;
-    const keys=Object.keys(d);
-    L('  subscriber laukai: '+JSON.stringify(keys));
-    // look for anything event/activity related
-    for(const k of keys){ if(/event|activit|action/i.test(k)){ L('    '+k+' = '+JSON.stringify(d[k]).slice(0,200)); } }
-  }
-  putText('_test2verify.txt', out);
-  console.log('done');
-})();
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_test3']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  global $wpdb;\n  $out = array();\n  $table = $wpdb->prefix.'ps_event_log';\n\n  // 1. sukuriam lentele (jei nera) \u2014 testine event_log su UNIQUE(event_id, adapter_name)\n  $charset = $wpdb->get_charset_collate();\n  $wpdb->query(\"CREATE TABLE IF NOT EXISTS `$table` (\n    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,\n    event_id VARCHAR(191) NOT NULL,\n    event_name VARCHAR(64) NOT NULL,\n    email VARCHAR(191) NOT NULL,\n    payload_json LONGTEXT,\n    emitted_at DATETIME NOT NULL,\n    status VARCHAR(16) NOT NULL DEFAULT 'pending',\n    adapter_name VARCHAR(32) NOT NULL,\n    attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,\n    UNIQUE KEY uq_event_id_adapter (event_id, adapter_name)\n  ) $charset\");\n  $out['table_ready'] = ($wpdb->last_error === '') ? true : $wpdb->last_error;\n\n  // helper: bandom iterpti event_id (INSERT IGNORE)\n  $emit = function($event_id, $event_name, $email, $payload) use ($wpdb, $table){\n    $res = $wpdb->query( $wpdb->prepare(\n      \"INSERT IGNORE INTO `$table` (event_id, event_name, email, payload_json, emitted_at, status, adapter_name)\n       VALUES (%s, %s, %s, %s, NOW(), 'pending', %s)\",\n      $event_id, $event_name, $email, wp_json_encode($payload), 'sender'\n    ) );\n    // $res = 1 jei iterpta, 0 jei dublikatas (IGNORE), false jei klaida\n    return array('affected'=>$res, 'insert_id'=>$wpdb->insert_id, 'error'=>$wpdb->last_error);\n  };\n\n  // --- Scenarijus is event-id-schema.md ---\n  $out['steps'] = array();\n\n  // testui svarus startas \u2014 istrinam senus testinius irasus\n  $wpdb->query(\"DELETE FROM `$table` WHERE email='terra@gyvunai.lt' AND event_id LIKE 'order_paid:99999%' OR event_id LIKE 'refill_due:483%'\");\n\n  // 1) order_paid:99999 pirmas kartas \u2192 turi iterpti (affected=1)\n  $r1 = $emit('order_paid:99999', 'order_paid', 'terra@gyvunai.lt', array('total'=>42.50));\n  $out['steps'][] = array('1_first_order_paid', $r1['affected'], ($r1['affected']==1?'PASS (iterpta)':'FAIL'));\n\n  // 2) order_paid:99999 antras kartas po \u201e5s\" \u2192 dublikatas, affected=0 (dedup)\n  $r2 = $emit('order_paid:99999', 'order_paid', 'terra@gyvunai.lt', array('total'=>42.50));\n  $out['steps'][] = array('2_duplicate_order_paid', $r2['affected'], ($r2['affected']==0?'PASS (dedup!)':'FAIL - dublikatas iterptas!'));\n\n  // 3) order_paid:99999 \u201epo 24h\" \u2192 vis dar dedup\n  $r3 = $emit('order_paid:99999', 'order_paid', 'terra@gyvunai.lt', array('total'=>42.50));\n  $out['steps'][] = array('3_duplicate_24h_later', $r3['affected'], ($r3['affected']==0?'PASS (dedup!)':'FAIL'));\n\n  // 4) refill_due:483:EXCL-2KG:1 \u2192 naujas, iterpiamas\n  $r4 = $emit('refill_due:483:EXCL-2KG:1', 'refill_due', 'terra@gyvunai.lt', array('sku'=>'EXCL-2KG','cycle'=>1));\n  $out['steps'][] = array('4_refill_cycle_1', $r4['affected'], ($r4['affected']==1?'PASS (iterpta)':'FAIL'));\n\n  // 5) refill_due:483:EXCL-2KG:2 \u2192 kitas ciklas, LEGALIAI iterpiamas (ne dedup)\n  $r5 = $emit('refill_due:483:EXCL-2KG:2', 'refill_due', 'terra@gyvunai.lt', array('sku'=>'EXCL-2KG','cycle'=>2));\n  $out['steps'][] = array('5_refill_cycle_2', $r5['affected'], ($r5['affected']==1?'PASS (skirtingas ciklas iterptas)':'FAIL'));\n\n  // 6) refill_due:483:EXCL-2KG:1 pakartotinai \u2192 dedup (tas pats ciklas)\n  $r6 = $emit('refill_due:483:EXCL-2KG:1', 'refill_due', 'terra@gyvunai.lt', array('sku'=>'EXCL-2KG','cycle'=>1));\n  $out['steps'][] = array('6_refill_cycle_1_dup', $r6['affected'], ($r6['affected']==0?'PASS (dedup!)':'FAIL'));\n\n  // suvestine \u2014 kiek irasu is viso testiniu\n  $count = $wpdb->get_var(\"SELECT COUNT(*) FROM `$table` WHERE email='terra@gyvunai.lt' AND (event_id LIKE 'order_paid:99999%' OR event_id LIKE 'refill_due:483%')\");\n  $out['unikaliu_irasu_db'] = (int)$count; // turi buti 3: order_paid:99999, refill:cycle1, refill:cycle2\n\n  $all_pass = true;\n  foreach($out['steps'] as $s){ if(strpos($s[2],'PASS')!==0){ $all_pass=false; } }\n  $out['VERDIKTAS'] = ($all_pass && $count==3) ? 'ZALIAS' : 'RAUDONAS';\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
+(async()=>{let id=0;try{
+  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop Test3 Idempotency tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
+  try{id=JSON.parse(c.body).id;}catch(e){}
+  if(!id){putText('_test3.txt','snippet fail '+c.body.slice(0,200));return;}
+  execSync('sleep 2');
+  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_test3=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  putText('test3.json', r);
+  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
+  putText('_test3.txt','done ID='+id);
+}catch(e){putText('_test3.txt','!!! '+e);}})();
