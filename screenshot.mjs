@@ -4,28 +4,18 @@ function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;co
 let out='';const L=s=>{out+=s+'\n';console.log(s);};
 const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 function get(path){const cmd='curl -s -k --max-time 60 -u "'+U+':'+P+'" "'+BASE+path+'"';try{return execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-function post(path,bodyObj){fs.writeFileSync('/tmp/body.json',JSON.stringify(bodyObj));const cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" -u "'+U+':'+P+'" -X POST -H "Content-Type: application/json" --data-binary @/tmp/body.json "'+BASE+path+'"';try{const r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});return{code:(r.match(/HTTP:(\S+)$/)||[])[1],body:r.replace(/\nHTTP:\S+$/,'')};}catch(e){return{code:'ERR',body:(e.stdout||'')};}}
 (async()=>{try{
-  const r=get('/wp-json/wp/v2/pages/34261?context=edit');
-  let raw='';try{raw=JSON.parse(r).content.raw;}catch(e){L('read parse err');putText('_txtfix.txt',out);return;}
-  const before=(raw.match(/Ne būtinai/g)||[]).length;
-  L('prieš: "Ne būtinai" count='+before+' raw_len='+raw.length);
-  if(before!==1){L('NUTRAUKIU — tikėjausi 1, radau '+before);putText('_txtfix.txt',out);return;}
-  const newRaw=raw.replace('Ne būtinai','Nebūtinai');
-  const afterOld=(newRaw.match(/Ne būtinai/g)||[]).length;
-  const afterNew=(newRaw.match(/Nebūtinai/g)||[]).length;
-  L('po replace: "Ne būtinai"='+afterOld+' "Nebūtinai"='+afterNew+' new_len='+newRaw.length+' delta='+(raw.length-newRaw.length));
-  // update
-  const up=post('/wp-json/wp/v2/pages/34261',{content:newRaw});
-  L('UPDATE http='+up.code);
-  execSync('sleep 2');
-  // verify via re-read
-  const r2=get('/wp-json/wp/v2/pages/34261?context=edit');
-  let raw2='';try{raw2=JSON.parse(r2).content.raw;}catch(e){}
-  L('PO UPDATE (raw): "Ne būtinai"='+((raw2.match(/Ne būtinai/g)||[]).length)+' "Nebūtinai"='+((raw2.match(/Nebūtinai/g)||[]).length));
-  // verify live HTML
-  const html=execSync('curl -s -k --max-time 45 "'+BASE+'/?page_id=34261"',{encoding:'utf8',maxBuffer:30000000});
-  L('LIVE HTML: "Ne būtinai"='+(html.indexOf('Ne būtinai')>-1)+' "Nebūtinai"='+(html.indexOf('Nebūtinai')>-1));
+  const r=get('/wp-json/wp/v2/pages/34261');
+  let link='',slug='',status='';try{const j=JSON.parse(r);link=j.link;slug=j.slug;status=j.status;}catch(e){}
+  L('link='+link+' slug='+slug+' status='+status);
+  // fetch the real page URL (follow redirects)
+  const html=execSync('curl -s -k -L --max-time 45 "'+link+'"',{encoding:'utf8',maxBuffer:30000000});
+  L('page HTML len='+html.length);
+  L('"Nebūtinai"='+(html.indexOf('Nebūtinai')>-1)+' "Ne būtinai"='+(html.indexOf('Ne būtinai')>-1));
+  L('"sterilizacijos energijos poreikis"(FAQ ats.)='+(html.indexOf('sterilizacijos energijos poreikis')>-1));
+  // context around Nebutinai
+  const i=html.indexOf('Nebūtinai');
+  if(i>-1) L('kontekstas: ...'+html.slice(i-20,i+60)+'...');
 }catch(e){L('!!! '+e);}
-finally{ putText('_txtfix.txt',out); }
+finally{ putText('_verify.txt',out); }
 })();
