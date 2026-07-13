@@ -1,0 +1,37 @@
+len=32923
+
+=== "Pasirinkote" (1) ===
+     t = t.replace(/You have selected\s+(\d+)\s+items?\./gi, 'Pasirinkote $1 vnt.');                 t = t.replace(/Please select\s+(\d+)\s+it
+
+=== "tęstumėte" (2) ===
+  +(\d+)\s+items?\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');                 t = t.replace(/Please choose\s+(\d+)\s+items?\s+to 
+  +(\d+)\s+items?\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');                 t = t.replace(/You can select more or add to cart t
+
+=== "kad tęstum" (2) ===
+  ct\s+(\d+)\s+items?\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');                 t = t.replace(/Please choose\s+(\d+)\s+items?\s
+  se\s+(\d+)\s+items?\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');                 t = t.replace(/You can select more or add to ca
+
+=== "quantity" (4) ===
+  ) */     .psc-form .mnm_price, .psc-form .price, .psc-form .quantity_message,     .psc-form .mnm_add_to_cart .mnm_message { display: none !i
+  ySelectorAll('.mnm_price, .mnm_message, .mnm_status, .cart .quantity_message, .mnm_add_to_cart .mnm_message, .psc-form .mnm_price, .psc-form
+                 'QUANTITY': 'KIEKIS', 'Quantity': 'Kiekis', 'quantity': 'kiekis',                 'PRICE': 'KAINA', 'Price': 'Kaina',        
+  _products th, .mnm_table th, th.product-details, th.product-quantity, th.product-price, th.product-name');             headerEls.forEach(fun
+
+=== "class="psc" (4) ===
+  hort_description() : '';     if ($short) {         echo '<p class="psc-intro">'.wp_kses_post($short).'</p>';     } else {         echo '<p c
+  .wp_kses_post($short).'</p>';     } else {         echo '<p class="psc-intro">'.($no_gram ? 'Pasirink kiek pakelių ir susidėk norimus skanės
+   kairė (konstruktorius) + dešinė (suvestinė)     echo '<div class="psc-layout">';     echo '<div class="psc-main">';      // === Grupės mygt
+  estinė)     echo '<div class="psc-layout">';     echo '<div class="psc-main">';      // === Grupės mygtukai (tik jei kelios grupės) ===     
+
+=== "ps-" (0) ===
+
+
+=== "<input" (0) ===
+
+
+=== "number" (4) ===
+  '             . '<span class="psc-btn-small psc-per-unit">'.number_format($per_unit, 2, ',', ' ').' €/vnt.</span>'             . '</button>'
+  -price-row"><span>Kaina</span><span class="psc-box-price">'.number_format($default_price, 2, ',', ' ').' €</span></div>';     echo '<div cla
+  nm_child_products input.qty, .mnm_child_products input[type=number]');             var sel = 0;             inputs.forEach(function(inp){ va
+         var input = row.querySelector('input.qty, input[type=number]');                 var txt = row.textContent || '';                 var 
+
