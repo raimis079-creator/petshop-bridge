@@ -4,46 +4,33 @@ function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;co
 let out='';const L=s=>{out+=s+'\n';};
 const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
 const SAPI='https://api.sender.net/v2';
-function scall(method, path, body){
-  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+SAPI+path+'"';
-  if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+SAPI+path+'"';}
+function scall(method, path){
+  const cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" "'+SAPI+path+'"';
   let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
   const code=(r.match(/HTTP:(\S+)$/)||[])[1]||'?';const raw=r.replace(/\nHTTP:\S+$/,'');
   return {code, raw};
 }
 (async()=>{
-  L('TESTAS #6 — ecommerce struktūros detalės');
+  L('======================================');
+  L('TESTAS #8: Log retention / health dashboard');
+  L('======================================');
   L('');
-  // what does GET /orders return (structure)
-  L('--- GET /orders struktūra ---');
-  const o=scall('GET','/orders');
-  L('  '+o.raw.slice(0,300));
+  L('--- Sender log endpoint\'ai ---');
+  const eps=['/logs','/messages','/campaigns','/reports','/statistics','/account/logs'];
+  for(const e of eps){
+    const r=scall('GET',e);
+    L('  GET '+e+' -> HTTP '+r.code+(r.code!=='404'?' (yra)':' (nera)'));
+  }
   L('');
-  L('--- GET /stores struktūra ---');
-  const s=scall('GET','/stores');
-  L('  '+s.raw.slice(0,300));
+  L('--- Išvada (žinoma iš dokumentacijos) ---');
+  L('  Sender log retention pagal planą:');
+  L('    Free: 1 diena');
+  L('    Standard (dabartinis): 5 dienos');
+  L('    Professional: 30 dienų');
   L('');
-  L('--- GET /carts struktūra ---');
-  const c=scall('GET','/carts');
-  L('  '+c.raw.slice(0,250));
-  L('');
-  // GET /products error tells us required params
-  L('--- GET /products (ko reikia) ---');
-  const p=scall('GET','/products');
-  L('  '+p.raw.slice(0,200));
-  L('');
-  // try POST an order
-  L('--- POST /orders (struktūruotas užsakymas) ---');
-  const order={
-    email:'terra@gyvunai.lt',
-    external_id:'TEST-6001',
-    total:42.50,
-    currency:'EUR',
-    status:'paid',
-    items:[{product_id:'EXCL-2KG', name:'Exclusion 2kg', price:21.60, quantity:1}]
-  };
-  const po=scall('POST','/orders', order);
-  L('  HTTP '+po.code+' — '+po.raw.slice(0,250));
-  putText('_test6b.txt', out);
+  L('  → 5 dienų PER MAŽAI savaitiniam health dashboard\'ui (7 dienos)');
+  L('  → SPRENDIMAS: health dashboard remiasi MŪSŲ ps_event_log (90d), ne Sender logais');
+  L('  → Sender logai naudojami tik operatyviam debug (paskutinės 5 d.)');
+  putText('_test8.txt', out);
   console.log('done');
 })();
