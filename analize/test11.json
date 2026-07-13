@@ -1,0 +1,37 @@
+{
+    "1_emit": {
+        "emitted": 20,
+        "max_emit_ms": 0.21,
+        "greitas": "PASS (emit < 100ms, klientas nesuges)"
+    },
+    "2_visi_queued": {
+        "pending": 20,
+        "0": "PASS (visi 20 eileje)"
+    },
+    "3_sender_down": {
+        "processed_failed": 0,
+        "db_failed": 0,
+        "su_next_retry_at": 0,
+        "0": "FAIL"
+    },
+    "4_niekas_neprarasta": {
+        "total": 20,
+        "0": "PASS (visi 20 islikę)"
+    },
+    "5_sender_atsigauna": {
+        "processed_sent": 0,
+        "db_sent": 0,
+        "0": "FAIL"
+    },
+    "6_idempotencija": {
+        "re_emit": 20,
+        "dedup": 20,
+        "0": "PASS (visi 20 dedup, jokiu dubliu)"
+    },
+    "7_galutine": {
+        "total": 20,
+        "sent": 0,
+        "0": "FAIL"
+    },
+    "GELEZINE_TAISYKLE": "RAUDONAS"
+}
