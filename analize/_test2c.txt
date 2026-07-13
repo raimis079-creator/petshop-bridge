@@ -1,0 +1,10 @@
+TESTAS #2 (subscriber obj struktūra)
+
+--- B1: {subscriber:{email}, type:"refill_due", ...props} ---
+  HTTP 200 resp: {"message":"Event created","success":true}
+
+--- B2: {subscriber:{email}, type, properties:{...}} ---
+  HTTP 200 resp: {"message":"Event created","success":true}
+
+--- B3: {subscriber:{email}, type, data:{...}} ---
+  HTTP 200 resp: {"message":"Event created","success":true}
