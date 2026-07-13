@@ -1,0 +1,16 @@
+TESTAS #1 (pataisytas verifikavimas)
+
+WRITE {fields:{id:value}} HTTP 200
+columns tipas: ARRAY
+columns RAW: [{"id":"avAlVe","title":"First name","type":"text","value":"Petshop"},{"id":"dwBVJb","title":"Last name","type":"text","value":"Test"}]
+
+Interpretuotos reiksmes:
+  First name = "Petshop"
+  Last name = "Test"
+
+╔════════════════════════════════════╗
+  TESTAS #1 VERDIKTAS: 🔴 dar ne
+╚════════════════════════════════════╝
+  PS_ORDER_COUNT=7: ❌ (undefined)
+  PS_PET_SPECIES=dog: ❌ (undefined)
+  PS_MARKETING_CONSENT=true: ❌ (undefined)
