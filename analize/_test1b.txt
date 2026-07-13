@@ -1,0 +1,15 @@
+--- Dabartinis kontakto JSON (columns dalis) ---
+  columns: [{"id":"avAlVe","title":"First name","type":"text","value":"Petshop"},{"id":"dwBVJb","title":"Last name","type":"text","value":"Test"}]
+
+--- Bandymas A: {fields:{id:value}} ---
+  HTTP 200 resp: {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","type":"text","value":"Petshop"},{"id":"dwBVJb","title":"Last name","type":"text","value":"Test"}],"crea
+
+--- Bandymas B: {fields:[{id,value}]} ---
+  HTTP 422 resp: {"errors":{"fields":"field \"fields\" should be formrequest.FieldsRequest (got array)"},"message":"field \"fields\" should be formrequest.FieldsRequest (got array)","success":false,"type":"validation"
+
+--- Read-back po B ---
+  (B irgi tuscia — bandau C)
+
+--- Bandymas C: top-level {PS_ORDER_COUNT:7,...} ---
+  HTTP 200 resp: {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","type":"text","value":"Petshop"},{"id":"dwBVJb","title":"Last name","type":"text","value":"Test"}],"crea
+  read-back C:
