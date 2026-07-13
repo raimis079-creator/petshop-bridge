@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-12** (po S175 /sunims/ landing).
+> Paskutinį kartą atnaujinta: **2026-07-13** (po S176 /katems/ landing).
 
 ---
 
@@ -24,13 +24,13 @@
 
 ## 1. KUR SUSTOTA
 
-**Migracija ~85%. Internal launch 2026-10-01, kontraktinis 2026-10-15.**
+**Migracija ~87%. Internal launch 2026-10-01, kontraktinis 2026-10-15.**
 
-`/sunims/` landing — **BAIGTAS ir gyvas** (dev): kategorijos + Atrinktos rotacija + maisto mygtukai + mobile filtrų fix. `/maistas-sunims/` — baigtas (Sausas/Konservai/Visas).
+`/sunims/` (parent #70) IR `/katems/` (parent #77) landing — **BAIGTI ir gyvi** (dev): 8 kategorijų kortelės + Atrinktos rotacija + maisto mygtukai (Sausas/Konservai/Visas) + mobile filtrų fix. Karkasas reusable.
 
-**Kitas žingsnis:** tas pats landing karkasas → **Katėms** (tada Graužikams/Paukščiams/Žuvims). Reikės: katių pool 20 į `petshop_atrinktos_pool()`, katės kategorijos webp, term_id į `petshop_landing_map()`.
+**Kitas žingsnis:** tas pats karkasas → **Graužikams (#87 GRAUŽIKAMS)** (tada Paukščiams #89, Žuvims #93). Reikės: (1) recon parent + vaikų; (2) top-8 kategorijos + Raimio 8 nuotraukos (promptai `assets/*-kategoriju-promptai.md` stilius); (3) pool 20; (4) į #685 `ps_atr_pool()` += species, #688 `petshop_landing_map()` += parent_id, #692 `$groups` += maisto grupė (jei yra Sausas/Konservai).
 
-**Atviri MVP likučiai** (nekritiška): žr. deployment_log S175 „MVP LIKUČIAI".
+**Atviri MVP likučiai** (nekritiška): poreikio filtrai, CTA telefonas — žr. deployment_log S175. Probe snippetų valymas — neišvalyta.
 
 ---
 
@@ -40,8 +40,9 @@
 |---|---|
 | Atrinktos modulis (snippet #685) | `moduliai/atrinktos-modulis-v1.php` |
 | /sunims/ landing (snippet #688) | `moduliai/kategorijos-landing-v1.php` |
-| Atrinktos pool 20 | `moduliai/sunims-pool20.json` |
-| Kategorijų webp (8) + mapping | `assets/sunims-kategorijos/` + `MAPPING.md` |
+| Atrinktos pool 20 (šunims/katėms) | `moduliai/sunims-pool20.json` · `moduliai/katems-pool20.json` |
+| Kategorijų webp (8+8) | `assets/sunims-kategorijos/` · `assets/katems-kategorijos/` |
+| Maisto mygtukai v2 (#692) | `moduliai/maisto-mygtukai-v2.php` |
 | Šios sesijos sprendimai (S175 A–G) | `dokumentai/deployment_log_v1_3_45.md` |
 | Maisto mygtukai (#692), Mobile fix (#693) | kodas snippet'uose serveryje; santrauka S175-E/G |
 
@@ -75,7 +76,8 @@
 
 ## 5. NELIESTI — live snippetai (produkcija)
 
-**Šios sesijos (S175):** #685 (Atrinktos modulis) · #688 (Landing) · #692 (Maisto mygtukai) · #693 (Mobile filtrų fix)
+**Landing sistema (S175/S176):** #685 (Atrinktos modulis — šunims+katėms pool) · #688 (Landing — parent 70 šunims + 77 katėms) · #692 (Maisto mygtukai v2 — šunims+katėms) · #693 (Mobile filtrų fix)
+Katės media ID: maistas 34623, kraikai 34624, tualetai 34625, skanėstai 34626, žaislai 34627, draskyklės 34628, dubenėliai 34629, vitaminai 34630.
 
 **Buvę:** #329 (Filtrai PILNAS v14) · #332 (Filtrų Kontekstas v19) · #492/#493 (Filtrų Atidarymas) · #512 (Aprašymų Accordion) · #461 (Rikiavimas) · #565 (VF Sync) · #239 (Disable Image Sizes) · #648/#653 (sąskaitos)
 
