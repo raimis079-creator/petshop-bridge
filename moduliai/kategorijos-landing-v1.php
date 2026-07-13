@@ -70,6 +70,7 @@ function petshop_landing_map() {
 			'intro'     => 'Viskas jūsų paukščiui vienoje vietoje. Pasirinkite kategoriją arba iškart žiūrėkite atrinktas prekes žemiau.',
 			'atr_title' => 'Atrinktos prekės paukščiams',
 			'sub'       => 'Mūsų rekomenduojami pasirinkimai paukščiui',
+			'atr_count' => 4,
 			'cards'     => array(
 				90  => array( 34635, 'Lesalas paukščiams' ),
 				98  => array( 34636, 'Skanėstai paukščiams' ),
@@ -82,6 +83,7 @@ function petshop_landing_map() {
 			'intro'     => 'Viskas jūsų žuvims vienoje vietoje. Pasirinkite kategoriją arba iškart žiūrėkite atrinktas prekes žemiau.',
 			'atr_title' => 'Atrinktos prekės žuvims',
 			'sub'       => 'Mūsų rekomenduojami pasirinkimai žuvims',
+			'atr_count' => 4,
 			'cards'     => array(
 				94  => array( 34638, 'Akvariumo žuvyčių maistas' ),
 				100 => array( 34639, 'Tvenkinių žuvų maistas' ),
@@ -151,7 +153,9 @@ function petshop_render_landing( $cfg, $parent_id ) {
 		}
 	}
 
-	$atr = do_shortcode( '[petshop_atrinktos species="' . esc_attr( $cfg['species'] ) . '" title=""]' );
+	$atr_n = isset( $cfg['atr_count'] ) ? (int) $cfg['atr_count'] : 8;
+	$atr_m = isset( $cfg['atr_count'] ) ? (int) $cfg['atr_count'] : 12;
+	$atr = do_shortcode( '[petshop_atrinktos species="' . esc_attr( $cfg['species'] ) . '" title="" visible="' . $atr_n . '" max="' . $atr_m . '"]' );
 
 	ob_start(); ?>
 <style>
