@@ -1,0 +1,14 @@
+TESTAS #4 — webhookai su teisingais topics
+
+  register topic="subscribers/unsubscribed" HTTP 200 ✅
+  register topic="bounces/new" HTTP 200 ✅
+  register topic="subscribers/updated" HTTP 200 ✅
+
+--- Registruoti webhookai ---
+  Rasta: [{"topic":"subscribers/unsubscribed","url":"esa.lt/wp-json/petshop/v1/sender-webhook","id":"9aAGzd"},{"topic":"bounces/new","url":"esa.lt/wp-json/petshop/v1/sender-webhook","id":"6dBJJd"},{"topic":"subscribers/updated","url":"esa.lt/wp-json/petshop/v1/sender-webhook","id":"DbDLnb"}]
+
+--- Trigger: unsubscribe event ---
+  PATCH subscriber (trigger updated) HTTP 200
+
+--- Woo webhook log (ką gavo) ---
+  Gauta webhook kvietimų: 0
