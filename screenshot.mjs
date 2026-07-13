@@ -1,17 +1,6 @@
 import { execSync } from "child_process";
 import fs from "fs";
-function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'pf '+n,branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_pixi']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $q = new WP_Query(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>20,'fields'=>'ids','no_found_rows'=>true,'s'=>'PIXI'));\n  $out=array();\n  foreach($q->posts as $pid){\n    $p=wc_get_product($pid); if(!$p)continue;\n    $terms=wp_get_object_terms($pid,'product_cat',array('fields'=>'names'));\n    $img=wp_get_attachment_image_url(get_post_thumbnail_id($pid),'woocommerce_thumbnail');\n    $out[]=array('id'=>$pid,'title'=>html_entity_decode(get_the_title($pid)),'price'=>trim(strip_tags($p->get_price_html())),'stock'=>$p->is_in_stock(),'status'=>$p->get_status(),'cats'=>$terms,'img'=>$img);\n  }\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);\n  exit;\n}, 6);";
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{let id=0;try{
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop Pixi tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
-  try{id=JSON.parse(c.body).id;}catch(e){}
-  if(!id){putText('_pixi.txt','fail '+c.body.slice(0,200));return;}
-  execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_pixi=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  putText('pixi.json', r);
-  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
-  putText('_pixi.txt','len='+r.length+' ID='+id);
-}catch(e){putText('_pixi.txt','!!! '+e);}})();
+function putBinary(n,buf){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/screenshots/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'pf '+n,branch:'main',content:buf.toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pb.json',JSON.stringify(b));execSync('curl -s --max-time 45 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pb.json "'+url+'"',{encoding:'utf8',maxBuffer:80000000});}
+const b=execSync('curl -s -k --max-time 25 "https://dev.avesa.lt/wp-content/uploads/2026/06/automatine-gertuve-fontanas-katems-catit-25l-zalias-300x300.jpg"',{encoding:'buffer',maxBuffer:20000000});
+putBinary('c19140.png',b);
+console.log('dl',b.length);
