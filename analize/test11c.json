@@ -1,0 +1,37 @@
+{
+    "migracija": "prideti: next_retry_at,last_error",
+    "1_emit": {
+        "inserted": 20,
+        "max_ms": 0.28,
+        "v": "PASS"
+    },
+    "2_visi_queued": {
+        "pending": 20,
+        "v": "PASS"
+    },
+    "3_sender_down": {
+        "seen": 20,
+        "db_failed": 20,
+        "su_retry": 20,
+        "v": "PASS"
+    },
+    "4_niekas_neprarasta": {
+        "total": 20,
+        "v": "PASS"
+    },
+    "5_sender_atsigauna": {
+        "seen": 20,
+        "db_sent": 20,
+        "v": "PASS"
+    },
+    "6_idempotencija": {
+        "dedup": 20,
+        "v": "PASS"
+    },
+    "7_galutine": {
+        "total": 20,
+        "sent": 20,
+        "v": "PASS"
+    },
+    "GELEZINE_TAISYKLE": "ZALIAS"
+}
