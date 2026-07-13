@@ -1,0 +1,10 @@
+--- D: POST /subscribers upsert su fields{id:value} ---
+  HTTP 200 resp: {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","type":"text","value":"Petshop"},{"id":"dwBVJb","title":"Last name","type":"text","value":"Test"}],"created":"2026-01-04 18:
+  read-back: {"First name":"Petshop","Last name":"Test"}
+
+--- E: PATCH fields{TITLE:value} ---
+  HTTP 200 resp: {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"ejqvo4","title":"PS_PET_SPECIES","type":"text","value":"dog"},{"id":"bkZwpv","title":"PS_MARKETING_CONSENT","type":"text","value":"true"},{"id":"egLxlj",
+  read-back: {"PS_ORDER_COUNT":7,"PS_PET_SPECIES":"dog","PS_MARKETING_CONSENT":"true"}
+
+--- F: GET /fields detales ---
+  fields raw: [{"id":null,"title":"Email","account_id":null,"user_id":null,"created":null,"modified":null,"type":"text","show":null,"name":"{{email}}","position":null,"default":true,"default_value":null,"options":null},{"id":null,"title":"Phone number","account_id":null,"user_id":null,"created":null,"modified":null,"type":"text","show":null,"name":"{{phone}}","position":null,"default":true,"default_value":null,
