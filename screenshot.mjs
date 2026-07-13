@@ -13,52 +13,37 @@ function call(method, path, body){
   return {code, raw, j};
 }
 (async()=>{
-  // field IDs from test 1
   const F={PS_ORDER_COUNT:'egLxlj', PS_PET_SPECIES:'ejqvo4', PS_MARKETING_CONSENT:'bkZwpv'};
-
-  // First: show current full subscriber JSON to understand structure
-  L('--- Dabartinis kontakto JSON (columns dalis) ---');
-  const cur=call('GET','/subscribers/terra@gyvunai.lt');
-  if(cur.j&&cur.j.data){
-    L('  columns: '+JSON.stringify(cur.j.data.columns||[]));
-  }
+  L('TESTAS #1 (pataisytas verifikavimas)');
   L('');
-
-  // Try approach A: fields as object {id: value}
-  L('--- Bandymas A: {fields:{id:value}} ---');
-  const a=call('PATCH','/subscribers/terra@gyvunai.lt',{fields:{[F.PS_ORDER_COUNT]:7,[F.PS_PET_SPECIES]:'dog',[F.PS_MARKETING_CONSENT]:'true'}});
-  L('  HTTP '+a.code+' resp: '+a.raw.slice(0,200));
-  L('');
-
-  // Try approach B: fields as array of {id, value}
-  L('--- Bandymas B: {fields:[{id,value}]} ---');
-  const b=call('PATCH','/subscribers/terra@gyvunai.lt',{fields:[{id:F.PS_ORDER_COUNT,value:7},{id:F.PS_PET_SPECIES,value:'dog'},{id:F.PS_MARKETING_CONSENT,value:'true'}]});
-  L('  HTTP '+b.code+' resp: '+b.raw.slice(0,200));
-  L('');
-
-  // read-back after B
+  // write again with format A {fields:{id:value}}
+  const w=call('PATCH','/subscribers/terra@gyvunai.lt',{fields:{[F.PS_ORDER_COUNT]:7,[F.PS_PET_SPECIES]:'dog',[F.PS_MARKETING_CONSENT]:'true'}});
+  L('WRITE {fields:{id:value}} HTTP '+w.code);
   execSync('sleep 2');
-  L('--- Read-back po B ---');
+  // read back — get FULL columns raw (it may be object OR array)
   const rb=call('GET','/subscribers/terra@gyvunai.lt');
-  if(rb.j&&rb.j.data){
-    const ps=(rb.j.data.columns||[]).filter(c=>/^PS_/.test(c.title||''));
-    for(const c of ps){L('  '+c.title+' = '+JSON.stringify(c.value));}
-    if(ps.every(c=>c.value===null||c.value===''||c.value===undefined)){
-      L('  (B irgi tuscia — bandau C)');
-      // Approach C: top-level keys by field title
-      L('');
-      L('--- Bandymas C: top-level {PS_ORDER_COUNT:7,...} ---');
-      const c3=call('PATCH','/subscribers/terra@gyvunai.lt',{PS_ORDER_COUNT:7,PS_PET_SPECIES:'dog',PS_MARKETING_CONSENT:'true'});
-      L('  HTTP '+c3.code+' resp: '+c3.raw.slice(0,200));
-      execSync('sleep 2');
-      const rb3=call('GET','/subscribers/terra@gyvunai.lt');
-      if(rb3.j&&rb3.j.data){
-        const ps3=(rb3.j.data.columns||[]).filter(c=>/^PS_/.test(c.title||''));
-        L('  read-back C:');
-        for(const c of ps3){L('    '+c.title+' = '+JSON.stringify(c.value));}
-      }
-    }
+  const cols=rb.j&&rb.j.data?rb.j.data.columns:null;
+  L('columns tipas: '+(Array.isArray(cols)?'ARRAY':typeof cols));
+  L('columns RAW: '+JSON.stringify(cols));
+  L('');
+  // interpret both shapes
+  const idToTitle={[F.PS_ORDER_COUNT]:'PS_ORDER_COUNT',[F.PS_PET_SPECIES]:'PS_PET_SPECIES',[F.PS_MARKETING_CONSENT]:'PS_MARKETING_CONSENT','avAlVe':'First name','dwBVJb':'Last name'};
+  let vals={};
+  if(Array.isArray(cols)){
+    for(const c of cols){ vals[c.title||idToTitle[c.id]||c.id]=c.value; }
+  } else if(cols&&typeof cols==='object'){
+    for(const id in cols){ vals[idToTitle[id]||id]=cols[id]; }
   }
-  putText('_test1b.txt', out);
+  L('Interpretuotos reiksmes:');
+  for(const k in vals){ L('  '+k+' = '+JSON.stringify(vals[k])); }
+  L('');
+  const ok = String(vals['PS_ORDER_COUNT'])==='7' && String(vals['PS_PET_SPECIES'])==='dog' && String(vals['PS_MARKETING_CONSENT'])==='true';
+  L('╔════════════════════════════════════╗');
+  L('  TESTAS #1 VERDIKTAS: '+(ok?'🟢 ŽALIAS':'🔴 dar ne'));
+  L('╚════════════════════════════════════╝');
+  L('  PS_ORDER_COUNT=7: '+(String(vals['PS_ORDER_COUNT'])==='7'?'✅':'❌ ('+vals['PS_ORDER_COUNT']+')'));
+  L('  PS_PET_SPECIES=dog: '+(String(vals['PS_PET_SPECIES'])==='dog'?'✅':'❌ ('+vals['PS_PET_SPECIES']+')'));
+  L('  PS_MARKETING_CONSENT=true: '+(String(vals['PS_MARKETING_CONSENT'])==='true'?'✅':'❌ ('+vals['PS_MARKETING_CONSENT']+')'));
+  putText('_test1c.txt', out);
   console.log('done');
 })();
