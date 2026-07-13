@@ -1,15 +1,19 @@
 if ( ! defined( 'ABSPATH' ) ) { return; }
 
 /**
- * Petshop UI Lokalizacija v1
- * Neišverstų angliškų UI eilučių vertimas į lietuvių (gettext override).
- * Plečiama: pridėk eilutę į $map. Match pagal originalią (anglišką) eilutę.
- * Rodoma DIDŽIOSIOM raidėm dažnai per CSS (text-transform) — verčiam normalią eilutę.
+ * Petshop UI Lokalizacija v2
+ * Neišverstų angliškų UI eilučių vertimas į lietuvių.
+ * 3 sluoksniai: gettext, gettext_with_context, widget_title (WC/YITH widget antraštės).
+ * Plečiama: pridėk eilutę į $map (match pagal originalią anglišką eilutę, tikslų case).
  */
 function petshop_ui_l10n_map() {
 	return array(
-		// YITH Ajax filtras
+		// WooCommerce widget antraštės (shop-sidebar) — saugomos su didžiosiom
+		'Active Filters'    => 'Aktyvūs filtrai',
 		'Active filters'    => 'Aktyvūs filtrai',
+		'Filter by'         => 'Filtruoti pagal',
+		'Filter by price'   => 'Filtruoti pagal kainą',
+		// YITH Ajax filtras
 		'Clear'             => 'Išvalyti',
 		// WooCommerce
 		'Select options'    => 'Pasirinkti',
@@ -23,17 +27,16 @@ function petshop_ui_l10n_map() {
 
 add_filter( 'gettext', function ( $translation, $text, $domain ) {
 	$map = petshop_ui_l10n_map();
-	if ( isset( $map[ $text ] ) ) {
-		return $map[ $text ];
-	}
-	return $translation;
+	return isset( $map[ $text ] ) ? $map[ $text ] : $translation;
 }, 20, 3 );
 
-// su_domain variantas (kai kurie plugin'ai naudoja gettext_with_context)
 add_filter( 'gettext_with_context', function ( $translation, $text, $context, $domain ) {
 	$map = petshop_ui_l10n_map();
-	if ( isset( $map[ $text ] ) ) {
-		return $map[ $text ];
-	}
-	return $translation;
+	return isset( $map[ $text ] ) ? $map[ $text ] : $translation;
 }, 20, 4 );
+
+// Widget antraštės (WC layered nav filters „Active Filters" ir kt.) — neina per gettext
+add_filter( 'widget_title', function ( $title ) {
+	$map = petshop_ui_l10n_map();
+	return isset( $map[ $title ] ) ? $map[ $title ] : $title;
+}, 20 );
