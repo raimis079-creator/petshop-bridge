@@ -1,0 +1,13 @@
+TESTAS #2 — property verifikacija
+
+--- Emit refill_due su aiskiais property ---
+  {"message":"Event created","success":true}
+
+--- GET /subscribers/{email}/events ---
+  HTTP 200 body: (tuscia)
+
+--- GET /events?email= ---
+  HTTP 200 body: (tuscia)
+
+--- GET /subscribers/{email} (full) ---
+  subscriber laukai: ["bounced_at","bounced_at_utc","columns","created","created_utc","email","firstname","id","ip_address","lastname","location","phone","phone_country","source","status","subscriber_tags","unsubscribed_at","unsubscribed_at_utc"]
