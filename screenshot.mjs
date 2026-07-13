@@ -8,31 +8,21 @@ const BASE='https://dev.avesa.lt';
   const b=await chromium.launch({args:['--no-sandbox']});
   const d=await b.newContext({viewport:{width:1280,height:1200},ignoreHTTPSErrors:true});
   const p=await d.newPage();
-  await p.goto(BASE+'/product/susidek-konservu-rinkini-sunims/',{waitUntil:'domcontentloaded',timeout:60000});
-  await p.waitForTimeout(5000);
+  await p.goto(BASE+'/product/susidek-konservu-rinkini-sunims/',{waitUntil:'domcontentloaded',timeout:45000});
+  await p.waitForTimeout(4000);
   const info=await p.evaluate(()=>{
-    const sel=(el)=>{if(!el)return'';let s=el.tagName.toLowerCase();if(el.id)s+='#'+el.id;if(typeof el.className==='string'&&el.className.trim())s+='.'+el.className.trim().split(/\s+/).join('.');return s;};
-    const res={};
-    // message
-    const msg=[...document.querySelectorAll('.mnm_message, .mnm_status')].map(e=>({sel:sel(e),y:Math.round(e.getBoundingClientRect().top+scrollY),txt:(e.innerText||'').replace(/\s+/g,' ').slice(0,50)}));
-    res.messages=msg;
-    // all quantity boxes: distinguish item-row vs footer by ancestor
-    const qtys=[...document.querySelectorAll('.quantity')].map(q=>{
-      const inItemTable = !!q.closest('td, .mnm_item, tr.mnm_product, .mnm_child_product');
-      return {y:Math.round(q.getBoundingClientRect().top+scrollY), inItemTable, parent:sel(q.parentElement), grandparent:sel(q.parentElement&&q.parentElement.parentElement)};
-    });
-    // only footer (not item) quantities
-    res.footer_qty=qtys.filter(q=>!q.inItemTable);
-    res.item_qty_count=qtys.filter(q=>q.inItemTable).length;
-    // add to cart buttons + visibility
-    res.addcart=[...document.querySelectorAll('button[type=submit], .single_add_to_cart_button, .mnm_add_to_cart button, .psc-summary button, button.button')].map(bt=>({sel:sel(bt),y:Math.round(bt.getBoundingClientRect().top+scrollY),vis:bt.offsetHeight>0,txt:(bt.innerText||'').replace(/\s+/g,' ').slice(0,30)})).filter(x=>/krepšel|pasirink|cart|konserv/i.test(x.txt));
-    // psc custom summary box
-    const psc=document.querySelector('.psc-summary, [class*="summary"], [class*="jusu"]');
-    res.psc_summary=psc?sel(psc):'(nerastas)';
-    return res;
+    const path=(el)=>{let a=[];let n=el;for(let i=0;i<5&&n&&n.tagName;i++){let s=n.tagName.toLowerCase();if(typeof n.className==='string'&&n.className.trim())s+='.'+n.className.trim().split(/\s+/).slice(0,3).join('.');a.unshift(s);n=n.parentElement;}return a.join(' > ');};
+    const out={};
+    // the mnm status/message
+    const m=document.querySelector('.mnm_message');
+    out.message = m ? {path:path(m), y:Math.round(m.getBoundingClientRect().top)} : 'none';
+    // footer quantity: NOT inside td
+    const q=[...document.querySelectorAll('.quantity')].filter(x=>!x.closest('td'));
+    out.footer_qtys = q.map(x=>({path:path(x), y:Math.round(x.getBoundingClientRect().top+window.scrollY)}));
+    return out;
   });
   L(JSON.stringify(info,null,2));
   await d.close(); await b.close();
-}catch(e){L('!!! '+e);}
-finally{ putText('_boxdom2.txt',out); }
+}catch(e){L('ERR '+e);}
+finally{ putText('_bd3.txt',out); }
 })();
