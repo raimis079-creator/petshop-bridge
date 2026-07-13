@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-13** (po S179 — post-launch klaidų taisymas).
+> Paskutinį kartą atnaujinta: **2026-07-14** (po S180 — ESP platforma Brevo→Sender + POC 8 testai).
 
 ---
 
@@ -34,7 +34,11 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 - „Rinkitės pagal poreikį": tik jei config turi `food_id` (šunys/katės).
 - „Atrinktos": tik jei rūšis turi pool (visos turi; guard'as jei tuščia).
 
-**Kitas žingsnis:** landing epika baigta. Galimi: (1) deployment_log S176–S178 įrašai; (2) probe snippetų valymas; (3) MVP likučiai (poreikio filtrai, CTA telefonas); (4) kita TŽ sritis (pvz. subscription, retention, pricing — žr. TŽ MASTER).
+**ESP/EMAIL PLATFORMA IŠSPRĘSTA (S180):** TŽ §4 vykdymo platforma = **Sender.net** (buvo Brevo, TŽ v1.44). Sprendimas pagrįstas: kainų korekcija (~5× pigiau nei Brevo), šildyta paskyra su verifikuotu petshop.lt domenu, LT įmonė+SMS. Sender POC: **8 testų → 5 žali, 3 geltoni, 0 raudonų** (geltoni sutampa su architektūra — Sender=kvailas vykdytojas). Sender techniškai TINKA mūsų ESP-nepriklausomai architektūrai.
+
+**Kitas žingsnis:** (1) likę 3 POC testai (#7 SMS, #9 links.petshop.lt, #10 mail.petshop.lt — reikia SMS kredito + DNS, atidėti į pre-launch); (2) **Etapas A** — techninis stuburas pagal TŽ v1.45/v1.47 (ESP adapter realus kodas, event emitteriai, retry queue, webhook receiver production'e); (3) dev valymas (#713 receiver, testiniai Sender kontaktai/webhookai).
+
+**ESP skeletas paruoštas:** `moduliai/esp-adapter-skeleton/` (interface + event-id-schema + retry-queue-architecture + README) — projektas Etapo A pradžiai.
 
 **Atviri MVP likučiai** (nekritiška): poreikio filtrai, CTA telefonas — žr. deployment_log S175. Probe snippetų valymas — neišvalyta.
 
@@ -58,8 +62,8 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 | Dokumentas | Versija | Kur | Ką laiko |
 |---|---|---|---|
-| **TŽ MASTER** | **v1.57** | `dokumentai/TZ_MASTER_v1_57.docx` | Spec — *ką statom* (v1.57 = landing sistema) |
-| **deployment_log** | **v1.3.46** | `dokumentai/deployment_log_v1_3_46.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S178) |
+| **TŽ MASTER** | **v1.58** | `dokumentai/TZ_MASTER_v1_58.docx` | Spec — *ką statom* (v1.58 = ESP Brevo→Sender + POC) |
+| **deployment_log** | **v1.3.47** | `dokumentai/deployment_log_v1_3_47.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S180) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
@@ -93,6 +97,8 @@ Paukščių media ID: lesalas 34635, skanėstai 34636, aksesuarai 34637.
 **Buvę:** #329 (Filtrai PILNAS v14) · #332 (Filtrų Kontekstas v19) · #492/#493 (Filtrų Atidarymas) · #512 (Aprašymų Accordion) · #461 (Rikiavimas) · #565 (VF Sync) · #239 (Disable Image Sizes) · #648/#653 (sąskaitos)
 
 **Backup optionai (jei reikia atkurti):** `ps_sidebars_widgets_backup` (Footer 1 widgetai) · `ps_vetdiet_revert_log` (pa_speciali_mityba).
+
+**ESP/Sender (S180):** #713 „Petshop Sender Webhook Receiver v1" (deaktyvuotas — webhook receiver testui, gali praversti re-testui) · lentelė `gaj6_ps_event_log` (event idempotencija + retry queue) · Sender: PS_TEST grupė (bDxp2q), PS_ORDER_COUNT/PS_PET_SPECIES/PS_MARKETING_CONSENT custom fields, webhookai į webhook.site (izoliacinis testas). Sender account azv2GY, domenas petshop.lt (id eE9p2l) verifikuotas. Tokens GitHub secrets: SENDER_MARKETING_TOKEN, SENDER_TRANSACTIONAL_TOKEN.
 
 ---
 
