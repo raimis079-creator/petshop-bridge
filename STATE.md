@@ -58,8 +58,8 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 | Dokumentas | Versija | Kur | Ką laiko |
 |---|---|---|---|
-| **TŽ MASTER** | **v1.56** | `dokumentai/TZ_MASTER_v1_56.docx` | Spec — *ką statom* (+ „Papildyta" versijų istorija) |
-| **deployment_log** | **v1.3.45** | `dokumentai/deployment_log_v1_3_45.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S175) |
+| **TŽ MASTER** | **v1.57** | `dokumentai/TZ_MASTER_v1_57.docx` | Spec — *ką statom* (v1.57 = landing sistema) |
+| **deployment_log** | **v1.3.46** | `dokumentai/deployment_log_v1_3_46.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S178) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
