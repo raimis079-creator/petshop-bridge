@@ -12,37 +12,40 @@ function call(method, path, body){
   let j=null;try{j=JSON.parse(raw);}catch(e){}
   return {code, raw, j};
 }
-function readCols(){
-  const rb=call('GET','/subscribers/terra@gyvunai.lt');
-  const cols=rb.j&&rb.j.data?rb.j.data.columns:[];
-  let vals={};
-  if(Array.isArray(cols)){for(const c of cols){vals[c.title]=c.value;}}
-  else if(cols){for(const id in cols){vals[id]=cols[id];}}
-  return {vals, raw:cols};
-}
 (async()=>{
-  const F={PS_ORDER_COUNT:'egLxlj', PS_PET_SPECIES:'ejqvo4', PS_MARKETING_CONSENT:'bkZwpv'};
+  L('======================================');
+  L('TESTAS #2: Custom events + property');
+  L('======================================');
+  L('');
+  // TZ event: refill_due su payload (product_sku, cycle_n, days_left)
+  const payload={
+    email:'terra@gyvunai.lt',
+    event:'refill_due',
+    // property variantai — bandom kelis pavadinimus
+  };
 
-  // D: POST /subscribers (upsert) with fields by ID
-  L('--- D: POST /subscribers upsert su fields{id:value} ---');
-  const d=call('POST','/subscribers',{email:'terra@gyvunai.lt',firstname:'Petshop',lastname:'Test',groups:['bDxp2q'],fields:{[F.PS_ORDER_COUNT]:7,[F.PS_PET_SPECIES]:'dog',[F.PS_MARKETING_CONSENT]:'true'}});
-  L('  HTTP '+d.code+' resp: '+d.raw.slice(0,220));
-  execSync('sleep 2');
-  let r=readCols(); L('  read-back: '+JSON.stringify(r.vals));
+  // Bandymas A: POST /events su {email, event, ...properties}
+  L('--- A: POST /events ---');
+  const a=call('POST','/events',{email:'terra@gyvunai.lt', event:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
+  L('  HTTP '+a.code+' resp: '+a.raw.slice(0,250));
   L('');
 
-  // E: PATCH with fields by TITLE (not id)
-  L('--- E: PATCH fields{TITLE:value} ---');
-  const e=call('PATCH','/subscribers/terra@gyvunai.lt',{fields:{PS_ORDER_COUNT:7,PS_PET_SPECIES:'dog',PS_MARKETING_CONSENT:'true'}});
-  L('  HTTP '+e.code+' resp: '+e.raw.slice(0,220));
-  execSync('sleep 2');
-  r=readCols(); L('  read-back: '+JSON.stringify(r.vals));
+  // Bandymas B: POST /activities/events
+  L('--- B: POST /activities ---');
+  const b=call('POST','/activities',{email:'terra@gyvunai.lt', event:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
+  L('  HTTP '+b.code+' resp: '+b.raw.slice(0,250));
   L('');
 
-  // F: check the field object to see its real key — maybe it needs "field:{id}" style
-  L('--- F: GET /fields detales ---');
-  const ff=call('GET','/fields');
-  if(ff.j){L('  fields raw: '+JSON.stringify(ff.j.data||ff.j).slice(0,400));}
-  putText('_test1d.txt', out);
+  // Bandymas C: POST /subscribers/{email}/events
+  L('--- C: POST /subscribers/{email}/events ---');
+  const c=call('POST','/subscribers/terra@gyvunai.lt/events',{event:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
+  L('  HTTP '+c.code+' resp: '+c.raw.slice(0,250));
+  L('');
+
+  // Bandymas D: POST /track (custom events tracking)
+  L('--- D: POST /track ---');
+  const d=call('POST','/track',{email:'terra@gyvunai.lt', event:'refill_due', data:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
+  L('  HTTP '+d.code+' resp: '+d.raw.slice(0,250));
+  putText('_test2probe.txt', out);
   console.log('done');
 })();
