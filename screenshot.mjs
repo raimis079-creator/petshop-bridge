@@ -13,22 +13,33 @@ function call(method, path, body){
   return {code, raw, j};
 }
 (async()=>{
-  L('TESTAS #2 (subscriber obj struktūra)');
+  L('TESTAS #2 — property verifikacija');
   L('');
-  // B1: subscriber:{email}, type, ...
-  L('--- B1: {subscriber:{email}, type:"refill_due", ...props} ---');
-  const b1=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
-  L('  HTTP '+b1.code+' resp: '+b1.raw.slice(0,300));
+  // Send one clean event with clear properties
+  L('--- Emit refill_due su aiskiais property ---');
+  const e=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
+  L('  '+e.raw.slice(0,100));
+  execSync('sleep 3');
   L('');
-  // B2: subscriber:{email}, type, properties:{}
-  L('--- B2: {subscriber:{email}, type, properties:{...}} ---');
-  const b2=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
-  L('  HTTP '+b2.code+' resp: '+b2.raw.slice(0,300));
+  // Try to read events back - several possible endpoints
+  L('--- GET /subscribers/{email}/events ---');
+  const g1=call('GET','/subscribers/terra@gyvunai.lt/events');
+  L('  HTTP '+g1.code+' body: '+(g1.raw||'(tuscia)').slice(0,500));
   L('');
-  // B3: subscriber:{email}, type, data:{}
-  L('--- B3: {subscriber:{email}, type, data:{...}} ---');
-  const b3=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', data:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
-  L('  HTTP '+b3.code+' resp: '+b3.raw.slice(0,300));
-  putText('_test2c.txt', out);
+  L('--- GET /events?email= ---');
+  const g2=call('GET','/events?email=terra@gyvunai.lt');
+  L('  HTTP '+g2.code+' body: '+(g2.raw||'(tuscia)').slice(0,400));
+  L('');
+  // full subscriber record — events may be embedded
+  L('--- GET /subscribers/{email} (full) ---');
+  const g3=call('GET','/subscribers/terra@gyvunai.lt');
+  if(g3.j&&g3.j.data){
+    const d=g3.j.data;
+    const keys=Object.keys(d);
+    L('  subscriber laukai: '+JSON.stringify(keys));
+    // look for anything event/activity related
+    for(const k of keys){ if(/event|activit|action/i.test(k)){ L('    '+k+' = '+JSON.stringify(d[k]).slice(0,200)); } }
+  }
+  putText('_test2verify.txt', out);
   console.log('done');
 })();
