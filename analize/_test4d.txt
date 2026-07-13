@@ -1,0 +1,23 @@
+=== Webhook objektų pilnos detalės ===
+
+Topic: subscribers/unsubscribed
+  pilnas objektas: {"id":"9aAGzd","account_id":"azv2GY","url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","topic":"subscribers/unsubscribed","group":null,"total_deliveries":0,"total_failures":0,"response_time":0,"status":"ACTIVE"}
+
+Topic: bounces/new
+  pilnas objektas: {"id":"6dBJJd","account_id":"azv2GY","url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","topic":"bounces/new","group":null,"total_deliveries":0,"total_failures":0,"response_time":0,"status":"ACTIVE"}
+
+Topic: subscribers/updated
+  pilnas objektas: {"id":"DbDLnb","account_id":"azv2GY","url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","topic":"subscribers/updated","group":null,"total_deliveries":0,"total_failures":0,"response_time":0,"status":"ACTIVE"}
+
+Topic: subscribers/new
+  pilnas objektas: {"id":"oeEMke","account_id":"azv2GY","url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","topic":"subscribers/new","group":null,"total_deliveries":0,"total_failures":0,"response_time":0,"status":"ACTIVE"}
+
+=== Bandau aktyvuoti (jei yra active toggle) ===
+  PATCH webhook subscribers/unsubscribed active=true HTTP 405 {
+    "message": "The PATCH method is not supported for route v2/account/webhooks/9aAGzd. Supported methods: GET, HEAD, 
+  PATCH webhook bounces/new active=true HTTP 405 {
+    "message": "The PATCH method is not supported for route v2/account/webhooks/6dBJJd. Supported methods: GET, HEAD, 
+  PATCH webhook subscribers/updated active=true HTTP 405 {
+    "message": "The PATCH method is not supported for route v2/account/webhooks/DbDLnb. Supported methods: GET, HEAD, 
+  PATCH webhook subscribers/new active=true HTTP 405 {
+    "message": "The PATCH method is not supported for route v2/account/webhooks/oeEMke. Supported methods: GET, HEAD, 
