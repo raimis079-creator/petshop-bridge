@@ -13,39 +13,26 @@ function call(method, path, body){
   return {code, raw, j};
 }
 (async()=>{
-  L('======================================');
-  L('TESTAS #2: Custom events + property');
-  L('======================================');
+  L('TESTAS #2 (tikslinta) — POST /events su type');
   L('');
-  // TZ event: refill_due su payload (product_sku, cycle_n, days_left)
-  const payload={
-    email:'terra@gyvunai.lt',
-    event:'refill_due',
-    // property variantai — bandom kelis pavadinimus
-  };
-
-  // Bandymas A: POST /events su {email, event, ...properties}
-  L('--- A: POST /events ---');
-  const a=call('POST','/events',{email:'terra@gyvunai.lt', event:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
-  L('  HTTP '+a.code+' resp: '+a.raw.slice(0,250));
+  // variantas su type=custom event pavadinimas + properties
+  L('--- A1: {email, type:"refill_due", ...props} ---');
+  const a1=call('POST','/events',{email:'terra@gyvunai.lt', type:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
+  L('  HTTP '+a1.code+' resp: '+a1.raw.slice(0,300));
   L('');
-
-  // Bandymas B: POST /activities/events
-  L('--- B: POST /activities ---');
-  const b=call('POST','/activities',{email:'terra@gyvunai.lt', event:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
-  L('  HTTP '+b.code+' resp: '+b.raw.slice(0,250));
+  L('--- A2: {email, type:"refill_due", properties:{...}} ---');
+  const a2=call('POST','/events',{email:'terra@gyvunai.lt', type:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
+  L('  HTTP '+a2.code+' resp: '+a2.raw.slice(0,300));
   L('');
-
-  // Bandymas C: POST /subscribers/{email}/events
-  L('--- C: POST /subscribers/{email}/events ---');
-  const c=call('POST','/subscribers/terra@gyvunai.lt/events',{event:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
-  L('  HTTP '+c.code+' resp: '+c.raw.slice(0,250));
+  // maybe type is the event category and needs "event" name too
+  L('--- A3: {email, type:"custom", event:"refill_due", data:{...}} ---');
+  const a3=call('POST','/events',{email:'terra@gyvunai.lt', type:'custom', event:'refill_due', data:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
+  L('  HTTP '+a3.code+' resp: '+a3.raw.slice(0,300));
   L('');
-
-  // Bandymas D: POST /track (custom events tracking)
-  L('--- D: POST /track ---');
-  const d=call('POST','/track',{email:'terra@gyvunai.lt', event:'refill_due', data:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
-  L('  HTTP '+d.code+' resp: '+d.raw.slice(0,250));
-  putText('_test2probe.txt', out);
+  // list events for the subscriber to verify
+  L('--- Verifikacija: GET /subscribers/{email}/events (jei yra) ---');
+  const ev=call('GET','/subscribers/terra@gyvunai.lt/events');
+  L('  HTTP '+ev.code+' resp: '+ev.raw.slice(0,400));
+  putText('_test2b.txt', out);
   console.log('done');
 })();
