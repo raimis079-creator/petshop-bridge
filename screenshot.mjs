@@ -13,26 +13,22 @@ function call(method, path, body){
   return {code, raw, j};
 }
 (async()=>{
-  L('TESTAS #2 (tikslinta) — POST /events su type');
+  L('TESTAS #2 (subscriber obj struktūra)');
   L('');
-  // variantas su type=custom event pavadinimas + properties
-  L('--- A1: {email, type:"refill_due", ...props} ---');
-  const a1=call('POST','/events',{email:'terra@gyvunai.lt', type:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
-  L('  HTTP '+a1.code+' resp: '+a1.raw.slice(0,300));
+  // B1: subscriber:{email}, type, ...
+  L('--- B1: {subscriber:{email}, type:"refill_due", ...props} ---');
+  const b1=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', product_sku:'EXCL-2KG', cycle_n:3, days_left:5});
+  L('  HTTP '+b1.code+' resp: '+b1.raw.slice(0,300));
   L('');
-  L('--- A2: {email, type:"refill_due", properties:{...}} ---');
-  const a2=call('POST','/events',{email:'terra@gyvunai.lt', type:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
-  L('  HTTP '+a2.code+' resp: '+a2.raw.slice(0,300));
+  // B2: subscriber:{email}, type, properties:{}
+  L('--- B2: {subscriber:{email}, type, properties:{...}} ---');
+  const b2=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', properties:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
+  L('  HTTP '+b2.code+' resp: '+b2.raw.slice(0,300));
   L('');
-  // maybe type is the event category and needs "event" name too
-  L('--- A3: {email, type:"custom", event:"refill_due", data:{...}} ---');
-  const a3=call('POST','/events',{email:'terra@gyvunai.lt', type:'custom', event:'refill_due', data:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
-  L('  HTTP '+a3.code+' resp: '+a3.raw.slice(0,300));
-  L('');
-  // list events for the subscriber to verify
-  L('--- Verifikacija: GET /subscribers/{email}/events (jei yra) ---');
-  const ev=call('GET','/subscribers/terra@gyvunai.lt/events');
-  L('  HTTP '+ev.code+' resp: '+ev.raw.slice(0,400));
-  putText('_test2b.txt', out);
+  // B3: subscriber:{email}, type, data:{}
+  L('--- B3: {subscriber:{email}, type, data:{...}} ---');
+  const b3=call('POST','/events',{subscriber:{email:'terra@gyvunai.lt'}, type:'refill_due', data:{product_sku:'EXCL-2KG', cycle_n:3, days_left:5}});
+  L('  HTTP '+b3.code+' resp: '+b3.raw.slice(0,300));
+  putText('_test2c.txt', out);
   console.log('done');
 })();
