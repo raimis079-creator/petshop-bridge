@@ -1,17 +1,26 @@
 import { execSync } from "child_process";
 import fs from "fs";
+function ghget(path){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const r=execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "https://api.github.com/repos/'+repo+'/contents/'+path+'?ref=main"',{encoding:'utf8',maxBuffer:20000000});return JSON.parse(r);}
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
+let out='';const L=s=>{out+=s+'\n';};
 const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_pzvar']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $cats = array('p_lesalas'=>90,'p_skanestai'=>98,'p_aksesuarai'=>666,'z_akvmaistas'=>94,'z_tvenk'=>100,'z_iranga'=>371);\n  $out = array();\n  foreach($cats as $label=>$tid){\n    $q = new WP_Query(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>15,'fields'=>'ids','no_found_rows'=>true,\n      'orderby'=>'date','order'=>'DESC',\n      'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'term_id','terms'=>$tid,'include_children'=>true)),\n      'meta_query'=>array(array('key'=>'_thumbnail_id','compare'=>'EXISTS'))));\n    $items=array();\n    foreach($q->posts as $pid){\n      $p=wc_get_product($pid);\n      if(!$p||!$p->is_in_stock())continue;\n      if((float)$p->get_price()<=0)continue;\n      $img=wp_get_attachment_image_url(get_post_thumbnail_id($pid),'woocommerce_thumbnail');\n      $items[]=array('id'=>$pid,'title'=>html_entity_decode(get_the_title($pid)),'price'=>trim(strip_tags($p->get_price_html())),'img'=>$img);\n      if(count($items)>=5)break;\n    }\n    $out[$label]=$items;\n  }\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);\n  exit;\n}, 6);";
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{let id=0;try{
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop PZVar tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
-  try{id=JSON.parse(c.body).id;}catch(e){}
-  if(!id){putText('_pzvar.txt','fail '+c.body.slice(0,200));return;}
-  execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 50 "'+BASE+'/?ps_pzvar=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  putText('pzvar.json', r);
-  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
-  putText('_pzvar.txt','len='+r.length+' ID='+id);
-}catch(e){putText('_pzvar.txt','!!! '+e);}})();
+const files=[
+  ["pauksciams-kategorijos","upl_cat-pauksciams-lesalas-v1.webp"],
+  ["pauksciams-kategorijos","upl_cat-pauksciams-skanestai-v1.webp"],
+  ["pauksciams-kategorijos","upl_cat-pauksciams-aksesuarai-v1.webp"],
+  ["zuvims-kategorijos","upl_cat-zuvims-akvariumo-maistas-v1.webp"],
+  ["zuvims-kategorijos","upl_cat-zuvims-tvenkiniu-maistas-v1.webp"],
+  ["zuvims-kategorijos","upl_cat-zuvims-iranga-v1.webp"]
+];
+(async()=>{const map={};
+for(const [folder,fn] of files){
+  try{const d=ghget('assets/'+folder+'/'+fn);
+    fs.writeFileSync('/tmp/'+fn,Buffer.from(d.content,'base64'));
+    const cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" -u "'+U+':'+P+'" -X POST -H "Content-Disposition: attachment; filename='+fn+'" -H "Content-Type: image/webp" --data-binary @/tmp/'+fn+' "'+BASE+'/wp-json/wp/v2/media"';
+    const r=execSync(cmd,{encoding:'utf8',maxBuffer:20000000});
+    let id=0;try{id=JSON.parse(r.replace(/\nHTTP:\S+$/,'')).id;}catch(e){}
+    map[fn]=id;L(fn+' -> '+id);
+  }catch(e){L(fn+' ERR');}
+}
+putText('pz_media.json',JSON.stringify(map,null,2));putText('_pzup.txt',out);
+})();
