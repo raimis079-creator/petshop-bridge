@@ -1,0 +1,30 @@
+=== petshop.lt recon (nekenksmingas) ===
+
+--- 1. SSL galiojimas (strict, be -k) ---
+  HTTP:200 SSL_VERIFY:0
+
+--- 2. Sertifikato detalės ---
+subject=CN = petshop.lt
+issuer=C = US, O = Let's Encrypt, CN = YE1
+notBefore=Jun 11 08:24:08 2026 GMT
+notAfter=Sep  9 08:24:07 2026 GMT
+
+
+--- 3. Ar tai WordPress + REST API pasiekiamas ---
+  /wp-json/ : HTTP:301
+
+--- 4. Kokia sistema (headers) ---
+HTTP/2 200 
+server: nginx/1.22.1
+date: Mon, 13 Jul 2026 21:08:31 GMT
+content-type: text/html; charset=utf-8
+vary: Accept-Encoding
+set-cookie: PHPSESSID=egru9n1nrii1hnk7f7ls7gfi0d; expires=Tue, 14-Jul-2026 21:08:31 GMT; Max-Age=86400; path=/; SameSite=Lax
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+set-cookie: language=lt; expires=Wed, 12-Aug-2026 21:08:31 GMT; Max-Age=2592000; path=/; domain=petshop.lt
+set-cookie: currency=EUR; expires=Wed, 12-Aug-2026 21:08:31 GMT; Max-Age=2592000; path=/; domain=petshop.lt
+access-control-allow-origin: *
+
+
