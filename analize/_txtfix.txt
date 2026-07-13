@@ -1,0 +1,5 @@
+prieš: "Ne būtinai" count=1 raw_len=5183
+po replace: "Ne būtinai"=0 "Nebūtinai"=1 new_len=5182 delta=1
+UPDATE http=200
+PO UPDATE (raw): "Ne būtinai"=0 "Nebūtinai"=1
+LIVE HTML: "Ne būtinai"=false "Nebūtinai"=false
