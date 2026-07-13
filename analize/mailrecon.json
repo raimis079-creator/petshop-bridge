@@ -1,0 +1,22 @@
+{
+    "wp_mail_smtp": {
+        "mailer": "smtp",
+        "from_email": "terra@petshop.lt",
+        "from_name": "Petshop.lt",
+        "smtp_host": "isopas.serveriai.lt",
+        "smtp_port": 465,
+        "smtp_encryption": "ssl",
+        "mailgun_domain": "",
+        "mailgun_region": "US"
+    },
+    "mail_related_active_plugins": [
+        "wp-mail-smtp/wp_mail_smtp.php"
+    ],
+    "all_active_count": 24,
+    "mailgun_constants": {
+        "MAILGUN_APIKEY": "ne",
+        "MAILGUN_DOMAIN": "ne",
+        "MAILGUN_REGION": "ne"
+    },
+    "mailgun_option": "(nera mailgun option)"
+}
