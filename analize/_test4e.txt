@@ -1,0 +1,22 @@
+=== 1. Ar dev.avesa.lt viesai pasiekiamas su GALIOJANCIU SSL (be -k)? ===
+  Strict SSL (kaip Sender matytu): HTTP:000 SSL_VERIFY:20[ERR]
+
+  Su -k (ignoruojant SSL): HTTP:200
+
+=== 2. SSL sertifikato info ===
+subject=CN = *.serveriai.lt
+issuer=C = NL, O = PerfectSSL, CN = PerfectSSL
+notBefore=Apr  2 00:00:00 2026 GMT
+notAfter=Oct 17 23:59:59 2026 GMT
+
+
+=== 3. Trigger + ilgas laukimas (60s) ===
+  pridetas webhooklong+1783976488633@example.com HTTP 201
+  laukiu 60s...
+  Woo gavo: 0 kvietimų
+
+=== 4. Sender delivery stats po 60s ===
+  subscribers/unsubscribed: deliveries=0 failures=0 resp_time=0
+  bounces/new: deliveries=0 failures=0 resp_time=0
+  subscribers/updated: deliveries=0 failures=0 resp_time=0
+  subscribers/new: deliveries=0 failures=0 resp_time=0
