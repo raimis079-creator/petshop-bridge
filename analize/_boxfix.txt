@@ -1,0 +1,4 @@
+update 705 http=200
+build-a-box img dimensions: [{"w":90,"h":90},{"w":90,"h":90},{"w":90,"h":90},{"w":90,"h":90},{"w":90,"h":90},{"w":90,"h":90}]
+shot ok
+regr /related/ heights: [247,247,247,247]
