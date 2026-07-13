@@ -1,0 +1,13 @@
+TESTAS #2 (tikslinta) — POST /events su type
+
+--- A1: {email, type:"refill_due", ...props} ---
+  HTTP 422 resp: {"errors":{"subscriber":"subscriber must contain at least one of: id, email, or phone"},"message":"subscriber must contain at least one of: id, email, or phone","success":false,"type":"validation"}
+
+--- A2: {email, type:"refill_due", properties:{...}} ---
+  HTTP 422 resp: {"errors":{"subscriber":"subscriber must contain at least one of: id, email, or phone"},"message":"subscriber must contain at least one of: id, email, or phone","success":false,"type":"validation"}
+
+--- A3: {email, type:"custom", event:"refill_due", data:{...}} ---
+  HTTP 422 resp: {"errors":{"subscriber":"subscriber must contain at least one of: id, email, or phone"},"message":"subscriber must contain at least one of: id, email, or phone","success":false,"type":"validation"}
+
+--- Verifikacija: GET /subscribers/{email}/events (jei yra) ---
+  HTTP 200 resp: 
