@@ -1,0 +1,21 @@
+======================================
+TESTAS #8: Log retention / health dashboard
+======================================
+
+--- Sender log endpoint'ai ---
+  GET /logs -> HTTP 404 (nera)
+  GET /messages -> HTTP 404 (nera)
+  GET /campaigns -> HTTP 200 (yra)
+  GET /reports -> HTTP 404 (nera)
+  GET /statistics -> HTTP 404 (nera)
+  GET /account/logs -> HTTP 404 (nera)
+
+--- Išvada (žinoma iš dokumentacijos) ---
+  Sender log retention pagal planą:
+    Free: 1 diena
+    Standard (dabartinis): 5 dienos
+    Professional: 30 dienų
+
+  → 5 dienų PER MAŽAI savaitiniam health dashboard'ui (7 dienos)
+  → SPRENDIMAS: health dashboard remiasi MŪSŲ ps_event_log (90d), ne Sender logais
+  → Sender logai naudojami tik operatyviam debug (paskutinės 5 d.)
