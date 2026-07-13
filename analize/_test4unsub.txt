@@ -1,0 +1,13 @@
+TESTAS #4 — unsubscribe trigger + ilgas laukimas
+
+--- Pridedu + tada unsubscribe whunsub+1783977217390@example.com ---
+  add HTTP 201
+  unsubscribe (PATCH status) HTTP 200 {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","type":"text","value":"U
+
+  laukiu 45s...
+
+--- Sender delivery stats ---
+  subscribers/new: deliveries=0 failures=0 resp=0ms
+  subscribers/unsubscribed: deliveries=0 failures=0 resp=0ms
+
+  >>> Patikrink webhook.site DAR KARTĄ <<<
