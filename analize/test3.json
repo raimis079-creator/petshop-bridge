@@ -1,0 +1,37 @@
+{
+    "table_ready": true,
+    "steps": [
+        [
+            "1_first_order_paid",
+            1,
+            "PASS (iterpta)"
+        ],
+        [
+            "2_duplicate_order_paid",
+            0,
+            "PASS (dedup!)"
+        ],
+        [
+            "3_duplicate_24h_later",
+            0,
+            "PASS (dedup!)"
+        ],
+        [
+            "4_refill_cycle_1",
+            1,
+            "PASS (iterpta)"
+        ],
+        [
+            "5_refill_cycle_2",
+            1,
+            "PASS (skirtingas ciklas iterptas)"
+        ],
+        [
+            "6_refill_cycle_1_dup",
+            0,
+            "PASS (dedup!)"
+        ]
+    ],
+    "unikaliu_irasu_db": 3,
+    "VERDIKTAS": "ZALIAS"
+}
