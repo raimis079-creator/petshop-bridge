@@ -15,6 +15,9 @@ function petshop_landing_map() {
 			'h1'      => 'Prekės šunims',
 			'intro'   => 'Viskas jūsų šuniui vienoje vietoje. Pasirinkite kategoriją arba iškart žiūrėkite atrinktas prekes žemiau.',
 			'atr_title' => 'Atrinktos prekės šunims',
+			'sub'       => 'Mūsų rekomenduojami pasirinkimai šuniui',
+			'food_id'   => 71,
+			'newbie'    => 'Naujam šuniukui',
 			'cards'   => array(
 				// term_id => array( attachment_id, display_label )
 				71  => array( 34615, 'Maistas šunims' ),
@@ -25,6 +28,26 @@ function petshop_landing_map() {
 				101 => array( 34620, 'Vitaminai ir papildai' ),
 				233 => array( 34621, 'Guoliai' ),
 				111 => array( 34622, 'Dubenėliai' ),
+			),
+		),
+		77 => array(
+			'species' => 'katems',
+			'h1'      => 'Prekės katėms',
+			'intro'   => 'Viskas jūsų katei vienoje vietoje. Pasirinkite kategoriją arba iškart žiūrėkite atrinktas prekes žemiau.',
+			'atr_title' => 'Atrinktos prekės katėms',
+			'sub'       => 'Mūsų rekomenduojami pasirinkimai katei',
+			'food_id'   => 78,
+			'newbie'    => 'Naujam kačiukui',
+			'cards'   => array(
+				// term_id => array( attachment_id, display_label )
+				78  => array( 34623, 'Maistas katėms' ),
+				107 => array( 34624, 'Kraikai kačių tualetams' ),
+				106 => array( 34625, 'Tualetai ir semtuvėliai' ),
+				96  => array( 34626, 'Skanėstai katėms' ),
+				114 => array( 34627, 'Žaislai katėms' ),
+				124 => array( 34628, 'Draskyklės katėms' ),
+				112 => array( 34629, 'Dubenėliai katėms' ),
+				102 => array( 34630, 'Vitaminai ir papildai' ),
 			),
 		),
 	);
@@ -73,13 +96,13 @@ function petshop_render_landing( $cfg, $parent_id ) {
 	}
 
 	// „Rinkitės pagal poreikį" (MVP: nuorodos į maisto kategoriją; tikslūs filtrai — TODO)
-	$food = get_term_link( 71, 'product_cat' );
+	$food = get_term_link( (int) $cfg['food_id'], 'product_cat' );
 	$food = is_wp_error( $food ) ? '#' : $food;
 	$poreikis = array(
 		array( 'Jautriam virškinimui', 'Sudėtis švelnesnė skrandžiui ir stabilesniam virškinimui.', $food ),
 		array( 'Vienas baltymo šaltinis', 'Monoproteininis maistas — viena mėsos rūšis, aiški sudėtis.', $food ),
 		array( 'Be grūdų', 'Grain-free receptūros angliavandeniams iš daržovių.', $food ),
-		array( 'Naujam šuniukui', 'Maistas ir svarbiausios priežiūros prekės pirmai pradžiai.', $food ),
+		array( $cfg['newbie'], 'Maistas ir svarbiausios priežiūros prekės pirmai pradžiai.', $food ),
 	);
 	$por_html = '';
 	foreach ( $poreikis as $p ) {
@@ -88,13 +111,19 @@ function petshop_render_landing( $cfg, $parent_id ) {
 			. '<span class="pcl-por-d">' . esc_html( $p[1] ) . '</span></a>';
 	}
 
-	$atr = do_shortcode( '[petshop_atrinktos species="' . esc_attr( $cfg['species'] ) . '" title="' . esc_attr( $cfg['atr_title'] ) . '"]' );
+	$atr = do_shortcode( '[petshop_atrinktos species="' . esc_attr( $cfg['species'] ) . '" title=""]' );
 
 	ob_start(); ?>
 <style>
-.pcl{max-width:1200px;margin:0 auto;padding:24px 20px 10px;font-family:Inter,sans-serif}
+/* Landing'e slepiam Flatsome kategorijos toolbar (breadcrumb lieka) */
+.shop-page-title .category-filtering,
+.shop-page-title .woocommerce-result-count,
+.shop-page-title .woocommerce-ordering{display:none!important}
+.shop-page-title .page-title-inner{padding-top:0!important;padding-bottom:0!important;min-height:0!important}
+.shop-page-title{padding-bottom:0!important;margin-bottom:0!important}
+.pcl{max-width:1200px;margin:0 auto;padding:14px 20px 10px;font-family:Inter,sans-serif}
 .pcl *{box-sizing:border-box}
-.pcl-hero{margin:6px 0 26px}
+.pcl-hero{margin:4px 0 22px}
 .pcl-hero h1{font-size:32px;font-weight:700;color:#2D5F3F;margin:0 0 8px}
 .pcl-hero p{font-size:16px;color:#5a6b5e;margin:0;max-width:640px;line-height:1.5}
 .pcl-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -110,7 +139,7 @@ function petshop_render_landing( $cfg, $parent_id ) {
 .pcl-chip{background:#F3F7F1;border:1px solid #DDE8D8;color:#3a5a44;font-size:13px;padding:7px 14px;border-radius:20px;text-decoration:none;transition:all .15s}
 .pcl-chip:hover{background:#2D5F3F;color:#fff;border-color:#2D5F3F}
 .pcl-hidden{display:none}
-.pcl-h2{font-size:24px;font-weight:700;color:#2D5F3F;margin:46px 0 4px}
+.pcl-h2{font-size:24px;font-weight:700;color:#2D5F3F;margin:34px 0 4px}
 .pcl-sub{font-size:14px;color:#8a998d;margin:0 0 20px}
 .pcl-por-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
 .pcl-por{display:block;background:#fff;border:1px solid #E6ECE4;border-radius:12px;padding:20px 18px;text-decoration:none;transition:box-shadow .18s,transform .18s}
@@ -147,7 +176,7 @@ function petshop_render_landing( $cfg, $parent_id ) {
 	<?php endif; ?>
 
 	<h2 class="pcl-h2"><?php echo esc_html( $cfg['atr_title'] ); ?></h2>
-	<p class="pcl-sub">Mūsų rekomenduojami pasirinkimai šuniui</p>
+	<p class="pcl-sub"><?php echo esc_html( $cfg['sub'] ); ?></p>
 	<?php echo $atr; ?>
 
 	<h2 class="pcl-h2">Rinkitės pagal poreikį</h2>
