@@ -1,0 +1,24 @@
+{
+    "inserted_pending": 3,
+    "q1_full_select": {
+        "count": 0,
+        "last_error": "Unknown column 'next_retry_at' in 'where clause'"
+    },
+    "q2_just_like": {
+        "count": 3,
+        "err": ""
+    },
+    "q3_just_status": {
+        "count": 6,
+        "err": ""
+    },
+    "q4_like_and_status": {
+        "count": 3,
+        "err": ""
+    },
+    "q5_like_and_retry": {
+        "count": 0,
+        "err": "Unknown column 'next_retry_at' in 'where clause'"
+    },
+    "sample_row": null
+}
