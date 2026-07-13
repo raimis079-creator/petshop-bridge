@@ -1,0 +1,16 @@
+TESTAS #6 — ecommerce struktūros detalės
+
+--- GET /orders struktūra ---
+  {"data":[{"id":"bqxgBk","plan_id":"oeEPKd","account_id":"azv2GY","user_id":"aQvN6M","duration":1,"before_tax":"8.77","tax":"1.84","after_tax":"10.61","currency":"EUR","description":"Standard 1 000 - 1 month","coupon":null,"coupon_promo_id":null,"status":0,"activated":0,"invoice_date":null,"invoice_n
+
+--- GET /stores struktūra ---
+  {"data":[],"links":{"first":"https:\/\/api.sender.net\/v2\/stores?page=1","last":"https:\/\/api.sender.net\/v2\/stores?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"https:\/\/api
+
+--- GET /carts struktūra ---
+  {"data":[],"links":{"first":"https:\/\/api.sender.net\/v2\/carts?page=1","last":"https:\/\/api.sender.net\/v2\/carts?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","
+
+--- GET /products (ko reikia) ---
+  {"message":"The url field is required.","errors":{"url":["The url field is required."]}}
+
+--- POST /orders (struktūruotas užsakymas) ---
+  HTTP 422 — {"message":"Required value, plan_id (and 2 more errors)","errors":{"plan_id":["Required value, plan_id"],"currency":["The selected currency is invalid."],"duration":["The duration field is required."]}}
