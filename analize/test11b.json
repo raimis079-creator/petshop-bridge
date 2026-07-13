@@ -1,0 +1,40 @@
+{
+    "1_emit": {
+        "emitted": 20,
+        "inserted": 20,
+        "max_ms": 0.24,
+        "v": "PASS"
+    },
+    "2_visi_queued": {
+        "pending": 20,
+        "v": "PASS"
+    },
+    "3_sender_down": {
+        "seen": 0,
+        "processed_failed": 0,
+        "db_failed": 0,
+        "su_retry": 0,
+        "v": "FAIL"
+    },
+    "4_niekas_neprarasta": {
+        "total": 20,
+        "v": "PASS"
+    },
+    "5_sender_atsigauna": {
+        "seen": 0,
+        "processed_sent": 0,
+        "db_sent": 0,
+        "v": "FAIL"
+    },
+    "6_idempotencija": {
+        "re_emit": 20,
+        "dedup": 20,
+        "v": "PASS"
+    },
+    "7_galutine": {
+        "total": 20,
+        "sent": 0,
+        "v": "FAIL"
+    },
+    "GELEZINE_TAISYKLE": "RAUDONAS"
+}
