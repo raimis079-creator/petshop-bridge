@@ -1,0 +1,633 @@
+// Petshop Susidėjimo Rinkinio Vitrina v19
+// v16: gram/size mygtukai dinamiškai perkuriami
+// v17: "be gramatūros" režimas; v18: FIX redagavimo srautas (konfigą iš tėvinio)
+// v19: grupių bloko antraštė iš _petshop_choice_group_label (kramtalams "Šuns dydis"); default "Rinkinio tipas"
+// Tėvinio produkto puslapyje renderina GRAMATŪRA/DYDIS mygtukus + visas paslėptas MnM formas.
+// JS perjungia matomą formą. Klientas mato vientisą konstruktorių.
+// (A) Veikia ir ant PASLĖPTŲ produktų (kai atidaromi per "Keisti pasirinkimus") — rodo pilną konstruktorių.
+
+// Helper: grąžina choice info bet kuriam produktui (tėviniam arba paslėptam)
+// Normalizuoja config į v2 grupių struktūrą: {group_key: {label, gramaturos: {gram: {size: {product_id, price}}}}}
+// v1 (senas, {gram:{size}}) automatiškai įvyniojamas į vieną numatytą grupę "_default".
+// Grąžina: ['parent_id', 'config'(normalized), 'is_multigroup'=>bool, 'init_group', 'init_gram', 'init_size', 'is_hidden']
+function petshop_normalize_choice_config($config) {
+    if (!is_array($config) || empty($config)) return null;
+    // v2 atpažinimas: pirmas elementas turi 'gramaturos' raktą
+    $first = reset($config);
+    $is_v2 = is_array($first) && isset($first['gramaturos']);
+    if ($is_v2) {
+        return array('config' => $config, 'is_multigroup' => (count($config) > 1));
+    }
+    // v1 → įvyniojam į vieną grupę
+    $wrapped = array('_default' => array('label' => '', 'gramaturos' => $config));
+    return array('config' => $wrapped, 'is_multigroup' => false);
+}
+
+function petshop_get_choice_info($pid) {
+    if (!$pid) return null;
+    // 1. Tėvinis choice?
+    if (get_post_meta($pid, '_petshop_is_choice_bundle', true) === 'yes') {
+        $raw = json_decode(get_post_meta($pid, '_petshop_choice_config', true), true);
+        $norm = petshop_normalize_choice_config($raw);
+        if (!$norm) return null;
+        return [
+            'parent_id'=>$pid, 'config'=>$norm['config'], 'is_multigroup'=>$norm['is_multigroup'],
+            'init_group'=>null, 'init_gram'=>null, 'init_size'=>null, 'is_hidden'=>false,
+            'no_gram'=>(get_post_meta($pid,'_petshop_choice_no_gram',true)==='yes')
+        ];
+    }
+    // 2. Paslėptas choice? (turi atgalinę nuorodą į tėvinį)
+    $parent = get_post_meta($pid, '_petshop_choice_parent', true);
+    if ($parent) {
+        $raw = json_decode(get_post_meta($parent, '_petshop_choice_config', true), true);
+        $norm = petshop_normalize_choice_config($raw);
+        if (!$norm) return null;
+        return [
+            'parent_id' => intval($parent),
+            'config' => $norm['config'],
+            'is_multigroup' => $norm['is_multigroup'],
+            'init_group' => get_post_meta($pid, '_petshop_choice_group', true) ?: '_default',
+            'init_gram' => get_post_meta($pid, '_petshop_choice_gram', true),
+            'init_size' => get_post_meta($pid, '_petshop_choice_size', true),
+            'is_hidden' => true,
+            'hidden_id' => $pid,
+            'no_gram' => (get_post_meta(intval($parent),'_petshop_choice_no_gram',true)==='yes')
+        ];
+    }
+    return null;
+}
+
+// Įjungiam tėviniams IR paslėptiems choice produktams
+add_action('woocommerce_before_single_product', function() {
+    global $product;
+    if (!$product) return;
+    $pid = is_object($product) ? $product->get_id() : 0;
+    $info = petshop_get_choice_info($pid);
+    if (!$info) return;
+    $GLOBALS['petshop_is_choice_page'] = $pid;
+    $GLOBALS['petshop_choice_info'] = $info;
+});
+
+// Body klasė choice puslapiams (fullwidth, kai nėra nuotraukos)
+add_filter('body_class', function($classes) {
+    if (!is_product()) return $classes;
+    global $post;
+    if (!$post) return $classes;
+    $info = petshop_get_choice_info($post->ID);
+    if (!$info) return $classes;
+    $classes[] = 'petshop-choice-page';
+    $classes[] = 'petshop-choice-fullwidth'; // visada fullwidth (nuotrauka slepiama)
+    return $classes;
+});
+
+// Pagrindinis renderinimas — vietoj standartinio add_to_cart
+add_action('woocommerce_single_product_summary', function() {
+    global $product;
+    if (!$product) return;
+    $current_pid = $product->get_id();
+    $info = petshop_get_choice_info($current_pid);
+    if (!$info) return;
+
+    $parent_id = $info['parent_id'];
+    $config = $info['config']; // {group_key: {label, gramaturos: {gram: {size: {product_id, price}}}}}
+    $is_multigroup = $info['is_multigroup'];
+    $no_gram = !empty($info['no_gram']); // v17: skanėstų režimas be gramatūros
+    $group_label = get_post_meta($parent_id, '_petshop_choice_group_label', true); // v19
+    if (!$group_label) $group_label = 'Rinkinio tipas';
+
+    // Grupės
+    $group_keys = array_keys($config);
+
+    // Numatytoji grupė: jei redaguojam paslėptą — jo grupė; kitaip pirma
+    if ($info['is_hidden'] && $info['init_group'] && isset($config[$info['init_group']])) {
+        $default_group = $info['init_group'];
+    } else {
+        $default_group = $group_keys[0];
+    }
+
+    // Gramatūros/dydžiai iš NUMATYTOSIOS grupės
+    $group_gram = $config[$default_group]['gramaturos'];
+    $gramaturos = array_keys($group_gram);
+    sort($gramaturos, SORT_NUMERIC);
+    $first_gram = $gramaturos[0];
+    $dydziai = array_keys($group_gram[$first_gram]);
+    sort($dydziai, SORT_NUMERIC);
+
+    // Numatytasis dydis/svoris: jei redaguojam — iš paslėpto; kitaip pirma gram + vidurinis dydis
+    if ($info['is_hidden'] && $info['init_gram'] && $info['init_size']) {
+        $default_gram = $info['init_gram'];
+        $default_size = $info['init_size'];
+    } else {
+        $default_gram = $gramaturos[0];
+        $default_size = isset($dydziai[1]) ? $dydziai[1] : $dydziai[0];
+    }
+
+    echo '<div class="petshop-choice-constructor" data-parent="'.esc_attr($parent_id).'">';
+
+    // Trumpas paaiškinimas
+    $parent_obj = wc_get_product($parent_id);
+    $short = $parent_obj ? $parent_obj->get_short_description() : '';
+    if ($short) {
+        echo '<p class="psc-intro">'.wp_kses_post($short).'</p>';
+    } else {
+        echo '<p class="psc-intro">'.($no_gram ? 'Pasirink kiek pakelių ir susidėk norimus skanėstus į vieną rinkinį.' : 'Pasirink konservų dydį, rinkinio dydį ir susidėk norimus skonius į vieną dėžę.').'</p>';
+    }
+
+    // Grid wrapper — kairė (konstruktorius) + dešinė (suvestinė)
+    echo '<div class="psc-layout">';
+    echo '<div class="psc-main">';
+
+    // === Grupės mygtukai (tik jei kelios grupės) ===
+    if ($is_multigroup) {
+        echo '<div class="psc-section"><div class="psc-label">'.esc_html($group_label).'</div><div class="psc-btn-row psc-group-row">';
+        foreach ($group_keys as $gk) {
+            $active = ($gk === $default_group) ? ' psc-active' : '';
+            $glabel = $config[$gk]['label'] ?: $gk;
+            echo '<button type="button" class="psc-btn psc-group-btn'.$active.'" data-group="'.esc_attr($gk).'">'
+                . '<span class="psc-btn-big">'.esc_html($glabel).'</span>'
+                . '</button>';
+        }
+        echo '</div></div>';
+    }
+
+    // === Konservo dydis mygtukai (rodo numatytosios grupės gramatūras; JS atnaujins) ===
+    // v17: be gramatūros režime paslepiam sekciją (mygtukas lieka, kad JS nustatytų currentGram)
+    $gram_style = $no_gram ? ' style="display:none;"' : '';
+    echo '<div class="psc-section"'.$gram_style.'><div class="psc-label">Konservo dydis</div><div class="psc-btn-row psc-gram-row">';
+    foreach ($gramaturos as $g) {
+        $active = ($g == $default_gram) ? ' psc-active' : '';
+        echo '<button type="button" class="psc-btn psc-gram-btn'.$active.'" data-gram="'.esc_attr($g).'">'
+            . '<span class="psc-btn-big">'.esc_html($g).' g</span>'
+            . '</button>';
+    }
+    echo '</div></div>';
+
+    // === Rinkinio dydis mygtukai ===
+    echo '<div class="psc-section"><div class="psc-label">Rinkinio dydis</div><div class="psc-btn-row psc-size-row">';
+    foreach ($dydziai as $s) {
+        $active = ($s == $default_size) ? ' psc-active' : '';
+        $box_price = $group_gram[$default_gram][$s]['price'];
+        $per_unit = $box_price / intval($s);
+        echo '<button type="button" class="psc-btn psc-size-btn'.$active.'" data-size="'.esc_attr($s).'">'
+            . '<span class="psc-btn-big">'.esc_html($s).' vnt.</span>'
+            . '<span class="psc-btn-small psc-per-unit">'.number_format($per_unit, 2, ',', ' ').' €/vnt.</span>'
+            . '</button>';
+    }
+    echo '</div></div>';
+
+    // === Antraštė virš konservų sąrašo ===
+    echo '<div class="psc-cans-header">';
+    echo '<div class="psc-cans-title">'.($no_gram ? 'Pasirink skanėstus' : 'Pasirink konservus').'</div>';
+    echo '<p class="psc-cans-note">Galite rinktis skirtingus skonius arba kelis vienodus — svarbu surinkti pasirinktą kiekį.</p>';
+    echo '</div>';
+
+    // === Visos paslėptos MnM formos (VISŲ grupių — JS rodo tik aktyvią) ===
+    echo '<div class="psc-forms">';
+    foreach ($config as $gkey => $gdata) {
+        foreach ($gdata['gramaturos'] as $gram => $sizes) {
+            foreach ($sizes as $size => $sinfo) {
+                $hidden_id = $sinfo['product_id'];
+                $hidden_product = wc_get_product($hidden_id);
+                if (!$hidden_product) continue;
+                $is_default = ($gkey === $default_group && $gram == $default_gram && $size == $default_size);
+                $style = $is_default ? '' : 'style="display:none;"';
+                echo '<div class="psc-form" data-group="'.esc_attr($gkey).'" data-gram="'.esc_attr($gram).'" data-size="'.esc_attr($size).'" '.$style.'>';
+                $GLOBALS['product'] = $hidden_product;
+                do_action('woocommerce_' . $hidden_product->get_type() . '_add_to_cart');
+                $GLOBALS['product'] = wc_get_product($parent_id);
+                echo '</div>';
+            }
+        }
+    }
+    echo '</div>'; // .psc-forms
+
+    echo '</div>'; // .psc-main
+
+    // Dešinė suvestinė
+    $default_price = $group_gram[$default_gram][$default_size]['price'];
+    echo '<div class="psc-sidebar"><div class="psc-summary">';
+    echo '<div class="psc-summary-title">Jūsų rinkinys</div>';
+    echo '<div class="psc-summary-row"><span>Pasirinkta</span><span class="psc-sum-selected" data-target="'.esc_attr($default_size).'">0 / '.esc_html($default_size).'</span></div>';
+    echo '<div class="psc-summary-row"><span>Liko pasirinkti</span><span class="psc-sum-left">'.esc_html($default_size).'</span></div>';
+    echo '<div class="psc-progress"><div class="psc-progress-fill"></div></div>';
+    echo '<div class="psc-summary-price-row"><span>Kaina</span><span class="psc-box-price">'.number_format($default_price, 2, ',', ' ').' €</span></div>';
+    echo '<div class="psc-cta-slot"></div>';
+    echo '</div></div>';
+
+    echo '</div>'; // .psc-layout
+    echo '</div>'; // .petshop-choice-constructor
+
+    // === CSS ===
+    ?>
+    <style>
+    .petshop-choice-constructor { margin: 1rem 0; }
+    .psc-intro { font-size: 15px; color: #555; line-height: 1.6; margin: 0 0 1.75rem; }
+    .psc-cans-header { border-top: 1px solid #eee; padding-top: 1.25rem; margin-top: 1.75rem; }
+    .psc-cans-title { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+    .psc-cans-note { font-size: 13px; color: #777; margin: 0 0 1rem; }
+    /* 1 ETAPAS: grid dvi kolonos su !important (Flatsome neperrašytų) */
+    .psc-layout { display: grid !important; grid-template-columns: 1fr 280px !important; gap: 36px !important; align-items: start !important; }
+    .psc-main { min-width: 0 !important; }
+    .psc-sidebar { position: relative; }
+    .psc-summary { position: sticky; top: 20px; background: #f8f8f6; border: 1px solid #eee; border-radius: 14px; padding: 20px; }
+    .psc-summary-title { font-size: 15px; font-weight: 600; margin-bottom: 14px; }
+    .psc-summary-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 9px; color: #666; }
+    .psc-summary-row span:last-child { font-weight: 600; color: #222; }
+    .psc-progress { height: 6px; background: #fff; border: 1px solid #e5e5e5; border-radius: 99px; overflow: hidden; margin: 14px 0; }
+    .psc-progress-fill { height: 100%; width: 0%; background: #0F6E56; border-radius: 99px; transition: width 0.25s; }
+    .psc-summary-price-row { display: flex; justify-content: space-between; align-items: baseline; padding-top: 14px; border-top: 1px solid #e8e8e8; }
+    .psc-summary-price-row span:first-child { font-size: 14px; color: #666; }
+    .psc-summary .psc-box-price { font-size: 24px; font-weight: 700; color: #222; }
+    /* ETAPAS 5: slepiam MnM originalią kainą/statusą formose (perkelta į suvestinę) */
+    .psc-form .mnm_price, .psc-form .price, .psc-form .quantity_message,
+    .psc-form .mnm_add_to_cart .mnm_message { display: none !important; }
+    /* PROXY mygtukas suvestinėje (paspaudžia tikrą MnM mygtuką) */
+    .psc-cta-slot .psc-proxy-cta {
+        width: 100% !important; padding: 14px !important; font-size: 15px !important; font-weight: 600 !important;
+        border: none !important; border-radius: 10px !important; margin: 14px 0 0 !important;
+        text-align: center !important; font-family: inherit; cursor: pointer;
+        background: #0F6E56; color: #fff;
+    }
+    .psc-cta-slot .psc-proxy-cta.disabled {
+        background: #e0e0e0; color: #999; cursor: not-allowed;
+    }
+    /* Tikras MnM mygtukas formose — paslėptas (lieka submit'ui), bet suvestinėje rodom proxy */
+    .psc-form .single_add_to_cart_button { display: none !important; }
+    @media (max-width: 849px) {
+        .psc-layout { grid-template-columns: 1fr !important; }
+    }
+    .psc-section { margin-bottom: 1.5rem; }
+    .psc-label { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; color: #888; margin-bottom: 0.6rem; }
+    .psc-btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .psc-btn {
+        flex: 1; min-width: 120px; padding: 14px 16px; border: 2px solid #e0e0e0;
+        border-radius: 10px; background: #fff; cursor: pointer; text-align: center;
+        display: flex; flex-direction: column; gap: 2px; transition: all 0.15s;
+    }
+    .psc-btn:hover { border-color: #b0d0b0; }
+    .psc-btn.psc-active { border-color: #4a8a3f; background: #f0f7f0; }
+    /* Grupės mygtukai — kaip pirmas pasirinkimas, brand žalia akcentas */
+    /* v13: vienodo pločio, užpildo eilutę (įveikiam temos flex/width) — label telpa su tarpais */
+    /* v14: siauresnis horizontalus padding, kad 13 raidžių label (MONOPROTEINAS/HIPOALERGINIS) tilptų vienoje eilutėje */
+    .psc-group-row { gap: 6px; }
+    .psc-group-row .psc-btn { flex: 1 1 0 !important; min-width: 80px; overflow: visible; height: auto; padding-left: 8px !important; padding-right: 8px !important; }
+    /* v12: ilgi label nekerpami — įveikiam temos button nowrap/overflow; v14: 14px */
+    .psc-group-row .psc-btn-big {
+        font-size: 12px;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        line-height: 1.2;
+        word-break: normal;
+    }
+    .psc-group-btn.psc-active { border-color: #0F6E56; background: #E1F5EE; }
+    .psc-group-btn.psc-active .psc-btn-big { color: #0F6E56; }
+    .psc-btn-big { font-size: 17px; font-weight: 700; color: #222; }
+    .psc-btn-small { font-size: 12px; color: #888; }
+    .psc-price-block { margin: 1.2rem 0; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .psc-box-price { font-size: 28px; font-weight: 800; color: #222; }
+    .psc-fixed-note { font-size: 13px; color: #666; }
+    /* Paslepiam standartinį tėvinio add-to-cart */
+    .petshop-choice-constructor ~ form.cart:not(.mnm_form) { display: none; }
+    /* Paslepiam tėvinio standartinę kainą VIRŠ konstruktoriaus (dubliavimas) */
+    body.single-product .product .summary > .price,
+    body.single-product .product .summary p.price:first-of-type {
+        display: none !important;
+    }
+    /* Bet konstruktoriaus kaina lieka matoma */
+    .petshop-choice-constructor .psc-box-price { display: inline !important; }
+    /* Punktas 2: paslepiam tuščią placeholder nuotrauką, konstruktorius platesnis */
+    body.single-product .product-gallery-wrapper.has-placeholder,
+    body.single-product .woocommerce-product-gallery--without-images {
+        display: none !important;
+    }
+    /* Kai nuotraukos nėra — summary užima visą plotį (Flatsome) */
+    body.petshop-choice-fullwidth .product-gallery,
+    body.petshop-choice-fullwidth .product-images {
+        display: none !important;
+    }
+    body.petshop-choice-fullwidth .product-info,
+    body.petshop-choice-fullwidth .product .summary,
+    body.petshop-choice-fullwidth .product .entry-summary,
+    body.petshop-choice-fullwidth .single-product .col.large-6 {
+        width: 100% !important; max-width: 820px !important; float: none !important;
+        flex: 0 0 100% !important; margin: 0 auto !important;
+    }
+    body.petshop-choice-fullwidth .row.product-row {
+        justify-content: center !important;
+    }
+    </style>
+    <?php
+}, 25);
+
+// === JS perjungimas ===
+add_action('wp_footer', function() {
+    if (empty($GLOBALS['petshop_is_choice_page'])) return;
+    // v18: konfigą imam iš TĖVINIO (paslėpto produkto puslapy config yra ant tėvinio, ne ant paties)
+    $info = isset($GLOBALS['petshop_choice_info']) ? $GLOBALS['petshop_choice_info'] : null;
+    $config_src = ($info && !empty($info['parent_id'])) ? $info['parent_id'] : $GLOBALS['petshop_is_choice_page'];
+    $config_raw = get_post_meta($config_src, '_petshop_choice_config', true);
+    ?>
+    <script>
+    (function(){
+        var constructor = document.querySelector('.petshop-choice-constructor');
+        if (!constructor) return;
+        var rawConfig = <?php echo $config_raw ?: '{}'; ?>;
+
+        // Normalizuojam config į grupių struktūrą (v1 → viena "_default" grupė)
+        var config;
+        (function(){
+            var keys = Object.keys(rawConfig);
+            var first = keys.length ? rawConfig[keys[0]] : null;
+            var isV2 = first && first.gramaturos;
+            if (isV2) { config = rawConfig; }
+            else { config = { '_default': { label: '', gramaturos: rawConfig } }; }
+        })();
+
+        // Grąžina aktyvios grupės gramatūras
+        function groupGram(gk){ return config[gk] ? config[gk].gramaturos : {}; }
+
+        var currentGroup = constructor.querySelector('.psc-group-btn.psc-active')?.dataset.group
+            || Object.keys(config)[0];
+        var currentGram = constructor.querySelector('.psc-gram-btn.psc-active')?.dataset.gram;
+        var currentSize = constructor.querySelector('.psc-size-btn.psc-active')?.dataset.size;
+
+        // v16: dinamiškai perkuriam gram/size mygtukus (skirtingos gramatūros/grupės = skirtingi dydžiai)
+        function attachGramClick(btn, g){
+            btn.addEventListener('click', function(){
+                constructor.querySelectorAll('.psc-gram-btn').forEach(function(b){ b.classList.remove('psc-active'); });
+                btn.classList.add('psc-active');
+                currentGram = g;
+                rebuildSizes();
+                updateView();
+            });
+        }
+        function attachSizeClick(btn, sz){
+            btn.addEventListener('click', function(){
+                constructor.querySelectorAll('.psc-size-btn').forEach(function(b){ b.classList.remove('psc-active'); });
+                btn.classList.add('psc-active');
+                currentSize = sz;
+                updateView();
+            });
+        }
+        function rebuildGrams(){
+            var gg = groupGram(currentGroup);
+            var grams = Object.keys(gg).sort(function(a,b){return parseInt(a)-parseInt(b);});
+            if (grams.indexOf(currentGram) < 0) currentGram = grams[0];
+            var row = constructor.querySelector('.psc-gram-row');
+            if (!row) return;
+            row.innerHTML = '';
+            grams.forEach(function(g){
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'psc-btn psc-gram-btn' + (g === currentGram ? ' psc-active' : '');
+                btn.dataset.gram = g;
+                btn.innerHTML = '<span class="psc-btn-big">' + g + ' g</span>';
+                attachGramClick(btn, g);
+                row.appendChild(btn);
+            });
+        }
+        function rebuildSizes(){
+            var gg = groupGram(currentGroup);
+            var gd = gg[currentGram] || {};
+            var sizes = Object.keys(gd).sort(function(a,b){return parseInt(a)-parseInt(b);});
+            if (sizes.indexOf(currentSize) < 0) currentSize = sizes[0];
+            var row = constructor.querySelector('.psc-size-row');
+            if (!row) return;
+            row.innerHTML = '';
+            sizes.forEach(function(sz){
+                var info = gd[sz];
+                var perUnit = info ? (info.price / parseInt(sz)).toFixed(2).replace('.', ',') : '';
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'psc-btn psc-size-btn' + (sz === currentSize ? ' psc-active' : '');
+                btn.dataset.size = sz;
+                btn.innerHTML = '<span class="psc-btn-big">' + sz + ' vnt.</span><span class="psc-btn-small psc-per-unit">' + perUnit + ' €/vnt.</span>';
+                attachSizeClick(btn, sz);
+                row.appendChild(btn);
+            });
+        }
+
+        function updateView() {
+            var gg = groupGram(currentGroup);
+            // Rodom tik atitinkančią formą (grupė + gram + size)
+            constructor.querySelectorAll('.psc-form').forEach(function(f){
+                var fg = f.dataset.group || '_default';
+                f.style.display = (fg === currentGroup && f.dataset.gram === currentGram && f.dataset.size === currentSize) ? '' : 'none';
+            });
+            // Atnaujinam kainą
+            var info = gg[currentGram] && gg[currentGram][currentSize];
+            if (info) {
+                var priceEl = constructor.querySelector('.psc-box-price');
+                if (priceEl) priceEl.textContent = info.price.toFixed(2).replace('.', ',') + ' €';
+                var targetEl = constructor.querySelector('.psc-target-count');
+                if (targetEl) targetEl.textContent = currentSize;
+            }
+            // Atnaujinam dydžio mygtukų €/vnt pagal dabartinę grupę+gramatūrą
+            constructor.querySelectorAll('.psc-size-btn').forEach(function(btn){
+                var sz = btn.dataset.size;
+                var inf = gg[currentGram] && gg[currentGram][sz];
+                if (inf) {
+                    var perUnit = (inf.price / parseInt(sz)).toFixed(2).replace('.', ',');
+                    var puEl = btn.querySelector('.psc-per-unit');
+                    if (puEl) puEl.textContent = perUnit + ' €/vnt.';
+                }
+            });
+            moveButton();
+            hideOutOfStock();
+            updateSummary();
+        }
+
+        // Matoma forma
+        function visibleForm() {
+            return Array.from(constructor.querySelectorAll('.psc-form')).find(function(f){ return f.style.display !== 'none'; });
+        }
+
+        // ETAPAS 3 (v2): PROXY mygtukas suvestinėje.
+        // Tikro MnM mygtuko NEKELIAM iš formos (kitaip submit neveikia — mygtukas turi būti <form> viduje).
+        // Vietoj to: suvestinėje savo mygtukas, kuris paspaudžia tikrą (paslėptą) MnM mygtuką.
+        var ctaSlot = constructor.querySelector('.psc-cta-slot');
+        function moveButton() {
+            if (!ctaSlot) return;
+            var form = visibleForm();
+            if (!form) return;
+            // Sukuriam proxy mygtuką (jei dar nėra)
+            var proxy = ctaSlot.querySelector('.psc-proxy-cta');
+            if (!proxy) {
+                proxy = document.createElement('button');
+                proxy.type = 'button';
+                proxy.className = 'psc-proxy-cta';
+                proxy.textContent = 'Į krepšelį';
+                ctaSlot.appendChild(proxy);
+                proxy.addEventListener('click', function(){
+                    if (proxy.classList.contains('disabled')) return;
+                    var vf = visibleForm();
+                    var realBtn = vf ? vf.querySelector('.single_add_to_cart_button') : null;
+                    if (realBtn) realBtn.click();
+                });
+            }
+        }
+
+        // ETAPAS 4: progresas — skaito qty inputų sumą / reikiamą kiekį
+        var sumSelEl = constructor.querySelector('.psc-sum-selected');
+        var sumLeftEl = constructor.querySelector('.psc-sum-left');
+        var progressFill = constructor.querySelector('.psc-progress-fill');
+        function ltPlural(n){
+            n = Math.abs(n);
+            if (n === 1 || (n % 10 === 1 && n % 100 !== 11)) return 'konservą';
+            var d = n % 10, dd = n % 100;
+            if (d >= 2 && d <= 9 && (dd < 10 || dd > 20)) return 'konservus';
+            return 'konservų';
+        }
+        function updateSummary() {
+            var form = visibleForm();
+            if (!form) return;
+            var inputs = form.querySelectorAll('.mnm_child_products input.qty, .mnm_child_products input[type=number]');
+            var sel = 0;
+            inputs.forEach(function(inp){ var v = parseInt(inp.value); if (!isNaN(v)) sel += v; });
+            var need = parseInt(currentSize) || 0;
+            if (sumSelEl) sumSelEl.textContent = sel + ' / ' + need;
+            var left = Math.max(0, need - sel);
+            if (progressFill) progressFill.style.width = (need > 0 ? Math.min(100, Math.round(sel/need*100)) : 0) + '%';
+            if (sumLeftEl) {
+                if (sel >= need && need > 0) { sumLeftEl.textContent = 'Rinkinys pilnas'; sumLeftEl.style.color = '#0F6E56'; }
+                else { sumLeftEl.textContent = left; sumLeftEl.style.color = ''; }
+            }
+            // Proxy mygtuko būsena — MnM pats nevaldo, valdom mes pagal progresą
+            var btn = ctaSlot ? ctaSlot.querySelector('.psc-proxy-cta') : null;
+            if (btn) {
+                if (sel >= need && need > 0) {
+                    btn.classList.remove('disabled');
+                    btn.textContent = 'Į krepšelį';
+                } else {
+                    btn.classList.add('disabled');
+                    btn.textContent = 'Dar pasirinkite ' + left + ' ' + ltPlural(left);
+                }
+            }
+        }
+
+        // Grupės mygtukų perjungimas (v16: perkuriam gram+size mygtukus pagal grupę)
+        constructor.querySelectorAll('.psc-group-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+                constructor.querySelectorAll('.psc-group-btn').forEach(function(b){ b.classList.remove('psc-active'); });
+                btn.classList.add('psc-active');
+                currentGroup = btn.dataset.group;
+                rebuildGrams();
+                rebuildSizes();
+                updateView();
+            });
+        });
+
+        // MnM įvykiai — atnaujinam progresą realiu laiku
+        if (window.jQuery) {
+            jQuery(document.body).on('wc-mnm-container-updated wc-mnm-initialize updated_wc_div', function(){
+                setTimeout(function(){ moveButton(); updateSummary(); }, 50);
+            });
+            jQuery(document).on('change keyup click', '.psc-form input.qty, .psc-form .mnm_child_products button, .psc-form .plus, .psc-form .minus', function(){
+                setTimeout(updateSummary, 80);
+            });
+        }
+
+        // ETAPAS 6: slepia out-of-stock konservus (eilutes su "Neturime"/disabled input)
+        function hideOutOfStock() {
+            var form = visibleForm();
+            if (!form) return;
+            var rows = form.querySelectorAll('.mnm_child_products tr, .mnm_child_products .mnm_item');
+            rows.forEach(function(row){
+                if (row.querySelector('th')) return;
+                var input = row.querySelector('input.qty, input[type=number]');
+                var txt = row.textContent || '';
+                var isOOS = (input && (input.disabled || input.max === '0')) ||
+                            (/Neturime|Out of stock|Šiuo metu nėra/i.test(txt) && !(input && !input.disabled));
+                row.style.display = isOOS ? 'none' : '';
+            });
+        }
+
+        rebuildGrams();
+        rebuildSizes();
+        updateView();
+        // MnM inicijuojasi vėlai — kartotinai
+        window.addEventListener('load', function(){ setTimeout(function(){ moveButton(); hideOutOfStock(); updateSummary(); }, 400); });
+        var _t=0, _iv=setInterval(function(){ moveButton(); hideOutOfStock(); updateSummary(); if(++_t>=8) clearInterval(_iv); }, 400);
+    })();
+    </script>
+    <?php
+}, 100);
+
+// === Punktas 4: MnM angliškų tekstų vertimas į LT (JS override) ===
+// MnM statusą renderina per savo i18n/JS su placeholder'iais (%v, %s), todėl gettext
+// nepatikimas. Vietoj to — JS keičia matomą tekstą DOM'e po kiekvieno MnM atnaujinimo.
+add_action('wp_footer', function() {
+    if (empty($GLOBALS['petshop_is_choice_page'])) return;
+    ?>
+    <script>
+    (function(){
+        function ltTranslate(root){
+            root = root || document;
+            // 1. Statuso/pranešimų tekstai
+            var statusEls = root.querySelectorAll('.mnm_price, .mnm_message, .mnm_status, .cart .quantity_message, .mnm_add_to_cart .mnm_message, .psc-form .mnm_price, .psc-form .mnm_message');
+            statusEls.forEach(function(el){
+                var t = el.innerHTML;
+                if (!t || (t.indexOf('items')<0 && t.indexOf('item')<0 && t.indexOf('select')<0 && t.indexOf('selected')<0)) return;
+                var orig = t;
+                t = t.replace(/You have selected\s+(\d+)\s+items?\./gi, 'Pasirinkote $1 vnt.');
+                t = t.replace(/Please select\s+(\d+)\s+items?\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');
+                t = t.replace(/Please choose\s+(\d+)\s+items?\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');
+                t = t.replace(/You can select more or add to cart to continue/gi, 'Galite rinktis daugiau arba įdėti į krepšelį');
+                t = t.replace(/Add to cart to continue/gi, 'Įdėkite į krepšelį');
+                t = t.replace(/(\d+)\s*\/\s*(\d+)\s+items/gi, '$1/$2 vnt.');
+                t = t.replace(/(\d+)\s+items?\b/gi, '$1 vnt.');
+                if (t !== orig) el.innerHTML = t;
+            });
+
+            // 2. Lentelės antraštės ir kiti fiksuoti MnM UI string'ai (PRODUCT, QUANTITY ir kt.)
+            var headerMap = {
+                'PRODUCT': 'PREKĖ', 'Product': 'Prekė', 'product': 'prekė',
+                'QUANTITY': 'KIEKIS', 'Quantity': 'Kiekis', 'quantity': 'kiekis',
+                'PRICE': 'KAINA', 'Price': 'Kaina',
+                'Clear': 'Išvalyti', 'Clear selections': 'Išvalyti pasirinkimus',
+                'In stock': 'Turime', 'Out of stock': 'Neturime',
+                'Add to cart': 'Į krepšelį'
+            };
+            var headerEls = root.querySelectorAll('.mnm_child_products th, .mnm_table th, th.product-details, th.product-quantity, th.product-price, th.product-name');
+            headerEls.forEach(function(el){
+                var txt = el.textContent.trim();
+                if (headerMap[txt]) el.textContent = headerMap[txt];
+            });
+        }
+
+        // Vykdom po kiekvieno MnM atnaujinimo
+        function hook(){
+            ltTranslate(document);
+            // MnM trigerina jQuery įvykius
+            if (window.jQuery) {
+                jQuery(document.body).on('wc-mnm-container-updated wc-mnm-initialize updated_wc_div wc_fragments_refreshed', function(){
+                    setTimeout(function(){ ltTranslate(document); }, 50);
+                });
+                jQuery(document).on('change keyup', '.mnm_child_products input.qty', function(){
+                    setTimeout(function(){ ltTranslate(document); }, 100);
+                });
+            }
+            // MutationObserver — VISOMS formoms (matomoms ir paslėptoms)
+            document.querySelectorAll('.psc-form, .petshop-choice-constructor').forEach(function(target){
+                if (window.MutationObserver) {
+                    var obs = new MutationObserver(function(){ ltTranslate(document); });
+                    obs.observe(target, {childList:true, subtree:true, characterData:true});
+                }
+            });
+            // Kartotinis vertimas per pirmas sekundes (MnM inicijuoja formas laipsniškai)
+            var tries = 0;
+            var iv = setInterval(function(){
+                ltTranslate(document);
+                if (++tries >= 6) clearInterval(iv);
+            }, 400);
+        }
+
+        if (document.readyState !== 'loading') hook();
+        else document.addEventListener('DOMContentLoaded', hook);
+        // Papildomai po pilno užkrovimo (MnM inicijuojasi vėlai)
+        window.addEventListener('load', function(){ setTimeout(function(){ ltTranslate(document); }, 300); });
+    })();
+    </script>
+    <?php
+}, 105);
