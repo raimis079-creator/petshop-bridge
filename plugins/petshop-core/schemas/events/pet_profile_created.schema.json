@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "pet_profile_created",
+  "description": "Augintinio anketa uzpildyta pirma karta (M7).",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "pet_profile_created"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": "integer"},
+    "payload": {
+      "type": "object",
+      "required": ["pet_id", "species"],
+      "properties": {
+        "pet_id": {"type": "integer"},
+        "pet_name": {"type": ["string", "null"]},
+        "species": {"type": "string", "enum": ["dog", "cat", "both", "unknown"]},
+        "life_stage": {"type": ["string", "null"], "enum": ["junior", "adult", "senior", null]},
+        "dog_size": {"type": ["string", "null"], "enum": ["small", "medium", "large", "unknown", null]},
+        "feeding_type": {"type": ["string", "null"], "enum": ["dry_only", "mostly_dry", "mixed", null]},
+        "primary_need": {"type": ["string", "null"], "enum": ["hypo", "digestion", "sterilised", "daily", "unknown", null]},
+        "current_food_brand": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
