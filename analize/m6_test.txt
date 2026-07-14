@@ -1,0 +1,47 @@
+deploy: {"tokens":12929,"main":8446}
+reactivate: {"active":true,"err":null,"ver":"0.2.0"}
+Home: HTTP:200
+
+=== M6 TOKEN LIFECYCLE ===
+{
+    "0_core_ver": "0.2.0",
+    "0_class": true,
+    "0_table": true,
+    "0_fns": {
+        "ps_generate_token": true,
+        "ps_peek_token": true,
+        "ps_consume_token": true,
+        "ps_invalidate_token_group": true
+    },
+    "1_generated": "OK len=281",
+    "1_token_sample": "eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIj...",
+    "2_peek": {
+        "valid": true,
+        "reason": "ok",
+        "purpose": "magic_login",
+        "status": "active"
+    },
+    "3_peek_again_still_active": true,
+    "4_consume": {
+        "valid": true,
+        "reason": "ok"
+    },
+    "5_consume_again": {
+        "valid": false,
+        "reason": "already_used"
+    },
+    "6_bad_sig": {
+        "valid": false,
+        "reason": "bad_signature"
+    },
+    "7_confirm_consumed": true,
+    "7_skip_invalidated": true,
+    "7_cancel_invalidated": true,
+    "8_rotation": {
+        "before": "v1",
+        "new_kid": "v2",
+        "after": "v2",
+        "new_token_valid": true
+    },
+    "9_cleanup": "done"
+}
