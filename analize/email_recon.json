@@ -1,0 +1,53 @@
+{
+    "wc_email_settings": {
+        "new_order": {
+            "enabled": "yes",
+            "recipient": "uzsakymai@petshop.lt",
+            "subject": "Naujas užsakymas Nr. {order_number} — {order_date}",
+            "email_type": "html"
+        },
+        "cancelled_order": {
+            "enabled": "yes",
+            "recipient": "uzsakymai@petshop.lt",
+            "subject": "",
+            "email_type": "html"
+        },
+        "failed_order": {
+            "enabled": "yes",
+            "recipient": "uzsakymai@petshop.lt",
+            "subject": "",
+            "email_type": "html"
+        },
+        "customer_on_hold_order": {
+            "enabled": "no",
+            "recipient": "(gavejas=klientas)",
+            "subject": "",
+            "email_type": "html"
+        },
+        "customer_processing_order": {
+            "enabled": "yes",
+            "recipient": "(gavejas=klientas)",
+            "subject": "Jūsų užsakymas Nr. {order_number} — apmokėjimas gautas",
+            "email_type": "html"
+        },
+        "customer_completed_order": {
+            "enabled": "yes",
+            "recipient": "(gavejas=klientas)",
+            "subject": "Jūsų užsakymas №{order_number} išsiųstas!",
+            "email_type": "html"
+        }
+    },
+    "wp_mail_smtp": {
+        "mailer": "smtp",
+        "from_email": "terra@petshop.lt",
+        "from_name": "Petshop.lt",
+        "from_email_force": true,
+        "from_name_force": true,
+        "host": "isopas.serveriai.lt",
+        "port": 465
+    },
+    "wcdn_general": "(nera)",
+    "esp_plugins_active": [],
+    "blogname": "Petshop.lt",
+    "admin_email": "terra@gyvunai.lt"
+}
