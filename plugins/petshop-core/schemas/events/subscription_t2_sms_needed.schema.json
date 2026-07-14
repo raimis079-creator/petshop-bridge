@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "subscription_t2_sms_needed",
+  "description": "Prenumerata: 2 dienos iki ciklo, klientas dar nepatvirtino → SMS eskalacija (M10).",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "subscription_t2_sms_needed"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": "integer"},
+    "payload": {
+      "type": "object",
+      "required": ["subscription_id", "cycle_number", "next_charge_date", "phone"],
+      "properties": {
+        "subscription_id": {"type": "integer"},
+        "cycle_number": {"type": "integer"},
+        "next_charge_date": {"type": "string", "format": "date"},
+        "phone": {"type": "string"},
+        "confirm_token": {"type": "string"}
+      }
+    }
+  }
+}
