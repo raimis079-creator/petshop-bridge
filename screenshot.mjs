@@ -1,16 +1,52 @@
 import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_m4_test']) ) { return; }\n  if ( ($_GET['token']??'') !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $out = array();\n  global $wpdb;\n  $ct = $wpdb->prefix.'ps_consent_log';\n\n  // 0. Klases + versijos\n  $out['0_version'] = defined('PETSHOP_ESP_VERSION') ? PETSHOP_ESP_VERSION : '?';\n  $out['0_consent_log_class'] = class_exists('Petshop_ESP_Consent_Log');\n  $out['0_consent_sync_class'] = class_exists('Petshop_ESP_Consent_Sync');\n  $out['0_webhook_class'] = class_exists('Petshop_ESP_Webhook_Receiver');\n  $out['0_fn_set'] = function_exists('ps_set_marketing_consent');\n  $out['0_fn_get'] = function_exists('ps_get_marketing_consent');\n\n  // Cleanup pries testa\n  $testEmail = 'm4_consent_test@example.com';\n  $wpdb->query($wpdb->prepare(\"DELETE FROM `$ct` WHERE email = %s\", $testEmail));\n\n  // 1. set_marketing_consent TRUE (source=checkout) \u2192 log + Sender push\n  $r1 = ps_set_marketing_consent($testEmail, true, 'checkout', 0);\n  $out['1_set_true'] = $r1;\n\n  // 2. consent_log ira\u0161as patikra\n  $out['2_log_current'] = Petshop_ESP_Consent_Log::current_value($testEmail, 'marketing_consent');\n\n  // 3. get_marketing_consent public\n  $out['3_get_consent'] = ps_get_marketing_consent($testEmail);\n\n  // 4. Idempotencija \u2014 dar karta TRUE \u2192 turi buti unchanged\n  $r4 = ps_set_marketing_consent($testEmail, true, 'checkout', 0);\n  $out['4_idempotent_unchanged'] = !empty($r4['unchanged']);\n\n  // 5. set FALSE (unsubscribe per mano-paskyra) \u2192 naujas log ira\u0161as + PS_UNSUBSCRIBED_AT\n  $r5 = ps_set_marketing_consent($testEmail, false, 'mano-paskyra', 0);\n  $out['5_set_false'] = $r5;\n  $out['5_log_now'] = Petshop_ESP_Consent_Log::current_value($testEmail, 'marketing_consent');\n\n  // 6. Istorija \u2014 turi buti bent 2 ira\u0161ai (true, false)\n  $hist = Petshop_ESP_Consent_Log::history($testEmail, 10);\n  $out['6_history_count'] = count($hist);\n  $out['6_history'] = array_map(function($h){ return array('from'=>$h->from_value, 'to'=>$h->to_value, 'source'=>$h->source); }, $hist);\n\n  // 7. WEBHOOK RECEIVER \u2014 HMAC verify\n  $secret = get_option('petshop_esp_sender_webhook_secret', '');\n  $out['7_secret_exists'] = !empty($secret);\n  $adapter = ps_esp_adapter();\n  // Simuliuojam webhook payload'a\n  $payload = wp_json_encode(array('type'=>'subscribers/unsubscribed', 'data'=>array('email'=>$testEmail)));\n  $good_sig = hash_hmac('sha256', $payload, $secret);\n  $bad_sig = 'blogas_parasas';\n  $out['7_verify_good'] = $adapter->verify_webhook($payload, $good_sig);\n  $out['7_verify_bad'] = $adapter->verify_webhook($payload, $bad_sig);\n\n  // 8. handle_sender_unsubscribe \u2014 simuliuojam Sender unsubscribe\n  // Pirma set TRUE, tada webhook FALSE\n  ps_set_marketing_consent($testEmail, true, 'checkout', 0);\n  $r8 = Petshop_ESP_Consent_Sync::handle_sender_unsubscribe($testEmail);\n  $out['8_webhook_unsub'] = $r8;\n  $out['8_consent_after'] = Petshop_ESP_Consent_Log::current_value($testEmail, 'marketing_consent');\n\n  // 9. handle_sender_bounce \u2192 transactional_only\n  $r9 = Petshop_ESP_Consent_Sync::handle_sender_bounce($testEmail);\n  $out['9_bounce'] = $r9;\n  $out['9_transactional_only'] = Petshop_ESP_Consent_Log::current_value($testEmail, 'transactional_only');\n\n  // 10. REST route registruota?\n  $routes = rest_get_server()->get_routes();\n  $out['10_webhook_route_exists'] = isset($routes['/petshop/v1/sender-webhook']);\n\n  // Cleanup\n  $wpdb->query($wpdb->prepare(\"DELETE FROM `$ct` WHERE email = %s\", $testEmail));\n  $out['11_cleanup'] = true;\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{let id=0;try{
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop M4 Test tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
-  try{id=JSON.parse(c.body).id;}catch(e){}
-  if(!id){putText('_m4_test.txt','fail: '+c.body.slice(0,200));return;}
-  execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 60 "'+BASE+'/?ps_m4_test=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  putText('m4_test.json', r);
-  api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});
-}catch(e){putText('_m4_test.txt','!!!'+e);}})();
+const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
+const SAPI='https://api.sender.net/v2';
+let out='';const L=s=>{out+=s+'\n';};
+function scall(method, path, body){
+  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+SAPI+path+'"';
+  if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+SAPI+path+'"';}
+  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
+  return {code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?', raw:r.replace(/\nHTTP:\S+$/,'')};
+}
+const WH_URL='https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook';
+const WH_SECRET='uD5RdRkIjPorxrlouQDahacEyHxxoEO0TcemLKnX';
+(async()=>{
+  L('=== Sender webhook registracija ===');
+  L('URL: '+WH_URL);
+  L('');
+
+  // 1. Pirma — koks webhook create payload formatas? Bandom kelis variantus.
+  // Sender webhook API: POST /account/webhooks su {url, event, ...}
+  // Reikia issiaiskinti kokie event tipai palaikomi.
+  L('--- 1. Esami webhookai (pries kurima) ---');
+  const before = scall('GET','/account/webhooks');
+  L('HTTP '+before.code+': '+before.raw.slice(0,300));
+  L('');
+
+  // 2. Bandom sukurti unsubscribe webhook
+  // Sender dokumentacija: event tipai "subscriber_added", "subscriber_unsubscribed", "subscriber_bounced" ir pan.
+  L('--- 2. Kuriam unsubscribe webhook ---');
+  const variants = [
+    {url: WH_URL, event: 'subscriber_unsubscribed', secret: WH_SECRET},
+    {url: WH_URL, event: 'subscribers/unsubscribed'},
+    {url: WH_URL, type: 'subscriber_unsubscribed'},
+  ];
+  let created = null;
+  for(let i=0;i<variants.length;i++){
+    const r = scall('POST','/account/webhooks', variants[i]);
+    L('  variant '+(i+1)+' '+JSON.stringify(variants[i]).slice(0,80)+' -> HTTP '+r.code);
+    L('    '+r.raw.slice(0,200));
+    if(r.code==='200'||r.code==='201'){ created=r.raw; break; }
+  }
+  L('');
+
+  // 3. Po kurimo — sarasas
+  L('--- 3. Webhookai po kurimo ---');
+  const after = scall('GET','/account/webhooks');
+  L('HTTP '+after.code+': '+after.raw.slice(0,500));
+
+  putText('sender_webhook_reg.txt', out);
+  console.log('done');
+})();
