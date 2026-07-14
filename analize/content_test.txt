@@ -1,27 +1,35 @@
-deploy: {"ct":6664,"json":7150,"pjs":17815,"css":14865,"main":10854}
-reactivate: {"ver":"0.14.0","err":null}
+deploy: {"json":7547,"content":7809,"pjs":19243,"css":15760,"main":10854}
+reactivate: {"active":true,"err":null,"ver":"0.14.0"}
 Home: HTTP:200
 
-=== PET-CONTENT TEST ===
+=== CONTENT ATRANKOS TEST ===
 {
     "0_ver": "0.14.0",
     "0_class": true,
-    "0_json": true,
-    "1_dog_content": "tick_season",
-    "2_skin_allergy": "tick_season",
-    "3_fish": "fish_water_change",
-    "4_cat_sterilised_top": "tick_season",
-    "5_cat_not_steril": "null (teisingai — sterilised NErodomas)",
-    "6_cooldown": {
-        "first": "tick_season",
-        "second": "sensitive_digestion",
-        "skirtingi": "TAIP (cooldown veikia)"
+    "1_fish": "fish_water_change",
+    "2_steril_cat_daily": "tick_season",
+    "2_expect": "sterilised_diet ARBA aukstesnio prio sezoninis",
+    "3_nonsteril_cat": "tick_season",
+    "3_check": "OK (nerodo sterilised)",
+    "4_skin_dog": "tick_season",
+    "5_after_tick_cooldown": "skin_allergy_care",
+    "5_check": "OK (tick paslepta cooldown)",
+    "6_senior_dog": "tick_season",
+    "7_bird": "habitat_care",
+    "8a_dec25": "true",
+    "8b_jan03": "true",
+    "8c_jun15": "false",
+    "8d_nov01": "false",
+    "8e_jul01": "true",
+    "8f_jan01": "false",
+    "9_rest_content": {
+        "id": "tick_season",
+        "title": "Prasidėjo erkių sezonas",
+        "text": "Pavasarį ir vasarą erkės tampa aktyvesnės. Reguliari apsauga padeda sumažinti jų keliamą riziką.",
+        "cta_text": "",
+        "cta_url": "",
+        "image_key": "tick-season",
+        "image_url": null
     },
-    "7_season_wrap": {
-        "12-25": "OK",
-        "01-03": "OK",
-        "06-15": "OK",
-        "11-01": "OK"
-    },
-    "9_cleanup": "done"
+    "9_cta_empty_when_no_url": "OK (CTA paslepta be URL)"
 }
