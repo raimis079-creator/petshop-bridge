@@ -1,0 +1,39 @@
+deploy: {"magic":11892,"main":9309}
+reactivate: {"active":true,"err":null,"ver":"0.4.0"}
+Home: HTTP:200
+
+=== M9 MAGIC LOGIN TEST ===
+{
+    "0_core_ver": "0.4.0",
+    "0_class": true,
+    "1_route_registered": "yes",
+    "2_created_test_user": 7,
+    "4_request_existing": {
+        "status": 200,
+        "msg": "Jei tokia paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į el. paštą."
+    },
+    "4_token_created": 1,
+    "5_request_nonexistent": {
+        "status": 200,
+        "msg": "Jei tokia paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į el. paštą."
+    },
+    "5_same_response": "YES (enumeration apsauga OK)",
+    "5_no_token_for_nonexistent": "OK",
+    "6_rate_limit": {
+        "requests": 4,
+        "tokens_created": 3,
+        "expected": "<=3",
+        "ok": true
+    },
+    "7_peek": {
+        "valid": true,
+        "purpose": "magic_login"
+    },
+    "7_peek_still_active": true,
+    "7_consume": true,
+    "7_consume_again": {
+        "valid": false,
+        "reason": "already_used"
+    },
+    "9_cleanup": "done"
+}
