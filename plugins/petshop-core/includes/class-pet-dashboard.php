@@ -67,8 +67,8 @@ class Petshop_Pet_Dashboard {
 
 	private static function format_pet( $pet ) {
 		$photo_url = null;
-		if ( $pet->photo_file_id ) {
-			$photo_url = wp_get_attachment_image_url( (int) $pet->photo_file_id, 'thumbnail' );
+		if ( class_exists( 'Petshop_Pet_Photo' ) && Petshop_Pet_Photo::has_photo( (int) $pet->user_id, (int) $pet->id ) ) {
+			$photo_url = Petshop_Pet_Photo::serve_url( (int) $pet->id );
 		}
 		return array(
 			'pet_id'         => (int) $pet->id,
@@ -237,16 +237,20 @@ class Petshop_Pet_Dashboard {
 	 * Profilio pilnumas (%).
 	 */
 	private static function get_completeness( $pet ) {
-		$fields = array( 'pet_name', 'species', 'life_stage', 'primary_need', 'current_food_brand', 'photo_file_id' );
+		$has_photo = class_exists( 'Petshop_Pet_Photo' ) && Petshop_Pet_Photo::has_photo( (int) $pet->user_id, (int) $pet->id );
+		$fields = array( 'pet_name', 'species', 'life_stage', 'primary_need', 'current_food_brand' );
 		$filled = 0;
 		foreach ( $fields as $f ) {
 			if ( ! empty( $pet->$f ) ) {
 				$filled++;
 			}
 		}
-		$percent = (int) round( $filled / count( $fields ) * 100 );
+		if ( $has_photo ) {
+			$filled++;
+		}
+		$percent = (int) round( $filled / ( count( $fields ) + 1 ) * 100 );
 		$missing = array();
-		if ( empty( $pet->photo_file_id ) ) {
+		if ( ! $has_photo ) {
 			$missing[] = 'photo';
 		}
 		if ( empty( $pet->current_food_brand ) ) {
