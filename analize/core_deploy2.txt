@@ -1,0 +1,22 @@
+=== petshop-core main perrasymas + aktyvavimas ===
+perrasymas: {"main":6051}
+activate result:
+{
+    "activated": true,
+    "error": null,
+    "core_version": "0.1.0",
+    "esp_active": true,
+    "esp_version": "0.3.0",
+    "core_classes": {
+        "Petshop_Event_Log": true,
+        "Petshop_Consent_Log": true,
+        "Petshop_Consent_Sync": true,
+        "Petshop_Retry_Queue": true,
+        "Petshop_Message_Provider": true
+    },
+    "esp_classes": {
+        "Petshop_ESP_Event_Log": true,
+        "Petshop_ESP_Retry_Queue": true,
+        "Petshop_ESP_Consent_Sync": true
+    }
+}
