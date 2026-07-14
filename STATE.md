@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S183 — 26 PS_ contact attributes Sender pusėje, Blokas 3/M3 baigta).
+> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S184 — ESP v0.3.0: consent sync + webhook receiver, Blokas 4/M4 baigta, POC #4 uzbaigta).
 
 ---
 
@@ -47,7 +47,9 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 **Blokas 3/M3 BAIGTA (S183):** 26 PS_ contact attributes **VISI Sender pusėje** (23 sukurti + 3 iš POC, 0 dublikatų). Kūrimo endpoint `POST /fields {title,type}`. Sender tipai tik text/number/date (category→text, boolean→text "true"/"false"). Pilnas mapping su Sender ID + kas rašo + kur skaitoma: `plugins/petshop-esp/docs/attributes.md`.
 
-**Kitas žingsnis (Blokas 4 / M4, v0.3.0):** Consent sync + webhook receiver. (a) Woo→Sender consent push (PS_MARKETING_CONSENT hook); (b) `ps_consent_log` DB lentelė (istorija su source); (c) produkcinis webhook receiver `/wp-json/petshop/v1/sender-webhook` su HMAC verify; (d) Sender→Woo handleriai (unsubscribed→consent=false, bounces/new→transactional_only); (e) end-to-end testas su realiu unsubscribe (išsprendžia POC #4 geltoną).
+**Blokas 4/M4 BAIGTA (S184):** ESP **v0.3.0 gyvas** — consent sync + webhook receiver (8 failai, 1802 eil.). `ps_consent_log` lentelė (teisinis irodymas, niekada netrinam). Woo→Sender consent push + Sender→Woo webhook. Public API `ps_set_marketing_consent()`, `ps_get_marketing_consent()`. Webhook `/petshop/v1/sender-webhook` su HMAC verify. Empiriškai 11/11 + end-to-end (realus HTTP POST→consent atsinaujino source=webhook; blogas parašas→401). **Sender webhook 1aKjne ACTIVE** (topic subscribers/unsubscribed → dev URL). **Webhook secret dev:** `uD5RdRkIjPorxrlouQDahacEyHxxoEO0TcemLKnX`. **POC #4 UŽBAIGTA:** patvirtinta kad Sender fire'ina webhook TIK ant realiu user veiksmu (ne API) — receiver paruoštas, produkcijoje veiks natūraliai.
+
+**Kitas žingsnis (Blokas 5 / M5):** Google Identity + dedup (9 uzduotys). Google login (PS_LOGIN_METHOD), legacy email susiejimas (PS_LEGACY_EMAIL_LINKED, PS_LEGACY_LINK_PROMPT_SHOWN), magic link verify (PS_EMAIL_VERIFIED), identity merge (PS_IDENTITY_MERGED_AT). Login plugin dev'e NERA — reikes sprendimo (Google OAuth). ps_identity_links lentele.
 
 **RECON PATVIRTINTA (v0.2.0 pradžioje):** Sender `/account/fields` NEVEIKIA (404) — PS_ reikšmes skaitom per subscriber `columns[]`. `POST /subscribers` ant egzistuojančio → HTTP 200 (upsert saugus be tikrinimo). Rate limit 300/min. Status modelis: `{email:marketing, temail:transactional}`.
 
@@ -76,7 +78,7 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 | Dokumentas | Versija | Kur | Ką laiko |
 |---|---|---|---|
 | **TŽ MASTER** | **v1.58** | `dokumentai/TZ_MASTER_v1_58.docx` | Spec — *ką statom* (v1.58 = ESP Brevo→Sender + POC) |
-| **deployment_log** | **v1.3.50** | `dokumentai/deployment_log_v1_3_50.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S183) |
+| **deployment_log** | **v1.3.51** | `dokumentai/deployment_log_v1_3_51.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S184) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
