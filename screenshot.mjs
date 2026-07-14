@@ -2,15 +2,98 @@ import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
 const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_arch_recon']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  global $wpdb;\n  $out = array();\n\n  // 1. Ar Action Scheduler jau \u012fdiegtas (WooCommerce j\u012f atsiveza)\n  $out['action_scheduler'] = function_exists('as_enqueue_async_action') ? 'YRA' : 'NERA';\n  $out['as_table_exists'] = ($wpdb->get_var(\"SHOW TABLES LIKE '{$wpdb->prefix}actionscheduler_actions'\") !== null) ? 'YRA' : 'NERA';\n\n  // 2. Woo Subscriptions ar kitos prenumeratos pluginai\n  if ( ! function_exists('get_plugins') ) { require_once ABSPATH.'wp-admin/includes/plugin.php'; }\n  $active = get_option('active_plugins', array());\n  $subs_plugins = array();\n  $login_plugins = array();\n  $mnm_plugins = array();\n  foreach ($active as $p) {\n    if (preg_match('/subscript|recurring/i', $p)) $subs_plugins[] = $p;\n    if (preg_match('/social.?login|google.?login|nextend|super.?socializer|oauth/i', $p)) $login_plugins[] = $p;\n    if (preg_match('/mix.?match|composite/i', $p)) $mnm_plugins[] = $p;\n  }\n  $out['subscription_plugins'] = $subs_plugins;\n  $out['login_plugins'] = $login_plugins;\n  $out['mix_and_match'] = $mnm_plugins;\n\n  // 3. Custom PS lentel\u0117s (jei jau egzistuoja i\u0161 POC/test\u0173)\n  $pf = $wpdb->prefix;\n  $ps_tables = $wpdb->get_col(\"SHOW TABLES LIKE '{$pf}ps_%'\");\n  $out['ps_tables_existing'] = $ps_tables;\n\n  // 4. WC HPOS statusas\n  if(class_exists('Automattic\\WooCommerce\\Utilities\\OrderUtil')){\n    $hpos = \\Automattic\\WooCommerce\\Utilities\\OrderUtil::custom_orders_table_usage_is_enabled();\n    $out['hpos_enabled'] = $hpos ? 'TAIP' : 'NE';\n  } else { $out['hpos_enabled'] = '(class nerandama)'; }\n\n  // 5. Ar Fulfillment source resolver egzistuoja (m\u016bs\u0173 kodo)\n  $out['fulfillment_resolver'] = class_exists('Petshop_Fulfillment_Source') ? 'YRA' : 'NERA';\n\n  // 6. WC vartotoju kiekiai (statistikai zemelapiui)\n  $user_count = count_users();\n  $out['users_total'] = isset($user_count['total_users']) ? (int)$user_count['total_users'] : '?';\n  $out['orders_total'] = wc_orders_count('any');\n\n  // 7. Ar egzistuoja \"Mano paskyra\" puslapis + kokie tabai\n  $myacc_id = get_option('woocommerce_myaccount_page_id');\n  $out['myaccount_page_id'] = (int)$myacc_id;\n  if($myacc_id){ $p = get_post($myacc_id); $out['myaccount_page_slug'] = $p ? $p->post_name : '?'; }\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{let id=0;try{
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop ArchRecon tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
-  try{id=JSON.parse(c.body).id;}catch(e){}
-  if(!id){putText('_arch.txt','snippet fail '+c.body.slice(0,200));return;}
-  execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_arch_recon=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  putText('arch_recon.json', r);
-  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
-}catch(e){putText('_arch.txt','!!! '+e);}})();
+const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
+const SAPI='https://api.sender.net/v2';
+let out='';const L=s=>{out+=s+'\n';};
+
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 30 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 30 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function scall(method, path, body){
+  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+SAPI+path+'"';
+  if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+SAPI+path+'"';}
+  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
+  const code=(r.match(/HTTP:(\S+)$/)||[])[1]||'?';const raw=r.replace(/\nHTTP:\S+$/,'');
+  return {code, raw};
+}
+(async()=>{
+  L('=== BLOKAS 0 — dev valymas ===');
+  L('');
+
+  // 1. Rasti snippet #713 ir ji istrinti
+  L('--- 1. Snippet #713 valymas ---');
+  const listResp = api('GET','/wp-json/code-snippets/v1/snippets');
+  let snippet713 = null;
+  try {
+    const list = JSON.parse(listResp.body);
+    for(const s of list){
+      const nameL = (s.name||'').toLowerCase();
+      if(nameL.includes('sender webhook receiver') || nameL.includes('webhook receiver v1')){
+        snippet713 = s;
+      }
+    }
+  } catch(e){}
+  if(snippet713){
+    L('  Rastas: ID='+snippet713.id+' name="'+snippet713.name+'" active='+snippet713.active);
+    // deactivate first for saugumas
+    if(snippet713.active){
+      const deact = api('POST','/wp-json/code-snippets/v1/snippets/'+snippet713.id+'/deactivate',{});
+      L('  Deactivate -> HTTP '+deact.code);
+    }
+    // trynimas per DB (REST DELETE neveikia per Code Snippets)
+    // Sioms operacijoms geriau naudoti temporary snippet su wpdb->delete
+    L('  Trynimo per DB metodas — reikes atlikti temp snippet.');
+    L('  Palieku deaktyvuota. Trynima galim atlikti veliau kaip atskiras step.');
+  } else {
+    L('  #713 arba analogiskas snippet NErastas -- galbut jau istrintas.');
+  }
+  L('');
+
+  // 2. Rasti ir istrinti testinius Sender kontaktus
+  L('--- 2. Sender testiniai kontaktai ---');
+  const patterns = ['webhooktest', 'whsite', 'whunsub', 'whlong'];
+  let deleted = 0;
+  for(const pat of patterns){
+    // Sender turi search endpoint
+    const s = scall('GET','/subscribers?search='+pat);
+    if(s.code!=='200'){L('  search '+pat+' HTTP '+s.code); continue;}
+    let arr = [];
+    try { arr = JSON.parse(s.raw).data || []; } catch(e){}
+    L('  '+pat+'*: rasta '+arr.length);
+    for(const sub of arr){
+      const email = sub.email || '';
+      if(email.includes(pat)){
+        const del = scall('DELETE','/subscribers/'+encodeURIComponent(email));
+        L('    del '+email+' -> HTTP '+del.code);
+        if(del.code==='200' || del.code==='204') deleted++;
+      }
+    }
+  }
+  L('  Istrinta: '+deleted);
+  L('');
+
+  // 3. Sender webhookai i webhook.site
+  L('--- 3. Sender webhookai i webhook.site ---');
+  const wh = scall('GET','/account/webhooks');
+  if(wh.code==='200'){
+    let whs = [];
+    try { whs = JSON.parse(wh.raw).data || []; } catch(e){}
+    L('  Iš viso webhookų: '+whs.length);
+    let wsDeleted = 0;
+    for(const h of whs){
+      const url = h.url || '';
+      if(url.includes('webhook.site') || url.includes('dev.avesa')){
+        L('    webhookas '+h.id+' topic='+h.topic+' url='+url.slice(0,60));
+        const del = scall('DELETE','/account/webhooks/'+h.id);
+        L('    del -> HTTP '+del.code);
+        if(del.code==='200' || del.code==='204') wsDeleted++;
+      }
+    }
+    L('  Istrinta: '+wsDeleted);
+  } else {
+    L('  webhooks list HTTP '+wh.code);
+  }
+  L('');
+
+  L('=== BLOKO 0 pabaiga ===');
+  putText('_valymas_0.txt', out);
+  console.log('done');
+})();
