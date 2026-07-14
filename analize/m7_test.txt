@@ -1,0 +1,50 @@
+deploy: {"pet":10619,"main":9529}
+reactivate: {"active":true,"err":null,"ver":"0.5.0"}
+Home: HTTP:200
+
+=== M7 PET PROFILE TEST ===
+{
+    "0_core_ver": "0.5.0",
+    "0_class": true,
+    "0_table": true,
+    "1_route": "yes",
+    "2_create": {
+        "status": 200,
+        "pet_id": 1,
+        "is_primary": true
+    },
+    "3_event_created": {
+        "name": "pet_profile_created",
+        "species": "dog",
+        "primary_need": "hypo"
+    },
+    "4_list_count": 1,
+    "5_update": {
+        "status": 200,
+        "changed_fields": [
+            "pet_name",
+            "life_stage",
+            "dog_size",
+            "feeding_type",
+            "primary_need",
+            "current_food_brand"
+        ]
+    },
+    "6_event_updated": {
+        "changed": [
+            "pet_name",
+            "life_stage",
+            "dog_size",
+            "feeding_type",
+            "primary_need",
+            "current_food_brand"
+        ]
+    },
+    "7_idor_status": 404,
+    "7_idor_blocked": "OK (svetimas negalima)",
+    "8_second_pet": {
+        "pet_id": 2,
+        "is_primary": false
+    },
+    "9_cleanup": "done"
+}
