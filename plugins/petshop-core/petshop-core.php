@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Core
  * Description: Petshop.lt provider-neutralus sistemos pamatas: event log + retry queue, event registry, consent log/sync, action tokens, message provider interface. Prielaida: bet koks message provider (Sender, SMS, kt.) priklauso nuo šio plugin'o, ne atvirkščiai.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: UAB Avesa / Petshop.lt
  * Requires at least: 6.0
  * Requires PHP: 8.1
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PETSHOP_CORE_VERSION', '0.1.0' );
+define( 'PETSHOP_CORE_VERSION', '0.2.0' );
 define( 'PETSHOP_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PETSHOP_CORE_URL', plugin_dir_url( __FILE__ ) );
 
@@ -68,11 +68,14 @@ require_once PETSHOP_CORE_DIR . 'includes/class-event-log.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-consent-log.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-consent-sync.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-retry-queue.php';
+require_once PETSHOP_CORE_DIR . 'includes/class-action-tokens.php';
 
 // --- Activation ---
 register_activation_hook( __FILE__, function() {
 	Petshop_Event_Log::install();
 	Petshop_Consent_Log::install();
+	Petshop_Action_Tokens::install();
+	Petshop_Action_Tokens::ensure_keys();
 	if ( ! wp_next_scheduled( 'ps_esp_cron_process_pending' ) ) {
 		wp_schedule_event( time() + 300, 'ps_esp_5min', 'ps_esp_cron_process_pending' );
 	}
@@ -98,6 +101,7 @@ add_action( 'plugins_loaded', function() {
 	// Uztikrinam lenteles (jei aktyvavimo hook praleistas per manual copy)
 	Petshop_Event_Log::maybe_install();
 	Petshop_Consent_Log::maybe_install();
+	Petshop_Action_Tokens::maybe_install();
 
 	// MIGRACIJOS APSAUGA (S186): jei petshop-esp v0.3.0 dar gyvas su savo Retry_Queue
 	// ir Consent_Sync klasemis, NELEIDZIAM core registruoti tuos pacius hook'us
@@ -164,5 +168,51 @@ if ( ! function_exists( 'ps_get_marketing_consent' ) ) {
 	function ps_get_marketing_consent( $email ) {
 		$val = Petshop_Consent_Log::current_value( $email, 'marketing_consent' );
 		return ( $val === null ) ? '' : $val;
+	}
+}
+
+// -----------------------------------------------------------------------------
+// PUBLIC API — Action Tokens (M6)
+// -----------------------------------------------------------------------------
+
+if ( ! function_exists( 'ps_generate_token' ) ) {
+	/**
+	 * Sugeneruoti HMAC signed action token'a.
+	 *
+	 * @param array $args {purpose, subject_id, subject_email, resource_id, purpose_group, action, ttl_seconds}
+	 * @return string|false Raw token.
+	 */
+	function ps_generate_token( array $args ) {
+		return Petshop_Action_Tokens::generate( $args );
+	}
+}
+
+if ( ! function_exists( 'ps_peek_token' ) ) {
+	/**
+	 * Nuskaityti token'a BE side-effect (scanner-safe, GET/confirmation page kontekstui).
+	 * @return array {valid, reason, row}
+	 */
+	function ps_peek_token( $raw_token ) {
+		return Petshop_Action_Tokens::peek( $raw_token );
+	}
+}
+
+if ( ! function_exists( 'ps_consume_token' ) ) {
+	/**
+	 * Patikrinti + atlikti veiksma (status→used, invaliduoti susijusius).
+	 * TIK POST kontekste (negrįžtamas veiksmas).
+	 * @return array {valid, reason, row}
+	 */
+	function ps_consume_token( $raw_token ) {
+		return Petshop_Action_Tokens::consume( $raw_token );
+	}
+}
+
+if ( ! function_exists( 'ps_invalidate_token_group' ) ) {
+	/**
+	 * Invaliduoti visus aktyvius token'us pagal purpose_group.
+	 */
+	function ps_invalidate_token_group( $purpose_group ) {
+		return Petshop_Action_Tokens::invalidate_group( $purpose_group );
 	}
 }
