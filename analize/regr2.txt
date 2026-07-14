@@ -1,0 +1,34 @@
+core patch: {"bytes":5820}
+Home: HTTP:200
+
+=== REGRESIJA ===
+{
+    "1_core_ver": "0.1.0",
+    "1_esp_ver": "0.4.0",
+    "2_emit": {
+        "ok": true,
+        "dedup": false,
+        "log_id": 73,
+        "ms": 6.65
+    },
+    "3_event_row": {
+        "event_name": "order_paid",
+        "status": "pending",
+        "email": "terra@gyvunai.lt"
+    },
+    "4_consent_set": {
+        "ok": true,
+        "from": "",
+        "to": "true",
+        "pushed_to_sender": true
+    },
+    "4_consent_read": "true",
+    "5_env": "NEAPIBREZTA",
+    "5_notlisted_result": "NOT_BLOCKED:{\"ok\":true,\"status\":\"created\",\"esp_contact_id\":\"p2RRBQ2\",\"error\":\"\",\"retriable\":false}",
+    "6_retry_class": true,
+    "6_as_hook": "yes",
+    "7_webhook_route": "registered",
+    "8_checkout_hook": "yes",
+    "9_sender_operational": "yes",
+    "10_cleanup": "done"
+}
