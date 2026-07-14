@@ -1,0 +1,61 @@
+{
+    "0_version": "0.2.0",
+    "0_adapter_class": true,
+    "0_retry_class": true,
+    "0_adapter_fn": true,
+    "1_configured": true,
+    "2_operational": true,
+    "3_health": {
+        "healthy": true,
+        "quota_used": null,
+        "quota_max": null,
+        "rate_limit": 300,
+        "rate_remaining": 298,
+        "last_error": "",
+        "last_error_at": 0,
+        "checked_at": 1784018755
+    },
+    "4_upsert": {
+        "ok": true,
+        "status": "created",
+        "esp_contact_id": "5LlW3NR",
+        "error": "",
+        "retriable": false
+    },
+    "5_readback_order_count": 7,
+    "5_readback_species": "dog",
+    "6_emit": {
+        "ok": true,
+        "already_processed": false,
+        "should_retry": false,
+        "esp_event_id": "",
+        "error": "",
+        "http_code": 200,
+        "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+    },
+    "7_flow_emit": {
+        "ok": true,
+        "dedup": false,
+        "log_id": 72,
+        "ms": 9.91
+    },
+    "8_as_scheduled": true,
+    "9_status_after_process": {
+        "status": "sent",
+        "attempts": "0",
+        "last_error": null
+    },
+    "10_backoff": {
+        "attempt_1": 63,
+        "attempt_2": 261,
+        "attempt_3": 1523,
+        "attempt_6": 77846
+    },
+    "11_retriable": {
+        "500": true,
+        "429": true,
+        "400": false,
+        "404": false,
+        "0_network": true
+    }
+}
