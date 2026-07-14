@@ -1,74 +1,16 @@
 import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
-const SAPI='https://api.sender.net/v2';
-let out='';const L=s=>{out+=s+'\n';};
-function scall(method, path){
-  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" "'+SAPI+path+'"';
-  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
-  const code=(r.match(/HTTP:(\S+)$/)||[])[1]||'?';const raw=r.replace(/\nHTTP:\S+$/,'');
-  return {code, raw};
-}
-(async()=>{
-  L('--- Pilna testiniu @example.com kontaktu valymui ---');
-  L('');
-  // gauname visus kontaktus (paginate), tada is JS filtruojame pagal @example.com
-  const patterns = ['webhooktest','whsite','whunsub','webhooklong','whlong'];
-  const isTest = (email)=>{
-    const e = (email||'').toLowerCase();
-    if(!e.includes('@example.com')) return false;
-    return patterns.some(p => e.includes(p));
-  };
-  
-  let allDeleted = [];
-  let allSeen = [];
-  let page = 1;
-  const seenIds = new Set();
-  while(true){
-    const s = scall('GET','/subscribers?page='+page+'&limit=100');
-    if(s.code!=='200'){ L('HTTP '+s.code+' -- stop'); break; }
-    let jd;
-    try { jd = JSON.parse(s.raw); } catch(e){ L('parse err'); break; }
-    const arr = jd.data || [];
-    if(arr.length===0) break;
-    L('page '+page+': fetched '+arr.length);
-    let testFound = 0;
-    for(const sub of arr){
-      const email = sub.email || '';
-      if(seenIds.has(sub.id||email)) continue;
-      seenIds.add(sub.id||email);
-      allSeen.push(email);
-      if(isTest(email)){
-        testFound++;
-        const del = scall('DELETE','/subscribers/'+encodeURIComponent(email));
-        if(del.code==='200' || del.code==='204'){
-          allDeleted.push(email);
-          L('  DEL '+email+' -> '+del.code);
-        } else {
-          L('  FAIL '+email+' -> '+del.code+' ('+del.raw.slice(0,60)+')');
-        }
-      }
-    }
-    L('  test found this page: '+testFound);
-    // check next page
-    const meta = jd.meta || {};
-    if(arr.length < 100) break;
-    page++;
-    if(page > 20) break; // safety
-  }
-  L('');
-  L('=== VISO peržiūrėta: '+allSeen.length+' unikaliu ===');
-  L('=== VISO istrinta testiniu: '+allDeleted.length+' ===');
-  L('');
-  // Patikra — praeinu dar karta
-  L('--- POST-VERIFIKACIJA ---');
-  const s2 = scall('GET','/subscribers?page=1&limit=100');
-  let arr2 = [];
-  try { arr2 = JSON.parse(s2.raw).data || []; } catch(e){}
-  const remaining = arr2.filter(sub => isTest(sub.email));
-  L('  liko testiniu: '+remaining.length);
-  for(const r of remaining) L('    still: '+r.email);
-  putText('_valymas_2.txt', out);
-  console.log('done');
-})();
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_plugin_recon']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $out = array();\n  // 1. paziurim WP_CONTENT_DIR/plugins/ \u2014 ieskom petshop-* plugin'u\n  $plugins_dir = WP_PLUGIN_DIR;\n  $out['plugins_dir'] = $plugins_dir;\n  $entries = @scandir($plugins_dir);\n  $petshop = array();\n  if($entries){\n    foreach($entries as $e){\n      if(strpos($e,'petshop-')===0){\n        $full = $plugins_dir.'/'.$e;\n        if(is_dir($full)){\n          $files = @scandir($full);\n          $petshop[$e] = array(\n            'is_dir' => true,\n            'files' => array_values(array_filter($files, function($f){ return $f!=='.' && $f!=='..'; })),\n          );\n        }\n      }\n    }\n  }\n  $out['petshop_dirs'] = $petshop;\n  // 2. paziurim petshop-fbt (jei egzistuoja) struktura giliau\n  $fbt = $plugins_dir.'/petshop-fbt';\n  if(is_dir($fbt)){\n    $tree = array();\n    $recurse = function($dir, $prefix='') use (&$recurse, &$tree){\n      $files = @scandir($dir);\n      if(!$files) return;\n      foreach($files as $f){\n        if($f==='.' || $f==='..') continue;\n        $full = $dir.'/'.$f;\n        $rel = $prefix.$f;\n        if(is_dir($full)){\n          $tree[] = $rel.'/';\n          if(substr_count($prefix,'/') < 2) $recurse($full, $rel.'/');\n        } else {\n          $tree[] = $rel.' ('.@filesize($full).'b)';\n        }\n      }\n    };\n    $recurse($fbt);\n    $out['petshop_fbt_tree'] = $tree;\n  }\n  // 3. paziurim ar egzistuoja petshop-esp jau\n  $esp = $plugins_dir.'/petshop-esp';\n  $out['petshop_esp_exists'] = is_dir($esp) ? 'YRA' : 'NERA';\n  // 4. patikrinam ar main plugin file petshop-fbt.php egzistuoja + jo header\n  $fbtMain = $fbt.'/petshop-fbt.php';\n  if(is_file($fbtMain)){\n    $head = @file_get_contents($fbtMain, false, null, 0, 800);\n    $out['petshop_fbt_php_head'] = $head;\n  }\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
+(async()=>{let id=0;try{
+  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop PluginsRecon tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
+  try{id=JSON.parse(c.body).id;}catch(e){}
+  if(!id){putText('_plugin_recon.txt','snippet fail '+c.body.slice(0,200));return;}
+  execSync('sleep 2');
+  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_plugin_recon=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  putText('plugin_recon.json', r);
+  if(id){api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});}
+}catch(e){putText('_plugin_recon.txt','!!! '+e);}})();
