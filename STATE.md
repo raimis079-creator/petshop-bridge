@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S192 — order_shipped (M12) gyvas: HPOS woocommerce_update_order, Venipak/LP tracking detekcija, idempotencija; order lifecycle pilnas).
+> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S192 — order_shipped (M12) gyvas. M11 refill DIZAINAS paruoštas, kodas DAR NEPADARYTAS — pending).
 
 ---
 
