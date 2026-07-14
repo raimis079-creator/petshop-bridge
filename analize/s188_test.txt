@@ -1,0 +1,42 @@
+deploy: {"registry":5770,"emitters":4175,"csync":8299,"schemas_written":13,"main":8584}
+reactivate: {"active":true,"err":null,"ver":"0.3.0"}
+Home: HTTP:200
+
+=== S188 TEST ===
+{
+    "0_core_ver": "0.3.0",
+    "0_registry": true,
+    "0_emitters": true,
+    "1_active_events": [
+        "order_paid",
+        "consent_changed"
+    ],
+    "1_is_order_paid_canonical": true,
+    "1_is_fake_canonical": false,
+    "2_valid_good": {
+        "valid": true,
+        "errors": []
+    },
+    "2_valid_bad": {
+        "valid": false,
+        "errors": [
+            "missing_required: order_total",
+            "invalid_enum: order_currency=USD"
+        ]
+    },
+    "3_emit_order_paid": {
+        "ok": true,
+        "log_id": 74,
+        "validation": true
+    },
+    "4_event_row": {
+        "name": "order_paid",
+        "status": "pending",
+        "email": "terra@gyvunai.lt"
+    },
+    "5_consent_event_created": true,
+    "5_consent_event_count": 1,
+    "6_wc_payment_hook": "yes",
+    "6_wc_processing_hook": "yes",
+    "7_cleanup": "done"
+}
