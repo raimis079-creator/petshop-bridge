@@ -1,0 +1,27 @@
+=== SenderAdapter recon (pries v0.2.0 koda) ===
+
+--- 1. Esami PS_ custom fields ---
+  HTTP 404 — {
+    "message": "The route v2/account/fields could not be found."
+}
+
+--- 2. terra@gyvunai.lt status modelis ---
+  email(marketing) status: {"email":"unsubscribed","temail":"active"}
+  raw keys: bounced_at, bounced_at_utc, columns, created, created_utc, email, firstname, id, ip_address, lastname, location, phone, phone_country, source, status, subscriber_tags, unsubscribed_at, unsubscribed_at_utc
+  status objektas: {"email":"unsubscribed","temail":"active"}
+
+--- 3. Reaktyvavimo scenarijus (unsub → upsert) ---
+  3a. create: HTTP 201 — {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","typ
+  3b. delete(soft): HTTP 200
+  3c. status po delete: {"email":"active","temail":"active"}
+  3d. re-POST: HTTP 200 — {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","type":"text","value":"R
+  3e. PATCH fields ant unsub: HTTP 200 — {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"egLxlj","title":"PS_ORDER_COUNT","type":"number","val
+  3f. status po re-POST+PATCH: {"email":"active","temail":"active"}
+
+--- 4. Rate limit info ---
+  rate limit headers: x-ratelimit-limit: 300 | x-ratelimit-remaining: 299
+
+--- 5. Transactional endpoint (message/send) ---
+  (nesiunčiam realaus, tik patvirtinam kad TK egzistuoja)
+  TK length: 987
+  MK length: 988
