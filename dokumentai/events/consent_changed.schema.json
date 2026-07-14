@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "consent_changed",
+  "description": "Marketing consent pasikeitimas — is Woo (checkout, mano-paskyra, admin) arba is Sender (webhook)",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "consent_changed"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": ["integer", "null"]},
+    "payload": {
+      "type": "object",
+      "required": ["field", "from_value", "to_value", "source"],
+      "properties": {
+        "field": {"type": "string", "enum": ["marketing_consent", "transactional_only"]},
+        "from_value": {"type": "string", "enum": ["true", "false", ""]},
+        "to_value": {"type": "string", "enum": ["true", "false"]},
+        "source": {"type": "string", "enum": ["checkout", "mano-paskyra", "unsubscribe-link", "webhook", "import", "admin"]},
+        "ip": {"type": ["string", "null"]},
+        "user_agent": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
