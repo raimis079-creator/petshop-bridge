@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cart_abandoned",
+  "description": "Krepselis apleistas su identifikuotu email. Reikalauja atskiro cart-tracking modulio (ne vien WC session).",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "cart_abandoned"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": ["integer", "null"]},
+    "payload": {
+      "type": "object",
+      "required": ["cart_id", "cart_total", "cart_items", "last_activity_at"],
+      "properties": {
+        "cart_id": {"type": "string"},
+        "cart_total": {"type": "number"},
+        "cart_currency": {"type": "string", "enum": ["EUR"]},
+        "cart_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["product_id", "name", "quantity"],
+            "properties": {
+              "product_id": {"type": "integer"},
+              "name": {"type": "string"},
+              "quantity": {"type": "number"},
+              "line_total": {"type": "number"}
+            }
+          }
+        },
+        "last_activity_at": {"type": "string", "format": "date-time"},
+        "recovery_url": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
