@@ -119,6 +119,16 @@ add_action( 'plugins_loaded', function() {
 	// jei esp v0.3.0 dar valdo — core klases uzloaduotos ir kviesamos, bet hook'ai lieka esp pusej
 }, 5 );
 
+// --- Event Emitters (order_paid ir kt.) ---
+// Kabinam ant 'woocommerce_init' (NE plugins_loaded), nes plugins_loaded metu WooCommerce
+// dar gali buti neinicializuotas — hook'ai neprisiregistruotu. woocommerce_init garantuoja
+// kad WC pilnai uzkrautas. Fallback: jei WC nera, 'init' su class_exists patikra.
+add_action( 'woocommerce_init', function() {
+	if ( class_exists( 'Petshop_Event_Emitters' ) ) {
+		Petshop_Event_Emitters::init();
+	}
+} );
+
 // -----------------------------------------------------------------------------
 // PUBLIC API — apsaugota function_exists() guard'ais migracijos laikotarpiu.
 // Petshop-esp v0.3.0 dar deklaruoja tas pačias funkcijas. Kai esp v0.4.0 bus deploy'inta,
