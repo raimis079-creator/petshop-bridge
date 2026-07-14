@@ -1,0 +1,53 @@
+{
+    "1_venipak_dispatch_methods": [
+        "__construct",
+        "add_venipak_shipping_bulk_action_process",
+        "add_venipak_shipping_dispatch_force",
+        "add_venipak_shipping_dispatch",
+        "venipak_shipping_dispatch_order",
+        "getImportXML",
+        "get_product_weight",
+        "get_order_address"
+    ],
+    "1b_venipak_order_edit_methods": [
+        "__construct",
+        "add_venipak_shipping_order_edit",
+        "add_venipak_shipping_order_save",
+        "get_venipak_point_title_by_id",
+        "get_venipak_status",
+        "get_venipak_tracking_code",
+        "get_venipak_manifest",
+        "get_venipak_error",
+        "get_order_event_detail",
+        "get_order_tracking_data",
+        "get_venipak_shipping_order_data",
+        "get_order_pack_no",
+        "get_venipak_packs",
+        "get_venipak_weight",
+        "get_product_weight",
+        "get_venipak_status_title",
+        "get_product_count"
+    ],
+    "2_lp_tracking_methods": [
+        "__construct",
+        "schedule_tracking_info",
+        "schedule_tracking_data_sync",
+        "update_tracking_status",
+        "register_url_api_endpoint",
+        "url_api_endpoint_callback",
+        "find_with_greatest_date",
+        "get_tracking_events",
+        "load_tracking_email_template",
+        "send_tracking_email",
+        "sync_tracking_data",
+        "get_next_sync_tracking_data_time"
+    ],
+    "3_found_meta_and_hooks": {
+        "_venipak_total_shipments": "wc-venipak-shipping",
+        "_omnivalt_total_shipments": "wc-venipak-shipping",
+        "_woo_lithuaniapost_barcode": "woo-lithuaniapost-main",
+        "_woo_lithuaniapost_returns_barcodes": "woo-lithuaniapost-main",
+        "_woo_lithuaniapost_tracking_mail_send": "woo-lithuaniapost-main",
+        "HOOK:woo_lithuaniapost_send_tracking_email": "woo-lithuaniapost-main"
+    }
+}
