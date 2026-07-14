@@ -1,0 +1,12 @@
+=== Sender automation/workflow API recon ===
+GET /workflows -> HTTP 200 | {"data":[],"links":{"first":"https:\/\/api.sender.net\/v2\/workflows?page=1","last":"https:\/\/api.sender.net\/v2\/workflows?page=1","prev":null,"next
+GET /automations -> HTTP 404 | {
+    "message": "The route v2/automations could not be found."
+}
+GET /campaigns -> HTTP 200 | {"data":[{"id":"e7jNY1","subject":"1+0,5 kg NEMOKAMAI: Quattro kat\u0117ms","reply_to":"terra@petshop.lt","language":"en","recipient_count":2,"from":"
+GET /account/workflows -> HTTP 404 | {
+    "message": "The route v2/account/workflows could not be found."
+}
+
+--- Groups (PS_TEST) ---
+  bDxp2q : PS_TEST (subscribers: 4)
