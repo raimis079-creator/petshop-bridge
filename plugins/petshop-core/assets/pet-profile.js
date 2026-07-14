@@ -5,6 +5,15 @@
 	var CFG = window.PSPetConfig || {};
 	var REST = CFG.restUrl || '/wp-json/petshop/v1';
 	var NONCE = CFG.nonce || '';
+	var IMAGES = CFG.imagesUrl || '';
+
+	function speciesAvatar(species){
+		// Grazina <img> jei yra iliustracija, kitaip emoji fallback
+		var map = { dog:'pet-dog', cat:'pet-cat', bird:'pet-bird', rodent:'pet-rodent', fish:'pet-fish', reptile:'pet-reptile', other:'pet-other' };
+		var key = map[species] || 'pet-other';
+		if (IMAGES) return '<img src="' + IMAGES + key + '.png" alt="" style="width:100%;height:100%;object-fit:contain">';
+		return SPECIES_ICON[species] || '🐾';
+	}
 
 	var SPECIES_ICON = {
 		dog: '🐕', cat: '🐈', bird: '🦜', rodent: '🐹',
@@ -76,7 +85,10 @@
 		root.innerHTML = '';
 		var wrap = el('div', 'pspet-profile');
 		var empty = el('div', 'pspet-empty');
-		empty.appendChild(el('div', 'pspet-empty-icon', '🐾'));
+		var emptyIcon = el('div', 'pspet-empty-icon');
+		if (IMAGES) emptyIcon.innerHTML = '<img src="' + IMAGES + 'pet-empty-state.png" alt="" style="max-width:280px;width:100%">';
+		else emptyIcon.textContent = '🐾';
+		empty.appendChild(emptyIcon);
 		empty.appendChild(el('div', 'pspet-empty-title', 'Susipažinkime su jūsų augintiniu'));
 		empty.appendChild(el('div', 'pspet-empty-sub', 'Vienoje vietoje matysite priminimus, maisto papildymą ir įprastus pirkinius.'));
 		var btn = el('button', 'pspet-btn pspet-btn-primary', 'Sukurti profilį');
@@ -140,7 +152,7 @@
 		var sw = el('div', 'pspet-switcher');
 		pets.forEach(function(p){
 			var item = el('div', 'pspet-switch-item' + (p.id === activePetId ? ' active' : ''));
-			var av = el('div', 'pspet-switch-avatar', SPECIES_ICON[p.species] || '🐾');
+			var av = el('div', 'pspet-switch-avatar', speciesAvatar(p.species));
 			item.appendChild(av);
 			item.appendChild(el('div', 'pspet-switch-name', p.pet_name || SPECIES_LABEL[p.species]));
 			item.onclick = function(){ activePetId = p.id; loadDashboard(p.id); };
@@ -162,7 +174,7 @@
 			img.src = pet.photo_url + '?nonce=' + NONCE;
 			avatar.appendChild(img);
 		} else {
-			avatar.textContent = SPECIES_ICON[pet.species] || '🐾';
+			avatar.innerHTML = speciesAvatar(pet.species);
 		}
 		h.appendChild(avatar);
 
