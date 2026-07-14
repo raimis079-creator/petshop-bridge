@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-14** (po S180 — ESP platforma Brevo→Sender + POC 8 testai).
+> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S181 — Petshop ESP plugin v0.1.0 gyvas, Etapo A pradžia).
 
 ---
 
@@ -36,9 +36,18 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 **ESP/EMAIL PLATFORMA IŠSPRĘSTA (S180):** TŽ §4 vykdymo platforma = **Sender.net** (buvo Brevo, TŽ v1.44). Sprendimas pagrįstas: kainų korekcija (~5× pigiau nei Brevo), šildyta paskyra su verifikuotu petshop.lt domenu, LT įmonė+SMS. Sender POC: **8 testų → 5 žali, 3 geltoni, 0 raudonų** (geltoni sutampa su architektūra — Sender=kvailas vykdytojas). Sender techniškai TINKA mūsų ESP-nepriklausomai architektūrai.
 
-**Kitas žingsnis:** (1) likę 3 POC testai (#7 SMS, #9 links.petshop.lt, #10 mail.petshop.lt — reikia SMS kredito + DNS, atidėti į pre-launch); (2) **Etapas A** — techninis stuburas pagal TŽ v1.45/v1.47 (ESP adapter realus kodas, event emitteriai, retry queue, webhook receiver production'e); (3) dev valymas (#713 receiver, testiniai Sender kontaktai/webhookai).
+**ETAPO A PRADŽIA (S181):** Petshop ESP v0.1.0 plugin'as **GYVAS dev'e** — `wp-content/plugins/petshop-esp/` (main + interface + event log, 522 eilučių PHP). Public API `ps_emit_event()` empiriškai patvirtinta: 10/10 testų PASS, emit greitis **avg 0.73ms (100× geriau nei < 100ms reikalavimas)**, idempotencija veikia (INSERT IGNORE + UNIQUE key). Lentelė `gaj6_ps_event_log` migruota į galutinę schemą (12 stulpelių + 5 indeksai). Failai repo: `plugins/petshop-esp/`.
 
-**ESP skeletas paruoštas:** `moduliai/esp-adapter-skeleton/` (interface + event-id-schema + retry-queue-architecture + README) — projektas Etapo A pradžiai.
+**ARCHITEKTŪROS SPRENDIMAI UŽRAKINTI (2026-07-14 sesija):**
+- **Email atskyrimas (C hibridas):** transakciniai teisiniai (new_order, invoice, processing) → WC/SMTP; lifecycle/marketing → Sender. Vienas išsiuntimo pranešimas (`customer_completed_order`) perkeltas į Sender kaip post-purchase serijos pradžią.
+- **Prenumeratos modulis:** dvi ašys (siuntos kontrolė × mokėjimo mechanika), NE viena dilema. Launch default: `confirm_required + token charge`. Dunning retry mūsų pusėje. Detalės: `dokumentai/prenumerata_uzrakinta_2026-07-14.md`.
+- **Architektūros žemėlapis:** 16 modulių, 9 naujos DB lentelės — `plugins/petshop-esp/` (M1+M2) šiuo metu tik viena baigta.
+
+**Blokas 0 (dev valymas):** ✅ #713 deaktyvuotas, ✅ 2 Sender webhook.site webhookai ištrinti, ⚠️ 4 testiniai Sender kontaktai soft-deleted (Sender API elgesys — lieka DB kaip unsubscribed, kvotos nepaimta).
+
+**Kitas žingsnis (v0.2.0):** `Petshop_Sender_Adapter` realus kodas (PATCH /subscribers, POST /events, POST /message/send) + `Petshop_ESP_Retry_Queue` (Action Scheduler backoff worker). Prieš tai — Sender adapter'io `upsert_contact()` niuansas: reaktyvuoti unsubscribed kontaktą, ne kurti naujai.
+
+**Paraleliai (Raimio pusėje):** Paysera kortelių priėmimo aktyvavimas projektui 191898 (bazinis sluoksnis prieš recurring).
 
 **Atviri MVP likučiai** (nekritiška): poreikio filtrai, CTA telefonas — žr. deployment_log S175. Probe snippetų valymas — neišvalyta.
 
@@ -63,10 +72,13 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 | Dokumentas | Versija | Kur | Ką laiko |
 |---|---|---|---|
 | **TŽ MASTER** | **v1.58** | `dokumentai/TZ_MASTER_v1_58.docx` | Spec — *ką statom* (v1.58 = ESP Brevo→Sender + POC) |
-| **deployment_log** | **v1.3.47** | `dokumentai/deployment_log_v1_3_47.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S180) |
+| **deployment_log** | **v1.3.48** | `dokumentai/deployment_log_v1_3_48.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S181) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
+| **Architektūros žemėlapis** | v1 | `/mnt/user-data/outputs/architektura_v1.md` (Raimio PC) | 16 modulių + 9 DB lentelės + priklausomybės |
+| **Prenumeratos sprendimas UŽRAKINTA** | 2026-07-14 | `dokumentai/prenumerata_uzrakinta_2026-07-14.md` | Dvi ašys, launch default, dunning mūsų pusėje |
+| **Etapo A planas v2** | v2 | `/mnt/user-data/outputs/etapas_A_planas_v2.md` (Raimio PC) | 12 žingsnių pagal priklausomybes |
 
 **Dviguba apskaita:** Raimis laiko TŽ + deployment_log PC; Claude — repo. Claude rašo tik ką pats generuoja; Raimio rankinius keitimus įkelia gavęs. Niekada abu aklai vienu metu.
 
@@ -98,7 +110,7 @@ Paukščių media ID: lesalas 34635, skanėstai 34636, aksesuarai 34637.
 
 **Backup optionai (jei reikia atkurti):** `ps_sidebars_widgets_backup` (Footer 1 widgetai) · `ps_vetdiet_revert_log` (pa_speciali_mityba).
 
-**ESP/Sender (S180):** #713 „Petshop Sender Webhook Receiver v1" (deaktyvuotas — webhook receiver testui, gali praversti re-testui) · lentelė `gaj6_ps_event_log` (event idempotencija + retry queue) · Sender: PS_TEST grupė (bDxp2q), PS_ORDER_COUNT/PS_PET_SPECIES/PS_MARKETING_CONSENT custom fields, webhookai į webhook.site (izoliacinis testas). Sender account azv2GY, domenas petshop.lt (id eE9p2l) verifikuotas. Tokens GitHub secrets: SENDER_MARKETING_TOKEN, SENDER_TRANSACTIONAL_TOKEN.
+**ESP/Sender (S181):** `petshop-esp` v0.1.0 plugin **AKTYVUS** dev'e (`wp-content/plugins/petshop-esp/`) — interface + event log + public API `ps_emit_event()`. Failai repo `plugins/petshop-esp/`. Lentelė `gaj6_ps_event_log` migruota (12 stulpelių + 5 indeksai, UNIQUE event_id+adapter). #713 „Sender Webhook Receiver v1" DEAKTYVUOTAS (bus perkeltas į plugin v0.3.0). Sender pusėje: PS_TEST grupė (bDxp2q), 3 PS_ custom fields, testiniai kontaktai soft-deleted, webhook.site webhookai IŠTRINTI. Sender account azv2GY, domenas petshop.lt (id eE9p2l) verifikuotas. Tokens GitHub secrets: SENDER_MARKETING_TOKEN, SENDER_TRANSACTIONAL_TOKEN.
 
 ---
 
