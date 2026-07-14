@@ -1,0 +1,34 @@
+--- Antra pop-ras testiniu kontaktu valymui ---
+
+=== pattern: webhooktest ===
+  page 1: found 5
+  pattern webhooktest istrinta: 1
+=== pattern: whsite ===
+  page 1: found 5
+  pattern whsite istrinta: 1
+=== pattern: whunsub ===
+  page 1: found 5
+  pattern whunsub istrinta: 1
+=== pattern: whlong ===
+  page 1: found 5
+  pattern whlong istrinta: 0
+
+=== VISO istrinta: 3 ===
+
+--- Patikra po valymo ---
+  webhooktest: lieka 5
+    whunsub+1783977217390@example.com
+    whsite+1783977112277@example.com
+    webhooklong+1783976488633@example.com
+  whsite: lieka 5
+    whunsub+1783977217390@example.com
+    whsite+1783977112277@example.com
+    webhooklong+1783976488633@example.com
+  whunsub: lieka 5
+    whunsub+1783977217390@example.com
+    whsite+1783977112277@example.com
+    webhooklong+1783976488633@example.com
+  whlong: lieka 5
+    whunsub+1783977217390@example.com
+    whsite+1783977112277@example.com
+    webhooklong+1783976488633@example.com
