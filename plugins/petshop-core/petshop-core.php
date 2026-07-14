@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Core
  * Description: Petshop.lt provider-neutralus sistemos pamatas: event log + retry queue, event registry, consent log/sync, action tokens, message provider interface. Prielaida: bet koks message provider (Sender, SMS, kt.) priklauso nuo šio plugin'o, ne atvirkščiai.
- * Version: 0.9.0
+ * Version: 0.10.0
  * Author: UAB Avesa / Petshop.lt
  * Requires at least: 6.0
  * Requires PHP: 8.1
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PETSHOP_CORE_VERSION', '0.9.0' );
+define( 'PETSHOP_CORE_VERSION', '0.10.0' );
 define( 'PETSHOP_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PETSHOP_CORE_URL', plugin_dir_url( __FILE__ ) );
 
@@ -74,6 +74,7 @@ require_once PETSHOP_CORE_DIR . 'includes/class-event-emitters.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-magic-login.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-pet-profile.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-pet-products.php';
+require_once PETSHOP_CORE_DIR . 'includes/class-pet-ui.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-refill-engine.php';
 require_once PETSHOP_CORE_DIR . 'includes/class-reminders.php';
 
@@ -85,6 +86,9 @@ register_activation_hook( __FILE__, function() {
 	Petshop_Action_Tokens::ensure_keys();
 	Petshop_Pet_Profile::install();
 	Petshop_Pet_Products::install();
+	if ( class_exists( 'Petshop_Pet_UI' ) ) {
+		Petshop_Pet_UI::flush_rewrite();
+	}
 	Petshop_Refill_Engine::install();
 	Petshop_Reminders::install();
 	if ( ! wp_next_scheduled( 'ps_esp_cron_process_pending' ) ) {
@@ -142,6 +146,9 @@ add_action( 'plugins_loaded', function() {
 	}
 	if ( class_exists( 'Petshop_Pet_Products' ) ) {
 		Petshop_Pet_Products::init();
+	}
+	if ( class_exists( 'Petshop_Pet_UI' ) ) {
+		Petshop_Pet_UI::init();
 	}
 }, 6 );
 
