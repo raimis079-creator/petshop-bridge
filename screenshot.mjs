@@ -1,25 +1,16 @@
 import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
-const SAPI='https://api.sender.net/v2';
-let out='';const L=s=>{out+=s+'\n';};
-function scall(method, path){
-  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" "'+SAPI+path+'"';
-  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
-  return {code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?', raw:r.replace(/\nHTTP:\S+$/,'')};
-}
-(async()=>{
-  L('=== Sender domeno autentifikacija (SPF/DKIM/DMARC) ===');
-  // Domenu sarasas + verifikacijos statusas
-  const endpoints = ['/domains', '/account/domains', '/senders', '/account/senders'];
-  for(const ep of endpoints){
-    const r = scall('GET', ep);
-    L(ep+' -> HTTP '+r.code);
-    if(r.code==='200'){ L(r.raw.slice(0,800)); }
-    else { L('  '+r.raw.slice(0,100)); }
-    L('');
-  }
-  putText('sender_domain.txt', out);
-  console.log('done');
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_smtp_test']) ) { return; }\n  if ( ($_GET['token']??'') !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $out = array();\n\n  // 1. WP Mail SMTP konfiguracija\n  $out['1_wp_mail_smtp_active'] = is_plugin_active('wp-mail-smtp/wp_mail_smtp.php') || function_exists('wp_mail_smtp');\n  // Tikrinam ar yra SMTP nustatymai\n  $smtp_opts = get_option('wp_mail_smtp', array());\n  if(!empty($smtp_opts)){\n    $out['1_mailer'] = $smtp_opts['mail']['mailer'] ?? '?';\n    $out['1_from_email'] = $smtp_opts['mail']['from_email'] ?? '?';\n    $out['1_from_name'] = $smtp_opts['mail']['from_name'] ?? '?';\n    $out['1_smtp_host'] = $smtp_opts['smtp']['host'] ?? '?';\n    $out['1_smtp_port'] = $smtp_opts['smtp']['port'] ?? '?';\n    $out['1_smtp_encryption'] = $smtp_opts['smtp']['encryption'] ?? '?';\n  } else {\n    $out['1_smtp_opts'] = 'nera wp_mail_smtp option';\n  }\n\n  // 2. Siun\u010diam testini lai\u0161k\u0105 per WP wp_mail() (kritinis kelias \u2014 SMTP)\n  $to = 'terra@gyvunai.lt';\n  $subject = 'Petshop.lt uzsakymo patvirtinimas (SMTP test #' . date('Hi') . ')';\n  $body = \"<html><body>\";\n  $body .= \"<h2>Aciu uz uzsakyma Petshop.lt!</h2>\";\n  $body .= \"<p>Sveiki,</p>\";\n  $body .= \"<p>Jusu uzsakymas Nr. TEST-12345 gautas ir apmoketas. Netrukus ji surinksime ir issiusime.</p>\";\n  $body .= \"<p><strong>Uzsakymo suma:</strong> 25,50 EUR</p>\";\n  $body .= \"<p>Pagarbiai,<br>Petshop.lt komanda</p>\";\n  $body .= \"</body></html>\";\n  $headers = array('Content-Type: text/html; charset=UTF-8', 'From: Petshop.lt <terra@petshop.lt>');\n  $sent = wp_mail($to, $subject, $body, $headers);\n  $out['2_wp_mail_sent'] = $sent ? 'true' : 'false';\n  $out['2_note'] = 'Patikrink terra@gyvunai.lt \u2014 ar SMTP lai\u0161kas atejo i inbox ar spam';\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
+(async()=>{let id=0;
+  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'SMTP Test tmp',desc:'x',code:PHP,scope:'global',active:true,priority:10});
+  try{id=JSON.parse(c.body).id;}catch(e){}
+  if(!id){putText('_smtp.txt','fail: '+c.body.slice(0,200));return;}
+  execSync('sleep 2');
+  const r=sh('curl -s -k --max-time 45 "'+BASE+'/?ps_smtp_test=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  putText('smtp_test.json', r);
+  api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});
 })();
