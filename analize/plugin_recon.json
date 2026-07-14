@@ -1,0 +1,55 @@
+{
+    "plugins_dir": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins",
+    "petshop_dirs": {
+        "petshop-attributes": {
+            "is_dir": true,
+            "files": [
+                "petshop-attributes.php"
+            ]
+        },
+        "petshop-fbt": {
+            "is_dir": true,
+            "files": [
+                "petshop-fbt.php"
+            ]
+        },
+        "petshop-feeds": {
+            "is_dir": true,
+            "files": [
+                "petshop-feeds.php"
+            ]
+        },
+        "petshop-fonts": {
+            "is_dir": true,
+            "files": [
+                "fonts",
+                "petshop-fonts.php"
+            ]
+        },
+        "petshop-pragma": {
+            "is_dir": true,
+            "files": [
+                "petshop-pragma.php"
+            ]
+        },
+        "petshop-promotions": {
+            "is_dir": true,
+            "files": [
+                "petshop-promotions.php"
+            ]
+        },
+        "petshop-xml": {
+            "is_dir": true,
+            "files": [
+                "includes",
+                "petshop-xml.php",
+                "readme.md"
+            ]
+        }
+    },
+    "petshop_fbt_tree": [
+        "petshop-fbt.php (36414b)"
+    ],
+    "petshop_esp_exists": "NERA",
+    "petshop_fbt_php_head": "<?php\n/**\n * Plugin Name: Petshop FBT (Dažnai perkama kartu)\n * Description: \"Frequently Bought Together\". Kategorijų porų sistema (auto kompanionai) + rankinis override. Nuolaida pagal kompaniono kategoriją (margin-safe). Suderinta su petshop.lt kainodara ir prenumerata. v1.4.0: globalus \"Akcija: −X%\" label krepšelyje. v1.4.1: random kompanionai + max 3 vnt. nuolaidos riba. v1.4.2: auto kompanionai TIK is to paties fulfillment source (S74). v1.4.3: AJAX add patikra atskirta nuo random rodymo (shuffle bug fix).\n * Version: 1.4.3\n * Author: petshop.lt\n * Requires Plugins: woocommerce\n * Text Domain: petshop-fbt\n *\n * v1.4.3 (2026-06-11): KRITINIS FIX — \"Prideti pasirinktas\" pridedavo TIK\n *   pagrindine preke, kompanionu ne.\n *\n *   PRIEZASTIS: ajax_add() patikrai pakartotinai kvie"
+}
