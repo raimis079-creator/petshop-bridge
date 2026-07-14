@@ -1,0 +1,129 @@
+{
+    "1_refill_schema_payload": {
+        "type": "object",
+        "required": [
+            "pet_id",
+            "product_id",
+            "predicted_empty_date",
+            "confidence"
+        ],
+        "properties": {
+            "pet_id": {
+                "type": "integer"
+            },
+            "product_id": {
+                "type": "integer"
+            },
+            "product_name": {
+                "type": "string"
+            },
+            "predicted_empty_date": {
+                "type": "string",
+                "format": "date"
+            },
+            "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+            },
+            "last_order_id": {
+                "type": "integer"
+            },
+            "days_since_last_order": {
+                "type": "integer"
+            }
+        }
+    },
+    "2_pakuotes_taxonomy": "yra",
+    "2_pakuotes_pavyzdziai": [
+        "1,5 kg",
+        "115 g",
+        "1250 g",
+        "135 g",
+        "240 g",
+        "285 g",
+        "320 g",
+        "4,25 kg",
+        "720 g",
+        "10 g",
+        "14 g",
+        "15 g",
+        "20 g",
+        "22 g",
+        "30 g"
+    ],
+    "3_product_weights": [
+        {
+            "name": "Ruda avies koja, 1 vnt. × 20 v",
+            "weight": "",
+            "sku": "DP-710002-20"
+        },
+        {
+            "name": "Ruda kiaulės ausis, 1 vnt. × 2",
+            "weight": "",
+            "sku": "DP-338000-20"
+        },
+        {
+            "name": "Animonda Carny Adult Beef + Tu",
+            "weight": "",
+            "sku": "DP-83724-6"
+        },
+        {
+            "name": "Exclusion Mediterraneo Mono Pr",
+            "weight": "",
+            "sku": "DP-NGCATW85-10"
+        },
+        {
+            "name": "Animonda Vom Feinsten Adult wi",
+            "weight": "",
+            "sku": "DP-83437-16"
+        }
+    ],
+    "4_ps_refill_fields": {
+        "PS_NEXT_REFILL_DATE": "bkZwYJ",
+        "PS_REFILL_CANDIDATE": "ejqvXy"
+    },
+    "5_food_categories": [
+        {
+            "name": "Akvariumo žuvyčių maistas",
+            "slug": "akvariumo-zuvyciu-maistas",
+            "count": 36
+        },
+        {
+            "name": "Hipoalerginis maistas šunims",
+            "slug": "hipoalerginis-maistas-sunims",
+            "count": 33
+        },
+        {
+            "name": "Maistas katėms",
+            "slug": "maistas-katems",
+            "count": 353
+        },
+        {
+            "name": "Maistas šunims",
+            "slug": "maistas-sunims",
+            "count": 644
+        },
+        {
+            "name": "Sausas maistas katėms",
+            "slug": "sausas-maistas-katems",
+            "count": 206
+        },
+        {
+            "name": "Sausas maistas šunims",
+            "slug": "sausas-maistas-sunims",
+            "count": 516
+        },
+        {
+            "name": "Super Premium šunų maistas",
+            "slug": "super-premium-sunu-maistas",
+            "count": 5
+        },
+        {
+            "name": "Tvenkinių žuvų maistas",
+            "slug": "tvenkiniu-zuvu-maistas",
+            "count": 11
+        }
+    ],
+    "6_fulfillment_resolver": "yra"
+}
