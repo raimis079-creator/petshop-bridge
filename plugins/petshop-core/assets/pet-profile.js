@@ -130,6 +130,11 @@
 		// Kas svarbu dabar
 		wrap.appendChild(renderNow(dash, pet));
 
+		// Aktualu siandien (async — atskiras endpoint)
+		var contentSlot = el('div', 'pspet-content-slot');
+		wrap.appendChild(contentSlot);
+		loadContent(pet.pet_id, contentSlot);
+
 		// Lentynėlė
 		if (dash.shelf && dash.shelf.length) {
 			wrap.appendChild(renderShelf(dash.shelf, pet));
@@ -145,7 +150,52 @@
 			wrap.appendChild(renderReminders(dash.reminders));
 		}
 
+		// "Aktualu siandien" blokas (async — atskiras endpoint)
+		var contentSlot = el('div', 'pspet-content-slot');
+		wrap.appendChild(contentSlot);
+		loadContent(pet.pet_id, contentSlot);
+
 		root.appendChild(wrap);
+	}
+
+	function loadContent(petId, slot){
+		fetch(REST + '/pet-content/' + petId, {
+			headers: { 'X-WP-Nonce': NONCE },
+			credentials: 'same-origin'
+		})
+		.then(function(r){ return r.json(); })
+		.then(function(data){
+			if (data.ok && data.content) renderContent(data.content, slot);
+			// jei content null — nieko nerodom (blokas nerodomas)
+		})
+		.catch(function(){});
+	}
+
+	function renderContent(c, slot){
+		var block = el('div', 'pspet-block');
+		var head = el('div', 'pspet-block-head');
+		head.appendChild(el('h3', 'pspet-block-title', 'Aktualu šiandien'));
+		block.appendChild(head);
+
+		var card = el('div', 'pspet-content-card');
+		if (c.image_url) {
+			var imgWrap = el('div', 'pspet-content-img');
+			var img = document.createElement('img');
+			img.src = c.image_url;
+			imgWrap.appendChild(img);
+			card.appendChild(imgWrap);
+		}
+		var body = el('div', 'pspet-content-body');
+		body.appendChild(el('div', 'pspet-content-title', c.title));
+		body.appendChild(el('div', 'pspet-content-text', c.text));
+		if (c.cta_text && c.cta_url) {
+			var cta = el('a', 'pspet-content-cta', c.cta_text);
+			cta.href = c.cta_url;
+			body.appendChild(cta);
+		}
+		card.appendChild(body);
+		block.appendChild(card);
+		slot.appendChild(block);
 	}
 
 	function renderSwitcher(){
@@ -429,6 +479,46 @@
 		});
 		block.appendChild(tl);
 		return block;
+	}
+
+	function loadContent(petId, slot){
+		fetch(REST + '/pet-content/' + petId, {
+			headers: { 'X-WP-Nonce': NONCE },
+			credentials: 'same-origin'
+		})
+		.then(function(r){ return r.json(); })
+		.then(function(data){
+			if (data.ok && data.content) renderContent(data.content, slot);
+			// jei null — blokas nerodomas (slot lieka tuscias)
+		})
+		.catch(function(){});
+	}
+
+	function renderContent(c, slot){
+		var block = el('div', 'pspet-block');
+		var head = el('div', 'pspet-block-head');
+		head.appendChild(el('h3', 'pspet-block-title', 'Aktualu šiandien'));
+		block.appendChild(head);
+
+		var card = el('div', 'pspet-content-card');
+		if (c.image_url) {
+			var img = document.createElement('img');
+			img.src = c.image_url;
+			img.className = 'pspet-content-img';
+			card.appendChild(img);
+		}
+		var body = el('div', 'pspet-content-body');
+		body.appendChild(el('div', 'pspet-content-title', c.title));
+		body.appendChild(el('div', 'pspet-content-text', c.text));
+		// CTA tik jei abu netusti (serveris jau atfiltravo)
+		if (c.cta_text && c.cta_url) {
+			var cta = el('a', 'pspet-content-cta', c.cta_text);
+			cta.href = c.cta_url;
+			body.appendChild(cta);
+		}
+		card.appendChild(body);
+		block.appendChild(card);
+		slot.appendChild(block);
 	}
 
 	function uploadPhoto(petId){
