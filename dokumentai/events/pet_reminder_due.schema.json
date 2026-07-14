@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "pet_reminder_due",
+  "description": "Priminimas augintiniui (skiepai, dehelmintizacija, veterinaro vizitas ir t.t.) — M13.",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "pet_reminder_due"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": "integer"},
+    "payload": {
+      "type": "object",
+      "required": ["reminder_id", "pet_id", "reminder_type", "due_date"],
+      "properties": {
+        "reminder_id": {"type": "integer"},
+        "pet_id": {"type": "integer"},
+        "pet_name": {"type": ["string", "null"]},
+        "reminder_type": {"type": "string", "enum": ["vaccination", "deworming", "flea_tick", "vet_checkup", "grooming", "custom"]},
+        "reminder_label": {"type": ["string", "null"]},
+        "due_date": {"type": "string", "format": "date"},
+        "confirm_token": {"type": "string"},
+        "reschedule_token": {"type": "string"}
+      }
+    }
+  }
+}
