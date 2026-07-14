@@ -1,36 +1,16 @@
 import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
-const SAPI='https://api.sender.net/v2';
-let out='';const L=s=>{out+=s+'\n';};
-function scall(method, path, body){
-  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+SAPI+path+'"';
-  if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+SAPI+path+'"';}
-  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
-  return {code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?', raw:r.replace(/\nHTTP:\S+$/,'')};
-}
-(async()=>{
-  L('=== Kaip mūsų order_paid event atrodo Sender pusej ===');
-  // Nusiunciam order_paid event i Sender (kaip adapter darytu) + tikrinam ar priima
-  const eventBody = {
-    subscriber: {email: 'terra@gyvunai.lt'},
-    type: 'order_paid',
-    order_id: 88888,
-    order_total: 25.50,
-    order_currency: 'EUR'
-  };
-  const r = scall('POST','/events', eventBody);
-  L('POST /events (order_paid) -> HTTP '+r.code);
-  L(r.raw.slice(0,300));
-  L('');
-
-  // Ar galim gauti esamu workflow detales (tas kuri sukurem e1wk0P)
-  L('=== Esamas workflow e1wk0P (DRAFT) ===');
-  const w = scall('GET','/workflows/e1wk0P');
-  L('HTTP '+w.code);
-  L(w.raw.slice(0,600));
-
-  putText('sender_event_wf.txt', out);
-  console.log('done');
+const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_e2e_full']) ) { return; }\n  if ( ($_GET['token']??'') !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  if ( ! class_exists('WooCommerce') ) { echo 'no WC'; exit; }\n  $out = array();\n  global $wpdb;\n\n  // 1. Sukuriam testini WC uzsakyma su allowlist email\n  $order = wc_create_order();\n  $order->set_billing_email('terra@gyvunai.lt');\n  $order->set_billing_first_name('Test');\n  $order->set_billing_last_name('E2E');\n  // Pridedam bet koki produkta (imam pirma esanti)\n  $products = wc_get_products(array('limit'=>1, 'status'=>'publish'));\n  if(!empty($products)){\n    $order->add_product($products[0], 1);\n  }\n  $order->set_payment_method('bacs');\n  $order->calculate_totals();\n  $order->save();\n  $order_id = $order->get_id();\n  $out['1_order_created'] = $order_id;\n  $out['1_order_total'] = $order->get_total();\n\n  // 2. Isvalom bet koki sena order_paid event si order_id\n  $wpdb->query($wpdb->prepare(\"DELETE FROM {$wpdb->prefix}ps_event_log WHERE event_id=%s\", 'order_paid_'.$order_id));\n\n  // 3. Trigger'inam payment complete (kaip realiai Paysera darytu)\n  $order->payment_complete();\n  // payment_complete() iskvieciam woocommerce_payment_complete hook -> m\u016bs\u0173 emitter\n\n  // 4. Tikrinam ar order_paid event sukurtas event_log\n  $ev = $wpdb->get_row($wpdb->prepare(\n    \"SELECT id,event_name,email,status,payload_json FROM {$wpdb->prefix}ps_event_log WHERE event_id=%s\",\n    'order_paid_'.$order_id\n  ));\n  if($ev){\n    $payload = json_decode($ev->payload_json, true);\n    $out['4_event_created'] = true;\n    $out['4_event'] = array(\n      'name'=>$ev->event_name,\n      'email'=>$ev->email,\n      'status'=>$ev->status,\n      'order_id'=>$payload['order_id']??null,\n      'order_total'=>$payload['order_total']??null,\n      'is_first_order'=>$payload['is_first_order']??null,\n      'items_count'=>count($payload['order_items']??array()),\n    );\n    $log_id = $ev->id;\n  } else {\n    $out['4_event_created'] = false;\n    $log_id = null;\n  }\n\n  // 5. Tikrinam ar Retry_Queue suplanavo async siuntima (Action Scheduler)\n  if($log_id && function_exists('as_next_scheduled_action')){\n    $scheduled = as_next_scheduled_action('ps_esp_process_event', array('log_id'=>$log_id));\n    $out['5_async_scheduled'] = $scheduled ? 'yes ('.date('H:i:s', $scheduled).')' : 'no/already_run';\n  }\n\n  // 6. Priverstinai apdorojam event dabar (kad pamatytume ar Sender priima)\n  if($log_id && class_exists('Petshop_Retry_Queue')){\n    Petshop_Retry_Queue::handle_process_event($log_id);\n    // Perskaitom status po apdorojimo\n    $ev2 = $wpdb->get_row($wpdb->prepare(\"SELECT status,last_error,esp_response FROM {$wpdb->prefix}ps_event_log WHERE id=%d\", $log_id));\n    $out['6_after_process'] = array(\n      'status'=>$ev2->status ?? '?',\n      'error'=>$ev2->last_error ?? null,\n      'esp_response'=>substr($ev2->esp_response ?? '', 0, 200),\n    );\n  }\n\n  // 7. Cleanup \u2014 istrinam testini uzsakyma + event\n  $order->delete(true);\n  if($log_id) $wpdb->delete($wpdb->prefix.'ps_event_log', array('id'=>$log_id));\n  $out['7_cleanup'] = 'done';\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
+function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
+function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
+(async()=>{let id=0;
+  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'E2E Full tmp',desc:'x',code:PHP,scope:'global',active:true,priority:10});
+  try{id=JSON.parse(c.body).id;}catch(e){}
+  if(!id){putText('_e2e.txt','fail: '+c.body.slice(0,200));return;}
+  execSync('sleep 2');
+  const r=sh('curl -s -k --max-time 60 "'+BASE+'/?ps_e2e_full=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
+  putText('e2e_full.json', r);
+  api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});
 })();
