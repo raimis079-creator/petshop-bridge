@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "pet_product_assigned",
+  "description": "Produktas priskirtas augintiniui (M8).",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version","event_name","event_id","emitted_at","email","payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "pet_product_assigned"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": "integer"},
+    "payload": {
+      "type": "object",
+      "required": ["pet_id","product_id"],
+      "properties": {
+        "pet_id": {"type": "integer"},
+        "product_id": {"type": "integer"},
+        "relationship_type": {"type": "string", "enum": ["primary_food","treat","supplement","care","other"]}
+      }
+    }
+  }
+}
