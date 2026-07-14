@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S195 — M8 backend paruostas: ps_pets praplesta 7 laukais, ps_pet_products nauja, PATCH/DELETE/brands/product-link endpointai. Core v0.9.0).
+> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S196 — M8 anketa gyva: 2 zingsniai, visos 7 rusys, localStorage, magic link. Shortcode + MyAccount tab. Core v0.10.0. Vizualiai patvirtinta).
 
 ---
 
@@ -53,7 +53,7 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 **M11 Refill Engine** — DIZAINAS PARUOŠTAS (dokumentai/m11_refill_dizainas.md), KODAS NEPADARYTAS. Self-calibrating iš pirkimo istorijos (NE teorinės normos — produktų weight tuščias, pakuotės formatas nevienodas). Launch MVP: grubus intervalas pagal pakuotės dydį (maža→14d/vidutinė→30d/didelė→60d, confidence 0.4); po 2+ pirkimų kalibruojasi iš realaus intervalo (confidence→0.9). DB ps_refill_tracking. Srautas: order_paid→įrašom; cron→refill_due. ATVIRAS: per klientą+produktą ar per augintinį? refill_due schema: pet_id, product_id, predicted_empty_date, confidence.
 
-**M8 "Mano augintinis"** — BACKEND ✅ (S195, core v0.9.0): ps_pets praplesta, ps_pet_products, 4 endpointai. FRONTEND laukia dizainerio vizualu. Specifikacija (MASTER v2.1) + mockup'ai + dizainerio briefas paruosti. Dar reikes: pet-photo, pet-dashboard, refill-feedback endpointai + HTML/CSS forma + MyAccount tab.
+**M8 "Mano augintinis"** — BACKEND ✅ (S195) + ANKETA ✅ (S196, core v0.10.0): 2-zingsniu anketa gyva (shortcode [petshop_pet_form] + MyAccount tab 'augintinis'), visos 7 rusys, dinamiski laukai, localStorage juodrastis 30d, magic link issaugojimas, brand autocomplete. Vizualiai patvirtinta (0 JS klaidu). LIKO: pet-dashboard agregatorius, pet-photo upload/serve, refill-feedback endpoint, profilio ekranas (render_account_page kol kas tik anketa), iliustracijos (dizaineris).
 
 **M10 Subscription** — NEPADARYTA (sudėtingiausias). Paysera custom gateway, recurring, dviejų ašių modelis, dunning.
 
@@ -94,7 +94,7 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 | **TŽ MASTER** | **v1.58** | `dokumentai/TZ_MASTER_v1_58.docx` | Spec — *ką statom* (v1.58 = ESP Brevo→Sender + POC) |
 | **architektūra v2** | **v2** | `dokumentai/architektura_v2.md` | Provider-neutralus pamatas + 16 modulių priklausomybės (S185, pakeičia v1) |
 | **event registry** | **v1** | `dokumentai/events/EVENTS.md` + 13 `.schema.json` | Kanoninis 13 P0 event sąrašas + JSON schemos (S185) |
-| **deployment_log** | **v1.3.62** | `dokumentai/deployment_log_v1_3_60.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S192) |
+| **deployment_log** | **v1.3.63** | `dokumentai/deployment_log_v1_3_60.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S192) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
