@@ -1,0 +1,5 @@
+=== Workflow kurimas su title ===
+variant 1 {"title":"PS E2E order_paid test"} -> HTTP 200
+  {"success":true,"message":"Successfully created workflow","data":{"id":"e1wk0P","user_id":"aQvN6M","account_id":"azv2GY","title":"PS E2E order_paid test","status":"DRAFT","created":"2026-07-14 15:10:45","modified":"2026-07-14 15:10:45","emails_sent":
+  CREATED id=e1wk0P
+  cleanup delete -> HTTP 405
