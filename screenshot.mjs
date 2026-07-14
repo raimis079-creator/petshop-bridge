@@ -10,26 +10,68 @@ function putResult(name, obj) {
   fs.writeFileSync('/tmp/p.json', JSON.stringify({ message: `r ${name}`, content, ...(sha?{sha}:{}) }));
   execSync(`curl -s -X PUT -H "Authorization: Bearer ${tok}" -d @/tmp/p.json "${url}"`);
 }
-function sh(c){ try { return execSync(c,{maxBuffer:30*1024*1024}).toString(); } catch(e){ return 'ERR:'+(e.message||'').slice(0,300); } }
+function sh(c, env){ try { return execSync(c,{maxBuffer:30*1024*1024, env: {...process.env, ...(env||{})}}).toString(); } catch(e){ return 'ERR:'+(e.message||'').slice(0,400); } }
 
+const WP_USER = (process.env.WP_USER||'').trim();
+const WP_PASS = (process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH = Buffer.from(WP_USER+':'+WP_PASS).toString('base64');
+const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = { ts: new Date().toISOString() };
 
-// 1. Env var VARDAI (ne reiksmes) - kokie WP secretai prieinami
-out.env_names = Object.keys(process.env).filter(k => /WP|PASS|USER|AUTH|SECRET/i.test(k) && !/GITHUB|RUNNER|npm/i.test(k));
+// PHP probe kodas (be <?php, code-snippets konvencija)
+const php = `
+add_action('wp_loaded', function(){
+	if ( ! isset($_GET['ps_m8probe']) || $_GET['ps_m8probe'] !== 'K9x2Vq7f' ) { return; }
+	global $wpdb;
+	$out = array();
+	$base = WP_PLUGIN_DIR . '/petshop-core/';
+	$out['files'] = array();
+	foreach (array_merge(glob($base.'*.php')?:array(), glob($base.'includes/*.php')?:array(), glob($base.'assets/*')?:array()) as $f) $out['files'][] = str_replace($base,'',$f);
+	$ui = $base.'includes/class-pet-ui.php';
+	$out['pet_ui_b64'] = file_exists($ui) ? base64_encode(file_get_contents($ui)) : 'MISSING';
+	$mainf = $base.'petshop-core.php';
+	$out['main_head'] = file_exists($mainf) ? substr(file_get_contents($mainf),0,800) : 'MISSING';
+	$eps = $GLOBALS['wp_rewrite']->endpoints;
+	$out['rewrite_endpoints'] = array();
+	if (is_array($eps)) foreach ($eps as $e) $out['rewrite_endpoints'][] = $e[1];
+	$t = $wpdb->prefix.'ps_event_log';
+	$out['esp_table'] = (bool)$wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s',$t));
+	if ($out['esp_table']) {
+		$out['esp_rows'] = $wpdb->get_results("SELECT event_id,event_name,email,status,attempts,reason,last_error,created_at FROM {$t} ORDER BY created_at DESC LIMIT 25", ARRAY_A);
+	}
+	$out['nr_hits'] = array();
+	foreach (glob(WP_PLUGIN_DIR.'/petshop-*', GLOB_ONLYDIR)?:array() as $dir) {
+		$phps = array_merge(glob($dir.'/*.php')?:array(), glob($dir.'/includes/*.php')?:array());
+		foreach ($phps as $f) {
+			$c = file_get_contents($f);
+			if (strpos($c,'non_retriable')!==false) {
+				$lines = explode("\\n",$c);
+				foreach ($lines as $i=>$l) if (strpos($l,'non_retriable')!==false) $out['nr_hits'][] = str_replace(WP_PLUGIN_DIR,'',$f).':'.($i+1).': '.trim(substr($l,0,200));
+			}
+		}
+	}
+	header('Content-Type: application/json');
+	echo wp_json_encode($out);
+	exit;
+});`;
 
-// 2. Pilni JS failai (base64, kad be sugadinimo)
-const f1 = sh('curl -sk --max-time 25 "https://dev.avesa.lt/wp-content/plugins/petshop-core/assets/pet-form.js"');
-const f2 = sh('curl -sk --max-time 25 "https://dev.avesa.lt/wp-content/plugins/petshop-core/assets/pet-profile.js"');
-out.pet_form_b64 = Buffer.from(f1).toString('base64');
-out.pet_profile_b64 = Buffer.from(f2).toString('base64');
+// 1. Sukuriam + aktyvuojam snippet
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 Probe v1 (read-only)', code: php, scope: 'global', active: true, desc: 'TEMP - istrinti po naudojimo' }));
+const create = sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
+let snipId = 0;
+try { const j = JSON.parse(create); snipId = j.id || 0; out.snippet_created = snipId; if(!snipId) out.create_raw = create.slice(0,500); } catch(e) { out.create_raw = create.slice(0,500); }
 
-// 3. Kur veda /anketa/ 301
-out.anketa_redirect = sh('curl -sk -o /dev/null -w "%{http_code} -> %{redirect_url}" --max-time 15 "https://dev.avesa.lt/anketa/"');
-
-// 4. Ar yra kitu galimu anketos puslapiu
-for (const slug of ['augintinis','pet','augintiniai','mano-augintinis-anketa']) {
-  out['page_'+slug] = sh(`curl -sk -o /dev/null -w "%{http_code}" --max-time 15 "https://dev.avesa.lt/${slug}/"`);
+if (snipId) {
+	// 2. Vykdom probe
+	const probe = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_m8probe=K9x2Vq7f"');
+	try { out.probe = JSON.parse(probe); } catch(e) { out.probe_raw = probe.slice(0,800); }
+	// 3. ISTRINAM snippet (higiena)
+	const del = sh(`curl -sk -X DELETE -H "Authorization: Basic ${AUTH}" "${API}/${snipId}"`);
+	out.snippet_deleted = del.slice(0,200);
+	// patikra kad istrintas
+	const chk = sh(`curl -sk -o /dev/null -w "%{http_code}" -H "Authorization: Basic ${AUTH}" "${API}/${snipId}"`);
+	out.delete_verify_code = chk;
 }
 
-putResult('m8_recon_2.json', out);
+putResult('m8_probe_1.json', out);
 console.log('DONE');
