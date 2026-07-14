@@ -1,0 +1,16 @@
+=== Sender webhook registracija ===
+URL: https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook
+
+--- 1. Esami webhookai (pries kurima) ---
+HTTP 200: {"data":[],"links":{"first":"https:\/\/api.sender.net\/v2\/account\/webhooks?page=1","last":"https:\/\/api.sender.net\/v2\/account\/webhooks?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false}
+
+--- 2. Kuriam unsubscribe webhook ---
+  variant 1 {"url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","event":"subscri -> HTTP 422
+    {"message":"Required value, topic","errors":{"topic":["Required value, topic"]}}
+  variant 2 {"url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","event":"subscri -> HTTP 422
+    {"message":"Required value, topic","errors":{"topic":["Required value, topic"]}}
+  variant 3 {"url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","type":"subscrib -> HTTP 422
+    {"message":"Required value, topic","errors":{"topic":["Required value, topic"]}}
+
+--- 3. Webhookai po kurimo ---
+HTTP 200: {"data":[],"links":{"first":"https:\/\/api.sender.net\/v2\/account\/webhooks?page=1","last":"https:\/\/api.sender.net\/v2\/account\/webhooks?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"https:\/\/api.sender.net\/v2\/account\/webhooks?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"https:\/\/api.sender.net\/v
