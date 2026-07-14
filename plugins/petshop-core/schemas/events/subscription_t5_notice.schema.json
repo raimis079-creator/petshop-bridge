@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "subscription_t5_notice",
+  "description": "Prenumerata: 5 dienos iki kito ciklo, klausiam kliento patvirtinimo (M10 confirm_required rezimas).",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "subscription_t5_notice"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": "integer"},
+    "payload": {
+      "type": "object",
+      "required": ["subscription_id", "cycle_number", "next_charge_date", "next_charge_amount"],
+      "properties": {
+        "subscription_id": {"type": "integer"},
+        "cycle_number": {"type": "integer"},
+        "next_charge_date": {"type": "string", "format": "date"},
+        "next_charge_amount": {"type": "number"},
+        "product_id": {"type": "integer"},
+        "product_name": {"type": "string"},
+        "confirm_token": {"type": "string"},
+        "skip_token": {"type": "string"},
+        "reschedule_token": {"type": "string"},
+        "cancel_token": {"type": "string"}
+      }
+    }
+  }
+}
