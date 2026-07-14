@@ -1,0 +1,27 @@
+deploy: {"bytes":11679}
+Home: HTTP:200
+
+=== M7 PARTIAL UPDATE TEST ===
+{
+    "1_created_pet_id": 3,
+    "1_saved": {
+        "name": "Reksas",
+        "size": "large",
+        "need": "hypo",
+        "brand": "Josera"
+    },
+    "2_update_changed": [
+        "dog_size",
+        "primary_need"
+    ],
+    "3_after_update": {
+        "name": "Reksas",
+        "life_stage": "adult",
+        "size": "medium",
+        "need": "digestion",
+        "feeding": "dry_only",
+        "brand": "Josera"
+    },
+    "3_partial_ok": "OK (tik 2 laukai pakito)",
+    "9_cleanup": "done"
+}
