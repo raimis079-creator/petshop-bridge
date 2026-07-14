@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shipment_returned",
+  "description": "Venipak/LP grazino siunta (klientas neatsiemė, adresas neteisingas, etc.) — M12.",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "shipment_returned"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": ["integer", "null"]},
+    "payload": {
+      "type": "object",
+      "required": ["order_id", "carrier", "tracking_number", "return_reason"],
+      "properties": {
+        "order_id": {"type": "integer"},
+        "carrier": {"type": "string", "enum": ["venipak", "lp_express"]},
+        "tracking_number": {"type": "string"},
+        "return_reason": {"type": "string", "enum": ["not_collected", "wrong_address", "refused", "damaged", "other"]},
+        "returned_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}
