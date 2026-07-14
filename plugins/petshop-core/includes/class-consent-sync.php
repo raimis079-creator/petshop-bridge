@@ -103,6 +103,16 @@ class Petshop_Consent_Sync {
 			}
 		}
 
+		// 4. Emit consent_changed event (jei Registry yra)
+		if ( class_exists( 'Petshop_Event_Registry' ) ) {
+			Petshop_Event_Registry::emit( 'consent_changed', $email, array(
+				'field'      => 'marketing_consent',
+				'from_value' => $from,
+				'to_value'   => $new_value,
+				'source'     => $source,
+			), array( 'event_id' => 'consent_' . md5( $email . $source . microtime() ) ) );
+		}
+
 		return array(
 			'ok'               => true,
 			'from'             => $from,
@@ -148,6 +158,16 @@ class Petshop_Consent_Sync {
 
 		if ( $customer_id ) {
 			update_user_meta( $customer_id, self::META_MARKETING, 'false' );
+		}
+
+		// Emit consent_changed (webhook)
+		if ( class_exists( 'Petshop_Event_Registry' ) ) {
+			Petshop_Event_Registry::emit( 'consent_changed', $email, array(
+				'field'      => 'marketing_consent',
+				'from_value' => $from,
+				'to_value'   => 'false',
+				'source'     => 'webhook',
+			), array( 'event_id' => 'consent_wh_' . md5( $email . microtime() ) ) );
 		}
 
 		return array( 'ok' => true, 'from' => $from, 'to' => 'false', 'customer_id' => $customer_id );
