@@ -113,7 +113,7 @@ class Petshop_ESP_Webhook_Receiver {
 			case 'subscribers/unsubscribed':
 			case 'subscriber.unsubscribed':
 			case 'unsubscribe':
-				return Petshop_ESP_Consent_Sync::handle_sender_unsubscribe( $email );
+				return Petshop_Consent_Sync::handle_sender_unsubscribe( $email );
 
 			case 'subscribers/bounced':
 			case 'subscriber.bounced':
@@ -122,7 +122,7 @@ class Petshop_ESP_Webhook_Receiver {
 			case 'subscribers/spam_reported':
 			case 'spam':
 			case 'spam_report':
-				return Petshop_ESP_Consent_Sync::handle_sender_bounce( $email );
+				return Petshop_Consent_Sync::handle_sender_bounce( $email );
 
 			case 'subscribers/updated':
 			case 'subscriber.updated':
