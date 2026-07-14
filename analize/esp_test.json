@@ -1,0 +1,66 @@
+{
+    "1_interface_exists": true,
+    "1_class_exists": true,
+    "1_fn_emit_exists": true,
+    "1_fn_get_exists": true,
+    "1_fn_pending_exists": true,
+    "2_table": "gaj6_ps_event_log",
+    "2_exists": true,
+    "2_columns": [
+        "id",
+        "event_id",
+        "event_name",
+        "email",
+        "payload_json",
+        "emitted_at",
+        "status",
+        "adapter_name",
+        "attempts",
+        "next_retry_at",
+        "last_error",
+        "esp_response"
+    ],
+    "2_indexes": {
+        "0": "PRIMARY",
+        "1": "uq_event_id_adapter",
+        "3": "idx_status_retry",
+        "5": "idx_email",
+        "6": "idx_emitted_at"
+    },
+    "4_emit_ms": [
+        0.81,
+        1,
+        0.66,
+        0.61,
+        0.58
+    ],
+    "4_emit_max_ms": 1,
+    "4_emit_avg_ms": 0.73,
+    "4_all_ok": true,
+    "4_none_dedup": true,
+    "5_redup_count": 5,
+    "5_idempotency_ok": true,
+    "6_get_found": {
+        "id": "69",
+        "event_name": "order_paid",
+        "status": "pending",
+        "email": "terra@gyvunai.lt"
+    },
+    "7_pending_count": 8,
+    "7_pending_all_test": 5,
+    "8_counts_24h": {
+        "pending": 8,
+        "sent": 0,
+        "failed": 0,
+        "dead": 0,
+        "skipped": 0
+    },
+    "9_update_ok": true,
+    "9_status_after_update": "sent",
+    "10_payload": {
+        "order_id": 40003,
+        "total": 45.5,
+        "currency": "EUR"
+    },
+    "11_cleanup_done": true
+}
