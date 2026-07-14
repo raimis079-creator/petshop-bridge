@@ -1,16 +1,92 @@
 import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_esp_test']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $out = array();\n\n  // 1. Ar plugin uzloadintas? Interface + class matomos?\n  $out['1_interface_exists'] = interface_exists('Interface_ESP_Adapter');\n  $out['1_class_exists'] = class_exists('Petshop_ESP_Event_Log');\n  $out['1_fn_emit_exists'] = function_exists('ps_emit_event');\n  $out['1_fn_get_exists'] = function_exists('ps_get_event');\n  $out['1_fn_pending_exists'] = function_exists('ps_get_pending_events');\n\n  // 2. Ar lentele egzistuoja + turi visus stulpelius (po maybe_install)?\n  global $wpdb;\n  $t = $wpdb->prefix.'ps_event_log';\n  $out['2_table'] = $t;\n  $out['2_exists'] = (bool) $wpdb->get_var(\"SHOW TABLES LIKE '$t'\");\n  $out['2_columns'] = $wpdb->get_col(\"SHOW COLUMNS FROM `$t`\");\n  $out['2_indexes'] = array_unique(array_map(function($r){return $r->Key_name;}, $wpdb->get_results(\"SHOW INDEX FROM `$t`\")));\n\n  // 3. Preventive cleanup \u2014 istrinti bet kokius test1:* i\u0161 praeitu paleidimu\n  $wpdb->query(\"DELETE FROM `$t` WHERE event_id LIKE 'v01test:%'\");\n\n  // 4. Emit 5 event'u. Testuojam < 100ms (net su warmup).\n  $emit_times = array();\n  $emit_results = array();\n  for ($i = 1; $i <= 5; $i++) {\n    $r = ps_emit_event(\n      'v01test:order_paid:'.$i,\n      'order_paid',\n      'terra@gyvunai.lt',\n      array('order_id' => 40000 + $i, 'total' => 42.50 + $i, 'currency' => 'EUR')\n    );\n    $emit_times[] = $r['ms'];\n    $emit_results[] = array('dedup'=>$r['dedup'],'ok'=>$r['ok'],'log_id'=>$r['log_id']);\n  }\n  $out['4_emit_ms'] = $emit_times;\n  $out['4_emit_max_ms'] = max($emit_times);\n  $out['4_emit_avg_ms'] = round(array_sum($emit_times)/count($emit_times), 2);\n  $out['4_all_ok'] = array_reduce($emit_results, function($c,$r){return $c && $r['ok'];}, true);\n  $out['4_none_dedup'] = array_reduce($emit_results, function($c,$r){return $c && !$r['dedup'];}, true);\n\n  // 5. Idempotency test \u2014 re-emit tu paciu 5 \u2192 visi turi buti dedup\n  $redup = 0;\n  for ($i = 1; $i <= 5; $i++) {\n    $r = ps_emit_event(\n      'v01test:order_paid:'.$i,\n      'order_paid',\n      'terra@gyvunai.lt',\n      array('order_id' => 40000 + $i, 'total' => 42.50 + $i)\n    );\n    if ($r['dedup']) $redup++;\n  }\n  $out['5_redup_count'] = $redup;\n  $out['5_idempotency_ok'] = ($redup === 5);\n\n  // 6. get_by_event_id patikra\n  $found = ps_get_event('v01test:order_paid:3');\n  $out['6_get_found'] = $found ? array('id'=>$found->id,'event_name'=>$found->event_name,'status'=>$found->status,'email'=>$found->email) : null;\n\n  // 7. get_pending_events patikra\n  $pending = ps_get_pending_events(10);\n  $out['7_pending_count'] = count($pending);\n  $out['7_pending_all_test'] = count(array_filter($pending, function($p){return strpos($p->event_id, 'v01test:')===0;}));\n\n  // 8. count_by_status\n  $counts = Petshop_ESP_Event_Log::count_by_status('sender', 24);\n  $out['8_counts_24h'] = $counts;\n\n  // 9. Update pavyzdys \u2014 imit 'sent' vienam\n  $upd = Petshop_ESP_Event_Log::update($emit_results[0]['log_id'], array('status'=>'sent'));\n  $out['9_update_ok'] = $upd;\n  $after = ps_get_event('v01test:order_paid:1');\n  $out['9_status_after_update'] = $after ? $after->status : null;\n\n  // 10. Payload storage patikra\n  $out['10_payload'] = $found ? json_decode($found->payload_json, true) : null;\n\n  // Cleanup\n  $wpdb->query(\"DELETE FROM `$t` WHERE event_id LIKE 'v01test:%'\");\n  $out['11_cleanup_done'] = true;\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{let id=0;try{
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop ESP Test tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
-  try{id=JSON.parse(c.body).id;}catch(e){}
-  if(!id){putText('_esp_test.txt','fail: '+c.body.slice(0,200));return;}
-  execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 60 "'+BASE+'/?ps_esp_test=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  putText('esp_test.json', r);
-  api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});
-}catch(e){putText('_esp_test.txt','!!!'+e);}})();
+const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
+const TK=(process.env.SENDER_TRANSACTIONAL_TOKEN||'').trim();
+const SAPI='https://api.sender.net/v2';
+let out='';const L=s=>{out+=s+'\n';};
+function scall(method, path, body, token){
+  const tk = token || MK;
+  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+tk+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+SAPI+path+'"';
+  if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+tk+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+SAPI+path+'"';}
+  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
+  const code=(r.match(/HTTP:(\S+)$/)||[])[1]||'?';const raw=r.replace(/\nHTTP:\S+$/,'');
+  return {code, raw};
+}
+(async()=>{
+  L('=== SenderAdapter recon (pries v0.2.0 koda) ===');
+  L('');
+
+  // 1. Custom fields dabar — patvirtinam TITLE names + ID
+  L('--- 1. Esami PS_ custom fields ---');
+  const cf = scall('GET','/account/fields');
+  if(cf.code==='200'){
+    let arr = [];
+    try{ arr = JSON.parse(cf.raw).data || []; }catch(e){}
+    for(const f of arr){
+      if((f.title||'').startsWith('PS_')){
+        L('  '+f.title+' (id='+f.id+', type='+(f.type||'?')+')');
+      }
+    }
+  } else { L('  HTTP '+cf.code+' — '+cf.raw.slice(0,120)); }
+  L('');
+
+  // 2. Konkretus subscriber — patvirtinam status modeli (email vs temail)
+  L('--- 2. terra@gyvunai.lt status modelis ---');
+  const sub = scall('GET','/subscribers/terra@gyvunai.lt');
+  if(sub.code==='200'){
+    let d;
+    try{ d = JSON.parse(sub.raw).data || JSON.parse(sub.raw); }catch(e){ d={}; }
+    L('  email(marketing) status: '+(d.status ? JSON.stringify(d.status) : (d.status_email||'?')));
+    L('  raw keys: '+Object.keys(d).join(', '));
+    // rodyti tik pagr laukus
+    if(d.status) L('  status objektas: '+JSON.stringify(d.status));
+  } else { L('  HTTP '+sub.code+' — '+sub.raw.slice(0,150)); }
+  L('');
+
+  // 3. TEST — sukurti unsubscribed kontakta, tada bandyti ji upsert'inti (reaktyvuoti)
+  L('--- 3. Reaktyvavimo scenarijus (unsub → upsert) ---');
+  const testEmail = 'reactivate_test@example.com';
+  // 3a. sukurti
+  const create = scall('POST','/subscribers', {email: testEmail, firstname:'ReactTest'});
+  L('  3a. create: HTTP '+create.code+' — '+create.raw.slice(0,100));
+  // 3b. unsubscribe (DELETE = soft delete)
+  const del = scall('DELETE','/subscribers/'+encodeURIComponent(testEmail));
+  L('  3b. delete(soft): HTTP '+del.code);
+  // 3c. GET po unsub
+  const g1 = scall('GET','/subscribers/'+encodeURIComponent(testEmail));
+  let st1='?';
+  try{ const d=JSON.parse(g1.raw).data||{}; st1=JSON.stringify(d.status); }catch(e){}
+  L('  3c. status po delete: '+st1);
+  // 3d. bandyti POST vel (ar duplikatas ar reaktyvuoja?)
+  const recreate = scall('POST','/subscribers', {email: testEmail, firstname:'ReactAgain'});
+  L('  3d. re-POST: HTTP '+recreate.code+' — '+recreate.raw.slice(0,120));
+  // 3e. bandyti PATCH (fields update) ant unsubscribed
+  const patch = scall('PATCH','/subscribers/'+encodeURIComponent(testEmail), {fields:{PS_ORDER_COUNT:'3'}});
+  L('  3e. PATCH fields ant unsub: HTTP '+patch.code+' — '+patch.raw.slice(0,120));
+  // 3f. GET final status
+  const g2 = scall('GET','/subscribers/'+encodeURIComponent(testEmail));
+  let st2='?';
+  try{ const d=JSON.parse(g2.raw).data||{}; st2=JSON.stringify(d.status); }catch(e){}
+  L('  3f. status po re-POST+PATCH: '+st2);
+  // cleanup
+  scall('DELETE','/subscribers/'+encodeURIComponent(testEmail));
+  L('');
+
+  // 4. Rate limit headers (kiek galim siusti)
+  L('--- 4. Rate limit info ---');
+  let cmd='curl -s -D - -o /dev/null --max-time 20 -H "Authorization: Bearer '+MK+'" "'+SAPI+'/groups"';
+  let rl;try{rl=execSync(cmd,{encoding:'utf8'});}catch(e){rl='err';}
+  const rlLines = rl.split('\n').filter(l => /ratelimit|rate-limit|x-rate/i.test(l));
+  L('  rate limit headers: '+(rlLines.length? rlLines.join(' | ') : 'nerasta'));
+  L('');
+
+  // 5. Transakcinis endpoint — patvirtinam kelia
+  L('--- 5. Transactional endpoint (message/send) ---');
+  L('  (nesiunčiam realaus, tik patvirtinam kad TK egzistuoja)');
+  L('  TK length: '+TK.length);
+  L('  MK length: '+MK.length);
+
+  putText('_adapter_recon.txt', out);
+  console.log('done');
+})();
