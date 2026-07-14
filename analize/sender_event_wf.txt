@@ -1,0 +1,7 @@
+=== Kaip mūsų order_paid event atrodo Sender pusej ===
+POST /events (order_paid) -> HTTP 200
+{"message":"Event created","success":true}
+
+=== Esamas workflow e1wk0P (DRAFT) ===
+HTTP 200
+{"data":{"id":"e1wk0P","user_id":"aQvN6M","account_id":"azv2GY","title":"PS E2E order_paid test","status":"DRAFT","created":"2026-07-14 15:10:45","modified":"2026-07-14 15:10:45","emails_sent":null,"type":null,"description":null,"report":{"sent_count":0,"finished_recipient_count":0},"index_report":[],"thumbnail":null,"workflow_category_id":null}}
