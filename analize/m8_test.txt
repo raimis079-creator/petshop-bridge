@@ -1,0 +1,47 @@
+deploy: {"pp":16293,"ppr":8703,"reg":5884,"s1":898,"s2":913,"main":10194}
+reactivate: {"active":true,"err":null,"ver":"0.9.0"}
+Home: HTTP:200
+
+=== M8 BACKEND TEST ===
+{
+    "0_ver": "0.9.0",
+    "0_petprofile": true,
+    "0_petproducts": true,
+    "0_pets_table": true,
+    "0_petprod_table": true,
+    "1_new_columns": "ALL PRESENT",
+    "2_create_bird": {
+        "status": 200,
+        "pet_id": 5
+    },
+    "2_saved": {
+        "species": "bird",
+        "detail": "Banguotoji papūgėlė",
+        "name": "Coco"
+    },
+    "3_skin_allergy": "OK",
+    "4_patch": {
+        "status": 200,
+        "changed": [
+            "dog_size"
+        ]
+    },
+    "5_brands": {
+        "count": 1,
+        "sample": [
+            "Josera"
+        ]
+    },
+    "6_link": {
+        "status": 200,
+        "link_id": 1
+    },
+    "6_shelf": 1,
+    "7_soft_delete": {
+        "status": 200,
+        "deleted": true
+    },
+    "7_soft_verify": "OK (soft)",
+    "7_list_excludes_deleted": 1,
+    "9_cleanup": "done"
+}
