@@ -1,0 +1,23 @@
+{
+    "1_theme": {
+        "name": "Flatsome Child",
+        "parent": "Flatsome"
+    },
+    "2_myaccount_id": "14",
+    "2_myaccount_url": "https://dev.avesa.lt/my-account/",
+    "2_wc_endpoints": {
+        "orders": "orders",
+        "edit-account": "edit-account"
+    },
+    "3_flatsome_active": false,
+    "4_permalink_structure": "/%postname%/",
+    "5_backend": {
+        "Pet_Profile": true,
+        "Pet_Products": true,
+        "Magic_Login": true,
+        "core_ver": "0.9.0"
+    },
+    "6_shortcode_support": true,
+    "7_rest_url": "https://dev.avesa.lt/wp-json/petshop/v1",
+    "7_nonce_action": "wp_rest"
+}
