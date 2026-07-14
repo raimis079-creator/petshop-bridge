@@ -1,0 +1,27 @@
+deploy: {"ct":6664,"json":7150,"pjs":17815,"css":14865,"main":10854}
+reactivate: {"ver":"0.14.0","err":null}
+Home: HTTP:200
+
+=== PET-CONTENT TEST ===
+{
+    "0_ver": "0.14.0",
+    "0_class": true,
+    "0_json": true,
+    "1_dog_content": "tick_season",
+    "2_skin_allergy": "tick_season",
+    "3_fish": "fish_water_change",
+    "4_cat_sterilised_top": "tick_season",
+    "5_cat_not_steril": "null (teisingai — sterilised NErodomas)",
+    "6_cooldown": {
+        "first": "tick_season",
+        "second": "sensitive_digestion",
+        "skirtingi": "TAIP (cooldown veikia)"
+    },
+    "7_season_wrap": {
+        "12-25": "OK",
+        "01-03": "OK",
+        "06-15": "OK",
+        "11-01": "OK"
+    },
+    "9_cleanup": "done"
+}
