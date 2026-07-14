@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S184 — ESP v0.3.0: consent sync + webhook receiver, Blokas 4/M4 baigta, POC #4 uzbaigta).
+> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S185 — architektūra v2 (3 v1 klaidos taisytos) + kanoninis 13 event registry užrakintas).
 
 ---
 
@@ -78,7 +78,9 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 | Dokumentas | Versija | Kur | Ką laiko |
 |---|---|---|---|
 | **TŽ MASTER** | **v1.58** | `dokumentai/TZ_MASTER_v1_58.docx` | Spec — *ką statom* (v1.58 = ESP Brevo→Sender + POC) |
-| **deployment_log** | **v1.3.51** | `dokumentai/deployment_log_v1_3_51.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S184) |
+| **architektūra v2** | **v2** | `dokumentai/architektura_v2.md` | Provider-neutralus pamatas + 16 modulių priklausomybės (S185, pakeičia v1) |
+| **event registry** | **v1** | `dokumentai/events/EVENTS.md` + 13 `.schema.json` | Kanoninis 13 P0 event sąrašas + JSON schemos (S185) |
+| **deployment_log** | **v1.3.52** | `dokumentai/deployment_log_v1_3_52.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S185) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
