@@ -1,0 +1,28 @@
+deploy: {"profile":17421,"pjs":20981,"main":10854}
+reactivate: {"active":true,"err":null,"ver":"0.15.0"}
+Home: HTTP:200
+
+=== ANONIMINIO KELIO E2E ===
+{
+    "0_ver": "0.15.0",
+    "0_client_ref_col": "YRA",
+    "1_new_account": {
+        "pet_id": 19,
+        "ok": true
+    },
+    "1_pet_saved": "OK (1 pet DB)",
+    "9_repeat_magic_link": {
+        "pet_id": 19,
+        "dedup": true
+    },
+    "9_no_duplicate": "OK (dedup, 1 pet)",
+    "2_existing_empty": "OK (pet_id 20, is_primary=yes)",
+    "3_existing_other_pet": "OK (2 pets: Murke+Reksas)",
+    "3_second_not_primary": "OK (ne primary)",
+    "4_duplicate_pet": {
+        "created": true,
+        "total_pets": "3",
+        "note": "KITAS client_ref -> kuriam atskira (ne auto-merge). Vartotojas mato abu, gali istrint."
+    },
+    "cleanup": "done"
+}
