@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop ESP (Email Service Provider adapter)
  * Description: Vienintelis vamzdis is Woo/Petshop-core i Sender.net (ir ateityje kitus ESP). Susideda is: adapterio (kontraktas + Sender implementacija), event log (idempotencija), retry queue (Action Scheduler backoff), webhook receiver (consent sync). Sender = kvailas vykdytojas; verslo logika lieka Woo pusėje. „Gelezine taisykle": isjungus Sender, parduotuve praranda TIK laisku/SMS pristatyma — visi klientai, sutikimai, refill skaiciavimai, prenumeratos, priminimai islieka.
- * Version: 0.2.0
+ * Version: 0.3.0
  * Author: petshop.lt
  * Requires Plugins: woocommerce
  * Text Domain: petshop-esp
@@ -18,20 +18,26 @@
  * - Petshop_ESP_Event_Log — DB sluoksnis (gaj6_ps_event_log, unique event_id+adapter_name)
  * - Petshop_Sender_Adapter — Sender.net implementacija (v0.2.0)
  * - Petshop_ESP_Retry_Queue — Action Scheduler backoff (v0.2.0)
- * - Petshop_ESP_Webhook_Receiver — Sender webhook prijemimas (bus v0.3.0)
+ * - Petshop_ESP_Consent_Log — sutikimu istorija (gaj6_ps_consent_log, teisinis irodymas) (v0.3.0)
+ * - Petshop_ESP_Consent_Sync — Woo↔Sender consent sinchronizacija (v0.3.0)
+ * - Petshop_ESP_Webhook_Receiver — Sender webhook prijemimas /petshop/v1/sender-webhook (v0.3.0)
  *
  * v0.1.0 (2026-07-14): PAMATO STATYMAS — main bootstrap + interface + event log.
  * v0.2.0 (2026-07-14): SENDER ADAPTER + RETRY QUEUE — realus HTTP kvietimai i Sender API
  *   (upsert_contact, emit_event, send_transactional_email/sms placeholder, verify_webhook,
  *   health, is_operational) + Action Scheduler backoff worker (1min/5min/30min/2h/6h/24h + jitter,
  *   7 bandymai → DLQ + alert). ps_emit_event() dabar planuoja async siuntima. Cron fallback kas 5 min.
+ * v0.3.0 (2026-07-14): CONSENT SYNC + WEBHOOK RECEIVER — ps_consent_log lentele (teisinis irodymas),
+ *   Woo→Sender consent push (set_marketing_consent), Sender→Woo webhook receiver (/petshop/v1/sender-webhook
+ *   su HMAC verify), handleriai (unsubscribe→consent=false, bounce/spam→transactional_only). Consent tiesa
+ *   MŪSŲ DB, Sender = kopija. Public API: ps_set_marketing_consent(), ps_get_marketing_consent().
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PETSHOP_ESP_VERSION', '0.2.0' );
+define( 'PETSHOP_ESP_VERSION', '0.3.0' );
 define( 'PETSHOP_ESP_FILE', __FILE__ );
 define( 'PETSHOP_ESP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PETSHOP_ESP_URL', plugin_dir_url( __FILE__ ) );
@@ -47,12 +53,16 @@ require_once PETSHOP_ESP_DIR . 'includes/interface-esp-adapter.php';
 require_once PETSHOP_ESP_DIR . 'includes/class-event-log.php';
 require_once PETSHOP_ESP_DIR . 'includes/class-sender-adapter.php';
 require_once PETSHOP_ESP_DIR . 'includes/class-retry-queue.php';
+require_once PETSHOP_ESP_DIR . 'includes/class-consent-log.php';
+require_once PETSHOP_ESP_DIR . 'includes/class-consent-sync.php';
+require_once PETSHOP_ESP_DIR . 'includes/class-webhook-receiver.php';
 
 /**
  * Aktyvavimo hook — sukuria/atnaujina DB lentele + registruoja cron.
  */
 register_activation_hook( __FILE__, function() {
 	Petshop_ESP_Event_Log::install();
+	Petshop_ESP_Consent_Log::install();
 	if ( ! wp_next_scheduled( 'ps_esp_cron_process_pending' ) ) {
 		wp_schedule_event( time() + 300, 'ps_esp_5min', 'ps_esp_cron_process_pending' );
 	}
@@ -92,11 +102,18 @@ add_action( 'plugins_loaded', function() {
 		return;
 	}
 
-	// Uztikrina lentele (jei aktyvavimo hook'as praleistas)
+	// Uztikrina lenteles (jei aktyvavimo hook'as praleistas)
 	Petshop_ESP_Event_Log::maybe_install();
+	Petshop_ESP_Consent_Log::maybe_install();
 
 	// Retry queue Action Scheduler hook
 	Petshop_ESP_Retry_Queue::init();
+
+	// Consent sync Woo hook'ai
+	Petshop_ESP_Consent_Sync::init();
+
+	// Webhook receiver REST endpoint
+	Petshop_ESP_Webhook_Receiver::init();
 
 	// Cron fallback registracija (jei aktyvavimo praleista)
 	if ( ! wp_next_scheduled( 'ps_esp_cron_process_pending' ) ) {
@@ -168,4 +185,29 @@ function ps_esp_adapter() {
 		$adapter = new Petshop_Sender_Adapter();
 	}
 	return $adapter;
+}
+
+/**
+ * Public API: nustatyti marketing consent (Woo → Sender).
+ * Vienintele vieta consent keitimui is kodo.
+ *
+ * @param string $email
+ * @param bool   $consent
+ * @param string $source   checkout|mano-paskyra|admin|import
+ * @param int    $customer_id
+ * @return array
+ */
+function ps_set_marketing_consent( $email, $consent, $source = 'unknown', $customer_id = 0 ) {
+	return Petshop_ESP_Consent_Sync::set_marketing_consent( $email, $consent, $source, $customer_id );
+}
+
+/**
+ * Public API: gauti dabartine marketing consent reiksme (is ps_consent_log tiesos).
+ *
+ * @param string $email
+ * @return string 'true'|'false'|'' (tuscia = niekada nenustatyta)
+ */
+function ps_get_marketing_consent( $email ) {
+	$val = Petshop_ESP_Consent_Log::current_value( $email, 'marketing_consent' );
+	return ( $val === null ) ? '' : $val;
 }
