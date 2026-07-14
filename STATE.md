@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S189 — pilnas E2E order_paid patvirtintas WC→Sender; Emitter init bug pataisytas; deliverability: SMTP inbox, Sender warm-up plane).
+> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S190 — Magic Login (M9) gyvas: passwordless per SMTP, scanner-safe, enumeration+rate limit apsauga, 12/12 testų).
 
 ---
 
@@ -80,7 +80,7 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 | **TŽ MASTER** | **v1.58** | `dokumentai/TZ_MASTER_v1_58.docx` | Spec — *ką statom* (v1.58 = ESP Brevo→Sender + POC) |
 | **architektūra v2** | **v2** | `dokumentai/architektura_v2.md` | Provider-neutralus pamatas + 16 modulių priklausomybės (S185, pakeičia v1) |
 | **event registry** | **v1** | `dokumentai/events/EVENTS.md` + 13 `.schema.json` | Kanoninis 13 P0 event sąrašas + JSON schemos (S185) |
-| **deployment_log** | **v1.3.56** | `dokumentai/deployment_log_v1_3_56.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S189) |
+| **deployment_log** | **v1.3.57** | `dokumentai/deployment_log_v1_3_57.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S190) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
