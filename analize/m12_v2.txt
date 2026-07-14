@@ -1,0 +1,21 @@
+deploy: {"bytes":9170}
+Home: HTTP:200
+
+=== M12 V2 (LP + Venipak) ===
+{
+    "1_lp": {
+        "carrier": "lp_express",
+        "tracking": "LP123456789LT",
+        "status": "pending"
+    },
+    "2_venipak": {
+        "carrier": "venipak",
+        "tracking": "VZ00112233,VZ00112234",
+        "status": "pending"
+    },
+    "3_idempotent": {
+        "count": 1,
+        "ok": true
+    },
+    "9_cleanup": "done"
+}
