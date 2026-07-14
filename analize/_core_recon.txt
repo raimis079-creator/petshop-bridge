@@ -1,0 +1,34 @@
+{
+    "plugins_dir": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins",
+    "petshop_core_dir_exists": false,
+    "petshop_esp_dir_exists": true,
+    "petshop_esp_files": [
+        ".",
+        "..",
+        "class-consent-log.php",
+        "class-consent-sync.php",
+        "class-event-log.php",
+        "class-retry-queue.php",
+        "class-sender-adapter.php",
+        "class-webhook-receiver.php",
+        "interface-esp-adapter.php"
+    ],
+    "wp_options_esp": {
+        "sender_mk": "YRA (base64)",
+        "sender_tk": "YRA (base64)",
+        "webhook_secret": "YRA"
+    },
+    "classes": {
+        "Petshop_ESP_Event_Log": true,
+        "Petshop_ESP_Consent_Log": true,
+        "Petshop_ESP_Consent_Sync": true,
+        "Petshop_ESP_Retry_Queue": true,
+        "Petshop_ESP_Webhook_Receiver": true,
+        "Petshop_Sender_Adapter": true,
+        "Interface_ESP_Adapter": true
+    },
+    "tables": {
+        "event_log": true,
+        "consent_log": true
+    }
+}
