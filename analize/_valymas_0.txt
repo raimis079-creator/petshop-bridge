@@ -1,0 +1,27 @@
+=== BLOKAS 0 — dev valymas ===
+
+--- 1. Snippet #713 valymas ---
+  Rastas: ID=713 name="Petshop Sender Webhook Receiver v1" active=true
+  Deactivate -> HTTP 200
+  Trynimo per DB metodas — reikes atlikti temp snippet.
+  Palieku deaktyvuota. Trynima galim atlikti veliau kaip atskiras step.
+
+--- 2. Sender testiniai kontaktai ---
+  webhooktest*: rasta 5
+    del webhooktest+1783976179722@example.com -> HTTP 200
+  whsite*: rasta 5
+    del whsite+1783977112277@example.com -> HTTP 200
+  whunsub*: rasta 5
+    del whunsub+1783977217390@example.com -> HTTP 200
+  whlong*: rasta 5
+  Istrinta: 3
+
+--- 3. Sender webhookai i webhook.site ---
+  Iš viso webhookų: 2
+    webhookas RdGO0d topic=subscribers/new url=https://webhook.site/94328e56-9d87-4421-bdb1-6568dd4d2c97
+    del -> HTTP 200
+    webhookas QdJgoe topic=subscribers/unsubscribed url=https://webhook.site/94328e56-9d87-4421-bdb1-6568dd4d2c97
+    del -> HTTP 200
+  Istrinta: 2
+
+=== BLOKO 0 pabaiga ===
