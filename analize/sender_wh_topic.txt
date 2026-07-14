@@ -1,0 +1,11 @@
+=== Sender webhook topic paieska ===
+--- Bandom topic reiksmes su minimaliu payload ---
+  topic="subscriber_unsubscribed" -> HTTP 422 | {"message":"The selected topic is invalid.","errors":{"topic":["The selected topic is invalid."]}}
+  topic="subscribers/unsubscribed" -> HTTP 200 | {"success":true,"message":"Success","data":{"id":"1aKjne","account_id":"azv2GY","url":"https:\/\/dev.avesa.lt\/wp-json\/petshop\/v1\/sender-webhook","
+
+=== PAVYKO su topic="subscribers/unsubscribed" ===
+{"success":true,"message":"Success","data":{"id":"1aKjne","account_id":"azv2GY","url":"https:\/\/dev.avesa.lt\/wp-json\/petshop\/v1\/sender-webhook","topic":"subscribers\/unsubscribed","group":null,"total_deliveries":0,"total_failures":0,"response_time":0,"status":null}}
+
+--- Webhookai dabar ---
+  Viso: 1
+  {"id":"1aKjne","account_id":"azv2GY","url":"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook","topic":"subscribers/unsubscribed","group":null,"total_deliveries":0,"total_failures":0,"response_time":0,"status":"ACTIVE"}
