@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "order_shipped",
+  "description": "Siunta perduota kurjeriui (Venipak/LP Express siuntos numerio sukurimas). NEIRA WC completed statusas!",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "order_shipped"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": ["integer", "null"]},
+    "payload": {
+      "type": "object",
+      "required": ["order_id", "carrier", "tracking_number"],
+      "properties": {
+        "order_id": {"type": "integer"},
+        "order_number": {"type": "string"},
+        "carrier": {"type": "string", "enum": ["venipak", "lp_express"]},
+        "tracking_number": {"type": "string"},
+        "tracking_url": {"type": ["string", "null"]},
+        "delivery_type": {"type": "string", "enum": ["courier", "parcel_terminal", "post_office"]},
+        "estimated_delivery": {"type": ["string", "null"], "format": "date"}
+      }
+    }
+  }
+}
