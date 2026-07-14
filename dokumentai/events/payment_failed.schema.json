@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "payment_failed",
+  "description": "Mokejimo klaida. payment_context laukas atskiria kontekstus (checkout vs subscription). Dunning srautas naudoja tik subscription konteksta.",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "payment_failed"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": ["integer", "null"]},
+    "payload": {
+      "type": "object",
+      "required": ["payment_context", "order_id", "attempt_number"],
+      "properties": {
+        "payment_context": {"type": "string", "enum": ["checkout", "subscription", "manual_admin"]},
+        "order_id": {"type": "integer"},
+        "subscription_id": {"type": ["integer", "null"]},
+        "attempt_number": {"type": "integer"},
+        "amount": {"type": "number"},
+        "currency": {"type": "string", "enum": ["EUR"]},
+        "payment_method": {"type": "string"},
+        "failure_reason": {"type": ["string", "null"]},
+        "paysera_error_code": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
