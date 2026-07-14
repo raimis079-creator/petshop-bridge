@@ -1,0 +1,15 @@
+{
+    "1_payment_complete_hook": true,
+    "1_hook_has_emitter": false,
+    "1_emitters_class": true,
+    "1_registry_class": true,
+    "1_wc_active_in_core": true,
+    "2_manual_init": "called",
+    "2_hook_after_init": 20,
+    "3_order": 34643,
+    "3_after_payment_complete": {
+        "before": 0,
+        "after": 1
+    },
+    "9_cleanup": "done"
+}
