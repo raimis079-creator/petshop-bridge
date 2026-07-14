@@ -1,0 +1,21 @@
+deploy: {"bytes":9037}
+Home: HTTP:200
+
+=== E2E v2 (auto init) ===
+{
+    "1_hook_auto_registered": 20,
+    "3_event": {
+        "name": "order_paid",
+        "email": "terra@gyvunai.lt",
+        "status": "pending",
+        "order_total": 30,
+        "is_first_order": false,
+        "items": 1
+    },
+    "4_sender": {
+        "status": "sent",
+        "error": null,
+        "esp_resp": "{\"message\":\"Event created\",\"success\":true}"
+    },
+    "9_cleanup": "done"
+}
