@@ -1,0 +1,7 @@
+=== Ar galim KURTI workflow per API? ===
+POST /workflows -> HTTP 422
+{"message":"Required value, Workflow title","errors":{"title":["Required value, Workflow title"]}}
+
+=== Transactional email siuntimas (alternatyva workflow) ===
+POST /message/send -> {"emailId":"azv2GY-.eE9p2l-AMYvBNl-7XyBM0V3R5OG-2cf08K","message":"Email sent","success":true}
+HTTP:200
