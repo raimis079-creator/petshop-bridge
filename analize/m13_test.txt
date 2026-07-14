@@ -1,0 +1,29 @@
+deploy: {"rem":10013,"main":9969}
+reactivate: {"active":true,"err":null,"ver":"0.8.0"}
+
+=== M13 REMINDERS TEST ===
+{
+    "0_ver": "0.8.0",
+    "0_class": true,
+    "0_table": true,
+    "0_cron": "2026-07-15 09:00",
+    "1_create": {
+        "status": 200,
+        "id": 1
+    },
+    "2_list": 1,
+    "3_event": {
+        "type": "vaccination",
+        "pet_name": "Reksas",
+        "has_confirm_token": true,
+        "has_reschedule_token": true
+    },
+    "4_notified": true,
+    "5_repeat_created": {
+        "total_reminders": 2,
+        "expected": 2
+    },
+    "5_next_due": "2027-07-16",
+    "6_idor": "BLOCKED",
+    "9_cleanup": "done"
+}
