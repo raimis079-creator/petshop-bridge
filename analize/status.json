@@ -1,0 +1,31 @@
+{
+    "core_ver": "0.6.0",
+    "esp_ver": "0.4.0",
+    "klases": {
+        "Event_Log": true,
+        "Consent_Log": true,
+        "Consent_Sync": true,
+        "Retry_Queue": true,
+        "Message_Provider": true,
+        "Action_Tokens": true,
+        "Event_Registry": true,
+        "Event_Emitters": true,
+        "Magic_Login": true,
+        "Pet_Profile": true,
+        "Sender_Adapter": true,
+        "Refill_Engine": false,
+        "Reminders": false,
+        "Subscription": false
+    },
+    "lenteles": {
+        "ps_event_log": true,
+        "ps_consent_log": true,
+        "ps_action_tokens": true,
+        "ps_pets": true,
+        "ps_refill_tracking": false
+    },
+    "aktyvus_eventai": [
+        "order_paid",
+        "consent_changed"
+    ]
+}
