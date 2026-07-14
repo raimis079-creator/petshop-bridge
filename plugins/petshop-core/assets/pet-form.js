@@ -4,6 +4,14 @@
 
 	var CFG = window.PSPetConfig || {};
 	var REST = CFG.restUrl || '/wp-json/petshop/v1';
+	var IMAGES = CFG.imagesUrl || '';
+
+	function speciesImg(species){
+		var map = { dog:'pet-dog', cat:'pet-cat', bird:'pet-bird', rodent:'pet-rodent', fish:'pet-fish', reptile:'pet-reptile', other:'pet-other' };
+		var key = map[species] || 'pet-other';
+		if (IMAGES) return '<img src="' + IMAGES + key + '.png" alt="" style="width:100%;height:100%;object-fit:contain">';
+		return SPECIES[species] ? SPECIES[species].icon : '🐾';
+	}
 	var NONCE = CFG.nonce || '';
 	var IS_LOGGED_IN = CFG.isLoggedIn || false;
 	var DRAFT_KEY = 'pspet_draft';
@@ -99,7 +107,8 @@
 		// Progresas
 		wrap.appendChild(progressBar(1));
 
-		var illust = el('div', 'pspet-illustration', speciesIcon());
+		var illust = el('div', 'pspet-illustration');
+		illust.innerHTML = speciesIcon();
 		wrap.appendChild(illust);
 
 		wrap.appendChild(el('h2', 'pspet-title', 'Papasakokite apie savo augintinį'));
@@ -182,7 +191,7 @@
 	}
 
 	function speciesIcon(){
-		return state.data.species ? SPECIES[state.data.species].icon : '🐾';
+		return state.data.species ? speciesImg(state.data.species) : (IMAGES ? '<img src="'+IMAGES+'pet-other.png" alt="" style="width:100%;height:100%;object-fit:contain">' : '🐾');
 	}
 
 	function renderStep2(){
@@ -190,7 +199,8 @@
 		var wrap = el('div', 'pspet-wrap');
 		wrap.appendChild(progressBar(2));
 
-		var illust = el('div', 'pspet-illustration', speciesIcon());
+		var illust = el('div', 'pspet-illustration');
+		illust.innerHTML = speciesIcon();
 		wrap.appendChild(illust);
 
 		var titleText = state.data.pet_name
@@ -406,7 +416,8 @@
 		var name = state.data.pet_name || 'Jūsų augintinis';
 
 		var header = el('div', 'pspet-result-header');
-		var avatar = el('div', 'pspet-result-avatar', speciesIcon());
+		var avatar = el('div', 'pspet-result-avatar');
+		avatar.innerHTML = speciesIcon();
 		header.appendChild(avatar);
 		header.appendChild(el('h2', 'pspet-result-name', name + ' — profilis sukurtas'));
 		header.appendChild(el('p', 'pspet-result-meta', resultMeta()));
