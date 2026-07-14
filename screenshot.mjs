@@ -11,56 +11,64 @@ function scall(method, path){
   return {code, raw};
 }
 (async()=>{
-  L('--- Antra pop-ras testiniu kontaktu valymui ---');
+  L('--- Pilna testiniu @example.com kontaktu valymui ---');
   L('');
-  // Sender search grazina puslapiuota rezultata - reikia perziureti visa puslapi
-  const patterns = ['webhooktest', 'whsite', 'whunsub', 'whlong'];
-  let totalDel = 0;
-  for(const pat of patterns){
-    L('=== pattern: '+pat+' ===');
-    let page = 1;
-    let batch = 0;
-    while(true){
-      const s = scall('GET','/subscribers?search='+pat+'&page='+page+'&limit=25');
-      if(s.code!=='200'){ L('  HTTP '+s.code+' -- stopping'); break; }
-      let jd;
-      try { jd = JSON.parse(s.raw); } catch(e){ L('  parse err'); break; }
-      const arr = jd.data || [];
-      L('  page '+page+': found '+arr.length);
-      if(arr.length===0) break;
-      for(const sub of arr){
-        const email = sub.email || '';
-        if(email.includes(pat) && email.includes('@example.com')){
-          const del = scall('DELETE','/subscribers/'+encodeURIComponent(email));
-          if(del.code==='200' || del.code==='204'){
-            batch++;
-          } else {
-            L('    del '+email+' -> HTTP '+del.code+' (skipping)');
-          }
+  // gauname visus kontaktus (paginate), tada is JS filtruojame pagal @example.com
+  const patterns = ['webhooktest','whsite','whunsub','webhooklong','whlong'];
+  const isTest = (email)=>{
+    const e = (email||'').toLowerCase();
+    if(!e.includes('@example.com')) return false;
+    return patterns.some(p => e.includes(p));
+  };
+  
+  let allDeleted = [];
+  let allSeen = [];
+  let page = 1;
+  const seenIds = new Set();
+  while(true){
+    const s = scall('GET','/subscribers?page='+page+'&limit=100');
+    if(s.code!=='200'){ L('HTTP '+s.code+' -- stop'); break; }
+    let jd;
+    try { jd = JSON.parse(s.raw); } catch(e){ L('parse err'); break; }
+    const arr = jd.data || [];
+    if(arr.length===0) break;
+    L('page '+page+': fetched '+arr.length);
+    let testFound = 0;
+    for(const sub of arr){
+      const email = sub.email || '';
+      if(seenIds.has(sub.id||email)) continue;
+      seenIds.add(sub.id||email);
+      allSeen.push(email);
+      if(isTest(email)){
+        testFound++;
+        const del = scall('DELETE','/subscribers/'+encodeURIComponent(email));
+        if(del.code==='200' || del.code==='204'){
+          allDeleted.push(email);
+          L('  DEL '+email+' -> '+del.code);
+        } else {
+          L('  FAIL '+email+' -> '+del.code+' ('+del.raw.slice(0,60)+')');
         }
       }
-      // if this page had fewer than limit, stop
-      if(arr.length < 25) break;
-      page++;
-      if(page>10) break; // safety
     }
-    L('  pattern '+pat+' istrinta: '+batch);
-    totalDel += batch;
+    L('  test found this page: '+testFound);
+    // check next page
+    const meta = jd.meta || {};
+    if(arr.length < 100) break;
+    page++;
+    if(page > 20) break; // safety
   }
   L('');
-  L('=== VISO istrinta: '+totalDel+' ===');
+  L('=== VISO peržiūrėta: '+allSeen.length+' unikaliu ===');
+  L('=== VISO istrinta testiniu: '+allDeleted.length+' ===');
   L('');
-  // patikra kad realiai istrinti
-  L('--- Patikra po valymo ---');
-  for(const pat of patterns){
-    const s = scall('GET','/subscribers?search='+pat+'&limit=5');
-    let arr = [];
-    try { arr = JSON.parse(s.raw).data || []; } catch(e){}
-    L('  '+pat+': lieka '+arr.length);
-    for(const sub of arr.slice(0,3)){
-      L('    '+sub.email);
-    }
-  }
-  putText('_valymas_1b.txt', out);
+  // Patikra — praeinu dar karta
+  L('--- POST-VERIFIKACIJA ---');
+  const s2 = scall('GET','/subscribers?page=1&limit=100');
+  let arr2 = [];
+  try { arr2 = JSON.parse(s2.raw).data || []; } catch(e){}
+  const remaining = arr2.filter(sub => isTest(sub.email));
+  L('  liko testiniu: '+remaining.length);
+  for(const r of remaining) L('    still: '+r.email);
+  putText('_valymas_2.txt', out);
   console.log('done');
 })();
