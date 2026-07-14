@@ -1,0 +1,30 @@
+deploy: {"photo":8508,"dash":10998,"main":10706}
+reactivate: {"active":true,"err":null,"ver":"0.12.0"}
+Home: HTTP:200
+
+=== PET-PHOTO TEST ===
+{
+    "0_ver": "0.12.0",
+    "0_photo_class": true,
+    "1_dir_exists": true,
+    "1_htaccess": true,
+    "2_pet_id": 8,
+    "3_test_png_size": 1609,
+    "4_upload_status": 200,
+    "4_upload_data": {
+        "ok": true,
+        "photo_url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-photo/8"
+    },
+    "5_hash_saved": true,
+    "5_file_exists": true,
+    "5_dimensions": "400x400",
+    "5_mime": "image/jpeg",
+    "6_has_photo": true,
+    "6_serve_url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-photo/8",
+    "7_dashboard_photo": "https://dev.avesa.lt/wp-json/petshop/v1/pet-photo/8",
+    "7_completeness": 50,
+    "8_bad_mime_rejected": "OK (atmesta)",
+    "9_delete_status": 200,
+    "9_file_gone": true,
+    "9_cleanup": "done"
+}
