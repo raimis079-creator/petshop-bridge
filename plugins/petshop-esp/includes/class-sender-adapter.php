@@ -29,7 +29,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Petshop_Sender_Adapter implements Interface_ESP_Adapter {
+class Petshop_Sender_Adapter implements Petshop_Message_Provider {
+
+	
+	public function get_name() {
+		return 'sender';
+	}
+
+	/**
+	 * DEV APLINKOS HARD ALLOWLIST (S186 saugumo principas).
+	 * Kai PETSHOP_ENVIRONMENT === 'dev', bet kokie upsert/emit/send tik siems email'ams.
+	 * Kiti — atmetami ir loginami. Saugumas kode, ne Sender ekrane.
+	 */
+	const DEV_ALLOWLIST = array(
+		'terra@gyvunai.lt',
+		'raimundas@gyvunai.lt',
+		'terra@petshop.lt',
+	);
+
+	/**
+	 * Ar aplinka dev + email NEIRA allowlist'e (t.y. reikia blokuoti).
+	 */
+	private function is_blocked_by_dev_allowlist( $email ) {
+		if ( ! defined( 'PETSHOP_ENVIRONMENT' ) || PETSHOP_ENVIRONMENT !== 'dev' ) {
+			return false;
+		}
+		return ! in_array( strtolower( trim( $email ) ), self::DEV_ALLOWLIST, true );
+	}
+
+	private function log_dev_blocked( $email, $method ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( sprintf( '[Petshop ESP] DEV allowlist blokavo %s(): %s', $method, $email ) );
+		}
+	}
+
 
 	const API_BASE = 'https://api.sender.net/v2';
 	const ADAPTER_NAME = 'sender';
@@ -164,6 +197,11 @@ class Petshop_Sender_Adapter implements Interface_ESP_Adapter {
 	 * Fields atskirai per PATCH (nes POST fields formatas nepatikimas — POC pamoka).
 	 */
 	public function upsert_contact( $email, array $attributes ) {
+		if ( $this->is_blocked_by_dev_allowlist( $email ) ) {
+			$this->log_dev_blocked( $email, 'upsert_contact' );
+			return array( 'ok' => true, 'skipped' => 'dev_allowlist' );
+		}
+
 		if ( ! $this->is_configured() ) {
 			return array( 'ok' => false, 'status' => 'error', 'esp_contact_id' => '', 'error' => 'not_configured' );
 		}
