@@ -1,0 +1,53 @@
+{
+    "refill_columns": [
+        "id",
+        "user_id",
+        "product_id",
+        "pet_id",
+        "last_order_id",
+        "last_purchase_date",
+        "purchase_count",
+        "avg_interval_days",
+        "predicted_empty_date",
+        "confidence",
+        "status",
+        "created_at",
+        "updated_at"
+    ],
+    "reminders_columns": [
+        "id",
+        "user_id",
+        "pet_id",
+        "reminder_type",
+        "reminder_label",
+        "due_date",
+        "repeat_interval_days",
+        "status",
+        "notified_at",
+        "completed_at",
+        "created_at",
+        "updated_at"
+    ],
+    "refill_class": true,
+    "refill_methods": [
+        "table_name",
+        "install",
+        "maybe_install",
+        "init",
+        "on_order_paid",
+        "check_due"
+    ],
+    "reminders_class": true,
+    "reminders_methods": [
+        "table_name",
+        "install",
+        "maybe_install",
+        "init",
+        "register_routes",
+        "handle_create",
+        "handle_list",
+        "handle_update",
+        "handle_delete",
+        "check_due"
+    ]
+}
