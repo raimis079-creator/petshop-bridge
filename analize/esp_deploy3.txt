@@ -1,0 +1,17 @@
+=== Petshop ESP v0.3.0 deploy ===
+deploy3 snippet: 727
+deploy result:
+{
+    "main": 8168,
+    "clog": 4835,
+    "csync": 7149,
+    "whr": 6207
+}
+reactivate + secret + consent_log:
+{
+    "reactivated": true,
+    "error": null,
+    "webhook_secret": "uD5RdRkIjPorxrlouQDahacEyHxxoEO0TcemLKnX",
+    "webhook_url": "https:\/\/dev.avesa.lt\/wp-json\/petshop\/v1\/sender-webhook",
+    "consent_log_exists": true
+}
