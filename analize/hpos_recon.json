@@ -1,0 +1,21 @@
+{
+    "1_hpos_enabled": true,
+    "2_order_hooks": {
+        "woocommerce_update_order": "has_listeners",
+        "woocommerce_after_order_object_save": "no_listeners",
+        "woocommerce_order_object_updated_props": "no_listeners",
+        "woocommerce_process_shop_order_meta": "has_listeners",
+        "updated_postmeta": "no_listeners",
+        "added_post_meta": "has_listeners"
+    },
+    "3_venipak_tracking_method": {
+        "static": false,
+        "params": [
+            "order"
+        ]
+    },
+    "4_lp_barcode_meta": "_woo_lithuaniapost_barcode",
+    "4_venipak_meta_hint": "ieskosim per order meta (tracking/pack_no)",
+    "5_real_shipping_meta": [],
+    "5_orders_scanned": 0
+}
