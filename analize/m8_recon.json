@@ -1,0 +1,90 @@
+{
+    "1_ps_pets_columns": [
+        {
+            "field": "id",
+            "type": "bigint(20) unsigned",
+            "null": "NO",
+            "default": null
+        },
+        {
+            "field": "user_id",
+            "type": "bigint(20) unsigned",
+            "null": "NO",
+            "default": null
+        },
+        {
+            "field": "pet_name",
+            "type": "varchar(100)",
+            "null": "YES",
+            "default": null
+        },
+        {
+            "field": "species",
+            "type": "varchar(16)",
+            "null": "NO",
+            "default": "unknown"
+        },
+        {
+            "field": "life_stage",
+            "type": "varchar(16)",
+            "null": "YES",
+            "default": null
+        },
+        {
+            "field": "dog_size",
+            "type": "varchar(16)",
+            "null": "YES",
+            "default": null
+        },
+        {
+            "field": "feeding_type",
+            "type": "varchar(16)",
+            "null": "YES",
+            "default": null
+        },
+        {
+            "field": "primary_need",
+            "type": "varchar(16)",
+            "null": "YES",
+            "default": null
+        },
+        {
+            "field": "current_food_brand",
+            "type": "varchar(120)",
+            "null": "YES",
+            "default": null
+        },
+        {
+            "field": "is_primary",
+            "type": "tinyint(1)",
+            "null": "NO",
+            "default": "0"
+        },
+        {
+            "field": "created_at",
+            "type": "datetime",
+            "null": "NO",
+            "default": null
+        },
+        {
+            "field": "updated_at",
+            "type": "datetime",
+            "null": "NO",
+            "default": null
+        }
+    ],
+    "2_total_pets": 0,
+    "2_species_values": [],
+    "2_primary_need_values": [],
+    "3_brand_taxonomies": [
+        "product_brand"
+    ],
+    "3_sample_product_brand": [
+        "4Dogs",
+        "8IN1",
+        "Abakus",
+        "Ad Bi",
+        "ALDA"
+    ],
+    "4_pet_products_exists": false
+}
