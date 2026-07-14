@@ -1,0 +1,19 @@
+{
+    "1_myaccount_page_id": "14",
+    "1_myaccount_url": "https://dev.avesa.lt/my-account/",
+    "2_login_plugins": [],
+    "3_token_api": {
+        "ps_generate_token": true,
+        "ps_peek_token": true,
+        "ps_consume_token": true
+    },
+    "4_wp_mail_exists": true,
+    "4_smtp_mailer": "smtp",
+    "5_petshop_routes": [
+        "/petshop/v1",
+        "/petshop/v1/sender-webhook"
+    ],
+    "6_wp_login_url": "https://dev.avesa.lt/wp-login.php",
+    "6_registration_enabled": "0",
+    "7_home": "http://dev.avesa.lt"
+}
