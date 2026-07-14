@@ -1,0 +1,18 @@
+--- Pilna testiniu @example.com kontaktu valymui ---
+
+page 1: fetched 5
+  DEL whunsub+1783977217390@example.com -> 200
+  DEL whsite+1783977112277@example.com -> 200
+  DEL webhooklong+1783976488633@example.com -> 200
+  DEL webhooktest+1783976179722@example.com -> 200
+  test found this page: 4
+
+=== VISO peržiūrėta: 5 unikaliu ===
+=== VISO istrinta testiniu: 4 ===
+
+--- POST-VERIFIKACIJA ---
+  liko testiniu: 4
+    still: whunsub+1783977217390@example.com
+    still: whsite+1783977112277@example.com
+    still: webhooklong+1783976488633@example.com
+    still: webhooktest+1783976179722@example.com
