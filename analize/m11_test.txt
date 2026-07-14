@@ -1,0 +1,33 @@
+deploy: {"refill":12371,"main":9759}
+reactivate: {"active":true,"err":null,"ver":"0.7.0"}
+Home: HTTP:200
+
+=== M11 REFILL ENGINE TEST ===
+{
+    "0_core_ver": "0.7.0",
+    "0_class": true,
+    "0_table": true,
+    "0_cron": "2026-07-15 08:00",
+    "1_user": 11,
+    "2_food_product": 34484,
+    "2_name": "Exclusion Hypoallergenic mažų veislių šu",
+    "2_pakuote": "nera",
+    "3_first_purchase": {
+        "interval": 30,
+        "confidence": 0.4,
+        "predicted": "2026-07-04",
+        "count": 1
+    },
+    "4_second_purchase": {
+        "interval": 37,
+        "confidence": 0.7,
+        "predicted": "2026-08-20",
+        "count": 2
+    },
+    "5_idempotent": "OK",
+    "6_only_food_tracked": {
+        "total_records": 1,
+        "expected": 1
+    },
+    "9_cleanup": "done"
+}
