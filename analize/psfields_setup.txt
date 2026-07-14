@@ -1,0 +1,176 @@
+=== PS_ fields SETUP (M3) ===
+
+--- 1. Visi account fields (GET /fields) ---
+  Esami PS_ fields: 3
+    PS_ORDER_COUNT (number)
+    PS_PET_SPECIES (text)
+    PS_MARKETING_CONSENT (text)
+
+  PS_TEST_PROBE trynimas -> HTTP 200
+
+--- 3. Kuriami trukstami laukai ---
+  + PS_CUSTOMER_ID (text) -> e1rY0Z
+  + PS_LAST_ORDER_DATE (date) -> b2vgyM
+  + PS_LIFETIME_VALUE (number) -> e32jzA
+  + PS_CUSTOMER_WAVE (text) -> b4RkA7
+  + PS_FOUNDING_SCORE (number) -> e59lBY
+  + PS_PET_NAME (text) -> b6RmDO
+  + PS_PET_LIFE_STAGE (text) -> e7LnEQ
+  + PS_DOG_SIZE (text) -> b86oGj
+  + PS_FEEDING_TYPE (text) -> e9QpJJ
+  + PS_PRIMARY_NEED (text) -> e0V2w5
+  + PS_CURRENT_FOOD_BRAND (text) -> egLxRr
+  + PS_REFILL_CANDIDATE (text) -> ejqvXy
+  + PS_NEXT_REFILL_DATE (date) -> bkZwYJ
+  + PS_SUBSCRIPTION_STATUS (text) -> el5vZj
+  + PS_PREFERRED_SHIPPING (text) -> bmQ2KR
+  + PS_TRANSACTIONAL_ONLY (text) -> enrYL5
+  + PS_UNSUBSCRIBED_AT (date) -> boQvMY
+  + PS_LAST_EVENT_AT (date) -> epQRNQ
+  + PS_LOGIN_METHOD (text) -> bqYVO7
+  + PS_LEGACY_EMAIL_LINKED (text) -> erREP2
+  + PS_LEGACY_LINK_PROMPT_SHOWN (text) -> avoYW8
+  + PS_EMAIL_VERIFIED (text) -> dwmEXr
+  + PS_IDENTITY_MERGED_AT (date) -> egLxAk
+
+=== SUVESTINE ===
+  Sukurta: 23
+  Jau buvo: 3
+  Klaidos: 0
+
+--- 4. Galutinis PS_ fields kiekis: 6 ---
+  PS_FEEDING_TYPE, PS_LAST_EVENT_AT, PS_LOGIN_METHOD, PS_NEXT_REFILL_DATE, PS_REFILL_CANDIDATE, PS_TRANSACTIONAL_ONLY
+
+=== RESULTS JSON ===
+{
+ "PS_CUSTOMER_ID": {
+  "status": "created",
+  "id": "e1rY0Z",
+  "type": "text"
+ },
+ "PS_LAST_ORDER_DATE": {
+  "status": "created",
+  "id": "b2vgyM",
+  "type": "date"
+ },
+ "PS_ORDER_COUNT": {
+  "status": "exists",
+  "id": "egLxlj",
+  "type": "number"
+ },
+ "PS_LIFETIME_VALUE": {
+  "status": "created",
+  "id": "e32jzA",
+  "type": "number"
+ },
+ "PS_CUSTOMER_WAVE": {
+  "status": "created",
+  "id": "b4RkA7",
+  "type": "text"
+ },
+ "PS_FOUNDING_SCORE": {
+  "status": "created",
+  "id": "e59lBY",
+  "type": "number"
+ },
+ "PS_PET_SPECIES": {
+  "status": "exists",
+  "id": "ejqvo4",
+  "type": "text"
+ },
+ "PS_PET_NAME": {
+  "status": "created",
+  "id": "b6RmDO",
+  "type": "text"
+ },
+ "PS_PET_LIFE_STAGE": {
+  "status": "created",
+  "id": "e7LnEQ",
+  "type": "text"
+ },
+ "PS_DOG_SIZE": {
+  "status": "created",
+  "id": "b86oGj",
+  "type": "text"
+ },
+ "PS_FEEDING_TYPE": {
+  "status": "created",
+  "id": "e9QpJJ",
+  "type": "text"
+ },
+ "PS_PRIMARY_NEED": {
+  "status": "created",
+  "id": "e0V2w5",
+  "type": "text"
+ },
+ "PS_CURRENT_FOOD_BRAND": {
+  "status": "created",
+  "id": "egLxRr",
+  "type": "text"
+ },
+ "PS_REFILL_CANDIDATE": {
+  "status": "created",
+  "id": "ejqvXy",
+  "type": "text"
+ },
+ "PS_NEXT_REFILL_DATE": {
+  "status": "created",
+  "id": "bkZwYJ",
+  "type": "date"
+ },
+ "PS_SUBSCRIPTION_STATUS": {
+  "status": "created",
+  "id": "el5vZj",
+  "type": "text"
+ },
+ "PS_PREFERRED_SHIPPING": {
+  "status": "created",
+  "id": "bmQ2KR",
+  "type": "text"
+ },
+ "PS_MARKETING_CONSENT": {
+  "status": "exists",
+  "id": "bkZwpv",
+  "type": "text"
+ },
+ "PS_TRANSACTIONAL_ONLY": {
+  "status": "created",
+  "id": "enrYL5",
+  "type": "text"
+ },
+ "PS_UNSUBSCRIBED_AT": {
+  "status": "created",
+  "id": "boQvMY",
+  "type": "date"
+ },
+ "PS_LAST_EVENT_AT": {
+  "status": "created",
+  "id": "epQRNQ",
+  "type": "date"
+ },
+ "PS_LOGIN_METHOD": {
+  "status": "created",
+  "id": "bqYVO7",
+  "type": "text"
+ },
+ "PS_LEGACY_EMAIL_LINKED": {
+  "status": "created",
+  "id": "erREP2",
+  "type": "text"
+ },
+ "PS_LEGACY_LINK_PROMPT_SHOWN": {
+  "status": "created",
+  "id": "avoYW8",
+  "type": "text"
+ },
+ "PS_EMAIL_VERIFIED": {
+  "status": "created",
+  "id": "dwmEXr",
+  "type": "text"
+ },
+ "PS_IDENTITY_MERGED_AT": {
+  "status": "created",
+  "id": "egLxAk",
+  "type": "date"
+ }
+}
