@@ -1,0 +1,36 @@
+=== POC #4 uzbaigimas: end-to-end webhook ===
+
+--- A. Realus HTTP POST i webhook endpoint (su HMAC) ---
+  setup consent: {"setup":"true"}
+  payload: {"type":"subscribers/unsubscribed","data":{"email":"wh_e2e_test@example.com"}}
+  x-sender-signature: f7420d912722fca036f8a75b...
+  endpoint atsakymas:
+  {"ok":true,"processed":1,"results":[{"type":"subscribers\/unsubscribed","email":"wh_e2e_test@example.com","result":{"ok":true,"from":"true","to":"false","customer_id":0}}]}
+  HTTP:200
+
+--- consent_log po webhook POST ---
+{
+    "current": "false",
+    "history": [
+        {
+            "from": "true",
+            "to": "false",
+            "source": "webhook"
+        },
+        {
+            "from": "",
+            "to": "true",
+            "source": "checkout"
+        }
+    ]
+}
+
+--- B. Blogo parašo atmetimas ---
+  {"error":"invalid_signature"}
+  HTTP:401
+
+--- C. API unsubscribe → ar Sender fire'ina webhook? (POC #4 klausimas) ---
+  kontakto sukurimas: HTTP 200
+  API unsubscribe: HTTP 200 | {"data":{"bounced_at":null,"bounced_at_utc":null,"columns":[{"id":"avAlVe","title":"First name","type":"text","value":"E
+  (jei Sender webhook fire'intu — total_deliveries padidetu; tikrinam po 5s)
+  webhook 1aKjne: deliveries=0, failures=0
