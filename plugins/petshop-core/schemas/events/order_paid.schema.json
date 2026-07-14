@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "order_paid",
+  "description": "WC uzsakymas apmoketas — trigger'is per woocommerce_payment_complete hook",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "order_paid"},
+    "event_id": {"type": "string", "pattern": "^order_paid_[0-9]+_[a-f0-9]+$"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": ["integer", "null"]},
+    "payload": {
+      "type": "object",
+      "required": ["order_id", "order_total", "order_currency", "order_items"],
+      "properties": {
+        "order_id": {"type": "integer"},
+        "order_number": {"type": "string"},
+        "order_total": {"type": "number"},
+        "order_currency": {"type": "string", "enum": ["EUR"]},
+        "order_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["product_id", "name", "quantity", "line_total"],
+            "properties": {
+              "product_id": {"type": "integer"},
+              "sku": {"type": ["string", "null"]},
+              "name": {"type": "string"},
+              "quantity": {"type": "number"},
+              "line_total": {"type": "number"},
+              "fulfillment_source": {"type": "string", "enum": ["zb", "vf", "quattro", "ambrosia", "belcor_tofu", "prins", "legacy"]}
+            }
+          }
+        },
+        "payment_method": {"type": "string"},
+        "shipping_method": {"type": "string"},
+        "customer_note": {"type": ["string", "null"]},
+        "is_first_order": {"type": "boolean"},
+        "order_count_at_time": {"type": "integer"}
+      }
+    }
+  }
+}
