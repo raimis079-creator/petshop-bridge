@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S181 — Petshop ESP plugin v0.1.0 gyvas, Etapo A pradžia).
+> Paskutinį kartą atnaujinta: **2026-07-14 vakaras** (po S182 — Petshop ESP v0.2.0: SenderAdapter + RetryQueue gyvi su realiu Sender API).
 
 ---
 
@@ -36,7 +36,7 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 **ESP/EMAIL PLATFORMA IŠSPRĘSTA (S180):** TŽ §4 vykdymo platforma = **Sender.net** (buvo Brevo, TŽ v1.44). Sprendimas pagrįstas: kainų korekcija (~5× pigiau nei Brevo), šildyta paskyra su verifikuotu petshop.lt domenu, LT įmonė+SMS. Sender POC: **8 testų → 5 žali, 3 geltoni, 0 raudonų** (geltoni sutampa su architektūra — Sender=kvailas vykdytojas). Sender techniškai TINKA mūsų ESP-nepriklausomai architektūrai.
 
-**ETAPO A PRADŽIA (S181):** Petshop ESP v0.1.0 plugin'as **GYVAS dev'e** — `wp-content/plugins/petshop-esp/` (main + interface + event log, 522 eilučių PHP). Public API `ps_emit_event()` empiriškai patvirtinta: 10/10 testų PASS, emit greitis **avg 0.73ms (100× geriau nei < 100ms reikalavimas)**, idempotencija veikia (INSERT IGNORE + UNIQUE key). Lentelė `gaj6_ps_event_log` migruota į galutinę schemą (12 stulpelių + 5 indeksai). Failai repo: `plugins/petshop-esp/`.
+**ETAPO A EIGA (S182):** Petshop ESP **v0.2.0 GYVAS dev'e** — `wp-content/plugins/petshop-esp/` (5 failai, 1213 eilučių PHP). Blokai 1+2 (M1+M2) BAIGTI: `Petshop_Sender_Adapter` (realūs HTTP kvietimai — upsert_contact, emit_event, transactional email, health, is_operational) + `Petshop_ESP_Retry_Queue` (Action Scheduler backoff 1min/5min/30min/2h/6h/24h+jitter, 7 bandymai→DLQ). Empiriškai patvirtinta su REALIU Sender API: 11/11 PASS — kontaktas sukurtas Sender pusėje (PS_ORDER_COUNT=7, PS_PET_SPECIES=dog read-back OK), event realiai iškeliavo ("Event created"), pilnas async srautas ps_emit_event→log→AS→worker→sent veikia. Tokenai WP options (base64). Failai repo: `plugins/petshop-esp/`.
 
 **ARCHITEKTŪROS SPRENDIMAI UŽRAKINTI (2026-07-14 sesija):**
 - **Email atskyrimas (C hibridas):** transakciniai teisiniai (new_order, invoice, processing) → WC/SMTP; lifecycle/marketing → Sender. Vienas išsiuntimo pranešimas (`customer_completed_order`) perkeltas į Sender kaip post-purchase serijos pradžią.
@@ -45,7 +45,9 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 **Blokas 0 (dev valymas):** ✅ #713 deaktyvuotas, ✅ 2 Sender webhook.site webhookai ištrinti, ⚠️ 4 testiniai Sender kontaktai soft-deleted (Sender API elgesys — lieka DB kaip unsubscribed, kvotos nepaimta).
 
-**Kitas žingsnis (v0.2.0):** `Petshop_Sender_Adapter` realus kodas (PATCH /subscribers, POST /events, POST /message/send) + `Petshop_ESP_Retry_Queue` (Action Scheduler backoff worker). Prieš tai — Sender adapter'io `upsert_contact()` niuansas: reaktyvuoti unsubscribed kontaktą, ne kurti naujai.
+**Kitas žingsnis (Blokas 3 / M3):** PS_ contact attributes — visi 25 laukai Sender pusėje (turim 3 iš POC: PS_ORDER_COUNT, PS_PET_SPECIES, PS_MARKETING_CONSENT; liko 22). Sukurti per Sender API + dokumentuoti `attributes.md` su tipais/kas atnaujina/kuris srautas naudoja. Po to Blokas 4 (consent sync + webhook receiver, v0.3.0).
+
+**RECON PATVIRTINTA (v0.2.0 pradžioje):** Sender `/account/fields` NEVEIKIA (404) — PS_ reikšmes skaitom per subscriber `columns[]`. `POST /subscribers` ant egzistuojančio → HTTP 200 (upsert saugus be tikrinimo). Rate limit 300/min. Status modelis: `{email:marketing, temail:transactional}`.
 
 **Paraleliai (Raimio pusėje):** Paysera kortelių priėmimo aktyvavimas projektui 191898 (bazinis sluoksnis prieš recurring).
 
@@ -72,7 +74,7 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 | Dokumentas | Versija | Kur | Ką laiko |
 |---|---|---|---|
 | **TŽ MASTER** | **v1.58** | `dokumentai/TZ_MASTER_v1_58.docx` | Spec — *ką statom* (v1.58 = ESP Brevo→Sender + POC) |
-| **deployment_log** | **v1.3.48** | `dokumentai/deployment_log_v1_3_48.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S181) |
+| **deployment_log** | **v1.3.49** | `dokumentai/deployment_log_v1_3_49.md` | S-numeruota deploy istorija — *kas pastatyta + kodėl* (iki S182) |
 | Rašymo tiltas (runbook) | — | projekto failas | Tilto mechanika |
 | Dropship pajamų architektūra | — | projekto failas | Strategija |
 | Rinkiniai / Build-a-box strategija | — | projekto failas | Strategija |
