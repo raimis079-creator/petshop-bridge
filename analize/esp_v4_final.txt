@@ -1,0 +1,25 @@
+=== esp v0.4.0 SVARUS deploy ===
+deploy snippet: 738
+deploy rezultatas:
+{
+    "del_class-event-log.php": "deleted",
+    "del_class-consent-log.php": "deleted",
+    "del_class-consent-sync.php": "deleted",
+    "del_class-retry-queue.php": "deleted",
+    "del_interface-esp-adapter.php": "deleted",
+    "sender_bytes": 14991,
+    "whr_bytes": 6199,
+    "main_new_bytes": 4095,
+    "off_deleted": "ok",
+    "rename_new_to_php": "ok",
+    "final_dir_files": [
+        "includes",
+        "petshop-esp.php"
+    ],
+    "final_inc_files": [
+        "class-sender-adapter.php",
+        "class-webhook-receiver.php"
+    ]
+}
+
+Home po deploy: HTTP:500
