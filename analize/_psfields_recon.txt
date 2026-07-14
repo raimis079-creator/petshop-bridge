@@ -1,0 +1,18 @@
+=== PS_ fields recon + kurimo endpoint paieska ===
+
+--- 1. Esami PS_ fields (per terra@gyvunai.lt columns) ---
+  PS_ORDER_COUNT (id=egLxlj, type=number)
+  VISO esami PS_: 1
+
+--- 2. Field kurimo endpoint bandymai ---
+  POST /fields -> HTTP 200 — {"success":true,"message":"Field successfully created","data":{"id":"eZVwAQ","title":"PS_TEST_PROBE"
+  POST /account/fields -> HTTP 404 — {
+    "message": "The route v2/account/fields could not be found."
+}
+  POST /subscribers/fields -> HTTP 200 — 
+  POST /custom-fields -> HTTP 404 — {
+    "message": "The route v2/custom-fields could not be found."
+}
+
+=== esami JSON ===
+{"PS_ORDER_COUNT":{"id":"egLxlj","type":"number"}}
