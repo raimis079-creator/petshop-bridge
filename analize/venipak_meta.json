@@ -1,0 +1,12 @@
+{
+    "ctor_params": [
+        "plugin_name",
+        "version",
+        "settings"
+    ],
+    "method_body": "\tpublic function get_venipak_tracking_code($order) {\n\t\t$order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);\n\t\tif ($order_data) {\n\t\t\treturn $order_data['pack_numbers'] ? implode('<br/>', $order_data['pack_numbers']) : '';\n\t\t}\n\t\treturn null;\n\t}\n",
+    "grep_meta_keys": [
+        "_venipak_total_shipments",
+        "_omnivalt_total_shipments"
+    ]
+}
