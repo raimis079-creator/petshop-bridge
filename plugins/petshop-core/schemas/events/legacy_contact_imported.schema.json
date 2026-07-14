@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "legacy_contact_imported",
+  "description": "Legacy klientas importuotas is senos DB per Master DB (M16). Emit'inama viena karta per klienta.",
+  "schema_version": 1,
+  "type": "object",
+  "required": ["schema_version", "event_name", "event_id", "emitted_at", "email", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_name": {"const": "legacy_contact_imported"},
+    "event_id": {"type": "string"},
+    "emitted_at": {"type": "string", "format": "date-time"},
+    "email": {"type": "string", "format": "email"},
+    "customer_id": {"type": ["integer", "null"]},
+    "payload": {
+      "type": "object",
+      "required": ["wave", "founding_score", "order_count", "lifetime_value"],
+      "properties": {
+        "wave": {"type": "string", "enum": ["banga1", "banga2"]},
+        "founding_score": {"type": "number"},
+        "order_count": {"type": "integer"},
+        "lifetime_value": {"type": "number"},
+        "last_order_date": {"type": ["string", "null"], "format": "date"},
+        "pet_species_hint": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
