@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop ESP (Email Service Provider adapter)
  * Description: Vienintelis vamzdis is Woo/Petshop-core i Sender.net (ir ateityje kitus ESP). Susideda is: adapterio (kontraktas + Sender implementacija), event log (idempotencija), retry queue (Action Scheduler backoff), webhook receiver (consent sync). Sender = kvailas vykdytojas; verslo logika lieka Woo pusėje. „Gelezine taisykle": isjungus Sender, parduotuve praranda TIK laisku/SMS pristatyma — visi klientai, sutikimai, refill skaiciavimai, prenumeratos, priminimai islieka.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: petshop.lt
  * Requires Plugins: woocommerce
  * Text Domain: petshop-esp
@@ -13,21 +13,25 @@
  * - WC + WP Mail SMTP = kritiniai teisiniai transakciniai (order, invoice)
  * - ESP-nepriklausomas dizainas: adapter'is per interface, keisti Sender'i i kita ESP = keisti tik SenderAdapter klase
  *
- * KOMPONENTAI (v0.1.0):
+ * KOMPONENTAI:
  * - Interface_ESP_Adapter — ESP-agnostiskas kontraktas
  * - Petshop_ESP_Event_Log — DB sluoksnis (gaj6_ps_event_log, unique event_id+adapter_name)
- * - Petshop_ESP_Retry_Queue — Action Scheduler backoff (bus v0.2.0)
- * - Petshop_Sender_Adapter — Sender.net implementacija (bus v0.2.0)
+ * - Petshop_Sender_Adapter — Sender.net implementacija (v0.2.0)
+ * - Petshop_ESP_Retry_Queue — Action Scheduler backoff (v0.2.0)
  * - Petshop_ESP_Webhook_Receiver — Sender webhook prijemimas (bus v0.3.0)
  *
- * v0.1.0 (2026-07-14): PAMATO STATYMAS — main bootstrap + interface + event log. Be Sender emit'inimo. Testuojamas 'ps_emit_event()' public API + INSERT IGNORE idempotencija + status tracking. Sender adapter'is pridedamas v0.2.0.
+ * v0.1.0 (2026-07-14): PAMATO STATYMAS — main bootstrap + interface + event log.
+ * v0.2.0 (2026-07-14): SENDER ADAPTER + RETRY QUEUE — realus HTTP kvietimai i Sender API
+ *   (upsert_contact, emit_event, send_transactional_email/sms placeholder, verify_webhook,
+ *   health, is_operational) + Action Scheduler backoff worker (1min/5min/30min/2h/6h/24h + jitter,
+ *   7 bandymai → DLQ + alert). ps_emit_event() dabar planuoja async siuntima. Cron fallback kas 5 min.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PETSHOP_ESP_VERSION', '0.1.0' );
+define( 'PETSHOP_ESP_VERSION', '0.2.0' );
 define( 'PETSHOP_ESP_FILE', __FILE__ );
 define( 'PETSHOP_ESP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PETSHOP_ESP_URL', plugin_dir_url( __FILE__ ) );
@@ -39,23 +43,48 @@ define( 'PETSHOP_ESP_URL', plugin_dir_url( __FILE__ ) );
  * - ASCII only — jokia LT raidziu API/webhookuose
  */
 
-/**
- * Autoload — paprastas require_once includes/*.php.
- * Ne PSR-4, kad neprireiktu composer'io mazam plugin'ui.
- */
 require_once PETSHOP_ESP_DIR . 'includes/interface-esp-adapter.php';
 require_once PETSHOP_ESP_DIR . 'includes/class-event-log.php';
+require_once PETSHOP_ESP_DIR . 'includes/class-sender-adapter.php';
+require_once PETSHOP_ESP_DIR . 'includes/class-retry-queue.php';
 
 /**
- * Aktyvavimo hook — sukuria/atnaujina DB lentele.
+ * Aktyvavimo hook — sukuria/atnaujina DB lentele + registruoja cron.
  */
-register_activation_hook( __FILE__, array( 'Petshop_ESP_Event_Log', 'install' ) );
+register_activation_hook( __FILE__, function() {
+	Petshop_ESP_Event_Log::install();
+	if ( ! wp_next_scheduled( 'ps_esp_cron_process_pending' ) ) {
+		wp_schedule_event( time() + 300, 'ps_esp_5min', 'ps_esp_cron_process_pending' );
+	}
+} );
+
+/**
+ * Deaktyvavimo hook — isvalo cron.
+ */
+register_deactivation_hook( __FILE__, function() {
+	$ts = wp_next_scheduled( 'ps_esp_cron_process_pending' );
+	if ( $ts ) {
+		wp_unschedule_event( $ts, 'ps_esp_cron_process_pending' );
+	}
+} );
+
+/**
+ * Custom cron interval — 5 min.
+ */
+add_filter( 'cron_schedules', function( $schedules ) {
+	if ( ! isset( $schedules['ps_esp_5min'] ) ) {
+		$schedules['ps_esp_5min'] = array(
+			'interval' => 300,
+			'display'  => 'Petshop ESP — kas 5 min',
+		);
+	}
+	return $schedules;
+} );
 
 /**
  * Bootstrap: patikrina priklausomybes ir inicijuoja.
  */
 add_action( 'plugins_loaded', function() {
-	// Priklausomybe: WooCommerce
 	if ( ! class_exists( 'WooCommerce' ) ) {
 		add_action( 'admin_notices', function() {
 			echo '<div class="notice notice-error"><p><strong>Petshop ESP</strong>: reikalauja WooCommerce (neaktyvus arba neįdiegtas).</p></div>';
@@ -65,6 +94,21 @@ add_action( 'plugins_loaded', function() {
 
 	// Uztikrina lentele (jei aktyvavimo hook'as praleistas)
 	Petshop_ESP_Event_Log::maybe_install();
+
+	// Retry queue Action Scheduler hook
+	Petshop_ESP_Retry_Queue::init();
+
+	// Cron fallback registracija (jei aktyvavimo praleista)
+	if ( ! wp_next_scheduled( 'ps_esp_cron_process_pending' ) ) {
+		wp_schedule_event( time() + 300, 'ps_esp_5min', 'ps_esp_cron_process_pending' );
+	}
+} );
+
+/**
+ * Cron fallback: apdoroja pending/failed batch'a.
+ */
+add_action( 'ps_esp_cron_process_pending', function() {
+	Petshop_ESP_Retry_Queue::process_pending_batch( 50 );
 } );
 
 /**
@@ -72,31 +116,16 @@ add_action( 'plugins_loaded', function() {
  * PUBLIC API — vienintelis emit'inimo taskas visai sistemai
  * ==========================================================================
  *
- * Naudojimas kitose vietose (welcome hook, order_paid hook, refill cron, ir t.t.):
+ * Naudojimas:
+ *   ps_emit_event('order_paid:12345', 'order_paid', 'klientas@pvz.lt', array('order_id'=>12345, ...));
  *
- *   ps_emit_event(
- *       'order_paid:12345',       // event_id (deterministinis, unique per adapter)
- *       'order_paid',              // event_name (snake_case)
- *       'klientas@pavyzdys.lt',   // recipient email
- *       array(                    // payload (bus siunciamas ESP'ui)
- *           'order_id' => 12345,
- *           'total'    => 42.50,
- *           'currency' => 'EUR',
- *       )
- *   );
- *
- * Grazina: array(
- *   'ok'         => bool,        // ar sekmingai istaisyta i eile
- *   'dedup'      => bool,        // ar buvo dublikatas (jau egzistavo)
- *   'log_id'     => int|null,    // eiluciu id lenteleje (jei istaisyta arba jau buvo)
- *   'ms'         => float,       // kiek laiko uztruko (< 100ms tikslas)
- * )
+ * Grazina: array('ok', 'dedup', 'log_id', 'ms')
  *
  * PRINCIPAI:
- * - SINCHRONISKAI < 100ms (klientas ne laukia realaus Sender API kvietimo)
+ * - SINCHRONISKAI < 100ms (klientas nelaukia Sender API)
  * - INSERT IGNORE — idempotencija per UNIQUE(event_id, adapter_name)
- * - Realus siuntimas Sender'iui delegated Action Scheduler'iui (v0.2.0)
- * - Kol Sender adapter'is nesukurtas, event'ai kaupiami 'pending' busenoje
+ * - Realus siuntimas delegated Action Scheduler'iui (jei prieinamas)
+ * - Jei AS neprieinamas — event lieka 'pending', paimtas cron fallback'u
  */
 function ps_emit_event( $event_id, $event_name, $email, $payload = array() ) {
 	$t0 = microtime( true );
@@ -105,22 +134,38 @@ function ps_emit_event( $event_id, $event_name, $email, $payload = array() ) {
 		$event_name,
 		$email,
 		$payload,
-		'sender'  // pagrindinis adapter'is; buves multi-ESP jei prireiks
+		'sender'
 	);
+	// Uzplanuoti async siuntima TIK jei naujas (ne dedup) ir turim log_id
+	if ( $result['ok'] && ! $result['dedup'] && ! empty( $result['log_id'] ) ) {
+		Petshop_ESP_Retry_Queue::enqueue( $result['log_id'] );
+	}
 	$result['ms'] = round( ( microtime( true ) - $t0 ) * 1000, 2 );
 	return $result;
 }
 
 /**
- * Alt public API: gauti event'a is log'o pagal event_id (debug'ui, health check'ui).
+ * Alt public API: gauti event'a is log'o pagal event_id (debug'ui).
  */
 function ps_get_event( $event_id, $adapter_name = 'sender' ) {
 	return Petshop_ESP_Event_Log::get_by_event_id( $event_id, $adapter_name );
 }
 
 /**
- * Alt public API: gauti pending event'us (bus kviesta is Action Scheduler v0.2.0).
+ * Alt public API: gauti pending event'us.
  */
 function ps_get_pending_events( $limit = 50 ) {
 	return Petshop_ESP_Event_Log::get_pending( $limit );
+}
+
+/**
+ * Alt public API: gauti adapter'io instancija (upsert_contact ir kt. tiesiogiai).
+ * Naudojama consent sync, contact attribute update hook'uose.
+ */
+function ps_esp_adapter() {
+	static $adapter = null;
+	if ( $adapter === null ) {
+		$adapter = new Petshop_Sender_Adapter();
+	}
+	return $adapter;
 }
