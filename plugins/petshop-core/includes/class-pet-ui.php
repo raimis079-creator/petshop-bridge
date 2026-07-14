@@ -98,6 +98,7 @@ class Petshop_Pet_UI {
 			'isLoggedIn'  => is_user_logged_in(),
 			'homeUrl'     => home_url( '/' ),
 			'petPageUrl'  => wc_get_account_endpoint_url( self::ENDPOINT ),
+			'imagesUrl'   => plugins_url( 'assets/images/', dirname( __FILE__ ) ),
 		);
 		wp_localize_script( 'pspet-form', 'PSPetConfig', $config );
 	}
