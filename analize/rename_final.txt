@@ -1,0 +1,41 @@
+=== Rename .NEW -> .php (be exec) ===
+rename rezultatas:
+{
+    "del_class-event-log.php": "-",
+    "del_class-consent-log.php": "-",
+    "del_class-consent-sync.php": "-",
+    "del_class-retry-queue.php": "-",
+    "del_interface-esp-adapter.php": "-",
+    "new_exists": true,
+    "new_bytes": 4095,
+    "new_has_version": true,
+    "new_has_emit_decl": false,
+    "rename": "ok",
+    "off_del": "ok",
+    "final_dir": [
+        "includes",
+        "petshop-esp.php"
+    ],
+    "final_inc": [
+        "class-sender-adapter.php",
+        "class-webhook-receiver.php"
+    ]
+}
+
+Home: HTTP:200
+
+=== aktyvavimas + patikra ===
+{
+    "esp_active": true,
+    "error": null,
+    "esp_ver": "0.4.0",
+    "core_ver": "0.1.0",
+    "sender_class": true,
+    "implements_mp": "YES",
+    "aliases": {
+        "Petshop_ESP_Event_Log": true,
+        "Petshop_ESP_Retry_Queue": true,
+        "Interface_ESP_Adapter": true
+    },
+    "consent_read": ""
+}
