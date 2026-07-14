@@ -1,0 +1,10 @@
+Sender cleanup: 
+core patch: {"bytes":6843}
+Home: HTTP:200
+
+=== dev allowlist patikra ===
+{
+    "env": "dev",
+    "notlisted": "BLOCKED:dev_allowlist",
+    "allowlisted": "ALLOWED:ok"
+}
