@@ -1,0 +1,15 @@
+=== petshop-core plugin deploy ===
+deploy snippet id: 733
+deploy result:
+{
+    "main": 5568,
+    "iface": 2770,
+    "event_log": 9977,
+    "consent_log": 5081,
+    "consent_sync": 7545,
+    "retry": 8386
+}
+activate result:
+<br />
+<b>Fatal error</b>:  Cannot redeclare ps_emit_event() (previously declared in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-esp/petshop-esp.php:147) in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/petshop-core.php</b> on line <b>100</b><br />
+
