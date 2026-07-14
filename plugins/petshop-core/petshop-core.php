@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Core
  * Description: Petshop.lt provider-neutralus sistemos pamatas: event log + retry queue, event registry, consent log/sync, action tokens, message provider interface. Prielaida: bet koks message provider (Sender, SMS, kt.) priklauso nuo šio plugin'o, ne atvirkščiai.
- * Version: 0.12.0
+ * Version: 0.13.0
  * Author: UAB Avesa / Petshop.lt
  * Requires at least: 6.0
  * Requires PHP: 8.1
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PETSHOP_CORE_VERSION', '0.12.0' );
+define( 'PETSHOP_CORE_VERSION', '0.13.0' );
 define( 'PETSHOP_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PETSHOP_CORE_URL', plugin_dir_url( __FILE__ ) );
 
