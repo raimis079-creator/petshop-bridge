@@ -1,0 +1,20 @@
+=== Petshop ESP v0.1.0 deploy ===
+deploy snippet ID: 721
+deploy files:
+{
+    "created_dir_main": true,
+    "created_dir_inc": true,
+    "main_bytes": 5203,
+    "iface_bytes": 4300,
+    "evlog_bytes": 9639,
+    "main_exists": true,
+    "iface_exists": true,
+    "evlog_exists": true
+}
+activate:
+{
+    "slug": "petshop-esp\/petshop-esp.php",
+    "before": false,
+    "error": null,
+    "after": true
+}
