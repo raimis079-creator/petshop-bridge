@@ -1,16 +1,52 @@
 import { execSync } from "child_process";
 import fs from "fs";
 function putText(n,s){const repo=process.env.GH_REPO,tok=process.env.GH_TOKEN;const url='https://api.github.com/repos/'+repo+'/contents/analize/'+n;let sha='';try{sha=JSON.parse(execSync('curl -s --max-time 30 -H "Authorization: Bearer '+tok+'" "'+url+'?ref=main&t='+Date.now()+'"',{encoding:'utf8'})).sha||'';}catch(e){}const b={message:'x',branch:'main',content:Buffer.from(s,'utf8').toString('base64')};if(sha)b.sha=sha;fs.writeFileSync('/tmp/pf.json',JSON.stringify(b));execSync('curl -s --max-time 40 -X PUT -H "Authorization: Bearer '+tok+'" -d @/tmp/pf.json "'+url+'"',{encoding:'utf8'});}
-const BASE='https://dev.avesa.lt';const U=process.env.WP_USER||'';const P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const PHP="if ( ! defined('ABSPATH') ) { return; }\nadd_action('wp_loaded', function(){\n  if ( ! isset($_GET['ps_esp2_test']) ) { return; }\n  $tok = isset($_GET['token']) ? sanitize_text_field(wp_unslash($_GET['token'])) : '';\n  if ( $tok !== 'cmplz_6680aa2a42151d54fa8d64ec' ) { return; }\n  $out = array();\n  global $wpdb;\n  $t = $wpdb->prefix.'ps_event_log';\n\n  // 0. Ar naujos klases + versijos uzloadytos?\n  $out['0_version'] = defined('PETSHOP_ESP_VERSION') ? PETSHOP_ESP_VERSION : '?';\n  $out['0_adapter_class'] = class_exists('Petshop_Sender_Adapter');\n  $out['0_retry_class'] = class_exists('Petshop_ESP_Retry_Queue');\n  $out['0_adapter_fn'] = function_exists('ps_esp_adapter');\n\n  // 1. Adapter sukonfiguruotas?\n  $adapter = ps_esp_adapter();\n  $out['1_configured'] = $adapter->is_configured();\n\n  // 2. is_operational \u2014 ar Sender atsako?\n  $out['2_operational'] = $adapter->is_operational();\n\n  // 3. Health status\n  $out['3_health'] = $adapter->get_health_status();\n\n  // 4. upsert_contact \u2014 realiai i Sender (testinis kontaktas)\n  $testEmail = 'esp_v020_test@example.com';\n  $upsert = $adapter->upsert_contact($testEmail, array(\n    'PS_ORDER_COUNT' => 7,\n    'PS_PET_SPECIES' => 'dog',\n    'PS_MARKETING_CONSENT' => 'true',\n  ));\n  $out['4_upsert'] = $upsert;\n\n  // 5. Patikra \u2014 ar reiksmes irasytos (read-back per get_contact_field)\n  $out['5_readback_order_count'] = $adapter->get_contact_field($testEmail, 'PS_ORDER_COUNT');\n  $out['5_readback_species'] = $adapter->get_contact_field($testEmail, 'PS_PET_SPECIES');\n\n  // 6. emit_event tiesiogiai per adapter (i realia Sender)\n  $emit = $adapter->emit_event($testEmail, 'esp2test:order_paid:1', 'order_paid', array('order_id'=>50001, 'total'=>42.5, 'currency'=>'EUR'));\n  $out['6_emit'] = $emit;\n\n  // 7. Pilnas srautas: ps_emit_event \u2192 INSERT \u2192 enqueue \u2192 (AS async apdoros veliau)\n  $wpdb->query(\"DELETE FROM `$t` WHERE event_id LIKE 'esp2flow:%'\");\n  $flow = ps_emit_event('esp2flow:refill_due:1', 'refill_due', $testEmail, array('pet_name'=>'Reksas', 'sku'=>'EXCL-2KG'));\n  $out['7_flow_emit'] = array('ok'=>$flow['ok'], 'dedup'=>$flow['dedup'], 'log_id'=>$flow['log_id'], 'ms'=>$flow['ms']);\n\n  // 8. Ar Action Scheduler uzplanavo?\n  if(function_exists('as_has_scheduled_action')){\n    $out['8_as_scheduled'] = as_has_scheduled_action('ps_esp_process_event', array('log_id'=>(int)$flow['log_id']), 'petshop-esp');\n  } else {\n    $out['8_as_scheduled'] = 'as_has_scheduled_action nera';\n  }\n\n  // 9. Rankiniu budu paleisti worker'i (imituojam AS callback'a) \u2014 realus siuntimas\n  Petshop_ESP_Retry_Queue::handle_process_event($flow['log_id']);\n  $after = ps_get_event('esp2flow:refill_due:1');\n  $out['9_status_after_process'] = $after ? array('status'=>$after->status, 'attempts'=>$after->attempts, 'last_error'=>$after->last_error) : null;\n\n  // 10. Backoff seka patikra\n  $out['10_backoff'] = array(\n    'attempt_1' => Petshop_ESP_Retry_Queue::backoff_seconds(1),\n    'attempt_2' => Petshop_ESP_Retry_Queue::backoff_seconds(2),\n    'attempt_3' => Petshop_ESP_Retry_Queue::backoff_seconds(3),\n    'attempt_6' => Petshop_ESP_Retry_Queue::backoff_seconds(6),\n  );\n\n  // 11. is_retriable_code logika\n  $out['11_retriable'] = array(\n    '500' => Petshop_Sender_Adapter::is_retriable_code(500),\n    '429' => Petshop_Sender_Adapter::is_retriable_code(429),\n    '400' => Petshop_Sender_Adapter::is_retriable_code(400),\n    '404' => Petshop_Sender_Adapter::is_retriable_code(404),\n    '0_network' => Petshop_Sender_Adapter::is_retriable_code(0),\n  );\n\n  // Cleanup \u2014 testinius event'us + Sender kontakta\n  $wpdb->query(\"DELETE FROM `$t` WHERE event_id LIKE 'esp2flow:%' OR event_id LIKE 'esp2test:%'\");\n  $adapter->send_transactional_sms('', '', array()); // placeholder patikra\n  // Sender testinio kontakto trynimas\n  // (paliekam \u2014 soft delete; kit\u0105 kart\u0105 reaktyvuosim)\n\n  header('Content-Type: application/json; charset=utf-8');\n  echo wp_json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);\n  exit;\n}, 6);";
-function api(method,path,body){const auth='-u "'+U+':'+P+'"';let cmd;if(body){fs.writeFileSync('/tmp/b.json',JSON.stringify(body));cmd='curl -s -k --max-time 90 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' -H "Content-Type: application/json" --data-binary @/tmp/b.json "'+BASE+path+'"';}else{cmd='curl -s -k --max-time 60 -w "\nHTTP:%{http_code}" '+auth+' -X '+method+' "'+BASE+path+'"';}let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:30000000});}catch(e){r=(e.stdout||'')+'\nHTTP:TIMEOUT';}return{code:(r.match(/HTTP:(\S+)$/)||[])[1]||'?',body:r.replace(/\nHTTP:\S+$/,'')};}
-function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
-(async()=>{let id=0;try{
-  const c=api('POST','/wp-json/code-snippets/v1/snippets',{name:'Petshop ESP2 Test tmp',desc:'token',code:PHP,scope:'global',active:true,priority:10});
-  try{id=JSON.parse(c.body).id;}catch(e){}
-  if(!id){putText('_esp2_test.txt','fail: '+c.body.slice(0,200));return;}
-  execSync('sleep 2');
-  const r=sh('curl -s -k --max-time 90 "'+BASE+'/?ps_esp2_test=1&token=cmplz_6680aa2a42151d54fa8d64ec"');
-  putText('esp2_test.json', r);
-  api('POST','/wp-json/code-snippets/v1/snippets/'+id+'/deactivate',{});
-}catch(e){putText('_esp2_test.txt','!!!'+e);}})();
+const MK=(process.env.SENDER_MARKETING_TOKEN||'').trim();
+const SAPI='https://api.sender.net/v2';
+let out='';const L=s=>{out+=s+'\n';};
+function scall(method, path, body){
+  let cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" "'+SAPI+path+'"';
+  if(body){fs.writeFileSync('/tmp/sb.json',JSON.stringify(body));cmd='curl -s --max-time 30 -w "\nHTTP:%{http_code}" -X '+method+' -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" -H "Content-Type: application/json" --data-binary @/tmp/sb.json "'+SAPI+path+'"';}
+  let r;try{r=execSync(cmd,{encoding:'utf8',maxBuffer:10000000});}catch(e){r=(e.stdout||'')+'\nHTTP:ERR';}
+  const code=(r.match(/HTTP:(\S+)$/)||[])[1]||'?';const raw=r.replace(/\nHTTP:\S+$/,'');
+  return {code, raw};
+}
+(async()=>{
+  L('=== PS_ fields recon + kurimo endpoint paieska ===');
+  L('');
+  // 1. Esami fields — per esama subscriber columns (nes /account/fields 404)
+  L('--- 1. Esami PS_ fields (per terra@gyvunai.lt columns) ---');
+  const sub = scall('GET','/subscribers/terra@gyvunai.lt');
+  let existing = {};
+  if(sub.code==='200'){
+    try {
+      const d = JSON.parse(sub.raw).data;
+      for(const col of (d.columns||[])){
+        if((col.title||'').startsWith('PS_')){
+          existing[col.title] = {id: col.id, type: col.type};
+          L('  '+col.title+' (id='+col.id+', type='+col.type+')');
+        }
+      }
+    } catch(e){ L('  parse err'); }
+  } else { L('  HTTP '+sub.code); }
+  L('  VISO esami PS_: '+Object.keys(existing).length);
+  L('');
+
+  // 2. Field kurimo endpoint paieska
+  L('--- 2. Field kurimo endpoint bandymai ---');
+  const endpoints = [
+    ['POST','/fields', {title:'PS_TEST_PROBE', type:'text'}],
+    ['POST','/account/fields', {title:'PS_TEST_PROBE', type:'text'}],
+    ['POST','/subscribers/fields', {title:'PS_TEST_PROBE', type:'text'}],
+    ['POST','/custom-fields', {title:'PS_TEST_PROBE', type:'text'}],
+  ];
+  for(const [m,p,b] of endpoints){
+    const r = scall(m, p, b);
+    L('  '+m+' '+p+' -> HTTP '+r.code+' — '+r.raw.slice(0,100));
+  }
+  L('');
+  L('=== esami JSON ===');
+  L(JSON.stringify(existing));
+  putText('_psfields_recon.txt', out);
+  console.log('done');
+})();
