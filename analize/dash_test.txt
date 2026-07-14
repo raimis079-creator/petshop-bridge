@@ -1,0 +1,24 @@
+deploy: {"dash":10796,"main":10564}
+reactivate: {"active":true,"err":null,"ver":"0.11.0"}
+Home: HTTP:200
+
+=== PET-DASHBOARD TEST ===
+{
+    "0_ver": "0.11.0",
+    "0_dashboard_class": true,
+    "1_pet_id": 7,
+    "2_dashboard_status": 200,
+    "2_pet_name": "Reksas",
+    "2_refill_days": 22,
+    "2_refill_color": "green",
+    "2_reminders_count": 1,
+    "2_reminder_first": "Skiepai",
+    "2_reminder_days": 11,
+    "2_shelf_count": 1,
+    "2_food_rhythm": true,
+    "2_completeness": 83,
+    "3_feedback_status": 200,
+    "3_new_avg": 24,
+    "4_idor": "skip",
+    "9_cleanup": "done"
+}
