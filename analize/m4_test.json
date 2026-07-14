@@ -1,0 +1,54 @@
+{
+    "0_version": "0.3.0",
+    "0_consent_log_class": true,
+    "0_consent_sync_class": true,
+    "0_webhook_class": true,
+    "0_fn_set": true,
+    "0_fn_get": true,
+    "1_set_true": {
+        "ok": true,
+        "from": "",
+        "to": "true",
+        "pushed_to_sender": true
+    },
+    "2_log_current": "true",
+    "3_get_consent": "true",
+    "4_idempotent_unchanged": true,
+    "5_set_false": {
+        "ok": true,
+        "from": "true",
+        "to": "false",
+        "pushed_to_sender": true
+    },
+    "5_log_now": "false",
+    "6_history_count": 2,
+    "6_history": [
+        {
+            "from": "true",
+            "to": "false",
+            "source": "mano-paskyra"
+        },
+        {
+            "from": "",
+            "to": "true",
+            "source": "checkout"
+        }
+    ],
+    "7_secret_exists": true,
+    "7_verify_good": true,
+    "7_verify_bad": false,
+    "8_webhook_unsub": {
+        "ok": true,
+        "from": "true",
+        "to": "false",
+        "customer_id": 0
+    },
+    "8_consent_after": "false",
+    "9_bounce": {
+        "ok": true,
+        "customer_id": 0
+    },
+    "9_transactional_only": "true",
+    "10_webhook_route_exists": true,
+    "11_cleanup": true
+}
