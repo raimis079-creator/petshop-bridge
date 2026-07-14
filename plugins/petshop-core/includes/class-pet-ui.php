@@ -61,9 +61,9 @@ class Petshop_Pet_UI {
 	}
 
 	public static function render_account_page() {
-		// MyAccount viduje — anketa arba profilis (JS nusprendzia)
-		echo '<div id="pspet-form"></div>';
-		// TODO S197: kai bus pet-dashboard endpoint — rodyti profili jei jau yra augintinis
+		// MyAccount viduje — profilio ekranas (JS: jei nera augintiniu -> empty state su anketa)
+		echo '<div id="pspet-profile"></div>';
+		echo '<div id="pspet-form" style="display:none"></div>';
 	}
 
 	// --- Shortcode ---
@@ -87,6 +87,11 @@ class Petshop_Pet_UI {
 
 		wp_enqueue_script( 'pspet-form', $base . 'pet-form.js', array(), self::VERSION, true );
 
+		// Profilio ekranas — MyAccount puslapyje (JS pats tikrina ar yra #pspet-profile)
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+			wp_enqueue_script( 'pspet-profile', $base . 'pet-profile.js', array(), self::VERSION, true );
+		}
+
 		$config = array(
 			'restUrl'     => esc_url_raw( get_rest_url( null, 'petshop/v1' ) ),
 			'nonce'       => wp_create_nonce( 'wp_rest' ),
@@ -99,8 +104,8 @@ class Petshop_Pet_UI {
 
 	private static function should_load() {
 		global $post;
-		// MyAccount augintinis tab
-		if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( self::ENDPOINT ) ) {
+		// Bet kuris MyAccount puslapis (page id 14) — kad augintinis tab veiktu
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
 			return true;
 		}
 		// Puslapis su shortcode
