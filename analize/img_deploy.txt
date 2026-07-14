@@ -1,0 +1,24 @@
+pet-dog.png: 302972 b64 chars
+pet-cat.png: 324516 b64 chars
+pet-bird.png: 288552 b64 chars
+pet-rodent.png: 345836 b64 chars
+pet-fish.png: 333260 b64 chars
+pet-reptile.png: 460556 b64 chars
+pet-other.png: 275740 b64 chars
+pet-empty-state.png: 377128 b64 chars
+fetch pet-dog.png: {"img":"pet-dog.png","bytes":227229,"src_len":227229}
+fetch pet-cat.png: {"img":"pet-cat.png","bytes":243386,"src_len":243386}
+fetch pet-bird.png: {"img":"pet-bird.png","bytes":216413,"src_len":216413}
+fetch pet-rodent.png: {"img":"pet-rodent.png","bytes":259377,"src_len":259377}
+fetch pet-fish.png: {"img":"pet-fish.png","bytes":249945,"src_len":249945}
+fetch pet-reptile.png: {"img":"pet-reptile.png","bytes":345416,"src_len":345416}
+fetch pet-other.png: {"img":"pet-other.png","bytes":206803,"src_len":206803}
+fetch pet-empty-state.png: {"img":"pet-empty-state.png","bytes":282844,"src_len":282844}
+pet-dog.png HTTP: 200
+pet-cat.png HTTP: 200
+pet-bird.png HTTP: 200
+pet-rodent.png HTTP: 200
+pet-fish.png HTTP: 200
+pet-reptile.png HTTP: 200
+pet-other.png HTTP: 200
+pet-empty-state.png HTTP: 200
