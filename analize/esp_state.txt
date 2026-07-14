@@ -1,0 +1,23 @@
+{
+    "dir_files": [
+        "includes",
+        "petshop-esp.php.OFF"
+    ],
+    "inc_files": [
+        "class-consent-log.php",
+        "class-consent-sync.php",
+        "class-event-log.php",
+        "class-retry-queue.php",
+        "class-sender-adapter.php",
+        "class-webhook-receiver.php",
+        "interface-esp-adapter.php"
+    ],
+    "off_exists": true,
+    "php_exists": false,
+    "off_first_lines": "<?php\n\/**\n * Plugin Name: Petshop ESP (Email Service Provider adapter)\n * Description: Vienintelis vamzdis is Woo\/Petshop-core i Sender.net (ir ateityje kitus ESP). Susideda is: adapterio (kontraktas + Sender implementacija), event log (idempotencija), retry queue (Action Scheduler backoff), webhook",
+    "php_first_lines": null,
+    "core_active": true,
+    "esp_active": true,
+    "core_version": "0.1.0",
+    "ps_emit_event_exists": true
+}
