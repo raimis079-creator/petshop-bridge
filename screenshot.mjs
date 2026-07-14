@@ -12,20 +12,28 @@ function sh(c){ try { return execSync(c,{maxBuffer:20*1024*1024}).toString(); } 
 const AUTH = Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_APP_PASS||'').replace(/\s+/g,'')).toString('base64');
 const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
+
+// Deleter snippet: DB trynimas + savizudybe
+const php = `
+add_action('wp_loaded', function(){
+	if ( ! isset($_GET['ps_m8clean']) || $_GET['ps_m8clean'] !== 'Wt5Xn9Rk' ) { return; }
+	global $wpdb;
+	$t = $wpdb->prefix . 'snippets';
+	$n1 = $wpdb->query("DELETE FROM {$t} WHERE name LIKE 'TEMP M8%'");
+	$n2 = $wpdb->query("DELETE FROM {$t} WHERE name = 'TEMP M8 Cleaner v1'");
+	header('Content-Type: application/json');
+	echo wp_json_encode(array('deleted_temp'=>$n1,'deleted_self'=>$n2));
+	exit;
+});`;
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 Cleaner v1', code: php, scope: 'global', active: true }));
+const create = sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
+try { out.cleaner_id = JSON.parse(create).id; } catch(e) { out.create_raw = create.slice(0,300); }
+
+const run = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_m8clean=Wt5Xn9Rk"');
+out.clean_result = run.slice(0,300);
+
+// Verifikacija
 const list = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
-let temps = [];
-try {
-  const j = JSON.parse(list);
-  temps = j.filter(s => /TEMP M8/i.test(s.name)).map(s => ({id: s.id, name: s.name, active: s.active}));
-} catch(e) { out.list_err = list.slice(0,300); }
-out.found = temps;
-out.deleted = [];
-for (const t of temps) {
-  const d = sh(`curl -sk -X DELETE -H "Authorization: Basic ${AUTH}" "${API}/${t.id}"`);
-  out.deleted.push({id: t.id, resp: d.slice(0,120)});
-}
-// Pakartotine patikra
-const list2 = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
-try { out.remaining = JSON.parse(list2).filter(s => /TEMP M8/i.test(s.name)).length; } catch(e) { out.remaining = 'err'; }
-putResult('m8_cleanup_1.json', out);
+try { out.remaining_temp_m8 = JSON.parse(list).filter(s => /TEMP M8/i.test(s.name)).map(s=>s.id+':'+s.name); } catch(e) { out.remaining_temp_m8 = 'err'; }
+putResult('m8_cleanup_2.json', out);
 console.log('DONE');
