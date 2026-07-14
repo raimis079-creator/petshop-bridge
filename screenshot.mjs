@@ -5,11 +5,9 @@ const BASE='https://dev.avesa.lt';
 function sh(c){try{return execSync(c,{encoding:'utf8',maxBuffer:30000000});}catch(e){return (e.stdout||'')+'[ERR]';}}
 (async()=>{
   let out='';const L=s=>{out+=s+'\n';};
-  L('=== Svetaine gyva? ===');
-  const r = sh('curl -s -k --max-time 30 -w "\nHTTP:%{http_code}" "'+BASE+'/"');
-  const code=(r.match(/HTTP:(\S+)$/)||[])[1]||'?';
-  L('HTTP: '+code);
-  if(code!=='200'){ L(r.slice(-2000)); }
-  else { L('Home page atsako 200. OK.'); }
-  putText('_alive_check.txt', out);
+  const r = sh('curl -s -k --max-time 30 -o /dev/null -w "HTTP:%{http_code}" "'+BASE+'/"');
+  L('Home: '+r);
+  const r2 = sh('curl -s -k --max-time 30 -o /dev/null -w "HTTP:%{http_code}" "'+BASE+'/wp-admin/"');
+  L('wp-admin: '+r2);
+  putText('_alive2.txt', out);
 })();
