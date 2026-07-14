@@ -40,6 +40,8 @@ class Petshop_Event_Registry {
 		'shipment_returned'           => false,  // M12
 		'pet_reminder_due'            => false,  // M13
 		'consent_changed'             => true,   // M4 hook — YRA
+		'pet_product_assigned'        => true,   // M8 — YRA
+		'refill_feedback_submitted'   => true,   // M8 — YRA
 	);
 
 	private static $schema_cache = array();
