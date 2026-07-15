@@ -11,84 +11,42 @@ function sh(c){ try { return execSync(c,{maxBuffer:20*1024*1024}).toString(); } 
 const AUTH = Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_APP_PASS||'').replace(/\s+/g,'')).toString('base64');
 const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
-try {
+const list = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
+try { const j = JSON.parse(list); out.temp_m8 = j.filter(s=>/TEMP M8/i.test(s.name)).map(s=>s.id+':'+s.name); out.total_snippets = j.length; out.active = j.filter(s=>s.active).length; } catch(e){ out.list_err = list.slice(0,150); }
+for (const [k,u] of [['home','https://dev.avesa.lt/'],['acct','https://dev.avesa.lt/my-account/'],['pet','https://dev.avesa.lt/my-account/augintinis/'],['anketa','https://dev.avesa.lt/anketa-testas/'],['rest','https://dev.avesa.lt/wp-json/petshop/v1']])
+  out[k] = sh(`curl -sk -o /dev/null -w "%{http_code}" --max-time 20 "${u}"`);
 const php = `
 add_action('wp_loaded', function(){
-	if ( isset(\$_GET['ps_f']) && \$_GET['ps_f']==='Zz2Xx9Cc' ) {
-		\$l='f_'.wp_rand(10000,99999);
-		\$uid=wp_create_user(\$l, wp_generate_password(24), \$l.'@gyvunai.lt');
-		(new WP_User(\$uid))->set_role('customer');
-		global \$wpdb;
-		\$wpdb->insert(\$wpdb->prefix.'ps_pets', array('user_id'=>\$uid,'pet_name'=>'Fin','species'=>'dog','life_stage'=>'adult','dog_size'=>'medium','feeding_type'=>'dry_only','is_primary'=>1,'status'=>'active','created_at'=>current_time('mysql'),'updated_at'=>current_time('mysql')));
-		wp_set_current_user(\$uid); wp_set_auth_cookie(\$uid,true);
-		wp_safe_redirect( wc_get_account_endpoint_url('augintinis') ); exit;
+	if ( ! isset($_GET['ps_sum']) || $_GET['ps_sum'] !== 'Sum1Ary2' ) { return; }
+	global $wpdb;
+	$o = array();
+	$o['versions'] = array();
+	$f = WP_PLUGIN_DIR.'/petshop-core/includes/class-pet-ui.php';
+	if (preg_match("/const VERSION = '([^']+)'/", file_get_contents($f), $m)) $o['versions']['pet-ui'] = $m[1];
+	$o['backups'] = array();
+	foreach (array('assets/pet-form.js','assets/pet-profile.js','includes/class-pet-ui.php','includes/class-pet-profile.php','includes/class-magic-login.php','includes/class-pet-dashboard.php') as $r) {
+		$p = WP_PLUGIN_DIR.'/petshop-core/'.$r;
+		$b = array();
+		foreach (array('bak-20260715','bak-s205','bak-s206','bak-s207','bak-s208') as $s) if (file_exists($p.'.'.$s)) $b[] = $s;
+		if ($b) $o['backups'][basename($r)] = $b;
 	}
-	if ( isset(\$_GET['ps_fchk']) && \$_GET['ps_fchk']==='Zz2Xx9Cc' ) {
-		global \$wpdb;
-		header('Content-Type: application/json');
-		echo wp_json_encode(\$wpdb->get_results("SELECT id,pet_name,photo_file_id,current_food_brand FROM {\$wpdb->prefix}ps_pets WHERE pet_name='Fin' ORDER BY id DESC LIMIT 1", ARRAY_A));
-		exit;
-	}
+	$ea = WP_PLUGIN_DIR.'/petshop-esp/includes/class-sender-adapter.php';
+	if (file_exists($ea.'.bak-s205')) $o['backups']['class-sender-adapter.php'] = array('bak-s205');
+	$o['test_users'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->users} WHERE user_email REGEXP '^(m8ui|m8e2e|m8v205|s208|dup206|anon|seed|naujas|dash|ph_|x_|f_|v2_|dupxfer|expired|terra_test)'");
+	$o['test_pets'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ps_pets");
+	$o['events_dead'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ps_event_log WHERE status='dead'");
+	$o['events_skipped'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ps_event_log WHERE esp_response LIKE '%dev_allowlist%'");
+	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Fin', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Sum', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const { chromium } = await import('playwright');
-const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport:{width:1440,height:1100}, ignoreHTTPSErrors:true });
-const page = await ctx.newPage(); page.setDefaultTimeout(15000);
-const errs=[]; page.on('pageerror', e=>errs.push(String(e).slice(0,110)));
-await page.goto('https://dev.avesa.lt/?ps_f=Zz2Xx9Cc', { waitUntil:'domcontentloaded', timeout:45000 });
-await page.waitForTimeout(4000);
-try { const c=page.locator('text=PRIIMTI').first(); if(await c.isVisible()) await c.click(); } catch(e){}
-await page.waitForTimeout(500);
-out.pet_id = await page.evaluate(async () => {
-  const cfg = window.PSPetConfig || {};
-  const l = await (await fetch(cfg.restUrl+'/pet-profile',{headers:{'X-WP-Nonce':cfg.nonce},credentials:'same-origin'})).json();
-  return l.pets && l.pets[0] ? l.pets[0].id : null;
-});
-// TIKRAS PNG
-out.upload = await page.evaluate(async ({ b64, petId }) => {
-  const cfg = window.PSPetConfig || {};
-  const bin = atob(b64); const arr = new Uint8Array(bin.length);
-  for (let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
-  const fd = new FormData();
-  fd.append('photo', new Blob([arr], {type:'image/png'}), 'real.png');
-  const r = await fetch(cfg.restUrl+'/pet-photo/'+petId, { method:'POST', headers:{'X-WP-Nonce':cfg.nonce}, body:fd, credentials:'same-origin' });
-  return { status: r.status, body: (await r.text()).slice(0,220) };
-}, { b64: 'iVBORw0KGgoAAAANSUhEUgAAAlgAAAHgCAIAAAD2dYQOAAAHRklEQVR4nO3XMQ3DUBQEwTgKHWMwFCttKKQ2BbehGhhP+juD4LrVbft5PACg6jk9AAAmCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkCSEAaUIIQJoQApAmhACkvaYHsKbv5z09gQVd9296AgvyCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgDQhBCBNCAFIE0IA0oQQgLRtP4/pDQAwxiMEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIE0IAUgTQgDShBCANCEEIO0P8dIIV/QojnUAAAAASUVORK5CYII=', petId: out.pet_id });
-await page.reload({ waitUntil:'domcontentloaded' }); await page.waitForTimeout(3500);
-out.avatar_src = await page.evaluate(() => { const i = document.querySelector('.pspet-p-avatar img'); return i ? i.src.slice(0,90) : '(nera img)'; });
-await page.screenshot({ path:'/tmp/fin1.png' });
-// AUTOCOMPLETE — realus rasymas
-await page.locator('.pspet-p-action', { hasText:'Redaguoti profilį' }).first().click();
-await page.waitForTimeout(1800);
-await page.locator('.pspet-btn-primary', { hasText:'Tęsti' }).first().click();
-await page.waitForTimeout(1500);
-const inp = page.locator('#pspet-form-host .pspet-autocomplete input').first();
-await inp.click();
-await inp.type('jos', { delay: 160 });
-await page.waitForTimeout(2500);
-out.suggestions = await page.evaluate(() => {
-  const b = document.querySelector('#pspet-form-host .pspet-suggestions');
-  return b ? Array.from(b.children).map(c => (c.textContent||'').trim()) : null;
-});
-await page.screenshot({ path:'/tmp/fin2.png' });
-if (out.suggestions && out.suggestions.length) {
-  await page.locator('#pspet-form-host .pspet-suggestions').locator('*').first().click();
-  await page.waitForTimeout(600);
-  out.after_pick = await inp.inputValue().catch(()=>'');
-  await page.locator('.pspet-btn-primary', { hasText:'Išsaugoti profilį' }).first().click();
-  await page.waitForTimeout(3000);
-}
-const chk = sh('curl -sk "https://dev.avesa.lt/?ps_fchk=Zz2Xx9Cc"');
-try { out.db = JSON.parse(chk); } catch(e){ out.db_raw = chk.slice(0,150); }
-out.errs = errs;
-await browser.close();
-for (const n of ['fin1','fin2']) if (fs.existsSync('/tmp/'+n+'.png')) ghPut('screenshots/m8_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png'), 'fin');
-} catch(err){ out.FATAL = String(err&&err.message?err.message:err).slice(0,400); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset(\$_GET['ps_kt'])||\$_GET['ps_kt']!=='Rr3Ww8Yy'){return;} global \$wpdb; \$n=\$wpdb->query("DELETE FROM {\$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>\$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vT', code:kphp, scope:'global', active:true }));
+const s = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_sum=Sum1Ary2"');
+try { out.sum = JSON.parse(s); } catch(e){ out.sum_raw = s.slice(0,300); }
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_ku'])||$_GET['ps_ku']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vU', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kt=Rr3Ww8Yy"');
-ghPut('screenshots/m8_fin.json', Buffer.from(JSON.stringify(out)), 'fin');
+out.kill = sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_ku=Rr3Ww8Yy"').slice(0,60);
+const l2 = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
+try { out.temp_left = JSON.parse(l2).filter(s=>/TEMP M8/i.test(s.name)).length; } catch(e){ out.temp_left='err'; }
+ghPut('screenshots/m8_summary.json', Buffer.from(JSON.stringify(out)), 'summary');
 console.log('DONE');
