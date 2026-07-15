@@ -11,69 +11,45 @@ function sh(c){ try { return execSync(c,{maxBuffer:20*1024*1024}).toString(); } 
 const AUTH = Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_APP_PASS||'').replace(/\s+/g,'')).toString('base64');
 const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
-
 const php = `
 add_action('wp_loaded', function(){
-	if ( isset($_GET['ps_v205']) && $_GET['ps_v205'] === 'Tt8Uu2Ii' ) {
-		$login = 'm8v205_' . wp_rand(10000,99999);
-		$uid = wp_create_user( $login, wp_generate_password(24), $login . '@gyvunai.lt' );
-		if ( is_wp_error($uid) ) { echo 'ERR'; exit; }
-		(new WP_User($uid))->set_role('customer');
-		wp_set_current_user($uid); wp_set_auth_cookie($uid, true);
-		wp_safe_redirect( add_query_arg('action','create', wc_get_account_endpoint_url('augintinis')) ); exit;
+	if ( ! isset($_GET['ps_gate']) || $_GET['ps_gate'] !== 'Gg4Hh6Jj' ) { return; }
+	$o = array('env' => defined('PETSHOP_ENVIRONMENT') ? PETSHOP_ENVIRONMENT : 'NEAPIBREZTA');
+	if ( ! function_exists('ps_esp_adapter') ) { $o['err']='no ps_esp_adapter'; header('Content-Type: application/json'); echo wp_json_encode($o); exit; }
+	$a = ps_esp_adapter();
+	$o['class'] = get_class($a);
+	$rm = new ReflectionMethod($a, 'is_blocked_by_dev_allowlist');
+	$rm->setAccessible(true);
+	$tests = array('terra@gyvunai.lt','raimundas@gyvunai.lt','terra@petshop.lt','TERRA@GYVUNAI.LT','gutulis@gmail.com','naujas@klientas.lt');
+	foreach ($tests as $e) $o['blocked'][$e] = $rm->invoke($a, $e) ? 'BLOKUOJAMAS' : 'praleidziamas';
+	// Ar visi 4 metodai turi saugikli (statinis kodo patikrinimas diske)
+	$f = WP_PLUGIN_DIR.'/petshop-esp/includes/class-sender-adapter.php';
+	$src = file_get_contents($f);
+	foreach (array('upsert_contact','emit_event','send_transactional_email','send_transactional_sms') as $fn) {
+		$pos = strpos($src, 'public function '.$fn);
+		$body = $pos !== false ? substr($src, $pos, 700) : '';
+		$o['guards'][$fn] = ( strpos($body,'is_blocked_by_dev_allowlist') !== false || strpos($body,"PETSHOP_ENVIRONMENT") !== false ) ? 'YRA' : 'NERA';
 	}
-	if ( isset($_GET['ps_v205log']) && $_GET['ps_v205log'] === 'Tt8Uu2Ii' ) {
-		global $wpdb;
-		$t = $wpdb->prefix.'ps_event_log';
-		$o = array('rows' => $wpdb->get_results("SELECT id,event_name,email,status,attempts,last_error,esp_response,emitted_at FROM {$t} ORDER BY id DESC LIMIT 6", ARRAY_A));
-		header('Content-Type: application/json'); echo wp_json_encode($o); exit;
-	}
+	$o['backups'] = array(
+		'adapter' => file_exists($f.'.bak-s205'),
+		'profile' => file_exists(WP_PLUGIN_DIR.'/petshop-core/includes/class-pet-profile.php.bak-s205'),
+	);
+	// Tvarka pet-profile faile
+	$pf = file_get_contents(WP_PLUGIN_DIR.'/petshop-core/includes/class-pet-profile.php');
+	$mp = strpos($pf, 'self::mirror_to_sender( $user_id, $pet_id );');
+	$ep = strpos($pf, 'self::emit_created( $user_id, $pet_id, $input );');
+	$o['order_upsert_before_emit'] = ($mp !== false && $ep !== false && $mp < $ep);
+	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 V205', code: php, scope: 'global', active: true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 Gate', code: php, scope: 'global', active: true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-
-const { chromium } = await import('playwright');
-const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1440, height: 1200 }, ignoreHTTPSErrors: true });
-const page = await ctx.newPage();
-const errors = []; const senderCalls = [];
-page.on('pageerror', e => errors.push(String(e).slice(0,150)));
-page.on('request', r => { if (r.url().includes('sender.net')) senderCalls.push(r.method()+' '+r.url()); });
-
-await page.goto('https://dev.avesa.lt/?ps_v205=Tt8Uu2Ii', { waitUntil:'domcontentloaded', timeout:45000 });
-await page.waitForTimeout(3000);
-try { const c = page.locator('text=PRIIMTI').first(); if (await c.isVisible()) await c.click(); } catch(e){}
-await page.waitForTimeout(600);
-await page.locator('.pspet-pill', { hasText:'Katė' }).first().click();
-await page.waitForTimeout(400);
-await page.locator('#pspet-form-host input.pspet-input').first().fill('Murkė205');
-await page.locator('.pspet-btn-primary', { hasText:'Tęsti' }).first().click();
-await page.waitForTimeout(1200);
-await page.locator('.pspet-pill', { hasText:'Suaugusi (1–7 m.)' }).first().click().catch(()=>{});
-await page.waitForTimeout(300);
-await page.locator('.pspet-pill', { hasText:'Taip' }).first().click().catch(()=>{});
-await page.waitForTimeout(300);
-await page.locator('.pspet-pill', { hasText:'Mišrus' }).first().click().catch(()=>{});
-await page.waitForTimeout(400);
-await page.locator('.pspet-btn-primary', { hasText:'Išsaugoti profilį' }).first().click();
-await page.waitForTimeout(4000);
-out.result_ok = await page.locator('text=profilis sukurtas').first().isVisible().catch(()=>false);
-await page.screenshot({ path:'/tmp/v205.png' });
-out.js_errors = errors;
-out.browser_sender_calls = senderCalls;
-await browser.close();
-ghPut('screenshots/m8_v205.png', fs.readFileSync('/tmp/v205.png'), 'v205');
-
-// Palaukiam kol async Action Scheduler apdoros eventa
-sh('sleep 8');
-const log = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_v205log=Tt8Uu2Ii"');
-try { out.log = JSON.parse(log); } catch(e){ out.log_raw = log.slice(0,400); }
-
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_m8k7'])||$_GET['ps_m8k7']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); header('Content-Type: application/json'); echo wp_json_encode(array('deleted'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill v7', code:kphp, scope:'global', active:true }));
+const res = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_gate=Gg4Hh6Jj"');
+try { out.probe = JSON.parse(res); } catch(e){ out.raw = res.slice(0,500); }
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_m8k8'])||$_GET['ps_m8k8']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); header('Content-Type: application/json'); echo wp_json_encode(array('deleted'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill v8', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-out.kill = sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_m8k7=Rr3Ww8Yy"').slice(0,120);
+out.kill = sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_m8k8=Rr3Ww8Yy"').slice(0,120);
 const list = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
 try { out.remaining = JSON.parse(list).filter(s=>/TEMP M8/i.test(s.name)).length; } catch(e){ out.remaining='err'; }
-ghPut('screenshots/m8_v205.json', Buffer.from(JSON.stringify(out)), 'v205 result');
+ghPut('screenshots/m8_gate.json', Buffer.from(JSON.stringify(out)), 'gate check');
 console.log('DONE');
