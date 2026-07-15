@@ -10,84 +10,31 @@ function ghPut(p, buf, m) {
 function sh(c){ try { return execSync(c,{maxBuffer:20*1024*1024}).toString(); } catch(e){ return 'ERR'; } }
 const AUTH = Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_APP_PASS||'').replace(/\s+/g,'')).toString('base64');
 const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
-const out = { t: {} };
-try {
+const out = {};
 const php = `
 add_action('wp_loaded', function(){
-	if ( isset($_GET['ps_ph']) && $_GET['ps_ph']==='Hh2Jj6Kk' ) {
-		$l='ph_'.wp_rand(10000,99999);
-		$uid=wp_create_user($l, wp_generate_password(24), $l.'@gyvunai.lt');
-		(new WP_User($uid))->set_role('customer');
-		global $wpdb;
-		$wpdb->insert($wpdb->prefix.'ps_pets', array('user_id'=>$uid,'pet_name'=>'Foto','species'=>'dog','life_stage'=>'adult','dog_size'=>'medium','feeding_type'=>'dry_only','is_primary'=>1,'status'=>'active','created_at'=>current_time('mysql'),'updated_at'=>current_time('mysql')));
-		wp_set_current_user($uid); wp_set_auth_cookie($uid,true);
-		wp_safe_redirect( wc_get_account_endpoint_url('augintinis') ); exit;
-	}
-	if ( isset($_GET['ps_phchk']) && $_GET['ps_phchk']==='Hh2Jj6Kk' ) {
-		global $wpdb;
-		header('Content-Type: application/json');
-		echo wp_json_encode($wpdb->get_results("SELECT id,pet_name,photo_file_id FROM {$wpdb->prefix}ps_pets WHERE pet_name='Foto' ORDER BY id DESC LIMIT 1", ARRAY_A));
-		exit;
-	}
+	if ( ! isset($_GET['ps_pp']) || $_GET['ps_pp'] !== 'Ff7Gg1Dd' ) { return; }
+	$o = array();
+	$f = WP_PLUGIN_DIR.'/petshop-core/includes/class-pet-photo.php';
+	$o['photo_b64'] = file_exists($f) ? base64_encode(file_get_contents($f)) : 'MISSING';
+	// brendu dublikatai
+	$terms = get_terms(array('taxonomy'=>'product_brand','hide_empty'=>false,'search'=>'jos','number'=>10));
+	$o['brand_terms'] = array();
+	if (!is_wp_error($terms)) foreach ($terms as $t) $o['brand_terms'][] = array('id'=>$t->term_id,'name'=>$t->name,'slug'=>$t->slug,'count'=>$t->count);
+	// handle_brands kodas
+	$pf = WP_PLUGIN_DIR.'/petshop-core/includes/class-pet-profile.php';
+	$src = file_get_contents($pf);
+	$pos = strpos($src, 'public static function handle_brands');
+	$o['handle_brands'] = $pos !== false ? substr($src, $pos, 1400) : 'nerasta';
+	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Photo', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 PP', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-
-// Testinis PNG
-const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAaklEQVR4nO3QMQ0AAAjAMPybBv+HgSZNegdmT3vmwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwtcOxUsBAcOHKzUAAAAASUVORK5CYII=', 'base64');
-fs.writeFileSync('/tmp/test.png', png);
-
-const { chromium } = await import('playwright');
-const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport:{width:1440,height:1200}, ignoreHTTPSErrors:true });
-const page = await ctx.newPage(); page.setDefaultTimeout(15000);
-const errs=[]; page.on('pageerror', e=>errs.push(String(e).slice(0,110)));
-const api=[]; page.on('response', r=>{ if(r.url().includes('/petshop/v1/')) api.push(r.request().method()+' '+r.url().split('/petshop/v1')[1].split('?')[0]+' -> '+r.status()); });
-
-await page.goto('https://dev.avesa.lt/?ps_ph=Hh2Jj6Kk', { waitUntil:'domcontentloaded', timeout:45000 });
-await page.waitForTimeout(4000);
-try { const c=page.locator('text=PRIIMTI').first(); if(await c.isVisible()) await c.click(); } catch(e){}
-await page.waitForTimeout(500);
-
-// ===== NUOTRAUKA =====
-const [fc] = await Promise.all([
-  page.waitForEvent('filechooser', { timeout: 8000 }).catch(()=>null),
-  page.locator('.pspet-p-action', { hasText:'nuotrauką' }).first().click()
-]);
-if (fc) {
-  await fc.setFiles('/tmp/test.png');
-  await page.waitForTimeout(5000);
-  out.t.photo_uploaded = true;
-} else { out.t.photo_uploaded = 'filechooser neatsidare'; }
-const chk = sh('curl -sk "https://dev.avesa.lt/?ps_phchk=Hh2Jj6Kk"');
-try { out.t.photo_db = JSON.parse(chk); } catch(e){ out.t.photo_raw = chk.slice(0,150); }
-out.t.avatar_img = await page.locator('.pspet-p-avatar img').first().isVisible().catch(()=>false);
-await page.screenshot({ path:'/tmp/ph.png' });
-
-// ===== BRENDU AUTOCOMPLETE =====
-await page.goto('https://dev.avesa.lt/my-account/augintinis/', { waitUntil:'domcontentloaded', timeout:45000 });
-await page.waitForTimeout(3500);
-await page.locator('.pspet-p-action', { hasText:'Redaguoti profilį' }).first().click();
-await page.waitForTimeout(1800);
-await page.locator('.pspet-btn-primary', { hasText:'Tęsti' }).first().click();
-await page.waitForTimeout(1500);
-const foodInput = page.locator('#pspet-form-host input.pspet-input').last();
-out.t.food_field_exists = await foodInput.isVisible().catch(()=>false);
-if (out.t.food_field_exists) {
-  await foodInput.fill('jos');
-  await page.waitForTimeout(2500);
-  out.t.suggestions = await page.evaluate(() => Array.from(document.querySelectorAll('#pspet-form-host .pspet-ac-item, #pspet-form-host .pspet-autocomplete div, #pspet-form-host [class*=ac-]')).map(e=>e.textContent.trim()).filter(Boolean).slice(0,6));
-  out.t.food_html = await page.evaluate(() => { const f = document.querySelectorAll('#pspet-form-host .pspet-field'); return f.length ? f[f.length-1].innerHTML.slice(0,300) : ''; });
-}
-await page.screenshot({ path:'/tmp/ac.png' });
-out.t.api = api;
-out.t.errs = errs;
-await browser.close();
-for (const n of ['ph','ac']) if (fs.existsSync('/tmp/'+n+'.png')) ghPut('screenshots/m8_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png'), 'ph');
-} catch(err){ out.FATAL = String(err&&err.message?err.message:err).slice(0,400); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kq'])||$_GET['ps_kq']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vQ', code:kphp, scope:'global', active:true }));
+const r = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_pp=Ff7Gg1Dd"');
+try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,300); }
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kr'])||$_GET['ps_kr']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vR', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kq=Rr3Ww8Yy"');
-ghPut('screenshots/m8_ph.json', Buffer.from(JSON.stringify(out)), 'ph');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kr=Rr3Ww8Yy"');
+ghPut('screenshots/m8_pp.json', Buffer.from(JSON.stringify(out)), 'pp');
 console.log('DONE');
