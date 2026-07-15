@@ -12,43 +12,19 @@ const AUTH = Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_AP
 const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
 
+// Cleaner snippet - failas, ne inline escaping
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_m8ev']) || $_GET['ps_m8ev'] !== 'Ld6Mc2Nq' ) { return; }
+	if ( ! isset($_GET['ps_m8kill']) || $_GET['ps_m8kill'] !== 'Rr3Ww8Yy' ) { return; }
 	global $wpdb;
-	$o = array();
-	$o['all_ps_tables'] = $wpdb->get_col("SHOW TABLES LIKE '{$wpdb->prefix}ps%'");
-	$t = $wpdb->prefix . 'ps_event_log';
-	$o['count'] = $wpdb->get_var("SELECT COUNT(*) FROM {$t}");
-	$o['last_error_wpdb'] = $wpdb->last_error;
-	$o['rows'] = $wpdb->get_results("SELECT id,event_id,event_name,email,status,attempts,last_error,emitted_at FROM {$t} ORDER BY id DESC LIMIT 8", ARRAY_A);
-	$o['rows_err'] = $wpdb->last_error;
-	// Emitteriu failas
-	$f = WP_PLUGIN_DIR . '/petshop-core/includes/class-event-emitters.php';
-	$o['emitters_b64'] = file_exists($f) ? base64_encode(file_get_contents($f)) : 'MISSING';
-	// Ar yra hookas
-	$o['hooks_pet_created'] = array();
-	global $wp_filter;
-	foreach (array('petshop_pet_profile_created','petshop_pet_created','ps_pet_created') as $h) {
-		$o['hooks_pet_created'][$h] = isset($wp_filter[$h]) ? count($wp_filter[$h]->callbacks) : 0;
-	}
-	// Ar Sender adapteris/opcijos
-	$o['sender_opts'] = array();
-	foreach (array('petshop_sender_api_key','petshop_esp_production_mode','petshop_sender_enabled','ps_sender_api_key') as $k) {
-		$v = get_option($k, '__NONE__');
-		$o['sender_opts'][$k] = ($v === '__NONE__') ? 'NEBUVO' : (is_string($v) && strlen($v)>8 ? substr($v,0,4).'…('.strlen($v).')' : var_export($v,true));
-	}
-	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
+	$n = $wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'");
+	header('Content-Type: application/json'); echo wp_json_encode(array('deleted'=>$n)); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 EventProbe v1', code: php, scope: 'global', active: true }));
-const create = sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-try { out.snip = JSON.parse(create).id; } catch(e){ out.create_raw = create.slice(0,300); }
-const res = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_m8ev=Ld6Mc2Nq"');
-try { out.probe = JSON.parse(res); } catch(e){ out.raw = res.slice(0,600); }
-// valymas
-out.clean = sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d '{"name":"TEMP M8 Cleaner2","code":"add_action(\\'wp_loaded\\',function(){global \\$wpdb;\\$wpdb->query(\\"DELETE FROM {\\$wpdb->prefix}snippets WHERE name LIKE \\'TEMP M8%\\'\\");});","scope":"global","active":true}' "${API}"`).slice(0,150);
-sh('curl -sk --max-time 20 "https://dev.avesa.lt/"');
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 Kill v1', code: php, scope: 'global', active: true }));
+sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
+out.kill = sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_m8kill=Rr3Ww8Yy"').slice(0,150);
 const list = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
-try { out.remaining = JSON.parse(list).filter(s=>/TEMP M8/i.test(s.name)).map(s=>s.id+':'+s.name); } catch(e){ out.remaining='err'; }
-ghPut('screenshots/m8_evprobe.json', Buffer.from(JSON.stringify(out)), 'm8 event probe');
+try { out.remaining_temp_m8 = JSON.parse(list).filter(s=>/TEMP M8/i.test(s.name)).map(s=>s.id+':'+s.name); } catch(e){ out.remaining_temp_m8='err'; }
+out.alive = sh('curl -sk -o /dev/null -w "%{http_code}" "https://dev.avesa.lt/"');
+ghPut('screenshots/m8_kill.json', Buffer.from(JSON.stringify(out)), 'm8 kill');
 console.log('DONE');
