@@ -86,6 +86,30 @@ Be šio lauko skaičiuoklė 15 kg šuniui tyliai duotų šuniuko normą. **Gyvas
 
 **KITAS ATVIRAS KLAUSIMAS (Etapas 2, ne duomenys):** intervalinės eilutės („15–30 kg → 435–570 g") — 15 kg šuniui rodyti visą diapazoną ar interpoliuoti? Eukanuba testas parodė 435–570 g/parą 15 kg šuniui, kas per daug, jei imama viršutinė riba. Skaičiuoklės logikos sprendimas.
 
+**S213 — ŠĖRIMO NORMŲ GALUTINIS RECON (mb_stripos, TEISINGAS) + RYTOJAUS PLANAS (2026-07-15 vakaras):**
+
+**KRITINĖ S212 PAMOKA:** visas šios dienos parsinimas naudojo `stripos()` (baitai) + `mb_substr()` (simboliai) — offsetas LT tekste slinko ~110 simbolių į priekį. Dėl to: (a) dalis lentelių nupjautos iš priekio, (b) „105 sugadinti produktai" NEEGZISTUOJA — svetainė tvarkinga (vizualiai patikrinta: `screenshots/ft_broken.png`/`ft_good.png` — abu rodo normalias lenteles accordion'e), (c) visos 167 DB lentelės NEPATIKIMOS. **Taisyklė į visus būsimus parserius: LT tekste TIK `mb_stripos`/`mb_substr` pora, niekada nemaišyti su `stripos`.**
+
+**GALUTINIAI SKAIČIAI (661 instock sauso maisto):**
+- **330 TURI šėrimo lentelę** (ne 225, kaip rodė blogas offsetas)
+- **63 vet. dietos** — sąmoningai be normos („pasitarti su veterinarijos gydytoju"; Farmina Vet Life 37, Monge 25, Gemon 1). Skaičiuoklėje = pakopa D su specialiu tekstu, NE spraga.
+- **268 TRŪKSTA** (nei lentelės, nei vet teksto)
+
+**PILNAI PADENGTI:** Farmina 143/143 (106 lent. + 37 vet), Eukanuba 33/33, Monge 87/93, Ambrosia 13/15, Josera 110/143.
+**TRŪKSTA pagal brendą:** Quattro 63 · Exclusion 47 (TOP revenue!) · Josera 33 · Prins 22 · Real Dog 19 · Ontario 18 · Gemon 15 · Royal Canin 12 · Family Dog 7 · GreenPetFood 5 · Rasco 5 · IAMS 5 · Family Cat 4 · Green Petfood 3.
+**PASTABA Josera 33:** dauguma = multipack „15+3kg AKCIJA" variantai — lentelė greičiausiai YRA to paties produkto singular versijoje (pvz. JosiDog Economy 2,7kg turi, 15+3kg neturi) → kopijavimo per `ps_feeding_map` kandidatai, NE turinio darbas.
+
+**RYTOJAUS PLANAS — vienas prisėdimas, eilės tvarka:**
+1. **DROP+perparsinti:** ištrinti visas `ps_feeding_*` eilutes (safety įrodyta: `plugin_files_referencing=[]`, revizijų 0, izoliuota) → parseris v5 su `mb_stripos` (visos šakos: simple/matrix/transposed/by_age + `weight_basis` + `row_dimension` + atlaidi `<table` ekstrakcija). Laukiama: ~330 SKU aprėptis, daugiau nei 167 lentelių.
+2. **Patikros po apply (privalomos):** orphan=0; `verified` be `weight_basis`=0 (išsk. by_age); cond RAKTŲ sąrašas semantinis; gyvas testas „suaugęs 15 kg šuo" — adult_expected eilutės UŽBLOKUOTOS; atsitiktinių 5 lentelių palyginimas su post_content.
+3. **Ambiguous peržiūra:** likusias (tikėtina ~20-30) sugrupuoti pagal priežastį, Raimiui parodyti po 1 pavyzdį — dalis bus tikros klaidos šaltinyje.
+4. **Josera multipack kopijos:** rasti singular↔multipack poras (title match be „X+Ykg AKCIJA"), map'inti multipack į tą pačią FeedingTable (scope='line'). ~33 SKU be turinio darbo.
+5. **Dokumentai:** deployment_log v1.3.70 (S212 klaidos + S213), STATE.md, TŽ jei reikės.
+
+**TURINIO DARBAS (atskirai, ne rytoj — owner sprendimas dėl eiliškumo):** ~235 SKU be šaltinio svetainėje (Quattro 63, Exclusion 47, Prins 22, Real Dog 19, Ontario 18, Gemon 15, RC 12, kiti 39). Exclusion = prioritetas (22,7% pardavimų). Šaltiniai: gamintojų PDF/svetainės (Exclusion.it, Prins.nl jau tirti anksčiau). Vet dietoms (63) turinio NEREIKIA — pakopa D.
+
+**TILTO PASTABA:** vėlai vakare 2 paleidimai „completed success" be rezultato (m8_test5 neįvyko — DB patikrinta: 167/2444/330 nepakitę). Priežastis neaiški, sekti; skaitymui naudoti `strict=False` JSON (PHP atsakymai su control chars).
+
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
 - **Ciniškas testas (pamatinis principas):** „Jeigu negalime vienu sakiniu pasakyti, kokią naudą klientas gauna iš karto, neturime teisės prašyti jo pildyti anketą."
