@@ -13,39 +13,42 @@ const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_fd3']) || $_GET['ps_fd3'] !== 'Fd3Mm5Nn' ) { return; }
+	if ( ! isset($_GET['ps_fd4']) || $_GET['ps_fd4'] !== 'Fd4Pp7Qq' ) { return; }
 	global $wpdb;
 	$o = array();
-	// Susiaurinam iki SAUSO maisto kategorijos (jei tokia yra)
-	$cats = get_terms(array('taxonomy'=>'product_cat','hide_empty'=>false,'search'=>'sausas'));
-	if (!is_wp_error($cats)) foreach ($cats as $c) $o['dry_cats'][] = array('id'=>$c->term_id,'name'=>$c->name,'slug'=>$c->slug,'count'=>$c->count);
-
-	// Alternatyvios fraziu formos
-	$phrases = array('Dozavimas','dozavimo lentel','Šėrimo rekomendacij','Paros racionas','g per dien','Feeding','FEEDING GUIDE','kg / g');
-	foreach ($phrases as $ph) {
-		$cnt = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type='product' AND post_status='publish' AND post_content LIKE %s", '%'.$wpdb->esc_like($ph).'%'));
-		$o['phrase_counts'][$ph] = (int) $cnt;
+	// Kiek IS SAUSO MAISTO kategorijos (ne viso katalogo) turi feeding rekomendacija
+	$dry_ids = get_posts(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>-1,'fields'=>'ids',
+		'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'slug','terms'=>array('sausas-maistas-sunims','sausas-maistas-katems')))));
+	$o['dry_total'] = count($dry_ids);
+	$with = 0;
+	foreach ($dry_ids as $id) {
+		$c = get_post_field('post_content', $id);
+		if (stripos($c, 'Šėrimo rekomendacij') !== false) $with++;
 	}
+	$o['dry_with_feeding_rec'] = $with;
+	$o['pct'] = $o['dry_total'] ? round($with / $o['dry_total'] * 100, 1) : 0;
 
-	// Accordion snippet paieska
-	$snip = $wpdb->get_row("SELECT id, name FROM {$wpdb->prefix}snippets WHERE name LIKE '%512%' OR name LIKE '%ccordion%' LIMIT 1");
-	$o['accordion_snippet'] = $snip;
-
-	// pa_pakuotes_dydis produktai su "Rekomenduojama paros doz" -> ar tai butent sausas maistas
-	$withdoz = new WP_Query(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>3,
-		's'=>'', 'meta_query'=>array()));
-	$q2 = $wpdb->get_results("SELECT ID, post_title FROM {$wpdb->posts} WHERE post_type='product' AND post_status='publish' AND post_content LIKE '%Rekomenduojama paros doz%' LIMIT 5");
-	$o['doz_examples'] = $q2;
-
+	// Realus turinio pavyzdys — ar tai lentele su svoriu->gramais
+	$sample_id = null;
+	foreach ($dry_ids as $id) {
+		$c = get_post_field('post_content', $id);
+		if (stripos($c, 'Šėrimo rekomendacij') !== false) { $sample_id = $id; break; }
+	}
+	if ($sample_id) {
+		$c = get_post_field('post_content', $sample_id);
+		$pos = stripos($c, 'Šėrimo rekomendacij');
+		$o['sample_title'] = get_the_title($sample_id);
+		$o['sample_excerpt'] = mb_substr($c, $pos, 700);
+	}
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Feed3', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Feed4', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const r = sh('curl -sk --max-time 40 "https://dev.avesa.lt/?ps_fd3=Fd3Mm5Nn"');
-try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,400); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kd'])||$_GET['ps_kd']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill wD', code:kphp, scope:'global', active:true }));
+const r = sh('curl -sk --max-time 60 "https://dev.avesa.lt/?ps_fd4=Fd4Pp7Qq"');
+try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,500); }
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_ke2'])||$_GET['ps_ke2']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill wE2', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kd=Rr3Ww8Yy"');
-ghPut('screenshots/m8_feed3.json', Buffer.from(JSON.stringify(out)), 'feed3');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_ke2=Rr3Ww8Yy"');
+ghPut('screenshots/m8_feed4.json', Buffer.from(JSON.stringify(out)), 'feed4');
 console.log('DONE');
