@@ -13,28 +13,49 @@ const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_m8esp']) || $_GET['ps_m8esp'] !== 'Nn4Bb7Cc' ) { return; }
+	if ( ! isset($_GET['ps_m8fin']) || $_GET['ps_m8fin'] !== 'Jj9Kk5Ll' ) { return; }
 	$o = array();
-	$d = WP_PLUGIN_DIR.'/petshop-esp/';
-	foreach (array('main'=>'petshop-esp.php','adapter'=>'includes/class-sender-adapter.php','webhook'=>'includes/class-webhook-receiver.php') as $k=>$rel) {
-		$f = $d.$rel;
-		$o[$k.'_b64'] = file_exists($f) ? base64_encode(file_get_contents($f)) : 'MISSING';
+	// 1. Aplinka
+	$o['PETSHOP_ENVIRONMENT_defined'] = defined('PETSHOP_ENVIRONMENT');
+	$o['PETSHOP_ENVIRONMENT_value'] = defined('PETSHOP_ENVIRONMENT') ? PETSHOP_ENVIRONMENT : 'NEAPIBREZTA';
+	$o['tokens_defined'] = array(
+		'MARKETING' => defined('PETSHOP_SENDER_MARKETING_TOKEN'),
+		'TRANSACTIONAL' => defined('PETSHOP_SENDER_TRANSACTIONAL_TOKEN'),
+	);
+	// 2. Ar upsert_contact kvieciamas KUR NORS visuose pluginuose + temoje
+	$o['upsert_calls'] = array();
+	$dirs = glob(WP_PLUGIN_DIR.'/petshop-*', GLOB_ONLYDIR) ?: array();
+	$dirs[] = get_stylesheet_directory();
+	foreach ($dirs as $d) {
+		$files = array_merge(glob($d.'/*.php')?:array(), glob($d.'/includes/*.php')?:array(), glob($d.'/includes/*/*.php')?:array());
+		foreach ($files as $f) {
+			$c = file_get_contents($f);
+			foreach (explode("\\n", $c) as $i=>$l) {
+				if (strpos($l,'upsert_contact')!==false && strpos($l,'function upsert_contact')===false && strpos($l,'log_dev_blocked')===false) {
+					$o['upsert_calls'][] = str_replace(array(WP_PLUGIN_DIR, get_stylesheet_directory()),array('','THEME'),$f).':'.($i+1).': '.trim(substr($l,0,120));
+				}
+			}
+		}
 	}
-	$o['esp_options'] = array();
-	global $wpdb;
-	$rows = $wpdb->get_results("SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '%sender%' OR option_name LIKE '%esp%' OR option_name LIKE 'petshop%'", ARRAY_A);
-	foreach ($rows as $r) $o['esp_options'][] = $r['option_name'];
+	// 3. ps_emit_event funkcijos vieta + ar joje upsert
+	$o['ps_emit_event_file'] = '';
+	foreach ($dirs as $d) {
+		foreach (array_merge(glob($d.'/*.php')?:array(), glob($d.'/includes/*.php')?:array()) as $f) {
+			$c = file_get_contents($f);
+			if (strpos($c,'function ps_emit_event')!==false) { $o['ps_emit_event_file'] = str_replace(WP_PLUGIN_DIR,'',$f); $o['ps_emit_event_b64'] = base64_encode($c); }
+		}
+	}
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 EspProbe v1', code: php, scope: 'global', active: true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name: 'TEMP M8 FinProbe v1', code: php, scope: 'global', active: true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const res = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_m8esp=Nn4Bb7Cc"');
-try { out.probe = JSON.parse(res); } catch(e){ out.raw = res.slice(0,500); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_m8kill3'])||$_GET['ps_m8kill3']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); header('Content-Type: application/json'); echo wp_json_encode(array('deleted'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name: 'TEMP M8 Kill v3', code: kphp, scope: 'global', active: true }));
+const res = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_m8fin=Jj9Kk5Ll"');
+try { out.probe = JSON.parse(res); } catch(e){ out.raw = res.slice(0,600); }
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_m8kill4'])||$_GET['ps_m8kill4']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); header('Content-Type: application/json'); echo wp_json_encode(array('deleted'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name: 'TEMP M8 Kill v4', code: kphp, scope: 'global', active: true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-out.kill = sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_m8kill3=Rr3Ww8Yy"').slice(0,120);
+out.kill = sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_m8kill4=Rr3Ww8Yy"').slice(0,120);
 const list = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
 try { out.remaining = JSON.parse(list).filter(s=>/TEMP M8/i.test(s.name)).length; } catch(e){ out.remaining='err'; }
-ghPut('screenshots/m8_espprobe.json', Buffer.from(JSON.stringify(out)), 'm8 esp probe');
+ghPut('screenshots/m8_finprobe.json', Buffer.from(JSON.stringify(out)), 'm8 fin probe');
 console.log('DONE');
