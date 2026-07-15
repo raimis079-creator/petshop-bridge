@@ -55,20 +55,36 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 **STRATEGINIS PIVOTAS (jokio kodo — konceptas):** anketa dėl anketos neturi vertės. **Profilis NE produktas — produktas yra naudinga funkcija; profilis = atminties sluoksnis.** Tikrasis „wau" = **€/dienos maisto skaičiuoklė** (svoris+produktas+pakuotė+gyva kaina → dienos norma, pakuotės trukmė, €/diena, papildymo data). Kryptis „šiltas tikslumas". Detalės: M8 MASTER v3.2 (Raimio PC).
 
-**S212 — FeedingTable GYVA DB (2026-07-15, APPLY įvykdytas):**
+**S212 — FeedingTable GYVA DB (2026-07-15, parseris v4, APPLY baigtas):**
 
-Trys naujos lentelės dev'e (`gaj6_ps_feeding_tables` / `_rows` / `_map`). 0 klaidų, 0 orphan. Esamų lentelių NELIESTA.
-- **110 unikalių lentelių** iš 225 SKU (dedup pagal `checksum` = md5 normalizuoto HTML). `scope='line'` kai lentelė dengia >1 SKU.
-- **95 verified / 15 ambiguous.** `verified_by='auto_parser_v2'` — pažymėta MAŠINOS, ne žmogaus (traceable; jei reikės žmogaus parašo, filtruoti pagal šį lauką).
-- 2 279 eilutės, 225 map įrašai, **197 SKU su verified lentele**.
-- Formos: `simple` 43v/2a · `transposed` 44v/9a · `matrix` 7v/2a · `by_age` 1v/1a · `unknown` 0v/1a.
-- **Monge 0→37 verified (62 SKU)** — transposed šaka atrakino visą katalogą. Farmina 31v (106 SKU), Josera 13v (36 SKU), Eukanuba 10v (15 SKU).
-- `weight_from/to_kg` NULL leidžiama — `by_age` (kačiukai) normą turi pagal amžių, ne svorį; 10 tokių eilučių. Tai teisinga, ne spraga.
-- Parseris NIEKADA neveikia runtime — post_content parsinamas vienkart, `source_hash` aptinka šaltinio pokytį.
+Trys lentelės dev'e: `gaj6_ps_feeding_tables` / `_rows` / `_map`. 0 klaidų, 0 orphan. Esamų DB lentelių NELIESTA.
+- **110 unikalių lentelių** (dedup pagal `checksum`) iš 225 SKU → **92 verified / 18 ambiguous**, 2 224 eilutės, **193 SKU su verified**.
+- `verified_by='auto_parser_v4'` — pažymėta MAŠINOS, ne žmogaus (filtruojama, jei prireiks žmogaus parašo).
+- `scope='line'` kai lentelė dengia >1 SKU — dėl to peržiūros vienetų 110, ne 1000.
 
-**S212 DVI ATVIROS PROBLEMOS (Claude klaidos, užfiksuota):**
-1. **Dry-run skaitiklis melavo:** žadėjo 1 917 eilučių, apply įrašė 2 279. Priežastis — dry-run skaičiavo eilutes tik iš `verified` lentelių, apply įrašė iš visų 110. Žala nulinė (`status` vartai gina skaičiavimą), bet dry-run privalo prognozuoti tiksliai.
-2. **⚠️ TRANSPOSED SEMANTIKA NEPATIKRINTA — BLOKUOJA:** šuniukų lentelėse (`Amžius | 1,5 kg | 3 kg | 4 kg...`) svorio ašis greičiausiai reiškia **numatomą SUAUGUSIO šuns svorį**, ne dabartinį. Jei taip — 44 transposed lentelės turi teisingus skaičius su NETEISINGA prasme, ir skaičiuoklė 15 kg šuniui duotų šuniuko normą. **NESPRĘSTA — reikia gamintojo šaltinio.** Kol nepatvirtinta, transposed NETURI patekti į skaičiavimą (siūlymas: perjungti į `ambiguous` → lieka ~51 verified lentelė su nedviprasmiška ašimi).
+**KRITINIS RADINYS — `weight_basis` (naujas laukas, v3.2 sk. 6.2.2 jo NETURI):**
+Ta pati `transposed` forma turi DVI skirtingas svorio prasmes:
+- Monge mini puppy: antraštė pažodžiui **„Suaugusio šuns svoris (kg)"**, eilutės = amžius → `weight_basis='adult_expected'`
+- Monge Adult: „Šuns svoris (kg)", eilutės = Liesa/Normali/Antsvoris → `weight_basis='current'`
+
+Be šio lauko skaičiuoklė 15 kg šuniui tyliai duotų šuniuko normą. **Gyvas testas: vartai užblokavo 49 šuniukų eilutes** su svoris=15kg. `weight_basis` = PRIVALOMAS vartas kiekvienoje užklausoje; `verified AND weight_basis IS NULL` = 0 (tikrinama).
+
+**Antraštės krypties taisyklė (užrakinta):** `header[0]` semantika skiriasi PAGAL BRENDĄ — Farmina žymi EILUTES („Amžius"), Monge žymi STULPELIUS („Šuns svoris (kg)"). Parseris atpažįsta iš eilučių etikečių, ne iš antraštės.
+
+**`row_dimension` (naujas laukas):** `age` | `body_condition` | `activity_level` | `weight`. `cond` raktai semantiniai, patikrinti: `{age:32, activity_level:14, body_condition:3, age_m_from/to:10}`.
+
+**Pasiskirstymas:** simple 43v/2a (current) · transposed 41v/12a (18 body_condition + 13 activity_level = current; 10 age = adult_expected) · matrix 7v/2a (current) · by_age 1v/1a (basis=NULL, svorio neturi — teisinga) · unknown 0v/1a.
+**Aprėptis:** current/dog 114 SKU · current/cat 59 · adult_expected/dog 14 · by_age/cat 6.
+**Brendai:** Monge 35v (52 SKU) · Farmina 31v (89) · Josera 13v (35) · Eukanuba 10v (13) · Exclusion 2v (3) · RC 1v (1).
+**Likę 18 ambiguous:** 5 too_many_bad_cells, 4 row_dimension_unknown, 3 row_not_monotonic, 2 matrix_parse_fail, 2 amount_not_monotonic, 1 unknown, 1 parse_fail. Dalis — TIKROS klaidos šaltinyje.
+
+**CLAUDE KLAIDOS, UŽFIKSUOTOS (S212):**
+1. Dry-run skaitiklis melavo (žadėjo 1 917, įrašė 2 279) — skaičiavo eilutes tik iš verified lentelių. Dry-run privalo prognozuoti tiksliai.
+2. „139 blogi cond raktai" = **klaidingas aliarmas**: `LIKE '%svoris%'` pagavo REIKŠMĘ „Ant**svoris**", ne raktą. Patikra tikrino ne tai, ką skelbė.
+3. Pirma `ps_rowdim` versija tikrino tik lietuviškai („mėn") — Monge naudoja **„Months 1-2"** angliškai; ir nepažinojo „Bute/Kieme/Aktyvus" (gyvenimo būdas).
+4. Ankstesnis „80,2%" buvo išmatuotas su OR sąlyga → realiai 449 su fraze, 225 su lentele.
+
+**KITAS ATVIRAS KLAUSIMAS (Etapas 2, ne duomenys):** intervalinės eilutės („15–30 kg → 435–570 g") — 15 kg šuniui rodyti visą diapazoną ar interpoliuoti? Eukanuba testas parodė 435–570 g/parą 15 kg šuniui, kas per daug, jei imama viršutinė riba. Skaičiuoklės logikos sprendimas.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
