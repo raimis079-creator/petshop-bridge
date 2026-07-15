@@ -13,21 +13,41 @@ const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_i2']) || $_GET['ps_i2'] !== 'Ii9Oo3Pp' ) { return; }
+	if ( ! isset($_GET['ps_rc']) || $_GET['ps_rc'] !== 'Rc7Nn1Bb' ) { return; }
+	global $wpdb;
 	$o = array();
-	$d = WP_PLUGIN_DIR.'/petshop-core/assets/images';
-	$o['dir_exists'] = is_dir($d);
-	if (is_dir($d)) foreach (glob($d.'/*') as $f) $o['files'][basename($f)] = filesize($f);
-	$o['url'] = plugins_url('assets/images/', WP_PLUGIN_DIR.'/petshop-core/petshop-core.php');
+	// 1. ps_pets stulpeliai
+	$o['pets_cols'] = $wpdb->get_col("SHOW COLUMNS FROM {$wpdb->prefix}ps_pets", 0);
+	// 2. GD galimybes
+	$o['gd'] = function_exists('gd_info') ? array_filter(gd_info(), function($v,$k){ return stripos($k,'webp')!==false || stripos($k,'png')!==false; }, ARRAY_FILTER_USE_BOTH) : 'NERA GD';
+	// 3. Pavyzdinis Josera produktas: SKU + pakuotes dydis
+	$q = new WP_Query(array('post_type'=>'product','post_status'=>'publish','s'=>'josera','posts_per_page'=>4,'no_found_rows'=>true));
+	foreach ($q->posts as $p) {
+		$prod = wc_get_product($p->ID);
+		$pak = wp_get_object_terms($p->ID, 'pa_pakuotes_dydis', array('fields'=>'names'));
+		$brands = wp_get_object_terms($p->ID, 'product_brand', array('fields'=>'all'));
+		$o['sample'][] = array(
+			'id' => $p->ID,
+			'title' => mb_substr($p->post_title, 0, 55),
+			'sku' => $prod ? $prod->get_sku() : null,
+			'pakuote' => is_wp_error($pak) ? 'ERR' : implode('|', $pak),
+			'brand' => (!is_wp_error($brands) && $brands) ? array('id'=>$brands[0]->term_id,'name'=>$brands[0]->name) : null,
+			'ean' => get_post_meta($p->ID, '_ean', true) ?: (get_post_meta($p->ID, '_barcode', true) ?: get_post_meta($p->ID, '_gtin', true)),
+		);
+	}
+	// 4. Kiek produktu is viso turi pa_pakuotes_dydis
+	$o['pakuotes_terms'] = wp_count_terms(array('taxonomy'=>'pa_pakuotes_dydis','hide_empty'=>true));
+	// 5. WC account meniu punktai
+	$o['wc_menu'] = wc_get_account_menu_items();
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 I2', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 RC', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const r = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_i2=Ii9Oo3Pp"');
-try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,300); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_k3'])||$_GET['ps_k3']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill w3', code:kphp, scope:'global', active:true }));
+const r = sh('curl -sk --max-time 40 "https://dev.avesa.lt/?ps_rc=Rc7Nn1Bb"');
+try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,400); }
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_k4'])||$_GET['ps_k4']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill w4', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_k3=Rr3Ww8Yy"');
-ghPut('screenshots/m8_i2.json', Buffer.from(JSON.stringify(out)), 'i2');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_k4=Rr3Ww8Yy"');
+ghPut('screenshots/m8_rc.json', Buffer.from(JSON.stringify(out)), 'rc');
 console.log('DONE');
