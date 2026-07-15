@@ -10,98 +10,93 @@ function ghPut(p, buf, m) {
 function sh(c){ try { return execSync(c,{maxBuffer:20*1024*1024}).toString(); } catch(e){ return 'ERR:'+(e.message||'').slice(0,300); } }
 const AUTH = Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_APP_PASS||'').replace(/\s+/g,'')).toString('base64');
 const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
-const out = { steps: {} };
-
+const out = { s: {} };
 const php = `
 add_action('wp_loaded', function(){
-	$K='Aa1Ss5Dd';
-	// Kur yra shortcode?
-	if ( isset($_GET['ps_find']) && $_GET['ps_find']===$K ) {
-		global $wpdb;
-		$rows = $wpdb->get_results("SELECT ID,post_title,post_name,post_status FROM {$wpdb->posts} WHERE post_content LIKE '%petshop_pet_form%' AND post_status IN ('publish','draft')", ARRAY_A);
-		foreach ($rows as &$r) $r['url'] = get_permalink($r['ID']);
-		header('Content-Type: application/json'); echo wp_json_encode($rows); exit;
-	}
-	// Tokenai DB (ar issiustas magic link)
+	$K='Ee2Rr6Tt';
 	if ( isset($_GET['ps_tok']) && $_GET['ps_tok']===$K ) {
 		global $wpdb;
 		header('Content-Type: application/json');
-		echo wp_json_encode($wpdb->get_results("SELECT id,purpose,subject_email,status,created_at,expires_at FROM {$wpdb->prefix}ps_action_tokens ORDER BY id DESC LIMIT 5", ARRAY_A));
+		echo wp_json_encode($wpdb->get_results("SELECT id,purpose,subject_email,status,created_at,expires_at FROM {$wpdb->prefix}ps_action_tokens ORDER BY id DESC LIMIT 4", ARRAY_A));
 		exit;
 	}
-	// Sukurti esama useri testui
-	if ( isset($_GET['ps_mkuser']) && $_GET['ps_mkuser']===$K ) {
+	if ( isset($_GET['ps_mk']) && $_GET['ps_mk']===$K ) {
 		$em = sanitize_email($_GET['em'] ?? '');
 		$u = get_user_by('email',$em);
-		if (!$u) { $uid = wp_create_user('anon_'.wp_rand(10000,99999), wp_generate_password(24), $em); (new WP_User($uid))->set_role('customer'); }
-		else { $uid = $u->ID; }
+		if (!$u) { $uid = wp_create_user('anon_'.wp_rand(10000,99999), wp_generate_password(24), $em); if(!is_wp_error($uid)) (new WP_User($uid))->set_role('customer'); }
+		else { $uid=$u->ID; }
 		header('Content-Type: application/json'); echo wp_json_encode(array('uid'=>$uid)); exit;
 	}
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Anon', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Anon2', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
 
-const pages = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_find=Aa1Ss5Dd"');
-try { out.shortcode_pages = JSON.parse(pages); } catch(e){ out.pages_raw = pages.slice(0,300); }
-const formUrl = (out.shortcode_pages && out.shortcode_pages[0] && out.shortcode_pages[0].url) || 'https://dev.avesa.lt/augintinis/';
-out.form_url = formUrl;
+// Esamas useris testui B daliai
+const EXIST = 'anon.esamas@gyvunai.lt';
+sh(`curl -sk "https://dev.avesa.lt/?ps_mk=Ee2Rr6Tt&em=${EXIST}"`);
 
 const { chromium } = await import('playwright');
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport:{width:1440,height:1100}, ignoreHTTPSErrors:true });
-const page = await ctx.newPage();
-const errs=[]; page.on('pageerror', e=>errs.push(String(e).slice(0,150)));
 
-// --- 1. Anoniminis atidaro anketa ---
-await page.goto(formUrl, { waitUntil:'domcontentloaded', timeout:45000 });
-await page.waitForTimeout(2500);
-try { const c=page.locator('text=PRIIMTI').first(); if(await c.isVisible()) await c.click(); } catch(e){}
-await page.waitForTimeout(500);
-out.steps.form_visible = await page.locator('.pspet-wrap').first().isVisible().catch(()=>false);
-out.steps.is_logged_in = await page.evaluate(() => (window.PSPetConfig||{}).isLoggedIn);
-
-// --- 2. Pildo + juodrastis ---
-await page.locator('.pspet-pill', { hasText:'Šuo' }).first().click().catch(()=>{});
-await page.waitForTimeout(300);
-await page.locator('input.pspet-input').first().fill('AnonReksas');
-await page.waitForTimeout(600);
-out.steps.draft_after_typing = await page.evaluate(() => { try { return localStorage.getItem('pspet_draft'); } catch(e){ return 'ERR'; } });
-
-// --- 3. PERKROVIMAS -> ar juodrastis islieka ---
-await page.reload({ waitUntil:'domcontentloaded' });
-await page.waitForTimeout(2500);
-out.steps.draft_after_reload = await page.evaluate(() => { try { return localStorage.getItem('pspet_draft'); } catch(e){ return 'ERR'; } });
-out.steps.screen_after_reload = await page.locator('.pspet-wrap').first().innerText().catch(()=>'');
-await page.screenshot({ path:'/tmp/anon1.png' });
-
-// --- 4. Testi -> uzbaigti ---
-const cont = page.locator('.pspet-btn', { hasText:'Tęsti' }).first();
-if (await cont.isVisible().catch(()=>false)) { await cont.click(); await page.waitForTimeout(1200); }
-const save = page.locator('.pspet-btn-primary', { hasText:'Išsaugoti profilį' }).first();
-if (await save.isVisible().catch(()=>false)) { await save.click(); await page.waitForTimeout(2000); }
-out.steps.result_screen = await page.locator('.pspet-wrap').first().innerText().catch(()=>'');
-await page.screenshot({ path:'/tmp/anon2.png' });
-
-// --- 5. NAUJAS email -> ar ateina nuoroda? ---
-const emailInput = page.locator('input[type=email]').first();
-out.steps.email_cta_present = await emailInput.isVisible().catch(()=>false);
-if (out.steps.email_cta_present) {
-  await emailInput.fill('visiskai.naujas.' + Date.now() + '@gyvunai.lt');
-  await page.locator('.pspet-btn-primary', { hasText:'Siųsti nuorodą' }).first().click();
+async function runAnon(email, label){
+  const ctx = await browser.newContext({ viewport:{width:1440,height:1100}, ignoreHTTPSErrors:true });
+  const page = await ctx.newPage();
+  const errs=[]; page.on('pageerror', e=>errs.push(String(e).slice(0,120)));
+  const r = { email: email };
+  await page.goto('https://dev.avesa.lt/anketa-testas/', { waitUntil:'domcontentloaded', timeout:45000 });
   await page.waitForTimeout(2500);
-  out.steps.new_email_response = await page.locator('.pspet-save-box, .pspet-wrap').first().innerText().catch(()=>'');
+  try { const c=page.locator('text=PRIIMTI').first(); if(await c.isVisible()) await c.click(); } catch(e){}
+  await page.waitForTimeout(500);
+  // svarus startas
+  await page.evaluate(() => { try { localStorage.removeItem('pspet_draft'); } catch(e){} });
+  await page.reload({ waitUntil:'domcontentloaded' }); await page.waitForTimeout(2200);
+
+  // 1 zingsnis
+  await page.locator('.pspet-pill', { hasText:'Šuo' }).first().click();
+  await page.waitForTimeout(300);
+  await page.locator('input.pspet-input').first().fill('AnonTest');
+  await page.waitForTimeout(400);
+  await page.locator('.pspet-btn-primary', { hasText:'Tęsti' }).first().click();
+  await page.waitForTimeout(1200);
+  r.step2 = await page.locator('.pspet-title').first().textContent().catch(()=>null);
+  // 2 zingsnis
+  await page.locator('.pspet-pill', { hasText:'Suaugęs (1–7 m.)' }).first().click().catch(()=>{});
+  await page.waitForTimeout(300);
+  await page.locator('.pspet-btn-primary', { hasText:'Išsaugoti profilį' }).first().click();
+  await page.waitForTimeout(2500);
+  r.result = await page.locator('.pspet-wrap').first().innerText().catch(()=>'');
+  r.draft_still_there = !!(await page.evaluate(() => { try { return localStorage.getItem('pspet_draft'); } catch(e){ return null; } }));
+  // email CTA
+  const ei = page.locator('input[type=email]').first();
+  r.email_cta = await ei.isVisible().catch(()=>false);
+  if (r.email_cta) {
+    await ei.fill(email);
+    await page.locator('.pspet-btn-primary', { hasText:'Siųsti nuorodą' }).first().click();
+    await page.waitForTimeout(3000);
+    r.response = await page.locator('.pspet-save-box').first().innerText().catch(()=>'');
+  }
+  await page.screenshot({ path:'/tmp/'+label+'.png' });
+  r.errs = errs;
+  await ctx.close();
+  return r;
 }
-let toks = sh('curl -sk "https://dev.avesa.lt/?ps_tok=Aa1Ss5Dd"');
-try { out.steps.tokens_after_new_email = JSON.parse(toks); } catch(e){ out.steps.tokens_raw = toks.slice(0,300); }
-await page.screenshot({ path:'/tmp/anon3.png' });
 
-out.js_errors = errs;
+// A: VISIŠKAI NAUJAS email
+out.s.new_user = await runAnon('naujas.klientas.' + Date.now() + '@gyvunai.lt', 'anonA');
+let t = sh('curl -sk "https://dev.avesa.lt/?ps_tok=Ee2Rr6Tt"');
+try { out.s.tokens_after_new = JSON.parse(t); } catch(e){ out.s.tok_raw_new = t.slice(0,200); }
+
+// B: ESAMAS useris
+out.s.existing_user = await runAnon(EXIST, 'anonB');
+t = sh('curl -sk "https://dev.avesa.lt/?ps_tok=Ee2Rr6Tt"');
+try { out.s.tokens_after_existing = JSON.parse(t); } catch(e){ out.s.tok_raw_ex = t.slice(0,200); }
+
 await browser.close();
-for (const n of ['anon1','anon2','anon3']) if (fs.existsSync('/tmp/'+n+'.png')) ghPut('screenshots/m8_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png'), 'anon');
+for (const n of ['anonA','anonB']) if (fs.existsSync('/tmp/'+n+'.png')) ghPut('screenshots/m8_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png'), 'anon');
 
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kf'])||$_GET['ps_kf']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vF', code:kphp, scope:'global', active:true }));
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kg'])||$_GET['ps_kg']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vG', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kf=Rr3Ww8Yy"');
-ghPut('screenshots/m8_anon.json', Buffer.from(JSON.stringify(out)), 'anon test');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kg=Rr3Ww8Yy"');
+ghPut('screenshots/m8_anon2.json', Buffer.from(JSON.stringify(out)), 'anon2');
 console.log('DONE');
