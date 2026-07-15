@@ -55,6 +55,21 @@ Karkasas pilnai config-driven, patikrintas 5 rūšims:
 
 **STRATEGINIS PIVOTAS (jokio kodo — konceptas):** anketa dėl anketos neturi vertės. **Profilis NE produktas — produktas yra naudinga funkcija; profilis = atminties sluoksnis.** Tikrasis „wau" = **€/dienos maisto skaičiuoklė** (svoris+produktas+pakuotė+gyva kaina → dienos norma, pakuotės trukmė, €/diena, papildymo data). Kryptis „šiltas tikslumas". Detalės: M8 MASTER v3.2 (Raimio PC).
 
+**S212 — FeedingTable GYVA DB (2026-07-15, APPLY įvykdytas):**
+
+Trys naujos lentelės dev'e (`gaj6_ps_feeding_tables` / `_rows` / `_map`). 0 klaidų, 0 orphan. Esamų lentelių NELIESTA.
+- **110 unikalių lentelių** iš 225 SKU (dedup pagal `checksum` = md5 normalizuoto HTML). `scope='line'` kai lentelė dengia >1 SKU.
+- **95 verified / 15 ambiguous.** `verified_by='auto_parser_v2'` — pažymėta MAŠINOS, ne žmogaus (traceable; jei reikės žmogaus parašo, filtruoti pagal šį lauką).
+- 2 279 eilutės, 225 map įrašai, **197 SKU su verified lentele**.
+- Formos: `simple` 43v/2a · `transposed` 44v/9a · `matrix` 7v/2a · `by_age` 1v/1a · `unknown` 0v/1a.
+- **Monge 0→37 verified (62 SKU)** — transposed šaka atrakino visą katalogą. Farmina 31v (106 SKU), Josera 13v (36 SKU), Eukanuba 10v (15 SKU).
+- `weight_from/to_kg` NULL leidžiama — `by_age` (kačiukai) normą turi pagal amžių, ne svorį; 10 tokių eilučių. Tai teisinga, ne spraga.
+- Parseris NIEKADA neveikia runtime — post_content parsinamas vienkart, `source_hash` aptinka šaltinio pokytį.
+
+**S212 DVI ATVIROS PROBLEMOS (Claude klaidos, užfiksuota):**
+1. **Dry-run skaitiklis melavo:** žadėjo 1 917 eilučių, apply įrašė 2 279. Priežastis — dry-run skaičiavo eilutes tik iš `verified` lentelių, apply įrašė iš visų 110. Žala nulinė (`status` vartai gina skaičiavimą), bet dry-run privalo prognozuoti tiksliai.
+2. **⚠️ TRANSPOSED SEMANTIKA NEPATIKRINTA — BLOKUOJA:** šuniukų lentelėse (`Amžius | 1,5 kg | 3 kg | 4 kg...`) svorio ašis greičiausiai reiškia **numatomą SUAUGUSIO šuns svorį**, ne dabartinį. Jei taip — 44 transposed lentelės turi teisingus skaičius su NETEISINGA prasme, ir skaičiuoklė 15 kg šuniui duotų šuniuko normą. **NESPRĘSTA — reikia gamintojo šaltinio.** Kol nepatvirtinta, transposed NETURI patekti į skaičiavimą (siūlymas: perjungti į `ambiguous` → lieka ~51 verified lentelė su nedviprasmiška ašimi).
+
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
 - **Ciniškas testas (pamatinis principas):** „Jeigu negalime vienu sakiniu pasakyti, kokią naudą klientas gauna iš karto, neturime teisės prašyti jo pildyti anketą."
