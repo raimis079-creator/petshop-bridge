@@ -13,25 +13,35 @@ const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_feed']) || $_GET['ps_feed'] !== 'Fd9Sh3Tb' ) { return; }
+	if ( ! isset($_GET['ps_fd2']) || $_GET['ps_fd2'] !== 'Fd2Kk8Ll' ) { return; }
 	global $wpdb;
 	$o = array();
-	// Kiek is viso sauso maisto (pa_gyvuno_rusis=sunims/katems)
-	$total = new WP_Query(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>1,
-		'tax_query'=>array(array('taxonomy'=>'pa_gyvuno_rusis','field'=>'slug','terms'=>array('sunims','katems'),'operator'=>'IN'))));
-	$o['total_dog_cat_products'] = $total->found_posts;
-	// Meta raktai susije su serimo/dozavimu — ieskom pavadinimu su "feeding"/"doz"/"norma"
-	$metakeys = $wpdb->get_col("SELECT DISTINCT meta_key FROM {$wpdb->postmeta} WHERE meta_key LIKE '%feed%' OR meta_key LIKE '%doz%' OR meta_key LIKE '%norma%' LIMIT 30");
-	$o['relevant_meta_keys'] = $metakeys;
+	// Kiek produktu turi turinyje "Rekomenduojama paros doz" ar pan. (recon zinojo si fraze)
+	$cnt1 = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type='product' AND post_status='publish' AND post_content LIKE '%Rekomenduojama paros doz%'");
+	$o['has_dozavimas_phrase'] = (int) $cnt1;
+	$cnt2 = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type='product' AND post_status='publish' AND post_content LIKE '%šėrimo lentel%'");
+	$o['has_serimo_lentele_phrase'] = (int) $cnt2;
+	$cnt3 = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type='product' AND post_status='publish' AND post_content LIKE '%g/parai%'");
+	$o['has_g_parai'] = (int) $cnt3;
+	// Josera pavyzdys — realiai isvest turini
+	$q = new WP_Query(array('post_type'=>'product','post_status'=>'publish','s'=>'josera','posts_per_page'=>1));
+	if ($q->posts) {
+		$content = $q->posts[0]->post_content;
+		$o['sample_id'] = $q->posts[0]->ID;
+		$o['sample_title'] = $q->posts[0]->post_title;
+		$pos = stripos($content, 'doz');
+		$o['sample_snippet'] = $pos !== false ? mb_substr($content, max(0,$pos-100), 500) : 'nerasta "doz" zodzio';
+		$o['content_length'] = mb_strlen($content);
+	}
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Feed', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Feed2', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const r = sh('curl -sk --max-time 40 "https://dev.avesa.lt/?ps_feed=Fd9Sh3Tb"');
+const r = sh('curl -sk --max-time 40 "https://dev.avesa.lt/?ps_fd2=Fd2Kk8Ll"');
 try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,400); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kb'])||$_GET['ps_kb']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill wB', code:kphp, scope:'global', active:true }));
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kc'])||$_GET['ps_kc']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill wC', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kb=Rr3Ww8Yy"');
-ghPut('screenshots/m8_feedmeta.json', Buffer.from(JSON.stringify(out)), 'feedmeta');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kc=Rr3Ww8Yy"');
+ghPut('screenshots/m8_feed2.json', Buffer.from(JSON.stringify(out)), 'feed2');
 console.log('DONE');
