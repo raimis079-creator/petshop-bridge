@@ -13,31 +13,21 @@ const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_img']) || $_GET['ps_img'] !== 'Im5Gg2Vv' ) { return; }
+	if ( ! isset($_GET['ps_i2']) || $_GET['ps_i2'] !== 'Ii9Oo3Pp' ) { return; }
 	$o = array();
-	$dir = WP_PLUGIN_DIR.'/petshop-core/assets/img';
-	$o['dir'] = $dir;
-	$o['exists'] = is_dir($dir);
-	if (is_dir($dir)) {
-		foreach (glob($dir.'/*') as $f) $o['files'][basename($f)] = filesize($f);
-	}
-	// CSS failas
-	$css = WP_PLUGIN_DIR.'/petshop-core/assets/pet-form.css';
-	$o['css_exists'] = file_exists($css);
-	$o['css_size'] = file_exists($css) ? filesize($css) : 0;
-	$o['css_b64'] = file_exists($css) ? base64_encode(file_get_contents($css)) : '';
-	// enqueue: kokie failai kraunami
-	$ui = WP_PLUGIN_DIR.'/petshop-core/includes/class-pet-ui.php';
-	$o['ui_b64'] = base64_encode(file_get_contents($ui));
+	$d = WP_PLUGIN_DIR.'/petshop-core/assets/images';
+	$o['dir_exists'] = is_dir($d);
+	if (is_dir($d)) foreach (glob($d.'/*') as $f) $o['files'][basename($f)] = filesize($f);
+	$o['url'] = plugins_url('assets/images/', WP_PLUGIN_DIR.'/petshop-core/petshop-core.php');
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Img', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 I2', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const r = sh('curl -sk --max-time 40 "https://dev.avesa.lt/?ps_img=Im5Gg2Vv"');
+const r = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_i2=Ii9Oo3Pp"');
 try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,300); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_k2'])||$_GET['ps_k2']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill w2', code:kphp, scope:'global', active:true }));
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_k3'])||$_GET['ps_k3']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill w3', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_k2=Rr3Ww8Yy"');
-ghPut('screenshots/m8_img.json', Buffer.from(JSON.stringify(out)), 'img');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_k3=Rr3Ww8Yy"');
+ghPut('screenshots/m8_i2.json', Buffer.from(JSON.stringify(out)), 'i2');
 console.log('DONE');
