@@ -11,42 +11,32 @@ function sh(c){ try { return execSync(c,{maxBuffer:20*1024*1024}).toString(); } 
 const AUTH = Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_APP_PASS||'').replace(/\s+/g,'')).toString('base64');
 const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
-const list = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
-try { const j = JSON.parse(list); out.temp_m8 = j.filter(s=>/TEMP M8/i.test(s.name)).map(s=>s.id+':'+s.name); out.total_snippets = j.length; out.active = j.filter(s=>s.active).length; } catch(e){ out.list_err = list.slice(0,150); }
-for (const [k,u] of [['home','https://dev.avesa.lt/'],['acct','https://dev.avesa.lt/my-account/'],['pet','https://dev.avesa.lt/my-account/augintinis/'],['anketa','https://dev.avesa.lt/anketa-testas/'],['rest','https://dev.avesa.lt/wp-json/petshop/v1']])
-  out[k] = sh(`curl -sk -o /dev/null -w "%{http_code}" --max-time 20 "${u}"`);
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_sum']) || $_GET['ps_sum'] !== 'Sum1Ary2' ) { return; }
-	global $wpdb;
+	if ( ! isset($_GET['ps_th']) || $_GET['ps_th'] !== 'Th3Me7Qq' ) { return; }
 	$o = array();
-	$o['versions'] = array();
-	$f = WP_PLUGIN_DIR.'/petshop-core/includes/class-pet-ui.php';
-	if (preg_match("/const VERSION = '([^']+)'/", file_get_contents($f), $m)) $o['versions']['pet-ui'] = $m[1];
-	$o['backups'] = array();
-	foreach (array('assets/pet-form.js','assets/pet-profile.js','includes/class-pet-ui.php','includes/class-pet-profile.php','includes/class-magic-login.php','includes/class-pet-dashboard.php') as $r) {
-		$p = WP_PLUGIN_DIR.'/petshop-core/'.$r;
-		$b = array();
-		foreach (array('bak-20260715','bak-s205','bak-s206','bak-s207','bak-s208') as $s) if (file_exists($p.'.'.$s)) $b[] = $s;
-		if ($b) $o['backups'][basename($r)] = $b;
-	}
-	$ea = WP_PLUGIN_DIR.'/petshop-esp/includes/class-sender-adapter.php';
-	if (file_exists($ea.'.bak-s205')) $o['backups']['class-sender-adapter.php'] = array('bak-s205');
-	$o['test_users'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->users} WHERE user_email REGEXP '^(m8ui|m8e2e|m8v205|s208|dup206|anon|seed|naujas|dash|ph_|x_|f_|v2_|dupxfer|expired|terra_test)'");
-	$o['test_pets'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ps_pets");
-	$o['events_dead'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ps_event_log WHERE status='dead'");
-	$o['events_skipped'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ps_event_log WHERE esp_response LIKE '%dev_allowlist%'");
+	$o['child'] = get_stylesheet_directory();
+	$o['child_woo_exists'] = is_dir(get_stylesheet_directory().'/woocommerce');
+	$o['child_myaccount'] = is_dir(get_stylesheet_directory().'/woocommerce/myaccount');
+	$o['child_form_login'] = file_exists(get_stylesheet_directory().'/woocommerce/myaccount/form-login.php');
+	$parent = get_template_directory();
+	$o['flatsome_form_login'] = file_exists($parent.'/woocommerce/myaccount/form-login.php');
+	$wc = WP_PLUGIN_DIR.'/woocommerce/templates/myaccount/form-login.php';
+	$o['wc_form_login'] = file_exists($wc);
+	// Kuris realiai naudojamas
+	if (function_exists('wc_locate_template')) $o['located'] = wc_locate_template('myaccount/form-login.php');
+	// registracija ijungta?
+	$o['registration_enabled'] = get_option('woocommerce_enable_myaccount_registration');
+	$o['writable_child'] = is_writable(get_stylesheet_directory());
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Sum', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 Theme', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const s = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_sum=Sum1Ary2"');
-try { out.sum = JSON.parse(s); } catch(e){ out.sum_raw = s.slice(0,300); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_ku'])||$_GET['ps_ku']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vU', code:kphp, scope:'global', active:true }));
+const r = sh('curl -sk --max-time 30 "https://dev.avesa.lt/?ps_th=Th3Me7Qq"');
+try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,400); }
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kv'])||$_GET['ps_kv']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill vV', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-out.kill = sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_ku=Rr3Ww8Yy"').slice(0,60);
-const l2 = sh(`curl -sk -H "Authorization: Basic ${AUTH}" "${API}"`);
-try { out.temp_left = JSON.parse(l2).filter(s=>/TEMP M8/i.test(s.name)).length; } catch(e){ out.temp_left='err'; }
-ghPut('screenshots/m8_summary.json', Buffer.from(JSON.stringify(out)), 'summary');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kv=Rr3Ww8Yy"');
+ghPut('screenshots/m8_theme.json', Buffer.from(JSON.stringify(out)), 'theme');
 console.log('DONE');
