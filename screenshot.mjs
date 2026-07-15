@@ -13,91 +13,51 @@ const API = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out = {};
 const php = `
 add_action('wp_loaded', function(){
-	if ( ! isset($_GET['ps_ft']) || $_GET['ps_ft'] !== 'Ft7Bb4Mm' ) { return; }
+	if ( ! isset($_GET['ps_ft2']) || $_GET['ps_ft2'] !== 'Ft2Cc9Xx' ) { return; }
 	@set_time_limit(300);
-	$o = array('stats'=>array(), 'samples'=>array(), 'headers'=>array(), 'anomalies'=>array());
-
+	$o = array();
 	$ids = get_posts(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>-1,'fields'=>'ids',
 		'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'slug','terms'=>array('sausas-maistas-sunims','sausas-maistas-katems')))));
 
-	$tot=0; $with_phrase=0; $with_table=0; $rows_total=0;
-	$col2=0; $col3=0; $col4plus=0; $no_rows=0;
-	$range_w=0; $single_w=0; $range_a=0; $single_a=0;
-	$hdr = array();
+	$phrase_no_table_6k = 0; $phrase_table_full = 0; $phrase_no_table_at_all = 0;
+	$vet_text = 0; $reasons = array();
 
 	foreach ($ids as $id) {
 		if (get_post_meta($id,'_stock_status',true) !== 'instock') continue;
-		$tot++;
 		$c = get_post_field('post_content', $id);
 		if (stripos($c,'Šėrimo instrukcij') === false) continue;
-		$with_phrase++;
-
-		// Imam turini PO "Serimo instrukcij" antrastes
 		$pos = stripos($c,'Šėrimo instrukcij');
-		$chunk = mb_substr($c, $pos, 6000);
-		if (!preg_match('/<table.*?<\\/table>/is', $chunk, $tm)) { continue; }
-		$with_table++;
-		$tbl = $tm[0];
 
-		preg_match_all('/<tr.*?<\\/tr>/is', $tbl, $trs);
-		$rows = $trs[0];
-		if (count($rows) < 2) { $no_rows++; continue; }
+		$w6k  = mb_substr($c, $pos, 6000);
+		$full = mb_substr($c, $pos);           // iki galo
+		$has6k   = preg_match('/<table.*?<\\/table>/is', $w6k);
+		$hasfull = preg_match('/<table.*?<\\/table>/is', $full);
 
-		// Antrastes eilute
-		preg_match_all('/<t[dh][^>]*>(.*?)<\\/t[dh]>/is', $rows[0], $hm);
-		$hcells = array_map(function($x){ return trim(preg_replace('/\\s+/u',' ', wp_strip_all_tags($x))); }, $hm[1]);
-		$ncol = count($hcells);
-		if ($ncol==2) $col2++; elseif ($ncol==3) $col3++; elseif ($ncol>=4) $col4plus++;
-		$hkey = implode(' | ', $hcells);
-		if (!isset($hdr[$hkey])) $hdr[$hkey]=0;
-		$hdr[$hkey]++;
-
-		// Duomenu eilutes
-		$prow = 0;
-		for ($i=1; $i<count($rows); $i++) {
-			preg_match_all('/<t[dh][^>]*>(.*?)<\\/t[dh]>/is', $rows[$i], $cm);
-			$cells = array_map(function($x){ return trim(preg_replace('/\\s+/u',' ', wp_strip_all_tags($x))); }, $cm[1]);
-			if (count($cells) < 2) continue;
-			$w = $cells[0]; $a = $cells[1];
-			if ($w==='' ) continue;
-			$rows_total++; $prow++;
-			// svoris: intervalas ar vienas?
-			if (preg_match('/[\\d,\\.]+\\s*[-–—]\\s*[\\d,\\.]+/u', $w)) $range_w++; else $single_w++;
-			// kiekis: intervalas ar vienas?
-			if (preg_match('/[\\d,\\.]+\\s*[-–—]\\s*[\\d,\\.]+/u', $a)) $range_a++; else $single_a++;
-			// anomalijos: ne skaicius pirmame stulpelyje
-			if (!preg_match('/\\d/u', $w) && count($o['anomalies']) < 12) {
-				$o['anomalies'][] = array('id'=>$id, 'w'=>mb_substr($w,0,40), 'a'=>mb_substr($a,0,40));
-			}
-		}
-		if (count($o['samples']) < 4 && $prow > 0) {
-			$sr = array();
-			for ($i=1; $i<min(count($rows),5); $i++) {
-				preg_match_all('/<t[dh][^>]*>(.*?)<\\/t[dh]>/is', $rows[$i], $cm2);
-				$sr[] = array_map(function($x){ return trim(preg_replace('/\\s+/u',' ', wp_strip_all_tags($x))); }, $cm2[1]);
-			}
-			$o['samples'][] = array('id'=>$id, 'title'=>mb_substr(get_the_title($id),0,60), 'ncol'=>$ncol, 'header'=>$hcells, 'rows'=>$sr, 'total_rows'=>$prow);
+		if (!$has6k && $hasfull) { $phrase_no_table_6k++; }
+		if ($hasfull) { $phrase_table_full++; }
+		if (!$hasfull) {
+			$phrase_no_table_at_all++;
+			// KAS ten vietoj lenteles?
+			$txt = trim(preg_replace('/\\s+/u',' ', wp_strip_all_tags(mb_substr($full, 0, 400))));
+			if (stripos($txt,'veterinarijos gydytojas')!==false || stripos($txt,'veterinaro')!==false) $vet_text++;
+			if (count($reasons) < 10) $reasons[] = array('id'=>$id,'t'=>mb_substr(get_the_title($id),0,45),'txt'=>mb_substr($txt,0,190));
 		}
 	}
-	arsort($hdr);
-	$o['headers'] = array_slice($hdr, 0, 12, true);
-	$o['stats'] = array(
-		'instock_dry'=>$tot, 'with_phrase'=>$with_phrase, 'with_table'=>$with_table,
-		'no_rows'=>$no_rows, 'rows_total'=>$rows_total,
-		'cols_2'=>$col2, 'cols_3'=>$col3, 'cols_4plus'=>$col4plus,
-		'weight_range'=>$range_w, 'weight_single'=>$single_w,
-		'amount_range'=>$range_a, 'amount_single'=>$single_a,
-		'avg_rows_per_product'=> $with_table ? round($rows_total/$with_table,1) : 0
-	);
+	$o['phrase_total_instock'] = 449;
+	$o['table_found_FULL_content'] = $phrase_table_full;
+	$o['table_missed_by_6k_window'] = $phrase_no_table_6k;
+	$o['phrase_but_NO_table_anywhere'] = $phrase_no_table_at_all;
+	$o['of_those_vet_text'] = $vet_text;
+	$o['samples_no_table'] = $reasons;
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 FTparse', code:php, scope:'global', active:true }));
+fs.writeFileSync('/tmp/snip.json', JSON.stringify({ name:'TEMP M8 FT2', code:php, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-const r = sh('curl -sk --max-time 200 "https://dev.avesa.lt/?ps_ft=Ft7Bb4Mm"');
+const r = sh('curl -sk --max-time 200 "https://dev.avesa.lt/?ps_ft2=Ft2Cc9Xx"');
 try { out.p = JSON.parse(r); } catch(e){ out.raw = r.slice(0,600); }
-const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kft'])||$_GET['ps_kft']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
-fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill FT', code:kphp, scope:'global', active:true }));
+const kphp = `add_action('wp_loaded', function(){ if(!isset($_GET['ps_kf3'])||$_GET['ps_kf3']!=='Rr3Ww8Yy'){return;} global $wpdb; $n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'"); echo wp_json_encode(array('d'=>$n)); exit; });`;
+fs.writeFileSync('/tmp/k.json', JSON.stringify({ name:'TEMP M8 Kill F3', code:kphp, scope:'global', active:true }));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
-sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kft=Rr3Ww8Yy"');
-ghPut('screenshots/m8_ftparse.json', Buffer.from(JSON.stringify(out)), 'FeedingTable parse dry-run');
+sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kf3=Rr3Ww8Yy"');
+ghPut('screenshots/m8_ft2.json', Buffer.from(JSON.stringify(out)), 'ft2 window check');
 console.log('DONE');
