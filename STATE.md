@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217: Quattro 12 lentelių įrašyta, 23/59 SKU uždaryta; kgshop.eu atrastas kaip gamintojo HTML šaltinis). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lentelių/23 SKU; S218 Josera 5 lentelės/7 SKU + eilės skaičių revizija). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -333,6 +333,68 @@ S215 užrakinta „lentelė nepriklauso nuo baltymo → 34 SKU uždarė 5 lentel
 4. Sport, Weight Loss, SB puppy/junior/senior — šaltinio nėra
 5. **id170/id174 vienodas `line`** — pervadinti jei kliudys
 6. **id181 `adult_expected`** — mūsų išvada, ne šaltinio; peržiūrėti
+
+**S218 — JOSERA sausas UŽDARYTAS + S216 EILĖS SKAIČIŲ REVIZIJA (2026-07-16):**
+
+**DB PO APPLY (verifikuota atskiru read-only snippetu, ne to paties kodo pranešimu):**
+| | prieš S218 | **po S218** |
+|---|---|---|
+| lentelių | 181 | **186** |
+| verified | 169 | **174** |
+| eilučių | 3 200 | **3 268** |
+| map | 388 | **395** |
+
+Sargai visi 0, įskaitant pataisytą `verified_null_basis_excl_byage = 0`.
+
+**PENKIOS JOSERA LENTELĖS** (`source_version='josera_de_2026-07-16'`, visos `verified`):
+| id | line | forma | ašis | basis | eil. | SKU |
+|---|---|---|---|---|---|---|
+| 182 | JosiDog Active | simple | weight | current | 7 | JOS0836 |
+| 183 | JosiDog Economy | simple | weight | current | 7 | JOS0799 |
+| 184 | JosiDog Regular | simple | weight | current | 7 | JOS0622 |
+| 185 | JosiCat sausas (Crispy/Crunchy/Sterilised Classic) | transposed | **activity_level** | current | 8 | JOS0812, JOS0723, JOS0813 |
+| 186 | JosiDog Junior Sensitive | matrix | age | **adult_expected** | 39 | JOS0849 |
+
+**★ ŠALTINIS: `josera.de` = GAMINTOJAS, HTML tekstu.** Sitemap → 73 `josidog|josicat` URL → 18 lentelių. Vokiškai (`Gewicht` / `Futtermenge/24h`). Snippetas `#1018 Josera Feeding v1`, verify `#1019` — serveryje, išjungti.
+
+**⚠️ FILTRO KLAIDA, KURIĄ PADARIAU:** pirmas sitemap filtras buvo `/josera/i` → **josidog/josicat puslapiai NEPATEKO** (jų URL neturi žodžio „josera"). Pataisyta į `/josidog|josicat/i` → 0 virto 73. **Sub-brendų URL nebūtinai turi motininio brendo vardą.**
+
+**★ SEMANTINIS RADINYS — „35 - 60 g" NĖRA RĖŽIS:**
+JosiCat Crispy Duck / Sterilised Classic / Tasty Beef puslapiuose stulpelis rodo `2-3kg → 35 - 60g`. Atrodo kaip rėžis vienai katei. **JosiCat Crunchy Poultry puslapis tą patį rodo kaip DVI skiltis: `wenig aktiv 35 | aktiv 60`.** Tai `activity_level`, ne `amount_from/to`. Įrašyta kaip `transposed` + `row_dimension='activity_level'` (S212 taksonomija tokį matmenį jau turi). **Be Crunchy puslapio būtų įrašytas melas visiems 3 SKU.** Pamoka: tos pačios linijos KITAS puslapis gali atskleisti stulpelio semantiką.
+
+**⚠️ ĮTARIMAS ŠALTINYJE (įrašyta, bet pažymėta):** JosiDog Active / Economy / Regular ties **20 kg visos trys duoda IDENTIŠKĄ `230-300 g`**, nors visuose kituose svoriuose skiriasi (10 kg: 135-180 / 160-210 / 145-190). Economy atveju 230-300 iškrenta iš interpoliacijos (tarp 160-210 ir 365-480 tikėtųsi ~260-345). Panašu į josera.de copy-paste. **Monotoniškumo sargas praeina, todėl įrašyta `verified`** — bet jei kada tikrinsim, čia pirma vieta.
+
+**NEĮRAŠYTA:** `JosiDog Family` (JOS0003) — daugiamatė (žindantis šuniukas pagal savaites × kalė tranšia/laktuojanti), HTML langeliai išsislinkę, 5 kg eilutėje vietoj skaičiaus tekstas „JosiDog Junior". Ambiguous.
+
+**⚠️⚠️ S216 EILĖS SKAIČIAI MATUOJA NE TĄ — patikrinta per DB (`ps_feeding_map`), ne iš atminties:**
+| Brendas | S216 žada | DB be lentelės (instock) | iš jų **sausas** | iš jų **konservai/skanėstai** |
+|---|---|---|---|---|
+| Quattro | 63 | 59 | 59 | 0 |
+| Exclusion | **15** | **40** | 21 | 19 |
+| Josera | **33** | **46** | **8** | **38** |
+
+Eilės skaičiai sudėti iš viso katalogo, neatskiriant drėgno maisto. Josera atveju 38 iš 46 yra 85 g konservai.
+
+**★ BET: KONSERVAI TELPA Į TĄ PAČIĄ SCHEMĄ.** Anksčiau šioje sesijoje buvau pasakęs, kad drėgnam reikia kitos mechanikos — **klaidingai**. `josera.de` konservų puslapiai duoda būtent `svoris → g/24h`:
+```
+JosiDog Beef in Sauce : 5kg→415-480 · 10kg→700-810 · 20kg→1175-1360 · 35kg→1790-2070
+JosiCat Chicken Jelly : 2-3kg→145-250 · 3-4kg→190-305 · 4-5kg→230-355 · 5-7kg→265-440
+JosiCat Paté (4 skoniai, vienoda): 3kg→230 · 4kg→280 · 5kg→330 · 6kg→370
+```
+Ta pati `simple`/`transposed` forma, tas pats `weight_basis='current'`. **Kliūtis ne schema, o poravimas** — 38 LT konservų SKU (`JOS08xx`) reikia suporuoti su vokiškais puslapiais. Tai atskiras darbas, ne blokatorius.
+
+**PENDING — Josera:**
+1. **38 konservų SKU** — lentelės josera.de yra, reikia SKU↔puslapis poravimo
+2. `JosiDog Family` (1 SKU) — daugiamatė, sulaužytas HTML
+3. **20 kg `230-300` sutapimas** trijose Josidog linijose — patikrinti prie progos
+
+**PENDING — Exclusion (papildyta S218):**
+- **Tikras likutis 40, ne 15.** Sausas 21: NGP* šuniukai 7 · kačių NG 3 · HYPA 2 · INPS/INPM/INPA 3 · HHFS/HHFM 2 · CHYP03 1 · DP- dubliai 2 · 1 su sugadintu SKU. Konservai 19.
+- **`petmarket.lt` — 13 Exclusion psl.: šuniukų šėrimo normų NĖRA** (tik analitinė sudėtis). Retailer-HTML kelias Exclusion šuniukams NESUVEIKĖ; S215 matricų blokatorius lieka.
+- **`NGCST01`/`NGCST12` (kačių sterilizuotoms su tunu) — kandidatė lentelė RASTA** petmarket'e, bet HTML struktūra sulaužyta (langeliai išsislinkę per eilutes). Išlyginus srautą: `2kg→30/20 · 3→50/40 · 4→60/50 · 5→70/60 · 6→75/65` (palaikymui/mažinant, abi monotoniškos). **Vienintelis šaltinis + atstatymas → NEĮRAŠYTA.** Reikia antro šaltinio.
+- **Duomenų higiena (ne šėrimas):** produktas su SKU `d0ef54405833` (hash'as vietoj kodo, instock+publish); `DP-EXCL-HYPO-KIAUL-2KG-x2` = 2 vnt. rinkinys — būtent M8 v3.2 įspėtas pakuotės atvejis.
+
+**ATVIRAS KLAUSIMAS (ne duomenys, produktas):** ar €/dienos skaičiuoklė apima drėgną maistą? Schema priima. M8 MASTER v3.2 to nefiksuoja. Nuo atsakymo priklauso, ar likusioje eilėje (Prins/Real Dog/Ontario/Gemon/RC) konservai skaičiuojami kaip darbas.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
