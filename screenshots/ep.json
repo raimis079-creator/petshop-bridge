@@ -1,0 +1,263 @@
+{
+ "create": {
+  "id": 1031,
+  "code_error": null
+ },
+ "dry": {
+  "mode": "DRY",
+  "groups": [
+   {
+    "line": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su jautiena, S",
+    "species": "dog",
+    "row_count": 6,
+    "skus": [],
+    "already_mapped": {
+     "NGABS05": 167
+    },
+    "guard": [],
+    "exists": null,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      2,
+      2,
+      30,
+      40
+     ],
+     [
+      3,
+      3,
+      40,
+      60
+     ],
+     [
+      4,
+      4,
+      50,
+      70
+     ]
+    ]
+   },
+   {
+    "line": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms",
+    "species": "cat",
+    "row_count": 5,
+    "skus": [],
+    "already_mapped": {
+     "NGCAB01": 84,
+     "NGCAC01": 84
+    },
+    "guard": [],
+    "exists": null,
+    "will_write": false,
+    "reason": "Bendra lentele 2 SKU, vienodos normos",
+    "sample": [
+     [
+      2,
+      2,
+      30,
+      30
+     ],
+     [
+      3,
+      3,
+      45,
+      45
+     ],
+     [
+      4,
+      4,
+      60,
+      60
+     ]
+    ]
+   },
+   {
+    "line": "Exclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5",
+    "species": "cat",
+    "row_count": 6,
+    "skus": [],
+    "already_mapped": {
+     "NGCKC01": 85
+    },
+    "guard": [],
+    "exists": null,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      2,
+      2,
+      0.5,
+      1
+     ],
+     [
+      3,
+      3,
+      1,
+      1.5
+     ],
+     [
+      4,
+      4,
+      1.5,
+      2.5
+     ]
+    ]
+   },
+   {
+    "line": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu",
+    "species": "cat",
+    "row_count": 5,
+    "skus": [
+     "NGCST01",
+     "NGCST12"
+    ],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "reason": "Bendra lentele 2 SKU, vienodos normos",
+    "sample": [
+     [
+      2,
+      2,
+      30,
+      30
+     ],
+     [
+      3,
+      3,
+      50,
+      50
+     ],
+     [
+      4,
+      4,
+      60,
+      60
+     ]
+    ]
+   }
+  ],
+  "skipped": [
+   {
+    "sku": "NGALS07",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGATS07",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGATS05",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGATS02",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGATM12",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGATM03",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGATL12",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGATA40",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGASA40",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGALS05",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGALS02",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGALM12",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGALM03",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGALL12",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGACA40",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGABM03",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "HYVS02",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "HYPM02",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "HYHM02",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "HHFS02",
+    "why": "per mazai eiluciu: 1"
+   },
+   {
+    "sku": "NGCSCW85",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGCSBW85",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGCKCW85",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "AM20",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGCGC01",
+    "why": "per mazai eiluciu: 0"
+   },
+   {
+    "sku": "NGCSB01",
+    "why": "per mazai eiluciu: 2"
+   }
+  ],
+  "totals": {
+   "tables": 1,
+   "rows": 5,
+   "map": 2,
+   "groups": 4
+  },
+  "db": {
+   "tables": 198,
+   "rows": 3343,
+   "map": 415
+  }
+ },
+ "snip": 1031
+}
