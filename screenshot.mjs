@@ -12,7 +12,7 @@ function putResult(name, obj) {
     if (j.sha) s = j.sha;
   } catch (e) {}
   fs.writeFileSync('/tmp/p.json', JSON.stringify({
-    message: 'q_disc',
+    message: 'q_tables',
     content: Buffer.from(JSON.stringify(obj, null, 1)).toString('base64'),
     ...(s ? { sha: s } : {})
   }));
@@ -25,78 +25,63 @@ function get(u) {
   } catch (e) { return ''; }
 }
 
-const out = { retailers: {}, wp: {} };
-
-/* ---------- 1. RETAILER DISCOVERY per sitemap ---------- */
-const sites = [
-  ['petirvet', 'https://petirvet.lt'],
-  ['dogsnanny', 'https://dogsnanny.lt'],
-];
-
-for (const [key, base] of sites) {
-  const r = { sitemaps_tried: [], product_sitemaps: [], quattro_urls: [] };
-  try {
-    // robots.txt -> sitemap nuorodos
-    const robots = get(base + '/robots.txt');
-    let maps = [...robots.matchAll(/Sitemap:\s*(\S+)/gi)].map(m => m[1].trim());
-    if (!maps.length) maps = [base + '/wp-sitemap.xml', base + '/sitemap_index.xml', base + '/sitemap.xml'];
-    r.sitemaps_tried = maps;
-
-    // surenkam visus product sitemap'us is indekso
-    const seen = new Set();
-    const queue = [...maps];
-    while (queue.length) {
-      const sm = queue.shift();
-      if (seen.has(sm) || seen.size > 25) continue;
-      seen.add(sm);
-      const xml = get(sm);
-      if (!xml) continue;
-      const locs = [...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map(m => m[1]);
-      const isIndex = /<sitemapindex/i.test(xml);
-      if (isIndex) {
-        for (const l of locs) if (/product|preke|prekes|produkt/i.test(l)) { queue.push(l); r.product_sitemaps.push(l); }
-      } else {
-        for (const l of locs) if (/quattro|qattro/i.test(l)) r.quattro_urls.push(l);
-      }
-    }
-
-    // fallback: WooCommerce paieska
-    if (!r.quattro_urls.length) {
-      const s = get(base + '/?s=quattro&post_type=product');
-      const hrefs = [...s.matchAll(/href="(https?:\/\/[^"]*?(?:quattro|qattro)[^"]*?)"/gi)].map(m => m[1]);
-      r.quattro_urls = [...new Set(hrefs)];
-      r.via = 'search-fallback';
-    }
-    r.quattro_urls = [...new Set(r.quattro_urls)];
-    r.count = r.quattro_urls.length;
-  } catch (e) { r.err = String(e && e.message ? e.message : e).slice(0, 300); }
-  out.retailers[key] = r;
+function decodeEnt(s) {
+  return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#8211;|&ndash;|&#8212;/g, '-')
+          .replace(/&quot;/g, '"').replace(/&#039;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 }
 
-/* ---------- 2. WP: Quattro SKU sarasas ---------- */
-try {
-  const U = process.env.WP_USER;
-  const P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
-  const items = [];
-  for (let page = 1; page <= 3; page++) {
-    const j = execSync(
-      `curl -s -u "$WPU:$WPP" "https://dev.avesa.lt/wp-json/wc/v3/products?search=quattro&per_page=100&status=publish&page=${page}"`,
-      { maxBuffer: 40 * 1024 * 1024, env: { ...process.env, WPU: U, WPP: P } }
-    ).toString();
-    let arr;
-    try { arr = JSON.parse(j); } catch (e) { out.wp.parse_err = j.slice(0, 200); break; }
-    if (!Array.isArray(arr) || !arr.length) break;
-    for (const p of arr) items.push({ id: p.id, sku: p.sku, name: p.name, stock: p.stock_status, cat: (p.categories || []).map(c => c.name).join('/') });
-    if (arr.length < 100) break;
+function parseTables(html) {
+  const res = [];
+  const tabs = html.match(/<table[\s\S]*?<\/table>/gi) || [];
+  for (const t of tabs) {
+    const rows = [];
+    const trs = t.match(/<tr[\s\S]*?<\/tr>/gi) || [];
+    for (const tr of trs) {
+      const cells = [...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)]
+        .map(m => decodeEnt(m[1].replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim());
+      if (cells.length) rows.push(cells);
+    }
+    if (!rows.length) continue;
+    const flat = rows.flat().join(' ');
+    const nums = (flat.match(/\d+/g) || []).length;
+    const feedish = /svor|kg|norma|kiekis|par[aą]|gram|\bg\b/i.test(flat);
+    if (nums >= 6 && feedish) res.push({ rows, nums });
   }
-  out.wp.total = items.length;
-  out.wp.instock = items.filter(i => i.stock === 'instock').length;
-  out.wp.items = items;
-} catch (e) { out.wp.err = String(e && e.message ? e.message : e).slice(0, 300); }
+  return res;
+}
 
-putResult('q_disc.json', out);
-console.log('DONE', JSON.stringify({
-  petirvet: out.retailers.petirvet && out.retailers.petirvet.count,
-  dogsnanny: out.retailers.dogsnanny && out.retailers.dogsnanny.count,
-  wp: out.wp.total
-}));
+const out = { pages: {}, wp_diag: {} };
+
+/* ---------- 1. WP DIAGNOSTIKA ---------- */
+try {
+  const U = process.env.WP_USER || '';
+  const P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
+  out.wp_diag.user_set = U.length > 0;
+  out.wp_diag.user_len = U.length;
+  out.wp_diag.pass_len = P.length;
+  fs.writeFileSync('/tmp/wpu', U); fs.writeFileSync('/tmp/wpp', P);
+  const probe = execSync(
+    `curl -s -m 30 -o /tmp/wp_out.txt -w "%{http_code}" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "https://dev.avesa.lt/wp-json/wc/v3/products?search=quattro&per_page=5&status=publish" 2>&1 || echo CURLFAIL`
+  ).toString().trim();
+  out.wp_diag.http = probe;
+  out.wp_diag.body_head = fs.readFileSync('/tmp/wp_out.txt', 'utf8').slice(0, 300);
+} catch (e) { out.wp_diag.err = String(e && e.message ? e.message : e).slice(0, 400); }
+
+/* ---------- 2. RETAILER PUSLAPIAI ---------- */
+const urls = JSON.parse(fs.readFileSync('urls.json', 'utf8'));
+for (const u of urls) {
+  const h = get(u);
+  if (!h) { out.pages[u] = { err: 'tuscias' }; continue; }
+  const title = (h.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [, ''])[1];
+  const tabs = parseTables(h);
+  out.pages[u] = {
+    title: decodeEnt(title.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim().slice(0, 160),
+    n_tables: tabs.length,
+    tables: tabs.slice(0, 3),
+    bytes: h.length
+  };
+}
+
+putResult('q_tables.json', out);
+const withT = Object.values(out.pages).filter(p => p.n_tables > 0).length;
+console.log('DONE pages=' + Object.keys(out.pages).length + ' with_tables=' + withT + ' wp_http=' + out.wp_diag.http);
