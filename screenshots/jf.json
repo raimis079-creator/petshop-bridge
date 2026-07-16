@@ -1,0 +1,202 @@
+{
+ "create": {
+  "id": 1018,
+  "code_error": null
+ },
+ "dry": {
+  "mode": "DRY",
+  "tables": {
+   "jd_active": {
+    "line": "JosiDog Active",
+    "shape": "simple",
+    "rd": "weight",
+    "wb": "current",
+    "row_count": 7,
+    "products": {
+     "JOS0836": 17962
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "jd_economy": {
+    "line": "JosiDog Economy",
+    "shape": "simple",
+    "rd": "weight",
+    "wb": "current",
+    "row_count": 7,
+    "products": {
+     "JOS0799": 17959
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "jd_regular": {
+    "line": "JosiDog Regular",
+    "shape": "simple",
+    "rd": "weight",
+    "wb": "current",
+    "row_count": 7,
+    "products": {
+     "JOS0622": 17950
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "josicat_dry": {
+    "line": "JosiCat sausas (Crispy/Crunchy/Sterilised Classic)",
+    "shape": "transposed",
+    "rd": "activity_level",
+    "wb": "current",
+    "row_count": 8,
+    "products": {
+     "JOS0812": 17972,
+     "JOS0723": 17969,
+     "JOS0813": 17965
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "jd_junior": {
+    "line": "JosiDog Junior Sensitive",
+    "shape": "matrix",
+    "rd": "age",
+    "wb": "adult_expected",
+    "row_count": 39,
+    "products": {
+     "JOS0849": 17953
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   }
+  },
+  "totals": {
+   "tables": 5,
+   "rows": 68,
+   "map": 7
+  },
+  "ambiguous": {
+   "jd_family": "JosiDog Family (JOS0003): daugiamate (zindantis suniukas pagal savaites + kale trascia/laktuojanti), HTML langeliai issislinke, 5kg eiluteje tekstas \"JosiDog Junior\" vietoj skaiciaus. Neirasoma."
+  },
+  "db": {
+   "tables": 181,
+   "rows": 3200,
+   "map": 388
+  }
+ },
+ "apply": {
+  "mode": "APPLY",
+  "tables": {
+   "jd_active": {
+    "line": "JosiDog Active",
+    "shape": "simple",
+    "rd": "weight",
+    "wb": "current",
+    "row_count": 7,
+    "products": {
+     "JOS0836": 17962
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 182
+   },
+   "jd_economy": {
+    "line": "JosiDog Economy",
+    "shape": "simple",
+    "rd": "weight",
+    "wb": "current",
+    "row_count": 7,
+    "products": {
+     "JOS0799": 17959
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 183
+   },
+   "jd_regular": {
+    "line": "JosiDog Regular",
+    "shape": "simple",
+    "rd": "weight",
+    "wb": "current",
+    "row_count": 7,
+    "products": {
+     "JOS0622": 17950
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 184
+   },
+   "josicat_dry": {
+    "line": "JosiCat sausas (Crispy/Crunchy/Sterilised Classic)",
+    "shape": "transposed",
+    "rd": "activity_level",
+    "wb": "current",
+    "row_count": 8,
+    "products": {
+     "JOS0812": 17972,
+     "JOS0723": 17969,
+     "JOS0813": 17965
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 185
+   },
+   "jd_junior": {
+    "line": "JosiDog Junior Sensitive",
+    "shape": "matrix",
+    "rd": "age",
+    "wb": "adult_expected",
+    "row_count": 39,
+    "products": {
+     "JOS0849": 17953
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 186
+   }
+  },
+  "totals": {
+   "tables": 5,
+   "rows": 68,
+   "map": 7
+  },
+  "ambiguous": {
+   "jd_family": "JosiDog Family (JOS0003): daugiamate (zindantis suniukas pagal savaites + kale trascia/laktuojanti), HTML langeliai issislinke, 5kg eiluteje tekstas \"JosiDog Junior\" vietoj skaiciaus. Neirasoma."
+  },
+  "db": {
+   "tables": 186,
+   "rows": 3268,
+   "map": 395
+  }
+ },
+ "snip": 1018
+}
