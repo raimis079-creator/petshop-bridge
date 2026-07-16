@@ -1,26 +1,33 @@
-const R='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcmMnXSl8fCRfR0VUWydwc19yYyddIT09J1JjNkhuMlZ3Jyl7cmV0dXJuO30KCUBzZXRfdGltZV9saW1pdCgzMDApOyBnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OyAkbz1hcnJheSgpOwoJJGlkcz1nZXRfcG9zdHMoYXJyYXkoJ3Bvc3RfdHlwZSc9Pidwcm9kdWN0JywncG9zdF9zdGF0dXMnPT4ncHVibGlzaCcsJ3Bvc3RzX3Blcl9wYWdlJz0+LTEsJ2ZpZWxkcyc9PidpZHMnKSk7CgkkcmM9YXJyYXkoKTsKCWZvcmVhY2goJGlkcyBhcyAkaWQpewoJCSRtYW49KHN0cmluZylnZXRfcG9zdF9tZXRhKCRpZCwnX2xlZ2FjeV9tYW51ZmFjdHVyZXInLHRydWUpOwoJCSR0aXRsZT1nZXRfdGhlX3RpdGxlKCRpZCk7CgkJJGhpdCA9IChzdHJpcG9zKCRtYW4sJ3JveWFsJykhPT1mYWxzZSkgfHwgKHN0cmlwb3MoJHRpdGxlLCdyb3lhbCcpIT09ZmFsc2UpCgkJICAgIHx8IHByZWdfbWF0Y2goJy9cYlJDXGIvdScsJHRpdGxlKSB8fCAoc3RyaXBvcygkbWFuLCdyYyAnKT09PTApOwoJCWlmKCEkaGl0KSBjb250aW51ZTsKCQkkcD13Y19nZXRfcHJvZHVjdCgkaWQpOyBpZighJHApIGNvbnRpbnVlOwoJCSRtYXBwZWQ9KGludCkkd3BkYi0+Z2V0X3Zhcigkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIGZlZWRpbmdfdGFibGVfaWQgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfbWFwIFdIRVJFIHByb2R1Y3RfaWQ9JWQiLCRpZCkpOwoJCSRjPWdldF9wb3N0X2ZpZWxkKCdwb3N0X2NvbnRlbnQnLCRpZCk7CgkJJGxvdz1tYl9zdHJ0b2xvd2VyKCRjLCdVVEYtOCcpOwoJCSRwYz0wOyRudD0wOwoJCWlmKG1iX3N0cnBvcygkbG93LCc8dGFibGUnKSE9PWZhbHNlKXsKCQkJcHJlZ19tYXRjaF9hbGwoJy88dGFibGVbXHNcU10qPzxcL3RhYmxlPi9pJywkYywkdG0pOyAkbnQ9Y291bnQoJHRtWzBdKTsKCQkJZm9yZWFjaCgkdG1bMF0gYXMgJHRibCl7CgkJCQkkZj1tYl9zdHJ0b2xvd2VyKHN0cmlwX3RhZ3MoJHRibCksJ1VURi04Jyk7CgkJCQlpZihtYl9zdHJwb3MoJGYsJ3N2b3InKSE9PWZhbHNlICYmIHByZWdfbWF0Y2goJy8obm9ybWF8a2lla2lzfHBhcm9zfGRpZW5vc3xkb3opL3UnLCRmKSl7ICRwYz0xOyBicmVhazsgfQoJCQl9CgkJfQoJCSR3ZXQ9cHJlZ19tYXRjaCgnLyhrb25zZXJ2fHBhdGV8cGHFoXRldHxrYXBzdWx8bWFpxaFlbHxzYXVjZXxqZWxseXzFoWxhcGlhc3xkcsSXZ258bG9hZnxncmF2eXxtb3Vzc2UpL3VpJywkdGl0bGUpPzE6MDsKCQkkcmNbXT1hcnJheSgnc2t1Jz0+KHN0cmluZylnZXRfcG9zdF9tZXRhKCRpZCwnX3NrdScsdHJ1ZSksJ3QnPT5tYl9zdWJzdHIoaHRtbF9lbnRpdHlfZGVjb2RlKCR0aXRsZSxFTlRfUVVPVEVTfEVOVF9IVE1MNSwnVVRGLTgnKSwwLDY2KSwKCQkJJ21hbic9Pm1iX3N1YnN0cigkbWFuLDAsMTgpLCdzdG9jayc9PiRwLT5nZXRfc3RvY2tfc3RhdHVzKCksJ21hcCc9PiRtYXBwZWQ/OjAsJ3BjJz0+JHBjLCdudCc9PiRudCwnd2V0Jz0+JHdldCk7Cgl9CgkkaW49YXJyYXlfZmlsdGVyKCRyYyxmdW5jdGlvbigkcil7cmV0dXJuICRyWydzdG9jayddPT09J2luc3RvY2snO30pOwoJJG9bJ3Zpc28nXT1jb3VudCgkcmMpOyAkb1snaW5zdG9jayddPWNvdW50KCRpbik7Cgkkb1snc3VfbGVudGVsZSddPWNvdW50KGFycmF5X2ZpbHRlcigkaW4sZnVuY3Rpb24oJHIpe3JldHVybiAkclsnbWFwJ107fSkpOwoJJHVuPWFycmF5X3ZhbHVlcyhhcnJheV9maWx0ZXIoJGluLGZ1bmN0aW9uKCRyKXtyZXR1cm4gISRyWydtYXAnXTt9KSk7Cgkkb1snYmUnXT1jb3VudCgkdW4pOwoJJG9bJ2JlX3NhdXNhcyddPWNvdW50KGFycmF5X2ZpbHRlcigkdW4sZnVuY3Rpb24oJHIpe3JldHVybiAhJHJbJ3dldCddO30pKTsKCSRvWydiZV9rb25zZXJ2YWknXT1jb3VudChhcnJheV9maWx0ZXIoJHVuLGZ1bmN0aW9uKCRyKXtyZXR1cm4gJHJbJ3dldCddO30pKTsKCSRvWydiZV9wY190dXJpJ109Y291bnQoYXJyYXlfZmlsdGVyKCR1bixmdW5jdGlvbigkcil7cmV0dXJuICRyWydwYyddO30pKTsKCSRvWyd1bm1hcHBlZCddPSR1bjsKCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'rc',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'r2',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
-const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
-function hit(u){try{return execSync(`curl -sk -m 150 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:60*1024*1024}).toString();}catch(e){return 'ERR';}}
-function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
-function get(u,mt){try{return execSync(`curl -sLk --max-time ${mt||20} -A "Mozilla/5.0 Chrome/120" "${u}"`,{maxBuffer:25*1024*1024}).toString();}catch(e){return '';}}
+function get(u,mt){try{return execSync(`curl -sLk --max-time ${mt||22} -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept-Language: lt-LT,lt;q=0.9,en;q=0.8" "${u}"`,{maxBuffer:25*1024*1024}).toString();}catch(e){return '';}}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'RC Recon v1 (read-only)',code:Buffer.from(R,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
-let id=null; try{id=JSON.parse(mk).id;}catch(e){o.mk=mk.slice(0,200);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_rc=Rc6Hn2Vw'); try{o.d=JSON.parse(r);}catch(e){o.raw=r.slice(0,600);}
-        wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
-o.dom={};
-for(const c of ['https://www.royalcanin.com','https://www.royalcanin.lt','https://www.royalcanin.com/lt']){
-  try{ const st=execSync(`curl -sk -m 15 -o /dev/null -w "%{http_code}" -A "Mozilla/5.0 Chrome/120" -L "${c}"`).toString().trim();
-       o.dom[c]={http:st};
-       if(st==='200'){ const h=get(c); o.dom[c].title=(h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[,''])[1].replace(/\s+/g,' ').trim().slice(0,50); }
-  }catch(e){ o.dom[c]={http:'000'}; }
+const B='https://www.royalcanin.com';
+let urls=[];
+const rob=get(B+'/robots.txt');
+o.robots_head=rob.slice(0,300);
+let maps=[...rob.matchAll(/Sitemap:\s*(\S+)/gi)].map(m=>m[1].trim());
+o.maps=maps.slice(0,8);
+if(!maps.length) maps=[B+'/sitemap.xml',B+'/lt/sitemap.xml'];
+const seen=new Set(); const q=maps.filter(m=>/lt|sitemap/i.test(m));
+while(q.length && seen.size<26){
+  const sm=q.shift(); if(!sm||seen.has(sm))continue; seen.add(sm);
+  const xml=get(sm,30); if(!xml||!/<loc>/i.test(xml))continue;
+  const locs=[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map(m=>m[1]);
+  if(/<sitemapindex/i.test(xml)){ for(const l of locs) if(/\/lt\b|\/lt\//i.test(l)) q.push(l); }
+  else urls.push(...locs.filter(l=>/\/lt\//i.test(l)));
 }
-pr('rc.json',o); console.log('DONE');
+o.lt_urls=urls.length;
+const prod=urls.filter(u=>/(product|produkt|katems|sunims|cat|dog)/i.test(u));
+o.prod_n=prod.length;
+o.sample=prod.slice(0,16);
+// musu linijos
+const want=/giant-adult|medium-adult|hair.*skin|hairball|indoor|oral-care|sensible|sterilised/i;
+const hit=urls.filter(u=>want.test(u));
+o.hit_n=hit.length; o.hits=hit.slice(0,20);
+pr('r2.json',o); console.log('DONE lt='+o.lt_urls+' hit='+o.hit_n);
