@@ -1,45 +1,18 @@
+const Q='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfb3EnXSl8fCRfR0VUWydwc19vcSddIT09J09xN0J0NFptJyl7cmV0dXJuO30KCUBzZXRfdGltZV9saW1pdCgzMDApOyBnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OyAkbz1hcnJheSgpOwoJJGlkcz1nZXRfcG9zdHMoYXJyYXkoJ3Bvc3RfdHlwZSc9Pidwcm9kdWN0JywncG9zdF9zdGF0dXMnPT4ncHVibGlzaCcsJ3Bvc3RzX3Blcl9wYWdlJz0+LTEsJ2ZpZWxkcyc9PidpZHMnKSk7Cgkkcm93cz1hcnJheSgpOwoJZm9yZWFjaCgkaWRzIGFzICRpZCl7CgkJJG1hbj0oc3RyaW5nKWdldF9wb3N0X21ldGEoJGlkLCdfbGVnYWN5X21hbnVmYWN0dXJlcicsdHJ1ZSk7CgkJJHRpdGxlPWh0bWxfZW50aXR5X2RlY29kZShnZXRfdGhlX3RpdGxlKCRpZCksRU5UX1FVT1RFU3xFTlRfSFRNTDUsJ1VURi04Jyk7CgkJaWYoc3RyaXBvcygkbWFuLCdvbnRhcmlvJyk9PT1mYWxzZSAmJiBzdHJpcG9zKCR0aXRsZSwnb250YXJpbycpPT09ZmFsc2UpIGNvbnRpbnVlOwoJCSRwPXdjX2dldF9wcm9kdWN0KCRpZCk7IGlmKCEkcCB8fCAkcC0+Z2V0X3N0b2NrX3N0YXR1cygpIT09J2luc3RvY2snKSBjb250aW51ZTsKCQkkbT0oaW50KSR3cGRiLT5nZXRfdmFyKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgZmVlZGluZ190YWJsZV9pZCBGUk9NIHskcGZ9cHNfZmVlZGluZ19tYXAgV0hFUkUgcHJvZHVjdF9pZD0lZCIsJGlkKSk7CgkJJHQ9bWJfc3RydG9sb3dlcigkdGl0bGUsJ1VURi04Jyk7CgkJLy8gdGlwYXMgcGFnYWwgcGF2YWRpbmltYQoJCWlmKHByZWdfbWF0Y2goJy8oa29uc2VydnxwYXRlfHBhxaF0ZXR8xaFsYXBpYXN8ZHLEl2dufHNyaXViYXxwYWRhxb4pL3UnLCR0KSkgICAgICAgICAgICAkdHlwZT0na29uc2VydmFpJzsKCQllbHNlaWYocHJlZ19tYXRjaCgnLyhza2FuxJdzdHxza2FuZXN0fGxhemRlbHxrcmFtdGFsfHNhdXNhaW58dHJlYXR8c3RpY2t8c25hY2spL3UnLCR0KSkgJHR5cGU9J3NrYW5lc3RhaSc7CgkJZWxzZWlmKHByZWdfbWF0Y2goJy8oc2F1c2FzfHBhxaFhcmFzfG1haXN0YXN8ZHJ5KS91JywkdCkpICAgICAgICAgICAgICAgICAgICAgICAgICAgICR0eXBlPSdzYXVzYXMnOwoJCWVsc2UgJHR5cGU9J2tpdGEnOwoJCS8vIGFyIHBvc3RfY29udGVudCB0dXJpIHNlcmltbyBsZW50ZWxlCgkJJGM9Z2V0X3Bvc3RfZmllbGQoJ3Bvc3RfY29udGVudCcsJGlkKTsKCQkkcGM9MDsKCQlpZihzdHJpcG9zKCRjLCc8dGFibGUnKSE9PWZhbHNlKXsKCQkJcHJlZ19tYXRjaF9hbGwoJy88dGFibGVbXHNcU10qPzxcL3RhYmxlPi9pJywkYywkdG0pOwoJCQlmb3JlYWNoKCR0bVswXSBhcyAkdGJsKXsKCQkJCSRmPW1iX3N0cnRvbG93ZXIoc3RyaXBfdGFncygkdGJsKSwnVVRGLTgnKTsKCQkJCWlmKG1iX3N0cnBvcygkZiwnc3ZvcicpIT09ZmFsc2UgJiYgcHJlZ19tYXRjaCgnLyhub3JtYXxraWVraXN8cGFyb3N8ZGllbm9zfGRveikvdScsJGYpKXsgJHBjPTE7IGJyZWFrOyB9CgkJCX0KCQl9CgkJJHJvd3NbXT1hcnJheSgnc2t1Jz0+KHN0cmluZylnZXRfcG9zdF9tZXRhKCRpZCwnX3NrdScsdHJ1ZSksJ3QnPT5tYl9zdWJzdHIoJHRpdGxlLDAsNjApLAoJCQkndHlwZSc9PiR0eXBlLCdtYXAnPT4kbSwncGMnPT4kcGMpOwoJfQoJJG9bJ2luc3RvY2snXT1jb3VudCgkcm93cyk7Cgkkc3VtPWFycmF5KCk7Cglmb3JlYWNoKCRyb3dzIGFzICRyKXsKCQkkaz0kclsndHlwZSddOwoJCWlmKCFpc3NldCgkc3VtWyRrXSkpICRzdW1bJGtdPWFycmF5KCd2aXNvJz0+MCwnc3Vfbm9ybWEnPT4wLCdiZSc9PjAsJ2JlX2JldF9wY190dXJpJz0+MCk7CgkJJHN1bVska11bJ3Zpc28nXSsrOwoJCWlmKCRyWydtYXAnXSkgJHN1bVska11bJ3N1X25vcm1hJ10rKzsgZWxzZSB7ICRzdW1bJGtdWydiZSddKys7IGlmKCRyWydwYyddKSAkc3VtWyRrXVsnYmVfYmV0X3BjX3R1cmknXSsrOyB9Cgl9Cgkkb1sncGFnYWxfdGlwYSddPSRzdW07Cgkkb1snYmVfbm9ybW9zJ109YXJyYXlfdmFsdWVzKGFycmF5X2ZpbHRlcigkcm93cyxmdW5jdGlvbigkcil7cmV0dXJuICEkclsnbWFwJ107fSkpOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'s3',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'oq',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
 const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
-function wg(p){try{return execSync(`curl -sk -m 60 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:40*1024*1024}).toString();}catch(e){return 'ERR';}}
-function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 60 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
-const o={pages:{}};
-// 1. puslapiuojam
-let all=[];
-for(let p=1;p<=6;p++){
-  const r=wg(`code-snippets/v1/snippets?per_page=100&page=${p}`);
-  let a=[]; try{a=JSON.parse(r);}catch(e){ o.pages['p'+p]='parse err'; break; }
-  if(!Array.isArray(a)||!a.length){ o.pages['p'+p]=0; break; }
-  o.pages['p'+p]=a.length;
-  all=all.concat(a);
-  if(a.length<100) break;
-}
-const uniq=new Map(); for(const s of all) uniq.set(s.id,s);
-const A=[...uniq.values()];
-o.total=A.length;
-o.max_id=A.length?Math.max(...A.map(s=>s.id)):0;
-// 2. sesijos snippetai
-const mine=A.filter(s=>s.id>=1018).sort((a,b)=>a.id-b.id);
-o.session=mine.map(s=>({id:s.id,name:(s.name||'').slice(0,54),active:s.active}));
-// 3. isjungiam likusius aktyvius
-const strays=mine.filter(s=>s.active);
-o.strays=strays.map(s=>s.id);
-for(const s of strays){ wj('POST',`code-snippets/v1/snippets/${s.id}`,{active:false}); }
-// 4. patikra is naujo
-let all2=[];
-for(let p=1;p<=6;p++){
-  const r=wg(`code-snippets/v1/snippets?per_page=100&page=${p}`);
-  let a=[]; try{a=JSON.parse(r);}catch(e){ break; }
-  if(!Array.isArray(a)||!a.length) break;
-  all2=all2.concat(a); if(a.length<100) break;
-}
-const u2=new Map(); for(const s of all2) u2.set(s.id,s);
-o.session_still_active=[...u2.values()].filter(s=>s.id>=1018 && s.active).map(s=>s.id);
-o.all_active=[...u2.values()].filter(s=>s.active).map(s=>({id:s.id,name:(s.name||'').slice(0,46)}));
-pr('s3.json',o); console.log('DONE');
+function hit(u){try{return execSync(`curl -sk -m 150 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:60*1024*1024}).toString();}catch(e){return 'ERR';}}
+function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
+const o={};
+const mk=wj('POST','code-snippets/v1/snippets',{name:'Ontario Tipo Analize v1 (read-only)',code:Buffer.from(Q,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+let id=null; try{id=JSON.parse(mk).id;}catch(e){o.mk=mk.slice(0,200);}
+if(id){ const r=hit('https://dev.avesa.lt/?ps_oq=Oq7Bt4Zm'); try{o.d=JSON.parse(r);}catch(e){o.raw=r.slice(0,500);}
+        wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); o.id=id; }
+pr('oq.json',o); console.log('DONE');
