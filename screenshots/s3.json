@@ -1,0 +1,454 @@
+{
+ "pages": {
+  "p1": 100,
+  "p2": 100,
+  "p3": 100,
+  "p4": 100,
+  "p5": 100,
+  "p6": 22
+ },
+ "total": 522,
+ "max_id": 1045,
+ "session": [
+  {
+   "id": 1018,
+   "name": "Josera Feeding v1 (josera.de HTML)",
+   "active": false
+  },
+  {
+   "id": 1019,
+   "name": "Josera Feeding Verify v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1020,
+   "name": "Prins Recon v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1021,
+   "name": "RealDog Recon v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1022,
+   "name": "Ontario Recon v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1023,
+   "name": "Ontario Content Check v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1024,
+   "name": "Ontario Table Extract v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1025,
+   "name": "Ontario Feeding v1 (post_content parseris)",
+   "active": false
+  },
+  {
+   "id": 1026,
+   "name": "Ontario Feeding v2 (post_content parseris, bendras pre",
+   "active": false
+  },
+  {
+   "id": 1027,
+   "name": "Ontario Orphan Check v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1028,
+   "name": "Ontario Feeding v4 (wpdb->delete, reason<=60, tid sarg",
+   "active": false
+  },
+  {
+   "id": 1029,
+   "name": "Ontario Verify v1 (read-only, nepriklausomas)",
+   "active": false
+  },
+  {
+   "id": 1030,
+   "name": "Exclusion Status Check v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1031,
+   "name": "Exclusion post_content Feeding v1 (parseris)",
+   "active": false
+  },
+  {
+   "id": 1032,
+   "name": "Exclusion post_content Feeding v2 (visos lenteles)",
+   "active": false
+  },
+  {
+   "id": 1033,
+   "name": "Exclusion Raw Table Peek v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1034,
+   "name": "Exclusion Gramai v1 (post_content, patikrinta ranka)",
+   "active": false
+  },
+  {
+   "id": 1035,
+   "name": "Exclusion Verify v1 (read-only, nepriklausomas)",
+   "active": false
+  },
+  {
+   "id": 1036,
+   "name": "Exclusion Verify v2 (read-only, nepriklausomas)",
+   "active": false
+  },
+  {
+   "id": 1037,
+   "name": "Gemon Recon v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1038,
+   "name": "Gemon Titles v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1039,
+   "name": "Gemon Feeding v1 (monge.it PDF datasheet)",
+   "active": false
+  },
+  {
+   "id": 1040,
+   "name": "Gemon Verify v1 (read-only, nepriklausomas)",
+   "active": false
+  },
+  {
+   "id": 1041,
+   "name": "RC Recon v1 (read-only)",
+   "active": false
+  },
+  {
+   "id": 1042,
+   "name": "RC Feeding v1 (royalcanin.com/lt, tik sausas)",
+   "active": false
+  },
+  {
+   "id": 1043,
+   "name": "RC Verify v1 (read-only, nepriklausomas)",
+   "active": false
+  },
+  {
+   "id": 1044,
+   "name": "RC Feeding v2 (uk/pl - likusios linijos)",
+   "active": false
+  },
+  {
+   "id": 1045,
+   "name": "RC Final Verify v1 (read-only)",
+   "active": false
+  }
+ ],
+ "strays": [],
+ "session_still_active": [],
+ "all_active": [
+  {
+   "id": 469,
+   "name": "Petshop Dev App Passwords v1"
+  },
+  {
+   "id": 472,
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (par"
+  },
+  {
+   "id": 648,
+   "name": "Petshop Invoice Doc Type Fix v2 (LIVE)"
+  },
+  {
+   "id": 461,
+   "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos "
+  },
+  {
+   "id": 463,
+   "name": "Petshop Atributu Auditas v2.0 (read-only, atri"
+  },
+  {
+   "id": 464,
+   "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseri"
+  },
+  {
+   "id": 239,
+   "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - n"
+  },
+  {
+   "id": 465,
+   "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitH"
+  },
+  {
+   "id": 375,
+   "name": "Baltymu Saltinis Dry-Run Konservai v2"
+  },
+  {
+   "id": 329,
+   "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]"
+  },
+  {
+   "id": 332,
+   "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]"
+  },
+  {
+   "id": 492,
+   "name": "Petshop Filtru Atidarymas v2 (CSS+JS)"
+  },
+  {
+   "id": 493,
+   "name": "Petshop Filtru Atidarymas v1 (no lazy-load)"
+  },
+  {
+   "id": 494,
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles S"
+  },
+  {
+   "id": 502,
+   "name": "Higienos Modulis v1.0"
+  },
+  {
+   "id": 503,
+   "name": "Grauziko Rusis Modulis v1.2"
+  },
+  {
+   "id": 507,
+   "name": "Paukscio Rusis Modulis v1.3"
+  },
+  {
+   "id": 509,
+   "name": "Zuvies Rusis Modulis v1.0"
+  },
+  {
+   "id": 510,
+   "name": "Pasaro Forma Modulis v1.1"
+  },
+  {
+   "id": 512,
+   "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikyma"
+  },
+  {
+   "id": 513,
+   "name": "Petshop Katalogo Auditas v1 (read-only)"
+  },
+  {
+   "id": 514,
+   "name": "Petshop Import-Risk Recon v1 (read-only)"
+  },
+  {
+   "id": 518,
+   "name": "Petshop Slėpti svorį ir dimensijas v1 (display"
+  },
+  {
+   "id": 520,
+   "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)"
+  },
+  {
+   "id": 524,
+   "name": "Petshop MnM Rinkinio Vitrina v8 (kiekiai iš me"
+  },
+  {
+   "id": 525,
+   "name": "Petshop UI: kortelės + mobile sticky ATC"
+  },
+  {
+   "id": 532,
+   "name": "Petshop MnM Fiksuoti komponentų kiekiai v2"
+  },
+  {
+   "id": 535,
+   "name": "Petshop MnM Sutaupymo žymeklis v7 (be badge)"
+  },
+  {
+   "id": 539,
+   "name": "Petshop Rinkinių Kūrimo Forma v2"
+  },
+  {
+   "id": 632,
+   "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)"
+  },
+  {
+   "id": 547,
+   "name": "Petshop Susidėjimo Rinkinio Vitrina v19"
+  },
+  {
+   "id": 628,
+   "name": "Petshop Complianz X = Atmesti v1"
+  },
+  {
+   "id": 550,
+   "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15"
+  },
+  {
+   "id": 558,
+   "name": "Petshop Choice Krepšelio Elgsena"
+  },
+  {
+   "id": 560,
+   "name": "Petshop Rinkinio CTA Banneris kategorijose v7"
+  },
+  {
+   "id": 561,
+   "name": "Petshop Rinkinių Gyvūno Filtras v1"
+  },
+  {
+   "id": 566,
+   "name": "Petshop Akcijos Shortcode v1.3"
+  },
+  {
+   "id": 563,
+   "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalv"
+  },
+  {
+   "id": 562,
+   "name": "Petshop Sprendimai Shortcode Variklis v9"
+  },
+  {
+   "id": 565,
+   "name": "Petshop VF Sync v1.1 (reprice+stock+publish)"
+  },
+  {
+   "id": 567,
+   "name": "Petshop Daugiau=Pigiau Stock Sync v1.2"
+  },
+  {
+   "id": 568,
+   "name": "Petshop Daugiau=Pigiau Display v1.2"
+  },
+  {
+   "id": 569,
+   "name": "Petshop Pack/Rinkinys Auto-Categories v1.3"
+  },
+  {
+   "id": 570,
+   "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0"
+  },
+  {
+   "id": 572,
+   "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v8"
+  },
+  {
+   "id": 573,
+   "name": "Petshop DP Kortelės Ženkliukas v4"
+  },
+  {
+   "id": 582,
+   "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)"
+  },
+  {
+   "id": 587,
+   "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiu"
+  },
+  {
+   "id": 619,
+   "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)"
+  },
+  {
+   "id": 594,
+   "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiu"
+  },
+  {
+   "id": 615,
+   "name": "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)"
+  },
+  {
+   "id": 614,
+   "name": "Petshop DataLayer v1.1 (GA4 ecommerce)"
+  },
+  {
+   "id": 609,
+   "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)"
+  },
+  {
+   "id": 610,
+   "name": "Petshop Topbar v2"
+  },
+  {
+   "id": 613,
+   "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)"
+  },
+  {
+   "id": 653,
+   "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)"
+  },
+  {
+   "id": 692,
+   "name": "Petshop Maisto Tipo Mygtukai v1"
+  },
+  {
+   "id": 693,
+   "name": "Petshop Mobile Filtru Dublio Fix v1"
+  },
+  {
+   "id": 688,
+   "name": "Petshop Kategorijos Landing v1 (sunims)"
+  },
+  {
+   "id": 685,
+   "name": "Atrinktos Prekės Modulis v1 (rotacija)"
+  },
+  {
+   "id": 705,
+   "name": "Petshop Produktu Nuotrauku Vienodinimas v1"
+  },
+  {
+   "id": 707,
+   "name": "Petshop UI Lokalizacija v1"
+  },
+  {
+   "id": 709,
+   "name": "Petshop Build-a-box UI Valymas v1"
+  },
+  {
+   "id": 736,
+   "name": "Petshop Core Act2 tmp"
+  },
+  {
+   "id": 738,
+   "name": "ESP v4 Final tmp"
+  },
+  {
+   "id": 797,
+   "name": "JS Fix tmp"
+  },
+  {
+   "id": 798,
+   "name": "Dash Recon tmp"
+  },
+  {
+   "id": 799,
+   "name": "Dash Dep"
+  },
+  {
+   "id": 800,
+   "name": "Dash Act"
+  },
+  {
+   "id": 801,
+   "name": "Dash Test"
+  },
+  {
+   "id": 802,
+   "name": "Photo Recon"
+  },
+  {
+   "id": 803,
+   "name": "Photo Dep"
+  },
+  {
+   "id": 804,
+   "name": "Photo Act"
+  },
+  {
+   "id": 805,
+   "name": "Photo Test"
+  }
+ ]
+}
