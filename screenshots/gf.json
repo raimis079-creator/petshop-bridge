@@ -1,0 +1,316 @@
+{
+ "create": {
+  "id": 1039,
+  "code_error": null
+ },
+ "dry": {
+  "mode": "DRY",
+  "tables": {
+   "maxi_chicken": {
+    "line": "Gemon Maxi Adult vištiena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 24,
+    "rasom": [
+     "01MB431101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "ab_lamb": {
+    "line": "Gemon All Breeds Adult ėriena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 42,
+    "rasom": [
+     "01MB421301"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "ab_tuna": {
+    "line": "Gemon All Breeds Adult tunas ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 42,
+    "rasom": [
+     "01MB421201"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "ab_regular": {
+    "line": "Gemon Regular All Breeds Adult vištiena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 42,
+    "rasom": [
+     "01MB421101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "mini_chicken": {
+    "line": "Gemon Mini Adult vištiena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 21,
+    "rasom": [
+     "01MB411101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "mini_salmon": {
+    "line": "Gemon Mini Adult lašiša ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 21,
+    "rasom": [
+     "01MB412101",
+     "01M412102"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "cat_adult": {
+    "line": "Gemon Adult katėms vištiena ir kalakutiena",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 15,
+    "rasom": [
+     "01MB511101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "cat_ster": {
+    "line": "Gemon Sterilised katėms kalakutiena",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 15,
+    "rasom": [
+     "01M511303"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "kitten": {
+    "line": "Gemon Kitten vištiena ir ryžiai",
+    "shape": "age_weight",
+    "rd": "age",
+    "row_count": 4,
+    "rasom": [
+     "01M510103",
+     "01MB510101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   }
+  },
+  "totals": {
+   "tables": 9,
+   "rows": 226,
+   "map": 11
+  },
+  "atidėta": {
+   "01MB400101": "Puppy & Junior matrica: PDF eilutes turi tarpus (Months 8-12 prasideda ne nuo 1 kg), reikia pozicinio parserio pagal stulpeliu offsetus",
+   "01M511703": "Dry Cat Beef & rice: adult kaciu jautienos PDF monge.it NERA",
+   "01M511503": "Dry Cat Urinary: PDF yra (Gemon-adult-cat-urinary-with-chicken-and-rice-ENG), bet nebuvo istrauktas - reikia dar vieno runo",
+   "01MB511301": "Sterilised light kateems: PDF nerastas",
+   "01MB511201": "Adult kateems lasisa+tunas: yra tik sterilised versija, ne adult"
+  },
+  "db": {
+   "tables": 200,
+   "rows": 3359,
+   "map": 419
+  }
+ },
+ "apply": {
+  "mode": "APPLY",
+  "tables": {
+   "maxi_chicken": {
+    "line": "Gemon Maxi Adult vištiena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 24,
+    "rasom": [
+     "01MB431101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 201
+   },
+   "ab_lamb": {
+    "line": "Gemon All Breeds Adult ėriena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 42,
+    "rasom": [
+     "01MB421301"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 202
+   },
+   "ab_tuna": {
+    "line": "Gemon All Breeds Adult tunas ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 42,
+    "rasom": [
+     "01MB421201"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 203
+   },
+   "ab_regular": {
+    "line": "Gemon Regular All Breeds Adult vištiena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 42,
+    "rasom": [
+     "01MB421101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 204
+   },
+   "mini_chicken": {
+    "line": "Gemon Mini Adult vištiena ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 21,
+    "rasom": [
+     "01MB411101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 205
+   },
+   "mini_salmon": {
+    "line": "Gemon Mini Adult lašiša ir ryžiai",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 21,
+    "rasom": [
+     "01MB412101",
+     "01M412102"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 206
+   },
+   "cat_adult": {
+    "line": "Gemon Adult katėms vištiena ir kalakutiena",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 15,
+    "rasom": [
+     "01MB511101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 207
+   },
+   "cat_ster": {
+    "line": "Gemon Sterilised katėms kalakutiena",
+    "shape": "transposed",
+    "rd": "body_condition",
+    "row_count": 15,
+    "rasom": [
+     "01M511303"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 208
+   },
+   "kitten": {
+    "line": "Gemon Kitten vištiena ir ryžiai",
+    "shape": "age_weight",
+    "rd": "age",
+    "row_count": 4,
+    "rasom": [
+     "01M510103",
+     "01MB510101"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 209
+   }
+  },
+  "totals": {
+   "tables": 9,
+   "rows": 226,
+   "map": 11
+  },
+  "atidėta": {
+   "01MB400101": "Puppy & Junior matrica: PDF eilutes turi tarpus (Months 8-12 prasideda ne nuo 1 kg), reikia pozicinio parserio pagal stulpeliu offsetus",
+   "01M511703": "Dry Cat Beef & rice: adult kaciu jautienos PDF monge.it NERA",
+   "01M511503": "Dry Cat Urinary: PDF yra (Gemon-adult-cat-urinary-with-chicken-and-rice-ENG), bet nebuvo istrauktas - reikia dar vieno runo",
+   "01MB511301": "Sterilised light kateems: PDF nerastas",
+   "01MB511201": "Adult kateems lasisa+tunas: yra tik sterilised versija, ne adult"
+  },
+  "db": {
+   "tables": 209,
+   "rows": 3585,
+   "map": 430
+  }
+ },
+ "snip": 1039
+}
