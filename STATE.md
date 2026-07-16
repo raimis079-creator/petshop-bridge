@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217: Quattro 12 lentelių įrašyta, 23/59 SKU uždaryta; kgshop.eu atrastas kaip gamintojo HTML šaltinis). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -248,6 +248,91 @@ Buvau pranešęs, kad radau `1→80 · 2→130 · 3→160 · 5→240 · 7→300 
   - **KRYŽMINIS PATVIRTINIMAS JAU YRA:** dogsnanny HTML ↔ gamintojo PNG crop-OCR sutampa 9/9 eilučių struktūra; ±1 g nesutapimai trijuose langeliuose (78/79, 124/125, 134/135) — arbitražui trečias taškas.
   - kgshop.eu (gamintojo parduotuvė) — lentelių HTML'e NĖRA (0). pet24.lt — po 1 lentelę, netirta.
 - **KITAS ŽINGSNIS (mechanika, be klausimų):** pilnas petirvet.lt + dogsnanny.lt Quattro katalogų crawl per tiltą → HTML lentelės → kryžminis su gamintojo PNG kur įmanoma → mapinti į 63 SKU pagal PAVADINIMĄ (linija+baltymas+dydis+amžius; SKU kodai neinformatyvūs) → apply verified partijomis → verifikacija → STATE.md.
+
+**S217 — QUATTRO: 12 LENTELIŲ ĮRAŠYTA, 23 iš 59 SKU UŽDARYTA (2026-07-16):**
+
+**DB PO APPLY (verifikuota atskiru read-only snippetu #1014, ne to paties kodo pranešimu):**
+| | prieš S217 | **po S217** |
+|---|---|---|
+| lentelių | 169 | **181** |
+| verified | 157 | **169** |
+| eilučių | 3 030 | **3 200** |
+| map / produktų | 365 | **388** |
+
+Sargai: `orphan rows/map = 0/0` · `produktų su 2+ lentelėm = 0` · `apverstų rėžių = 0/0` · `row_count` = faktas visose 12.
+
+**DVYLIKA QUATTRO LENTELIŲ** (`source_version='quattro_kgshop_petirvet_2026-07-16'`, visos `verified`):
+| id | line | forma | ašis | basis | eil. | SKU | verified_by |
+|---|---|---|---|---|---|---|---|
+| 170 | Small Breed Adult (antiena) | simple | weight | current | 9 | 2 | `html_petirvet_x_dogsnanny` |
+| 171 | Extra Lamb | simple | weight | current | 9 | 2 | `html_kgshop_x_petirvet` |
+| 172 | Extra Poultry | simple | weight | current | 9 | 2 | `html_kgshop` |
+| 173 | Extra Salmon | simple | weight | current | 9 | 2 | `html_petirvet` |
+| 174 | Small Breed Adult (lašiša-krilis) | simple | weight | current | 9 | 2 | `html_dogsnanny` |
+| 175 | All Breed Adult Lamb Monoprotein | simple | weight | current | 9 | 2 | `html_petirvet` |
+| 176 | Mini Adult Poultry | simple | weight | current | 9 | 2 | `html_kgshop` |
+| 177 | Mini Adult Lamb | simple | weight | current | 9 | 2 | `html_kgshop` |
+| 178 | Mini Adult Salmon | simple | weight | current | 9 | 2 | `html_kgshop` |
+| 179 | Maxi Adult Lamb | simple | weight | current | 7 | 1 | `html_kgshop` |
+| 180 | All Breed Senior White Fish & Krill | transposed | **body_condition** | current | 18 | 2 | `html_petirvet` |
+| 181 | Large Breed Junior Duck | matrix | **age** | **adult_expected** | 64 | 2 | `html_petirvet` |
+
+- **⚠️ id170 ir id174 turi VIENODĄ `line` tekstą** („Small Breed Adult"), skiriasi tik `checksum`/SKU/baltymu. Akimi DB'e nesiskiria. Pervadinti, jei kliudys.
+- **⚠️ id181 `weight_basis='adult_expected'` — MŪSŲ IŠVADA, ne šaltinio žodis.** Antraštė sako tik „Šuns svoris, kg". Pagrindas: 2 mėn. šuniukas 25–60 kg nesveria. Jei klaida — 60 kg eilutė duotų normą pagal esamą svorį.
+- Snippetai: `#1013 Quattro Feeding v1` (apply logika viduje, kartojimui), `#1014 Quattro Feeding Verify v1`, `#1015 Quattro Verify v2` — **visi serveryje, išjungti**.
+
+**⚠️ S216 KLAIDOS, IŠTAISYTOS:**
+1. „63 instock SKU be lentelės" → realiai **59** (4 jau turėjo: Extra Poultry katėms 1,5/7 kg, Sterilised katėms 1,5/7 kg).
+2. „**kgshop.eu — lentelių HTML'e NĖRA (0)**" → realiai **16 lentelių iš 83 Quattro URL**. Ankstesnė sesija tikrino 2 konkrečius URL ir apibendrino į nulį. **Būtent ši klaida kainavo dvi OCR ekspedicijas** — atsakymas visą laiką gulėjo gamintojo parduotuvės HTML'e.
+3. „dogsnanny.lt — PILNOS HTML lentelės" → **2 iš 38 puslapių**. Collagen linija (kačių) šėrimo duomenų neturi apskritai. Realus stuburas = **petirvet + kgshop**.
+
+**ŠALTINIŲ ŽEMĖLAPIS (Quattro = AB „Kauno Grūdai"):**
+1. **kgshop.eu = GAMINTOJO parduotuvė** — 83 Quattro URL per `sitemap.xml`, **16 šėrimo lentelių HTML tekstu**, etiketės **16/16 nuoseklios**. Autoritetingiausias šaltinis. Pavadinimai švarūs (`QUATTRO Visavertis sausas ... , 7 kg`).
+2. **petirvet.lt** — 16 URL, 12 lentelių, **etiketės 10/12**. Pavadinimai — SEO košė („Quattro šunų maistas"), raktas TIK iš slug'o.
+3. **dogsnanny.lt** — 38 URL, **2 lentelės**.
+4. **pet24.lt / zoopro.lt / quattropet.com** — sitemap'uose Quattro **nėra** (0/0/0). Netirti toliau.
+
+**⚠️ PETIRVET ETIKETĖS SUKEISTOS (begrūdžio antienos linija) — įrodyta duomenimis:**
+```
+psl. "...small-breed-adult-duck"  → 2..10 kg     = Small Breed  ✔ (dogsnanny patvirtina 9/9)
+psl. "...smal-breed-adult-duck"   → 2-5..50-60   = NE small breed. Pilna All Breed
+psl. "...all-breed-adult-duck"    → 25-30..55-60 = NE all breed. Large Breed
+```
+Atskyrimas: All Breed Lamb duoda `25-30→272-311`, o „all-breed-adult-duck" — `272-312`. **Skirtingi skaičiai = skirtingi produktai**, ne ta pati lentelė. Logika sandari, bet vienintelis šaltinis yra tas pats petirvet → **abi paliktos ambiguous, NEĮRAŠYTOS.**
+
+**⚠️ QUATTRO ≠ EXCLUSION: LENTELĖ PRIKLAUSO NUO BALTYMO.**
+S215 užrakinta „lentelė nepriklauso nuo baltymo → 34 SKU uždarė 5 lentelės". **Quattro tai NEGALIOJA.** Įrodymas: SB antiena `3→54-72` vs SB lašiša-krilis `3→55-72`; Mini ėriena `2→41-47` vs Mini lašiša `2→40-46`. `scope='line'` galioja **tik per pakuotes** (1,5/3/7/12 kg), NE per skonius. Exclusion taisyklės mechaniškai netaikyti — sulipdytų skirtingas normas.
+
+**NEĮRAŠYTA — 6 receptai (36 SKU):**
+| kas | kliūtis |
+|---|---|
+| Maxi Adult Poultry | **šaltinio klaida:** `312-406 \| 406-402 \| 402-444` — mažėjantis rėžis. kgshop ×2 |
+| Sterilised katėms | **`amount_not_monotonic`:** 7 kg `56-81` → 8 kg `61-78`. **kgshop IR petirvet identiškai** = tai gamintojo paskelbtas skaičius, ne parduotuvės klaida. Sutapimas patvirtina perrašymą, ne teisingumą |
+| SB Adult Lamb | **šaltinio klaida:** 10 kg → `138-139` (rėžis susitraukia į 1 g, viršutinė krenta 147→139) |
+| Kačiukų (All Breed Kitten) | `by_age`, svoriai **persidengia** (1,5-4,0 ir 3,0-5,0) → pagal svorį nevienareikšmiška |
+| All Breed Adult Duck | petirvet etikečių problema (žr. aukščiau) |
+| Large Breed Adult Duck | ta pati |
+| **Be šaltinio išvis** | visa kačių **Collagen** linija (6 receptai), **Sport**, **Weight Loss**, SB puppy/junior/senior, All Breed salmon-krill, All Breed junior duck, Junior Poultry matrica |
+
+**KITI RADINIAI:**
+- **Extra Poultry — šaltiniai nesutaria pirmame rėžyje:** petirvet `2-4`, kgshop `2-5`. petirvet variante 4–5 kg šuo lieka BE normos (spraga); kgshop vientisas. **Imta kgshop** (gamintojas + nuoseklu). Užfiksuota `note` lauke.
+- **Junior Poultry (kgshop)** = matrica **amžius(mėn) × suaugusio šuns svoris (2/6/12/25/40/60)**. Ne B1/B2 modelis. Skaičiai HTML tekstu švarūs — uždaroma bet kada, reikia tik `condition_dimensions` sprendimo.
+- **59 SKU = 30 receptų.** Lentelė priklauso nuo recepto, ne pakuotės. Mastelis ne 59 vienetai darbo, o 30.
+
+**TILTO / METODO PAMOKOS (naujos S217):**
+- **`dev.avesa.lt` HTTPS grandinė SUGEDUSI:** serveriai.lt atiduoda `CN=*.serveriai.lt` wildcard **be tarpinio sertifikato** → `curl` grąžina `code=000`, atrodo kaip firewall blokada. TCP 443/80 atviri, `curl -k` → 200. **VISUR naudoti `curl -sk`.** Į `http://` neiti — App Password keliautų atviru tekstu. (Vakarykščiai „2 paleidimai success be rezultato" — greičiausiai tas pats.)
+- **Code Snippets REST veikia:** `GET/POST /wp-json/code-snippets/v1/snippets` (Basic Auth). Sukūrimas: `{name,code,scope:'front-end',active:true,priority}` → grąžina `id` + `code_error`. Deaktyvavimas: `POST /snippets/{id} {active:false}`. **489 snippetai serveryje, 74 aktyvūs.** `per_page=100` — būtina paginacija.
+- **❌ „Claude paveiksliukų pats neperskaito" (S215) — PATVIRTINTA DAR KARTĄ.** Bandžiau apeiti: parsisiunčiau PNG per Contents API, kirpau juostą, didinau ×2, skėliau pusiau — **skaitmenų patikimai nenuskaitau**. PNG kelias Quattro'ui **UŽDARYTAS**; jo ir nereikėjo — kgshop dengia tas pačias linijas tekstu. **Sesijos pradžioje skaityti VISĄ STATE.md, ne §0–§1** — ši klaida kainavo 4 runus.
+- **⚠️ PATIKROS SĄLYGA PER PLATI — 3 kartus per sesiją.** `verified AND weight_basis IS NULL` = **2**, bet abi (`id24 Josera`, `id110 Farmina`) yra `shape='by_age'`, kur NULL yra **teisinga** (S212 tai sako). Teisingas invariantas: `verified AND weight_basis IS NULL AND shape<>'by_age' = 0`. Taip pat: šaltinių auditas pažymėjo kačių lenteles (0-5 kg, 2-8 kg) kaip „neatitinka", nes taikė šunišką „all breed 2-60" taisyklę. **Tai S212 pamoka #2 — „patikra tikrino ne tai, ką skelbė" — pakartota tris kartus.**
+- Retailer'ių šaltiniai randami per `robots.txt` → `Sitemap:` → filtras `/quattro|qattro/i`. Paieškos URL **nespėlioti** (pet24/zoopro/kgshop paieškos spėjimai davė 0 nuorodų; sitemap tam pačiam kgshop davė 83).
+
+**PENDING — Quattro:**
+1. **Junior Poultry matrica** (2 SKU) — duomenys švarūs, reikia `condition_dimensions` sprendimo
+2. **All Breed / Large Breed Duck** (4 SKU) — reikia antro šaltinio petirvet etiketėms patvirtinti
+3. **Kačių Collagen linija** (11 SKU) — viešo šaltinio nėra
+4. Sport, Weight Loss, SB puppy/junior/senior — šaltinio nėra
+5. **id170/id174 vienodas `line`** — pervadinti jei kliudys
+6. **id181 `adult_expected`** — mūsų išvada, ne šaltinio; peržiūrėti
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
