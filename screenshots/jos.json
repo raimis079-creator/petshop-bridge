@@ -1,0 +1,814 @@
+{
+ "wp": {
+  "total": 164,
+  "instock": 153,
+  "instock_mapped": 107,
+  "unmapped": [
+   {
+    "id": 21860,
+    "sku": "JOS0855",
+    "t": "Josera Kitten Turkey konservuotas pašaras kačiukams su kalakutiena, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21858,
+    "sku": "JOS0854",
+    "t": "Josera Kitten Salmon konservuotas pašaras kačiukams su lašiša, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21856,
+    "sku": "JOS0853",
+    "t": "Josera Kitten Duck konservuotas pašaras kačiukams su antiena, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21854,
+    "sku": "JOS0852",
+    "t": "Josera Kitten Beef konservuotas pašaras kačiukams, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21838,
+    "sku": "JOS0842",
+    "t": "Josera konservuotas pašaras katėms su kalakutiena, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21836,
+    "sku": "JOS0841",
+    "t": "Josera konservuotas pašaras pagyvenusioms katėms, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21834,
+    "sku": "JOS0840",
+    "t": "Josera konservuotas pašaras kačiukams, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21832,
+    "sku": "JOS0839",
+    "t": "Josera konservuotas pašaras katėms su antiena, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21830,
+    "sku": "JOS0838",
+    "t": "Josera konservuotas pašaras katėms su vištiena, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21828,
+    "sku": "JOS0837",
+    "t": "Josera konservuotas pašaras katėms su jautiena, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21677,
+    "sku": "JOS0767",
+    "t": "Josera Kitten Turkey begrūdis konservuotas pašaras jaunoms katėms su kal",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21671,
+    "sku": "JOS0761",
+    "t": "Josera Kitten Beef begrūdis konservuotas pašaras jaunoms katėms su jauti",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21661,
+    "sku": "JOS0756",
+    "t": "Josera Meat Lovers Junior Menu Chicken konservuotas pašaras jauniems šun",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21659,
+    "sku": "JOS0755",
+    "t": "Josera Meat Lovers Junior Pure Beef konservuotas pašaras jauniems šunims",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21335,
+    "sku": "JOS0631",
+    "t": "Josera Turkey begrūdis konservuotas pašaras katėms su kalakutiena 200 g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21333,
+    "sku": "JOS0630",
+    "t": "Josera Senior begrūdis konservuotas pašaras vyresnio amžiaus katėms, 200",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21331,
+    "sku": "JOS0629",
+    "t": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vi",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21329,
+    "sku": "JOS0628",
+    "t": "Josera Duck begrūdis konservuotas pašaras katėms su antiena, 200 g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21327,
+    "sku": "JOS0627",
+    "t": "Josera Chicken begrūdis konservuotas pašaras katėms su vištiena, 200 g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 21325,
+    "sku": "JOS0626",
+    "t": "Josera Beef begrūdis konservuotas pašaras katėms su jautiena, 200 g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20504,
+    "sku": "JOS0573",
+    "t": "Josera Multipack Paté konservuotas pašaras katėms 6x85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20493,
+    "sku": "JOS0532",
+    "t": "Josera Meat Lovers Menu Chicken with Carrot konservuotas pašaras šunims ",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20484,
+    "sku": "JOS0529",
+    "t": "Josera Meat Lovers Pure Turkey konservuotas pašaras šunims su kalakutien",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20481,
+    "sku": "JOS0528",
+    "t": "Josera Meat Lovers Pure Lamb konservuotas pašaras šunims su ėriena, 400 ",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20469,
+    "sku": "JOS0524",
+    "t": "Josera Meat Lovers Menu Chicken with Carrot konservuotas pašaras šunims ",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20466,
+    "sku": "JOS0523",
+    "t": "Josera Meat Lovers Menu Beef with Potato konservuotas pašaras šunims su ",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20463,
+    "sku": "JOS0522",
+    "t": "Josera Meat Lovers Pure Turkey konservuotas pašaras šunims su kalakutien",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20455,
+    "sku": "JOS0519",
+    "t": "Josera Meat Lovers pure Beef 800g konservuotas pašaras šunims",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20437,
+    "sku": "JOS0444",
+    "t": "Josera Soup Chicken &#038; Carrots konservuotas vištienos sultinys katėm",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20435,
+    "sku": "JOS0442",
+    "t": "Josera Cat 654 Kitten pate konservai kačiukams, 85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20424,
+    "sku": "JOS0438",
+    "t": "Josera Cat Chicken+Spinach pate konservai katėms,  85g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20421,
+    "sku": "JOS0437",
+    "t": "Josera Cat 663 Chicken+Veal filet  konservai katėms, 70g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20418,
+    "sku": "JOS0436",
+    "t": "Josera Cat 662 Chicken+Salmon filet  konservai katėms, 70g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20416,
+    "sku": "JOS0435",
+    "t": "Josera Filet Chicken with Duck begrūdis konservuotas pašaras katėms višt",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20413,
+    "sku": "JOS0434",
+    "t": "Josera Cat 660 Chicken&#038;Beef filet  konservai katėms, 70g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 20410,
+    "sku": "JOS0433",
+    "t": "Josera kons.Cat 658 Pure Chicken filet konservai katėms, 70g",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 18071,
+    "sku": "JOS0763",
+    "t": "Josera Kitten Duck begrūdis konservuotas pašaras jaunoms katėms su antie",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 18068,
+    "sku": "JOS0765",
+    "t": "Josera Kitten Salmon begrūdis konservuotas pašaras jaunoms katėms su laš",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17972,
+    "sku": "JOS0812",
+    "t": "JosiCat Crispy Duck sausas pašaras katėms su antiena, 10kg",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17969,
+    "sku": "JOS0723",
+    "t": "JosiCat Crunchy Chicken sausas maistas suaugusioms katėms su vištiena, 1",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17965,
+    "sku": "JOS0813",
+    "t": "Josicat Classic Sterilised 10 kg sausas maistas katėms",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17962,
+    "sku": "JOS0836",
+    "t": "Josidog Active 15 kg &#8211; sausas maistas aktyviems šunims",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17959,
+    "sku": "JOS0799",
+    "t": "Josidog Economy 15 kg sausas maistas šunims",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17956,
+    "sku": "JOS0003",
+    "t": "Josidog Family 15 kg sausas maistas kalėms ir šuniukams",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17953,
+    "sku": "JOS0849",
+    "t": "Josidog Junior 15 kg &#8211; sausas maistas šuniukams",
+    "stock": "instock",
+    "map": null
+   },
+   {
+    "id": 17950,
+    "sku": "JOS0622",
+    "t": "Josidog Regular 15 kg &#8211; sausas maistas šunims",
+    "stock": "instock",
+    "map": null
+   }
+  ],
+  "unmapped_n": 46,
+  "existing": [
+   {
+    "id": "1",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "12",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "18"
+   },
+   {
+    "id": "13",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "14",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "15",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "16",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10"
+   },
+   {
+    "id": "17",
+    "line": null,
+    "shape": "transposed",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "34"
+   },
+   {
+    "id": "18",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "19",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10"
+   },
+   {
+    "id": "20",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "14"
+   },
+   {
+    "id": "21",
+    "line": null,
+    "shape": "transposed",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "39"
+   },
+   {
+    "id": "22",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "14"
+   },
+   {
+    "id": "23",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "24",
+    "line": null,
+    "shape": "by_age",
+    "row_dimension": "age",
+    "weight_basis": null,
+    "status": "verified",
+    "row_count": "6"
+   },
+   {
+    "id": "25",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "12"
+   },
+   {
+    "id": "26",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "27",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5"
+   },
+   {
+    "id": "28",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10"
+   },
+   {
+    "id": "29",
+    "line": null,
+    "shape": "transposed",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "34"
+   },
+   {
+    "id": "30",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10"
+   },
+   {
+    "id": "31",
+    "line": null,
+    "shape": "transposed",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "39"
+   },
+   {
+    "id": "32",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10"
+   },
+   {
+    "id": "33",
+    "line": null,
+    "shape": "transposed",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "39"
+   },
+   {
+    "id": "34",
+    "line": null,
+    "shape": "transposed",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "25"
+   },
+   {
+    "id": "35",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "12"
+   },
+   {
+    "id": "36",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10"
+   },
+   {
+    "id": "37",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7"
+   },
+   {
+    "id": "38",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "14"
+   },
+   {
+    "id": "39",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "12"
+   },
+   {
+    "id": "40",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5"
+   },
+   {
+    "id": "41",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5"
+   },
+   {
+    "id": "42",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5"
+   },
+   {
+    "id": "43",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5"
+   },
+   {
+    "id": "44",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7"
+   },
+   {
+    "id": "45",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7"
+   },
+   {
+    "id": "46",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "87",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "88",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5"
+   },
+   {
+    "id": "89",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "18"
+   },
+   {
+    "id": "90",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5"
+   },
+   {
+    "id": "91",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "92",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "15"
+   },
+   {
+    "id": "93",
+    "line": null,
+    "shape": "transposed",
+    "row_dimension": null,
+    "weight_basis": null,
+    "status": "ambiguous",
+    "row_count": "0"
+   },
+   {
+    "id": "94",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "15"
+   },
+   {
+    "id": "95",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "18"
+   },
+   {
+    "id": "96",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "97",
+    "line": null,
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "21"
+   },
+   {
+    "id": "98",
+    "line": null,
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7"
+   }
+  ]
+ },
+ "sites": {
+  "josera_lt": {
+   "n": 0,
+   "sample": []
+  },
+  "josera_de": {
+   "n": 1363,
+   "sample": [
+    "https://www.josera.de/",
+    "https://www.josera.de/hundefutter.html",
+    "https://www.josera.de/katzenfutter.html",
+    "https://www.josera.de/pferdefutter.html",
+    "https://www.josera.de/aktionen/miska-podrozna-2024.html",
+    "https://www.josera.de/aktionen/aktion-hund.html"
+   ]
+  },
+  "josera_com": {
+   "n": 0,
+   "sample": []
+  },
+  "petmarket": {
+   "n": 58,
+   "sample": [
+    "https://petmarket.lt/produktas/josera-catelux-sausas-kaciu-maistas-10-kg/",
+    "https://petmarket.lt/produktas/josera-catelux-sausas-kaciu-maistas-2-kg/",
+    "https://petmarket.lt/produktas/josera-leger-sausas-maistas-katems-2-kg/",
+    "https://petmarket.lt/produktas/josera-culinesse-sausas-maistas-katems-2-kg/",
+    "https://petmarket.lt/produktas/josera-sensicat-sausas-maistas-katems-2-kg/",
+    "https://petmarket.lt/produktas/josera-marinesse-sausas-maistas-katems-2-kg/"
+   ]
+  },
+  "dogsnanny": {
+   "n": 0,
+   "sample": []
+  },
+  "petirvet": {
+   "n": 3,
+   "sample": [
+    "https://petirvet.lt/josera-sensicatsausas-kaciu-maistas/",
+    "https://petirvet.lt/josera-help-urinary-cat-dry-sausas-edalas-katems/",
+    "https://petirvet.lt/josera-hypoallergenic-cat-dry-sausas-pasaras-katems/"
+   ]
+  },
+  "kgshop": {
+   "n": 0,
+   "sample": []
+  }
+ }
+}
