@@ -3,46 +3,38 @@ import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'pg',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'ph',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
-function get(u,mt){try{return execSync(`curl -sLk --max-time ${mt||30} -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120" "${u}"`,{maxBuffer:30*1024*1024}).toString();}catch(e){return '';}}
+function get(u,mt){try{return execSync(`curl -sLk --max-time ${mt||35} -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120" "${u}"`,{maxBuffer:30*1024*1024}).toString();}catch(e){return '';}}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function dec(s){return s.replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&#(\d+);/g,(m,d)=>String.fromCharCode(+d)).replace(/&#8211;/g,'-');}
 const o={};
-// CDX: ontario.pet produktu puslapiai
-const queries=[
-  'https://web.archive.org/cdx/search/cdx?url=ontario.pet*&output=json&limit=600&collapse=urlkey&filter=statuscode:200&filter=original:.*(cat|kock|granul|krmivo|produkt|product).*',
-];
-let rows=[];
-for(const q of queries){
-  const r=get(q,45);
-  try{ const j=JSON.parse(r||'[]'); rows=rows.concat(j.slice(1)); }catch(e){ o.cdx_err=(r||'').slice(0,120); }
-  await sleep(4500);
-}
-o.n=rows.length;
-const uniq=new Map(); for(const r of rows) uniq.set(r[2],r[1]);
-o.urls=[...uniq.keys()].slice(0,40);
-// bandom istraukti viena kaciu produkto snapshot
-const cands=[...uniq.entries()].filter(([u])=>/cat|kock/i.test(u)).slice(0,4);
-o.probe={};
-for(const [u,ts] of cands){
-  const snap=`https://web.archive.org/web/${ts}id_/${u}`;
-  const h=get(snap,40);
-  const tabs=(h.match(/<table/gi)||[]).length;
-  const title=(h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[,''])[1].replace(/\s+/g,' ').trim().slice(0,50);
-  const r={ts,bytes:h.length,tables:tabs,title};
-  if(tabs){
-    const tb=[];
-    for(const t of (h.match(/<table[\s\S]*?<\/table>/gi)||[]).slice(0,3)){
-      const rr=[];
-      for(const tr of (t.match(/<tr[\s\S]*?<\/tr>/gi)||[])){
-        const c=[...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(m=>m[1].replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim());
-        if(c.length) rr.push(c);
-      }
-      if(rr.length) tb.push(rr.slice(0,8));
+const targets=['https://ontario.pet/en/cat-food/','https://ontario.pet/en/for-cats-en/food-adult/'];
+for(const t of targets){
+  // paskutinis snapshot
+  const cdx=get(`https://web.archive.org/cdx/search/cdx?url=${encodeURIComponent(t)}&output=json&limit=5&filter=statuscode:200`,35);
+  let ts=null; try{ const j=JSON.parse(cdx||'[]'); if(j.length>1) ts=j[j.length-1][1]; }catch(e){}
+  const r={ts};
+  if(ts){
+    const h=get(`https://web.archive.org/web/${ts}id_/${t}`,45);
+    r.bytes=h.length;
+    r.title=dec((h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[,''])[1]).replace(/\s+/g,' ').trim().slice(0,50);
+    r.tables=(h.match(/<table/gi)||[]).length;
+    // produktu nuorodos
+    const links=[...new Set([...h.matchAll(/href="([^"]+)"/gi)].map(m=>m[1]))]
+      .map(u=>u.replace(/^https?:\/\/web\.archive\.org\/web\/\d+\w*\//,''))
+      .filter(u=>/ontario\.pet/i.test(u) && /(product|produkt|granul|food|cat)/i.test(u));
+    r.links=[...new Set(links)].slice(0,26);
+    let b=(h.match(/<body[\s\S]*<\/body>/i)||[h])[0].replace(/<script[\s\S]*?<\/script>/gi,' ').replace(/<style[\s\S]*?<\/style>/gi,' ');
+    const txt=dec(b.replace(/<[^>]+>/g,'\n')).split('\n').map(x=>x.trim()).filter(Boolean).join(' | ');
+    r.txt_len=txt.length;
+    for(const kw of ['Feeding','feeding','Dávk','dávk','Daily','ration','Weight of']){
+      const i=txt.indexOf(kw);
+      if(i>=0){ r['kw_'+kw]=txt.slice(Math.max(0,i-120),i+380); break; }
     }
-    r.tab=tb;
+    r.pdfs=[...new Set([...h.matchAll(/href="([^"]+\.pdf[^"]*)"/gi)].map(x=>x[1]))].slice(0,6);
   }
-  o.probe[u.slice(-56)]=r;
-  await sleep(4500);
+  o[t.slice(-30)]=r;
+  await sleep(5000);
 }
-pr('pg.json',o); console.log('DONE n='+o.n);
+pr('ph.json',o); console.log('DONE');
