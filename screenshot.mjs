@@ -1,18 +1,18 @@
+const V='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfY2snXSl8fCRfR0VUWydwc19jayddIT09J0NrOVp0M05iJyl7cmV0dXJuO30KCWdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCk7Cgkkb1snZGInXT1hcnJheSgndGFibGVzJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wc19mZWVkaW5nX3RhYmxlcyIpLAoJICdyb3dzJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wc19mZWVkaW5nX3Jvd3MiKSwKCSAnbWFwJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wc19mZWVkaW5nX21hcCIpKTsKCSRvWydjaGVja3MnXT1hcnJheSgKCSAnb3JwaGFuX3Jvd3MnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfcm93cyByIExFRlQgSk9JTiB7JHBmfXBzX2ZlZWRpbmdfdGFibGVzIHQgT04gdC5pZD1yLmZlZWRpbmdfdGFibGVfaWQgV0hFUkUgdC5pZCBJUyBOVUxMIiksCgkgJ29ycGhhbl9tYXAnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfbWFwIG0gTEVGVCBKT0lOIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgdCBPTiB0LmlkPW0uZmVlZGluZ190YWJsZV9pZCBXSEVSRSB0LmlkIElTIE5VTEwiKSwKCSAncHJvZHVjdHNfMnBsdXMnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAoU0VMRUNUIHByb2R1Y3RfaWQgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfbWFwIEdST1VQIEJZIHByb2R1Y3RfaWQgSEFWSU5HIENPVU5UKCopPjEpIHgiKSwKCSAnemVyb190aWRfcm93cyc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cHNfZmVlZGluZ19yb3dzIFdIRVJFIGZlZWRpbmdfdGFibGVfaWQ9MCBPUiBmZWVkaW5nX3RhYmxlX2lkIElTIE5VTEwiKSwKCSAnemVyb190aWRfbWFwJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wc19mZWVkaW5nX21hcCBXSEVSRSBmZWVkaW5nX3RhYmxlX2lkPTAgT1IgZmVlZGluZ190YWJsZV9pZCBJUyBOVUxMIiksCgkpOwoJJG9bJ29ycGhhbl9yb3dfdGlkcyddPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIHIuZmVlZGluZ190YWJsZV9pZCB0aWQsIENPVU5UKCopIG4gRlJPTSB7JHBmfXBzX2ZlZWRpbmdfcm93cyByCgkgIExFRlQgSk9JTiB7JHBmfXBzX2ZlZWRpbmdfdGFibGVzIHQgT04gdC5pZD1yLmZlZWRpbmdfdGFibGVfaWQgV0hFUkUgdC5pZCBJUyBOVUxMIEdST1VQIEJZIHIuZmVlZGluZ190YWJsZV9pZCIsIEFSUkFZX0EpOwoJJG9bJ29ycGhhbl9tYXBfdGlkcyddPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIG0uZmVlZGluZ190YWJsZV9pZCB0aWQsIENPVU5UKCopIG4gRlJPTSB7JHBmfXBzX2ZlZWRpbmdfbWFwIG0KCSAgTEVGVCBKT0lOIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgdCBPTiB0LmlkPW0uZmVlZGluZ190YWJsZV9pZCBXSEVSRSB0LmlkIElTIE5VTEwgR1JPVVAgQlkgbS5mZWVkaW5nX3RhYmxlX2lkIiwgQVJSQVlfQSk7Cgkkb1snb250YXJpbyddPSR3cGRiLT5nZXRfcmVzdWx0cygkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIGlkLGxpbmUsc3BlY2llcyxyb3dfY291bnQsTEVOR1RIKHJlYXNvbikgcmxlbiBGUk9NIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgV0hFUkUgc291cmNlX3ZlcnNpb249JXMgT1JERVIgQlkgaWQiLCdvbnRhcmlvX3Bvc3RfY29udGVudF8yMDI2LTA3LTE2JyksIEFSUkFZX0EpOwoJLy8gcmVhc29uIHN0dWxwZWxpbyB0aXBhcwoJJG9bJ3JlYXNvbl9jb2wnXT0kd3BkYi0+Z2V0X3JvdygiU0hPVyBDT0xVTU5TIEZST00geyRwZn1wc19mZWVkaW5nX3RhYmxlcyBMSUtFICdyZWFzb24nIiwgQVJSQVlfQSk7Cgkkb1snbGluZV9jb2wnXT0kd3BkYi0+Z2V0X3JvdygiU0hPVyBDT0xVTU5TIEZST00geyRwZn1wc19mZWVkaW5nX3RhYmxlcyBMSUtFICdsaW5lJyIsIEFSUkFZX0EpOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'oa',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'ck',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
 const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
-function hit(u){try{return execSync(`curl -sk -m 150 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:60*1024*1024}).toString();}catch(e){return 'ERR';}}
+function hit(u){try{return execSync(`curl -sk -m 120 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:40*1024*1024}).toString();}catch(e){return 'ERR';}}
 function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 60 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-const ap=hit('https://dev.avesa.lt/?ps_onf=Onf6Rt2Wq&confirm=APPLY_ONTARIO');
-try{o.apply=JSON.parse(ap);}catch(e){o.apply_raw=ap.slice(0,900);}
-// isjungiam abu
-wj('POST','code-snippets/v1/snippets/1026',{active:false});
-wj('POST','code-snippets/v1/snippets/1025',{active:false});
-pr('oa.json',o); console.log('DONE');
+const mk=wj('POST','code-snippets/v1/snippets',{name:'Ontario Orphan Check v1 (read-only)',code:Buffer.from(V,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+let id=null; try{id=JSON.parse(mk).id;}catch(e){o.mk=mk.slice(0,200);}
+if(id){ const r=hit('https://dev.avesa.lt/?ps_ck=Ck9Zt3Nb'); try{o.v=JSON.parse(r);}catch(e){o.raw=r.slice(0,800);}
+        wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); o.id=id; }
+pr('ck.json',o); console.log('DONE');
