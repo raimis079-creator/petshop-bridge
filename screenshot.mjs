@@ -7,45 +7,29 @@ function ghPut(p,buf,m){const u=`https://api.github.com/repos/raimis079-creator/
 function get(u){ try{ return execSync(`curl -sL --max-time 25 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36" "${u}"`,{maxBuffer:20*1024*1024}).toString(); }catch(e){ return ''; } }
 const out={};
 try{
-// 1) sitemap -> visi produktu URL
-let urls=new Set();
-for(const sm of ['https://exclusion.pl/1_pl_0_sitemap.xml','https://exclusion.pl/sitemap.xml','https://exclusion.pl/pl/sitemap.xml']){
-  const x=get(sm);
-  if(!x) continue;
-  for(const m of x.matchAll(/<loc>([^<]+)<\/loc>/gi)){ const u=m[1];
-    if(/\/\d+-\d+-\d+$|\/3-123-\d+|\/\d+-\d+-\d+\.html/.test(u) || /karma|pork|hypoallergenic|noble|intestinal|mediterr/i.test(u)) urls.add(u); }
-  if(urls.size) { out.sitemap_used=sm; break; }
+// 1) Zinomas veikiantis URL -> is jo istraukiam VISAS vidines nuorodas
+const seed='https://exclusion.pl/pl/karma-dla-psa-hypoallergenic-srednie-duze-rasy-wie/3-123-155';
+const h=get(seed);
+out.seed_bytes=h.length;
+const links=new Set();
+for(const m of h.matchAll(/href="(https?:\/\/exclusion\.pl\/[^"#?]+)"/gi)) links.add(m[1]);
+out.links_total=links.size;
+// produktu nuorodos: baigiasi /N-N-N
+const prod=[...links].filter(u=>/\/\d+-\d+-\d+\/?$/.test(u));
+out.product_links=prod.length;
+out.product_sample=prod.slice(0,10);
+// kategoriju nuorodos
+const cats=[...links].filter(u=>/\/\d+-[a-z]/i.test(u) && !/\/\d+-\d+-\d+/.test(u));
+out.cat_links=cats.slice(0,12);
+// 2) ar veikia be slug? testas
+for(const t of ['https://exclusion.pl/x/3-123-19','https://exclusion.pl/3-123-19','https://exclusion.pl/index.php?id_product=19&controller=product']){
+  const c=execSync(`curl -s -o /dev/null -w "%{http_code} %{url_effective}" -L --max-time 15 "${t}"`).toString();
+  out['probe_'+t.slice(22,45)]=c;
 }
-out.urls_from_sitemap = urls.size;
-// 2) fallback: kategoriju puslapiai
-if(urls.size < 5){
-  for(const cat of ['https://exclusion.pl/pl/123-hypoallergenic','https://exclusion.pl/pl/3-diety','https://exclusion.pl/']){
-    const h=get(cat); if(!h) continue;
-    for(const m of h.matchAll(/href="(https:\/\/exclusion\.pl\/[^"]*\/\d+-\d+-\d+[^"]*)"/gi)) urls.add(m[1].split('#')[0]);
-  }
-  out.urls_after_fallback = urls.size;
-}
-// 3) fetch kiekviena, iskirti serimo lentele
-const list=[...urls].slice(0,120);
-const found=[]; const empty=[];
-for(const u of list){
-  const h=get(u); if(!h) continue;
-  const tables = h.match(/<table[\s\S]*?<\/table>/gi) || [];
-  let best=null;
-  for(const t of tables){
-    const txt=t.replace(/<[^>]+>/g,'|').replace(/\|+/g,'|').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
-    const pairs=[...txt.matchAll(/(\d+(?:[.,]\d+)?)\s*kg\s*\|\s*(\d+)\s*[-–]\s*(\d+)\s*gr/gi)];
-    if(pairs.length>=3 && (!best||pairs.length>best.length)) best=pairs.map(p=>({kg:parseFloat(p[1].replace(',','.')),from:+p[2],to:+p[3]}));
-  }
-  // kodas is paveiksliuko
-  const im = h.match(/razioni\/([a-z]{3,6})_razione/i);
-  const code = im ? im[1].toLowerCase() : null;
-  const title = (h.match(/<title>([^<]+)<\/title>/i)||[])[1] || '';
-  if(best) found.push({url:u, code, title:title.slice(0,70), rows:best});
-  else empty.push({url:u, code, title:title.slice(0,60), tables:tables.length});
-}
-out.scanned=list.length; out.with_table=found.length; out.without=empty.length;
-out.found=found; out.empty_sample=empty.slice(0,12);
+// 3) is seed puslapio - ar yra lentele?
+const tables=h.match(/<table[\s\S]*?<\/table>/gi)||[];
+out.seed_tables=tables.length;
+out.seed_table_txt = tables.map(t=>t.replace(/<[^>]+>/g,'|').replace(/\|+/g,'|').replace(/\s+/g,' ').slice(0,240));
 }catch(e){ out.FATAL=String(e&&e.message?e.message:e).slice(0,400); }
-ghPut('screenshots/m8_pl.json',Buffer.from(JSON.stringify(out)),'exclusion.pl crawl');
+ghPut('screenshots/m8_plstruct.json',Buffer.from(JSON.stringify(out)),'pl struct');
 console.log('DONE');
