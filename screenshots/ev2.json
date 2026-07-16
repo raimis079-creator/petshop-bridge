@@ -1,0 +1,77 @@
+{
+ "v": {
+  "db": {
+   "tables": 200,
+   "rows": 3359,
+   "map": 419,
+   "verified": 188
+  },
+  "checks": {
+   "orphan_rows": 0,
+   "orphan_map": 0,
+   "zero_tid_rows": 0,
+   "zero_tid_map": 0,
+   "products_2plus": 0,
+   "inverted_amount": 0,
+   "inverted_weight": 0,
+   "verified_null_basis_excl_byage": 0,
+   "rowcount_mismatch": 0
+  },
+  "ontario": [
+   {
+    "id": "199",
+    "line": "Hydrolyzed Hypoallergenic mažų veislių šunims",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "6",
+    "skus": "1"
+   },
+   {
+    "id": "200",
+    "line": "Mediterraneo Monoprotein sausas sterilizuotoms katėms",
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": "svorio_valdymas",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10",
+    "skus": "3"
+   }
+  ],
+  "ont_tables": 2,
+  "ont_skus": 4,
+  "sample": [
+   {
+    "feeding_table_id": "200",
+    "row_order": "0",
+    "weight_from_kg": "2.00",
+    "amount_from_g": "30.00",
+    "amount_to_g": "30.00"
+   },
+   {
+    "feeding_table_id": "200",
+    "row_order": "1",
+    "weight_from_kg": "3.00",
+    "amount_from_g": "50.00",
+    "amount_to_g": "50.00"
+   },
+   {
+    "feeding_table_id": "200",
+    "row_order": "2",
+    "weight_from_kg": "4.00",
+    "amount_from_g": "60.00",
+    "amount_to_g": "60.00"
+   },
+   {
+    "feeding_table_id": "200",
+    "row_order": "3",
+    "weight_from_kg": "5.00",
+    "amount_from_g": "70.00",
+    "amount_to_g": "70.00"
+   }
+  ]
+ }
+}
