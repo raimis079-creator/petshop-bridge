@@ -1,0 +1,707 @@
+{
+ "head": "[{\"id\":1,\"name\":\"Make upload filenames lowercase\",\"desc\":\"Makes sure that image and file uploads have lowercase filenames.\\n\\nThis is a sample snippet. Feel free to use it, edit it, or remove it.\",\"co",
+ "count": 100,
+ "list": [
+  {
+   "id": 1,
+   "name": "Make upload filenames lowercase",
+   "active": false,
+   "scope": "global",
+   "len": 52
+  },
+  {
+   "id": 2,
+   "name": "Disable admin bar",
+   "active": false,
+   "scope": "front-end",
+   "len": 115
+  },
+  {
+   "id": 3,
+   "name": "Allow smilies",
+   "active": false,
+   "scope": "global",
+   "len": 187
+  },
+  {
+   "id": 4,
+   "name": "Current year",
+   "active": false,
+   "scope": "content",
+   "len": 26
+  },
+  {
+   "id": 5,
+   "name": "petshop kategorijos v2",
+   "active": false,
+   "scope": "global",
+   "len": 6210
+  },
+  {
+   "id": 8,
+   "name": "petshop menu subcats v1",
+   "active": false,
+   "scope": "global",
+   "len": 3016
+  },
+  {
+   "id": 9,
+   "name": "etshop sunims menu v1",
+   "active": false,
+   "scope": "global",
+   "len": 5759
+  },
+  {
+   "id": 10,
+   "name": "petshop sunims menu v2",
+   "active": false,
+   "scope": "global",
+   "len": 5546
+  },
+  {
+   "id": 11,
+   "name": "petshop katems menu v1",
+   "active": false,
+   "scope": "global",
+   "len": 5490
+  },
+  {
+   "id": 12,
+   "name": "petshop remaining menus v1",
+   "active": false,
+   "scope": "global",
+   "len": 5325
+  },
+  {
+   "id": 13,
+   "name": "petshop remap categories v1",
+   "active": false,
+   "scope": "global",
+   "len": 3505
+  },
+  {
+   "id": 14,
+   "name": "petshop remap categories v2",
+   "active": false,
+   "scope": "global",
+   "len": 2372
+  },
+  {
+   "id": 15,
+   "name": "petshop cleanup empty cats v1",
+   "active": false,
+   "scope": "global",
+   "len": 1304
+  },
+  {
+   "id": 16,
+   "name": "Petshop reset menu options v1 ",
+   "active": false,
+   "scope": "global",
+   "len": 558
+  },
+  {
+   "id": 72,
+   "name": "del pauksciu",
+   "active": false,
+   "scope": "global",
+   "len": 2290
+  },
+  {
+   "id": 71,
+   "name": "Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis)",
+   "active": false,
+   "scope": "global",
+   "len": 7163
+  },
+  {
+   "id": 70,
+   "name": "Tikri slug",
+   "active": false,
+   "scope": "global",
+   "len": 2028
+  },
+  {
+   "id": 40,
+   "name": "ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas",
+   "active": false,
+   "scope": "global",
+   "len": 922
+  },
+  {
+   "id": 41,
+   "name": "Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg",
+   "active": false,
+   "scope": "global",
+   "len": 2008
+  },
+  {
+   "id": 42,
+   "name": "ZB prekės be aprašymo",
+   "active": false,
+   "scope": "global",
+   "len": 869
+  },
+  {
+   "id": 44,
+   "name": "Pataisyti prekes su per dideliais matmenimis - kurjeris",
+   "active": false,
+   "scope": "global",
+   "len": 1297
+  },
+  {
+   "id": 47,
+   "name": " Base64 aprašymo pavyzdys",
+   "active": false,
+   "scope": "global",
+   "len": 448
+  },
+  {
+   "id": 48,
+   "name": "Base64 nuotraukos išvalymas iš aprašymų",
+   "active": false,
+   "scope": "global",
+   "len": 1395
+  },
+  {
+   "id": 50,
+   "name": "ZB prekių skaičius1",
+   "active": false,
+   "scope": "global",
+   "len": 1253
+  },
+  {
+   "id": 51,
+   "name": "ZB brendų priskyrimas brand taksonomijoje1.1",
+   "active": false,
+   "scope": "global",
+   "len": 375
+  },
+  {
+   "id": 52,
+   "name": "ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas",
+   "active": false,
+   "scope": "global",
+   "len": 1828
+  },
+  {
+   "id": 53,
+   "name": "ZB prekės be brando — priskirti iš pavadinimo",
+   "active": false,
+   "scope": "global",
+   "len": 3325
+  },
+  {
+   "id": 54,
+   "name": "4 likusių prekių brandų priskyrimas",
+   "active": false,
+   "scope": "global",
+   "len": 987
+  },
+  {
+   "id": 55,
+   "name": "ZB prekės be nuotraukos",
+   "active": false,
+   "scope": "global",
+   "len": 854
+  },
+  {
+   "id": 56,
+   "name": "ZB nuotraukų importas iš katalogo",
+   "active": false,
+   "scope": "global",
+   "len": 4872
+  },
+  {
+   "id": 58,
+   "name": "Patikrinti paieškos HTML struktūrą",
+   "active": false,
+   "scope": "global",
+   "len": 652
+  },
+  {
+   "id": 59,
+   "name": "ZB nuotraukų importas — pataisytas URL",
+   "active": false,
+   "scope": "global",
+   "len": 4769
+  },
+  {
+   "id": 60,
+   "name": "atikrinti filterSearch HTML",
+   "active": false,
+   "scope": "global",
+   "len": 1071
+  },
+  {
+   "id": 61,
+   "name": "ZB nuotraukų indekso kūrimas iš brendų puslapių",
+   "active": false,
+   "scope": "global",
+   "len": 5723
+  },
+  {
+   "id": 62,
+   "name": "Patikrinti brendų puslapio HTML struktūrą",
+   "active": false,
+   "scope": "global",
+   "len": 971
+  },
+  {
+   "id": 63,
+   "name": "ZB indekso kūrimas v2 — data-lazyloadsrc iš sąrašo",
+   "active": false,
+   "scope": "global",
+   "len": 5126
+  },
+  {
+   "id": 64,
+   "name": "ZB indekso kūrimas v3 — su ilgesnėmis pauzėmis",
+   "active": false,
+   "scope": "global",
+   "len": 3736
+  },
+  {
+   "id": 65,
+   "name": "ZB indekso kūrimas v3 — admin_init",
+   "active": false,
+   "scope": "global",
+   "len": 3736
+  },
+  {
+   "id": 66,
+   "name": "ZB indekso kūrimas — per admin puslapį",
+   "active": false,
+   "scope": "global",
+   "len": 5170
+  },
+  {
+   "id": 397,
+   "name": "Monoprotein Dry-Run v5 (daugiau brendu)",
+   "active": false,
+   "scope": "global",
+   "len": 12400
+  },
+  {
+   "id": 75,
+   "name": "Masinis pa_pakuotes_dydis priskyrimas iš pavadinimų",
+   "active": false,
+   "scope": "global",
+   "len": 4843
+  },
+  {
+   "id": 76,
+   "name": "Tikrina prekes kur kg = gyvūno svoris, ne pakuotė",
+   "active": false,
+   "scope": "global",
+   "len": 1666
+  },
+  {
+   "id": 78,
+   "name": "Tikrina naujos prekės meta laukus",
+   "active": false,
+   "scope": "global",
+   "len": 1522
+  },
+  {
+   "id": 79,
+   "name": "Palygina kainas tarp seno ir naujo XML",
+   "active": false,
+   "scope": "global",
+   "len": 3678
+  },
+  {
+   "id": 80,
+   "name": "Perskaičiuoja visų ZB prekių kainas pagal naują logiką",
+   "active": false,
+   "scope": "global",
+   "len": 4304
+  },
+  {
+   "id": 81,
+   "name": "Tikrina dublikatus pagal SKU",
+   "active": false,
+   "scope": "global",
+   "len": 2294
+  },
+  {
+   "id": 82,
+   "name": "Perkelia aprašymus + nuotraukas iš NAUJŲ (2026-06-01) į SENUS (2026-05-27)",
+   "active": false,
+   "scope": "global",
+   "len": 4338
+  },
+  {
+   "id": 83,
+   "name": "Parodo \"Kita\" prekių ZB kategorijų kelius iš XML",
+   "active": false,
+   "scope": "global",
+   "len": 3645
+  },
+  {
+   "id": 84,
+   "name": "Priskiria WC kategorijas \"Kita\" prekėms pagal ZB XML <category> kelią",
+   "active": false,
+   "scope": "global",
+   "len": 8460
+  },
+  {
+   "id": 86,
+   "name": "Tikrina kodėl ZB prekės su cost >= 8 yra draft",
+   "active": false,
+   "scope": "global",
+   "len": 3053
+  },
+  {
+   "id": 87,
+   "name": "Kelia į publish ZB draft prekes, kurios atitinka VISUS kriterijus",
+   "active": false,
+   "scope": "global",
+   "len": 4370
+  },
+  {
+   "id": 88,
+   "name": "kiek iš paskelbtų yra ZB prekės",
+   "active": false,
+   "scope": "global",
+   "len": 1070
+  },
+  {
+   "id": 90,
+   "name": "FBT pradinis konfigūravimas — sausas maistas → skanėstai",
+   "active": false,
+   "scope": "global",
+   "len": 4079
+  },
+  {
+   "id": 92,
+   "name": "VetFarmas inventorizacija v3",
+   "active": false,
+   "scope": "global",
+   "len": 12434
+  },
+  {
+   "id": 94,
+   "name": "SKU \\u2192 EAN matching i\\u0161 VetFarmas XML",
+   "active": false,
+   "scope": "global",
+   "len": 11166
+  },
+  {
+   "id": 95,
+   "name": "Vetocanis matching pagal pavadinim\\u0105",
+   "active": false,
+   "scope": "global",
+   "len": 9732
+  },
+  {
+   "id": 96,
+   "name": "VetFarmas API helper",
+   "active": false,
+   "scope": "global",
+   "len": 7595
+  },
+  {
+   "id": 98,
+   "name": "vf_desc_peek",
+   "active": false,
+   "scope": "global",
+   "len": 4842
+  },
+  {
+   "id": 101,
+   "name": "vf_parser_v3",
+   "active": false,
+   "scope": "global",
+   "len": 25494
+  },
+  {
+   "id": 468,
+   "name": "Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 11574
+  },
+  {
+   "id": 469,
+   "name": "Petshop Dev App Passwords v1",
+   "active": true,
+   "scope": "global",
+   "len": 385
+  },
+  {
+   "id": 472,
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+   "active": true,
+   "scope": "global",
+   "len": 10744
+  },
+  {
+   "id": 473,
+   "name": "Petshop Attr Modulis: Kraikai Katems v1.0 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 9123
+  },
+  {
+   "id": 105,
+   "name": "EAN normalizacija — _global_unique_id 13→12 skaitm.",
+   "active": false,
+   "scope": "global",
+   "len": 11797
+  },
+  {
+   "id": 106,
+   "name": "WooCommerce kategorijų eksportas — hierarchija + prekių skaičius",
+   "active": false,
+   "scope": "global",
+   "len": 7918
+  },
+  {
+   "id": 393,
+   "name": "Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis)",
+   "active": false,
+   "scope": "global",
+   "len": 7254
+  },
+  {
+   "id": 394,
+   "name": "Monoprotein Dry-Run v2 (isvestinis)",
+   "active": false,
+   "scope": "global",
+   "len": 4594
+  },
+  {
+   "id": 395,
+   "name": "Monoprotein Dry-Run v3 (sudetis-grieztas)",
+   "active": false,
+   "scope": "global",
+   "len": 10539
+  },
+  {
+   "id": 396,
+   "name": "Monoprotein Dry-Run v4 (brendai + riebalu fix)",
+   "active": false,
+   "scope": "global",
+   "len": 12304
+  },
+  {
+   "id": 110,
+   "name": "ZB IMPORT LOG STEBĖJIMAS — realiu laiku",
+   "active": false,
+   "scope": "global",
+   "len": 8138
+  },
+  {
+   "id": 385,
+   "name": "Baltymu Saltinis Apply Sausas Aprasymai v1 (32 svarus)",
+   "active": false,
+   "scope": "global",
+   "len": 3947
+  },
+  {
+   "id": 386,
+   "name": "Baltymu Saltinis Apply Sausas EXOTIC v1",
+   "active": false,
+   "scope": "global",
+   "len": 4392
+  },
+  {
+   "id": 387,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi)",
+   "active": false,
+   "scope": "global",
+   "len": 7248
+  },
+  {
+   "id": 116,
+   "name": "Trash zonos pakitimo tyrimas",
+   "active": false,
+   "scope": "global",
+   "len": 7322
+  },
+  {
+   "id": 120,
+   "name": "Cleanup Excluded",
+   "active": false,
+   "scope": "global",
+   "len": 6295
+  },
+  {
+   "id": 121,
+   "name": "trash_disappear",
+   "active": false,
+   "scope": "global",
+   "len": 6580
+  },
+  {
+   "id": 388,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena)",
+   "active": false,
+   "scope": "global",
+   "len": 7525
+  },
+  {
+   "id": 389,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem)",
+   "active": false,
+   "scope": "global",
+   "len": 7404
+  },
+  {
+   "id": 124,
+   "name": "zb_disaster_recovery",
+   "active": false,
+   "scope": "global",
+   "len": 14093
+  },
+  {
+   "id": 125,
+   "name": "publish_diag",
+   "active": false,
+   "scope": "global",
+   "len": 13790
+  },
+  {
+   "id": 126,
+   "name": "zb_recovery2",
+   "active": false,
+   "scope": "global",
+   "len": 15220
+  },
+  {
+   "id": 127,
+   "name": "ZB analitinis snippet'as — DUOMENYS ZB politikai v2",
+   "active": false,
+   "scope": "global",
+   "len": 17213
+  },
+  {
+   "id": 373,
+   "name": "Atributai Inventorius v2 (tikslus slug)",
+   "active": false,
+   "scope": "global",
+   "len": 6031
+  },
+  {
+   "id": 372,
+   "name": "tributai Inventorius v1 (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 5980
+  },
+  {
+   "id": 371,
+   "name": "Draft Publish Vykdymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 5163
+  },
+  {
+   "id": 129,
+   "name": "Today Changes",
+   "active": false,
+   "scope": "global",
+   "len": 13553
+  },
+  {
+   "id": 130,
+   "name": "Duplicate analyze",
+   "active": false,
+   "scope": "global",
+   "len": 13308
+  },
+  {
+   "id": 131,
+   "name": "ZB Nuke Option",
+   "active": false,
+   "scope": "global",
+   "len": 15459
+  },
+  {
+   "id": 132,
+   "name": "New ZB Diag",
+   "active": false,
+   "scope": "global",
+   "len": 15058
+  },
+  {
+   "id": 133,
+   "name": "zb_nuke_today",
+   "active": false,
+   "scope": "global",
+   "len": 12107
+  },
+  {
+   "id": 134,
+   "name": " assign_categories v3",
+   "active": false,
+   "scope": "global",
+   "len": 9510
+  },
+  {
+   "id": 136,
+   "name": "assign_categories v2",
+   "active": false,
+   "scope": "global",
+   "len": 10621
+  },
+  {
+   "id": 647,
+   "name": "Petshop Invoice Timing Test v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 2758
+  },
+  {
+   "id": 648,
+   "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+   "active": true,
+   "scope": "global",
+   "len": 741
+  },
+  {
+   "id": 655,
+   "name": "Petshop Read Attach v1",
+   "active": false,
+   "scope": "global",
+   "len": 892
+  },
+  {
+   "id": 649,
+   "name": "Petshop WCDN Cfg v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 753
+  },
+  {
+   "id": 650,
+   "name": "Petshop Dump Functions v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 559
+  },
+  {
+   "id": 651,
+   "name": "Petshop Deploy Functions v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 104761
+  },
+  {
+   "id": 138,
+   "name": "Abakus Unpublish",
+   "active": false,
+   "scope": "global",
+   "len": 3181
+  },
+  {
+   "id": 153,
+   "name": "petshop.lt WEIGHT NORMALIZER",
+   "active": false,
+   "scope": "global",
+   "len": 13753
+  }
+ ],
+ "feeding": []
+}
