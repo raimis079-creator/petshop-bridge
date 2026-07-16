@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC 3 lent./6 SKU (royalcanin.com/lt, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -555,40 +555,49 @@ Months 8 - 12                     103  184  306  380  417  442  609  735  825
 
 **Snippetai (išjungti):** #1039 Gemon Feeding v1, #1040 Verify.
 
-**S224 — RC (ROYAL CANIN): 3 lentelės / 6 SKU iš royalcanin.com/lt (2026-07-16):**
+**S224 — RC (ROYAL CANIN) UŽDARYTAS: 13/13 instock, 0 be normos (2026-07-16):**
 
-**DB:** 209 → **212** lentelės · 3 585 → **3 609** eil. · 430 → **436** map · verified **200**. Sargai visi 0. Delta = totals (+3/+24/+6).
+**DB:** 209 → **217** lentelės · 3 585 → **3 679** eil. · 430 → **442** map · verified **205**. Sargai visi 0. Delta = totals abiem etapais.
 
-**BŪKLĖ:** RC 25 viso, 13 instock, 1 jau mapinta, **12 be normos** (visi sausas, `post_content` lentelių NETURI → Ontario triukas neveikia).
-
-**ŠALTINIS:** `royalcanin.lt` = **403**. `royalcanin.com/lt` = **200, lietuviškai, gyvas**. Sitemap 403; kategorijos per curl rodo 0 produktų (**JS**) → **Playwright būtinas**.
-**⚠️ Kelias: `/lt/{cats|dogs}/products/retail-products?technology=dry` + `&page=2`.** Be `page=2` dingsta pusė asortimento (pirmą kartą radau 21, su filtru+2 psl. — **56**). Produkto URL: `.../retail-products/{slug}-{id}`.
-
-**ĮRAŠYTA 3 lentelės / 6 SKU** (`source_version='royalcanin_lt_2026-07-16'`, visos `transposed`/`body_condition`/`current`):
-| id | line | SKU |
+| | prieš | po |
 |---|---|---|
-| 210 | Royal Canin Sensible 33 | 127380, 127380228 |
-| 211 | Royal Canin Sterilised 37 | 122370183, 122340 |
-| 212 | Royal Canin Hair & Skin Care | 217570, 122110 |
+| RC instock | 13 | 13 |
+| **su norma** | **1** | **13** |
+| **be normos** | **12** | **0** |
+
+**ŠALTINIAI:** `royalcanin.lt` = 403. `royalcanin.com/{cc}` = gyvas, JS → **Playwright būtinas** (curl kategorijose mato 0 produktų).
+**⚠️ Kelias: `/{cc}/{cats|dogs}/products/retail-products?technology=dry` + `&page=2`.** Be `page=2` dingsta pusė (LT: 21 vs realiai 56).
+**⚠️ RC LT asortimentas ≠ mūsų asortimentas.** GIANT ADULT, MEDIUM ADULT, HAIRBALL CARE, INDOOR lietuviškame puslapyje NĖRA → paimta iš **UK** ir **PL**. Normos identiškos, skiriasi tik kalba. **Tai bendra taisyklė: jei LT nėra, tikrinti /uk, /pl, /de.**
+
+**ĮRAŠYTA 8 lentelės / 12 SKU** (id 210–217):
+| id | line | ašis | eil. | SKU | šaltinis |
+|---|---|---|---|---|---|
+| 210 | Sensible 33 | body_condition | 8 | 127380, 127380228 | LT |
+| 211 | Sterilised 37 | body_condition | 8 | 122370183, 122340 | LT |
+| 212 | Hair & Skin Care | body_condition | 8 | 217570, 122110 | LT |
+| 213 | Giant Adult | **activity_level** | 18 | 131350 | **UK** |
+| 214 | Medium Adult | **activity_level** | 15 | 141150 | **UK** |
+| 215 | Hairball Care | **activity_level** | 8 | 216110, 121550 | **UK** |
+| 216 | Indoor 27 | **activity_level** | 21 | 123950 | **PL** (turtingesnė nei UK: 7 svoriai × 3) |
+| 217 | Oral Care | body_condition | 8 | 216210 | LT |
+(+ id=99 sena, 1 SKU, iš S214.)
+
+**★ „LIESA" KLAUSIMAS IŠSPRĘSTAS EMPIRIŠKAI (ne spėjimu):**
+LT `oral-care` stulpelis pavadintas **„Liesa"**, kituose LT psl. — **„Idealus svoris"**. Patikrinta dviem nepriklausomais būdais:
+1. **Skaitinis sutapimas:** oral-care „Liesa" = 47/57/67/77; sterilised-37 „Idealus svoris" = 47/57/67/76 → tas pats stulpelis.
+2. **Kryžminė kalba:** UK `hairball-care` = `INACTIVE (low energy) | IDEAL WEIGHT (normal activity)` → 3kg: 36 g | **45 g**. Didesnysis stulpelis = IDEAL. LT oral-care „Liesa"=47 yra didesnysis.
+→ **„Liesa" = idealus svoris.** Įrašyta `body_condition='ideal'`, `reason='LT etikete "Liesa" = idealus svoris (patikrinta UK)'`.
+
+**⚠️ LT VERTIMAI NEPATIKIMI — užfiksuota:** LT `hair-and-skin-care` = „Idealus svoris 45 / Viršsvoris 36"; UK `hairball-care` = „IDEAL 45 / INACTIVE 36" — **identiški skaičiai, skirtingos etiketės** (viršsvoris vs neaktyvus). Skaičiai teisingi abiem atvejais, bet ašies semantika LT puslapiuose plaukioja. Rašant RC iš LT — visada kryžmiškai tikrinti su /uk.
 
 **⚠️⚠️ RC LENTELIŲ SPĄSTAI (visi pagauti prieš rašant):**
-1. **Mišraus šėrimo reikšmės.** `47 g (30 g + 1 šlapio pakelio)` — **pirmas skaičius = grynas sausas**, skliaustuose sausas+šlapias derinys. Rašomas TIK pirmas. Yra ir atskiros eilutės `Normalus (Mišrus šėrimas)` — **atmestos**.
-2. **`medium-adult-1095` rodo `Šuns svoris | Tik šlapias maistas` → `5+1/2 pak.`** — tai ŠLAPIO maisto pakuotės. Būtų įrašęs „5 g/parą 12 kg šuniui". Tas pats spąstas kaip Exclusion konservai (S222).
-3. **Išdėstymas NEVIENODAS tarp puslapių:** `sterilised-ageing` — svoris STULPELIUOSE; `sensible-33`, `oral-care`, `hair-and-skin` — svoris EILUTĖSE. Universalus parseris negalimas be formos detekcijos → rašyta rankiniu būdu po vizualaus patikrinimo.
-4. Pridėtas sargas: **kačių sausas <10 g/parą neįmanomas** → gaudo pakelių/skardinių maišymą su gramais.
+1. **Mišrus šėrimas:** `47 g (30 g + 1 šlapio pakelio)` → **pirmas skaičius = grynas sausas**, skliaustuose sausas+šlapias. Atskiros `Normalus (Mišrus šėrimas)` eilutės — atmestos. UK atitikmuo: `(4 cup + 2/8)` → matas puodeliais, irgi atmestas.
+2. **`medium-adult-1095` (LT) rodo `Šuns svoris | Tik šlapias maistas` → `5+1/2 pak.`** = ŠLAPIO maisto pakuotės. Būtų įrašęs „5 g/parą 12 kg šuniui". Todėl MEDIUM ADULT paimtas iš UK, kur yra sausa lentelė. UK psl. 2-a lentelė (`CAN` stulpelis) — irgi mišri, atmesta.
+3. **Išdėstymas nevienodas:** `sterilised-ageing` — svoris stulpeliuose; `sensible-33`, `oral-care`, `hair-and-skin` — svoris eilutėse; UK šunų — `DOG IDEAL WEIGHT` eilutėse × activity stulpeliuose. **Universalus parseris negalimas** → visos 8 lentelės rašytos rankiniu būdu po vizualaus patikrinimo.
+4. Nauji sargai: **kačių sausas <10 g/parą** ir **šunų <20 g/parą** → gaudo pakelių/puodelių maišymą su gramais. Plius `low≤moderate≤high` ir `ideal≥overweight`.
 
-**RC LIKUTIS (6 SKU) — 1 klausimas Raimiui + 5 spragos:**
-| SKU | būklė |
-|---|---|
-| **216210 ORAL CARE** | **REIKIA SPRENDIMO:** lentelė švari (`3kg→47g`), bet stulpelis pavadintas **„Liesa"**, o Sterilised 37 / Hair&Skin — **„Idealus svoris"**. Skaičiai sutampa (47/57/67), tad greičiausiai tas pats stulpelis kitaip išverstas — bet „greičiausiai" nėra faktas. Ar normalizuoti „Liesa" → `ideal`? |
-| 131350 GIANT ADULT | RC LT sausame asortimente (56 prod.) tokios linijos NĖRA |
-| 141150 MEDIUM ADULT | psl. rodo tik šlapio lentelę; sausos nėra arba slepiama už tabo |
-| 216110 / 121550 HAIRBALL CARE | RC LT asortimente NĖRA |
-| 123950 INDOOR | RC LT asortimente NĖRA |
+**Snippetai (išjungti):** #1042 RC Feeding v1, #1043 Verify, #1044 RC Feeding v2, #1045 Final Verify.
 
-Pastaba: RC LT asortimentas ≠ mūsų asortimentas. GIANT ADULT / HAIRBALL / INDOOR gali reikėti kito RC šalies puslapio (pvz. `/pl`, `/de`) — normos tos pačios, tik kalba kita. **Neišbandyta.**
-
-**Snippetai (išjungti):** #1042 RC Feeding v1, #1043 Verify.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
