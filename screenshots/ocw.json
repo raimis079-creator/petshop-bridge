@@ -1,0 +1,165 @@
+{
+ "create": {
+  "id": 1047,
+  "code_error": null
+ },
+ "dry": {
+  "mode": "DRY",
+  "tables": {
+   "short_hair": {
+    "line": "Ontario Adult Short Hair",
+    "row_count": 16,
+    "rasom": [
+     "640214268-1"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "exigent": {
+    "line": "Ontario Adult Exigent (išrankioms)",
+    "row_count": 16,
+    "rasom": [
+     640000,
+     40626
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "hairball": {
+    "line": "Ontario Adult Hairball",
+    "row_count": 16,
+    "rasom": [
+     "640220-1",
+     640220103
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "sensitive": {
+    "line": "Ontario Adult Sensitive",
+    "row_count": 16,
+    "rasom": [
+     640213774
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "ster_lamb": {
+    "line": "Ontario Adult Sterilized Lamb",
+    "row_count": 16,
+    "rasom": [
+     "640416-1"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   }
+  },
+  "totals": {
+   "tables": 5,
+   "rows": 80,
+   "map": 7
+  },
+  "db": {
+   "tables": 217,
+   "rows": 3679,
+   "map": 442
+  }
+ },
+ "apply": {
+  "mode": "APPLY",
+  "tables": {
+   "short_hair": {
+    "line": "Ontario Adult Short Hair",
+    "row_count": 16,
+    "rasom": [
+     "640214268-1"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 218
+   },
+   "exigent": {
+    "line": "Ontario Adult Exigent (išrankioms)",
+    "row_count": 16,
+    "rasom": [
+     640000,
+     40626
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 219
+   },
+   "hairball": {
+    "line": "Ontario Adult Hairball",
+    "row_count": 16,
+    "rasom": [
+     "640220-1",
+     640220103
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 220
+   },
+   "sensitive": {
+    "line": "Ontario Adult Sensitive",
+    "row_count": 16,
+    "rasom": [
+     640213774
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 221
+   },
+   "ster_lamb": {
+    "line": "Ontario Adult Sterilized Lamb",
+    "row_count": 16,
+    "rasom": [
+     "640416-1"
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 222
+   }
+  },
+  "totals": {
+   "tables": 5,
+   "rows": 80,
+   "map": 7
+  },
+  "db": {
+   "tables": 222,
+   "rows": 3759,
+   "map": 449
+  }
+ }
+}
