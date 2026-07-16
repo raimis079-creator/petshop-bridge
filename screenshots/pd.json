@@ -1,0 +1,56 @@
+{
+ "probe": {
+  "https://www.prinspetfoods.com": {
+   "http": "200",
+   "bytes": 436641,
+   "title": "Prins Petfoods",
+   "procare": true,
+   "sitemaps": []
+  },
+  "https://prinspetfoods.com": {
+   "http": "200",
+   "bytes": 436641,
+   "title": "Prins Petfoods",
+   "procare": true,
+   "sitemaps": []
+  },
+  "https://www.prinspetfoods.nl": {
+   "http": "403",
+   "bytes": 5454,
+   "title": "Just a moment...",
+   "procare": false,
+   "sitemaps": []
+  },
+  "https://prinspetfoods.nl": {
+   "http": "403",
+   "bytes": 5450,
+   "title": "Just a moment...",
+   "procare": false,
+   "sitemaps": []
+  },
+  "https://www.prinspetfood.nl": {
+   "http": "200",
+   "bytes": 129,
+   "title": "",
+   "procare": false,
+   "sitemaps": []
+  },
+  "https://www.prins-petfoods.com": {
+   "http": "000"
+  },
+  "https://www.prinspetfoods.de": {
+   "http": "200",
+   "bytes": 129,
+   "title": "",
+   "procare": false,
+   "sitemaps": []
+  },
+  "https://www.prinspetfoods.eu": {
+   "http": "200",
+   "bytes": 38,
+   "title": "",
+   "procare": false,
+   "sitemaps": []
+  }
+ }
+}
