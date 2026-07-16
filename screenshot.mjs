@@ -3,42 +3,42 @@ import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function putResult(name,obj){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${name}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'q_wp',content:Buffer.from(JSON.stringify(obj,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'q_more',content:Buffer.from(JSON.stringify(obj,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
+function get(u){try{return execSync(`curl -sLk --max-time 25 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120" "${u}"`,{maxBuffer:30*1024*1024}).toString();}catch(e){return '';}}
+function dec(s){return s.replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&#8211;|&ndash;|&#8212;/g,'-').replace(/&quot;/g,'"').replace(/&#039;/g,"'");}
+function parseTables(html){const res=[];for(const t of (html.match(/<table[\s\S]*?<\/table>/gi)||[])){const rows=[];
+ for(const tr of (t.match(/<tr[\s\S]*?<\/tr>/gi)||[])){const c=[...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(m=>dec(m[1].replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim());if(c.length)rows.push(c);}
+ if(!rows.length)continue;const flat=rows.flat().join(' ').toLowerCase();
+ if(/svor/.test(flat)&&/(norma|kiekis|paros|dienos)/.test(flat))res.push({rows});}return res;}
 
-const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-fs.writeFileSync('/tmp/wpu',U); fs.writeFileSync('/tmp/wpp',P);
-// -k butinas: serveriai.lt neatiduoda tarpinio sertifikato (diagnozuota)
-function wp(path){
-  const cmd=`curl -sk -m 40 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "https://dev.avesa.lt/wp-json/${path}"`;
-  try{ return execSync(cmd,{maxBuffer:60*1024*1024}).toString(); }catch(e){ return ''; }
+const o={sites:{}};
+const sites=[['pet24','https://pet24.lt'],['zoopro','https://www.zoopro.lt'],['kgshop','https://www.kgshop.eu'],['quattropet','https://quattropet.com']];
+for(const [name,base] of sites){
+  const r={urls:[],pages:{}};
+  try{
+    const robots=get(base+'/robots.txt');
+    let maps=[...robots.matchAll(/Sitemap:\s*(\S+)/gi)].map(m=>m[1].trim());
+    if(!maps.length) maps=[base+'/sitemap.xml',base+'/sitemap_index.xml',base+'/wp-sitemap.xml'];
+    r.maps=maps.slice(0,6);
+    const seen=new Set(); const q=[...maps];
+    while(q.length && seen.size<30){
+      const sm=q.shift(); if(!sm||seen.has(sm))continue; seen.add(sm);
+      const xml=get(sm); if(!xml)continue;
+      const locs=[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map(m=>m[1]);
+      if(/<sitemapindex/i.test(xml)){ for(const l of locs) if(/produkt|product|preke|prekes|item|p\d/i.test(l)) q.push(l); }
+      else { for(const l of locs) if(/quattro|qattro/i.test(l)) r.urls.push(l); }
+    }
+    r.urls=[...new Set(r.urls)]; r.count=r.urls.length;
+    for(const u of r.urls.slice(0,45)){
+      const h=get(u); if(!h){r.pages[u]={err:'tuscias'};continue;}
+      const tb=parseTables(h);
+      const title=dec(((h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[,''])[1]).replace(/<[^>]+>/g,'')).replace(/\s+/g,' ').trim().slice(0,120);
+      if(tb.length) r.pages[u]={title,tables:tb};
+    }
+    r.with_tables=Object.keys(r.pages).length;
+  }catch(e){ r.err=String(e&&e.message?e.message:e).slice(0,200); }
+  o.sites[name]=r;
 }
-const out={};
-// 1. Visi Quattro produktai
-let items=[];
-for(let page=1;page<=4;page++){
-  const raw=wp(`wc/v3/products?search=quattro&per_page=100&status=publish&page=${page}`);
-  let arr; try{arr=JSON.parse(raw);}catch(e){ out.parse_err=raw.slice(0,300); break; }
-  if(!Array.isArray(arr)||!arr.length) break;
-  for(const p of arr) items.push({id:p.id, sku:p.sku, name:p.name, stock:p.stock_status, type:p.type, cats:(p.categories||[]).map(c=>c.name)});
-  if(arr.length<100) break;
-}
-out.total=items.length;
-out.instock=items.filter(i=>i.stock==='instock').length;
-
-// 2. Turinio patikra: ar yra serimo lentele
-const res=[];
-for(const it of items){
-  if(it.stock!=='instock'){ res.push({...it, has_feed:null, skip:'outofstock'}); continue; }
-  const raw=wp(`wp/v2/product/${it.id}?context=edit&_fields=id,content`);
-  let c=''; try{ c=JSON.parse(raw).content.raw||''; }catch(e){ res.push({...it, has_feed:'ERR'}); continue; }
-  const low=c.toLowerCase();
-  const hasTable=/<table/i.test(c);
-  const feedish=/svor/.test(low) && /(norma|kiekis per par|paros|dienos norma)/.test(low);
-  res.push({...it, has_feed: (hasTable&&feedish)?true:false, bytes:c.length});
-}
-out.products=res;
-out.instock_no_table=res.filter(r=>r.has_feed===false).length;
-out.instock_with_table=res.filter(r=>r.has_feed===true).length;
-putResult('q_wp.json',out);
-console.log('DONE total='+out.total+' instock='+out.instock+' no_table='+out.instock_no_table+' with_table='+out.instock_with_table);
+putResult('q_more.json',o);
+console.log('DONE '+Object.entries(o.sites).map(([k,v])=>k+':'+v.count+'/'+v.with_tables).join(' '));
