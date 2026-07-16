@@ -1,0 +1,114 @@
+{
+ "v": {
+  "db": {
+   "tables": 186,
+   "rows": 3268,
+   "map": 395,
+   "verified": 174
+  },
+  "new": [
+   {
+    "id": "182",
+    "line": "JosiDog Active",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7"
+   },
+   {
+    "id": "183",
+    "line": "JosiDog Economy",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7"
+   },
+   {
+    "id": "184",
+    "line": "JosiDog Regular",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7"
+   },
+   {
+    "id": "185",
+    "line": "JosiCat sausas (Crispy/Crunchy/Sterilised Classic)",
+    "shape": "transposed",
+    "row_dimension": "activity_level",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "8"
+   },
+   {
+    "id": "186",
+    "line": "JosiDog Junior Sensitive",
+    "shape": "matrix",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "39"
+   }
+  ],
+  "checks": {
+   "orphan_rows": 0,
+   "orphan_map": 0,
+   "products_2plus": 0,
+   "inverted_amount": 0,
+   "inverted_weight": 0,
+   "verified_null_basis_excl_byage": 0,
+   "rowcount_mismatch": 0
+  },
+  "sample": [
+   {
+    "feeding_table_id": "185",
+    "row_order": "0",
+    "weight_from_kg": "2.00",
+    "weight_to_kg": "3.00",
+    "amount_from_g": "35.00",
+    "amount_to_g": "35.00",
+    "condition_dimensions": "{\"activity_level\":\"wenig aktiv\"}"
+   },
+   {
+    "feeding_table_id": "185",
+    "row_order": "1",
+    "weight_from_kg": "3.00",
+    "weight_to_kg": "4.00",
+    "amount_from_g": "45.00",
+    "amount_to_g": "45.00",
+    "condition_dimensions": "{\"activity_level\":\"wenig aktiv\"}"
+   },
+   {
+    "feeding_table_id": "185",
+    "row_order": "2",
+    "weight_from_kg": "4.00",
+    "weight_to_kg": "5.00",
+    "amount_from_g": "55.00",
+    "amount_to_g": "55.00",
+    "condition_dimensions": "{\"activity_level\":\"wenig aktiv\"}"
+   },
+   {
+    "feeding_table_id": "185",
+    "row_order": "3",
+    "weight_from_kg": "5.00",
+    "weight_to_kg": "7.00",
+    "amount_from_g": "65.00",
+    "amount_to_g": "65.00",
+    "condition_dimensions": "{\"activity_level\":\"wenig aktiv\"}"
+   },
+   {
+    "feeding_table_id": "185",
+    "row_order": "4",
+    "weight_from_kg": "2.00",
+    "weight_to_kg": "3.00",
+    "amount_from_g": "60.00",
+    "amount_to_g": "60.00",
+    "condition_dimensions": "{\"activity_level\":\"aktiv\"}"
+   }
+  ]
+ },
+ "id": 1019
+}
