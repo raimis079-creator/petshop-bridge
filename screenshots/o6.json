@@ -1,0 +1,438 @@
+{
+ "mk_tail": "16 16:29:56\",\"code_error\":null}\nHTTP:200",
+ "create": {
+  "id": 1028,
+  "code_error": null
+ },
+ "apply": {
+  "mode": "APPLY",
+  "groups": [
+   {
+    "line": "Ontario Adult Large Beef and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": 7,
+    "skus": [],
+    "already_mapped": {
+     "651135": 187
+    },
+    "guard": [],
+    "exists": 187,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      30,
+      30,
+      375,
+      375
+     ],
+     [
+      35,
+      35,
+      420,
+      420
+     ],
+     [
+      40,
+      40,
+      465,
+      465
+     ]
+    ]
+   },
+   {
+    "line": "Ontario Adult Large Chicken and Sweet Potatoes, 12 kg",
+    "species": "dog",
+    "row_count": 6,
+    "skus": [],
+    "already_mapped": {
+     "75925": 188
+    },
+    "guard": [],
+    "exists": 188,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      30,
+      30,
+      375,
+      375
+     ],
+     [
+      40,
+      40,
+      460,
+      460
+     ],
+     [
+      50,
+      50,
+      545,
+      545
+     ]
+    ]
+   },
+   {
+    "line": "Ontario Adult Large Lamb and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": 8,
+    "skus": [],
+    "already_mapped": {
+     "650501": 189
+    },
+    "guard": [],
+    "exists": 189,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      30,
+      30,
+      390,
+      390
+     ],
+     [
+      35,
+      35,
+      435,
+      435
+     ],
+     [
+      40,
+      40,
+      480,
+      480
+     ]
+    ]
+   },
+   {
+    "line": "Ontario Adult Large White Fish and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": 7,
+    "skus": [],
+    "already_mapped": {
+     "74767": 190
+    },
+    "guard": [],
+    "exists": 190,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      30,
+      30,
+      370,
+      370
+     ],
+     [
+      35,
+      35,
+      415,
+      415
+     ],
+     [
+      40,
+      40,
+      460,
+      460
+     ]
+    ]
+   },
+   {
+    "line": "Ontario Adult Medium Lamb and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": 5,
+    "skus": [],
+    "already_mapped": {
+     "651087": 191
+    },
+    "guard": [],
+    "exists": 191,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      10,
+      10,
+      170,
+      170
+     ],
+     [
+      12,
+      12,
+      190,
+      190
+     ],
+     [
+      15,
+      15,
+      225,
+      225
+     ]
+    ]
+   },
+   {
+    "line": "Ontario Adult Mini Lamb and Brown Rice",
+    "species": "dog",
+    "row_count": 10,
+    "skus": [
+     74755,
+     651049,
+     2808
+    ],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "reason": "Bendra lentele 3 SKU, vienodos normos",
+    "sample": [
+     [
+      1,
+      1,
+      30,
+      30
+     ],
+     [
+      2,
+      2,
+      48,
+      48
+     ],
+     [
+      3,
+      3,
+      65,
+      65
+     ]
+    ],
+    "inserted": 194
+   },
+   {
+    "line": "Ontario Puppy Mini Lamb and Brown Rice",
+    "species": "dog",
+    "row_count": 6,
+    "skus": [
+     74746,
+     651153
+    ],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "reason": "Bendra lentele 2 SKU, vienodos normos",
+    "sample": [
+     [
+      1,
+      1,
+      25,
+      25
+     ],
+     [
+      2,
+      2,
+      45,
+      45
+     ],
+     [
+      4,
+      4,
+      70,
+      70
+     ]
+    ],
+    "inserted": 195
+   },
+   {
+    "line": "Ontario konservai šunims",
+    "species": "dog",
+    "row_count": 4,
+    "skus": [
+     43960,
+     2799,
+     2800
+    ],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "reason": "Bendra lentele 3 SKU, vienodos normos",
+    "sample": [
+     [
+      5,
+      10,
+      340,
+      575
+     ],
+     [
+      15,
+      20,
+      780,
+      965
+     ],
+     [
+      30,
+      40,
+      1310,
+      1625
+     ]
+    ],
+    "inserted": 196
+   },
+   {
+    "line": "Ontario konservai šunims",
+    "species": "dog",
+    "row_count": 3,
+    "skus": [
+     650808,
+     650803,
+     650804
+    ],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "reason": "Bendra lentele 3 SKU, vienodos normos",
+    "sample": [
+     [
+      2.5,
+      10,
+      190,
+      530
+     ],
+     [
+      10,
+      25,
+      530,
+      1050
+     ],
+     [
+      35,
+      35,
+      1350,
+      1350
+     ]
+    ],
+    "inserted": 197
+   },
+   {
+    "line": "Ontario konservai šunims",
+    "species": "dog",
+    "row_count": 4,
+    "skus": [
+     48393,
+     48381
+    ],
+    "already_mapped": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "reason": "Bendra lentele 2 SKU, vienodos normos",
+    "sample": [
+     [
+      1,
+      10,
+      100,
+      520
+     ],
+     [
+      10,
+      15,
+      400,
+      780
+     ],
+     [
+      15,
+      25,
+      600,
+      1250
+     ]
+    ],
+    "inserted": 198
+   },
+   {
+    "line": "Ontario konservai šunims su žuvimis ir žolelėmis, 200 g, Adult Fish",
+    "species": "dog",
+    "row_count": 3,
+    "skus": [],
+    "already_mapped": {
+     "74731": 192
+    },
+    "guard": [],
+    "exists": 192,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      2.5,
+      10,
+      200,
+      580
+     ],
+     [
+      10,
+      25,
+      580,
+      1150
+     ],
+     [
+      35,
+      35,
+      1500,
+      1500
+     ]
+    ]
+   },
+   {
+    "line": "Sausas maistas kačių kailiui ir odai, 1 kg, Ontario Cat Hair &#038;",
+    "species": "cat",
+    "row_count": 12,
+    "skus": [],
+    "already_mapped": {
+     "640212842-1": 193
+    },
+    "guard": [],
+    "exists": 193,
+    "will_write": false,
+    "reason": null,
+    "sample": [
+     [
+      1,
+      1,
+      18,
+      18
+     ],
+     [
+      2,
+      2,
+      36,
+      36
+     ],
+     [
+      2.5,
+      2.5,
+      45,
+      45
+     ]
+    ]
+   }
+  ],
+  "skipped": [],
+  "cleanup": {
+   "rows_deleted": 27,
+   "map_deleted": 13
+  },
+  "totals": {
+   "tables": 5,
+   "rows": 27,
+   "map": 13,
+   "groups": 12
+  },
+  "db": {
+   "tables": 198,
+   "rows": 3343,
+   "map": 415
+  }
+ },
+ "snip": 1028
+}
