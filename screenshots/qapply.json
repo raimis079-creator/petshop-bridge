@@ -1,0 +1,494 @@
+{
+ "apply": {
+  "mode": "APPLY",
+  "tables": {
+   "sb_duck": {
+    "line": "Small Breed Adult",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_petirvet_x_dogsnanny",
+    "row_count": 9,
+    "checksum": "8b88b8c01f34",
+    "exists_table_id": null,
+    "products": {
+     "2.008045": 16564,
+     "2.008118": 16546
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 170
+   },
+   "extra_lamb": {
+    "line": "Extra Lamb",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_kgshop_x_petirvet",
+    "row_count": 9,
+    "checksum": "752e4fbbc06f",
+    "exists_table_id": null,
+    "products": {
+     "2.006664": 16687,
+     "2.006764": 16684
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 171
+   },
+   "extra_poultry": {
+    "line": "Extra Poultry",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_kgshop",
+    "row_count": 9,
+    "checksum": "fc2e12307e2d",
+    "exists_table_id": null,
+    "products": {
+     "2.006665": 16675,
+     "2.006814": 16672
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "note": "petirvet pirmas rezis 2-4 (spraga 4-5kg), kgshop 2-5 vientisas -> imta kgshop",
+    "will_write": true,
+    "inserted_table_id": 172
+   },
+   "extra_salmon": {
+    "line": "Extra Salmon",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_petirvet",
+    "row_count": 9,
+    "checksum": "5a663d1625e4",
+    "exists_table_id": null,
+    "products": {
+     "2.008879": 16669,
+     "2.008878": 16666
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 173
+   },
+   "sb_salmon_krill": {
+    "line": "Small Breed Adult",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_dogsnanny",
+    "row_count": 9,
+    "checksum": "244e059ec562",
+    "exists_table_id": null,
+    "products": {
+     "2.008043": 16558,
+     "2.008117": 16540
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 174
+   },
+   "ab_lamb_mono": {
+    "line": "All Breed Adult Lamb Monoprotein",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_petirvet",
+    "row_count": 9,
+    "checksum": "ab5ffcab9e2b",
+    "exists_table_id": null,
+    "products": {
+     "2.00915": 16693,
+     "2.009149": 16600
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 175
+   },
+   "mini_poultry": {
+    "line": "Mini Adult Poultry",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_kgshop",
+    "row_count": 9,
+    "checksum": "fbc660215553",
+    "exists_table_id": null,
+    "products": {
+     "2.006818": 16639,
+     "2.006774": 16636
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 176
+   },
+   "mini_lamb": {
+    "line": "Mini Adult Lamb",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_kgshop",
+    "row_count": 9,
+    "checksum": "0967bc1d6ad4",
+    "exists_table_id": null,
+    "products": {
+     "2.010445": 16645,
+     "2.010446": 16642
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 177
+   },
+   "mini_salmon": {
+    "line": "Mini Adult Salmon",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_kgshop",
+    "row_count": 9,
+    "checksum": "96ce7bff4c4c",
+    "exists_table_id": null,
+    "products": {
+     "2.010447": 16633,
+     "2.010448": 16630
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 178
+   },
+   "maxi_lamb": {
+    "line": "Maxi Adult Lamb",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "verified_by": "html_kgshop",
+    "row_count": 7,
+    "checksum": "18f7ac623f26",
+    "exists_table_id": null,
+    "products": {
+     "2.010023": 16654
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 179
+   },
+   "ab_senior_wf": {
+    "line": "All Breed Senior White Fish & Krill",
+    "shape": "transposed",
+    "row_dimension": "body_condition",
+    "weight_basis": "current",
+    "verified_by": "html_petirvet",
+    "row_count": 18,
+    "checksum": "8cf040db6568",
+    "exists_table_id": null,
+    "products": {
+     "2.009148": 16690,
+     "2.009147": 16597
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 180
+   },
+   "lb_junior_duck": {
+    "line": "Large Breed Junior Duck",
+    "shape": "matrix",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "verified_by": "html_petirvet",
+    "row_count": 64,
+    "checksum": "0efb9e4aa5dd",
+    "exists_table_id": null,
+    "products": {
+     "2.009138": 16705,
+     "2.009137": 16612
+    },
+    "sku_not_found": [],
+    "already_mapped": [],
+    "guard_errors": [],
+    "will_write": true,
+    "inserted_table_id": 181
+   }
+  },
+  "totals": {
+   "tables": 12,
+   "rows": 170,
+   "map": 23
+  },
+  "ambiguous": {
+   "maxi_poultry": "saltinio klaida: 406-402 (mazejantis rezis). kgshop x2.",
+   "cat_sterilised": "amount_not_monotonic: 7kg 56-81 -> 8kg 61-78. kgshop IR petirvet identiskai = gamintojo skaicius.",
+   "sb_lamb": "saltinio klaida: 10kg -> 138-139 (rezis susitraukia i 1g, virsutine krenta 147->139).",
+   "cat_kitten": "by_age, svoriai persidengia (1,5-4,0 ir 3,0-5,0) -> pagal svori nevienareiksmiska.",
+   "ab_duck": "petirvet etiketes sukeistos: psl. \"smal-breed\" turi 2-60 lentele. Logika sandari, saltinis ne.",
+   "lb_duck_adult": "petirvet psl. \"all-breed-adult-duck\" turi 25-60 lentele. Ta pati etikeciu problema."
+  },
+  "db_before": {
+   "tables": 181,
+   "rows": 3200,
+   "map": 388
+  }
+ },
+ "snip1013_off": true,
+ "verify_snippet": {
+  "id": 1014,
+  "code_error": null
+ },
+ "verify": {
+  "db": {
+   "tables": 181,
+   "rows": 3200,
+   "map": 388,
+   "verified": 169
+  },
+  "quattro": [
+   {
+    "id": "170",
+    "line": "Small Breed Adult",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_petirvet_x_dogsnanny"
+   },
+   {
+    "id": "171",
+    "line": "Extra Lamb",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_kgshop_x_petirvet"
+   },
+   {
+    "id": "172",
+    "line": "Extra Poultry",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_kgshop"
+   },
+   {
+    "id": "173",
+    "line": "Extra Salmon",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_petirvet"
+   },
+   {
+    "id": "174",
+    "line": "Small Breed Adult",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_dogsnanny"
+   },
+   {
+    "id": "175",
+    "line": "All Breed Adult Lamb Monoprotein",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_petirvet"
+   },
+   {
+    "id": "176",
+    "line": "Mini Adult Poultry",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_kgshop"
+   },
+   {
+    "id": "177",
+    "line": "Mini Adult Lamb",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_kgshop"
+   },
+   {
+    "id": "178",
+    "line": "Mini Adult Salmon",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "verified_by": "html_kgshop"
+   },
+   {
+    "id": "179",
+    "line": "Maxi Adult Lamb",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7",
+    "verified_by": "html_kgshop"
+   },
+   {
+    "id": "180",
+    "line": "All Breed Senior White Fish & Krill",
+    "shape": "transposed",
+    "row_dimension": "body_condition",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "18",
+    "verified_by": "html_petirvet"
+   },
+   {
+    "id": "181",
+    "line": "Large Breed Junior Duck",
+    "shape": "matrix",
+    "row_dimension": "age",
+    "weight_basis": "adult_expected",
+    "status": "verified",
+    "row_count": "64",
+    "verified_by": "html_petirvet"
+   }
+  ],
+  "quattro_n": 12,
+  "checks": {
+   "orphan_rows": 0,
+   "orphan_map": 0,
+   "products_2plus": 0,
+   "inverted_amount": 0,
+   "inverted_weight": 0,
+   "verified_null_basis": 2,
+   "rowcount_mismatch": 0
+  },
+  "rowcount_bad": [],
+  "quattro_products": [
+   {
+    "product_id": "16546",
+    "line": "Small Breed Adult"
+   },
+   {
+    "product_id": "16564",
+    "line": "Small Breed Adult"
+   },
+   {
+    "product_id": "16684",
+    "line": "Extra Lamb"
+   },
+   {
+    "product_id": "16687",
+    "line": "Extra Lamb"
+   },
+   {
+    "product_id": "16672",
+    "line": "Extra Poultry"
+   },
+   {
+    "product_id": "16675",
+    "line": "Extra Poultry"
+   },
+   {
+    "product_id": "16666",
+    "line": "Extra Salmon"
+   },
+   {
+    "product_id": "16669",
+    "line": "Extra Salmon"
+   },
+   {
+    "product_id": "16540",
+    "line": "Small Breed Adult"
+   },
+   {
+    "product_id": "16558",
+    "line": "Small Breed Adult"
+   },
+   {
+    "product_id": "16600",
+    "line": "All Breed Adult Lamb Monoprotein"
+   },
+   {
+    "product_id": "16693",
+    "line": "All Breed Adult Lamb Monoprotein"
+   },
+   {
+    "product_id": "16636",
+    "line": "Mini Adult Poultry"
+   },
+   {
+    "product_id": "16639",
+    "line": "Mini Adult Poultry"
+   },
+   {
+    "product_id": "16642",
+    "line": "Mini Adult Lamb"
+   },
+   {
+    "product_id": "16645",
+    "line": "Mini Adult Lamb"
+   },
+   {
+    "product_id": "16630",
+    "line": "Mini Adult Salmon"
+   },
+   {
+    "product_id": "16633",
+    "line": "Mini Adult Salmon"
+   },
+   {
+    "product_id": "16654",
+    "line": "Maxi Adult Lamb"
+   },
+   {
+    "product_id": "16597",
+    "line": "All Breed Senior White Fish & Krill"
+   },
+   {
+    "product_id": "16690",
+    "line": "All Breed Senior White Fish & Krill"
+   },
+   {
+    "product_id": "16612",
+    "line": "Large Breed Junior Duck"
+   },
+   {
+    "product_id": "16705",
+    "line": "Large Breed Junior Duck"
+   }
+  ]
+ },
+ "verify_off": true
+}
