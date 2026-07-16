@@ -1,18 +1,41 @@
-const V='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfanYnXSl8fCRfR0VUWydwc19qdiddIT09J0p2MktkOFNyJyl7cmV0dXJuO30KCWdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRWPSdqb3NlcmFfZGVfMjAyNi0wNy0xNic7ICRvPWFycmF5KCk7Cgkkb1snZGInXT1hcnJheSgndGFibGVzJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wc19mZWVkaW5nX3RhYmxlcyIpLAoJICdyb3dzJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wc19mZWVkaW5nX3Jvd3MiKSwKCSAnbWFwJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wc19mZWVkaW5nX21hcCIpLAoJICd2ZXJpZmllZCc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgV0hFUkUgc3RhdHVzPSd2ZXJpZmllZCciKSk7Cgkkb1snbmV3J109JHdwZGItPmdldF9yZXN1bHRzKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgaWQsbGluZSxzaGFwZSxyb3dfZGltZW5zaW9uLHdlaWdodF9iYXNpcyxzdGF0dXMscm93X2NvdW50CgkgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfdGFibGVzIFdIRVJFIHNvdXJjZV92ZXJzaW9uPSVzIE9SREVSIEJZIGlkIiwkViksIEFSUkFZX0EpOwoJJG9bJ2NoZWNrcyddPWFycmF5KAoJICdvcnBoYW5fcm93cyc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cHNfZmVlZGluZ19yb3dzIHIgTEVGVCBKT0lOIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgdCBPTiB0LmlkPXIuZmVlZGluZ190YWJsZV9pZCBXSEVSRSB0LmlkIElTIE5VTEwiKSwKCSAnb3JwaGFuX21hcCc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cHNfZmVlZGluZ19tYXAgbSBMRUZUIEpPSU4geyRwZn1wc19mZWVkaW5nX3RhYmxlcyB0IE9OIHQuaWQ9bS5mZWVkaW5nX3RhYmxlX2lkIFdIRVJFIHQuaWQgSVMgTlVMTCIpLAoJICdwcm9kdWN0c18ycGx1cyc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIChTRUxFQ1QgcHJvZHVjdF9pZCBGUk9NIHskcGZ9cHNfZmVlZGluZ19tYXAgR1JPVVAgQlkgcHJvZHVjdF9pZCBIQVZJTkcgQ09VTlQoKik+MSkgeCIpLAoJICdpbnZlcnRlZF9hbW91bnQnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfcm93cyBXSEVSRSBhbW91bnRfZnJvbV9nPmFtb3VudF90b19nIiksCgkgJ2ludmVydGVkX3dlaWdodCc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cHNfZmVlZGluZ19yb3dzIFdIRVJFIHdlaWdodF9mcm9tX2tnPndlaWdodF90b19rZyIpLAoJICd2ZXJpZmllZF9udWxsX2Jhc2lzX2V4Y2xfYnlhZ2UnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfdGFibGVzIFdIRVJFIHN0YXR1cz0ndmVyaWZpZWQnIEFORCB3ZWlnaHRfYmFzaXMgSVMgTlVMTCBBTkQgc2hhcGU8PidieV9hZ2UnIikpOwoJJGJhZD0kd3BkYi0+Z2V0X3Jlc3VsdHMoJHdwZGItPnByZXBhcmUoIlNFTEVDVCB0LmlkLHQucm93X2NvdW50LENPVU5UKHIuaWQpIGFjdCBGUk9NIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgdAoJIExFRlQgSk9JTiB7JHBmfXBzX2ZlZWRpbmdfcm93cyByIE9OIHIuZmVlZGluZ190YWJsZV9pZD10LmlkIFdIRVJFIHQuc291cmNlX3ZlcnNpb249JXMKCSBHUk9VUCBCWSB0LmlkLHQucm93X2NvdW50IEhBVklORyB0LnJvd19jb3VudDw+Q09VTlQoci5pZCkiLCRWKSwgQVJSQVlfQSk7Cgkkb1snY2hlY2tzJ11bJ3Jvd2NvdW50X21pc21hdGNoJ109Y291bnQoJGJhZCk7Cgkkb1snc2FtcGxlJ109JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgZmVlZGluZ190YWJsZV9pZCxyb3dfb3JkZXIsd2VpZ2h0X2Zyb21fa2csd2VpZ2h0X3RvX2tnLGFtb3VudF9mcm9tX2csYW1vdW50X3RvX2csY29uZGl0aW9uX2RpbWVuc2lvbnMKCSBGUk9NIHskcGZ9cHNfZmVlZGluZ19yb3dzIFdIRVJFIGZlZWRpbmdfdGFibGVfaWQgSU4gKDE4NSwxODYpIE9SREVSIEJZIGZlZWRpbmdfdGFibGVfaWQscm93X29yZGVyIExJTUlUIDUiLCBBUlJBWV9BKTsKCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
+const PPHP='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcHJuJ10pfHwkX0dFVFsncHNfcHJuJ10hPT0nUHI4TnM0VHEnKXtyZXR1cm47fQoJQHNldF90aW1lX2xpbWl0KDMwMCk7IGdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCk7CgkkaWRzPWdldF9wb3N0cyhhcnJheSgncG9zdF90eXBlJz0+J3Byb2R1Y3QnLCdwb3N0X3N0YXR1cyc9PidwdWJsaXNoJywncG9zdHNfcGVyX3BhZ2UnPT4tMSwnZmllbGRzJz0+J2lkcycpKTsKCSRwcz1hcnJheSgpOwoJZm9yZWFjaCgkaWRzIGFzICRpZCl7CgkJLy8gYnJhbmQgdGFrc29ub21pamEgbmVwYXRpa2ltYSAoNDMgbWFudWYgdnMgMjMgYnJhbmQpIC0+IF9sZWdhY3lfbWFudWZhY3R1cmVyCgkJJG1hbj0oc3RyaW5nKWdldF9wb3N0X21ldGEoJGlkLCdfbGVnYWN5X21hbnVmYWN0dXJlcicsdHJ1ZSk7CgkJJHRpdGxlPWdldF90aGVfdGl0bGUoJGlkKTsKCQlpZihzdHJpcG9zKCRtYW4sJ3ByaW5zJyk9PT1mYWxzZSAmJiBzdHJpcG9zKCR0aXRsZSwncHJpbnMnKT09PWZhbHNlKSBjb250aW51ZTsKCQkkcD13Y19nZXRfcHJvZHVjdCgkaWQpOyBpZighJHApIGNvbnRpbnVlOwoJCSRtYXBwZWQ9KGludCkkd3BkYi0+Z2V0X3Zhcigkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIGZlZWRpbmdfdGFibGVfaWQgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfbWFwIFdIRVJFIHByb2R1Y3RfaWQ9JWQiLCRpZCkpOwoJCSRwc1tdPWFycmF5KCdpZCc9PiRpZCwnc2t1Jz0+KHN0cmluZylnZXRfcG9zdF9tZXRhKCRpZCwnX3NrdScsdHJ1ZSksJ3QnPT5tYl9zdWJzdHIoJHRpdGxlLDAsNzQpLAoJCQknbWFuJz0+JG1hbiwnc3RvY2snPT4kcC0+Z2V0X3N0b2NrX3N0YXR1cygpLCdtYXAnPT4kbWFwcGVkPzpudWxsKTsKCX0KCSRvWyd0b3RhbCddPWNvdW50KCRwcyk7CgkkaW49YXJyYXlfZmlsdGVyKCRwcyxmdW5jdGlvbigkcil7cmV0dXJuICRyWydzdG9jayddPT09J2luc3RvY2snO30pOwoJJG9bJ2luc3RvY2snXT1jb3VudCgkaW4pOwoJJG9bJ21hcHBlZCddPWNvdW50KGFycmF5X2ZpbHRlcigkaW4sZnVuY3Rpb24oJHIpe3JldHVybiAoYm9vbCkkclsnbWFwJ107fSkpOwoJJG9bJ3VubWFwcGVkJ109YXJyYXlfdmFsdWVzKGFycmF5X2ZpbHRlcigkaW4sZnVuY3Rpb24oJHIpe3JldHVybiAhJHJbJ21hcCddO30pKTsKCSRvWyd1bm1hcHBlZF9uJ109Y291bnQoJG9bJ3VubWFwcGVkJ10pOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'jv',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'pr',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
 const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
-function hit(u){try{return execSync(`curl -sk -m 120 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:40*1024*1024}).toString();}catch(e){return 'ERR';}}
+function hit(u){try{return execSync(`curl -sk -m 150 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:60*1024*1024}).toString();}catch(e){return 'ERR';}}
 function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 60 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
+function get(u){try{return execSync(`curl -sLk --max-time 25 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120" "${u}"`,{maxBuffer:30*1024*1024}).toString();}catch(e){return '';}}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'Josera Feeding Verify v1 (read-only)',code:Buffer.from(V,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+const mk=wj('POST','code-snippets/v1/snippets',{name:'Prins Recon v1 (read-only)',code:Buffer.from(PPHP,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
 let id=null; try{id=JSON.parse(mk).id;}catch(e){o.mk=mk.slice(0,200);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_jv=Jv2Kd8Sr'); try{o.v=JSON.parse(r);}catch(e){o.raw=r.slice(0,800);}
-        wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); o.id=id; }
-pr('jv.json',o); console.log('DONE');
+if(id){ const r=hit('https://dev.avesa.lt/?ps_prn=Pr8Ns4Tq'); try{o.wp=JSON.parse(r);}catch(e){o.wp_raw=r.slice(0,600);}
+        wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
+// saltiniai - filtras platus (S218 pamoka: sub-brendu URL neturi motininio vardo)
+const sites=[['prins_nl','https://www.prins.nl'],['prinspetfoods','https://www.prinspetfoods.com'],
+             ['prins_com','https://prinspetfoods.nl'],['petmarket','https://petmarket.lt']];
+o.disc={};
+for(const [n,base] of sites){
+  const urls=[];
+  try{
+    const rob=get(base+'/robots.txt');
+    let maps=[...rob.matchAll(/Sitemap:\s*(\S+)/gi)].map(m=>m[1].trim());
+    if(!maps.length) maps=[base+'/sitemap.xml',base+'/sitemap_index.xml',base+'/wp-sitemap.xml'];
+    const seen=new Set(); const q=[...maps];
+    while(q.length && seen.size<28){
+      const sm=q.shift(); if(!sm||seen.has(sm))continue; seen.add(sm);
+      const xml=get(sm); if(!xml)continue;
+      const locs=[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map(m=>m[1]);
+      if(/<sitemapindex/i.test(xml)){ for(const l of locs) q.push(l); }
+      else for(const l of locs) if(/procare|vitalcare|fit|opti|prins|hondenvoer|kattenvoer/i.test(l)) urls.push(l);
+    }
+  }catch(e){}
+  const uu=[...new Set(urls)];
+  o.disc[n]={n:uu.length,sample:uu.slice(0,10)};
+}
+pr('pr.json',o); console.log('DONE');
