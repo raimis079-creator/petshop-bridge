@@ -1,0 +1,9 @@
+{
+ "a_tcp443": "TCP443_OPEN",
+ "b_tcp80": "TCP80_OPEN",
+ "c_https_v": "* Host dev.avesa.lt:443 was resolved.\n* IPv6: (none)\n* IPv4: 79.98.29.24\n*   Trying 79.98.29.24:443...\n* Connected to dev.avesa.lt (79.98.29.24) port 443\n* ALPN: curl offers h2,http/1.1\n} [5 bytes data]\n* TLSv1.3 (OUT), TLS handshake, Client hello (1):\n} [512 bytes data]\n*  CAfile: /etc/ssl/certs/ca-certificates.crt\n*  CApath: /etc/ssl/certs\n{ [5 bytes data]\n* TLSv1.3 (IN), TLS handshake, Server hello (2):\n{ [122 bytes data]\n* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):\n{ [19 bytes data]\n* TLSv1.3 (IN), TLS handshake, Certificate (11):\n{ [1832 bytes data]\n* TLSv1.3 (OUT), TLS alert, unknown CA (560):\n} [2 bytes data]\n* SSL certificate problem: unable to get local issuer certificate\n* Closing connection",
+ "d_https_k": "code=200",
+ "e_http": "code=200 redir=",
+ "f_cert": "verify error:num=20:unable to get local issuer certificate\nverify return:1\nverify error:num=21:unable to verify the first certificate\nverify return:1\nverify return:1\n   v:NotBefore: Apr  2 00:00:00 2026 GMT; NotAfter: Oct 17 23:59:59 2026 GMT\nsubject=CN = *.serveriai.lt\nissuer=C = NL, O = PerfectSSL, CN = PerfectSSL\nVerification error: unable to verify the first certificate\nVerify return code: 21 (unable to verify the first certificate)",
+ "g_http_wp": "code=200 redir="
+}
