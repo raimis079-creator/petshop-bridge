@@ -1,56 +1,39 @@
 {
- "probe": {
-  "https://www.prinspetfoods.com": {
-   "http": "200",
-   "bytes": 436641,
-   "title": "Prins Petfoods",
-   "procare": true,
-   "sitemaps": []
+ "sites": {
+  "https://www.zoohit.cz": {
+   "maps": [
+    "https://www.zoohit.cz/sitemap.xml"
+   ],
+   "total": 15285,
+   "ontario": 0,
+   "sample": []
   },
-  "https://prinspetfoods.com": {
-   "http": "200",
-   "bytes": 436641,
-   "title": "Prins Petfoods",
-   "procare": true,
-   "sitemaps": []
+  "https://www.superzoo.cz": {
+   "maps": [
+    "https://www.superzoo.cz/sitemap.xml"
+   ],
+   "total": 64876,
+   "ontario": 979,
+   "sample": [
+    "https://www.superzoo.cz/vyhrajte-rocni-zasobu-krmiva-ontario-pro-kocky",
+    "https://www.superzoo.cz/znacka-ontario",
+    "https://www.superzoo.cz/ontario-kitten-2-kg",
+    "https://www.superzoo.cz/ontario-adult-chicken-2-kg",
+    "https://www.superzoo.cz/ontario-adult-chicken-0-4kg",
+    "https://www.superzoo.cz/ontario-kitten-10-kg",
+    "https://www.superzoo.cz/ontario-adult-chicken-10-kg",
+    "https://www.superzoo.cz/ontario-snack-soft-chicken-jerky-70-g-2",
+    "https://www.superzoo.cz/ontario-adult-indoor-10kg",
+    "https://www.superzoo.cz/konzerva-ontario-chicken-pieces-salmon-95-g"
+   ]
   },
-  "https://www.prinspetfoods.nl": {
-   "http": "403",
-   "bytes": 5454,
-   "title": "Just a moment...",
-   "procare": false,
-   "sitemaps": []
-  },
-  "https://prinspetfoods.nl": {
-   "http": "403",
-   "bytes": 5450,
-   "title": "Just a moment...",
-   "procare": false,
-   "sitemaps": []
-  },
-  "https://www.prinspetfood.nl": {
-   "http": "200",
-   "bytes": 129,
-   "title": "",
-   "procare": false,
-   "sitemaps": []
-  },
-  "https://www.prins-petfoods.com": {
-   "http": "000"
-  },
-  "https://www.prinspetfoods.de": {
-   "http": "200",
-   "bytes": 129,
-   "title": "",
-   "procare": false,
-   "sitemaps": []
-  },
-  "https://www.prinspetfoods.eu": {
-   "http": "200",
-   "bytes": 38,
-   "title": "",
-   "procare": false,
-   "sitemaps": []
+  "https://www.pet-shop.cz": {
+   "maps": [
+    "https://www.pet-shop.cz/sitemap.xml"
+   ],
+   "total": 0,
+   "ontario": 0,
+   "sample": []
   }
  }
 }
