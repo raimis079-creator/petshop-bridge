@@ -88,6 +88,8 @@ Be šio lauko skaičiuoklė 15 kg šuniui tyliai duotų šuniuko normą. **Gyvas
 
 **S214 — FeedingTable PERSTATYTA (2026-07-16, parseris v6) — BAIGTA:**
 
+> ⚠️ **Žemiau esantys skaičiai galioja tik iki S215.** Aktualūs: 166 lentelės / 154 verified / 3 007 eil. / 349 SKU. Aprėpties skaičius (310 SKU, 373/662) **nepermatuotas** po S215.
+
 `mb_stripos` pataisymas atgavo tai, ką S212 offset klaida slėpė. Visos `ps_feeding_*` išvalytos ir perparsintos nuo nulio.
 
 **REZULTATAS:**
@@ -124,12 +126,79 @@ S213 buvau įrašęs, kad ~33 Josera SKU turi lentelę singular versijoje → ko
 - **268 SKU be jokio šaltinio** ← TIKRAS turinio darbas (ne 235, kaip vakar rašiau)
 - **Padengta: 373 / 662 (56%)**
 
-**TURINIO DARBAS — 268 SKU, pagal brendą:** Quattro 63 · **Exclusion 47 (TOP revenue 22,7%)** · Josera 33 · Prins 22 · Real Dog 19 · Ontario 18 · Gemon 15 · Royal Canin 12 · Family Dog 7 · GreenPetFood 5 · Rasco 5 · IAMS 5 · Family Cat 4 · Green Petfood 3 · kiti. Šaltiniai: gamintojų PDF/svetainės (Exclusion.it, Prins.nl tirti anksčiau). **Owner sprendimas dėl eiliškumo.**
+**TURINIO DARBAS — 268 SKU, pagal brendą:** Quattro 63 · **Exclusion — S215: 18 uždaryta, liko 31** · Josera 33 · Prins 22 · Real Dog 19 · Ontario 18 · Gemon 15 · Royal Canin 12 · Family Dog 7 · GreenPetFood 5 · Rasco 5 · IAMS 5 · Family Cat 4 · Green Petfood 3 · kiti. Šaltiniai: gamintojų PDF/svetainės (Exclusion.it, Prins.nl tirti anksčiau). **Owner sprendimas dėl eiliškumo.**
 
 **PENDING (M8 Etapas 2):** intervalinių eilučių logika — „15–30 kg → 435–570 g": 15 kg šuniui rodyti diapazoną ar interpoliuoti? Skaičiuoklės sprendimas, ne duomenų.
 **PENDING:** M8 v3.2 sk. 17 — 17 atvirų sprendimų laukia Raimio prieš Etapo 2 kodą.
 
 **TAISYKLĖ (užrakinta):** LT tekste TIK `mb_stripos`/`mb_substr` pora. Niekada `stripos`+`mb_substr` — offsetas slenka ~110 simbolių ir tyliai pjauna turinį.
+
+**S215 — EXCLUSION šėrimo normos: šaltinis rastas, 18 SKU UŽDARYTA (2026-07-16):**
+
+**Kas įrašyta į DB (APPLY baigtas, verifikuota atskiru snippetu):**
+| | prieš | po |
+|---|---|---|
+| lentelių | 164 | **166** |
+| verified | 152 | **154** |
+| eilučių | 2 991 | **3 007** |
+| map / produktų | 331 | **349** |
+
+- `id165` Exclusion/Hypoallergenic **dog simple verified**, 7 eil.: `2→50-60 · 3→70-80 · 4→80-90 · 5→90-100 · 6→100-120 · 8→120-140 · 10→140-160` → **10 SKU**: HYFS02 HYRS02 HYHS02 HYPS08 HYPS06 HYPS02 HYPS06-2 HYPS02-2 HYDS02 HYVS02
+- `id166` Exclusion/Hypoallergenic **dog simple verified**, 9 eil.: `11→150-170 · 15→190-210 · 20→220-240 · 25→280-310 · 30→330-360 · 40→440-480 · 50→480-520 · 60→500-540 · 70→550-600` → **8 SKU**: HYIM11 HYRM11 HYPM11 HYVM11 HYHM11 HYDM11 HYHM02 HYPM02
+- `source_version='exclusion_vetfarmas_2026-07-16'`, `verified_by='ocr_vetfarmas_x_exclusion_pl'` — sąmoningai kitoks nei 164 senų (`post_content_v6`), kad matytųsi kilmė.
+- Patikros: `orphan rows/map = 0/0` · `produktų su 2+ lentelėm = 0` · `row_count` = faktinis eilučių skaičius abiem.
+- **Instock aprėptis nepermatuota** — iš 18 bent 3 (HYDM11, HYVM11, HYPM11) ne instock. Senas „310 SKU / 373 iš 662" skaičius **nebegalioja tiksliai**; permatuoti prieš remiantis.
+
+**ŠALTINIŲ ŽEMĖLAPIS (pagrindinis šios sesijos turtas):**
+1. **`exclusion.lt` = UAB VETFARMAS** (oficialus LT atstovas, Kaišiadorys) — 111 produktų, **109 `_SERIMAS.png`** normų paveiksliukai. **Vertikalūs, 631×320, 24-35 KB → OCR skaito ŠVARIAI.** Failo vardas = raktas: `P9_Hypoallergenic-sunims_kiauliena-zirniai_SAUSAS-maistas-mazoms-veislems_SERIMAS.png` (linija·baltymas·sausas/šlapias·dydis). Repo: `serimas/` (109 failai).
+2. **`exclusion.pl`** — normos **HTML TEKSTU**. URL: `https://exclusion.pl/x/3-123-N`, **slug'as nesvarbus, N=1..240 pakanka**. 37 lentelės (20 diapazonų + 17 pavienių). **Blokuoja Claude web_fetch (ROBOTS_DISALLOWED) — imti per tiltą su Mozilla User-Agent.**
+3. **`exclusion.it`** — PNG `https://www.exclusion.it/images/razioni/{kodas}_razione_en.png`. **SKU→failas mapinasi tiesiogiai:** `NGALM03 → ngalm`. Pataikė 31/32. Repo: `razioni/` (31 failas). Juostos 631×128, suspaustos → **OCR nepatikimas**.
+
+**KODŲ SISTEMA (patvirtinta 3 šaltiniuose, `exclusion-food.nl` rodo „Manufacturer code: HYPS"):**
+- Šunų vet.: `{linija}{baltymas}{dydis}` — HY/HH/IN/UR/RE/DI/HE/MM/MO + P(kiauliena) I(vabzdžiai) H(arkliena) V(elniena) R(triušiena) D(antiena) F(žuvis) + S/M
+- Mediterraneo: `NG{amžius}{baltymas}{dydis}` — NGALM = NG+Adult+Lamb+Medium
+- Kačių: **kita schema** — NGCST = NG+Cat+Sterilized+Tuna
+- **Lentelė nepriklauso nuo baltymo** — arkliena/elniena/triušiena/antiena/žuvis toje pačioje linijoje+dydyje duoda IDENTIŠKĄ normą. Todėl 25 HY SKU uždaro 2 lentelės.
+- **Lenkai spausdina apatinę ribą, lietuviai visą rėžį:** PL `2→50` = LT `2→50-60`. Sutampa 7/7. Tai ne prieštara.
+
+**KAS NEUŽDARYTA — 31 SKU (buvo 49):**
+| kas | SKU | kliūtis |
+|---|---|---|
+| Mediterraneo / Noble Grain | ~19 | Vetfarmo P44–P63 OCR grąžina **tuščią** — kitas išdėstymas, netirta |
+| kačių + vet. dietos | ~6 | P33–P41 tas pats |
+| `hhfs` / `hhfm` | 2 | **PRIEŠTARA:** IT OCR 9 eil. (iki 70kg), PL HTML 7 eil. (iki 50kg). NE „paruošta" |
+| `inps` / `inpm` | 2 | **PRIEŠTARA:** PL `2→45-55`, Vetfarmas `2→50-60` (=HY lentelė). PL „Intestinal" = Vetfarmo „Mobility/Renal". Etikečių painiava |
+| `hypa` (šuniukams) | 2 | Lentelė RASTA (`1→80·2→130·3→160·5→240·7→300·10→400·15→530·20→650`), bet tik pavienės reikšmės; LT `P7` OCR netikrintas |
+
+**Papildomai rasta (linijos, kurių dar neturim):** REPM URPM URPS DIPS DIPM HEPS HEPM MM/M — pilnos PL HTML lentelės.
+
+**KAS PASITEISINO / KAS NE:**
+- ✅ **Vetfarmo paveiksliukai + PL HTML kryžminis tikrinimas** — HY vidutinių lentelė sutapo iki skaitmens dviem nepriklausomais šaltiniais (LT OCR ↔ PL HTML), skirtingomis kalbomis, skirtingais metodais.
+- ✅ **OCR daugiapraėjimis balsavimas PO EILUTĘ** (ne visos lentelės identiškumas). Reikalavimas „visi 3 praėjimai sutampa" davė 0/12; balsavimas po eilutę → 10/10 švarūs. `ocr3.py`: 5 praėjimai (scale×thr), kg→(from,to), reikia ≥2 balsų.
+- ❌ **OCR be kryžminio tikrinimo** — itališkos juostos: 1 tvarkinga iš 31. Sistemingai gamina DAUGIAU diapazonų nei langelių (7 svoriai → 10 kiekių). `inps` OCR sakė `45-90`, HTML `45-55`.
+- ❌ **Claude paveiksliukų pats neperskaito** — bandyta, pripažinta.
+- ⚠️ **OCR painioja „25"→„29"** keturiose lentelėse (`29→320-410` ten kur 25). Taisymas: sujungti eilutes su identiškais kiekiais. NEPADARYTA.
+
+**APRAŠYMŲ KLAUSIMAS — ATIDARYTAS, sprendžia Raimis pakuote:**
+Užduotis buvo „patikrink ar mūsų aprašymai skiriasi nuo exclusion.lt, jei reikia pataisyk". **Neuždaryta ir NEGALIMA uždaryti nuotoliniu būdu:**
+- **Poravimas nepavyko 3 kartus:** (1) pagal sudėties panašumą → **avieną sulygino su jautiena** (sudėtys 90% vienodos, skiriasi vienas žodis); (2) pagal SKU kodą → 26/63, kačių schema kita; (3) pagal pavadinimą → **suaugusius sulygino su šuniukais** (mūsų pavadinimai nenuoseklūs: „Mono Protein Mediterraneo" / „ME MONO NOBLE GRAIN" / „Mediterraneo Mono Noble" tam pačiam dalykui). **Skaičius „59 skiriasi" — ATSIIMTAS, buvo užterštas.**
+- **Vetfarmo tekstai turi korektūros klaidų:** `dehidraduota`, `dehydratuotas`, `gacilis` (turi būti *gracilis*), `sudėtyje nėra gūdų`. **Mūsų tekstuose tose vietose teisingai.** Prielaida „jų geresni" — neįrodyta.
+- **Ten kur poravimas neabejotinas — skiriasi ESMĖ, ne forma:** INPS06 mūsų `ryžiai 49%, kiauliena 26%, mielės 3%, KALCIO chloridas` vs LT `ryžiai 36%, kiauliena 30%, mielės 3,5%, KALIO chloridas`. **Kalcio ir kalio chloridas = dvi skirtingos medžiagos.** Tai receptūros VERSIJOS klausimas.
+- **SPRENDIMAS PRIKLAUSO PAKUOTEI.** Raimiui: paimti vieną maišą (pvz. Intestinal mažoms veislėms) ir pažiūrėti — ryžių 49% ar 36%, kalcio ar kalio chloridas. Vienas maišas pasako, kuris šaltinis gyvas. **Neperrašyti 60 sudėčių šaltiniu, kuris tame pačiame sakinyje rašo „dehidraduota" ir „gūdų".**
+
+**TILTO PAMOKOS (naujos):**
+- **PHP per JS template literal SUGADINA backslash'us:** `(\d+)` virsta `(d+)` → regex tyliai neranda nieko (`hy_count=0`). **Sprendimas: PHP → base64 → embed į .mjs → `Buffer.from(B64,'base64')` runneryje.** Naudoti VISADA, kai PHP turi regex.
+- `ps_feeding_rows` stulpelis = **`feeding_table_id`**, NE `table_id`. Klaidinga užklausa grąžina tuščią be klaidos.
+- Contents API GET **nukerta >1 MB** failus → skaityti per `raw.githubusercontent.com`, bet **tas pats failo vardas + CDN lag = skaitai SENĄ turinį**. Sprendimas: `?ref={commit_sha}` per Contents API.
+- **Repo priaugo 140 svetimo turinio failų** (`razioni/` 31 + `serimas/` 109). **NETRINTI** — reikalingi Mediterraneo darbui. Bet jei repo taps viešas — išimti.
+
+**PENDING — Exclusion:**
+1. Mediterraneo P44–P63 paveiksliukų išdėstymo tyrimas (~19 SKU, didžiausias likęs gabalas)
+2. `inps`/`inpm` etikečių painiavos išsprendimas (palyginti pačius paveiksliukus)
+3. `hhfs`/`hhfm` galo prieštara (7 vs 9 eil.)
+4. OCR „25"→„29" taisymas
+5. **`feeding_mode` laukas:** 5 Exclusion katėms turi stulpelius „Tik sausas pašaras" / „Sausas + konservas 85 g"; parseris juos žymi `activity_level`. **Skaičiai teisingi, etiketė melaginga.** Reikia naujo `cond` rakto.
+6. Aprašymų klausimas — laukia Raimio pakuotės patikros
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
