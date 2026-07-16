@@ -1,0 +1,149 @@
+{
+ "v": {
+  "db": {
+   "tables": 217,
+   "rows": 3679,
+   "map": 442,
+   "verified": 205
+  },
+  "checks": {
+   "orphan_rows": 0,
+   "orphan_map": 0,
+   "zero_tid_rows": 0,
+   "zero_tid_map": 0,
+   "products_2plus": 0,
+   "inverted_amount": 0,
+   "inverted_weight": 0,
+   "verified_null_basis_excl_byage": 0,
+   "rowcount_mismatch": 0
+  },
+  "rc_tables": [
+   {
+    "id": "99",
+    "line": null,
+    "species": "cat",
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "row_count": "16",
+    "source_version": "post_content_v6_2026-07-16",
+    "skus": "1"
+   },
+   {
+    "id": "210",
+    "line": "Royal Canin Sensible 33",
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": "body_condition",
+    "row_count": "8",
+    "source_version": "royalcanin_lt_2026-07-16",
+    "skus": "2"
+   },
+   {
+    "id": "211",
+    "line": "Royal Canin Sterilised 37",
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": "body_condition",
+    "row_count": "8",
+    "source_version": "royalcanin_lt_2026-07-16",
+    "skus": "2"
+   },
+   {
+    "id": "212",
+    "line": "Royal Canin Hair & Skin Care",
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": "body_condition",
+    "row_count": "8",
+    "source_version": "royalcanin_lt_2026-07-16",
+    "skus": "2"
+   },
+   {
+    "id": "213",
+    "line": "Royal Canin Giant Adult",
+    "species": "dog",
+    "shape": "transposed",
+    "row_dimension": "activity_level",
+    "row_count": "18",
+    "source_version": "royalcanin_uk_pl_2026-07-16",
+    "skus": "1"
+   },
+   {
+    "id": "214",
+    "line": "Royal Canin Medium Adult",
+    "species": "dog",
+    "shape": "transposed",
+    "row_dimension": "activity_level",
+    "row_count": "15",
+    "source_version": "royalcanin_uk_pl_2026-07-16",
+    "skus": "1"
+   },
+   {
+    "id": "215",
+    "line": "Royal Canin Hairball Care",
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": "activity_level",
+    "row_count": "8",
+    "source_version": "royalcanin_uk_pl_2026-07-16",
+    "skus": "2"
+   },
+   {
+    "id": "216",
+    "line": "Royal Canin Indoor 27",
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": "activity_level",
+    "row_count": "21",
+    "source_version": "royalcanin_uk_pl_2026-07-16",
+    "skus": "1"
+   },
+   {
+    "id": "217",
+    "line": "Royal Canin Oral Care",
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": "body_condition",
+    "row_count": "8",
+    "source_version": "royalcanin_uk_pl_2026-07-16",
+    "skus": "1"
+   }
+  ],
+  "rc": {
+   "instock": 13,
+   "su_lentele": 13,
+   "be": 0,
+   "be_sarasas": []
+  },
+  "sample": [
+   {
+    "feeding_table_id": "213",
+    "row_order": "0",
+    "weight_from_kg": "45.00",
+    "amount_from_g": "412.00",
+    "condition_dimensions": "{\"activity_level\":\"low\"}"
+   },
+   {
+    "feeding_table_id": "213",
+    "row_order": "1",
+    "weight_from_kg": "55.00",
+    "amount_from_g": "479.00",
+    "condition_dimensions": "{\"activity_level\":\"low\"}"
+   },
+   {
+    "feeding_table_id": "213",
+    "row_order": "2",
+    "weight_from_kg": "60.00",
+    "amount_from_g": "511.00",
+    "condition_dimensions": "{\"activity_level\":\"low\"}"
+   },
+   {
+    "feeding_table_id": "213",
+    "row_order": "3",
+    "weight_from_kg": "75.00",
+    "amount_from_g": "604.00",
+    "condition_dimensions": "{\"activity_level\":\"low\"}"
+   }
+  ]
+ }
+}
