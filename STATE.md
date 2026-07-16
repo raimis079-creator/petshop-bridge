@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU — abu iš mūsų pačių post_content**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; **S223 Gemon 9 lent./11 SKU iš gamintojo PDF**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -508,6 +508,52 @@ Parseris „1 ½" perskaitė kaip **1** → būtų įrašęs **„1 g per parą 
 4. Duomenų higiena: `d0ef54405833` (hash vietoj SKU), `DP-EXCL-HYPO-KIAUL-2KG-x2` (2 vnt. rinkinys).
 
 **Snippetai (išjungti):** #1031 pc v1, #1032 pc v2, #1034 Gramai v1, #1035 Verify.
+
+**S223 — GEMON: 9 lentelės / 11 SKU iš gamintojo PDF. Naujas šaltinio tipas (2026-07-16):**
+
+**DB:** 200 → **209** lentelės · 3 359 → **3 585** eil. · 419 → **430** map · verified **197**. Sargai visi 0.
+**DB delta sutapo su „totals" visais trim matmenimis** (+9/+226/+11) — S221 orphan pamoka pritaikyta.
+
+**★★ NAUJAS ŠALTINIO TIPAS — GAMINTOJO PDF DATASHEET:**
+`gemon.it` = **503** (miręs). Gemon = **Monge** grupės brendas → `monge.it` gyvas: **138 Gemon produktų puslapių, 55 PDF**. HTML lentelių puslapiuose NĖRA (`<table>`=0), bet kiekvienas produktas turi datasheet PDF:
+`monge.it/wp-content/uploads/2023/09/Gemon-maxi-adult-with-chicken-and-rice-ENG.pdf`
+**Kelias: sitemap → produkto psl. → `href=*.pdf` → `pdftotext -layout` → blokas nuo `Recommended daily feeding intakes (grams/day)`.** 45 sausų PDF → **20 lentelių ištraukta**.
+
+**⚠️ TECHNIKA:** `poppler-utils` GitHub runneryje **NEIŠLIEKA tarp paleidimų** — `sudo apt-get install -y poppler-utils` būtinas KIEKVIENAME rune. Be jo `pdftotext: not found`. `-layout` vėliavėlė privaloma (išsaugo stulpelių lygiavimą).
+
+**FORMA: `Silhouette thin / ideal / heavy` = `body_condition`** (S212 taksonomija) → `transposed`. Pridėtas naujas sargas: **thin ≥ ideal ≥ heavy** kiekviename svoryje — Gemon logikos patikra, kurios monotoniškumo sargas nepagautų.
+
+**ĮRAŠYTA 9 lentelės / 11 SKU** (`source_version='gemon_monge_pdf_2026-07-16'`):
+| id | line | forma | eil. | SKU |
+|---|---|---|---|---|
+| 201 | Maxi Adult vištiena | transposed/body_condition | 24 | 01MB431101 |
+| 202 | All Breeds Adult ėriena | " | 42 | 01MB421301 |
+| 203 | All Breeds Adult tunas | " | 42 | 01MB421201 |
+| 204 | Regular All Breeds Adult vištiena | " | 42 | 01MB421101 |
+| 205 | Mini Adult vištiena | " | 21 | 01MB411101 |
+| 206 | Mini Adult lašiša | " | 21 | **01MB412101 + 01M412102** |
+| 207 | Adult katėms vištiena+kalakutiena | " | 15 | 01MB511101 |
+| 208 | Sterilised katėms kalakutiena | " | 15 | 01M511303 |
+| 209 | Kitten vištiena | age_weight/age | 4 | **01M510103 + 01MB510101** |
+
+**⚠️ PUPPY MATRICA ATIDĖTA SĄMONINGAI (01MB400101):** PDF eilutės turi TARPUS —
+```
+Puppy body weight (kg)   1    3    5   10   15   20   25   30   40   50   60   70
+Months 1 - 2            67  159  233  341  514
+Months 8 - 12                     103  184  306  380  417  442  609  735  825
+```
+`Months 8-12` prasideda ne nuo 1 kg. Skaidant per tarpus (`split(/\s+/)`) normos priskirtų NE TIEMS svoriams. Reikia **pozicinio parserio: antraštės stulpelių simbolių offsetai `-layout` tekste → reikšmės imamos pagal offsetą.** Tas pats liestų `all-breeds-puppy-tuna` ir `mini-puppy-chicken` (turim jų duomenis).
+
+**GEMON LIKUTIS (5 iš 16):**
+| SKU | kliūtis |
+|---|---|
+| 01MB400101 Puppy & Junior | matrica — pozicinis parseris |
+| 01M511503 Dry Cat Urinary | PDF **YRA** (`Gemon-adult-cat-urinary-with-chicken-and-rice-ENG`), tik nepateko į 30 apdorotų — vienas runas |
+| 01M511703 Dry Cat Beef & rice | adult kačių jautienos PDF monge.it nėra |
+| 01MB511301 Sterilised light | PDF nerastas |
+| 01MB511201 Adult katėms lašiša+tunas | yra tik `sterilised` versija, ne `adult` |
+
+**Snippetai (išjungti):** #1039 Gemon Feeding v1, #1040 Verify.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
