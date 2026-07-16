@@ -1,347 +1,403 @@
 {
- "wp": {
-  "total": 81,
-  "instock": 74,
-  "instock_mapped": 34,
-  "instock_unmapped": [
+ "d": {
+  "tables": [
    {
-    "id": 34498,
-    "sku": "DP-NGCATW85-10",
-    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tun",
-    "stock": "instock",
-    "map": null
+    "id": "83",
+    "line": null,
+    "species": "cat",
+    "shape": "matrix",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10",
+    "source_version": "post_content_v6_2026-07-16",
+    "skus": "1"
    },
    {
-    "id": 34484,
-    "sku": "DP-HYPS06-2",
-    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žir",
-    "stock": "instock",
-    "map": null
+    "id": "84",
+    "line": null,
+    "species": "cat",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5",
+    "source_version": "post_content_v6_2026-07-16",
+    "skus": "2"
    },
    {
-    "id": 34471,
-    "sku": "DP-EXCL-HYPO-KIAUL-2KG-x2",
-    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žir",
-    "stock": "instock",
-    "map": null
+    "id": "85",
+    "line": null,
+    "species": "cat",
+    "shape": "age_weight",
+    "row_dimension": "age",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "6",
+    "source_version": "post_content_v6_2026-07-16",
+    "skus": "1"
    },
    {
-    "id": 25265,
-    "sku": "NGPTL12",
-    "t": "Exclusion Mediterraneo Mono Noble sausas pašaras šuniukams L, su tunu,",
-    "stock": "instock",
-    "map": null
+    "id": "86",
+    "line": null,
+    "species": "cat",
+    "shape": "transposed",
+    "row_dimension": null,
+    "weight_basis": null,
+    "status": "ambiguous",
+    "row_count": "0",
+    "source_version": "post_content_v6_2026-07-16",
+    "skus": "1"
    },
    {
-    "id": 25165,
-    "sku": "NGPBS05",
-    "t": "Exclusion Mono Protein, begrūdis sausas pašaras mažų veislių mažiems š",
-    "stock": "instock",
-    "map": null
+    "id": "165",
+    "line": "Hypoallergenic",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7",
+    "source_version": "exclusion_vetfarmas_2026-07-16",
+    "skus": "10"
    },
    {
-    "id": 21531,
-    "sku": "CHYP03",
-    "t": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena i",
-    "stock": "instock",
-    "map": null
+    "id": "166",
+    "line": "Hypoallergenic",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "source_version": "exclusion_vetfarmas_2026-07-16",
+    "skus": "8"
    },
    {
-    "id": 21165,
-    "sku": "NGCATW85",
-    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tun",
-    "stock": "instock",
-    "map": null
+    "id": "167",
+    "line": "Mediterraneo Noble Grain",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7",
+    "source_version": "exclusion_vetfarmas_2026-07-16",
+    "skus": "7"
    },
    {
-    "id": 21141,
-    "sku": "NGATA40",
-    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su tun",
-    "stock": "instock",
-    "map": null
+    "id": "168",
+    "line": "Mediterraneo Noble Grain",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7",
+    "source_version": "exclusion_vetfarmas_2026-07-16",
+    "skus": "6"
    },
    {
-    "id": 21139,
-    "sku": "NGASA40",
-    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su laš",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 21125,
-    "sku": "NGACA40",
-    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su viš",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20971,
-    "sku": "d0ef54405833",
-    "t": "Exclusion Hypo sausas pašaras šunims su triušiena ir bulvėmis, M/L, 2k",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20957,
-    "sku": "HYPA02",
-    "t": "Exclusion Hypoallergenic sausas pašaras šuniukams su kiauliena ir žirn",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20941,
-    "sku": "HHFS02",
-    "t": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su žuvimi,",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20545,
-    "sku": "NGPTS05",
-    "t": "Exclusion ME MONO NOBLE GRAIN  sausas pašaras šuniukams,su tunu, 500g",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20543,
-    "sku": "NGPTM03",
-    "t": "Exclusion Mono Protein begrūdis sausas pašaras šuniukams, su tunu, M 3",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20541,
-    "sku": "NGPBS07",
-    "t": "Exclusion Mono Protein begrūdis sausas pašaras mažų veislių mažiems šu",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20539,
-    "sku": "NGPBS02",
-    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras mažų veisl",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20537,
-    "sku": "NGPBM12",
-    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras vidutinių ",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20525,
-    "sku": "NGCSCW85",
-    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotom",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20523,
-    "sku": "NGCSBW85",
-    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotom",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 20517,
-    "sku": "NGCKCW85",
-    "t": "Exclusion Mediterraneo Mono Protein konservas kačiukams su vištiena, 8",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18620,
-    "sku": "HHFM11",
-    "t": "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuota žuv",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18614,
-    "sku": "DM20",
-    "t": "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 200 g",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18611,
-    "sku": "DM37",
-    "t": "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 400 g",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18605,
-    "sku": "VM37",
-    "t": "Exclusion Hypoallergenic konservai šunims su elniena ir bulvėmis 400 g",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18602,
-    "sku": "PM20",
-    "t": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18599,
-    "sku": "PM37",
-    "t": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18596,
-    "sku": "QM37",
-    "t": "Exclusion Hypoallergenic konservai šunims su putpelėmis ir žirniais 40",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18593,
-    "sku": "AM20",
-    "t": "Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18572,
-    "sku": "HYPA11",
-    "t": "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena ir žirnel",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18551,
-    "sku": "INPS06",
-    "t": "Exclusion Intestinal Monoprotein mažų veislių šunų maistas su kiaulien",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18548,
-    "sku": "INPA11",
-    "t": "Exclusion Intestinal Monoprotein sausas šuniukų maistas su kiauliena i",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18545,
-    "sku": "INPM11",
-    "t": "Exclusion Intestinal Monoprotein sausas šunų maistas su kiauliena ir r",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18530,
-    "sku": "NGCSB01",
-    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėm",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18527,
-    "sku": "NGCST01",
-    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėm",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18524,
-    "sku": "NGCST12",
-    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėm",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18521,
-    "sku": "NGABA40",
-    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jau",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18518,
-    "sku": "NGAUA40",
-    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kal",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18515,
-    "sku": "NGAVA40",
-    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ver",
-    "stock": "instock",
-    "map": null
-   },
-   {
-    "id": 18512,
-    "sku": "NGALA40",
-    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėri",
-    "stock": "instock",
-    "map": null
+    "id": "169",
+    "line": "Mediterraneo Noble Grain",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "9",
+    "source_version": "exclusion_vetfarmas_2026-07-16",
+    "skus": "3"
    }
   ],
-  "unmapped_n": 40
- },
- "snip": 1016,
- "sites": {
-  "kika": {
-   "n": 0,
-   "sample": [],
-   "puppy": []
-  },
-  "zoomarket": {
-   "n": 0,
-   "sample": [],
-   "puppy": []
-  },
-  "petmarket": {
-   "n": 30,
-   "sample": [
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-sausas-maistas-sterilizuotoms-katems-su-tunu-12-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-m-12-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-tunu-m-3-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-tunu-l-12-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-s-7-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-s-2-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-m-3-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-sunims-su-jautiena-l-12-g/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-sterilizuotoms-katems-su-tunu-15-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-kaciukams-su-vistiena-15-kg/"
-   ],
-   "puppy": [
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-sausas-maistas-sterilizuotoms-katems-su-tunu-12-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-m-12-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-tunu-m-3-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-tunu-l-12-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-s-7-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-s-2-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-suniukams-su-jautiena-m-3-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-sterilizuotoms-katems-su-tunu-15-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-kaciukams-su-vistiena-15-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-sterilizuotoms-didelems-katems-su-vistiena-15-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-maistas-katems-su-vistiena-15-kg/",
-    "https://petmarket.lt/produktas/exclusion-mediterraneo-begrudis-maistas-katems-su-jautiena-15-kg/"
-   ]
-  },
-  "vetlita": {
-   "n": 0,
-   "sample": [],
-   "puppy": []
-  },
-  "exclusion_lt": {
-   "n": 0,
-   "sample": [],
-   "puppy": []
-  },
-  "petirvet": {
-   "n": 0,
-   "sample": [],
-   "puppy": []
-  }
+  "n_tables": 9,
+  "n_skus_mapped": 39,
+  "viso": 81,
+  "instock": 74,
+  "instock_su_lentele": 34,
+  "instock_be": 40,
+  "be_bet_pc_turi": 11,
+  "unmapped": [
+   {
+    "sku": "DP-NGCATW85-10",
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras k",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "DP-HYPS06-2",
+    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiau",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "DP-EXCL-HYPO-KIAUL-2KG-x2",
+    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiau",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGPTL12",
+    "t": "Exclusion Mediterraneo Mono Noble sausas pašaras šuniukams",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGPBS05",
+    "t": "Exclusion Mono Protein, begrūdis sausas pašaras mažų veisl",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "CHYP03",
+    "t": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGCATW85",
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras k",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGATA40",
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras š",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGASA40",
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras š",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGACA40",
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras š",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "d0ef54405833",
+    "t": "Exclusion Hypo sausas pašaras šunims su triušiena ir bulvė",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "HYPA02",
+    "t": "Exclusion Hypoallergenic sausas pašaras šuniukams su kiaul",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "HHFS02",
+    "t": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunim",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGPTS05",
+    "t": "Exclusion ME MONO NOBLE GRAIN  sausas pašaras šuniukams,su",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGPTM03",
+    "t": "Exclusion Mono Protein begrūdis sausas pašaras šuniukams, ",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGPBS07",
+    "t": "Exclusion Mono Protein begrūdis sausas pašaras mažų veisli",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGPBS02",
+    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašara",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGPBM12",
+    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašara",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGCSCW85",
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras s",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGCSBW85",
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras s",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGCKCW85",
+    "t": "Exclusion Mediterraneo Mono Protein konservas kačiukams su",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "HHFM11",
+    "t": "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidr",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "DM20",
+    "t": "Exclusion Hypoallergenic konservai šunims su antiena ir bu",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "DM37",
+    "t": "Exclusion Hypoallergenic konservai šunims su antiena ir bu",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "VM37",
+    "t": "Exclusion Hypoallergenic konservai šunims su elniena ir bu",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "PM20",
+    "t": "Exclusion Hypoallergenic konservai šunims su kiauliena ir ",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "PM37",
+    "t": "Exclusion Hypoallergenic konservai šunims su kiauliena ir ",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "QM37",
+    "t": "Exclusion Hypoallergenic konservai šunims su putpelėmis ir",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "AM20",
+    "t": "Exclusion Hypoallergenic konservai šunims su triušiena ir ",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "HYPA11",
+    "t": "Exclusion Hypoallergenic sausas šuniukų maistas su kiaulie",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "INPS06",
+    "t": "Exclusion Intestinal Monoprotein mažų veislių šunų maistas",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "INPA11",
+    "t": "Exclusion Intestinal Monoprotein sausas šuniukų maistas su",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "INPM11",
+    "t": "Exclusion Intestinal Monoprotein sausas šunų maistas su ki",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGCSB01",
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras steriliz",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGCST01",
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras steriliz",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGCST12",
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras steriliz",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 1
+   },
+   {
+    "sku": "NGABA40",
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras š",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGAUA40",
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras š",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGAVA40",
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras š",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   },
+   {
+    "sku": "NGALA40",
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras š",
+    "stock": "instock",
+    "map": 0,
+    "pc_table": 0
+   }
+  ]
  }
 }
