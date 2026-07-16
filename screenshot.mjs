@@ -11,84 +11,59 @@ const out={};
 try{
 const php=`
 add_action('wp_loaded', function(){
-	if(!isset($_GET['ps_mp'])||$_GET['ps_mp']!=='Mp2Ss8Hh'){return;}
+	if(!isset($_GET['ps_ex'])||$_GET['ps_ex']!=='Ex4Pp7Nn'){return;}
 	@set_time_limit(400); global $wpdb; $pf=$wpdb->prefix; $o=array();
-	$apply = (isset($_GET['confirm']) && $_GET['confirm']==='APPLY_MULTIPACK');
-	$o['mode'] = $apply ? 'APPLY' : 'DRY-RUN';
-
-	// produktai BE lenteles (turi fraze arba ne), sauso maisto, instock
 	$ids=get_posts(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>-1,'fields'=>'ids',
 		'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'slug','terms'=>array('sausas-maistas-sunims','sausas-maistas-katems')))));
-	$mapped = $wpdb->get_col("SELECT DISTINCT product_id FROM {$pf}ps_feeding_map");
-	$mapped = array_flip(array_map('intval',$mapped));
-
-	// normalizavimas: nuimam pakuotes dydi ir akcijos zymas
-	$norm = function($t){
-		$t = mb_strtolower(html_entity_decode($t));
-		$t = preg_replace('/\\d+[\\s]*[\\+][\\s]*\\d+\\s*kg/u','',$t);      // "15+3kg"
-		$t = preg_replace('/\\d+[.,]?\\d*\\s*kg/u','',$t);                  // "2,7 kg"
-		$t = preg_replace('/\\d+[.,]?\\d*\\s*g\\b/u','',$t);
-		$t = preg_replace('/akcij\\w*|nemokam\\w*|dovan\\w*|\\bx\\s*\\d+\\b|\\d+\\s*vnt/u','',$t);
-		$t = preg_replace('/[^\\p{L}\\p{N}]+/u',' ',$t);
-		return trim(preg_replace('/\\s+/u',' ',$t)); };
-
-	// donorai: produktai SU verified lentele
-	$donors=array();
-	$dr = $wpdb->get_results("SELECT m.product_id, m.feeding_table_id FROM {$pf}ps_feeding_map m
-		JOIN {$pf}ps_feeding_tables t ON t.id=m.feeding_table_id WHERE t.status='verified'", ARRAY_A);
-	foreach($dr as $d){
-		$k = $norm(get_the_title($d['product_id']));
-		if($k==='') continue;
-		if(!isset($donors[$k])) $donors[$k]=array('ftid'=>$d['feeding_table_id'],'src'=>$d['product_id']);
-	}
-	$o['donor_keys']=count($donors);
-
-	// kandidatai: be map, bet normalizuotas pav. sutampa su donoru
-	$pairs=array(); $nomatch=array();
+	$mapped=array_flip(array_map('intval',$wpdb->get_col("SELECT DISTINCT product_id FROM {$pf}ps_feeding_map")));
+	$has=array(); $miss=array();
 	foreach($ids as $id){
 		if(get_post_meta($id,'_stock_status',true)!=='instock') continue;
-		if(isset($mapped[$id])) continue;
+		$b=wp_get_object_terms($id,'product_brand',array('fields'=>'names'));
+		$bn=(!is_wp_error($b)&&$b)?$b[0]:'';
+		$mf=get_post_meta($id,'_legacy_manufacturer',true);
+		if(stripos($bn,'exclusion')===false && stripos($mf,'exclusion')===false && stripos(get_the_title($id),'exclusion')===false) continue;
 		$c=get_post_field('post_content',$id);
-		if(mb_stripos($c,'veterinar')!==false && mb_stripos($c,'Šėrimo instrukcij')!==false) continue; // vet dieta
-		$k=$norm(get_the_title($id));
-		if(isset($donors[$k])){
-			$pairs[]=array('pid'=>$id,'title'=>mb_substr(get_the_title($id),0,52),
-				'ftid'=>$donors[$k]['ftid'],'donor'=>mb_substr(get_the_title($donors[$k]['src']),0,52),'key'=>$k);
-		} else { if(count($nomatch)<10) $nomatch[]=array('id'=>$id,'t'=>mb_substr(get_the_title($id),0,50),'k'=>$k); }
+		$phrase = (mb_stripos($c,'Šėrimo instrukcij')!==false);
+		$vet = (mb_stripos($c,'veterinar')!==false);
+		$sku = get_post_meta($id,'_sku',true);
+		$rec=array('id'=>$id,'sku'=>$sku,'t'=>mb_substr(get_the_title($id),0,58),'phrase'=>$phrase,'vet'=>$vet,
+			'species'=>has_term('sausas-maistas-katems','product_cat',$id)?'cat':'dog','manuf'=>$mf);
+		if(isset($mapped[$id])) $has[]=$rec; else $miss[]=$rec;
 	}
-	$o['pairs_found']=count($pairs);
-	$o['pairs']=array_slice($pairs,0,12);
-	$o['nomatch_sample']=$nomatch;
-
-	// pagal brenda
-	$bb=array();
-	foreach($pairs as $p2){ $b=wp_get_object_terms($p2['pid'],'product_brand',array('fields'=>'names'));
-		$bn=(!is_wp_error($b)&&$b)?$b[0]:'(be)'; if(!isset($bb[$bn]))$bb[$bn]=0; $bb[$bn]++; }
-	arsort($bb); $o['by_brand']=$bb;
-
-	if($apply){
-		$n=0;
-		foreach($pairs as $p2){
-			$e=$wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$pf}ps_feeding_map WHERE feeding_table_id=%d AND product_id=%d",$p2['ftid'],$p2['pid']));
-			if(!$e && $wpdb->insert($pf.'ps_feeding_map',array('feeding_table_id'=>$p2['ftid'],'product_id'=>$p2['pid']))) $n++;
-		}
-		// scope -> 'line' visoms, kurios dabar dengia >1 produkta
-		$wpdb->query("UPDATE {$pf}ps_feeding_tables t SET scope='line'
-			WHERE (SELECT COUNT(*) FROM {$pf}ps_feeding_map m WHERE m.feeding_table_id=t.id)>1");
-		$o['inserted_map']=$n;
-		$o['after']=array(
-		 'SKU_verified'=>(int)$wpdb->get_var("SELECT COUNT(DISTINCT m.product_id) FROM {$pf}ps_feeding_map m JOIN {$pf}ps_feeding_tables t ON t.id=m.feeding_table_id WHERE t.status='verified'"),
-		 'SKU_any'=>(int)$wpdb->get_var("SELECT COUNT(DISTINCT product_id) FROM {$pf}ps_feeding_map"),
-		 'orphan_map'=>(int)$wpdb->get_var("SELECT COUNT(*) FROM {$pf}ps_feeding_map m LEFT JOIN {$pf}ps_feeding_tables t ON t.id=m.feeding_table_id WHERE t.id IS NULL"),
-		 'scope_line'=>(int)$wpdb->get_var("SELECT COUNT(*) FROM {$pf}ps_feeding_tables WHERE scope='line'"));
+	$o['HAS_count']=count($has); $o['MISS_count']=count($miss);
+	$o['HAS']=$has;
+	$o['MISS']=array_slice($miss,0,50);
+	// kaip atrodo tie, kurie TURI (formatas, kuri reikes atkartoti)
+	$o['sample_good']=array();
+	foreach(array_slice($has,0,2) as $h){
+		$c=get_post_field('post_content',$h['id']);
+		$pos=mb_stripos($c,'Šėrimo instrukcij');
+		$o['sample_good'][]=array('id'=>$h['id'],'t'=>$h['t'],'html'=>mb_substr($c,$pos,900));
 	}
+	// ka turi tie, kurie NETURI (ar yra fraze? kas vietoj lenteles?)
+	$o['sample_miss']=array();
+	foreach(array_slice($miss,0,3) as $m2){
+		$c=get_post_field('post_content',$m2['id']);
+		$pos=mb_stripos($c,'Šėrimo instrukcij');
+		$o['sample_miss'][]=array('id'=>$m2['id'],'t'=>$m2['t'],'phrase'=>$m2['phrase'],
+			'chunk'=> $pos!==false ? mb_substr($c,$pos,500) : mb_substr($c,0,400));
+	}
+	// linijos
+	$lines=array();
+	foreach($miss as $m2){ if(preg_match('/(Hypoallergenic|Mediterraneo|Diet|Vet Diet|Formula|Monoprotein|Noble Grain|Ancestral)/iu',$m2['t'],$mm)){
+		$k=$mm[1]; if(!isset($lines[$k]))$lines[$k]=0; $lines[$k]++; } }
+	$o['lines_missing']=$lines;
 	header('Content-Type: application/json'); echo wp_json_encode($o); exit;
 });`;
-fs.writeFileSync('/tmp/snip.json',JSON.stringify({name:'TEMP M8 Multipack',code:php,scope:'global',active:true}));
+fs.writeFileSync('/tmp/snip.json',JSON.stringify({name:'TEMP M8 Excl',code:php,scope:'global',active:true}));
 sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/snip.json "${API}"`);
-out.dry=JSON.parse(sh('curl -sk --max-time 300 "https://dev.avesa.lt/?ps_mp=Mp2Ss8Hh"'));
-ghPut('screenshots/m8_mp_dry.json',Buffer.from(JSON.stringify(out.dry)),'multipack dry');
-console.log('DRY: pairs='+out.dry.pairs_found);
+const r=sh('curl -sk --max-time 300 "https://dev.avesa.lt/?ps_ex=Ex4Pp7Nn"');
+try{out.p=JSON.parse(r);}catch(e){out.raw=r.slice(0,600);}
+const k=`add_action('wp_loaded',function(){if(!isset($_GET['ps_kex'])||$_GET['ps_kex']!=='Rr3Ww8Yy'){return;}global $wpdb;$n=$wpdb->query("DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP M8%'");echo wp_json_encode(array('d'=>$n));exit;});`;
+fs.writeFileSync('/tmp/k.json',JSON.stringify({name:'TEMP M8 Kill EX',code:k,scope:'global',active:true}));
+sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/k.json "${API}"`);
+out.cleanup=sh('curl -sk --max-time 25 "https://dev.avesa.lt/?ps_kex=Rr3Ww8Yy"').slice(0,40);
 }catch(e){out.FATAL=String(e&&e.message?e.message:e).slice(0,300);}
-ghPut('screenshots/m8_mp.json',Buffer.from(JSON.stringify(out)),'multipack dry-run');
+ghPut('screenshots/m8_excl.json',Buffer.from(JSON.stringify(out)),'exclusion recon');
 console.log('DONE');
