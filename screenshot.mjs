@@ -3,44 +3,39 @@ import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'pj',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'pk',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
-function get(u,mt){try{return execSync(`curl -sLk --max-time ${mt||45} -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120" "${u}"`,{maxBuffer:30*1024*1024}).toString();}catch(e){return '';}}
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function get(u,mt){try{return execSync(`curl -sLk --max-time ${mt||50} -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120" "${u}"`,{maxBuffer:30*1024*1024}).toString();}catch(e){return '';}}
 function dec(s){return s.replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&#8211;/g,'-').replace(/&#(\d+);/g,(m,d)=>String.fromCharCode(+d)).replace(/&[a-z]+;/g,' ');}
-function parseT(t){const rows=[];
-  for(const tr of (t.match(/<tr[\s\S]*?<\/tr>/gi)||[])){
-    const c=[...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(m=>dec(m[1].replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim());
+const o={};
+const h=get('https://web.archive.org/web/20240522103018id_/https://ontario.pet/en/for-cats-en/food-adult/',60);
+o.bytes=h.length;
+// visos antrastes (bet kokio lygio) su pozicijom
+const heads=[];
+const re=/<h[1-6][^>]*>([\s\S]{2,90}?)<\/h[1-6]>/gi; let m;
+while((m=re.exec(h))!==null){
+  const t=dec(m[1].replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim();
+  if(t.length>2) heads.push({t,i:m.index});
+}
+o.heads=heads.map(x=>x.t).slice(0,40);
+// visos lenteles su pozicijom -> artimiausia ANKSTESNE antraste
+const tabs=[];
+const re2=/<table[\s\S]*?<\/table>/gi; let m2;
+while((m2=re2.exec(h))!==null){
+  const rows=[];
+  for(const tr of (m2[0].match(/<tr[\s\S]*?<\/tr>/gi)||[])){
+    const c=[...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(x=>dec(x[1].replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim());
     if(c.length) rows.push(c);
   }
-  return rows;}
-const o={};
-for(const [key,u] of [['adult','https://ontario.pet/en/for-cats-en/food-adult/'],
-                      ['castrate','https://ontario.pet/en/for-cats-en/food-castrate/']]){
-  const cdx=get(`https://web.archive.org/cdx/search/cdx?url=${encodeURIComponent(u)}&output=json&limit=8&filter=statuscode:200`,35);
-  let ts=null; try{ const j=JSON.parse(cdx||'[]'); if(j.length>1) ts=j[j.length-1][1]; }catch(e){}
-  const r={ts,blocks:[]};
-  if(ts){
-    const h=get(`https://web.archive.org/web/${ts}id_/${u}`,55);
-    r.bytes=h.length;
-    // dalinam pagal produkto antrastes (h2/h3 su "ONTARIO")
-    const re=/<h[23][^>]*>([\s\S]{3,80}?)<\/h[23]>/gi;
-    const marks=[]; let m;
-    while((m=re.exec(h))!==null){
-      const name=dec(m[1].replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim();
-      if(/ontario/i.test(name)) marks.push({name,idx:m.index});
-    }
-    for(let i=0;i<marks.length;i++){
-      const from=marks[i].idx, to=(i+1<marks.length)?marks[i+1].idx:h.length;
-      const seg=h.slice(from,to);
-      const tb=(seg.match(/<table[\s\S]*?<\/table>/gi)||[]).map(parseT)
-        .filter(t=>{const f=t.flat().join(' ').toLowerCase(); return /cat weight|kg/.test(f) && t.length>=3;});
-      // aprasymas
-      const txt=dec(seg.replace(/<script[\s\S]*?<\/script>/gi,' ').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim();
-      r.blocks.push({name:marks[i].name, seg_len:seg.length, n_tab:tb.length, tab:tb.slice(0,2), desc:txt.slice(0,300)});
-    }
-  }
-  o[key]=r;
-  await sleep(5000);
+  const f=rows.flat().join(' ').toLowerCase();
+  if(!/cat weight/.test(f) || rows.length<3) continue;
+  let prev=null;
+  for(const hd of heads){ if(hd.i < m2.index) prev=hd.t; else break; }
+  // tab grupes id
+  const before=h.slice(Math.max(0,m2.index-3000),m2.index);
+  const tg=[...before.matchAll(/fusion-tabs-(\d+)/g)].map(x=>x[1]);
+  tabs.push({head:prev, tabgroup:tg.length?tg[tg.length-1]:null, rows:rows.slice(0,9)});
 }
-pr('pj.json',o); console.log('DONE');
+o.n=tabs.length;
+o.tabs=tabs;
+pr('pk.json',o); console.log('DONE n='+o.n);
