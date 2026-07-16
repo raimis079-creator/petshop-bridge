@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins — normos tik 2016 archyvo paveikslėliuose, 0/23). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21 (gamintojas: „see the table on the packaging“)). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -420,6 +420,19 @@ Ta pati `simple`/`transposed` forma, tas pats `weight_basis='current'`. **Kliūt
 **KAS ATRAKINTŲ (Raimio pusė):** (a) maišo etiketės perrašytas tekstas; (b) tiekėjo datasheet (Prins = dropship šaltinis); (c) žmogus, perskaitantis crowfile paveikslėlius iš archyvo — nuorodos `an2.json`.
 
 **Techninės pastabos:** archive.org CDX **throttlina** — veikia tik forma `url=domain*&filter=original:.*regex.*`, po kelių užklausų grąžina tuščią; tarp puslapių būtinos 4–5 s pauzės, po 10–12 psl. per runą. Klaidos požymis: title „Wayback Machine". `id_` sufiksas timestamp'e duoda originalų HTML be archyvo įpakavimo.
+
+**S220 — REAL DOG: gamintojas normas skelbia TIK ANT PAKUOTĖS. 0 iš 21 (2026-07-16):**
+
+**DB NEPAKITO.** Real Dog: 21 instock, 0 su lentele; 18 sausas + 3 skanėstai (kiaulės ausys/kojos — normos netaikomos).
+
+**ŠALTINIS RASTAS IR IŠTIRTAS:** `realdog.lt` — paties brendo svetainė (nopCommerce, 297 URL, 23 produktai; ZB/Zoobaze prekės, SKU `01O*`/`RD702*`). Produkto puslapyje pilnas EN aprašymas, sudėtis, priedai — ir šėrimo skiltis, kuri sako PAŽODŽIUI:
+> *„Feeding instructions: recommended daily amount: **see the table on the packaging**."*
+
+Tai galutinis atsakymas iš pirminio šaltinio: **Real Dog normos viešai neskelbiamos — tik ant maišo.** Ne paieškos spraga. Kiti keliai: realdog.pl = nesusijusi parduotuvė (Sklep Reksio), realdog.de = šunų mokykla, LT retaileriai (petmarket/dogsnanny/petirvet/pet24/kika) — 0 Real Dog URL sitemap'uose.
+
+**KAS ATRAKINTŲ:** Real Dog = ZB prekės → maišai Zoobaze sandėlyje. Etiketės tekstas arba ZB datasheet. Ta pati situacija kaip Prins (S219), tik dar paprastesnė — tiekėjas savas.
+
+**Techninė pastaba:** realdog.lt nopCommerce produktų nuorodos kategorijose yra `<a href="/slug">` be `/product/` prefikso — rinkiklis turi filtruoti assets (`.woff` pagavimas buvo klaida, pataisyta).
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
