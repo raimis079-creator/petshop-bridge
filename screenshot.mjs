@@ -1,46 +1,18 @@
+const OPHP='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfbzInXSl8fCRfR0VUWydwc19vMiddIT09J08yeFdtNEpkJyl7cmV0dXJuO30KCUBzZXRfdGltZV9saW1pdCgzMDApOyBnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OyAkbz1hcnJheSgpOwoJJGlkcz1nZXRfcG9zdHMoYXJyYXkoJ3Bvc3RfdHlwZSc9Pidwcm9kdWN0JywncG9zdF9zdGF0dXMnPT4ncHVibGlzaCcsJ3Bvc3RzX3Blcl9wYWdlJz0+LTEsJ2ZpZWxkcyc9PidpZHMnKSk7CgkkcmVzPWFycmF5KCk7Cglmb3JlYWNoKCRpZHMgYXMgJGlkKXsKCQkkdGl0bGU9Z2V0X3RoZV90aXRsZSgkaWQpOwoJCSRtYW49KHN0cmluZylnZXRfcG9zdF9tZXRhKCRpZCwnX2xlZ2FjeV9tYW51ZmFjdHVyZXInLHRydWUpOwoJCWlmKHN0cmlwb3MoJG1hbiwnb250YXJpbycpPT09ZmFsc2UgJiYgc3RyaXBvcygkdGl0bGUsJ29udGFyaW8nKT09PWZhbHNlKSBjb250aW51ZTsKCQkkcD13Y19nZXRfcHJvZHVjdCgkaWQpOyBpZighJHAgfHwgJHAtPmdldF9zdG9ja19zdGF0dXMoKSE9PSdpbnN0b2NrJykgY29udGludWU7CgkJJGM9Z2V0X3Bvc3RfZmllbGQoJ3Bvc3RfY29udGVudCcsJGlkKTsKCQkkbG93PW1iX3N0cnRvbG93ZXIoJGMpOwoJCSRoYXNUYWJsZT0oc3RycG9zKCRsb3csJzx0YWJsZScpIT09ZmFsc2UpOwoJCSRmZWVkPSRoYXNUYWJsZSAmJiAoc3RycG9zKCRsb3csJ3N2b3InKSE9PWZhbHNlKSAmJiAocHJlZ19tYXRjaCgnLyhub3JtYXxraWVraXMgcGVyIHBhcnxwYXJvc3xkaWVub3MpL3UnLCRsb3cpKTsKCQkkbWFwcGVkPShpbnQpJHdwZGItPmdldF92YXIoJHdwZGItPnByZXBhcmUoIlNFTEVDVCBmZWVkaW5nX3RhYmxlX2lkIEZST00geyRwZn1wc19mZWVkaW5nX21hcCBXSEVSRSBwcm9kdWN0X2lkPSVkIiwkaWQpKTsKCQkkcmVzW109YXJyYXkoJ2lkJz0+JGlkLCdza3UnPT4oc3RyaW5nKWdldF9wb3N0X21ldGEoJGlkLCdfc2t1Jyx0cnVlKSwndCc9Pm1iX3N1YnN0cigkdGl0bGUsMCw2NCksCgkJCSd0YWJsZXMnPT5zdWJzdHJfY291bnQoJGxvdywnPHRhYmxlJyksJ2ZlZWQnPT4kZmVlZD8xOjAsJ21hcCc9PiRtYXBwZWQ/OjAsJ2xlbic9PnN0cmxlbigkYykpOwoJfQoJJG9bJ24nXT1jb3VudCgkcmVzKTsKCSRvWyd3aXRoX2NvbnRlbnRfdGFibGUnXT1jb3VudChhcnJheV9maWx0ZXIoJHJlcyxmdW5jdGlvbigkcil7cmV0dXJuICRyWydmZWVkJ107fSkpOwoJJG9bJ21hcHBlZCddPWNvdW50KGFycmF5X2ZpbHRlcigkcmVzLGZ1bmN0aW9uKCRyKXtyZXR1cm4gJHJbJ21hcCddO30pKTsKCSRvWydyb3dzJ109JHJlczsKCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'sp',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'o2',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
-function get(u,mt){try{return execSync(`curl -sLk --max-time ${mt||22} -A "Mozilla/5.0 Chrome/120" "${u}"`,{maxBuffer:25*1024*1024}).toString();}catch(e){return '';}}
-function dec(s){return s.replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&#8211;|&ndash;/g,'-');}
-function allT(html){const res=[];for(const t of (html.match(/<table[\s\S]*?<\/table>/gi)||[])){const rows=[];
- for(const tr of (t.match(/<tr[\s\S]*?<\/tr>/gi)||[])){const c=[...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(m=>dec(m[1].replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim());if(c.length)rows.push(c);}
- if(rows.length)res.push(rows);} return res;}
-const B='https://www.spokojenypes.cz';
+const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
+function hit(u){try{return execSync(`curl -sk -m 150 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:60*1024*1024}).toString();}catch(e){return 'ERR';}}
+function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 60 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-// sitemap pilnas ontario sarasas
-let urls=[];
-const rob=get(B+'/robots.txt');
-let maps=[...rob.matchAll(/Sitemap:\s*(\S+)/gi)].map(m=>m[1].trim());
-if(!maps.length) maps=[B+'/sitemap.xml',B+'/sitemap_index.xml'];
-const seen=new Set(); const q=[...maps];
-while(q.length && seen.size<20){
-  const sm=q.shift(); if(!sm||seen.has(sm))continue; seen.add(sm);
-  const xml=get(sm); if(!xml)continue;
-  const locs=[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map(m=>m[1]);
-  if(/<sitemapindex/i.test(xml)){ for(const l of locs) q.push(l); }
-  else for(const l of locs) if(/ontario/i.test(l)) urls.push(l);
-}
-urls=[...new Set(urls)];
-// MUSU linijos: adult/puppy mini/medium/large + lamb/beef/chicken/fish + monoprotein konservai
-const dry=urls.filter(u=>/(adult|puppy)-(mini|medium|large)|adult-large|adult-medium|adult-mini|puppy-mini|lamb-and|beef-and|chicken-and|fish-and/i.test(u));
-o.dry_n=dry.length; o.dry=dry.slice(0,20);
-o.pages={};
-for(const u of dry.slice(0,25)){
-  const h=get(u); if(!h) continue;
-  const title=dec(((h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[,''])[1]).replace(/<[^>]+>/g,'')).replace(/\s+/g,' ').trim().slice(0,90);
-  const tb=allT(h).filter(rr=>{const f=rr.flat().join(' ').toLowerCase();
-    return /(váha|hmotnost|kg)/.test(f)&&/(g\/|gram|den|krmn|dávk)/.test(f)&&rr.length>=2;});
-  if(tb.length){ o.pages[u]={title,tables:tb.slice(0,2)}; continue; }
-  // tekstu?
-  let b=(h.match(/<body[\s\S]*<\/body>/i)||[h])[0].replace(/<script[\s\S]*?<\/script>/gi,' ').replace(/<style[\s\S]*?<\/style>/gi,' ');
-  const txt=b.replace(/<[^>]+>/g,'\n').replace(/&nbsp;/g,' ').split('\n').map(x=>x.trim()).filter(Boolean).join(' | ');
-  const i=txt.search(/krmn|dávkov|doporučen/i);
-  if(i>=0) o.pages[u]={title,text:txt.slice(Math.max(0,i-80),i+800)};
-}
-o.hits=Object.keys(o.pages).length;
-pr('sp.json',o); console.log('DONE dry='+o.dry_n+' hits='+o.hits);
+const mk=wj('POST','code-snippets/v1/snippets',{name:'Ontario Content Check v1 (read-only)',code:Buffer.from(OPHP,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+let id=null; try{id=JSON.parse(mk).id;}catch(e){o.mk=mk.slice(0,200);}
+if(id){ const r=hit('https://dev.avesa.lt/?ps_o2=O2xWm4Jd'); try{o.d=JSON.parse(r);}catch(e){o.raw=r.slice(0,600);}
+        wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
+pr('o2.json',o); console.log('DONE');
