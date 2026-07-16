@@ -233,6 +233,22 @@ Buvau pranešęs, kad radau `1→80 · 2→130 · 3→160 · 5→240 · 7→300 
 6. Aprašymai — laukia Raimio pakuotės patikros
 7. **Instock aprėpties permatavimas** (senas 373/662 negalioja)
 
+**S216 — NAUJAS DARBO MODELIS (Raimio nurodymas, galioja VISADA) + QUATTRO pradėta (2026-07-16):**
+
+**⚡ RAIMIO NURODYMAS — KONVEJERIS, NE KLAUSINĖJIMAS:** „30 prekių šėrimo normų 3 valandas — neracionalu. Reikia SISTEMOS: identifikuok ko trūksta, DARYK iki kol viskas užsipildo, neklausinėk." **Modelis:** šaltinis → tiltas → auto-patikra → **verified rašoma IŠ KART be klausimų** → kas nepraeina → ambiguous sąrašas (nestabdo eilės) → ataskaita po brendo. **Auto-patikros taisyklė:** rašoma tik jei ≥2 nepriklausomi šaltiniai sutampa ARBA ≥3 to paties brendo paveiksliukai identiški ARBA HTML tekstas. Matricos su neaiškia amžiaus ašimi → tik ambiguous, NIEKADA nespėti. **Eilė:** Quattro 63 → Exclusion likutis 15 → Josera 33 → Prins 22 → Real Dog 19 → Ontario 18 → Gemon 15 → RC 12 → smulkūs. Po brendo — STATE.md pilnu failu.
+
+**QUATTRO (63 SKU, IN PROGRESS — šaltiniai IŠSPRĘSTA, liko mechanika):**
+- **Quattro = AB „Kauno Grūdai"** (lietuviškas!). Oficiali svetainė `quattropet.com` (EN/LT/CZ/BG).
+- **63 instock SKU be lentelės** (`/tmp/quattro.json` šioje sesijoje; SKU formos `2.011761`). Linijos: begrūdis all/large breed (antiena/lašiša-krilis/ėriena; jauni/suaugę/senjorai), Extra (Lamb/Poultry/Salmon — SU GRŪDAIS), Junior, Mini, Maxi, kačių Collagen (Kitten/Steril/Indoor/Senior/Digestive).
+- **Gamintojo feeding guide PNG:** 35 unikalūs repo `quattro/` (žemėlapis title↔img buvo `/tmp/qg.json`). URL šablonas: `/storage/app/media/Feeding guide/sunys/en/DESKTOP_{name}_en.png`.
+- **⚠️ Gamintojo PNG = dizainerių INFOGRAFIKOS** (2012×562, piktogramos, spalvos). Visas-vaizdas OCR → šiukšlės; crop+vote pipeline (`/home/claude/qg/qocr.py`) → 1/32 ir tas blogai suporuotas. **2 nepavykę bandymai — OCR keliu toliau NEITI.** Bet lentelės juostos crop skaitosi: `DESKTOP_Salmon_en.png` apačia → `svoris 2..10 / nuo 40 54 68 80 92 103 114 125 135 / iki 47 72 79 93 106 119 132 144 156`.
+- **★ SPRENDIMAS — retailer'ių HTML lentelės:**
+  - **petirvet.lt** — PILNOS HTML lentelės. Pvz. Extra Salmon: `Šuns svoris (kg): 2-5|5-10|10-15|15-20|20-25|25-30|30-40|40-50|50-60 → Dienos norma (g): 47-94|94-179|179-213|213-265|265-313|313-359|359-445|445-526|526-603`. URL: `https://petirvet.lt/produktai/quattro-adult-extra-salmon-sunu-maistas/`
+  - **dogsnanny.lt** — PILNOS HTML lentelės. Pvz. small breed antiena: `2→40-47 · 3→54-72 · 4→68-78 · 5→80-93 · 6→92-106 · 7→103-119 · 8→114-132 · 9→124-144 · 10→134-156`. URL: `https://dogsnanny.lt/prekes/begrudis-sunu-maistas-qattro-small-breed-adult-su-antiena/`
+  - **KRYŽMINIS PATVIRTINIMAS JAU YRA:** dogsnanny HTML ↔ gamintojo PNG crop-OCR sutampa 9/9 eilučių struktūra; ±1 g nesutapimai trijuose langeliuose (78/79, 124/125, 134/135) — arbitražui trečias taškas.
+  - kgshop.eu (gamintojo parduotuvė) — lentelių HTML'e NĖRA (0). pet24.lt — po 1 lentelę, netirta.
+- **KITAS ŽINGSNIS (mechanika, be klausimų):** pilnas petirvet.lt + dogsnanny.lt Quattro katalogų crawl per tiltą → HTML lentelės → kryžminis su gamintojo PNG kur įmanoma → mapinti į 63 SKU pagal PAVADINIMĄ (linija+baltymas+dydis+amžius; SKU kodai neinformatyvūs) → apply verified partijomis → verifikacija → STATE.md.
+
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
 - **Ciniškas testas (pamatinis principas):** „Jeigu negalime vienu sakiniu pasakyti, kokią naudą klientas gauna iš karto, neturime teisės prašyti jo pildyti anketą."
