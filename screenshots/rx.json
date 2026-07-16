@@ -1,0 +1,173 @@
+{
+ "create": {
+  "id": 1044,
+  "code_error": null
+ },
+ "dry": {
+  "mode": "DRY",
+  "tables": {
+   "giant": {
+    "line": "Royal Canin Giant Adult",
+    "rd": "activity_level",
+    "row_count": 18,
+    "rasom": [
+     131350
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "medium": {
+    "line": "Royal Canin Medium Adult",
+    "rd": "activity_level",
+    "row_count": 15,
+    "rasom": [
+     141150
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "hairball": {
+    "line": "Royal Canin Hairball Care",
+    "rd": "activity_level",
+    "row_count": 8,
+    "rasom": [
+     216110,
+     121550
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "indoor": {
+    "line": "Royal Canin Indoor 27",
+    "rd": "activity_level",
+    "row_count": 21,
+    "rasom": [
+     123950
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "oral": {
+    "line": "Royal Canin Oral Care",
+    "rd": "body_condition",
+    "row_count": 8,
+    "rasom": [
+     216210
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   }
+  },
+  "totals": {
+   "tables": 5,
+   "rows": 70,
+   "map": 6
+  },
+  "db": {
+   "tables": 212,
+   "rows": 3609,
+   "map": 436
+  }
+ },
+ "apply": {
+  "mode": "APPLY",
+  "tables": {
+   "giant": {
+    "line": "Royal Canin Giant Adult",
+    "rd": "activity_level",
+    "row_count": 18,
+    "rasom": [
+     131350
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 213
+   },
+   "medium": {
+    "line": "Royal Canin Medium Adult",
+    "rd": "activity_level",
+    "row_count": 15,
+    "rasom": [
+     141150
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 214
+   },
+   "hairball": {
+    "line": "Royal Canin Hairball Care",
+    "rd": "activity_level",
+    "row_count": 8,
+    "rasom": [
+     216110,
+     121550
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 215
+   },
+   "indoor": {
+    "line": "Royal Canin Indoor 27",
+    "rd": "activity_level",
+    "row_count": 21,
+    "rasom": [
+     123950
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 216
+   },
+   "oral": {
+    "line": "Royal Canin Oral Care",
+    "rd": "body_condition",
+    "row_count": 8,
+    "rasom": [
+     216210
+    ],
+    "nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 217
+   }
+  },
+  "totals": {
+   "tables": 5,
+   "rows": 70,
+   "map": 6
+  },
+  "db": {
+   "tables": 217,
+   "rows": 3679,
+   "map": 442
+  }
+ }
+}
