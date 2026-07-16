@@ -1,0 +1,188 @@
+{
+ "v": {
+  "db": {
+   "tables": 198,
+   "rows": 3343,
+   "map": 415,
+   "verified": 186
+  },
+  "checks": {
+   "orphan_rows": 0,
+   "orphan_map": 0,
+   "zero_tid_rows": 0,
+   "zero_tid_map": 0,
+   "products_2plus": 0,
+   "inverted_amount": 0,
+   "inverted_weight": 0,
+   "verified_null_basis_excl_byage": 0,
+   "rowcount_mismatch": 0
+  },
+  "ontario": [
+   {
+    "id": "187",
+    "line": "Ontario Adult Large Beef and Brown Rice, 12 kg",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7",
+    "skus": "1"
+   },
+   {
+    "id": "188",
+    "line": "Ontario Adult Large Chicken and Sweet Potatoes, 12 kg",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "6",
+    "skus": "1"
+   },
+   {
+    "id": "189",
+    "line": "Ontario Adult Large Lamb and Brown Rice, 12 kg",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "8",
+    "skus": "1"
+   },
+   {
+    "id": "190",
+    "line": "Ontario Adult Large White Fish and Brown Rice, 12 kg",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "7",
+    "skus": "1"
+   },
+   {
+    "id": "191",
+    "line": "Ontario Adult Medium Lamb and Brown Rice, 12 kg",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "5",
+    "skus": "1"
+   },
+   {
+    "id": "192",
+    "line": "Ontario konservai šunims su žuvimis ir žolelėmis, 200 g, Adult Fish",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "3",
+    "skus": "1"
+   },
+   {
+    "id": "193",
+    "line": "Sausas maistas kačių kailiui ir odai, 1 kg, Ontario Cat Hair &#038;",
+    "species": "cat",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "12",
+    "skus": "1"
+   },
+   {
+    "id": "194",
+    "line": "Ontario Adult Mini Lamb and Brown Rice",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "10",
+    "skus": "3"
+   },
+   {
+    "id": "195",
+    "line": "Ontario Puppy Mini Lamb and Brown Rice",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "6",
+    "skus": "2"
+   },
+   {
+    "id": "196",
+    "line": "Ontario konservai šunims",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "4",
+    "skus": "3"
+   },
+   {
+    "id": "197",
+    "line": "Ontario konservai šunims",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "3",
+    "skus": "3"
+   },
+   {
+    "id": "198",
+    "line": "Ontario konservai šunims",
+    "species": "dog",
+    "shape": "simple",
+    "row_dimension": "weight",
+    "weight_basis": "current",
+    "status": "verified",
+    "row_count": "4",
+    "skus": "2"
+   }
+  ],
+  "ont_tables": 12,
+  "ont_skus": 20,
+  "sample": [
+   {
+    "feeding_table_id": "194",
+    "row_order": "0",
+    "weight_from_kg": "1.00",
+    "amount_from_g": "30.00",
+    "amount_to_g": "30.00"
+   },
+   {
+    "feeding_table_id": "194",
+    "row_order": "1",
+    "weight_from_kg": "2.00",
+    "amount_from_g": "48.00",
+    "amount_to_g": "48.00"
+   },
+   {
+    "feeding_table_id": "194",
+    "row_order": "2",
+    "weight_from_kg": "3.00",
+    "amount_from_g": "65.00",
+    "amount_to_g": "65.00"
+   },
+   {
+    "feeding_table_id": "194",
+    "row_order": "3",
+    "weight_from_kg": "4.00",
+    "amount_from_g": "80.00",
+    "amount_to_g": "80.00"
+   }
+  ]
+ },
+ "id": 1029
+}
