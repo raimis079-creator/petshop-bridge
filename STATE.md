@@ -599,6 +599,64 @@ LT `oral-care` stulpelis pavadintas **„Liesa"**, kituose LT psl. — **„Idea
 **Snippetai (išjungti):** #1042 RC Feeding v1, #1043 Verify, #1044 RC Feeding v2, #1045 Final Verify.
 
 
+**★★★ SESIJA 2026-07-16 — ŠĖRIMO LENTELIŲ KONVEJERIS (S217–S224). KONSOLIDUOTA SANTRAUKA ★★★**
+
+**REZULTATAS: 169 → 217 lentelės · 3 030 → 3 679 eilutės · 365 → 442 SKU su norma.**
+Grynas priedas: **+48 lentelės, +649 eilutės, +77 SKU.** Verified: **205**.
+Kiekvienas apply verifikuotas ATSKIRU read-only snippetu; visi 9 sargai 0 po kiekvieno rašymo.
+
+| brendas | rezultatas | šaltinis | būklė |
+|---|---|---|---|
+| Quattro | 12 lent. / 23 SKU | kgshop.eu (gamintojas) | ✅ |
+| Josera sausas | 5 / 7 | josera.de (gamintojas) | ✅ (Family — sulaužytas HTML) |
+| Ontario | 12 / 20 | **mūsų post_content** | ✅ sausas |
+| Exclusion | 2 / 4 (viso 11 lent., 38/74) | **mūsų post_content** | 🟡 36 be normos |
+| Gemon | 9 / 11 | **monge.it PDF datasheet** | 🟡 5 be normos |
+| **RC** | **8 / 12 → 13/13 instock** | **royalcanin.com LT+UK+PL** | ✅ **UŽDARYTAS** |
+| Prins | **0 / 23** | — | ⛔ BLOKUOTA |
+| Real Dog | **0 / 21** | — | ⛔ BLOKUOTA |
+
+**[SPRENDIMAS] KONSERVAI IŠ EILĖS IŠEINA — dirbam TIK SAUSĄ.** (Raimis, 2026-07-16: „gal kol kas su sausu susitvarkom, su konservais labai daug niuansų".) Tai uždaro ir seną neaiškumą, ar €/dienos skaičiuoklė apima šlapią maistą (M8 v3.2 tylėjo) — kol kas NE.
+
+**⛔ BLOKUOTA — REIKIA RAIMIO (44 SKU):**
+| brendas | SKU | ko reikia |
+|---|---|---|
+| **Prins** | 23 | maišo etiketės TEKSTAS (perrašytas, ne nuotrauka) arba tiekėjo datasheet. Normos egzistuoja tik `prinspetfoods.nl/aanvulling/{id}-voedingswijzer` puslapiuose, kurių turinys = **paveikslėlis** 2016 Wayback archyve. 7 skaitmeniniai keliai išbandyti ir uždaryti. |
+| **Real Dog** | 21 | maišo etiketė arba **ZB (Zoobaze) datasheet — tiekėjas SAVAS**. realdog.lt sako pažodžiui: „recommended daily amount: see the table on the packaging". Gamintojas normų viešai neskelbia. |
+
+**🟡 ATIDĖTA (turim duomenis, reikia darbo):**
+- **Gemon puppy matrica** (01MB400101 + tuna/mini variantai): PDF eilutės su TARPAIS (`Months 8-12` prasideda ne nuo 1 kg) → reikia **pozicinio parserio pagal stulpelių char-offsetus** `-layout` tekste. Skaidant per tarpus normos atsidurtų ties ne tais svoriais.
+- **Gemon 01M511503 Urinary**: PDF YRA (`Gemon-adult-cat-urinary-with-chicken-and-rice-ENG`), tik nepateko į 30 apdorotų — **vienas runas**.
+- **Gemon 3 SKU** (Beef cat, Sterilised light, Adult lašiša+tunas): monge.it PDF nėra.
+- **Exclusion 36**: šuniukų matricos (S215 blokatorius), `NGCGC01`, duomenų higiena (`d0ef54405833` hash vietoj SKU, `DP-EXCL-HYPO-KIAUL-2KG-x2` 2 vnt. rinkinys).
+- **Josera 38 konservų SKU** + Exclusion/Ontario konservai — pagal sprendimą IŠ EILĖS IŠEINA.
+
+**★★ NAUJI ŠALTINIŲ TIPAI (sesijos pagrindinis atradimas):**
+1. **MŪSŲ PAČIŲ `post_content`** — Ontario (20 SKU) ir Exclusion (4) lentelės gulėjo pas mus. S214 parseris v6 jų nepalietė: jo brendų sąraše jų nebuvo, o aprašymų darbas padarytas VĖLIAU. **TAISYKLĖ: prieš ieškant išorinio šaltinio — patikrinti savo `post_content`** (`<table>` + `svor` + `(norma|paros|dozė)`).
+2. **GAMINTOJO PDF DATASHEET** — `gemon.it` 503 (miręs), bet Gemon = Monge brendas → `monge.it` kiekvienam produktui turi PDF su lentele, HTML puslapyje `<table>`=0. Kelias: sitemap → produkto psl. → `href=*.pdf` → `pdftotext -layout`.
+3. **KITOS ŠALIES PUSLAPIS** — jei LT asortimente linijos nėra, imti iš `/uk`, `/pl`, `/de`. Normos identiškos, skiriasi tik kalba. RC GIANT/MEDIUM/HAIRBALL/INDOOR taip ir uždaryti.
+
+**★★ NAUJOS TAISYKLĖS (visos brangiai užsidirbtos):**
+1. **DB DELTA, NE „TOTALS".** Snippet'o pranešimas „12 lentelių" nėra įrodymas. S221: totals=12, DB delta=+7 → 5 insert'ai tyliai nepavyko.
+2. **Prieš `insert` — `SHOW COLUMNS` pločiai; po `insert` — `if($tid<=0) continue;`.** `reason` = `varchar(60)`; 200 simb. → `insert()` false → `insert_id=0` → **27 orphan eilutės + 13 orphan map** su `feeding_table_id=0`. Išvalyta `$wpdb->delete(...,array('feeding_table_id'=>0))`.
+3. **WAF blokuoja SQL raktažodžius snippet'o KODE** (ne tik užklausose). Literalus `DELETE FROM` POST body → create grąžina ERR. Sprendimas: `$wpdb->delete()`. Papildo žinomą `GROUP_CONCAT` taisyklę.
+4. **⚠️ VIENETAI: tikrinti STULPELIO ANTRAŠTĘ, ne skaičių tvarką.** Monotoniškumo sargas NEPAGAUNA vienetų klaidos (1<2<3 tvarkinga). Sugauti atvejai:
+   - Exclusion `AM20`: antraštė „Kiekis (400 g)", reikšmės `½–1` → **skardinės**. Parseris būtų rašęs „1 g/parą".
+   - RC `medium-adult` LT: `Tik šlapias maistas → 5+1/2 pak.` → **pakuotės**.
+   - RC UK: `412 g (4 cup + 2/8)` → puodeliai skliaustuose.
+   - **Vulgarios trupmenos (½ ¼ ¾) lentelėje ≈ visada skardinės/porcijos.**
+   - Nauji sargai: kačių sausas **<10 g/parą**, šunų **<20 g/parą** = neįmanoma.
+5. **Mišraus šėrimo reikšmės:** `47 g (30 g + 1 šlapio pakelio)` → **pirmas skaičius = grynas sausas**. Atskiros `(Mišrus šėrimas)` eilutės — atmesti.
+6. **`poppler-utils` GitHub runneryje NEIŠLIEKA tarp paleidimų** — `sudo apt-get install -y poppler-utils` KIEKVIENAME rune; `-layout` privaloma.
+7. **Puslapiavimas gaudo:** RC kategorijos → be `&page=2` dingsta pusė (21 vs 56). `code-snippets/v1/snippets?per_page=100` grąžina TIK 100 (realiai 522) → **būtina `&page=N` kilpa**, kitaip „nieko nerasta" yra melas.
+8. **Suliejimo spąstai:** grupuojant pagal lentelės turinį vienoda lentelė sulieja SKIRTINGUS skonius → `line` vardas turi būti **bendras visų grupės pavadinimų prefiksas**, ne pirmo produkto. + `reason='Bendra lentele N SKU, vienodos normos'`.
+9. **LT vertimai nepatikimi.** LT `hair-and-skin` „Idealus 45 / **Viršsvoris** 36" = UK „IDEAL 45 / **INACTIVE** 36" — identiški skaičiai, skirtinga ašies semantika. LT `oral-care` „Liesa" = idealus svoris (patvirtinta skaitiniu sutapimu su Sterilised 37 IR UK kryžmine patikra). **RC iš LT — visada kryžmiškai su /uk.**
+10. **Sub-brendų URL neturi tėvinio brendo vardo** (josidog/josicat ≠ „josera"). Filtras juos nukirto → klaidinga išvada „šaltinio nėra".
+11. **Neskelbti „šaltinio nėra" ištyrus vieną domeną.** Prins: `.com` neturėjo normų, `.nl` turėjo. Raimis pataisė; išvada atšaukta.
+
+**SNIPPETŲ HIGIENA:** visi **28 sesijos snippetai (#1018–#1045) IŠJUNGTI** (patikrinta su puslapiavimu).
+**⚠️ LIKO IŠ ANKSČIAU — 11 TEMP snippetų VIS DAR AKTYVŪS** (ne šios sesijos, nelieta): `#736 Core Act2 tmp`, `#738 ESP v4 Final tmp`, `#797 JS Fix tmp`, `#798 Dash Recon tmp`, `#799 Dash Dep`, `#800 Dash Act`, `#801 Dash Test`, `#802 Photo Recon`, `#803 Photo Dep`, `#804 Photo Act`, `#805 Photo Test`. Sutampa su seniau žinomu „11 TEMP snippets — need cleanup". **Taip pat: #492 ir #493 „Filtrų Atidarymas" v2 IR v1 abu aktyvūs — galimas dublis.**
+
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
 - **Ciniškas testas (pamatinis principas):** „Jeigu negalime vienu sakiniu pasakyti, kokią naudą klientas gauna iš karto, neturime teisės prašyti jo pildyti anketą."
