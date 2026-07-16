@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU — šaltinis buvo mūsų pačių post_content**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU — abu iš mūsų pačių post_content**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -466,6 +466,48 @@ Ištaisyta v4: trumpas reason (≤60), tid sargas, orphan valymas (`rows_deleted
 **Snippetai serveryje (visi išjungti):** #1025 v1, #1026 v2, #1028 v4 (veikiantis), #1029 Verify.
 
 **NEĮRAŠYTA (32 iš 52):** Monoproteino konservai 48368–48375 (8 SKU, aprašymai 3 500–3 700 simb., bet `<table>` nėra), kačių skanėstai/konservai, konservų rinkinys 8×200 g. Šiems lentelių `post_content` neturi.
+
+**S222 — EXCLUSION: tikra būklė + 2 lentelės / 4 SKU iš post_content (2026-07-16):**
+
+**DB:** 198 → **200** lentelės · 3 343 → **3 359** eil. · 415 → **419** map · verified **188**. Sargai visi 0 (nepriklausoma patikra).
+
+**★ EXCLUSION TIKRA BŪKLĖ (buvo neaišku — dabar pamatuota):**
+| | |
+|---|---|
+| Lentelių DB | **9 → 11** |
+| Produktų viso | 81 (74 instock) |
+| **Instock SU norma** | 34 → **38** |
+| **Instock BE normos** | 40 → **36** |
+
+Iš 9 senų: **83–86** = 4 kačių lentelės (`post_content_v6`, S214) · **165–169** = Hypoallergenic ×2 + Mediterraneo Noble Grain ×3, dengia 34 šunų SKU (`exclusion_vetfarmas`, S215). **Taigi S215 padarė šunų sausąjį — bet „Exclusion sutvarkytas" nebuvo tiesa.** Likę 36 = mono protein konservai, šuniukų matricos (HYPA11/INPA11/NGP*), hidrolizuoti.
+
+**ĮRAŠYTA 2:**
+| id | line | forma | ašis | eil. | SKU |
+|---|---|---|---|---|---|
+| 199 | Hydrolyzed Hypoallergenic mažų veislių šunims | simple | weight | 6 | HHFS02 |
+| 200 | Mediterraneo Monoprotein sausas sterilizuotoms katėms | **transposed** | **svorio_valdymas** | 10 | NGCSB01, NGCST01, NGCST12 |
+
+**★ S215 BLOKATORIUS NUIMTAS:** `NGCST01/NGCST12` S215 liko neįrašyti, nes petmarket buvo VIENINTELIS šaltinis su sulaužytu HTML (reikėjo atstatymo). Dabar mūsų `post_content` duoda **tuos pačius skaičius** (`2kg→30/20 · 3→50/40 · 4→60/50 · 5→70/60 · 6→75/65`) — **antras nepriklausomas šaltinis, sutampantis su S215 atstatymu.** Įrašyta.
+
+**⚠️⚠️ SVARBIAUSIA PAMOKA — KONSERVŲ LENTELĖS YRA SKARDINĖMIS, NE GRAMAIS:**
+Automatinis parseris norėjo rašyti šiuos, ir tai būtų buvęs šiurkštus melas:
+```
+AM20      antraštė: "Kiekis (400 g) / 24 val."  reikšmės: ½–1 · 1–1¾ · 2¼–2¾   -> SKARDINĖS po 400 g
+NGCSCW85  "Kiekis palaikant svorį"              reikšmės: 1½ · 2¼ · 3 · 3¼      -> SKARDINĖS po 85 g
+NGCKCW85  "Konservo kiekis / 24 val"            reikšmės: 1¼–2 · 2–3            -> SKARDINĖS po 85 g
+```
+Parseris „1 ½" perskaitė kaip **1** → būtų įrašęs **„1 g per parą 2 kg katei"**. Sugauta žiūrint į žaliavą prieš APPLY, ne per sargus (monotoniškumo sargas TOKIO dalyko nepagauna — 1<2<3 yra monotoniška).
+**→ NAUJA TAISYKLĖ: prieš rašant patikrinti STULPELIO ANTRAŠTĘ ir VIENETUS, ne tik skaičių tvarką. Vulgarios trupmenos (½ ¼ ¾) lentelėje = beveik visada skardinės/porcijos, ne gramai.**
+
+**⚠️ Parserio spraga (ištaisyta):** Ontario versija ėmė **tik pirmą `<table>`**. Exclusion aprašymuose pirma lentelė = analitinė sudėtis, šėrimo lentelė 2-a/3-ia → 26 SKU krito su „0 eilučių". v2 skenuoja visas lenteles ir renkasi tą, kuri turi `svor` + `(norma|kiekis|paros|dozė)` ir ≥3 parsinamas eilutes.
+
+**EXCLUSION PENDING (36):**
+1. **Konservai su skardinėmis** (AM20, NGCSCW85, NGCSBW85, NGCKCW85, NGA*A40, DM/PM/VM/QM...) — reikia trupmenų parserio (½¼¾) + skardinės dydžio (85/400 g iš SKU arba antraštės) → konversija į gramus. Duomenys YRA, mechanika aiški. **Atskiras modulis.**
+2. Šuniukų matricos (HYPA11, INPA11, NGP*) — S215 blokatorius lieka.
+3. `NGCGC01` — 1 lentelė aprašyme, bet šėrimo nerasta.
+4. Duomenų higiena: `d0ef54405833` (hash vietoj SKU), `DP-EXCL-HYPO-KIAUL-2KG-x2` (2 vnt. rinkinys).
+
+**Snippetai (išjungti):** #1031 pc v1, #1032 pc v2, #1034 Gramai v1, #1035 Verify.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
