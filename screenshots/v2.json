@@ -1,0 +1,131 @@
+{
+ "d": {
+  "null_basis": [
+   {
+    "id": "24",
+    "brand": "Josera",
+    "line": null,
+    "shape": "by_age",
+    "row_dimension": "age",
+    "weight_basis": null,
+    "status": "verified",
+    "row_count": "6",
+    "source_version": "post_content_v6_2026-07-16",
+    "verified_by": "auto_parser_v6"
+   },
+   {
+    "id": "110",
+    "brand": "Farmina",
+    "line": null,
+    "shape": "by_age",
+    "row_dimension": "age",
+    "weight_basis": null,
+    "status": "verified",
+    "row_count": "5",
+    "source_version": "post_content_v6_2026-07-16",
+    "verified_by": "auto_parser_v6"
+   }
+  ],
+  "by_shape": [
+   {
+    "shape": "age_weight",
+    "status": "verified",
+    "n": "1",
+    "nullbasis": "0"
+   },
+   {
+    "shape": "by_age",
+    "status": "verified",
+    "n": "2",
+    "nullbasis": "2"
+   },
+   {
+    "shape": "matrix",
+    "status": "verified",
+    "n": "40",
+    "nullbasis": "0"
+   },
+   {
+    "shape": "simple",
+    "status": "ambiguous",
+    "n": "2",
+    "nullbasis": "0"
+   },
+   {
+    "shape": "simple",
+    "status": "verified",
+    "n": "76",
+    "nullbasis": "0"
+   },
+   {
+    "shape": "transposed",
+    "status": "ambiguous",
+    "n": "10",
+    "nullbasis": "5"
+   },
+   {
+    "shape": "transposed",
+    "status": "verified",
+    "n": "50",
+    "nullbasis": "0"
+   }
+  ],
+  "quattro_rows_sample": [
+   {
+    "feeding_table_id": "180",
+    "row_order": "0",
+    "weight_from_kg": "5.00",
+    "weight_to_kg": "5.00",
+    "amount_from_g": "83.00",
+    "amount_to_g": "83.00",
+    "condition_dimensions": "{\"body_condition\":\"Senjorams\"}"
+   },
+   {
+    "feeding_table_id": "180",
+    "row_order": "1",
+    "weight_from_kg": "10.00",
+    "weight_to_kg": "10.00",
+    "amount_from_g": "139.00",
+    "amount_to_g": "139.00",
+    "condition_dimensions": "{\"body_condition\":\"Senjorams\"}"
+   },
+   {
+    "feeding_table_id": "180",
+    "row_order": "2",
+    "weight_from_kg": "15.00",
+    "weight_to_kg": "15.00",
+    "amount_from_g": "188.00",
+    "amount_to_g": "188.00",
+    "condition_dimensions": "{\"body_condition\":\"Senjorams\"}"
+   },
+   {
+    "feeding_table_id": "180",
+    "row_order": "3",
+    "weight_from_kg": "20.00",
+    "weight_to_kg": "20.00",
+    "amount_from_g": "234.00",
+    "amount_to_g": "234.00",
+    "condition_dimensions": "{\"body_condition\":\"Senjorams\"}"
+   },
+   {
+    "feeding_table_id": "180",
+    "row_order": "4",
+    "weight_from_kg": "25.00",
+    "weight_to_kg": "25.00",
+    "amount_from_g": "276.00",
+    "amount_to_g": "276.00",
+    "condition_dimensions": "{\"body_condition\":\"Senjorams\"}"
+   },
+   {
+    "feeding_table_id": "180",
+    "row_order": "5",
+    "weight_from_kg": "30.00",
+    "weight_to_kg": "30.00",
+    "amount_from_g": "317.00",
+    "amount_to_g": "317.00",
+    "condition_dimensions": "{\"body_condition\":\"Senjorams\"}"
+   }
+  ]
+ },
+ "vid": 1015
+}
