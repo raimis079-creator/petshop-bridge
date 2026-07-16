@@ -1,43 +1,26 @@
+const RF='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcmYnXSl8fCRfR0VUWydwc19yZiddIT09J1JmMkt2OE5xJyl7cmV0dXJuO30KCUBzZXRfdGltZV9saW1pdCgzMDApOyBnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OwoJJEFQUExZPShpc3NldCgkX0dFVFsnY29uZmlybSddKSAmJiAkX0dFVFsnY29uZmlybSddPT09J0FQUExZX1JDJyk7CgkkVkVSPSdyb3lhbGNhbmluX2x0XzIwMjYtMDctMTYnOwoJJEJZPSdwbGF5d3JpZ2h0X3JveWFsY2FuaW5fbHQnOwoJJG89YXJyYXkoJ21vZGUnPT4kQVBQTFk/J0FQUExZJzonRFJZJywndGFibGVzJz0+YXJyYXkoKSk7CgoJLy8gSWRlYWx1cyBzdm9yaXMgLyBBbnRzdm9yaXMgLT4gYm9keV9jb25kaXRpb24gaWRlYWx8b3ZlcndlaWdodAoJLy8gUmVpa3NtZXM6IFRJSyBzYXVzYXMgKHBpcm1hcyBza2FpY2l1czsgc2tsaWF1c3R1b3NlIG1pc3J1cyBzZXJpbWFzIC0gYXRtZXN0YXMpCgkkbWs9ZnVuY3Rpb24oJHcsJGlkZWFsLCRvdmVyKXsKCQkkcm93cz1hcnJheSgpOwoJCWZvcmVhY2goJHcgYXMgJGk9PiRrZykgJHJvd3NbXT1hcnJheSgka2csJGtnLCRpZGVhbFskaV0sJGlkZWFsWyRpXSxhcnJheSgnYm9keV9jb25kaXRpb24nPT4naWRlYWwnKSk7CgkJZm9yZWFjaCgkdyBhcyAkaT0+JGtnKSAkcm93c1tdPWFycmF5KCRrZywka2csJG92ZXJbJGldLCRvdmVyWyRpXSxhcnJheSgnYm9keV9jb25kaXRpb24nPT4nb3ZlcndlaWdodCcpKTsKCQlyZXR1cm4gJHJvd3M7Cgl9OwoJJFc9YXJyYXkoMyw0LDUsNik7CgkkZGVmcz1hcnJheSgpOwoKCSRkZWZzWydzZW5zaWJsZTMzJ109YXJyYXkoJ2xpbmUnPT4nUm95YWwgQ2FuaW4gU2Vuc2libGUgMzMnLCdzcCc9PidjYXQnLAoJCSd1cmwnPT4naHR0cHM6Ly93d3cucm95YWxjYW5pbi5jb20vbHQvY2F0cy9wcm9kdWN0cy9yZXRhaWwtcHJvZHVjdHMvc2Vuc2libGUtMzMtMjUyMScsCgkJJ3NrdXMnPT5hcnJheSgnMTI3MzgwJywnMTI3MzgwMjI4JyksCgkJJ3Jvd3MnPT4kbWsoJFcsYXJyYXkoMzksNDgsNTcsNjQpLGFycmF5KDMxLDM5LDQ1LDUxKSkpOwoKCSRkZWZzWydzdGVyaWxpc2VkMzcnXT1hcnJheSgnbGluZSc9PidSb3lhbCBDYW5pbiBTdGVyaWxpc2VkIDM3Jywnc3AnPT4nY2F0JywKCQkndXJsJz0+J2h0dHBzOi8vd3d3LnJveWFsY2FuaW4uY29tL2x0L2NhdHMvcHJvZHVjdHMvcmV0YWlsLXByb2R1Y3RzL3N0ZXJpbGlzZWQtMzctMjUzNycsCgkJJ3NrdXMnPT5hcnJheSgnMTIyMzcwMTgzJywnMTIyMzQwJyksCgkJJ3Jvd3MnPT4kbWsoJFcsYXJyYXkoNDcsNTcsNjcsNzYpLGFycmF5KDM3LDQ2LDU0LDYxKSkpOwoKCSRkZWZzWydoYWlyc2tpbiddPWFycmF5KCdsaW5lJz0+J1JveWFsIENhbmluIEhhaXIgJiBTa2luIENhcmUnLCdzcCc9PidjYXQnLAoJCSd1cmwnPT4naHR0cHM6Ly93d3cucm95YWxjYW5pbi5jb20vbHQvY2F0cy9wcm9kdWN0cy9yZXRhaWwtcHJvZHVjdHMvaGFpci1hbmQtc2tpbi1jYXJlLTI1MjYnLAoJCSdza3VzJz0+YXJyYXkoJzIxNzU3MCcsJzEyMjExMCcpLAoJCSdyb3dzJz0+JG1rKCRXLGFycmF5KDQ1LDU1LDY1LDc0KSxhcnJheSgzNiw0NCw1Miw1OSkpKTsKCgkkYnlza3U9YXJyYXkoKTsKCSRpZHM9Z2V0X3Bvc3RzKGFycmF5KCdwb3N0X3R5cGUnPT4ncHJvZHVjdCcsJ3Bvc3Rfc3RhdHVzJz0+J3B1Ymxpc2gnLCdwb3N0c19wZXJfcGFnZSc9Pi0xLCdmaWVsZHMnPT4naWRzJykpOwoJZm9yZWFjaCgkaWRzIGFzICRpZCl7ICRzPShzdHJpbmcpZ2V0X3Bvc3RfbWV0YSgkaWQsJ19za3UnLHRydWUpOyBpZigkcyE9PScnKSAkYnlza3VbJHNdPSRpZDsgfQoKCSR0dD0wOyR0cj0wOyR0bT0wOwoJZm9yZWFjaCgkZGVmcyBhcyAkaz0+JGQpewoJCSRjYW5vbj1hcnJheSgpOwoJCWZvcmVhY2goJGRbJ3Jvd3MnXSBhcyAkcil7ICRjYW5vbltdPSRyWzBdLictJy4kclsxXS4nOicuJHJbMl0uJy0nLiRyWzNdLndwX2pzb25fZW5jb2RlKCRyWzRdKTsgfQoJCSRjaGVja3N1bT1tZDUoJ1JveWFsQ2FuaW58Jy4kZFsnbGluZSddLid8Jy4kZFsnc3AnXS4nfHRyYW5zcG9zZWR8Ym9keV9jb25kaXRpb258Y3VycmVudHwnLmltcGxvZGUoJywnLCRjYW5vbikpOwoJCSRleGlzdHM9JHdwZGItPmdldF92YXIoJHdwZGItPnByZXBhcmUoIlNFTEVDVCBpZCBGUk9NIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgV0hFUkUgY2hlY2tzdW09JXMiLCRjaGVja3N1bSkpOwoKCQkkcGlkcz1hcnJheSgpOyRtaXNzPWFycmF5KCk7JGFscmVhZHk9YXJyYXkoKTsKCQlmb3JlYWNoKCRkWydza3VzJ10gYXMgJHMpewoJCQlpZighaXNzZXQoJGJ5c2t1WyRzXSkpeyAkbWlzc1tdPSRzOyBjb250aW51ZTsgfQoJCQkkcGlkPSRieXNrdVskc107CgkJCSRtPSR3cGRiLT5nZXRfdmFyKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgZmVlZGluZ190YWJsZV9pZCBGUk9NIHskcGZ9cHNfZmVlZGluZ19tYXAgV0hFUkUgcHJvZHVjdF9pZD0lZCIsJHBpZCkpOwoJCQlpZigkbSkgJGFscmVhZHlbJHNdPShpbnQpJG07IGVsc2UgJHBpZHNbJHNdPSRwaWQ7CgkJfQoJCSRiYWQ9YXJyYXkoKTsKCQlmb3JlYWNoKCRkWydyb3dzJ10gYXMgJHIpewoJCQlpZigkclsyXT4kclszXSkgJGJhZFtdPSdhcHZlcnN0YXMgcmV6aXMnOwoJCQlpZigkclswXT4kclsxXSkgJGJhZFtdPSdhcHZlcnN0YXMgc3ZvcmlzJzsKCQkJaWYoJHJbMl08PTApICAgICRiYWRbXT0nbnVsaW5pcyBraWVraXMnOwoJCQkvLyBzYXJnYXMgcHJpZXMgU0tBUkRJTklVL1BBS0VMSVUgc3Bhc3RhOiBrYWNpxbMgc2F1c2FzIDwxMCBnL2QgbmVpbWFub21hcwoJCQlpZigkclsyXTwxMCkgICAgJGJhZFtdPSdpdGFydGluYWkgbWF6YSBub3JtYSAoJy4kclsyXS4nZykgLSBhciB0aWtyYWkgZ3JhbWFpPyc7CgkJfQoJCSRncnA9YXJyYXkoKTsKCQlmb3JlYWNoKCRkWydyb3dzJ10gYXMgJHIpeyAkZ3JwW3dwX2pzb25fZW5jb2RlKCRyWzRdKV1bXT1hcnJheSgkclswXSwkclsyXSk7IH0KCQlmb3JlYWNoKCRncnAgYXMgJGdrPT4kcGFpcnMpewoJCQlmb3IoJGk9MTskaTxjb3VudCgkcGFpcnMpOyRpKyspewoJCQkJaWYoJHBhaXJzWyRpXVswXTw9JHBhaXJzWyRpLTFdWzBdKSAkYmFkW109J3N2b3JpcyBuZWRpZGVqYSAnLiRnazsKCQkJCWlmKCRwYWlyc1skaV1bMV08JHBhaXJzWyRpLTFdWzFdKSAgJGJhZFtdPSdub3JtYSBtYXplamEgJy4kZ2s7CgkJCX0KCQl9CgkJLy8gaWRlYWwgPj0gb3ZlcndlaWdodCBraWVrdmllbmFtZSBzdm9yeWplCgkJJGJ5dz1hcnJheSgpOwoJCWZvcmVhY2goJGRbJ3Jvd3MnXSBhcyAkcil7ICRieXdbJHJbMF1dWyRyWzRdWydib2R5X2NvbmRpdGlvbiddXT0kclsyXTsgfQoJCWZvcmVhY2goJGJ5dyBhcyAka2c9PiR2KXsKCQkJaWYoaXNzZXQoJHZbJ2lkZWFsJ10sJHZbJ292ZXJ3ZWlnaHQnXSkgJiYgJHZbJ2lkZWFsJ108JHZbJ292ZXJ3ZWlnaHQnXSkgJGJhZFtdPSdpZGVhbDxvdmVyd2VpZ2h0IHRpZXMgJy4ka2cuJ2tnJzsKCQl9CgkJJHc9KCEkZXhpc3RzICYmICEkYmFkICYmIGNvdW50KCRwaWRzKT4wKTsKCQkkcmVwPWFycmF5KCdsaW5lJz0+JGRbJ2xpbmUnXSwncm93X2NvdW50Jz0+Y291bnQoJGRbJ3Jvd3MnXSksJ3Jhc29tJz0+YXJyYXlfa2V5cygkcGlkcyksCgkJCSduZXJhc3RhJz0+JG1pc3MsJ2phdV9tYXBpbnRhJz0+JGFscmVhZHksJ2d1YXJkJz0+JGJhZCwnZXhpc3RzJz0+JGV4aXN0cz8oaW50KSRleGlzdHM6bnVsbCwnd2lsbF93cml0ZSc9PiR3KTsKCQlpZigkdyl7ICR0dCsrOyAkdHIrPWNvdW50KCRkWydyb3dzJ10pOyAkdG0rPWNvdW50KCRwaWRzKTsgfQoKCQlpZigkQVBQTFkgJiYgJHcpewoJCQkkbm93PWN1cnJlbnRfdGltZSgnbXlzcWwnKTsKCQkJJG9rPSR3cGRiLT5pbnNlcnQoInskcGZ9cHNfZmVlZGluZ190YWJsZXMiLGFycmF5KCdjaGVja3N1bSc9PiRjaGVja3N1bSwnc291cmNlX2hhc2gnPT5tZDUoJGRbJ3VybCddKSwKCQkJCSdicmFuZCc9PidSb3lhbCBDYW5pbicsJ2xpbmUnPT5tYl9zdWJzdHIoJGRbJ2xpbmUnXSwwLDE1MCksJ3Njb3BlJz0+J2xpbmUnLCdzcGVjaWVzJz0+JGRbJ3NwJ10sCgkJCQknd2VpZ2h0X2Jhc2lzJz0+J2N1cnJlbnQnLCdyb3dfZGltZW5zaW9uJz0+J2JvZHlfY29uZGl0aW9uJywnc2hhcGUnPT4ndHJhbnNwb3NlZCcsJ3N0YXR1cyc9Pid2ZXJpZmllZCcsCgkJCQkncmVhc29uJz0+J1RpayBzYXVzYXM7IG1pc3JhdXMgc2VyaW1vIHJlaWtzbWVzIGF0bWVzdG9zJywnc291cmNlX3VybCc9Pm1iX3N1YnN0cigkZFsndXJsJ10sMCwyNTUpLAoJCQkJJ3NvdXJjZV92ZXJzaW9uJz0+JFZFUiwncm93X2NvdW50Jz0+Y291bnQoJGRbJ3Jvd3MnXSksJ3BhcnNlZF9hdCc9PiRub3csJ3ZlcmlmaWVkX2F0Jz0+JG5vdywKCQkJCSd2ZXJpZmllZF9ieSc9PiRCWSwnY3JlYXRlZF9hdCc9PiRub3csJ3VwZGF0ZWRfYXQnPT4kbm93KSk7CgkJCSR0aWQ9KGludCkkd3BkYi0+aW5zZXJ0X2lkOwoJCQlpZighJG9rIHx8ICR0aWQ8PTApeyAkcmVwWydpbnNlcnRfZmFpbGVkJ109JHdwZGItPmxhc3RfZXJyb3I/OidpbnNlcnRfaWQ9MCc7ICRvWyd0YWJsZXMnXVska109JHJlcDsgY29udGludWU7IH0KCQkJJG9yZD0wOwoJCQlmb3JlYWNoKCRkWydyb3dzJ10gYXMgJHIpewoJCQkJJHdwZGItPmluc2VydCgieyRwZn1wc19mZWVkaW5nX3Jvd3MiLGFycmF5KCdmZWVkaW5nX3RhYmxlX2lkJz0+JHRpZCwncm93X29yZGVyJz0+JG9yZCsrLAoJCQkJCSd3ZWlnaHRfZnJvbV9rZyc9PiRyWzBdLCd3ZWlnaHRfdG9fa2cnPT4kclsxXSwnYW1vdW50X2Zyb21fZyc9PiRyWzJdLCdhbW91bnRfdG9fZyc9PiRyWzNdLAoJCQkJCSdjb25kaXRpb25fZGltZW5zaW9ucyc9PndwX2pzb25fZW5jb2RlKCRyWzRdKSkpOwoJCQl9CgkJCWZvcmVhY2goJHBpZHMgYXMgJHM9PiRwaWQpeyAkd3BkYi0+aW5zZXJ0KCJ7JHBmfXBzX2ZlZWRpbmdfbWFwIixhcnJheSgnZmVlZGluZ190YWJsZV9pZCc9PiR0aWQsJ3Byb2R1Y3RfaWQnPT4kcGlkKSk7IH0KCQkJJHJlcFsnaW5zZXJ0ZWQnXT0kdGlkOwoJCX0KCQkkb1sndGFibGVzJ11bJGtdPSRyZXA7Cgl9Cgkkb1sndG90YWxzJ109YXJyYXkoJ3RhYmxlcyc9PiR0dCwncm93cyc9PiR0ciwnbWFwJz0+JHRtKTsKCSRvWyduZWlyYXN5dGEnXT1hcnJheSgKCQknMjE2MjEwIE9SQUwgQ0FSRSc9PidSQyBMVCBzdHVscGVsaXMgcGF2YWRpbnRhcyAiTGllc2EiLCBuZSAiSWRlYWx1cyBzdm9yaXMiOyBza2FpY2lhaSBzdXRhbXBhIHN1IGlkZWFsICg0Ny81Ny82Ny83NyksIGJldCBldGlrZXRlIGtpdGEgLSByZWlraWEgUmFpbWlvIHNwcmVuZGltbycsCgkJJzEzMTM1MCBHSUFOVCBBRFVMVCc9Pidyb3lhbGNhbmluLmNvbS9sdCBzYXVzYW1lIGFzb3J0aW1lbnRlICg1NiBwcm9kLikgdG9raW9zIGxpbmlqb3MgTkVSQScsCgkJJzE0MTE1MCBNRURJVU0gQURVTFQnPT4ncHNsLiBtZWRpdW0tYWR1bHQtMTA5NSByb2RvIFRJSyBzbGFwaW8gbWFpc3RvIGxlbnRlbGUgKCJUaWsgc2xhcGlhcyBtYWlzdGFzIiwgNSsxLzIgcGFrLikgLSBzYXVzb3MgbGVudGVsZXMgbmVyYSBhcmJhIHNsZXBpYW1hIHV6IHRhYm8nLAoJCScyMTYxMTAvMTIxNTUwIEhBSVJCQUxMIENBUkUnPT4nUkMgTFQgc2F1c2FtZSBhc29ydGltZW50ZSBORVJBJywKCQknMTIzOTUwIElORE9PUic9PidSQyBMVCBzYXVzYW1lIGFzb3J0aW1lbnRlIE5FUkEnLAoJKTsKCSRvWydkYiddPWFycmF5KCd0YWJsZXMnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfdGFibGVzIiksCgkJJ3Jvd3MnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfcm93cyIpLAoJCSdtYXAnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfbWFwIikpOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
- fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'r8',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
+ fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'rf',content:Buffer.from(JSON.stringify(o,null,1)).toString('base64'),...(s?{sha:s}:{})}));
  execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
-const o={all:[],pages:{}};
-try{
-  const { chromium } = await import('playwright');
-  const br = await chromium.launch();
-  const ctx = await br.newContext({userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', locale:'lt-LT'});
-  const pg = await ctx.newPage();
-  let consent=false;
-  const B='https://www.royalcanin.com/lt';
-  const cats=[`${B}/cats/products/retail-products?technology=dry`,`${B}/cats/products/retail-products?technology=dry&page=2`,
-              `${B}/dogs/products/retail-products?technology=dry`,`${B}/dogs/products/retail-products?technology=dry&page=2`];
-  let found=new Set();
-  for(const c of cats){
-    try{
-      await pg.goto(c,{waitUntil:'domcontentloaded',timeout:60000});
-      await pg.waitForTimeout(7000);
-      if(!consent){ try{ for(const s of ['#onetrust-accept-btn-handler','button:has-text("Sutinku")']){ const e=await pg.$(s); if(e){ await e.click({timeout:2500}); await pg.waitForTimeout(2000); consent=true; break; } } }catch(e){} }
-      for(let i=0;i<3;i++){ await pg.evaluate(()=>window.scrollTo(0,document.body.scrollHeight)); await pg.waitForTimeout(2200); }
-      const links=await pg.$$eval('a[href]',as=>as.map(a=>a.href));
-      for(const u of links) if(/\/lt\/(cats|dogs)\/products\/retail-products\/[^?#]+$/i.test(u)) found.add(u);
-    }catch(e){}
+const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
+function hit(u){try{return execSync(`curl -sk -m 150 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:60*1024*1024}).toString();}catch(e){return 'ERR';}}
+function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
+const o={};
+const mk=wj('POST','code-snippets/v1/snippets',{name:'RC Feeding v1 (royalcanin.com/lt, tik sausas)',code:Buffer.from(RF,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,300);}
+if(id){
+  const dry=hit('https://dev.avesa.lt/?ps_rf=Rf2Kv8Nq');
+  try{o.dry=JSON.parse(dry);}catch(e){o.dry_raw=dry.slice(0,700);}
+  if(o.dry && o.dry.totals && o.dry.totals.tables>0){
+    const ap=hit('https://dev.avesa.lt/?ps_rf=Rf2Kv8Nq&confirm=APPLY_RC');
+    try{o.apply=JSON.parse(ap);}catch(e){o.apply_raw=ap.slice(0,700);}
   }
-  o.all=[...found];
-  const want=/giant-adult|hair-skin|hair-and-skin|hairball|indoor|oral-care|sensible-33|sterilised-37|medium-adult/i;
-  const mine=[...found].filter(u=>want.test(u));
-  o.mine=mine;
-  for(const u of mine.slice(0,14)){
-    try{
-      await pg.goto(u,{waitUntil:'domcontentloaded',timeout:60000});
-      await pg.waitForTimeout(5000);
-      const tb=await pg.$$eval('table',ts=>ts.map(t=>[...t.querySelectorAll('tr')].map(tr=>[...tr.querySelectorAll('td,th')].map(c=>c.innerText.replace(/\s+/g,' ').trim()))));
-      o.pages[decodeURIComponent(u.split('/').pop())]={title:(await pg.title()).slice(0,50),n:tb.length,t:tb.filter(x=>x.length>1).slice(0,3)};
-    }catch(e){ o.pages[u.split('/').pop()]={err:String(e.message).slice(0,60)}; }
-  }
-  await br.close();
-}catch(e){ o.FATAL=String(e&&e.message?e.message:e).slice(0,250); }
-pr('r8.json',o); console.log('DONE');
+  wj('POST',`code-snippets/v1/snippets/${id}`,{active:false});
+  o.snip=id;
+}
+pr('rf.json',o); console.log('DONE');
