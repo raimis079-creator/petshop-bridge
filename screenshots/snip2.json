@@ -1,0 +1,4145 @@
+{
+ "all": [
+  {
+   "id": 1,
+   "name": "Make upload filenames lowercase",
+   "active": false,
+   "scope": "global",
+   "len": 52
+  },
+  {
+   "id": 2,
+   "name": "Disable admin bar",
+   "active": false,
+   "scope": "front-end",
+   "len": 115
+  },
+  {
+   "id": 3,
+   "name": "Allow smilies",
+   "active": false,
+   "scope": "global",
+   "len": 187
+  },
+  {
+   "id": 4,
+   "name": "Current year",
+   "active": false,
+   "scope": "content",
+   "len": 26
+  },
+  {
+   "id": 5,
+   "name": "petshop kategorijos v2",
+   "active": false,
+   "scope": "global",
+   "len": 6210
+  },
+  {
+   "id": 8,
+   "name": "petshop menu subcats v1",
+   "active": false,
+   "scope": "global",
+   "len": 3016
+  },
+  {
+   "id": 9,
+   "name": "etshop sunims menu v1",
+   "active": false,
+   "scope": "global",
+   "len": 5759
+  },
+  {
+   "id": 10,
+   "name": "petshop sunims menu v2",
+   "active": false,
+   "scope": "global",
+   "len": 5546
+  },
+  {
+   "id": 11,
+   "name": "petshop katems menu v1",
+   "active": false,
+   "scope": "global",
+   "len": 5490
+  },
+  {
+   "id": 12,
+   "name": "petshop remaining menus v1",
+   "active": false,
+   "scope": "global",
+   "len": 5325
+  },
+  {
+   "id": 13,
+   "name": "petshop remap categories v1",
+   "active": false,
+   "scope": "global",
+   "len": 3505
+  },
+  {
+   "id": 14,
+   "name": "petshop remap categories v2",
+   "active": false,
+   "scope": "global",
+   "len": 2372
+  },
+  {
+   "id": 15,
+   "name": "petshop cleanup empty cats v1",
+   "active": false,
+   "scope": "global",
+   "len": 1304
+  },
+  {
+   "id": 16,
+   "name": "Petshop reset menu options v1 ",
+   "active": false,
+   "scope": "global",
+   "len": 558
+  },
+  {
+   "id": 72,
+   "name": "del pauksciu",
+   "active": false,
+   "scope": "global",
+   "len": 2290
+  },
+  {
+   "id": 71,
+   "name": "Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis)",
+   "active": false,
+   "scope": "global",
+   "len": 7163
+  },
+  {
+   "id": 70,
+   "name": "Tikri slug",
+   "active": false,
+   "scope": "global",
+   "len": 2028
+  },
+  {
+   "id": 40,
+   "name": "ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas",
+   "active": false,
+   "scope": "global",
+   "len": 922
+  },
+  {
+   "id": 41,
+   "name": "Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg",
+   "active": false,
+   "scope": "global",
+   "len": 2008
+  },
+  {
+   "id": 42,
+   "name": "ZB prekės be aprašymo",
+   "active": false,
+   "scope": "global",
+   "len": 869
+  },
+  {
+   "id": 44,
+   "name": "Pataisyti prekes su per dideliais matmenimis - kurjeris",
+   "active": false,
+   "scope": "global",
+   "len": 1297
+  },
+  {
+   "id": 47,
+   "name": " Base64 aprašymo pavyzdys",
+   "active": false,
+   "scope": "global",
+   "len": 448
+  },
+  {
+   "id": 48,
+   "name": "Base64 nuotraukos išvalymas iš aprašymų",
+   "active": false,
+   "scope": "global",
+   "len": 1395
+  },
+  {
+   "id": 50,
+   "name": "ZB prekių skaičius1",
+   "active": false,
+   "scope": "global",
+   "len": 1253
+  },
+  {
+   "id": 51,
+   "name": "ZB brendų priskyrimas brand taksonomijoje1.1",
+   "active": false,
+   "scope": "global",
+   "len": 375
+  },
+  {
+   "id": 52,
+   "name": "ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas",
+   "active": false,
+   "scope": "global",
+   "len": 1828
+  },
+  {
+   "id": 53,
+   "name": "ZB prekės be brando — priskirti iš pavadinimo",
+   "active": false,
+   "scope": "global",
+   "len": 3325
+  },
+  {
+   "id": 54,
+   "name": "4 likusių prekių brandų priskyrimas",
+   "active": false,
+   "scope": "global",
+   "len": 987
+  },
+  {
+   "id": 55,
+   "name": "ZB prekės be nuotraukos",
+   "active": false,
+   "scope": "global",
+   "len": 854
+  },
+  {
+   "id": 56,
+   "name": "ZB nuotraukų importas iš katalogo",
+   "active": false,
+   "scope": "global",
+   "len": 4872
+  },
+  {
+   "id": 58,
+   "name": "Patikrinti paieškos HTML struktūrą",
+   "active": false,
+   "scope": "global",
+   "len": 652
+  },
+  {
+   "id": 59,
+   "name": "ZB nuotraukų importas — pataisytas URL",
+   "active": false,
+   "scope": "global",
+   "len": 4769
+  },
+  {
+   "id": 60,
+   "name": "atikrinti filterSearch HTML",
+   "active": false,
+   "scope": "global",
+   "len": 1071
+  },
+  {
+   "id": 61,
+   "name": "ZB nuotraukų indekso kūrimas iš brendų puslapių",
+   "active": false,
+   "scope": "global",
+   "len": 5723
+  },
+  {
+   "id": 62,
+   "name": "Patikrinti brendų puslapio HTML struktūrą",
+   "active": false,
+   "scope": "global",
+   "len": 971
+  },
+  {
+   "id": 63,
+   "name": "ZB indekso kūrimas v2 — data-lazyloadsrc iš sąrašo",
+   "active": false,
+   "scope": "global",
+   "len": 5126
+  },
+  {
+   "id": 64,
+   "name": "ZB indekso kūrimas v3 — su ilgesnėmis pauzėmis",
+   "active": false,
+   "scope": "global",
+   "len": 3736
+  },
+  {
+   "id": 65,
+   "name": "ZB indekso kūrimas v3 — admin_init",
+   "active": false,
+   "scope": "global",
+   "len": 3736
+  },
+  {
+   "id": 66,
+   "name": "ZB indekso kūrimas — per admin puslapį",
+   "active": false,
+   "scope": "global",
+   "len": 5170
+  },
+  {
+   "id": 397,
+   "name": "Monoprotein Dry-Run v5 (daugiau brendu)",
+   "active": false,
+   "scope": "global",
+   "len": 12400
+  },
+  {
+   "id": 75,
+   "name": "Masinis pa_pakuotes_dydis priskyrimas iš pavadinimų",
+   "active": false,
+   "scope": "global",
+   "len": 4843
+  },
+  {
+   "id": 76,
+   "name": "Tikrina prekes kur kg = gyvūno svoris, ne pakuotė",
+   "active": false,
+   "scope": "global",
+   "len": 1666
+  },
+  {
+   "id": 78,
+   "name": "Tikrina naujos prekės meta laukus",
+   "active": false,
+   "scope": "global",
+   "len": 1522
+  },
+  {
+   "id": 79,
+   "name": "Palygina kainas tarp seno ir naujo XML",
+   "active": false,
+   "scope": "global",
+   "len": 3678
+  },
+  {
+   "id": 80,
+   "name": "Perskaičiuoja visų ZB prekių kainas pagal naują logiką",
+   "active": false,
+   "scope": "global",
+   "len": 4304
+  },
+  {
+   "id": 81,
+   "name": "Tikrina dublikatus pagal SKU",
+   "active": false,
+   "scope": "global",
+   "len": 2294
+  },
+  {
+   "id": 82,
+   "name": "Perkelia aprašymus + nuotraukas iš NAUJŲ (2026-06-01) į SENUS (2026-05-27)",
+   "active": false,
+   "scope": "global",
+   "len": 4338
+  },
+  {
+   "id": 83,
+   "name": "Parodo \"Kita\" prekių ZB kategorijų kelius iš XML",
+   "active": false,
+   "scope": "global",
+   "len": 3645
+  },
+  {
+   "id": 84,
+   "name": "Priskiria WC kategorijas \"Kita\" prekėms pagal ZB XML <category> kelią",
+   "active": false,
+   "scope": "global",
+   "len": 8460
+  },
+  {
+   "id": 86,
+   "name": "Tikrina kodėl ZB prekės su cost >= 8 yra draft",
+   "active": false,
+   "scope": "global",
+   "len": 3053
+  },
+  {
+   "id": 87,
+   "name": "Kelia į publish ZB draft prekes, kurios atitinka VISUS kriterijus",
+   "active": false,
+   "scope": "global",
+   "len": 4370
+  },
+  {
+   "id": 88,
+   "name": "kiek iš paskelbtų yra ZB prekės",
+   "active": false,
+   "scope": "global",
+   "len": 1070
+  },
+  {
+   "id": 90,
+   "name": "FBT pradinis konfigūravimas — sausas maistas → skanėstai",
+   "active": false,
+   "scope": "global",
+   "len": 4079
+  },
+  {
+   "id": 92,
+   "name": "VetFarmas inventorizacija v3",
+   "active": false,
+   "scope": "global",
+   "len": 12434
+  },
+  {
+   "id": 94,
+   "name": "SKU \\u2192 EAN matching i\\u0161 VetFarmas XML",
+   "active": false,
+   "scope": "global",
+   "len": 11166
+  },
+  {
+   "id": 95,
+   "name": "Vetocanis matching pagal pavadinim\\u0105",
+   "active": false,
+   "scope": "global",
+   "len": 9732
+  },
+  {
+   "id": 96,
+   "name": "VetFarmas API helper",
+   "active": false,
+   "scope": "global",
+   "len": 7595
+  },
+  {
+   "id": 98,
+   "name": "vf_desc_peek",
+   "active": false,
+   "scope": "global",
+   "len": 4842
+  },
+  {
+   "id": 101,
+   "name": "vf_parser_v3",
+   "active": false,
+   "scope": "global",
+   "len": 25494
+  },
+  {
+   "id": 468,
+   "name": "Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 11574
+  },
+  {
+   "id": 469,
+   "name": "Petshop Dev App Passwords v1",
+   "active": true,
+   "scope": "global",
+   "len": 385
+  },
+  {
+   "id": 472,
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+   "active": true,
+   "scope": "global",
+   "len": 10744
+  },
+  {
+   "id": 473,
+   "name": "Petshop Attr Modulis: Kraikai Katems v1.0 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 9123
+  },
+  {
+   "id": 105,
+   "name": "EAN normalizacija — _global_unique_id 13→12 skaitm.",
+   "active": false,
+   "scope": "global",
+   "len": 11797
+  },
+  {
+   "id": 106,
+   "name": "WooCommerce kategorijų eksportas — hierarchija + prekių skaičius",
+   "active": false,
+   "scope": "global",
+   "len": 7918
+  },
+  {
+   "id": 393,
+   "name": "Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis)",
+   "active": false,
+   "scope": "global",
+   "len": 7254
+  },
+  {
+   "id": 394,
+   "name": "Monoprotein Dry-Run v2 (isvestinis)",
+   "active": false,
+   "scope": "global",
+   "len": 4594
+  },
+  {
+   "id": 395,
+   "name": "Monoprotein Dry-Run v3 (sudetis-grieztas)",
+   "active": false,
+   "scope": "global",
+   "len": 10539
+  },
+  {
+   "id": 396,
+   "name": "Monoprotein Dry-Run v4 (brendai + riebalu fix)",
+   "active": false,
+   "scope": "global",
+   "len": 12304
+  },
+  {
+   "id": 110,
+   "name": "ZB IMPORT LOG STEBĖJIMAS — realiu laiku",
+   "active": false,
+   "scope": "global",
+   "len": 8138
+  },
+  {
+   "id": 385,
+   "name": "Baltymu Saltinis Apply Sausas Aprasymai v1 (32 svarus)",
+   "active": false,
+   "scope": "global",
+   "len": 3947
+  },
+  {
+   "id": 386,
+   "name": "Baltymu Saltinis Apply Sausas EXOTIC v1",
+   "active": false,
+   "scope": "global",
+   "len": 4392
+  },
+  {
+   "id": 387,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi)",
+   "active": false,
+   "scope": "global",
+   "len": 7248
+  },
+  {
+   "id": 116,
+   "name": "Trash zonos pakitimo tyrimas",
+   "active": false,
+   "scope": "global",
+   "len": 7322
+  },
+  {
+   "id": 120,
+   "name": "Cleanup Excluded",
+   "active": false,
+   "scope": "global",
+   "len": 6295
+  },
+  {
+   "id": 121,
+   "name": "trash_disappear",
+   "active": false,
+   "scope": "global",
+   "len": 6580
+  },
+  {
+   "id": 388,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena)",
+   "active": false,
+   "scope": "global",
+   "len": 7525
+  },
+  {
+   "id": 389,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem)",
+   "active": false,
+   "scope": "global",
+   "len": 7404
+  },
+  {
+   "id": 124,
+   "name": "zb_disaster_recovery",
+   "active": false,
+   "scope": "global",
+   "len": 14093
+  },
+  {
+   "id": 125,
+   "name": "publish_diag",
+   "active": false,
+   "scope": "global",
+   "len": 13790
+  },
+  {
+   "id": 126,
+   "name": "zb_recovery2",
+   "active": false,
+   "scope": "global",
+   "len": 15220
+  },
+  {
+   "id": 127,
+   "name": "ZB analitinis snippet'as — DUOMENYS ZB politikai v2",
+   "active": false,
+   "scope": "global",
+   "len": 17213
+  },
+  {
+   "id": 373,
+   "name": "Atributai Inventorius v2 (tikslus slug)",
+   "active": false,
+   "scope": "global",
+   "len": 6031
+  },
+  {
+   "id": 372,
+   "name": "tributai Inventorius v1 (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 5980
+  },
+  {
+   "id": 371,
+   "name": "Draft Publish Vykdymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 5163
+  },
+  {
+   "id": 129,
+   "name": "Today Changes",
+   "active": false,
+   "scope": "global",
+   "len": 13553
+  },
+  {
+   "id": 130,
+   "name": "Duplicate analyze",
+   "active": false,
+   "scope": "global",
+   "len": 13308
+  },
+  {
+   "id": 131,
+   "name": "ZB Nuke Option",
+   "active": false,
+   "scope": "global",
+   "len": 15459
+  },
+  {
+   "id": 132,
+   "name": "New ZB Diag",
+   "active": false,
+   "scope": "global",
+   "len": 15058
+  },
+  {
+   "id": 133,
+   "name": "zb_nuke_today",
+   "active": false,
+   "scope": "global",
+   "len": 12107
+  },
+  {
+   "id": 134,
+   "name": " assign_categories v3",
+   "active": false,
+   "scope": "global",
+   "len": 9510
+  },
+  {
+   "id": 136,
+   "name": "assign_categories v2",
+   "active": false,
+   "scope": "global",
+   "len": 10621
+  },
+  {
+   "id": 647,
+   "name": "Petshop Invoice Timing Test v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 2758
+  },
+  {
+   "id": 648,
+   "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+   "active": true,
+   "scope": "global",
+   "len": 741
+  },
+  {
+   "id": 655,
+   "name": "Petshop Read Attach v1",
+   "active": false,
+   "scope": "global",
+   "len": 892
+  },
+  {
+   "id": 649,
+   "name": "Petshop WCDN Cfg v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 753
+  },
+  {
+   "id": 650,
+   "name": "Petshop Dump Functions v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 559
+  },
+  {
+   "id": 651,
+   "name": "Petshop Deploy Functions v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 104761
+  },
+  {
+   "id": 138,
+   "name": "Abakus Unpublish",
+   "active": false,
+   "scope": "global",
+   "len": 3181
+  },
+  {
+   "id": 153,
+   "name": "petshop.lt WEIGHT NORMALIZER",
+   "active": false,
+   "scope": "global",
+   "len": 13753
+  },
+  {
+   "id": 155,
+   "name": "petshop_brand_apply v7",
+   "active": false,
+   "scope": "global",
+   "len": 19261
+  },
+  {
+   "id": 156,
+   "name": "Prekių ženklai labels",
+   "active": false,
+   "scope": "global",
+   "len": 2338
+  },
+  {
+   "id": 158,
+   "name": " WC Categories — pre-VF-mapping cleanup",
+   "active": false,
+   "scope": "global",
+   "len": 6708
+  },
+  {
+   "id": 460,
+   "name": "Transportavimo dezes rename - sunims/katems galune",
+   "active": false,
+   "scope": "global",
+   "len": 2334
+  },
+  {
+   "id": 461,
+   "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+   "active": true,
+   "scope": "global",
+   "len": 1745
+  },
+  {
+   "id": 462,
+   "name": "Petshop Atributu Auditas v1.0 (read-only, ko truksta)",
+   "active": false,
+   "scope": "global",
+   "len": 6652
+  },
+  {
+   "id": 463,
+   "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+   "active": true,
+   "scope": "global",
+   "len": 7584
+  },
+  {
+   "id": 454,
+   "name": "Elmo (23996) -> Narvai ir aksesuarai grauzikams (304)",
+   "active": false,
+   "scope": "global",
+   "len": 1982
+  },
+  {
+   "id": 455,
+   "name": "Guoliai katems - gyvuno_rusis fix",
+   "active": false,
+   "scope": "global",
+   "len": 4067
+  },
+  {
+   "id": 457,
+   "name": "Guoliu/transporto/narvu blokas - pa_tipas + pa_dydis APPLY",
+   "active": false,
+   "scope": "global",
+   "len": 8041
+  },
+  {
+   "id": 458,
+   "name": "233 pervadinimas: Guoliai sunims",
+   "active": false,
+   "scope": "global",
+   "len": 1846
+  },
+  {
+   "id": 459,
+   "name": "Guoliu/transporto YITH preset - guoliu-transporto-filtras",
+   "active": false,
+   "scope": "global",
+   "len": 4392
+  },
+  {
+   "id": 161,
+   "name": " VF Brands List",
+   "active": false,
+   "scope": "global",
+   "len": 2497
+  },
+  {
+   "id": 447,
+   "name": "Guoliai (sunims + katems) - zvalgyba",
+   "active": false,
+   "scope": "global",
+   "len": 4235
+  },
+  {
+   "id": 448,
+   "name": "Kategoriju zemelapis - guoliai/boksai/transportavimas",
+   "active": false,
+   "scope": "global",
+   "len": 2547
+  },
+  {
+   "id": 449,
+   "name": "Transportas/guoliai/narvai CHAOS - kryzmine zvalgyba",
+   "active": false,
+   "scope": "global",
+   "len": 4003
+  },
+  {
+   "id": 450,
+   "name": "KATEMS -> Guoliai katems - VIENOS kategorijos sukurimas",
+   "active": false,
+   "scope": "global",
+   "len": 2262
+  },
+  {
+   "id": 451,
+   "name": "Guoliai/transportas/narvai - PERKELIMO DRY-RUN (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 8038
+  },
+  {
+   "id": 452,
+   "name": "Guoliai/transportas/narvai - PERKELIMO DRY-RUN v2 (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 8984
+  },
+  {
+   "id": 163,
+   "name": "VF Raw XML Sample",
+   "active": false,
+   "scope": "global",
+   "len": 5571
+  },
+  {
+   "id": 433,
+   "name": "YITH preset struktura - zvalgyba (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 2743
+  },
+  {
+   "id": 434,
+   "name": "Vitaminu YITH preset - sukurimas (klonas)",
+   "active": false,
+   "scope": "global",
+   "len": 6071
+  },
+  {
+   "id": 441,
+   "name": "Antkakliu YITH preset - sukurimas (klonas)",
+   "active": false,
+   "scope": "global",
+   "len": 5653
+  },
+  {
+   "id": 442,
+   "name": "Antkakliu MOVE-OUT - kategoriju perkelimas",
+   "active": false,
+   "scope": "global",
+   "len": 4301
+  },
+  {
+   "id": 443,
+   "name": "Dubeneliai sunims (111) - zvalgyba",
+   "active": false,
+   "scope": "global",
+   "len": 2648
+  },
+  {
+   "id": 445,
+   "name": "Dubeneliai (111) - ATRIBUTU APPLY",
+   "active": false,
+   "scope": "global",
+   "len": 8881
+  },
+  {
+   "id": 446,
+   "name": "Dubeneliu YITH preset - sukurimas (klonas)",
+   "active": false,
+   "scope": "global",
+   "len": 4736
+  },
+  {
+   "id": 167,
+   "name": "Account Wide Inode Scan v1",
+   "active": false,
+   "scope": "global",
+   "len": 11414
+  },
+  {
+   "id": 401,
+   "name": "Monoprotein Diag (kodel 183 -> 164)",
+   "active": false,
+   "scope": "global",
+   "len": 3335
+  },
+  {
+   "id": 402,
+   "name": "Monoprotein Apply v2 (n-acknowledgment)",
+   "active": false,
+   "scope": "global",
+   "len": 12750
+  },
+  {
+   "id": 403,
+   "name": "Atributu dengties diagnostika (maistas/konservai/skanestai)",
+   "active": false,
+   "scope": "global",
+   "len": 4000
+  },
+  {
+   "id": 404,
+   "name": "Kategoriju medis + gyvuno rusies terminai (zvalgyba)",
+   "active": false,
+   "scope": "global",
+   "len": 3855
+  },
+  {
+   "id": 405,
+   "name": "Gyvuno rusis is kategorijos - DRY RUN (visas katalogas)",
+   "active": false,
+   "scope": "global",
+   "len": 5917
+  },
+  {
+   "id": 406,
+   "name": "Gyvuno rusis is kategorijos - APPLY (visas katalogas)",
+   "active": false,
+   "scope": "global",
+   "len": 4687
+  },
+  {
+   "id": 407,
+   "name": "Pakuotes dydis - zvalgyba (maistui)",
+   "active": false,
+   "scope": "global",
+   "len": 3001
+  },
+  {
+   "id": 408,
+   "name": "Pakuotes dydis (maistui) - DRY RUN",
+   "active": false,
+   "scope": "global",
+   "len": 7189
+  },
+  {
+   "id": 409,
+   "name": "Pakuotes dydis (maistui) - APPLY",
+   "active": false,
+   "scope": "global",
+   "len": 6610
+  },
+  {
+   "id": 410,
+   "name": "Baltymu saltinis - likucio zvalgyba",
+   "active": false,
+   "scope": "global",
+   "len": 2622
+  },
+  {
+   "id": 411,
+   "name": "Baltymu saltinis is pavadinimo - DRY RUN (likutis)",
+   "active": false,
+   "scope": "global",
+   "len": 6735
+  },
+  {
+   "id": 412,
+   "name": "Baltymu saltinis is pavadinimo - APPLY (likutis)",
+   "active": false,
+   "scope": "global",
+   "len": 8340
+  },
+  {
+   "id": 413,
+   "name": "Amzius - zvalgyba (maistui)",
+   "active": false,
+   "scope": "global",
+   "len": 2739
+  },
+  {
+   "id": 414,
+   "name": "Amzius is pavadinimo - DRY RUN (maistui)",
+   "active": false,
+   "scope": "global",
+   "len": 4418
+  },
+  {
+   "id": 415,
+   "name": "Amzius is pavadinimo - APPLY (maistui)",
+   "active": false,
+   "scope": "global",
+   "len": 5456
+  },
+  {
+   "id": 416,
+   "name": "Grudai - zvalgyba (sudeties skeneriui)",
+   "active": false,
+   "scope": "global",
+   "len": 3521
+  },
+  {
+   "id": 417,
+   "name": "Grudai (3 pakopos) is sudeties - DRY RUN",
+   "active": false,
+   "scope": "global",
+   "len": 5459
+  },
+  {
+   "id": 418,
+   "name": "Grudai (3 pakopos) is sudeties - APPLY",
+   "active": false,
+   "scope": "global",
+   "len": 6566
+  },
+  {
+   "id": 419,
+   "name": "Speciali mityba - zvalgyba (maistui)",
+   "active": false,
+   "scope": "global",
+   "len": 2683
+  },
+  {
+   "id": 420,
+   "name": "Speciali mityba is pavadinimo - DRY RUN (maistui)",
+   "active": false,
+   "scope": "global",
+   "len": 5979
+  },
+  {
+   "id": 421,
+   "name": "Speciali mityba is pavadinimo - APPLY (maistui)",
+   "active": false,
+   "scope": "global",
+   "len": 7275
+  },
+  {
+   "id": 422,
+   "name": "Monoprotein - likucio zvalgyba",
+   "active": false,
+   "scope": "global",
+   "len": 3751
+  },
+  {
+   "id": 423,
+   "name": "Monoprotein - TIK akivaizdus (zvalgyba)",
+   "active": false,
+   "scope": "global",
+   "len": 5735
+  },
+  {
+   "id": 424,
+   "name": "Monoprotein - TIK akivaizdus -> Taip (APPLY)",
+   "active": false,
+   "scope": "global",
+   "len": 8490
+  },
+  {
+   "id": 187,
+   "name": "VF Price Sync",
+   "active": false,
+   "scope": "global",
+   "len": 6175
+  },
+  {
+   "id": 190,
+   "name": "VF Price Repair v2",
+   "active": false,
+   "scope": "global",
+   "len": 5210
+  },
+  {
+   "id": 644,
+   "name": "Petshop Invoice Bug Recon2 v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 3726
+  },
+  {
+   "id": 645,
+   "name": "Petshop Read Functions v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 1335
+  },
+  {
+   "id": 400,
+   "name": "Monoprotein Apply v1 (183 Taip)",
+   "active": false,
+   "scope": "global",
+   "len": 12274
+  },
+  {
+   "id": 193,
+   "name": "Petshop SKU Supplier Info Lookup v1 (prekiu savikainai ieskoti)",
+   "active": false,
+   "scope": "global",
+   "len": 13695
+  },
+  {
+   "id": 194,
+   "name": "Venipak Shipping Lock v3",
+   "active": false,
+   "scope": "global",
+   "len": 3496
+  },
+  {
+   "id": 196,
+   "name": "Cart Cross-sell Source Filter v1 (tas pats sandelis)",
+   "active": false,
+   "scope": "global",
+   "len": 2613
+  },
+  {
+   "id": 197,
+   "name": "Petshop Find Crosssell v1 (diagnostika)",
+   "active": false,
+   "scope": "global",
+   "len": 4889
+  },
+  {
+   "id": 198,
+   "name": "Petshop Find Pricing Caller v1 (diagnostika)",
+   "active": false,
+   "scope": "global",
+   "len": 4351
+  },
+  {
+   "id": 398,
+   "name": "Monoprotein Dry-Run v6 (Farmina + Landfleisch)",
+   "active": false,
+   "scope": "global",
+   "len": 12835
+  },
+  {
+   "id": 390,
+   "name": "Baltymu Saltinis Apply Sausas Skonis v5 (multi + Paukstiena)",
+   "active": false,
+   "scope": "global",
+   "len": 7152
+  },
+  {
+   "id": 391,
+   "name": "Baltymu Saltinis Konservai Skonis Dry-Run v1 (platus, v5 variklis)",
+   "active": false,
+   "scope": "global",
+   "len": 7267
+  },
+  {
+   "id": 392,
+   "name": "Baltymu Saltinis Apply Konservai Skonis v1 (multi)",
+   "active": false,
+   "scope": "global",
+   "len": 6938
+  },
+  {
+   "id": 205,
+   "name": "ZB->Legacy Conversion v1 (excluded_brand trash -> Legacy draft)",
+   "active": false,
+   "scope": "global",
+   "len": 6762
+  },
+  {
+   "id": 219,
+   "name": "FBT Inspect v1 (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 3732
+  },
+  {
+   "id": 220,
+   "name": "FBT Inspect v2 (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 2188
+  },
+  {
+   "id": 432,
+   "name": "Vitaminai/papildai - APPLY (paskirtis+forma)",
+   "active": false,
+   "scope": "global",
+   "len": 10773
+  },
+  {
+   "id": 224,
+   "name": "Sale Clean v1 (Legacy akciju valymas)",
+   "active": false,
+   "scope": "global",
+   "len": 5749
+  },
+  {
+   "id": 464,
+   "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+   "active": true,
+   "scope": "global",
+   "len": 8137
+  },
+  {
+   "id": 234,
+   "name": "VF Gallery Dup Clean v1",
+   "active": false,
+   "scope": "global",
+   "len": 5982
+  },
+  {
+   "id": 239,
+   "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)",
+   "active": true,
+   "scope": "global",
+   "len": 1220
+  },
+  {
+   "id": 240,
+   "name": "Clean Big Image Sizes v1",
+   "active": false,
+   "scope": "global",
+   "len": 5357
+  },
+  {
+   "id": 465,
+   "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+   "active": true,
+   "scope": "global",
+   "len": 6656
+  },
+  {
+   "id": 425,
+   "name": "Monoprotein - TIK akivaizdus -> Taip (APPLY)",
+   "active": false,
+   "scope": "global",
+   "len": 8796
+  },
+  {
+   "id": 426,
+   "name": "Monoprotein - TIK akivaizdus -> Taip (APPLY)",
+   "active": false,
+   "scope": "global",
+   "len": 8850
+  },
+  {
+   "id": 427,
+   "name": "Vitaminai/papildai - zvalgyba v1 (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 4559
+  },
+  {
+   "id": 428,
+   "name": "Vitaminai/papildai - dry-run v1 (paskirtis+forma)",
+   "active": false,
+   "scope": "global",
+   "len": 7739
+  },
+  {
+   "id": 254,
+   "name": "VF Block Before Create v2.0",
+   "active": false,
+   "scope": "global",
+   "len": 7769
+  },
+  {
+   "id": 429,
+   "name": "Vitaminai/papildai - dry-run v1 (paskirtis+forma)",
+   "active": false,
+   "scope": "global",
+   "len": 7739
+  },
+  {
+   "id": 430,
+   "name": "Vitaminai/papildai - dry-run v2 (NAME-ONLY)",
+   "active": false,
+   "scope": "global",
+   "len": 7401
+  },
+  {
+   "id": 431,
+   "name": "Vitaminai/papildai - REVIEW aprasymu dump (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 1961
+  },
+  {
+   "id": 258,
+   "name": "ZB Pricing State Check v1 (read-only)",
+   "active": false,
+   "scope": "global",
+   "len": 6047
+  },
+  {
+   "id": 370,
+   "name": "Draft Publish Patikra v2",
+   "active": false,
+   "scope": "global",
+   "len": 5455
+  },
+  {
+   "id": 369,
+   "name": "Draft Publish Patikra v1",
+   "active": false,
+   "scope": "global",
+   "len": 5758
+  },
+  {
+   "id": 368,
+   "name": "Kita Finalas v1",
+   "active": false,
+   "scope": "global",
+   "len": 7523
+  },
+  {
+   "id": 367,
+   "name": "Kita Liko Diagnostika v2",
+   "active": false,
+   "scope": "global",
+   "len": 5008
+  },
+  {
+   "id": 365,
+   "name": "Kategoriju Turinys v1",
+   "active": false,
+   "scope": "global",
+   "len": 2134
+  },
+  {
+   "id": 366,
+   "name": "Aksesuaru Grupes v2",
+   "active": false,
+   "scope": "global",
+   "len": 6985
+  },
+  {
+   "id": 364,
+   "name": "Aksesuaru Grupes v1",
+   "active": false,
+   "scope": "global",
+   "len": 5657
+  },
+  {
+   "id": 384,
+   "name": "Baltymu Saltinis Sausas Aprasymai Dry-Run v2 (aliej/tauk isimtis)",
+   "active": false,
+   "scope": "global",
+   "len": 9211
+  },
+  {
+   "id": 375,
+   "name": "Baltymu Saltinis Dry-Run Konservai v2",
+   "active": true,
+   "scope": "global",
+   "len": 6572
+  },
+  {
+   "id": 374,
+   "name": "Baltymu Saltinis Dry-Run Konservai v1",
+   "active": false,
+   "scope": "global",
+   "len": 6185
+  },
+  {
+   "id": 281,
+   "name": "ZB Trash Sutvarkymas v2",
+   "active": false,
+   "scope": "global",
+   "len": 5020
+  },
+  {
+   "id": 453,
+   "name": "Guoliai/transportas/narvai - PERKELIMO APPLY",
+   "active": false,
+   "scope": "global",
+   "len": 9240
+  },
+  {
+   "id": 284,
+   "name": "VF Supplier SKU Backfill v1",
+   "active": false,
+   "scope": "global",
+   "len": 7148
+  },
+  {
+   "id": 286,
+   "name": "VF Dublikatu Valymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 6739
+  },
+  {
+   "id": 289,
+   "name": "ZB Excluded Dublikatu Valymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 6247
+  },
+  {
+   "id": 291,
+   "name": "Kategoriju Zemelapis v1",
+   "active": false,
+   "scope": "global",
+   "len": 4440
+  },
+  {
+   "id": 293,
+   "name": "Legacy Publish Grazinimas v1",
+   "active": false,
+   "scope": "global",
+   "len": 6974
+  },
+  {
+   "id": 296,
+   "name": "Brandu Priskyrimas pagal Pavadinima v1",
+   "active": false,
+   "scope": "global",
+   "len": 6926
+  },
+  {
+   "id": 298,
+   "name": "Brandu Priskyrimas pagal Pavadinima v1",
+   "active": false,
+   "scope": "global",
+   "len": 6924
+  },
+  {
+   "id": 301,
+   "name": "Hau Miau Priskyrimas v1",
+   "active": false,
+   "scope": "global",
+   "len": 4366
+  },
+  {
+   "id": 303,
+   "name": "Maisto Atributu Rasymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 26941
+  },
+  {
+   "id": 306,
+   "name": "Trash 2 Diagnoze v1",
+   "active": false,
+   "scope": "global",
+   "len": 4429
+  },
+  {
+   "id": 310,
+   "name": "Pakuotes Dydzio Rasymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 7380
+  },
+  {
+   "id": 313,
+   "name": "Pakuotes Terminu Valymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 4594
+  },
+  {
+   "id": 317,
+   "name": "Skanestu Gyvuno Ikelimas v1",
+   "active": false,
+   "scope": "global",
+   "len": 6579
+  },
+  {
+   "id": 318,
+   "name": "Filtru Terminu Tvarka v1",
+   "active": false,
+   "scope": "global",
+   "len": 5392
+  },
+  {
+   "id": 322,
+   "name": "Filtru Accordion JS v1",
+   "active": false,
+   "scope": "global",
+   "len": 4096
+  },
+  {
+   "id": 323,
+   "name": "Filtru Funkcijos JS v1 (order + accordion)",
+   "active": false,
+   "scope": "global",
+   "len": 6577
+  },
+  {
+   "id": 324,
+   "name": "Petshop Filtrai PILNAS v1",
+   "active": false,
+   "scope": "global",
+   "len": 11447
+  },
+  {
+   "id": 325,
+   "name": "Petshop Filtrai PILNAS v2",
+   "active": false,
+   "scope": "global",
+   "len": 12016
+  },
+  {
+   "id": 380,
+   "name": "Baltymu Saltinis Dry-Run Sausas v1",
+   "active": false,
+   "scope": "global",
+   "len": 5860
+  },
+  {
+   "id": 381,
+   "name": "Baltymu Saltinis Apply Sausas v1 (SINGLE)",
+   "active": false,
+   "scope": "global",
+   "len": 6013
+  },
+  {
+   "id": 382,
+   "name": "Baltymu Saltinis Sausas Aprasymai Dry-Run v1",
+   "active": false,
+   "scope": "global",
+   "len": 7312
+  },
+  {
+   "id": 383,
+   "name": "Baltymu Saltinis Apply Sausas RoyalCanin v1",
+   "active": false,
+   "scope": "global",
+   "len": 2892
+  },
+  {
+   "id": 329,
+   "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+   "active": true,
+   "scope": "global",
+   "len": 21825
+  },
+  {
+   "id": 399,
+   "name": "Monoprotein Dry-Run v7 (Family / Monge kons. / Animonda VF / kt.)",
+   "active": false,
+   "scope": "global",
+   "len": 13371
+  },
+  {
+   "id": 332,
+   "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+   "active": true,
+   "scope": "global",
+   "len": 7855
+  },
+  {
+   "id": 435,
+   "name": "Kategoriju medis - prieziura (zvalgyba)",
+   "active": false,
+   "scope": "global",
+   "len": 2531
+  },
+  {
+   "id": 436,
+   "name": "Vitaminu MOVE-OUT - kategoriju perkelimas",
+   "active": false,
+   "scope": "global",
+   "len": 4423
+  },
+  {
+   "id": 437,
+   "name": "Antkakliai/pavadeliai sunims (116) - zvalgyba",
+   "active": false,
+   "scope": "global",
+   "len": 2761
+  },
+  {
+   "id": 641,
+   "name": "Petshop Saskaitos Render LIVE v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 1863
+  },
+  {
+   "id": 642,
+   "name": "Petshop Paper Size Recon v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 1037
+  },
+  {
+   "id": 643,
+   "name": "Petshop Invoice Bug Recon v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 3212
+  },
+  {
+   "id": 440,
+   "name": "Antkakliai/pavadeliai (116) - ATRIBUTU APPLY",
+   "active": false,
+   "scope": "global",
+   "len": 12688
+  },
+  {
+   "id": 379,
+   "name": "Baltymu Saltinis Apply Skanestai v2 (SINGLE)",
+   "active": false,
+   "scope": "global",
+   "len": 6171
+  },
+  {
+   "id": 348,
+   "name": "Nepriskirtu Prekiu Patikra v2",
+   "active": false,
+   "scope": "global",
+   "len": 6568
+  },
+  {
+   "id": 378,
+   "name": "Baltymu Saltinis Apply Skanestai v1 (SINGLE)",
+   "active": false,
+   "scope": "global",
+   "len": 6167
+  },
+  {
+   "id": 377,
+   "name": "Baltymu Saltinis Dry-Run Skanestai v1",
+   "active": false,
+   "scope": "global",
+   "len": 6038
+  },
+  {
+   "id": 376,
+   "name": "Baltymu Saltinis Apply Konservai v1 (SINGLE)",
+   "active": false,
+   "scope": "global",
+   "len": 6113
+  },
+  {
+   "id": 343,
+   "name": "Visos Kategorijos Pilnas Sarasas v1",
+   "active": false,
+   "scope": "global",
+   "len": 2723
+  },
+  {
+   "id": 345,
+   "name": "Snippetu Sarasas v1",
+   "active": false,
+   "scope": "global",
+   "len": 5469
+  },
+  {
+   "id": 346,
+   "name": "Snippetu Valymas v1",
+   "active": false,
+   "scope": "global",
+   "len": 5798
+  },
+  {
+   "id": 476,
+   "name": "Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 5973
+  },
+  {
+   "id": 477,
+   "name": "Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 5973
+  },
+  {
+   "id": 480,
+   "name": "Petshop Attr Modulis: Draskykles Katems v1.2 (image-verified map)",
+   "active": false,
+   "scope": "global",
+   "len": 10002
+  },
+  {
+   "id": 481,
+   "name": "Petshop Attr Modulis: Draskykles Katems v1.0 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 6590
+  },
+  {
+   "id": 484,
+   "name": "Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 4862
+  },
+  {
+   "id": 485,
+   "name": "Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 4862
+  },
+  {
+   "id": 486,
+   "name": "Petshop Attr Modulis: Sampunai Sunims v1.0 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 9429
+  },
+  {
+   "id": 640,
+   "name": "Petshop Saskaitos Sablono Deploy v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 30858
+  },
+  {
+   "id": 492,
+   "name": "Petshop Filtru Atidarymas v2 (CSS+JS)",
+   "active": true,
+   "scope": "global",
+   "len": 1619
+  },
+  {
+   "id": 493,
+   "name": "Petshop Filtru Atidarymas v1 (no lazy-load)",
+   "active": true,
+   "scope": "global",
+   "len": 1245
+  },
+  {
+   "id": 494,
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+   "active": true,
+   "scope": "global",
+   "len": 7696
+  },
+  {
+   "id": 495,
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+   "active": false,
+   "scope": "global",
+   "len": 7498
+  },
+  {
+   "id": 502,
+   "name": "Higienos Modulis v1.0",
+   "active": true,
+   "scope": "global",
+   "len": 7560
+  },
+  {
+   "id": 503,
+   "name": "Grauziko Rusis Modulis v1.2",
+   "active": true,
+   "scope": "global",
+   "len": 5793
+  },
+  {
+   "id": 507,
+   "name": "Paukscio Rusis Modulis v1.3",
+   "active": true,
+   "scope": "global",
+   "len": 4948
+  },
+  {
+   "id": 509,
+   "name": "Zuvies Rusis Modulis v1.0",
+   "active": true,
+   "scope": "global",
+   "len": 5998
+  },
+  {
+   "id": 510,
+   "name": "Pasaro Forma Modulis v1.1",
+   "active": true,
+   "scope": "global",
+   "len": 4984
+  },
+  {
+   "id": 512,
+   "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+   "active": true,
+   "scope": "global",
+   "len": 9892
+  },
+  {
+   "id": 513,
+   "name": "Petshop Katalogo Auditas v1 (read-only)",
+   "active": true,
+   "scope": "global",
+   "len": 13522
+  },
+  {
+   "id": 514,
+   "name": "Petshop Import-Risk Recon v1 (read-only)",
+   "active": true,
+   "scope": "global",
+   "len": 3835
+  },
+  {
+   "id": 518,
+   "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)",
+   "active": true,
+   "scope": "global",
+   "len": 469
+  },
+  {
+   "id": 520,
+   "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)",
+   "active": true,
+   "scope": "front-end",
+   "len": 439
+  },
+  {
+   "id": 524,
+   "name": "Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)",
+   "active": true,
+   "scope": "global",
+   "len": 13547
+  },
+  {
+   "id": 525,
+   "name": "Petshop UI: kortelės + mobile sticky ATC",
+   "active": true,
+   "scope": "global",
+   "len": 4346
+  },
+  {
+   "id": 532,
+   "name": "Petshop MnM Fiksuoti komponentų kiekiai v2",
+   "active": true,
+   "scope": "global",
+   "len": 2050
+  },
+  {
+   "id": 535,
+   "name": "Petshop MnM Sutaupymo žymeklis v7 (be badge)",
+   "active": true,
+   "scope": "global",
+   "len": 3828
+  },
+  {
+   "id": 639,
+   "name": "Petshop Saskaitos Render v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 31338
+  },
+  {
+   "id": 638,
+   "name": "Petshop Saskaitos Failu Skaitymas v3",
+   "active": false,
+   "scope": "front-end",
+   "len": 2594
+  },
+  {
+   "id": 539,
+   "name": "Petshop Rinkinių Kūrimo Forma v2",
+   "active": true,
+   "scope": "admin",
+   "len": 40139
+  },
+  {
+   "id": 636,
+   "name": "Petshop Testiniu Useriu Valymas v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 1547
+  },
+  {
+   "id": 637,
+   "name": "Petshop Saskaitos Recon LIGHT v2",
+   "active": false,
+   "scope": "front-end",
+   "len": 2839
+  },
+  {
+   "id": 634,
+   "name": "Petshop Brand Slug 301 Catch-All v1 (T-14 aktyvuoti)",
+   "active": false,
+   "scope": "front-end",
+   "len": 1713
+  },
+  {
+   "id": 635,
+   "name": "Petshop Recon Pries Testini Uzsakyma v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 4010
+  },
+  {
+   "id": 632,
+   "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)",
+   "active": true,
+   "scope": "front-end",
+   "len": 575
+  },
+  {
+   "id": 633,
+   "name": "Petshop QA 6-oji Salyga - Brand Slug Skeneris v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 3599
+  },
+  {
+   "id": 631,
+   "name": "Petshop Complianz ES Redirect Fix v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 1338
+  },
+  {
+   "id": 629,
+   "name": "Petshop Complianz Cookie Page Mapping v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 2617
+  },
+  {
+   "id": 630,
+   "name": "Petshop Complianz Cookie Page Konsolidacija v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 4337
+  },
+  {
+   "id": 547,
+   "name": "Petshop Susidėjimo Rinkinio Vitrina v19",
+   "active": true,
+   "scope": "global",
+   "len": 32923
+  },
+  {
+   "id": 627,
+   "name": "Petshop Complianz Close Recon v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 2760
+  },
+  {
+   "id": 628,
+   "name": "Petshop Complianz X = Atmesti v1",
+   "active": true,
+   "scope": "front-end",
+   "len": 719
+  },
+  {
+   "id": 550,
+   "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+   "active": true,
+   "scope": "admin",
+   "len": 52201
+  },
+  {
+   "id": 626,
+   "name": "Petshop Complianz Mobile Baris v1 (sticky juosta)",
+   "active": false,
+   "scope": "front-end",
+   "len": 5898
+  },
+  {
+   "id": 625,
+   "name": "TEMP — Footer DUK fix (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 2744
+  },
+  {
+   "id": 624,
+   "name": "TEMP — Paysera recon v1 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 2772
+  },
+  {
+   "id": 555,
+   "name": "PSC LATERD",
+   "active": false,
+   "scope": "global",
+   "len": 444
+  },
+  {
+   "id": 556,
+   "name": "PSC TEST170",
+   "active": false,
+   "scope": "global",
+   "len": 1505
+  },
+  {
+   "id": 557,
+   "name": "PSC VB",
+   "active": false,
+   "scope": "global",
+   "len": 1159
+  },
+  {
+   "id": 571,
+   "name": "Petshop Pasiulymai Bendras Shortcode v1.0",
+   "active": false,
+   "scope": "global",
+   "len": 6051
+  },
+  {
+   "id": 558,
+   "name": "Petshop Choice Krepšelio Elgsena",
+   "active": true,
+   "scope": "global",
+   "len": 3560
+  },
+  {
+   "id": 560,
+   "name": "Petshop Rinkinio CTA Banneris kategorijose v7",
+   "active": true,
+   "scope": "front-end",
+   "len": 4688
+  },
+  {
+   "id": 559,
+   "name": "Petshop Rinkinio CTA Banneris kategorijose v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 2977
+  },
+  {
+   "id": 561,
+   "name": "Petshop Rinkinių Gyvūno Filtras v1",
+   "active": true,
+   "scope": "front-end",
+   "len": 3383
+  },
+  {
+   "id": 566,
+   "name": "Petshop Akcijos Shortcode v1.3",
+   "active": true,
+   "scope": "global",
+   "len": 5878
+  },
+  {
+   "id": 563,
+   "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)",
+   "active": true,
+   "scope": "front-end",
+   "len": 4621
+  },
+  {
+   "id": 562,
+   "name": "Petshop Sprendimai Shortcode Variklis v9",
+   "active": true,
+   "scope": "front-end",
+   "len": 20407
+  },
+  {
+   "id": 565,
+   "name": "Petshop VF Sync v1.1 (reprice+stock+publish)",
+   "active": true,
+   "scope": "global",
+   "len": 21945
+  },
+  {
+   "id": 567,
+   "name": "Petshop Daugiau=Pigiau Stock Sync v1.2",
+   "active": true,
+   "scope": "global",
+   "len": 4535
+  },
+  {
+   "id": 568,
+   "name": "Petshop Daugiau=Pigiau Display v1.2",
+   "active": true,
+   "scope": "global",
+   "len": 3245
+  },
+  {
+   "id": 569,
+   "name": "Petshop Pack/Rinkinys Auto-Categories v1.3",
+   "active": true,
+   "scope": "global",
+   "len": 5628
+  },
+  {
+   "id": 570,
+   "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+   "active": true,
+   "scope": "global",
+   "len": 4731
+  },
+  {
+   "id": 572,
+   "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v8",
+   "active": true,
+   "scope": "admin",
+   "len": 37789
+  },
+  {
+   "id": 573,
+   "name": "Petshop DP Kortelės Ženkliukas v4",
+   "active": true,
+   "scope": "global",
+   "len": 3886
+  },
+  {
+   "id": 623,
+   "name": "TEMP — Complianz layout fix v2 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 4863
+  },
+  {
+   "id": 582,
+   "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+   "active": true,
+   "scope": "global",
+   "len": 753
+  },
+  {
+   "id": 622,
+   "name": "TEMP — Complianz CSS regen v2 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 4465
+  },
+  {
+   "id": 587,
+   "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+   "active": true,
+   "scope": "global",
+   "len": 467
+  },
+  {
+   "id": 621,
+   "name": "TEMP — Complianz banner edit v1 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 4480
+  },
+  {
+   "id": 620,
+   "name": "TEMP — Complianz banner probe v1 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 2569
+  },
+  {
+   "id": 619,
+   "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+   "active": true,
+   "scope": "front-end",
+   "len": 4710
+  },
+  {
+   "id": 594,
+   "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+   "active": true,
+   "scope": "global",
+   "len": 890
+  },
+  {
+   "id": 618,
+   "name": "TEMP — Complianz integracijos probe v2 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 2314
+  },
+  {
+   "id": 617,
+   "name": "TEMP — Complianz options probe v1 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 3151
+  },
+  {
+   "id": 616,
+   "name": "TEMP — Complianz aktyvavimas v1 (token)",
+   "active": false,
+   "scope": "front-end",
+   "len": 1862
+  },
+  {
+   "id": 615,
+   "name": "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)",
+   "active": true,
+   "scope": "front-end",
+   "len": 1705
+  },
+  {
+   "id": 614,
+   "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+   "active": true,
+   "scope": "front-end",
+   "len": 15490
+  },
+  {
+   "id": 609,
+   "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)",
+   "active": true,
+   "scope": "front-end",
+   "len": 1740
+  },
+  {
+   "id": 610,
+   "name": "Petshop Topbar v2",
+   "active": true,
+   "scope": "front-end",
+   "len": 742
+  },
+  {
+   "id": 611,
+   "name": "Petshop Frontpage Setter v1 (TEMP)",
+   "active": false,
+   "scope": "global",
+   "len": 1389
+  },
+  {
+   "id": 646,
+   "name": "Petshop Read GenFn v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 739
+  },
+  {
+   "id": 612,
+   "name": "Petshop Bulk Snippet Delete v2 (TEMP)",
+   "active": false,
+   "scope": "global",
+   "len": 2341
+  },
+  {
+   "id": 613,
+   "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+   "active": true,
+   "scope": "front-end",
+   "len": 491
+  },
+  {
+   "id": 652,
+   "name": "Petshop R608 Recon v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 3208
+  },
+  {
+   "id": 653,
+   "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+   "active": true,
+   "scope": "global",
+   "len": 1973
+  },
+  {
+   "id": 654,
+   "name": "Petshop Invoice Test2 v1",
+   "active": false,
+   "scope": "front-end",
+   "len": 1651
+  },
+  {
+   "id": 656,
+   "name": "Petshop Deploy Base27 v1",
+   "active": false,
+   "scope": "global",
+   "len": 29675
+  },
+  {
+   "id": 657,
+   "name": "Petshop Real Render v1",
+   "active": false,
+   "scope": "global",
+   "len": 919
+  },
+  {
+   "id": 658,
+   "name": "Petshop Sales Recon v1",
+   "active": false,
+   "scope": "global",
+   "len": 2354
+  },
+  {
+   "id": 659,
+   "name": "Petshop Popular Xcheck v1",
+   "active": false,
+   "scope": "global",
+   "len": 4314
+  },
+  {
+   "id": 660,
+   "name": "Petshop Find By Name v1",
+   "active": false,
+   "scope": "global",
+   "len": 2369
+  },
+  {
+   "id": 661,
+   "name": "Petshop Attrs Recon v1",
+   "active": false,
+   "scope": "global",
+   "len": 1115
+  },
+  {
+   "id": 662,
+   "name": "Petshop Attr Diag v1",
+   "active": false,
+   "scope": "global",
+   "len": 2795
+  },
+  {
+   "id": 663,
+   "name": "Petshop Attr Mech v1",
+   "active": false,
+   "scope": "global",
+   "len": 3350
+  },
+  {
+   "id": 700,
+   "name": "Petshop Pauk tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1046
+  },
+  {
+   "id": 701,
+   "name": "Petshop PZVar tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1447
+  },
+  {
+   "id": 699,
+   "name": "Petshop GrauzVar tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1405
+  },
+  {
+   "id": 697,
+   "name": "Petshop Pixi tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1042
+  },
+  {
+   "id": 698,
+   "name": "Petshop Grauz tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1095
+  },
+  {
+   "id": 694,
+   "name": "Petshop KatesRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1223
+  },
+  {
+   "id": 695,
+   "name": "Petshop Cat77 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1472
+  },
+  {
+   "id": 696,
+   "name": "Petshop CatVar tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1577
+  },
+  {
+   "id": 692,
+   "name": "Petshop Maisto Tipo Mygtukai v1",
+   "active": true,
+   "scope": "global",
+   "len": 2251
+  },
+  {
+   "id": 693,
+   "name": "Petshop Mobile Filtru Dublio Fix v1",
+   "active": true,
+   "scope": "global",
+   "len": 910
+  },
+  {
+   "id": 691,
+   "name": "Petshop FoodRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1723
+  },
+  {
+   "id": 690,
+   "name": "Petshop WidClear tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1308
+  },
+  {
+   "id": 686,
+   "name": "Petshop Atrinktos Verify tmp",
+   "active": false,
+   "scope": "global",
+   "len": 760
+  },
+  {
+   "id": 687,
+   "name": "Petshop CatRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1158
+  },
+  {
+   "id": 688,
+   "name": "Petshop Kategorijos Landing v1 (sunims)",
+   "active": true,
+   "scope": "global",
+   "len": 12043
+  },
+  {
+   "id": 689,
+   "name": "Petshop WidRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1240
+  },
+  {
+   "id": 683,
+   "name": "Petshop Atrinktos Proto v1",
+   "active": false,
+   "scope": "global",
+   "len": 7583
+  },
+  {
+   "id": 684,
+   "name": "Petshop Atrinktos Proto v1",
+   "active": false,
+   "scope": "global",
+   "len": 8378
+  },
+  {
+   "id": 685,
+   "name": "Atrinktos Prekės Modulis v1 (rotacija)",
+   "active": true,
+   "scope": "global",
+   "len": 9082
+  },
+  {
+   "id": 682,
+   "name": "Petshop Atrinktos Dry v1",
+   "active": false,
+   "scope": "global",
+   "len": 2443
+  },
+  {
+   "id": 681,
+   "name": "Petshop VarFetch v1",
+   "active": false,
+   "scope": "global",
+   "len": 1579
+  },
+  {
+   "id": 679,
+   "name": "Petshop CatImg Recon v1",
+   "active": false,
+   "scope": "global",
+   "len": 1500
+  },
+  {
+   "id": 680,
+   "name": "Petshop Prod Fetch v1",
+   "active": false,
+   "scope": "global",
+   "len": 1873
+  },
+  {
+   "id": 678,
+   "name": "Petshop Sunims Recon v1",
+   "active": false,
+   "scope": "global",
+   "len": 2288
+  },
+  {
+   "id": 702,
+   "name": "Petshop RVRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1257
+  },
+  {
+   "id": 703,
+   "name": "Petshop RVClear tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1403
+  },
+  {
+   "id": 704,
+   "name": "Petshop ImgRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1731
+  },
+  {
+   "id": 705,
+   "name": "Petshop Produktu Nuotrauku Vienodinimas v1",
+   "active": true,
+   "scope": "global",
+   "len": 1523
+  },
+  {
+   "id": 706,
+   "name": "Petshop TxtFind tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2044
+  },
+  {
+   "id": 707,
+   "name": "Petshop UI Lokalizacija v1",
+   "active": true,
+   "scope": "global",
+   "len": 1557
+  },
+  {
+   "id": 708,
+   "name": "Petshop WTitle tmp",
+   "active": false,
+   "scope": "global",
+   "len": 784
+  },
+  {
+   "id": 709,
+   "name": "Petshop Build-a-box UI Valymas v1",
+   "active": true,
+   "scope": "global",
+   "len": 994
+  },
+  {
+   "id": 710,
+   "name": "Petshop PscFind tmp",
+   "active": false,
+   "scope": "global",
+   "len": 869
+  },
+  {
+   "id": 711,
+   "name": "Petshop Test3 Idempotency tmp",
+   "active": false,
+   "scope": "global",
+   "len": 4341
+  },
+  {
+   "id": 712,
+   "name": "Petshop MailRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2718
+  },
+  {
+   "id": 713,
+   "name": "Petshop Sender Webhook Receiver v1",
+   "active": false,
+   "scope": "global",
+   "len": 1520
+  },
+  {
+   "id": 714,
+   "name": "Petshop Test11 RetryQueue tmp",
+   "active": false,
+   "scope": "global",
+   "len": 6821
+  },
+  {
+   "id": 715,
+   "name": "Petshop Test11b RetryQueue tmp",
+   "active": false,
+   "scope": "global",
+   "len": 5964
+  },
+  {
+   "id": 716,
+   "name": "Petshop T11dbg tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2446
+  },
+  {
+   "id": 717,
+   "name": "Petshop Test11c RetryQueue tmp",
+   "active": false,
+   "scope": "global",
+   "len": 5851
+  },
+  {
+   "id": 718,
+   "name": "Petshop EmailRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2900
+  },
+  {
+   "id": 719,
+   "name": "Petshop ArchRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2625
+  },
+  {
+   "id": 720,
+   "name": "Petshop PluginsRecon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2167
+  },
+  {
+   "id": 721,
+   "name": "Petshop ESP Deploy tmp",
+   "active": false,
+   "scope": "global",
+   "len": 26744
+  },
+  {
+   "id": 722,
+   "name": "Petshop ESP Activate tmp",
+   "active": false,
+   "scope": "global",
+   "len": 794
+  },
+  {
+   "id": 723,
+   "name": "Petshop ESP Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3747
+  },
+  {
+   "id": 724,
+   "name": "Petshop ESP Deploy2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 40648
+  },
+  {
+   "id": 725,
+   "name": "Petshop ESP2 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3990
+  },
+  {
+   "id": 726,
+   "name": "Petshop Consent Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2111
+  },
+  {
+   "id": 727,
+   "name": "Petshop ESP Deploy3 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 35985
+  },
+  {
+   "id": 728,
+   "name": "Petshop ESP Reload3 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1030
+  },
+  {
+   "id": 729,
+   "name": "Petshop M4 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3711
+  },
+  {
+   "id": 730,
+   "name": "WH Setup tmp",
+   "active": false,
+   "scope": "global",
+   "len": 536
+  },
+  {
+   "id": 731,
+   "name": "WH Check tmp",
+   "active": false,
+   "scope": "global",
+   "len": 547
+  },
+  {
+   "id": 732,
+   "name": "Petshop Core Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1837
+  },
+  {
+   "id": 733,
+   "name": "Petshop Core Deploy tmp",
+   "active": false,
+   "scope": "global",
+   "len": 53457
+  },
+  {
+   "id": 734,
+   "name": "Petshop Core Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1620
+  },
+  {
+   "id": 735,
+   "name": "Petshop Core Deploy2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 8460
+  },
+  {
+   "id": 736,
+   "name": "Petshop Core Act2 tmp",
+   "active": true,
+   "scope": "global",
+   "len": 1429
+  },
+  {
+   "id": 737,
+   "name": "ESP State tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1253
+  },
+  {
+   "id": 738,
+   "name": "ESP v4 Final tmp",
+   "active": true,
+   "scope": "global",
+   "len": 35631
+  },
+  {
+   "id": 739,
+   "name": "State Check tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1158
+  },
+  {
+   "id": 740,
+   "name": "Full Deploy tmp",
+   "active": false,
+   "scope": "global",
+   "len": 40039
+  },
+  {
+   "id": 741,
+   "name": "Rename tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1779
+  },
+  {
+   "id": 742,
+   "name": "Act Final tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1351
+  },
+  {
+   "id": 743,
+   "name": "Regr Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2800
+  },
+  {
+   "id": 744,
+   "name": "Core Patch tmp",
+   "active": false,
+   "scope": "global",
+   "len": 8114
+  },
+  {
+   "id": 745,
+   "name": "Regr2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1937
+  },
+  {
+   "id": 746,
+   "name": "Core P3 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 9475
+  },
+  {
+   "id": 747,
+   "name": "Allow Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 741
+  },
+  {
+   "id": 748,
+   "name": "M6 Deploy tmp",
+   "active": false,
+   "scope": "global",
+   "len": 28997
+  },
+  {
+   "id": 749,
+   "name": "M6 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 621
+  },
+  {
+   "id": 750,
+   "name": "M6 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 4186
+  },
+  {
+   "id": 751,
+   "name": "Ship Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2576
+  },
+  {
+   "id": 752,
+   "name": "Ship2 Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2584
+  },
+  {
+   "id": 753,
+   "name": "S188 Deploy tmp",
+   "active": false,
+   "scope": "global",
+   "len": 59573
+  },
+  {
+   "id": 754,
+   "name": "S188 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 623
+  },
+  {
+   "id": 755,
+   "name": "S188 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3604
+  },
+  {
+   "id": 756,
+   "name": "SMTP Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1963
+  },
+  {
+   "id": 757,
+   "name": "E2E Full tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3302
+  },
+  {
+   "id": 758,
+   "name": "E2E Dbg tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3722
+  },
+  {
+   "id": 759,
+   "name": "Dep v2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 12402
+  },
+  {
+   "id": 760,
+   "name": "E2E v2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2493
+  },
+  {
+   "id": 761,
+   "name": "Img Check tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1549
+  },
+  {
+   "id": 762,
+   "name": "DevURL Scan tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1358
+  },
+  {
+   "id": 763,
+   "name": "Login Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1956
+  },
+  {
+   "id": 764,
+   "name": "M9 Dep tmp",
+   "active": false,
+   "scope": "global",
+   "len": 28731
+  },
+  {
+   "id": 765,
+   "name": "M9 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 621
+  },
+  {
+   "id": 766,
+   "name": "M9 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 4955
+  },
+  {
+   "id": 767,
+   "name": "M9 URL tmp",
+   "active": false,
+   "scope": "global",
+   "len": 807
+  },
+  {
+   "id": 768,
+   "name": "M9 Clean tmp",
+   "active": false,
+   "scope": "global",
+   "len": 580
+  },
+  {
+   "id": 769,
+   "name": "M7 Dep tmp",
+   "active": false,
+   "scope": "global",
+   "len": 27329
+  },
+  {
+   "id": 770,
+   "name": "M7 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 621
+  },
+  {
+   "id": 771,
+   "name": "M7 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 5036
+  },
+  {
+   "id": 772,
+   "name": "M7 Dep2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 15937
+  },
+  {
+   "id": 773,
+   "name": "M7 V2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3180
+  },
+  {
+   "id": 774,
+   "name": "HPOS Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2697
+  },
+  {
+   "id": 775,
+   "name": "M12 Dep tmp",
+   "active": false,
+   "scope": "global",
+   "len": 25006
+  },
+  {
+   "id": 776,
+   "name": "M12 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 622
+  },
+  {
+   "id": 777,
+   "name": "M12 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3028
+  },
+  {
+   "id": 778,
+   "name": "Venipak Meta tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2029
+  },
+  {
+   "id": 779,
+   "name": "M12 Dep2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 12597
+  },
+  {
+   "id": 780,
+   "name": "M12 V2 tmp",
+   "active": false,
+   "scope": "global",
+   "len": 3002
+  },
+  {
+   "id": 781,
+   "name": "Refill Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2253
+  },
+  {
+   "id": 782,
+   "name": "Status tmp",
+   "active": false,
+   "scope": "global",
+   "len": 1954
+  },
+  {
+   "id": 783,
+   "name": "M11 Dep tmp",
+   "active": false,
+   "scope": "global",
+   "len": 29975
+  },
+  {
+   "id": 784,
+   "name": "M11 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 622
+  },
+  {
+   "id": 785,
+   "name": "M11 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 4976
+  },
+  {
+   "id": 786,
+   "name": "M13 Dep tmp",
+   "active": false,
+   "scope": "global",
+   "len": 27104
+  },
+  {
+   "id": 787,
+   "name": "M13 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 622
+  },
+  {
+   "id": 788,
+   "name": "M13 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 4763
+  },
+  {
+   "id": 789,
+   "name": "M8 Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2006
+  },
+  {
+   "id": 790,
+   "name": "M8 Dep tmp",
+   "active": false,
+   "scope": "global",
+   "len": 58015
+  },
+  {
+   "id": 791,
+   "name": "M8 Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 621
+  },
+  {
+   "id": 792,
+   "name": "M8 Test tmp",
+   "active": false,
+   "scope": "global",
+   "len": 5619
+  },
+  {
+   "id": 793,
+   "name": "Frontend Recon tmp",
+   "active": false,
+   "scope": "global",
+   "len": 2045
+  },
+  {
+   "id": 794,
+   "name": "UI Dep tmp",
+   "active": false,
+   "scope": "global",
+   "len": 52626
+  },
+  {
+   "id": 795,
+   "name": "UI Act tmp",
+   "active": false,
+   "scope": "global",
+   "len": 621
+  },
+  {
+   "id": 796,
+   "name": "UI Page tmp",
+   "active": false,
+   "scope": "global",
+   "len": 582
+  },
+  {
+   "id": 797,
+   "name": "JS Fix tmp",
+   "active": true,
+   "scope": "global",
+   "len": 25498
+  },
+  {
+   "id": 798,
+   "name": "Dash Recon tmp",
+   "active": true,
+   "scope": "global",
+   "len": 1287
+  },
+  {
+   "id": 799,
+   "name": "Dash Dep",
+   "active": true,
+   "scope": "global",
+   "len": 28930
+  },
+  {
+   "id": 800,
+   "name": "Dash Act",
+   "active": true,
+   "scope": "global",
+   "len": 617
+  },
+  {
+   "id": 801,
+   "name": "Dash Test",
+   "active": true,
+   "scope": "global",
+   "len": 5145
+  },
+  {
+   "id": 802,
+   "name": "Photo Recon",
+   "active": true,
+   "scope": "global",
+   "len": 1017
+  },
+  {
+   "id": 803,
+   "name": "Photo Dep",
+   "active": true,
+   "scope": "global",
+   "len": 40815
+  },
+  {
+   "id": 804,
+   "name": "Photo Act",
+   "active": true,
+   "scope": "global",
+   "len": 617
+  },
+  {
+   "id": 805,
+   "name": "Photo Test",
+   "active": true,
+   "scope": "global",
+   "len": 4081
+  },
+  {
+   "id": 806,
+   "name": "ProfUI Dep",
+   "active": false,
+   "scope": "global",
+   "len": 59315
+  },
+  {
+   "id": 807,
+   "name": "ProfUI Setup",
+   "active": false,
+   "scope": "global",
+   "len": 2964
+  },
+  {
+   "id": 808,
+   "name": "AutoLogin",
+   "active": false,
+   "scope": "global",
+   "len": 504
+  },
+  {
+   "id": 809,
+   "name": "AutoLogin2",
+   "active": false,
+   "scope": "global",
+   "len": 452
+  },
+  {
+   "id": 810,
+   "name": "UIfix",
+   "active": false,
+   "scope": "global",
+   "len": 5720
+  },
+  {
+   "id": 811,
+   "name": "AL3",
+   "active": false,
+   "scope": "global",
+   "len": 452
+  },
+  {
+   "id": 812,
+   "name": "Cleanup",
+   "active": false,
+   "scope": "global",
+   "len": 918
+  },
+  {
+   "id": 813,
+   "name": "ImgF pet-dog.png",
+   "active": false,
+   "scope": "global",
+   "len": 722
+  },
+  {
+   "id": 814,
+   "name": "ImgF pet-cat.png",
+   "active": false,
+   "scope": "global",
+   "len": 722
+  },
+  {
+   "id": 815,
+   "name": "ImgF pet-bird.png",
+   "active": false,
+   "scope": "global",
+   "len": 726
+  },
+  {
+   "id": 816,
+   "name": "ImgF pet-rodent.png",
+   "active": false,
+   "scope": "global",
+   "len": 734
+  },
+  {
+   "id": 817,
+   "name": "ImgF pet-fish.png",
+   "active": false,
+   "scope": "global",
+   "len": 726
+  },
+  {
+   "id": 818,
+   "name": "ImgF pet-reptile.png",
+   "active": false,
+   "scope": "global",
+   "len": 738
+  },
+  {
+   "id": 819,
+   "name": "ImgF pet-other.png",
+   "active": false,
+   "scope": "global",
+   "len": 730
+  },
+  {
+   "id": 820,
+   "name": "ImgF pet-empty-state.png",
+   "active": false,
+   "scope": "global",
+   "len": 754
+  },
+  {
+   "id": 821,
+   "name": "GfxDep",
+   "active": false,
+   "scope": "global",
+   "len": 72488
+  },
+  {
+   "id": 822,
+   "name": "GfxSetup",
+   "active": false,
+   "scope": "global",
+   "len": 1532
+  },
+  {
+   "id": 823,
+   "name": "Clean200",
+   "active": false,
+   "scope": "global",
+   "len": 776
+  },
+  {
+   "id": 824,
+   "name": "CtDep",
+   "active": false,
+   "scope": "global",
+   "len": 77175
+  },
+  {
+   "id": 825,
+   "name": "CtAct",
+   "active": false,
+   "scope": "global",
+   "len": 557
+  },
+  {
+   "id": 826,
+   "name": "CtTest",
+   "active": false,
+   "scope": "global",
+   "len": 6390
+  },
+  {
+   "id": 827,
+   "name": "Ct2",
+   "active": false,
+   "scope": "global",
+   "len": 2365
+  },
+  {
+   "id": 828,
+   "name": "ContentDep",
+   "active": false,
+   "scope": "global",
+   "len": 82332
+  },
+  {
+   "id": 829,
+   "name": "ContentAct",
+   "active": false,
+   "scope": "global",
+   "len": 617
+  },
+  {
+   "id": 830,
+   "name": "ContentTest",
+   "active": false,
+   "scope": "global",
+   "len": 4881
+  },
+  {
+   "id": 831,
+   "name": "CT2",
+   "active": false,
+   "scope": "global",
+   "len": 1887
+  },
+  {
+   "id": 832,
+   "name": "E2EDep",
+   "active": false,
+   "scope": "global",
+   "len": 66199
+  },
+  {
+   "id": 833,
+   "name": "E2EAct",
+   "active": false,
+   "scope": "global",
+   "len": 617
+  },
+  {
+   "id": 834,
+   "name": "E2ETest",
+   "active": false,
+   "scope": "global",
+   "len": 4529
+  },
+  {
+   "id": 1008,
+   "name": "Exclusion NG Feeding v1 (Vetfarmas OCR + IT razioni)",
+   "active": false,
+   "scope": "global",
+   "len": 3982
+  },
+  {
+   "id": 1005,
+   "name": "Exclusion HY Feeding v1 (Vetfarmas OCR + PL HTML)",
+   "active": false,
+   "scope": "global",
+   "len": 3734
+  }
+ ],
+ "count": 489,
+ "feeding": [
+  {
+   "id": 1008,
+   "name": "Exclusion NG Feeding v1 (Vetfarmas OCR + IT razioni)",
+   "active": false,
+   "scope": "global",
+   "len": 3982
+  },
+  {
+   "id": 1005,
+   "name": "Exclusion HY Feeding v1 (Vetfarmas OCR + PL HTML)",
+   "active": false,
+   "scope": "global",
+   "len": 3734
+  }
+ ],
+ "active": [
+  {
+   "id": 469,
+   "name": "Petshop Dev App Passwords v1"
+  },
+  {
+   "id": 472,
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)"
+  },
+  {
+   "id": 648,
+   "name": "Petshop Invoice Doc Type Fix v2 (LIVE)"
+  },
+  {
+   "id": 461,
+   "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS"
+  },
+  {
+   "id": 463,
+   "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)"
+  },
+  {
+   "id": 464,
+   "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)"
+  },
+  {
+   "id": 239,
+   "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)"
+  },
+  {
+   "id": 465,
+   "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)"
+  },
+  {
+   "id": 375,
+   "name": "Baltymu Saltinis Dry-Run Konservai v2"
+  },
+  {
+   "id": 329,
+   "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]"
+  },
+  {
+   "id": 332,
+   "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]"
+  },
+  {
+   "id": 492,
+   "name": "Petshop Filtru Atidarymas v2 (CSS+JS)"
+  },
+  {
+   "id": 493,
+   "name": "Petshop Filtru Atidarymas v1 (no lazy-load)"
+  },
+  {
+   "id": 494,
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)"
+  },
+  {
+   "id": 502,
+   "name": "Higienos Modulis v1.0"
+  },
+  {
+   "id": 503,
+   "name": "Grauziko Rusis Modulis v1.2"
+  },
+  {
+   "id": 507,
+   "name": "Paukscio Rusis Modulis v1.3"
+  },
+  {
+   "id": 509,
+   "name": "Zuvies Rusis Modulis v1.0"
+  },
+  {
+   "id": 510,
+   "name": "Pasaro Forma Modulis v1.1"
+  },
+  {
+   "id": 512,
+   "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)"
+  },
+  {
+   "id": 513,
+   "name": "Petshop Katalogo Auditas v1 (read-only)"
+  },
+  {
+   "id": 514,
+   "name": "Petshop Import-Risk Recon v1 (read-only)"
+  },
+  {
+   "id": 518,
+   "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)"
+  },
+  {
+   "id": 520,
+   "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)"
+  },
+  {
+   "id": 524,
+   "name": "Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)"
+  },
+  {
+   "id": 525,
+   "name": "Petshop UI: kortelės + mobile sticky ATC"
+  },
+  {
+   "id": 532,
+   "name": "Petshop MnM Fiksuoti komponentų kiekiai v2"
+  },
+  {
+   "id": 535,
+   "name": "Petshop MnM Sutaupymo žymeklis v7 (be badge)"
+  },
+  {
+   "id": 539,
+   "name": "Petshop Rinkinių Kūrimo Forma v2"
+  },
+  {
+   "id": 632,
+   "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)"
+  },
+  {
+   "id": 547,
+   "name": "Petshop Susidėjimo Rinkinio Vitrina v19"
+  },
+  {
+   "id": 628,
+   "name": "Petshop Complianz X = Atmesti v1"
+  },
+  {
+   "id": 550,
+   "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15"
+  },
+  {
+   "id": 558,
+   "name": "Petshop Choice Krepšelio Elgsena"
+  },
+  {
+   "id": 560,
+   "name": "Petshop Rinkinio CTA Banneris kategorijose v7"
+  },
+  {
+   "id": 561,
+   "name": "Petshop Rinkinių Gyvūno Filtras v1"
+  },
+  {
+   "id": 566,
+   "name": "Petshop Akcijos Shortcode v1.3"
+  },
+  {
+   "id": 563,
+   "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)"
+  },
+  {
+   "id": 562,
+   "name": "Petshop Sprendimai Shortcode Variklis v9"
+  },
+  {
+   "id": 565,
+   "name": "Petshop VF Sync v1.1 (reprice+stock+publish)"
+  },
+  {
+   "id": 567,
+   "name": "Petshop Daugiau=Pigiau Stock Sync v1.2"
+  },
+  {
+   "id": 568,
+   "name": "Petshop Daugiau=Pigiau Display v1.2"
+  },
+  {
+   "id": 569,
+   "name": "Petshop Pack/Rinkinys Auto-Categories v1.3"
+  },
+  {
+   "id": 570,
+   "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0"
+  },
+  {
+   "id": 572,
+   "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v8"
+  },
+  {
+   "id": 573,
+   "name": "Petshop DP Kortelės Ženkliukas v4"
+  },
+  {
+   "id": 582,
+   "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)"
+  },
+  {
+   "id": 587,
+   "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1"
+  },
+  {
+   "id": 619,
+   "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)"
+  },
+  {
+   "id": 594,
+   "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1"
+  },
+  {
+   "id": 615,
+   "name": "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)"
+  },
+  {
+   "id": 614,
+   "name": "Petshop DataLayer v1.1 (GA4 ecommerce)"
+  },
+  {
+   "id": 609,
+   "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)"
+  },
+  {
+   "id": 610,
+   "name": "Petshop Topbar v2"
+  },
+  {
+   "id": 613,
+   "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)"
+  },
+  {
+   "id": 653,
+   "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)"
+  },
+  {
+   "id": 692,
+   "name": "Petshop Maisto Tipo Mygtukai v1"
+  },
+  {
+   "id": 693,
+   "name": "Petshop Mobile Filtru Dublio Fix v1"
+  },
+  {
+   "id": 688,
+   "name": "Petshop Kategorijos Landing v1 (sunims)"
+  },
+  {
+   "id": 685,
+   "name": "Atrinktos Prekės Modulis v1 (rotacija)"
+  },
+  {
+   "id": 705,
+   "name": "Petshop Produktu Nuotrauku Vienodinimas v1"
+  },
+  {
+   "id": 707,
+   "name": "Petshop UI Lokalizacija v1"
+  },
+  {
+   "id": 709,
+   "name": "Petshop Build-a-box UI Valymas v1"
+  },
+  {
+   "id": 736,
+   "name": "Petshop Core Act2 tmp"
+  },
+  {
+   "id": 738,
+   "name": "ESP v4 Final tmp"
+  },
+  {
+   "id": 797,
+   "name": "JS Fix tmp"
+  },
+  {
+   "id": 798,
+   "name": "Dash Recon tmp"
+  },
+  {
+   "id": 799,
+   "name": "Dash Dep"
+  },
+  {
+   "id": 800,
+   "name": "Dash Act"
+  },
+  {
+   "id": 801,
+   "name": "Dash Test"
+  },
+  {
+   "id": 802,
+   "name": "Photo Recon"
+  },
+  {
+   "id": 803,
+   "name": "Photo Dep"
+  },
+  {
+   "id": 804,
+   "name": "Photo Act"
+  },
+  {
+   "id": 805,
+   "name": "Photo Test"
+  }
+ ],
+ "temp": [
+  {
+   "id": 397,
+   "name": "Monoprotein Dry-Run v5 (daugiau brendu)",
+   "active": false
+  },
+  {
+   "id": 468,
+   "name": "Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 472,
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+   "active": true
+  },
+  {
+   "id": 473,
+   "name": "Petshop Attr Modulis: Kraikai Katems v1.0 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 393,
+   "name": "Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis)",
+   "active": false
+  },
+  {
+   "id": 394,
+   "name": "Monoprotein Dry-Run v2 (isvestinis)",
+   "active": false
+  },
+  {
+   "id": 395,
+   "name": "Monoprotein Dry-Run v3 (sudetis-grieztas)",
+   "active": false
+  },
+  {
+   "id": 396,
+   "name": "Monoprotein Dry-Run v4 (brendai + riebalu fix)",
+   "active": false
+  },
+  {
+   "id": 387,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi)",
+   "active": false
+  },
+  {
+   "id": 388,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena)",
+   "active": false
+  },
+  {
+   "id": 389,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem)",
+   "active": false
+  },
+  {
+   "id": 647,
+   "name": "Petshop Invoice Timing Test v1",
+   "active": false
+  },
+  {
+   "id": 451,
+   "name": "Guoliai/transportas/narvai - PERKELIMO DRY-RUN (read-only)",
+   "active": false
+  },
+  {
+   "id": 452,
+   "name": "Guoliai/transportas/narvai - PERKELIMO DRY-RUN v2 (read-only)",
+   "active": false
+  },
+  {
+   "id": 405,
+   "name": "Gyvuno rusis is kategorijos - DRY RUN (visas katalogas)",
+   "active": false
+  },
+  {
+   "id": 408,
+   "name": "Pakuotes dydis (maistui) - DRY RUN",
+   "active": false
+  },
+  {
+   "id": 411,
+   "name": "Baltymu saltinis is pavadinimo - DRY RUN (likutis)",
+   "active": false
+  },
+  {
+   "id": 414,
+   "name": "Amzius is pavadinimo - DRY RUN (maistui)",
+   "active": false
+  },
+  {
+   "id": 417,
+   "name": "Grudai (3 pakopos) is sudeties - DRY RUN",
+   "active": false
+  },
+  {
+   "id": 420,
+   "name": "Speciali mityba is pavadinimo - DRY RUN (maistui)",
+   "active": false
+  },
+  {
+   "id": 398,
+   "name": "Monoprotein Dry-Run v6 (Farmina + Landfleisch)",
+   "active": false
+  },
+  {
+   "id": 391,
+   "name": "Baltymu Saltinis Konservai Skonis Dry-Run v1 (platus, v5 variklis)",
+   "active": false
+  },
+  {
+   "id": 464,
+   "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+   "active": true
+  },
+  {
+   "id": 428,
+   "name": "Vitaminai/papildai - dry-run v1 (paskirtis+forma)",
+   "active": false
+  },
+  {
+   "id": 429,
+   "name": "Vitaminai/papildai - dry-run v1 (paskirtis+forma)",
+   "active": false
+  },
+  {
+   "id": 430,
+   "name": "Vitaminai/papildai - dry-run v2 (NAME-ONLY)",
+   "active": false
+  },
+  {
+   "id": 384,
+   "name": "Baltymu Saltinis Sausas Aprasymai Dry-Run v2 (aliej/tauk isimtis)",
+   "active": false
+  },
+  {
+   "id": 375,
+   "name": "Baltymu Saltinis Dry-Run Konservai v2",
+   "active": true
+  },
+  {
+   "id": 374,
+   "name": "Baltymu Saltinis Dry-Run Konservai v1",
+   "active": false
+  },
+  {
+   "id": 380,
+   "name": "Baltymu Saltinis Dry-Run Sausas v1",
+   "active": false
+  },
+  {
+   "id": 382,
+   "name": "Baltymu Saltinis Sausas Aprasymai Dry-Run v1",
+   "active": false
+  },
+  {
+   "id": 399,
+   "name": "Monoprotein Dry-Run v7 (Family / Monge kons. / Animonda VF / kt.)",
+   "active": false
+  },
+  {
+   "id": 377,
+   "name": "Baltymu Saltinis Dry-Run Skanestai v1",
+   "active": false
+  },
+  {
+   "id": 476,
+   "name": "Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 477,
+   "name": "Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 481,
+   "name": "Petshop Attr Modulis: Draskykles Katems v1.0 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 484,
+   "name": "Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)",
+   "active": false
+  },
+  {
+   "id": 485,
+   "name": "Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)",
+   "active": false
+  },
+  {
+   "id": 486,
+   "name": "Petshop Attr Modulis: Sampunai Sunims v1.0 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 494,
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+   "active": true
+  },
+  {
+   "id": 495,
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 636,
+   "name": "Petshop Testiniu Useriu Valymas v1",
+   "active": false
+  },
+  {
+   "id": 635,
+   "name": "Petshop Recon Pries Testini Uzsakyma v1",
+   "active": false
+  },
+  {
+   "id": 625,
+   "name": "TEMP — Footer DUK fix (token)",
+   "active": false
+  },
+  {
+   "id": 624,
+   "name": "TEMP — Paysera recon v1 (token)",
+   "active": false
+  },
+  {
+   "id": 556,
+   "name": "PSC TEST170",
+   "active": false
+  },
+  {
+   "id": 623,
+   "name": "TEMP — Complianz layout fix v2 (token)",
+   "active": false
+  },
+  {
+   "id": 622,
+   "name": "TEMP — Complianz CSS regen v2 (token)",
+   "active": false
+  },
+  {
+   "id": 621,
+   "name": "TEMP — Complianz banner edit v1 (token)",
+   "active": false
+  },
+  {
+   "id": 620,
+   "name": "TEMP — Complianz banner probe v1 (token)",
+   "active": false
+  },
+  {
+   "id": 618,
+   "name": "TEMP — Complianz integracijos probe v2 (token)",
+   "active": false
+  },
+  {
+   "id": 617,
+   "name": "TEMP — Complianz options probe v1 (token)",
+   "active": false
+  },
+  {
+   "id": 616,
+   "name": "TEMP — Complianz aktyvavimas v1 (token)",
+   "active": false
+  },
+  {
+   "id": 611,
+   "name": "Petshop Frontpage Setter v1 (TEMP)",
+   "active": false
+  },
+  {
+   "id": 612,
+   "name": "Petshop Bulk Snippet Delete v2 (TEMP)",
+   "active": false
+  },
+  {
+   "id": 654,
+   "name": "Petshop Invoice Test2 v1",
+   "active": false
+  },
+  {
+   "id": 682,
+   "name": "Petshop Atrinktos Dry v1",
+   "active": false
+  },
+  {
+   "id": 711,
+   "name": "Petshop Test3 Idempotency tmp",
+   "active": false
+  },
+  {
+   "id": 714,
+   "name": "Petshop Test11 RetryQueue tmp",
+   "active": false
+  },
+  {
+   "id": 715,
+   "name": "Petshop Test11b RetryQueue tmp",
+   "active": false
+  },
+  {
+   "id": 717,
+   "name": "Petshop Test11c RetryQueue tmp",
+   "active": false
+  },
+  {
+   "id": 723,
+   "name": "Petshop ESP Test tmp",
+   "active": false
+  },
+  {
+   "id": 725,
+   "name": "Petshop ESP2 Test tmp",
+   "active": false
+  },
+  {
+   "id": 729,
+   "name": "Petshop M4 Test tmp",
+   "active": false
+  },
+  {
+   "id": 743,
+   "name": "Regr Test tmp",
+   "active": false
+  },
+  {
+   "id": 747,
+   "name": "Allow Test tmp",
+   "active": false
+  },
+  {
+   "id": 750,
+   "name": "M6 Test tmp",
+   "active": false
+  },
+  {
+   "id": 755,
+   "name": "S188 Test tmp",
+   "active": false
+  },
+  {
+   "id": 756,
+   "name": "SMTP Test tmp",
+   "active": false
+  },
+  {
+   "id": 766,
+   "name": "M9 Test tmp",
+   "active": false
+  },
+  {
+   "id": 771,
+   "name": "M7 Test tmp",
+   "active": false
+  },
+  {
+   "id": 777,
+   "name": "M12 Test tmp",
+   "active": false
+  },
+  {
+   "id": 785,
+   "name": "M11 Test tmp",
+   "active": false
+  },
+  {
+   "id": 788,
+   "name": "M13 Test tmp",
+   "active": false
+  },
+  {
+   "id": 792,
+   "name": "M8 Test tmp",
+   "active": false
+  },
+  {
+   "id": 801,
+   "name": "Dash Test",
+   "active": true
+  },
+  {
+   "id": 805,
+   "name": "Photo Test",
+   "active": true
+  },
+  {
+   "id": 826,
+   "name": "CtTest",
+   "active": false
+  },
+  {
+   "id": 830,
+   "name": "ContentTest",
+   "active": false
+  },
+  {
+   "id": 834,
+   "name": "E2ETest",
+   "active": false
+  }
+ ],
+ "sample": "add_action('wp_loaded', function(){\n\tif(!isset($_GET['ps_hyw'])||$_GET['ps_hyw']!=='Hw4Nn8Bb'){return;}\n\tif(!is_user_logged_in() && !isset($_GET['nologin'])){ }\n\t@set_time_limit(300); global $wpdb; $pf=$wpdb->prefix;\n\t$APPLY = (isset($_GET['confirm']) && $_GET['confirm']==='APPLY_HY');\n\t$o=array('mode'=>$APPLY?'APPLY':'DRY');\n\n\t$SRC_S='https://exclusion.lt/product/hypoallergenic-sausas-maistas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais/';\n\t$SRC_M='https://exclusion.lt/product/hypoallergenic-sausas-maistas-vidutiniu-ir-dideliu-veisliu-sunims-su-kiauliena-ir-zirniais/';\n\t$VER='exclusion_vetfarmas_2026-07-16';\n\t$BY='ocr_vetfarmas_x_exclusion_pl';\n\n\t$defs = array(\n\t 'S' => array('rows'=>array(array(2,50,60),array(3,70,80),array(4,80,90),array(5,90,100),array(6,100,120),array(8,120,140),array(10,140,160)),\n\t              'src'=>$SRC_S, 'skus'=>array('HYVS02','HYDS02','HYPS02','HYPS06','HYPS08','HYHS02','HYRS02','HYFS02','HYPS02-2','HYPS06-2')),\n\t 'M' => array('rows'=>array(array(11,150,170),array(15,190,210),array(20,220,240),array(25,280,310),array(30,330,360),array(40,440,480),array(50,480,520),array(60,500,540),array(70,550,600)),\n\t              'src'=>$SRC_M, 'skus'=>array('HYHM02','HYPM02','HYHM11','HYRM11','HYIM11','HYDM11','HYVM11','HYPM11')),\n\t);\n\n\t// SKU -> product_id\n\t$bysku=array();\n\t$ids=get_posts(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>-1,'fields'=>'ids',\n\t\t'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'slug','terms'=>array('sausas-maistas-sunims')))));\n\tforeach($ids as $id){ $s=strtoupper((string)get_post_meta($id,'_sku',true)); if($s) $bysku[$s]=$id; }\n\n\tforeach($defs as $sz=>$d){\n\t\t$canon=array(); foreach($d['rows'] as $r) $canon[]=$r[0].':'.$r[1].'-'.$r[2];\n\t\t$checksum=md5('Exclusion|Hypoallergenic|dog|simple|weight|current|'.implode(',',$canon));\n\t\t$source_hash=md5($d['src']);\n\t\t$exists=$wpdb->get_var($wpdb->prepare(\"SELECT id FROM {$pf}ps_feeding_tables WHERE checksum=%s\",$checksum));\n\t\t$rep=array('size'=>$sz,'checksum'=>$checksum,'row_count'=>count($d['rows']),\n\t\t\t'exists_table_id'=>$exists?(int)$exists:null,'rows'=>$d['rows'],'source_url'=>$d['src']);\n\t\t$pids=array(); $missing=array();\n\t\tforeach($d['skus'] as $s){ if(isset($bysku[$s])) $pids[$s]=$bysku[$s]; else $missing[]=$s; }\n\t\t$rep['products']=$pids; $rep['sku_not_found']=$missing;\n\t\t$already=array();\n\t\tforeach($pids as $s=>$pid){\n\t\t\t$m=$wpdb->get_var($wpdb->prepare(\"SELECT feeding_table_id FROM {$pf}ps_feeding_map WHERE product_id=%d\",$pid));\n\t\t\tif($m) $already[$s]=(int)$m;\n\t\t}\n\t\t$rep['already_mapped']=$already;\n\n\t\tif($APPLY && !$exists && !$already){\n\t\t\t$now=current_time('mysql');\n\t\t\t$wpdb->insert(\"{$pf}ps_feeding_tables\", array(\n\t\t\t\t'checksum'=>$checksum,'source_hash'=>$source_hash,'brand'=>'Exclusion','line'=>'Hypoallergenic',\n\t\t\t\t'scope'=>'line','species'=>'dog','weight_basis'=>'current','row_dimension'=>'weight',\n\t\t\t\t'shape'=>'simple','status'=>'verified','reason'=>null,'source_url'=>$d['src'],\n\t\t\t\t'source_version'=>$VER,'row_count'=>count($d['rows']),'parsed_at'=>$now,\n\t\t\t\t'verified_at'=>$now,'verified_by'=>$BY,'created_at'=>$now,'updated_at'=>$now));\n\t\t\t$tid=(int)$wpdb->insert_id;\n\t\t\t$ord=0;\n\t\t\tforeach($d['rows'] as $r){\n\t\t\t\t$wpdb->insert(\"{$pf}ps_feeding_rows\", array('feeding_table_id'=>$tid,'row_order'=>$ord++,\n\t\t\t\t\t'weight_from_kg'=>$r[0],'weight_to_kg'=>$r[0],'amount_from_g'=>$r[1],'amount_to_g'=>$r[2],\n\t\t\t\t\t'condition_dimensions'=>null));\n\t\t\t}\n\t\t\tforeach($pids as $s=>$pid){ $wpdb->insert(\"{$pf}ps_feeding_map\", array('feeding_table_id'=>$tid,'product_id'=>$pid)); }\n\t\t\t$rep['inserted_table_id']=$tid; $rep['mapped']=count($pids);\n\t\t}\n\t\t$o['tables'][$sz]=$rep;\n\t}\n\theader('Content-Type: application/json'); echo wp_json_encode($o); exit;\n});\n"
+}
