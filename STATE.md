@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lentelių/23 SKU; S218 Josera 5 lentelės/7 SKU + eilės skaičių revizija). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins — šaltinių NĖRA, 0/23). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -395,6 +395,32 @@ Ta pati `simple`/`transposed` forma, tas pats `weight_basis='current'`. **Kliūt
 - **Duomenų higiena (ne šėrimas):** produktas su SKU `d0ef54405833` (hash'as vietoj kodo, instock+publish); `DP-EXCL-HYPO-KIAUL-2KG-x2` = 2 vnt. rinkinys — būtent M8 v3.2 įspėtas pakuotės atvejis.
 
 **ATVIRAS KLAUSIMAS (ne duomenys, produktas):** ar €/dienos skaičiuoklė apima drėgną maistą? Schema priima. M8 MASTER v3.2 to nefiksuoja. Nuo atsakymo priklauso, ar likusioje eilėje (Prins/Real Dog/Ontario/Gemon/RC) konservai skaičiuojami kaip darbas.
+
+**S219 — PRINS: ŠALTINIŲ NĖRA. 0 iš 23 SKU. BRENDAS UŽDAROMAS BE ĮRAŠŲ (2026-07-16):**
+
+**DB NEPAKITO:** 186 lentelės / 3 268 eil. / 395 map. Nieko neįrašyta — nebuvo ko.
+
+**PRINS BŪKLĖ:** 23 produktai, **visi instock, visi sausas maistas, visi be lentelės** (`ps_feeding_map` = 0). Nė vieno mapinto. Atpažinimas per `_legacy_manufacturer` (brand taksonomija nepatikima — patvirtinta).
+Linijos: ProCare Grainfree (Adult Pro Energy, Puppy & Junior, Sensible Hypoallergic, Skin & Coat) · ProCare Protection (Lamb, Puppy, Super Active) · ProCare Standard Fit · ProCare Super Active · ProCare Mini (Lamb & Rice, Senior Support) · ProCare Herring & Rice · ProCare Puppy & Junior Perfect Start · ProCare Lamb & Rice Senior · Diet Skin & Intestinal.
+
+**KETURI ŠALTINIŲ KELIAI — VISI IŠBANDYTI IR UŽDARYTI:**
+| # | kelias | rezultatas |
+|---|---|---|
+| 1 | **`prins.nl`** | ❌ **NE TAS DOMENAS.** Tai krautuvų / žemės ūkio technikos įmonė (`/collectie/heftrucks-ruwterrein/`, `/verhuur/`). 1 852 URL, 0 pašarų. **Senoje pastaboje „checking prins.nl" buvo klaida — ten pašarų niekada nebuvo.** |
+| 2 | **`prinspetfoods.com`** | ✅ tikras gamintojas (200, turinyje „procare"), 107 URL, **76 produktų puslapiai** (`/product/procare-standard-fit/` ir t.t.). **BET `<table>` = 0.** WordPress+Elementor, 358 KB puslapis, PDF nėra, `ld+json` nėra. **Šėrimo normų HTML'e neskelbia.** |
+| 3 | **`prinspetfoods.nl`** | ❌ **Cloudflare 403** („Just a moment..."). curl su Mozilla UA — ne. **Playwright (browser=1) — irgi ne**: `home_title="Just a moment..."`, nuorodų 2. Headless detektuojamas. |
+| 4 | **Olandiški retailer'iai** (brekz, pets-place, agradi, zooplus.nl, medpets, dierenwinkelxl) | ⚠️ **134 Prins URL, 116 šunų, → 3 lentelės.** Ir **nė viena ne ProCare**: Nature Care Dieet (200 g), Vital Care Weight Reduction & Diabetic, NatureCare Veterinary Mobility. brekz/pets-place/agradi/zooplus.nl sitemap'uose Prins **išvis nėra** (0). |
+
+**IŠVADA: Prins ProCare šėrimo normos viešame HTML'e NEEGZISTUOJA.** Tai ne mechanikos, ne parsinimo ir ne metodo klausimas — metodas (sitemap → HTML) tą pačią dieną uždarė Quattro 23 SKU ir Josera 7 SKU. Prins tiesiog neskelbia.
+
+**KAS LIKO (ne Claude'o pusėje):**
+1. **Maišo etiketė.** 23 SKU visi instock — normos yra ant pakuotės. Nufotografuoti nebūtina: **Claude paveiksliukų neskaito** (S215/S217). Reikia perrašyto teksto.
+2. **Prins B2B / tiekėjas** — Prins yra dropship šaltinis (`Fulfillment source 'prins'`, 43 manuf). Tiekėjas turi datasheet'us.
+3. `prinspetfoods.nl` per residential proxy arba `stealth` plugin — techniškai įmanoma, bet tai jau kova su Cloudflare, ne duomenų darbas.
+
+**RADINYS APIE FORMĄ (naudinga vėliau):** dierenwinkelxl.nl Prins lentelės naudoja **`Lage / Gemiddelde / Hoge activiteit`** — tai `row_dimension='activity_level'` (S212 taksonomija). O `Vital Care Weight Reduction` turi **DVI skiltis: „Voor gewichtsreductie" ir „Voor gewichtsbehoud"** su `Minimum/Maximum` — t.y. keturi stulpeliai vienam svoriui. Jei kada gausim Prins duomenis, forma bus `transposed`, ne `simple`.
+
+**PRINS PENDING:** viskas. 23 SKU laukia šaltinio iš Raimio pusės (maišas arba tiekėjas). Claude'o pusėje kelių nebeliko.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
