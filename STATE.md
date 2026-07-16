@@ -86,29 +86,50 @@ Be šio lauko skaičiuoklė 15 kg šuniui tyliai duotų šuniuko normą. **Gyvas
 
 **KITAS ATVIRAS KLAUSIMAS (Etapas 2, ne duomenys):** intervalinės eilutės („15–30 kg → 435–570 g") — 15 kg šuniui rodyti visą diapazoną ar interpoliuoti? Eukanuba testas parodė 435–570 g/parą 15 kg šuniui, kas per daug, jei imama viršutinė riba. Skaičiuoklės logikos sprendimas.
 
-**S213 — ŠĖRIMO NORMŲ GALUTINIS RECON (mb_stripos, TEISINGAS) + RYTOJAUS PLANAS (2026-07-15 vakaras):**
+**S214 — FeedingTable PERSTATYTA (2026-07-16, parseris v6) — BAIGTA:**
 
-**KRITINĖ S212 PAMOKA:** visas šios dienos parsinimas naudojo `stripos()` (baitai) + `mb_substr()` (simboliai) — offsetas LT tekste slinko ~110 simbolių į priekį. Dėl to: (a) dalis lentelių nupjautos iš priekio, (b) „105 sugadinti produktai" NEEGZISTUOJA — svetainė tvarkinga (vizualiai patikrinta: `screenshots/ft_broken.png`/`ft_good.png` — abu rodo normalias lenteles accordion'e), (c) visos 167 DB lentelės NEPATIKIMOS. **Taisyklė į visus būsimus parserius: LT tekste TIK `mb_stripos`/`mb_substr` pora, niekada nemaišyti su `stripos`.**
+`mb_stripos` pataisymas atgavo tai, ką S212 offset klaida slėpė. Visos `ps_feeding_*` išvalytos ir perparsintos nuo nulio.
 
-**GALUTINIAI SKAIČIAI (661 instock sauso maisto):**
-- **330 TURI šėrimo lentelę** (ne 225, kaip rodė blogas offsetas)
-- **63 vet. dietos** — sąmoningai be normos („pasitarti su veterinarijos gydytoju"; Farmina Vet Life 37, Monge 25, Gemon 1). Skaičiuoklėje = pakopa D su specialiu tekstu, NE spraga.
-- **268 TRŪKSTA** (nei lentelės, nei vet teksto)
+**REZULTATAS:**
+| | S212 (bloga) | **S214 (v6)** |
+|---|---|---|
+| lentelių rasta skenuojant | 225 | **331** |
+| unikalių lentelių | 167 | **164** |
+| verified | 92 | **152** |
+| ambiguous | 18 | **12** |
+| eilučių | 2 444 | **2 991** |
+| **SKU su verified** | 230 | **310** |
 
-**PILNAI PADENGTI:** Farmina 143/143 (106 lent. + 37 vet), Eukanuba 33/33, Monge 87/93, Ambrosia 13/15, Josera 110/143.
-**TRŪKSTA pagal brendą:** Quattro 63 · Exclusion 47 (TOP revenue!) · Josera 33 · Prins 22 · Real Dog 19 · Ontario 18 · Gemon 15 · Royal Canin 12 · Family Dog 7 · GreenPetFood 5 · Rasco 5 · IAMS 5 · Family Cat 4 · Green Petfood 3.
-**PASTABA Josera 33:** dauguma = multipack „15+3kg AKCIJA" variantai — lentelė greičiausiai YRA to paties produkto singular versijoje (pvz. JosiDog Economy 2,7kg turi, 15+3kg neturi) → kopijavimo per `ps_feeding_map` kandidatai, NE turinio darbas.
+**Patikros (visos praeina):** `orphan rows/map = 0/0` · `verified be weight_basis = 0` · `cond` raktai semantiniai: `age(38) · activity_level(25) · age_m_from/to(12) · body_condition(3) · age_label(1)`.
+**Gyvas testas:** suaugęs 15 kg šuo → Farmina 125–255 g/parą (realistiška); `weight_basis` vartai užblokavo **59** šuniukų eilutes.
 
-**RYTOJAUS PLANAS — vienas prisėdimas, eilės tvarka:**
-1. **DROP+perparsinti:** ištrinti visas `ps_feeding_*` eilutes (safety įrodyta: `plugin_files_referencing=[]`, revizijų 0, izoliuota) → parseris v5 su `mb_stripos` (visos šakos: simple/matrix/transposed/by_age + `weight_basis` + `row_dimension` + atlaidi `<table` ekstrakcija). Laukiama: ~330 SKU aprėptis, daugiau nei 167 lentelių.
-2. **Patikros po apply (privalomos):** orphan=0; `verified` be `weight_basis`=0 (išsk. by_age); cond RAKTŲ sąrašas semantinis; gyvas testas „suaugęs 15 kg šuo" — adult_expected eilutės UŽBLOKUOTOS; atsitiktinių 5 lentelių palyginimas su post_content.
-3. **Ambiguous peržiūra:** likusias (tikėtina ~20-30) sugrupuoti pagal priežastį, Raimiui parodyti po 1 pavyzdį — dalis bus tikros klaidos šaltinyje.
-4. **Josera multipack kopijos:** rasti singular↔multipack poras (title match be „X+Ykg AKCIJA"), map'inti multipack į tą pačią FeedingTable (scope='line'). ~33 SKU be turinio darbo.
-5. **Dokumentai:** deployment_log v1.3.70 (S212 klaidos + S213), STATE.md, TŽ jei reikės.
+**PARSERIS v6 — 5 taisymai (visi buvo MANO spragos, ne šaltinio klaidos):**
+1. `-` / `–` / tuščias langelis = `GAP` (sąmoninga spraga, pvz. liesai 1–3 kg katei nėra „Antsvoris"), NE klaida. Anksčiau griovė matrix+transposed.
+2. `row_dimension` pirmiausia iš **antraštės[0]**: Josera vienetą rašo antraštėje („Amžius (mėn.)"), eilutėse tik „3", „4". Anksčiau ieškojau „mėn" eilutėse → 11 lentelių krito.
+3. `by_age`: kiekio monotoniškumas **NETAIKOMAS** (Josera Kitten 2 mėn.→50 g, 4 mėn.→40 g — kiekis teisėtai mažėja).
+4. `by_age` + `age_weight`: tekstinė amžiaus etiketė („Nujunkymo metu") → `cond={age_label:...}`, ne klaida.
+5. Nauja forma **`age_weight`** (`Amžius | Svoris | Kiekis`, Exclusion) — 3 ašys viename.
 
-**TURINIO DARBAS (atskirai, ne rytoj — owner sprendimas dėl eiliškumo):** ~235 SKU be šaltinio svetainėje (Quattro 63, Exclusion 47, Prins 22, Real Dog 19, Ontario 18, Gemon 15, RC 12, kiti 39). Exclusion = prioritetas (22,7% pardavimų). Šaltiniai: gamintojų PDF/svetainės (Exclusion.it, Prins.nl jau tirti anksčiau). Vet dietoms (63) turinio NEREIKIA — pakopa D.
+**Formos:** simple 61v/2a · transposed 49v/10a · matrix 39v/0a · by_age 2v/0a · age_weight 1v/0a.
+**Likę 12 ambiguous:** 5x row_dimension_unknown · 3x row_not_monotonic · 2x amount_not_monotonic · 2x too_many_bad_cells. **3x row_not_monotonic = TIKRAS šaltinio keistumas** (Farmina Ocean Kitten: 0,5 kg kačiukui 25–40 g, o 1 kg → 20–40 g — didesnis ėda mažiau). Verta Raimio akių, ne Claude spėjimo.
 
-**TILTO PASTABA:** vėlai vakare 2 paleidimai „completed success" be rezultato (m8_test5 neįvyko — DB patikrinta: 167/2444/330 nepakitę). Priežastis neaiški, sekti; skaitymui naudoti `strict=False` JSON (PHP atsakymai su control chars).
+**⚠️ VAKARYKŠTĖ KLAIDA IŠTAISYTA — Josera multipack idėja NEGALIOJA:**
+S213 buvau įrašęs, kad ~33 Josera SKU turi lentelę singular versijoje → kopijavimo darbas. **NETIESA.** Dry-run rado **1 porą, ne 33**. Įrodymas: `JosiDog Economy 15+3kg AKCIJA` IR `JosiDog Economy 2,7 kg` — **abu be lentelės**. Vakar mačiau abu „trūkstamų" sąraše ir klaidingai nusprendžiau, kad vienas turi.
+**Priežastis, kodėl idėja beprasmė iš principo:** `checksum` dedup jau atlieka šį darbą — jei multipack ir singular turi tą pačią lentelę, jie dalinasi checksum ir abu jau `map`'e (todėl 331 SKU iš 164 lentelių). Likusiems lentelės tiesiog NĖRA.
+
+**FAKTINĖ APRĖPTIS (662 instock sauso maisto):**
+- **310 SKU su verified norma**
+- **63 vet. dietos** — sąmoningai be normos, pakopa D („pasitarti su veterinaru")
+- **21 SKU tik su ambiguous** (yra lentelė, bet neaiški)
+- **268 SKU be jokio šaltinio** ← TIKRAS turinio darbas (ne 235, kaip vakar rašiau)
+- **Padengta: 373 / 662 (56%)**
+
+**TURINIO DARBAS — 268 SKU, pagal brendą:** Quattro 63 · **Exclusion 47 (TOP revenue 22,7%)** · Josera 33 · Prins 22 · Real Dog 19 · Ontario 18 · Gemon 15 · Royal Canin 12 · Family Dog 7 · GreenPetFood 5 · Rasco 5 · IAMS 5 · Family Cat 4 · Green Petfood 3 · kiti. Šaltiniai: gamintojų PDF/svetainės (Exclusion.it, Prins.nl tirti anksčiau). **Owner sprendimas dėl eiliškumo.**
+
+**PENDING (M8 Etapas 2):** intervalinių eilučių logika — „15–30 kg → 435–570 g": 15 kg šuniui rodyti diapazoną ar interpoliuoti? Skaičiuoklės sprendimas, ne duomenų.
+**PENDING:** M8 v3.2 sk. 17 — 17 atvirų sprendimų laukia Raimio prieš Etapo 2 kodą.
+
+**TAISYKLĖ (užrakinta):** LT tekste TIK `mb_stripos`/`mb_substr` pora. Niekada `stripos`+`mb_substr` — offsetas slenka ~110 simbolių ir tyliai pjauna turinį.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
