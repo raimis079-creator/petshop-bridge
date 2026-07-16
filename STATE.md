@@ -618,11 +618,12 @@ Kiekvienas apply verifikuotas ATSKIRU read-only snippetu; visi 9 sargai 0 po kie
 
 **[SPRENDIMAS] KONSERVAI IŠ EILĖS IŠEINA — dirbam TIK SAUSĄ.** (Raimis, 2026-07-16: „gal kol kas su sausu susitvarkom, su konservais labai daug niuansų".) Tai uždaro ir seną neaiškumą, ar €/dienos skaičiuoklė apima šlapią maistą (M8 v3.2 tylėjo) — kol kas NE.
 
-**⛔ BLOKUOTA — REIKIA RAIMIO (44 SKU):**
+**⛔ BLOKUOTA — REIKIA RAIMIO (69 SKU):**
 | brendas | SKU | ko reikia |
 |---|---|---|
 | **Prins** | 23 | maišo etiketės TEKSTAS (perrašytas, ne nuotrauka) arba tiekėjo datasheet. Normos egzistuoja tik `prinspetfoods.nl/aanvulling/{id}-voedingswijzer` puslapiuose, kurių turinys = **paveikslėlis** 2016 Wayback archyve. 7 skaitmeniniai keliai išbandyti ir uždaryti. |
 | **Real Dog** | 21 | maišo etiketė arba **ZB (Zoobaze) datasheet — tiekėjas SAVAS**. realdog.lt sako pažodžiui: „recommended daily amount: see the table on the packaging". Gamintojas normų viešai neskelbia. |
+| **Ontario šlapias** | 25 | pakuotės etiketė — **SAVAS SANDĖLIS Liucionių lentynoje** (14 konservų + 2 skanėstai + 9 troškiniai/pastos). Gamintojas šlapiam normų neskelbia (S225 įrodymas). Etiketės kelias patikrintas: S221 konservų lentelės buvo iš post_content = perrašytos nuo pakuočių. |
 
 **🟡 ATIDĖTA (turim duomenis, reikia darbo):**
 - **Gemon puppy matrica** (01MB400101 + tuna/mini variantai): PDF eilutės su TARPAIS (`Months 8-12` prasideda ne nuo 1 kg) → reikia **pozicinio parserio pagal stulpelių char-offsetus** `-layout` tekste. Skaidant per tarpus normos atsidurtų ties ne tais svoriais.
