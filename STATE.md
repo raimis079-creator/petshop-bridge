@@ -657,6 +657,47 @@ Kiekvienas apply verifikuotas ATSKIRU read-only snippetu; visi 9 sargai 0 po kie
 **SNIPPETŲ HIGIENA:** visi **28 sesijos snippetai (#1018–#1045) IŠJUNGTI** (patikrinta su puslapiavimu).
 **⚠️ LIKO IŠ ANKSČIAU — 11 TEMP snippetų VIS DAR AKTYVŪS** (ne šios sesijos, nelieta): `#736 Core Act2 tmp`, `#738 ESP v4 Final tmp`, `#797 JS Fix tmp`, `#798 Dash Recon tmp`, `#799 Dash Dep`, `#800 Dash Act`, `#801 Dash Test`, `#802 Photo Recon`, `#803 Photo Dep`, `#804 Photo Act`, `#805 Photo Test`. Sutampa su seniau žinomu „11 TEMP snippets — need cleanup". **Taip pat: #492 ir #493 „Filtrų Atidarymas" v2 IR v1 abu aktyvūs — galimas dublis.**
 
+**S225 — ONTARIO SAUSAS UŽDARYTAS 18/18. Šlapio aklavietė įrodyta (2026-07-16):**
+
+**DB:** 217 → **222** lentelės · 3 679 → **3 759** eil. · 442 → **449** map. Sargai visi 0. Delta = totals (+5/+80/+7).
+
+**Ontario būklė po S225:** instock 52 → **sausas 18/18 SU NORMA (0 be)** · konservai 9/23 · skanėstai 0/2 · kita (troškiniai/pastos) 0/9.
+
+**ĮRAŠYTA 5 lentelės / 7 SKU** (`source_version='ontario_pet_wayback_2026-07-16'`, visos `transposed`, **NAUJA ašis `lifestyle`** outdoor|indoor, svoriai 1–6 kg):
+| id | line | SKU |
+|---|---|---|
+| 218 | Adult Short Hair | 640214268-1 |
+| 219 | Adult Exigent (išrankioms) | 640000, 40626 |
+| 220 | Adult Hairball | 640220-1, 640220103 |
+| 221 | Adult Sensitive | 640213774 |
+| 222 | Adult Sterilized Lamb | 640416-1 (reason: bloke 2 lent., imta pirma po antraštės) |
+
+**★ ŠALTINIO KELIAS (Raimio nurodymu ieškota dinozoo.lv/placek.cz):**
+1. `dinozoo.lv` — 795 Ontario URL, `superzoo.cz` — 979. **ABU Plaček e-shopai normų NESKELBIA** — tik specifikacijos (EAN, kokybė, gramaž). Patikrinta pilnu tekstu (24–27k simb.), ne vien lentelėmis.
+2. `placek.cz/en/brand` → oficialus brendo saitas **`ontario.pet`**.
+3. `ontario.pet` — **Cloudflare kietas blokas** (curl 403 „Just a moment", Playwright „Sorry, you have been blocked" — griežtesnis nei Prins).
+4. **→ Wayback:** `web.archive.org/web/20240522103018/ontario.pet/en/for-cats-en/food-adult/` — **13 pilnų lentelių HTML** (ne paveikslėliai, skirtingai nei Prins!).
+
+**★ NAUJA AŠIS `lifestyle`:** gamintojo forma `Cat weight (kg) | Daily feedings - outdoor | Daily feedings - indoor`. Sargas: outdoor ≥ indoor kiekviename svoryje.
+
+**Poravimo raktas:** gamintojo „Exigent" = mūsų „išrankioms katėms". Short Hair/Hairball/Sensitive/Sterilized Lamb — tiesioginiai.
+
+**⚠️ Lentelė↔produktas susiejimas Wayback puslapyje:** visos lentelės po „Feeding instructions" tabo antrašte → artimiausios antraštės metodas NEVEIKIA. Veikia **skaidymas pagal `ONTARIO ...` h2/h3 blokus**. Adult psl.: 12 blokų / 13 lentelių — perteklinė Sterilized Lamb bloke (produktas be atskiros antraštės, tikėtina Sterilized Salmon). Imta pirmoji po antraštės, prielaida užfiksuota `reason`.
+
+**⛔ ŠLAPIO AKLAVIETĖ — ĮRODYTA, NE SPĖTA:**
+Wayback kategorijos `for-dogs-en/cans` (18 produktų, tarp jų visi mūsų monoproteinas + troškiniai), `for-cats-en/cans` (11), `pouches` (10), `treats` (18, tarp jų Malt Bits + Dental Bits):
+- EN šunų konservai: **„Feeding" = 0 kartų visame puslapyje**; „Composition" tabas = 18. Šėrimo tabo šlapiems NĖRA.
+- CS kačių konservai: lentelių 0, „dávkování" tik navigacijoje.
+**→ Gamintojas šlapiam maistui normų neskelbia iš principo** (sausas turi, šlapias ne — svetainės struktūra, ne paieškos spraga).
+**→ Vienintelis kelias likusiems 25 (14 konservų + 2 skanėstai + 9 troškiniai/pastos): pakuotės etiketė. Ontario = legacy = SAVAS SANDĖLIS — skardinės guli Liucionių lentynoje, etiketės fiziškai pasiekiamos Raimiui.** (Skirtingai nei Prins/Real Dog dropship.)
+
+Pastaba: S221 įrašytos 9 konservų lentelės (id 192, 196–198) buvo iš mūsų post_content — t. y. kažkada jau perrašytos nuo pakuočių. Tai patvirtina, kad etiketės kelias veikia.
+
+**Techninės pastabos:**
+- `ontario-pet.com` = japonų vet. klinika (netikras taikinys).
+- GitHub Contents API `PUT` grąžina **409** kai GET SHA užkešuotas → visada PUT kilpa su šviežiu SHA (`?nocache=$RANDOM`) ir retry.
+- Snippetai #1047 (Ontario Cat Feeding v1) ir #1048 (Final Verify) — išjungti.
+
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
 - **Ciniškas testas (pamatinis principas):** „Jeigu negalime vienu sakiniu pasakyti, kokią naudą klientas gauna iš karto, neturime teisės prašyti jo pildyti anketą."
