@@ -1,0 +1,54 @@
+{
+ "has_wpjson": true,
+ "namespaces": [
+  "oembed/1.0",
+  "code-snippets/v1",
+  "wp-all-import/v1",
+  "elementor-one/v1",
+  "elementor/v1",
+  "elementor-pro/v1",
+  "objectcache/v1",
+  "pods/v1",
+  "llar/v1",
+  "elementor-hello-elementor/v1",
+  "elementor/v1/documents",
+  "elementor-ai/v1",
+  "elementor/v1/feedback",
+  "wp/v2",
+  "wp-site-health/v1",
+  "wp-block-editor/v1",
+  "wp-abilities/v1"
+ ],
+ "probe_product": "[{\"id\":2204,\"date\":\"2026-05-18T08:53:52\",\"date_gmt\":\"2026-05-18T08:53:52\",\"guid\":{\"rendered\":\"https:\\/\\/prinspetfoods.co",
+ "probe_products": "{\"code\":\"rest_no_route\",\"message\":\"No route was found matching the URL and request method.\",\"data\":{\"status\":404}}",
+ "probe_wp/v2/product": "[{\"id\":2204,\"date\":\"2026-05-18T08:53:52\",\"date_gmt\":\"2026-05-18T08:53:52\",\"guid\":{\"rendered\":\"https:\\/\\/prinspetfoods.co",
+ "probe_wp/v2/pages": "[{\"id\":2251,\"date\":\"2026-05-21T12:01:32\",\"date_gmt\":\"2026-05-21T12:01:32\",\"guid\":{\"rendered\":\"https:\\/\\/prinspetfoods.co",
+ "probe_wp/v2/posts": "[]",
+ "search": "[{\"id\":1088,\"title\":\"ProCare Standard Fit\",\"url\":\"https:\\/\\/prinspetfoods.com\\/product\\/procare-standard-fit\\/\",\"type\":\"post\",\"subtype\":\"product\",\"_links\":{\"self\":[{\"embeddable\":true,\"href\":\"https:\\/\\/prinspetfoods.com\\/wp-json\\/wp\\/v2\\/product\\/1088\",\"targetHints\":{\"allow\":[\"GET\"]}}],\"about\":[{\"href\":\"https:\\/\\/prinspetfoods.com\\/wp-json\\/wp\\/v2\\/types\\/product\"}],\"collection\":[{\"href\":\"https:\\/\\/prinspetfoods.com\\/wp-json\\/wp\\/v2\\/search\"}]}},{\"id\":1439,\"title\":\"ProCare Mini Standard Fit\",\"url",
+ "hits": [
+  {
+   "id": 1088,
+   "type": "post",
+   "subtype": "product",
+   "url": "https://prinspetfoods.com/product/procare-standard-fit/",
+   "title": "ProCare Standard Fit"
+  },
+  {
+   "id": 1439,
+   "type": "post",
+   "subtype": "product",
+   "url": "https://prinspetfoods.com/product/procare-mini-standard-fit/",
+   "title": "ProCare Mini Standard Fit"
+  },
+  {
+   "id": 55,
+   "type": "post",
+   "subtype": "page",
+   "url": "https://prinspetfoods.com/",
+   "title": "Home"
+  }
+ ],
+ "content_len": 0,
+ "content_tables": 0,
+ "media": []
+}
