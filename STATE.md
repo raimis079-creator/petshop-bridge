@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21 (gamintojas: „see the table on the packaging“)). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU — šaltinis buvo mūsų pačių post_content**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -433,6 +433,39 @@ Tai galutinis atsakymas iš pirminio šaltinio: **Real Dog normos viešai neskel
 **KAS ATRAKINTŲ:** Real Dog = ZB prekės → maišai Zoobaze sandėlyje. Etiketės tekstas arba ZB datasheet. Ta pati situacija kaip Prins (S219), tik dar paprastesnė — tiekėjas savas.
 
 **Techninė pastaba:** realdog.lt nopCommerce produktų nuorodos kategorijose yra `<a href="/slug">` be `/product/` prefikso — rinkiklis turi filtruoti assets (`.woff` pagavimas buvo klaida, pataisyta).
+
+**S221 — ONTARIO UŽDARYTAS: 12 lentelių / 20 SKU. Šaltinis — MŪSŲ PAČIŲ post_content (2026-07-16):**
+
+**DB (verifikuota atskiru read-only snippetu):**
+| | prieš S221 | **po S221** |
+|---|---|---|
+| lentelių | 186 | **198** |
+| verified | 174 | **186** |
+| eilučių | 3 268 | **3 343** |
+| map | 395 | **415** |
+
+Sargai visi 0 (orphan_rows, orphan_map, zero_tid ×2, products_2plus, inverted ×2, verified_null_basis, rowcount_mismatch).
+
+**★ SVARBIAUSIAS RADINYS: išorinio šaltinio NEREIKĖJO.** Ontario 52 instock → **20 jau turėjo šėrimo lentelę savo `post_content`** (`Šuns svoris | Paros dozė`), bet **0 buvo mapinta** į FeedingTable. Priežastis: **S214 parseris v6 Ontario nepalietė** — jo brendų sąraše (Monge/Farmina/Josera/Eukanuba/Exclusion/RC) Ontario nėra, o aprašymų darbas (Ontario Group B) buvo padarytas VĖLIAU. Duomenys gulėjo po nosim.
+
+**PAMOKA VISAI EILEI:** prieš ieškant išorinio šaltinio — **patikrinti savo `post_content`**. Gemon/RC (likusieji eilėje) gali turėti tą patį. Patikra pigi: `<table>` + `svor` + `(norma|paros|dienos)`.
+
+**12 lentelių** (`source_version='ontario_post_content_2026-07-16'`, visos `simple`/`weight`/`current`/`verified`):
+ids 187–193 po 1 SKU (Adult Large Beef/Chicken/Lamb/White Fish, Adult Medium Lamb, konservai žuvys 200 g, Cat Hair&Skin) · **194** Adult Mini Lamb ×3 SKU · **195** Puppy Mini Lamb ×2 SKU · **196/197/198** konservai ×3/×3/×2 SKU.
+
+**⚠️ SULIEJIMO SPĄSTAI (pagauta DRY metu, prieš rašant):** grupavimas vyksta pagal lentelės turinį → **vienoda lentelė sulieja SKIRTINGUS SKONIUS**. Grupė `[43960, 2799, 2800]` = antiena+spanguolės / jautiena+žolelės / ėriena+šaltalankis. Duomenys teisingi (konservų dozė priklauso nuo skardinės, ne skonio), BET linijos vardas iš pirmo produkto **meluotų** apie kitus du. Sprendimas: `line` = **bendras visų grupės pavadinimų prefiksas** (ne pirmo!), + `reason='Bendra lentele N SKU, vienodos normos'`.
+
+**⚠️⚠️ MANO KLAIDA — ORPHAN'AI (padaryti ir ištaisyti tą pačią sesiją):**
+Pirmas APPLY pranešė `tables: 12`, bet DB pakito tik **186→193 (+7)**. Priežastis: **`reason` stulpelis = `varchar(60)`**, o rašiau ~200 simbolių → `$wpdb->insert()` grąžino `false` → `insert_id=0` → **eilutės ir map vis tiek įsirašė su `feeding_table_id=0`: 27 orphan eilutės + 13 orphan map.**
+Dvi spragos: (a) nepatikrinau stulpelio pločio prieš rašant; (b) **po `insert()` nebuvo `if($tid<=0) continue;` sargo**.
+Ištaisyta v4: trumpas reason (≤60), tid sargas, orphan valymas (`rows_deleted: 27, map_deleted: 13`). Galutinė patikra: visi sargai 0.
+**→ NAUJA TAISYKLĖ: prieš bet kokį `insert` į ps_feeding_* — patikrinti `SHOW COLUMNS` pločius; po `insert` — visada tikrinti `insert_id>0` prieš rašant vaikinius įrašus. „totals" iš to paties kodo NĖRA įrodymas — tik DB delta.**
+
+**⚠️ WAF (patvirtinta antrą kartą):** snippetas su literaliu `DELETE FROM` POST body → ModSecurity blokuoja, `code-snippets` REST create grąžina ERR. Sprendimas: `$wpdb->delete($table, array(...))`. Papildo žinomą `GROUP_CONCAT` taisyklę: **WAF filtruoja SQL raktažodžius snippet'o kode, ne tik užklausose.**
+
+**Snippetai serveryje (visi išjungti):** #1025 v1, #1026 v2, #1028 v4 (veikiantis), #1029 Verify.
+
+**NEĮRAŠYTA (32 iš 52):** Monoproteino konservai 48368–48375 (8 SKU, aprašymai 3 500–3 700 simb., bet `<table>` nėra), kačių skanėstai/konservai, konservų rinkinys 8×200 g. Šiems lentelių `post_content` neturi.
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
