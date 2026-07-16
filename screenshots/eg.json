@@ -1,0 +1,109 @@
+{
+ "create": {
+  "id": 1034,
+  "code_error": null
+ },
+ "dry": {
+  "mode": "DRY",
+  "tables": {
+   "hhfs": {
+    "line": "Hydrolyzed Hypoallergenic mažų veislių šunims",
+    "shape": "simple",
+    "rd": "weight",
+    "row_count": 6,
+    "rasom_skus": [
+     "HHFS02"
+    ],
+    "sku_nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   },
+   "ngcs_ster": {
+    "line": "Mediterraneo Monoprotein sausas sterilizuotoms katėms",
+    "shape": "transposed",
+    "rd": "svorio_valdymas",
+    "row_count": 10,
+    "rasom_skus": [
+     "NGCSB01",
+     "NGCST01",
+     "NGCST12"
+    ],
+    "sku_nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true
+   }
+  },
+  "totals": {
+   "tables": 2,
+   "rows": 16,
+   "map": 4
+  },
+  "nerasyta_skardines": {
+   "AM20": "antraste \"Kiekis (400 g) / 24 val.\" -> reiksmes = SKARDINES (1/2-1), ne gramai",
+   "NGCSCW85/NGCSBW85": "\"1 1/2\", \"2 1/4\" = 85 g skardines",
+   "NGCKCW85": "\"Konservo kiekis / 24 val\" = 85 g skardines"
+  },
+  "db": {
+   "tables": 198,
+   "rows": 3343,
+   "map": 415
+  }
+ },
+ "apply": {
+  "mode": "APPLY",
+  "tables": {
+   "hhfs": {
+    "line": "Hydrolyzed Hypoallergenic mažų veislių šunims",
+    "shape": "simple",
+    "rd": "weight",
+    "row_count": 6,
+    "rasom_skus": [
+     "HHFS02"
+    ],
+    "sku_nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 199
+   },
+   "ngcs_ster": {
+    "line": "Mediterraneo Monoprotein sausas sterilizuotoms katėms",
+    "shape": "transposed",
+    "rd": "svorio_valdymas",
+    "row_count": 10,
+    "rasom_skus": [
+     "NGCSB01",
+     "NGCST01",
+     "NGCST12"
+    ],
+    "sku_nerasta": [],
+    "jau_mapinta": [],
+    "guard": [],
+    "exists": null,
+    "will_write": true,
+    "inserted": 200
+   }
+  },
+  "totals": {
+   "tables": 2,
+   "rows": 16,
+   "map": 4
+  },
+  "nerasyta_skardines": {
+   "AM20": "antraste \"Kiekis (400 g) / 24 val.\" -> reiksmes = SKARDINES (1/2-1), ne gramai",
+   "NGCSCW85/NGCSBW85": "\"1 1/2\", \"2 1/4\" = 85 g skardines",
+   "NGCKCW85": "\"Konservo kiekis / 24 val\" = 85 g skardines"
+  },
+  "db": {
+   "tables": 200,
+   "rows": 3359,
+   "map": 419
+  }
+ },
+ "snip": 1034
+}
