@@ -1,0 +1,96 @@
+{
+ "v": {
+  "db": {
+   "tables": 193,
+   "rows": 3343,
+   "map": 415
+  },
+  "checks": {
+   "orphan_rows": 27,
+   "orphan_map": 13,
+   "products_2plus": 0,
+   "zero_tid_rows": 27,
+   "zero_tid_map": 13
+  },
+  "orphan_row_tids": [
+   {
+    "tid": "0",
+    "n": "27"
+   }
+  ],
+  "orphan_map_tids": [
+   {
+    "tid": "0",
+    "n": "13"
+   }
+  ],
+  "ontario": [
+   {
+    "id": "187",
+    "line": "Ontario Adult Large Beef and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": "7",
+    "rlen": null
+   },
+   {
+    "id": "188",
+    "line": "Ontario Adult Large Chicken and Sweet Potatoes, 12 kg",
+    "species": "dog",
+    "row_count": "6",
+    "rlen": null
+   },
+   {
+    "id": "189",
+    "line": "Ontario Adult Large Lamb and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": "8",
+    "rlen": null
+   },
+   {
+    "id": "190",
+    "line": "Ontario Adult Large White Fish and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": "7",
+    "rlen": null
+   },
+   {
+    "id": "191",
+    "line": "Ontario Adult Medium Lamb and Brown Rice, 12 kg",
+    "species": "dog",
+    "row_count": "5",
+    "rlen": null
+   },
+   {
+    "id": "192",
+    "line": "Ontario konservai šunims su žuvimis ir žolelėmis, 200 g, Adult Fish",
+    "species": "dog",
+    "row_count": "3",
+    "rlen": null
+   },
+   {
+    "id": "193",
+    "line": "Sausas maistas kačių kailiui ir odai, 1 kg, Ontario Cat Hair &#038;",
+    "species": "cat",
+    "row_count": "12",
+    "rlen": null
+   }
+  ],
+  "reason_col": {
+   "Field": "reason",
+   "Type": "varchar(60)",
+   "Null": "YES",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  },
+  "line_col": {
+   "Field": "line",
+   "Type": "varchar(150)",
+   "Null": "YES",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  }
+ },
+ "id": 1027
+}
