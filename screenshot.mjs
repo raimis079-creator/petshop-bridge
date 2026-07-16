@@ -1,40 +1,21 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN;
+const P64="YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfbmd3J10pfHwkX0dFVFsncHNfbmd3J10hPT0nTmc3WHgzQ2MnKXtyZXR1cm47fQoJQHNldF90aW1lX2xpbWl0KDMwMCk7IGdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7CgkkQVBQTFkgPSAoaXNzZXQoJF9HRVRbJ2NvbmZpcm0nXSkgJiYgJF9HRVRbJ2NvbmZpcm0nXT09PSdBUFBMWV9ORycpOwoJJG89YXJyYXkoJ21vZGUnPT4kQVBQTFk/J0FQUExZJzonRFJZJyk7CgkkVkVSPSdleGNsdXNpb25fdmV0ZmFybWFzXzIwMjYtMDctMTYnOwoJJEJZPSdvY3JfdmV0ZmFybWFzX3hfZXhjbHVzaW9uX2l0JzsKCSRkZWZzID0gYXJyYXkoCgkgJ1MnID0+IGFycmF5KCdzcmMnPT4naHR0cHM6Ly9leGNsdXNpb24ubHQvcHJvZHVjdC9ub2JsZS1ncmFpbi1zYXVzYXMtbWFpc3Rhcy1tYXp1LXZlaXNsaXUtc3VhdWd1c2llbXMtc3VuaW1zLXN1LWVyaWVuYS8nLAoJICAgJ3Jvd3MnPT5hcnJheShhcnJheSgyLDMwLDQwKSxhcnJheSgzLDQwLDYwKSxhcnJheSg0LDUwLDcwKSxhcnJheSg1LDYwLDgwKSxhcnJheSg2LDcwLDEwMCksYXJyYXkoOCw4MCwxMTApLGFycmF5KDEwLDEwMCwxMjApKSksCgkgJ00nID0+IGFycmF5KCdzcmMnPT4naHR0cHM6Ly9leGNsdXNpb24ubHQvcHJvZHVjdC9ub2JsZS1ncmFpbi1zYXVzYXMtbWFpc3Rhcy12aWR1dGluaW8tZHl6aW8tdmVpc2xpdS1zdWF1Z3VzaWVtcy1zdW5pbXMtc3UtZXJpZW5hLycsCgkgICAncm93cyc9PmFycmF5KGFycmF5KDExLDEzMCwxNTApLGFycmF5KDEzLDE1MCwxODApLGFycmF5KDE1LDE2MCwxOTApLGFycmF5KDE3LDE4MCwyMTApLGFycmF5KDIwLDIyMCwyNTApLGFycmF5KDI1LDI3MCwzMDApLGFycmF5KDMwLDMyMCwzNTApKSksCgkgJ0wnID0+IGFycmF5KCdzcmMnPT4naHR0cHM6Ly9leGNsdXNpb24ubHQvcHJvZHVjdC9ub2JsZS1ncmFpbi1zYXVzYXMtbWFpc3Rhcy1kaWRlbGl1LXZlaXNsaXUtc3VhdWd1c2llbXMtc3VuaW1zLXN1LWVyaWVuYS8nLAoJICAgJ3Jvd3MnPT5hcnJheShhcnJheSgzMSwzMjAsMzUwKSxhcnJheSgzNSwzNTAsMzkwKSxhcnJheSg0MCw0MDAsNDIwKSxhcnJheSg0NSw0MjAsNDUwKSxhcnJheSg1MCw0ODAsNTAwKSxhcnJheSg1NSw1MDAsNTQwKSxhcnJheSg2MCw1NTAsNjAwKSxhcnJheSg3MCw2MjAsNjUwKSxhcnJheSg4MCw2NTAsNzAwKSkpLAoJKTsKCS8vIFNLVSAtPiBpZCA7IE5HICsgQShkdWx0KSArIGJhbHR5bWFzICsgZHlkaXMKCSRpZHM9Z2V0X3Bvc3RzKGFycmF5KCdwb3N0X3R5cGUnPT4ncHJvZHVjdCcsJ3Bvc3Rfc3RhdHVzJz0+J3B1Ymxpc2gnLCdwb3N0c19wZXJfcGFnZSc9Pi0xLCdmaWVsZHMnPT4naWRzJywKCQkndGF4X3F1ZXJ5Jz0+YXJyYXkoYXJyYXkoJ3RheG9ub215Jz0+J3Byb2R1Y3RfY2F0JywnZmllbGQnPT4nc2x1ZycsJ3Rlcm1zJz0+YXJyYXkoJ3NhdXNhcy1tYWlzdGFzLXN1bmltcycpKSkpKTsKCSRtYXBwZWQ9YXJyYXlfZmxpcChhcnJheV9tYXAoJ2ludHZhbCcsJHdwZGItPmdldF9jb2woIlNFTEVDVCBESVNUSU5DVCBwcm9kdWN0X2lkIEZST00geyRwZn1wc19mZWVkaW5nX21hcCIpKSk7CgkkYnVja2V0cz1hcnJheSgnUyc9PmFycmF5KCksJ00nPT5hcnJheSgpLCdMJz0+YXJyYXkoKSk7Cgkkc2tpcHBlZD1hcnJheSgpOwoJZm9yZWFjaCgkaWRzIGFzICRpZCl7CgkJJHNrdT1zdHJ0b3VwcGVyKChzdHJpbmcpZ2V0X3Bvc3RfbWV0YSgkaWQsJ19za3UnLHRydWUpKTsKCQlpZihzdHJwb3MoJHNrdSwnTkcnKSE9PTApIGNvbnRpbnVlOwoJCSRyZWM9YXJyYXkoJ2lkJz0+JGlkLCdza3UnPT4kc2t1LCdzdG9jayc9PmdldF9wb3N0X21ldGEoJGlkLCdfc3RvY2tfc3RhdHVzJyx0cnVlKSwKCQkJJ21hcHBlZCc9Pmlzc2V0KCRtYXBwZWRbJGlkXSk/MTowLCd0aXRsZSc9Pm1iX3N1YnN0cihnZXRfdGhlX3RpdGxlKCRpZCksMCw1NCkpOwoJCWlmKHByZWdfbWF0Y2goJy9eTkdBKFtCTFRdKShbU01MXSkoWzAtOV0rKSQvJywgJHNrdSwgJG0pKXsKCQkJJHJlY1sncHJvdCddPSRtWzFdOyAkYnVja2V0c1skbVsyXV1bXT0kcmVjOwoJCX0gZWxzZSB7ICRza2lwcGVkW109JHJlYzsgfQoJfQoJZm9yZWFjaCgkZGVmcyBhcyAkc3o9PiRkKXsKCQkkY2Fub249YXJyYXkoKTsgZm9yZWFjaCgkZFsncm93cyddIGFzICRyKSAkY2Fub25bXT0kclswXS4nOicuJHJbMV0uJy0nLiRyWzJdOwoJCSRjaGVja3N1bT1tZDUoJ0V4Y2x1c2lvbnxNZWRpdGVycmFuZW8gTm9ibGUgR3JhaW58ZG9nfHNpbXBsZXx3ZWlnaHR8Y3VycmVudHwnLmltcGxvZGUoJywnLCRjYW5vbikpOwoJCSRleGlzdHM9JHdwZGItPmdldF92YXIoJHdwZGItPnByZXBhcmUoIlNFTEVDVCBpZCBGUk9NIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgV0hFUkUgY2hlY2tzdW09JXMiLCRjaGVja3N1bSkpOwoJCSRyZXA9YXJyYXkoJ3NpemUnPT4kc3osJ2NoZWNrc3VtJz0+JGNoZWNrc3VtLCdyb3dzJz0+JGRbJ3Jvd3MnXSwncm93X2NvdW50Jz0+Y291bnQoJGRbJ3Jvd3MnXSksCgkJCSdleGlzdHNfdGFibGVfaWQnPT4kZXhpc3RzPyhpbnQpJGV4aXN0czpudWxsLCdwcm9kdWN0cyc9PmFycmF5KCksJ2FscmVhZHknPT5hcnJheSgpKTsKCQlmb3JlYWNoKCRidWNrZXRzWyRzel0gYXMgJHApewoJCQkkcmVwWydwcm9kdWN0cyddWyRwWydza3UnXV09JHBbJ2lkJ107CgkJCWlmKCRwWydtYXBwZWQnXSkgJHJlcFsnYWxyZWFkeSddWyRwWydza3UnXV09MTsKCQl9CgkJaWYoJEFQUExZICYmICEkZXhpc3RzICYmICEkcmVwWydhbHJlYWR5J10gJiYgJHJlcFsncHJvZHVjdHMnXSl7CgkJCSRub3c9Y3VycmVudF90aW1lKCdteXNxbCcpOwoJCQkkd3BkYi0+aW5zZXJ0KCJ7JHBmfXBzX2ZlZWRpbmdfdGFibGVzIiwgYXJyYXkoCgkJCQknY2hlY2tzdW0nPT4kY2hlY2tzdW0sJ3NvdXJjZV9oYXNoJz0+bWQ1KCRkWydzcmMnXSksJ2JyYW5kJz0+J0V4Y2x1c2lvbicsJ2xpbmUnPT4nTWVkaXRlcnJhbmVvIE5vYmxlIEdyYWluJywKCQkJCSdzY29wZSc9PidsaW5lJywnc3BlY2llcyc9Pidkb2cnLCd3ZWlnaHRfYmFzaXMnPT4nY3VycmVudCcsJ3Jvd19kaW1lbnNpb24nPT4nd2VpZ2h0JywKCQkJCSdzaGFwZSc9PidzaW1wbGUnLCdzdGF0dXMnPT4ndmVyaWZpZWQnLCdyZWFzb24nPT5udWxsLCdzb3VyY2VfdXJsJz0+JGRbJ3NyYyddLAoJCQkJJ3NvdXJjZV92ZXJzaW9uJz0+JFZFUiwncm93X2NvdW50Jz0+Y291bnQoJGRbJ3Jvd3MnXSksJ3BhcnNlZF9hdCc9PiRub3csCgkJCQkndmVyaWZpZWRfYXQnPT4kbm93LCd2ZXJpZmllZF9ieSc9PiRCWSwnY3JlYXRlZF9hdCc9PiRub3csJ3VwZGF0ZWRfYXQnPT4kbm93KSk7CgkJCSR0aWQ9KGludCkkd3BkYi0+aW5zZXJ0X2lkOyAkb3JkPTA7CgkJCWZvcmVhY2goJGRbJ3Jvd3MnXSBhcyAkcil7CgkJCQkkd3BkYi0+aW5zZXJ0KCJ7JHBmfXBzX2ZlZWRpbmdfcm93cyIsIGFycmF5KCdmZWVkaW5nX3RhYmxlX2lkJz0+JHRpZCwncm93X29yZGVyJz0+JG9yZCsrLAoJCQkJCSd3ZWlnaHRfZnJvbV9rZyc9PiRyWzBdLCd3ZWlnaHRfdG9fa2cnPT4kclswXSwnYW1vdW50X2Zyb21fZyc9PiRyWzFdLCdhbW91bnRfdG9fZyc9PiRyWzJdLAoJCQkJCSdjb25kaXRpb25fZGltZW5zaW9ucyc9Pm51bGwpKTsKCQkJfQoJCQlmb3JlYWNoKCRyZXBbJ3Byb2R1Y3RzJ10gYXMgJHM9PiRwaWQpeyAkd3BkYi0+aW5zZXJ0KCJ7JHBmfXBzX2ZlZWRpbmdfbWFwIiwgYXJyYXkoJ2ZlZWRpbmdfdGFibGVfaWQnPT4kdGlkLCdwcm9kdWN0X2lkJz0+JHBpZCkpOyB9CgkJCSRyZXBbJ2luc2VydGVkX3RhYmxlX2lkJ109JHRpZDsgJHJlcFsnbWFwcGVkX24nXT1jb3VudCgkcmVwWydwcm9kdWN0cyddKTsKCQl9CgkJJG9bJ3RhYmxlcyddWyRzel09JHJlcDsKCX0KCSRvWydza2lwcGVkX25nJ109JHNraXBwZWQ7CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==";
 function ghPut(p,buf,m){const u=`https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/${p}`;let s='';try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}"`).toString());if(j.sha)s=j.sha;}catch(e){}
  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:m,content:buf.toString('base64'),...(s?{sha:s}:{})}));
- execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:40*1024*1024});}
+ execSync(`curl -s -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}" -o /dev/null`,{maxBuffer:30*1024*1024});}
+function sh(c){try{return execSync(c,{maxBuffer:40*1024*1024}).toString();}catch(e){return 'ERR';}}
+const AUTH=Buffer.from((process.env.WP_USER||'').trim()+':'+(process.env.WP_APP_PASS||'').replace(/\s+/g,'')).toString('base64');
+const API='https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
 const out={};
 try{
-fs.mkdirSync('/tmp/hi',{recursive:true});
-const ids=[]; for(let n=241;n<=760;n++) ids.push(n);
-fs.writeFileSync('/tmp/hi.txt', ids.join('\n'));
-execSync(`cat /tmp/hi.txt | xargs -P 16 -I{} sh -c 'curl -sL --max-time 10 -A "Mozilla/5.0 Chrome/120" -o /tmp/hi/{}.html "https://exclusion.pl/x/3-123-{}"' 2>/dev/null || true`,{maxBuffer:90*1024*1024, timeout:250000});
-let ok=0; const titles=[]; const ng=[];
-for(const n of ids){
-  const f=`/tmp/hi/${n}.html`; if(!fs.existsSync(f)) continue;
-  const h=fs.readFileSync(f,'utf8'); if(h.length<5000) continue;
-  ok++;
-  const title=((h.match(/<title>([^<]+)<\/title>/i)||[])[1]||'').replace(/\s+/g,' ').trim();
-  const cat=(h.match(/"ecomm_category":"([^"]*)"/)||[])[1]||'';
-  titles.push({n,t:title.slice(0,58),c:cat.slice(0,30)});
-  if(!/noble|mediterran|monoprotein/i.test(title+cat)) continue;
-  const tabs=h.match(/<table[\s\S]*?<\/table>/gi)||[];
-  let rows=null, kind=null, matrix=null;
-  for(const t of tabs){
-    const txt=t.replace(/<[^>]+>/g,'|').replace(/&nbsp;/g,' ').replace(/\|+/g,'|').replace(/\s+/g,' ');
-    if(/mies|wiek/i.test(txt)){ const cells=txt.split('|').map(x=>x.trim()).filter(Boolean); if(cells.length>10){ matrix=cells.slice(0,60); continue; } }
-    const r=[...txt.matchAll(/(\d+(?:[.,]\d+)?)\s*kg\s*\|\s*(\d+)\s*[-–]\s*(\d+)\s*gr/gi)];
-    if(r.length>=3 && (!rows||r.length>rows.length)){ rows=r.map(x=>({kg:parseFloat(x[1].replace(',','.')),from:+x[2],to:+x[3]})); kind='range'; continue; }
-    const s=[...txt.matchAll(/(\d+(?:[.,]\d+)?)\s*kg\s*\|\s*(\d+)\s*gr/gi)];
-    if(s.length>=3 && !rows){ rows=s.map(x=>({kg:parseFloat(x[1].replace(',','.')),from:+x[2],to:+x[2]})); kind='single'; }
-  }
-  if(rows||matrix) ng.push({n,title:title.slice(0,64),cat:cat.slice(0,30),kind,rows,matrix});
-}
-out.fetched=ok; out.ng_count=ng.length; out.ng=ng;
-const cats={}; for(const t of titles){ cats[t.c]=(cats[t.c]||0)+1; }
-out.categories=cats;
-out.sample_titles=titles.slice(0,10);
-}catch(e){ out.FATAL=String(e&&e.message?e.message:e).slice(0,400); }
-ghPut('screenshots/m8_hi.json',Buffer.from(JSON.stringify(out)),'high id scan');
+const php=Buffer.from(P64,'base64').toString('utf8');
+out.php_len=php.length;
+fs.writeFileSync('/tmp/s.json',JSON.stringify({name:'Exclusion NG Feeding v1 (Vetfarmas OCR + IT razioni)',code:php,scope:'global',active:true}));
+sh(`curl -sk -X POST -H "Authorization: Basic ${AUTH}" -H "Content-Type: application/json" -d @/tmp/s.json "${API}"`);
+const r=sh('curl -sk --max-time 200 "https://dev.avesa.lt/?ps_ngw=Ng7Xx3Cc"');
+try{ out.dry=JSON.parse(r); }catch(e){ out.raw=r.slice(0,700); }
+}catch(e){ out.FATAL=String(e&&e.message?e.message:e).slice(0,300); }
+ghPut('screenshots/m8_ngdry.json',Buffer.from(JSON.stringify(out)),'NG dry-run');
 console.log('DONE');
