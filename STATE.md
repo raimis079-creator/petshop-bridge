@@ -699,6 +699,101 @@ Pastaba: S221 įrašytos 9 konservų lentelės (id 192, 196–198) buvo iš mūs
 - GitHub Contents API `PUT` grąžina **409** kai GET SHA užkešuotas → visada PUT kilpa su šviežiu SHA (`?nocache=$RANDOM`) ir retry.
 - Snippetai #1047 (Ontario Cat Feeding v1) ir #1048 (Final Verify) — išjungti.
 
+**★★★ S212-A — ETAPO 2 AUDITAS IR PIRMOS KOREKCIJOS (2026-07-17) ★★★**
+
+**Kontekstas:** M8 MASTER **v3.3** patvirtintas kaip strategijos freeze. Sprendimų triažas: **A lygis = tik #3**; B = #5, #15, #16 + reprice/QA/analytics; C = visa kita (lojalumas nestabdo S212). **#17 uždarytas — FeedingTable jau egzistuoja.** S212 skaidomas į A (auditas), B (duomenų procesas), C (engine).
+
+**GALUTINIAI ETAPO 2 VARDIKLIAI (po korekcijos):**
+
+| rodiklis | prieš | **po** |
+|---|---|---|
+| MVP tinkami (`product_cat` 72/81, instock, publish) | 667 | **666** |
+| **A kelias** (pakuotė + kaina) | 593 · 88,9 % | **629 · 94,4 %** |
+| **B kelias** (+ verified FeedingTable) | 393 · 58,9 % | **406 · 61,0 %** |
+| blokuoja pakuotė | 74 | **37** |
+| blokuoja lentelė | 200 | 223 |
+| **pajamų svertas** | — | **NEIŠMATUOJAMAS** |
+
+**★ SCOPE — KANONINIS, NE EURISTIKA:** `product_cat` ∈ {**72** Sausas maistas šunims, **81** Sausas maistas katėms}. Kraikai (107), skanėstai (95/96), papildai, konservai (73/79) — atskiros šakos, iškrenta savaime.
+**Pamoka:** pirmas vardiklis buvo pagal pavadinimo raktažodžius + `pa_gyvuno_rusis` → įsileido šinšilų/triušių pašarą IR kraikus (per `granul` žodį „kraikas… granulės"), o kartu **išmetė realų sausą maistą**, kurio pavadinime nėra „sausas/pašaras/maistas". Dvi klaidos priešingomis kryptimis (571 vs 666).
+**Nuotekis tikrintas ABIEM kryptimis** (pirma tikrinau tik vieną — spraga): iš 72/81 → 47 kandidatai, visi skanėstai/konservai; į 72/81 → 6 vėliavos, **1 tikra klaida**.
+
+**★★ PAKUOČIŲ AUDITAS — DOKUMENTO PRIELAIDA APVERSTA:**
+- `pa_pakuotes_dydis`: **80 terminų** (v3.2 spėjo 72), **visi paprastos masės**, visi `normalized`. Nė vieno multipack/bonus **atribute**.
+- **Problema ne sintaksė, o PRISKYRIMAS.** Todėl **dvi atskiros būsenos**: `term_parse_status` (normalized|unsupported|ambiguous) ir `assignment_status` (detected → candidate_value → source_verified → fixed → regression_checked). **`auto_verified` uždraustas** — skambėtų kaip „patikrinta“, nors terminas gali būti suprantamas ir kartu klaidingas.
+- **Akcijinės pakuotės:** atributas laiko TIK bonuso dalį (`JosiCat 15+3kg` → atributas „3 kg“, realiai 18 000 g). €/dieną klystų 6×, ir jokia „ambiguous“ to nepagautų.
+- **Visi 666 — `simple`, variacijų 0** → `variation_id` migracija **ATIDĖTA (YAGNI)**, daroma tik atsiradus tikram varianto atvejui su lentele.
+
+**★★ PARSERIS — GOLDEN TESTS 14/14:**
+`1,5 kg`→1500 · `10+1 kg`→11000 · `12,5+2,5 kg`→15000 · `15+3kg`→18000 · `7 kg × 2`→14000 · `12 × 400 g`→4800 · `6-12 kg`→ambiguous · `M`/`1 vnt.`→unsupported.
+**⚠️ KABLELIO SPĄSTAS:** pirmas parseris `10+1 kg` pavertė į **1 100 g** — klasė `[\d.,]+` nurijo kablelį iš „…katėms,10+1 kg“ → `,10`→`.10`→0,1 + 1 = 1,1. **LT kablelis yra ir dešimtainis skirtukas, ir skyryba.** Taisymas: `preg_replace('/(?<=\d),(?=\d)/u','.')` tada likusius kablelius pašalinti.
+**Pavadinimas = anomalijos DETEKTORIUS, ne tiesos šaltinis.**
+
+**★★ SVORIO LAUKŲ SEMANTIKA (naujas radinys):**
+| laukas | užpildyta | verdiktas |
+|---|---|---|
+| `wc_weight` | 80,2 % | **kryžminis signalas, NE šaltinis**: 313/352 sutampa (88,9 %), bet uodega — šiukšlės (`01M0400103` atributas 7,5 kg, `wc` 3 kg; 18 Monge: 2,5 kg vs 3 kg) |
+| `_zb_weight` | 48,3 % | tas pats — ateina iš ZB `weight_brutto` |
+| `_legacy_weight_raw` | 31,9 % | reta |
+
+**ZB XML `weight_brutto` = BRUTO siuntimo svoris ir jis šlamštas** (0,2 kg septynkilograminiam maišui; matmenys 20×20×20 visiems). Jis suvestas ir į `wc_weight`, ir į `_zb_weight`.
+
+**★★★ IMPORTO PERRAŠYMO RIZIKA — MANO IŠVADA BUVO KLAIDINGA DU KARTUS:**
+1. Pirma pasakiau „ZB importas perrašys taisymus" remdamasis `is_update_attributes=1` + `full_update`. **Skaičiau MIRUSIO importo konfigūraciją:** #1 `goods_clean.xml` — `last_activity` **2026-05-27**, `imported=0`, `updated=0`, `skipped=2045`.
+2. **Gyvi importai kategorijų ir atributų NELIEČIA:** #2 `products.php` (ZB), #3 `stocks.php`, #5/#7 VF — visi `is_update_categories=0`, `is_update_attributes=0`.
+3. **`pa_pakuotes_dydis` nerašo JOKS kodas** — visame `petshop-xml` ir temoje jis tik skaitomas (`home-popular-products.php`). `product_cat` rašo tik VF (`class-vf-import.php:419`).
+4. **Empirinis įrodymas:** `01M182102` (ZB) modifikuotas 11:02, `CHYP01` (VF) 14:00 — abu su `15 kg`, išlikusiu per **360 ZB ir 889 VF iteracijų**.
+→ **Taisymai Woo lygyje išlieka. Kanoninio importo transformacijos, kurią reikėtų taisyti, tiesiog nėra.**
+
+**⚠️ `pmxi_imports.last_activity` NĖRA patikimas veiklos rodiklis:** `_zb_last_sync` rodė **14:02**, o `pmxi_imports` #3 — **11:02**. ZB sinchronizaciją varo **du mechanizmai**; tikrinti per produkto meta, ne per importo lentelę.
+
+**ATLIKTOS KOREKCIJOS (dry-run → Raimio APPLY → nepriklausoma patikra):**
+| veiksmas | rezultatas | patikra |
+|---|---|---|
+| Scope: `01O7A020072` „Real Dog Snacks Kiaulės kojos 10vnt“ | `[72]` → `[95]` | **DB: `[95]`** ✅ |
+| Dešimtainės: 36 × `15 kg` → `1,5 kg` | pakeista 36, klaidų 0 | **36/36 turi `1,5 kg`** ✅ |
+| Nepatvirtinti 13 | → `needs_manual_review` | ✅ |
+
+**★ KODĖL TIK 36 IŠ 49 — `candidate ≠ verified` PASITEISINO:**
+Visi 49 turėjo terminą `15 kg` ir pavadinime „1,5 kg“. Bet:
+- **36** — `wc_weight` arba `_zb_weight` nepriklausomai patvirtina **1,5** → `fixed`
+- **7 Monge** (`01M181102`, `01M182102`, `01M171102`, `01M110102`, `01M131102`, `01M191111`, `01M201502`) — struktūra sako **2,0 kg** → **trys skirtingos reikšmės**; tikėtina, kad **pavadinimas melagingas**, ne atributas
+- **6** (`01MVC002`, `01MVC402`, `01MVC602`, `01MVC702`, `01M201602`, `01M201202`) — struktūrinis laukas **0** → patvirtinimo nėra
+
+Taisius aklai pagal pavadinimą, 13 produktų būtų gavę neteisingą svorį tyliai.
+
+**Rollback:** `_petshop_pkg_fix_from='15 kg'` + `_petshop_scope_fix='moved 72->95'` kiekvienam pakeistam.
+
+**🟡 REGRESIJA DAR NEPATVIRTINTA:** 36/36 vietoje, bet **importas nuo taisymo (14:34) prie jų dar nepriėjo (0 paliestų)**. Tai NĖRA `regression_checked` — tik „dar niekas nepalietė“. Tikrinti po kito ZB ciklo (~15:02) per `_zb_last_sync` > `_petshop_pkg_fix_at`.
+
+**LIKĘS PAKUOČIŲ BACKLOGAS — 37:** `missing_package` 17 (Farmina 15) · `decimal` 13 (rankinei peržiūrai) · `promotional_bonus_pack` 6 (Josera) · `multipack` 1 (Monge 4×10kg).
+
+**BRENDŲ BŪKLĖ (po korekcijos):**
+| brendas | MVP | A | B |
+|---|---|---|---|
+| Josera | 143 | 96 % | 79 % |
+| Farmina | 145 | 90 % | 65 % |
+| **Exclusion** (top revenue) | 52 | **100 %** | **73 %** |
+| Quattro | 63 | 100 % | 37 % |
+| Eukanuba / Ontario / RC | 32 / 18 / 13 | 100 % | **100 %** |
+| Monge | 98 | 86 % | 52 % |
+| Prins / Real Dog | 22 / 18 | **100 %** | 0 % |
+Prins ir Real Dog **nėra prarasti** — jiems veiks A kelias (vartotojo porcija), tik ne gamintojo norma.
+
+**★ ps_feeding_* SCHEMOS AUDITAS:**
+- Schema stipri: `uq_checksum`, `idx_status/brand/shape`, `idx_ft`, `idx_weight`. `ps_feeding_map` PK = (feeding_table_id, product_id).
+- **RUNTIME KODO NĖRA — nulis.** `ps_feeding` neminimas nė viename plugin/temos faile. Visos 222 lentelės sukeltos vienkartiniais snippetais. **S212-C = greenfield**, bet konkuruojančios sistemos rizikos nėra.
+- **Variklis privalo mokėti 5 formas** (simple 94, transposed 83, matrix 41, age_weight 2, by_age 2) **ir 6 ašis** (weight 133, body_condition 30, age 30, activity_level 18, lifestyle 5, svorio_valdymas 1).
+- **⚠️ 12 `ambiguous` lentelių privalo būti išmestos iš B kelio**; 5 su `NULL row_dimension` ir 7 su `NULL weight_basis` — atskirai peržiūrėti (dabar tyliai praeitų kaip verified).
+
+**PAJAMŲ SVERTAS — ATVIRA su konkrečia priklausomybe:** `gaj6_wc_order_product_lookup` dev bazėje = **7 SKU / −136,85 €** (vien grąžinimai). Užsakymų istorija liko gyvame petshop.lt. Reikia produkcijos Woo arba Pragma eksporto (SKU, kiekiai, sumos). Ataskaita rašo „NĖRA DUOMENŲ“, ne nulį.
+
+**Ataskaitos:** `feeding_coverage_report.csv`, `package_product_usage.csv` (666 eil.), `package_term_map.csv` (80 terminų).
+
+**Snippetai #1049–#1063 — išjungti.**
+
+**TOLIAU:** regresijos patikra po ZB ciklo → **S212-B** (CSV importas + QA ataskaita; `source_import_id`, `source_supplier`, `package_field_raw`, `last_imported_at`, `will_import_overwrite`, `manual_override`) → **S212-C** (engine).
+
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
 - **Ciniškas testas (pamatinis principas):** „Jeigu negalime vienu sakiniu pasakyti, kokią naudą klientas gauna iš karto, neturime teisės prašyti jo pildyti anketą."
