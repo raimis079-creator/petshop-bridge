@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -782,7 +782,8 @@ Prins ir Real Dog **nėra prarasti** — jiems veiks A kelias (vartotojo porcija
 
 **★ ps_feeding_* SCHEMOS AUDITAS:**
 - Schema stipri: `uq_checksum`, `idx_status/brand/shape`, `idx_ft`, `idx_weight`. `ps_feeding_map` PK = (feeding_table_id, product_id).
-- **RUNTIME KODO NĖRA — nulis.** `ps_feeding` neminimas nė viename plugin/temos faile. Visos 222 lentelės sukeltos vienkartiniais snippetais. **S212-C = greenfield**, bet konkuruojančios sistemos rizikos nėra.
+- **RUNTIME KODO NĖRA — nulis.** `ps_feeding_*` lentelių neliečia joks plugin/temos failas (patvirtinta S212-B dukart: pagal pilną vardą IR pagal galūnes, nes vardas konstruojamas dinamiškai `$wpdb->prefix.'ps_feeding_tables'`). Visos 223 lentelės sukeltos vienkartiniais snippetais.
+- **⚠️⚠️ „S212-C = greenfield" — ATŠAUKTA (S212-B).** Aktyvūs **9** petshop plugin'ai, ne 4: `petshop-attributes · petshop-core · petshop-esp · petshop-fbt · petshop-feeds · petshop-fonts · petshop-pragma · petshop-promotions · petshop-xml`. **`petshop-core` JAU TURI** `class-refill-engine.php`, `class-pet-products.php`, `class-pet-profile.php`, `class-reminders.php`, `class-event-registry.php`, `class-pet-dashboard.php`, `class-pet-content.php` ir kt. (18 failų). **Prieš S212-C variklį — PRIVALOMAS esamo kodo recon, ne rašymas nuo nulio.**
 - **Variklis privalo mokėti 5 formas** (simple 94, transposed 83, matrix 41, age_weight 2, by_age 2) **ir 6 ašis** (weight 133, body_condition 30, age 30, activity_level 18, lifestyle 5, svorio_valdymas 1).
 - **⚠️ 12 `ambiguous` lentelių privalo būti išmestos iš B kelio**; 5 su `NULL row_dimension` ir 7 su `NULL weight_basis` — atskirai peržiūrėti (dabar tyliai praeitų kaip verified).
 
@@ -792,7 +793,146 @@ Prins ir Real Dog **nėra prarasti** — jiems veiks A kelias (vartotojo porcija
 
 **Snippetai #1049–#1063 — išjungti.**
 
-**TOLIAU:** regresijos patikra po ZB ciklo → **S212-B** (CSV importas + QA ataskaita; `source_import_id`, `source_supplier`, `package_field_raw`, `last_imported_at`, `will_import_overwrite`, `manual_override`) → **S212-C** (engine).
+**★★★ S212-B — ŠĖRIMO DUOMENŲ MODELIS IR IMPORTERIS. UŽDARYTA 2026-07-18 ★★★**
+
+> **STATUSAS: S212-B = CLOSED · Production rollout = BLOCKED.** Tai NE „šėrimo funkcija baigta". Duomenų modelis ir importeris baigti; variklio (S212-C) nėra.
+
+**UŽRAKINTOS VERSIJOS (importeris tikrina visas tris, neatitikimas → APPLY blokuojamas):**
+| | |
+|---|---|
+| `schema_version` | **`s212b_v3`** |
+| `classifier_version` | **`clf_v1_2026-07-17`** |
+| `canonical_hash_version` | **`chash_v1`** |
+
+**DB BŪKLĖ:** 223 lentelės · 3 825 eilutės · 451 map. Parašas `a665ff152abb7dbf4fc02dc3028f030ad0760078b4b44ca397752d7aeb5e4a8e`.
+**canonical_table_hash:** **219 su turiniu · 4 sąmoningai NULL** (#86 Exclusion, #93 Josera, #128/#138 Monge — visos `ambiguous`, `is_active=0`).
+
+**APRĖPTIS (MVP 666 = `product_cat` 72/81, instock, publish):**
+| | SKU | % |
+|---|---|---|
+| **A kelias** | **629** | **94,4 %** |
+| **B full** | **371** | **55,7 %** |
+| B partial | 43 | 6,5 % |
+| B none | 20 | 3,0 % |
+| be lentelės | 232 | 34,8 % |
+
+Lentelių lygiu: full **188** · partial **24** · none **11**.
+**⚠️ Šie skaičiai — SNAPSHOT, ne amžina tiesa.** Kanoninė tiesa = gyva ataskaita + jos metodika. Ataskaitoms **trūksta** `generated_at` / `classifier_version` / `scope_version` (pending).
+
+**★ ESMINIS PRODUKTINIS SPRENDIMAS — 1D INTERPOLIACIJA (Raimis, užrakinta):**
+Radinys: **183/223 lentelių saugo DISKREČIUS svorio TAŠKUS, ne intervalus.** „Produktas turi lentelę" ≠ „lentelė atsakys 12,3 kg šuniui". Tikras B full buvo **66 (9,9 %)**, ne 392.
+**Sprendimas:** vienos skaitinės SVORIO ašies lentelėms leidžiama **tiesinė interpoliacija** tarp 2 gretimų gamintojo taškų; **apatinė ir viršutinė normos ribos interpoliuojamos ATSKIRAI**; rezultatas = Petshop apskaičiuotas **intervalas** (`derived_linear_interpolation`), UI aiškiai sako, kad tai mūsų skaičiavimas, ne gamintojo pažadas. Iš gramų intervalo skaičiuojama pakuotės trukmė, €/dieną ir refill langas — **irgi intervalais**.
+**Draudimai:** extrapoliacija už šaltinio ribų · kategorinių ašių interpoliacija · redirect (Adult/Puppy Large) peržengimas · skirtingų formulių jungimas · nemonotoniškos lentelės.
+**Prenumeratos ritmas iš intervalo NEAKTYVUOJAMAS automatiškai** — reikia vartotojo patvirtintos faktinės porcijos.
+`age_weight_grid` / `multi_axis_grid` MVP lieka **exact-only / partial** (bilinearinė interpoliacija atidėta).
+**Poveikis: B full 66 → 371 (+305 SKU).** 159 lentelės gavo `interpolation_allowed` (monotoniškumas tikrintas KIEKVIENAM kategoriniam pjūviui atskirai, abi ribos; 0 atmesta).
+
+`calculation_method` taksonomija: `manufacturer_exact` · `manufacturer_range_match` · `derived_linear_interpolation` · `user_measured_portion` · `user_estimated_portion`.
+
+**★ KANONINĖ KLASIFIKACIJA (kiekviena iš 223 lygiai vienoje kategorijoje):**
+| kategorija | lent. | b_path |
+|---|---|---|
+| `1_unsupported` | 11 | none 11 |
+| `2_weight_range` | 26 | full 26 |
+| `3_weight_points_interp` | 159 | full 159 |
+| `4_age_only_points` | 2 | full 2 (amžius = intervalai) |
+| `5_multi_axis_grid` | 25 | partial 24 + full 1 |
+
+`source_structure` po pataisos: `discrete_points` 161 · `range` 26 · `multi_axis_grid` 25 · `unsupported` 11.
+
+**★★ DVI KARTUS PASIKARTOJUSI KLAIDA (užrakinta taisyklė):**
+`lookup_method` buvo priskirtas iš `shape`, o `source_structure` — iš `lookup_method`. Rezultatas: **`source_structure` melavo 154 lentelėse iš 223** (iš 170 „range" realiai range buvo 24). Ašių politika buvo teisinga, nes išvesta IŠ EILUČIŲ.
+**→ TAISYKLĖ: `source_structure`, `axis_resolution_policy`, `resolution_policy`, `b_path_status`, eilučių skaitikliai — VISADA skaičiuojami iš `ps_feeding_rows`, NIEKADA iš gretimo stulpelio ir NIEKADA nepriimami iš CSV.**
+
+**★★★ MyISAM → InnoDB MIGRACIJA (batch `s212b_engine_20260717_c4861c6f`):**
+**Radinys: visos 4 `ps_feeding_*` lentelės buvo MyISAM → transakcijų NĖRA → `START TRANSACTION`/`ROLLBACK`/`FOR UPDATE` nedarė NIEKO.** Visa „viso batch'o transakcija" buvo dekoracija.
+Migracija: vartai (paieška pagal pilną vardą IR galūnes → 0 priklausomybių) → `GET_LOCK` + `register_shutdown_function` RELEASE → backup × 4 checksum-verified → `ALTER ENGINE=InnoDB` × 4 (0 warnings) → hash laukai `CHAR(64) CHARACTER SET ascii COLLATE ascii_bin` → `checksum_algo`/`source_hash_algo` = **`md5` × 223** (tik po `^[0-9a-fA-F]{32}$` validacijos), po to `NOT NULL` **be tylaus DEFAULT**.
+**Patikra:** ENGINE 4/4 InnoDB · AI **224 / 13828 / 17** išliko · indeksai išliko · CHECK `chk_value_has_amount` **realiai atmeta** blogą eilutę · nukirstų hash 0 · `map` sudėtinių PK **451** (ne 223 — pirmo PK stulpelio DISTINCT šiai lentelei netinka) · `tables` seni 39 laukai `f971db66…` = backup `f971db66…` (skyrėsi tik 2 nauji stulpeliai).
+**Down-migration paruošta iš anksto** (MariaDB DDL = implicit COMMIT).
+
+**HASH LAUKŲ PASKIRTYS (užrakinta — keturi skirtingi dalykai):**
+| laukas | paskirtis |
+|---|---|
+| `file_hash` | tikslūs įkelto CSV baitai; DRY↔APPLY sutapimui |
+| `canonical_table_hash` | normalizuotas semantinis vienos lentelės turinys; **no-op ir versijavimo tiesa** |
+| `source_hash` | gamintojo puslapio/PDF šaltinio turinys |
+| `checksum` | **legacy** ankstesnio parserio suma; NE naujo importerio tiesa |
+
+**`chash_v1` SUTARTIS:**
+- SHA-256. Tapatybė: `brand + line + species + weight_basis`.
+- Eilutės: `cell_type · weight_from/to · amount_from/to · redirect_reason · source_label · condition_dimensions`.
+- Skaičiai `number_format(x,2)` → `45` = `45.0` = `45.00`. **NULL → `""`, 0 → `"0.00"` — NIEKADA nesutampa.**
+- JSON raktai `ksort`; eilutės rikiuojamos → **CSV tvarka ir BOM hash NEKEIČIA**.
+- **NEĮEINA:** `id`, mappingas, timestamps, `status`, `is_active`, `version_no`, `import_batch_id`, `checksum`, `source_hash`, `source_url`, išvestiniai, eilučių tvarka.
+- **Tuščia lentelė (`value + redirect = 0`) hash NEGAUNA** → `canonical_table_hash` ir `canonical_hash_version` = NULL; negali būti aktyvi verified. **Lentelė TIK su redirect eilutėmis hash GAUNA** („Adult"/„Puppy Large" = tikras gamintojo atsakymas).
+- **Tuščias importuojamas turinys NĖRA nauja versija ir NĖRA no-op** → `EMPTY_TABLE_CONTENT`, APPLY blokuojamas.
+- **No-op sąlyga (aiški, NE SQL `NULL!=NULL`):** `existing IS NOT NULL AND incoming IS NOT NULL AND existing = incoming AND canonical_hash_version sutampa`.
+- **Pasikartojantys canonical hash NĖRA klaida** — 2 teisėtos grupės (`[105,106]`, `[126,156]`) turi identišką gamintojo turinį. **`UNIQUE` indekso ant `canonical_table_hash` NĖRA ir nebus.**
+
+**`source_changed_only` (užrakinta):** kai canonical nepakito, o `source_hash` pakito — **nauja semantinė versija NEkuriama, `version_no` nesikeičia**. `source_hash` + `source_version` + `source_url` + `source_checked_at` + `verification_note` atnaujinami **KARTU, vienoje transakcijoje**. **Mišri būsena (naujas hash + sena versija) DRAUDŽIAMA.** Batch žurnale: `old/new_source_hash`, `old/new_source_version`, `result=source_changed_only`. (`pending_*` modelis rezervuotas automatiniam šaltinių skenavimui — dar nėra.)
+
+**RUNTIME INVARIANTAS (privalomas S212-C varikliui):**
+```
+table.status='verified' AND table.is_active=1
+AND table.canonical_table_hash IS NOT NULL AND map.is_active=1
+```
+Aktyvių tinkamų mappingų SKU turi būti **tiksliai 1**: `0` → `NO_ACTIVE_FEEDING_TABLE` · `1` → normalus kelias · `>1` → **`DATA_INTEGRITY_ERROR`, JOKIO „imame pirmą" / `LIMIT 1`**.
+
+**IMPORTERIO TESTAI — VISI REALŪS:**
+| matrica | rezultatas |
+|---|---|
+| Parseris/validatorius/klasifikatorius | **23/23 PASS** |
+| DB sluoksnis (D1–D16) | **17/17 PASS** |
+| Uždarymo vartai (D4-fix + matomumas) | **5/5 PASS** |
+
+Įrodyta: no-op · kita eilučių tvarka+BOM → no-op (`file_hash` kitas, canonical tas pats) · `source_changed_only` · pakeistas taškas → **draft v2, mappingas NELIESTAS, runtime grąžina v1** · **atominis v1→v2** · **klaida aktyvavimo VIDURYJE → rollback, aktyvių tiksliai 1 (nei 2, nei 0)** · viso batch rollback (klaida ties 3-ia → 1 ir 2 taip pat neįrašytos) · žurnalas išlieka `rolled_back` · `EMPTY_TABLE_CONTENT` · `file_hash` neatitikimas · visų 3 versijų neatitikimas · idempotentinis batch_id · realus 2 ryšių `GET_LOCK` · `DUPLICATE_ACTIVE_MAPPING` · runtime 0/1/>1.
+**Matomumas 2 realiais ryšiais:** prieš A COMMIT B mato v1 · B konkuruojantis `FOR UPDATE` blokuojamas (`Lock wait timeout`, 2 s) · po A COMMIT B daro ROLLBACK → **nauja `READ COMMITTED` transakcija** → mato v2 · po A ROLLBACK B mato v1.
+**Po testų:** ZZTEST liekanų 0 · pakibusių `applying` 0 · lock laisvas · tikros 223/3825 nepakitusios.
+
+**⚠️ ARCHITEKTŪRA (užrakinta):** batch žurnalo įrašas **COMMITINAMAS PRIEŠ** duomenų transakciją — kitaip rollback ištrintų patį nesėkmės įrodymą. Aktyvavimas = **vienas `FOR UPDATE` blokas** — „išjungti v1, tada įjungti v2" paliktų produktą be lentelės.
+
+**★★★ TRYS MELAGINGI PASS ŠIOJE SESIJOJE (svarbiausia pamoka):**
+1. **D7 rollback „PASS" ant MyISAM** — atrodė, kad rollback suveikė; realiai pirmas `insert` krito (`checksum char(32)`, o dėjau sha256/64), tad rollback'ui nebuvo ko atsukti. **Testas patvirtino ne rollback, o tai, kad `insert` neveikia.** Oficialiai **INVALID** (ne PASS, ne FAIL).
+2. **`source_structure`** — laukas iš gretimo lauko, antrą kartą po `lookup_method`.
+3. **Testų fixture su 2 mappingais** — trys matomumo testai krito `DATA_INTEGRITY_ERROR`; priežastis: dvi ZZTEST lentelės susietos su tuo pačiu SKU. **Runtime invariantas pagavo mano paties testo klaidą.**
+**→ TAISYKLĖ: prieš tikrinant „po" būseną — patikrinti, kad „prieš" būsena REALIAI egzistuoja. Testas gali praeiti todėl, kad sistema neveikia iš viso.**
+**→ TAISYKLĖ: `$wpdb->insert()` / `$n++` rezultato netikrinimas = tyli klaida. Backup tikrinti turinio hash'u, NE eilučių skaičiumi.**
+
+**ANKSTESNI S212-B DARBAI (ta pati sesija):**
+- **Žodynas v1: 2 575 eilutės normalizuotos.** `activity_level` maišė 5 ašis (Monge „Bute/Kieme"=`lifestyle`, Farmina „Liesa/Normali/Antsvoris"=`body_condition`, Eukanuba=`svorio_valdymas`, Exclusion „Tik sausas/Sausas+konservas"=`feeding_type`, Ambrosia = lentelės ANTRAŠTĖS/parser garbage). Kodai: `thin|ideal|heavy` · `low|moderate|high` · `indoor|outdoor` · `reduce|maintain` · `dry_only|mixed` · amžius → `age_m_from/to`. Rollback: `condition_raw`.
+- **Ambrosia 15/15 (B 0 → 100 %).** Lentelės #78–82 nebuvo sugadintos — parseris `nuo/iki` eilutes perskėlė į dvi; **39 poros sulietos**, visos monotoniškos, patvirtinta gamintojo lentele **iki gramo** (`ambrosiapetfoodcyprus.com`). 3 SKU be lentelės: AMPCF02 → #77, AMPCS12/AMPCS02 → nauja #223. **Tapatybė nustatyta pagal SUDĖTĮ, ne pavadinimą.** Rollback: `rows_backup_json`.
+- **Redirect langeliai: 28** (`adult_formula` 24, `puppy_large_formula` 4) — „Adult"/„Puppy Large" nuorodos vietoj gramų. `cell_type` + CHECK `chk_value_has_amount`.
+- **Sutartis v3:** `axis_resolution_policy` JSON **per ašį** (viena lentelė gali būti tuo pačiu metu atvira ir uždara — skaitinė ašis interpoliuojasi, kategorinė ne); versijavimas `version_no/supersedes_table_id/is_active/activated_at/retired_at/import_batch_id`; `value_row_count + redirect_row_count = row_count`. Batch `s212b_20260717_fb3eeae1` (backup × 3).
+
+**ROLLBACK TAŠKAI:** `_bak_s212b_engine_20260717_c4861c6f` × 4 (InnoDB migracija) · `_bak_s212b_20260717_fb3eeae1` × 3 (sutartis v3) · `condition_raw` (2 575) · `rows_backup_json` (5 lentelės) · `_petshop_pkg_fix_from` (36).
+
+**⛔ PRODUCTION ROLLOUT BLOKATORIAI (S212-B jų NEUŽDARO):**
+| sritis | būsena |
+|---|---|
+| Šėrimo duomenų modelis + importeris | ✅ baigta |
+| DB integralumas ir versijavimas | ✅ baigta |
+| **S212-C skaičiavimo variklis** | ❌ nepradėtas |
+| **`petshop-core` suderinamumas** | ❌ neaudituotas |
+| **ZB reprice** | ❌ ~736 / ~984 užšaldytos legacy logika (S80 dry→apply) |
+| **ZB/VF importo regression** | ❌ nepatvirtinta (tik `stock_sync_checked`; reikia #2 03:02 + #5 03:32 ciklo) |
+| 13 `needs_manual_review` pakuočių | ❌ |
+| Browser E2E + analytics | ❌ |
+| Ataskaitų metaduomenys | ❌ `generated_at`/`classifier_version`/`scope_version` |
+| 11 TEMP snippetų (75 aktyvūs) | ❌ |
+| Domeno migracija (6 cron URL, Site URL, indexing, AVPN/IAPV→101) | ❌ |
+
+**TOLIAU — S212-C paruošimas. PIRMAS DARBAS = RECON, NE KODAS.**
+`petshop-core` inventorius: `class-refill-engine.php` · `class-pet-products.php` · `class-pet-profile.php` · `class-reminders.php` · `class-event-registry.php` + jų `require`/`include`, hookai, REST/AJAX endpointai, cron, DB lentelės, meta laukai, esamos porcijos/trukmės/refill formulės, eventai — **ir susiję aktyvūs Code Snippets** (75 aktyvūs gali dubliuoti ar perrašyti plugin'ų elgesį; recon tik pagal plugin'ų failus duotų vėl klaidingą vaizdą).
+**Rezultatas — ne failų santrauka, o AUTORITETO MATRICA:** kiekvienai funkcijai (profilio duomenys · porcija · pakuotės trukmė · €/dieną · refill data · feeding lookup · eventai · UI adapteriai) vienas sprendimas: **KEEP / EXTEND / REPLACE / DEPRECATE**.
+**Architektūros principas:** viena kanoninė formulė, ne keturios.
+```
+Feeding data repository → Canonical calculation engine
+   → Product page adapter · Pet profile adapter · Refill adapter · Subscription adapter
+```
+Adapteriai formulių NESKAIČIUOJA — perduoda įvestis ir formatuoja rezultatą.
+**Recon metu kodo NEKEISTI:** inventorius → srauto schema → dubliavimų identifikavimas → autoriteto matrica → minimalus S212-C integracijos planas. Tik po to rašyti ar perkelti.
+
+**TOLIAU (senesnis):** regresijos patikra po ZB ciklo → **S212-C** (engine).
 
 **M8 MASTER v3.2 — UŽRAKINTOS TEZĖS (pilnas dokumentas: `dokumentai/M8_Mano_augintinis_MASTER_v3_2.docx`):**
 
