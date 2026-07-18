@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1047,6 +1047,55 @@ Neprivalomas. Be jo B → **`NEEDS_CURRENT_WEIGHT`** (ne bendrinis spėjimas).
 **★ CALCULATOR srautas (gryna matematika):** RESOLVE (invariantas) → AXIS (kategorinės exact) → WEIGHT (taškas=B1 · intervalas=B1 · tarp taškų+interpolation_allowed=B2 · už ribų=D · redirect=nuoroda) → porcija [lo,hi] → trukmė (`pkg/hi`..`pkg/lo`) → €/d (`price/days_max`..`price/days_min`). Extrapoliacija niekada.
 
 **KITI ŽINGSNIAI (S212-C kodas):** (1) svorio laukai + migracija · (2) `Feeding_Repository` (runtime invariantas) · (3) `Feeding_Calculator` grynas + izoliuoti testai · (4) `Feeding_Service` · (5) produkto puslapio adapteris (anonimui, MVP) · (6) dashboard EXTEND (B+C sujungimas) · (7) profilio svorio įvestis. Dry-run → Raimio review → apply kiekvienam.
+
+**★★★ S212-C — Calculator + Repository PROTOTIPAI (2026-07-18, dar NEINTEGRUOTA) ★★★**
+
+> **STATUSAS — svarbu kitai sesijai, kad neklaidintų:**
+> ```
+> Calculator: isolated prototype validated, 25/25 PASS
+> Repository: read-only prototype validated against real DB, 7/7 PASS
+> petshop-core integration: NOT STARTED
+> production runtime: NOT ENABLED
+> ```
+> Failai `/home/claude/` (NE plugine): `class-feeding-calculator.php`, `class-feeding-repository.php`, `test-calculator.php`, `repotest2.php`. Repository testuotas per LAIKINĄ snippetą (#1113 serija), ne įdiegtas.
+
+**★ Step 1 — Petshop_Feeding_Calculator (grynas prototipas):**
+- Pure PHP, jokio WP/DB/WC. Įvestis = masyvas, ne DB objektas.
+- **25/25 izoliuoti testai PASS** (PHP 8.3 CLI sandbox).
+- Padengta: B1 exact/range · B2 interpoliacija (abi ribos atskirai) · redirect (prieš value) · ekstrapoliacija DRAUDŽIAMA · trukmė · quantity · faktinė suma (`price_is_total`) · €/d ir €/mėn intervalai · kategorinės ašys exact · kraštutiniai.
+- **⚠️ ATVIRA KONTRAKTO SPRAGA (uždaryti PRIEŠ svorio migraciją):** kai kelios eilutės turi tą patį svorį + skirtingas kategorines sąlygas (pvz. Josera id=1: 5kg→50/65/70 g pagal ašį), Calculator be paduotos ašies galėtų „imti pirmą sutapusį svorį". Repository `calculator_partial` žyma PATI SAVAIME neapsaugo, jei kas iškvies Calculator tiesiogiai. **Sprendimas:** Repository grąžina `required_condition_dimensions`; Calculator/Service gavęs be jų → **`MISSING_CONDITION_DIMENSION`**, jokio spėjimo. Privalo būti automatiškai testuojama.
+
+**★ Step 2 — Petshop_Feeding_Repository (read-only prototipas):**
+- Read-only. Runtime invariantas (verified + is_active + canonical_table_hash + map.is_active; 0→NO_ACTIVE, 1→OK, >1→DATA_INTEGRITY_ERROR). Jokio LIMIT 1.
+- Normalizuoja DB tipus į Calculator sutartį: `condition_dimensions` JSON→`conditions`, decimal→float, **NULL lieka NULL (nevirsta 0)**, redirect gramai NULL.
+- **7/7 runtime testai PASS:** vienas mappingas→OK · be mappingo→NO_ACTIVE · 0 realių dublių · draft(tid=7) ignoruojama→NO_ACTIVE · redirect NULL gramai išlieka · dešimtainiai `double` · deterministinis (2× skaitymas identiškas).
+- **DB NEPAKITO: 223 lentelės / 3 825 eil. / 451 map / parašas `a665ff15…` identiškas prieš ir po.** Read-only įrodyta.
+
+**★ LENTELIŲ SUPPORT KLASIFIKACIJA (sąžininga — NE „viskas supported"):**
+```
+calculator_supported   131   (tik weight ašis: discrete 106 + range 25)
+calculator_partial      68   (reikia kategorinės ašies iš profilio)
+unsupported_structure   13   (multi_axis_grid full + age)
+empty_by_design          4   (#86,93,128,138 — canonical_table_hash NULL)
+inactive                 7
+```
+**„Amžiaus ašis" NETAPO tyliu weight lookup:** 13 multi_axis+age → `unsupported_structure`; 12 partial multi_axis+age → `calculator_partial`; `age_full=3`, `multi_axis_full=1` — reikalauja papildymo. 24 partial neliko full. 11 unsupported nepriverstos.
+
+**★ DU APRĖPTIES MATAI (skirtingi dalykai — abu laikom):**
+```
+Data coverage (produktas TURI lentelę, nepaisant ar naudojama):
+  full 371 · partial 43 · none 20 · no table 232   (S212-A snapshot)
+
+Runtime eligible coverage (lentelė REALIAI gali skaičiuoti):
+  supported 283 · needs conditions 111 · unsupported 18 · no active table 254
+```
+MVP 666 instock per Repository (runtime): **b_full 369 · b_partial 43 · b_none 0 · be_lenteles 254 · integrity 0.**
+
+**★ SNAPSHOT SKIRTUMO ANALIZĖ (dalinai — 2 SKU dar NEuždaryti):**
+- **`b_none` 20→0 PAAIŠKINTA:** visos 11 b_none lentelių yra `status=ambiguous, is_active=0` → **negali būti runtime šaltinis** (S212-B invariantas). Snapshot skaičiavo per „bet koks aktyvus mappingas" (data coverage), Repository per runtime invariantą. Runtime prasme šie 20 produktų = `NO_ACTIVE_FEEDING_TABLE`. **NE klaida — du skirtingi matai.** Analitiškai jie ≠ produktai, kuriems duomenų niekada nebuvo.
+- **`b_full` 371→369 (−2): DAR NEUŽDARYTA.** `ANY active map` metodika irgi rodo 369, ne 371. Hipotezė (mappingo/stock pokytis) NĖRA faktas. **Prieš keičiant kanoninį snapshotą — reikia išvardyti konkrečius 2 SKU, jų būseną seno ir naujo metodo, tikslią priežastį (kategorija/stock/mappingas/status/scope).** Kol neuždaryta — kanoninis snapshot lieka 371/43/20/232.
+
+**TOLIMESNĖ EIGA (užrakinta):** (1) ✅ šis įrašas · (2) kategorinių ašių kontraktas `required_condition_dimensions` + `MISSING_CONDITION_DIMENSION` + testas · (3) tikslūs 2 SKU dėl 371→369 · (4) TIK TADA `current_weight_kg`+`weight_updated_at` migracija. **Svorio migracija NEPRADEDAMA, kol (2) ir (3) neuždaryti.**
 
 **TOLIAU (senesnis):** regresijos patikra po ZB ciklo → **S212-C** (engine).
 
