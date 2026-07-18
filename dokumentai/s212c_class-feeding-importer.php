@@ -100,18 +100,29 @@ class Petshop_Feeding_Importer {
 				if($apply){
 					$wpdb->query('START TRANSACTION');
 					// užrakinam kandidatą + mappingą
-					$locked=$wpdb->get_row($wpdb->prepare("SELECT id FROM {$T} WHERE id=%d FOR UPDATE",$cand['id']), ARRAY_A);
+					$locked=$wpdb->get_row($wpdb->prepare("SELECT id,table_key,version_no,canonical_table_hash,checksum FROM {$T} WHERE id=%d FOR UPDATE",$cand['id']), ARRAY_A);
 					// dar kartą tikrinam vienintelį (lenktynių apsauga)
 					$recount=(int)$wpdb->get_var($wpdb->prepare(
 						"SELECT COUNT(*) FROM {$T} t JOIN {$M} m ON m.feeding_table_id=t.id
 						 WHERE m.product_id=%d AND t.canonical_table_hash=%s AND t.status='needs_review'",$pid,$incoming_hash));
 					if(!$locked || $recount!==1){ $wpdb->query('ROLLBACK'); return self::err('DATA_INTEGRITY_ERROR',$issues,array('recount'=>$recount)); }
-					self::log($wpdb,$L,$in['batch_id']??'',$pid,$cand['id'],'promotion',$cand,$kind,$vstatus,$in);
-					$wpdb->update($T,array('source_kind'=>$kind,'source_verification_status'=>$vstatus,
+					// CHECKSUM NORMALIZACIJA (path A): kanoninė konvencija hash(table_key|version_no|canonical)
+					$correct_checksum=self::canonical_checksum($locked['table_key'],$locked['version_no'],$locked['canonical_table_hash']);
+					$checksum_fields=array();
+					if($correct_checksum!==$locked['checksum']){
+						// uq_checksum kolizijos apsauga
+						$collision=(int)$wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$T} WHERE checksum=%s AND id<>%d",$correct_checksum,$cand['id']));
+						if($collision>0){ $wpdb->query('ROLLBACK'); return self::err('CHECKSUM_COLLISION',$issues,array('checksum'=>substr($correct_checksum,0,16))); }
+						$checksum_fields['checksum']=$correct_checksum;
+						$checksum_fields['checksum_algo']='sha256';
+					}
+					self::log($wpdb,$L,$in['batch_id']??'',$pid,$cand['id'],'promotion',$cand,$kind,$vstatus,$in,
+						array('old_checksum'=>substr($locked['checksum'],0,16),'new_checksum'=>substr($correct_checksum,0,16)));
+					$wpdb->update($T,array_merge($checksum_fields,array('source_kind'=>$kind,'source_verification_status'=>$vstatus,
 						'source_url'=>$in['source_url'],'source_version'=>$in['source_version'],
 						'source_verified_at'=>current_time('mysql'),'source_verified_by'=>$in['verified_by']??'importer',
 						'status'=>'verified','is_active'=>1,'activated_at'=>current_time('mysql'),
-						'updated_at'=>current_time('mysql')),array('id'=>$cand['id']));
+						'updated_at'=>current_time('mysql'))),array('id'=>$cand['id']));
 					$wpdb->update($M,array('is_active'=>1),array('feeding_table_id'=>$cand['id'],'product_id'=>$pid));
 					$wpdb->query('COMMIT');
 				}
@@ -125,14 +136,19 @@ class Petshop_Feeding_Importer {
 		return self::ok('canonical_changed_new_version',null,$issues,array('note'=>'draft v2 kūrimas — atskiras insert kelias'));
 	}
 
-	private static function log($wpdb,$L,$batch,$pid,$tid,$action,$old,$kind,$vstatus,$in){
+	/** Kanoninė checksum konvencija (S212-B #1096): hash(table_key|version_no|canonical_table_hash). */
+	public static function canonical_checksum( $table_key, $version_no, $canonical_hash ) {
+		return hash( 'sha256', (string)$table_key . '|' . (string)$version_no . '|' . (string)$canonical_hash );
+	}
+
+	private static function log($wpdb,$L,$batch,$pid,$tid,$action,$old,$kind,$vstatus,$in,$extra=array()){
 		// batch žurnale sena IR nauja provenance
 		if($wpdb->get_var("SHOW TABLES LIKE '{$L}'")!==$L) return;
 		$cols=$wpdb->get_col("SHOW COLUMNS FROM {$L}");
 		$row=array('product_id'=>$pid,'feeding_table_id'=>$tid,'action'=>$action,'created_at'=>current_time('mysql'));
 		if(in_array('batch_id',$cols)) $row['batch_id']=$batch;
-		if(in_array('old_provenance',$cols)) $row['old_provenance']=wp_json_encode(array('kind'=>$old['source_kind']??null,'status'=>$old['source_verification_status']??null,'url'=>$old['source_url']??null));
-		if(in_array('new_provenance',$cols)) $row['new_provenance']=wp_json_encode(array('kind'=>$kind,'status'=>$vstatus,'url'=>$in['source_url']));
+		if(in_array('old_provenance',$cols)) $row['old_provenance']=wp_json_encode(array_merge(array('kind'=>$old['source_kind']??null,'status'=>$old['source_verification_status']??null,'url'=>$old['source_url']??null),isset($extra['old_checksum'])?array('checksum'=>$extra['old_checksum']):array()));
+		if(in_array('new_provenance',$cols)) $row['new_provenance']=wp_json_encode(array_merge(array('kind'=>$kind,'status'=>$vstatus,'url'=>$in['source_url']),isset($extra['new_checksum'])?array('checksum'=>$extra['new_checksum']):array()));
 		$wpdb->insert($L,$row);
 	}
 	private static function ok($outcome,$tid,$issues,$extra=array()){ return array_merge(array('outcome'=>$outcome,'table_id'=>$tid,'issues'=>$issues),$extra); }
