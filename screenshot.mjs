@@ -15,7 +15,7 @@ function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return 
 const o={};
 const mk=wj('POST','code-snippets/v1/snippets',{name:'S212-C Create Tables DryRun (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
 let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_ct=Ct8Kw3Nx');
+if(id){ const r=hit('https://dev.avesa.lt/?ps_ct=Ct8Kw3Nx&confirm=APPLY_CREATE_TABLES');
   const i=r.indexOf('{"');
   if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
   const body=(i>=0)?r.slice(i):r;
