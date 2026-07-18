@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18 rytas** (**petshop-core RECON baigtas** — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -982,6 +982,71 @@ ps_refill_tracking  → refill-engine (C: pirkimų kalibracija)  [KEEP]
 Adapteriai formulių NESKAIČIUOJA — perduoda įvestis, formatuoja rezultatą.
 
 **⛔ PRODUCTION BLOKATORIAI (nepakitę):** ZB reprice (~736/~984 užšaldytos) · ZB/VF importų regression nepatvirtinta · 13 `needs_manual_review` pakuočių · E2E + analytics · ataskaitų metaduomenys · 11 TEMP + domeno migracija.
+
+**★★★ S212-C ARCHITEKTŪRA — UŽRAKINTA 2026-07-18 (planas, kodo dar NĖRA) ★★★**
+
+> Raimio patvirtinta su 7 korekcijomis. Kodas dar nerašytas. Prieš kodą — šis planas autoritetas.
+
+**★ TRIJŲ SLUOKSNIŲ SERVISAS (NE vienas „grynas" servisas — tai buvo prieštaravimas):**
+```
+ps_feeding (S212-B)
+   ↓
+Petshop_Feeding_Repository   → randa aktyvią lentelę + eilutes (runtime invariantas)
+   ↓
+Petshop_Feeding_Calculator   → GRYNA matematika, be DB ir WordPress (testuojama izoliuotai)
+   ↓
+Petshop_Feeding_Service      → surenka produktą, kainą, pakuotę, augintinį; kviečia repo+calc
+   ↓
+product / profile / dashboard / refill / subscription adapteriai
+```
+Matematika atskirta nuo DB → testuojama be WordPress, formulė NEpatenka į dashboard ar produkto puslapį.
+
+**★ PENKIOS PAKOPOS (A pakopa buvo pamesta plane — atkurta):**
+- **A** — klientas nurodo REALIĄ dienos porciją (tiksliausia)
+- **B1** — tiesioginė gamintojo norma (tikslus taškas ARBA gamintojo intervalas)
+- **B2** — Petshop apskaičiuota linijinė interpoliacija tarp 2 gamintojo taškų (`derived_linear_interpolation`)
+- **C** — realus pirkimų ritmas (savikalibracija iš `ps_refill_tracking`)
+- **D** — duomenų nepakanka
+**⚠️ B2 ≠ vartotojo svorio intervalas.** B2 = interpoliacija tarp gamintojo taškų. Vartotojo svorio intervalas — atskiras įvesties neapibrėžtumas, **MVP ATIDĖTAS** (daug UI/kraštinių atvejų, mažai naudos). MVP vartotojas įveda VIENĄ svorį.
+
+**★★ DU ATSKIRI AUTORITETAI (esminė korekcija — C negali nustatyti porcijos):**
+
+**Dienos porcijos autoritetas:** `A → B → D`. **C ČIA NEDALYVAUJA.** Pirkimų intervalas nežino gramų/dieną (klientas gali maitinti 2 gyvūnus, maišyti su konservais, pirkti atsargai, dalį pirkti kitur).
+
+**Papildymo datos autoritetas:** `A (neseniai patvirtinta porcija) → subrendęs C → B → D`. C koreguoja KADA baigsis maistas, bet neapsimeta mitybos norma.
+
+**★ C BRANDOS RIBA (ne po 2 pirkimų):**
+- 1 pirkimas → tik grubus spėjimas (conf 0,4), B pagrindinis
+- 2 pirkimai / 1 intervalas → C signalas, bet **B lieka pagrindinis**
+- **≥3 tinkami pirkimai / 2 intervalai → C gali tapti autoritetu** (papildymo datai)
+- **Intervalai normalizuojami pagal nupirktus gramus/pakuotės dydį.** Jei kartą 3 kg, kitą 15 kg — vien dienų tarp užsakymų lyginti NEGALIMA; normalizuoti arba intervalo nenaudoti mokymuisi.
+- Kai subrendęs C stipriai skiriasi nuo B → **NE aklas vidurkis**, o abu rodomi: „Pagal gamintojo normą ~52 d., pagal jūsų pirkimo ritmą ~31 d." (signalas apie kelis gyvūnus/mišrų maitinimą).
+
+**★ SVORIO LAUKAI (CREATE — patvirtinta, dar nepadaryta):**
+```
+ps_pets: current_weight_kg DECIMAL(5,2) NULL,  weight_updated_at DATETIME NULL
+```
+Neprivalomas. Be jo B → **`NEEDS_CURRENT_WEIGHT`** (ne bendrinis spėjimas).
+**Išimtis:** kai lentelė naudoja `weight_basis='adult_expected'`, dabartinio svorio NEPAKANKA ir jo NEGALIMA išgalvoti iš `dog_size` → **`NEEDS_ADULT_EXPECTED_WEIGHT`**. `adult_expected_weight_kg` kol kas = adapterio perduodama reikšmė, **į `ps_pets` NEDEDAM**, kol nepamatysim realaus poreikio.
+
+**★ KIEKIS IR KAINA (teisingas perdavimas):**
+- `total_food_g = package_g × quantity` (NE visada viena pakuotė)
+- `eur_per_day = actual_total_price / duration_days`
+- Produkto puslapyje: vienos pakuotės GYVA kaina. Užsakymo/refill: faktiškai sumokėta suma + realus kiekis. Kitaip 2 maišų užsakymas gautų klaidingą papildymo datą.
+- Kaina NIEKADA nesaugoma (prenumeratoriui — užrakinta kaina).
+
+**★ ATSAKYMŲ KODAI (integralumo klaida ≠ D):**
+| situacija | kodas | elgesys |
+|---|---|---|
+| nėra svorio | `NEEDS_CURRENT_WEIGHT` | prašom svorio |
+| adult_expected lentelė, nėra suaug. svorio | `NEEDS_ADULT_EXPECTED_WEIGHT` | prašom suaug. svorio |
+| nėra lentelės | `D` / `NO_ACTIVE_FEEDING_TABLE` | skaičiavimo nėra |
+| svoris už gamintojo ribų | `D` (extrapoliacija DRAUDŽIAMA) | nerodom |
+| **2 aktyvūs mappingai** | **`DATA_INTEGRITY_ERROR`** | **registruojam + slepiam skaičiavimą, NE tylus D** |
+
+**★ CALCULATOR srautas (gryna matematika):** RESOLVE (invariantas) → AXIS (kategorinės exact) → WEIGHT (taškas=B1 · intervalas=B1 · tarp taškų+interpolation_allowed=B2 · už ribų=D · redirect=nuoroda) → porcija [lo,hi] → trukmė (`pkg/hi`..`pkg/lo`) → €/d (`price/days_max`..`price/days_min`). Extrapoliacija niekada.
+
+**KITI ŽINGSNIAI (S212-C kodas):** (1) svorio laukai + migracija · (2) `Feeding_Repository` (runtime invariantas) · (3) `Feeding_Calculator` grynas + izoliuoti testai · (4) `Feeding_Service` · (5) produkto puslapio adapteris (anonimui, MVP) · (6) dashboard EXTEND (B+C sujungimas) · (7) profilio svorio įvestis. Dry-run → Raimio review → apply kiekvienam.
 
 **TOLIAU (senesnis):** regresijos patikra po ZB ciklo → **S212-C** (engine).
 
