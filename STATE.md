@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1176,6 +1176,122 @@ ALTER TABLE gaj6_ps_pets
 | 5. Dashboard/refill adapteris + A-B-C autoritetas | ⬜ |
 | petshop-core integracija | ⬜ NEPRADĖTA |
 | production runtime | ⬜ NEĮJUNGTA |
+
+**★★★ S212-C Step 4 — Petshop_Feeding_Service KONTRAKTAS (2026-07-18, dokumentas — kodo dar NĖRA) ★★★**
+
+> Raimio patvirtinta su 5 atsakomybės ribų korekcijomis. **Service apima A/B1/B2/D. C NEPRIKLAUSO Service** (lieka refill sluoksnyje; vėliau atskiras `Refill_Forecast_Resolver` sujungs A→subrendęs C→B→D). Service rezultatas NIEKADA neturi `tier=C`.
+
+**★ ATSAKOMYBĖS SCHEMA (nauji komponentai, ne vien Service):**
+```
+Product/Pet/Price context providers → Condition Mapper → Feeding Repository
+   → Pure Calculator → Petshop_Feeding_Service → product/profile adapteriai
+   → Refill Forecast Resolver + esamas C engine → dashboard/refill/subscription
+```
+
+**★ A PAKOPA PRIKLAUSO SERVICE (ne adapteriui):** A = kliento nurodyta reali dienos porcija (pvz. 240 g/d), NE pirkimų istorija. Iš jos kanoniškai skaičiuojama trukmė/€d/€mėn. Jei A paliktume adapteriui — dashboard pakartotų Calculator formulę → du skaičiavimo taškai. **Todėl A Service viduje.**
+
+**★ ĮVESTIS (užrakinta):**
+```php
+[
+  'product_id' => 123,          // privaloma
+  'pet_id' => null,             // optional
+  'customer_id' => null,        // ownership patikra jei pet_id
+  'quantity' => 1,
+  'usage_context' => 'catalog'|'order_line'|'subscription_line',
+  'pet_input' => [              // tiesioginis override (anonimui, be profilio, laikinas svoris, A porcija)
+    'current_weight_kg' => null,
+    'adult_expected_weight_kg' => null,   // ps_pets kol kas nesaugo
+    'actual_daily_portion_g' => null,     // A pakopa
+    'conditions' => [],
+  ],
+  'price_context' => [          // arba null (=gyva WC kaina)
+    'source' => 'live_product'|'order_line_paid'|'subscription_locked',
+    'amount_inc_vat' => null,
+    'scope' => 'unit'|'line_total',
+    'currency' => 'EUR',
+  ],
+]
+```
+**Prioritetas:** tiesioginis `pet_input` override → saugomi `ps_pets` duomenys → `NEEDS_*`/`MISSING_CONDITION_DIMENSION`. Override naudojamas TIK šiam skaičiavimui, **automatiškai NErašomas į profilį**. Jei `pet_id` — PRIVALOMA ownership patikra (`customer_id`), vien `WHERE id=pet_id` = prieigos spraga.
+
+**★ KAINOS SEMANTIKA (`price_context`, NE boolean `price_is_total`):**
+- `usage_context` (adapteriui/auditui) ≠ `price_context` (kaina). Atskiri.
+- catalog + `price_context=null` → gyva vieno parduodamo vieneto kaina.
+- order/refill → konkrečios eilutės faktiškai sumokėta suma su PVM, po prekės nuolaidų, be siuntimo.
+- subscription → užrakinta prenumeratos eilutės kaina.
+- **`0 ≠ NULL`** — visiškai nuolaidota eilutė teisėtai kainuoja 0. Boolean per silpnas.
+
+**★ PACKAGE RESOLVER (atskiras, multipack PRIEŠ ×qty):**
+`pa_pakuotes_dydis` → `sellable_unit_food_g` (kiek maisto viename WC parduodamame SKU vienete): `15+3kg`→18000 · `2×7kg`→14000 · `7kg`→7000. Tada Service: `total_food_g = sellable_unit_food_g × order_quantity`. **Multipack neišdauginamas 2×.** Nepatikima normalizacija → `PACKAGE_SIZE_UNRESOLVED`. Pavadinimas — TIK QA perspėjimui, NIEKADA runtime svorio šaltinis.
+
+**★ DALINIŲ REZULTATŲ GRANDINĖ (NE „viskas arba nieko"):**
+```
+porcija:   A arba B duomenys
+trukmė:    porcija + package_g + quantity
+€/dieną:   trukmė + price
+```
+- nėra pakuotės → **porciją vis tiek grąžinam** (`partial`)
+- nėra kainos → **porciją + trukmę grąžinam**
+- nėra svorio IR nėra A porcijos → porcijos nustatyti negalime
+- `PRODUCT_NOT_FOUND` stabdo VISKĄ; `NO_PRICE`/`PACKAGE_SIZE_UNRESOLVED` — tik priklausomas dalis.
+- **Stock status NEstabdo matematikos** — grąžinamas kaip metadata/warning; ar leisti pirkimą — adapterio atsakomybė.
+
+**★ OUTCOME TIPAI (užrakinta — NE viskas „errors"):**
+| kodas | status |
+|---|---|
+| (sėkmė) | `ok` |
+| PACKAGE_SIZE_UNRESOLVED (jei porcija yra) | `partial` |
+| NEEDS_CURRENT_WEIGHT · NEEDS_ADULT_EXPECTED_WEIGHT · MISSING_CONDITION_DIMENSION | `needs_input` |
+| REDIRECT | `redirect` |
+| OUT_OF_RANGE | `unavailable` |
+| NO_ACTIVE_FEEDING_TABLE | `unavailable`, tier D |
+| DATA_INTEGRITY_ERROR | `system_error`, tier nėra, registruojamas su correlation ID, NIEKADA ne D |
+| PRODUCT_NOT_FOUND | `system_error`\|`unavailable` pagal priežastį |
+
+**REDIRECT ir NEEDS_* NĖRA klaidos.** `issues[]` turi `severity: info|warning|error` + `layer: product|pet|condition_mapper|repository|calculator|package|price|service`.
+
+**★ IŠVESTIS (užrakinta):**
+```php
+[
+  'status' => 'ok'|'partial'|'needs_input'|'redirect'|'unavailable'|'system_error',
+  'tier' => 'A'|'B1'|'B2'|'D'|null,
+  'method' => 'user_confirmed_portion'|'manufacturer_exact'|'manufacturer_range_match'
+             |'derived_linear_interpolation'|'manufacturer_redirect'|null,
+  'portion_g' => ['min'=>220.0,'max'=>240.0],
+  'duration_days' => ['min'=>50.0,'max'=>54.5],
+  'eur_per_day' => ['min'=>0.82,'max'=>0.90],
+  'eur_per_month' => ['min'=>24.60,'max'=>27.00],
+  'redirect' => null,
+  'issues' => [['severity'=>..,'layer'=>..,'code'=>..,'details'=>[]]],
+  'meta' => [ product_id, pet_id, table_id, source_version, canonical_hash_version,
+    weight_basis, weight_used_kg, weight_updated_at, weight_age_days,
+    conditions_used, sellable_unit_food_g, quantity, total_food_g,
+    price_source, price_amount_inc_vat, price_scope, stock_status ],
+]
+```
+**`weight_age_days` = FAKTAS.** Jokio išgalvoto `confidence=0.73`, kol nėra patvirtintos versijuotos pasitikėjimo politikos. UI vėliau pagal versijuotą taisyklę parodys, kad svoris senas.
+
+**★ CONDITION MAPPER (atskiras komponentas — deterministinis, versijuojamas, JOKIO fuzzy):**
+`ps_pets` reikšmės → kanoninės `ps_feeding` `condition_dimensions`. Prioritetas:
+```
+1. pet_input.conditions — vartotojo pasirinkta, validuota pagal lentelę
+2. ps_pets laukas — TIK per patvirtintą TOS PAČIOS semantikos mapping taisyklę
+3. aiškiai pažymėta universali/default eilutė
+4. MISSING_CONDITION_DIMENSION (+ missing_dimensions + allowed_values)
+```
+- `dog_size=small` **NEGALI** tapti `activity_level=low`. `life_stage`→tik `life_stage`. `is_sterilised`→tik sterilizacijos dimensija. `feeding_type` nenaudojamas vien todėl kad profilis jį turi.
+- Repository turi grąžinti ne tik trūkstamos ašies pavadinimą, bet ir **`allowed_values`** (tos lentelės galimas reikšmes), kad UI parodytų normalų pasirinkimą.
+
+**★★ UŽRAKINTA PRIEŠ AUDITĄ: besąlyginė eilutė NĖRA automatiškai „universali".** Tuščia `condition_dimensions` = **nepatikrinta duomenų būsena**, ne default. Universali pripažįstama TIK jei: atskiras `is_default` požymis · kanoninė reikšmė `all`/`any`/`default` · gamintojo šaltinis aiškiai sako „visiems". Jei tame pačiame svoryje `50g–be sąlygos · 65g–moderate · 70g–high` be aiškaus default žymens → **`AMBIGUOUS_CONDITION_SCHEMA`**, NE „50g visiems".
+
+**⚠️ PENDING DATA AUDIT (prieš Condition_Mapper kodą):**
+```
+Condition mapping rules: PENDING DATA AUDIT
+Universal/default row semantics: PENDING DATA AUDIT
+```
+Read-only auditas turi klasifikuoti lenteles: `unconditional_table · fully_conditioned · explicit_default_supported · mixed_ambiguous · inconsistent_dimension_schema · invalid_condition_data`. Tikrinti: (1) visos be sąlygų · (2) visos su · (3) mišrios · (4) ta pati svorio koordinatė su sąlygine IR besąlygine eilute · (5) explicit `all/any/default/universal` · (6) skirtingi required dimension rinkiniai vienoje lentelėje · (7) malformed JSON · (8) ar redirect eilutės turi kitą sąlygų schemą nei value.
+
+**TOLIMESNĖ EIGA:** (1) ✅ Service kontraktas · (2) read-only universalių/mišrių eilučių auditas · (3) `Condition_Mapper` kontraktas (`condition_map_v1`: kurios ps_pets ašys mapinamos, patvirtinti mappings, kurios visada reikalauja vartotojo, allowed_values, mišrių/prieštaringų elgsena) · (4) TIK TADA Service + Mapper + Package Resolver kodas.
 
 
 
