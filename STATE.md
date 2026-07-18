@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1336,7 +1336,56 @@ Repository grąžina trūkstamos ašies `allowed_values` (unikalios tos lentelė
 
 **★ PERSISTAVIMAS — DAR NEUŽRAKINTA (korekcija):** activity_level/body_condition/lifestyle **KINTA**; skirtingi gamintojai klausia skirtingai. Todėl kol kas: pasirinkimas → `pet_input.conditions` → naudojamas KONKREČIAM skaičiavimui → **automatiškai NErašomas į ps_pets**. Persistavimo politika projektuojama ATSKIRAI (ne „vienkartinis pasirinkimas").
 
-**TOLIMESNĖ EIGA:** (1) ✅ Service kontraktas · (2) ✅ condition auditas · (3) ✅ Monge/Farmina diagnozė · (4) ✅ condition_map_v1 · (5) TIK TADA kodas: Package Resolver → Condition_Mapper → Feeding_Service (+ integracija su Repository/Calculator). Prieš production svorio REST — ps_pets InnoDB.
+**TOLIMESNĖ EIGA:** (1) ✅ Service kontraktas · (2) ✅ condition auditas · (3) ✅ Monge/Farmina diagnozė · (4) ✅ condition_map_v1 · (5) ✅ Package sutartis · (6) TIK TADA kodas: Package Resolver → Condition_Mapper → Feeding_Service. Prieš production svorio REST — ps_pets InnoDB.
+
+**★★★ PACKAGE SLUOKSNIS — SUTARTIS UŽRAKINTA (2026-07-18) ★★★**
+
+> Grynas Resolver NEGALI kviesti WooCommerce (kitaip kartotume „gryno serviso" klaidą). Padalinta: Provider (WP faktai) / Resolver (grynas PHP).
+
+**★ REALŪS DUOMENYS (read-only auditas):**
+- **80 `pa_pakuotes_dydis` terminų**, VISI paprasti „skaičius+vienetas" (kg/g, LT kablelis `0,75`/`12,5`/`2,56`). **Jokio `15+3` ar `2×7` termine.**
+- **S212-A meta `_petshop_pkg_assignment_status`:** `fixed` 23 · `stock_sync_checked` 13 · **`needs_manual_review` 13**.
+- **13 review priežastis = termino↔produkto NEATITIKIMAS, NE sintaksė** („struktūrinis rodo 0/2 kg", nors terminas 1,5kg). Resolver to NEGALI ištaisyti.
+- `fix` pattern: `15 kg → 1,5 kg` (dingęs kablelis). Bonus/multipack tarp MVP dabar **0 gyvų atvejų**.
+- S212-A normalizuotos `sellable_food_g` meta NĖRA — Resolver skaičiuoja iš termino.
+
+**★ Petshop_Package_Size_Provider (WP-priklausomas, skaito TIK faktus):**
+```php
+['term_value' => '1,5 kg', 'assignment_status' => 'needs_manual_review']
+```
+Jokių skaičiavimų, jokio produkto pavadinimo, jokio fallback.
+
+**★ Petshop_Package_Size_Resolver (GRYNAS PHP, jokio $wpdb/wc_get_product):** du atskiri žingsniai — (1) **parse** (ar tekstas sintaksiškai suprantamas) → (2) **trust gate** (ar priskyrimu galima pasitikėti).
+```php
+['status'=>'ambiguous', 'sellable_unit_food_g'=>null,
+ 'parsed_candidate_g'=>1500, 'reason_code'=>'assignment_needs_manual_review', 'raw_value'=>'1,5 kg']
+```
+**⚠️ `sellable_unit_food_g=null` kai NEpasitikima** (net jei parse pavyko). `parsed_candidate_g` — TIK diagnostikai. **Jei paliktume 1500+warning → skaičius nugalėtų tekstą.**
+
+**★ STATUSŲ PRIORITETAS (užrakinta seka):**
+```
+1. Terminas tuščias/neparsinamas/<=0        → unresolved
+2. Parsinamas, BET status=needs_manual_review → ambiguous (parse NUGALIMAS)
+3. Parsinamas + statusas patikimas           → resolved
+4. Nežinomas naujas assignment_status        → ambiguous (konservatyvu)
+```
+**Patikimų whitelist:** `null · '' · fixed · stock_sync_checked`. **Nepatikimas:** `needs_manual_review`. Visa kita → `ambiguous`.
+
+**★ GRAMATIKOS (tik žinomos, JOKIO universalaus „surask visus skaičius" regex):**
+```
+NUMBER UNIT              7 kg → 7000 · 85 g → 85 · 1,5 kg → 1500
+NUMBER + NUMBER UNIT     15+3 kg → 18000   (bonus pack)
+COUNT × NUMBER UNIT      2×7 kg / 2x7 kg → 14000   (multipack)
+```
+Visa kita → `unresolved`. Bonus/multipack TIK iš `term_value`, niekada iš pavadinimo. **0 gyvų atvejų — capability be duomenų.**
+
+**★ DU ATSKIRI FIXTURE (NEsuplakti):**
+- **Terminų fixture (80):** tikrina TIK sintaksę (`1,5 kg`→1500, `12,5 kg`→12500, `85 g`→85, `0,75 kg`→750).
+- **Produktų būsenų fixture (13 review):** tikrina trust gate (`term=1,5kg` + `needs_manual_review` → ambiguous). **Ta pati `1,5 kg` viename produkte = resolved, kitame = ambiguous.** Problema priskyrime, ne tekste.
+
+**★ SERVICE SUTARTIS:** `quantity` Resolveryje NEdalyvauja. `total_food_g = sellable_unit_food_g × quantity` daro TIK Service, ir TIK jei `status==='resolved'`. `2×7kg` = viena 14kg prekė; krepšelio qty=2 → 28kg.
+
+**KITAS:** kodas — Package Resolver (grynas + 2 fixture) → Condition_Mapper (condition_map_v1) → Feeding_Service (integruoja viską).
 
 **★★★ CONDITION SCHEMA AUDITAS — FAKTINIS (2026-07-18, read-only, DB nekeista) ★★★**
 
