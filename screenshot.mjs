@@ -1,10 +1,10 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfZjYnXSl8fCRfR0VUWydwc19mNiddIT09J0Y2S3c4TngnKXtyZXR1cm47fQoJZ2xvYmFsICR3cGRiOyAkcGY9JHdwZGItPnByZWZpeDsKCSRjb2RlPSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgY29kZSBGUk9NIHskcGZ9c25pcHBldHMgV0hFUkUgaWQ9MTEwNiIpOwoJLy8gZ3JhemluYW0gYmFzZTY0IGthZCBiYWNrc2xhc2hhaSBpc2xpa3QKCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ3JlYWRvbmx5Jz0+dHJ1ZSwnY29kZV9iNjQnPT5iYXNlNjRfZW5jb2RlKCRjb2RlKSkpOyBleGl0Owp9KTsK';
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcDInXSl8fCRfR0VUWydwc19wMiddIT09J1AyS3c4TngnKXtyZXR1cm47fQoJQHNldF90aW1lX2xpbWl0KDQwMCk7IGdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCdyZWFkb25seSc9PnRydWUpOwoJJFQ9JHBmLidwc19mZWVkaW5nX3RhYmxlcyc7ICRSPSRwZi4ncHNfZmVlZGluZ19yb3dzJzsKCSRDSFY9J2NoYXNoX3YxJzsKCSRjYW5vbj1mdW5jdGlvbigkdCwkcm93cykgdXNlICgkQ0hWKXsKCQkkbj1mdW5jdGlvbigkdil7IHJldHVybiAoJHY9PT1udWxsfHwkdj09PScnKT8nJzpudW1iZXJfZm9ybWF0KChmbG9hdCkkdiwyLCcuJywnJyk7IH07CgkJJGlkPWFycmF5KCdicmFuZCc9PihzdHJpbmcpJHRbJ2JyYW5kJ10sJ2xpbmUnPT4oc3RyaW5nKSR0WydsaW5lJ10sCgkJCSdzcGVjaWVzJz0+KHN0cmluZykkdFsnc3BlY2llcyddLCd3ZWlnaHRfYmFzaXMnPT4oc3RyaW5nKSR0Wyd3ZWlnaHRfYmFzaXMnXSk7CgkJJHJyPWFycmF5KCk7CgkJZm9yZWFjaCgkcm93cyBhcyAkcil7CgkJCSRjPWpzb25fZGVjb2RlKChzdHJpbmcpJHJbJ2NvbmRpdGlvbl9kaW1lbnNpb25zJ10sdHJ1ZSk7CgkJCWlmKCFpc19hcnJheSgkYykpICRjPWFycmF5KCk7CgkJCWtzb3J0KCRjKTsKCQkJJHJyW109aW1wbG9kZSgiXHgxZiIsYXJyYXkoKHN0cmluZykkclsnY2VsbF90eXBlJ10sCgkJCQkkbigkclsnd2VpZ2h0X2Zyb21fa2cnXSksJG4oJHJbJ3dlaWdodF90b19rZyddKSwKCQkJCSRuKCRyWydhbW91bnRfZnJvbV9nJ10pLCRuKCRyWydhbW91bnRfdG9fZyddKSwKCQkJCShzdHJpbmcpJHJbJ3JlZGlyZWN0X3JlYXNvbiddLChzdHJpbmcpJHJbJ3NvdXJjZV9sYWJlbCddLAoJCQkJY291bnQoJGMpP3dwX2pzb25fZW5jb2RlKCRjLEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOicnKSk7CgkJfQoJCXNvcnQoJHJyLCBTT1JUX1NUUklORyk7CgkJcmV0dXJuIGhhc2goJ3NoYTI1NicsICRDSFYuIlx4MWUiLndwX2pzb25fZW5jb2RlKCRpZCkuIlx4MWUiLmltcGxvZGUoIlx4MWUiLCRycikpOwoJfTsKCS8vIFZJU09TIGxlbnRlbGVzIHN1IGNoYXNoX3YxIGhhc2ggKG5lIG1hbm8gMjM3LzIzOC8yMzkpCgkkdGFicz0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCAqIEZST00geyRUfSBXSEVSRSBjYW5vbmljYWxfdGFibGVfaGFzaCBJUyBOT1QgTlVMTCBBTkQgY2Fub25pY2FsX2hhc2hfdmVyc2lvbj0nY2hhc2hfdjEnIE9SREVSIEJZIGlkIiwgQVJSQVlfQSk7Cgkkb1sndmlzbyddPWNvdW50KCR0YWJzKTsKCSRtYXRjaD0wOyAkbWlzbWF0Y2g9MDsgJG1pc21fbGlzdD1hcnJheSgpOwoJZm9yZWFjaCgkdGFicyBhcyAkdCl7CgkJJHJvd3M9JHdwZGItPmdldF9yZXN1bHRzKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgY2VsbF90eXBlLHdlaWdodF9mcm9tX2tnLHdlaWdodF90b19rZyxhbW91bnRfZnJvbV9nLGFtb3VudF90b19nLHJlZGlyZWN0X3JlYXNvbixzb3VyY2VfbGFiZWwsY29uZGl0aW9uX2RpbWVuc2lvbnMgRlJPTSB7JFJ9IFdIRVJFIGZlZWRpbmdfdGFibGVfaWQ9JWQiLCR0WydpZCddKSwgQVJSQVlfQSk7CgkJJGdvdD0kY2Fub24oJHQsJHJvd3MpOwoJCWlmKCRnb3Q9PT0kdFsnY2Fub25pY2FsX3RhYmxlX2hhc2gnXSkgJG1hdGNoKys7CgkJZWxzZSB7ICRtaXNtYXRjaCsrOyBpZihjb3VudCgkbWlzbV9saXN0KTwxMCkgJG1pc21fbGlzdFtdPWFycmF5KCdpZCc9PiR0WydpZCddLCdnb3QnPT5zdWJzdHIoJGdvdCwwLDE2KSwnZXhwJz0+c3Vic3RyKCR0WydjYW5vbmljYWxfdGFibGVfaGFzaCddLDAsMTYpKTsgfQoJfQoJJG9bJ21hdGNoJ109JG1hdGNoOyAkb1snbWlzbWF0Y2gnXT0kbWlzbWF0Y2g7ICRvWydtaXNtYXRjaF9saXN0J109JG1pc21fbGlzdDsKCSRvWydJWlZBREEnXT0oJG1pc21hdGNoPT09MCAmJiAkbWF0Y2g9PT1jb3VudCgkdGFicykpPycyMTkvMjE5IFBBU1MgLSBjYW5vbmljYWxpemVyaXMgYXRrdXJ0YXMgVElLU0xJQUknOidORVNVVEFNUEEnOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
-  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'f6',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'p2',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
   if(c==='200'||c==='201') return c; }
  return 'fail';}
@@ -13,13 +13,13 @@ fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
 function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
 function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'S212-C Full 1106 (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+const mk=wj('POST','code-snippets/v1/snippets',{name:'S212-C Prove 219 (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
 let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_f6=F6Kw8Nx');
+if(id){ const r=hit('https://dev.avesa.lt/?ps_p2=P2Kw8Nx');
   const i=r.indexOf('{"');
   if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
   const body=(i>=0)?r.slice(i):r;
   if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
   else o.raw=r.slice(0,4000);
   wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
-console.log('PUT:',pr('f6.json',o));
+console.log('PUT:',pr('p2.json',o));
