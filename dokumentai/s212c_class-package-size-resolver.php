@@ -129,22 +129,6 @@ class Petshop_Package_Size_Resolver {
 			'raw_value'            => $raw,
 		);
 	}
-
-	/** Provider: WP _petshop_pkg_assignment_status → domeno trust. */
-	public static function map_wp_status_to_trust( $wp_status ) {
-		switch ( $wp_status ) {
-			case 'fixed':
-			case 'stock_sync_checked':
-				return self::TRUST_VERIFIED;
-			case 'needs_manual_review':
-				return self::TRUST_REVIEW_REQUIRED;
-			case null:
-			case '':
-				return self::TRUST_UNVERIFIED;
-			default:
-				return self::TRUST_UNKNOWN;
-		}
-	}
 }
 
 }
