@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1145,6 +1145,38 @@ Kiekvienas matas turi savo sumą iki 666. Nemaišyti.
 - Tikslus SKU baseline: **SUKURTAS** (`6562ef23…`)
 - petshop-core integracija: **NEPRADĖTA** · production runtime: **NEĮJUNGTA**
 - **KITAS: `current_weight_kg` + `weight_updated_at` migracijos DRY-RUN → Raimio review → APPLY.**
+
+**★★★ S212-C — SVORIO LAUKŲ MIGRACIJA APPLY ĮVYKDYTA (2026-07-18) ★★★**
+
+**Migracija į `gaj6_ps_pets`** (batch `s212c_pets_weight_20260718_01b43648`, Raimio patvirtinta siaura APPLY):
+```sql
+ALTER TABLE gaj6_ps_pets
+    ADD COLUMN current_weight_kg DECIMAL(5,2) NULL,
+    ADD COLUMN weight_updated_at DATETIME NULL;
+```
+- **Jokio DEFAULT, CURRENT_TIMESTAMP, ON UPDATE.** Abu `DEFAULT NULL`, patvirtinta SHOW CREATE.
+- **Backup `CREATE TABLE LIKE + INSERT SELECT`** (ne `AS SELECT` — išsaugo schemą, 6 indeksus, PK, AUTO_INCREMENT): `gaj6__bak_s212c_pets_weight_20260718_01b43648`, 22 eil., hash patvirtintas PRIEŠ ALTER.
+- **PATIKRA (visi žali):** eilučių 22=22 · PK 22=22 · **senų 23 laukų turinio hash `c94933fab7812d3a…` prieš = po** · AUTO_INCREMENT 46=46 · indeksai 6=6 · `current_weight_kg` NULL 22/22 · `weight_updated_at` NULL 22/22 · ALTER warnings 0 · jokio DEFAULT/CURRENT_TS/ON UPDATE.
+- **Migracijos lock** `petshop_s212c_pets_weight_migration` — GET_LOCK + finally RELEASE.
+
+**⚠️ `ps_pets` engine = MyISAM (kaip buvo `ps_feeding_*` prieš S212-B).** Šiai migracijai saugumo nekeičia (ADD COLUMN NULL saugus, backup+hash apsaugo). **BET UŽRAKINTA RIBA: prieš production svorio rašymą per profilio REST — `ps_pets` PRIVALO būti konvertuota į InnoDB** (atskira migracija su savo dry-run/backup/testais). Calculator+Repository integracija gali tęstis anksčiau; production svorio atnaujinimų ant MyISAM nepalikti.
+
+**ROLLBACK:** `ALTER TABLE gaj6_ps_pets DROP COLUMN weight_updated_at, DROP COLUMN current_weight_kg;` arba pilnas atkūrimas iš backup.
+
+**S212-C KODO PROGRESAS:**
+| žingsnis | būklė |
+|---|---|
+| 1. Calculator (grynas) | ✅ 29/29 |
+| 2. Repository (read-only) | ✅ 7/7 |
+| 2b. Kategorinių ašių kontraktas | ✅ MISSING_CONDITION_DIMENSION |
+| 2c. Tikslus MVP baseline | ✅ `6562ef23…` |
+| **3. Svorio laukų migracija** | ✅ **APPLY** |
+| 4. Feeding_Service | ⬜ kitas |
+| 4b. Profilio REST + svorio įvestis | ⬜ (reikia InnoDB pirma) |
+| 5. Dashboard/refill adapteris + A-B-C autoritetas | ⬜ |
+| petshop-core integracija | ⬜ NEPRADĖTA |
+| production runtime | ⬜ NEĮJUNGTA |
+
 
 
 
