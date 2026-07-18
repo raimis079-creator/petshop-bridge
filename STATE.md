@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1291,7 +1291,52 @@ Universal/default row semantics: PENDING DATA AUDIT
 ```
 Read-only auditas turi klasifikuoti lenteles: `unconditional_table · fully_conditioned · explicit_default_supported · mixed_ambiguous · inconsistent_dimension_schema · invalid_condition_data`. Tikrinti: (1) visos be sąlygų · (2) visos su · (3) mišrios · (4) ta pati svorio koordinatė su sąlygine IR besąlygine eilute · (5) explicit `all/any/default/universal` · (6) skirtingi required dimension rinkiniai vienoje lentelėje · (7) malformed JSON · (8) ar redirect eilutės turi kitą sąlygų schemą nei value.
 
-**TOLIMESNĖ EIGA:** (1) ✅ Service kontraktas · (2) read-only universalių/mišrių eilučių auditas · (3) `Condition_Mapper` kontraktas (`condition_map_v1`: kurios ps_pets ašys mapinamos, patvirtinti mappings, kurios visada reikalauja vartotojo, allowed_values, mišrių/prieštaringų elgsena) · (4) TIK TADA Service + Mapper + Package Resolver kodas.
+**★★★ Petshop_Feeding_Condition_Mapper — SUTARTIS + condition_map_v1 UŽRAKINTA (2026-07-18) ★★★**
+
+> Deterministinis, versijuojamas, JOKIO fuzzy. `ps_pets` reikšmės → kanoninės `ps_feeding` condition_dimensions.
+
+**★ PRIORITETŲ GRANDINĖ:**
+```
+1. pet_input.conditions[ašis]  → validuoti pagal lentelės allowed_values, naudoti
+2. ps_pets laukas              → TIK per condition_map_v1 patvirtintą taisyklę
+3. explicit default eilutė     → jei egzistuoja (auditas: 0 tokių)
+4. MISSING_CONDITION_DIMENSION → + missing_dimensions + allowed_values (UI mygtukai, ne laisvas tekstas)
+```
+
+**★ 3-SLUOKSNIO AUDITAS (ne DISTINCT iš 22 — faktinės + kodo enum + ps_feeding reikalaujamos):**
+| dim | ps_pets faktinės | kodo enum (class-pet-profile) | ps_feeding reikalauja |
+|---|---|---|---|
+| `feeding_type` | mixed·dry_only·mostly_dry·NULL | **`dry_only·mostly_dry·mixed`** | dry_only·mixed (2 lent.) |
+| `life_stage` | adult·senior·junior·NULL | **`junior·adult·senior`** | senior·weaning (2 lent.) |
+
+**★★ condition_map_v1 — 3 IDENTITY taisyklės (VISOS identity, JOKIO alias):**
+```
+feeding_type: dry_only → dry_only   (IDENTITY)
+feeding_type: mixed    → mixed      (IDENTITY)
+life_stage:   senior   → senior     (IDENTITY)
+```
+
+**★ NO_RULE (aiškiai, su priežastimi):**
+- **`feeding_type=mostly_dry` → NO_RULE.** Profilyje yra, ps_feeding NĖRA. **NEmapinti į `dry_only`** — „daugiausia sausas" ≠ „tik sausas" (klientas su konservais gautų klaidingą normą). → needs_input.
+- **`life_stage=weaning` → NO_RULE.** ps_feeding reikalauja, bet **profilio kodas negali sukurti** (enum = junior/adult/senior, jokio weaning). Tik per `pet_input.conditions`.
+- **`life_stage=junior/adult` → nemapinama** — jokia ps_feeding lentelė jų nereikalauja (tik senior/weaning).
+- **`activity_level·body_condition·lifestyle·svorio_valdymas` → NO_RULE.** `ps_pets` šių laukų FIZIŠKAI neturi → visada `needs_input`.
+- **`dog_size` → jokios ašies** (small breed ≠ activity/body_condition). **`is_sterilised` → nėra sterilizacijos dimensijos lentelėse.**
+
+**★ MASTAS:** feeding_type reikalauja 2 lentelės, life_stage 2. Mapper startuoja su **3 IDENTITY taisyklėmis** (ne tuščias, ne spėjimai). Dauguma `fully_conditioned` (74) reikalauja activity/body_condition/lifestyle → per `needs_input` (teisinga — profilis jų neturi).
+
+**★ allowed_values (kanoninės, baigtinės):**
+```
+activity_level: low·moderate·high    body_condition: thin·ideal·heavy
+lifestyle: indoor·outdoor            feeding_type: dry_only·mixed
+life_stage: weaning·senior           svorio_valdymas: reduce·maintain
+weight_predisposition: prone_to_obesity
+```
+Repository grąžina trūkstamos ašies `allowed_values` (unikalios tos lentelės reikšmės), kad UI rodytų mygtukus.
+
+**★ PERSISTAVIMAS — DAR NEUŽRAKINTA (korekcija):** activity_level/body_condition/lifestyle **KINTA**; skirtingi gamintojai klausia skirtingai. Todėl kol kas: pasirinkimas → `pet_input.conditions` → naudojamas KONKREČIAM skaičiavimui → **automatiškai NErašomas į ps_pets**. Persistavimo politika projektuojama ATSKIRAI (ne „vienkartinis pasirinkimas").
+
+**TOLIMESNĖ EIGA:** (1) ✅ Service kontraktas · (2) ✅ condition auditas · (3) ✅ Monge/Farmina diagnozė · (4) ✅ condition_map_v1 · (5) TIK TADA kodas: Package Resolver → Condition_Mapper → Feeding_Service (+ integracija su Repository/Calculator). Prieš production svorio REST — ps_pets InnoDB.
 
 **★★★ CONDITION SCHEMA AUDITAS — FAKTINIS (2026-07-18, read-only, DB nekeista) ★★★**
 
