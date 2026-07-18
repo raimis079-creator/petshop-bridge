@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1388,7 +1388,7 @@ Visa kita → `unresolved`. Bonus/multipack TIK iš `term_value`, niekada iš pa
 **KITAS:** kodas — Package Resolver (grynas + 2 fixture) → Condition_Mapper (condition_map_v1) → Feeding_Service (integruoja viską).
 
 **★★★ Package Resolver v2 — ORTOGONALIOS DIMENSIJOS (2026-07-18, dar NEINTEGRUOTA) ★★★**
-Failas `/home/claude/class-package-size-resolver.php` (grynas). **35/35 testai PASS.**
+Failas `/home/claude/class-package-size-resolver.php` (grynas — WP mapping PAŠALINTAS į Provider). **29/29 testai PASS.**
 
 **★ DVI ORTOGONALIOS DIMENSIJOS (v2 pataisa — nebemaišyti į vieną statusą):**
 ```
@@ -1396,15 +1396,20 @@ parse_status     — ar term_value išparsintas (resolved | unresolved)
 assignment_trust — ar priskyrimu galima pasitikėti (verified | unverified | review_required | unknown)
 ```
 
-**★ KRITINIS RADINYS (statuso nebuvimas):** iš 1220 produktų su pakuotės terminu tik **49 turi `_petshop_pkg_assignment_status`** (fixed 23 + stock_sync_checked 13 + needs_manual_review 13); **1171 BE statuso**. MVP 666: **49 su statusu, 597 be statuso, 20 be termino.** S212-A rašė statusą TIK išimtims → **nebuvimas = NEAUDITUOTA, NE patikima.** `null`/`''` → `unverified` (ne trusted).
+**★ KRITINIS RADINYS (statuso nebuvimas):** iš 1220 produktų su pakuotės terminu tik **49 turi `_petshop_pkg_assignment_status`** (fixed 23 + stock_sync_checked 13 + needs_manual_review 13); **1171 BE statuso**. MVP 666: **49 su statusu, 597 be statuso, 20 be termino.** Duomenų pasiskirstymas rodo, kad S212-A **greičiausiai** rašė statusus tik paliestiems/išimtiniams produktams; **originalaus rašymo kodo nerasta**, todėl statuso nebuvimas laikomas `unverified` (loginė išvada, NE įrodytas faktas). `null`/`''` → `unverified` (ne trusted).
 
-**★ WP status → domeno trust mapping (`map_wp_status_to_trust`, Provider naudoja):**
+**★ TRUST — statusas yra TEIGINYS, fix_to yra ĮRODYMAS (griežta taisyklė, Provider):**
 ```
-fixed, stock_sync_checked → verified
-needs_manual_review       → review_required
-null, ''                  → unverified   (nebuvimas=neaudituota)
-nežinoma reikšmė          → unknown      (konservatyvu)
+verified = status ∈ {fixed, stock_sync_checked}
+           AND fix_to egzistuoja ir ne tuščias
+           AND normalize(fix_to) == normalize(current_pa_pakuotes_dydis_term)
+review_required = status = needs_manual_review
+unverified      = status null/'' (neaudituota)
+                | status ∈ {fixed,stock_sync_checked} BET fix_to nesutampa (evidence_mismatch)
+unknown         = nežinomas naujas statusas (konservatyvu)
 ```
+Statusas VIENAS PATS niekada nesuteikia verified. `fix_to=1,5kg` bet `current=15kg` (importas perrašė) → **unverified**, reason `assignment_evidence_mismatch`, NE verified.
+**Provider skaito 4 laukus:** `term_value, assignment_status, fix_from, fix_to` → grąžina domenui `{term_value, assignment_trust, trust_evidence}`. Resolver NEMATO `_petshop_pkg_*` nei migracijos istorijos.
 
 **★ SPRENDIMŲ MATRICA (parse × trust):**
 | parse | trust | sellable_unit_food_g | reason_code |
@@ -1430,7 +1435,21 @@ Orkestracija:          Feeding_Service
 Repository read-only, bet kviečia DB → infrastruktūrinis, ne pure.
 
 - **Tilto pamoka:** CLI sandbox be mbstring (`mb_strtolower` krito) → `strtolower` (paketai ASCII); Unicode `×`→`x` PRIEŠ strtolower.
-- **NEINTEGRUOTA.** Package Provider (WP-priklausomas) — dar kodo NĖRA, tik kontraktas + `map_wp_status_to_trust` helper.
+**★ ĮRODYMO PATIKRA (36 fix produktų, read-only):** VISI 36 turi `fix_to` == dabartinis terminas (MATCH 36 · MISMATCH 0 · NO_CURRENT 0). Pataisos realiai įgyvendintos. `stock_sync_checked` 13/13 su `15kg→1,5kg` fix, patvirtinta.
+
+**★ MVP 666 su GRIEŽTA trust taisykle (Σ=666):**
+```
+verified         36    (5,4% — fixed 23 + stock_sync_checked 13, visi su fix_to==terminas)
+review_required  13    (needs_manual_review — 15kg terminas, pataisa nepritaikyta)
+unverified      597    (nėra statuso — neaudituoti)
+no_term          20
+```
+**Be backfill audito Package skaičiuoja TIK 36 produktams.** Todėl backfill būtinas, ne pasirinktinis — verčiau 36 patikimi nei 633 su 10× klaidos rizika.
+
+**★ Petshop_Package_Size_Provider KONTRAKTAS (WP infrastruktūra — kodo dar NĖRA):**
+Skaito `term_value + assignment_status + fix_from + fix_to`. Taiko griežtą trust taisyklę (žr. aukščiau). Papildomos patikros: `fix_to` ne tuščias · `normalize(fix_to)==normalize(current_term)` · `fix_to` pats sintaksiškai tinkamas. Grąžina `{term_value, assignment_trust, trust_evidence}`. **NEINTEGRUOTA.**
+
+- **NEINTEGRUOTA.** Package Provider — kodo dar NĖRA, tik kontraktas (trust taisyklė + 4 laukų skaitymas).
 
 **S212-C KODO PROGRESAS:** Calculator ✅29/29 · Repository ✅7/7 · kontraktai ✅ · svorio migracija ✅ · **Package Resolver ✅35/35** · Condition_Mapper ⬜ · Package Provider ⬜ · statuso backfill auditas ⬜ · Feeding_Service ⬜ · integracija ⬜.
 
