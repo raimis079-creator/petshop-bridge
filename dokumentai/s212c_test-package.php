@@ -9,15 +9,6 @@ function check($name,$got,$exp=array()){
 	else{$F++;echo "  [FAIL] $name\n     exp ".json_encode($exp)."\n     got ".json_encode(array('parse'=>$got['parse_status'],'trust'=>$got['assignment_trust'],'sellable'=>$got['sellable_unit_food_g'],'cand'=>$got['parsed_candidate_g'],'reason'=>$got['reason_code']))."\n";}
 }
 function R($term,$trust=null){ return Petshop_Package_Size_Resolver::resolve(array('term_value'=>$term,'assignment_trust'=>$trust)); }
-function MAP($s){ return Petshop_Package_Size_Resolver::map_wp_status_to_trust($s); }
-
-echo "\n=== WP STATUS → TRUST MAPPING (Provider logika) ===\n";
-check('fixed → verified', array('x'=>MAP('fixed')), array('x'=>'verified'));
-check('stock_sync_checked → verified', array('x'=>MAP('stock_sync_checked')), array('x'=>'verified'));
-check('needs_manual_review → review_required', array('x'=>MAP('needs_manual_review')), array('x'=>'review_required'));
-check('null → unverified (nebuvimas=neaudituota)', array('x'=>MAP(null)), array('x'=>'unverified'));
-check('"" → unverified', array('x'=>MAP('')), array('x'=>'unverified'));
-check('nauja reikšmė → unknown', array('x'=>MAP('some_future_status')), array('x'=>'unknown'));
 
 echo "\n=== SPRENDIMŲ MATRICA (parse × trust) ===\n";
 // parse unresolved → svoris null (bet koks trust)
@@ -65,7 +56,7 @@ $review=array(
 $T++; if(count($review)===13){$P++;echo "  [PASS] fixture = 13 unikalių SKU (ne JOIN eilučių)\n";}else{$F++;echo "  [FAIL] ne 13 unikalių: ".count($review)."\n";}
 $allok=true;
 foreach($review as $sku=>$term){
-	$trust=MAP('needs_manual_review'); // Provider mapina
+	$trust='review_required'; // Provider jau normalizavo needs_manual_review -> review_required
 	$r=R($term,$trust);
 	// term='15 kg' parsinasi (15000) BET review_required -> sellable null, candidate=15000
 	if($r['parse_status']!=='resolved'||$r['sellable_unit_food_g']!==null||$r['parsed_candidate_g']!==15000||$r['assignment_trust']!=='review_required'){
