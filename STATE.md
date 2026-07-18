@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1533,6 +1533,47 @@ Production aktyvavimas         DAR NELEIDŽIAMAS
 5. pakartotinis to paties oficialaus failo importas PO aktyvavimo → tikras no_op
 
 **★ SEKA PRIEŠ 241/242/243 AKTYVAVIMĄ:** (1) oficialūs gamintojo šaltiniai; (2) per oficialų importerį su A+B+C; (3) tik tada verified+active.
+
+**★★★ PROVENANCE PROMOTION IMPORTERIS PASTATYTAS + 6/6 MATRICA (2026-07-18, po Raimio 4-o audito) ★★★**
+
+Failai repo: `dokumentai/s212c_class-feeding-importer.php` (`Petshop_Feeding_Importer::ingest`), `s212c_promotest_zztest.php`. **Importeris kviečia `Petshop_Feeding_Canonical_Hash::compute` — vieną funkciją, JOKIOS kopijos.**
+
+**★ STRUKTŪRUOTA PROVENANCE (Raimio pataisa — rūšis ≠ būsena):** pridėti nullable stulpeliai į ps_feeding_tables (222 lentelių nepaliesta):
+```
+source_kind: manufacturer_page | manufacturer_pdf | supplier_feed | local_product_description | other
+source_verification_status: unverified | verified | rejected
+source_verified_at, source_verified_by
+```
+authority_rank: verified manufacturer=3, supplier_feed=2, local/other=1, bet koks unverified=0.
+
+**★ BŪSENŲ MATRICA — 6/6 PASS ant ZZTEST (išvalyta po testo):**
+```
+CASE1 tas pats verified šaltinis            → no_op                          ✓
+CASE2 local/unverified→manufacturer/verified→ promotion (naujos versijos NĖRA) ✓
+CASE3 kitas verified šaltinis, ta pati sem. → source_changed_only (auditas)  ✓
+CASE4 canonical pasikeitė                   → canonical_changed_new_version   ✓
+CASE5 silpnesnis nei aktyvus verified       → no_auto_demote (error)          ✓
+CASE6 2 needs_review su tuo pačiu canonical → DATA_INTEGRITY_ERROR (ne „imk pirmą") ✓
+```
+Promotion transakcijoje: START TRANSACTION → FOR UPDATE kandidatas → pakartotinis vieno tikrinimas (lenktynių apsauga) → source_kind/status/verified_at/by + status=verified + is_active=1 + map.is_active=1 → COMMIT; klaida→ROLLBACK (lieka needs_review+inactive). Batch žurnale (ps_feeding_import_log) sena+nauja provenance.
+
+**★ DU RADINIAI KELYJE:**
+1. **`uq_checksum` UNIQUE** ant ps_feeding_tables; S212-B konvencija: **`checksum = hash('sha256', table_key.'|'.version_no.'|'.canonical_table_hash)`** — NE canonical tiesiogiai. **Mano 241/242/243 naudoja checksum=canonical tiesiogiai — nesutampa su konvencija** (veikė tik dėl unikalių hash). TAISYTINA perimportuojant per oficialų kelią.
+2. **ps_feeding_map PK=(feeding_table_id, product_id)** — produktas gali mapintis į kelias lenteles; DATA_INTEGRITY scenarijus realus (skirtingi table_key→skirtingi checksum→abi egzistuoja).
+
+**★ 241/242/243 struktūruota provenance nustatyta:** source_kind=local_product_description, source_verification_status=unverified (needs_review, is_active=0 nepakito).
+
+**★ STATUSO PATIKSLINIMAI (Raimio formuluotė):**
+```
+Canonicalizer persistent + tests        PASS
+Importer promotion logika + 6/6 matrica PASS (ZZTEST)
+Importer integration su petshop-core    PENDING (klasės reference kode, ne plugin'e; production kelyje dar nekviečiama)
+S212-B data model / integrity / harness CLOSED
+S212-B production importeris            OPEN
+241/242/243 production aktyvavimas       DAR NELEIDŽIAMAS
+```
+
+**★ KITI ŽINGSNIAI:** (1) integruoti canonicalizer+importer į petshop-core plugin (ne reference kodą); (2) oficialūs gamintojo šaltiniai INPM11/INPS06/HHFM11; (3) perimportuoti su TEISINGA checksum konvencija (hash(key|vno|canonical)) per promotion path; (4) tik tada verified+active.
 
 ⚠️ **NEUŽDARYTA GALUTINAI:** oficialaus S212-B CSV importerio pilnas kelias (schema+source validacija, batch žurnalas) NEatkartotas — perimportas per tikslų canonicalizerį + transakciją + regression, bet ne per patį S212-B CSV importerį. Exclusion runtime MVP coverage po šio perskaičiuoti atskirai (sausas MVP / runtime eligible / instock). „13 sauso be normos post_content" ≠ gamintojas neturi — oficialūs šaltiniai netikrinti.
 
