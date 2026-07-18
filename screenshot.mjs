@@ -13,7 +13,7 @@ fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
 function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
 function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'S212-C Promo Test v5 (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+const mk=wj('POST','code-snippets/v1/snippets',{name:'S212-C Promo Debug (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
 let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
 if(id){ const r=hit('https://dev.avesa.lt/?ps_pt=Pt9Kw3Nx&confirm=APPLY_PROMOTEST');
   const i=r.indexOf('{"');
