@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18 rytas** (**petshop-core RECON baigtas** — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -931,6 +931,57 @@ Feeding data repository → Canonical calculation engine
 ```
 Adapteriai formulių NESKAIČIUOJA — perduoda įvestis ir formatuoja rezultatą.
 **Recon metu kodo NEKEISTI:** inventorius → srauto schema → dubliavimų identifikavimas → autoriteto matrica → minimalus S212-C integracijos planas. Tik po to rašyti ar perkelti.
+
+**★★★ petshop-core RECON — COMPLETED 2026-07-18 ★★★**
+
+> **S212-B = CLOSED · petshop-core recon = COMPLETED · S212-C engine = kitas darbas.**
+> Recon buvo READ-ONLY. Jokio kodo nekeista. TEMP snippetai dar NETRINTI.
+
+**★ ESMINIS RADINYS — porcijos / €-dienos / B-trukmės formulės NĖRA NIEKUR.** Nei 9 plugin'uose, nei 75 aktyviuose snippetuose. **Dubliavimo klausimas atkrenta — nėra ko dubliuoti, yra tik spraga.** (Tai atšaukia ankstesnę baimę „konkuruojanti sistema".)
+
+**petshop-core = 18 failų, 5 175 eilutės.** Kritiniai 3:
+| failas | eil. | ką daro | prijungta |
+|---|---|---|---|
+| `class-refill-engine.php` | 365 | **C: pirkimų intervalas** → trukmė | `payment_complete`, `order_processing/completed`, cron `ps_refill_daily_check` |
+| `class-pet-dashboard.php` | 337 | refill prognozė, `days_left`, žiedas, feedback | REST `pet-dashboard`, `refill-feedback` |
+| `class-pet-profile.php` | 705 | profilis, food-search | REST `pet-profile`, `food-search`, `brands` |
+
+**★★ B ir C SLUOKSNIŲ ATSKYRIMAS (pamatinis S212-C principas):**
+- **C (VEIKIA, KEEP):** `class-refill-engine.php` mokosi iš kliento **realių pirkimo intervalų**, NE iš gamintojo normų. 1-as pirkimas → grubus intervalas pagal pakuotę (14/30/60 d., conf 0,4); 2+ → svertinis vidurkis `senas×0,3 + naujas×0,7` (conf →0,9); cron `check_due()` T-5 d. → `refill_due` event. `ps_refill_tracking` (0 eil. dev). **NESKAITO `ps_feeding`, NESKAIČIUOJA porcijos.**
+- **B (NĖRA, CREATE):** gamintojo norma iš `ps_feeding` (S212-B) → porcija → pakuotės trukmė → €/dieną. Šito variklio **niekur nėra**. Tai S212-C.
+- **Jie NEKONKURUOJA — papildo vienas kitą.** C = M8 „C pakopa" (savikalibracija); B = M8 „B pakopa" (gamintojo lentelė).
+
+**★ UŽRAKINTA AUTORITETO MATRICA:**
+| funkcija | vieta | sprendimas |
+|---|---|---|
+| Profilis, `ps_pets` (22 gyvi įrašai) | `class-pet-profile.php` | **KEEP** |
+| Produkto priskyrimas, `ps_pet_products` | `class-pet-products.php` | **KEEP** |
+| Pirkimų kalibracija (C) | `class-refill-engine.php` | **KEEP** |
+| Refill prognozė, `days_left`, žiedas, feedback | `class-pet-dashboard.php` | **KEEP** |
+| Eventai | `class-event-registry/emitters` | **KEEP** |
+| **Porcija iš svorio (B)** | niekur | **CREATE** |
+| **€/dieną, €/mėn.** | niekur | **CREATE** |
+| **1D interpoliacija + `ps_feeding` lookup** | niekur | **CREATE** |
+| **Pakuotės trukmė iš normos (B)** | tik C intervalas | **EXTEND** (dashboard priima B kaip 2-ą šaltinį) |
+| **`current_weight_kg` + `weight_updated_at`** | niekur | **CREATE** (po recon, dar nepadaryta) |
+| 11 TEMP snippetų | token-gated likučiai | **DEPRECATE** (netrinti) |
+| #565 VF Sync, #648 Invoice Fix | nesusiję | **UNRELATED / KEEP** |
+
+**★ SVORIO SPRAGA (patvirtinta trigubai):** `ps_pets` NETURI `weight` stulpelio · user_meta 0 · post_meta 0 · snippetuose 0. B interpoliacijai reikia `current_weight_kg` + `weight_updated_at`. **Laukai DAR NEKURTI** (recon nekeičia kodo). `ps_pets` jau turi ašis: `dog_size`, `life_stage`, `is_sterilised`, `feeding_type`, `species` — dengia dalį `condition_dimensions`.
+
+**★ 11 TEMP SNIPPETŲ — visi DEPRECATE, dar NETRINTI:** #736, #738, #797, #798, #799, #800, #801, #802, #803, #804, #805. **Visi token-gated** (`if(($_GET['ps_xx']??'')!=='1')return;`) — be URL parametro neregistruoja NIEKO: 0 gyvų hookų/shortcode/REST/cron. `#801 Dash Test` „RAŠO" į `ps_refill_tracking`/`ps_reminders`, bet tik jei rankiniu URL iškviestum `?ps_dash_test=1` — front-end sraute negyvas. Deploy/test likučiai iš M8 sesijų, ne konkuruojanti logika. Saugu trinti bet kada.
+
+**★ AUDITO ATSAKYMAI (visi 6 klausimai):** porcija niekur neskaičiuojama · antros trukmės formulės nėra · refill cron nedubliuotas (`ps_refill_daily_check` + `ps_reminders_daily_check` = skirtingi) · snippetai neliečia core lentelių front-end sraute · funkcijų/hookų konfliktų nėra · nė vienas iš 11 TEMP nebenaudojamas.
+
+**S212-C ARCHITEKTŪRA (variklis = NAUJAS B sluoksnis šalia veikiančio C):**
+```
+ps_feeding (S212-B) → NAUJAS Canonical B engine (svoris→porcija→trukmė→€/d, 1D interpoliacija)
+ps_refill_tracking  → refill-engine (C: pirkimų kalibracija)  [KEEP]
+        abu → dashboard / profile / product / subscription adapteriai
+```
+Adapteriai formulių NESKAIČIUOJA — perduoda įvestis, formatuoja rezultatą.
+
+**⛔ PRODUCTION BLOKATORIAI (nepakitę):** ZB reprice (~736/~984 užšaldytos) · ZB/VF importų regression nepatvirtinta · 13 `needs_manual_review` pakuočių · E2E + analytics · ataskaitų metaduomenys · 11 TEMP + domeno migracija.
 
 **TOLIAU (senesnis):** regresijos patikra po ZB ciklo → **S212-C** (engine).
 
