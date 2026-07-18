@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1096,6 +1096,57 @@ MVP 666 instock per Repository (runtime): **b_full 369 · b_partial 43 · b_none
 - **`b_full` 371→369 (−2): DAR NEUŽDARYTA.** `ANY active map` metodika irgi rodo 369, ne 371. Hipotezė (mappingo/stock pokytis) NĖRA faktas. **Prieš keičiant kanoninį snapshotą — reikia išvardyti konkrečius 2 SKU, jų būseną seno ir naujo metodo, tikslią priežastį (kategorija/stock/mappingas/status/scope).** Kol neuždaryta — kanoninis snapshot lieka 371/43/20/232.
 
 **TOLIMESNĖ EIGA (užrakinta):** (1) ✅ šis įrašas · (2) kategorinių ašių kontraktas `required_condition_dimensions` + `MISSING_CONDITION_DIMENSION` + testas · (3) tikslūs 2 SKU dėl 371→369 · (4) TIK TADA `current_weight_kg`+`weight_updated_at` migracija. **Svorio migracija NEPRADEDAMA, kol (2) ir (3) neuždaryti.**
+
+**★★★ S212-C — (A) kontraktas + (B) baseline UŽDARYTI (2026-07-18) ★★★**
+
+**★ (A) KATEGORINIŲ AŠIŲ KONTRAKTAS — UŽDARYTAS:**
+- `Petshop_Feeding_Calculator::required_condition_dimensions($rows)` — privalomos ašys išvedamos iš PAČIŲ eilučių (ne išorinės žymos). Amžiaus ašys (`age_m_*`) neįeina.
+- Trūkstant bent vienos → **`MISSING_CONDITION_DIMENSION`** (+ `missing_dimensions`, `required_dimensions`). Calculator nebegali tyliai pasirinkti pirmos eilutės.
+- Josera atvejis (5kg → 50/65/70 pagal `activity_level`): be ašies → MISSING; su ašimi → teisinga eilutė.
+- **Calculator testai: 29/29 PASS** (buvo 25; +T12 atnaujintas, +T23-26). Grynas PHP CLI, izoliuotai.
+
+**★ (B) 371→369 RETROSPEKTYVA — UŽDARYTA su duomenų ribotumo išlyga:**
+Tikslių 2 SKU **neįmanoma retrospektyviai nustatyti** — S212-A išsaugojo tik suvestinį skaičių, ne SKU momentinį sąrašą. Dabartiniai duomenys ATMETA: mappingo praradimą (visi 388 turi aktyvų mappingą), lentelės statusą (369 runtime = 369 data), publish būseną (0 ne-publish), dabartinę kategoriją (9 kat-73 niekada nebuvo 371). Vienintelis likęs sistemiškai kintantis paaiškinimas — **atsargų būsenos pokytis per kasdienį stock sync**, TAČIAU tikslūs 2 SKU nėra įrodomi. Mechanizmas nustatytas, konkretūs istoriniai objektai neatkuriami.
+
+**★★ TIKSLUS MVP BASELINE — `dokumentai/mvp_baseline_2026-07-18.csv` (666 SKU, SHA-256 `6562ef23ad4484889c0bc3c745899659fe66c89fc78709d0f4e97977e29e9549`):**
+```
+generated_at: 2026-07-18 12:02   scope_version: mvp_72_81_instock_publish_v1
+classifier_version: clf_v1_2026-07-17   runtime_invariant_version: s212b_v3
+canonical_hash_version: chash_v1   repository_capability_version: repo_v1_2026-07-18
+```
+
+**★ TRYS ATSKIRI MATAI (kiekvienas suma = 666 — NEBEMAIŠYTI):**
+| matas | full/supported | partial | none/unsupported | be lentelės | Σ |
+|---|---|---|---|---|---|
+| **Data coverage** (lentelės B būklė) | 369 | 43 | 0 | 254 | **666** |
+| **Calculator capability** | 283 | 111 | 18 | 254 | **666** |
+| **Runtime coverage** | 283 | 111 | 18 | 254 | **666** |
+
+- **Skirtumas 369 (data full) vs 283 (capability supported) = 86 produktai:** turi b_full lentelę, bet ji reikalauja kategorinės ašies (body_condition/activity/lifestyle) → data „full", capability „partial". Nė vienas ne klaidingas — skirtingi matai.
+- **`254` „be lentelės" = teisinga visuose trijuose matuose** (ankstesnis „236"/„232" maišė matus arba senesnį stock).
+- **`b_none=0` runtime:** 20 ambiguous(is_active=0) lentelių runtime prasme = `no_active_table`, todėl niekada ne „none".
+
+**★ BASELINE PARAŠAI (kitam palyginimui):**
+- SKU CSV (666 eil., 9 laukai): `6562ef23…`
+- 283 runtime-full SKU: `bf8fe040b796a382…`
+- **10 outofstock b_full kandidatai** (371→369 mechanizmo įrodymas): `01A1H02080` (Eukanuba 18kg) · `01M041801`, `01M042001` (Monge) · `F011AG0141`, `F011PU0731` (Farmina) · `HYDM11`, `HYPM11`, `HYVM11`, `NGABL12`, `NGABM12` (Exclusion).
+- Kitas skirtumas nustatomas tiksliai: `added/removed_since_baseline`, `stock_changed`, `category_changed`, `mapping_changed`, `table_status_changed`.
+
+**★ TRIJŲ MATŲ TAISYKLĖ (užrakinta — nebemaišyti):**
+1. **Lentelės B būklė** (`full/partial/none`) — DUOMENŲ savybė (`b_path_status`).
+2. **Calculator capability** (`supported/partial/unsupported`) — ar variklis MOKA be papildomos ašies.
+3. **Runtime produkto aprėptis** — ar produktas gaus skaičiavimą runtime.
+Kiekvienas matas turi savo sumą iki 666. Nemaišyti.
+
+**GALUTINIS STATUSAS PRIEŠ SVORIO MIGRACIJĄ:**
+- Calculator prototipas: **29/29 PASS** · Repository prototipas: **7/7 PASS**
+- Kategorinių ašių kontraktas: **UŽDARYTAS**
+- 371→369 retrospektyva: **UŽDARYTA** (duomenų ribotumo išlyga)
+- Tikslus SKU baseline: **SUKURTAS** (`6562ef23…`)
+- petshop-core integracija: **NEPRADĖTA** · production runtime: **NEĮJUNGTA**
+- **KITAS: `current_weight_kg` + `weight_updated_at` migracijos DRY-RUN → Raimio review → APPLY.**
+
+
 
 **TOLIAU (senesnis):** regresijos patikra po ZB ciklo → **S212-C** (engine).
 
