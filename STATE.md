@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 ---
 
@@ -1292,6 +1292,46 @@ Universal/default row semantics: PENDING DATA AUDIT
 Read-only auditas turi klasifikuoti lenteles: `unconditional_table · fully_conditioned · explicit_default_supported · mixed_ambiguous · inconsistent_dimension_schema · invalid_condition_data`. Tikrinti: (1) visos be sąlygų · (2) visos su · (3) mišrios · (4) ta pati svorio koordinatė su sąlygine IR besąlygine eilute · (5) explicit `all/any/default/universal` · (6) skirtingi required dimension rinkiniai vienoje lentelėje · (7) malformed JSON · (8) ar redirect eilutės turi kitą sąlygų schemą nei value.
 
 **TOLIMESNĖ EIGA:** (1) ✅ Service kontraktas · (2) read-only universalių/mišrių eilučių auditas · (3) `Condition_Mapper` kontraktas (`condition_map_v1`: kurios ps_pets ašys mapinamos, patvirtinti mappings, kurios visada reikalauja vartotojo, allowed_values, mišrių/prieštaringų elgsena) · (4) TIK TADA Service + Mapper + Package Resolver kodas.
+
+**★★★ CONDITION SCHEMA AUDITAS — FAKTINIS (2026-07-18, read-only, DB nekeista) ★★★**
+
+> Faktai, NE interpretacija. Farmina #110 ir 14 Monge — struktūros skirtumas nustatytas, jo SEMANTIKA dar ne. Neužrakinta „Farmina=klaida" ar „Monge=multi-axis".
+
+```
+Condition schema audit:
+- active verified tables: 212
+- unconditional_table: 123
+- fully_conditioned: 74
+- explicit_default_supported: 0
+- mixed condition schema pending review: 1 (Farmina #110)
+- inconsistent dimension schema pending review: 14 (Monge)
+- invalid JSON: 0
+- same coordinate conditional + unconditional conflicts: 0
+- redirect/value schema conflicts: 0
+
+No unconditional row is treated as default without explicit source semantics.
+Farmina #110 and 14 Monge tables remain runtime unsupported/partial pending source review.
+```
+
+**★ DIMENSIJŲ REIKŠMĖS (kanoninės, baigtinės — `allowed_values` bazė Mapper'iui):**
+```
+activity_level:        low · moderate · high
+body_condition:        thin · ideal · heavy
+lifestyle:             indoor · outdoor
+feeding_type:          dry_only · mixed
+life_stage:            weaning · senior
+svorio_valdymas:       reduce · maintain
+weight_predisposition: prone_to_obesity
+```
+
+**★ KRITINIS MAPPING FAKTAS:** `ps_pets` turi `life_stage`, `is_sterilised`, `dog_size`, `feeding_type`. `ps_feeding` reikalauja `activity_level`, `body_condition`, `lifestyle`, `svorio_valdymas`. **Persidengia tik `feeding_type` (dry_only/mixed) ir iš dalies `life_stage`.** → daugumai fully_conditioned (74) + inconsistent (14) lentelių profilis NEpateiks ašies → teisingas kelias `MISSING_CONDITION_DIMENSION` → `needs_input` (klientas renkasi UI iš `allowed_values`). NE klaida — numatyta kontrakte.
+
+**⚠️ PENDING SOURCE REVIEW (prieš Mapper baigimą):**
+- **Farmina #110** (`age`, 1 su sąlyga, 4 be, koordinatės NEsikerta): galimai skirtinga struktūra amžiaus ruožams (pvz. senior → papildoma life_stage). Būsena `MIXED_CONDITION_SCHEMA_PENDING_REVIEW` — runtime nenaudoja, NEtaisom rankiniu, kol nematėme visų 5 eilučių + šaltinio.
+- **14 Monge** (`lifestyle` + `activity_level` skirtinguose eilutėse): TRYS galimi variantai neišspręsti — (1) tikras 2 ašių tinklelis (reikia abiejų), (2) alternatyvios dalys (katėms indoor/outdoor, kt. activity), (3) šaltinio antraštės flattening klaida (viena ašis, du pavadinimai). **Neskelbti multi-axis, kol neįrodyta** — kitaip reikalautume 2 vartotojo atsakymų, kurių gamintojas niekada kartu neprašė.
+
+**KITAS ŽINGSNIS:** ištraukti visas 14 Monge lenteles (table_id, SKU, visos eilutės, svorio+amžiaus koordinatės, condition_dimensions, normos, source) → grupuoti pagal realų schemos parašą (tik lifestyle · tik activity · abu skirtingose koord. · abu toje pačioje · abu vienoje eilutėje) → peržiūrėti šaltinį po vieną kiekvienos grupės. Tik 14 — tikrinam visas.
+
 
 
 
