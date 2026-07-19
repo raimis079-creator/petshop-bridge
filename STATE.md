@@ -74,6 +74,26 @@ Atrankos realizacija saugoma DONE (f0_snapshot_selection_realization.php)
 
 ---
 
+# ★★★ F1 EIGA (2026-07-19) ★★★
+
+**PADARYTA IR ĮRODYTA:**
+1. **6 core klasės fiziškai petshop-core/includes/** (kraunasi per require_once, NE eval — reali integracija, class_exists visoms True): class-feeding-calculator.php (validated 29/29), class-feeding-repository.php (7/7), class-feeding-package-resolver.php, class-feeding-package-provider.php, class-feeding-service.php, class-feeding-ui.php. petshop-core.php papildytas 6 require_once (backup `_backup_f1/petshop-core.php.bak_20260719_213756` SHA 04bd2b61; po pakeitimo 63bae89f). Plugin health OK, jokių fatal.
+2. **Vienas Resolver kontraktas pasirinktas:** paprastasis (`status resolved|unresolved|ambiguous · sellable_unit_food_g · source_value · method canonical_term|bonus_pack|multipack`). Griežtas v2 trust modelis ATIDĖTAS.
+3. **PARITY 100%** (core Service vs #1186, 2/5/7/9,5/10 kg, 6 laukai): visi ✓. **Rasta+ištaisyta reali integravimo klaida:** axis_resolution_policy saugo nested `{"current_weight_kg":{"kind":"numeric","policy":"interpolation_allowed"}}`, Calculator laukia plokščio string → interpoliacija (7/9,5kg) lūžo. Pataisyta **Service sluoksnyje** (axis_policy normalizacija nested→flat); abu validuoti komponentai (Calculator 29/29, Repository 7/7) NEPAKEISTI.
+4. **REST endpoint `POST petshop/v1/feeding/calculate`** su F0 saugumo kontraktu — 4/4 testai PASS: savininkas(pet26,user25)→200 ok B1 90-100g svoris auto; svetimas→403 FORBIDDEN be nutekėjimo; svečias(weight_kg)→200 used_pet=null; svečias+pet_id→401. Rūšies validacija (dog→72/cat→81) serveryje.
+5. **Test fixture (reversible):** pet_id=26 (owner user 25) current_weight_kg NULL→5.00. Dev test data, atstatoma NULL.
+
+**LIKO F1 (kita sesija):**
+- **Pet-page rendering (matomas browser):** augintinio puslapyje HYHS02 porcija BE rankinio svorio — reikia integruoti feeding bloką į pet-screen (JS/REST-driven per Petshop_Pet_Dashboard) + magic-login browser flow (Playwright kaip user 25).
+- **#1186 deaktyvavimas** — TIK po pet-page matomo rendering (dabar lieka AKTYVUS, kad būtų matomas skaičiuoklė; parity jau 100%, sąlyga tenkinama).
+- Feeding baseline NEPAKITO (tik skaityta). ps_pets fixture write — vienintelis DB pakeitimas (reversible).
+
+**F2 SVARBU (užfiksuota):** ps_pets JAU turi `primary_product_id`/`primary_product_sku`/`primary_product_package` — egzistuojantis „dabar naudojamo maisto" mechanizmas. F0 kontraktas užrakino naują `current_food_product_id` → F2 SUDERINTI: naudoti esamą primary_product_id ar naują lauką (nedubliuoti).
+
+---
+
+---
+
 ## 0. DARBO TAISYKLĖS (galioja VISADA — skaityk prieš dirbdamas)
 
 - **„Darom lėtai, bet tvarkingai"** — tikslumas svarbiau už greitį.
