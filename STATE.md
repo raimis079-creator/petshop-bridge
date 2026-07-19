@@ -110,6 +110,13 @@ F1 OVERALL      = IN PROGRESS
 
 **LIKO F1 CLOSE: tik punktai 1,2,7,8 — visi priklauso nuo vieno švaraus browser proof. 3,4,5,6 uždaryti.**
 
+**SAUGOS LIEKANOS UŽDARYTOS (2026-07-19 vėlai):**
+- pet 26 svoris grąžintas 5.0→NULL (weight_updated_at→NULL). Fixture kurti IŠ NAUJO kitam browser bandymui.
+- Test-login (snippet 1209) deaktyvuotas IR negatyvus HTTP testas PASS: URL status 200, jokio redirect į paskyrą, jokio auth cookie (set-cookie=0).
+- Pet-page render (build_pet_feeding_html) apribotas DEV GUARD: `if (get_current_user_id() !== 25) return ''` — tik testinis user 25 (+ HYHS02 hardcoded). Pašalinti guard po browser proof.
+
+**KITAS BROWSER PROOF turi pateikti: faktinį URL + prisijungusio user ID + pet ID + product ID + puslapyje perskaitytą porcijos/trukmės/kainos tekstą (ne vien screenshotą). Tik tada: #1186 off → verify nebevykdo → fixture cleanup → F1 CLOSE.**
+
 **#1186 flag:** lieka aktyvus TIK kaip parity etalonas iki pet-page rendering; jokiam naujam produktui neįjungiamas; išjungiamas iškart po browser proof (punktas 8).
 
 **primary_product_id:** F1 NELIEČIA. Paliekama F2 preflight analizei (esamas primary_product_id vs F0 užrakintas current_food_product_id — suderinti F2).
