@@ -4,6 +4,81 @@
 > Paskutinį kartą atnaujinta: **2026-07-18** (**Checksum normalizacija promotion metu (path A) + schema migracija dokumentuota**; sesijos snippetai išvalyti 74/0). Ankstesnis: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 
+
+---
+
+# ============================================================
+# ★★★ RYTOJUI — PRADĖK NUO ČIA (2026-07-19 sesijos pabaiga) ★★★
+# ============================================================
+
+## KUR ESAME: F1 = IN PROGRESS. Core+API PASS, browser proof LIEKA.
+
+**Nedaryk recon iš naujo. Nedaryk naujų auditų. Nekeisk architektūros.** Viskas žemiau įrodyta ir užrakinta. Liko VIENAS siauras kelias.
+
+## LIKĘS DARBAS (griežta seka, vienas švarus browser proof):
+```
+1. Sukurk izoliuotą testinį fixture: pet 26 (user 25, "Testukas", dog) → current_weight_kg=5.0
+   (dabar NULL; sukurk iš naujo. Tai vienintelis DB rašymas, reversible.)
+2. Prisijunk kaip user 25 (test-login: wp_set_auth_cookie(25), TEMP snippetas, secret-gated).
+3. Playwright (browser=1) su httpCredentials(WP_USER/WP_APP_PASS, HTTP basic auth dev'ui):
+   - eik į test-login URL → redirect į augintinio puslapį
+   - realus augintinio puslapio URL (WC endpoint 'augintinis')
+   - screenshot #ps-pet-feeding blokas
+4. Browser proof ataskaita PRIVALO turėti (ne vien screenshotą):
+   - faktinį URL
+   - prisijungusio user ID (25)
+   - pet ID (26)
+   - product ID (18581 / HYHS02)
+   - iš puslapio PERSKAITYTĄ porcijos / trukmės / kainos tekstą
+   (laukiama: Testukas 5kg, HYHS02, porcija 90-100g, trukmė ~20-23d, 0.94-1.04€/d)
+5. #1186 deaktyvavimas (parity 100% jau įrodyta).
+6. Patikra, kad #1186 NEBEVYKDOMAS (hit HYHS02 produktą, patikrink kad nėra seno kalkuliatoriaus).
+7. Guard PAŠALINIMAS: išimk `if (get_current_user_id() !== 25) return '';` iš build_pet_feeding_html
+   (core-class-feeding-ui.php) TUO PAČIU uždarymo pakeitimu — kad neliktų paslėptos testinės logikos core kode.
+   (Raimio reikalavimas.)
+8. Fixture pašalinimas: pet 26 svoris → NULL.
+9. Galutinis feeding baseline (turi likti identiškas F0: tables a6b6f742, rows 94823010, map 053db476).
+10. STATE.md: F1 CLOSED + galutinė ataskaita.
+```
+
+## PLAYWRIGHT BLOKERIS (kodėl vakar nepavyko — NEKARTOK klaidų):
+- Bandymas 1: pw.json tuščias (galimai script error prieš putJson).
+- Bandymas 2: pw.json perrašytas SENU nesusijusiu turiniu (CDN lag arba putFile nesuveikė).
+- **Pamoka:** skaityk rezultatą per `raw.githubusercontent.com/.../main/screenshots/pw.json?t=$(date)` PO ~15s papildomo lag, IR per commit SHA. Patikrink `err` lauką. Playwright workflow yml: `node screenshot.mjs "URL"`, env turi WP_USER/WP_APP_PASS/GH_TOKEN/GH_REPO; browser=1 instaliuoja chromium (~150-180s).
+- **Bendrai:** negatyvaus/pozityvaus HTTP testo pattern jau veikia (žr. neg.json PASS). Playwright screenshot pattern — dar nesukalibruotas. Pradėk nuo švaraus screenshot_pw.mjs su geresniu error capture + readback per raw URL.
+
+## SAUGOS BŪSENA (vakar uždaryta, NELIESK jei nekeiti):
+- pet 26 svoris = NULL (fixture pašalintas).
+- test-login snippet 1209 = DEAKTYVUOTAS, negatyvus HTTP testas PASS (status 200, jokio redirect į paskyrą, jokio auth cookie, set-cookie=0).
+- pet-page render = DEV GUARD (tik user 25). LAIKINAS — šalinti su browser proof (žingsnis 7).
+- #1186 = AKTYVUS (pagrįstai, kol nėra vizualaus core kelio).
+- Sesijos temp snippetai (be #1186) = 0 aktyvių.
+- Feeding DB baseline = IDENTIŠKA F0.
+
+## FAKTAI BROWSER PROOF'UI (kad neieškotum):
+- user 25 turi 1 augintinį: pet 26 "Testukas", dog, status=active.
+- HYHS02: pid 18581, kaina 20.89€ su PVM, lentelė 165 (verified/active/interpolation_allowed, 7 eil. 2-10kg).
+- Laukiamas rezultatas 5kg: ok B1, porcija 90-100g, trukmė 20-23d, 0.94-1.04€/d, 28.20-31.34€/30d.
+- REST endpoint veikia: POST petshop/v1/feeding/calculate (product_id + pet_id arba weight_kg).
+- Pet puslapis: WC endpoint 'augintinis', render per woocommerce_account_augintinis_endpoint pri 99 + [petshop_feeding_demo] shortcode.
+- Bridge: sc121b.mjs šablonas, workflow 298960963, browser=1 Playwright. curl -sk -u wpu:wpp (HTTP basic).
+
+## ĮRODYTA ŠIĄ SESIJĄ (8 pending punktai → 5 DONE, saugos uždaryta):
+```
+1. Matomas feeding blokas          PENDING (render parašytas+guard, laukia browser)
+2. Prisijungusio browser testas    PENDING (Playwright blokeris)
+3. 5×6 parity per gyvą core REST   ✅ DONE
+4. axis_policy nested+flat regr.   ✅ DONE
+5. Egzist vs neegzist pet_id lygyb ✅ DONE (403 be nutekėjimo patvirtinta)
+6. Feeding baseline po F1 vs F0    ✅ DONE (identiška)
+7. Fixture cleanup                 ✅ DONE (pet26 NULL) — bus atkurta+vėl pašalinta browser proofui
+8. #1186 deaktyvavimas             PENDING (po browser proof)
+```
+
+# ============================================================
+# ★★★ RYTOJAUS BLOKO PABAIGA ★★★
+# ============================================================
+
 ---
 
 # ★★★ F0 UŽRAKINTAS — ŠĖRIMO SKAIČIUOKLĖS SISTEMA (2026-07-19) ★★★
