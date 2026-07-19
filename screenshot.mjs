@@ -1,44 +1,25 @@
-import { chromium } from 'playwright';
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcDYnXSl8fCRfR0VUWydwc19wNiddIT09J1A2eEt3OE54Jyl7cmV0dXJuO30KCUBzZXRfdGltZV9saW1pdCgyMDApOyBnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OyAkbz1hcnJheSgncmVhZG9ubHknPT50cnVlKTsKCSRUPSRwZi4ncHNfZmVlZGluZ190YWJsZXMnOyAkUj0kcGYuJ3BzX2ZlZWRpbmdfcm93cyc7ICRNPSRwZi4ncHNfZmVlZGluZ19tYXAnOwoJLy8gUFVOS1RBUyA2OiBwZXJza2FpY2l1b3QgYmFzZWxpbmUgaGFzaCBwYWdhbCBGMCBkZWZpbmljaWphcwoJJHRyb3dzPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIGlkLGNhbm9uaWNhbF90YWJsZV9oYXNoLHN0YXR1cyxpc19hY3RpdmUgRlJPTSB7JFR9IE9SREVSIEJZIGlkIiwgQVJSQVlfQSk7CgkkdHA9YXJyYXkoKTsgZm9yZWFjaCgkdHJvd3MgYXMgJHIpeyAkdHBbXT0kclsnaWQnXS4nOicuKCRyWydjYW5vbmljYWxfdGFibGVfaGFzaCddPT09bnVsbD8nTlVMTCc6JHJbJ2Nhbm9uaWNhbF90YWJsZV9oYXNoJ10pLic6Jy4kclsnc3RhdHVzJ10uJzonLiRyWydpc19hY3RpdmUnXTsgfQoJJHRoPWhhc2goJ3NoYTI1NicsaW1wbG9kZSgnfCcsJHRwKSk7CgkkbXJvd3M9JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgZmVlZGluZ190YWJsZV9pZCxwcm9kdWN0X2lkLGlzX2FjdGl2ZSBGUk9NIHskTX0gT1JERVIgQlkgZmVlZGluZ190YWJsZV9pZCxwcm9kdWN0X2lkIiwgQVJSQVlfQSk7CgkkbXA9YXJyYXkoKTsgZm9yZWFjaCgkbXJvd3MgYXMgJHIpeyAkbXBbXT0kclsnZmVlZGluZ190YWJsZV9pZCddLic6Jy4kclsncHJvZHVjdF9pZCddLic6Jy4kclsnaXNfYWN0aXZlJ107IH0KCSRtaD1oYXNoKCdzaGEyNTYnLGltcGxvZGUoJ3wnLCRtcCkpOwoJJHJyb3dzPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIGlkLGZlZWRpbmdfdGFibGVfaWQsY2VsbF90eXBlLHdlaWdodF9mcm9tX2tnLHdlaWdodF90b19rZyxhbW91bnRfZnJvbV9nLGFtb3VudF90b19nIEZST00geyRSfSBPUkRFUiBCWSBpZCIsIEFSUkFZX0EpOwoJJHJwPWFycmF5KCk7IGZvcmVhY2goJHJyb3dzIGFzICRyKXsgJHJwW109JHJbJ2lkJ10uJzonLiRyWydmZWVkaW5nX3RhYmxlX2lkJ10uJzonLiRyWydjZWxsX3R5cGUnXS4nOicuJHJbJ3dlaWdodF9mcm9tX2tnJ10uJzonLiRyWyd3ZWlnaHRfdG9fa2cnXS4nOicuJHJbJ2Ftb3VudF9mcm9tX2cnXS4nOicuJHJbJ2Ftb3VudF90b19nJ107IH0KCSRyaD1oYXNoKCdzaGEyNTYnLGltcGxvZGUoJ3wnLCRycCkpOwoJLy8gRjAgZXRhbG9uYWkKCSRldD1hcnJheSgndGFibGVzJz0+J2E2YjZmNzQyNTI2YzI0ZTQ1NjM1Yjc3YzE2NGZhMTYzZWMyODlkODE3ZjE3MGM2MDYxOGY5MGRjODMzYTJkMjUnLAoJCSdyb3dzJz0+Jzk0ODIzMDEwMGM1YWFlZmJlYTc1ZTA4MTY3OGVhZDEyMTczYzA3ZTk1MzdiM2Y3OGFmNzVjM2YxM2RkYWRkYmYnLAoJCSdtYXAnPT4nMDUzZGI0NzY4Njc1OWY0MWZjMzE3ZGZiZWI4OGFkMjg1NzdhOWE2ZjAwNGNmMDQ0MjI2NTg3MDExYWU1OWFkZicpOwoJJG9bJ2NvdW50cyddPWFycmF5KCd0YWJsZXMnPT5jb3VudCgkdHJvd3MpLCdyb3dzJz0+Y291bnQoJHJyb3dzKSwnbWFwJz0+Y291bnQoJG1yb3dzKSk7Cgkkb1snaGFzaGVzJ109YXJyYXkoJ3RhYmxlcyc9PiR0aCwncm93cyc9PiRyaCwnbWFwJz0+JG1oKTsKCSRvWydQNl9JREVOVElTS0EnXT0oJHRoPT09JGV0Wyd0YWJsZXMnXSAmJiAkcmg9PT0kZXRbJ3Jvd3MnXSAmJiAkbWg9PT0kZXRbJ21hcCddKTsKCSRvWydkZXRhbHVzJ109YXJyYXkoJ3RhYmxlcyc9PiR0aD09PSRldFsndGFibGVzJ10sJ3Jvd3MnPT4kcmg9PT0kZXRbJ3Jvd3MnXSwnbWFwJz0+JG1oPT09JGV0WydtYXAnXSk7CgkvLyBkZWFrdHl2dW9qYW0gdGVtcCBsb2dpbiBzbmlwcGV0YSArIHNlc2lqb3MgbGlrdWNpdXMKCSR0b2tzPWFycmF5KCdDMnhLdzhOeCcsJ1AzNEt3OE54JywnVGxvZ0t3OE54N3onLCdEZXBLdzhOeCcsJ1A2eEt3OE54Jyk7CgkkbGlrZT1pbXBsb2RlKCcgT1IgJyxhcnJheV9tYXAoZnVuY3Rpb24oJHQpe3JldHVybiAiY29kZSBMSUtFICclIi4kdC4iJSciO30sJHRva3MpKTsKCSRzbj0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBpZCBGUk9NIHskcGZ9c25pcHBldHMgV0hFUkUgKCRsaWtlKSBBTkQgYWN0aXZlPTEiLCBBUlJBWV9BKTsKCSRkPTA7IGZvcmVhY2goJHNuIGFzICRzKXsgJHdwZGItPnVwZGF0ZSgkcGYuJ3NuaXBwZXRzJyxhcnJheSgnYWN0aXZlJz0+MCksYXJyYXkoJ2lkJz0+JHNbJ2lkJ10pKTsgJGQrKzsgfQoJJG9bJ2xvZ2luX2RlYWt0eXZ1b3RhJ109JGQ7Cgkkb1snMTE4Nl9kYXJfYWt0eXZ1cyddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBhY3RpdmUgRlJPTSB7JHBmfXNuaXBwZXRzIFdIRVJFIGlkPTExODYiKTsKCSRvWydwZXQyNl9zdm9yaXNfbGlrbyddPSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgY3VycmVudF93ZWlnaHRfa2cgRlJPTSB7JHBmfXBzX3BldHMgV0hFUkUgaWQ9MjYiKTsKCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
 import { execSync } from 'child_process';
 import fs from 'fs';
-const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-function putFile(path, buf, msg){
-  const u=`https://api.github.com/repos/${REPO}/contents/${path}`; let s='';
-  try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pf.json',JSON.stringify({message:msg,content:buf.toString('base64'),...(s?{sha:s}:{})}));
-  return execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/pf.json "${u}"`,{maxBuffer:120*1024*1024}).toString().trim();
-}
-function putJson(name,o){ return putFile('screenshots/'+name, Buffer.from(JSON.stringify(o)), 'shot'); }
-
-const LOGIN='https://dev.avesa.lt/?ps_tlogin=TlogKw8Nx7z';
+const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
+function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
+ for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
+  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'p6',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
+  if(c==='200'||c==='201') return c; }
+ return 'fail';}
+const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
+function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
+function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-const browser=await chromium.launch({args:['--no-sandbox']});
-const ctx=await browser.newContext({ httpCredentials:{username:U,password:P}, viewport:{width:1200,height:1400}, ignoreHTTPSErrors:true });
-const page=await ctx.newPage();
-try{
-  const resp=await page.goto(LOGIN,{waitUntil:'networkidle',timeout:120000});
-  o.first_status=resp?resp.status():null;
-  await page.waitForTimeout(2500);
-  o.final_url=page.url();
-  // ar yra feeding blokas
-  const el=await page.$('#ps-pet-feeding');
-  o.feeding_block_found=!!el;
-  if(el){ o.feeding_text=(await el.innerText()).replace(/\s+/g,' ').trim().slice(0,400); }
-  // pilnas puslapio tekstas - ar yra "Šėrimo rekomendacija"
-  const bodyText=await page.evaluate(()=>document.body?document.body.innerText:'');
-  o.has_serimo=bodyText.includes('rimo rekomendacija');
-  o.has_porcija=bodyText.includes('Dienos porcija');
-  o.body_snippet=bodyText.replace(/\s+/g,' ').slice(0,600);
-  // ar prisijunge (my-account rodo pet ekrana, ne login forma)
-  o.has_login_form=bodyText.toLowerCase().includes('slaptažod') && bodyText.toLowerCase().includes('prisijung');
-  // screenshot: jei blokas yra - jo elementas + pilnas
-  if(el){ const eb=await el.screenshot(); o.elem_shot=putFile('screenshots/f1_feeding_block.png',eb,'F1 feeding block'); }
-  const full=await page.screenshot({fullPage:true});
-  o.full_shot=putFile('screenshots/f1_pet_page.png',full,'F1 pet page full');
-  o.full_bytes=full.length;
-}catch(e){ o.error=String(e).slice(0,300); 
-  try{ const full=await page.screenshot(); o.err_shot=putFile('screenshots/f1_err.png',full,'F1 err'); }catch(e2){}
-}
-await browser.close();
-console.log('PUT:',putJson('pw.json',o));
+const mk=wj('POST','code-snippets/v1/snippets',{name:'F1 P6 Baseline (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
+if(id){ const r=hit('https://dev.avesa.lt/?ps_p6=P6xKw8Nx');
+  const i=r.indexOf('{"');
+  if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
+  const body=(i>=0)?r.slice(i):r;
+  if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
+  else o.raw=r.slice(0,4000);
+  wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
+console.log('PUT:',pr('p6.json',o));
