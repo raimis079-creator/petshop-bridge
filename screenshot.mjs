@@ -1,10 +1,10 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfZjFoJ10pfHwkX0dFVFsncHNfZjFoJ10hPT0nRjFoS3c4TngnKXtyZXR1cm47fQoJJG89YXJyYXkoJ3JlYWRvbmx5Jz0+dHJ1ZSk7Cgkkb1snY2xhc3NlcyddPWFycmF5KAoJCSdDYWxjdWxhdG9yJz0+Y2xhc3NfZXhpc3RzKCdQZXRzaG9wX0ZlZWRpbmdfQ2FsY3VsYXRvcicpLAoJCSdSZXBvc2l0b3J5Jz0+Y2xhc3NfZXhpc3RzKCdQZXRzaG9wX0ZlZWRpbmdfUmVwb3NpdG9yeScpLAoJCSdSZXNvbHZlcic9PmNsYXNzX2V4aXN0cygnUGV0c2hvcF9GZWVkaW5nX1BhY2thZ2VfUmVzb2x2ZXInKSwKCQknUHJvdmlkZXInPT5jbGFzc19leGlzdHMoJ1BldHNob3BfRmVlZGluZ19QYWNrYWdlX1Byb3ZpZGVyJyksCgkJJ1NlcnZpY2UnPT5jbGFzc19leGlzdHMoJ1BldHNob3BfRmVlZGluZ19TZXJ2aWNlJyksCgkpOwoJLy8gdGlrcmFzIFNlcnZpY2Uga3ZpZXRpbWFzIHBlciBwZXRzaG9wLWNvcmUga2xhc2VzIChuZSBldmFsKQoJaWYoY2xhc3NfZXhpc3RzKCdQZXRzaG9wX0ZlZWRpbmdfU2VydmljZScpKXsKCQkkcj1QZXRzaG9wX0ZlZWRpbmdfU2VydmljZTo6ZXZhbHVhdGUoYXJyYXkoJ3Byb2R1Y3RfaWQnPT4xODU4MSwncXVhbnRpdHknPT4xLCd1c2FnZV9jb250ZXh0Jz0+J2NhdGFsb2cnLAoJCQkncGV0X2lucHV0Jz0+YXJyYXkoJ2N1cnJlbnRfd2VpZ2h0X2tnJz0+NS4wLCdjb25kaXRpb25zJz0+YXJyYXkoKSksJ3ByaWNlX2NvbnRleHQnPT5udWxsKSk7CgkJJG9bJ3NlcnZpY2VfNWtnJ109YXJyYXkoJ3N0YXR1cyc9PiRyWydzdGF0dXMnXSwndGllcic9PiRyWyd0aWVyJ10sJ21ldGhvZCc9PiRyWydtZXRob2QnXSwncG9ydGlvbic9PiRyWydwb3J0aW9uX2cnXSk7Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfZjFwJ10pfHwkX0dFVFsncHNfZjFwJ10hPT0nRjFwS3c4TngnKXtyZXR1cm47fQoJJG89YXJyYXkoJ3JlYWRvbmx5Jz0+dHJ1ZSk7CgkvLyBuYXVkb2phbSB3cF9yZW1vdGVfZ2V0IGlzIHZpZGF1cyAoV1AgYXV0aCBrb250ZWtzdGFzKSAtIGJldCBwYXByYXPEjWlhdTogcGF0aWtyaW5hbSBhciBwcm9kdWt0byBwdXNsYXBpbyB0dXJpbnlzIHJlbmRlcmluYXNpCgkkdXJsPWdldF9wZXJtYWxpbmsoMTg1ODEpOwoJJG9bJ3Blcm1hbGluayddPSR1cmw7CgkvLyB2aWRpbmlzIEhUVFAga3ZpZXRpbWFzIHN1IGNvb2tpZSAtIHRpZXNpb2cgcGF0aWtyaW5hbSBhciBwcm9kdWt0YXMgT0sgcGVyIFdDCgkkcD13Y19nZXRfcHJvZHVjdCgxODU4MSk7Cgkkb1sncHJvZHVrdGFzX29rJ109KGJvb2wpJHA7Cgkkb1sna2FpbmEnXT0kcD93Y19nZXRfcHJpY2VfaW5jbHVkaW5nX3RheCgkcCk6bnVsbDsKCS8vIGFyIGt1cmlzIG5vcnMgc25pcHBldGFzIG1ldGEga2xhaWRhIC0gcGF0aWtyaW5hbSAjMTE4NiBkYXIgYWt0eXZ1cwoJZ2xvYmFsICR3cGRiOyAkcGY9JHdwZGItPnByZWZpeDsKCSRvWydzbmlwcGV0XzExODZfYWN0aXZlJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIGFjdGl2ZSBGUk9NIHskcGZ9c25pcHBldHMgV0hFUkUgaWQ9MTE4NiIpOwoJJG9bJ2FrdHl2dXNfZmVlZGluZ19zbmlwcGV0YWknXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBpZCxuYW1lLGFjdGl2ZSBGUk9NIHskcGZ9c25pcHBldHMgV0hFUkUgbmFtZSBMSUtFICclQ0FMQyUnIE9SIG5hbWUgTElLRSAnJWVlZGluZyUnIE9SIG5hbWUgTElLRSAnJWthaWNpdW9rJSciLCBBUlJBWV9BKTsKCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
-  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'f1h',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'f1p',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
   if(c==='200'||c==='201') return c; }
  return 'fail';}
@@ -13,13 +13,13 @@ fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
 function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
 function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'F1 Health (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+const mk=wj('POST','code-snippets/v1/snippets',{name:'F1 Page (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
 let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_f1h=F1hKw8Nx');
+if(id){ const r=hit('https://dev.avesa.lt/?ps_f1p=F1pKw8Nx');
   const i=r.indexOf('{"');
   if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
   const body=(i>=0)?r.slice(i):r;
   if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
   else o.raw=r.slice(0,4000);
   wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
-console.log('PUT:',pr('f1h.json',o));
+console.log('PUT:',pr('f1p.json',o));
