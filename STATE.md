@@ -98,15 +98,17 @@ F1 OVERALL      = IN PROGRESS
 - Baziniai REST savininko / svetimo / svečio keliai veikia.
 - Feeding DB sąmoningai nekeista.
 
-**PENDING PRIEŠ F1 CLOSE (8 darbai, NE du skolos punktai):**
-1. Matomas feeding blokas augintinio puslapyje.
-2. Reali prisijungusio vartotojo browser patikra be rankinio svorio įvedimo.
-3. 5×6 parity pakartojimas per faktiškai įdiegtą petshop-core REST kelią (ne per eval/snippet, o per gyvą REST endpoint'ą).
-4. axis_policy nested IR flat formato regression testai (kad ateity nekartotųsi interpoliacijos lūžis).
-5. Svetimo EGZISTUOJANČIO ir NEEGZISTUOJANČIO pet_id atsakymų LYGYBĖS testas. (Kol nepalyginta — teiginys „403 be nutekėjimo" NEPATVIRTINTAS.)
-6. Feeding tables/rows/map pilnų counts + hash palyginimas po F1 (F0 etalonai: tables a6b6f742…, rows 94823010…, map 053db476…).
-7. Pet 26 fixture svorio grąžinimas iš 5.0 į ankstesnę NULL būseną (F1 UŽDARYMO darbas, NE F2). F2 tikrins tikrą svorio įrašymą per profilio formą.
-8. #1186 deaktyvavimas ir patikra, kad jis nebevykdomas.
+**PENDING PRIEŠ F1 CLOSE (8 darbai) — BŪSENA 2026-07-19 vakaras:**
+1. ⏳ Matomas feeding blokas augintinio puslapyje. (render metodas build_pet_feeding_html parašytas+deployintas core-class-feeding-ui.php; hook woocommerce_account_augintinis_endpoint pri 99 + [petshop_feeding_demo] shortcode)
+2. ⏳ Reali prisijungusio vartotojo browser patikra. **BLOKUOTA:** Playwright screenshot per bridge nedavė švaraus rezultato (2 bandymai: 1-as tuščias, 2-as pw.json perrašytas nesusijusiu turiniu). Reikia švaraus Playwright kelio: httpCredentials(WP_USER/WP_APP_PASS) + test-login (wp_set_auth_cookie user 25) → augintinis endpoint → screenshot. Kitos sesijos darbas; NEBEKALTI daugiau šioje.
+3. ✅ DONE — 5×6 parity per GYVĄ petshop-core REST (rest_do_request, ne eval). Visi 5 svoriai sutampa su #1186.
+4. ✅ DONE — axis_policy nested+flat regression: flat→OK, nested raw→D (įrodo normalizaciją būtiną), nested normalized→OK identiškas flat.
+5. ✅ DONE — svetimas egzist (pet26) vs neegzist (999999) pet_id: IDENTIŠKAS 403 atsakymas. „403 be nutekėjimo" PATVIRTINTAS.
+6. ✅ DONE — feeding baseline po F1 IDENTIŠKA F0 etalonams (tables 226/a6b6f742, rows 3860/94823010, map 455/053db476 — visi sutampa). Feeding DB NEPALIESTA.
+7. ⏳ pet 26 fixture svoris 5.0→NULL. Palikta 5.0, nes reikalinga browser proof (punktas 2). Valyti KARTU su browser proof uždarymu.
+8. ⏳ #1186 deaktyvavimas. Palikta AKTYVUS, nes browser proof (2) neatliktas; parity 100% jau įrodyta, bet vizualaus core kelio dar nėra.
+
+**LIKO F1 CLOSE: tik punktai 1,2,7,8 — visi priklauso nuo vieno švaraus browser proof. 3,4,5,6 uždaryti.**
 
 **#1186 flag:** lieka aktyvus TIK kaip parity etalonas iki pet-page rendering; jokiam naujam produktui neįjungiamas; išjungiamas iškart po browser proof (punktas 8).
 
