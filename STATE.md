@@ -83,13 +83,34 @@ Atrankos realizacija saugoma DONE (f0_snapshot_selection_realization.php)
 4. **REST endpoint `POST petshop/v1/feeding/calculate`** su F0 saugumo kontraktu — 4/4 testai PASS: savininkas(pet26,user25)→200 ok B1 90-100g svoris auto; svetimas→403 FORBIDDEN be nutekėjimo; svečias(weight_kg)→200 used_pet=null; svečias+pet_id→401. Rūšies validacija (dog→72/cat→81) serveryje.
 5. **Test fixture (reversible):** pet_id=26 (owner user 25) current_weight_kg NULL→5.00. Dev test data, atstatoma NULL.
 
-**LIKO F1 (kita sesija):**
-- **Pet-page rendering (matomas browser):** augintinio puslapyje HYHS02 porcija BE rankinio svorio — reikia integruoti feeding bloką į pet-screen (JS/REST-driven per Petshop_Pet_Dashboard) + magic-login browser flow (Playwright kaip user 25).
-- **#1186 deaktyvavimas** — TIK po pet-page matomo rendering (dabar lieka AKTYVUS, kad būtų matomas skaičiuoklė; parity jau 100%, sąlyga tenkinama).
-- Feeding baseline NEPAKITO (tik skaityta). ps_pets fixture write — vienintelis DB pakeitimas (reversible).
+**★ F1 TIKSLI BŪSENA (2026-07-19, Raimio patvirtinta): F1 NEUŽBAIGTA.**
 
-**F2 SVARBU (užfiksuota):** ps_pets JAU turi `primary_product_id`/`primary_product_sku`/`primary_product_package` — egzistuojantis „dabar naudojamo maisto" mechanizmas. F0 kontraktas užrakino naują `current_food_product_id` → F2 SUDERINTI: naudoti esamą primary_product_id ar naują lauką (nedubliuoti).
+```
+F1 CORE + API   = PASS
+F1 UI + BROWSER = PENDING
+F1 OVERALL      = IN PROGRESS
+```
 
+**PASS:**
+- Feeding klasės realiai integruotos į petshop-core (require_once, class_exists True, ne eval).
+- Repository + Calculator axis_policy formato neatitikimas (nested {kind,policy} vs flat) ištaisytas Service sluoksnyje; abu validuoti komponentai nepakeisti.
+- Pirminis 5 svorių parity testas 100% (core Service vs #1186, 6 laukai).
+- Baziniai REST savininko / svetimo / svečio keliai veikia.
+- Feeding DB sąmoningai nekeista.
+
+**PENDING PRIEŠ F1 CLOSE (8 darbai, NE du skolos punktai):**
+1. Matomas feeding blokas augintinio puslapyje.
+2. Reali prisijungusio vartotojo browser patikra be rankinio svorio įvedimo.
+3. 5×6 parity pakartojimas per faktiškai įdiegtą petshop-core REST kelią (ne per eval/snippet, o per gyvą REST endpoint'ą).
+4. axis_policy nested IR flat formato regression testai (kad ateity nekartotųsi interpoliacijos lūžis).
+5. Svetimo EGZISTUOJANČIO ir NEEGZISTUOJANČIO pet_id atsakymų LYGYBĖS testas. (Kol nepalyginta — teiginys „403 be nutekėjimo" NEPATVIRTINTAS.)
+6. Feeding tables/rows/map pilnų counts + hash palyginimas po F1 (F0 etalonai: tables a6b6f742…, rows 94823010…, map 053db476…).
+7. Pet 26 fixture svorio grąžinimas iš 5.0 į ankstesnę NULL būseną (F1 UŽDARYMO darbas, NE F2). F2 tikrins tikrą svorio įrašymą per profilio formą.
+8. #1186 deaktyvavimas ir patikra, kad jis nebevykdomas.
+
+**#1186 flag:** lieka aktyvus TIK kaip parity etalonas iki pet-page rendering; jokiam naujam produktui neįjungiamas; išjungiamas iškart po browser proof (punktas 8).
+
+**primary_product_id:** F1 NELIEČIA. Paliekama F2 preflight analizei (esamas primary_product_id vs F0 užrakintas current_food_product_id — suderinti F2).
 ---
 
 ---
