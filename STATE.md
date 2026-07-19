@@ -3,6 +3,75 @@
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
 > Paskutinį kartą atnaujinta: **2026-07-18** (**Checksum normalizacija promotion metu (path A) + schema migracija dokumentuota**; sesijos snippetai išvalyti 74/0). Ankstesnis: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
+
+---
+
+# ★★★ F0 UŽRAKINTAS — ŠĖRIMO SKAIČIUOKLĖS SISTEMA (2026-07-19) ★★★
+
+> Darbo užsakymas v3 GALUTINIS. Fazių seka F0→F7, kryptis užrakinta. Šis blokas — F0 rezultatas.
+
+## F0 UŽRAKINTAS ĮVESTIES KONTRAKTAS
+
+**Skaičiavimo tapatybė:** kiekvienas skaičiavimas = `pet_id` (arba laikinas `pet_input`) + `product_id`. Be produkto norma NESKAIČIUOJAMA.
+
+**„Dabar naudojamas maistas":** vienam augintiniui vienas pagrindinis produktas. Saugojimas (F2 migracija):
+```
+ps_pets.current_food_product_id  BIGINT UNSIGNED NULL
+ps_pets.current_food_updated_at  DATETIME NULL
+```
+Įrašomas TIK po aiškaus vartotojo veiksmo („Naudoti kaip dabartinį maistą"). `?product_id=` NEkeičia. Prieš įrašant — pet_id nuosavybės patikra + rūšies validacija. **Prerequisite: ps_pets→InnoDB (F2 pradžioje, per patvirtinimo seką).**
+
+**Rūšies validacija (serveryje):** dog→cat 72+desc; cat→81+desc; abiejose→AMBIGUOUS_SPECIES_SCOPE; nė vienoje→UNSUPPORTED_SPECIES_SCOPE; kitos rūšys→unavailable.
+
+**Keli augintiniai:** vienas—auto; keli—klientas renkasi; negalima priskirti visiems. **Keli maistai:** vienas pagrindinis, kiti laikini palyginimai. **Paskutinis pirkimas:** niekada auto; tik pasiūlymas. **Svečias:** product_id+laikinas svoris; nesaugo; nesukuria profilio.
+
+**Maršrutai (užrakinta):**
+```
+Prisijungęs:  /mano-paskyra/augintiniai/{pet_id}/maitinimas/?product_id=X
+Svečias:      /serimo-skaiciuokle/?product_id=X   (pet_id NEpriimamas)
+```
+Vienas augintinis→pet_id auto; keli→pasirinkimo ekranas.
+
+**Saugumo kontraktas (acceptance testai):** pet_id nuosavybė serveryje kiekvienam kvietimui; svetimas pet_id→403 be nutekėjimo; svečias su pet_id→atmesta; rašymai nonce+login; UI nėra autorizacija.
+
+## F0 KATALOGO SNAPSHOT — `catalog_snapshot_2026-07-19.csv`
+
+**generated_at:** 2026-07-19 23:56:23 · **repo:** `dokumentai/catalog_snapshot_2026-07-19.csv` · **realizacija:** `dokumentai/f0_snapshot_selection_realization.php`
+
+**Apimtis:** kategorijos 72 (dog) + 81 (cat). Descendants NĖRA (vieno lygio; dog_tree=[72], cat_tree=[81]). Variacijų NĖRA (0). Vardiklis skaičiuojamas parent product lygiu, tik `post_type=product`, `post_status=publish`, kelioms kategorijoms priskirtas produktas — vieną kartą.
+
+**VARDIKLIS (užfiksuotas, nekintantis): 724 parent produktai.**
+- species: dog 518 · cat 206 · ambiguous 0 · unsupported 0
+- runtime integrity: OK 422 · NO_ACTIVE_VERIFIED 302 · **DATA_INTEGRITY_ERROR 0** (joks produktas nemapinasi į 2+ aktyvias verified lenteles)
+- stock (ATSKIRA runtime metrika, NE vardiklio dalis): instock 670 · outofstock 54
+- sku_missing: 1 (lieka snapshot su sku_missing=1) · variacijos: 0
+
+**Snapshot SHA-256:** `5d9b545d79910a6f7f51c5610c78257d618710c6ddbb12ef8da94a1de9b0aaad`
+**Variations SHA-256:** `2bd8ca220696ca7ef3426991b8fe2e37a7b627dc76b84ad8bb4f3dcada10c2c9`
+
+**Stulpeliai:** product_id, sku, sku_missing, product_type, species_scope, matched_category_ids, stock_status, package_term, feeding_table_ids, active_verified_table_ids, active_verified_table_count, feeding_mapping_count, runtime_integrity_status. feeding_table_ids ir active_verified_table_ids surūšiuoti deterministiškai; count>1→DATA_INTEGRITY_ERROR; „paimti pirmą" DRAUDŽIAMA.
+
+## F0 PILNI BASELINE HASH (64 simboliai — kanoninis etalonas, keičia sutrumpintus)
+
+```
+tables (226):  a6b6f742526c24e45635b77c164fa163ec289d817f170c60618f90dc833a2d25
+rows   (3860): 948230100c5aaefbea75e081678ead12173c07e9537b3f78af75c3f13ddaddbf
+map    (455):  053db47686759f41fc317dfbeb88ad28577a9a6f004cf044226587011ae59adf
+```
+**Definicijos (atkuriamumui):**
+- tables_hash = sha256( join('|', "{id}:{canonical_table_hash|NULL}:{status}:{is_active}" ORDER BY id) )
+- map_hash    = sha256( join('|', "{feeding_table_id}:{product_id}:{is_active}" ORDER BY feeding_table_id,product_id) )
+- rows_hash   = sha256( join('|', "{id}:{feeding_table_id}:{cell_type}:{weight_from_kg}:{weight_to_kg}:{amount_from_g}:{amount_to_g}" ORDER BY id) )
+
+## F0 STATUSAS
+```
+Kontraktas STATE.md          DONE
+Pilni baseline hash          DONE (64 simb., definicijos užrakintos)
+Snapshot + SHA-256           DONE (724 vardiklis, atkuriamas)
+Atrankos realizacija saugoma DONE (f0_snapshot_selection_realization.php)
+```
+**Kitas: F1** — Repository/Calculator/Service/Resolver į petshop-core, vienas Resolver kontraktas, HYHS02 laikinas product_id=18581, #1186 parity testas (2/5/7/9,5/10 kg, 6 laukai 100%) prieš išjungimą, rezultatas augintinio puslapyje be rankinio svorio.
+
 ---
 
 ## 0. DARBO TAISYKLĖS (galioja VISADA — skaityk prieš dirbdamas)
