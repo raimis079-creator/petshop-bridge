@@ -6,44 +6,48 @@
 
 
 
+
 ---
 
 # ============================================================
-# ★★★ F1 UŽDARYTA (CLOSED) — 2026-07-20 ★★★
+# ★★★ F1 UŽDARYTA (CLOSED) — GALUTINĖ DEPLOYINTA VERSIJA ★★★
 # ============================================================
 
-## F1 = COMPLETE. Vertikalus pjūvis įrodytas end-to-end naršyklėje.
+## F1 = COMPLETE. Acceptance atliktas su TIKSLIU kodu, kuris lieka po uždarymo (ne tarpine versija).
 
-**BROWSER PROOF (dvigubas, 2026-07-20):**
-- **Tekstinis** (cookie-jar autentifikuotas fetch, tas pats HTML kaip naršyklė):
-  - URL: https://dev.avesa.lt/my-account/augintinis/
-  - auth cookie captured (wordpress_logged_in), has_login_form=False (realiai prisijungęs user 25)
-  - Perskaityta iš puslapio: "Testukas (5 kg) • Exclusion HYHS02 2kg • Dienos porcija: 90–100 g • Pakuotės užteks: ~20–23 d. • Kaina: 0,94–1,04 €/d • 28,20–31,34 €/30 d."
-- **Vizualus** (Playwright chromium, browser=1): screenshots/f1_feeding_block.png (460×234) + f1_pet_page.png (1200×1600). Blokas matomas paskyros puslapyje, be rankinio svorio.
-- Identifikatoriai: user 25, pet 26, product 18581 (HYHS02), svoris iš profilio (ne rankinis).
+**KODĖL PERDARYTA:** pirmasis browser proof buvo su tarpine versija (user-25 guard). Konsultanto reikalavimas: acceptance turi būti su galutine deployinta būsena + jokio hardcode.
 
-**UŽDARYMO ŽINGSNIAI (visi 10 DONE):**
-1-4. Fixture + login + Playwright + browser proof (URL+user+pet+product+tekstas+screenshot) ✅
-5. #1186 deaktyvuotas (active 1→0) ✅
-6. #1186 nebevykdomas: PS_FCalc_Service klasė NEBEegzistuoja; naujos feeding klasės OK ✅
-7. user-25 guard PAŠALINTAS → pakeistas eksplicitiniu feature flag PETSHOP_FEEDING_F1_DEMO (OFF pagal nutylėjimą, not defined). Render inertiškas visur (patikrinta: flag off → tuščias). Jokios paslėptos test logikos core kode. ✅
-8. Fixture pašalintas: pet 26 svoris → NULL ✅
-9. Galutinis feeding baseline IDENTIŠKA F0 (tables 226/a6b6f742, rows 3860/94823010, map 455/053db476) ✅
-10. STATE.md CLOSED ✅
+**GALUTINIS KODAS (class-feeding-ui.php, deployintas + hash-verified):**
+- Product TIK iš serverio validuoto ?product_id= (absint + wc_get_product publish + feeding scope 72/81). JOKIO hardcode (18581 pašalintas, patikrinta strpos===false).
+- Render gate: feeding_demo_enabled() — eksplicitinė konstanta PETSHOP_FEEDING_F1_DEMO viršesnė; kitaip host-based (tik dev.avesa.lt). Production (petshop.lt) OFF automatiškai, MIGRATION-SAFE (gate pagal HTTP host, ne DB/config — išlieka net po dev→prod DB migracijos).
+- user-25 guard PAŠALINTAS (strpos '!== 25' === false).
+- Repo etalonas: dokumentai/class-feeding-ui-final.php (8785 b).
+
+**BROWSER PROOF su GALUTINIU kodu (2026-07-20), #1186 jau OFF:**
+- Test URL: https://dev.avesa.lt/my-account/augintinis/?product_id=18581
+- Tekstinis (cookie-jar auth fetch): auth_cookie=True, has_login_form=False (realiai user 25), feeding_block=True, shows_testukas=True.
+  Perskaityta: "Testukas (5 kg) • Exclusion HYHS02 2kg • Dienos porcija: 90–100 g • Pakuotės užteks: ~20–23 d. • Kaina: 0,94–1,04 €/d • 28,20–31,34 €/30 d."
+- Vizualus (Playwright chromium, final_url su ?product_id=18581): DOM tekstas identiškas; screenshots/f1_final_block.png (460×234) + f1_final_page.png.
+- VALIDACIJA: be ?product_id= blokas NEatsiranda (įrodo, kad product iš URL, ne hardcode).
+- Identifikatoriai: user 25, pet 26, product 18581, svoris iš profilio (ne rankinis).
+
+**UŽDARYMO PATIKRINIMAI (galutiniai):**
+- #1186 active=0; PS_FCalc_Service NEBEegzistuoja; naujos feeding klasės OK.
+- Fixture pet 26 → NULL (weight_updated_at NULL).
+- Test-login (login3) negatyvus: status 200, jokio redirect į paskyrą, jokio auth cookie → NEG_PASS.
+- Feeding baseline IDENTIŠKA F0 (tables 226/a6b6f742, rows 3860/94823010, map 455/053db476).
+- 0 sesijos temp snippetų aktyvių (be #1186 kuris OFF).
 
 **BŪSENA PO F1:**
-- 6 feeding klasės integruotos petshop-core/includes/ (require_once, ne eval).
-- REST endpoint POST petshop/v1/feeding/calculate veikia (ownership 403 be nutekėjimo, guest weight_kg).
-- Pet-page render kodas LIEKA (build_pet_feeding_html + hook + [petshop_feeding_demo] shortcode), bet už feature flag OFF. F3 pavers į nuolatinę product-kontekstinę integraciją.
-- Feeding DB nepaliesta (baseline = F0).
-- 0 sesijos temp snippetų aktyvių. #1186 OFF.
-- pet 26 = NULL (švarus).
+- 6 feeding klasės petshop-core (require_once). REST POST petshop/v1/feeding/calculate (ownership 403 be nutekėjimo).
+- Pet-page render: host-gated demo (dev ON / prod OFF), product iš ?product_id=. F3 pavers į nuolatinę product-page integraciją (CTA + kontekstas).
+- Feeding DB = F0. #1186 OFF.
 
 ## KITAS: F2 — M8 profilio create + ps_pets InnoDB
-- ps_pets MyISAM → InnoDB konversija.
-- current_food mechanizmo suderinimas: ps_pets JAU turi primary_product_id/primary_product_sku/primary_product_name/primary_product_package. F2 PREFLIGHT: suderinti esamą primary_product_id su F0 užrakintu current_food_product_id — NEBLINDI aklai pridėti naujo stulpelio. (F1 šito NELIETĖ — teisingai.)
+- ps_pets MyISAM → InnoDB.
+- primary_product_id PREFLIGHT: ps_pets JAU turi primary_product_id/sku/name/package. F2 suderinti su F0 current_food_product_id — NE aklai pridėti stulpelio. (F1 nelietė.)
 - M8 "Sukurti profilį" mygtukas empty state nieko nedaro — realus vartotojas negali pradėti klausimyno. Draft transfer (localStorage→DB po magic-link) nebaigtas.
-- Tikras svorio įrašymas per profilio formą (F2 tikrina, ne F1).
+- Tikras svorio įrašymas per profilio formą (F2 tikrina).
 
 # ============================================================
 # ★★★ F1 CLOSED BLOKO PABAIGA ★★★
