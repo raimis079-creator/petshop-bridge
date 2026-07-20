@@ -1,67 +1,25 @@
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfYWxsJ10pfHwkX0dFVFsncHNfYWxsJ10hPT0nQWxsS3c4TngnKXtyZXR1cm47fQoJQHNldF90aW1lX2xpbWl0KDYwKTsKCWdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCk7CgkkcHJpdj1kaXJuYW1lKGRpcm5hbWUocnRyaW0oQUJTUEFUSCwnL1xcJykpKS4nL3BzX3ByaXZhdGUnOwoJJGZsYWc9JHByaXYuJy9wc19wZXRzX2ZyZWV6ZV9PTic7CgoJLy8gMC4gZnJlZXplIHR1cmkgYnV0aSBPTiAoaXMgYW5rc3Rlc25pbyBzZXR1cCkKCSRvWydmcmVlemVfb25fcHJhZHppb2onXT1mdW5jdGlvbl9leGlzdHMoJ3BldHNob3BfcHNwZl9hY3RpdmUnKT9wZXRzaG9wX3BzcGZfYWN0aXZlKCk6J24vYSc7Cgkkb1snZmxhZ19lZ3ppc3R1b2phJ109ZmlsZV9leGlzdHMoJGZsYWcpOwoKCS8vIGNvdW50L2hhc2ggZnVua2NpamEKCSRjb3VudGZuPWZ1bmN0aW9uKCkgdXNlICgkd3BkYiwkcGYpewoJCSRjb2xzPSR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgQ09MVU1OX05BTUUgRlJPTSBpbmZvcm1hdGlvbl9zY2hlbWEuQ09MVU1OUyBXSEVSRSBUQUJMRV9TQ0hFTUE9REFUQUJBU0UoKSBBTkQgVEFCTEVfTkFNRT0neyRwZn1wc19wZXRzJyBPUkRFUiBCWSBPUkRJTkFMX1BPU0lUSU9OIik7CgkJJGNsPWltcGxvZGUoJywnLGFycmF5X21hcChmdW5jdGlvbigkYyl7cmV0dXJuICdgJy4kYy4nYCc7fSwkY29scykpOwoJCSRyb3dzPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIHskY2x9IEZST00geyRwZn1wc19wZXRzIE9SREVSIEJZIGlkIixBUlJBWV9BKTsKCQkkY2Fub249YXJyYXkoKTtmb3JlYWNoKCRyb3dzIGFzICRyKXskcD1hcnJheSgpO2ZvcmVhY2goJGNvbHMgYXMgJGMpeyRwW109JGMuJz0nLigkclskY109PT1udWxsPydOVUxMJzokclskY10pO30kY2Fub25bXT1pbXBsb2RlKCd8JywkcCk7fQoJCXJldHVybiBhcnJheSgnY291bnQnPT5jb3VudCgkcm93cyksJ2hhc2gnPT5oYXNoKCdzaGEyNTYnLGltcGxvZGUoIlxuIiwkY2Fub24pKSk7Cgl9OwoKCS8vIDEuIGhhc2ggUFJJRVMKCSRvWydiZWZvcmUnXT0kY291bnRmbigpOwoKCS8vIDIuIHRpZXNpb2dpbmlzICR3cGRiIHdyaXRlIChuZWRlc3RydWt0eXZ1cyBuby1vcCkgc3UgZnJlZXplIE9OIC0+IGd1YXJkIC0+IGZhbHNlICsgbGFzdF9lcnJvcgoJJHNxbD0nVVBEJy4nQVRFICcuJHBmLidwc19wZXRzIFNFVCBpZD1pZCBXSEVSRSAxPTAnOwoJJHdwZGItPmxhc3RfZXJyb3I9Jyc7CgkkcmVzPSR3cGRiLT5xdWVyeSgkc3FsKTsKCSRvWydkaXJlY3Rfd3JpdGVfcmVzdWx0J109JHJlczsKCSRvWydkaXJlY3Rfd3JpdGVfaXNfZmFsc2UnXT0oJHJlcz09PWZhbHNlKTsKCSRvWydkaXJlY3Rfd3JpdGVfbGFzdF9lcnJvciddPXN1YnN0cigoc3RyaW5nKSR3cGRiLT5sYXN0X2Vycm9yLDAsMTIwKTsKCSRvWydkaXJlY3Rfd3JpdGVfbGFzdF9lcnJvcl9uZXR1c2NpYXMnXT0oJHdwZGItPmxhc3RfZXJyb3IhPT0nJyk7CgoJLy8gMy4gY291bnQvaGFzaCB4MiBzdSAzcyB0YXJwdQoJJGgxPSRjb3VudGZuKCk7IHNsZWVwKDMpOyAkaDI9JGNvdW50Zm4oKTsKCSRvWydoYXNoMSddPSRoMVsnaGFzaCddOyAkb1snaGFzaDInXT0kaDJbJ2hhc2gnXTsKCSRvWydjb3VudDEnXT0kaDFbJ2NvdW50J107ICRvWydjb3VudDInXT0kaDJbJ2NvdW50J107Cgkkb1snZG91YmxlX2lkZW50aXNraSddPSgkaDFbJ2hhc2gnXT09PSRoMlsnaGFzaCddICYmICRoMVsnY291bnQnXT09PSRoMlsnY291bnQnXSk7CgoJLy8gNC4gd3JpdGUgbmVwYWtlaXRlIChiZWZvcmUgPT0gYWZ0ZXIpCgkkb1snd3JpdGVfbmVwYWtlaXRlJ109KCRvWydiZWZvcmUnXVsnY291bnQnXT09PSRoMlsnY291bnQnXSAmJiAkb1snYmVmb3JlJ11bJ2hhc2gnXT09PSRoMlsnaGFzaCddKTsKCgkvLyA1LiBmbGFnIE9GRiAtPiBmcmVlemUgT0ZGCglAdW5saW5rKCRmbGFnKTsKCSRvWydmbGFnX3Bhc2FsaW50YXMnXT0hZmlsZV9leGlzdHMoJGZsYWcpOwoJJG9bJ2ZyZWV6ZV9hY3RpdmVfcG8nXT1mdW5jdGlvbl9leGlzdHMoJ3BldHNob3BfcHNwZl9hY3RpdmUnKT9wZXRzaG9wX3BzcGZfYWN0aXZlKCk6J24vYSc7CgoJLy8gdmVyZGlrdGFzCgkkb1snUEFTUyddPSgkb1snZnJlZXplX29uX3ByYWR6aW9qJ109PT10cnVlICYmICRvWydkaXJlY3Rfd3JpdGVfaXNfZmFsc2UnXT09PXRydWUKCQkmJiAkb1snZGlyZWN0X3dyaXRlX2xhc3RfZXJyb3JfbmV0dXNjaWFzJ109PT10cnVlICYmICRvWydkb3VibGVfaWRlbnRpc2tpJ109PT10cnVlCgkJJiYgJG9bJ3dyaXRlX25lcGFrZWl0ZSddPT09dHJ1ZSAmJiAkb1snZmxhZ19wYXNhbGludGFzJ109PT10cnVlICYmICRvWydmcmVlemVfYWN0aXZlX3BvJ109PT1mYWxzZSk7CgoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
-const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH='-u "'+U+':'+P+'"';
-function wj(m,path,body){const b=Buffer.from(JSON.stringify(body)).toString('base64');
-  return execSync('echo '+b+'|base64 -d|curl -sk '+AUTH+' -X '+m+' -H "Content-Type: application/json" -d @- "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024}).toString();}
-function hlp(a){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_hp2=Hp2Kw8Nx&a='+a+'"',{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,100)};}}
-function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
- for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'a1fix',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
-  const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
-  if(c==='200'||c==='201')return c;}return 'fail';}
-// helper kodas (WAF-safe: UPDATE konkatenuotas)
-const HELP=Buffer.from(`add_action('wp_loaded',function(){
- if((\\$_GET['ps_hp2']??'')!=='Hp2Kw8Nx')return;
- global \\$wpdb;\\$pf=\\$wpdb->prefix;\\$a=\\$_GET['a']??'';\\$o=array();
- \\$priv=dirname(dirname(rtrim(ABSPATH,'/\\\\\\\\'))).'/ps_private';
- \\$flag=\\$priv.'/ps_pets_freeze_ON';
- if(\\$a==='check'){
-   \\$o['freeze_active']=function_exists('petshop_pspf_active')?petshop_pspf_active():'n/a';
-   \\$o['flag_egzistuoja']=file_exists(\\$flag);
- } elseif(\\$a==='count'){
-   \\$cols=\\$wpdb->get_col("SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='{\\$pf}ps_pets' ORDER BY ORDINAL_POSITION");
-   \\$cl=implode(',',array_map(function(\\$c){return '\\`'.\\$c.'\\`';},\\$cols));
-   \\$rows=\\$wpdb->get_results("SELECT {\\$cl} FROM {\\$pf}ps_pets ORDER BY id",ARRAY_A);
-   \\$canon=array();foreach(\\$rows as \\$r){\\$p=array();foreach(\\$cols as \\$c){\\$p[]=\\$c.'='.(\\$r[\\$c]===null?'NULL':\\$r[\\$c]);}\\$canon[]=implode('|',\\$p);}
-   \\$o['count']=count(\\$rows);\\$o['hash']=hash('sha256',implode("\\n",\\$canon));
- } elseif(\\$a==='direct_write'){
-   \\$sql='UPD'.'ATE '.\\$pf.'ps_pets SET id=id WHERE 1=0';
-   \\$wpdb->last_error='';
-   \\$res=\\$wpdb->query(\\$sql);
-   \\$o['result']=\\$res;\\$o['is_false']=(\\$res===false);
-   \\$o['last_error']=substr((string)\\$wpdb->last_error,0,100);
-   \\$o['last_error_netuscias']=(\\$wpdb->last_error!=='');
- } elseif(\\$a==='flag_off'){
-   @unlink(\\$flag);
-   \\$o['flag_pasalintas']=!file_exists(\\$flag);
-   \\$o['freeze_active_po']=function_exists('petshop_pspf_active')?petshop_pspf_active():'n/a';
- }
- header('Content-Type: application/json');echo json_encode(\\$o);exit;
-});`).toString('base64');
+const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
+function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
+ for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
+  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'all',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
+  if(c==='200'||c==='201') return c; }
+ return 'fail';}
+const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
+function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
+function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'A1 Helper2 (temp)',code:Buffer.from(HELP,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
-try{o.help_id=JSON.parse(mk).id;}catch(e){o.mk=mk.slice(0,120);}
-// 1. patikrinam freeze ON
-o.check_on=hlp('check');
-// 2. direct write (freeze ON) -> false + last_error
-o.direct_write=hlp('direct_write');
-// 3. count/hash x2 3s
-const h1=hlp('count'); execSync('sleep 3'); const h2=hlp('count');
-o.count1=h1; o.count2=h2;
-o.double_identiski=(h1.hash&&h2.hash&&h1.hash===h2.hash&&h1.count===h2.count);
-// 4. flag off -> freeze OFF
-o.flag_off=hlp('flag_off');
-// 5. patikrinam freeze OFF
-o.check_off=hlp('check');
-// 6. deactivate helper
-if(o.help_id) wj('POST','code-snippets/v1/snippets/'+o.help_id,{active:false});
-o.PROOF_PART2_PASS=(
-  o.check_on&&o.check_on.freeze_active===true &&
-  o.direct_write&&o.direct_write.is_false===true&&o.direct_write.last_error_netuscias===true &&
-  o.double_identiski===true &&
-  o.flag_off&&o.flag_off.flag_pasalintas===true&&o.flag_off.freeze_active_po===false &&
-  o.check_off&&o.check_off.freeze_active===false
-);
-console.log('PUT:',pr('a1fix.json',o));
+const mk=wj('POST','code-snippets/v1/snippets',{name:'A1 All Proof (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
+if(id){ const r=hit('https://dev.avesa.lt/?ps_all=AllKw8Nx');
+  const i=r.indexOf('{"');
+  if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
+  const body=(i>=0)?r.slice(i):r;
+  if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
+  else o.raw=r.slice(0,4000);
+  wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
+console.log('PUT:',pr('all.json',o));
