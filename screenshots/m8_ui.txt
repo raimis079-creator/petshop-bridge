@@ -1,0 +1,174 @@
+<?php
+/**
+ * Petshop_Pet_UI — "Mano augintinis" frontend (M8, S196).
+ *
+ * 1. Shortcode [petshop_pet_form] — anketa (veikia ir be prisijungimo)
+ * 2. MyAccount tab "Mano augintinis"
+ * 3. CSS/JS assets su config (REST url, nonce, isLoggedIn)
+ *
+ * Anketa yra self-contained: 2 zingsniai, dinamiski laukai pagal rusi,
+ * localStorage juodrastis (anonim.), magic link issaugojimas.
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class Petshop_Pet_UI {
+
+	const ENDPOINT = 'augintinis';  // /my-account/augintinis/
+	const VERSION = '1.6.0';
+
+	public static function init() {
+		// Shortcode anketai
+		add_shortcode( 'petshop_pet_form', array( __CLASS__, 'shortcode_form' ) );
+
+		// MyAccount tab
+		add_action( 'init', array( __CLASS__, 'add_endpoint' ) );
+		add_filter( 'woocommerce_account_menu_items', array( __CLASS__, 'add_menu_item' ) );
+		add_filter( 'body_class', array( __CLASS__, 'body_class' ) );
+		add_action( 'woocommerce_account_' . self::ENDPOINT . '_endpoint', array( __CLASS__, 'render_account_page' ) );
+
+		// Assets
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
+	}
+
+	// --- MyAccount endpoint ---
+	public static function add_endpoint() {
+		add_rewrite_endpoint( self::ENDPOINT, EP_ROOT | EP_PAGES );
+	}
+
+	public static function add_menu_item( $items ) {
+		// Idedam "Mano augintinis" po Dashboard (pirmas), pries Orders
+		$new = array();
+		foreach ( $items as $key => $label ) {
+			if ( $key === 'orders' ) {
+				$new[ self::ENDPOINT ] = 'Mano augintinis';
+			}
+			$new[ $key ] = $label;
+		}
+		// Jei 'orders' nerastas — idedam pabaigoj pries logout
+		if ( ! isset( $new[ self::ENDPOINT ] ) ) {
+			$logout = isset( $new['customer-logout'] ) ? $new['customer-logout'] : null;
+			if ( $logout ) {
+				unset( $new['customer-logout'] );
+			}
+			$new[ self::ENDPOINT ] = 'Mano augintinis';
+			if ( $logout ) {
+				$new['customer-logout'] = $logout;
+			}
+		}
+		return $new;
+	}
+
+	/**
+	 * S211: ar vartotojas dabar ONBOARDING rezime (kuria PIRMA augintini)?
+	 * Tik tada slepiama paskyros navigacija. Redaguojant ar pridedant antra —
+	 * navigacija lieka, kitaip zmogus jaustusi ismestas is paskyros.
+	 */
+	private static function is_onboarding() {
+		if ( ! is_user_logged_in() ) {
+			return false;
+		}
+		if ( ! isset( $_GET['action'] ) || sanitize_key( wp_unslash( $_GET['action'] ) ) !== 'create' ) {
+			return false;
+		}
+		global $wpdb;
+		$count = (int) $wpdb->get_var( $wpdb->prepare(
+			"SELECT COUNT(*) FROM `{$wpdb->prefix}ps_pets` WHERE user_id = %d AND status = 'active'",
+			get_current_user_id()
+		) );
+		return $count === 0;
+	}
+
+	public static function body_class( $classes ) {
+		if ( false !== get_query_var( self::ENDPOINT, false ) && self::is_onboarding() ) {
+			$classes[] = 'ps-pet-onboarding';
+		}
+		return $classes;
+	}
+
+	public static function render_account_page() {
+		// S204: profilio ekranas + atskiras formos host (be dubliuoto #pspet-form ID).
+		// ?action=create — serverio kelias: forma atidaroma IS KARTO, veikia ir be JS mygtuko.
+		$create     = isset( $_GET['action'] ) && sanitize_key( wp_unslash( $_GET['action'] ) ) === 'create';
+		$create_url = esc_url( add_query_arg( 'action', 'create', wc_get_account_endpoint_url( self::ENDPOINT ) ) );
+
+		// S211: onboarding rezime navigacija paslepta -> duodam kelia atgal.
+		if ( self::is_onboarding() ) {
+			echo '<a class="ps-back-to-account" href="' . esc_url( wc_get_page_permalink( 'myaccount' ) ) . '">&larr; Grįžti į paskyrą</a>';
+		}
+
+		echo '<div id="pspet-profile" data-create-url="' . $create_url . '"' . ( $create ? ' style="display:none"' : '' ) . '></div>';
+		echo '<div id="pspet-form-host"' . ( $create ? '' : ' style="display:none"' ) . '></div>';
+		if ( $create ) {
+			echo '<script>window.PS_PET_FORM_OPEN=1;</script>';
+		}
+	}
+
+	// --- Shortcode ---
+	public static function shortcode_form( $atts ) {
+		self::enqueue_assets( true ); // force enqueue
+		return '<div id="pspet-form"></div>';
+	}
+
+	// --- Assets ---
+	public static function enqueue_assets( $force = false ) {
+		$base = plugins_url( 'assets/', dirname( __FILE__ ) );
+
+		// S211: paskyros navigacijos stilius — VISUOSE MyAccount puslapiuose,
+		// ne tik augintinio. Kitaip paskyroje butu dvi dizaino sistemos:
+		// "Mano augintinis" modernus, o "Uzsakymai" — desimt metu atgal.
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+			wp_enqueue_style( 'pspet-account', $base . 'account.css', array(), self::VERSION );
+		}
+
+		// Iterpiam tik jei puslapyje yra shortcode arba MyAccount augintinis tab
+		if ( ! $force && ! self::should_load() ) {
+			return;
+		}
+
+		wp_enqueue_style( 'pspet-form', $base . 'pet-form.css', array(), self::VERSION );
+		// Inter is Google Fonts
+		wp_enqueue_style( 'pspet-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap', array(), null );
+
+		wp_enqueue_script( 'pspet-form', $base . 'pet-form.js', array(), self::VERSION, true );
+
+		// Profilio ekranas — MyAccount puslapyje (JS pats tikrina ar yra #pspet-profile).
+		// S204: papildomas saugiklis — endpoint query var (jei is_account_page() del temos/konteksto nesuveiktu).
+		if ( ( function_exists( 'is_account_page' ) && is_account_page() ) || false !== get_query_var( self::ENDPOINT, false ) ) {
+			wp_enqueue_script( 'pspet-profile', $base . 'pet-profile.js', array(), self::VERSION, true );
+		}
+
+		$config = array(
+			'restUrl'     => esc_url_raw( get_rest_url( null, 'petshop/v1' ) ),
+			'nonce'       => wp_create_nonce( 'wp_rest' ),
+			'isLoggedIn'  => is_user_logged_in(),
+			'homeUrl'     => home_url( '/' ),
+			'petPageUrl'  => wc_get_account_endpoint_url( self::ENDPOINT ),
+			'imagesUrl'   => plugins_url( 'assets/images/', dirname( __FILE__ ) ),
+		);
+		wp_localize_script( 'pspet-form', 'PSPetConfig', $config );
+	}
+
+	private static function should_load() {
+		global $post;
+		// Bet kuris MyAccount puslapis (page id 14) — kad augintinis tab veiktu
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+			return true;
+		}
+		// Puslapis su shortcode
+		if ( $post && has_shortcode( $post->post_content, 'petshop_pet_form' ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Aktyvuojant plugin — flush rewrite (kad endpoint veiktu).
+	 */
+	public static function flush_rewrite() {
+		self::add_endpoint();
+		flush_rewrite_rules();
+	}
+}
