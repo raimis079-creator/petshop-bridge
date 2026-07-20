@@ -1,0 +1,414 @@
+<?php
+/**
+ * Petshop_Magic_Login — passwordless login per email nuoroda (magic link).
+ *
+ * Naudoja M6 Petshop_Action_Tokens (purpose=magic_login, TTL 15 min).
+ *
+ * S209 (2026-07-15): VIENINGAS LOGIN. (1) handle_request priima 'context' (pet|account),
+ * saugo token'o action lauke — redirect po prisijungimo pagal tai, is kur zmogus atejo:
+ * augintinio juodrastis -> /augintinis/ (perkelimas), iprastas login -> paskyros pradzia.
+ * (2) Pasibaiges/panaudotas tokenas NEBERODOMAS kaip aklas klaidos puslapis — rodoma
+ * ta pati email forma su pranesimu ir galimybe uzsisakyti nauja nuoroda (TZ doktrina).
+ * (3) Google login samoningai nedaromas — konsultanto sprendimu P1, ne launch blocker.
+ *
+ * S207 (2026-07-15): PASSWORDLESS SIGNUP. Iki siol nuoroda buvo siunciama TIK esamiems
+ * vartotojams — naujas zmogus uzpilde augintinio anketa, ivede pasta, mate "patikrinkite
+ * el. pasta" ir NIEKADA nieko negaudavo (augintinis likdavo localStorage'e ir dingdavo).
+ * Dabar: token generuojamas bet kuriam validziam email'ui (subject_id=0, email-only),
+ * o PASKYRA sukuriama tik paspaudus nuoroda — t.y. tik irodzius pasto nuosavybe.
+ * Siuksliniu paskyru nera; enumeracijos nuotekio nera (atsakymas ir taip vienodas).
+ * Taip pat: redirect po login eina i augintinio puslapi, kur gyvena juodrascio perkelimas.
+ * Laiskas siunciamas per WP Mail SMTP (C-hibrido kritinis kelias -> inbox).
+ *
+ * SAUGUMO REIKALAVIMAI (S190):
+ * 1. Ta pati atsakymo forma egzistuojanciam ir neegzistuojanciam email
+ *    (nesako "toks vartotojas nerastas" — enumeration apsauga).
+ * 2. Rate limit: IP + email (max N uzklausu per langa).
+ * 3. TTL 15 min (trumpesnis nei default 30).
+ * 4. Single-use (M6 consume -> status used).
+ * 5. Scanner-safe: GET = confirmation page (peek, be login), POST = login (consume).
+ *    Email antivirusai atidaro GET — negalima auto-login ant GET.
+ * 6. Session ID regeneracija po login (session fixation apsauga).
+ * 7. NEAUTO-KURIA paskyru — magic link tik ESAMIEMS vartotojams.
+ *    (Jei email neturi WP user — tyliai nieko, bet atsakymas toks pat.)
+ * 8. PS_EMAIL_VERIFIED mirror — po sekmingo login pazymim verified.
+ *
+ * SRAUTAS:
+ *   1. Vartotojas iveda email -> POST /petshop/v1/magic-login/request
+ *   2. Jei email turi WP user: generate token, siusti laiska su nuoroda
+ *      /petshop-login?token=XXX. Visais atvejais atsakymas: "Jei toks email
+ *      egzistuoja, issiuntem nuoroda".
+ *   3. Vartotojas paspaudzia nuoroda -> GET /petshop-login?token=XXX ->
+ *      confirmation page (peek token, rodo "Prisijungti" mygtuka su POST forma).
+ *   4. POST -> consume token -> wp_set_auth_cookie + session regen -> redirect MyAccount.
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class Petshop_Magic_Login {
+
+	const TOKEN_PURPOSE = 'magic_login';
+	const TOKEN_TTL = 900;               // 15 min
+	const RATE_LIMIT_WINDOW = 900;       // 15 min langas
+	const RATE_LIMIT_MAX_EMAIL = 3;      // max 3 uzklausos per email per langa
+	const RATE_LIMIT_MAX_IP = 10;        // max 10 per IP per langa
+	const LOGIN_PATH = 'petshop-login';  // /petshop-login?token=XXX
+	const META_EMAIL_VERIFIED = '_ps_email_verified';
+
+	public static function init() {
+		// REST endpoint magic link uzklausai
+		add_action( 'rest_api_init', array( __CLASS__, 'register_routes' ) );
+		// Login puslapio handler (GET confirmation + POST consume)
+		add_action( 'init', array( __CLASS__, 'handle_login_page' ) );
+	}
+
+	public static function register_routes() {
+		register_rest_route( 'petshop/v1', '/magic-login/request', array(
+			'methods'             => 'POST',
+			'callback'            => array( __CLASS__, 'handle_request' ),
+			'permission_callback' => '__return_true',
+			'args'                => array(
+				'email' => array( 'required' => true, 'type' => 'string' ),
+			),
+		) );
+	}
+
+	/**
+	 * POST /petshop/v1/magic-login/request
+	 * Visada grazina ta pati atsakyma (enumeration apsauga).
+	 */
+	public static function handle_request( $request ) {
+		$email = sanitize_email( $request->get_param( 'email' ) );
+		$ip = self::get_client_ip();
+
+		// Bendras "sekmes" atsakymas — visais atvejais (yra/nera user, rate limit)
+		$generic = array(
+			'ok'      => true,
+			'message' => 'Jei tokia paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į el. paštą.',
+		);
+
+		if ( ! is_email( $email ) ) {
+			// Net ir blogo formato atveju — toks pat atsakymas (nesako "blogas email")
+			return rest_ensure_response( $generic );
+		}
+
+		// Rate limit patikra (email + IP)
+		if ( ! self::check_rate_limit( $email, $ip ) ) {
+			// Toks pat atsakymas — nesako "per daug bandymu"
+			return rest_ensure_response( $generic );
+		}
+
+		// S207: token generuojam IR nezinomam email'ui (subject_id=0 — email-only token).
+		// Paskyra CIA NEKURIAMA. Ji sukuriama tik process_login(), t.y. tik zmogui
+		// paspaudus nuoroda savo pasto dezeje = nuosavybes irodymas.
+		$user = get_user_by( 'email', $email );
+		// S209: is kur zmogus atejo — lemia redirect po prisijungimo.
+		$context = sanitize_key( (string) $request->get_param( 'context' ) );
+		if ( ! in_array( $context, array( 'pet', 'account' ), true ) ) {
+			$context = 'pet'; // senas anketos frontend'as context'o nesiuncia — jam elgesys nesikeicia
+		}
+		$token = ps_generate_token( array(
+			'purpose'       => self::TOKEN_PURPOSE,
+			'subject_id'    => $user ? (int) $user->ID : 0,
+			'subject_email' => $email,
+			'ttl_seconds'   => self::TOKEN_TTL,
+			'action'        => $context,
+		) );
+		if ( $token ) {
+			self::send_login_email( $email, $user, $token );
+		}
+
+		return rest_ensure_response( $generic );
+	}
+
+	/**
+	 * Login puslapio handler: GET (confirmation) + POST (consume).
+	 * URL: /petshop-login?token=XXX
+	 */
+	public static function handle_login_page() {
+		if ( ! isset( $_GET['ps_magic'] ) && ! self::is_login_path() ) {
+			return;
+		}
+		if ( ! self::is_login_path() ) {
+			return;
+		}
+
+		$token = isset( $_REQUEST['token'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['token'] ) ) : '';
+		if ( ! $token ) {
+			self::render_retry( 'Nuoroda neteisinga arba pasibaigusi. Įveskite el. paštą ir atsiųsime naują.' );
+			return;
+		}
+
+		$method = isset( $_SERVER['REQUEST_METHOD'] ) ? strtoupper( $_SERVER['REQUEST_METHOD'] ) : 'GET';
+
+		if ( $method === 'POST' ) {
+			// CONSUME — atlieka login
+			self::process_login( $token );
+		} else {
+			// GET — confirmation page (scanner-safe, peek be side-effect)
+			self::render_confirmation( $token );
+		}
+	}
+
+	/**
+	 * GET confirmation page — peek token, rodo POST forma su "Prisijungti".
+	 */
+	private static function render_confirmation( $token ) {
+		$peek = ps_peek_token( $token );
+		if ( ! $peek['valid'] ) {
+			self::render_retry( 'Nuoroda neteisinga arba pasibaigusi. Įveskite el. paštą ir atsiųsime naują.' );
+			return;
+		}
+		// Patikrinam kad tai magic_login purpose
+		if ( isset( $peek['row']->purpose ) && $peek['row']->purpose !== self::TOKEN_PURPOSE ) {
+			self::render_retry( 'Nuoroda neteisinga. Įveskite el. paštą ir atsiųsime naują.' );
+			return;
+		}
+
+		$action_url = esc_url( home_url( '/' . self::LOGIN_PATH ) );
+		$token_esc = esc_attr( $token );
+		$nonce = wp_create_nonce( 'ps_magic_login' );
+
+		self::render_page(
+			'Prisijungimas',
+			'<h1 style="color:#2D5F3F;">Prisijungti prie Petshop.lt</h1>
+			<p>Paspauskite mygtuką, kad užbaigtumėte prisijungimą.</p>
+			<form method="POST" action="' . $action_url . '" style="margin-top:24px;">
+				<input type="hidden" name="token" value="' . $token_esc . '">
+				<input type="hidden" name="ps_nonce" value="' . esc_attr( $nonce ) . '">
+				<button type="submit" style="background:#2D5F3F;color:#fff;border:none;padding:14px 32px;border-radius:8px;font-size:16px;cursor:pointer;font-weight:600;">Prisijungti</button>
+			</form>
+			<p style="margin-top:16px;color:#888;font-size:13px;">Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.</p>'
+		);
+	}
+
+	/**
+	 * POST — consume token, login, session regen, redirect.
+	 */
+	private static function process_login( $token ) {
+		// Nonce patikra (CSRF)
+		$nonce = isset( $_POST['ps_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ps_nonce'] ) ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'ps_magic_login' ) ) {
+			self::render_error( 'Sesija pasibaigusi. Prašome prisijungti iš naujo.' );
+			return;
+		}
+
+		$result = ps_consume_token( $token );
+		if ( ! $result['valid'] ) {
+			// S209: ne aklas klaidos puslapis — ta pati email forma su galimybe gauti nauja nuoroda.
+			self::render_retry( 'Ši nuoroda nebegalioja arba jau panaudota. Įveskite el. paštą ir atsiųsime naują.' );
+			return;
+		}
+		if ( isset( $result['row']->purpose ) && $result['row']->purpose !== self::TOKEN_PURPOSE ) {
+			self::render_retry( 'Nuoroda neteisinga. Įveskite el. paštą ir atsiųsime naują.' );
+			return;
+		}
+
+		$user_id = (int) $result['row']->subject_id;
+		$user    = $user_id ? get_user_by( 'id', $user_id ) : null;
+
+		// S207: email-only token (subject_id=0) — paskyra kuriama TIK cia.
+		if ( ! $user ) {
+			$token_email = isset( $result['row']->subject_email ) ? sanitize_email( $result['row']->subject_email ) : '';
+			if ( ! $token_email || ! is_email( $token_email ) ) {
+				self::render_error( 'Paskyra nerasta.' );
+				return;
+			}
+			// Tarp issiuntimo ir paspaudimo paskyra galejo atsirasti (registracija/Google login)
+			$user = get_user_by( 'email', $token_email );
+			if ( ! $user ) {
+				$new_id = wp_create_user(
+					self::unique_login_from_email( $token_email ),
+					wp_generate_password( 24 ),
+					$token_email
+				);
+				if ( is_wp_error( $new_id ) ) {
+					self::render_error( 'Nepavyko sukurti paskyros. Bandykite dar kartą.' );
+					return;
+				}
+				$new_user = new WP_User( $new_id );
+				$new_user->set_role( 'customer' );
+				$user = get_user_by( 'id', $new_id );
+			}
+			if ( ! $user ) {
+				self::render_error( 'Paskyra nerasta.' );
+				return;
+			}
+		}
+		$user_id = (int) $user->ID;
+
+		// Session fixation apsauga: wp_clear_auth_cookie + naujas wp_set_auth_cookie
+		// zemiau duoda nauja auth cookie (sena negalioja). WP neturi PHP session'u
+		// pagal nutylejima, tad atskiro session_regenerate_id nereikia.
+
+		// Login
+		wp_clear_auth_cookie();
+		wp_set_current_user( $user_id );
+		wp_set_auth_cookie( $user_id, true );  // remember=true
+		do_action( 'wp_login', $user->user_login, $user );
+
+		// PS_EMAIL_VERIFIED mirror
+		update_user_meta( $user_id, self::META_EMAIL_VERIFIED, 'yes' );
+		// Push i Sender (jei yra)
+		if ( function_exists( 'ps_esp_adapter' ) ) {
+			$adapter = ps_esp_adapter();
+			if ( $adapter && $adapter->is_configured() ) {
+				$adapter->upsert_contact( $user->user_email, array(
+					'PS_EMAIL_VERIFIED' => 'true',
+					'PS_LOGIN_METHOD'   => 'magic_link',
+				) );
+			}
+		}
+
+		// S209: redirect pagal tai, is kur zmogus atejo (token action laukas).
+		//   pet     -> augintinio puslapis (ten gyvena juodrascio perkelimas, S207)
+		//   account -> paskyros pradzia (iprastas login is /my-account/)
+		$context = isset( $result['row']->action ) ? (string) $result['row']->action : 'pet';
+		$redirect = '';
+		if ( $context !== 'account' && function_exists( 'wc_get_account_endpoint_url' ) ) {
+			$redirect = wc_get_account_endpoint_url( 'augintinis' );
+		}
+		if ( ! $redirect ) {
+			$redirect = wc_get_page_permalink( 'myaccount' );
+		}
+		if ( ! $redirect ) {
+			$redirect = home_url( '/' );
+		}
+		wp_safe_redirect( $redirect );
+		exit;
+	}
+
+	/**
+	 * Siunciam magic link laiska per WP Mail SMTP.
+	 */
+	/**
+	 * S207: $user gali buti NULL (naujas email) — tekstas prisitaiko, jokio fatal.
+	 */
+	private static function send_login_email( $email, $user, $token ) {
+		$login_url = add_query_arg( 'token', rawurlencode( $token ), home_url( '/' . self::LOGIN_PATH ) );
+		$is_new = ! $user;
+		$name = '';
+		if ( $user ) {
+			$name = $user->first_name ? $user->first_name : $user->display_name;
+		}
+
+		$subject = $is_new ? 'Išsaugokite augintinio profilį — Petshop.lt' : 'Prisijungimas prie Petshop.lt';
+		$title   = $is_new ? 'Išsaugokite augintinio profilį' : 'Prisijungimas prie Petshop.lt';
+		$intro   = $is_new
+			? 'Paspauskite mygtuką žemiau ir jūsų augintinio profilis bus išsaugotas — galėsite jį pasiekti bet kada.'
+			: 'Gavome prašymą prisijungti prie jūsų paskyros. Paspauskite mygtuką žemiau:';
+		$cta     = $is_new ? 'Išsaugoti profilį' : 'Prisijungti';
+
+		$body  = '<html><body style="font-family:Arial,sans-serif;color:#333;max-width:560px;margin:0 auto;">';
+		$body .= '<div style="padding:24px;">';
+		$body .= '<h2 style="color:#2D5F3F;">' . esc_html( $title ) . '</h2>';
+		$body .= '<p>Sveiki' . ( $name ? ', ' . esc_html( $name ) : '' ) . ',</p>';
+		$body .= '<p>' . esc_html( $intro ) . '</p>';
+		$body .= '<p style="margin:28px 0;"><a href="' . esc_url( $login_url ) . '" style="background:#2D5F3F;color:#fff;text-decoration:none;padding:14px 32px;border-radius:8px;font-weight:600;display:inline-block;">' . esc_html( $cta ) . '</a></p>';
+		$body .= '<p style="color:#888;font-size:13px;">Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.</p>';
+		$body .= '<p style="color:#888;font-size:13px;">Jei šio prašymo nepateikėte — tiesiog ignoruokite šį laišką.</p>';
+		$body .= '<hr style="border:none;border-top:1px solid #eee;margin:24px 0;">';
+		$body .= '<p style="color:#aaa;font-size:12px;">Petshop.lt</p>';
+		$body .= '</div></body></html>';
+
+		$headers = array(
+			'Content-Type: text/html; charset=UTF-8',
+			'From: Petshop.lt <terra@petshop.lt>',
+		);
+		wp_mail( $email, $subject, $body, $headers );
+	}
+
+	/**
+	 * S207: unikalus login is email'o dalies pries @. Slaptazodis atsitiktinis —
+	 * zmogus jungiasi per magic link, arba vėliau pasikeicia pats.
+	 */
+	private static function unique_login_from_email( $email ) {
+		$parts = explode( '@', $email );
+		$base  = sanitize_user( $parts[0], true );
+		if ( $base === '' ) {
+			$base = 'klientas';
+		}
+		$login = $base;
+		$i = 1;
+		while ( username_exists( $login ) ) {
+			$login = $base . $i;
+			$i++;
+			if ( $i > 200 ) {
+				$login = $base . '_' . wp_rand( 1000, 9999 );
+				break;
+			}
+		}
+		return $login;
+	}
+
+	// --- Rate limiting (transient pagristas) ---
+	private static function check_rate_limit( $email, $ip ) {
+		$email_key = 'ps_ml_e_' . md5( strtolower( $email ) );
+		$ip_key = 'ps_ml_i_' . md5( $ip );
+
+		$email_count = (int) get_transient( $email_key );
+		$ip_count = (int) get_transient( $ip_key );
+
+		if ( $email_count >= self::RATE_LIMIT_MAX_EMAIL ) {
+			return false;
+		}
+		if ( $ip_count >= self::RATE_LIMIT_MAX_IP ) {
+			return false;
+		}
+
+		set_transient( $email_key, $email_count + 1, self::RATE_LIMIT_WINDOW );
+		set_transient( $ip_key, $ip_count + 1, self::RATE_LIMIT_WINDOW );
+		return true;
+	}
+
+	private static function get_client_ip() {
+		// Paprastas — REMOTE_ADDR (uz proxy gali reiketi X-Forwarded-For, bet dev'e ok)
+		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0.0.0.0';
+		return $ip;
+	}
+
+	private static function is_login_path() {
+		$req = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
+		$path = trim( parse_url( $req, PHP_URL_PATH ), '/' );
+		return ( $path === self::LOGIN_PATH );
+	}
+
+	// --- Puslapiu render ---
+	/**
+	 * S209: pasibaiges/neteisingas tokenas — NE klaidos puslapis, o ta pati email forma.
+	 * Zmogui nereikia niekur grizti: ivedi pasta cia pat, gauni nauja nuoroda.
+	 * Saugumas tas pats kaip handle_request: atsakymas vienodas visiems adresams.
+	 */
+	private static function render_retry( $msg ) {
+		$rest = esc_url( rest_url( 'petshop/v1/magic-login/request' ) );
+		$html  = '<h1 style="color:#2D5F3F;font-size:22px;margin:0 0 10px;">Nuoroda nebegalioja</h1>';
+		$html .= '<p style="color:#444;margin:0 0 20px;">' . esc_html( $msg ) . '</p>';
+		$html .= '<div id="ps-retry-form">';
+		$html .= '<input type="email" id="ps-retry-email" placeholder="vardas@pastas.lt" autocomplete="email" style="width:100%;padding:12px 14px;border:1px solid #D5D5D5;border-radius:8px;font-size:15px;margin-bottom:12px;box-sizing:border-box;">';
+		$html .= '<button type="button" id="ps-retry-send" style="display:block;width:100%;background:#2D5F3F;color:#fff;border:none;padding:14px 20px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;">Gauti naują nuorodą</button>';
+		$html .= '</div>';
+		$html .= '<div id="ps-retry-done" style="display:none;background:#F4F8F5;border-radius:10px;padding:18px;color:#2D5F3F;font-weight:600;">Patikrinkite el. paštą — jei nurodėte teisingą adresą, išsiuntėme naują nuorodą.</div>';
+		$html .= '<p style="margin-top:20px;font-size:14px;"><a href="' . esc_url( wc_get_page_permalink( 'myaccount' ) ?: home_url( '/' ) ) . '" style="color:#2D5F3F;">Grįžti į prisijungimo puslapį</a></p>';
+		$html .= '<script>(function(){var s=document.getElementById("ps-retry-send"),e=document.getElementById("ps-retry-email");function go(){var v=(e.value||"").trim();if(!v||v.indexOf("@")<1){e.focus();e.style.borderColor="#c0392b";return;}s.disabled=true;s.textContent="Siunčiama...";fetch(' . wp_json_encode( $rest ) . ',{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:v})}).then(function(){document.getElementById("ps-retry-form").style.display="none";document.getElementById("ps-retry-done").style.display="";}).catch(function(){s.disabled=false;s.textContent="Gauti naują nuorodą";});}s.addEventListener("click",go);e.addEventListener("keydown",function(ev){if(ev.key==="Enter"){ev.preventDefault();go();}});})();</script>';
+		self::render_page( 'Prisijungimas', $html );
+	}
+
+	private static function render_error( $msg ) {
+		self::render_page( 'Prisijungimas', '<h1 style="color:#c0392b;">Nepavyko prisijungti</h1><p>' . esc_html( $msg ) . '</p><p style="margin-top:20px;"><a href="' . esc_url( wc_get_page_permalink( 'myaccount' ) ?: home_url( '/' ) ) . '" style="color:#2D5F3F;">Grįžti į prisijungimą</a></p>' );
+	}
+
+	private static function render_page( $title, $content ) {
+		if ( headers_sent() ) {
+			echo $content; exit;
+		}
+		header( 'Content-Type: text/html; charset=UTF-8' );
+		echo '<!DOCTYPE html><html lang="lt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>' . esc_html( $title ) . '</title></head>';
+		echo '<body style="font-family:Arial,sans-serif;background:#f7f7f7;margin:0;padding:40px 20px;">';
+		echo '<div style="max-width:480px;margin:0 auto;background:#fff;padding:40px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);">';
+		echo $content;
+		echo '</div></body></html>';
+		exit;
+	}
+}
