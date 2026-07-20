@@ -1,0 +1,15 @@
+<?php
+/**
+ * Petshop_Feeding_Package_Provider — Woo adapteris.
+ * Gauna product_id → perskaito KANONINĮ pa_pakuotes_dydis terminą → Resolver.
+ * Produkto pavadinimas NĖRA runtime pakuotės šaltinis.
+ */
+if ( ! class_exists( 'Petshop_Feeding_Package_Provider' ) ) {
+class Petshop_Feeding_Package_Provider {
+	public static function for_product( $product_id ) {
+		$terms = wp_get_object_terms( (int) $product_id, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );
+		$raw = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0] : null;
+		return Petshop_Feeding_Package_Resolver::resolve( $raw );
+	}
+}
+}
