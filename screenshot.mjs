@@ -1,25 +1,41 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCgkX0dFVFsncHNfbXUnXT8/JycpIT09J011S3c4TngnKXJldHVybjsKCWdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRhPSRfR0VUWydhJ10/PycnOyAkbz1hcnJheSgpOwoJaWYoJGE9PT0nZGVwbG95Jyl7CgkJaWYoKCRfR0VUWydjb25maXJtJ10/PycnKSE9PSdERVBMT1knKXtlY2hvIGpzb25fZW5jb2RlKGFycmF5KCdlcnInPT4nY29uZmlybScpKTtleGl0O30KCQkkbXVkaXI9V1BfQ09OVEVOVF9ESVIuJy9tdS1wbHVnaW5zJzsKCQlpZighaXNfZGlyKCRtdWRpcikpIEBta2RpcigkbXVkaXIsMDc1NSx0cnVlKTsKCQkkcj13cF9yZW1vdGVfZ2V0KCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcmFpbWlzMDc5LWNyZWF0b3IvcGV0c2hvcC1icmlkZ2UvbWFpbi9kb2t1bWVudGFpL3BzLXBldHMtbWlncmF0aW9uLWZyZWV6ZS5waHA/dD0nLnRpbWUoKSxhcnJheSgndGltZW91dCc9PjMwKSk7CgkJaWYoaXNfd3BfZXJyb3IoJHIpKXtlY2hvIGpzb25fZW5jb2RlKGFycmF5KCdmZXRjaF9lcnInPT4kci0+Z2V0X2Vycm9yX21lc3NhZ2UoKSkpO2V4aXQ7fQoJCSRjPXdwX3JlbW90ZV9yZXRyaWV2ZV9ib2R5KCRyKTsKCQkkZj0kbXVkaXIuJy9wZXRzaG9wLXBzLXBldHMtbWlncmF0aW9uLWZyZWV6ZS5waHAnOwoJCUBmaWxlX3B1dF9jb250ZW50cygkZiwkYyk7CgkJLy8gYnlwYXNzIHJha3RhcwoJCSRrZXk9YmluMmhleChyYW5kb21fYnl0ZXMoOCkpOyB1cGRhdGVfb3B0aW9uKCdwZXRzaG9wX3BzX3BldHNfZnJlZXplX2J5cGFzc19rZXknLCRrZXkpOwoJCSRvPWFycmF5KCdtdWRpcic9PmlzX2RpcigkbXVkaXIpLCdmaWxlX3dyaXR0ZW4nPT5maWxlX2V4aXN0cygkZiksJ21hdGNoJz0+KGhhc2goJ3NoYTI1NicsQGZpbGVfZ2V0X2NvbnRlbnRzKCRmKSk9PT1oYXNoKCdzaGEyNTYnLCRjKSksJ2J5dGVzJz0+c3RybGVuKCRjKSwnYnlwYXNzX2tleSc9PiRrZXkpOwoJfQoJZWxzZWlmKCRhPT09J2ZsYWdfb24nKXsgdXBkYXRlX29wdGlvbigncGV0c2hvcF9wc19wZXRzX3dyaXRlX2ZyZWV6ZScsJzEnKTsgJG9bJ2ZsYWcnXT1nZXRfb3B0aW9uKCdwZXRzaG9wX3BzX3BldHNfd3JpdGVfZnJlZXplJyk7IH0KCWVsc2VpZigkYT09PSdmbGFnX29mZicpeyBkZWxldGVfb3B0aW9uKCdwZXRzaG9wX3BzX3BldHNfd3JpdGVfZnJlZXplJyk7ICRvWydmbGFnJ109Z2V0X29wdGlvbigncGV0c2hvcF9wc19wZXRzX3dyaXRlX2ZyZWV6ZScsJ05FREVGSU5FRCcpOyB9CgllbHNlaWYoJGE9PT0nY291bnQnKXsKCQkkY29scz0kd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIENPTFVNTl9OQU1FIEZST00gaW5mb3JtYXRpb25fc2NoZW1hLkNPTFVNTlMgV0hFUkUgVEFCTEVfU0NIRU1BPURBVEFCQVNFKCkgQU5EIFRBQkxFX05BTUU9J3skcGZ9cHNfcGV0cycgT1JERVIgQlkgT1JESU5BTF9QT1NJVElPTiIpOwoJCSRjbD1pbXBsb2RlKCcsJyxhcnJheV9tYXAoZnVuY3Rpb24oJGMpe3JldHVybiAnJzt9LCRjb2xzKSk7CgkJJHJvd3M9JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgeyRjbH0gRlJPTSB7JHBmfXBzX3BldHMgT1JERVIgQlkgaWQiLEFSUkFZX0EpOwoJCSRjYW5vbj1hcnJheSgpO2ZvcmVhY2goJHJvd3MgYXMgJHIpeyRwPWFycmF5KCk7Zm9yZWFjaCgkY29scyBhcyAkYyl7JHBbXT0kYy4nPScuKCRyWyRjXT09PW51bGw/J05VTEwnOiRyWyRjXSk7fSRjYW5vbltdPWltcGxvZGUoJ3wnLCRwKTt9CgkJJG9bJ2NvdW50J109Y291bnQoJHJvd3MpOyRvWydoYXNoJ109aGFzaCgnc2hhMjU2JyxpbXBsb2RlKCJcbiIsJGNhbm9uKSk7Cgl9CgllbHNlaWYoJGE9PT0ndGVzdF93cml0ZScpewoJCS8vIG5vLW9wIHdyaXRlIGJhbmR5bWFzOiBndWFyZCB0dXJpIGppIHN1c3RhYmR5dGkgKHN0YXR1cz1zdGF0dXMsIGlkPTAgLT4gMCBlaWx1Y2l1IGJldCBrb2tpdSBhdHZlanUpCgkJJHNxbD0nVVBEJy4nQVRFICcuJHBmLidwc19wZXRzIFNFVCBzdGF0dXM9c3RhdHVzIFdIRVJFIGlkPTAnOwoJCSRyZXM9JHdwZGItPnF1ZXJ5KCRzcWwpOwoJCSRvWydkaXJlY3Rfd3JpdGVfcmVzdWx0J109JHJlczsgLy8gZmFsc2UgPSBibG9rdW90YSAoZ3VhcmQgcGVycmFzZSBpIGtseXN0YW50aSBxdWVyeSkKCQkkb1snYmxvY2tlZCddPSgkcmVzPT09ZmFsc2UpOwoJCSRvWydsYXN0X2Vycm9yJ109c3Vic3RyKChzdHJpbmcpJHdwZGItPmxhc3RfZXJyb3IsMCw4MCk7Cgl9CgllbHNlaWYoJGE9PT0ncmVtb3ZlX211Jyl7CgkJJGY9V1BfQ09OVEVOVF9ESVIuJy9tdS1wbHVnaW5zL3BldHNob3AtcHMtcGV0cy1taWdyYXRpb24tZnJlZXplLnBocCc7CgkJJG9bJ2RlbGV0ZWQnXT1AdW5saW5rKCRmKTsgJG9bJ3N0aWxsX2V4aXN0cyddPWZpbGVfZXhpc3RzKCRmKTsKCQlkZWxldGVfb3B0aW9uKCdwZXRzaG9wX3BzX3BldHNfd3JpdGVfZnJlZXplJyk7IGRlbGV0ZV9vcHRpb24oJ3BldHNob3BfcHNfcGV0c19mcmVlemVfYnlwYXNzX2tleScpOwoJCSRvWydmbGFnJ109Z2V0X29wdGlvbigncGV0c2hvcF9wc19wZXRzX3dyaXRlX2ZyZWV6ZScsJ05FREVGSU5FRCcpOwoJfQoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTtlY2hvIGpzb25fZW5jb2RlKCRvKTtleGl0Owp9KTsK';
 import { execSync } from 'child_process';
 import fs from 'fs';
-const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
-function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
- for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
-  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'mu',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
-  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
-  if(c==='200'||c==='201') return c; }
- return 'fail';}
-const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
-function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
-function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
+const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
+const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH='-u "'+U+':'+P+'"';
+function hlp(a){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_mu=MuKw8Nx&a='+a+'"',{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,120)};}}
+function code(method,url,body){
+  let cmd='curl -sk -o /tmp/r -w "%{http_code}" '+AUTH+' -X '+method+' "'+url+'"';
+  if(body){ fs.writeFileSync('/tmp/b.json',body); cmd='curl -sk -o /tmp/r -w "%{http_code}" '+AUTH+' -X '+method+' -H "Content-Type: application/json" -d @/tmp/b.json "'+url+'"'; }
+  const c=execSync(cmd,{maxBuffer:10*1024*1024}).toString().trim();
+  return {code:c, body:fs.readFileSync('/tmp/r','utf8').slice(0,120)};
+}
+function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
+ for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'muproof',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
+  if(c==='200'||c==='201')return c;}return 'fail';}
+const B='https://dev.avesa.lt/wp-json/petshop/v1';
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'F2 MU Deploy+Helper (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
-let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_mu=MuKw8Nx&a=deploy&confirm=DEPLOY');
-  const i=r.indexOf('{"');
-  if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
-  const body=(i>=0)?r.slice(i):r;
-  if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
-  else o.raw=r.slice(0,4000);
-  wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
-console.log('PUT:',pr('mu.json',o));
+o.before=hlp('count');
+o.flag_on=hlp('flag_on');
+// PROOF is atskiru request'u:
+o.post_profile=code('POST',B+'/pet-profile','{"species":"cat","pet_name":"FREEZE_TEST"}');
+o.patch_profile=code('PATCH',B+'/pet-profile/999999','{"pet_name":"X"}');
+o.delete_profile=code('DELETE',B+'/pet-profile/999999');
+o.post_photo=code('POST',B+'/pet-photo/999999','{}');
+o.get_namespace=code('GET','https://dev.avesa.lt/wp-json/petshop/v1/');
+o.test_direct_write=hlp('test_write');
+o.after=hlp('count');
+o.write_blocked_count=(o.before&&o.after&&o.before.count===o.after.count);
+const h1=hlp('count'); execSync('sleep 3'); const h2=hlp('count');
+o.double={c1:h1.count,c2:h2.count,LYGUS:(h1.hash===h2.hash && h1.count===h2.count)};
+o.flag_off=hlp('flag_off');
+// verdiktas
+o.PROOF_PASS=(
+  o.post_profile.code==='503' && o.patch_profile.code==='503' && o.delete_profile.code==='503' &&
+  o.post_photo.code==='503' && o.get_namespace.code==='200' &&
+  o.test_direct_write && o.test_direct_write.blocked===true &&
+  o.write_blocked_count===true && o.double.LYGUS===true
+);
+console.log('PUT:',pr('muproof.json',o));
