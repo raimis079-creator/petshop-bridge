@@ -81,7 +81,40 @@
 
 **IKI APPLY LEIDŽIAMA (ne STOP):** ?action=create atsidarymas, formos matomumas, JS užsikrovimas, fallback nuoroda — BE pateikimo/magic-link/DB rašymo.
 
-**KITAS STOP: Raimio APPLY ps_pets InnoDB migracijai.**
+### C2. GALUTINIS READ-ONLY UŽDARYMAS (2026-07-20) — 23-ios eilutės prielaida IŠSPRĘSTA:
+- **id=46:** user_id=1 (bdz487 / raimundas@gyvunai.lt = admin, RAIMIS), sukurta 2026-07-20 08:56:03, species=cat, pet_name=NULL, status=active. REALUS create per normalų flow (create_pet), NE test snippetai.
+- **id=45:** taip pat user_id=1, 2026-07-15, NULL name (ankstesnis admin test create).
+- **Snippetai 801 "Dash Test" / 805 "Photo Test" (kodas perskaitytas):** abu daro TIK `DELETE FROM {prefix}ps_pets WHERE user_id=%d` (801: eil.14,88; 805: eil.20,89). JIE TRINA, NE RAŠO (insert=False). Ankstesnė prielaida „801/805 sukūrė 23-ią" — PANEIGTA.
+- **Tikrieji ps_pets rašytojai:** pet-profile.php create_pet(505)/update(221,241,551) + pet-photo.php(147). Normalus REST create/update flow (naudoja admin user 1).
+- **Kiti aktyvūs snippetai su ps_pets rašymu:** nėra (tik 801/805 su DELETE).
+
+### C3. FROZEN MIGRACIJOS PAKETAS (surišantis hash imamas APPLY lange — count gali kisti jei admin kuria):
+- Momentinis (2026-07-20): engine MyISAM, charset utf8mb4, collation utf8mb4_unicode_520_ci, row_count=23, max_id=46, AUTO_INCREMENT=47.
+- data_hash_64: `c834a7d1f951e87cb61cc25ff85c21465350a3dfdd08e853e28cd528120eeb04`
+- Indeksai: PRIMARY(id), idx_user(user_id), idx_user_primary(user_id,is_primary), idx_user_status(user_id,status).
+
+**TIKSLŪS PAVADINIMAI:**
+- SQL dump: `dokumentai/backup_ps_pets_20260720.sql`
+- Backup lentelė: `gaj6_ps_pets_bak_20260720`
+
+**WRITE-FREEZE (tikslūs veiksmai APPLY metu, VIENAME snippeto vykdyme, kad neįsiterptų rašymai):**
+1. Deaktyvuoti snippetus 801, 805 (jie gali DELETE).
+2. LOCK: freeze-hash + `ALTER TABLE gaj6_ps_pets ENGINE=InnoDB` + readback-hash — VISKAS viename PHP request'e (23 eil. → milisekundės; ALTER pati užrakina lentelę). Admin neturi kurti augintinio šiuo ~2s langu.
+3. Backup PRIEŠ ALTER: `CREATE TABLE gaj6_ps_pets_bak_20260720 LIKE gaj6_ps_pets; INSERT INTO gaj6_ps_pets_bak_20260720 SELECT * FROM gaj6_ps_pets;` + mysqldump → dokumentai/backup_ps_pets_20260720.sql. Backup row_count + data_hash_64 = frozen etalonui identiški.
+
+**ALTER komanda:** `ALTER TABLE gaj6_ps_pets ENGINE=InnoDB;` (JOKIŲ stulpelių pridėjimo — timestamp spraga vėliau.)
+
+**READ-BACK (nepriklausomu kodu, po ALTER):**
+- engine=InnoDB · row_count=frozen · data_hash_64=frozen · PK+indeksai identiški · AUTO_INCREMENT≥47 (neatsuktas) · pet REST read (GET pet-dashboard/profile) veikia.
+
+**ROLLBACK (jei NORS VIENA patikra nesutampa):**
+- `DROP TABLE gaj6_ps_pets; RENAME TABLE gaj6_ps_pets_bak_20260720 TO gaj6_ps_pets;` (atkuria originalų MyISAM+duomenis)
+- ARBA re-import dokumentai/backup_ps_pets_20260720.sql.
+- Re-verify: engine=MyISAM, data_hash_64=frozen. Tik po sėkmės atblokuoti (801/805 palikti deaktyvuotus iki sprendimo).
+
+**PO SĖKMĖS:** atblokuoti; TIK TADA M8 E2E (anoniminis→?action=create→forma→magic-link→profilis DB) su izoliuotu test email + valymas.
+
+**KITAS STOP: Raimio komanda „APPLY ps_pets InnoDB pagal patvirtintą frozen preflight paketą."**
 
 ---
 
