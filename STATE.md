@@ -5,78 +5,48 @@
 
 
 
+
 ---
 
 # ============================================================
-# ★★★ RYTOJUI — PRADĖK NUO ČIA (2026-07-19 sesijos pabaiga) ★★★
+# ★★★ F1 UŽDARYTA (CLOSED) — 2026-07-20 ★★★
 # ============================================================
 
-## KUR ESAME: F1 = IN PROGRESS. Core+API PASS, browser proof LIEKA.
+## F1 = COMPLETE. Vertikalus pjūvis įrodytas end-to-end naršyklėje.
 
-**Nedaryk recon iš naujo. Nedaryk naujų auditų. Nekeisk architektūros.** Viskas žemiau įrodyta ir užrakinta. Liko VIENAS siauras kelias.
+**BROWSER PROOF (dvigubas, 2026-07-20):**
+- **Tekstinis** (cookie-jar autentifikuotas fetch, tas pats HTML kaip naršyklė):
+  - URL: https://dev.avesa.lt/my-account/augintinis/
+  - auth cookie captured (wordpress_logged_in), has_login_form=False (realiai prisijungęs user 25)
+  - Perskaityta iš puslapio: "Testukas (5 kg) • Exclusion HYHS02 2kg • Dienos porcija: 90–100 g • Pakuotės užteks: ~20–23 d. • Kaina: 0,94–1,04 €/d • 28,20–31,34 €/30 d."
+- **Vizualus** (Playwright chromium, browser=1): screenshots/f1_feeding_block.png (460×234) + f1_pet_page.png (1200×1600). Blokas matomas paskyros puslapyje, be rankinio svorio.
+- Identifikatoriai: user 25, pet 26, product 18581 (HYHS02), svoris iš profilio (ne rankinis).
 
-## LIKĘS DARBAS (griežta seka, vienas švarus browser proof):
-```
-1. Sukurk izoliuotą testinį fixture: pet 26 (user 25, "Testukas", dog) → current_weight_kg=5.0
-   (dabar NULL; sukurk iš naujo. Tai vienintelis DB rašymas, reversible.)
-2. Prisijunk kaip user 25 (test-login: wp_set_auth_cookie(25), TEMP snippetas, secret-gated).
-3. Playwright (browser=1) su httpCredentials(WP_USER/WP_APP_PASS, HTTP basic auth dev'ui):
-   - eik į test-login URL → redirect į augintinio puslapį
-   - realus augintinio puslapio URL (WC endpoint 'augintinis')
-   - screenshot #ps-pet-feeding blokas
-4. Browser proof ataskaita PRIVALO turėti (ne vien screenshotą):
-   - faktinį URL
-   - prisijungusio user ID (25)
-   - pet ID (26)
-   - product ID (18581 / HYHS02)
-   - iš puslapio PERSKAITYTĄ porcijos / trukmės / kainos tekstą
-   (laukiama: Testukas 5kg, HYHS02, porcija 90-100g, trukmė ~20-23d, 0.94-1.04€/d)
-5. #1186 deaktyvavimas (parity 100% jau įrodyta).
-6. Patikra, kad #1186 NEBEVYKDOMAS (hit HYHS02 produktą, patikrink kad nėra seno kalkuliatoriaus).
-7. Guard PAŠALINIMAS: išimk `if (get_current_user_id() !== 25) return '';` iš build_pet_feeding_html
-   (core-class-feeding-ui.php) TUO PAČIU uždarymo pakeitimu — kad neliktų paslėptos testinės logikos core kode.
-   (Raimio reikalavimas.)
-8. Fixture pašalinimas: pet 26 svoris → NULL.
-9. Galutinis feeding baseline (turi likti identiškas F0: tables a6b6f742, rows 94823010, map 053db476).
-10. STATE.md: F1 CLOSED + galutinė ataskaita.
-```
+**UŽDARYMO ŽINGSNIAI (visi 10 DONE):**
+1-4. Fixture + login + Playwright + browser proof (URL+user+pet+product+tekstas+screenshot) ✅
+5. #1186 deaktyvuotas (active 1→0) ✅
+6. #1186 nebevykdomas: PS_FCalc_Service klasė NEBEegzistuoja; naujos feeding klasės OK ✅
+7. user-25 guard PAŠALINTAS → pakeistas eksplicitiniu feature flag PETSHOP_FEEDING_F1_DEMO (OFF pagal nutylėjimą, not defined). Render inertiškas visur (patikrinta: flag off → tuščias). Jokios paslėptos test logikos core kode. ✅
+8. Fixture pašalintas: pet 26 svoris → NULL ✅
+9. Galutinis feeding baseline IDENTIŠKA F0 (tables 226/a6b6f742, rows 3860/94823010, map 455/053db476) ✅
+10. STATE.md CLOSED ✅
 
-## PLAYWRIGHT BLOKERIS (kodėl vakar nepavyko — NEKARTOK klaidų):
-- Bandymas 1: pw.json tuščias (galimai script error prieš putJson).
-- Bandymas 2: pw.json perrašytas SENU nesusijusiu turiniu (CDN lag arba putFile nesuveikė).
-- **Pamoka:** skaityk rezultatą per `raw.githubusercontent.com/.../main/screenshots/pw.json?t=$(date)` PO ~15s papildomo lag, IR per commit SHA. Patikrink `err` lauką. Playwright workflow yml: `node screenshot.mjs "URL"`, env turi WP_USER/WP_APP_PASS/GH_TOKEN/GH_REPO; browser=1 instaliuoja chromium (~150-180s).
-- **Bendrai:** negatyvaus/pozityvaus HTTP testo pattern jau veikia (žr. neg.json PASS). Playwright screenshot pattern — dar nesukalibruotas. Pradėk nuo švaraus screenshot_pw.mjs su geresniu error capture + readback per raw URL.
+**BŪSENA PO F1:**
+- 6 feeding klasės integruotos petshop-core/includes/ (require_once, ne eval).
+- REST endpoint POST petshop/v1/feeding/calculate veikia (ownership 403 be nutekėjimo, guest weight_kg).
+- Pet-page render kodas LIEKA (build_pet_feeding_html + hook + [petshop_feeding_demo] shortcode), bet už feature flag OFF. F3 pavers į nuolatinę product-kontekstinę integraciją.
+- Feeding DB nepaliesta (baseline = F0).
+- 0 sesijos temp snippetų aktyvių. #1186 OFF.
+- pet 26 = NULL (švarus).
 
-## SAUGOS BŪSENA (vakar uždaryta, NELIESK jei nekeiti):
-- pet 26 svoris = NULL (fixture pašalintas).
-- test-login snippet 1209 = DEAKTYVUOTAS, negatyvus HTTP testas PASS (status 200, jokio redirect į paskyrą, jokio auth cookie, set-cookie=0).
-- pet-page render = DEV GUARD (tik user 25). LAIKINAS — šalinti su browser proof (žingsnis 7).
-- #1186 = AKTYVUS (pagrįstai, kol nėra vizualaus core kelio).
-- Sesijos temp snippetai (be #1186) = 0 aktyvių.
-- Feeding DB baseline = IDENTIŠKA F0.
-
-## FAKTAI BROWSER PROOF'UI (kad neieškotum):
-- user 25 turi 1 augintinį: pet 26 "Testukas", dog, status=active.
-- HYHS02: pid 18581, kaina 20.89€ su PVM, lentelė 165 (verified/active/interpolation_allowed, 7 eil. 2-10kg).
-- Laukiamas rezultatas 5kg: ok B1, porcija 90-100g, trukmė 20-23d, 0.94-1.04€/d, 28.20-31.34€/30d.
-- REST endpoint veikia: POST petshop/v1/feeding/calculate (product_id + pet_id arba weight_kg).
-- Pet puslapis: WC endpoint 'augintinis', render per woocommerce_account_augintinis_endpoint pri 99 + [petshop_feeding_demo] shortcode.
-- Bridge: sc121b.mjs šablonas, workflow 298960963, browser=1 Playwright. curl -sk -u wpu:wpp (HTTP basic).
-
-## ĮRODYTA ŠIĄ SESIJĄ (8 pending punktai → 5 DONE, saugos uždaryta):
-```
-1. Matomas feeding blokas          PENDING (render parašytas+guard, laukia browser)
-2. Prisijungusio browser testas    PENDING (Playwright blokeris)
-3. 5×6 parity per gyvą core REST   ✅ DONE
-4. axis_policy nested+flat regr.   ✅ DONE
-5. Egzist vs neegzist pet_id lygyb ✅ DONE (403 be nutekėjimo patvirtinta)
-6. Feeding baseline po F1 vs F0    ✅ DONE (identiška)
-7. Fixture cleanup                 ✅ DONE (pet26 NULL) — bus atkurta+vėl pašalinta browser proofui
-8. #1186 deaktyvavimas             PENDING (po browser proof)
-```
+## KITAS: F2 — M8 profilio create + ps_pets InnoDB
+- ps_pets MyISAM → InnoDB konversija.
+- current_food mechanizmo suderinimas: ps_pets JAU turi primary_product_id/primary_product_sku/primary_product_name/primary_product_package. F2 PREFLIGHT: suderinti esamą primary_product_id su F0 užrakintu current_food_product_id — NEBLINDI aklai pridėti naujo stulpelio. (F1 šito NELIETĖ — teisingai.)
+- M8 "Sukurti profilį" mygtukas empty state nieko nedaro — realus vartotojas negali pradėti klausimyno. Draft transfer (localStorage→DB po magic-link) nebaigtas.
+- Tikras svorio įrašymas per profilio formą (F2 tikrina, ne F1).
 
 # ============================================================
-# ★★★ RYTOJAUS BLOKO PABAIGA ★★★
+# ★★★ F1 CLOSED BLOKO PABAIGA ★★★
 # ============================================================
 
 ---
