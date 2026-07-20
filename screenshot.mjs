@@ -1,25 +1,49 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCgkX0dFVFsncHNfaHAnXT8/JycpIT09J0hwS3c4TngnKXJldHVybjsKCWdsb2JhbCAkd3BkYjskcGY9JHdwZGItPnByZWZpeDskYT0kX0dFVFsnYSddPz8nJzskbz1hcnJheSgpOwoJJHByaXY9ZGlybmFtZShkaXJuYW1lKHJ0cmltKEFCU1BBVEgsJy9cXCcpKSkuJy9wc19wcml2YXRlJzsKCSRmbGFnPSRwcml2LicvcHNfcGV0c19mcmVlemVfT04nOyAkdG9rZj0kcHJpdi4nL3BzX3BldHNfZnJlZXplX3Rva2VuJzsKCWlmKCRhPT09J3NldHVwJyl7CgkJaWYoIWlzX2RpcigkcHJpdikpIEBta2RpcigkcHJpdiwwNzAwLHRydWUpOwoJCSR0b2tlbj1iaW4yaGV4KHJhbmRvbV9ieXRlcygzMikpOyAvLyA2NCBoZXgKCQlmaWxlX3B1dF9jb250ZW50cygkdG9rZiwkdG9rZW4pOyBAY2htb2QoJHRva2YsMDYwMCk7IC8vIEJFIG5ld2xpbmUKCQlmaWxlX3B1dF9jb250ZW50cygkZmxhZywnMScpOyBAY2htb2QoJGZsYWcsMDYwMCk7CgkJJG9bJ3BzX3ByaXZhdGVfY3JlYXRlZCddPWlzX2RpcigkcHJpdik7CgkJJG9bJ3Rva2VuX2xlbiddPXN0cmxlbigoc3RyaW5nKUBmaWxlX2dldF9jb250ZW50cygkdG9rZikpOwoJCSRvWyd0b2tlbl9iZV9uZXdsaW5lJ109KEBmaWxlX2dldF9jb250ZW50cygkdG9rZik9PT0kdG9rZW4pOwoJCSRvWyd0b2tlbl9wZXJtcyddPXN1YnN0cihzcHJpbnRmKCclbycsQGZpbGVwZXJtcygkdG9rZikpLC00KTsKCQkkb1snZmxhZ19jcmVhdGVkJ109ZmlsZV9leGlzdHMoJGZsYWcpOwoJCSRvWydmcmVlemVfYWN0aXZlJ109ZnVuY3Rpb25fZXhpc3RzKCdwZXRzaG9wX3BzcGZfYWN0aXZlJyk/cGV0c2hvcF9wc3BmX2FjdGl2ZSgpOiduL2EnOwoJfQoJZWxzZWlmKCRhPT09J2NvdW50Jyl7CgkJJGNvbHM9JHdwZGItPmdldF9jb2woIlNFTEVDVCBDT0xVTU5fTkFNRSBGUk9NIGluZm9ybWF0aW9uX3NjaGVtYS5DT0xVTU5TIFdIRVJFIFRBQkxFX1NDSEVNQT1EQVRBQkFTRSgpIEFORCBUQUJMRV9OQU1FPSd7JHBmfXBzX3BldHMnIE9SREVSIEJZIE9SRElOQUxfUE9TSVRJT04iKTsKCQkkY2w9aW1wbG9kZSgnLCcsYXJyYXlfbWFwKGZ1bmN0aW9uKCRjKXtyZXR1cm4gJ2AnLiRjLidgJzt9LCRjb2xzKSk7CgkJJHJvd3M9JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgeyRjbH0gRlJPTSB7JHBmfXBzX3BldHMgT1JERVIgQlkgaWQiLEFSUkFZX0EpOwoJCSRjYW5vbj1hcnJheSgpO2ZvcmVhY2goJHJvd3MgYXMgJHIpeyRwPWFycmF5KCk7Zm9yZWFjaCgkY29scyBhcyAkYyl7JHBbXT0kYy4nPScuKCRyWyRjXT09PW51bGw/J05VTEwnOiRyWyRjXSk7fSRjYW5vbltdPWltcGxvZGUoJ3wnLCRwKTt9CgkJJG9bJ2NvdW50J109Y291bnQoJHJvd3MpOyRvWydoYXNoJ109aGFzaCgnc2hhMjU2JyxpbXBsb2RlKCJcbiIsJGNhbm9uKSk7Cgl9CgllbHNlaWYoJGE9PT0nZGlyZWN0X3dyaXRlJyl7CgkJLy8gbmVkZXN0cnVrdHl2dXMgbm8tb3A6IFVQREFURSBwc19wZXRzIFNFVCBpZD1pZCBXSEVSRSAxPTAuIFN1IGZyZWV6ZSAtPiBndWFyZCByZXdyaXRlIC0+IGZhbHNlLgoJCSRzcWw9J1VQRCcuJ0FURSAnLiRwZi4ncHNfcGV0cyBTRVQgaWQ9aWQgV0hFUkUgMT0wJzsKCQkkd3BkYi0+bGFzdF9lcnJvcj0nJzsKCQkkcmVzPSR3cGRiLT5xdWVyeSgkc3FsKTsKCQkkb1sncmVzdWx0J109JHJlczsgLy8gZmFsc2UgPSBibG9rdW90YTsgMCA9IHByYWVqbyAoZ3VhcmQgbmV2ZWlrdHUpCgkJJG9bJ2lzX2ZhbHNlJ109KCRyZXM9PT1mYWxzZSk7CgkJJG9bJ2xhc3RfZXJyb3InXT1zdWJzdHIoKHN0cmluZykkd3BkYi0+bGFzdF9lcnJvciwwLDEwMCk7CgkJJG9bJ2xhc3RfZXJyb3JfbmV0dXNjaWFzJ109KCR3cGRiLT5sYXN0X2Vycm9yIT09JycpOwoJfQoJZWxzZWlmKCRhPT09J2ZsYWdfb2ZmJyl7CgkJQHVubGluaygkZmxhZyk7CgkJJG9bJ2ZsYWdfcGFzYWxpbnRhcyddPSFmaWxlX2V4aXN0cygkZmxhZyk7CgkJJG9bJ2ZyZWV6ZV9hY3RpdmVfcG8nXT1mdW5jdGlvbl9leGlzdHMoJ3BldHNob3BfcHNwZl9hY3RpdmUnKT9wZXRzaG9wX3BzcGZfYWN0aXZlKCk6J24vYSc7Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
 import { execSync } from 'child_process';
 import fs from 'fs';
-const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
-function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
- for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
-  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'a1h',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
-  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
-  if(c==='200'||c==='201') return c; }
- return 'fail';}
-const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
-function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
-function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
+const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
+const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH='-u "'+U+':'+P+'"';
+const B='https://dev.avesa.lt/wp-json/petshop/v1';
+function hlp(a){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_hp=HpKw8Nx&a='+a+'"',{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,120)};}}
+function req(method,url,extra){
+  let cmd='curl -sk -o /tmp/rr -w "%{http_code}" '+AUTH+' -X '+method+' '+(extra||'')+' "'+url+'"';
+  const c=execSync(cmd,{maxBuffer:10*1024*1024}).toString().trim();
+  return {code:c, body:fs.readFileSync('/tmp/rr','utf8').slice(0,100)};
+}
+function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
+ for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'a1proof',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
+  if(c==='200'||c==='201')return c;}return 'fail';}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'A1 Helper (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
-let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_hp=HpKw8Nx&a=setup');
-  const i=r.indexOf('{"');
-  if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
-  const body=(i>=0)?r.slice(i):r;
-  if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
-  else o.raw=r.slice(0,4000);
-  wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
-console.log('PUT:',pr('a1h.json',o));
+// baseline pries
+o.before=hlp('count');
+// --- REST testai (BE bypass antraštės -> guard blokuoja) ---
+fs.writeFileSync('/tmp/empty.json','{}');
+o.post_profile      = req('POST',   B+'/pet-profile', '-H "Content-Type: application/json" -d @/tmp/empty.json');           // tuscias payload
+o.patch_profile     = req('PATCH',  B+'/pet-profile/999999999', '-H "Content-Type: application/json" -d @/tmp/empty.json'); // neegz pet_id
+o.delete_profile    = req('DELETE', B+'/pet-profile/999999999');
+o.post_photo        = req('POST',   B+'/pet-photo/999999999', '-H "Content-Type: application/json" -d @/tmp/empty.json');
+// override scenarijai
+o.post_override_get = req('POST',   B+'/pet-profile', '-H "X-HTTP-Method-Override: GET" -H "Content-Type: application/json" -d @/tmp/empty.json'); // POST+override GET -> 503
+o.get_override_del  = req('GET',    B+'/pet-profile/999999999', '-H "X-HTTP-Method-Override: DELETE"');                     // GET+override DELETE -> 503
+// paprastas GET (read) -> ne 503
+o.get_plain         = req('GET',    'https://dev.avesa.lt/wp-json/petshop/v1/');
+// --- tiesioginis $wpdb write (nedestruktyvus no-op) -> false + last_error ---
+o.direct_write=hlp('direct_write');
+// --- count/hash nepakito + dvigubas 3s ---
+o.after=hlp('count');
+o.write_nepakeite=(o.before&&o.after&&o.before.count===o.after.count&&o.before.hash===o.after.hash);
+const h1=hlp('count'); execSync('sleep 3'); const h2=hlp('count');
+o.double={c1:h1.count,c2:h2.count,identiski:(h1.hash===h2.hash&&h1.count===h2.count)};
+// --- verdiktas ---
+o.PROOF_PASS=(
+  o.post_profile.code==='503' && o.patch_profile.code==='503' && o.delete_profile.code==='503' &&
+  o.post_photo.code==='503' && o.post_override_get.code==='503' && o.get_override_del.code==='503' &&
+  o.get_plain.code==='200' &&
+  o.direct_write && o.direct_write.is_false===true && o.direct_write.last_error_netuscias===true &&
+  o.write_nepakeite===true && o.double.identiski===true
+);
+// --- flag OFF (proof pabaiga) ---
+o.flag_off=hlp('flag_off');
+console.log('PUT:',pr('a1proof.json',o));
