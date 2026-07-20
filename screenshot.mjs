@@ -1,57 +1,25 @@
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcHJlJ10pfHwkX0dFVFsncHNfcHJlJ10hPT0nUHJlS3c4TngnKXtyZXR1cm47fQoJQHNldF90aW1lX2xpbWl0KDIwMCk7IGdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCdyZWFkb25seSc9PnRydWUpOwoJJHRibD0kcGYuJ3BzX3BldHMnOwoKCS8vIDEuIHBzX3BldHMgZW5naW5lICsgZHlkaXMKCSRzdD0kd3BkYi0+Z2V0X3JvdygiU0VMRUNUIEVOR0lORSxUQUJMRV9ST1dTLERBVEFfTEVOR1RILElOREVYX0xFTkdUSCBGUk9NIGluZm9ybWF0aW9uX3NjaGVtYS5UQUJMRVMgV0hFUkUgVEFCTEVfU0NIRU1BPURBVEFCQVNFKCkgQU5EIFRBQkxFX05BTUU9J3skdGJsfSciLCBBUlJBWV9BKTsKCSRvWydlbmdpbmUnXT0kc3Q7CgoJLy8gMi4gc3R1bHBlbGlhaQoJJGNvbHM9JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgQ09MVU1OX05BTUUsREFUQV9UWVBFLElTX05VTExBQkxFLENPTFVNTl9ERUZBVUxUIEZST00gaW5mb3JtYXRpb25fc2NoZW1hLkNPTFVNTlMgV0hFUkUgVEFCTEVfU0NIRU1BPURBVEFCQVNFKCkgQU5EIFRBQkxFX05BTUU9J3skdGJsfScgT1JERVIgQlkgT1JESU5BTF9QT1NJVElPTiIsIEFSUkFZX0EpOwoJJG9bJ2NvbHVtbnMnXT1hcnJheV9tYXAoZnVuY3Rpb24oJGMpe3JldHVybiAkY1snQ09MVU1OX05BTUUnXS4nICcuJGNbJ0RBVEFfVFlQRSddLigkY1snSVNfTlVMTEFCTEUnXT09PSdZRVMnPycgTlVMTCc6JyBOT1QgTlVMTCcpO30sJGNvbHMpOwoKCS8vIDMuIGluZGVrc2FpCgkkaWR4PSR3cGRiLT5nZXRfcmVzdWx0cygiU0hPVyBJTkRFWCBGUk9NIHskdGJsfSIsIEFSUkFZX0EpOwoJJG9bJ2luZGV4ZXMnXT1hcnJheV9tYXAoZnVuY3Rpb24oJGkpe3JldHVybiAkaVsnS2V5X25hbWUnXS4nKCcuJGlbJ0NvbHVtbl9uYW1lJ10uJyknLigkaVsnTm9uX3VuaXF1ZSddPycnOicgVU5JUVVFJyk7fSwkaWR4KTsKCgkvLyA0LiBwcmltYXJ5X3Byb2R1Y3RfaWQgcGFuYXVkb2ppbWFzCgkkdG90YWw9KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR0Ymx9Iik7Cgkkd2l0aF9wcGlkPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskdGJsfSBXSEVSRSBwcmltYXJ5X3Byb2R1Y3RfaWQgSVMgTk9UIE5VTEwgQU5EIHByaW1hcnlfcHJvZHVjdF9pZD4wIik7Cgkkd2l0aF93ZWlnaHQ9KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR0Ymx9IFdIRVJFIGN1cnJlbnRfd2VpZ2h0X2tnIElTIE5PVCBOVUxMIik7Cgkkb1sncGV0cyddPWFycmF5KCd0b3RhbCc9PiR0b3RhbCwnc3VfcHJpbWFyeV9wcm9kdWN0X2lkJz0+JHdpdGhfcHBpZCwnc3Vfc3Zvcml1Jz0+JHdpdGhfd2VpZ2h0KTsKCgkvLyA1LiBhciBwcmltYXJ5X3Byb2R1Y3RfaWQgcm9kbyBpIHZhbGlkdSBwcm9kdWt0dQoJJHBwaWRzPSR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgRElTVElOQ1QgcHJpbWFyeV9wcm9kdWN0X2lkIEZST00geyR0Ymx9IFdIRVJFIHByaW1hcnlfcHJvZHVjdF9pZCBJUyBOT1QgTlVMTCBBTkQgcHJpbWFyeV9wcm9kdWN0X2lkPjAgTElNSVQgMjAiKTsKCSR2YWxpZD0wOyAkaW52YWxpZD1hcnJheSgpOwoJZm9yZWFjaCgkcHBpZHMgYXMgJHBpZCl7ICRzdDI9Z2V0X3Bvc3Rfc3RhdHVzKCRwaWQpOyBpZigkc3QyPT09J3B1Ymxpc2gnKXskdmFsaWQrKzt9IGVsc2UgeyRpbnZhbGlkW109YXJyYXkoJHBpZCwkc3QyPzonbmVyYScpO30gfQoJJG9bJ3ByaW1hcnlfcHJvZHVjdF9pZCddPWFycmF5KCdkaXN0aW5jdF9zdV9yZWlrc21lJz0+Y291bnQoJHBwaWRzKSwndmFsaWRfcHVibGlzaCc9PiR2YWxpZCwnaW52YWxpZF9zYW1wbGUnPT5hcnJheV9zbGljZSgkaW52YWxpZCwwLDgpKTsKCgkvLyA2LiBwYXZ5emR5czogcGlsbmEgZWlsdXRlIHN1IHByaW1hcnlfcHJvZHVjdF8qIGxhdWthaXMKCSRzYW1wbGU9JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgaWQscGV0X25hbWUsc3BlY2llcyxwcmltYXJ5X3Byb2R1Y3RfaWQscHJpbWFyeV9wcm9kdWN0X3NrdSxwcmltYXJ5X3Byb2R1Y3RfbmFtZSxwcmltYXJ5X3Byb2R1Y3RfcGFja2FnZSxjdXJyZW50X3dlaWdodF9rZyBGUk9NIHskdGJsfSBXSEVSRSBwcmltYXJ5X3Byb2R1Y3RfaWQgSVMgTk9UIE5VTEwgTElNSVQgMyIsIEFSUkFZX0EpOwoJJG9bJ3NhbXBsZV9zdV9wcGlkJ109JHNhbXBsZTsKCgkvLyA3LiBhciB5cmEgY3VycmVudF9mb29kX3Byb2R1Y3RfaWQgc3R1bHBlbGlzIChGMCB1enJha2ludGFzIHRlcm1pbmFzKQoJJGhhc19jZnBpPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIGluZm9ybWF0aW9uX3NjaGVtYS5DT0xVTU5TIFdIRVJFIFRBQkxFX1NDSEVNQT1EQVRBQkFTRSgpIEFORCBUQUJMRV9OQU1FPSd7JHRibH0nIEFORCBDT0xVTU5fTkFNRT0nY3VycmVudF9mb29kX3Byb2R1Y3RfaWQnIik7Cgkkb1sndHVyaV9jdXJyZW50X2Zvb2RfcHJvZHVjdF9pZCddPSgkaGFzX2NmcGk+MCk7CgoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
-const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH=`-u "${U}:${P}"`;
-function wj(m,path,body){const b=Buffer.from(JSON.stringify(body)).toString('base64');
-  return execSync(`echo ${b}|base64 -d|curl -sk ${AUTH} -X ${m} -H "Content-Type: application/json" -d @- "https://dev.avesa.lt/wp-json/${path}"`,{maxBuffer:50*1024*1024}).toString();}
+const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
- for(let i=0;i<5;i++){try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'closeall',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
-  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/pj.json "${u}"`).toString().trim();
-  if(c==='200'||c==='201')return c;}return 'fail';}
+ for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
+  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'pre',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
+  if(c==='200'||c==='201') return c; }
+ return 'fail';}
+const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
+function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
+function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-// 1. NEGATYVUS login testas: login3 URL (snippetas jau deaktyvuotas ankstesniame proof2/pw2) -> jokio auth/redirect
-const hdr=execSync(`curl -skD - -o /dev/null -m 60 ${AUTH} "https://dev.avesa.lt/?ps_login3=Login3Kw8Nx"`,{maxBuffer:10*1024*1024}).toString();
-o.neg_status=(hdr.match(/HTTP\/[\d.]+\s+(\d+)/)||[])[1]||null;
-o.neg_location=(hdr.match(/^location:\s*(.+)$/im)||[])[1]||null;
-o.neg_redirect_account=(o.neg_location&&/augintinis|my-account|account/i.test(o.neg_location))?true:false;
-const sc=(hdr.match(/^set-cookie:.*$/gim)||[]);
-o.neg_auth_cookie=sc.filter(c=>/wordpress_logged_in|wordpress_sec/i.test(c)).length>0;
-o.NEG_PASS=(!o.neg_redirect_account&&!o.neg_auth_cookie);
-// 2+3+baseline+cleanup per snippetas
-const SNIP=Buffer.from(`add_action('wp_loaded',function(){
- if(($_GET['ps_final']??'')!=='FinalKw8Nx')return;
- if(($_GET['confirm']??'')!=='CLOSE'){echo json_encode(['err'=>'confirm']);exit;}
- global $wpdb;$pf=$wpdb->prefix;$o=[];
- // fixture NULL
- $wpdb->query("UPDATE {$pf}ps_pets SET current_weight_kg=NULL,weight_updated_at=NULL WHERE id=26");
- $o['pet26']=($wpdb->get_var("SELECT current_weight_kg FROM {$pf}ps_pets WHERE id=26")===null?'NULL':'NE');
- // baseline
- $T=$pf.'ps_feeding_tables';$R=$pf.'ps_feeding_rows';$M=$pf.'ps_feeding_map';
- $tr=$wpdb->get_results("SELECT id,canonical_table_hash,status,is_active FROM {$T} ORDER BY id",ARRAY_A);
- $tp=[];foreach($tr as $r){$tp[]=$r['id'].':'.($r['canonical_table_hash']===null?'NULL':$r['canonical_table_hash']).':'.$r['status'].':'.$r['is_active'];}
- $mr=$wpdb->get_results("SELECT feeding_table_id,product_id,is_active FROM {$M} ORDER BY feeding_table_id,product_id",ARRAY_A);
- $mp=[];foreach($mr as $r){$mp[]=$r['feeding_table_id'].':'.$r['product_id'].':'.$r['is_active'];}
- $rr=$wpdb->get_results("SELECT id,feeding_table_id,cell_type,weight_from_kg,weight_to_kg,amount_from_g,amount_to_g FROM {$R} ORDER BY id",ARRAY_A);
- $rp=[];foreach($rr as $r){$rp[]=$r['id'].':'.$r['feeding_table_id'].':'.$r['cell_type'].':'.$r['weight_from_kg'].':'.$r['weight_to_kg'].':'.$r['amount_from_g'].':'.$r['amount_to_g'];}
- $th=hash('sha256',implode('|',$tp));$mh=hash('sha256',implode('|',$mp));$rh=hash('sha256',implode('|',$rp));
- $o['baseline_F0']=($th==='a6b6f742526c24e45635b77c164fa163ec289d817f170c60618f90dc833a2d25'&&$rh==='948230100c5aaefbea75e081678ead12173c07e9537b3f78af75c3f13ddaddbf'&&$mh==='053db47686759f41fc317dfbeb88ad28577a9a6f004cf044226587011ae59adf');
- $o['counts']=[count($tr),count($rr),count($mr)];
- // #1186 + senas kalkuliatorius
- $o['s1186']=(int)$wpdb->get_var("SELECT active FROM {$pf}snippets WHERE id=1186");
- $o['old_calc']=class_exists('PS_FCalc_Service');
- $o['new_ok']=(class_exists('Petshop_Feeding_Service')&&class_exists('Petshop_Feeding_UI'));
- // cleanup visi temp
- $sn=$wpdb->get_results("SELECT id FROM {$pf}snippets WHERE code LIKE '%Kw8Nx%' AND active=1 AND id<>1186",ARRAY_A);
- $d=0;foreach($sn as $s){$wpdb->update($pf.'snippets',['active'=>0],['id'=>$s['id']]);$d++;}
- $o['cleaned']=$d;
- $o['temp_liko']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$pf}snippets WHERE code LIKE '%Kw8Nx%' AND active=1 AND id<>1186");
- header('Content-Type: application/json');echo json_encode($o);exit;
-});`).toString('base64');
-const mk=wj('POST','code-snippets/v1/snippets',{name:'F1 FinalClose (temp)',code:Buffer.from(SNIP,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
-let id=null;try{id=JSON.parse(mk).id;o.snip_id=id;}catch(e){o.mk=mk.slice(0,150);}
-const raw=execSync(`curl -sk ${AUTH} "https://dev.avesa.lt/?ps_final=FinalKw8Nx&confirm=CLOSE"`,{maxBuffer:20*1024*1024}).toString();
-const fi=raw.indexOf('{"');try{o.close=JSON.parse(raw.slice(fi));}catch(e){o.close_raw=raw.slice(0,300);}
-if(id){wj('POST',`code-snippets/v1/snippets/${id}`,{active:false});}
-console.log('PUT:',pr('closeall.json',o));
+const mk=wj('POST','code-snippets/v1/snippets',{name:'F2 Preflight (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
+if(id){ const r=hit('https://dev.avesa.lt/?ps_pre=PreKw8Nx');
+  const i=r.indexOf('{"');
+  if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
+  const body=(i>=0)?r.slice(i):r;
+  if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
+  else o.raw=r.slice(0,4000);
+  wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
+console.log('PUT:',pr('pre.json',o));
