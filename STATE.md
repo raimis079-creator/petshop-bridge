@@ -114,6 +114,49 @@
 
 **PO SĖKMĖS:** atblokuoti; TIK TADA M8 E2E (anoniminis→?action=create→forma→magic-link→profilis DB) su izoliuotu test email + valymas.
 
+### C4. PATAISYTAS VYKDYMO PAKETAS (3 trūkumai ištaisyti, 2026-07-20) — laukia APPLY:
+
+**Serverio realija (recon):** exec/shell_exec/proc_open VISI išjungti → shell mysqldump NEĮMANOMAS. DB grants = ALL PRIVILEGES (CREATE/ALTER/RENAME/DROP OK). blog_public=0.
+
+**TRŪKUMAS 1 IŠTAISYTAS — tikras write-freeze (ne vien 801/805):**
+- `.maintenance` NETINKA: tikrinamas prieš wp_loaded → blokuotų ir mano migracijos snippetą.
+- SPRENDIMAS: laikinas freeze-snippetas su `rest_pre_dispatch` filtru, grąžinančiu HTTP 503 VISIEMS ps_pets rašymo REST route'ams (pet-profile save/create/update + pet-photo update — būtent taip vyksta tikrieji rašymai). Mano migracijos operacija eina per atskirą front-end URL, ne REST → nepaveikta.
+- Papildomai: deaktyvuoti 801/805 (DELETE rizika); jų ankstesnė būsena (abu active=1) grąžinama po migracijos.
+- Papildomas saugiklis: visa operacija (frozen-hash → backup → ALTER → readback-hash) VIENAME PHP request'e; readback-hash ≠ frozen → automatinis rollback (pagauna bet kokį įsiterpusį rašymą).
+- Freeze langas: įjungti REST-block → palaukti ~3s (in-flight užklausoms) → operacija → nuimti REST-block.
+
+**TRŪKUMAS 2 IŠTAISYTAS — SQL dump NE į GitHub, o ne-viešas serverio kelias, programinis eksportas:**
+- Backup LENTELĖ (pagrindinis greitas rollback): `gaj6_ps_pets_bak_20260720` (in-DB).
+- SQL failas (antrinis): programinis eksportas (SELECT → INSERT statements, be exec/mysqldump) į NE-VIEŠĄ kelią: `/home/gyvunai2/domains/avesa.lt/ps_private/backup_ps_pets_20260720.sql` (katalogas sukuriamas 0700, SIBLING public_html — NE web-pasiekiamas). Recon patvirtino: /home/gyvunai2/domains/avesa.lt/ rašomas.
+- Prieš APPLY pateikiama: fizinis kelias (virš/šalia webroot), įrodymas kad ne-viešas (šalia public_html, ne viduje), failo SHA-256, backup lentelės count+data_hash_64 = frozen etalonui identiški.
+- SQL failas į GitHub NEKELIAMAS.
+
+**TRŪKUMAS 3 IŠTAISYTAS — rollback atominis RENAME (ne DROP):**
+```sql
+RENAME TABLE
+  gaj6_ps_pets TO gaj6_ps_pets_failed_20260720,
+  gaj6_ps_pets_bak_20260720 TO gaj6_ps_pets;
+```
+- Tada: patikrinama atkurta (MyISAM) lentelė (engine=MyISAM, data_hash_64=frozen); nesėkminga InnoDB lentelė PALIEKAMA diagnostikai (gaj6_ps_pets_failed_20260720); ištrinama TIK po aiškaus patvirtinimo.
+
+**GALUTINĖ TIKSLI KOMANDŲ SEKA (APPLY metu, VIENAME snippeto vykdyme kur įmanoma):**
+1. Įjungti REST write-block snippetą (rest_pre_dispatch → 503 pet write routes).
+2. Deaktyvuoti snippetus 801, 805 (įsiminti: buvo 1/1).
+3. Palaukti ~3s.
+4. Frozen: SELECT visų stulpelių ORDER BY id → count + data_hash_64 (SURIŠANTIS etalonas šiame lange).
+5. `CREATE TABLE gaj6_ps_pets_bak_20260720 LIKE gaj6_ps_pets;`
+6. `INSERT INTO gaj6_ps_pets_bak_20260720 SELECT * FROM gaj6_ps_pets;`
+7. Verify: bak count + data_hash_64 == frozen.
+8. Programinis SQL eksportas → /home/gyvunai2/domains/avesa.lt/ps_private/backup_ps_pets_20260720.sql; įrašyti failo SHA-256.
+9. `ALTER TABLE gaj6_ps_pets ENGINE=InnoDB;` (JOKIŲ stulpelių pridėjimo).
+10. READ-BACK (nepriklausomu SELECT): engine=InnoDB · count==frozen · data_hash_64==frozen · PK+indeksai (idx_user/idx_user_primary/idx_user_status) identiški · AUTO_INCREMENT≥47 · pet REST GET (pet-dashboard/profile) veikia.
+11a. Jei VISKAS sutampa → nuimti REST write-block, grąžinti 801/805 į active=1. F2 migracija DONE.
+11b. Jei NORS VIENA nesutampa → ROLLBACK RENAME (žr. trūkumas 3), verify atkurta MyISAM, palikti failed lentelę, nuimti REST-block (801/805 palikti deaktyvuotus iki sprendimo), pranešti.
+
+**PO SĖKMĖS (atskiras žingsnis):** M8 E2E anoniminis→?action=create→forma→magic-link→profilis DB su izoliuotu test email + test duomenų valymas.
+
+**IKI APPLY LEIDŽIAMA (ne STOP):** ?action=create atsidarymas / forma / JS / fallback nuoroda — BE pateikimo.
+
 **KITAS STOP: Raimio komanda „APPLY ps_pets InnoDB pagal patvirtintą frozen preflight paketą."**
 
 ---
