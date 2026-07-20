@@ -165,7 +165,22 @@ RENAME TABLE
 - **PATAISA (repo dokumentai/ps-pets-migration-freeze.php v1.1):** freeze per FLAG FAILĄ (`file_exists(.ps_pets_freeze_ON)`, bypass per `.ps_pets_freeze_BYPASS`) — JOKIŲ get_option/DB kvietimų query filtre → jokios rekursijos. Verify lint OK.
 - **PAMOKA (užrakinta):** globaliame `query` filtre NIEKADA nekviesti get_option/wp_options/jokio DB — tik file_exists ar konstanta. get_option query filtre = begalinė rekursija.
 
-### A′ BŪSENA: 1-as etapas NEUŽBAIGTAS (freeze proof dar neįrodytas su saugia versija). ps_pets InnoDB migracija NEPRASIDĖJUSI. Laukia Raimio sprendimo ar kartoti 1-ą etapą su v1.1 MU-plugin.
+### C6. A′ 1-AS ETAPAS UŽBAIGTAS (2026-07-20) — freeze REALIAI įrodytas, live:
+MU-plugin **v1.4.2** (SHA-256 ab725943e9dcd876d081ab4ec90e77154d1a75eda39eea1a38a6f729b859341c) deployintas be flag, verifikuotas:
+- Deployinto failo SHA baitas-į-baitą = etalonui. Svetainė/admin/REST GET veikia, JOKIO fatal (rekursija pašalinta — guard funkcijos užsikrauna).
+- freeze OFF be flag: petshop_pspf_active()===false.
+- query hook: guard prioritetas PHP_INT_MAX = AUKŠČIAUSIAS, PO jo callback'ų NĖRA (patvirtinta wp_filter['query']).
+- **Live freeze proof (flag ON, token 64 hex/0600/be newline):**
+  - POST/PATCH/DELETE /pet-profile → 503; POST /pet-photo → 503.
+  - POST + override GET → 503; GET + override DELETE → 503 (override NEsumažina apsaugos).
+  - paprastas GET → 200.
+  - tiesioginis \$wpdb write `UPDATE gaj6_ps_pets SET id=id WHERE 1=0` (nedestruktyvus) → **false** + last_error netuščias (MariaDB sintaksės klaida iš `SELECT /* PETSHOP_PSPF_WRITE_FROZEN */ FROM`). NE tyli sėkmė, ne 0.
+  - count+hash nepakito; du hash matavimai 3s intervalu identiški.
+  - Nedestruktyvūs testai: tuščias POST payload, neegzistuojantis pet_id 999999999.
+- flag pašalintas → freeze OFF patvirtinta. Token pašalintas (higiena; stage-2 regeneruos).
+- **ps_pets NEPALIESTA: count 23, hash = c834a7d1... (etalonui).** 0 temp snippetų aktyvių.
+
+### A′ BŪSENA: 1-as etapas ✅ UŽBAIGTAS ir PASS. MU-plugin v1.4.2 LIEKA deployintas (be flag, inertiškas). ps_pets InnoDB migracija NEPRASIDĖJUSI — STOP prieš backup ir ALTER. Laukia Raimio komandos 2-am etapui. Prieš 2-ą etapą freeze turės būti vėl įjungtas ir trumpai pakartotinai patvirtintas tame pačiame migracijos lange.
 
 **KITAS STOP: Raimio komanda „APPLY ps_pets InnoDB pagal patvirtintą frozen preflight paketą."**
 
