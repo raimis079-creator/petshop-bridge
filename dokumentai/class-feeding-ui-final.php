@@ -32,8 +32,9 @@ class Petshop_Feeding_UI {
 	 */
 	protected static function feeding_demo_enabled() {
 		if ( defined( 'PETSHOP_FEEDING_F1_DEMO' ) ) { return (bool) PETSHOP_FEEDING_F1_DEMO; }
-		$host = isset( $_SERVER['HTTP_HOST'] ) ? strtolower( (string) $_SERVER['HTTP_HOST'] ) : '';
-		return ( strpos( $host, 'dev.avesa.lt' ) !== false );
+		// Kanoninis svetainės hostas iš home_url() (ne kliento $_SERVER['HTTP_HOST'] — tas spoofinamas).
+		$host = strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+		return ( $host === 'dev.avesa.lt' );
 	}
 
 	protected static function build_pet_feeding_html() {
