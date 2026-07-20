@@ -43,7 +43,49 @@
 - Pet-page render: host-gated demo (dev ON / prod OFF), product iš ?product_id=. F3 pavers į nuolatinę product-page integraciją (CTA + kontekstas).
 - Feeding DB = F0. #1186 OFF.
 
-## F2 PREFLIGHT ATLIKTAS (2026-07-20, read-only recon) — LAUKIA SPRENDIMO
+## F2 PREFLIGHT + AUDITAS + MIGRACIJOS PAKETAS (2026-07-20, read-only) — LAUKIA APPLY
+
+### F1 hardening (padaryta): host gate per wp_parse_url(home_url(),PHP_URL_HOST)==='dev.avesa.lt' (ne $_SERVER['HTTP_HOST']). Deploy match True. F1 lieka CLOSED.
+
+### A. primary_product_id AUDITAS (kodo įrodymas, ne prielaida):
+- **Rašo:** pet-form.js (vartotojas anketoje renkasi KONKRETŲ produktą: pr.id/sku/name/package) → pet-profile.php handle_save/create_pet(505 insert)/update_pet(551 update). Sanitize (int) (406).
+- **Skaito:** pet-profile.php allowed-fields (372-375) save/read. refill-engine.php NENAUDOJA jo (0 nuorodų — pridėtas S210/S211 numatant, dar nekonsumuojamas).
+- **Semantika:** „dabar naudojamas maistas" fiksuojamas 3 lygiais: current_food_brand (brendas), current_food_free_text (laisvas tekstas), primary_product_id (konkretus produktas, aukščiausias tikslumas). sku/name/package = snapshot cache (kai produktas ištrinamas — S211 komentaras). Turi savarankišką reikšmę (display fallback), NE grynas cache.
+- **Vartotojo patvirtinimas:** produktas rašomas iš vartotojo anketos pasirinkimo (explicit), perrašomas kiekvienu save. NĖRA atskiro primary_product_updated_at (F0 norėjo current_food_updated_at) — SPRAGA.
+- **IŠVADA (dabar su kodo įrodymu): primary_product_id = dabartinio maisto rodyklė. Naujo current_food_product_id NEKURIAME. Timestamp spraga — atskiras F2 sprendimas (stulpelio pridėjimas, atidėta iki po migracijos).**
+
+### B. ps_pets MIGRACIJOS PAKETAS (MyISAM→InnoDB):
+**PREFLIGHT (2026-07-20 momentinė būsena — NEsurišanti, nes ps_pets kinta):**
+- Lentelė: gaj6_ps_pets. Engine MyISAM. Charset utf8mb4. Collation utf8mb4_unicode_520_ci.
+- row_count=23 (BUVO 22 anksčiau — KITO! max_id=46, AUTO_INCREMENT=47).
+- PK(id) + KEY idx_user(user_id) + idx_user_primary(user_id,is_primary) + idx_user_status(user_id,status).
+- data_hash (momentinis, 25 stulpeliai ORDER BY id): c834a7d1f951e87cb61cc25ff85c21465350a3dfdd08e853e28cd528120eeb04 (KEISIS jei rašoma — surišantis hash imamas APPLY metu po write-freeze).
+- SHOW CREATE išsaugotas (žr. mig.json).
+
+**ps_pets RAŠYTOJAI (tikrieji, self::table_name()=ps_pets tik pet-profile; kiti false-positive su savo lentelėm):**
+- pet-profile.php: 221, 241, 505 (insert), 551 (update).
+- pet-photo.php:147 (Petshop_Pet_Profile::table_name() — photo_file_id).
+- (reminders/pet-products/action-tokens = SAVO lentelės, NE ps_pets.)
+
+**⚠️ RIZIKA prieš APPLY:** aktyvūs testiniai snippetai 801 "Dash Test" + 805 "Photo Test" mini ps_pets — tikėtina jie sukūrė 23-ią įrašą (22→23). PRIEŠ migraciją identifikuoti/įšaldyti, kad row count nekistų operacijos metu.
+
+**PILNAS APPLY PLANAS (laukia Raimio APPLY — NEVYKDYTA):**
+1. Write-freeze: deaktyvuoti/įšaldyti visus ps_pets rašytojus (test snippetai 801/805; laikinas guard pet-profile save jei reikia).
+2. Preflight-momentas (frozen): SHOW CREATE, row_count, MAX(id), AUTO_INCREMENT, PK+indeksai, data_hash — SURIŠANTIS etalonas.
+3. Backup: (a) mysqldump gaj6_ps_pets → repo dokumentai/backup_ps_pets_YYYYMMDD.sql; (b) atskira lentelė gaj6_ps_pets_bak_YYYYMMDD su visais įrašais; (c) backup row_count + data_hash = etalonui identiški.
+4. APPLY: ALTER TABLE gaj6_ps_pets ENGINE=InnoDB. JOKIŲ stulpelių pridėjimo (timestamp — vėliau).
+5. READ-BACK (nepriklausomu kodu): engine=InnoDB; row_count=etalonas; data_hash=etalonas; PK+indeksai identiški; AUTO_INCREMENT≥47 (neatsuktas); pet REST read veikia.
+6. Jei NORS VIENA patikra nesutampa → ROLLBACK: DROP pakeista lentelė / RENAME bak atgal / arba re-import mysqldump; patikrinti hash=etalonas; atblokuoti tik po sėkmės.
+7. Sėkmė → atblokuoti rašytojus.
+8. TIK PO migracijos: kontroliuojamas M8 E2E (anoniminis→?action=create→forma→magic-link→profilis DB) su izoliuotu test email + test duomenų valymas.
+
+**IKI APPLY LEIDŽIAMA (ne STOP):** ?action=create atsidarymas, formos matomumas, JS užsikrovimas, fallback nuoroda — BE pateikimo/magic-link/DB rašymo.
+
+**KITAS STOP: Raimio APPLY ps_pets InnoDB migracijai.**
+
+---
+
+## KITAS: F2 — M8 profilio create + ps_pets InnoDB
 
 **A. primary_product_id suderinimas (F0 klausimas išspręstas):**
 - ps_pets: MyISAM, 22 eilutės, 2KB (mikroskopinė).
