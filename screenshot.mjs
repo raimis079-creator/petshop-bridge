@@ -1,25 +1,70 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcnQnXSl8fCRfR0VUWydwc19ydCddIT09J1J0S3c4TngnKXtyZXR1cm47fQoJJG89YXJyYXkoJ3JlYWRvbmx5Jz0+dHJ1ZSk7Cgkkcm91dGVzPXJlc3RfZ2V0X3NlcnZlcigpLT5nZXRfcm91dGVzKCk7CgkkcGV0dz1hcnJheSgpOwoJZm9yZWFjaCgkcm91dGVzIGFzICRyPT4kaGFuZGxlcnMpewoJCWlmKHN0cmlwb3MoJHIsJ3BldCcpPT09ZmFsc2UgJiYgc3RyaXBvcygkciwncGV0c2hvcCcpPT09ZmFsc2UpIGNvbnRpbnVlOwoJCWZvcmVhY2goJGhhbmRsZXJzIGFzICRoKXsKCQkJJG1ldGhvZHM9aXNfYXJyYXkoJGhbJ21ldGhvZHMnXSk/aW1wbG9kZSgnLCcsYXJyYXlfa2V5cyhhcnJheV9maWx0ZXIoJGhbJ21ldGhvZHMnXSkpKTokaFsnbWV0aG9kcyddOwoJCQkvLyB0aWsgcmFzeW1vIG1ldG9kYWkKCQkJaWYocHJlZ19tYXRjaCgnL1BPU1R8UFVUfFBBVENIfERFTEVURS9pJywoc3RyaW5nKSRtZXRob2RzKSl7CgkJCQkkY2I9JGhbJ2NhbGxiYWNrJ10/P251bGw7ICRjYm5hbWU9Jyc7CgkJCQlpZihpc19hcnJheSgkY2IpKXsgJGNibmFtZT0oaXNfb2JqZWN0KCRjYlswXSk/Z2V0X2NsYXNzKCRjYlswXSk6JGNiWzBdKS4nOjonLiRjYlsxXTsgfQoJCQkJJHBldHdbXT1hcnJheSgncm91dGUnPT4kciwnbWV0aG9kcyc9PiRtZXRob2RzLCdjYic9PiRjYm5hbWUpOwoJCQl9CgkJfQoJfQoJJG9bJ3BldF93cml0ZV9yb3V0ZXMnXT0kcGV0dzsKCS8vIHBldC1wcm9maWxlIHdyaXRlIG1ldG9kYWkgKHBhdGlrcmluYW0ga3VyaXMgc2VsZjo6dGFibGVfbmFtZSgpPXBzX3BldHMpCgkkb1sncGV0X3Byb2ZpbGVfdGFibGUnXT1jbGFzc19leGlzdHMoJ1BldHNob3BfUGV0X1Byb2ZpbGUnKT9QZXRzaG9wX1BldF9Qcm9maWxlOjp0YWJsZV9uYW1lKCk6J24vYSc7CgkvLyBhciB5cmEgdmVpa2lhbnRpIGZyZWV6ZSBvcHRpb24gamF1Cgkkb1snZnJlZXplX2ZsYWdfZGFiYXInXT1nZXRfb3B0aW9uKCdwZXRzaG9wX3BzX3BldHNfd3JpdGVfZnJlZXplJywnTkVERUZJTkVEJyk7CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
 import { execSync } from 'child_process';
 import fs from 'fs';
-const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
+const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
+const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH=`-u "${U}:${P}"`;
+function wj(m,path,body){const b=Buffer.from(JSON.stringify(body)).toString('base64');
+  return execSync(`echo ${b}|base64 -d|curl -sk ${AUTH} -X ${m} -H "Content-Type: application/json" -d @- "https://dev.avesa.lt/wp-json/${path}"`,{maxBuffer:50*1024*1024}).toString();}
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
- for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
-  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'rt',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
-  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
-  if(c==='200'||c==='201') return c; }
- return 'fail';}
-const U=process.env.WP_USER||'',P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
-function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
-function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
+ for(let i=0;i<5;i++){try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString());if(j.sha)s=j.sha;}catch(e){}
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'freeze',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/pj.json "${u}"`).toString().trim();
+  if(c==='200'||c==='201')return c;}return 'fail';}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'F2 Routes Recon (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
-let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_rt=RtKw8Nx');
-  const i=r.indexOf('{"');
-  if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
-  const body=(i>=0)?r.slice(i):r;
-  if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
-  else o.raw=r.slice(0,4000);
-  wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
-console.log('PUT:',pr('rt.json',o));
+const GUARD='YWRkX2ZpbHRlcigncmVzdF9wcmVfZGlzcGF0Y2gnLCBmdW5jdGlvbigkcmVzdWx0LCAkc2VydmVyLCAkcmVxdWVzdCl7CglpZiAoZ2V0X29wdGlvbigncGV0c2hvcF9wc19wZXRzX3dyaXRlX2ZyZWV6ZScpICE9PSAnMScpIHJldHVybiAkcmVzdWx0OwoJJHJvdXRlID0gJHJlcXVlc3QtPmdldF9yb3V0ZSgpOwoJJG1ldGhvZCA9ICRyZXF1ZXN0LT5nZXRfbWV0aG9kKCk7CglpZiAoIWluX2FycmF5KCRtZXRob2QsIGFycmF5KCdQT1NUJywnUFVUJywnUEFUQ0gnLCdERUxFVEUnKSwgdHJ1ZSkpIHJldHVybiAkcmVzdWx0OwoJaWYgKHByZWdfbWF0Y2goJyNeL3BldHNob3AvdjEvcGV0LXByb2ZpbGUjJywgJHJvdXRlKSB8fCBwcmVnX21hdGNoKCcjXi9wZXRzaG9wL3YxL3BldC1waG90byMnLCAkcm91dGUpKSB7CgkJcmV0dXJuIG5ldyBXUF9FcnJvcigncHNfcGV0c193cml0ZV9mcm96ZW4nLCAncHNfcGV0cyB3cml0ZSBmcmVlemUgYWt0eXZ1cyAobWlncmFjaWphKScsIGFycmF5KCdzdGF0dXMnPT41MDMpKTsKCX0KCXJldHVybiAkcmVzdWx0Owp9LCA1LCAzKTsKYWRkX2ZpbHRlcigncXVlcnknLCBmdW5jdGlvbigkcSl7CglpZiAoZ2V0X29wdGlvbigncGV0c2hvcF9wc19wZXRzX3dyaXRlX2ZyZWV6ZScpICE9PSAnMScpIHJldHVybiAkcTsKCWlmIChwcmVnX21hdGNoKCcvXlxzKihJTlNFUlR8VVBEQVRFfERFTEVURXxSRVBMQUNFKVxiL2knLCAkcSkKCQkmJiBwcmVnX21hdGNoKCcvXGJnYWo2X3BzX3BldHNcYi9pJywgJHEpCgkJJiYgIXByZWdfbWF0Y2goJy9nYWo2X3BzX3BldHNfKGJha3xmYWlsZWQpL2knLCAkcSkpIHsKCQlyZXR1cm4gJ0RPIDAnOwoJfQoJcmV0dXJuICRxOwp9KTsK';
+// helper snippetas: valdo flag + count/hash + guard install/remove
+const HELP=Buffer.from(`add_action('wp_loaded',function(){
+ if(($_GET['ps_hlp']??'')!=='HlpKw8Nx')return;
+ global $wpdb;$pf=$wpdb->prefix;$a=$_GET['a']??'';$out=array();
+ if($a==='flag_on'){ update_option('petshop_ps_pets_write_freeze','1'); $out['flag']=get_option('petshop_ps_pets_write_freeze'); }
+ elseif($a==='flag_off'){ delete_option('petshop_ps_pets_write_freeze'); $out['flag']=get_option('petshop_ps_pets_write_freeze','NEDEFINED'); }
+ elseif($a==='count_hash'){
+   $cols=$wpdb->get_col("SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='{$pf}ps_pets' ORDER BY ORDINAL_POSITION");
+   $cl=implode(',',array_map(function($c){return '`'.$c.'`';},$cols));
+   $rows=$wpdb->get_results("SELECT {$cl} FROM {$pf}ps_pets ORDER BY id",ARRAY_A);
+   $canon=array();foreach($rows as $r){$p=array();foreach($cols as $c){$p[]=$c.'='.($r[$c]===null?'NULL':$r[$c]);}$canon[]=implode('|',$p);}
+   $out['count']=count($rows);$out['hash']=hash('sha256',implode("\\n",$canon));
+   $out['reader_ok']=true;
+ }
+ header('Content-Type: application/json');echo json_encode($out);exit;
+});`).toString('base64');
+// 1. install guard + helper (abu aktyvus)
+const mkG=wj('POST','code-snippets/v1/snippets',{name:'PS ps_pets Write-Freeze Guard (temp)',code:Buffer.from(GUARD,'base64').toString('utf8'),scope:'front-end',active:true,priority:1});
+const mkH=wj('POST','code-snippets/v1/snippets',{name:'PS Freeze Helper (temp)',code:Buffer.from(HELP,'base64').toString('utf8'),scope:'front-end',active:true,priority:2});
+try{o.guard_id=JSON.parse(mkG).id;}catch(e){o.mkG=mkG.slice(0,150);}
+try{o.help_id=JSON.parse(mkH).id;}catch(e){o.mkH=mkH.slice(0,150);}
+
+// 2. pet count PRIES
+function hlp(a){const r=execSync(`curl -sk ${AUTH} "https://dev.avesa.lt/?ps_hlp=HlpKw8Nx&a=${a}"`,{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{"');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,200)};}}
+o.before=hlp('count_hash');
+
+// 3. flag ON
+o.flag_on=hlp('flag_on');
+
+// 4. PROOF is atskiro request'o: POST pet-profile -> laukiam 503
+const postCode=execSync(`curl -sk -o /tmp/post_resp -w "%{http_code}" ${AUTH} -X POST -H "Content-Type: application/json" -d '{"species":"cat","pet_name":"FREEZE_TEST"}' "https://dev.avesa.lt/wp-json/petshop/v1/pet-profile"`,{maxBuffer:10*1024*1024}).toString().trim();
+o.post_status=postCode;
+o.post_body=fs.readFileSync('/tmp/post_resp','utf8').slice(0,200);
+
+// 5. GET veikia (read route) -> laukiam ne 503
+const getCode=execSync(`curl -sk -o /tmp/get_resp -w "%{http_code}" ${AUTH} "https://dev.avesa.lt/wp-json/petshop/v1/feeding/calculate" -X GET`,{maxBuffer:10*1024*1024}).toString().trim();
+// feeding/calculate yra POST-only; geriau testuojam bendra GET read: pet-dashboard reikia id. Naudojam wp/v2 read kaip GET proof
+const getRead=execSync(`curl -sk -o /dev/null -w "%{http_code}" ${AUTH} "https://dev.avesa.lt/wp-json/petshop/v1/"`,{maxBuffer:10*1024*1024}).toString().trim();
+o.get_namespace_status=getRead;
+
+// 6. count PO POST (ar neatsirado irasas)
+o.after_post=hlp('count_hash');
+o.write_blocked=(o.before && o.after_post && o.before.count===o.after_post.count);
+
+// 7. dvigubas count/hash 2-3s tarpu
+const h1=hlp('count_hash'); 
+execSync('sleep 3');
+const h2=hlp('count_hash');
+o.double_hash={h1:h1.hash,h2:h2.hash,count1:h1.count,count2:h2.count,LYGUS:(h1.hash===h2.hash && h1.count===h2.count)};
+
+// 8. flag OFF + deactivate guard+helper
+o.flag_off=hlp('flag_off');
+if(o.guard_id) wj('POST',`code-snippets/v1/snippets/${o.guard_id}`,{active:false});
+if(o.help_id) wj('POST',`code-snippets/v1/snippets/${o.help_id}`,{active:false});
+o.cleaned=true;
+console.log('PUT:',pr('freeze.json',o));
