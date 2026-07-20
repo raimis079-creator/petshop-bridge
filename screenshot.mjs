@@ -1,10 +1,10 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcHRoJ10pfHwkX0dFVFsncHNfcHRoJ10hPT0nUHRoS3c4TngnKXtyZXR1cm47fQoJJG89YXJyYXkoJ3JlYWRvbmx5Jz0+dHJ1ZSk7CgkvLyB0aWtyYWkgbmUtdmllc2kga2VsaWFpICh2aXJzIHB1YmxpY19odG1sKQoJJGhvbWU9Jy9ob21lL2d5dnVuYWkyJzsKCSRkb21haW49Jy9ob21lL2d5dnVuYWkyL2RvbWFpbnMvYXZlc2EubHQnOwoJJHRlc3RzPWFycmF5KAoJCSRob21lLAoJCSRkb21haW4sCgkJJGRvbWFpbi4nL3ByaXZhdGUnLAoJCSRob21lLicvcHJpdmF0ZScsCgkJJGhvbWUuJy9iYWNrdXBzJywKCSk7CgkkcmVzPWFycmF5KCk7Cglmb3JlYWNoKCR0ZXN0cyBhcyAkdCl7CgkJJHJwPUByZWFscGF0aCgkdCk7CgkJJHJlc1tdPWFycmF5KCdwYXRoJz0+JHQsJ2V4aXN0cyc9PigkcnAmJmlzX2RpcigkcnApKSwnd3JpdGFibGUnPT4oJHJwJiZpc193cml0YWJsZSgkcnApKSk7Cgl9Cgkkb1sncGF0aHMnXT0kcmVzOwoJLy8gYXIgZ2FsaW0gc3VrdXJ0aSBuYXVqYSBuZS12aWVzYSBrYXRhbGlvZ2EgKFRJSyBURVNUOiBzdWt1cmlhbStpc3RyaW5hbSwgdGFpIE5FIHBzX3BldHMgZHVvbWVueXMpCgkkbWs9JGRvbWFpbi4nL3BzX3ByaXZhdGVfdGVzdCc7CgkkbWFkZT1AbWtkaXIoJG1rLDA3MDApOwoJaWYoJG1hZGUpeyAkb1snZ2FsaV9rdXJ0aV9uZV92aWVzYSddPSRkb21haW4uJy9wc19wcml2YXRlIChnYWxpbWEpJzsgQHJtZGlyKCRtayk7IH0KCWVsc2UgeyAkb1snZ2FsaV9rdXJ0aV9uZV92aWVzYSddPSdORUdBTEkgJy4kZG9tYWluOyB9CgkvLyBhciAubWFpbnRlbmFuY2UgamF1IGVnemlzdHVvamEgLyByYXNvbWFzCgkkb1snbWFpbnRlbmFuY2VfZXhpc3RzJ109ZmlsZV9leGlzdHMoQUJTUEFUSC4nLm1haW50ZW5hbmNlJyk7CgkvLyBhciBSRVNUIHBhaXNvIG1haW50ZW5hbmNlPyBwYXRpa3JpbmFtIGFyIHlyYSB3cF9tYWludGVuYW5jZSBmaWx0cmFzCgkkb1snd3BfbWFpbnRlbmFuY2VfZm4nXT1mdW5jdGlvbl9leGlzdHMoJ3dwX2lzX21haW50ZW5hbmNlX21vZGUnKTsKCS8vIGRhYmFydGluaXMgZGV2IGluZGVrc2F2aW1vIHN0YXR1c2FzIChpbmZvcm1hY2lqYSkKCSRvWydibG9nX3B1YmxpYyddPWdldF9vcHRpb24oJ2Jsb2dfcHVibGljJyk7CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcnQnXSl8fCRfR0VUWydwc19ydCddIT09J1J0S3c4TngnKXtyZXR1cm47fQoJJG89YXJyYXkoJ3JlYWRvbmx5Jz0+dHJ1ZSk7Cgkkcm91dGVzPXJlc3RfZ2V0X3NlcnZlcigpLT5nZXRfcm91dGVzKCk7CgkkcGV0dz1hcnJheSgpOwoJZm9yZWFjaCgkcm91dGVzIGFzICRyPT4kaGFuZGxlcnMpewoJCWlmKHN0cmlwb3MoJHIsJ3BldCcpPT09ZmFsc2UgJiYgc3RyaXBvcygkciwncGV0c2hvcCcpPT09ZmFsc2UpIGNvbnRpbnVlOwoJCWZvcmVhY2goJGhhbmRsZXJzIGFzICRoKXsKCQkJJG1ldGhvZHM9aXNfYXJyYXkoJGhbJ21ldGhvZHMnXSk/aW1wbG9kZSgnLCcsYXJyYXlfa2V5cyhhcnJheV9maWx0ZXIoJGhbJ21ldGhvZHMnXSkpKTokaFsnbWV0aG9kcyddOwoJCQkvLyB0aWsgcmFzeW1vIG1ldG9kYWkKCQkJaWYocHJlZ19tYXRjaCgnL1BPU1R8UFVUfFBBVENIfERFTEVURS9pJywoc3RyaW5nKSRtZXRob2RzKSl7CgkJCQkkY2I9JGhbJ2NhbGxiYWNrJ10/P251bGw7ICRjYm5hbWU9Jyc7CgkJCQlpZihpc19hcnJheSgkY2IpKXsgJGNibmFtZT0oaXNfb2JqZWN0KCRjYlswXSk/Z2V0X2NsYXNzKCRjYlswXSk6JGNiWzBdKS4nOjonLiRjYlsxXTsgfQoJCQkJJHBldHdbXT1hcnJheSgncm91dGUnPT4kciwnbWV0aG9kcyc9PiRtZXRob2RzLCdjYic9PiRjYm5hbWUpOwoJCQl9CgkJfQoJfQoJJG9bJ3BldF93cml0ZV9yb3V0ZXMnXT0kcGV0dzsKCS8vIHBldC1wcm9maWxlIHdyaXRlIG1ldG9kYWkgKHBhdGlrcmluYW0ga3VyaXMgc2VsZjo6dGFibGVfbmFtZSgpPXBzX3BldHMpCgkkb1sncGV0X3Byb2ZpbGVfdGFibGUnXT1jbGFzc19leGlzdHMoJ1BldHNob3BfUGV0X1Byb2ZpbGUnKT9QZXRzaG9wX1BldF9Qcm9maWxlOjp0YWJsZV9uYW1lKCk6J24vYSc7CgkvLyBhciB5cmEgdmVpa2lhbnRpIGZyZWV6ZSBvcHRpb24gamF1Cgkkb1snZnJlZXplX2ZsYWdfZGFiYXInXT1nZXRfb3B0aW9uKCdwZXRzaG9wX3BzX3BldHNfd3JpdGVfZnJlZXplJywnTkVERUZJTkVEJyk7CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO='raimis079-creator/petshop-bridge';
 function pr(n,o){const u=`https://api.github.com/repos/${REPO}/contents/screenshots/${n}`;let s='';
  for(let i=0;i<4;i++){ try{const j=JSON.parse(execSync(`curl -s -H "Authorization: Bearer ${TOKG}" "${u}?nocache=${Math.random()}"`).toString()); if(j.sha)s=j.sha; }catch(e){}
-  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'pth',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/p.json',JSON.stringify({message:'rt',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync(`curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer ${TOKG}" -d @/tmp/p.json "${u}"`,{maxBuffer:80*1024*1024}).toString().trim();
   if(c==='200'||c==='201') return c; }
  return 'fail';}
@@ -13,13 +13,13 @@ fs.writeFileSync('/tmp/wpu',U);fs.writeFileSync('/tmp/wpp',P);
 function hit(u){try{return execSync(`curl -sk -m 500 -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" "${u}"`,{maxBuffer:150*1024*1024}).toString();}catch(e){return 'ERR';}}
 function wj(m,p,b){fs.writeFileSync('/tmp/b.json',JSON.stringify(b));try{return execSync(`curl -sk -m 90 -X ${m} -H "Content-Type: application/json" -u "$(cat /tmp/wpu):$(cat /tmp/wpp)" -d @/tmp/b.json "https://dev.avesa.lt/wp-json/${p}"`,{maxBuffer:20*1024*1024}).toString();}catch(e){return 'ERR';}}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'F2 Path Recon (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
+const mk=wj('POST','code-snippets/v1/snippets',{name:'F2 Routes Recon (read-only)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:10});
 let id=null; try{const j=JSON.parse(mk); id=j.id; o.create={id:j.id,code_error:j.code_error||null};}catch(e){o.mk=mk.slice(0,250);}
-if(id){ const r=hit('https://dev.avesa.lt/?ps_pth=PthKw8Nx');
+if(id){ const r=hit('https://dev.avesa.lt/?ps_rt=RtKw8Nx');
   const i=r.indexOf('{"');
   if(i>0){ o.php_warnings=r.slice(0,i).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600); }
   const body=(i>=0)?r.slice(i):r;
   if(body.trim().startsWith('{')){ try{o.d=JSON.parse(body);}catch(e){o.perr=e.message.slice(0,120); o.raw=body.slice(0,4000);} }
   else o.raw=r.slice(0,4000);
   wj('POST',`code-snippets/v1/snippets/${id}`,{active:false}); }
-console.log('PUT:',pr('pth.json',o));
+console.log('PUT:',pr('rt.json',o));
