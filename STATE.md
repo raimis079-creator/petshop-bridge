@@ -157,6 +157,16 @@ RENAME TABLE
 
 **IKI APPLY LEIDŽIAMA (ne STOP):** ?action=create atsidarymas / forma / JS / fallback nuoroda — BE pateikimo.
 
+### C5. INCIDENTAS + PATAISA (2026-07-20) — A′ 1-o etapo pirmas bandymas:
+- **Incidentas:** MU-plugin v1.0 `query` filtras iškvietė `get_option()`. get_option vykdo autoload-options užklausą → ta užklausa vėl paleidžia query filtrą → get_option → BEGALINĖ REKURSIJA → memory exhausted KIEKVIENAME request'e. dev.avesa.lt fatal error visur.
+- **Recovery:** Raimis rankiniu būdu ištrynė wp-content/mu-plugins/petshop-ps-pets-migration-freeze.php (cPanel/FTP). Svetainė atsigavo iškart.
+- **Duomenys:** ps_pets NEPALIESTA — count 23, max_id 46, data_hash = c834a7d1... (IDENTIŠKA etalonui). Freeze niekada neįsijungė, migracija neprasidėjo. Nulis pakeitimų.
+- **Cleanup:** freeze flag + bypass_key ištrinti, 0 temp snippetų aktyvių, flag failų nėra.
+- **PATAISA (repo dokumentai/ps-pets-migration-freeze.php v1.1):** freeze per FLAG FAILĄ (`file_exists(.ps_pets_freeze_ON)`, bypass per `.ps_pets_freeze_BYPASS`) — JOKIŲ get_option/DB kvietimų query filtre → jokios rekursijos. Verify lint OK.
+- **PAMOKA (užrakinta):** globaliame `query` filtre NIEKADA nekviesti get_option/wp_options/jokio DB — tik file_exists ar konstanta. get_option query filtre = begalinė rekursija.
+
+### A′ BŪSENA: 1-as etapas NEUŽBAIGTAS (freeze proof dar neįrodytas su saugia versija). ps_pets InnoDB migracija NEPRASIDĖJUSI. Laukia Raimio sprendimo ar kartoti 1-ą etapą su v1.1 MU-plugin.
+
 **KITAS STOP: Raimio komanda „APPLY ps_pets InnoDB pagal patvirtintą frozen preflight paketą."**
 
 ---
