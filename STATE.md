@@ -43,6 +43,33 @@
 - Pet-page render: host-gated demo (dev ON / prod OFF), product iš ?product_id=. F3 pavers į nuolatinę product-page integraciją (CTA + kontekstas).
 - Feeding DB = F0. #1186 OFF.
 
+## F2 PREFLIGHT ATLIKTAS (2026-07-20, read-only recon) — LAUKIA SPRENDIMO
+
+**A. primary_product_id suderinimas (F0 klausimas išspręstas):**
+- ps_pets: MyISAM, 22 eilutės, 2KB (mikroskopinė).
+- Stulpeliai: pilnas profilis + primary_product_id/sku/name/package + current_weight_kg/weight_updated_at.
+- Tik 1/22 augintinių turi primary_product_id (pet 44 Rikis→18014, valid). sku/name/package = NULL net kai id užpildytas (denormalizuoti cache laukai, nepatikimi).
+- current_food_product_id stulpelio NĖRA.
+- **IŠVADA: primary_product_id JAU yra „dabar naudojamo maisto" rodyklė. F2 NEPRIDEDA current_food_product_id — naudoja primary_product_id. (Kaip įspėjo F0 handoff.) SPRENDIMAS UŽRAKINTAS.**
+
+**B. M8 „Sukurti profilį" — kodas jau pertvarkytas (S204/S211), NE kaip aprašė sena santrauka:**
+- render_account_page: #pspet-profile (data-create-url) + #pspet-form-host; ?action=create → forma iš karto, veikia be JS mygtuko.
+- is_onboarding() + „Grįžti į paskyrą" nuoroda onboarding metu.
+- pet-form.js enqueue VISUOSE account puslapiuose; pet-profile.js; config localized (restUrl/nonce/isLoggedIn/petPageUrl).
+- Nebėra senų PSPetFormInit/root.id/mount trapių pattern'ų.
+- **LIKO: empirinė browser verifikacija (anoniminis → ?action=create → forma → magic-link → profilis DB). Backend testai ≠ E2E.**
+
+**C. ps_pets MyISAM→InnoDB — STOP SĄLYGA (DB migracija), laukia patvirtinimo:**
+- Trivialu (22 eil., 2KB). PRIMARY(id) yra (InnoDB reikalauja PK ✓). FK nėra. idx_user/idx_user_primary/idx_user_status išliks.
+- PLANAS: (1) mysqldump ps_pets backup → repo; (2) ALTER TABLE gaj6_ps_pets ENGINE=InnoDB; (3) verify engine=InnoDB + row count 22 nepakito + indeksai išliko; (4) verify pet REST/render veikia.
+- Kodėl reikia: InnoDB transakcijos/row-lock draft-transfer ir svorio įrašymui (F2 create flow).
+
+**KITO ŽINGSNIO PASIRINKIMAS (Raimio sprendimas):**
+1. M8 browser E2E verifikacija (ne STOP) — ar create flow realiai veikia anonimui.
+2. ps_pets InnoDB migracija (STOP — planas virš, reikia APPLY patvirtinimo).
+
+---
+
 ## KITAS: F2 — M8 profilio create + ps_pets InnoDB
 - ps_pets MyISAM → InnoDB.
 - primary_product_id PREFLIGHT: ps_pets JAU turi primary_product_id/sku/name/package. F2 suderinti su F0 current_food_product_id — NE aklai pridėti stulpelio. (F1 nelietė.)
