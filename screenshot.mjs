@@ -4,8 +4,8 @@ import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
-function wj(m,path,body){const b=Buffer.from(JSON.stringify(body)).toString('base64');
-  return execSync('echo '+b+'|base64 -d|curl -sk '+AUTH+' -X '+m+' -H "Content-Type: application/json" -d @- "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024}).toString();}
+function wj(m,path,body){fs.writeFileSync('/tmp/wbody.json', JSON.stringify(body));
+  return execSync('curl -sk '+AUTH+' -X '+m+' -H "Content-Type: application/json" --data-binary @/tmp/wbody.json "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024}).toString();}
 function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
  for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
@@ -13,7 +13,7 @@ function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screens
   if(c==='200'||c==='201')return c;}return 'fail';}
 const o={};
 const mk=wj('POST','code-snippets/v1/snippets',{name:'APPLYFD (temp)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
-let sid; try{sid=JSON.parse(mk).id;}catch(e){o.mkerr=mk.slice(0,200);}
+let sid; try{sid=JSON.parse(mk).id;}catch(e){o.mkerr=mk.slice(0,300);}
 o.d=(function(){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_applyfd=S2Kw8Nx"',{maxBuffer:30*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,400)};}})();
 if(sid) wj('POST','code-snippets/v1/snippets/'+sid,{active:false});
 console.log('PUT:',pr('applyfd.json',o));
