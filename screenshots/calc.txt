@@ -1,0 +1,280 @@
+<?php
+/**
+ * Petshop_Feeding_Calculator — GRYNA matematika.
+ * Jokio WordPress, jokio $wpdb, jokio WooCommerce. Įvestis → išvestis.
+ *
+ * Įvestis (asociatyvus masyvas), NE DB objektas:
+ *   rows                => value/redirect eilučių masyvas (žr. žemiau)
+ *   axis_policy         => ['current_weight_kg'=>'interpolation_allowed'|'range_match'|'exact_only', ...]
+ *   weight_basis        => 'current' | 'adult_expected'
+ *   current_weight_kg   => float|null
+ *   adult_expected_weight_kg => float|null
+ *   conditions          => ['activity_level'=>'high', 'body_condition'=>'ideal', ...]  (kategorinės ašys)
+ *   package_g           => float|null       (vienos pakuotės masė gramais)
+ *   quantity            => int (default 1)
+ *   price               => float|null       (GYVA kaina; produkto psl. = 1 pakuotės; refill = faktinė suma)
+ *   price_is_total      => bool (false: price=1 pakuotės ×qty; true: price jau visos sumos)
+ *
+ * rows eilutė:
+ *   ['cell_type'=>'value',    'weight_from_kg'=>10.0,'weight_to_kg'=>10.0,
+ *    'amount_from_g'=>125.0,'amount_to_g'=>140.0,'conditions'=>[...]]
+ *   ['cell_type'=>'redirect', 'weight_from_kg'=>20.0,'weight_to_kg'=>20.0,
+ *    'redirect_reason'=>'adult_formula','source_label'=>'Adult','conditions'=>[...]]
+ *
+ * Išvestis:
+ *   ['status'=>'OK'|'NEEDS_CURRENT_WEIGHT'|'NEEDS_ADULT_EXPECTED_WEIGHT'|'REDIRECT'|
+ *             'OUT_OF_RANGE'|'NO_MATCHING_ROW'|'D',
+ *    'method'=>'manufacturer_exact'|'manufacturer_range_match'|'derived_linear_interpolation'|null,
+ *    'tier'=>'B1'|'B2'|'D'|null,
+ *    'portion_g'=>[lo,hi]|null,
+ *    'duration_days'=>[min,max]|null,
+ *    'eur_per_day'=>[lo,hi]|null,
+ *    'eur_per_month'=>[lo,hi]|null,
+ *    'redirect'=>['reason'=>..,'label'=>..]|null,
+ *    'notes'=>[...]]
+ *
+ * PRINCIPAI:
+ *  - Extrapoliacija DRAUDŽIAMA (už mažiausio/didžiausio taško → OUT_OF_RANGE).
+ *  - C (pirkimai) ČIA NEDALYVAUJA — Calculator skaičiuoja tik porciją/B kelią.
+ *  - Kaina niekada nesaugoma; ateina kaip įvestis.
+ *  - Abi normos ribos (lo/hi) interpoliuojamos ATSKIRAI.
+ */
+class Petshop_Feeding_Calculator {
+
+	/** Pagrindinis įėjimas. */
+	public static function calculate( array $in ) {
+		$notes = array();
+		$rows  = isset($in['rows']) && is_array($in['rows']) ? $in['rows'] : array();
+		$basis = isset($in['weight_basis']) ? $in['weight_basis'] : 'current';
+		$policy = isset($in['axis_policy']) && is_array($in['axis_policy']) ? $in['axis_policy'] : array();
+		$cond  = isset($in['conditions']) && is_array($in['conditions']) ? $in['conditions'] : array();
+
+		if ( ! count($rows) ) {
+			return self::out('D', null, null, null, null, null, null, array('nera eiluciu'));
+		}
+
+		// 1. Kurį svorį naudojam pagal weight_basis
+		$weight_key = ($basis === 'adult_expected') ? 'adult_expected_weight_kg' : 'current_weight_kg';
+		$weight = isset($in[$weight_key]) ? $in[$weight_key] : null;
+		if ( $weight === null || $weight === '' ) {
+			$code = ($basis === 'adult_expected') ? 'NEEDS_ADULT_EXPECTED_WEIGHT' : 'NEEDS_CURRENT_WEIGHT';
+			return self::out($code, null, null, null, null, null, null, array('truksta svorio ('.$basis.')'));
+		}
+		$weight = (float) $weight;
+		if ( $weight <= 0 ) {
+			return self::out('D', null, null, null, null, null, null, array('svoris <= 0'));
+		}
+
+		// 1b. PRIVALOMOS KATEGORINĖS AŠYS.
+		//     Jei lentelė turi kategorinių ašių (eilutes skiria condition_dimensions),
+		//     o vartotojas nepadavė reikiamos ašies → MISSING_CONDITION_DIMENSION.
+		//     JOKIO „imame pirmą sutapusį svorį".
+		$required = self::required_condition_dimensions( $rows );
+		$missing = array();
+		foreach ( $required as $ax ) {
+			if ( ! array_key_exists($ax, $cond) || $cond[$ax] === null || $cond[$ax] === '' ) {
+				$missing[] = $ax;
+			}
+		}
+		if ( count($missing) ) {
+			$r = self::out('MISSING_CONDITION_DIMENSION', null, null, null, null, null, null,
+				array('truksta privalomu asiu: '.implode(',',$missing)));
+			$r['missing_dimensions'] = $missing;
+			$r['required_dimensions'] = $required;
+			return $r;
+		}
+
+		// 2. Atrenkam eilutes pagal KATEGORINES sąlygas (exact match)
+		//    Eilutė tinka, jei VISOS jos kategorinės sąlygos sutampa su vartotojo sąlygomis.
+		$matched = array();
+		foreach ( $rows as $r ) {
+			if ( self::conditions_match( isset($r['conditions']) ? $r['conditions'] : array(), $cond ) ) {
+				$matched[] = $r;
+			}
+		}
+		if ( ! count($matched) ) {
+			return self::out('NO_MATCHING_ROW', null, null, null, null, null, null,
+				array('nera eiluciu su sutampanciom kategorinem salygom'));
+		}
+
+		// 3. Redirect: ar vartotojo svoris patenka į redirect langelį? Tada NEskaičiuojam gramų.
+		foreach ( $matched as $r ) {
+			if ( ($r['cell_type'] ?? '') !== 'redirect' ) continue;
+			$wf = self::num($r['weight_from_kg'] ?? null);
+			$wt = self::num($r['weight_to_kg'] ?? null);
+			if ( $wf === null ) continue;
+			if ( self::weight_in( $weight, $wf, $wt ) ) {
+				return array(
+					'status'   => 'REDIRECT',
+					'method'   => null, 'tier' => null,
+					'portion_g'=> null, 'duration_days'=>null, 'eur_per_day'=>null, 'eur_per_month'=>null,
+					'redirect' => array('reason'=>$r['redirect_reason'] ?? null, 'label'=>$r['source_label'] ?? null),
+					'notes'    => array('svoris patenka i redirect langeli'),
+				);
+			}
+		}
+
+		// 4. VALUE eilutės (tik su svorio taškais), rūšiuotos pagal svorį
+		$vals = array();
+		foreach ( $matched as $r ) {
+			if ( ($r['cell_type'] ?? '') !== 'value' ) continue;
+			$wf = self::num($r['weight_from_kg'] ?? null);
+			if ( $wf === null ) continue;
+			$vals[] = array(
+				'wf' => $wf,
+				'wt' => self::num($r['weight_to_kg'] ?? null) ?? $wf,
+				'a1' => self::num($r['amount_from_g'] ?? null),
+				'a2' => self::num($r['amount_to_g'] ?? null),
+			);
+		}
+		if ( ! count($vals) ) {
+			return self::out('NO_MATCHING_ROW', null, null, null, null, null, null, array('nera value eiluciu su svoriu'));
+		}
+		usort($vals, function($x,$y){ return $x['wf'] <=> $y['wf']; });
+
+		$wpolicy = null;
+		foreach ( $policy as $k=>$p ) {
+			if ( $k==='current_weight_kg' || $k==='adult_expected_weight_kg' ) { $wpolicy = $p; break; }
+		}
+
+		// 5a. RANGE_MATCH: ar svoris patenka į vieną intervalą [wf,wt]?
+		//     (net jei policy nenurodyta, bet eilutės yra intervalai — imam tiesioginį pataikymą)
+		foreach ( $vals as $v ) {
+			if ( $v['wt'] > $v['wf'] && self::weight_in( $weight, $v['wf'], $v['wt'] ) ) {
+				return self::finish('manufacturer_range_match','B1',
+					array($v['a1'],$v['a2']), $in, array('svoris intervale '.$v['wf'].'-'.$v['wt'].' kg'));
+			}
+		}
+
+		// 5b. TIKSLUS TAŠKAS: svoris lygus taškui
+		foreach ( $vals as $v ) {
+			if ( $v['wf'] == $weight && $v['wt'] == $v['wf'] ) {
+				return self::finish('manufacturer_exact','B1',
+					array($v['a1'],$v['a2']), $in, array('tikslus taskas '.$weight.' kg'));
+			}
+		}
+
+		// 5c. RIBŲ patikra: extrapoliacija DRAUDŽIAMA
+		$min_w = $vals[0]['wf'];
+		$max_w = $vals[count($vals)-1]['wf'];
+		// intervalinėms lentelėms max riba = paskutinės eilutės wt
+		$max_w = max($max_w, $vals[count($vals)-1]['wt']);
+		if ( $weight < $min_w ) {
+			return self::out('OUT_OF_RANGE', null, 'D', null, null, null, null,
+				array('svoris '.$weight.' < maziausio ta.ko '.$min_w.' (ekstrapoliacija drausta)'));
+		}
+		if ( $weight > $max_w ) {
+			return self::out('OUT_OF_RANGE', null, 'D', null, null, null, null,
+				array('svoris '.$weight.' > didziausio tasko '.$max_w.' (ekstrapoliacija drausta)'));
+		}
+
+		// 5d. INTERPOLIACIJA (B2): tik jei policy leidžia, tik tarp 2 gretimų TAŠKŲ
+		if ( $wpolicy === 'interpolation_allowed' ) {
+			// randam 2 gretimus taškus, tarp kurių yra svoris
+			for ( $i=0; $i < count($vals)-1; $i++ ) {
+				$lo = $vals[$i]; $hi = $vals[$i+1];
+				if ( $weight >= $lo['wf'] && $weight <= $hi['wf'] && $hi['wf'] > $lo['wf'] ) {
+					$t = ($weight - $lo['wf']) / ($hi['wf'] - $lo['wf']);
+					// abi ribos ATSKIRAI
+					$a1 = self::lerp($lo['a1'], $hi['a1'], $t);
+					$a2 = self::lerp($lo['a2'], $hi['a2'], $t);
+					if ( $a1 === null || $a2 === null ) {
+						return self::out('D', null, 'D', null, null, null, null,
+							array('interpoliacijai truksta normos ribos'));
+					}
+					return self::finish('derived_linear_interpolation','B2',
+						array(round($a1,1),round($a2,1)), $in,
+						array('interpoliuota tarp '.$lo['wf'].' ir '.$hi['wf'].' kg (Petshop skaiciavimas)'));
+				}
+			}
+		}
+
+		// 5e. policy neleidžia interpoliuoti, o tikslaus taško nėra → D (partial lentelė)
+		return self::out('D', null, 'D', null, null, null, null,
+			array('svoris tarp tasku, bet interpoliacija neleidziama (exact_only)'));
+	}
+
+	/** Užbaigia: iš porcijos → trukmė → €/d → €/mėn. */
+	private static function finish( $method, $tier, $portion, array $in, array $notes ) {
+		$lo = $portion[0]; $hi = $portion[1];
+		// normalizuojam: lo <= hi
+		if ( $lo !== null && $hi !== null && $lo > $hi ) { $t=$lo; $lo=$hi; $hi=$t; }
+		$portion = array($lo, $hi);
+
+		$dur = null; $epd = null; $epm = null;
+		$pkg = isset($in['package_g']) ? self::num($in['package_g']) : null;
+		$qty = isset($in['quantity']) ? max(1,(int)$in['quantity']) : 1;
+		$price = isset($in['price']) ? self::num($in['price']) : null;
+		$price_is_total = ! empty($in['price_is_total']);
+
+		if ( $pkg !== null && $pkg > 0 && $lo !== null && $hi !== null && $lo > 0 && $hi > 0 ) {
+			$total_g = $pkg * $qty;
+			// daugiau gramų/dieną → trumpiau; mažiau → ilgiau
+			$days_min = $total_g / $hi;   // maksimali norma
+			$days_max = $total_g / $lo;   // minimali norma
+			$dur = array( (int)floor($days_min), (int)ceil($days_max) );
+
+			if ( $price !== null && $price > 0 ) {
+				$total_price = $price_is_total ? $price : ($price * $qty);
+				// €/d: brangiausia diena = didesnė norma (trumpiau) ; naudojam realias trukmes
+				$epd_lo = $total_price / $days_max;   // ilgiausia trukmė → pigiausia diena
+				$epd_hi = $total_price / $days_min;   // trumpiausia trukmė → brangiausia diena
+				$epd = array( round($epd_lo,2), round($epd_hi,2) );
+				$epm = array( round($epd_lo*30,2), round($epd_hi*30,2) );
+			}
+		}
+		return array(
+			'status'=>'OK','method'=>$method,'tier'=>$tier,
+			'portion_g'=>$portion,'duration_days'=>$dur,'eur_per_day'=>$epd,'eur_per_month'=>$epm,
+			'redirect'=>null,'notes'=>$notes,
+		);
+	}
+
+	/**
+	 * Nustato, kurios kategorinės ašys PRIVALOMOS šiai lentelei.
+	 * Ašis privaloma, jei ji apibrėžta bent vienoje value eilutėje
+	 * (t. y. eilutės skiriamos pagal tą ašį). Amžiaus ašys (age_m_*) neįeina.
+	 * Kanoninis šaltinis — pačios eilutės, ne išorinė žyma.
+	 */
+	public static function required_condition_dimensions( array $rows ) {
+		$axes = array();
+		foreach ( $rows as $r ) {
+			if ( ($r['cell_type'] ?? 'value') !== 'value' ) continue;
+			$c = isset($r['conditions']) && is_array($r['conditions']) ? $r['conditions'] : array();
+			foreach ( $c as $k=>$v ) {
+				if ( $k==='age_m_from' || $k==='age_m_to' ) continue;
+				if ( $v === null || $v === '' ) continue;
+				$axes[$k] = true;
+			}
+		}
+		return array_keys($axes);
+	}
+
+	private static function conditions_match( array $row_cond, array $user_cond ) {
+		// Eilutė tinka, jei kiekviena JOS sąlyga sutampa su vartotojo. Vartotojas gali turėti daugiau.
+		// Amžiaus ašis (age_m_from/to) čia neliečiama — svorio kelias.
+		foreach ( $row_cond as $k=>$v ) {
+			if ( $k==='age_m_from' || $k==='age_m_to' ) continue;
+			if ( ! array_key_exists($k,$user_cond) ) return false;
+			if ( (string)$user_cond[$k] !== (string)$v ) return false;
+		}
+		return true;
+	}
+
+	private static function weight_in( $w, $from, $to ) {
+		if ( $to === null || $to == $from ) return abs($w-$from) < 1e-9;
+		return $w >= $from - 1e-9 && $w <= $to + 1e-9;
+	}
+	private static function lerp( $a, $b, $t ) {
+		if ( $a === null || $b === null ) return null;
+		return $a + ($b-$a)*$t;
+	}
+	private static function num( $v ) {
+		if ( $v === null || $v === '' ) return null;
+		return (float) $v;
+	}
+	private static function out( $status,$method,$tier,$portion,$dur,$epd,$epm,$notes ) {
+		return array('status'=>$status,'method'=>$method,'tier'=>$tier,'portion_g'=>$portion,
+			'duration_days'=>$dur,'eur_per_day'=>$epd,'eur_per_month'=>$epm,'redirect'=>null,'notes'=>$notes);
+	}
+}
