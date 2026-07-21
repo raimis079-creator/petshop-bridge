@@ -1,0 +1,49 @@
+<?php
+/**
+ * Petshop_Feeding_Package_Resolver — GRYNAS (jokio WP/Woo).
+ * Vienas parduodamas SKU vienetas → bendras gramų kiekis.
+ * Kontraktas (F1 galutinis): status resolved|unresolved|ambiguous; sellable_unit_food_g; source_value; method.
+ *   7 kg → 7000 · 15+3 kg → 18000 (bonus_pack) · 2×7 kg → 14000 (multipack)
+ * Produkto pavadinimas NĖRA šaltinis — įvestis ateina iš pa_pakuotes_dydis termino (Provider).
+ */
+if ( ! class_exists( 'Petshop_Feeding_Package_Resolver' ) ) {
+class Petshop_Feeding_Package_Resolver {
+	public static function resolve( $raw ) {
+		if ( ! is_string( $raw ) || trim( $raw ) === '' ) {
+			return self::out( 'unresolved', null, $raw, null );
+		}
+		$s = trim( $raw );
+		$s = str_replace( array( "\xc3\x97", '×', 'X' ), 'x', $s );
+		$s = strtolower( $s );
+		$s = str_replace( ',', '.', $s );
+		$s = preg_replace( '/\s+/', ' ', $s );
+
+		// multipack: COUNT x NUMBER UNIT
+		if ( preg_match( '/^(\d+)\s*x\s*(\d+(?:\.\d+)?)\s*(kg|g)$/', $s, $m ) ) {
+			$g = self::g( (float) $m[2], $m[3] ); $c = (int) $m[1];
+			return ( $c > 0 && $g > 0 )
+				? self::out( 'resolved', (int) round( $c * $g ), $raw, 'multipack' )
+				: self::out( 'unresolved', null, $raw, null );
+		}
+		// bonus_pack: NUMBER + NUMBER UNIT
+		if ( preg_match( '/^(\d+(?:\.\d+)?)\s*\+\s*(\d+(?:\.\d+)?)\s*(kg|g)$/', $s, $m ) ) {
+			$a = self::g( (float) $m[1], $m[3] ); $b = self::g( (float) $m[2], $m[3] );
+			return ( ( $a + $b ) > 0 )
+				? self::out( 'resolved', (int) round( $a + $b ), $raw, 'bonus_pack' )
+				: self::out( 'unresolved', null, $raw, null );
+		}
+		// canonical_term: NUMBER UNIT
+		if ( preg_match( '/^(\d+(?:\.\d+)?)\s*(kg|g)$/', $s, $m ) ) {
+			$g = self::g( (float) $m[1], $m[2] );
+			return ( $g > 0 )
+				? self::out( 'resolved', (int) round( $g ), $raw, 'canonical_term' )
+				: self::out( 'unresolved', null, $raw, null );
+		}
+		return self::out( 'unresolved', null, $raw, null );
+	}
+	private static function g( $n, $u ) { return $u === 'kg' ? $n * 1000.0 : $n * 1.0; }
+	private static function out( $status, $g, $src, $method ) {
+		return array( 'status' => $status, 'sellable_unit_food_g' => $g, 'source_value' => $src, 'method' => $method );
+	}
+}
+}
