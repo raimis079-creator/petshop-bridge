@@ -1,0 +1,154 @@
+<?php
+/**
+ * Petshop_Feeding_Service — VIENINTELĖ orkestracija visoms sąsajoms.
+ * pet_id/pet_input + product_id → porcija/trukmė/kaina.
+ * Naudoja: Petshop_Feeding_Repository (lentelė+eilutės), Petshop_Feeding_Calculator (matematika),
+ *          Petshop_Feeding_Package_Provider→Resolver (pakuotė). Jokios atskiros formulės.
+ *
+ * Įvestis:
+ *  [ 'product_id'=>int, 'quantity'=>int, 'usage_context'=>'catalog',
+ *    'pet_input'=>[ 'current_weight_kg'=>float|null, 'conditions'=>[] ],
+ *    'price_context'=>null | [ 'amount_inc_vat'=>float, 'scope'=>'unit'|'line_total' ] ]
+ *
+ * Išvestis:
+ *  [ 'status'=>ok|partial|needs_input|redirect|unavailable|system_error,
+ *    'tier'=>A|B1|B2|D|null, 'method'=>..., 'portion_g'=>['min','max']|null,
+ *    'duration_days'=>..., 'eur_per_day'=>..., 'eur_per_month'=>..., 'issues'=>[], 'meta'=>[] ]
+ */
+if ( ! class_exists( 'Petshop_Feeding_Service' ) ) {
+class Petshop_Feeding_Service {
+
+	public static function evaluate( array $in ) {
+		$issues = array(); $meta = array();
+		$pid = isset( $in['product_id'] ) ? (int) $in['product_id'] : 0;
+		$qty = isset( $in['quantity'] ) ? max( 1, (int) $in['quantity'] ) : 1;
+		$w   = isset( $in['pet_input']['current_weight_kg'] ) && $in['pet_input']['current_weight_kg'] !== null
+			? (float) $in['pet_input']['current_weight_kg'] : null;
+		$cond = ( isset( $in['pet_input']['conditions'] ) && is_array( $in['pet_input']['conditions'] ) )
+			? $in['pet_input']['conditions'] : array();
+
+		$empty = array( 'portion_g' => null, 'duration_days' => null, 'eur_per_day' => null, 'eur_per_month' => null );
+		$out = function( $status, $tier = null, $method = null, $vals = array() ) use ( $empty, &$issues, &$meta ) {
+			return array_merge( array( 'status' => $status, 'tier' => $tier, 'method' => $method ),
+				$empty, $vals, array( 'issues' => $issues, 'meta' => $meta ) );
+		};
+
+		$product = function_exists( 'wc_get_product' ) ? wc_get_product( $pid ) : null;
+		if ( ! $product ) {
+			$issues[] = array( 'code' => 'PRODUCT_NOT_FOUND', 'severity' => 'error', 'layer' => 'product' );
+			return $out( 'unavailable' );
+		}
+
+		// Repository — runtime invariantas (jokio LIMIT 1)
+		$repo = new Petshop_Feeding_Repository();
+		$rt = $repo->get_for_product( $pid );
+
+		switch ( $rt['status'] ) {
+			case 'DATA_INTEGRITY_ERROR':
+				$corr = uniqid( 'fcalc_' );
+				$issues[] = array( 'code' => 'DATA_INTEGRITY_ERROR', 'severity' => 'error', 'layer' => 'repository',
+					'table_ids' => $rt['table_ids'] ?? array(), 'correlation' => $corr );
+				error_log( '[PS_FEEDING] DATA_INTEGRITY_ERROR product=' . $pid . ' ' . wp_json_encode( $rt['table_ids'] ?? array() ) . ' corr=' . $corr );
+				return $out( 'system_error' );
+			case 'HASH_VERSION_MISMATCH':
+			case 'EMPTY_TABLE_CONTENT':
+				$issues[] = array( 'code' => $rt['status'], 'severity' => 'error', 'layer' => 'repository' );
+				return $out( 'system_error' );
+			case 'NO_ACTIVE_FEEDING_TABLE':
+				$issues[] = array( 'code' => 'NO_ACTIVE_TABLE', 'severity' => 'info', 'layer' => 'repository' );
+				return $out( 'unavailable' );
+			case 'OK':
+				break;
+			default:
+				$issues[] = array( 'code' => 'REPO_' . ( $rt['status'] ?? 'UNKNOWN' ), 'severity' => 'error', 'layer' => 'repository' );
+				return $out( 'system_error' );
+		}
+
+		$meta['feeding_table_id'] = (int) $rt['table_id'];
+		$meta['support'] = $rt['support'];
+
+		// Svoris privalomas
+		if ( $w === null || $w <= 0 ) {
+			$issues[] = array( 'code' => 'NEEDS_CURRENT_WEIGHT', 'severity' => 'info', 'layer' => 'input' );
+			return $out( 'needs_input' );
+		}
+
+		// Pakuotė (Provider→Resolver)
+		$pkg = Petshop_Feeding_Package_Provider::for_product( $pid );
+		$package_g = ( $pkg['status'] === 'resolved' ) ? $pkg['sellable_unit_food_g'] : null;
+		if ( $package_g === null ) {
+			$issues[] = array( 'code' => 'PACKAGE_UNRESOLVED', 'severity' => 'warning', 'layer' => 'package', 'raw' => $pkg['source_value'] );
+		}
+		$meta['package'] = $pkg;
+
+		// Kaina: price_context=null → gyva 1 vnt kaina su PVM
+		$price = null; $price_is_total = false;
+		if ( isset( $in['price_context'] ) && is_array( $in['price_context'] ) && isset( $in['price_context']['amount_inc_vat'] ) ) {
+			$price = (float) $in['price_context']['amount_inc_vat'];
+			$price_is_total = ( ( $in['price_context']['scope'] ?? 'unit' ) === 'line_total' );
+		} else {
+			$lp = wc_get_price_including_tax( $product );
+			if ( $lp !== '' && $lp !== null ) { $price = (float) $lp; }
+		}
+		if ( $price === null ) {
+			$issues[] = array( 'code' => 'PRICE_UNAVAILABLE', 'severity' => 'warning', 'layer' => 'price' );
+		}
+
+		// axis_policy normalizacija: Repository grąžina nested {kind,policy}, Calculator laukia plokščio string.
+		$ap_raw = is_array( $rt['axis_policy'] ) ? $rt['axis_policy'] : array();
+		$axis_policy = array();
+		foreach ( $ap_raw as $k => $val ) {
+			$axis_policy[ $k ] = ( is_array( $val ) && isset( $val['policy'] ) ) ? $val['policy'] : $val;
+		}
+		$wkey = ( $rt['weight_basis'] === 'adult_expected' ) ? 'adult_expected_weight_kg' : 'current_weight_kg';
+		if ( ! isset( $axis_policy[ $wkey ] ) && ! empty( $rt['resolution_policy'] ) ) {
+			$axis_policy[ $wkey ] = $rt['resolution_policy'];
+		}
+
+		// Calculator — iš Repository payload (rows + normalizuotas axis_policy + weight_basis)
+		$calc = Petshop_Feeding_Calculator::calculate( array(
+			'rows'              => $rt['rows'],
+			'axis_policy'       => $axis_policy,
+			'weight_basis'      => ( $rt['weight_basis'] === 'adult_expected' ) ? 'adult_expected' : 'current',
+			'current_weight_kg' => $w,
+			'conditions'        => $cond,
+			'package_g'         => $package_g,
+			'quantity'          => $qty,
+			'price'             => $price,
+			'price_is_total'    => $price_is_total,
+		) );
+
+		$fmt = function( $p ) { return $p === null ? null : array( 'min' => $p[0], 'max' => $p[1] ); };
+
+		switch ( $calc['status'] ) {
+			case 'OK':
+				$partial = ( $calc['duration_days'] === null || $calc['eur_per_day'] === null );
+				return $out( $partial ? 'partial' : 'ok', $calc['tier'], $calc['method'], array(
+					'portion_g'     => $fmt( $calc['portion_g'] ),
+					'duration_days' => $fmt( $calc['duration_days'] ),
+					'eur_per_day'   => $fmt( $calc['eur_per_day'] ),
+					'eur_per_month' => $fmt( $calc['eur_per_month'] ),
+				) );
+			case 'NEEDS_CURRENT_WEIGHT':
+			case 'NEEDS_ADULT_EXPECTED_WEIGHT':
+			case 'NEEDS_CONDITION':
+			case 'MISSING_CONDITION_DIMENSION':
+				$issues[] = array( 'code' => $calc['status'], 'severity' => 'info', 'layer' => 'calculator' );
+				return $out( 'needs_input' );
+			case 'REDIRECT':
+				$issues[] = array( 'code' => 'REDIRECT', 'severity' => 'info', 'layer' => 'calculator', 'redirect' => $calc['redirect'] );
+				return $out( 'redirect' );
+			case 'OUT_OF_RANGE':
+			case 'NO_MATCHING_ROW':
+				$issues[] = array( 'code' => $calc['status'], 'severity' => 'info', 'layer' => 'calculator', 'notes' => $calc['notes'] ?? array() );
+				return $out( 'unavailable' );
+			case 'D':
+				$issues[] = array( 'code' => 'D_PARTIAL', 'severity' => 'info', 'layer' => 'calculator', 'notes' => $calc['notes'] ?? array() );
+				return $out( 'unavailable', null, 'D' );
+			default:
+				$issues[] = array( 'code' => $calc['status'], 'severity' => 'info', 'layer' => 'calculator' );
+				return $out( 'unavailable' );
+		}
+	}
+}
+}
