@@ -8,7 +8,8 @@ function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screens
   if(c==='200'||c==='201')return c;}return 'fail';}
 let html='';
 try{ html=execSync('curl -Lsk "https://dev.avesa.lt/?p=18545"',{maxBuffer:30*1024*1024}).toString(); }catch(e){}
-const idx=html.indexOf('150–170');
-let slice = idx>=0 ? html.slice(Math.max(0,idx-600), idx+200) : 'NOT FOUND';
 const hidx=html.indexOf('Rekomenduojamas');
-console.log('PUT:',pr('slice.json',{d:{idx, hidx, slice}}));
+const slice = hidx>=0 ? html.slice(Math.max(0,hidx-400), hidx+500) : 'NF';
+// count summaries
+const summaries=(html.match(/<summary[^>]*>(.*?)<\/summary>/g)||[]).map(s=>s.replace(/<[^>]+>/g,'').trim()).filter(x=>x.length<60);
+console.log('PUT:',pr('slice2.json',{d:{hidx, slice, summaries}}));
