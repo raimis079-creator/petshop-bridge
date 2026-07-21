@@ -6,37 +6,21 @@ function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screens
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
   if(c==='200'||c==='201')return c;}return 'fail';}
-function get(url){ try{ return execSync('curl -skL --max-time 25 "'+url+'"',{maxBuffer:20*1024*1024}).toString(); }catch(e){ return ''; } }
-
-// kategoriju puslapiai kurie atitinka dev lenteles
-const cats=[
-  'https://exclusion.lt/intestinal/',
-  'https://exclusion.lt/hydrolyzed-hypoallergenic/',
-  'https://exclusion.lt/hypoallergenic/',
-  'https://exclusion.lt/exclusion-mediterraneo-monoprotein/',
-  'https://exclusion.lt/intestinal-katems/',
-  'https://exclusion.lt/hypoallergenic-katems/',
-  'https://exclusion.lt/exclusion-mediterraneo/',
-];
-// istraukiam produktu URL is kategoriju
+function get(url){ try{ return execSync('curl -skL --max-time 15 "'+url+'"',{maxBuffer:15*1024*1024}).toString(); }catch(e){ return ''; } }
+const cats=['https://exclusion.lt/intestinal/','https://exclusion.lt/hydrolyzed-hypoallergenic/'];
 const prodUrls=new Set();
 for(const c of cats){
   const html=get(c);
   const re=/https:\/\/exclusion\.lt\/product\/[a-z0-9\-]+\//g;
   let m; while((m=re.exec(html))!==null){ prodUrls.add(m[0]); }
 }
-// kiekvienam produktui - istraukiam SERIMAS paveikslelio URL + pavadinima
 const out=[];
 for(const purl of prodUrls){
   const html=get(purl);
-  // pavadinimas is <title> ar h1
   let title=''; const tm=html.match(/<title>([^<]+)<\/title>/); if(tm)title=tm[1].replace(' - exclusion.lt','').trim();
-  // SERIMAS paveikslelis
   const imgs=[];
-  const ire=/https:\/\/exclusion\.lt\/wp-content\/uploads\/[0-9\/]+[A-Za-z0-9_\-]*(?:SERIMAS|serimas)[A-Za-z0-9_\-]*\.png/g;
+  const ire=/https:\/\/exclusion\.lt\/wp-content\/uploads\/[0-9\/]+[^"'\s]*(?:SERIMAS|serimas)[^"'\s]*\.png/g;
   let im; while((im=ire.exec(html))!==null){ imgs.push(im[0]); }
   out.push({url:purl,title:title,serimas:[...new Set(imgs)]});
 }
-const result={cats:cats.length,products:out.length,data:out};
-console.log('produktu:',out.length);
-console.log('PUT:',pr('crawl.json',result));
+console.log('PUT:',pr('crawl2.json',{products:out.length,data:out}));
