@@ -1,19 +1,42 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfZXhtYXAnXSl8fCRfR0VUWydwc19leG1hcCddIT09J1MyS3c4TngnKXtyZXR1cm47fQoJQHNldF90aW1lX2xpbWl0KDE4MCk7CglnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OyAkbz1hcnJheSgpOwoJLy8gdmlzaSBFeGNsdXNpb24gcHJvZHVrdGFpCgkkcGlkcz0kd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIERJU1RJTkNUIElEIEZST00geyRwZn1wb3N0cyBXSEVSRSBwb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwb3N0X3N0YXR1cyBJTiAoJ3B1Ymxpc2gnLCdkcmFmdCcpIEFORCBwb3N0X3RpdGxlIExJS0UgJyVFeGNsdXNpb24lJyIpOwoJJHByb2RzPWFycmF5KCk7Cglmb3JlYWNoKCRwaWRzIGFzICRwaWQpewoJCSR0aXRsZT1odG1sX2VudGl0eV9kZWNvZGUoZ2V0X3RoZV90aXRsZSgkcGlkKSk7CgkJLy8gc3VzaWV0YSBmZWVkaW5nIGxlbnRlbGU/CgkJJG1hcD0kd3BkYi0+Z2V0X3Jvdygkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIGZlZWRpbmdfdGFibGVfaWQsaXNfYWN0aXZlIEZST00geyRwZn1wc19mZWVkaW5nX21hcCBXSEVSRSBwcm9kdWN0X2lkPSVkIExJTUlUIDEiLCRwaWQpLEFSUkFZX0EpOwoJCSR0aWQ9JG1hcFsnZmVlZGluZ190YWJsZV9pZCddPz9udWxsOwoJCSR0bGluZT1udWxsOyR0c3RhdHVzPW51bGw7JHRhY3RpdmU9bnVsbDskdHNvdXJjZT1udWxsOwoJCWlmKCR0aWQpewoJCQkkdD0kd3BkYi0+Z2V0X3Jvdygkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIGxpbmUsc3RhdHVzLGlzX2FjdGl2ZSxzb3VyY2Vfa2luZCBGUk9NIHskcGZ9cHNfZmVlZGluZ190YWJsZXMgV0hFUkUgaWQ9JWQiLCR0aWQpLEFSUkFZX0EpOwoJCQkkdGxpbmU9JHRbJ2xpbmUnXTskdHN0YXR1cz0kdFsnc3RhdHVzJ107JHRhY3RpdmU9JHRbJ2lzX2FjdGl2ZSddOyR0c291cmNlPSR0Wydzb3VyY2Vfa2luZCddOwoJCX0KCQkvLyBwYWt1b3RlcyBkeWRpcwoJCSRwa2c9d3BfZ2V0X29iamVjdF90ZXJtcygkcGlkLCdwYV9wYWt1b3Rlc19keWRpcycsYXJyYXkoJ2ZpZWxkcyc9PiduYW1lcycpKTsKCQkkcGtnc3RyPSghaXNfd3BfZXJyb3IoJHBrZykmJiFlbXB0eSgkcGtnKSk/aW1wbG9kZSgnLCcsJHBrZyk6Jyc7CgkJJHByb2RzW109YXJyYXkoJ3BpZCc9PiRwaWQsJ3RpdGxlJz0+JHRpdGxlLCdwa2cnPT4kcGtnc3RyLAoJCQkndGFibGVfaWQnPT4kdGlkLCd0YWJsZV9saW5lJz0+JHRsaW5lLCd0YWJsZV9zdGF0dXMnPT4kdHN0YXR1cywndGFibGVfYWN0aXZlJz0+JHRhY3RpdmUsJ3RhYmxlX3NvdXJjZSc9PiR0c291cmNlKTsKCX0KCS8vIGdydXB1b2phbSBwYWdhbCB0YWJsZV9pZCAodGFzIHBhdHMgbWFpc3Rhcywgc2tpcnRpbmdvcyBwYWt1b3RlcykKCSRieV90YWJsZT1hcnJheSgpOwoJJG5vX3RhYmxlPWFycmF5KCk7Cglmb3JlYWNoKCRwcm9kcyBhcyAkcCl7CgkJaWYoJHBbJ3RhYmxlX2lkJ10pewoJCQkkaz0kcFsndGFibGVfaWQnXTsKCQkJaWYoIWlzc2V0KCRieV90YWJsZVska10pKSRieV90YWJsZVska109YXJyYXkoJ2xpbmUnPT4kcFsndGFibGVfbGluZSddLCdzdGF0dXMnPT4kcFsndGFibGVfc3RhdHVzJ10sJ2FjdGl2ZSc9PiRwWyd0YWJsZV9hY3RpdmUnXSwnc291cmNlJz0+JHBbJ3RhYmxlX3NvdXJjZSddLCdwcm9kdWN0cyc9PmFycmF5KCkpOwoJCQkkYnlfdGFibGVbJGtdWydwcm9kdWN0cyddW109YXJyYXkoJ3BpZCc9PiRwWydwaWQnXSwndGl0bGUnPT4kcFsndGl0bGUnXSwncGtnJz0+JHBbJ3BrZyddKTsKCQl9IGVsc2UgewoJCQkkbm9fdGFibGVbXT1hcnJheSgncGlkJz0+JHBbJ3BpZCddLCd0aXRsZSc9PiRwWyd0aXRsZSddLCdwa2cnPT4kcFsncGtnJ10pOwoJCX0KCX0KCSRvWyd0b3RhbF9wcm9kdWN0cyddPWNvdW50KCRwcm9kcyk7Cgkkb1snYnlfdGFibGUnXT0kYnlfdGFibGU7Cgkkb1snbm9fdGFibGUnXT0kbm9fdGFibGU7Cgkkb1snbm9fdGFibGVfY291bnQnXT1jb3VudCgkbm9fdGFibGUpOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH='-u "'+U+':'+P+'"';
-function wj(m,path,body){const b=Buffer.from(JSON.stringify(body)).toString('base64');
-  return execSync('echo '+b+'|base64 -d|curl -sk '+AUTH+' -X '+m+' -H "Content-Type: application/json" -d @- "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024}).toString();}
 function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
  for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
   if(c==='200'||c==='201')return c;}return 'fail';}
-const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'EXMAP (temp)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
-let sid; try{sid=JSON.parse(mk).id;}catch(e){}
-o.m=(function(){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_exmap=S2Kw8Nx"',{maxBuffer:30*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,300)};}})();
-if(sid) wj('POST','code-snippets/v1/snippets/'+sid,{active:false});
-console.log('PUT:',pr('exclmap.json',o));
+function get(url){ try{ return execSync('curl -skL --max-time 25 "'+url+'"',{maxBuffer:20*1024*1024}).toString(); }catch(e){ return ''; } }
+
+// kategoriju puslapiai kurie atitinka dev lenteles
+const cats=[
+  'https://exclusion.lt/intestinal/',
+  'https://exclusion.lt/hydrolyzed-hypoallergenic/',
+  'https://exclusion.lt/hypoallergenic/',
+  'https://exclusion.lt/exclusion-mediterraneo-monoprotein/',
+  'https://exclusion.lt/intestinal-katems/',
+  'https://exclusion.lt/hypoallergenic-katems/',
+  'https://exclusion.lt/exclusion-mediterraneo/',
+];
+// istraukiam produktu URL is kategoriju
+const prodUrls=new Set();
+for(const c of cats){
+  const html=get(c);
+  const re=/https:\/\/exclusion\.lt\/product\/[a-z0-9\-]+\//g;
+  let m; while((m=re.exec(html))!==null){ prodUrls.add(m[0]); }
+}
+// kiekvienam produktui - istraukiam SERIMAS paveikslelio URL + pavadinima
+const out=[];
+for(const purl of prodUrls){
+  const html=get(purl);
+  // pavadinimas is <title> ar h1
+  let title=''; const tm=html.match(/<title>([^<]+)<\/title>/); if(tm)title=tm[1].replace(' - exclusion.lt','').trim();
+  // SERIMAS paveikslelis
+  const imgs=[];
+  const ire=/https:\/\/exclusion\.lt\/wp-content\/uploads\/[0-9\/]+[A-Za-z0-9_\-]*(?:SERIMAS|serimas)[A-Za-z0-9_\-]*\.png/g;
+  let im; while((im=ire.exec(html))!==null){ imgs.push(im[0]); }
+  out.push({url:purl,title:title,serimas:[...new Set(imgs)]});
+}
+const result={cats:cats.length,products:out.length,data:out};
+console.log('produktu:',out.length);
+console.log('PUT:',pr('crawl.json',result));
