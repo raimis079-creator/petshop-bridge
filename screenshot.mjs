@@ -1,19 +1,25 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfcmRlbCddKXx8JF9HRVRbJ3BzX3JkZWwnXSE9PSdTMkt3OE54Jyl7cmV0dXJuO30KCWlmKCgkX0dFVFsnY29uZmlybSddPz8nJykhPT0nREVMRVRFXzIyJyl7ZWNobyBqc29uX2VuY29kZShhcnJheSgnZXJyJz0+J2NvbmZpcm0nKSk7ZXhpdDt9CglAc2V0X3RpbWVfbGltaXQoMTgwKTsKCWdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCk7CgkkcGlkcz1hcnJheSgxNzM3NiwxNzc0MiwxNzc0MCwxNzczOCwxNjEyMiwxNzM4MywxOTUxMywxODgyMSwxOTUyMCwxOTUyNiwxNzc0NSwxNzcyOSwxNzc1MSwxNzc0OCwxNzczMiwxNzczNSwxNzM4MSwxNjMyNiwxOTUxNiwxNzcyNiwxNjMyOSwxOTUyMyk7CgkvLyAxKSBCQUNLVVA6IHBpbG5hcyBwcm9kdWt0byArIG1ldGEgKyB0ZXJtaW51IHNuYXBzaG90IGkgSlNPTiBmYWlsYSBwc19wcml2YXRlCgkkYmFja3VwPWFycmF5KCdjcmVhdGVkX2F0Jz0+Y3VycmVudF90aW1lKCdteXNxbCcpLCdydW4nPT4ncmlua19jbGVhbnVwXycuZGF0ZSgnWW1kX0hpcycpLCdwcm9kdWN0cyc9PmFycmF5KCkpOwoJZm9yZWFjaCgkcGlkcyBhcyAkcGlkKXsKCQkkcD1nZXRfcG9zdCgkcGlkKTsKCQlpZighJHApY29udGludWU7CgkJJG1ldGE9Z2V0X3Bvc3RfbWV0YSgkcGlkKTsKCQkkdGVybXM9YXJyYXkoKTsKCQlmb3JlYWNoKGFycmF5KCdwcm9kdWN0X2NhdCcsJ3Byb2R1Y3RfdHlwZScsJ3Byb2R1Y3RfdGFnJywncGFfcGFrdW90ZXNfZHlkaXMnKSBhcyAkdGF4KXsKCQkJJHQ9d3BfZ2V0X29iamVjdF90ZXJtcygkcGlkLCR0YXgsYXJyYXkoJ2ZpZWxkcyc9PidpZHMnKSk7CgkJCWlmKCFpc193cF9lcnJvcigkdCkmJiFlbXB0eSgkdCkpJHRlcm1zWyR0YXhdPSR0OwoJCX0KCQkkYmFja3VwWydwcm9kdWN0cyddWyRwaWRdPWFycmF5KAoJCQkncG9zdCc9PmFycmF5KCd0aXRsZSc9PiRwLT5wb3N0X3RpdGxlLCdjb250ZW50Jz0+JHAtPnBvc3RfY29udGVudCwnZXhjZXJwdCc9PiRwLT5wb3N0X2V4Y2VycHQsCgkJCQknc3RhdHVzJz0+JHAtPnBvc3Rfc3RhdHVzLCduYW1lJz0+JHAtPnBvc3RfbmFtZSwndHlwZSc9PiRwLT5wb3N0X3R5cGUsJ2RhdGUnPT4kcC0+cG9zdF9kYXRlKSwKCQkJJ21ldGEnPT4kbWV0YSwndGVybXMnPT4kdGVybXMsCgkJKTsKCX0KCS8vIGlzc2F1Z29tIGJhY2t1cCBmYWlsYQoJJHVwZGlyPXdwX3VwbG9hZF9kaXIoKTsKCSRiYWtkaXI9JHVwZGlyWydiYXNlZGlyJ10uJy9wc19wcml2YXRlJzsKCWlmKCFpc19kaXIoJGJha2RpcikpQG1rZGlyKCRiYWtkaXIsMDc1MCx0cnVlKTsKCSRiYWtmaWxlPSRiYWtkaXIuJy9iYWNrdXBfcmlua2luaWFpXycuJGJhY2t1cFsncnVuJ10uJy5qc29uJzsKCSRqc29uPXdwX2pzb25fZW5jb2RlKCRiYWNrdXAsSlNPTl9QUkVUVFlfUFJJTlQpOwoJZmlsZV9wdXRfY29udGVudHMoJGJha2ZpbGUsJGpzb24pOwoJQGNobW9kKCRiYWtmaWxlLDA2MDApOwoJJG9bJ2JhY2t1cF9maWxlJ109JGJha2ZpbGU7Cgkkb1snYmFja3VwX3NpemUnXT1zdHJsZW4oJGpzb24pOwoJJG9bJ2JhY2t1cF9zaGEyNTYnXT1oYXNoKCdzaGEyNTYnLCRqc29uKTsKCSRvWydiYWNrZWRfdXBfY291bnQnXT1jb3VudCgkYmFja3VwWydwcm9kdWN0cyddKTsKCS8vIDIpIFRSSU5BTSBpIHNpdWtzbGlhZGV6ZSAod3BfdHJhc2hfcG9zdCAtIGF0c3RhdG9tYSksIE5FIGZvcmNlIGRlbGV0ZQoJJHRyYXNoZWQ9YXJyYXkoKTsgJGZhaWxlZD1hcnJheSgpOwoJZm9yZWFjaCgkcGlkcyBhcyAkcGlkKXsKCQkkcj13cF90cmFzaF9wb3N0KCRwaWQpOwoJCWlmKCRyKSR0cmFzaGVkW109JHBpZDsgZWxzZSAkZmFpbGVkW109JHBpZDsKCX0KCSRvWyd0cmFzaGVkJ109JHRyYXNoZWQ7ICRvWyd0cmFzaGVkX2NvdW50J109Y291bnQoJHRyYXNoZWQpOwoJJG9bJ2ZhaWxlZCddPSRmYWlsZWQ7CgkvLyAzKSB2ZXJpZmlrYWNpamE6IGFyIHRpa3JhaSB0cmFzaAoJJHN0aWxsX3B1Ymxpc2g9YXJyYXkoKTsKCWZvcmVhY2goJHBpZHMgYXMgJHBpZCl7CgkJJHN0PWdldF9wb3N0X3N0YXR1cygkcGlkKTsKCQlpZigkc3QhPT0ndHJhc2gnJiYkc3QhPT1mYWxzZSkkc3RpbGxfcHVibGlzaFskcGlkXT0kc3Q7Cgl9Cgkkb1sndmVyaWZ5X3N0aWxsX25vdF90cmFzaCddPSRzdGlsbF9wdWJsaXNoOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH='-u "'+U+':'+P+'"';
-function wj(m,path,body){const b=Buffer.from(JSON.stringify(body)).toString('base64');
-  return execSync('echo '+b+'|base64 -d|curl -sk '+AUTH+' -X '+m+' -H "Content-Type: application/json" -d @- "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024}).toString();}
-function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
- for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
-  const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
-  if(c==='200'||c==='201')return c;}return 'fail';}
-const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'RDEL (temp)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
-let sid; try{sid=JSON.parse(mk).id;}catch(e){}
-o.d=(function(){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_rdel=S2Kw8Nx&confirm=DELETE_22"',{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,400)};}})();
-if(sid) wj('POST','code-snippets/v1/snippets/'+sid,{active:false});
-console.log('PUT:',pr('rdel.json',o));
+function pr_bin(n,localpath){
+  const b=fs.readFileSync(localpath).toString('base64');
+  const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
+  try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nc='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
+  fs.writeFileSync('/tmp/img.json',JSON.stringify({message:'img',content:b,...(s?{sha:s}:{})}));
+  const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/img.json "'+u+'"').toString().trim();
+  return c;
+}
+// parsisiunciam serimo lenteles is exclusion.lt
+const imgs={
+  'excl_inpm_serimas.png':'https://exclusion.lt/wp-content/uploads/2024/10/P18_Intestinal-sunims_kiauliena-ryziai_SAUSAS-vidutinems-veislems_SERIMAS.png',
+};
+const out={};
+for(const [name,url] of Object.entries(imgs)){
+  try{
+    execSync('curl -sk -o /tmp/'+name+' "'+url+'"',{timeout:30000});
+    const sz=fs.statSync('/tmp/'+name).size;
+    const code=pr_bin(name,'/tmp/'+name);
+    out[name]={size:sz,upload:code};
+  }catch(e){ out[name]={err:String(e).slice(0,100)}; }
+}
+console.log(JSON.stringify(out));
