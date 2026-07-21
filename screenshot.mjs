@@ -1,4 +1,4 @@
-const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfZGV2ciddKXx8JF9HRVRbJ3BzX2RldnInXSE9PSdTMkt3OE54Jyl7cmV0dXJuO30KCUBzZXRfdGltZV9saW1pdCg2MCk7CglnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OyAkbz1hcnJheSgpOwoJZm9yZWFjaChhcnJheSgyNDEsMjQyLDI0MykgYXMgJHRpZCl7CgkJJHJvd3M9JHdwZGItPmdldF9yZXN1bHRzKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1Qgd2VpZ2h0X2Zyb21fa2csd2VpZ2h0X3RvX2tnLGFtb3VudF9mcm9tX2csYW1vdW50X3RvX2csY29uZGl0aW9ucyxjZWxsX3R5cGUgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfcm93cyBXSEVSRSBmZWVkaW5nX3RhYmxlX2lkPSVkIE9SREVSIEJZIENBU1Qod2VpZ2h0X2Zyb21fa2cgQVMgREVDSU1BTCg2LDIpKSIsJHRpZCksQVJSQVlfQSk7CgkJJHQ9JHdwZGItPmdldF9yb3coJHdwZGItPnByZXBhcmUoIlNFTEVDVCBsaW5lLHNwZWNpZXMgRlJPTSB7JHBmfXBzX2ZlZWRpbmdfdGFibGVzIFdIRVJFIGlkPSVkIiwkdGlkKSxBUlJBWV9BKTsKCQkkb1skdGlkXT1hcnJheSgnbGluZSc9PiR0WydsaW5lJ10sJ3Jvd3MnPT4kcm93cyk7Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfZGV2cjInXSl8fCRfR0VUWydwc19kZXZyMiddIT09J1MyS3c4TngnKXtyZXR1cm47fQoJQHNldF90aW1lX2xpbWl0KDYwKTsKCWdsb2JhbCAkd3BkYjsgJHBmPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCk7CgkvLyBwaWxuYXMgc3R1bHBlbGl1IHNhcmFzYXMgcm93cyBsZW50ZWxlcwoJJGNvbHM9JHdwZGItPmdldF9jb2woIlNFTEVDVCBDT0xVTU5fTkFNRSBGUk9NIGluZm9ybWF0aW9uX3NjaGVtYS5DT0xVTU5TIFdIRVJFIFRBQkxFX1NDSEVNQT1EQVRBQkFTRSgpIEFORCBUQUJMRV9OQU1FPSd7JHBmfXBzX2ZlZWRpbmdfcm93cycgT1JERVIgQlkgT1JESU5BTF9QT1NJVElPTiIpOwoJJG9bJ2NvbHMnXT0kY29sczsKCS8vIHZpc29zIDI0MSBlaWx1dGVzIC0gVklTSSBzdHVscGVsaWFpCgkkb1sndDI0MSddPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUICogRlJPTSB7JHBmfXBzX2ZlZWRpbmdfcm93cyBXSEVSRSBmZWVkaW5nX3RhYmxlX2lkPTI0MSIsQVJSQVlfQSk7CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
@@ -12,8 +12,8 @@ function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screens
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
   if(c==='200'||c==='201')return c;}return 'fail';}
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'DEVR (temp)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
+const mk=wj('POST','code-snippets/v1/snippets',{name:'DEVR2 (temp)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
 let sid; try{sid=JSON.parse(mk).id;}catch(e){}
-o.d=(function(){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_devr=S2Kw8Nx"',{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,300)};}})();
+o.d=(function(){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_devr2=S2Kw8Nx"',{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,300)};}})();
 if(sid) wj('POST','code-snippets/v1/snippets/'+sid,{active:false});
-console.log('PUT:',pr('devrows.json',o));
+console.log('PUT:',pr('devrows2.json',o));
