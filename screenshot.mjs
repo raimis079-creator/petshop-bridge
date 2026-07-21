@@ -1,22 +1,20 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
- for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nc='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
-  const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
-  if(c==='200'||c==='201')return c;}return 'fail';}
-function get(url){ try{ return execSync('curl -skL --max-time 12 "'+url+'"',{maxBuffer:15*1024*1024}).toString(); }catch(e){ return ''; } }
-const cats=['https://exclusion.lt/hypoallergenic/','https://exclusion.lt/exclusion-mediterraneo-monoprotein/'];
-const prodUrls=new Set();
-for(const c of cats){ const html=get(c); const re=/https:\/\/exclusion\.lt\/product\/[a-z0-9\-]+\//g; let m; while((m=re.exec(html))!==null)prodUrls.add(m[0]); }
-const out=[];
-for(const purl of prodUrls){
-  const html=get(purl);
-  let title=''; const tm=html.match(/<title>([^<]+)<\/title>/); if(tm)title=tm[1].replace(' - exclusion.lt','').trim();
-  const imgs=[];
-  const ire=/https:\/\/exclusion\.lt\/wp-content\/uploads\/[0-9\/]+[^"'\s]*(?:SERIMAS|serimas)[^"'\s]*\.png/g;
-  let im; while((im=ire.exec(html))!==null){ if(!/-\d+x\d+\./.test(im[0]))imgs.push(im[0]); }
-  out.push({url:purl,title:title,serimas:[...new Set(imgs)]});
+function prbin(n,path){const b=fs.readFileSync(path).toString('base64');const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
+  try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nc='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
+  fs.writeFileSync('/tmp/img.json',JSON.stringify({message:'img',content:b,...(s?{sha:s}:{})}));
+  return execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/img.json "'+u+'"',{maxBuffer:20*1024*1024}).toString().trim();}
+const imgs={
+  'h_small.png':'https://exclusion.lt/wp-content/uploads/2024/10/P9_Hypoallergenic-sunims_kiauliena-zirniai_SAUSAS-maistas-mazoms-veislems_SERIMAS.png',
+  'h_small2.png':'https://exclusion.lt/wp-content/uploads/2024/10/P8_Hypoallergenic-sunims_vabzdziai-zirniai_SAUSAS-maistas-mazoms-veislems_SERIMAS.png',
+  'h_ml.png':'https://exclusion.lt/wp-content/uploads/2024/10/P9_Hypoallergenic-sunims_kiauliena-zirniai_SAUSAS-maistas-vidutinems-veislems_SERIMAS.png',
+  'ng_small.png':'https://exclusion.lt/wp-content/uploads/2024/10/P45_MONOPROTEIN_sunys_vistiena_SAUSAS_SERIMAS.png',
+  'ng_med.png':'https://exclusion.lt/wp-content/uploads/2024/10/P48_MONOPROTEIN_vidutinio-dydzio-sunims_vistiena_SAUSAS_SERIMAS.png',
+  'ng_large.png':'https://exclusion.lt/wp-content/uploads/2024/10/P51_MONOPROTEIN_dideliu-veisliu-sunims_vistiena_SAUSAS_SERIMAS.png',
+};
+const out={};
+for(const [n,u] of Object.entries(imgs)){
+  try{ execSync('curl -sk --max-time 20 -o /tmp/'+n+' "'+u+'"'); out[n]={size:fs.statSync('/tmp/'+n).size,up:prbin(n,'/tmp/'+n)}; }catch(e){ out[n]={err:String(e).slice(0,50)}; }
 }
-console.log('PUT:',pr('crawl3.json',{products:out.length,data:out}));
+console.log(JSON.stringify(out));
