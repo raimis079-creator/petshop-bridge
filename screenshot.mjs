@@ -1,33 +1,19 @@
+const S='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCFpc3NldCgkX0dFVFsncHNfY2F0bWV0YSddKXx8JF9HRVRbJ3BzX2NhdG1ldGEnXSE9PSdTMkt3OE54Jyl7cmV0dXJuO30KCUBzZXRfdGltZV9saW1pdCg2MCk7CglnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OyAkdD0kcGYuJ3BzX2ZlZWRpbmdfdGFibGVzJzsKCSRiYXNlPSdodHRwczovL2V4Y2x1c2lvbi5sdC93cC1jb250ZW50L3VwbG9hZHMvMjAyNC8xMC8nOwoJJHNyYz1hcnJheSgKCQk4MyAgPT4gJGJhc2UuJ1AzM19IWVBPQUxMRVJHRU5JQ19rYXRlbXNfa2lhdWxpZW5hLWJ1bHZlc19TQVVTQVNfU0VSSU1BUy5wbmcnLAoJCTg0ICA9PiAkYmFzZS4nUDU4X01PTk9QUk9URUlOX3N1YXVndXNpb21zLWthdGVtcy1zdS12aXN0aWVuYV9TQVVTQVNfU0VSSU1BUy5wbmcnLAoJCTg1ICA9PiAkYmFzZS4nUDU4X01PTk9QUk9URUlOX2phdW5pZW1zLWthY2l1a2Ftcy1zdS12aXN0aWVuYV9TQVVTQVNfU0VSSU1BUy5wbmcnLAoJCTIwMCA9PiAkYmFzZS4nUDU5X01PTk9QUk9URUlOX3N0ZXJpbGl6dW90b21zLWthdGVtcy1zdS12aXN0aWVuYV9TQVVTQVNfU0VSSU1BUy5wbmcnLAoJKTsKCSRub3RlPSdjb25maXJtZWQgdnMgb2ZmaWNpYWwgZXhjbHVzaW9uLmx0IFNFUklNQVMgMjAyNi0wNy0yMSc7CgkkcmVzPWFycmF5KCk7Cglmb3JlYWNoKCRzcmMgYXMgJHRpZD0+JHVybCl7CgkJJHU9JHdwZGItPnVwZGF0ZSgkdCwgYXJyYXkoJ3NvdXJjZV9raW5kJz0+J29mZmljaWFsX2Rpc3RyaWJ1dG9yJywnc291cmNlX3VybCc9PiR1cmwsJ3ZlcmlmaWNhdGlvbl9ub3RlJz0+JG5vdGUpLCBhcnJheSgnaWQnPT4kdGlkKSk7CgkJJGNoaz0kd3BkYi0+Z2V0X3Jvdygkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIHNvdXJjZV9raW5kLHN0YXR1cyxpc19hY3RpdmUgRlJPTSB7JHR9IFdIRVJFIGlkPSVkIiwkdGlkKSxBUlJBWV9BKTsKCQkkcmVzWyR0aWRdPWFycmF5KCd1cGQnPT4kdSwnbm93Jz0+JGNoayk7Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRyZXMpOyBleGl0Owp9KTsK';
 import { execSync } from 'child_process';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-function putbin(name, filepath){
-  const b64=fs.readFileSync(filepath).toString('base64');
-  const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name;
-  let sha='';
-  try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)sha=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/bp.json',JSON.stringify({message:'img',content:b64,...(sha?{sha}:{})}));
-  const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/bp.json "'+u+'"').toString().trim();
-  return c;
-}
+const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH='-u "'+U+':'+P+'"';
+function wj(m,path,body){fs.writeFileSync('/tmp/wbody.json', JSON.stringify(body));
+  return execSync('curl -sk '+AUTH+' -X '+m+' -H "Content-Type: application/json" --data-binary @/tmp/wbody.json "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024}).toString();}
 function pr(n,o){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
  for(let i=0;i<5;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:Buffer.from(JSON.stringify(o)).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
   if(c==='200'||c==='201')return c;}return 'fail';}
-const imgs={
- T83:'https://exclusion.lt/wp-content/uploads/2024/10/P33_HYPOALLERGENIC_katems_kiauliena-bulves_SAUSAS_SERIMAS.png',
- T84:'https://exclusion.lt/wp-content/uploads/2024/10/P58_MONOPROTEIN_suaugusioms-katems-su-vistiena_SAUSAS_SERIMAS.png',
- T85:'https://exclusion.lt/wp-content/uploads/2024/10/P58_MONOPROTEIN_jauniems-kaciukams-su-vistiena_SAUSAS_SERIMAS.png',
- T200:'https://exclusion.lt/wp-content/uploads/2024/10/P59_MONOPROTEIN_sterilizuotoms-katems-su-vistiena_SAUSAS_SERIMAS.png',
- T86:'https://exclusion.lt/wp-content/uploads/2024/10/P60_MONOPROTEIN_didelio-dydzio-sterilizuotoms-katems-su-vistiena_SAUSAS_SERIMAS.png'
-};
 const o={};
-for(const [k,url] of Object.entries(imgs)){
-  const fp='/tmp/'+k+'.png';
-  try{ execSync('curl -Lsk --max-time 40 -o '+fp+' "'+url+'"'); }catch(e){}
-  let sz=0; try{ sz=fs.statSync(fp).size; }catch(e){}
-  const code = sz>0 ? putbin('cat_'+k+'.png', fp) : 'no-download';
-  o[k]={size:sz, put:code};
-}
-console.log('PUT:',pr('catimg_status.json',o));
+const mk=wj('POST','code-snippets/v1/snippets',{name:'CATMETA (temp)',code:Buffer.from(S,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
+let sid; try{sid=JSON.parse(mk).id;}catch(e){}
+o.d=(function(){const r=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/?ps_catmeta=S2Kw8Nx"',{maxBuffer:20*1024*1024}).toString();const i=r.indexOf('{');try{return JSON.parse(r.slice(i));}catch(e){return {raw:r.slice(0,300)};}})();
+if(sid){ wj('POST','code-snippets/v1/snippets/'+sid,{active:false}); execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"'); }
+console.log('PUT:',pr('catmeta.json',o));
