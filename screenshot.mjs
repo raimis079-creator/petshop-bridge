@@ -4,27 +4,27 @@ import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
-function wj(m,path,body){fs.writeFileSync('/tmp/wbody.json', JSON.stringify(body));
-  return execSync('curl -sk '+AUTH+' -X '+m+' -H "Content-Type: application/json" --data-binary @/tmp/wbody.json "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024,timeout:70000}).toString();}
+function post(path,body){fs.writeFileSync('/tmp/wbody.json', JSON.stringify(body));
+  return execSync('curl -sk '+AUTH+' -X POST -H "Content-Type: application/json" --data-binary @/tmp/wbody.json "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50*1024*1024,timeout:70000}).toString();}
 function pr(n,ob){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?nocache='+Math.random()+'"').toString());if(j.sha)s=j.sha;}catch(e){}
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:Buffer.from(JSON.stringify(ob)).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"').toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 2'); }return 'fail';}
 const o={};
-// idempotent: ištrinti seną tokį patį pavadinimą
-try{const list=JSON.parse(wj('GET','code-snippets/v1/snippets',{})); if(Array.isArray(list)){for(const sn of list){ if(sn.name==='Feeding Calc REST v1'){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sn.id+'"');}catch(e){} } }}}catch(e){}
-// sukurti NUOLATINĮ (global scope, aktyvus, NEtrinsim)
-const mk=wj('POST','code-snippets/v1/snippets',{name:'Feeding Calc REST v1',code:Buffer.from(S,'base64').toString('utf8'),scope:'global',active:true,priority:10});
-try{o.snippet_id=JSON.parse(mk).id;}catch(e){o.mkerr=String(mk).slice(0,300);}
-execSync('sleep 3');
-// TEST 1: admin (auth) POST -> tikimės calc JSON (flag OFF, admin bypass)
-o.admin=(function(){try{fs.writeFileSync('/tmp/b1.json',JSON.stringify({product_id:18014,weight_kg:10,activity_code:'moderate',species_code:'dog'}));
-  const r=execSync('curl -sk -w "\n__H%{http_code}" '+AUTH+' -X POST -H "Content-Type: application/json" --data-binary @/tmp/b1.json "https://dev.avesa.lt/wp-json/petshop/v1/feeding-calc"',{maxBuffer:10*1024*1024,timeout:40000}).toString();
-  const hi=r.lastIndexOf('__H'); return {code:r.slice(hi+3).trim(), body:r.slice(0,hi).slice(0,500)};}catch(e){return{err:String(e).slice(0,200)};}})();
-// TEST 2: anon (be auth) POST -> tikimės 401/403 (flag OFF)
-o.anon=(function(){try{const r=execSync('curl -sk -o /dev/null -w "%{http_code}" -X POST -H "Content-Type: application/json" --data-binary @/tmp/b1.json "https://dev.avesa.lt/wp-json/petshop/v1/feeding-calc"',{timeout:40000}).toString().trim();return r;}catch(e){return String(e).slice(0,120);}})();
-// TEST 3: admin missing weight -> needs_input
-o.admin_missing=(function(){try{fs.writeFileSync('/tmp/b2.json',JSON.stringify({product_id:18014,species_code:'dog'}));
-  const r=execSync('curl -sk '+AUTH+' -X POST -H "Content-Type: application/json" --data-binary @/tmp/b2.json "https://dev.avesa.lt/wp-json/petshop/v1/feeding-calc"',{timeout:40000}).toString();return r.slice(0,300);}catch(e){return String(e).slice(0,150);}})();
+const code=Buffer.from(S,'base64').toString('utf8');
+// try create, capture raw
+const mk=post('code-snippets/v1/snippets',{name:'Feeding Calc REST v1',code:code,scope:'global',active:true,priority:10});
+o.mk_raw=String(mk).slice(0,600);
+let id=null; try{id=JSON.parse(mk).id;}catch(e){}
+o.id=id;
+if(id){ execSync('sleep 3');
+  // activate explicitly (kartais reikia)
+  try{o.act=post('code-snippets/v1/snippets/'+id,{active:true}).slice(0,120);}catch(e){o.act=String(e).slice(0,120);}
+}
+execSync('sleep 2');
+// probe route (admin)
+o.probe=(function(){try{fs.writeFileSync('/tmp/b.json',JSON.stringify({product_id:18014,weight_kg:10,activity_code:'moderate',species_code:'dog'}));
+  const r=execSync('curl -sk -w "\n__H%{http_code}" '+AUTH+' -X POST -H "Content-Type: application/json" --data-binary @/tmp/b.json "https://dev.avesa.lt/wp-json/petshop/v1/feeding-calc"',{maxBuffer:5*1024*1024,timeout:40000}).toString();
+  const hi=r.lastIndexOf('__H'); return {code:r.slice(hi+3).trim(), body:r.slice(0,hi).slice(0,400)};}catch(e){return{err:String(e).slice(0,200)};}})();
 console.log('PUT:',pr('route.json',o));
