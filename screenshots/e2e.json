@@ -1,1 +1,1 @@
-{"steps":[],"console":[],"deploy":"{\"w\":49217,\"ok\":true,\"version\":\"1.6.10 -> 1.6.11\"}","puppeteer":"NERA: Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'puppeteer' imported from /home/runner/work/petshop-bridge/petshop-bri","clean":"{\"istrinta\":0}"}
+{"steps":[],"console":[],"err":"Error: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://dev.avesa.lt/?ps_alogin=E2eTmp9x\nCall log:\n  - navigating to \"https://dev.avesa.lt/?ps_alogin=E2eTmp9x\", waiting until \"networkidle\"\n","clean":"{\"istrinta\":0}"}
