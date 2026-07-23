@@ -19,7 +19,7 @@ try{execSync('curl -sk "https://dev.avesa.lt/?ps_e2eclean=E2eTmp9x"',{timeout:30
 try{
   const { chromium } = await import('playwright');
   const browser = await chromium.launch();
-  const ctx = await browser.newContext({ viewport:{width:1280,height:1000} });
+  const ctx = await browser.newContext({ viewport:{width:1280,height:1000}, ignoreHTTPSErrors:true });
   const page = await ctx.newPage();
   page.on('console', m=>{ if(m.type()==='error') o.console.push(m.text().slice(0,150)); });
   page.on('pageerror', e=>o.console.push('PAGEERROR: '+String(e).slice(0,150)));
