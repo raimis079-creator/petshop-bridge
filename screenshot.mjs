@@ -16,40 +16,38 @@ const mk=wj('POST','code-snippets/v1/snippets',{name:'AL (temp)',code:Buffer.fro
 let sid; try{sid=JSON.parse(mk).id;}catch(e){o.mkerr=String(mk).slice(0,150);}
 execSync('sleep 3');
 try{execSync('curl -sk "https://dev.avesa.lt/?ps_e2eclean=E2eTmp9x"',{timeout:30000});}catch(e){}
-let pc=null, exe=null;
-try{ execSync('npm i puppeteer-core@23 --no-audit --no-fund --silent 2>/dev/null',{timeout:180000}); pc=(await import('puppeteer-core')).default; }catch(e){ o.npm='FAIL '+String(e).slice(0,120); }
-for (const c of ['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium-browser','/usr/bin/chromium']) { if (fs.existsSync(c)) { exe=c; break; } }
-o.chrome=exe;
-if(pc && exe){
-  const browser=await pc.launch({executablePath:exe,args:['--no-sandbox','--disable-setuid-sandbox'],defaultViewport:{width:1280,height:1000}});
-  const page=await browser.newPage();
-  page.on('console',m=>{ if(m.type()==='error') o.console.push(m.text().slice(0,150)); });
-  page.on('pageerror',e=>o.console.push('PAGEERROR: '+String(e).slice(0,150)));
-  const shot=async(n)=>{ const b=await page.screenshot({encoding:'base64',fullPage:true}); putB64(n+'.png',b); o.steps.push(n); };
+try{
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch();
+  const ctx = await browser.newContext({ viewport:{width:1280,height:1000} });
+  const page = await ctx.newPage();
+  page.on('console', m=>{ if(m.type()==='error') o.console.push(m.text().slice(0,150)); });
+  page.on('pageerror', e=>o.console.push('PAGEERROR: '+String(e).slice(0,150)));
+  const shot=async(n)=>{ const b=await page.screenshot({fullPage:true}); putB64(n+'.png', b.toString('base64')); o.steps.push(n); };
   const txt=async()=>(await page.evaluate(()=>document.body.innerText)).replace(/\s+/g,' ').slice(0,350);
-  await page.goto('https://dev.avesa.lt/?ps_alogin=E2eTmp9x',{waitUntil:'networkidle2',timeout:60000});
-  await new Promise(r=>setTimeout(r,2500)); o.t_A=await txt(); await shot('e2e_1_A');
+  await page.goto('https://dev.avesa.lt/?ps_alogin=E2eTmp9x',{waitUntil:'networkidle',timeout:60000});
+  await page.waitForTimeout(2500); o.t_A=await txt(); await shot('e2e_1_A');
   o.clicked=await page.evaluate(()=>{const b=[...document.querySelectorAll('a,button')].find(x=>/Sukurti profil/i.test(x.textContent));if(b){b.click();return true;}return false;});
-  await new Promise(r=>setTimeout(r,2200)); o.t_form=await txt(); await shot('e2e_2_forma');
+  await page.waitForTimeout(2200); o.t_form=await txt(); await shot('e2e_2_forma');
   await page.evaluate(()=>{const p=[...document.querySelectorAll('.pspet-pill')].find(x=>/\u0160uo/.test(x.textContent));if(p)p.click();});
-  await new Promise(r=>setTimeout(r,700));
+  await page.waitForTimeout(700);
   await page.evaluate(()=>{const ins=[...document.querySelectorAll('input')];
     const n=ins.find(x=>/vadinasi/i.test(x.placeholder||'')); if(n){n.value='E2E Reksas';n.dispatchEvent(new Event('input',{bubbles:true}));}
-    const w=ins.find(x=>/pvz/i.test(x.placeholder||'')&&/12/.test(x.placeholder||'')); if(w){w.value='25,5';w.dispatchEvent(new Event('input',{bubbles:true}));}});
-  await new Promise(r=>setTimeout(r,500)); await shot('e2e_3_forma_uzpildyta');
+    const w=ins.find(x=>/pvz/i.test(x.placeholder||'')); if(w){w.value='25,5';w.dispatchEvent(new Event('input',{bubbles:true}));}});
+  await page.waitForTimeout(500); await shot('e2e_3_forma_uzpildyta');
   await page.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(x=>/Sukurti profil/i.test(x.textContent));if(b)b.click();});
-  await new Promise(r=>setTimeout(r,5000)); o.t_B=await txt(); await shot('e2e_4_B');
+  await page.waitForTimeout(5000); o.t_B=await txt(); await shot('e2e_4_B');
   await page.evaluate(()=>{const i=[...document.querySelectorAll('input')].find(x=>/Royal Canin/i.test(x.placeholder||''));if(i){i.value='Royal Canin';i.dispatchEvent(new Event('input',{bubbles:true}));}
     const b=[...document.querySelectorAll('button')].find(x=>/I\u0161saugoti/i.test(x.textContent));if(b)b.click();});
-  await new Promise(r=>setTimeout(r,4000)); o.t_C=await txt(); await shot('e2e_5_C');
+  await page.waitForTimeout(4000); o.t_C=await txt(); await shot('e2e_5_C');
   await page.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(x=>/Rasti tiksli/i.test(x.textContent));if(b)b.click();});
-  await new Promise(r=>setTimeout(r,1200));
+  await page.waitForTimeout(1200);
   await page.evaluate(()=>{const i=[...document.querySelectorAll('input')].find(x=>/pavadinim/i.test(x.placeholder||''));if(i){i.value='Josera Nature';i.dispatchEvent(new Event('input',{bubbles:true}));}});
-  await new Promise(r=>setTimeout(r,3000)); await shot('e2e_6_paieska');
+  await page.waitForTimeout(3000); await shot('e2e_6_paieska');
   await page.evaluate(()=>{const b=document.querySelector('.pspet-res-item');if(b)b.click();});
-  await new Promise(r=>setTimeout(r,5000)); o.t_D=await txt(); await shot('e2e_7_D');
+  await page.waitForTimeout(5000); o.t_D=await txt(); await shot('e2e_7_D');
   await browser.close();
-}
+}catch(e){ o.err=String(e).slice(0,300); }
 try{const c=execSync('curl -sk "https://dev.avesa.lt/?ps_e2eclean=E2eTmp9x"',{timeout:30000}).toString();o.clean=c.slice(c.indexOf('{'),c.indexOf('}')+1);}catch(e){}
 if(sid){ try{wj('POST','code-snippets/v1/snippets/'+sid,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
 putB64('e2e.json', Buffer.from(JSON.stringify(o)).toString('base64'));
