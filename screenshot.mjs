@@ -58,7 +58,7 @@ try{
   // pill'ai formos ribose pagal teksta
   const pill=async(txt)=>await page.evaluate((t)=>{
     const h=document.getElementById('pspet-form-host');
-    const b=[...h.querySelectorAll('button.pspet-pill,.pspet-pills button')].find(x=>x.textContent.trim()===t);
+    const b=[...h.querySelectorAll('.pspet-pill')].find(x=>x.textContent.trim()===t);
     if(b){b.click();return 'OK';} return 'NF '+t;
   }, txt);
   o.p_dydis=await pill('Vidutinis (10–25 kg)');
@@ -81,9 +81,10 @@ try{
   await page.waitForTimeout(4500);
   await shot('w_3_po_issaugojimo');
   o.after=await page.evaluate(()=>{const n=document.querySelector('.pspet-profile'); return n? n.innerText.replace(/\s+/g,' ').slice(0,700):'';});
+  o.comp_po=await page.evaluate(()=>{const m=[...document.querySelectorAll('div')].find(x=>/Profilis užpildytas/.test(x.textContent)&&x.textContent.length<400); return m? m.innerText.replace(/\s+/g,' ').slice(0,200):'NEBERODOMAS (100%)';});
   await browser.close();
 }catch(e){ o.err=String(e).slice(0,300); }
 try{const c=execSync('curl -sk "https://dev.avesa.lt/?ps_e2eclean=E2eTmp9x"',{timeout:30000}).toString();o.clean=c.slice(c.indexOf('{'),c.lastIndexOf('}')+1);}catch(e){}
 if(sid){ try{wj('POST','code-snippets/v1/snippets/'+sid,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
-putB64('vis218b.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('vis218c.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
