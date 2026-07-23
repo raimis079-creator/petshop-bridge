@@ -11,8 +11,8 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:b64,...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50*1024*1024}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 2');}return 'fail';}
-const o={net:[],console:[]};
-const mk2=wj('POST','code-snippets/v1/snippets',{name:'VIS223 (temp)',code:Buffer.from(PREP,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
+const o={req:[],console:[]};
+const mk2=wj('POST','code-snippets/v1/snippets',{name:'VIS224 (temp)',code:Buffer.from(PREP,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
 let sid2; try{sid2=JSON.parse(mk2).id;}catch(e){}
 execSync('sleep 3');
 try{execSync('curl -sk "https://dev.avesa.lt/?ps_e2eprep=E2eTmp9x"',{timeout:40000});}catch(e){}
@@ -21,14 +21,11 @@ try{
   const browser = await chromium.launch();
   const ctx = await browser.newContext({viewport:{width:1440,height:1400}, ignoreHTTPSErrors:true});
   const page = await ctx.newPage();
-  page.on('console', m=>{ if(m.type()==='error') o.console.push(m.text().slice(0,150)); });
-  page.on('pageerror', e=>o.console.push('PAGEERROR: '+String(e).slice(0,150)));
-  page.on('response', async r=>{
-    if(/pet-product-link|pet-dashboard/.test(r.url())){
-      let body=''; try{ body=(await r.text()).slice(0, r.url().includes('product-link')?300:0); }catch(e){}
-      o.net.push(r.request().method()+' '+r.url().split('/wp-json/')[1].slice(0,60)+' -> '+r.status()+(body?' '+body:''));
-    }
-  });
+  page.on('console', m=>{ o.console.push(m.type()+': '+m.text().slice(0,150)); });
+  page.on('pageerror', e=>o.console.push('PAGEERROR: '+String(e).slice(0,180)));
+  let track=false;
+  page.on('request', r=>{ if(track && r.url().includes('/wp-json/')) o.req.push(r.method()+' '+r.url().split('/wp-json/')[1].slice(0,70)); });
+  page.on('requestfailed', r=>{ if(r.url().includes('/wp-json/')) o.req.push('FAILED '+r.url().split('/wp-json/')[1].slice(0,70)+' '+(r.failure()&&r.failure().errorText)); });
   await page.goto('https://dev.avesa.lt/?ps_alogin=E2eTmp9x',{waitUntil:'networkidle',timeout:60000});
   await page.waitForTimeout(1500);
   await page.evaluate(()=>{const b=[...document.querySelectorAll('button,a')].find(x=>x.textContent.trim()==='PRIIMTI');if(b)b.click();});
@@ -36,9 +33,9 @@ try{
   await page.evaluate(()=>{const t=document.querySelectorAll('.pspet-switch-item'); for(const x of t){ if(/Sargis/.test(x.innerText)){x.click();return;} }});
   await page.waitForTimeout(3000);
   await page.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(x=>x.textContent.trim()==='Atidaryti');if(b)b.click();});
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(2500);
   await page.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(x=>/Pridėti papildomą maistą/.test(x.textContent));if(b)b.click();});
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(800);
   await page.evaluate(()=>{
     const inputs=[...document.querySelectorAll('input')].filter(x=>x.placeholder==='Įveskite pavadinimą arba prekės ženklą');
     const i=inputs[inputs.length-1];
@@ -46,21 +43,27 @@ try{
     setter.call(i,'Animonda'); i.dispatchEvent(new Event('input',{bubbles:true}));
   });
   await page.waitForTimeout(3000);
-  o.first_res=await page.evaluate(()=>{const b=document.querySelector('.pspet-res-item'); return b? JSON.stringify({t:b.textContent.slice(0,40)}):'NONE';});
-  await page.evaluate(()=>{const b=document.querySelector('.pspet-res-item'); if(b)b.click();});
-  await page.waitForTimeout(6000);
-  // shelf is dashboard REST tiesiogiai
-  o.shelf=await page.evaluate(async ()=>{
-    const petId=(window.PSPetConfig&&0)||null;
-    const t=[...document.querySelectorAll('.pspet-switch-item')];
-    // pet id nezinom is DOM — imam is fetch: kviesim dashboard visiems? paprasciau: paskutinis pet-dashboard atsakymas jau tinkle
-    return 'zr net';
+  track=true;
+  o.click=await page.evaluate(()=>{
+    const b=document.querySelector('.pspet-res-item'); if(!b) return 'NONE';
+    b.click();
+    return JSON.stringify({disabled_po:b.disabled, txt:b.textContent.slice(0,30)});
   });
-  o.po=await page.evaluate(()=>{const i=document.body.innerText.indexOf('Papildomas maistas'); return i>=0? document.body.innerText.slice(i,i+180).replace(/\s+/g,' '):'NERASTA';});
+  await page.waitForTimeout(6000);
+  track=false;
+  // rankinis fetch to paties endpointo — ar VEIKIA is viso
+  o.manual=await page.evaluate(async ()=>{
+    try{
+      const CFG=window.PSPetConfig||{};
+      const r=await fetch((CFG.restUrl||'/wp-json/petshop/v1')+'/pet-product-link',{method:'POST',
+        headers:{'Content-Type':'application/json','X-WP-Nonce':CFG.nonce||''},credentials:'same-origin',
+        body:JSON.stringify({pet_id:(function(){const m=location.href;return null})()||window.__pid||0,product_id:0})});
+      return 'status '+r.status;
+    }catch(e){ return 'ERR '+String(e).slice(0,120); }
+  });
   await browser.close();
 }catch(e){ o.err=String(e).slice(0,300); }
-// DB patikra PRIES clean: ar secondary_food irasyta
-try{const r=execSync('curl -sk "https://dev.avesa.lt/?ps_e2eclean=E2eTmp9x"',{timeout:30000}).toString();o.clean=r.slice(r.indexOf('{'),r.indexOf('}')+1);}catch(e){}
+try{execSync('curl -sk "https://dev.avesa.lt/?ps_e2eclean=E2eTmp9x"',{timeout:30000});}catch(e){}
 if(sid2){ try{wj('POST','code-snippets/v1/snippets/'+sid2,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid2+'"');}catch(e){} }
-putB64('diag223.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('diag224.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
