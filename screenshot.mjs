@@ -40,11 +40,13 @@ try{
   await page.waitForTimeout(1500);
   await page.evaluate(()=>{const b=[...document.querySelectorAll('button,a')].find(x=>x.textContent.trim()==='PRIIMTI');if(b)b.click();});
   await page.waitForTimeout(3000);
-  await page.evaluate(()=>{const t=document.querySelectorAll('.pspet-switch-item'); for(const x of t){ if(/Sargis/.test(x.innerText)){x.click();return;} }});
-  await page.waitForTimeout(3000);
+  o.sw=await page.evaluate(()=>{const t=[...document.querySelectorAll('.pspet-switch-item')]; const m=t.map(x=>x.innerText.replace(/\s+/g,' ').trim()); const x=t.find(x=>/Sargis/.test(x.innerText)); if(x){x.click(); return 'CLICK '+JSON.stringify(m);} return 'NF '+JSON.stringify(m);});
+  await page.waitForTimeout(3500);
+  o.who=await page.evaluate(()=>{const n=document.querySelector('.pspet-profile'); return n? n.innerText.replace(/\s+/g,' ').slice(0,120):'';});
   await page.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(x=>x.textContent.trim()==='Atidaryti');if(b)b.click();});
   await page.waitForTimeout(2500);
-  await page.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(x=>/Pridėti papildomą maistą/.test(x.textContent));if(b)b.click();});
+  o.mod_state=await page.evaluate(()=>{const t=document.body.innerText; return {D:/Dabartinis maistas/.test(t), B:/Koks dabar yra/.test(t), sec:/Papildomas maistas/.test(t)};});
+  o.addbtn=await page.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(x=>/Pridėti papildomą maistą/.test(x.textContent));if(b){b.click();return 'CLICK';}return 'NF';});
   await page.waitForTimeout(800);
   await page.evaluate(()=>{
     const inputs=[...document.querySelectorAll('input')].filter(x=>x.placeholder==='Įveskite pavadinimą arba prekės ženklą');
@@ -77,5 +79,5 @@ try{
 }catch(e){ o.err=String(e).slice(0,300); }
 try{execSync('curl -sk "https://dev.avesa.lt/?ps_e2eclean=E2eTmp9x"',{timeout:30000});}catch(e){}
 if(sid2){ try{wj('POST','code-snippets/v1/snippets/'+sid2,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid2+'"');}catch(e){} }
-putB64('diag225.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('diag226.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
