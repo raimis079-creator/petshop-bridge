@@ -7,31 +7,46 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 2');}return 'fail';}
 const o={};
-try{
-  // fetch the actual served CSS file + JS file
-  const css = execSync('curl -sk "https://dev.avesa.lt/wp-content/plugins/petshop-core/assets/account.css?v='+Date.now()+'"',{maxBuffer:50e6}).toString();
-  o.css_has_pspet_is_done = css.includes('.pspet-step.pspet-is-done');
-  o.css_has_bare_done = /\.pspet-step\.done\b/.test(css);
-  o.css_bytes = css.length;
-  const js = execSync('curl -sk "https://dev.avesa.lt/wp-content/plugins/petshop-core/assets/pet-form.js?v='+Date.now()+'"',{maxBuffer:50e6}).toString();
-  o.js_has_is_done = js.includes('pspet-is-done');
-  o.js_bytes = js.length;
-  // Is there a GLOBAL .done{display:none} anywhere in loaded theme/plugin CSS?
-  // fetch the page and look for stylesheets
-  const html = execSync('curl -sk "https://dev.avesa.lt/my-account/augintinis/?action=create"',{maxBuffer:50e6}).toString();
-  const links = (html.match(/href="[^"]*\.css[^"]*"/g)||[]).map(x=>x.slice(6,-1)).filter(u=>u.includes('avesa')||u.startsWith('/'));
-  o.stylesheet_count = links.length;
-  var globalDoneFound = [];
-  for (const link of links.slice(0,25)) {
-    var url = link.startsWith('http') ? link : ('https://dev.avesa.lt' + link);
-    try {
-      var body = execSync('curl -sk "'+url+'"',{maxBuffer:50e6, timeout:15000}).toString();
-      if (/\.done\s*\{[^}]*display\s*:\s*none/.test(body) || /\.done\s*,[^{]*\{[^}]*display\s*:\s*none/.test(body)) {
-        globalDoneFound.push(url.split('/').pop());
-      }
-    } catch(e){}
-  }
-  o.global_done_display_none_in = globalDoneFound;
-}catch(e){ o.err=String(e).slice(0,300); }
-putB64('csschk.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+try {
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const ctx = await browser.newContext({ viewport: { width: 900, height: 1100 }, ignoreHTTPSErrors: true });
+  const page = await ctx.newPage();
+  const U = process.env.WP_USER || '', P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
+  await page.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
+  await page.waitForSelector('#user_login', { timeout: 10000 });
+  await page.fill('#user_login', U); await page.fill('#user_pass', P);
+  await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
+  await page.goto('https://dev.avesa.lt/my-account/augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
+  await page.waitForTimeout(2500);
+  await page.evaluate(() => {
+    var host = document.getElementById('pspet-synthetic') || (function(){var h=document.createElement('div');h.id='pspet-synthetic';document.body.prepend(h);return h;})();
+    window.PetshopPetForm.mount(host, { step:2, data:{ species:'dog', pet_name:'Reksas' } });
+  });
+  await page.waitForTimeout(400);
+  await page.evaluate(() => {
+    var pill = document.querySelector('.pspet-step.pspet-is-active .pspet-pill');
+    if (pill) pill.click();
+    var next = document.querySelector('.pspet-btn-primary');
+    if (next) next.click();
+  });
+  await page.waitForTimeout(500);
+  // Use CDP to get matched CSS rules for the done card
+  o.result = await page.evaluate(() => {
+    var card = document.querySelector('.pspet-step.pspet-is-done');
+    if (!card) return { error: 'no done card' };
+    var cs = getComputedStyle(card);
+    // walk up: is it the card itself or a parent that's hidden?
+    var chain = [];
+    var el = card;
+    for (var i=0; i<5 && el; i++) {
+      var s = getComputedStyle(el);
+      chain.push({ tag: el.tagName, cls: (el.className||'').toString().slice(0,60), display: s.display, height: s.height });
+      el = el.parentElement;
+    }
+    return { cardClassList: card.className, cardDisplay: cs.display, chain: chain, cardInlineStyle: card.getAttribute('style') };
+  });
+  await browser.close();
+} catch (e) { o.fatal = String(e).slice(0,400); }
+putB64('whodone.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
