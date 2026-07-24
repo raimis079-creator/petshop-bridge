@@ -17,7 +17,7 @@ const o={};
 for(const rel of ['includes/class-feeding-service.php','MU:petshop-feeding-calc-rest.php']){
   const tmp='/tmp/l_'+rel.replace(/[\/:]/g,'_'); fs.writeFileSync(tmp, Buffer.from(FILES[rel],'base64'));
   const r=execSync('php -l '+tmp+' 2>&1').toString();
-  if(!/No syntax errors/.test(r)){ o.abort='LINT '+rel+' '+r.slice(0,150); putB64('s228g.json',Buffer.from(JSON.stringify(o)).toString('base64')); process.exit(0);}
+  if(!/No syntax errors/.test(r)){ o.abort='LINT '+rel+' '+r.slice(0,150); putB64('s228h.json',Buffer.from(JSON.stringify(o)).toString('base64')); process.exit(0);}
 }
 const mk=wj('POST','code-snippets/v1/snippets',{name:'S228F (temp)',code:Buffer.from(W,'base64').toString('utf8'),scope:'front-end',active:true,priority:5});
 let sid; try{sid=JSON.parse(mk).id;}catch(e){}
@@ -31,5 +31,5 @@ let sid2; try{sid2=JSON.parse(mk2).id;}catch(e){o.mk2=String(mk2).slice(0,120);}
 execSync('sleep 4');
 try{const r=execSync('curl -sk "https://dev.avesa.lt/?ps_v11=V11x"',{maxBuffer:5*1024*1024,timeout:60000}).toString();o.ver=r.slice(r.indexOf('{'),r.lastIndexOf('}')+1).slice(0,1500);}catch(e){o.ver='ERR';}
 if(sid2){ try{wj('POST','code-snippets/v1/snippets/'+sid2,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid2+'"');}catch(e){} }
-putB64('s228g.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('s228h.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
