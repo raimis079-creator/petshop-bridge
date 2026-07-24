@@ -20,17 +20,12 @@ const browser = await chromium.launch({ args: ['--no-sandbox'] });
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true });
 const page = await ctx.newPage();
 
-// Admin login via wp-login
+const U = process.env.WP_USER || '', P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
 await page.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
 await page.waitForSelector('#user_login', { timeout: 10000 });
-const U = process.env.WP_USER || '', P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
 await page.fill('#user_login', U);
 await page.fill('#user_pass', P);
 await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
-
-// Go to pet module
-await page.goto('https://dev.avesa.lt/mano-paskyra/mano-augintinis/', { waitUntil: 'networkidle', timeout: 30000 });
-await page.waitForTimeout(4000);
 
 const shots = [];
 async function snap(name) {
@@ -40,56 +35,87 @@ async function snap(name) {
   shots.push(path);
 }
 
+// 1. Dashboard
+await page.goto('https://dev.avesa.lt/mano-paskyra/mano-augintinis/', { waitUntil: 'networkidle', timeout: 30000 });
+await page.waitForTimeout(4000);
 await snap('01_dashboard');
 
-// Open create form — look for button
-const btns = await page.$$('button, a');
-for (const b of btns) {
-  const txt = await b.textContent().catch(() => '');
-  if (/Sukurti|Pridėti|Naujas/.test(txt) && await b.isVisible().catch(() => false)) {
-    await b.click();
-    await page.waitForTimeout(2000);
-    break;
-  }
-}
-await snap('02_form_open');
+// 2. Form page with action=create — triggers form
+await page.goto('https://dev.avesa.lt/mano-paskyra/mano-augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
+await page.waitForTimeout(3000);
+await snap('02_step1_empty');
 
-// Try to interact with form steps
-const steps = ['Šuo', 'Katė']; // species buttons
-for (const label of steps) {
-  const el = await page.$(`text="${label}"`);
-  if (el && await el.isVisible().catch(() => false)) {
-    await el.click();
-    await page.waitForTimeout(1000);
-    await snap('03_species_dog');
-    break;
-  }
-}
+// 3. Fill species: click Šuo
+try {
+  await page.click('text=Šuo', { timeout: 5000 });
+  await page.waitForTimeout(1000);
+  await snap('03_species_dog');
+} catch(e) { console.log('no species btn:', e.message); }
 
-// Advance through form steps using Next/Toliau buttons
-for (let i = 4; i <= 15; i++) {
-  let clicked = false;
-  for (const sel of ['button:has-text("Toliau")', 'button:has-text("Tęsti")', '.pspet-form-next', '.pspet-btn-next']) {
-    const b = await page.$(sel);
-    if (b && await b.isVisible().catch(() => false)) {
-      await b.click();
-      await page.waitForTimeout(2000);
-      clicked = true;
-      break;
-    }
-  }
-  if (!clicked) break;
-  await snap(String(i).padStart(2, '0') + '_step');
-}
+// 4. Fill name
+try {
+  const ni = await page.$('input[name="pet_name"], input[placeholder*="ard"], input[placeholder*="Augintinio"]');
+  if (ni) { await ni.fill('TestShot'); await page.waitForTimeout(500); }
+  await snap('04_name_filled');
+} catch(e) {}
+
+// 5. Fill breed via datalist — type first chars
+try {
+  const bi = await page.$('input[list], input[name="breed"], input[placeholder*="eislė"], input[placeholder*="Ieško"]');
+  if (bi) { await bi.fill('Rotve'); await page.waitForTimeout(1000); }
+  await snap('05_breed');
+} catch(e) {}
+
+// 6. Birth date
+try {
+  // LT date selects (year/month/day)
+  const ysel = await page.$('select[name*="year"], select.pspet-year');
+  if (ysel) { await ysel.selectOption('2024'); await page.waitForTimeout(300); }
+  const msel = await page.$('select[name*="month"], select.pspet-month');
+  if (msel) { await msel.selectOption({ index: 3 }); await page.waitForTimeout(300); }
+  const dsel = await page.$('select[name*="day"], select.pspet-day');
+  if (dsel) { await dsel.selectOption('15'); await page.waitForTimeout(300); }
+  await snap('06_birth_date');
+} catch(e) {}
+
+// 7. Weight
+try {
+  const wi = await page.$('input[name="weight"], input[name*="svoris"], input[type="number"]');
+  if (wi) { await wi.fill('25'); await page.waitForTimeout(500); }
+  await snap('07_weight');
+} catch(e) {}
+
+// 8. Click Toliau to step 2
+try {
+  await page.click('button:has-text("Toliau")', { timeout: 5000 });
+  await page.waitForTimeout(2000);
+  await snap('08_step2');
+} catch(e) { console.log('no Toliau:', e.message); }
+
+// 9. Step 2 content — food, allergies
+await snap('09_step2_full');
+
+// 10. Scroll down if needed
+try {
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await page.waitForTimeout(1000);
+  await snap('10_step2_bottom');
+} catch(e) {}
+
+// 11. Try Toliau to step 3
+try {
+  await page.click('button:has-text("Toliau")', { timeout: 5000 });
+  await page.waitForTimeout(2000);
+  await snap('11_step3_result');
+} catch(e) { console.log('no step3:', e.message); }
 
 await browser.close();
 
-// Upload
 const manifest = {};
 for (const p of shots) {
   const name = p.split('/').pop();
   const rc = putB64(name, fs.readFileSync(p).toString('base64'));
   manifest[name] = rc;
 }
-putB64('shots2_manifest.json', Buffer.from(JSON.stringify(manifest)).toString('base64'));
+putB64('shots3_manifest.json', Buffer.from(JSON.stringify(manifest)).toString('base64'));
 console.log('done', JSON.stringify(manifest));
