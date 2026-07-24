@@ -160,5 +160,5 @@ try {
 for (const name of shots) {
   try { putB64(name + '.png', fs.readFileSync('/tmp/' + name + '.png').toString('base64')); } catch(e){}
 }
-putB64('full9.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('full10.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('DONE', shots.length);
