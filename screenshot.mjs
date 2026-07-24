@@ -10,7 +10,7 @@ const o={};
 try {
   const { chromium } = await import('playwright');
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
-  const ctx = await browser.newContext({ viewport: { width: 900, height: 1100 }, ignoreHTTPSErrors: true });
+  const ctx = await browser.newContext({ viewport: { width: 1000, height: 1200 }, ignoreHTTPSErrors: true });
   const page = await ctx.newPage();
   const U = process.env.WP_USER || '', P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
   await page.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
@@ -19,36 +19,32 @@ try {
   await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
   await page.goto('https://dev.avesa.lt/my-account/augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
   await page.waitForTimeout(2500);
+
+  // What does the user ACTUALLY see on this page right now?
+  o.pageState = await page.evaluate(() => ({
+    hasFormHost: !!document.querySelector('#pspet-form-host'),
+    formHostVisible: (function(){ var h=document.querySelector('#pspet-form-host'); return h ? getComputedStyle(h).display : 'no host'; })(),
+    hasProfileDiv: !!document.querySelector('#pspet-profile'),
+    hasWrap: !!document.querySelector('.pspet-wrap'),
+    bodyText: (document.querySelector('.woocommerce-MyAccount-content')||document.body).innerText.slice(0,400)
+  }));
+  const buf0 = await page.screenshot({ fullPage: true });
+  fs.writeFileSync('/tmp/live_asis.png', buf0);
+
+  // Force-mount for real preview (dog)
   await page.evaluate(() => {
-    var host = document.getElementById('pspet-synthetic') || (function(){var h=document.createElement('div');h.id='pspet-synthetic';document.body.prepend(h);return h;})();
+    var host = document.querySelector('#pspet-form-host');
+    if (host) host.style.display = '';
+    if (!host) { host = document.createElement('div'); host.id='pspet-synthetic'; var c=document.querySelector('.woocommerce-MyAccount-content')||document.body; c.prepend(host); }
     window.PetshopPetForm.mount(host, { step:2, data:{ species:'dog', pet_name:'Reksas' } });
   });
-  await page.waitForTimeout(400);
-  await page.evaluate(() => {
-    var pill = document.querySelector('.pspet-step.pspet-is-active .pspet-pill');
-    if (pill) pill.click();
-    var next = document.querySelector('.pspet-btn-primary');
-    if (next) next.click();
-  });
-  await page.waitForTimeout(500);
-  o.doneCard = await page.evaluate(() => {
-    var card = document.querySelector('.pspet-step.pspet-is-done');
-    if (!card) return { error:'no done card' };
-    var head = card.querySelector('.pspet-step-head');
-    var r = head ? head.getBoundingClientRect() : null;
-    return { cardDisplay: getComputedStyle(card).display, headW: r?Math.round(r.width):0, headH: r?Math.round(r.height):0 };
-  });
-  // reopen click
-  await page.evaluate(() => { var h=document.querySelector('.pspet-step.pspet-is-done .pspet-step-head'); if(h) h.click(); });
-  await page.waitForTimeout(500);
-  o.afterReopen = await page.evaluate(() => ({
-    activeIdx: (function(){ var idx=-1; document.querySelectorAll('.pspet-step').forEach(function(s,i){ if(s.classList.contains('pspet-is-active')) idx=i; }); return idx; })(),
-    activeBodyVisible: !!document.querySelector('.pspet-step.pspet-is-active .pspet-step-body')
-  }));
-  const buf = await page.screenshot({ fullPage: true });
-  fs.writeFileSync('/tmp/v2.png', buf);
+  await page.waitForTimeout(600);
+  const buf1 = await page.screenshot({ fullPage: true });
+  fs.writeFileSync('/tmp/live_dog.png', buf1);
+
   await browser.close();
 } catch (e) { o.fatal = String(e).slice(0,400); }
-try { putB64('v2.png', fs.readFileSync('/tmp/v2.png').toString('base64')); } catch(e){}
-putB64('verify2.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+try { putB64('live_asis.png', fs.readFileSync('/tmp/live_asis.png').toString('base64')); } catch(e){}
+try { putB64('live_dog.png', fs.readFileSync('/tmp/live_dog.png').toString('base64')); } catch(e){}
+putB64('livecheck.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
