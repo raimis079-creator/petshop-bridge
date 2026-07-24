@@ -28,7 +28,7 @@ try {
   await page.fill('#user_login', U); await page.fill('#user_pass', P);
   await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
 
-  await page.goto('https://dev.avesa.lt/mano-paskyra/mano-augintinis/', { waitUntil: 'networkidle', timeout: 30000 });
+  await page.goto('https://dev.avesa.lt/mano-paskyra/mano-augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
   await page.waitForTimeout(3000);
 
   o.hasPetshopPetForm = await page.evaluate(() => !!window.PetshopPetForm);
