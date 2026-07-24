@@ -15,150 +15,120 @@ function putB64(name, b64) {
 }
 const o = {};
 const shots = [];
-try {
-  const { chromium } = await import('playwright');
-  const browser = await chromium.launch({ args: ['--no-sandbox'] });
-  const ctx = await browser.newContext({ viewport: { width: 900, height: 1100 }, ignoreHTTPSErrors: true });
-  const page = await ctx.newPage();
-  page.on('pageerror', err => { o.pageerror = o.pageerror || []; o.pageerror.push(String(err).slice(0,300)); });
-
-  const U = process.env.WP_USER || '', P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
+async function login(page, U, P){
   await page.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
   await page.waitForSelector('#user_login', { timeout: 10000 });
   await page.fill('#user_login', U); await page.fill('#user_pass', P);
   await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
+}
+function mountJS(spData, editPetId){
+  var arg = JSON.stringify({ step:2, petId: editPetId||null, data: spData });
+  return `(function(){
+    var host = document.getElementById('pspet-synthetic');
+    if(!host){ host=document.createElement('div'); host.id='pspet-synthetic'; document.body.prepend(host); }
+    var opts = ${arg};
+    if(!opts.petId) delete opts.petId;
+    window.PetshopPetForm.mount(host, opts);
+  })()`;
+}
+try {
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch({ args: ['--no-sandbox'] });
+  const U = process.env.WP_USER || '', P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
 
-  await page.goto('https://dev.avesa.lt/my-account/augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
-  await page.waitForTimeout(2500);
+  // ---- PAGE A: species variety (fresh, one page, sequential mounts) ----
+  const ctxA = await browser.newContext({ viewport: { width: 900, height: 1100 }, ignoreHTTPSErrors: true });
+  const pageA = await ctxA.newPage();
+  await login(pageA, U, P);
+  await pageA.goto('https://dev.avesa.lt/my-account/augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
+  await pageA.waitForTimeout(2000);
 
-  o.hasPetshopPetForm = await page.evaluate(() => !!window.PetshopPetForm);
-  o.hasHost = await page.evaluate(() => !!document.querySelector('#pspet-form-host'));
-
-  async function snap(name) {
-    const buf = await page.screenshot({ fullPage: true });
-    fs.writeFileSync('/tmp/' + name + '.png', buf);
-    shots.push(name);
-  }
-
-  // ---- DOG accordion ----
-  o.mountDog = await page.evaluate(() => {
-    try {
-      var host = document.getElementById('pspet-synthetic'); if(!host){ host=document.createElement('div'); host.id='pspet-synthetic'; document.body.prepend(host); }
-      window.PetshopPetForm.mount(host, { step: 2, data: { species: 'dog', pet_name: 'Reksas' } });
-      return 'ok';
-    } catch (e) { return 'ERR:' + String(e); }
-  });
-  await page.waitForTimeout(500);
-  await snap('c01_dog_accordion');
-  o.dogInfo = await page.evaluate(() => ({
-    segs: document.querySelectorAll('.pspet-ring-seg').length,
-    steps: document.querySelectorAll('.pspet-step').length,
-    ringtext: (document.querySelector('.pspet-ringtext')||{}).textContent||'',
-    heroTitle: (document.querySelector('.pspet-hero .pspet-title')||{}).textContent||'',
-    ariaBtn: (function(){ var b=document.querySelector('.pspet-step-head[aria-expanded]'); return b?{tag:b.tagName,exp:b.getAttribute('aria-expanded'),ctrl:b.getAttribute('aria-controls')}:null; })()
-  }));
-
-  // click a pill in active section + Toliau
-  try {
-    const pill = await page.$('.pspet-step.active .pspet-pill');
-    if (pill) await pill.click();
-    const next = await page.$('.pspet-btn-primary');
-    if (next) await next.click();
-    await page.waitForTimeout(500);
-  } catch(e){ o.clickErr = String(e).slice(0,200); }
-  await snap('c02_dog_after_toliau');
-  o.afterToliau = await page.evaluate(() => ({
-    doneCount: document.querySelectorAll('.pspet-step.done').length,
-    doneSummary: (document.querySelector('.pspet-step.done .s')||{}).textContent||'',
-    ringtext: (document.querySelector('.pspet-ringtext')||{}).textContent||'',
-    activeIsSecond: (document.querySelectorAll('.pspet-step')[1]||{}).classList ? document.querySelectorAll('.pspet-step')[1].classList.contains('active') : false,
-    nextBtnLabel: (document.querySelector('.pspet-btn-primary')||{}).textContent||''
-  }));
-
-  // click back on the DONE step-1 header to reopen for editing
-  try {
-    const doneHead = await page.$('.pspet-step.done .pspet-step-head');
-    if (doneHead) await doneHead.click();
-    await page.waitForTimeout(400);
-  } catch(e){ o.reopenErr = String(e).slice(0,200); }
-  await snap('c03_dog_reopen_step1');
-  o.reopenInfo = await page.evaluate(() => ({
-    activeIdx: (function(){ var idx=-1; document.querySelectorAll('.pspet-step').forEach(function(s,i){ if(s.classList.contains('active')) idx=i; }); return idx; })(),
-    doneStillTracked: document.querySelectorAll('.pspet-step.done').length
-  }));
-
-  // ---- FISH (single-section, no accordion chrome) ----
-  await page.evaluate(() => {
-    var host = document.getElementById('pspet-synthetic'); if(!host){ host=document.createElement('div'); host.id='pspet-synthetic'; document.body.prepend(host); }
-    window.PetshopPetForm.mount(host, { step: 2, data: { species: 'fish', pet_name: 'Nemo' } });
-  });
-  await page.waitForTimeout(400);
-  await snap('c04_fish_single');
-  o.fishInfo = await page.evaluate(() => ({
+  await pageA.evaluate(mountJS({ species:'fish', pet_name:'Nemo' }));
+  await pageA.waitForTimeout(500);
+  o.fishInfo = await pageA.evaluate(() => ({
     segs: document.querySelectorAll('.pspet-ring-seg').length,
     hasRing: !!document.querySelector('.pspet-ring-wrap'),
     single: document.querySelectorAll('.pspet-section-single').length,
     hasRingText: !!document.querySelector('.pspet-ringtext'),
-    nextBtnLabel: (document.querySelector('.pspet-btn-primary')||{}).textContent||''
+    nextBtnLabel: (document.querySelector('.pspet-btn-primary')||{}).textContent||'',
+    heroTitle: (document.querySelector('.pspet-hero .pspet-title')||{}).textContent||''
   }));
+  const bufF = await pageA.screenshot({ fullPage: true });
+  fs.writeFileSync('/tmp/d11_fish.png', bufF); shots.push('d11_fish');
 
-  // ---- BIRD (3 sections, sparse fields) ----
-  await page.evaluate(() => {
-    var host = document.getElementById('pspet-synthetic'); if(!host){ host=document.createElement('div'); host.id='pspet-synthetic'; document.body.prepend(host); }
-    window.PetshopPetForm.mount(host, { step: 2, data: { species: 'bird', pet_name: 'Kokis' } });
-  });
-  await page.waitForTimeout(400);
-  await snap('c05_bird_accordion');
-  o.birdInfo = await page.evaluate(() => ({
+  await pageA.evaluate(mountJS({ species:'bird', pet_name:'Kokis' }));
+  await pageA.waitForTimeout(500);
+  o.birdInfo = await pageA.evaluate(() => ({
     segs: document.querySelectorAll('.pspet-ring-seg').length,
     steps: document.querySelectorAll('.pspet-step').length,
     ringtext: (document.querySelector('.pspet-ringtext')||{}).textContent||''
   }));
+  const bufB = await pageA.screenshot({ fullPage: true });
+  fs.writeFileSync('/tmp/d11_bird.png', bufB); shots.push('d11_bird');
 
-  // ---- EDIT-MODE restore: pet with existing about+wellbeing data, daily empty ----
-  await page.evaluate(() => {
-    var host = document.getElementById('pspet-synthetic'); if(!host){ host=document.createElement('div'); host.id='pspet-synthetic'; document.body.prepend(host); }
-    window.PetshopPetForm.mount(host, { step: 2, petId: 999, data: {
-      species: 'dog', pet_name: 'Senas',
-      birth_date: '2022-01-01', dog_size: 'medium', species_detail: 'Labradoras',
-      is_sterilised: 'yes', activity_hint: 'moderate', sensitivities: 'chicken',
-      housing: null, feeding_type: null
-    }});
-  });
-  await page.waitForTimeout(400);
-  await snap('c06_edit_restore');
-  o.editRestore = await page.evaluate(() => ({
+  await pageA.evaluate(mountJS({
+    species:'dog', pet_name:'Senas',
+    birth_date:'2022-01-01', dog_size:'medium', species_detail:'Labradoras',
+    is_sterilised:'yes', activity_hint:'moderate', sensitivities:'chicken',
+    housing:null, feeding_type:null
+  }, 999));
+  await pageA.waitForTimeout(500);
+  o.editRestore = await pageA.evaluate(() => ({
     doneCount: document.querySelectorAll('.pspet-step.done').length,
     activeIdx: (function(){ var idx=-1; document.querySelectorAll('.pspet-step').forEach(function(s,i){ if(s.classList.contains('active')) idx=i; }); return idx; })(),
     ringtext: (document.querySelector('.pspet-ringtext')||{}).textContent||'',
-    aboutSummary: (document.querySelectorAll('.pspet-step .s')[0]||{}).textContent||''
+    doneSummaries: Array.from(document.querySelectorAll('.pspet-step.done .s')).map(e=>e.textContent)
   }));
+  const bufE = await pageA.screenshot({ fullPage: true });
+  fs.writeFileSync('/tmp/d11_editrestore.png', bufE); shots.push('d11_editrestore');
+  await ctxA.close();
 
-  // ---- Mobile viewport check ----
-  await ctx.close();
-  const ctx2 = await browser.newContext({ viewport: { width: 375, height: 800 }, ignoreHTTPSErrors: true });
-  const page2 = await ctx2.newPage();
-  await page2.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
-  await page2.waitForSelector('#user_login', { timeout: 10000 });
-  await page2.fill('#user_login', U); await page2.fill('#user_pass', P);
-  await Promise.all([page2.waitForNavigation({ waitUntil: 'networkidle' }), page2.click('#wp-submit')]);
-  await page2.goto('https://dev.avesa.lt/my-account/augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
-  await page2.waitForTimeout(2000);
-  await page2.evaluate(() => {
-    var host = document.getElementById('pspet-synthetic'); if(!host){ host=document.createElement('div'); host.id='pspet-synthetic'; document.body.prepend(host); }
-    window.PetshopPetForm.mount(host, { step: 2, data: { species: 'dog', pet_name: 'Reksas' } });
+  // ---- PAGE B: reopen-click test via direct JS dispatch (no Playwright visibility wait) ----
+  const ctxB = await browser.newContext({ viewport: { width: 900, height: 1100 }, ignoreHTTPSErrors: true });
+  const pageB = await ctxB.newPage();
+  await login(pageB, U, P);
+  await pageB.goto('https://dev.avesa.lt/my-account/augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
+  await pageB.waitForTimeout(2000);
+  await pageB.evaluate(mountJS({ species:'dog', pet_name:'Reksas' }));
+  await pageB.waitForTimeout(400);
+  // pick a pill, click Toliau via direct dispatch
+  await pageB.evaluate(() => {
+    var pill = document.querySelector('.pspet-step.active .pspet-pill');
+    if (pill) pill.click();
+    var next = document.querySelector('.pspet-btn-primary');
+    if (next) next.click();
   });
-  await page2.waitForTimeout(400);
-  const buf2 = await page2.screenshot({ fullPage: true });
-  fs.writeFileSync('/tmp/c07_mobile.png', buf2);
-  shots.push('c07_mobile');
+  await pageB.waitForTimeout(500);
+  o.step1ToStep2 = await pageB.evaluate(() => ({
+    doneCount: document.querySelectorAll('.pspet-step.done').length,
+    ringtext: (document.querySelector('.pspet-ringtext')||{}).textContent||''
+  }));
+  // reopen via direct JS click dispatch (bypasses Playwright actionability wait entirely)
+  const reopenRes = await pageB.evaluate(() => {
+    try {
+      var doneHead = document.querySelector('.pspet-step.done .pspet-step-head');
+      if (!doneHead) return 'NO_DONE_HEAD_FOUND';
+      var rect = doneHead.getBoundingClientRect();
+      var visible = rect.width > 0 && rect.height > 0;
+      doneHead.click();
+      return 'clicked, wasVisible=' + visible + ' rect=' + JSON.stringify(rect);
+    } catch (e) { return 'ERR:' + String(e); }
+  });
+  o.reopenDirectClick = reopenRes;
+  await pageB.waitForTimeout(500);
+  o.afterReopen = await pageB.evaluate(() => ({
+    activeIdx: (function(){ var idx=-1; document.querySelectorAll('.pspet-step').forEach(function(s,i){ if(s.classList.contains('active')) idx=i; }); return idx; })(),
+    doneCount: document.querySelectorAll('.pspet-step.done').length,
+    ariaExpandedActive: (function(){ var b=document.querySelector('.pspet-step.active .pspet-step-head'); return b?b.getAttribute('aria-expanded'):null; })()
+  }));
+  const bufR = await pageB.screenshot({ fullPage: true });
+  fs.writeFileSync('/tmp/d11_reopen.png', bufR); shots.push('d11_reopen');
+  await ctxB.close();
 
   await browser.close();
-} catch (e) {
-  o.fatal = String(e).slice(0,400);
-}
+} catch (e) { o.fatal = String(e).slice(0,500); }
 for (const name of shots) {
   try { putB64(name + '.png', fs.readFileSync('/tmp/' + name + '.png').toString('base64')); } catch(e){}
 }
-putB64('full10.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('full11.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('DONE', shots.length);
