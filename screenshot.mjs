@@ -13,14 +13,15 @@ function putB64(name, b64) {
   }
   return 'fail';
 }
-const o = {};
+const o = { failed: [], scripts: [] };
 try {
   const { chromium } = await import('playwright');
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const ctx = await browser.newContext({ viewport: { width: 900, height: 1000 }, ignoreHTTPSErrors: true });
   const page = await ctx.newPage();
-  page.on('console', msg => { o.console = o.console || []; o.console.push(msg.text().slice(0,200)); });
-  page.on('pageerror', err => { o.pageerror = o.pageerror || []; o.pageerror.push(String(err).slice(0,300)); });
+  page.on('requestfailed', req => { o.failed.push(req.url() + ' :: ' + (req.failure() ? req.failure().errorText : '')); });
+  page.on('response', res => { if (res.url().includes('pet-form') || res.url().includes('pet-profile')) o.scripts.push(res.url() + ' -> ' + res.status()); });
+  page.on('pageerror', err => { o.pageerror = o.pageerror || []; o.pageerror.push(String(err).slice(0,400)); });
 
   const U = process.env.WP_USER || '', P = (process.env.WP_APP_PASS || '').replace(/\s+/g, '');
   await page.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
@@ -29,42 +30,14 @@ try {
   await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
 
   await page.goto('https://dev.avesa.lt/mano-paskyra/mano-augintinis/?action=create', { waitUntil: 'networkidle', timeout: 30000 });
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(2500);
 
-  o.hasPetshopPetForm = await page.evaluate(() => !!window.PetshopPetForm);
-  o.hasHost = await page.evaluate(() => !!document.querySelector('.pspet-form-root'));
-
-  try {
-    const r1 = await page.evaluate(() => {
-      try {
-        var host = document.querySelector('.pspet-form-root');
-        if (!host) { host = document.createElement('div'); host.className = 'pspet-form-root2'; document.body.prepend(host); }
-        window.PetshopPetForm.mount(host, { step: 2, data: { species: 'dog', pet_name: 'Reksas' } });
-        return 'ok';
-      } catch (e) { return 'ERR: ' + String(e) + ' STACK:' + (e && e.stack ? e.stack.slice(0,400) : ''); }
-    });
-    o.mountResult = r1;
-  } catch (e) { o.mountEvalErr = String(e).slice(0,300); }
-
-  await page.waitForTimeout(600);
-  try {
-    const dogInfo = await page.evaluate(() => {
-      var segs = document.querySelectorAll('.pspet-ring-seg').length;
-      var steps = document.querySelectorAll('.pspet-step').length;
-      var ringtext = (document.querySelector('.pspet-ringtext') || {}).textContent || '';
-      var heroTitle = (document.querySelector('.pspet-hero .pspet-title') || {}).textContent || '';
-      return { segs, steps, ringtext, heroTitle };
-    });
-    o.dogInfo = dogInfo;
-  } catch (e) { o.dogInfoErr = String(e).slice(0,200); }
-
-  const buf = await page.screenshot({ fullPage: true });
-  fs.writeFileSync('/tmp/diag6.png', buf);
+  o.html_has_pspet_form_host = await page.evaluate(() => document.documentElement.innerHTML.includes('pspet-form-host'));
+  o.html_has_ps_pet_form_open = await page.evaluate(() => document.documentElement.innerHTML.includes('PS_PET_FORM_OPEN'));
 
   await browser.close();
 } catch (e) {
-  o.fatal = String(e) + ' STACK:' + (e && e.stack ? e.stack.slice(0,500) : '');
+  o.fatal = String(e).slice(0,400);
 }
-try { putB64('diag6.png', fs.readFileSync('/tmp/diag6.png').toString('base64')); } catch(e){}
-putB64('diag6.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('diag8.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('DONE');
