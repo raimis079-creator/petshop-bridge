@@ -15,7 +15,7 @@ const mk=wj('POST','code-snippets/v1/snippets',{name:'PARSE (temp)',code:Buffer.
 let sid; try{sid=JSON.parse(mk).id;}catch(e){}
 execSync('sleep 3');
 let r='';
-try{ r=execSync('curl -sk "https://dev.avesa.lt/?ps_parse=Pr24x"',{maxBuffer:100*1024*1024,timeout:90000}).toString(); }catch(e){ r='ERR '+String(e).slice(0,200); }
+try{ r=execSync('curl -sk "https://dev.avesa.lt/?ps_parse=Pr24x&confirm=APPLY_PARSE"',{maxBuffer:100*1024*1024,timeout:90000}).toString(); }catch(e){ r='ERR '+String(e).slice(0,200); }
 if(sid){ try{wj('POST','code-snippets/v1/snippets/'+sid,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
-putB64('parse.json', Buffer.from(r).toString('base64'));
+putB64('apply.json', Buffer.from(r).toString('base64'));
 console.log('done', r.length);
