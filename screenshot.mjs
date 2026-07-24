@@ -28,8 +28,8 @@ try{
   const mk2=wj('POST','code-snippets/v1/snippets',{name:'P1IVER (temp)',code:V,scope:'front-end',active:true,priority:5});
   let sid2=null; try{sid2=JSON.parse(mk2).id;}catch(e){}
   execSync('sleep 4');
-  try{const r=execSync('curl -sk "https://dev.avesa.lt/?ps_p1i=P1ix"',{maxBuffer:5e6,timeout:60000}).toString();o.ver=r.slice(r.indexOf('{'),r.lastIndexOf('}')+1).slice(0,700);}catch(e){o.ver='ERR';}
+  try{const r=execSync('curl -sk "https://dev.avesa.lt/?ps_vi=Vi24x"',{maxBuffer:5e6,timeout:60000}).toString();o.ver=r.slice(r.indexOf('{'),r.lastIndexOf('}')+1).slice(0,700);}catch(e){o.ver='ERR';}
   if(sid2!==null){ try{wj('POST','code-snippets/v1/snippets/'+sid2,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid2+'"');}catch(e){} }
 }catch(e){ o.err=String(e).slice(0,200); }
-putB64('p1integ.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('verint.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
