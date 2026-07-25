@@ -13,28 +13,19 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
 const o={};
 const CODE=`<?php
 add_action('wp_loaded', function(){
-  if(!isset($_GET['ps_ps']) || $_GET['ps_ps']!=='Psx') return;
-  $dir=WP_PLUGIN_DIR.'/petshop-core/'; $o=array();
-  // rasti product-search endpoint + handler
-  foreach(array_merge(glob($dir.'includes/*.php'),glob(WPMU_PLUGIN_DIR.'/*.php')) as $f){
-    $c=file_get_contents($f);
-    if(strpos($c,'product-search')!==false && strpos($c,'register_rest_route')!==false){
-      $o['ps_file']=basename($f);
-      if(preg_match('/function\\s+([a-z_]*product[a-z_]*search[a-z_]*)\\s*\\([^)]*\\)\\s*\\{/i',$c,$m)){
-        $fp=strpos($c,$m[0]); $o['handler']=mb_substr($c,$fp,2500);
-      }
-      break;
-    }
-  }
-  header('Content-Type: application/json'); echo json_encode($o); exit;
+  if(!isset($_GET['ps_gmu']) || $_GET['ps_gmu']!=='Gmux') return;
+  $f=WPMU_PLUGIN_DIR.'/petshop-m8-food.php';
+  if(!file_exists($f)){ echo json_encode(array('err'=>'nera','path'=>$f)); exit; }
+  header('Content-Type: application/json'); echo json_encode(array('b64'=>base64_encode(file_get_contents($f)),'bytes'=>filesize($f),'sha'=>substr(hash_file('sha256',$f),0,16))); exit;
 });`;
 try{
-  const mk=wj('POST','code-snippets/v1/snippets',{name:'PS (temp)',code:CODE,scope:'front-end',active:true,priority:5});
+  const mk=wj('POST','code-snippets/v1/snippets',{name:'GMU (temp)',code:CODE,scope:'front-end',active:true,priority:5});
   let sid=null; try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 4');
-  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_ps=Psx"',{maxBuffer:5e6,timeout:60000}).toString();
-  const a=r.indexOf('{'),b=r.lastIndexOf('}'); o.result=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):r.slice(0,300);
+  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_gmu=Gmux"',{maxBuffer:15e6,timeout:60000}).toString();
+  const a=r.indexOf('{'),b=r.lastIndexOf('}'); const dd=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):null;
+  o.b64=dd?dd.b64:null; o.bytes=dd?dd.bytes:null; o.sha=dd?dd.sha:null; o.err=dd?dd.err:null;
   if(sid!=null){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
 }catch(e){o.err=String(e).slice(0,200);}
-putB64('psrecon.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('getmu.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
