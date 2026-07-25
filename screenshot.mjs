@@ -13,36 +13,43 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
 const o={};
 const CODE=`<?php
 add_action('wp_loaded', function(){
-  if(!isset($_GET['ps_nc']) || $_GET['ps_nc']!=='Ncx') return;
-  wp_set_current_user(1); $o=array();
-  // asse kate = id 144 (admin primary). dashboard payload pet objektas
-  $rq=new WP_REST_Request('GET'); $rq['id']=144;
-  $res=Petshop_Pet_Dashboard::handle_dashboard($rq); $d=$res->get_data();
-  $pet=$d['dashboard']['pet']??array();
-  // istraukiam maisto laukus
-  $o['state']=$d['dashboard']['state']??null;
-  $o['pet_fields']=array(
-    'primary_product_id'=>$pet['primary_product_id']??'NERA',
-    'primary_product_name'=>$pet['primary_product_name']??'NERA',
-    'primary_product_image'=>isset($pet['primary_product_image'])?(($pet['primary_product_image']?'YRA':'tuscia')):'NERA_RAKTO',
-    'primary_product_package'=>$pet['primary_product_package']??'NERA',
-    'current_food_brand'=>$pet['current_food_brand']??'NERA',
-  );
-  // DB tiksliai - ka turi ps_pets 144
-  global $wpdb;
-  $row=$wpdb->get_row("SELECT primary_product_id,primary_product_name,primary_product_package,current_food_brand FROM {$wpdb->prefix}ps_pets WHERE id=144",ARRAY_A);
-  $o['db_row']=$row;
-  // ar format_pet grazina primary_product_name
-  $o['format_pet_keys']=array_keys($pet);
+  if(!isset($_GET['ps_fm']) || $_GET['ps_fm']!=='Fmx') return;
+  global $wpdb; $o=array();
+  $t=$wpdb->prefix.'ps_feeding_map';
+  $o['table_exists']=(bool)$wpdb->get_var("SHOW TABLES LIKE '$t'");
+  if($o['table_exists']){
+    $cols=$wpdb->get_results("SHOW COLUMNS FROM $t",ARRAY_A);
+    $o['columns']=array_map(function($c){return $c['Field'];},$cols);
+    $o['total_rows']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t");
+    $o['distinct_active']=$wpdb->get_results("SELECT is_active,COUNT(*) c FROM $t GROUP BY is_active",ARRAY_A);
+    // kiek DISTINCT produktu turi feeding_map (is_active=1)
+    // pirma randam koks stulpelis = produkto ID
+    $sample=$wpdb->get_row("SELECT * FROM $t LIMIT 1",ARRAY_A);
+    $o['sample_row_keys']=$sample?array_keys($sample):array();
+    // spejam product_id stulpeli
+    foreach(array('product_id','post_id','pid','wc_product_id') as $pc){
+      if($sample && array_key_exists($pc,$sample)){
+        $o['product_col']=$pc;
+        $o['distinct_products_active']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT $pc) FROM $t WHERE is_active=1");
+        $o['distinct_products_all']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT $pc) FROM $t");
+        break;
+      }
+    }
+    // ontario adult 17299 - ar turi feeding_map?
+    if(isset($o['product_col'])){$pc=$o['product_col'];
+      $o['ontario_17299_has']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE $pc=17299 AND is_active=1");
+      $o['ontario_18095_has']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE $pc=18095 AND is_active=1");
+    }
+  }
   header('Content-Type: application/json'); echo json_encode($o); exit;
 });`;
 try{
-  const mk=wj('POST','code-snippets/v1/snippets',{name:'NC (temp)',code:CODE,scope:'front-end',active:true,priority:5});
+  const mk=wj('POST','code-snippets/v1/snippets',{name:'FM (temp)',code:CODE,scope:'front-end',active:true,priority:5});
   let sid=null; try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 4');
-  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_nc=Ncx"',{maxBuffer:5e6,timeout:60000}).toString();
+  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_fm=Fmx"',{maxBuffer:5e6,timeout:60000}).toString();
   const a=r.indexOf('{'),b=r.lastIndexOf('}'); o.result=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):r.slice(0,300);
   if(sid!=null){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
 }catch(e){o.err=String(e).slice(0,200);}
-putB64('namecheck.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('fmrecon.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
