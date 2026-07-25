@@ -16,58 +16,44 @@ try {
   await page.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
   await page.waitForSelector('#user_login', { timeout: 10000 });
   await page.fill('#user_login', U); await page.fill('#user_pass', P);
-  await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 20000 }).catch(function(){}), page.click('#wp-submit')]);
+  await Promise.all([page.waitForNavigation({ waitUntil:'domcontentloaded', timeout:20000 }).catch(function(){}), page.click('#wp-submit')]);
   await page.goto('https://dev.avesa.lt/my-account/augintinis/', { waitUntil: 'domcontentloaded', timeout: 30000 });
-  await page.waitForTimeout(3500);
+  // Laukiu kol JS surenderina profili
+  await page.waitForSelector('.pspet-profile', { timeout: 20000 }).catch(function(){});
+  await page.waitForTimeout(2500);
 
-  // Kiek augintiniu switcher'yje
-  var petChips = await page.evaluate(() => {
-    var chips = Array.from(document.querySelectorAll('[class*="switch"] [class*="pet"], .pspet-switcher > *'));
-    return chips.length;
-  });
-  o.switcherCount = petChips;
-
-  // Funkcija: perskaityti dabartini profili
-  async function readProfile(idx){
+  async function readProfile(){
     return await page.evaluate(() => {
-      function txt(sel){ var e=document.querySelector(sel); return e?e.textContent.trim().slice(0,80):null; }
-      // hero
-      var hero = document.querySelector('.pspet-profile') || document.body;
-      var chipEls = Array.from(document.querySelectorAll('.pspet-profile span')).map(s=>s.textContent.trim()).filter(t=>t&&t.length<40&&t.length>2);
-      // Kas svarbu dabar
+      var prof = document.querySelector('.pspet-profile');
       var now = document.querySelector('.pspet-now');
-      var nowKind = now ? now.getAttribute('data-shown') : null;
-      var nowTitle = document.querySelector('.pspet-now-t') ? document.querySelector('.pspet-now-t').textContent.trim() : null;
-      // Moduliai - ieškau kortelių pagal antraštes
-      var cardTitles = Array.from(document.querySelectorAll('.pspet-modgrid > div')).map(c=>{
-        var h = c.querySelector('div');
-        return h ? h.textContent.trim().slice(0,30) : '?';
-      });
-      var bodyText = (document.querySelector('.pspet-modgrid')||document.body).innerText;
+      var grid = document.querySelector('.pspet-modgrid');
+      var bodyText = (grid||document.body).innerText;
+      var name = document.querySelector('.pspet-profile') ? (document.querySelector('.pspet-profile').innerText.split('\n')[0]||'').slice(0,30) : null;
+      // moduliu antrastes
+      var mods = grid ? Array.from(grid.children).map(function(c){ return (c.innerText||'').split('\n')[0].slice(0,25); }) : [];
       return {
-        hasNow: !!now, nowKind: nowKind, nowTitle: nowTitle,
-        modules: cardTitles,
-        hasRepeat: bodyText.includes('Įprasti pirkiniai') || bodyText.includes('Pakartoti'),
-        hasFeedingSetup: bodyText.includes('Nustatyti maistą'),
-        hasFeedingPlan: bodyText.includes('Peržiūrėti planą'),
-        hasShelf: bodyText.includes('Maisto dar ~'),
-        hasRefillFb: bodyText.includes('Dar liko') && bodyText.includes('Baigsis anksčiau'),
-        hasNenurodyta: document.querySelector('.pspet-profile') ? document.querySelector('.pspet-profile').innerHTML.includes('Nenurodyta') : false
+        name: name,
+        hasNow: !!now, nowKind: now?now.getAttribute('data-shown'):null,
+        nowTitle: document.querySelector('.pspet-now-t')?document.querySelector('.pspet-now-t').innerText.trim():null,
+        modules: mods,
+        repeatVisible: bodyText.includes('Įprasti pirkiniai'),
+        feedingSetup: bodyText.includes('Nustatyti maistą'),
+        feedingPlan: bodyText.includes('Peržiūrėti planą'),
+        shelf: bodyText.includes('Maisto dar ~'),
+        refillFb: bodyText.includes('Dar liko'),
+        nenurodyta: prof?prof.innerHTML.includes('Nenurodyta'):false
       };
     });
   }
-
-  // Perjungiu per visus augintinius
-  var switchers = await page.$$('.pspet-switcher > *, [class*="pspet-switch"] > *');
-  o.switcherFound = switchers.length;
-  // Skaitau pirma
-  o.pets.push(await readProfile(0));
-  // Bandau perjungti i kitus
+  var switchers = await page.$$('.pspet-switch-item');
+  o.switcherCount = switchers.length;
+  o.pets.push(await readProfile());
   for (var i=1;i<Math.min(switchers.length,4);i++){
     try {
-      await switchers[i].click();
-      await page.waitForTimeout(2000);
-      o.pets.push(await readProfile(i));
+      var sw = await page.$$('.pspet-switch-item');
+      await sw[i].click();
+      await page.waitForTimeout(2500);
+      o.pets.push(await readProfile());
     } catch(e){ o.pets.push({err:String(e).slice(0,80)}); }
   }
   await browser.close();
