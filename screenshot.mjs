@@ -16,8 +16,8 @@ try {
   await page.goto('https://dev.avesa.lt/wp-login.php', { timeout: 30000 });
   await page.waitForSelector('#user_login', { timeout: 10000 });
   await page.fill('#user_login', U); await page.fill('#user_pass', P);
-  await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
-  await page.goto('https://dev.avesa.lt/my-account/augintinis/', { waitUntil: 'networkidle', timeout: 30000 });
+  await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 20000 }).catch(function(){}), page.click('#wp-submit')]);
+  await page.goto('https://dev.avesa.lt/my-account/augintinis/', { waitUntil: 'domcontentloaded', timeout: 30000 });
   await page.waitForTimeout(3500);
 
   // Kiek augintiniu switcher'yje
