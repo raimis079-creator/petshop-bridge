@@ -13,29 +13,36 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
 const o={};
 const CODE=`<?php
 add_action('wp_loaded', function(){
-  if(!isset($_GET['ps_sk']) || $_GET['ps_sk']!=='Skx') return;
-  $r=wp_remote_get("https://dev.avesa.lt/wp-json/petshop/v1/food-search?q=ontario&species=dog",array("timeout"=>30,"sslverify"=>false));
-  $o=array();
-  if(!is_wp_error($r)){$b=json_decode(wp_remote_retrieve_body($r),true);
-    // visi produktai su 'skan' pavadinime
-    $skan=array();foreach(($b["products"]??array()) as $p){if(mb_stripos($p["name"],"skan")!==false){$skan[]=$p["name"];}}
-    $o["skan_produktai"]=$skan;
-    $o["total"]=count($b["products"]??array());
-    // patikrinam pirmo skan produkto kategorijas
-    if(!empty($skan)){global $wpdb;
-      $pid=$wpdb->get_var($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_title=%s LIMIT 1",$skan[0]));
-      if($pid){$cats=$wpdb->get_col($wpdb->prepare("SELECT t.slug FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id JOIN {$wpdb->terms} t ON t.term_id=tt.term_id WHERE tr.object_id=%d AND tt.taxonomy='product_cat'",$pid));
-        $o["pirmo_skan_cats"]=$cats;$o["pirmo_skan_id"]=$pid;}}
-  }
+  if(!isset($_GET['ps_nc']) || $_GET['ps_nc']!=='Ncx') return;
+  wp_set_current_user(1); $o=array();
+  // asse kate = id 144 (admin primary). dashboard payload pet objektas
+  $rq=new WP_REST_Request('GET'); $rq['id']=144;
+  $res=Petshop_Pet_Dashboard::handle_dashboard($rq); $d=$res->get_data();
+  $pet=$d['dashboard']['pet']??array();
+  // istraukiam maisto laukus
+  $o['state']=$d['dashboard']['state']??null;
+  $o['pet_fields']=array(
+    'primary_product_id'=>$pet['primary_product_id']??'NERA',
+    'primary_product_name'=>$pet['primary_product_name']??'NERA',
+    'primary_product_image'=>isset($pet['primary_product_image'])?(($pet['primary_product_image']?'YRA':'tuscia')):'NERA_RAKTO',
+    'primary_product_package'=>$pet['primary_product_package']??'NERA',
+    'current_food_brand'=>$pet['current_food_brand']??'NERA',
+  );
+  // DB tiksliai - ka turi ps_pets 144
+  global $wpdb;
+  $row=$wpdb->get_row("SELECT primary_product_id,primary_product_name,primary_product_package,current_food_brand FROM {$wpdb->prefix}ps_pets WHERE id=144",ARRAY_A);
+  $o['db_row']=$row;
+  // ar format_pet grazina primary_product_name
+  $o['format_pet_keys']=array_keys($pet);
   header('Content-Type: application/json'); echo json_encode($o); exit;
 });`;
 try{
-  const mk=wj('POST','code-snippets/v1/snippets',{name:'SK (temp)',code:CODE,scope:'front-end',active:true,priority:5});
+  const mk=wj('POST','code-snippets/v1/snippets',{name:'NC (temp)',code:CODE,scope:'front-end',active:true,priority:5});
   let sid=null; try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 4');
-  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_sk=Skx"',{maxBuffer:5e6,timeout:60000}).toString();
-  const a=r.indexOf('{'),b=r.lastIndexOf('}'); o.result=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):r.slice(0,250);
+  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_nc=Ncx"',{maxBuffer:5e6,timeout:60000}).toString();
+  const a=r.indexOf('{'),b=r.lastIndexOf('}'); o.result=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):r.slice(0,300);
   if(sid!=null){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
 }catch(e){o.err=String(e).slice(0,200);}
-putB64('skancheck.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('namecheck.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
