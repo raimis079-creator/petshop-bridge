@@ -15,9 +15,9 @@ const PID=144, UID=1;
 try{
   const SEED=`<?php
 add_action('wp_loaded', function(){
-  if(isset($_GET['ps_go3'])){ $tok=sanitize_text_field($_GET['ps_go3']); $uid=get_transient('psg3_'.$tok);
+  if(isset($_GET['ps_go4'])){ $tok=sanitize_text_field($_GET['ps_go4']); $uid=get_transient('psg4_'.$tok);
     if($uid){ wp_set_auth_cookie($uid,false); wp_set_current_user($uid); wp_safe_redirect('https://dev.avesa.lt/my-account/augintinis/'); exit; } }
-  if(isset($_GET['ps_mk3']) && $_GET['ps_mk3']==='Mk3x'){
+  if(isset($_GET['ps_mk4']) && $_GET['ps_mk4']==='Mk4x'){
     global $wpdb; $pf=$wpdb->prefix; $pid=`+PID+`; $uid=`+UID+`;
     $prod=$wpdb->get_var("SELECT ID FROM {$pf}posts WHERE post_type='product' AND post_status='publish' LIMIT 1");
     $wpdb->update("{$pf}ps_pets", array('primary_product_id'=>$prod,'primary_product_name'=>'Royal Canin Sterilised (TEST)','primary_product_package'=>'2 kg'), array('id'=>$pid));
@@ -26,14 +26,14 @@ add_action('wp_loaded', function(){
     $rt=$pf.'ps_refill_tracking';
     if($wpdb->get_var("SHOW TABLES LIKE '$rt'")){ $wpdb->query("DELETE FROM $rt WHERE pet_id=$pid");
       $wpdb->insert($rt, array('user_id'=>$uid,'pet_id'=>$pid,'product_id'=>$prod,'predicted_empty_date'=>date('Y-m-d', time()+9*86400),'avg_interval_days'=>30,'purchase_count'=>3,'confidence'=>0.8,'last_purchase_date'=>date('Y-m-d', time()-21*86400),'status'=>'active')); }
-    $tok=wp_generate_password(20,false); set_transient('psg3_'.$tok,$uid,300);
+    $tok=wp_generate_password(20,false); set_transient('psg4_'.$tok,$uid,300);
     header('Content-Type: application/json'); echo '###T###'.$tok.'###E###'; exit; }
 });`;
-  const mk=wj('POST','code-snippets/v1/snippets',{name:'BSHOT (temp)',code:SEED,scope:'front-end',active:true,priority:5});
+  const mk=wj('POST','code-snippets/v1/snippets',{name:'BSHOT2 (temp)',code:SEED,scope:'front-end',active:true,priority:5});
   let sid=null; try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 4');
   let token=null;
-  try{ const r=execSync('curl -sk "https://dev.avesa.lt/?ps_mk3=Mk3x"',{maxBuffer:5e6,timeout:60000}).toString();
+  try{ const r=execSync('curl -sk "https://dev.avesa.lt/?ps_mk4=Mk4x"',{maxBuffer:5e6,timeout:60000}).toString();
     const a=r.indexOf('###T###'),b=r.indexOf('###E###'); if(a>=0&&b>a) token=r.slice(a+7,b); }catch(e){}
   o.gotToken=!!token;
 
@@ -41,10 +41,9 @@ add_action('wp_loaded', function(){
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const ctx = await browser.newContext({ viewport: { width: 1000, height: 1700 }, ignoreHTTPSErrors: true });
   const page = await ctx.newPage();
-  await page.goto('https://dev.avesa.lt/?ps_go3='+token, { waitUntil:'domcontentloaded', timeout:40000 });
+  await page.goto('https://dev.avesa.lt/?ps_go4='+token, { waitUntil:'domcontentloaded', timeout:40000 });
   // laukiam kol profilis surenderina (REST fetch)
-  await page.waitForSelector('.pspet-profile', { timeout: 20000 }).catch(function(){});
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(8000);
   try { await page.evaluate(() => { document.querySelectorAll('[id*="cmplz"],[class*="cmplz"]').forEach(function(e){if(e&&e.remove)e.remove();}); }); } catch(e){}
   await page.waitForTimeout(1000);
   o.snap = await page.evaluate(() => {
@@ -61,19 +60,15 @@ add_action('wp_loaded', function(){
       testProduct: t.includes('TEST')
     };
   });
-  // screenshot tik profilio elemento (greiciau, be Mixed Content laukimo)
-  try {
-    var el = await page.$('.pspet-profile');
-    if (el) { const buf=await el.screenshot({ timeout:20000 }); fs.writeFileSync('/tmp/bcshot.png', buf); shots.push('bcshot'); }
-    else { const buf=await page.screenshot({ timeout:20000 }); fs.writeFileSync('/tmp/bcshot.png', buf); shots.push('bcshot'); }
-  } catch(e){ o.shoterr=String(e).slice(0,100); }
+  try { const buf=await page.screenshot({ fullPage:true, timeout:30000 }); fs.writeFileSync('/tmp/bcshot.png', buf); shots.push('bcshot'); }
+  catch(e){ o.shoterr=String(e).slice(0,100); try{ const b2=await page.screenshot({ timeout:20000 }); fs.writeFileSync('/tmp/bcshot.png', b2); shots.push('bcshot'); }catch(e2){} }
 
   await browser.close();
 
   // CLEAN
   const CLEAN=`<?php
 add_action('wp_loaded', function(){
-  if(!isset($_GET['ps_c8']) || $_GET['ps_c8']!=='C8x') return;
+  if(!isset($_GET['ps_c9']) || $_GET['ps_c9']!=='C9x') return;
   global $wpdb; $pf=$wpdb->prefix; $pid=`+PID+`;
   $wpdb->update("{$pf}ps_pets", array('primary_product_id'=>null,'primary_product_name'=>null,'primary_product_package'=>null), array('id'=>$pid));
   $wpdb->query("DELETE FROM {$pf}ps_reminders WHERE pet_id=$pid AND reminder_label LIKE '%TEST%'");
@@ -83,7 +78,7 @@ add_action('wp_loaded', function(){
   const mkc=wj('POST','code-snippets/v1/snippets',{name:'C8 (temp)',code:CLEAN,scope:'front-end',active:true,priority:5});
   let sidc=null; try{sidc=JSON.parse(mkc).id;}catch(e){}
   execSync('sleep 4');
-  try{ const r=execSync('curl -sk "https://dev.avesa.lt/?ps_c8=C8x"',{maxBuffer:5e6,timeout:60000}).toString();
+  try{ const r=execSync('curl -sk "https://dev.avesa.lt/?ps_c9=C9x"',{maxBuffer:5e6,timeout:60000}).toString();
     const a=r.indexOf('###C###'),b=r.indexOf('###E###'); o.clean=(a>=0&&b>a)?r.slice(a+7,b):r.slice(0,60); }catch(e){o.clean='ERR';}
   [sid,sidc].forEach(function(id){ if(id!=null){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+id+'"');}catch(e){} } });
 }catch(e){ o.fatal=String(e).slice(0,300); }
