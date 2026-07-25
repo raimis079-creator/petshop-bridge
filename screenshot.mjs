@@ -6,7 +6,7 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:b64,...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 2');}return 'fail';}
-const o={pets:[]};
+const o={}; const shots=[];
 try {
   const { chromium } = await import('playwright');
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
@@ -18,52 +18,32 @@ try {
   await page.fill('#user_login', U); await page.fill('#user_pass', P);
   await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle' }), page.click('#wp-submit')]);
   await page.goto('https://dev.avesa.lt/my-account/augintinis/', { waitUntil: 'networkidle', timeout: 40000 });
-  await page.waitForTimeout(2000);
-  // Uzdarau slapuku banneri (Complianz)
+  await page.waitForTimeout(3000);
+  // uzdaryti slapuku banneri per DOM salinima
   await page.evaluate(() => {
-    var b = document.querySelector('.cmplz-accept, .cmplz-btn.cmplz-accept, [data-cmplz="accept"]');
-    if (b) b.click();
-    var banner = document.querySelector('#cmplz-cookiebanner-container, .cmplz-cookiebanner');
-    if (banner) banner.style.display='none';
+    ['#cmplz-cookiebanner-container','.cmplz-cookiebanner','.cmplz-blocked-content-notice','#cmplz-manage-consent'].forEach(function(s){
+      var e=document.querySelector(s); if(e) e.remove();
+    });
+    document.querySelectorAll('[id*="cmplz"],[class*="cmplz"]').forEach(function(e){ if(e.style) e.style.display='none'; });
   });
   await page.waitForTimeout(1500);
-  await page.waitForSelector('.pspet-profile', { timeout: 15000 }).catch(function(){});
-  await page.waitForTimeout(1500);
-
-  async function readProfile(){
-    return await page.evaluate(() => {
-      var prof = document.querySelector('.pspet-profile');
-      if (!prof) return { noProfile:true };
-      var now = document.querySelector('.pspet-now');
-      var grid = document.querySelector('.pspet-modgrid');
-      var bodyText = (grid||prof).innerText;
-      var mods = grid ? Array.from(grid.children).map(function(c){ return (c.innerText||'').split('\n')[0].slice(0,22); }) : [];
-      return {
-        name: (prof.innerText.split('\n')[0]||'').slice(0,25),
-        hasNow: !!now, nowKind: now?now.getAttribute('data-shown'):null,
-        nowTitle: document.querySelector('.pspet-now-t')?document.querySelector('.pspet-now-t').innerText.trim().slice(0,50):null,
-        modules: mods,
-        repeatVisible: bodyText.includes('Įprasti pirkiniai'),
-        feedingSetup: bodyText.includes('Nustatyti maistą'),
-        feedingPlan: bodyText.includes('Peržiūrėti planą'),
-        shelf: bodyText.includes('Maisto dar ~'),
-        refillFb: bodyText.includes('Dar liko'),
-        nenurodyta: prof.innerHTML.includes('Nenurodyta')
-      };
-    });
-  }
-  var n = await page.evaluate(() => document.querySelectorAll('.pspet-switch-item').length);
-  o.switcherCount = n;
-  o.pets.push(await readProfile());
-  for (var i=1;i<Math.min(n,4);i++){
-    try {
-      var sw = await page.$$('.pspet-switch-item');
-      await sw[i].click();
-      await page.waitForTimeout(2500);
-      o.pets.push(await readProfile());
-    } catch(e){ o.pets.push({err:String(e).slice(0,80)}); }
-  }
+  // Ar dabar matyti profilis - tekstinis snapshot
+  o.snap = await page.evaluate(() => {
+    var main = document.querySelector('.woocommerce-MyAccount-content') || document.body;
+    return {
+      hasProfileClass: !!document.querySelector('.pspet-profile'),
+      hasNow: !!document.querySelector('.pspet-now'),
+      hasModgrid: !!document.querySelector('.pspet-modgrid'),
+      repeatVisible: main.innerText.includes('Įprasti pirkiniai'),
+      feedingPlan: main.innerText.includes('Peržiūrėti planą'),
+      feedingSetup: main.innerText.includes('Nustatyti maistą'),
+      chipsText: Array.from(document.querySelectorAll('.pspet-profile span')).map(function(s){return s.innerText.trim();}).filter(function(t){return t&&t.length>2&&t.length<40;}).slice(0,6)
+    };
+  });
+  const buf = await page.screenshot({ fullPage: true });
+  fs.writeFileSync('/tmp/a2clean.png', buf); shots.push('a2clean');
   await browser.close();
 } catch (e) { o.fatal = String(e).slice(0,400); }
-putB64('a2dom.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+for (const n of shots) { try { putB64(n+'.png', fs.readFileSync('/tmp/'+n+'.png').toString('base64')); } catch(e){} }
+putB64('a2clean.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
