@@ -12,26 +12,33 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
   if(c==='200'||c==='201')return c; execSync('sleep 2');}return 'fail';}
 const CODE=`<?php
 add_action('wp_loaded', function(){
-  if(!isset($_GET['ps_dv2']) || $_GET['ps_dv2']!=='Dv225x') return;
-  global $wpdb; $pf=$wpdb->prefix;
-  $t=$pf.'ps_pets';
-  $cols=$wpdb->get_col("SHOW COLUMNS FROM $t");
-  $all=$wpdb->get_results("SELECT * FROM $t ORDER BY pet_id DESC LIMIT 4", ARRAY_A);
-  // Filtruoju rodent PHP puseje
-  $rodents=array_filter($all, function($r){ return isset($r['species']) && $r['species']==='rodent'; });
+  if(!isset($_GET['ps_dv3']) || $_GET['ps_dv3']!=='Dv325x') return;
+  global $wpdb; $pf=$wpdb->prefix; $t=$pf.'ps_pets';
+  $row=$wpdb->get_row("SELECT * FROM $t WHERE species='rodent' AND (deleted_at IS NULL OR deleted_at='0000-00-00 00:00:00') ORDER BY id DESC LIMIT 1");
+  $out=array();
+  if(!$row){ $out['found']=false; }
+  else {
+    $out['found']=true;
+    $out['name']=$row->pet_name; $out['detail']=$row->species_detail; $out['bd']=$row->birth_date;
+    // Iskvieciam reflection metodu get_completeness (private)
+    if(class_exists('Petshop_Pet_Dashboard')){
+      $ref=new ReflectionMethod('Petshop_Pet_Dashboard','get_completeness');
+      $ref->setAccessible(true);
+      $out['completeness']=$ref->invoke(null,$row);
+    } else { $out['completeness']='NO_CLASS'; }
+  }
   header('Content-Type: application/json');
-  echo '###DS###'.json_encode(array('cols'=>$cols,'recent'=>array_map(function($r){return array('id'=>$r['pet_id']??null,'name'=>$r['pet_name']??null,'sp'=>$r['species']??null,'detail'=>$r['species_detail']??null,'bd'=>$r['birth_date']??null);}, $all))).'###DE###';
-  exit;
+  echo '###DS###'.json_encode($out).'###DE###'; exit;
 });`;
 const o={};
-const mk=wj('POST','code-snippets/v1/snippets',{name:'DV2 (temp)',code:CODE,scope:'front-end',active:true,priority:5});
+const mk=wj('POST','code-snippets/v1/snippets',{name:'DV3 (temp)',code:CODE,scope:'front-end',active:true,priority:5});
 let sid=null; try{sid=JSON.parse(mk).id;}catch(e){o.mkerr=String(mk).slice(0,120);}
 execSync('sleep 4');
 try{
-  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_dv2=Dv225x"',{maxBuffer:5e6,timeout:60000}).toString();
+  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_dv3=Dv325x"',{maxBuffer:5e6,timeout:60000}).toString();
   const s=r.indexOf('###DS###'), e=r.indexOf('###DE###');
-  o.data = (s>=0&&e>s) ? r.slice(s+8,e) : ('NF:'+r.slice(0,200));
-}catch(e){o.data='ERR';}
+  o.result = (s>=0&&e>s) ? r.slice(s+8,e) : ('NF:'+r.slice(0,250));
+}catch(e){o.result='ERR '+String(e).slice(0,120);}
 if(sid!==null){ try{wj('POST','code-snippets/v1/snippets/'+sid,{active:false});}catch(e){} try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
-putB64('dashver2.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('dashver3.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
