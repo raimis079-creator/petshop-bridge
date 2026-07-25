@@ -8,13 +8,22 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:b64,...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 2');}return 'fail';}
-const o={};
-// ar liko naujausi temp (>1565) - siandienines sesijos
-try{ const l=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets?n='+Math.random()+'"',{maxBuffer:50e6,timeout:30000}).toString();
+const o={deleted:[], failed:[]};
+try{
+  const l=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets?n='+Math.random()+'"',{maxBuffer:50e6,timeout:40000}).toString();
   const arr=JSON.parse(l);
-  o.recentTemp=arr.filter(function(s){return s.id>1565 && /temp|BSHOT|AL|C7|C8|C9|S3|Mk|ALD/i.test(s.name);}).map(function(s){return s.id+':'+s.name+':'+(s.active?'ON':'off');});
-  // ar seed 144 tikrai isvalytas
-  o.total_temp=arr.filter(function(s){return /\(temp\)/i.test(s.name);}).length;
-}catch(e){o.err=String(e).slice(0,100);}
-putB64('checktmp.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+  // trinu VISUS sios sesijos temp (id 1566-1583) + bet koki (temp) su id>1565
+  const targets=arr.filter(function(s){return s.id>=1566 && /\(temp\)/i.test(s.name);});
+  o.toDelete=targets.map(function(s){return s.id+':'+s.name;});
+  targets.forEach(function(s){
+    try{ const c=execSync('curl -sk -o /dev/null -w "%{http_code}" '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+s.id+'"',{timeout:20000}).toString().trim();
+      if(c==='200') o.deleted.push(s.id); else o.failed.push(s.id+':'+c); }catch(e){ o.failed.push(s.id+':ERR'); }
+  });
+  // patikra po valymo
+  const l2=execSync('curl -sk '+AUTH+' "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets?n='+Math.random()+'"',{maxBuffer:50e6,timeout:40000}).toString();
+  const arr2=JSON.parse(l2);
+  o.remaining_session=arr2.filter(function(s){return s.id>=1566 && /\(temp\)/i.test(s.name);}).map(function(s){return s.id+':'+(s.active?'ON':'off');});
+  o.total_temp_after=arr2.filter(function(s){return /\(temp\)/i.test(s.name);}).length;
+}catch(e){o.err=String(e).slice(0,150);}
+putB64('cleantemp.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
