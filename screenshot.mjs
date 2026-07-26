@@ -13,28 +13,35 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
 const o={};
 const CODE=`<?php
 add_action('wp_loaded', function(){
-  if(!isset($_GET['ps_pr2']) || $_GET['ps_pr2']!=='Pr2x') return;
-  global $wpdb; $o=array();
-  // VISI pa_ atributai kataloge (product attribute taxonomies)
-  $taxes=$wpdb->get_results("SELECT tt.taxonomy, COUNT(DISTINCT tr.object_id) c
-    FROM {$wpdb->term_taxonomy} tt
-    JOIN {$wpdb->term_relationships} tr ON tr.term_taxonomy_id=tt.term_taxonomy_id
-    JOIN {$wpdb->posts} p ON p.ID=tr.object_id AND p.post_type='product' AND p.post_status='publish'
-    WHERE tt.taxonomy LIKE 'pa_%'
-    GROUP BY tt.taxonomy ORDER BY c DESC", ARRAY_A);
-  $o['pa_taxonomies']=array_map(function(\$t){return \$t['taxonomy'].' ['.\$t['c'].' prekiu]';}, \$taxes);
-  // MVP scope: instock maisto prekes (feeding_map)
-  \$fm=\$wpdb->prefix.'ps_feeding_map';
-  \$o['maisto_su_lentele']=(int)\$wpdb->get_var("SELECT COUNT(DISTINCT product_id) FROM \$fm WHERE is_active=1");
+  if(!isset(\$_GET['ps_pr3']) || \$_GET['ps_pr3']!=='Pr3x') return;
+  global \$wpdb; \$o=array(); \$fm=\$wpdb->prefix.'ps_feeding_map';
+  // padengimas TIK 528 maisto scope (su feeding_map is_active=1)
+  function cov(\$tax){
+    global \$wpdb; \$fm=\$wpdb->prefix.'ps_feeding_map';
+    return (int)\$wpdb->get_var(\"SELECT COUNT(DISTINCT fm.product_id) FROM \$fm fm
+      JOIN {\$wpdb->term_relationships} tr ON tr.object_id=fm.product_id
+      JOIN {\$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id
+      WHERE fm.is_active=1 AND tt.taxonomy='\$tax'\");
+  }
+  \$o['scope_total']=(int)\$wpdb->get_var(\"SELECT COUNT(DISTINCT product_id) FROM \$fm WHERE is_active=1\");
+  foreach(array('pa_gyvuno_rusis','pa_amzius','pa_dydis','pa_baltymu_saltinis','pa_be_grudu','pa_monoprotein','pa_speciali_mityba','pa_tipas','pa_zuvies_rusis') as \$t){
+    \$o['cov_'.\$t]=cov(\$t);
+  }
+  // pa_speciali_mityba terminai (medicininiai)
+  \$o['speciali_mityba_terms']=\$wpdb->get_col(\"SELECT t.name FROM {\$wpdb->terms} t JOIN {\$wpdb->term_taxonomy} tt ON tt.term_id=t.term_id WHERE tt.taxonomy='pa_speciali_mityba' ORDER BY tt.count DESC\");
+  // pa_be_grudu terminai
+  \$o['be_grudu_terms']=\$wpdb->get_col(\"SELECT t.name FROM {\$wpdb->terms} t JOIN {\$wpdb->term_taxonomy} tt ON tt.term_id=t.term_id WHERE tt.taxonomy='pa_be_grudu'\");
+  // pa_baltymu_saltinis terminai (top)
+  \$o['baltymai_terms']=\$wpdb->get_col(\"SELECT t.name FROM {\$wpdb->terms} t JOIN {\$wpdb->term_taxonomy} tt ON tt.term_id=t.term_id WHERE tt.taxonomy='pa_baltymu_saltinis' ORDER BY tt.count DESC LIMIT 20\");
   header('Content-Type: application/json'); echo json_encode(\$o); exit;
 });`;
 try{
-  const mk=wj('POST','code-snippets/v1/snippets',{name:'PR2 (temp)',code:CODE,scope:'front-end',active:true,priority:5});
+  const mk=wj('POST','code-snippets/v1/snippets',{name:'PR3 (temp)',code:CODE,scope:'front-end',active:true,priority:5});
   let sid=null; try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 4');
-  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_pr2=Pr2x"',{maxBuffer:5e6,timeout:60000}).toString();
+  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_pr3=Pr3x"',{maxBuffer:5e6,timeout:60000}).toString();
   const a=r.indexOf('{'),b=r.lastIndexOf('}'); o.result=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):r.slice(0,300);
   if(sid!=null){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
 }catch(e){o.err=String(e).slice(0,200);}
-putB64('profrec2.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('profrec3.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
