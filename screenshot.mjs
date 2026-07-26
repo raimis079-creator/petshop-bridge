@@ -1,5 +1,6 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
+const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX3B2MiddKSB8fCAkX0dFVFsncHNfcHYyJ10hPT0nUHYyeCcpIHJldHVybjsKICB3cF9zZXRfY3VycmVudF91c2VyKDEpOyBnbG9iYWwgJHdwZGI7ICR0PSR3cGRiLT5wcmVmaXguJ3BzX3BldHMnOyAkbz1hcnJheSgpOwogICRkPVdQX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWNvcmUvJzsKICAkcHI9ZmlsZV9nZXRfY29udGVudHMoJGQuJ2luY2x1ZGVzL2NsYXNzLXBldC1wcm9maWxlLnBocCcpOwogICRwcD1maWxlX2dldF9jb250ZW50cygkZC4nYXNzZXRzL3BldC1wcm9maWxlLmpzJyk7CiAgJHBmPWZpbGVfZ2V0X2NvbnRlbnRzKCRkLidhc3NldHMvcGV0LWZvcm0uanMnKTsKICAkb1snZW51bV9uYXVqYXMnXT0oc3RycG9zKCRwciwiJ3NraW5fY29hdCciKSE9PWZhbHNlICYmIHN0cnBvcygkcHIsIid3ZWlnaHRfY29udHJvbCciKSE9PWZhbHNlICYmIHN0cnBvcygkcHIsIidqb2ludHMnIikhPT1mYWxzZSk7CiAgJG9bJ2VudW1fYmVfc2VudSddPShzdHJwb3MoJHByLCInZGFpbHknLCAnZGlnZXN0aW9uJywgJ3NraW5fYWxsZXJneSciKT09PWZhbHNlKTsKICAkb1snZm9ybV9uZWVkRmllbGQnXT1zdHJwb3MoJHBmLCdmdW5jdGlvbiBuZWVkRmllbGQoKScpIT09ZmFsc2U7CiAgJG9bJ2Zvcm1fbm9uZV9sYWJlbCddPXN0cnBvcygkcGYsJ8WgaXVvIG1ldHUgbmlla28gacWhIMWhacWzJykhPT1mYWxzZTsKICAkb1sncHJvZmlsZV9uZWVkRGV0YWlsJ109c3RycG9zKCRwcCwnZnVuY3Rpb24gbmVlZERldGFpbFRleHQnKSE9PWZhbHNlOwogICRvWydkYXNoX3BheWxvYWQnXT1zdHJwb3MoZmlsZV9nZXRfY29udGVudHMoJGQuJ2luY2x1ZGVzL2NsYXNzLXBldC1kYXNoYm9hcmQucGhwJyksJ3ByaW1hcnlfbmVlZF9vdGhlcicpIT09ZmFsc2U7CgogICRycT1uZXcgV1BfUkVTVF9SZXF1ZXN0KCdQT1NUJyk7CiAgJHJxLT5zZXRfYm9keV9wYXJhbXMoYXJyYXkoJ3NwZWNpZXMnPT4nZG9nJywncGV0X25hbWUnPT4nWlpURVNUJywncHJpbWFyeV9uZWVkJz0+J290aGVyJywncHJpbWFyeV9uZWVkX290aGVyJz0+JzxiPmRhbnR1PC9iPiBha21lbnlzJykpOwogICRyZXM9UGV0c2hvcF9QZXRfUHJvZmlsZTo6aGFuZGxlX2NyZWF0ZSgkcnEpOwogICRkZD1pc193cF9lcnJvcigkcmVzKT9hcnJheSgnZXJyJz0+JHJlcy0+Z2V0X2Vycm9yX21lc3NhZ2UoKSk6JHJlcy0+Z2V0X2RhdGEoKTsKICAkcGlkPW51bGw7CiAgaWYoaXNzZXQoJGRkWydwZXQnXVsncGV0X2lkJ10pKSAkcGlkPSRkZFsncGV0J11bJ3BldF9pZCddOwogIGVsc2VpZihpc3NldCgkZGRbJ3BldF9pZCddKSkgJHBpZD0kZGRbJ3BldF9pZCddOwogIGVsc2VpZihpc3NldCgkZGRbJ3BldCddWydpZCddKSkgJHBpZD0kZGRbJ3BldCddWydpZCddOwogICRvWyd0ZXN0X3BldF9pZCddPSRwaWQ7CiAgaWYoISRwaWQpeyAkb1snY3JlYXRlX2F0c2FreW1hcyddPSRkZDsgfQogIGlmKCRwaWQpewogICAgJG9bJ1QxX2NyZWF0ZSddPSR3cGRiLT5nZXRfcm93KCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgcHJpbWFyeV9uZWVkLHByaW1hcnlfbmVlZF9vdGhlcixpc190ZXN0IEZST00gJHQgV0hFUkUgaWQ9JWQiLCRwaWQpLEFSUkFZX0EpOwogICAgJHIyPW5ldyBXUF9SRVNUX1JlcXVlc3QoJ1BPU1QnKTsgJHIyWydpZCddPSRwaWQ7ICRyMi0+c2V0X2JvZHlfcGFyYW1zKGFycmF5KCdwcmltYXJ5X25lZWQnPT4nam9pbnRzJykpOwogICAgUGV0c2hvcF9QZXRfUHJvZmlsZTo6aGFuZGxlX3VwZGF0ZSgkcjIpOwogICAgJG9bJ1QyX2pvaW50cyddPSR3cGRiLT5nZXRfcm93KCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgcHJpbWFyeV9uZWVkLHByaW1hcnlfbmVlZF9vdGhlciBGUk9NICR0IFdIRVJFIGlkPSVkIiwkcGlkKSxBUlJBWV9BKTsKICAgICRyMz1uZXcgV1BfUkVTVF9SZXF1ZXN0KCdQT1NUJyk7ICRyM1snaWQnXT0kcGlkOyAkcjMtPnNldF9ib2R5X3BhcmFtcyhhcnJheSgncHJpbWFyeV9uZWVkJz0+J25vbmUnLCdwcmltYXJ5X25lZWRfb3RoZXInPT4nbmV0dXJldHUgbGlrdGknKSk7CiAgICBQZXRzaG9wX1BldF9Qcm9maWxlOjpoYW5kbGVfdXBkYXRlKCRyMyk7CiAgICAkb1snVDNfbm9uZSddPSR3cGRiLT5nZXRfcm93KCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgcHJpbWFyeV9uZWVkLHByaW1hcnlfbmVlZF9vdGhlciBGUk9NICR0IFdIRVJFIGlkPSVkIiwkcGlkKSxBUlJBWV9BKTsKICAgICRyND1uZXcgV1BfUkVTVF9SZXF1ZXN0KCdQT1NUJyk7ICRyNFsnaWQnXT0kcGlkOyAkcjQtPnNldF9ib2R5X3BhcmFtcyhhcnJheSgncHJpbWFyeV9uZWVkJz0+J2RhaWx5JykpOwogICAgUGV0c2hvcF9QZXRfUHJvZmlsZTo6aGFuZGxlX3VwZGF0ZSgkcjQpOwogICAgJG9bJ1Q0X3NlbmFfZGFpbHknXT0kd3BkYi0+Z2V0X3Zhcigkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIHByaW1hcnlfbmVlZCBGUk9NICR0IFdIRVJFIGlkPSVkIiwkcGlkKSk7CiAgICAkcjU9bmV3IFdQX1JFU1RfUmVxdWVzdCgnUE9TVCcpOyAkcjVbJ2lkJ109JHBpZDsgJHI1LT5zZXRfYm9keV9wYXJhbXMoYXJyYXkoJ3ByaW1hcnlfbmVlZCc9PidvdGhlcicpKTsKICAgIFBldHNob3BfUGV0X1Byb2ZpbGU6OmhhbmRsZV91cGRhdGUoJHI1KTsKICAgICRvWydUNV9vdGhlcl9iZV90ZWtzdG8nXT0kd3BkYi0+Z2V0X3Jvdygkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIHByaW1hcnlfbmVlZCxwcmltYXJ5X25lZWRfb3RoZXIgRlJPTSAkdCBXSEVSRSBpZD0lZCIsJHBpZCksQVJSQVlfQSk7CiAgICAkd3BkYi0+ZGVsZXRlKCR0LGFycmF5KCdpZCc9PiRwaWQpKTsgJG9bJ3Rlc3RpbmlzX2lzdHJpbnRhcyddPXRydWU7CiAgfQogICRvWydpc190ZXN0XzEnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkdCBXSEVSRSBpc190ZXN0PTEiKTsKICAkb1snaXNfdGVzdF8wJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00gJHQgV0hFUkUgaXNfdGVzdD0wIik7CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
@@ -11,60 +12,17 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 2');}return 'fail';}
 const o={};
-const CODE=`<?php
-add_action('wp_loaded', function(){
-  if(!isset(\$_GET['ps_pv']) || \$_GET['ps_pv']!=='Pvx') return;
-  wp_set_current_user(1); global \$wpdb; \$t=\$wpdb->prefix.'ps_pets'; \$o=array();
-  // kodo markeriai
-  \$d=WP_PLUGIN_DIR.'/petshop-core/';
-  \$pr=file_get_contents(\$d.'includes/class-pet-profile.php'); \$pp=file_get_contents(\$d.'assets/pet-profile.js'); \$pf=file_get_contents(\$d.'assets/pet-form.js');
-  \$o['enum_naujas']=(strpos(\$pr,"'skin_coat'")!==false && strpos(\$pr,"'weight_control'")!==false && strpos(\$pr,"'none'")!==false);
-  \$o['enum_be_senu']=(strpos(\$pr,"'daily', 'digestion'")===false);
-  \$o['form_needField']=strpos(\$pf,'function needField()')!==false;
-  \$o['profile_needDetail']=strpos(\$pp,'function needDetailText')!==false;
-  // 1. CREATE su other + HTML
-  \$rq=new WP_REST_Request('POST');
-  \$rq->set_body_params(array('species'=>'dog','pet_name'=>'ZZTEST','primary_need'=>'other','primary_need_other'=>'<b>dantu</b> akmenys'));
-  \$res=Petshop_Pet_Profile::handle_create(\$rq);
-  \$dd=is_wp_error(\$res)?array('err'=>\$res->get_error_message()):\$res->get_data();
-  \$pid=null;
-  if(isset(\$dd['pet']['pet_id'])) \$pid=\$dd['pet']['pet_id'];
-  elseif(isset(\$dd['pet_id'])) \$pid=\$dd['pet_id'];
-  elseif(isset(\$dd['pet']['id'])) \$pid=\$dd['pet']['id'];
-  \$o['test_pet_id']=\$pid;
-  if(!\$pid){ \$o['create_atsakymas']=\$dd; }
-  if(\$pid){
-    \$o['T1_create']=\$wpdb->get_row(\$wpdb->prepare("SELECT primary_need,primary_need_other,is_test FROM \$t WHERE id=%d",\$pid),ARRAY_A);
-    // 2. -> joints (tekstas turi isivalyti)
-    \$r2=new WP_REST_Request('POST'); \$r2['id']=\$pid; \$r2->set_body_params(array('primary_need'=>'joints'));
-    Petshop_Pet_Profile::handle_update(\$r2);
-    \$o['T2_joints']=\$wpdb->get_row(\$wpdb->prepare("SELECT primary_need,primary_need_other FROM \$t WHERE id=%d",\$pid),ARRAY_A);
-    // 3. -> none
-    \$r3=new WP_REST_Request('POST'); \$r3['id']=\$pid; \$r3->set_body_params(array('primary_need'=>'none','primary_need_other'=>'neturetu likti'));
-    Petshop_Pet_Profile::handle_update(\$r3);
-    \$o['T3_none']=\$wpdb->get_row(\$wpdb->prepare("SELECT primary_need,primary_need_other FROM \$t WHERE id=%d",\$pid),ARRAY_A);
-    // 4. sena reiksme 'daily' turi buti ATMESTA
-    \$r4=new WP_REST_Request('POST'); \$r4['id']=\$pid; \$r4->set_body_params(array('primary_need'=>'daily'));
-    Petshop_Pet_Profile::handle_update(\$r4);
-    \$o['T4_sena_daily']=\$wpdb->get_var(\$wpdb->prepare("SELECT primary_need FROM \$t WHERE id=%d",\$pid));
-    // 5. other be teksto - turi islikti 'other'
-    \$r5=new WP_REST_Request('POST'); \$r5['id']=\$pid; \$r5->set_body_params(array('primary_need'=>'other'));
-    Petshop_Pet_Profile::handle_update(\$r5);
-    \$o['T5_other_be_teksto']=\$wpdb->get_row(\$wpdb->prepare("SELECT primary_need,primary_need_other FROM \$t WHERE id=%d",\$pid),ARRAY_A);
-    // isvalom
-    \$wpdb->delete(\$t,array('id'=>\$pid)); \$o['testinis_istrintas']=true;
-  }
-  // naujas irasas turi buti is_test=0 (default)
-  \$o['esami_is_test_1']=(int)\$wpdb->get_var("SELECT COUNT(*) FROM \$t WHERE is_test=1");
-  header('Content-Type: application/json'); echo json_encode(\$o); exit;
-});`;
 try{
-  const mk=wj('POST','code-snippets/v1/snippets',{name:'PV (temp)',code:CODE,scope:'front-end',active:true,priority:5});
-  let sid=null; try{sid=JSON.parse(mk).id;}catch(e){o.mk=String(mk).slice(0,150);}
-  execSync('sleep 4');
-  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_pv=Pvx"',{maxBuffer:5e6,timeout:70000}).toString();
-  const a=r.indexOf('{'),b=r.lastIndexOf('}'); o.result=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):r.slice(0,400);
+  const php = Buffer.from(PHPB64,'base64').toString('utf8');
+  const mk=wj('POST','code-snippets/v1/snippets',{name:'PV2 (temp)',code:php,scope:'front-end',active:true,priority:5});
+  let sid=null; try{sid=JSON.parse(mk).id;}catch(e){o.mk=String(mk).slice(0,200);}
+  o.sid=sid; execSync('sleep 5');
+  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_pv2=Pv2x"',{maxBuffer:5e6,timeout:70000}).toString();
+  o.raw_pradzia=r.slice(0,120);
+  const a=r.indexOf('{'),b=r.lastIndexOf('}');
+  if(a>=0&&b>a){ try{ o.result=JSON.parse(r.slice(a,b+1)); }catch(e){ o.parse_err=String(e).slice(0,120); o.raw=r.slice(a,a+500); } }
+  else { o.raw=r.slice(0,500); }
   if(sid!=null){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
-}catch(e){o.err=String(e).slice(0,200);}
-putB64('pnver.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+}catch(e){o.err=String(e).slice(0,250);}
+putB64('pnver2.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
