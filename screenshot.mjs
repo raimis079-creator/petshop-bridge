@@ -13,45 +13,50 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
 const o={};
 const CODE=`<?php
 add_action('wp_loaded', function(){
-  if(!isset(\$_GET['ps_ar']) || \$_GET['ps_ar']!=='Arx') return;
-  global \$wpdb; \$dir=WP_PLUGIN_DIR.'/petshop-core/'; \$o=array();
-  // A. ar petshop-core turi admin meniu / puslapiu
-  \$admin=array();
-  foreach(array_merge(glob(\$dir.'*.php'), glob(\$dir.'includes/*.php')) as \$f){
-    \$c=file_get_contents(\$f);
-    if(strpos(\$c,'add_menu_page')!==false || strpos(\$c,'add_submenu_page')!==false || strpos(\$c,'add_management_page')!==false){
-      preg_match_all('/add_(menu|submenu|management|options)_page\\s*\\(([^;]{0,180})/', \$c, \$m);
-      \$admin[basename(\$f)]=array_slice(\$m[0],0,4);
-    }
+  if(!isset(\$_GET['ps_md']) || \$_GET['ps_md']!=='Mdx') return;
+  global \$wpdb; \$t=\$wpdb->prefix.'ps_pets'; \$o=array('mode'=>'DRY-RUN','changes'=>array());
+  // esama busena
+  \$cols=\$wpdb->get_col("SHOW COLUMNS FROM \$t");
+  \$o['has_primary_need_other']=in_array('primary_need_other',\$cols);
+  \$o['has_is_test']=in_array('is_test',\$cols);
+  \$o['viso_pets']=(int)\$wpdb->get_var("SELECT COUNT(*) FROM \$t WHERE deleted_at IS NULL");
+  \$o['viso_su_istrintais']=(int)\$wpdb->get_var("SELECT COUNT(*) FROM \$t");
+  // 1. is_test
+  \$o['changes']['is_test_1']=array('kiek'=>(int)\$wpdb->get_var("SELECT COUNT(*) FROM \$t"),'aprasas'=>'VISI irasai -> is_test=1 (launch dar nebuvo)');
+  // 2. skin_allergy -> skin_coat
+  \$o['changes']['skin_allergy']=array('kiek'=>(int)\$wpdb->get_var("SELECT COUNT(*) FROM \$t WHERE primary_need='skin_allergy'"),'aprasas'=>'skin_allergy -> skin_coat');
+  // 3. sterilised SALYGINIS - parodom kiekviena irasa
+  \$ster=\$wpdb->get_results("SELECT id,pet_name,species,is_sterilised FROM \$t WHERE primary_need='sterilised'",ARRAY_A);
+  \$set_yes=0; \$palikti=0; \$det=array();
+  foreach(\$ster as \$r){
+    \$cur=\$r['is_sterilised'];
+    \$veiksmas = (\$cur===null || \$cur==='' || \$cur==='unknown') ? 'is_sterilised -> yes' : 'is_sterilised NEKEICIAMAS (jau '.\$cur.')';
+    if(strpos(\$veiksmas,'-> yes')!==false) \$set_yes++; else \$palikti++;
+    \$det[]=array('id'=>\$r['id'],'vardas'=>\$r['pet_name'],'rusis'=>\$r['species'],'dabar_is_sterilised'=>\$cur,'veiksmas'=>\$veiksmas);
   }
-  \$o['admin_pages']=\$admin;
-  \$o['core_files']=array_map('basename', glob(\$dir.'includes/*.php'));
-  \$o['core_root']=array_map('basename', glob(\$dir.'*.php'));
-  // B. migraciju vieta - ar yra dbDelta / migration patternas
-  \$mig=array();
-  foreach(array_merge(glob(\$dir.'*.php'), glob(\$dir.'includes/*.php')) as \$f){
-    \$c=file_get_contents(\$f);
-    if(strpos(\$c,'dbDelta')!==false || strpos(\$c,'ALTER TABLE')!==false){ \$mig[]=basename(\$f); }
-  }
-  \$o['migration_files']=\$mig;
-  // C. primary_need reiksmes DB (kas realiai saugoma)
-  \$o['primary_need_values']=\$wpdb->get_results(\"SELECT primary_need v, COUNT(*) c FROM {\$wpdb->prefix}ps_pets WHERE deleted_at IS NULL GROUP BY primary_need ORDER BY c DESC\", ARRAY_A);
-  \$o['sensitivities_sample']=\$wpdb->get_col(\"SELECT sensitivities FROM {\$wpdb->prefix}ps_pets WHERE sensitivities IS NOT NULL AND sensitivities<>'' LIMIT 10\");
-  \$o['feeding_type_values']=\$wpdb->get_results(\"SELECT feeding_type v, COUNT(*) c FROM {\$wpdb->prefix}ps_pets WHERE deleted_at IS NULL GROUP BY feeding_type\", ARRAY_A);
-  \$o['pets_total']=(int)\$wpdb->get_var(\"SELECT COUNT(*) FROM {\$wpdb->prefix}ps_pets WHERE deleted_at IS NULL\");
-  // D. vartotojai kurie turi augintiniu (testiniu identifikavimui)
-  \$o['users_with_pets']=\$wpdb->get_results(\"SELECT p.user_id, COUNT(*) pets, u.user_login, u.user_email, u.user_registered
-    FROM {\$wpdb->prefix}ps_pets p LEFT JOIN {\$wpdb->users} u ON u.ID=p.user_id
-    WHERE p.deleted_at IS NULL GROUP BY p.user_id ORDER BY pets DESC\", ARRAY_A);
+  \$o['changes']['sterilised']=array('viso'=>count(\$ster),'nustatoma_yes'=>\$set_yes,'nekeiciama'=>\$palikti,'po_to'=>'primary_need -> NULL visiems','detales'=>\$det);
+  // 4. daily -> NULL
+  \$daily=\$wpdb->get_results("SELECT id,pet_name,species FROM \$t WHERE primary_need='daily'",ARRAY_A);
+  \$o['changes']['daily']=array('kiek'=>count(\$daily),'aprasas'=>'daily -> NULL','detales'=>\$daily);
+  // busena PO migracijos (simuliacija)
+  \$o['po_migracijos_primary_need']=\$wpdb->get_results("SELECT
+      CASE WHEN primary_need IN ('daily','sterilised') THEN 'NULL (isvalyta)'
+           WHEN primary_need='skin_allergy' THEN 'skin_coat'
+           WHEN primary_need IS NULL THEN 'NULL (neatsake)'
+           ELSE primary_need END v, COUNT(*) c
+    FROM \$t WHERE deleted_at IS NULL GROUP BY v ORDER BY c DESC",ARRAY_A);
+  \$o['backup_pavadinimas']=\$wpdb->prefix.'ps_pets_bak_20260726';
+  \$o['backup_jau_yra']=(bool)\$wpdb->get_var("SHOW TABLES LIKE '{\$wpdb->prefix}ps_pets_bak_20260726'");
+  \$o['PASTABA']='NIEKAS NEPAKEISTA. Tai tik simuliacija.';
   header('Content-Type: application/json'); echo json_encode(\$o); exit;
 });`;
 try{
-  const mk=wj('POST','code-snippets/v1/snippets',{name:'AR (temp)',code:CODE,scope:'front-end',active:true,priority:5});
+  const mk=wj('POST','code-snippets/v1/snippets',{name:'MD (temp)',code:CODE,scope:'front-end',active:true,priority:5});
   let sid=null; try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 4');
-  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_ar=Arx"',{maxBuffer:8e6,timeout:60000}).toString();
+  const r=execSync('curl -sk "https://dev.avesa.lt/?ps_md=Mdx"',{maxBuffer:5e6,timeout:60000}).toString();
   const a=r.indexOf('{'),b=r.lastIndexOf('}'); o.result=(a>=0&&b>a)?JSON.parse(r.slice(a,b+1)):r.slice(0,300);
   if(sid!=null){ try{execSync('curl -sk '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"');}catch(e){} }
 }catch(e){o.err=String(e).slice(0,200);}
-putB64('adminrec.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('migdry.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
