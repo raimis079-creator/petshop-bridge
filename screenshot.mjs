@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX2h0bWwnXSkgfHwgJF9HRVRbJ3BzX2h0bWwnXSE9PSdIdG1seCcpIHJldHVybjsKICB3cF9zZXRfY3VycmVudF91c2VyKDEpOyAkbz1hcnJheSgpOwogIC8vIFRJS1JBUyBuYXZpZ2FjaWpvcyBzYWJsb25hcyDigJQga2FpcCBtYXRvIHptb2d1cwogIG9iX3N0YXJ0KCk7IHdjX2dldF90ZW1wbGF0ZSgnbXlhY2NvdW50L25hdmlnYXRpb24ucGhwJyk7ICRuYXY9b2JfZ2V0X2NsZWFuKCk7CiAgJG9bJ25hdl9pbGdpcyddPXN0cmxlbigkbmF2KTsKICAvLyB2aXNvcyBudW9yb2RvcwogIHByZWdfbWF0Y2hfYWxsKCcvPGFbXj5dK2hyZWY9IihbXiJdKikiW14+XSo+KC4qPyk8XC9hPi9pcycsJG5hdiwkbSxQUkVHX1NFVF9PUkRFUik7CiAgJG9bJ251b3JvZG9zJ109YXJyYXkoKTsKICBmb3JlYWNoKCRtIGFzICR4KXsKICAgICRvWydudW9yb2RvcyddW109YXJyYXkoJ3Rla3N0YXMnPT50cmltKHN0cmlwX3RhZ3MoJHhbMl0pKSwndXJsJz0+aHRtbF9lbnRpdHlfZGVjb2RlKCR4WzFdKSk7CiAgfQogICRvWydhdHNpanVuZ3RpX2thcnR1J109MDsKICBmb3JlYWNoKCRvWydudW9yb2RvcyddIGFzICRsKXsgaWYobWJfc3RyaXBvcygkbFsndGVrc3RhcyddLCdBdHNpanVuZycpIT09ZmFsc2UpICRvWydhdHNpanVuZ3RpX2thcnR1J10rKzsgfQogIC8vIEZsYXRzb21lIG5hdmlnYXRpb24gc2FibG9ubyB0dXJpbnlzIOKAlCBrYSBqaXMgcHJpZGVkYQogICR0cGw9d29vY29tbWVyY2VfbG9jYXRlX3RlbXBsYXRlKCdteWFjY291bnQvbmF2aWdhdGlvbi5waHAnLCcnLCcnKTsKICAkb1snc2FibG9uYXMnXT0kdHBsOwogIGlmKGZpbGVfZXhpc3RzKCR0cGwpKSAkb1snc2FibG9ub19rb2RhcyddPWZpbGVfZ2V0X2NvbnRlbnRzKCR0cGwpOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8ganNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
+const PHPB64='PD9waHAKLy8gVHJ1bXBhbGFpa2lzICgyIG1pbikgYXV0aCBjb29raWUgVElLIGRpYWdub3N0aWthaSBkZXYgYXBsaW5rb2plLgphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogIGlmKCFpc3NldCgkX0dFVFsncHNfdG9rJ10pIHx8ICRfR0VUWydwc190b2snXSE9PSdUb2t4JykgcmV0dXJuOwogICRleHA9dGltZSgpKzEyMDsKICAkYz13cF9nZW5lcmF0ZV9hdXRoX2Nvb2tpZSgxLCRleHAsJ2xvZ2dlZF9pbicpOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7CiAgZWNobyBqc29uX2VuY29kZShhcnJheSgnbmFtZSc9PkxPR0dFRF9JTl9DT09LSUUsJ3ZhbHVlJz0+JGMsJ2V4cCc9PiRleHApKTsKICBleGl0Owp9KTsK';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
@@ -15,12 +15,34 @@ const o={}; let sid=null;
 try{
   const php = Buffer.from(PHPB64,'base64').toString('utf8');
   let mk=null;
-  for(let a=0;a<2;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'HTML (t)',code:php,scope:'front-end',active:true,priority:5}); break; }catch(e){ execSync('sleep 5'); } }
+  for(let a=0;a<2;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'REAL (t)',code:php,scope:'front-end',active:true,priority:5}); break; }catch(e){ execSync('sleep 5'); } }
   try{sid=JSON.parse(mk).id;}catch(e){o.mk=String(mk).slice(0,150);}
   execSync('sleep 5');
-  try{ const r=execSync('curl -sk --max-time 70 "https://dev.avesa.lt/?ps_html=Htmlx"',{maxBuffer:8e6,timeout:85000}).toString();
-    const i=r.indexOf('{'),k=r.lastIndexOf('}'); if(i>=0&&k>i) o.result=JSON.parse(r.slice(i,k+1)); else o.raw=r.slice(0,300); }catch(e){ o.e=String(e).slice(0,150); }
-}catch(e){o.err=String(e).slice(0,200);}
+  // 1. gaunam trumpalaiki cookie
+  let ck=null;
+  try{ const r=execSync('curl -sk --max-time 40 "https://dev.avesa.lt/?ps_tok=Tokx"',{maxBuffer:4e6,timeout:55000}).toString();
+    const i=r.indexOf('{'),k=r.lastIndexOf('}'); if(i>=0) ck=JSON.parse(r.slice(i,k+1)); }catch(e){ o.ce=String(e).slice(0,100); }
+  if(ck){
+    // 2. TIKRAS puslapis kaip prisijungusiam
+    fs.writeFileSync('/tmp/ck.txt','');
+    const cookieArg = '-H "Cookie: '+ck.name+'='+ck.value+'"';
+    const html=execSync('curl -sk --max-time 60 '+cookieArg+' "https://dev.avesa.lt/my-account/"',{maxBuffer:20e6,timeout:75000}).toString();
+    o.ilgis=html.length;
+    o.prisijunges = html.indexOf('customer-logout')>=0 || html.indexOf('Skydelis')>=0;
+    // navigacijos blokas
+    const navM = html.match(/<nav[^>]*woocommerce-MyAccount-navigation[\s\S]*?<\/nav>/i);
+    const nav = navM ? navM[0] : '';
+    o.nav_rasta = !!navM;
+    const links=[...nav.matchAll(/<a[^>]+href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi)]
+      .map(m=>({t:m[2].replace(/<[^>]*>/g,'').trim(), u:m[1].replace(/&#0?38;|&amp;/g,'&')}));
+    o.nuorodos=links;
+    o.atsijungti=links.filter(l=>/Atsijung/i.test(l.t));
+    o.atsijungti_kartu=o.atsijungti.length;
+    // musu Skydelio blokas
+    o.turi_ps_acc = html.indexOf('ps-acc-main')>=0;
+    o.senas_woo_tekstas = /Jūs ne|registracijos ir pristatymo/i.test(html);
+  }
+}catch(e){o.err=String(e).slice(0,250);}
 try{ if(sid!=null) execSync('curl -sk --max-time 60 '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"'); }catch(e){}
-putB64('html.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('real.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
