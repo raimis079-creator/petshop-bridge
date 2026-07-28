@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX2xnJ10pIHx8ICRfR0VUWydwc19sZyddIT09J0xneCcpIHJldHVybjsKICAkbz1hcnJheSgpOyAkbmVlZGxlPSdQcmlzaWp1bmfEmSBnYWzEl3NpdGUnOwogIC8vIDEuIHNuaXBwZXR1b3NlCiAgZ2xvYmFsICR3cGRiOyAkdD0kd3BkYi0+cHJlZml4LidzbmlwcGV0cyc7CiAgaWYoJHdwZGItPmdldF92YXIoIlNIT1cgVEFCTEVTIExJS0UgJyR0JyIpKXsKICAgICRyb3dzPSR3cGRiLT5nZXRfcmVzdWx0cygkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIGlkLG5hbWUsYWN0aXZlLHNjb3BlIEZST00gJHQgV0hFUkUgY29kZSBMSUtFICVzIiwnJScuJHdwZGItPmVzY19saWtlKCRuZWVkbGUpLiclJyksQVJSQVlfQSk7CiAgICAkb1snc25pcHBldGFpJ109JHJvd3M7CiAgICBpZigkcm93cyl7ICRvWydzbmlwcGV0X2lkJ109JHJvd3NbMF1bJ2lkJ107IH0KICB9CiAgLy8gMi4gZmFpbHVvc2UgKHRlbWEgKyBwbHVnaW5haSkKICAkZGlycz1hcnJheShnZXRfc3R5bGVzaGVldF9kaXJlY3RvcnkoKSwgZ2V0X3RlbXBsYXRlX2RpcmVjdG9yeSgpLCBXUF9QTFVHSU5fRElSLicvcGV0c2hvcC1jb3JlJywgV1BNVV9QTFVHSU5fRElSKTsKICAkaGl0cz1hcnJheSgpOwogIGZvcmVhY2goJGRpcnMgYXMgJGQpewogICAgaWYoIWlzX2RpcigkZCkpIGNvbnRpbnVlOwogICAgJGl0PW5ldyBSZWN1cnNpdmVJdGVyYXRvckl0ZXJhdG9yKG5ldyBSZWN1cnNpdmVEaXJlY3RvcnlJdGVyYXRvcigkZCksIFJlY3Vyc2l2ZUl0ZXJhdG9ySXRlcmF0b3I6OlNLSVBfRE9UUyk7CiAgICAkbj0wOwogICAgZm9yZWFjaCgkaXQgYXMgJGYpewogICAgICBpZigkbj4yNTAwKSBicmVhazsKICAgICAgaWYoISRmLT5pc0ZpbGUoKSkgY29udGludWU7CiAgICAgICRlPXN0cnRvbG93ZXIoJGYtPmdldEV4dGVuc2lvbigpKTsKICAgICAgaWYoIWluX2FycmF5KCRlLGFycmF5KCdwaHAnLCdqcycsJ2NzcycpLHRydWUpKSBjb250aW51ZTsgJG4rKzsKICAgICAgJGM9QGZpbGVfZ2V0X2NvbnRlbnRzKCRmLT5nZXRQYXRobmFtZSgpKTsKICAgICAgaWYoJGMgJiYgc3RycG9zKCRjLCRuZWVkbGUpIT09ZmFsc2UpeyAkaGl0c1tdPSRmLT5nZXRQYXRobmFtZSgpOyB9CiAgICB9CiAgfQogICRvWydmYWlsYWknXT0kaGl0czsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
+const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX2xnMiddKSB8fCAkX0dFVFsncHNfbGcyJ10hPT0nTGcyeCcpIHJldHVybjsKICB3aGlsZShvYl9nZXRfbGV2ZWwoKSkgb2JfZW5kX2NsZWFuKCk7CiAgJG89YXJyYXkoKTsKICBnbG9iYWwgJHdwZGI7ICR0PSR3cGRiLT5wcmVmaXguJ3NuaXBwZXRzJzsKICBpZigkd3BkYi0+Z2V0X3ZhcigiU0hPVyBUQUJMRVMgTElLRSAnJHQnIikpewogICAgJHJvd3M9JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgaWQsbmFtZSxhY3RpdmUsc2NvcGUgRlJPTSAkdCBXSEVSRSBjb2RlIExJS0UgJyVQcmlzaWp1bmclZ2FsxJdzaXRlJScgT1IgY29kZSBMSUtFICclR2F1dGkgcHJpc2lqdW5naW1vIG51b3JvZCUnIE9SIG5hbWUgTElLRSAnJXJpc2lqdW5nJSciLEFSUkFZX0EpOwogICAgJG9bJ3NuaXBwZXRhaSddPSRyb3dzOwogICAgZm9yZWFjaCgkcm93cyBhcyAkcil7CiAgICAgICRjPSR3cGRiLT5nZXRfdmFyKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgY29kZSBGUk9NICR0IFdIRVJFIGlkPSVkIiwkclsnaWQnXSkpOwogICAgICBpZihzdHJwb3MoJGMsJ2dhbMSXc2l0ZScpIT09ZmFsc2UgfHwgc3RycG9zKCRjLCdHYXV0aSBwcmlzaWp1bmdpbW8nKSE9PWZhbHNlKXsKICAgICAgICAkb1sncmFzdGFzJ109YXJyYXkoJ2lkJz0+JHJbJ2lkJ10sJ25hbWUnPT4kclsnbmFtZSddLCdpbGdpcyc9PnN0cmxlbigkYykpOwogICAgICAgICRvWydrb2RhcyddPSRjOyBicmVhazsKICAgICAgfQogICAgfQogIH0KICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
@@ -15,13 +15,15 @@ const o={}; let sid=null;
 try{
   const php = Buffer.from(PHPB64,'base64').toString('utf8');
   let mk=null;
-  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'LG '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
+  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'LG2 '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
     if(mk && mk.indexOf('"id"')>=0) break; }catch(e){} execSync('sleep 8'); }
   try{sid=JSON.parse(mk).id;}catch(e){o.mk=String(mk).slice(0,150);}
   execSync('sleep 5');
-  try{ const r=execSync('curl -sk --max-time 90 "https://dev.avesa.lt/?ps_lg=Lgx"',{maxBuffer:8e6,timeout:110000}).toString();
-    const i=r.indexOf('{'),k=r.lastIndexOf('}'); if(i>=0&&k>i) o.result=JSON.parse(r.slice(i,k+1)); else o.raw=r.slice(0,300); }catch(e){ o.e=String(e).slice(0,150); }
+  const r=execSync('curl -sk --max-time 70 "https://dev.avesa.lt/?ps_lg2=Lg2x"',{maxBuffer:8e6,timeout:85000}).toString();
+  const i=r.indexOf('{'),k=r.lastIndexOf('}');
+  if(i>=0&&k>i){ try{ o.result=JSON.parse(r.slice(i,k+1)); }catch(e){ o.rawslice=r.slice(i,i+400); } }
+  else o.raw=r.slice(0,400);
 }catch(e){o.err=String(e).slice(0,200);}
 try{ if(sid!=null) execSync('curl -sk --max-time 60 '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"'); }catch(e){}
-putB64('lg.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('lg2.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
