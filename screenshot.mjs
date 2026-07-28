@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX3JlYWQnXSkgfHwgJF9HRVRbJ3BzX3JlYWQnXSE9PSdSZWFkeCcpIHJldHVybjsKICB3aGlsZShvYl9nZXRfbGV2ZWwoKSkgb2JfZW5kX2NsZWFuKCk7CiAgZ2xvYmFsICR3cGRiOyAkbz1hcnJheSgpOyAkdD0kd3BkYi0+cHJlZml4LidzbmlwcGV0cyc7CiAgZm9yZWFjaChhcnJheSgxNDk2LDE0OTAsMTQ5OCkgYXMgJGlkKXsKICAgICRjb2RlPSR3cGRiLT5nZXRfdmFyKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgY29kZSBGUk9NICR0IFdIRVJFIGlkPSVkIiwkaWQpKTsKICAgIGlmKCEkY29kZSkgY29udGludWU7CiAgICAkaT1zdHJwb3MoJGNvZGUsJ2Nhbm9uaWNhbF90YWJsZV9oYXNoJyk7CiAgICBpZigkaT09PWZhbHNlKSBjb250aW51ZTsKICAgIC8vIGllc2tvbSBmdW5rY2lqb3MsIGt1cmkgamkgc2thaWNpdW9qYQogICAgJGo9c3RycnBvcyhzdWJzdHIoJGNvZGUsMCwkaSksJ2Z1bmN0aW9uJyk7CiAgICAkZnJhZyA9IHN1YnN0cigkY29kZSwgbWF4KDAsJGotMTAwKSwgMjYwMCk7CiAgICAkb1sncycuJGlkXT0kZnJhZzsKICB9CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
+const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX3JkMiddKSB8fCAkX0dFVFsncHNfcmQyJ10hPT0nUmQyeCcpIHJldHVybjsKICB3aGlsZShvYl9nZXRfbGV2ZWwoKSkgb2JfZW5kX2NsZWFuKCk7CiAgZ2xvYmFsICR3cGRiOyAkbz1hcnJheSgpOyAkdD0kd3BkYi0+cHJlZml4LidzbmlwcGV0cyc7CiAgJGNvZGU9JHdwZGItPmdldF92YXIoIlNFTEVDVCBjb2RlIEZST00gJHQgV0hFUkUgaWQ9MTQ5OCIpOwogICRpPXN0cnBvcygkY29kZSwiaW5zZXJ0KFwkcGYuJ3BzX2ZlZWRpbmdfdGFibGVzJyIpOwogIGlmKCRpPT09ZmFsc2UpICRpPXN0cnBvcygkY29kZSwncHNfZmVlZGluZ190YWJsZXMnKTsKICAkb1snaW5zZXJ0X2Jsb2thcyddPXN1YnN0cigkY29kZSxtYXgoMCwkaS0xODAwKSwzMjAwKTsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
@@ -15,14 +15,14 @@ const o={}; let sid=null;
 try{
   const php = Buffer.from(PHPB64,'base64').toString('utf8');
   let mk=null;
-  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'READ '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
+  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'RD2 '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
     if(mk && mk.indexOf('"id"')>=0) break; }catch(e){} execSync('sleep 8'); }
   try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 5');
-  const r=execSync('curl -sk --max-time 70 "https://dev.avesa.lt/?ps_read=Readx"',{maxBuffer:20e6}).toString();
+  const r=execSync('curl -sk --max-time 70 "https://dev.avesa.lt/?ps_rd2=Rd2x"',{maxBuffer:20e6}).toString();
   const i=r.indexOf('{'),k=r.lastIndexOf('}');
   if(i>=0&&k>i){ try{ o.result=JSON.parse(r.slice(i,k+1)); }catch(e){ o.rawslice=r.slice(i,i+300); } }
 }catch(e){o.err=String(e).slice(0,200);}
 try{ if(sid!=null) execSync('curl -sk --max-time 60 '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"'); }catch(e){}
-putB64('read.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('rd2.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
