@@ -1,29 +1,39 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-const PHPB64='PD9waHAKLyoqCiAqIFMyOTU6IMWhxJdyaW1vIGxlbnRlbGnFsyBpbXBvcnRhcyBpxaEgcHJla8SXcyBhcHJhxaF5bW8uCiAqIERSWS1SVU4gcGFnYWwgbnV0eWzEl2ppbcSFLiBSYcWhbyB0aWsgP2NvbmZpcm09QVBQTFlfRkVFRC4KICogR3l2xatubyBzYXVnYTogbmlla28gbmVzcMSXamFtIOKAlCBqZWkgZWlsdXTElyBuZWF0cGHFvsSvc3RhbWEsIGppIEFUTUVUQU1BCiAqIGlyIHByb2R1a3RhcyBwcmFsZWlkxb5pYW1hcyB2aXNhcy4KICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgaWYoIWlzc2V0KCRfR0VUWydwc19mZWVkJ10pIHx8ICRfR0VUWydwc19mZWVkJ10hPT0nRmVlZHgnKSByZXR1cm47CiAgd2hpbGUob2JfZ2V0X2xldmVsKCkpIG9iX2VuZF9jbGVhbigpOwogIGdsb2JhbCAkd3BkYjsgJG89YXJyYXkoKTsKICAkYXBwbHkgPSAoaXNzZXQoJF9HRVRbJ2NvbmZpcm0nXSkgJiYgJF9HRVRbJ2NvbmZpcm0nXT09PSdBUFBMWV9GRUVEJyk7CiAgJG9bJ3JlemltYXMnXSA9ICRhcHBseSA/ICdBUFBMWScgOiAnRFJZLVJVTic7CiAgJG1hcD0kd3BkYi0+cHJlZml4Lidwc19mZWVkaW5nX21hcCc7ICR0YWJzPSR3cGRiLT5wcmVmaXguJ3BzX2ZlZWRpbmdfdGFibGVzJzsgJHJvd3M9JHdwZGItPnByZWZpeC4ncHNfZmVlZGluZ19yb3dzJzsKCiAgJGlkcz0kd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIERJU1RJTkNUIHAuSUQgRlJPTSB7JHdwZGItPnBvc3RzfSBwCiAgICBKT0lOIHskd3BkYi0+dGVybV9yZWxhdGlvbnNoaXBzfSB0ciBPTiB0ci5vYmplY3RfaWQ9cC5JRAogICAgSk9JTiB7JHdwZGItPnRlcm1fdGF4b25vbXl9IHR0IE9OIHR0LnRlcm1fdGF4b25vbXlfaWQ9dHIudGVybV90YXhvbm9teV9pZCBBTkQgdHQudGF4b25vbXk9J3Byb2R1Y3RfY2F0JwogICAgSk9JTiB7JHdwZGItPnRlcm1zfSB0IE9OIHQudGVybV9pZD10dC50ZXJtX2lkIEFORCB0LnNsdWcgTElLRSAnc2F1c2FzLW1haXN0YXMlJwogICAgV0hFUkUgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJwogICAgICBBTkQgcC5JRCBOT1QgSU4gKFNFTEVDVCBwcm9kdWN0X2lkIEZST00gJG1hcCBXSEVSRSBpc19hY3RpdmU9MSkiKTsKCiAgJG9rPWFycmF5KCk7ICRza2lwPWFycmF5KCk7CiAgZm9yZWFjaCgkaWRzIGFzICRwaWQpewogICAgJHBpZD0oaW50KSRwaWQ7CiAgICAkYz0oc3RyaW5nKSR3cGRiLT5nZXRfdmFyKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgcG9zdF9jb250ZW50IEZST00geyR3cGRiLT5wb3N0c30gV0hFUkUgSUQ9JWQiLCRwaWQpKTsKICAgIGlmKCRjPT09JycgfHwgc3RyaXBvcygkYywnUmVrb21lbmR1b2phbWFzIGtpZWtpcyBwZXIgcGFyJyk9PT1mYWxzZSkgY29udGludWU7CgogICAgLy8gaXNrZXJwYW0gVElLIHRhIHNla2NpamEKICAgICRpPXN0cmlwb3MoJGMsJ1Jla29tZW5kdW9qYW1hcyBraWVraXMgcGVyIHBhcicpOwogICAgJHNlZz1zdWJzdHIoJGMsJGksNjAwMCk7CiAgICAkdDE9c3RyaXBvcygkc2VnLCc8dGFibGUnKTsgJHQyPXN0cmlwb3MoJHNlZywnPC90YWJsZT4nKTsKICAgIGlmKCR0MT09PWZhbHNlfHwkdDI9PT1mYWxzZSl7ICRza2lwW109YXJyYXkoJ2lkJz0+JHBpZCwna29kZWwnPT4nbmVyYXN0YSA8dGFibGU+Jyk7IGNvbnRpbnVlOyB9CiAgICAkdGJsPXN1YnN0cigkc2VnLCR0MSwkdDItJHQxKzgpOwoKICAgIC8vIGVpbHV0ZXMKICAgIHByZWdfbWF0Y2hfYWxsKCcvPHRyW14+XSo+KC4qPyk8XC90cj4vaXMnLCR0YmwsJG1yKTsKICAgICRwYXJzZWQ9YXJyYXkoKTsgJGJhZD0wOwogICAgZm9yZWFjaCgkbXJbMV0gYXMgJHRyKXsKICAgICAgcHJlZ19tYXRjaF9hbGwoJy88dGRbXj5dKj4oLio/KTxcL3RkPi9pcycsJHRyLCRtdCk7CiAgICAgIGlmKGNvdW50KCRtdFsxXSk8MikgY29udGludWU7CiAgICAgICRhPXRyaW0oaHRtbF9lbnRpdHlfZGVjb2RlKHN0cmlwX3RhZ3MoJG10WzFdWzBdKSxFTlRfUVVPVEVTLCdVVEYtOCcpKTsKICAgICAgJGI9dHJpbShodG1sX2VudGl0eV9kZWNvZGUoc3RyaXBfdGFncygkbXRbMV1bMV0pLEVOVF9RVU9URVMsJ1VURi04JykpOwogICAgICAkYT1wcmVnX3JlcGxhY2UoJy9ccysvdScsJyAnLCRhKTsgJGI9cHJlZ19yZXBsYWNlKCcvXHMrL3UnLCcgJywkYik7CiAgICAgIGlmKCRhPT09JycgfHwgc3RyaXBvcygkYSwnc3ZvcmlzJykhPT1mYWxzZSkgY29udGludWU7ICAgLy8gYW50cmFzdGUKCiAgICAgIC8vIFNWT1JJUzogIjIga2ciLCAiMi00IGtnIiwgIjLigJM0IGtnIiwgIjIsNSBrZyIKICAgICAgaWYoIXByZWdfbWF0Y2goJy9eKFtcZF0rKD86Wy4sXVtcZF0rKT8pXHMqKD86Wy3igJPigJRdXHMqKFtcZF0rKD86Wy4sXVtcZF0rKT8pKT9ccyprZy9pdScsJGEsJG1hKSl7ICRiYWQrKzsgY29udGludWU7IH0KICAgICAgJHdmPShmbG9hdClzdHJfcmVwbGFjZSgnLCcsJy4nLCRtYVsxXSk7CiAgICAgICR3dD1pc3NldCgkbWFbMl0pJiYkbWFbMl0hPT0nJyA/IChmbG9hdClzdHJfcmVwbGFjZSgnLCcsJy4nLCRtYVsyXSkgOiAkd2Y7CgogICAgICAvLyBLSUVLSVM6ICI1MOKAkzcwIGciLCAiNTAtNzAgZyIsICI2MCBnIgogICAgICBpZighcHJlZ19tYXRjaCgnLyhbXGRdKyg/OlsuLF1bXGRdKyk/KVxzKig/Olst4oCT4oCUXVxzKihbXGRdKyg/OlsuLF1bXGRdKyk/KSk/XHMqZy9pdScsJGIsJG1iMikpeyAkYmFkKys7IGNvbnRpbnVlOyB9CiAgICAgICRhZj0oZmxvYXQpc3RyX3JlcGxhY2UoJywnLCcuJywkbWIyWzFdKTsKICAgICAgJGF0PWlzc2V0KCRtYjJbMl0pJiYkbWIyWzJdIT09JycgPyAoZmxvYXQpc3RyX3JlcGxhY2UoJywnLCcuJywkbWIyWzJdKSA6ICRhZjsKICAgICAgaWYoJHdmPD0wfHwkYWY8PTB8fCR3dDwkd2Z8fCRhdDwkYWYpeyAkYmFkKys7IGNvbnRpbnVlOyB9CiAgICAgICRwYXJzZWRbXT1hcnJheSgnd2YnPT4kd2YsJ3d0Jz0+JHd0LCdhZic9PiRhZiwnYXQnPT4kYXQsJ3Jhdyc9PiRhLicgfCAnLiRiKTsKICAgIH0KICAgIGlmKCRiYWQ+MCB8fCBjb3VudCgkcGFyc2VkKTwyKXsKICAgICAgJHNraXBbXT1hcnJheSgnaWQnPT4kcGlkLCdrb2RlbCc9PiduZWF0cGHFvmludMWzIGVpbHXEjWnFsyAnLiRiYWQuJywgYXRwYcW+aW50YSAnLmNvdW50KCRwYXJzZWQpKTsKICAgICAgY29udGludWU7CiAgICB9CiAgICAkcD13Y19nZXRfcHJvZHVjdCgkcGlkKTsKICAgICRzcD13cF9nZXRfb2JqZWN0X3Rlcm1zKCRwaWQsJ3BhX2d5dnVub19ydXNpcycsYXJyYXkoJ2ZpZWxkcyc9PidzbHVncycpKTsKICAgICRzcGVjaWVzPSghaXNfd3BfZXJyb3IoJHNwKSYmJHNwJiZpbl9hcnJheSgna2F0ZW1zJywkc3AsdHJ1ZSkpPydjYXQnOidkb2cnOwogICAgJGJyPXdwX2dldF9vYmplY3RfdGVybXMoJHBpZCwncHJvZHVjdF9icmFuZCcsYXJyYXkoJ2ZpZWxkcyc9PiduYW1lcycpKTsKICAgICRicmFuZD0oIWlzX3dwX2Vycm9yKCRicikmJiRicik/JGJyWzBdOicnOwogICAgJG9rW109YXJyYXkoJ2lkJz0+JHBpZCwnbic9PiRwP21iX3N1YnN0cigkcC0+Z2V0X25hbWUoKSwwLDQ0KTpudWxsLCdicmFuZCc9PiRicmFuZCwKICAgICAgJ3NwZWNpZXMnPT4kc3BlY2llcywnZWlsdWNpdSc9PmNvdW50KCRwYXJzZWQpLAogICAgICAnbnVvJz0+JHBhcnNlZFswXVsnd2YnXS4na2cg4oaSICcuJHBhcnNlZFswXVsnYWYnXS4nLScuJHBhcnNlZFswXVsnYXQnXS4nZycsCiAgICAgICdpa2knPT5lbmQoJHBhcnNlZClbJ3d0J10uJ2tnIOKGkiAnLmVuZCgkcGFyc2VkKVsnYWYnXS4nLScuZW5kKCRwYXJzZWQpWydhdCddLidnJywKICAgICAgJ3Jvd3MnPT4kcGFyc2VkKTsKICB9CiAgJG9bJ3RpbmthJ109Y291bnQoJG9rKTsgJG9bJ3ByYWxlaXN0YSddPWNvdW50KCRza2lwKTsKICAkb1sncHJhbGVpc3RpJ109YXJyYXlfc2xpY2UoJHNraXAsMCwxMCk7CiAgJG9bJ3NhcmFzYXMnXT1hcnJheV9tYXAoZnVuY3Rpb24oJHgpeyB1bnNldCgkeFsncm93cyddKTsgcmV0dXJuICR4OyB9LCRvayk7CiAgJG9bJ3BpbG5hc19wdnonXT1pc3NldCgkb2tbMF0pPyRva1swXVsncm93cyddOm51bGw7CgogIGlmKCRhcHBseSl7CiAgICAkaW5zPTA7CiAgICBmb3JlYWNoKCRvayBhcyAkeCl7CiAgICAgICR3cGRiLT5pbnNlcnQoJHRhYnMsYXJyYXkoJ2JyYW5kJz0+JHhbJ2JyYW5kJ10sJ2xpbmUnPT5udWxsLCdzY29wZSc9Pidwcm9kdWN0JywKICAgICAgICAnc3BlY2llcyc9PiR4WydzcGVjaWVzJ10sJ3dlaWdodF9iYXNpcyc9PidjdXJyZW50Jywncm93X2RpbWVuc2lvbic9Pid3ZWlnaHQnLAogICAgICAgICdzaGFwZSc9PidzaW1wbGUnLCdzdGF0dXMnPT4ndmVyaWZpZWQnLCdzdXBwb3J0Jz0+J2Z1bGwnLAogICAgICAgICdzb3VyY2VfbGFiZWwnPT4nScWhIHByZWvEl3MgYXByYcWheW1vIChTMjk1KScsJ2NyZWF0ZWRfYXQnPT5jdXJyZW50X3RpbWUoJ215c3FsJykpKTsKICAgICAgJHRpZD0oaW50KSR3cGRiLT5pbnNlcnRfaWQ7CiAgICAgIGlmKCEkdGlkKSBjb250aW51ZTsKICAgICAgJG49MDsKICAgICAgZm9yZWFjaCgkeFsncm93cyddIGFzICRyKXsKICAgICAgICAkd3BkYi0+aW5zZXJ0KCRyb3dzLGFycmF5KCdmZWVkaW5nX3RhYmxlX2lkJz0+JHRpZCwncm93X29yZGVyJz0+KyskbiwKICAgICAgICAgICd3ZWlnaHRfZnJvbV9rZyc9PiRyWyd3ZiddLCd3ZWlnaHRfdG9fa2cnPT4kclsnd3QnXSwKICAgICAgICAgICdhbW91bnRfZnJvbV9nJz0+JHJbJ2FmJ10sJ2Ftb3VudF90b19nJz0+JHJbJ2F0J10sCiAgICAgICAgICAnY2VsbF90eXBlJz0+J3ZhbHVlJywnc291cmNlX2xhYmVsJz0+J2FwcmFzeW1hcycpKTsKICAgICAgfQogICAgICAkd3BkYi0+aW5zZXJ0KCRtYXAsYXJyYXkoJ2ZlZWRpbmdfdGFibGVfaWQnPT4kdGlkLCdwcm9kdWN0X2lkJz0+JHhbJ2lkJ10sJ2lzX2FjdGl2ZSc9PjEpKTsKICAgICAgJGlucysrOwogICAgfQogICAgJG9bJ3N1a3VydGFfbGVudGVsaXUnXT0kaW5zOwogIH0KICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
-function wj(m,path,body){fs.writeFileSync('/tmp/wb.json', JSON.stringify(body));
-  return execSync('curl -sk --max-time 150 '+AUTH+' -X '+m+' -H "Content-Type: application/json" --data-binary @/tmp/wb.json "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50e6,timeout:170000}).toString();}
 function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:50e6}).toString());if(j.sha)s=j.sha;}catch(e){}
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:b64,...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
-const o={marker:'S295-DRY'}; let sid=null;
+const o={marker:'S295-APPLY'};
 try{
-  const php = Buffer.from(PHPB64,'base64').toString('utf8');
-  let mk=null;
-  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'S295 '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
-    if(mk && mk.indexOf('"id"')>=0) break; }catch(e){} execSync('sleep 8'); }
-  try{sid=JSON.parse(mk).id; o.sid=sid;}catch(e){o.mk=String(mk).slice(0,150);}
-  execSync('sleep 5');
-  const r=execSync('curl -sk --max-time 150 "https://dev.avesa.lt/?ps_feed=Feedx"',{maxBuffer:20e6,timeout:170000}).toString();
+  // 1. APPLY
+  const r=execSync('curl -sk --max-time 150 "https://dev.avesa.lt/?ps_feed=Feedx&confirm=APPLY_FEED"',{maxBuffer:20e6,timeout:170000}).toString();
   const i=r.indexOf('{'),k=r.lastIndexOf('}');
-  if(i>=0&&k>i){ try{ o.result=JSON.parse(r.slice(i,k+1)); }catch(e){ o.rawslice=r.slice(i,i+400); } }
-  else o.raw=r.slice(0,300);
-}catch(e){o.err=String(e).slice(0,200);}
-// SNIPPET'O NETRINAM — reikes APPLY
-putB64('s295.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+  if(i>=0&&k>i){ try{ o.apply=JSON.parse(r.slice(i,k+1)); }catch(e){ o.rawslice=r.slice(i,i+300); } }
+  execSync('sleep 4');
+  // 2. NEPRIKLAUSOMA VERIFIKACIJA — per TIKRĄ viešą endpointą, kaip mato klientas
+  const call=(b)=>{ fs.writeFileSync('/tmp/cb.json', JSON.stringify(b));
+    const x=execSync('curl -sk --max-time 45 -X POST -H "Content-Type: application/json" --data-binary @/tmp/cb.json "https://dev.avesa.lt/wp-json/petshop/v1/feeding-calc"',{maxBuffer:8e6,timeout:60000}).toString();
+    try{ return JSON.parse(x); }catch(e){ return {}; } };
+  const pick=(r2)=>({st:r2.status,norm:(r2.norm_min_g??null)+'-'+(r2.norm_max_g??null),
+    days:(r2.days_min??null)+'-'+(r2.days_max??null),eur:(r2.cost_day_min??null)+'-'+(r2.cost_day_max??null),
+    basis:r2.basis??null,rc:r2.reason_codes});
+  // JosiDog Mini 900g: 2 kg -> 50-70 g
+  o.t_mini_2   = pick(call({product_id:20403, weight_kg:2,  species_code:'dog'}));
+  // tarp tasku (interpoliacija): 3 kg
+  o.t_mini_3   = pick(call({product_id:20403, weight_kg:3,  species_code:'dog'}));
+  // uz ribu: 20 kg (lentele iki 10)
+  o.t_mini_20  = pick(call({product_id:20403, weight_kg:20, species_code:'dog'}));
+  // JosiCat: 2.5 kg patenka i 2-3 range -> 45-60 g
+  o.t_cat_2_5  = pick(call({product_id:20391, weight_kg:2.5, species_code:'cat'}));
+  // JosiDog Active: 5 kg -> 50-90 g
+  o.t_act_5    = pick(call({product_id:20393, weight_kg:5,  species_code:'dog'}));
+  // REGRESIJA: senas produktas neturi buti paliestas
+  o.t_regr     = pick(call({product_id:18620, weight_kg:13, species_code:'dog'}));
+}catch(e){ o.err=String(e).slice(0,250); }
+putB64('s295a.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
