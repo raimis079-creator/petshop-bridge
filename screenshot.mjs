@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX2FjYyddKSB8fCAkX0dFVFsncHNfYWNjJ10hPT0nQWNjeCcpIHJldHVybjsKICB3aGlsZShvYl9nZXRfbGV2ZWwoKSkgb2JfZW5kX2NsZWFuKCk7CiAgZ2xvYmFsICR3cGRiOyAkbz1hcnJheSgpOwogICRwaWQ9MjA0MDM7CiAgJHBvc3Q9Z2V0X3Bvc3QoJHBpZCk7CiAgJGM9JHBvc3Q/JHBvc3QtPnBvc3RfY29udGVudDonJzsKICAkb1snY29udGVudF9pbGdpcyddPXN0cmxlbigkYyk7CiAgLy8gYXIgc2VyaW1vIGxlbnRlbGUgWVJBIHBvc3RfY29udGVudAogICRpPXN0cmlwb3MoJGMsJ8WgxJdyaW1vJyk7CiAgJG9bJ3NlcmltYXNfY29udGVudCddPSgkaSE9PWZhbHNlKTsKICBpZigkaSE9PWZhbHNlKSAkb1snZnJhZ21lbnRhcyddPW1iX3N1YnN0cigkYyxtYXgoMCwkaS0xMDApLDEyMDApOwogIC8vIG1ldGEgbGF1a2FpCiAgJG1ldGE9JHdwZGItPmdldF9yZXN1bHRzKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgbWV0YV9rZXksTEVGVChtZXRhX3ZhbHVlLDMwMCkgdiBGUk9NIHskd3BkYi0+cG9zdG1ldGF9IFdIRVJFIHBvc3RfaWQ9JWQgQU5EIChtZXRhX2tleSBMSUtFICclJXNlcmltJSUnIE9SIG1ldGFfa2V5IExJS0UgJyUlZmVlZCUlJyBPUiBtZXRhX2tleSBMSUtFICclJW5vcm0lJScgT1IgbWV0YV92YWx1ZSBMSUtFICclJUtpZWtpcyAvIDI0JSUnKSIsJHBpZCksQVJSQVlfQSk7CiAgJG9bJ21ldGEnXT0kbWV0YTsKICAvLyB2aXNpIG1ldGEgcmFrdGFpCiAgJG9bJ3Zpc2lfcmFrdGFpJ109JHdwZGItPmdldF9jb2woJHdwZGItPnByZXBhcmUoIlNFTEVDVCBtZXRhX2tleSBGUk9NIHskd3BkYi0+cG9zdG1ldGF9IFdIRVJFIHBvc3RfaWQ9JWQiLCRwaWQpKTsKICAvLyBrdXIgcGFyc2VyaXMKICAkdD0kd3BkYi0+cHJlZml4LidzbmlwcGV0cyc7CiAgJHNuPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIGlkLG5hbWUsYWN0aXZlIEZST00gJHQgV0hFUkUgbmFtZSBMSUtFICclYWNjb3JkaW9uJScgT1IgbmFtZSBMSUtFICclQWtvcmRlb24lJyBPUiBjb2RlIExJS0UgJyXFoMSXcmltbyBpbnN0cnVrY2lqYSUnIExJTUlUIDUiLEFSUkFZX0EpOwogICRvWydzbmlwcGV0YWknXT0kc247CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0pOwo=';
+const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX2NudCddKSB8fCAkX0dFVFsncHNfY250J10hPT0nQ250eCcpIHJldHVybjsKICB3aGlsZShvYl9nZXRfbGV2ZWwoKSkgb2JfZW5kX2NsZWFuKCk7CiAgJHBpZD0yMDQwMzsgJHBvc3Q9Z2V0X3Bvc3QoJHBpZCk7CiAgJGM9JHBvc3Q/JHBvc3QtPnBvc3RfY29udGVudDonJzsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOwogIGVjaG8ganNvbl9lbmNvZGUoYXJyYXkoJ2I2NCc9PmJhc2U2NF9lbmNvZGUoJGMpLCdsZW4nPT5zdHJsZW4oJGMpKSk7CiAgZXhpdDsKfSk7Cg==';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='-u "'+U+':'+P+'"';
@@ -15,14 +15,14 @@ const o={}; let sid=null;
 try{
   const php = Buffer.from(PHPB64,'base64').toString('utf8');
   let mk=null;
-  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'ACC '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
+  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'CNT '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
     if(mk && mk.indexOf('"id"')>=0) break; }catch(e){} execSync('sleep 8'); }
-  try{sid=JSON.parse(mk).id;}catch(e){o.mk=String(mk).slice(0,150);}
+  try{sid=JSON.parse(mk).id;}catch(e){}
   execSync('sleep 5');
-  const r=execSync('curl -sk --max-time 70 "https://dev.avesa.lt/?ps_acc=Accx"',{maxBuffer:8e6,timeout:85000}).toString();
+  const r=execSync('curl -sk --max-time 60 "https://dev.avesa.lt/?ps_cnt=Cntx"',{maxBuffer:20e6}).toString();
   const i=r.indexOf('{'),k=r.lastIndexOf('}');
-  if(i>=0&&k>i){ try{ o.result=JSON.parse(r.slice(i,k+1)); }catch(e){ o.rawslice=r.slice(i,i+400); } }
+  if(i>=0&&k>i) o.result=JSON.parse(r.slice(i,k+1));
 }catch(e){o.err=String(e).slice(0,200);}
 try{ if(sid!=null) execSync('curl -sk --max-time 60 '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"'); }catch(e){}
-putB64('acc.json', Buffer.from(JSON.stringify(o)).toString('base64'));
+putB64('cnt.json', Buffer.from(JSON.stringify(o)).toString('base64'));
 console.log('done');
