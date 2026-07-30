@@ -1,0 +1,66 @@
+{
+ "T1": {
+  "step1_added": null,
+  "step2_email": null,
+  "step3_shipping": null,
+  "step4_qty": null
+ },
+ "T2": {
+  "step1_variation": {
+   "cart": "c_46bb2a2a5d93",
+   "items": 1,
+   "act": "2026-07-30 21:39:04",
+   "hash": "5f47392b14",
+   "email": null,
+   "src": null,
+   "snap": [
+    {
+     "p": 19137,
+     "v": 34426,
+     "q": 1,
+     "var": {
+      "attribute_pa_spalva": "garstyciu"
+     },
+     "item_data_keys": []
+    }
+   ]
+  },
+  "step2_removed": {
+   "cart": "c_46bb2a2a5d93",
+   "items": 0,
+   "act": "2026-07-30 21:39:18",
+   "hash": "e3b0c44298",
+   "email": null,
+   "src": null,
+   "snap": []
+  },
+  "step3_restored": {
+   "cart": "c_46bb2a2a5d93",
+   "items": 1,
+   "act": "2026-07-30 21:39:24",
+   "hash": "5f47392b14",
+   "email": null,
+   "src": null,
+   "snap": [
+    {
+     "p": 19137,
+     "v": 34426,
+     "q": 1,
+     "var": {
+      "attribute_pa_spalva": "garstyciu"
+     },
+     "item_data_keys": []
+    }
+   ]
+  },
+  "step4_emptied": {
+   "cart": "c_46bb2a2a5d93",
+   "items": 0,
+   "act": "2026-07-30 21:39:35",
+   "hash": "e3b0c44298",
+   "email": null,
+   "src": null,
+   "snap": []
+  }
+ }
+}
