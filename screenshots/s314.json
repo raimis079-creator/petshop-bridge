@@ -1,0 +1,106 @@
+{
+ "deactivated": [],
+ "sid": 1925,
+ "dry_raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Class &quot;Petshop_Email_Suppression&quot; not found in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:35\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook-&gt;apply_filters()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/",
+ "apply": {
+  "deploy": {
+   "class-email-suppression.php": "MATCH",
+   "class-email-dispatch.php": "MATCH",
+   "class-webhook-receiver.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "tables": {
+   "suppression": [
+    "id",
+    "email",
+    "channel",
+    "reason",
+    "source",
+    "note",
+    "suppressed_at",
+    "released_at"
+   ],
+   "webhook_log": [
+    "id",
+    "dedup_key",
+    "topic",
+    "email",
+    "marketing_status",
+    "transactional_status",
+    "payload_json",
+    "processing_result",
+    "received_at"
+   ]
+  },
+  "T1_unsub": {
+   "marketing": 1,
+   "transactional": 0,
+   "elig_marketing": {
+    "allowed": false,
+    "reason": "suppressed_marketing_unsubscribe",
+    "terminal": true
+   },
+   "elig_service": {
+    "allowed": false,
+    "reason": "product_inactive",
+    "terminal": false
+   },
+   "elig_transact": {
+    "allowed": true,
+    "reason": ""
+   }
+  },
+  "T2_bounce": {
+   "marketing": 0,
+   "transactional": 1,
+   "elig_transact": {
+    "allowed": false,
+    "reason": "suppressed_transactional_bounce",
+    "terminal": true
+   }
+  },
+  "T3_noop": {
+   "changed": [],
+   "marketing": 0,
+   "transactional": 0
+  },
+  "T4_log1": "logged",
+  "T4_log2": "duplicate",
+  "T5_reconcile": {
+   "contacts_checked": 4,
+   "status_changes": 1,
+   "marketing_suppressed": 0,
+   "transactional_suppressed": 0,
+   "released_or_reactivated": 0,
+   "api_errors": 0,
+   "dry_run": true,
+   "last_success_at": false
+  },
+  "stats": {
+   "active": [
+    {
+     "channel": "marketing",
+     "reason": "unsubscribe",
+     "c": "1"
+    },
+    {
+     "channel": "transactional",
+     "reason": "bounce",
+     "c": "1"
+    }
+   ],
+   "total": 2,
+   "last_reconcile": false,
+   "webhook_log": [
+    {
+     "topic": "subscribers/updated",
+     "c": "1"
+    }
+   ]
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
