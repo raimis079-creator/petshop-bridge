@@ -1,0 +1,73 @@
+{
+ "deactivated": [],
+ "sid": 1914,
+ "dry": {
+  "deploy": {
+   "includes/class-event-emitters.php": {
+    "size": 9885,
+    "MATCH": "YES"
+   },
+   "includes/class-refill-engine.php": {
+    "size": 16303,
+    "MATCH": "YES"
+   },
+   "templates/emails/refill.php": {
+    "size": 3660,
+    "MATCH": "YES"
+   }
+  },
+  "note": "tik deploy"
+ },
+ "apply": {
+  "deploy": {
+   "includes/class-event-emitters.php": {
+    "size": 9885,
+    "MATCH": "YES"
+   },
+   "includes/class-refill-engine.php": {
+    "size": 16303,
+    "MATCH": "YES"
+   },
+   "templates/emails/refill.php": {
+    "size": 3660,
+    "MATCH": "YES"
+   }
+  },
+  "refill_flow": {
+   "class": "service",
+   "template": "refill",
+   "delay": 0
+  },
+  "tracking_rows": [
+   {
+    "id": "4",
+    "user_id": "1",
+    "product_id": "18527",
+    "pet_id": null,
+    "status": "active",
+    "predicted_empty_date": "2026-08-19",
+    "confidence": "0.40",
+    "last_purchase_date": "2026-07-20"
+   }
+  ],
+  "forced": {
+   "id": "4",
+   "user": "1",
+   "email": "raimundas@gyvunai.lt",
+   "product": "18527"
+  },
+  "after_check": {
+   "status": "notified",
+   "predicted_empty_date": "2026-07-30"
+  },
+  "jobs": [],
+  "process": {
+   "dry_run": false,
+   "picked": 0,
+   "results": []
+  },
+  "jobs_after": []
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
