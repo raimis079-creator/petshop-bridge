@@ -1,0 +1,65 @@
+{
+ "deactivated": [],
+ "sid": 1912,
+ "dry": {
+  "deploy": {
+   "sha": "9135c6533330550a",
+   "expected": "9135c6533330550a",
+   "MATCH": "YES"
+  },
+  "note": "tik deploy; pridek &test=YES E2E testui"
+ },
+ "apply": {
+  "deploy": {
+   "sha": "9135c6533330550a",
+   "expected": "9135c6533330550a",
+   "MATCH": "YES"
+  },
+  "order": {
+   "id": 34729,
+   "nr": "34729",
+   "total": "30.00",
+   "product": 34512
+  },
+  "payment_complete": "kviesta",
+  "jobs": [
+   {
+    "id": "2",
+    "job_key": "order_paid:34729",
+    "flow": "order_paid",
+    "flow_class": "transactional",
+    "recipient_email": "raimundas@gyvunai.lt",
+    "status": "pending",
+    "subject": null,
+    "scheduled_at": "2026-07-30 18:09:29"
+   }
+  ],
+  "events": [],
+  "process": {
+   "dry_run": false,
+   "picked": 1,
+   "results": [
+    {
+     "id": 2,
+     "flow": "order_paid",
+     "action": "SENT",
+     "msg_id": "azv2GY-.eE9p2l-j09zEZv-JQnqk3kAX4jg-o8cfY",
+     "error": ""
+    }
+   ]
+  },
+  "jobs_after": [
+   {
+    "id": "2",
+    "job_key": "order_paid:34729",
+    "status": "sent",
+    "provider_message_id": "azv2GY-.eE9p2l-j09zEZv-JQnqk3kAX4jg-o8cfY",
+    "subject": "Užsakymas 34729 priimtas",
+    "last_error": null
+   }
+  ],
+  "order_deleted": true
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
