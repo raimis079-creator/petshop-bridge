@@ -1,0 +1,338 @@
+{
+ "deactivated": [],
+ "sid": 1935,
+ "dry": {
+  "token_len": 295,
+  "peek_1": {
+   "valid": true,
+   "reason": "ok",
+   "row": {
+    "id": "45",
+    "token_hash": "eb386108b05a09b5fec19916359d734250c5934f0ac3fc42fc2b8743a3314d9a",
+    "nonce": "8f1f72ddab14a4fbc27fc2dcb37b3baf",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:11",
+    "expires_at": "2026-07-30 21:32:11",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "peek_2": {
+   "valid": true,
+   "reason": "ok",
+   "row": {
+    "id": "45",
+    "token_hash": "eb386108b05a09b5fec19916359d734250c5934f0ac3fc42fc2b8743a3314d9a",
+    "nonce": "8f1f72ddab14a4fbc27fc2dcb37b3baf",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:11",
+    "expires_at": "2026-07-30 21:32:11",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "consume_1": {
+   "valid": true,
+   "reason": "ok",
+   "row": {
+    "id": "45",
+    "token_hash": "eb386108b05a09b5fec19916359d734250c5934f0ac3fc42fc2b8743a3314d9a",
+    "nonce": "8f1f72ddab14a4fbc27fc2dcb37b3baf",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:11",
+    "expires_at": "2026-07-30 21:32:11",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "consume_2": {
+   "valid": false,
+   "reason": "already_used",
+   "row": {
+    "id": "45",
+    "token_hash": "eb386108b05a09b5fec19916359d734250c5934f0ac3fc42fc2b8743a3314d9a",
+    "nonce": "8f1f72ddab14a4fbc27fc2dcb37b3baf",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "used",
+    "created_at": "2026-07-30 21:17:11",
+    "expires_at": "2026-07-30 21:32:11",
+    "used_at": "2026-07-30 21:17:11",
+    "used_ip": "57.154.13.242"
+   }
+  },
+  "peek_3": {
+   "valid": false,
+   "reason": "already_used",
+   "row": {
+    "id": "45",
+    "token_hash": "eb386108b05a09b5fec19916359d734250c5934f0ac3fc42fc2b8743a3314d9a",
+    "nonce": "8f1f72ddab14a4fbc27fc2dcb37b3baf",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "used",
+    "created_at": "2026-07-30 21:17:11",
+    "expires_at": "2026-07-30 21:32:11",
+    "used_at": "2026-07-30 21:17:11",
+    "used_ip": "57.154.13.242"
+   }
+  },
+  "expired_peek": {
+   "valid": false,
+   "reason": "expired",
+   "row": {
+    "id": "46",
+    "token_hash": "3a08ab7968527670894cbe99ba678a0ac483edbb036098670d61ad658583fe56",
+    "nonce": "f97375a1ef35fb19db3a7faace168f5e",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWEXP1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:11",
+    "expires_at": "2026-07-30 21:12:11",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "expired_consume": {
+   "valid": false,
+   "reason": "already_expired",
+   "row": {
+    "id": "46",
+    "token_hash": "3a08ab7968527670894cbe99ba678a0ac483edbb036098670d61ad658583fe56",
+    "nonce": "f97375a1ef35fb19db3a7faace168f5e",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWEXP1",
+    "action": null,
+    "key_id": "v2",
+    "status": "expired",
+    "created_at": "2026-07-30 21:17:11",
+    "expires_at": "2026-07-30 21:12:11",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "db": [
+   {
+    "purpose": "cart_recovery",
+    "resource_id": "RAWTEST1",
+    "status": "used",
+    "expires_at": "2026-07-30 21:32:11",
+    "used_at": "2026-07-30 21:17:11"
+   },
+   {
+    "purpose": "cart_recovery",
+    "resource_id": "RAWEXP1",
+    "status": "expired",
+    "expires_at": "2026-07-30 21:12:11",
+    "used_at": null
+   }
+  ]
+ },
+ "apply": {
+  "token_len": 295,
+  "peek_1": {
+   "valid": true,
+   "reason": "ok",
+   "row": {
+    "id": "47",
+    "token_hash": "b61c6af21c06565e061679e44caea8dd163046f399646b11083563372e294774",
+    "nonce": "edc448e75b21be9295097698dadbb566",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:13",
+    "expires_at": "2026-07-30 21:32:13",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "peek_2": {
+   "valid": true,
+   "reason": "ok",
+   "row": {
+    "id": "47",
+    "token_hash": "b61c6af21c06565e061679e44caea8dd163046f399646b11083563372e294774",
+    "nonce": "edc448e75b21be9295097698dadbb566",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:13",
+    "expires_at": "2026-07-30 21:32:13",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "consume_1": {
+   "valid": true,
+   "reason": "ok",
+   "row": {
+    "id": "47",
+    "token_hash": "b61c6af21c06565e061679e44caea8dd163046f399646b11083563372e294774",
+    "nonce": "edc448e75b21be9295097698dadbb566",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:13",
+    "expires_at": "2026-07-30 21:32:13",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "consume_2": {
+   "valid": false,
+   "reason": "already_used",
+   "row": {
+    "id": "47",
+    "token_hash": "b61c6af21c06565e061679e44caea8dd163046f399646b11083563372e294774",
+    "nonce": "edc448e75b21be9295097698dadbb566",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "used",
+    "created_at": "2026-07-30 21:17:13",
+    "expires_at": "2026-07-30 21:32:13",
+    "used_at": "2026-07-30 21:17:13",
+    "used_ip": "57.154.13.242"
+   }
+  },
+  "peek_3": {
+   "valid": false,
+   "reason": "already_used",
+   "row": {
+    "id": "47",
+    "token_hash": "b61c6af21c06565e061679e44caea8dd163046f399646b11083563372e294774",
+    "nonce": "edc448e75b21be9295097698dadbb566",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWTEST1",
+    "action": null,
+    "key_id": "v2",
+    "status": "used",
+    "created_at": "2026-07-30 21:17:13",
+    "expires_at": "2026-07-30 21:32:13",
+    "used_at": "2026-07-30 21:17:13",
+    "used_ip": "57.154.13.242"
+   }
+  },
+  "expired_peek": {
+   "valid": false,
+   "reason": "expired",
+   "row": {
+    "id": "48",
+    "token_hash": "e26d7a0558e732f9742a181892e4cef371c035eec3d8e277ffac788d7367d6d7",
+    "nonce": "e33ea6ed561bc61cb8414fff659639eb",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWEXP1",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-07-30 21:17:13",
+    "expires_at": "2026-07-30 21:12:13",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "expired_consume": {
+   "valid": false,
+   "reason": "already_expired",
+   "row": {
+    "id": "48",
+    "token_hash": "e26d7a0558e732f9742a181892e4cef371c035eec3d8e277ffac788d7367d6d7",
+    "nonce": "e33ea6ed561bc61cb8414fff659639eb",
+    "purpose": "cart_recovery",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "RAWEXP1",
+    "action": null,
+    "key_id": "v2",
+    "status": "expired",
+    "created_at": "2026-07-30 21:17:13",
+    "expires_at": "2026-07-30 21:12:13",
+    "used_at": null,
+    "used_ip": null
+   }
+  },
+  "db": [
+   {
+    "purpose": "cart_recovery",
+    "resource_id": "RAWEXP1",
+    "status": "expired",
+    "expires_at": "2026-07-30 21:12:13",
+    "used_at": null
+   },
+   {
+    "purpose": "cart_recovery",
+    "resource_id": "RAWTEST1",
+    "status": "used",
+    "expires_at": "2026-07-30 21:32:13",
+    "used_at": "2026-07-30 21:17:13"
+   }
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
