@@ -11,8 +11,8 @@ function sh(c){try{const o=execSync(c+' 2>&1; echo "__RC:$?"',{maxBuffer:50e6,sh
  const m=o.match(/__RC:(\d+)\s*$/);return{rc:m?+m[1]:-1,out:o.replace(/__RC:\d+\s*$/,'')};}catch(e){return{rc:-99,out:String(e).slice(0,300)};}}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
 const O={}; let sid=null;
-const php=Buffer.from('PD9waHAKLyoqCiAqIFRFTVAgUGV0cyBPd25lciBSZWNvbiB2MQogKi8KYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICAgIGlmICggISBpc3NldCgkX0dFVFsncHNfcGwnXSkgfHwgJF9HRVRbJ3BzX3BsJ10gIT09ICdQbDJxJyApIHJldHVybjsKICAgIGdsb2JhbCAkd3BkYjsgJHQ9JHdwZGItPnByZWZpeC4ncHNfcGV0cyc7CiAgICAkcj1hcnJheSgpOwogICAgJHJbJ3RvdGFsJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00gJHQiKTsKICAgICRyWyd3aXRoX3VzZXInXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkdCBXSEVSRSB1c2VyX2lkIElTIE5PVCBOVUxMIEFORCB1c2VyX2lkPjAiKTsKICAgICRyWydpc190ZXN0X2NvbCddPWluX2FycmF5KCdpc190ZXN0JywoYXJyYXkpJHdwZGItPmdldF9jb2woIlNIT1cgQ09MVU1OUyBGUk9NICR0IikpOwogICAgJHJbJ293bmVkJ109JHdwZGItPmdldF9yZXN1bHRzKAogICAgICAiU0VMRUNUIGlkLHVzZXJfaWQsbmFtZSxzcGVjaWVzLGZlZWRpbmdfdHlwZSxwcmltYXJ5X3Byb2R1Y3RfaWQsd2V0X3Byb2R1Y3RfaWQsY3VycmVudF93ZWlnaHRfa2cKICAgICAgIEZST00gJHQgV0hFUkUgdXNlcl9pZCBJUyBOT1QgTlVMTCBBTkQgdXNlcl9pZD4wIE9SREVSIEJZIGlkIERFU0MgTElNSVQgMjAiLCBBUlJBWV9BKTsKICAgICRyWydieV9mdCddPSR3cGRiLT5nZXRfcmVzdWx0cygKICAgICAgIlNFTEVDVCBmZWVkaW5nX3R5cGUsIENPVU5UKCopIGMsIFNVTSh1c2VyX2lkPjApIG93bmVkIEZST00gJHQgR1JPVVAgQlkgZmVlZGluZ190eXBlIiwgQVJSQVlfQSk7CiAgICBub2NhY2hlX2hlYWRlcnMoKTsgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsKICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1NMQVNIRVN8SlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7IGV4aXQ7Cn0sIDEpOwo=','base64').toString('utf8');
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP Pets Owner Recon v1',code:php,scope:'global',active:true}));
+const php=Buffer.from('PD9waHAKLyoqCiAqIFRFTVAgUGV0cyBDb2x1bW5zIHYxCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19jbyddKSB8fCAkX0dFVFsncHNfY28nXSAhPT0gJ0NvMXonICkgcmV0dXJuOwogICAgZ2xvYmFsICR3cGRiOyAkdD0kd3BkYi0+cHJlZml4Lidwc19wZXRzJzsKICAgICRyPWFycmF5KCdjb2xzJz0+JHdwZGItPmdldF9jb2woIlNIT1cgQ09MVU1OUyBGUk9NICR0IikpOwogICAgJHJbJ3NhbXBsZSddPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUICogRlJPTSAkdCBXSEVSRSBmZWVkaW5nX3R5cGUgSVMgTk9UIE5VTEwgT1JERVIgQlkgaWQgREVTQyBMSU1JVCA2IiwgQVJSQVlfQSk7CiAgICBub2NhY2hlX2hlYWRlcnMoKTsgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsKICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1NMQVNIRVN8SlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7IGV4aXQ7Cn0sIDEpOwo=','base64').toString('utf8');
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP Pets Columns v1',code:php,scope:'global',active:true}));
 for(let i=0;i<4&&!sid;i++){
   const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
   let j=null; try{j=JSON.parse(r.out);}catch(e){}
@@ -21,9 +21,9 @@ for(let i=0;i<4&&!sid;i++){
 O.sid=sid;
 if(sid){
   sh('sleep 4');
-  const d=sh('curl -sSk "'+SITE+'/?ps_pl=Pl2q"');
+  const d=sh('curl -sSk "'+SITE+'/?ps_co=Co1z"');
   try{O.dry=JSON.parse(d.out);}catch(e){O.dry_raw=d.out.slice(0,500);}
-  const a=sh('curl -sSk "'+SITE+'/?ps_pl=Pl2q"');
+  const a=sh('curl -sSk "'+SITE+'/?ps_co=Co1z"');
   try{O.apply=JSON.parse(a.out);}catch(e){O.apply_raw=a.out.slice(0,500);}
   fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
   sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
@@ -32,5 +32,5 @@ if(sid){
   O.site_code=sh('curl -sSk -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
   O.account_code=sh('curl -sSk -o /dev/null -w "%{http_code}" "'+SITE+'/my-account/"').out.trim();
 }
-putB64('pl.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('co.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
