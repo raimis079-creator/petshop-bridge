@@ -1,1 +1,38 @@
-{"d":{"account.css":{"bak":"account.css.bak_20260723_092412_col","len_dabar":6585,"len_bak":6510,"eilutes":["57: color: var(--fs-color-primary, #365a51);","62: color: var(--fs-color-primary, #365a51);","125: .ps-back-to-account:hover { color: var(--fs-color-primary, #365a51); }"]},"pet-form.css":{"bak":"pet-form.css.bak_20260723_092412_col","len_dabar":20177,"len_bak":19202,"eilutes":["31: background: var(--fs-color-primary, #365a51);","89: .pspet-pill:hover { border-color: var(--fs-color-primary, #365a51); }","91: background: var(--fs-color-primary, #365a51);","92: border-color: var(--fs-color-primary, #365a51);","117: border-color: var(--fs-color-primary, #365a51);","155: color: var(--fs-color-primary, #365a51);","184: background: var(--fs-color-primary, #365a51);","187: .pspet-btn-primary:hover { background: var(--fs-color-primary, #365a51); }","209: .pspet-skip:hover { color: var(--fs-color-primary, #365a51); }","282: .pspet-result-card-value { font-size: 15px; font-weight: 600; color: var(--fs-color-primary, #365a51); }","365: color: var(--fs-color-primary, #365a51);","387: .pspet-p-action:hover { border-color: var(--fs-color-primary, #365a51); color: var(--fs-color-primary, #365a51); }"]}}}
+{
+ "deactivated": [],
+ "sid": 1929,
+ "dry": {
+  "impl": "\tfunction ps_get_marketing_consent( $email ) {\n\t\t$val = Petshop_Consent_Log::current_value( $email, 'marketing_consent' );\n\t\treturn ( $val === null ) ? '' : $val;\n\t}\n",
+  "file": "wp-content/plugins/petshop-core/petshop-core.php",
+  "fresh": {
+   "zzz-fresh-1@example.com": {
+    "consent": 0,
+    "policy": "true"
+   },
+   "zzz-fresh-2@example.com": {
+    "consent": 0,
+    "policy": "true"
+   }
+  },
+  "consent_rows": 6,
+  "consent_sample": []
+ },
+ "apply": {
+  "impl": "\tfunction ps_get_marketing_consent( $email ) {\n\t\t$val = Petshop_Consent_Log::current_value( $email, 'marketing_consent' );\n\t\treturn ( $val === null ) ? '' : $val;\n\t}\n",
+  "file": "wp-content/plugins/petshop-core/petshop-core.php",
+  "fresh": {
+   "zzz-fresh-1@example.com": {
+    "consent": 0,
+    "policy": "true"
+   },
+   "zzz-fresh-2@example.com": {
+    "consent": 0,
+    "policy": "true"
+   }
+  },
+  "consent_rows": 6,
+  "consent_sample": []
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
