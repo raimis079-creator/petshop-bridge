@@ -1,0 +1,65 @@
+{
+ "lookups": [
+  {
+   "d": "spf.serveriai.lt",
+   "own": 1,
+   "nested": 0,
+   "from": "petshop.lt"
+  },
+  {
+   "d": "_spf1.mailgun.org",
+   "own": 1,
+   "nested": 0,
+   "from": "_spf.mailgun.org"
+  },
+  {
+   "d": "_spf2.mailgun.org",
+   "own": 1,
+   "nested": 0,
+   "from": "_spf.mailgun.org"
+  },
+  {
+   "d": "_spf.mailgun.org",
+   "own": 1,
+   "nested": 2,
+   "from": "mailgun.org"
+  },
+  {
+   "d": "_spf.eu.mailgun.org",
+   "own": 1,
+   "nested": 0,
+   "from": "mailgun.org"
+  },
+  {
+   "d": "mailgun.org",
+   "own": 1,
+   "nested": 4,
+   "from": "petshop.lt"
+  },
+  {
+   "d": "spf.sendersrv.com",
+   "note": "SPF nerastas"
+  },
+  {
+   "d": "spf.sendersrv.com",
+   "own": 1,
+   "nested": 0,
+   "from": "petshop.lt"
+  },
+  {
+   "d": "_spf.mx.cloudflare.net",
+   "own": 1,
+   "nested": 0,
+   "from": "sendersrv.com"
+  },
+  {
+   "d": "sendersrv.com",
+   "own": 1,
+   "nested": 1,
+   "from": "petshop.lt"
+  }
+ ],
+ "total": 11,
+ "verdict": "VIRSIJA 10 -> SPF PERMERROR",
+ "send": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-3wm7wDvowqRA-2J6qRq\",\"message\":\"Email sent\",\"success\":true}"
+}
