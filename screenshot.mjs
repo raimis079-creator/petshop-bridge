@@ -43,17 +43,33 @@ if(sid){
     const btns=await p.$$eval('button, a.button, .pspet-profile a', es=>es.map(e=>(e.textContent||'').trim()).filter(t=>t&&t.length<50).slice(0,40));
     O[tag]={text:t,buttons:[...new Set(btns)]};
   };
-  await dump('screen_profile');
-  await p.screenshot({path:'/tmp/w1.png',fullPage:true});
-  // bandom rasti mitybos ieiti
-  const cand=await p.$$('button, a');
-  for(const c of cand){
+  await dump('screen_start');
+
+  // 1) perjungti i 'dekas' (wet_only)
+  let switched=false;
+  for(const c of await p.$$('button, a, div[role=button], .pspet-switch *')){
     const t=((await c.textContent())||'').trim();
-    if(/mityb|maist|planas|Mityba/i.test(t)){ await c.click().catch(()=>{}); break; }
+    if(t==='dekas'){ await c.click().catch(()=>{}); switched=true; break; }
   }
+  O.switched_to_dekas=switched;
   await wait(3500);
-  await dump('screen_feeding');
+  await dump('screen_dekas_profile');
+  await p.screenshot({path:'/tmp/w1.png',fullPage:true});
+
+  // 2) atverti mitybos plana
+  let opened=false;
+  for(const c of await p.$$('button, a')){
+    const t=((await c.textContent())||'').trim();
+    if(/Perži[uū]r[eė]ti plan/i.test(t)){ await c.click().catch(()=>{}); opened=true; break; }
+  }
+  O.opened_plan=opened;
+  await wait(4000);
+  await dump('screen_dekas_plan');
   await p.screenshot({path:'/tmp/w2.png',fullPage:true});
+
+  // 3) ar yra bet koks slapio maisto pasirinkimo ieities taskas
+  O.wet_entry = await p.$$eval('button, a', es=>es.map(e=>(e.textContent||'').trim())
+      .filter(t=>/šlapi|slapi|konserv|skon[iį]|Pasirinkite/i.test(t)));
   O.errs=[...new Set(errs)].slice(0,10);
  }catch(e){ O.browser_err=String(e).slice(0,300); }
  try{ if(br) await br.close(); }catch(e){}
