@@ -2,24 +2,52 @@
  "attempts": [
   {
    "i": 0,
-   "rc": 60,
-   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
-  },
-  {
-   "i": 1,
-   "rc": 60,
-   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
-  },
-  {
-   "i": 2,
-   "rc": 60,
-   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
-  },
-  {
-   "i": 3,
-   "rc": 60,
-   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
+   "rc": 0,
+   "out": "{\"id\":1885,\"name\":\"TEMP Mixed Content Recon v1\",\"desc\":\"\",\"code\":\"\\n\\/**\\n * TEMP Mixed Content Recon v1\\n *\\/\\nadd_action('wp_loaded', function(){\\n    if ( ! isset($_GET['ps_mc']) || $_GET['ps_mc'] !== 'Mc9x' ) return;"
   }
  ],
- "snippet_id": null
+ "snippet_id": 1885,
+ "fetch_rc": 0,
+ "data": {
+  "siteurl": "http://dev.avesa.lt",
+  "home": "http://dev.avesa.lt",
+  "upload_baseurl": "http://dev.avesa.lt/wp-content/uploads",
+  "is_ssl": 1,
+  "force_ssl_admin": 0,
+  "cmplz_http_options": [
+   {
+    "opt": "cmplz_preloaded_privacy_info",
+    "urls": [
+     "http://dev.avesa.lt"
+    ],
+    "len": 9979
+   },
+   {
+    "opt": "cmplz_transients",
+    "urls": [
+     "http://dev.avesa.lt/slapuku-politika/",
+     "http://dev.avesa.lt/privatumo-politika/"
+    ],
+    "len": 610
+   }
+  ],
+  "any_option_http_dev": [
+   "siteurl",
+   "home",
+   "woocommerce_email_header_image",
+   "jpsq_sync-1778001644.995578-556703-1",
+   "jetpack_plugin_api_action_links",
+   "jpsq_sync-1778001640.186839-11669-5",
+   "wcdn_settings",
+   "woocommerce_helper_data",
+   "_site_transient_update_themes",
+   "cmplz_transients",
+   "cmplz_preloaded_privacy_info"
+  ],
+  "cmplz_version": false,
+  "cmplz_upload_url": false,
+  "css_file_exists": 1,
+  "css_expected_url": "http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css"
+ },
+ "cleanup": "STILL_EXISTS"
 }
