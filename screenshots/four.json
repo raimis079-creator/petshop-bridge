@@ -1,8 +1,186 @@
 {
  "deactivated": [],
- "sid": 1931,
- "dry_raw": "<br />\n<b>Fatal error</b>:  Uncaught TypeError: ps_generate_token(): Argument #1 ($args) must be of type array, string given, called in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 51 and defined in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/petshop-core.php:296\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.ph",
- "apply_raw": "<br />\n<b>Fatal error</b>:  Uncaught TypeError: ps_generate_token(): Argument #1 ($args) must be of type array, string given, called in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 51 and defined in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/petshop-core.php:296\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.ph",
+ "sid": 1932,
+ "dry": {
+  "session": {
+   "expiring_default": 169200,
+   "expiration_default": 172800,
+   "expiring_filtered": 169200,
+   "expiration_filtered": 172800,
+   "has_filter_expiring": 0,
+   "has_filter_expiration": 0,
+   "expiration_h": 48,
+   "expiry_hours_distribution": {
+    "34": 5,
+    "36": 24,
+    "37": 24,
+    "38": 11,
+    "39": 15,
+    "45": 12,
+    "46": 18,
+    "47": 23,
+    "48": 14,
+    "132": 1,
+    "136": 1,
+    "157": 1
+   }
+  },
+  "emitter": {
+   "mentions": [
+    "131: // (refill, cart_abandoned, post-purchase, T-5, win-back...)."
+   ],
+   "has_emit_call": false,
+   "emit_files": [],
+   "events_logged": 0
+  },
+  "tokens": {
+   "methods": [
+    "table_name",
+    "install",
+    "maybe_install",
+    "ensure_keys",
+    "rotate_key",
+    "random_secret",
+    "get_key",
+    "generate",
+    "peek",
+    "consume",
+    "validate_internal",
+    "invalidate_group",
+    "purge_expired",
+    "b64url_encode",
+    "b64url_decode"
+   ],
+   "consts": {
+    "TOKEN_VERSION": 1,
+    "OPTION_KEYS": "petshop_action_token_keys",
+    "OPTION_CURRENT_KEY": "petshop_action_token_current_key"
+   },
+   "sig": {
+    "ps_generate_token": "array $args",
+    "ps_verify_token": "NERA",
+    "ps_consume_token": "$raw_token"
+   },
+   "body": {
+    "ps_generate_token": "\tfunction ps_generate_token( array $args ) {\n\t\treturn Petshop_Action_Tokens::generate( $args );\n\t}\n",
+    "ps_consume_token": "\tfunction ps_consume_token( $raw_token ) {\n\t\treturn Petshop_Action_Tokens::consume( $raw_token );\n\t}\n"
+   },
+   "table_cols": [
+    "id",
+    "token_hash",
+    "nonce",
+    "purpose",
+    "purpose_group",
+    "subject_id",
+    "subject_email",
+    "resource_id",
+    "action",
+    "key_id",
+    "status",
+    "created_at",
+    "expires_at",
+    "used_at",
+    "used_ip"
+   ],
+   "rows": 23
+  },
+  "cart_hooks": {
+   "woocommerce_add_to_cart": 1,
+   "woocommerce_cart_item_removed": 1,
+   "woocommerce_after_cart_item_quantity_update": 1,
+   "woocommerce_checkout_update_order_review": 1
+  }
+ },
+ "apply": {
+  "session": {
+   "expiring_default": 169200,
+   "expiration_default": 172800,
+   "expiring_filtered": 169200,
+   "expiration_filtered": 172800,
+   "has_filter_expiring": 0,
+   "has_filter_expiration": 0,
+   "expiration_h": 48,
+   "expiry_hours_distribution": {
+    "34": 5,
+    "36": 24,
+    "37": 24,
+    "38": 11,
+    "39": 15,
+    "45": 12,
+    "46": 18,
+    "47": 23,
+    "48": 14,
+    "132": 1,
+    "136": 1,
+    "157": 1
+   }
+  },
+  "emitter": {
+   "mentions": [
+    "131: // (refill, cart_abandoned, post-purchase, T-5, win-back...)."
+   ],
+   "has_emit_call": false,
+   "emit_files": [],
+   "events_logged": 0
+  },
+  "tokens": {
+   "methods": [
+    "table_name",
+    "install",
+    "maybe_install",
+    "ensure_keys",
+    "rotate_key",
+    "random_secret",
+    "get_key",
+    "generate",
+    "peek",
+    "consume",
+    "validate_internal",
+    "invalidate_group",
+    "purge_expired",
+    "b64url_encode",
+    "b64url_decode"
+   ],
+   "consts": {
+    "TOKEN_VERSION": 1,
+    "OPTION_KEYS": "petshop_action_token_keys",
+    "OPTION_CURRENT_KEY": "petshop_action_token_current_key"
+   },
+   "sig": {
+    "ps_generate_token": "array $args",
+    "ps_verify_token": "NERA",
+    "ps_consume_token": "$raw_token"
+   },
+   "body": {
+    "ps_generate_token": "\tfunction ps_generate_token( array $args ) {\n\t\treturn Petshop_Action_Tokens::generate( $args );\n\t}\n",
+    "ps_consume_token": "\tfunction ps_consume_token( $raw_token ) {\n\t\treturn Petshop_Action_Tokens::consume( $raw_token );\n\t}\n"
+   },
+   "table_cols": [
+    "id",
+    "token_hash",
+    "nonce",
+    "purpose",
+    "purpose_group",
+    "subject_id",
+    "subject_email",
+    "resource_id",
+    "action",
+    "key_id",
+    "status",
+    "created_at",
+    "expires_at",
+    "used_at",
+    "used_ip"
+   ],
+   "rows": 23
+  },
+  "cart_hooks": {
+   "woocommerce_add_to_cart": 1,
+   "woocommerce_cart_item_removed": 1,
+   "woocommerce_after_cart_item_quantity_update": 1,
+   "woocommerce_checkout_update_order_review": 1
+  }
+ },
  "site_code": "200",
  "account_code": "200"
 }
