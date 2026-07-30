@@ -29,7 +29,7 @@ try{
   fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP Mixed Content Recon v1',code:php,scope:'global',active:true}));
   OUT.attempts=[];
   for(let i=0;i<4 && !sid;i++){
-    const r=sh('curl -sS '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
+    const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
     OUT.attempts.push({i,rc:r.rc,out:r.out.slice(0,220)});
     let j=null; try{ j=JSON.parse(r.out); }catch(e){}
     if(j&&j.id) sid=j.id; else sh('sleep 4');
@@ -38,7 +38,7 @@ try{
 
   if(sid){
     sh('sleep 3');
-    const g=sh('curl -sS "'+SITE+'/?ps_mc='+KEY+'"');
+    const g=sh('curl -sSk "'+SITE+'/?ps_mc='+KEY+'"');
     OUT.fetch_rc=g.rc;
     try{ OUT.data=JSON.parse(g.out); }catch(e){ OUT.raw=g.out.slice(0,3000); }
   }
@@ -46,9 +46,9 @@ try{
 
 try{ if(sid){
   fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
-  sh('curl -sS -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
-  sh('curl -sS -o /dev/null '+AUTH+' -X DELETE "'+API+'/'+sid+'"');
-  const chk=sh('curl -sS '+AUTH+' "'+API+'/'+sid+'"').out;
+  sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
+  sh('curl -sSk -o /dev/null '+AUTH+' -X DELETE "'+API+'/'+sid+'"');
+  const chk=sh('curl -sSk '+AUTH+' "'+API+'/'+sid+'"').out;
   OUT.cleanup = (chk.includes('rest_')||chk.trim()==='') ? 'DELETED' : 'STILL_EXISTS';
 }}catch(e){ OUT.cleanup_err=String(e).slice(0,200); }
 
