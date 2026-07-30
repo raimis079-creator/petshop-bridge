@@ -1,1 +1,63 @@
-{"create":{"id":1122,"code_error":null},"d":{"backup_egzistuoja":true,"backup_eiluciu":22,"ps_pets_weight_laukai":[{"Field":"current_weight_kg","Type":"decimal(5,2)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"weight_updated_at","Type":"datetime","Null":"YES","Key":"","Default":null,"Extra":""}],"deaktyvuoti":["1122:S212-C Cleanup (read-only)"],"liko_aktyviu_recon":0}}
+{
+ "deact": 0,
+ "del": "",
+ "verify": "{\"id\":1885,\"name\":\"TEMP Mixed Content Recon v1\",\"desc\":\"\",\"code\":\"\\n\\/**\\n * TEMP Mixed Content Recon v1\\n *\\/\\nadd_action('wp_loaded', function(){\\n    if ( ! isset($_GET['ps_mc']) || $_GET['ps_mc'] ",
+ "total": 100,
+ "temps": [
+  {
+   "id": 397,
+   "name": "Monoprotein Dry-Run v5 (daugiau brendu)",
+   "active": false
+  },
+  {
+   "id": 468,
+   "name": "Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 472,
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+   "active": true
+  },
+  {
+   "id": 473,
+   "name": "Petshop Attr Modulis: Kraikai Katems v1.0 (parseris + dry/apply)",
+   "active": false
+  },
+  {
+   "id": 393,
+   "name": "Baltymu Saltinis Skanestai Skonis Dry-Run v1 (platus, v5 variklis)",
+   "active": false
+  },
+  {
+   "id": 394,
+   "name": "Monoprotein Dry-Run v2 (isvestinis)",
+   "active": false
+  },
+  {
+   "id": 395,
+   "name": "Monoprotein Dry-Run v3 (sudetis-grieztas)",
+   "active": false
+  },
+  {
+   "id": 396,
+   "name": "Monoprotein Dry-Run v4 (brendai + riebalu fix)",
+   "active": false
+  },
+  {
+   "id": 387,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v3 (visi baltymai, multi)",
+   "active": false
+  },
+  {
+   "id": 388,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v4 (bug-fix + Paukstiena)",
+   "active": false
+  },
+  {
+   "id": 389,
+   "name": "Baltymu Saltinis Sausas Skonis Dry-Run v5 (pauksci stem)",
+   "active": false
+  }
+ ]
+}
