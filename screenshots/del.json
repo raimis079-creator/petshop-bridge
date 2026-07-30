@@ -1,0 +1,82 @@
+{
+ "shape": [
+  "bounced_at",
+  "bounced_at_utc",
+  "columns",
+  "created",
+  "created_utc",
+  "email",
+  "firstname",
+  "id",
+  "ip_address",
+  "lastname",
+  "location",
+  "phone",
+  "phone_country",
+  "source",
+  "status",
+  "subscriber_tags",
+  "unsubscribed_at",
+  "unsubscribed_at_utc"
+ ],
+ "sample": {
+  "id": "p2RRBQ2",
+  "email": "random_notlisted@example.com"
+ },
+ "targets": [
+  {
+   "id": "p2RRBQ2",
+   "e": "random_notlisted@example.com"
+  },
+  {
+   "id": "Y5QMnYW",
+   "e": "wh_e2e_test@example.com"
+  },
+  {
+   "id": "2Wg9r5M",
+   "e": "m4_consent_test@example.com"
+  },
+  {
+   "id": "5LlW3NR",
+   "e": "esp_v020_test@example.com"
+  },
+  {
+   "id": "my2EGYO",
+   "e": "reactivate_test@example.com"
+  },
+  {
+   "id": "Z0w0Zw6",
+   "e": "whunsub+1783977217390@example.com"
+  },
+  {
+   "id": "Z0w0ZW6",
+   "e": "whsite+1783977112277@example.com"
+  },
+  {
+   "id": "14Y4Ymm",
+   "e": "webhooklong+1783976488633@example.com"
+  },
+  {
+   "id": "X57571v",
+   "e": "webhooktest+1783976179722@example.com"
+  }
+ ],
+ "tries": [
+  {
+   "v": "DELETE /subscribers {subscribers:[email]}",
+   "r": "{\"delete_instance\":\"3c574687-6c2f-42c9-a710-5a15eab894c5\",\"message\":\"Subscribers are being deleted\",\"success\":true}"
+  },
+  {
+   "v": "DELETE /subscribers {subscribers:[id]}",
+   "r": "{\"delete_instance\":\"d8de2e66-2f60-4861-952b-31ec32a126aa\",\"message\":\"Subscribers are being deleted\",\"success\":true}"
+  },
+  {
+   "v": "DELETE /subscribers/{id}",
+   "r": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/p2RRBQ2 was not found.\"}"
+  }
+ ],
+ "still_there": true,
+ "after_status": [
+  "active"
+ ]
+}
