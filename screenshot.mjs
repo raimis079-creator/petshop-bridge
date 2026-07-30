@@ -8,6 +8,14 @@ function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/content
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 
+
+function sh(cmd){
+  try{ const o=execSync(cmd+' 2>&1; echo "__RC:$?"',{maxBuffer:50e6,shell:'/bin/bash'}).toString();
+       const m=o.match(/__RC:(\d+)\s*$/); const rc=m?parseInt(m[1]):-1;
+       return {rc, out:o.replace(/__RC:\d+\s*$/,'')}; }
+  catch(e){ return {rc:-99, out:String(e).slice(0,400)}; }
+}
+
 const OUT={};
 const AUTH='-u "'+WU+':'+WP+'"';
 const API=SITE+'/wp-json/code-snippets/v1/snippets';
@@ -19,24 +27,29 @@ const php=Buffer.from(PHP_B64,'base64').toString('utf8');
 let sid=null;
 try{
   fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP Mixed Content Recon v1',code:php,scope:'global',active:true}));
-  const r=execSync('curl -s '+AUTH+' -H "Content-Type: application/json" -X POST -d @/tmp/sn.json "'+API+'"',{maxBuffer:20e6}).toString();
-  let j=null; try{ j=JSON.parse(r); }catch(e){}
-  sid=j&&j.id?j.id:null;
-  OUT.snippet_id=sid; if(!sid) OUT.create_raw=r.slice(0,300);
+  OUT.attempts=[];
+  for(let i=0;i<4 && !sid;i++){
+    const r=sh('curl -sS '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
+    OUT.attempts.push({i,rc:r.rc,out:r.out.slice(0,220)});
+    let j=null; try{ j=JSON.parse(r.out); }catch(e){}
+    if(j&&j.id) sid=j.id; else sh('sleep 4');
+  }
+  OUT.snippet_id=sid;
 
   if(sid){
-    execSync('sleep 3');
-    const out=execSync('curl -s "'+SITE+'/?ps_mc='+KEY+'"',{maxBuffer:20e6}).toString();
-    try{ OUT.data=JSON.parse(out); }catch(e){ OUT.raw=out.slice(0,3000); }
+    sh('sleep 3');
+    const g=sh('curl -sS "'+SITE+'/?ps_mc='+KEY+'"');
+    OUT.fetch_rc=g.rc;
+    try{ OUT.data=JSON.parse(g.out); }catch(e){ OUT.raw=g.out.slice(0,3000); }
   }
 }catch(e){ OUT.err=String(e).slice(0,300); }
 
 try{ if(sid){
   fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
-  execSync('curl -s -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST -d @/tmp/de.json "'+API+'/'+sid+'"');
-  execSync('curl -s -o /dev/null '+AUTH+' -X DELETE "'+API+'/'+sid+'"');
-  const chk=execSync('curl -s '+AUTH+' "'+API+'/'+sid+'"',{maxBuffer:5e6}).toString();
-  OUT.cleanup = chk.includes('rest_') || chk.trim()==='' ? 'DELETED' : 'STILL_EXISTS';
+  sh('curl -sS -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
+  sh('curl -sS -o /dev/null '+AUTH+' -X DELETE "'+API+'/'+sid+'"');
+  const chk=sh('curl -sS '+AUTH+' "'+API+'/'+sid+'"').out;
+  OUT.cleanup = (chk.includes('rest_')||chk.trim()==='') ? 'DELETED' : 'STILL_EXISTS';
 }}catch(e){ OUT.cleanup_err=String(e).slice(0,200); }
 
 putB64('mc2.json', Buffer.from(JSON.stringify(OUT,null,1)).toString('base64'));
