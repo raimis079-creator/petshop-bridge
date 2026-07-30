@@ -1,0 +1,12 @@
+{
+ "dig_installed": "/usr/bin/dig",
+ "ns": "ns2.serveriai.lt.\nns4.serveriai.lt.\nns1.serveriai.lt.\nns3.serveriai.lt.",
+ "authoritative": {
+  "ns2.serveriai.lt.": "\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\"\n\"google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs\"",
+  "ns4.serveriai.lt.": "\"google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs\"\n\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\"",
+  "ns1.serveriai.lt.": "\"google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs\"\n\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\""
+ },
+ "ttl": "petshop.lt.\t\t1800\tIN\tTXT\t\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\"\npetshop.lt.\t\t1800\tIN\tTXT\t\"google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs\"",
+ "google": "\"google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs\"\n\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\"",
+ "cloudflare": "\"google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs\"\n\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\""
+}
