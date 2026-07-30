@@ -1,1 +1,181 @@
-{"LOG":[{"n":"1 Skaičiuoklė matoma","ok":true,"d":""},{"n":"  antraštė","ok":true,"d":"Kiek šio maisto užteks jūsų šuniui?"},{"n":"2 Rezultatas","ok":true,"d":"Apie 63–70 dienų Apie 1,11 €–1,24 € per dieną Gamintojo rekomenduojama šėrimo norma: 170–190 g per dieną"},{"n":"  šaltinis","ok":true,"d":"Gamintojo rekomenduojama šėrimo norma: 170–190 g per dieną"},{"n":"3 Antrinis blokas","ok":true,"d":"Norite tikslesnio skaičiavimo? | Patikslinti ir išsaugoti"},{"n":"4 ps_source formoje","ok":true,"d":"calc_product"},{"n":"5 Nukreipta","ok":true,"d":"https://dev.avesa.lt/my-account/augintinis/?action=create"},{"n":"  handoff","ok":true,"d":"pid=18566 kg=13 sku=HYHM11 return=/product/exclusion-hypoallergeni"},{"n":"6 Kategorijos klausimas","ok":true,"d":""},{"n":"7 €/dieną kortelėse","ok":true,"d":"23 vnt.: 0,78–1,06 € per dieną · užteks ~56–76 d. | 1,12–1,52 € per dieną · užteks ~9–12 d."},{"n":"  filtro antraštė","ok":true,"d":"Maistai, kuriems gamintojas pateikia normas 13 kg šuniui"}],"ERR":["console: Mixed Content: The page at 'https://dev.avesa.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-arkliena-ir-bulvemis-m-l-12-kg/' was loaded o","console: Mixed Content: The page at 'https://dev.avesa.lt/my-account/augintinis/?action=create' was loaded over HTTPS, but requested an insecure stylesheet 'ht","console: Mixed Content: The page at 'https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/' was loaded over HTTPS, but requested an inse","console: Mixed Content: The page at 'https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?ps_species=dog&ps_weight=13' was loaded over "]}
+{
+ "deactivated": [],
+ "sid": 1911,
+ "dry": {
+  "deploy_sha": "2d62a64c041218e6",
+  "expected": "2d62a64c041218e6",
+  "match": "YES",
+  "table_exists": true,
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at"
+  ],
+  "flows_count": 18,
+  "by_class": {
+   "transactional": 7,
+   "service": 6,
+   "marketing": 5
+  },
+  "elig": {
+   "transactional_bet_kam": {
+    "allowed": true,
+    "reason": ""
+   },
+   "marketing_be_consent": {
+    "allowed": false,
+    "reason": "no_marketing_consent"
+   },
+   "service_normalus": {
+    "allowed": true,
+    "reason": ""
+   }
+  },
+  "enqueue": {
+   "ok": true,
+   "job_id": 1,
+   "duplicate": false
+  },
+  "dry": {
+   "dry_run": true,
+   "picked": 1,
+   "results": [
+    {
+     "id": 1,
+     "flow": "order_paid",
+     "action": "WOULD_SEND",
+     "to": "raimundas@gyvunai.lt",
+     "subject": "Užsakymas TEST-1001 priimtas",
+     "html_len": 1490
+    }
+   ]
+  },
+  "stats": {
+   "by_status": [
+    {
+     "status": "pending",
+     "c": "1"
+    }
+   ],
+   "by_flow": [
+    {
+     "flow": "order_paid",
+     "status": "pending",
+     "c": "1"
+    }
+   ],
+   "blocked": []
+  }
+ },
+ "apply": {
+  "deploy_sha": "2d62a64c041218e6",
+  "expected": "2d62a64c041218e6",
+  "match": "YES",
+  "table_exists": true,
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at"
+  ],
+  "flows_count": 18,
+  "by_class": {
+   "transactional": 7,
+   "service": 6,
+   "marketing": 5
+  },
+  "elig": {
+   "transactional_bet_kam": {
+    "allowed": true,
+    "reason": ""
+   },
+   "marketing_be_consent": {
+    "allowed": false,
+    "reason": "no_marketing_consent"
+   },
+   "service_normalus": {
+    "allowed": true,
+    "reason": ""
+   }
+  },
+  "enqueue": {
+   "ok": true,
+   "job_id": 1,
+   "duplicate": true
+  },
+  "dry": {
+   "dry_run": true,
+   "picked": 1,
+   "results": [
+    {
+     "id": 1,
+     "flow": "order_paid",
+     "action": "WOULD_SEND",
+     "to": "raimundas@gyvunai.lt",
+     "subject": "Užsakymas TEST-1001 priimtas",
+     "html_len": 1490
+    }
+   ]
+  },
+  "send": {
+   "dry_run": false,
+   "picked": 1,
+   "results": [
+    {
+     "id": 1,
+     "flow": "order_paid",
+     "action": "SENT",
+     "msg_id": "azv2GY-.eE9p2l-j09zEZv-Y5JvxpmEoJ0Y-3ZSsrD",
+     "error": ""
+    }
+   ]
+  },
+  "stats": {
+   "by_status": [
+    {
+     "status": "sent",
+     "c": "1"
+    }
+   ],
+   "by_flow": [
+    {
+     "flow": "order_paid",
+     "status": "sent",
+     "c": "1"
+    }
+   ],
+   "blocked": []
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
