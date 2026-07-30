@@ -1,0 +1,63 @@
+{
+ "deactivated": [],
+ "sid": 1910,
+ "dry": {
+  "mode": "DRY-RUN",
+  "files": {
+   "includes/class-email-dispatch.php": {
+    "exists": false,
+    "old_sha": null,
+    "new_sha": "a3ccf869fbac397a",
+    "new_size": 16890
+   },
+   "templates/emails/order-paid.php": {
+    "exists": false,
+    "old_sha": null,
+    "new_sha": "aaeccbe0c6edaf47",
+    "new_size": 2327
+   },
+   "petshop-core.php": {
+    "exists": true,
+    "old_sha": "b04acb7e1c610fbd",
+    "new_sha": "1d99569071b43711",
+    "new_size": 13086
+   }
+  }
+ },
+ "apply": {
+  "mode": "APPLY",
+  "files": {
+   "includes/class-email-dispatch.php": {
+    "exists": false,
+    "old_sha": null,
+    "new_sha": "a3ccf869fbac397a",
+    "new_size": 16890,
+    "written": 16890,
+    "after_sha": "a3ccf869fbac397a",
+    "MATCH": "YES"
+   },
+   "templates/emails/order-paid.php": {
+    "exists": false,
+    "old_sha": null,
+    "new_sha": "aaeccbe0c6edaf47",
+    "new_size": 2327,
+    "written": 2327,
+    "after_sha": "aaeccbe0c6edaf47",
+    "MATCH": "YES"
+   },
+   "petshop-core.php": {
+    "exists": true,
+    "old_sha": "b04acb7e1c610fbd",
+    "new_sha": "1d99569071b43711",
+    "new_size": 13086,
+    "backup": "created",
+    "written": 13086,
+    "after_sha": "1d99569071b43711",
+    "MATCH": "YES"
+   }
+  },
+  "mkdir": "ok"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
