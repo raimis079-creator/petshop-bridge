@@ -1,0 +1,34 @@
+{
+ "deactivated": [],
+ "sid": 1907,
+ "dry": {
+  "is_configured": 1,
+  "adapter_send": {
+   "ok": false,
+   "esp_message_id": "",
+   "error": "field \"to\" should be struct (got array)",
+   "http_code": 422,
+   "should_retry": false
+  },
+  "struct_variant": {
+   "code": 200,
+   "body": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-g2Wrr3ozlLWZ-2eTbGZ\",\"message\":\"Email sent\",\"success\":true}"
+  }
+ },
+ "apply": {
+  "is_configured": 1,
+  "adapter_send": {
+   "ok": false,
+   "esp_message_id": "",
+   "error": "field \"to\" should be struct (got array)",
+   "http_code": 422,
+   "should_retry": false
+  },
+  "struct_variant": {
+   "code": 200,
+   "body": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-B6Gxx422v72W-gFriL\",\"message\":\"Email sent\",\"success\":true}"
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
