@@ -1,1 +1,1036 @@
-{"d":{"ps_tables":["gaj6_ps_action_tokens","gaj6_ps_consent_log","gaj6_ps_event_log","gaj6_ps_feeding_import_log","gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f","gaj6_ps_feeding_map","gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1","gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f","gaj6_ps_feeding_rows","gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1","gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f","gaj6_ps_feeding_tables","gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1","gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f","gaj6_ps_pet_products","gaj6_ps_pets","gaj6_ps_pets_bak_20260720_193704_f6d1f3c9","gaj6_ps_pets_bak_20260722_181456_hint","gaj6_ps_refill_tracking","gaj6_ps_reminders"],"link_tables":["gaj6__bak_s212c_pets_weight_20260718_01b43648","gaj6_ps_pet_products","gaj6_ps_pets","gaj6_ps_pets_bak_20260720_193704_f6d1f3c9","gaj6_ps_pets_bak_20260722_181456_hint","gaj6_snippets"],"cols_ps_reminders":["id","user_id","pet_id","reminder_type","reminder_label","due_date","repeat_interval_days","status","notified_at","completed_at","created_at","updated_at"],"cnt_ps_reminders":0,"dash_last_order":"bGwsCgkJCSdwcm9kdWN0X2ltYWdlJyAgICAgPT4gJHByb2R1Y3QgJiYgJHByb2R1Y3QtPmdldF9pbWFnZV9pZCgpID8gd3BfZ2V0X2F0dGFjaG1lbnRfaW1hZ2VfdXJsKCAkcHJvZHVjdC0+Z2V0X2ltYWdlX2lkKCksICd0aHVtYm5haWwnICkgOiBudWxsLAoJCQknbGFzdF9wdXJjaGFzZScgICAgID0+ICRyb3ctPmxhc3RfcHVyY2hhc2VfZGF0ZSwKCQkJJ3Blcm1hbGluaycgICAgICAgICA9PiBnZXRfcGVybWFsaW5rKCAkcm93LT5wcm9kdWN0X2lkICksCgkJKTsKCX0KCgkvKioKCSAqIEFydGltaWF1c2kgcHJpbWluaW1haSAobGFpa28ganVvc3RhKS4KCSAqLwoJcHJpdmF0ZSBzdGF0aWMgZnVuY3Rpb24gZ2V0X3JlbWluZGVycyggJHVzZXJfaWQsICRwZXRfaWQgKSB7CgkJZ2xvYmFsICR3cGRiOwoJCSR0ID0gJHdwZGItPnByZWZpeCAuICdwc19yZW1pbmRlcnMnOwoJCWlmICggISAkd3BkYi0+Z2V0X3ZhciggIlNIT1cgVEFCTEVTIExJS0UgJyR0JyIgKSApIHsKCQkJcmV0dXJuIGFycmF5KCk7CgkJfQoJCSRyb3dzID0gJHdwZGItPmdldF9yZXN1bHRzKCAkd3BkYi0+cHJlcGFyZSgKCQkJIlNFTEVDVCAqIEZST00gYCR0YCBXSEVSRSB1c2VyX2lkPSVkIEFORCBwZXRfaWQ9JWQgQU5EIHN0YXR1cyBOT1QgSU4gKCdjYW5jZWxsZWQnLCdjb20=","dash_refill":"YXVnaW50aW5pcyIgZWtyYW5vIGFncmVnYXRvcml1cyAoTTgsIFMxOTcpLgogKgogKiBWaWVuYXMgZW5kcG9pbnRhcyBncmF6aW5hIFZJU0tBIHZpZW5hbSBwcm9maWxpbyBla3JhbnVpOgogKiAgIC0gYXVnaW50aW5pbyBpbmZvIChpcyBwc19wZXRzKQogKiAgIC0gcmVmaWxsICh6aWVkLiBkaWVub3MsIHNwYWx2YSwgYXZnIGludGVydmFsYXMsIGZlZWRiYWNrKQogKiAgIC0gYXJ0aW1pYXVzaSBwcmltaW5pbWFpIChsYWlrbyBqdW9zdGEpCiAqICAgLSBsZW50eW5lbGUgKHBzX3BldF9wcm9kdWN0cyBzdSBwcm9kdWt0dSBkdW9tZW5pbWlzKQogKiAgIC0gbWl0eWJvcyByaXRtYXMgKHBpcmtpbXUgaW50ZXJ2YWxhaSkKICogICAtIHByb2ZpbGlvIHBpbG51bWFzICglKQogKgogKiBSRVNUOgogKiAgIEdFVCAgL3BldHNob3AvdjEvcGV0LWRhc2hib2FyZC97cGV0X2lkfSAgICB2aXNhcyBla3JhbmFzCiAqICAgUE9TVCAvcGV0c2hvcC92MS9yZWZpbGwtZmVlZGJhY2sgICAgICAgICAgIHByb2dub3plcyBncml6dC4gcnlzeXMgKHNpbWlsYXIvc29vbmVyL2xhdGVyKQogKi8KCmlmICggISBkZWZpbmVkKCAnQUJTUEFUSCcgKSApIHsKCWV4aXQ7Cn0KCmNsYXNzIFBldHNob3BfUGV0X0Rhc2hib2FyZCB7CgoJcHVibGljIHN0YXRpYyBmdW5jdGlvbiA=","dash_reminders":"PT4gNDA0ICkgKTsKCQl9CgoJCSRkYXNoYm9hcmQgPSBhcnJheSgKCQkJJ3BldCcgICAgICAgICAgPT4gc2VsZjo6Zm9ybWF0X3BldCggJHBldCApLAoJCQkncmVmaWxsJyAgICAgICA9PiBzZWxmOjpnZXRfcmVmaWxsKCAkdXNlcl9pZCwgJHBldF9pZCApLAoJCQkncmVtaW5kZXJzJyAgICA9PiBzZWxmOjpnZXRfcmVtaW5kZXJzKCAkdXNlcl9pZCwgJHBldF9pZCApLAoJCQknc2hlbGYnICAgICAgICA9PiBzZWxmOjpnZXRfc2hlbGYoICRwZXRfaWQgKSwKCQkJJ2Zvb2Rfcmh5dGhtJyAgPT4gc2VsZjo6Z2V0X2Zvb2Rfcmh5dGhtKCAkdXNlcl9pZCwgJHBldF9pZCApLAoJCQknY29tcGxldGVuZXNzJyA9PiBzZWxmOjpnZXRfY29tcGxldGVuZXNzKCAkcGV0ICksCgkJKTsKCgkJcmV0dXJuIHJlc3RfZW5zdXJlX3Jlc3BvbnNlKCBhcnJheSggJ29rJyA9PiB0cnVlLCAnZGFzaGJvYXJkJyA9PiAkZGFzaGJvYXJkICkgKTsKCX0KCglwcml2YXRlIHN0YXRpYyBmdW5jdGlvbiBmb3JtYXRfcGV0KCAkcGV0ICkgewoJCSRwaG90b191cmwgPSBudWxsOwoJCWlmICggY2xhc3NfZXhpc3RzKCAnUGV0c2hvcF9QZXRfUGhvdG8nICkgJiYgUGV0c2hvcF9QZXRfUGhvdG86Omhhc19waG90byggKGludCkgJHBldC0+dXNlcl9pZCwgKGludCkgJHBldC0+aWQgKSA=","pets_cols":["id","user_id","pet_name","species","species_detail","life_stage","dog_size","is_sterilised","feeding_type","primary_need","current_food_brand","current_food_free_text","primary_product_id","primary_product_sku","primary_product_name","primary_product_package","photo_file_id","is_primary","status","client_ref","created_at","updated_at","deleted_at","current_weight_kg","weight_updated_at","activity_hint"],"ui_endpoint":"PD9waHAKLyoqCiAqIFBldHNob3BfUGV0X1VJIOKAlCAiTWFubyBhdWdpbnRpbmlzIiBmcm9udGVuZCAoTTgsIFMxOTYpLgogKgogKiAxLiBTaG9ydGNvZGUgW3BldHNob3BfcGV0X2Zvcm1dIOKAlCBhbmtldGEgKHZlaWtpYSBpciBiZSBwcmlzaWp1bmdpbW8pCiAqIDIuIE15QWNjb3VudCB0YWIgIk1hbm8gYXVnaW50aW5pcyIKICogMy4gQ1NTL0pTIGFzc2V0cyBzdSBjb25maWcgKFJFU1QgdXJsLCBub25jZSwgaXNMb2dnZWRJbikKICoKICogQW5rZXRhIHlyYSBzZWxmLWNvbnRhaW5lZDogMiB6aW5nc25pYWksIGRpbmFtaXNraSBsYXVrYWkgcGFnYWwgcnVzaSwKICogbG9jYWxTdG9yYWdlIGp1b2RyYXN0aXMgKGFub25pbS4pLCBtYWdpYyBsaW5rIGlzc2F1Z29qaW1hcy4KICovCgppZiAoICEgZGVmaQ=="}}
+{
+ "deactivated": [],
+ "sid": 1903,
+ "dry": {
+  "ts": "2026-07-30 14:02:28",
+  "petshop_plugins": [
+   {
+    "file": "petshop-fonts/petshop-fonts.php",
+    "name": "Petshop.lt Open Sans (Self-hosted)",
+    "ver": "1.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-attributes/petshop-attributes.php",
+    "name": "Petshop Attribute Engine",
+    "ver": "1.0.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-core/petshop-core.php",
+    "name": "Petshop Core",
+    "ver": "0.15.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-esp/petshop-esp.php",
+    "name": "Petshop ESP (Sender adapter)",
+    "ver": "0.4.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-fbt/petshop-fbt.php",
+    "name": "Petshop FBT (Dažnai perkama kartu)",
+    "ver": "1.4.3",
+    "active": 1
+   },
+   {
+    "file": "petshop-feeds/petshop-feeds.php",
+    "name": "Petshop Feeds",
+    "ver": "1.0.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-pragma/petshop-pragma.php",
+    "name": "Petshop Pragma Export",
+    "ver": "1.0.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-promotions/petshop-promotions.php",
+    "name": "Petshop Promotions",
+    "ver": "1.1",
+    "active": 1
+   },
+   {
+    "file": "petshop-xml/petshop-xml.php",
+    "name": "Petshop XML Import",
+    "ver": "1.5.18",
+    "active": 1
+   }
+  ],
+  "plugin_files": {
+   "petshop-attributes": [
+    "petshop-attributes.php (12730)"
+   ],
+   "petshop-core": [
+    "petshop-core.php (12719)",
+    "includes/class-account-avatar.php (3557)",
+    "includes/class-account-company.php (6688)",
+    "includes/class-account-dashboard.php (12116)",
+    "includes/class-action-tokens.php (12929)",
+    "includes/class-admin-reports.php (13526)",
+    "includes/class-condition-mapper.php (4383)",
+    "includes/class-consent-log.php (5081)",
+    "includes/class-consent-sync.php (8299)",
+    "includes/class-event-emitters.php (9170)",
+    "includes/class-event-log.php (9977)",
+    "includes/class-event-registry.php (5884)",
+    "includes/class-feeding-calculator.php (12241)",
+    "includes/class-feeding-package-provider.php (618)",
+    "includes/class-feeding-package-resolver.php (2189)",
+    "includes/class-feeding-repository.php (7552)",
+    "includes/class-feeding-service.php (37188)",
+    "includes/class-feeding-ui.php (8853)",
+    "includes/class-magic-login.php (18618)",
+    "includes/class-mixed-feeding-estimator.php (5989)",
+    "includes/class-pet-content.php (7809)",
+    "includes/class-pet-dashboard.php (24054)",
+    "includes/class-pet-notes.php (9130)",
+    "includes/class-pet-photo.php (8508)",
+    "includes/class-pet-products.php (9168)",
+    "includes/class-pet-profile.php (38078)",
+    "includes/class-pet-ui.php (7190)",
+    "includes/class-plan-attribution.php (6954)",
+    "includes/class-product-calc.php (13571)",
+    "includes/class-refill-engine.php (13880)",
+    "includes/class-reminders.php (10649)",
+    "includes/class-retry-queue.php (8386)",
+    "includes/class-weight-filter.php (10184)",
+    "includes/interface-message-provider.php (3049)",
+    "includes/tpl-myaccount-dashboard.php (823)",
+    "includes/tpl-myaccount-my-address.php (3799)",
+    "assets/account.css (19282)",
+    "assets/account.css.bak_20260723_092412_col (6510)",
+    "assets/account.css.bak_20260723_103451_focus (6585)",
+    "assets/account.css.bak_20260723_s218 (20137)",
+    "assets/account.css.bak_20260724_p0 (7314)",
+    "assets/calc-handoff.js (3837)",
+    "assets/pet-form.css (20866)",
+    "assets/pet-form.css.bak-pre-visual (15760)",
+    "assets/pet-form.css.bak_20260723_092412_col (19202)",
+    "assets/pet-form.css.bak_20260723_s218 (20381)",
+    "assets/pet-form.js (72935)",
+    "assets/pet-form.js.bak-20260715 (19456)",
+    "assets/pet-form.js.bak-pre-func (26453)",
+    "assets/pet-form.js.bak-pre-visual (27923)",
+    "assets/pet-form.js.bak-s206 (20587)",
+    "assets/pet-form.js.bak-s208 (23305)",
+    "assets/pet-form.js.bak-s210 (23903)",
+    "assets/pet-form.js.bak_20260723_094026_ia11 (29417)",
+    "assets/pet-form.js.bak_20260723_101742_flow (30322)",
+    "assets/pet-form.js.bak_20260723_102318_sp (30843)",
+    "assets/pet-form.js.bak_20260723_111341_f6 (30413)",
+    "assets/pet-form.js.bak_20260723_s218 (72512)",
+    "assets/pet-form.js.bak_20260724_p0 (40965)",
+    "assets/pet-profile.js (162300)",
+    "assets/pet-profile.js.bak-20260715 (20981)",
+    "assets/pet-profile.js.bak-s207 (21660)",
+    "assets/pet-profile.js.bak-s208 (24769)",
+    "assets/pet-profile.js.bak-s210 (26914)",
+    "assets/pet-profile.js.bak_20260722_193447_fc (27115)",
+    "assets/pet-profile.js.bak_20260723_092412_ia11 (35550)",
+    "assets/pet-profile.js.bak_20260723_093721_hdr (46145)",
+    "assets/pet-profile.js.bak_20260723_095334_d3 (46483)",
+    "assets/pet-profile.js.bak_20260723_100419_hdr2 (47049)",
+    "assets/pet-profile.js.bak_20260723_101742_flow (46836)",
+    "assets/pet-profile.js.bak_20260723_103451_v6 (48074)",
+    "assets/pet-profile.js.bak_20260723_105048_nr (48698)",
+    "assets/pet-profile.js.bak_20260723_111341_f6 (49320)",
+    "assets/pet-profile.js.bak_20260723_112807_ct (49007)",
+    "assets/pet-profile.js.bak_20260723_125633_v1dash (49217)",
+    "assets/pet-profile.js.bak_20260723_132138_dz (52119)",
+    "assets/pet-profile.js.bak_20260723_132710_dz (59035)",
+    "assets/pet-profile.js.bak_20260723_s218 (154784)",
+    "assets/pet-profile.js.bak_20260724_p0 (76207)",
+    "assets/product-calc.js (14158)",
+    "assets/product-calc.js.bak_20260723_s218 (14053)",
+    "schemas/events/cart_abandoned.schema.json",
+    "schemas/events/consent_changed.schema.json",
+    "schemas/events/legacy_contact_imported.schema.json",
+    "schemas/events/order_paid.schema.json",
+    "schemas/events/order_shipped.schema.json",
+    "schemas/events/payment_failed.schema.json",
+    "schemas/events/pet_product_assigned.schema.json",
+    "schemas/events/pet_profile_created.schema.json",
+    "schemas/events/pet_profile_updated.schema.json",
+    "schemas/events/pet_reminder_due.schema.json",
+    "schemas/events/refill_due.schema.json",
+    "schemas/events/refill_feedback_submitted.schema.json",
+    "schemas/events/shipment_returned.schema.json",
+    "schemas/events/subscription_t2_sms_needed.schema.json",
+    "schemas/events/subscription_t5_notice.schema.json"
+   ],
+   "petshop-esp": [
+    "petshop-esp.php (4095)",
+    "includes/class-sender-adapter.php (16963)",
+    "includes/class-webhook-receiver.php (6199)"
+   ],
+   "petshop-fbt": [
+    "petshop-fbt.php (36414)"
+   ],
+   "petshop-feeds": [
+    "petshop-feeds.php (8579)"
+   ],
+   "petshop-fonts": [
+    "petshop-fonts.php (2758)"
+   ],
+   "petshop-pragma": [
+    "petshop-pragma.php (22662)"
+   ],
+   "petshop-promotions": [
+    "petshop-promotions.php (32801)"
+   ],
+   "petshop-xml": [
+    "petshop-xml.php (59535)",
+    "includes/class-admin-ui.php (21817)",
+    "includes/class-ean-lookup.php (5730)",
+    "includes/class-fulfillment-source.php (6711)",
+    "includes/class-fulfillment.php (3702)",
+    "includes/class-import-rules-vf.php (16132)",
+    "includes/class-import-rules.php (4404)",
+    "includes/class-pricing-vf.php (20752)",
+    "includes/class-pricing-vf.v1.5.5.bak.php (19099)",
+    "includes/class-pricing.php (11475)",
+    "includes/class-product-cost-metabox.php (26504)",
+    "includes/class-product-cost-resolver.php (11986)",
+    "includes/class-vf-import.php (29533)"
+   ]
+  },
+  "mu_plugins": [
+   "automation-by-installatron.php (983)",
+   "petshop-feeding-calc-rest.php (18536)",
+   "petshop-m8-food.php (35513)",
+   "petshop-ps-pets-migration-freeze.php (7018)"
+  ],
+  "ps_tables": {
+   "ps_action_tokens": {
+    "rows": 23,
+    "cols": 15
+   },
+   "ps_consent_log": {
+    "rows": 2,
+    "cols": 10
+   },
+   "ps_event_log": {
+    "rows": 175,
+    "cols": 12
+   },
+   "ps_feeding_import_log": {
+    "rows": 5,
+    "cols": 20
+   },
+   "ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 8,
+    "cols": 13
+   },
+   "ps_feeding_map": {
+    "rows": 561,
+    "cols": 3
+   },
+   "ps_feeding_map_bak_s212b_20260717_fb3eeae1": {
+    "rows": 451,
+    "cols": 2
+   },
+   "ps_feeding_map_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 451,
+    "cols": 3
+   },
+   "ps_feeding_rows": {
+    "rows": 5549,
+    "cols": 12
+   },
+   "ps_feeding_rows_bak_s212b_20260717_fb3eeae1": {
+    "rows": 3825,
+    "cols": 12
+   },
+   "ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 3825,
+    "cols": 12
+   },
+   "ps_feeding_rows_bak_s304": {
+    "rows": 550,
+    "cols": 12
+   },
+   "ps_feeding_tables": {
+    "rows": 296,
+    "cols": 47
+   },
+   "ps_feeding_tables_bak_s212b_20260717_fb3eeae1": {
+    "rows": 223,
+    "cols": 24
+   },
+   "ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 223,
+    "cols": 39
+   },
+   "ps_pet_notes": {
+    "rows": 7,
+    "cols": 8
+   },
+   "ps_pet_products": {
+    "rows": 36,
+    "cols": 12
+   },
+   "ps_pets": {
+    "rows": 65,
+    "cols": 35
+   },
+   "ps_pets_bak_20260720_193704_f6d1f3c9": {
+    "rows": 23,
+    "cols": 25
+   },
+   "ps_pets_bak_20260722_181456_hint": {
+    "rows": 25,
+    "cols": 25
+   },
+   "ps_pets_bak_20260723_prof": {
+    "rows": 39,
+    "cols": 26
+   },
+   "ps_pets_bak_20260726": {
+    "rows": 61,
+    "cols": 30
+   },
+   "ps_pets_bak_20260726_ft": {
+    "rows": 62,
+    "cols": 32
+   },
+   "ps_pets_bak_20260727_wet": {
+    "rows": 62,
+    "cols": 34
+   },
+   "ps_plan_events": {
+    "rows": 7,
+    "cols": 10
+   },
+   "ps_refill_tracking": {
+    "rows": 1,
+    "cols": 13
+   },
+   "ps_reminders": {
+    "rows": 10,
+    "cols": 13
+   }
+  },
+  "rest_routes": [
+   "/petshop/v1",
+   "/petshop/v1/feeding-calc",
+   "/petshop/v1/feeding-pet-weight",
+   "/petshop/v1/feeding-pet-activity",
+   "/petshop/v1/feeding-pet-wet-food",
+   "/petshop/v1/feeding-calc-for-pet",
+   "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+   "/petshop/v1/pet-food-assign",
+   "/petshop/v1/pet-food-brand",
+   "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+   "/petshop/v1/wet-food-search",
+   "/petshop/v1/wet-products-info",
+   "/petshop/v1/pet-wet-product",
+   "/petshop/v1/product-search",
+   "/petshop/v1/feeding/calculate",
+   "/petshop/v1/magic-login/request",
+   "/petshop/v1/pet-profile",
+   "/petshop/v1/pet-profile/(?P<id>\\d+)",
+   "/petshop/v1/food-search",
+   "/petshop/v1/brands",
+   "/petshop/v1/pet-product-link",
+   "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+   "/petshop/v1/refill-feedback",
+   "/petshop/v1/pet-photo/(?P<id>\\d+)",
+   "/petshop/v1/pet-content/(?P<id>\\d+)",
+   "/petshop/v1/sender-webhook",
+   "/petshop/v1/reminders",
+   "/petshop/v1/reminders/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+   "/petshop/v1/pet-notes",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+  ],
+  "cron": {
+   "ps_esp_cron_process_pending": "2026-07-30 11:02",
+   "petshop_vf_sync_stock_hourly": "2026-07-30 11:59",
+   "petshop_attr_engine_run": "2026-07-30 22:57",
+   "petshop_vf_sync_reprice_daily": "2026-07-31 03:00",
+   "petshop_vf_sync_publish_daily": "2026-07-31 04:00",
+   "ps_refill_daily_check": "2026-07-31 08:00",
+   "ps_reminders_daily_check": "2026-07-31 09:00",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00"
+  },
+  "public_api": {
+   "ps_emit_event": 1,
+   "ps_generate_token": 1,
+   "ps_verify_token": 0,
+   "ps_consume_token": 1,
+   "ps_set_marketing_consent": 1,
+   "ps_get_marketing_consent": 1
+  },
+  "classes": {
+   "Petshop_Event_Log": 1,
+   "Petshop_ESP_Event_Log": 1,
+   "Petshop_Event_Registry": 1,
+   "Petshop_Action_Tokens": 1,
+   "Petshop_Consent_Log": 1,
+   "Petshop_Consent_Sync": 1,
+   "Petshop_Retry_Queue": 1,
+   "Petshop_Magic_Login": 1,
+   "Petshop_Sender_Adapter": 1,
+   "Petshop_Refill_Engine": 1,
+   "Petshop_Reminders": 1,
+   "Petshop_Pet_Profile": 1
+  },
+  "event_log_by_name": [
+   {
+    "event_name": "order_paid",
+    "status": "sent",
+    "c": "4"
+   },
+   {
+    "event_name": "pet_product_assigned",
+    "status": "sent",
+    "c": "4"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "dead",
+    "c": "6"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "sent",
+    "c": "76"
+   },
+   {
+    "event_name": "pet_profile_updated",
+    "status": "sent",
+    "c": "82"
+   },
+   {
+    "event_name": "pet_reminder_due",
+    "status": "sent",
+    "c": "1"
+   },
+   {
+    "event_name": "refill_due",
+    "status": "sent",
+    "c": "2"
+   }
+  ],
+  "event_log_cols": [
+   "id",
+   "event_id",
+   "event_name",
+   "email",
+   "payload_json",
+   "emitted_at",
+   "status",
+   "adapter_name",
+   "attempts",
+   "next_retry_at",
+   "last_error",
+   "esp_response"
+  ],
+  "options": {
+   "jetpack_sync_settings_full_sync_sender_enabled": "1",
+   "jetpack_sync_settings_sync_sender_enabled": "1",
+   "lpsettings_sender_apartment": "",
+   "lpsettings_sender_building": "46",
+   "lpsettings_sender_city": "Liucionys",
+   "lpsettings_sender_company_name": "UAB Avesa",
+   "lpsettings_sender_country": "LT",
+   "lpsettings_sender_email": "terra@petshop.lt",
+   "lpsettings_sender_name": "UAB Avesa",
+   "lpsettings_sender_phone": "+37068187787",
+   "lpsettings_sender_postcode": "15166",
+   "lpsettings_sender_street": "Liucionių g.",
+   "petshop_action_token_current_key": "***",
+   "petshop_action_token_keys": "***",
+   "petshop_amz_apply_done": "2026-06-18 11:04:57 UTC",
+   "petshop_ank_apply_done": "1781795546",
+   "petshop_ank_moveout_done": "1781802577",
+   "petshop_attr_engine_dryrun": "1",
+   "petshop_attr_engine_enabled": "0",
+   "petshop_avpn_counter": "151",
+   "petshop_bs_apply_likutis_done": "2026-06-18 10:33:29 UTC",
+   "petshop_cat_fix_v2": "1",
+   "petshop_categories_created_v2": "1",
+   "petshop_cleanup_cats_v1": "1",
+   "petshop_contact_form_id": "34520",
+   "petshop_dub_apply_done": "1781803722",
+   "petshop_ean_normalize_log": "[array]",
+   "petshop_esp_event_log_db_version": "0.1.0",
+   "petshop_esp_sender_mk": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1Fp",
+   "petshop_esp_sender_tk": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1Fp",
+   "petshop_esp_sender_webhook_secret": "***",
+   "petshop_fbt_cat_rules": "[array]",
+   "petshop_fbt_pairs": "[array]",
+   "petshop_fbt_settings": "[array]",
+   "petshop_feeding_calc_enabled": "1",
+   "petshop_feeding_calc_kill": "0",
+   "petshop_grudai_apply_done": "2026-06-18 11:22:21 UTC",
+   "petshop_guol_attr_done": "1781811054",
+   "petshop_guol_gyv_done": "1781810484",
+   "petshop_guol_move_done": "1781810257",
+   "petshop_gyv_apply_done": "2026-06-18 10:05:58 UTC",
+   "petshop_hide_cats_v1": "1",
+   "petshop_iapv_counter": "140",
+   "petshop_katems_menu_v1": "1",
+   "petshop_maisto_filters_backup": "[array]",
+   "petshop_mixed_calc_enabled": "1",
+   "petshop_mixed_calc_kill": "0",
+   "petshop_mono_apply_v2_done": "2026-06-17 18:12:20 UTC",
+   "petshop_mono_obvious_done": "2026-06-18 12:05:37 UTC",
+   "petshop_pak_apply_done": "2026-06-18 10:16:20 UTC",
+   "petshop_plan_events_db": "1.0",
+   "petshop_pragma_known_emails": "[array]",
+   "petshop_pragma_log": "[array]",
+   "petshop_remaining_menus_v1": "1",
+   "petshop_remap_cats_v2": "1",
+   "petshop_spec_apply_done": "2026-06-18 11:42:25 UTC",
+   "petshop_suggestions_enabled": "1",
+   "petshop_sunims_menu_v2": "1",
+   "petshop_vf_publish_last_run": "[array]",
+   "petshop_vf_reprice_last_run": "[array]",
+   "petshop_vf_stock_last_run": "[array]",
+   "petshop_vit_apply_done": "1781790517",
+   "petshop_vit_moveout_done": "1781793109",
+   "petshop_zb_image_index": "[array]",
+   "ps_sender_webhook_log": "[array]"
+  },
+  "event_schemas": [
+   "cart_abandoned.schema.json",
+   "consent_changed.schema.json",
+   "legacy_contact_imported.schema.json",
+   "order_paid.schema.json",
+   "order_shipped.schema.json",
+   "payment_failed.schema.json",
+   "pet_product_assigned.schema.json",
+   "pet_profile_created.schema.json",
+   "pet_profile_updated.schema.json",
+   "pet_reminder_due.schema.json",
+   "refill_due.schema.json",
+   "refill_feedback_submitted.schema.json",
+   "shipment_returned.schema.json",
+   "subscription_t2_sms_needed.schema.json",
+   "subscription_t5_notice.schema.json"
+  ]
+ },
+ "apply": {
+  "ts": "2026-07-30 14:02:30",
+  "petshop_plugins": [
+   {
+    "file": "petshop-fonts/petshop-fonts.php",
+    "name": "Petshop.lt Open Sans (Self-hosted)",
+    "ver": "1.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-attributes/petshop-attributes.php",
+    "name": "Petshop Attribute Engine",
+    "ver": "1.0.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-core/petshop-core.php",
+    "name": "Petshop Core",
+    "ver": "0.15.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-esp/petshop-esp.php",
+    "name": "Petshop ESP (Sender adapter)",
+    "ver": "0.4.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-fbt/petshop-fbt.php",
+    "name": "Petshop FBT (Dažnai perkama kartu)",
+    "ver": "1.4.3",
+    "active": 1
+   },
+   {
+    "file": "petshop-feeds/petshop-feeds.php",
+    "name": "Petshop Feeds",
+    "ver": "1.0.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-pragma/petshop-pragma.php",
+    "name": "Petshop Pragma Export",
+    "ver": "1.0.0",
+    "active": 1
+   },
+   {
+    "file": "petshop-promotions/petshop-promotions.php",
+    "name": "Petshop Promotions",
+    "ver": "1.1",
+    "active": 1
+   },
+   {
+    "file": "petshop-xml/petshop-xml.php",
+    "name": "Petshop XML Import",
+    "ver": "1.5.18",
+    "active": 1
+   }
+  ],
+  "plugin_files": {
+   "petshop-attributes": [
+    "petshop-attributes.php (12730)"
+   ],
+   "petshop-core": [
+    "petshop-core.php (12719)",
+    "includes/class-account-avatar.php (3557)",
+    "includes/class-account-company.php (6688)",
+    "includes/class-account-dashboard.php (12116)",
+    "includes/class-action-tokens.php (12929)",
+    "includes/class-admin-reports.php (13526)",
+    "includes/class-condition-mapper.php (4383)",
+    "includes/class-consent-log.php (5081)",
+    "includes/class-consent-sync.php (8299)",
+    "includes/class-event-emitters.php (9170)",
+    "includes/class-event-log.php (9977)",
+    "includes/class-event-registry.php (5884)",
+    "includes/class-feeding-calculator.php (12241)",
+    "includes/class-feeding-package-provider.php (618)",
+    "includes/class-feeding-package-resolver.php (2189)",
+    "includes/class-feeding-repository.php (7552)",
+    "includes/class-feeding-service.php (37188)",
+    "includes/class-feeding-ui.php (8853)",
+    "includes/class-magic-login.php (18618)",
+    "includes/class-mixed-feeding-estimator.php (5989)",
+    "includes/class-pet-content.php (7809)",
+    "includes/class-pet-dashboard.php (24054)",
+    "includes/class-pet-notes.php (9130)",
+    "includes/class-pet-photo.php (8508)",
+    "includes/class-pet-products.php (9168)",
+    "includes/class-pet-profile.php (38078)",
+    "includes/class-pet-ui.php (7190)",
+    "includes/class-plan-attribution.php (6954)",
+    "includes/class-product-calc.php (13571)",
+    "includes/class-refill-engine.php (13880)",
+    "includes/class-reminders.php (10649)",
+    "includes/class-retry-queue.php (8386)",
+    "includes/class-weight-filter.php (10184)",
+    "includes/interface-message-provider.php (3049)",
+    "includes/tpl-myaccount-dashboard.php (823)",
+    "includes/tpl-myaccount-my-address.php (3799)",
+    "assets/account.css (19282)",
+    "assets/account.css.bak_20260723_092412_col (6510)",
+    "assets/account.css.bak_20260723_103451_focus (6585)",
+    "assets/account.css.bak_20260723_s218 (20137)",
+    "assets/account.css.bak_20260724_p0 (7314)",
+    "assets/calc-handoff.js (3837)",
+    "assets/pet-form.css (20866)",
+    "assets/pet-form.css.bak-pre-visual (15760)",
+    "assets/pet-form.css.bak_20260723_092412_col (19202)",
+    "assets/pet-form.css.bak_20260723_s218 (20381)",
+    "assets/pet-form.js (72935)",
+    "assets/pet-form.js.bak-20260715 (19456)",
+    "assets/pet-form.js.bak-pre-func (26453)",
+    "assets/pet-form.js.bak-pre-visual (27923)",
+    "assets/pet-form.js.bak-s206 (20587)",
+    "assets/pet-form.js.bak-s208 (23305)",
+    "assets/pet-form.js.bak-s210 (23903)",
+    "assets/pet-form.js.bak_20260723_094026_ia11 (29417)",
+    "assets/pet-form.js.bak_20260723_101742_flow (30322)",
+    "assets/pet-form.js.bak_20260723_102318_sp (30843)",
+    "assets/pet-form.js.bak_20260723_111341_f6 (30413)",
+    "assets/pet-form.js.bak_20260723_s218 (72512)",
+    "assets/pet-form.js.bak_20260724_p0 (40965)",
+    "assets/pet-profile.js (162300)",
+    "assets/pet-profile.js.bak-20260715 (20981)",
+    "assets/pet-profile.js.bak-s207 (21660)",
+    "assets/pet-profile.js.bak-s208 (24769)",
+    "assets/pet-profile.js.bak-s210 (26914)",
+    "assets/pet-profile.js.bak_20260722_193447_fc (27115)",
+    "assets/pet-profile.js.bak_20260723_092412_ia11 (35550)",
+    "assets/pet-profile.js.bak_20260723_093721_hdr (46145)",
+    "assets/pet-profile.js.bak_20260723_095334_d3 (46483)",
+    "assets/pet-profile.js.bak_20260723_100419_hdr2 (47049)",
+    "assets/pet-profile.js.bak_20260723_101742_flow (46836)",
+    "assets/pet-profile.js.bak_20260723_103451_v6 (48074)",
+    "assets/pet-profile.js.bak_20260723_105048_nr (48698)",
+    "assets/pet-profile.js.bak_20260723_111341_f6 (49320)",
+    "assets/pet-profile.js.bak_20260723_112807_ct (49007)",
+    "assets/pet-profile.js.bak_20260723_125633_v1dash (49217)",
+    "assets/pet-profile.js.bak_20260723_132138_dz (52119)",
+    "assets/pet-profile.js.bak_20260723_132710_dz (59035)",
+    "assets/pet-profile.js.bak_20260723_s218 (154784)",
+    "assets/pet-profile.js.bak_20260724_p0 (76207)",
+    "assets/product-calc.js (14158)",
+    "assets/product-calc.js.bak_20260723_s218 (14053)",
+    "schemas/events/cart_abandoned.schema.json",
+    "schemas/events/consent_changed.schema.json",
+    "schemas/events/legacy_contact_imported.schema.json",
+    "schemas/events/order_paid.schema.json",
+    "schemas/events/order_shipped.schema.json",
+    "schemas/events/payment_failed.schema.json",
+    "schemas/events/pet_product_assigned.schema.json",
+    "schemas/events/pet_profile_created.schema.json",
+    "schemas/events/pet_profile_updated.schema.json",
+    "schemas/events/pet_reminder_due.schema.json",
+    "schemas/events/refill_due.schema.json",
+    "schemas/events/refill_feedback_submitted.schema.json",
+    "schemas/events/shipment_returned.schema.json",
+    "schemas/events/subscription_t2_sms_needed.schema.json",
+    "schemas/events/subscription_t5_notice.schema.json"
+   ],
+   "petshop-esp": [
+    "petshop-esp.php (4095)",
+    "includes/class-sender-adapter.php (16963)",
+    "includes/class-webhook-receiver.php (6199)"
+   ],
+   "petshop-fbt": [
+    "petshop-fbt.php (36414)"
+   ],
+   "petshop-feeds": [
+    "petshop-feeds.php (8579)"
+   ],
+   "petshop-fonts": [
+    "petshop-fonts.php (2758)"
+   ],
+   "petshop-pragma": [
+    "petshop-pragma.php (22662)"
+   ],
+   "petshop-promotions": [
+    "petshop-promotions.php (32801)"
+   ],
+   "petshop-xml": [
+    "petshop-xml.php (59535)",
+    "includes/class-admin-ui.php (21817)",
+    "includes/class-ean-lookup.php (5730)",
+    "includes/class-fulfillment-source.php (6711)",
+    "includes/class-fulfillment.php (3702)",
+    "includes/class-import-rules-vf.php (16132)",
+    "includes/class-import-rules.php (4404)",
+    "includes/class-pricing-vf.php (20752)",
+    "includes/class-pricing-vf.v1.5.5.bak.php (19099)",
+    "includes/class-pricing.php (11475)",
+    "includes/class-product-cost-metabox.php (26504)",
+    "includes/class-product-cost-resolver.php (11986)",
+    "includes/class-vf-import.php (29533)"
+   ]
+  },
+  "mu_plugins": [
+   "automation-by-installatron.php (983)",
+   "petshop-feeding-calc-rest.php (18536)",
+   "petshop-m8-food.php (35513)",
+   "petshop-ps-pets-migration-freeze.php (7018)"
+  ],
+  "ps_tables": {
+   "ps_action_tokens": {
+    "rows": 23,
+    "cols": 15
+   },
+   "ps_consent_log": {
+    "rows": 2,
+    "cols": 10
+   },
+   "ps_event_log": {
+    "rows": 175,
+    "cols": 12
+   },
+   "ps_feeding_import_log": {
+    "rows": 5,
+    "cols": 20
+   },
+   "ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 8,
+    "cols": 13
+   },
+   "ps_feeding_map": {
+    "rows": 561,
+    "cols": 3
+   },
+   "ps_feeding_map_bak_s212b_20260717_fb3eeae1": {
+    "rows": 451,
+    "cols": 2
+   },
+   "ps_feeding_map_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 451,
+    "cols": 3
+   },
+   "ps_feeding_rows": {
+    "rows": 5549,
+    "cols": 12
+   },
+   "ps_feeding_rows_bak_s212b_20260717_fb3eeae1": {
+    "rows": 3825,
+    "cols": 12
+   },
+   "ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 3825,
+    "cols": 12
+   },
+   "ps_feeding_rows_bak_s304": {
+    "rows": 550,
+    "cols": 12
+   },
+   "ps_feeding_tables": {
+    "rows": 296,
+    "cols": 47
+   },
+   "ps_feeding_tables_bak_s212b_20260717_fb3eeae1": {
+    "rows": 223,
+    "cols": 24
+   },
+   "ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f": {
+    "rows": 223,
+    "cols": 39
+   },
+   "ps_pet_notes": {
+    "rows": 7,
+    "cols": 8
+   },
+   "ps_pet_products": {
+    "rows": 36,
+    "cols": 12
+   },
+   "ps_pets": {
+    "rows": 65,
+    "cols": 35
+   },
+   "ps_pets_bak_20260720_193704_f6d1f3c9": {
+    "rows": 23,
+    "cols": 25
+   },
+   "ps_pets_bak_20260722_181456_hint": {
+    "rows": 25,
+    "cols": 25
+   },
+   "ps_pets_bak_20260723_prof": {
+    "rows": 39,
+    "cols": 26
+   },
+   "ps_pets_bak_20260726": {
+    "rows": 61,
+    "cols": 30
+   },
+   "ps_pets_bak_20260726_ft": {
+    "rows": 62,
+    "cols": 32
+   },
+   "ps_pets_bak_20260727_wet": {
+    "rows": 62,
+    "cols": 34
+   },
+   "ps_plan_events": {
+    "rows": 7,
+    "cols": 10
+   },
+   "ps_refill_tracking": {
+    "rows": 1,
+    "cols": 13
+   },
+   "ps_reminders": {
+    "rows": 10,
+    "cols": 13
+   }
+  },
+  "rest_routes": [
+   "/petshop/v1",
+   "/petshop/v1/feeding-calc",
+   "/petshop/v1/feeding-pet-weight",
+   "/petshop/v1/feeding-pet-activity",
+   "/petshop/v1/feeding-pet-wet-food",
+   "/petshop/v1/feeding-calc-for-pet",
+   "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+   "/petshop/v1/pet-food-assign",
+   "/petshop/v1/pet-food-brand",
+   "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+   "/petshop/v1/wet-food-search",
+   "/petshop/v1/wet-products-info",
+   "/petshop/v1/pet-wet-product",
+   "/petshop/v1/product-search",
+   "/petshop/v1/feeding/calculate",
+   "/petshop/v1/magic-login/request",
+   "/petshop/v1/pet-profile",
+   "/petshop/v1/pet-profile/(?P<id>\\d+)",
+   "/petshop/v1/food-search",
+   "/petshop/v1/brands",
+   "/petshop/v1/pet-product-link",
+   "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+   "/petshop/v1/refill-feedback",
+   "/petshop/v1/pet-photo/(?P<id>\\d+)",
+   "/petshop/v1/pet-content/(?P<id>\\d+)",
+   "/petshop/v1/sender-webhook",
+   "/petshop/v1/reminders",
+   "/petshop/v1/reminders/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+   "/petshop/v1/pet-notes",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+  ],
+  "cron": {
+   "ps_esp_cron_process_pending": "2026-07-30 11:02",
+   "petshop_vf_sync_stock_hourly": "2026-07-30 11:59",
+   "petshop_attr_engine_run": "2026-07-30 22:57",
+   "petshop_vf_sync_reprice_daily": "2026-07-31 03:00",
+   "petshop_vf_sync_publish_daily": "2026-07-31 04:00",
+   "ps_refill_daily_check": "2026-07-31 08:00",
+   "ps_reminders_daily_check": "2026-07-31 09:00",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00"
+  },
+  "public_api": {
+   "ps_emit_event": 1,
+   "ps_generate_token": 1,
+   "ps_verify_token": 0,
+   "ps_consume_token": 1,
+   "ps_set_marketing_consent": 1,
+   "ps_get_marketing_consent": 1
+  },
+  "classes": {
+   "Petshop_Event_Log": 1,
+   "Petshop_ESP_Event_Log": 1,
+   "Petshop_Event_Registry": 1,
+   "Petshop_Action_Tokens": 1,
+   "Petshop_Consent_Log": 1,
+   "Petshop_Consent_Sync": 1,
+   "Petshop_Retry_Queue": 1,
+   "Petshop_Magic_Login": 1,
+   "Petshop_Sender_Adapter": 1,
+   "Petshop_Refill_Engine": 1,
+   "Petshop_Reminders": 1,
+   "Petshop_Pet_Profile": 1
+  },
+  "event_log_by_name": [
+   {
+    "event_name": "order_paid",
+    "status": "sent",
+    "c": "4"
+   },
+   {
+    "event_name": "pet_product_assigned",
+    "status": "sent",
+    "c": "4"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "dead",
+    "c": "6"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "sent",
+    "c": "76"
+   },
+   {
+    "event_name": "pet_profile_updated",
+    "status": "sent",
+    "c": "82"
+   },
+   {
+    "event_name": "pet_reminder_due",
+    "status": "sent",
+    "c": "1"
+   },
+   {
+    "event_name": "refill_due",
+    "status": "sent",
+    "c": "2"
+   }
+  ],
+  "event_log_cols": [
+   "id",
+   "event_id",
+   "event_name",
+   "email",
+   "payload_json",
+   "emitted_at",
+   "status",
+   "adapter_name",
+   "attempts",
+   "next_retry_at",
+   "last_error",
+   "esp_response"
+  ],
+  "options": {
+   "jetpack_sync_settings_full_sync_sender_enabled": "1",
+   "jetpack_sync_settings_sync_sender_enabled": "1",
+   "lpsettings_sender_apartment": "",
+   "lpsettings_sender_building": "46",
+   "lpsettings_sender_city": "Liucionys",
+   "lpsettings_sender_company_name": "UAB Avesa",
+   "lpsettings_sender_country": "LT",
+   "lpsettings_sender_email": "terra@petshop.lt",
+   "lpsettings_sender_name": "UAB Avesa",
+   "lpsettings_sender_phone": "+37068187787",
+   "lpsettings_sender_postcode": "15166",
+   "lpsettings_sender_street": "Liucionių g.",
+   "petshop_action_token_current_key": "***",
+   "petshop_action_token_keys": "***",
+   "petshop_amz_apply_done": "2026-06-18 11:04:57 UTC",
+   "petshop_ank_apply_done": "1781795546",
+   "petshop_ank_moveout_done": "1781802577",
+   "petshop_attr_engine_dryrun": "1",
+   "petshop_attr_engine_enabled": "0",
+   "petshop_avpn_counter": "151",
+   "petshop_bs_apply_likutis_done": "2026-06-18 10:33:29 UTC",
+   "petshop_cat_fix_v2": "1",
+   "petshop_categories_created_v2": "1",
+   "petshop_cleanup_cats_v1": "1",
+   "petshop_contact_form_id": "34520",
+   "petshop_dub_apply_done": "1781803722",
+   "petshop_ean_normalize_log": "[array]",
+   "petshop_esp_event_log_db_version": "0.1.0",
+   "petshop_esp_sender_mk": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1Fp",
+   "petshop_esp_sender_tk": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1Fp",
+   "petshop_esp_sender_webhook_secret": "***",
+   "petshop_fbt_cat_rules": "[array]",
+   "petshop_fbt_pairs": "[array]",
+   "petshop_fbt_settings": "[array]",
+   "petshop_feeding_calc_enabled": "1",
+   "petshop_feeding_calc_kill": "0",
+   "petshop_grudai_apply_done": "2026-06-18 11:22:21 UTC",
+   "petshop_guol_attr_done": "1781811054",
+   "petshop_guol_gyv_done": "1781810484",
+   "petshop_guol_move_done": "1781810257",
+   "petshop_gyv_apply_done": "2026-06-18 10:05:58 UTC",
+   "petshop_hide_cats_v1": "1",
+   "petshop_iapv_counter": "140",
+   "petshop_katems_menu_v1": "1",
+   "petshop_maisto_filters_backup": "[array]",
+   "petshop_mixed_calc_enabled": "1",
+   "petshop_mixed_calc_kill": "0",
+   "petshop_mono_apply_v2_done": "2026-06-17 18:12:20 UTC",
+   "petshop_mono_obvious_done": "2026-06-18 12:05:37 UTC",
+   "petshop_pak_apply_done": "2026-06-18 10:16:20 UTC",
+   "petshop_plan_events_db": "1.0",
+   "petshop_pragma_known_emails": "[array]",
+   "petshop_pragma_log": "[array]",
+   "petshop_remaining_menus_v1": "1",
+   "petshop_remap_cats_v2": "1",
+   "petshop_spec_apply_done": "2026-06-18 11:42:25 UTC",
+   "petshop_suggestions_enabled": "1",
+   "petshop_sunims_menu_v2": "1",
+   "petshop_vf_publish_last_run": "[array]",
+   "petshop_vf_reprice_last_run": "[array]",
+   "petshop_vf_stock_last_run": "[array]",
+   "petshop_vit_apply_done": "1781790517",
+   "petshop_vit_moveout_done": "1781793109",
+   "petshop_zb_image_index": "[array]",
+   "ps_sender_webhook_log": "[array]"
+  },
+  "event_schemas": [
+   "cart_abandoned.schema.json",
+   "consent_changed.schema.json",
+   "legacy_contact_imported.schema.json",
+   "order_paid.schema.json",
+   "order_shipped.schema.json",
+   "payment_failed.schema.json",
+   "pet_product_assigned.schema.json",
+   "pet_profile_created.schema.json",
+   "pet_profile_updated.schema.json",
+   "pet_reminder_due.schema.json",
+   "refill_due.schema.json",
+   "refill_feedback_submitted.schema.json",
+   "shipment_returned.schema.json",
+   "subscription_t2_sms_needed.schema.json",
+   "subscription_t5_notice.schema.json"
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
