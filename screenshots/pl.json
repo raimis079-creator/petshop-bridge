@@ -1,7 +1,61 @@
 {
- "home_title": "Just a moment...",
- "cf": true,
- "links": 2,
- "cand": [],
- "pages": {}
+ "sid": 1895,
+ "dry": {
+  "total": 65,
+  "with_user": 65,
+  "is_test_col": true,
+  "owned": [],
+  "by_ft": [
+   {
+    "feeding_type": null,
+    "c": "56",
+    "owned": "56"
+   },
+   {
+    "feeding_type": "dry_only",
+    "c": "5",
+    "owned": "5"
+   },
+   {
+    "feeding_type": "dry_wet",
+    "c": "3",
+    "owned": "3"
+   },
+   {
+    "feeding_type": "wet_only",
+    "c": "1",
+    "owned": "1"
+   }
+  ]
+ },
+ "apply": {
+  "total": 65,
+  "with_user": 65,
+  "is_test_col": true,
+  "owned": [],
+  "by_ft": [
+   {
+    "feeding_type": null,
+    "c": "56",
+    "owned": "56"
+   },
+   {
+    "feeding_type": "dry_only",
+    "c": "5",
+    "owned": "5"
+   },
+   {
+    "feeding_type": "dry_wet",
+    "c": "3",
+    "owned": "3"
+   },
+   {
+    "feeding_type": "wet_only",
+    "c": "1",
+    "owned": "1"
+   }
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
 }
