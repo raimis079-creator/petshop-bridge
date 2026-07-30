@@ -1,11 +1,69 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-30** (**S305 refill konservams ISTAISYTA + Mixed Content saknis uzdaryta + lojalumas uzrakintas TZ v1.59**). Ankstesnis: **2026-07-18** (**Checksum normalizacija promotion metu (path A) + schema migracija dokumentuota**; sesijos snippetai išvalyti 74/0). Ankstesnis: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-30 (2)** (**EMAIL GRANDINE ATIDARYTA: SPF pataisytas, adapteris S308, Dispatch Layer S309 E2E PRAEJO**). **2026-07-30** (**S305 refill konservams ISTAISYTA + Mixed Content saknis uzdaryta + lojalumas uzrakintas TZ v1.59**). Ankstesnis: **2026-07-18** (**Checksum normalizacija promotion metu (path A) + schema migracija dokumentuota**; sesijos snippetai išvalyti 74/0). Ankstesnis: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 
 
 
+
+
+
+---
+
+# ============================================================
+# ★★★ 2026-07-30 (2) — EMAIL GRANDINE: SPF / S308 / S309 ★★★
+# ============================================================
+
+## SPF BUVO SULAUZTAS — laiskai krito i SPAM
+
+BUVO: `v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all`
+
+DVI nepriklausomos priezastys:
+1. **11 DNS lookup'u is 10** -> PERMERROR (`mailgun.org` isskleidzia i 5)
+2. **`include:spf.sendersrv.com` — SPF iraso ten NERA** -> RFC 7208 §5.2 PermError savaime
+
+TAISYMAS (Raimis, serveriai.lt): pasalintas TIK `spf.sendersrv.com`. Dabar 10 lookup'u.
+Patikrinta ns1/ns3/ns4.serveriai.lt + 8.8.8.8 + 1.1.1.1.
+
+**KRITINE PAMOKA: SPF/DNS priklauso GYVAM petshop.lt (eShoprent), NE dev'ui.** Sialiau ismesti ir `mailgun.org` remdamasis tuo, kad DEV jo nenaudoja — Raimis sustabde. Butu sulauzes veikiancios parduotuves laiskus. NEMAISYTI dev ir produkcijos.
+
+MAIL-TESTER **8,5/10**: autentifikacija OK (SPF+DKIM+DMARC), SpamAssassin OK, formatas OK. Minusas −1,5 tik del Sender bendro IP `185.3.229.130` Barracuda/Hostkarma sarasuose. **Spamhaus SVARUS.**
+
+LIKO RAIMIUI: (a) laiskas Sender palaikymui del IP reputacijos; (b) patikrinti, ar gyvas petshop.lt siuncia per Mailgun (jei ne — ismesti, liktu 5 lookup'ai).
+
+## S308 — ADAPTERIS NIEKADA NEVEIKE
+
+`send_transactional_email()` siunte `'to' => array(array(...))` (masyva). Sender reikalauja OBJEKTO.
+```
+masyvas  -> 422 "field to should be struct (got array)"
+objektas -> 200 {"emailId":...,"success":true}
+```
+S180 „testas #5 praejo" buvo TIESIOGINIS curl, ne adapteris. Adapteris sugedes buvo ~2 savaites.
+Backup `.bak_S308`; sha16 `6058e3422613de14` -> `3311968b53a33646`.
+
+## S309 — EMAIL DISPATCH LAYER (petshop-core v0.16.0)
+
+SPRENDIMAS: logika MUSU pusej, Sender = transportas. **Sender workflow'ai NENAUDOJAMI** — per API ju turinio/trigerio nustatyti negalima (`POST /workflows` kuria tik tuscia kevala). Sender UI lieka kampanijoms, A/B, rezultatams.
+
+Konsultantas siule abandoned cart / post-purchase / refill perklasifikuoti i marketinga. **Raimio sprendimas: laikomes UZRAKINTOS TZ §4.4.5** (consent netikrinamas, tik opt-out/suppressed). Klasifikacija idėta kaip DUOMUO `flows()` masyve + filtras `petshop_email_flows` — perjungimas yra vienos eilutes pakeitimas.
+
+NAUJI FAILAI: `includes/class-email-dispatch.php` (17051 B), `templates/emails/order-paid.php`, `petshop-core.php` v0.15.0->v0.16.0 (backup `.bak_S309`).
+
+LENTELE `gaj6_ps_email_jobs` (18 stulp.): job_key UNIQUE (idempotency), flow, flow_class, recipient_email/user_id, subject, payload, status, block_reason, provider, provider_message_id, attempts, last_error, scheduled_at, sent_at.
+
+18 SRAUTU: 7 transactional (consent netikrinamas), 6 service (be marketingo consent, bet gerbia PS_TRANSACTIONAL_ONLY), 5 marketing (butinas PS_MARKETING_CONSENT).
+
+**E2E PRAEJO:** enqueue -> outbox -> eligibility -> renderis -> Sender -> **SENT** (msg_id `azv2GY-.eE9p2l-j09zEZv-Y5JvxpmEoJ0Y-3ZSsrD`). Idempotency patikrinta (`duplicate:true`). Eligibility tam paciam adresui: transactional=OK, service=OK, marketing=BLOKUOJA.
+
+LIKO: (1) `order_paid` emitteris NEKVIECIA `enqueue()` — sujungti; (2) 17 sablonu maketai (tekstai yra `petshop_445_*`); (3) webhook sent/delivered/bounced -> statusai; (4) bounce -> `suppress()`.
+
+## SENDER API — PRIVALOMOS ZINIOS
+
+- `GET /fields|/subscribers|/groups` BE `limit` grazina **10** ir nerodo, kad yra daugiau. VISADA `?limit=100`. (Del sito klaidingai pranesiau, kad `PS_MARKETING_CONSENT` nera — realiai yra 26 PS_ laukai.)
+- Trynimas: TIK `DELETE /subscribers` su body `{"subscribers":[...]}`, ASINCHRONINIS (~10 s). Kelias `/subscribers/{email}` ir `/{id}` -> ROUTE_NOT_FOUND.
+- `DELETE /workflows/{id}` NEPALAIKOMAS. Sender'yje liko DU DRAFT workflow'ai (`PS E2E order_paid test`, `PS PROBE (delete me)`) — **trinti RANKA UI**.
+- Sender paskyra isvalyta: 3 realus kontaktai, 4 grupes (PS_TEST + PS_ALL_ACTIVE + PS_LEGACY_IMPORT + PS_SUPPRESSED_OR_ARCHIVE), 26 PS_ laukai, domenas verified.
 
 
 ---
