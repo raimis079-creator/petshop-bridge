@@ -1,0 +1,324 @@
+{
+ "deactivated": [],
+ "sid": 1930,
+ "dry": {
+  "sessions_table": true,
+  "sessions_cols": [
+   "session_id",
+   "session_key",
+   "session_value",
+   "session_expiry"
+  ],
+  "sessions_count": 442,
+  "sessions_active": 230,
+  "sample_keys": [
+   "customer"
+  ],
+  "sample_key": "t_24402fd6aba38d6615b3df4560a378",
+  "sample_expiry": "2026-08-01 20:56",
+  "sample_cart_items": 0,
+  "sample_customer_fields": [
+   "id",
+   "date_modified",
+   "first_name",
+   "last_name",
+   "company",
+   "phone",
+   "email",
+   "address",
+   "address_1",
+   "address_2",
+   "city",
+   "state",
+   "postcode",
+   "country",
+   "shipping_first_name",
+   "shipping_last_name",
+   "shipping_company",
+   "shipping_phone",
+   "shipping_address",
+   "shipping_address_1",
+   "shipping_address_2",
+   "shipping_city",
+   "shipping_state",
+   "shipping_postcode",
+   "shipping_country",
+   "is_vat_exempt",
+   "calculated_shipping",
+   "meta_data"
+  ],
+  "sample_has_email": 0,
+  "persistent_carts": 34,
+  "cart_plugins": [],
+  "checkout_email_hooks": {
+   "woocommerce_checkout_update_order_review": 0,
+   "woocommerce_after_checkout_validation": 1
+  },
+  "cart_abandoned_emitter": true,
+  "schema_exists": true,
+  "schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "cart_abandoned",
+   "description": "Krepselis apleistas su identifikuotu email. Reikalauja atskiro cart-tracking modulio (ne vien WC session).",
+   "schema_version": 1,
+   "type": "object",
+   "required": [
+    "schema_version",
+    "event_name",
+    "event_id",
+    "emitted_at",
+    "email",
+    "payload"
+   ],
+   "properties": {
+    "schema_version": {
+     "const": 1
+    },
+    "event_name": {
+     "const": "cart_abandoned"
+    },
+    "event_id": {
+     "type": "string"
+    },
+    "emitted_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "email": {
+     "type": "string",
+     "format": "email"
+    },
+    "customer_id": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "payload": {
+     "type": "object",
+     "required": [
+      "cart_id",
+      "cart_total",
+      "cart_items",
+      "last_activity_at"
+     ],
+     "properties": {
+      "cart_id": {
+       "type": "string"
+      },
+      "cart_total": {
+       "type": "number"
+      },
+      "cart_currency": {
+       "type": "string",
+       "enum": [
+        "EUR"
+       ]
+      },
+      "cart_items": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "product_id",
+         "name",
+         "quantity"
+        ],
+        "properties": {
+         "product_id": {
+          "type": "integer"
+         },
+         "name": {
+          "type": "string"
+         },
+         "quantity": {
+          "type": "number"
+         },
+         "line_total": {
+          "type": "number"
+         }
+        }
+       }
+      },
+      "last_activity_at": {
+       "type": "string",
+       "format": "date-time"
+      },
+      "recovery_url": {
+       "type": [
+        "string",
+        "null"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "flow_cfg": {
+   "class": "service",
+   "template": "cart-abandoned-1",
+   "delay": 7200
+  }
+ },
+ "apply": {
+  "sessions_table": true,
+  "sessions_cols": [
+   "session_id",
+   "session_key",
+   "session_value",
+   "session_expiry"
+  ],
+  "sessions_count": 442,
+  "sessions_active": 230,
+  "sample_keys": [
+   "customer"
+  ],
+  "sample_key": "t_24402fd6aba38d6615b3df4560a378",
+  "sample_expiry": "2026-08-01 20:56",
+  "sample_cart_items": 0,
+  "sample_customer_fields": [
+   "id",
+   "date_modified",
+   "first_name",
+   "last_name",
+   "company",
+   "phone",
+   "email",
+   "address",
+   "address_1",
+   "address_2",
+   "city",
+   "state",
+   "postcode",
+   "country",
+   "shipping_first_name",
+   "shipping_last_name",
+   "shipping_company",
+   "shipping_phone",
+   "shipping_address",
+   "shipping_address_1",
+   "shipping_address_2",
+   "shipping_city",
+   "shipping_state",
+   "shipping_postcode",
+   "shipping_country",
+   "is_vat_exempt",
+   "calculated_shipping",
+   "meta_data"
+  ],
+  "sample_has_email": 0,
+  "persistent_carts": 34,
+  "cart_plugins": [],
+  "checkout_email_hooks": {
+   "woocommerce_checkout_update_order_review": 0,
+   "woocommerce_after_checkout_validation": 1
+  },
+  "cart_abandoned_emitter": true,
+  "schema_exists": true,
+  "schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "cart_abandoned",
+   "description": "Krepselis apleistas su identifikuotu email. Reikalauja atskiro cart-tracking modulio (ne vien WC session).",
+   "schema_version": 1,
+   "type": "object",
+   "required": [
+    "schema_version",
+    "event_name",
+    "event_id",
+    "emitted_at",
+    "email",
+    "payload"
+   ],
+   "properties": {
+    "schema_version": {
+     "const": 1
+    },
+    "event_name": {
+     "const": "cart_abandoned"
+    },
+    "event_id": {
+     "type": "string"
+    },
+    "emitted_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "email": {
+     "type": "string",
+     "format": "email"
+    },
+    "customer_id": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "payload": {
+     "type": "object",
+     "required": [
+      "cart_id",
+      "cart_total",
+      "cart_items",
+      "last_activity_at"
+     ],
+     "properties": {
+      "cart_id": {
+       "type": "string"
+      },
+      "cart_total": {
+       "type": "number"
+      },
+      "cart_currency": {
+       "type": "string",
+       "enum": [
+        "EUR"
+       ]
+      },
+      "cart_items": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "product_id",
+         "name",
+         "quantity"
+        ],
+        "properties": {
+         "product_id": {
+          "type": "integer"
+         },
+         "name": {
+          "type": "string"
+         },
+         "quantity": {
+          "type": "number"
+         },
+         "line_total": {
+          "type": "number"
+         }
+        }
+       }
+      },
+      "last_activity_at": {
+       "type": "string",
+       "format": "date-time"
+      },
+      "recovery_url": {
+       "type": [
+        "string",
+        "null"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "flow_cfg": {
+   "class": "service",
+   "template": "cart-abandoned-1",
+   "delay": 7200
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
