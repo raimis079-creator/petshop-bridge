@@ -38,8 +38,6 @@ if(sid){
   try{O.dry=JSON.parse(d.out);}catch(e){O.dry_raw=d.out.slice(0,500);}
   const a=sh('curl -sSk "'+SITE+'/?ps_d8=D8fx&confirm=APPLY_S308"');
   try{O.apply=JSON.parse(a.out);}catch(e){O.apply_raw=a.out.slice(0,500);}
-  const a=sh('curl -sSk "'+SITE+'/?ps_d8=D8fx"');
-  try{O.apply=JSON.parse(a.out);}catch(e){O.apply_raw=a.out.slice(0,500);}
   fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
   sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
   // sanity: ar svetaine gyva po deploy
