@@ -1,0 +1,27 @@
+{
+ "sid": 1890,
+ "dry": {
+  "target": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-refill-engine.php",
+  "exists": true,
+  "old_sha": "cc0a9da6547a2436",
+  "old_size": 12371,
+  "new_sha_expected": "d887b412a07563e3",
+  "new_size": 13880,
+  "mode": "DRY-RUN"
+ },
+ "apply": {
+  "target": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-refill-engine.php",
+  "exists": true,
+  "old_sha": "cc0a9da6547a2436",
+  "old_size": 12371,
+  "new_sha_expected": "d887b412a07563e3",
+  "new_size": 13880,
+  "mode": "APPLY",
+  "backup": "created class-refill-engine.php.bak_S305",
+  "written_bytes": 13880,
+  "after_sha": "d887b412a07563e3",
+  "MATCH": "YES"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
