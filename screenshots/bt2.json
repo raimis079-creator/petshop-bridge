@@ -1,0 +1,84 @@
+{
+ "btn_found": true,
+ "step1_added": {
+  "cart": "c_020d87617b6b",
+  "items": 1,
+  "act": "2026-07-30 21:43:03",
+  "hash": "5f47392b14",
+  "email": null,
+  "src": null,
+  "snap": [
+   {
+    "p": 19137,
+    "v": 34426,
+    "q": 1,
+    "var": {
+     "attribute_pa_spalva": "garstyciu"
+    },
+    "item_data_keys": []
+   }
+  ]
+ },
+ "checkout_url": "https://dev.avesa.lt/checkout/",
+ "email_field": true,
+ "step2_email": {
+  "cart": "c_020d87617b6b",
+  "items": 1,
+  "act": "2026-07-30 21:43:03",
+  "hash": "5f47392b14",
+  "email": null,
+  "src": null,
+  "snap": [
+   {
+    "p": 19137,
+    "v": 34426,
+    "q": 1,
+    "var": {
+     "attribute_pa_spalva": "garstyciu"
+    },
+    "item_data_keys": []
+   }
+  ]
+ },
+ "ship_options": 4,
+ "step3_shipping": {
+  "cart": "c_020d87617b6b",
+  "items": 1,
+  "act": "2026-07-30 21:43:03",
+  "hash": "5f47392b14",
+  "email": "guest-cart-test@example.com",
+  "src": "checkout",
+  "snap": [
+   {
+    "p": 19137,
+    "v": 34426,
+    "q": 1,
+    "var": {
+     "attribute_pa_spalva": "garstyciu"
+    },
+    "item_data_keys": []
+   }
+  ]
+ },
+ "qty_field": true,
+ "update_btn": true,
+ "step4_qty": {
+  "cart": "c_020d87617b6b",
+  "items": 1,
+  "act": "2026-07-30 21:43:42",
+  "hash": "a8ed69c53f",
+  "email": "guest-cart-test@example.com",
+  "src": "checkout",
+  "snap": [
+   {
+    "p": 19137,
+    "v": 34426,
+    "q": 3,
+    "var": {
+     "attribute_pa_spalva": "garstyciu"
+    },
+    "item_data_keys": []
+   }
+  ]
+ }
+}
