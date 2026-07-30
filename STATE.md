@@ -1,10 +1,75 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-18** (**Checksum normalizacija promotion metu (path A) + schema migracija dokumentuota**; sesijos snippetai išvalyti 74/0). Ankstesnis: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-30** (**S305 refill konservams ISTAISYTA + Mixed Content saknis uzdaryta + lojalumas uzrakintas TZ v1.59**). Ankstesnis: **2026-07-18** (**Checksum normalizacija promotion metu (path A) + schema migracija dokumentuota**; sesijos snippetai išvalyti 74/0). Ankstesnis: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
 
 
 
+
+
+
+---
+
+# ============================================================
+# ★★★ 2026-07-30 SESIJA — S305/S306/S307 ★★★
+# ============================================================
+
+## S305 — REFILL SLAPIAM MAISTUI ISTAISYTA (class-refill-engine.php)
+
+**SAKNIS:** `is_food_product()` lygino TIK tiesiogiai priskirtas kategorijas su `FOOD_CATEGORY_SLUGS`. `wp_get_post_terms()` NEGRAZINA teviniu kategoriju -> preke, priskirta tik vaikinei (`konservai-katems`, kurios tevine `maistas-katems` YRA sarase), buvo ATMETAMA -> `ps_refill_tracking` irasas nesukurdavo -> **refill konservams neveike is viso**.
+
+**MASTAS pries taisyma:** 291 preke atrode kaip maistas, bet neprajo — konservai-katems 142, konservai-sunims 120, animonda-konservai-sunims 36, super-premium-sunu-maistas 5.
+
+**TAISYMAS:** tikrinama kategorija IR visi protėviai per `get_ancestors($tid,'product_cat','taxonomy')`. Pasirinkta vietoj slug'u saraso pletimo — automatiskai padengia busimas subkategorijas, nereikia saraso prieziuros.
+
+- failas `plugins/petshop-core/includes/class-refill-engine.php`, PILNAS perrasymas
+- backup `class-refill-engine.php.bak_S305`
+- 12371 -> 13880 B; sha16 `cc0a9da6547a2436` -> `d887b412a07563e3` (MATCH patvirtintas)
+- sintakse tikrinta phply pries deploy
+
+**VERIFIKACIJA (ReflectionMethod ant privataus metodo, gyvi produktai):** konservai-katems NE->TAIP, konservai-sunims NE->TAIP, sausas-maistas TAIP->TAIP, skanestai NE->NE, papildai NE->NE, akvariumo maistas NE->NE. **739 -> 981 (+242)** publish prekiu. Svetaine + /my-account/ = 200.
+
+**LIKUTIS:** `super-premium-sunu-maistas` (5 prekes) be tevines kategorijos — jei neturi ir `maistas-sunims`, nepraeis. Tvarkyti su kategoriju higiena.
+
+## S306 — MIXED CONTENT: saknis buvo siteurl/home, NE Complianz
+
+`siteurl` IR `home` = `http://dev.avesa.lt`, nors `is_ssl()=1`. Grandine: siteurl http:// -> `wp_upload_dir()` baseurl http:// -> Complianz banerio CSS uploads'e -> narsykle BLOKAVO. Complianz tik paveldejo.
+
+**APPLY:** siteurl+home -> `https://dev.avesa.lt`; `cmplz_transients` istrinta; cache flush.
+**VERIFIKACIJA narsykleje (4 psl.):** http:// uzklausu 1 -> **0**; Mixed Content ispejimu 4 -> **0**; HTML http:// nuorodu 8 -> 2 (liko `gmpg.org/xfn/11` — standartinis WP rel=profile, ir `href="http://url"` — Flatsome social placeholder).
+
+**LAUNCH'UI KRITINE:** migracijoje Site URL/Home BUTINAI `https://petshop.lt`, NE `http://`.
+**Kitos opcijos su http://dev.avesa.lt:** `woocommerce_email_header_image`, `wcdn_settings` (PDF saskaitos), `cmplz_preloaded_privacy_info`.
+
+**PAMOKA:** pirma pasakiau „Site URL yra https, migracija nesutvarkys" NEPATIKRINES — buvo atvirksciai. Raimio pradinis vertinimas buvo teisingas.
+
+## S307 — WET_ONLY SRAUTAS: patikrinta narsykleje, DEFEKTO NERA
+
+Augintinis 149 „dekas" (wet_only, wet_product_id NULL), trumpalaikis auth cookie -> Playwright 390px:
+- kortele: „Mityba / Dienos norma ir maisto planas" + **[NUSTATYTI MAISTA]**
+- paspaudus: **Slapias maistas** · „Jusu nurodytas dienos kiekis 500 g" [Keisti kieki] · „Susidekite konservus" · **[+ Prideti kita skoni]** · „Tai jusu nurodytas kiekis, ne gamintojo apskaiciuota norma". JS klaidu 0.
+
+**ISVADA:** srautas veikia. `wet_product_id = NULL` NERA defektas — wet_only remiasi keliu skoniu eilutemis (sessionStorage); `wet_product_id` NEPRIVALOMAS, nustatomas tik per „Issaugoti profilyje". **NEPATIKRINTA:** „+ Prideti kita skoni" paspaudimas -> paieskos rezultatai (kode `addFlavourBtn` -> `openWetSearch` -> `saveWetProduct`).
+
+## LOJALUMAS UZRAKINTAS -> TZ MASTER v1.59
+
+TZ v1.58 F22 sake 100 tasku = 5 EUR + pluginas; M8 MASTER v3.3 §11 sake 100 = 1 EUR + custom BonusLedger. **5x priestaravimas pasalintas.**
+
+**Rinkos patikra (TIK zooprekyba):** LT zoo viesio %-cashback nerodo (Zoobaze — lygiai pagal uzsakymu skaiciu/365 d.); Zoomalia (didziausias palyginamas ES, panasios marzos) SAMONINGAI vengia %-nuo-sumos — fiksuoti taskai uz veiksma (+50/uzsakymas, +1000 programele, ~150 referral). 5% neturi atitikmens zoo segmente.
+
+**RAIMIO SPRENDIMAI:** taskai saskaitoje = **NUOLAIDA** (PVM nuo sumos PO nuolaidos; ledger = eurocentai; Pragma = nuolaidos eilute; vaucerio klausimas atkrinta) · baze **1 EUR = 1 taskas, 100 = 1 EUR** · statybos startas **2026-08-15**.
+
+**TZ v1.59 pakeista 7 vietose** (F22, §4.4 antraste, prioritetas #10, 08-15 vartai, S14, §9.5, Q9). Validacija praejo, 3347 -> 3347 pastraipu.
+
+**ATVIRA (Q9):** pluginas (WPLoyalty/myCred 80-150 EUR/men) ar savas kodas (BonusLedger). Spresti iki 08-15.
+
+## TECHNINES PASTABOS (sios sesijos)
+
+- **Code Snippets REST DELETE NEVEIKIA** — `rest_cannot_delete` (500) ir su `?force=true`, ir su X-HTTP-Method-Override. Galima TIK deaktyvuoti. Trinti RANKA WP admin. Deaktyvuoti laukia: **1885, 1886, 1887, 1888, 1890**.
+- **Snippet 472** (Zaislai Katems) aktyvus, bet TVARKINGAS: `init` + ankstyvas isejimas be `$_GET['petshop_attr_zaislai_k']` + `current_user_can`. Nedaro nieko. NELIESTI.
+- **Dev SSL sertifikatas nepatikimas is isores** — bridge curl BUTINAI `-k`, kitaip `curl: (60)`. Produkcijai patikrinti tvarkinga sertifikata.
+- **ps_pets stulpelis `pet_name`, NE `name`** — klaidingas SELECT grazina null BE klaidos ir atrodo kaip „nera duomenu". Kainavo 2 run'us.
+- **FLATSOME SOCIAL PLACEHOLDER'IAI — LAUKIA RAIMIO NUORODU:** `follow_facebook`/`follow_instagram`/`follow_twitter` = `http://url`, `follow_email` = `your@email`. 3 sugadintos nuorodos + placeholder pastas KIEKVIENAME puslapyje. Raimis: „kol kas paliekam, paskui duosiu tikras nuorodas" — NEKEISTI savo iniciatyva. Tuscia reiksme = ikona nerodoma. PRIVALOMA pries launch. Salia angliski tekstai („Sign up for Newsletter", „Follow on Facebook") -> UI lokalizacija.
 
 
 ---
