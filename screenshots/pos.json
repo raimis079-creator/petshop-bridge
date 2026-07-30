@@ -1,0 +1,102 @@
+{
+ "deactivated": [],
+ "sid": 1916,
+ "dry": {
+  "orig": {
+   "status": "notified",
+   "ped": "2026-07-30",
+   "lpd": "2026-07-20"
+  },
+  "jobs": [
+   {
+    "id": "3",
+    "job_key": "refill_due:1:18527:2026-07-30",
+    "flow": "refill_due",
+    "flow_class": "service",
+    "recipient_email": "raimundas@gyvunai.lt",
+    "status": "pending",
+    "subject": null
+   }
+  ],
+  "dry": {
+   "dry_run": true,
+   "picked": 1,
+   "results": [
+    {
+     "id": 3,
+     "flow": "refill_due",
+     "action": "WOULD_SEND",
+     "to": "raimundas@gyvunai.lt",
+     "subject": "jūsų augintinio maisto gali netrukus pritrūkti",
+     "html_len": 2632
+    }
+   ]
+  },
+  "restored": {
+   "status": "notified",
+   "predicted_empty_date": "2026-07-30",
+   "last_purchase_date": "2026-07-20"
+  }
+ },
+ "apply": {
+  "orig": {
+   "status": "notified",
+   "ped": "2026-07-30",
+   "lpd": "2026-07-20"
+  },
+  "jobs": [
+   {
+    "id": "4",
+    "job_key": "refill_due:1:18527:2026-07-30",
+    "flow": "refill_due",
+    "flow_class": "service",
+    "recipient_email": "raimundas@gyvunai.lt",
+    "status": "pending",
+    "subject": null
+   }
+  ],
+  "dry": {
+   "dry_run": true,
+   "picked": 1,
+   "results": [
+    {
+     "id": 4,
+     "flow": "refill_due",
+     "action": "WOULD_SEND",
+     "to": "raimundas@gyvunai.lt",
+     "subject": "jūsų augintinio maisto gali netrukus pritrūkti",
+     "html_len": 2632
+    }
+   ]
+  },
+  "send": {
+   "dry_run": false,
+   "picked": 1,
+   "results": [
+    {
+     "id": 4,
+     "flow": "refill_due",
+     "action": "SENT",
+     "msg_id": "azv2GY-.eE9p2l-j09zEZv-qZE7AKyRzy23-3dt1Py",
+     "error": ""
+    }
+   ]
+  },
+  "jobs_after": [
+   {
+    "id": "4",
+    "status": "sent",
+    "provider_message_id": "azv2GY-.eE9p2l-j09zEZv-qZE7AKyRzy23-3dt1Py",
+    "subject": "jūsų augintinio maisto gali netrukus pritrūkti",
+    "last_error": null
+   }
+  ],
+  "restored": {
+   "status": "notified",
+   "predicted_empty_date": "2026-07-30",
+   "last_purchase_date": "2026-07-20"
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
