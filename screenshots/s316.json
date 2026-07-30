@@ -1,0 +1,95 @@
+{
+ "deactivated": [],
+ "sid": 1936,
+ "dry_raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Class &quot;Petshop_Cart_Tracker&quot; not found in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:24\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook-&gt;apply_filters()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/dev/w",
+ "apply": {
+  "deploy": {
+   "class-cart-tracker.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "cols": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "indexes": [
+   "PRIMARY",
+   "cart_id",
+   "status_activity",
+   "session_key",
+   "user_id",
+   "email",
+   "converted_order_id"
+  ],
+  "steps": {
+   "1_guest_add": {
+    "cart_id": "c_05a40e6ef9a06d7804d6301c244e04e1",
+    "action": "no_change",
+    "items": 0,
+    "activity": null,
+    "email": null
+   },
+   "2_checkout_email": {
+    "cart_id": "c_05a40e6ef9a06d7804d6301c244e04e1",
+    "email": "guest@example.com",
+    "email_source": "checkout",
+    "activity": null,
+    "activity_nepakito": "TAIP"
+   },
+   "3_address_change": {
+    "activity": null,
+    "activity_nepakito": "TAIP"
+   },
+   "4_login": {
+    "cart_id": "c_05a40e6ef9a06d7804d6301c244e04e1",
+    "tas_pats": "TAIP",
+    "user_id": "1",
+    "email": "raimundas@gyvunai.lt",
+    "email_source": "account"
+   },
+   "5_qty_change": {
+    "cart_id": "c_05a40e6ef9a06d7804d6301c244e04e1",
+    "tas_pats": "TAIP",
+    "action": "no_change",
+    "bumped": 0,
+    "activity": null,
+    "activity_pakito": "NE"
+   },
+   "snapshot": [],
+   "snapshot_sample": null
+  },
+  "stats": {
+   "total": 1,
+   "by_status": [
+    {
+     "status": "active",
+     "c": "1"
+    }
+   ],
+   "with_email": 1,
+   "by_email_src": [
+    {
+     "email_source": "account",
+     "c": "1"
+    }
+   ],
+   "with_items": 0
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
