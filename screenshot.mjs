@@ -1,28 +1,88 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-const PHPB64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX3piMyddKSB8fCAkX0dFVFsncHNfemIzJ10hPT0nWmIzeCcpIHJldHVybjsKICB3aGlsZShvYl9nZXRfbGV2ZWwoKSkgb2JfZW5kX2NsZWFuKCk7CiAgZ2xvYmFsICR3cGRiOyAkbz1hcnJheSgncmV6aW1hcyc9PidQUkVWSUVXIOKAlCBuaWVrbyBuZXJhxaFvbWEnKTsKICAkcmM9bmV3IFJlZmxlY3Rpb25DbGFzcygnUGV0c2hvcF9QcmljaW5nJyk7CiAgJGN0b3I9JHJjLT5nZXRDb25zdHJ1Y3RvcigpOwogICRvWydrb25zdHJ1a3RvcmlhdXNfcGFyYW0nXT0kY3Rvcj8kY3Rvci0+Z2V0TnVtYmVyT2ZSZXF1aXJlZFBhcmFtZXRlcnMoKTowOwogIHRyeXsgJFA9JGN0b3IgJiYgJGN0b3ItPmdldE51bWJlck9mUmVxdWlyZWRQYXJhbWV0ZXJzKCk+MCA/IG51bGwgOiBuZXcgUGV0c2hvcF9QcmljaW5nKCk7IH0KICBjYXRjaChUaHJvd2FibGUgJGUpeyAkUD1udWxsOyAkb1snY3Rvcl9lcnInXT0kZS0+Z2V0TWVzc2FnZSgpOyB9CiAgaWYoISRQKXsgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7IH0KICAkb1snbWFya3VwX2xlbnRlbGUnXT1tZXRob2RfZXhpc3RzKCRQLCdnZXRfbWFya3VwX3RhYmxlJyk/JFAtPmdldF9tYXJrdXBfdGFibGUoKTpudWxsOwoKICAkaWRzPSR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgcC5JRCBGUk9NIHskd3BkYi0+cG9zdHN9IHAKICAgIEpPSU4geyR3cGRiLT5wb3N0bWV0YX0gYyBPTiBjLnBvc3RfaWQ9cC5JRCBBTkQgYy5tZXRhX2tleT0nX3piX2Nvc3QnIEFORCBjLm1ldGFfdmFsdWU+MAogICAgV0hFUkUgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJwogICAgICBBTkQgcC5JRCBOT1QgSU4gKFNFTEVDVCBwb3N0X2lkIEZST00geyR3cGRiLT5wb3N0bWV0YX0gV0hFUkUgbWV0YV9rZXk9J196Yl9wcmljZV9pbml0aWFsaXplZCcpIik7CiAgJG9bJ25laW5pY2lhbGl6dW90dV9wdWJsaXNoJ109Y291bnQoJGlkcyk7CiAgJHNrPWFycmF5KCd2aWVub2RhJz0+MCwna2lscyc9PjAsJ2tyaXMnPT4wLCduZXBhdnlrbyc9PjApOwogICRwdno9YXJyYXkoKTsgJGRpZGVsaT1hcnJheSgpOyAkc3VtTz0wOyAkc3VtTj0wOyAkcmV2aWV3PTA7CiAgZm9yZWFjaCgkaWRzIGFzICRwaWQpewogICAgJHBpZD0oaW50KSRwaWQ7CiAgICAkY29zdD0oZmxvYXQpZ2V0X3Bvc3RfbWV0YSgkcGlkLCdfemJfY29zdCcsdHJ1ZSk7CiAgICAkY3VyPShmbG9hdClnZXRfcG9zdF9tZXRhKCRwaWQsJ19yZWd1bGFyX3ByaWNlJyx0cnVlKTsKICAgIGlmKCRjb3N0PD0wfHwkY3VyPD0wKXsgJHNrWyduZXBhdnlrbyddKys7IGNvbnRpbnVlOyB9CiAgICAkc2x1Z3M9d3BfZ2V0X3Bvc3RfdGVybXMoJHBpZCwncHJvZHVjdF9jYXQnLGFycmF5KCdmaWVsZHMnPT4nc2x1Z3MnKSk7CiAgICBpZihpc193cF9lcnJvcigkc2x1Z3MpKSAkc2x1Z3M9YXJyYXkoKTsKICAgIHRyeXsgJHJlcz0kUC0+Y2FsY3VsYXRlX2ZpbmFsX3ByaWNlKCRjb3N0LChhcnJheSkkc2x1Z3MpOyB9Y2F0Y2goVGhyb3dhYmxlICRlKXsgJHNrWyduZXBhdnlrbyddKys7IGNvbnRpbnVlOyB9CiAgICAkbmV3PShmbG9hdCkkcmVzWydwcmljZSddOwogICAgaWYoIWVtcHR5KCRyZXNbJ3Jldmlld19yZWFzb25zJ10pKSAkcmV2aWV3Kys7CiAgICAkc3VtTys9JGN1cjsgJHN1bU4rPSRuZXc7CiAgICAkZD0kbmV3LSRjdXI7ICRkcD0kY3VyPjA/JGQvJGN1cioxMDA6MDsKICAgIGlmKGFicygkZCk8MC4wMDUpICRza1sndmllbm9kYSddKys7IGVsc2VpZigkZD4wKSAkc2tbJ2tpbHMnXSsrOyBlbHNlICRza1sna3JpcyddKys7CiAgICAkcmVjPWFycmF5KCdpZCc9PiRwaWQsJ24nPT5tYl9zdWJzdHIoaHRtbF9lbnRpdHlfZGVjb2RlKGdldF90aGVfdGl0bGUoJHBpZCkpLDAsMzIpLAogICAgICAnY29zdCc9PnJvdW5kKCRjb3N0LDIpLCdkYWJhcic9PnJvdW5kKCRjdXIsMiksJ25hdWphJz0+cm91bmQoJG5ldywyKSwnc2snPT5yb3VuZCgkZCwyKSwncHJvYyc9PnJvdW5kKCRkcCwxKSk7CiAgICBpZihjb3VudCgkcHZ6KTw4KSAkcHZ6W109JHJlYzsKICAgIGlmKGFicygkZHApPj0xMCAmJiBjb3VudCgkZGlkZWxpKTwxNSkgJGRpZGVsaVtdPSRyZWM7CiAgfQogICRvWydza2lydHVtYWknXT0kc2s7ICRvWydyZXZpZXdfZmxhZyddPSRyZXZpZXc7CiAgJG9bJ3N1bWFfZGFiYXInXT1yb3VuZCgkc3VtTywyKTsgJG9bJ3N1bWFfbmF1amEnXT1yb3VuZCgkc3VtTiwyKTsKICAkb1snYmVuZHJhc19wb2t5dGlzX3Byb2MnXT0kc3VtTz4wP3JvdW5kKCgkc3VtTi0kc3VtTykvJHN1bU8qMTAwLDIpOm51bGw7CiAgJG9bJ3B2eiddPSRwdno7ICRvWydkaWRlbGknXT0kZGlkZWxpOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8ganNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
+import puppeteer from 'puppeteer';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const U=process.env.WP_USER||'', P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH='-u "'+U+':'+P+'"';
-function wj(m,path,body){fs.writeFileSync('/tmp/wb.json', JSON.stringify(body));
-  return execSync('curl -sk --max-time 150 '+AUTH+' -X '+m+' -H "Content-Type: application/json" --data-binary @/tmp/wb.json "https://dev.avesa.lt/wp-json/'+path+'"',{maxBuffer:50e6,timeout:170000}).toString();}
 function putB64(name,b64){const u='https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -s -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:50e6}).toString());if(j.sha)s=j.sha;}catch(e){}
   fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'r',content:b64,...(s?{sha:s}:{})}));
   const c=execSync('curl -s -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:50e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
-const o={}; let sid=null;
-try{
-  const php = Buffer.from(PHPB64,'base64').toString('utf8');
-  let mk=null;
-  for(let a=0;a<3;a++){ try{ mk=wj('POST','code-snippets/v1/snippets',{name:'ZB3 '+Date.now(),code:php,scope:'front-end',active:true,priority:5});
-    if(mk && mk.indexOf('"id"')>=0) break; }catch(e){} execSync('sleep 8'); }
-  try{sid=JSON.parse(mk).id;}catch(e){}
-  execSync('sleep 5');
-  const r=execSync('curl -sk --max-time 170 "https://dev.avesa.lt/?ps_zb3=Zb3x"',{maxBuffer:20e6,timeout:190000}).toString();
-  const i=r.indexOf('{'),k=r.lastIndexOf('}');
-  if(i>=0&&k>i){ try{ o.result=JSON.parse(r.slice(i,k+1)); }catch(e){ o.rawslice=r.slice(i,i+400); } }
-}catch(e){o.err=String(e).slice(0,200);}
-try{ if(sid!=null) execSync('curl -sk --max-time 60 '+AUTH+' -X DELETE "https://dev.avesa.lt/wp-json/code-snippets/v1/snippets/'+sid+'"'); }catch(e){}
-putB64('zb3.json', Buffer.from(JSON.stringify(o)).toString('base64'));
-console.log('done');
+
+const LOG=[]; const ERR=[];
+const step=(n,ok,d)=>{ LOG.push({n,ok,d:String(d===undefined?'':d).slice(0,220)}); };
+
+(async()=>{
+  const b=await puppeteer.launch({headless:'new',args:['--no-sandbox','--disable-setuid-sandbox','--ignore-certificate-errors']});
+  const p=await b.newPage();
+  await p.setViewport({width:1280,height:900});
+  // gaudom JS klaidas ir 404
+  p.on('pageerror',e=>ERR.push('pageerror: '+String(e).slice(0,160)));
+  p.on('console',m=>{ if(m.type()==='error') ERR.push('console: '+m.text().slice(0,160)); });
+  p.on('response',r=>{ if(r.status()>=400 && /\.(js|css)(\?|$)/.test(r.url())) ERR.push('HTTP '+r.status()+': '+r.url().split('/').pop().slice(0,70)); });
+
+  const PROD='https://dev.avesa.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-arkliena-ir-bulvemis-m-l-12-kg/';
+  try{
+    // 1. PREKĖS PUSLAPIS
+    await p.goto(PROD,{waitUntil:'domcontentloaded',timeout:60000});
+    await new Promise(r=>setTimeout(r,2500));
+    const calc=await p.$('#ps-calc');
+    step('1. Skaičiuoklė matoma', !!calc);
+    const h1=await p.$eval('.ps-calc-h1',e=>e.textContent).catch(()=>null);
+    step('   antraštė', !!h1, h1);
+
+    // 2. ĮVEDAM SVORĮ IR SKAIČIUOJAM
+    await p.type('#ps-calc-w','13');
+    await p.click('.ps-calc-go');
+    await new Promise(r=>setTimeout(r,3500));
+    const res=await p.$eval('.ps-calc-res',e=>e.innerText.replace(/\s+/g,' ')).catch(()=>null);
+    step('2. Rezultatas gautas', !!res, res);
+    const src=await p.$eval('.ps-calc-res .src',e=>e.textContent).catch(()=>null);
+    step('   normos šaltinis', !!src, src);
+
+    // 3. ANTRINIS BLOKAS
+    const saveT=await p.$eval('.ps-calc-save-t',e=>e.textContent).catch(()=>null);
+    const saveB=await p.$eval('.ps-calc-save-btn',e=>e.textContent).catch(()=>null);
+    step('3. Antrinis blokas', !!saveT, saveT+' | CTA: '+saveB);
+
+    // 4. ps_source įdėtas į formą?
+    const psrc=await p.$eval('form.cart input[name="ps_source"]',e=>e.value).catch(()=>null);
+    step('4. ps_source formoje', psrc==='calc_product', psrc);
+
+    // 5. SPAUDŽIAM CTA → handoff
+    const before=await p.evaluate(()=>{ try{return localStorage.getItem('petshop_calc_handoff');}catch(e){return 'ERR';} });
+    step('5. handoff prieš', before===null||before===undefined, before);
+    await p.click('.ps-calc-save-btn');
+    await new Promise(r=>setTimeout(r,3500));
+    const url1=p.url();
+    step('6. Nukreipta', true, url1.slice(0,90));
+    const ho=await p.evaluate(()=>{ try{return localStorage.getItem('petshop_calc_handoff');}catch(e){return 'ERR';} });
+    let hoj=null; try{ hoj=JSON.parse(ho); }catch(e){}
+    step('   handoff įrašytas', !!hoj, hoj?('pid='+hoj.product_id+' kg='+hoj.weight_kg+' return='+String(hoj.return_url).slice(0,40)):ho);
+
+    await p.screenshot({path:'/tmp/e2e_1.png',fullPage:false});
+
+    // 7. KATEGORIJOS SKAIČIUOKLĖ
+    await p.goto('https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/',{waitUntil:'domcontentloaded',timeout:60000});
+    await new Promise(r=>setTimeout(r,2500));
+    const ask=await p.$('form.ps-wask');
+    step('7. Kategorijos klausimas', !!ask);
+    if(ask){
+      await p.type('.ps-wask-unit input','13');
+      await Promise.all([p.waitForNavigation({waitUntil:'domcontentloaded',timeout:60000}).catch(()=>{}), p.click('.ps-wask-row button')]);
+      await new Promise(r=>setTimeout(r,3000));
+      const badges=await p.$$eval('.ps-cb',els=>els.slice(0,3).map(e=>e.innerText.replace(/\s+/g,' ')));
+      step('8. Kortelių €/dieną', badges.length>0, badges.join(' | '));
+      const notice=await p.$eval('.ps-wfilter-t',e=>e.textContent).catch(()=>null);
+      step('   filtro antraštė', !!notice, notice);
+    }
+    await p.screenshot({path:'/tmp/e2e_2.png',fullPage:false});
+  }catch(e){ step('KLAIDA', false, String(e).slice(0,240)); }
+  await b.close();
+
+  const out={LOG,ERR:[...new Set(ERR)].slice(0,20)};
+  putB64('e2e.json', Buffer.from(JSON.stringify(out)).toString('base64'));
+  for(const f of ['e2e_1','e2e_2']){
+    try{ putB64(f+'.png', fs.readFileSync('/tmp/'+f+'.png').toString('base64')); }catch(e){}
+  }
+  console.log('done');
+})();
