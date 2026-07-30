@@ -1,0 +1,46 @@
+{
+ "sid": 1886,
+ "dry": {
+  "before": {
+   "siteurl": "http://dev.avesa.lt",
+   "home": "http://dev.avesa.lt"
+  },
+  "is_ssl": 1,
+  "mode": "DRY-RUN",
+  "planned": {
+   "siteurl": "https://dev.avesa.lt",
+   "home": "https://dev.avesa.lt"
+  },
+  "after": {
+   "siteurl": "http://dev.avesa.lt",
+   "home": "http://dev.avesa.lt"
+  },
+  "upload_baseurl_after": "http://dev.avesa.lt/wp-content/uploads"
+ },
+ "apply": {
+  "before": {
+   "siteurl": "http://dev.avesa.lt",
+   "home": "http://dev.avesa.lt"
+  },
+  "is_ssl": 1,
+  "mode": "APPLY",
+  "planned": {
+   "siteurl": "https://dev.avesa.lt",
+   "home": "https://dev.avesa.lt"
+  },
+  "changes": {
+   "siteurl": "http://dev.avesa.lt -> https://dev.avesa.lt",
+   "home": "http://dev.avesa.lt -> https://dev.avesa.lt"
+  },
+  "cmplz_transients": "deleted",
+  "cache": "flushed",
+  "after": {
+   "siteurl": "https://dev.avesa.lt",
+   "home": "https://dev.avesa.lt"
+  },
+  "upload_baseurl_after": "http://dev.avesa.lt/wp-content/uploads"
+ },
+ "http_urls_after": [],
+ "home_http_code": "200",
+ "deactivated": true
+}
