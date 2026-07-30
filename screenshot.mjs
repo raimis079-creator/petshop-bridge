@@ -68,9 +68,24 @@ if(sid){
   let opened=false;
   for(const c of await p.$$('button, a')){
     const t=((await c.textContent())||'').trim();
-    if(/Perži[uū]r[eė]ti plan/i.test(t)){ await c.click().catch(()=>{}); opened=true; break; }
+    if(/Perži[uū]r[eė]ti plan|Nustatyti maist/i.test(t)){ O.clicked=t; await c.click().catch(()=>{}); opened=true; break; }
   }
   O.opened_plan=opened;
+  await wait(4000);
+  // ka rodo paieskos ekranas
+  O.search_screen = await p.evaluate(()=>{
+    const r=document.querySelector('.pspet-profile')||document.body;
+    return (r.innerText||'').replace(/\n{2,}/g,'\n').slice(0,700);
+  });
+  O.search_placeholder = await p.$$eval('input[type=text]', es=>es.map(e=>e.placeholder));
+  // ivedam paieskos fraze ir ziurim, kokie rezultatai
+  const inp=await p.$('input[type=text]');
+  if(inp){ await inp.fill('Animonda'); await wait(3000);
+    O.search_results = await p.evaluate(()=>{
+      const r=document.querySelector('.pspet-profile')||document.body;
+      return (r.innerText||'').replace(/\n{2,}/g,'\n').slice(0,900);
+    });
+  }
   await wait(4000);
   await dump('screen_dekas_plan');
   await p.screenshot({path:'/tmp/w2.png',fullPage:true});
