@@ -1,0 +1,26 @@
+{
+ "deactivated": [],
+ "sid": 1908,
+ "dry": {
+  "target": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-esp/includes/class-sender-adapter.php",
+  "exists": true,
+  "old_sha": "6058e3422613de14",
+  "old_size": 16963,
+  "new_sha_expected": "3311968b53a33646",
+  "mode": "DRY-RUN"
+ },
+ "apply": {
+  "target": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-esp/includes/class-sender-adapter.php",
+  "exists": true,
+  "old_sha": "6058e3422613de14",
+  "old_size": 16963,
+  "new_sha_expected": "3311968b53a33646",
+  "mode": "APPLY",
+  "backup": "created",
+  "written": 17347,
+  "after_sha": "3311968b53a33646",
+  "MATCH": "YES"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
