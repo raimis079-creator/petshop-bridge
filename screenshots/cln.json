@@ -1,1 +1,281 @@
-{"create":{"id":1231,"code_error":null},"d":{"cleaned":1,"liko":0}}
+{
+ "deleted_subs": [
+  {
+   "email": "random_notlisted@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/random_notlisted@exampl"
+  },
+  {
+   "email": "wh_e2e_test@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/wh_e2e_test@example.com"
+  },
+  {
+   "email": "m4_consent_test@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/m4_consent_test@example"
+  },
+  {
+   "email": "esp_v020_test@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/esp_v020_test@example.c"
+  },
+  {
+   "email": "reactivate_test@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/reactivate_test@example"
+  },
+  {
+   "email": "whunsub+1783977217390@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/whunsub+1783977217390@e"
+  },
+  {
+   "email": "whsite+1783977112277@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/whsite+1783977112277@ex"
+  },
+  {
+   "email": "webhooklong+1783976488633@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/webhooklong+17839764886"
+  },
+  {
+   "email": "webhooktest+1783976179722@example.com",
+   "resp": "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route DELETE /subscribers/webhooktest+17839761797"
+  }
+ ],
+ "created_fields": [
+  {
+   "title": "PS_CUSTOMER_ID",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_LAST_ORDER_DATE",
+   "type": "date",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_ORDER_COUNT",
+   "type": "number",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_LIFETIME_VALUE",
+   "type": "number",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_CUSTOMER_WAVE",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_FOUNDING_SCORE",
+   "type": "number",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_PET_SPECIES",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_PET_NAME",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_PET_LIFE_STAGE",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_DOG_SIZE",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_PRIMARY_NEED",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_CURRENT_FOOD_BRAND",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_SUBSCRIPTION_STATUS",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_PREFERRED_SHIPPING",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_MARKETING_CONSENT",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_UNSUBSCRIBED_AT",
+   "type": "date",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_LEGACY_EMAIL_LINKED",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_LEGACY_LINK_PROMPT_SHOWN",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  },
+  {
+   "title": "PS_EMAIL_VERIFIED",
+   "type": "text",
+   "id": null,
+   "resp": "{\"success\":false,\"message\":\"The field already exists.\"}"
+  }
+ ],
+ "skipped_fields": [
+  "PS_FEEDING_TYPE",
+  "PS_REFILL_CANDIDATE",
+  "PS_NEXT_REFILL_DATE",
+  "PS_TRANSACTIONAL_ONLY",
+  "PS_LAST_EVENT_AT",
+  "PS_LOGIN_METHOD"
+ ],
+ "created_groups": [
+  {
+   "title": "PS_ALL_ACTIVE",
+   "id": "dNj8P2"
+  },
+  {
+   "title": "PS_LEGACY_IMPORT",
+   "id": "aOkZQR"
+  },
+  {
+   "title": "PS_SUPPRESSED_OR_ARCHIVE",
+   "id": "dPlYRA"
+  }
+ ],
+ "deleted_wf": {
+  "id": "e1wk0P",
+  "title": "PS E2E order_paid test",
+  "resp": "{\"message\":\"The DELETE method is not supported for route v2/workflows/e1wk0P. Supported methods: GET, HEAD, PATCH.\"}"
+ },
+ "errors": [],
+ "after": {
+  "subscribers": [
+   {
+    "e": "random_notlisted@example.com",
+    "st": "active"
+   },
+   {
+    "e": "wh_e2e_test@example.com",
+    "st": "active"
+   },
+   {
+    "e": "m4_consent_test@example.com",
+    "st": "active"
+   },
+   {
+    "e": "esp_v020_test@example.com",
+    "st": "active"
+   },
+   {
+    "e": "reactivate_test@example.com",
+    "st": "active"
+   },
+   {
+    "e": "whunsub+1783977217390@example.com",
+    "st": "active"
+   },
+   {
+    "e": "whsite+1783977112277@example.com",
+    "st": "active"
+   },
+   {
+    "e": "webhooklong+1783976488633@example.com",
+    "st": "active"
+   },
+   {
+    "e": "webhooktest+1783976179722@example.com",
+    "st": "active"
+   },
+   {
+    "e": "terra@gyvunai.lt",
+    "st": "unsubscribed"
+   },
+   {
+    "e": "raimundas@gyvunai.lt",
+    "st": "active"
+   },
+   {
+    "e": "terra@petshop.lt",
+    "st": "active"
+   }
+  ],
+  "fields": [
+   "Email",
+   "Phone number",
+   "First name",
+   "Last name",
+   "PS_FEEDING_TYPE",
+   "PS_REFILL_CANDIDATE",
+   "PS_NEXT_REFILL_DATE",
+   "PS_TRANSACTIONAL_ONLY",
+   "PS_LAST_EVENT_AT",
+   "PS_LOGIN_METHOD"
+  ],
+  "groups": [
+   {
+    "t": "PS_TEST",
+    "id": "bDxp2q"
+   },
+   {
+    "t": "PS_SUPPRESSED_OR_ARCHIVE",
+    "id": "dPlYRA"
+   },
+   {
+    "t": "PS_LEGACY_IMPORT",
+    "id": "aOkZQR"
+   },
+   {
+    "t": "PS_ALL_ACTIVE",
+    "id": "dNj8P2"
+   }
+  ],
+  "workflows": [
+   {
+    "t": "PS E2E order_paid test",
+    "s": "DRAFT"
+   }
+  ],
+  "domains": [
+   {
+    "d": "petshop.lt",
+    "v": 1,
+    "spf": 1,
+    "dkim": 1,
+    "dmarc": 1
+   }
+  ]
+ }
+}
