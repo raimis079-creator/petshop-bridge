@@ -1,0 +1,18 @@
+{
+ "before": [
+  "subscribers/updated"
+ ],
+ "restore": "{\"success\":true,\"message\":\"Success\",\"data\":{\"id\":\"QeZQ6d\",\"account_id\":\"azv2GY\",\"url\":\"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook\",\"topic\":\"subscribers/unsubscribed\",\"group\":null,\"total_de",
+ "after": [
+  {
+   "t": "subscribers/updated",
+   "s": "ACTIVE",
+   "id": "QbYPpa"
+  },
+  {
+   "t": "subscribers/unsubscribed",
+   "s": "ACTIVE",
+   "id": "QeZQ6d"
+  }
+ ]
+}
