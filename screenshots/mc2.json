@@ -1,3 +1,25 @@
 {
- "err": "Error: Command failed: curl -s -u \"bdz487:nfRT I4pX V6WQ pmd3 RRZZ n6sG\" -H \"Content-Type: application/json\" -X POST -d @/tmp/sn.json \"https://dev.avesa.lt/wp-json/code-snippets/v1/snippets\""
+ "attempts": [
+  {
+   "i": 0,
+   "rc": 60,
+   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
+  },
+  {
+   "i": 1,
+   "rc": 60,
+   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
+  },
+  {
+   "i": 2,
+   "rc": 60,
+   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
+  },
+  {
+   "i": 3,
+   "rc": 60,
+   "out": "curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a sec"
+  }
+ ],
+ "snippet_id": null
 }
