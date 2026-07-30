@@ -1,15 +1,31 @@
 {
  "deactivated": [],
- "sid": 1933,
+ "sid": 1934,
  "dry": {
   "generate_head": "\tpublic static function generate( array $args ) {\n\t\tif ( empty( $args['purpose'] ) ) {\n\t\t\treturn false;\n\t\t}\n\t\tglobal $wpdb;\n\n\t\t$key_id = self::ensure_keys();\n\t\t$secret = self::get_key( $key_id );\n\t\tif ( ! $secret ) {\n\t\t\treturn false;\n\t\t}\n\n\t\t$nonce = bin2hex( random_bytes( 16 ) );  // 32 hex\n\t\t$ttl = isset( $args['ttl_seconds'] ) ? (int) $args['ttl_seconds'] : 1800;  // 30 min\n\t\t$now = time();\n\t\t$expires_ts = $now + $ttl;\n\n\t\t$payload = array(\n\t\t\t'version'     => self::TOKEN_VERSION,\n\t\t\t'purpose'     => $args['purpose'],\n\t\t\t'subject_id'  => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0,\n\t\t\t'resource_id' => isset( $args['resource_id'] ) ? (string) $args['resource_id'] : '',\n\t\t\t'action'      => isset( $args['action'] ) ? (string) $args['action'] : '',\n\t\t\t'expires_at'  => $expires_ts,\n\t\t\t'nonce'       => $nonce,\n\t\t\t'key_id'      => $key_id,\n\t\t);\n\n\t\t$payload_json = wp_json_encode( $payload, JSON_UNESCAPED_SLASHES );\n\t\t$payload_b64 = self::b64url_encode( $payload_json );\n\t\t$signature = hash_hmac( 'sha256', $payload_b64, $secret );\n\t\t$raw_token = $payload_b64 . '.' . $signature;\n\n\t\t$token_hash = hash( 'sha256', $raw_token );\n\n\t\t$inserted = $wpdb->insert(\n\t\t\tself::table_name(),\n\t\t\tarray(\n\t\t\t\t'token_hash'    => $token_hash,\n\t\t\t\t'nonce'         => $nonce,\n",
   "peek_head": "\tpublic static function peek( $raw_token ) {\n\t\treturn self::validate_internal( $raw_token, false );\n\t}\n",
-  "generate_result": "eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiVEVTVENBUlQxMjMiLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzg1NDQ3NzM3LCJub25jZSI6IjQ4YzYwZWRjZjRlODMzOTFjNzVjMjVmMjY5MmE4NGEyIiwia2V5X2lkIjoidjIifQ.170c34e4834e2b2559251ecd060de8e1869712da1befb02bd70b0470c50aa4e4"
+  "generate_type": "string",
+  "generate_ok": 1,
+  "token_len": 299,
+  "peek_1": [],
+  "peek_2_still_valid": null,
+  "consume_1": [],
+  "consume_2_must_fail": [],
+  "peek_after_consume": [],
+  "expired_peek": []
  },
  "apply": {
   "generate_head": "\tpublic static function generate( array $args ) {\n\t\tif ( empty( $args['purpose'] ) ) {\n\t\t\treturn false;\n\t\t}\n\t\tglobal $wpdb;\n\n\t\t$key_id = self::ensure_keys();\n\t\t$secret = self::get_key( $key_id );\n\t\tif ( ! $secret ) {\n\t\t\treturn false;\n\t\t}\n\n\t\t$nonce = bin2hex( random_bytes( 16 ) );  // 32 hex\n\t\t$ttl = isset( $args['ttl_seconds'] ) ? (int) $args['ttl_seconds'] : 1800;  // 30 min\n\t\t$now = time();\n\t\t$expires_ts = $now + $ttl;\n\n\t\t$payload = array(\n\t\t\t'version'     => self::TOKEN_VERSION,\n\t\t\t'purpose'     => $args['purpose'],\n\t\t\t'subject_id'  => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0,\n\t\t\t'resource_id' => isset( $args['resource_id'] ) ? (string) $args['resource_id'] : '',\n\t\t\t'action'      => isset( $args['action'] ) ? (string) $args['action'] : '',\n\t\t\t'expires_at'  => $expires_ts,\n\t\t\t'nonce'       => $nonce,\n\t\t\t'key_id'      => $key_id,\n\t\t);\n\n\t\t$payload_json = wp_json_encode( $payload, JSON_UNESCAPED_SLASHES );\n\t\t$payload_b64 = self::b64url_encode( $payload_json );\n\t\t$signature = hash_hmac( 'sha256', $payload_b64, $secret );\n\t\t$raw_token = $payload_b64 . '.' . $signature;\n\n\t\t$token_hash = hash( 'sha256', $raw_token );\n\n\t\t$inserted = $wpdb->insert(\n\t\t\tself::table_name(),\n\t\t\tarray(\n\t\t\t\t'token_hash'    => $token_hash,\n\t\t\t\t'nonce'         => $nonce,\n",
   "peek_head": "\tpublic static function peek( $raw_token ) {\n\t\treturn self::validate_internal( $raw_token, false );\n\t}\n",
-  "generate_result": "eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiVEVTVENBUlQxMjMiLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzg1NDQ3NzM5LCJub25jZSI6IjRjZWExMjg4YWU1M2YxMzAzMGQwYWY5YjAzYjYwZjg0Iiwia2V5X2lkIjoidjIifQ.be17ba33b6b406416266b215ddb7a21f320ca501596703514ed14664639da5d3"
+  "generate_type": "string",
+  "generate_ok": 1,
+  "token_len": 299,
+  "peek_1": [],
+  "peek_2_still_valid": null,
+  "consume_1": [],
+  "consume_2_must_fail": [],
+  "peek_after_consume": [],
+  "expired_peek": []
  },
  "site_code": "200",
  "account_code": "200"
