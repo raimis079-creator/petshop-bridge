@@ -1,1 +1,183 @@
-{"create":{"id":1104,"code_error":null},"d":{"readonly":true,"batch":"s212b_engine_20260717_c4861c6f","nauji_stulpeliai":["checksum_algo","source_hash_algo"],"dingę_stulpeliai":[],"seni_stulpeliai_n":39,"eiluciu":{"dabar":223,"backup":223},"seni_laukai_hash":{"dabar":"f971db669e53abb1cc674d3b","backup":"f971db669e53abb1cc674d3b","SUTAMPA":true},"nauju_stulpeliu_reiksmes":{"checksum_algo":[{"v":"md5","n":"223"}],"source_hash_algo":[{"v":"md5","n":"223"}]},"algo_schema":[{"COLUMN_NAME":"checksum_algo","COLUMN_TYPE":"varchar(10)","IS_NULLABLE":"NO","COLUMN_DEFAULT":null},{"COLUMN_NAME":"source_hash_algo","COLUMN_TYPE":"varchar(10)","IS_NULLABLE":"NO","COLUMN_DEFAULT":null}]}}
+{
+ "sid": 1891,
+ "dry": {
+  "tests": [
+   {
+    "id": 34226,
+    "title": "JosiCat rich in Beef in Sauce konservuotas paš",
+    "cats": [
+     "konservai-katems"
+    ],
+    "is_food": "TAIP"
+   },
+   {
+    "id": 34500,
+    "title": "Animonda Carny Adult Beef + Turkey + Shrimp – ",
+    "cats": [
+     "daugiau-pigiau",
+     "konservai-katems"
+    ],
+    "is_food": "TAIP"
+   },
+   {
+    "id": 34486,
+    "title": "Animonda GranCarno Adult Beef + Duck Hearts: k",
+    "cats": [
+     "animonda-konservai-sunims",
+     "daugiau-pigiau",
+     "konservai-sunims"
+    ],
+    "is_food": "TAIP"
+   }
+  ],
+  "by_cat": {
+   "konservai-katems": {
+    "id": 34500,
+    "title": "Animonda Carny Adult Beef + Turkey + Shrimp – ",
+    "cats": [
+     "daugiau-pigiau",
+     "konservai-katems"
+    ],
+    "is_food": "TAIP"
+   },
+   "konservai-sunims": {
+    "id": 34486,
+    "title": "Animonda GranCarno Adult Beef + Duck Hearts: k",
+    "cats": [
+     "animonda-konservai-sunims",
+     "daugiau-pigiau",
+     "konservai-sunims"
+    ],
+    "is_food": "TAIP"
+   },
+   "sausas-maistas-sunims": {
+    "id": 34484,
+    "title": "Exclusion Hypoallergenic mažų veislių šunų mai",
+    "cats": [
+     "daugiau-pigiau",
+     "sausas-maistas-sunims"
+    ],
+    "is_food": "TAIP"
+   },
+   "skanestai-sunims": {
+    "id": 34512,
+    "title": "Ruda avies koja, 1 vnt. × 20 vnt.",
+    "cats": [
+     "daugiau-pigiau",
+     "skanestai-sunims"
+    ],
+    "is_food": "NE"
+   },
+   "vitaminai-ir-papildai-sunims": {
+    "id": 32622,
+    "title": "DOGOTEKA DOGOjunior 60 tabl.",
+    "cats": [
+     "vitaminai-ir-papildai-sunims"
+    ],
+    "is_food": "NE"
+   },
+   "akvariumo-zuvyciu-maistas": {
+    "id": 18341,
+    "title": "Hikari  Cichlid Bio &#8211; Gold Plus Medium, ",
+    "cats": [
+     "akvariumo-zuvyciu-maistas"
+    ],
+    "is_food": "NE"
+   }
+  },
+  "publish_total": 2754,
+  "is_food_PASS_now": 981,
+  "is_food_FAIL_now": 1773
+ },
+ "apply": {
+  "tests": [
+   {
+    "id": 34226,
+    "title": "JosiCat rich in Beef in Sauce konservuotas paš",
+    "cats": [
+     "konservai-katems"
+    ],
+    "is_food": "TAIP"
+   },
+   {
+    "id": 34500,
+    "title": "Animonda Carny Adult Beef + Turkey + Shrimp – ",
+    "cats": [
+     "daugiau-pigiau",
+     "konservai-katems"
+    ],
+    "is_food": "TAIP"
+   },
+   {
+    "id": 34486,
+    "title": "Animonda GranCarno Adult Beef + Duck Hearts: k",
+    "cats": [
+     "animonda-konservai-sunims",
+     "daugiau-pigiau",
+     "konservai-sunims"
+    ],
+    "is_food": "TAIP"
+   }
+  ],
+  "by_cat": {
+   "konservai-katems": {
+    "id": 34500,
+    "title": "Animonda Carny Adult Beef + Turkey + Shrimp – ",
+    "cats": [
+     "daugiau-pigiau",
+     "konservai-katems"
+    ],
+    "is_food": "TAIP"
+   },
+   "konservai-sunims": {
+    "id": 34486,
+    "title": "Animonda GranCarno Adult Beef + Duck Hearts: k",
+    "cats": [
+     "animonda-konservai-sunims",
+     "daugiau-pigiau",
+     "konservai-sunims"
+    ],
+    "is_food": "TAIP"
+   },
+   "sausas-maistas-sunims": {
+    "id": 34484,
+    "title": "Exclusion Hypoallergenic mažų veislių šunų mai",
+    "cats": [
+     "daugiau-pigiau",
+     "sausas-maistas-sunims"
+    ],
+    "is_food": "TAIP"
+   },
+   "skanestai-sunims": {
+    "id": 34512,
+    "title": "Ruda avies koja, 1 vnt. × 20 vnt.",
+    "cats": [
+     "daugiau-pigiau",
+     "skanestai-sunims"
+    ],
+    "is_food": "NE"
+   },
+   "vitaminai-ir-papildai-sunims": {
+    "id": 32622,
+    "title": "DOGOTEKA DOGOjunior 60 tabl.",
+    "cats": [
+     "vitaminai-ir-papildai-sunims"
+    ],
+    "is_food": "NE"
+   },
+   "akvariumo-zuvyciu-maistas": {
+    "id": 18341,
+    "title": "Hikari  Cichlid Bio &#8211; Gold Plus Medium, ",
+    "cats": [
+     "akvariumo-zuvyciu-maistas"
+    ],
+    "is_food": "NE"
+   }
+  },
+  "publish_total": 2754,
+  "is_food_PASS_now": 981,
+  "is_food_FAIL_now": 1773
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
