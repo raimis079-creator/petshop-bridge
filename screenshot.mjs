@@ -20,9 +20,11 @@ const O={};
 // 1) esami webhookai
 O.current = call('GET','/account/webhooks');
 // 2) bandom uzregistruoti su ivairiais topic'ais — atsakymas parodys, kurie leidziami
-const topics = ['emails/delivered','emails/bounced','emails/opened','emails/clicked',
-                'email.delivered','delivered','bounced','opened','clicked','spam',
-                'subscribers/bounced','subscribers/spam_reported','transactional/delivered'];
+const topics = ['subscribers/created','subscribers/updated','subscribers/deleted',
+                'subscribers/subscribed','subscribers/unsubscribed','subscribers/added',
+                'subscribers/bounce','subscribers/complaint','subscribers/hard_bounce',
+                'campaigns/sent','campaigns/opened','campaigns/clicked','campaigns/bounced',
+                'forms/submitted','automation/completed'];
 O.probe={};
 for (const t of topics){
   const r=call('POST','/account/webhooks',{url:'https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook',topic:t});
@@ -33,7 +35,7 @@ for (const t of topics){
   sh('sleep 1');
 }
 // 3) ar transakciniai laiskai turi statuso uzklausa
-O.tx_msg = JSON.stringify(call('GET','/message/azv2GY-.eE9p2l-j09zEZv-qZE702PVAgR3-1yLdYe', null, TK)).slice(0,250);
+O.statuses = JSON.stringify(((call('GET','/subscribers?limit=100')||{}).data||[]).map(x=>({e:x.email,st:x.status}))); O.tx_msg = JSON.stringify(call('GET','/message/azv2GY-.eE9p2l-j09zEZv-qZE702PVAgR3-1yLdYe', null, TK)).slice(0,250);
 O.tx_stats = JSON.stringify(call('GET','/message/stats', null, TK)).slice(0,250);
-putB64('topics.json', Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('topics2.json', Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
