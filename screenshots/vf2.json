@@ -1,1 +1,278 @@
-{"create":{"id":1241,"code_error":null},"d":{"readonly":true,"mu_failas_egzistuoja":false,"ps_pets_count":23,"freeze_test_iraso":0,"max_id":46,"data_hash":"c834a7d1f951e87cb61cc25ff85c21465350a3dfdd08e853e28cd528120eeb04","hash_sutampa_etalonu":true,"flag_po":"NEDEFINED","bypass_po":"NEDEFINED","deaktyvuota_temp":1,"liko_temp_aktyvus":0,"flagfile":false,"bypassfile":false}}
+{
+ "pages": [
+  {
+   "page": 1,
+   "count": 30,
+   "meta": "{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https://api.sender.net/v2"
+  }
+ ],
+ "fields_total": 30,
+ "fields": [
+  {
+   "t": "Email",
+   "ty": "text",
+   "id": null
+  },
+  {
+   "t": "Phone number",
+   "ty": "text",
+   "id": null
+  },
+  {
+   "t": "First name",
+   "ty": "text",
+   "id": "avAlVe"
+  },
+  {
+   "t": "Last name",
+   "ty": "text",
+   "id": "dwBVJb"
+  },
+  {
+   "t": "PS_FEEDING_TYPE",
+   "ty": "text",
+   "id": "e9QpJJ"
+  },
+  {
+   "t": "PS_REFILL_CANDIDATE",
+   "ty": "text",
+   "id": "ejqvXy"
+  },
+  {
+   "t": "PS_NEXT_REFILL_DATE",
+   "ty": "date",
+   "id": "bkZwYJ"
+  },
+  {
+   "t": "PS_TRANSACTIONAL_ONLY",
+   "ty": "text",
+   "id": "enrYL5"
+  },
+  {
+   "t": "PS_LAST_EVENT_AT",
+   "ty": "date",
+   "id": "epQRNQ"
+  },
+  {
+   "t": "PS_LOGIN_METHOD",
+   "ty": "text",
+   "id": "bqYVO7"
+  },
+  {
+   "t": "PS_LAST_ORDER_DATE",
+   "ty": "date",
+   "id": "b2vgyM"
+  },
+  {
+   "t": "PS_LIFETIME_VALUE",
+   "ty": "number",
+   "id": "e32jzA"
+  },
+  {
+   "t": "PS_CUSTOMER_WAVE",
+   "ty": "text",
+   "id": "b4RkA7"
+  },
+  {
+   "t": "PS_PET_LIFE_STAGE",
+   "ty": "text",
+   "id": "e7LnEQ"
+  },
+  {
+   "t": "PS_CURRENT_FOOD_BRAND",
+   "ty": "text",
+   "id": "egLxRr"
+  },
+  {
+   "t": "PS_PREFERRED_SHIPPING",
+   "ty": "text",
+   "id": "bmQ2KR"
+  },
+  {
+   "t": "PS_CUSTOMER_ID",
+   "ty": "text",
+   "id": "e1rY0Z"
+  },
+  {
+   "t": "PS_PRIMARY_NEED",
+   "ty": "text",
+   "id": "e0V2w5"
+  },
+  {
+   "t": "PS_EMAIL_VERIFIED",
+   "ty": "text",
+   "id": "dwmEXr"
+  },
+  {
+   "t": "PS_IDENTITY_MERGED_AT",
+   "ty": "date",
+   "id": "egLxAk"
+  },
+  {
+   "t": "PS_FOUNDING_SCORE",
+   "ty": "number",
+   "id": "e59lBY"
+  },
+  {
+   "t": "PS_SUBSCRIPTION_STATUS",
+   "ty": "text",
+   "id": "el5vZj"
+  },
+  {
+   "t": "PS_UNSUBSCRIBED_AT",
+   "ty": "date",
+   "id": "boQvMY"
+  },
+  {
+   "t": "PS_LEGACY_EMAIL_LINKED",
+   "ty": "text",
+   "id": "erREP2"
+  },
+  {
+   "t": "PS_LEGACY_LINK_PROMPT_SHOWN",
+   "ty": "text",
+   "id": "avoYW8"
+  },
+  {
+   "t": "PS_ORDER_COUNT",
+   "ty": "number",
+   "id": "egLxlj"
+  },
+  {
+   "t": "PS_PET_SPECIES",
+   "ty": "text",
+   "id": "ejqvo4"
+  },
+  {
+   "t": "PS_MARKETING_CONSENT",
+   "ty": "text",
+   "id": "bkZwpv"
+  },
+  {
+   "t": "PS_DOG_SIZE",
+   "ty": "text",
+   "id": "b86oGj"
+  },
+  {
+   "t": "PS_PET_NAME",
+   "ty": "text",
+   "id": "b6RmDO"
+  }
+ ],
+ "ps_fields": [
+  "PS_CURRENT_FOOD_BRAND",
+  "PS_CUSTOMER_ID",
+  "PS_CUSTOMER_WAVE",
+  "PS_DOG_SIZE",
+  "PS_EMAIL_VERIFIED",
+  "PS_FEEDING_TYPE",
+  "PS_FOUNDING_SCORE",
+  "PS_IDENTITY_MERGED_AT",
+  "PS_LAST_EVENT_AT",
+  "PS_LAST_ORDER_DATE",
+  "PS_LEGACY_EMAIL_LINKED",
+  "PS_LEGACY_LINK_PROMPT_SHOWN",
+  "PS_LIFETIME_VALUE",
+  "PS_LOGIN_METHOD",
+  "PS_MARKETING_CONSENT",
+  "PS_NEXT_REFILL_DATE",
+  "PS_ORDER_COUNT",
+  "PS_PET_LIFE_STAGE",
+  "PS_PET_NAME",
+  "PS_PET_SPECIES",
+  "PS_PREFERRED_SHIPPING",
+  "PS_PRIMARY_NEED",
+  "PS_REFILL_CANDIDATE",
+  "PS_SUBSCRIPTION_STATUS",
+  "PS_TRANSACTIONAL_ONLY",
+  "PS_UNSUBSCRIBED_AT"
+ ],
+ "groups": [
+  {
+   "t": "PS_TEST",
+   "id": "bDxp2q",
+   "act": 4
+  },
+  {
+   "t": "PS_SUPPRESSED_OR_ARCHIVE",
+   "id": "dPlYRA",
+   "act": 0
+  },
+  {
+   "t": "PS_LEGACY_IMPORT",
+   "id": "aOkZQR",
+   "act": 0
+  },
+  {
+   "t": "PS_ALL_ACTIVE",
+   "id": "dNj8P2",
+   "act": 0
+  }
+ ],
+ "subs": [
+  {
+   "e": "random_notlisted@example.com",
+   "st": "active"
+  },
+  {
+   "e": "wh_e2e_test@example.com",
+   "st": "active"
+  },
+  {
+   "e": "m4_consent_test@example.com",
+   "st": "active"
+  },
+  {
+   "e": "esp_v020_test@example.com",
+   "st": "active"
+  },
+  {
+   "e": "reactivate_test@example.com",
+   "st": "active"
+  },
+  {
+   "e": "whunsub+1783977217390@example.com",
+   "st": "active"
+  },
+  {
+   "e": "whsite+1783977112277@example.com",
+   "st": "active"
+  },
+  {
+   "e": "webhooklong+1783976488633@example.com",
+   "st": "active"
+  },
+  {
+   "e": "webhooktest+1783976179722@example.com",
+   "st": "active"
+  },
+  {
+   "e": "terra@gyvunai.lt",
+   "st": "unsubscribed"
+  },
+  {
+   "e": "raimundas@gyvunai.lt",
+   "st": "active"
+  },
+  {
+   "e": "terra@petshop.lt",
+   "st": "active"
+  }
+ ],
+ "workflows": [
+  {
+   "t": "PS E2E order_paid test",
+   "s": "DRAFT",
+   "id": "e1wk0P"
+  }
+ ],
+ "domains": [
+  {
+   "d": "petshop.lt",
+   "v": 1,
+   "spf": 1,
+   "dkim": 1,
+   "dmarc": 1
+  }
+ ]
+}
