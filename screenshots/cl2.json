@@ -1,1 +1,14 @@
-{"create":{"id":1123,"code_error":null},"d":{"deaktyvuoti":["1123:S212-C Cleanup2 (read-only)"],"dar_aktyvus":[],"viso_aktyviu_snippetu":74}}
+{
+ "d1": "{\"code\":\"rest_cannot_delete\",\"message\":\"The snippet could not be deleted.\",\"data\":{\"status\":500}}",
+ "d2": "{\"code\":\"rest_cannot_delete\",\"message\":\"The snippet could not be deleted.\",\"data\":{\"status\":500}}",
+ "still_1885": true,
+ "active_1885": false,
+ "s472": {
+  "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+  "active": true,
+  "scope": "global",
+  "head": "/**\n * Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)\n *\n * Schema suderinta su LT konkurentu nusistovejusia kaciu zaislu taksonomija\n * (Zoomalia, Zoobaze, Akvazoo, Animu) - klientams pazistami pavadinimai:\n *  - pa_zaislo_tipas (BENDRA su sunu zaislais, single, prioritetine tvarka):\n *      Tuneliai, Meskeres, Interaktyvus, Pelytes, Su plunksnomis,\n *      Kamuoliukai, Pliusiniai, Su katzole\n *  - FORMA pirma; katzole (feature) - paskutine (tik forma-neturintiems).\n *  - GimCat Dream serija -> Pliusiniai; GimCat Tutti Frutti -> Su katzole.\n *  - pa_medziaga (BENDRA, multi):",
+  "has_guard": false,
+  "len": 10744
+ }
+}
