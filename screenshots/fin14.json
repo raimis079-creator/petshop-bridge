@@ -1,0 +1,38 @@
+{
+ "existing": [],
+ "registered": "{\"success\":true,\"message\":\"Success\",\"data\":{\"id\":\"QbYPpa\",\"account_id\":\"azv2GY\",\"url\":\"https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook\",\"topic\":\"subscribers/updated\",\"group\":null,\"total_deliveries\":0,\"total_failur",
+ "after": [
+  {
+   "t": "subscribers/updated",
+   "s": "ACTIVE",
+   "u": "https://dev.avesa.lt/wp-json/petshop/v1/sender-webhook"
+  }
+ ],
+ "mailtester": [
+  "test-3ux8bx8ih@srv1.mail-tester.com"
+ ],
+ "deleted": "{\"delete_instance\":\"9b7a7dbf-c3e5-46de-a895-632951724a6f\",\"message\":\"Subscribers are being deleted\",\"success\":true}",
+ "subs_after": [
+  "terra@gyvunai.lt",
+  "raimundas@gyvunai.lt",
+  "terra@petshop.lt"
+ ],
+ "channel_check": {
+  "service_post_purchase": {
+   "allowed": true,
+   "reason": "",
+   "terminal": true
+  },
+  "transactional": {
+   "allowed": true,
+   "reason": ""
+  },
+  "marketing": {
+   "allowed": false,
+   "reason": "suppressed_marketing_unsubscribe",
+   "terminal": true
+  },
+  "sup_marketing": 1,
+  "sup_transact": 0
+ }
+}
