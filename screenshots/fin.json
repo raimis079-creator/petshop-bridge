@@ -1,1 +1,74 @@
-{"create":{"id":1212,"code_error":null},"d":{"deaktyvuota":1,"pet26_svoris":null,"1186_active":1,"sesijos_temp_aktyvus":0,"feeding_klases":true}}
+{
+ "before_total": 11,
+ "targets": [
+  "wh_e2e_test@example.com",
+  "m4_consent_test@example.com",
+  "esp_v020_test@example.com",
+  "reactivate_test@example.com",
+  "whunsub+1783977217390@example.com",
+  "whsite+1783977112277@example.com",
+  "webhooklong+1783976488633@example.com",
+  "webhooktest+1783976179722@example.com"
+ ],
+ "delete_resp": "{\"delete_instance\":\"03c2c38a-9bc9-446e-9d7a-cc952880ed75\",\"message\":\"Subscribers are being deleted\",\"success\":true}",
+ "checks": [
+  {
+   "after_s": 10,
+   "liko_test": 0,
+   "viso": 3
+  }
+ ],
+ "final": [
+  {
+   "e": "terra@gyvunai.lt",
+   "st": "unsubscribed"
+  },
+  {
+   "e": "raimundas@gyvunai.lt",
+   "st": "active"
+  },
+  {
+   "e": "terra@petshop.lt",
+   "st": "active"
+  }
+ ],
+ "groups": [
+  {
+   "t": "PS_TEST",
+   "id": "bDxp2q",
+   "act": 4
+  },
+  {
+   "t": "PS_SUPPRESSED_OR_ARCHIVE",
+   "id": "dPlYRA",
+   "act": 0
+  },
+  {
+   "t": "PS_LEGACY_IMPORT",
+   "id": "aOkZQR",
+   "act": 0
+  },
+  {
+   "t": "PS_ALL_ACTIVE",
+   "id": "dNj8P2",
+   "act": 0
+  }
+ ],
+ "domains": [
+  {
+   "d": "petshop.lt",
+   "v": 1,
+   "spf": 1,
+   "dkim": 1,
+   "dmarc": 1
+  }
+ ],
+ "ps_field_count": 26,
+ "workflows": [
+  {
+   "t": "PS E2E order_paid test",
+   "s": "DRAFT",
+   "id": "e1wk0P"
+  }
+ ]
+}
