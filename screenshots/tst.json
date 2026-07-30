@@ -1,32 +1,32 @@
 {
  "deactivated": [],
- "sid": 1907,
+ "sid": 1909,
  "dry": {
   "is_configured": 1,
   "adapter_send": {
-   "ok": false,
-   "esp_message_id": "",
-   "error": "field \"to\" should be struct (got array)",
-   "http_code": 422,
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-j09zEZv-Y5D46o2jvWJM-3FoBhS",
+   "error": "",
+   "http_code": 200,
    "should_retry": false
   },
   "struct_variant": {
    "code": 200,
-   "body": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-g2Wrr3ozlLWZ-2eTbGZ\",\"message\":\"Email sent\",\"success\":true}"
+   "body": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-7Xql6NljlEDj-1w2eYK\",\"message\":\"Email sent\",\"success\":true}"
   }
  },
  "apply": {
   "is_configured": 1,
   "adapter_send": {
-   "ok": false,
-   "esp_message_id": "",
-   "error": "field \"to\" should be struct (got array)",
-   "http_code": 422,
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-j09zEZv-Y5D4vp3ZrLrO-21x9k5",
+   "error": "",
+   "http_code": 200,
    "should_retry": false
   },
   "struct_variant": {
    "code": 200,
-   "body": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-B6Gxx422v72W-gFriL\",\"message\":\"Email sent\",\"success\":true}"
+   "body": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-g2WvLYlDv1YD-15ZQso\",\"message\":\"Email sent\",\"success\":true}"
   }
  },
  "site_code": "200",
