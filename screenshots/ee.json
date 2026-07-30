@@ -1,0 +1,104 @@
+{
+ "deactivated": [],
+ "sid": 1904,
+ "dry": {
+  "size": 9170,
+  "hooks": [
+   "woocommerce_payment_complete",
+   "woocommerce_order_status_processing",
+   "woocommerce_order_status_completed",
+   "woocommerce_update_order"
+  ],
+  "emits": [],
+  "emit_sites": {
+   "pending": [
+    "class-retry-queue.php"
+   ]
+  },
+  "schemas": [
+   "cart_abandoned",
+   "consent_changed",
+   "legacy_contact_imported",
+   "order_paid",
+   "order_shipped",
+   "payment_failed",
+   "pet_product_assigned",
+   "pet_profile_created",
+   "pet_profile_updated",
+   "pet_reminder_due",
+   "refill_due",
+   "refill_feedback_submitted",
+   "shipment_returned",
+   "subscription_t2_sms_needed",
+   "subscription_t5_notice"
+  ],
+  "schema_be_emit": [
+   "cart_abandoned",
+   "consent_changed",
+   "legacy_contact_imported",
+   "order_paid",
+   "order_shipped",
+   "payment_failed",
+   "pet_product_assigned",
+   "pet_profile_created",
+   "pet_profile_updated",
+   "pet_reminder_due",
+   "refill_due",
+   "refill_feedback_submitted",
+   "shipment_returned",
+   "subscription_t2_sms_needed",
+   "subscription_t5_notice"
+  ]
+ },
+ "apply": {
+  "size": 9170,
+  "hooks": [
+   "woocommerce_payment_complete",
+   "woocommerce_order_status_processing",
+   "woocommerce_order_status_completed",
+   "woocommerce_update_order"
+  ],
+  "emits": [],
+  "emit_sites": {
+   "pending": [
+    "class-retry-queue.php"
+   ]
+  },
+  "schemas": [
+   "cart_abandoned",
+   "consent_changed",
+   "legacy_contact_imported",
+   "order_paid",
+   "order_shipped",
+   "payment_failed",
+   "pet_product_assigned",
+   "pet_profile_created",
+   "pet_profile_updated",
+   "pet_reminder_due",
+   "refill_due",
+   "refill_feedback_submitted",
+   "shipment_returned",
+   "subscription_t2_sms_needed",
+   "subscription_t5_notice"
+  ],
+  "schema_be_emit": [
+   "cart_abandoned",
+   "consent_changed",
+   "legacy_contact_imported",
+   "order_paid",
+   "order_shipped",
+   "payment_failed",
+   "pet_product_assigned",
+   "pet_profile_created",
+   "pet_profile_updated",
+   "pet_reminder_due",
+   "refill_due",
+   "refill_feedback_submitted",
+   "shipment_returned",
+   "subscription_t2_sms_needed",
+   "subscription_t5_notice"
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
