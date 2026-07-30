@@ -4,48 +4,37 @@
    "name": "home",
    "url": "https://dev.avesa.lt/",
    "status": "OK",
-   "newHttpReqs": 1,
-   "htmlHitCount": 8
+   "newHttpReqs": 0,
+   "htmlHitCount": 2
   },
   {
    "name": "product",
    "url": "https://dev.avesa.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-arkliena-ir-bulvemis-m-l-12-kg/",
    "status": "OK",
-   "newHttpReqs": 1,
-   "htmlHitCount": 8
+   "newHttpReqs": 0,
+   "htmlHitCount": 2
   },
   {
    "name": "kategorija",
    "url": "https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
    "status": "OK",
-   "newHttpReqs": 1,
-   "htmlHitCount": 8
+   "newHttpReqs": 0,
+   "htmlHitCount": 2
   },
   {
    "name": "myaccount",
    "url": "https://dev.avesa.lt/my-account/",
    "status": "OK",
-   "newHttpReqs": 1,
-   "htmlHitCount": 8
+   "newHttpReqs": 0,
+   "htmlHitCount": 2
   }
  ],
- "httpReqs": [
-  {
-   "u": "http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?ver=1785248640",
-   "type": "stylesheet"
-  }
- ],
+ "httpReqs": [],
  "htmlHits": [
   {
    "page": "home",
    "hits": [
     "href=\"http://gmpg.org/xfn/11\"",
-    "href=\"http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?ver=1785248640\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/\"",
-    "href=\"http://dev.avesa.lt/privatumo-politika/\"",
     "href=\"http://url\""
    ]
   },
@@ -53,12 +42,6 @@
    "page": "product",
    "hits": [
     "href=\"http://gmpg.org/xfn/11\"",
-    "href=\"http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?ver=1785248640\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/\"",
-    "href=\"http://dev.avesa.lt/privatumo-politika/\"",
     "href=\"http://url\""
    ]
   },
@@ -66,12 +49,6 @@
    "page": "kategorija",
    "hits": [
     "href=\"http://gmpg.org/xfn/11\"",
-    "href=\"http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?ver=1785248640\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/\"",
-    "href=\"http://dev.avesa.lt/privatumo-politika/\"",
     "href=\"http://url\""
    ]
   },
@@ -79,20 +56,9 @@
    "page": "myaccount",
    "hits": [
     "href=\"http://gmpg.org/xfn/11\"",
-    "href=\"http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?ver=1785248640\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper\"",
-    "href=\"http://dev.avesa.lt/slapuku-politika/\"",
-    "href=\"http://dev.avesa.lt/privatumo-politika/\"",
     "href=\"http://url\""
    ]
   }
  ],
- "notes": [
-  "Mixed Content: The page at 'https://dev.avesa.lt/' was loaded over HTTPS, but requested an insecure stylesheet 'http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?ver=1785248640'. This request has been blocked; the cont",
-  "Mixed Content: The page at 'https://dev.avesa.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-arkliena-ir-bulvemis-m-l-12-kg/' was loaded over HTTPS, but requested an insecure stylesheet 'http://dev.avesa.lt/wp-content/uploads/co",
-  "Mixed Content: The page at 'https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/' was loaded over HTTPS, but requested an insecure stylesheet 'http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?v",
-  "Mixed Content: The page at 'https://dev.avesa.lt/my-account/' was loaded over HTTPS, but requested an insecure stylesheet 'http://dev.avesa.lt/wp-content/uploads/complianz/css/banner-1-optin.css?ver=1785248640'. This request has been blocke"
- ]
+ "notes": []
 }
