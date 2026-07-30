@@ -1,0 +1,78 @@
+{
+ "deactivated": [],
+ "sid": 1938,
+ "dry": {
+  "before": [
+   {
+    "cart_id": "c_46bb2a2a5d93b9ac7e8e5884ef722634",
+    "session_key": "t_cf7b43752f0bee36b7f58181776c4b",
+    "email": null
+   },
+   {
+    "cart_id": "c_020d87617b6bf66eab8011e7dd6b942f",
+    "session_key": "t_0f5e6542a9fd36afa85c589c7debd5",
+    "email": "guest-cart-test@example.com"
+   }
+  ],
+  "carts_deleted": 2,
+  "sessions_deleted": 2,
+  "session_keys": [
+   "t_cf7b43752f0bee36b7f58181776c4b",
+   "t_0f5e6542a9fd36afa85c589c7debd5"
+  ],
+  "supp_deleted": 0,
+  "jobs_test": [
+   {
+    "id": "7",
+    "job_key": "refill_due:1:18527:2026-07-30",
+    "flow": "refill_due",
+    "status": "deferred"
+   },
+   {
+    "id": "2",
+    "job_key": "order_paid:34729",
+    "flow": "order_paid",
+    "status": "sent"
+   },
+   {
+    "id": "1",
+    "job_key": "order_paid:E2E-202607301759",
+    "flow": "order_paid",
+    "status": "sent"
+   }
+  ],
+  "after": [],
+  "carts_left": 0
+ },
+ "apply": {
+  "before": [],
+  "carts_deleted": 0,
+  "sessions_deleted": 0,
+  "session_keys": [],
+  "supp_deleted": 0,
+  "jobs_test": [
+   {
+    "id": "7",
+    "job_key": "refill_due:1:18527:2026-07-30",
+    "flow": "refill_due",
+    "status": "deferred"
+   },
+   {
+    "id": "2",
+    "job_key": "order_paid:34729",
+    "flow": "order_paid",
+    "status": "sent"
+   },
+   {
+    "id": "1",
+    "job_key": "order_paid:E2E-202607301759",
+    "flow": "order_paid",
+    "status": "sent"
+   }
+  ],
+  "after": [],
+  "carts_left": 0
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
