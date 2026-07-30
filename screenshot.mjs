@@ -10,27 +10,34 @@ function putB64(n,b){const u='https://api.github.com/repos/'+REPO+'/contents/scr
 function sh(c){try{const o=execSync(c+' 2>&1; echo "__RC:$?"',{maxBuffer:50e6,shell:'/bin/bash'}).toString();
  const m=o.match(/__RC:(\d+)\s*$/);return{rc:m?+m[1]:-1,out:o.replace(/__RC:\d+\s*$/,'')};}catch(e){return{rc:-99,out:String(e).slice(0,300)};}}
 const API='https://api.sender.net/v2';
-function get(p){const r=sh('curl -sSk -H "Authorization: Bearer '+MK+'" -H "Accept: application/json" "'+API+p+'"');
- try{return JSON.parse(r.out);}catch(e){return {__raw:r.out.slice(0,300)};}}
-const O={pages:[]};
-// laukai su puslapiavimu
-let all=[],page=1;
-while(page<=8){
-  const r=get('/fields?limit=100&page='+page);
-  const d=(r&&r.data)||[];
-  O.pages.push({page,count:d.length, meta:(r&&r.meta)?JSON.stringify(r.meta).slice(0,150):null});
-  if(!d.length) break;
-  all=all.concat(d.map(f=>({t:f.title,ty:f.type,id:f.id})));
-  if(d.length<100) break;
-  page++;
+const H='-H "Authorization: Bearer '+MK+'" -H "Content-Type: application/json" -H "Accept: application/json"';
+function req(m,p,body){
+  let c='curl -sSk -X '+m+' '+H+' "'+API+p+'"';
+  if(body){ fs.writeFileSync('/tmp/b.json',JSON.stringify(body)); c='curl -sSk -X '+m+' '+H+' --data-binary @/tmp/b.json "'+API+p+'"'; }
+  const r=sh(c); try{ return JSON.parse(r.out); }catch(e){ return {__raw:r.out.slice(0,220)}; }
 }
-O.fields_total=all.length;
-O.fields=all;
-O.ps_fields=all.filter(f=>String(f.t).startsWith('PS_')).map(f=>f.t).sort();
-// grupes / subs / workflow po valymo
-O.groups=((get('/groups?limit=100')||{}).data||[]).map(g=>({t:g.title,id:g.id,act:g.active_subscribers}));
-O.subs=((get('/subscribers?limit=100')||{}).data||[]).map(s=>({e:s.email,st:(s.status&&s.status.email)||s.status}));
-O.workflows=((get('/workflows')||{}).data||[]).map(w=>({t:w.title,s:w.status,id:w.id}));
-O.domains=((get('/domains')||{}).data||[]).map(x=>({d:x.domain_name,v:x.domain_verified,spf:x.spf_verified,dkim:x.dkim_verified,dmarc:x.dmarc}));
-putB64('vf2.json', Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+const O={};
+// 1) vieno kontakto struktura (ar yra ID)
+const one=req('GET','/subscribers?limit=1');
+O.shape = one && one.data && one.data[0] ? Object.keys(one.data[0]) : one;
+O.sample = one && one.data && one.data[0] ? {id:one.data[0].id, email:one.data[0].email} : null;
+
+const TEST=/example\.com/i;
+const list=req('GET','/subscribers?limit=100');
+const targets=((list&&list.data)||[]).filter(s=>TEST.test(s.email));
+O.targets=targets.map(s=>({id:s.id,e:s.email}));
+
+// 2) bandom variantus ant PIRMO taikinio
+if(targets.length){
+  const t=targets[0];
+  O.tries=[];
+  O.tries.push({v:'DELETE /subscribers {subscribers:[email]}', r:JSON.stringify(req('DELETE','/subscribers',{subscribers:[t.email]})).slice(0,180)});
+  O.tries.push({v:'DELETE /subscribers {subscribers:[id]}',    r:JSON.stringify(req('DELETE','/subscribers',{subscribers:[t.id]})).slice(0,180)});
+  O.tries.push({v:'DELETE /subscribers/{id}',                  r:JSON.stringify(req('DELETE','/subscribers/'+t.id)).slice(0,180)});
+  // patikra ar dingo
+  const after=req('GET','/subscribers?limit=100');
+  O.still_there = ((after&&after.data)||[]).some(s=>s.email===t.email);
+  O.after_status = ((after&&after.data)||[]).filter(s=>s.email===t.email).map(s=>(s.status&&s.status.email)||s.status);
+}
+putB64('del.json', Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
