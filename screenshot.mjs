@@ -57,8 +57,8 @@ Gavote šį laišką, nes pateikėte užsakymą petshop.lt.<br>
 const text = `Jusu uzsakymas priimtas\n\nSveiki, dekojame uz uzsakyma. Gavome jusu apmokejima ir jau ruosiame siunta.\nKai ji iskeliaus, atsiusime sekimo numeri.\n\nPerziureti uzsakyma: https://petshop.lt/my-account/orders/\n\nUAB Avesa, Liucioniu g. 46, Liucionys, LT-15166\nGavote si laiska, nes pateikete uzsakyma petshop.lt.\nAtsisakyti: https://petshop.lt/atsisakyti/`;
 
 const body={ from:{email:'terra@petshop.lt',name:'Petshop.lt'},
-  to:{email:'raimundas@gyvunai.lt',name:'Raimis'},
-  subject:'Jūsų užsakymas priimtas (2)', html:html, text:text };
+  to:{email:'test-3ux8bx8ih@srv1.mail-tester.com',name:'Testas'},
+  subject:'Jūsų užsakymas priimtas', html:html, text:text };
 fs.writeFileSync('/tmp/m.json',JSON.stringify(body));
 const r=sh('curl -sS -X POST -H "Authorization: Bearer '+TK+'" -H "Content-Type: application/json" -H "Accept: application/json" --data-binary @/tmp/m.json "https://api.sender.net/v2/message/send"');
 O.send=r.slice(0,300);
