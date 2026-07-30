@@ -1,0 +1,6 @@
+{
+ "post_workflows": "{\"success\":true,\"message\":\"Successfully created workflow\",\"data\":{\"id\":\"en5ABW\",\"user_id\":\"aQvN6M\",\"account_id\":\"azv2GY\",\"title\":\"PS PROBE (delete me)\",\"status\":\"DRAFT\",\"created\":\"2026-07-30 14:43:48\",\"modified\":\"2026-07",
+ "post_campaigns": "{\"message\":\"Subject is required (and 3 more errors)\",\"errors\":{\"subject\":[\"Subject is required\"],\"from\":[\"From address required\"],\"reply_to\":[\"Validated email address required\"],\"content_type\":[\"Required content type, th",
+ "workflow_detail": "{\"data\":{\"id\":\"e1wk0P\",\"user_id\":\"aQvN6M\",\"account_id\":\"azv2GY\",\"title\":\"PS E2E order_paid test\",\"status\":\"DRAFT\",\"created\":\"2026-07-14 15:10:45\",\"modified\":\"2026-07-14 15:10:45\",\"emails_sent\":null,\"type\":null,\"description\":null,\"report\":{\"sent_count\":0,\"finished_recipient_count\":0},\"index_report\":[],\"thumbnail\":null,\"workflow_category_id\":null}}",
+ "tx_send_shape": "{\"errors\":{\"to\":\"field \\\"to\\\" should be struct (got array)\"},\"message\":\"field \\\"to\\\" should be struct (got array)\",\"success\":false,\"type\":\"validation\"}"
+}
