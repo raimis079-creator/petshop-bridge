@@ -17,27 +17,28 @@ function req(m,p,body){
   const r=sh(c); try{ return JSON.parse(r.out); }catch(e){ return {__raw:r.out.slice(0,220)}; }
 }
 const O={};
-// 1) vieno kontakto struktura (ar yra ID)
-const one=req('GET','/subscribers?limit=1');
-O.shape = one && one.data && one.data[0] ? Object.keys(one.data[0]) : one;
-O.sample = one && one.data && one.data[0] ? {id:one.data[0].id, email:one.data[0].email} : null;
-
-const TEST=/example\.com/i;
-const list=req('GET','/subscribers?limit=100');
-const targets=((list&&list.data)||[]).filter(s=>TEST.test(s.email));
-O.targets=targets.map(s=>({id:s.id,e:s.email}));
-
-// 2) bandom variantus ant PIRMO taikinio
+const before=req('GET','/subscribers?limit=100');
+const targets=((before&&before.data)||[]).filter(s=>/example\.com/i.test(s.email)).map(s=>s.email);
+O.before_total=((before&&before.data)||[]).length;
+O.targets=targets;
 if(targets.length){
-  const t=targets[0];
-  O.tries=[];
-  O.tries.push({v:'DELETE /subscribers {subscribers:[email]}', r:JSON.stringify(req('DELETE','/subscribers',{subscribers:[t.email]})).slice(0,180)});
-  O.tries.push({v:'DELETE /subscribers {subscribers:[id]}',    r:JSON.stringify(req('DELETE','/subscribers',{subscribers:[t.id]})).slice(0,180)});
-  O.tries.push({v:'DELETE /subscribers/{id}',                  r:JSON.stringify(req('DELETE','/subscribers/'+t.id)).slice(0,180)});
-  // patikra ar dingo
-  const after=req('GET','/subscribers?limit=100');
-  O.still_there = ((after&&after.data)||[]).some(s=>s.email===t.email);
-  O.after_status = ((after&&after.data)||[]).filter(s=>s.email===t.email).map(s=>(s.status&&s.status.email)||s.status);
+  O.delete_resp=JSON.stringify(req('DELETE','/subscribers',{subscribers:targets})).slice(0,200);
+  // asinchronine operacija — laukiam ir tikrinam kelis kartus
+  O.checks=[];
+  for(let i=0;i<6;i++){
+    sh('sleep 10');
+    const a=req('GET','/subscribers?limit=100');
+    const rem=((a&&a.data)||[]).filter(s=>/example\.com/i.test(s.email)).length;
+    O.checks.push({after_s:(i+1)*10, liko_test:rem, viso:((a&&a.data)||[]).length});
+    if(rem===0) break;
+  }
 }
-putB64('del.json', Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+const fin=req('GET','/subscribers?limit=100');
+O.final=((fin&&fin.data)||[]).map(s=>({e:s.email, st:(s.status&&s.status.email)||s.status}));
+O.groups=((req('GET','/groups?limit=100')||{}).data||[]).map(g=>({t:g.title,id:g.id,act:g.active_subscribers}));
+O.domains=((req('GET','/domains')||{}).data||[]).map(x=>({d:x.domain_name,v:x.domain_verified,spf:x.spf_verified,dkim:x.dkim_verified,dmarc:x.dmarc}));
+const fl=req('GET','/fields?limit=100');
+O.ps_field_count=((fl&&fl.data)||[]).filter(f=>String(f.title).startsWith('PS_')).length;
+O.workflows=((req('GET','/workflows')||{}).data||[]).map(w=>({t:w.title,s:w.status,id:w.id}));
+putB64('fin.json', Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
