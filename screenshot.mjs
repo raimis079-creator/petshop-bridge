@@ -11,21 +11,21 @@ function sh(c){try{const o=execSync(c+' 2>&1; echo "__RC:$?"',{maxBuffer:50e6,sh
  const m=o.match(/__RC:(\d+)\s*$/);return{rc:m?+m[1]:-1,out:o.replace(/__RC:\d+\s*$/,'')};}catch(e){return{rc:-99,out:String(e).slice(0,300)};}}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
 const O={}; let sid=null;
-// pirma deaktyvuoti visus senus TEMP Dispatch Recon snippetus
+// pirma deaktyvuoti visus senus TEMP Adapter Send Test snippetus
 try{
   const l=sh('curl -sSk '+AUTH+' "'+API+'?per_page=100"').out;
   const arr=JSON.parse(l);
   O.deactivated=[];
   for(const x of arr){
-    if(/TEMP Dispatch Recon/i.test(x.name||'') && x.active){
+    if(/TEMP Adapter Send Test/i.test(x.name||'') && x.active){
       fs.writeFileSync('/tmp/d0.json',JSON.stringify({active:false}));
       sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/d0.json "'+API+'/'+x.id+'"');
       O.deactivated.push(x.id);
     }
   }
 }catch(e){ O.deact_err=String(e).slice(0,150); }
-const php=Buffer.from('PD9waHAKLyoqCiAqIFRFTVAgRGlzcGF0Y2ggUmVjb24gdjEKICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgICBpZiAoICEgaXNzZXQoJF9HRVRbJ3BzX3JkMiddKSB8fCAkX0dFVFsncHNfcmQyJ10gIT09ICdSZDh4JyApIHJldHVybjsKICAgIGdsb2JhbCAkd3BkYjsgJHI9YXJyYXkoKTsKICAgICR3YW50ID0gYXJyYXkoCiAgICAgICdwZXRzaG9wLWVzcC9pbmNsdWRlcy9jbGFzcy1zZW5kZXItYWRhcHRlci5waHAnLAogICAgICAncGV0c2hvcC1lc3AvcGV0c2hvcC1lc3AucGhwJywKICAgICAgJ3BldHNob3AtY29yZS9pbmNsdWRlcy9jbGFzcy1ldmVudC1yZWdpc3RyeS5waHAnLAogICAgICAncGV0c2hvcC1jb3JlL2luY2x1ZGVzL2NsYXNzLXJldHJ5LXF1ZXVlLnBocCcsCiAgICAgICdwZXRzaG9wLWNvcmUvaW5jbHVkZXMvY2xhc3MtY29uc2VudC1zeW5jLnBocCcsCiAgICApOwogICAgZm9yZWFjaCAoJHdhbnQgYXMgJHcpIHsKICAgICAgICAkcCA9IFdQX1BMVUdJTl9ESVIuJy8nLiR3OwogICAgICAgICRyWydmaWxlcyddWyR3XSA9IGZpbGVfZXhpc3RzKCRwKQogICAgICAgICAgPyBhcnJheSgnc2l6ZSc9PmZpbGVzaXplKCRwKSwnYjY0Jz0+YmFzZTY0X2VuY29kZShmaWxlX2dldF9jb250ZW50cygkcCkpKQogICAgICAgICAgOiBhcnJheSgnbWlzc2luZyc9PnRydWUpOwogICAgfQogICAgLy8gZXZlbnRfbG9nIHNjaGVtYQogICAgJHQ9JHdwZGItPnByZWZpeC4ncHNfZXZlbnRfbG9nJzsKICAgICRyWydldmVudF9sb2dfc2NoZW1hJ109JHdwZGItPmdldF9yZXN1bHRzKCJTSE9XIENPTFVNTlMgRlJPTSBgJHRgIiwgQVJSQVlfQSk7CiAgICAvLyBhciB5cmEgYXNfIChBY3Rpb24gU2NoZWR1bGVyKQogICAgJHJbJ2FjdGlvbl9zY2hlZHVsZXInXT1mdW5jdGlvbl9leGlzdHMoJ2FzX2VucXVldWVfYXN5bmNfYWN0aW9uJyk/MTowOwogICAgLy8gcGV0c2hvcC1jb3JlLnBocCBib290c3RyYXAgKGthZCB6aW5vdHVtZSBrdXIgcmVnaXN0cnVvdGkgbmF1amEga2xhc2UpCiAgICAkYnA9V1BfUExVR0lOX0RJUi4nL3BldHNob3AtY29yZS9wZXRzaG9wLWNvcmUucGhwJzsKICAgICRyWydjb3JlX2Jvb3RzdHJhcF9iNjQnXT1iYXNlNjRfZW5jb2RlKGZpbGVfZ2V0X2NvbnRlbnRzKCRicCkpOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9TTEFTSEVTfEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9LCAxKTsK','base64').toString('utf8');
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP Dispatch Recon Dump v1',code:php,scope:'global',active:true}));
+const php=Buffer.from('PD9waHAKLyoqCiAqIFRFTVAgQWRhcHRlciBTZW5kIFRlc3QgdjEKICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgICBpZiAoICEgaXNzZXQoJF9HRVRbJ3BzX3RzJ10pIHx8ICRfR0VUWydwc190cyddICE9PSAnVHM1dycgKSByZXR1cm47CiAgICAkcj1hcnJheSgpOwogICAgaWYgKCAhIGNsYXNzX2V4aXN0cygnUGV0c2hvcF9TZW5kZXJfQWRhcHRlcicpICkgeyAkclsnZXJyJ109J2tsYXNlIG5lcmFzdGEnOyB9CiAgICBlbHNlIHsKICAgICAgICAkbWsgPSBnZXRfb3B0aW9uKCdwZXRzaG9wX2VzcF9zZW5kZXJfbWsnKTsKICAgICAgICAkdGsgPSBnZXRfb3B0aW9uKCdwZXRzaG9wX2VzcF9zZW5kZXJfdGsnKTsKICAgICAgICAvLyB0b2tlbmFpIHNhdWdvbWkgYmFzZTY0CiAgICAgICAgJG1rX2QgPSBiYXNlNjRfZGVjb2RlKCRtaywgdHJ1ZSk7IGlmICgkbWtfZCAmJiBzdWJzdHIoJG1rX2QsMCwyKT09PSdleScpICRtayA9ICRta19kOwogICAgICAgICR0a19kID0gYmFzZTY0X2RlY29kZSgkdGssIHRydWUpOyBpZiAoJHRrX2QgJiYgc3Vic3RyKCR0a19kLDAsMik9PT0nZXknKSAkdGsgPSAkdGtfZDsKICAgICAgICAkYSA9IG5ldyBQZXRzaG9wX1NlbmRlcl9BZGFwdGVyKCRtaywgJHRrKTsKICAgICAgICAkclsnaXNfY29uZmlndXJlZCddID0gbWV0aG9kX2V4aXN0cygkYSwnaXNfY29uZmlndXJlZCcpID8gKCRhLT5pc19jb25maWd1cmVkKCk/MTowKSA6ICduL2EnOwoKICAgICAgICAvLyAxKSBEQUJBUlRJTklTIGFkYXB0ZXJpbyBrZWxpYXMKICAgICAgICAkcmVzID0gJGEtPnNlbmRfdHJhbnNhY3Rpb25hbF9lbWFpbCgKICAgICAgICAgICAgJ3JhaW11bmRhc0BneXZ1bmFpLmx0JywKICAgICAgICAgICAgJ1tURVNUXSBQZXRzaG9wIGRpc3BhdGNoIGdyYW5kaW5lcyBwYXRpa3JhJywKICAgICAgICAgICAgJzxwPlRlY2huaW5pcyB0ZXN0YXMuIEpva2lvIHZlaWtzbW8gbmVyZWlraWEuPC9wPicsCiAgICAgICAgICAgIGFycmF5KCd0b19uYW1lJz0+J1JhaW1pcycpCiAgICAgICAgKTsKICAgICAgICAkclsnYWRhcHRlcl9zZW5kJ10gPSAkcmVzOwoKICAgICAgICAvLyAyKSBUSUVTSU9HSU5JUyBrdmlldGltYXMgc3UgJ3RvJyBrYWlwIE9CSkVLVFUgKGhpcG90ZXplKQogICAgICAgICRib2R5ID0gYXJyYXkoCiAgICAgICAgICAgICdmcm9tJyAgICA9PiBhcnJheSgnZW1haWwnPT4ndGVycmFAcGV0c2hvcC5sdCcsJ25hbWUnPT4nUGV0c2hvcC5sdCcpLAogICAgICAgICAgICAndG8nICAgICAgPT4gYXJyYXkoJ2VtYWlsJz0+J3JhaW11bmRhc0BneXZ1bmFpLmx0JywnbmFtZSc9PidSYWltaXMnKSwKICAgICAgICAgICAgJ3N1YmplY3QnID0+ICdbVEVTVF0gdG89c3RydWN0IHZhcmlhbnRhcycsCiAgICAgICAgICAgICdodG1sJyAgICA9PiAnPHA+VGVjaG5pbmlzIHRlc3RhcyAoc3RydWN0KS48L3A+JywKICAgICAgICApOwogICAgICAgICRyZXNwID0gd3BfcmVtb3RlX3Bvc3QoJ2h0dHBzOi8vYXBpLnNlbmRlci5uZXQvdjIvbWVzc2FnZS9zZW5kJywgYXJyYXkoCiAgICAgICAgICAgICd0aW1lb3V0Jz0+MjAsCiAgICAgICAgICAgICdoZWFkZXJzJz0+YXJyYXkoJ0F1dGhvcml6YXRpb24nPT4nQmVhcmVyICcuJHRrLCdDb250ZW50LVR5cGUnPT4nYXBwbGljYXRpb24vanNvbicsJ0FjY2VwdCc9PidhcHBsaWNhdGlvbi9qc29uJyksCiAgICAgICAgICAgICdib2R5Jz0+d3BfanNvbl9lbmNvZGUoJGJvZHkpLAogICAgICAgICkpOwogICAgICAgICRyWydzdHJ1Y3RfdmFyaWFudCddID0gaXNfd3BfZXJyb3IoJHJlc3ApCiAgICAgICAgICAgID8gYXJyYXkoJ2Vycic9PiRyZXNwLT5nZXRfZXJyb3JfbWVzc2FnZSgpKQogICAgICAgICAgICA6IGFycmF5KCdjb2RlJz0+d3BfcmVtb3RlX3JldHJpZXZlX3Jlc3BvbnNlX2NvZGUoJHJlc3ApLCdib2R5Jz0+bWJfc3Vic3RyKHdwX3JlbW90ZV9yZXRyaWV2ZV9ib2R5KCRyZXNwKSwwLDMwMCkpOwogICAgfQogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9TTEFTSEVTfEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9LCAxKTsK','base64').toString('utf8');
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP Adapter Send Test Dump v1',code:php,scope:'global',active:true}));
 for(let i=0;i<4&&!sid;i++){
   const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
   let j=null; try{j=JSON.parse(r.out);}catch(e){}
@@ -34,9 +34,9 @@ for(let i=0;i<4&&!sid;i++){
 O.sid=sid;
 if(sid){
   sh('sleep 4');
-  const d=sh('curl -sSk "'+SITE+'/?ps_rd2=Rd8x"');
+  const d=sh('curl -sSk "'+SITE+'/?ps_ts=Ts5w"');
   try{O.dry=JSON.parse(d.out);}catch(e){O.dry_raw=d.out.slice(0,500);}
-  const a=sh('curl -sSk "'+SITE+'/?ps_rd2=Rd8x"');
+  const a=sh('curl -sSk "'+SITE+'/?ps_ts=Ts5w"');
   try{O.apply=JSON.parse(a.out);}catch(e){O.apply_raw=a.out.slice(0,500);}
   fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
   sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
@@ -45,5 +45,5 @@ if(sid){
   O.site_code=sh('curl -sSk -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
   O.account_code=sh('curl -sSk -o /dev/null -w "%{http_code}" "'+SITE+'/my-account/"').out.trim();
 }
-putB64('rd2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('tst.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
