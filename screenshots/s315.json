@@ -1,0 +1,51 @@
+{
+ "deactivated": [],
+ "sid": 1927,
+ "dry_raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Class &quot;Petshop_Contact_Policy&quot; not found in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:34\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook-&gt;apply_filters()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/dev",
+ "apply": {
+  "deploy": {
+   "class-contact-policy.php": "MATCH",
+   "class-email-dispatch.php": "MATCH",
+   "class-email-suppression.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "T1_new_no_consent": "true",
+  "T2_with_consent_before": "true",
+  "T3_unsub": {
+   "policy": "true",
+   "elig_transactional": {
+    "allowed": true,
+    "reason": ""
+   },
+   "elig_service": {
+    "allowed": true,
+    "reason": "",
+    "terminal": true
+   }
+  },
+  "T4_marketable": {
+   "new_no_consent": 0,
+   "unsubscribed": 0
+  },
+  "T5_pending": [
+   "policy-queue@example.com"
+  ],
+  "T5_after_unqueue": [],
+  "T6_real_sync": {
+   "ok": true,
+   "value": "true",
+   "action": "synced",
+   "source": "test"
+  },
+  "drain": {
+   "pending_before": 0,
+   "synced": 0,
+   "still_failing": 0,
+   "pending_after": 0
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
