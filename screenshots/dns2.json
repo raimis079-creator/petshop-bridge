@@ -37,16 +37,6 @@
    "from": "petshop.lt"
   },
   {
-   "d": "spf.sendersrv.com",
-   "note": "SPF nerastas"
-  },
-  {
-   "d": "spf.sendersrv.com",
-   "own": 1,
-   "nested": 0,
-   "from": "petshop.lt"
-  },
-  {
    "d": "_spf.mx.cloudflare.net",
    "own": 1,
    "nested": 0,
@@ -59,7 +49,7 @@
    "from": "petshop.lt"
   }
  ],
- "total": 11,
- "verdict": "VIRSIJA 10 -> SPF PERMERROR",
- "send": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-3wm7wDvowqRA-2J6qRq\",\"message\":\"Email sent\",\"success\":true}"
+ "total": 10,
+ "verdict": "telpa i 10",
+ "send": "{\"emailId\":\"azv2GY-.eE9p2l-j09zEZv-N0r9kzBx6rnm-3lSPdB\",\"message\":\"Email sent\",\"success\":true}"
 }
