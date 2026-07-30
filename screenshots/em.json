@@ -1,1 +1,7 @@
-{"create":{"id":1133,"code_error":null},"d":{"readonly":true,"viso_su_fix":36,"MATCH_verified":36,"MISMATCH_unverified":0,"NO_CURRENT_unverified":0,"mismatch_detail":[],"MVP_verified":36,"MVP_review_required":13,"MVP_unverified":597,"MVP_no_term":20}}
+{
+ "sid": 1901,
+ "dry_raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Call to a member function has_status() on null in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woocommerce/includes/emails/class-wc-email-customer-invoice.php:90\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(30): WC_Email_Customer_Invoice-&gt;get_subject()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341)",
+ "apply_raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Call to a member function has_status() on null in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woocommerce/includes/emails/class-wc-email-customer-invoice.php:90\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(30): WC_Email_Customer_Invoice-&gt;get_subject()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341)",
+ "site_code": "200",
+ "account_code": "200"
+}
