@@ -1,0 +1,54 @@
+{
+ "tree": [
+  {
+   "depth": 0,
+   "name": "petshop.lt",
+   "spf": "v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all"
+  },
+  {
+   "depth": 1,
+   "name": "spf.serveriai.lt",
+   "spf": "v=spf1 ip4:31.14.176.0/22 ip4:62.77.152.0/21 ip4:79.98.24.0/21 ip4:80.208.224.0/21 ip4:80.209.224.0/20 ip4:89.40.0.0/20 ip4:89.47.160.0/21 ip4:94.176.232.0/21 ip4:109.235.64.0/21 ip4:176.223.128.0/20 ip4:185.5.52.0/22 ip4:185.69.52.0/22 ip4:185.81.164.0/22 ip4:194.135.80.0/20 ip4:195.181.240.0/21 ip4:212.24.96.0/20 ip4:212.237.232.0/22 -all"
+  },
+  {
+   "depth": 1,
+   "name": "mailgun.org",
+   "spf": "v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all"
+  },
+  {
+   "depth": 2,
+   "name": "_spf.mailgun.org",
+   "spf": "v=spf1 include:_spf1.mailgun.org include:_spf2.mailgun.org ~all"
+  },
+  {
+   "depth": 3,
+   "name": "_spf1.mailgun.org",
+   "spf": "v=spf1 ip4:209.61.151.0/24 ip4:166.78.68.0/22 ip4:198.61.254.0/23 ip4:192.237.158.0/23 ip4:23.253.182.0/23 ip4:104.130.96.0/28 ip4:146.20.113.0/24 ip4:146.20.191.0/24 ip4:159.135.224.0/20 ip4:69.72.32.0/20 ~all"
+  },
+  {
+   "depth": 3,
+   "name": "_spf2.mailgun.org",
+   "spf": "v=spf1 ip4:104.130.122.0/23 ip4:146.20.112.0/26 ip4:161.38.192.0/20 ip4:143.55.224.0/21 ip4:143.55.232.0/22 ip4:159.112.240.0/20 ip4:198.244.48.0/20 ip4:204.220.168.0/21 ip4:204.220.176.0/20 ~all"
+  },
+  {
+   "depth": 2,
+   "name": "_spf.eu.mailgun.org",
+   "spf": "v=spf1 ip4:141.193.32.0/23 ip4:159.135.140.80/29 ip4:159.135.132.128/25 ip4:161.38.204.0/22 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:143.55.236.0/22 ip4:198.244.60.0/22 ip4:204.220.160.0/21 ~all"
+  },
+  {
+   "depth": 1,
+   "name": "spf.sendersrv.com",
+   "spf": "<<< SPF IRASO NERA >>>"
+  },
+  {
+   "depth": 1,
+   "name": "sendersrv.com",
+   "spf": "v=spf1 ip4:185.3.229.125 ip4:185.3.229.126 ip4:185.3.229.127 ip4:185.3.229.128/27 ip4:141.136.38.0/24 ip4:141.136.40.0/24 ip4:195.191.140.0/24 ip4:195.191.176.0/24 ip4:134.209.89.39 ip4:167.172.239.16 ip4:94.75.223.106 include:_spf.mx.cloudflare.net -all"
+  },
+  {
+   "depth": 2,
+   "name": "_spf.mx.cloudflare.net",
+   "spf": "v=spf1 ip4:104.30.0.0/19 ip6:2405:8100:c000::/38 ~all"
+  }
+ ]
+}
