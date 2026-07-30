@@ -47,9 +47,17 @@ if(sid){
 
   // 1) perjungti i 'dekas' (wet_only)
   let switched=false;
-  for(const c of await p.$$('button, a, div[role=button], .pspet-switch *')){
+  O.switch_candidates=[];
+  const all=await p.$$('button, a, div, li, span');
+  for(const c of all){
     const t=((await c.textContent())||'').trim();
-    if(t==='dekas'){ await c.click().catch(()=>{}); switched=true; break; }
+    if(/^dekas\b/.test(t) && t.length<30){
+      O.switch_candidates.push(t);
+      const box=await c.boundingBox().catch(()=>null);
+      if(box && box.width>20 && box.height>20){
+        await c.click().catch(()=>{}); switched=true; break;
+      }
+    }
   }
   O.switched_to_dekas=switched;
   await wait(3500);
