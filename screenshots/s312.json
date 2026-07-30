@@ -1,0 +1,128 @@
+{
+ "deactivated": [],
+ "sid": 1917,
+ "dry": {
+  "deploy": {
+   "includes/class-email-dispatch.php": "MATCH",
+   "includes/class-refill-engine.php": "MATCH"
+  },
+  "note": "tik deploy"
+ },
+ "apply": {
+  "deploy": {
+   "includes/class-email-dispatch.php": "MATCH",
+   "includes/class-refill-engine.php": "MATCH"
+  },
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json"
+  ],
+  "A_enqueued": [
+   {
+    "id": "5",
+    "job_key": "refill_due:1:18527:2026-07-30",
+    "status": "pending"
+   }
+  ],
+  "A_result": [
+   {
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "decision_at": "2026-07-30 19:08:20",
+    "next_attempt_at": null
+   }
+  ],
+  "B_result_before": [
+   {
+    "status": "pending"
+   }
+  ],
+  "B_result": [
+   {
+    "status": "sent",
+    "skip_reason": null,
+    "provider_message_id": "azv2GY-.eE9p2l-j09zEZv-qZE702PVAgR3-1yLdYe",
+    "subject": "jūsų augintinio maisto gali netrukus pritrūkti"
+   }
+  ],
+  "C_result": [
+   {
+    "status": "deferred",
+    "skip_reason": "product_inactive",
+    "next_attempt_at": "2026-07-31 19:08:22"
+   }
+  ],
+  "C_product_restored": "publish",
+  "stats": {
+   "by_status": [
+    {
+     "status": "deferred",
+     "c": "1"
+    },
+    {
+     "status": "sent",
+     "c": "2"
+    }
+   ],
+   "by_flow": [
+    {
+     "flow": "order_paid",
+     "status": "sent",
+     "c": "2"
+    },
+    {
+     "flow": "refill_due",
+     "status": "deferred",
+     "c": "1"
+    }
+   ],
+   "skipped": [
+    {
+     "skip_reason": "product_inactive",
+     "c": "1"
+    }
+   ],
+   "per_flow": [
+    {
+     "flow": "order_paid",
+     "sent": "2",
+     "skipped": "0",
+     "deferred": "0",
+     "failed": "0",
+     "pending": "0"
+    },
+    {
+     "flow": "refill_due",
+     "sent": "0",
+     "skipped": "0",
+     "deferred": "1",
+     "failed": "0",
+     "pending": "0"
+    }
+   ]
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
