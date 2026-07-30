@@ -1,5 +1,5 @@
 {
- "sid": 1899,
+ "sid": 1900,
  "pet": {
   "id": "149",
   "user_id": "1",
@@ -61,44 +61,11 @@
    "Tvarkyti sutikimą"
   ]
  },
- "opened_plan": false,
- "screen_dekas_plan": {
-  "text": "AUGINTINIAI\nasse\nKatė\nZiurke\nGraužikas\nakwa\nŽuvis\ndekas\nŠuo\nsass\nŠuo\nas\nKatė\n+\nPridėti augintinį\ndekas\nŠuo · Aliaskos malamutas · Suaugęs · 3 m. 2 mėn. · 26 kg · Didelis\nREDAGUOTI PROFILĮ\n⋯\nDidelis\nSterilizuotas\nVidutinis aktyvumas\nSąnariai\nKAS SVARBU DABAR\nPriminimas — po 123 d.\nArtimiausias priminimas\nPERŽIŪRĖTI\nMityba\nDienos norma ir maisto planas\nNustatę maistą matysite tikslią normą pagal svorį.\nNUSTATYTI MAISTĄ\nPriminimai\nSvarbios datos ir priežiūra.\nNustatykite skiepų, veterinaro ar priežiūros datas — priminsime laiku.\nPRIDĖTI PRIMINIMĄ\nUžrašų knygelė\nFiksuokite pastebėjimus, svorį, vizitus pas veterinarą.\nPRIDĖTI\n25 liep. 2026\n5d. reiks pas veterinara\n25 liep. 2026\nDekas jautriai reguoja i Animonda konservus\nVISI UŽRAŠAI (2) →\nPagal dekas profilį\nParinkta pagal rūšį, pažymėtus jautrumus ir tai, kad tilptų į tą patį užsakymą.\nChewllagen Vištienos skonio kolageno ritinys 12,5cm, dėžė 35x55g\nChewllagen · 68,19 €\nĮ krepšelį\nReal Dog Kiaulės ausys vidutinės 25vnt.\nReal Dog · 48,19 €\nĮ krepšelį\nDOGOTEKA DOGOmaxy 60 tabl.\nGamintojas nurodo paskirtį: Sąnariams ir judėjimui\nDogoteka · 70,79 €\nPapildai nėra vaistai. Dėl sveikatos klausimų kreipkitės į veterinarą.",
-  "buttons": [
-   "Priimti",
-   "Atmesti",
-   "Nuostatos",
-   "Išsaugoti nuostatas",
-   "Krepšelis",
-   "Apmokėjimas",
-   "Redaguoti profilį",
-   "⋯",
-   "Pridėti nuotrauką",
-   "Ištrinti profilį",
-   "Peržiūrėti",
-   "Nustatyti maistą",
-   "Pridėti priminimą",
-   "Pridėti",
-   "Visi užrašai (2) →",
-   "Į krepšelį",
-   "Real Dog Kiaulės ausys vidutinės 25vnt.",
-   "DOGOTEKA DOGOmaxy 60 tabl.",
-   "Tvarkyti sutikimą"
-  ]
- },
- "wet_entry": [
-  "Puslapis",
-  "Konservai šunims",
-  "Konservai katėms",
-  "Konservų rinkiniai",
-  "Susidėk konservų rinkinį šunims",
-  "Susidėk konservų rinkinį katėms",
-  "Chewllagen Vištienos skonio kolageno ritinys 12,5cm, dėžė 35x55g",
-  "Konservai šunims",
-  "Konservai katėms",
-  "Konservų rinkiniai",
-  "Susidėk konservų rinkinį šunims",
-  "Susidėk konservų rinkinį katėms"
+ "clicked": "Nustatyti maistą",
+ "opened_plan": true,
+ "search_screen": "← GRĮŽTI Į AUGINTINIO PUSLAPĮ\nMityba ir maisto planas — dekas\nŠlapias maistas\nJūsų nurodytas dienos kiekis\n500 g per dieną\nKeisti kiekį\nSusidėkite konservus\nPasirinkite kelis skonius ir jų kiekius — apskaičiuosime bendrą svorį, kainą ir apytikrę trukmę.\nPasirinkite bent vieną produktą.\n+ Pridėti kitą skonį\nTai jūsų nurodytas kiekis, ne gamintojo apskaičiuota norma.",
+ "search_placeholder": [
+  ""
  ],
- "errs": []
+ "browser_err": "TimeoutError: elementHandle.fill: Timeout 30000ms exceeded.\nCall log:\n    - fill(\"Animonda\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visib"
 }
