@@ -1,0 +1,122 @@
+{
+ "deactivated": [],
+ "sid": 1918,
+ "dry": {
+  "shipping_plugins": [
+   "Post codes by postit.lt 1.1.1",
+   "Shipping with Venipak for WooCommerce 1.26.3",
+   "UNISEND for WooCommerce 4.0.32"
+  ],
+  "order_id": 34730,
+  "stage1_mails": [
+   {
+    "to": "uzsakymai@petshop.lt",
+    "subject": "Naujas užsakymas Nr. 34730 — 2026-07-30",
+    "len": 13307,
+    "has_tracking": 0,
+    "has_venipak": 0,
+    "has_track_word": 0
+   },
+   {
+    "to": "raimundas@gyvunai.lt",
+    "subject": "Jūsų užsakymas Nr. 34730 — apmokėjimas gautas",
+    "len": 12666,
+    "has_tracking": 0,
+    "has_venipak": 0,
+    "has_track_word": 0
+   }
+  ],
+  "stage1_hooks": [
+   "woocommerce_update_order",
+   "woocommerce_order_status_changed"
+  ],
+  "stage2_mails": [],
+  "stage2_hooks": [
+   "woocommerce_update_order"
+  ],
+  "stage3_mails": [
+   {
+    "to": "raimundas@gyvunai.lt",
+    "subject": "Jūsų užsakymas Nr.34730 išsiųstas!",
+    "len": 6503,
+    "has_tracking": 0,
+    "has_venipak": 1,
+    "has_track_word": 1
+   }
+  ],
+  "stage3_hooks": [
+   "woocommerce_update_order",
+   "woocommerce_order_status_completed_notification",
+   "woocommerce_order_status_changed"
+  ],
+  "our_event": [
+   {
+    "event_name": "order_shipped",
+    "status": "pending",
+    "event_id": "order_shipped_34730"
+   }
+  ],
+  "shipped_flag": "yes",
+  "cleaned": true
+ },
+ "apply": {
+  "shipping_plugins": [
+   "Post codes by postit.lt 1.1.1",
+   "Shipping with Venipak for WooCommerce 1.26.3",
+   "UNISEND for WooCommerce 4.0.32"
+  ],
+  "order_id": 34731,
+  "stage1_mails": [
+   {
+    "to": "uzsakymai@petshop.lt",
+    "subject": "Naujas užsakymas Nr. 34731 — 2026-07-30",
+    "len": 13307,
+    "has_tracking": 0,
+    "has_venipak": 0,
+    "has_track_word": 0
+   },
+   {
+    "to": "raimundas@gyvunai.lt",
+    "subject": "Jūsų užsakymas Nr. 34731 — apmokėjimas gautas",
+    "len": 12666,
+    "has_tracking": 0,
+    "has_venipak": 0,
+    "has_track_word": 0
+   }
+  ],
+  "stage1_hooks": [
+   "woocommerce_update_order",
+   "woocommerce_order_status_changed"
+  ],
+  "stage2_mails": [],
+  "stage2_hooks": [
+   "woocommerce_update_order"
+  ],
+  "stage3_mails": [
+   {
+    "to": "raimundas@gyvunai.lt",
+    "subject": "Jūsų užsakymas Nr.34731 išsiųstas!",
+    "len": 6503,
+    "has_tracking": 0,
+    "has_venipak": 1,
+    "has_track_word": 1
+   }
+  ],
+  "stage3_hooks": [
+   "woocommerce_update_order",
+   "woocommerce_order_status_completed_notification",
+   "woocommerce_order_status_changed"
+  ],
+  "our_event": [
+   {
+    "event_name": "order_shipped",
+    "status": "pending",
+    "event_id": "order_shipped_34731"
+   }
+  ],
+  "shipped_flag": "yes",
+  "cleaned": true
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
