@@ -1,0 +1,289 @@
+{
+ "sid": 1892,
+ "dry": {
+  "code_hits": {
+   "class-admin-reports.php": {
+    "count": 1,
+    "lines": [
+     "116: $w_food   = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $t WHERE $where AND (primary_product_id IS NOT NULL OR wet_product_id IS NOT NULL)\" );"
+    ]
+   },
+   "class-pet-dashboard.php": {
+    "count": 11,
+    "lines": [
+     "114: 'wet_product_id'          => ( isset( $pet->wet_product_id ) && $pet->wet_product_id ) ? (int) $pet->wet_product_id : null,",
+     "117: 'wet_product'             => self::wet_product_info( isset( $pet->wet_product_id ) ? $pet->wet_product_id : null ),",
+     "151: private static function wet_product_info( $product_id ) {",
+     "219: $wet = isset( $pet->wet_product_id ) ? (int) $pet->wet_product_id : 0;"
+    ]
+   },
+   "class-pet-profile.php": {
+    "count": 5,
+    "lines": [
+     "145: 'wet_product_id'         => \"BIGINT(20) UNSIGNED NULL AFTER primary_product_id\",",
+     "554: 'is_sterilised', 'feeding_type', 'feeding_type_other', 'wet_food_g', 'wet_product_id',",
+     "659: case 'wet_product_id':",
+     "662: $out['wet_product_id'] = ( $wp !== null && $wp > 0 ) ? $wp : null;",
+     "697: if ( $ft !== 'dry_wet' && $ft !== 'wet_only' ) { $out['wet_product_id'] = null; }"
+    ]
+   },
+   "pet-profile.js": {
+    "count": 11,
+    "lines": [
+     "522: 'wet_product_id',",
+     "644: var wp  = pet.wet_product || null;",
+     "1640: var wp = dash.pet && dash.pet.wet_product ? dash.pet.wet_product : (pet.wet_product || null);",
+     "2001: var savedId = (lastDash && lastDash.pet && lastDash.pet.wet_product_id) ? lastDash.pet.wet_product_id : null;",
+     "2430: wetSec.appendChild(buyBlock(pet, (lastDash && lastDash.pet ? lastDash.pet.wet_product : null), mx.wet_food_g, dryPerDay));",
+     "2627: wetSec0.appendChild(buyBlock(pet, (lastDash && lastDash.pet ? lastDash.pet.wet_product : null), gHave, null));",
+     "2694: var wp = (lastDash && lastDash.pet && lastDash.pet.wet_product) ? lastDash.pet.wet_product : null;"
+    ]
+   },
+   "petshop-m8-food.php": {
+    "count": 7,
+    "lines": [
+     "38: 'callback'=>array(__CLASS__,'wet_products_info'),",
+     "42: 'callback'=>array(__CLASS__,'set_wet_product'),",
+     "143: foreach ( array( 'primary_product_id', 'wet_product_id' ) as $f ) {",
+     "700: public static function wet_products_info( $req ){",
+     "726: public static function set_wet_product( $req ){",
+     "743: array('wet_product_id'=>($prod>0?$prod:null),'updated_at'=>current_time('mysql')),",
+     "745: return rest_ensure_response(array('ok'=>true,'wet_product_id'=>($prod>0?$prod:null)));"
+    ]
+   }
+  },
+  "routes": [
+   "/petshop/v1",
+   "/petshop/v1/feeding-calc",
+   "/petshop/v1/feeding-pet-weight",
+   "/petshop/v1/feeding-pet-activity",
+   "/petshop/v1/feeding-pet-wet-food",
+   "/petshop/v1/feeding-calc-for-pet",
+   "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+   "/petshop/v1/pet-food-assign",
+   "/petshop/v1/pet-food-brand",
+   "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+   "/petshop/v1/wet-food-search",
+   "/petshop/v1/wet-products-info",
+   "/petshop/v1/pet-wet-product",
+   "/petshop/v1/product-search",
+   "/code-snippets/v1",
+   "/code-snippets/v1/snippets",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)",
+   "/code-snippets/v1/snippets/schema",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/activate",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/deactivate",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/export",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/export-code",
+   "/code-snippets/v1/insert-headers-and-footers",
+   "/code-snippets/v1/insert-headers-and-footers/import",
+   "/code-snippets/v1/header-footer-code-manager",
+   "/code-snippets/v1/header-footer-code-manager/import",
+   "/code-snippets/v1/insert-php-code-snippet",
+   "/code-snippets/v1/insert-php-code-snippet/import",
+   "/code-snippets/v1/importers",
+   "/code-snippets/v1/file-upload/parse",
+   "/code-snippets/v1/file-upload/import",
+   "/petshop/v1/feeding/calculate",
+   "/petshop/v1/magic-login/request",
+   "/petshop/v1/pet-profile",
+   "/petshop/v1/pet-profile/(?P<id>\\d+)",
+   "/petshop/v1/food-search",
+   "/petshop/v1/brands",
+   "/petshop/v1/pet-product-link",
+   "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+   "/petshop/v1/refill-feedback",
+   "/petshop/v1/pet-photo/(?P<id>\\d+)",
+   "/petshop/v1/pet-content/(?P<id>\\d+)",
+   "/petshop/v1/sender-webhook",
+   "/petshop/v1/reminders",
+   "/petshop/v1/reminders/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+   "/petshop/v1/pet-notes",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+  ],
+  "pets_cols": [
+   "id",
+   "user_id",
+   "pet_name",
+   "species",
+   "species_detail",
+   "birth_date",
+   "life_stage",
+   "dog_size",
+   "is_sterilised",
+   "feeding_type",
+   "feeding_type_other",
+   "wet_food_g",
+   "primary_need",
+   "primary_need_other",
+   "sensitivities",
+   "housing",
+   "current_food_brand",
+   "current_food_free_text",
+   "primary_product_id",
+   "wet_product_id",
+   "primary_product_sku",
+   "primary_product_name",
+   "primary_product_package",
+   "photo_file_id",
+   "is_primary",
+   "status",
+   "client_ref",
+   "created_at",
+   "updated_at",
+   "deleted_at",
+   "current_weight_kg",
+   "adult_expected_weight_kg",
+   "weight_updated_at",
+   "activity_hint",
+   "is_test"
+  ]
+ },
+ "apply": {
+  "code_hits": {
+   "class-admin-reports.php": {
+    "count": 1,
+    "lines": [
+     "116: $w_food   = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $t WHERE $where AND (primary_product_id IS NOT NULL OR wet_product_id IS NOT NULL)\" );"
+    ]
+   },
+   "class-pet-dashboard.php": {
+    "count": 11,
+    "lines": [
+     "114: 'wet_product_id'          => ( isset( $pet->wet_product_id ) && $pet->wet_product_id ) ? (int) $pet->wet_product_id : null,",
+     "117: 'wet_product'             => self::wet_product_info( isset( $pet->wet_product_id ) ? $pet->wet_product_id : null ),",
+     "151: private static function wet_product_info( $product_id ) {",
+     "219: $wet = isset( $pet->wet_product_id ) ? (int) $pet->wet_product_id : 0;"
+    ]
+   },
+   "class-pet-profile.php": {
+    "count": 5,
+    "lines": [
+     "145: 'wet_product_id'         => \"BIGINT(20) UNSIGNED NULL AFTER primary_product_id\",",
+     "554: 'is_sterilised', 'feeding_type', 'feeding_type_other', 'wet_food_g', 'wet_product_id',",
+     "659: case 'wet_product_id':",
+     "662: $out['wet_product_id'] = ( $wp !== null && $wp > 0 ) ? $wp : null;",
+     "697: if ( $ft !== 'dry_wet' && $ft !== 'wet_only' ) { $out['wet_product_id'] = null; }"
+    ]
+   },
+   "pet-profile.js": {
+    "count": 11,
+    "lines": [
+     "522: 'wet_product_id',",
+     "644: var wp  = pet.wet_product || null;",
+     "1640: var wp = dash.pet && dash.pet.wet_product ? dash.pet.wet_product : (pet.wet_product || null);",
+     "2001: var savedId = (lastDash && lastDash.pet && lastDash.pet.wet_product_id) ? lastDash.pet.wet_product_id : null;",
+     "2430: wetSec.appendChild(buyBlock(pet, (lastDash && lastDash.pet ? lastDash.pet.wet_product : null), mx.wet_food_g, dryPerDay));",
+     "2627: wetSec0.appendChild(buyBlock(pet, (lastDash && lastDash.pet ? lastDash.pet.wet_product : null), gHave, null));",
+     "2694: var wp = (lastDash && lastDash.pet && lastDash.pet.wet_product) ? lastDash.pet.wet_product : null;"
+    ]
+   },
+   "petshop-m8-food.php": {
+    "count": 7,
+    "lines": [
+     "38: 'callback'=>array(__CLASS__,'wet_products_info'),",
+     "42: 'callback'=>array(__CLASS__,'set_wet_product'),",
+     "143: foreach ( array( 'primary_product_id', 'wet_product_id' ) as $f ) {",
+     "700: public static function wet_products_info( $req ){",
+     "726: public static function set_wet_product( $req ){",
+     "743: array('wet_product_id'=>($prod>0?$prod:null),'updated_at'=>current_time('mysql')),",
+     "745: return rest_ensure_response(array('ok'=>true,'wet_product_id'=>($prod>0?$prod:null)));"
+    ]
+   }
+  },
+  "routes": [
+   "/petshop/v1",
+   "/petshop/v1/feeding-calc",
+   "/petshop/v1/feeding-pet-weight",
+   "/petshop/v1/feeding-pet-activity",
+   "/petshop/v1/feeding-pet-wet-food",
+   "/petshop/v1/feeding-calc-for-pet",
+   "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+   "/petshop/v1/pet-food-assign",
+   "/petshop/v1/pet-food-brand",
+   "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+   "/petshop/v1/wet-food-search",
+   "/petshop/v1/wet-products-info",
+   "/petshop/v1/pet-wet-product",
+   "/petshop/v1/product-search",
+   "/code-snippets/v1",
+   "/code-snippets/v1/snippets",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)",
+   "/code-snippets/v1/snippets/schema",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/activate",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/deactivate",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/export",
+   "/code-snippets/v1/snippets/(?P<id>[\\d]+)/export-code",
+   "/code-snippets/v1/insert-headers-and-footers",
+   "/code-snippets/v1/insert-headers-and-footers/import",
+   "/code-snippets/v1/header-footer-code-manager",
+   "/code-snippets/v1/header-footer-code-manager/import",
+   "/code-snippets/v1/insert-php-code-snippet",
+   "/code-snippets/v1/insert-php-code-snippet/import",
+   "/code-snippets/v1/importers",
+   "/code-snippets/v1/file-upload/parse",
+   "/code-snippets/v1/file-upload/import",
+   "/petshop/v1/feeding/calculate",
+   "/petshop/v1/magic-login/request",
+   "/petshop/v1/pet-profile",
+   "/petshop/v1/pet-profile/(?P<id>\\d+)",
+   "/petshop/v1/food-search",
+   "/petshop/v1/brands",
+   "/petshop/v1/pet-product-link",
+   "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+   "/petshop/v1/refill-feedback",
+   "/petshop/v1/pet-photo/(?P<id>\\d+)",
+   "/petshop/v1/pet-content/(?P<id>\\d+)",
+   "/petshop/v1/sender-webhook",
+   "/petshop/v1/reminders",
+   "/petshop/v1/reminders/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+   "/petshop/v1/pet-notes",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+  ],
+  "pets_cols": [
+   "id",
+   "user_id",
+   "pet_name",
+   "species",
+   "species_detail",
+   "birth_date",
+   "life_stage",
+   "dog_size",
+   "is_sterilised",
+   "feeding_type",
+   "feeding_type_other",
+   "wet_food_g",
+   "primary_need",
+   "primary_need_other",
+   "sensitivities",
+   "housing",
+   "current_food_brand",
+   "current_food_free_text",
+   "primary_product_id",
+   "wet_product_id",
+   "primary_product_sku",
+   "primary_product_name",
+   "primary_product_package",
+   "photo_file_id",
+   "is_primary",
+   "status",
+   "client_ref",
+   "created_at",
+   "updated_at",
+   "deleted_at",
+   "current_weight_kg",
+   "adult_expected_weight_kg",
+   "weight_updated_at",
+   "activity_hint",
+   "is_test"
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
