@@ -1,0 +1,25 @@
+{
+ "spf_petshop": [
+  "v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all"
+ ],
+ "txt_petshop": [
+  "v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all",
+  "google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs"
+ ],
+ "dmarc": [
+  "v=DMARC1; p=none; rua=mailto:terra@petshop.lt"
+ ],
+ "mx": [
+  "10 isopas.serveriai.lt."
+ ],
+ "dkim_sender": [
+  "dkim.sendersrv.com.",
+  "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtKpwlxyG5fI29ZqyvJHmbB8bcZ5+f7JCp"
+ ],
+ "spf_includes": [
+  "include:spf.serveriai.lt",
+  "include:mailgun.org",
+  "include:spf.sendersrv.com",
+  "include:sendersrv.com"
+ ]
+}
