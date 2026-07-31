@@ -1,0 +1,26 @@
+{
+ "deactivated": [],
+ "sid": 1956,
+ "dry": {
+  "deploy": {
+   "class-email-layout.php": "MATCH",
+   "class-unsubscribe.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "rewrite_flushed": 1
+ },
+ "apply": {
+  "deploy": {
+   "class-email-layout.php": "MATCH",
+   "class-unsubscribe.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "rewrite_flushed": 1
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
