@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31** — S318 krepselio atkurimas UZBAIGTAS. Toliau: cart_abandoned sablonas + pilnas E2E.
+> Paskutinį kartą atnaujinta: **2026-07-31** — S322: PIRMAS PILNAS LIFECYCLE SRAUTAS uzdarytas (cart_abandoned nuo evento iki atkurto krepselio).
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -54,7 +54,7 @@ Woo eventas -> ps_event_log -> outbox (ps_email_jobs) -> eligibility
 | order_paid | eventas TAIP, dispatch laisko NE | **WooCommerce** (SMTP) |
 | order_shipped | eventas TAIP, dispatch laisko NE | **WooCommerce** (completed laiskas) |
 | refill_due | VEIKIA (eventas + job + sablonas) | musu dispatch |
-| cart_abandoned | detektorius VEIKIA, sablono DAR NERA | musu dispatch (marketing) |
+| cart_abandoned | **PILNAS SRAUTAS VEIKIA** (detektorius + sablonas + tokenas + atkurimas) | musu dispatch (marketing) |
 | post_purchase / win_back / legacy / founding | NEPASTATYTA | — |
 
 **TAISYKLE: vienas srautas — vienas savininkas.** Pries jungiant srauta prie dispatch — EMPIRISKAI patikrinti, kas jau siuncia (perimti `pre_wp_mail`, NE skaityti plugin'u koda).
@@ -122,6 +122,27 @@ Laiske: >1 siunta -> „pristatomas N atskiromis siuntomis" + „Siunta X is N".
 - **HTTP/2 (priezastis NENUSTATYTA):** Playwright/Chromium epizodiskai gavo `ERR_HTTP2_PROTOCOL_ERROR` ir `ERR_EMPTY_RESPONSE` (kraunant /cart/). Su `--disable-http2` ir `curl` tie patys keliai veike. NEVADINTI irodytu serverio gedimu. Patikrinti pries launch.
 - Produktas 34512: `_stock_status=instock` bet `is_in_stock()=false`. YRA filtras `woocommerce_product_is_in_stock`, prekes neturi nei `_vf_qty` nei `_zb_qty` -> greiciausiai TYCINE fulfillment logika. Ivardinti tikslu saltini.
 - SEO: 44 top-100 URL = 404 (20,5% viso srauto). Duomenys repo `analize/`. **NEPRADETI be Raimio.**
+
+## ★ PIRMAS PILNAS LIFECYCLE SRAUTAS (S322) — cart_abandoned
+```
+cart -> abandoned -> eventas -> marketing job -> consent+suppression
+     -> recovery tokenas (1x) -> layout -> Sender accepted
+     -> CTA -> GET peek -> POST -> atkurtas krepselis
+```
+**TOKENAS KURIAMAS VIENA KARTA** po eligibility, saugomas `ps_email_jobs.context_json` per filtra `petshop_email_prepare_context`. Sablonas jo NEGENERUOJA — kitaip Sender retry sukurtu kelias galiojancias nuorodas tam paciam krepseliui. Dry-run tokeno NEKURIA; be consent tokenas NIEKADA neatsiranda.
+
+Sablonas `cart-abandoned-1.php` naudoja BENDRA karkasa. Tema: 1 preke -> „Dar svarstote del [produkto]?"; 2+ -> „Jusu prekes vis dar laukia krepselyje". **VIENAS CTA**, jokio cross-sell. Nera `recovery_url` -> mygtuko NERODOM.
+
+**BUSENA PASIKEITE PO LAISKO:** laisko HTML = istorinis momentas, recovery puslapis = DABARTINE katalogo tiesa. Prieinamumas/kainos NEUZSALDOMI.
+- viena preke `draft` -> GET rodo tik perkama + „siu prekiu atkurti nepavyks"; POST atkuria TIK aktyvia
+- abi `draft` -> GET be formos, be pazado; POST krepselio NEKEICIA; pakartotinis nieko nedaro
+```
+Jei atkurimo metu nelieka ne vienos perkamos prekes:
+- GET parodo dabartine bukle ir NERODO atkurimo formos;
+- POST vartotojo keliu NEGALI buti inicijuotas;
+- tiesiogine ar neteiseta POST uzklausa atmetama;
+- krepselis NEKEICIAMAS.
+```
 
 ## KREPSELIO ATKURIMAS (S318) — VEIKIA
 ```
