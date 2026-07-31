@@ -1,0 +1,35 @@
+{
+ "setup": {
+  "token": "eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19jdl90ZXN0IiwiYWN0aW9uIjoiIiwiZXhwaXJlc19hdCI6MTc4NjA5NjEyNiwibm9uY2UiOiI4MzI5MzU2YTI2MGU0MmRmOTI4N2Y4ZWUzNjNmOGZhNiIsImtleV9pZCI6InYyIn0.9ed207f2b5c98d8c419a6e59274ac7a872a99af98a94acfb3380900964c30a4f",
+  "a": 34498,
+  "b": 34488,
+  "a_name": "Exclusion Mediterraneo Mono Pr",
+  "b_name": "Animonda Vom Feinsten Adult wi"
+ },
+ "pries": {
+  "turi_A": 0,
+  "turi_B": 0,
+  "len": 211126
+ },
+ "nonce": true,
+ "po_GET": {
+  "turi_A": 0,
+  "turi_B": 0
+ },
+ "post": "302|https://dev.avesa.lt/cart/",
+ "po_POST": {
+  "turi_A": 1,
+  "turi_B": 1,
+  "kiekiai": [],
+  "eiluciu": 2,
+  "len": 232836
+ },
+ "pakartotinis": {
+  "code": "200",
+  "tekstas": "       Nuoroda nebegalioja — Petshop.lt     Nuoroda nebegalioja  Ši nuoroda jau buvo panaudota arba nebegalioja.   Grįžti į petshop.lt     "
+ },
+ "po_pakartotinio": {
+  "kiekiai": [],
+  "eiluciu": 2
+ }
+}
