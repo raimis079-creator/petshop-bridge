@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31 (vakaras)** — S327 post-purchase +2d SABLONAS uzdarytas; M8 prisijungusio vartotojo kelias PATVIRTINTAS narsykleje; S328 serverinio drafto infrastruktura DALINAI UZBAIGTA (1-3 is 10).
+> Paskutinį kartą atnaujinta: **2026-07-31 (sesija uzdaryta)** — S327 uzdarytas; M8 prisijungusio vartotojo kelias PATVIRTINTAS; S328 infrastruktura 3/10 + BASELINE UZFIKSUOTAS. Kitas rasantis veiksmas: `UNIQUE(client_ref)`.
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -115,6 +115,44 @@ tad 65 esami irasai ir prisijungusio kelio augintiniai nepaliesti.
    normalizacijai, avatarui, `pet_profile_created` eventui, klaidoms. Jei tokio
    metodo nera — ISKELTI ji is REST/dashboard callback'o (tas pats principas kaip
    refill feedback).
+
+### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
+
+**BUKLE 2026-07-31 sesijos pabaigoje: viskas svaru, nieko pakibusio.**
+```
+S327 post-purchase +2d   UZDARYTA (liko tik Raimio stiliaus perziura)
+Deliverability           UZDARYTA (liko tracking CNAME — hostname IS SENDER)
+M8 login kelias          PATVIRTINTAS narsykleje
+S328 infrastruktura      3/10 idiegta ir patikrinta
+Baseline                 UZFIKSUOTAS (screenshots/baseline.json)
+ps_pets                  65 eilutes, atkurta po incidento, indeksai vietoje
+TEMP snippetai aktyvus   0
+```
+
+**PIRMAS VEIKSMAS: `UNIQUE(client_ref)` ant `gaj6_ps_pets`.**
+Tai PIRMAS RASANTIS veiksmas i veikiancia lentele po baseline. Galioja
+DESTRUCTIVE-TEST PROTOKOLAS (zemiau): dry-run su TIKSLIU skaiciumi PRIES `ALTER`.
+
+**BUTINA ZINOTI PRIES:** uzdejus `UNIQUE`, dabartinis `create_pet()`
+`SELECT -> INSERT` lenktyniu atveju nustos tyliai kurti dublikata ir pradės
+grazinti `create_failed` 500. Tai GERIAU nei dublikatas, bet TAI YRA ELGSENOS
+PAKEITIMAS. Jo pora — `create_pet_result()` su duplicate-key apdorojimu:
+```
+INSERT su client_ref
+-> duplicate
+-> surasti esama pet pagal client_ref
+-> patikrinti, kad user_id sutampa su claim vartotoju
+-> jei sutampa: idempotentiska sekme
+-> jei nesutampa: saugumo konfliktas, drafto NEPERKELTI
+```
+Todel `UNIQUE` ir duplicate-key apdorojimas turi eiti KARTU arba labai arti.
+
+**Ko NEDARYTI:** netrinti `source_draft_id` (rollback atrama); neliesti
+`handle_save()` pirmame commit'e; nedeti validacijos i refaktoringo commita.
+
+**LAUKIA RAIMIO (ne blokuoja):** S327 laisko stiliaus perziura; Sender tracking
+CNAME hostname; Flatsome social nuorodos; ~137 TEMP snippetu istrynimas WP admin;
+`/augintinio-profilis/` puslapio tekstas.
 
 ### ★ DESTRUCTIVE-TEST PROTOKOLAS (privaloma, po 2026-07-31 incidento)
 ```
