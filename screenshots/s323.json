@@ -1,0 +1,30 @@
+{
+ "deactivated": [],
+ "sid": 1975,
+ "dry": {
+  "deploy": {
+   "class-refill-feedback.php": "MATCH",
+   "class-pet-dashboard.php": "MATCH",
+   "class-refill-engine.php": "MATCH",
+   "petshop-core.php": "MATCH",
+   "refill.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "rewrite": 1
+ },
+ "apply": {
+  "deploy": {
+   "class-refill-feedback.php": "MATCH",
+   "class-pet-dashboard.php": "MATCH",
+   "class-refill-engine.php": "MATCH",
+   "petshop-core.php": "MATCH",
+   "refill.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "rewrite": 1
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
