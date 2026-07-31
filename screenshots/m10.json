@@ -1,0 +1,96 @@
+{
+ "deactivated": [],
+ "sid": 1982,
+ "dry": {
+  "tables": {
+   "ps_subscriptions": "nera",
+   "ps_subscription_events": "nera",
+   "ps_subscription_items": "nera"
+  },
+  "classes": {
+   "Petshop_Subscriptions": "nera",
+   "Petshop_Subscription": "nera",
+   "Petshop_Refill_Plan": "nera",
+   "WC_Subscriptions": "nera"
+  },
+  "plugins": [],
+  "pages": {
+   "reguliarus-papildymas": "nera",
+   "prenumerata": "nera",
+   "subscriptions": "nera",
+   "my-account/subscriptions": "nera"
+  },
+  "product_types": [
+   "simple",
+   "grouped",
+   "external",
+   "variable",
+   "mix-and-match"
+  ],
+  "has_subscription_type": "nera",
+  "rest": [
+   "/wc/v3/marketplace/subscriptions",
+   "/wc/v3/marketplace/subscriptions/connect",
+   "/wc/v3/marketplace/subscriptions/activate-plugin",
+   "/wc/v3/marketplace/subscriptions/disconnect",
+   "/wc/v3/marketplace/subscriptions/activate",
+   "/wc/v3/marketplace/subscriptions/install-url"
+  ],
+  "gateways": [
+   "paysera",
+   "bacs"
+  ],
+  "paysera_recurring": "NE",
+  "paysera_supports": [
+   "products"
+  ],
+  "code_mentions": []
+ },
+ "apply": {
+  "tables": {
+   "ps_subscriptions": "nera",
+   "ps_subscription_events": "nera",
+   "ps_subscription_items": "nera"
+  },
+  "classes": {
+   "Petshop_Subscriptions": "nera",
+   "Petshop_Subscription": "nera",
+   "Petshop_Refill_Plan": "nera",
+   "WC_Subscriptions": "nera"
+  },
+  "plugins": [],
+  "pages": {
+   "reguliarus-papildymas": "nera",
+   "prenumerata": "nera",
+   "subscriptions": "nera",
+   "my-account/subscriptions": "nera"
+  },
+  "product_types": [
+   "simple",
+   "grouped",
+   "external",
+   "variable",
+   "mix-and-match"
+  ],
+  "has_subscription_type": "nera",
+  "rest": [
+   "/wc/v3/marketplace/subscriptions",
+   "/wc/v3/marketplace/subscriptions/connect",
+   "/wc/v3/marketplace/subscriptions/activate-plugin",
+   "/wc/v3/marketplace/subscriptions/disconnect",
+   "/wc/v3/marketplace/subscriptions/activate",
+   "/wc/v3/marketplace/subscriptions/install-url"
+  ],
+  "gateways": [
+   "paysera",
+   "bacs"
+  ],
+  "paysera_recurring": "NE",
+  "paysera_supports": [
+   "products"
+  ],
+  "code_mentions": []
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
