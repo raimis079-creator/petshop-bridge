@@ -1,0 +1,152 @@
+{
+ "deactivated": [],
+ "sid": 1942,
+ "dry": {
+  "18527": {
+   "exists": 1,
+   "type": "simple",
+   "post_status": "publish",
+   "is_purchasable": 1,
+   "is_in_stock": 1,
+   "price": "16.29",
+   "price_empty": 0,
+   "catalog_visibility": "visible",
+   "stock_status": "instock"
+  },
+  "19137": {
+   "exists": 1,
+   "type": "variable",
+   "post_status": "publish",
+   "is_purchasable": 1,
+   "is_in_stock": 1,
+   "price": "5.99",
+   "price_empty": 0,
+   "catalog_visibility": "visible",
+   "stock_status": "instock"
+  },
+  "34512": {
+   "exists": 1,
+   "type": "simple",
+   "post_status": "publish",
+   "is_purchasable": 1,
+   "is_in_stock": 0,
+   "price": "30",
+   "price_empty": 0,
+   "catalog_visibility": "visible",
+   "stock_status": "instock"
+  },
+  "price_to_display": 30,
+  "sample": [
+   {
+    "id": 34512,
+    "type": "simple",
+    "purch": 1,
+    "stock": 0,
+    "price": "30"
+   },
+   {
+    "id": 34510,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "23"
+   },
+   {
+    "id": 34500,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "14.82"
+   },
+   {
+    "id": 34498,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "13.2"
+   },
+   {
+    "id": 34488,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "14.59"
+   }
+  ]
+ },
+ "apply": {
+  "18527": {
+   "exists": 1,
+   "type": "simple",
+   "post_status": "publish",
+   "is_purchasable": 1,
+   "is_in_stock": 1,
+   "price": "16.29",
+   "price_empty": 0,
+   "catalog_visibility": "visible",
+   "stock_status": "instock"
+  },
+  "19137": {
+   "exists": 1,
+   "type": "variable",
+   "post_status": "publish",
+   "is_purchasable": 1,
+   "is_in_stock": 1,
+   "price": "5.99",
+   "price_empty": 0,
+   "catalog_visibility": "visible",
+   "stock_status": "instock"
+  },
+  "34512": {
+   "exists": 1,
+   "type": "simple",
+   "post_status": "publish",
+   "is_purchasable": 1,
+   "is_in_stock": 0,
+   "price": "30",
+   "price_empty": 0,
+   "catalog_visibility": "visible",
+   "stock_status": "instock"
+  },
+  "price_to_display": 30,
+  "sample": [
+   {
+    "id": 34512,
+    "type": "simple",
+    "purch": 1,
+    "stock": 0,
+    "price": "30"
+   },
+   {
+    "id": 34510,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "23"
+   },
+   {
+    "id": 34500,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "14.82"
+   },
+   {
+    "id": 34498,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "13.2"
+   },
+   {
+    "id": 34488,
+    "type": "simple",
+    "purch": 1,
+    "stock": 1,
+    "price": "14.59"
+   }
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
