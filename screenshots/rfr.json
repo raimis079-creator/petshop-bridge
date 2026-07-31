@@ -1,0 +1,144 @@
+{
+ "deactivated": [],
+ "sid": 1974,
+ "dry": {
+  "files": {
+   "class-pet-dashboard.php": [
+    "7: *   - refill (zied. dienos, spalva, avg intervalas, feedback)",
+    "24: *   POST /petshop/v1/refill-feedback           prognozes grizt. rysys (similar/sooner/later)",
+    "43: register_rest_route( 'petshop/v1', '/refill-feedback', array(",
+    "45: 'callback'            => array( __CLASS__, 'handle_refill_feedback' ),",
+    "278: * Refill blokas — dienos iki tuscia, spalva, feedback.",
+    "534: * POST /refill-feedback — koreguoja prognoze pagal grizt. rysi.",
+    "535: * Body: pet_id, product_id, feedback (similar|sooner|later)",
+    "537: public static function handle_refill_feedback( $request ) {",
+    "541: $feedback = sanitize_text_field( (string) $request->get_param( 'feedback' ) );",
+    "543: if ( ! in_array( $feedback, array( 'similar', 'sooner', 'later' ), true ) ) {",
+    "550: // IA v1.1: feedback taikomas TIK sio augintinio irasui.",
+    "560: if ( $feedback === 'sooner' ) {",
+    "562: } elseif ( $feedback === 'later' ) {",
+    "584: Petshop_Event_Registry::emit( 'refill_feedback_submitted', $user->user_email, array(",
+    "587: 'feedback'   => $feedback,"
+   ]
+  },
+  "refill_size": 17470,
+  "refill_methods": [
+   "table_name",
+   "install",
+   "maybe_install",
+   "init",
+   "on_order_paid",
+   "track_purchase",
+   "estimate_interval",
+   "parse_weight_grams",
+   "is_food_product",
+   "check_due",
+   "eligibility_filter",
+   "has_repurchased",
+   "mirror_to_sender"
+  ],
+  "tracking_cols": [
+   "id",
+   "user_id",
+   "product_id",
+   "pet_id",
+   "last_order_id",
+   "last_purchase_date",
+   "purchase_count",
+   "avg_interval_days",
+   "predicted_empty_date",
+   "confidence",
+   "status",
+   "created_at",
+   "updated_at"
+  ],
+  "tracking_sample": [
+   {
+    "id": "4",
+    "user_id": "1",
+    "product_id": "18527",
+    "pet_id": null,
+    "last_order_id": "34720",
+    "last_purchase_date": "2026-07-20",
+    "purchase_count": "1",
+    "avg_interval_days": "30",
+    "predicted_empty_date": "2026-07-30",
+    "confidence": "0.40",
+    "status": "notified",
+    "created_at": "2026-07-20 09:48:28",
+    "updated_at": "2026-07-30 19:08:22"
+   }
+  ]
+ },
+ "apply": {
+  "files": {
+   "class-pet-dashboard.php": [
+    "7: *   - refill (zied. dienos, spalva, avg intervalas, feedback)",
+    "24: *   POST /petshop/v1/refill-feedback           prognozes grizt. rysys (similar/sooner/later)",
+    "43: register_rest_route( 'petshop/v1', '/refill-feedback', array(",
+    "45: 'callback'            => array( __CLASS__, 'handle_refill_feedback' ),",
+    "278: * Refill blokas — dienos iki tuscia, spalva, feedback.",
+    "534: * POST /refill-feedback — koreguoja prognoze pagal grizt. rysi.",
+    "535: * Body: pet_id, product_id, feedback (similar|sooner|later)",
+    "537: public static function handle_refill_feedback( $request ) {",
+    "541: $feedback = sanitize_text_field( (string) $request->get_param( 'feedback' ) );",
+    "543: if ( ! in_array( $feedback, array( 'similar', 'sooner', 'later' ), true ) ) {",
+    "550: // IA v1.1: feedback taikomas TIK sio augintinio irasui.",
+    "560: if ( $feedback === 'sooner' ) {",
+    "562: } elseif ( $feedback === 'later' ) {",
+    "584: Petshop_Event_Registry::emit( 'refill_feedback_submitted', $user->user_email, array(",
+    "587: 'feedback'   => $feedback,"
+   ]
+  },
+  "refill_size": 17470,
+  "refill_methods": [
+   "table_name",
+   "install",
+   "maybe_install",
+   "init",
+   "on_order_paid",
+   "track_purchase",
+   "estimate_interval",
+   "parse_weight_grams",
+   "is_food_product",
+   "check_due",
+   "eligibility_filter",
+   "has_repurchased",
+   "mirror_to_sender"
+  ],
+  "tracking_cols": [
+   "id",
+   "user_id",
+   "product_id",
+   "pet_id",
+   "last_order_id",
+   "last_purchase_date",
+   "purchase_count",
+   "avg_interval_days",
+   "predicted_empty_date",
+   "confidence",
+   "status",
+   "created_at",
+   "updated_at"
+  ],
+  "tracking_sample": [
+   {
+    "id": "4",
+    "user_id": "1",
+    "product_id": "18527",
+    "pet_id": null,
+    "last_order_id": "34720",
+    "last_purchase_date": "2026-07-20",
+    "purchase_count": "1",
+    "avg_interval_days": "30",
+    "predicted_empty_date": "2026-07-30",
+    "confidence": "0.40",
+    "status": "notified",
+    "created_at": "2026-07-20 09:48:28",
+    "updated_at": "2026-07-30 19:08:22"
+   }
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
