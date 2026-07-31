@@ -1,0 +1,71 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2009,
+ "clean": {
+  "VERSIJA": "s328-v1",
+  "bytes": 10025,
+  "sha_ok": true,
+  "lentele": "gaj6_ps_pet_profile_drafts",
+  "egzistuoja": true,
+  "stulpeliai": [
+   "id",
+   "draft_id",
+   "email_hash",
+   "payload_json",
+   "payload_version",
+   "status",
+   "created_at",
+   "updated_at",
+   "expires_at",
+   "claim_started_at",
+   "claimed_at",
+   "claimed_user_id",
+   "claimed_pet_id"
+  ],
+  "indeksai": {
+   "PRIMARY": [
+    "id"
+   ],
+   "draft_id": [
+    "draft_id"
+   ],
+   "status_expires": [
+    "status",
+    "expires_at"
+   ],
+   "email_hash_idx": [
+    "email_hash"
+   ],
+   "claimed_user": [
+    "claimed_user_id"
+   ],
+   "claimed_pet": [
+    "claimed_pet_id"
+   ]
+  },
+  "testai": {
+   "1_sukurta": "OK 1324d86b",
+   "2_svetimas_pastas": "email_mismatch",
+   "3_teisingas": "ok/claiming",
+   "4_antras_tabas": "race_lost",
+   "5_complete": 1,
+   "5_status": "claimed",
+   "5_payload_null": true,
+   "5_pet_id": "12345",
+   "6_kartotinis": "already_claimed",
+   "7_abort": 1,
+   "7_status_po": "active",
+   "7_atgaunamas": "TAIP",
+   "8_pakibes_perimtas": "TAIP",
+   "9_pasibaiges": "expired",
+   "10_istrinta": 1,
+   "10_claimed_liko": "TAIP",
+   "10_expired_dingo": "TAIP",
+   "11_normalizacija": "sutampa",
+   "11_hash_ne_sha256": "TAIP (HMAC)"
+  },
+  "isvalyta": 2,
+  "liko_lenteleje": 0
+ },
+ "site": "200"
+}
