@@ -1,13 +1,14 @@
 {
- "sid": 1966,
+ "sid": 1967,
  "setup": {
   "cart_id": "c_e2e_recovery",
   "prekes": [
    34498,
    34488
   ],
-  "link": "https://dev.avesa.lt/atkurti-krepseli/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19lMmVfcmVjb3ZlcnkiLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzg2MDk1NjU0LCJub25jZSI6IjI1Yzk2ZTBhMzk4YzA2MDkyZThjMjMzNmE2NjhjNGUzIiwia2V5X2lkIjoidjIifQ.060090472b6acc181dcca0c5c1313188b76e72b96b4c30341f5077d4c80496c4"
+  "link": "https://dev.avesa.lt/atkurti-krepseli/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19lMmVfcmVjb3ZlcnkiLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzg2MDk1ODk2LCJub25jZSI6ImFkMGZmZGNkY2JmNGUxMGI2NWYyZWFjMmMyOTBkOTU2Iiwia2V5X2lkIjoidjIifQ.bb5ba85e381ddf0cd02a10914d1a666b25f14b748dff8ed601edfceb72ac742b"
  },
+ "go1": true,
  "krepselis_pries": "Slapukai ir privatumas Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir",
  "get": {
   "status": 200,
@@ -17,5 +18,20 @@
   "forma": true,
   "mygtukas": true
  },
- "browser_err": "Error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://dev.avesa.lt/cart/\nCall log:\n  - navigating to \"https://dev.avesa.lt/cart/\", waiting until \"domcontentloaded\"\n"
+ "go2": true,
+ "krepselis_po_GET": {
+  "tuscias": 1,
+  "tekstas": "Slapukai ir privatumas Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir"
+ },
+ "nav_warn": "Error: page.waitForNavigation: net::ERR_EMPTY_RESPONSE\n=========================== logs ===========================\nwaiting for navigation u",
+ "po_POST": {
+  "url": "https://dev.avesa.lt/cart/",
+  "krepselio_psl": 1,
+  "text": "Slapukai ir privatumas Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir rinkodaros slapukus įjungiame tik jums sutikus. PRIIMTI ATMESTI NUOSTATOS Slapukų politika Privatumo politika Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: PRISIJUNGTI KREPŠELIS / 0,00 € 0 ŠUNIMS KATĖMS GRAUŽIKAMS PAUKŠČIAMS ŽUVIMS RINKINIAI PASIŪLYMAI SPRENDIMAI KREPŠELIS APMOKĖJIMAS UŽSAKYMAS "
+ },
+ "krepselio_eilutes": [],
+ "pakartotinis": {
+  "text": "Nuoroda nebegalioja Ši krepšelio atkūrimo nuoroda nebegalioja arba jau buvo panaudota. Grįžti į petshop.lt",
+  "forma": false
+ }
 }
