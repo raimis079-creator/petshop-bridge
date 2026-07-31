@@ -1,0 +1,114 @@
+{
+ "deactivated": [],
+ "sid": 1986,
+ "dry": {
+  "pages": {
+   "kontaktai": 34521,
+   "contact": "nera",
+   "pagalba": "nera",
+   "support": "nera",
+   "duk": 34595,
+   "klausimai": "nera",
+   "pagalba-del-uzsakymo": "nera"
+  },
+  "form_plugins": [
+   "WPForms Lite"
+  ],
+  "cf7_active": "nera",
+  "pages_with_forms": {
+   "kontaktai": {
+    "contact-form-7": 0,
+    "ux_html": 0,
+    "form_tag": 0,
+    "ilgis": 1839,
+    "ištrauka": ".pk-grid{display:grid;grid-template-columns:5fr 7fr;gap:32px;margin:8px 0 32px} .pk-left h2{margin-top:0} .pk-box{background:#F7F7F5;border-radius:8px;padding:20px 24px;margin:0 0 16px} .pk-box p{margin:0 0 8px} .pk-box p:last-child{margin:0} .pk-tel{font-size:1.25rem;font-weight:700;color:#"
+   },
+   "duk": {
+    "contact-form-7": 0,
+    "ux_html": 0,
+    "form_tag": 0,
+    "ilgis": 6340,
+    "ištrauka": "Trumpai: Čia rasite atsakymus į dažniausius klausimus apie užsakymą, apmokėjimą, pristatymą, grąžinimą ir prekių pasirinkimą. Jei atsakymo nerandate — parašykite arba paskambinkite, mielai padėsime.Užsakymas[accordion][accordion-ite"
+   }
+  },
+  "wc_mail": {
+   "from_name": "Petshop.lt",
+   "from_address": "uzsakymai@petshop.lt"
+  },
+  "laisko_headers": [
+   {
+    "to": "uzsakymai@petshop.lt",
+    "s": "Naujas užsakymas Nr. 34753 — 2026-07-31",
+    "headers": "Content-Type: text/html\r\n"
+   },
+   {
+    "to": "sup@example.com",
+    "s": "Jūsų užsakymas Nr. 34753 — apmokėjimas gautas",
+    "headers": "Content-Type: text/html\r\nReply-to: Petshop.lt <uzsakymai@petshop.lt>\r\n"
+   }
+  ],
+  "smtp": {
+   "mailer": "smtp",
+   "from_email": "terra@petshop.lt",
+   "from_name": "Petshop.lt",
+   "return_path": true
+  },
+  "rest": []
+ },
+ "apply": {
+  "pages": {
+   "kontaktai": 34521,
+   "contact": "nera",
+   "pagalba": "nera",
+   "support": "nera",
+   "duk": 34595,
+   "klausimai": "nera",
+   "pagalba-del-uzsakymo": "nera"
+  },
+  "form_plugins": [
+   "WPForms Lite"
+  ],
+  "cf7_active": "nera",
+  "pages_with_forms": {
+   "kontaktai": {
+    "contact-form-7": 0,
+    "ux_html": 0,
+    "form_tag": 0,
+    "ilgis": 1839,
+    "ištrauka": ".pk-grid{display:grid;grid-template-columns:5fr 7fr;gap:32px;margin:8px 0 32px} .pk-left h2{margin-top:0} .pk-box{background:#F7F7F5;border-radius:8px;padding:20px 24px;margin:0 0 16px} .pk-box p{margin:0 0 8px} .pk-box p:last-child{margin:0} .pk-tel{font-size:1.25rem;font-weight:700;color:#"
+   },
+   "duk": {
+    "contact-form-7": 0,
+    "ux_html": 0,
+    "form_tag": 0,
+    "ilgis": 6340,
+    "ištrauka": "Trumpai: Čia rasite atsakymus į dažniausius klausimus apie užsakymą, apmokėjimą, pristatymą, grąžinimą ir prekių pasirinkimą. Jei atsakymo nerandate — parašykite arba paskambinkite, mielai padėsime.Užsakymas[accordion][accordion-ite"
+   }
+  },
+  "wc_mail": {
+   "from_name": "Petshop.lt",
+   "from_address": "uzsakymai@petshop.lt"
+  },
+  "laisko_headers": [
+   {
+    "to": "uzsakymai@petshop.lt",
+    "s": "Naujas užsakymas Nr. 34754 — 2026-07-31",
+    "headers": "Content-Type: text/html\r\n"
+   },
+   {
+    "to": "sup@example.com",
+    "s": "Jūsų užsakymas Nr. 34754 — apmokėjimas gautas",
+    "headers": "Content-Type: text/html\r\nReply-to: Petshop.lt <uzsakymai@petshop.lt>\r\n"
+   }
+  ],
+  "smtp": {
+   "mailer": "smtp",
+   "from_email": "terra@petshop.lt",
+   "from_name": "Petshop.lt",
+   "return_path": true
+  },
+  "rest": []
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
