@@ -1,0 +1,26 @@
+{
+ "deactivated": [],
+ "sid": 1954,
+ "dry": {
+  "deploy": {
+   "class-shipments.php": "MATCH",
+   "class-event-emitters.php": "MATCH",
+   "petshop-core.php": "MATCH",
+   "functions.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo"
+ },
+ "apply": {
+  "deploy": {
+   "class-shipments.php": "MATCH",
+   "class-event-emitters.php": "MATCH",
+   "petshop-core.php": "MATCH",
+   "functions.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
