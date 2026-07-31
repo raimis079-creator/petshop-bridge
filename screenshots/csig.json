@@ -1,0 +1,98 @@
+{
+ "deactivated": [],
+ "sid": 1958,
+ "dry": {
+  "sig": "$email, $consent, $source=opt, $customer_id=opt",
+  "body": "\tfunction ps_set_marketing_consent( $email, $consent, $source = 'unknown', $customer_id = 0 ) {\n\t\treturn Petshop_Consent_Sync::set_marketing_consent( $email, $consent, $source, $customer_id );\n\t}\n",
+  "log_record": {
+   "sig": "$data",
+   "body": "\tpublic static function record( array $data ) {\n\t\tglobal $wpdb;\n\t\tif ( empty( $data['email'] ) || ! isset( $data['to_value'] ) || empty( $data['field'] ) ) {\n\t\t\treturn false;\n\t\t}\n\n\t\t$ip = isset( $data['ip'] ) ? $data['ip'] : ( isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '' );\n\t\t$ua = isset( $data['user_agent'] ) ? $data['user_agent'] : ( isset( $_SERVER['HTTP_USER_AGENT'] ) ? substr( sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ), 0, 255 ) : '' );\n\n\t\t$inserted = $wpdb->insert(\n\t\t\tself::table_name(),\n\t\t\tarray(\n\t\t\t\t'customer_id' => isset( $data['customer_id'] ) ? (int) $data['customer_id'] : 0,\n\t\t\t\t'email'       => sanitize_email( $data['email'] ),\n\t\t\t\t'field'       => substr( $data['field'], 0, 48 ),\n\t\t\t\t'from_value'  => isset( $data['from_value'] ) ? substr( (string) $data['from_value'], 0, 16 ) : null,\n\t\t\t\t'to_value'    => substr( (string) $data['to_value'], 0, 16 ),\n\t\t\t\t'source'      => substr( isset( $data['source'] ) ? $data['source'] : 'unknown', 0, 32 ),\n\t\t\t\t'ip'          => substr( $ip, 0, 45 ),\n\t\t\t\t'user_agent'  => $ua,\n\t\t\t\t'changed_at'  => current_time( 'mysql', true ),\n\t\t\t),\n"
+  },
+  "log_current_value": {
+   "sig": "$email, $field=opt",
+   "body": "\tpublic static function current_value( $email, $field = 'marketing_consent' ) {\n\t\tglobal $wpdb;\n\t\treturn $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT to_value FROM `\" . self::table_name() . \"`\n\t\t\t WHERE email = %s AND field = %s\n\t\t\t ORDER BY id DESC LIMIT 1\",\n\t\t\tsanitize_email( $email ),\n\t\t\t$field\n\t\t) );\n\t}\n"
+  },
+  "po_true": {
+   "get": "true",
+   "tipas": "string"
+  },
+  "po_false": {
+   "get": "false",
+   "tipas": "string"
+  },
+  "rows": [
+   {
+    "id": "20",
+    "customer_id": "0",
+    "email": "consent-sig@example.com",
+    "field": "marketing_consent",
+    "from_value": "true",
+    "to_value": "false",
+    "source": "t2",
+    "ip": "52.173.237.214",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:53:41"
+   },
+   {
+    "id": "19",
+    "customer_id": "0",
+    "email": "consent-sig@example.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "t1",
+    "ip": "52.173.237.214",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:53:41"
+   }
+  ]
+ },
+ "apply": {
+  "sig": "$email, $consent, $source=opt, $customer_id=opt",
+  "body": "\tfunction ps_set_marketing_consent( $email, $consent, $source = 'unknown', $customer_id = 0 ) {\n\t\treturn Petshop_Consent_Sync::set_marketing_consent( $email, $consent, $source, $customer_id );\n\t}\n",
+  "log_record": {
+   "sig": "$data",
+   "body": "\tpublic static function record( array $data ) {\n\t\tglobal $wpdb;\n\t\tif ( empty( $data['email'] ) || ! isset( $data['to_value'] ) || empty( $data['field'] ) ) {\n\t\t\treturn false;\n\t\t}\n\n\t\t$ip = isset( $data['ip'] ) ? $data['ip'] : ( isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '' );\n\t\t$ua = isset( $data['user_agent'] ) ? $data['user_agent'] : ( isset( $_SERVER['HTTP_USER_AGENT'] ) ? substr( sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ), 0, 255 ) : '' );\n\n\t\t$inserted = $wpdb->insert(\n\t\t\tself::table_name(),\n\t\t\tarray(\n\t\t\t\t'customer_id' => isset( $data['customer_id'] ) ? (int) $data['customer_id'] : 0,\n\t\t\t\t'email'       => sanitize_email( $data['email'] ),\n\t\t\t\t'field'       => substr( $data['field'], 0, 48 ),\n\t\t\t\t'from_value'  => isset( $data['from_value'] ) ? substr( (string) $data['from_value'], 0, 16 ) : null,\n\t\t\t\t'to_value'    => substr( (string) $data['to_value'], 0, 16 ),\n\t\t\t\t'source'      => substr( isset( $data['source'] ) ? $data['source'] : 'unknown', 0, 32 ),\n\t\t\t\t'ip'          => substr( $ip, 0, 45 ),\n\t\t\t\t'user_agent'  => $ua,\n\t\t\t\t'changed_at'  => current_time( 'mysql', true ),\n\t\t\t),\n"
+  },
+  "log_current_value": {
+   "sig": "$email, $field=opt",
+   "body": "\tpublic static function current_value( $email, $field = 'marketing_consent' ) {\n\t\tglobal $wpdb;\n\t\treturn $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT to_value FROM `\" . self::table_name() . \"`\n\t\t\t WHERE email = %s AND field = %s\n\t\t\t ORDER BY id DESC LIMIT 1\",\n\t\t\tsanitize_email( $email ),\n\t\t\t$field\n\t\t) );\n\t}\n"
+  },
+  "po_true": {
+   "get": "true",
+   "tipas": "string"
+  },
+  "po_false": {
+   "get": "false",
+   "tipas": "string"
+  },
+  "rows": [
+   {
+    "id": "22",
+    "customer_id": "0",
+    "email": "consent-sig@example.com",
+    "field": "marketing_consent",
+    "from_value": "true",
+    "to_value": "false",
+    "source": "t2",
+    "ip": "52.173.237.214",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:53:44"
+   },
+   {
+    "id": "21",
+    "customer_id": "0",
+    "email": "consent-sig@example.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "t1",
+    "ip": "52.173.237.214",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:53:44"
+   }
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
