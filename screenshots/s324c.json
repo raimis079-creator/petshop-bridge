@@ -1,0 +1,151 @@
+{
+ "deploy": {
+  "class-cart-abandonment.php": "MATCH",
+  "cart-abandoned-2.php": "MATCH",
+  "class-email-dispatch.php": "MATCH",
+  "site": 200
+ },
+ "setup": {
+  "preke": 34498,
+  "carts": {
+   "A_normalus": {
+    "cart": "c_s2_A_normalus",
+    "sent_at": "2026-07-30 09:41:46"
+   },
+   "B_converted": {
+    "cart": "c_s2_B_converted",
+    "sent_at": "2026-07-30 09:41:46"
+   },
+   "C_visos_dingusios": {
+    "cart": "c_s2_C_visos_dingusios",
+    "sent_at": "2026-07-30 09:41:46"
+   },
+   "D_per_anksti": {
+    "cart": "c_s2_D_per_anksti",
+    "sent_at": "2026-07-31 09:41:46"
+   }
+  }
+ },
+ "run": {
+  "stage1_jobs": [
+   {
+    "job_key": "cart_abandoned:c_s2_A_normalus:stage1",
+    "status": "sent",
+    "sent_at": "2026-07-30 09:41:46"
+   },
+   {
+    "job_key": "cart_abandoned:c_s2_B_converted:stage1",
+    "status": "sent",
+    "sent_at": "2026-07-30 09:41:46"
+   },
+   {
+    "job_key": "cart_abandoned:c_s2_C_visos_dingusios:stage1",
+    "status": "sent",
+    "sent_at": "2026-07-30 09:41:46"
+   },
+   {
+    "job_key": "cart_abandoned:c_s2_D_per_anksti:stage1",
+    "status": "sent",
+    "sent_at": "2026-07-31 09:41:46"
+   }
+  ],
+  "now_utc": "2026-07-31 11:41:48",
+  "dry": {
+   "dry_run": true,
+   "cutoff": "2026-07-30 11:41:48",
+   "candidates": 3,
+   "queued": 0,
+   "skipped": [
+    [
+     "c_s2_C_visos_dingusios",
+     "no_valid_products"
+    ],
+    [
+     "c_s2_B_converted",
+     "converted"
+    ]
+   ],
+   "details": [
+    {
+     "cart_id": "c_s2_A_normalus",
+     "action": "WOULD_QUEUE",
+     "items": 1
+    }
+   ]
+  },
+  "run": {
+   "dry_run": false,
+   "cutoff": "2026-07-30 11:41:48",
+   "candidates": 3,
+   "queued": 1,
+   "skipped": [
+    [
+     "c_s2_C_visos_dingusios",
+     "no_valid_products"
+    ],
+    [
+     "c_s2_B_converted",
+     "converted"
+    ]
+   ],
+   "details": [
+    {
+     "cart_id": "c_s2_A_normalus",
+     "action": "QUEUED",
+     "token_reused": 1,
+     "items": 1
+    }
+   ]
+  },
+  "run2": {
+   "dry_run": false,
+   "cutoff": "2026-07-30 11:41:48",
+   "candidates": 2,
+   "queued": 0,
+   "skipped": [
+    [
+     "c_s2_C_visos_dingusios",
+     "no_valid_products"
+    ],
+    [
+     "c_s2_B_converted",
+     "converted"
+    ]
+   ],
+   "details": []
+  },
+  "jobs": [
+   {
+    "job_key": "cart_abandoned:c_s2_A_normalus:stage2",
+    "flow": "cart_abandoned_2",
+    "flow_class": "marketing",
+    "status": "pending",
+    "skip_reason": null,
+    "scheduled_at": "2026-07-31 11:41:48",
+    "context_json": "{\"cart_id\":\"c_s2_A_normalus\",\"recovery_url\":\"https:\\/\\/dev.avesa.lt\\/atkurti-krepseli\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19zMl9BX25vcm1hbHVzIiwiYWN0aW9uIjoiIiwiZXhwaXJlc19hdCI6MTc4NjEwMjkwNiwibm9uY2UiOiI4ZjA1NmUzYzg5ZGZlYTVlOTYxY2Y1NjU2MDgwNTA2NiIsImtleV9pZCI6InYyIn0.eb2e3268d60eefbf0d5645dfe6a7c13de884497416020381646005dfb51c03ad\",\"token_reused\":1}"
+   }
+  ],
+  "send": {
+   "dry_run": false,
+   "picked": 1,
+   "results": [
+    {
+     "id": 25,
+     "flow": "cart_abandoned_2",
+     "action": "SENT",
+     "msg_id": "",
+     "error": ""
+    }
+   ]
+  },
+  "jobs_po": [
+   {
+    "job_key": "cart_abandoned:c_s2_A_normalus:stage2",
+    "status": "sent",
+    "skip_reason": null,
+    "subject": "Jūsų krepšelis vis dar laukia",
+    "provider_message_id": ""
+   }
+  ]
+ }
+}
