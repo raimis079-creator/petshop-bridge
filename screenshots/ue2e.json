@@ -1,0 +1,54 @@
+{
+ "sid": 1961,
+ "setup": {
+  "html_len": 2267,
+  "unsub_url": "https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzkzMjY1Mjg1LCJub25jZSI6IjhlNzcxMGQ5NDU2M2M1ZTJhOTdjZTJiOGMzMzBkZTU2Iiwia2V5X2lkIjoidjIifQ.d7fc7ce7bd342ad82207c1cf583c80893a4758fb54eb4dbfedfc22a9666c4246",
+  "consent": "true",
+  "has_consent": 1,
+  "suppressed": 0
+ },
+ "url": "https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzkzMjY1Mjg1LCJub25jZSI6IjhlNzcxMGQ5NDU2M2M1ZTJhOTdjZTJiOGMzMzBkZTU2Iiwia2V5X2lkIjoidjIifQ.d7fc7ce7bd342ad82207c1cf583c80893a4758fb54eb4dbfedfc22a9666c4246",
+ "get": {
+  "status": 200,
+  "url": "https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzkzMjY1Mjg1LCJub25jZSI6IjhlNzcxMGQ5NDU2M2M1ZTJhOTdjZTJiOGMzMzBkZTU2Iiwia2V5X2lkIjoidjIifQ.d7fc7ce7bd342ad82207c1cf583c80893a4758fb54eb4dbfedfc22a9666c4246",
+  "https": 1,
+  "title": "Atsisakyti pranešimų — Petshop.lt",
+  "text": "Atsisakyti pranešimų Ar tikrai norite nebegauti Petshop.lt naujienų ir pasiūlymų? Užsakymų patvirtinimus, siuntos pranešimus ir jūsų pačių nustatytus priminimus ir toliau gausite — jie nėra reklama. Patvirtinti atsisakymą",
+  "turi_forma": true,
+  "turi_mygtuka": true
+ },
+ "po_GET": {
+  "consent_raw": "true",
+  "has_consent": 1,
+  "marketing_supp": 0,
+  "transact_supp": 0,
+  "elig_marketing": true,
+  "elig_service": true,
+  "elig_transact": true
+ },
+ "post": {
+  "url": "https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzkzMjY1Mjg1LCJub25jZSI6IjhlNzcxMGQ5NDU2M2M1ZTJhOTdjZTJiOGMzMzBkZTU2Iiwia2V5X2lkIjoidjIifQ.d7fc7ce7bd342ad82207c1cf583c80893a4758fb54eb4dbfedfc22a9666c4246",
+  "text": "Jūsų pasirinkimas išsaugotas Daugiau kampanijinių laiškų nesiųsime. Užsakymų ir paskyros informaciją, jei ja naudositės, toliau gausite įprastai. Grįžti į petshop.lt"
+ },
+ "po_POST": {
+  "consent_raw": "false",
+  "has_consent": 0,
+  "marketing_supp": 1,
+  "transact_supp": 0,
+  "elig_marketing": false,
+  "elig_service": true,
+  "elig_transact": true
+ },
+ "pakartotinis": {
+  "text": "Nuoroda nebegalioja Ši atsisakymo nuoroda nebegalioja arba jau buvo panaudota. Pranešimų nustatymus galite pakeisti savo paskyroje.",
+  "turi_forma": false
+ },
+ "sugadintas": {
+  "text": "Nuoroda nebegalioja Ši atsisakymo nuoroda nebegalioja arba jau buvo panaudota. Pranešimų nustatymus galite pakeisti savo paskyroje.",
+  "atskleidzia_pasta": "NE"
+ },
+ "tuscias": {
+  "text": "Nuoroda neteisinga Ši nuoroda nebegalioja. Pranešimų nustatymus galite pakeisti savo paskyroje.",
+  "atskleidzia_pasta": "NE"
+ }
+}
