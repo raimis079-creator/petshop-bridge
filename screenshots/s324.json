@@ -1,0 +1,61 @@
+{
+ "deploy": {
+  "class-cart-abandonment.php": "MATCH",
+  "cart-abandoned-2.php": "MATCH",
+  "site": 200
+ },
+ "setup": {
+  "preke": 34498,
+  "carts": {
+   "A_normalus": {
+    "cart": "c_s2_A_normalus",
+    "sent_at": "2026-07-30 09:31:22"
+   },
+   "B_converted": {
+    "cart": "c_s2_B_converted",
+    "sent_at": "2026-07-30 09:31:22"
+   },
+   "C_visos_dingusios": {
+    "cart": "c_s2_C_visos_dingusios",
+    "sent_at": "2026-07-30 09:31:22"
+   },
+   "D_per_anksti": {
+    "cart": "c_s2_D_per_anksti",
+    "sent_at": "2026-07-31 09:31:22"
+   }
+  }
+ },
+ "run": {
+  "dry": {
+   "dry_run": true,
+   "cutoff": "2026-07-30 11:31:24",
+   "candidates": 0,
+   "queued": 0,
+   "skipped": [],
+   "details": []
+  },
+  "run": {
+   "dry_run": false,
+   "cutoff": "2026-07-30 11:31:24",
+   "candidates": 0,
+   "queued": 0,
+   "skipped": [],
+   "details": []
+  },
+  "run2": {
+   "dry_run": false,
+   "cutoff": "2026-07-30 11:31:24",
+   "candidates": 0,
+   "queued": 0,
+   "skipped": [],
+   "details": []
+  },
+  "jobs": [],
+  "send": {
+   "dry_run": false,
+   "picked": 0,
+   "results": []
+  },
+  "jobs_po": []
+ }
+}
