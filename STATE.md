@@ -162,7 +162,7 @@ Idempotencijos ar ciklo raktas NEGALI buti sudarytas is lauko,
 kuri PATS atliekamas veiksmas pakeicia.
 ```
 Galioja NE tik refill — ta pati taisykle prenumeratoms, priminimams ir visiems cikliniams srautams.
-**Kaip issilinde (S323):** ciklo zyma emiau is `predicted_someth`... `predicted_empty_date`, bet feedback ta data PAKEICIA -> antras atsakymas praejo (avg 24->29, ev 1->2). Pataisa: ciklo raktas = `last_order_id` -> `last_purchase_date` -> `created_at`.
+**Kaip issilinde (S323):** ciklo zyma emiau is `predicted_empty_date`, bet feedback ta data PAKEICIA -> antras atsakymas praejo (avg 24->29, ev 1->2). Pataisa: ciklo raktas = `last_order_id` -> `last_purchase_date` -> `created_at`.
 
 ## REFILL KALIBRAVIMAS (S323) — VEIKIA
 ```
