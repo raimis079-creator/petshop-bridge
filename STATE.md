@@ -1,7 +1,8 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31 (2)** (**S318 sekimo URL pataisyti realiais numeriais + S319 keliu siuntu modelis**). **2026-07-31** (**S317 apleistu krepseliu detektorius UZBAIGTAS; toliau S318 recovery tokenas**). **2026-07-30 (5)** (**S316 krepselio tapatybe + aktyvumo sekimas; toliau S317 detektorius**). **2026-07-30 (4)** (**KANALU VALDYMAS: S314 suppression + S315 kontaktu politika; Sender delivery webhooku NETURI**). **2026-07-30 (3)** (**DISPATCH GRANDINE UZDARYTA: S310-S313, Woo tracking laiske**). **2026-07-30 (2)** (**EMAIL GRANDINE ATIDARYTA: SPF pataisytas, adapteris S308, Dispatch Layer S309 E2E PRAEJO**). **2026-07-30** (**S305 refill konservams ISTAISYTA + Mixed Content saknis uzdaryta + lojalumas uzrakintas TZ v1.59**). Ankstesnis: **2026-07-18** (**Checksum normalizacija promotion metu (path A) + schema migracija dokumentuota**; sesijos snippetai išvalyti 74/0). Ankstesnis: **2026-07-18** (**Provenance promotion importeris pastatytas + 6/6 būsenų matrica ZZTEST**; canonicalizeris nuolatinis 9/9). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris perkeltas į nuolatinį kodą (9/9 testai)** + oficialaus importerio kontraktas užrakintas; 241/242/243 needs_review). Ankstesnis: **2026-07-18** (**241/242/243 KARANTINUOTOS needs_review** — norma su gamintojo oficialiu šaltiniu nesutikrinta, production DAR NELEIDŽIAMAS). Ankstesnis: **2026-07-18** (**chash_v1 canonicalizeris ATKURTAS (222/222), 3 Exclusion lentelės PERKURTOS transakciškai** su teisingu hash + provenance + regression testas). Ankstesnis: **2026-07-18** (**3 Exclusion šėrimo lentelės sukurtos** iš gamintojo aprašymo, Calculator skaičiuoja; Package sluoksnis UŽDARYTAS). Ankstesnis: **2026-07-18** (**Package sluoksnis UŽDARYTAS** — Resolver grynas 29/29, Provider trust kontraktas su fix_to įrodymu; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package Resolver v2 — ortogonalios dimensijos** 35/35; assignment_trust modelis + backfill audito poreikis). Ankstesnis: **2026-07-18** (**Package Resolver PROTOTIPAS validuotas** — 31/31; kitas = Condition_Mapper). Ankstesnis: **2026-07-18** (**Package sluoksnio sutartis UŽRAKINTA** — Provider/Resolver padalinti, trust gate, 2 fixture; kitas = kodas). Ankstesnis: **2026-07-18** (**condition_map_v1 UŽRAKINTAS** — 3 IDENTITY taisyklės iš 3-sluoksnio audito; Mapper sutartis baigta). Ankstesnis: **2026-07-18** (**Monge/Farmina schemos defektai diagnozuoti** — modelio, ne gamintojo; atskiros pending būsenos + normalizavimo kelias). Ankstesnis: **2026-07-18** (**Condition schema auditas įrašytas** — 212 lentelių; Farmina #110 + 14 Monge = PENDING REVIEW). Ankstesnis: **2026-07-18** (**S212-C Step 4 — Feeding_Service KONTRAKTAS užrakintas** (dokumentas, ne kodas); condition mapping ir universalios eilutės = PENDING DATA AUDIT). Ankstesnis: **2026-07-18 popietė** (**S212-C: svorio laukų migracija APPLY įvykdyta** — `current_weight_kg`+`weight_updated_at`, backup+hash patikra, 0 warnings). Ankstesnis: **2026-07-18 diena** (**S212-C: kategorinių ašių kontraktas UŽDARYTAS (29/29), tikslus MVP baseline sukurtas**; svorio migracija — kitas žingsnis). Ankstesnis: **2026-07-18 diena** (**S212-C Calculator+Repository PROTOTIPAI validuoti** — 25/25 + 7/7; DAR NEINTEGRUOTA į petshop-core). Ankstesnis: **2026-07-18 rytas** (**S212-C ARCHITEKTŪRA užrakinta** — 3 sluoksnių servisas, A/B1/B2/C/D pakopos, atskiri porcijos ir refill autoritetai; petshop-core RECON baigtas — autoriteto matrica užrakinta; B formulių niekur nėra, C refill veikia). Ankstesnis: **2026-07-17/18 naktis** (**S212-B UŽDARYTAS** — šėrimo duomenų modelis, InnoDB migracija, canonical hash, CSV importeris; testai 23/23 + 17/17 + 5/5). Ankstesnis: **2026-07-16 vakaras** (S217 Quattro 12 lent./23 SKU; S218 Josera 5 lent./7 SKU; S219 Prins 0/23 (normos tik ant pakuotės/archyvo pav.); S220 Real Dog 0/21; **S221 Ontario 12 lent./20 SKU; S222 Exclusion +2 lent./4 SKU; S223 Gemon 9 lent./11 SKU (gamintojo PDF); **S224 RC UŽDARYTAS: 8 lent./12 SKU, 13/13 instock (LT+UK+PL, Playwright)**). Ankstesnis: **2026-07-15 vakaras** (po S204–S211 + strateginės sesijos: M8 anketa/login/redagavimas/produktų paieška gyvi; strateginis pivotas į €/dienos skaičiuoklę; TŽ MASTER v1.59; M8 „Mano augintinis" MASTER v3.2 — Raimio PC).
+> Paskutinį kartą atnaujinta: **2026-07-31** — S319 keliu siuntu modelis.
+> Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
 
@@ -15,6 +16,135 @@
 
 
 ---
+
+
+---
+
+# ============================================================
+# ★ DABARTINE BUKLE — VIENINTELIS BUKLES SALTINIS
+# ============================================================
+> Zemiau esantys datuoti ★★★ blokai yra ISTORIJA, NE bukle.
+> Jei prestarauja — GALIOJA SITAS skyrius.
+
+## PLUGIN'AI (dev.avesa.lt)
+```
+petshop-core        v0.20.0
+petshop-esp         v0.4.0   (Sender adapteris)
+petshop-xml         v1.5.18
+petshop-fbt         v1.4.3
+petshop-feeds       v1.0.0
+petshop-pragma      v1.0.0
+petshop-promotions  v1.1
+petshop-attributes  v1.0.0
+```
+
+## EMAIL GRANDINE — KAS VEIKIA
+```
+Woo eventas -> ps_event_log -> outbox (ps_email_jobs) -> eligibility
+            -> kanalinis suppression -> sablonas is repo
+            -> Sender /message/send -> ACCEPTED
+```
+- **`sent` = „Sender PRIEME uzklausa", NE „pristatyta".** Dashboarde vadinti **Accepted by provider**.
+- **Sender NETURI delivery/open/bounce webhooku.** Palaikomi tik `subscribers/updated` ir `subscribers/unsubscribed`. Statuso uzklausti taip pat negalima. Tai PLATFORMOS RIBA, ne skola.
+- **Bangos:** legacy reaktyvacija / founding / masiniai win-back -> **Sender kampanijos** (ten statistika YRA, reikia stop/go). Lifecycle (refill, priminimai, prenumerata) -> **musu dispatch**.
+
+## SRAUTU BUKLE
+| Srautas | Busena | Savininkas |
+| --- | --- | --- |
+| order_paid | eventas TAIP, dispatch laisko NE | **WooCommerce** (SMTP) |
+| order_shipped | eventas TAIP, dispatch laisko NE | **WooCommerce** (completed laiskas) |
+| refill_due | VEIKIA (eventas + job + sablonas) | musu dispatch |
+| cart_abandoned | detektorius VEIKIA, sablono DAR NERA | musu dispatch (marketing) |
+| post_purchase / win_back / legacy / founding | NEPASTATYTA | — |
+
+**TAISYKLE: vienas srautas — vienas savininkas.** Pries jungiant srauta prie dispatch — EMPIRISKAI patikrinti, kas jau siuncia (perimti `pre_wp_mail`, NE skaityti plugin'u koda).
+
+## MUSU LENTELES
+```
+ps_event_log          eventu istorija
+ps_email_jobs         outbox (skip_reason/deferred/decision_at/context_json)
+ps_email_suppression  KANALINIS (marketing|transactional), istorija su released_at
+ps_webhook_log        dedup_key UNIQUE
+ps_carts              krepselio tapatybe + last_cart_activity_at
+ps_shipments          visi tracking numeriai, UNIQUE(order_id,carrier,nr)
+ps_action_tokens      HMAC, peek/consume, scanner-safe
+ps_pets · ps_feeding_* · ps_refill_tracking · ps_reminders
+```
+
+## CRON
+```
+ps_email_dispatch_cron          5 min
+ps_cart_abandon_check           5 min
+ps_suppression_daily_reconcile  05:30
+ps_refill_daily_check           08:00
+ps_reminders_daily_check        09:00
+petshop_vf_sync_*               valandinis / 03:00 / 04:00
+petshop_pragma_monthly_export   5 d.
+```
+
+## SENDER PASKYRA
+```
+kontaktai   3 realus (testiniai isvalyti)
+grupes      PS_TEST · PS_ALL_ACTIVE · PS_LEGACY_IMPORT · PS_SUPPRESSED_OR_ARCHIVE
+PS_ laukai  26
+webhookai   subscribers/updated (QbYPpa) · subscribers/unsubscribed (QeZQ6d)
+domenas     petshop.lt verified/SPF/DKIM/DMARC = 1
+mail-tester 8,5/10 (−1,5 tik del Sender bendro IP 185.3.229.130 Barracuda/Hostkarma; Spamhaus SVARUS)
+```
+
+## SIUNTU SEKIMAS (S318/S319)
+```
+Venipak  https://venipak.lt/tracking/track/{pack_number}
+LP       https://www.post.lt/siuntu-sekimas?parcels={barcode}     <- parcels=, NE barcode=
+```
+Meta raktai: `venipak_shipping_order_data` -> `pack_numbers[]`; `_woo_lithuaniapost_barcode`.
+**Venipak plugin'as pack_numbers PERRASO** (dispatch.php:656) -> visi numeriai kaupiami `ps_shipments`.
+Laiske: >1 siunta -> „pristatomas N atskiromis siuntomis" + „Siunta X is N".
+
+## ATVIRI KLAUSIMAI (kieno)
+| Klausimas | Kas sprendzia |
+| --- | --- |
+| Q9: lojalumas — pluginas (WPLoyalty/myCred 80-150 EUR/men) ar savas BonusLedger | **Raimis**, iki 08-15 |
+| Flatsome social nuorodos (3 placeholder'iai + your@email) | **Raimis** |
+| Laiskas Sender palaikymui del IP Barracuda/Hostkarma | **Raimis** |
+| Duomenu retencija: kada trinti ps_carts/ps_shipments su el. pastais | **Raimis** (GDPR) |
+| Mailgun SPF include — ar gyvas petshop.lt per ji siuncia | **Raimis** patikrina laiska |
+
+## ZINOMOS SPRAGOS (samoningai paliktos)
+- Papildoma siunta PO issiusto laisko -> automatinio pranesimo nera (`notified_at` paruostas).
+- Woo custom laisko plain-text nepalaikomas (tema generuoja HTML per `wrap_message()`).
+- `cart_abandoned` sablono DAR NERA — detektorius kuria job'a, bet `template_missing`.
+- Dashboardo uzklausa turi skirti visu laiku / laikotarpio / testinius duomenis.
+- Du DRAFT workflow'ai Sender UI (API netrina, salinti ranka).
+- Snippetai deaktyvuoti bet neistrinti (REST DELETE grazina rest_cannot_delete).
+
+## BACKLOG
+- Produktas 34512: `_stock_status=instock` bet `is_in_stock()=false`. YRA filtras `woocommerce_product_is_in_stock`, prekes neturi nei `_vf_qty` nei `_zb_qty` -> greiciausiai TYCINE fulfillment logika. Ivardinti tikslu saltini.
+- SEO: 44 top-100 URL = 404 (20,5% viso srauto). Duomenys repo `analize/`. **NEPRADETI be Raimio.**
+
+## TECHNINES PASTABOS (kainavo run'us)
+- **Sender API:** `GET /fields|/subscribers|/groups` be `limit` grazina **10**. VISADA `?limit=100`.
+- **Sender trynimas:** TIK `DELETE /subscribers` su body `{"subscribers":[...]}`, ASINCHRONINIS (~10 s).
+- **Sender webhook kurimas IDEMPOTENTISKAS** — POST grazina ESAMO iraso ID. Create-and-delete probe SUNAIKINA esama konfiguracija.
+- **`ps_generate_token`:** `generate(array $args)` grazina **STRING**; TTL raktas `ttl_seconds`; `peek/consume` grazina `{valid,reason,row}` (NE `{ok,error}`).
+- **Tuscias SQL rezultatas != nera duomenu** — neegzistuojantis stulpelis grazina tuscia BE klaidos (`created_at` vs `emitted_at`, `name` vs `pet_name`).
+- **Deploy + testas TOJE PACIOJE uzklausoje NEVEIKIA** — klase jau uzkrauta is seno failo. Testuoti ATSKIRA uzklausa.
+- **Bridge snippet kurimo pakartojimas gali duoti DUBLIKATA** — matant „tuscia" pirma patikrinti, ar tai ne antrojo iskvietimo isvestis.
+- **phply parseris lūžta** ties `??` ir `const NAMESPACE` — tai PARSERIO riba, ne kodo klaida.
+- **functions.php deploy** — VISADA su auto-rollback (po irasymo atskira uzklausa i home_url; ne 200 -> grazinti sena).
+
+## LAUNCH KRITINIAI
+- Site URL/Home **BUTINAI `https://petshop.lt`**, NE http:// (kitaip mixed content kartosis).
+- Kitos opcijos su http://dev.avesa.lt: `wcdn_settings`, `cmplz_preloaded_privacy_info`. *(`woocommerce_email_header_image` jau isspręsta dinamiskai per attachment 3257.)*
+- AVPN/IAPV serijos reset i 101 · feed URL resubmit · „Discourage search engines" ISJUNGTI.
+
+---
+
+# ============================================================
+# ISTORIJA — NE BUKLES SALTINIS
+# ============================================================
+> Zemiau — chronologiniai sesiju irasai. Naudoti TIK kaip konteksta „kodel taip padaryta".
+> Dabartine bukle — VIRSUJE.
 
 # ============================================================
 # ★★★ 2026-07-31 (2) — S318 URL + S319 KELIOS SIUNTOS ★★★
