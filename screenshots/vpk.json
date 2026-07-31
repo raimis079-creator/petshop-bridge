@@ -1,0 +1,312 @@
+{
+ "deactivated": [],
+ "sid": 1945,
+ "dry": {
+  "plugins": [
+   {
+    "file": "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+    "name": "Shipping with Venipak for WooCommerce",
+    "ver": "1.26.3"
+   },
+   {
+    "file": "woo-lithuaniapost-main/woo-lithuaniapost.php",
+    "name": "UNISEND for WooCommerce",
+    "ver": "4.0.32"
+   }
+  ],
+  "meta_writes": [
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 225,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 311,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 320,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 659,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-product.php",
+    "line": 93,
+    "code": "$product->update_meta_data('shopup_venipak_shipping_min_age', sanitize_text_field( $_POST['shopup_venipak_shipping_min_age'] ) );"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-product.php",
+    "line": 98,
+    "code": "$product->update_meta_data('_venipak_total_shipments', sanitize_text_field( $_POST['_venipak_total_shipments'] ) );"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php",
+    "line": 390,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($order_meta));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 297,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 353,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_barcode', null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 354,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_id', null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 355,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CANCELED->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 422,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_lpexpress_shipping_method_instance_id', $lp_shipping_method->instance_id);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 491,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_returns_barcodes', json_encode($barcodes));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 566,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_PENDING->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 817,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CREATED->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 818,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_id', $parcel_id);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 828,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_weight', $parcel_request['parcel']['weight'] ?? null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 829,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 830,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 839,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 840,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal [0]->city));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 844,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_parcel_create_error', null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 942,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_returns_barcodes', json_encode($shipping_item_status->returnsBarcode));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 945,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_return_supported', true);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 948,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_barcode', $shipping_item_status->barcode);"
+   }
+  ],
+  "existing_meta_keys": [
+   "_vf_barcode",
+   "woo_lithuaniapost_allowed_terminal_parcel_locker",
+   "woo_lithuaniapost_allowed_terminal",
+   "shopup_venipak_shipping_min_age",
+   "_venipak_total_shipments",
+   "venipak_is_locker_excluded",
+   "venipak_pickup_point"
+  ],
+  "hpos_meta_keys": [
+   "venipak_pickup_point"
+  ]
+ },
+ "apply": {
+  "plugins": [
+   {
+    "file": "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+    "name": "Shipping with Venipak for WooCommerce",
+    "ver": "1.26.3"
+   },
+   {
+    "file": "woo-lithuaniapost-main/woo-lithuaniapost.php",
+    "name": "UNISEND for WooCommerce",
+    "ver": "4.0.32"
+   }
+  ],
+  "meta_writes": [
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 225,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 311,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 320,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "line": 659,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-product.php",
+    "line": 93,
+    "code": "$product->update_meta_data('shopup_venipak_shipping_min_age', sanitize_text_field( $_POST['shopup_venipak_shipping_min_age'] ) );"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-product.php",
+    "line": 98,
+    "code": "$product->update_meta_data('_venipak_total_shipments', sanitize_text_field( $_POST['_venipak_total_shipments'] ) );"
+   },
+   {
+    "file": "wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php",
+    "line": 390,
+    "code": "$order->update_meta_data('venipak_shipping_order_data', json_encode($order_meta));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 297,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 353,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_barcode', null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 354,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_id', null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 355,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CANCELED->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 422,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_lpexpress_shipping_method_instance_id', $lp_shipping_method->instance_id);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 491,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_returns_barcodes', json_encode($barcodes));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 566,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_PENDING->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 817,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CREATED->value);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 818,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_id', $parcel_id);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 828,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_weight', $parcel_request['parcel']['weight'] ?? null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 829,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 830,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 839,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 840,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal [0]->city));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 844,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_parcel_create_error', null);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 942,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_returns_barcodes', json_encode($shipping_item_status->returnsBarcode));"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 945,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_return_supported', true);"
+   },
+   {
+    "file": "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php",
+    "line": 948,
+    "code": "$order->update_meta_data('_woo_lithuaniapost_barcode', $shipping_item_status->barcode);"
+   }
+  ],
+  "existing_meta_keys": [
+   "_vf_barcode",
+   "woo_lithuaniapost_allowed_terminal_parcel_locker",
+   "woo_lithuaniapost_allowed_terminal",
+   "shopup_venipak_shipping_min_age",
+   "_venipak_total_shipments",
+   "venipak_is_locker_excluded",
+   "venipak_pickup_point"
+  ],
+  "hpos_meta_keys": [
+   "venipak_pickup_point"
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
