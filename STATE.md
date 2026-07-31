@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31** — S324 cart_abandoned stage2 + S325 refill sablonas. T-5/dunning/post-purchase BLOCKED BY M10.
+> Paskutinį kartą atnaujinta: **2026-07-31** — S326 post-purchase +2d DETEKTORIUS. Sablonas laukia Reply-To patvirtinimo.
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -178,6 +178,38 @@ Pries stage2 tikrinama IS NAUJO: stage1 sent · praejo 24 val. · stage2 dar ner
 `job_key = cart_abandoned:{cart_id}:stage2`.
 Tekstas is saltinio: „Krepselis vis dar laukia. Jei kilo klausimu del pasirinkimo — mielai padesime."
 **STEBETI:** `provider_message_id` tuscias su `example.com` adresu, nors status SENT. Su realiu adresu msg_id budavo.
+
+## ★★★ TESTU TAISYKLE — NESIUSTI REALIU LAISKU ★★★
+```
+1. Kiekviename teste, kuris kuria uzsakyma, `pre_wp_mail` perimamas
+   PRIES pirma uzsakymo veiksma — NE tik toje dalyje, kur tikrinami laiskai.
+2. Testiniams adresams NENAUDOTI `example.com` — jis NETURI MX iraso.
+   Naudoti allowlist adresa (raimundas@gyvunai.lt) arba domena su MX.
+```
+**Kaip issilinde (S326):** setup'e perеmiau wp_mail tik `run` etape, todel `payment_complete()` ir `update_status('completed')` issiunte REALIUS laiskus i `pp2d@example.com` -> ~9+ „Mail delivery failed" atmetimu i terra@petshop.lt.
+**ATMETIMAI KENKIA SIUNTIMO REPUTACIJAI** — ta pacia diena taiseme SPF, kad laiskai nekristu i spam.
+Tas pats paaiskina „provider_message_id tuscias su example.com": Sender prieme, bet pristatyti nebuvo kur.
+
+## POST-PURCHASE +2D (S326) — DETEKTORIUS VEIKIA, SABLONO DAR NERA
+**Savininko auditas:** WC siuncia 11 laisku, visi apie BUSENA; po „issiusta" TYLA. Review/follow-up plugin'u ir cron'u NERA. **Savininko neturi.**
+**★ Laikmatis nuo NEKINTANCIOS zymos `_ps_completed_at`** (deda `woocommerce_order_status_completed`, jei dar nera), NE nuo `post_modified` — kitaip uzsakymo redagavimas nukeltu +2 d. Irodyta: po redagavimo zyma NEPAKITO.
+Istoriniai uzsakymai BE zymos i kandidatus NEPATENKA — „seed" nereikia.
+`delay=0`. Palaiko HPOS ir postmeta. Stop: cancelled/refunded/failed/trash · dalinis grazinimas -> `skipped` (samoningai konservatyvu) · nera el. pasto · jau siusta.
+
+## „PRANESTI APIE PROBLEMA" — SPRENDIMAS B
+`/kontaktai/` YRA bet BE FORMOS · `/pagalba/` NERA · uzsakymui priristos formos NERA · WPForms Lite aktyvus bet nenaudojamas.
+WC laisku `Reply-To: uzsakymai@petshop.lt` VEIKIA.
+**Sprendimas: „atsakykite i si laiska"** — veikia is karto, be naujos support sistemos.
+**NEPATVIRTINTA:** ar Sender `/message/send` REALIAI pritaiko `reply_to`. API priima (200) objektu/eilute/camelCase, bet `headers:{Reply-To}` atmeta. 200 != pritaikyta. Issiusti REPLY TEST 1/2/3 — tikrinti per „Rodyti originala".
+Jei veiks — deti ADAPTERIO lygiu, ne sablone. Bet kuriuo atveju tekste rodyti ir adresa: „Atsakykite i si laiska arba parasykite uzsakymai@petshop.lt."
+**BACKLOG (A variantas):** uzsakymui prirista pagalbos forma `?order=&token=` su problemos kategorijomis. Imtis TIK kai laisvo formato atsakymai kels realu chaosa.
+
+## +2D TEKSTAS (Raimio patvirtintas)
+`+2 d.` nuo ISSIUNTIMO, ne nuo PRISTATYMO — laiskas NETURI teigti, kad siunta gauta.
+```
+Ar su uzsakymu viskas gerai?
+Jei siunta dar neatvyko arba kazkas negerai, atsakykite i si laiska — padesime isspresti.
+```
 
 ## ★★★ REGRESIJOS TAISYKLE — CIKLO RAKTAS ★★★
 ```
