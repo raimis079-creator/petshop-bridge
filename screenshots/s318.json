@@ -1,0 +1,24 @@
+{
+ "deactivated": [],
+ "sid": 1962,
+ "dry": {
+  "deploy": {
+   "class-cart-recovery.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "rewrite": 1
+ },
+ "apply": {
+  "deploy": {
+   "class-cart-recovery.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "rewrite": 1
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
