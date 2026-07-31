@@ -1,0 +1,84 @@
+{
+ "deactivated": [],
+ "sid": 1944,
+ "dry": {
+  "manage_stock": "yes",
+  "hold_stock_minutes": "60",
+  "notify_low_stock": "2",
+  "stock_format": "low_amount",
+  "reserved_table_exists": true,
+  "reserved_cols": [
+   "order_id",
+   "product_id",
+   "stock_quantity",
+   "timestamp",
+   "expires"
+  ],
+  "reserved_rows": 1,
+  "reserved_sample": [
+   {
+    "order_id": "34594",
+    "product_id": "15484",
+    "stock_quantity": "1",
+    "timestamp": "2026-07-10 16:59:06",
+    "expires": "2026-07-10 17:59:06"
+   }
+  ],
+  "reserve_fn_exists": 1,
+  "wc_version": "10.9.4",
+  "filter_is_in_stock": 1,
+  "p34512": {
+   "manage_stock": 0,
+   "stock_qty": null,
+   "stock_status": "instock",
+   "backorders": "no",
+   "is_in_stock": 0,
+   "meta_stock_status": "instock",
+   "meta_stock": "",
+   "meta_manage": "no",
+   "vf_qty": "",
+   "zb_qty": ""
+  }
+ },
+ "apply": {
+  "manage_stock": "yes",
+  "hold_stock_minutes": "60",
+  "notify_low_stock": "2",
+  "stock_format": "low_amount",
+  "reserved_table_exists": true,
+  "reserved_cols": [
+   "order_id",
+   "product_id",
+   "stock_quantity",
+   "timestamp",
+   "expires"
+  ],
+  "reserved_rows": 1,
+  "reserved_sample": [
+   {
+    "order_id": "34594",
+    "product_id": "15484",
+    "stock_quantity": "1",
+    "timestamp": "2026-07-10 16:59:06",
+    "expires": "2026-07-10 17:59:06"
+   }
+  ],
+  "reserve_fn_exists": 1,
+  "wc_version": "10.9.4",
+  "filter_is_in_stock": 1,
+  "p34512": {
+   "manage_stock": 0,
+   "stock_qty": null,
+   "stock_status": "instock",
+   "backorders": "no",
+   "is_in_stock": 0,
+   "meta_stock_status": "instock",
+   "meta_stock": "",
+   "meta_manage": "no",
+   "vf_qty": "",
+   "zb_qty": ""
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
