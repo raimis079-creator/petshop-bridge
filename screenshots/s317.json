@@ -1,8 +1,7 @@
 {
  "deactivated": [],
- "sid": 1941,
- "dry_raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Class &quot;Petshop_Cart_Abandonment&quot; not found in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:86\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook-&gt;apply_filters()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/d",
- "apply": {
+ "sid": 1943,
+ "dry": {
   "deploy": {
    "class-cart-abandonment.php": "MATCH",
    "class-email-dispatch.php": "MATCH",
@@ -10,67 +9,86 @@
   },
   "site": 200,
   "ROLLBACK": "nereikejo",
-  "test_product": 34512,
+  "test_product": 34510,
+  "test_product_info": {
+   "name": "Ruda kiaulės ausis, 1 vnt. × 20 vnt.",
+   "price": "23",
+   "in_stock": 1
+  },
   "dry": {
    "dry_run": true,
-   "cutoff": "2026-07-31 04:24:44",
-   "floor": "2026-07-24 06:24:44",
+   "cutoff": "2026-07-31 04:29:59",
+   "floor": "2026-07-24 06:29:59",
    "candidates": 2,
    "abandoned": 0,
    "events": 0,
    "jobs": 0,
    "no_email": 0,
-   "skipped": [
-    [
-     "c_test_abandon_A",
-     "no_valid_products"
-    ],
-    [
-     "c_test_abandon_D",
-     "no_valid_products"
-    ]
-   ],
+   "skipped": [],
    "expired": 1,
-   "details": []
+   "details": [
+    {
+     "cart_id": "c_test_abandon_D",
+     "action": "WOULD_ABANDON",
+     "items": 1,
+     "email": "nera"
+    },
+    {
+     "cart_id": "c_test_abandon_A",
+     "action": "WOULD_ABANDON",
+     "items": 1,
+     "email": "yra"
+    }
+   ]
   },
   "run1": {
    "dry_run": false,
-   "cutoff": "2026-07-31 04:24:44",
-   "floor": "2026-07-24 06:24:44",
+   "cutoff": "2026-07-31 04:29:59",
+   "floor": "2026-07-24 06:29:59",
    "candidates": 2,
-   "abandoned": 0,
-   "events": 0,
-   "jobs": 0,
-   "no_email": 0,
-   "skipped": [
-    [
-     "c_test_abandon_A",
-     "no_valid_products"
-    ],
-    [
-     "c_test_abandon_D",
-     "no_valid_products"
-    ]
-   ],
+   "abandoned": 2,
+   "events": 2,
+   "jobs": 1,
+   "no_email": 1,
+   "skipped": [],
    "expired": 1,
-   "details": []
+   "details": [
+    {
+     "cart_id": "c_test_abandon_D",
+     "action": "ABANDONED",
+     "items": 1,
+     "email": "nera"
+    },
+    {
+     "cart_id": "c_test_abandon_A",
+     "action": "ABANDONED",
+     "items": 1,
+     "email": "yra"
+    }
+   ]
   },
   "S1_su_email": {
    "row": {
     "cart_id": "c_test_abandon_A",
-    "status": "active",
+    "status": "abandoned",
     "converted_order_id": null,
-    "status_changed_at": "2026-07-31 06:24:44"
+    "status_changed_at": "2026-07-31 06:29:59"
    },
-   "events": 0,
-   "job": null
+   "events": 1,
+   "job": {
+    "job_key": "cart_abandoned:c_test_abandon_A:stage1",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "status": "pending",
+    "skip_reason": null
+   }
   },
   "S3_converted": {
    "row": {
     "cart_id": "c_test_abandon_C",
     "status": "active",
     "converted_order_id": "99999",
-    "status_changed_at": "2026-07-31 06:24:44"
+    "status_changed_at": "2026-07-31 06:29:59"
    },
    "events": 0,
    "job": null
@@ -78,11 +96,11 @@
   "be_email": {
    "row": {
     "cart_id": "c_test_abandon_D",
-    "status": "active",
+    "status": "abandoned",
     "converted_order_id": null,
-    "status_changed_at": "2026-07-31 06:24:44"
+    "status_changed_at": "2026-07-31 06:29:59"
    },
-   "events": 0,
+   "events": 1,
    "job": null
   },
   "per_senas": {
@@ -90,49 +108,44 @@
     "cart_id": "c_test_abandon_E",
     "status": "expired",
     "converted_order_id": null,
-    "status_changed_at": "2026-07-31 06:24:44"
+    "status_changed_at": "2026-07-31 06:29:59"
    },
    "events": 0
   },
   "run2": {
    "dry_run": false,
-   "cutoff": "2026-07-31 04:24:44",
-   "floor": "2026-07-24 06:24:44",
-   "candidates": 2,
+   "cutoff": "2026-07-31 04:29:59",
+   "floor": "2026-07-24 06:29:59",
+   "candidates": 0,
    "abandoned": 0,
    "events": 0,
    "jobs": 0,
    "no_email": 0,
-   "skipped": [
-    [
-     "c_test_abandon_A",
-     "no_valid_products"
-    ],
-    [
-     "c_test_abandon_D",
-     "no_valid_products"
-    ]
-   ],
+   "skipped": [],
    "expired": 0,
    "details": []
   },
   "S2_pakartotinis": {
-   "A_events_po_2_run": 0,
-   "A_status": "active",
-   "D_events_po_2_run": 0,
+   "A_events_po_2_run": 1,
+   "A_status": "abandoned",
+   "D_events_po_2_run": 1,
    "naujų_abandoned": 0
   },
   "A_po_konversijos": {
    "cart_id": "c_test_abandon_A",
    "status": "converted",
    "converted_order_id": "88888",
-   "status_changed_at": "2026-07-31 06:24:44"
+   "status_changed_at": "2026-07-31 06:29:59"
   },
   "stats": {
    "by_status": [
     {
+     "status": "abandoned",
+     "c": "1"
+    },
+    {
      "status": "active",
-     "c": "2"
+     "c": "1"
     },
     {
      "status": "converted",
@@ -143,7 +156,166 @@
      "c": "1"
     }
    ],
-   "seeded": "2026-07-31 06:24:44"
+   "seeded": "2026-07-31 06:29:59"
+  },
+  "cleaned": 0
+ },
+ "apply": {
+  "deploy": {
+   "class-cart-abandonment.php": "MATCH",
+   "class-email-dispatch.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "test_product": 34510,
+  "test_product_info": {
+   "name": "Ruda kiaulės ausis, 1 vnt. × 20 vnt.",
+   "price": "23",
+   "in_stock": 1
+  },
+  "dry": {
+   "dry_run": true,
+   "cutoff": "2026-07-31 04:30:03",
+   "floor": "2026-07-24 06:30:03",
+   "candidates": 2,
+   "abandoned": 0,
+   "events": 0,
+   "jobs": 0,
+   "no_email": 0,
+   "skipped": [],
+   "expired": 1,
+   "details": [
+    {
+     "cart_id": "c_test_abandon_D",
+     "action": "WOULD_ABANDON",
+     "items": 1,
+     "email": "nera"
+    },
+    {
+     "cart_id": "c_test_abandon_A",
+     "action": "WOULD_ABANDON",
+     "items": 1,
+     "email": "yra"
+    }
+   ]
+  },
+  "run1": {
+   "dry_run": false,
+   "cutoff": "2026-07-31 04:30:03",
+   "floor": "2026-07-24 06:30:03",
+   "candidates": 2,
+   "abandoned": 2,
+   "events": 2,
+   "jobs": 1,
+   "no_email": 1,
+   "skipped": [],
+   "expired": 1,
+   "details": [
+    {
+     "cart_id": "c_test_abandon_D",
+     "action": "ABANDONED",
+     "items": 1,
+     "email": "nera"
+    },
+    {
+     "cart_id": "c_test_abandon_A",
+     "action": "ABANDONED",
+     "items": 1,
+     "email": "yra"
+    }
+   ]
+  },
+  "S1_su_email": {
+   "row": {
+    "cart_id": "c_test_abandon_A",
+    "status": "abandoned",
+    "converted_order_id": null,
+    "status_changed_at": "2026-07-31 06:30:03"
+   },
+   "events": 1,
+   "job": {
+    "job_key": "cart_abandoned:c_test_abandon_A:stage1",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "status": "pending",
+    "skip_reason": null
+   }
+  },
+  "S3_converted": {
+   "row": {
+    "cart_id": "c_test_abandon_C",
+    "status": "active",
+    "converted_order_id": "99999",
+    "status_changed_at": "2026-07-31 06:30:03"
+   },
+   "events": 0,
+   "job": null
+  },
+  "be_email": {
+   "row": {
+    "cart_id": "c_test_abandon_D",
+    "status": "abandoned",
+    "converted_order_id": null,
+    "status_changed_at": "2026-07-31 06:30:03"
+   },
+   "events": 1,
+   "job": null
+  },
+  "per_senas": {
+   "row": {
+    "cart_id": "c_test_abandon_E",
+    "status": "expired",
+    "converted_order_id": null,
+    "status_changed_at": "2026-07-31 06:30:03"
+   },
+   "events": 0
+  },
+  "run2": {
+   "dry_run": false,
+   "cutoff": "2026-07-31 04:30:03",
+   "floor": "2026-07-24 06:30:03",
+   "candidates": 0,
+   "abandoned": 0,
+   "events": 0,
+   "jobs": 0,
+   "no_email": 0,
+   "skipped": [],
+   "expired": 0,
+   "details": []
+  },
+  "S2_pakartotinis": {
+   "A_events_po_2_run": 1,
+   "A_status": "abandoned",
+   "D_events_po_2_run": 1,
+   "naujų_abandoned": 0
+  },
+  "A_po_konversijos": {
+   "cart_id": "c_test_abandon_A",
+   "status": "converted",
+   "converted_order_id": "88888",
+   "status_changed_at": "2026-07-31 06:30:03"
+  },
+  "stats": {
+   "by_status": [
+    {
+     "status": "abandoned",
+     "c": "1"
+    },
+    {
+     "status": "active",
+     "c": "1"
+    },
+    {
+     "status": "converted",
+     "c": "1"
+    },
+    {
+     "status": "expired",
+     "c": "1"
+    }
+   ],
+   "seeded": "2026-07-31 06:30:03"
   },
   "cleaned": 0
  },
