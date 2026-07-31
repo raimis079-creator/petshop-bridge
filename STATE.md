@@ -42,8 +42,15 @@ laisku i Gautuosius.
   ir naujienlaiskiu nesiuntineja. Dabar: `v=spf1 a mx include:spf.serveriai.lt
   include:sendersrv.com ~all` (buvo 10/10 lookup'u, liko 5).
 - DNS valdomas **iv.lt**, NE serveriai.lt. Svarbu launch domeno perjungimui.
-- LIKO: Sender tracking CNAME `link.petshop.lt` (dabar nuorodos eina per bendra
+- LIKO: **Sender tracking CNAME** (dabar nuorodos eina per bendra
   `campaign-statistics.com` su svetima reputacija).
+  **HOSTNAME IMTI IS SENDER NUSTATYMU, NE IS UZRASU.** Ji generuoja Sender;
+  atkurtas is atminties gali skirtis vienu simboliu ir duotu veikianti CNAME
+  NE TAM subdomenui — tyli klaida, kurios niekas nepastebetu.
+  Musu iraso duomenys (du nepriklausomi taskai, sutampa): `link.petshop.lt`
+  — S189-C 2026-07-14 ir sis irasas. Varianto `links.petshop.lt` iraso NERA.
+  Vis tiek: pries DNS pakeitima ATIDARYTI Sender domeno nustatymus, nukopijuoti
+  tiksliai, ir naudoti TA PATI hostname visur (Sender, DNS CNAME, STATE.md).
 
 ### S327 POST-PURCHASE +2D SABLONAS — UZDARYTA
 `templates/emails/post-purchase-2d.php`. E2E per TIKRA dispatch grandine
