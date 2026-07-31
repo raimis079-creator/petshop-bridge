@@ -120,6 +120,18 @@ NAUJO magic link NEREIKALAUJAM
 Naujas laiskas reikalingas TIK jei zmogus dar neprisijunges arba tokenas
 netinkamas. Prisijungusio varymas atgal i el. pasta = bereikalingas UX ratas.
 
+### ★ LAUKIANTIS DOKUMENTAS — SUJUNGTI IR PASALINTI
+```
+dokumentai/deployment_log_S328_pending.md
+```
+Sio irasо i pagrindini `deployment_log.md` DAR NEIDETA. Priezastis: projekto
+kopija buvo v1.3.27 su naujausiu irasu 2026-06-29 [S130-S134], t.y. pasenusi ~2
+men.; jos perrasymas butu istrynes S135-S326.
+
+**Veiksmas:** gavus DABARTINI `deployment_log.md`, sio failo turini ideti i
+virsu (po `## IRASAI (naujausi virsuje)`), tada `deployment_log_S328_pending.md`
+PASALINTI is repo. Kol failas egzistuoja — irasas laikomas NESUJUNGTU.
+
 ### KITOS SESIJOS SEKA (S328 tesinys)
 ```
 1. Tiesioginis HMAC stabilumo testas tarp ATSKIRU uzklausu
