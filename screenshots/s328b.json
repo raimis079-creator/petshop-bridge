@@ -1,0 +1,61 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2011,
+ "clean": {
+  "VERSIJA": "s328b-v1",
+  "drafts_sha_ok": true,
+  "main_pries": 14905,
+  "main_sha_pries": "d5b7eb2470ccb9d29a806bf89b5ae4ff658d344eccd7bcbe937384e4ff1f1284",
+  "inkarai": {
+   "require_once PETSHOP_CORE_DIR . 'includes/class-post-purchase.php'; // S326": 1,
+   "Petshop_Shipments::maybe_install(); // S319": 1,
+   "Petshop_Shipments::install(); // S319": 1
+  },
+  "sintakse_ok": true,
+  "sintakses_klaida": "",
+  "backup": true,
+  "main_po": 15064,
+  "pokytis_baitais": 159,
+  "bootstrap": "IDIEGTA",
+  "draft_stulpeliai": [
+   "id",
+   "draft_id",
+   "email_hash",
+   "payload_json",
+   "payload_version",
+   "status",
+   "created_at",
+   "updated_at",
+   "expires_at",
+   "claim_started_at",
+   "claimed_at",
+   "claimed_user_id",
+   "claimed_pet_id",
+   "claim_attempt_id"
+  ],
+  "pets_source_col": true,
+  "pets_unique": "UNIQUE OK",
+  "pets_eiluciu": 65,
+  "testai": {
+   "1_attempt_grazintas": "TAIP",
+   "2_svetimas_complete": 0,
+   "3_svetimas_abort": 0,
+   "4_statusas_nepakito": "claiming",
+   "5_teisingas_complete": 1,
+   "5_statusas": "claimed",
+   "6_pirmas_pet": 158,
+   "7_naujas_bandymas": "perimta",
+   "7_attempt_kitas": "TAIP",
+   "8_antras_insert": "UZBLOKUOTA (duplicate-key)",
+   "9_rado_esama": 158,
+   "9_sutampa": "TAIP",
+   "10_uzbaigta": 1,
+   "10_statusas": "claimed",
+   "10_pet_id": "158",
+   "11_augintiniu_kiekis": 1
+  },
+  "pets_po_valymo": 65,
+  "draftu_liko": 0
+ },
+ "site": "200"
+}
