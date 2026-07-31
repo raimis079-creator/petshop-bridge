@@ -1,0 +1,48 @@
+{
+ "deploy": {
+  "MATCH": "YES"
+ },
+ "run": {
+  "enqueue": {
+   "ok": true,
+   "job_id": 27,
+   "duplicate": false
+  },
+  "refill_id": 19,
+  "produktas": 34498,
+  "pavadinimas": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+  "send": {
+   "dry_run": false,
+   "picked": 1,
+   "results": [
+    {
+     "id": 27,
+     "flow": "refill_due",
+     "action": "SENT",
+     "msg_id": "azv2GY-.eE9p2l-j09zEZv-Y5Jmk3BllXB0-4CnOmr",
+     "error": ""
+    }
+   ]
+  },
+  "job": {
+   "job_key": "refill_due:S327:19",
+   "flow_class": "service",
+   "status": "sent",
+   "provider": "sender",
+   "provider_message_id": "azv2GY-.eE9p2l-j09zEZv-Y5Jmk3BllXB0-4CnOmr",
+   "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
+   "last_error": null,
+   "sent_at": "2026-07-31 13:07:31"
+  },
+  "feedback_url": "https://dev.avesa.lt/refill-feedback/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoicmVmaWxsX2ZlZWRiYWNrIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiIxOSIsImFjdGlvbiI6ImZlZWRiYWNrIiwiZXhwaXJlc19hdCI6MTc4NjcxMjg1MSwibm9uY2UiOiJkMDA2ZmE3ZDM4ZWY2YjNkMjliZTlkM2NlOGZmNTFhNSIsImtleV9pZCI6InYyIn0.6af8ac7e59ff979d9e7a6cb7467df8b258a00e14fbc3a02d75445386507c26dc",
+  "reorder_url": "https://dev.avesa.lt/cart/?add-to-cart=34498"
+ },
+ "cta": {
+  "pries": 0,
+  "po": 1
+ },
+ "kalibravimas": {
+  "kodas": "200",
+  "pasirinkimai": 1
+ }
+}
