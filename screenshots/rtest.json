@@ -1,0 +1,164 @@
+{
+ "deactivated": [],
+ "sid": 1963,
+ "dry": {
+  "prekes": {
+   "gera": 34498,
+   "antra": 34488
+  },
+  "A_viskas_gerai": {
+   "ok": 2,
+   "skipped": 0,
+   "items": [
+    {
+     "n": "Exclusion Mediterraneo Mon",
+     "q": 2,
+     "kaina": 13.2,
+     "ribota": false
+    },
+    {
+     "n": "Animonda Vom Feinsten Adul",
+     "q": 1,
+     "kaina": 14.59,
+     "ribota": false
+    }
+   ]
+  },
+  "B_dingusi_preke": {
+   "ok": 1,
+   "skipped": [
+    {
+     "id": 99999999,
+     "name": "",
+     "reason": "nebeegzistuoja"
+    }
+   ]
+  },
+  "C_draft": {
+   "ok": 0,
+   "skipped": [
+    {
+     "id": 34488,
+     "name": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt.",
+     "reason": "nebeparduodama"
+    }
+   ]
+  },
+  "C_atstatyta": "publish",
+  "D_likutis": {
+   "ok": 1,
+   "qty_norejo": 5,
+   "qty_gaus": 1,
+   "ribota": true
+  },
+  "D_nulis": {
+   "ok": 0,
+   "skipped": [
+    {
+     "id": 34498,
+     "name": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+     "reason": "nebeturime"
+    }
+   ]
+  },
+  "D_atstatyta": {
+   "manage": 0,
+   "qty": null,
+   "in_stock": 1
+  },
+  "E_visos_dingusios": {
+   "ok": 0,
+   "skipped": 2
+  },
+  "F_nuoroda": {
+   "yra": 1,
+   "turi_cart_id": "NE_GERAI",
+   "ilgis": 334
+  },
+  "F_peek": {
+   "valid": true,
+   "resource_id": "c_rec_A"
+  }
+ },
+ "apply": {
+  "prekes": {
+   "gera": 34498,
+   "antra": 34488
+  },
+  "A_viskas_gerai": {
+   "ok": 2,
+   "skipped": 0,
+   "items": [
+    {
+     "n": "Exclusion Mediterraneo Mon",
+     "q": 2,
+     "kaina": 13.2,
+     "ribota": false
+    },
+    {
+     "n": "Animonda Vom Feinsten Adul",
+     "q": 1,
+     "kaina": 14.59,
+     "ribota": false
+    }
+   ]
+  },
+  "B_dingusi_preke": {
+   "ok": 1,
+   "skipped": [
+    {
+     "id": 99999999,
+     "name": "",
+     "reason": "nebeegzistuoja"
+    }
+   ]
+  },
+  "C_draft": {
+   "ok": 0,
+   "skipped": [
+    {
+     "id": 34488,
+     "name": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt.",
+     "reason": "nebeparduodama"
+    }
+   ]
+  },
+  "C_atstatyta": "publish",
+  "D_likutis": {
+   "ok": 1,
+   "qty_norejo": 5,
+   "qty_gaus": 1,
+   "ribota": true
+  },
+  "D_nulis": {
+   "ok": 0,
+   "skipped": [
+    {
+     "id": 34498,
+     "name": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+     "reason": "nebeturime"
+    }
+   ]
+  },
+  "D_atstatyta": {
+   "manage": 0,
+   "qty": null,
+   "in_stock": 1
+  },
+  "E_visos_dingusios": {
+   "ok": 0,
+   "skipped": 2
+  },
+  "F_nuoroda": {
+   "yra": 1,
+   "turi_cart_id": "NE_GERAI",
+   "ilgis": 334
+  },
+  "F_peek": {
+   "valid": true,
+   "resource_id": "c_rec_A"
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
