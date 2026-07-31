@@ -1,0 +1,27 @@
+{
+ "sid": 1993,
+ "deploy": {
+  "bytes_in": 3751,
+  "written": 3751,
+  "exists": true,
+  "sha256": "bf35962bd313b5de3ecb00f9e33fd85773d1d47b555e1ac21e16f7b91a063e19",
+  "expect": "bf35962bd313b5de3ecb00f9e33fd85773d1d47b555e1ac21e16f7b91a063e19",
+  "match": true
+ },
+ "test": {
+  "subject": "Ar su užsakymu viskas gerai?",
+  "html_len": 2570,
+  "turi": {
+   "34801": true,
+   "Ar su užsakymu viskas gerai": true,
+   "atsakykite į šį laišką": true,
+   "uzsakymai@petshop.lt": true,
+   "Josera Miniwell": true,
+   "Peržiūrėti užsakymą": true,
+   "išsiuntėme": true,
+   "atsisakyti_nuoroda": false
+  },
+  "html_head": "<!DOCTYPE html>\n<html lang=\"lt\"><head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<meta name=\"x-apple-disable-message-reformatting\">\n<title>Ar su užsakymu viskas gerai?</title>\n</head>\n<body style=\"margin:0;padding:0;background:#F3EFE5;font-family:Arial,Helvetica,sans-serif;color:#1F2A24;-webkit-text-size-adjust:100%;\">\n<div style=\"display:none;max-"
+ },
+ "site_code": "200"
+}
