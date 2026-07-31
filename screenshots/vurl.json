@@ -1,0 +1,142 @@
+{
+ "deactivated": [],
+ "sid": 1949,
+ "dry": {
+  "unique_urls": {
+   "https://post.lt": 25,
+   "https://go.venipak.lt/ws/get_pickup_points": 3,
+   "https://venipak.": 3,
+   "https://go.venipak.lt/ws/print_label": 2,
+   "https://go.venipak.lt/import/send.php": 1,
+   "https://go.venipak.lt/ws/print_list": 1,
+   "https://tracking.venipak.com/api/v1/events?pack_no=": 1,
+   "https://shopup.lt/venipak": 1,
+   "https://maps.googleapis.com/maps/api/geocode/json?address=${address}+${city}+${postcode}&key=${window.venipakShipping.settings.googlemap_api": 1,
+   "https://maps.googleapis.com/maps/api/js?key=${window.venipakShipping.settings.googlemap_api_key}&callback=initGoogleMap&loading=async`;": 1,
+   "https://maps.googleapis.com/maps/api/geocode/json?address=${keyword}&key=${window.venipakShipping.settings.googlemap_api_key}`,": 1,
+   "https://go.venipak.lt/ws/get_pickup_points?country=": 1,
+   "https://api-manosiuntostst.post.lt/api/v2": 1,
+   "https://api-manosiuntos.post.lt/api/v2": 1,
+   "https://api-manosiuntostst.post.lt/oauth/token": 1,
+   "https://api-manosiuntos.post.lt/oauth/token": 1,
+   "https://www.post.lt/lt/api-verslui": 1,
+   "https://www.post.lt/siuntu-sekimas?parcels=": 1,
+   "https://www.post.lt/index.php/en/shipments-search?parcels=": 1,
+   "https://www.post.lt/siuntu-sekimas?parcels=<?=": 1
+  },
+  "tracking_ctx": [
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php",
+    "l": 327,
+    "url": "https://tracking.venipak.com/api/v1/events?pack_no=",
+    "ctx": "$url = \"https://tracking.venipak.com/api/v1/events?pack_no=\" . $pack_number;"
+   },
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-public-email.php",
+    "l": 93,
+    "url": "https://venipak.",
+    "ctx": "echo '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $pack_number"
+   },
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-public-email.php",
+    "l": 98,
+    "url": "https://venipak.",
+    "ctx": "echo '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $tracking_"
+   },
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-public.php",
+    "l": 194,
+    "url": "https://venipak.",
+    "ctx": "return '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $pack_number ."
+   },
+   {
+    "f": "woo-lithuaniapost-main/class-woo-lithuaniapost-admin-order-tracking.php",
+    "l": 169,
+    "url": "https://www.post.lt/siuntu-sekimas?parcels=",
+    "ctx": "? 'https://www.post.lt/siuntu-sekimas?parcels=' . $barcode"
+   },
+   {
+    "f": "woo-lithuaniapost-main/class-woo-lithuaniapost-admin-order-tracking.php",
+    "l": 170,
+    "url": "https://www.post.lt/index.php/en/shipments-search?parcels=",
+    "ctx": ": 'https://www.post.lt/index.php/en/shipments-search?parcels=' . $barcode;"
+   },
+   {
+    "f": "woo-lithuaniapost-main/tracking-email.php",
+    "l": 14,
+    "url": "https://www.post.lt/siuntu-sekimas?parcels=<?=",
+    "ctx": "<a href=\"https://www.post.lt/siuntu-sekimas?parcels=<?= $order->get_meta ( '_woo_lithuaniapost_barcode' ); ?>\" target=\"_blank\" style=\"text-decoration: none;"
+   }
+  ]
+ },
+ "apply": {
+  "unique_urls": {
+   "https://post.lt": 25,
+   "https://go.venipak.lt/ws/get_pickup_points": 3,
+   "https://venipak.": 3,
+   "https://go.venipak.lt/ws/print_label": 2,
+   "https://go.venipak.lt/import/send.php": 1,
+   "https://go.venipak.lt/ws/print_list": 1,
+   "https://tracking.venipak.com/api/v1/events?pack_no=": 1,
+   "https://shopup.lt/venipak": 1,
+   "https://maps.googleapis.com/maps/api/geocode/json?address=${address}+${city}+${postcode}&key=${window.venipakShipping.settings.googlemap_api": 1,
+   "https://maps.googleapis.com/maps/api/js?key=${window.venipakShipping.settings.googlemap_api_key}&callback=initGoogleMap&loading=async`;": 1,
+   "https://maps.googleapis.com/maps/api/geocode/json?address=${keyword}&key=${window.venipakShipping.settings.googlemap_api_key}`,": 1,
+   "https://go.venipak.lt/ws/get_pickup_points?country=": 1,
+   "https://api-manosiuntostst.post.lt/api/v2": 1,
+   "https://api-manosiuntos.post.lt/api/v2": 1,
+   "https://api-manosiuntostst.post.lt/oauth/token": 1,
+   "https://api-manosiuntos.post.lt/oauth/token": 1,
+   "https://www.post.lt/lt/api-verslui": 1,
+   "https://www.post.lt/siuntu-sekimas?parcels=": 1,
+   "https://www.post.lt/index.php/en/shipments-search?parcels=": 1,
+   "https://www.post.lt/siuntu-sekimas?parcels=<?=": 1
+  },
+  "tracking_ctx": [
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php",
+    "l": 327,
+    "url": "https://tracking.venipak.com/api/v1/events?pack_no=",
+    "ctx": "$url = \"https://tracking.venipak.com/api/v1/events?pack_no=\" . $pack_number;"
+   },
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-public-email.php",
+    "l": 93,
+    "url": "https://venipak.",
+    "ctx": "echo '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $pack_number"
+   },
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-public-email.php",
+    "l": 98,
+    "url": "https://venipak.",
+    "ctx": "echo '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $tracking_"
+   },
+   {
+    "f": "wc-venipak-shipping/class-woocommerce-shopup-venipak-shipping-public.php",
+    "l": 194,
+    "url": "https://venipak.",
+    "ctx": "return '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $pack_number ."
+   },
+   {
+    "f": "woo-lithuaniapost-main/class-woo-lithuaniapost-admin-order-tracking.php",
+    "l": 169,
+    "url": "https://www.post.lt/siuntu-sekimas?parcels=",
+    "ctx": "? 'https://www.post.lt/siuntu-sekimas?parcels=' . $barcode"
+   },
+   {
+    "f": "woo-lithuaniapost-main/class-woo-lithuaniapost-admin-order-tracking.php",
+    "l": 170,
+    "url": "https://www.post.lt/index.php/en/shipments-search?parcels=",
+    "ctx": ": 'https://www.post.lt/index.php/en/shipments-search?parcels=' . $barcode;"
+   },
+   {
+    "f": "woo-lithuaniapost-main/tracking-email.php",
+    "l": 14,
+    "url": "https://www.post.lt/siuntu-sekimas?parcels=<?=",
+    "ctx": "<a href=\"https://www.post.lt/siuntu-sekimas?parcels=<?= $order->get_meta ( '_woo_lithuaniapost_barcode' ); ?>\" target=\"_blank\" style=\"text-decoration: none;"
+   }
+  ]
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
