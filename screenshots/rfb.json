@@ -1,0 +1,32 @@
+{
+ "deactivated": [],
+ "sid": 1973,
+ "dry": {
+  "page_by_path": 0,
+  "rewrite_match": [],
+  "rest_routes": [
+   "/petshop/v1/refill-feedback",
+   "/wc-admin/onboarding/profile/experimental_get_email_prefill"
+  ],
+  "handler_files": [
+   "wp-content/plugins/petshop-core/templates/emails/refill.php"
+  ],
+  "live": 404,
+  "fb_events": 0
+ },
+ "apply": {
+  "page_by_path": 0,
+  "rewrite_match": [],
+  "rest_routes": [
+   "/petshop/v1/refill-feedback",
+   "/wc-admin/onboarding/profile/experimental_get_email_prefill"
+  ],
+  "handler_files": [
+   "wp-content/plugins/petshop-core/templates/emails/refill.php"
+  ],
+  "live": 404,
+  "fb_events": 0
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
