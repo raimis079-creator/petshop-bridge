@@ -22,12 +22,12 @@ O.sid=sid;
 if(sid){
   sh('sleep 5');
   O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-  const d=sh('curl -sSk -m 60 "'+SITE+'/?ps_e2=Zx4recon"');
-  try{O.recon=JSON.parse(d.out);}catch(e){O.raw=d.out.slice(0,1200);}
+  const d=sh('curl -sSk -m 90 "'+SITE+'/?ps_e2=Zx4run&oid=34720"');
+  try{O.e2e=JSON.parse(d.out);}catch(e){O.raw=d.out.slice(0,1500);}
   fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
   sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
   sh('sleep 2');
   O.site_code=sh('curl -sSk -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
 }
-putB64('pp2d_e2e.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('pp2d_e2e_run.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
