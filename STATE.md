@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31** — S320/S321 laisku karkasas + atsisakymas + consent klaidos pataisa.
+> Paskutinį kartą atnaujinta: **2026-07-31** — S318 krepselio atkurimas UZBAIGTAS. Toliau: cart_abandoned sablonas + pilnas E2E.
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -119,8 +119,21 @@ Laiske: >1 siunta -> „pristatomas N atskiromis siuntomis" + „Siunta X is N".
 - Snippetai deaktyvuoti bet neistrinti (REST DELETE grazina rest_cannot_delete).
 
 ## BACKLOG
+- **HTTP/2 (priezastis NENUSTATYTA):** Playwright/Chromium epizodiskai gavo `ERR_HTTP2_PROTOCOL_ERROR` ir `ERR_EMPTY_RESPONSE` (kraunant /cart/). Su `--disable-http2` ir `curl` tie patys keliai veike. NEVADINTI irodytu serverio gedimu. Patikrinti pries launch.
 - Produktas 34512: `_stock_status=instock` bet `is_in_stock()=false`. YRA filtras `woocommerce_product_is_in_stock`, prekes neturi nei `_vf_qty` nei `_zb_qty` -> greiciausiai TYCINE fulfillment logika. Ivardinti tikslu saltini.
 - SEO: 44 top-100 URL = 404 (20,5% viso srauto). Duomenys repo `analize/`. **NEPRADETI be Raimio.**
+
+## KREPSELIO ATKURIMAS (S318) — VEIKIA
+```
+GET  /atkurti-krepseli/?t={token}  -> peek    -> patvirtinimas, krepselio NEKEICIA
+POST tuo paciu URL                 -> consume -> atkuria -> redirect /cart/
+```
+Tokenas: `resource_id=cart_id`, TTL **7 d.** (ATSKIRA konstanta nuo detektoriaus 7 d. lango), URL BE PII.
+Atkuriama tik: egzistuoja · publish · purchasable · in_stock. Kainos DABARTINES (snapshot'e nesaugom).
+**Kiekis ribojamas realiai:** norėta 5 + likutis 1 -> krepselyje 1 (irodyta per `WC()->cart->get_cart()`).
+**Variacija — 5 salygos:** is_type('variation') · parent_id===product_id · parent publish · purchasable+in_stock · atributai sutampa. I krepseli deda `variation_id`, NE parent.
+Pakartotinis POST NEDUBLIUOJA (3 eil. pries ir po).
+Ne viena atkurta -> aiskus pranesimas su priezastimis, NE tuscias krepselis.
 
 ## ★★★ KRITINIS SAUGIKLIS — CONSENT ★★★
 ```
