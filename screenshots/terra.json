@@ -1,0 +1,66 @@
+{
+ "deactivated": [],
+ "sid": 1989,
+ "dry": {
+  "1_transakcinis": {
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-AMYvBNl-7XxBLZRXz1XO-3BkAWp",
+   "error": "",
+   "http_code": 200,
+   "should_retry": false
+  },
+  "2_service": {
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-AMYvBNl-g2q9L38PWOEj-3O9ig4",
+   "error": "",
+   "http_code": 200,
+   "should_retry": false
+  },
+  "3_marketingas": {
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-AMYvBNl-B6MYL5WRvpYo-4epWub",
+   "error": "",
+   "http_code": 200,
+   "should_retry": false
+  },
+  "html_dydziai": [
+   2035,
+   2277,
+   2419
+  ],
+  "marketingo_footeryje_atsisakymas": "YRA",
+  "transakcinio_footeryje_atsisakymas": "NERA"
+ },
+ "apply": {
+  "1_transakcinis": {
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-AMYvBNl-JQn9q3XNPP2K-455DMC",
+   "error": "",
+   "http_code": 200,
+   "should_retry": false
+  },
+  "2_service": {
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-AMYvBNl-myz9QrJM4NER-1KEwXc",
+   "error": "",
+   "http_code": 200,
+   "should_retry": false
+  },
+  "3_marketingas": {
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-AMYvBNl-JQn9q4EL1GNP-3AlqWs",
+   "error": "",
+   "http_code": 200,
+   "should_retry": false
+  },
+  "html_dydziai": [
+   2035,
+   2277,
+   2419
+  ],
+  "marketingo_footeryje_atsisakymas": "YRA",
+  "transakcinio_footeryje_atsisakymas": "NERA"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
