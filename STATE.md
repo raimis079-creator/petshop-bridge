@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31** — S326 post-purchase +2d DETEKTORIUS. Sablonas laukia Reply-To patvirtinimo.
+> Paskutinį kartą atnaujinta: **2026-07-31 (vakaras)** — S327 post-purchase +2d SABLONAS uzdarytas; M8 prisijungusio vartotojo kelias PATVIRTINTAS narsykleje; S328 serverinio drafto infrastruktura DALINAI UZBAIGTA (1-3 is 10).
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -25,6 +25,142 @@
 # ============================================================
 > Zemiau esantys datuoti ★★★ blokai yra ISTORIJA, NE bukle.
 > Jei prestarauja — GALIOJA SITAS skyrius.
+
+## ★ 2026-07-31 VAKARAS — TRYS UZDARYMAI IR VIENAS PAMATAS
+
+### DELIVERABILITY INCIDENTAS — UZDARYTA
+Saknis NEBUVO musu autentifikacija. Sender siuntimo IP **185.3.229.130**
+(mail6.sendersrv.com) buvo **Barracuda RBL** sarase; gaunantis serveris dejo
+`X-Spam-Status: Yes`. Sender persikele saskaita i kita IP pool'a -> 6/6 testiniu
+laisku i Gautuosius.
+- **DKIM `d=petshop.lt; s=sender` VEIKIA** — irodyta is realiu antrasciu. Senas
+  atviras klausimas uzdarytas.
+- **`Reply-To: uzsakymai@petshop.lt` Sender PRITAIKO** — irodyta is antrasciu.
+  REPLY TEST 1/2/3 NEBEREIKIA. Sprendimas B veikia be naujos support sistemos.
+- **SPF isvalytas**: `include:mailgun.org` PASALINTAS. Recon irode, kad gyvas
+  petshop.lt (eShoprent) siuncia per **isopas.serveriai.lt SMTP**, ne Mailgun,
+  ir naujienlaiskiu nesiuntineja. Dabar: `v=spf1 a mx include:spf.serveriai.lt
+  include:sendersrv.com ~all` (buvo 10/10 lookup'u, liko 5).
+- DNS valdomas **iv.lt**, NE serveriai.lt. Svarbu launch domeno perjungimui.
+- LIKO: Sender tracking CNAME `link.petshop.lt` (dabar nuorodos eina per bendra
+  `campaign-statistics.com` su svetima reputacija).
+
+### S327 POST-PURCHASE +2D SABLONAS — UZDARYTA
+`templates/emails/post-purchase-2d.php`. E2E per TIKRA dispatch grandine
+(uzsakymas 34720): detect_2d 1 kandidatas -> job #28 pending -> process_pending
+SENT -> `provider_message_id` uzpildytas -> laiskas Gautuosiuose.
+- Vardas NENAUDOJAMAS (sauksmininkas; ta pati taisykle kaip augintinio vardui).
+- Didelio mygtuko NERA samoningai — pagrindinis veiksmas ATSAKYTI.
+- „issiuntem", ne „gavote" (+2 d. nuo ISSIUNTIMO).
+- KLAIDA IR PATAISA: pirmoje versijoje antraste kartojosi teksto pradzioje.
+  Raimio patvirtintas tekstas yra DVI eilutes: 1-a = antraste, 2-a = tekstas.
+- Lietuvisko stiliaus peržiura — LAUKIA RAIMIO.
+
+### M8 PRISIJUNGUSIO VARTOTOJO KELIAS — PATVIRTINTAS
+Zr. gyva M8 registra. Trumpai: endpoint slug `augintinis`; tuscia busena,
+mygtukas ir `?action=create` VEIKIA; JS/HTTP klaidu 0. Senas „mygtukas nieko
+nedaro" blokatorius NEBEGALIOJA.
+
+### S328 — SERVERINIO DRAFTO INFRASTRUKTURA: **DALINAI UZBAIGTA**
+```
+OK  Bootstrap produkciniame runtime (patikrinta BE require_once)
+OK  Draftu lentele gaj6_ps_pet_profile_drafts
+OK  Stabilus HMAC raktas (atskiras nuo token'u raktu, nerotuojamas)
+OK  claim_attempt_id
+OK  stale claiming po 15 min.
+OK  ps_pets.source_draft_id UNIQUE
+OK  crash recovery ir duplicate-key idempotencija
+--  REST, magic link integracija, JS, viesas puslapis, cron, E2E
+```
+**KAM VISA TAI:** iki S328 anoniminis draftas gyveno TIK localStorage. Zmogus
+uzpildo anketa telefono narsykleje, atsidaro magic link Gmail programeles
+imontuotoje narsykleje (kitas localStorage) ir randa TUSCIA profili. Duomenys
+dingsta PO to, kai jis atliko visa darba. Perspejimas „uzbaikite tame paciame
+irenginyje" to NEISSPRENDZIA — nuorodos atidarymas kitur yra NORMALUS elgesys.
+
+**Sprendimai (Raimis):** galiojimas 14 d.; naujo magic link prasymas galiojimo
+NEPRATESIA; el. pasto lenteleje NELAIKOM — tik HMAC su atskiru raktu; claim per
+`active -> claiming -> claimed`; po sekmes payload isvalomas.
+
+**Failai:** `includes/class-pet-drafts.php` (v1.1.0), `petshop-core.php`
+(+159 B: require_once + maybe_install + activation; backup `.bak_S328`;
+sintakse validuota `token_get_all()` PRIES rasant).
+
+**Kodel `claim_attempt_id`:** be savininko zymes senas pakibes procesas,
+„atsibudes" jau po perėmimo, galetu uzbaigti arba atsaukti SVETIMA claim
+bandyma — `WHERE status='claiming'` to neatskiria.
+
+**Kodel UNIQUE ant `source_draft_id`:** be jo indeksas leidzia tik RASTI
+dublikata po fakto, o ne UZKIRSTI keliui. MySQL leidzia kelias NULL reiksmes,
+tad 65 esami irasai ir prisijungusio kelio augintiniai nepaliesti.
+
+### ★ TRYS APSAUGOS, BUTINOS PRIES 4-6 (Raimis, uzrakinta)
+1. **`POST /pet-draft` NEGALI saugoti aklo JS payload.** Tas pats kanoninis
+   validavimas kaip kuriant tikra augintini: leistinu lauku whitelist, rusies ir
+   priklausomu lauku validacija, teksto ilgio ribos, `payload_version`,
+   maksimalus payload dydis. Kitaip lentele taps vieta bet kokiam JSON.
+2. **`magic-login/request` prijungia drafta TIK po trigubos patikros:**
+   `status='active'` IR `expires_at > dabar` IR `HMAC(request email) =
+   draft.email_hash`. Nesutapus — BENDRINIS atsakymas (neatskleidzia, ar toks
+   draft_id / el. pastas / paskyra egzistuoja).
+3. **NEKURTI antros augintinio irasymo logikos.** `process_login` NETURI kartoti
+   `INSERT ps_pets`. Kviesti BENDRA domeno metoda — viena vieta validacijai,
+   normalizacijai, avatarui, `pet_profile_created` eventui, klaidoms. Jei tokio
+   metodo nera — ISKELTI ji is REST/dashboard callback'o (tas pats principas kaip
+   refill feedback).
+
+### ★ CLAIM KLAIDOS SEMANTIKA (uzrakinta)
+Tokenas gali buti JAU sunaudotas, o perkelimas laikinai nepavykti. Tada:
+```
+vartotojas LIEKA prisijunges
+draftas grazinamas i active
+puslapyje „Bandyti dar karta"
+NAUJO magic link NEREIKALAUJAM
+```
+Naujas laiskas reikalingas TIK jei zmogus dar neprisijunges arba tokenas
+netinkamas. Prisijungusio varymas atgal i el. pasta = bereikalingas UX ratas.
+
+### KITOS SESIJOS SEKA (S328 tesinys)
+```
+1. Tiesioginis HMAC stabilumo testas tarp ATSKIRU uzklausu
+2. Bendras pet creation domeno metodas
+3. POST /petshop/v1/pet-draft
+4. magic-login/request + draft_id validacija
+5. process_login claim grandine
+6. Crash-recovery testas per TIKRA login srauta
+7. pet-form.js siuncia serverini drafta (localStorage tik cache)
+8. /augintinio-profilis/ + 301 is /anketa-testas/
+9. cleanup cron (kasdien)
+10. Keliu irenginiu ir neigiami E2E
+```
+4-6 yra VIENA NEDALOMA grandine — netestuoti dalimis.
+
+### ANONIMINIO KELIO RADINIAI (recon, ne prielaidos)
+- Shortcode yra **`petshop_pet_form`**, NE `pspet_form`.
+- Vienintelis puslapis su juo: ID **34676 `/anketa-testas/`** (publish).
+  Produkcinio viesio ijimo NERA. Canonical bus `/augintinio-profilis/`,
+  pavadinimas „Sukurkite augintinio profili"; `/anketa-testas/` -> 301.
+- Magic link jau SCANNER-SAFE: GET -> `render_confirmation()` per
+  `ps_peek_token()` (be salutinio poveikio); sunaudojimas TIK POST su nonce.
+  Antras panaudojimas -> tvarkinga zinute. Session fixation apsauga yra.
+- `ps_action_tokens` JAU turi `resource_id` — draft_id telpa BE schemos keitimo.
+- Token TTL 900 s; rate limit 3/email, 10/IP per 15 min.
+
+### E2E HARNESS TAISYKLES (skaudziai igytos 2026-07-31)
+- **Unikalus GET raktas kiekvienam run'ui** + **VERSIJA zyme atsakyme**.
+  Pakartotas raktas -> atsako SENAS aktyvus TEMP snippet'as, naujas kodas
+  NEVYKDOMAS (taip nutiko su `ps_au=Au6m8`).
+- **NIEKADA nespeti URL/slug/shortcode** — imti is klases konstantos arba DB.
+  Atspetas `mano-augintinis` davė 404 ir vos nebuvo palaikytas produkto gedimu.
+- **Skaitikliai meluoja, ekrano nuotrauka — ne.** `#pspet-form-host input`
+  grazino 0, nors forma VEIKE (du keliai montuoja i skirtingus konteinerius).
+- `wc_get_account_menu_items()` ant `wp_loaded` grazina tuscia — per anksti.
+- Code Snippets **REST DELETE grazina 204, bet eilutes LIEKA** (`active` tampa
+  `-1` = siuksline). REST sarasas ribojasi 500 irasu -> „dingo" gali reiksti tik
+  „nepateko i puslapi". Patikimas saltinis — DB uzklausa. Trinti RANKA WP admin.
+- Playwright: `browser=1`; jei skripte nera narsykles bloko — ISIMTI
+  `import { chromium }`, kitaip `browser=0` run'as kris ties importu.
+
 
 ## PLUGIN'AI (dev.avesa.lt)
 ```
