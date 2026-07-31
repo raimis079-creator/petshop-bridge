@@ -1,0 +1,152 @@
+{
+ "deactivated": [],
+ "sid": 1941,
+ "dry_raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Class &quot;Petshop_Cart_Abandonment&quot; not found in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:86\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook-&gt;apply_filters()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/d",
+ "apply": {
+  "deploy": {
+   "class-cart-abandonment.php": "MATCH",
+   "class-email-dispatch.php": "MATCH",
+   "petshop-core.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo",
+  "test_product": 34512,
+  "dry": {
+   "dry_run": true,
+   "cutoff": "2026-07-31 04:24:44",
+   "floor": "2026-07-24 06:24:44",
+   "candidates": 2,
+   "abandoned": 0,
+   "events": 0,
+   "jobs": 0,
+   "no_email": 0,
+   "skipped": [
+    [
+     "c_test_abandon_A",
+     "no_valid_products"
+    ],
+    [
+     "c_test_abandon_D",
+     "no_valid_products"
+    ]
+   ],
+   "expired": 1,
+   "details": []
+  },
+  "run1": {
+   "dry_run": false,
+   "cutoff": "2026-07-31 04:24:44",
+   "floor": "2026-07-24 06:24:44",
+   "candidates": 2,
+   "abandoned": 0,
+   "events": 0,
+   "jobs": 0,
+   "no_email": 0,
+   "skipped": [
+    [
+     "c_test_abandon_A",
+     "no_valid_products"
+    ],
+    [
+     "c_test_abandon_D",
+     "no_valid_products"
+    ]
+   ],
+   "expired": 1,
+   "details": []
+  },
+  "S1_su_email": {
+   "row": {
+    "cart_id": "c_test_abandon_A",
+    "status": "active",
+    "converted_order_id": null,
+    "status_changed_at": "2026-07-31 06:24:44"
+   },
+   "events": 0,
+   "job": null
+  },
+  "S3_converted": {
+   "row": {
+    "cart_id": "c_test_abandon_C",
+    "status": "active",
+    "converted_order_id": "99999",
+    "status_changed_at": "2026-07-31 06:24:44"
+   },
+   "events": 0,
+   "job": null
+  },
+  "be_email": {
+   "row": {
+    "cart_id": "c_test_abandon_D",
+    "status": "active",
+    "converted_order_id": null,
+    "status_changed_at": "2026-07-31 06:24:44"
+   },
+   "events": 0,
+   "job": null
+  },
+  "per_senas": {
+   "row": {
+    "cart_id": "c_test_abandon_E",
+    "status": "expired",
+    "converted_order_id": null,
+    "status_changed_at": "2026-07-31 06:24:44"
+   },
+   "events": 0
+  },
+  "run2": {
+   "dry_run": false,
+   "cutoff": "2026-07-31 04:24:44",
+   "floor": "2026-07-24 06:24:44",
+   "candidates": 2,
+   "abandoned": 0,
+   "events": 0,
+   "jobs": 0,
+   "no_email": 0,
+   "skipped": [
+    [
+     "c_test_abandon_A",
+     "no_valid_products"
+    ],
+    [
+     "c_test_abandon_D",
+     "no_valid_products"
+    ]
+   ],
+   "expired": 0,
+   "details": []
+  },
+  "S2_pakartotinis": {
+   "A_events_po_2_run": 0,
+   "A_status": "active",
+   "D_events_po_2_run": 0,
+   "naujų_abandoned": 0
+  },
+  "A_po_konversijos": {
+   "cart_id": "c_test_abandon_A",
+   "status": "converted",
+   "converted_order_id": "88888",
+   "status_changed_at": "2026-07-31 06:24:44"
+  },
+  "stats": {
+   "by_status": [
+    {
+     "status": "active",
+     "c": "2"
+    },
+    {
+     "status": "converted",
+     "c": "1"
+    },
+    {
+     "status": "expired",
+     "c": "1"
+    }
+   ],
+   "seeded": "2026-07-31 06:24:44"
+  },
+  "cleaned": 0
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
