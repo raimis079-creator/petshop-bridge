@@ -1,0 +1,34 @@
+{
+ "https://venipak.lt/track?code=106200460": "404 -> https://venipak.com/lt/track?code=106200460",
+ "https://venipak.com/lt/siuntos-sekimas/?code=106200460": "200 -> https://venipak.com/lt/siuntos-sekimas/?code=106200460",
+ "https://go.venipak.lt/106200460": "404 -> https://go.venipak.lt/106200460",
+ "sid": 1947,
+ "mailtest": {
+  "order": 34742,
+  "resolve": {
+   "carrier": "venipak",
+   "carrier_label": "Venipak",
+   "tracking_number": "106200460",
+   "tracking_numbers": [
+    "106200460"
+   ],
+   "tracking_url": "https://venipak.lt/track?code=106200460",
+   "tracking_urls": {
+    "106200460": "https://venipak.lt/track?code=106200460"
+   },
+   "delivery_type": "courier"
+  },
+  "mail": [
+   {
+    "subject": "Jūsų užsakymas Nr.34742 išsiųstas!",
+    "has_number": 1,
+    "excerpt": "Petshop.lt Jūsų užsakymas išsiųstas! Sveiki Raimis, Jūsų užsakymas Nr. 34742 išsiųstas ir jau kelyje pas Jus! Siuntos sekimas Venipak Siuntos numeris: 106200460Sekti siuntą PVM sąskaita faktūra prisegta prie šio laiško. Ačiū, kad esate su mumis!Petshop.lt komanda+370 681 87787terra@petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva",
+    "links": [
+     "https://dev.avesa.lt",
+     "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+     "https://venipak.lt/track?code=106200460"
+    ]
+   }
+  ]
+ }
+}
