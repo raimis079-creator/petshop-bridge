@@ -1,0 +1,31 @@
+{
+ "sid": 1997,
+ "site": "200",
+ "m8": {
+  "failai": {
+   "includes/class-pet-ui.php": 7190,
+   "includes/class-pet-profile.php": 38078,
+   "includes/class-pet-dashboard.php": 23638,
+   "assets/pet-form.js": 72935
+  },
+  "grep": {
+   "includes/class-pet-ui.php": [
+    "action=create",
+    "'create'",
+    "href=",
+    "pet-form.js"
+   ],
+   "assets/pet-form.js": [
+    "Sukurti profilį",
+    "PetshopPetForm",
+    "mount(",
+    "action=create",
+    "PSPetFormInit"
+   ]
+  },
+  "enqueue": {
+   "includes/class-pet-ui.php": "\"Mano augintinis\" modernus, o \"Uzsakymai\" — desimt metu atgal.\n\t\tif ( function_exists( 'is_account_page' ) && is_account_page() ) {\n\t\t\twp_enqueue_style( 'pspet-account', $base . 'account.css', array(), self::asset_ver( 'account.css' ) );\n\t\t}\n\n\t\t// Iterpiam tik jei puslapyje yra shortcode arba MyAccount augintinis tab\n\t\tif ( ! $force && ! self::should_load() ) {\n\t\t\treturn;\n\t\t}\n\n\t\twp_enqueue_style( 'pspet-form', $base . 'pet-form.css', array(), self::asset_ver( 'pet-form.css' ) );\n\t\t// Inter is Google Fonts\n\t\twp_enqueue_style( 'pspet-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap', array(), null );\n\n\t\t// S289: perėmimo modulis — turi būti PRIEŠ pet-profile.js, nes šis jį kviečia.\n\t\twp_enqueue_script( 'pspet-handoff', $base . 'calc-handoff.js', array(), self::asset_ver( 'calc-handoff.js' ), true );\n\t\twp_enqueue_script( 'pspet-form', $base . 'pet-form.js', array(), self::asset_ver( 'pet-form.js' ), true );\n\n\t\t// Profilio ekranas — MyAccount puslapyje (JS pats tikrina ar yra #pspet-profile).\n\t\t// S204: papildomas saugiklis — endpoint query var (jei is_account_page() del temos/konteksto nesuveiktu).\n\t\tif ( ( function_exists( 'is_accoun"
+  }
+ },
+ "site_code": "200"
+}
