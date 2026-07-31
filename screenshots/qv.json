@@ -1,0 +1,107 @@
+{
+ "deploy": {
+  "MATCH": "YES"
+ },
+ "setup": {
+  "token": "eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19xdl90ZXN0IiwiYWN0aW9uIjoiIiwiZXhwaXJlc19hdCI6MTc4NjA5Nzk5MCwibm9uY2UiOiIwNGY5NjI1MzM5YjNiNDZmY2IxMTBjYWJhZDA4OGU4OCIsImtleV9pZCI6InYyIn0.1f9b679b70ac505bddeb8ec28a0e5e13e8d07e0f5349bc3fdecf6dd90a1c1817",
+  "A": 34498,
+  "B": 34488,
+  "V_parent": 19137,
+  "V_id": 34425,
+  "V_attr": {
+   "attribute_pa_spalva": "raudona"
+  },
+  "plan": {
+   "ok": [
+    {
+     "product_id": 34498,
+     "variation_id": 0,
+     "variation": [],
+     "qty": 2,
+     "qty_wanted": 2,
+     "limited": false,
+     "name": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+     "price": 13.2
+    },
+    {
+     "product_id": 34488,
+     "variation_id": 0,
+     "variation": [],
+     "qty": 1,
+     "qty_wanted": 5,
+     "limited": true,
+     "name": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt.",
+     "price": 14.59
+    },
+    {
+     "product_id": 19137,
+     "variation_id": 34425,
+     "variation": {
+      "attribute_pa_spalva": "raudona"
+     },
+     "qty": 1,
+     "qty_wanted": 1,
+     "limited": false,
+     "name": "Automatinė šėrykla/girdykla gyvūnui (Eat and Drink), 1,6 l - Raudona",
+     "price": 5.99
+    }
+   ],
+   "skipped": []
+  }
+ },
+ "cart_pries": {
+  "items": [],
+  "count": 0
+ },
+ "post": "302|https://dev.avesa.lt/cart/",
+ "cart_po_POST": {
+  "items": [
+   {
+    "product_id": 34498,
+    "variation_id": 0,
+    "quantity": 2,
+    "variation": []
+   },
+   {
+    "product_id": 34488,
+    "variation_id": 0,
+    "quantity": 1,
+    "variation": []
+   },
+   {
+    "product_id": 19137,
+    "variation_id": 34425,
+    "quantity": 1,
+    "variation": {
+     "attribute_pa_spalva": "raudona"
+    }
+   }
+  ],
+  "count": 3
+ },
+ "cart_po_pakartotinio": {
+  "items": [
+   {
+    "product_id": 34498,
+    "variation_id": 0,
+    "quantity": 2,
+    "variation": []
+   },
+   {
+    "product_id": 34488,
+    "variation_id": 0,
+    "quantity": 1,
+    "variation": []
+   },
+   {
+    "product_id": 19137,
+    "variation_id": 34425,
+    "quantity": 1,
+    "variation": {
+     "attribute_pa_spalva": "raudona"
+    }
+   }
+  ],
+  "count": 3
+ }
+}
