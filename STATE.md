@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31** — S319 keliu siuntu modelis.
+> Paskutinį kartą atnaujinta: **2026-07-31** — S320/S321 laisku karkasas + atsisakymas + consent klaidos pataisa.
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -121,6 +121,31 @@ Laiske: >1 siunta -> „pristatomas N atskiromis siuntomis" + „Siunta X is N".
 ## BACKLOG
 - Produktas 34512: `_stock_status=instock` bet `is_in_stock()=false`. YRA filtras `woocommerce_product_is_in_stock`, prekes neturi nei `_vf_qty` nei `_zb_qty` -> greiciausiai TYCINE fulfillment logika. Ivardinti tikslu saltini.
 - SEO: 44 top-100 URL = 404 (20,5% viso srauto). Duomenys repo `analize/`. **NEPRADETI be Raimio.**
+
+## ★★★ KRITINIS SAUGIKLIS — CONSENT ★★★
+```
+ps_get_marketing_consent() GRAZINA STRING: 'true' / 'false' / ''
+(bool) 'false' === TRUE  ->  atsisakes zmogus atrodo kaip sutikes
+
+DRAUDZIAMA tiesioginis (bool) cast.
+VISOS patikros — TIK per Petshop_Contact_Policy::has_consent()
+(normalize priima true/false, 1/0, 'true'/'false', 'yes'/'no', '', null)
+```
+S321 pataise. Vienas neatsargus `(bool)` ateityje vel TYLIAI atidarytu marketingo vartus.
+
+## ATSISAKYMAS (S321)
+```
+GET  /atsisakyti/?t={token}  -> peek    -> patvirtinimo puslapis, BUSENOS NEKEICIA
+POST tuo paciu URL           -> consume -> consent=false + marketing suppression
+```
+LOKALI BUSENA PIRMINE — Sender sync gali buti asinchroninis, jo nesekme NEATSAUKIA atsisakymo.
+Kanalinis: liecia TIK marketinga; uzsakymu/siuntos/refill laiskai eina toliau.
+El. pasto URL'e NERA (tik HMAC tokenas, TTL 90 d.). UX E2E praejo is REALAUS laisko footerio.
+
+## LAISKU KARKASAS (S320)
+`Petshop_Email_Layout`: open/p/muted/button/secondary/divider/close/wrap. Logotipas per attachment 3257.
+Footeris pagal klase: transactional = be atsisakymo · service = tekstas (NE nuoroda, puslapio dar nera) · marketing = veikianti atsisakymo nuoroda.
+**Nauji sablonai PRIVALO naudoti karkasa**, ne savo HTML kopijas.
 
 ## TECHNINES PASTABOS (kainavo run'us)
 - **Sender API:** `GET /fields|/subscribers|/groups` be `limit` grazina **10**. VISADA `?limit=100`.
