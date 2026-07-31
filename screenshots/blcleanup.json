@@ -1,0 +1,33 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2016,
+ "rez": {
+  "VERSIJA": "cleanup-v1",
+  "client_ref_stulpelis": {
+   "Field": "client_ref",
+   "Type": "varchar(64)",
+   "Null": "YES",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  },
+  "ilgis": 64,
+  "telpa_uuid36": "TAIP",
+  "recorder_veikia": true,
+  "recorder_pagavo": [
+   "ps_recorder_selftest",
+   "petshop_recorder_selftest"
+  ],
+  "pets_pries": 69,
+  "istrinta_pets": 14,
+  "istrinti_vartotojai": [
+   "ps_bl_u1",
+   "ps_bl_u2"
+  ],
+  "istrinta_eventu": 3,
+  "pets_po": 55,
+  "likusiu_su_zymekliu": 0,
+  "client_ref_po": 1
+ },
+ "site": "200"
+}
