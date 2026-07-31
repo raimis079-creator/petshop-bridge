@@ -1,1 +1,44 @@
-{"desktop":{"chips_count":4,"seps_count":3,"chip_rows_unique":2,"need_cards":6,"cat_display":"grid","need_display":"grid","need_cols":3,"chip_first_bg":"rgba(255, 255, 255, 0.15)","chip_first_color":"rgb(255, 255, 255)"},"mobile":{"chips_count":4,"need_cards":6,"need_cols_mobile":1},"landing_hipoalerginis-maistas":{"h1":"no","intro":true,"cta_count":3,"safety":true},"landing_monoproteinis-maistas":{"h1":"no","intro":true,"cta_count":3,"safety":true},"landing_be-grudu-maistas":{"h1":"no","intro":true,"cta_count":3,"safety":true},"landing_odai-ir-kailiui":{"h1":"no","intro":true,"cta_count":3,"safety":true}}
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2004,
+ "clean": {
+  "VERSIJA": "verify-v9",
+  "TEMP_viso": 129,
+  "TEMP_aktyvus": 1,
+  "aktyvus_sarasas": [
+   {
+    "id": "2004",
+    "name": "TEMP Verify v9"
+   }
+  ],
+  "keturi": [
+   {
+    "id": "1885",
+    "name": "TEMP Mixed Content Recon v1",
+    "active": "-1"
+   },
+   {
+    "id": "1937",
+    "name": "TEMP Cart Query Dump v1",
+    "active": "-1"
+   },
+   {
+    "id": "1999",
+    "name": "TEMP M8 Auth v1",
+    "active": "-1"
+   },
+   {
+    "id": "2003",
+    "name": "TEMP Cleanup v1",
+    "active": "-1"
+   }
+  ],
+  "id_ribos": {
+   "mn": "616",
+   "mx": "2004"
+  },
+  "user_yra": false,
+  "stamp_34720": ""
+ },
+ "site": "200"
+}
