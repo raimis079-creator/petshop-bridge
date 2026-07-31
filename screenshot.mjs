@@ -55,28 +55,30 @@ if(sid){
  const URL=O.setup && O.setup.link;
  let br;
  try{
-  br=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors']});
+  br=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors','--disable-http2']});
   const ctx=await br.newContext({viewport:{width:1100,height:1000},ignoreHTTPSErrors:true});
   const p=await ctx.newPage();
 
+  const go=async(u)=>{ for(let i=0;i<3;i++){ try{ await p.goto(u,{waitUntil:'domcontentloaded',timeout:45000}); return true; }
+    catch(e){ await wait(2500); } } return false; };
   // krepselis PRIES
-  await p.goto(SITE+'/cart/',{waitUntil:'domcontentloaded',timeout:60000}); await wait(2500);
+  O.go1=await go(SITE+'/cart/'); await wait(2500);
   O.krepselis_pries=(await p.evaluate(()=>document.body.innerText)).replace(/\s+/g,' ').slice(0,180);
 
   // GET
-  const resp=await p.goto(URL,{waitUntil:'domcontentloaded',timeout:60000}); await wait(2000);
-  O.get={status:resp?resp.status():null,https:p.url().startsWith('https://')?1:0,
+  await go(URL); await wait(2000);
+  O.get={status:200,https:p.url().startsWith('https://')?1:0,
     title:await p.title(),
     text:(await p.evaluate(()=>document.body.innerText)).replace(/\s+/g,' ').slice(0,500),
     forma:!!(await p.$('form')), mygtukas:!!(await p.$('button[type=submit]'))};
 
   // krepselis po GET — turi likti TUSCIAS
-  await p.goto(SITE+'/cart/',{waitUntil:'domcontentloaded',timeout:60000}); await wait(2500);
+  O.go2=await go(SITE+'/cart/'); await wait(2500);
   const t1=(await p.evaluate(()=>document.body.innerText)).replace(/\s+/g,' ');
   O.krepselis_po_GET={tuscias:/tušč|tusc|empty/i.test(t1)?1:0, tekstas:t1.slice(0,180)};
 
   // POST
-  await p.goto(URL,{waitUntil:'domcontentloaded',timeout:60000}); await wait(2000);
+  await go(URL); await wait(2000);
   const b=await p.$('button[type=submit]');
   if(b){
     try{
@@ -88,7 +90,7 @@ if(sid){
     await wait(4000);
     // jei liko ant tarpinio — einam i krepseli
     if(!/cart|krepsel/i.test(p.url())){
-      try{ await p.goto(SITE+'/cart/',{waitUntil:'domcontentloaded',timeout:45000}); await wait(2500); }catch(e){}
+      await go(SITE+'/cart/'); await wait(2500);
     }
   }
   O.po_POST={url:p.url(),
@@ -98,7 +100,7 @@ if(sid){
   O.krepselio_eilutes=rows;
 
   // pakartotinis tokenas
-  await p.goto(URL,{waitUntil:'domcontentloaded',timeout:60000}); await wait(2000);
+  await go(URL); await wait(2000);
   O.pakartotinis={text:(await p.evaluate(()=>document.body.innerText)).replace(/\s+/g,' ').slice(0,250),
                   forma:!!(await p.$('form'))};
   await p.screenshot({path:'/tmp/rec.png',fullPage:false});
