@@ -116,6 +116,53 @@ tad 65 esami irasai ir prisijungusio kelio augintiniai nepaliesti.
    metodo nera — ISKELTI ji is REST/dashboard callback'o (tas pats principas kaip
    refill feedback).
 
+### ★ PET CREATION REFAKTORINGAS — DU ATSKIRI COMMITAI (uzrakinta)
+
+**COMMIT 1 — TIK iskelimas. Jokio elgesio pakeitimo.**
+Naujas domeno metodas:
+```
+create_pet( int $user_id, array $payload, ?string $source_draft_id = null )
+```
+`source_draft_id` pagal nutylejima `null` -> senas prisijungusio vartotojo
+kelias NEPAKINTA.
+
+Metodo atsakomybe: TIK validacija, normalizacija, sukurimas, domeno eventas.
+Controller'yje LIEKA: autentifikacija, nonce, REST teises, HTTP atsakymu
+formavimas.
+
+**PARITETO IRODYMAS — baseline fiksuojamas PRIES refaktoringa.**
+Kitaip lyginsim nauja koda su juo paciu ir „irodysim" nieko.
+```
+1. FIKSUOTI baseline senuoju keliu (issaugoti i faila)
+2. Iskelti metoda
+3. Paleisti TA PATI kelia ir palyginti
+```
+Turi sutapti:
+```
+HTTP statusas
+response JSON
+validacijos klaidos (TEKSTAI tie patys)
+ps_pets laukai — VISI, ne tik pagrindiniai
+eventu SKAICIUS
+hook'ai: nei papildomu, nei dinguisiu
+```
+**DIDZIAUSIA RIZIKA: `pet_profile_created` paleistas DU kartus** — sename
+callback'e IR naujame domeno metode. Todel eventu skaicius yra privalomas
+pariteto matas, ne pasirinktinis.
+
+**NEKEISTI** lauku pavadinimu, normalizacijos, numatytuju reiksmiu ar klaidu
+tekstu vien todel, kad dabar matome proga „sutvarkyti". Galioja taisykle
+„nekeisti to, kas veikia" — tai grynas refaktoringas, ne pagerinimas.
+
+**COMMIT 2 — TIK po pariteto patvirtinimo: draftu integracija.**
+```
+magic login claim -> create_pet(..., source_draft_id)
+                  -> duplicate-key recovery
+                  -> complete_claim
+```
+Atskyrimo prasme: jei kas nors sulus, is karto aisku, ar kaltas refaktoringas,
+ar nauja anoniminio drafto grandine.
+
 ### ★ CLAIM KLAIDOS SEMANTIKA (uzrakinta)
 Tokenas gali buti JAU sunaudotas, o perkelimas laikinai nepavykti. Tada:
 ```
