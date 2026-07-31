@@ -116,6 +116,95 @@ tad 65 esami irasai ir prisijungusio kelio augintiniai nepaliesti.
    metodo nera — ISKELTI ji is REST/dashboard callback'o (tas pats principas kaip
    refill feedback).
 
+### ★ DESTRUCTIVE-TEST PROTOKOLAS (privaloma, po 2026-07-31 incidento)
+```
+Pries UPDATE arba DELETE:
+1. SELECT rodo konkrecius ID
+2. COUNT turi sutapti su TIKETINU skaiciumi
+3. Salygoje PRIVALOMAS unikalus testo zymeklis arba tikslus ID sarasas
+4. Jei count nesutampa — uzklausa NEVYKDOMA
+5. DELETE/UPDATE vykdomas TRANSAKCIJOJE
+```
+**Salyga pagal bendra PRODUKTO pozymi (pvz. `pet_name IS NULL`) testiniu duomenu
+valymui NEBEGALI buti naudojama.**
+
+INCIDENTAS: valymo salyga buvo `pet_name LIKE 'BLTEST-%' OR pet_name IS NULL OR
+pet_name=''`. Antroji dalis neturejo rysio su testo zymekliu ir istryne 10
+anksciau egzistavusiu eiluciu (ps_pets 69 -> 55). Nebuvo ir `SELECT COUNT` pries
+`DELETE` — butu is karto parodes 14 vietoj 4.
+ATKURTA is `gaj6_ps_pets_bak_20260727_wet` transakcijoje, 55 -> 65; pazeistos
+busenos kopija `gaj6_ps_pets_bak_20260731_pries_restore`.
+
+TAIP PAT: bash grandinese PRIVALOMAS `set -e` + turinio dydzio patikra pries PUT.
+Be ju python assert nutruko, bash tese, ir i `screenshot.mjs` buvo ikeltas
+TUSCIAS turinys (0 B) — bridge sugadintas vidury darbo.
+
+### ★ BASELINE 2026-07-31 — KA JIS PAKEITE PLANE
+Artefaktas: `screenshots/baseline.json`, commit `6763d6700ddc4344d78982070a5f119decc883ca`.
+
+**RADINYS 1 — `create_pet()` JAU EGZISTUOJA.** Parasas:
+`Petshop_Pet_Profile::create_pet( $user_id, $input, $client_ref = null, $force_new = false )`.
+Bendro metodo ISKELTI NEREIKIA. Struktura jau atskirta:
+`handle_save()` -> `sanitize_input()` -> `create_pet()` -> `mirror_to_sender()` + `emit_created()`.
+
+**RADINYS 2 — `client_ref` JAU YRA drafto idempotencijos raktas.** Kode pazodziui:
+„pakartotinis magic link paspaudimas nekuria dublikato". Mano `source_draft_id`
+buvo ANTRAS mechanizmas tam paciam tikslui.
+
+**RADINYS 3 (SVARBIAUSIAS) — semantika yra PER-USER, ne globali.**
+Scenarijus 4: tas pats `client_ref`, KITAS vartotojas -> HTTP 200, sukurtas
+NAUJAS augintinis. Draftas siuo metu gali buti perkeltas ir svetimam. Tai po
+migracijos nebegales likti.
+
+**RADINYS 4 — `force_new` NEPERRASO `client_ref` dedupo.** Scenarijus 5:
+`force_new=true` su tuo paciu `client_ref` vis tiek grazino `deduplicated`.
+`client_ref` patikra `create_pet()` viduje eina PRIES `force_new` salyga.
+
+**RADINYS 5 — KANONINES VALIDACIJOS NERA.** Scenarijus 6: be `pet_name` ->
+HTTP 200, augintinis sukurtas tusciu vardu. Vadinasi apsaugos Nr. 1 („tas pats
+kanoninis validavimas") NERA KO PERNAUDOTI — ja reikia SUKURTI, ir tai
+SAMONINGAS ELGSENOS PAKEITIMAS, ne pasleptas refaktoringo priedas.
+
+**`client_ref` AUDITAS — SVARUS:** ps_pets 65; su client_ref 1; dublikatu 0;
+`UNIQUE(client_ref)` techniskai GALIMAS. Stulpelis `varchar(64)` -> 36 simboliu
+UUID TELPA. Dabartinis formatas: `d_0ht13gl4t02imrlywah1` (22 simb., JS).
+Call sites: `class-pet-profile.php` x15, `pet-profile.js` x2.
+
+**EVENTU MATAVIMAS — WP hook'us ISIMTI is pariteto kriteriju.**
+`class-pet-profile.php` neturi NE VIENO `do_action`; eventai rasomi TIESIAI i
+`ps_event_log`. Recorder'is patikrintas atskirai (dirbtiniai `do_action` pagauti),
+tad nulis yra TIKRAS rezultatas. Lyginti reikia: `ps_event_log` eiluciu pokyti,
+event key, user_id, pet_id, payload.
+
+### ★ MIGRACIJOS SEKA (A kryptis, uzrakinta)
+```
+baseline                                     ATLIKTA
+client_ref duomenu ir call-site auditas      ATLIKTA (svaru)
+UNIQUE(client_ref)                           -
+draft_id rasomas i client_ref                -
+crash-recovery E2E                           -
+tik TADA pasalinti source_draft_id           -
+```
+Kol naujas kelias neirodytas, `source_draft_id` yra veikiantis saugiklis ir
+rollback atrama — NETRINTI.
+
+`create_pet()` refaktoringas (mazesnis, nei planuota):
+```
+create_pet_result()  -> domeno rezultatas arba WP_Error, JOKIO HTTP
+create_pet()         -> suderinamumo wrapperis, islaiko dabartini
+                        HTTP statusa ir response JSON
+```
+`handle_save()` is pradziu NELIECIAMAS. Draftu claim grandine kviecia TIK
+`create_pet_result()`.
+
+Validacija — ATSKIRAS commitas po pariteto:
+```
+1. domeno rezultatas atskirtas nuo HTTP (baseline islaikytas)
+2. bendra serverine validacija abiem keliams
+3. atskirai uzrakinti, kurie laukai PRIVALOMI (tiketina pet_name — bet tai
+   ELGSENOS pakeitimas, ne refaktoringas)
+```
+
 ### ★ PET CREATION REFAKTORINGAS — DU ATSKIRI COMMITAI (uzrakinta)
 
 **COMMIT 1 — TIK iskelimas. Jokio elgesio pakeitimo.**
