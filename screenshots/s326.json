@@ -1,0 +1,92 @@
+{
+ "deploy": {
+  "class-post-purchase.php": "MATCH",
+  "class-email-dispatch.php": "MATCH",
+  "petshop-core.php": "MATCH",
+  "site": 200
+ },
+ "setup": {
+  "A_tinkamas": 34755,
+  "B_atsauktas": 34756,
+  "C_grazintas": 34757,
+  "D_per_anksti": 34759,
+  "E_be_zymos": 34760
+ },
+ "run": {
+  "dry": {
+   "dry_run": true,
+   "cutoff": "2026-07-29 12:29:47",
+   "candidates": 3,
+   "queued": 0,
+   "skipped": [
+    [
+     34756,
+     "status_cancelled"
+    ],
+    [
+     34757,
+     "refunded_partially"
+    ]
+   ],
+   "details": [
+    {
+     "order": 34755,
+     "action": "WOULD_QUEUE"
+    }
+   ]
+  },
+  "run": {
+   "dry_run": false,
+   "cutoff": "2026-07-29 12:29:47",
+   "candidates": 3,
+   "queued": 1,
+   "skipped": [
+    [
+     34756,
+     "status_cancelled"
+    ],
+    [
+     34757,
+     "refunded_partially"
+    ]
+   ],
+   "details": [
+    {
+     "order": 34755,
+     "action": "QUEUED",
+     "items": 1
+    }
+   ]
+  },
+  "run2": {
+   "dry_run": false,
+   "cutoff": "2026-07-29 12:29:47",
+   "candidates": 2,
+   "queued": 0,
+   "skipped": [
+    [
+     34756,
+     "status_cancelled"
+    ],
+    [
+     34757,
+     "refunded_partially"
+    ]
+   ],
+   "details": []
+  },
+  "jobs": [
+   {
+    "job_key": "post_purchase_2d:34755",
+    "flow_class": "service",
+    "status": "pending",
+    "scheduled_at": "2026-07-31 12:29:47"
+   }
+  ],
+  "zyma": {
+   "pries": "2026-07-28 12:29:34",
+   "po_redagavimo": "2026-07-28 12:29:34",
+   "nepakito": "TAIP"
+  }
+ }
+}
