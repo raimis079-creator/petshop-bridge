@@ -1,0 +1,149 @@
+{
+ "sid": 1971,
+ "setup": {
+  "A": 34498,
+  "B": 34488,
+  "consent": 1
+ },
+ "run": {
+  "detect": {
+   "dry_run": false,
+   "cutoff": "2026-07-31 08:31:33",
+   "floor": "2026-07-24 10:31:33",
+   "candidates": 2,
+   "abandoned": 2,
+   "events": 2,
+   "jobs": 2,
+   "no_email": 0,
+   "skipped": [],
+   "expired": 0,
+   "details": [
+    {
+     "cart_id": "c_full_noconsent",
+     "action": "ABANDONED",
+     "items": 2,
+     "email": "yra"
+    },
+    {
+     "cart_id": "c_full_e2e",
+     "action": "ABANDONED",
+     "items": 2,
+     "email": "yra"
+    }
+   ]
+  },
+  "events": {
+   "su_consent": 1,
+   "be_consent": 1
+  },
+  "jobs_pries": [
+   {
+    "id": "10",
+    "job_key": "cart_abandoned:c_full_noconsent:stage1",
+    "flow_class": "marketing",
+    "status": "pending",
+    "skip_reason": null,
+    "context_json": "{\"cart_id\":\"c_full_noconsent\"}"
+   },
+   {
+    "id": "11",
+    "job_key": "cart_abandoned:c_full_e2e:stage1",
+    "flow_class": "marketing",
+    "status": "pending",
+    "skip_reason": null,
+    "context_json": "{\"cart_id\":\"c_full_e2e\"}"
+   }
+  ],
+  "dry": {
+   "dry_run": true,
+   "picked": 2,
+   "results": [
+    {
+     "id": 10,
+     "flow": "cart_abandoned",
+     "action": "SKIPPED",
+     "reason": "consent_missing"
+    },
+    {
+     "id": 11,
+     "flow": "cart_abandoned",
+     "action": "WOULD_SEND",
+     "to": "e2e-cart@example.com",
+     "subject": "Jūsų prekės vis dar laukia krepšelyje",
+     "html_len": 3373
+    }
+   ]
+  },
+  "send": {
+   "dry_run": false,
+   "picked": 2,
+   "results": [
+    {
+     "id": 10,
+     "flow": "cart_abandoned",
+     "action": "SKIPPED",
+     "reason": "consent_missing"
+    },
+    {
+     "id": 11,
+     "flow": "cart_abandoned",
+     "action": "SENT",
+     "msg_id": "",
+     "error": ""
+    }
+   ]
+  },
+  "jobs_po": [
+   {
+    "id": "10",
+    "job_key": "cart_abandoned:c_full_noconsent:stage1",
+    "flow_class": "marketing",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "provider_message_id": null,
+    "subject": null,
+    "context_json": "{\"cart_id\":\"c_full_noconsent\"}"
+   },
+   {
+    "id": "11",
+    "job_key": "cart_abandoned:c_full_e2e:stage1",
+    "flow_class": "marketing",
+    "status": "sent",
+    "skip_reason": null,
+    "provider_message_id": "",
+    "subject": "Jūsų prekės vis dar laukia krepšelyje",
+    "context_json": "{\"cart_id\":\"c_full_e2e\",\"recovery_url\":\"https:\\/\\/dev.avesa.lt\\/atkurti-krepseli\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19mdWxsX2UyZSIsImFjdGlvbiI6IiIsImV4cGlyZXNfYXQiOjE3ODYwOTg2OTMsIm5vbmNlIjoiNTBhNjFlYzBmNjQ2YTQxZGY3NGY0YzBlZDU1YTg2YjUiLCJrZXlfaWQiOiJ2MiJ9.d6b8e070dcc0cb867e89d40aa9dd583706d6fbbee838164969a41992f0f29a9b\",\"recovery_issued\":\"2026-07-31 10:31:33\"}"
+   }
+  ],
+  "send2": {
+   "dry_run": false,
+   "picked": 0,
+   "results": []
+  },
+  "jobs_po2": [
+   {
+    "id": "10",
+    "status": "skipped",
+    "context_json": "{\"cart_id\":\"c_full_noconsent\"}"
+   },
+   {
+    "id": "11",
+    "status": "sent",
+    "context_json": "{\"cart_id\":\"c_full_e2e\",\"recovery_url\":\"https:\\/\\/dev.avesa.lt\\/atkurti-krepseli\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19mdWxsX2UyZSIsImFjdGlvbiI6IiIsImV4cGlyZXNfYXQiOjE3ODYwOTg2OTMsIm5vbmNlIjoiNTBhNjFlYzBmNjQ2YTQxZGY3NGY0YzBlZDU1YTg2YjUiLCJrZXlfaWQiOiJ2MiJ9.d6b8e070dcc0cb867e89d40aa9dd583706d6fbbee838164969a41992f0f29a9b\",\"recovery_issued\":\"2026-07-31 10:31:33\"}"
+   }
+  ]
+ },
+ "render": {
+  "subject": "Jūsų prekės vis dar laukia krepšelyje",
+  "html_len": 3373,
+  "turi_produkta": 1,
+  "cta": [
+   "https://dev.avesa.lt/atkurti-krepseli/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19mdWxsX2UyZSIsImFjdGlvbiI6IiIsImV4cGlyZXNfYXQiOjE3ODYwOTg2OTMsIm5vbmNlIjoiNTBhNjFlYzBmNjQ2YTQxZGY3NGY0YzBlZDU1YTg2YjUiLCJrZXlfaWQiOiJ2MiJ9.d6b8e070dcc0cb867e89d40aa9dd583706d6fbbee838164969a41992f0f29a9b"
+  ],
+  "unsub": [
+   "https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzkzMjY5ODk2LCJub25jZSI6ImY2YTAwODI3ODRkZTZlZjIxMzljNzQ0YWZiNDk0NDc5Iiwia2V5X2lkIjoidjIifQ.f1603deaaa4aa7bd88bc2047a13c8a1523f143a0bf642bb364bda6d13db9c862"
+  ],
+  "visos_nuorodos": 2,
+  "tekstas": "Jūsų prekės vis dar laukia krepšelyje Krepšelis išsaugotas — galite tęsti bet kada. Jūsų prekės vis dar laukia krepšelyje Sveiki, pastebėjome, kad krepšelyje liko prekių. Jis išsaugotas — galite tęsti, kai būsite pasiruošę.Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt. — 2 vnt.Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt. — 1 vnt.Grįžti į krepšelįKainos ir prekių prieinamumas gali būti pasikeitę — krepšelį atnaujinsime pagal dabartinį katalogą.&nbsp;UAB Avesa, Liucionių g. 46, Liucionys, LT-15166Gavote šį laišką, nes sutikote gauti Petshop.lt pasiūlymus.Atsisakyti pranešimų"
+ }
+}
