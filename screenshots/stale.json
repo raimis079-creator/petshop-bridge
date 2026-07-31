@@ -1,0 +1,101 @@
+{
+ "setup1": {
+  "a": 34498,
+  "b": 34488,
+  "a_name": "Exclusion Mediterraneo Mono Prot",
+  "b_name": "Animonda Vom Feinsten Adult with",
+  "token": "eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19zdGFsZV90ZXN0IiwiYWN0aW9uIjoiIiwiZXhwaXJlc19hdCI6MTc4NjA5OTA0NSwibm9uY2UiOiI2MzRlZjYxOGQxMTcyNjQwZjg1ZTVjMDQ2MWI0YzI5OCIsImtleV9pZCI6InYyIn0.c829effa3a805b5d9e41b4f4c4319863416a1e23645b0e6cf970fdc5277ea16d"
+ },
+ "kill1": {
+  "a": "publish",
+  "b": "draft"
+ },
+ "plan1": {
+  "ok": [
+   {
+    "product_id": 34498,
+    "variation_id": 0,
+    "variation": [],
+    "qty": 2,
+    "qty_wanted": 2,
+    "limited": false,
+    "name": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+    "price": 13.2
+   }
+  ],
+  "skipped": [
+   {
+    "id": 34488,
+    "name": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt.",
+    "reason": "nebeparduodama"
+   }
+  ]
+ },
+ "T1_get": {
+  "tekstas": "Atkurti krepšelį — Petshop.lt Atkurti krepšelį Radome jūsų išsaugotą krepšelį. Norite jį atkurti? Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt. — 2 vnt. · 13,20&nbsp;&euro; Kainos — dabartinės. Šių prekių atkurti nepavyks: Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt. — nebeparduodama Atkurti krepšelį",
+  "turi_A": 1,
+  "turi_B": 1,
+  "turi_forma": true
+ },
+ "T1_post": "302|https://dev.avesa.lt/cart/",
+ "T1_cart": {
+  "items": [
+   {
+    "p": 34498,
+    "v": 0,
+    "q": 2
+   }
+  ],
+  "count": 1
+ },
+ "setup2": {
+  "a": 34498,
+  "b": 34488,
+  "a_name": "Exclusion Mediterraneo Mono Prot",
+  "b_name": "Animonda Vom Feinsten Adult with",
+  "token": "eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY19zdGFsZV90ZXN0IiwiYWN0aW9uIjoiIiwiZXhwaXJlc19hdCI6MTc4NjA5OTA1OCwibm9uY2UiOiI1MTAyMjAxNjdlNWQ0NWI5ZjI1MTg3YmViMDY2MjI4NSIsImtleV9pZCI6InYyIn0.4e6392ecb33d373aabba5ba30a030e41d806dfed5d00696ba73deac3ee094a37"
+ },
+ "kill2": {
+  "a": "draft",
+  "b": "draft"
+ },
+ "plan2": {
+  "ok": [],
+  "skipped": [
+   {
+    "id": 34498,
+    "name": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+    "reason": "nebeparduodama"
+   },
+   {
+    "id": 34488,
+    "name": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt.",
+    "reason": "nebeparduodama"
+   }
+  ]
+ },
+ "T2_get": {
+  "tekstas": "Krepšelio atkurti nepavyko — Petshop.lt Krepšelio atkurti nepavyko Deja, nė vienos krepšelio prekės nebegalime pasiūlyti: Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt. — nebeparduodama Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g × 16 vnt. — nebeparduodama Peržiūrėti prekes",
+  "turi_forma": false,
+  "zada_atkurti": "NE_GERAI"
+ },
+ "T2_post": {
+  "res": "200|",
+  "tekstas": "Nepavyko — Petshop.lt Nepavyko Sesija nebegalioja. Bandykite dar kartą iš laiško. Grįžti į petshop.lt"
+ },
+ "T2_cart": {
+  "items": [],
+  "count": 0
+ },
+ "T2_pakartotinis": {
+  "code": "200",
+  "tekstas": "Nepavyko — Petshop.lt Nepavyko Sesija nebegalioja. Bandykite dar kartą iš laiško. Grįžti į petshop.lt"
+ },
+ "T2_cart_po": {
+  "items": [],
+  "count": 0
+ },
+ "cleanup": {
+  "ok": 1
+ }
+}
