@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31** — S323 refill kalibravimas uzdarytas. cart_abandoned ir refill_due srautai PILNI.
+> Paskutinį kartą atnaujinta: **2026-07-31** — S324 cart_abandoned stage2 + S325 refill sablonas. T-5/dunning/post-purchase BLOCKED BY M10.
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -155,6 +155,29 @@ Atkuriama tik: egzistuoja · publish · purchasable · in_stock. Kainos DABARTIN
 **Variacija — 5 salygos:** is_type('variation') · parent_id===product_id · parent publish · purchasable+in_stock · atributai sutampa. I krepseli deda `variation_id`, NE parent.
 Pakartotinis POST NEDUBLIUOJA (3 eil. pries ir po).
 Ne viena atkurta -> aiskus pranesimas su priezastimis, NE tuscias krepselis.
+
+## ★ BLOCKED BY M10 (produkto funkcijos NERA, ne maketo)
+```
+T-5 (subscription_t5_notice)          blocked by M10
+Dunning (payment_failed serija)       blocked by M10
+Post-purchase +14d prenumeratos dalis blocked by M10
+```
+**M10 inventorizacija 2026-07-31 — NIEKO NERA:** ps_subscriptions lenteliu NERA · Petshop_Subscriptions klasiu NERA · subscription plugin'u NERA · prenumeratos puslapiu NERA · WC `subscription` produkto tipo NERA · **Paysera supports=['products'], pasikartojanciu mokejimu NEPALAIKO** · kodo paminejimu 0.
+**TAISYKLE:** jokiame sablone NERODOM automatinio papildymo / prenumeratos pazadu, kol M10 nera. Negyva nuoroda bloga, bet NETIKRAS PRODUKTO PAZADAS — dar blogiau.
+
+## ★ AUGINTINIO VARDAS LAISKUOSE
+Lietuviu kalba reikalauja kilmininko: „Rekso maisto", NE „Reksas maisto".
+**Automatinio linksniavimo NEDAROM** — luztu ties uzsienietiskais vardais, trumpiniais, nelinksniuojamais vardais, neteisinga gimine.
+Naudojam universalia forma („jusu augintinio maisto"). Varda tik ten, kur linksniuoti NEREIKIA.
+5% maziau personalizacijos geriau nei „Reksas maisto" — tai primena pigu mail merge, ne rupesti klientu.
+
+## CART_ABANDONED STAGE 2 (S324)
+`delay = 0` — 24 val. laukia DETEKTORIUS (`detect_stage2`), ne dispatch eile. Kitaip lauktu 48 val.
+Pries stage2 tikrinama IS NAUJO: stage1 sent · praejo 24 val. · stage2 dar nera · status='abandoned' · converted_order_id nera · bent viena preke perkama. Consent/suppression — dispatch.
+**Recovery tokenas PERPANAUDOJAMAS** (jei `peek` sako galiojantis) — tas pats krepselis, tas pats veiksmas.
+`job_key = cart_abandoned:{cart_id}:stage2`.
+Tekstas is saltinio: „Krepselis vis dar laukia. Jei kilo klausimu del pasirinkimo — mielai padesime."
+**STEBETI:** `provider_message_id` tuscias su `example.com` adresu, nors status SENT. Su realiu adresu msg_id budavo.
 
 ## ★★★ REGRESIJOS TAISYKLE — CIKLO RAKTAS ★★★
 ```
