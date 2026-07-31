@@ -1,1 +1,173 @@
-{"restored":true,"md5_now":"a14fa3fe0050755217c4c6f4a0c74842","size_now":19099}
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2018,
+ "rez": {
+  "VERSIJA": "restore-v1",
+  "tiksliniai_id": [
+   23,
+   24,
+   31,
+   32,
+   45,
+   46,
+   47,
+   49,
+   53,
+   55
+  ],
+  "snapshot": "gaj6_ps_pets_bak_20260731_pries_restore",
+  "snapshot_eiluciu": 55,
+  "tik_dabartineje": [
+   "wet_product_id",
+   "source_draft_id"
+  ],
+  "tik_backupe": [],
+  "stulpeliu_bendru": 34,
+  "jau_yra": [],
+  "truksta": [
+   23,
+   24,
+   31,
+   32,
+   45,
+   46,
+   47,
+   49,
+   53,
+   55
+  ],
+  "backupe_randama": 10,
+  "ideta": 10,
+  "pets_pries": 55,
+  "pets_po_insert": 65,
+  "VERDIKTAS": "COMMIT — atkurta 10",
+  "galutinis_pets": 65,
+  "atkurtos": [
+   {
+    "id": "23",
+    "user_id": "1",
+    "pet_name": null,
+    "species": "dog",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "24",
+    "user_id": "1",
+    "pet_name": null,
+    "species": "dog",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "31",
+    "user_id": "28",
+    "pet_name": null,
+    "species": "cat",
+    "status": "active",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "32",
+    "user_id": "28",
+    "pet_name": null,
+    "species": "cat",
+    "status": "active",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "45",
+    "user_id": "1",
+    "pet_name": null,
+    "species": "dog",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "46",
+    "user_id": "1",
+    "pet_name": null,
+    "species": "cat",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "47",
+    "user_id": "1",
+    "pet_name": null,
+    "species": "other",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "49",
+    "user_id": "1",
+    "pet_name": null,
+    "species": "dog",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "53",
+    "user_id": "1",
+    "pet_name": null,
+    "species": "dog",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   },
+   {
+    "id": "55",
+    "user_id": "44",
+    "pet_name": null,
+    "species": "dog",
+    "status": "deleted",
+    "source_draft_id": null,
+    "client_ref": null
+   }
+  ],
+  "source_draft_id_visos_null": true,
+  "BLTEST_liko": 0,
+  "indeksai": {
+   "PRIMARY": [
+    "id"
+   ],
+   "uniq_source_draft": [
+    "source_draft_id"
+   ],
+   "idx_user": [
+    "user_id"
+   ],
+   "idx_user_primary": [
+    "user_id",
+    "is_primary"
+   ],
+   "idx_user_status": [
+    "user_id",
+    "status"
+   ]
+  },
+  "event_log_31_32_po_0727": [],
+  "updated_at_31_32": [
+   {
+    "id": "31",
+    "created_at": "2026-07-15 10:35:35",
+    "updated_at": "2026-07-15 10:35:35"
+   },
+   {
+    "id": "32",
+    "created_at": "2026-07-15 10:35:45",
+    "updated_at": "2026-07-15 10:35:45"
+   }
+  ]
+ },
+ "site": "200"
+}
