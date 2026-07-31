@@ -1,1 +1,84 @@
-{"result":{"liko_age_range_eiluciu":25,"liko_lenteliu":1,"needs_review":[{"id":"300","brand":"Josera","status":"needs_review"}],"backup_eiluciu":550,"sutvarkytu_lenteliu":10,"produktu":20,"atsako":0,"nesekmes":[{"pid":16871,"kg":30.5,"men":1.5,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]},{"pid":16772,"kg":30.5,"men":1.5,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]},{"pid":16776,"kg":30.5,"men":1.5,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]},{"pid":16785,"kg":30.5,"men":1.5,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]},{"pid":16788,"kg":30.5,"men":1.5,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]},{"pid":14504,"kg":40,"men":2,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]},{"pid":14534,"kg":40,"men":2,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]},{"pid":14503,"kg":5.8,"men":2,"st":"unavailable","rc":["NO_VERIFIED_TABLE"]}]}}
+{
+ "deactivated": [],
+ "sid": 1951,
+ "dry": {
+  "urls_faile": [
+   "https://www.post.lt/siuntu-sekimas?parcels=",
+   "https://venipak.lt/tracking/track/"
+  ],
+  "resolve": {
+   "carrier": "venipak",
+   "carrier_label": "Venipak",
+   "tracking_number": "106200460",
+   "tracking_numbers": [
+    "106200460"
+   ],
+   "tracking_url": "https://venipak.lt/tracking/track/106200460",
+   "tracking_urls": {
+    "106200460": "https://venipak.lt/tracking/track/106200460"
+   },
+   "delivery_type": "courier"
+  },
+  "mail": {
+   "subject": "Jūsų užsakymas Nr.34744 išsiųstas!",
+   "has_nr": 1,
+   "links": [
+    "https://venipak.lt/tracking/track/106200460"
+   ]
+  },
+  "resolve_lp": {
+   "carrier": "lp_express",
+   "carrier_label": "LP Express",
+   "tracking_number": "CE123456789LT",
+   "tracking_numbers": [
+    "CE123456789LT"
+   ],
+   "tracking_url": "https://www.post.lt/siuntu-sekimas?parcels=CE123456789LT",
+   "tracking_urls": {
+    "CE123456789LT": "https://www.post.lt/siuntu-sekimas?parcels=CE123456789LT"
+   },
+   "delivery_type": "courier"
+  }
+ },
+ "apply": {
+  "urls_faile": [
+   "https://www.post.lt/siuntu-sekimas?parcels=",
+   "https://venipak.lt/tracking/track/"
+  ],
+  "resolve": {
+   "carrier": "venipak",
+   "carrier_label": "Venipak",
+   "tracking_number": "106200460",
+   "tracking_numbers": [
+    "106200460"
+   ],
+   "tracking_url": "https://venipak.lt/tracking/track/106200460",
+   "tracking_urls": {
+    "106200460": "https://venipak.lt/tracking/track/106200460"
+   },
+   "delivery_type": "courier"
+  },
+  "mail": {
+   "subject": "Jūsų užsakymas Nr.34746 išsiųstas!",
+   "has_nr": 1,
+   "links": [
+    "https://venipak.lt/tracking/track/106200460"
+   ]
+  },
+  "resolve_lp": {
+   "carrier": "lp_express",
+   "carrier_label": "LP Express",
+   "tracking_number": "CE123456789LT",
+   "tracking_numbers": [
+    "CE123456789LT"
+   ],
+   "tracking_url": "https://www.post.lt/siuntu-sekimas?parcels=CE123456789LT",
+   "tracking_urls": {
+    "CE123456789LT": "https://www.post.lt/siuntu-sekimas?parcels=CE123456789LT"
+   },
+   "delivery_type": "courier"
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
