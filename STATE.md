@@ -1,7 +1,7 @@
 # STATE.md — petshop.lt migracija · MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
-> Paskutinį kartą atnaujinta: **2026-07-31** — S322: PIRMAS PILNAS LIFECYCLE SRAUTAS uzdarytas (cart_abandoned nuo evento iki atkurto krepselio).
+> Paskutinį kartą atnaujinta: **2026-07-31** — S323 refill kalibravimas uzdarytas. cart_abandoned ir refill_due srautai PILNI.
 > Chronologija (kas kada) — deployment_log.md. Cia tik DABARTINE BUKLE.
 
 
@@ -53,7 +53,7 @@ Woo eventas -> ps_event_log -> outbox (ps_email_jobs) -> eligibility
 | --- | --- | --- |
 | order_paid | eventas TAIP, dispatch laisko NE | **WooCommerce** (SMTP) |
 | order_shipped | eventas TAIP, dispatch laisko NE | **WooCommerce** (completed laiskas) |
-| refill_due | VEIKIA (eventas + job + sablonas) | musu dispatch |
+| refill_due | **PILNAS SRAUTAS** (eventas + job + sablonas ant karkaso + scanner-safe kalibravimas) | musu dispatch |
 | cart_abandoned | **PILNAS SRAUTAS VEIKIA** (detektorius + sablonas + tokenas + atkurimas) | musu dispatch (marketing) |
 | post_purchase / win_back / legacy / founding | NEPASTATYTA | — |
 
@@ -155,6 +155,28 @@ Atkuriama tik: egzistuoja · publish · purchasable · in_stock. Kainos DABARTIN
 **Variacija — 5 salygos:** is_type('variation') · parent_id===product_id · parent publish · purchasable+in_stock · atributai sutampa. I krepseli deda `variation_id`, NE parent.
 Pakartotinis POST NEDUBLIUOJA (3 eil. pries ir po).
 Ne viena atkurta -> aiskus pranesimas su priezastimis, NE tuscias krepselis.
+
+## ★★★ REGRESIJOS TAISYKLE — CIKLO RAKTAS ★★★
+```
+Idempotencijos ar ciklo raktas NEGALI buti sudarytas is lauko,
+kuri PATS atliekamas veiksmas pakeicia.
+```
+Galioja NE tik refill — ta pati taisykle prenumeratoms, priminimams ir visiems cikliniams srautams.
+**Kaip issilinde (S323):** ciklo zyma emiau is `predicted_someth`... `predicted_empty_date`, bet feedback ta data PAKEICIA -> antras atsakymas praejo (avg 24->29, ev 1->2). Pataisa: ciklo raktas = `last_order_id` -> `last_purchase_date` -> `created_at`.
+
+## REFILL KALIBRAVIMAS (S323) — VEIKIA
+```
+Laiskas: [Pakartoti uzsakyma]  +  antrinis tekstinis „Patikslinti priminima"
+GET  /refill-feedback/?t={token}  -> peek -> TRYS pasirinkimai, NIEKO nekeicia
+POST                              -> consume -> submit() -> prognozes korekcija
+```
+**VIENAS kanoninis zodynas:** `sooner` (Jau baigesi) · `later` (Dar yra nemazai) · `similar` (Tiksliai laiku).
+NEKURTI `finished_early/still_plenty/on_time` — butu duomenu divergencija.
+**BENDRA domeno paslauga** `Petshop_Refill_Feedback::submit()` — logika ISKELTA is `Pet_Dashboard` (UI sluoksnis). REST ir laisko keliai kviecia TA PACIA realizacija (irodyta: REST gavo 409 `already_submitted`).
+Korekcija: sooner −20% (min 7 d.), later +20% (max 180 d.), similar nekeicia.
+Nauji stulpeliai `ps_refill_tracking`: `last_feedback`, `last_feedback_at`, `feedback_cycle`.
+Eventas idempotentinis: `refill_fb_{id}_{md5(cycle)}` (buvo `time()` — kure dublikatus).
+Senos 404 nuorodos `?ps_refill_fb=` PASALINTOS. `refill.php` perrasytas ant BENDRO karkaso.
 
 ## ★★★ KRITINIS SAUGIKLIS — CONSENT ★★★
 ```
