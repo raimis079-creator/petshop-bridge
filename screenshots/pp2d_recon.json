@@ -1,0 +1,103 @@
+{
+ "sid": 1991,
+ "recon": {
+  "core_php": {
+   "includes/class-account-avatar.php": 3557,
+   "includes/class-account-company.php": 6688,
+   "includes/class-account-dashboard.php": 12116,
+   "includes/class-action-tokens.php": 12929,
+   "includes/class-admin-reports.php": 13526,
+   "includes/class-cart-abandonment.php": 15446,
+   "includes/class-cart-recovery.php": 13087,
+   "includes/class-cart-tracker.php": 12361,
+   "includes/class-condition-mapper.php": 4383,
+   "includes/class-consent-log.php": 5081,
+   "includes/class-consent-sync.php": 8299,
+   "includes/class-contact-policy.php": 7195,
+   "includes/class-email-dispatch.php": 22467,
+   "includes/class-email-layout.php": 5980,
+   "includes/class-email-suppression.php": 13735,
+   "includes/class-event-emitters.php": 12724,
+   "includes/class-event-log.php": 9977,
+   "includes/class-event-registry.php": 5884,
+   "includes/class-feeding-calculator.php": 12241,
+   "includes/class-feeding-package-provider.php": 618,
+   "includes/class-feeding-package-resolver.php": 2189,
+   "includes/class-feeding-repository.php": 7552,
+   "includes/class-feeding-service.php": 37188,
+   "includes/class-feeding-ui.php": 8853,
+   "includes/class-magic-login.php": 18618,
+   "includes/class-mixed-feeding-estimator.php": 5989,
+   "includes/class-pet-content.php": 7809,
+   "includes/class-pet-dashboard.php": 23638,
+   "includes/class-pet-notes.php": 9130,
+   "includes/class-pet-photo.php": 8508,
+   "includes/class-pet-products.php": 9168,
+   "includes/class-pet-profile.php": 38078,
+   "includes/class-pet-ui.php": 7190,
+   "includes/class-plan-attribution.php": 6954,
+   "includes/class-post-purchase.php": 6117,
+   "includes/class-product-calc.php": 13571,
+   "includes/class-refill-engine.php": 17648,
+   "includes/class-refill-feedback.php": 13304,
+   "includes/class-reminders.php": 10649,
+   "includes/class-retry-queue.php": 8386,
+   "includes/class-shipments.php": 7902,
+   "includes/class-unsubscribe.php": 6222,
+   "includes/class-weight-filter.php": 10184,
+   "includes/interface-message-provider.php": 3049,
+   "includes/tpl-myaccount-dashboard.php": 823,
+   "includes/tpl-myaccount-my-address.php": 3799,
+   "petshop-core.php": 14905,
+   "templates/emails/cart-abandoned-1.php": 3328,
+   "templates/emails/cart-abandoned-2.php": 2505,
+   "templates/emails/order-paid.php": 2327,
+   "templates/emails/refill.php": 2870
+  },
+  "layout_file": "includes/class-email-layout.php",
+  "layout_methods": [
+   "logo_url()",
+   "open($subject, $preheader = '')",
+   "p($html, $size = 15)",
+   "muted($html, $size = 12)",
+   "button($url, $label)",
+   "secondary($links)",
+   "divider()",
+   "close($flow_class = 'service', $email = '', $reason = '')",
+   "wrap($args)"
+  ],
+  "tpl_files": {
+   "templates/emails/cart-abandoned-1.php": 3328,
+   "templates/emails/cart-abandoned-2.php": 2505,
+   "templates/emails/order-paid.php": 2327,
+   "templates/emails/refill.php": 2870
+  },
+  "grep_core": {
+   "post_purchase": [
+    "includes/class-email-dispatch.php",
+    "includes/class-post-purchase.php"
+   ],
+   "flow_class": [
+    "includes/class-email-dispatch.php",
+    "includes/class-email-layout.php",
+    "includes/class-refill-engine.php",
+    "templates/emails/cart-abandoned-1.php",
+    "templates/emails/cart-abandoned-2.php",
+    "templates/emails/refill.php"
+   ],
+   "FLOWS": [
+    "includes/class-email-dispatch.php"
+   ],
+   "template_missing": [
+    "includes/class-email-dispatch.php"
+   ]
+  },
+  "esp_reply_to": {
+   "includes/class-sender-adapter.php": [
+    "> $to_email, 'name' => $to_name ),\n\t\t\t// S327: atsakymo adresas. Sender priima `reply_to` (HTTP 200), bet ar\n\t\t\t// REALIAI iraso i MIME — tikrinama atskirai. Jei igno",
+    "a — zalos nera.\n\t\t\t// Filtras leidzia keisti/isjungti be kodo redagavimo.\n\t\t\t'reply_to' => apply_filters( 'petshop_email_reply_to',\n\t\t\t\tarray( 'email' => 'uzsakymai@p"
+   ]
+  }
+ },
+ "site_code": "200"
+}
