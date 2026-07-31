@@ -27,6 +27,7 @@ let A=null; try{A=JSON.parse(a.out);}catch(e){O.auth_raw=a.out.slice(0,800);}
 O.auth = A ? {user_id:A.user_id, pets_pries:A.pets_pries, url_tab:A.url_tab, url_create:A.url_create} : null;
 
 if(A && A.cookie_value){
+ try{
   const browser = await chromium.launch();
   const ctx = await browser.newContext({viewport:{width:1280,height:1000}, ignoreHTTPSErrors:true});
   await ctx.addCookies([
@@ -39,7 +40,7 @@ if(A && A.cookie_value){
   page.on('response', r=>{ if(r.status()>=400) bad.push(r.status()+' '+r.url().slice(0,140)); });
 
   // --- A: tuscia busena ---
-  await page.goto(A.url_tab, {waitUntil:'networkidle', timeout:60000});
+  await page.goto(A.url_tab, {waitUntil:'domcontentloaded', timeout:60000});
   await page.waitForTimeout(1500);
   O.A_url = page.url();
   O.A_prisijunges = await page.locator('body').evaluate(b=>b.className).catch(()=>'') ;
@@ -60,7 +61,7 @@ if(A && A.cookie_value){
   }
 
   // --- C: serverio kelias ?action=create ---
-  await page.goto(A.url_create, {waitUntil:'networkidle', timeout:60000});
+  await page.goto(A.url_create, {waitUntil:'domcontentloaded', timeout:60000});
   await page.waitForTimeout(2000);
   O.C_url = page.url();
   O.C_form_laukai = await page.locator('#pspet-form-host input, #pspet-form input').count();
@@ -71,8 +72,9 @@ if(A && A.cookie_value){
   O.http_klaidos = bad.slice(0,10);
   await browser.close();
   for (const n of ['A','B','C']) {
-    try{ putB64('m8_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png').toString('base64')); }catch(e){}
+    try{ putB64('m8_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png').toString('base64')); }catch(e){ O['png_'+n]=String(e).slice(0,120); }
   }
+ }catch(err){ O.BROWSER_ERR = String(err && err.stack ? err.stack : err).slice(0,900); }
 }
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
