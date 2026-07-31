@@ -236,3 +236,90 @@ kitaip `browser=0` run'as krinta ties importu.
 **Claim klaidos semantika (uzrakinta):** jei tokenas jau sunaudotas, o
 perkelimas laikinai nepavyko — vartotojas LIEKA prisijunges, draftas grazinamas
 i `active`, rodoma „Bandyti dar karta". Naujo magic link NEREIKALAUJAM.
+
+
+---
+
+## 2026-07-31 (vakaras II) — S328 tesinys: auditas, baseline ir DU INCIDENTAI
+
+### UZDARYTA
+```
+S328 Runtime Audit    TEMP viso 137 · aktyviu 0 · siuksleneje 13 -> SVARU
+HMAC stabilumas       trys ATSKIROS uzklausos, identiskas hash
+                      raktas 64 simb. · normalizacija sutampa · ne plain sha256
+Baseline              6 scenarijai + client_ref auditas
+                      artefaktas screenshots/baseline.json
+                      commit 6763d6700ddc4344d78982070a5f119decc883ca
+```
+Audito snippet'as SAMONINGAI pavadintas `S328 Runtime Audit`, be `TEMP` prefikso —
+kitaip testas patektu i savo paties tikrinama aibe ir visada rodytu 1 aktyvu.
+
+### BASELINE — PENKI RADINIAI, KEICIANTYS PLANA
+1. **`create_pet()` JAU EGZISTUOJA** — bendro metodo iskelti NEREIKIA.
+   `Petshop_Pet_Profile::create_pet($user_id,$input,$client_ref=null,$force_new=false)`.
+2. **`client_ref` JAU YRA drafto idempotencijos raktas** — mano `source_draft_id`
+   buvo ANTRAS mechanizmas tam paciam tikslui.
+3. **Semantika PER-USER, ne globali** (svarbiausias): tas pats `client_ref`, kitas
+   vartotojas -> HTTP 200, NAUJAS augintinis. Draftas gali buti perkeltas svetimam.
+4. **`force_new` NEPERRASO `client_ref` dedupo** — patikra eina PRIES ji.
+5. **KANONINES VALIDACIJOS NERA** — be `pet_name` -> HTTP 200, augintinis sukurtas
+   tusciu vardu. Apsaugos Nr. 1 nera ko pernaudoti, ja reikia SUKURTI.
+
+`client_ref` auditas svarus: 1 eilute, 0 dublikatu, `UNIQUE` galimas,
+`varchar(64)` -> 36 simboliu UUID telpa.
+WP hook'ai isimti is pariteto kriteriju — `class-pet-profile.php` neturi ne vieno
+`do_action`; recorder'is patikrintas atskirai, nulis yra TIKRAS rezultatas.
+
+### INCIDENTAS 1 — TUSCIAS `screenshot.mjs`
+Python assert nutruko, `bash` tese, ir i `screenshot.mjs` buvo ikeltas TUSCIAS
+turinys (0 B) + dispatch'inta. Bridge sugadintas vidury darbo, atkurta.
+SPRENDIMAS: `set -e` + turinio dydzio patikra (`assert len(c) > 5000`) pries PUT.
+
+### INCIDENTAS 2 — PER PLATUS `DELETE` ps_pets lenteleje
+Valymo salyga: `pet_name LIKE 'BLTEST-%' OR pet_name IS NULL OR pet_name=''`.
+Antroji dalis neturejo rysio su testo zymekliu -> istrintos 10 anksciau
+egzistavusiu eiluciu (ps_pets 69 -> 55). `SELECT COUNT` pries `DELETE` NEBUVO —
+butu is karto parodes 14 vietoj 4.
+
+ATKURTA transakcijoje is `gaj6_ps_pets_bak_20260727_wet`:
+```
+VERDIKTAS         COMMIT — atkurta 10
+ps_pets           55 -> 65
+id 31, 32         active · likusios 8 deleted
+source_draft_id   visos NULL
+BLTEST liko       0
+indeksai          nepakite
+snapshot          gaj6_ps_pets_bak_20260731_pries_restore (55 eil.)
+```
+31/32: `ps_event_log` po 2026-07-27 apie juos NIEKO; backup'e `updated_at` =
+`created_at` = 2026-07-15. Pakeitimu pedsako nera.
+
+### NUOLATINE TAISYKLE (irasyta i STATE.md)
+```
+Pries UPDATE arba DELETE:
+1. SELECT rodo konkrecius ID
+2. COUNT sutampa su TIKETINU skaiciumi
+3. Salygoje PRIVALOMAS unikalus zymeklis arba tikslus ID sarasas
+4. Jei count nesutampa — uzklausa NEVYKDOMA
+5. Vykdoma TRANSAKCIJOJE
+```
+Salyga pagal bendra PRODUKTO pozymi (`pet_name IS NULL`) testiniu duomenu
+valymui NEBEGALI buti naudojama.
+
+### KRYPTIS A UZRAKINTA
+```
+baseline                                  ATLIKTA
+client_ref duomenu ir call-site auditas   ATLIKTA (svaru)
+UNIQUE(client_ref)                        <- KITAS RASANTIS VEIKSMAS
+draft_id rasomas i client_ref             -
+crash-recovery E2E                        -
+tik TADA pasalinti source_draft_id        -
+```
+`create_pet()` refaktoringas mazesnis nei planuota:
+`create_pet_result()` (domenas, jokio HTTP) + `create_pet()` suderinamumo
+wrapperis. `handle_save()` pirmame commit'e NELIECIAMAS.
+Validacija — ATSKIRAS commitas, tai ELGSENOS pakeitimas.
+
+**PERSPEJIMAS kitai sesijai:** uzdejus `UNIQUE(client_ref)`, dabartinis
+`SELECT -> INSERT` lenktyniu atveju grazins `create_failed` 500 vietoj tylaus
+dublikato. `UNIQUE` ir duplicate-key apdorojimas turi eiti kartu arba labai arti.
