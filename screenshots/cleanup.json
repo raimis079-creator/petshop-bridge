@@ -1,1 +1,658 @@
-{"clean":"{\"food\":null,\"rem\":\"0\",\"rt\":\"0\"}"}
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2003,
+ "clean": {
+  "VERSIJA": "clean-v1-2026-07-31",
+  "user_rado": 46,
+  "pets_istrinta": 0,
+  "user_istrintas": true,
+  "user_po": "istrintas",
+  "stamp_pries": "2026-07-28 15:06:17",
+  "stamp_po": "",
+  "statusas": "completed",
+  "temp_snippetai": [
+   {
+    "id": "616",
+    "name": "TEMP — Complianz aktyvavimas v1 (token)",
+    "active": "0"
+   },
+   {
+    "id": "617",
+    "name": "TEMP — Complianz options probe v1 (token)",
+    "active": "0"
+   },
+   {
+    "id": "618",
+    "name": "TEMP — Complianz integracijos probe v2 (token)",
+    "active": "0"
+   },
+   {
+    "id": "620",
+    "name": "TEMP — Complianz banner probe v1 (token)",
+    "active": "0"
+   },
+   {
+    "id": "621",
+    "name": "TEMP — Complianz banner edit v1 (token)",
+    "active": "0"
+   },
+   {
+    "id": "622",
+    "name": "TEMP — Complianz CSS regen v2 (token)",
+    "active": "0"
+   },
+   {
+    "id": "623",
+    "name": "TEMP — Complianz layout fix v2 (token)",
+    "active": "0"
+   },
+   {
+    "id": "624",
+    "name": "TEMP — Paysera recon v1 (token)",
+    "active": "0"
+   },
+   {
+    "id": "625",
+    "name": "TEMP — Footer DUK fix (token)",
+    "active": "0"
+   },
+   {
+    "id": "1885",
+    "name": "TEMP Mixed Content Recon v1",
+    "active": "-1"
+   },
+   {
+    "id": "1886",
+    "name": "TEMP SiteURL HTTPS Fix v1",
+    "active": "0"
+   },
+   {
+    "id": "1887",
+    "name": "TEMP Flatsome Social Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "1888",
+    "name": "TEMP Refill Source Read v1",
+    "active": "0"
+   },
+   {
+    "id": "1889",
+    "name": "TEMP Refill Category Audit v1",
+    "active": "0"
+   },
+   {
+    "id": "1890",
+    "name": "TEMP Refill Engine Deploy S305 v1",
+    "active": "0"
+   },
+   {
+    "id": "1891",
+    "name": "TEMP Refill Fix Verify S305 v1",
+    "active": "0"
+   },
+   {
+    "id": "1892",
+    "name": "TEMP Wet Product Flow Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "1893",
+    "name": "TEMP Pet Profile JS Read v1",
+    "active": "0"
+   },
+   {
+    "id": "1894",
+    "name": "TEMP Wet Only E2E Login v1",
+    "active": "0"
+   },
+   {
+    "id": "1895",
+    "name": "TEMP Pets Owner Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "1896",
+    "name": "TEMP Pets Columns v1",
+    "active": "0"
+   },
+   {
+    "id": "1897",
+    "name": "TEMP Wet Only E2E Login v1",
+    "active": "0"
+   },
+   {
+    "id": "1898",
+    "name": "TEMP Wet Only E2E Login v1",
+    "active": "0"
+   },
+   {
+    "id": "1899",
+    "name": "TEMP Wet Only E2E Login v1",
+    "active": "0"
+   },
+   {
+    "id": "1900",
+    "name": "TEMP Wet Only E2E Login v1",
+    "active": "0"
+   },
+   {
+    "id": "1901",
+    "name": "TEMP Email Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "1902",
+    "name": "TEMP Email Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "1903",
+    "name": "TEMP ESP Inventory v1",
+    "active": "0"
+   },
+   {
+    "id": "1904",
+    "name": "TEMP Event Emitters Read v1",
+    "active": "0"
+   },
+   {
+    "id": "1905",
+    "name": "TEMP Event Dump Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1906",
+    "name": "TEMP Dispatch Recon Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1907",
+    "name": "TEMP Adapter Send Test Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1908",
+    "name": "TEMP Adapter Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1909",
+    "name": "TEMP Adapter Send Test Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1910",
+    "name": "TEMP Dispatch Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1911",
+    "name": "TEMP Dispatch E2E Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1912",
+    "name": "TEMP OrderPaid E2E Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1913",
+    "name": "TEMP EventLog Check Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1914",
+    "name": "TEMP S311 Refill Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1915",
+    "name": "TEMP Refill Diag Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1916",
+    "name": "TEMP Refill Positive Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1917",
+    "name": "TEMP S312 Observ Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1918",
+    "name": "TEMP Ship Owner Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1919",
+    "name": "TEMP Body Check Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1920",
+    "name": "TEMP S313 Recon Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1921",
+    "name": "TEMP Child fx Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1922",
+    "name": "TEMP Child fx Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1923",
+    "name": "TEMP S313 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1924",
+    "name": "TEMP Webhook Recon Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1925",
+    "name": "TEMP S314 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1926",
+    "name": "TEMP S314 Channel Check v1",
+    "active": "0"
+   },
+   {
+    "id": "1927",
+    "name": "TEMP S315 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1928",
+    "name": "TEMP Consent Verify Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1929",
+    "name": "TEMP Consent Default Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1930",
+    "name": "TEMP Cart Inventory Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1931",
+    "name": "TEMP Four Checks Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1932",
+    "name": "TEMP Four Checks Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1933",
+    "name": "TEMP Four Checks Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1934",
+    "name": "TEMP Four Checks Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1935",
+    "name": "TEMP Four Checks Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1936",
+    "name": "TEMP S316 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1937",
+    "name": "TEMP Cart Query Dump v1",
+    "active": "1"
+   },
+   {
+    "id": "1938",
+    "name": "TEMP S316 Cleanup Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1939",
+    "name": "TEMP S316 Cleanup Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1940",
+    "name": "TEMP Cart Schema Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1941",
+    "name": "TEMP S317 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1942",
+    "name": "TEMP ValidItems Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1943",
+    "name": "TEMP S317 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1944",
+    "name": "TEMP Stock Reserve Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1945",
+    "name": "TEMP Venipak Read Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1946",
+    "name": "TEMP Venipak Struct Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1947",
+    "name": "TEMP Venipak Real Nr v1",
+    "active": "0"
+   },
+   {
+    "id": "1948",
+    "name": "TEMP S318 URL Fix v1",
+    "active": "0"
+   },
+   {
+    "id": "1949",
+    "name": "TEMP Venipak URL Src Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1950",
+    "name": "TEMP S318 URL Fix v2",
+    "active": "0"
+   },
+   {
+    "id": "1951",
+    "name": "TEMP S318 Verify Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1952",
+    "name": "TEMP LP Real Nr v1",
+    "active": "0"
+   },
+   {
+    "id": "1953",
+    "name": "TEMP Multi Pack Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1954",
+    "name": "TEMP S319 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1955",
+    "name": "TEMP S319 Chrono Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1956",
+    "name": "TEMP S320 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1957",
+    "name": "TEMP Unsub Tests Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1958",
+    "name": "TEMP Consent Sig Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1959",
+    "name": "TEMP S321 Fix Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1960",
+    "name": "TEMP S321 Verify Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1961",
+    "name": "TEMP E2E Unsub v1",
+    "active": "0"
+   },
+   {
+    "id": "1962",
+    "name": "TEMP S318 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1963",
+    "name": "TEMP S318 Logic Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1964",
+    "name": "TEMP E2E Recovery v1",
+    "active": "0"
+   },
+   {
+    "id": "1965",
+    "name": "TEMP Recovery POST Diag v1",
+    "active": "0"
+   },
+   {
+    "id": "1966",
+    "name": "TEMP E2E Recovery v1",
+    "active": "0"
+   },
+   {
+    "id": "1967",
+    "name": "TEMP E2E Recovery v1",
+    "active": "0"
+   },
+   {
+    "id": "1968",
+    "name": "TEMP Cart Verify v1",
+    "active": "0"
+   },
+   {
+    "id": "1969",
+    "name": "TEMP Qty+Variation Verify v1",
+    "active": "0"
+   },
+   {
+    "id": "1970",
+    "name": "TEMP S322 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1971",
+    "name": "TEMP S322 Full E2E v1",
+    "active": "0"
+   },
+   {
+    "id": "1972",
+    "name": "TEMP S322 Stale v1",
+    "active": "0"
+   },
+   {
+    "id": "1973",
+    "name": "TEMP Refill FB Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1974",
+    "name": "TEMP Refill REST Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1975",
+    "name": "TEMP S323 Deploy Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1976",
+    "name": "TEMP S323 Acceptance v1",
+    "active": "0"
+   },
+   {
+    "id": "1977",
+    "name": "TEMP S323 Acceptance v1",
+    "active": "0"
+   },
+   {
+    "id": "1978",
+    "name": "TEMP S323b Deploy v1",
+    "active": "0"
+   },
+   {
+    "id": "1979",
+    "name": "TEMP S324 Stage2 v1",
+    "active": "0"
+   },
+   {
+    "id": "1980",
+    "name": "TEMP S324 Stage2 v1",
+    "active": "0"
+   },
+   {
+    "id": "1981",
+    "name": "TEMP S324 Stage2 v1",
+    "active": "0"
+   },
+   {
+    "id": "1982",
+    "name": "TEMP M10 Inventory Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1983",
+    "name": "TEMP S325 Refill Tpl v1",
+    "active": "0"
+   },
+   {
+    "id": "1984",
+    "name": "TEMP S325 Refill Tpl v1",
+    "active": "0"
+   },
+   {
+    "id": "1985",
+    "name": "TEMP PP Audit Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1986",
+    "name": "TEMP Support Audit Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1987",
+    "name": "TEMP S326 PostPurchase v1",
+    "active": "0"
+   },
+   {
+    "id": "1988",
+    "name": "TEMP S327 Real E2E v1",
+    "active": "0"
+   },
+   {
+    "id": "1989",
+    "name": "TEMP Terra Spam Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1990",
+    "name": "TEMP Terra Spam Dump v1",
+    "active": "0"
+   },
+   {
+    "id": "1991",
+    "name": "TEMP PP2D Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "1992",
+    "name": "TEMP PP2D Recon v2",
+    "active": "0"
+   },
+   {
+    "id": "1993",
+    "name": "TEMP PP2D Deploy v1",
+    "active": "0"
+   },
+   {
+    "id": "1994",
+    "name": "TEMP PP2D E2E v1",
+    "active": "0"
+   },
+   {
+    "id": "1995",
+    "name": "TEMP PP2D E2E v1",
+    "active": "0"
+   },
+   {
+    "id": "1996",
+    "name": "TEMP PP2D Fix v2",
+    "active": "0"
+   },
+   {
+    "id": "1997",
+    "name": "TEMP M8 Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "1998",
+    "name": "TEMP M8 Recon v2",
+    "active": "0"
+   },
+   {
+    "id": "1999",
+    "name": "TEMP M8 Auth v1",
+    "active": "1"
+   },
+   {
+    "id": "2000",
+    "name": "TEMP M8 Auth v1",
+    "active": "0"
+   },
+   {
+    "id": "2001",
+    "name": "TEMP M8 Auth v2",
+    "active": "0"
+   },
+   {
+    "id": "2002",
+    "name": "TEMP M8 Auth v3",
+    "active": "0"
+   },
+   {
+    "id": "2003",
+    "name": "TEMP Cleanup v1",
+    "active": "1"
+   }
+  ],
+  "temp_aktyvus_liko": 3
+ },
+ "site": "200"
+}
