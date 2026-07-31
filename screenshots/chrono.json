@@ -1,0 +1,188 @@
+{
+ "deactivated": [],
+ "sid": 1955,
+ "dry": {
+  "cols": [
+   "id",
+   "shipment_id",
+   "order_id",
+   "carrier",
+   "tracking_number",
+   "tracking_url",
+   "source",
+   "created_at",
+   "notified_at"
+  ],
+  "order": 34749,
+  "step1_po_A": [
+   {
+    "carrier": "venipak",
+    "tracking_number": "106200460",
+    "source": "venipak_plugin"
+   }
+  ],
+  "step2_po_B": [
+   {
+    "carrier": "venipak",
+    "tracking_number": "106200460",
+    "source": "venipak_plugin"
+   },
+   {
+    "carrier": "venipak",
+    "tracking_number": "106200999",
+    "source": "venipak_plugin"
+   }
+  ],
+  "meta_dabar": {
+   "status": "sent",
+   "pack_numbers": [
+    "106200999"
+   ]
+  },
+  "resolve": {
+   "carrier": "venipak",
+   "carrier_label": "Venipak",
+   "tracking_number": "106200460,106200999",
+   "tracking_numbers": [
+    "106200460",
+    "106200999"
+   ],
+   "tracking_url": "https://venipak.lt/tracking/track/106200460",
+   "tracking_urls": {
+    "106200460": "https://venipak.lt/tracking/track/106200460",
+    "106200999": "https://venipak.lt/tracking/track/106200999"
+   },
+   "shipments": [
+    {
+     "carrier": "venipak",
+     "carrier_label": "Venipak",
+     "number": "106200460",
+     "url": "https://venipak.lt/tracking/track/106200460"
+    },
+    {
+     "carrier": "venipak",
+     "carrier_label": "Venipak",
+     "number": "106200999",
+     "url": "https://venipak.lt/tracking/track/106200999"
+    }
+   ],
+   "delivery_type": "courier"
+  },
+  "laisku_skaicius": 1,
+  "mail": {
+   "subject": "Jūsų užsakymas Nr.34749 išsiųstas!",
+   "turi_A": 1,
+   "turi_B": 1,
+   "turi_2_siuntos": 1,
+   "siunta_1_is_2": 1,
+   "excerpt": "Petshop.lt Jūsų užsakymas išsiųstas! Sveiki Raimis, Jūsų užsakymas Nr. 34749 išsiųstas ir jau kelyje pas Jus! Siuntos sekimas Jūsų užsakymas pristatomas 2 atskiromis siuntomis. Kiekvieną galite sekti atskirai. Siunta 1 iš 2 · VenipakSiuntos numeris: 106200460Sekti siuntą Siunta 2 iš 2 · VenipakSiuntos numeris: 106200999Sekti siuntą PVM sąskaita faktūra prisegta prie šio laiško. Ačiū, kad esate su mumis!Petshop.lt kom",
+   "links": [
+    "https://venipak.lt/tracking/track/106200460",
+    "https://venipak.lt/tracking/track/106200999"
+   ]
+  },
+  "stats": {
+   "total": 2,
+   "by_carrier": [
+    {
+     "carrier": "venipak",
+     "c": "2"
+    }
+   ],
+   "multi_orders": 1
+  }
+ },
+ "apply": {
+  "cols": [
+   "id",
+   "shipment_id",
+   "order_id",
+   "carrier",
+   "tracking_number",
+   "tracking_url",
+   "source",
+   "created_at",
+   "notified_at"
+  ],
+  "order": 34750,
+  "step1_po_A": [
+   {
+    "carrier": "venipak",
+    "tracking_number": "106200460",
+    "source": "venipak_plugin"
+   }
+  ],
+  "step2_po_B": [
+   {
+    "carrier": "venipak",
+    "tracking_number": "106200460",
+    "source": "venipak_plugin"
+   },
+   {
+    "carrier": "venipak",
+    "tracking_number": "106200999",
+    "source": "venipak_plugin"
+   }
+  ],
+  "meta_dabar": {
+   "status": "sent",
+   "pack_numbers": [
+    "106200999"
+   ]
+  },
+  "resolve": {
+   "carrier": "venipak",
+   "carrier_label": "Venipak",
+   "tracking_number": "106200460,106200999",
+   "tracking_numbers": [
+    "106200460",
+    "106200999"
+   ],
+   "tracking_url": "https://venipak.lt/tracking/track/106200460",
+   "tracking_urls": {
+    "106200460": "https://venipak.lt/tracking/track/106200460",
+    "106200999": "https://venipak.lt/tracking/track/106200999"
+   },
+   "shipments": [
+    {
+     "carrier": "venipak",
+     "carrier_label": "Venipak",
+     "number": "106200460",
+     "url": "https://venipak.lt/tracking/track/106200460"
+    },
+    {
+     "carrier": "venipak",
+     "carrier_label": "Venipak",
+     "number": "106200999",
+     "url": "https://venipak.lt/tracking/track/106200999"
+    }
+   ],
+   "delivery_type": "courier"
+  },
+  "laisku_skaicius": 1,
+  "mail": {
+   "subject": "Jūsų užsakymas Nr.34750 išsiųstas!",
+   "turi_A": 1,
+   "turi_B": 1,
+   "turi_2_siuntos": 1,
+   "siunta_1_is_2": 1,
+   "excerpt": "Petshop.lt Jūsų užsakymas išsiųstas! Sveiki Raimis, Jūsų užsakymas Nr. 34750 išsiųstas ir jau kelyje pas Jus! Siuntos sekimas Jūsų užsakymas pristatomas 2 atskiromis siuntomis. Kiekvieną galite sekti atskirai. Siunta 1 iš 2 · VenipakSiuntos numeris: 106200460Sekti siuntą Siunta 2 iš 2 · VenipakSiuntos numeris: 106200999Sekti siuntą PVM sąskaita faktūra prisegta prie šio laiško. Ačiū, kad esate su mumis!Petshop.lt kom",
+   "links": [
+    "https://venipak.lt/tracking/track/106200460",
+    "https://venipak.lt/tracking/track/106200999"
+   ]
+  },
+  "stats": {
+   "total": 2,
+   "by_carrier": [
+    {
+     "carrier": "venipak",
+     "c": "2"
+    }
+   ],
+   "multi_orders": 1
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
