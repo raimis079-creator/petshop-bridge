@@ -1,0 +1,22 @@
+{
+ "deactivated": [],
+ "sid": 1959,
+ "dry": {
+  "deploy": {
+   "class-contact-policy.php": "MATCH",
+   "class-email-dispatch.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo"
+ },
+ "apply": {
+  "deploy": {
+   "class-contact-policy.php": "MATCH",
+   "class-email-dispatch.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
