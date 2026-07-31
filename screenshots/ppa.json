@@ -1,0 +1,320 @@
+{
+ "deactivated": [],
+ "sid": 1985,
+ "dry": {
+  "wc_emails": [
+   {
+    "id": "new_order",
+    "title": "Naujas užsakymas",
+    "enabled": 1,
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   {
+    "id": "cancelled_order",
+    "title": "Atšauktas užsakymas",
+    "enabled": 1,
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   {
+    "id": "customer_cancelled_order",
+    "title": "Atšauktas užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "failed_order",
+    "title": "Nepavykęs užsakymas",
+    "enabled": 1,
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   {
+    "id": "customer_failed_order",
+    "title": "Nepavykęs užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_on_hold_order",
+    "title": "Užsakymas sustabdytas",
+    "enabled": 0,
+    "recipient": ""
+   },
+   {
+    "id": "customer_processing_order",
+    "title": "Užsakymas vykdomas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_completed_order",
+    "title": "Įvykdytas užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_refunded_order",
+    "title": "Grąžintas užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_invoice",
+    "title": "Užsakymo informacija",
+    "enabled": 0,
+    "recipient": ""
+   },
+   {
+    "id": "customer_note",
+    "title": "Pirkėjo pastaba",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_reset_password",
+    "title": "Atkurti slaptažodį",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_new_account",
+    "title": "Nauja paskyra",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "admin_payment_gateway_enabled",
+    "title": "Payment gateway enabled",
+    "enabled": 0,
+    "recipient": "uzsakymai@petshop.lt"
+   }
+  ],
+  "review_plugins": [],
+  "crons": [],
+  "wp_mail_files": [
+   "wp-content/plugins/petshop-core/includes/class-magic-login.php",
+   "wp-content/plugins/petshop-core/includes/class-retry-queue.php"
+  ],
+  "reviews": {
+   "enable_reviews": "yes",
+   "rating_verification": "yes",
+   "ratings_enabled": "yes",
+   "comment_registration": "",
+   "default_comment_status": "",
+   "sample": [
+    {
+     "id": 34512,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/ruda-avies-koja-1-vnt-x-20-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34510,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/ruda-kiaules-ausis-1-vnt-x-20-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34500,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/animonda-carny-adult-beef-turkey-shrimp-konservai-katems-su-sviezia-jautiena-kalakutiena-ir-krevetemis-400-g-x-6-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34498,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/exclusion-mediterraneo-mono-protein-konservuotas-pasaras-katems-su-tunu-85-g-x-10-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34488,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-katems-su-paukstiena-ir-versiena-100-g-x-16-vnt/#reviews",
+     "review_count": 0
+    }
+   ]
+  },
+  "test": {
+   "po_apmokejimo": [
+    {
+     "to": "uzsakymai@petshop.lt",
+     "s": "Naujas užsakymas Nr. 34751 — 2026-07-31"
+    },
+    {
+     "to": "pp-audit@example.com",
+     "s": "Jūsų užsakymas Nr. 34751 — apmokėjimas gautas"
+    }
+   ],
+   "po_completed": [
+    {
+     "to": "pp-audit@example.com",
+     "s": "Jūsų užsakymas Nr.34751 išsiųstas!"
+    }
+   ],
+   "suplanuoti_cron": []
+  }
+ },
+ "apply": {
+  "wc_emails": [
+   {
+    "id": "new_order",
+    "title": "Naujas užsakymas",
+    "enabled": 1,
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   {
+    "id": "cancelled_order",
+    "title": "Atšauktas užsakymas",
+    "enabled": 1,
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   {
+    "id": "customer_cancelled_order",
+    "title": "Atšauktas užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "failed_order",
+    "title": "Nepavykęs užsakymas",
+    "enabled": 1,
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   {
+    "id": "customer_failed_order",
+    "title": "Nepavykęs užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_on_hold_order",
+    "title": "Užsakymas sustabdytas",
+    "enabled": 0,
+    "recipient": ""
+   },
+   {
+    "id": "customer_processing_order",
+    "title": "Užsakymas vykdomas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_completed_order",
+    "title": "Įvykdytas užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_refunded_order",
+    "title": "Grąžintas užsakymas",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_invoice",
+    "title": "Užsakymo informacija",
+    "enabled": 0,
+    "recipient": ""
+   },
+   {
+    "id": "customer_note",
+    "title": "Pirkėjo pastaba",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_reset_password",
+    "title": "Atkurti slaptažodį",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "customer_new_account",
+    "title": "Nauja paskyra",
+    "enabled": 1,
+    "recipient": ""
+   },
+   {
+    "id": "admin_payment_gateway_enabled",
+    "title": "Payment gateway enabled",
+    "enabled": 0,
+    "recipient": "uzsakymai@petshop.lt"
+   }
+  ],
+  "review_plugins": [],
+  "crons": [],
+  "wp_mail_files": [
+   "wp-content/plugins/petshop-core/includes/class-magic-login.php",
+   "wp-content/plugins/petshop-core/includes/class-retry-queue.php"
+  ],
+  "reviews": {
+   "enable_reviews": "yes",
+   "rating_verification": "yes",
+   "ratings_enabled": "yes",
+   "comment_registration": "",
+   "default_comment_status": "",
+   "sample": [
+    {
+     "id": 34512,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/ruda-avies-koja-1-vnt-x-20-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34510,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/ruda-kiaules-ausis-1-vnt-x-20-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34500,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/animonda-carny-adult-beef-turkey-shrimp-konservai-katems-su-sviezia-jautiena-kalakutiena-ir-krevetemis-400-g-x-6-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34498,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/exclusion-mediterraneo-mono-protein-konservuotas-pasaras-katems-su-tunu-85-g-x-10-vnt/#reviews",
+     "review_count": 0
+    },
+    {
+     "id": 34488,
+     "reviews_allowed": 1,
+     "comment_status": "open",
+     "url": "https://dev.avesa.lt/product/animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-katems-su-paukstiena-ir-versiena-100-g-x-16-vnt/#reviews",
+     "review_count": 0
+    }
+   ]
+  },
+  "test": {
+   "po_apmokejimo": [
+    {
+     "to": "uzsakymai@petshop.lt",
+     "s": "Naujas užsakymas Nr. 34752 — 2026-07-31"
+    },
+    {
+     "to": "pp-audit@example.com",
+     "s": "Jūsų užsakymas Nr. 34752 — apmokėjimas gautas"
+    }
+   ],
+   "po_completed": [
+    {
+     "to": "pp-audit@example.com",
+     "s": "Jūsų užsakymas Nr.34752 išsiųstas!"
+    }
+   ],
+   "suplanuoti_cron": []
+  }
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
