@@ -17,14 +17,13 @@ function send(body,label){
 }
 const base={ from:{email:'terra@petshop.lt',name:'Petshop.lt'},
   to:{email:'raimundas@gyvunai.lt',name:'Raimis'},
-  subject:'[TEST] reply_to patikra', html:'<p>Atsakykite i si laiska.</p>' };
-// variantai
-send({...base, reply_to:{email:'uzsakymai@petshop.lt',name:'Petshop.lt'}}, 'reply_to_objektas');
-sh('sleep 2');
-send({...base, reply_to:'uzsakymai@petshop.lt'}, 'reply_to_eilute');
-sh('sleep 2');
-send({...base, replyTo:{email:'uzsakymai@petshop.lt'}}, 'replyTo_camel');
-sh('sleep 2');
-send({...base, headers:{'Reply-To':'uzsakymai@petshop.lt'}}, 'headers_objektas');
+  html:'<p>Patikra: i koki adresa siulo atsakyti jusu pastas?</p>' };
+send({...base, subject:'REPLY TEST 1 (reply_to objektas)',
+  reply_to:{email:'uzsakymai@petshop.lt',name:'Petshop.lt'}}, 'v1_objektas');
+sh('sleep 3');
+send({...base, subject:'REPLY TEST 2 (reply_to eilute)',
+  reply_to:'uzsakymai@petshop.lt'}, 'v2_eilute');
+sh('sleep 3');
+send({...base, subject:'REPLY TEST 3 (be reply_to - kontrolinis)'}, 'v3_kontrolinis');
 putB64('rt.json', Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
