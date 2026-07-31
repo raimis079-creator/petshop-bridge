@@ -1,1 +1,104 @@
-{"net":[],"console":[],"steps":["u_1_tuscia","u_2_po_sukurimo","u_3_planas","u_4_priminimas"],"t1_empty":"","t2_forma":"Papasakokite apie savo augintinį Tai užtruks mažiau nei minutę Kas jūsų augintinis? Šuo Katė Paukštis Graužikas Žuvis Ro","t3_po_sukurimo":"","t4_res":10,"t5_planas":true,"t6_rem":true}
+{
+ "deactivated": [],
+ "sid": 1957,
+ "dry": {
+  "layout_match": "YES",
+  "link_generated": 1,
+  "link_has_email": "NE_GERAI",
+  "token_len": 307,
+  "T1_peek": {
+   "valid": true,
+   "pries": {
+    "sup": 0,
+    "consent": 1
+   },
+   "po": {
+    "sup": 0,
+    "consent": 1
+   },
+   "nepakito": "TAIP"
+  },
+  "T2": {
+   "consume_valid": true,
+   "marketing_suppressed": 1,
+   "transactional_suppressed": 0,
+   "consent": 1,
+   "policy_transactional_only": "true"
+  },
+  "T3_pakartotinis": {
+   "valid": false,
+   "reason": "already_used"
+  },
+  "T4": {
+   "marketing": {
+    "allowed": false,
+    "reason": "suppressed_marketing_unsubscribe",
+    "terminal": true
+   },
+   "service": true,
+   "transactional": true
+  },
+  "T5": {
+   "sugadintas": false,
+   "tuscias": false,
+   "E2_nepaliestas": 0
+  },
+  "T6_footeriai": {
+   "transactional": 0,
+   "service": 1,
+   "marketing": 1
+  },
+  "T6_marketing_url": "https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzkzMjYzODY4LCJub25jZSI6IjFmNmQ3Mzg5MTU5YzUwZjQxMDMwMDVhMTA1YjgxMjQzIiwia2V5X2lkIjoidjIifQ.f2be9bd202a66641bcae9b2eda52d5fc401e9d5c5c5b17580e25bc53aba87624"
+ },
+ "apply": {
+  "layout_match": "YES",
+  "link_generated": 1,
+  "link_has_email": "NE_GERAI",
+  "token_len": 307,
+  "T1_peek": {
+   "valid": true,
+   "pries": {
+    "sup": 0,
+    "consent": 1
+   },
+   "po": {
+    "sup": 0,
+    "consent": 1
+   },
+   "nepakito": "TAIP"
+  },
+  "T2": {
+   "consume_valid": true,
+   "marketing_suppressed": 1,
+   "transactional_suppressed": 0,
+   "consent": 1,
+   "policy_transactional_only": "true"
+  },
+  "T3_pakartotinis": {
+   "valid": false,
+   "reason": "already_used"
+  },
+  "T4": {
+   "marketing": {
+    "allowed": false,
+    "reason": "suppressed_marketing_unsubscribe",
+    "terminal": true
+   },
+   "service": true,
+   "transactional": true
+  },
+  "T5": {
+   "sugadintas": false,
+   "tuscias": false,
+   "E2_nepaliestas": 0
+  },
+  "T6_footeriai": {
+   "transactional": 0,
+   "service": 0,
+   "marketing": 1
+  },
+  "T6_marketing_url": "https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzkzMjYzODY5LCJub25jZSI6IjQ5Nzc2MTJiMWRhMTNhNmI1ZTdjNTFiMjY2ODNlNzZhIiwia2V5X2lkIjoidjIifQ.29d40c56f48547e6ca86f030c35f11d83b6573dd9032a190304f9cc6d4a9b68f"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
