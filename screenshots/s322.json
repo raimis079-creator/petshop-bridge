@@ -1,0 +1,24 @@
+{
+ "deactivated": [],
+ "sid": 1970,
+ "dry": {
+  "deploy": {
+   "class-email-dispatch.php": "MATCH",
+   "class-cart-recovery.php": "MATCH",
+   "cart-abandoned-1.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo"
+ },
+ "apply": {
+  "deploy": {
+   "class-email-dispatch.php": "MATCH",
+   "class-cart-recovery.php": "MATCH",
+   "cart-abandoned-1.php": "MATCH"
+  },
+  "site": 200,
+  "ROLLBACK": "nereikejo"
+ },
+ "site_code": "200",
+ "account_code": "200"
+}
