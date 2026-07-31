@@ -1,0 +1,212 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2005,
+ "clean": {
+  "VERSIJA": "anon-recon-v1",
+  "puslapiai": [],
+  "puslapiai_platus": [],
+  "grep": {
+   "token": [
+    "core/petshop-core.php",
+    "core/includes/class-cart-recovery.php",
+    "core/includes/class-email-dispatch.php",
+    "core/includes/class-email-suppression.php",
+    "core/includes/class-cart-abandonment.php",
+    "core/includes/class-magic-login.php",
+    "core/includes/class-action-tokens.php",
+    "core/includes/class-unsubscribe.php",
+    "core/includes/interface-message-provider.php",
+    "core/includes/class-reminders.php",
+    "core/includes/class-refill-feedback.php",
+    "core/includes/class-retry-queue.php",
+    "core/includes/class-cart-tracker.php",
+    "child/functions.php",
+    "child/woocommerce/myaccount/form-login.php"
+   ],
+   "magic-link": [
+    "core/assets/pet-form.js"
+   ],
+   "draft_id": [
+    "core/assets/pet-form.js",
+    "core/assets/pet-profile.js"
+   ],
+   "draft": [
+    "core/assets/pet-form.js",
+    "core/assets/pet-profile.js",
+    "child/woocommerce/myaccount/form-login.php"
+   ],
+   "add_shortcode": [
+    "core/includes/class-feeding-ui.php",
+    "core/includes/class-pet-ui.php",
+    "child/inc/home-popular-products.php"
+   ],
+   "magic_link": [
+    "core/includes/class-magic-login.php"
+   ]
+  },
+  "shortcodes": {
+   "petshop_feeding_demo": "core/includes/class-feeding-ui.php",
+   "petshop_pet_form": "core/includes/class-pet-ui.php",
+   "petshop_popular_products": "child/inc/home-popular-products.php"
+  },
+  "ps_lenteles": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_shipments",
+   "gaj6_ps_webhook_log"
+  ],
+  "draft_lenteles": {
+   "gaj6_ps_action_tokens": [
+    {
+     "Field": "id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "PRI",
+     "Default": null,
+     "Extra": "auto_increment"
+    },
+    {
+     "Field": "token_hash",
+     "Type": "char(64)",
+     "Null": "NO",
+     "Key": "UNI",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "nonce",
+     "Type": "char(32)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "purpose",
+     "Type": "varchar(48)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "purpose_group",
+     "Type": "varchar(48)",
+     "Null": "YES",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "subject_id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": "0",
+     "Extra": ""
+    },
+    {
+     "Field": "subject_email",
+     "Type": "varchar(191)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "resource_id",
+     "Type": "varchar(64)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "action",
+     "Type": "varchar(48)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "key_id",
+     "Type": "varchar(8)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "status",
+     "Type": "varchar(16)",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": "active",
+     "Extra": ""
+    },
+    {
+     "Field": "created_at",
+     "Type": "datetime",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "expires_at",
+     "Type": "datetime",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "used_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "used_ip",
+     "Type": "varchar(45)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    }
+   ]
+  }
+ },
+ "site": "200"
+}
