@@ -1,0 +1,36 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2034,
+ "rez": {
+  "VERSIJA": "dump-v1",
+  "kodas": 200,
+  "ilgis": 172170,
+  "turi": {
+   "MyAccount-navigation": 24,
+   "MyAccount-content": 1,
+   "account-user": 0,
+   "flatsome_nav": 3,
+   "avataras": 0,
+   "Uzsakymai_nuoroda": 3,
+   "Augintinis_nuoroda": 4,
+   "Atsijungti_nuoroda": 2,
+   "Sveiki": 1,
+   "kortele_Uzsakymai": 1
+  },
+  "fragmentas": " has-icon\">\n\t<div class=\"header-search-form-wrapper\">\n\t\t<div class=\"searchform-wrapper ux-search-box relative is-normal\"><form role=\"search\" method=\"get\" class=\"searchform\" action=\"https://dev.avesa.lt/\">\n\t<div class=\"flex-row relative\">\n\t\t\t\t\t\t<div class=\"flex-col flex-grow\">\n\t\t\t<label class=\"screen-reader-text\" for=\"woocommerce-product-search-field-0\">Ieškoti:</label>\n\t\t\t<input type=\"search\" id=\"woocommerce-product-search-field-0\" class=\"search-field mb-0\" placeholder=\"Ieškoti prekių ...\" value=\"\" name=\"s\" />\n\t\t\t<input type=\"hidden\" name=\"post_type\" value=\"product\" />\n\t\t\t\t\t</div>\n\t\t<div class=\"flex-col\">\n\t\t\t<button type=\"submit\" value=\"Ieškoti\" class=\"ux-search-submit submit-button secondary button  icon mb-0\" aria-label=\"Submit\">\n\t\t\t\t<i class=\"icon-search\" aria-hidden=\"true\"></i>\t\t\t</button>\n\t\t</div>\n\t</div>\n\t<div class=\"live-search-results text-left z-top\"></div>\n</form>\n</div>\t</div>\n</li>\n            </ul>\n          </div>\n\n          <!-- Right Elements -->\n          <div class=\"flex-col hide-for-medium flex-right\">\n            <ul class=\"header-nav header-nav-main nav nav-right  nav-size-small nav-uppercase\">\n              \n<li class=\"account-item has-icon active has-dropdown\">\n\n\t<a href=\"https://dev.avesa.lt/paskyra/\" class=\"account-link account-login nav-top-link\" title=\"Paskyra\" aria-expanded=\"false\" aria-haspopup=\"menu\">\n\t\t\t\t\t<span class=\"header-account-title\">\n\t\t\t\tPaskyra\t\t\t\t</span>\n\t\t\n\t\t\t</a>\n\t\n\n\t<ul class=\"nav-dropdown nav-dropdown-default\">\n\t\t\n\t\t\t<li class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard is-active active\">\n\t\t\t\t\t\t\t<a href=\"https://dev.avesa.lt/paskyra/\"\n\t\t\t\t\taria-current=\"page\">\n\t\t\t\t\tSkydelis\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t<li class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--augintinis\">\n\t\t\t\t\t\t\t<a href=\"https://dev.avesa.lt/paskyra/augintinis/\"\n\t\t\t\t\t>\n\t\t\t\t\tMano augintinis\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t<li class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders\">\n\t\t\t\t\t\t\t<a href=\"https://dev.avesa.lt/paskyra/uzsakymai/\"\n\t\t\t\t\t>\n\t\t\t\t\tUžsakymai\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t<li class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address\">\n\t\t\t\t\t\t\t<a href=\"https://dev.avesa.lt/paskyra/adresai/\"\n\t\t\t\t\t>\n\t\t\t\t\tAdresai\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t<li class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account\">\n\t\t\t\t\t\t\t<a href=\"https://dev.avesa.lt/paskyra/paskyros-duomenys/\"\n\t\t\t\t\t>\n\t\t\t\t\tPaskyros duomenys\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t<li class=\"woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout\">\n\t\t<a href=\"https://dev.avesa.lt/paskyra/atsijungti/?_wpnonce=dfc433abb5\">Atsijungti</a>\n\t</li>\n\t</ul>\n\n</li>\n<li class=\"header-divider\"></li><li class=\"cart-item has-icon has-dropdown\">\n\n<a href=\"https://dev.avesa.lt/cart/\" class=\"header-cart-link nav-top-link is-small\" title=\"Krepšelis\" aria-label=\"Krepšelis\" aria-expanded=\"false\" aria-haspopup=\""
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
