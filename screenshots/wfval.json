@@ -1,0 +1,41 @@
+{
+ "sid": 2056,
+ "dry": {
+  "VERSIJA": "wpforms-val-v1",
+  "esama": {
+   "validation-required": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-email": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-email-suggestion": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-number": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-number-positive": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-confirm": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-check-limit": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-character-limit": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-word-limit": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-fileextension": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-filesize": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-url": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-phone": "(nera — naudojamas numatytasis anglu k.)",
+   "validation-post_max_size": "(nera — naudojamas numatytasis anglu k.)"
+  }
+ },
+ "apply": {
+  "VERSIJA": "wpforms-val-v1",
+  "irasyta": 14,
+  "viso": 14,
+  "backup": "ps_wpforms_settings_bak_20260801"
+ },
+ "mygtukas": "Siųsti užklausą",
+ "klaidos_tuscia": [
+  "Šis laukas privalomas.",
+  "Šis laukas privalomas.",
+  "Šis laukas privalomas.",
+  "Šis laukas privalomas."
+ ],
+ "klaidos_pastas": [
+  "Įveskite teisingą el. pašto adresą.",
+  "Šis laukas privalomas."
+ ],
+ "js_klaidos": [],
+ "site": "200"
+}
