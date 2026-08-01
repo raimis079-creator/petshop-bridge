@@ -21,33 +21,21 @@ try{
     off.push(s0.id+':'+s0.name); } }
   O.deaktyvuota_TEMP=off;
 }catch(e){ O.valymo_klaida=String(e).slice(0,200); }
-const php=Buffer.from('PD9waHAKLyoqCiAqIFMzMjkgVGVtcGxhdGUgRml4CiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc190ZjMnXSkgfHwgJF9HRVRbJ3BzX3RmMyddICE9PSAnVGYzZzgnICkgcmV0dXJuOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICBnbG9iYWwgJHdwZGI7ICRyID0gYXJyYXkoJ1ZFUlNJSkEnPT4ndHBsLWZpeC12MScpOwoKICAgIC8vIGFyIEZsYXRzb21lIHNhYmxvbmFzIHRpa3JhaSB5cmEKICAgICRmbCA9IGdldF90ZW1wbGF0ZV9kaXJlY3RvcnkoKS4nL3BhZ2UtbXktYWNjb3VudC5waHAnOwogICAgJHJbJ2ZsYXRzb21lX3NhYmxvbmFzJ10gPSBpc19yZWFkYWJsZSgkZmwpID8gZmlsZXNpemUoJGZsKSA6ICdORVJBJzsKCiAgICAkc3QgPSAkd3BkYi0+cHJlZml4LidzbmlwcGV0cyc7CiAgICAkdmFyZGFzID0gJ1BldHNob3AgUGFza3lyb3MgU2FibG9uYXMgdjEgKExJVkUpJzsKICAgICRlcyA9ICR3cGRiLT5nZXRfcm93KCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgaWQgRlJPTSAkc3QgV0hFUkUgbmFtZT0lcyIsICR2YXJkYXMpKTsKICAgIGlmICghJGVzKSB7CiAgICAgICAgJHdwZGItPmluc2VydCgkc3QsIGFycmF5KCduYW1lJz0+JHZhcmRhcywnY29kZSc9PmJhc2U2NF9kZWNvZGUoJ0x5b3FDaUFxSUZCbGRITm9iM0FnVUdGemEzbHliM01nVTJGaWJHOXVZWE1nZGpFZ0tFeEpWa1VwQ2lBcUNpQXFJRkJTU1VWYVFWTlVTVk02SUVac1lYUnpiMjFsSUd0aGFYSjVhbWtnY0dGemEzbHliM01nYldWdWFYVWdLR0FqYlhrdFlXTmpiM1Z1ZEMxdVlYWmdMQ0J1WVhZdGRtVnlkR2xqWVd3cENpQXFJSEpsYm1SbGNtbHVZU0JtWVdsc1lYTWdZR1pzWVhSemIyMWxMM0JoWjJVdGJYa3RZV05qYjNWdWRDNXdhSEJnTGlCVVlXa2dWMjl5WkZCeVpYTnpJR0J3WVdkbExYdHpiSFZuZlM1d2FIQmdDaUFxSUhOaFlteHZibUZ6SU9LQWxDQnFhWE1nY0dGeVpXNXJZVzFoY3lCUVFVZEJUQ0JRVlZOTVFWQkpUeUJUVEZWSEowRXVJRkJoYTJWcGRIVnpJSE5zZFdjbllTQnBjd29nS2lCZ2JYa3RZV05qYjNWdWRHQWdhU0JnY0dGemEzbHlZV0FnS0ZNek1qa3BMQ0JYVUNCdVpXSmxkSFZ5YVNCZ2NHRm5aUzF3WVhOcmVYSmhMbkJvY0dBZ2FYSWdhM0pwYm5SaElHa0tJQ29nWW1WdVpISmhJR0J3WVdkbExuQm9jR0FnNG9DVUlHdGhhWEo1YzJseklITnJlV1JsYkdseklFUkpUa2RUVkVFdUNpQXFDaUFxSUZOUVVrVk9SRWxOUVZNNklHNTFhM0psYVhCcFlXMGdjMkZpYkc5dVlTQndZV2RoYkNCcGMxOWhZMk52ZFc1MFgzQmhaMlVvS1N3Z1RrVWdjR0ZuWVd3Z2MyeDFaeWRoTGdvZ0tpQlVaVzF2Y3lCbVlXbHNZWE1nVGtWRVZVSk1TVlZQU2tGTlFWTWdLR3RwZEdGcGNDQkdiR0YwYzI5dFpTQmhkRzVoZFdwcGJtbHRZV2tnYm5WbGFYUjFJSEJ5YnlCellXeHBLU3dLSUNvZ2FYSWdZWFJsYVhSNWFtVWdjMngxWnlkaElHZGhiR2x0WVNCclpXbHpkR2tnYkdGcGMzWmhhU0RpZ0pRZ2MybHpJR3RoWW14cGRXdGhjeUJ1WlhOMWJIVnpMZ29nS2dvZ0tpQnBjMTloWTJOdmRXNTBYM0JoWjJVb0tTQjBaV2x6YVc1bllTQnBjaUJsYm1Sd2IybHVkQ2RoYlhNNklHbHJhU0JUTXpJNUlIWnBjMmtnTDIxNUxXRmpZMjkxYm5Rdktnb2dLaUJoWkhKbGMyRnBJR0oxZG04Z1ZFRlRJRkJCVkZNZ2NIVnpiR0Z3YVhNc0lIUmhaQ0J3WVdkbExXMTVMV0ZqWTI5MWJuUXVjR2h3SUdKMWRtOGdibUYxWkc5cVlXMWhjd29nS2lCMmFYTjFjaTRnVTJseklHWnBiSFJ5WVhNZ1lYUnJkWEpwWVNCVVNVdFRURWxCU1NCMFlTQndZV05wWVNCbGJHZHpaVzVoTGdvZ0tpOEtZV1JrWDJacGJIUmxjaWdLQ1NkMFpXMXdiR0YwWlY5cGJtTnNkV1JsSnl3S0NYTjBZWFJwWXlCbWRXNWpkR2x2YmlBb0lDUjBaVzF3YkdGMFpTQXBJSHNLQ1FscFppQW9JQ0VnWm5WdVkzUnBiMjVmWlhocGMzUnpLQ0FuYVhOZllXTmpiM1Z1ZEY5d1lXZGxKeUFwSUh4OElDRWdhWE5mWVdOamIzVnVkRjl3WVdkbEtDa2dLU0I3Q2drSkNYSmxkSFZ5YmlBa2RHVnRjR3hoZEdVN0Nna0pmUW9KQ1NSbWJHRjBjMjl0WlNBOUlHZGxkRjkwWlcxd2JHRjBaVjlrYVhKbFkzUnZjbmtvS1NBdUlDY3ZjR0ZuWlMxdGVTMWhZMk52ZFc1MExuQm9jQ2M3Q2drSmNtVjBkWEp1SUdselgzSmxZV1JoWW14bEtDQWtabXhoZEhOdmJXVWdLU0EvSUNSbWJHRjBjMjl0WlNBNklDUjBaVzF3YkdGMFpUc0tDWDBzQ2drNU9Rb3BPd289JyksCiAgICAgICAgICAgICdzY29wZSc9PidnbG9iYWwnLCdhY3RpdmUnPT4xLCdwcmlvcml0eSc9PjEwLCdkZXNjcmlwdGlvbic9PicnLCd0YWdzJz0+JycsCiAgICAgICAgICAgICdtb2RpZmllZCc9PmN1cnJlbnRfdGltZSgnbXlzcWwnKSkpOwogICAgICAgICRyWydzbmlwcGV0X2lkJ10gPSAoaW50KSAkd3BkYi0+aW5zZXJ0X2lkOwogICAgfSBlbHNlIHsgJHJbJ2phdV9idXZvJ10gPSAkZXMtPmlkOyB9CiAgICB3cF9jYWNoZV9mbHVzaCgpOwogICAgZWNobyB3cF9qc29uX2VuY29kZSgkciwgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1BSRVRUWV9QUklOVCk7CiAgICBleGl0Owp9KTsK','base64').toString('utf8');
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'S329 Template Fix',code:php.replace(/^<\?php\s*/,''),scope:'global',active:true}));
+const php=Buffer.from('PD9waHAKLyoqCiAqIFMzMjkgTmF2IFZlcmlmeQogKi8KYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICAgIGlmICggISBpc3NldCgkX0dFVFsncHNfbnZmJ10pIHx8ICRfR0VUWydwc19udmYnXSAhPT0gJ052ZjJqJyApIHJldHVybjsKICAgIG5vY2FjaGVfaGVhZGVycygpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICAgJHIgPSBhcnJheSgnVkVSU0lKQSc9PiduYXYtdmVyaWZ5LXYxJyk7CiAgICAkdSA9IGdldF91c2VyX2J5KCdsb2dpbicsJ3BzX3MzMjlfdGVzdCcpOwogICAgaWYgKCEkdSkgeyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnInPT4nbmVyYScpKTsgZXhpdDsgfQogICAgJGNrID0gd3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoJHUtPklELCB0aW1lKCkrMzAwLCAnbG9nZ2VkX2luJyk7CgogICAgZm9yZWFjaCAoYXJyYXkoJ3Bhc2t5cmEnPT4nJywgJ2F1Z2ludGluaXMnPT4nYXVnaW50aW5pcycsICd1enNha3ltYWknPT4nb3JkZXJzJykgYXMgJHZhcmRhcz0+JGVwKSB7CiAgICAgICAgJHVybCA9ICRlcCA/IHdjX2dldF9hY2NvdW50X2VuZHBvaW50X3VybCgkZXApIDogd2NfZ2V0X3BhZ2VfcGVybWFsaW5rKCdteWFjY291bnQnKTsKICAgICAgICAkcmVzcCA9IHdwX3JlbW90ZV9nZXQoJHVybCwgYXJyYXkoJ3RpbWVvdXQnPT4zMCwnc3NsdmVyaWZ5Jz0+ZmFsc2UsCiAgICAgICAgICAgICdoZWFkZXJzJz0+YXJyYXkoJ0Nvb2tpZSc9PkxPR0dFRF9JTl9DT09LSUUuJz0nLiRjaykpKTsKICAgICAgICBpZiAoaXNfd3BfZXJyb3IoJHJlc3ApKSB7ICRyWyR2YXJkYXNdID0gJ0VSUiAnLiRyZXNwLT5nZXRfZXJyb3JfbWVzc2FnZSgpOyBjb250aW51ZTsgfQogICAgICAgICRoID0gd3BfcmVtb3RlX3JldHJpZXZlX2JvZHkoJHJlc3ApOwogICAgICAgICRyWyR2YXJkYXNdID0gYXJyYXkoCiAgICAgICAgICAgICd1cmwnICAgICAgICAgICAgPT4gJHVybCwKICAgICAgICAgICAgJ2tvZGFzJyAgICAgICAgICA9PiB3cF9yZW1vdGVfcmV0cmlldmVfcmVzcG9uc2VfY29kZSgkcmVzcCksCiAgICAgICAgICAgICdteV9hY2NvdW50X25hdicgPT4gKHN0cnBvcygkaCwnbXktYWNjb3VudC1uYXYnKSAhPT0gZmFsc2UpLAogICAgICAgICAgICAnbmF2X3ZlcnRpY2FsJyAgID0+IChzdHJwb3MoJGgsJ25hdi12ZXJ0aWNhbCcpICE9PSBmYWxzZSksCiAgICAgICAgICAgICdmbGF0c29tZV93cmFwJyAgPT4gKHN0cnBvcygkaCwncGFnZS13cmFwcGVyIG15LWFjY291bnQnKSAhPT0gZmFsc2UpLAogICAgICAgICAgICAnYXZhdGFyYXMnICAgICAgID0+IChzdHJwb3MoJGgsJ2F2YXRhcicpICE9PSBmYWxzZSksCiAgICAgICAgICAgICdTa3lkZWxpcycgICAgICAgPT4gKHN0cnBvcygkaCwnU2t5ZGVsaXMnKSAhPT0gZmFsc2UpLAogICAgICAgICAgICAnU3ZlaWtpJyAgICAgICAgID0+IChzdHJwb3MoJGgsJ1N2ZWlraSwnKSAhPT0gZmFsc2UpLAogICAgICAgICAgICAnZXJyb3I0MDQnICAgICAgID0+IChzdHJwb3MoJGgsJ2Vycm9yNDA0JykgIT09IGZhbHNlKSwKICAgICAgICApOwogICAgICAgIGlmICgkdmFyZGFzID09PSAncGFza3lyYScpIHsKICAgICAgICAgICAgJGkgPSBzdHJwb3MoJGgsICdteS1hY2NvdW50LW5hdicpOwogICAgICAgICAgICAkclsnbmF2X2ZyYWdtZW50YXMnXSA9ICRpIT09ZmFsc2UgPyBzdWJzdHIoJGgsIG1heCgwLCRpLTUwMCksIDE4MDApIDogJ25lcmFzdGEnOwogICAgICAgIH0KICAgIH0KICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7CiAgICBleGl0Owp9KTsK','base64').toString('utf8');
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'S329 Nav Verify',code:php.replace(/^<\?php\s*/,''),scope:'global',active:true}));
 for(let i=0;i<3 && !sid;i++){
   const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
   let j=null; try{j=JSON.parse(r.out);}catch(e){}
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('tplfix.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('navverify.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
-  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_tf3=Tf3g8"');
+  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_nvf=Nvf2j"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
 O.rez=uzk(1);
-sh('sleep 6');
-// PATIKRA: ar kairysis meniu grizo (be auth — struktura matosi ir svečiui? ne, reikia auth)
-const h = sh('curl -sSk -m 40 "'+SITE+'/paskyra/"').out;
-O.svecio_ilgis = h.length;
-O.turi_nav_vertical = (h.indexOf('nav-vertical') >= 0);
-O.turi_my_account_nav = (h.indexOf('my-account-nav') >= 0);
-O.turi_page_wrapper = (h.indexOf('page-wrapper my-account') >= 0);
-O.kodai = {
-  paskyra: sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/paskyra/"').out.trim(),
-  augintinis: sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/paskyra/augintinis/"').out.trim(),
-  home: sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim(),
-};
 sh('sleep 4');
 function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
 O.t_naujas       = code(SITE+'/paskyra/');
@@ -67,5 +55,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('tplfix.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('navverify.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
