@@ -1,0 +1,60 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2055,
+ "rez": {
+  "VERSIJA": "audit4-v1",
+  "wpforms_validacija": [],
+  "wpforms_visos_opcijos": [
+   "modern-markup",
+   "modern-markup-is-set",
+   "modern-markup-hide-setting"
+  ],
+  "formos_id": 34520,
+  "laukai": [
+   {
+    "id": 0,
+    "tipas": "name",
+    "label": "Vardas",
+    "required": true
+   },
+   {
+    "id": 1,
+    "tipas": "email",
+    "label": "El. paštas",
+    "required": true
+   },
+   {
+    "id": 2,
+    "tipas": "textarea",
+    "label": "Žinutė",
+    "required": true
+   },
+   {
+    "id": 3,
+    "tipas": "checkbox",
+    "label": "Duomenų tvarkymas",
+    "required": true
+   }
+  ],
+  "notifications": {
+   "1": {
+    "email": "terra@petshop.lt",
+    "subject": "Nauja užklausa iš petshop.lt"
+   }
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
