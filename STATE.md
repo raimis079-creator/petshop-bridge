@@ -199,6 +199,51 @@ i petshop.lt viena bus pamirsta.
 **PRIES LAUNCH:** senos `/my-account/*` nuorodos gali buti GSC eksporte ir
 isoriniuose saltiniuose — 301 snippet'as 2029 privalo likti aktyvus neterminuotai.
 
+### ★ 2026-08-01 — KONTAKTU IR SOCIALINIU NUORODU TVARKYMAS
+
+**RAIMIO SPRENDIMAS:** el. pastas nerodomas kataloge — klientas rasо per forma
+(spam'o prevencija). Telefonas LIEKA (pasitikejimo signalas, surinkejai jo nerenka).
+
+**PADARYTA (patikrinta TIKRAME HTML, pagrindinis puslapis):**
+```
+terra@petshop.lt        2 -> 0    (porastes widget + CTA blokas)
+href="http://url"       3 -> 0    (FB/IG/X placeholder ikonos paslėptos)
+your@email              1 -> 0    (el. pasto ikona)
+telefonas               3         LIKO
+nuorodos i /kontaktai/  3
+```
+- Porastes widget `custom_html-5` (sidebar-footer-2): `mailto:terra@petshop.lt`
+  -> `<a href="/kontaktai/">Parasyti mums</a>`.
+  Backup: opcija `ps_footer_widget5_bak_20260801`.
+- Pagrindinio puslapio (34543) CTA blokas „Nezinote, ka rinktis?": mygtukas
+  „Parasyti" `mailto:` -> `/kontaktai/`. Backup: `ps_home_cta_bak_20260801`.
+- `theme_mods` follow_facebook / follow_instagram / follow_twitter / follow_email
+  nustatyti i TUSCIA -> Flatsome ikonu nerodo. VISOS KETURIOS buvo placeholder'iai
+  (`http://url`, `your@email`) — ankstesnis irasas „FB turi tikra URL" buvo NETEISINGAS,
+  patikrinta theme_mods reiksmese.
+- Kontaktu puslapis **34521** `/kontaktai/` — publish, su **WPForms** forma
+  („Kontaktu forma" 34520). Nuoroda veda i veikianti puslapi, ne aklavietе.
+
+**★ LAUKIA RAIMIO — FACEBOOK NUORODA.** Widget'e `custom_html-2` („APIE",
+sidebar-footer-2) yra FB ikona su `https://www.facebook.com` — BENDRA Facebook
+pradzia, NE Petshop paskyra. Raimis: „palik, bet uzsirasyk, kad duociau paskui
+tikra nuoroda". **Gavus tikra URL:** pakeisti `href` widget'e custom_html-2
+IR pridėti aria-label „Petshop.lt „Facebook" paskyra".
+Jei bus IG/X paskyros — grazinti per `theme_mods` (dabar tuscios).
+
+**NELIESTA — SPRENDIMAS PRIEŠ LAUNCH:**
+```
+34525 Privatumo politika  terra@petshop.lt — REKOMENDUOJU PALIKTI (BDAR reikalauja
+                          duomenu valdytojo kontakto; spam'o nauda menka)
+34515 Apie mus            terra@petshop.lt — Raimio sprendimas
+34520 Kontaktu forma      WPForms GAVEJAS, ne matomas tekstas — NELIESTI,
+                          kitaip formos laiskai niekur nenueis
+```
+
+**SVARSTYTA, NEPRIIMTA:** vaidmens adresas `pagalba@petshop.lt` vietoj asmeninio
+`terra@petshop.lt` (prispam'inus galima uzdaryti ir sukurti nauja, nekeiciant
+savininko adreso). Verta griztі, jei spam'as bus problema.
+
 ### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
 
 **BUKLE 2026-07-31 sesijos pabaigoje: viskas svaru, nieko pakibusio.**
