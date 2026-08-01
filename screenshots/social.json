@@ -1,0 +1,58 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2043,
+ "rez": {
+  "VERSIJA": "social-recon-v1",
+  "follow": {
+   "follow_twitter": "http://url",
+   "follow_facebook": "http://url",
+   "follow_instagram": "http://url",
+   "follow_email": "your@email"
+  },
+  "vertinimas": {
+   "follow_twitter": {
+    "reiksme": "http://url",
+    "verdiktas": "PLACEHOLDER / TUSCIA"
+   },
+   "follow_facebook": {
+    "reiksme": "http://url",
+    "verdiktas": "PLACEHOLDER / TUSCIA"
+   },
+   "follow_instagram": {
+    "reiksme": "http://url",
+    "verdiktas": "PLACEHOLDER / TUSCIA"
+   },
+   "follow_email": {
+    "reiksme": "your@email",
+    "verdiktas": "PLACEHOLDER / TUSCIA"
+   }
+  },
+  "porasteje": {
+   "facebook": 6,
+   "instagram": 5,
+   "twitter": 5,
+   "x.com": 0,
+   "mailto": 3
+  },
+  "ikonu_nuorodos": [
+   "<a href=\"http://url\" target=\"_blank\" data-label=\"Facebook\" class=\"icon plain tooltip facebook\" title=\"Follow on Facebook\" aria-label=\"Follow on Facebook\" rel=\"noopener nofollow\">",
+   "<a href=\"http://url\" target=\"_blank\" data-label=\"Instagram\" class=\"icon plain tooltip instagram\" title=\"Follow on Instagram\" aria-label=\"Follow on Instagram\" rel=\"noopener nofollow\">",
+   "<a href=\"http://url\" data-label=\"Twitter\" target=\"_blank\" class=\"icon plain tooltip twitter\" title=\"Follow on Twitter\" aria-label=\"Follow on Twitter\" rel=\"noopener nofollow\">",
+   "<a href=\"mailto:your@email\" data-label=\"E-mail\" target=\"_blank\" class=\"icon plain tooltip email\" title=\"Send us an email\" aria-label=\"Send us an email\" rel=\"nofollow noopener\">"
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
