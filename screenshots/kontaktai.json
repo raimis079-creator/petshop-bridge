@@ -1,0 +1,68 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2044,
+ "rez": {
+  "VERSIJA": "kontaktai-recon-v1",
+  "puslapis": {
+   "id": 34521,
+   "slug": "kontaktai",
+   "title": "Kontaktai",
+   "status": "publish",
+   "url": "https://dev.avesa.lt/kontaktai/",
+   "ilgis": 1839
+  },
+  "turinys": "<style>\n.pk-grid{display:grid;grid-template-columns:5fr 7fr;gap:32px;margin:8px 0 32px}\n.pk-left h2{margin-top:0}\n.pk-box{background:#F7F7F5;border-radius:8px;padding:20px 24px;margin:0 0 16px}\n.pk-box p{margin:0 0 8px}\n.pk-box p:last-child{margin:0}\n.pk-tel{font-size:1.25rem;font-weight:700;color:#2D5F3F}\n.pk-tel a{color:#2D5F3F;text-decoration:none}\n.pk-form{background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:24px 28px}\n.pk-form h2{margin-top:0}\n.pk-note{color:#6b7280;font-size:0.9rem}\n.pk-form .wpforms-container input[type=text],.pk-form .wpforms-container input[type=email],.pk-form .wpforms-container textarea{width:100% !important;max-width:100% !important;box-sizing:border-box}\n.pk-form .wpforms-field{margin-bottom:16px}\n.pk-intro{margin:0 0 20px;color:#4b5563}\n@media(max-width:768px){.pk-grid{grid-template-columns:1fr}}\n</style>\n\n<div class=\"pk-grid\">\n  <div class=\"pk-left\">\n    <h2>Kontaktai</h2>\n    <p class=\"pk-intro\">Turite klausimų dėl užsakymo, pristatymo ar prekės pasirinkimo? Parašykite mums – atsakysime el. paštu.</p>\n    <div class=\"pk-box\">\n      <p class=\"pk-tel\"><a href=\"tel:+37068187787\">+370 681 87787</a></p>\n      <p><strong>Darbo laikas:</strong><br>I–V 09:00–18:00<br>VI 10:00–15:00</p>\n      <p class=\"pk-note\">Užklausas siųskite per kontaktinę formą – atsakome el. paštu.</p>\n    </div>\n    <h2>Rekvizitai</h2>\n    <div class=\"pk-box\">\n      <p><strong>Įmonės pavadinimas:</strong> UAB „Avesa\"</p>\n      <p><strong>Įmonės kodas:</strong> 302568442</p>\n      <p><strong>PVM kodas:</strong> LT100005768519</p>\n      <p><strong>Juridinis adresas:</strong><br>Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., LT-15166</p>\n    </div>\n  </div>\n  <div class=\"pk-form\">\n    <h2>Susisiekite su mumis</h2>\n    [wpforms id=\"34520\"]\n  </div>\n</div>\n",
+  "formos_pluginai": [
+   "wpforms-lite/wpforms.php"
+  ],
+  "visi_aktyvus": [
+   "code-snippets/code-snippets.php",
+   "complianz-gdpr/complianz-gpdr.php",
+   "loco-translate/loco.php",
+   "petshop-attributes/petshop-attributes.php",
+   "petshop-core/petshop-core.php",
+   "petshop-esp/petshop-esp.php",
+   "petshop-fbt/petshop-fbt.php",
+   "petshop-feeds/petshop-feeds.php",
+   "petshop-fonts/petshop-fonts.php",
+   "petshop-pragma/petshop-pragma.php",
+   "petshop-promotions/petshop-promotions.php",
+   "petshop-xml/petshop-xml.php",
+   "postit/postit.php",
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php",
+   "woo-payment-gateway-paysera/paysera.php",
+   "woo-update-manager/woo-update-manager.php",
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+   "woocommerce-xml-csv-product-import/plugin.php",
+   "woocommerce/woocommerce.php",
+   "wordpress-importer/wordpress-importer.php",
+   "wp-all-import-pro/wp-all-import-pro.php",
+   "wp-mail-smtp/wp_mail_smtp.php",
+   "wpforms-lite/wpforms.php",
+   "yith-woocommerce-ajax-navigation/init.php"
+  ],
+  "footer_blokai": {
+   "footer_left_text": "Copyright [ux_current_year] © <strong>UAB Avesa</strong> | petshop.lt"
+  },
+  "widgetas": {
+   "sidebar-footer-2/custom_html-2": "{\"title\":\"APIE\",\"content\":\"<p>Naminių gyvūnų prekės internetu: maistas, žaislai ir priežiūra.<\\/p>\\r\\n<p style=\\\"margin-top:12px;margin-bottom:16px;\\\">\\r\\n  <a href=\\\"https:\\/\\/www.facebook.com\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\" style=\\\"display:inline-block;width:32px;height:32px;border:1px solid #fffcec;border-radius:50%;text-align:center;line-height:30px;color:#fffcec;text-decoration:none;\\\">\\r\\n    <strong>f<\\/strong>\\r\\n  <\\/a>\\r\\n<\\/p>\\r\\n<ul style=\\\"list-style:none;padding:0;margin:0;\\\">\\r\\n  <li style=\\\"margin-bottom:6px;\\\"><a href=\\\"\\/apie-mus\\/\\\" style=\\\"color:#fffcec;\\\">Apie mus<\\/a><\\/li>\\r\\n  <li style=\\\"margin-bottom:6px;\\\"><a href=\\\"\\/kontaktai\\/\\\" style=\\\"color:#fffcec;\\\">Kontaktai<\\/a><\\/li>\\r\\n<\\/ul>\"}",
+   "sidebar-footer-2/custom_html-5": "{\"title\":\"KONTAKTAI\",\"content\":\"<p style=\\\"margin-bottom:8px;\\\">\\r\\n  <a href=\\\"tel:+37068187787\\\" style=\\\"color:#fffcec;text-decoration:none;font-weight:bold;\\\">+370 681 87787<\\/a>\\r\\n<\\/p>\\r\\n<p style=\\\"margin-bottom:8px;\\\">\\r\\n  <a href=\\\"mailto:terra@petshop.lt\\\" style=\\\"color:#fffcec;\\\">terra@petshop.lt<\\/a>\\r\\n<\\/p>\\r\\n<p style=\\\"margin-bottom:0;color:#a2bd9d;font-size:13px;\\\">\\r\\n  I–V 09:00–18:00<br>\\r\\n  VI 10:00–15:00\\r\\n<\\/p>\"}"
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
