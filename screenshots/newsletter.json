@@ -1,0 +1,48 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2073,
+ "dry": {
+  "VERSIJA": "newsletter-v1",
+  "rasta": {
+   "mobile_sidebar": "search-form,nav,account,newsletter,social,html-2,html-3"
+  },
+  "tcf_wrapper_yra": true,
+  "tcf_kontekstas": "class=\"cmplz-link cmplz-manage-options cookie-statement\" href=\"#\" data-relative_url=\"#cmplz-manage-consent-container\">Tvarkyti parinktis</a></li> <li><a class=\"cmplz-link cmplz-manage-third-parties cookie-statement\" href=\"#\" data-relative_url=\"#cmplz-cookies-overview\">Tvarkyti paslaugas</a></li> <li><a class=\"cmplz-link cmplz-manage-vendors tcf cookie-statement\" href=\"#\" data-relative_url=\"#cmplz-tcf-wrapper\">Tvarkyti {vendor_count} pardavėjus</a></li> <li><a class=\"cmplz-link cmplz-external cmplz-read-more-purposes tcf\" target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://cookiedatabase.org/tcf/purposes/\" aria-label=\"Read more about TCF purposes on Cookie Database\">Ska",
+  "vendor_count_placeholder": 1,
+  "tcf_nuoroda": "<a class=\"cmplz-link cmplz-external cmplz-read-more-purposes tcf\" target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://cookiedatabase.org/tcf/purposes/\" aria-label=\"Read more about TCF purposes on Cookie Database\">",
+  "tcf_hidden_atributas": false
+ },
+ "apply": {
+  "VERSIJA": "newsletter-v1",
+  "rasta": {
+   "mobile_sidebar": "search-form,nav,account,newsletter,social,html-2,html-3"
+  },
+  "pakeista": {
+   "mobile_sidebar": {
+    "buvo": "search-form,nav,account,newsletter,social,html-2,html-3",
+    "dabar": "search-form,nav,account,social,html-2,html-3"
+   }
+  },
+  "patikra": {
+   "Sign_up_for_Newsletter": 0,
+   "header_newsletter_item": 0,
+   "newsletter_signup_modal": 0,
+   "Prisijungti_liko": 6,
+   "krepselis_liko": 5
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
