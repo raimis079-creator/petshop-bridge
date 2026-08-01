@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import { chromium } from 'playwright';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
@@ -29,13 +30,33 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('landing.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('landingcheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_ap2=Ap2w8"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
 O.rez=uzk(1);
+const browser = await chromium.launch();
+const ctx = await browser.newContext({viewport:{width:1280,height:1200}, ignoreHTTPSErrors:true});
+const page = await ctx.newPage();
+const errs=[];
+page.on('console', m=>{ if(m.type()==='error') errs.push(m.text().slice(0,140)); });
+try{
+  await page.goto('https://dev.avesa.lt/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
+  await page.waitForTimeout(3000);
+  O.h_visos = await page.locator('h1,h2,h3').allTextContents();
+  O.naudos_matomos = await page.getByText('Kiek maisto reikia', {exact:false}).count();
+  fs.writeFileSync('/tmp/L.png', await page.screenshot({fullPage:true}));
+  // mobilus
+  await page.setViewportSize({width:390,height:900});
+  await page.waitForTimeout(1200);
+  fs.writeFileSync('/tmp/M.png', await page.screenshot({fullPage:true}));
+  O.js_klaidos = errs.slice(0,5);
+}catch(e){ O.err = String(e).slice(0,250); }
+await browser.close();
+try{ putB64('landing_desk.png', fs.readFileSync('/tmp/L.png').toString('base64')); }catch(e){}
+try{ putB64('landing_mob.png', fs.readFileSync('/tmp/M.png').toString('base64')); }catch(e){}
 sh('sleep 4');
 O.senas = sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code} -> %{redirect_url}" "'+SITE+'/anketa-testas/"').out.trim();
 O.naujas = sh('curl -sSk -m 30 -o /dev/null -w "%{http_code}" "'+SITE+'/augintinio-profilis/"').out.trim();
@@ -44,5 +65,5 @@ O.subkelias = sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}" "'+SITE+'/anke
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('landing.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('landingcheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
