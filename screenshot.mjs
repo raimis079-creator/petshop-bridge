@@ -21,7 +21,7 @@ try{
     off.push(s0.id+':'+s0.name); } }
   O.deaktyvuota_TEMP=off;
 }catch(e){ O.valymo_klaida=String(e).slice(0,200); }
-const php=Buffer.from('PD9waHAKLyoqCiAqIFVJIExvY2FsaXphdGlvbiBSdW50aW1lIEF1ZGl0IOKAlCBsaWt1c2lvIFN1Ym1pdCBwYWllc2thCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19zYjQnXSkgfHwgJF9HRVRbJ3BzX3NiNCddICE9PSAnU2I0aDknICkgcmV0dXJuOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICAkciA9IGFycmF5KCdWRVJTSUpBJz0+J3N1Ym1pdC1maW5kLXYxJyk7CiAgICAkcmVzcCA9IHdwX3JlbW90ZV9nZXQoaG9tZV91cmwoJy9rb250YWt0YWkvJyksIGFycmF5KCd0aW1lb3V0Jz0+MzAsJ3NzbHZlcmlmeSc9PmZhbHNlLAogICAgICAgICdoZWFkZXJzJz0+YXJyYXkoJ0NhY2hlLUNvbnRyb2wnPT4nbm8tY2FjaGUnKSkpOwogICAgJGggPSBpc193cF9lcnJvcigkcmVzcCkgPyAnJyA6IHdwX3JlbW90ZV9yZXRyaWV2ZV9ib2R5KCRyZXNwKTsKICAgICRwb3ogPSAwOwogICAgd2hpbGUgKCgkaSA9IHN0cnBvcygkaCwgJ1N1Ym1pdCcsICRwb3opKSAhPT0gZmFsc2UpIHsKICAgICAgICAkclsna29udGVrc3RhaSddW10gPSBzdWJzdHIoJGgsIG1heCgwLCRpLTI2MCksIDQyMCk7CiAgICAgICAgJHBveiA9ICRpICsgNjsKICAgIH0KICAgIC8vIGFyIHRhaSA8c2NyaXB0PiB2aWR1amUKICAgIGZvcmVhY2ggKCgkclsna29udGVrc3RhaSddID8/IGFycmF5KCkpIGFzICRrID0+ICRjdHgpIHsKICAgICAgICAkclsnYXJfc2NyaXB0J11bJGtdID0gKHN0cnBvcygkY3R4LCd3cGZvcm1zX3NldHRpbmdzJykgIT09IGZhbHNlCiAgICAgICAgICAgIHx8IHN0cnBvcygkY3R4LCd2YXIgJykgIT09IGZhbHNlIHx8IHN0cnBvcygkY3R4LCd7IicpICE9PSBmYWxzZSk7CiAgICB9CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fVU5FU0NBUEVEX1NMQVNIRVMpOwogICAgZXhpdDsKfSk7Cg==','base64').toString('utf8');
+const php=Buffer.from('PD9waHAKLyoqCiAqIFVJIExvY2FsaXphdGlvbiBSdW50aW1lIEF1ZGl0IOKAlCBrYWJ1Y2l1IHBhdGlrcmEgc2VydmVyeWplCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19xdDcnXSkgfHwgJF9HRVRbJ3BzX3F0NyddICE9PSAnUXQ3ejQnICkgcmV0dXJuOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICBnbG9iYWwgJHdwZGI7ICRyID0gYXJyYXkoJ1ZFUlNJSkEnPT4ncXVvdGUtY2hlY2stdjEnKTsKCiAgICAvLyAxKSBzbmlwcGV0J28ga29kYXMgU0VSVkVSWUpFCiAgICAka29kYXMgPSAkd3BkYi0+Z2V0X3Zhcigkd3BkYi0+cHJlcGFyZSgKICAgICAgICAiU0VMRUNUIGNvZGUgRlJPTSB7JHdwZGItPnByZWZpeH1zbmlwcGV0cyBXSEVSRSBuYW1lPSVzIiwgJ1BldHNob3AgVUkgTG9rYWxpemFjaWphIHYxIChMSVZFKScpKTsKICAgICRpID0gc3RycG9zKCRrb2RhcywgJ8SuZMSXdGkgxK8ga3JlcMWhZWzErycpOwogICAgJGZyYWcgPSAkaSAhPT0gZmFsc2UgPyBzdWJzdHIoJGtvZGFzLCAkaSwgNDApIDogJyc7CiAgICAkclsnc25pcHBldF9mcmFnbWVudGFzJ10gPSAkZnJhZzsKICAgICRyWydzbmlwcGV0X2JhaXRhaSddID0gYXJyYXkoKTsKICAgIGZvcmVhY2ggKHByZWdfc3BsaXQoJy8vdScsICRmcmFnLCAtMSwgUFJFR19TUExJVF9OT19FTVBUWSkgYXMgJGNoKSB7CiAgICAgICAgJGNwID0gbWJfb3JkKCRjaCwgJ1VURi04Jyk7CiAgICAgICAgaWYgKGluX2FycmF5KCRjcCwgYXJyYXkoMHgyMDFFLCAweDIwMUMsIDB4MDAyMiksIHRydWUpKSB7CiAgICAgICAgICAgICRyWydzbmlwcGV0X2JhaXRhaSddW10gPSBzcHJpbnRmKCclcyBVKyUwNFggJXMnLCAkY2gsICRjcCwKICAgICAgICAgICAgICAgICRjcD09PTB4MjAxRSA/ICdMVCBhdGlkYXJhbnRpJyA6ICgkY3A9PT0weDIwMUMgPyAnTFQgdXpkYXJhbnRpJyA6ICdBU0NJSSAiIEtMQUlEQScpKTsKICAgICAgICB9CiAgICB9CgogICAgLy8gMikgVElLUkFTIGFyaWEtbGFiZWwgc3VnZW5lcnVvdGFtZSBIVE1MCiAgICAkcmVzcCA9IHdwX3JlbW90ZV9nZXQoaG9tZV91cmwoJy9wYXJkdW90dXZlLycpLCBhcnJheSgndGltZW91dCc9PjM1LCdzc2x2ZXJpZnknPT5mYWxzZSwKICAgICAgICAnaGVhZGVycyc9PmFycmF5KCdDYWNoZS1Db250cm9sJz0+J25vLWNhY2hlJykpKTsKICAgICRoID0gaXNfd3BfZXJyb3IoJHJlc3ApID8gJycgOiB3cF9yZW1vdGVfcmV0cmlldmVfYm9keSgkcmVzcCk7CiAgICBpZiAocHJlZ19tYXRjaCgnL2FyaWEtbGFiZWw9IsSuZMSXdGkgxK8ga3JlcMWhZWzErzpbXiJdezAsODB9Ii91JywgJGgsICRtKSkgewogICAgICAgICRyWyd0aWtyYXNfYXJpYSddID0gJG1bMF07CiAgICAgICAgJHJbJ2FyaWFfYmFpdGFpJ10gPSBhcnJheSgpOwogICAgICAgIGZvcmVhY2ggKHByZWdfc3BsaXQoJy8vdScsICRtWzBdLCAtMSwgUFJFR19TUExJVF9OT19FTVBUWSkgYXMgJGNoKSB7CiAgICAgICAgICAgICRjcCA9IG1iX29yZCgkY2gsICdVVEYtOCcpOwogICAgICAgICAgICBpZiAoaW5fYXJyYXkoJGNwLCBhcnJheSgweDIwMUUsIDB4MjAxQyksIHRydWUpKSB7CiAgICAgICAgICAgICAgICAkclsnYXJpYV9iYWl0YWknXVtdID0gc3ByaW50ZignJXMgVSslMDRYJywgJGNoLCAkY3ApOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfSBlbHNlIHsgJHJbJ3Rpa3Jhc19hcmlhJ10gPSAnbmVyYXN0YSc7IH0KICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7CiAgICBleGl0Owp9KTsK','base64').toString('utf8');
 fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'UI Localization Runtime Audit',code:php.replace(/^<\?php\s*/,''),scope:'global',active:true}));
 for(let i=0;i<3 && !sid;i++){
   const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
@@ -29,10 +29,10 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('submitfind.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('quotecheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
-  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_sb4=Sb4h9"');
+  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_qt7=Qt7z4"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
 O.rez=uzk(1);
@@ -55,5 +55,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('submitfind.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('quotecheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
