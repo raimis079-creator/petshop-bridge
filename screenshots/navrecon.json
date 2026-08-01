@@ -1,0 +1,56 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2033,
+ "rez": {
+  "VERSIJA": "nav-recon-v1",
+  "sablonai": {
+   "child": "NERA",
+   "parent": 680,
+   "wc": 1328
+  },
+  "sablono_turinys": {
+   "parent": "<?php\n/**\n * My Account navigation\n *\n * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/navigation.php.\n *\n * HOWEVER, on occasion WooCommerce will need to update template files and you\n * (the theme developer) will need to copy the new files to your theme to\n * maintain compatibility. We try to do this as little as possible, but it does\n * happen. When this occurs the version of the template file will be bumped and\n * the readme will list any important changes.\n *\n * @see              https://woocommerce.com/document/template-structure/\n * @package          WooCommerce\\Templates\n * @version          9.3.0\n * @flatsome-version 3.19.6\n */\n"
+  },
+  "locate": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/themes/flatsome/woocommerce/myaccount/navigation.php",
+  "hookai": {
+   "woocommerce_account_navigation": [
+    "10 woocommerce_account_navigation"
+   ],
+   "woocommerce_before_account_navigation": [],
+   "woocommerce_account_menu_items": [
+    "10 Petshop_Pet_UI::add_menu_item",
+    "10 flatsome_remove_logout_account_item",
+    "20 Petshop_Account_Dashboard::menu_items"
+   ],
+   "woocommerce_before_account_content": []
+  },
+  "transientai": [
+   "_transient_petshop_has_downloadable",
+   "_transient_timeout_petshop_has_downloadable"
+  ],
+  "mini_navigacija": {
+   "core/includes/class-pet-ui.php": 1,
+   "core/includes/class-account-dashboard.php": 1
+  },
+  "snip_nav": [
+   {
+    "id": "2033",
+    "name": "S329 Navigation Recon"
+   }
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
