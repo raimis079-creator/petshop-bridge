@@ -167,6 +167,20 @@ magic-login:267, account-dashboard:40, snippet 609).
 vertimo lentele + query string issaugojimas. Naudoja `home_url()`, tad veiks ir
 po domeno perjungimo.
 
+**SPASTAI NR.2 — FLATSOME SABLONAS PAGAL SLUG'A (sulauze kairiji skydeli).**
+`flatsome/page-my-account.php` yra WordPress `page-{slug}.php` sablonas —
+parenkamas PAGAL PUSLAPIO SLUG'A. Jame gyvena kairysis vertikalus meniu
+(`#my-account-nav`, `nav-vertical`) ir avataras. Pakeitus slug'a i `paskyra`,
+WP neberado atitikmens ir krito i bendra `page.php` — SKYDELIS DINGO.
+PATAISA: snippet **2037 "Petshop Paskyros Sablonas v1 (LIVE)"** — `template_include`
+filtras pagal `is_account_page()`, NE pagal slug'a. Temos failas NEDUBLIUOTAS
+(Flatsome atnaujinimai lieka galioti), slug'a ateityje galima keisti laisvai.
+PATVIRTINTA prisijungusiu vartotoju 3 puslapiuose: my-account-nav, nav-vertical,
+Flatsome maketas, avataras — visur TRUE, 404 nera.
+PAMOKA: narsykles patikra grazino `.woocommerce-MyAccount-navigation a` -> TUSCIA,
+o as tai nurasiau selektoriui. Tai buvo TIKRAS radinys. Skaitikliu netikejau tik
+tada, kai jis rode BLOGAI — kai rode gerai, patikejau is karto.
+
 **LIKO:** puslapis 34595 „Dazniausiai uzduodami klausimai" turi `/my-account/`
 turinyje — dabar veikia per 301, bet verta pataisyti i tiesiogini `/paskyra/`.
 
@@ -177,6 +191,7 @@ turinyje — dabar veikia per 301, bet verta pataisyti i tiesiogini `/paskyra/`.
 634  Brand Slug 301 Catch-All v1 (T-14 aktyvuoti)
 2025 Anketa→Augintinio profilis 301 v1 (LIVE)
 2029 MyAccount LT Slug 301 v1 (LIVE)
+2037 Paskyros Sablonas v1 (LIVE)  <- NE redirect, template_include; BUTINAS
 ```
 Nauju redirectu NEKELTI i child theme — antraip dvi tiesos vietos ir migruojant
 i petshop.lt viena bus pamirsta.
