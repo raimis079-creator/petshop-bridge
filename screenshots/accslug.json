@@ -1,0 +1,60 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2026,
+ "rez": {
+  "VERSIJA": "acc-slug-recon-v1",
+  "puslapis": {
+   "id": 14,
+   "title": "Mano paskyra",
+   "slug": "my-account",
+   "url": "https://dev.avesa.lt/my-account/"
+  },
+  "endpointai": {
+   "orders": "orders",
+   "view-order": "view-order",
+   "downloads": "downloads",
+   "edit-account": "edit-account",
+   "edit-address": "edit-address",
+   "payment-methods": "payment-methods",
+   "add-payment-method": "add-payment-method",
+   "delete-payment-method": "delete-payment-method",
+   "set-default-payment-method": "set-default-payment-method",
+   "lost-password": "lost-password",
+   "customer-logout": false,
+   "augintinis (musu)": "augintinis"
+  },
+  "hardcode": {
+   "core/assets/product-calc.js": 1,
+   "core/assets/pet-profile.js": 3,
+   "core/templates/emails/order-paid.php": 1,
+   "core/includes/class-pet-ui.php": 1,
+   "core/includes/class-magic-login.php": 1,
+   "core/includes/class-account-dashboard.php": 1,
+   "core/includes/class-unsubscribe.php": 1
+  },
+  "snippetuose": [
+   {
+    "id": "609",
+    "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)",
+    "active": "1"
+   },
+   {
+    "id": "2026",
+    "name": "S329 MyAccount Slug Recon",
+    "active": "1"
+   }
+  ],
+  "opcijose": [
+   "widget_custom_html",
+   "_site_transient_wp_plugin_dependencies_plugin_data",
+   "_transient_woocommerce_admin_remote_inbox_notifications_specs"
+  ],
+  "irasuose": 1,
+  "permalink_struktura": "/%postname%/",
+  "ar_laisvas_slug": {
+   "mano-paskyra": "laisvas",
+   "paskyra": "laisvas"
+  }
+ },
+ "site": "200"
+}
