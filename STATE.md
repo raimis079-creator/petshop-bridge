@@ -244,6 +244,77 @@ Jei bus IG/X paskyros — grazinti per `theme_mods` (dabar tuscios).
 `terra@petshop.lt` (prispam'inus galima uzdaryti ir sukurti nauja, nekeiciant
 savininko adreso). Verta griztі, jei spam'as bus problema.
 
+### ★ UI LOKALIZACIJA v1 — IDIEGTA, BET AUDITAS DAR NE PILNAS
+
+```
+Snippet: 2051 · Petshop UI Lokalizacija v1 (LIVE) · active
+```
+
+**PATVIRTINTA (tikrame HTML, ne aprasyme):**
+```
+gettext ribojamas pagal domain
+gettext_with_context ribojamas pagal domain + context
+Flatsome Submit -> Ieskoti          (aria-label="Ieskoti" 2x)
+WPForms Submit  -> Siusti           (kontaktu formoje 3x)
+YITH Show more  -> Rodyti daugiau   (4x; Show more liko 0)
+WooCommerce dinaminis Add to cart aria-label isverstas (24x)
+Menu -> Meniu · Go to top -> Grizti i puslapio virsu · Payment icons -> Mokejimo budai
+```
+
+**SAMONINGAI NEITRAUKTA:**
+```
+socialiniu placeholder ikonu vertimai — ikonos PASLEPTOS, vertimai butu negyvas kodas
+Next / Previous (flatsome 9x)       — vien domenas NEGARANTUOJA, kad tai puslapiavimas;
+                                       Flatsome tuos pacius tekstus naudoja karuselese,
+                                       galerijose, slankikliuose. „Kitas puslapis"
+                                       galerijoje = KLAIDINGAS prieinamumo tekstas.
+%v Add to cart to continue&hellip;   — neaisku, kuo pakeiciamas %v ir ar rodomas
+```
+
+**NELIESTA — JAU ISVERSTA** (perrasymas sugadintu veikianti):
+`Add to cart` (mygtukas), `Checkout` (abu kontekstai), `Filter`.
+
+**TIKSLUS DOMENAI/KONTEKSTAI** (isimatuoti, ne speti):
+```
+Show more     yith-woocommerce-ajax-navigation  ctx: [FRONTEND] Show more link on tax filters
+Clear filters woocommerce                       ctx: block title
+%v Add to...  woocommerce-mix-and-match-products ctx: [Frontend]
+Submit        flatsome (17x) IR wpforms-lite (11x)  <- TA PATI fraze, DVI reiksmes
+```
+
+**NEUZDARYTA:**
+```
+checkout busena su preke krepselyje   (/checkout/ grazino 302 — tuscias krepselis)
+kontaktu formos siuntimo ir klaidu busenos
+Sign up for Newsletter — Flatsome NUSTATYMU numatytoji reiksme (ne gettext);
+                         arba versti, arba ISJUNGTI elementa, jei nereikalingas
+Complianz TCF tekstas  — tik per Complianz nustatymus, NE bendru DOM keitimu
+Next / Previous elemento kontekstas
+WPForms JS „Submit button is disabled during form submission" — nepatikrinta
+                         realaus siuntimo metu
+```
+**NERASYTI „angliskù fraziu 0"** — checkout neatidarytas, formu busenos netikrintos.
+
+**★ RADINYS — KABUTES KABUTESE (prieinamumas).** Patikrinus TIKRA `aria-label`:
+```
+aria-label="Ideti i krepseli: „&quot;DuvoPlius&quot; zaislas suniui…“"
+```
+Prekiu pavadinimuose YRA kabuciu, kurios aria-label viduje virsta `&quot;`.
+Ekrano skaitytuvas perskaito kabutes kabutese. **Tai NE vertimo klaida** —
+WooCommerce elgtusi taip pat su originalu — bet realus prieinamumo trukumas.
+Sprendimas Raimio: (a) palikti, (b) valyti kabutes is prekiu pavadinimu,
+(c) aria-label be kabuciu („Ideti i krepseli: %s").
+PATVIRTINTA baitu lygiu: snippet'e ir HTML kabutes TEISINGOS — U+201E ir U+201C.
+
+**KITAS RUN'AS (uzdarys abi aklasias zonas vienu kartu):**
+```
+1. Ideti testine preke i krepseli
+2. Nuskenuoti krepseli IR tikra checkout
+3. Kontaktu formoje sukelti: tuscio privalomo lauko klaida, blogo el. pasto klaida,
+   realu siuntima
+4. Patikrinti, ar „Submit button is disabled…" tampa matomu/skelbiamu tekstu
+```
+
 ### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
 
 **BUKLE 2026-07-31 sesijos pabaigoje: viskas svaru, nieko pakibusio.**
