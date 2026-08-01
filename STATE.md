@@ -375,6 +375,65 @@ PATVIRTINTA baitu lygiu: snippet'e ir HTML kabutes TEISINGOS — U+201E ir U+201
 4. Patikrinti, ar „Submit button is disabled…" tampa matomu/skelbiamu tekstu
 ```
 
+### ★ S328 client_ref GYVAVIMO CIKLAS — PATVIRTINTAS (2026-08-01)
+
+```
+- Prisijungusio vartotojo kurimo kelias client_ref NEGENERUOJA: client_ref = NULL.
+  Priezastis kode: saveDraft(){ if (IS_LOGGED_IN) return; } — prisijungusiam
+  localStorage draftas nekuriamas, tad ir draft_id nera.
+  IRODYMAS: sukurti pet 164, 165, 166 — visi client_ref = NULL.
+- MySQL leidzia kelias NULL reiksmes UNIQUE indekse.
+- Keliu augintiniu UI VEIKIA:
+    profilyje yra „+ Prideti augintini" (pet-profile.js chipBtn, eil. 332/422)
+    ?action=create atidaro forma IR vartotojui, jau turinciam augintini
+    (is_onboarding() valdo tik onboarding STILIU, ne formos rodyma)
+- Anoniminiame kelyje client_ref = draft.draft_id (pet-profile.js eil. 125).
+- Vienas anoniminis draftas skirtas VIENAM augintinio profiliui
+  (DRAFT_KEY — vienas localStorage raktas; draft_id = state.data.draft_id || genId()).
+- Globalus UNIQUE(client_ref) teisėto antro prisijungusio vartotojo augintinio
+  NEBLOKUOS.
+- state-reset taisymas NEREIKALINGAS.
+- Draftas VIENKARTINIS; augintinio istrynimas client_ref NEATLAISVINA.
+```
+
+**★ ANKSTESNI „MYGTUKO NERA" IR „FORMA NEMATOMA" BUVO TESTO HARNESS KLAIDOS,
+NE PRODUKTO GEDIMAI.** Konkreciai mano trys klaidos:
+```
+1. Paieskos tekstas /Prideti augintini|.../ nesutapo su tikru „Prideti nauja
+   augintini" (chipBtn), veliau paaiskejo, kad profilyje mygtukas vadinasi
+   „+ Prideti augintini" — abu kartus selektorius, ne produktas.
+2. Diagnostikos run'e palikau `prep` uzklausa, kuri TRINA visus to vartotojo
+   augintinius — todel „turint 1 augintini" testas realiai vyko su 0, ir
+   tuscia busena buvo TEISINGA.
+3. Vienas run'as krito su ERR_HTTP2_PROTOCOL_ERROR — tinklo trikdis.
+```
+
+**★ SAUGIKLIS PRIES UNIQUE (Raimis, privaloma Commit 2, NE Commit 1):**
+Globalus UNIQUE leidzia daug NULL, bet tik VIENA tuscia eilute `''`.
+```sql
+UPDATE gaj6_ps_pets SET client_ref = NULL WHERE client_ref = '';
+```
+Ir kurimo metode normalizuoti:
+```php
+$client_ref = is_string($client_ref) ? trim($client_ref) : null;
+if ($client_ref === '') { $client_ref = null; }
+```
+
+**COMMIT 1 LIEKA GRYNAS:**
+```
+create_pet_result()  -> domeno rezultatas / WP_Error, BE WP_REST_Response
+create_pet()         -> backward-compatible wrapper, IDENTISKAS baseline elgesys
+```
+Sisame commit'e NEKEISTI: validacijos, client_ref, UNIQUE, draftu integracijos,
+eventu, mirror_to_sender(). Po jo palyginti su `screenshots/baseline.json`,
+commit `6763d6700ddc4344d78982070a5f119decc883ca`.
+
+**DUOMENU VARTAI PATIKRINTI 2026-08-01 (PRAEJO):**
+```
+ps_pets 65 · id 31/32 active · 8 atkurtos deleted · BLTEST 0
+source_draft_id atkurtoms NULL · client_ref 1 eilute, dublikatu 0 · TEMP aktyvus 0
+```
+
 ### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
 
 **BUKLE 2026-07-31 sesijos pabaigoje: viskas svaru, nieko pakibusio.**
