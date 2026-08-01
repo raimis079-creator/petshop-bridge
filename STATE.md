@@ -244,7 +244,67 @@ Jei bus IG/X paskyros — grazinti per `theme_mods` (dabar tuscios).
 `terra@petshop.lt` (prispam'inus galima uzdaryti ir sukurti nauja, nekeiciant
 savininko adreso). Verta griztі, jei spam'as bus problema.
 
-### ★ UI LOKALIZACIJA v1 — IDIEGTA, BET AUDITAS DAR NE PILNAS
+### ★ UI LOKALIZACIJOS v1 TECHNINIS AUDITAS — UZBAIGTAS
+
+```
+Snippet: 2051 · Petshop UI Lokalizacija v1 (LIVE) · active
+11 vertimu, ribojamu pagal domain ir, kur reikia, context.
+```
+
+**PATVIRTINTA REALIAME FRONT-END:**
+```
+paieska                       „Ieskoti"        (aria-label, flatsome domain)
+kontaktu forma                „Siusti uzklausa" (mygtukas, formos nustatymai)
+WPForms validacijos klaidos   LIETUVISKOS: „Sis laukas privalomas.",
+                              „Iveskite teisinga el. pasto adresa."
+krepselio ir checkout MATOMAS TEKSTAS lietuviskas:
+                              Suma 2x · Kiekis 1x · Produktas 1x · Pristatymas 1x
+                              (angliskai: Subtotal 0 · Quantity 0 · Product 0 · Shipping 0)
+WooCommerce lt_LT .mo         VEIKIA (493 KB, 6865 irasai, 2026-05-26, WC 10.9.4)
+YITH Show more                -> „Rodyti daugiau" (4x; Show more liko 0)
+Add to cart aria-label        -> „Ideti i krepseli: „%s“" (24x, kabutes U+201E/U+201C)
+v2 gettext papildymai         NEREIKALINGI
+```
+
+**★ ANKSTESNI TARIAMI WooCommerce VERTIMO TRUKUMAI BUVO MATAVIMO ARTEFAKTAI:**
+```
+1. Kolektorius issaugojo PIRMA kvietima kiekvienam tekstui — o WooCommerce
+   kviecia __() DAR PRIES ikeldamas savo textdomain (init etape). Ankstyvieji
+   kvietimai grazina anglu original'a, ir „pirmas laimi" logika juos uzrase
+   kaip galutini rezultata.
+2. HTML paieska itrauke CSS klases (`cart-subtotal`) ir data atributus,
+   neatskyre ju nuo MATOMO teksto.
+3. Formos testo selektorius pagavo ne ta elementa (mygtuko tekstas grazino
+   tarpus, klaidu sarasas tuscias) — todel klaidu busenos atrode nepatikrintos.
+```
+**Jei kada vel matuosim gettext:** rasyti PASKUTINI kvietima arba filtruoti tik
+tuos, kurie ivyko po `init`; HTML skenuoti TIK per `wp_strip_all_tags()`.
+
+**SPRENDIMAS:**
+```
+lokalizacijos v2 snippet'o NEKURTI
+veikianciu WooCommerce ir WPForms vertimu NEPERRASYTI
+```
+Raimio sprendimas netvirtinti v2 iki .mo patikros buvo TEISINGAS — butu uzdeti
+9 nereikalingi vertimai ant veikiancios sistemos ir pasleptas ydingas matavimas.
+
+### ATSKIRI UI DARBAI (ne v2 gettext) — DAR NEISSPRESTA
+```
+· Flatsome newsletter elementas — „Sign up for Newsletter" ateina is NUSTATYMU
+  numatytosios reiksmes, ne is gettext. Arba versti, arba ISJUNGTI elementa,
+  jei porasteje jo nereikia. Raimio sprendimas.
+· Complianz TCF tekstas — tik jei realiai matomas; tvarkyti PER COMPLIANZ
+  NUSTATYMUS, ne bendru DOM keitimu.
+· Facebook widget'o nuoroda — custom_html-2 veda i BENDRA facebook.com.
+  Laukia Raimio tikro URL (zr. atskira irasa).
+· Next / Previous (flatsome, 18x) — deti TIK jei bus rastas neteisingas
+  MATOMAS ar aria tekstas konkreciame elemente. Vien domenas negarantuoja,
+  kad tai puslapiavimas.
+```
+**PADARYTA (ne „liko"):** socialiniu placeholder'iu salinimas — follow_facebook /
+instagram / twitter / email theme_mods ISTUSTINTI, patikrinta `href="http://url"` = 0.
+
+### ★ (ISTORINIS) UI LOKALIZACIJA v1 — pirminis irasas
 
 ```
 Snippet: 2051 · Petshop UI Lokalizacija v1 (LIVE) · active
