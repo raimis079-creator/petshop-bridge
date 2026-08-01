@@ -1,0 +1,73 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2027,
+ "rez": {
+  "VERSIJA": "hardcode-detail-v1",
+  "eilutes": {
+   "assets/pet-profile.js": [
+    {
+     "nr": 300,
+     "kodas": "add.onclick = function(){ window.location.href = (CFG.petPageUrl || '/my-account/augintinis/') + '?action=create'; };"
+    },
+    {
+     "nr": 333,
+     "kodas": "addNew.onclick = function(){ window.location.href = (CFG.petPageUrl || '/my-account/augintinis/') + '?action=create'; };"
+    },
+    {
+     "nr": 423,
+     "kodas": "addNew2.onclick = function(){ window.location.href = (CFG.petPageUrl || '/my-account/augintinis/') + '?action=create'; };"
+    }
+   ],
+   "assets/product-calc.js": [
+    {
+     "nr": 31,
+     "kodas": "var ACCOUNT  = root.getAttribute('data-account') || '/my-account/augintinis/';"
+    }
+   ],
+   "templates/emails/order-paid.php": [
+    {
+     "nr": 12,
+     "kodas": "$order_url = isset( $payload['order_url'] ) ? $payload['order_url'] : home_url( '/my-account/orders/' );"
+    }
+   ],
+   "includes/class-pet-ui.php": [
+    {
+     "nr": 19,
+     "kodas": "const ENDPOINT = 'augintinis';  // /my-account/augintinis/"
+    }
+   ],
+   "includes/class-magic-login.php": [
+    {
+     "nr": 267,
+     "kodas": "//   account -> paskyros pradzia (iprastas login is /my-account/)"
+    }
+   ],
+   "includes/class-account-dashboard.php": [
+    {
+     "nr": 40,
+     "kodas": "* (class-wc-shortcode-my-account.php:97), kai vartotojas turi"
+    }
+   ],
+   "includes/class-unsubscribe.php": [
+    {
+     "nr": 73,
+     "kodas": ". '<p>Pranešimų nustatymus galite pakeisti <a href=\"' . esc_url( home_url( '/my-account/' ) ) . '\">savo paskyroje</a>.</p>' );"
+    }
+   ]
+  },
+  "snippet_609": [
+   {
+    "nr": 9,
+    "kodas": "*   - WooCommerce sisteminiu puslapiu (shop/cart/checkout/my-account)"
+   }
+  ],
+  "irasai": [
+   {
+    "ID": "34595",
+    "post_title": "Dažniausiai užduodami klausimai",
+    "post_type": "page"
+   }
+  ]
+ },
+ "site": "200"
+}
