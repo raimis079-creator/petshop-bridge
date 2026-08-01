@@ -1,0 +1,41 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2047,
+ "dry": {
+  "VERSIJA": "cta-fix-v1",
+  "rasta": 1,
+  "mailto_viso": 1
+ },
+ "apply": {
+  "VERSIJA": "cta-fix-v1",
+  "rasta": 1,
+  "mailto_viso": 1,
+  "ilgis": [
+   16565,
+   16553
+  ],
+  "patikra": {
+   "terra_pastas": 0,
+   "kontaktu_nuorodos": 3,
+   "Parasyti_mygtukas": 1,
+   "Parasyti_mums": 1,
+   "telefonas": 3,
+   "http_url": 0,
+   "your_email": 0
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
