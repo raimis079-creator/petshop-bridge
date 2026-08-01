@@ -1,0 +1,144 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2061,
+ "rez": {
+  "VERSIJA": "gate-v1",
+  "vartai": {
+   "ps_pets_viso": 65,
+   "id_31_32": [
+    {
+     "id": "31",
+     "user_id": "28",
+     "status": "active",
+     "source_draft_id": null
+    },
+    {
+     "id": "32",
+     "user_id": "28",
+     "status": "active",
+     "source_draft_id": null
+    }
+   ],
+   "likusios_8": [
+    {
+     "id": "23",
+     "status": "deleted",
+     "source_draft_id": null
+    },
+    {
+     "id": "24",
+     "status": "deleted",
+     "source_draft_id": null
+    },
+    {
+     "id": "45",
+     "status": "deleted",
+     "source_draft_id": null
+    },
+    {
+     "id": "46",
+     "status": "deleted",
+     "source_draft_id": null
+    },
+    {
+     "id": "47",
+     "status": "deleted",
+     "source_draft_id": null
+    },
+    {
+     "id": "49",
+     "status": "deleted",
+     "source_draft_id": null
+    },
+    {
+     "id": "53",
+     "status": "deleted",
+     "source_draft_id": null
+    },
+    {
+     "id": "55",
+     "status": "deleted",
+     "source_draft_id": null
+    }
+   ],
+   "BLTEST": 0,
+   "source_draft_id_ne_null": 0,
+   "VARTAI": "PRAEJO"
+  },
+  "client_ref": {
+   "failai": {
+    "assets/pet-profile.js": 2,
+    "includes/class-pet-profile.php": 15
+   },
+   "eilutes": {
+    "assets/pet-profile.js": [
+     "119: // Idempotentiskumas: siunciam draft_id kaip client_ref. Serveris netures kurt dublikato",
+     "125: payload.client_ref = draft.draft_id || draft.pet_data.draft_id || '';"
+    ],
+    "includes/class-pet-profile.php": [
+     "8: * S206 (2026-07-15): SEMANTINIU DUBLIKATU APSAUGA. client_ref saugo TIK nuo to paties",
+     "136: 'client_ref'             => \"VARCHAR(64) DEFAULT NULL AFTER status\",",
+     "213: $client_ref = self::extract_client_ref( $request );",
+     "215: return self::create_pet( $user_id, $input, $client_ref, $force_new );",
+     "706: private static function extract_client_ref( $request ) {",
+     "707: $ref = $request->get_param( 'client_ref' );",
+     "725: private static function create_pet( $user_id, $input, $client_ref = null, $force_new = false ) {",
+     "729: // Idempotentiskumas: jei toks client_ref jau perkeltas siam vartotojui -> grazinam esama",
+     "731: if ( $client_ref ) {",
+     "733: \"SELECT id FROM `\" . self::table_name() . \"` WHERE user_id = %d AND client_ref = %s AND status='active' LIMIT 1\",",
+     "734: $user_id, $client_ref",
+     "746: // S206: semantinis dublikatas. client_ref apsaugo tik nuo TO PATIES juodrascio —",
+     "774: 'client_ref' => $client_ref,"
+    ]
+   },
+   "localStorage": [
+    "getItem -> petshop_calc_handoff",
+    "removeItem -> petshop_calc_handoff"
+   ],
+   "ar_valomas": {
+    "removeItem_kartai": 4,
+    "po_postProfile": true
+   },
+   "db": {
+    "su_client_ref": 1,
+    "distinct": 1,
+    "pavyzdziai": [
+     {
+      "id": "34",
+      "user_id": "30",
+      "client_ref": "d_0ht13gl4t02imrlywah1",
+      "pet_name": "Anonimine"
+     }
+    ]
+   },
+   "keli_augintiniai": [
+    {
+     "user_id": "1",
+     "c": "6"
+    },
+    {
+     "user_id": "28",
+     "c": "4"
+    },
+    {
+     "user_id": "44",
+     "c": "2"
+    }
+   ]
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
