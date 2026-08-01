@@ -1,0 +1,58 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2035,
+ "rez": {
+  "VERSIJA": "avatar-recon-v1",
+  "avatar_yra": true,
+  "avatar_kodas": "<?php\n/**\n * Petshop_Account_Avatar — paskyros avataras.\n *\n * PROBLEMA: WordPress numatytasis „mystery person\" pilkas šešėlis paskyros\n * šone atrodo nebaigtas.\n *\n * SPRENDIMAS be naujos infrastruktūros:\n *  1) jei augintinis turi nuotrauką — rodom JĄ (šiluma ateina iš augintinio,\n *     o ne iš savininko; tai ir yra Petshop skirtumas);\n *  2) kitu atveju — inicialas žaliame apskritime.\n *\n * SĄMONINGAI NEDAROM savininko nuotraukos įkėlimo: tai asmens duomenys,\n * reikalaujantys privatumo politikos peržiūros, o vertė maža — tą avatarą\n * mato tik pats žmogus savo paskyroje.\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nclass Petshop_Account_Avatar {\n\n\tpublic static function init() {\n\t\tadd_filter( 'get_avatar', array( __CLASS__, 'avatar' ), 20, 6 );\n\t}\n\n\t/** Vardas rodymui: tikras vardas pirmiau nei prisijungimo vardas. */\n\tpublic static function display_name( $user_id ) {\n\t\t$u = get_userdata( $user_id );\n\t\tif ( ! $u ) { return ''; }\n\t\t$name = trim( (string) $u->first_name . ' ' . (string) $u->last_name );\n\t\tif ( $name === '' ) { $name = (string) $u->display_name; }\n\t\tif ( $name === '' || strtolower( $name ) === 'admin' ) { $name = (string) $u->user_login; }\n\t\treturn $name;\n\t}\n\n\tprivate static function initial( $user_id ) {\n\t\t$n = self::display_name( $user_id );\n\t\t$n = trim( $n );\n\t\tif ( $n === '' ) { return '?'; }\n\t\treturn function_exists( 'mb_strtoupper' )\n\t\t\t? mb_strtoupper( mb_substr( $n, 0, 1 ) )\n\t\t\t: strtoupper( substr( $n, 0, 1 ) );\n\t}\n\n\t/** Pirmojo (pagrindinio) augintinio nuotrauka, jei tokia yra. */\n\tprivate static function pet_photo_url( $user_id ) {\n\t\tglobal $wpdb;\n\t\t$t = $wpdb->prefix . 'ps_pets';\n\t\tif ( ! $wpdb->get_var( \"SHOW TABLES LIKE '$t'\" ) ) { return null; }\n\t\t$att = $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT photo_file_id FROM $t\n\t\t\t WHERE user_id = %d AND deleted_at IS NULL AND photo_file_id IS NOT NULL AND photo_file_id > 0\n\t\t\t ORDER BY is_primary DESC, id ASC LIMIT 1\", $user_id ) );\n\t\tif ( ! $att ) { return null; }\n\t\t$src = wp_get_attachment_image_src( (int) $att, 'thumbnail' );\n\t\treturn $src ? $src[0] : null;\n\t}\n\n\tpublic static function avatar( $avatar, $id_or_email, $size, $default, $alt, $args = array() ) {\n\t\t// TIK paskyros puslapiuose. Komentaruose ir wp-admin nieko nekeičiam.\n\t\tif ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() ) {\n\t\t\treturn $avatar;\n\t\t}\n\t\t$user_id = 0;\n\t\tif ( is_numeric( $id_or_email ) ) { $user_id = (int) $id_or_email; }\n\t\telseif ( $id_or_email instanceof WP_User ) { $user_id = (int) $id_or_email->ID; }\n\t\telseif ( is_string( $id_or_email ) && is_email( $id_or_email ) ) {\n\t\t\t$u = get_user_by( 'email', $id_or_email );\n\t\t\tif ( $u ) { $user_id = (int) $u->ID; }\n\t\t}\n\t\tif ( ! $user_id ) { return $avatar; }\n\n\t\t$px  = max( 40, (int) $size );\n\t\t$css = 'width:' . $px . 'px;height:' . $px . 'px;border-radius:50%;display:inline-flex;'\n\t\t\t. 'align-items:center;justify-content:center;overflow:hidden;flex:0 0 auto;vertical-align:middle;';\n\n\t\t$photo = self::pet_photo_url( $user_id );\n\t\tif ( $photo ) {\n\t\t\treturn '<span class=\"ps-avatar\" style=\"' . esc_attr( $css ) . 'background:#F4F8F5\">'\n\t\t\t\t. '<img src=\"' . esc_url( $photo ) . '\" alt=\"\" '\n\t\t\t\t. 'style=\"width:100%;height:100%;object-fit:cover\" /></span>';\n\t\t}\n\n\t\t$fs = max( 15, (int) round( $px * 0.42 ) );\n\t\treturn '<span class=\"ps-avatar\" style=\"' . esc_attr( $css )\n\t\t\t. 'background:#2F6B4F;color:#fff;font-weight:700;letter-spacing:.01em;'\n\t\t\t. 'font-size:' . $fs . 'px;line-height:1\">'\n\t\t\t. esc_html( self::initial( $user_id ) ) . '</span>';\n\t}\n}\n",
+  "palyginimai": {
+   "flatsome/inc/admin/admin-bar.php": [
+    "264: 'href' =>  $optionUrl_section.'fl-my-account'",
+    "560: 'href' =>  $optionUrl_section.'fl-my-account'"
+   ],
+   "flatsome/inc/admin/options/header/options-header-account.php": [
+    "221: 'default'  => '<button style=\"margin-top:30px; margin-bottom:15px\" class=\"button button-primary\" data-to-section=\"fl-my-account\">Account Pa"
+   ],
+   "flatsome/inc/admin/options/shop/options-shop-my-account.php": [
+    "5: Flatsome_Option::add_section( 'fl-my-account', array(",
+    "16: 'section'   => 'fl-my-account',",
+    "25: 'section'     => 'fl-my-account',",
+    "35: 'section'     => 'fl-my-account',",
+    "49: 'section'   => 'fl-my-account',",
+    "64: 'section'     => 'fl-my-account',",
+    "73: 'section'     => 'fl-my-account',",
+    "86: 'section'     => 'fl-my-account',",
+    "95: 'section'     => 'fl-my-account',"
+   ],
+   "flatsome/inc/admin/options/shop/options-shop.php": [
+    "14: include_once(dirname( __FILE__ ).'/options-shop-my-account.php');",
+    "77: 'selector'            => '.my-account-header',"
+   ],
+   "flatsome/page-my-account.php": [
+    "17: <div class=\"page-wrapper my-account mb\">",
+    "29: <ul id=\"my-account-nav\" class=\"account-nav nav nav-line nav-uppercase nav-vertical mt-half\">"
+   ],
+   "flatsome/woocommerce/myaccount/header.php": [
+    "40: <div class=\"my-account-header page-title normal-title"
+   ],
+   "core/includes/class-pet-ui.php": [
+    "19: const ENDPOINT = 'augintinis';  // /my-account/augintinis/"
+   ]
+  },
+  "content_sritis": "enu-item-2971\" class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-2971\"><a href=\"https://dev.avesa.lt/daugiau-pigiau/\">Daugiau = pigiau</a></li>\n</ul>\n</li>\n<li id=\"menu-item-34127\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-34127 menu-item-design-default has-dropdown\"><a href=\"https://dev.avesa.lt/sprendimai/\" class=\"nav-top-link\" aria-expanded=\"false\" aria-haspopup=\"menu\">SPRENDIMAI<i class=\"icon-angle-down\" aria-hidden=\"true\"></i></a>\n<ul class=\"sub-menu nav-dropdown nav-dropdown-default\">\n\t<li id=\"menu-item-34132\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-34132\"><a href=\"https://dev.avesa.lt/sprendimai/naujas-suniukas/\">Naujas šuniukas</a></li>\n\t<li id=\"menu-item-34133\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-34133\"><a href=\"https://dev.avesa.lt/sprendimai/naujas-kaciukas/\">Naujas kačiukas</a></li>\n\t<li id=\"menu-item-34263\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-34263\"><a href=\"https://dev.avesa.lt/sprendimai/isrankus-augintinis/\">Išrankus augintinis</a></li>\n\t<li id=\"menu-item-34134\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-34134\"><a href=\"https://dev.avesa.lt/sprendimai/jautrus-virskinimas/\">Jautrus virškinimas</a></li>\n\t<li id=\"menu-item-34264\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-34264\"><a href=\"https://dev.avesa.lt/sprendimai/sterilizuotas-augintinis/\">Sterilizuotas augintinis</a></li>\n\t<li id=\"menu-item-34135\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-34135\"><a href=\"https://dev.avesa.lt/sprendimai/kraiko-pasirinkimas/\">Kraiko pasirinkimas</a></li>\n</ul>\n</li>\n                </ul>\n            </div>\n            \n            \n                        <div class=\"flex-col hide-for-medium flex-right flex-grow\">\n              <ul class=\"nav header-nav header-bottom-nav nav-right  nav-uppercase\">\n                                 </ul>\n            </div>\n            \n            \n    </div>\n</div>\n\n<div class=\"header-bg-container fill\"><div class=\"header-bg-image fill\"></div><div class=\"header-bg-color fill\"></div></div>\t\t</div>\n\t</header>\n\n\t\n\t<main id=\"main\" class=\"\">\n<div id=\"content\" class=\"content-area page-wrapper\" role=\"main\">\n\t<div class=\"row row-main\">\n\t\t<div class=\"large-12 col\">\n\t\t\t<div class=\"col-inner\">\n\n\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t<div class=\"woocommerce\">\n<div class=\"woocommerce-MyAccount-content\">\n\t<div class=\"woocommerce-notices-wrapper\"></div><style>\n\t\t.ps-acc{max-width:760px}\n\t\t.ps-acc-hi{font-size:24px;font-weight:750;color:#1F2A24;margin:0 0 4px;letter-spacing:-.01em}\n\t\t.ps-acc-sub{font-size:14px;color:#7A867C;margin:0 0 20px;line-height:1.5}\n\t\t.ps-acc-main{display:block;background:#F4F8F5;border:1px solid #DCEADF;border-radius:18px;\n\t\t\tpadding:22px 24px;text-decoration:none;transition:border-color .15s,box-shadow .15s}\n\t\t.ps-acc-main:hover{border-color:#B9D3C1;box-shadow:0 8px 24px -18px rgba(31,78,57,.5)}\n\t\t.ps-acc-main-t{font-size:19px;font-weight:750;color:#1F4E39;letter-spacing:-.01em}\n\t\t.ps-acc-pets{font-size:13px;color:#5A8A6E;font-weight:650;margin-top:5px}\n\t\t.ps-acc-main-d{font-size:13.5px;color:#5A665C;margin-top:7px;line-height:1.5;max-width:56ch}\n\t\t.ps-acc-cta{display:inline-block;margin-top:14px;background:#2F6B4F;color:#fff;\n\t\t\tborder-radius:12px;padding:11px 20px;font-size:14px;font-weight:650;\n\t\t\ttext-transform:none;letter-spa"
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
