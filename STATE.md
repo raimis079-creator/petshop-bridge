@@ -288,7 +288,77 @@ veikianciu WooCommerce ir WPForms vertimu NEPERRASYTI
 Raimio sprendimas netvirtinti v2 iki .mo patikros buvo TEISINGAS — butu uzdeti
 9 nereikalingi vertimai ant veikiancios sistemos ir pasleptas ydingas matavimas.
 
-### ATSKIRI UI DARBAI (ne v2 gettext) — DAR NEISSPRESTA
+### ★★ UI LOKALIZACIJA — UZBAIGTA (2026-08-01)
+
+```
+Snippet: 2051 · Petshop UI Lokalizacija v1 (LIVE) · 13 vertimu
+UI lokalizacija            UZBAIGTA
+Newsletter registracija    ATSKIRAS NEUZBAIGTAS FUNKCIONALUMAS (ikona isjungta)
+Complianz TCF              dabartineje konfiguracijoje NEAKTYVUS
+```
+
+**S330 Next / Previous — AUDITUOTA IR ISVERSTA.**
+Visi GYVI atvejai — puslapiavimas (`a.next/prev.page-number` aria-label):
+`/parduotuve/` 1x, `/parduotuve/page/2/` 2x. Kitur 0.
+`ux-relay` karusele NENAUDOJAMA: 0 mygtuku front-end'e, 0 irasu turinyje,
+shortcode NEREGISTRUOTAS.
+```
+Next     -> Kitas puslapis
+Previous -> Ankstesnis puslapis
+```
+PATIKRINTA: /parduotuve/ -> „Kitas puslapis"; /parduotuve/page/2/ ->
+„Ankstesnis puslapis" + „Kitas puslapis"; angl. Next/Previous liko 0.
+
+**★ SALYGA ATEICIAI:** jei kada ijungiamas `ux-relay` komponentas, siuos DU
+vertimus PERZIURETI IS NAUJO — Flatsome abiem komponentams (puslapiavimui ir
+relay karuselei) naudoja TA PATI teksta ir domena `esc_attr__('Next','flatsome')`
+BE konteksto, todel gettext filtras ju NEATSKIRIA. Salyga irasyta ir snippet'e.
+
+**A) NEWSLETTER IKONA — ISJUNGTA, NE ISVERSTA (Raimio sprendimas).**
+Rasta `theme_mods['mobile_sidebar']` (NE header_elements_* — todel pirma patikra
+jos nerado).
+```
+buvo:  search-form,nav,account,newsletter,social,html-2,html-3
+dabar: search-form,nav,account,social,html-2,html-3
+backup: opcija ps_bak_mobile_sidebar_20260801
+```
+Isjungta per Flatsome NUSTATYMA, ne CSS slepima.
+PATIKRINTA: „Sign up for Newsletter" 0 · `header-newsletter-item` 0 · modalas 0 ·
+Prisijungti 6 · krepselis 5 (nieko kito nesugadinta).
+
+**PRIEZASTIS:** ikona atidaro REALU modala, bet neirodyta visa grandine:
+forma -> aiskus marketingo sutikimas -> kontaktas patenka i **Sender** ->
+deduplikacija -> consent saltinio ir laiko issaugojimas -> sekmes/klaidos busena.
+Kol sis E2E nepatikrintas, vokelio ikona yra PAZADAS apie veikiancia prenumerata.
+
+**GRAZINANT (kai Sender prenumeratos forma prijungta ir isbandyta):**
+```
+title:      Prenumeruoti naujienlaiski
+aria-label: Prenumeruoti Petshop.lt naujienlaiski
+```
+
+**★ ESP YRA SENDER, NE BREVO.** Ankstesnis irasas apie Brevo — KLAIDINGAS.
+Visas 2026-08-01 darbas (transakciniai laiskai, deliverability) vyko per Sender.
+
+**B) COMPLIANZ TCF — NEAKTUALU, IRODYTA NARSYKLEJE (apskaiciuotas stilius):**
+```
+.cmplz-read-more-purposes     display:none · 0x0 px
+{vendor_count} elementas      display:none · 0x0 px
+tevas .cmplz-links.cmplz-information  display:none
+slapuku baneris PATS          MATOMAS 620x225 (veikia normaliai)
+Tab: 45 fokusai               TCF elementu tarp ju 0
+```
+`display:none` pagal apibrezima pasalina elementa ir is accessibility tree.
+(`page.accessibility.snapshot()` sioje Playwright versijoje neegzistuoja —
+TypeError; bet display:none yra grieztesnis irodymas nei snapshot'as.)
+**NIEKO NEKEICIAM.** Matomas nuorodos tekstas jau lietuviskas („Skaitykite daugiau
+apie siuos tikslus"); angliskas tik pasleptas aria-label.
+
+**★ NEAPDOROTAS `{vendor_count}` = BUSIMO TCF IJUNGIMO PATIKRA.** Jei kada TCF
+bus ijungtas: (1) patikrinti, ar placeholder pakeiciamas skaiciumi, (2) tekstus
+tvarkyti PER COMPLIANZ NUSTATYMUS, ne gettext ar DOM lopu.
+
+### (ISTORINIS) ATSKIRI UI DARBAI — buves neisspresto saraso irasas
 ```
 · Flatsome newsletter elementas — „Sign up for Newsletter" ateina is NUSTATYMU
   numatytosios reiksmes, ne is gettext. Arba versti, arba ISJUNGTI elementa,
