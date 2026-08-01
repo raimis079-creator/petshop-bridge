@@ -1,0 +1,73 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2028,
+ "rez": {
+  "VERSIJA": "slug-apply-v1",
+  "pataisos": {
+   "templates/emails/order-paid.php": {
+    "rasta": 1,
+    "irasyta": true,
+    "liko_my_account": 0
+   },
+   "includes/class-unsubscribe.php": {
+    "rasta": 1,
+    "irasyta": true,
+    "liko_my_account": 0
+   },
+   "assets/pet-profile.js": {
+    "rasta": 3,
+    "irasyta": true,
+    "liko_my_account": 0
+   },
+   "assets/product-calc.js": {
+    "rasta": 1,
+    "irasyta": true,
+    "liko_my_account": 0
+   }
+  },
+  "puslapio_slug_pries": "my-account",
+  "puslapio_slug_po": "paskyra",
+  "ep_pries": {
+   "orders": "orders",
+   "view_order": "view-order",
+   "downloads": "downloads",
+   "edit_account": "edit-account",
+   "edit_address": "edit-address",
+   "payment_methods": "payment-methods",
+   "add_payment_method": "add-payment-method",
+   "delete_payment_method": "delete-payment-method",
+   "set_default_payment_method": "set-default-payment-method",
+   "lost_password": "lost-password",
+   "customer_logout": false
+  },
+  "ep_po": {
+   "orders": "uzsakymai",
+   "view_order": "uzsakymas",
+   "downloads": "atsisiuntimai",
+   "edit_account": "paskyros-duomenys",
+   "edit_address": "adresai",
+   "payment_methods": "mokejimo-budai",
+   "add_payment_method": "prideti-mokejimo-buda",
+   "delete_payment_method": "istrinti-mokejimo-buda",
+   "set_default_payment_method": "numatytasis-mokejimo-budas",
+   "lost_password": "pamirstas-slaptazodis",
+   "customer_logout": "atsijungti"
+  },
+  "snippet_id": 2029,
+  "flush": "atlikta",
+  "naujas_url": "https://dev.avesa.lt/paskyra/",
+  "uzsakymu_url": "https://dev.avesa.lt/paskyra/uzsakymai/",
+  "augintinio_url": "https://dev.avesa.lt/paskyra/augintinis/",
+  "pamirstas_url": "https://dev.avesa.lt/paskyra/pamirstas-slaptazodis/"
+ },
+ "t_naujas": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
