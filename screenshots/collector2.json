@@ -1,0 +1,725 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2049,
+ "urls": {
+  "krepselis": "https://dev.avesa.lt/cart/",
+  "atsiskaitymas": "https://dev.avesa.lt/checkout/",
+  "paskyra": "https://dev.avesa.lt/paskyra/",
+  "parduotuve": "https://dev.avesa.lt/parduotuve/"
+ },
+ "apkrauta": [
+  "/ 200",
+  "/parduotuve/ 200",
+  "/kategorija/sunims/ 200",
+  "/cart/ 200",
+  "/checkout/ 302",
+  "/paskyra/ 200",
+  "/augintinio-profilis/ 200",
+  "/kontaktai/ 200",
+  "/nera-xyz/ 404"
+ ],
+ "rez": {
+  "VERSIJA": "collector-v2",
+  "irasu": 22,
+  "kvietimai": [
+   {
+    "tekstas": "Submit",
+    "domain": "wpforms-lite",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Submit",
+    "isverstas": false,
+    "kiek": 11
+   },
+   {
+    "tekstas": "Clear filters",
+    "domain": "woocommerce",
+    "context": "block title",
+    "saltinis": "gettext_with_context",
+    "vertimas": "Clear filters",
+    "isverstas": false,
+    "kiek": 11
+   },
+   {
+    "tekstas": "Checkout",
+    "domain": "woocommerce",
+    "context": "block title",
+    "saltinis": "gettext_with_context",
+    "vertimas": "Apmokėjimas",
+    "isverstas": true,
+    "kiek": 11
+   },
+   {
+    "tekstas": "Checkout",
+    "domain": "woocommerce",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Apmokėjimas",
+    "isverstas": true,
+    "kiek": 10
+   },
+   {
+    "tekstas": "%v Add to cart to continue&hellip;",
+    "domain": "woocommerce-mix-and-match-products",
+    "context": "[Frontend]",
+    "saltinis": "gettext_with_context",
+    "vertimas": "%v Add to cart to continue&hellip;",
+    "isverstas": false,
+    "kiek": 8
+   },
+   {
+    "tekstas": "Show more",
+    "domain": "yith-woocommerce-ajax-navigation",
+    "context": "[FRONTEND] Show more link on tax filters",
+    "saltinis": "gettext_with_context",
+    "vertimas": "Show more",
+    "isverstas": false,
+    "kiek": 11
+   },
+   {
+    "tekstas": "Menu",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Menu",
+    "isverstas": false,
+    "kiek": 8
+   },
+   {
+    "tekstas": "Submit",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Submit",
+    "isverstas": false,
+    "kiek": 17
+   },
+   {
+    "tekstas": "Payment icons",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Payment icons",
+    "isverstas": false,
+    "kiek": 16
+   },
+   {
+    "tekstas": "Go to top",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Go to top",
+    "isverstas": false,
+    "kiek": 8
+   },
+   {
+    "tekstas": "Follow on Facebook",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Follow on Facebook",
+    "isverstas": false,
+    "kiek": 16
+   },
+   {
+    "tekstas": "Follow on Instagram",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Follow on Instagram",
+    "isverstas": false,
+    "kiek": 16
+   },
+   {
+    "tekstas": "Follow on Twitter",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Follow on Twitter",
+    "isverstas": false,
+    "kiek": 16
+   },
+   {
+    "tekstas": "Send us an email",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Send us an email",
+    "isverstas": false,
+    "kiek": 16
+   },
+   {
+    "tekstas": "Close dialog",
+    "domain": "complianz-gdpr",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Close dialog",
+    "isverstas": false,
+    "kiek": 8
+   },
+   {
+    "tekstas": "Filter",
+    "domain": "woocommerce",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Filtruoti",
+    "isverstas": true,
+    "kiek": 3
+   },
+   {
+    "tekstas": "Add to cart: &ldquo;%s&rdquo;",
+    "domain": "woocommerce",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Add to cart: &ldquo;%s&rdquo;",
+    "isverstas": false,
+    "kiek": 24
+   },
+   {
+    "tekstas": "Add to cart",
+    "domain": "woocommerce",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Į krepšelį",
+    "isverstas": true,
+    "kiek": 24
+   },
+   {
+    "tekstas": "Product Pagination",
+    "domain": "woocommerce",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Product Pagination",
+    "isverstas": false,
+    "kiek": 1
+   },
+   {
+    "tekstas": "Next",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Next",
+    "isverstas": false,
+    "kiek": 9
+   },
+   {
+    "tekstas": "Previous",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Previous",
+    "isverstas": false,
+    "kiek": 9
+   },
+   {
+    "tekstas": "Checkout steps",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "vertimas": "Checkout steps",
+    "isverstas": false,
+    "kiek": 1
+   }
+  ],
+  "NERASTI": [
+   "Show less",
+   "Sign up for Newsletter",
+   "Read more",
+   "Results"
+  ]
+ },
+ "nerasti": {
+  "Results": [
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/selectWoo.js",
+    "tipas": "js",
+    "fragmentas": "he;\n  }\n\n  return Utils;\n});\n\nS2.define('select2/results',[\n  'jquery',\n  './utils'\n], function ($, Utils) {\n  function Results ($element, options, dataAdapter) {\n    this.$element = $element;\n    this.data = dataAdapter;\n    this.options ="
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/selectWoo.full.js",
+    "tipas": "js",
+    "fragmentas": "he;\n  }\n\n  return Utils;\n});\n\nS2.define('select2/results',[\n  'jquery',\n  './utils'\n], function ($, Utils) {\n  function Results ($element, options, dataAdapter) {\n    this.$element = $element;\n    this.data = dataAdapter;\n    this.options ="
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/select2.min.js",
+    "tipas": "js",
+    "fragmentas": "sults||0===a.results.length)return void(0===this.$results.children().length&&this.trigger(\"results:message\",{message:\"noResults\"}));a.results=this.sort(a.results);for(var c=0;c<a.results.length;c++){var d=a.results[c],e=this.option(d);b.pus"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/bg.js",
+    "tipas": "js",
+    "fragmentas": "t=\"Можете да направите до \"+e.maximum+\" \";return e.maximum>1?t+=\"избора\":t+=\"избор\",t},noResults:function(){return\"Няма намерени съвпадения\"},searching:function(){return\"Търсене…"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/hi.js",
+    "tipas": "js",
+    "fragmentas": "on(e){var t=\"आप केवल \"+e.maximum+\" आइटम का चयन कर सकते हैं\";return t},noResults:function(){return\"कोई परिणाम नहीं मिला\"},searching:function(){return\"खोज"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/fi.js",
+    "tipas": "js",
+    "fragmentas": "){return\"Ladataan lisää tuloksia…\"},maximumSelected:function(e){return\"Voit valita ainoastaan \"+e.maximum+\" kpl\"},noResults:function(){return\"Ei tuloksia\"},searching:function(){return\"Haetaan…\"}}}),{define:e.define,require:e.require}}"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/uk.js",
+    "tipas": "js",
+    "fragmentas": "\"Ви можете вибрати лише \"+t.maximum+\" \"+e(t.maximum,\"пункт\",\"пункти\",\"пунктів\")},noResults:function(){return\"Нічого не знайдено\"},searching:function(){return\"Пошук…\"}}}),{define:e."
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/sv.js",
+    "tipas": "js",
+    "fragmentas": "eturn\"Laddar fler resultat…\"},maximumSelected:function(e){var t=\"Du kan max välja \"+e.maximum+\" element\";return t},noResults:function(){return\"Inga träffar\"},searching:function(){return\"Söker…\"}}}),{define:e.define,require:e.require}"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/sr.js",
+    "tipas": "js",
+    "fragmentas": "},maximumSelected:function(t){var n=\"Možete izabrati samo \"+t.maximum+\" stavk\";return n+=e(t.maximum,\"u\",\"e\",\"i\"),n},noResults:function(){return\"Ništa nije pronađeno\"},searching:function(){return\"Pretraga…\"}}}),{define:e.define,require"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/he.js",
+    "tipas": "js",
+    "fragmentas": "){var t=\"באפשרותך לבחור עד \";return e.maximum===1?t+=\"פריט אחד\":t+=e.maximum+\" פריטים\",t},noResults:function(){return\"לא נמצאו תוצאות\"},searching:function(){return\"מחפש…\"}}}),{define:e.define,r"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/mk.js",
+    "tipas": "js",
+    "fragmentas": "{var t=\"Можете да изберете само \"+e.maximum+\" ставк\";return e.maximum===1?t+=\"а\":t+=\"и\",t},noResults:function(){return\"Нема пронајдено совпаѓања\"},searching:function(){return\"Пребару?"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/km.js",
+    "tipas": "js",
+    "fragmentas": "?អាចជ្រើសរើសបានតែ \"+e.maximum+\" ជម្រើសប៉ុណ្ណោះ\";return t},noResults:function(){return\"មិនមានលទ្ធផល\"},searching:function(){return\"កំពុងស្វែ"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/eu.js",
+    "tipas": "js",
+    "fragmentas": "cted:function(e){return e.maximum===1?\"Elementu bakarra hauta dezakezu\":e.maximum+\" elementu hauta ditzakezu soilik\"},noResults:function(){return\"Ez da bat datorrenik aurkitu\"},searching:function(){return\"Bilatzen…\"}}}),{define:e.define,r"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/ro.js",
+    "tipas": "js",
+    "fragmentas": "ed:function(e){var t=\"Aveți voie să selectați cel mult \"+e.maximum;return t+=\" element\",e.maximum!==1&&(t+=\"e\"),t},noResults:function(){return\"Nu au fost găsite rezultate\"},searching:function(){return\"Căutare…\"}}}),{define:e.define,r"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/el.js",
+    "tipas": "js",
+    "fragmentas": "? επιλέξετε μόνο \"+e.maximum+\" επιλογ\";return e.maximum==1&&(t+=\"ή\"),e.maximum!=1&&(t+=\"ές\"),t},noResults:function(){return\"Δεν βρέθηκαν αποτελέσματα\"},searching:function(){return\"Αναζήτη?"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/vi.js",
+    "tipas": "js",
+    "fragmentas": "t quả…\"},maximumSelected:function(e){var t=\"Chỉ có thể chọn được \"+e.maximum+\" lựa chọn\";return t},noResults:function(){return\"Không tìm thấy kết quả\"},searching:function(){return\"Đang tìm…\"}}}),{define:e.defi"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/sk.js",
+    "tipas": "js",
+    "fragmentas": "ximum<=4?\"Môžete zvoliť najviac \"+e[t.maximum](!1)+\" položky\":\"Môžete zvoliť najviac \"+t.maximum+\" položiek\"},noResults:function(){return\"Nenašli sa žiadne položky\"},searching:function(){return\"Vyhľadávanie…\"}}}),{define:e.de"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/tr.js",
+    "tipas": "js",
+    "fragmentas": "ion(){return\"Daha fazla…\"},maximumSelected:function(e){var t=\"Sadece \"+e.maximum+\" seçim yapabilirsiniz\";return t},noResults:function(){return\"Sonuç bulunamadı\"},searching:function(){return\"Aranıyor…\"}}}),{define:e.define,require:e."
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/pl.js",
+    "tipas": "js",
+    "fragmentas": "turn\"Trwa ładowanie…\"},maximumSelected:function(e){return\"Możesz zaznaczyć tylko \"+e.maximum+\" \"+n(e.maximum,t)},noResults:function(){return\"Brak wyników\"},searching:function(){return\"Trwa wyszukiwanie…\"}}}),{define:e.define,require"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/ca.js",
+    "tipas": "js",
+    "fragmentas": ",maximumSelected:function(e){var t=\"Només es pot seleccionar \"+e.maximum+\" element\";return e.maximum!=1&&(t+=\"s\"),t},noResults:function(){return\"No s'han trobat resultats\"},searching:function(){return\"Cercant…\"}}}),{define:e.define,requi"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/pt.js",
+    "tipas": "js",
+    "fragmentas": "},maximumSelected:function(e){var t=\"Apenas pode seleccionar \"+e.maximum+\" \";return t+=e.maximum!=1?\"itens\":\"item\",t},noResults:function(){return\"Sem resultados\"},searching:function(){return\"A procurar…\"}}}),{define:e.define,require:e.req"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/lv.js",
+    "tipas": "js",
+    "fragmentas": "ction(t){var n=\"Jūs varat izvēlēties ne vairāk kā \"+t.maximum;return n+=\" element\"+e(t.maximum,\"us\",\"u\",\"us\"),n},noResults:function(){return\"Sakritību nav\"},searching:function(){return\"Meklēšana…\"}}}),{define:e.define,require:e.re"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/sl.js",
+    "tipas": "js",
+    "fragmentas": "unction(e){var t=\"Označite lahko največ \"+e.maximum+\" predmet\";return e.maximum==2?t+=\"a\":e.maximum!=1&&(t+=\"e\"),t},noResults:function(){return\"Ni zadetkov.\"},searching:function(){return\"Iščem…\"}}}),{define:e.define,require:e.require}"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/sr-Cyrl.js",
+    "tipas": "js",
+    "fragmentas": "n(t){var n=\"Можете изабрати само \"+t.maximum+\" ставк\";return n+=e(t.maximum,\"у\",\"е\",\"и\"),n},noResults:function(){return\"Ништа није пронађено\"},searching:function(){return\"Претрага…\"}}}),"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/gl.js",
+    "tipas": "js",
+    "fragmentas": "d:function(e){return e.maximum===1?\"Só pode seleccionar un elemento\":\"Só pode seleccionar \"+e.maximum+\" elementos\"},noResults:function(){return\"Non se atoparon resultados\"},searching:function(){return\"Buscando…\"}}}),{define:e.define,req"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/es.js",
+    "tipas": "js",
+    "fragmentas": "},maximumSelected:function(e){var t=\"Sólo puede seleccionar \"+e.maximum+\" elemento\";return e.maximum!=1&&(t+=\"s\"),t},noResults:function(){return\"No se encontraron resultados\"},searching:function(){return\"Buscando…\"}}}),{define:e.define,r"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/hr.js",
+    "tipas": "js",
+    "fragmentas": "return\"Učitavanje rezultata…\"},maximumSelected:function(e){return\"Maksimalan broj odabranih stavki je \"+e.maximum},noResults:function(){return\"Nema rezultata\"},searching:function(){return\"Pretraga…\"}}}),{define:e.define,require:e.requi"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/zh-TW.js",
+    "tipas": "js",
+    "fragmentas": ":function(){return\"載入中…\"},maximumSelected:function(e){var t=\"你只能選擇最多\"+e.maximum+\"項\";return t},noResults:function(){return\"沒有找到相符的項目\"},searching:function(){return\"搜尋中…\"}}}),{define:e.define,r"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/hy.js",
+    "tipas": "js",
+    "fragmentas": "d:function(e){var t=\"Դուք կարող եք ընտրել առավելագույնը \"+e.maximum+\" կետ\";return t},noResults:function(){return\"Արդյունքներ չեն գտնվել\"},searching:function(){return\"Որոնում․․?"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/nb.js",
+    "tipas": "js",
+    "fragmentas": "(){return\"Laster flere resultater…\"},maximumSelected:function(e){return\"Du kan velge maks \"+e.maximum+\" elementer\"},noResults:function(){return\"Ingen treff\"},searching:function(){return\"Søker…\"}}}),{define:e.define,require:e.require}})"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/zh-CN.js",
+    "tipas": "js",
+    "fragmentas": "return\"载入更多结果…\"},maximumSelected:function(e){var t=\"最多只能选择\"+e.maximum+\"个项目\";return t},noResults:function(){return\"未找到结果\"},searching:function(){return\"搜索中…\"}}}),{define:e.define,require:e.req"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/de.js",
+    "tipas": "js",
+    "fragmentas": "ed:function(e){var t=\"Sie können nur \"+e.maximum+\" Eintr\";return e.maximum===1?t+=\"ag\":t+=\"äge\",t+=\" auswählen\",t},noResults:function(){return\"Keine Übereinstimmungen gefunden\"},searching:function(){return\"Suche…\"}}}),{define:e.define"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/ru.js",
+    "tipas": "js",
+    "fragmentas": "?ы можете выбрать не более \"+t.maximum+\" элемент\";return n+=e(t.maximum,\"\",\"a\",\"ов\"),n},noResults:function(){return\"Совпадений не найдено\"},searching:function(){return\"Поиск…\"}}}),{def"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/ms.js",
+    "tipas": "js",
+    "fragmentas": "n\"Sedang memuatkan keputusan…\"},maximumSelected:function(e){return\"Anda hanya boleh memilih \"+e.maximum+\" pilihan\"},noResults:function(){return\"Tiada padanan yang ditemui\"},searching:function(){return\"Mencari…\"}}}),{define:e.define,requ"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/nl.js",
+    "tipas": "js",
+    "fragmentas": "mum==1?\"kan\":\"kunnen\",n=\"Er \"+t+\" maar \"+e.maximum+\" item\";return e.maximum!=1&&(n+=\"s\"),n+=\" worden geselecteerd\",n},noResults:function(){return\"Geen resultaten gevonden…\"},searching:function(){return\"Zoeken…\"}}}),{define:e.define,requ"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/lt.js",
+    "tipas": "js",
+    "fragmentas": "elected:function(t){var n=\"Jūs galite pasirinkti tik \"+t.maximum+\" element\";return n+=e(t.maximum,\"ą\",\"us\",\"ų\"),n},noResults:function(){return\"Atitikmenų nerasta\"},searching:function(){return\"Ieškoma…\"}}}),{define:e.define,require:e."
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/az.js",
+    "tipas": "js",
+    "fragmentas": "çox nəticə yüklənir…\"},maximumSelected:function(e){return\"Sadəcə \"+e.maximum+\" element seçə bilərsiniz\"},noResults:function(){return\"Nəticə tapılmadı\"},searching:function(){return\"Axtarılır…\"}}}),{define:e.define,requir"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/ar.js",
+    "tipas": "js",
+    "fragmentas": "ائج إضافية...\"},maximumSelected:function(e){return\"تستطيع إختيار \"+e.maximum+\" بنود فقط\"},noResults:function(){return\"لم يتم العثور على أي نتائج\"},searching:function(){return\"جاري الب?"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/da.js",
+    "tipas": "js",
+    "fragmentas": "ltater…\"},maximumSelected:function(e){var t=\"Du kan kun vælge \"+e.maximum+\" emne\";return e.maximum!=1&&(t+=\"r\"),t},noResults:function(){return\"Ingen resultater fundet\"},searching:function(){return\"Søger…\"}}}),{define:e.define,require:"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/ja.js",
+    "tipas": "js",
+    "fragmentas": "){return\"読み込み中…\"},maximumSelected:function(e){var t=e.maximum+\" 件しか選択できません\";return t},noResults:function(){return\"対象が見つかりません\"},searching:function(){return\"検索しています…\"}}}),{de"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/ko.js",
+    "tipas": "js",
+    "fragmentas": "??는 중…\"},maximumSelected:function(e){var t=\"최대 \"+e.maximum+\"개까지만 선택 가능합니다.\";return t},noResults:function(){return\"결과가 없습니다.\"},searching:function(){return\"검색 중…\"}}}),{define:e.define,requ"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/pt-BR.js",
+    "tipas": "js",
+    "fragmentas": "maximumSelected:function(e){var t=\"Você só pode selecionar \"+e.maximum+\" ite\";return e.maximum==1?t+=\"m\":t+=\"ns\",t},noResults:function(){return\"Nenhum resultado encontrado\"},searching:function(){return\"Buscando…\"}}}),{define:e.define,re"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/fa.js",
+    "tipas": "js",
+    "fragmentas": "nction(e){var t=\"شما تنها می‌توانید \"+e.maximum+\" آیتم را انتخاب نمایید\";return t},noResults:function(){return\"هیچ نتیجه‌ای یافت نشد\"},searching:function(){return\"در حال جستجو."
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/cs.js",
+    "tipas": "js",
+    "fragmentas": "jednu položku\":n<=4?\"Můžete zvolit maximálně \"+e(n,!1)+\" položky\":\"Můžete zvolit maximálně \"+n+\" položek\"},noResults:function(){return\"Nenalezeny žádné položky\"},searching:function(){return\"Vyhledávání…\"}}}),{define:e.de"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/hu.js",
+    "tipas": "js",
+    "fragmentas": "e:function(){return\"Töltés…\"},maximumSelected:function(e){return\"Csak \"+e.maximum+\" elemet lehet kiválasztani.\"},noResults:function(){return\"Nincs találat.\"},searching:function(){return\"Keresés…\"}}}),{define:e.define,require:e.requ"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/id.js",
+    "tipas": "js",
+    "fragmentas": "tion(){return\"Mengambil data…\"},maximumSelected:function(e){return\"Anda hanya dapat memilih \"+e.maximum+\" pilihan\"},noResults:function(){return\"Tidak ada data yang sesuai\"},searching:function(){return\"Mencari…\"}}}),{define:e.define,requ"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/en.js",
+    "tipas": "js",
+    "fragmentas": "ults…\"},maximumSelected:function(e){var t=\"You can only select \"+e.maximum+\" item\";return e.maximum!=1&&(t+=\"s\"),t},noResults:function(){return\"No results found\"},searching:function(){return\"Searching…\"}}}),{define:e.define,require:e.re"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/fr.js",
+    "tipas": "js",
+    "fragmentas": "ted:function(e){var t=\"Vous pouvez seulement sélectionner \"+e.maximum+\" élément\";return e.maximum!==1&&(t+=\"s\"),t},noResults:function(){return\"Aucun résultat trouvé\"},searching:function(){return\"Recherche en cours…\"}}}),{define:e.def"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/et.js",
+    "tipas": "js",
+    "fragmentas": "maximumSelected:function(e){var t=\"Saad vaid \"+e.maximum+\" tulemus\";return e.maximum==1?t+=\"e\":t+=\"t\",t+=\" valida\",t},noResults:function(){return\"Tulemused puuduvad\"},searching:function(){return\"Otsin…\"}}}),{define:e.define,require:e.requ"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/is.js",
+    "tipas": "js",
+    "fragmentas": "Sæki fleiri niðurstöður…\"},maximumSelected:function(e){return\"Þú getur aðeins valið \"+e.maximum+\" atriði\"},noResults:function(){return\"Ekkert fannst\"},searching:function(){return\"Leita…\"}}}),{define:e.define,require:e.require}}"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/th.js",
+    "tipas": "js",
+    "fragmentas": "\"คุณสามารถเลือกได้ไม่เกิน \"+e.maximum+\" รายการ\";return t},noResults:function(){return\"ไม่พบข้อมูล\"},searching:function(){return\"กำลังค้นข้"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/i18n/it.js",
+    "tipas": "js",
+    "fragmentas": "maximumSelected:function(e){var t=\"Puoi selezionare solo \"+e.maximum+\" element\";return e.maximum!==1?t+=\"i\":t+=\"o\",t},noResults:function(){return\"Nessun risultato trovato\"},searching:function(){return\"Sto cercando…\"}}}),{define:e.define,r"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/selectWoo.full.min.js",
+    "tipas": "js",
+    "fragmentas": "sults||0===a.results.length)return void(0===this.$results.children().length&&this.trigger(\"results:message\",{message:\"noResults\"}));a.results=this.sort(a.results);for(var c=0;c<a.results.length;c++){var d=a.results[c],e=this.option(d);b.pus"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/select2.full.js",
+    "tipas": "js",
+    "fragmentas": "he;\n  }\n\n  return Utils;\n});\n\nS2.define('select2/results',[\n  'jquery',\n  './utils'\n], function ($, Utils) {\n  function Results ($element, options, dataAdapter) {\n    this.$element = $element;\n    this.data = dataAdapter;\n    this.options ="
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/select2.full.min.js",
+    "tipas": "js",
+    "fragmentas": "sults||0===a.results.length)return void(0===this.$results.children().length&&this.trigger(\"results:message\",{message:\"noResults\"}));a.results=this.sort(a.results);for(var c=0;c<a.results.length;c++){var d=a.results[c],e=this.option(d);b.pus"
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/select2.js",
+    "tipas": "js",
+    "fragmentas": "he;\n  }\n\n  return Utils;\n});\n\nS2.define('select2/results',[\n  'jquery',\n  './utils'\n], function ($, Utils) {\n  function Results ($element, options, dataAdapter) {\n    this.$element = $element;\n    this.data = dataAdapter;\n    this.options ="
+   },
+   {
+    "failas": "flatsome/inc/admin/kirki/assets/vendor/selectWoo/js/selectWoo.min.js",
+    "tipas": "js",
+    "fragmentas": "sults||0===a.results.length)return void(0===this.$results.children().length&&this.trigger(\"results:message\",{message:\"noResults\"}));a.results=this.sort(a.results);for(var c=0;c<a.results.length;c++){var d=a.results[c],e=this.option(d);b.pus"
+   },
+   {
+    "failas": "flatsome/assets/js/builder/vendors/vendors.js",
+    "tipas": "js",
+    "fragmentas": ";e.push(i)}this.$results.append(e)}else 0===this.$results.children().length&&this.trigger(\"results:message\",{message:\"noResults\"})},n.prototype.position=function(t,e){e.find(\".select2-results\").append(t)},n.prototype.sort=function(t){return"
+   },
+   {
+    "failas": "flatsome/assets/js/builder/core/editor.js",
+    "tipas": "js",
+    "fragmentas": "jax={cache:!0,url:e.ajaxUrl,data:t=>({id:e.post.id,query:t.term,page:t.page,action:o,option:g,security:e.nonce}),processResults:function({data:t},e){return e.page=e.page||1,{results:_t().map(t,(({title:t,slug:e,id:n})=>({text:t,slug:e,id:n}"
+   },
+   {
+    "failas": "flatsome/languages/fr_FR.l10n.php",
+    "tipas": "php",
+    "fragmentas": "ommentaires','Category Archives: %s'=>'Archives par catégorie: %s','Tag Archives: %s'=>'Archives par tags: %s','Search Results for: %s'=>'Chercher: %s','Author Archives: %s'=>'Archives par auteur %s','Daily Archives: %s'=>'Archives par dat"
+   },
+   {
+    "failas": "flatsome/languages/es_AR.l10n.php",
+    "tipas": "php",
+    "fragmentas": "ntarios','Category Archives: %s'=>'Archivos de categorías: %s','Tag Archives: %s'=>'Archivos de etiquetas: %s','Search Results for: %s'=>'Resultados de búsqueda de: %s','Author Archives: %s'=>'Archivos de autor: %s','Daily Archives: %s'=>"
+   },
+   {
+    "failas": "flatsome/languages/vi.l10n.php",
+    "tipas": "php",
+    "fragmentas": "s Bình luận','Category Archives: %s'=>'Lưu trữ danh mục: %s','Tag Archives: %s'=>'Lưu trữ thẻ: %s','Search Results for: %s'=>'Kết quả tìm kiếm cho: %s','Author Archives: %s'=>'Lưu trữ tác giả: %s','Daily Archives:"
+   },
+   {
+    "failas": "flatsome/languages/pl_PL.l10n.php",
+    "tipas": "php",
+    "fragmentas": "\" . '%1$s Komentarze','Category Archives: %s'=>'Archiwa kategorii: %s','Tag Archives: %s'=>'Archiwa tagów: %s','Search Results for: %s'=>'Wyniki wyszukiwania dla: %s','Author Archives: %s'=>'Archiwa autorów: %s','Daily Archives: %s'=>'Dzi"
+   },
+   {
+    "failas": "flatsome/languages/de_DE.l10n.php",
+    "tipas": "php",
+    "fragmentas": "'%1$s Kommentare','Category Archives: %s'=>'Kategorie-Archive: %s','Tag Archives: %s'=>'Schlagwort-Archive: %s','Search Results for: %s'=>'Suchergebnisse für: %s','Author Archives: %s'=>'Autor-Archive: %s','Daily Archives: %s'=>'Tägliche"
+   },
+   {
+    "failas": "flatsome/languages/cs_CZ.l10n.php",
+    "tipas": "php",
+    "fragmentas": "'%1$s komentářů','Category Archives: %s'=>'Archiv kategorií: %s','Tag Archives: %s'=>'Archiv štítků: %s','Search Results for: %s'=>'Výsledky vyhledávání pro: %s','Author Archives: %s'=>'Archiv autora: %s','Daily Archives: %s'=>'D"
+   },
+   {
+    "failas": "flatsome/languages/de_DE_formal.l10n.php",
+    "tipas": "php",
+    "fragmentas": "'%1$s Kommentare','Category Archives: %s'=>'Kategorie-Archive: %s','Tag Archives: %s'=>'Schlagwort-Archive: %s','Search Results for: %s'=>'Suchergebnisse für: %s','Author Archives: %s'=>'Autor-Archive: %s','Daily Archives: %s'=>'Tägliche"
+   },
+   {
+    "failas": "flatsome/languages/nl_NL.l10n.php",
+    "tipas": "php",
+    "fragmentas": "0\" . '%1$s Reacties','Category Archives: %s'=>'Categorie archieven: %s','Tag Archives: %s'=>'Tag archieven: %s','Search Results for: %s'=>'Zoekresultaten voor: %s','Author Archives: %s'=>'Auteur archieven: %s','Daily Archives: %s'=>'Dagelij"
+   },
+   {
+    "failas": "flatsome/languages/da_DK.l10n.php",
+    "tipas": "php",
+    "fragmentas": "\"\\0\" . '%1$s kommentarer','Category Archives: %s'=>'Kategori arkiver: %s','Tag Archives: %s'=>'Tag Arkiver: %s','Search Results for: %s'=>'Søgeresultat for \"%s\"','Author Archives: %s'=>'Forfatter arkiver: %s','Daily Archives: %s'=>'Daglige"
+   },
+   {
+    "failas": "flatsome/languages/pt_BR.l10n.php",
+    "tipas": "php",
+    "fragmentas": "\">&rarr;</span>','Category Archives: %s'=>'Arquivos de Categoria: %s','Tag Archives: %s'=>'Arquivos de Tag: %s','Search Results for: %s'=>'Resultado da Busca por: %s','Author Archives: %s'=>'Arquivos de Autor: %s','Daily Archives: %s'=>'Arq"
+   },
+   {
+    "failas": "flatsome/languages/el.l10n.php",
+    "tipas": "php",
+    "fragmentas": "τητες','WooCommerce - Cart'=>'Καλάθι','WooCommerce - My Account'=>'Ο Λογαριασμός μου','Search Results for: %s'=>'Αποτελέσματα αναζήτησης για: %s','Shopping Cart'=>'Καλάθι','Checkout d"
+   },
+   {
+    "failas": "flatsome/languages/sl_SI.l10n.php",
+    "tipas": "php",
+    "fragmentas": "0\" . '%1$s komentarjev','Category Archives: %s'=>'Arhiv kategorij:  %s','Tag Archives: %s'=>'Arhiv značk:  %s','Search Results for: %s'=>'Iskalni rezultati za: %s','Author Archives: %s'=>'Arhiv avtorja:  %s','Daily Archives: %s'=>'Dnevni a"
+   },
+   {
+    "failas": "flatsome/languages/it_IT.l10n.php",
+    "tipas": "php",
+    "fragmentas": "\"\\0\" . '%1$s Commenti','Category Archives: %s'=>'Archivio Categoria: %s','Tag Archives: %s'=>'Archivio Tag: %s','Search Results for: %s'=>'Risultati di Ricerca per: %s','Author Archives: %s'=>'Archivio Autore: %s','Daily Archives: %s'=>'Arc"
+   },
+   {
+    "failas": "flatsome/languages/uk.l10n.php",
+    "tipas": "php",
+    "fragmentas": ",'Category Archives: %s'=>'Архіви категорій: %s','Tag Archives: %s'=>'Архіви тегу: %s','Search Results for: %s'=>'Результати пошуку для фрази: %s','Author Archives: %s'=>'Архіви авт?"
+   },
+   {
+    "failas": "flatsome/languages/zh_CN.l10n.php",
+    "tipas": "php",
+    "fragmentas": "$s Comment'=>'%1$s 评价','Category Archives: %s'=>'分类存档：%s','Tag Archives: %s'=>'标签存档：%s','Search Results for: %s'=>'搜索结果：%s','Author Archives: %s'=>'作者存档：%s','Daily Archives: %s'=>'每日存档：%"
+   },
+   {
+    "failas": "flatsome/languages/es_ES.l10n.php",
+    "tipas": "php",
+    "fragmentas": ";</span>','Category Archives: %s'=>'Archivos de Categoría: %s','Tag Archives: %s'=>'Archivos de Etiquetas: %s','Search Results for: %s'=>'Buscar Resultados para: %s','Author Archives: %s'=>'Archivos del Autor: %s','Daily Archives: %s'=>'Ar"
+   },
+   {
+    "failas": "flatsome/languages/ca.l10n.php",
+    "tipas": "php",
+    "fragmentas": "&rarr;</span>','Category Archives: %s'=>'Arxius de Categoria: %s','Tag Archives: %s'=>'Arxius d\\'Etiquetes: %s','Search Results for: %s'=>'Buscar Resultats per a: %s','Author Archives: %s'=>'Arxius de l\\'Autor: %s','Daily Archives: %s'=>'Ar"
+   },
+   {
+    "failas": "flatsome/languages/hu_HU.l10n.php",
+    "tipas": "php",
+    "fragmentas": "kulcsszóval.','Category Archives: %s'=>'Kategória Archívumok: %s','Tag Archives: %s'=>'Tag Archívumok: %s','Search Results for: %s'=>'Keresési eredmény: %s','Author Archives: %s'=>'Szerző Archívumok: %s','Daily Archives: %s'=>'Napi"
+   },
+   {
+    "failas": "flatsome/languages/ar.l10n.php",
+    "tipas": "php",
+    "fragmentas": "?يق','Category Archives: %s'=>'فئة الآرشيفات: %s','Tag Archives: %s'=>'وسم الآرشيف: %s','Search Results for: %s'=>'نتائج البحث لـ :  %s','Author Archives: %s'=>'أرشيفات المؤلف: %s','Daily Arc"
+   },
+   {
+    "failas": "flatsome/languages/fa_IR.l10n.php",
+    "tipas": "php",
+    "fragmentas": "tegory Archives: %s'=>'آرشیو دسته بندی: %s','Tag Archives: %s'=>'آرشیو برچسب های: %s','Search Results for: %s'=>'نتایج جست و جوی : %s','Author Archives: %s'=>'آرشیو نویسنده: %s','Daily Archi"
+   },
+   {
+    "failas": "flatsome/languages/ru_RU.l10n.php",
+    "tipas": "php",
+    "fragmentas": "Category Archives: %s'=>'Категория архива: %s','Tag Archives: %s'=>'Метка архива: %s','Search Results for: %s'=>'Результат поиска для: %s','Author Archives: %s'=>'Автор: %s','Daily Archives:"
+   },
+   {
+    "failas": "flatsome/languages/tr_TR.l10n.php",
+    "tipas": "php",
+    "fragmentas": "\" . '%1$s Yorum','Category Archives: %s'=>'Kategori Arşivleri: %s','Tag Archives: %s'=>'Etiket Arşivleri: %s','Search Results for: %s'=>'%s için Arama Sonuçları','Author Archives: %s'=>'Yazar Arşivleri: %s','Daily Archives: %s'=>'Gün"
+   },
+   {
+    "failas": "flatsome/languages/ja.l10n.php",
+    "tipas": "php",
+    "fragmentas": "','Category Archives: %s'=>'カテゴリーアーカイブ: %s','Tag Archives: %s'=>'タグアーカイブ: %s','Search Results for: %s'=>'「%s」の検索結果','Author Archives: %s'=>'投稿者アーカイブ: %s','Daily Archives: %s'=>"
+   },
+   {
+    "failas": "flatsome/languages/sv_SE.l10n.php",
+    "tipas": "php",
+    "fragmentas": "ps searching can help.'=>'Det verkar som vi inte kan hitta det du letar efter. Kanske en sökning kan hjälpa?','Search Results for: %s'=>'Resultat för: %s','Shopping Cart'=>'Varukorg','Checkout details'=>'Kassan','Order Complete'=>'Ordern"
+   },
+   {
+    "failas": "flatsome/languages/he_IL.l10n.php",
+    "tipas": "php",
+    "fragmentas": "</span>','Category Archives: %s'=>'קטגורית ארכיון: %s','Tag Archives: %s'=>'תג ארכיון: %s','Search Results for: %s'=>'תוצאות חיפוש עבור השאילתה: %s','Author Archives: %s'=>'מחבר ארכיון: %"
+   },
+   {
+    "failas": "flatsome/template-parts/posts/partials/archive-title.php",
+    "tipas": "php",
+    "fragmentas": "atsome' ), '<span>' . single_tag_title( '', false ) . '</span>' );\n\n\t\t\telseif ( is_search() ) :\n\t\t\t\tprintf( __( 'Search Results for: %s', 'flatsome' ), '<span>' . get_search_query() . '</span>' );\n\n\t\t\telseif ( is_author() ) :\n\t\t\t\t/* Queue t"
+   }
+  ],
+  "Sign up for Newsletter": [
+   {
+    "failas": "flatsome/inc/admin/options/header/options-header-newsletter.php",
+    "tipas": "php",
+    "fragmentas": "ome-admin' ),\n\t\t'section'   => 'header_newsletter',\n\t\t'transport' => flatsome_customizer_transport(),\n\t\t'default'   => 'Sign up for Newsletter',\n\t) );\n\n\tFlatsome_Option::add_field( 'option',\n\t\tarray(\n\t\t\t'type'        => 'select',\n\t\t\t'settin"
+   },
+   {
+    "failas": "flatsome/template-parts/header/partials/element-newsletter.php",
+    "tipas": "php",
+    "fragmentas": "= get_theme_mod( 'header_newsletter_label', 'Newsletter' );\n$title      = get_theme_mod( 'header_newsletter_title', 'Sign up for Newsletter' );\n\n$newsletter_block = get_theme_mod( 'header_newsletter_block' );\nif ( ! $newsletter_block ) {"
+   },
+   {
+    "failas": "flatsome/template-parts/header/partials/element-newsletter-sidebar.php",
+    "tipas": "php",
+    "fragmentas": "= get_theme_mod( 'header_newsletter_label', 'Newsletter' );\n$title     = get_theme_mod( 'header_newsletter_title', 'Sign up for Newsletter' );\n$link_atts = [\n\t'href'          => '#header-newsletter-signup',\n\t'class'         => 'tooltip'"
+   }
+  ],
+  "Read more": [
+   {
+    "failas": "flatsome/inc/shortcodes/blog_posts.php",
+    "tipas": "php",
+    "fragmentas": "gth' => 15,\n\t\t'offset' => '',\n\t\t'orderby' => 'date',\n\t\t'order' => 'DESC',\n\t\t'tags' => '',\n\t\t'page_number' => '1',\n\n\t\t// Read more\n\t\t'readmore' => '',\n\t\t'readmore_color' => '',\n\t\t'readmore_style' => 'outline',\n\t\t'readmore_size' => 'small',"
+   },
+   {
+    "failas": "flatsome/inc/structure/structure-posts.php",
+    "tipas": "php",
+    "fragmentas": "-title' );\n\t}\n}\nadd_action( 'flatsome_before_blog', 'flatsome_archive_title', 15 );\n\n\n// Remove the Auto scrolling if a Read more link is clicked\nfunction flatsome_remove_more_link_scroll( $link ) {\n\t$link = preg_replace( '|#more-[0-9]+|',"
+   },
+   {
+    "failas": "flatsome/woocommerce/content-product-flipbook.php",
+    "tipas": "php",
+    "fragmentas": "erce_single_product_flipbook_summary' ); ?>\n              <a href=\"<?php the_permalink(); ?>\" class=\"button\"><?php _e( 'Read more', 'woocommerce' ); ?></a>\n         </div>\n        </div>\n</div>"
+   }
+  ],
+  "Checkout steps": [
+   {
+    "failas": "flatsome/languages/uk.l10n.php",
+    "tipas": "php",
+    "fragmentas": "mment'=>'<strong>1</strong> Коментар','<strong>%</strong> Comments'=>'<strong>%</strong> Коментарів','Checkout steps'=>'Кроки оформлення замовлення','Shopping Cart'=>'Кошик','Checkout details'"
+   },
+   {
+    "failas": "flatsome/woocommerce/checkout/header.php",
+    "tipas": "php",
+    "fragmentas": "steps_size', 'h2' ) ),\n\t\tesc_attr( get_theme_mod( 'cart_steps_case', 'uppercase' ) ),\n\t],\n\t'aria-label' => esc_attr__( 'Checkout steps', 'flatsome' ),\n];\n\n// Cart link attributes.\n$cart_atts = [\n\t'href'          => esc_url( wc_get_cart_url("
+   },
+   {
+    "failas": "flatsome/woocommerce/checkout/header-small.php",
+    "tipas": "php",
+    "fragmentas": "text-center is-large',\n\t\tesc_attr( get_theme_mod( 'cart_steps_case', 'uppercase' ) ),\n\t],\n\t'aria-label' => esc_attr__( 'Checkout steps', 'flatsome' ),\n];\n\n// Cart link attributes.\n$cart_atts = [\n\t'href'          => esc_url( wc_get_cart_url("
+   }
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
