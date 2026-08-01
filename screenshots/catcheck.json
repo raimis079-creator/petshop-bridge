@@ -1,0 +1,85 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2042,
+ "rez": {
+  "VERSIJA": "cat-check-v1",
+  "meniu": {
+   "Main": [
+    {
+     "title": "Parduotuvė",
+     "url": "https://dev.avesa.lt/parduotuve/"
+    }
+   ],
+   "Pagrindinis meniu": [
+    {
+     "title": "ŠUNIMS",
+     "url": "https://dev.avesa.lt/kategorija/sunims/"
+    },
+    {
+     "title": "KATĖMS",
+     "url": "https://dev.avesa.lt/kategorija/katems/"
+    },
+    {
+     "title": "GRAUŽIKAMS",
+     "url": "https://dev.avesa.lt/kategorija/grauzikams/"
+    },
+    {
+     "title": "PAUKŠČIAMS",
+     "url": "https://dev.avesa.lt/kategorija/pauksciams/"
+    },
+    {
+     "title": "ŽUVIMS",
+     "url": "https://dev.avesa.lt/kategorija/zuvims/"
+    },
+    {
+     "title": "RINKINIAI",
+     "url": "https://dev.avesa.lt/kategorija/rinkiniai/"
+    },
+    {
+     "title": "PASIŪLYMAI",
+     "url": "https://dev.avesa.lt/pasiulymai/"
+    },
+    {
+     "title": "SPRENDIMAI",
+     "url": "https://dev.avesa.lt/sprendimai/"
+    }
+   ]
+  },
+  "tikrinam": {
+   "sunims": {
+    "product_cat": "https://dev.avesa.lt/kategorija/sunims/",
+    "page": "NERA"
+   },
+   "katems": {
+    "product_cat": "https://dev.avesa.lt/kategorija/katems/",
+    "page": "NERA"
+   },
+   "grauzikams": {
+    "product_cat": "https://dev.avesa.lt/kategorija/grauzikams/",
+    "page": "NERA"
+   },
+   "pauksciams": {
+    "product_cat": "https://dev.avesa.lt/kategorija/pauksciams/",
+    "page": "NERA"
+   },
+   "zuvims": {
+    "product_cat": "https://dev.avesa.lt/kategorija/zuvims/",
+    "page": "NERA"
+   }
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
