@@ -1,0 +1,163 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2057,
+ "info": {
+  "preke": {
+   "id": "34786",
+   "vardas": "FLEXI pavadėlis šuniui Comfort Plus XS juostinis 3m, oranžinis",
+   "kaina": "16.89"
+  },
+  "cart": "https://dev.avesa.lt/cart/",
+  "checkout": "https://dev.avesa.lt/checkout/"
+ },
+ "preke": {
+  "id": "34786",
+  "vardas": "FLEXI pavadėlis šuniui Comfort Plus XS juostinis 3m, oranžinis",
+  "kaina": "16.89"
+ },
+ "krepselis": {
+  "url": "https://dev.avesa.lt/cart/",
+  "tuscias": false,
+  "anglu": {
+   "Menu": 2,
+   "Previous": 1,
+   "Quantity": 1,
+   "Subtotal": 2,
+   "Please enter a valid email": 1,
+   "Free shipping": 2
+  }
+ },
+ "checkout": {
+  "url": "https://dev.avesa.lt/checkout/",
+  "anglu": {
+   "Menu": 2,
+   "Previous": 1,
+   "Quantity": 1,
+   "Subtotal": 2,
+   "Please enter a valid email": 1,
+   "Free shipping": 2
+  },
+  "laukai": 256
+ },
+ "mygtuko_tekstas": "\n\t\t\t\t\t\t\t",
+ "tuscia_forma": {
+  "anglu": {
+   "Menu": 2,
+   "Next": 1
+  },
+  "klaidos": []
+ },
+ "fill_err": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[type=email]').first()\n   ",
+ "blogas_pastas": {
+  "anglu": {
+   "Menu": 2,
+   "Next": 1
+  },
+  "klaidos": []
+ },
+ "js_klaidos": [],
+ "rez": {
+  "irasu": 46,
+  "neisversti": [
+   {
+    "tekstas": "Phone",
+    "domain": "wpforms-lite",
+    "context": null,
+    "saltinis": "gettext",
+    "kiek": 38
+   },
+   {
+    "tekstas": "Total",
+    "domain": "wpforms-lite",
+    "context": null,
+    "saltinis": "gettext",
+    "kiek": 38
+   },
+   {
+    "tekstas": "Product",
+    "domain": "woocommerce",
+    "context": "block title",
+    "saltinis": "ctx",
+    "kiek": 19
+   },
+   {
+    "tekstas": "Subtotal",
+    "domain": "woocommerce",
+    "context": "block title",
+    "saltinis": "ctx",
+    "kiek": 38
+   },
+   {
+    "tekstas": "Shipping",
+    "domain": "woocommerce",
+    "context": "block title",
+    "saltinis": "ctx",
+    "kiek": 38
+   },
+   {
+    "tekstas": "Additional information",
+    "domain": "woocommerce",
+    "context": "block title",
+    "saltinis": "ctx",
+    "kiek": 19
+   },
+   {
+    "tekstas": "%v Add to cart to continue&hellip;",
+    "domain": "woocommerce-mix-and-match-products",
+    "context": "[Frontend]",
+    "saltinis": "ctx",
+    "kiek": 6
+   },
+   {
+    "tekstas": "Loading",
+    "domain": "wpforms-lite",
+    "context": null,
+    "saltinis": "gettext",
+    "kiek": 1
+   },
+   {
+    "tekstas": "This field is required.",
+    "domain": "wpforms-lite",
+    "context": null,
+    "saltinis": "gettext",
+    "kiek": 1
+   },
+   {
+    "tekstas": "Please enter a valid email address.",
+    "domain": "wpforms-lite",
+    "context": null,
+    "saltinis": "gettext",
+    "kiek": 1
+   },
+   {
+    "tekstas": "Next",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "kiek": 18
+   },
+   {
+    "tekstas": "Previous",
+    "domain": "flatsome",
+    "context": null,
+    "saltinis": "gettext",
+    "kiek": 18
+   }
+  ],
+  "isverstu": 34
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
