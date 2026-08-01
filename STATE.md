@@ -116,6 +116,74 @@ tad 65 esami irasai ir prisijungusio kelio augintiniai nepaliesti.
    metodo nera — ISKELTI ji is REST/dashboard callback'o (tas pats principas kaip
    refill feedback).
 
+### ★ 2026-08-01 — LT URL STRUKTURA (S328 p.8 + S329)
+
+**LANDING `/augintinio-profilis/`** — puslapis **34789**, publish, meniu NEIDETAS.
+Turinys: `[petshop_pet_form]` + naudu blokas PUSLAPYJE (ne shortcode klaseje —
+forma lieka universali, landing turinys valdomas atskirai).
+Antrasciu hierarchija: H1 „Augintinio profilis" (Flatsome) / H2 „Papasakokite
+apie savo augintini" (forma) / H3 trys naudos PO forma. Papildomos paantrastes
+VIRS formos NEDETI — buvo trecia antraste ir dubliavimas.
+301 snippet **2025** „Petshop Anketa→Augintinio profilis 301 v1 (LIVE)":
+`/anketa-testas/` -> `/augintinio-profilis/`; panasus URL (`/anketa-testas-kitas/`)
+NEPALIESTI (404).
+
+**S329 — VISA PASKYROS SRITIS LIETUVISKA.**
+```
+/paskyra/                        (buvo /my-account/, puslapis ID 14)
+/paskyra/augintinis/
+/paskyra/uzsakymai/              orders
+/paskyra/uzsakymas/              view-order
+/paskyra/atsisiuntimai/          downloads
+/paskyra/paskyros-duomenys/      edit-account
+/paskyra/adresai/                edit-address
+/paskyra/mokejimo-budai/         payment-methods
+/paskyra/prideti-mokejimo-buda/  add-payment-method
+/paskyra/istrinti-mokejimo-buda/ delete-payment-method
+/paskyra/numatytasis-mokejimo-budas/
+/paskyra/pamirstas-slaptazodis/  lost-password
+/paskyra/atsijungti/             customer-logout
+```
+Puslapio PAVADINIMAS lieka „Mano paskyra" (matomas tekstas), slug — `paskyra`
+(URL yra vieta, ne pasakymas; su endpoint'ais trumpiau skaitosi).
+
+**★ SPASTAI, I KURIUOS IKRITAU:** WooCommerce atsijungimo endpoint'a skaito is
+opcijos **`woocommerce_logout_endpoint`**, NE `woocommerce_myaccount_customer_logout_endpoint`
+kaip visus kitus. Nustacius „teisinga pagal sablona" varda, URL lieka
+`/paskyra/customer-logout/`. Klaidinga opcija pasalinta.
+
+**HARDCODE SUTVARKYTAS** (buvo 8 vietos, is ju tik 4 realus kodas):
+```
+templates/emails/order-paid.php   home_url('/my-account/orders/') -> wc_get_account_endpoint_url('orders')
+includes/class-unsubscribe.php    home_url('/my-account/')        -> wc_get_page_permalink('myaccount')
+assets/pet-profile.js x3          fallback -> '/paskyra/augintinis/'
+assets/product-calc.js            fallback -> '/paskyra/augintinis/'
+```
+PHP vietose dabar DINAMINES funkcijos — slug'o keitimas ju nebelies NIEKADA.
+Backup'ai `.bak_S329`. Likusios 4 vietos — komentarai (class-pet-ui.php:19,
+magic-login:267, account-dashboard:40, snippet 609).
+
+301 snippet **2029** „Petshop MyAccount LT Slug 301 v1 (LIVE)" — pilna endpoint'u
+vertimo lentele + query string issaugojimas. Naudoja `home_url()`, tad veiks ir
+po domeno perjungimo.
+
+**LIKO:** puslapis 34595 „Dazniausiai uzduodami klausimai" turi `/my-account/`
+turinyje — dabar veikia per 301, bet verta pataisyti i tiesiogini `/paskyra/`.
+
+**VISI AKTYVUS 301 SNIPPET'AI (viena administravimo vieta):**
+```
+613  Shop→Parduotuve 301 v1 (LIVE)
+632  Slapuku Politika ES 301 v1 (LIVE)
+634  Brand Slug 301 Catch-All v1 (T-14 aktyvuoti)
+2025 Anketa→Augintinio profilis 301 v1 (LIVE)
+2029 MyAccount LT Slug 301 v1 (LIVE)
+```
+Nauju redirectu NEKELTI i child theme — antraip dvi tiesos vietos ir migruojant
+i petshop.lt viena bus pamirsta.
+
+**PRIES LAUNCH:** senos `/my-account/*` nuorodos gali buti GSC eksporte ir
+isoriniuose saltiniuose — 301 snippet'as 2029 privalo likti aktyvus neterminuotai.
+
 ### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
 
 **BUKLE 2026-07-31 sesijos pabaigoje: viskas svaru, nieko pakibusio.**
