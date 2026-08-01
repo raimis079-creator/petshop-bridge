@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import { chromium } from 'playwright';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
@@ -29,16 +30,36 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('pagecreate.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('pagecheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_pg8=Pg8k3"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
 O.rez=uzk(1);
+const browser = await chromium.launch();
+const ctx = await browser.newContext({viewport:{width:1280,height:1100}, ignoreHTTPSErrors:true});
+const page = await ctx.newPage();
+const errs=[], bad=[];
+page.on('console', m=>{ if(m.type()==='error') errs.push(m.text().slice(0,160)); });
+page.on('response', r=>{ if(r.status()>=400) bad.push(r.status()+' '+r.url().slice(0,120)); });
+try{
+  await page.goto('https://dev.avesa.lt/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
+  await page.waitForTimeout(3000);
+  O.p_url = page.url();
+  O.p_title = await page.title();
+  O.p_body = (await page.locator('body').evaluate(b=>b.className)).slice(0,150);
+  O.p_rusys = await page.getByText('Šuo', {exact:false}).count();
+  O.p_inputai = await page.locator('input, select').count();
+  O.p_h1 = await page.locator('h1').allTextContents();
+  fs.writeFileSync('/tmp/P.png', await page.screenshot({fullPage:true}));
+  O.js_klaidos = errs.slice(0,6); O.http_klaidos = bad.slice(0,6);
+}catch(e){ O.p_err = String(e).slice(0,300); }
+await browser.close();
+try{ putB64('page_anon.png', fs.readFileSync('/tmp/P.png').toString('base64')); }catch(e){}
 
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('pagecreate.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('pagecheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
