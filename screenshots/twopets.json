@@ -1,0 +1,342 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2063,
+ "prep": {
+  "VERSIJA": "two-pets-v1",
+  "istrinta_senu": 0,
+  "user_id": 50,
+  "pets_pries": 65,
+  "ev_pries": 83,
+  "cookie_name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "cookie_value": "ps_two_test|1785618382|ehF6wKUW5kBZPaOfnBSpY2rmXxzMjdwD0ovAkIbxjhN|f9109bdf0c345f836cd8bb62e5017356ba3fb6854e187408713ef1b81df82bc9",
+  "auth_name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "auth_value": "ps_two_test|1785618382|aTzp9x24geInmLhJib9jHhk4gm78ZM53gk5UEZxrgNY|b529f5304987dd37bbac7a9279a429c7cc7dba44d10d3f3e643a1d75399d7a44",
+  "domain": "dev.avesa.lt",
+  "url": "https://dev.avesa.lt/paskyra/augintinis/",
+  "url_create": "https://dev.avesa.lt/paskyra/augintinis/?action=create"
+ },
+ "pirmas": {
+  "zyme": 1,
+  "rusis_matoma": 1,
+  "draft_pries": "",
+  "mygtukas": 1,
+  "mygtuko_tekstas": "Sukurti profilį",
+  "url_po": "https://dev.avesa.lt/paskyra/augintinis/",
+  "draft_po": "(nera draft raktu)",
+  "state_draft_id": "(nepasiekiama)"
+ },
+ "antras_mygtukas_yra": 0,
+ "antras": {
+  "zyme": 2,
+  "rusis_matoma": 1,
+  "e1": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n  - waiting for getByText('Šuo').fi",
+  "e2": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[type=",
+  "draft_pries": "",
+  "mygtukas": 1,
+  "mygtuko_tekstas": "Sukurti profilį",
+  "url_po": "https://dev.avesa.lt/paskyra/augintinis/?action=create",
+  "draft_po": "(nera draft raktu)",
+  "state_draft_id": "(nepasiekiama)"
+ },
+ "antro_kelias": "per ?action=create (UI mygtuko nerasta)",
+ "REST": [
+  {
+   "url": "tent/plugins/petshop-core/assets/pet-form.css?ver=1785264039",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" anketa — M8 (S196) */\n\n.pspet-wrap {\n\tmax-width: 480px;\n\tmargin: 0 auto;\n\tfont-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n\tcolor: #333;\n\tbox-sizing: border-box;\n}\n.pspet-wrap * { box-sizing: border-box; }\n\n/* Progresas */\n.pspet-progress {\n\tdisplay: flex;\n\talign-items: center;\n\tgap: 12px;\n\tmargin-bottom: 20px;\n\tfont-size: 13px;\n\tcolor: #888;\n\tfont-"
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/account.css?ver=1785268237",
+   "status": 200,
+   "body": "/* =====================================================================\n   Petshop — MyAccount navigacija (S211, 2026-07-15)\n\n   Kodel: paskyros sonine navigacija buvo standartinis Woo/Flatsome sablonas\n   (viskas DIDZIOSIOMIS, pilkas siluetas, griezti breziniai) ir salia moderniai\n   atrodancios augintinio anketos atrode kaip is kitos svetaines. Konsultanto\n   sprendimas: perdazyti GLOBALIAI vis"
+  },
+  {
+   "url": "p-content/plugins/petshop-fonts/fonts/OpenSans-Regular.woff2",
+   "status": 200,
+   "body": "wOF2\u0000\u0001\u0000\u0000\u0000\u0000�l\u0000\u0012\u0000\u0000\u0000\u0003>�\u0000\u0000�\u0005\u0000\u0001\u0019�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001a\u001e\u001b8\u001c�F\u0006`\u0000�\u001a\b�\"\t�4\u0011\u0010\n��x��S\u00016\u0002$\u0003�\u001a\u0013��6\u000b�V\u0000\u0004 \u0005�G\u0007�+\f�\t[\u0013\u000f�$x~߷���7��{��H��\u0016\u0011D\u000b\u0017�\u0019\u0003�\u0004\n�A A�6(A��b \"&��E��f\u001dC��\u0000\t�v[���u�)C\u0004���U\u0001�r2\u0015�-\u0017��0�nR6X������������������������������������������w��<_���ο���g�0\u000b3ð\fˌ��b\u0006�((�C\u0016�ie�K\u0006\u0018j�K�e��eV��-\u0016��`\u0014ǁ��%�Ґ�g>���v\u0014KeJ}(�\u00053_��Τ��)�j�Y�Y�45�w5t����\u001e�k<gB ��ȔY�?��\u0000�\r\u0006/\u000fQ��YP��l]�\u000e'��\u0007\u001a�a#�\u0006���\u0016��Q}\u0010L�nI��b�\u0018(��,���7"
+  },
+  {
+   "url": "-content/plugins/petshop-fonts/fonts/OpenSans-Semibold.woff2",
+   "status": 200,
+   "body": "wOF2\u0000\u0001\u0000\u0000\u0000\u0000�$\u0000\u0012\u0000\u0000\u0000\u0003NL\u0000\u0000�\u0000\u0001\u0019�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001a\u001e\u001b8\u001c�F\u0006`\u0000�\u001a\b�&\t�4\u0011\f\n��t��\u0011\u00016\u0002$\u0003�\u001a\u0013��6\u000b�V\u0000\u0004 \u0005�9\u0007�+\f�\u0018[R\u001d�\u001fxZ�n��'��\"�Q�&Ƴx�V@�\u0016�\u0015*�Pz\u0014�@A�� \u001e<\u0014��!Z�u��\f�����q��#��\u0019(uz\f�`�*�_3�eù\u001d�]�x������������������������������������������G-�y^7�x���G\u0006!\t\u0001B`ˈFD\u0014\u0015\u0005DD�*֊ց\u0005E���e�֪\u001dj��h��̸ֶ\u000f��(NRi�X�Ie���,W�B\u0016�<\u0015\"J��=Y1��,)\u0016B�0\u0003l(��ol�4��ij�8\u000e#c����ZC�D\u0011+�Ŕ���\u000b�n厈�����\u001dGF�d��2��dU/���A\u000bF�0\u0010UW�a5�|���\u000e����;�C@뇅\rM�Qȷ�G"
+  },
+  {
+   "url": "t/plugins/petshop-core/assets/calc-handoff.js?ver=1785265514",
+   "status": 200,
+   "body": "/**\n * S289 — PERĖMIMAS IŠ PREKĖS PUSLAPIO ESAMIEMS AUGINTINIAMS.\n *\n * Kelias naujam klientui buvo uždarytas (anketa perima duomenis), o turintis\n * augintinių atsidurdavo sąraše ir jo darbas prapuldavo — mygtukas žadėjo\n * „išsaugoti\", o realiai tik nuvesdavo.\n *\n * PAGRINDINĖ TAISYKLĖ: NIEKO NEPERRAŠOM TYLIAI.\n * Jei profilyje 11 kg, o skaičiuoklėje nurodyta 13 kg — klausiam. Tas pats su\n * mai"
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/pet-form.js?ver=1785264993",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" anketa — M8 v1.5 (S206 dublikatai + S208 redagavimas + S211 produkto tapatybe + foto po prisijungimo) */\n(function(){\n\t'use strict';\n\n\tvar CFG = window.PSPetConfig || {};\n\tvar REST = CFG.restUrl || '/wp-json/petshop/v1';\n\tvar IMAGES = CFG.imagesUrl || '';\n\n\tvar SPECIES_KEY = { dog:'pet-dog', cat:'pet-cat', bird:'pet-bird', rodent:'pet-rodent', fish:'pet-fish', reptile:"
+  },
+  {
+   "url": "nt/plugins/petshop-core/assets/pet-profile.js?ver=1785572258",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" profilio ekranas — M8 v1.4 (S207 perkelimas + S208 redagavimas/trynimas + S210 foto klaidos) */\n(function(){\n\t'use strict';\n\n\tvar CFG = window.PSPetConfig || {};\n\tvar REST = CFG.restUrl || '/wp-json/petshop/v1';\n\tvar NONCE = CFG.nonce || '';\n\tvar IMAGES = CFG.imagesUrl || '';\n\n\tfunction speciesAvatar(species){\n\t\t// Grazina <img> jei yra iliustracija, kitaip emoji fallb"
+  },
+  {
+   "url": "t/wp-content/plugins/petshop-fonts/fonts/OpenSans-Bold.woff2",
+   "status": 200,
+   "body": "wOF2\u0000\u0001\u0000\u0000\u0000\u0000��\u0000\u0012\u0000\u0000\u0000\u0003[8\u0000\u0000�n\u0000\u0001\u0019�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001a\u001e\u001b8\u001c�F\u0006`\u0000�\u001a\b�*\t�`\u0011\f\n��0��V\u00016\u0002$\u0003�\u001a\u0013��6\u000b�V\u0000\u0004 \u0005�\\\u0007�+\f�x[J(�&��}���\u00135� ����S��E\u0004�c� ,QAYX�/(�\u0007e�+\u000b(�\u001e6\u0014<)�\u0014E\u0010!�\u0010]\u0015�A�&�v{8.0���՜fǐV����T�8f��UID;���������������������������������������������Y���{�=������$\u001d\u0019�A��4\u0010h�J\u0001K�,�\n\u0014�Q\u0005�Pd8�IADPP\u0014,���d��\u0007>`�yndQڳ�B/db\u001f�\u0010e�8\u0017�$�\u0004��\u0014P޻\u0015\u0002jɰV���\u001c̽�ڋ�P*'�\\�is�h�T�@�ӡ�5�m�J�\u0016�#g�{�j_��<@e��\r�!\u0017S�\r׊�n\u0016)tmeۘ�4˲F��s��V+��"
+  },
+  {
+   "url": "/wp-content/plugins/petshop-core/assets/images/pet-other.png",
+   "status": 200,
+   "body": "�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0002\u0000\u0000\u0000\u0002\u0000\b\u0006\u0000\u0000\u0000�x��\u0000\u0001\u0000\u0000IDATx���{��WY\u001f\u000e����<{�)�L�\t9\u0007B\u0012P$J\u0005����J���%��}Q�B���V���h��D�\u000b��\u0012���(36r�\u0004\u000b2A93\t\u0010f\u0012 \u0007r��4��ٳ�~�{�u�|�k=;�i2C\u0002\u0004r_~b�\u001c�~���}]�{}\u000f�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�X"
+  },
+  {
+   "url": "-content/plugins/petshop-core/assets/images/pet-bird-96.webp",
+   "status": 200,
+   "body": "RIFF�\b\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH2\u0002\u0000\u0000\u0001?��m\u001b�d��\u001f�=\u0014\"�_h�`3펕o#�*\u000fLr~��-\u0000\u0019�(���0� ۶mC�vD�̲m۶m\u001b����\u0007U͌}⩞\"���I�\u0017WW\u0016�\u0010Q�~��#���>\u001f��#�]��W~�\u0018\u0011+�\r���nD�����y�Ns�\u0005�x�J�'\u000b\u001cDDb�,��\u0014�Xc�K�Dk��\u0016!\u0002�9�\f!\u0002]\f��\b\u001c1�\r�+\u0002��%`>�pA\u0019��\u0018�\u0006։\fC\u000e���a\u001f}\u0018/�[\u0016:\u0006�\u000b�~q0uI���iM��w0���\u001b��T\u001c�r��l%\f�(���3%ǰ�\u0003J�q��\u00015�0KP4\t�r�\u000e`VCQ2\u0001�\u001a�\u001aaUC�\b�j�ڂU\rU�q\u0018�P\u0015�����Y\u0018\rP��`�H�$L�GꞫ`�\u0011Px�w���B�Jm�\u0015�N�/\u001d�E���@�@}�\u0002ʒ\u0014\rV�\u001c��{1t�%M\u0006�+��>tô�' ۤ"
+  },
+  {
+   "url": "p-content/plugins/petshop-core/assets/images/pet-cat-96.webp",
+   "status": 200,
+   "body": "RIFF^\n\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001���m\u001bfʢ�\u0007}!D��:Dt��PZF�\t@�\u0016�JW���C�m[�$�/�Y�m�m[e�����'媸/F=����w,�hw��\u0011�>/�\u0011�)^m;D��ī�\u0012QM��F\u001f���7�!�M%���h�6yk\rќ��]\u0018Խ\u001a�s\bא��c\u0018|��F��\u0010e;�c\u0003z����\u001a<8�w�A\u001f;�ܜ�C�5��x�\u0002��!o-dq�K��|��\u0002o��8ܑ�y�y��{���\u001d�\b\u0016Zq�v\u0017U�[\u0005>l\u0003\u0006��3X���;>���s\u000f��Oi\u0002\u0006KT\u0016�0����\b�L��'��J�n\n\u0006�>��s\u0007�E*�^\u0018�Q�젯\r(\u001d��6�o`��b9��\"���Ǐ)]��/J�<�)���'�(-d O�P�\fy}��V��9j' �\r�����H�,��\u001dj�_��\t�O�\u001d���ځ�,��>��,\f"
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/images/pet-reptile-96.webp",
+   "status": 200,
+   "body": "RIFFR\f\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001ף��$�����3\u0018�����Q \rv\u0002\u000b�I�\u0018�m�6�h�s.sc۶����ضs����rݽ�y����'�gǾG�����޷_��o���\n\u0010�E��\u001eBe����O.�׋\b��w/�}�.�\u00198\\=���\f�{fޞ_�.N��4�۫�畍.��lG���l)�q\u001fZ�(��S\b\r�yN�\u0007�P(����x;��\u001e\u001eRx\u0006�e�\u0014>�@�n)��A�w��wj` �\\���RSQ\u0015D����\t�s]\u00101��\u00142%_�u��@j��1����(\u0004�2T|�A��z�w\u001e�7��L���\bnŭ���}e��qM�\u0014\u001c��\u0004���]՞�S��kj���$G�̬�k�\u0005U3�Ep�~4g�\u001c���%2���픏�����;�vv&���;Y� �X\n��\u0005��K­y���\u00018T|[;�����%ph9��B\u0004"
+  },
+  {
+   "url": "ontent/plugins/petshop-core/assets/images/pet-rodent-96.webp",
+   "status": 200,
+   "body": "RIFFZ\t\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001���m\u001b�g\u001b�\u0017B���M����\u000e�[�Ka�d\u000e,,�\u001bE��\u001cGw�t���6��\u001cffff��\u0014fFٺ�R����QG\u0011�O��ue5����\u000e3|��_�·�k��\u0019��ۗ2�}�F��^�`�\u001e���b��++\u001e8�\u001f�\u0002�S'�\u0012m-G���ۘY�!�d�뱊����\u000e.�\u000b�2�~�^aR��Ӈ�o?\f=_�~����3&�B�Cu7�;T�@�Cu;ԟ�.�z���\u0000�ژ�\u0017��mJ�&�b*?9胏\u0014F��(:�n\u0012&A�\u0001U�\u000e&�\u001b7T},\u000faQ�&CU�[-,ZO�[\u000e`P��¨\u001f\u0006}L���\u00183�}#�\u0017L�cb|�l�r\n�p�����f\u0007i�)��E�V�Q��\u000f�l<�~�A9\u0015S[\u0003]��H��J�rf2�8��,���\u001cdc4�4@��G�9��bZ�\u0017AR�D��\n"
+  },
+  {
+   "url": "-content/plugins/petshop-core/assets/images/pet-fish-96.webp",
+   "status": 200,
+   "body": "RIFF�\u000b\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH\r\u0003\u0000\u0000\u0001ǣ�m#��ş�\u0004\u0011�\r\u0015~�!\u0010X\u0010t\u0001 �F`\u0005Y���mt�$�&i;Xffffff����\u000b�G��4O\u0011�O�?6��8k�#��Y\rBS�ye���=cրaB�@��}�\u000e����Vh��65g��d�\u001d:et��g\"�\f}\u0002g\u0014��(�\u001e�c�6�.��������\u0013\u0013\u001ad�&�\r\u001a\u0014=��K\u0015T��R��\u0005��\tz�J�طC��&�\u0016����tm\u0016\u0014.RJl�1\u0000EYo��8�\u000f%Ӕ\u0018\u0019�C~�\u0016�^�Cz�#�Z�&$��({\u001a��S��\u0000ɹ6e?����`����\"H����h\u0019�\u0019\u0017T�T\bi�\u0001�<� ����+ +/AE��_H��2�\tr*ߩ,\u0016���oT�\nI\u0005I����>��� '���^3 �tx}:�\u0007�$\u00156A�\u001c��+>���Z�\n� Xb�y\u0013D�\u000bU�@p��o��"
+  },
+  {
+   "url": "p-content/plugins/petshop-core/assets/images/pet-dog-96.webp",
+   "status": 200,
+   "body": "RIFF�\t\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001�� \u0000\u0019\u0006[��N���_\u0007���3�O�\u000b-�)Aҭm�[�Qm۶m�LR�ї������~2:���'�+{�\u000bK\nJ��=H�����[��O�N��d�\b)�i؎�_�I{\u001a<~�FU��\"w�C>�������\u0002�W��o\u0017y��m\u001c�I�/�����R���8E�>\u0018\u0015>S\u0015j��d�2g9\u001dzo�K��\u0010��q*##\u0001�3���ޕC\u001c\bQ�X\u0004�K�U&��.��\ndy�!��A��L�h\u0006T5ߴy���wH��b��\\\u001a�C䝊��\u001b�@?m��>�\u0016hs�\u000bقC�D-t=G���B�>N�\u0012(\u000b\"4(�����zh\u000b�(��8w/I�\u001a�\u001f��@_\u0018�Ρ[\t}�K���\u0018\fF\\�N`�>\u0015�.X\u0003��O�b��2�ㇼ���`>�u�oT��\u001e�}�qJ�~�3^�u��\u0010\u000fP�\u0004=\u0010�9Ժ#"
+  },
+  {
+   "url": "content/plugins/petshop-core/assets/images/pet-other-96.webp",
+   "status": 200,
+   "body": "RIFF�\u000e\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0006\u0000\u0000\u0001�C�m����\u0013�����75�oۦHͶ}{��.1 9qwb��[\u0002q�p\t\u000e\u0003#]��^��]U�\\��O\u0011�O�'\\R&\u000b�-)����H�޷��|}\u0002eێ-d��@\u0004y����\t\u000b��\u0016}'��sxC�/��\r�\";���6��<�g�J1�<����c�-MQ�\n�{%�k�;G]�\t��JS�\u0019N�ڃ(�N}2\u000e�(�\u001fE~*�4h����������k��4iD^vi�\u0005�&��G\"C�-�R4�G>��h\u0007�,M���C'�v\u0010�Ҩ\u0012y��\u0016b)\u001aU\"\u000f�4ڄuL�J䡓F� �Ө\u0012yh��s�i����CA�\u0006�8d���_\u0004\u001a��9��{8�s\u001al�cI<���ϫ��:��4h�;I�\u000e8V��㓭�\b\u001e֞d�^�@V\u000bj�XpKR��� �~\u000b�N��\u0001֬�� \n���l\u0013<��}\u0005YK�"
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-profile",
+   "status": 200,
+   "body": "{\"ok\":true,\"pets\":[]}"
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/images/pet-empty-state.png",
+   "status": 200,
+   "body": "�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0002X\u0000\u0000\u0001�\b\u0006\u0000\u0000\u0000r5\u001e�\u0000\u0001\u0000\u0000IDATx���y���Y�\u000b��9�׬vw�?�mɍdc#\u001b��Y\u0010\f\tI\u0015\t�R�\u0004H�*�������M\"�R�[�7#\t�!�I�$#���\u0006\u0012�`@\u0006\u001b�m\tw���H:����f���\u001fsI��Å\u00006��o�3d����k�����y��}\u001e�����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������\"��'����;��\u001a\u001e{�2�1etN�M����_�\u0019�}5=���%�"
+  },
+  {
+   "url": "lt/wp-content/plugins/petshop-core/assets/images/pet-dog.png",
+   "status": 200,
+   "body": "�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0002\u0000\u0000\u0000\u0002\u0000\b\u0006\u0000\u0000\u0000�x��\u0000\u0001\u0000\u0000IDATx���y���u�\u0007~�Z���Ow�w_�'K��m�\u0006,��\u0006��`\u001c\u0002\u0005�J*a@�`�C\u0005�r�\"�Q\u0005҃�\nTFHB �G�J�P�L%\u000e�\f\u001a�$\fv\u0019��\r~��'�鵷=�t��5k�Y̵�}��Ʊ,�����=�����>{�5緁\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013&L�0a\t\u0013"
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-profile",
+   "status": 200,
+   "body": "{\"ok\":true,\"pet_id\":164,\"is_primary\":true,\"pet\":{\"id\":\"164\",\"user_id\":\"50\",\"pet_name\":\"TWOTEST Pirmas\",\"species\":\"dog\",\"species_detail\":null,\"birth_date\":null,\"life_stage\":null,\"dog_size\":null,\"is_sterilised\":null,\"feeding_type\":null,\"feeding_type_other\":null,\"wet_food_g\":null,\"primary_need\":null,\"primary_need_other\":null,\"sensitivities\":null,\"housing\":null,\"current_food_brand\":null,\"current_food_"
+  },
+  {
+   "url": "p-content/plugins/petshop-fonts/fonts/OpenSans-Regular.woff2",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "-content/plugins/petshop-fonts/fonts/OpenSans-Semibold.woff2",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/account.css?ver=1785268237",
+   "status": 200,
+   "body": "/* =====================================================================\n   Petshop — MyAccount navigacija (S211, 2026-07-15)\n\n   Kodel: paskyros sonine navigacija buvo standartinis Woo/Flatsome sablonas\n   (viskas DIDZIOSIOMIS, pilkas siluetas, griezti breziniai) ir salia moderniai\n   atrodancios augintinio anketos atrode kaip is kitos svetaines. Konsultanto\n   sprendimas: perdazyti GLOBALIAI vis"
+  },
+  {
+   "url": "tent/plugins/petshop-core/assets/pet-form.css?ver=1785264039",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" anketa — M8 (S196) */\n\n.pspet-wrap {\n\tmax-width: 480px;\n\tmargin: 0 auto;\n\tfont-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n\tcolor: #333;\n\tbox-sizing: border-box;\n}\n.pspet-wrap * { box-sizing: border-box; }\n\n/* Progresas */\n.pspet-progress {\n\tdisplay: flex;\n\talign-items: center;\n\tgap: 12px;\n\tmargin-bottom: 20px;\n\tfont-size: 13px;\n\tcolor: #888;\n\tfont-"
+  },
+  {
+   "url": "t/plugins/petshop-core/assets/calc-handoff.js?ver=1785265514",
+   "status": 200,
+   "body": "/**\n * S289 — PERĖMIMAS IŠ PREKĖS PUSLAPIO ESAMIEMS AUGINTINIAMS.\n *\n * Kelias naujam klientui buvo uždarytas (anketa perima duomenis), o turintis\n * augintinių atsidurdavo sąraše ir jo darbas prapuldavo — mygtukas žadėjo\n * „išsaugoti\", o realiai tik nuvesdavo.\n *\n * PAGRINDINĖ TAISYKLĖ: NIEKO NEPERRAŠOM TYLIAI.\n * Jei profilyje 11 kg, o skaičiuoklėje nurodyta 13 kg — klausiam. Tas pats su\n * mai"
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/pet-form.js?ver=1785264993",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" anketa — M8 v1.5 (S206 dublikatai + S208 redagavimas + S211 produkto tapatybe + foto po prisijungimo) */\n(function(){\n\t'use strict';\n\n\tvar CFG = window.PSPetConfig || {};\n\tvar REST = CFG.restUrl || '/wp-json/petshop/v1';\n\tvar IMAGES = CFG.imagesUrl || '';\n\n\tvar SPECIES_KEY = { dog:'pet-dog', cat:'pet-cat', bird:'pet-bird', rodent:'pet-rodent', fish:'pet-fish', reptile:"
+  },
+  {
+   "url": "nt/plugins/petshop-core/assets/pet-profile.js?ver=1785572258",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" profilio ekranas — M8 v1.4 (S207 perkelimas + S208 redagavimas/trynimas + S210 foto klaidos) */\n(function(){\n\t'use strict';\n\n\tvar CFG = window.PSPetConfig || {};\n\tvar REST = CFG.restUrl || '/wp-json/petshop/v1';\n\tvar NONCE = CFG.nonce || '';\n\tvar IMAGES = CFG.imagesUrl || '';\n\n\tfunction speciesAvatar(species){\n\t\t// Grazina <img> jei yra iliustracija, kitaip emoji fallb"
+  },
+  {
+   "url": "t/wp-content/plugins/petshop-fonts/fonts/OpenSans-Bold.woff2",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-profile",
+   "status": 200,
+   "body": "{\"ok\":true,\"pets\":[{\"id\":\"164\",\"user_id\":\"50\",\"pet_name\":\"TWOTEST Pirmas\",\"species\":\"dog\",\"species_detail\":null,\"birth_date\":null,\"life_stage\":null,\"dog_size\":null,\"is_sterilised\":null,\"feeding_type\":null,\"feeding_type_other\":null,\"wet_food_g\":null,\"primary_need\":null,\"primary_need_other\":null,\"sensitivities\":null,\"housing\":null,\"current_food_brand\":null,\"current_food_free_text\":null,\"primary_prod"
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-dashboard/164",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "p-content/plugins/petshop-core/assets/images/pet-dog-96.webp",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "-content/plugins/petshop-core/assets/images/pet-dog-192.webp",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "p-content/plugins/petshop-fonts/fonts/OpenSans-Regular.woff2",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "-content/plugins/petshop-fonts/fonts/OpenSans-Semibold.woff2",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/account.css?ver=1785268237",
+   "status": 200,
+   "body": "/* =====================================================================\n   Petshop — MyAccount navigacija (S211, 2026-07-15)\n\n   Kodel: paskyros sonine navigacija buvo standartinis Woo/Flatsome sablonas\n   (viskas DIDZIOSIOMIS, pilkas siluetas, griezti breziniai) ir salia moderniai\n   atrodancios augintinio anketos atrode kaip is kitos svetaines. Konsultanto\n   sprendimas: perdazyti GLOBALIAI vis"
+  },
+  {
+   "url": "tent/plugins/petshop-core/assets/pet-form.css?ver=1785264039",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" anketa — M8 (S196) */\n\n.pspet-wrap {\n\tmax-width: 480px;\n\tmargin: 0 auto;\n\tfont-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n\tcolor: #333;\n\tbox-sizing: border-box;\n}\n.pspet-wrap * { box-sizing: border-box; }\n\n/* Progresas */\n.pspet-progress {\n\tdisplay: flex;\n\talign-items: center;\n\tgap: 12px;\n\tmargin-bottom: 20px;\n\tfont-size: 13px;\n\tcolor: #888;\n\tfont-"
+  },
+  {
+   "url": "t/plugins/petshop-core/assets/calc-handoff.js?ver=1785265514",
+   "status": 200,
+   "body": "/**\n * S289 — PERĖMIMAS IŠ PREKĖS PUSLAPIO ESAMIEMS AUGINTINIAMS.\n *\n * Kelias naujam klientui buvo uždarytas (anketa perima duomenis), o turintis\n * augintinių atsidurdavo sąraše ir jo darbas prapuldavo — mygtukas žadėjo\n * „išsaugoti\", o realiai tik nuvesdavo.\n *\n * PAGRINDINĖ TAISYKLĖ: NIEKO NEPERRAŠOM TYLIAI.\n * Jei profilyje 11 kg, o skaičiuoklėje nurodyta 13 kg — klausiam. Tas pats su\n * mai"
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/pet-form.js?ver=1785264993",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" anketa — M8 v1.5 (S206 dublikatai + S208 redagavimas + S211 produkto tapatybe + foto po prisijungimo) */\n(function(){\n\t'use strict';\n\n\tvar CFG = window.PSPetConfig || {};\n\tvar REST = CFG.restUrl || '/wp-json/petshop/v1';\n\tvar IMAGES = CFG.imagesUrl || '';\n\n\tvar SPECIES_KEY = { dog:'pet-dog', cat:'pet-cat', bird:'pet-bird', rodent:'pet-rodent', fish:'pet-fish', reptile:"
+  },
+  {
+   "url": "nt/plugins/petshop-core/assets/pet-profile.js?ver=1785572258",
+   "status": 200,
+   "body": "/* Petshop \"Mano augintinis\" profilio ekranas — M8 v1.4 (S207 perkelimas + S208 redagavimas/trynimas + S210 foto klaidos) */\n(function(){\n\t'use strict';\n\n\tvar CFG = window.PSPetConfig || {};\n\tvar REST = CFG.restUrl || '/wp-json/petshop/v1';\n\tvar NONCE = CFG.nonce || '';\n\tvar IMAGES = CFG.imagesUrl || '';\n\n\tfunction speciesAvatar(species){\n\t\t// Grazina <img> jei yra iliustracija, kitaip emoji fallb"
+  },
+  {
+   "url": "t/wp-content/plugins/petshop-fonts/fonts/OpenSans-Bold.woff2",
+   "status": 200,
+   "body": ""
+  },
+  {
+   "url": "/wp-content/plugins/petshop-core/assets/images/pet-other.png",
+   "status": 200,
+   "body": "�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0002\u0000\u0000\u0000\u0002\u0000\b\u0006\u0000\u0000\u0000�x��\u0000\u0001\u0000\u0000IDATx���{��WY\u001f\u000e����<{�)�L�\t9\u0007B\u0012P$J\u0005����J���%��}Q�B���V���h��D�\u000b��\u0012���(36r�\u0004\u000b2A93\t\u0010f\u0012 \u0007r��4��ٳ�~�{�u�|�k=;�i2C\u0002\u0004r_~b�\u001c�~���}]�{}\u000f�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�Xc�5�X"
+  },
+  {
+   "url": "-content/plugins/petshop-core/assets/images/pet-dog-192.webp",
+   "status": 200,
+   "body": "RIFF�\u0017\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000�\u0000\u0000�\u0000\u0000ALPH-\u0006\u0000\u0000\u0001�C�m����\u0013�����75�o۶8Ͷ�1�\u0004MHpw�*R����[�(W\u0005�\"���ק��e?��D�?��H�����e|j\"�L��J�׷ϯ��g���\u0015��\\6���h��JP�$�zs��{~�v\u001d*Z��H�O\u0017m�\u0005�P�ػ\u0013����a�%!���\u0018�D�v#�}�Oۿ^=M��d���\u0016���\n�;ճp��MAEH=��܇�>�{�Y=��&�q�u5�3=��a�_)�YG\u000fa�~����lN\t�\u0010l&��\u000bJ�\u001a\u0016�f_�f#���u�LO�`Mzv�k3\t[2�Dپ�J\fC^�g�;Y�������w<��Ì�++a��)0!^�V��n��u��̿,*�ۛ���䅢���B�ۉ�\u0016\u0016�A�=��W�Ӆ\u001a�\u000f\fn8�.�ւ;5�<��:�����>�e\"T�b'x�+\u0005�P\u001a\u0001��PV"
+  },
+  {
+   "url": "p-content/plugins/petshop-core/assets/images/pet-cat-96.webp",
+   "status": 200,
+   "body": "RIFF^\n\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001���m\u001bfʢ�\u0007}!D��:Dt��PZF�\t@�\u0016�JW���C�m[�$�/�Y�m�m[e�����'媸/F=����w,�hw��\u0011�>/�\u0011�)^m;D��ī�\u0012QM��F\u001f���7�!�M%���h�6yk\rќ��]\u0018Խ\u001a�s\bא��c\u0018|��F��\u0010e;�c\u0003z����\u001a<8�w�A\u001f;�ܜ�C�5��x�\u0002��!o-dq�K��|��\u0002o��8ܑ�y�y��{���\u001d�\b\u0016Zq�v\u0017U�[\u0005>l\u0003\u0006��3X���;>���s\u000f��Oi\u0002\u0006KT\u0016�0����\b�L��'��J�n\n\u0006�>��s\u0007�E*�^\u0018�Q�젯\r(\u001d��6�o`��b9��\"���Ǐ)]��/J�<�)���'�(-d O�P�\fy}��V��9j' �\r�����H�,��\u001dj�_��\t�O�\u001d���ځ�,��>��,\f"
+  },
+  {
+   "url": "-content/plugins/petshop-core/assets/images/pet-bird-96.webp",
+   "status": 200,
+   "body": "RIFF�\b\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH2\u0002\u0000\u0000\u0001?��m\u001b�d��\u001f�=\u0014\"�_h�`3펕o#�*\u000fLr~��-\u0000\u0019�(���0� ۶mC�vD�̲m۶m\u001b����\u0007U͌}⩞\"���I�\u0017WW\u0016�\u0010Q�~��#���>\u001f��#�]��W~�\u0018\u0011+�\r���nD�����y�Ns�\u0005�x�J�'\u000b\u001cDDb�,��\u0014�Xc�K�Dk��\u0016!\u0002�9�\f!\u0002]\f��\b\u001c1�\r�+\u0002��%`>�pA\u0019��\u0018�\u0006։\fC\u000e���a\u001f}\u0018/�[\u0016:\u0006�\u000b�~q0uI���iM��w0���\u001b��T\u001c�r��l%\f�(���3%ǰ�\u0003J�q��\u00015�0KP4\t�r�\u000e`VCQ2\u0001�\u001a�\u001aaUC�\b�j�ڂU\rU�q\u0018�P\u0015�����Y\u0018\rP��`�H�$L�GꞫ`�\u0011Px�w���B�Jm�\u0015�N�/\u001d�E���@�@}�\u0002ʒ\u0014\rV�\u001c��{1t�%M\u0006�+��>tô�' ۤ"
+  },
+  {
+   "url": "ontent/plugins/petshop-core/assets/images/pet-rodent-96.webp",
+   "status": 200,
+   "body": "RIFFZ\t\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001���m\u001b�g\u001b�\u0017B���M����\u000e�[�Ka�d\u000e,,�\u001bE��\u001cGw�t���6��\u001cffff��\u0014fFٺ�R����QG\u0011�O��ue5����\u000e3|��_�·�k��\u0019��ۗ2�}�F��^�`�\u001e���b��++\u001e8�\u001f�\u0002�S'�\u0012m-G���ۘY�!�d�뱊����\u000e.�\u000b�2�~�^aR��Ӈ�o?\f=_�~����3&�B�Cu7�;T�@�Cu;ԟ�.�z���\u0000�ژ�\u0017��mJ�&�b*?9胏\u0014F��(:�n\u0012&A�\u0001U�\u000e&�\u001b7T},\u000faQ�&CU�[-,ZO�[\u000e`P��¨\u001f\u0006}L���\u00183�}#�\u0017L�cb|�l�r\n�p�����f\u0007i�)��E�V�Q��\u000f�l<�~�A9\u0015S[\u0003]��H��J�rf2�8��,���\u001cdc4�4@��G�9��bZ�\u0017AR�D��\n"
+  },
+  {
+   "url": "-content/plugins/petshop-core/assets/images/pet-fish-96.webp",
+   "status": 200,
+   "body": "RIFF�\u000b\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH\r\u0003\u0000\u0000\u0001ǣ�m#��ş�\u0004\u0011�\r\u0015~�!\u0010X\u0010t\u0001 �F`\u0005Y���mt�$�&i;Xffffff����\u000b�G��4O\u0011�O�?6��8k�#��Y\rBS�ye���=cրaB�@��}�\u000e����Vh��65g��d�\u001d:et��g\"�\f}\u0002g\u0014��(�\u001e�c�6�.��������\u0013\u0013\u001ad�&�\r\u001a\u0014=��K\u0015T��R��\u0005��\tz�J�طC��&�\u0016����tm\u0016\u0014.RJl�1\u0000EYo��8�\u000f%Ӕ\u0018\u0019�C~�\u0016�^�Cz�#�Z�&$��({\u001a��S��\u0000ɹ6e?����`����\"H����h\u0019�\u0019\u0017T�T\bi�\u0001�<� ����+ +/AE��_H��2�\tr*ߩ,\u0016���oT�\nI\u0005I����>��� '���^3 �tx}:�\u0007�$\u00156A�\u001c��+>���Z�\n� Xb�y\u0013D�\u000bU�@p��o��"
+  },
+  {
+   "url": "ntent/plugins/petshop-core/assets/images/pet-reptile-96.webp",
+   "status": 200,
+   "body": "RIFFR\f\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001ף��$�����3\u0018�����Q \rv\u0002\u000b�I�\u0018�m�6�h�s.sc۶����ضs����rݽ�y����'�gǾG�����޷_��o���\n\u0010�E��\u001eBe����O.�׋\b��w/�}�.�\u00198\\=���\f�{fޞ_�.N��4�۫�畍.��lG���l)�q\u001fZ�(��S\b\r�yN�\u0007�P(����x;��\u001e\u001eRx\u0006�e�\u0014>�@�n)��A�w��wj` �\\���RSQ\u0015D����\t�s]\u00101��\u00142%_�u��@j��1����(\u0004�2T|�A��z�w\u001e�7��L���\bnŭ���}e��qM�\u0014\u001c��\u0004���]՞�S��kj���$G�̬�k�\u0005U3�Ep�~4g�\u001c���%2���픏�����;�vv&���;Y� �X\n��\u0005��K­y���\u00018T|[;�����%ph9��B\u0004"
+  },
+  {
+   "url": "content/plugins/petshop-core/assets/images/pet-other-96.webp",
+   "status": 200,
+   "body": "RIFF�\u000e\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0006\u0000\u0000\u0001�C�m����\u0013�����75�oۦHͶ}{��.1 9qwb��[\u0002q�p\t\u000e\u0003#]��^��]U�\\��O\u0011�O�'\\R&\u000b�-)����H�޷��|}\u0002eێ-d��@\u0004y����\t\u000b��\u0016}'��sxC�/��\r�\";���6��<�g�J1�<����c�-MQ�\n�{%�k�;G]�\t��JS�\u0019N�ڃ(�N}2\u000e�(�\u001fE~*�4h����������k��4iD^vi�\u0005�&��G\"C�-�R4�G>��h\u0007�,M���C'�v\u0010�Ҩ\u0012y��\u0016b)\u001aU\"\u000f�4ڄuL�J䡓F� �Ө\u0012yh��s�i����CA�\u0006�8d���_\u0004\u001a��9��{8�s\u001al�cI<���ϫ��:��4h�;I�\u000e8V��㓭�\b\u001e֞d�^�@V\u000bj�XpKR��� �~\u000b�N��\u0001֬�� \n���l\u0013<��}\u0005YK�"
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-profile",
+   "status": 200,
+   "body": "{\"ok\":true,\"pets\":[{\"id\":\"164\",\"user_id\":\"50\",\"pet_name\":\"TWOTEST Pirmas\",\"species\":\"dog\",\"species_detail\":null,\"birth_date\":null,\"life_stage\":null,\"dog_size\":null,\"is_sterilised\":null,\"feeding_type\":null,\"feeding_type_other\":null,\"wet_food_g\":null,\"primary_need\":null,\"primary_need_other\":null,\"sensitivities\":null,\"housing\":null,\"current_food_brand\":null,\"current_food_free_text\":null,\"primary_prod"
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-dashboard/164",
+   "status": 200,
+   "body": "{\"ok\":true,\"dashboard\":{\"pet\":{\"pet_id\":164,\"pet_name\":\"TWOTEST Pirmas\",\"species\":\"dog\",\"species_detail\":null,\"life_stage\":null,\"dog_size\":null,\"is_sterilised\":null,\"primary_need\":null,\"primary_need_other\":null,\"feeding_type_other\":null,\"wet_food_g\":null,\"feeding_type\":null,\"current_food_brand\":null,\"current_food_free_text\":null,\"photo_url\":null,\"illustration_url\":\"https:\\/\\/dev.avesa.lt\\/wp-conte"
+  },
+  {
+   "url": "p-content/plugins/petshop-core/assets/images/pet-dog-96.webp",
+   "status": 200,
+   "body": "RIFF�\t\u0000\u0000WEBPVP8X\n\u0000\u0000\u0000\u0010\u0000\u0000\u0000_\u0000\u0000_\u0000\u0000ALPH�\u0002\u0000\u0000\u0001�� \u0000\u0019\u0006[��N���_\u0007���3�O�\u000b-�)Aҭm�[�Qm۶m�LR�ї������~2:���'�+{�\u000bK\nJ��=H�����[��O�N��d�\b)�i؎�_�I{\u001a<~�FU��\"w�C>�������\u0002�W��o\u0017y��m\u001c�I�/�����R���8E�>\u0018\u0015>S\u0015j��d�2g9\u001dzo�K��\u0010��q*##\u0001�3���ޕC\u001c\bQ�X\u0004�K�U&��.��\ndy�!��A��L�h\u0006T5ߴy���wH��b��\\\u001a�C䝊��\u001b�@?m��>�\u0016hs�\u000bقC�D-t=G���B�>N�\u0012(\u000b\"4(�����zh\u000b�(��8w/I�\u001a�\u001f��@_\u0018�Ρ[\t}�K���\u0018\fF\\�N`�>\u0015�.X\u0003��O�b��2�ㇼ���`>�u�oT��\u001e�}�qJ�~�3^�u��\u0010\u000fP�\u0004=\u0010�9Ժ#"
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-suggestions/164",
+   "status": 200,
+   "body": "{\"ok\":true,\"results\":[{\"product_id\":25267,\"name\":\"Wanpy skan\\u0117stas \\u0161unims, vytintos vi\\u0161tienos suktinukas, 100 g\",\"sku\":\"WP81091\\/WP\",\"package\":\"100 g\",\"price\":3.99,\"image\":\"https:\\/\\/dev.avesa.lt\\/wp-content\\/uploads\\/2026\\/06\\/b536659c-d058-4ee4-936d-0d64b7f1d796-280x280.png\",\"permalink\":\"https:\\/\\/dev.avesa.lt\\/product\\/wanpy-skanestas-sunims-vytintos-vistienos-suktinukas-100-g\\/\","
+  },
+  {
+   "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-content/164",
+   "status": 200,
+   "body": "{\"ok\":true,\"content\":{\"id\":\"summer_water\",\"title\":\"Kar\\u0161tomis dienomis nepamir\\u0161kite vandens\",\"text\":\"Auk\\u0161toje temperat\\u016broje augintiniui reikia daugiau gerti. \\u0160varus vanduo tur\\u0117t\\u0173 b\\u016bti pasiekiamas vis\\u0105 dien\\u0105.\",\"cta_text\":\"\",\"cta_url\":\"\",\"image_key\":\"summer-water\",\"image_url\":null}}"
+  }
+ ],
+ "js_klaidos": [],
+ "check": {
+  "VERSIJA": "two-pets-v1",
+  "augintiniai": [
+   {
+    "id": "164",
+    "pet_name": "TWOTEST Pirmas",
+    "species": "dog",
+    "status": "active",
+    "client_ref": null,
+    "is_primary": "1",
+    "created_at": "2026-08-01 20:51:31"
+   }
+  ],
+  "kiekis": 1,
+  "pets_viso": 66,
+  "ev_po": 84,
+  "eventai": []
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
