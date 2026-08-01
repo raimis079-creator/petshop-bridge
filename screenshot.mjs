@@ -30,7 +30,7 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('twopets2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('diag.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_tw6=prep"');
@@ -89,27 +89,34 @@ if (A && A.cookie_value) {
     return o;
   }
 
-  // ---- PIRMAS ----
+  // ---- TIK DIAGNOSTIKA: kas MATOMA turint 1 augintini ----
+  await page.goto(A.url, {waitUntil:'domcontentloaded', timeout:60000});
+  await page.waitForTimeout(4000);
+  try{ const b=page.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:4000}); }catch(e){}
+  await page.waitForTimeout(1500);
+  O.profilis = {
+    url: page.url(),
+    matomas_tekstas: (await page.locator('.woocommerce-MyAccount-content, #content').first().innerText().catch(()=>'')).slice(0,1500),
+    matomi_mygtukai: await page.locator('button:visible, a:visible').evaluateAll(els=>els.map(e=>(e.innerText||'').trim()).filter(t=>t && t.length<50)),
+    form_host_yra: await page.locator('#pspet-form-host').count(),
+    form_host_matomas: await page.locator('#pspet-form-host').isVisible().catch(()=>'n/a'),
+  };
+  fs.writeFileSync('/tmp/D1.png', await page.screenshot({fullPage:true}));
+
+  // ---- ?action=create turint augintini ----
   await page.goto(A.url_create, {waitUntil:'domcontentloaded', timeout:60000});
   await page.waitForTimeout(4500);
-  O.pirmas = await anketa('TWOTEST Pirmas', 1);
-  fs.writeFileSync('/tmp/T1.png', await page.screenshot({fullPage:true}));
-
-  // ---- ANTRAS: BE hard reload, jei UI leidzia ----
-  const pridBtn = page.getByText(/Pridėti naują augintinį/i).first();
-  O.antras_mygtukas_yra = await pridBtn.count();
-  if (O.antras_mygtukas_yra) {
-    await pridBtn.click({timeout:12000}).catch(e=>{O.e_prid=String(e).slice(0,140);});
-    await page.waitForTimeout(2500);
-    O.antras = await anketa('TWOTEST Antras', 2);
-    O.antro_kelias = 'be reload';
-  } else {
-    await page.goto(A.url_create, {waitUntil:'domcontentloaded', timeout:60000});
-    await page.waitForTimeout(3000);
-    O.antras = await anketa('TWOTEST Antras', 2);
-    O.antro_kelias = 'per ?action=create (UI mygtuko nerasta)';
-  }
-  fs.writeFileSync('/tmp/T2.png', await page.screenshot({fullPage:true}));
+  O.create_su_augintiniu = {
+    url: page.url(),
+    matomas_tekstas: (await page.locator('.woocommerce-MyAccount-content, #content').first().innerText().catch(()=>'')).slice(0,1200),
+    matomi_mygtukai: await page.locator('button:visible').evaluateAll(els=>els.map(e=>(e.innerText||'').trim()).filter(Boolean)),
+    suo_yra: await page.getByText('Šuo',{exact:false}).count(),
+    suo_matomas: await page.getByText('Šuo',{exact:false}).first().isVisible().catch(()=>'n/a'),
+    form_host_matomas: await page.locator('#pspet-form-host').isVisible().catch(()=>'n/a'),
+    inputu_matomu: await page.locator('input:visible').count(),
+  };
+  fs.writeFileSync('/tmp/D2.png', await page.screenshot({fullPage:true}));
+  for (const n of ['D1','D2']) { try{ putB64('diag_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png').toString('base64')); }catch(e){} }
 
   O.REST = REST;
   O.js_klaidos = errs.slice(0,8);
@@ -139,5 +146,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('twopets2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('diag.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
