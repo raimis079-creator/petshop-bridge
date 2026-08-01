@@ -1,5 +1,4 @@
 import { execSync } from 'child_process';
-import { chromium } from 'playwright';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
@@ -22,57 +21,35 @@ try{
     off.push(s0.id+':'+s0.name); } }
   O.deaktyvuota_TEMP=off;
 }catch(e){ O.valymo_klaida=String(e).slice(0,200); }
-const php=Buffer.from('PD9waHAKLyoqCiAqIFMzMjkgQXV0aCBDb29raWUKICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgICBpZiAoICEgaXNzZXQoJF9HRVRbJ3BzX2F1NyddKSB8fCAkX0dFVFsncHNfYXU3J10gIT09ICdBdTd0MycgKSByZXR1cm47CiAgICBub2NhY2hlX2hlYWRlcnMoKTsgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAgICRyID0gYXJyYXkoJ1ZFUlNJSkEnPT4nYXV0aC12MicpOwogICAgJHUgPSBnZXRfdXNlcl9ieSgnbG9naW4nLCdwc19zMzI5X3Rlc3QnKTsKICAgIGlmICghJHUpIHsKICAgICAgICAkaWQgPSB3cF9pbnNlcnRfdXNlcihhcnJheSgndXNlcl9sb2dpbic9Pidwc19zMzI5X3Rlc3QnLCd1c2VyX2VtYWlsJz0+J3BzX3MzMjlAZGV2LmF2ZXNhLmx0JywKICAgICAgICAgICAgJ3VzZXJfcGFzcyc9PndwX2dlbmVyYXRlX3Bhc3N3b3JkKDI0KSwncm9sZSc9PidjdXN0b21lcicsJ2ZpcnN0X25hbWUnPT4nVGVzdGFzJykpOwogICAgICAgICR1ID0gaXNfd3BfZXJyb3IoJGlkKSA/IG51bGwgOiBnZXRfdXNlcl9ieSgnaWQnLCRpZCk7CiAgICB9CiAgICBpZiAoISR1KSB7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycic9PiduZXBhdnlrbycpKTsgZXhpdDsgfQogICAgJGV4cCA9IHRpbWUoKSs2MDA7CiAgICAkclsndXNlcl9pZCddID0gKGludCkkdS0+SUQ7CiAgICAkclsnY29va2llX25hbWUnXSAgPSBMT0dHRURfSU5fQ09PS0lFOwogICAgJHJbJ2Nvb2tpZV92YWx1ZSddID0gd3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoJHUtPklELCAkZXhwLCAnbG9nZ2VkX2luJyk7CiAgICAkclsnYXV0aF9uYW1lJ10gICAgPSBpc19zc2woKSA/IFNFQ1VSRV9BVVRIX0NPT0tJRSA6IEFVVEhfQ09PS0lFOwogICAgJHJbJ2F1dGhfdmFsdWUnXSAgID0gd3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoJHUtPklELCAkZXhwLCBpc19zc2woKT8nc2VjdXJlX2F1dGgnOidhdXRoJyk7CiAgICAkclsnZG9tYWluJ10gICAgICAgPSBwYXJzZV91cmwoaG9tZV91cmwoKSwgUEhQX1VSTF9IT1NUKTsKICAgICRyWyd1cmxfcGFza3lyYSddICA9IHdjX2dldF9wYWdlX3Blcm1hbGluaygnbXlhY2NvdW50Jyk7CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fVU5FU0NBUEVEX1NMQVNIRVMpOwogICAgZXhpdDsKfSk7Cg==','base64').toString('utf8');
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'S329 Auth Cookie',code:php.replace(/^<\?php\s*/,''),scope:'global',active:true}));
+const php=Buffer.from('PD9waHAKLyoqCiAqIFMzMjkgQWNjb3VudCBIVE1MIENoZWNrCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19obTQnXSkgfHwgJF9HRVRbJ3BzX2htNCddICE9PSAnSG00ejgnICkgcmV0dXJuOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICAkciA9IGFycmF5KCdWRVJTSUpBJz0+J2h0bWwtY2hlY2stdjEnKTsKCiAgICAvLyBNZW5pdSBwdW5rdGFpIGlyIGp1IFRJS1JJIFVSTCdhaSDigJQgaXMgV29vQ29tbWVyY2UsIGthaXAgbWF0byB2YXJ0b3RvamFzCiAgICAkdSA9IGdldF91c2VyX2J5KCdsb2dpbicsJ3BzX3MzMjlfdGVzdCcpOwogICAgaWYgKCR1KSB7IHdwX3NldF9jdXJyZW50X3VzZXIoJHUtPklEKTsgfQogICAgJGl0ZW1zID0gd2NfZ2V0X2FjY291bnRfbWVudV9pdGVtcygpOwogICAgZm9yZWFjaCAoJGl0ZW1zIGFzICRrZXkgPT4gJGxhYmVsKSB7CiAgICAgICAgJHJbJ21lbml1J11bXSA9IGFycmF5KAogICAgICAgICAgICAncmFrdGFzJyA9PiAka2V5LAogICAgICAgICAgICAndXpyYXNhcyc9PiAkbGFiZWwsCiAgICAgICAgICAgICd1cmwnICAgID0+IHdjX2dldF9hY2NvdW50X2VuZHBvaW50X3VybCgka2V5KSwKICAgICAgICApOwogICAgfQogICAgLy8gYXRzaWp1bmdpbW8gbm9uY2UKICAgICRsbyA9IHdjX2dldF9hY2NvdW50X2VuZHBvaW50X3VybCgnY3VzdG9tZXItbG9nb3V0Jyk7CiAgICAkclsnbG9nb3V0X3VybCddID0gJGxvOwogICAgJHJbJ2xvZ291dF90dXJpX25vbmNlJ10gPSAoc3RycG9zKCRsbywnX3dwbm9uY2UnKSAhPT0gZmFsc2UpOwoKICAgIC8vIGFyIG3Fq3PFsyBlbmRwb2ludCdhcyByZWdpc3RydW90YXMgcXVlcnkgdmFycwogICAgJHF2ID0gV0MoKS0+cXVlcnkgPyBXQygpLT5xdWVyeS0+Z2V0X3F1ZXJ5X3ZhcnMoKSA6IGFycmF5KCk7CiAgICAkclsncXVlcnlfdmFycyddID0gJHF2OwogICAgZWNobyB3cF9qc29uX2VuY29kZSgkciwgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTfEpTT05fUFJFVFRZX1BSSU5UKTsKICAgIGV4aXQ7Cn0pOwo=','base64').toString('utf8');
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'S329 Account HTML Check',code:php.replace(/^<\?php\s*/,''),scope:'global',active:true}));
 for(let i=0;i<3 && !sid;i++){
   const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
   let j=null; try{j=JSON.parse(r.out);}catch(e){}
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('accountcheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('htmlcheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
-  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_au7=Au7t3"');
+  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_hm4=Hm4z8"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
 O.rez=uzk(1);
-const A=O.rez;
-if(A && A.cookie_value){
- try{
-  const browser = await chromium.launch();
-  const ctx = await browser.newContext({viewport:{width:1280,height:1000}, ignoreHTTPSErrors:true});
-  await ctx.addCookies([
-    {name:A.cookie_name, value:A.cookie_value, domain:A.domain, path:'/', httpOnly:true, secure:true},
-    {name:A.auth_name,   value:A.auth_value,   domain:A.domain, path:'/', httpOnly:true, secure:true},
-  ]);
-  const page = await ctx.newPage();
-  const errs=[], bad=[];
-  page.on('console', m=>{ if(m.type()==='error') errs.push(m.text().slice(0,140)); });
-  page.on('response', r=>{ if(r.status()>=400) bad.push(r.status()+' '+r.url().slice(0,110)); });
-  await page.goto(SITE+'/paskyra/', {waitUntil:'domcontentloaded', timeout:60000});
-  await page.waitForTimeout(2500);
-  O.p_url = page.url();
-  O.p_body404 = (await page.locator('body').evaluate(b=>b.className)).indexOf('error404')>=0;
-  O.meniu = await page.locator('.woocommerce-MyAccount-navigation a').allTextContents();
-  O.meniu_href = await page.locator('.woocommerce-MyAccount-navigation a').evaluateAll(a=>a.map(x=>x.getAttribute('href')));
-  fs.writeFileSync('/tmp/A1.png', await page.screenshot({fullPage:true}));
-  // uzsakymu endpointas
-  await page.goto(SITE+'/paskyra/uzsakymai/', {waitUntil:'domcontentloaded', timeout:60000});
-  await page.waitForTimeout(2000);
-  O.u_url = page.url();
-  O.u_404 = (await page.locator('body').evaluate(b=>b.className)).indexOf('error404')>=0;
-  // ATSIJUNGIMAS — nonce patikra
-  const lo = O.meniu_href.filter(h=>h && h.indexOf('atsijungti')>=0);
-  O.logout_href = lo;
-  O.logout_turi_nonce = lo.length ? (lo[0].indexOf('_wpnonce')>=0) : null;
-  O.js_klaidos = errs.slice(0,6); O.http_klaidos = bad.slice(0,6);
-  await browser.close();
-  try{ putB64('acc_lt.png', fs.readFileSync('/tmp/A1.png').toString('base64')); }catch(e){}
- }catch(err){ O.BROWSER_ERR = String(err).slice(0,400); }
-}
+sh('sleep 4');
+function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
+O.t_naujas       = code(SITE+'/paskyra/');
+O.t_augintinis   = code(SITE+'/paskyra/augintinis/');
+O.t_uzsakymai    = code(SITE+'/paskyra/uzsakymai/');
+O.t_senas        = code(SITE+'/my-account/');
+O.t_senas_uzsak  = code(SITE+'/my-account/orders/');
+O.t_senas_augint = code(SITE+'/my-account/augintinis/');
+O.t_landing      = code(SITE+'/augintinio-profilis/');
+O.t_home         = code(SITE+'/');
+O.t_shop         = code(SITE+'/parduotuve/');
+
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('accountcheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('htmlcheck.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
