@@ -30,62 +30,128 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('probe6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('js6test.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_kt3=Kt3w7"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
-try{
-  const browser = await chromium.launch();
-  const ctx = await browser.newContext({viewport:{width:1280,height:1100}, ignoreHTTPSErrors:true, locale:'lt-LT'});
+
+const browser = await chromium.launch();
+async function naujas(){
+  const ctx = await browser.newContext({viewport:{width:1280,height:1000}, ignoreHTTPSErrors:true, locale:'lt-LT'});
   const page = await ctx.newPage();
-  const uzkl=[]; page.on('request', r=>{ const u=r.url(); if(u.indexOf('pet-draft')>=0||u.indexOf('magic-login')>=0) uzkl.push(r.method()+' '+u.slice(-40)); });
-  const errs=[]; page.on('console', m=>{ if(m.type()==='error') errs.push(m.text().slice(0,120)); });
-
+  const st = {draft:0, magic:0, klaidos:[]};
+  page.on('request', r=>{ const u=r.url(); if(u.indexOf('/pet-draft')>=0) st.draft++; if(u.indexOf('magic-login/request')>=0) st.magic++; });
+  page.on('console', m=>{ if(m.type()==='error') st.klaidos.push(m.text().slice(0,100)); });
+  return {ctx, page, st};
+}
+async function iEkrana(page, vardas){
   await page.goto(SITE+'/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
-  await page.waitForTimeout(3500);
+  await page.waitForTimeout(3000);
   try{ const b=page.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:4000}); }catch(e){}
-  await page.waitForTimeout(1200);
-
-  O.z1_pradzia = {
-    url: page.url(),
-    matomi_mygtukai: await page.locator('button:visible').evaluateAll(els=>els.map(e=>(e.innerText||'').trim()).filter(t=>t&&t.length<40)).catch(()=>[]),
-    tekstas: (await page.locator('#pspet-form-host, .pspet-wrap, #content').first().innerText().catch(()=>'')).slice(0,500),
-  };
-
-  // 1) rusis
+  await page.waitForTimeout(1000);
+  if (await page.locator('input[type=email]:visible').count()) return true;
   const suo = page.getByText('Šuo', {exact:false}).first();
-  O.z2_suo = await suo.count();
-  if (O.z2_suo) { await suo.click({timeout:15000, force:true}).catch(e=>{O.e_suo=String(e).slice(0,100);}); }
-  await page.waitForTimeout(1500);
-  // 2) vardas
-  const nm = page.locator('input[type=text]:visible').first();
-  await nm.fill('Zondas').catch(e=>{O.e_nm=String(e).slice(0,100);});
-  await page.waitForTimeout(600);
-  O.z3_po_vardo = {
-    mygtukai: await page.locator('button:visible').evaluateAll(els=>els.map(e=>(e.innerText||'').trim()).filter(t=>t&&t.length<40)).catch(()=>[]),
+  if (await suo.count()) await suo.click({timeout:15000, force:true}).catch(()=>{});
+  await page.waitForTimeout(1200);
+  await page.locator('input[type=text]:visible').first().fill(vardas||'Testas').catch(()=>{});
+  await page.waitForTimeout(500);
+  await page.getByRole('button',{name:/Sukurti profilį/i}).first().click({timeout:12000}).catch(()=>{});
+  await page.waitForTimeout(2000);
+  return (await page.locator('input[type=email]:visible').count()) > 0;
+}
+async function siusk(page, email){
+  await page.locator('input[type=email]:visible').first().fill(email);
+  await page.getByRole('button',{name:/Gauti prisijungimo nuorodą/i}).first().click({timeout:12000}).catch(()=>{});
+}
+async function busena(page){
+  return {
+    tekstas: (await page.locator('.pspet-save-box').first().innerText().catch(()=>'')).slice(0,260),
+    status_klase: await page.locator('.pspet-save-status').first().getAttribute('class').catch(()=>null),
+    role: await page.locator('.pspet-save-status').first().getAttribute('role').catch(()=>null),
+    aria: await page.locator('.pspet-save-status').first().getAttribute('aria-live').catch(()=>null),
+    mygtukas_disabled: await page.getByRole('button',{name:/Gauti prisijungimo nuorodą/i}).first().isDisabled().catch(()=>null),
+    ls_draftas: await page.evaluate(()=>{ try{ return !!localStorage.getItem('petshop_pet_draft_v1') || !!Object.keys(localStorage).filter(k=>k.indexOf('draft')>=0 && k.indexOf('srv')<0).length; }catch(e){ return 'ERR'; } }),
+    srv: await page.evaluate(()=>{ try{ return JSON.parse(localStorage.getItem('petshop_pet_srv_draft')||'null'); }catch(e){ return 'ERR'; } }),
   };
-  // 3) toliau kol pasieksim email lauka
-  for (let i=0;i<6;i++){
-    const em = page.locator('input[type=email]:visible');
-    if (await em.count()) { O.z4_email_ekranas = 'pasiektas po '+i+' zingsniu'; break; }
-    const nx = page.getByRole('button', {name:/Toliau|Tęsti|Sukurti profilį|Išsaugoti|Baigti/i}).first();
-    if (!(await nx.count())) { O.z4_email_ekranas = 'mygtuko nera, i='+i; break; }
-    O['z4_paspaustas_'+i] = (await nx.textContent().catch(()=>''))?.trim();
-    await nx.click({timeout:12000}).catch(e=>{O['e_nx'+i]=String(e).slice(0,90);});
-    await page.waitForTimeout(1800);
-  }
-  const em2 = page.locator('input[type=email]:visible');
-  O.z5_email_laukas = await em2.count();
-  O.z5_tekstas = (await page.locator('.pspet-wrap, #pspet-form-host').first().innerText().catch(()=>'')).slice(0,600);
-  O.z5_mygtukai = await page.locator('button:visible').evaluateAll(els=>els.map(e=>(e.innerText||'').trim()).filter(Boolean)).catch(()=>[]);
-  O.uzklausos = uzkl;
-  O.js_klaidos = errs.slice(0,6);
-  fs.writeFileSync('/tmp/Z.png', await page.screenshot({fullPage:true}));
-  await browser.close();
-  try{ putB64('probe6.png', fs.readFileSync('/tmp/Z.png').toString('base64')); }catch(e){}
-}catch(err){ O.BROWSER_ERR=String(err && err.stack ? err.stack : err).slice(0,600); }
+}
+try{
+// ===== T1 sekmingas =====
+{ const {ctx,page,st} = await naujas();
+  O.T1_pasiekta = await iEkrana(page,'T1');
+  await siusk(page,'js6.t1@dev.avesa.lt'); await page.waitForTimeout(5000);
+  O.T1 = Object.assign({draft:st.draft, magic:st.magic}, await busena(page));
+  await ctx.close(); }
+
+// ===== T2 dvigubas paspaudimas =====
+{ const {ctx,page,st} = await naujas();
+  await iEkrana(page,'T2');
+  await page.locator('input[type=email]:visible').first().fill('js6.t2@dev.avesa.lt');
+  const b = page.getByRole('button',{name:/Gauti prisijungimo nuorodą/i}).first();
+  await Promise.all([ b.click({timeout:12000}).catch(()=>{}), b.click({timeout:12000, force:true}).catch(()=>{}) ]);
+  await page.waitForTimeout(5500);
+  O.T2 = {draft:st.draft, magic:st.magic, LAUKTA:'po 1'};
+  await ctx.close(); }
+
+// ===== T3 /pet-draft 400 =====
+{ const {ctx,page,st} = await naujas();
+  await page.route('**/petshop/v1/pet-draft', r=>r.fulfill({status:400, contentType:'application/json', body:JSON.stringify({ok:false,code:'empty_payload'})}));
+  await iEkrana(page,'T3');
+  await siusk(page,'js6.t3@dev.avesa.lt'); await page.waitForTimeout(3500);
+  O.T3 = Object.assign({draft:st.draft, magic:st.magic}, await busena(page));
+  await ctx.close(); }
+
+// ===== T4 429 =====
+{ const {ctx,page,st} = await naujas();
+  await page.route('**/petshop/v1/pet-draft', r=>r.fulfill({status:429, contentType:'application/json', body:JSON.stringify({ok:false,code:'rate_limited'})}));
+  await iEkrana(page,'T4');
+  await siusk(page,'js6.t4@dev.avesa.lt'); await page.waitForTimeout(4500);
+  O.T4 = Object.assign({draft:st.draft, magic:st.magic}, await busena(page));
+  await ctx.close(); }
+
+// ===== T5 tinklo klaida =====
+{ const {ctx,page,st} = await naujas();
+  await page.route('**/petshop/v1/pet-draft', r=>r.abort('failed'));
+  await iEkrana(page,'T5');
+  await siusk(page,'js6.t5@dev.avesa.lt'); await page.waitForTimeout(3500);
+  O.T5 = Object.assign({draft:st.draft, magic:st.magic}, await busena(page));
+  await ctx.close(); }
+
+// ===== T6+T7 draftas OK, magic KRENTA, tada pakartojimas =====
+{ const {ctx,page,st} = await naujas();
+  await page.route('**/petshop/v1/magic-login/request', r=>r.fulfill({status:500, contentType:'application/json', body:'{}'}));
+  await iEkrana(page,'T6');
+  await siusk(page,'js6.t67@dev.avesa.lt'); await page.waitForTimeout(5000);
+  const po1 = await busena(page);
+  O.T6 = {draft:st.draft, magic:st.magic, srv_draft_id: po1.srv && po1.srv.draft_id, tekstas: po1.tekstas, mygtukas_disabled: po1.mygtukas_disabled};
+  // PAKARTOJIMAS
+  await siusk(page,'js6.t67@dev.avesa.lt'); await page.waitForTimeout(5000);
+  const po2 = await busena(page);
+  O.T7 = {draft:st.draft, magic:st.magic, srv_draft_id: po2.srv && po2.srv.draft_id,
+          tas_pats: !!(po1.srv && po2.srv && po1.srv.draft_id === po2.srv.draft_id),
+          LAUKTA:'draft LIEKA 1, magic 2, tas pats draft_id'};
+  await ctx.close(); }
+
+// ===== T8 forma pakeista po serverinio drafto =====
+{ const {ctx,page,st} = await naujas();
+  await iEkrana(page,'T8-pirmas');
+  await siusk(page,'js6.t8@dev.avesa.lt'); await page.waitForTimeout(5000);
+  const a = await busena(page);
+  // griztam i forma ir keiciam varda
+  await page.goto(SITE+'/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
+  await page.waitForTimeout(3000);
+  const tesk = page.getByRole('button',{name:/Tęsti|Pradėti iš naujo|Redaguoti/i}).first();
+  O.T8_tesimo_mygtukas = await tesk.count();
+  const inp = page.locator('input[type=text]:visible').first();
+  if (await inp.count()) { await inp.fill('T8-PAKEISTAS'); await page.waitForTimeout(800); }
+  O.T8_dirty_po_keitimo = await page.evaluate(()=>{ try{ const s=JSON.parse(localStorage.getItem('petshop_pet_srv_draft')||'null'); return s? s.dirty : 'nera'; }catch(e){ return 'ERR'; } });
+  O.T8 = {draft_pries: a && 1, dirty: O.T8_dirty_po_keitimo, LAUKTA:'dirty=true -> kitas submit kurs NAUJA drafta'};
+  await ctx.close(); }
+
+}catch(err){ O.BROWSER_ERR=String(err && err.stack ? err.stack : err).slice(0,700); }
+await browser.close();
+
 sh('sleep 4');
 function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
 O.t_naujas       = code(SITE+'/paskyra/');
@@ -105,5 +171,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('probe6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('js6test.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
