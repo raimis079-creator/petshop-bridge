@@ -1102,6 +1102,105 @@ augintinis" ar „naujas", DAR NERA. Iki tol vartotojas mato tik `?pet_claim=
 duplicate_candidate` uzuomina. **UI ir busimas sprendimo endpoint'as PRIVALO
 remtis TIK serverio busena, susieta su prisijungusiu `user_id`, NE query parametru.**
 
+### ★★ S339 — NEBAIGTAS pet-form.js PAKEITIMAS RASTAS SERVERYJE (2026-08-02)
+
+```
+S339 nebaigtas pet-form.js pakeitimas rastas serveryje.
+KILME NEPATVIRTINTA.
+Failas issaugotas karantine ir atstatytas i pries S339 buvusi backup.
+6 punkto implementacija pradedama IS NAUJO nuo patikrinto baseline.
+```
+
+**FAKTAI (be interpretaciju):**
+```
+pet-form.js           79 550 B  mtime 2026-08-02 11:12:02  sha 193cde03ae2c6963…
+pet-form.js.bak_S339  72 935 B  mtime 2026-08-02 11:12:02  sha 807fea80f45fccf4…
+```
+Failas pasikeite TARP dvieju to paties seanso recon'u (72 935 -> 79 550).
+Backup'o pavadinimas atitinka `.bak_S<numeris>` konvencija, o kodo stilius —
+lietuviski komentarai be diakritiku. **Is to galima SPRESTI, kad pakeitimas
+atsirado S339 metu, bet NEGALIMA IRODYTI, kas ji irase.** Dokumentuojama
+kaip NEPATVIRTINTA KILME.
+
+**KODEL ATKURTA, o ne taisyta ant virsaus** — nebaigtas kodas NEATITIKO
+uzrakintos sutarties:
+```
+alert(          2  <- turejo buti PASALINTAS visiskai
+role="alert"    0  <- privalomas klaidu blokui
+aria-live       3
+single-flight   2
+pet-draft       7
+testu           NERA
+```
+
+**ATKURIMO PROCEDURA (ivykdyta):**
+```
+1 karantinas    pet-form.js.quarantine_S339_20260802 (79 550 B, sha sutikrintas)
+                DABARTINIS FAILAS NETRINTAS
+2 SHA-256       abieju failu uzrasyti (zr. auksciau)
+3 atkurimas     ATOMINIS: copy -> tmp -> rename
+4 patikra       dydis 72 935 ✓ · SHA sutampa su backup ✓
+                node --check SINTAKSE_OK · serviruojamas 72 935 B
+                anketa atsidaro („Suo" matomas, 2 laukai, 4 mygtukai)
+                autosave veikia (localStorage `pspet_draft` 342 B su testiniu vardu)
+                JS klaidu 0 · S339 pedsaku 0 (pet-draft 0, SRV_DRAFT_KEY 0)
+```
+
+**★ PILNAS CALL-SITE PERSKAICIAVIMAS (ankstesnis buvo APKARPYTAS ties 14 irasu
+ir todel KLAIDINGAS — „clearDraft niekada nekvieciamas" NEBUVO TIESA):**
+```
+clearDraft        apibrezta 115 · KVIECIAMA 1295, 1456, 1615   (3 call-site'ai)
+requestMagicLink  apibrezta 1479 · kvieciama 1444              (1 call-site'as)
+alert(            4 vietos:
+                    230, 231  anketos validacija — NE sio srauto dalis, NELIESTI
+                    1480, 1491  magic srautas — ABI keiciamos 6 punkte
+saveDraft         26 paminejimu, `oninput`, BE debounce
+```
+
+**6 PUNKTO BASELINE:** `pet-form.js` 72 935 B, sha256
+`807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e`.
+Pries rasant PATIKRINTI, kad failas vis dar sio dydzio ir sio SHA.
+
+### ★ 6 PUNKTO UZRAKINTA ELGSENA (Raimis 2026-08-02)
+```
+1 Forma pildoma            -> localStorage TIK vietinis cache
+2 „Tesiu / gauti nuoroda"  -> POST /pet-draft
+3 TIK gavus 201+draft_id   -> draft_id i vietini cache
+                           -> POST magic-login/request su tuo draft_id
+4 TIK priemus magic-login  -> „Patikrinkite el. pasta"
+```
+**Jei /pet-draft NEISSAUGOMAS — magic link AUTOMATISKAI NESIUNCIAMAS.** Kitaip
+sukurtume butent ta klaida, kuria S328 turi pasalinti: zmogus manytu, kad anketa
+bus perkelta, bet prisijunges jos NERASTU.
+```
+400 / 413   magic link NESIUNCIAMAS · duomenys islieka · KONKRETUS pataisomas
+            pranesimas · mygtukas vel aktyvus
+429         NESIUNCIAMAS · duomenys islieka · BENDRINIS „Per daug bandymu,
+            pabandykite veliau" · JOKIO automatinio kartojimo ciklo
+tinklas/500 NESIUNCIAMAS · duomenys islieka · „Nepavyko issaugoti anketos.
+            Bandykite dar karta" · mygtukas vel aktyvus
+```
+**KRITINIS NIUANSAS:** jei `/pet-draft` JAU grazino `draft_id`, o sugedo TIK
+`magic-login/request` — pakartojimas naudoja TA PATI issaugota `draft_id`, NE
+kuria nauja. Kitaip greitai atsitrenktume i `5/email/val.` limita.
+Vietiniame cache: `draft_id`, `draft_email`, payload fingerprint / dirty vėliava.
+Pakeitus anketa po serverinio issaugojimo — `dirty`, kita karta NAUJAS draftas.
+**`saveDraft()` autosave NEGALI kviesti `/pet-draft`** kiekvieno lauko pakeitimo
+metu — serverinis draftas kuriamas TIK galutiniame veiksme.
+
+**COMMIT'O APIMTIS:**
+```
+/pet-draft tik galutiniame veiksme · single-flight + disabled/loading
+po 201 -> magic-login/request su draft_id · INLINE error/success vietoje alert()
+400/413/429/500/network SKIRTINGI pranesimai · magic-link klaida -> draft_id islieka
+pakeitus payload ar email senas draft_id nebenaudojamas
+localStorage NEISVALOMAS vien del nuorodos issiuntimo
+```
+**★ `clearDraft()` SAMONINGAI NEKVIECIAMAS** siame commit'e. Vietine kopija lieka,
+kol NERA serveriu patvirtinto sekmingo claim'o. Tai SPRENDIMAS, ne spraga.
+**`alert()` sisame sraute salinamas VISISKAI.** Klaidu blokas prie mygtuko su
+`role="alert"`; loading/success busenoms `aria-live="polite"`.
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
