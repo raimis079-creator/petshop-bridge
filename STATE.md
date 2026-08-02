@@ -517,19 +517,19 @@ source_draft_id atkurtoms NULL · client_ref 1 eilute, dublikatu 0 · TEMP aktyv
 
 | # | Kriterijus | Busena | Data | Irodymas |
 |---|---|---|---|---|
-| 1 | P0 funkcijos F1-F16 100% | 🟡 ~95% | 2026-08-02 | atviri F4, F14 (zr. zemiau) |
+| 1 | P0 funkcijos F1-F16 100% | 🔴 F4 NEVEIKIA | 2026-08-02 | SKU/EAN paieska 0 rezultatu (auditas R1) |
 | 2 | Kritiniu klaidu 0 | ⚪ nematuota | — | NERA formalaus bug registro |
 | 3 | Auksto prioriteto klaidu <=3 | ⚪ nematuota | — | tas pats |
-| 4 | 20 testiniu uzsakymu | 🔴 | — | desktop/mobile/svecias/registruotas |
+| 4 | 20 testiniu uzsakymu | 🔴 | 2026-08-02 | DB: 2 uzsakymai is viso |
 | 5 | 2 stabilus pristatymo budai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | 6 | Paysera + bankinis | ✅ | 2026-06-01 | DoD #6 TZ v1.x |
 | 7 | Top 100 SEO 301 | 🔴 | — | 44 URL=404, 20,5% srauto; analize/gsc_pages.json |
-| 8 | Backup restore testas | 🔴 | — | i staging |
-| 9 | XML sync 7 d. be klaidu | 🟡 | — | importai veikia, 7 d. serija nefiksuota |
+| 8 | Backup restore testas | 🔴 | 2026-08-02 | 0 backup plugin'u serveryje (auditas R3) |
+| 9 | XML sync 7 d. be klaidu | 🟡 | 2026-08-02 | Import #2/#3/#5/#7 suko 08-02; 7 d. serija nefiksuota |
 | 10 | Kainodara testuota 20 produktu | 🟡 | 2026-07-30 | ZB recon darytas, formalaus testo nera |
 | 11 | Manual override 5 produktais | 🔴 | 2026-07-30 | `_manual_price_override=yes`: 0 prekiu |
 | 12 | Savininkas apdoroja uzsakyma be programuotojo | 🟡 | — | neformalizuota |
-| 13 | Post-launch monitoringas | 🔴 | — | 404/mokejimai/uzsakymai/uptime/XML logs |
+| 13 | Post-launch monitoringas | 🔴 | 2026-08-02 | 0 monitoringo plugin'u (auditas R4) |
 | 14 | Mail-Tester >=8/10 | ✅ | 2026-07-30 | 8,5/10 (TZ v1.60) |
 | 15 | GDPR atitiktis | ✅ | 2026-07-10 | Complianz v7.5.0 + 8 legal puslapiai |
 | 16 | VMI saskaitos su realia transakcija | ✅ | 2026-06 | AVPN/IAPV testuota |
@@ -598,6 +598,104 @@ consent_changed 24 · order_shipped 19 · cart_abandoned 10 · refill_due 3.
 darbu organizavimas, as manau dar daug visko islys, o laikas greitai bega".
 Del to sis registras ir atsirado. **KIEKVIENA nauja rasta spraga rasoma CIA,
 ne tik sesijos naratyve.**
+
+### ★★★ TZ AUDITAS 2026-08-02 — SESI NAUJI RADINIAI
+
+> Kiekvienas skaicius PATIKRINTAS SERVERYJE. Kur matavimas buvo nepatikimas —
+> pakartotas kitu metodu (pvz. HTML korteliu skaitiklis netiko temai -> WP_Query).
+
+#### 🔴 R1. F4 — SKU IR EAN PAIESKA NEVEIKIA (P0!)
+Patikrinta WP_Query realiais duomenimis (preke 32622, SKU `01DOG0101`, EAN `3830089140017`):
+```
+pavadinimas „Josera"        -> 158 rezultatai   VEIKIA
+SKU „01DOG0101"             ->   0 rezultatu    NEVEIKIA
+EAN „3830089140017"         ->   0 rezultatu    NEVEIKIA
+```
+TZ §4.1 F4 reikalauja: „Standartine WP/Woo paieska + TIKSLINIS SKU/EAN paieska".
+Antroji dalis NEIGYVENDINTA — nera nei plugin'o, nei `posts_search` kabliuko kode.
+POVEIKIS: klientas su pakuote rankoje pagal barkoda NIEKO NERANDA; taip pat admin'e.
+**Buvo TZ nuo v1.0, NIEKADA netikrinta.**
+
+#### 🔴 R2. 1518 IS 2764 PUBLISH PREKIU BE EAN (55%)
+```
+publish 2764 · su EAN 1246 (45%) · BE EAN 1518 (55%)
+```
+EAN dviejuose raktuose: `_global_unique_id` (1455) + `_ean` (1475), persidengia.
+TZ §4.2 EAN = P0 identifikacijos atributas.
+POVEIKIS: neveiks Google Merchant Center feed (TZ v1.56: „PMax veikia BE feed'o,
+nuostolis ~10k/metus"); Kaina24/Kainos.lt kokybe; SEO prekiu matching'as.
+**SPRENDIMAS RAIMIO: is kur imti? ar ZB/VF feed'ai turi barkodus?**
+
+#### 🔴 R3. BACKUP PLUGIN'O NERA (DoD #8)
+```
+aktyvus backup plugin'ai  0
+_bak_ lenteles DB        16  (MUSU rankiniai, ne sistema)
+```
+DoD #8 reikalauja backup RESTORE testo i staging — nera ko restore'inti automatiskai.
+
+#### 🔴 R4. MONITORINGO PLUGIN'U NERA (DoD #13)
+Nulis uptime/404/klaidu monitoringo. Redirection v5.8.1 idiegtas, bet NEAKTYVUS.
+
+#### 🔴 R5. 5 PUBLISH PREKES BE KAINOS
+`FARMINA N&D PRIME CAT` · `FARMINA N&D TROPICAL DOG` · `GIMCAT GRAS BITS 425G` ·
+`Exclusion Hypo triusis` · `Truly Sushi` — MATOMOS pirkejui, bet nusipirkti NEGALIMA.
+
+#### 🟡 R6. 1022 DRAFT PREKES — REIKIA SPRENDIMO
+```
+be _legacy_source   564
+excel_v2_20260604   393  (Legacy V2 importas)
+zb_trash_conversion  65
+is ju VF            170
+```
+Ar jos kada nors bus publish? Jei ne — kraunasi i kiekviena uzklausa, gadina statistika.
+
+### ✅ AUDITO PATVIRTINTA VEIKIANT (2026-08-02)
+```
+F1   Woo 10.9.4 · WP 6.9.4 · PHP 8.3.20
+F2   2764 publish · be kategorijos 0 · be SKU 2 · be nuotraukos 44 (dauguma DP rinkiniai)
+F3   80 kategoriju, max gylis 3 (TZ riba <=3)
+F5   YITH aktyvus
+F8   paysera + bacs
+F9   3 zonos, 11 aktyviu metodu (Venipak + LP Express)
+F30b atsiliepimai IJUNGTI, verified-only, ratings — 0 atsiliepimu (Q19 neatsakytas)
+DoD9 Import #2/#3/#5/#7 VISI suko 2026-08-02 (cron gyvas)
+DoD22 blog_public=0 (teisinga dev'ui, perjungti launch'e)
+Serimas 548 prekes su lentele
+Pluginu 26 aktyvus
+```
+
+### 🔴 AUDITO PATVIRTINTA, KAD NEPADARYTA
+```
+DoD4  20 testiniu uzsakymu    -> DB: 2 uzsakymai (1 completed, 1 pending)
+DoD11 manual override 5 prek. -> 1 preke su _manual_price_override=yes
+F19   prenumerata             -> 0 subscription plugin'u, 0 subscription prekiu
+```
+
+### ★ KA AUDITAS PASAKE APIE PROCESA
+Trys is sesiu radiniu (**F4, EAN, backup**) yra TZ punktai, egzistuojantys
+dokumente NUO v1.0, bet NIEKADA netikrinti. Jie nebuvo „pamirsti" — jie niekada
+nebuvo nei pazymeti padarytais, nei paneigti; sesijos dirbo su tuo, kas buvo
+PRIES AKIS. DoD registras tai uzdaro TIK jei kiekvienas punktas turi IRODYMA.
+
+### PRIORITETAI (siulymas 2026-08-02)
+```
+GRUPE A — greitos pataisos (valandos)
+  1. 5 prekes be kainos          iskart, prekiaujama netinkamai
+  2. F4 SKU/EAN paieska          vienas filtras, P0 reikalavimas
+  3. Backup plugin'as            + pirmas restore testas (DoD #8)
+  4. Monitoringas                uptime + 404 (Redirection jau idiegtas)
+
+GRUPE B — REIKIA RAIMIO SPRENDIMO
+  5. 1518 prekiu be EAN          is kur imti?
+  6. 1022 draft prekes           publish / trinti / palikti?
+  7. F19 prenumerata             Q10 (SKU) + Q6 (pluginas) BLOKUOJA
+  8. SEO 44 URL                  20,5% srauto
+
+GRUPE C — procesas (dienos)
+  9. 20 testiniu uzsakymu · 10. Beta testas 5-10 klientu
+  11. DNS + rollback planai · 12. Savaitinis stabilumo monitoringas
+  13. 12 trukstamu laisku sablonu
+```
 
 ### P0 FUNKCIJOS — REALIAI ATVIRI TIK DU
 ```
