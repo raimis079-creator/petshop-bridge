@@ -1,0 +1,42 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2105,
+ "rez": {
+  "VERSIJA": "js-block-v1",
+  "sha256": "193cde03ae2c69635a10019e1c1d5fd1a0d6115016511c26f00bd5fc018747fb",
+  "dydis": 79550,
+  "blokas_1400_1500": "\n\t\troot.innerHTML = '';\n\t\tvar wrap = el('div', 'pspet-wrap');\n\t\tvar name = state.data.pet_name || 'augintinis';\n\n\t\tvar illust = el('div', 'pspet-illustration');\n\t\tillust.innerHTML = speciesIcon();\n\t\twrap.appendChild(illust);\n\n\t\twrap.appendChild(el('h2', 'pspet-title', 'Panašu, kad „' + name + '“ jau turite'));\n\t\twrap.appendChild(el('p', 'pspet-subtitle', 'Radome tokio pat vardo ir rūšies profilį. Atnaujinti jį ar tai kitas augintinis?'));\n\n\t\tstate.duplicates.forEach(function(c){\n\t\t\tvar card = el('div', 'pspet-dup-card');\n\t\t\tcard.style.border = '1px solid #E0E0E0';\n\t\t\tcard.style.borderRadius = '8px';\n\t\t\tcard.style.padding = '16px';\n\t\t\tcard.style.marginBottom = '12px';\n\n\t\t\tvar meta = [];\n\t\t\tif (SPECIES[c.species]) meta.push(SPECIES[c.species].label);\n\t\t\tif (c.has_photo) meta.push('su nuotrauka');\n\t\t\tif (c.created_at) meta.push('sukurta ' + String(c.created_at).slice(0, 10));\n\n\t\t\tvar nm = el('div', null, c.pet_name || '(be vardo)');\n\t\t\tnm.style.fontWeight = '600';\n\t\t\tnm.style.marginBottom = '4px';\n\t\t\tcard.appendChild(nm);\n\n\t\t\tvar mt = el('div', null, meta.join(' · '));\n\t\t\tmt.style.fontSize = '14px';\n\t\t\tmt.style.color = '#666';\n\t\t\tmt.style.marginBottom = '12px';\n\t\t\tcard.appendChild(mt);\n\n\t\t\tvar btn = el('button', 'pspet-btn pspet-btn-primary', 'Atnaujinti šį profilį');\n\t\t\tbtn.onclick = function(){\n\t\t\t\tvar p = buildPayload();\n\t\t\t\tp.pet_id = c.id;\n\t\t\t\tpostProfile(p);\n\t\t\t};\n\t\t\tcard.appendChild(btn);\n\t\t\twrap.appendChild(card);\n\t\t});\n\n\t\tvar actions = el('div', 'pspet-actions');\n\t\tvar addNew = el('button', 'pspet-btn pspet-btn-secondary', 'Ne, tai kitas augintinis');\n\t\taddNew.onclick = function(){\n\t\t\tvar p = buildPayload();\n\t\t\tp.force_new = 1;\n\t\t\tpostProfile(p);\n\t\t};\n\t\tactions.appendChild(addNew);\n\t\twrap.appendChild(actions);\n\n\t\tvar cancel = el('button', 'pspet-skip', 'Grįžti atgal');\n\t\tcancel.onclick = function(){ state.step = 2; render(); };\n\t\twrap.appendChild(cancel);\n\n\t\troot.appendChild(wrap);\n\t}\n\n\tfunction renderResult(){\n\t\troot.innerHTML = '';\n\t\tvar wrap = el('div', 'pspet-wrap');\n\t\tvar name = state.data.pet_name || 'Jūsų augintinis';\n\n\t\t// #5 (IA v1.1): anonimui tarpinis zingsnis lieka TIK del el. pasto ir magic-link.\n\t\t// Jokio \"profilis sukurtas\" sekmes ekrano, jokios nuotraukos kaip pagrindinio veiksmo.\n\t\tif (!IS_LOGGED_IN) {\n\t\t\tvar header = el('div', 'pspet-result-header');\n\t\t\tvar avatar = el('div', 'pspet-result-avatar');\n\t\t\tavatar.innerHTML = speciesIcon();\n\t\t\theader.appendChild(avatar);\n\t\t\theader.appendChild(el('h2', 'pspet-result-name', 'Išsaugokite augintinio profilį'));\n\t\t\theader.appendChild(el('p', 'pspet-result-meta', name + ' \\u00b7 ' + resultMeta()));\n\t\t\twrap.appendChild(header);\n\n\t\t\tvar saveBox = el('div', 'pspet-save-box');\n\t\t\tsaveBox.appendChild(el('div', 'pspet-save-sub', 'Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą.'));\n\t\t\tvar row = el('div', 'pspet-save-row');\n\t\t\tvar email = el('input', 'pspet-input');\n\t\t\temail.type = 'email';\n\t\t\temail.placeholder = 'jusu@email.lt';\n\t\t\tvar btn = el('button', 'pspet-btn pspet-btn-primary', 'Gauti prisijungimo nuorodą');\n\t\t\tbtn.style.flex = '0 0 auto';\n\t\t\tbtn.onclick = function(){ requestMagicLink(email.value, saveBox, btn); };\n\t\t\t// Enter laukelyje — tas pats kelias, tas pats single-flight uzraktas.\n\t\t\temail.onkeydown = function(ev){\n\t\t\t\tif (ev && (ev.key === 'Enter' || ev.keyCode === 13)) {\n\t\t\t\t\tev.preventDefault();\n\t\t\t\t\trequestMagicLink(email.value, saveBox, btn);\n\t\t\t\t}\n\t\t\t};\n\t\t\trow.appendChild(email); row.appendChild(btn);\n\t\t\tsaveBox.appendChild(row);\n\t\t\twrap.appendChild(saveBox);\n\n\t\t\twrap.appendChild(el('p', 'pspet-note', 'Juodraštis saugomas 30 dienų šioje naršyklėje.'));\n\t\t\tvar skip = el('button', 'pspet-skip', 'Praleisti, kol kas neišsaugoti');\n\t\t\tskip.onclick = function(){ if (CFG.homeUrl) window.location.href = CFG.homeUrl; };",
+  "draft_funkcijos": "\n\tvar root = null;\n\n\t// --- localStorage juodraštis ---\n\tfunction saveDraft(){\n\t\tif (IS_LOGGED_IN) return; // prisijungęs — saugom į DB, ne localStorage\n\t\tvar now = Date.now();\n\t\tvar draft = {\n\t\t\tschema_version: 2,\n\t\t\tdraft_id: state.data.draft_id || genId(),\n\t\t\tcreated_at: state.data.created_at || new Date(now).toISOString(),\n\t\t\texpires_at: new Date(now + DRAFT_TTL_DAYS*86400000).toISOString(),\n\t\t\tcurrent_step: state.step,\n\t\t\t// v2 (2026-07-24): anketos ETAPO eiga — kad po F5 vartotojas testu ten,\n\t\t\t// kur baigė, o ne pamatytu vel tuscia zieda ir 1-a sekcija.\n\t\t\tsection_idx: (state.sectionIdx != null) ? state.sectionIdx : 0,\n\t\t\tconfirmed_sections: state.confirmedSections || [],\n\t\t\tpet_data: state.data\n\t\t};\n\t\tstate.data.draft_id = draft.draft_id;\n\t\tstate.data.created_at = draft.created_at;\n\t\ttry { localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); } catch(e){}\n\t\t// S339: bet koks anketos pakeitimas paskelbia serverini drafta pasenusiu.\n\t\tsrvDraftMarkDirty();\n\t}\n\tfunction loadDraft(){\n\t\ttry {\n\t\t\tvar raw = localStorage.getItem(DRAFT_KEY);\n\t\t\tif (!raw) return null;\n\t\t\tvar draft = JSON.parse(raw);\n\t\t\tif (new Date(draft.expires_at).getTime() < Date.now()) {\n\t\t\t\tlocalStorage.removeItem(DRAFT_KEY);\n\t\t\t\treturn null;\n\t\t\t}\n\t\t\treturn draft;\n\t\t} catch(e){ return null; }\n\t}\n\tfunction clearDraft(){ try { localStorage.removeItem(DRAFT_KEY); } catch(e){} }\n\tfunction genId(){ return 'd_' + Math.random().toString(36).slice(2) + Date.now().toString(36); }\n\n\t/* ================= S339: SERVERINIO DRAFTO METADATA =================\n\t * Esamo anketos localStorage formato NELAUZIAM — serverinio drafto busena\n\t * gyvena ATSKIRAME rakte. Cia laikoma TIK tiek, kiek reikia saugiam\n\t * pakartojimui: draft_id, email, payload pirstu atspaudas, dirty, data.\n\t *\n\t * TAISYKLE:",
+  "clearDraft_kvietimai": [
+   "117: function clearDraft(){ try { localStorage.removeItem(DRAFT_KEY); } catch(e){} }",
+   "1337: clearDraft();",
+   "1505: clearDraft();",
+   "1789: fresh.onclick = function(){ clearDraft(); render(); };"
+  ],
+  "raktai": [
+   "31: var DRAFT_KEY = 'pspet_draft';",
+   "101: try { localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); } catch(e){}",
+   "107: var raw = localStorage.getItem(DRAFT_KEY);",
+   "111: localStorage.removeItem(DRAFT_KEY);",
+   "117: function clearDraft(){ try { localStorage.removeItem(DRAFT_KEY); } catch(e){} }",
+   "118: function genId(){ return 'd_' + Math.random().toString(36).slice(2) + Date.now().toString(36); }",
+   "134: var SRV_DRAFT_KEY = 'petshop_pet_srv_draft';",
+   "149: try { return JSON.parse(localStorage.getItem(SRV_DRAFT_KEY) || 'null'); } catch(e){ return null; }",
+   "152: try { localStorage.setItem(SRV_DRAFT_KEY, JSON.stringify(o)); } catch(e){}"
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
