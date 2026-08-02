@@ -1,0 +1,51 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2083,
+ "dry": {
+  "VERSIJA": "commit2-v1",
+  "vartai": {
+   "tusciu_client_ref": 0,
+   "ne_null_viso": 1,
+   "distinct": 1,
+   "dublikatu": 0,
+   "indeksas_jau_yra": 0,
+   "PRAEJO": true
+  }
+ },
+ "apply": {
+  "VERSIJA": "commit2-v1",
+  "vartai": {
+   "tusciu_client_ref": 0,
+   "ne_null_viso": 1,
+   "distinct": 1,
+   "dublikatu": 0,
+   "indeksas_jau_yra": 0,
+   "PRAEJO": true
+  },
+  "normalizuota": 0,
+  "tusciu_po": 0,
+  "alter_klaida": "",
+  "indeksas": "UNIQUE OK",
+  "inkaras": 1,
+  "jau_idiegta": false,
+  "sintakse": true,
+  "sintakses_klaida": "",
+  "kodas": "IDIEGTA",
+  "dydis_po": 42524,
+  "site": 200
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
