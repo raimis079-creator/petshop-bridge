@@ -1274,6 +1274,83 @@ S340b T1 ataskaitoje rodyti `attempt_null:false` ir `started_null:false` buvo
 TIK RODYMO klaida; produkto assertion'ai (be `??`) ir FAKTINES DB reiksmes buvo
 TEISINGOS — abu laukai realiai NULL.
 
+### ⚠ S341 — 6 PUNKTAS: IDIEGTA, BET **NEUZDARYTA** (netestuota)
+
+> **★ BUSENA: KODAS SERVERYJE, MATRICA NEPALEISTA.**
+> Punkto NEZYMETI uzbaigtu, kol nepraeis 10 scenariju matrica.
+> Be jos tai „veikia mano galvoje" — butent to sios sesijos metu ir vengeme.
+
+```
+BASELINE VARTAI PRIES RASANT — PRAEJO
+  dydis 72 935 ✓ · SHA 807fea80f45fccf4… ✓ · S339 0 · pet-draft 0 · SRV 0
+IDIEGTA
+  pet-form.js  72 935 -> 80 393 B · SHA 8e02fd57f3ed878e…
+  backup       .bak_S341
+  node --check SINTAKSE_OK · serviruojamas 80 393 B
+  SRV_DRAFT_KEY 3 · srvEnsureDraft 2 · srvSendMagic 2 · aria-live 6 · role 8
+```
+
+**KAS IDIEGTA (4 pakeitimai viename commit'e):**
+```
+A  SRV_DRAFT_KEY = 'petshop_pet_srv_draft' + srvFingerprint/Get/Set/MarkDirty
+   + srvPayload() (numeta vietinius draft_id, created_at)
+   Esamas DRAFT_KEY formatas NEPALIESTAS — serverine busena ATSKIRAME rakte.
+B  saveDraft() gale -> srvDraftMarkDirty()
+   ★ saveDraft NEKVIECIA /pet-draft — serverinis draftas TIK galutiniame veiksme.
+C  CTA saveBox gavo `.pspet-save-status` sriti (aria-live="polite" pradzioje)
+D  requestMagicLink() PERRASYTAS: single-flight `srvBusy`, srvLock (disabled +
+   aria-busy), srvStatBusy/Error/Clear, srvFetch, srvEnsureDraft, srvSendMagic
+```
+
+**KLAIDU SEMANTIKA (uzrakinta):**
+```
+429  'Per daug bandymu. Pabandykite veliau.'
+413  'Anketa per didele. Sutrumpinkite laisvo teksto laukus.'
+400  invalid_email -> 'Iveskite teisinga el. pasta.'
+     unsupported_payload_version -> 'Atnaujinkite puslapi ir bandykite dar karta.'
+     kita -> 'Uzpildykite bent augintinio rusi ar varda, tada bandykite dar karta.'
+kita/500/tinklas -> 'Nepavyko issaugoti anketos. Bandykite dar karta.'
+magic-login klaida -> 'Nepavyko issiusti nuorodos. Bandykite dar karta.'
+```
+Klaidoms `role="alert"` (aria-live NUIMAMAS — role alert pats reiskia assertive);
+loading/success — `aria-live="polite"` (role NUIMAMAS). Abu vienu metu KONFLIKTUOTU.
+
+**`alert()` BUKLE:** magic sraute PASALINTAS pilnai. Faile liko 2 kvietimai —
+eil. 230, 231, ANKETOS VALIDACIJA, sutarta NELIESTI.
+**★ Skaitiklis rode 3 — trecias yra MANO KOMENTARE** („INLINE busenu sritis
+vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
+`??`. **Komentara perrasyti, kad skaitikliai nemeluotu.**
+
+### ★★★ RYTOJ — 6 PUNKTO UZDARYMAS
+```
+1 Patikrinti, kad pet-form.js = 80 393 B, SHA 8e02fd57f3ed878e…
+2 Perrasyti komentara, kuriame yra `alert(` (kad skaitiklis rodytu 2)
+3 PALEISTI 10 SCENARIJU MATRICA
+4 Tik po matricos zymeti 6 punkta UZBAIGTU
+```
+**MATRICOS DEMESIO TASKAI (is siandienos patirties):**
+```
+· /pet-draft email rate limit 5/val. — testai ji ISNAUDOJA; valyti
+  `_transient%ps_dr_%` TARP scenariju, kitaip gausim melagingus NE
+· magic-login rate limit — valyti `_transient%ps_ml%` ir `%magic%`
+· laiskus perimti per `pre_wp_mail`, Sender per `pre_http_request`
+· po testu: draftu lentele i 0, ps_pets 65
+```
+
+**SCENARIJAI (uzrakinti):**
+```
+1  sekmingas kelias: /pet-draft 201 -> magic 200 -> „Patikrinkite el. pasta"
+2  dvigubas paspaudimas -> VIENAS draftas, VIENAS laiskas (single-flight)
+3  400 -> magic NESIUNCIAMAS, duomenys islieka, mygtukas vel aktyvus
+4  413 -> tas pats + savo pranesimas
+5  429 -> bendrinis pranesimas, JOKIO automatinio kartojimo
+6  tinklo klaida/500 -> „Nepavyko issaugoti anketos"
+7  /pet-draft OK, magic NEPAVYKO -> pakartojimas naudoja TA PATI draft_id
+8  pakeitus anketa po issaugojimo -> dirty -> NAUJAS draftas
+9  pakeitus email -> NAUJAS draftas
+10 localStorage NEISVALOMAS po nuorodos issiuntimo (clearDraft NEKVIECIAMAS)
+```
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
@@ -1284,7 +1361,7 @@ TEISINGOS — abu laukai realiai NULL.
 3 REST       POST /pet-draft su kanonine validacija   ✅ ATLIKTA (16/16+5/5+10/10)
 4 Magic link magic-login/request priima draft_id (triguba patikra)  ✅ ATLIKTA (10/10)
 5 Claim      process_login -> create_pet_result -> complete_claim     ✅ ATLIKTA (17/17)
-6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)  <- KITAS
+6 JS         pet-form.js siuncia serverini drafta   ⚠ IDIEGTA, NETESTUOTA
 7 Cron       cleanup_expired kasdien + stale recovery   ✅ ATLIKTA (10/10)
 8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai
 9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
