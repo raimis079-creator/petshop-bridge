@@ -546,6 +546,59 @@ source_draft_id atkurtoms NULL · client_ref 1 eilute, dublikatu 0 · TEMP aktyv
 Tai NE kodas. Prie sio sluoksnio per visa projekta DAR NEBUVO PRISILIESTA.
 Jis nefiguravo nei viename sesijos „kas liko" saraše.
 
+### ★★ EMAIL SLUOKSNIS — 18 SRAUTU, 5 SABLONAI, 12 TRUKSTA (2026-08-02)
+
+**KUR GYVENA SABLONAI:** `plugins/petshop-core/templates/emails/` — NE Sender'yje.
+TZ v1.60 (S309-S312) uzrakinta: „logika MUSU puseje, Sender = transportas.
+Sender workflow'ai NENAUDOJAMI — per API ju turinio/trigerio nustatyti NEGALIMA."
+Sender UI lieka TIK kampanijoms, A/B ir rezultatams.
+
+```
+Registruota srautu:  18
+Sablonu diske:        5
+BE sablono:          13  (is ju 1 SAMONINGAI -> realiai truksta 12)
+```
+
+**YRA (5):** order-paid · refill · cart-abandoned-1 · cart-abandoned-2 · post-purchase-2d
+
+**TRUKSTA (12):**
+```
+transactional  payment_failed (dunning-1) · shipment_returned · consent_changed
+               pet_reminder_due · subscription_t5_notice
+service        post_purchase_7d · post_purchase_14d
+marketing      win_back_60 · win_back_90 · win_back_120
+               legacy_reactivation_l1 · founding_activation
+```
+
+**SAMONINGAI BE SABLONO (1):** `order_shipped` — TZ v1.60 S313 nustate, kad ta
+laiska siuncia WooCommerce (empirinis testas: completed -> WC YRA „issiustas"
+laisko savininkas). Prie dispatch NEJUNGIAMAS.
+
+**REALIAI ISSIUSTA (ps_email_jobs, 2026-08-02):**
+```
+order_paid        2 sent
+post_purchase_2d  1 sent
+refill_due        1 sent
+cart_abandoned    1 skipped (consent_missing — TEISINGA elgsena)
+```
+Eventai kaupiasi normaliai: pet_profile_created 85 · order_paid 34 ·
+consent_changed 24 · order_shipped 19 · cart_abandoned 10 · refill_due 3.
+**Variklis gyvas — daugumai srautu tiesiog nera kur nukreipti.**
+
+**★ DU PATAISYMAI ANKSTESNEMS IRASAMS:**
+1. `cart_abandoned` sablonas **YRA** (3328 B) ir veikia. Senas STATE.md irasas
+   „sablono DAR NERA / template_missing" — **PASENES, NEBEKARTOTI**.
+   **Vadinasi F21 (basic email automation) yra 3/3, NE 2/3.**
+2. **Naujienlaiskiu sistemos NERA** — ir tai ne spraga, o NEPRADETA sritis.
+   Sender kampanijos = rankinis darbas ju UI. Prenumeratos forma neprijungta
+   (2026-08-01 ikona del to isjungta). Atitinka srautus `founding_activation`
+   ir `legacy_reactivation_l1` — abu be sablonu.
+
+**RAIMIO VERTINIMAS 2026-08-02:** „tai dar vienas musu darbo brokas, blogas
+darbu organizavimas, as manau dar daug visko islys, o laikas greitai bega".
+Del to sis registras ir atsirado. **KIEKVIENA nauja rasta spraga rasoma CIA,
+ne tik sesijos naratyve.**
+
 ### P0 FUNKCIJOS — REALIAI ATVIRI TIK DU
 ```
 F4  Paieska + SKU/EAN     🟡 SKU/EAN paieska NEPATIKRINTA
@@ -561,10 +614,12 @@ F19 RIBOTA PRENUMERATA     🔴 NEPRADETA — TZ laiko PRIVALOMA
                               BLOKUOJA: Q10 (kurie 20-30 SKU) + Q6 (pluginas)
                               + Paysera Recurring atsakymas nefiksuotas
 F20 Basic Pet Profile      ✅✅ gerokai virsyta (M8)
-F21 Basic email automation 🟡 2/3:
-      cart_abandoned  🔴 SABLONO NERA (template_missing)
+F21 Basic email automation ✅ 3/3 (patikrinta 2026-08-02):
+      cart_abandoned  ✅ sablonas YRA (3328 B); job skipped=consent_missing
       post_purchase   ✅ 2026-07-31 (E2E per tikra dispatch)
       refill          ✅
+      PASTABA: F21 apima TIK sias tris. Kiti 12 srautu be sablonu — atskiras
+      darbo blokas, NE F21 dalis (zr. EMAIL SLUOKSNIS).
 F30b Atsiliepimai          ⚪ BUSENA NEPATIKRINTA
 ```
 
