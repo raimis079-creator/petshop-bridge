@@ -909,6 +909,25 @@ tas pats sablonas, kuris jau kartojosi 6 kartus. C (draftas svorio nepriima)
 duotu REALU duomenu praradima: zmogus anketoje ivesta svori, po prisijungimo jo
 nebutu — tiksliai tai, del ko S328 pradetas.
 
+### ★★ /pet-draft PRIEMIMO BRANDUOLYS (Raimis 2026-08-02)
+**IGYVENDINTI VIENU UZBAIGTU PAKEITIMU — NE DALIMIS.**
+Marsrutas, apsaugos, saugojimas ir VISA testu matrica viename commit'e.
+```
+viesas REST marsrutas
+raw body <= 32 KB patikrinamas PRIES get_json_params()
+payload_version tik 1
+email normalizacija + HMAC
+20 bandymu / IP / val.
+5 SEKMINGI draftai / email_hash / val.
+tas pats sanitize_input()
+sanitized payload <= 16 KB
+draft_id generuoja TIK serveris
+14 dienu galiojimas
+vienas draftas = vienas augintinis
+201 atsakymas su draft_id
+JOKIU laisku, vartotojo ar augintinio kurimo
+```
+
 ### ★★ /pet-draft SUTARTIS — UZRAKINTA (Raimis 2026-08-02)
 ```
 current_weight_kg       A — bendrame sanitize_input                    ✅ ATLIKTA
@@ -940,8 +959,11 @@ payload_json. Atsiuntus — IGNORUOJAMA (ne klaida).
 
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
-1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA
+1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
 2 Commit 2   UNIQUE(client_ref) + duplicate-key       ✅ ATLIKTA (8/8)
+  S335       current_weight_kg -> kanoninis sanitize  ✅ ATLIKTA (5/5)
+             ★ NE atskiras punktas is 9 — BUTINA PRIELAIDA pries 3-a.
+               Numeracija NEKINTA: punktu buvo ir lieka 9.
 3 REST       POST /pet-draft su kanonine validacija   <- KITAS
 4 Magic link magic-login/request priima draft_id (triguba patikra)
 5 Claim      process_login -> create_pet_result -> complete_claim
