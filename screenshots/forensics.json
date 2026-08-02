@@ -1,0 +1,498 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2106,
+ "rez": {
+  "VERSIJA": "forensics-v1",
+  "dabar": "2026-08-02 11:45:15",
+  "assets": {
+   "account.css": {
+    "dydis": 19282,
+    "pakeista": "2026-07-28 19:50:37",
+    "sukurta": "2026-07-28 20:23:06"
+   },
+   "account.css.bak_20260723_092412_col": {
+    "dydis": 6510,
+    "pakeista": "2026-07-23 09:24:12",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "account.css.bak_20260723_103451_focus": {
+    "dydis": 6585,
+    "pakeista": "2026-07-23 10:34:51",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "account.css.bak_20260723_s218": {
+    "dydis": 20137,
+    "pakeista": "2026-07-28 19:50:37",
+    "sukurta": "2026-07-28 20:23:06"
+   },
+   "account.css.bak_20260724_p0": {
+    "dydis": 7314,
+    "pakeista": "2026-07-24 16:28:27",
+    "sukurta": "2026-07-24 16:52:59"
+   },
+   "calc-handoff.js": {
+    "dydis": 3837,
+    "pakeista": "2026-07-28 19:05:14",
+    "sukurta": "2026-07-28 20:23:06"
+   },
+   "images": {
+    "dydis": 4096,
+    "pakeista": "2026-07-15 13:01:13",
+    "sukurta": "2026-07-15 13:01:13"
+   },
+   "pet-form.css": {
+    "dydis": 20866,
+    "pakeista": "2026-07-28 18:40:39",
+    "sukurta": "2026-07-28 20:23:06"
+   },
+   "pet-form.css.bak-pre-visual": {
+    "dydis": 15760,
+    "pakeista": "2026-07-15 13:05:59",
+    "sukurta": "2026-07-15 14:58:03"
+   },
+   "pet-form.css.bak_20260723_092412_col": {
+    "dydis": 19202,
+    "pakeista": "2026-07-23 09:24:12",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-form.css.bak_20260723_s218": {
+    "dydis": 20381,
+    "pakeista": "2026-07-28 18:40:39",
+    "sukurta": "2026-07-28 20:23:06"
+   },
+   "pet-form.js": {
+    "dydis": 79550,
+    "pakeista": "2026-08-02 11:12:02",
+    "sukurta": "2026-08-02 11:18:03"
+   },
+   "pet-form.js.bak-20260715": {
+    "dydis": 19456,
+    "pakeista": "2026-07-14 22:07:00",
+    "sukurta": "2026-07-14 22:18:28"
+   },
+   "pet-form.js.bak-pre-func": {
+    "dydis": 26453,
+    "pakeista": "2026-07-15 13:05:58",
+    "sukurta": "2026-07-15 14:58:03"
+   },
+   "pet-form.js.bak-pre-visual": {
+    "dydis": 27923,
+    "pakeista": "2026-07-15 13:05:59",
+    "sukurta": "2026-07-15 14:58:03"
+   },
+   "pet-form.js.bak-s206": {
+    "dydis": 20587,
+    "pakeista": "2026-07-15 10:32:35",
+    "sukurta": "2026-07-15 10:48:02"
+   },
+   "pet-form.js.bak-s208": {
+    "dydis": 23305,
+    "pakeista": "2026-07-15 11:11:03",
+    "sukurta": "2026-07-15 12:53:10"
+   },
+   "pet-form.js.bak-s210": {
+    "dydis": 23903,
+    "pakeista": "2026-07-15 12:45:00",
+    "sukurta": "2026-07-15 12:53:10"
+   },
+   "pet-form.js.bak_20260723_094026_ia11": {
+    "dydis": 29417,
+    "pakeista": "2026-07-23 09:40:26",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-form.js.bak_20260723_101742_flow": {
+    "dydis": 30322,
+    "pakeista": "2026-07-23 10:17:42",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-form.js.bak_20260723_102318_sp": {
+    "dydis": 30843,
+    "pakeista": "2026-07-23 10:23:18",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-form.js.bak_20260723_111341_f6": {
+    "dydis": 30413,
+    "pakeista": "2026-07-23 11:13:41",
+    "sukurta": "2026-07-23 13:43:50"
+   },
+   "pet-form.js.bak_20260723_s218": {
+    "dydis": 72512,
+    "pakeista": "2026-07-28 18:56:33",
+    "sukurta": "2026-07-28 20:23:06"
+   },
+   "pet-form.js.bak_20260724_p0": {
+    "dydis": 40965,
+    "pakeista": "2026-07-24 16:28:27",
+    "sukurta": "2026-07-24 16:52:59"
+   },
+   "pet-form.js.bak_S339": {
+    "dydis": 72935,
+    "pakeista": "2026-08-02 11:12:02",
+    "sukurta": "2026-08-02 11:18:03"
+   },
+   "pet-profile.js": {
+    "dydis": 162291,
+    "pakeista": "2026-08-01 08:17:38",
+    "sukurta": "2026-08-01 09:18:01"
+   },
+   "pet-profile.js.bak-20260715": {
+    "dydis": 20981,
+    "pakeista": "2026-07-14 22:07:00",
+    "sukurta": "2026-07-14 22:18:28"
+   },
+   "pet-profile.js.bak-s207": {
+    "dydis": 21660,
+    "pakeista": "2026-07-15 10:52:51",
+    "sukurta": "2026-07-15 12:53:10"
+   },
+   "pet-profile.js.bak-s208": {
+    "dydis": 24769,
+    "pakeista": "2026-07-15 11:11:03",
+    "sukurta": "2026-07-15 12:53:10"
+   },
+   "pet-profile.js.bak-s210": {
+    "dydis": 26914,
+    "pakeista": "2026-07-15 12:45:00",
+    "sukurta": "2026-07-15 12:53:10"
+   },
+   "pet-profile.js.bak_20260722_193447_fc": {
+    "dydis": 27115,
+    "pakeista": "2026-07-22 19:34:47",
+    "sukurta": "2026-07-22 20:10:18"
+   },
+   "pet-profile.js.bak_20260723_092412_ia11": {
+    "dydis": 35550,
+    "pakeista": "2026-07-23 09:24:12",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-profile.js.bak_20260723_093721_hdr": {
+    "dydis": 46145,
+    "pakeista": "2026-07-23 09:37:21",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-profile.js.bak_20260723_095334_d3": {
+    "dydis": 46483,
+    "pakeista": "2026-07-23 09:53:34",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-profile.js.bak_20260723_100419_hdr2": {
+    "dydis": 47049,
+    "pakeista": "2026-07-23 10:04:19",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-profile.js.bak_20260723_101742_flow": {
+    "dydis": 46836,
+    "pakeista": "2026-07-23 10:17:42",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-profile.js.bak_20260723_103451_v6": {
+    "dydis": 48074,
+    "pakeista": "2026-07-23 10:34:51",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-profile.js.bak_20260723_105048_nr": {
+    "dydis": 48698,
+    "pakeista": "2026-07-23 10:50:48",
+    "sukurta": "2026-07-23 11:12:39"
+   },
+   "pet-profile.js.bak_20260723_111341_f6": {
+    "dydis": 49320,
+    "pakeista": "2026-07-23 11:13:41",
+    "sukurta": "2026-07-23 13:43:50"
+   },
+   "pet-profile.js.bak_20260723_112807_ct": {
+    "dydis": 49007,
+    "pakeista": "2026-07-23 11:28:07",
+    "sukurta": "2026-07-23 13:43:50"
+   },
+   "pet-profile.js.bak_20260723_125633_v1dash": {
+    "dydis": 49217,
+    "pakeista": "2026-07-23 12:56:33",
+    "sukurta": "2026-07-23 13:43:50"
+   },
+   "pet-profile.js.bak_20260723_132138_dz": {
+    "dydis": 52119,
+    "pakeista": "2026-07-23 13:21:38",
+    "sukurta": "2026-07-23 13:43:50"
+   },
+   "pet-profile.js.bak_20260723_132710_dz": {
+    "dydis": 59035,
+    "pakeista": "2026-07-23 13:27:10",
+    "sukurta": "2026-07-23 13:43:50"
+   },
+   "pet-profile.js.bak_20260723_s218": {
+    "dydis": 154784,
+    "pakeista": "2026-07-28 19:05:14",
+    "sukurta": "2026-07-28 20:23:06"
+   },
+   "pet-profile.js.bak_20260724_p0": {
+    "dydis": 76207,
+    "pakeista": "2026-07-24 16:28:27",
+    "sukurta": "2026-07-24 16:52:59"
+   },
+   "pet-profile.js.bak_S329": {
+    "dydis": 162300,
+    "pakeista": "2026-08-01 08:17:38",
+    "sukurta": "2026-08-01 09:18:01"
+   },
+   "product-calc.js": {
+    "dydis": 14155,
+    "pakeista": "2026-08-01 08:17:38",
+    "sukurta": "2026-08-01 09:18:01"
+   },
+   "product-calc.js.bak_20260723_s218": {
+    "dydis": 14053,
+    "pakeista": "2026-07-30 06:22:34",
+    "sukurta": "2026-07-30 07:03:18"
+   },
+   "product-calc.js.bak_S329": {
+    "dydis": 14158,
+    "pakeista": "2026-08-01 08:17:38",
+    "sukurta": "2026-08-01 09:18:01"
+   }
+  },
+  "pet_form": {
+   "dydis": 79550,
+   "sha256": "193cde03ae2c69635a10019e1c1d5fd1a0d6115016511c26f00bd5fc018747fb",
+   "mtime": "2026-08-02 11:12:02",
+   "ctime": "2026-08-02 11:18:03"
+  },
+  "zymos": {
+   "S339": 3,
+   "srvDraftMarkDirty": 2,
+   "SRV_DRAFT_KEY": 3,
+   "pet-draft": 7,
+   "single-flight": 2,
+   "aria-live": 3,
+   "role=\"alert\"": 0,
+   "alert(": 2
+  },
+  "S_zymos": [
+   3,
+   3,
+   6,
+   3,
+   5,
+   2,
+   3,
+   2,
+   1,
+   1,
+   1,
+   1,
+   2,
+   1
+  ],
+  "backup_assets": {
+   "account.css.bak_20260723_092412_col": {
+    "dydis": 6510,
+    "pakeista": "2026-07-23 09:24:12"
+   },
+   "account.css.bak_20260723_103451_focus": {
+    "dydis": 6585,
+    "pakeista": "2026-07-23 10:34:51"
+   },
+   "account.css.bak_20260723_s218": {
+    "dydis": 20137,
+    "pakeista": "2026-07-28 19:50:37"
+   },
+   "account.css.bak_20260724_p0": {
+    "dydis": 7314,
+    "pakeista": "2026-07-24 16:28:27"
+   },
+   "pet-form.css.bak-pre-visual": {
+    "dydis": 15760,
+    "pakeista": "2026-07-15 13:05:59"
+   },
+   "pet-form.css.bak_20260723_092412_col": {
+    "dydis": 19202,
+    "pakeista": "2026-07-23 09:24:12"
+   },
+   "pet-form.css.bak_20260723_s218": {
+    "dydis": 20381,
+    "pakeista": "2026-07-28 18:40:39"
+   },
+   "pet-form.js.bak-20260715": {
+    "dydis": 19456,
+    "pakeista": "2026-07-14 22:07:00"
+   },
+   "pet-form.js.bak-pre-func": {
+    "dydis": 26453,
+    "pakeista": "2026-07-15 13:05:58"
+   },
+   "pet-form.js.bak-pre-visual": {
+    "dydis": 27923,
+    "pakeista": "2026-07-15 13:05:59"
+   },
+   "pet-form.js.bak-s206": {
+    "dydis": 20587,
+    "pakeista": "2026-07-15 10:32:35"
+   },
+   "pet-form.js.bak-s208": {
+    "dydis": 23305,
+    "pakeista": "2026-07-15 11:11:03"
+   },
+   "pet-form.js.bak-s210": {
+    "dydis": 23903,
+    "pakeista": "2026-07-15 12:45:00"
+   },
+   "pet-form.js.bak_20260723_094026_ia11": {
+    "dydis": 29417,
+    "pakeista": "2026-07-23 09:40:26"
+   },
+   "pet-form.js.bak_20260723_101742_flow": {
+    "dydis": 30322,
+    "pakeista": "2026-07-23 10:17:42"
+   },
+   "pet-form.js.bak_20260723_102318_sp": {
+    "dydis": 30843,
+    "pakeista": "2026-07-23 10:23:18"
+   },
+   "pet-form.js.bak_20260723_111341_f6": {
+    "dydis": 30413,
+    "pakeista": "2026-07-23 11:13:41"
+   },
+   "pet-form.js.bak_20260723_s218": {
+    "dydis": 72512,
+    "pakeista": "2026-07-28 18:56:33"
+   },
+   "pet-form.js.bak_20260724_p0": {
+    "dydis": 40965,
+    "pakeista": "2026-07-24 16:28:27"
+   },
+   "pet-form.js.bak_S339": {
+    "dydis": 72935,
+    "pakeista": "2026-08-02 11:12:02"
+   },
+   "pet-profile.js.bak-20260715": {
+    "dydis": 20981,
+    "pakeista": "2026-07-14 22:07:00"
+   },
+   "pet-profile.js.bak-s207": {
+    "dydis": 21660,
+    "pakeista": "2026-07-15 10:52:51"
+   },
+   "pet-profile.js.bak-s208": {
+    "dydis": 24769,
+    "pakeista": "2026-07-15 11:11:03"
+   },
+   "pet-profile.js.bak-s210": {
+    "dydis": 26914,
+    "pakeista": "2026-07-15 12:45:00"
+   },
+   "pet-profile.js.bak_20260722_193447_fc": {
+    "dydis": 27115,
+    "pakeista": "2026-07-22 19:34:47"
+   },
+   "pet-profile.js.bak_20260723_092412_ia11": {
+    "dydis": 35550,
+    "pakeista": "2026-07-23 09:24:12"
+   },
+   "pet-profile.js.bak_20260723_093721_hdr": {
+    "dydis": 46145,
+    "pakeista": "2026-07-23 09:37:21"
+   },
+   "pet-profile.js.bak_20260723_095334_d3": {
+    "dydis": 46483,
+    "pakeista": "2026-07-23 09:53:34"
+   },
+   "pet-profile.js.bak_20260723_100419_hdr2": {
+    "dydis": 47049,
+    "pakeista": "2026-07-23 10:04:19"
+   },
+   "pet-profile.js.bak_20260723_101742_flow": {
+    "dydis": 46836,
+    "pakeista": "2026-07-23 10:17:42"
+   },
+   "pet-profile.js.bak_20260723_103451_v6": {
+    "dydis": 48074,
+    "pakeista": "2026-07-23 10:34:51"
+   },
+   "pet-profile.js.bak_20260723_105048_nr": {
+    "dydis": 48698,
+    "pakeista": "2026-07-23 10:50:48"
+   },
+   "pet-profile.js.bak_20260723_111341_f6": {
+    "dydis": 49320,
+    "pakeista": "2026-07-23 11:13:41"
+   },
+   "pet-profile.js.bak_20260723_112807_ct": {
+    "dydis": 49007,
+    "pakeista": "2026-07-23 11:28:07"
+   },
+   "pet-profile.js.bak_20260723_125633_v1dash": {
+    "dydis": 49217,
+    "pakeista": "2026-07-23 12:56:33"
+   },
+   "pet-profile.js.bak_20260723_132138_dz": {
+    "dydis": 52119,
+    "pakeista": "2026-07-23 13:21:38"
+   },
+   "pet-profile.js.bak_20260723_132710_dz": {
+    "dydis": 59035,
+    "pakeista": "2026-07-23 13:27:10"
+   },
+   "pet-profile.js.bak_20260723_s218": {
+    "dydis": 154784,
+    "pakeista": "2026-07-28 19:05:14"
+   },
+   "pet-profile.js.bak_20260724_p0": {
+    "dydis": 76207,
+    "pakeista": "2026-07-24 16:28:27"
+   },
+   "pet-profile.js.bak_S329": {
+    "dydis": 162300,
+    "pakeista": "2026-08-01 08:17:38"
+   },
+   "product-calc.js.bak_20260723_s218": {
+    "dydis": 14053,
+    "pakeista": "2026-07-30 06:22:34"
+   },
+   "product-calc.js.bak_S329": {
+    "dydis": 14158,
+    "pakeista": "2026-08-01 08:17:38"
+   }
+  },
+  "naujausi_failai": [
+   "2026-08-02 11:12:02  79550  assets/pet-form.js",
+   "2026-08-02 11:12:02  72935  assets/pet-form.js.bak_S339",
+   "2026-08-02 10:41:35  26010  includes/class-magic-login.php.bak_S338b",
+   "2026-08-02 10:41:35  27630  includes/class-magic-login.php",
+   "2026-08-02 10:41:35  21363  includes/class-pet-drafts.php",
+   "2026-08-02 10:41:35  21302  includes/class-pet-drafts.php.bak_S338b",
+   "2026-08-02 10:30:44  20329  includes/class-pet-drafts.php.bak_S338",
+   "2026-08-02 10:30:44  20829  includes/class-magic-login.php.bak_S338",
+   "2026-08-02 10:08:35  18618  includes/class-magic-login.php.bak_S337",
+   "2026-08-02 09:47:52  19413  includes/class-pet-drafts.php.bak_S336c",
+   "2026-08-02 09:40:49  18693  includes/class-pet-drafts.php.bak_S336b",
+   "2026-08-02 09:33:29  15121  petshop-core.php",
+   "2026-08-02 09:33:29  15064  petshop-core.php.bak_S336",
+   "2026-08-02 09:33:29  44331  includes/class-pet-profile.php",
+   "2026-08-02 09:33:29  43481  includes/class-pet-profile.php.bak_S336",
+   "2026-08-02 09:33:29  12822  includes/class-pet-drafts.php.bak_S336",
+   "2026-08-02 09:15:16  42524  includes/class-pet-profile.php.bak_S335",
+   "2026-08-02 08:53:11  39977  includes/class-pet-profile.php.bak_S334"
+  ],
+  "srv_blokas": "rmato NELAUZIAM — serverinio drafto busena\n\t * gyvena ATSKIRAME rakte. Cia laikoma TIK tiek, kiek reikia saugiam\n\t * pakartojimui: draft_id, email, payload pirstu atspaudas, dirty, data.\n\t *\n\t * TAISYKLE:\n\t *   tas pats email + tas pats fingerprint + turimas draft_id\n\t *     -> /pet-draft NEKVIECIAMAS, kartojamas TIK magic-login/request\n\t *   pasikeite email arba payload\n\t *     -> dirty=true -> kuriamas NAUJAS serverinis draftas\n\t *\n\t * Tai uzdaro atveji, kai /pet-draft PAVYKO, o magic-login/request NE:\n\t * pakartojimas nekuria naujo drafto ir neatsitrenkia i 5/email/val. limita.\n\t */\n\tvar SRV_DRAFT_KEY = 'petshop_pet_srv_draft';\n\n\tfunction payloadFingerprint(obj){\n\t\tvar raktai = Object.keys(obj || {}).sort();\n\t\tvar s = '';\n\t\tfor (var i = 0; i < raktai.length; i++){\n\t\t\tvar v = obj[raktai[i]];\n\t\t\tif (v === null || v === undefined || v === '') continue;\n\t\t\ts += raktai[i] + '=' + String(v) + ';';\n\t\t}\n\t\tvar h = 5381;\n\t\tfor (var j = 0; j < s.length; j++){ h = ((h * 33) ^ s.charCodeAt(j)) >>> 0; }\n\t\treturn h.toString(36) + '.' + s.length;\n\t}\n\tfunction srvDraftGet(){\n\t\ttry { return JSON.parse(localStorage.getItem(SRV_DRAFT_KEY) || 'null'); } catch(e){ return null; }\n\t}\n\tfunction srvDraftSet(o){\n\t\ttry { localStorage.setItem(SRV_DRAFT_KEY, JSON.stringify(o)); } catch(e){}\n\t}\n\t/** Anketos duomenys pasikeite — senas serverinis draftas nebeatitinka. */\n\tfunction srvDraftMarkDirty(){\n\t\tvar s = srvDraftGet();\n\t\tif (s && s.draft_id && !s.dirty) { s.dirty = true; srvDraftSet(s); }\n\t}\n\n\t// --- Render ---\n\t/**\n\t * Perjungus ZINGSNI — pakelia i anketos virsu. Be sio zmogus lieka senoje\n\t * scroll pozicijoje ir nemato naujo zingsnio pradzios.\n\t * SVARBU: kviečiama TIK is render() (zingsnio keitimas), NE is renderStep2()\n\t * (ten pill'u perpiesimas tame paciame zingsnyje — scroll sokinetu renkantis).\n\t */\n\tvar _firstRender = true;\n\tfunction scrollToTop(){\n\t\tif (_firstRender) { _firstRender = false; return; }   // puslapio uzkrovime nesokam\n\t\tvar doScroll = function(){\n\t\t\ttry {\n\t\t\t\tif (root && root.scrollIntoView) {\n\t\t\t\t\troot.scrollIntoView({ block: 'start', behavior: 'auto' });\n\t\t\t\t\tvar y = window.pageYOffset || document.documentElement.scrollTop;\n\t\t\t\t\tif (y > 90) window.scrollTo(0, y - 80);\n\t\t\t\t}\n\t\t\t} catch (e) {}\n\t\t};\n\t\tif (window.requestAnimationFrame) requestAnimationFrame(doScroll); else doScroll();\n\t}\n\n\tfunction render(){\n\t\tif (!root) return;\n\t\tscrollToTop();\n\t\ti",
+  "skliaustai": {
+   "{": 394,
+   "}": 394,
+   "(": 1321,
+   ")": 1321
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
