@@ -1,0 +1,95 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2091,
+ "apply": {
+  "VERSIJA": "gates-v1",
+  "inkaras": 1,
+  "jau": false,
+  "sintakse": true,
+  "VERDIKTAS": "IDIEGTA",
+  "dydis": 20329
+ },
+ "test": {
+  "VERSIJA": "gates-v1",
+  "inkaras": 0,
+  "jau": true,
+  "V1_pet_name_tarpai": {
+   "kodas": 400,
+   "code": "empty_payload",
+   "pokytis": 0,
+   "OK": true
+  },
+  "V1_brand_tuscias": {
+   "kodas": 400,
+   "code": "empty_payload",
+   "pokytis": 0,
+   "OK": true
+  },
+  "V1_sensitivities_msv": {
+   "kodas": 400,
+   "code": "invalid_payload",
+   "pokytis": 0,
+   "OK": true
+  },
+  "V1_species_tuscias": {
+   "kodas": 400,
+   "code": "empty_payload",
+   "pokytis": 0,
+   "OK": true
+  },
+  "V1b_pet_name_masyvas": {
+   "kodas": 400,
+   "code": "invalid_payload",
+   "pokytis": 0,
+   "OK": true
+  },
+  "V1b_svoris_objektas": {
+   "kodas": 400,
+   "code": "invalid_payload",
+   "pokytis": 0,
+   "OK": true
+  },
+  "R_normalus": {
+   "kodas": 201,
+   "pokytis": 1,
+   "OK": true
+  },
+  "R_tik_rusis": {
+   "kodas": 201,
+   "pokytis": 1,
+   "OK": true
+  },
+  "R_tik_vardas": {
+   "kodas": 201,
+   "pokytis": 1,
+   "LAUKTA": "201 — vardas yra prasmingas duomuo",
+   "OK": true
+  },
+  "V2_ip_xff": {
+   "kodai_19_23": [
+    400,
+    400,
+    429,
+    429
+   ],
+   "LAUKTA": "po 20 bandymu -> 429, nepaisant kintancio X-Forwarded-For",
+   "OK": true
+  },
+  "SUVESTINE": "10/10",
+  "draftu_po": 0
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
