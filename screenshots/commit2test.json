@@ -1,0 +1,86 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2084,
+ "rez": {
+  "VERSIJA": "commit2-testai-v1",
+  "vartotojai": {
+   "ps_c2_u1": 53,
+   "ps_c2_u2": 54
+  },
+  "zymeklis": "C2T-17a192",
+  "T1": {
+   "a": "created",
+   "b": "created",
+   "pets": 2,
+   "LAUKTA": "created+created, pets +2",
+   "OK": true
+  },
+  "T2": {
+   "status": "created",
+   "client_ref_DB": null,
+   "LAUKTA": "created, client_ref=NULL",
+   "OK": true
+  },
+  "T3": {
+   "pirmas": "created",
+   "antras": "deduplicated",
+   "tas_pats_pet": true,
+   "pets": 0,
+   "ev": 0,
+   "LAUKTA": "deduplicated, +0 pet, +0 event",
+   "OK": true
+  },
+  "T4": {
+   "status": "draft_already_used",
+   "pets": 0,
+   "LAUKTA": "draft_already_used, +0 pet",
+   "OK": true
+  },
+  "T5": {
+   "status": "client_ref_conflict",
+   "pets": 0,
+   "atskleidzia_pet_id": false,
+   "LAUKTA": "client_ref_conflict, +0 pet, be pet_id",
+   "OK": true
+  },
+  "T6": {
+   "status": "deduplicated",
+   "pets": 0,
+   "LAUKTA": "deduplicated (force_new neapeina)",
+   "OK": true
+  },
+  "T7": {
+   "filtras_suveike": true,
+   "status": "deduplicated",
+   "pets_pokytis": 1,
+   "ev_pokytis": 0,
+   "eiluciu_su_ref": 1,
+   "LAUKTA": "deduplicated, 1 eilute, +0 event (musu INSERT atmestas)",
+   "OK": true
+  },
+  "T8": {
+   "filtras_suveike": true,
+   "status": "WP_Error:create_failed",
+   "pets": 0,
+   "LAUKTA": "WP_Error:create_failed, NE deduplicated",
+   "OK": true
+  },
+  "SUVESTINE": "8/8",
+  "pets_po_valymo": 65,
+  "zymekliu_liko": 0
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
