@@ -881,6 +881,63 @@ PRIES claim concurrency E2E:
   - tikras DVIEJU APLIKACIJOS PROCESU testas.
 ```
 
+### ★ S335 — current_weight_kg I KANONINI sanitize_input (Raimio variantas A)
+
+```
+OK current_weight_kg pridetas i BENDRA whitelist (dabar 23 laukai)
+OK weight_updated_at is KLIENTO NEPRIIMAMAS — nustato TIK serveris ir TIK
+   kai svoris realiai priimtas (kitaip vartotojas klastotu atnaujinimo data)
+OK kablelis -> taskas („7,5" -> 7.5)
+OK ribos: >0 ir <=120 kg; 0 / tuscias / neigiamas / 200 -> NEISSAUGOMA
+```
+**Testai 5/5** (T5 „neperejo" buvo MANO matavimo klaida: `?? 'NERA'` operatorius
+`null` traktuoja kaip nesama, todel null ir „nera rakto" atrode vienodai;
+funkcinio skirtumo NERA — abiem atvejais DB stulpelis lieka NULL, ka empiriskai
+irode T1).
+
+```
+T1 be svorio      weight NULL, weight_updated_at NULL   (elgsena NEPAKITO)
+T2 su svoriu      12.50 + serverio data
+T3 klastote 2001  IGNORUOTA, irasyta serverio data
+T4 sanitize „7,5" -> 7.5, serverio data
+T5 ribos          0/''/-5/200 atmesti · 0.05 ir 120 priimti
+```
+Failas 42 524 -> 43 481 B · backup `.bak_S335` · site 200.
+
+**KODEL A, ne B/C:** B (svoris atskirai nuo payload) sukurtu ANTRA tiesos vieta —
+tas pats sablonas, kuris jau kartojosi 6 kartus. C (draftas svorio nepriima)
+duotu REALU duomenu praradima: zmogus anketoje ivesta svori, po prisijungimo jo
+nebutu — tiksliai tai, del ko S328 pradetas.
+
+### ★★ /pet-draft SUTARTIS — UZRAKINTA (Raimis 2026-08-02)
+```
+current_weight_kg       A — bendrame sanitize_input                    ✅ ATLIKTA
+weight_updated_at       TIK serveris                                    ✅ ATLIKTA
+rate limit              5 SEKMINGI draftai / email-hash / val.
+                        20 BANDYMU / IP / val. (skaiciuoja ir nesekmingus)
+                        429 zinute BENDRINE — neatskleidzia, kuris limitas suveike
+                        el. pasto limitas pagal HMAC, NE atvira adresa saugykloje
+drafto kardinalumas     1 draft_id = 1 augintinio anketa = 1 busimas pet
+                        JOKIO pets[] masyvo, jokio „pasiruosimo ateiciai"
+payload_version         TIK 1; nenurodyta -> 1; kita reiksme -> 400
+                        unsupported_payload_version (NESAUGOM versijos, kurios
+                        claim kodas nesupranta)
+dydzio limitai          RAW 32 KB PRIES apdorojima · SANITIZED 16 KB
+```
+**★ FORMULUOTES PATAISA:** `sanitize_input()` yra **kanoninis WHITELIST ir
+SANITIZAVIMAS**, NE pilna validacija — baseline irode, kad be `pet_name`
+augintinis sukuriamas su HTTP 200. Jei kada bus kuriamas `validate_pet_payload()`,
+jis PRIVALO buti naudojamas ABIEM keliams; anoniminio kelio NEGALIMA tyliai
+padaryti grieztesnio uz prisijungusi, to neivardijus kaip SAMONINGO elgsenos
+pakeitimo.
+
+**SERVERIS PATS KURIA:** draft_id (`wp_generate_uuid4()`, NIEKADA is JS),
+email_hash, status, expires_at, timestamps.
+**KLIENTAS NEGALI PATEIKTI:** user_id · status · client_ref · draft_id ·
+claimed_* · claim_* · created_at · updated_at · expires_at · email_hash ·
+payload_json. Atsiuntus — IGNORUOJAMA (ne klaida).
+`client_ref` atsiranda TIK claim metu kaip `client_ref = draft_id`.
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA
