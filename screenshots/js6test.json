@@ -1,5 +1,95 @@
 {
- "valymo_klaida": "SyntaxError: Unexpected token 'c', \"curl: (28)\"... is not valid JSON",
- "e": "curl: (28) Failed to connect to dev.avesa.lt port 443 after 135245 ms: Couldn't connect to server\n",
- "sid": null
+ "deaktyvuota_TEMP": [],
+ "sid": 2104,
+ "T1_pasiekta": true,
+ "T1": {
+  "draft": 1,
+  "magic": 1,
+  "tekstas": "Patikrinkite el. paštą\nJei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į js6.t1@dev.avesa.lt. Prisijungę rasite savo augintinio profilį.",
+  "status_klase": null,
+  "role": null,
+  "aria": null,
+  "mygtukas_disabled": null,
+  "ls_draftas": true,
+  "srv": {
+   "draft_id": "94ec9f48-65e7-409b-ae64-c95ec71d5e03",
+   "email": "js6.t1@dev.avesa.lt",
+   "fingerprint": "141aplb.24",
+   "dirty": false,
+   "created_at": 1785670439200
+  }
+ },
+ "T2": {
+  "draft": 1,
+  "magic": 1,
+  "LAUKTA": "po 1"
+ },
+ "T3": {
+  "draft": 1,
+  "magic": 0,
+  "tekstas": "Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą.\nGAUTI PRISIJUNGIMO NUORODĄ\nUžpildykite bent pagrindinius augintinio duomenis.",
+  "status_klase": "pspet-save-status pspet-state-error",
+  "role": "alert",
+  "aria": null,
+  "mygtukas_disabled": false,
+  "ls_draftas": true,
+  "srv": null
+ },
+ "T4": {
+  "draft": 1,
+  "magic": 0,
+  "tekstas": "Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą.\nGAUTI PRISIJUNGIMO NUORODĄ\nPer daug bandymų. Pabandykite vėliau.",
+  "status_klase": "pspet-save-status pspet-state-error",
+  "role": "alert",
+  "aria": null,
+  "mygtukas_disabled": false,
+  "ls_draftas": true,
+  "srv": null
+ },
+ "T5": {
+  "draft": 1,
+  "magic": 0,
+  "tekstas": "Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą.\nGAUTI PRISIJUNGIMO NUORODĄ\nNepavyko išsaugoti anketos. Bandykite dar kartą.",
+  "status_klase": "pspet-save-status pspet-state-error",
+  "role": "alert",
+  "aria": null,
+  "mygtukas_disabled": false,
+  "ls_draftas": true,
+  "srv": null
+ },
+ "T6": {
+  "draft": 1,
+  "magic": 1,
+  "srv_draft_id": "fc191149-a561-4d26-94d9-8f378d9c6881",
+  "tekstas": "Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą.\nGAUTI PRISIJUNGIMO NUORODĄ\nNepavyko išsiųsti nuorodos. Bandykite dar kartą.",
+  "mygtukas_disabled": false
+ },
+ "T7": {
+  "draft": 1,
+  "magic": 2,
+  "srv_draft_id": "fc191149-a561-4d26-94d9-8f378d9c6881",
+  "tas_pats": true,
+  "LAUKTA": "draft LIEKA 1, magic 2, tas pats draft_id"
+ },
+ "T8_tesimo_mygtukas": 1,
+ "T8_dirty_po_keitimo": false,
+ "T8": {
+  "draft_pries": 1,
+  "dirty": false,
+  "LAUKTA": "dirty=true -> kitas submit kurs NAUJA drafta"
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
 }
