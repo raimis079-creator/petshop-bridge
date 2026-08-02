@@ -1,0 +1,106 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2108,
+ "rez": {
+  "VERSIJA": "cron-recon-v1",
+  "failas": {
+   "dydis": 21363,
+   "sha256": "162dc4dcd2a0b489620f0b42bf11db41f7795595ddbba0ce069a37f1ccb41773"
+  },
+  "metodai": [
+   "table",
+   "install",
+   "ensure_pets_column",
+   "maybe_install",
+   "hash_key",
+   "email_hash",
+   "init",
+   "register_routes",
+   "client_ip",
+   "too_many",
+   "rl_get",
+   "rl_bump",
+   "handle_create",
+   "create",
+   "get",
+   "begin_claim",
+   "complete_claim",
+   "abort_claim",
+   "terminate_claim",
+   "find_pet_by_draft",
+   "cleanup_expired",
+   "stats"
+  ],
+  "zymos": {
+   "cleanup_expired": 1,
+   "cleanup": 1,
+   "CLAIM_STALE_SECONDS": 2,
+   "TTL_DAYS": 2,
+   "init": 2
+  },
+  "cleanup_kodas": "ing) $draft_id\n\t\t) );\n\t}\n\n\t/* ---------------------------------------------------------------- */\n\t/* Retencija                                                        */\n\t/* ---------------------------------------------------------------- */\n\n\t/**\n\t * Kasdienis valymas. Trinam TIK nepanaudotus pasibaigusius draftus.\n\t * 'claimed' eilutes lieka — jose PII nebera (payload NULL), o\n\t * email_hash + claimed_pet_id reikalingi idempotencijai.\n\t *\n\t * @return int istrintu eiluciu\n\t */\n\tpublic static function cleanup_expired() {\n\t\tglobal $wpdb;\n\t\t$now = current_time( 'mysql', true );\n\t\treturn (int) $wpdb->query( $wpdb->prepare(\n\t\t\t'DELETE FROM ' . self::table() . \"\n\t\t\t  WHERE status <> 'claimed' AND expires_at < %s\",\n\t\t\t$now\n\t\t) );\n\t}\n\n\tpublic static function stats() {\n\t\tglobal $wpdb;\n\t\treturn $wpdb->get_results(\n\t\t\t'SELECT status, COUNT(*) AS c FROM ' . self::table() . ' GROUP BY status',\n\t\t\tARRAY_A\n\t\t);\n\t}\n}\n",
+  "init_kodas": "public static function init() {\n\t\tadd_action( 'rest_api_init', array( __CLASS__, 'register_routes' ) );\n\t}\n\n\tpublic static function register_routes() {\n\t\tregister_rest_route( 'petshop/v1', '/pet-draft', array(\n\t\t\tarray(\n\t\t\t\t'methods'             => 'POST',\n\t\t\t\t'callback'            => array( __CLASS__, 'handle_create' ),\n\t\t\t\t// ANONIMINIS kelias — nonce nera, apsauga per rate limit.\n\t\t\t\t'permission_callback' => '__return_true',\n\t\t\t),\n\t\t) );\n\t}\n\n\tprivate static function client_ip() {\n\t\t$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? (string) $_SERVER['REMOTE_ADDR'] : '';\n\t\treturn filter_var( $ip, FILTER_VALIDATE_IP ) ? $ip : '0.0.0.0';\n\t}\n\n\t/** Bendrinis 429 — NEATSKLEIDZIA, kuris limitas suveik",
+  "konstantos": {
+   "DB_VERSION": "'1.1.0'",
+   "OPT_DB_VER": "'petshop_pet_drafts_db_version'",
+   "OPT_HASH_KEY": "'petshop_pet_draft_hash_key'",
+   "TTL_DAYS": "14",
+   "CLAIM_STALE_SECONDS": "15 * MINUTE_IN_SECONDS",
+   "PAYLOAD_VERSION": "1",
+   "RAW_MAX_BYTES": "32768",
+   "PAYLOAD_MAX_BYTES": "16384",
+   "RL_IP_MAX": "20",
+   "RL_EMAIL_MAX": "5",
+   "RL_WINDOW": "HOUR_IN_SECONDS"
+  },
+  "cron": {
+   "petshop_vf_sync_stock_hourly": "2026-08-02 19:59",
+   "petshop_attr_engine_run": "2026-08-02 22:57",
+   "petshop_vf_sync_reprice_daily": "2026-08-03 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-03 04:00",
+   "wp_scheduled_auto_draft_delete": "2026-08-03 15:47",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00"
+  },
+  "visi_petshop_cron": {
+   "ps_esp_cron_process_pending": "2026-08-02 19:07",
+   "ps_email_dispatch_cron": "2026-08-02 19:08",
+   "ps_cart_abandon_check": "2026-08-02 19:09",
+   "ps_post_purchase_check": "2026-08-02 19:39",
+   "petshop_vf_sync_stock_hourly": "2026-08-02 19:59",
+   "petshop_attr_engine_run": "2026-08-02 22:57",
+   "petshop_vf_sync_reprice_daily": "2026-08-03 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-03 04:00",
+   "ps_suppression_daily_reconcile": "2026-08-03 05:30",
+   "ps_refill_daily_check": "2026-08-03 08:00",
+   "ps_reminders_daily_check": "2026-08-03 09:00",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00"
+  },
+  "deactivation": true,
+  "bootstrap_cron": [
+   "register_activation_hook( __FILE__, function() {",
+   "\t\twp_schedule_event( time() + 300, 'ps_esp_5min', 'ps_esp_cron_process_pending' );",
+   "register_deactivation_hook( __FILE__, function() {"
+  ],
+  "draftu_busenos": [
+   {
+    "status": "active",
+    "c": "4"
+   }
+  ],
+  "draftu_viso": 4
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
