@@ -1,0 +1,183 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2092,
+ "rez": {
+  "VERSIJA": "magic-recon-v1",
+  "tokens_schema": [
+   {
+    "Field": "id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+   },
+   {
+    "Field": "token_hash",
+    "Type": "char(64)",
+    "Null": "NO",
+    "Key": "UNI",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "nonce",
+    "Type": "char(32)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "purpose",
+    "Type": "varchar(48)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "purpose_group",
+    "Type": "varchar(48)",
+    "Null": "YES",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "subject_id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "subject_email",
+    "Type": "varchar(191)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "resource_id",
+    "Type": "varchar(64)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "action",
+    "Type": "varchar(48)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "key_id",
+    "Type": "varchar(8)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "status",
+    "Type": "varchar(16)",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": "active",
+    "Extra": ""
+   },
+   {
+    "Field": "created_at",
+    "Type": "datetime",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "expires_at",
+    "Type": "datetime",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "used_at",
+    "Type": "datetime",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "used_ip",
+    "Type": "varchar(45)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   }
+  ],
+  "tokens_kiekis": 78,
+  "tokens_pvz": [
+   {
+    "id": "104",
+    "purpose": "magic_login",
+    "purpose_group": null,
+    "subject_email": "raimundas@gyvunai.lt",
+    "resource_id": null,
+    "status": "used",
+    "expires_at": "2026-07-31 19:13:48"
+   },
+   {
+    "id": "103",
+    "purpose": "unsubscribe_marketing",
+    "purpose_group": null,
+    "subject_email": "terra@gyvunai.lt",
+    "resource_id": "marketing",
+    "status": "active",
+    "expires_at": "2026-10-29 13:50:42"
+   },
+   {
+    "id": "102",
+    "purpose": "unsubscribe_marketing",
+    "purpose_group": null,
+    "subject_email": "terra@gyvunai.lt",
+    "resource_id": "marketing",
+    "status": "active",
+    "expires_at": "2026-10-29 13:50:32"
+   }
+  ],
+  "tokens_failas": "class-action-tokens.php",
+  "metodas_generate": "ng $subject_email  jei subject_id=0\n\t *   @type string $resource_id    su kuo susijes (pvz. subscription_id)\n\t *   @type string $purpose_group  susijusiu tokenu grupei (pvz. \"subscription_cycle_123\")\n\t *   @type string $action         papildoma detale\n\t *   @type int    $ttl_seconds    galiojimas (default 30 min)\n\t * }\n\t * @return string|false Raw token (base64url) arba false.\n\t */\n\tpublic static function generate( array $args ) {\n\t\tif ( empty( $args['purpose'] ) ) {\n\t\t\treturn false;\n\t\t}\n\t\tglobal $wpdb;\n\n\t\t$key_id = self::ensure_keys();\n\t\t$secret = self::get_key( $key_id );\n\t\tif ( ! $secret ) {\n\t\t\treturn false;\n\t\t}\n\n\t\t$nonce = bin2hex( random_bytes( 16 ) );  // 32 hex\n\t\t$ttl = isset( $args['ttl_seconds'] ) ? (int) $args['ttl_seconds'] : 1800;  // 30 min\n\t\t$now = time();\n\t\t$expires_ts = $now + $ttl;\n\n\t\t$payload = array(\n\t\t\t'version'     => self::TOKEN_VERSION,\n\t\t\t'purpose'     => $args['purpose'],\n\t\t\t'subject_id'  => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0,\n\t\t\t'resource_id' => isset( $args['resource_id'] ) ? (string) $args['resource_id'] : '',\n\t\t\t'action'      => isset( $args['action'] ) ? (string) $args['action'] : '',\n\t\t\t'expires_at'  => $expires_ts,\n\t\t\t'nonce'       => $nonce,\n\t\t\t'key_id'      => $key_id,\n\t\t);\n\n\t\t$payload_json = wp_json_encode( $payload, JSON_UNESCAPED_SLASHES );\n\t\t$payload_b64 = self::b64url_encode( $payload_json );\n\t\t$signature = hash_hmac( 'sha256', $payload_b64, $secret );\n\t\t$raw_token = $payload_b64 . '.' . $signature;\n\n\t\t$token_hash = hash( 'sha256', $raw_token );\n\n\t\t$inserted = $wpdb->insert(\n\t\t\tself::table_name(),\n\t\t\tarray(\n\t\t\t\t'token_hash'    => $token_hash,\n\t\t\t\t'nonce'         => $nonce,\n\t\t\t\t'purpose'       => substr( $args['purpose'], 0, 48 ),\n\t\t\t\t'purpose_group' => isset( $args['purpose_group'] ) ? substr( $args['purpose_group'], 0, 48 ) : null,\n\t\t\t\t'subject_id'    => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0,\n\t\t\t\t'subject_email' => isset( $args['subject_email'] ) ? sanitize_email( $args['subject_email'] ) : null,\n\t\t\t\t'resource_id'   => isset( $args['resource_id'] ) ? substr( (string) $args['resource_id'], 0, 64 ) : null,\n\t\t\t\t'action'        => isset( $args['action'] ) ? substr( (string) $args['action'], 0, 48 ) : null,\n\t\t\t\t'key_id'        => $key_id,\n\t\t\t\t'status'        => 'active',\n\t\t\t\t'created_at'    => gmdate( 'Y-m-d H:i:s', $now ),\n\t\t\t\t'expires_at'    => gmdate( 'Y-m-d H:i:s', $expires_ts ),\n\t\t\t),\n\t\t\tarray( '%s','%s','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s' )\n\t\t);\n\n\t\tif ( ! $inserted ) {\n\t\t\treturn false;\n\t\t}\n\t\treturn $raw_token;\n\t}\n\n\t/**\n\t * PEEK — nuskaito token'a BE side-effect (scanner-safe, GET kontekstui).\n\t * Naudojama confirmation page rodymui. NEKEIČIA status.\n\t *\n\t * @param string $raw_token\n\t * @return array {valid, reason, row} — row = DB eilute (jei valid).\n\t */",
+  "metodas_peek": "','%s','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s' )\n\t\t);\n\n\t\tif ( ! $inserted ) {\n\t\t\treturn false;\n\t\t}\n\t\treturn $raw_token;\n\t}\n\n\t/**\n\t * PEEK — nuskaito token'a BE side-effect (scanner-safe, GET kontekstui).\n\t * Naudojama confirmation page rodymui. NEKEIČIA status.\n\t *\n\t * @param string $raw_token\n\t * @return array {valid, reason, row} — row = DB eilute (jei valid).\n\t */\n\tpublic static function peek( $raw_token ) {\n\t\treturn self::validate_internal( $raw_token, false );\n\t}\n\n\t/**\n\t * CONSUME — patikrina + atlieka veiksma (status→used) + invaliduoja susijusius.\n\t * TIK POST kontekste (negrįžtamas veiksmas). Scanner-safe.\n\t *\n\t * @param string $raw_token\n\t * @return array {valid, reason, row}\n\t */",
+  "metodas_consume": "eason, row} — row = DB eilute (jei valid).\n\t */\n\tpublic static function peek( $raw_token ) {\n\t\treturn self::validate_internal( $raw_token, false );\n\t}\n\n\t/**\n\t * CONSUME — patikrina + atlieka veiksma (status→used) + invaliduoja susijusius.\n\t * TIK POST kontekste (negrįžtamas veiksmas). Scanner-safe.\n\t *\n\t * @param string $raw_token\n\t * @return array {valid, reason, row}\n\t */\n\tpublic static function consume( $raw_token ) {\n\t\t$result = self::validate_internal( $raw_token, true );\n\t\treturn $result;\n\t}\n\n\t/**\n\t * Vidine validacija.\n\t *\n\t * @param string $raw_token\n\t * @param bool   $mark_used  jei true — pazymi used + invaliduoja susijusius (consume).\n\t * @return array {valid, reason, row}\n\t */\n\tprivate static function validate_internal( $raw_token, $mark_used ) {\n\t\tglobal $wpdb;\n\n\t\tif ( ! is_string( $raw_token ) || strpos( $raw_token, '.' ) === false ) {\n\t\t\treturn array( 'valid' => false, 'reason' => 'malformed' );\n\t\t}\n\n\t\tlist( $payload_b64, $signature ) = explode( '.', $raw_token, 2 );\n\t\t$payload_json = self::b64url_decode( $payload_b64 );\n\t\t$payload = json_decode( $payload_json, true );\n\n\t\tif ( ! is_array( $payload ) || empty( $payload['key_id'] ) ) {\n\t\t\treturn array( 'valid' => false, 'reason' => 'bad_payload' );\n\t\t}\n\n\t\t// HMAC verify su tokeno nurodytu key_id\n\t\t$secret = self::get_key( $payload['key_id'] );\n\t\tif ( ! $secret ) {\n\t\t\treturn array( 'valid' => false, 'reason' => 'unknown_key' );\n\t\t}\n\t\t$expected = hash_hmac( 'sha256', $payload_b64, $secret );\n\t\tif ( ! hash_equals( $expected, $signature ) ) {\n\t\t\treturn array( 'valid' => false, 'reason' => 'bad_signature' );\n\t\t}\n\n\t\t// Expiry pagal payload\n\t\tif ( empty( $payload['expires_at'] ) || (int) $payload['expires_at'] < time() ) {\n\t\t\treturn array( 'valid' => false, 'reason' => 'expired' );\n\t\t}\n\n\t\t// DB eilute pagal token_hash\n\t\t$token_hash = hash( 'sha256', $raw_token );\n\t\t$row = $wpdb->get_row( $wpdb->prepare(\n\t\t\t\"SELECT * FROM `\" . self::table_name() . \"` WHERE token_hash = %s LIMIT 1\",\n\t\t\t$token_hash\n\t\t) );\n\n\t\tif ( ! $row ) {\n\t\t\treturn array( 'valid' => false, 'reason' => 'not_found' );\n\t\t}\n\t\tif ( $row->status !== 'active' ) {\n\t\t\treturn array( 'valid' => false, 'reason' => 'already_' . $row->status, 'row' => $row );\n\t\t}\n\t\t// DB expiry double-check\n\t\tif ( strtotime( $row->expires_at . ' UTC' ) < time() ) {\n\t\t\t$wpdb->update( self::table_name(), array( 'status' => 'expired' ), array( 'id' => $row->id ) );\n\t\t\treturn array( 'valid' => false, 'reason' => 'expired', 'row' => $row );\n\t\t}\n\n\t\tif ( $mark_used ) {\n\t\t\t$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';\n\t\t\t// 1. Pazymim si token'a used\n\t\t\t$wpdb->update(\n\t\t\t\tself::table_name(),\n\t\t\t\tarray( 'status' => 'used', 'used_at' => gmdate( 'Y-m-d H:i:s' ), 'used_ip' => substr( $ip, 0, 45 ) ),\n\t\t\t\tarray( 'id' => $row->id )\n\t\t\t);\n\t\t\t// 2. Invaliduojam susijusius (tas pats purpose_group + resource_id, isskyrus si)\n\t\t\tif ( ! empty( $row->purpose_group ) ) {\n\t\t\t\t$wpdb->query( $wpdb->prepare(\n\t\t\t\t\t\"UPDATE `\" . self::table_name() . \"`\n\t\t\t\t\t SET status = 'invalidated'\n\t\t\t\t\t WHERE purpose_group = %s\n\t\t\t\t\t   AND status = 'active'\n\t\t\t\t\t   AND id != %d\",\n\t\t\t\t\t$row->purpose_group,\n\t\t\t\t\t$row->id\n\t\t\t\t) );\n\t\t\t}\n\t\t}\n\n\t\treturn array( 'valid' => true, 'reason' => 'ok', 'row' => $row );\n\t}\n\n\t/**\n\t * Invaliduoti visus aktyvius token'us pagal purpose_group (rankinis).\n\t */",
+  "magic_dydis": 18618,
+  "magic_register_routes": "en=XXX\n\tconst META_EMAIL_VERIFIED = '_ps_email_verified';\n\n\tpublic static function init() {\n\t\t// REST endpoint magic link uzklausai\n\t\tadd_action( 'rest_api_init', array( __CLASS__, 'register_routes' ) );\n\t\t// Login puslapio handler (GET confirmation + POST consume)\n\t\tadd_action( 'init', array( __CLASS__, 'handle_login_page' ) );\n\t}\n\n\tpublic static function register_routes() {\n\t\tregister_rest_route( 'petshop/v1', '/magic-login/request', array(\n\t\t\t'methods'             => 'POST',\n\t\t\t'callback'            => array( __CLASS__, 'handle_request' ),\n\t\t\t'permission_callback' => '__return_true',\n\t\t\t'args'                => array(\n\t\t\t\t'email' => array( 'required' => true, 'type' => 'string' ),\n\t\t\t),\n\t\t) );\n\t}\n\n\t/**\n\t * POST /petshop/v1/magic-login/request\n\t * Visada grazina ta pati atsakyma (enumeration apsauga).\n\t */",
+  "magic_handle_request": "\t'callback'            => array( __CLASS__, 'handle_request' ),\n\t\t\t'permission_callback' => '__return_true',\n\t\t\t'args'                => array(\n\t\t\t\t'email' => array( 'required' => true, 'type' => 'string' ),\n\t\t\t),\n\t\t) );\n\t}\n\n\t/**\n\t * POST /petshop/v1/magic-login/request\n\t * Visada grazina ta pati atsakyma (enumeration apsauga).\n\t */\n\tpublic static function handle_request( $request ) {\n\t\t$email = sanitize_email( $request->get_param( 'email' ) );\n\t\t$ip = self::get_client_ip();\n\n\t\t// Bendras \"sekmes\" atsakymas — visais atvejais (yra/nera user, rate limit)\n\t\t$generic = array(\n\t\t\t'ok'      => true,\n\t\t\t'message' => 'Jei tokia paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į el. paštą.',\n\t\t);\n\n\t\tif ( ! is_email( $email ) ) {\n\t\t\t// Net ir blogo formato atveju — toks pat atsakymas (nesako \"blogas email\")\n\t\t\treturn rest_ensure_response( $generic );\n\t\t}\n\n\t\t// Rate limit patikra (email + IP)\n\t\tif ( ! self::check_rate_limit( $email, $ip ) ) {\n\t\t\t// Toks pat atsakymas — nesako \"per daug bandymu\"\n\t\t\treturn rest_ensure_response( $generic );\n\t\t}\n\n\t\t// S207: token generuojam IR nezinomam email'ui (subject_id=0 — email-only token).\n\t\t// Paskyra CIA NEKURIAMA. Ji sukuriama tik process_login(), t.y. tik zmogui\n\t\t// paspaudus nuoroda savo pasto dezeje = nuosavybes irodymas.\n\t\t$user = get_user_by( 'email', $email );\n\t\t// S209: is kur zmogus atejo — lemia redirect po prisijungimo.\n\t\t$context = sanitize_key( (string) $request->get_param( 'context' ) );\n\t\tif ( ! in_array( $context, array( 'pet', 'account' ), true ) ) {\n\t\t\t$context = 'pet'; // senas anketos frontend'as context'o nesiuncia — jam elgesys nesikeicia\n\t\t}\n\t\t$token = ps_generate_token( array(\n\t\t\t'purpose'       => self::TOKEN_PURPOSE,\n\t\t\t'subject_id'    => $user ? (int) $user->ID : 0,\n\t\t\t'subject_email' => $email,\n\t\t\t'ttl_seconds'   => self::TOKEN_TTL,\n\t\t\t'action'        => $context,\n\t\t) );\n\t\tif ( $token ) {\n\t\t\tself::send_login_email( $email, $user, $token );\n\t\t}\n\n\t\treturn rest_ensure_response( $generic );\n\t}\n\n\t/**\n\t * Login puslapio handler: GET (confirmation) + POST (consume).\n\t * URL: /petshop-login?token=XXX\n\t */",
+  "magic_process_login": "der:none;padding:14px 32px;border-radius:8px;font-size:16px;cursor:pointer;font-weight:600;\">Prisijungti</button>\n\t\t\t</form>\n\t\t\t<p style=\"margin-top:16px;color:#888;font-size:13px;\">Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.</p>'\n\t\t);\n\t}\n\n\t/**\n\t * POST — consume token, login, session regen, redirect.\n\t */\n\tprivate static function process_login( $token ) {\n\t\t// Nonce patikra (CSRF)\n\t\t$nonce = isset( $_POST['ps_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ps_nonce'] ) ) : '';\n\t\tif ( ! wp_verify_nonce( $nonce, 'ps_magic_login' ) ) {\n\t\t\tself::render_error( 'Sesija pasibaigusi. Prašome prisijungti iš naujo.' );\n\t\t\treturn;\n\t\t}\n\n\t\t$result = ps_consume_token( $token );\n\t\tif ( ! $result['valid'] ) {\n\t\t\t// S209: ne aklas klaidos puslapis — ta pati email forma su galimybe gauti nauja nuoroda.\n\t\t\tself::render_retry( 'Ši nuoroda nebegalioja arba jau panaudota. Įveskite el. paštą ir atsiųsime naują.' );\n\t\t\treturn;\n\t\t}\n\t\tif ( isset( $result['row']->purpose ) && $result['row']->purpose !== self::TOKEN_PURPOSE ) {\n\t\t\tself::render_retry( 'Nuoroda neteisinga. Įveskite el. paštą ir atsiųsime naują.' );\n\t\t\treturn;\n\t\t}\n\n\t\t$user_id = (int) $result['row']->subject_id;\n\t\t$user    = $user_id ? get_user_by( 'id', $user_id ) : null;\n\n\t\t// S207: email-only token (subject_id=0) — paskyra kuriama TIK cia.\n\t\tif ( ! $user ) {\n\t\t\t$token_email = isset( $result['row']->subject_email ) ? sanitize_email( $result['row']->subject_email ) : '';\n\t\t\tif ( ! $token_email || ! is_email( $token_email ) ) {\n\t\t\t\tself::render_error( 'Paskyra nerasta.' );\n\t\t\t\treturn;\n\t\t\t}\n\t\t\t// Tarp issiuntimo ir paspaudimo paskyra galejo atsirasti (registracija/Google login)\n\t\t\t$user = get_user_by( 'email', $token_email );\n\t\t\tif ( ! $user ) {\n\t\t\t\t$new_id = wp_create_user(\n\t\t\t\t\tself::unique_login_from_email( $token_email ),\n\t\t\t\t\twp_generate_password( 24 ),\n\t\t\t\t\t$token_email\n\t\t\t\t);\n\t\t\t\tif ( is_wp_error( $new_id ) ) {\n\t\t\t\t\tself::render_error( 'Nepavyko sukurti paskyros. Bandykite dar kartą.' );\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\t$new_user = new WP_User( $new_id );\n\t\t\t\t$new_user->set_role( 'customer' );\n\t\t\t\t$user = get_user_by( 'id', $new_id );\n\t\t\t}\n\t\t\tif ( ! $user ) {\n\t\t\t\tself::render_error( 'Paskyra nerasta.' );\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t\t$user_id = (int) $user->ID;\n\n\t\t// Session fixation apsauga: wp_clear_auth_cookie + naujas wp_set_auth_cookie\n\t\t// zemiau duoda nauja auth cookie (sena negalioja). WP neturi PHP session'u\n\t\t// pagal nutylejima, tad atskiro session_regenerate_id nereikia.\n\n\t\t// Login\n\t\twp_clear_auth_cookie();\n\t\twp_set_current_user( $user_id );\n\t\twp_set_auth_cookie( $user_id, true );  // remember=true\n\t\tdo_action( 'wp_login', $user->user_login, $user );\n\n\t\t// PS_EMAIL_VERIFIED mirror\n\t\tupdate_user_meta( $user_id, self::META_EMAIL_VERIFIED, 'yes' );\n\t\t// Push i Sender (jei yra)\n\t\tif ( function_exists( 'ps_esp_adapter' ) ) {\n\t\t\t$adapter = ps_esp_adapter();\n\t\t\tif ( $adapter && $adapter->is_configured() ) {\n\t\t\t\t$adapter->upsert_contact( $user->user_email, array(\n\t\t\t\t\t'PS_EMAIL_VERIFIED' => 'true',\n\t\t\t\t\t'PS_LOGIN_METHOD'   => 'magic_link',\n\t\t\t\t) );\n\t\t\t}\n\t\t}\n\n\t\t// S209: redirect pagal tai, is kur zmogus atejo (token action laukas).\n\t\t//   pet     -> augintinio puslapis (ten gyvena juodrascio perkelimas, S207)\n\t\t//   account -> paskyros pradzia (iprastas login is /my-account/)\n\t\t$context = isset( $result['row']->action ) ? (string) $result['row']->action : 'pet';\n\t\t$redirect = '';\n\t\tif ( $context !== 'account' && function_exists( 'wc_get_account_endpoint_url' ) ) {\n\t\t\t$redirect = wc_get_account_endpoint_url( 'augintinis' );\n\t\t}\n\t\tif ( ! $redirect ) {\n\t\t\t$redirect = wc_get_page_permalink( 'myaccount' );\n\t\t}\n\t\tif ( ! $redirect ) {\n\t\t\t$redirect = home_url( '/' );\n\t\t}\n\t\twp_safe_redirect( $redirect );\n\t\texit;\n\t}\n\n\t/**\n\t * Siunciam magic link laiska per WP Mail SMTP.\n\t */\n\t/**\n\t * S207: $user gali buti NULL (naujas email) — tekstas prisitaiko, jokio fatal.\n\t */",
+  "magic_send_login_email": "if ( ! $redirect ) {\n\t\t\t$redirect = wc_get_page_permalink( 'myaccount' );\n\t\t}\n\t\tif ( ! $redirect ) {\n\t\t\t$redirect = home_url( '/' );\n\t\t}\n\t\twp_safe_redirect( $redirect );\n\t\texit;\n\t}\n\n\t/**\n\t * Siunciam magic link laiska per WP Mail SMTP.\n\t */\n\t/**\n\t * S207: $user gali buti NULL (naujas email) — tekstas prisitaiko, jokio fatal.\n\t */\n\tprivate static function send_login_email( $email, $user, $token ) {\n\t\t$login_url = add_query_arg( 'token', rawurlencode( $token ), home_url( '/' . self::LOGIN_PATH ) );\n\t\t$is_new = ! $user;\n\t\t$name = '';\n\t\tif ( $user ) {\n\t\t\t$name = $user->first_name ? $user->first_name : $user->display_name;\n\t\t}\n\n\t\t$subject = $is_new ? 'Išsaugokite augintinio profilį — Petshop.lt' : 'Prisijungimas prie Petshop.lt';\n\t\t$title   = $is_new ? 'Išsaugokite augintinio profilį' : 'Prisijungimas prie Petshop.lt';\n\t\t$intro   = $is_new\n\t\t\t? 'Paspauskite mygtuką žemiau ir jūsų augintinio profilis bus išsaugotas — galėsite jį pasiekti bet kada.'\n\t\t\t: 'Gavome prašymą prisijungti prie jūsų paskyros. Paspauskite mygtuką žemiau:';\n\t\t$cta     = $is_new ? 'Išsaugoti profilį' : 'Prisijungti';\n\n\t\t$body  = '<html><body style=\"font-family:Arial,sans-serif;color:#333;max-width:560px;margin:0 auto;\">';\n\t\t$body .= '<div style=\"padding:24px;\">';\n\t\t$body .= '<h2 style=\"color:#2D5F3F;\">' . esc_html( $title ) . '</h2>';\n\t\t$body .= '<p>Sveiki' . ( $name ? ', ' . esc_html( $name ) : '' ) . ',</p>';\n\t\t$body .= '<p>' . esc_html( $intro ) . '</p>';\n\t\t$body .= '<p style=\"margin:28px 0;\"><a href=\"' . esc_url( $login_url ) . '\" style=\"background:#2D5F3F;color:#fff;text-decoration:none;padding:14px 32px;border-radius:8px;font-weight:600;display:inline-block;\">' . esc_html( $cta ) . '</a></p>';\n\t\t$body .= '<p style=\"color:#888;font-size:13px;\">Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.</p>';\n\t\t$body .= '<p style=\"color:#888;font-size:13px;\">Jei šio prašymo nepateikėte — tiesiog ignoruokite šį laišką.</p>';\n\t\t$body .= '<hr style=\"border:none;border-top:1px solid #eee;margin:24px 0;\">';\n\t\t$body .= '<p style=\"color:#aaa;font-size:12px;\">Petshop.lt</p>';\n\t\t$body .= '</div></body></html>';\n\n\t\t$headers = array(\n\t\t\t'Content-Type: text/html; charset=UTF-8',\n\t\t\t'From: Petshop.lt <terra@petshop.lt>',\n\t\t);\n\t\twp_mail( $email, $subject, $body, $headers );\n\t}\n\n\t/**\n\t * S207: unikalus login is email'o dalies pries @. Slaptazodis atsitiktinis —\n\t * zmogus jungiasi per magic link, arba vėliau pasikeicia pats.\n\t */",
+  "magic_render_confirmation": "EST_METHOD'] ) : 'GET';\n\n\t\tif ( $method === 'POST' ) {\n\t\t\t// CONSUME — atlieka login\n\t\t\tself::process_login( $token );\n\t\t} else {\n\t\t\t// GET — confirmation page (scanner-safe, peek be side-effect)\n\t\t\tself::render_confirmation( $token );\n\t\t}\n\t}\n\n\t/**\n\t * GET confirmation page — peek token, rodo POST forma su \"Prisijungti\".\n\t */\n\tprivate static function render_confirmation( $token ) {\n\t\t$peek = ps_peek_token( $token );\n\t\tif ( ! $peek['valid'] ) {\n\t\t\tself::render_retry( 'Nuoroda neteisinga arba pasibaigusi. Įveskite el. paštą ir atsiųsime naują.' );\n\t\t\treturn;\n\t\t}\n\t\t// Patikrinam kad tai magic_login purpose\n\t\tif ( isset( $peek['row']->purpose ) && $peek['row']->purpose !== self::TOKEN_PURPOSE ) {\n\t\t\tself::render_retry( 'Nuoroda neteisinga. Įveskite el. paštą ir atsiųsime naują.' );\n\t\t\treturn;\n\t\t}\n\n\t\t$action_url = esc_url( home_url( '/' . self::LOGIN_PATH ) );\n\t\t$token_esc = esc_attr( $token );\n\t\t$nonce = wp_create_nonce( 'ps_magic_login' );\n\n\t\tself::render_page(\n\t\t\t'Prisijungimas',\n\t\t\t'<h1 style=\"color:#2D5F3F;\">Prisijungti prie Petshop.lt</h1>\n\t\t\t<p>Paspauskite mygtuką, kad užbaigtumėte prisijungimą.</p>\n\t\t\t<form method=\"POST\" action=\"' . $action_url . '\" style=\"margin-top:24px;\">\n\t\t\t\t<input type=\"hidden\" name=\"token\" value=\"' . $token_esc . '\">\n\t\t\t\t<input type=\"hidden\" name=\"ps_nonce\" value=\"' . esc_attr( $nonce ) . '\">\n\t\t\t\t<button type=\"submit\" style=\"background:#2D5F3F;color:#fff;border:none;padding:14px 32px;border-radius:8px;font-size:16px;cursor:pointer;font-weight:600;\">Prisijungti</button>\n\t\t\t</form>\n\t\t\t<p style=\"margin-top:16px;color:#888;font-size:13px;\">Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.</p>'\n\t\t);\n\t}\n\n\t/**\n\t * POST — consume token, login, session regen, redirect.\n\t */"
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
