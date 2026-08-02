@@ -1,0 +1,116 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2094,
+ "rez": {
+  "VERSIJA": "magic-matrix-v1",
+  "M1_be_draft": {
+   "kodas": 200,
+   "ok": true,
+   "tokenu": 1,
+   "resource_id": "",
+   "OK": true
+  },
+  "M2_validus": {
+   "draft_id": "8b7373ae-87cd-4ecb-b9f9-11585b77d304",
+   "resource_id": "8b7373ae-87cd-4ecb-b9f9-11585b77d304",
+   "tokenu": 1,
+   "OK": true
+  },
+  "M3_neegzistuoja": {
+   "kodas": 200,
+   "resource_id": "",
+   "LAUKTA": "200 generic, resource_id TUSCIAS",
+   "OK": true
+  },
+  "M4_svetimas": {
+   "resource_id": "",
+   "OK": true
+  },
+  "M5_expired": {
+   "resource_id": "",
+   "OK": true
+  },
+  "M6_statusai": {
+   "r": {
+    "claiming": "",
+    "claimed": "",
+    "expired": ""
+   },
+   "OK": true
+  },
+  "M7_blogas_uuid": {
+   "kodai": [
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "resource_ids": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "OK": true
+  },
+  "M8_url_keitimas": {
+   "db_resource_id": "",
+   "originalus": null,
+   "paaiskinimas": "resource_id saugomas ps_action_tokens ir PASIRASYTAME payload; URL parametras jo nekeicia",
+   "OK": false
+  },
+  "M9_neatskleidzia": {
+   "atsakymai": {
+    "validus": {
+     "kodas": 200,
+     "body": {
+      "ok": true,
+      "message": "Jei tokia paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į el. paštą."
+     }
+    },
+    "neegzistuoja": {
+     "kodas": 200,
+     "body": {
+      "ok": true,
+      "message": "Jei tokia paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į el. paštą."
+     }
+    },
+    "svetimas": {
+     "kodas": 200,
+     "body": {
+      "ok": true,
+      "message": "Jei tokia paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į el. paštą."
+     }
+    }
+   },
+   "vienodi": true,
+   "OK": true
+  },
+  "M10_be_salutiniu": {
+   "drafto_statusas": null,
+   "pets": 0,
+   "vartotojai": 0,
+   "laisku_perimta": 0,
+   "OK": false
+  },
+  "SUVESTINE": "8/10",
+  "draftu_po": 0,
+  "pets": 65
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
