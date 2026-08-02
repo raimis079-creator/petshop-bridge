@@ -1,5 +1,4 @@
 import { execSync } from 'child_process';
-import { chromium } from 'playwright';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
@@ -22,7 +21,7 @@ try{
     off.push(s0.id+':'+s0.name); } }
   O.deaktyvuota_TEMP=off;
 }catch(e){ O.valymo_klaida=String(e).slice(0,200); }
-const php=Buffer.from('PD9waHAKLyoqCiAqIFVJIExvY2FsaXphdGlvbiBSdW50aW1lIEF1ZGl0IOKAlCBrb250YWt0dSBwdXNsYXBpcyArIHBvcmFzdGVzIHJlY29uCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19rdDMnXSkgfHwgJF9HRVRbJ3BzX2t0MyddICE9PSAnS3QzdzcnICkgcmV0dXJuOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICBnbG9iYWwgJHdwZGI7ICRyID0gYXJyYXkoJ1ZFUlNJSkEnPT4na29udGFrdGFpLXJlY29uLXYxJyk7CgogICAgLy8gMSkga29udGFrdHUgcHVzbGFwaXMKICAgIGZvcmVhY2ggKGFycmF5KCdrb250YWt0YWknLCdjb250YWN0Jywnc3VzaXNpZWtpbWUnKSBhcyAkc2x1ZykgewogICAgICAgICRwID0gZ2V0X3BhZ2VfYnlfcGF0aCgkc2x1Zyk7CiAgICAgICAgaWYgKCRwKSB7CiAgICAgICAgICAgICRyWydwdXNsYXBpcyddID0gYXJyYXkoJ2lkJz0+JHAtPklELCdzbHVnJz0+JHNsdWcsJ3RpdGxlJz0+JHAtPnBvc3RfdGl0bGUsCiAgICAgICAgICAgICAgICAnc3RhdHVzJz0+JHAtPnBvc3Rfc3RhdHVzLCd1cmwnPT5nZXRfcGVybWFsaW5rKCRwLT5JRCksJ2lsZ2lzJz0+c3RybGVuKCRwLT5wb3N0X2NvbnRlbnQpKTsKICAgICAgICAgICAgJHJbJ3R1cmlueXMnXSA9ICRwLT5wb3N0X2NvbnRlbnQ7CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIH0KICAgIH0KICAgIC8vIGFyIHlyYSBmb3Jtb3MgcGx1Z2luJ2FzCiAgICAkclsnZm9ybW9zX3BsdWdpbmFpJ10gPSBhcnJheSgpOwogICAgZm9yZWFjaCAoYXJyYXkoJ2NvbnRhY3QtZm9ybS03L3dwLWNvbnRhY3QtZm9ybS03LnBocCcsJ3dwZm9ybXMtbGl0ZS93cGZvcm1zLnBocCcsCiAgICAgICAgICAgICAgICAgICAnbmluamEtZm9ybXMvbmluamEtZm9ybXMucGhwJywnZm9ybWluYXRvci9mb3JtaW5hdG9yLnBocCcsCiAgICAgICAgICAgICAgICAgICAnZmx1ZW50Zm9ybS9mbHVlbnRmb3JtLnBocCcsJ2ZsYXRzb21lL2luYy9pbnRlZ3JhdGlvbnMvY29udGFjdC1mb3JtLTcvJykgYXMgJHBsKSB7CiAgICAgICAgaWYgKGZ1bmN0aW9uX2V4aXN0cygnaXNfcGx1Z2luX2FjdGl2ZScpICYmIGlzX3BsdWdpbl9hY3RpdmUoJHBsKSkgeyAkclsnZm9ybW9zX3BsdWdpbmFpJ11bXSA9ICRwbDsgfQogICAgfQogICAgJHJbJ3Zpc2lfYWt0eXZ1cyddID0gZ2V0X29wdGlvbignYWN0aXZlX3BsdWdpbnMnKTsKCiAgICAvLyAyKSBwb3Jhc3RlcyB0dXJpbnlzIOKAlCBrdXIgZ3l2ZW5hIEtPTlRBS1RBSSBibG9rYXMKICAgICRyWydmb290ZXJfYmxva2FpJ10gPSBhcnJheSgpOwogICAgZm9yZWFjaCAoYXJyYXkoJ2Zvb3Rlcl9sZWZ0X3RleHQnLCdmb290ZXJfcmlnaHRfdGV4dCcsJ2Zvb3Rlcl8yX2xlZnRfdGV4dCcsJ2Zvb3Rlcl8yX3JpZ2h0X3RleHQnKSBhcyAkaykgewogICAgICAgICR2ID0gZ2V0X3RoZW1lX21vZCgkayk7CiAgICAgICAgaWYgKCR2KSB7ICRyWydmb290ZXJfYmxva2FpJ11bJGtdID0gJHY7IH0KICAgIH0KICAgIC8vIEZsYXRzb21lIHBvcmFzdGVzIHdpZGdldCdhaQogICAgJHNpZGViYXJzID0gd3BfZ2V0X3NpZGViYXJzX3dpZGdldHMoKTsKICAgIGZvcmVhY2ggKCRzaWRlYmFycyBhcyAkc2IgPT4gJHdpZGdldHMpIHsKICAgICAgICBpZiAoc3RycG9zKCRzYiwnZm9vdGVyJykgPT09IGZhbHNlKSBjb250aW51ZTsKICAgICAgICBmb3JlYWNoICgoYXJyYXkpJHdpZGdldHMgYXMgJHcpIHsKICAgICAgICAgICAgJHRpcGFzID0gcHJlZ19yZXBsYWNlKCcvLVxkKyQvJywnJywkdyk7CiAgICAgICAgICAgICRuciA9IChpbnQpIHByZWdfcmVwbGFjZSgnL14uKi0vJywnJywkdyk7CiAgICAgICAgICAgICRvcHQgPSBnZXRfb3B0aW9uKCd3aWRnZXRfJy4kdGlwYXMpOwogICAgICAgICAgICBpZiAoaXNzZXQoJG9wdFskbnJdKSkgewogICAgICAgICAgICAgICAgJHR1cmlueXMgPSBpc19hcnJheSgkb3B0WyRucl0pID8gd3BfanNvbl9lbmNvZGUoJG9wdFskbnJdLCBKU09OX1VORVNDQVBFRF9VTklDT0RFKSA6IChzdHJpbmcpJG9wdFskbnJdOwogICAgICAgICAgICAgICAgaWYgKHN0cnBvcygkdHVyaW55cywncGV0c2hvcC5sdCcpICE9PSBmYWxzZSB8fCBzdHJwb3MoJHR1cmlueXMsJzg3Nzg3JykgIT09IGZhbHNlCiAgICAgICAgICAgICAgICAgICAgfHwgc3RyaXBvcygkdHVyaW55cywna29udGFrdCcpICE9PSBmYWxzZSkgewogICAgICAgICAgICAgICAgICAgICRyWyd3aWRnZXRhcyddWyRzYi4nLycuJHddID0gJHR1cmlueXM7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fVU5FU0NBUEVEX1NMQVNIRVMpOwogICAgZXhpdDsKfSk7Cg==','base64').toString('utf8');
+const php=Buffer.from('PD9waHAKLyoqCiAqIFMzMzEg4oCUIGVtYWlsIHNsdW9rc25pbyBwaWxuYXMgaW52ZW50b3JpdXMuIFRJSyBTS0FJVFlNQVMuCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19lbTcnXSkgfHwgJF9HRVRbJ3BzX2VtNyddICE9PSAnRW03eDInICkgcmV0dXJuOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICBnbG9iYWwgJHdwZGI7ICRyID0gYXJyYXkoJ1ZFUlNJSkEnPT4nZW1haWwtaW52ZW50b3J5LXYxJyk7CgogICAgLy8gMSkgVklTSSByZWdpc3RydW90aSBzcmF1dGFpCiAgICBpZiAoY2xhc3NfZXhpc3RzKCdQZXRzaG9wX0VtYWlsX0Rpc3BhdGNoJykpIHsKICAgICAgICAkcmVmID0gbmV3IFJlZmxlY3Rpb25DbGFzcygnUGV0c2hvcF9FbWFpbF9EaXNwYXRjaCcpOwogICAgICAgIGlmICgkcmVmLT5oYXNNZXRob2QoJ2Zsb3dzJykpIHsKICAgICAgICAgICAgJG0gPSAkcmVmLT5nZXRNZXRob2QoJ2Zsb3dzJyk7ICRtLT5zZXRBY2Nlc3NpYmxlKHRydWUpOwogICAgICAgICAgICAkclsnc3JhdXRhaSddID0gJG0tPmludm9rZShudWxsKTsKICAgICAgICB9CiAgICB9CiAgICAvLyAyKSBWSVNJIGVzYW1pIHNhYmxvbmFpCiAgICAkZGlyID0gUEVUU0hPUF9DT1JFX0RJUi4ndGVtcGxhdGVzL2VtYWlscy8nOwogICAgJHJbJ3NhYmxvbnVfa2F0YWxvZ2FzJ10gPSAkZGlyOwogICAgZm9yZWFjaCAoKGFycmF5KSBnbG9iKCRkaXIuJyoucGhwJykgYXMgJGYpIHsKICAgICAgICAkclsnc2FibG9uYWknXVtiYXNlbmFtZSgkZiwgJy5waHAnKV0gPSBmaWxlc2l6ZSgkZik7CiAgICB9CiAgICAvLyAzKSBzdWdyZXRpbmltYXMKICAgICRzYWIgPSBhcnJheV9rZXlzKCRyWydzYWJsb25haSddID8/IGFycmF5KCkpOwogICAgZm9yZWFjaCAoKCRyWydzcmF1dGFpJ10gPz8gYXJyYXkoKSkgYXMgJGtleSA9PiAkY2ZnKSB7CiAgICAgICAgJHRwbCA9IGlzX2FycmF5KCRjZmcpID8gKCRjZmdbJ3RlbXBsYXRlJ10gPz8gJGtleSkgOiAka2V5OwogICAgICAgICRrbGFzZSA9IGlzX2FycmF5KCRjZmcpID8gKCRjZmdbJ2NsYXNzJ10gPz8gJz8nKSA6ICc/JzsKICAgICAgICAkclsnc3VncmV0aW5pbWFzJ11bJGtleV0gPSBhcnJheSgKICAgICAgICAgICAgJ2tsYXNlJyAgID0+ICRrbGFzZSwKICAgICAgICAgICAgJ3NhYmxvbmFzJz0+ICR0cGwsCiAgICAgICAgICAgICdZUkEnICAgICA9PiBpbl9hcnJheSgkdHBsLCAkc2FiLCB0cnVlKSwKICAgICAgICApOwogICAgfQogICAgLy8gNCkgam9iJ3Ugc3RhdGlzdGlrYSDigJQga2FzIHJlYWxpYWkgc2l1c3RhCiAgICAkdCA9ICR3cGRiLT5wcmVmaXguJ3BzX2VtYWlsX2pvYnMnOwogICAgaWYgKCR3cGRiLT5nZXRfdmFyKCJTSE9XIFRBQkxFUyBMSUtFICckdCciKSA9PT0gJHQpIHsKICAgICAgICAkclsnam9icyddID0gJHdwZGItPmdldF9yZXN1bHRzKAogICAgICAgICAgICAiU0VMRUNUIGZsb3csIGZsb3dfY2xhc3MsIHN0YXR1cywgQ09VTlQoKikgYywgTUFYKGNyZWF0ZWRfYXQpIG5hdWphdXNpYXMKICAgICAgICAgICAgICAgRlJPTSAkdCBHUk9VUCBCWSBmbG93LCBmbG93X2NsYXNzLCBzdGF0dXMgT1JERVIgQlkgZmxvdyIsIEFSUkFZX0EpOwogICAgICAgICRyWydqb2JzX3Zpc28nXSA9IChpbnQpICR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkdCIpOwogICAgICAgICRyWydza2lwX3ByaWV6YXN0eXMnXSA9ICR3cGRiLT5nZXRfcmVzdWx0cygKICAgICAgICAgICAgIlNFTEVDVCBza2lwX3JlYXNvbiwgQ09VTlQoKikgYyBGUk9NICR0IFdIRVJFIHNraXBfcmVhc29uIElTIE5PVCBOVUxMCiAgICAgICAgICAgICAgR1JPVVAgQlkgc2tpcF9yZWFzb24gT1JERVIgQlkgYyBERVNDIiwgQVJSQVlfQSk7CiAgICB9CiAgICAvLyA1KSBXb29Db21tZXJjZSBzYXZpIGxhaXNrYWkgKGtpdGkgc2F2aW5pbmthaSkKICAgIGlmIChmdW5jdGlvbl9leGlzdHMoJ1dDJykpIHsKICAgICAgICAkd2MgPSBXQygpLT5tYWlsZXIoKS0+Z2V0X2VtYWlscygpOwogICAgICAgIGZvcmVhY2ggKCR3YyBhcyAkaWQgPT4gJGUpIHsKICAgICAgICAgICAgJHJbJ3dvb19sYWlza2FpJ11bJGlkXSA9IGFycmF5KCdlbmFibGVkJz0+JGUtPmlzX2VuYWJsZWQoKSwgJ3RpdGxlJz0+JGUtPmdldF90aXRsZSgpKTsKICAgICAgICB9CiAgICB9CiAgICAvLyA2KSBldmVudCBsb2cKICAgICRlbCA9ICR3cGRiLT5wcmVmaXguJ3BzX2V2ZW50X2xvZyc7CiAgICBpZiAoJHdwZGItPmdldF92YXIoIlNIT1cgVEFCTEVTIExJS0UgJyRlbCciKSA9PT0gJGVsKSB7CiAgICAgICAgJHJbJ2V2ZW50YWknXSA9ICR3cGRiLT5nZXRfcmVzdWx0cygKICAgICAgICAgICAgIlNFTEVDVCBldmVudF9uYW1lLCBDT1VOVCgqKSBjLCBNQVgoZW1pdHRlZF9hdCkgbmF1amF1c2lhcwogICAgICAgICAgICAgICBGUk9NICRlbCBHUk9VUCBCWSBldmVudF9uYW1lIE9SREVSIEJZIGMgREVTQyBMSU1JVCAyMCIsIEFSUkFZX0EpOwogICAgfQogICAgZWNobyB3cF9qc29uX2VuY29kZSgkciwgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsKICAgIGV4aXQ7Cn0pOwo=','base64').toString('utf8');
 fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'UI Localization Runtime Audit',code:php.replace(/^<\?php\s*/,''),scope:'global',active:true}));
 for(let i=0;i<3 && !sid;i++){
   const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
@@ -30,90 +29,13 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('tcf.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('emailinv.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
-  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_kt3=Kt3w7"');
+  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_em7=Em7x2"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
-// TIK MATAVIMAS — nieko nekeiciam
-try{
-  const browser = await chromium.launch();
-  const ctx = await browser.newContext({viewport:{width:1280,height:1000}, ignoreHTTPSErrors:true, locale:'lt-LT'});
-  const page = await ctx.newPage();
-  await page.goto(SITE+'/', {waitUntil:'domcontentloaded', timeout:60000});
-  await page.waitForTimeout(4000);
-
-  O.matavimas = await page.evaluate(() => {
-    function apie(el){
-      if (!el) return null;
-      const cs = getComputedStyle(el);
-      const rc = el.getBoundingClientRect();
-      // aria-hidden grandine iki body
-      let ah = null, p = el, kelias = [];
-      while (p && p !== document.body) {
-        const c2 = getComputedStyle(p);
-        kelias.push({
-          tag: p.tagName.toLowerCase(),
-          cls: (p.className||'').toString().slice(0,60),
-          display: c2.display, visibility: c2.visibility, opacity: c2.opacity,
-          aria_hidden: p.getAttribute('aria-hidden'),
-          hidden: p.hasAttribute('hidden'),
-        });
-        if (ah === null && p.getAttribute('aria-hidden') === 'true') ah = 'tevas: '+p.tagName+'.'+(p.className||'').toString().slice(0,40);
-        p = p.parentElement;
-      }
-      return {
-        display: cs.display, visibility: cs.visibility, opacity: cs.opacity,
-        w: Math.round(rc.width), h: Math.round(rc.height),
-        aria_hidden_self: el.getAttribute('aria-hidden'),
-        aria_hidden_tevas: ah,
-        tabindex: el.getAttribute('tabindex'),
-        tekstas: (el.innerText||el.textContent||'').trim().slice(0,80),
-        aria_label: el.getAttribute('aria-label'),
-        kelias: kelias.slice(0,6),
-      };
-    }
-    const out = {};
-    out.read_more = apie(document.querySelector('.cmplz-read-more-purposes'));
-    // {vendor_count} elementas
-    let vc = null;
-    document.querySelectorAll('a,span,li,div').forEach(e=>{
-      if (!vc && (e.textContent||'').indexOf('{vendor_count}') >= 0 && e.children.length === 0) vc = e;
-    });
-    out.vendor_count = apie(vc);
-    out.tcf_wrapper = apie(document.querySelector('#cmplz-tcf-wrapper, .cmplz-tcf-wrapper'));
-    out.baneris = apie(document.querySelector('#cmplz-cookiebanner-container .cmplz-cookiebanner, .cmplz-cookiebanner'));
-    return out;
-  });
-
-  // Accessibility tree — ar elementas jame yra
-  try{
-    const snap = await page.accessibility.snapshot();
-    const rasti = [];
-    (function eik(n){ if(!n) return;
-      const t=(n.name||'');
-      if (t.indexOf('TCF')>=0 || t.indexOf('vendor_count')>=0 || t.indexOf('Skaitykite daugiau apie šiuos tikslus')>=0) rasti.push({role:n.role,name:t.slice(0,80)});
-      (n.children||[]).forEach(eik);
-    })(snap);
-    O.a11y_tree = rasti;
-  }catch(e){ O.a11y_err = String(e).slice(0,150); }
-
-  // Tab pasiekiamumas — spaudziam Tab ir renkam fokusuotus
-  const fokusai = [];
-  for (let i=0;i<45;i++){
-    await page.keyboard.press('Tab');
-    const f = await page.evaluate(()=>{ const a=document.activeElement; if(!a) return null;
-      return {cls:(a.className||'').toString().slice(0,50), txt:(a.innerText||a.textContent||'').trim().slice(0,50), al:a.getAttribute('aria-label')}; });
-    if (f) fokusai.push(f);
-  }
-  O.tab_tcf = fokusai.filter(f=>f && ((f.cls||'').indexOf('tcf')>=0 || (f.al||'').indexOf('TCF')>=0 || (f.txt||'').indexOf('tikslus')>=0));
-  O.tab_viso = fokusai.length;
-
-  fs.writeFileSync('/tmp/TCF.png', await page.screenshot({fullPage:false}));
-  await browser.close();
-  try{ putB64('tcf_view.png', fs.readFileSync('/tmp/TCF.png').toString('base64')); }catch(e){}
-}catch(err){ O.BROWSER_ERR=String(err && err.stack ? err.stack : err).slice(0,600); }
+O.rez=uzk(1);
 sh('sleep 4');
 function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
 O.t_naujas       = code(SITE+'/paskyra/');
@@ -133,5 +55,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('tcf.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('emailinv.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
