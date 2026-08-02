@@ -957,6 +957,57 @@ claimed_* · claim_* · created_at · updated_at · expires_at · email_hash ·
 payload_json. Atsiuntus — IGNORUOJAMA (ne klaida).
 `client_ref` atsiranda TIK claim metu kaip `client_ref = draft_id`.
 
+### ★ S336 — POST /petshop/v1/pet-draft: UZBAIGTA
+
+```
+OK viesas REST marsrutas (permission_callback __return_true, anoniminis)
+OK raw <= 32 KB PRIES JSON dekodavima
+OK payload_version tik 1 (nenurodyta -> 1; kita -> 400 unsupported_payload_version)
+OK email normalizacija + HMAC (64 simb., „ TESTAS@…" == „testas@…")
+OK 20 bandymu / IP / val. (skaiciuoja IR nesekmingus)
+OK 5 SEKMINGI draftai / email_hash / val.
+OK kanoninis sanitize (Petshop_Pet_Profile::sanitize_payload) + current_weight_kg
+OK sanitized payload <= 16 KB
+OK nezinomi, tusti IR netinkamu tipu payload'ai ATMETAMI
+OK draudziami laukai ignoruojami (user_id/status/client_ref/draft_id/expires_at/...)
+OK draft_id — TIK serverio wp_generate_uuid4() (kliento siustas IGNORUOJAMAS)
+OK 14 dienu galiojimas (isvestinis: expires_at - created_at = 14)
+OK vienas draftas = vienas augintinis (pets[] -> 400)
+OK JOKIU salutiniu veiksmu: pets +0, email_jobs +0, vartotojai +0
+```
+**Testai: 16/16 branduolys + 5/5 T13 regresija + 10/10 siaurieji vartai.**
+Failai: `class-pet-drafts.php` 12 822 -> 20 329 B · `class-pet-profile.php`
+(+`sanitize_payload()`) · `petshop-core.php` (+`Petshop_Pet_Drafts::init()`).
+Backup'ai `.bak_S336`, `.bak_S336b`, `.bak_S336c`.
+
+**★ UZDARYTA REGRESIJA — numatytasis `species='other'`.**
+`sanitize_input( ..., $partial=false )` IRASO numatytaji `species='other'`, todel
+payload'as vien is NEZINOMU lauku po sanitizavimo liktu NETUSCIAS ir siuksles
+butu tape galiojanciu draftu. Pirma pataisa (lyginimas su ETALONU) uzdare
+`pets[]`, bet NE „leistina bet TUSCIA" rakta (`{"pet_name":"   "}`,
+`{"current_food_brand":""}`, `{"species":""}`) — tokie irasytu null/tuscia
+reiksme ir apgautu palyginima.
+**GALUTINIS SPRENDIMAS:** skaiciuojamos TIK realiai uzpildytos reiksmes
+(`null`/`''`/`array()` praleidziami), `weight_updated_at` nuimamas kaip SERVERIO
+priedas, o numatytoji `species` neskaitoma prasminga, NEBENT klientas ja pateike
+AISKIAI ir NETUSCIA. **Numatytasis `species='other'` NEBEGALI paversti siuksliu
+payload'o galiojanciu draftu.**
+
+**★ TIPU VARTAI.** VISI whitelist laukai laukia SKALIARU (net `sensitivities`
+yra CSV eilute, NE masyvas). Masyvas/objektas virstu `(string)` -> „Array" +
+PHP notice. Dabar: ne skaliaras -> `400 invalid_payload`, draftas NEKURIAMAS.
+
+**★ IP SALTINIS — PATVIRTINTA EMPIRISKAI.** `client_ip()` naudoja TIK
+`REMOTE_ADDR`; `X-Forwarded-For` ir `X-Real-IP` NEPAISOMI (proxy sarasas
+neapibreztas, todel kliento antraste pasitiketi NEGALIMA). Testas: 22 uzklausos,
+KIEKVIENA su skirtingu XFF (203.0.113.1-22) ir X-Real-IP (198.51.100.1-22) —
+limitas NENUSINULINO: 400x20 -> 429, 429. Vienos antrastes 20/IP limitas
+APEITI NEGALIMA.
+
+**KLAIDU KODAI:** `invalid_email` · `empty_payload` · `invalid_payload` ·
+`unsupported_payload_version` · `payload_too_large` (413) · `rate_limited` (429,
+BENDRINIS — neatskleidzia, kuris limitas suveike) · `draft_save_failed` (500).
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
@@ -964,8 +1015,8 @@ payload_json. Atsiuntus — IGNORUOJAMA (ne klaida).
   S335       current_weight_kg -> kanoninis sanitize  ✅ ATLIKTA (5/5)
              ★ NE atskiras punktas is 9 — BUTINA PRIELAIDA pries 3-a.
                Numeracija NEKINTA: punktu buvo ir lieka 9.
-3 REST       POST /pet-draft su kanonine validacija   <- KITAS
-4 Magic link magic-login/request priima draft_id (triguba patikra)
+3 REST       POST /pet-draft su kanonine validacija   ✅ ATLIKTA (16/16+5/5+10/10)
+4 Magic link magic-login/request priima draft_id (triguba patikra)  <- KITAS
 5 Claim      process_login -> create_pet_result -> complete_claim
 6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)
 7 Cron       cleanup_expired kasdien
