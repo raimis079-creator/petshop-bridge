@@ -1201,6 +1201,60 @@ kol NERA serveriu patvirtinto sekmingo claim'o. Tai SPRENDIMAS, ne spraga.
 **`alert()` sisame sraute salinamas VISISKAI.** Klaidu blokas prie mygtuko su
 `role="alert"`; loading/success busenoms `aria-live="polite"`.
 
+### ★ S340 — CRON: DRAFTU VALYMAS IR STALE CLAIM RECOVERY: UZBAIGTA
+
+```
+OK ps_pet_drafts_cleanup_daily registruotas kasdien 02:40 UTC
+OK planavimas per init() savaime atkuria trukstama cron ivyki
+OK deaktyvuojant wp_clear_scheduled_hook() pasalina plana
+OK claiming >15 min ir dar galiojantis -> active
+OK atgaivinant payload_json ISLIEKA
+OK claim_attempt_id ir claim_started_at ISVALOMI
+OK claiming <15 min NELIECIAMAS
+OK expired claiming ISTRINAMAS, o NE atgaivinamas
+OK expired active / used / conflict istrinami
+OK claimed eilutes dabartineje semantikoje paliekamos
+OK antras cleanup -> 0 atgaivinimu ir 0 trynimu
+```
+```
+Cron registracija / isregistravimas   4/4
+Stale ir expiry vartai                6/6
+IS VISO                              10/10
+```
+Failai: `class-pet-drafts.php` 21 363 -> 23 922 B · `petshop-core.php` 15 121 ->
+15 284 B · backup'ai `.bak_S340`, `.bak_S340b`.
+
+**★ RADINYS, DEL KURIO SIS PUNKTAS BUVO REIKALINGAS.** `cleanup_expired()`
+EGZISTAVO, bet NIEKUR nebuvo registruotas — pasibaige draftai butu kaupesi
+NERIBOTAI su `payload_json` viduje, t.y. PII be jokio termino.
+
+**★ ANTRAS RADINYS (Raimio pastaba).** Pradine salyga „pakibe claiming grazinami
+i active" buvo FAKTISKAI NEIGYVENDINTA: `begin_claim()` stale peremimas yra
+REAKTYVUS — suveikia TIK kai kas nors DAR KARTA bando claim'inti. Be pakartotinio
+bandymo draftas kabotu iki `expires_at`, t.y. beveik 14 dienu, ir zmogus savo
+anketos atgauti negaletu. Pridetas `recover_stale_claims()`.
+
+**TVARKA SVARBI:** pirma `recover_stale_claims()` (salyga `expires_at >= now`),
+TIK PASKUI trynimas. Todel PASIBAIGES stale claiming NEATGAIVINAMAS, o istrinamas.
+
+**PLANAVIMAS PER `init()`, NE `register_activation_hook`:** pluginas JAU aktyvus,
+todel aktyvavimo kabliukas nebepasileistu ir cron'as NIEKADA neatsirastu.
+`wp_next_scheduled()` patikra pigi ir savaime pasitaiso. 02:40 UTC — tarpas tarp
+esamu darbu (03:00 VF reprice, 04:00 VF publish, 05:30 suppression).
+
+**★★ DIAGNOSTIKOS TAISYKLE (KLAIDA PASIKARTOJO DU KARTUS — S335 T5 ir S340b T1):**
+```
+PHP testuose `??` NEGALIMA naudoti tikrinant skirtuma tarp NULL ir NESAMO rakto,
+nes ABU atvejai sukelia fallback reiksme.
+
+BLOGAI:   is_null( $row['claim_attempt_id'] ?? 'x' )      // null -> 'x' -> false
+TEISINGAI: array_key_exists( 'claim_attempt_id', $row )
+           && is_null( $row['claim_attempt_id'] )
+```
+S340b T1 ataskaitoje rodyti `attempt_null:false` ir `started_null:false` buvo
+TIK RODYMO klaida; produkto assertion'ai (be `??`) ir FAKTINES DB reiksmes buvo
+TEISINGOS — abu laukai realiai NULL.
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
@@ -1212,7 +1266,7 @@ kol NERA serveriu patvirtinto sekmingo claim'o. Tai SPRENDIMAS, ne spraga.
 4 Magic link magic-login/request priima draft_id (triguba patikra)  ✅ ATLIKTA (10/10)
 5 Claim      process_login -> create_pet_result -> complete_claim     ✅ ATLIKTA (17/17)
 6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)  <- KITAS
-7 Cron       cleanup_expired kasdien
+7 Cron       cleanup_expired kasdien + stale recovery   ✅ ATLIKTA (10/10)
 8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai
 9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
 ```
