@@ -1,0 +1,178 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2089,
+ "rez": {
+  "VERSIJA": "petdraft-testai-v1",
+  "url": "https://dev.avesa.lt/wp-json/petshop/v1/pet-draft",
+  "T1_viesas_201": {
+   "r": {
+    "kodas": 201,
+    "body": {
+     "ok": true,
+     "draft_id": "433ef92d-c189-4342-9410-16f4728018ec"
+    }
+   },
+   "pokytis": 1,
+   "OK": true
+  },
+  "T2_uuid": {
+   "draft_id": "433ef92d-c189-4342-9410-16f4728018ec",
+   "OK": true
+  },
+  "T3_kliento_draft_id": {
+   "grazintas": "f2afa840-3b50-4976-9911-fdd0a0dcaaad",
+   "siustas": "11111111-2222-4333-8444-555555555555",
+   "OK": true
+  },
+  "T4_raw_32kb": {
+   "r": {
+    "kodas": 413,
+    "body": {
+     "ok": false,
+     "code": "payload_too_large"
+    }
+   },
+   "OK": true
+  },
+  "T5_versija_2": {
+   "r": {
+    "kodas": 400,
+    "body": {
+     "ok": false,
+     "code": "unsupported_payload_version"
+    }
+   },
+   "OK": true
+  },
+  "T6_versija_default": {
+   "kodas": 201,
+   "db_versija": 1,
+   "OK": true
+  },
+  "T7_blogas_pastas": {
+   "r": {
+    "kodas": 400,
+    "body": {
+     "ok": false,
+     "code": "invalid_email"
+    }
+   },
+   "OK": true
+  },
+  "T8_tuscias": {
+   "r": {
+    "kodas": 400,
+    "body": {
+     "ok": false,
+     "code": "empty_payload"
+    }
+   },
+   "OK": true
+  },
+  "T9_hmac": {
+   "sutampa": true,
+   "OK": true
+  },
+  "T10_draudziami": {
+   "payload_raktai": [
+    "species",
+    "species_detail",
+    "pet_name",
+    "life_stage",
+    "dog_size",
+    "is_sterilised",
+    "feeding_type",
+    "feeding_type_other",
+    "wet_food_g",
+    "wet_product_id",
+    "primary_need",
+    "primary_need_other",
+    "current_food_brand",
+    "birth_date",
+    "sensitivities",
+    "housing",
+    "activity_hint",
+    "current_food_free_text",
+    "primary_product_id",
+    "primary_product_name",
+    "primary_product_sku",
+    "primary_product_package",
+    "current_weight_kg",
+    "weight_updated_at"
+   ],
+   "status": "active",
+   "expires": "2026-08-16 09:36:49",
+   "OK": true
+  },
+  "T11_svoris": {
+   "payload_svoris": 12.5,
+   "OK": true
+  },
+  "T12_galiojimas": {
+   "dienos": 14,
+   "OK": true
+  },
+  "T13_pets_masyvas": {
+   "r": {
+    "kodas": 201,
+    "body": {
+     "ok": true,
+     "draft_id": "efded27f-497f-43d5-88e0-17e1cf7cc4f4"
+    }
+   },
+   "OK": false
+  },
+  "T14_be_salutiniu": {
+   "pets": 0,
+   "email_jobs": 0,
+   "vartotojai": 0,
+   "OK": true
+  },
+  "T15_email_limitas": {
+   "kodai": [
+    201,
+    201,
+    201,
+    201,
+    201,
+    429,
+    429
+   ],
+   "sekmingu": 5,
+   "OK": true
+  },
+  "T16_ip_limitas": {
+   "pirmi_5": [
+    400,
+    400,
+    400,
+    400,
+    400
+   ],
+   "20_21_22": [
+    400,
+    429,
+    429
+   ],
+   "nesekmingi_skaiciuojami": true,
+   "OK": true
+  },
+  "SUVESTINE": "15/16",
+  "draftu_po_valymo": 0,
+  "pets": 65
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
