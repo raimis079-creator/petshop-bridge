@@ -1008,6 +1008,47 @@ APEITI NEGALIMA.
 `unsupported_payload_version` · `payload_too_large` (413) · `rate_limited` (429,
 BENDRINIS — neatskleidzia, kuris limitas suveike) · `draft_save_failed` (500).
 
+### ★ S337 — MAGIC LINK draft_id SUSIEJIMAS: UZBAIGTA
+
+```
+OK request BE draft_id islaiko SENA elgsena
+OK validus active draft + sutampantis email_hash -> resource_id = draft_id
+OK neegzistuojantis draftas NEPRIRISAMAS
+OK kito email draftas NEPRIRISAMAS
+OK pasibaiges (expires_at) draftas NEPRIRISAMAS
+OK claiming / claimed / expired STATUSAI NEPRIRISAMI (tikrinta ATSKIRAI nuo datos)
+OK netinkamas UUID saugiai IGNORUOJAMAS (5 variantai, t.p. SQL bandymas)
+OK visi neigiami atvejai grazina IDENTISKA bendrini atsakyma
+OK resource_id saugomas ps_action_tokens IR pasirasytame token'o payload (HMAC-SHA256)
+OK process_login ims resource_id is DB token'o eilutes, NE is URL
+OK request etapas NEKEICIA drafto statuso ir NEKURIA pet ar vartotojo
+```
+**Testai 10/10.** Failas `class-magic-login.php` 18 618 -> 20 829 B · backup `.bak_S337`.
+
+**★ TIKSLI NEIGIAMU ATVEJU SEMANTIKA (NESUPAINIOTI):**
+```
+Netinkamas / nesutampantis draft_id
+-> draftas prie token'o NEPRIRISAMAS;
+-> resource_id lieka TUSCIAS;
+-> toliau vyksta SENASIS BENDRINIS magic-login srautas.
+```
+**NERASYTI „laiskas nesiunciamas"** — iprastas prisijungimo laiskas BE drafto gali
+buti issiustas. Saugumo tikslas: NEATSKLEISTI, kodel `draft_id` nepriimtas, ir
+NEPRIRISTI netinkamo drafto.
+
+**★ M8 — resource_id PAKEITIMO ATSPARUMAS** (ne „URL keitimas" — irodymas platesnis):
+kliento pateiktas ARBA URL pakeistas `draft_id` NEGALI pakeisti serverio token'ui
+priristo `resource_id`. Empiriskai: DB `resource_id` = originalus draft_id ir
+!= svetimas UUID.
+
+**Nauja funkcija:** `Petshop_Magic_Login::resolve_draft_for_email()` — triguba
+patikra (formatas -> egzistavimas -> HMAC savininkas -> statusas -> galiojimas).
+Grazina draft_id arba ''. NEKURIA pet, NEPRADEDA claim, NEKEICIA drafto busenos.
+
+**Pastaba:** pirmas M8/M10 bandymas isnaudojo `/pet-draft` email rate limita
+(5/val.: D1, D3 + trys M6 cikle -> D4 gavo 429); pakartojus IZOLIUOTAI abu
+testai praejo. Tai buvo TESTU IZOLIACIJOS problema, NE produkto gedimas.
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
@@ -1016,8 +1057,8 @@ BENDRINIS — neatskleidzia, kuris limitas suveike) · `draft_save_failed` (500)
              ★ NE atskiras punktas is 9 — BUTINA PRIELAIDA pries 3-a.
                Numeracija NEKINTA: punktu buvo ir lieka 9.
 3 REST       POST /pet-draft su kanonine validacija   ✅ ATLIKTA (16/16+5/5+10/10)
-4 Magic link magic-login/request priima draft_id (triguba patikra)  <- KITAS
-5 Claim      process_login -> create_pet_result -> complete_claim
+4 Magic link magic-login/request priima draft_id (triguba patikra)  ✅ ATLIKTA (10/10)
+5 Claim      process_login -> create_pet_result -> complete_claim     <- KITAS
 6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)
 7 Cron       cleanup_expired kasdien
 8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai
