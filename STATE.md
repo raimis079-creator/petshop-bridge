@@ -512,6 +512,25 @@ source_draft_id atkurtoms NULL · client_ref 1 eilute, dublikatu 0 · TEMP aktyv
 > ATSITIKTINAI pateko i atminti. 2026-08-02 Raimis tai ivardino: „migruodami per
 > pokalbiu langus mes pametame dali darbu, ir tai jau ne pirmas kartas".
 >
+> **★★ PATIKROS TAISYKLE: „sistema GALI tai padaryti" ≠ „sistema REALIAI tai daro".**
+>
+> Mechanizmo, metodo, hook'o, cron'o ar recovery kelio EGZISTAVIMAS NERA
+> igyvendinimo irodymas. Pries zymint punkta uzbaigtu butina nustatyti:
+>
+> 1. kas ir kada mechanizma PALEIDZIA;
+> 2. ar paleidimo kelias REALIAI pasiekiamas;
+> 3. kas nutinka, JEI paleidimas neivyksta;
+> 4. ar faktinis rezultatas PATVIRTINTAS testu arba stebimu irodymu.
+>
+> KILME (2026-08-02): du atvejai tos pacios klaidos.
+> (a) `cleanup_expired()` EGZISTAVO, bet niekur nebuvo REGISTRUOTAS —
+>     PII butu kaupesi neribotai.
+> (b) „pakibe claim'ai grazinami i active" atrode uzdaryta, nes `begin_claim()`
+>     JI GALI perimti — bet peremimas REAKTYVUS: be pakartotinio bandymo draftas
+>     kabotu iki 14 dienu. Automatinio paleidejo NEBUVO.
+> Abu kartus buvo supainiota „sistema GALI" su „sistema REALIAI DARO".
+> Abu rado Raimis, ne Claude.
+
 > **TAISYKLE:** punkto busena keiciama TIK su data ir IRODYMU. Be irodymo —
 > nekeiciama. Sesijos pradzioje sis registras skaitomas PIRMAS.
 
