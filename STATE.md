@@ -770,6 +770,81 @@ SEO 44 URL: kurios kategorijos apskritai bus
 137 TEMP snippet'u trynimas WP admin (higiena)
 ```
 
+### ★ S333 COMMIT 1 — create_pet_result() ATSKYRIMAS: PARITETAS PATVIRTINTAS
+
+```
+baseline                 6763d6700ddc4344d78982070a5f119decc883ca
+6/6 scenariju            IDENTISKI
+DB lauku skirtumu        0
+response JSON skirtumu   0
+testiniai duomenys       ISVALYTI (ps_pets 65, PARTEST 0)
+```
+
+**Failas:** `includes/class-pet-profile.php` 38 078 -> 39 977 B ·
+SHA-256 `5de133504222bdd0…` · backup `.bak_S333` · sintakse validuota PRIES rasant.
+
+**KAS PADARYTA:** `create_pet()` grazindavo `WP_REST_Response`/`rest_ensure_response`
+— domeno metodas kalbejo HTTP kalba, todel jo NEGALEJO kviesti neHTTP kelias
+(magic-link claim, S328). Dabar:
+```
+create_pet_result()  domeno rezultatas / WP_Error, JOKIO HTTP
+                     ['status'=>'created'|'deduplicated'|'duplicate_candidate', ...]
+create_pet()         suderinamumo wrapper'is, IDENTISKAS HTTP atsakymas
+handle_save()        NEPALIESTAS
+```
+
+**CALL-SITE'AI — VISI (auditas):**
+```
+class-pet-profile.php:215  handle_save() -> create_pet()         [nepaliestas]
+class-pet-profile.php:823  create_pet() -> create_pet_result()   [naujas]
+KITUR KODE NERA: nei petshop-esp, nei petshop-xml, nei child theme.
+```
+
+**7 PATIKROS (Raimio sarasas) — VISOS PRAEJO:**
+```
+1 create_pet_result() negrazina WP_REST_Response   0 atitikmenu METODE
+  (pirma matavimas rode True — ARTEFAKTAS: mano istrauka apeme DOC KOMENTARA,
+   kuriame tie vardai minimi. Patikrinta pakartotinai TIK metodo turinyje.)
+2 4 senos sakos konvertuojamos identiskai           paritetas 6/6
+3 mirror_to_sender + pet_profile_created 1x         emit_created( 1x, insert( 1x
+4 dedup saka be salutiniu veiksmu                   return pries bet koki insert/emit
+5 DB klaida = domeno klaida                         WP_Error('create_failed')
+6 handle_save() tik controller'is                   nepaliestas
+7 claim atskiria 4 busenas                          status + WP_Error
+```
+
+**★ 6-AS SCENARIJUS PERVADINTAS:** buvo „6_validacijos_klaida" — KLAIDINGA.
+Faktinis baseline elgesys PRIESINGAS: be `pet_name` augintinis SUKURIAMAS ir
+grazinamas HTTP 200. Teisingas vardas: **`6_truukstamas_pet_name_legacy_elgesys`**.
+Kanonines validacijos NERA — tai atskiras SAMONINGAS elgsenos pakeitimas,
+NE Commit 1 ir NE Commit 2 dalis.
+
+**KAIP TAI NAUDOS CLAIM GRANDINE (Commit 2):**
+```php
+$rez = Petshop_Pet_Profile::create_pet_result( $user_id, $payload, $draft_id );
+is_wp_error($rez)                 -> abort_claim(), draftas grizta i active
+'duplicate_candidate' === status  -> rodom vartotojui pasirinkima, claim laukia
+'deduplicated' === status         -> idempotentiska sekme, complete_claim()
+'created' === status              -> complete_claim( pet_id )
+```
+Iki refaktoringo sito nebuvo galima — `WP_REST_Response` viduje neleido atskirti
+„409 dublikatas" nuo „500 DB klaida" be HTTP statuso analizes.
+
+**Diff dokumentas:** `/mnt/user-data/outputs/COMMIT1_DIFF.md` (Raimio perziurai).
+
+### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
+```
+1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA
+2 Commit 2   UNIQUE(client_ref) + duplicate-key       <- KITAS
+3 REST       POST /pet-draft su kanonine validacija
+4 Magic link magic-login/request priima draft_id (triguba patikra)
+5 Claim      process_login -> create_pet_result -> complete_claim
+6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)
+7 Cron       cleanup_expired kasdien
+8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai
+9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
+```
+
 ### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
 
 **BUKLE 2026-07-31 sesijos pabaigoje: viskas svaru, nieko pakibusio.**
