@@ -1,0 +1,84 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2097,
+ "rez": {
+  "VERSIJA": "claim-map-v1",
+  "vartotojai": [
+   56,
+   57
+  ],
+  "C1_created": {
+   "kodas": "ok",
+   "statusas": "claimed",
+   "pet_id": "181",
+   "payload_isvalytas": true,
+   "pets": 1,
+   "ev": 1,
+   "OK": true
+  },
+  "C2_idempotencija": {
+   "kodas": "ok",
+   "pets": 0,
+   "ev": 0,
+   "OK": true
+  },
+  "C3_duplicate": {
+   "kodas": "duplicate_candidate",
+   "statusas": "active",
+   "pets": 0,
+   "ev": 0,
+   "pending_draft_id": "510dbca5-35f3-4606-96ea-be62b7901728",
+   "pending_kandidatu": 1,
+   "payload_islikes": true,
+   "LAUKTA": "duplicate_candidate, draftas ACTIVE, pending meta, pet +0",
+   "OK": true
+  },
+  "C4_wp_error": {
+   "kodas": "error",
+   "filtras": true,
+   "statusas": "active",
+   "pets": 0,
+   "LAUKTA": "error, draftas GRAZINTAS i active",
+   "OK": true
+  },
+  "C5_already_used": {
+   "pirmas": "ok",
+   "antras": "used",
+   "statusas": "used",
+   "pets": 0,
+   "LAUKTA": "used, TERMINALI busena (NE active), pet +0",
+   "OK": true
+  },
+  "C6_conflict": {
+   "kodas": "error",
+   "statusas": "conflict",
+   "pets": 0,
+   "LAUKTA": "error (detaliu neatskleidzia), statusas conflict, NE active",
+   "OK": true
+  },
+  "C7_svetimas": {
+   "kodas": "error",
+   "statusas": "active",
+   "pets": 0,
+   "LAUKTA": "error, draftas NEPALIESTAS (active)",
+   "OK": true
+  },
+  "SUVESTINE": "7/7",
+  "pets_po": 65,
+  "draftu_po": 0
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
