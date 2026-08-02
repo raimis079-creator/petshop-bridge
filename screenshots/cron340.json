@@ -1,0 +1,91 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2109,
+ "dry": {
+  "VERSIJA": "cron340-v1",
+  "inkarai": {
+   "A": 1,
+   "B": 1
+  },
+  "jau": false,
+  "sha_pries": {
+   "drafts": "162dc4dcd2a0b489620f0b42bf11db41f7795595ddbba0ce069a37f1ccb41773"
+  }
+ },
+ "apply": {
+  "VERSIJA": "cron340-v1",
+  "inkarai": {
+   "A": 1,
+   "B": 1
+  },
+  "jau": false,
+  "sha_pries": {
+   "drafts": "162dc4dcd2a0b489620f0b42bf11db41f7795595ddbba0ce069a37f1ccb41773"
+  },
+  "sintakse": true,
+  "VERDIKTAS": "IDIEGTA",
+  "dydziai": {
+   "drafts": 22542,
+   "main": 15284
+  },
+  "site": 200
+ },
+ "test": {
+  "VERSIJA": "cron340-v1",
+  "inkarai": {
+   "A": 0,
+   "B": 1
+  },
+  "jau": true,
+  "sha_pries": {
+   "drafts": "6208e11a8a0d988fc18518718a6332daed69a914f9ac5637bb47772c9580af70"
+  },
+  "T1_registruotas": {
+   "ts": 1785724800,
+   "kada": "2026-08-03 02:40:00",
+   "OK": true,
+   "recurrence": "daily"
+  },
+  "T2_valymas": {
+   "istrinta": 4,
+   "pries": 10,
+   "po": 6,
+   "active_exp": 0,
+   "active_ok": 1,
+   "used": 0,
+   "conflict": 0,
+   "claiming": 0,
+   "claimed": 1,
+   "LAUKTA": "istrinta 4 (active_exp,used,conflict,claiming); LIKO active_ok ir claimed",
+   "OK": true
+  },
+  "T3_pii": {
+   "paaiskinimas": "claimed eilutes lieka, bet ju payload_json turi buti NULL po complete_claim"
+  },
+  "T4_idempotencija": {
+   "antras_valymas": 0,
+   "OK": true
+  },
+  "T5_unschedule": {
+   "po_unschedule": false,
+   "OK": true
+  },
+  "T5_atstatyta": true,
+  "draftu_galutinis": 4,
+  "SUVESTINE": "4/4"
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
