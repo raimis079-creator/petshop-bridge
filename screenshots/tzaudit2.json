@@ -1,0 +1,75 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2077,
+ "rez": {
+  "VERSIJA": "audit2-v1",
+  "ean_raktai": {
+   "_global_unique_id": 1455,
+   "_ean": 1475
+  },
+  "panasus_raktai": [
+   "_ean",
+   "_zb_ean",
+   "_vf_barcode"
+  ],
+  "paieska": {
+   "sku": {
+    "uzklausa": "48375",
+    "url": "https://dev.avesa.lt/?s=48375&post_type=product",
+    "kodas": 200,
+    "nieko_nerasta": false,
+    "produktu_korteliu": 0
+   },
+   "pavadinimas": {
+    "uzklausa": "Susidėk",
+    "url": "https://dev.avesa.lt/?s=Susid%C4%97k&post_type=product",
+    "kodas": 200,
+    "nieko_nerasta": false,
+    "produktu_korteliu": 0
+   },
+   "ean": {
+    "uzklausa": "8595681859976",
+    "url": "https://dev.avesa.lt/?s=8595681859976&post_type=product",
+    "kodas": 200,
+    "nieko_nerasta": false,
+    "produktu_korteliu": 0
+   }
+  },
+  "sku_paieskos_kodas": [],
+  "snip_paieska": [
+   {
+    "id": "2077",
+    "name": "UI Localization Runtime Audit"
+   }
+  ],
+  "draft_pagal_saltini": [
+   {
+    "saltinis": null,
+    "c": "564"
+   },
+   {
+    "saltinis": "excel_v2_20260604",
+    "c": "393"
+   },
+   {
+    "saltinis": "zb_trash_conversion_20260610",
+    "c": "65"
+   }
+  ],
+  "draft_vf": 170
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
