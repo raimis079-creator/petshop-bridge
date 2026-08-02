@@ -1,0 +1,359 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2075,
+ "rez": {
+  "VERSIJA": "email-inventory-v1",
+  "srautai": {
+   "order_paid": {
+    "class": "transactional",
+    "template": "order-paid",
+    "delay": 0
+   },
+   "order_shipped": {
+    "class": "transactional",
+    "template": "order-shipped",
+    "delay": 0
+   },
+   "payment_failed": {
+    "class": "transactional",
+    "template": "dunning-1",
+    "delay": 0
+   },
+   "shipment_returned": {
+    "class": "transactional",
+    "template": "shipment-returned",
+    "delay": 0
+   },
+   "consent_changed": {
+    "class": "transactional",
+    "template": "consent-changed",
+    "delay": 0
+   },
+   "pet_reminder_due": {
+    "class": "transactional",
+    "template": "pet-reminder",
+    "delay": 0
+   },
+   "subscription_t5_notice": {
+    "class": "transactional",
+    "template": "subscription-t5",
+    "delay": 0
+   },
+   "refill_due": {
+    "class": "service",
+    "template": "refill",
+    "delay": 0
+   },
+   "cart_abandoned": {
+    "class": "marketing",
+    "template": "cart-abandoned-1",
+    "delay": 0
+   },
+   "cart_abandoned_2": {
+    "class": "marketing",
+    "template": "cart-abandoned-2",
+    "delay": 0
+   },
+   "post_purchase_2d": {
+    "class": "service",
+    "template": "post-purchase-2d",
+    "delay": 0
+   },
+   "post_purchase_7d": {
+    "class": "service",
+    "template": "post-purchase-7d",
+    "delay": 604800
+   },
+   "post_purchase_14d": {
+    "class": "service",
+    "template": "post-purchase-14d",
+    "delay": 1209600
+   },
+   "win_back_60": {
+    "class": "marketing",
+    "template": "win-back-60",
+    "delay": 0
+   },
+   "win_back_90": {
+    "class": "marketing",
+    "template": "win-back-90",
+    "delay": 0
+   },
+   "win_back_120": {
+    "class": "marketing",
+    "template": "win-back-120",
+    "delay": 0
+   },
+   "legacy_reactivation_l1": {
+    "class": "marketing",
+    "template": "legacy-l1",
+    "delay": 0
+   },
+   "founding_activation": {
+    "class": "marketing",
+    "template": "founding",
+    "delay": 0
+   }
+  },
+  "sablonu_katalogas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/templates/emails/",
+  "sablonai": {
+   "cart-abandoned-1": 3328,
+   "cart-abandoned-2": 2505,
+   "order-paid": 2333,
+   "post-purchase-2d": 3940,
+   "refill": 2870
+  },
+  "sugretinimas": {
+   "order_paid": {
+    "klase": "transactional",
+    "sablonas": "order-paid",
+    "YRA": true
+   },
+   "order_shipped": {
+    "klase": "transactional",
+    "sablonas": "order-shipped",
+    "YRA": false
+   },
+   "payment_failed": {
+    "klase": "transactional",
+    "sablonas": "dunning-1",
+    "YRA": false
+   },
+   "shipment_returned": {
+    "klase": "transactional",
+    "sablonas": "shipment-returned",
+    "YRA": false
+   },
+   "consent_changed": {
+    "klase": "transactional",
+    "sablonas": "consent-changed",
+    "YRA": false
+   },
+   "pet_reminder_due": {
+    "klase": "transactional",
+    "sablonas": "pet-reminder",
+    "YRA": false
+   },
+   "subscription_t5_notice": {
+    "klase": "transactional",
+    "sablonas": "subscription-t5",
+    "YRA": false
+   },
+   "refill_due": {
+    "klase": "service",
+    "sablonas": "refill",
+    "YRA": true
+   },
+   "cart_abandoned": {
+    "klase": "marketing",
+    "sablonas": "cart-abandoned-1",
+    "YRA": true
+   },
+   "cart_abandoned_2": {
+    "klase": "marketing",
+    "sablonas": "cart-abandoned-2",
+    "YRA": true
+   },
+   "post_purchase_2d": {
+    "klase": "service",
+    "sablonas": "post-purchase-2d",
+    "YRA": true
+   },
+   "post_purchase_7d": {
+    "klase": "service",
+    "sablonas": "post-purchase-7d",
+    "YRA": false
+   },
+   "post_purchase_14d": {
+    "klase": "service",
+    "sablonas": "post-purchase-14d",
+    "YRA": false
+   },
+   "win_back_60": {
+    "klase": "marketing",
+    "sablonas": "win-back-60",
+    "YRA": false
+   },
+   "win_back_90": {
+    "klase": "marketing",
+    "sablonas": "win-back-90",
+    "YRA": false
+   },
+   "win_back_120": {
+    "klase": "marketing",
+    "sablonas": "win-back-120",
+    "YRA": false
+   },
+   "legacy_reactivation_l1": {
+    "klase": "marketing",
+    "sablonas": "legacy-l1",
+    "YRA": false
+   },
+   "founding_activation": {
+    "klase": "marketing",
+    "sablonas": "founding",
+    "YRA": false
+   }
+  },
+  "jobs": [
+   {
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "status": "skipped",
+    "c": "1",
+    "naujausias": "2026-07-31 22:50:04"
+   },
+   {
+    "flow": "order_paid",
+    "flow_class": "transactional",
+    "status": "sent",
+    "c": "2",
+    "naujausias": "2026-07-30 18:09:29"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "flow_class": "service",
+    "status": "sent",
+    "c": "1",
+    "naujausias": "2026-07-31 15:06:18"
+   },
+   {
+    "flow": "refill_due",
+    "flow_class": "service",
+    "status": "sent",
+    "c": "1",
+    "naujausias": "2026-07-30 19:08:22"
+   }
+  ],
+  "jobs_viso": 5,
+  "skip_priezastys": [
+   {
+    "skip_reason": "consent_missing",
+    "c": "1"
+   },
+   {
+    "skip_reason": "product_inactive",
+    "c": "1"
+   }
+  ],
+  "woo_laiskai": {
+   "WC_Email_New_Order": {
+    "enabled": true,
+    "title": "Naujas užsakymas"
+   },
+   "WC_Email_Cancelled_Order": {
+    "enabled": true,
+    "title": "Atšauktas užsakymas"
+   },
+   "WC_Email_Customer_Cancelled_Order": {
+    "enabled": true,
+    "title": "Atšauktas užsakymas"
+   },
+   "WC_Email_Failed_Order": {
+    "enabled": true,
+    "title": "Nepavykęs užsakymas"
+   },
+   "WC_Email_Customer_Failed_Order": {
+    "enabled": true,
+    "title": "Nepavykęs užsakymas"
+   },
+   "WC_Email_Customer_On_Hold_Order": {
+    "enabled": false,
+    "title": "Užsakymas sustabdytas"
+   },
+   "WC_Email_Customer_Processing_Order": {
+    "enabled": true,
+    "title": "Užsakymas vykdomas"
+   },
+   "WC_Email_Customer_Completed_Order": {
+    "enabled": true,
+    "title": "Įvykdytas užsakymas"
+   },
+   "WC_Email_Customer_Refunded_Order": {
+    "enabled": true,
+    "title": "Grąžintas užsakymas"
+   },
+   "WC_Email_Customer_Invoice": {
+    "enabled": false,
+    "title": "Užsakymo informacija"
+   },
+   "WC_Email_Customer_Note": {
+    "enabled": true,
+    "title": "Pirkėjo pastaba"
+   },
+   "WC_Email_Customer_Reset_Password": {
+    "enabled": true,
+    "title": "Atkurti slaptažodį"
+   },
+   "WC_Email_Customer_New_Account": {
+    "enabled": true,
+    "title": "Nauja paskyra"
+   },
+   "WC_Email_Admin_Payment_Gateway_Enabled": {
+    "enabled": false,
+    "title": "Payment gateway enabled"
+   }
+  },
+  "eventai": [
+   {
+    "event_name": "pet_profile_created",
+    "c": "85",
+    "naujausias": "2026-08-01 20:58:57"
+   },
+   {
+    "event_name": "pet_profile_updated",
+    "c": "82",
+    "naujausias": "2026-07-29 09:03:30"
+   },
+   {
+    "event_name": "order_paid",
+    "c": "34",
+    "naujausias": "2026-07-31 12:29:40"
+   },
+   {
+    "event_name": "consent_changed",
+    "c": "24",
+    "naujausias": "2026-07-31 11:41:46"
+   },
+   {
+    "event_name": "order_shipped",
+    "c": "19",
+    "naujausias": "2026-07-31 08:26:41"
+   },
+   {
+    "event_name": "cart_abandoned",
+    "c": "10",
+    "naujausias": "2026-08-01 21:29:40"
+   },
+   {
+    "event_name": "pet_product_assigned",
+    "c": "4",
+    "naujausias": "2026-07-23 21:56:40"
+   },
+   {
+    "event_name": "refill_due",
+    "c": "3",
+    "naujausias": "2026-07-30 18:41:08"
+   },
+   {
+    "event_name": "pet_reminder_due",
+    "c": "1",
+    "naujausias": "2026-07-30 09:00:59"
+   }
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
