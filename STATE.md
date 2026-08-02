@@ -1049,6 +1049,59 @@ Grazina draft_id arba ''. NEKURIA pet, NEPRADEDA claim, NEKEICIA drafto busenos.
 (5/val.: D1, D3 + trys M6 cikle -> D4 gavo 429); pakartojus IZOLIUOTAI abu
 testai praejo. Tai buvo TESTU IZOLIACIJOS problema, NE produkto gedimas.
 
+### ★ S338 — CLAIM GRANDINE: UZBAIGTA
+
+```
+OK claim vykdomas PO login ir Sender upsert, PRIES redirect
+OK claim klaida NEBLOKUOJA login ir redirect (try/catch \Throwable)
+OK created             -> claimed, payload IR claim techniniai laukai isvalyti
+OK deduplicated        -> claimed be naujo pet ir evento
+OK duplicate_candidate -> active + NAUJA serverine pending busena
+OK WP_Error            -> draftas GRAZINAMAS i active
+OK draft_already_used  -> TERMINALI `used` busena
+OK client_ref_conflict -> TERMINALI `conflict` busena
+OK svetimas vartotojas drafto NEPAKEICIA
+OK terminaliose busenose NELIEKA payload_json
+OK claim_attempt_id ir claim_started_at ISVALOMI
+OK sena pending meta PASALINAMA arba PAKEICIAMA
+OK pending meta NELAIKO payload'o ar kandidatu kopiju
+OK URL parametras NERA autorizacijos ar duomenu saltinis
+OK techniniai logai NETURI el. pasto ar payload'o
+```
+```
+Rezultatu zemelapis    7/7
+Busenu vartai         10/10
+IS VISO               17/17
+ps_pets 65 · draftu 0
+```
+
+**KODEL CLAIM BUTENT TARP 6 IR 7 ZINGSNIO.** `process_login()` eiliskumas:
+1 nonce · 2 `ps_consume_token()` **tokenas sunaudojamas NEGRIZTAMAI** · 3 purpose ·
+4 vartotojo radimas/SUKURIMAS · 5 login (clear+set auth cookie, wp_login) ·
+6 PS_EMAIL_VERIFIED + Sender upsert · **[CLAIM]** · 7 redirect.
+Token'as sudega dar 2-ame zingsnyje (ESAMA elgsena, ne sio pakeitimo), todel
+claim'o ankstinimas jo NEAPSAUGOTU. Po login'o klaida reiskia: vartotojas LIEKA
+prisijunges, draftas grizta i `active`, naujo magic link NEREIKIA.
+Subscriber jau paruostas, kai iskrenta `pet_profile_created` eventas.
+
+**NAUJA:** `Petshop_Pet_Drafts::terminate_claim()` — skiriasi nuo `abort_claim()`
+SAMONINGAI: `abort` grazina i `active` (laikina klaida, verta bandyti), `terminate`
+uzdaro GALUTINAI (pakartojimas NIEKO neissprestu).
+
+**PENDING META `_ps_pet_claim_pending`** — TIK: `draft_id`, `candidate_ids`,
+`created_at`, `expires_at` (+14 d.). JOKIU kandidatu duomenu kopiju, JOKIO payload'o.
+I URL keliauja TIK bendrinis kodas: `?pet_claim=ok|duplicate_candidate|used|error`.
+
+**★ UZDARYTA REGRESIJA:** `complete_claim()` anksciau palikdavo `claim_attempt_id`
+ir `claim_started_at`; dabar VISOS galutines busenos palieka tik butinus audito
+laukus (`draft_id`, `email_hash`, statusa, datas).
+
+**ATVIRAS DARBAS (6 arba 9 punkte):** `duplicate_candidate` SPRENDIMO UI.
+Serverine busena kaupiama, bet ekrano, kuriame zmogus pasirenka „tas pats
+augintinis" ar „naujas", DAR NERA. Iki tol vartotojas mato tik `?pet_claim=
+duplicate_candidate` uzuomina. **UI ir busimas sprendimo endpoint'as PRIVALO
+remtis TIK serverio busena, susieta su prisijungusiu `user_id`, NE query parametru.**
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
@@ -1058,8 +1111,8 @@ testai praejo. Tai buvo TESTU IZOLIACIJOS problema, NE produkto gedimas.
                Numeracija NEKINTA: punktu buvo ir lieka 9.
 3 REST       POST /pet-draft su kanonine validacija   ✅ ATLIKTA (16/16+5/5+10/10)
 4 Magic link magic-login/request priima draft_id (triguba patikra)  ✅ ATLIKTA (10/10)
-5 Claim      process_login -> create_pet_result -> complete_claim     <- KITAS
-6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)
+5 Claim      process_login -> create_pet_result -> complete_claim     ✅ ATLIKTA (17/17)
+6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)  <- KITAS
 7 Cron       cleanup_expired kasdien
 8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai
 9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
