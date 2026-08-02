@@ -1,0 +1,36 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2111,
+ "rez": {
+  "VERSIJA": "baseline6-v1",
+  "vartai": {
+   "dydis": 72935,
+   "dydis_ok": true,
+   "sha256": "807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e",
+   "sha_ok": true,
+   "S339": 0,
+   "pet_draft": 0,
+   "SRV_DRAFT_KEY": 0,
+   "PRAEJO": true
+  },
+  "b_draft": "\t\t}\n\t};\n\n\tvar root = null;\n\n\t// --- localStorage juodraštis ---\n\tfunction saveDraft(){\n\t\tif (IS_LOGGED_IN) return; // prisijungęs — saugom į DB, ne localStorage\n\t\tvar now = Date.now();\n\t\tvar draft = {\n\t\t\tschema_version: 2,\n\t\t\tdraft_id: state.data.draft_id || genId(),\n\t\t\tcreated_at: state.data.created_at || new Date(now).toISOString(),\n\t\t\texpires_at: new Date(now + DRAFT_TTL_DAYS*86400000).toISOString(),\n\t\t\tcurrent_step: state.step,\n\t\t\t// v2 (2026-07-24): anketos ETAPO eiga — kad po F5 vartotojas testu ten,\n\t\t\t// kur baigė, o ne pamatytu vel tuscia zieda ir 1-a sekcija.\n\t\t\tsection_idx: (state.sectionIdx != null) ? state.sectionIdx : 0,\n\t\t\tconfirmed_sections: state.confirmedSections || [],\n\t\t\tpet_data: state.data\n\t\t};\n\t\tstate.data.draft_id = draft.draft_id;\n\t\tstate.data.created_at = draft.created_at;\n\t\ttry { localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); } catch(e){}\n\t}\n\tfunction loadDraft(){\n\t\ttry {\n\t\t\tvar raw = localStorage.getItem(DRAFT_KEY);\n\t\t\tif (!raw) return null;\n\t\t\tvar draft = JSON.parse(raw);\n\t\t\tif (new Date(draft.expires_at).getTime() < Date.now()) {\n\t\t\t\tlocalStorage.removeItem(DRAFT_KEY);\n\t\t\t\treturn null;\n\t\t\t}\n\t\t\treturn draft;\n\t\t} catch(e){ return null; }\n\t}\n\tfunction clearDraft(){ try { localStorage.removeItem(DRAFT_KEY); } catch(e){} }\n\tfunction genId(){ return 'd_' + Math.random().toString(36).slice(2) + Date.now().toString(36); }\n\n\t// --- Render ---\n\t/**\n\t * Perjungus ZINGSNI — pakelia i anketos virsu. Be sio zmogus lieka senoje\n\t * scroll pozicijoje ir nemato naujo zingsnio pradzios.\n\t * SVARBU: kviečiama TIK is render() (zingsnio keitimas), NE is renderStep2()\n\t * (ten pill'u perpiesimas tame paciame zingsnyje — scroll sokinetu renkantis).\n\t */\n\tvar _firstRender = true;\n\tfunction scrollToTop(){\n\t\tif (_firstRender) { _firstRender = false; return; }   // puslapio uzkrovime nesokam",
+  "b_cta": "\t\t// #5 (IA v1.1): anonimui tarpinis zingsnis lieka TIK del el. pasto ir magic-link.\n\t\t// Jokio \"profilis sukurtas\" sekmes ekrano, jokios nuotraukos kaip pagrindinio veiksmo.\n\t\tif (!IS_LOGGED_IN) {\n\t\t\tvar header = el('div', 'pspet-result-header');\n\t\t\tvar avatar = el('div', 'pspet-result-avatar');\n\t\t\tavatar.innerHTML = speciesIcon();\n\t\t\theader.appendChild(avatar);\n\t\t\theader.appendChild(el('h2', 'pspet-result-name', 'Išsaugokite augintinio profilį'));\n\t\t\theader.appendChild(el('p', 'pspet-result-meta', name + ' \\u00b7 ' + resultMeta()));\n\t\t\twrap.appendChild(header);\n\n\t\t\tvar saveBox = el('div', 'pspet-save-box');\n\t\t\tsaveBox.appendChild(el('div', 'pspet-save-sub', 'Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą.'));\n\t\t\tvar row = el('div', 'pspet-save-row');\n\t\t\tvar email = el('input', 'pspet-input');\n\t\t\temail.type = 'email';\n\t\t\temail.placeholder = 'jusu@email.lt';\n\t\t\tvar btn = el('button', 'pspet-btn pspet-btn-primary', 'Gauti prisijungimo nuorodą');\n\t\t\tbtn.style.flex = '0 0 auto';\n\t\t\tbtn.onclick = function(){ requestMagicLink(email.value, saveBox); };\n\t\t\trow.appendChild(email); row.appendChild(btn);\n\t\t\tsaveBox.appendChild(row);\n\t\t\twrap.appendChild(saveBox);\n\n\t\t\twrap.appendChild(el('p', 'pspet-note', 'Juodraštis saugomas 30 dienų šioje naršyklėje.'));\n\t\t\tvar skip = el('button', 'pspet-skip', 'Praleisti, kol kas neišsaugoti');\n\t\t\tskip.onclick = function(){ if (CFG.homeUrl) window.location.href = CFG.homeUrl; };\n\t\t\twrap.appendChild(skip);\n\t\t} else {\n\t\t\t// Prisijungusiam sis ekranas nebenaudojamas (onSaved veda tiesiai i B busena).\n\t\t\t// Paliekam tik saugikli, jei kas nors ji vis delto pasiektu.\n\t\t\tclearDraft();\n\t\t\tvar btn2 = el('button', 'pspet-btn pspet-btn-primary', 'Eiti į mano augintinį');\n\t\t\tbtn2.style.width = '100%';\n\t\t\tbtn2.onclick = function(){ if (CFG.petPageUrl) window.location.href = CFG.petPageUrl; };\n\t\t\twrap.appendChild(btn2);\n\t\t}\n\t\troot.appendChild(wrap);\n\t}\n\n\tfunction resultMeta(){\n\t\tvar parts = [];\n\t\tif (state.data.species) parts.push(SPECIES[state.data.species].label);\n\t\tif (state.data.life_stage) {\n\t\t\tvar ls = { junior: 'Jauniklis', adult: 'Suaugęs', senior: 'Senjoras' };\n\t\t\tparts.push(ls[state.data.life_stage] || '');\n\t\t}\n\t\tif (state.data.dog_size) {\n\t\t\tvar ds = { small: 'Mažas', medium: 'Vidutinis', large: 'Didelis', unknown: '' };\n\t\t\tif (ds[state.data.dog_size]) parts.push(ds[state.data.dog_size]);\n\t\t}\n\t\treturn parts.filter(Boolean).join(' · ');\n\t}\n\n\tfunction requestMagicLink(email, box){\n\t\tif (!email || email.indexOf('@') < 0) { alert('Įveskite teisingą el. paštą'); return; }\n\t\tfetch(REST + '/magic-login/request', {\n\t\t\tmethod: 'POST',\n\t\t\theaders: { 'Content-Type': 'application/json' },\n\t\t\tbody: JSON.stringify({ email: email })\n\t\t})\n\t\t.then(function(r){ return r.json(); })\n\t\t.then(function(){\n\t\t\tbox.innerHTML = '<div class=\"pspet-save-title\">Patikrinkite el. paštą</div>' +\n\t\t\t\t'<div class=\"pspet-save-sub\">Jei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į ' + email + '. Prisijungę rasite savo augintinio profilį.</div>';\n\t\t})\n\t\t.catch(function(){ alert('Nepavyko išsiųsti. Bandykite dar kartą.'); });\n\t}\n\n\tfunction showError(msg){\n\t\tvar e = el('div', 'pspet-error', msg);\n\t\troot.insertBefore(e, root.firstChild);\n\t\tsetTimeout(function(){ e.remove(); }, 5000);\n\t}\n\n\t// --- Mount API (S204): forma montuojama i BET KOKI konteineri, ne root.id ---",
+  "b_konstantos": [
+   "6: var REST = CFG.restUrl || '/wp-json/petshop/v1';"
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
