@@ -1,0 +1,123 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2107,
+ "dry": {
+  "VERSIJA": "restore-v1",
+  "dabartinis": {
+   "yra": true,
+   "dydis": 79550,
+   "sha256": "193cde03ae2c69635a10019e1c1d5fd1a0d6115016511c26f00bd5fc018747fb",
+   "mtime": "2026-08-02 11:12:02"
+  },
+  "backup": {
+   "yra": true,
+   "dydis": 72935,
+   "sha256": "807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e",
+   "mtime": "2026-08-02 11:12:02"
+  },
+  "karantinas_jau": false
+ },
+ "apply": {
+  "VERSIJA": "restore-v1",
+  "dabartinis": {
+   "yra": true,
+   "dydis": 79550,
+   "sha256": "193cde03ae2c69635a10019e1c1d5fd1a0d6115016511c26f00bd5fc018747fb",
+   "mtime": "2026-08-02 11:12:02"
+  },
+  "backup": {
+   "yra": true,
+   "dydis": 72935,
+   "sha256": "807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e",
+   "mtime": "2026-08-02 11:12:02"
+  },
+  "karantinas_jau": false,
+  "karantinas": {
+   "failas": "pet-form.js.quarantine_S339_20260802",
+   "dydis": 79550,
+   "sha256": "193cde03ae2c69635a10019e1c1d5fd1a0d6115016511c26f00bd5fc018747fb"
+  },
+  "po_atkurimo": {
+   "dydis": 72935,
+   "sha256": "807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e"
+  },
+  "dydis_teisingas": true,
+  "sha_sutampa": true,
+  "VERDIKTAS": "ATKURTA"
+ },
+ "count": {
+  "VERSIJA": "restore-v1",
+  "dabartinis": {
+   "yra": true,
+   "dydis": 72935,
+   "sha256": "807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e",
+   "mtime": "2026-08-02 12:02:04"
+  },
+  "backup": {
+   "yra": true,
+   "dydis": 72935,
+   "sha256": "807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e",
+   "mtime": "2026-08-02 11:12:02"
+  },
+  "karantinas_jau": true,
+  "failas": {
+   "dydis": 72935,
+   "sha256": "807fea80f45fccf4f72cd4b18e95839c2826e74c84cd7ac6973e452e075b2c8e",
+   "eiluciu": 1628
+  },
+  "skaiciai": {
+   "clearDraft": 4,
+   "requestMagicLink": 2,
+   "alert(": 4,
+   "saveDraft": 26,
+   "pet-draft": 0,
+   "SRV_DRAFT_KEY": 0,
+   "S339": 0
+  },
+  "call_sites": {
+   "clearDraft": [
+    "115: function clearDraft(){ try { localStorage.removeItem(DRAFT_KEY); } catch(e){} }",
+    "1295: clearDraft();",
+    "1456: clearDraft();",
+    "1615: fresh.onclick = function(){ clearDraft(); render(); };"
+   ],
+   "alert(": [
+    "230: if (!state.data.species) { alert('Pasirinkite gyvūno rūšį'); return; }",
+    "231: if (!state.data.pet_name || !String(state.data.pet_name).trim()) { alert('Įrašykite augintinio vardą'); nameInput.focus(); return; }",
+    "1480: if (!email || email.indexOf('@') < 0) { alert('Įveskite teisingą el. paštą'); return; }",
+    "1491: .catch(function(){ alert('Nepavyko išsiųsti. Bandykite dar kartą.'); });"
+   ],
+   "requestMagicLink": [
+    "1444: btn.onclick = function(){ requestMagicLink(email.value, saveBox); };",
+    "1479: function requestMagicLink(email, box){"
+   ]
+  }
+ },
+ "js_dydis": "72935",
+ "js_sintakse": "SINTAKSE_OK",
+ "anketa": {
+  "suo_matomas": true,
+  "inputu": 2,
+  "mygtuku": 4
+ },
+ "autosave": {
+  "yra": true,
+  "turi_varda": true,
+  "ilgis": 342
+ },
+ "js_klaidos": [],
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
