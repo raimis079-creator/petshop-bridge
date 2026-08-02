@@ -1,0 +1,87 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2086,
+ "rez": {
+  "VERSIJA": "weight-tests-v1",
+  "user": 55,
+  "T1_be_svorio": {
+   "r": {
+    "http": 200,
+    "pet_id": 178,
+    "pets": 1,
+    "ev": 1,
+    "db": {
+     "current_weight_kg": null,
+     "weight_updated_at": null
+    }
+   },
+   "LAUKTA": "created, weight NULL",
+   "OK": true
+  },
+  "T2_su_svoriu": {
+   "r": {
+    "http": 200,
+    "pet_id": 179,
+    "pets": 1,
+    "ev": 1,
+    "db": {
+     "current_weight_kg": "12.50",
+     "weight_updated_at": "2026-08-02 09:17:45"
+    }
+   },
+   "LAUKTA": "12.50 + weight_updated_at nustatytas",
+   "OK": true
+  },
+  "T3_klastote": {
+   "r": {
+    "http": 200,
+    "pet_id": 180,
+    "pets": 1,
+    "ev": 1,
+    "db": {
+     "current_weight_kg": "4.00",
+     "weight_updated_at": "2026-08-02 09:17:45"
+    }
+   },
+   "siusta": "2001-01-01 00:00:00",
+   "LAUKTA": "serverio data, NE 2001",
+   "OK": true
+  },
+  "T4_sanitize": {
+   "gavo": {
+    "current_weight_kg": 7.5,
+    "weight_updated_at": "2026-08-02 09:17:45"
+   },
+   "LAUKTA": "7.5 (kablelis->taskas), serverio data",
+   "OK": true
+  },
+  "T5_ribos": {
+   "r": {
+    "0": "NERA",
+    "120": 120,
+    "200": "NERA",
+    "": "NERA",
+    "-5": "NERA",
+    "0.05": 0.05
+   },
+   "LAUKTA": "0/tuscias/-5/200 -> null; 0.05 ir 120 -> priimta",
+   "OK": false
+  },
+  "SUVESTINE": "4/5",
+  "pets_po": 65
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
