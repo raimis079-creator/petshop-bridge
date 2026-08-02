@@ -1,0 +1,44 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2080,
+ "dry": {
+  "VERSIJA": "commit1-apply-v1",
+  "failo_dydis": 38078,
+  "sha_pries": "4dd22f2d795f02ebf8ae9ca1cf2e7991687093578ea81e7f5b44c3728c59ca5f",
+  "inkaras_rastas": 1,
+  "jau_yra_result": false
+ },
+ "apply": {
+  "VERSIJA": "commit1-apply-v1",
+  "failo_dydis": 38078,
+  "sha_pries": "4dd22f2d795f02ebf8ae9ca1cf2e7991687093578ea81e7f5b44c3728c59ca5f",
+  "inkaras_rastas": 1,
+  "jau_yra_result": false,
+  "sintakse_ok": true,
+  "sintakses_klaida": "",
+  "backup": true,
+  "failo_dydis_po": 39977,
+  "pokytis": 1899,
+  "VERDIKTAS": "IDIEGTA",
+  "metodai_po": {
+   "create_pet_result": "NERA",
+   "create_pet": "YRA",
+   "handle_save": "YRA"
+  },
+  "site_kodas": 200
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
