@@ -1,0 +1,224 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2076,
+ "rez": {
+  "VERSIJA": "tz-audit-v1",
+  "laikas": "2026-08-02 11:17:09",
+  "F1": {
+   "woo": "10.9.4",
+   "wp": "6.9.4",
+   "php": "8.3.20"
+  },
+  "F2": {
+   "publish": 2764,
+   "draft": 1022,
+   "be_kainos": 5,
+   "be_nuotraukos": 44,
+   "be_sku": 2,
+   "be_ean": 1524,
+   "be_kategorijos": 0
+  },
+  "F3": {
+   "kategoriju": 80,
+   "max_gylis": 3
+  },
+  "F4": {
+   "sku": {
+    "uzklausa": "2810",
+    "rasta": 0
+   },
+   "ean": {
+    "uzklausa": "8595091784219",
+    "rasta": 0
+   }
+  },
+  "F5": {
+   "yith": true
+  },
+  "F9": {
+   "zonu": 3,
+   "aktyviu_metodu": 11,
+   "metodai": [
+    "Neringos savivaldybe: VENIPAK paštomatai/atsiėmimo punktai",
+    "Neringos savivaldybe: VENIPAK Kurjeris",
+    "Neringos savivaldybe: LP Express",
+    "Lietuva: VENIPAK Kurjeris",
+    "Lietuva: VENIPAK paštomatai/atsiėmimo punktai",
+    "Lietuva: VENIPAK Kurjeris",
+    "Lietuva: VENIPAK Kurjeris",
+    "Lietuva: VENIPAK Kurjeris",
+    "Lietuva: LP Express",
+    "Lietuva: LP Express kurjeris",
+    "Baltijos šalys, be LIetuvos: VENIPAK paštomatai/atsiėmimo punktai"
+   ]
+  },
+  "F8": [
+   "paysera",
+   "bacs"
+  ],
+  "F30b": {
+   "reviews_enabled": "yes",
+   "verified_only": "yes",
+   "ratings": "yes",
+   "komentaru": 0
+  },
+  "F19": {
+   "subscription_pluginai": [],
+   "subscription_produktu": 0,
+   "paysera_recurring": "nustatymai yra"
+  },
+  "DoD4": [
+   {
+    "status": "wc-completed",
+    "c": "1"
+   },
+   {
+    "status": "wc-pending",
+    "c": "1"
+   }
+  ],
+  "DoD9_cron": {
+   "action_scheduler_run_queue": "2026-08-02 08:17",
+   "ps_esp_cron_process_pending": "2026-08-02 08:17",
+   "cmplz_every_five_minutes_hook": "2026-08-02 08:17",
+   "ps_email_dispatch_cron": "2026-08-02 08:18",
+   "ps_cart_abandon_check": "2026-08-02 08:19",
+   "cmplz_schedule_create_wsc_site_id": "2026-08-02 08:20",
+   "jetpack_clean_nonces": "2026-08-02 08:21",
+   "ps_post_purchase_check": "2026-08-02 08:39",
+   "wp_privacy_delete_old_export_files": "2026-08-02 08:43",
+   "wp_version_check": "2026-08-02 16:43",
+   "woo_lithuaniapost_api_oauth_refresh_token": "2026-08-02 08:56",
+   "woo_lithuaniapost_update_tracking_status": "2026-08-02 08:56",
+   "wc_admin_process_orders_milestone": "2026-08-02 08:58",
+   "wc_admin_unsnooze_admin_notes": "2026-08-02 08:58",
+   "petshop_vf_sync_stock_hourly": "2026-08-02 08:59",
+   "ps_reminders_daily_check": "2026-08-02 09:00",
+   "petshop_attr_engine_run": "2026-08-02 10:57",
+   "recovery_mode_clean_expired_keys": "2026-08-02 15:43",
+   "wp_scheduled_delete": "2026-08-02 15:43",
+   "delete_expired_transients": "2026-08-02 15:43",
+   "wp_update_user_counts": "2026-08-02 15:43",
+   "wp_scheduled_auto_draft_delete": "2026-08-02 15:47",
+   "yith_wcan_delete_expired_transients": "2026-08-02 16:28",
+   "jetpack_v2_heartbeat": "2026-08-02 16:58",
+   "woocommerce_marketplace_cron_fetch_promotions": "2026-08-02 16:58",
+   "wp_update_plugins": "2026-08-02 17:13",
+   "jp_purge_transients_cron": "2026-08-02 17:21",
+   "wp_update_themes": "2026-08-02 17:43",
+   "wpforms_email_summaries_cron": "2026-08-02 21:00",
+   "wpforms_weekly_entries_count_cron": "2026-08-02 21:00",
+   "woo_lithuaniapost_sync_tracking_data": "2026-08-03 00:00",
+   "petshop_vf_sync_reprice_daily": "2026-08-03 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-03 04:00",
+   "ps_suppression_daily_reconcile": "2026-08-03 05:30",
+   "woo_lithuaniapost_terminal_service_update_terminals": "2026-08-03 06:56",
+   "ps_refill_daily_check": "2026-08-03 08:00",
+   "cmplz_every_day_hook": "2026-08-03 08:12",
+   "wp_delete_temp_updater_backups": "2026-08-04 15:44",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00",
+   "wp_site_health_scheduled_check": "2026-08-05 15:43",
+   "wcdn_ts_tracker_send_event": "2026-08-07 02:22",
+   "cmplz_every_week_hook": "2026-08-07 08:12",
+   "cmplz_every_month_hook": "2026-08-09 08:12"
+  },
+  "DoD9_importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "last_activity": "2026-05-27 11:14:21",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2045"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "last_activity": "2026-08-02 03:01:57",
+    "imported": "143",
+    "created": "1",
+    "updated": "142",
+    "skipped": "777"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "last_activity": "2026-08-02 08:02:32",
+    "imported": "1041",
+    "created": "0",
+    "updated": "1041",
+    "skipped": "1565"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "last_activity": "2026-08-02 03:31:34",
+    "imported": "19",
+    "created": "0",
+    "updated": "19",
+    "skipped": "2278"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "last_activity": "2026-08-02 08:17:08",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "1420"
+   }
+  ],
+  "DoD11": 1,
+  "DoD13": {
+   "uptime_pluginai": []
+  },
+  "DoD22_blog_public": "0",
+  "pluginai": [
+   "code-snippets/code-snippets.php",
+   "complianz-gdpr/complianz-gpdr.php",
+   "loco-translate/loco.php",
+   "petshop-attributes/petshop-attributes.php",
+   "petshop-core/petshop-core.php",
+   "petshop-esp/petshop-esp.php",
+   "petshop-fbt/petshop-fbt.php",
+   "petshop-feeds/petshop-feeds.php",
+   "petshop-fonts/petshop-fonts.php",
+   "petshop-pragma/petshop-pragma.php",
+   "petshop-promotions/petshop-promotions.php",
+   "petshop-xml/petshop-xml.php",
+   "postit/postit.php",
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php",
+   "woo-payment-gateway-paysera/paysera.php",
+   "woo-update-manager/woo-update-manager.php",
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+   "woocommerce-xml-csv-product-import/plugin.php",
+   "woocommerce/woocommerce.php",
+   "wordpress-importer/wordpress-importer.php",
+   "wp-all-import-pro/wp-all-import-pro.php",
+   "wp-mail-smtp/wp_mail_smtp.php",
+   "wpforms-lite/wpforms.php",
+   "yith-woocommerce-ajax-navigation/init.php"
+  ],
+  "pluginu_sk": 26,
+  "serimas": {
+   "su_lentele": 548
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
