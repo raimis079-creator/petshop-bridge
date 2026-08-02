@@ -832,11 +832,60 @@ Iki refaktoringo sito nebuvo galima — `WP_REST_Response` viduje neleido atskir
 
 **Diff dokumentas:** `/mnt/user-data/outputs/COMMIT1_DIFF.md` (Raimio perziurai).
 
+### ★ S334 COMMIT 2 — GLOBALI client_ref IDEMPOTENCIJA: UZBAIGTA
+
+```
+OK client_ref normalizuojamas: '' -> NULL (trim + tuscia -> null)
+OK UNIQUE uq_client_ref (GLOBALUS, ne (user_id, client_ref))
+OK daug NULL reiksmiu leidziama -> prisijungusio kelias nepaliestas
+OK active  + tas pats user -> deduplicated
+OK deleted + tas pats user -> draft_already_used
+OK kitas user             -> client_ref_conflict BE duomenu atskleidimo
+OK force_new unikalumo NEAPEINA (patikra eina PRIES ji)
+OK duplicate-key recovery
+OK nesusijusi INSERT klaida -> create_failed (NE deduplicated)
+OK ps_pets po testu = 65
+```
+**Testai 8/8.** Failas 39 977 -> 42 524 B · backup `.bak_S334` · sintakse
+validuota PRIES rasant · svetaine 200.
+
+**KODAS:** naujas `resolve_client_ref()` — VIENA vieta trims semantinems sakoms,
+naudojama DVIEJOSE vietose: pries INSERT (greitas kelias) ir PO nepavykusio
+INSERT (duplicate-key recovery). `create_pet()` wrapper'is gavo dvi naujas sakas,
+abi HTTP 409; `client_ref_conflict` zinute BENDRINE („Sios anketos panaudoti
+nepavyko") — neatskleidzia nei svetimo vartotojo, nei augintinio.
+
+**★ T7 duplicate-key race recovery — PATVIRTINTA (tiksli formuluote):**
+```
+- viena DB eilute;
+- pralaimejes procesas grizta kaip deduplicated;
+- pralaimejes procesas NEKURIA evento;
+- pilnas dvieju REALIU aplikacijos procesu concurrency E2E PALIKTAS S328 E2E etapui.
+```
+Testas simuliavo konkurenta per `query` filtra (eilute iterpta PO pre-check,
+PRIES musu INSERT) — todel NEIRODE, kad dviejuose lygiagreciuose
+`create_pet_result()` procesuose LAIMEJES procesas tiksliai VIENA karta paleidzia
+`mirror_to_sender()` ir `emit_created()`. Normalus `created` kelias su vienu
+eventu irodytas atskirai (Commit 1 paritetas). **NE Commit 2 blokatorius.**
+
+**★★ ATVIROS SKOLOS — UZDARYTI PRIES NURODYTUS ETAPUS:**
+```
+PRIES /pet-draft:
+  - payload lauku WHITELIST ir kanonine validacija;
+  - $input NEGALI perrasyti user_id, status, client_ref, timestamps
+    (dabartinis `array_merge(defaultai, $input)` tai teoriskai LEIDZIA).
+
+PRIES claim concurrency E2E:
+  - COUNT(active) -> is_primary lenktynes (du draftai vienu metu gali abu
+    nusprest, kad yra pirmieji);
+  - tikras DVIEJU APLIKACIJOS PROCESU testas.
+```
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA
-2 Commit 2   UNIQUE(client_ref) + duplicate-key       <- KITAS
-3 REST       POST /pet-draft su kanonine validacija
+2 Commit 2   UNIQUE(client_ref) + duplicate-key       ✅ ATLIKTA (8/8)
+3 REST       POST /pet-draft su kanonine validacija   <- KITAS
 4 Magic link magic-login/request priima draft_id (triguba patikra)
 5 Claim      process_login -> create_pet_result -> complete_claim
 6 JS         pet-form.js siuncia serverini drafta (localStorage tik cache)
