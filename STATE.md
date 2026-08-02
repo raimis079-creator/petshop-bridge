@@ -504,6 +504,119 @@ ps_pets 65 · id 31/32 active · 8 atkurtos deleted · BLTEST 0
 source_draft_id atkurtoms NULL · client_ref 1 eilute, dublikatu 0 · TEMP aktyvus 0
 ```
 
+### ★★★★ LAUNCH DoD REGISTRAS (TZ §19.1) — PRIVALOMA SESIJOS PRADZIOS PATIKRA
+
+> **KAM SIS REGISTRAS.** TZ MASTER yra versijuojamas 6735 eiluciu dokumentas;
+> STATE.md seka SESIJAS. Tarp ju nebuvo jungties — DoD punktai negyveno niekur,
+> todel kiekvienoje naujoje sesijoje „kas liko" buvo surenkamas is to, kas
+> ATSITIKTINAI pateko i atminti. 2026-08-02 Raimis tai ivardino: „migruodami per
+> pokalbiu langus mes pametame dali darbu, ir tai jau ne pirmas kartas".
+>
+> **TAISYKLE:** punkto busena keiciama TIK su data ir IRODYMU. Be irodymo —
+> nekeiciama. Sesijos pradzioje sis registras skaitomas PIRMAS.
+
+| # | Kriterijus | Busena | Data | Irodymas |
+|---|---|---|---|---|
+| 1 | P0 funkcijos F1-F16 100% | 🟡 ~95% | 2026-08-02 | atviri F4, F14 (zr. zemiau) |
+| 2 | Kritiniu klaidu 0 | ⚪ nematuota | — | NERA formalaus bug registro |
+| 3 | Auksto prioriteto klaidu <=3 | ⚪ nematuota | — | tas pats |
+| 4 | 20 testiniu uzsakymu | 🔴 | — | desktop/mobile/svecias/registruotas |
+| 5 | 2 stabilus pristatymo budai | ✅ | 2026-06-01 | Venipak + LP Express live |
+| 6 | Paysera + bankinis | ✅ | 2026-06-01 | DoD #6 TZ v1.x |
+| 7 | Top 100 SEO 301 | 🔴 | — | 44 URL=404, 20,5% srauto; analize/gsc_pages.json |
+| 8 | Backup restore testas | 🔴 | — | i staging |
+| 9 | XML sync 7 d. be klaidu | 🟡 | — | importai veikia, 7 d. serija nefiksuota |
+| 10 | Kainodara testuota 20 produktu | 🟡 | 2026-07-30 | ZB recon darytas, formalaus testo nera |
+| 11 | Manual override 5 produktais | 🔴 | 2026-07-30 | `_manual_price_override=yes`: 0 prekiu |
+| 12 | Savininkas apdoroja uzsakyma be programuotojo | 🟡 | — | neformalizuota |
+| 13 | Post-launch monitoringas | 🔴 | — | 404/mokejimai/uzsakymai/uptime/XML logs |
+| 14 | Mail-Tester >=8/10 | ✅ | 2026-07-30 | 8,5/10 (TZ v1.60) |
+| 15 | GDPR atitiktis | ✅ | 2026-07-10 | Complianz v7.5.0 + 8 legal puslapiai |
+| 16 | VMI saskaitos su realia transakcija | ✅ | 2026-06 | AVPN/IAPV testuota |
+| 17 | Beta testas 5-10 klientu | 🔴 | — | |
+| 18 | DNS planas + sena platforma read-only | 🔴 | — | |
+| 19 | Rollback planas | 🔴 | — | |
+| 20 | Savaitinis stabilumas >=99% | 🔴 | — | 7 d. staging monitoringas |
+| 21 | GSC auditas + top-100 301 lentele | 🟡 ~70% | 2026-07-30 | eksportas YRA, mapping juodrastis NE |
+| 22 | „Discourage search engines" isjungti | 🔴 | — | pre-launch, vienos varneles darbas |
+
+**SUVESTINE 2026-08-02: ✅ 5 · 🟡 5 · 🔴 10 · ⚪ 2**
+
+**★ DESIMT 🔴 PUNKTU — TESTAVIMO, MONITORINGO IR OPERACIJU SLUOKSNIS.**
+Tai NE kodas. Prie sio sluoksnio per visa projekta DAR NEBUVO PRISILIESTA.
+Jis nefiguravo nei viename sesijos „kas liko" saraše.
+
+### P0 FUNKCIJOS — REALIAI ATVIRI TIK DU
+```
+F4  Paieska + SKU/EAN     🟡 SKU/EAN paieska NEPATIKRINTA
+F14 Mobile checkout        🟡 iPhone/Android testas NEFIKSUOTAS
+```
+Likusios F1-F3, F5-F13, F15, F16 — ✅.
+
+### MVP (TZ §4.3) — PRIVALOMA SIAM LAUNCH'UI
+```
+F17 XML 2-as tiekejas      ✅ VF 1077 prekes
+F18 Kaina24/kainos.lt      ✅ (URL resubmit po migracijos)
+F19 RIBOTA PRENUMERATA     🔴 NEPRADETA — TZ laiko PRIVALOMA
+                              BLOKUOJA: Q10 (kurie 20-30 SKU) + Q6 (pluginas)
+                              + Paysera Recurring atsakymas nefiksuotas
+F20 Basic Pet Profile      ✅✅ gerokai virsyta (M8)
+F21 Basic email automation 🟡 2/3:
+      cart_abandoned  🔴 SABLONO NERA (template_missing)
+      post_purchase   ✅ 2026-07-31 (E2E per tikra dispatch)
+      refill          ✅
+F30b Atsiliepimai          ⚪ BUSENA NEPATIKRINTA
+```
+
+**★ F19 — DIDZIAUSIA NEUZCIUOPTA SPRAGA.** 2026-08-02 iki tol nefiguravo
+jokiame „kas liko" saraše. NEPAINIOTI su naujienlaisko prenumerata.
+
+### S328 ANONIMINIS DRAFTAS — 3/10
+```
+OK  bootstrap · draftu lentele · HMAC · claim_attempt_id · stale claiming
+OK  ps_pets.source_draft_id UNIQUE · crash recovery
+--  Commit 1 create_pet_result()  <- KITAS
+--  Commit 2 UNIQUE(client_ref) + duplicate-key recovery
+--  REST /pet-draft · magic-login draft_id · claim grandine
+--  pet-form.js serverinis draftas · cleanup cron · keliu irenginiu E2E
+```
+
+### SEO — ISMATUOTA RIZIKA
+```
+top-100 URL dengia   79,2% viso srauto
+404                  44 URL (4 046 clicks) = 20,5% VISO SRAUTO NEUZDENGTA
+```
+Trys tipai: (1) kategorijos, kuriu dev'e NERA — RAIMIO sprendimas ar jos bus;
+(2) seni kategoriju URL su ID uodegomis — grynas 301; (3) prekes — EAN/SKU match.
+Truksta 3 blog straipsniu. **NEPRADETI be Raimio.**
+
+### PRE-LAUNCH OPERACIJOS (visos 🔴, isskyrus pazymetas)
+```
+Site URL/Home -> https://petshop.lt (BUTINAI https, ne http)
+6 cron uzduotys serveriai.lt (Import #2, #3)
+woocommerce_email_header_image · wcdn_settings · cmplz_preloaded_privacy_info
+AVPN/IAPV serijos reset i 101 · testiniu uzsakymu trynimas
+Feed URL resubmit (Kaina24, Kainos.lt)
+„Discourage search engines" isjungti (= DoD #22)
+🟡 Sender tracking CNAME (hostname IS SENDER nustatymu)
+🟡 Complianz Website Scan + slapuku sarasas · enhanced conversions
+```
+**DNS valdomas iv.lt**, NE serveriai.lt.
+
+### LAUKIA RAIMIO SPRENDIMO
+```
+Q9  Lojalumas: pluginas ar savas BonusLedger        iki 2026-08-15
+Q10 Kurie 20-30 SKU prenumeratai                    BLOKUOJA F19
+Q6  Prenumeratos pluginas                           BLOKUOJA F19
+Q21 FB paskyros revival + reali FB nuoroda widget'ui
+Duomenu retencija (GDPR): kada trinti ps_carts/ps_shipments
+Paysera Recurring atsakymas (nefiksuotas)
+S327 laisko lietuvisko stiliaus perziura
+El. pastas „Apie mus" / „Privatumo politika" puslapiuose
+SEO 44 URL: kurios kategorijos apskritai bus
+137 TEMP snippet'u trynimas WP admin (higiena)
+```
+
 ### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
 
 **BUKLE 2026-07-31 sesijos pabaigoje: viskas svaru, nieko pakibusio.**
