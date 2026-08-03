@@ -1,0 +1,319 @@
+{
+ "VERSIJA_RUN": "run346-v1",
+ "deaktyvuota_TEMP": [],
+ "sid": 2136,
+ "rez": {
+  "VERSIJA": "s346-recon-v1",
+  "weight_updated_at_hits": [
+   {
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 176,
+    "txt": "* ★ `weight_updated_at` klientas NESIUNCIA — ji nustato serveris (S335)."
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-dashboard.php",
+    "l": 126,
+    "txt": "'weight_updated_at'       => $pet->weight_updated_at,"
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 340,
+    "txt": "// `weight_updated_at` prideda SERVERIS — tai ne kliento duomuo."
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 341,
+    "txt": "unset( $reiksmingi['weight_updated_at'] );"
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 578,
+    "txt": "// anoniminio (draftu) keliai naudotu TA PATI lauka. weight_updated_at"
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 696,
+    "txt": "// ★ weight_updated_at nustato SERVERIS ir TIK kai svoris realiai priimtas —"
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 705,
+    "txt": "// ★ S345: `weight_updated_at` CIA NEBEDEDAMAS. Sanitizeris NEZINO"
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 880,
+    "txt": "// S345: CREATE — `weight_updated_at` nustatomas TIK jei svoris realiai pateiktas."
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 882,
+    "txt": "$data['weight_updated_at'] = gmdate( 'Y-m-d H:i:s' );"
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 1004,
+    "txt": "$updates['weight_updated_at'] = gmdate( 'Y-m-d H:i:s' );"
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 1007,
+    "txt": "// Kliento pateikto `weight_updated_at` NEPRIIMAM niekada."
+   },
+   {
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 1008,
+    "txt": "if ( 'weight_updated_at' === $f ) {"
+   },
+   {
+    "f": "mu-plugins/petshop-feeding-calc-rest.php",
+    "l": 214,
+    "txt": "$wpdb->update($pf.'ps_pets', array('current_weight_kg'=>$w,'weight_updated_at'=>current_time('mysql'),'updated_at'=>current_time('mysql')), array('id'=>$pet_id));"
+   }
+  ],
+  "hits_viso": 13,
+  "snippetai_su_lauku": [
+   {
+    "id": "1120",
+    "name": "S212-C Weight Migration DryRun (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "1121",
+    "name": "S212-C Weight Migration APPLY (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "1204",
+    "name": "F1 REST Test (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "1211",
+    "name": "F1 Safe Close (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "1213",
+    "name": "F1 Proof (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1215",
+    "name": "F1 CLOSE (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "1221",
+    "name": "F1 Proof2 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1223",
+    "name": "F1 FinalClose (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1415",
+    "name": "PREP (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1418",
+    "name": "PREP2 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1422",
+    "name": "VIS218 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1423",
+    "name": "VIS218B (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1424",
+    "name": "VIS218B (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1426",
+    "name": "VIS218D (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1428",
+    "name": "VIS219 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1431",
+    "name": "VIS220 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1432",
+    "name": "VIS221 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1434",
+    "name": "VIS222 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1435",
+    "name": "VIS223 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1436",
+    "name": "VIS224 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1438",
+    "name": "VIS224 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1440",
+    "name": "VIS224 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1441",
+    "name": "VIS224 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1443",
+    "name": "VIS225 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1444",
+    "name": "VIS226 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1446",
+    "name": "VIS227 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1448",
+    "name": "VIS228 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1449",
+    "name": "VIS229 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1451",
+    "name": "VIS229 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1454",
+    "name": "VIS230 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1458",
+    "name": "VIS231 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1460",
+    "name": "VIS232 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1463",
+    "name": "VIS233 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1469",
+    "name": "VIS234 (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1864",
+    "name": "OBJ 1785358314986",
+    "active": "-1"
+   },
+   {
+    "id": "2085",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2086",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2128",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2129",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2130",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2131",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2132",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2134",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2135",
+    "name": "UI Localization Runtime Audit",
+    "active": "0"
+   },
+   {
+    "id": "2136",
+    "name": "TEMP S346 recon",
+    "active": "1"
+   }
+  ],
+  "failas": {
+   "dydis": 45686,
+   "sha256": "679d83d3d721f6d2"
+  },
+  "metodai": {
+   "handle_save": {
+    "eilute_nuo": 202,
+    "ilgis_B": 613,
+    "kodas": "function handle_save( $request ) {\n\t\t$user_id = get_current_user_id();\n\t\tif ( ! $user_id ) {\n\t\t\treturn new WP_Error( 'not_logged_in', 'Reikia prisijungti.', array( 'status' => 401 ) );\n\t\t}\n\t\t$pet_id = (int) $request->get_param( 'pet_id' );\n\t\tif ( $pet_id > 0 ) {\n\t\t\t$input = self::sanitize_input( $request, true );\n\t\t\treturn self::update_pet( $user_id, $pet_id, $input );\n\t\t}\n\t\t$input = self::sanitize_input( $request, false );\n\t\t$client_ref = self::extract_client_ref( $request );\n\t\t$force_new = (bool) $request->get_param( 'force_new' );\n\t\treturn self::create_pet( $user_id, $input, $client_ref, $force_new );\n\t}"
+   },
+   "sanitize_input": {
+    "eilute_nuo": 569,
+    "ilgis_B": 7919,
+    "kodas": "function sanitize_input( $request, $partial = false ) {\n\t\t$out = array();\n\t\t$fields = array(\n\t\t\t'species', 'species_detail', 'pet_name', 'life_stage', 'dog_size',\n\t\t\t'is_sterilised', 'feeding_type', 'feeding_type_other', 'wet_food_g', 'wet_product_id',\n\t\t\t'primary_need', 'primary_need_other', 'current_food_brand',\n\t\t\t'birth_date', 'sensitivities', 'housing', 'activity_hint',\n\t\t\t'current_food_free_text', 'primary_product_id',\n\t\t\t// S335: svoris — BENDRAME kanoniniame sarase, kad prisijungusio ir\n\t\t\t// anoniminio (draftu) keliai naudotu TA PATI lauka. weight_updated_at\n\t\t\t// is kliento NEPRIIMAMAS — ji nustato TIK serveris (zr. case zemiau).\n\t\t\t'current_weight_kg',\n\t\t\t// S211: produkto tapatybe (snapshot)\n\t\t\t'primary_product_sku', 'primary_product_name', 'primary_product_package',\n\t\t);\n\n\t\tforeach ( $fields as $f ) {\n\t\t\t$raw = $request->get_param( $f );\n\t\t\tif ( $partial && $raw === null ) {\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\tswitch ( $f ) {\n\t\t\t\tcase 'species':\n\t\t\t\t\t$v = sanitize_text_field( (string) $raw );\n\t\t\t\t\tif ( in_array( $v, self::SPECIES, true ) ) {\n\t\t\t\t\t\t$out['species'] = $v;\n\t\t\t\t\t} elseif ( ! $partial ) {\n\t\t\t\t\t\t$out['species'] = 'other';\n\t\t\t\t\t}\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'pet_name':\n\t\t\t\t\t$out['pet_name'] = ( $raw !== null && $raw !== '' ) ? sanitize_text_field( (string) $raw ) : null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'species_detail':\n\t\t\t\t\t$out['species_detail'] = ( $raw !== null && $raw !== '' ) ? sanitize_text_field( (string) $raw ) : null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'current_food_brand':\n\t\t\t\t\t$out['current_food_brand'] = ( $raw !== null && $raw !== '' ) ? sanitize_text_field( (string) $raw ) : null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'current_food_free_text':\n\t\t\t\t\t$out['current_food_free_text'] = ( $raw !== null && $raw !== '' ) ? sanitize_text_field( (string) $raw ) : null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'primary_product_id':\n\t\t\t\t\t// S246: keiciant produkta SERVERIS pats persirašo snapshot'ą.\n\t\t\t\t\t// Anksciau primary_product_name/_sku/_package buvo leidziamu laukų\n\t\t\t\t\t// sąraše, bet sanitize jiems neturėjo case — todėl tyliai\n\t\t\t\t\t// nukrisdavo: ID pasikeisdavo, o profilyje ir Mityboje likdavo\n\t\t\t\t\t// SENAS pavadinimas. Dabar snapshot'as visada suderintas su ID.\n\t\t\t\t\t$ppid = $raw ? (int) $raw : null;\n\t\t\t\t\t$out['primary_product_id'] = $ppid;\n\t\t\t\t\tif ( $ppid && function_exists( 'wc_get_product' ) ) {\n\t\t\t\t\t\t$pobj = wc_get_product( $ppid );\n\t\t\t\t\t\tif ( $pobj ) {\n\t\t\t\t\t\t\t$parent = $pobj->is_type( 'variation' ) ? (int) $pobj->get_parent_id() : $ppid;\n\t\t\t\t\t\t\t$pak = wp_get_object_terms( $ppid, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );\n\t\t\t\t\t\t\tif ( is_wp_error( $pak ) || ! $pak ) {\n\t\t\t\t\t\t\t\t$pak = wp_get_object_terms( $parent, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t$out['primary_product_name']    = mb_substr( (string) $pobj->get_name(), 0, 255 );\n\t\t\t\t\t\t\t$out['primary_product_sku']     = mb_substr( (string) $pobj->get_sku(), 0, 64 );\n\t\t\t\t\t\t\t$out['primary_product_package'] = ( ! is_wp_error( $pak ) && $pak ) ? mb_substr( $pak[0], 0, 64 ) : null;\n\t\t\t\t\t\t}\n\t\t\t\t\t} elseif ( ! $ppid ) {\n\t\t\t\t\t\t// Nutraukus rysi su produktu — snapshot'as irgi valomas.\n\t\t\t\t\t\t$out['primary_product_name']    = null;\n\t\t\t\t\t\t$out['primary_product_sku']     = null;\n\t\t\t\t\t\t$out['primary_product_package'] = null;\n\t\t\t\t\t}\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'birth_date':\n\t\t\t\t\t// Y-m-d, reali data, ne ateitis, ne senesne nei 1985.\n\t\t\t\t\t$v = sanitize_text_field( (string) $raw );\n\t\t\t\t\t$ok = null;\n\t\t\t\t\tif ( preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', $v ) ) {\n\t\t\t\t\t\t$ts = strtotime( $v . ' 00:00:00' );\n\t\t\t\t\t\tif ( $ts && $ts <= time() && (int) substr( $v, 0, 4 ) >= 1985 ) {\n\t\t\t\t\t\t\t$ok = $v;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\t$out['birth_date'] = $ok;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'sensitivities':\n\t\t\t\t\t// CSV kodai + galimas \"other:tekstas\". Max 255.\n\t\t\t\t\t$out['sensitivities'] = ( $raw !== null && $raw !== '' ) ? substr( sanitize_text_field( (string) $raw ), 0, 255 ) : null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'housing':\n\t\t\t\t\t$out['housing'] = self::validate_enum( $raw, self::HOUSING );\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'activity_hint':\n\t\t\t\t\t$out['activity_hint'] = self::validate_enum( $raw, self::ACTIVITY );\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'life_stage':\n\t\t\t\t\t$out['life_stage'] = self::validate_enum( $raw, self::LIFE_STAGE );\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'dog_size':\n\t\t\t\t\t$out['dog_size'] = self::validate_enum( $raw, self::DOG_SIZE );\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'is_sterilised':\n\t\t\t\t\t$out['is_sterilised'] = self::validate_enum( $raw, self::IS_STERILISED );\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'feeding_type':\n\t\t\t\t\t$out['feeding_type'] = self::validate_enum( $raw, self::FEEDING_TYPE );\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'primary_need':\n\t\t\t\t\t$out['primary_need'] = self::validate_enum( $raw, self::PRIMARY_NEED );\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'feeding_type_other':\n\t\t\t\t\t$ft = ( $raw === null ) ? '' : trim( wp_strip_all_tags( (string) $raw ) );\n\t\t\t\t\t$out['feeding_type_other'] = ( $ft !== '' )\n\t\t\t\t\t\t? mb_substr( sanitize_text_field( $ft ), 0, 150 )\n\t\t\t\t\t\t: null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'wet_product_id':\n\t\t\t\t\t// Paprasto produkto ARBA variacijos ID (tai, kas dedama i krepseli).\n\t\t\t\t\t$wp = ( $raw === null || $raw === '' ) ? null : (int) $raw;\n\t\t\t\t\t$out['wet_product_id'] = ( $wp !== null && $wp > 0 ) ? $wp : null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'wet_food_g':\n\t\t\t\t\t// Realus slapio maisto kiekis gramais. 0 arba tuscias -> NULL.\n\t\t\t\t\t// Virsutine riba 3000 g — praktiskai neribojam, bet apsaugom nuo absurdo.\n\t\t\t\t\t$wg = ( $raw === null || $raw === '' ) ? null : (int) $raw;\n\t\t\t\t\t$out['wet_food_g'] = ( $wg !== null && $wg > 0 ) ? min( $wg, 3000 ) : null;\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'current_weight_kg':\n\t\t\t\t\t// S335. Realus gyvunu svoriai: nuo ~0,05 kg (zuvis/paukstis) iki 120 kg.\n\t\t\t\t\t// 0 arba tuscias -> NULL (svoris nenurodytas, ne „sveria nuli\").\n\t\t\t\t\t// ★ weight_updated_at nustato SERVERIS ir TIK kai svoris realiai priimtas —\n\t\t\t\t\t//   kitaip vartotojas galetu suklastoti atnaujinimo data.\n\t\t\t\t\tif ( $raw === null || $raw === '' ) {\n\t\t\t\t\t\t$out['current_weight_kg'] = null;\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\t$w = (float) str_replace( ',', '.', (string) $raw );\n\t\t\t\t\tif ( $w > 0 && $w <= 120 ) {\n\t\t\t\t\t\t$out['current_weight_kg'] = round( $w, 2 );\n\t\t\t\t\t\t// ★ S345: `weight_updated_at` CIA NEBEDEDAMAS. Sanitizeris NEZINO\n\t\t\t\t\t\t// ankstesnes DB reiksmes, todel besalygiskai deda nauja data ir\n\t\t\t\t\t\t// „svoris atnaujintas\" tapdavo „profilis issaugotas\". Data nustato\n\t\t\t\t\t\t// create/update kelias, kuris MATO senaji svori.\n\t\t\t\t\t} else {\n\t\t\t\t\t\t$out['current_weight_kg'] = null;\n\t\t\t\t\t}\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'primary_need_other':\n\t\t\t\t\t// Tik paprastas tekstas, be HTML, iki 150 simboliu. Tuscias -> NULL.\n\t\t\t\t\t$txt = ( $raw === null ) ? '' : trim( wp_strip_all_tags( (string) $raw ) );\n\t\t\t\t\t$out['primary_need_other'] = ( $txt !== '' )\n\t\t\t\t\t\t? mb_substr( sanitize_text_field( $txt ), 0, 150 )\n\t\t\t\t\t\t: null;\n\t\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\n\t\t// \"Kita\" tekstas prasmingas TIK su primary_need='other'. Pasirinkus bet kuri kita\n\t\t// varianta (ar 'none') — isvalom, kad ataskaitoje neliktu nasleliu is senos busenos.\n\t\t// array_key_exists (ne isset), nes primary_need gali buti teisetai NULL.\n\t\tif ( array_key_exists( 'primary_need', $out ) && $out['primary_need'] !== 'other' ) {\n\t\t\t$out['primary_need_other'] = null;\n\t\t}\n\n\t\t// Tos pacios taisykles maitinimo tipui:\n\t\t//  - laisvas tekstas prasmingas TIK su feeding_type='other'\n\t\t//  - slapio maisto kiekis prasmingas TIK su feeding_type='dry_wet'\n\t\t//    (naminiam maistui / BARF perskaiciavimo nedarom, tad kiekio nesaugom)\n\t\tif ( array_key_exists( 'feeding_type', $out ) ) {\n\t\t\t$ft = $out['feeding_type'];\n\t\t\tif ( $ft !== 'other' ) { $out['feeding_type_other'] = null; }\n\t\t\t// Slapio KIEKIS prasmingas ir dry_wet (misriam iverciui), ir wet_only (visam planui).\n\t\t\tif ( $ft !== 'dry_wet' && $ft !== 'wet_only' ) { $out['wet_food_g'] = null; }\n\t\t\t// Slapio PRODUKTAS — tose paciose dviejose busenose.\n\t\t\tif ( $ft !== 'dry_wet' && $ft !== 'wet_only' ) { $out['wet_product_id'] = null; }\n\t\t}\n\n\t\tif ( ! $partial && ! isset( $out['species'] ) ) {\n\t\t\t$out['species'] = 'other';\n\t\t}\n\t\treturn $out;\n\t}"
+   }
+  }
+ }
+}
