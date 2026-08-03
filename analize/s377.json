@@ -1,0 +1,71 @@
+{
+ "VERSIJA_RUN": "run377-v1",
+ "deakt": [],
+ "sid": 2167,
+ "rez": {
+  "VERSIJA": "s377-v1",
+  "PASTABA": "tik skaitymas, nieko netrinama",
+  "katalogas": "/home/gyvunai2/application_backups",
+  "yra": true,
+  "rasomas": true,
+  "turinys": [
+   {
+    "vardas": "app_dev-avesa-lt_Petshop-NEW_2026-07-22_05-22-07.tar.gz",
+    "tipas": "failas",
+    "MB": 8172.2,
+    "data": "2026-07-22 02:33"
+   },
+   {
+    "vardas": "app_dev-avesa-lt_Petshop-NEW_2026-07-24_23-23-20.tar.gz",
+    "tipas": "failas",
+    "MB": 8173.4,
+    "data": "2026-07-24 20:35"
+   },
+   {
+    "vardas": "app_dev-avesa-lt_Petshop-NEW_2026-07-30_17-22-13.tar.gz",
+    "tipas": "failas",
+    "MB": 8174,
+    "data": "2026-07-30 14:34"
+   },
+   {
+    "vardas": "app_dev-avesa-lt_Petshop-NEW_2026-08-03_05-22-45.tar.gz",
+    "tipas": "failas",
+    "MB": 8179.9,
+    "data": "2026-08-03 02:31"
+   },
+   {
+    "vardas": "app_sushimo-lt_Sushi-Mo_2026-07-23_23-22-31.tar.gz",
+    "tipas": "failas",
+    "MB": 505.4,
+    "data": "2026-07-23 20:23"
+   },
+   {
+    "vardas": "app_sushimo-lt_Sushi-Mo_2026-07-27_05-22-31.tar.gz",
+    "tipas": "failas",
+    "MB": 505.4,
+    "data": "2026-07-27 02:23"
+   },
+   {
+    "vardas": "app_sushimo-lt_Sushi-Mo_2026-07-29_05-22-13.tar.gz",
+    "tipas": "failas",
+    "MB": 505.4,
+    "data": "2026-07-29 02:23"
+   }
+  ],
+  "appdata": [
+   "~/.appdata/backups/adpxoflguaogcg44owkk848ow (2849B)",
+   "~/.appdata/backups/16nwfyzifdnkk0c48w8sss08c (7797B)",
+   "~/.appdata/backups/2ygtazodwo00sg0kc8wkco4ko (2833B)",
+   "~/.appdata/backups/akd27oqspkowk08k8k8kw4k88 (7563B)",
+   "~/.appdata/backups/5k8617hnoewwsgckkwkgk40go (2838B)",
+   "~/.appdata/backups/63xkmjdxi9gccg8socw8oskcg (7546B)",
+   "~/.appdata/backups/23476pdhsdxcsk8sgkgk0g8kk (7890B)",
+   "~/.appdata/current/1omt4vysblpcowo8kck80cs4 (5100B)",
+   "~/.appdata/current/74dd39op9cgssccoskkg00oww (10165B)",
+   "~/.appdata/.placeholder (200000B)"
+  ],
+  "installatron_mu": "<?php\n/*\n  Plugin Name: WordPress automation by Installatron\n  Description: Management of this WordPress site is provided by Installatron.\n*/\n\n// This plugin was added because Automatic Updates, Automatic Backups, and\n// other features are managed externally by Installatron.\n\n// To block this plugin, create an empty file in the same directory named:\n//     block-automation-by-installatron.php\n\n// Turn off WordPress automatic updates since these are managed externally.\n// If you remove this to re-enable WordPress's automatic updates then it's \n// advised to disable auto-updating in Installatron.\nadd_filter( 'automatic_updater_disabled', '__return_true', -9999 );\n\n// Disable WordPress site hea"
+ },
+ "svetaine": "200",
+ "parduotuve": "200"
+}
