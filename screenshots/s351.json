@@ -1,0 +1,61 @@
+{
+ "VERSIJA_RUN": "run351-v1",
+ "sid": 2142,
+ "reset0": {
+  "VERSIJA": "s348-v1",
+  "act": "reset",
+  "pets_viso": 69,
+  "draftai": 11
+ },
+ "V": {
+  "S1": {
+   "EM": "e2e.s351.msd5yfpl@pastas-test.lt",
+   "mygtukas": "Gauti prisijungimo nuorodą",
+   "draft_posts": 1,
+   "draft_status": [
+    201
+   ],
+   "magic_posts": 1,
+   "magic_status": [
+    200
+   ],
+   "payload": {
+    "email": "e2e.s351.msd5yfpl@pastas-test.lt",
+    "payload": {
+     "species": "dog",
+     "pet_name": "S351-Anonimas",
+     "current_weight_kg": "12.5"
+    },
+    "payload_version": 1
+   },
+   "localStorage_yra": true,
+   "mail": {
+    "laisku": 1,
+    "to": "e2e.s351.msd5yfpl@pastas-test.lt",
+    "nuoroda_yra": true
+   },
+   "draft_db": {
+    "eilute": {
+     "draft_id": "af54f191-5934-4fe9-88aa-ab776b03e661",
+     "status": "active",
+     "created_at": "2026-08-03 11:46:21"
+    },
+    "svoris": 12.5,
+    "vardas": "S351-Anonimas"
+   },
+   "ekranai": [
+    "email_ekranas: Išsaugokite augintinio profilį S351-Anonimas · Šuo Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą. GAUTI PRISIJUNGIMO NUORODĄ Juodraštis saugomas 30 dienų šioje naršyklėje. PRALEISTI, KOL KAS NEIŠSAUGOTI",
+    "po_siuntimo: Išsaugokite augintinio profilį S351-Anonimas · Šuo Patikrinkite el. paštą Jei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į e2e.s351.msd5yfpl@pastas-test.lt. Prisijungę rasite savo augintinio profilį. Juodraštis saugomas 30 dienų šioje naršyklėje. PRALEISTI, KOL KAS NEIŠSAUGOTI"
+   ],
+   "klaidos": [],
+   "OK": false,
+   "draft_id": "af54f191-5934-4fe9-88aa-ab776b03e661"
+  }
+ },
+ "cleanup": {
+  "VERSIJA": "s348-v1",
+  "act": "cleanup",
+  "pets_viso": 69,
+  "draftai": 11
+ }
+}
