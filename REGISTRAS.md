@@ -55,7 +55,7 @@
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
 | DOD-07 | Top-100 SEO 301 | 🔴 | 2026-07-30 | 44 URL = 404, 20,5% srauto |
-| DOD-08 | Backup restore testas | 🟡 | 2026-08-03 | Installatron kopijos yra (§8b). DB sluoksnio sprendimas užrakintas (§8c). Trūksta: įgyvendinimo + restore testo |
+| DOD-08 | Backup restore testas | 🟡 | 2026-08-03 | Installatron kopijos yra (§8b) · sprendimas užrakintas (§8c) · **B2 infrastruktūra pastatyta ir įrodyta (§8d)**. Trūksta: skripto, cron, restore testo |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
 | DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
@@ -384,13 +384,73 @@ stabdymo.
 
 ---
 
+## 8d. B2 INFRASTRUKTŪRA — PASTATYTA IR ĮRODYTA (2026-08-03 vakaras)
+
+### Kas veikia (visi punktai patikrinti realiais veiksmais, ne nustatymų skaitymu)
+```
+Bucket        petshop-backups · allPrivate · ID 0e02b37ebe34cc9a95f40918
+              Object Lock ĮJUNGTAS, Default Retention 14 d. (NEGRĮŽTAMA)
+Raktas        petshop-backup-write · tik šis bucketas · prefiksas petshop-backups/
+Kredencialai  /home/gyvunai2/backups/.b2creds.php · 391 B · chmod 0600
+              už public_html; reikšmės base64; laukai: keyId, appKey, bucketId,
+              bucket, prefix, encKey (44 simb. = 32 baitai), created
+Šifr. raktas  sugeneruotas serveryje; ANTRA KOPIJA pas Raimį (patvirtinta)
+```
+
+### Įrodymų matrica (s388 → s389)
+```
+                        PRIEŠ Object Lock      PO Object Lock
+autorizacija            200                    200
+įkėlimas                200, SHA-1 + dydis ok  200, SHA-1 + dydis ok
+raktas SKAITO           401 unauthorized       401 unauthorized
+raktas TRINA            200 — IŠTRYNĖ ❌       401 access_denied ✅
+```
+**Radinys:** Backblaze „Write Only" sąsajoje reiškia „rašyti IR trinti" —
+rakto galiose `deleteFiles` yra ir Backblaze jo neatima. Apsauga veikia
+BUCKET'O, ne rakto lygiu. Ekrano užrašas „Write Only" NĖRA įrodymas —
+tik realus bandymas ištrinti.
+
+### Techninė aplinka (s379, s375, s380)
+```
+Išeinantis HTTPS VEIKIA: github · b2api · wasabi · google · sender · wporg
+  visi DNS OK, TCP:443 OK, TLS OK
+cURL 8.5.0 · OpenSSL 1.0.2k-fips · allow_url_fopen=1
+disable_functions: exec, shell_exec, proc_*, system, popen (mysqldump NEĮMANOMAS)
+gzopen · gzencode · curl_init · mysqli_connect · fsockopen — VISI yra
+DB eksportas PHP: 146,5 MB → 13,96 MB (10,5:1), 18,4 s, atmintis 116/256 MB
+Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp
+```
+
+### LIKĘ ŽINGSNIAI (rytojui)
+```
+1. Lifecycle Rule B2 pusėje — 30 d. prefiksui petshop-backups/
+   DABAR: lifecycleRules = [] → kopijos kauptųsi neribotai
+   Lock 14 d. < Lifecycle 30 d. — konflikto nebus
+2. Eksporto skriptas pagal §8c: DB + mu-plugins + petshop-core + flatsome-child
+   → šifruoti → įkelti → patvirtinti SHA-1 + dydį → ištrinti laikiną
+   → manifestas → pranešimas TIK gedimo atveju
+3. Cron per DirectAdmin: PHP skriptas per /usr/local/bin/phpXX-cli, naktį
+4. Gedimo testai: sugadinti tyčia → ar ateina laiškas;
+   „cron visai nepasileido" perspėjimas
+5. ATSTATYMO TESTAS į švarią DB → tik po jo DOD-08 tampa žalias
+```
+
+### Ko NEDARYTI
+```
+NEKEISTI Object Lock — įjungus išjungti NEBEĮMANOMA
+NEDUOTI skriptui trynimo logikos — retenciją tvarko TIK Lifecycle
+NERODYTI raktų pokalbyje — nei B2, nei šifravimo
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
 |---|---|---|---|
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
-| Q-BKP | ✅ **IŠSPRĘSTA 2026-08-03:** Backblaze B2 EU. Pilnas užraktas — §8c. Liko: Raimis susikuria paskyrą, raktus įrašo TIESIAI serveryje | DOD-08 | — |
+| Q-BKP | ✅ **UŽDARYTA 2026-08-03:** B2 bucketas, raktas, kredencialai, Object Lock 14 d. — viskas pastatyta ir įrodyta (§8d) | DOD-08 | — |
 | Q-MON | **Monitoringo apimtis** — uptime pakanka, ar reikia ir PHP klaidų sekimo? | DOD-13 | — |
 | Q-PSR2 | **Paysera testinio režimo patvirtinimas** — be jo pilnas mokėjimo ciklas (redirect → callback → `processing`) netestuojamas. Dev režimas testinis, bet konfigūracija nebaigta | F-PSR | — |
 | Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
