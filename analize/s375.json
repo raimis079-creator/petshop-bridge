@@ -1,0 +1,86 @@
+{
+ "VERSIJA_RUN": "run375-v1",
+ "deakt": [],
+ "sid": 2166,
+ "https": {
+  "raw": "<br />\n<b>Warning</b>:  is_file(): open_basedir restriction in effect. File(/usr/local/bin/php84-cli) is not within the allowed path(s): (/home/gyvunai2/:/tmp:/usr/share/pear) in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>75</b><br />\n<br />\n<b>Warning</b>:  is_file(): open_basedir restriction in effect. File(/usr/local/bin/php83-cli) is not within the allowed path(s): (/home/gyvunai2/:/tmp:/usr/share/pear) in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>76</b><br />\n<br />\n<b>Warning</b>:  is_file(): o"
+ },
+ "domenai": {
+  "VERSIJA": "s375-v1",
+  "act": "domenai",
+  "ABSPATH": "/home/gyvunai2/domains/avesa.lt/public_html/dev",
+  "domains_dir": "/home/gyvunai2/domains",
+  "domenai": {
+   "avesa.lt": {
+    "MB": 8862.8,
+    "inodes": 165631
+   },
+   "gyvunai.lt": {
+    "MB": 3574.3,
+    "inodes": 28005
+   },
+   "petshop.lt": {
+    "MB": 17.5,
+    "inodes": 826
+   },
+   "sushimo.lt": {
+    "MB": 675.1,
+    "inodes": 11444
+   }
+  },
+  "home": "/home/gyvunai2",
+  "home_katalogai": {
+   ".appdata": {
+    "MB": 0.2,
+    "inodes": 12
+   },
+   "Maildir": {
+    "MB": 0,
+    "inodes": 11
+   },
+   "application_backups": {
+    "MB": 34215.8,
+    "inodes": 7
+   },
+   "backups": {
+    "MB": 0,
+    "inodes": 0
+   },
+   "domains": {
+    "MB": 13129.6,
+    "inodes": 205910
+   },
+   "imap": {
+    "MB": 16015.3,
+    "inodes": 53010
+   },
+   "iv_temp": {
+    "MB": 0,
+    "inodes": 0
+   },
+   "public_html": {
+    "MB": 3559.1,
+    "inodes": 27291
+   },
+   "tmp": {
+    "MB": 0,
+    "inodes": 0
+   }
+  },
+  "disk_laisva_GB": 312
+ },
+ "dbdump": {
+  "VERSIJA": "s375-v1",
+  "act": "dbdump",
+  "lenteliu": 174,
+  "eiluciu": 492225,
+  "neuzspausta_MB": 146.5,
+  "suspausta_MB": 13.96,
+  "santykis": "10.5:1",
+  "sekundziu": 18.4,
+  "atmintis_peak_MB": 116,
+  "laikinas_istrintas": true
+ },
+ "svetaine": "200",
+ "parduotuve": "200"
+}
