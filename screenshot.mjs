@@ -30,7 +30,7 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('explore6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('explore6b.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_kt3=Kt3w7"');
@@ -69,17 +69,20 @@ try{
   await page.waitForTimeout(800);
   await snap('po_rusies_ir_vardo');
 
-  // spaudziam „toliau/testi" kol pasirodys el. pasto laukas (max 12 kartu)
-  for (let i=0;i<12;i++){
+  // TIKRAS mygtukas: „Sukurti profilį"
+  for (let i=0;i<8;i++){
     if (await page.locator('input[type=email]:visible').count()) break;
-    const kand = page.locator('button:visible').filter({hasText:/Toliau|Tęsti|Baigti|Išsaugoti|Peržiūrėti|Rodyti/i}).first();
+    const kand = page.locator('button:visible').filter({hasText:/Sukurti profilį|Toliau|Tęsti|Baigti/i}).first();
     if (!(await kand.count())) { O['stop_'+i]='nera mygtuko'; break; }
     const tx = (await kand.textContent().catch(()=>'')||'').trim();
-    await kand.click({timeout:10000}).catch(e=>{ O['klik_'+i]=tx+' | '+String(e).slice(0,70); });
-    await page.waitForTimeout(1400);
-    O.zingsniai.push({zyme:'klik_'+i+'_'+tx, inputu: await page.locator('input:visible').count(),
+    await kand.click({timeout:12000}).catch(e=>{ O['klik_'+i]=tx+' | '+String(e).slice(0,70); });
+    await page.waitForTimeout(2200);
+    O.zingsniai.push({zyme:'klik_'+i+'_'+tx,
+      inputu: await page.locator('input:visible').count(),
       turi_email: await page.locator('input[type=email]:visible').count(),
-      mygtukai:(await page.locator('button:visible').allTextContents()).map(t=>t.trim()).filter(Boolean).slice(0,8)});
+      status_sritis: await page.locator('.pspet-save-status').count(),
+      mygtukai:(await page.locator('button:visible').allTextContents()).map(t=>t.trim()).filter(Boolean).slice(0,8),
+      tekstas:(await page.locator('#pspet-form-host, .pspet, #content').first().innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,200)});
   }
   await snap('pabaiga');
 
@@ -93,7 +96,7 @@ try{
   O.uzklausos = reqs;
   fs.writeFileSync('/tmp/E6.png', await page.screenshot({fullPage:true}));
   await browser.close();
-  try{ putB64('explore6.png', fs.readFileSync('/tmp/E6.png').toString('base64')); }catch(e){}
+  try{ putB64('explore6b.png', fs.readFileSync('/tmp/E6.png').toString('base64')); }catch(e){}
 }catch(err){ O.BROWSER_ERR=String(err && err.stack ? err.stack : err).slice(0,600); }
 sh('sleep 4');
 function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
@@ -114,5 +117,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('explore6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('explore6b.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
