@@ -1,0 +1,117 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2124,
+ "rez": {
+  "VERSIJA": "weight-recon-v1",
+  "grynas_weight_kg": {
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/assets/pet-form.js": [
+    "268: wInput.value = state.data._weight_kg || '';",
+    "269: wInput.oninput = function(){ state.data._weight_kg = this.value || null; saveDraft(); };",
+    "277: } else if (state.data._weight_kg) {",
+    "279: state.data._weight_kg = null;",
+    "498: var w = parseFloat(String(state.data._weight_kg || '').replace(',', '.'));",
+    "564: if (d._weight_kg) p.push(String(d._weight_kg).replace('.', ',') + ' kg');",
+    "1160: var w = parseFloat(String(state.data._weight_kg || '').replace(',', '.'));",
+    "1308: if (state.data[k] !== null && k !== 'draft_id' && k !== 'created_at' && k !== '_weight_kg') payload[k] = state.data[k];",
+    "1343: var w = parseFloat(String(state.data._weight_kg || '').replace(',', '.'));",
+    "1730: if (ho.weight_kg) { state.data._weight_kg = String(ho.weight_kg); }"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/assets/pet-profile.js": [
+    "2783: body: JSON.stringify({ pet_id: pet.pet_id, expected_adult_weight_kg: v }) })"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-feeding-service.php": [
+    "320: if ( $wb === 'adult_expected' && isset( $axis_flat['adult_expected_weight_kg'] ) ) {",
+    "321: $axis_flat['adult_expected_weight_kg'] = 'interpolation_allowed';",
+    "351: $eaw = ( isset( $in['expected_adult_weight_kg'] ) && $in['expected_adult_weight_kg'] !== '' && $in['expected_adult_weight_kg'] !== null )",
+    "352: ? (float) $in['expected_adult_weight_kg'] : null;"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-feeding-calculator.php": [
+    "11: *   adult_expected_weight_kg => float|null"
+   ]
+  },
+  "current_weight_kg": {
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/assets/calc-handoff.js": [
+    "61: var pw = (pet.current_weight_kg !== null && pet.current_weight_kg !== undefined && pet.current_weight_kg !== '')",
+    "62: ? parseFloat(pet.current_weight_kg) : null;"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/assets/pet-profile.js": [
+    "323: if (p.current_weight_kg) { meta.push(String(p.current_weight_kg).replace('.', ',') + ' kg'); }",
+    "526: if (pet.current_weight_kg != null && pet.current_weight_kg !== '') {",
+    "527: d._weight_kg = String(pet.current_weight_kg).replace('.', ',');",
+    "1350: if (pet.current_weight_kg) bits.push(String(pet.current_weight_kg).replace('.', ',') + ' kg');",
+    "2300: if (pet.current_weight_kg == null || pet.current_weight_kg === '') {",
+    "2488: var w = (ctx.weight_kg != null) ? ctx.weight_kg : pet.current_weight_kg;",
+    "2877: .then(function(d){ if (d && d.ok) { pet.current_weight_kg = w; slot.innerHTML = ''; loadCalc(pet, slot); scrollToTop(); }",
+    "3093: var hasWeight = (pet.current_weight_kg != null && pet.current_weight_kg !== '');",
+    "3167: if (pet.current_weight_kg != null && pet.current_weight_kg !== '') {",
+    "3168: p.push(String(pet.current_weight_kg).replace('.', ',') + ' kg');",
+    "3178: if (pet.current_weight_kg == null || pet.current_weight_kg === '') out.push({ label:'Svoris', icon:ICO.svoris });"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-feeding-service.php": [
+    "10: *    'pet_input'=>[ 'current_weight_kg'=>float|null, 'conditions'=>[] ],",
+    "25: $w   = isset( $in['pet_input']['current_weight_kg'] ) && $in['pet_input']['current_weight_kg'] !== null",
+    "26: ? (float) $in['pet_input']['current_weight_kg'] : null;",
+    "103: $wkey = ( $rt['weight_basis'] === 'adult_expected' ) ? 'adult_expected_weight_kg' : 'current_weight_kg';",
+    "113: 'current_weight_kg' => $w,",
+    "323: /* S273 KLAIDA IŠTAISYTA: current_weight_kg ašiai interpoliacija NEBUVO",
+    "332: * PATAISA: rakto axis_flat['current_weight_kg'] daugumai lentelių NĖRA",
+    "337: $cur_pol = isset( $axis_flat['current_weight_kg'] ) ? $axis_flat['current_weight_kg'] : null;",
+    "339: $axis_flat['current_weight_kg'] = 'interpolation_allowed';",
+    "559: 'current_weight_kg' => $w, 'adult_expected_weight_kg' => $w, 'conditions' => $conds,"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-feeding-calculator.php": [
+    "8: *   axis_policy         => ['current_weight_kg'=>'interpolation_allowed'|'range_match'|'exact_only', ...]",
+    "10: *   current_weight_kg   => float|null",
+    "57: $weight_key = ($basis === 'adult_expected') ? 'adult_expected_weight_kg' : 'current_weight_kg';",
+    "137: if ( $k==='current_weight_kg' || $k==='adult_expected_weight_kg' ) { $wpolicy = $p; break; }"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-feeding-ui.php": [
+    "57: \"SELECT id, pet_name, species, current_weight_kg FROM {$wpdb->prefix}ps_pets",
+    "58: WHERE user_id = %d AND status = 'active' AND current_weight_kg IS NOT NULL AND current_weight_kg > 0",
+    "66: 'pet_input'     => array( 'current_weight_kg' => (float) $pet['current_weight_kg'], 'conditions' => array() ),",
+    "83: $wtxt    = str_replace( '.', ',', rtrim( rtrim( number_format( (float) $pet['current_weight_kg'], 2, '.', '' ), '0' ), '.' ) );",
+    "111: \"SELECT id, user_id, species, current_weight_kg, status FROM {$wpdb->prefix}ps_pets WHERE id = %d\",",
+    "153: $weight = ( $pet['current_weight_kg'] !== null && $pet['current_weight_kg'] !== '' ) ? (float) $pet['current_weight_kg'] : null;",
+    "172: 'pet_input'     => array( 'current_weight_kg' => $weight, 'conditions' => array() ),"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-pet-dashboard.php": [
+    "125: 'current_weight_kg'       => ( $pet->current_weight_kg === null || $pet->current_weight_kg === '' ) ? null : (float) $pet->current_weight_kg,",
+    "250: $has_weight = ! ( $pet->current_weight_kg === null || $pet->current_weight_kg === '' );",
+    "513: $v = ( $f === 'weight' ) ? $pet->current_weight_kg : ( isset( $pet->$f ) ? $pet->$f : null );"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-pet-profile.php": [
+    "580: 'current_weight_kg',",
+    "693: case 'current_weight_kg':",
+    "699: $out['current_weight_kg'] = null;",
+    "704: $out['current_weight_kg'] = round( $w, 2 );",
+    "707: $out['current_weight_kg'] = null;"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-feeding-repository.php": [
+    "112: $wkey = ($t['weight_basis']==='adult_expected') ? 'adult_expected_weight_kg' : 'current_weight_kg';"
+   ],
+   "core//home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-core/includes/class-admin-reports.php": [
+    "115: $w_weight = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $t WHERE $where AND current_weight_kg IS NOT NULL\" );"
+   ]
+  },
+  "srvPayload": "function srvPayload(){\n\t\tvar out = {};\n\t\tfor (var k in state.data) {\n\t\t\tif (!Object.prototype.hasOwnProperty.call(state.data, k)) continue;\n\t\t\tif (k === 'draft_id' || k === 'created_at') continue;\n\t\t\tvar v = state.data[k];\n\t\t\tif (v === null || v === undefined || v === '') continue;\n\t\t\tout[k] = v;\n\t\t}\n\t\treturn out;\n\t}\n\n\t// --- Render ---\n\t/**\n\t * Perjungus ZINGSNI — pakelia i anketos virsu. Be sio zmogus lieka senoje\n\t * scroll pozicijoje ir nemato naujo zingsnio pradzios.\n\t * SVARBU: kviečiama TIK is render() (zingsnio keitimas), NE is renderStep2()\n\t * (ten pill'u perpiesimas tame paciame zingsnyje — scroll sokinetu renkantis).\n\t */\n\tvar _firstRender = true;\n\tfunction scrollToTop(){\n\t\t",
+  "svorio_UI": [
+   "261: fW.appendChild(el('label', 'pspet-label', 'Svoris <span class=\"pspet-sublabel\">(neprivaloma)</span>'));",
+   "266: wInput.placeholder = 'pvz. 12,5';"
+  ],
+  "REST_su_weight": []
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
