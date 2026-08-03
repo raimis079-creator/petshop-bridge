@@ -1,0 +1,70 @@
+{
+ "VERSIJA_RUN": "run371-v1",
+ "deakt": [],
+ "sid": 2162,
+ "pries": {
+  "VERSIJA": "s370-v1",
+  "act": "state",
+  "uzsakymu": 2,
+  "max_id": 34720
+ },
+ "V": {
+  "zingsniai": [
+   {
+    "zingsnis": "preke",
+    "url": "https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-cm/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 0 PRADŽIA / KATĖMS / ŽAISLAI KATĖMS Žaislas katei – Plastikinis kamuoliukas, 4 cm 0,49 € Mažas puikiai riedantis kamuoliukas, kurį smagu vyt"
+   },
+   {
+    "zingsnis": "po_i_krepseli",
+    "url": "https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-cm/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "KREPŠELIS × Žaislas katei - Plastikinis kamuoliukas, 4 cm 1 × 0,49 € Suma: 0,49 € Pridėkite už €8,52 ir mažo krepšelio mokestis nebus taikomas. KREPŠELISAPMOKĖJIMAS Skip to content Nemokamas pristatym"
+   },
+   {
+    "zingsnis": "krepselis",
+    "url": "https://dev.avesa.lt/cart/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 1 KREPŠELIS PRODUKTAS KIEKIS × Žaislas katei - Plastikinis kamuoliukas, 4 cm 1 x 0,49 € produkto kiekis: Žaislas katei - Plastikinis kamuoli"
+   }
+  ],
+  "preke_mygtukas": {
+   "yra": true,
+   "tekstas": "Į KREPŠELĮ",
+   "matomas": true,
+   "box": {
+    "x": 111,
+    "y": 902.96875,
+    "width": 123.875,
+    "height": 40.109375
+   },
+   "uzdengtas": "nera-elemento"
+  },
+  "krepselis": {
+   "eiluciu": 1,
+   "kiekis": "1",
+   "suma": "0,49 €"
+  },
+  "krepselis_cta": {
+   "yra": true,
+   "tekstas": "Apmokėjimas",
+   "matomas": false,
+   "box": null,
+   "uzdengtas": null
+  },
+  "ERR": "locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('.checkout-button, a[href*=\"/checkout\"]').first()\n    - locator resolved to <a aria-disabled=\"true\" class=\"hide-for-small\" href=\"https://dev.avesa.lt/checkout/\">↵⇆⇆⇆⇆⇆⇆⇆⇆⇆⇆Apmokėjimas⇆⇆⇆⇆</a>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    29 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n\n    at /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:89:68"
+ },
+ "po": {
+  "VERSIJA": "s370-v1",
+  "act": "state",
+  "uzsakymu": 2,
+  "max_id": 34720
+ }
+}
