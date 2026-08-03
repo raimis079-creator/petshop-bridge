@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-03 · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-03 (vakaras, po backup audito) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -15,7 +15,7 @@
 
 | Blokas | ✅ | 🟡 | 🔴 | ⏸ laukia Raimio |
 |---|---|---|---|---|
-| Launch DoD (22) | 6 | 4 | 10 | 2 nematuota |
+| Launch DoD (22) | 6 | 5 | 9 | 2 nematuota |
 | P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
 | MVP funkcijos (§4.3) | 4 | 0 | 1 | 1 nepatikrinta |
 | El. laiškų šablonai | 5 | 0 | 12 | — |
@@ -54,12 +54,12 @@
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
 | DOD-07 | Top-100 SEO 301 | 🔴 | 2026-07-30 | 44 URL = 404, 20,5% srauto |
-| DOD-08 | Backup restore testas | 🔴 | 2026-08-03 | 0 backup pluginų. **Įrankio sprendimas — RAIMIO (Q-BKP), nepradėta** |
+| DOD-08 | Backup restore testas | 🟡 | 2026-08-03 | **Installatron kopijos EGZISTUOJA** (žr. §11). Pilnos, su DB. Trūksta: atstatymo testo, dažnumo, laikymo už serverio ribų |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
 | DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
 | DOD-12 | Savininkas apdoroja užsakymą be programuotojo | 🟡 | — | neformalizuota |
-| DOD-13 | Post-launch monitoringas | 🔴 | 2026-08-03 | 0 monitoringo pluginų. **Sprendimas — RAIMIO (Q-BKP), nepradėta** |
+| DOD-13 | Post-launch monitoringas | 🔴 | 2026-08-03 | 0 monitoringo. Atskirti nuo backup: uptime (išorinis, be plugino) + PHP klaidų sekimas — DU dalykai |
 | DOD-14 | Mail-Tester ≥8/10 | ✅ | 2026-07-30 | 8,5/10 |
 | DOD-15 | GDPR atitiktis | ✅ | 2026-07-10 | Complianz v7.5.0 + 8 legal psl. |
 | DOD-16 | VMI sąskaitos su realia transakcija | ✅ | 2026-06 | AVPN/IAPV testuota |
@@ -140,7 +140,7 @@ Transportas ✅: adapteris `Petshop_Sender_Adapter` v0.4.0, `is_configured=true`
 |---|---|---|---|
 | R1 | F4 SKU/EAN paieška | ✅ 2026-08-03 | `mu-plugins/petshop-code-search.php` v1.0, sha e141c4ae. Matrica 13/13, `s366.json` |
 | R2 | 1518 / 2764 publish prekių be EAN (55%) | ⏸ | **iš kur imti — Raimio sprendimas** |
-| R3 | Backup pluginas neįdiegtas | 🔴 | = DOD-08; kurį — Raimio sprendimas |
+| R3 | Backup pluginas neįdiegtas | 🟡 | Pluginas NEREIKALINGAS — Installatron jau daro pilnas kopijas. Lieka DB dažnumas + off-server (§11) |
 | R4 | Monitoringo nėra | 🔴 | = DOD-13 |
 | R5 | 5 publish prekės be kainos | ✅ 2026-08-03 | 2 kainos pagal medianą (16,49 / 18,99, `_manual_price_override`), 3 į draft. publish be kainos 5→0. `s364.json` |
 | R6 | F19 prenumerata nepradėta | 🔴 | = F19 |
@@ -181,13 +181,99 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 
 ---
 
+## 8b. BACKUP FAKTINĖ BŪKLĖ (išmatuota 2026-08-03, NE prielaidos)
+
+> **KLAIDA, KURIĄ REIKĖJO IŠTAISYTI:** iki 2026-08-03 registre ir pokalbiuose buvo
+> teigiama „0 backup pluginų / jokių kopijų nėra". **Netiesa.** Installatron kas
+> kelias dienas daro pilnas kopijas — niekas apie tai nežinojo, nes jos nematomos
+> DirectAdmin backup ekrane. Prieš teigiant „nėra" — PAMATUOTI.
+
+### Kas realiai yra
+```
+/home/gyvunai2/application_backups/          34 216 MB · katalogas RAŠOMAS
+  app_dev-avesa-lt_Petshop-NEW_2026-08-03_05-22-45.tar.gz   8 180 MB  (02:31)
+  app_dev-avesa-lt_Petshop-NEW_2026-07-30_17-22-13.tar.gz   8 174 MB
+  app_dev-avesa-lt_Petshop-NEW_2026-07-24_23-23-20.tar.gz   8 173 MB
+  app_dev-avesa-lt_Petshop-NEW_2026-07-22_05-22-07.tar.gz   8 172 MB
+  app_sushimo-lt_Sushi-Mo_ ×3                                 505 MB kiekviena
+```
+Archyvo turinys patikrintas neišpakuojant (`s378.json`, 233 631 įrašų):
+```
+APP-DATA.SQL     121,4 MB   ← DUOMENŲ BAZĖ VIDUJE
+wp-content     8 795,0 MB   161 845 failų
+wp-includes       49,6 MB · wp-admin 8,9 MB · wp-config.php · .htaccess
+```
+**Kopija pilna** — failai + DB + konfigūracija.
+
+### Trys spragos (kodėl DOD-08 dar ne žalias)
+```
+1. LAIKYMO VIETA  tame pačiame serveryje -> serverio praradimas = kopijų praradimas
+2. DAŽNUMAS       kas 2-6 dienos (07-22, 07-24, 07-30, 08-03). Parduotuvei per reta
+3. NETESTUOTA     atstatymas niekada nebandytas -> vis dar prielaida, ne įrodymas
+```
+
+### Įrodyta rizika, ne teorinė
+2026-08-03 archyve `mu-plugins` yra 4 failai, serveryje — 6. Trūksta
+`petshop-pet-claim.php` (dublikato ekranas) ir `petshop-code-search.php` (F4),
+nes abu sukurti PO 02:31 kopijos. Atstačius iš jos dingtų abu — 12 KB iš 8 GB,
+niekas nepastebėtų. **mu-plugins turi būti atskiras punktas kiekviename
+atstatymo teste.**
+
+### DB eksportas — išmatuota
+```
+174 lentelės · 492 225 eilutės
+neuspausta 146,5 MB -> suspausta 13,96 MB (10,5:1)
+trukmė 18,4 s · atminties pikas 116 MB (riba 256 MB)
+```
+Grynu PHP, be `mysqldump`. 30 dienų kopijų ≈ 420 MB.
+
+### Hostingo ribos
+```
+SSH                IŠJUNGTAS (patvirtinta serveriai.lt) -> restic/rclone atkrenta
+DirectAdmin cron   tik URL arba PHP skriptas per /usr/local/bin/phpXX-cli
+                   -> shell komandų NĖRA, BET PHP skriptas gali viską, ko reikia
+open_basedir       /home/gyvunai2/:/tmp:/usr/share/pear
+serveriai.lt       serverio lygmens kopijos NĖRA garantuotas atkūrimo šaltinis
+                   (jų pačių formuluotė, klausta 2026-08-03)
+```
+
+### Vietos paskirstymas (65 GB mįslė išspręsta)
+```
+application_backups  34 216 MB  ← DĖL JŲ viršyta 10 GB riba pilnoms DA kopijoms
+imap                 16 015 MB
+domains              13 130 MB   avesa.lt 8 863 · gyvunai.lt 3 574 ·
+                                 sushimo.lt 675 · petshop.lt 17
+public_html           3 559 MB
+disko laisva            312 GB
+```
+**petshop.lt katalogas tik 17 MB** — tikroji parduotuvė gyvena po `avesa.lt`.
+Svarbu prieš domeno perjungimą.
+
+### Neišspręsta techninė detalė
+Išeinantis HTTPS iš serverio **NEPATIKRINTAS**. Bandymas (`s376`) pakabino
+svetainę 134 s ir bridge negavo atsakymo. Gali reikšti, kad išeinantys
+jungimai filtruojami ir „kabo" vietoj atmetimo. **Kartoti atsargiai:** po vieną
+kryptį, 5 s riba, atskirai nuo visko kito. Jei kabo — bet kuris į debesį
+siunčiantis sprendimas elgtųsi taip pat, ir tai paveiktų gyvą parduotuvę.
+
+### Kiti žingsniai (nė vienas nereikalauja pirkinio)
+```
+1. Installatron grafikas — koks dažnumas, ar galima padidinti be mokesčio
+2. Išeinantis HTTPS — atsargus pakartotinis testas
+3. Atstatymo testas — DB + failo žymekliai, mu-plugins atskirai
+4. DB eksportas už serverio ribų — lieka tik Q-BKP (kur laikyti)
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
 |---|---|---|---|
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
-| Q-BKP | **Backup ir monitoringo įrankis** — koks? (serveriai.lt savi backup'ai? UpdraftPlus į savo saugyklą? kitas?) | DOD-08, DOD-13 | — |
+| Q-BKP | **Kur laikyti DB kopijas už serverio ribų** (Google Drive / S3-suderinama / FTP kitur). Pluginas nereikalingas — sprendimas tik dėl saugyklos | DOD-08 | — |
+| Q-MON | **Monitoringo apimtis** — uptime pakanka, ar reikia ir PHP klaidų sekimo? | DOD-13 | — |
 | Q-PSR2 | **Paysera testinio režimo patvirtinimas** — be jo pilnas mokėjimo ciklas (redirect → callback → `processing`) netestuojamas. Dev režimas testinis, bet konfigūracija nebaigta | F-PSR | — |
 | Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
 | Q21 | FB paskyros revival + reali nuoroda | OPS-10 | — |
@@ -206,7 +292,8 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 
 ```
 A — greita (valandos)          R5 kainos ✅ · F4 paieška ✅ · F14 mobile ✅
-                               backup+monitoringas ⏸ laukia Q-BKP
+                               backup: Installatron kopijos YRA (§8b) ⏸ Q-BKP
+                               monitoringas ⏸ Q-MON
 B — didelis kodas              F19 prenumerata (po Q6+Q10) · 3 launch šablonai
 C — Raimio sprendimai          Q6 Q10 Q-R2 Q-SEO Q-M8
 D — procesas (dienos)          DOD-04 20 užsakymų · DOD-17 beta · DOD-18/19 DNS+rollback
@@ -214,4 +301,5 @@ D — procesas (dienos)          DOD-04 20 užsakymų · DOD-17 beta · DOD-18/1
 E — pre-launch (T-14 … T-0)    visos OPS-* · DOD-07/21 301 lentelė
 ```
 
-Grupėje A padaryta: R5 ✅, F4 ✅, F14 ✅ — DOD-01 UŽDARYTAS. Backup ir monitoringas laukia Q-BKP.
+Grupėje A padaryta: R5 ✅, F4 ✅, F14 ✅ — DOD-01 UŽDARYTAS.
+Backup pasirodė esąs 🟡, ne 🔴 (§8b). Liko Q-BKP (saugykla) ir Q-MON (apimtis).
