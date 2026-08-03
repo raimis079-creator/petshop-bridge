@@ -1402,6 +1402,61 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 10 localStorage NEISVALOMAS po nuorodos issiuntimo (clearDraft NEKVIECIAMAS)
 ```
 
+### ★★★★ 2026-08-03 (2) — S348: TRECIAS SVORIO KELIAS RASTAS IR UZDARYTAS
+> Sis blokas PAKEICIA zemiau esanti „KUR SUSTOJOME" — atviras klausimas ISSPRESTAS.
+
+**SAKNIS (atsakymas i „kur DAR nustatomas weight_updated_at"):**
+`mu-plugins/petshop-feeding-calc-rest.php:214` — endpointas `/feeding-pet-weight`
+rase `weight_updated_at=current_time('mysql')` VISADA, be palyginimo. Kvieteju 3:
+`pet-form.js:1376` (po sekmingo pet-profile POST — DUBLIAVO rasyma; cia V6 ir
+ikrito), `calc-handoff.js:87`, `pet-profile.js:2874`. V6 „3 val. suolis" =
+laiko juostu defektas: class-pet-profile raso gmdate (UTC), mu rase current_time
+(EEST). Tas pats momentas, kita laiko baze. `handle_save()` SVARUS (13 eil.).
+
+**S348 PATAISOS:**
+```
+pet-form.js  81 586 B · SHA 4bf522cc5ad2e388 · .bak_S348
+             perteklinis feeding-pet-weight kvietimas PASALINTAS —
+             svoris keliauja kanoniniu payload (S335+S344)
+mu-plugin    19 012 B · SHA 97c890453fd6bd2b · .bak_S348
+             skaitinis palyginimas pries data (abs>0.001) + gmdate() abiem laukam
+```
+SKOLA (po 8/9): endpointa perkelti i `Petshop_Pet_Profile::update_pet()` —
+apsauga #3 „nekurti antros rasymo logikos" jam tebegalioja. Smulkiau: activity ir
+wet-food endpointai updated_at vis dar current_time. Esamu ~69 ps_pets eiluciu
+weight_updated_at MISRIOS provenencijos (UTC ir UTC+3) — matavimas po launch.
+
+**VARTAI ANT DABARTINIO SHA (visi realus, be stub'u):**
+```
+EPW  endpoint 3 kvietimai: 12.5->data set · 12.5 vel->data NEPAKITO · 13->nauja  ✅
+V6   vardas keistas, svoris 12.50, data ta pati, fpw kvietimu 0                  ✅
+V6b  12,5->13: DB 13.00 + nauja data                                             ✅
+V2'  pet be svorio + ivestas 12,5 -> DB 12.50 vien kanoniniu keliu               ✅
+S1   REALUS anoniminis: /pet-draft 1x201 (payload idetas .payload, svoris STRING
+     '12.5') · magic 1x200 · draftas active su svoriu · laiskas su token nuoroda ·
+     localStorage NEISVALYTAS · ekranas „Patikrinkite el. pasta"                 ✅
+N2   pirmas claim: user+pet (client_ref=draft_id, svoris perkeltas), claimed,
+     payload NULL, ?pet_claim=ok, +1/+1/+1 · TA PATI nuoroda svariam kontekste:
+     „Nuoroda nebegalioja" (bendrinis), +0/+0/+0, draftas claimed, 5xx=0        ✅
+```
+**6 PUNKTO ISTORIJOS PATAISA (sazininga):** „Matrica 10/10" buvo su `page.route`
+STUB'ais ir ant SHA cb72c426 (nebeegzistuojancio po S344) — uzdarymas buvo
+NEPAGRISTAS. Dabar 6 uzdarytas su REALIU S1 ant 4bf522cc; stub-matrica lieka
+galioti TIK klaidu sakoms (400/413/429/tinklas — klientinio renderinimo testai).
+
+**TRAJEKTORIJos PATIKSLINIMAI:** email ekrano mygtukas = „GAUTI PRISIJUNGIMO
+NUORODA" (ne „Siusti nuoroda"); footeryje YRA svetimas „Siusti" — mygtuku
+ieskoti TIK per `.pspet-btn-primary`. Anonimine anketa: viena forma (rusis+
+vardas+svoris kartu), mygtukas „Sukurti profili" -> email ekranas.
+
+**LIKO 8 PUNKTE:** N3 (esamas tos pacios rusies augintinis -> duplicate_candidate,
+draftas grizta i active, pending meta {draft_id,candidate_ids,created_at,
+expires_at}) ir N4 (nuoroda atidaryta prisijungus KITU vartotoju -> tokeno
+vartotojas autoritetingas, B petai nepaliesti). Infrastruktura paruosta:
+TEMP „S348 patch+test" snippet'o aktai (auth/mkuser reikes prideti/st2/mail/
+draftlast/cleanup), nuorodos gaudymas per e2e.* + q('mail') IRODYTAS.
+TEMP snippetai 2136-2139 deaktyvuoti — TRINTI RANKA WP admin.
+
 ### ★★★ 2026-08-03 PABAIGA — KUR SUSTOJOME (SKAITYTI PIRMA)
 
 ```
@@ -1534,9 +1589,9 @@ Testiniai vartotojai: ps_v2_test, e2e.* — istrinti pagal TIKSLU user_id.
 3 REST       POST /pet-draft su kanonine validacija   ✅ ATLIKTA (16/16+5/5+10/10)
 4 Magic link magic-login/request priima draft_id (triguba patikra)  ✅ ATLIKTA (10/10)
 5 Claim      process_login -> create_pet_result -> complete_claim     ✅ ATLIKTA (17/17)
-6 JS         pet-form.js siuncia serverini drafta   ✅ ATLIKTA (10/10)
+6 JS         pet-form.js siuncia serverini drafta   ✅ ATLIKTA (S348: realus S1 ant 4bf522cc; stub-matrica tik klaidu sakoms)
 7 Cron       cleanup_expired kasdien + stale recovery   ✅ ATLIKTA (10/10)
-8 E2E        E0-A ✅ · E0-B ✅ · N1 ✅ · payload paritetas 🔴 · N2-N4 ⏳   <- KITAS
+8 E2E        E0 ✅ · paritetas ✅ (S348) · N1 ✅ · N2 ✅ · N3-N4 ⏳   <- KITAS
 9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
 ```
 
