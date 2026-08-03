@@ -7,11 +7,11 @@ function sh(c){try{const o=execSync(c+' 2>&1; echo "__RC:$?"',{maxBuffer:50e6,sh
  const m=o.match(/__RC:(\d+)\s*$/);return{rc:m?+m[1]:-1,out:o.replace(/__RC:\d+\s*$/,'')};}catch(e){return{rc:-99,out:String(e).slice(0,300)};}}
 function putResult(name,txt){const u='https://api.github.com/repos/'+REPO+'/contents/analize/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s373',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s374',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 60 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run373-v1'}; let sid=null;
+const O={VERSIJA_RUN:'run374-v1'}; let sid=null;
 try{const ls=sh('curl -sSk --max-time 40 '+AUTH+' "'+API+'?per_page=100"');const arr=JSON.parse(ls.out);const off=[];
  for(const s0 of arr){ if(s0.name&&s0.name.indexOf('TEMP')===0&&s0.active){
    fs.writeFileSync('/tmp/o.json',JSON.stringify({active:false}));
@@ -170,7 +170,7 @@ try{
  const pickup=sarasas.find(x=>/venipak_shipping_pickup/.test(x.val||''));
  V.pasirinktas_metodas=pickup?pickup.val:null;
  if(pickup){
-   await p.locator('#'+CSS.escape(pickup.id)).check({force:true,timeout:15000}).catch(async()=>{
+   await p.locator('input[id="'+pickup.id+'"]').check({force:true,timeout:15000}).catch(async()=>{
      await p.locator('input[value="'+pickup.val+'"]').first().click({force:true});
    });
    await p.waitForTimeout(6000);
@@ -184,7 +184,7 @@ try{
  const term=selInfo.find(x=>/venipak|terminal|pickup|pastomat/i.test((x.id||'')+' '+(x.name||'')));
  V.terminalo_laukas=term||null;
  if(term && term.opt>1){
-   const sel='select'+(term.id?('#'+CSS.escape(term.id)):('[name="'+term.name+'"]'));
+   const sel = term.id ? ('select[id="'+term.id+'"]') : ('select[name="'+term.name+'"]');
    const opts=await p.locator(sel+' option').all();
    let pick=null;
    for(const o of opts){ const v=await o.getAttribute('value'); if(v&&v!==''){ pick=v; break; } }
@@ -200,7 +200,7 @@ try{
    await p.locator('#billing_first_name').first().click().catch(()=>{});
    await p.waitForTimeout(7000);
    const t2=V.terminalo_laukas;
-   const sel2='select'+(t2.id?('#'+CSS.escape(t2.id)):('[name="'+t2.name+'"]'));
+   const sel2 = t2.id ? ('select[id="'+t2.id+'"]') : ('select[name="'+t2.name+'"]');
    V.terminalas_po_pakeitimo=await p.locator(sel2).first().inputValue().catch(()=>null);
    V.terminalas_islieka = V.terminalas_po_pakeitimo===V.terminalas_pasirinktas;
  }
@@ -248,5 +248,5 @@ if(O.V && O.V.order_id){
 }else{ O.po=q('state'); }
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putResult('s373.json', JSON.stringify(O,null,1));
+putResult('s374.json', JSON.stringify(O,null,1));
 console.log('OK');
