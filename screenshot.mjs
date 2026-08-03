@@ -30,7 +30,7 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('e0w.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('e0w2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_e2b=reset"');
@@ -77,7 +77,9 @@ try{
    });
    return out;
  });
- W.svorio_laukas_yra = W.laukai.some(l => /svor/i.test(l.label||'') || /svor/i.test(l.placeholder||''));
+ // ★ TEISINGAS selektorius: label yra „kg", placeholder „pvz. 12,5" — zodzio „svor" NEI VIENAME.
+ // Todel ieskom pagal inputmode="decimal" — tai TIKRAS svorio lauko pozymis.
+ W.svorio_laukas_yra = W.laukai.some(l => (l.inputmode||'')==='decimal');
  fs.writeFileSync('/tmp/W1.png', await A.screenshot({fullPage:true}));
 
  // vardas
@@ -85,20 +87,15 @@ try{
  await A.waitForTimeout(700);
 
  // ===== 2) SVORIS pagal TIKRA lauka =====
- W.svorio_idx = W.laukai.findIndex(l => /svor/i.test(l.label||'') || /svor/i.test(l.placeholder||''));
- if (W.svorio_idx >= 0) {
-   const visi = A.locator('input:visible');
-   // renkam pagal ta pati indeksa tarp MATOMU input'u
-   const matomi = W.laukai.filter(l=>l.tag==='input');
-   const idxInput = matomi.findIndex(l => /svor/i.test(l.label||'') || /svor/i.test(l.placeholder||''));
-   W.input_indeksas = idxInput;
-   if (idxInput >= 0) {
-     const sv = visi.nth(idxInput);
-     await sv.fill('12,5').catch(async e=>{ W.fill_err=String(e).slice(0,90); await sv.fill('12.5').catch(()=>{}); });
-     await A.waitForTimeout(1200);
-     W.dom_value = await sv.inputValue().catch(()=>null);
-   }
- }
+ const sv = A.locator('input.pspet-input[inputmode="decimal"]:visible').first();
+ W.svorio_lauku = await sv.count();
+ if (W.svorio_lauku) {
+   await sv.fill('12,5').catch(e=>{ W.fill_err=String(e).slice(0,90); });
+   await A.waitForTimeout(1300);
+   W.dom_value = await sv.inputValue().catch(()=>null);
+   // ★ PATIKRA PRIES TESIANT — jei laukas tuscias, toliau eiti beprasmiska
+   if (!W.dom_value) { W.STOP = 'svoris NEIVESTAS — laukas liko tuscias'; }
+ } else { W.STOP = 'svorio laukas NERASTAS'; }
  W.laukai_po = await A.evaluate(()=>{ const o=[]; document.querySelectorAll('input').forEach(e=>{ const r=e.getBoundingClientRect(); if(r.width||r.height) o.push({type:e.type,value:e.value,ph:e.placeholder||''}); }); return o; });
  fs.writeFileSync('/tmp/W2.png', await A.screenshot({fullPage:true}));
 
@@ -107,6 +104,7 @@ try{
  await A.waitForTimeout(2500);
  W.localStorage = await A.evaluate(()=>{ try{ const d=JSON.parse(localStorage.getItem('pspet_draft')||'null');
    return d ? {pet_data:d.pet_data, current_step:d.current_step} : null; }catch(e){ return {err:String(e)}; } });
+ W.ls_svoris = (W.localStorage && W.localStorage.pet_data) ? W.localStorage.pet_data.current_weight_kg : '(nera)';
 
  // ===== 4) POST /pet-draft body =====
  await A.locator('input[type=email]:visible').first().fill(EM);
@@ -160,5 +158,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('e0w.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('e0w2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
