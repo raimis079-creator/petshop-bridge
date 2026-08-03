@@ -1,0 +1,332 @@
+{
+ "VERSIJA_RUN": "run366-v1",
+ "deakt": [],
+ "sid": 2158,
+ "fixtures": {
+  "VERSIJA": "s366-v1",
+  "act": "fixtures",
+  "sku_su_nuliu": "01A1B01030",
+  "sku_su_bruksneliu": "ZVP-2195",
+  "ean__ean": {
+   "post_id": "17236",
+   "meta_value": "8595681859976"
+  },
+  "ean__zb": {
+   "post_id": "13937",
+   "meta_value": "5999053600228"
+  },
+  "ean__vf": null,
+  "ean_dvieju_lauku": {
+   "post_id": "32622",
+   "meta_value": "3830089140017"
+  },
+  "ean_dvieju_prekiu": {
+   "meta_value": "3182550702355",
+   "c": "2"
+  },
+  "variacijos_sku": {
+   "post_id": "34275",
+   "meta_value": "640405-ZA",
+   "post_parent": "17920"
+  },
+  "draft_sku": "01KOM053",
+  "hidden_sku": "Konservu-rinkiniai-sunims-susidek-mono-400-6"
+ },
+ "pries": {
+  "VERSIJA": "s366-v1",
+  "act": "matrix",
+  "rez": {
+   "zodis_Farmina": {
+    "term": "Farmina",
+    "rasta": 154,
+    "ids": [
+     33394,
+     33390,
+     33370,
+     33303,
+     33305,
+     33293,
+     33285,
+     33289,
+     33275,
+     33253,
+     33259,
+     33249,
+     33251,
+     33239,
+     33243,
+     33235,
+     33231,
+     33229,
+     27564,
+     14711
+    ],
+    "lookup_ids": [],
+    "lookup_saltiniai": [],
+    "ms": 61.6
+   },
+   "ilgas_zodis": {
+    "term": "hipoalerginis",
+    "rasta": 60,
+    "ids": [
+     34512,
+     26391,
+     26445,
+     26054,
+     25617,
+     21514,
+     21531,
+     21752,
+     20977,
+     20941,
+     20943,
+     20947,
+     20957,
+     20961,
+     19775,
+     19104,
+     19092,
+     19089,
+     18581,
+     18578
+    ],
+    "lookup_ids": [],
+    "lookup_saltiniai": [],
+    "ms": 80.7
+   },
+   "sku_pagrindinis": {
+    "term": "01A1B01030",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [],
+    "lookup_saltiniai": [],
+    "ms": 72
+   }
+  },
+  "dublikatu_log": []
+ },
+ "deploy": {
+  "VERSIJA": "s366-v1",
+  "act": "deploy",
+  "B": 5447,
+  "sha": "e141c4ae01efd115",
+  "woo_guid_metodas": true
+ },
+ "po": {
+  "VERSIJA": "s366-v1",
+  "act": "matrix",
+  "rez": {
+   "zodis_Farmina": {
+    "term": "Farmina",
+    "rasta": 154,
+    "ids": [
+     33394,
+     33390,
+     33370,
+     33303,
+     33305,
+     33293,
+     33285,
+     33289,
+     33275,
+     33253,
+     33259,
+     33249,
+     33251,
+     33239,
+     33243,
+     33235,
+     33231,
+     33229,
+     27564,
+     14711
+    ],
+    "lookup_ids": [],
+    "lookup_saltiniai": [],
+    "ms": 1.6
+   },
+   "ilgas_zodis_be_skaiciu": {
+    "term": "hipoalerginis",
+    "rasta": 60,
+    "ids": [
+     34512,
+     26391,
+     26445,
+     26054,
+     25617,
+     21514,
+     21531,
+     21752,
+     20977,
+     20941,
+     20943,
+     20947,
+     20957,
+     20961,
+     19775,
+     19104,
+     19092,
+     19089,
+     18581,
+     18578
+    ],
+    "lookup_ids": [],
+    "lookup_saltiniai": [],
+    "ms": 1.3
+   },
+   "sku_pagrindinis": {
+    "term": "01A1B01030",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     12452
+    ],
+    "lookup_saltiniai": [
+     "sku"
+    ],
+    "ms": 0.9
+   },
+   "sku_su_pradiniu_nuliu": {
+    "term": "01A1B01030",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     12452
+    ],
+    "lookup_saltiniai": [
+     "sku"
+    ],
+    "ms": 0.5
+   },
+   "sku_su_bruksneliu": {
+    "term": "ZVP-2195",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     12796
+    ],
+    "lookup_saltiniai": [
+     "sku"
+    ],
+    "ms": 63.3
+   },
+   "ean_lauke__ean": {
+    "term": "8595681859976",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     17236
+    ],
+    "lookup_saltiniai": [
+     "global_unique_id",
+     "_ean"
+    ],
+    "ms": 62.1
+   },
+   "ean_lauke__zb_ean": {
+    "term": "5999053600228",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     13937
+    ],
+    "lookup_saltiniai": [
+     "_zb_ean"
+    ],
+    "ms": 76.8
+   },
+   "ean_lauke__vf_barcode": "NERA_FIXTURE",
+   "ean_dvieju_lauku_vienas_produktas": {
+    "term": "3830089140017",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     32622
+    ],
+    "lookup_saltiniai": [
+     "_ean",
+     "_zb_ean"
+    ],
+    "ms": 77.4
+   },
+   "ean_dvieju_prekiu": {
+    "term": "3182550702355",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     16481,
+     16478
+    ],
+    "lookup_saltiniai": [
+     "global_unique_id",
+     "_ean"
+    ],
+    "ms": 76.5
+   },
+   "variacijos_sku": {
+    "term": "640405-ZA",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [
+     17920
+    ],
+    "lookup_saltiniai": [
+     "sku"
+    ],
+    "ms": 82.3
+   },
+   "draft_prekes_sku": {
+    "term": "01KOM053",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [],
+    "lookup_saltiniai": [
+     "sku"
+    ],
+    "ms": 73.1
+   },
+   "paslepta_preke_sku": {
+    "term": "Konservu-rinkiniai-sunims-susidek-mono-400-6",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [],
+    "lookup_saltiniai": [
+     "sku"
+    ],
+    "ms": 85
+   },
+   "neegzistuojantis": {
+    "term": "ZZZ999NEEGZISTUOJA",
+    "rasta": 0,
+    "ids": [],
+    "lookup_ids": [],
+    "lookup_saltiniai": [],
+    "ms": 64.4
+   }
+  },
+  "dublikatu_log": {
+   "3182550702355": {
+    "ids": [
+     16481,
+     16478
+    ],
+    "kada": "2026-08-03 17:25:02"
+   }
+  }
+ },
+ "web": {
+  "zodis_Farmina": "200||2.880012",
+  "ilgas_zodis_be_skaiciu": "200||3.005183",
+  "sku_pagrindinis": "302|https://dev.avesa.lt/product/eukanuba-active-small-adult-vistiena-3kg/|1.117166",
+  "sku_su_pradiniu_nuliu": "302|https://dev.avesa.lt/product/eukanuba-active-small-adult-vistiena-3kg/|1.205208",
+  "sku_su_bruksneliu": "302|https://dev.avesa.lt/product/vitapol-visavertis-lesalas-bang-papugelems-20kg/|1.615168",
+  "ean_lauke__ean": "302|https://dev.avesa.lt/product/ontario-monoproteino-konservai-sunims-su-kalakutiena-ir-saldziosiomis-bulvemis-200-g/|1.534413",
+  "ean_lauke__zb_ean": "302|https://dev.avesa.lt/product/julius-k9-petnesos-xl-2-71-96-cm-50-mm-raudonos/|1.717688",
+  "ean_dvieju_lauku_vienas_produktas": "302|https://dev.avesa.lt/product/dogoteka-dogojunior-60-tabl/|1.596783",
+  "ean_dvieju_prekiu": "200||2.519141",
+  "variacijos_sku": "302|https://dev.avesa.lt/product/kampinis-tualetas-katems-shuttle/|1.822799",
+  "draft_prekes_sku": "200||2.642999",
+  "paslepta_preke_sku": "200||2.723342",
+  "neegzistuojantis": "200||2.246402"
+ }
+}
