@@ -1,0 +1,313 @@
+{
+ "VERSIJA_RUN": "run378-v1",
+ "deakt": [],
+ "sid": 2168,
+ "rez": {
+  "VERSIJA": "s378-v1",
+  "PASTABA": "tik skaitymas, archyvas neispakuojamas",
+  "failas": "app_dev-avesa-lt_Petshop-NEW_2026-08-03_05-22-45.tar.gz",
+  "MB": 8179.9,
+  "data": "2026-08-03 02:31",
+  "irasu_perskaityta": 233631,
+  "ispakuotas_MB": 8983,
+  "sekundziu": 145.4,
+  "saknies_elementai": {
+   "wp-content": {
+    "failu": 161845,
+    "MB": 8795
+   },
+   ".": {
+    "failu": 68565,
+    "MB": 8
+   },
+   "wp-includes": {
+    "failu": 2610,
+    "MB": 49.6
+   },
+   "wp-admin": {
+    "failu": 591,
+    "MB": 8.9
+   },
+   "APP-DATA.SQL": {
+    "failu": 1,
+    "MB": 121.4
+   },
+   "APP-META.INI": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-config.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "index.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "license.txt": {
+    "failu": 1,
+    "MB": 0
+   },
+   ".htaccess": {
+    "failu": 1,
+    "MB": 0
+   },
+   "readme.html": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-activate.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-blog-header.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-comments-post.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-config-sample.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-cron.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-links-opml.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-load.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-login.php": {
+    "failu": 1,
+    "MB": 0
+   },
+   "wp-settings.php": {
+    "failu": 1,
+    "MB": 0
+   }
+  },
+  "SQL_failai": [
+   {
+    "vardas": "APP-DATA.SQL",
+    "MB": 121.38
+   }
+  ],
+  "mu_plugins": [
+   "petshop-m8-food.php",
+   "petshop-feeding-calc-rest.php",
+   "automation-by-installatron.php",
+   "petshop-ps-pets-migration-freeze.php"
+  ],
+  "pirmi_irasai": [
+   {
+    "v": "APP-META.INI",
+    "MB": 0.008,
+    "tipas": "0"
+   },
+   {
+    "v": "APP-DATA.SQL",
+    "MB": 121.379,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-config.php",
+    "MB": 0.004,
+    "tipas": "0"
+   },
+   {
+    "v": "index.php",
+    "MB": 0,
+    "tipas": "0"
+   },
+   {
+    "v": "license.txt",
+    "MB": 0.019,
+    "tipas": "0"
+   },
+   {
+    "v": ".htaccess",
+    "MB": 0.001,
+    "tipas": "0"
+   },
+   {
+    "v": "readme.html",
+    "MB": 0.007,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-activate.php",
+    "MB": 0.007,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin",
+    "MB": 0,
+    "tipas": "5"
+   },
+   {
+    "v": "wp-admin/custom-background.php",
+    "MB": 0,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/theme-editor.php",
+    "MB": 0.016,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/widgets.php",
+    "MB": 0.001,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/edit.php",
+    "MB": 0.019,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css",
+    "MB": 0,
+    "tipas": "5"
+   },
+   {
+    "v": "wp-admin/css/site-health.css",
+    "MB": 0.006,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/revisions.min.css",
+    "MB": 0.008,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/customize-widgets.css",
+    "MB": 0.013,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/deprecated-media.min.css",
+    "MB": 0.005,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/edit-rtl.min.css",
+    "MB": 0.029,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/forms-rtl.css",
+    "MB": 0.035,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/about-rtl.css",
+    "MB": 0.041,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/forms-rtl.min.css",
+    "MB": 0.027,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/site-health-rtl.min.css",
+    "MB": 0.005,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/themes.css",
+    "MB": 0.04,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/site-icon-rtl.min.css",
+    "MB": 0.004,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/edit-rtl.css",
+    "MB": 0.037,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/customize-controls-rtl.css",
+    "MB": 0.07,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/wp-admin.css",
+    "MB": 0,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/color-picker-rtl.css",
+    "MB": 0.004,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/login-rtl.css",
+    "MB": 0.008,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/media.min.css",
+    "MB": 0.021,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/customize-controls.min.css",
+    "MB": 0.058,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/dashboard.css",
+    "MB": 0.029,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/l10n.css",
+    "MB": 0.004,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/list-tables.min.css",
+    "MB": 0.034,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/login.css",
+    "MB": 0.008,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/colors",
+    "MB": 0,
+    "tipas": "5"
+   },
+   {
+    "v": "wp-admin/css/colors/ectoplasm",
+    "MB": 0,
+    "tipas": "5"
+   },
+   {
+    "v": "wp-admin/css/colors/ectoplasm/colors.scss",
+    "MB": 0,
+    "tipas": "0"
+   },
+   {
+    "v": "wp-admin/css/colors/ectoplasm/colors-rtl.css",
+    "MB": 0.021,
+    "tipas": "0"
+   }
+  ]
+ },
+ "svetaine": "200",
+ "parduotuve": "200"
+}
