@@ -1,0 +1,78 @@
+{
+ "VERSIJA_RUN": "run389-v1",
+ "deakt": [],
+ "sid": 2175,
+ "rez": {
+  "VERSIJA": "s389-v2",
+  "failas": {
+   "yra": true,
+   "B": 391,
+   "teises": "0600",
+   "skaitomas": true
+  },
+  "laukai": {
+   "keyId": "yra (25 simb.)",
+   "appKey": "yra (31 simb.)",
+   "bucketId": "yra (24 simb.)",
+   "bucket": "yra (15 simb.)",
+   "prefix": "yra (16 simb.)",
+   "encKey": "yra (44 simb.)",
+   "created": "yra (19 simb.)"
+  },
+  "autorizacija": {
+   "http": 200,
+   "klaida": null
+  },
+  "raktas": {
+   "capabilities": [
+    "writeBucketLogging",
+    "writeBucketReplications",
+    "writeBucketEncryption",
+    "writeBucketLifecycleRules",
+    "listBuckets",
+    "deleteFiles",
+    "writeFiles",
+    "writeBucketNotifications"
+   ],
+   "bucketId": "0e02b37ebe34cc9a95f40918",
+   "bucketName": "petshop-backups",
+   "namePrefix": "petshop-backups/"
+  },
+  "apiUrl": "https://api003.backblazeb2.com",
+  "bucketId_sutampa": "TAIP",
+  "bucketas": {
+   "name": "petshop-backups",
+   "type": "allPrivate",
+   "fileLock": "nematoma",
+   "defaultRetention": "nematoma",
+   "lifecycleRules": []
+  },
+  "get_upload_url": {
+   "http": 200,
+   "kodas": null
+  },
+  "ikelimas": {
+   "http": 200,
+   "vardas": "petshop-backups/_test/connection-20260803-231127.txt",
+   "kodas": null,
+   "message": null,
+   "nuotolinis_dydis": 42,
+   "nuotolinis_sha1": "ae8cdb1ab415ead4d7f2e29fa419fdc7e7c4c904",
+   "vietinis_sha1": "ae8cdb1ab415ead4d7f2e29fa419fdc7e7c4c904",
+   "SHA1_SUTAMPA": "TAIP",
+   "DYDIS_SUTAMPA": "TAIP"
+  },
+  "neigiamas_LIST": {
+   "http": 401,
+   "kodas": "unauthorized",
+   "VERDIKTAS": "GERAI: skaityti negali"
+  },
+  "neigiamas_DELETE": {
+   "http": 401,
+   "kodas": "access_denied",
+   "message": "Access Denied",
+   "VERDIKTAS": "GERAI: trinti NEPAVYKO — Object Lock veikia"
+  }
+ },
+ "svetaine": "200"
+}
