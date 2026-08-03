@@ -1,0 +1,147 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2119,
+ "zym": "E2EMSCY86RH",
+ "email": "e2e.e2emscy86rh@dev.avesa.lt",
+ "reset": {
+  "VERSIJA": "e2e-v1",
+  "pets": 65,
+  "draftu": 4,
+  "ev": 101
+ },
+ "R": {
+  "A_ekranas": "Augintinio profilis Išsaugokite augintinio profilį E2EMSCY86RH-Rikis · Šuo Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą. GAUTI PRISIJUNG",
+  "A_box": "Patikrinkite el. paštą Jei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į e2e.e2emscy86rh@dev.avesa.lt. Prisijungę rasite savo augintinio profilį.",
+  "A_localStorage": {
+   "draft": 368,
+   "srv": {
+    "draft_id": "f826a607-d412-4b6e-8da0-9b1178815231",
+    "email": "e2e.e2emscy86rh@dev.avesa.lt",
+    "fingerprint": "11194jh.55",
+    "dirty": false,
+    "at": 1785744614831
+   }
+  },
+  "A_uzklausos": [
+   "POST pet-draft",
+   "POST magic-login/request"
+  ],
+  "A_klaidos": [],
+  "mail": {
+   "yra": false,
+   "turi_nuoroda": false
+  },
+  "nuoroda": null,
+  "state_po_A": {
+   "VERSIJA": "e2e-v1",
+   "draftai": [
+    {
+     "draft_id": "f826a607-d412-4b6e-8da0-9b1178815231",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    {
+     "draft_id": "92c55bee-9b21-43c1-be39-693de307e7e0",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    {
+     "draft_id": "fc191149-a561-4d26-94d9-8f378d9c6881",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    {
+     "draft_id": "fb65d846-6d3f-4c3c-a20c-47fc43034e93",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    {
+     "draft_id": "94ec9f48-65e7-409b-ae64-c95ec71d5e03",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    }
+   ],
+   "tokenai": [
+    {
+     "id": "126",
+     "purpose": "magic_login",
+     "subject_email": "e2e.e2emscy86rh@dev.avesa.lt",
+     "resource_id": "f826a607-d412-4b6e-8da0-9b1178815231",
+     "status": "active",
+     "used_at": null
+    },
+    {
+     "id": "125",
+     "purpose": "magic_login",
+     "subject_email": "js6.t8@dev.avesa.lt",
+     "resource_id": "92c55bee-9b21-43c1-be39-693de307e7e0",
+     "status": "active",
+     "used_at": null
+    },
+    {
+     "id": "124",
+     "purpose": "magic_login",
+     "subject_email": "js6.t2@dev.avesa.lt",
+     "resource_id": "fb65d846-6d3f-4c3c-a20c-47fc43034e93",
+     "status": "active",
+     "used_at": null
+    },
+    {
+     "id": "123",
+     "purpose": "magic_login",
+     "subject_email": "js6.t1@dev.avesa.lt",
+     "resource_id": "94ec9f48-65e7-409b-ae64-c95ec71d5e03",
+     "status": "active",
+     "used_at": null
+    },
+    {
+     "id": "122",
+     "purpose": "magic_login",
+     "subject_email": "m810@dev.avesa.lt",
+     "resource_id": "13aaa4d3-f822-478d-a298-f9efa9930ba9",
+     "status": "active",
+     "used_at": null
+    }
+   ],
+   "vartotojas": null,
+   "pets_viso": 65,
+   "zym_pets": 0,
+   "ev": 101,
+   "vartotoju": 26
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
