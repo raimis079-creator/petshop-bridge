@@ -1,0 +1,56 @@
+{
+ "VERSIJA_RUN": "run361-v1",
+ "sid": 2153,
+ "rez": {
+  "VERSIJA": "s361-v1",
+  "sablonai": {
+   "cart-abandoned-1.php": 3328,
+   "cart-abandoned-2.php": 2505,
+   "order-paid.php": 2333,
+   "post-purchase-2d.php": 3940,
+   "refill.php": 2870
+  },
+  "sablonu_sk": 5,
+  "srautai": [
+   "cart_abandoned",
+   "order_paid",
+   "post_purchase_2d",
+   "refill_due"
+  ],
+  "srautu_sk": 4,
+  "jobs": [
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "c": "1"
+   },
+   {
+    "flow": "order_paid",
+    "status": "sent",
+    "c": "2"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "c": "1"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "c": "1"
+   }
+  ],
+  "esp_opcijos": [],
+  "adapteris": {
+   "klase": "Petshop_Sender_Adapter",
+   "sukonfiguruota": true
+  },
+  "lenteles": {
+   "ps_email_suppression": 1,
+   "ps_email_jobs": 5,
+   "ps_event_log": 295
+  },
+  "newsletter_shortcode": 0,
+  "esp_versija": "0.4.0"
+ }
+}
