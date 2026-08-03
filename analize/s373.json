@@ -1,0 +1,178 @@
+{
+ "VERSIJA_RUN": "run373-v1",
+ "deakt": [],
+ "sid": 2164,
+ "pries": {
+  "VERSIJA": "s370-v1",
+  "act": "state",
+  "uzsakymu": 2,
+  "max_id": 34720
+ },
+ "V": {
+  "zingsniai": [
+   {
+    "zingsnis": "preke",
+    "url": "https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-cm/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 0 PRADŽIA / KATĖMS / ŽAISLAI KATĖMS Žaislas katei – Plastikinis kamuoliukas, 4 cm 0,49 € Mažas puikiai riedantis kamuoliukas, kurį smagu vyt"
+   },
+   {
+    "zingsnis": "po_i_krepseli",
+    "url": "https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-cm/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "KREPŠELIS × Žaislas katei - Plastikinis kamuoliukas, 4 cm 1 × 0,49 € Suma: 0,49 € Pridėkite už €8,52 ir mažo krepšelio mokestis nebus taikomas. KREPŠELISAPMOKĖJIMAS Skip to content Nemokamas pristatym"
+   },
+   {
+    "zingsnis": "krepselis",
+    "url": "https://dev.avesa.lt/cart/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 1 KREPŠELIS PRODUKTAS KIEKIS × Žaislas katei - Plastikinis kamuoliukas, 4 cm 1 x 0,49 € produkto kiekis: Žaislas katei - Plastikinis kamuoli"
+   },
+   {
+    "zingsnis": "checkout_atidarytas",
+    "url": "https://dev.avesa.lt/checkout/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 1 APMOKĖJIMAS Registruotas pirkėjas? Prisijunkite čia Turite nuolaidos kodą? Paspauskite čia ir įveskite kodą PIRKĖJO DUOMENYS Perkate kaip "
+   },
+   {
+    "zingsnis": "po_tuscios_formos",
+    "url": "https://dev.avesa.lt/checkout/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "Skip to content 1 APMOKĖJIMAS Registruotas pirkėjas? Prisijunkite čia Turite nuolaidos kodą? Paspauskite čia ir įveskite kodą Pirkėjo Vardas yra būtinas laukelis. Pirkėjo Pavardė yra būtinas laukelis."
+   },
+   {
+    "zingsnis": "laukai_uzpildyti",
+    "url": "https://dev.avesa.lt/checkout/",
+    "hScroll": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "matyti": "Skip to content 1 APMOKĖJIMAS Registruotas pirkėjas? Prisijunkite čia Turite nuolaidos kodą? Paspauskite čia ir įveskite kodą Pirkėjo Vardas yra būtinas laukelis. Pirkėjo Pavardė yra būtinas laukelis."
+   }
+  ],
+  "preke_mygtukas": {
+   "yra": true,
+   "tekstas": "Į KREPŠELĮ",
+   "matomas": true,
+   "box": {
+    "x": 111,
+    "y": 436.96875,
+    "width": 123.875,
+    "height": 40.109375
+   },
+   "uzdengtas": null
+  },
+  "atc1": "paspausta",
+  "po_atc": {
+   "added_link": 0,
+   "pranesimas": " “Žaislas katei – Plastikinis kamuoliukas, 4 cm” - įdėtas į krepšelį"
+  },
+  "atc_atsakymai": [
+   {
+    "url": "https://dev.avesa.lt/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?",
+    "st": 200,
+    "body": "jQuery(function(t){if(\"undefined\"==typeof wc_add_to_cart_params)return!1;var a=function(){this.requests=[],this.addRequest=this.addRequest.bind(this),this.run=t"
+   },
+   {
+    "url": "https://dev.avesa.lt/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variati",
+    "st": 200,
+    "body": "!function(t,a,i,e){var r=function(t){var a=this;a.$form=t,a.$attributeFields=t.find(\".variations select\"),a.$singleVariation=t.find(\".single_variation\"),a.$sing"
+   },
+   {
+    "url": "https://dev.avesa.lt/?wc-ajax=get_refreshed_fragments",
+    "st": 200,
+    "body": "{\"fragments\":{\"div.widget_shopping_cart_content\":\"<div class=\\\"widget_shopping_cart_content\\\">\\n\\n\\t<ul class=\\\"woocommerce-mini-cart cart_list product_list_wid"
+   }
+  ],
+  "krepselis": {
+   "eiluciu": 1,
+   "kiekis": "1",
+   "suma": "0,49 €"
+  },
+  "krepselio_cta_visi": [
+   {
+    "tekstas": "Apmokėjimas",
+    "klase": "hide-for-small",
+    "matomas": false
+   },
+   {
+    "tekstas": "TĘSTI ATSISKAITYMĄ",
+    "klase": "checkout-button button alt wc-forward",
+    "matomas": true
+   }
+  ],
+  "krepselis_cta": {
+   "yra": true,
+   "tekstas": "TĘSTI ATSISKAITYMĄ",
+   "matomas": true,
+   "box": {
+    "x": 15,
+    "y": 401.875,
+    "width": 360,
+    "height": 39.25
+   },
+   "uzdengtas": null
+  },
+  "place_order_pries": {
+   "yra": true,
+   "tekstas": "APMOKĖTI",
+   "matomas": true,
+   "box": {
+    "x": 47,
+    "y": 398.09375,
+    "width": 296,
+    "height": 48
+   },
+   "uzdengtas": null
+  },
+  "validacija": {
+   "klaidos": [
+    "Pirkėjo Vardas yra būtinas laukelis.\nPirkėjo Pavardė yra būtinas laukelis.\nPirkėjo Gatvė, namo numeris yra būtinas laukelis.\nPirkėjo Miestas yra būtinas laukelis.\nPirkėjo Pašto kodas yra būtinas laukelis.\nPirkėjo Telefonas yra būtinas laukelis.\nPirkėjo El. paštas yra būtinas laukelis.",
+    "Pirkėjo Vardas yra būtinas laukelis.",
+    "Pirkėjo Pavardė yra būtinas laukelis.",
+    "Pirkėjo Gatvė, namo numeris yra būtinas laukelis.",
+    "Pirkėjo Miestas yra būtinas laukelis.",
+    "Pirkėjo Pašto kodas yra būtinas laukelis."
+   ],
+   "klaidu_sk": 8,
+   "pirma_matoma": true,
+   "ekrane": true
+  },
+  "zymuo": "F14-LRGFSQ",
+  "pristatymo_metodai": [
+   {
+    "val": "shopup_venipak_shipping_courier_method:2",
+    "id": "shipping_method_0_shopup_venipak_shipping_courier_method2"
+   },
+   {
+    "val": "shopup_venipak_shipping_pickup_method:3",
+    "id": "shipping_method_0_shopup_venipak_shipping_pickup_method3"
+   },
+   {
+    "val": "woo_lithuaniapost_lpexpress_terminal:12",
+    "id": "shipping_method_0_woo_lithuaniapost_lpexpress_terminal12"
+   },
+   {
+    "val": "woo_lithuaniapost_lpexpress_terminal:15",
+    "id": "shipping_method_0_woo_lithuaniapost_lpexpress_terminal15"
+   }
+  ],
+  "pasirinktas_metodas": "shopup_venipak_shipping_pickup_method:3",
+  "ERR": "ReferenceError: CSS is not defined\n    at file:///home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs:173:24"
+ },
+ "po": {
+  "VERSIJA": "s370-v1",
+  "act": "state",
+  "uzsakymu": 2,
+  "max_id": 34720
+ }
+}
