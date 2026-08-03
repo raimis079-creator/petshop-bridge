@@ -1,0 +1,95 @@
+{
+ "VERSIJA_RUN": "run365-v1",
+ "sid": 2157,
+ "rez": {
+  "VERSIJA": "s365-v1",
+  "ean_raktai": {
+   "_ean": 1246,
+   "_global_unique_id": 1240,
+   "_zb_ean": 662
+  },
+  "ean_pavyzdziai": [
+   {
+    "meta_key": "_ean",
+    "c": "1238"
+   },
+   {
+    "meta_key": "_global_unique_id",
+    "c": "1232"
+   },
+   {
+    "meta_key": "_vf_barcode",
+    "c": "976"
+   },
+   {
+    "meta_key": "_zb_ean",
+    "c": "659"
+   },
+   {
+    "meta_key": "_sku",
+    "c": "314"
+   },
+   {
+    "meta_key": "_vf_supplier_sku",
+    "c": "144"
+   },
+   {
+    "meta_key": "_vf_wc_sku",
+    "c": "143"
+   },
+   {
+    "meta_key": "_sale_price_dates_from",
+    "c": "15"
+   },
+   {
+    "meta_key": "_sale_price_dates_to",
+    "c": "15"
+   },
+   {
+    "meta_key": "_wc_push_notification_sent_low_stock",
+    "c": "2"
+   }
+  ],
+  "publish_viso": 2761,
+  "su_sku": 2761,
+  "kabliukai": {
+   "posts_search": [
+    "500 ux_builder_post_search"
+   ],
+   "pre_get_posts": [
+    "10 WC_Query::pre_get_posts",
+    "10 closure",
+    "10 flatsome_featured_sticky_posts",
+    "10 Petshop_Weight_Filter::filter_query"
+   ],
+   "posts_where": [
+    "10 Woo_Lithuaniapost_Admin_Order_Settings::where_shipping_method"
+   ],
+   "woocommerce_shortcode_products_query": []
+  },
+  "relevanssi": false,
+  "woo_search_ver": "10.9.4",
+  "testai": {
+   "sku:01A1B01030": {
+    "rasta": 0,
+    "ids": []
+   },
+   "sku:01A1B02031": {
+    "rasta": 0,
+    "ids": []
+   },
+   "sku:01A1B09032": {
+    "rasta": 0,
+    "ids": []
+   },
+   "zodis:Farmina": {
+    "rasta": 154
+   }
+  },
+  "sku_pavyzdziai": [
+   "01A1B01030",
+   "01A1B02031",
+   "01A1B09032"
+  ]
+ }
+}
