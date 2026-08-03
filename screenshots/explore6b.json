@@ -1,0 +1,77 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2115,
+ "zingsniai": [
+  {
+   "zyme": "pradzia",
+   "url": "https://dev.avesa.lt/augintinio-profilis/",
+   "tekstas": "Augintinio profilis Papasakokite apie savo augintinį Tai užtruks mažiau nei minutę Kas jūsų augintinis? Šuo Katė Paukštis Graužikas Žuvis Roplys Kitas Augintinio vardas SUKURTI PROFILĮ Kiek maisto reikia Apskaičiuosime dienos normą ir maisto kainą per dieną, k",
+   "mygtukai": [
+    "Sukurti profilį",
+    "Tvarkyti sutikimą"
+   ],
+   "inputu": 2,
+   "turi_email_lauka": 0
+  },
+  {
+   "zyme": "po_rusies_ir_vardo",
+   "url": "https://dev.avesa.lt/augintinio-profilis/",
+   "tekstas": "Augintinio profilis Papasakokite apie savo augintinį Tai užtruks mažiau nei minutę Kas jūsų augintinis? Šuo Katė Paukštis Graužikas Žuvis Roplys Kitas Augintinio vardas Svoris (neprivaloma) kg Svorio prireiks dienos normai apskaičiuoti, kai pasirinksite maistą",
+   "mygtukai": [
+    "Sukurti profilį",
+    "Tvarkyti sutikimą"
+   ],
+   "inputu": 3,
+   "turi_email_lauka": 0
+  },
+  {
+   "zyme": "klik_0_Sukurti profilį",
+   "inputu": 2,
+   "turi_email": 1,
+   "status_sritis": 1,
+   "mygtukai": [
+    "Gauti prisijungimo nuorodą",
+    "Praleisti, kol kas neišsaugoti",
+    "Tvarkyti sutikimą"
+   ],
+   "tekstas": "Augintinio profilis Išsaugokite augintinio profilį Rikis · Šuo Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą. GAUTI PRISIJUNGIMO NUORODĄ Juodraštis saugomas 30 dienų šioje naršyklėje. PRA"
+  },
+  {
+   "zyme": "pabaiga",
+   "url": "https://dev.avesa.lt/augintinio-profilis/",
+   "tekstas": "Augintinio profilis Išsaugokite augintinio profilį Rikis · Šuo Įveskite el. paštą – atsiųsime saugią prisijungimo nuorodą. GAUTI PRISIJUNGIMO NUORODĄ Juodraštis saugomas 30 dienų šioje naršyklėje. PRALEISTI, KOL KAS NEIŠSAUGOTI Kiek maisto reikia Apskaičiuosim",
+   "mygtukai": [
+    "Gauti prisijungimo nuorodą",
+    "Praleisti, kol kas neišsaugoti",
+    "Tvarkyti sutikimą"
+   ],
+   "inputu": 2,
+   "turi_email_lauka": 1
+  }
+ ],
+ "cta": {
+  "email_lauku": 1,
+  "status_sritis": 1,
+  "gauti_mygtukas": 1
+ },
+ "localStorage": {
+  "pspet_draft": "{\"schema_version\":2,\"draft_id\":\"d_gzdz4so9lt6mscw016y\",\"created_at\":\"2026-08-03T07:07:38.890Z\",\"expires_at\":\"2026-09-02T07:07:40.935Z\",\"current_step\":1,\"section_idx\":0,\"confirmed_sections\":[],\"pet_data\":{\"species\":\"dog\",\"is_sterilised\":null,\"draft_id\":\"d_gzdz4so9lt6mscw016y\",\"created_at\":\"2026-08-03T07:07:38.890Z\",\"pet_name\":\"Rikis\"}}",
+  "wc_cart_hash_c6543e84d3863217c64a755a980358d5": ""
+ },
+ "js_klaidos": [],
+ "uzklausos": [],
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
