@@ -30,7 +30,7 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('v6ab.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('v6ab2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_e2b=reset"');
@@ -63,6 +63,9 @@ try{
    return {A,ctx,p,reqs,resps,errs, PET_ID:(A.pets&&A.pets[0])?A.pets[0].id:null};
  }
  async function issaugok(p){
+   // ★ „Išsaugoti ir baigti vėliau" gyvena 2-ame ZINGSNYJE. 1-ame yra tik „Tęsti".
+   const testi = p.locator('button:visible').filter({hasText:/^Tęsti$/i}).first();
+   if (await testi.count()) { await testi.click({timeout:15000}); await p.waitForTimeout(3000); }
    const b = p.locator('button:visible').filter({hasText:/Išsaugoti ir baigti vėliau|Išsaugoti|Baigti/i}).first();
    const t = (await b.count()) ? (await b.textContent()||'').trim() : null;
    if (await b.count()) { await b.click({timeout:15000}); await p.waitForTimeout(7000); }
@@ -140,5 +143,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('v6ab.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('v6ab2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
