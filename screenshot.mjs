@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import { chromium } from 'playwright';
 import fs from 'fs';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
@@ -21,7 +22,7 @@ try{
     off.push(s0.id+':'+s0.name); } }
   O.deaktyvuota_TEMP=off;
 }catch(e){ O.valymo_klaida=String(e).slice(0,200); }
-const php=Buffer.from('PD9waHAKLyoqCiAqIFMzNDIg4oCUIDYgcHVua3RvIHZhcnRhaSArIGtvbWVudGFybyBwYXRhaXNhCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc192NmEnXSkgKSByZXR1cm47CiAgICAkdiA9ICRfR0VUWydwc192NmEnXTsKICAgIG5vY2FjaGVfaGVhZGVycygpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICAgJHIgPSBhcnJheSgnVkVSU0lKQSc9Pid2YXJ0YWk2LXYxJyk7CiAgICAkRiA9IFBFVFNIT1BfQ09SRV9ESVIuJ2Fzc2V0cy9wZXQtZm9ybS5qcyc7CiAgICAkanMgPSBmaWxlX2dldF9jb250ZW50cygkRik7CiAgICAkclsndmFydGFpJ10gPSBhcnJheSgKICAgICAgICAnZHlkaXMnPT5zdHJsZW4oJGpzKSwgJ2R5ZGlzX29rJz0+KHN0cmxlbigkanMpPT09ODAzOTMpLAogICAgICAgICdzaGEnPT5oYXNoKCdzaGEyNTYnLCRqcyksCiAgICAgICAgJ3NoYV9vayc9PihzdHJwb3MoaGFzaCgnc2hhMjU2JywkanMpLCc4ZTAyZmQ1N2YzZWQ4NzhlJyk9PT0wKSwKICAgICAgICAnc3J2RW5zdXJlRHJhZnQnPT5zdWJzdHJfY291bnQoJGpzLCdzcnZFbnN1cmVEcmFmdCcpLAogICAgICAgICdzcnZTZW5kTWFnaWMnPT5zdWJzdHJfY291bnQoJGpzLCdzcnZTZW5kTWFnaWMnKSwKICAgICAgICAnU1JWX0RSQUZUX0tFWSc9PnN1YnN0cl9jb3VudCgkanMsJ1NSVl9EUkFGVF9LRVknKSwKICAgICAgICAnYWxlcnRfa2FydGFpJz0+c3Vic3RyX2NvdW50KCRqcywnYWxlcnQoJyksCiAgICApOwogICAgJHJbJ3ZhcnRhaSddWydQUkFFSk8nXSA9ICgkclsndmFydGFpJ11bJ2R5ZGlzX29rJ10gJiYgJHJbJ3ZhcnRhaSddWydzaGFfb2snXSk7CiAgICAvLyBrdXIgYWxlcnQoCiAgICBmb3JlYWNoIChleHBsb2RlKCJcbiIsJGpzKSBhcyAkbj0+JGwpIHsKICAgICAgICBpZiAoc3RycG9zKCRsLCdhbGVydCgnKSE9PWZhbHNlKSB7ICRyWydhbGVydF9laWx1dGVzJ11bXSA9ICgkbisxKS4nOiAnLnRyaW0oc3Vic3RyKCRsLDAsMTUwKSk7IH0KICAgIH0KICAgICRzZW4gPSAiXHRcdFx0Ly8gUzM0MTogSU5MSU5FIGJ1c2VudSBzcml0aXMgdmlldG9qZSBhbGVydCgpLiBUdXNjaWEg4oCUIG5lbWF0b21hLiI7CiAgICAkbmF1ID0gIlx0XHRcdC8vIFMzNDE6IElOTElORSBidXNlbnUgc3JpdGlzIHZpZXRvamUgbmFyc3lrbGVzIGlza3lsYW5jaW9qbyBsYW5nby4iOwogICAgJHJbJ2tvbWVudGFyb19pbmthcmFzJ10gPSBzdWJzdHJfY291bnQoJGpzLCRzZW4pOwoKICAgIGlmICgkdj09PSdkcnknKXsgZWNobyB3cF9qc29uX2VuY29kZSgkciwgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTfEpTT05fUFJFVFRZX1BSSU5UKTsgZXhpdDsgfQogICAgaWYgKCR2PT09J2FwcGx5Jyl7CiAgICAgICAgaWYgKCEkclsndmFydGFpJ11bJ1BSQUVKTyddKSB7ICRyWydWRVJESUtUQVMnXT0nU1VTVEFCRFlUQSDigJQgdmFydGFpJzsgZWNobyB3cF9qc29uX2VuY29kZSgkcixKU09OX1BSRVRUWV9QUklOVCk7IGV4aXQ7IH0KICAgICAgICBpZiAoJHJbJ2tvbWVudGFyb19pbmthcmFzJ109PT0xKSB7CiAgICAgICAgICAgIGNvcHkoJEYsJEYuJy5iYWtfUzM0MicpOwogICAgICAgICAgICBmaWxlX3B1dF9jb250ZW50cygkRiwgc3RyX3JlcGxhY2UoJHNlbiwkbmF1LCRqcykpOwogICAgICAgICAgICAkclsnVkVSRElLVEFTJ109J0tPTUVOVEFSQVMgUEFUQUlTWVRBUyc7CiAgICAgICAgfSBlbHNlIHsgJHJbJ1ZFUkRJS1RBUyddPSdpbmthcmFzICcuJHJbJ2tvbWVudGFyb19pbmthcmFzJ10uJyDigJQgcHJhbGVpc3RhJzsgfQogICAgICAgIGNsZWFyc3RhdGNhY2hlKHRydWUsJEYpOwogICAgICAgICRqczIgPSBmaWxlX2dldF9jb250ZW50cygkRik7CiAgICAgICAgJHJbJ3BvJ10gPSBhcnJheSgnZHlkaXMnPT5zdHJsZW4oJGpzMiksJ3NoYSc9Pmhhc2goJ3NoYTI1NicsJGpzMiksCiAgICAgICAgICAgICdhbGVydF9rYXJ0YWknPT5zdWJzdHJfY291bnQoJGpzMiwnYWxlcnQoJykpOwogICAgICAgIGZvcmVhY2ggKGV4cGxvZGUoIlxuIiwkanMyKSBhcyAkbj0+JGwpIHsKICAgICAgICAgICAgaWYgKHN0cnBvcygkbCwnYWxlcnQoJykhPT1mYWxzZSkgeyAkclsnYWxlcnRfcG8nXVtdID0gKCRuKzEpLic6ICcudHJpbShzdWJzdHIoJGwsMCwxMjApKTsgfQogICAgICAgIH0KICAgIH0KICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFU3xKU09OX1BSRVRUWV9QUklOVCk7CiAgICBleGl0Owp9KTsK','base64').toString('utf8');
+const php=Buffer.from('PD9waHAKLyoqCiAqIFVJIExvY2FsaXphdGlvbiBSdW50aW1lIEF1ZGl0IOKAlCBrb250YWt0dSBwdXNsYXBpcyArIHBvcmFzdGVzIHJlY29uCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogICAgaWYgKCAhIGlzc2V0KCRfR0VUWydwc19rdDMnXSkgfHwgJF9HRVRbJ3BzX2t0MyddICE9PSAnS3QzdzcnICkgcmV0dXJuOwogICAgbm9jYWNoZV9oZWFkZXJzKCk7IGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgICBnbG9iYWwgJHdwZGI7ICRyID0gYXJyYXkoJ1ZFUlNJSkEnPT4na29udGFrdGFpLXJlY29uLXYxJyk7CgogICAgLy8gMSkga29udGFrdHUgcHVzbGFwaXMKICAgIGZvcmVhY2ggKGFycmF5KCdrb250YWt0YWknLCdjb250YWN0Jywnc3VzaXNpZWtpbWUnKSBhcyAkc2x1ZykgewogICAgICAgICRwID0gZ2V0X3BhZ2VfYnlfcGF0aCgkc2x1Zyk7CiAgICAgICAgaWYgKCRwKSB7CiAgICAgICAgICAgICRyWydwdXNsYXBpcyddID0gYXJyYXkoJ2lkJz0+JHAtPklELCdzbHVnJz0+JHNsdWcsJ3RpdGxlJz0+JHAtPnBvc3RfdGl0bGUsCiAgICAgICAgICAgICAgICAnc3RhdHVzJz0+JHAtPnBvc3Rfc3RhdHVzLCd1cmwnPT5nZXRfcGVybWFsaW5rKCRwLT5JRCksJ2lsZ2lzJz0+c3RybGVuKCRwLT5wb3N0X2NvbnRlbnQpKTsKICAgICAgICAgICAgJHJbJ3R1cmlueXMnXSA9ICRwLT5wb3N0X2NvbnRlbnQ7CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIH0KICAgIH0KICAgIC8vIGFyIHlyYSBmb3Jtb3MgcGx1Z2luJ2FzCiAgICAkclsnZm9ybW9zX3BsdWdpbmFpJ10gPSBhcnJheSgpOwogICAgZm9yZWFjaCAoYXJyYXkoJ2NvbnRhY3QtZm9ybS03L3dwLWNvbnRhY3QtZm9ybS03LnBocCcsJ3dwZm9ybXMtbGl0ZS93cGZvcm1zLnBocCcsCiAgICAgICAgICAgICAgICAgICAnbmluamEtZm9ybXMvbmluamEtZm9ybXMucGhwJywnZm9ybWluYXRvci9mb3JtaW5hdG9yLnBocCcsCiAgICAgICAgICAgICAgICAgICAnZmx1ZW50Zm9ybS9mbHVlbnRmb3JtLnBocCcsJ2ZsYXRzb21lL2luYy9pbnRlZ3JhdGlvbnMvY29udGFjdC1mb3JtLTcvJykgYXMgJHBsKSB7CiAgICAgICAgaWYgKGZ1bmN0aW9uX2V4aXN0cygnaXNfcGx1Z2luX2FjdGl2ZScpICYmIGlzX3BsdWdpbl9hY3RpdmUoJHBsKSkgeyAkclsnZm9ybW9zX3BsdWdpbmFpJ11bXSA9ICRwbDsgfQogICAgfQogICAgJHJbJ3Zpc2lfYWt0eXZ1cyddID0gZ2V0X29wdGlvbignYWN0aXZlX3BsdWdpbnMnKTsKCiAgICAvLyAyKSBwb3Jhc3RlcyB0dXJpbnlzIOKAlCBrdXIgZ3l2ZW5hIEtPTlRBS1RBSSBibG9rYXMKICAgICRyWydmb290ZXJfYmxva2FpJ10gPSBhcnJheSgpOwogICAgZm9yZWFjaCAoYXJyYXkoJ2Zvb3Rlcl9sZWZ0X3RleHQnLCdmb290ZXJfcmlnaHRfdGV4dCcsJ2Zvb3Rlcl8yX2xlZnRfdGV4dCcsJ2Zvb3Rlcl8yX3JpZ2h0X3RleHQnKSBhcyAkaykgewogICAgICAgICR2ID0gZ2V0X3RoZW1lX21vZCgkayk7CiAgICAgICAgaWYgKCR2KSB7ICRyWydmb290ZXJfYmxva2FpJ11bJGtdID0gJHY7IH0KICAgIH0KICAgIC8vIEZsYXRzb21lIHBvcmFzdGVzIHdpZGdldCdhaQogICAgJHNpZGViYXJzID0gd3BfZ2V0X3NpZGViYXJzX3dpZGdldHMoKTsKICAgIGZvcmVhY2ggKCRzaWRlYmFycyBhcyAkc2IgPT4gJHdpZGdldHMpIHsKICAgICAgICBpZiAoc3RycG9zKCRzYiwnZm9vdGVyJykgPT09IGZhbHNlKSBjb250aW51ZTsKICAgICAgICBmb3JlYWNoICgoYXJyYXkpJHdpZGdldHMgYXMgJHcpIHsKICAgICAgICAgICAgJHRpcGFzID0gcHJlZ19yZXBsYWNlKCcvLVxkKyQvJywnJywkdyk7CiAgICAgICAgICAgICRuciA9IChpbnQpIHByZWdfcmVwbGFjZSgnL14uKi0vJywnJywkdyk7CiAgICAgICAgICAgICRvcHQgPSBnZXRfb3B0aW9uKCd3aWRnZXRfJy4kdGlwYXMpOwogICAgICAgICAgICBpZiAoaXNzZXQoJG9wdFskbnJdKSkgewogICAgICAgICAgICAgICAgJHR1cmlueXMgPSBpc19hcnJheSgkb3B0WyRucl0pID8gd3BfanNvbl9lbmNvZGUoJG9wdFskbnJdLCBKU09OX1VORVNDQVBFRF9VTklDT0RFKSA6IChzdHJpbmcpJG9wdFskbnJdOwogICAgICAgICAgICAgICAgaWYgKHN0cnBvcygkdHVyaW55cywncGV0c2hvcC5sdCcpICE9PSBmYWxzZSB8fCBzdHJwb3MoJHR1cmlueXMsJzg3Nzg3JykgIT09IGZhbHNlCiAgICAgICAgICAgICAgICAgICAgfHwgc3RyaXBvcygkdHVyaW55cywna29udGFrdCcpICE9PSBmYWxzZSkgewogICAgICAgICAgICAgICAgICAgICRyWyd3aWRnZXRhcyddWyRzYi4nLycuJHddID0gJHR1cmlueXM7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fVU5FU0NBUEVEX1NMQVNIRVMpOwogICAgZXhpdDsKfSk7Cg==','base64').toString('utf8');
 fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'UI Localization Runtime Audit',code:php.replace(/^<\?php\s*/,''),scope:'global',active:true}));
 for(let i=0;i<3 && !sid;i++){
   const r=sh('curl -sSk '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
@@ -29,20 +30,71 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('vartai6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('explore6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
-  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_v6a=dry"');
+  const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_kt3=Kt3w7"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
-O.dry=uzk(1);
-sh('sleep 3');
-const a=sh('curl -sSk -m 50 "'+SITE+'/?ps_v6a=apply"');
-try{ O.apply=JSON.parse(a.out); }catch(e){ O.apply_raw=a.out.slice(0,800); }
-sh('sleep 4');
-sh('curl -sSk -m 40 -o /tmp/pf7.js "'+SITE+'/wp-content/plugins/petshop-core/assets/pet-form.js"');
-O.serv = sh('wc -c < /tmp/pf7.js').out.trim();
-O.sint = sh('node --check /tmp/pf7.js && echo SINTAKSE_OK').out.trim().slice(0,200);
+try{
+  const browser = await chromium.launch();
+  const ctx = await browser.newContext({viewport:{width:1280,height:1200}, ignoreHTTPSErrors:true, locale:'lt-LT'});
+  const page = await ctx.newPage();
+  const errs=[]; page.on('pageerror', e=>errs.push(String(e).slice(0,160)));
+  const reqs=[]; page.on('request', r=>{ if(r.url().indexOf('/petshop/v1/')>=0) reqs.push(r.method()+' '+r.url().split('/petshop/v1/')[1]); });
+
+  await page.goto(SITE+'/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
+  await page.waitForTimeout(3500);
+  try{ const b=page.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:4000}); }catch(e){}
+  await page.waitForTimeout(1200);
+
+  O.zingsniai = [];
+  async function snap(zyme){
+    O.zingsniai.push({
+      zyme: zyme,
+      url: page.url(),
+      tekstas: (await page.locator('#pspet-form-host, .pspet, #content').first().innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,260),
+      mygtukai: (await page.locator('button:visible').allTextContents()).map(t=>t.trim()).filter(Boolean).slice(0,12),
+      inputu: await page.locator('input:visible').count(),
+      turi_email_lauka: await page.locator('input[type=email]:visible').count(),
+    });
+  }
+  await snap('pradzia');
+
+  // rusis
+  try{ await page.getByText('Šuo',{exact:false}).first().click({timeout:12000, force:true}); }catch(e){ O.e1=String(e).slice(0,90); }
+  await page.waitForTimeout(1200);
+  // vardas
+  try{ await page.locator('input[type=text]:visible').first().fill('Rikis'); }catch(e){ O.e2=String(e).slice(0,90); }
+  await page.waitForTimeout(800);
+  await snap('po_rusies_ir_vardo');
+
+  // spaudziam „toliau/testi" kol pasirodys el. pasto laukas (max 12 kartu)
+  for (let i=0;i<12;i++){
+    if (await page.locator('input[type=email]:visible').count()) break;
+    const kand = page.locator('button:visible').filter({hasText:/Toliau|Tęsti|Baigti|Išsaugoti|Peržiūrėti|Rodyti/i}).first();
+    if (!(await kand.count())) { O['stop_'+i]='nera mygtuko'; break; }
+    const tx = (await kand.textContent().catch(()=>'')||'').trim();
+    await kand.click({timeout:10000}).catch(e=>{ O['klik_'+i]=tx+' | '+String(e).slice(0,70); });
+    await page.waitForTimeout(1400);
+    O.zingsniai.push({zyme:'klik_'+i+'_'+tx, inputu: await page.locator('input:visible').count(),
+      turi_email: await page.locator('input[type=email]:visible').count(),
+      mygtukai:(await page.locator('button:visible').allTextContents()).map(t=>t.trim()).filter(Boolean).slice(0,8)});
+  }
+  await snap('pabaiga');
+
+  O.cta = {
+    email_lauku: await page.locator('input[type=email]:visible').count(),
+    status_sritis: await page.locator('.pspet-save-status').count(),
+    gauti_mygtukas: await page.locator('.pspet-btn-primary:visible').count(),
+  };
+  O.localStorage = await page.evaluate(()=>{ const o={}; try{ for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); o[k]=(localStorage.getItem(k)||'').slice(0,900); } }catch(e){ o.err=String(e); } return o; });
+  O.js_klaidos = errs.slice(0,6);
+  O.uzklausos = reqs;
+  fs.writeFileSync('/tmp/E6.png', await page.screenshot({fullPage:true}));
+  await browser.close();
+  try{ putB64('explore6.png', fs.readFileSync('/tmp/E6.png').toString('base64')); }catch(e){}
+}catch(err){ O.BROWSER_ERR=String(err && err.stack ? err.stack : err).slice(0,600); }
 sh('sleep 4');
 function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
 O.t_naujas       = code(SITE+'/paskyra/');
@@ -62,5 +114,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('vartai6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('explore6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
