@@ -1,0 +1,72 @@
+{
+ "VERSIJA_RUN": "run367-v1",
+ "deakt": [],
+ "sid": 2159,
+ "recon": {
+  "VERSIJA": "s367-v1",
+  "act": "recon",
+  "dydziai_MB": {
+   "uploads": 8555.1,
+   "plugins": 199.3,
+   "mu_plugins": 0.153,
+   "themes": 25.3
+  },
+  "db_MB": 135.1,
+  "db_lenteliu": 173,
+  "disk_laisva_GB": 386.4,
+  "disk_viso_GB": 1968.5,
+  "mu_failai": {
+   "automation-by-installatron.php": 983,
+   "petshop-code-search.php": 5447,
+   "petshop-feeding-calc-rest.php": 19012,
+   "petshop-m8-food.php": 35513,
+   "petshop-pet-claim.php": 7126,
+   "petshop-ps-pets-migration-freeze.php": 7018
+  },
+  "php": "8.3.20",
+  "wp": "6.9.4",
+  "memory": "256M",
+  "max_exec": "300",
+  "umbrella_idiegtas": false
+ },
+ "install": {
+  "VERSIJA": "s367-v1",
+  "act": "install",
+  "versija": "2.26.1",
+  "idiegta": true,
+  "failas_yra": true,
+  "aktyvavimas": "OK",
+  "aktyvus": true,
+  "plugin": {
+   "name": "WP Umbrella",
+   "ver": "2.26.1"
+  }
+ },
+ "recon2": {
+  "VERSIJA": "s367-v1",
+  "act": "recon",
+  "dydziai_MB": {
+   "uploads": 8555.1,
+   "plugins": 201.8,
+   "mu_plugins": 0.153,
+   "themes": 25.3
+  },
+  "db_MB": 135.1,
+  "db_lenteliu": 175,
+  "disk_laisva_GB": 386.4,
+  "disk_viso_GB": 1968.5,
+  "mu_failai": {
+   "automation-by-installatron.php": 983,
+   "petshop-code-search.php": 5447,
+   "petshop-feeding-calc-rest.php": 19012,
+   "petshop-m8-food.php": 35513,
+   "petshop-pet-claim.php": 7126,
+   "petshop-ps-pets-migration-freeze.php": 7018
+  },
+  "php": "8.3.20",
+  "wp": "6.9.4",
+  "memory": "256M",
+  "max_exec": "300",
+  "umbrella_idiegtas": true
+ }
+}
