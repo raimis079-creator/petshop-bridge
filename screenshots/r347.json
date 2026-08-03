@@ -1,0 +1,421 @@
+{
+ "VERSIJA_RUN": "run347-v1",
+ "deaktyvuota_TEMP": [],
+ "sid": 2137,
+ "rez": {
+  "VERSIJA": "s347-recon-v1",
+  "mu_failas": {
+   "dydis": 18536,
+   "sha256": "7457bc3d36ca2df7",
+   "eiluciu": 314
+  },
+  "mu_150_240": [
+   "150: \t\t'basis'        => 'user_portion',",
+   "151: \t\t'basis_label_lt'=> 'Pagal jūsų nurodytą porciją',",
+   "152: \t\t'norm_min_g'   => (int) round( $g ),",
+   "153: \t\t'norm_max_g'   => (int) round( $g ),",
+   "154: \t\t'days_min'     => $days,",
+   "155: \t\t'days_max'     => $days,",
+   "156: \t\t'sellable_unit_food_g' => $sellable,",
+   "157: \t);",
+   "158: \tif ( $price > 0 ) {",
+   "159: \t\t$cd = $price / $sellable * $g;",
+   "160: \t\t$out['cost_day_min'] = round( $cd, 2 );",
+   "161: \t\t$out['cost_day_max'] = round( $cd, 2 );",
+   "162: \t\t$out['cost_30d_min'] = round( $cd * 30, 2 );",
+   "163: \t\t$out['cost_30d_max'] = round( $cd * 30, 2 );",
+   "164: \t\t$out['price_used']   = $price;",
+   "165: \t} else {",
+   "166: \t\t$out['reason_codes'][] = 'PRICE_MISSING';",
+   "167: \t}",
+   "168: \treturn $out;",
+   "169: }",
+   "170: ",
+   "171: add_action('rest_api_init', function(){",
+   "172: \tregister_rest_route('petshop/v1', '/feeding-calc', array(",
+   "173: \t\t'methods'  => 'POST',",
+   "174: \t\t'permission_callback' => 'petshop_fc_perm',",
+   "175: \t\t'callback' => function( WP_REST_Request $req ){",
+   "176: \t\t\tif ( ! class_exists('Petshop_Feeding_Service') || ! method_exists('Petshop_Feeding_Service','calc') ) {",
+   "177: \t\t\t\treturn new WP_REST_Response(array('status'=>'system_error','reason_codes'=>array('SYSTEM_ERROR'),'message_lt'=>'Sistemos klaida.'), 200);",
+   "178: \t\t\t}",
+   "179: \t\t\t$p = $req->get_json_params(); if ( ! is_array($p) ) $p = array();",
+   "180: \t\t\t// S278: faktinės porcijos kelias — svorio nereikia.",
+   "181: \t\t\tif ( isset($p['portion_g']) && $p['portion_g'] !== '' && $p['portion_g'] !== null ) {",
+   "182: \t\t\t\treturn new WP_REST_Response(",
+   "183: \t\t\t\t\tpetshop_fc_portion( isset($p['product_id']) ? (int)$p['product_id'] : 0, (float) $p['portion_g'] ), 200 );",
+   "184: \t\t\t}",
+   "185: \t\t\t/* S286: PRIDEDANT NAUJĄ ĮĖJIMO LAUKĄ — įrašyti IR ČIA. Šis sąrašas",
+   "186: \t\t\t * FIKSUOTAS, tad ko jame nėra, tas calc() nepasiekia. Būtent dėl to",
+   "187: \t\t\t * age_months buvo siunčiamas, bet variklis vis tiek grąžindavo",
+   "188: \t\t\t * AGE_REQUIRED. Ta pati klaidos rūšis kartojosi jau kelis kartus",
+   "189: \t\t\t * (petshop_fc_calc_for_profile $base, petToFormData, sanitize()). */",
+   "190: \t\t\t$in = array(",
+   "191: \t\t\t\t'product_id'           => isset($p['product_id']) ? (int) $p['product_id'] : 0,",
+   "192: \t\t\t\t'weight_kg'            => ( isset($p['weight_kg']) && $p['weight_kg'] !== null && $p['weight_kg'] !== '' ) ? (float) $p['weight_kg'] : null,",
+   "193: \t\t\t\t'weight_interval_code' => isset($p['weight_interval_code']) ? sanitize_text_field((string)$p['weight_interval_code']) : null,",
+   "194: \t\t\t\t'activity_code'        => isset($p['activity_code']) ? sanitize_text_field((string)$p['activity_code']) : null,",
+   "195: \t\t\t\t'species_code'         => isset($p['species_code']) ? sanitize_text_field((string)$p['species_code']) : null,",
+   "196: \t\t\t\t'age_months'           => ( isset($p['age_months']) && $p['age_months'] !== null && $p['age_months'] !== '' ) ? (float) $p['age_months'] : null,",
+   "197: \t\t\t\t'expected_adult_weight_kg' => ( isset($p['expected_adult_weight_kg']) && $p['expected_adult_weight_kg'] !== '' ) ? (float) $p['expected_adult_weight_kg'] : null,",
+   "198: \t\t\t);",
+   "199: \t\t\treturn new WP_REST_Response( Petshop_Feeding_Service::calc($in), 200 );",
+   "200: \t\t},",
+   "201: \t));",
+   "202: \t// --- Feeding profilio išsaugojimai (feature-specifiniai, tik 2 stulpeliai, user patikra) ---",
+   "203: \tregister_rest_route('petshop/v1', '/feeding-pet-weight', array(",
+   "204: \t\t'methods'  => 'POST',",
+   "205: \t\t'permission_callback' => 'petshop_fc_perm',",
+   "206: \t\t'callback' => function( WP_REST_Request $req ){",
+   "207: \t\t\t$p = $req->get_json_params(); if ( ! is_array($p) ) $p = array();",
+   "208: \t\t\t$pet_id = isset($p['pet_id']) ? (int)$p['pet_id'] : 0;",
+   "209: \t\t\t$w = ( isset($p['weight_kg']) && $p['weight_kg']!=='' && $p['weight_kg']!==null ) ? (float)$p['weight_kg'] : null;",
+   "210: \t\t\tif ( $pet_id<=0 || $w===null || $w<=0 || $w>200 ) return new WP_REST_Response(array('ok'=>false,'error'=>'bad_input'),400);",
+   "211: \t\t\tglobal $wpdb; $pf=$wpdb->prefix;",
+   "212: \t\t\t$own = (int)$wpdb->get_var($wpdb->prepare(\"SELECT user_id FROM {$pf}ps_pets WHERE id=%d AND deleted_at IS NULL\",$pet_id));",
+   "213: \t\t\tif ( $own !== (int)get_current_user_id() ) return new WP_REST_Response(array('ok'=>false,'error'=>'forbidden'),403);",
+   "214: \t\t\t$wpdb->update($pf.'ps_pets', array('current_weight_kg'=>$w,'weight_updated_at'=>current_time('mysql'),'updated_at'=>current_time('mysql')), array('id'=>$pet_id));",
+   "215: \t\t\treturn new WP_REST_Response(array('ok'=>true,'weight_kg'=>$w),200);",
+   "216: \t\t},",
+   "217: \t));",
+   "218: \tregister_rest_route('petshop/v1', '/feeding-pet-activity', array(",
+   "219: \t\t'methods'  => 'POST',",
+   "220: \t\t'permission_callback' => 'petshop_fc_perm',",
+   "221: \t\t'callback' => function( WP_REST_Request $req ){",
+   "222: \t\t\t$p = $req->get_json_params(); if ( ! is_array($p) ) $p = array();",
+   "223: \t\t\t$pet_id = isset($p['pet_id']) ? (int)$p['pet_id'] : 0;",
+   "224: \t\t\t$hint = isset($p['activity_hint']) ? sanitize_text_field((string)$p['activity_hint']) : '';",
+   "225: \t\t\tif ( $pet_id<=0 || ! in_array($hint, array('low','moderate','high'), true) ) return new WP_REST_Response(array('ok'=>false,'error'=>'bad_input'),400);",
+   "226: \t\t\tglobal $wpdb; $pf=$wpdb->prefix;",
+   "227: \t\t\t$own = (int)$wpdb->get_var($wpdb->prepare(\"SELECT user_id FROM {$pf}ps_pets WHERE id=%d AND deleted_at IS NULL\",$pet_id));",
+   "228: \t\t\tif ( $own !== (int)get_current_user_id() ) return new WP_REST_Response(array('ok'=>false,'error'=>'forbidden'),403);",
+   "229: \t\t\t$wpdb->update($pf.'ps_pets', array('activity_hint'=>$hint,'updated_at'=>current_time('mysql')), array('id'=>$pet_id));",
+   "230: \t\t\treturn new WP_REST_Response(array('ok'=>true,'activity_hint'=>$hint),200);",
+   "231: \t\t},",
+   "232: \t));",
+   "233: \t// S229: slapio maisto kiekio greitas koregavimas mitybos plane.",
+   "234: \t// SVARBU: raso i TA PATI ps_pets.wet_food_g — antro duomenu saltinio NEKURIAM.",
+   "235: \t// Maitinimo budas keiciamas TIK profilio anketoje; cia tik kiekis.",
+   "236: \tregister_rest_route('petshop/v1', '/feeding-pet-wet-food', array(",
+   "237: \t\t'methods'  => 'POST',",
+   "238: \t\t'permission_callback' => 'petshop_fc_perm',",
+   "239: \t\t'callback' => function( WP_REST_Request $req ){",
+   "240: \t\t\t$p = $req->get_json_params(); if ( ! is_array($p) ) $p = array();"
+  ],
+  "nuorodos": [
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/petshop-core.php",
+    "l": 75,
+    "txt": "require_once PETSHOP_CORE_DIR . 'includes/class-pet-profile.php';"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/petshop-core.php",
+    "l": 112,
+    "txt": "require_once PETSHOP_CORE_DIR . 'includes/class-pet-drafts.php'; // S328"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/petshop-core.php",
+    "l": 171,
+    "txt": "Petshop_Pet_Drafts::init(); // S336 — POST /pet-draft"
+   },
+   {
+    "raktas": "feeding-pet-weight",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 1376,
+    "txt": "fetch(REST + '/feeding-pet-weight', {"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 1356,
+    "txt": "fetch(REST + '/pet-profile', {"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 1373,
+    "txt": "// IA v1.1: svoris saugomas atskiru endpointu (pet-profile jo nepriima)."
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 1825,
+    "txt": "// MyAccount be action=create — laukiam mygtuko (pet-profile.js kvies mount)"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 103,
+    "txt": "// ★ SAVEDRAFT NEKVIECIA /pet-draft — serverinis draftas kuriamas TIK"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 130,
+    "txt": "*     -> POST /pet-draft NEKVIECIAMAS, kartojamas TIK magic-login/request"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 134,
+    "txt": "* Tai uzdaro atveji, kai /pet-draft PAVYKO, o magic-login/request NE:"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 1646,
+    "txt": "return srvFetch('/pet-draft', { email: email, payload: payload, payload_version: 1 })"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 1674,
+    "txt": "*   2 „gauti nuoroda\"      -> POST /pet-draft"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/assets/pet-form.js",
+    "l": 1678,
+    "txt": "* ★ Jei /pet-draft NEISSAUGOMAS — magic link NESIUNCIAMAS. Kitaip sukurtume"
+   },
+   {
+    "raktas": "feeding-pet-weight",
+    "f": "plugins/petshop-core/assets/calc-handoff.js",
+    "l": 87,
+    "txt": "jobs.push(fetch(REST + '/feeding-pet-weight', {"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/calc-handoff.js",
+    "l": 12,
+    "txt": "* Įterpiama į pet-profile.js kaip savarankiškas modulis."
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/calc-handoff.js",
+    "l": 81,
+    "txt": "* Svoris — atskiru endpointu (pet-profile jo nepriima), produktas —"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/calc-handoff.js",
+    "l": 82,
+    "txt": "* per pet-profile merge su pet_id."
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/calc-handoff.js",
+    "l": 95,
+    "txt": "jobs.push(fetch(REST + '/pet-profile', {"
+   },
+   {
+    "raktas": "feeding-pet-weight",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 2874,
+    "txt": "fetch(REST + '/feeding-pet-weight', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': NONCE }, credentials: 'same-origin',"
+   },
+   {
+    "raktas": "feeding-pet-activity",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 2851,
+    "txt": "fetch(REST + '/feeding-pet-activity', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': NONCE }, credentials: 'same-origin',"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 91,
+    "txt": "root = document.getElementById('pspet-profile');"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 128,
+    "txt": "fetch(REST + '/pet-profile', {"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 208,
+    "txt": "fetch(REST + '/pet-profile', {"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 225,
+    "txt": "fetch(REST + '/pet-profile', {"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 458,
+    "txt": "var wrap = el('div', 'pspet-profile');"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 552,
+    "txt": "fetch(REST + '/pet-profile/' + petId, {"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 581,
+    "txt": "var wrap = el('div', 'pspet-profile');"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 1096,
+    "txt": "var wrap = el('div', 'pspet-profile');"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 1266,
+    "txt": "var wrap = el('div', 'pspet-profile');"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/assets/pet-profile.js",
+    "l": 2177,
+    "txt": "var wrap = el('div', 'pspet-profile');"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-ui.php",
+    "l": 102,
+    "txt": "echo '<div id=\"pspet-profile\" data-create-url=\"' . $create_url . '\"' . ( $create ? ' style=\"display:none\"' : '' ) . '></div>';"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-ui.php",
+    "l": 147,
+    "txt": "// S289: perėmimo modulis — turi būti PRIEŠ pet-profile.js, nes šis jį kviečia."
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-ui.php",
+    "l": 151,
+    "txt": "// Profilio ekranas — MyAccount puslapyje (JS pats tikrina ar yra #pspet-profile)."
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-ui.php",
+    "l": 154,
+    "txt": "wp_enqueue_script( 'pspet-profile', $base . 'pet-profile.js', array( 'pspet-handoff' ), self::asset_ver( 'pet-profile.js' ), true );"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 109,
+    "txt": "* savininka, kai class-pet-profile.php bus liecamas del kitu priezasciu."
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 175,
+    "txt": "/* REST: POST /petshop/v1/pet-draft  (S336)                          */"
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 226,
+    "txt": "register_rest_route( 'petshop/v1', '/pet-draft', array("
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 261,
+    "txt": "* POST /petshop/v1/pet-draft — issaugo anoniminę anketą SERVERYJE."
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 25,
+    "txt": "*   - Nauji endpointai: PATCH pet-profile/{id}, DELETE (soft), GET brands, pet-photo"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 28,
+    "txt": "*   POST   /petshop/v1/pet-profile            create/update (legacy — palaikomas)"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 29,
+    "txt": "*   GET    /petshop/v1/pet-profile            list (tik ne-deleted)"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 30,
+    "txt": "*   PATCH  /petshop/v1/pet-profile/{id}       dalinis update"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 31,
+    "txt": "*   DELETE /petshop/v1/pet-profile/{id}       soft delete"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 159,
+    "txt": "register_rest_route( 'petshop/v1', '/pet-profile', array("
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 172,
+    "txt": "register_rest_route( 'petshop/v1', '/pet-profile/(?P<id>\\d+)', array("
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 219,
+    "txt": "* PATCH /pet-profile/{id} — dalinis update (tik perduoti laukai)."
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 229,
+    "txt": "* DELETE /pet-profile/{id} — SOFT delete (status=deleted, deleted_at)."
+   },
+   {
+    "raktas": "pet-draft",
+    "f": "plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 553,
+    "txt": "* Anoniminis draftu kelias (`POST /pet-draft`) turi naudoti TA PATI"
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "plugins/petshop-core/includes/class-reminders.php",
+    "l": 27,
+    "txt": "* PRIDEDANT NAUJĄ TIPĄ: įrašyti IR čia, IR pet-profile.js REM_TYPES_* sąraše."
+   },
+   {
+    "raktas": "feeding-pet-weight",
+    "f": "mu-plugins/petshop-feeding-calc-rest.php",
+    "l": 203,
+    "txt": "register_rest_route('petshop/v1', '/feeding-pet-weight', array("
+   },
+   {
+    "raktas": "feeding-pet-activity",
+    "f": "mu-plugins/petshop-feeding-calc-rest.php",
+    "l": 218,
+    "txt": "register_rest_route('petshop/v1', '/feeding-pet-activity', array("
+   },
+   {
+    "raktas": "pet-profile",
+    "f": "mu-plugins/petshop-ps-pets-migration-freeze.php",
+    "l": 127,
+    "txt": "if ( preg_match( '#^/petshop/v1/pet-profile(?:/|$)#', $r ) || preg_match( '#^/petshop/v1/pet-photo(?:/|$)#', $r ) ) {"
+   }
+  ],
+  "nuorodu_viso": 52
+ }
+}
