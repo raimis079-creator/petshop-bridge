@@ -1,0 +1,208 @@
+{
+ "VERSIJA_RUN": "run351-v1",
+ "sid": 2145,
+ "reset0": {
+  "VERSIJA": "s353-v1",
+  "act": "reset",
+  "pets_viso": 70,
+  "draftai": 11
+ },
+ "V": {
+  "N3_EM": "e2e.n3.msd6psf2@pastas-test.lt",
+  "N3_seed": {
+   "VERSIJA": "s353-v1",
+   "act": "mkuser",
+   "seed_pet_id": 207,
+   "user_id": 68,
+   "pets": [
+    {
+     "id": "207",
+     "pet_name": "N3-Dublis",
+     "species": "dog",
+     "status": "active"
+    }
+   ]
+  },
+  "N3_forma": {
+   "errs": [],
+   "nuoroda": "https://dev.avesa.lt/petshop-login?token=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoibWFnaWNfbG9naW4iLCJzdWJqZWN0X2lkIjo2OCwicmVzb3VyY2VfaWQiOiIwMTdiZWI2YS02MDQ5LTRkYzYtYmE5NS03Mjc1MTdjMjQyNDAiLCJhY3Rpb24iOiJwZXQiLCJleHBpcmVzX2F0IjoxNzg1NzU5Nzc2LCJub25jZSI6IjMxZWI3NjU0NWE3ODVhYWU0NWYwNTc5MTdjYjI3YzI4Iiwia2V5X2lkIjoidjIifQ.09cf5cc66dd469512dc1861a96a4f5a57c904667c6581f7ce9de5351f64835ed",
+   "draft_id": "017beb6a-6049-4dc6-ba95-727517c24240"
+  },
+  "N3_pries": {
+   "VERSIJA": "s353-v1",
+   "act": "st2",
+   "draftas": {
+    "draft_id": "017beb6a-6049-4dc6-ba95-727517c24240",
+    "status": "active",
+    "payload_null": "0",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": null,
+    "claimed_pet_id": null
+   },
+   "tokenas": {
+    "id": "136",
+    "resource_id": "017beb6a-6049-4dc6-ba95-727517c24240",
+    "status": "active",
+    "used_at": null
+   },
+   "vartotojas": {
+    "id": 68
+   },
+   "pets": [
+    {
+     "id": "207",
+     "pet_name": "N3-Dublis",
+     "current_weight_kg": "10.00",
+     "client_ref": null,
+     "status": "active"
+    }
+   ],
+   "pending": "",
+   "pets_viso": 71,
+   "vartotoju": 32,
+   "ev": 107
+  },
+  "N3_url": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=duplicate_candidate",
+  "N3_prisijunges": true,
+  "N3_errs": [],
+  "N3_5xx": [],
+  "N3_po": {
+   "VERSIJA": "s353-v1",
+   "act": "st2",
+   "draftas": {
+    "draft_id": "017beb6a-6049-4dc6-ba95-727517c24240",
+    "status": "active",
+    "payload_null": "0",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": null,
+    "claimed_pet_id": null
+   },
+   "tokenas": {
+    "id": "136",
+    "resource_id": "017beb6a-6049-4dc6-ba95-727517c24240",
+    "status": "used",
+    "used_at": "2026-08-03 12:08:08"
+   },
+   "vartotojas": {
+    "id": 68
+   },
+   "pets": [
+    {
+     "id": "207",
+     "pet_name": "N3-Dublis",
+     "current_weight_kg": "10.00",
+     "client_ref": null,
+     "status": "active"
+    }
+   ],
+   "pending": {
+    "draft_id": "017beb6a-6049-4dc6-ba95-727517c24240",
+    "candidate_ids": [
+     207
+    ],
+    "created_at": 1785758888,
+    "expires_at": 1786968488
+   },
+   "pets_viso": 71,
+   "vartotoju": 32,
+   "ev": 107
+  },
+  "N3_pending_raktai": [
+   "candidate_ids",
+   "created_at",
+   "draft_id",
+   "expires_at"
+  ],
+  "N3_OK": true,
+  "NB_seed_pet": 208,
+  "NB_user": 66,
+  "NURL": {
+   "pets_po": [
+    "208:N4-B-sargas"
+   ],
+   "errs": [],
+   "st5": []
+  },
+  "NURL_OK": true,
+  "N4_EM": "e2e.n4.msd6qwcg@pastas-test.lt",
+  "N4_forma": {
+   "errs": [],
+   "nuoroda": "https://dev.avesa.lt/petshop-login?token=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoibWFnaWNfbG9naW4iLCJzdWJqZWN0X2lkIjowLCJyZXNvdXJjZV9pZCI6IjgyOTNmZWU3LWY0NTMtNGU4MS1iNDAxLTY0ODI1MDIzZjAxNyIsImFjdGlvbiI6InBldCIsImV4cGlyZXNfYXQiOjE3ODU3NTk4MjQsIm5vbmNlIjoiNzcyMDlhNzg5MDQ5ZWRlNTQzZDYzZDMyY2FlMTdkZWYiLCJrZXlfaWQiOiJ2MiJ9.40f54edda64fe42ca357761be877b5b4a2f401b44a1ddfafc1e9fb473a4b5cf9",
+   "draft_id": "8293fee7-f453-4e81-b401-64825023f017"
+  },
+  "N4_ekranas": "Prisijungti prie Petshop.lt Paspauskite mygtuką, kad užbaigtumėte prisijungimą. Prisijungti Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.",
+  "N4_pasyvus": {
+   "token": {
+    "id": "137",
+    "resource_id": "8293fee7-f453-4e81-b401-64825023f017",
+    "status": "active",
+    "used_at": null
+   },
+   "draft": {
+    "draft_id": "8293fee7-f453-4e81-b401-64825023f017",
+    "status": "active",
+    "payload_null": "0",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": null,
+    "claimed_pet_id": null
+   },
+   "cookieB_nepakites": true
+  },
+  "N4_pasyvus_OK": true,
+  "N4_url": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=ok",
+  "N4_po": {
+   "A_vartotojas": {
+    "id": 69
+   },
+   "A_pets": [
+    {
+     "id": "209",
+     "pet_name": "N4-A-naujokas",
+     "current_weight_kg": "12.50",
+     "client_ref": "8293fee7-f453-4e81-b401-64825023f017",
+     "status": "active"
+    }
+   ],
+   "draft": {
+    "draft_id": "8293fee7-f453-4e81-b401-64825023f017",
+    "status": "claimed",
+    "payload_null": "1",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": "69",
+    "claimed_pet_id": "209"
+   },
+   "B_pets": [
+    "208:N4-B-sargas"
+   ],
+   "cookie_pakeistas": true,
+   "errs": [],
+   "st5": []
+  },
+  "N4_OK": true
+ },
+ "cl_n3": {
+  "VERSIJA": "s353-v1",
+  "act": "cleanup",
+  "uem_istrintas": 1,
+  "pets_viso": 71,
+  "draftai": 12
+ },
+ "cl_n4": {
+  "VERSIJA": "s353-v1",
+  "act": "cleanup",
+  "uem_istrintas": 1,
+  "pets_viso": 70,
+  "draftai": 11
+ },
+ "cl_b": {
+  "VERSIJA": "s353-v1",
+  "act": "cleanup",
+  "user_istrintas": 1,
+  "pets_viso": 69,
+  "draftai": 11
+ }
+}
