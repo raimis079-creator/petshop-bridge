@@ -1,0 +1,155 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2123,
+ "zym": "WMSCZJ74J",
+ "email": "e2e.wmsczj74j@dev.avesa.lt",
+ "pradzia": {
+  "VERSIJA": "e2e-b-v1",
+  "pets": 67,
+  "vartotoju": 28,
+  "ev": 103
+ },
+ "W": {
+  "ekranas": "Augintinio profilis Papasakokite apie savo augintinį Tai užtruks mažiau nei minutę Kas jūsų augintinis? Šuo Katė Paukštis Graužikas Žuvis Roplys Kitas Augintinio vardas Svoris (neprivaloma) kg Svorio prireiks dienos normai apskaičiuoti, kai pasirinksite maistą. SUKURTI PROFILĮ Kiek maisto reikia Aps",
+  "laukai": [
+   {
+    "tag": "input",
+    "type": "text",
+    "name": "",
+    "id": "",
+    "cls": "pspet-input",
+    "placeholder": "Koks jūsų augintinio vardas?",
+    "inputmode": "",
+    "label": "Augintinio vardas"
+   },
+   {
+    "tag": "input",
+    "type": "text",
+    "name": "",
+    "id": "",
+    "cls": "pspet-input",
+    "placeholder": "pvz. 12,5",
+    "inputmode": "decimal",
+    "label": "kg"
+   }
+  ],
+  "svorio_laukas_yra": true,
+  "svorio_lauku": 1,
+  "dom_value": "12,5",
+  "laukai_po": [
+   {
+    "type": "text",
+    "value": "WMSCZJ74J-Rikis",
+    "ph": "Koks jūsų augintinio vardas?"
+   },
+   {
+    "type": "text",
+    "value": "12,5",
+    "ph": "pvz. 12,5"
+   }
+  ],
+  "localStorage": {
+   "pet_data": {
+    "species": "dog",
+    "is_sterilised": null,
+    "draft_id": "d_1or5yyfqi7hmsczjdpc",
+    "created_at": "2026-08-03T08:46:40.416Z",
+    "pet_name": "WMSCZJ74J-Rikis",
+    "_weight_kg": "12,5"
+   },
+   "current_step": 1
+  },
+  "request_payload": {
+   "species": "dog",
+   "pet_name": "WMSCZJ74J-Rikis",
+   "_weight_kg": "12,5"
+  },
+  "draft_id": "70d25e63-e9b3-4776-a8f6-73ed5dca7c05",
+  "draft_db": {
+   "VERSIJA": "e2e-b-v1",
+   "eilute": {
+    "draft_id": "70d25e63-e9b3-4776-a8f6-73ed5dca7c05",
+    "status": "active"
+   },
+   "payload": {
+    "species": "dog",
+    "species_detail": null,
+    "pet_name": "WMSCZJ74J-Rikis",
+    "life_stage": null,
+    "dog_size": null,
+    "is_sterilised": null,
+    "feeding_type": null,
+    "feeding_type_other": null,
+    "wet_food_g": null,
+    "wet_product_id": null,
+    "primary_need": null,
+    "primary_need_other": null,
+    "current_food_brand": null,
+    "birth_date": null,
+    "sensitivities": null,
+    "housing": null,
+    "activity_hint": null,
+    "current_food_free_text": null,
+    "primary_product_id": null,
+    "primary_product_name": null,
+    "primary_product_sku": null,
+    "primary_product_package": null,
+    "current_weight_kg": null
+   }
+  },
+  "nuoroda_yra": true,
+  "B_url": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=ok",
+  "po_claim": {
+   "VERSIJA": "e2e-b-v1",
+   "draftas": {
+    "draft_id": "70d25e63-e9b3-4776-a8f6-73ed5dca7c05",
+    "status": "claimed",
+    "payload_null": "1",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": "62",
+    "claimed_pet_id": "189"
+   },
+   "tokenas": {
+    "id": "129",
+    "subject_email": "e2e.wmsczj74j@dev.avesa.lt",
+    "resource_id": "70d25e63-e9b3-4776-a8f6-73ed5dca7c05",
+    "status": "used",
+    "used_at": "2026-08-03 08:47:04"
+   },
+   "vartotojas": {
+    "id": 62
+   },
+   "pets": [
+    {
+     "id": "189",
+     "pet_name": "WMSCZJ74J-Rikis",
+     "species": "dog",
+     "current_weight_kg": null,
+     "activity_hint": null,
+     "status": "active",
+     "client_ref": "70d25e63-e9b3-4776-a8f6-73ed5dca7c05",
+     "is_primary": "1"
+    }
+   ],
+   "pending": "",
+   "pets_viso": 68,
+   "vartotoju": 29,
+   "ev": 104
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
