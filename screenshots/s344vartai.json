@@ -1,0 +1,75 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2127,
+ "zym": "VMSD1HIFA",
+ "email": "e2e.vmsd1hifa@dev.avesa.lt",
+ "pradzia": {
+  "VERSIJA": "e2e-b-v1",
+  "pets": 68,
+  "vartotoju": 29,
+  "ev": 104
+ },
+ "V": {
+  "V1_dom": "12,5",
+  "V1_draft_id": "2f963080-cd86-4f81-8954-4dd2cc02062c",
+  "V1_payload": {
+   "species": "dog",
+   "pet_name": "VMSD1HIFA-Rikis",
+   "current_weight_kg": "12.5"
+  },
+  "V1_draft_db": {
+   "current_weight_kg": 12.5,
+   "weight_updated_at": "2026-08-03 09:41:29"
+  },
+  "V1_pet": {
+   "id": "190",
+   "pet_name": "VMSD1HIFA-Rikis",
+   "species": "dog",
+   "current_weight_kg": "12.50",
+   "activity_hint": null,
+   "status": "active",
+   "client_ref": "2f963080-cd86-4f81-8954-4dd2cc02062c",
+   "is_primary": "1"
+  },
+  "V1": {
+   "dom": "12,5",
+   "post_current": "12.5",
+   "post_turi_weight_kg": false,
+   "draft": {
+    "current_weight_kg": 12.5,
+    "weight_updated_at": "2026-08-03 09:41:29"
+   },
+   "pet_svoris": "12.50",
+   "OK": true
+  },
+  "V3": {
+   "payload": {
+    "species": "dog",
+    "pet_name": "VMSD1HIFA-BeSvorio"
+   },
+   "turi_current": false,
+   "turi_weight_kg": false,
+   "OK": true
+  },
+  "V5_antraste": "VMSD1HIFA-Calc · Šuo",
+  "V5": {
+   "antraste": "VMSD1HIFA-Calc · Šuo",
+   "rodo_kg": false,
+   "OK": false
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
