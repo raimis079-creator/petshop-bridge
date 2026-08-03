@@ -49,12 +49,13 @@
 |---|---|---|---|---|
 | DOD-01 | P0 funkcijos F1–F16 100% | ✅ | 2026-08-03 | F4 ✅ + F14 ✅. Visos P0 uždarytos |
 | DOD-02 | Kritinių klaidų 0 | ⚪ | — | **nėra bug registro** — nematuojama |
+| P1-MYISAM | MyISAM → InnoDB migracija | 🔴 | 2026-08-03 | 160/174 lentelių MyISAM = 98% duomenų. Architektūros skola, ne tik backup (§8c) |
 | DOD-03 | Aukšto prioriteto klaidų ≤3 | ⚪ | — | tas pats |
 | DOD-04 | 20 testinių užsakymų | 🔴 | 2026-08-03 | DB: 2. Automatinis mobilus kelias veikia (S374) — galima kartoti scenarijų su skirtingais metodais |
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
 | DOD-07 | Top-100 SEO 301 | 🔴 | 2026-07-30 | 44 URL = 404, 20,5% srauto |
-| DOD-08 | Backup restore testas | 🟡 | 2026-08-03 | **Installatron kopijos EGZISTUOJA** (žr. §11). Pilnos, su DB. Trūksta: atstatymo testo, dažnumo, laikymo už serverio ribų |
+| DOD-08 | Backup restore testas | 🟡 | 2026-08-03 | Installatron kopijos yra (§8b). DB sluoksnio sprendimas užrakintas (§8c). Trūksta: įgyvendinimo + restore testo |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
 | DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
@@ -266,13 +267,130 @@ siunčiantis sprendimas elgtųsi taip pat, ir tai paveiktų gyvą parduotuvę.
 
 ---
 
+## 8c. DB BACKUP — UŽRAKINTAS SPRENDIMAS (2026-08-03)
+
+> **STATUSAS: PASIRINKTAS SPRENDIMAS, NE UŽBAIGTAS BACKUPAS.**
+> Žalias tampa TIK po atstatymo testo (kriterijai apačioje).
+
+### Saugykla
+```
+Backblaze B2 EU Central (Amsterdamas) · privatus bucketas · pirmi 10 GB nemokami
+Kasdienis serverio raktas: TIK tas bucketas · TIK petshop-backups/ prefiksas
+                           writeFiles · BE readFiles · BE deleteFiles
+Atstatymo raktas: read-only, serveryje NELAIKOMAS, tik slaptažodžių tvarkyklėje
+Master key serveryje NIEKADA
+Retencija: B2 Lifecycle Rule ~30 d. pagal prefiksą (datuoti vardai, ne versijos)
+           SKRIPTAS KOPIJŲ NETRINA — apsauga nuo ransomware
+```
+Vientisumas tikrinamas per B2 Native API: įkeliant pateikiamas SHA-1, atsakyme
+grąžinamas `contentLength` + `contentSha1` — patvirtinama BE skaitymo teisės.
+
+### Šifravimas
+```
+Šifruojama PRIEŠ įkeliant (ne tik gzip)
+Raktų failas: /home/gyvunai2/... UŽ public_html, chmod 600
+ANTRA rakto kopija PRIVALOMA kitoje vietoje (slaptažodžių tvarkyklė) —
+  vienintelė kopija tame pačiame hostinge padarytų B2 kopijas NEATKURIAMAS
+Raktai NIEKADA nerodomi pokalbyje
+```
+
+### Apimtis
+```
+ĮTRAUKTI: visa DB (174 lentelės) + mu-plugins (156 KB)
+          + petshop-core (6 908 KB) + flatsome-child (737 KB)
+NEĮTRAUKTI: uploads · Flatsome pagrindinė tema · trečiųjų šalių pluginai
+            · raktų failas
+```
+Pirmoje versijoje NIEKO nepraleidžiama (nei `shortpixel_queue`, nei
+`actionscheduler_logs`) — optimizacija tik PO veikiančio restore testo.
+
+### DB nuoseklumas — GLOBALUS UŽRAKTAS ATMESTAS
+```
+IŠMATUOTA (s381): LOCK TABLES READ visoms 174 lentelėms SUSTABDĖ svetainę.
+  Užklausa negrįžo per 45 s; lygiagreti patikra grąžino 000 (jokio atsakymo).
+  Priežastis: READ užraktas MyISAM blokuoja rašymus, o WP rašo beveik
+  kiekvienoje užklausoje (sesijos, transientai, options).
+  Svetainė po testo sveika: / 200 · /parduotuve/ 200 · /cart/ 200 · REST 200.
+
+KLAIDA, KURIĄ REIKIA ŽINOTI: teiginys „sustos ~18 s" BUVO NEPAGRĮSTAS —
+  18 s buvo NEUŽRAKINTO eksporto trukmė. Kiek truktų laukimas užraktų —
+  NEIŠMATUOTA. Neteigti to, kas nepamatuota.
+```
+**v1 metodas:**
+```
+InnoDB (14 lentelių, 3,2 MB)   → viena REPEATABLE READ consistent snapshot
+MyISAM (160 lentelių, 131,9 MB) → lentelė po lentelės, srautiniu SELECT,
+                                  BE globalaus explicit LOCK TABLES
+Kopija žymima: consistency = mixed_engine_best_effort
+               NE „transakcinis snapshot" — mišrioje DB tai netiesa
+```
+`READ LOCAL` netinka: leidžia lygiagrečius INSERT į MyISAM, bet neatlaisvina
+UPDATE/DELETE, kurių WP naudoja daug.
+
+### Koduotė
+```
+DB numatytoji latin1 / latin1_swedish_ci, BET lentelės utf8mb4 (172 iš 174
+  utf8mb4_unicode_520_ci, 2 utf8mb4_general_ci)
+Eksporto jungtis: mysqli_set_charset(...,'utf8mb4') + patikrinti
+  @@character_set_client/connection/results
+Dump antraštėje: SET NAMES utf8mb4
+Atkuriant: jungtis taip pat utf8mb4; tikrinti lietuviškas raides, emoji
+  ir PHP serialized reikšmes
+```
+
+### Manifestas prie KIEKVIENOS kopijos
+```
+consistency: mixed_engine_best_effort · export_started_at · export_finished_at
+lentelių sąrašas su ENGINE · eilučių skaičiai · eksporto klaidos
+kodo failų SHA-256
+```
+Jei bent viena lentelė neperskaitoma arba eksportas nutrūksta — archyvas
+NEŽYMIMAS sėkmingu ir „backup OK" pranešimas NESIUNČIAMAS.
+
+### Žalias TIK po
+```
+tikro įkėlimo į B2 · hash ir dydžio patvirtinimo
+gedimo pranešimo testo IR „cron visai nepasileido" perspėjimo testo
+atstatymo į VISIŠKAI ŠVARIĄ DB (ne ant esamos)
+schemų + 174 lentelių eilučių skaičių palyginimo
+kritinių lentelių kontrolinių sumų (ps_pets, ps_feeding_rows, wc_orders, postmeta)
+custom kodo failų SHA-256 palyginimo
+```
+
+### Techninė aplinka (išmatuota, ne prielaidos)
+```
+cURL 8.5.0 · OpenSSL 1.0.2k-fips · allow_url_fopen=1
+gzopen · gzencode · curl_init · mysqli_connect · fsockopen — VISI yra
+disable_functions: link, symlink, exec, passthru, proc_*, shell_exec, system, popen
+WP_HTTP_BLOCK_EXTERNAL neapibrėžta
+Išeinantis HTTPS VEIKIA (s379): github · b2api · wasabi · google · sender · wporg
+  visi DNS OK, TCP:443 OK, TLS OK. Ankstesnis 134 s kabėjimas — laikinas epizodas.
+Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp — visos rašomos
+DB eksportas PHP: 146,5 MB → 13,96 MB (10,5:1), 18,4 s, atmintis 116/256 MB
+NEPATIKRINTA: LOCK TABLES teisė (SHOW GRANTS neįvykdytas — testas nutrūko)
+```
+
+### ATVIRAS P1 PRIEŠ LAUNCH — MyISAM → InnoDB
+```
+160 iš 174 lentelių yra MyISAM = 98% duomenų (131,9 iš 135 MB).
+Tai ne tik backup, o visos parduotuvės architektūros skola: MyISAM turi
+lentelės lygio užraktus, InnoDB — eilutės lygio + transakcijas.
+Darbo eiga: (1) inventorizuoti indeksus, FULLTEXT, pluginų priklausomybes;
+(2) konvertuoti klone; (3) pilna funkcinė + našumo regresija;
+(4) tik tada dev/produkcija per priežiūros langą.
+Po konversijos visas DB backupas taps nuosekliu InnoDB snapshotu BE svetainės
+stabdymo.
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
 |---|---|---|---|
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
-| Q-BKP | **Kur laikyti DB kopijas už serverio ribų** (Google Drive / S3-suderinama / FTP kitur). Pluginas nereikalingas — sprendimas tik dėl saugyklos | DOD-08 | — |
+| Q-BKP | ✅ **IŠSPRĘSTA 2026-08-03:** Backblaze B2 EU. Pilnas užraktas — §8c. Liko: Raimis susikuria paskyrą, raktus įrašo TIESIAI serveryje | DOD-08 | — |
 | Q-MON | **Monitoringo apimtis** — uptime pakanka, ar reikia ir PHP klaidų sekimo? | DOD-13 | — |
 | Q-PSR2 | **Paysera testinio režimo patvirtinimas** — be jo pilnas mokėjimo ciklas (redirect → callback → `processing`) netestuojamas. Dev režimas testinis, bet konfigūracija nebaigta | F-PSR | — |
 | Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
