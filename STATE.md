@@ -1402,6 +1402,34 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 10 localStorage NEISVALOMAS po nuorodos issiuntimo (clearDraft NEKVIECIAMAS)
 ```
 
+### ★★★★ 2026-08-03 (4) — 8 PUNKTAS UZDARYTAS: N3, N4, NURL VISI ZALI (s353.json)
+
+```
+N3  paskyroje jau yra tos pacios rusies+vardo augintinis:
+    naujas pet NEsukurtas (pets=1) · ev +0 · vartotoju +0 · draftas GRIZO i active
+    payload islike (payload_null=0) · pending meta TIK {candidate_ids,created_at,
+    draft_id,expires_at} · URL TIK ?pet_claim=duplicate_candidate (be draft_id/email)
+    vartotojas LIEKA prisijunges · 5xx 0 · JS 0
+NURL URL parametras BE serverines user_meta nieko neatrakina:
+    svarus vartotojas atidaro ?pet_claim=duplicate_candidate — pets nepakite, 0 klaidu
+N4  nuoroda atidaryta prisijungus KITU vartotoju (B=ps_v2_test):
+    PASYVUS GET: tokenas active/used_at NULL · draftas active · B cookie NEPAKITES
+    PO PATVIRTINIMO: sesija -> A (naujas user 69) · pet 209 TIK A paskyroje,
+    client_ref=draft_id · draftas claimed i A · B pets NEPALIESTI (N4-B-sargas)
+    · B cookie pakeistas · ?pet_claim=ok · 5xx 0 · JS 0
+```
+**8 PUNKTO SUVESTINE: E0-A ✅ E0-B ✅ paritetas ✅ N1 ✅ N2 ✅ N3 ✅ N4 ✅ — UZDARYTA.**
+PASTABA N3: mechanika pilna; sprendimo ekranas „tas pats / naujas" = 9 punkto UI
+darbas — pilnas vartotojo kelias uzsidarys su juo.
+
+**VALYMAS IVYKDYTAS run'o pabaigoje:** N3 user 68+pet 207, N4 user 69+pet 209,
+ps_v2_test+pets (iskaitant senus 204/205 is v6ab3), abu draftai, mails opcija.
+pets_viso 69, draftai 11 (senoji skola — valyti pagal tikslius ID, cron dengia
+14 d. galiojima). TEMP snippetu trynimo sarasas WP admin: 2136-2139, 2141-2145.
+
+**LIEKA ANKETOJE TIK 9 PUNKTAS:** tekstai (landing stiliaus perziura — RAIMIO)
++ duplicate_candidate sprendimo ekranas + „14 dienu" fraze.
+
 ### ★★★★ 2026-08-03 (3) — LYGIAGRETUMO INCIDENTAS + NEPRIKLAUSOMAS PATVIRTINIMAS
 
 **DU LANGAI DIRBO ANT VIENO TILTO VIENU METU (11:13-11:56).** Pasekmes:
@@ -1614,7 +1642,7 @@ Testiniai vartotojai: ps_v2_test, e2e.* — istrinti pagal TIKSLU user_id.
 5 Claim      process_login -> create_pet_result -> complete_claim     ✅ ATLIKTA (17/17)
 6 JS         pet-form.js siuncia serverini drafta   ✅ ATLIKTA (S348: realus S1 ant 4bf522cc; stub-matrica tik klaidu sakoms)
 7 Cron       cleanup_expired kasdien + stale recovery   ✅ ATLIKTA (10/10)
-8 E2E        E0 ✅ · paritetas ✅ (S348) · N1 ✅ · N2 ✅ · N3-N4 ⏳   <- KITAS
+8 E2E        VISKAS ✅ (E0/paritetas/N1/N2/N3/N4, s352+s353) — UZDARYTA
 9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
 ```
 
