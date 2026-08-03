@@ -1,0 +1,29 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2132,
+ "rez": {
+  "dydis": 44331,
+  "sha": "4c316c3fead5482764958f88929d673da6bc8875080b5d6cffd67180f0c96028",
+  "update_pet": "s — reikia vartotojo sprendimo.',\n\t\t\t\t'duplicate_candidates' => $rez['candidates'],\n\t\t\t), 409 );\n\t\t}\n\n\t\treturn rest_ensure_response( array(\n\t\t\t'ok'         => true,\n\t\t\t'pet_id'     => $rez['pet_id'],\n\t\t\t'is_primary' => $rez['is_primary'],\n\t\t\t'pet'        => $rez['pet'],\n\t\t) );\n\t}\n\n\tprivate static function update_pet( $user_id, $pet_id, $input ) {\n\t\tglobal $wpdb;\n\n\t\t$pet = $wpdb->get_row( $wpdb->prepare(\n\t\t\t\"SELECT * FROM `\" . self::table_name() . \"` WHERE id = %d AND user_id = %d AND status!='deleted'\",\n\t\t\t$pet_id, $user_id\n\t\t) );\n\t\tif ( ! $pet ) {\n\t\t\treturn new WP_Error( 'not_found', 'Augintinis nerastas.', array( 'status' => 404 ) );\n\t\t}\n\n\t\t$changed = array();\n\t\t$updates = array();\n\t\tforeach ( $input as $f => $val ) {\n\t\t\tif ( property_exists( $pet, $f ) && $val !== $pet->$f ) {\n\t\t\t\t$changed[] = $f;\n\t\t\t\t$updates[ $f ] = $val;\n\t\t\t}\n\t\t}\n\n\t\tif ( empty( $updates ) ) {\n\t\t\treturn rest_ensure_response( array( 'ok' => true, 'pet_id' => $pet_id, 'unchanged' => true, 'pet' => self::get_pet( $pet_id ) ) );\n\t\t}\n\n\t\t$updates['updated_at'] = gmdate( 'Y-m-d H:i:s' );\n\t\t$wpdb->update( self::table_name(), $updates, array( 'id' => $pet_id ) );\n\n\t\t// S205: upsert PIRMA, event'as PO (ta pati logika kaip create kelyje).\n\t\tif ( (int) $pet->is_primary === 1 ) {\n\t\t\tself::mirror_to_sender( $user_id, $pet_id );\n\t\t}\n\t\tself::emit_updated( $user_id, $pet_id, $changed );\n\n\t\treturn rest_ensure_response( array(\n\t\t\t'ok'             => true,\n\t\t\t'pet_id'         => $pet_id,\n\t\t\t'changed_fields' => $changed,\n\t\t\t'pet'            => self::get_pet( $pet_id ),\n\t\t) );\n\t}\n",
+  "handle_save": "register_rest_route( 'petshop/v1', '/brands', array(\n\t\t\t'methods'             => 'GET',\n\t\t\t'callback'            => array( __CLASS__, 'handle_brands' ),\n\t\t\t'permission_callback' => '__return_true',\n\t\t) );\n\t}\n\n\tpublic static function require_login() {\n\t\treturn is_user_logged_in();\n\t}\n\n\tpublic static function handle_save( $request ) {\n\t\t$user_id = get_current_user_id();\n\t\tif ( ! $user_id ) {\n\t\t\treturn new WP_Error( 'not_logged_in', 'Reikia prisijungti.', array( 'status' => 401 ) );\n\t\t}\n\t\t$pet_id = (int) $request->get_param( 'pet_id' );\n\t\tif ( $pet_id > 0 ) {\n\t\t\t$input = self::sanitize_input( $request, true );\n\t\t\treturn self::update_pet( $user_id, $pet_id, $input );\n\t\t}\n\t\t$input = self::sanitize_input( $request, false );\n\t\t$client_ref = self::extract_client_ref( $request );\n\t\t$force_new = (bool) $request->get_param( 'force_new' );\n\t\treturn self::create_pet( $user_id, $input, $client_ref, $force_new );\n\t}\n\n\t/**\n\t * PATCH /pet-profile/{id} — dalinis update (tik perduoti laukai).\n\t */",
+  "wua_eilutes": [
+   "578: // anoniminio (draftu) keliai naudotu TA PATI lauka. weight_updated_at",
+   "696: // ★ weight_updated_at nustato SERVERIS ir TIK kai svoris realiai priimtas —",
+   "705: $out['weight_updated_at']  = gmdate( 'Y-m-d H:i:s' );"
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
