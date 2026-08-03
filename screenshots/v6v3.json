@@ -1,0 +1,126 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2131,
+ "zym": "QMSD3DLZN",
+ "pradzia": {
+  "VERSIJA": "e2e-b-v1",
+  "pets": 70,
+  "vartotoju": 31,
+  "ev": 106
+ },
+ "V": {
+  "pries": [
+   {
+    "id": "195",
+    "pet_name": "QMSD3DLZN-Turi1250",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 10:34:12",
+    "current_food_brand": null
+   }
+  ],
+  "pet_id": "195",
+  "z1": {
+   "ekranas": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: PASKYRA KREPŠELIS / 0,00 € 0 ŠUNIMS KATĖMS GRAUŽIKAMS PAUKŠČIAMS ŽUVIMS RINKINIAI PASIŪLYMAI SPRENDIMAI MANO PASKYRA MANO AUGINTINIS P ps_v2_test 1 žin",
+   "mygtukai": [
+    "Tęsti",
+    "Tvarkyti sutikimą"
+   ],
+   "laukai": [
+    {
+     "tag": "input",
+     "type": "text",
+     "cls": "pspet-input",
+     "ph": "Koks jūsų augintinio vardas?",
+     "inputmode": "",
+     "label": "Augintinio vardas",
+     "value": "QMSD3DLZN-Turi1250"
+    },
+    {
+     "tag": "input",
+     "type": "text",
+     "cls": "pspet-input",
+     "ph": "pvz. 12,5",
+     "inputmode": "decimal",
+     "label": "kg",
+     "value": "12,5"
+    }
+   ]
+  },
+  "z1_svoris": "12,5",
+  "testi_rasta": 1,
+  "z2": {
+   "ekranas": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: PASKYRA KREPŠELIS / 0,00 € 0 ŠUNIMS KATĖMS GRAUŽIKAMS PAUKŠČIAMS ŽUVIMS RINKINIAI PASIŪLYMAI SPRENDIMAI MANO PASKYRA MANO AUGINTINIS P ps_v2_test QMSD3",
+   "mygtukai": [
+    "1✓Pagrindinė informacija12,5 kg · vidutinis · gimimo data nenurodyta▾",
+    "2✓Savijauta ir poreikiai▾",
+    "Vištiena",
+    "Jautiena",
+    "Grūdai",
+    "Pieno produktai",
+    "Žuvis",
+    "Nežinoma / nepastebėta",
+    "Išsaugoti ir baigti vėliau",
+    "Atgal",
+    "Toliau",
+    "Tvarkyti sutikimą"
+   ],
+   "laukai": [
+    {
+     "tag": "input",
+     "type": "text",
+     "cls": "pspet-input",
+     "ph": "Kita (įrašykite)",
+     "inputmode": "",
+     "label": "Jautrumai / alergijosVištienaJautienaGrūdaiPieno produktaiŽuvisNežinom",
+     "value": ""
+    }
+   ]
+  },
+  "brand_idx": -1,
+  "submit_tekstas": "Išsaugoti ir baigti vėliau",
+  "po_submit_ekranas": "Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: PASKYRA KREPŠELIS / 0,00 € 0 ŠUNIMS KATĖMS GRAUŽIKAMS PAUKŠČIAMS ŽUVIMS RINKINIAI PASIŪLYMAI SPRENDIMAI MANO PASKYRA MANO AUGINTINIS P ps_v2_test Skyde",
+  "V6": {
+   "kelias": "Papildyti profilį → Tęsti",
+   "request_count": 1,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_raktu": 5,
+   "payload_pet_id": 195,
+   "turi_weight_kg": false,
+   "turi_current": true,
+   "pries": {
+    "id": "195",
+    "pet_name": "QMSD3DLZN-Turi1250",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 10:34:12",
+    "current_food_brand": null
+   },
+   "po": {
+    "id": "195",
+    "pet_name": "QMSD3DLZN-Turi1250",
+    "species": "dog",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 13:34:28",
+    "current_food_brand": null
+   },
+   "klaidos": [],
+   "OK": false
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
