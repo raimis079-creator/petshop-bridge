@@ -33,7 +33,13 @@
 2. **Kiekviena nauja rasta spraga rašoma ČIA** tą pačią sesiją, ne tik sesijos pasakojime.
 3. **Sesijos pabaigoje Claude atnaujina TIK šį failą** (pilnu perrašymu) + prideda istorijos bloką į STATE.md.
 4. **ID nekeičiami niekada.** Užbaigtas darbas lieka lentelėje su ✅ ir data — netrinamas.
-5. **Vienas langas — vienas tiltas.** Prieš `dispatch` patikrinti, ar `screenshot.mjs` HEAD commit yra mano paskutinis PUT. Jei ne — STOP.
+6. **JOKIU MOKAMU PLUGINU, PASLAUGU AR PRENUMERATU BE RAIMIO ZINIOS.** Tai 100%
+   jo sprendimas. Konsultanto rekomendacija, kad ir kaip detali — **pasiulymas, ne
+   nurodymas**. Pries diegiant bet ka, kas kainuoja arba isveza duomenis pas isorini
+   tiekeja, Claude klausia patvirtinimo tiesiogiai. (Kilme: 2026-08-03 idiegtas
+   WP Umbrella pagal perduota konsultanto teksta — Raimis apie tai nezinojo.
+   Pasalintas ta pacia diena, `s368.json`.)
+7. **Vienas langas — vienas tiltas.** Prieš `dispatch` patikrinti, ar `screenshot.mjs` HEAD commit yra mano paskutinis PUT. Jei ne — STOP.
 
 ---
 
@@ -41,19 +47,19 @@
 
 | ID | Kriterijus | Būsena | Data | Įrodymas / kas trūksta |
 |---|---|---|---|---|
-| DOD-01 | P0 funkcijos F1–F16 100% | 🔴 | 2026-08-02 | F4 SKU/EAN paieška 0 rezultatų |
+| DOD-01 | P0 funkcijos F1–F16 100% | 🟡 | 2026-08-03 | F4 ✅ uždarytas; liko tik F14 mobile checkout testas |
 | DOD-02 | Kritinių klaidų 0 | ⚪ | — | **nėra bug registro** — nematuojama |
 | DOD-03 | Aukšto prioriteto klaidų ≤3 | ⚪ | — | tas pats |
 | DOD-04 | 20 testinių užsakymų | 🔴 | 2026-08-02 | DB: 2 užsakymai |
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
 | DOD-07 | Top-100 SEO 301 | 🔴 | 2026-07-30 | 44 URL = 404, 20,5% srauto |
-| DOD-08 | Backup restore testas | 🔴 | 2026-08-02 | 0 backup pluginų serveryje |
+| DOD-08 | Backup restore testas | 🔴 | 2026-08-03 | 0 backup pluginų. **Įrankio sprendimas — RAIMIO (Q-BKP), nepradėta** |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
-| DOD-11 | Manual override 5 produktais | 🔴 | 2026-07-30 | `_manual_price_override=yes`: 0 |
+| DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
 | DOD-12 | Savininkas apdoroja užsakymą be programuotojo | 🟡 | — | neformalizuota |
-| DOD-13 | Post-launch monitoringas | 🔴 | 2026-08-02 | 0 monitoringo pluginų |
+| DOD-13 | Post-launch monitoringas | 🔴 | 2026-08-03 | 0 monitoringo pluginų. **Sprendimas — RAIMIO (Q-BKP), nepradėta** |
 | DOD-14 | Mail-Tester ≥8/10 | ✅ | 2026-07-30 | 8,5/10 |
 | DOD-15 | GDPR atitiktis | ✅ | 2026-07-10 | Complianz v7.5.0 + 8 legal psl. |
 | DOD-16 | VMI sąskaitos su realia transakcija | ✅ | 2026-06 | AVPN/IAPV testuota |
@@ -71,7 +77,7 @@
 ### P0 (F1–F16)
 | ID | Funkcija | Būsena | Data | Pastaba |
 |---|---|---|---|---|
-| F4 | Paieška + SKU/EAN | 🔴 | 2026-08-02 | pavadinimu veikia (158 rez.); SKU `01DOG0101` → 0; EAN → 0. Nėra `posts_search` kabliuko. **P0 nuo TŽ v1.0, niekada netikrinta** |
+| F4 | Paieška + SKU/EAN | ✅ | 2026-08-03 | Tikslus atitikmuo (NE euristika pagal ilgį): Woo SKU + global_unique_id lookup + legacy `_ean`/`_vf_barcode`/`_zb_ean`. Vienas produktas → 302; keli → sąrašas + dublikatų žurnalas; be atitikmens tekstinė paieška nepaliesta |
 | F14 | Mobile checkout | 🟡 | — | iPhone/Android testas nefiksuotas |
 | — | F1–F3, F5–F13, F15, F16 | ✅ | — | — |
 
@@ -131,11 +137,11 @@ Transportas ✅: adapteris `Petshop_Sender_Adapter` v0.4.0, `is_configured=true`
 
 | ID | Radinys | Būsena | Pastaba |
 |---|---|---|---|
-| R1 | F4 SKU/EAN paieška neveikia | 🔴 | = DOD-01 |
+| R1 | F4 SKU/EAN paieška | ✅ 2026-08-03 | `mu-plugins/petshop-code-search.php` v1.0, sha e141c4ae. Matrica 13/13, `s366.json` |
 | R2 | 1518 / 2764 publish prekių be EAN (55%) | ⏸ | **iš kur imti — Raimio sprendimas** |
 | R3 | Backup pluginas neįdiegtas | 🔴 | = DOD-08; kurį — Raimio sprendimas |
 | R4 | Monitoringo nėra | 🔴 | = DOD-13 |
-| R5 | 5 publish prekės be kainos | 🔴 | greita pataisa |
+| R5 | 5 publish prekės be kainos | ✅ 2026-08-03 | 2 kainos pagal medianą (16,49 / 18,99, `_manual_price_override`), 3 į draft. publish be kainos 5→0. `s364.json` |
 | R6 | F19 prenumerata nepradėta | 🔴 | = F19 |
 | R7 | 1022 draft prekės | ⏸ | publish / trinti / palikti — Raimio |
 
@@ -167,7 +173,8 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | OPS-08 | Sender tracking CNAME | 🟡 |
 | OPS-09 | Complianz Website Scan + slapukų sąrašas · enhanced conversions | 🟡 |
 | OPS-10 | Flatsome social nuorodos (dabar placeholder'iai `http://url`) | 🔴 laukia Raimio nuorodų |
-| OPS-11 | TEMP snippetų trynimas WP admin (REST DELETE neveikia) | 🔴 higiena: 2136–2139, 2141–2153 |
+| OPS-11 | TEMP snippetų trynimas WP admin (REST DELETE neveikia) | 🔴 higiena: 2136–2139, 2141–2160 |
+| OPS-12 | `gaj6_umbrella_redirects` lentelė — liko po WP Umbrella šalinimo; **netrinta automatiškai**, patikrinti kilmę | 🔴 |
 
 **DNS valdomas iv.lt**, ne serveriai.lt.
 
@@ -179,6 +186,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 |---|---|---|---|
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
+| Q-BKP | **Backup ir monitoringo įrankis** — koks? (serveriai.lt savi backup'ai? UpdraftPlus į savo saugyklą? kitas?) | DOD-08, DOD-13 | — |
 | Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
 | Q21 | FB paskyros revival + reali nuoroda | OPS-10 | — |
 | Q-R2 | 1518 prekių be EAN — iš kur imti | F4 vertė | — |
@@ -195,7 +203,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 ## 10. SIŪLOMA EILĖ
 
 ```
-A — greita (valandos)          R5 kainos · F4 paieška · R3 backup · R4 monitoringas
+A — greita (valandos)          R5 kainos ✅ · F4 paieška ✅ · backup+monitoringas ⏸ laukia Q-BKP
 B — didelis kodas              F19 prenumerata (po Q6+Q10) · 3 launch šablonai
 C — Raimio sprendimai          Q6 Q10 Q-R2 Q-SEO Q-M8
 D — procesas (dienos)          DOD-04 20 užsakymų · DOD-17 beta · DOD-18/19 DNS+rollback
@@ -203,4 +211,4 @@ D — procesas (dienos)          DOD-04 20 užsakymų · DOD-17 beta · DOD-18/1
 E — pre-launch (T-14 … T-0)    visos OPS-* · DOD-07/21 301 lentelė
 ```
 
-Grupė A uždaro 4 raudonus per vieną dieną ir nereikalauja nė vieno sprendimo.
+Grupėje A padaryta: R5 ✅ ir F4 ✅. Backup ir monitoringas laukia Q-BKP sprendimo.
