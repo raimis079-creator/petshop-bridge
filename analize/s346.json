@@ -1,0 +1,125 @@
+{
+ "VERSIJA_RUN": "run346-v1",
+ "deaktyvuota_TEMP": [],
+ "snippet_id": 2141,
+ "snippet_active": true,
+ "http_len": 3004,
+ "rez": {
+  "VERSIJA": "s346-v1",
+  "wua": [
+   {
+    "f": "wp-content/plugins/petshop-core/assets/pet-form.js",
+    "l": 176,
+    "s": "* ★ `weight_updated_at` klientas NESIUNCIA — ji nustato serveris (S335)."
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/assets/pet-form.js",
+    "l": 1375,
+    "s": "// kaskart perrasydavo weight_updated_at (V6 defektas) — PASALINTAS."
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-dashboard.php",
+    "l": 126,
+    "s": "'weight_updated_at'       => $pet->weight_updated_at,"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 340,
+    "s": "// `weight_updated_at` prideda SERVERIS — tai ne kliento duomuo."
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-drafts.php",
+    "l": 341,
+    "s": "unset( $reiksmingi['weight_updated_at'] );"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 578,
+    "s": "// anoniminio (draftu) keliai naudotu TA PATI lauka. weight_updated_at"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 696,
+    "s": "// ★ weight_updated_at nustato SERVERIS ir TIK kai svoris realiai priimtas —"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 705,
+    "s": "// ★ S345: `weight_updated_at` CIA NEBEDEDAMAS. Sanitizeris NEZINO"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 880,
+    "s": "// S345: CREATE — `weight_updated_at` nustatomas TIK jei svoris realiai pateiktas."
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 882,
+    "s": "$data['weight_updated_at'] = gmdate( 'Y-m-d H:i:s' );"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 1004,
+    "s": "$updates['weight_updated_at'] = gmdate( 'Y-m-d H:i:s' );"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 1007,
+    "s": "// Kliento pateikto `weight_updated_at` NEPRIIMAM niekada."
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "l": 1008,
+    "s": "if ( 'weight_updated_at' === $f ) {"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    "l": 214,
+    "s": "// S348: weight_updated_at = KADA SVORIS PASIKEITE (ta pati semantika kaip"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    "l": 220,
+    "s": "if ( $dab === null || abs((float)$dab - $w) > 0.001 ) { $upd['weight_updated_at'] = gmdate('Y-m-d H:i:s'); }"
+   }
+  ],
+  "now_utc": "2026-08-03 11:41:30",
+  "now_local": "2026-08-03 14:41:30",
+  "pets_total": 70,
+  "wua_notnull": 32,
+  "wua_future": 0,
+  "wua_last5": [
+   {
+    "id": "203",
+    "current_weight_kg": null,
+    "weight_updated_at": null,
+    "updated_at": "2026-08-03 11:41:21"
+   },
+   {
+    "id": "190",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 09:41:29",
+    "updated_at": "2026-08-03 09:41:45"
+   },
+   {
+    "id": "189",
+    "current_weight_kg": null,
+    "weight_updated_at": null,
+    "updated_at": "2026-08-03 08:47:04"
+   },
+   {
+    "id": "188",
+    "current_weight_kg": null,
+    "weight_updated_at": null,
+    "updated_at": "2026-08-03 08:36:41"
+   },
+   {
+    "id": "187",
+    "current_weight_kg": null,
+    "weight_updated_at": null,
+    "updated_at": "2026-08-03 08:23:51"
+   }
+  ]
+ },
+ "deaktyvuotas": "200"
+}
