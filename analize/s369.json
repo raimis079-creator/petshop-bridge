@@ -1,0 +1,132 @@
+{
+ "VERSIJA_RUN": "run369-v1",
+ "deakt": [],
+ "sid": 2161,
+ "rez": {
+  "VERSIJA": "s369-v1",
+  "psl": {
+   "cart": {
+    "id": 12,
+    "url": "https://dev.avesa.lt/cart/",
+    "status": "publish",
+    "blokinis": false,
+    "shortcode": true,
+    "turinys": "<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->"
+   },
+   "checkout": {
+    "id": 13,
+    "url": "https://dev.avesa.lt/checkout/",
+    "status": "publish",
+    "blokinis": false,
+    "shortcode": true,
+    "turinys": "<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->"
+   },
+   "shop": {
+    "id": 11,
+    "url": "https://dev.avesa.lt/parduotuve/",
+    "status": "publish",
+    "blokinis": false,
+    "shortcode": false,
+    "turinys": ""
+   }
+  },
+  "svecio_checkout": "yes",
+  "login_at_checkout": "yes",
+  "terms_page": 0,
+  "mokejimai": {
+   "paysera": "Mokėjimas internetu",
+   "bacs": "Bankinis pavedimas"
+  },
+  "zonos": {
+   "Neringos savivaldybe": {
+    "regionai": [
+     "LT",
+     "931*"
+    ],
+    "metodai": {
+     "shopup_venipak_shipping_pickup_method:9": "VENIPAK paštomatai/atsiėmimo punktai",
+     "shopup_venipak_shipping_courier_method:10": "VENIPAK Kurjeris",
+     "woo_lithuaniapost_lpexpress_terminal:13": "LP Express"
+    }
+   },
+   "Lietuva": {
+    "regionai": [
+     "LT"
+    ],
+    "metodai": {
+     "shopup_venipak_shipping_courier_method:2": "VENIPAK Kurjeris",
+     "shopup_venipak_shipping_pickup_method:3": "VENIPAK paštomatai/atsiėmimo punktai",
+     "shopup_venipak_shipping_courier_method:6": "VENIPAK Kurjeris",
+     "shopup_venipak_shipping_courier_method:7": "VENIPAK Kurjeris",
+     "shopup_venipak_shipping_courier_method:8": "VENIPAK Kurjeris",
+     "woo_lithuaniapost_lpexpress_terminal:12": "LP Express",
+     "woo_lithuaniapost_lpexpress_terminal:15": "LP Express kurjeris"
+    }
+   },
+   "Baltijos šalys, be LIetuvos": {
+    "regionai": [
+     "EE",
+     "LV"
+    ],
+    "metodai": {
+     "shopup_venipak_shipping_pickup_method:5": "VENIPAK paštomatai/atsiėmimo punktai"
+    }
+   },
+   "__likusios__": {
+    "metodai": []
+   }
+  },
+  "testine_preke": {
+   "id": 15484,
+   "pav": "Žaislas katei - Plastikinis kamuoliukas, 4 cm",
+   "kaina": "0.49",
+   "tipas": "simple",
+   "url": "https://dev.avesa.lt/product/zaislas-katei-plastikinis-kamuoliukas-4-cm/",
+   "perkama": true,
+   "sandelyje": true
+  },
+  "laukai": {
+   "billing": [
+    "billing_first_name",
+    "billing_last_name",
+    "billing_is_company",
+    "billing_company",
+    "billing_vat_code",
+    "billing_company_code",
+    "billing_company_address",
+    "billing_country",
+    "billing_address_1",
+    "billing_address_2",
+    "billing_city",
+    "billing_state",
+    "billing_postcode",
+    "billing_phone",
+    "billing_email"
+   ],
+   "shipping": [
+    "shipping_first_name",
+    "shipping_last_name",
+    "shipping_country",
+    "shipping_address_1",
+    "shipping_address_2",
+    "shipping_city",
+    "shipping_state",
+    "shipping_postcode",
+    "shipping_phone"
+   ],
+   "account": [],
+   "order": [
+    "order_comments"
+   ]
+  },
+  "pluginai_shipping": [
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php"
+  ],
+  "uzsakymu_dabar": 2,
+  "paskutinis_order_id": 34720,
+  "hpos": true
+ },
+ "svetaine": "200",
+ "parduotuve": "200"
+}
