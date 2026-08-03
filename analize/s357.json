@@ -1,10 +1,42 @@
 {
  "VERSIJA_RUN": "run357-v1",
- "valymo_klaida": "SyntaxError: Unexpected token 'c', \"curl: (28)\"... is not valid JSON",
- "sid": null,
+ "deaktyvuota_TEMP": [],
+ "sid": 2149,
  "sig": {
-  "raw": "curl: (28) Connection timed out after 90002 milliseconds\n"
+  "VERSIJA": "s357-v1",
+  "act": "sig",
+  "drafts_begin_claim": true,
+  "drafts_complete_claim": true,
+  "drafts_abort_claim": true,
+  "drafts_get": true,
+  "drafts_find_pet_by_draft": true,
+  "profile_create_pet_result": true,
+  "profile_sanitize_payload": true,
+  "profile_update_pet": true
  },
- "deps_ok": false,
- "abort_yra": false
+ "deps_ok": true,
+ "abort_yra": true,
+ "deploy": {
+  "VERSIJA": "s357-v1",
+  "act": "deploy",
+  "mu": {
+   "B": 6553,
+   "sha": "fd8c4e02fd900c7e"
+  },
+  "js": {
+   "buvo_B": 162291,
+   "po_B": 166379,
+   "sha": "9afa4c48a5edba17",
+   "backup": "pet-profile.js.bak_S357",
+   "claimPending_cnt": 2,
+   "resolve_cnt": 1
+  }
+ },
+ "routes": {
+  "VERSIJA": "s357-v1",
+  "act": "routes",
+  "pending_route": true,
+  "resolve_route": true
+ },
+ "anon_status": "401"
 }
