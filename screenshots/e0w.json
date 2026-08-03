@@ -1,0 +1,152 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2122,
+ "zym": "WMSCZ5UO7",
+ "email": "e2e.wmscz5uo7@dev.avesa.lt",
+ "pradzia": {
+  "VERSIJA": "e2e-b-v1",
+  "pets": 66,
+  "vartotoju": 27,
+  "ev": 102
+ },
+ "W": {
+  "ekranas": "Augintinio profilis Papasakokite apie savo augintinį Tai užtruks mažiau nei minutę Kas jūsų augintinis? Šuo Katė Paukštis Graužikas Žuvis Roplys Kitas Augintinio vardas Svoris (neprivaloma) kg Svorio prireiks dienos normai apskaičiuoti, kai pasirinksite maistą. SUKURTI PROFILĮ Kiek maisto reikia Aps",
+  "laukai": [
+   {
+    "tag": "input",
+    "type": "text",
+    "name": "",
+    "id": "",
+    "cls": "pspet-input",
+    "placeholder": "Koks jūsų augintinio vardas?",
+    "inputmode": "",
+    "label": "Augintinio vardas"
+   },
+   {
+    "tag": "input",
+    "type": "text",
+    "name": "",
+    "id": "",
+    "cls": "pspet-input",
+    "placeholder": "pvz. 12,5",
+    "inputmode": "decimal",
+    "label": "kg"
+   }
+  ],
+  "svorio_laukas_yra": false,
+  "svorio_idx": -1,
+  "laukai_po": [
+   {
+    "type": "text",
+    "value": "WMSCZ5UO7-Rikis",
+    "ph": "Koks jūsų augintinio vardas?"
+   },
+   {
+    "type": "text",
+    "value": "",
+    "ph": "pvz. 12,5"
+   }
+  ],
+  "localStorage": {
+   "pet_data": {
+    "species": "dog",
+    "is_sterilised": null,
+    "draft_id": "d_ojx4duc6gbamscz627x",
+    "created_at": "2026-08-03T08:36:19.005Z",
+    "pet_name": "WMSCZ5UO7-Rikis"
+   },
+   "current_step": 1
+  },
+  "request_payload": {
+   "species": "dog",
+   "pet_name": "WMSCZ5UO7-Rikis"
+  },
+  "draft_id": "ffd26791-0d2e-4708-a7c7-e077447c683c",
+  "draft_db": {
+   "VERSIJA": "e2e-b-v1",
+   "eilute": {
+    "draft_id": "ffd26791-0d2e-4708-a7c7-e077447c683c",
+    "status": "active"
+   },
+   "payload": {
+    "species": "dog",
+    "species_detail": null,
+    "pet_name": "WMSCZ5UO7-Rikis",
+    "life_stage": null,
+    "dog_size": null,
+    "is_sterilised": null,
+    "feeding_type": null,
+    "feeding_type_other": null,
+    "wet_food_g": null,
+    "wet_product_id": null,
+    "primary_need": null,
+    "primary_need_other": null,
+    "current_food_brand": null,
+    "birth_date": null,
+    "sensitivities": null,
+    "housing": null,
+    "activity_hint": null,
+    "current_food_free_text": null,
+    "primary_product_id": null,
+    "primary_product_name": null,
+    "primary_product_sku": null,
+    "primary_product_package": null,
+    "current_weight_kg": null
+   }
+  },
+  "nuoroda_yra": true,
+  "B_url": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=ok",
+  "po_claim": {
+   "VERSIJA": "e2e-b-v1",
+   "draftas": {
+    "draft_id": "ffd26791-0d2e-4708-a7c7-e077447c683c",
+    "status": "claimed",
+    "payload_null": "1",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": "61",
+    "claimed_pet_id": "188"
+   },
+   "tokenas": {
+    "id": "128",
+    "subject_email": "e2e.wmscz5uo7@dev.avesa.lt",
+    "resource_id": "ffd26791-0d2e-4708-a7c7-e077447c683c",
+    "status": "used",
+    "used_at": "2026-08-03 08:36:41"
+   },
+   "vartotojas": {
+    "id": 61
+   },
+   "pets": [
+    {
+     "id": "188",
+     "pet_name": "WMSCZ5UO7-Rikis",
+     "species": "dog",
+     "current_weight_kg": null,
+     "activity_hint": null,
+     "status": "active",
+     "client_ref": "ffd26791-0d2e-4708-a7c7-e077447c683c",
+     "is_primary": "1"
+    }
+   ],
+   "pending": "",
+   "pets_viso": 67,
+   "vartotoju": 28,
+   "ev": 103
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
