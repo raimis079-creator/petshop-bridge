@@ -7,11 +7,11 @@ function sh(c){try{const o=execSync(c+' 2>&1; echo "__RC:$?"',{maxBuffer:50e6,sh
  const m=o.match(/__RC:(\d+)\s*$/);return{rc:m?+m[1]:-1,out:o.replace(/__RC:\d+\s*$/,'')};}catch(e){return{rc:-99,out:String(e).slice(0,300)};}}
 function putResult(name,txt){const u='https://api.github.com/repos/'+REPO+'/contents/analize/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s371',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s372',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 60 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run371-v1'}; let sid=null;
+const O={VERSIJA_RUN:'run372-v1'}; let sid=null;
 try{const ls=sh('curl -sSk --max-time 40 '+AUTH+' "'+API+'?per_page=100"');const arr=JSON.parse(ls.out);const off=[];
  for(const s0 of arr){ if(s0.name&&s0.name.indexOf('TEMP')===0&&s0.active){
    fs.writeFileSync('/tmp/o.json',JSON.stringify({active:false}));
@@ -51,6 +51,8 @@ try{
  async function mygtukas(sel){
    const l=p.locator(sel).first();
    if(!(await l.count())) return {yra:false};
+   await l.scrollIntoViewIfNeeded().catch(()=>{});
+   await p.waitForTimeout(400);
    const txt=(await l.innerText().catch(()=>'')).trim();
    const box=await l.boundingBox().catch(()=>null);
    let uzdengtas=null;
@@ -85,9 +87,17 @@ try{
    kiekis:await p.locator('input.qty').first().inputValue().catch(()=>null),
    suma:(await p.locator('.order-total .amount, .cart-subtotal .amount').first().innerText().catch(()=>null))
  };
- V.krepselis_cta=await mygtukas('.checkout-button, a[href*="checkout"]');
- await p.locator('.checkout-button, a[href*="/checkout"]').first().click({timeout:15000});
- await p.waitForTimeout(5000);
+ // Flatsome turi DU checkout mygtukus; .hide-for-small mobiliame paslėptas
+ const ctaVisi=await p.locator('a[href*="/checkout"], .checkout-button').all();
+ const ctaInfo=[];
+ for(const c of ctaVisi){ ctaInfo.push({tekstas:(await c.innerText().catch(()=>'')).replace(/\s+/g,' ').trim().slice(0,40),
+   klase:(await c.getAttribute('class'))||'', matomas:await c.isVisible().catch(()=>null)}); }
+ V.krepselio_cta_visi=ctaInfo;
+ V.krepselis_cta=await mygtukas('a[href*="/checkout"]:visible, .checkout-button:visible');
+ const cta=p.locator('a[href*="/checkout"]:visible, .checkout-button:visible').first();
+ if(await cta.count()){ await cta.click({timeout:20000}); }
+ else { push({nera_matomo_cta:true}); await p.goto(SITE+'/checkout/',{waitUntil:'domcontentloaded',timeout:60000}); }
+ await p.waitForTimeout(6000);
  await ekranas('checkout_atidarytas');
 
  // ===== 7. VALIDACIJA: bandom pateikti TUŠČIĄ formą =====
@@ -208,5 +218,5 @@ if(O.V && O.V.order_id){
 }else{ O.po=q('state'); }
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putResult('s371.json', JSON.stringify(O,null,1));
+putResult('s372.json', JSON.stringify(O,null,1));
 console.log('OK');
