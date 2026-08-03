@@ -1,0 +1,71 @@
+{
+ "VERSIJA_RUN": "run388-v1",
+ "deakt": [],
+ "sid": 2174,
+ "rez": {
+  "VERSIJA": "s388-v1",
+  "failas": {
+   "yra": true,
+   "B": 391,
+   "teises": "0600",
+   "skaitomas": true
+  },
+  "laukai": {
+   "keyId": "yra (25 simb.)",
+   "appKey": "yra (31 simb.)",
+   "bucketId": "yra (24 simb.)",
+   "bucket": "yra (15 simb.)",
+   "prefix": "yra (16 simb.)",
+   "encKey": "yra (44 simb.)",
+   "created": "yra (19 simb.)"
+  },
+  "autorizacija": {
+   "http": 200,
+   "klaida": null
+  },
+  "raktas": {
+   "capabilities": [
+    "listBuckets",
+    "writeBucketLifecycleRules",
+    "writeFiles",
+    "writeBucketNotifications",
+    "writeBucketReplications",
+    "deleteFiles",
+    "writeBucketEncryption",
+    "writeBucketLogging"
+   ],
+   "bucketId": "0e02b37ebe34cc9a95f40918",
+   "bucketName": "petshop-backups",
+   "namePrefix": "petshop-backups/"
+  },
+  "apiUrl": "https://api003.backblazeb2.com",
+  "bucketId_sutampa": "TAIP",
+  "get_upload_url": {
+   "http": 200,
+   "kodas": null
+  },
+  "ikelimas": {
+   "http": 200,
+   "vardas": "petshop-backups/_test/connection-20260803-230133.txt",
+   "kodas": null,
+   "message": null,
+   "nuotolinis_dydis": 42,
+   "nuotolinis_sha1": "8cb3229508e732fdafe23277cfd317e9c635e3bc",
+   "vietinis_sha1": "8cb3229508e732fdafe23277cfd317e9c635e3bc",
+   "SHA1_SUTAMPA": "TAIP",
+   "DYDIS_SUTAMPA": "TAIP"
+  },
+  "neigiamas_LIST": {
+   "http": 401,
+   "kodas": "unauthorized",
+   "VERDIKTAS": "GERAI: skaityti negali"
+  },
+  "neigiamas_DELETE": {
+   "http": 200,
+   "kodas": null,
+   "VERDIKTAS": "PROBLEMA: raktas GALI trinti"
+  }
+ },
+ "svetaine": "200",
+ "forma_isjungta": "200"
+}
