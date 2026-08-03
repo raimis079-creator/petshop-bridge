@@ -1416,6 +1416,75 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 10 localStorage NEISVALOMAS po nuorodos issiuntimo (clearDraft NEKVIECIAMAS)
 ```
 
+### ★★★★ 2026-08-03 (6) — DIENOS ISTORIJA: R5, F4, F14, BACKUP AUDITAS
+
+**PADARYTA (visi su irodymais, ne su deploy zurnalu):**
+```
+R5  5 publish prekes be kainos   s364  2 kainos pagal kategorijos mediana
+    14824 GimCat 16,49 EUR (marza 40,8% mediana) · 33249 Farmina 18,99 EUR
+    Variklis butu dave 14,49 / 15,89 = 29,0% / 20,4% marza — PO katalogo mediana,
+    todel Raimio sprendimas: mediana + _manual_price_override=yes
+    14595 · 20971 · 23804 -> draft (be savikainos, uncategorized, _vf_skip_reason)
+    publish be kainos 5 -> 0 · publish viso 2764 -> 2761 · backup ps_r5_backup_s364
+F4  SKU/EAN paieska              s366  mu-plugins/petshop-code-search.php v1.0
+    sha e141c4ae01efd115 · matrica 13/13 · TIKSLAUS ATITIKMENS principas
+F14 Mobile checkout              s374  Playwright 390x844 iPhone UA
+    uzsakymas 34793 (bacs) -> patikrintas -> istrintas pagal tiksly ID
+```
+
+**F4 ARCHITEKTUROS PAMOKA (Raimio korekcija):** mano pirminis planas buvo
+euristika „>=6 simboliai be tarpu = kodas" — ji butu sulauzusi MANO PACIO
+kontrolini testa, nes „Farmina" yra 7 simboliai be tarpu. Teisingas principas:
+NE „uzklausa atrodo kaip kodas", o „uzklausa TURI TIKSLU atitikmeni".
+Neradus tikslaus — posts_search grazinamas NEPAKEISTAS.
+```
+Woo oficialus: wc_get_product_id_by_sku · wc_get_product_id_by_global_unique_id
+Legacy laukai: _ean(1246) · _global_unique_id(1240) · _vf_barcode(976) · _zb_ean(662)
+Variacija -> tevas · publish + ne exclude-from-search · dedup
+1 produktas -> 302 · keli -> sarasas + dublikatu zurnalas · 0 -> tuscia
+Nasumas: SKU/GUID 0,5-0,9 ms (Woo lookup); legacy 60-85 ms (meta_value LONGTEXT
+  be indekso — Raimio pastaba pasitvirtino). Kodo paieska 2,88 s -> 1,1-1,8 s.
+RADINYS: EAN 3182550702355 priklauso DVIEM prekems (16481, 16478) — redirect
+  teisingai NEIVYKO, uzregistruota i ps_cs_dublikatai. Atskira katalogo klaida.
+```
+
+**F14 — TRYS MANO TESTO KLAIDOS (produktas veike nuo pirmo karto):**
+```
+1. spaudziau .hide-for-small mygtuka — Flatsome krepselyje DU checkout CTA,
+   mobiliame matomas tik „TESTI ATSISKAITYMA"
+2. CTA uzdengimo matavimas be scrollIntoView -> elementFromPoint grazino
+   „nera-elemento" = MELAGINGAS rezultatas
+3. CSS.escape Node aplinkoje neegzistuoja (tik narsykleje)
+```
+Rezultatai: hScroll 0/11 ekranu · uzdengtu CTA 0 · 1 POST (ne 2) ·
+3,85 EUR ekrane = 3,85 EUR serveryje · venipak_pickup_point 2630 islieka po
+lauko pakeitimo IR patenka i uzsakymo meta · JS 0 · 5xx 0.
+Paysera SAMONINGAI neliesta (konfiguracija nebaigta) -> atskiras punktas F-PSR.
+
+**WP UMBRELLA INCIDENTAS:** idiegtas pagal perduota konsultanto teksta su
+kainomis; Raimis apie tai NEZINOJO. Pasalintas ta pacia diena (s368): failai
+istrinti, 0 opciju, 0 cron, svetaine 200. Liko tik gaj6_umbrella_redirects
+lentele — NETRINTA be kilmes irodymo (OPS-12).
+**TAISYKLE i REGISTRA (6):** jokiu mokamu pluginu/paslaugu be Raimio zinios.
+Konsultanto rekomendacija = PASIULYMAS, ne nurodymas.
+
+**BACKUP AUDITAS — pilna eiga zr. REGISTRAS.md §8b/§8c/§8d.**
+Svarbiausia: teiginys „0 backup pluginu, kopiju nera" BUVO NETIESA —
+Installatron kas kelias dienas daro pilnas kopijas su DB. Niekas nezinojo.
+LOCK TABLES visoms 174 lentelems SUSTABDE svetaine (45 s be atsakymo).
+160/174 lenteliu MyISAM = 98% duomenu -> naujas P1-MYISAM punktas.
+
+**METODINE PAMOKA, KARTOJUSI KELIS KARTUS SIANDIEN:** tikrinau NE TA, KA REIKIA.
+```
+(a) „18 s sustojimas" — buvo NEUZRAKINTO eksporto laikas, ne uzrakto
+(b) formos v2 diegimas — tikrinau TUSCIA puslapi, kur klaidos teksto NEBUNA
+(c) snippetu sarasas per puslapius — API grazina TA PATI 1-a puslapi
+    -> „400 snippetu, formu nera" buvo MELAGINGAS rezultatas
+(d) applicationKey validacija — prasimaniau simboliu taisykle nepatikrines
+```
+Sprendimas: kiekvienoje versijoje MATOMA versijos zyme HTML'e (v3), ir
+verdiktas tik pagal ja, ne pagal „turetu buti nauja".
+
 ### ★★★★ 2026-08-03 (5) — S357-S360: duplicate_candidate SPRENDIMO EKRANAS GYVAS (9 p. techninė dalis)
 
 **KAS PASTATYTA (apsauga #3 islaikyta — jokios antros rasymo logikos):**
