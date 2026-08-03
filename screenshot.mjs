@@ -7,11 +7,11 @@ function sh(c){try{const o=execSync(c+' 2>&1; echo "__RC:$?"',{maxBuffer:50e6,sh
  const m=o.match(/__RC:(\d+)\s*$/);return{rc:m?+m[1]:-1,out:o.replace(/__RC:\d+\s*$/,'')};}catch(e){return{rc:-99,out:String(e).slice(0,300)};}}
 function putResult(name,txt){const u='https://api.github.com/repos/'+REPO+'/contents/analize/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s372',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s373',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 60 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run372-v1'}; let sid=null;
+const O={VERSIJA_RUN:'run373-v1'}; let sid=null;
 try{const ls=sh('curl -sSk --max-time 40 '+AUTH+' "'+API+'?per_page=100"');const arr=JSON.parse(ls.out);const off=[];
  for(const s0 of arr){ if(s0.name&&s0.name.indexOf('TEMP')===0&&s0.active){
    fs.writeFileSync('/tmp/o.json',JSON.stringify({active:false}));
@@ -74,13 +74,43 @@ try{
  await p.waitForTimeout(2500); await sutikimai(); await p.waitForTimeout(800);
  await ekranas('preke');
  V.preke_mygtukas=await mygtukas('button[name="add-to-cart"], .single_add_to_cart_button');
- await p.locator('.single_add_to_cart_button').first().click({timeout:15000});
- await p.waitForTimeout(4000);
+ const atcResp=[];
+ p.on('response', async r=>{ if(/add-to-cart|add_to_cart|wc-ajax/.test(r.url())){
+   let t=''; try{ t=(await r.text()).slice(0,160); }catch(e){}
+   atcResp.push({url:r.url().slice(0,90), st:r.status(), body:t}); } });
+ async function ideti(){
+   const b=p.locator('.single_add_to_cart_button:visible').first();
+   if(!(await b.count())) return 'nera-mygtuko';
+   await b.scrollIntoViewIfNeeded().catch(()=>{});
+   await p.waitForTimeout(500);
+   await b.click({timeout:20000}).catch(e=>push({atc_klaida:String(e).slice(0,90)}));
+   await p.waitForTimeout(6000);
+   return 'paspausta';
+ }
+ V.atc1=await ideti();
+ // patikra: ar krepselyje kas nors atsirado (fragmentai arba .added_to_cart)
+ V.po_atc={
+   added_link: await p.locator('a.added_to_cart').count(),
+   pranesimas: (await p.locator('.woocommerce-message, .message-container').first().innerText().catch(()=>''))
+                 .replace(/\s+/g,' ').slice(0,120)
+ };
  await ekranas('po_i_krepseli');
+ V.atc_atsakymai=atcResp.slice(0,6);
 
  // ===== 3. KREPŠELIS =====
  await p.goto(SITE+'/cart/',{waitUntil:'domcontentloaded',timeout:60000});
- await p.waitForTimeout(3000);
+ await p.waitForTimeout(3500);
+ let eil=await p.locator('.woocommerce-cart-form__cart-item, tr.cart_item').count();
+ if(eil===0){
+   push({krepselis_tuscias_po_mygtuko:true, puslapis:(await p.locator('body').innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,180)});
+   V.atc_mygtuku_nepavyko=true;
+   await p.goto(SITE+'/?add-to-cart=15484',{waitUntil:'domcontentloaded',timeout:60000});
+   await p.waitForTimeout(4000);
+   await p.goto(SITE+'/cart/',{waitUntil:'domcontentloaded',timeout:60000});
+   await p.waitForTimeout(3500);
+   eil=await p.locator('.woocommerce-cart-form__cart-item, tr.cart_item').count();
+   V.atc_per_url=eil;
+ }
  const kr=await ekranas('krepselis');
  V.krepselis={
    eiluciu:await p.locator('.woocommerce-cart-form__cart-item, tr.cart_item').count(),
@@ -88,7 +118,7 @@ try{
    suma:(await p.locator('.order-total .amount, .cart-subtotal .amount').first().innerText().catch(()=>null))
  };
  // Flatsome turi DU checkout mygtukus; .hide-for-small mobiliame paslėptas
- const ctaVisi=await p.locator('a[href*="/checkout"], .checkout-button').all();
+ const ctaVisi=await p.locator('a[href*="checkout"], .checkout-button, button.checkout-button').all();
  const ctaInfo=[];
  for(const c of ctaVisi){ ctaInfo.push({tekstas:(await c.innerText().catch(()=>'')).replace(/\s+/g,' ').trim().slice(0,40),
    klase:(await c.getAttribute('class'))||'', matomas:await c.isVisible().catch(()=>null)}); }
@@ -218,5 +248,5 @@ if(O.V && O.V.order_id){
 }else{ O.po=q('state'); }
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putResult('s372.json', JSON.stringify(O,null,1));
+putResult('s373.json', JSON.stringify(O,null,1));
 console.log('OK');
