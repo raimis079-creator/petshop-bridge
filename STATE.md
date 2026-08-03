@@ -1402,6 +1402,29 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 10 localStorage NEISVALOMAS po nuorodos issiuntimo (clearDraft NEKVIECIAMAS)
 ```
 
+### ★★★★ 2026-08-03 (3) — LYGIAGRETUMO INCIDENTAS + NEPRIKLAUSOMAS PATVIRTINIMAS
+
+**DU LANGAI DIRBO ANT VIENO TILTO VIENU METU (11:13-11:56).** Pasekmes:
+S346 recon darytas DUKART; 11:51:38 lango B „test pets cleanup" mjs perrasytas
+po 16 s lango A „S352 N2" — cleanup NIEKADA neivykdytas; 11:52:05 run FAILURE
+(dispatch lenktynes); STATE.md PUT konfliktas 11:56 (SHA mismatch — apsauga
+suveike, niekas neprarasta).
+**TAISYKLE: tiltu dirba TIK VIENAS langas.** Pries dispatch patikrinti, ar
+screenshot.mjs HEAD == mano paskutinio PUT commit; jei ne — STOP, dirba kitas.
+
+**NEPRIKLAUSOMAS V6/V6b PATVIRTINIMAS (langas B, v6ab3.json, zym RMSD60B5V,
+raktas ps_e2c, snippet 2143):** V6 req=1·200·svoris 12.50 nekito·data 11:47:50
+NEPAKITO·JS 0; V6b 12.50->13.00·data 11:48:14->11:48:30 UTC·JS 0. Sutampa su
+lango A EPW/V6/V6b vartais — dvieju nepriklausomu matavimu paritetas.
+
+**TESTINIU DUOMENU SKOLA (PILNAS sarasas, valyti pagal TIKSLIUS ID):**
+```
+pets 204, 205 + user ps_v2_test        (langas B, v6ab3 run)
+pet 206 + user 67 (e2e.s352...)        (langas A, s352 run)
+draftu lenteleje ~11 irasu
+TEMP snippetai: 2136-2139 (A) + 2141-2144 (B) deaktyvuoti — TRINTI RANKA WP admin
+```
+
 ### ★★★★ 2026-08-03 (2) — S348: TRECIAS SVORIO KELIAS RASTAS IR UZDARYTAS
 > Sis blokas PAKEICIA zemiau esanti „KUR SUSTOJOME" — atviras klausimas ISSPRESTAS.
 
