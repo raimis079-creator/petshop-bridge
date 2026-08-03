@@ -1,0 +1,224 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2121,
+ "zym": "E2EMSCYP2OM",
+ "email": "e2e.e2emscyp2om@dev.avesa.lt",
+ "pradzia": {
+  "VERSIJA": "e2e-b-v1",
+  "pets": 65,
+  "vartotoju": 26,
+  "ev": 101
+ },
+ "R": {
+  "A_box": "Patikrinkite el. paštą Jei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į e2e.e2emscyp2om@dev.avesa.lt. Prisijungę rasite savo augintinio profi",
+  "A_ls": {
+   "draft": 368,
+   "srv": {
+    "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+    "email": "e2e.e2emscyp2om@dev.avesa.lt",
+    "fingerprint": "1lqqmeh.55",
+    "dirty": false,
+    "at": 1785745401660
+   }
+  },
+  "A_net": [
+   "POST pet-draft",
+   "POST magic-login/request"
+  ],
+  "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+  "mail": {
+   "laisku": 1,
+   "to": "e2e.e2emscyp2om@dev.avesa.lt",
+   "subject": "Išsaugokite augintinio profilį — Petshop.lt",
+   "fallback": false,
+   "visos_nuorodos": [
+    "https://dev.avesa.lt/petshop-login?token=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoibWFnaWNfbG9naW4iLCJzdWJqZWN0X2lkIjowLCJyZXNvdXJjZV9pZCI6IjY0YTE3MmYxLTIwN2EtNDAyMS1iNWY3LWI2ZTJjMDQ5MTIwYSIsImFjdGlvbiI6InBldCIsImV4cGlyZXNfYXQiOjE3ODU3NDYzMDIsIm5vbmNlIjoiMDE2MjdhZDBmZTIyYzFlNGMwMGQwNDI4NzY2Yjg5NzkiLCJrZXlfaWQiOiJ2MiJ9.3d203f95de13d1fef5167d18ab376a8d190e7c76b10e0ae2fd2dcb1f45ae32ed"
+   ]
+  },
+  "nuoroda": "https://dev.avesa.lt/petshop-login?token=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoibWFnaWNfbG9naW4iLCJzdWJqZWN0X2lkIjowLCJyZXNvdXJjZV9pZCI6IjY0YTE3MmYxLTIwN2EtNDAyMS1iNWY3LWI2ZTJjMDQ5MTIwYSIsImFjdGlvbiI6InBldCIsImV4cGlyZXNfYXQiOjE3ODU3NDYzMDIsIm5vbmNlIjoiMDE2MjdhZDBmZTIyYzFlNGMwMGQwNDI4NzY2Yjg5NzkiLCJrZXlfaWQiOiJ2MiJ9.3d203f95de13d1fef5167d18ab376a8d190e7c76b10e0ae2fd2dcb1f45ae32ed",
+  "pries_N1": {
+   "VERSIJA": "e2e-b-v1",
+   "draftas": {
+    "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+    "status": "active",
+    "payload_null": "0",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": null,
+    "claimed_pet_id": null
+   },
+   "tokenas": {
+    "id": "127",
+    "subject_email": "e2e.e2emscyp2om@dev.avesa.lt",
+    "resource_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+    "status": "active",
+    "used_at": null
+   },
+   "vartotojas": null,
+   "pets_viso": 65,
+   "vartotoju": 26,
+   "ev": 101
+  },
+  "N1": {
+   "head": "200",
+   "po_head": {
+    "VERSIJA": "e2e-b-v1",
+    "draftas": {
+     "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    "tokenas": {
+     "id": "127",
+     "subject_email": "e2e.e2emscyp2om@dev.avesa.lt",
+     "resource_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+     "status": "active",
+     "used_at": null
+    },
+    "vartotojas": null,
+    "pets_viso": 65,
+    "vartotoju": 26,
+    "ev": 101
+   },
+   "get": "200",
+   "po_get": {
+    "VERSIJA": "e2e-b-v1",
+    "draftas": {
+     "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    "tokenas": {
+     "id": "127",
+     "subject_email": "e2e.e2emscyp2om@dev.avesa.lt",
+     "resource_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+     "status": "active",
+     "used_at": null
+    },
+    "vartotojas": null,
+    "pets_viso": 65,
+    "vartotoju": 26,
+    "ev": 101
+   },
+   "scanner": "200",
+   "outlook": "200",
+   "po_skeneriu": {
+    "VERSIJA": "e2e-b-v1",
+    "draftas": {
+     "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    "tokenas": {
+     "id": "127",
+     "subject_email": "e2e.e2emscyp2om@dev.avesa.lt",
+     "resource_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+     "status": "active",
+     "used_at": null
+    },
+    "vartotojas": null,
+    "pets_viso": 65,
+    "vartotoju": 26,
+    "ev": 101
+   }
+  },
+  "B_ekranas": "Prisijungti prie Petshop.lt Paspauskite mygtuką, kad užbaigtumėte prisijungimą. Prisijungti Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.",
+  "B_url": "https://dev.avesa.lt/petshop-login?token=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoibWFnaWNfbG9naW4iLCJzdWJqZWN0X2lkIjowLCJyZXNvdXJjZV9pZCI6IjY0YTE3MmYxLTIwN2EtNDAyMS1iNWY3LWI2ZTJjMDQ5MTIwYSIsImFjdGlvbiI6InBldCIsImV4cGlyZXNfYXQiOjE3ODU3NDYzMDIsIm5vbmNlIjoiMDE2MjdhZDBmZTIyYzFlNGMwMGQwNDI4NzY2Yjg5NzkiLCJrZXlfaWQiOiJ2MiJ9.3d203f95de13d1fef5167d18ab376a8d190e7c76b10e0ae2fd2dcb1f45ae32ed",
+  "B_mygtukai": [
+   "Prisijungti"
+  ],
+  "B_formu": 1,
+  "B_po_atidarymo": {
+   "VERSIJA": "e2e-b-v1",
+   "draftas": {
+    "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+    "status": "active",
+    "payload_null": "0",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": null,
+    "claimed_pet_id": null
+   },
+   "tokenas": {
+    "id": "127",
+    "subject_email": "e2e.e2emscyp2om@dev.avesa.lt",
+    "resource_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+    "status": "active",
+    "used_at": null
+   },
+   "vartotojas": null,
+   "pets_viso": 65,
+   "vartotoju": 26,
+   "ev": 101
+  },
+  "B_patv_rasta": 1,
+  "B_patv_tekstas": "Prisijungti",
+  "B_url_po": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=ok",
+  "B_ekranas_po": "Slapukai ir privatumas Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir rinkodaros slapukus įjungiame tik jums sutikus. PRIIMTI ATMESTI NUOSTATOS Slapukų politika Privatumo politika Skip to c",
+  "B_klaidos": [],
+  "po_claim": {
+   "VERSIJA": "e2e-b-v1",
+   "draftas": {
+    "draft_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+    "status": "claimed",
+    "payload_null": "1",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": "60",
+    "claimed_pet_id": "187"
+   },
+   "tokenas": {
+    "id": "127",
+    "subject_email": "e2e.e2emscyp2om@dev.avesa.lt",
+    "resource_id": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+    "status": "used",
+    "used_at": "2026-08-03 08:23:51"
+   },
+   "vartotojas": {
+    "id": 60
+   },
+   "pets": [
+    {
+     "id": "187",
+     "pet_name": "E2EMSCYP2OM-Rikis",
+     "species": "dog",
+     "current_weight_kg": null,
+     "activity_hint": null,
+     "status": "active",
+     "client_ref": "64a172f1-207a-4021-b5f7-b6e2c049120a",
+     "is_primary": "1"
+    }
+   ],
+   "pending": "",
+   "pets_viso": 66,
+   "vartotoju": 27,
+   "ev": 102
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
