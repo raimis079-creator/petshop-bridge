@@ -1,4 +1,18 @@
-# STATE.md — petshop.lt migracija · MASTER INDEKSAS
+# STATE.md — petshop.lt migracija · ISTORIJA IR PAMOKOS
+
+> ## ⛔ BUKLES CIA NEBEIESKOTI
+> **Kas padaryta / kas liko / kieno eile = `REGISTRAS.md`.** Skaityti ji PIRMA.
+> Sis failas nuo 2026-08-03 yra **ISTORIJA**: kaip padaryta, kokie SHA, kokios
+> pamokos, kokie incidentai. Sesiju naratyvas cia PRIESTARAUJA pats sau
+> (senesni blokai neatnaujinami) — todel bukle is cia NEIMAMA.
+> Jei registras ir sis failas nesutampa — **GALIOJA REGISTRAS**.
+>
+> Sesijos pabaigoje: atnaujinti `REGISTRAS.md` (pilnu perrasymu), o cia PRIDETI
+> istorijos bloka. Registro NEDUBLIUOTI.
+
+---
+
+# (buves) MASTER INDEKSAS
 
 > **Šitą failą Claude skaito PIRMĄ kiekvieną sesiją.** Tai indeksas + darbo taisyklės, ne turinio saugykla. Turinys — kituose failuose, čia tik nuorodos.
 > Paskutinį kartą atnaujinta: **2026-07-31 (sesija uzdaryta)** — S327 uzdarytas; M8 prisijungusio vartotojo kelias PATVIRTINTAS; S328 infrastruktura 3/10 + BASELINE UZFIKSUOTAS. Kitas rasantis veiksmas: `UNIQUE(client_ref)`.
