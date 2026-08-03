@@ -1,0 +1,195 @@
+{
+ "VERSIJA_RUN": "run350-v1",
+ "deaktyvuota_TEMP": [],
+ "sid": 2140,
+ "ver": {
+  "VERSIJA": "s348-v1",
+  "act": "ver",
+  "pet_form": {
+   "B": 81586,
+   "sha": "4bf522cc5ad2e388",
+   "fetch_fpw": 0,
+   "s348_zyme": 1
+  },
+  "mu": {
+   "B": 19012,
+   "sha": "97c890453fd6bd2b",
+   "gmdate_svoris": 1,
+   "s348_zyme": 1
+  }
+ },
+ "patchOK": true,
+ "reset0": {
+  "VERSIJA": "s348-v1",
+  "act": "reset",
+  "pets_viso": 70,
+  "draftai": 12
+ },
+ "auth_epw": {
+  "VERSIJA": "s348-v1",
+  "act": "auth",
+  "user_id": 65,
+  "cookie_name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "cookie_value": "ps_v2_test|1785759025|BVKmBFEBC05w112J6P6SKIomF0rtvJ0jG5YRkhbsjxb|f7392975208546cf7d1e411f6240455a0c48c4ff63d0a29462b758d60fbe1ed3",
+  "auth_name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "auth_value": "ps_v2_test|1785759025|ueseF5qO09j4108ITPCdFaQA80pXpMQgAmUMQihg3C7|07318694e7552d4e0c92544926c1da2c2bff7b8ca5b84e1195cdfda9bb18e9b5",
+  "domain": "dev.avesa.lt",
+  "pets": []
+ },
+ "epw": {
+  "VERSIJA": "s348-v1",
+  "act": "epw",
+  "epw_pet_id": 200,
+  "c1": {
+   "status": 200,
+   "data": {
+    "ok": true,
+    "weight_kg": 12.5
+   }
+  },
+  "s1": {
+   "current_weight_kg": "12.50",
+   "weight_updated_at": "2026-08-03 11:40:27",
+   "updated_at": "2026-08-03 11:40:27"
+  },
+  "c2": {
+   "status": 200,
+   "data": {
+    "ok": true,
+    "weight_kg": 12.5
+   }
+  },
+  "s2": {
+   "current_weight_kg": "12.50",
+   "weight_updated_at": "2026-08-03 11:40:27",
+   "updated_at": "2026-08-03 11:40:29"
+  },
+  "c3": {
+   "status": 200,
+   "data": {
+    "ok": true,
+    "weight_kg": 13
+   }
+  },
+  "s3": {
+   "current_weight_kg": "13.00",
+   "weight_updated_at": "2026-08-03 11:40:31",
+   "updated_at": "2026-08-03 11:40:31"
+  },
+  "OK": true
+ },
+ "V": {
+  "V6": {
+   "request_count": 1,
+   "fpw_kvietimu": 0,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_svoris": "12.5",
+   "pries": {
+    "id": "201",
+    "pet_name": "S348-A",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-01 08:00:00"
+   },
+   "po": {
+    "id": "201",
+    "pet_name": "S348-PAKEISTAS",
+    "species": "dog",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-01 08:00:00"
+   },
+   "klaidos": [],
+   "OK": true
+  },
+  "V6b": {
+   "request_count": 1,
+   "fpw_kvietimu": 0,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_svoris": "13",
+   "pries": {
+    "id": "202",
+    "pet_name": "S348-B",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-01 08:00:00"
+   },
+   "po": {
+    "id": "202",
+    "pet_name": "S348-B",
+    "species": "dog",
+    "current_weight_kg": "13.00",
+    "weight_updated_at": "2026-08-03 11:41:14"
+   },
+   "klaidos": [],
+   "OK": true
+  },
+  "V2": {
+   "request_count": 1,
+   "fpw_kvietimu": 0,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_svoris": "12.5",
+   "pries": {
+    "id": "203",
+    "pet_name": "S348-C",
+    "current_weight_kg": null,
+    "weight_updated_at": null
+   },
+   "po": {
+    "id": "203",
+    "pet_name": "S348-C",
+    "species": "dog",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 11:41:37"
+   },
+   "klaidos": [],
+   "OK": true
+  },
+  "S1": {
+   "EM": "e2e.s348.msd5ssdc@pastas-test.lt",
+   "draft_posts": 0,
+   "draft_status": [],
+   "magic_posts": 0,
+   "magic_status": [],
+   "payload": null,
+   "localStorage_yra": true,
+   "mail": {
+    "laisku": 0,
+    "nuoroda_yra": false
+   },
+   "draft_db": {
+    "eilute": {
+     "draft_id": "6e94fe16-f559-4d02-8efc-e0deeb20a115",
+     "status": "active",
+     "created_at": "2026-08-03 10:13:12"
+    },
+    "svoris": 12.5,
+    "vardas": "YMSD2LD6Q-Smoke"
+   },
+   "ekranai": [
+    "start: Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 0 Augintinio profilis Papasakokite apie savo augintinį Tai užtruks mažiau nei minutę Kas jūsų augintinis? Šuo Katė Paukš",
+    "pries_myg0 [Sukurti profilį]: Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 0 Augintinio profilis Papasakokite apie savo augintinį Tai užtruks mažiau nei minutę Kas jūsų augintinis? Šuo Katė Paukš",
+    "email_ekranas: Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 0 Augintinio profilis Išsaugokite augintinio profilį S348-Anonimas · Šuo Įveskite el. paštą – atsiųsime saugią prisijung",
+    "po_siuntimo: Skip to content Nemokamas pristatymas į paštomatus nuo 30 € 0 Augintinio profilis Išsaugokite augintinio profilį S348-Anonimas · Šuo Įveskite el. paštą – atsiųsime saugią prisijung"
+   ],
+   "klaidos": [
+    "siusti:TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n  - waiting for"
+   ],
+   "OK": false,
+   "draft_id": "6e94fe16-f559-4d02-8efc-e0deeb20a115"
+  }
+ },
+ "cleanup": {
+  "VERSIJA": "s348-v1",
+  "act": "cleanup",
+  "user_istrintas": 1,
+  "pets_viso": 69,
+  "draftai": 11
+ }
+}
