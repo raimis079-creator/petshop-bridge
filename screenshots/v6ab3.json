@@ -1,0 +1,88 @@
+{
+ "VERSIJA_RUN": "run351-v1",
+ "deaktyvuota_TEMP": [],
+ "sid": 2143,
+ "zym": "RMSD60B5V",
+ "pradzia": {
+  "VERSIJA": "e2e-c-v1",
+  "pets": 69,
+  "vartotoju": 30,
+  "ev": 106
+ },
+ "V": {
+  "V6_pries": {
+   "id": "204",
+   "pet_name": "RMSD60B5V-A1250",
+   "current_weight_kg": "12.50",
+   "weight_updated_at": "2026-08-03 11:47:50",
+   "current_food_brand": null
+  },
+  "V6_svoris_formoje": "12,5",
+  "V6_submit": "Išsaugoti ir baigti vėliau",
+  "V6": {
+   "request_count": 1,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_raktu": 5,
+   "payload_pet_id": 204,
+   "payload_vardas": "RMSD60B5V-PAKEISTAS",
+   "payload_svoris": "12.5",
+   "turi_weight_kg": false,
+   "pries": {
+    "id": "204",
+    "pet_name": "RMSD60B5V-A1250",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 11:47:50",
+    "current_food_brand": null
+   },
+   "po": {
+    "id": "204",
+    "pet_name": "RMSD60B5V-PAKEISTAS",
+    "species": "dog",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 11:47:50",
+    "current_food_brand": null
+   },
+   "klaidos": [],
+   "OK": true
+  },
+  "V6b_pries": {
+   "id": "205",
+   "pet_name": "RMSD60B5V-B1250",
+   "current_weight_kg": "12.50",
+   "weight_updated_at": "2026-08-03 11:48:14",
+   "current_food_brand": null
+  },
+  "V6b_dom": "13",
+  "V6b_submit": "Išsaugoti ir baigti vėliau",
+  "V6b": {
+   "request_count": 1,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_svoris": "13",
+   "turi_weight_kg": false,
+   "pries": {
+    "id": "205",
+    "pet_name": "RMSD60B5V-B1250",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 11:48:14",
+    "current_food_brand": null
+   },
+   "po": {
+    "id": "205",
+    "pet_name": "RMSD60B5V-B1250",
+    "species": "dog",
+    "current_weight_kg": "13.00",
+    "weight_updated_at": "2026-08-03 11:48:30",
+    "current_food_brand": null
+   },
+   "klaidos": [],
+   "OK": true
+  }
+ },
+ "site": "200"
+}
