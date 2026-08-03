@@ -1402,6 +1402,128 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 10 localStorage NEISVALOMAS po nuorodos issiuntimo (clearDraft NEKVIECIAMAS)
 ```
 
+### ★★★ 2026-08-03 PABAIGA — KUR SUSTOJOME (SKAITYTI PIRMA)
+
+```
+class-pet-profile.php  45 686 B · SHA 679d83d3d721f6d2… · backup .bak_S345
+pet-form.js            81 819 B · SHA 701db62a7c9c82e7… · backup .bak_S344
+karantinas             pet-form.js.quarantine_S339_20260802 (79 550 B) — TIK ekspertizei
+```
+
+**VIENINTELIS ATVIRAS KLAUSIMAS:** kur DAR nustatomas `weight_updated_at` BE
+palyginimo su esama DB reiksme? `update_pet()` pataisa (S345) veikia — V6b tai
+IRODO — bet V6 rodo, kad svoris eina IR KITU keliu.
+**PRADETI NUO:** perskaityti `handle_save()` PILNAI (ar jis turi atskira svorio
+apdorojima pries `update_pet()`), ir patikrinti `sanitize_input( ..., $partial=true )`.
+NESPELIOTI — tai jau TRECIA grandines vieta, kur svoris apdorojamas.
+
+### ★ S344 — SVORIO RIBOS ADAPTERIS (pet-form.js): IDIEGTA
+```
+Radinys: anketa svori laike lauke `_weight_kg`, kanoninis serverio laukas —
+`current_weight_kg`. `buildPayload()` (eil. 1308) `_weight_kg` VISADA ISMESDAVO,
+bet NIEKUR nemapindavo; S341 `srvPayload()` ji praleisdavo NETEISINGU vardu ->
+whitelist numesdavo. SVORIS NEPASIEKDAVO ps_pets NEI VIENAME kelyje.
+Sprendimas: VIENAS `addCanonicalWeight(payload, data)` adapteris, naudojamas
+ABIEJU payload rinkeju. `_weight_kg` lieka VIDINIS (UI/localStorage/skaiciuokle) —
+globalus pervadinimas NEDARYTAS. Serverio alias'o NEREIKIA (joks senas klientas
+`_weight_kg` sekmingai nesiunte).
+```
+
+### ★ S345 — weight_updated_at SEMANTIKA: DALINAI VEIKIA
+```
+Raimio sprendimas A: `weight_updated_at` reiskia KADA SVORIS PASIKEITE,
+ne kada vartotojas issaugojo bet kuria profilio dali.
+(B butu galimas tik pervadinus i `weight_confirmed_at`; C — per silpnas,
+serveris negali pasitiketi vien kliento dirty busena.)
+
+Padaryta:
+ 1 sanitize_input() NEBEPRIDEDA weight_updated_at (nezino senos DB reiksmes)
+ 2 create_pet_result(): data TIK jei current_weight_kg realiai pateiktas
+ 3 update_pet(): SKAITINIS palyginimas — DB laiko "12.50", requestas atnesa 12.5,
+   grieztas `!==` juos laike SKIRTINGAIS; kliento weight_updated_at IGNORUOJAMAS
+```
+
+### VARTU BUKLE (S344/S345)
+```
+V1  anoniminis su svoriu       ✅ DOM 12,5 -> POST 12.5 -> draft 12.5 -> pet 12.50
+V2  prisijunges su svoriu      ✅ pet 191 · 12.50 · serverio data (ANTRAS radinys uzdarytas)
+V3  svoris neivestas           ✅ payload be abieju raktu
+V4  senas localStorage         ✅ atsikure 12,5 -> POST current_weight_kg=12.5
+V5  state._weight_kg           ✅ po submit localStorage tebeturi "12,5"
+                                  (adapteris keicia TIK payload kopija)
+V6  nepakites svoris           🔴 vardas DB pasikeite, svoris 12.50 LIKO,
+                                  BET weight_updated_at 10:55:21 -> 13:55:37
+V6b svoris pakeistas 12,5->13  ✅ DB 13.00 + NAUJA data
+V7  S1 smoke                   ✅ pet-draft 1 · magic-login 1 · JS klaidu 0
+```
+
+### E2E (8 punktas) — DALINAI
+```
+E0-A telefonas    ✅ pet-draft + magic-login · token resource_id = draft_id
+E0-B kompiuteris  ✅ 3 kartus: pet 187/188/189 · draftas claimed · payload NULL
+                     claim_attempt_id NULL · claim_started_at NULL
+                     redirect /paskyra/augintinis/?pet_claim=ok
+                     vartotoju/pets/eventu po +1
+E0 payload paritetas 🔴 svoris (zr. V6)
+N1 skeneris       ✅ HEAD/GET/Barracuda UA/SkypeUriPreview -> tokenas LIEKA active
+                     draftas active · user +0 · pet +0
+                     po skeneriu ta pati nuoroda zmogui VEIKIA
+N2 N3 N4          ⏳ NEPRADETI
+```
+**E0 4 punkto formuluote:** magic-link laiskas SUGENERUOTAS ir perduotas siuntimui
+(perimtas per `wp_mail` filtra, siuntimo NEBLOKUOJANT); faktinis inbox
+pristatymas patvirtintas ATSKIRU 6/6 deliverability testu.
+
+### ★★★ MAGIC-LINK TECHNINE DALIS (nespelioti — ISMATUOTA)
+```
+URL        home_url('/petshop-login') + ?token=…    (LOGIN_PATH='petshop-login')
+GET param  TIK `ps_magic` -> `?token=` VIEN PARODO patvirtinimo ekrana;
+           tokena sunaudoja ATSKIRAS veiksmas su `ps_magic` + nonce
+Ekranas    „Paspauskite mygtuka, kad uzbaigtumete prisijungima" · mygtukas
+           `button[type=submit]` tekstas „Prisijungti"
+Laiskas    HTML, VIENAS <a href> su login_url · TOKEN_TTL 900 s
+Gaudytojas pagal UNIKALU gavejo adresa (`e2e.` prefiksas), NE pagal zodi „magic"
+           (laiskas lietuviskas, zodzio „magic" jame NERA)
+```
+
+### ★★★ ANKETOS UI TRAJEKTORIJA (astuoni testu defektai — VISI MANO)
+```
+mygtukas anketoje       „SUKURTI PROFILI" (NE „Toliau"/„Testi")
+po reload               rodomas TESIMO ekranas („Testi Rikis profilio kurima?"),
+                        teksto lauko NERA -> pirma spausti „TESTI"
+svorio laukas           input.pspet-input[inputmode="decimal"]
+                        label yra „kg", placeholder „pvz. 12,5" —
+                        zodzio „svor" NEI LABEL, NEI PLACEHOLDER
+redagavimas             „Papildyti profili" -> 1 zingsnis (vardas+svoris, mygtukas
+                        „Testi") -> 2 zingsnis (Savijauta ir poreikiai, mygtukas
+                        „Issaugoti ir baigti veliau")
+                        „Redaguoti"/„Prideti augintini" mygtuku NERA
+page.goBack()           SPA kontekste be istorijos -> about:blank -> KITAS origin
+                        -> localStorage „dingsta". NENAUDOTI.
+```
+
+### ★★★ TESTU TAISYKLE, KURIA REIKEJO ASTUONIU KARTU
+```
+Prie KIEKVIENO neigiamo rezultato PIRMAS klausimas:
+   ar testas apskritai pateko ten, kur manau?
+Astuoni „NE" is eiles reiske NE produkto gedima, o mano nezinojima apie ekrana.
+
+TVIRTINIMAI PRIVALO ATMESTI NEIVYKUSI VEIKSMA:
+   request_count === 1
+   Object.keys(payload).length > 0
+   response.ok === true
+   pakeistas laukas DB REALIAI pasikeite
+Be siu — tuscias payload duoda MELAGINGA ZALIA (taip ir nutiko V6 pirmame bandyme).
+```
+
+### TESTINIAI DUOMENYS — VALYTI PAGAL TIKSLIUS ID
+```
+ps_pets isaugo ~69+ (baseline buvo 65). Liko testiniai augintiniai is E0/E0-W/V*
+run'u. PRIES trynima: SELECT tikslus pet_id, user_id, client_ref.
+NETRINTI pagal intervala (187-199 yra TRYLIKA ID, ne keturi).
+Testiniai vartotojai: ps_v2_test, e2e.* — istrinti pagal TIKSLU user_id.
+```
+
 ### ANKETOS UZDARYMO SARASAS (2026-08-02, Raimio sprendimas „nesiblaskant")
 ```
 1 Commit 1   create_pet_result() + paritetas          ✅ ATLIKTA (6/6)
@@ -1414,7 +1536,7 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 5 Claim      process_login -> create_pet_result -> complete_claim     ✅ ATLIKTA (17/17)
 6 JS         pet-form.js siuncia serverini drafta   ✅ ATLIKTA (10/10)
 7 Cron       cleanup_expired kasdien + stale recovery   ✅ ATLIKTA (10/10)
-8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai   <- KITAS
+8 E2E        E0-A ✅ · E0-B ✅ · N1 ✅ · payload paritetas 🔴 · N2-N4 ⏳   <- KITAS
 9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
 ```
 
