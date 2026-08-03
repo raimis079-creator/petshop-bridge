@@ -1,0 +1,282 @@
+{
+ "VERSIJA_RUN": "run363-v1",
+ "sid": 2155,
+ "rez": {
+  "VERSIJA": "s363-v1",
+  "pricing_metodai": [
+   "calculate",
+   "get_markup",
+   "preview_price",
+   "round_to_99",
+   "calculate_final_price",
+   "get_markup_table",
+   "get_default_markup"
+  ],
+  "A": [
+   {
+    "id": 14824,
+    "cost_net": 8.504,
+    "cats": [
+     "skanestai-katems"
+    ],
+    "variklis": 14.49,
+    "final": {
+     "price": 14.49,
+     "review_reasons": []
+    },
+    "variklio_marza_proc": 29
+   },
+   {
+    "id": 33249,
+    "cost_net": 10.449,
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "variklis": 15.89,
+    "final": {
+     "price": 15.89,
+     "review_reasons": []
+    },
+    "variklio_marza_proc": 20.4
+   }
+  ],
+  "B": {
+   "skanestai-katems": {
+    "n": 8,
+    "mediana": 40.8,
+    "min": 29,
+    "max": 40.8,
+    "brand": [
+     "gimcat"
+    ]
+   },
+   "sausas-maistas-sunims": {
+    "n": 250,
+    "mediana": 33.4,
+    "min": 10,
+    "max": 33.6,
+    "brand": [
+     "farmina"
+    ]
+   }
+  },
+  "C_zb_cost_be_price_visos": 18,
+  "C_pagal_busena": [
+   {
+    "post_status": "draft",
+    "c": "16"
+   },
+   {
+    "post_status": "publish",
+    "c": "2"
+   }
+  ],
+  "C_naujausios": [
+   {
+    "ID": "34683",
+    "post_status": "draft",
+    "post_date": "2026-07-16 18:01:32",
+    "post_modified": "2026-08-03 15:02:22",
+    "post_title": "Beaphar KITTY'S MIX, 750tab. (pak6)"
+   },
+   {
+    "ID": "34466",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:22",
+    "post_modified": "2026-08-03 15:02:21",
+    "post_title": "Beaphar SHAMPOO HYPOALLERGENIC 250ML"
+   },
+   {
+    "ID": "34467",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:22",
+    "post_modified": "2026-08-03 15:02:21",
+    "post_title": "Beaphar SHAMPOO ANTI-DANDRUFF 250ML"
+   },
+   {
+    "ID": "34468",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:22",
+    "post_modified": "2026-08-03 15:02:21",
+    "post_title": "Beaphar FLEXIFIT PASTE DOG/CAT 250G"
+   },
+   {
+    "ID": "34469",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:22",
+    "post_modified": "2026-08-03 15:02:21",
+    "post_title": "Beaphar STOP IT SPRAY 200ML"
+   },
+   {
+    "ID": "34460",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:21",
+    "post_modified": "2026-08-03 15:02:19",
+    "post_title": "Beaphar CARE+RABBIT 1.5kg"
+   },
+   {
+    "ID": "34461",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:21",
+    "post_modified": "2026-08-03 15:02:20",
+    "post_title": "Beaphar CARE+GUINEA PIG 1.5kg"
+   },
+   {
+    "ID": "34462",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:21",
+    "post_modified": "2026-08-03 15:02:20",
+    "post_title": "Beaphar CARE+CHINCHILLA 1.5kg"
+   },
+   {
+    "ID": "34463",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:21",
+    "post_modified": "2026-08-03 15:02:20",
+    "post_title": "Beaphar CARE+RAT 1.5 kg"
+   },
+   {
+    "ID": "34464",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:21",
+    "post_modified": "2026-08-03 15:02:20",
+    "post_title": "Beaphar CARE+RABBIT JUNIOR 1.5kg"
+   },
+   {
+    "ID": "34458",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:19",
+    "post_modified": "2026-08-03 15:02:19",
+    "post_title": "Beaphar Lactol Puppy 250g"
+   },
+   {
+    "ID": "34459",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:19",
+    "post_modified": "2026-08-03 15:02:19",
+    "post_title": "Beaphar Lactol Kitten 250g"
+   },
+   {
+    "ID": "34456",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:18",
+    "post_modified": "2026-08-03 15:02:18",
+    "post_title": "Beaphar Irish Cal Tablets 150 tab."
+   },
+   {
+    "ID": "34455",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:17",
+    "post_modified": "2026-08-03 15:02:17",
+    "post_title": "Beaphar IMMO Shield Spray 250ml"
+   },
+   {
+    "ID": "34454",
+    "post_status": "draft",
+    "post_date": "2026-07-05 18:01:16",
+    "post_modified": "2026-08-03 15:02:17",
+    "post_title": "Beaphar Bio insect lotion dog cat, 250 ml"
+   }
+  ],
+  "D": [
+   {
+    "id": 14595,
+    "title": "FARMINA N&D PRIME – CAT Dry Chicken&Pomegr NEUTERED ADULT 1,5 kg",
+    "status": "publish",
+    "kat": [
+     "sausas-maistas-katems"
+    ],
+    "visi_meta_raktai": [
+     "_stock_status",
+     "_thumbnail_id",
+     "_product_image_gallery",
+     "_wc_review_count",
+     "_wc_rating_count",
+     "_wc_average_rating",
+     "_tax_status",
+     "_tax_class",
+     "_manage_stock",
+     "_backorders",
+     "_sold_individually",
+     "_virtual",
+     "_downloadable",
+     "_download_limit",
+     "_download_expiry",
+     "_stock",
+     "_product_version",
+     "_zb_last_sync",
+     "_zb_qty",
+     "_active_fulfillment_source",
+     "_alt_fill_done_v1",
+     "_product_attributes",
+     "_weight"
+    ],
+    "aprasymas_B": 4627,
+    "paveiksleliu": 1
+   },
+   {
+    "id": 20971,
+    "title": "Exclusion Hypo sausas pašaras šunims su triušiena ir bulvėmis, M/L, 2kg",
+    "status": "publish",
+    "kat": [
+     "uncategorized"
+    ],
+    "visi_meta_raktai": [
+     "_wc_review_count",
+     "_wc_rating_count",
+     "_wc_average_rating",
+     "_sku",
+     "_tax_status",
+     "_tax_class",
+     "_manage_stock",
+     "_backorders",
+     "_sold_individually",
+     "_virtual",
+     "_downloadable",
+     "_download_limit",
+     "_download_expiry",
+     "_stock",
+     "_stock_status",
+     "_product_version",
+     "_thumbnail_id",
+     "_product_image_gallery",
+     "_vf_skip_reason",
+     "_alt_fill_done_v1"
+    ],
+    "aprasymas_B": 0,
+    "paveiksleliu": 1
+   },
+   {
+    "id": 23804,
+    "title": "Truly skanėstas šunims „Sushi” lašiša, tunas ir krevetės, 90 g",
+    "status": "publish",
+    "kat": [
+     "uncategorized"
+    ],
+    "visi_meta_raktai": [
+     "_wc_review_count",
+     "_wc_rating_count",
+     "_wc_average_rating",
+     "_tax_status",
+     "_tax_class",
+     "_manage_stock",
+     "_backorders",
+     "_sold_individually",
+     "_virtual",
+     "_downloadable",
+     "_download_limit",
+     "_download_expiry",
+     "_stock",
+     "_stock_status",
+     "_product_version",
+     "_thumbnail_id",
+     "_product_image_gallery",
+     "_vf_skip_reason",
+     "_alt_fill_done_v1"
+    ],
+    "aprasymas_B": 0,
+    "paveiksleliu": 2
+   }
+  ]
+ }
+}
