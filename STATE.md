@@ -1402,6 +1402,38 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 10 localStorage NEISVALOMAS po nuorodos issiuntimo (clearDraft NEKVIECIAMAS)
 ```
 
+### ★★★★ 2026-08-03 (5) — S357-S360: duplicate_candidate SPRENDIMO EKRANAS GYVAS (9 p. techninė dalis)
+
+**KAS PASTATYTA (apsauga #3 islaikyta — jokios antros rasymo logikos):**
+```
+mu-plugins/petshop-pet-claim.php  v1.1 · 7 126 B · sha 5bb63c37aedeadc8 (NAUJAS failas)
+  GET  /petshop/v1/pet-claim-pending   (login) — klausimas + payload + SVIEZI kandidatai
+  POST /petshop/v1/pet-claim-resolve   (login) — decision: new | attach(pet_id)
+  Kviecia TIK kanoninius: begin_claim/complete_claim/abort_claim + create_pet_result(force_new)
+pet-profile.js  166 379 B · sha 9afa4c48a5edba17 · backup .bak_S357
+  init -> claimPendingThenLoad() (VISADA, ne tik su URL parametru — klausimas
+  privalo issispresti ir grizus veliau; S207 principas) -> renderClaimDuplicate
+  „tas pats": 1) payload ant esamo per irodyta POST /pet-profile update keli,
+  2) resolve attach uzbaigia claim. Jei 2 nepavyko — pending lieka, kartojama;
+  pakartotinis „tas pats" idempotentiskas.
+```
+**E2E REALIOJE NARSYKLEJE (s360.json), abu zali:**
+```
+D1 „Ne, tai kitas augintinis": ekranas parodytas automatiskai · pets 1->2,
+   naujas su client_ref=draft_id ir svoriu 12.50 · draftas claimed i nauja ·
+   payload NULL · meta istrinta · ev +1 · JS/5xx 0
+D2 „Atnaujinti si profili": pets lieka 1 · esamo svoris 10.00->12.50 ·
+   draftas claimed i ESAMA · meta istrinta · ev +0 · JS/5xx 0
+```
+**KLAIDA IR PAMOKA (S358 pirmas bandymas raudonas):** `_ps_pet_claim_pending`
+`expires_at` laikomas UNIX formatu; `strtotime('1785...')`=false -> false<time()
+-> mano GET TYLIAI ISTRYNE meta ir grazino pending:false (ekranas nerodytas,
+draftas liko active). v1.1: is_numeric?int:strtotime + candidate_ids elementai
+gali buti int/objektas. PAMOKA: svetimo meta lauko FORMATO nespeti — arba
+perskaityti rasancia vieta, arba parse'inti abu formatus.
+**LIEKA 9 PUNKTE TIK RAIMIO DALIS:** landing tekstu stiliaus perziura +
+„14 dienu" fraze. TEMP trynimo sarasas papildytas: 2146-2151 (+ ankstesni).
+
 ### ★★★★ 2026-08-03 (4) — 8 PUNKTAS UZDARYTAS: N3, N4, NURL VISI ZALI (s353.json)
 
 ```
@@ -1643,7 +1675,7 @@ Testiniai vartotojai: ps_v2_test, e2e.* — istrinti pagal TIKSLU user_id.
 6 JS         pet-form.js siuncia serverini drafta   ✅ ATLIKTA (S348: realus S1 ant 4bf522cc; stub-matrica tik klaidu sakoms)
 7 Cron       cleanup_expired kasdien + stale recovery   ✅ ATLIKTA (10/10)
 8 E2E        VISKAS ✅ (E0/paritetas/N1/N2/N3/N4, s352+s353) — UZDARYTA
-9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
+9 Tekstai    duplicate_candidate ekranas ✅ (S357-S360) · landing perziura + „14 dienu" — RAIMIO
 ```
 
 ### ★★★ KITOS SESIJOS PRADZIA — SKAITYTI PIRMA
