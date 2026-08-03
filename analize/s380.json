@@ -1,0 +1,1076 @@
+{
+ "VERSIJA_RUN": "run380-v1",
+ "deakt": [],
+ "sid": 2170,
+ "rez": {
+  "VERSIJA": "s380-v1",
+  "pagal_engine": {
+   "InnoDB": {
+    "lenteliu": 14,
+    "MB": 3.2
+   },
+   "MyISAM": {
+    "lenteliu": 160,
+    "MB": 131.9
+   }
+  },
+  "NE_InnoDB": [
+   {
+    "t": "gaj6_actionscheduler_actions",
+    "engine": "MyISAM",
+    "MB": "13.68",
+    "eil": "34749"
+   },
+   {
+    "t": "gaj6_actionscheduler_claims",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_actionscheduler_groups",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "22"
+   },
+   {
+    "t": "gaj6_actionscheduler_logs",
+    "engine": "MyISAM",
+    "MB": "9.87",
+    "eil": "104201"
+   },
+   {
+    "t": "gaj6_cmplz_cookiebanners",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_cmplz_cookies",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "4"
+   },
+   {
+    "t": "gaj6_cmplz_dnsmpd",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_cmplz_services",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_commentmeta",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "6"
+   },
+   {
+    "t": "gaj6_comments",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "6"
+   },
+   {
+    "t": "gaj6_gla_attribute_mapping_rules",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_gla_budget_recommendations",
+    "engine": "MyISAM",
+    "MB": "0.22",
+    "eil": "4230"
+   },
+   {
+    "t": "gaj6_gla_merchant_issues",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_gla_merchant_price_benchmarks",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_gla_shipping_rates",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_gla_shipping_times",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_jetpack_sync_queue",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_links",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_automations",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_automation_runs",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_automation_run_logs",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_automation_run_subjects",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_automation_triggers",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_automation_versions",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_custom_fields",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_dynamic_segment_filters",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_feature_flags",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_forms",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_log",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_migrations",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "44"
+   },
+   {
+    "t": "gaj6_mailpoet_newsletters",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_newsletter_links",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_newsletter_option",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_newsletter_option_fields",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "34"
+   },
+   {
+    "t": "gaj6_mailpoet_newsletter_posts",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_newsletter_segment",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_newsletter_templates",
+    "engine": "MyISAM",
+    "MB": "1.04",
+    "eil": "77"
+   },
+   {
+    "t": "gaj6_mailpoet_scheduled_tasks",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "25"
+   },
+   {
+    "t": "gaj6_mailpoet_scheduled_task_subscribers",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_segments",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "3"
+   },
+   {
+    "t": "gaj6_mailpoet_sending_queues",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_settings",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "14"
+   },
+   {
+    "t": "gaj6_mailpoet_statistics_bounces",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_statistics_clicks",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_statistics_forms",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_statistics_newsletters",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_statistics_opens",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_statistics_unsubscribes",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_statistics_woocommerce_purchases",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_stats_notifications",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_subscribers",
+    "engine": "MyISAM",
+    "MB": "0.02",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_mailpoet_subscriber_custom_field",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_subscriber_ips",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_subscriber_segment",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_mailpoet_subscriber_tag",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_tags",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_user_agents",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_mailpoet_user_flags",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_options",
+    "engine": "MyISAM",
+    "MB": "2.48",
+    "eil": "1043"
+   },
+   {
+    "t": "gaj6_pmxi_files",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "5"
+   },
+   {
+    "t": "gaj6_pmxi_geocoding",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_pmxi_hash",
+    "engine": "MyISAM",
+    "MB": "1.26",
+    "eil": "16303"
+   },
+   {
+    "t": "gaj6_pmxi_history",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "19"
+   },
+   {
+    "t": "gaj6_pmxi_images",
+    "engine": "MyISAM",
+    "MB": "0.89",
+    "eil": "4780"
+   },
+   {
+    "t": "gaj6_pmxi_imports",
+    "engine": "MyISAM",
+    "MB": "0.13",
+    "eil": "5"
+   },
+   {
+    "t": "gaj6_pmxi_posts",
+    "engine": "MyISAM",
+    "MB": "0.90",
+    "eil": "15027"
+   },
+   {
+    "t": "gaj6_pmxi_templates",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_postmeta",
+    "engine": "MyISAM",
+    "MB": "34.54",
+    "eil": "177679"
+   },
+   {
+    "t": "gaj6_posts",
+    "engine": "MyISAM",
+    "MB": "14.60",
+    "eil": "12602"
+   },
+   {
+    "t": "gaj6_ps_action_tokens",
+    "engine": "MyISAM",
+    "MB": "0.05",
+    "eil": "115"
+   },
+   {
+    "t": "gaj6_ps_carts",
+    "engine": "MyISAM",
+    "MB": "0.02",
+    "eil": "15"
+   },
+   {
+    "t": "gaj6_ps_consent_log",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "11"
+   },
+   {
+    "t": "gaj6_ps_email_jobs",
+    "engine": "MyISAM",
+    "MB": "0.02",
+    "eil": "5"
+   },
+   {
+    "t": "gaj6_ps_email_suppression",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_ps_event_log",
+    "engine": "MyISAM",
+    "MB": "0.12",
+    "eil": "297"
+   },
+   {
+    "t": "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "8"
+   },
+   {
+    "t": "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+    "engine": "MyISAM",
+    "MB": "0.03",
+    "eil": "451"
+   },
+   {
+    "t": "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+    "engine": "MyISAM",
+    "MB": "0.03",
+    "eil": "451"
+   },
+   {
+    "t": "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+    "engine": "MyISAM",
+    "MB": "0.50",
+    "eil": "3825"
+   },
+   {
+    "t": "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+    "engine": "MyISAM",
+    "MB": "0.50",
+    "eil": "3825"
+   },
+   {
+    "t": "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+    "engine": "MyISAM",
+    "MB": "0.12",
+    "eil": "223"
+   },
+   {
+    "t": "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+    "engine": "MyISAM",
+    "MB": "0.16",
+    "eil": "223"
+   },
+   {
+    "t": "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "23"
+   },
+   {
+    "t": "gaj6_ps_pet_products",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "36"
+   },
+   {
+    "t": "gaj6_ps_pet_profile_drafts",
+    "engine": "MyISAM",
+    "MB": "0.02",
+    "eil": "11"
+   },
+   {
+    "t": "gaj6_ps_plan_events",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "7"
+   },
+   {
+    "t": "gaj6_ps_refill_tracking",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_ps_reminders",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "10"
+   },
+   {
+    "t": "gaj6_ps_shipments",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_ps_webhook_log",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_shortpixel_aipostmeta",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_shortpixel_folders",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_shortpixel_meta",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_shortpixel_postmeta",
+    "engine": "MyISAM",
+    "MB": "12.99",
+    "eil": "48337"
+   },
+   {
+    "t": "gaj6_shortpixel_queue",
+    "engine": "MyISAM",
+    "MB": "24.00",
+    "eil": "7913"
+   },
+   {
+    "t": "gaj6_snippets",
+    "engine": "MyISAM",
+    "MB": "8.76",
+    "eil": "1532"
+   },
+   {
+    "t": "gaj6_social_users",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_termmeta",
+    "engine": "MyISAM",
+    "MB": "0.05",
+    "eil": "630"
+   },
+   {
+    "t": "gaj6_terms",
+    "engine": "MyISAM",
+    "MB": "0.07",
+    "eil": "628"
+   },
+   {
+    "t": "gaj6_term_relationships",
+    "engine": "MyISAM",
+    "MB": "1.35",
+    "eil": "24214"
+   },
+   {
+    "t": "gaj6_term_taxonomy",
+    "engine": "MyISAM",
+    "MB": "0.05",
+    "eil": "628"
+   },
+   {
+    "t": "gaj6_umbrella_redirects",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_usermeta",
+    "engine": "MyISAM",
+    "MB": "0.11",
+    "eil": "769"
+   },
+   {
+    "t": "gaj6_users",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "31"
+   },
+   {
+    "t": "gaj6_vf_block_log",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "17"
+   },
+   {
+    "t": "gaj6_vf_observer",
+    "engine": "MyISAM",
+    "MB": "0.05",
+    "eil": "285"
+   },
+   {
+    "t": "gaj6_wcpdf_invoice_number",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wcpdf_packing_slip_number",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wc_admin_notes",
+    "engine": "MyISAM",
+    "MB": "0.04",
+    "eil": "79"
+   },
+   {
+    "t": "gaj6_wc_admin_note_actions",
+    "engine": "MyISAM",
+    "MB": "0.02",
+    "eil": "105"
+   },
+   {
+    "t": "gaj6_wc_category_lookup",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "146"
+   },
+   {
+    "t": "gaj6_wc_customer_lookup",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "27"
+   },
+   {
+    "t": "gaj6_wc_download_log",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wc_mnm_child_items",
+    "engine": "MyISAM",
+    "MB": "0.03",
+    "eil": "362"
+   },
+   {
+    "t": "gaj6_wc_orders",
+    "engine": "MyISAM",
+    "MB": "0.02",
+    "eil": "2"
+   },
+   {
+    "t": "gaj6_wc_orders_meta",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "27"
+   },
+   {
+    "t": "gaj6_wc_order_addresses",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "3"
+   },
+   {
+    "t": "gaj6_wc_order_coupon_lookup",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wc_order_operational_data",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "2"
+   },
+   {
+    "t": "gaj6_wc_order_product_lookup",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "9"
+   },
+   {
+    "t": "gaj6_wc_order_stats",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "6"
+   },
+   {
+    "t": "gaj6_wc_order_tax_lookup",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "5"
+   },
+   {
+    "t": "gaj6_wc_product_attributes_lookup",
+    "engine": "MyISAM",
+    "MB": "1.50",
+    "eil": "12898"
+   },
+   {
+    "t": "gaj6_wc_product_download_directories",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "2"
+   },
+   {
+    "t": "gaj6_wc_product_meta_lookup",
+    "engine": "MyISAM",
+    "MB": "0.69",
+    "eil": "3945"
+   },
+   {
+    "t": "gaj6_wc_rate_limits",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wc_reserved_stock",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_wc_tax_rate_classes",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wc_webhooks",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woocommerce_api_keys",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woocommerce_attribute_taxonomies",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "26"
+   },
+   {
+    "t": "gaj6_woocommerce_downloadable_product_permissions",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woocommerce_log",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woocommerce_order_itemmeta",
+    "engine": "MyISAM",
+    "MB": "0.02",
+    "eil": "125"
+   },
+   {
+    "t": "gaj6_woocommerce_order_items",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "15"
+   },
+   {
+    "t": "gaj6_woocommerce_payment_tokenmeta",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woocommerce_payment_tokens",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woocommerce_sessions",
+    "engine": "MyISAM",
+    "MB": "0.51",
+    "eil": "463"
+   },
+   {
+    "t": "gaj6_woocommerce_shipping_zones",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "3"
+   },
+   {
+    "t": "gaj6_woocommerce_shipping_zone_locations",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "5"
+   },
+   {
+    "t": "gaj6_woocommerce_shipping_zone_methods",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "12"
+   },
+   {
+    "t": "gaj6_woocommerce_tax_rates",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_woocommerce_tax_rate_locations",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_api_token",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "1"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_country_rates",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_country_weight_rates",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_lpexpress_terminals",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_shipping_request",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_table_rates",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_tracking_status",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_woo_lithuaniapost_unisend_terminals",
+    "engine": "MyISAM",
+    "MB": "0.10",
+    "eil": "1389"
+   },
+   {
+    "t": "gaj6_wpforms_analytics_forms",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "3"
+   },
+   {
+    "t": "gaj6_wpforms_analytics_snapshots",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "2"
+   },
+   {
+    "t": "gaj6_wpforms_logs",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "7"
+   },
+   {
+    "t": "gaj6_wpforms_payments",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wpforms_payment_meta",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_wpforms_tasks_meta",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "3"
+   },
+   {
+    "t": "gaj6_wpmailsmtp_tasks_meta",
+    "engine": "MyISAM",
+    "MB": "0.00",
+    "eil": "0"
+   },
+   {
+    "t": "gaj6_yith_wcan_cache",
+    "engine": "MyISAM",
+    "MB": "0.03",
+    "eil": "9"
+   },
+   {
+    "t": "gaj6__bak_s212c_pets_weight_20260718_01b43648",
+    "engine": "MyISAM",
+    "MB": "0.01",
+    "eil": "22"
+   }
+  ],
+  "lenteliu_viso": 174,
+  "koduotes": {
+   "utf8mb4_general_ci": 2,
+   "utf8mb4_unicode_520_ci": 172
+  },
+  "db_charset": "latin1",
+  "db_collation": "latin1_swedish_ci",
+  "tx_isolation": null,
+  "mysql_versija": "10.6.17-MariaDB-log",
+  "didziausios": [
+   {
+    "t": "gaj6_postmeta",
+    "MB": "34.54",
+    "engine": "MyISAM",
+    "eil": "177679"
+   },
+   {
+    "t": "gaj6_shortpixel_queue",
+    "MB": "24.00",
+    "engine": "MyISAM",
+    "eil": "7913"
+   },
+   {
+    "t": "gaj6_posts",
+    "MB": "14.60",
+    "engine": "MyISAM",
+    "eil": "12602"
+   },
+   {
+    "t": "gaj6_actionscheduler_actions",
+    "MB": "13.68",
+    "engine": "MyISAM",
+    "eil": "34749"
+   },
+   {
+    "t": "gaj6_shortpixel_postmeta",
+    "MB": "12.99",
+    "engine": "MyISAM",
+    "eil": "48337"
+   },
+   {
+    "t": "gaj6_actionscheduler_logs",
+    "MB": "9.87",
+    "engine": "MyISAM",
+    "eil": "104201"
+   },
+   {
+    "t": "gaj6_snippets",
+    "MB": "8.76",
+    "engine": "MyISAM",
+    "eil": "1532"
+   },
+   {
+    "t": "gaj6_options",
+    "MB": "2.48",
+    "engine": "MyISAM",
+    "eil": "1043"
+   },
+   {
+    "t": "gaj6_ps_feeding_rows",
+    "MB": "1.86",
+    "engine": "InnoDB",
+    "eil": "5351"
+   },
+   {
+    "t": "gaj6_wc_product_attributes_lookup",
+    "MB": "1.50",
+    "engine": "MyISAM",
+    "eil": "12898"
+   }
+  ],
+  "vietos": {
+   "/home/gyvunai2": {
+    "yra": true,
+    "rasoma": true
+   },
+   "/home/gyvunai2/backups": {
+    "yra": true,
+    "rasoma": true
+   },
+   "/home/gyvunai2/tmp": {
+    "yra": true,
+    "rasoma": true
+   },
+   "/home/gyvunai2/.appdata": {
+    "yra": true,
+    "rasoma": true
+   }
+  },
+  "open_basedir": "/home/gyvunai2/:/tmp:/usr/share/pear",
+  "kodo_dydis_KB": {
+   "mu-plugins": 156.3,
+   "petshop-core": 6908.4,
+   "flatsome-child": 737.2
+  }
+ },
+ "svetaine": "200"
+}
