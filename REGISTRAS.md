@@ -15,8 +15,8 @@
 
 | Blokas | ✅ | 🟡 | 🔴 | ⏸ laukia Raimio |
 |---|---|---|---|---|
-| Launch DoD (22) | 5 | 5 | 10 | 2 nematuota |
-| P0 funkcijos F1–F16 | 15 | 1 | 0 | — |
+| Launch DoD (22) | 6 | 4 | 10 | 2 nematuota |
+| P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
 | MVP funkcijos (§4.3) | 4 | 0 | 1 | 1 nepatikrinta |
 | El. laiškų šablonai | 5 | 0 | 12 | — |
 | M8 anketa (9 punktai) | 9 | 0 | 0 | tekstai |
@@ -47,10 +47,10 @@
 
 | ID | Kriterijus | Būsena | Data | Įrodymas / kas trūksta |
 |---|---|---|---|---|
-| DOD-01 | P0 funkcijos F1–F16 100% | 🟡 | 2026-08-03 | F4 ✅ uždarytas; liko tik F14 mobile checkout testas |
+| DOD-01 | P0 funkcijos F1–F16 100% | ✅ | 2026-08-03 | F4 ✅ + F14 ✅. Visos P0 uždarytos |
 | DOD-02 | Kritinių klaidų 0 | ⚪ | — | **nėra bug registro** — nematuojama |
 | DOD-03 | Aukšto prioriteto klaidų ≤3 | ⚪ | — | tas pats |
-| DOD-04 | 20 testinių užsakymų | 🔴 | 2026-08-02 | DB: 2 užsakymai |
+| DOD-04 | 20 testinių užsakymų | 🔴 | 2026-08-03 | DB: 2. Automatinis mobilus kelias veikia (S374) — galima kartoti scenarijų su skirtingais metodais |
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
 | DOD-07 | Top-100 SEO 301 | 🔴 | 2026-07-30 | 44 URL = 404, 20,5% srauto |
@@ -78,8 +78,9 @@
 | ID | Funkcija | Būsena | Data | Pastaba |
 |---|---|---|---|---|
 | F4 | Paieška + SKU/EAN | ✅ | 2026-08-03 | Tikslus atitikmuo (NE euristika pagal ilgį): Woo SKU + global_unique_id lookup + legacy `_ean`/`_vf_barcode`/`_zb_ean`. Vienas produktas → 302; keli → sąrašas + dublikatų žurnalas; be atitikmens tekstinė paieška nepaliesta |
-| F14 | Mobile checkout | 🟡 | — | iPhone/Android testas nefiksuotas |
+| F14 | Mobile checkout | ✅ | 2026-08-03 | Playwright 390×844 iPhone UA, pilnas svečio kelias iki užsakymo 34793 (bacs). 10/10 + hScroll 0/11, uždengtų CTA 0, 1 POST, sumos sutampa, paštomatas išlieka. `s374.json` |
 | — | F1–F3, F5–F13, F15, F16 | ✅ | — | — |
+| F-PSR | Paysera pilnas mokėjimo ciklas (redirect → callback → `processing`) | 🔴 | 2026-08-03 | **NETESTUOTA.** Konfigūracija nebaigta, nėra patvirtinimo iš Paysera (Q-PSR2). NE F14 dalis — F14 uždarytas per `bacs`. Projektas 29276 |
 
 ### MVP (TŽ §4.3)
 | ID | Funkcija | Būsena | Data | Pastaba |
@@ -187,6 +188,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
 | Q-BKP | **Backup ir monitoringo įrankis** — koks? (serveriai.lt savi backup'ai? UpdraftPlus į savo saugyklą? kitas?) | DOD-08, DOD-13 | — |
+| Q-PSR2 | **Paysera testinio režimo patvirtinimas** — be jo pilnas mokėjimo ciklas (redirect → callback → `processing`) netestuojamas. Dev režimas testinis, bet konfigūracija nebaigta | F-PSR | — |
 | Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
 | Q21 | FB paskyros revival + reali nuoroda | OPS-10 | — |
 | Q-R2 | 1518 prekių be EAN — iš kur imti | F4 vertė | — |
@@ -203,7 +205,8 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 ## 10. SIŪLOMA EILĖ
 
 ```
-A — greita (valandos)          R5 kainos ✅ · F4 paieška ✅ · backup+monitoringas ⏸ laukia Q-BKP
+A — greita (valandos)          R5 kainos ✅ · F4 paieška ✅ · F14 mobile ✅
+                               backup+monitoringas ⏸ laukia Q-BKP
 B — didelis kodas              F19 prenumerata (po Q6+Q10) · 3 launch šablonai
 C — Raimio sprendimai          Q6 Q10 Q-R2 Q-SEO Q-M8
 D — procesas (dienos)          DOD-04 20 užsakymų · DOD-17 beta · DOD-18/19 DNS+rollback
@@ -211,4 +214,4 @@ D — procesas (dienos)          DOD-04 20 užsakymų · DOD-17 beta · DOD-18/1
 E — pre-launch (T-14 … T-0)    visos OPS-* · DOD-07/21 301 lentelė
 ```
 
-Grupėje A padaryta: R5 ✅ ir F4 ✅. Backup ir monitoringas laukia Q-BKP sprendimo.
+Grupėje A padaryta: R5 ✅, F4 ✅, F14 ✅ — DOD-01 UŽDARYTAS. Backup ir monitoringas laukia Q-BKP.
