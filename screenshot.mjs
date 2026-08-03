@@ -30,189 +30,89 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('matrica6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('s8fix.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_kt3=Kt3w7"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
 
-const SC = {};
-function ok(v){ return !!v; }
-
+const SC={};
 try{
  const browser = await chromium.launch();
+ const ctx = await browser.newContext({viewport:{width:1280,height:1200}, ignoreHTTPSErrors:true, locale:'lt-LT'});
+ const page = await ctx.newPage();
+ const log={draft:[], magic:[], klaidos:[]};
+ page.on('pageerror', e=>log.klaidos.push(String(e).slice(0,140)));
+ await page.route('**/petshop/v1/pet-draft', async r=>{
+   log.draft.push(JSON.parse(r.request().postData()||'{}'));
+   await r.fulfill({status:201, contentType:'application/json',
+     body:JSON.stringify({ok:true, draft_id:'11111111-2222-4333-8444-'+String(log.draft.length).padStart(12,'0')})});
+ });
+ await page.route('**/petshop/v1/magic-login/request', async r=>{
+   log.magic.push(JSON.parse(r.request().postData()||'{}'));
+   await r.fulfill({status:500, contentType:'application/json', body:'{}'});   // magic VISADA klysta
+ });
 
- async function nauja(stubs){
-   const ctx = await browser.newContext({viewport:{width:1280,height:1200}, ignoreHTTPSErrors:true, locale:'lt-LT'});
-   const page = await ctx.newPage();
-   const log = { draft:[], magic:[], klaidos:[] };
-   page.on('pageerror', e=>log.klaidos.push(String(e).slice(0,140)));
-   await page.route('**/petshop/v1/pet-draft', async route => {
-     log.draft.push(JSON.parse(route.request().postData()||'{}'));
-     const s = stubs.draft ? stubs.draft(log.draft.length) : {status:201, body:{ok:true, draft_id:'11111111-2222-4333-8444-'+String(log.draft.length).padStart(12,'0')}};
-     if (s.abort) return route.abort('failed');
-     await route.fulfill({status:s.status, contentType:'application/json', body:JSON.stringify(s.body||{})});
-   });
-   await page.route('**/petshop/v1/magic-login/request', async route => {
-     log.magic.push(JSON.parse(route.request().postData()||'{}'));
-     const s = stubs.magic ? stubs.magic(log.magic.length) : {status:200, body:{ok:true}};
-     if (s.abort) return route.abort('failed');
-     await route.fulfill({status:s.status, contentType:'application/json', body:JSON.stringify(s.body||{})});
-   });
-   await page.goto(SITE+'/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
-   await page.waitForTimeout(3000);
-   try{ const b=page.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:4000}); }catch(e){}
-   await page.waitForTimeout(1000);
-   return {ctx, page, log};
+ async function priimk(){ try{ const b=page.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:4000}); }catch(e){} }
+ async function srv(){ return await page.evaluate(()=>{ try{ return JSON.parse(localStorage.getItem('petshop_pet_srv_draft')||'null'); }catch(e){ return {err:String(e)}; } }); }
+
+ await page.goto(SITE+'/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
+ await page.waitForTimeout(3000); await priimk(); await page.waitForTimeout(800);
+
+ // 1) uzpildom ir bandom issiusti (magic klysta -> draftas jau issaugotas)
+ await page.getByText('Šuo',{exact:false}).first().click({timeout:15000, force:true});
+ await page.waitForTimeout(1000);
+ await page.locator('input[type=text]:visible').first().fill('Rikis');
+ await page.waitForTimeout(700);
+ await page.locator('button:visible').filter({hasText:/Sukurti profilį/i}).first().click({timeout:15000});
+ await page.waitForTimeout(2200);
+ await page.locator('input[type=email]:visible').first().fill('s8@dev.avesa.lt');
+ await page.locator('.pspet-btn-primary:visible').first().click({timeout:15000});
+ await page.waitForTimeout(2500);
+ SC.po_pirmo = await srv();
+ SC.url_po_pirmo = page.url();
+
+ // 2) BE goBack — tik perkraunam TA PATI puslapi
+ await page.reload({waitUntil:'domcontentloaded', timeout:60000});
+ await page.waitForTimeout(3000); await priimk(); await page.waitForTimeout(1000);
+ SC.url_po_reload = page.url();
+ SC.srv_po_reload = await srv();
+ SC.matomi_text_input = await page.locator('input[type=text]:visible').count();
+ SC.ekranas = (await page.locator('#pspet-form-host, .pspet, #content').first().innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,180);
+
+ // 3) keiciam anketos duomenis -> saveDraft -> srvDraftMarkDirty
+ if (SC.matomi_text_input > 0) {
+   await page.locator('input[type=text]:visible').first().fill('Rikis-PAKEISTAS');
+   await page.waitForTimeout(1200);
  }
- async function ikiCTA(page, vardas){
-   await page.getByText('Šuo',{exact:false}).first().click({timeout:15000, force:true});
-   await page.waitForTimeout(1000);
-   await page.locator('input[type=text]:visible').first().fill(vardas||'Rikis');
-   await page.waitForTimeout(700);
-   await page.locator('button:visible').filter({hasText:/Sukurti profilį/i}).first().click({timeout:15000});
-   await page.waitForTimeout(2200);
+ SC.srv_po_pakeitimo = await srv();
+
+ // 4) dar karta siunciam -> turi kurti NAUJA drafta
+ if (await page.locator('input[type=email]:visible').count() === 0) {
+   const b = page.locator('button:visible').filter({hasText:/Sukurti profilį/i}).first();
+   if (await b.count()) { await b.click({timeout:15000}); await page.waitForTimeout(2200); }
  }
- async function spausk(page, email){
-   await page.locator('input[type=email]:visible').first().fill(email);
-   await page.waitForTimeout(300);
-   await page.locator('.pspet-btn-primary:visible').first().click({timeout:15000});
- }
- async function busena(page){
-   return await page.evaluate(()=>{
-     const st = document.querySelector('.pspet-save-status');
-     const btn = document.querySelector('.pspet-btn-primary');
-     let srv=null, dr=null;
-     try{ srv = JSON.parse(localStorage.getItem('petshop_pet_srv_draft')||'null'); }catch(e){}
-     try{ dr = localStorage.getItem('pspet_draft'); }catch(e){}
-     const box = document.querySelector('.pspet-save-box');
-     return {
-       stat: st ? (st.textContent||'').trim() : null,
-       role: st ? st.getAttribute('role') : null,
-       live: st ? st.getAttribute('aria-live') : null,
-       btnDisabled: btn ? !!btn.disabled : null,
-       btnText: btn ? (btn.textContent||'').trim() : null,
-       boxText: box ? (box.textContent||'').replace(/\s+/g,' ').trim().slice(0,160) : null,
-       srv: srv, draftYra: !!dr, draftIlgis: dr ? dr.length : 0,
-     };
-   });
- }
-
- // ===== S1 sekmingas kelias =====
- { const {ctx,page,log} = await nauja({});
-   await ikiCTA(page); await spausk(page,'s1@dev.avesa.lt'); await page.waitForTimeout(2500);
-   const b = await busena(page);
-   SC.S1 = {draft:log.draft.length, magic:log.magic.length, box:b.boxText, srv_draft_id:b.srv&&b.srv.draft_id, draftYra:b.draftYra, klaidos:log.klaidos,
-     OK:(log.draft.length===1 && log.magic.length===1 && /Patikrinkite el/i.test(b.boxText||'') && b.draftYra)};
-   await ctx.close(); }
-
- // ===== S2 dvigubas paspaudimas =====
- { const {ctx,page,log} = await nauja({draft:()=>({status:201,body:{ok:true,draft_id:'11111111-2222-4333-8444-aaaaaaaaaaaa'},delay:1})});
-   await ikiCTA(page);
-   await page.locator('input[type=email]:visible').first().fill('s2@dev.avesa.lt');
-   const btn = page.locator('.pspet-btn-primary:visible').first();
-   await btn.click({timeout:15000});
-   await btn.click({timeout:3000, force:true}).catch(()=>{});
-   await btn.click({timeout:3000, force:true}).catch(()=>{});
-   await page.waitForTimeout(3000);
-   SC.S2 = {draft:log.draft.length, magic:log.magic.length,
-     OK:(log.draft.length===1 && log.magic.length===1)};
-   await ctx.close(); }
-
- // ===== S3 400 =====
- { const {ctx,page,log} = await nauja({draft:()=>({status:400, body:{ok:false, code:'empty_payload'}})});
-   await ikiCTA(page); await spausk(page,'s3@dev.avesa.lt'); await page.waitForTimeout(2500);
-   const b = await busena(page);
-   SC.S3 = {draft:log.draft.length, magic:log.magic.length, stat:b.stat, role:b.role, live:b.live,
-     btnDisabled:b.btnDisabled, btnText:b.btnText, draftYra:b.draftYra,
-     OK:(log.magic.length===0 && b.role==='alert' && b.live===null && b.btnDisabled===false && b.draftYra && /Užpildykite/i.test(b.stat||''))};
-   await ctx.close(); }
-
- // ===== S4 413 =====
- { const {ctx,page,log} = await nauja({draft:()=>({status:413, body:{ok:false, code:'payload_too_large'}})});
-   await ikiCTA(page); await spausk(page,'s4@dev.avesa.lt'); await page.waitForTimeout(2500);
-   const b = await busena(page);
-   SC.S4 = {magic:log.magic.length, stat:b.stat, role:b.role, btnDisabled:b.btnDisabled,
-     OK:(log.magic.length===0 && /per didelė/i.test(b.stat||'') && b.role==='alert' && b.btnDisabled===false)};
-   await ctx.close(); }
-
- // ===== S5 429 =====
- { const {ctx,page,log} = await nauja({draft:()=>({status:429, body:{ok:false, code:'rate_limited'}})});
-   await ikiCTA(page); await spausk(page,'s5@dev.avesa.lt'); await page.waitForTimeout(3500);
-   const b = await busena(page);
-   SC.S5 = {draft:log.draft.length, magic:log.magic.length, stat:b.stat, btnDisabled:b.btnDisabled,
-     OK:(log.magic.length===0 && log.draft.length===1 && /Per daug bandymų/i.test(b.stat||'') && b.btnDisabled===false)};
-   await ctx.close(); }
-
- // ===== S6 tinklo klaida =====
- { const {ctx,page,log} = await nauja({draft:()=>({abort:true})});
-   await ikiCTA(page); await spausk(page,'s6@dev.avesa.lt'); await page.waitForTimeout(2500);
-   const b = await busena(page);
-   SC.S6 = {magic:log.magic.length, stat:b.stat, role:b.role, btnDisabled:b.btnDisabled, draftYra:b.draftYra,
-     OK:(log.magic.length===0 && /Nepavyko išsaugoti/i.test(b.stat||'') && b.btnDisabled===false && b.draftYra)};
-   await ctx.close(); }
-
- // ===== S7 draft OK, magic klysta -> pakartojimas TAS PATS draft_id =====
- { const {ctx,page,log} = await nauja({magic:(n)=> n===1 ? {status:500, body:{}} : {status:200, body:{ok:true}} });
-   await ikiCTA(page); await spausk(page,'s7@dev.avesa.lt'); await page.waitForTimeout(2500);
-   const b1 = await busena(page);
+ if (await page.locator('input[type=email]:visible').count()) {
+   await page.locator('input[type=email]:visible').first().fill('s8@dev.avesa.lt');
    await page.locator('.pspet-btn-primary:visible').first().click({timeout:15000});
    await page.waitForTimeout(2500);
-   const b2 = await busena(page);
-   SC.S7 = {draft_kvietimu:log.draft.length, magic_kvietimu:log.magic.length,
-     pirma_klaida:b1.stat, magic_draft_ids:log.magic.map(m=>m.draft_id),
-     tas_pats:(log.magic.length===2 && log.magic[0].draft_id===log.magic[1].draft_id),
-     box:b2.boxText,
-     OK:(log.draft.length===1 && log.magic.length===2 && log.magic[0].draft_id===log.magic[1].draft_id
-         && /Patikrinkite el/i.test(b2.boxText||''))};
-   await ctx.close(); }
+ }
+ SC.draft_kvietimu = log.draft.length;
+ SC.draft_ids = log.draft.map(d=>'');
+ SC.fingerprintai = log.draft.map(d => (d.payload && d.payload.pet_name) ? d.payload.pet_name : '?');
+ SC.srv_pabaigoje = await srv();
+ SC.klaidos = log.klaidos;
 
- // ===== S8 pakeitus anketa -> NAUJAS draftas =====
- { const {ctx,page,log} = await nauja({magic:()=>({status:500, body:{}})});
-   await ikiCTA(page); await spausk(page,'s8@dev.avesa.lt'); await page.waitForTimeout(2500);
-   const po1 = await busena(page);
-   // grizti i anketa ir pakeisti duomenis
-   await page.evaluate(()=>{ try{ const s=JSON.parse(localStorage.getItem('petshop_pet_srv_draft')); s._t=1; localStorage.setItem('petshop_pet_srv_draft', JSON.stringify(s)); }catch(e){} });
-   await page.goBack().catch(()=>{});
-   await page.reload({waitUntil:'domcontentloaded'});
-   await page.waitForTimeout(3000);
-   try{ const b=page.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:3000}); }catch(e){}
-   // keiciam varda -> saveDraft -> markDirty
-   const txt = page.locator('input[type=text]:visible').first();
-   if (await txt.count()) { await txt.fill('Rikis-PAKEISTAS'); await page.waitForTimeout(900); }
-   const dirty = await page.evaluate(()=>{ try{ return JSON.parse(localStorage.getItem('petshop_pet_srv_draft')||'null'); }catch(e){ return null; } });
-   SC.S8 = {srv_po_pirmo:po1.srv, dirty_po_pakeitimo: dirty && dirty.dirty,
-     OK:(!!po1.srv && po1.srv.dirty===false && !!dirty && dirty.dirty===true)};
-   await ctx.close(); }
-
- // ===== S9 pakeitus email -> NAUJAS draftas =====
- { const {ctx,page,log} = await nauja({magic:()=>({status:500, body:{}})});
-   await ikiCTA(page); await spausk(page,'s9a@dev.avesa.lt'); await page.waitForTimeout(2500);
-   await page.locator('input[type=email]:visible').first().fill('s9b@dev.avesa.lt');
-   await page.waitForTimeout(300);
-   await page.locator('.pspet-btn-primary:visible').first().click({timeout:15000});
-   await page.waitForTimeout(2500);
-   SC.S9 = {draft_kvietimu:log.draft.length, emails:log.draft.map(d=>d.email),
-     OK:(log.draft.length===2 && log.draft[0].email==='s9a@dev.avesa.lt' && log.draft[1].email==='s9b@dev.avesa.lt')};
-   await ctx.close(); }
-
- // ===== S10 localStorage NEISVALOMAS po sekmes =====
- { const {ctx,page,log} = await nauja({});
-   await ikiCTA(page); 
-   const pries = await page.evaluate(()=>{ try{ return (localStorage.getItem('pspet_draft')||'').length; }catch(e){ return -1; } });
-   await spausk(page,'s10@dev.avesa.lt'); await page.waitForTimeout(3000);
-   const b = await busena(page);
-   SC.S10 = {pries:pries, po:b.draftIlgis, box:b.boxText,
-     OK:(pries>0 && b.draftIlgis>0 && /Patikrinkite el/i.test(b.boxText||''))};
-   await ctx.close(); }
-
+ SC.OK_dirty = !!(SC.po_pirmo && SC.po_pirmo.dirty===false
+                  && SC.srv_po_pakeitimo && SC.srv_po_pakeitimo.dirty===true);
+ SC.OK_naujas = (log.draft.length===2 && SC.fingerprintai[0]==='Rikis' && SC.fingerprintai[1]==='Rikis-PAKEISTAS');
+ SC.OK = SC.OK_dirty && SC.OK_naujas;
+ fs.writeFileSync('/tmp/S8.png', await page.screenshot({fullPage:true}));
  await browser.close();
-}catch(err){ SC.BROWSER_ERR = String(err && err.stack ? err.stack : err).slice(0,700); }
-O.SC = SC;
-let p=0, viso=0;
-for (const k of ['S1','S2','S3','S4','S5','S6','S7','S8','S9','S10']) { viso++; if (SC[k] && SC[k].OK) p++; }
-O.SUVESTINE = p+'/'+viso;
+ try{ putB64('s8fix.png', fs.readFileSync('/tmp/S8.png').toString('base64')); }catch(e){}
+}catch(err){ SC.ERR=String(err && err.stack ? err.stack : err).slice(0,600); }
+O.SC=SC;
 
 sh('sleep 4');
 function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
@@ -233,5 +133,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('matrica6.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('s8fix.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
