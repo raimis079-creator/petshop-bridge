@@ -30,14 +30,14 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('v6v2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('v6v3.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_e2b=reset"');
   try{ return JSON.parse(x.out); }catch(e){ O['raw'+n]=x.out.slice(0,700); return null; }
 }
 
-const ZYM='Z'+Date.now().toString(36).toUpperCase();
+const ZYM='Q'+Date.now().toString(36).toUpperCase();
 const MARK='V6-TEST-1322';
 function q(a){ const x=sh('curl -sSk -m 45 "'+SITE+'/?ps_e2b='+a+'"'); try{ return JSON.parse(x.out);}catch(e){ return {raw:x.out.slice(0,250)}; } }
 O.zym=ZYM; O.pradzia=q('reset');
@@ -45,11 +45,11 @@ const V={};
 try{
  const browser = await chromium.launch();
  const A = q('auth&clean=1&seed='+ZYM+'-Turi1250');
- V.pries = A.pets;
- const PET_ID = (A.pets && A.pets[0]) ? A.pets[0].id : null;
- V.pet_id = PET_ID;
+ V.pries=A.pets;
+ const PET_ID=(A.pets&&A.pets[0])?A.pets[0].id:null;
+ V.pet_id=PET_ID;
 
- const ctx = await browser.newContext({viewport:{width:1280,height:1200}, ignoreHTTPSErrors:true, locale:'lt-LT'});
+ const ctx = await browser.newContext({viewport:{width:1280,height:1300}, ignoreHTTPSErrors:true, locale:'lt-LT'});
  await ctx.addCookies([
    {name:A.cookie_name,value:A.cookie_value,domain:A.domain,path:'/',httpOnly:true,secure:true},
    {name:A.auth_name,value:A.auth_value,domain:A.domain,path:'/',httpOnly:true,secure:true}]);
@@ -57,63 +57,66 @@ try{
  const reqs=[]; const resps=[]; const errs=[];
  p.on('pageerror', e=>errs.push(String(e).slice(0,120)));
  p.on('request', r=>{ if(r.url().indexOf('/pet-profile')>=0 && r.method()==='POST'){ try{ reqs.push(JSON.parse(r.postData()||'{}')); }catch(e){ reqs.push({parse_err:1}); } } });
- p.on('response', async r=>{ if(r.url().indexOf('/pet-profile')>=0 && r.request().method()==='POST'){ resps.push({status:r.status(), ok:r.ok()}); } });
+ p.on('response', r=>{ if(r.url().indexOf('/pet-profile')>=0 && r.request().method()==='POST'){ resps.push({status:r.status(), ok:r.ok()}); } });
+
+ async function laukai(){
+   return await p.evaluate(()=>{
+     const o=[]; document.querySelectorAll('input,select,textarea').forEach(e=>{
+       const r=e.getBoundingClientRect(); if(r.width===0&&r.height===0) return;
+       if ((e.className||'').toString().indexOf('search-field')>=0) return;
+       let lab=''; if(e.id){const l=document.querySelector('label[for="'+e.id+'"]'); if(l) lab=(l.textContent||'').trim();}
+       if(!lab&&e.closest('label')) lab=(e.closest('label').textContent||'').trim();
+       if(!lab&&e.parentElement) lab=(e.parentElement.textContent||'').trim().slice(0,70);
+       o.push({tag:e.tagName.toLowerCase(),type:e.type||'',cls:(e.className||'').toString().slice(0,40),
+               ph:e.placeholder||'',inputmode:e.getAttribute('inputmode')||'',label:lab.slice(0,70),value:e.value||''});
+     }); return o;
+   });
+ }
+ async function mygtukai(){ return (await p.locator('button:visible').allTextContents()).map(t=>t.trim()).filter(Boolean).slice(0,14); }
+ async function ekranas(){ return (await p.locator('body').innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,220); }
 
  await p.goto(SITE+'/paskyra/augintinis/', {waitUntil:'domcontentloaded', timeout:60000});
  await p.waitForTimeout(3400);
  try{ const b=p.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:4000}); }catch(e){}
  await p.waitForTimeout(1200);
+ await p.locator('button:visible, a:visible').filter({hasText:/Papildyti profilį/i}).first().click({timeout:15000});
+ await p.waitForTimeout(3000);
+ V.z1 = { ekranas: await ekranas(), mygtukai: await mygtukai(), laukai: await laukai() };
+ V.z1_svoris = (V.z1.laukai.find(l=>l.inputmode==='decimal')||{}).value;
 
- // ★ „Papildyti profilį"
- const pap = p.locator('button:visible, a:visible').filter({hasText:/Papildyti profilį/i});
- V.papildyti_rasta = await pap.count();
- if (V.papildyti_rasta) { await pap.first().click({timeout:15000}); await p.waitForTimeout(3000); }
- V.kelias = V.papildyti_rasta ? 'Papildyti profilį' : null;
+ // ★ EINAM I 2 ZINGSNI
+ const testi = p.locator('button:visible').filter({hasText:/^Tęsti$/i}).first();
+ V.testi_rasta = await testi.count();
+ if (V.testi_rasta) { await testi.click({timeout:15000}); await p.waitForTimeout(3000); }
+ V.z2 = { ekranas: await ekranas(), mygtukai: await mygtukai(), laukai: await laukai() };
+ fs.writeFileSync('/tmp/V6d.png', await p.screenshot({fullPage:true}));
 
- V.po_paspaudimo = {
-   url: p.url(),
-   tekstas: (await p.locator('body').innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,300),
-   mygtukai: (await p.locator('button:visible').allTextContents()).map(t=>t.trim()).filter(Boolean).slice(0,12),
- };
- // VISI matomi laukai su etiketemis
- V.laukai = await p.evaluate(()=>{
-   const o=[]; document.querySelectorAll('input,select,textarea').forEach(e=>{
-     const r=e.getBoundingClientRect(); if(r.width===0&&r.height===0) return;
-     let lab=''; if(e.id){const l=document.querySelector('label[for="'+e.id+'"]'); if(l) lab=(l.textContent||'').trim();}
-     if(!lab&&e.closest('label')) lab=(e.closest('label').textContent||'').trim();
-     if(!lab&&e.parentElement) lab=(e.parentElement.textContent||'').trim().slice(0,60);
-     o.push({tag:e.tagName.toLowerCase(),type:e.type||'',cls:(e.className||'').toString().slice(0,40),
-             ph:e.placeholder||'',inputmode:e.getAttribute('inputmode')||'',label:lab.slice(0,60),value:e.value||''});
-   }); return o;
- });
- fs.writeFileSync('/tmp/V6c.png', await p.screenshot({fullPage:true}));
-
- // ★ current_food_brand laukas — pagal etikete/placeholder
- const bidx = V.laukai.findIndex(l => /maist|ženkl|zenkl|brand|gamintoj/i.test((l.label||'')+' '+(l.ph||'')));
+ // ★ maisto zenklo laukas 2 zingsnyje
+ const bidx = V.z2.laukai.findIndex(l => /maist|ženkl|zenkl|brand|gamintoj|Koki|kuo maitina/i.test((l.label||'')+' '+(l.ph||'')));
  V.brand_idx = bidx;
  if (bidx >= 0) {
-   const visi = p.locator('input:visible, select:visible, textarea:visible');
-   const laukas = visi.nth(bidx);
-   await laukas.fill(MARK).catch(e=>{ V.fill_err=String(e).slice(0,90); });
-   await p.waitForTimeout(1400);
-   V.brand_value = await laukas.inputValue().catch(()=>null);
-   // uzdarom galima autocomplete
+   const visi = p.locator('input:visible, select:visible, textarea:visible').filter({hasNot: p.locator('.search-field')});
+   // renkam pagal ta pati filtruota sarasa kaip laukai()
+   const el = p.locator('input:not(.search-field):visible, select:visible, textarea:visible').nth(bidx);
+   await el.fill(MARK).catch(e=>{ V.fill_err=String(e).slice(0,90); });
+   await p.waitForTimeout(1500);
+   V.brand_value = await el.inputValue().catch(()=>null);
    await p.keyboard.press('Escape').catch(()=>{});
-   await p.waitForTimeout(400);
+   await p.waitForTimeout(500);
  }
- // svorio NELIECIAM
- const sv = p.locator('input.pspet-input[inputmode="decimal"]:visible').first();
- V.svorio_reiksme = (await sv.count()) ? await sv.inputValue() : '(nera lauko)';
-
- const submit = p.locator('button:visible').filter({hasText:/Išsaugoti|Atnaujinti|Sukurti profilį|Baigti/i}).first();
+ // SVORIO NELIECIAM
+ const submit = p.locator('button:visible').filter({hasText:/Išsaugoti|Atnaujinti|Baigti|Sukurti profilį/i}).first();
  V.submit_tekstas = (await submit.count()) ? (await submit.textContent()||'').trim() : null;
  if (await submit.count()) { await submit.click({timeout:15000}); await p.waitForTimeout(7000); }
+ V.po_submit_ekranas = await ekranas();
+ fs.writeFileSync('/tmp/V6e.png', await p.screenshot({fullPage:true}));
 
- const st = q('pets');
- const po = (st.pets||[]).find(x=>String(x.id)===String(PET_ID));
+ const st=q('pets');
+ const po=(st.pets||[]).find(x=>String(x.id)===String(PET_ID));
  const pl = reqs.length ? reqs[reqs.length-1] : {};
+ const pr = (V.pries||[])[0] || {};
  V.V6 = {
-   kelias: V.kelias,
+   kelias:'Papildyti profilį → Tęsti',
    request_count: reqs.length,
    response: resps.length ? resps[resps.length-1] : null,
    payload_raktu: Object.keys(pl).length,
@@ -121,11 +124,9 @@ try{
    payload_brand: pl.current_food_brand,
    turi_weight_kg: Object.prototype.hasOwnProperty.call(pl,'_weight_kg'),
    turi_current: Object.prototype.hasOwnProperty.call(pl,'current_weight_kg'),
-   pries: (V.pries||[])[0], po: po, klaidos: errs,
+   pries: pr, po: po, klaidos: errs,
  };
- const pr = (V.pries||[])[0] || {};
  V.V6.OK = (
-   V.kelias !== null &&
    reqs.length === 1 &&
    Object.keys(pl).length > 0 &&
    V.V6.response && V.V6.response.ok === true &&
@@ -137,11 +138,10 @@ try{
    po.weight_updated_at === pr.weight_updated_at &&
    errs.length === 0
  );
- await ctx.close();
- await browser.close();
+ await ctx.close(); await browser.close();
 }catch(err){ V.ERR=String(err && err.stack ? err.stack : err).slice(0,500); }
 O.V=V;
-try{ putB64('v6c.png', fs.readFileSync('/tmp/V6c.png').toString('base64')); }catch(e){}
+for (const n of ['V6d','V6e']) { try{ putB64('v6_'+n+'.png', fs.readFileSync('/tmp/'+n+'.png').toString('base64')); }catch(e){} }
 
 sh('sleep 4');
 function code(u){ return sh('curl -sSkI -m 30 -o /dev/null -w "%{http_code}|%{redirect_url}" "'+u+'"').out.trim(); }
@@ -162,5 +162,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('v6v2.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('v6v3.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
