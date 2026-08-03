@@ -1,0 +1,47 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2120,
+ "rez": {
+  "VERSIJA": "magic-url-recon",
+  "GET_parametrai": [
+   "ps_magic"
+  ],
+  "konstantos": {
+   "TOKEN_PURPOSE": "'magic_login'",
+   "TOKEN_TTL": "900",
+   "RATE_LIMIT_WINDOW": "900",
+   "RATE_LIMIT_MAX_EMAIL": "3",
+   "RATE_LIMIT_MAX_IP": "10",
+   "LOGIN_PATH": "'petshop-login'",
+   "META_EMAIL_VERIFIED": "'_ps_email_verified'",
+   "META_CLAIM_PENDING": "'_ps_pet_claim_pending'"
+  },
+  "url_eilutes": [
+   "356: $action_url = esc_url( home_url( '/' . self::LOGIN_PATH ) );",
+   "482: $redirect = home_url( '/' );",
+   "488: $redirect = add_query_arg( 'pet_claim', $claim_kodas, $redirect );",
+   "501: $login_url = add_query_arg( 'token', rawurlencode( $token ), home_url( '/' . self::LOGIN_PATH ) );",
+   "520: $body .= '<p style=\"margin:28px 0;\"><a href=\"' . esc_url( $login_url ) . '\" style=\"background:#2D5F3F;color:#fff;text-decoration:none;padding:14px 32px;border-radius:8p",
+   "604: $html .= '<p style=\"margin-top:20px;font-size:14px;\"><a href=\"' . esc_url( wc_get_page_permalink( 'myaccount' ) ?: home_url( '/' ) ) . '\" style=\"color:#2D5F3F;\">Grįžt",
+   "610: self::render_page( 'Prisijungimas', '<h1 style=\"color:#c0392b;\">Nepavyko prisijungti</h1><p>' . esc_html( $msg ) . '</p><p style=\"margin-top:20px;\"><a href=\"' . esc_url"
+  ],
+  "send_login_email": "function send_login_email( $email, $user, $token ) {\n\t\t$login_url = add_query_arg( 'token', rawurlencode( $token ), home_url( '/' . self::LOGIN_PATH ) );\n\t\t$is_new = ! $user;\n\t\t$name = '';\n\t\tif ( $user ) {\n\t\t\t$name = $user->first_name ? $user->first_name : $user->display_name;\n\t\t}\n\n\t\t$subject = $is_new ? 'Išsaugokite augintinio profilį — Petshop.lt' : 'Prisijungimas prie Petshop.lt';\n\t\t$title   = $is_new ? 'Išsaugokite augintinio profilį' : 'Prisijungimas prie Petshop.lt';\n\t\t$intro   = $is_new\n\t\t\t? 'Paspauskite mygtuką žemiau ir jūsų augintinio profilis bus išsaugotas — galėsite jį pasiekti bet kada.'\n\t\t\t: 'Gavome prašymą prisijungti prie jūsų paskyros. Paspauskite mygtuką žemiau:';\n\t\t$cta     = $is_new ? 'Išsaugoti profilį' : 'Prisijungti';\n\n\t\t$body  = '<html><body style=\"font-family:Arial,sans-serif;color:#333;max-width:560px;margin:0 auto;\">';\n\t\t$body .= '<div style=\"padding:24px;\">';\n\t\t$body .= '<h2 style=\"color:#2D5F3F;\">' . esc_html( $title ) . '</h2>';\n\t\t$body .= '<p>Sveiki' . ( $name ? ', ' . esc_html( $name ) : '' ) . ',</p>';\n\t\t$body .= '<p>' . esc_html( $intro ) . '</p>';\n\t\t$body .= '<p style=\"margin:28px 0;\"><a href=\"' . esc_url( $login_url ) . '\" style=\"background:#2D5F3F;color:#fff;text-decoration:none;padding:14px 32px;border-radius:8px;font-weight:600;display:inline-block;\">' . esc_html( $cta ) . '</a></p>';\n\t\t$body .= '<p style=\"color:#888;font-size:13px;\">Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.</p>';\n\t\t$body .= '<p style=\"color:#888;font-size:13px;\">Jei šio prašymo nepateikėte — tiesiog ignoruokite šį laišką.</p>';\n\t\t$body .= '<hr style=\"border:none;border-top:1px solid #eee;margin:24px 0;\">';\n\t\t$body .= '<p style=\"color:#aaa;font-size:12px;\">Petshop.lt</p>';\n\t\t$body .= '</div></body></html>';\n\n\t\t$headers = array(\n\t\t\t'Content-Type: text/html; charset=UTF-8',\n\t\t\t'From: Petshop.lt <terra@petshop.lt>',\n\t\t);\n\t\twp_mail( $email, $subject, $body, $headers );\n\t}\n\n\t/**\n\t * S207: unikalus login is email'o dalies pries @. Slaptazodis atsitiktinis —\n\t * zmogus jungiasi per magic link, arba vėliau pasikeicia pats.\n\t */\n\tprivate static function unique_login_from_email( $email ) {\n\t\t$parts = explo",
+  "hookai": [
+   "64: add_action( 'init', array( __CLASS__, 'handle_login_page' ) );"
+  ]
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
