@@ -1,0 +1,70 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2113,
+ "dry": {
+  "VERSIJA": "vartai6-v1",
+  "vartai": {
+   "dydis": 80393,
+   "dydis_ok": true,
+   "sha": "8e02fd57f3ed878e905b0c786af8b75f18030606d2472626436b8452b4ab1e58",
+   "sha_ok": true,
+   "srvEnsureDraft": 2,
+   "srvSendMagic": 2,
+   "SRV_DRAFT_KEY": 3,
+   "alert_kartai": 3,
+   "PRAEJO": true
+  },
+  "alert_eilutes": [
+   "287: if (!state.data.species) { alert('Pasirinkite gyvūno rūšį'); return; }",
+   "288: if (!state.data.pet_name || !String(state.data.pet_name).trim()) { alert('Įrašykite augintinio vardą'); nameInput.focus(); return; }",
+   "1504: // S341: INLINE busenu sritis vietoje alert(). Tuscia — nematoma."
+  ],
+  "komentaro_inkaras": 1
+ },
+ "apply": {
+  "VERSIJA": "vartai6-v1",
+  "vartai": {
+   "dydis": 80393,
+   "dydis_ok": true,
+   "sha": "8e02fd57f3ed878e905b0c786af8b75f18030606d2472626436b8452b4ab1e58",
+   "sha_ok": true,
+   "srvEnsureDraft": 2,
+   "srvSendMagic": 2,
+   "SRV_DRAFT_KEY": 3,
+   "alert_kartai": 3,
+   "PRAEJO": true
+  },
+  "alert_eilutes": [
+   "287: if (!state.data.species) { alert('Pasirinkite gyvūno rūšį'); return; }",
+   "288: if (!state.data.pet_name || !String(state.data.pet_name).trim()) { alert('Įrašykite augintinio vardą'); nameInput.focus(); return; }",
+   "1504: // S341: INLINE busenu sritis vietoje alert(). Tuscia — nematoma."
+  ],
+  "komentaro_inkaras": 1,
+  "VERDIKTAS": "KOMENTARAS PATAISYTAS",
+  "po": {
+   "dydis": 80393,
+   "sha": "cb72c42655068bc4cba03ccb5199165a5d4d29fee7b2aad882a4859071829e21",
+   "alert_kartai": 2
+  },
+  "alert_po": [
+   "287: if (!state.data.species) { alert('Pasirinkite gyvūno rūšį'); return; }",
+   "288: if (!state.data.pet_name || !String(state.data.pet_name).trim()) { alert('Įrašykite augintinio vardą'); nameInput."
+  ]
+ },
+ "serv": "80393",
+ "sint": "SINTAKSE_OK",
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
