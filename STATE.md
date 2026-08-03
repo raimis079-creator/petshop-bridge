@@ -1274,7 +1274,58 @@ S340b T1 ataskaitoje rodyti `attempt_null:false` ir `started_null:false` buvo
 TIK RODYMO klaida; produkto assertion'ai (be `??`) ir FAKTINES DB reiksmes buvo
 TEISINGOS — abu laukai realiai NULL.
 
-### ⚠ S341 — 6 PUNKTAS: IDIEGTA, BET **NEUZDARYTA** (netestuota)
+### ★ S341/S342 — 6 PUNKTAS: pet-form.js SERVERINIS DRAFTAS — UZBAIGTA
+
+```
+Matrica 10/10 · pet-form.js 80 393 B · SHA cb72c42655068bc4… · SINTAKSE_OK
+backup'ai .bak_S341 (pries pakeitima) · .bak_S342 (pries komentaro pataisa)
+```
+
+**MATRICA (Playwright, uzklausos stubintos per page.route):**
+```
+S1  sekmingas kelias        draft 1 · magic 1 · „Patikrinkite el. pasta"
+S2  DVIGUBAS paspaudimas    3 paspaudimai -> draft 1, magic 1 (single-flight VEIKIA)
+S3  400                     magic 0 · role="alert" · aria-live NUIMTAS · mygtukas aktyvus
+                            „Uzpildykite bent augintinio rusi ar varda…"
+S4  413                     „Anketa per didele. Sutrumpinkite laisvo teksto laukus."
+S5  429                     „Per daug bandymu. Pabandykite veliau." · magic 0
+S6  tinklo klaida           „Nepavyko issaugoti anketos." · localStorage ISLIKO
+S7  magic klysta            draft 1 · magic 2 · ABU su TUO PACIU draft_id · antras OK
+S8  pakeitus anketa         dirty false -> TRUE -> naujas draft_id …0002
+                            vardai [Rikis, Rikis-PAKEISTAS] · po sekmes vel dirty:false
+S9  pakeitus email          2 draftai: s9a -> s9b
+S10 localStorage            336 B pries -> 336 B po sekmes (NEISVALOMAS)
+```
+
+**`alert()` BUKLE:** magic sraute PASALINTAS. Faile liko **2** — eil. 287, 288,
+anketos validacija, sutarta NELIESTI. (Skaitiklis anksciau rode 3, nes trecias
+buvo MANO KOMENTARE; komentaras perrasytas S342.)
+
+**★ TRYS TESTU DEFEKTAI, NE PRODUKTO (visi trys — mano):**
+```
+1 ciklas ieskojo mygtuko /Toliau|Testi/, o jis vadinasi „SUKURTI PROFILI"
+  -> anketa niekada nepajudejo
+2 `page.goBack()` SPA kontekste be istorijos nuvede i about:blank
+  -> kitas origin, localStorage „dingo", S8 rode klaidinga null
+3 po `reload()` anketa rodo TESIMO ekrana („Testi Rikis profilio kurima?"),
+  teksto lauko NERA -> `fill()` nieko nekeite -> saveDraft nepasileido
+  -> `dirty` liko false TEISETAI
+```
+**PAMOKA:** testo scenarijus turi atkartoti TIKRA UI kelia. Tris kartus is eiles
+„NE" reiske ne produkto gedima, o mano nezinojima, kaip atrodo ekranas.
+Prie kiekvieno neigiamo rezultato PIRMA klausti: ar testas apskritai pateko ten,
+kur mano?
+
+**S8 GALUTINIS IRODYMAS (v3, per mygtuka „TESTI"):**
+```
+po issaugojimo     dirty:false · draft_id …0001 · fingerprint kdmgbk.27
+„TESTI"            grizta i anketa, laukas rodo „Rikis"
+pakeitus varda     dirty:TRUE                      <- srvDraftMarkDirty suveike
+siunciant is naujo draft 2 · [Rikis, Rikis-PAKEISTAS]
+                   naujas draft_id …0002 · naujas fingerprint · dirty:false
+```
+
+### (ISTORINIS) S341 — 6 PUNKTAS: IDIEGTA, BET **NEUZDARYTA** (netestuota)
 
 > **★ BUSENA: KODAS SERVERYJE, MATRICA NEPALEISTA.**
 > Punkto NEZYMETI uzbaigtu, kol nepraeis 10 scenariju matrica.
@@ -1361,9 +1412,9 @@ vietoje alert()."). Matavau EILUTE, ne iskvietima — tas pats sablonas kaip su
 3 REST       POST /pet-draft su kanonine validacija   ✅ ATLIKTA (16/16+5/5+10/10)
 4 Magic link magic-login/request priima draft_id (triguba patikra)  ✅ ATLIKTA (10/10)
 5 Claim      process_login -> create_pet_result -> complete_claim     ✅ ATLIKTA (17/17)
-6 JS         pet-form.js siuncia serverini drafta   ⚠ IDIEGTA, NETESTUOTA
+6 JS         pet-form.js siuncia serverini drafta   ✅ ATLIKTA (10/10)
 7 Cron       cleanup_expired kasdien + stale recovery   ✅ ATLIKTA (10/10)
-8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai
+8 E2E        tas pats irenginys -> kitas irenginys -> 4 neigiami keliai   <- KITAS
 9 Tekstai    landing stiliaus perziura (Raimio) + „14 dienu" fraze
 ```
 
