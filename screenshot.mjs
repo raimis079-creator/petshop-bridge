@@ -30,7 +30,7 @@ for(let i=0;i<3 && !sid;i++){
   if(j&&j.id) sid=j.id; else {O.e=r.out.slice(0,250); sh('sleep 4');}
 }
 O.sid=sid;
-if(!sid){ putB64('s8fix.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
+if(!sid){ putB64('s8v3.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64')); console.log('no sid'); process.exit(0); }
 sh('sleep 5');
 function uzk(n){
   const x=sh('curl -sSk -m 60 "'+SITE+'/?ps_kt3=Kt3w7"');
@@ -51,16 +51,16 @@ try{
  });
  await page.route('**/petshop/v1/magic-login/request', async r=>{
    log.magic.push(JSON.parse(r.request().postData()||'{}'));
-   await r.fulfill({status:500, contentType:'application/json', body:'{}'});   // magic VISADA klysta
+   await r.fulfill({status:500, contentType:'application/json', body:'{}'});
  });
-
  async function priimk(){ try{ const b=page.locator('button:has-text("Priimti")').first(); if(await b.count()) await b.click({timeout:4000}); }catch(e){} }
  async function srv(){ return await page.evaluate(()=>{ try{ return JSON.parse(localStorage.getItem('petshop_pet_srv_draft')||'null'); }catch(e){ return {err:String(e)}; } }); }
+ async function ekranas(){ return (await page.locator('#pspet-form-host, .pspet, #content').first().innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,150); }
 
  await page.goto(SITE+'/augintinio-profilis/', {waitUntil:'domcontentloaded', timeout:60000});
  await page.waitForTimeout(3000); await priimk(); await page.waitForTimeout(800);
 
- // 1) uzpildom ir bandom issiusti (magic klysta -> draftas jau issaugotas)
+ // 1) pilnas kelias iki CTA + bandymas (magic klysta)
  await page.getByText('Šuo',{exact:false}).first().click({timeout:15000, force:true});
  await page.waitForTimeout(1000);
  await page.locator('input[type=text]:visible').first().fill('Rikis');
@@ -70,47 +70,55 @@ try{
  await page.locator('input[type=email]:visible').first().fill('s8@dev.avesa.lt');
  await page.locator('.pspet-btn-primary:visible').first().click({timeout:15000});
  await page.waitForTimeout(2500);
- SC.po_pirmo = await srv();
- SC.url_po_pirmo = page.url();
+ SC.A_po_pirmo = await srv();
+ SC.A_draft_kvietimu = log.draft.length;
 
- // 2) BE goBack — tik perkraunam TA PATI puslapi
+ // 2) perkraunam
  await page.reload({waitUntil:'domcontentloaded', timeout:60000});
  await page.waitForTimeout(3000); await priimk(); await page.waitForTimeout(1000);
- SC.url_po_reload = page.url();
- SC.srv_po_reload = await srv();
- SC.matomi_text_input = await page.locator('input[type=text]:visible').count();
- SC.ekranas = (await page.locator('#pspet-form-host, .pspet, #content').first().innerText().catch(()=>'')).replace(/\s+/g,' ').slice(0,180);
+ SC.B_ekranas = await ekranas();
 
- // 3) keiciam anketos duomenis -> saveDraft -> srvDraftMarkDirty
- if (SC.matomi_text_input > 0) {
-   await page.locator('input[type=text]:visible').first().fill('Rikis-PAKEISTAS');
-   await page.waitForTimeout(1200);
+ // 3) ★ SPAUDZIAM „TESTI" — grizta i anketa
+ const testi = page.locator('button:visible').filter({hasText:/^TĘSTI$|Tęsti$/i}).first();
+ SC.C_testi_rastas = await testi.count();
+ if (SC.C_testi_rastas) { await testi.click({timeout:15000}); await page.waitForTimeout(2200); }
+ SC.C_ekranas = await ekranas();
+ SC.C_text_input = await page.locator('input[type=text]:visible').count();
+
+ // 4) KEICIAM anketos duomenis -> saveDraft -> srvDraftMarkDirty
+ if (SC.C_text_input > 0) {
+   const t = page.locator('input[type=text]:visible').first();
+   SC.D_reiksme_pries = await t.inputValue().catch(()=>null);
+   await t.fill('Rikis-PAKEISTAS');
+   await page.waitForTimeout(1500);
  }
- SC.srv_po_pakeitimo = await srv();
+ SC.D_srv_po_pakeitimo = await srv();
 
- // 4) dar karta siunciam -> turi kurti NAUJA drafta
+ // 5) siunciam DAR KARTA -> turi kurti NAUJA drafta su nauju payload
  if (await page.locator('input[type=email]:visible').count() === 0) {
    const b = page.locator('button:visible').filter({hasText:/Sukurti profilį/i}).first();
    if (await b.count()) { await b.click({timeout:15000}); await page.waitForTimeout(2200); }
  }
- if (await page.locator('input[type=email]:visible').count()) {
+ SC.E_email_lauku = await page.locator('input[type=email]:visible').count();
+ if (SC.E_email_lauku) {
    await page.locator('input[type=email]:visible').first().fill('s8@dev.avesa.lt');
    await page.locator('.pspet-btn-primary:visible').first().click({timeout:15000});
    await page.waitForTimeout(2500);
  }
- SC.draft_kvietimu = log.draft.length;
- SC.draft_ids = log.draft.map(d=>'');
- SC.fingerprintai = log.draft.map(d => (d.payload && d.payload.pet_name) ? d.payload.pet_name : '?');
- SC.srv_pabaigoje = await srv();
+ SC.E_draft_kvietimu = log.draft.length;
+ SC.E_vardai = log.draft.map(d => (d.payload && d.payload.pet_name) ? d.payload.pet_name : '?');
+ SC.E_srv_pabaigoje = await srv();
  SC.klaidos = log.klaidos;
 
- SC.OK_dirty = !!(SC.po_pirmo && SC.po_pirmo.dirty===false
-                  && SC.srv_po_pakeitimo && SC.srv_po_pakeitimo.dirty===true);
- SC.OK_naujas = (log.draft.length===2 && SC.fingerprintai[0]==='Rikis' && SC.fingerprintai[1]==='Rikis-PAKEISTAS');
+ SC.OK_dirty  = !!(SC.A_po_pirmo && SC.A_po_pirmo.dirty===false
+                   && SC.D_srv_po_pakeitimo && SC.D_srv_po_pakeitimo.dirty===true);
+ SC.OK_naujas = (log.draft.length===2 && SC.E_vardai[0]==='Rikis' && SC.E_vardai[1]==='Rikis-PAKEISTAS'
+                 && SC.E_srv_pabaigoje && SC.E_srv_pabaigoje.dirty===false
+                 && SC.E_srv_pabaigoje.draft_id !== SC.A_po_pirmo.draft_id);
  SC.OK = SC.OK_dirty && SC.OK_naujas;
- fs.writeFileSync('/tmp/S8.png', await page.screenshot({fullPage:true}));
+ fs.writeFileSync('/tmp/S8v3.png', await page.screenshot({fullPage:true}));
  await browser.close();
- try{ putB64('s8fix.png', fs.readFileSync('/tmp/S8.png').toString('base64')); }catch(e){}
+ try{ putB64('s8v3.png', fs.readFileSync('/tmp/S8v3.png').toString('base64')); }catch(e){}
 }catch(err){ SC.ERR=String(err && err.stack ? err.stack : err).slice(0,600); }
 O.SC=SC;
 
@@ -133,5 +141,5 @@ O.t_shop         = code(SITE+'/parduotuve/');
 fs.writeFileSync('/tmp/de.json',JSON.stringify({active:false}));
 sh('curl -sSk -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/de.json "'+API+'/'+sid+'"');
 O.site=sh('curl -sSk -m 25 -o /dev/null -w "%{http_code}" "'+SITE+'/"').out.trim();
-putB64('s8fix.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
+putB64('s8v3.json',Buffer.from(JSON.stringify(O,null,1)).toString('base64'));
 console.log('done');
