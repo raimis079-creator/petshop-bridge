@@ -1,0 +1,105 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2116,
+ "SC": {
+  "S1": {
+   "draft": 1,
+   "magic": 1,
+   "box": "Patikrinkite el. paštąJei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į s1@dev.avesa.lt. Prisijungę rasite savo augintinio profilį.",
+   "srv_draft_id": "11111111-2222-4333-8444-000000000001",
+   "draftYra": true,
+   "klaidos": [],
+   "OK": true
+  },
+  "S2": {
+   "draft": 1,
+   "magic": 1,
+   "OK": true
+  },
+  "S3": {
+   "draft": 1,
+   "magic": 0,
+   "stat": "Užpildykite bent augintinio rūšį ar vardą, tada bandykite dar kartą.",
+   "role": "alert",
+   "live": null,
+   "btnDisabled": false,
+   "btnText": "Gauti prisijungimo nuorodą",
+   "draftYra": true,
+   "OK": true
+  },
+  "S4": {
+   "magic": 0,
+   "stat": "Anketa per didelė. Sutrumpinkite laisvo teksto laukus.",
+   "role": "alert",
+   "btnDisabled": false,
+   "OK": true
+  },
+  "S5": {
+   "draft": 1,
+   "magic": 0,
+   "stat": "Per daug bandymų. Pabandykite vėliau.",
+   "btnDisabled": false,
+   "OK": true
+  },
+  "S6": {
+   "magic": 0,
+   "stat": "Nepavyko išsaugoti anketos. Bandykite dar kartą.",
+   "role": "alert",
+   "btnDisabled": false,
+   "draftYra": true,
+   "OK": true
+  },
+  "S7": {
+   "draft_kvietimu": 1,
+   "magic_kvietimu": 2,
+   "pirma_klaida": "Nepavyko išsiųsti nuorodos. Bandykite dar kartą.",
+   "magic_draft_ids": [
+    "11111111-2222-4333-8444-000000000001",
+    "11111111-2222-4333-8444-000000000001"
+   ],
+   "tas_pats": true,
+   "box": "Patikrinkite el. paštąJei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į s7@dev.avesa.lt. Prisijungę rasite savo augintinio profilį.",
+   "OK": true
+  },
+  "S8": {
+   "srv_po_pirmo": {
+    "draft_id": "11111111-2222-4333-8444-000000000001",
+    "email": "s8@dev.avesa.lt",
+    "fingerprint": "kdmgbk.27",
+    "dirty": false,
+    "at": 1785741856726
+   },
+   "dirty_po_pakeitimo": null,
+   "OK": false
+  },
+  "S9": {
+   "draft_kvietimu": 2,
+   "emails": [
+    "s9a@dev.avesa.lt",
+    "s9b@dev.avesa.lt"
+   ],
+   "OK": true
+  },
+  "S10": {
+   "pries": 336,
+   "po": 336,
+   "box": "Patikrinkite el. paštąJei paskyra egzistuoja, išsiuntėme prisijungimo nuorodą į s10@dev.avesa.lt. Prisijungę rasite savo augintinio profilį.",
+   "OK": true
+  }
+ },
+ "SUVESTINE": "9/10",
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
