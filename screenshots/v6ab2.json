@@ -1,0 +1,100 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2135,
+ "zym": "RMSD44SYL",
+ "pradzia": {
+  "VERSIJA": "e2e-b-v1",
+  "pets": 70,
+  "vartotoju": 31,
+  "ev": 106
+ },
+ "V": {
+  "V6_pries": {
+   "id": "198",
+   "pet_name": "RMSD44SYL-A1250",
+   "current_weight_kg": "12.50",
+   "weight_updated_at": "2026-08-03 10:55:21",
+   "current_food_brand": null
+  },
+  "V6_svoris_formoje": "12,5",
+  "V6_submit": "Išsaugoti ir baigti vėliau",
+  "V6": {
+   "request_count": 1,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_raktu": 5,
+   "payload_pet_id": 198,
+   "payload_vardas": "RMSD44SYL-PAKEISTAS",
+   "payload_svoris": "12.5",
+   "turi_weight_kg": false,
+   "pries": {
+    "id": "198",
+    "pet_name": "RMSD44SYL-A1250",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 10:55:21",
+    "current_food_brand": null
+   },
+   "po": {
+    "id": "198",
+    "pet_name": "RMSD44SYL-PAKEISTAS",
+    "species": "dog",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 13:55:37",
+    "current_food_brand": null
+   },
+   "klaidos": [],
+   "OK": false
+  },
+  "V6b_pries": {
+   "id": "199",
+   "pet_name": "RMSD44SYL-B1250",
+   "current_weight_kg": "12.50",
+   "weight_updated_at": "2026-08-03 10:55:45",
+   "current_food_brand": null
+  },
+  "V6b_dom": "13",
+  "V6b_submit": "Išsaugoti ir baigti vėliau",
+  "V6b": {
+   "request_count": 1,
+   "response": {
+    "status": 200,
+    "ok": true
+   },
+   "payload_svoris": "13",
+   "turi_weight_kg": false,
+   "pries": {
+    "id": "199",
+    "pet_name": "RMSD44SYL-B1250",
+    "current_weight_kg": "12.50",
+    "weight_updated_at": "2026-08-03 10:55:45",
+    "current_food_brand": null
+   },
+   "po": {
+    "id": "199",
+    "pet_name": "RMSD44SYL-B1250",
+    "species": "dog",
+    "current_weight_kg": "13.00",
+    "weight_updated_at": "2026-08-03 13:56:03",
+    "current_food_brand": null
+   },
+   "klaidos": [],
+   "OK": true
+  }
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
