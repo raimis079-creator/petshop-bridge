@@ -1,0 +1,24 @@
+{
+ "deaktyvuota_TEMP": [],
+ "sid": 2125,
+ "rez": {
+  "dydis": 80393,
+  "sha": "cb72c42655068bc4cba03ccb5199165a5d4d29fee7b2aad882a4859071829e21",
+  "blokas_1295_1325": "\t\tvar fill = el('div', 'pspet-progress-fill');\n\t\tfill.style.width = (step === 1 ? '50' : '100') + '%';\n\t\tbar.appendChild(fill);\n\t\tp.appendChild(bar);\n\t\treturn p;\n\t}\n\n\t// --- Submit ---\n\t// S206: payload be null reiksmiu — taip update kelias veikia kaip MERGE\n\t// (netusti nauji laukai perraso, tusti nepaliecia esamu).\n\tfunction buildPayload(){\n\t\tvar payload = {};\n\t\tObject.keys(state.data).forEach(function(k){\n\t\t\tif (state.data[k] !== null && k !== 'draft_id' && k !== 'created_at' && k !== '_weight_kg') payload[k] = state.data[k];\n\t\t});\n\t\t// S218: etapa issivedam is gimimo datos — zmogaus to nebeklausiam.\n\t\tif (payload.birth_date) {\n\t\t\tvar st = stageFromBirth(payload.birth_date);\n\t\t\tif (st) payload.life_stage = st;\n\t\t}\n\t\t// S208: redaguojant siunciam pet_id -> serveris eina i update_pet (merge), ne i create.\n\t\tif (state.editPetId) payload.pet_id = state.editPetId;\n\t\treturn payload;\n\t}\n\n\tfunction postProfile(payload, opts){\n\t\topts = opts || {};\n\t\tvar httpStatus = 0;\n\t\tvar btnEls = root ? root.querySelectorAll('.pspet-btn-primary') : [];\n\t\tbtnEls.forEach(function(b){ b.classList.add('pspet-btn-loading'); });\n\t\tfetch(REST + '/pet-profile', {",
+  "srvPayload_blokas": "d. Vietiniai laukai i ji nepatenka. */\n\tfunction srvPayload(){\n\t\tvar out = {};\n\t\tfor (var k in state.data) {\n\t\t\tif (!Object.prototype.hasOwnProperty.call(state.data, k)) continue;\n\t\t\tif (k === 'draft_id' || k === 'created_at') continue;\n\t\t\tvar v = state.data[k];\n\t\t\tif (v === null || v === undefined || v === '') continue;\n\t\t\tout[k] = v;\n\t\t}\n\t\treturn out;\n\t}\n\n\t// --- Render ---\n\t/**\n\t * Perjungus ZINGSNI — pakelia i anketos virsu. Be sio zmogus lieka senoje\n\t * scroll pozicijoje ir nemato naujo zingsnio pradzios.\n\t"
+ },
+ "t_naujas": "200|",
+ "t_atsijungti": "302|https://dev.avesa.lt/paskyra/",
+ "t_senas_logout": "301|https://dev.avesa.lt/paskyra/atsijungti/",
+ "t_adresai": "200|",
+ "t_slaptazodis": "200|",
+ "t_augintinis": "200|",
+ "t_uzsakymai": "200|",
+ "t_senas": "301|https://dev.avesa.lt/paskyra/",
+ "t_senas_uzsak": "301|https://dev.avesa.lt/paskyra/uzsakymai/",
+ "t_senas_augint": "301|https://dev.avesa.lt/paskyra/augintinis/",
+ "t_landing": "200|",
+ "t_home": "200|",
+ "t_shop": "200|",
+ "site": "200"
+}
