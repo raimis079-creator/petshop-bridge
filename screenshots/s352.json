@@ -1,0 +1,128 @@
+{
+ "VERSIJA_RUN": "run351-v1",
+ "sid": 2144,
+ "reset0": {
+  "VERSIJA": "s348-v1",
+  "act": "reset",
+  "pets_viso": 70,
+  "draftai": 11
+ },
+ "V": {
+  "EM": "e2e.s352.msd67a0l@pastas-test.lt",
+  "A": {
+   "errs": []
+  },
+  "nuoroda": "https://dev.avesa.lt/petshop-login?token=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoibWFnaWNfbG9naW4iLCJzdWJqZWN0X2lkIjowLCJyZXNvdXJjZV9pZCI6IjU5NjJmOTMyLWI3ZDQtNDBlYy1hNjUzLTM1M2YxYjk1MjRlOSIsImFjdGlvbiI6InBldCIsImV4cGlyZXNfYXQiOjE3ODU3NTg5MDcsIm5vbmNlIjoiYTMzZWZiYTIwOWFkNzFjZTY3ZDBhZGU2YzQzZDQ2ZjMiLCJrZXlfaWQiOiJ2MiJ9.b9e171ac370929a34027c952592bcfab44265da9a1f8d231c9edaf4c2437238b",
+  "draft_id": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+  "pries": {
+   "VERSIJA": "s348-v1",
+   "act": "st2",
+   "draftas": {
+    "draft_id": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+    "status": "active",
+    "payload_null": "0",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": null,
+    "claimed_pet_id": null
+   },
+   "tokenas": {
+    "id": "135",
+    "resource_id": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+    "status": "active",
+    "used_at": null
+   },
+   "vartotojas": null,
+   "pets_viso": 70,
+   "vartotoju": 31,
+   "ev": 106
+  },
+  "B_ekranas": "Prisijungti prie Petshop.lt Paspauskite mygtuką, kad užbaigtumėte prisijungimą. Prisijungti Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.",
+  "B_url": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=ok",
+  "B_errs": [],
+  "po1": {
+   "VERSIJA": "s348-v1",
+   "act": "st2",
+   "draftas": {
+    "draft_id": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+    "status": "claimed",
+    "payload_null": "1",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": "67",
+    "claimed_pet_id": "206"
+   },
+   "tokenas": {
+    "id": "135",
+    "resource_id": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+    "status": "used",
+    "used_at": "2026-08-03 11:53:37"
+   },
+   "vartotojas": {
+    "id": 67
+   },
+   "pets": [
+    {
+     "id": "206",
+     "pet_name": "S352-N2",
+     "current_weight_kg": "12.50",
+     "client_ref": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+     "status": "active"
+    }
+   ],
+   "pending": "",
+   "pets_viso": 71,
+   "vartotoju": 32,
+   "ev": 107
+  },
+  "C_ekranas1": "Nuoroda nebegalioja Nuoroda neteisinga arba pasibaigusi. Įveskite el. paštą ir atsiųsime naują. Gauti naują nuorodą Grįžti į prisijungimo puslapį",
+  "C_ekranas2": "Nuoroda nebegalioja Nuoroda neteisinga arba pasibaigusi. Įveskite el. paštą ir atsiųsime naują. Gauti naują nuorodą Grįžti į prisijungimo puslapį",
+  "C_url": "https://dev.avesa.lt/petshop-login?token=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoibWFnaWNfbG9naW4iLCJzdWJqZWN0X2lkIjowLCJyZXNvdXJjZV9pZCI6IjU5NjJmOTMyLWI3ZDQtNDBlYy1hNjUzLTM1M2YxYjk1MjRlOSIsImFjdGlvbiI6InBldCIsImV4cGlyZXNfYXQiOjE3ODU3NTg5MDcsIm5vbmNlIjoiYTMzZWZiYTIwOWFkNzFjZTY3ZDBhZGU2YzQzZDQ2ZjMiLCJrZXlfaWQiOiJ2MiJ9.b9e171ac370929a34027c952592bcfab44265da9a1f8d231c9edaf4c2437238b",
+  "C_errs": [],
+  "C_5xx": [],
+  "po2": {
+   "VERSIJA": "s348-v1",
+   "act": "st2",
+   "draftas": {
+    "draft_id": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+    "status": "claimed",
+    "payload_null": "1",
+    "claim_attempt_id": null,
+    "claim_started_at": null,
+    "claimed_user_id": "67",
+    "claimed_pet_id": "206"
+   },
+   "tokenas": {
+    "id": "135",
+    "resource_id": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+    "status": "used",
+    "used_at": "2026-08-03 11:53:37"
+   },
+   "vartotojas": {
+    "id": 67
+   },
+   "pets": [
+    {
+     "id": "206",
+     "pet_name": "S352-N2",
+     "current_weight_kg": "12.50",
+     "client_ref": "5962f932-b7d4-40ec-a653-353f1b9524e9",
+     "status": "active"
+    }
+   ],
+   "pending": "",
+   "pets_viso": 71,
+   "vartotoju": 32,
+   "ev": 107
+  },
+  "E0_claim_OK": true,
+  "N2_OK": true
+ },
+ "cleanup": {
+  "VERSIJA": "s348-v1",
+  "act": "cleanup",
+  "uem_istrintas": 1,
+  "pets_viso": 70,
+  "draftai": 11
+ }
+}
