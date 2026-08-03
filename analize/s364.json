@@ -1,0 +1,136 @@
+{
+ "VERSIJA_RUN": "run364-v1",
+ "sid": 2156,
+ "backup": {
+  "VERSIJA": "s364-v1",
+  "act": "backup",
+  "backup": {
+   "14595": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "14824": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "20971": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "23804": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "33249": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   }
+  },
+  "backup_issaugota": true,
+  "planas": {
+   "kainos": {
+    "14824": "16.49",
+    "33249": "18.99"
+   },
+   "i_draft": [
+    14595,
+    20971,
+    23804
+   ]
+  }
+ },
+ "apply": {
+  "VERSIJA": "s364-v1",
+  "act": "apply",
+  "backup": {
+   "14595": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "14824": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "20971": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "23804": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   },
+   "33249": {
+    "post_status": "publish",
+    "_price": "",
+    "_regular_price": "",
+    "_sale_price": "",
+    "_manual_price_override": ""
+   }
+  },
+  "kainos": {
+   "14824": {
+    "_price": "16.49",
+    "_regular_price": "16.49",
+    "override": "yes"
+   },
+   "33249": {
+    "_price": "18.99",
+    "_regular_price": "18.99",
+    "override": "yes"
+   }
+  },
+  "draft": {
+   "14595": "draft",
+   "20971": "draft",
+   "23804": "draft"
+  },
+  "po_apply_be_kainos": 0,
+  "publish_viso": 2761
+ },
+ "tikrinimas": {
+  "prod_14824": {
+   "http": "200",
+   "kaina_HTML": "16.49"
+  },
+  "prod_33249": {
+   "http": "200",
+   "kaina_HTML": "18.99"
+  },
+  "draft_14595": {
+   "http": "404"
+  },
+  "draft_20971": {
+   "http": "404"
+  },
+  "draft_23804": {
+   "http": "404"
+  }
+ }
+}
