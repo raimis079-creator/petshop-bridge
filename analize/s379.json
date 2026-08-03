@@ -1,0 +1,160 @@
+{
+ "VERSIJA_RUN": "run379-v1",
+ "deakt": [],
+ "sid": 2169,
+ "aplinka": {
+  "VERSIJA": "s379-v1",
+  "curl": "8.5.0",
+  "ssl": "OpenSSL/1.0.2k-fips",
+  "allow_url_fopen": "1",
+  "open_basedir": "/home/gyvunai2/:/tmp:/usr/share/pear",
+  "disable_functions": "link, symlink, exec, passthru, proc_close, proc_get_status, proc_open, shell_exec, system, popen, pclose",
+  "default_socket_timeout": "5",
+  "funkcijos": {
+   "gzopen": "yra",
+   "gzencode": "yra",
+   "curl_init": "yra",
+   "curl_multi_init": "yra",
+   "mysqli_connect": "yra",
+   "fsockopen": "yra",
+   "stream_socket_client": "yra"
+  },
+  "WP_HTTP_BLOCK_EXTERNAL": "neapibrėžta",
+  "WP_ACCESSIBLE_HOSTS": null
+ },
+ "svetaine_pries": "200",
+ "test_github": {
+  "VERSIJA": "s379-v1",
+  "dns": {
+   "host": "api.github.com",
+   "ip": "140.82.121.6",
+   "ms": 101
+  },
+  "tcp443": {
+   "pavyko": true,
+   "errno": 0,
+   "klaida": null,
+   "ms": 139
+  },
+  "curl": {
+   "http": 403,
+   "klaida": null,
+   "connect_ms": 35,
+   "ms": 142
+  }
+ },
+ "test_github_run_ms": 2640,
+ "svetaine_po_github": "200|2.300604",
+ "test_b2api": {
+  "VERSIJA": "s379-v1",
+  "dns": {
+   "host": "api.backblazeb2.com",
+   "ip": "149.137.142.15",
+   "ms": 3
+  },
+  "tcp443": {
+   "pavyko": true,
+   "errno": 0,
+   "klaida": null,
+   "ms": 537
+  },
+  "curl": {
+   "http": 405,
+   "klaida": null,
+   "connect_ms": 165,
+   "ms": 662
+  }
+ },
+ "test_b2api_run_ms": 2422,
+ "svetaine_po_b2api": "200|1.600562",
+ "test_wasabi": {
+  "VERSIJA": "s379-v1",
+  "dns": {
+   "host": "s3.eu-central-1.wasabisys.com",
+   "ip": "130.117.252.101",
+   "ms": 67
+  },
+  "tcp443": {
+   "pavyko": true,
+   "errno": 0,
+   "klaida": null,
+   "ms": 130
+  },
+  "curl": {
+   "http": 303,
+   "klaida": null,
+   "connect_ms": 29,
+   "ms": 342
+  }
+ },
+ "test_wasabi_run_ms": 2115,
+ "svetaine_po_wasabi": "200|1.770786",
+ "test_google": {
+  "VERSIJA": "s379-v1",
+  "dns": {
+   "host": "www.googleapis.com",
+   "ip": "172.217.112.4",
+   "ms": 65
+  },
+  "tcp443": {
+   "pavyko": true,
+   "errno": 0,
+   "klaida": null,
+   "ms": 71
+  },
+  "curl": {
+   "http": 404,
+   "klaida": null,
+   "connect_ms": 8,
+   "ms": 150
+  }
+ },
+ "test_google_run_ms": 1320,
+ "svetaine_po_google": "200|2.504009",
+ "test_sender": {
+  "VERSIJA": "s379-v1",
+  "dns": {
+   "host": "api.sender.net",
+   "ip": "172.66.174.167",
+   "ms": 79
+  },
+  "tcp443": {
+   "pavyko": true,
+   "errno": 0,
+   "klaida": null,
+   "ms": 14
+  },
+  "curl": {
+   "http": 200,
+   "klaida": null,
+   "connect_ms": 1,
+   "ms": 14
+  }
+ },
+ "test_sender_run_ms": 1266,
+ "svetaine_po_sender": "200|1.691047",
+ "test_wporg": {
+  "VERSIJA": "s379-v1",
+  "dns": {
+   "host": "api.wordpress.org",
+   "ip": "66.6.42.251",
+   "ms": 0
+  },
+  "tcp443": {
+   "pavyko": true,
+   "errno": 0,
+   "klaida": null,
+   "ms": 382
+  },
+  "curl": {
+   "http": 302,
+   "klaida": null,
+   "connect_ms": 125,
+   "ms": 502
+  }
+ },
+ "test_wporg_run_ms": 1897,
+ "svetaine_po_wporg": "200|1.729860",
+ "svetaine": "200",
+ "parduotuve": "200"
+}
