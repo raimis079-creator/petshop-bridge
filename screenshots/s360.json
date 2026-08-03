@@ -1,0 +1,344 @@
+{
+ "VERSIJA_RUN": "run351-v1",
+ "sid": 2151,
+ "sid59": 2152,
+ "mu_rewrite": {
+  "VERSIJA": "s359-v1",
+  "B": 7126,
+  "sha": "5bb63c37aedeadc8",
+  "v11": 1
+ },
+ "reset0": {
+  "VERSIJA": "s353-v1",
+  "act": "reset",
+  "pets_viso": 69,
+  "draftai": 11
+ },
+ "V": {
+  "D1": {
+   "EM": "e2e.d1.msd83ykk@pastas-test.lt",
+   "seed": {
+    "VERSIJA": "s353-v1",
+    "act": "mkuser",
+    "seed_pet_id": 212,
+    "user_id": 72,
+    "pets": [
+     {
+      "id": "212",
+      "pet_name": "S357-Dublis",
+      "species": "dog",
+      "status": "active"
+     }
+    ]
+   },
+   "forma": {
+    "errs": [],
+    "draft_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+    "nuoroda_yra": true
+   },
+   "pries": {
+    "VERSIJA": "s353-v1",
+    "act": "st2",
+    "draftas": {
+     "draft_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    "tokenas": {
+     "id": "140",
+     "resource_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+     "status": "active",
+     "used_at": null
+    },
+    "vartotojas": {
+     "id": 72
+    },
+    "pets": [
+     {
+      "id": "212",
+      "pet_name": "S357-Dublis",
+      "current_weight_kg": "10.00",
+      "client_ref": null,
+      "status": "active"
+     }
+    ],
+    "pending": "",
+    "pets_viso": 70,
+    "vartotoju": 31,
+    "ev": 108
+   },
+   "url_po_claim": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=duplicate_candidate",
+   "po_claim": {
+    "VERSIJA": "s353-v1",
+    "act": "st2",
+    "draftas": {
+     "draft_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    "tokenas": {
+     "id": "140",
+     "resource_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+     "status": "used",
+     "used_at": "2026-08-03 12:47:04"
+    },
+    "vartotojas": {
+     "id": 72
+    },
+    "pets": [
+     {
+      "id": "212",
+      "pet_name": "S357-Dublis",
+      "current_weight_kg": "10.00",
+      "client_ref": null,
+      "status": "active"
+     }
+    ],
+    "pending": {
+     "draft_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+     "candidate_ids": [
+      212
+     ],
+     "created_at": 1785761224,
+     "expires_at": 1786970824
+    },
+    "pets_viso": 70,
+    "vartotoju": 31,
+    "ev": 108
+   },
+   "ekranas": "Panašu, kad „S357-Dublis“ jau turite Jūsų paskyroje jau yra tokio pat vardo ir rūšies profilis. Atnaujinti jį ar tai kitas augintinis? S357-Dublis Šuo · sukurta 2026-08-03 ATNAUJINTI ŠĮ PROFILĮ NE, TAI KITAS AUGINTINIS",
+   "mygtukas_yra": true,
+   "ekranas_po": "AUGINTINIAI S357-Dublis Šuo S357-Dublis Šuo + Pridėti augintinį S357-Dublis Šuo · 12,5 kg PAPILDYTI PROFILĮ ⋯ Papildykite profilį Profilis užpildytas 20% Dar galite nurodyti gimimo",
+   "errs": [],
+   "st5": [],
+   "pendResp": [
+    {
+     "status": 200,
+     "body": "{\"ok\":true,\"pending\":true,\"draft_id\":\"e55ab51c-3403-4a48-a968-e049e8eb1262\",\"payload\":{\"species\":\"dog\",\"species_detail\":null,\"pet_name\":\"S357-Dublis\",\"life_stage\":null,\"dog_size\":null,\"is_sterilised\":null,\"feeding_type\":null,\"feeding_type_other\":null,\"wet_food_g\":null,\"wet_product_id\":null,\"primary_"
+    }
+   ],
+   "po": {
+    "VERSIJA": "s353-v1",
+    "act": "st2",
+    "draftas": {
+     "draft_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+     "status": "claimed",
+     "payload_null": "1",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": "72",
+     "claimed_pet_id": "213"
+    },
+    "tokenas": {
+     "id": "140",
+     "resource_id": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+     "status": "used",
+     "used_at": "2026-08-03 12:47:04"
+    },
+    "vartotojas": {
+     "id": 72
+    },
+    "pets": [
+     {
+      "id": "212",
+      "pet_name": "S357-Dublis",
+      "current_weight_kg": "10.00",
+      "client_ref": null,
+      "status": "active"
+     },
+     {
+      "id": "213",
+      "pet_name": "S357-Dublis",
+      "current_weight_kg": "12.50",
+      "client_ref": "e55ab51c-3403-4a48-a968-e049e8eb1262",
+      "status": "active"
+     }
+    ],
+    "pending": "",
+    "pets_viso": 71,
+    "vartotoju": 31,
+    "ev": 109
+   }
+  },
+  "D1_santrauka": {
+   "duplicate_redirect": true,
+   "ekrane_klausimas": true,
+   "pets_po": 2,
+   "naujas_pet": "213",
+   "draft_status": "claimed",
+   "claimed_pet": "213",
+   "pending_po": "",
+   "ev_pokytis": 1
+  },
+  "D1_OK": true,
+  "D2": {
+   "EM": "e2e.d2.msd84xri@pastas-test.lt",
+   "seed": {
+    "VERSIJA": "s353-v1",
+    "act": "mkuser",
+    "seed_pet_id": 214,
+    "user_id": 73,
+    "pets": [
+     {
+      "id": "214",
+      "pet_name": "S357-Dublis",
+      "species": "dog",
+      "status": "active"
+     }
+    ]
+   },
+   "forma": {
+    "errs": [],
+    "draft_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+    "nuoroda_yra": true
+   },
+   "pries": {
+    "VERSIJA": "s353-v1",
+    "act": "st2",
+    "draftas": {
+     "draft_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    "tokenas": {
+     "id": "141",
+     "resource_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+     "status": "active",
+     "used_at": null
+    },
+    "vartotojas": {
+     "id": 73
+    },
+    "pets": [
+     {
+      "id": "214",
+      "pet_name": "S357-Dublis",
+      "current_weight_kg": "10.00",
+      "client_ref": null,
+      "status": "active"
+     }
+    ],
+    "pending": "",
+    "pets_viso": 70,
+    "vartotoju": 31,
+    "ev": 109
+   },
+   "url_po_claim": "https://dev.avesa.lt/paskyra/augintinis/?pet_claim=duplicate_candidate",
+   "po_claim": {
+    "VERSIJA": "s353-v1",
+    "act": "st2",
+    "draftas": {
+     "draft_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+     "status": "active",
+     "payload_null": "0",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": null,
+     "claimed_pet_id": null
+    },
+    "tokenas": {
+     "id": "141",
+     "resource_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+     "status": "used",
+     "used_at": "2026-08-03 12:47:50"
+    },
+    "vartotojas": {
+     "id": 73
+    },
+    "pets": [
+     {
+      "id": "214",
+      "pet_name": "S357-Dublis",
+      "current_weight_kg": "10.00",
+      "client_ref": null,
+      "status": "active"
+     }
+    ],
+    "pending": {
+     "draft_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+     "candidate_ids": [
+      214
+     ],
+     "created_at": 1785761270,
+     "expires_at": 1786970870
+    },
+    "pets_viso": 70,
+    "vartotoju": 31,
+    "ev": 109
+   },
+   "ekranas": "Panašu, kad „S357-Dublis“ jau turite Jūsų paskyroje jau yra tokio pat vardo ir rūšies profilis. Atnaujinti jį ar tai kitas augintinis? S357-Dublis Šuo · sukurta 2026-08-03 ATNAUJINTI ŠĮ PROFILĮ NE, TAI KITAS AUGINTINIS",
+   "mygtukas_yra": true,
+   "ekranas_po": "AUGINTINIAI S357-Dublis Šuo + Pridėti augintinį S357-Dublis Šuo · 12,5 kg PAPILDYTI PROFILĮ ⋯ Papildykite profilį Profilis užpildytas 20% Dar galite nurodyti gimimo datą, aktyvumą ",
+   "errs": [],
+   "st5": [],
+   "pendResp": [
+    {
+     "status": 200,
+     "body": "{\"ok\":true,\"pending\":true,\"draft_id\":\"17a32ad4-bf51-4408-bf14-19fec5d6c1e8\",\"payload\":{\"species\":\"dog\",\"species_detail\":null,\"pet_name\":\"S357-Dublis\",\"life_stage\":null,\"dog_size\":null,\"is_sterilised\":null,\"feeding_type\":null,\"feeding_type_other\":null,\"wet_food_g\":null,\"wet_product_id\":null,\"primary_"
+    }
+   ],
+   "po": {
+    "VERSIJA": "s353-v1",
+    "act": "st2",
+    "draftas": {
+     "draft_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+     "status": "claimed",
+     "payload_null": "1",
+     "claim_attempt_id": null,
+     "claim_started_at": null,
+     "claimed_user_id": "73",
+     "claimed_pet_id": "214"
+    },
+    "tokenas": {
+     "id": "141",
+     "resource_id": "17a32ad4-bf51-4408-bf14-19fec5d6c1e8",
+     "status": "used",
+     "used_at": "2026-08-03 12:47:50"
+    },
+    "vartotojas": {
+     "id": 73
+    },
+    "pets": [
+     {
+      "id": "214",
+      "pet_name": "S357-Dublis",
+      "current_weight_kg": "12.50",
+      "client_ref": null,
+      "status": "active"
+     }
+    ],
+    "pending": "",
+    "pets_viso": 70,
+    "vartotoju": 31,
+    "ev": 109
+   }
+  },
+  "D2_santrauka": {
+   "pets_po": 1,
+   "esamas_svoris": "12.50",
+   "draft_status": "claimed",
+   "claimed_pet": "214",
+   "pending_po": "",
+   "ev_pokytis": 0
+  },
+  "D2_OK": true
+ },
+ "pabaiga": {
+  "VERSIJA": "s353-v1",
+  "act": "reset",
+  "pets_viso": 69,
+  "draftai": 11
+ }
+}
