@@ -1,0 +1,62 @@
+{
+ "VERSIJA_RUN": "run397-v1",
+ "sid": 2184,
+ "fetch": {
+  "VERSIJA": "s397-v1",
+  "act": "fetch",
+  "auth": 200,
+  "capabilities": [
+   "readBucketRetentions",
+   "readFileLegalHolds",
+   "readBucketEncryption",
+   "readBucketReplications",
+   "shareFiles",
+   "readBucketNotifications",
+   "readBucketLifecycleRules",
+   "readFileRetentions",
+   "readBuckets",
+   "listFiles",
+   "readBucketLogging",
+   "readFiles",
+   "listBuckets"
+  ],
+  "gali_trinti": "ne (gerai)",
+  "rasta_kopiju": 3,
+  "pasirinkta": {
+   "n": "petshop-backups/2026/08/petshop-2026-08-04_070016.tar.gz.enc",
+   "b": 18498806,
+   "sha": "cd577a7e97896dd9551d4999da31c50c8b0cdb5f",
+   "ts": 1785826823083
+  },
+  "atsisiuntimas": {
+   "http": 200,
+   "vietinis_dydis": 18498806,
+   "laukta": 18498806,
+   "klaida": null
+  },
+  "DYDIS_SUTAMPA": "TAIP",
+  "SHA1_SUTAMPA": "TAIP"
+ },
+ "unpack": {
+  "VERSIJA": "s397-v1",
+  "act": "unpack",
+  "HMAC_SUTAMPA": "TAIP",
+  "desifruota_MB": 17.64,
+  "tar_MB": 22.15,
+  "istraukta": [
+   "db/database.sql.gz",
+   "manifest.json"
+  ],
+  "sql_MB": 14.26,
+  "manifestas": {
+   "consistency": "mixed_engine_best_effort",
+   "tables_total": 174,
+   "rows_total": 488822,
+   "code_files": 293,
+   "generator": "ps-backup.php v1.1",
+   "start": "2026-08-04T07:00:16+00:00",
+   "end": "2026-08-04T07:00:20+00:00"
+  }
+ },
+ "svetaine": "200"
+}
