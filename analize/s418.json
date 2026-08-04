@@ -1,0 +1,71 @@
+{
+ "VERSIJA_RUN": "run418-v1",
+ "update": "200",
+ "patikra": {
+  "active": true,
+  "turi_s416": true
+ },
+ "recon": {
+  "VERSIJA": "s416-v1",
+  "act": "recon",
+  "eilutes_116_145": [
+   "116: }",
+   "117: ",
+   "118: add_action( 'wp_footer', 'flatsome_body_overlay' );",
+   "119: ",
+   "120: ",
+   "121: // Custom HTML Before footer",
+   "122: function flatsome_html_before_footer(){",
+   "123:   $html_before = get_theme_mod('html_before_footer');",
+   "124:   if($html_before){",
+   "125:     echo do_shortcode($html_before);",
+   "126:   }",
+   "127: }",
+   "128: add_action('flatsome_before_footer', 'flatsome_html_before_footer');",
+   "129: ",
+   "130: // Custom HMTL After footer",
+   "131: function flatsome_html_after_footer(){",
+   "132: \t$html_after = get_theme_mod('html_after_footer');",
+   "133: \tif($html_after){",
+   "134: \t echo do_shortcode($html_after);",
+   "135: \t}",
+   "136: }",
+   "137: add_action('flatsome_after_footer', 'flatsome_html_after_footer');",
+   "138: ",
+   "139: "
+  ],
+  "kabliukai": [
+   "7: add_action 'wp_footer'",
+   "83: add_action 'flatsome_footer'",
+   "91: add_action 'flatsome_footer'",
+   "98: add_action 'wp_footer'",
+   "107: add_action 'wp_footer'",
+   "118: add_action 'wp_footer'",
+   "128: add_action 'flatsome_before_footer'",
+   "137: add_action 'flatsome_after_footer'"
+  ],
+  "registruoti": {
+   "flatsome_footer": [
+    10
+   ],
+   "flatsome_before_footer": [
+    10
+   ],
+   "flatsome_html_before_footer": "NERA"
+  }
+ },
+ "salinti": {
+  "VERSIJA": "s416-v1",
+  "act": "salinti_widget",
+  "salinta": [
+   "custom_html-6"
+  ],
+  "footer1_po": [],
+  "footer2_po": [
+   "custom_html-2",
+   "custom_html-3",
+   "custom_html-4",
+   "custom_html-5"
+  ]
+ }
+}
