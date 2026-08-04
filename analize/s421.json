@@ -1,0 +1,64 @@
+{
+ "VERSIJA_RUN": "run421-v1",
+ "sid": 2205,
+ "deploy": {
+  "VERSIJA": "s421-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 8841,
+   "sha": "d1575ae272fe3dea"
+  }
+ },
+ "post_test": {
+  "VERSIJA": "s421-v1",
+  "act": "post_test",
+  "pastas": "nl.hp2.d1daa468@pastas-test.lt",
+  "atsakymas": {
+   "http": 200,
+   "body": {
+    "ok": true,
+    "message": "Ačiū! Į nurodytą adresą išsiuntėme patvirtinimą."
+   }
+  },
+  "DB_pokytis": {
+   "consent_log": 0,
+   "jobs": 0
+  },
+  "irasu_siam_pastui": 0,
+  "VERDIKTAS": "GERAI: DB nepaliesta"
+ },
+ "desktop": {
+  "tekstas_innerText": -1,
+  "honeypot_rastas": true,
+  "viewporte": false,
+  "aria": "true",
+  "tabindex": "-1",
+  "autocomplete": "off",
+  "tab": [
+   "psnl-btn",
+   "psnl-check",
+   "A",
+   "A",
+   "A"
+  ],
+  "tab_yra_honeypot": false,
+  "forma_matoma": true
+ },
+ "mobile": {
+  "tekstas_innerText": -1,
+  "honeypot_rastas": true,
+  "viewporte": false,
+  "aria": "true",
+  "tabindex": "-1",
+  "autocomplete": "off",
+  "tab": [
+   "psnl-btn",
+   "psnl-check",
+   "A",
+   "A",
+   "A"
+  ],
+  "tab_yra_honeypot": false,
+  "forma_matoma": true
+ }
+}
