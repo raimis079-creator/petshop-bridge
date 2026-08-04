@@ -1,0 +1,59 @@
+{
+ "VERSIJA_RUN": "run401-v1",
+ "sid": 2188,
+ "deploy": {
+  "VERSIJA": "s401-v1",
+  "act": "deploy",
+  "sargas": {
+   "B": 4426,
+   "sha": "efb40d007472867a",
+   "teises": "0700"
+  },
+  "runner": {
+   "kelias": "/home/gyvunai2/domains/avesa.lt/public_html/dev/watch-run.php",
+   "B": 143
+  }
+ },
+ "testai": {
+  "VERSIJA": "s401-v1",
+  "act": "testai",
+  "be_rakto": 403,
+  "blogas_raktas": 403,
+  "T1_normali": {
+   "http": 200,
+   "out": "OK · paskutine kopija pries 1.1 val. · 17.64 MB · 174 lenteliu"
+  },
+  "T2_sena_data": {
+   "http": 200,
+   "out": "PROBLEMA (1):\n - Paskutinė kopija prieš 40 val. (riba 26 val.) — CRON GREIČIAUSIAI NEBEPASILEIDŽIA.\nPranesimas issiustas: terra@gyvunai.lt"
+  },
+  "T3_fail": {
+   "http": 200,
+   "out": "PROBLEMA (1):\n - Paskutinis bandymas: FAIL — testinis\nPranesimas issiustas: terra@gyvunai.lt"
+  },
+  "T4_maza": {
+   "http": 200,
+   "out": "PROBLEMA (1):\n - Kopija įtartinai maža: 0 MB (riba 5 MB).\nPranesimas issiustas: terra@gyvunai.lt"
+  },
+  "T5_nera_failo": {
+   "http": 200,
+   "out": "PROBLEMA (1):\n - Būsenos failo NĖRA: /home/gyvunai2/backups/.ps-backup-state.json — vadinasi ps-backup.php nė karto nepasileido arba failas ištrintas.\nPranesimas issiustas: terra@gyvunai.lt"
+  },
+  "grazinta": "TAIP",
+  "T6_po_grazinimo": {
+   "http": 200,
+   "out": "OK · paskutine kopija pries 1.1 val. · 17.64 MB · 174 lenteliu"
+  },
+  "sargo_busena": {
+   "last_check": "2026-08-04T08:08:48+00:00",
+   "verdict": "OK",
+   "problems": [],
+   "backup": {
+    "last_run": "2026-08-04T07:00:24+00:00",
+    "result": "OK",
+    "age_h": 1.1
+   }
+  }
+ },
+ "svetaine": "200"
+}
