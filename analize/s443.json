@@ -1,0 +1,37 @@
+{
+ "VERSIJA_RUN": "run443-v1",
+ "sid": 2225,
+ "webhook": {
+  "VERSIJA": "s443-v1",
+  "act": "webhook",
+  "webhook_log_lentele": true,
+  "webhook_log_irasu": 1,
+  "webhook_log_pvz": [
+   {
+    "id": "1",
+    "dedup_key": "9f253bdb3ecd37d1ab131d8aca849306",
+    "topic": "subscribers/updated",
+    "email": "chan-test@example.com",
+    "marketing_status": "unsubscribed",
+    "transactional_status": "active",
+    "payload_json": "{\"type\":\"subscribers\\/updated\",\"email\":\"chan-test@example.com\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"}}",
+    "processing_result": "test",
+    "received_at": "2026-07-30 20:24:52"
+   }
+  ]
+ },
+ "snippetai_pries": {
+  "VERSIJA": "s443-v1",
+  "act": "snippetai",
+  "pries": {
+   "viso": 1587,
+   "TEMP": 227,
+   "TEMP_aktyvus": 3
+  },
+  "po": {
+   "viso": 1587,
+   "TEMP": 227,
+   "aktyvus": 85
+  }
+ }
+}
