@@ -1,0 +1,48 @@
+{
+ "VERSIJA_RUN": "run412-v1",
+ "sid": 2198,
+ "footer_pries": {
+  "VERSIJA": "s412-v2",
+  "act": "footer",
+  "esamas_footer1": "",
+  "esamas_footer2": ""
+ },
+ "footer_apply": {
+  "VERSIJA": "s412-v2",
+  "act": "footer",
+  "esamas_footer1": "",
+  "esamas_footer2": "",
+  "ideta": true,
+  "naujas_footer1": "[petshop_newsletter title=\"Gaukite naudingus patarimus ir Petshop.lt pasiūlymus\" text=\"Retai, bet iš esmės: maisto naujienos, praktiniai patarimai ir aktualūs pasiūlymai.\" button=\"Prenumeruoti\"]\n\n"
+ },
+ "modal_on": {
+  "VERSIJA": "s412-v2",
+  "act": "modal_on",
+  "jungiklis": "IJUNGTAS"
+ },
+ "porastes_forma": {
+  "yra": true,
+  "matoma": false,
+  "tekstas": " El. pašto adresas Prenumeruoti Sutinku gauti Petshop.lt naujienas el. paštu. Atsisakyti galėsiu bet kada. Nepildykite šio lauko Duomenis tvarko UAB Avesa. Daugiau — privatumo poli",
+  "varnele_pazymeta": false,
+  "honeypot_matomas": false
+ },
+ "modalas": {
+  "pries": 1,
+  "DOM": 1,
+  "matomas": true,
+  "tekstas": "× Petshop.lt atsinaujino Ta pati parduotuvė, kurią pažįstate — naujas vaizdas ir keli dalykai, kurių anksčiau nebuvo. Dabar matome, kiek jūsų augintiniui kainuoja diena ir kiek maisto jam reikia pagal gamintojo lentelę — ne pagal spėjimą. Susipažinkime su jūsų",
+  "turi_nuolaida": "ne (gerai)",
+  "anketos_nuoroda": "https://dev.avesa.lt/augintinio-profilis/",
+  "nl_atsidare": true,
+  "po_ESC_matomas": true,
+  "cookie": true
+ },
+ "checkout_be_modalo": "TAIP (gerai)",
+ "js_klaidos": [],
+ "modal_off": {
+  "VERSIJA": "s412-v2",
+  "act": "modal_off",
+  "jungiklis": "isjungtas"
+ }
+}
