@@ -5,14 +5,23 @@ const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.aves
 function sh(c){try{const o=execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();return o;}catch(e){return String(e).slice(0,300);}}
 function putResult(name,txt){const u='https://api.github.com/repos/'+REPO+'/contents/analize/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:20e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s417',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s418',content:Buffer.from(txt).toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 60 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:20e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run417-diag'};
+const O={VERSIJA_RUN:'run418-v1'};
+// perrasom 2202 TEISINGU kodu
+const PHP=Buffer.from('PD9waHAKLyoqCiAqIFRFTVAgUzQxNiBGb290ZXIgSG9vayB2MSDigJQgdGlrc2x1cyBrYWJsaXVrYXMgKyB3aWRnZXQgc2FsaW5pbWFzICsgcmVuZGVyaXMKICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgICBpZiAoICEgaXNzZXQoJF9HRVRbJ3BzX3M0MTYnXSkgfHwgJF9HRVRbJ3BzX3M0MTYnXSAhPT0gJ0s0MTZmaCcgKSByZXR1cm47CiAgICBub2NhY2hlX2hlYWRlcnMoKTsgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAgIEBzZXRfdGltZV9saW1pdCgxNTApOwogICAgJGFjdD1pc3NldCgkX0dFVFsnYWN0J10pPyRfR0VUWydhY3QnXTonJzsKICAgICRyPWFycmF5KCdWRVJTSUpBJz0+J3M0MTYtdjEnLCdhY3QnPT4kYWN0KTsKICAgICR0ZW1hPWdldF90ZW1wbGF0ZV9kaXJlY3RvcnkoKTsKICAgICRDT1JFPVdQX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWNvcmUnOwoKICAgIGlmKCRhY3Q9PT0ncmVjb24nKXsKICAgICAgICAkZj0kdGVtYS4nL2luYy9zdHJ1Y3R1cmUvc3RydWN0dXJlLWZvb3Rlci5waHAnOwogICAgICAgICRjPWZpbGVfZ2V0X2NvbnRlbnRzKCRmKTsKICAgICAgICAkbD1leHBsb2RlKCJcbiIsJGMpOwogICAgICAgICRvdXQ9YXJyYXkoKTsKICAgICAgICBmb3IoJGk9MTE1OyRpPG1pbihjb3VudCgkbCksMTQ1KTskaSsrKSAkb3V0W109KCRpKzEpLic6ICcucnRyaW0oc3Vic3RyKCRsWyRpXSwwLDE2MCkpOwogICAgICAgICRyWydlaWx1dGVzXzExNl8xNDUnXT0kb3V0OwogICAgICAgIC8vIHZpc2kgZG9fYWN0aW9uL2FkZF9hY3Rpb24gZmFpbGUKICAgICAgICAkaGE9YXJyYXkoKTsKICAgICAgICBmb3JlYWNoKCRsIGFzICRpPT4kbG4pIGlmKHByZWdfbWF0Y2goIi8oZG9fYWN0aW9ufGFkZF9hY3Rpb24pXHMqXChccyonKFthLXpfXSspJy8iLCRsbiwkbSkpCiAgICAgICAgICAgICRoYVtdPSgkaSsxKS4nOiAnLiRtWzFdLiIgJyIuJG1bMl0uIiciOwogICAgICAgICRyWydrYWJsaXVrYWknXT0kaGE7CiAgICAgICAgLy8gYXIgZWd6aXN0dW9qYSB2ZWlraWFudGlzIGZsYXRzb21lX2Zvb3RlcgogICAgICAgIGdsb2JhbCAkd3BfZmlsdGVyOwogICAgICAgIGZvcmVhY2goYXJyYXkoJ2ZsYXRzb21lX2Zvb3RlcicsJ2ZsYXRzb21lX2JlZm9yZV9mb290ZXInLCdmbGF0c29tZV9odG1sX2JlZm9yZV9mb290ZXInKSBhcyAkaCl7CiAgICAgICAgICAgICRyWydyZWdpc3RydW90aSddWyRoXT0gaXNzZXQoJHdwX2ZpbHRlclskaF0pID8gYXJyYXlfa2V5cygkd3BfZmlsdGVyWyRoXS0+Y2FsbGJhY2tzKSA6ICdORVJBJzsKICAgICAgICB9CiAgICAgICAgZWNobyB3cF9qc29uX2VuY29kZSgkciwgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1BSRVRUWV9QUklOVCk7IGV4aXQ7CiAgICB9CgogICAgaWYoJGFjdD09PSdzYWxpbnRpX3dpZGdldCcpewogICAgICAgICRzdz1nZXRfb3B0aW9uKCdzaWRlYmFyc193aWRnZXRzJyxhcnJheSgpKTsKICAgICAgICAkY2g9Z2V0X29wdGlvbignd2lkZ2V0X2N1c3RvbV9odG1sJyxhcnJheSgpKTsKICAgICAgICAkc2FsaW50aT1hcnJheSgpOwogICAgICAgIGZvcmVhY2goKGFycmF5KSRjaCBhcyAkaz0+JHYpCiAgICAgICAgICAgIGlmKGlzX2FycmF5KCR2KSYmaXNzZXQoJHZbJ2NvbnRlbnQnXSkmJnN0cnBvcygkdlsnY29udGVudCddLCdwZXRzaG9wX25ld3NsZXR0ZXInKSE9PWZhbHNlKSAkc2FsaW50aVtdPSdjdXN0b21faHRtbC0nLiRrOwogICAgICAgIGZvcmVhY2goJHN3IGFzICRzYj0+JGxzdCl7CiAgICAgICAgICAgIGlmKCFpc19hcnJheSgkbHN0KSkgY29udGludWU7CiAgICAgICAgICAgICRzd1skc2JdPWFycmF5X3ZhbHVlcyhhcnJheV9kaWZmKCRsc3QsJHNhbGludGkpKTsKICAgICAgICB9CiAgICAgICAgdXBkYXRlX29wdGlvbignc2lkZWJhcnNfd2lkZ2V0cycsJHN3KTsKICAgICAgICBmb3JlYWNoKCRzYWxpbnRpIGFzICRpZCl7ICRuPShpbnQpc3Vic3RyKCRpZCwxMik7IHVuc2V0KCRjaFskbl0pOyB9CiAgICAgICAgdXBkYXRlX29wdGlvbignd2lkZ2V0X2N1c3RvbV9odG1sJywkY2gpOwogICAgICAgICRzdzI9Z2V0X29wdGlvbignc2lkZWJhcnNfd2lkZ2V0cycsYXJyYXkoKSk7CiAgICAgICAgJHJbJ3NhbGludGEnXT0kc2FsaW50aTsKICAgICAgICAkclsnZm9vdGVyMV9wbyddPWlzc2V0KCRzdzJbJ3NpZGViYXItZm9vdGVyLTEnXSk/JHN3Mlsnc2lkZWJhci1mb290ZXItMSddOidORVJBJzsKICAgICAgICAkclsnZm9vdGVyMl9wbyddPWlzc2V0KCRzdzJbJ3NpZGViYXItZm9vdGVyLTInXSk/JHN3Mlsnc2lkZWJhci1mb290ZXItMiddOidORVJBJzsKICAgICAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fUFJFVFRZX1BSSU5UKTsgZXhpdDsKICAgIH0KICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycic9PidhY3QnKSk7IGV4aXQ7Cn0sIDEpOwo=','base64').toString('utf8').replace(/^<\?php\s*/,'');
+fs.writeFileSync('/tmp/up.json',JSON.stringify({code:PHP,active:true}));
+O.update=sh('curl -sSk --max-time 60 -o /dev/null -w "%{http_code}" '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/up.json "'+API+'/2202"').trim();
+sh('sleep 4');
 const g=sh('curl -sSk --max-time 40 '+AUTH+' "'+API+'/2202"');
-try{const j=JSON.parse(g); O.snippet={id:j.id,name:j.name,active:j.active,scope:j.scope,
-  code_len:(j.code||'').length, code_pradzia:(j.code||'').slice(0,180)};}catch(e){O.raw=g.slice(0,400);}
-O.testas=sh('curl -sSk --max-time 40 -o /dev/null -w "%{http_code}|%{size_download}" "'+SITE+'/?ps_s416=K416fh&act=recon"').trim();
-putResult('s417.json', JSON.stringify(O,null,1));
+try{const j=JSON.parse(g); O.patikra={active:j.active, turi_s416:(j.code||'').indexOf('ps_s416')>=0};}catch(e){}
+function q(a){const x=sh('curl -sSk --max-time 150 "'+SITE+'/?ps_s416=K416fh&act='+a+'&z='+Math.random()+'"');
+ try{return JSON.parse(x);}catch(e){return {raw:String(x).slice(0,200)};}}
+O.recon=q('recon');
+O.salinti=q('salinti_widget');
+fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
+sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/2202"');
+putResult('s418.json', JSON.stringify(O,null,1));
 console.log('OK');
