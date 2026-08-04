@@ -18,7 +18,7 @@
 | Launch DoD (22) | 7 | 4 | 9 | 2 nematuota |
 | P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
 | MVP funkcijos (§4.3) | 4 | 0 | 1 | 1 nepatikrinta |
-| El. laiškų šablonai | 5 | 0 | 12 | — |
+| El. laiškų šablonai | 8 | 1 | 9 | — |
 | M8 anketa (9 punktai) | 9 | 0 | 0 | tekstai |
 | Pre-launch operacijos | 0 | 2 | 9 | — |
 
@@ -121,9 +121,10 @@ Transportas ✅: adapteris `Petshop_Sender_Adapter` v0.4.0, `is_configured=true`
 | Šablonas | Būsena | Prioritetas |
 |---|---|---|
 | order-paid · refill · cart-abandoned-1 · cart-abandoned-2 · post-purchase-2d | ✅ 5 | — |
-| payment_failed (dunning-1) | 🔴 | **launch** — nesumokėti užsakymai tyliai dingsta |
-| founding_activation | 🔴 | **launch** — rugpjūčio arka |
-| consent_changed | 🔴 | **launch** — teisinis pėdsakas |
+| **consent-changed · dunning-1 · founding** | ✅ 3 · 2026-08-04 | §8i |
+| payment_failed → dunning-1 | 🟡 | Šablonas ✅, BET `payment_failed` ĮVYKIO DB NĖRA VISAI — niekas jo neiškviečia (§8i) |
+| founding_activation → founding | ✅ | Šablonas veikia; laukia rugpjūčio waitlist arkos |
+| consent_changed | ✅ | Šablonas veikia, grandinė įrodyta WOULD_SEND (§8i) |
 | shipment_returned · pet_reminder_due · subscription_t5_notice | 🔴 | subscription_t5 priklauso nuo F19 |
 | post_purchase_7d · post_purchase_14d | 🔴 | po launch |
 | win_back_60/90/120 · legacy_reactivation_l1 | 🔴 | po launch |
@@ -568,6 +569,66 @@ Keturi gedimo tipai — keturi skirtingi pranešimai, ne bendras „kažkas nege
 
 **Kodėl 10:00:** 6 val. po backup'o. Jei naktinis 04:00 nepasileistų arba
 žlugtų, apie tai žinoma tą pačią dieną, ne po savaitės.
+
+---
+
+## 8i. EL. LAIŠKŲ ŠABLONAI — TRYS LAUNCH SVORIO ĮDIEGTI (2026-08-04)
+
+**SVARBU KITAM LANGUI: srautų registras JAU PILNAS.** `Petshop_Email_Dispatch::flows()`
+turi visus 18 srautų su `class` / `template` / `delay`. Naujam laiškui KODO KEISTI
+NEREIKIA — pakanka įdėti šabloną `petshop-core/templates/emails/{slug}.php`.
+
+**Šablono kontraktas:** gauna `$payload`, nustato `$subject`, grąžina HTML.
+Pradžioje `if (!defined('ABSPATH')) exit;`. Stilius — table-based, #F3EFE5 fonas,
+600px kortelė, CTA #2d6a35. Pabaigoje UAB Avesa rekvizitai + priežastis, kodėl
+laiškas gautas. Marketingo srautuose PRIVALO būti atsisakymo nuoroda.
+
+```
+consent-changed.php  3 630 B · sha c214ba2ed0f185f3
+dunning-1.php        3 238 B · sha dfc5178ecd23d96b
+founding.php         3 555 B · sha 9b77b8a5f30315c5
+Šablonų viso: 8 iš 18 srautų
+```
+
+**Renderinimo testai 6/6 (s404.json)** — kiekvienas su pilnu IR tuščiu payload:
+```
+                     su duomenimis                    be duomenų
+consent_changed      „...sutikote gauti naujienas"    „...naujienų nebesiųsime"
+payment_failed       „Užsakymas AVPN-1042 laukia..."  „Jūsų užsakymas laukia..."
+founding_activation  su kodo bloku                    be kodo bloko
+Visi: DOCTYPE ✅ · UAB ✅ · PHP klaidų 0 ✅ · lietuviškos raidės ✅
+```
+Tuščio payload testai svarbiausi: realiame gyvenime payload dažnai nepilnas,
+o laiškas su `Undefined` klaida blogiau nei jokio laiško.
+
+**Grandinė įrodyta (s406.json):**
+```
+enqueue → job pending, be block/skip
+process_pending(dry) → picked 1 → WOULD_SEND
+   subject „Patvirtiname: sutikote gauti mūsų naujienas" · html 1 917 B
+cron ps_email_dispatch_cron gyvas
+```
+
+### DU RADINIAI
+
+**1. Klaidingas ankstesnis teiginys.** Buvo manyta: „24 consent_changed įvykiai
+laukia, vos šablonas atsiras — nukeliaus". **NETIESA.** Visi 24 jau `sent`
+(2026-07-31), o `consent_jobs = 0`. Įvykių žurnalas ir laiškų eilė — DU ATSKIRI
+sluoksniai: įvykis nuėjo į Sender kaip kontakto atnaujinimas, laiško darbas
+NEBUVO sukurtas. Šablonas veiks TIK naujiems pakeitimams. Senų perleisti
+NEDERĖTŲ — žmonės gautų patvirtinimą apie savaitės senumo veiksmą.
+(Pavyzdžiai `s2@example.com`, `source: s2` — testiniai, ne klientai.)
+
+**2. `pet_profile_created`: 6 įrašai `dead` iš 109.** Po pakartotinių bandymų
+palikti. Nekritiška, bet gali būti tas pats defektas, kuris pasikartos po
+launch — verta pasižiūrėti, kodėl krito. NEIŠTIRTA.
+
+### `payment_failed` — šablonas be įvykio
+```
+Šablonas ✅ · srautas registre ✅ · ĮVYKIO DB NĖRA NĖ VIENO
+```
+Reikia išsiaiškinti: ar Paysera praneša apie nepavykusius mokėjimus ir ar
+`class-event-emitters.php` turi tam kabliuką. **Atskiras darbas, ne šablonas.**
 
 ---
 
