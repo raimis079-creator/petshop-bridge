@@ -1,0 +1,114 @@
+{
+ "VERSIJA_RUN": "run402-v1",
+ "sid": 2189,
+ "rez": {
+  "VERSIJA": "s402-v1",
+  "sablonai": {
+   "cart-abandoned-1.php": {
+    "B": 3328,
+    "eil": 94
+   },
+   "cart-abandoned-2.php": {
+    "B": 2505,
+    "eil": 66
+   },
+   "order-paid.php": {
+    "B": 2333,
+    "eil": 39
+   },
+   "post-purchase-2d.php": {
+    "B": 3940,
+    "eil": 96
+   },
+   "refill.php": {
+    "B": 2870,
+    "eil": 64
+   }
+  },
+  "pavyzdys_order_paid": "<?php\n/**\n * Sablonas: order_paid — uzsakymas apmoketas.\n * Gauna: $payload (order_number, total, currency, name, order_url)\n * Nustato: $subject\n * TZ §4.4.1: \"jus\" mazaja, siuntejas Petshop.lt, fallback be vardo.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$order_no  = isset( $payload['order_number'] ) ? $payload['order_number'] : '';\n$total     = isset( $payload['total'] ) ? $payload['total'] : '';\n$order_url = isset( $payload['order_url'] ) ? $payload['order_url'] : wc_get_account_endpoint_url( 'orders' );\n$name      = isset( $payload['name'] ) ? trim( $payload['name'] ) : '';\n\n$subject = $order_no ? sprintf( 'Užsakymas %s priimtas', $order_no ) : 'Jūsų užsakymas priimtas';\n\n$greet = $name !== '' ? sprintf( 'Sveiki, %s,', esc_html( $name ) ) : 'Sveiki,';\n?>\n<!DOCTYPE html>\n<html lang=\"lt\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title><?php echo esc_html( $subject ); ?></title></head>\n<body style=\"margin:0;padding:0;background:#F3EFE5;font-family:Arial,Helvetica,sans-serif;color:#1F2A24;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#F3EFE5;padding:24px 12px;\">\n<tr><td align=\"center\">\n<table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;background:#FFFFFF;border-radius:12px;padding:32px;\">\n  <tr><td style=\"font-size:21px;font-weight:700;padding-bottom:8px;\"><?php echo esc_html( $subject ); ?></td></tr>\n  <tr><td style=\"font-size:15px;line-height:1.65;padding-bottom:18px;\">\n    <?php echo $greet; ?> dėkojame už užsakymą. Gavome jūsų apmokėjimą<?php echo $total ? ' (' . esc_html( $total ) . ')' : ''; ?> ir jau ruošiame siuntą.\n    Kai ji iškeliaus, atsiųsime sekimo numerį.\n  </td></tr>\n  <tr><td style=\"padding-bottom:26px;\">\n    <a href=\"<?php echo esc_url( $order_url ); ?>\" style=\"background:#2d6a35;color:#FFFFFF;text-decoration:none;padding:13px 24px;border-radius:8px;font-weight:600;display:inline-block;\">Peržiūrėti užsakymą</a>\n  </td></tr>\n  <tr><td style=\"font-size:12px;color:#7A867C;border-top:1px solid #EEE;padding-top:16px;line-height:1.55;\">\n    UAB Avesa, Liucionių g. 46, Liucionys, LT-15166<br>\n    Gavote šį laišką, nes pateikėte užsakymą petshop.lt.\n  </td></tr>\n</table>\n</td></tr></table>\n</body></html>\n",
+  "susije_failai": [
+   "includes/class-consent-sync.php (8299B)",
+   "includes/class-email-dispatch.php (22467B)",
+   "includes/class-event-registry.php (5884B)",
+   "includes/class-unsubscribe.php (6232B)",
+   "includes/class-event-emitters.php (12724B)",
+   "includes/class-contact-policy.php (7195B)"
+  ],
+  "klases": {
+   "Petshop_Email_Flows": "NERA",
+   "Petshop_Email_Queue": "NERA",
+   "Petshop_Sender_Adapter": "yra",
+   "Petshop_Email_Suppression": "yra",
+   "Petshop_Consent": "NERA"
+  },
+  "event_log": [],
+  "jobs": [
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "c": "1"
+   },
+   {
+    "flow": "order_paid",
+    "status": "sent",
+    "c": "2"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "c": "1"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "c": "1"
+   }
+  ],
+  "struktura": {
+   "ps_email_jobs": [
+    "id",
+    "job_key",
+    "flow",
+    "flow_class",
+    "recipient_email",
+    "recipient_user_id",
+    "subject",
+    "payload",
+    "status",
+    "block_reason",
+    "provider",
+    "provider_message_id",
+    "attempts",
+    "last_error",
+    "scheduled_at",
+    "sent_at",
+    "created_at",
+    "updated_at",
+    "skip_reason",
+    "error_message",
+    "decision_at",
+    "next_attempt_at",
+    "context_json"
+   ],
+   "ps_event_log": [
+    "id",
+    "event_id",
+    "event_name",
+    "email",
+    "payload_json",
+    "emitted_at",
+    "status",
+    "adapter_name",
+    "attempts",
+    "next_retry_at",
+    "last_error",
+    "esp_response"
+   ]
+  },
+  "consent_lenteles": [
+   "gaj6_ps_consent_log"
+  ],
+  "newsletter_shortcode": 0
+ },
+ "svetaine": "200"
+}
