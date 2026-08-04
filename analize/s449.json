@@ -1,0 +1,224 @@
+{
+ "VERSIJA_RUN": "run449-v1",
+ "sid": 2232,
+ "pries": {
+  "VERSIJA": "s449-v1",
+  "act": "x",
+  "rasta_testiniu": 20,
+  "id": [
+   "34833",
+   "34834",
+   "34835",
+   "34836",
+   "34837",
+   "34838",
+   "34839",
+   "34840",
+   "34841",
+   "34842",
+   "34843",
+   "34844",
+   "34845",
+   "34846",
+   "34847",
+   "34848",
+   "34849",
+   "34850",
+   "34851",
+   "34852"
+  ],
+  "visi_pries": 22,
+  "realus_pries": [
+   {
+    "id": "34645",
+    "status": "wc-pending",
+    "date_created_gmt": "2026-07-14 14:32:41",
+    "total_amount": "0.00000000"
+   },
+   {
+    "id": "34720",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-07-20 08:54:44",
+    "total_amount": "37.56000000"
+   }
+  ],
+  "visi_po": 22,
+  "liko_testiniu": 20,
+  "realus_po": [
+   {
+    "id": "34645",
+    "status": "wc-pending",
+    "total_amount": "0.00000000"
+   },
+   {
+    "id": "34720",
+    "status": "wc-completed",
+    "total_amount": "37.56000000"
+   },
+   {
+    "id": "34833",
+    "status": "wc-processing",
+    "total_amount": "13.19000000"
+   },
+   {
+    "id": "34834",
+    "status": "wc-processing",
+    "total_amount": "4.49000000"
+   },
+   {
+    "id": "34835",
+    "status": "wc-processing",
+    "total_amount": "14.38000000"
+   },
+   {
+    "id": "34836",
+    "status": "wc-processing",
+    "total_amount": "4.99000000"
+   },
+   {
+    "id": "34837",
+    "status": "wc-processing",
+    "total_amount": "20.38000000"
+   },
+   {
+    "id": "34838",
+    "status": "wc-processing",
+    "total_amount": "35.04000000"
+   },
+   {
+    "id": "34839",
+    "status": "wc-processing",
+    "total_amount": "17.68000000"
+   },
+   {
+    "id": "34840",
+    "status": "wc-processing",
+    "total_amount": "12.18000000"
+   },
+   {
+    "id": "34841",
+    "status": "wc-processing",
+    "total_amount": "131.90000000"
+   },
+   {
+    "id": "34842",
+    "status": "wc-processing",
+    "total_amount": "89.80000000"
+   },
+   {
+    "id": "34843",
+    "status": "wc-processing",
+    "total_amount": "7.19000000"
+   },
+   {
+    "id": "34844",
+    "status": "wc-processing",
+    "total_amount": "9.98000000"
+   },
+   {
+    "id": "34845",
+    "status": "wc-processing",
+    "total_amount": "24.87000000"
+   },
+   {
+    "id": "34846",
+    "status": "wc-processing",
+    "total_amount": "659.50000000"
+   },
+   {
+    "id": "34847",
+    "status": "wc-processing",
+    "total_amount": "4.49000000"
+   },
+   {
+    "id": "34848",
+    "status": "wc-processing",
+    "total_amount": "7.19000000"
+   },
+   {
+    "id": "34849",
+    "status": "wc-processing",
+    "total_amount": "72.72000000"
+   },
+   {
+    "id": "34850",
+    "status": "wc-processing",
+    "total_amount": "9.48000000"
+   },
+   {
+    "id": "34851",
+    "status": "wc-processing",
+    "total_amount": "23.36000000"
+   },
+   {
+    "id": "34852",
+    "status": "wc-processing",
+    "total_amount": "18.18000000"
+   }
+  ],
+  "max_id": 34852,
+  "nasliai_meta": 0,
+  "nasliai_items": 10
+ },
+ "trynimas": {
+  "VERSIJA": "s449-v1",
+  "act": "x",
+  "rasta_testiniu": 20,
+  "id": [
+   "34833",
+   "34834",
+   "34835",
+   "34836",
+   "34837",
+   "34838",
+   "34839",
+   "34840",
+   "34841",
+   "34842",
+   "34843",
+   "34844",
+   "34845",
+   "34846",
+   "34847",
+   "34848",
+   "34849",
+   "34850",
+   "34851",
+   "34852"
+  ],
+  "visi_pries": 22,
+  "realus_pries": [
+   {
+    "id": "34645",
+    "status": "wc-pending",
+    "date_created_gmt": "2026-07-14 14:32:41",
+    "total_amount": "0.00000000"
+   },
+   {
+    "id": "34720",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-07-20 08:54:44",
+    "total_amount": "37.56000000"
+   }
+  ],
+  "istrinta": 20,
+  "klaidos": [],
+  "visi_po": 2,
+  "liko_testiniu": 0,
+  "realus_po": [
+   {
+    "id": "34645",
+    "status": "wc-pending",
+    "total_amount": "0.00000000"
+   },
+   {
+    "id": "34720",
+    "status": "wc-completed",
+    "total_amount": "37.56000000"
+   }
+  ],
+  "max_id": 34720,
+  "nasliai_meta": 0,
+  "nasliai_items": 10
+ }
+}
