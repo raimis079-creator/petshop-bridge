@@ -1,0 +1,11 @@
+{
+ "VERSIJA_RUN": "run404-v1",
+ "sid": null,
+ "deploy": {
+  "raw": "curl: (28) Failed to connect to dev.avesa.lt port 443 after 135281 ms: Couldn't connect to server\n"
+ },
+ "render": {
+  "raw": "curl: (28) Failed to connect to dev.avesa.lt port 443 after 133154 ms: Couldn't connect to server\n"
+ },
+ "svetaine": "curl: (28) Connection timed out after 25001 milliseconds\n000"
+}
