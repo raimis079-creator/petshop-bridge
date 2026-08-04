@@ -1178,6 +1178,95 @@ petshop.lt nėra nauja       2 445 URL, 19 735 clicks, 2 000 klientų
 
 ---
 
+## 16. 🔴 RYTOJAUS PIRMA TEMA: MULTISANDĖLIS + ADMIN DARBO VIETA
+
+> **PRADĖTI NUO ŠITO.** Raimio nurodymas 2026-08-04 vėlai vakare.
+> NEDARYTI užsakymų sąrašo pertvarkymo, kol neišspręsta multisandėlio logika —
+> antraip pridėsim stulpelius ir po mėnesio perdarysim.
+
+### KONTEKSTAS
+```
+Su užsakymais ir prekėmis dirbs ATSKIRAS ŽMOGUS (patyręs, jau dirba su petshop,
+ne vienerius metus). Reikės atskiro prisijungimo. Darbas KOMPIUTERIU.
+Jis darys VISKĄ: priima · pakuoja · formuoja siuntas · spausdina sąskaitas.
+Raimis padės tik retkarčiais.
+Informacija apie MARŽAS jam REIKALINGA.
+```
+
+### RAIMIO PRINCIPAS
+> „Mes darome super gerą ir patogią svetainę klientui, o sau bele kaip."
+> „Neišradinėjam dviračio — pažiūrim gerąją praktiką kitur."
+
+### KAS JAU IŠMATUOTA (s457, s460 — ekranai per Playwright su auth cookie)
+```
+prekių sąrašas       124 850 px aukščio (~125 ekranai) · 12 stulpelių
+                     nereikalingi: Žymos · Siūloma · Data · ZB
+prekės langas        3 216 px · 18 metaboxų
+                     nereikalingi: Cookie reklamjuosta · Atsisiunčiamo produkto
+                     leidimai · Portfolio liekanos · Vartotojo laukai
+užsakymo langas      2 534 px · 10 blokų (Atsisiunčiamo produkto leidimai,
+                     Custom Fields — fizinėms prekėms NIEKADA nereikia)
+meniu                26 punktų (shop_manager role sutrumpintų ~perpus)
+shop_manager rolė    JAU YRA, 93 teisės, ribos teisingos:
+                     gali prekes/užsakymus/klientus/ataskaitas
+                     negali nustatymų/pluginų/temos/kodo/vartotojų
+                     vartotojų su šia role: 0
+```
+
+### UŽSAKYMŲ SĄRAŠO PROBLEMOS (Raimio ekranas 2026-08-05 00:39)
+```
+8 piktogramų mygtukai BE UŽRAŠŲ (prie 34645 — šeši, sulaužyti į dvi eiles)
+NEMATYTI: ką pirko · pristatymo būdo · ar apmokėta
+„Origin" angliškai, reikšmės „Tiesioginis/Nežinomas" — analitika, ne darbas
+„Venipak būsena" stulpelis TUŠČIAS
+reklaminis pranešimas viršuje užima ~ketvirtadalį ekrano
+```
+
+**SIŪLYTA STRUKTŪRA (aptarti):**
+```
+Nr. · Data · Klientas · KĄ PIRKO · Suma · Apmokėta · Pristatymas · ŠALTINIS · Veiksmas
++ numatytasis filtras „laukia išsiuntimo"
+```
+
+### 🔴 MULTISANDĖLIS — ESMINIS KLAUSIMAS
+```
+Prekės iš 5+ šaltinių: ZB · VF · Quattro · Belacor · Legacy (+ savas sandėlis)
+Fulfillment_Source::resolve() tai JAU tvarko KREPŠELYJE.
+UŽSAKYMŲ SĄRAŠE to NĖRA.
+```
+Pakuotojui tai svarbiausia informacija: ar pakuoja PATS, ar eina dropshipu.
+**MIŠRUS UŽSAKYMAS** (viena prekė sava, kita ZB) skyla į DVI siuntas —
+stulpelis turi rodyti VISUS užsakyme esančius šaltinius, ne vieną.
+
+**RAIMIS: „tuoj iškils multisandėlio klausimas" — TAI RYTOJAUS TEMA.**
+
+### GALIMA DARYTI IŠKART (nepriklauso nuo multisandėlio, 5 min.)
+```
+nuimti reklaminį pranešimą užsakymų sąrašo viršuje
+nuimti „Origin" stulpelį
+```
+
+### RINKOS PRAKTIKA (patikrinta 2026-08-04)
+```
+Smart Manager (nemokamas)  skaičiuoklės stiliaus redagavimas wp-admin viduje
+Adminimize (nemokamas)     varnelių lentelė: kiekvienas metaboxas × kiekviena rolė
+                           IŠSPRĘSTŲ 18 blokų problemą BE KODO
+                           MINUSAS: nuo ~2015 beveik nekeistas
+mokami bulk edit           aprašymų paieška+pakeitimas, kainos ±%, atšaukimas,
+(50–100 €/m)               filtravimas prieš redagavimą
+```
+**ALTERNATYVA BE PLUGINŲ:** metaboxų slėpimas prekės/užsakymo lange —
+5 eilutės snippet'e, jokios naujos priklausomybės. Aplinkoje jau 29 pluginai.
+
+### SPRENDIMAI, KURIŲ REIKIA IŠ RAIMIO
+```
+1. Multisandėlio apimtis — ką jis realiai apima, kur dabar kliūva
+2. Ar pluginai (Smart Manager / Adminimize), ar savas kodas
+3. Ar pakuotojui reikia maržos UŽSAKYMŲ sąraše, ar tik prekių lange
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
