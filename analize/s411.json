@@ -1,0 +1,30 @@
+{
+ "VERSIJA_RUN": "run411-v1",
+ "sid": 2197,
+ "deploy": {
+  "VERSIJA": "s411-v1",
+  "act": "deploy",
+  "modalas": {
+   "B": 6099,
+   "sha": "031a88b7c9871b03"
+  },
+  "require_pridetas": true,
+  "main_B": 15417
+ },
+ "patikra": {
+  "VERSIJA": "s411-v1",
+  "act": "patikra",
+  "modalo_klase": "yra",
+  "jungiklis": "isjungtas (numatyta)",
+  "newsletter_klase": "yra",
+  "shortcode_su_parametrais": {
+   "B": 2452,
+   "title_X": "taip",
+   "button_Z": "taip"
+  }
+ },
+ "porastes_recon": {
+  "err": "act"
+ },
+ "svetaine": "200"
+}
