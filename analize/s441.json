@@ -1,0 +1,71 @@
+{
+ "VERSIJA_RUN": "run441-v1",
+ "sid": 2223,
+ "deploy": {
+  "VERSIJA": "s441-v2",
+  "act": "deploy",
+  "failas": {
+   "B": 3704,
+   "sha": "e366969582c29fbb"
+  }
+ },
+ "e2e": {
+  "VERSIJA": "s441-v2",
+  "act": "e2e",
+  "kabliukas_failed": [
+   "10 wc_update_coupon_usage_counts",
+   "10 WC_Emails::send_transactional_email",
+   "20 petshop_emit_payment_failed"
+  ],
+  "emitteris_prijungtas": true,
+  "uzsakymas": {
+   "id": 34832,
+   "total": "0.49",
+   "email": "pf.e67321c3@pastas-test.lt"
+  },
+  "po_failed": {
+   "event": 1,
+   "job": 1
+  },
+  "job": {
+   "flow": "payment_failed",
+   "status": "pending",
+   "subject": null,
+   "skip_reason": null,
+   "block_reason": null
+  },
+  "ivykis": {
+   "event_name": "payment_failed",
+   "status": "pending",
+   "email": "pf.e67321c3@pastas-test.lt"
+  },
+  "po_antro_failed": {
+   "naujų_įvykių": 0,
+   "VERDIKTAS": "GERAI: dublikato nėra"
+  },
+  "process_dry": {
+   "dry_run": true,
+   "picked": 1,
+   "results": [
+    {
+     "id": 32,
+     "flow": "payment_failed",
+     "action": "WOULD_SEND",
+     "to": "pf.e67321c3@pastas-test.lt",
+     "subject": "Užsakymas 34832 laukia apmokėjimo",
+     "html_len": 2094
+    }
+   ]
+  },
+  "render": {
+   "subject": "Užsakymas 34832 laukia apmokėjimo",
+   "html_B": 2093,
+   "PHP_klaidu": "ne"
+  },
+  "istrintas_uzsakymas": 34832,
+  "po_valymo": {
+   "uzsakymu": 2,
+   "max_id": 34720
+  }
+ }
+}
