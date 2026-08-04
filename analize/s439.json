@@ -1,0 +1,51 @@
+{
+ "VERSIJA_RUN": "run439-v1",
+ "sid": 2221,
+ "deploy": {
+  "VERSIJA": "s439-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 3083,
+   "sha": "a8aa675fa8403341"
+  }
+ },
+ "e2e": {
+  "VERSIJA": "s439-v1",
+  "act": "e2e",
+  "kabliukas_failed": [
+   "10 wc_update_coupon_usage_counts",
+   "10 WC_Emails::send_transactional_email",
+   "20 petshop_emit_payment_failed"
+  ],
+  "emitteris_prijungtas": true,
+  "uzsakymas": {
+   "id": 34831,
+   "total": "0.49",
+   "email": "pf.67efc00e@pastas-test.lt"
+  },
+  "po_failed": {
+   "event": 1,
+   "job": 0
+  },
+  "job": null,
+  "ivykis": {
+   "event_name": "payment_failed",
+   "status": "pending",
+   "email": "pf.67efc00e@pastas-test.lt"
+  },
+  "po_antro_failed": {
+   "naujų_įvykių": 0,
+   "VERDIKTAS": "GERAI: dublikato nėra"
+  },
+  "render": {
+   "subject": "Užsakymas 34831 laukia apmokėjimo",
+   "html_B": 2093,
+   "PHP_klaidu": "ne"
+  },
+  "istrintas_uzsakymas": 34831,
+  "po_valymo": {
+   "uzsakymu": 2,
+   "max_id": 34720
+  }
+ }
+}
