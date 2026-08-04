@@ -1,0 +1,106 @@
+{
+ "VERSIJA_RUN": "run438-v1",
+ "sid": 2220,
+ "rez": {
+  "VERSIJA": "s438-v1",
+  "emitters": {
+   "B": 12724,
+   "eil": 318,
+   "esmines": [
+    "13: * Visi event'ai eina per Petshop_Event_Registry::emit() (schema validacija).",
+    "28: public static function init() {",
+    "30: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'on_payment_complete' ), 20, 1 );",
+    "35: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+    "36: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+    "40: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
+    "46: public static function on_payment_complete( $order_id ) {",
+    "53: public static function on_order_paid_status( $order_id ) {",
+    "69: private static function emit_order_paid( $order_id ) {",
+    "124: Petshop_Event_Registry::emit( 'order_paid', $email, $payload, array(",
+    "144: public static function maybe_emit_order_shipped( $order_id ) {",
+    "186: $result = Petshop_Event_Registry::emit( 'order_shipped', $email, $payload, array(",
+    "197: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
+    "224: public static function resolve_tracking( $order ) {",
+    "304: private static function guess_delivery_type( $order ) {"
+   ]
+  },
+  "kabliukai": {
+   "woocommerce_order_status_failed": [
+    "10 wc_update_coupon_usage_counts",
+    "10 WC_Emails::send_transactional_email"
+   ],
+   "woocommerce_order_status_cancelled": [
+    "10 wc_update_coupon_usage_counts",
+    "10 wc_maybe_increase_stock_levels",
+    "11 wc_release_stock_for_order"
+   ],
+   "woocommerce_order_status_pending": [
+    "10 wc_update_coupon_usage_counts",
+    "10 wc_maybe_increase_stock_levels"
+   ],
+   "woocommerce_payment_complete": [
+    "10 wc_paying_customer",
+    "10 wc_maybe_reduce_stock_levels",
+    "10 WC_MNM_Order::remove_get_product_from_item_filter",
+    "11 wc_release_stock_for_order",
+    "20 Petshop_Event_Emitters::on_payment_complete",
+    "30 Petshop_Refill_Engine::on_order_paid"
+   ]
+  },
+  "paysera_klase": "NERA",
+  "paysera": {
+   "enabled": "yes",
+   "test": "?",
+   "projectid": "nera"
+  },
+  "uzsakymu_statusai": [
+   {
+    "status": "wc-completed",
+    "c": "1"
+   },
+   {
+    "status": "wc-pending",
+    "c": "1"
+   }
+  ],
+  "webhook_route": "yra",
+  "jobs_stulpeliai": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json"
+  ],
+  "jobs_statusai": [
+   {
+    "status": "sent",
+    "c": "4"
+   },
+   {
+    "status": "skipped",
+    "c": "1"
+   }
+  ],
+  "provider_message_id_uzpildyta": 4,
+  "suppression_lentele": true,
+  "suppression_irasu": 1
+ }
+}
