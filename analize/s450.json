@@ -1,0 +1,146 @@
+{
+ "VERSIJA_RUN": "run450-v1",
+ "sid": 2233,
+ "kilme": {
+  "VERSIJA": "s450-v1",
+  "act": "x",
+  "lentele_yra": true,
+  "struktura": [
+   {
+    "Field": "id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+   },
+   {
+    "Field": "source_pattern",
+    "Type": "varchar(2048)",
+    "Null": "NO",
+    "Key": "UNI",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "destination_url",
+    "Type": "varchar(2048)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "redirect_type",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "301",
+    "Extra": ""
+   },
+   {
+    "Field": "match_type",
+    "Type": "varchar(20)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "exact",
+    "Extra": ""
+   },
+   {
+    "Field": "created_at",
+    "Type": "datetime",
+    "Null": "NO",
+    "Key": "",
+    "Default": "current_timestamp()",
+    "Extra": ""
+   }
+  ],
+  "irasu": 0,
+  "turinys": [],
+  "create": "CREATE TABLE `gaj6_umbrella_redirects` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `source_pattern` varchar(2048) NOT NULL,\n  `destination_url` varchar(2048) NOT NULL,\n  `redirect_type` int(11) NOT NULL DEFAULT 301,\n  `match_type` varchar(20) NOT NULL DEFAULT 'exact',\n  `created_at` datetime NOT NULL DEFAULT current_timestamp(),\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `idx_source_pattern` (`source_pattern`(191))\n) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci",
+  "info": {
+   "create_time": "2026-08-03 20:37:41",
+   "update_time": "2026-08-03 20:37:41",
+   "engine": "MyISAM",
+   "table_rows": "0",
+   "data_length": "0"
+  },
+  "NAUDOJA_KODAS": [],
+  "umbrella_opcijos": [],
+  "umbrella_pluginai": [],
+  "lentele_po": true,
+  "lenteliu_viso": 174
+ },
+ "trynimas": {
+  "VERSIJA": "s450-v1",
+  "act": "x",
+  "lentele_yra": true,
+  "struktura": [
+   {
+    "Field": "id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+   },
+   {
+    "Field": "source_pattern",
+    "Type": "varchar(2048)",
+    "Null": "NO",
+    "Key": "UNI",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "destination_url",
+    "Type": "varchar(2048)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "redirect_type",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "301",
+    "Extra": ""
+   },
+   {
+    "Field": "match_type",
+    "Type": "varchar(20)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "exact",
+    "Extra": ""
+   },
+   {
+    "Field": "created_at",
+    "Type": "datetime",
+    "Null": "NO",
+    "Key": "",
+    "Default": "current_timestamp()",
+    "Extra": ""
+   }
+  ],
+  "irasu": 0,
+  "turinys": [],
+  "create": "CREATE TABLE `gaj6_umbrella_redirects` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `source_pattern` varchar(2048) NOT NULL,\n  `destination_url` varchar(2048) NOT NULL,\n  `redirect_type` int(11) NOT NULL DEFAULT 301,\n  `match_type` varchar(20) NOT NULL DEFAULT 'exact',\n  `created_at` datetime NOT NULL DEFAULT current_timestamp(),\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `idx_source_pattern` (`source_pattern`(191))\n) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci",
+  "info": {
+   "create_time": "2026-08-03 20:37:41",
+   "update_time": "2026-08-03 20:37:41",
+   "engine": "MyISAM",
+   "table_rows": "0",
+   "data_length": "0"
+  },
+  "NAUDOJA_KODAS": [],
+  "umbrella_opcijos": [],
+  "umbrella_pluginai": [],
+  "istrinta": true,
+  "backup_opcijoje": "petshop_umbrella_redirects_bak_S450",
+  "lentele_po": false,
+  "lenteliu_viso": 173
+ }
+}
