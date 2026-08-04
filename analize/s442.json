@@ -1,0 +1,190 @@
+{
+ "VERSIJA_RUN": "run442-v1",
+ "sid": 2224,
+ "rez": {
+  "VERSIJA": "s442-v1",
+  "failai": {
+   "class-consent-log.php": {
+    "B": 5081,
+    "eil": [
+     "18: *   source       VARCHAR(32)   'checkout'|'mano-paskyra'|'unsubscribe-link'|'webhook'|'import'|'admin'",
+     "40: public static function table_name() {",
+     "48: public static function install() {",
+     "77: public static function maybe_install() {",
+     "94: *   @type string $source      checkout|mano-paskyra|unsubscribe-link|webhook|import|admin",
+     "100: public static function record( array $data ) {",
+     "130: public static function current_value( $email, $field = 'marketing_consent' ) {",
+     "144: public static function history( $email, $limit = 50 ) {"
+    ]
+   },
+   "class-consent-sync.php": {
+    "B": 8299,
+    "eil": [
+     "10: * B. Sender → Woo (webhook): kai klientas unsubscribe'ina per Sender laiska,",
+     "11: *    Sender webhook praneša, mes atnaujinam mūsų puse (user_meta + ps_consent_log).",
+     "12: *    (Webhook receiver — atskira klase; cia tik handleriai.)",
+     "41: public static function init() {",
+     "58: public static function set_marketing_consent( $email, $consent, $source = 'unknown', $customer_id = 0 ) {",
+     "92: // 3. Push i Sender (PS_MARKETING_CONSENT + jei atsisake, PS_UNSUBSCRIBED_AT)",
+     "95: $attributes['PS_UNSUBSCRIBED_AT'] = gmdate( 'Y-m-d' );",
+     "125: * Sender → Woo: apdoroti unsubscribe is Sender webhook.",
+     "132: public static function handle_sender_unsubscribe( $email ) {",
+     "149: // Irasyti i consent_log (source=webhook)",
+     "156: 'source'      => 'webhook',",
+     "163: // Emit consent_changed (webhook)",
+     "169: 'source'     => 'webhook',",
+     "177: * Sender → Woo: apdoroti hard bounce/spam.",
+     "184: public static function handle_sender_bounce( $email ) {",
+     "198: 'source'      => 'webhook',",
+     "212: public static function capture_checkout_consent( $customer, $data ) {",
+     "228: public static function handle_consent_change( $args ) {"
+    ]
+   },
+   "class-email-suppression.php": {
+    "B": 13735,
+    "eil": [
+     "3: * Petshop Email Suppression — KANALINIS suppression + webhook zurnalas.",
+     "8: * Todel ir suppression yra KANALINIS. Marketingo atsisakymas NEGALI",
+     "11: * Lentele auditvertine: laikome ISTORIJA (suppressed_at + released_at),",
+     "12: * ne viena boolean. Aktyvus suppression = released_at IS NULL.",
+     "20: class Petshop_Email_Suppression {",
+     "23: const OPT_DB_VER = 'petshop_email_suppression_db';",
+     "32: public static function table() {",
+     "33: global $wpdb; return $wpdb->prefix . 'ps_email_suppression';",
+     "35: public static function log_table() {",
+     "36: global $wpdb; return $wpdb->prefix . 'ps_webhook_log';",
+     "39: public static function install() {",
+     "52: suppressed_at DATETIME NOT NULL,",
+     "80: public static function maybe_install() {",
+     "85: /* Suppression API                                                    */",
+     "88: public static function valid_channel( $ch ) {",
+     "93: * Uzdeda suppression KONKRECIAM kanalui. Idempotentiska:",
+     "96: public static function suppress( $email, $channel, $reason = 'manual', $source = 'local', $note = '' ) {",
+     "112: 'suppressed_at' => current_time( 'mysql', true ),",
+     "118: public static function release( $email, $channel, $note = '' ) {",
+     "128: public static function is_suppressed( $email, $channel ) {",
+     "137: public static function reason_for( $email, $channel ) {",
+     "154: * SVARBU: 'unsubscribed' marketingo kanale NEBLOKUOJA transakciniu.",
+     "156: public static function interpret_status( $status ) {",
+     "166: $terminal = array( 'bounced', 'hard_bounced', 'complained', 'spam', 'invalid', 'blocked', 'suppressed' );",
+     "169: if ( 'unsubscribed' === $mk ) {",
+     "170: $out['marketing'] = array( 'action' => 'suppress', 'reason' => 'unsubscribe' );",
+     "172: $out['marketing'] = array( 'action' => 'suppress', 'reason' => ( 'spam' === $mk || 'complained' === $mk ) ? 'spam' : 'bounce' );",
+     "178: // 'unsubscribed' CIA nereiksmingas — transakciniu neatsisakoma.",
+     "180: $out['transactional'] = array( 'action' => 'suppress', 'reason' => ( 'spam' === $tx || 'complained' === $tx ) ? 'spam' : 'bounce' );",
+     "191: public static function apply_status( $email, $status, $source = 'sender_webhook' ) {",
+     "196: if ( 'suppress' === $a['action'] ) {",
+     "197: if ( ! self::is_suppressed( $email, $ch ) ) {",
+     "198: self::suppress( $email, $ch, $a['reason'], $source );",
+     "199: $changed[] = $ch . ':suppressed:' . $a['reason'];",
+     "202: // Atlaisvinam TIK bounce/spam. Atsisakymo NEATSAUKIAM automatiskai —",
+     "205: if ( $r && in_array( $r, array( 'bounce', 'spam' ), true ) ) {",
+     "213: Petshop_Contact_Policy::sync_transactional_only( $email, 'suppression_change' );",
+     "219: /* Webhook zurnalas                                                   */",
+     "225: public static function log_webhook( $topic, $email, $status, $payload, $result = '' ) {",
+     "252: public static function reconcile( $dry_run = false ) {",
+     "256: 'marketing_suppressed'   => 0,",
+     "257: 'transactional_suppressed'=> 0,",
+     "294: $now_sup = self::is_suppressed( $email, $ch );",
+     "295: $want    = ( 'suppress' === $plan[ $ch ]['action'] );",
+     "300: self::suppress( $email, $ch, $plan[ $ch ]['reason'], 'sender_reconcile' );"
+    ]
+   },
+   "interface-message-provider.php": {
+    "B": 3049,
+    "eil": [
+     "25: public function get_name();",
+     "32: public function is_configured();",
+     "39: public function is_operational();",
+     "53: public function upsert_contact( $email, array $attributes );",
+     "65: public function emit_event( $email, $event_id, $event_name, array $payload, $timestamp = null );",
+     "77: public function send_transactional_email( $to_email, $subject, $html_body, array $meta = array() );",
+     "87: public function send_transactional_sms( $phone_e164, $message, array $meta = array() );",
+     "90: * Patikrina webhook parasa.",
+     "96: public function verify_webhook( $raw_body, $signature );",
+     "103: public function get_health_status();"
+    ]
+   }
+  },
+  "routes": {
+   "/petshop/v1/sender-webhook": 1,
+   "/wc/v1/webhooks": 2,
+   "/wc/v1/webhooks/(?P<id>[\\d]+)": 3,
+   "/wc/v1/webhooks/batch": 1,
+   "/wc/v1/webhooks/(?P<webhook_id>[\\d]+)/deliveries": 1,
+   "/wc/v1/webhooks/(?P<webhook_id>[\\d]+)/deliveries/(?P<id>[\\d]+)": 1,
+   "/wc/v2/webhooks": 2,
+   "/wc/v2/webhooks/(?P<id>[\\d]+)": 3,
+   "/wc/v2/webhooks/batch": 1,
+   "/wc/v2/webhooks/(?P<webhook_id>[\\d]+)/deliveries": 1,
+   "/wc/v2/webhooks/(?P<webhook_id>[\\d]+)/deliveries/(?P<id>[\\d]+)": 1,
+   "/wc/v3/webhooks": 2,
+   "/wc/v3/webhooks/(?P<id>[\\d]+)": 3,
+   "/wc/v3/webhooks/batch": 1,
+   "/wc/v3/paypal-webhooks": 1
+  },
+  "jobs": [
+   {
+    "status": "sent",
+    "c": "4",
+    "su_msgid": "4"
+   },
+   {
+    "status": "skipped",
+    "c": "1",
+    "su_msgid": "0"
+   }
+  ],
+  "jobs_stulpeliai": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json"
+  ],
+  "lenteles_su_event": [
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression"
+  ],
+  "suppression_stulpeliai": [
+   "id",
+   "email",
+   "channel",
+   "reason",
+   "source",
+   "note",
+   "suppressed_at",
+   "released_at"
+  ],
+  "suppression_irasai": [
+   {
+    "id": "7",
+    "email": "terra@gyvunai.lt",
+    "channel": "marketing",
+    "reason": "unsubscribe",
+    "source": "sender_reconcile",
+    "note": null,
+    "suppressed_at": "2026-07-31 05:30:03",
+    "released_at": null
+   }
+  ]
+ }
+}
