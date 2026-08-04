@@ -1,0 +1,684 @@
+{
+ "VERSIJA_RUN": "run425-v1",
+ "sid": 2208,
+ "rez": {
+  "VERSIJA": "s425-v1",
+  "kategorijos": {
+   "akcijiniai-pasiulymai": {
+    "id": 689,
+    "count": 0,
+    "kelias": "pasiulymai/akcijiniai-pasiulymai",
+    "lygis": 2
+   },
+   "aksesuarai-pauksciams": {
+    "id": 666,
+    "count": 2,
+    "kelias": "pauksciams/aksesuarai-pauksciams",
+    "lygis": 2
+   },
+   "akvariumo-zuvyciu-maistas": {
+    "id": 94,
+    "count": 36,
+    "kelias": "zuvims/akvariumo-zuvyciu-maistas",
+    "lygis": 2
+   },
+   "akvariumai-iranga": {
+    "id": 371,
+    "count": 6,
+    "kelias": "zuvims/akvariumai-iranga",
+    "lygis": 2
+   },
+   "animonda-konservai-sunims": {
+    "id": 86,
+    "count": 36,
+    "kelias": "animonda-konservai-sunims",
+    "lygis": 1
+   },
+   "antiparazitines-priemones-katems": {
+    "id": 109,
+    "count": 5,
+    "kelias": "katems/antiparazitines-priemones-katems",
+    "lygis": 2
+   },
+   "antiparazitines-priemones-sunims": {
+    "id": 108,
+    "count": 8,
+    "kelias": "sunims/antiparazitines-priemones-sunims",
+    "lygis": 2
+   },
+   "antkakliai-ir-petnesos-katems": {
+    "id": 117,
+    "count": 9,
+    "kelias": "katems/antkakliai-ir-petnesos-katems",
+    "lygis": 2
+   },
+   "antkakliai-pavadeliai-sunims": {
+    "id": 116,
+    "count": 221,
+    "kelias": "sunims/antkakliai-pavadeliai-sunims",
+    "lygis": 2
+   },
+   "baseinai-sunims": {
+    "id": 655,
+    "count": 1,
+    "kelias": "sunims/baseinai-sunims",
+    "lygis": 2
+   },
+   "daugiau-pigiau": {
+    "id": 91,
+    "count": 8,
+    "kelias": "daugiau-pigiau",
+    "lygis": 1
+   },
+   "dovanos": {
+    "id": 119,
+    "count": 4,
+    "kelias": "dovanos",
+    "lygis": 1
+   },
+   "draskykles-katems": {
+    "id": 124,
+    "count": 45,
+    "kelias": "katems/draskykles-katems",
+    "lygis": 2
+   },
+   "dubeneliai-katems": {
+    "id": 112,
+    "count": 35,
+    "kelias": "katems/dubeneliai-katems",
+    "lygis": 2
+   },
+   "dubeneliai-sunims": {
+    "id": 111,
+    "count": 54,
+    "kelias": "sunims/dubeneliai-sunims",
+    "lygis": 2
+   },
+   "grauzikams": {
+    "id": 87,
+    "count": 61,
+    "kelias": "grauzikams",
+    "lygis": 1
+   },
+   "dp-grauzikams": {
+    "id": 113,
+    "count": 0,
+    "kelias": "daugiau-pigiau/dp-grauzikams",
+    "lygis": 2
+   },
+   "guoliai-katems": {
+    "id": 569,
+    "count": 13,
+    "kelias": "katems/guoliai-katems",
+    "lygis": 2
+   },
+   "higienos-priemones-sunims": {
+    "id": 82,
+    "count": 44,
+    "kelias": "sunims/higienos-priemones-sunims",
+    "lygis": 2
+   },
+   "hipoalerginis-maistas-sunims": {
+    "id": 85,
+    "count": 33,
+    "kelias": "hipoalerginis-maistas-sunims",
+    "lygis": 1
+   },
+   "jautrus-virskinimas": {
+    "id": 687,
+    "count": 0,
+    "kelias": "sprendimai/jautrus-virskinimas",
+    "lygis": 2
+   },
+   "dp-katems": {
+    "id": 99,
+    "count": 0,
+    "kelias": "daugiau-pigiau/dp-katems",
+    "lygis": 2
+   },
+   "katems": {
+    "id": 77,
+    "count": 895,
+    "kelias": "katems",
+    "lygis": 1
+   },
+   "kelioniu-iranga": {
+    "id": 123,
+    "count": 20,
+    "kelias": "sunims/kelioniu-iranga",
+    "lygis": 2
+   },
+   "kita-grauzikams": {
+    "id": 104,
+    "count": 0,
+    "kelias": "grauzikams/kita-grauzikams",
+    "lygis": 2
+   },
+   "uncategorized": {
+    "id": 16,
+    "count": 9,
+    "kelias": "uncategorized",
+    "lygis": 1
+   },
+   "kita-pauksciams": {
+    "id": 105,
+    "count": 0,
+    "kelias": "pauksciams/kita-pauksciams",
+    "lygis": 2
+   },
+   "kita-sunims": {
+    "id": 126,
+    "count": 0,
+    "kelias": "sunims/kita-sunims",
+    "lygis": 2
+   },
+   "kitos-prekes-zalios-bangos": {
+    "id": 84,
+    "count": 0,
+    "kelias": "kitos-prekes-zalios-bangos",
+    "lygis": 1
+   },
+   "konservai-katems": {
+    "id": 79,
+    "count": 149,
+    "kelias": "katems/maistas-katems/konservai-katems",
+    "lygis": 3
+   },
+   "konservai-sunims": {
+    "id": 73,
+    "count": 120,
+    "kelias": "sunims/maistas-sunims/konservai-sunims",
+    "lygis": 3
+   },
+   "konservu-rinkiniai": {
+    "id": 682,
+    "count": 5,
+    "kelias": "rinkiniai/konservu-rinkiniai",
+    "lygis": 2
+   },
+   "kraikai-kaciu-tualetams": {
+    "id": 107,
+    "count": 89,
+    "kelias": "katems/kraikai-kaciu-tualetams",
+    "lygis": 2
+   },
+   "kramtalu-rinkiniai": {
+    "id": 684,
+    "count": 3,
+    "kelias": "rinkiniai/kramtalu-rinkiniai",
+    "lygis": 2
+   },
+   "lesalas-pauksciams": {
+    "id": 90,
+    "count": 11,
+    "kelias": "pauksciams/lesalas-pauksciams",
+    "lygis": 2
+   },
+   "maistas-katems": {
+    "id": 78,
+    "count": 355,
+    "kelias": "katems/maistas-katems",
+    "lygis": 2
+   },
+   "maistas-sunims": {
+    "id": 71,
+    "count": 632,
+    "kelias": "sunims/maistas-sunims",
+    "lygis": 2
+   },
+   "miamor-katems": {
+    "id": 80,
+    "count": 29,
+    "kelias": "miamor-katems",
+    "lygis": 1
+   },
+   "narvai": {
+    "id": 125,
+    "count": 7,
+    "kelias": "sunims/narvai",
+    "lygis": 2
+   },
+   "naujas-kaciukas": {
+    "id": 686,
+    "count": 0,
+    "kelias": "sprendimai/naujas-kaciukas",
+    "lygis": 2
+   },
+   "naujas-suniukas": {
+    "id": 685,
+    "count": 0,
+    "kelias": "sprendimai/naujas-suniukas",
+    "lygis": 2
+   },
+   "pasiulymai": {
+    "id": 681,
+    "count": 0,
+    "kelias": "pasiulymai",
+    "lygis": 1
+   },
+   "dp-pauksciams": {
+    "id": 110,
+    "count": 0,
+    "kelias": "daugiau-pigiau/dp-pauksciams",
+    "lygis": 2
+   },
+   "pauksciams": {
+    "id": 89,
+    "count": 16,
+    "kelias": "pauksciams",
+    "lygis": 1
+   },
+   "pirmoji-pagalba-sunims": {
+    "id": 656,
+    "count": 2,
+    "kelias": "sunims/pirmoji-pagalba-sunims",
+    "lygis": 2
+   },
+   "rinkiniai": {
+    "id": 679,
+    "count": 12,
+    "kelias": "rinkiniai",
+    "lygis": 1
+   },
+   "sampunai-sunims": {
+    "id": 76,
+    "count": 42,
+    "kelias": "sunims/sampunai-sunims",
+    "lygis": 2
+   },
+   "sausas-maistas-katems": {
+    "id": 81,
+    "count": 205,
+    "kelias": "katems/maistas-katems/sausas-maistas-katems",
+    "lygis": 3
+   },
+   "sausas-maistas-sunims": {
+    "id": 72,
+    "count": 512,
+    "kelias": "sunims/maistas-sunims/sausas-maistas-sunims",
+    "lygis": 3
+   },
+   "skanestai-katems": {
+    "id": 96,
+    "count": 90,
+    "kelias": "katems/skanestai-katems",
+    "lygis": 2
+   },
+   "skanestai-pauksciams": {
+    "id": 98,
+    "count": 3,
+    "kelias": "pauksciams/skanestai-pauksciams",
+    "lygis": 2
+   },
+   "skanestai-sunims": {
+    "id": 95,
+    "count": 279,
+    "kelias": "sunims/skanestai-sunims",
+    "lygis": 2
+   },
+   "skanestu-rinkiniai": {
+    "id": 683,
+    "count": 4,
+    "kelias": "rinkiniai/skanestu-rinkiniai",
+    "lygis": 2
+   },
+   "sprendimai": {
+    "id": 680,
+    "count": 0,
+    "kelias": "sprendimai",
+    "lygis": 1
+   },
+   "sukos-sepeciai-zirkles-katems": {
+    "id": 639,
+    "count": 47,
+    "kelias": "katems/sukos-sepeciai-zirkles-katems",
+    "lygis": 2
+   },
+   "sukos-sepeciai-zirkles-sunims": {
+    "id": 75,
+    "count": 60,
+    "kelias": "sunims/sukos-sepeciai-zirkles-sunims",
+    "lygis": 2
+   },
+   "dp-sunims": {
+    "id": 92,
+    "count": 0,
+    "kelias": "daugiau-pigiau/dp-sunims",
+    "lygis": 2
+   },
+   "sunims": {
+    "id": 70,
+    "count": 1798,
+    "kelias": "sunims",
+    "lygis": 1
+   },
+   "suo-kasosi": {
+    "id": 688,
+    "count": 0,
+    "kelias": "sprendimai/suo-kasosi",
+    "lygis": 2
+   },
+   "super-premium-sunu-maistas": {
+    "id": 83,
+    "count": 5,
+    "kelias": "super-premium-sunu-maistas",
+    "lygis": 1
+   },
+   "transportavimo-dezes-katems": {
+    "id": 121,
+    "count": 51,
+    "kelias": "katems/transportavimo-dezes-katems",
+    "lygis": 2
+   },
+   "transportavimo-dezes-sunims": {
+    "id": 122,
+    "count": 57,
+    "kelias": "sunims/transportavimo-dezes-sunims",
+    "lygis": 2
+   },
+   "tualetai-kraikai-semtuveliai": {
+    "id": 106,
+    "count": 66,
+    "kelias": "katems/tualetai-kraikai-semtuveliai",
+    "lygis": 2
+   },
+   "tvenkiniu-zuvu-maistas": {
+    "id": 100,
+    "count": 11,
+    "kelias": "zuvims/tvenkiniu-zuvu-maistas",
+    "lygis": 2
+   },
+   "vesinantys-kilimeliai-sunims": {
+    "id": 654,
+    "count": 7,
+    "kelias": "sunims/vesinantys-kilimeliai-sunims",
+    "lygis": 2
+   },
+   "vitaminai-ir-papildai-katems": {
+    "id": 102,
+    "count": 17,
+    "kelias": "katems/vitaminai-ir-papildai-katems",
+    "lygis": 2
+   },
+   "vitaminai-ir-papildai-sunims": {
+    "id": 101,
+    "count": 73,
+    "kelias": "sunims/vitaminai-ir-papildai-sunims",
+    "lygis": 2
+   },
+   "ypatingi-pasiulymai": {
+    "id": 120,
+    "count": 0,
+    "kelias": "ypatingi-pasiulymai",
+    "lygis": 1
+   },
+   "zaislai-katems": {
+    "id": 114,
+    "count": 61,
+    "kelias": "katems/zaislai-katems",
+    "lygis": 2
+   },
+   "zaislai-sunims": {
+    "id": 115,
+    "count": 203,
+    "kelias": "sunims/zaislai-sunims",
+    "lygis": 2
+   },
+   "zuvims": {
+    "id": 93,
+    "count": 53,
+    "kelias": "zuvims",
+    "lygis": 1
+   },
+   "dp-zuvims": {
+    "id": 103,
+    "count": 0,
+    "kelias": "daugiau-pigiau/dp-zuvims",
+    "lygis": 2
+   },
+   "apranga-sunims": {
+    "id": 305,
+    "count": 39,
+    "kelias": "sunims/apranga-sunims",
+    "lygis": 2
+   },
+   "guoliai-boksai-sunims": {
+    "id": 233,
+    "count": 43,
+    "kelias": "sunims/guoliai-boksai-sunims",
+    "lygis": 2
+   },
+   "kita": {
+    "id": 131,
+    "count": 0,
+    "kelias": "kita",
+    "lygis": 1
+   },
+   "prieziuros-priemones-katems": {
+    "id": 130,
+    "count": 25,
+    "kelias": "katems/prieziuros-priemones-katems",
+    "lygis": 2
+   },
+   "pasaras-grauzikams": {
+    "id": 88,
+    "count": 20,
+    "kelias": "grauzikams/pasaras-grauzikams",
+    "lygis": 2
+   },
+   "skanestai-grauzikams": {
+    "id": 97,
+    "count": 22,
+    "kelias": "grauzikams/skanestai-grauzikams",
+    "lygis": 2
+   },
+   "narvai-grauzikams": {
+    "id": 304,
+    "count": 15,
+    "kelias": "grauzikams/narvai-grauzikams",
+    "lygis": 2
+   },
+   "kraikas-ir-sienas-grauzikams": {
+    "id": 657,
+    "count": 4,
+    "kelias": "grauzikams/kraikas-ir-sienas-grauzikams",
+    "lygis": 2
+   }
+  },
+  "kategoriju_sk": 80,
+  "puslapiu_slug": [
+   "parduotuve",
+   "cart",
+   "checkout",
+   "paskyra",
+   "suns-serimo-lentele-gramais",
+   "sprendimai",
+   "isrankus-augintinis",
+   "jautrus-virskinimas",
+   "sterilizuotas-augintinis",
+   "kraiko-pasirinkimas",
+   "naujas-suniukas",
+   "naujas-kaciukas",
+   "akcijos",
+   "daugiau-pigiau",
+   "pasiulymai",
+   "jorksyro-terjeras",
+   "rusu-melynoji",
+   "siamo-kate",
+   "geriausias-sausas-sunu-maistas",
+   "josera-kaciu-maistas",
+   "rotveileris-s-v",
+   "cvergsnauceris",
+   "mastifas",
+   "taksas",
+   "biglis",
+   "kaukazo-aviganis",
+   "samojedas",
+   "senbernaras",
+   "amerikieciu-putbulterjeras",
+   "tibeto-mastifas",
+   "dzeko-raselo-terjeras",
+   "ciau-ciau",
+   "havanu-bisonai",
+   "josera-sunu-maistas",
+   "kinu-kuduotasis-suo",
+   "amerikieciu-buldogas",
+   "bokseris",
+   "dalmantinas",
+   "kolis",
+   "suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien",
+   "pristatymas",
+   "apie-mus",
+   "kontaktai",
+   "grazinimas",
+   "taisykles",
+   "privatumo-politika",
+   "apmokejimas",
+   "sunu-veisles",
+   "prieziuros-priemones-sunims",
+   "pagrindinis-test",
+   "hipoalerginis-maistas",
+   "monoproteinis-maistas",
+   "be-grudu-maistas",
+   "odai-ir-kailiui",
+   "naujas-augintinis",
+   "slapuku-politika",
+   "duk",
+   "anketa-testas",
+   "augintinio-profilis",
+   "auksciausios-kokybes-sausi-maistai-konservai-sunims-katems-ontario",
+   "miamor-is-meiles-katems",
+   "susipazinkime-prins",
+   "saugus-biologiniai-antiparazitiniai-preparatai-gyvunams",
+   "auksciausios-kokybes-pasarai-sunims-katems-rasco",
+   "suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti",
+   "hipoalerginis-maistas-senjoru-sunims-kaip-issirinkti-be-burtu",
+   "monoproteininis-maistas-sunims-kas-tai-ir-kada-verta-rinktis"
+  ],
+  "produktu_sk": 2776,
+  "brendai": [
+   "4dogs",
+   "8in1",
+   "abakus",
+   "ad-bi",
+   "alda",
+   "ambrosia",
+   "animonda",
+   "antos",
+   "anty-insect",
+   "apollo",
+   "aquaris",
+   "barry-king",
+   "bazyl",
+   "beaphar",
+   "beeztees",
+   "belocat",
+   "biokats",
+   "bioveta",
+   "bioveterinary",
+   "bogar",
+   "bon-appetit",
+   "bosch",
+   "bult",
+   "candioli",
+   "cats_best",
+   "catessy",
+   "catit",
+   "cazo",
+   "champ-richer",
+   "chewllagen",
+   "chipsi",
+   "chuckit",
+   "churu",
+   "ciao",
+   "comfy",
+   "coockoo",
+   "cosycat",
+   "cosypet",
+   "deli-nature",
+   "dingo",
+   "dog-fantasy",
+   "doggyebag",
+   "dogoteka",
+   "dolina-noteci",
+   "drakonape",
+   "duvo",
+   "ecomfy",
+   "eukanuba",
+   "exclusion",
+   "expertus",
+   "family-cat",
+   "family-dog",
+   "farmina",
+   "fine-dog",
+   "flexi",
+   "frendi",
+   "furminator",
+   "gemon",
+   "genia",
+   "georplast",
+   "gigi",
+   "gimborn",
+   "gimcat",
+   "gimdog",
+   "gnatek",
+   "green-petfood",
+   "greenpetfood",
+   "hap",
+   "happet",
+   "haumiau",
+   "hikari",
+   "iams",
+   "joes_cat",
+   "josera",
+   "k-9",
+   "k9",
+   "karoo-wild",
+   "katrinex",
+   "land-fleisch",
+   "lechat",
+   "lessie-land",
+   "little-one",
+   "lupi-pets",
+   "magic-cat",
+   "matteo",
+   "mervue",
+   "miamor",
+   "monge",
+   "mps",
+   "natures-mir",
+   "nina-ottosson",
+   "nobby",
+   "nobleza",
+   "one-wish",
+   "ontario",
+   "pess",
+   "pet-nova",
+   "petshop-lt",
+   "prins",
+   "pro-nutrition",
+   "purina",
+   "quattro",
+   "rasco",
+   "real-dog",
+   "romar",
+   "royal-canin",
+   "santovita",
+   "seecurity",
+   "shinycat",
+   "simba",
+   "smart-bones",
+   "sum-plast",
+   "super-benek",
+   "trixie",
+   "truly",
+   "vetocanis",
+   "vetoquinol",
+   "vitapol",
+   "wanpy",
+   "yarro",
+   "ziarnko",
+   "zolux"
+  ]
+ }
+}
