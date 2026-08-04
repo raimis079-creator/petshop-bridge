@@ -1,0 +1,245 @@
+{
+ "VERSIJA_RUN": "run448-v1",
+ "sid": 2231,
+ "gen1": {
+  "VERSIJA": "s447-v1",
+  "act": "generuoti",
+  "sukurta": [
+   {
+    "nr": 1,
+    "id": 34833,
+    "derinys": "zb",
+    "kiekis": 1,
+    "svecias": true,
+    "suma": "13.19",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 2,
+    "id": 34834,
+    "derinys": "vf",
+    "kiekis": 1,
+    "svecias": true,
+    "suma": "4.49",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 3,
+    "id": 34835,
+    "derinys": "legacy",
+    "kiekis": 2,
+    "svecias": false,
+    "suma": "14.38",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 4,
+    "id": 34836,
+    "derinys": "belcor",
+    "kiekis": 1,
+    "svecias": false,
+    "suma": "4.99",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 5,
+    "id": 34837,
+    "derinys": "zb+legacy",
+    "kiekis": 1,
+    "svecias": true,
+    "suma": "20.38",
+    "prekiu": 2,
+    "statusas": "processing"
+   },
+   {
+    "nr": 6,
+    "id": 34838,
+    "derinys": "vf+legacy",
+    "kiekis": 3,
+    "svecias": true,
+    "suma": "35.04",
+    "prekiu": 2,
+    "statusas": "processing"
+   },
+   {
+    "nr": 7,
+    "id": 34839,
+    "derinys": "zb+vf",
+    "kiekis": 1,
+    "svecias": false,
+    "suma": "17.68",
+    "prekiu": 2,
+    "statusas": "processing"
+   }
+  ],
+  "uzsakymu_viso": 9
+ },
+ "gen2": {
+  "VERSIJA": "s447-v1",
+  "act": "generuoti",
+  "sukurta": [
+   {
+    "nr": 8,
+    "id": 34840,
+    "derinys": "belcor+legacy",
+    "kiekis": 1,
+    "svecias": false,
+    "suma": "12.18",
+    "prekiu": 2,
+    "statusas": "processing"
+   },
+   {
+    "nr": 9,
+    "id": 34841,
+    "derinys": "zb",
+    "kiekis": 10,
+    "svecias": true,
+    "suma": "131.90",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 10,
+    "id": 34842,
+    "derinys": "vf",
+    "kiekis": 20,
+    "svecias": true,
+    "suma": "89.80",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 11,
+    "id": 34843,
+    "derinys": "legacy",
+    "kiekis": 1,
+    "svecias": false,
+    "suma": "7.19",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 12,
+    "id": 34844,
+    "derinys": "belcor",
+    "kiekis": 2,
+    "svecias": false,
+    "suma": "9.98",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 13,
+    "id": 34845,
+    "derinys": "zb+vf+legacy",
+    "kiekis": 1,
+    "svecias": true,
+    "suma": "24.87",
+    "prekiu": 3,
+    "statusas": "processing"
+   },
+   {
+    "nr": 14,
+    "id": 34846,
+    "derinys": "zb",
+    "kiekis": 50,
+    "svecias": true,
+    "suma": "659.50",
+    "prekiu": 1,
+    "statusas": "processing"
+   }
+  ],
+  "uzsakymu_viso": 16
+ },
+ "gen3": {
+  "VERSIJA": "s447-v1",
+  "act": "generuoti",
+  "sukurta": [
+   {
+    "nr": 15,
+    "id": 34847,
+    "derinys": "vf",
+    "kiekis": 1,
+    "svecias": false,
+    "suma": "4.49",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 16,
+    "id": 34848,
+    "derinys": "legacy",
+    "kiekis": 1,
+    "svecias": false,
+    "suma": "7.19",
+    "prekiu": 1,
+    "statusas": "processing"
+   },
+   {
+    "nr": 17,
+    "id": 34849,
+    "derinys": "belcor+zb",
+    "kiekis": 4,
+    "svecias": true,
+    "suma": "72.72",
+    "prekiu": 2,
+    "statusas": "processing"
+   },
+   {
+    "nr": 18,
+    "id": 34850,
+    "derinys": "vf+belcor",
+    "kiekis": 1,
+    "svecias": true,
+    "suma": "9.48",
+    "prekiu": 2,
+    "statusas": "processing"
+   },
+   {
+    "nr": 19,
+    "id": 34851,
+    "derinys": "legacy+vf",
+    "kiekis": 2,
+    "svecias": false,
+    "suma": "23.36",
+    "prekiu": 2,
+    "statusas": "processing"
+   },
+   {
+    "nr": 20,
+    "id": 34852,
+    "derinys": "zb+belcor",
+    "kiekis": 1,
+    "svecias": false,
+    "suma": "18.18",
+    "prekiu": 2,
+    "statusas": "processing"
+   }
+  ],
+  "uzsakymu_viso": 22
+ },
+ "patikra": {
+  "VERSIJA": "s447-v1",
+  "act": "patikra",
+  "testiniu": 20,
+  "PROBLEMOS": [],
+  "santrauka": [
+   {
+    "status": "wc-completed",
+    "c": "1"
+   },
+   {
+    "status": "wc-pending",
+    "c": "1"
+   },
+   {
+    "status": "wc-processing",
+    "c": "20"
+   }
+  ]
+ }
+}
