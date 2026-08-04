@@ -1,11 +1,107 @@
 {
  "VERSIJA_RUN": "run404-v1",
- "sid": null,
+ "sid": 2191,
  "deploy": {
-  "raw": "curl: (28) Failed to connect to dev.avesa.lt port 443 after 135281 ms: Couldn't connect to server\n"
+  "VERSIJA": "s404-v1",
+  "act": "deploy",
+  "idiegta": {
+   "consent-changed": {
+    "B": 3630,
+    "sha": "c214ba2ed0f185f3"
+   },
+   "dunning-1": {
+    "B": 3238,
+    "sha": "dfc5178ecd23d96b"
+   },
+   "founding": {
+    "B": 3555,
+    "sha": "9b77b8a5f30315c5"
+   }
+  },
+  "sablonai_viso": 8,
+  "sarasas": [
+   "cart-abandoned-1.php",
+   "cart-abandoned-2.php",
+   "consent-changed.php",
+   "dunning-1.php",
+   "founding.php",
+   "order-paid.php",
+   "post-purchase-2d.php",
+   "refill.php"
+  ]
  },
  "render": {
-  "raw": "curl: (28) Failed to connect to dev.avesa.lt port 443 after 133154 ms: Couldn't connect to server\n"
+  "VERSIJA": "s404-v1",
+  "act": "render",
+  "render": {
+   "consent_changed": {
+    "subject": "Patvirtiname: sutikote gauti mūsų naujienas",
+    "html_B": 1920,
+    "turi_DOCTYPE": "taip",
+    "turi_UAB": "taip",
+    "PHP_klaidu": "ne",
+    "lt_raides": "taip",
+    "fragmentas": "Patvirtiname: sutikote gauti mūsų naujienas Patvirtiname: sutikote gauti mūsų naujienas Sveiki, Raimundas, nuo šiol siųsime pasiūlymus ir naudingą informaciją apie augintinių priežiūrą. Rašysime saikingai — tik tada, kai turėsime ką pasakyti. Pakeitimo įrašas Sprendimas: sutikimas duotas Laikas: 2026-08-04 10:15 Užfiksuota: atsiskaitymo metu Pakeisti nustatymus Jei šio pakeitimo nedarėte, praneškite mums adresu uzsakymai@petshop.lt. UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pasikeitė jūsų sutikimo būsena petshop.lt."
+   },
+   "payment_failed": {
+    "subject": "Užsakymas AVPN-1042 laukia apmokėjimo",
+    "html_B": 2052,
+    "turi_DOCTYPE": "taip",
+    "turi_UAB": "taip",
+    "PHP_klaidu": "ne",
+    "lt_raides": "taip",
+    "fragmentas": "Užsakymas AVPN-1042 laukia apmokėjimo Užsakymas AVPN-1042 laukia apmokėjimo Sveiki, Raimundas, jūsų užsakymą gavome, bet apmokėjimas nepasiekė mūsų. Dažniausiai taip nutinka, kai mokėjimo lange nutrūksta ryšys su banku — pinigai tokiu atveju nenuskaitomi. Prekes laikome jums iki 2026-08-07. Apmokėti galite paspaudę mygtuką žemiau — suma 34,90 €. Apmokėti užsakymą Jei apmokėjimą jau atlikote arba užsakymo nebereikia — tiesiog atsakykite į šį laišką. Neapmokėtą užsakymą po kelių dienų atšauksime automatiškai, jokių įsipareigojimų neliks. UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pateikėte užsakymą petshop.lt."
+   },
+   "founding_activation": {
+    "subject": "Petshop.lt atsidaro — jūs pirmieji",
+    "html_B": 2357,
+    "turi_DOCTYPE": "taip",
+    "turi_UAB": "taip",
+    "PHP_klaidu": "ne",
+    "lt_raides": "taip",
+    "fragmentas": "Petshop.lt atsidaro — jūs pirmieji Petshop.lt atsidaro — jūs pirmieji Sveiki, Raimundas, ačiū, kad užsirašėte laukti. Parduotuvė atidaryta, ir jūs galite užsukti pirmieji. Dvidešimt ketveri metai prekyboje gyvūnų prekėmis sudėti į vieną vietą: hipoalerginis ir monobaltyminis maistas, pašaro normos iš gamintojų lentelių ir kaina, matoma ne už pakuotę, o už dieną. Jūsų kodas pirmam užsakymui PIRMIEJI15 -15% pirmam užsakymui Galioja iki 2026-10-31 Apžiūrėti parduotuvę"
+   },
+   "consent_changed_tuscias": {
+    "subject": "Patvirtiname: naujienų nebesiųsime",
+    "html_B": 1852,
+    "turi_DOCTYPE": "taip",
+    "turi_UAB": "taip",
+    "PHP_klaidu": "ne",
+    "lt_raides": "taip",
+    "fragmentas": "Patvirtiname: naujienų nebesiųsime Patvirtiname: naujienų nebesiųsime Sveiki, naujienų jums nebesiųsime. Su užsakymais susiję laiškai — patvirtinimai, siuntos sekimas, sąskaitos — ateis ir toliau, nes jie būtini paslaugai suteikti. Pakeitimo įrašas Sprendimas: sutikimas atšauktas Pakeisti nustatymus Jei šio pakeitimo nedarėte, praneškite mums adresu uzsakymai@petshop.lt. UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pasikeitė jūsų sutikimo būsena petshop.lt."
+   },
+   "payment_failed_tuscias": {
+    "subject": "Jūsų užsakymas laukia apmokėjimo",
+    "html_B": 1996,
+    "turi_DOCTYPE": "taip",
+    "turi_UAB": "taip",
+    "PHP_klaidu": "ne",
+    "lt_raides": "taip",
+    "fragmentas": "Jūsų užsakymas laukia apmokėjimo Jūsų užsakymas laukia apmokėjimo Sveiki, jūsų užsakymą gavome, bet apmokėjimas nepasiekė mūsų. Dažniausiai taip nutinka, kai mokėjimo lange nutrūksta ryšys su banku — pinigai tokiu atveju nenuskaitomi. Prekes laikome jums. Apmokėti galite paspaudę mygtuką žemiau. Apmokėti užsakymą Jei apmokėjimą jau atlikote arba užsakymo nebereikia — tiesiog atsakykite į šį laišką. Neapmokėtą užsakymą po kelių dienų atšauksime automatiškai, jokių įsipareigojimų neliks. UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pateikėte užsakymą petshop.lt."
+   },
+   "founding_activation_tuscias": {
+    "subject": "Petshop.lt atsidaro — jūs pirmieji",
+    "html_B": 1770,
+    "turi_DOCTYPE": "taip",
+    "turi_UAB": "taip",
+    "PHP_klaidu": "ne",
+    "lt_raides": "taip",
+    "fragmentas": "Petshop.lt atsidaro — jūs pirmieji Petshop.lt atsidaro — jūs pirmieji Sveiki, ačiū, kad užsirašėte laukti. Parduotuvė atidaryta, ir jūs galite užsukti pirmieji. Dvidešimt ketveri metai prekyboje gyvūnų prekėmis sudėti į vieną vietą: hipoalerginis ir monobaltyminis maistas, pašaro normos iš gamintojų lentelių ir kaina, matoma ne už pakuotę, o už dieną. Apžiūrėti parduotuvę UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes užsiregistravote laukti petshop.lt atidarymo."
+   }
+  },
+  "srautu_viso": 18,
+  "TRUKSTA_SABLONU": {
+   "order_shipped": "order-shipped",
+   "shipment_returned": "shipment-returned",
+   "pet_reminder_due": "pet-reminder",
+   "subscription_t5_notice": "subscription-t5",
+   "post_purchase_7d": "post-purchase-7d",
+   "post_purchase_14d": "post-purchase-14d",
+   "win_back_60": "win-back-60",
+   "win_back_90": "win-back-90",
+   "win_back_120": "win-back-120",
+   "legacy_reactivation_l1": "legacy-l1"
+  }
  },
- "svetaine": "curl: (28) Connection timed out after 25001 milliseconds\n000"
+ "svetaine": "200"
 }
