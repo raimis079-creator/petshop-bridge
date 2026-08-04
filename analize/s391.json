@@ -1,0 +1,30 @@
+{
+ "VERSIJA_RUN": "run391-v1",
+ "sid": 2178,
+ "deploy": {
+  "VERSIJA": "s391-v1",
+  "act": "deploy",
+  "B": 18392,
+  "sha": "cc71277d6a55ba75",
+  "teises": "0700"
+ },
+ "selftest": {
+  "VERSIJA": "s391-v1",
+  "act": "selftest",
+  "rezultatas": {
+   "mode": "selftest",
+   "ok": true,
+   "log": [],
+   "engines": {
+    "innodb": 14,
+    "myisam": 160,
+    "kita": []
+   },
+   "tables": 174
+  },
+  "sekundziu": 0.1,
+  "atmintis_peak_MB": 98,
+  "likę_laikini": []
+ },
+ "svetaine": "200"
+}
