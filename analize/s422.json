@@ -1,0 +1,139 @@
+{
+ "VERSIJA_RUN": "run422-v1",
+ "sid": 2206,
+ "rez": {
+  "VERSIJA": "s422-v1",
+  "pluginai": {
+   "code-snippets/code-snippets.php": {
+    "v": "3.9.6",
+    "aktyvus": true
+   },
+   "complianz-gdpr/complianz-gpdr.php": {
+    "v": "7.5.2",
+    "aktyvus": true
+   },
+   "loco-translate/loco.php": {
+    "v": "2.8.8",
+    "aktyvus": true
+   },
+   "woo-payment-gateway-paysera/paysera.php": {
+    "v": "3.12.1",
+    "aktyvus": true
+   },
+   "woocommerce-pdf-invoices-packing-slips/woocommerce-pdf-invoices-packingslips.php": {
+    "v": "5.15.2",
+    "aktyvus": false
+   },
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php": {
+    "v": "7.2.1",
+    "aktyvus": true
+   },
+   "redirection/redirection.php": {
+    "v": "5.9.0",
+    "aktyvus": false
+   },
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php": {
+    "v": "1.26.3",
+    "aktyvus": true
+   },
+   "shortpixel-image-optimiser/wp-shortpixel.php": {
+    "v": "6.5.5",
+    "aktyvus": false
+   },
+   "wp-all-import-pro/wp-all-import-pro.php": {
+    "v": "5.0.8",
+    "aktyvus": true
+   },
+   "wpforms-lite/wpforms.php": {
+    "v": "2.0.0.2",
+    "aktyvus": true
+   },
+   "wp-mail-smtp/wp_mail_smtp.php": {
+    "v": "4.9.0",
+    "aktyvus": true
+   },
+   "yith-woocommerce-ajax-navigation/init.php": {
+    "v": "5.22.0",
+    "aktyvus": true
+   }
+  },
+  "pluginu_viso": 29,
+  "aktyviu": 26,
+  "blog_public": "0",
+  "pragma_production": "NENUSTATYTA",
+  "siteurl": "https://dev.avesa.lt",
+  "home": "https://dev.avesa.lt",
+  "reviews_enabled": "yes",
+  "review_verified_only": "yes",
+  "ratings_enabled": "yes",
+  "guest_checkout": "yes",
+  "sprendimai": {
+   "34254": {
+    "status": "publish",
+    "pav": "Išrankus augintinis",
+    "B": 4253
+   },
+   "34258": {
+    "status": "publish",
+    "pav": "Naujas šuniukas",
+    "B": 5465
+   },
+   "34259": {
+    "status": "publish",
+    "pav": "Naujas kačiukas",
+    "B": 6227
+   },
+   "34260": {
+    "status": "publish",
+    "pav": "Jautrus virškinimas",
+    "B": 6365
+   },
+   "34261": {
+    "status": "publish",
+    "pav": "Sterilizuotas augintinis",
+    "B": 5410
+   },
+   "34262": {
+    "status": "publish",
+    "pav": "Kraiko pasirinkimas",
+    "B": 5967
+   }
+  },
+  "katalogas": {
+   "publish": 2776,
+   "draft": 1026,
+   "su_ean": 1936
+  },
+  "atributai": {
+   "pa_monoprotein": 2,
+   "pa_be_grudu": 3,
+   "pa_baltymu_saltinis": 19,
+   "pa_pakuotes_dydis": 92,
+   "pa_paskirtis": 22
+  },
+  "snippetai": {
+   "viso": 1568,
+   "aktyvus": 85,
+   "TEMP_aktyvus": 3,
+   "TEMP_viso": 208
+  },
+  "uzsakymai": [
+   {
+    "status": "wc-completed",
+    "c": "1"
+   },
+   {
+    "status": "wc-pending",
+    "c": "1"
+   }
+  ],
+  "klientai": 31,
+  "redirection_lentele": false,
+  "feed_pluginas": "katalogas yra",
+  "loyalty_lenteles": [],
+  "subscription_lenteles": [],
+  "google_login": "NERA",
+  "sender_webhook_route": "yra",
+  "esp_health": "adapteris yra"
+ }
+}
