@@ -15,14 +15,15 @@
 
 | Blokas | ✅ | 🟡 | 🔴 | ⏸ laukia Raimio |
 |---|---|---|---|---|
-| Launch DoD (22) | 7 | 4 | 9 | 2 nematuota |
-| P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
-| MVP funkcijos (§4.3) | 4 | 0 | 1 | 1 nepatikrinta |
+| Launch DoD (22) | 6 | 6 | 8 | 2 nematuota |
+| P0 funkcijos F1–F16 | 16 | 1 | 0 | Identity neįvertintas |
+| MVP funkcijos (§4.3) | 5 | 0 | 1 | — |
 | El. laiškų šablonai | 8 | 1 | 9 | — |
 | M8 anketa (9 punktai) | 9 | 0 | 0 | tekstai |
 | Pre-launch operacijos | 0 | 2 | 9 | — |
 
-**Vienu sakiniu:** kodas beveik padarytas, **testavimo / monitoringo / operacijų sluoksnis nepradėtas**, ir jame yra 10 iš 22 DoD raudonų.
+**Vienu sakiniu:** kodas beveik padarytas, testavimo/operacijų sluoksnis dalinai, ir
+**TŽ auditas 2026-08-04 rado 9 blokus, kurių registre nebuvo (§11)** — tarp jų vienas P0.
 
 ---
 
@@ -47,7 +48,7 @@
 
 | ID | Kriterijus | Būsena | Data | Įrodymas / kas trūksta |
 |---|---|---|---|---|
-| DOD-01 | P0 funkcijos F1–F16 100% | ✅ | 2026-08-03 | F4 ✅ + F14 ✅. Visos P0 uždarytos |
+| DOD-01 | P0 funkcijos F1–F16 100% | 🟡 | 2026-08-04 | F4 ✅ F14 ✅, BET **Identity/Google login (TŽ v1.45 P0) NEĮVERTINTAS** — §11 G1 |
 | DOD-02 | Kritinių klaidų 0 | ⚪ | — | **nėra bug registro** — nematuojama |
 | P1-MYISAM | MyISAM → InnoDB migracija | 🔴 | 2026-08-03 | 160/174 lentelių MyISAM = 98% duomenų. Architektūros skola, ne tik backup (§8c) |
 | DOD-03 | Aukšto prioriteto klaidų ≤3 | ⚪ | — | tas pats |
@@ -91,7 +92,7 @@
 | F19 | **Ribota prenumerata** | 🔴 | — | **NEPRADĖTA. Didžiausias likęs kodo blokas.** Blokuoja Q10 + Q6 + Paysera Recurring |
 | F20 | Basic Pet Profile | ✅✅ | 2026-08-03 | M8 gerokai viršyta |
 | F21 | Basic email automation | ✅ 3/3 | 2026-08-02 | cart_abandoned · post_purchase · refill |
-| F30b | Atsiliepimai | ⚪ | — | **būsena nepatikrinta** |
+| F30b | Atsiliepimai | ✅ | 2026-08-04 | Patikrinta gyvai: reviews=yes · verified buyers only=yes · rating=yes |
 
 ---
 
@@ -722,6 +723,57 @@ Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
 
 ---
 
+## 11. TŽ v1.60 AUDITO SPRAGOS (2026-08-04) — DEVYNI BLOKAI, KURIŲ REGISTRE NEBUVO
+
+> Pilna ataskaita: `TZ_AUDITAS_2026-08-04.md` (Raimio PC). Gyvas auditas `analize/s422.json`.
+> Registras dengė ~60% TŽ launch apimties. Šie devyni blokai buvo NEFIKSUOTI.
+
+| ID | Blokas | TŽ | Serveryje 2026-08-04 | Būklė |
+|---|---|---|---|---|
+| G1 | **Identity / Google login** (TŽ v1.45) | **P0** | social login plugino NĖRA | 🔴 **sprendimas Raimio** |
+| G2 | F22 lojalumas | startas 2026-08-15 | lentelių nėra, Q9 atvira | 🔴 |
+| G3 | Google Merchant Center feed | pre-launch, v1.56 | feed'o nėra; PMax degina ~10k €/m | 🔴 |
+| G4 | Sender webhook statusai (delivered/bounced/opened) | „sekantis techninis blokas" | route yra, statusų grandinės ne | 🔴 |
+| G5 | H1 tema-lygio fix | blocker nuo v1.53 | nepatikrinta | 🔴 |
+| G6 | ShortPixel ON | pre-launch | INACTIVE 6.5.5 | 🔴 |
+| G7 | wpo-wcpdf trynimas | higiena | INACTIVE 5.15.2, yra | 🔴 |
+| G8 | **Pragma production mode ON** | pre-launch | `NENUSTATYTA` = OFF | 🔴 **launch dieną BŪTINA** |
+| G9 | SMS Sender ID registracija | „pradėti ANKSTI" | nepradėta | 🔴 |
+
+### G1 detaliau — vienintelis tyliai iškritęs P0
+TŽ v1.45: Google login + dedup saugiklis. Kritinė vieta: **Google email ≠ senas pirkimo email**
+→ sistema sukurtų NAUJĄ tuščią profilį be istorijos. Tai tiesiogiai liečia Raimio 2 000 senų
+adresų. TŽ sprendimas: savanoriškas susiejimas su nuosavybės patvirtinimu per magic link į
+SENĄ el. paštą. Magic link mechanizmą jau turim (M8) — ne nuo nulio.
+**KLAUSIMAS RAIMIUI: P0 launch'ui ar po launch?** Nuo to priklauso DOD-01 spalva.
+
+### REGISTRO KLAIDOS, KURIAS AUDITAS IŠTAISĖ
+```
+F30b atsiliepimai      buvo ⚪ „nepatikrinta" → REALIAI VEIKIA:
+                       enable_reviews=yes · verification_required=yes · rating=yes
+EAN padengimas         buvo „1 518 be EAN (55%)" → REALIAI 1 936/2 776 = 69,8%
+                       (ankstesnis skaičius rėmėsi VIEN _ean lauku, ne visais 4)
+Snippetų higiena       TŽ v1.38 rašė 311 → REALIAI 1 568 (85 aktyvūs, 208 TEMP)
+Sprendimų puslapiai    visi 6 PUBLISH (34254/58/59/60/61/62) — registre nefiksuota
+Katalogas              2 776 publish · 1 026 draft · 31 vartotojas · 2 užsakymai
+Redirection            įdiegtas 5.9.0 BET NEAKTYVUS ir DB lentelių NĖRA
+                       → DOD-07 infrastruktūra net neinicializuota
+```
+
+### Q KLAUSIMAI SU PRAĖJUSIAIS TERMINAIS
+```
+Q14 Paysera Recurring (2026-06)   Q16 feed'ai (2026-07) ← blokuoja G3
+Q19 istoriniai atsiliepimai (06)  Q23 aprašymų sekcijos (07)
+Q25 fulfillment ABC (2026-07)     Q9 lojalumas — terminas 08-15, LIKO 11 D.
+```
+
+### TŽ ATSILIEKA
+Paskutinis TŽ įrašas — v1.60 (2026-07-30). Nedokumentuota: backup grandinė (§8b–8h),
+F4 paieška, M8 anketa 9/9, 3 šablonai, naujienlaiškis, MyISAM radinys.
+**Siūloma v1.61** po einamųjų darbų.
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -729,6 +781,8 @@ Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
 | Q-BKP | ✅ **UŽDARYTA 2026-08-03:** B2 bucketas, raktas, kredencialai, Object Lock 14 d. — viskas pastatyta ir įrodyta (§8d) | DOD-08 | — |
+| **Q-GOOGLE** | **Google login (TŽ v1.45 P0) — launch'ui ar po launch?** | DOD-01, §11 G1 | skubu |
+| **Q-MERCH** | **Google Merchant Center feed — dabar ar po launch?** (~10 k €/metus) | §11 G3 | skubu |
 | Q-MON | **Monitoringo apimtis** — uptime pakanka, ar reikia ir PHP klaidų sekimo? | DOD-13 | — |
 | Q-PSR2 | **Paysera testinio režimo patvirtinimas** — be jo pilnas mokėjimo ciklas (redirect → callback → `processing`) netestuojamas. Dev režimas testinis, bet konfigūracija nebaigta | F-PSR | — |
 | Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
