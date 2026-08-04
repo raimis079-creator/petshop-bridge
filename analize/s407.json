@@ -1,0 +1,350 @@
+{
+ "VERSIJA_RUN": "run407-v1",
+ "sid": 2193,
+ "rez": {
+  "VERSIJA": "s407-v1",
+  "consent_log_stulpeliai": [
+   {
+    "Field": "id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+   },
+   {
+    "Field": "customer_id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "email",
+    "Type": "varchar(191)",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "field",
+    "Type": "varchar(48)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "from_value",
+    "Type": "varchar(16)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "to_value",
+    "Type": "varchar(16)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "source",
+    "Type": "varchar(32)",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "ip",
+    "Type": "varchar(45)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "user_agent",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "changed_at",
+    "Type": "datetime",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   }
+  ],
+  "consent_log_kiekis": 11,
+  "consent_log_pvz": [
+   {
+    "id": "18",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "true",
+    "to_value": "false",
+    "source": "unsubscribe_link",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:09"
+   },
+   {
+    "id": "17",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "false",
+    "to_value": "true",
+    "source": "test_setup",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:09"
+   },
+   {
+    "id": "16",
+    "customer_id": "0",
+    "email": "other-user@example.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "test",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:08"
+   }
+  ],
+  "saltiniai": [
+   {
+    "source": "checkout",
+    "c": "1"
+   },
+   {
+    "source": "test",
+    "c": "1"
+   },
+   {
+    "source": "test_cleanup",
+    "c": "2"
+   },
+   {
+    "source": "test_setup",
+    "c": "2"
+   },
+   {
+    "source": "test_verify",
+    "c": "2"
+   },
+   {
+    "source": "unsubscribe_link",
+    "c": "2"
+   },
+   {
+    "source": "webhook",
+    "c": "1"
+   }
+  ],
+  "klases": {
+   "Petshop_Consent_Sync": [
+    "init",
+    "set_marketing_consent",
+    "handle_sender_unsubscribe",
+    "handle_sender_bounce",
+    "capture_checkout_consent",
+    "handle_consent_change"
+   ],
+   "Petshop_Contact_Policy": [
+    "has_consent",
+    "normalize",
+    "compute",
+    "is_marketable",
+    "sync_transactional_only",
+    "on_contact_used",
+    "queue",
+    "unqueue",
+    "pending",
+    "drain",
+    "init",
+    "on_consent_changed"
+   ],
+   "Petshop_Unsubscribe": [
+    "init",
+    "add_rewrite",
+    "link",
+    "handle"
+   ],
+   "Petshop_Sender_Adapter": [
+    "get_name",
+    "__construct",
+    "get_stored_token",
+    "store_token",
+    "is_configured",
+    "is_retriable_code",
+    "upsert_contact",
+    "emit_event",
+    "send_transactional_email",
+    "send_transactional_sms",
+    "verify_webhook",
+    "get_health_status",
+    "is_operational",
+    "get_contact_field",
+    "get_contact_status"
+   ]
+  },
+  "failai": {
+   "class-consent-sync.php": {
+    "B": 8299,
+    "eil": 240,
+    "esmines": [
+     "9: *    irasom i ps_consent_log + user_meta + push'inam PS_MARKETING_CONSENT i Sender.",
+     "10: * B. Sender → Woo (webhook): kai klientas unsubscribe'ina per Sender laiska,",
+     "11: *    Sender webhook praneša, mes atnaujinam mūsų puse (user_meta + ps_consent_log).",
+     "14: * VIENA TIESA: ps_consent_log paskutine reiksme + user_meta 'ps_marketing_consent'.",
+     "15: * Sender PS_MARKETING_CONSENT = atspindys (push'inamas is cia).",
+     "30: * kvietimo i do_action('petshop_contact_update',\\$email,\\$attrs) — provider'iai klauso.",
+     "35: const META_MARKETING = 'ps_marketing_consent';",
+     "36: const META_TRANSACTIONAL_ONLY = 'ps_transactional_only';",
+     "41: public static function init() {",
+     "54: * @param string $source   checkout|mano-paskyra|admin|import",
+     "58: public static function set_marketing_consent( $email, $consent, $source = 'unknown', $customer_id = 0 ) {",
+     "66: $from = Petshop_Consent_Log::current_value( $email, 'marketing_consent' );",
+     "81: 'field'       => 'marketing_consent',",
+     "84: 'source'      => $source,",
+     "92: // 3. Push i Sender (PS_MARKETING_CONSENT + jei atsisake, PS_UNSUBSCRIBED_AT)",
+     "93: $attributes = array( 'PS_MARKETING_CONSENT' => $new_value );",
+     "95: $attributes['PS_UNSUBSCRIBED_AT'] = gmdate( 'Y-m-d' );",
+     "101: $res = $adapter->upsert_contact( $email, $attributes );",
+     "109: 'field'      => 'marketing_consent',",
+     "112: 'source'     => $source,",
+     "113: ), array( 'event_id' => 'consent_' . md5( $email . $source . microtime() ) ) );",
+     "125: * Sender → Woo: apdoroti unsubscribe is Sender webhook.",
+     "132: public static function handle_sender_unsubscribe( $email ) {",
+     "141: $from = Petshop_Consent_Log::current_value( $email, 'marketing_consent' );",
+     "149: // Irasyti i consent_log (source=webhook)",
+     "153: 'field'       => 'marketing_consent',",
+     "156: 'source'      => 'webhook',",
+     "166: 'field'      => 'marketing_consent',",
+     "169: 'source'     => 'webhook',",
+     "184: public static function handle_sender_bounce( $email ) {",
+     "198: 'source'      => 'webhook',",
+     "212: public static function capture_checkout_consent( $customer, $data ) {",
+     "219: self::set_marketing_consent( $email, $consent, 'checkout', $cid );",
+     "226: * do_action('petshop_consent_changed', array('email'=>..., 'consent'=>bool, 'customer_id'=>..., 'source'=>...))",
+     "228: public static function handle_consent_change( $args ) {",
+     "232: self::set_marketing_consent(",
+     "235: isset( $args['source'] ) ? $args['source'] : 'mano-paskyra',"
+    ]
+   },
+   "class-contact-policy.php": {
+    "B": 7195,
+    "eil": 207,
+    "esmines": [
+     "3: * Petshop Contact Policy — PS_TRANSACTIONAL_ONLY valdymas.",
+     "10: *     - marketingo kanalas suppressed / unsubscribed",
+     "29: class Petshop_Contact_Policy {",
+     "31: const FIELD       = 'PS_TRANSACTIONAL_ONLY';",
+     "32: const OPT_PENDING = 'petshop_contact_policy_pending';",
+     "33: const MAX_RETRY   = 5;",
+     "40: * S321 KRITINE PATAISA: `ps_get_marketing_consent()` grazina STRING",
+     "47: public static function has_consent( $email ) {",
+     "48: if ( ! function_exists( 'ps_get_marketing_consent' ) ) { return false; }",
+     "49: $raw = ps_get_marketing_consent( $email );",
+     "56: public static function normalize( $raw ) {",
+     "69: public static function compute( $email ) {",
+     "89: public static function is_marketable( $email ) {",
+     "104: public static function sync_transactional_only( $email, $source = 'auto' ) {",
+     "119: if ( ! $adapter || ! method_exists( $adapter, 'upsert_contact' ) ) {",
+     "124: $res = $adapter->upsert_contact( $email, array( self::FIELD => $val ) );",
+     "130: return array( 'ok' => true, 'value' => $val, 'action' => 'synced', 'source' => $source );",
+     "147: public static function on_contact_used( $email, $flow = '' ) {",
+     "155: public static function queue( $email ) {",
+     "163: public static function unqueue( $email ) {",
+     "172: public static function pending() {",
+     "179: public static function drain( $limit = 50 ) {",
+     "196: public static function init() {",
+     "200: add_action( 'petshop_contact_used', array( __CLASS__, 'on_contact_used' ), 10, 2 );",
+     "203: public static function on_consent_changed( $email ) {"
+    ]
+   },
+   "class-unsubscribe.php": {
+    "B": 6232,
+    "eil": 140,
+    "esmines": [
+     "3: * Petshop Unsubscribe — veikianti atsisakymo nuoroda marketingo laiskams.",
+     "24: class Petshop_Unsubscribe {",
+     "26: const PURPOSE  = 'unsubscribe_marketing';",
+     "27: const QUERY    = 'ps_unsub';",
+     "28: const TTL_DAYS = 90;",
+     "30: public static function init() {",
+     "35: public static function add_rewrite() {",
+     "44: public static function link( $email ) {",
+     "50: 'resource_id'   => 'marketing',",
+     "57: public static function handle() {",
+     "107: Petshop_Email_Suppression::suppress( $email, Petshop_Email_Suppression::CH_MARKETING, 'unsubscribe', 'unsubscribe_link' );",
+     "109: if ( function_exists( 'ps_set_marketing_consent' ) ) {",
+     "110: ps_set_marketing_consent( $email, false, 'unsubscribe_link', 0 );",
+     "112: if ( class_exists( 'Petshop_Contact_Policy' ) ) {",
+     "113: Petshop_Contact_Policy::sync_transactional_only( $email, 'unsubscribe_link' );",
+     "124: protected static function page( $title, $html ) {"
+    ]
+   }
+  },
+  "user_meta_marketing": [],
+  "checkout_laukas": "0",
+  "shortcodes": [
+   "petshop_feeding_demo",
+   "petshop_atrinktos",
+   "petshop_pet_form",
+   "petshop_popular_products"
+  ],
+  "petshop_routes": [
+   "/petshop/v1",
+   "/petshop/v1/feeding-calc",
+   "/petshop/v1/feeding-pet-weight",
+   "/petshop/v1/feeding-pet-activity",
+   "/petshop/v1/feeding-pet-wet-food",
+   "/petshop/v1/feeding-calc-for-pet",
+   "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+   "/petshop/v1/pet-food-assign",
+   "/petshop/v1/pet-food-brand",
+   "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+   "/petshop/v1/wet-food-search",
+   "/petshop/v1/wet-products-info",
+   "/petshop/v1/pet-wet-product",
+   "/petshop/v1/product-search",
+   "/petshop/v1/pet-claim-pending",
+   "/petshop/v1/pet-claim-resolve",
+   "/petshop/v1/feeding/calculate",
+   "/petshop/v1/pet-draft",
+   "/petshop/v1/magic-login/request",
+   "/petshop/v1/pet-profile",
+   "/petshop/v1/pet-profile/(?P<id>\\d+)",
+   "/petshop/v1/food-search",
+   "/petshop/v1/brands",
+   "/petshop/v1/pet-product-link",
+   "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+   "/petshop/v1/refill-feedback",
+   "/petshop/v1/pet-photo/(?P<id>\\d+)",
+   "/petshop/v1/pet-content/(?P<id>\\d+)",
+   "/petshop/v1/sender-webhook",
+   "/petshop/v1/reminders",
+   "/petshop/v1/reminders/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+   "/petshop/v1/pet-notes",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+  ]
+ },
+ "svetaine": "200"
+}
