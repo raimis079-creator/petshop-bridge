@@ -166,7 +166,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | ID | Operacija | Būsena |
 |---|---|---|
 | OPS-01 | Site URL/Home → `https://petshop.lt` (**būtinai https**) | 🔴 |
-| OPS-02 | **11 cron užduočių** serveriai.lt — patikslinta 2026-08-04 (žr. §8e) | 🔴 |
+| OPS-02 | **12 cron užduočių** serveriai.lt — patikslinta 2026-08-04 (žr. §8e) | 🔴 |
 | OPS-03 | `woocommerce_email_header_image` · `wcdn_settings` · `cmplz_preloaded_privacy_info` | 🔴 |
 | OPS-04 | AVPN/IAPV serijos reset į 101 | 🔴 |
 | OPS-05 | Testinių užsakymų trynimas | 🔴 |
@@ -429,7 +429,7 @@ Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp
 4. ✅ Gedimo testai — sugadinus appKey: HTTP 401, būsena FAIL, laikinų 0,
       laiškas ATĖJO į terra@gyvunai.lt (Gautuosius, ne šlamštą), grąžinus veikia
 5. ✅ ATSTATYMO TESTAS — praėjo (§8g)
-6. ⏳ LIKO: „cron visai nepasileido" perspėjimas (heartbeat pagal .ps-backup-state.json)
+6. ✅ „cron nepasileido" sargas — ps-backup-watch.php v1.0 (§8h)
 ```
 
 ### Ko NEDARYTI
@@ -460,8 +460,10 @@ min    val   komanda (visos per cronurl 'http://dev.avesa.lt/...')
 30     6     wp-load.php?import_key=v&import_id=5&action=trigger
 31-59/2 6    wp-load.php?import_key=v&import_id=5&action=processing
 0      4     backup-run.php?ps_backup_key=...        ← NAUJA 2026-08-04
+0      10    watch-run.php?ps_watch_key=...          ← NAUJA 2026-08-04 (sargas)
 ```
-Keičiasi TIK domenas. `import_key=v`, `import_id` ir `ps_backup_key` lieka tie patys.
+**IŠ VISO 12 užduočių.** Keičiasi TIK domenas. `import_key=v`, `import_id`,
+`ps_backup_key` ir `ps_watch_key` lieka tie patys.
 Import #2 sukasi DUKART per parą (6:00 ir 18:00) — anksčiau registre neužfiksuota.
 Import #7 ir #5 irgi aktyvūs.
 
@@ -536,6 +538,36 @@ Viskas kita patikrinta.
 **`options` 1 035 vs 1 034 originale — NE klaida:** kopija daryta 07:00,
 palyginimas 10:40; WP per tą laiką sukūrė naują įrašą. Su MANIFESTU sutampa
 tiksliai, o tai ir yra kriterijus.
+
+---
+
+## 8h. BACKUP SARGAS — VEIKIA (2026-08-04)
+
+```
+Skriptas    /home/gyvunai2/backups/ps-backup-watch.php v1.0 · 4 426 B · 0700
+            sha efb40d007472867a
+Paleidiklis .../dev/watch-run.php · 143 B (tik require)
+Cron        0 10 * * *  http://dev.avesa.lt/watch-run.php?ps_watch_key=...
+Būsena      /home/gyvunai2/backups/.ps-watch-state.json
+Ribos       MAX_VAL 26 h (paros ciklas + 2 h atsargos) · MIN_MB 5
+```
+**Praneša TIK kai negerai.** Normalioje būsenoje tyli — todėl laiškas iš sargo
+visada reiškia tikrą problemą.
+
+**Testų matrica 6/6 (s401.json):**
+```
+be rakto / blogas raktas   403 · 403
+T1 normali būsena          OK, jokio laiško
+T2 kopija prieš 40 val.    „CRON GREIČIAUSIAI NEBEPASILEIDŽIA"
+T3 last_result = FAIL      „Paskutinis bandymas: FAIL — ..."
+T4 kopija 1 KB             „Kopija įtartinai maža: 0 MB (riba 5 MB)"
+T5 būsenos failo nėra      „nė karto nepasileido arba failas ištrintas"
+T6 grąžinus                OK · būsena grąžinta byte-tiksliai
+```
+Keturi gedimo tipai — keturi skirtingi pranešimai, ne bendras „kažkas negerai".
+
+**Kodėl 10:00:** 6 val. po backup'o. Jei naktinis 04:00 nepasileistų arba
+žlugtų, apie tai žinoma tą pačią dieną, ne po savaitės.
 
 ---
 
