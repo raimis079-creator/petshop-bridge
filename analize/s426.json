@@ -1,0 +1,165 @@
+{
+ "VERSIJA_RUN": "run426-v1",
+ "sid": 2209,
+ "pries": {
+  "sunims/antiparazitines-priemones-sunims": {
+   "code": "404",
+   "loc": null,
+   "by": null
+  },
+  "katems/antiparazitines-priemones-katems": {
+   "code": "404",
+   "loc": null,
+   "by": null
+  },
+  "hipoalerginis-maistas-sunims": {
+   "code": "404",
+   "loc": null,
+   "by": null
+  },
+  "sunims": {
+   "code": "404",
+   "loc": null,
+   "by": null
+  },
+  "sunims/maistas-sunims/sausas-maistas-sunims": {
+   "code": "404",
+   "loc": null,
+   "by": null
+  }
+ },
+ "kontrole_pries": {
+  "sprendimai": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/sprendimai/",
+   "by": "WordPress"
+  },
+  "jautrus-virskinimas": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/sprendimai/jautrus-virskinimas/",
+   "by": "WordPress"
+  },
+  "naujas-suniukas": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/sprendimai/naujas-suniukas/",
+   "by": "WordPress"
+  },
+  "duk": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/duk/",
+   "by": "WordPress"
+  },
+  "privatumo-politika": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/privatumo-politika/",
+   "by": "WordPress"
+  },
+  "kategorija/sunims": {
+   "code": "200",
+   "loc": null,
+   "by": null
+  }
+ },
+ "deploy": {
+  "VERSIJA": "s426-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 4365,
+   "sha": "92a90a68b4535c45"
+  }
+ },
+ "map": {
+  "VERSIJA": "s426-v1",
+  "act": "map",
+  "funkcija": "yra",
+  "irasu": 34,
+  "BLOGI_TAIKINIAI": [],
+  "visi_taikiniai_ok": "TAIP"
+ },
+ "po": {
+  "sunims/antiparazitines-priemones-sunims": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/kategorija/sunims/antiparazitines-priemones-sunims/",
+   "by": "WordPress"
+  },
+  "katems/antiparazitines-priemones-katems": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/kategorija/katems/antiparazitines-priemones-katems/",
+   "by": "WordPress"
+  },
+  "hipoalerginis-maistas-sunims": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/kategorija/hipoalerginis-maistas-sunims/",
+   "by": "WordPress"
+  },
+  "sunims": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/kategorija/sunims/",
+   "by": "WordPress"
+  },
+  "sunims/maistas-sunims/sausas-maistas-sunims": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "by": "WordPress"
+  }
+ },
+ "kontrole_po": {
+  "sprendimai": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/sprendimai/",
+   "by": "WordPress"
+  },
+  "jautrus-virskinimas": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/sprendimai/jautrus-virskinimas/",
+   "by": "WordPress"
+  },
+  "naujas-suniukas": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/sprendimai/naujas-suniukas/",
+   "by": "WordPress"
+  },
+  "duk": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/duk/",
+   "by": "WordPress"
+  },
+  "privatumo-politika": {
+   "code": "301",
+   "loc": "https://dev.avesa.lt/privatumo-politika/",
+   "by": "WordPress"
+  },
+  "kategorija/sunims": {
+   "code": "200",
+   "loc": null,
+   "by": null
+  }
+ },
+ "grandines": {
+  "sunims/antiparazitines-priemones-sunims": {
+   "galutinis": "200",
+   "sokiu": "1"
+  },
+  "katems/antiparazitines-priemones-katems": {
+   "galutinis": "200",
+   "sokiu": "1"
+  },
+  "hipoalerginis-maistas-sunims": {
+   "galutinis": "200",
+   "sokiu": "1"
+  },
+  "sunims": {
+   "galutinis": "200",
+   "sokiu": "1"
+  },
+  "sunims/maistas-sunims/sausas-maistas-sunims": {
+   "galutinis": "200",
+   "sokiu": "1"
+  }
+ },
+ "neatpazintas": {
+  "code": "404",
+  "loc": null,
+  "by": null
+ }
+}
