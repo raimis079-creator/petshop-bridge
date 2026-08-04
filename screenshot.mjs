@@ -15,9 +15,9 @@ fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S447 DOD04 v1',code:P
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
 O.sid=sid; sh('sleep 4');
-function q(a){const x=sh('curl -sSk --max-time 200 "'+SITE+'/?ps_s447=K447uz&act='+a+'&z='+Math.random()+'"');
+function q(a){const x=sh('curl -sSk --max-time 270 "'+SITE+'/?ps_s447=K447uz&act='+a+'&z='+Math.random()+'"');
  try{return JSON.parse(x);}catch(e){return {raw:String(x).slice(0,500)};}}
-O.rez=q('x');
+O.paruosimas=q('paruosimas');
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
 putResult('s447.json', JSON.stringify(O,null,1));
