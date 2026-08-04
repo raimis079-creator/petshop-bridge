@@ -1,0 +1,198 @@
+{
+ "VERSIJA_RUN": "run440-v1",
+ "sid": 2222,
+ "rez": {
+  "VERSIJA": "s440-v1",
+  "cron": {
+   "ps_esp_cron_process_pending": "2026-08-04 18:12",
+   "ps_email_dispatch_cron": "2026-08-04 18:13",
+   "ps_cart_abandon_check": "2026-08-04 18:14",
+   "ps_post_purchase_check": "2026-08-04 18:39",
+   "petshop_vf_sync_stock_hourly": "2026-08-04 18:59",
+   "petshop_attr_engine_run": "2026-08-04 22:57",
+   "ps_pet_drafts_cleanup_daily": "2026-08-05 02:40",
+   "petshop_vf_sync_reprice_daily": "2026-08-05 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-05 04:00",
+   "ps_suppression_daily_reconcile": "2026-08-05 05:30",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00",
+   "ps_refill_daily_check": "2026-08-05 08:00",
+   "ps_reminders_daily_check": "2026-08-05 09:00",
+   "wpforms_email_summaries_cron": "2026-08-09 21:00"
+  },
+  "event_busenos": [
+   {
+    "event_name": "cart_abandoned",
+    "status": "sent",
+    "c": "12"
+   },
+   {
+    "event_name": "consent_changed",
+    "status": "sent",
+    "c": "25"
+   },
+   {
+    "event_name": "order_paid",
+    "status": "sent",
+    "c": "34"
+   },
+   {
+    "event_name": "order_shipped",
+    "status": "sent",
+    "c": "19"
+   },
+   {
+    "event_name": "pet_product_assigned",
+    "status": "sent",
+    "c": "4"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "dead",
+    "c": "6"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "sent",
+    "c": "103"
+   },
+   {
+    "event_name": "pet_profile_updated",
+    "status": "sent",
+    "c": "91"
+   },
+   {
+    "event_name": "pet_reminder_due",
+    "status": "sent",
+    "c": "1"
+   },
+   {
+    "event_name": "refill_due",
+    "status": "sent",
+    "c": "3"
+   }
+  ],
+  "jungtys": {
+   "class-cart-abandonment.php": [
+    "49: public static function detect( $dry_run = false ) {",
+    "138: $res = Petshop_Email_Dispatch::enqueue(",
+    "178: protected static function valid_items( $items ) {",
+    "194: protected static function build_payload( $row, $valid ) {",
+    "246: public static function detect_stage2( $dry_run = false ) {",
+    "323: $res = Petshop_Email_Dispatch::enqueue(",
+    "346: protected static function token_still_valid( $url ) {",
+    "365: public static function on_order_created( $order_id ) {",
+    "386: public static function maybe_seed_expired() {",
+    "405: public static function init() {",
+    "406: add_action( 'woocommerce_checkout_order_processed',            array( __CLASS__, 'on_order_created' ), 10, 1 );",
+    "407: add_action( 'woocommerce_store_api_checkout_order_processed',  array( __CLASS__, 'on_store_api_order' ), 10, 1 );",
+    "409: add_action( 'ps_cart_abandon_check', array( __CLASS__, 'cron_run' ) );",
+    "415: public static function on_store_api_order( $order ) {",
+    "420: public static function cron_run() {",
+    "426: public static function stats() {"
+   ],
+   "class-email-dispatch.php": [
+    "47: public static function flows() {",
+    "90: public static function table() {",
+    "95: public static function install() {",
+    "139: public static function maybe_install() {",
+    "158: public static function enqueue( $flow, $email, $payload = array(), $args = array() ) {",
+    "215: public static function check_eligibility( $flow_class, $email, $flow = '', $context = array() ) {",
+    "278: public static function is_suppressed( $email ) {",
+    "286: public static function is_transactional_only( $email ) {",
+    "302: public static function suppress( $email, $channel, $reason = 'manual', $source = 'local' ) {",
+    "317: public static function process_pending( $limit = 20, $dry_run = false ) {",
+    "335: protected static function process_one( $row, $dry_run = false ) {",
+    "481: public static function render( $flow, $payload, $row = array() ) {",
+    "511: public static function stats() {",
+    "533: public static function init() {",
+    "534: add_action( 'ps_email_dispatch_cron', array( __CLASS__, 'cron_run' ) );",
+    "540: public static function cron_run() {",
+    "541: self::process_pending( 20, false );"
+   ],
+   "class-event-emitters.php": [
+    "16: * Petshop_Email_Dispatch::enqueue() — eventas patenka i laisku outbox'a.",
+    "28: public static function init() {",
+    "30: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'on_payment_complete' ), 20, 1 );",
+    "35: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+    "36: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+    "40: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
+    "46: public static function on_payment_complete( $order_id ) {",
+    "53: public static function on_order_paid_status( $order_id ) {",
+    "69: private static function emit_order_paid( $order_id ) {",
+    "144: public static function maybe_emit_order_shipped( $order_id ) {",
+    "197: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
+    "224: public static function resolve_tracking( $order ) {",
+    "304: private static function guess_delivery_type( $order ) {"
+   ],
+   "class-newsletter.php": [
+    "18: *         → Petshop_Email_Dispatch::enqueue('consent_changed', ...)",
+    "31: public static function init() {",
+    "33: add_action( 'rest_api_init', array( __CLASS__, 'routes' ) );",
+    "34: add_action( 'wp_enqueue_scripts', array( __CLASS__, 'assets' ) );",
+    "37: public static function assets() {",
+    "47: protected static function puslapyje_yra() {",
+    "53: public static function shortcode( $atts ) {",
+    "120: public static function routes() {",
+    "128: protected static function ip() {",
+    "134: protected static function rate_limit( $raktas, $riba, $langas ) {",
+    "142: public static function subscribe( WP_REST_Request $req ) {",
+    "184: Petshop_Email_Dispatch::enqueue( 'consent_changed', $email, array(",
+    "198: protected static function zinute_ok() {"
+   ],
+   "class-post-purchase.php": [
+    "36: public static function init() {",
+    "38: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'stamp' ), 10, 1 );",
+    "39: add_action( 'ps_post_purchase_check', array( __CLASS__, 'cron_run' ) );",
+    "48: public static function stamp( $order_id ) {",
+    "63: public static function detect_2d( $dry_run = false ) {",
+    "110: $res = Petshop_Email_Dispatch::enqueue(",
+    "136: protected static function find_stamped_before( $cutoff, $limit ) {",
+    "170: public static function cron_run() {",
+    "174: public static function stats() {"
+   ],
+   "class-refill-engine.php": [
+    "60: public static function table_name() {",
+    "65: public static function install() {",
+    "92: public static function maybe_install() {",
+    "99: public static function init() {",
+    "101: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'on_order_paid' ), 30, 1 );",
+    "102: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid' ), 30, 1 );",
+    "103: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'on_order_paid' ), 30, 1 );",
+    "106: add_action( 'ps_refill_daily_check', array( __CLASS__, 'check_due' ) );",
+    "118: public static function on_order_paid( $order_id ) {",
+    "162: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid' ), 30, 1 );",
+    "163: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'on_order_paid' ), 30, 1 );",
+    "173: private static function track_purchase( $user_id, $product_id, $order_id, $purchase_date, $product ) {",
+    "234: private static function estimate_interval( $product ) {",
+    "270: private static function parse_weight_grams( $str ) {",
+    "291: private static function is_food_product( $product_id ) {",
+    "325: public static function check_due() {",
+    "373: Petshop_Email_Dispatch::enqueue(",
+    "414: public static function eligibility_filter( $result, $flow, $flow_class, $email, $context = array() ) {",
+    "440: private static function has_repurchased( $user_id, $product_id, $since ) {",
+    "465: private static function mirror_to_sender( $user_id ) {"
+   ],
+   "class-retry-queue.php": [
+    "51: public static function init() {",
+    "52: add_action( self::ACTION_HOOK, array( __CLASS__, 'handle_process_event' ), 10, 1 );",
+    "58: private static function adapter() {",
+    "68: * bus paimtas cron fallback'u process_pending_batch()).",
+    "72: public static function enqueue( $log_id ) {",
+    "88: public static function schedule_retry( $log_id, $delay_seconds ) {",
+    "107: public static function backoff_seconds( $attempt ) {",
+    "127: public static function handle_process_event( $log_id ) {",
+    "220: public static function process_pending_batch( $limit = 50 ) {",
+    "239: private static function maybe_dlq_alert( $row, $reason ) {"
+   ]
+  },
+  "payment_failed_srautas": {
+   "class": "transactional",
+   "template": "dunning-1",
+   "delay": 0
+  },
+  "srautu_viso": 18,
+  "event_registry": [
+   "136: public static function emit( $event_name, $email, array $payload, array $opts = array() ) {"
+  ]
+ }
+}
