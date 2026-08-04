@@ -1,0 +1,24 @@
+{
+ "VERSIJA_RUN": "run394-v1",
+ "sid": 2181,
+ "deploy": {
+  "VERSIJA": "s394-v3",
+  "act": "deploy",
+  "B": 19239,
+  "sha": "74a356b0ecb28610",
+  "teises": "0700"
+ },
+ "runner": {
+  "VERSIJA": "s394-v3",
+  "act": "deploy_runner",
+  "runner": {
+   "kelias": "/home/gyvunai2/domains/avesa.lt/public_html/dev/backup-run.php",
+   "B": 200,
+   "sha": "0ae3492742dd8258"
+  }
+ },
+ "be_rakto": "403",
+ "blogas_raktas": "403",
+ "selftest_per_url": "06:46:47 aplinka OK · lentelių 174 (InnoDB 14, MyISAM 160)\n06:46:47 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 385.1 GB\n06:46:47 SELFTEST baigtas — viskas paruošta.\n",
+ "svetaine": "200"
+}
