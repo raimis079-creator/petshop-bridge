@@ -52,12 +52,12 @@
 | DOD-02 | Kritinių klaidų 0 | ⚪ | — | **nėra bug registro** — nematuojama |
 | P1-MYISAM | MyISAM → InnoDB migracija | 🔴 | 2026-08-03 | 160/174 lentelių MyISAM = 98% duomenų. Architektūros skola, ne tik backup (§8c) |
 | DOD-03 | Aukšto prioriteto klaidų ≤3 | ⚪ | — | tas pats |
-| DOD-04 | 20 testinių užsakymų | 🔴 | 2026-08-03 | DB: 2. Automatinis mobilus kelias veikia (S374) — galima kartoti scenarijų su skirtingais metodais |
+| DOD-04 | 20 testinių užsakymų | 🟡 | 2026-08-04 | **20/20 sukurta, 0 klaidų** (§13). Po patikros IŠTRINTI Raimio nurodymu. Programinis kelias — checkout/pristatymo atrinkimas NEPATIKRINTAS |
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
 | DOD-07 | Top-100 SEO 301 | ✅ | 2026-08-04 | 937 keliai · 5 863 clicks · 6 sluoksniai (§12). GSC padengimas: 68,5% srauto veikia arba nukreipta; 4 037 clicks = turinio nebėra (teisingas 404) |
 | DOD-08 | Backup restore testas | ✅ | 2026-08-04 | Pilna grandinė įrodyta: skriptas (§8f) · cron 0 4 * * * · gedimo pranešimai · **atstatymo testas 174/174 (§8g)**. Apribojimas: rtst_ prefiksas, ne švari DB |
-| DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
+| DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-04 | **Serijos ĮRODYTI NEĮMANOMA** — pmxi_history laiko ~19 įrašų, `_vf_last_sync` perrašomas. Įdiegtas kaupiamasis žurnalas (§13); serija kaupsis. Sąveika su pardavimais — tik po launch |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
 | DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
 | DOD-12 | Savininkas apdoroja užsakymą be programuotojo | 🟡 | — | neformalizuota |
@@ -178,7 +178,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | OPS-09 | Complianz Website Scan + slapukų sąrašas · enhanced conversions | 🟡 |
 | OPS-10 | Flatsome social nuorodos (dabar placeholder'iai `http://url`) | 🔴 laukia Raimio nuorodų |
 | OPS-11 | TEMP snippetų trynimas WP admin (REST DELETE neveikia) | 🔴 higiena: 2136–2139, 2141–2160 |
-| OPS-12 | `gaj6_umbrella_redirects` lentelė — liko po WP Umbrella šalinimo; **netrinta automatiškai**, patikrinti kilmę | 🔴 |
+| OPS-12 | `gaj6_umbrella_redirects` — kilmė patvirtinta, IŠTRINTA 2026-08-04 (§13). Lentelių 174→173 | ✅ |
 
 **DNS valdomas iv.lt**, ne serveriai.lt.
 
@@ -733,7 +733,7 @@ Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
 | G1 | Identity / Google login (TŽ v1.45) | P0 | plugino nėra — NEREIKIA | ✅ **UŽDARYTA 2026-08-04: NEBEAKTUALU** |
 | G2 | F22 lojalumas | startas 2026-08-15 | lentelių nėra, Q9 atvira | 🔴 |
 | G3 | Google Merchant Center feed | pre-launch, v1.56 | feed'o nėra; PMax degina ~10k €/m | 🔴 |
-| G4 | Sender webhook statusai (delivered/bounced/opened) | „sekantis techninis blokas" | route yra, statusų grandinės ne | 🔴 |
+| G4 | Sender webhook statusai | „sekantis techninis blokas" | **svarbioji dalis JAU VEIKĖ** (§13) | 🟡 trūksta tik analitikos |
 | G5 | H1 tema-lygio fix | blocker nuo v1.53 | **10/10 puslapių po 1 prasmingą H1** | ✅ **UŽDARYTA 2026-08-04 — nebeaktualu** |
 | G6 | ShortPixel ON | pre-launch | INACTIVE 6.5.5 | ⚪ **suplanuota**, ne spraga |
 | G7 | wpo-wcpdf trynimas | higiena | INACTIVE 5.15.2, yra | ⚪ **suplanuota**, ne spraga |
@@ -974,6 +974,100 @@ panašiausią" DRAUDŽIAMA.
 40 URL peržiūra (CSV Raimio PC) — nebūtina iki launch, 106 clicks / 16 mėn.
 T-14/T-3 galutinė QA: visi seni → 301 → 200, be grandinių, be noindex
 ```
+
+---
+
+## 13. 2026-08-04 VAKARO BLOKAS — PENKI DARBAI
+
+### payment_failed — GRANDINĖ UŽDARYTA
+```
+mu-plugins/petshop-payment-failed.php v1.1 · sha e366969582c29fbb
+E2E: event 1 · job 1 · WOULD_SEND „Užsakymas 34832 laukia apmokėjimo" 2 094 B
+antras failed → 0 naujų (idempotencija) · testinis užsakymas ištrintas
+```
+**DVI priežastys, kodėl neveikė (abi svarbios kitam langui):**
+```
+1. Petshop_Event_Emitters kabinasi TIK prie payment_complete / processing /
+   completed / update_order. Prie `woocommerce_order_status_failed` NEBUVO NIEKO.
+2. DU ATSKIRI SLUOKSNIAI: Event_Registry::emit() → ps_event_log (Sender),
+   Email_Dispatch::enqueue() → ps_email_jobs (PATS LAIŠKAS).
+   Vien emit() laiško NESUKURIA. Pirmame bandyme kviečiau tik emit() ir gavau
+   įvykį BE laiško.
+```
+Dublikato nėra: WC prie `failed` siunčia laišką TIK adminui. Patikrinta kabliuku
+PRIEŠ jungiant (TŽ v1.60 „vienas srautas — vienas savininkas").
+Įdėtas ir Paysera atvejis: `pending` po nepavykusio mokėjimo — emituojam tik jei
+yra `transaction_id`.
+
+### Sender webhook — TŽ v1.60 vertinimas PASENĘS
+Svarbioji dalis JAU VEIKĖ: `handle_sender_unsubscribe()`, `handle_sender_bounce()`,
+suppression lentelė KANALINĖ su istorija (suppressed_at + released_at),
+`ps_webhook_log`, realus įrašas iš `sender_reconcile`.
+**Trūksta tik `delivered/opened/clicked` — tai ANALITIKA, ne funkcija.**
+Reputaciją saugantys atsisakymai ir bounce'ai apdorojami. NESTATOM (Raimio
+principas dėl perteklinių saugiklių).
+
+### DOD-04 — 20 užsakymų, 0 klaidų
+```
+ID 34833–34852 · svečias 10 / registruotas 10 · 4,49–659,50 €
+žemiau 30 € — 12, virš — 8 · šaltiniai zb/vf/legacy/belcor atskirai IR mišriai
+PROBLEMOS: nė vienos (suma, prekės, paštas, miestas — visi užpildyti)
+Po patikros IŠTRINTI (Raimio nurodymu): 20/20, saugiklis id>34720,
+realūs 34645 ir 34720 NEPALIESTI. Liko 10 našlaičių order_items eilučių.
+```
+**APRIBOJIMAS:** užsakymai kurti PROGRAMIŠKAI. Patikrinta kūrimo ir kainų logika,
+BET NE checkout/pristatymo metodų atrinkimas — `Fulfillment_Source` ir nemokamo
+pristatymo riba veikia krepšelio etape, kurio šis kelias neliečia.
+
+### 🔴 MANO KLAIDA: nemokamas pristatymas
+Paskelbiau „nemokamo pristatymo NĖRA" pažiūrėjęs į `woocommerce_free_shipping_1_settings`
+(min_amount 0, is_enabled 0). **NETIESA.** Riba sukonfigūruota VENIPAK PLUGINE:
+```
+woocommerce_shopup_venipak_shipping_pickup_method_3_settings
+  min_amount_for_free_shipping: "30"    ← veikia, kaip Raimis ir sakė
+```
+Ta pati klaidos rūšis kaip `footer_1_content` ir honeypot: pažiūrėjau į VIENĄ
+vietą ir paskelbiau verdiktą apie visą dalyką.
+
+### Snippetų valymas
+```
+viso 1 588 → 1 360 · TEMP 228 → 0 · aktyvūs 85 → 82
+```
+Trinta per DB — Code Snippets REST DELETE grąžina `rest_cannot_delete`.
+
+### gaj6_umbrella_redirects — IŠTRINTA
+```
+create_time 2026-08-03 20:37:41  ← tą pačią dieną kaip WP Umbrella diegimas
+įrašų 0 · kodas nenaudoja · umbrella opcijų 0 · pluginų 0
+Backup: opcija petshop_umbrella_redirects_bak_S450 (CREATE + eilutės)
+Lentelių 174 → 173
+```
+
+### 6 „dead" pet_profile_created — NE DEFEKTAS
+```
+last_error: non_retriable: Subscriber not found  (visi 6)
+m8e2e_31524@ · e2e_empty_1784063882@ · e2e_1784063882@ (MŪSŲ testai)
+gutulis@gmail.com (Raimio testinis)
+```
+Sender'yje tokių prenumeratorių nėra → sistema teisingai NEKARTOJO. Nieko taisyti.
+
+### DOD-09 — kodėl serijos įrodyti NEĮMANOMA
+```
+pmxi_history        laiko tik ~19 įrašų, senesnius TRINA
+_vf_last_sync       perrašomas kiekvieną sync (visos 1 161 prekės = šiandien)
+```
+Matoma tik 08-03…08-04. Importai gyvi: #7 kas valandą, #3 12:00 ir 17:00,
+#5 03:30 kasdien, #2 03:00.
+**ĮDIEGTA:** `mu-plugins/petshop-import-log.php` v1.0 · sha 2f64cc9e95a2bff0
+```
+kaupiamasis, NETRINA · perkelti 9 esami įrašai
+kaupia: data · import_id · created/updated/skipped · UŽSAKYMŲ PER VALANDĄ
+petshop_import_log_serija() → ilgiausia parų serija be pertraukos
+```
+Stulpelis „užsakymų per valandą" dabar visada 0, bet PO LAUNCH parodys tai, ko
+dev'e patikrinti neįmanoma: ar importas nesuveikė PIRKIMO metu.
+**DOD-09 nedeklaruoti žaliu net serijai atsiradus** — sąveika su pardavimais
+tikrinama tik po launch (Raimis sutiko).
 
 ---
 
