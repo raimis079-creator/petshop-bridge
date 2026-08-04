@@ -1,0 +1,372 @@
+{
+ "VERSIJA_RUN": "run424-v1",
+ "sid": 2207,
+ "rez": {
+  "VERSIJA": "s424-v1",
+  "permalink_structure": "/%postname%/",
+  "woo_permalinks": {
+   "product_base": "/product",
+   "category_base": "kategorija",
+   "tag_base": "product-tag",
+   "attribute_base": "",
+   "use_verbose_page_rules": false
+  },
+  "category_base": "kategorija",
+  "product_base": "/product",
+  "kategorijos": {
+   "sunims": {
+    "term_id": 70,
+    "pavadinimas": "ŠUNIMS",
+    "count": 18,
+    "parent": 0,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/"
+   },
+   "katems": {
+    "term_id": 77,
+    "pavadinimas": "KATĖMS",
+    "count": 0,
+    "parent": 0,
+    "URL": "https://dev.avesa.lt/kategorija/katems/"
+   },
+   "grauzikams": {
+    "term_id": 87,
+    "pavadinimas": "GRAUŽIKAMS",
+    "count": 0,
+    "parent": 0,
+    "URL": "https://dev.avesa.lt/kategorija/grauzikams/"
+   },
+   "pauksciams": {
+    "term_id": 89,
+    "pavadinimas": "PAUKŠČIAMS",
+    "count": 0,
+    "parent": 0,
+    "URL": "https://dev.avesa.lt/kategorija/pauksciams/"
+   },
+   "zuvims": {
+    "term_id": 93,
+    "pavadinimas": "ŽUVIMS",
+    "count": 0,
+    "parent": 0,
+    "URL": "https://dev.avesa.lt/kategorija/zuvims/"
+   }
+  },
+  "sunims_vaikai": {
+   "antiparazitines-priemones-sunims": {
+    "id": 108,
+    "count": 8,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/antiparazitines-priemones-sunims/"
+   },
+   "antkakliai-pavadeliai-sunims": {
+    "id": 116,
+    "count": 221,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/antkakliai-pavadeliai-sunims/"
+   },
+   "baseinai-sunims": {
+    "id": 655,
+    "count": 1,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/baseinai-sunims/"
+   },
+   "dubeneliai-sunims": {
+    "id": 111,
+    "count": 54,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/dubeneliai-sunims/"
+   },
+   "higienos-priemones-sunims": {
+    "id": 82,
+    "count": 44,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/higienos-priemones-sunims/"
+   },
+   "kelioniu-iranga": {
+    "id": 123,
+    "count": 20,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/kelioniu-iranga/"
+   },
+   "kita-sunims": {
+    "id": 126,
+    "count": 0,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/kita-sunims/"
+   },
+   "maistas-sunims": {
+    "id": 71,
+    "count": 632,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/maistas-sunims/"
+   },
+   "narvai": {
+    "id": 125,
+    "count": 7,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/narvai/"
+   },
+   "pirmoji-pagalba-sunims": {
+    "id": 656,
+    "count": 2,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/pirmoji-pagalba-sunims/"
+   },
+   "sampunai-sunims": {
+    "id": 76,
+    "count": 42,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/sampunai-sunims/"
+   },
+   "skanestai-sunims": {
+    "id": 95,
+    "count": 279,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/skanestai-sunims/"
+   },
+   "sukos-sepeciai-zirkles-sunims": {
+    "id": 75,
+    "count": 60,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/sukos-sepeciai-zirkles-sunims/"
+   },
+   "transportavimo-dezes-sunims": {
+    "id": 122,
+    "count": 57,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/transportavimo-dezes-sunims/"
+   },
+   "vesinantys-kilimeliai-sunims": {
+    "id": 654,
+    "count": 7,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/vesinantys-kilimeliai-sunims/"
+   },
+   "vitaminai-ir-papildai-sunims": {
+    "id": 101,
+    "count": 73,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/vitaminai-ir-papildai-sunims/"
+   },
+   "zaislai-sunims": {
+    "id": 115,
+    "count": 203,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/zaislai-sunims/"
+   },
+   "apranga-sunims": {
+    "id": 305,
+    "count": 39,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/apranga-sunims/"
+   },
+   "guoliai-boksai-sunims": {
+    "id": 233,
+    "count": 43,
+    "URL": "https://dev.avesa.lt/kategorija/sunims/guoliai-boksai-sunims/"
+   }
+  },
+  "landing_snippetai": [
+   {
+    "id": "318",
+    "name": "Filtru Terminu Tvarka v1",
+    "active": "0"
+   },
+   {
+    "id": "322",
+    "name": "Filtru Accordion JS v1",
+    "active": "0"
+   },
+   {
+    "id": "323",
+    "name": "Filtru Funkcijos JS v1 (order + accordion)",
+    "active": "0"
+   },
+   {
+    "id": "324",
+    "name": "Petshop Filtrai PILNAS v1",
+    "active": "0"
+   },
+   {
+    "id": "325",
+    "name": "Petshop Filtrai PILNAS v2",
+    "active": "0"
+   },
+   {
+    "id": "329",
+    "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+    "active": "1"
+   },
+   {
+    "id": "332",
+    "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+    "active": "1"
+   },
+   {
+    "id": "459",
+    "name": "Guoliu/transporto YITH preset - guoliu-transporto-filtras",
+    "active": "0"
+   },
+   {
+    "id": "492",
+    "name": "Petshop Filtru Atidarymas v2 (CSS+JS)",
+    "active": "1"
+   },
+   {
+    "id": "493",
+    "name": "Petshop Filtru Atidarymas v1 (no lazy-load)",
+    "active": "1"
+   },
+   {
+    "id": "561",
+    "name": "Petshop Rinkinių Gyvūno Filtras v1",
+    "active": "1"
+   },
+   {
+    "id": "682",
+    "name": "Petshop Atrinktos Dry v1",
+    "active": "0"
+   },
+   {
+    "id": "683",
+    "name": "Petshop Atrinktos Proto v1",
+    "active": "0"
+   },
+   {
+    "id": "684",
+    "name": "Petshop Atrinktos Proto v1",
+    "active": "0"
+   },
+   {
+    "id": "685",
+    "name": "Atrinktos Prekės Modulis v1 (rotacija)",
+    "active": "1"
+   },
+   {
+    "id": "686",
+    "name": "Petshop Atrinktos Verify tmp",
+    "active": "0"
+   },
+   {
+    "id": "688",
+    "name": "Petshop Kategorijos Landing v1 (sunims)",
+    "active": "1"
+   },
+   {
+    "id": "692",
+    "name": "Petshop Maisto Tipo Mygtukai v1",
+    "active": "1"
+   },
+   {
+    "id": "693",
+    "name": "Petshop Mobile Filtru Dublio Fix v1",
+    "active": "1"
+   },
+   {
+    "id": "2023",
+    "name": "S328 Landing Apply",
+    "active": "0"
+   },
+   {
+    "id": "2025",
+    "name": "S328 Landing Apply",
+    "active": "0"
+   }
+  ],
+  "petshop_landing_map": "funkcija YRA",
+  "landing_map": [
+   70,
+   77,
+   87,
+   89,
+   93
+  ],
+  "kategoriju_viso": 80,
+  "top_kategorijos": [
+   {
+    "slug": "uncategorized",
+    "name": "Kita",
+    "count": "45",
+    "parent": "0"
+   },
+   {
+    "slug": "animonda-konservai-sunims",
+    "name": "Animonda konservai šunims",
+    "count": "36",
+    "parent": "0"
+   },
+   {
+    "slug": "hipoalerginis-maistas-sunims",
+    "name": "Hipoalerginis maistas šunims",
+    "count": "33",
+    "parent": "0"
+   },
+   {
+    "slug": "miamor-katems",
+    "name": "Miamor katėms",
+    "count": "29",
+    "parent": "0"
+   },
+   {
+    "slug": "sunims",
+    "name": "ŠUNIMS",
+    "count": "18",
+    "parent": "0"
+   },
+   {
+    "slug": "daugiau-pigiau",
+    "name": "DAUGIAU=PIGIAU",
+    "count": "8",
+    "parent": "0"
+   },
+   {
+    "slug": "rinkiniai",
+    "name": "RINKINIAI",
+    "count": "7",
+    "parent": "0"
+   },
+   {
+    "slug": "super-premium-sunu-maistas",
+    "name": "Super Premium šunų maistas",
+    "count": "5",
+    "parent": "0"
+   },
+   {
+    "slug": "dovanos",
+    "name": "DOVANOS",
+    "count": "4",
+    "parent": "0"
+   },
+   {
+    "slug": "pauksciams",
+    "name": "PAUKŠČIAMS",
+    "count": "0",
+    "parent": "0"
+   },
+   {
+    "slug": "sprendimai",
+    "name": "SPRENDIMAI",
+    "count": "0",
+    "parent": "0"
+   },
+   {
+    "slug": "kita",
+    "name": "kita",
+    "count": "0",
+    "parent": "0"
+   },
+   {
+    "slug": "grauzikams",
+    "name": "GRAUŽIKAMS",
+    "count": "0",
+    "parent": "0"
+   },
+   {
+    "slug": "kitos-prekes-zalios-bangos",
+    "name": "Kitos prekes Žalios Bangos",
+    "count": "0",
+    "parent": "0"
+   },
+   {
+    "slug": "zuvims",
+    "name": "ŽUVIMS",
+    "count": "0",
+    "parent": "0"
+   }
+  ],
+  "404_kandidatai": {
+   "/sunims/": 0,
+   "/katems/": 0,
+   "/sunims/antiparazitines-priemones-sunims/": 0,
+   "/hipoalerginis-maistas-sunims/": 0
+  }
+ },
+ "http": {
+  "sunims": "200 → https://dev.avesa.lt/kategorija/sunims/",
+  "katems": "200 → https://dev.avesa.lt/kategorija/katems/",
+  "grauzikams": "200 → https://dev.avesa.lt/kategorija/grauzikams/",
+  "pauksciams": "200 → https://dev.avesa.lt/kategorija/pauksciams/",
+  "zuvims": "200 → https://dev.avesa.lt/kategorija/zuvims/"
+ }
+}
