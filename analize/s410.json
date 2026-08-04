@@ -1,0 +1,123 @@
+{
+ "VERSIJA_RUN": "run410-v1",
+ "sid": 2196,
+ "rez": {
+  "VERSIJA": "s410-v1",
+  "pries": {
+   "consent_log": 11,
+   "jobs": 5
+  },
+  "N1_tuscias": {
+   "http": 400,
+   "body": {
+    "ok": false,
+    "message": "Patikrinkite el. pašto adresą."
+   }
+  },
+  "N2_blogas_formatas": {
+   "http": 400,
+   "body": {
+    "ok": false,
+    "message": "Patikrinkite el. pašto adresą."
+   }
+  },
+  "N3_be_varneles": {
+   "http": 400,
+   "body": {
+    "ok": false,
+    "message": "Pažymėkite, kad sutinkate gauti naujienas."
+   }
+  },
+  "N4_honeypot": {
+   "http": 200,
+   "body": {
+    "ok": true,
+    "message": "Ačiū! Į nurodytą adresą išsiuntėme patvirtinimą."
+   }
+  },
+  "N4_DB_neliesta": {
+   "consent_log": [],
+   "jobs": []
+  },
+  "testinis_pastas": "nl.eca8af4c@pastas-test.lt",
+  "T1_prenumerata": {
+   "http": 200,
+   "body": {
+    "ok": true,
+    "message": "Ačiū! Į nurodytą adresą išsiuntėme patvirtinimą."
+   }
+  },
+  "T1_busena": {
+   "consent_log": [
+    {
+     "field": "marketing_consent",
+     "from_value": "",
+     "to_value": "true",
+     "source": "newsletter_form",
+     "ip": "79.98.29.24",
+     "changed_at": "2026-08-04 09:21:20"
+    }
+   ],
+   "jobs": [
+    {
+     "flow": "consent_changed",
+     "status": "pending",
+     "subject": null,
+     "skip_reason": null
+    }
+   ]
+  },
+  "T2_antra_karta": {
+   "http": 200,
+   "body": {
+    "ok": true,
+    "message": "Ačiū! Į nurodytą adresą išsiuntėme patvirtinimą."
+   }
+  },
+  "T2_ta_pati_zinute": "TAIP",
+  "T3_trecias": {
+   "http": 200,
+   "body": {
+    "ok": true,
+    "message": "Ačiū! Į nurodytą adresą išsiuntėme patvirtinimą."
+   }
+  },
+  "T4_ketvirtas": {
+   "http": 200,
+   "body": {
+    "ok": true,
+    "message": "Ačiū! Į nurodytą adresą išsiuntėme patvirtinimą."
+   }
+  },
+  "T4_vis_dar_ok_zinute": "TAIP (neatskleidzia)",
+  "po": {
+   "consent_log": 12,
+   "jobs": 6
+  },
+  "galutine_busena": {
+   "consent_log": [
+    {
+     "field": "marketing_consent",
+     "from_value": "",
+     "to_value": "true",
+     "source": "newsletter_form",
+     "ip": "79.98.29.24",
+     "changed_at": "2026-08-04 09:21:20"
+    }
+   ],
+   "jobs": [
+    {
+     "flow": "consent_changed",
+     "status": "pending",
+     "subject": null,
+     "skip_reason": null
+    }
+   ]
+  },
+  "po_valymo": {
+   "consent_log": 11,
+   "jobs": 5
+  }
+ },
+ "svetaine": "200"
+}
