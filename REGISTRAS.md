@@ -130,7 +130,7 @@ Transportas ✅: adapteris `Petshop_Sender_Adapter` v0.4.0, `is_configured=true`
 | win_back_60/90/120 · legacy_reactivation_l1 | 🔴 | po launch |
 | order_shipped | ⚪ sąmoningai | siunčia WooCommerce |
 
-**Naujienlaiškis:** formos NĖRA (`newsletter_shortcode` 0). Vokelio ikona išjungta 2026-08-01, nes neįrodyta grandinė forma → sutikimas → Sender → dedup → consent pėdsakas.
+**Naujienlaiškis:** ✅ PADARYTA 2026-08-04 — poraštės forma + launch modalas (§8j). Vokelio ikona SĄMONINGAI negrąžinta.
 
 **Sender skola:** tracking CNAME. Nuorodos eina per bendrą `campaign-statistics.com`. Hostname **kopijuoti iš Sender nustatymų**, ne iš užrašų (mūsų įrašas: `link.petshop.lt`).
 
@@ -629,6 +629,96 @@ launch — verta pasižiūrėti, kodėl krito. NEIŠTIRTA.
 ```
 Reikia išsiaiškinti: ar Paysera praneša apie nepavykusius mokėjimus ir ar
 `class-event-emitters.php` turi tam kabliuką. **Atskiras darbas, ne šablonas.**
+
+---
+
+## 8j. NAUJIENLAIŠKIS — POKRAŠTĖS FORMA + LAUNCH MODALAS (2026-08-04) ✅
+
+### Kodėl tai buvo verta
+Raimio korekcija: **petshop.lt nėra nauja svetainė.** 2 445 URL, 19 735 paspaudimai
+per 16 mėn., ~2 000 senų klientų el. adresų, kuriuos Raimis perkels. Launch savaitė
+— vienintelis momentas, kai yra ir smalsumas, ir dėmesys. Todėl modalas turi būti
+paruoštas launch DIENAI, ne po jo.
+
+### SPRENDIMAS: JOKIOS NUOLAIDOS
+Maisto marža 15–20%, maistas = 76% pardavimų. Prie 40 € užsakymo tai 6–8 € pelno;
+10% nuolaida atimtų ~4 € — daugiau nei pusę, ir pritrauktų tuos, kurie pirktų ir
+taip. Vietoj to modalas siūlo DU kelius: augintinio anketa (gauni rūšį, svorį,
+jautrumus, ne tik el. paštą) arba tik el. paštas.
+Jei kada norėsis nuolaidos — NE ant maisto (skanėstai/priedai/aksesuarai) ir
+adresuotai seniems klientams, ne visiems praeiviams.
+
+### Komponentai
+```
+class-newsletter.php         v1.1 · 8 841 B · sha d1575ae272fe3dea
+  [petshop_newsletter title= text= button= source=]
+  POST /petshop/v1/newsletter-subscribe
+  VIENAS žingsnis (be double opt-in) — apsauga per consent_changed laišką
+  rate limit 5/val per IP · 3/parą per el. paštą
+newsletter.js                2 324 B · sha de0ed45097a0abc9
+class-newsletter-footer.php  2 247 B · sha 0a35be5c7dd5e3a1
+  add_action('flatsome_before_footer', ..., 20)
+class-welcome-modal.php      v1.1 · 6 345 B · sha 46545bb1f0fa6f2a
+  jungiklis petshop_welcome_modal_enabled — IŠJUNGTAS iki launch
+  12 s delsa · exit intent tik desktop · cookie 90 d.
+Visi keturi per require_once petshop-core.php (backup .bak_S409/.bak_S411/.bak_S419)
+```
+
+### VIETA — kodėl NE widget'as ir NE Footer 1
+Flatsome poraštė = widget zonos `sidebar-footer-1` (TUŠČIA) ir `sidebar-footer-2`
+(4 custom_html). Kabliukas patikrintas KODE (`structure-footer.php:128`):
+```
+add_action('flatsome_before_footer', 'flatsome_html_before_footer');
+```
+Einam prioritetu 20 — PO temos savo HTML bloko. Nauda: pilno pločio blokas,
+nekeičiama veikianti Footer 2 struktūra, neįjungiama nenaudota Footer 1 zona,
+nepriklausom nuo widget nustatymų, forma lieka VIENOJE vietoje (shortcode).
+`custom_html-6` bandymas iš Footer 1 pašalintas.
+
+### PATVIRTINTA NARŠYKLĖJE (s419, s420, s421)
+```
+                          desktop              mobile
+juosta matoma             ✅                   ✅
+juosta                    2602–2934            3798–4234
+Footer 2 kolonos          2934–3329            4234–5379
+teisinis baras            3329–3403            5379–5477
+JUOSTA VIRŠ KOLONŲ        TAIP                 TAIP
+NE teisiniame bare        TAIP                 TAIP
+hScroll                   0                    0
+Footer 2 nepakitusi       ✅                   ✅
+checkout be formos        ✅ · JS klaidų 0
+```
+**Honeypot (4 vartai):** „Nepildykite" innerText → −1 · viewporte → false ·
+Tab kelyje → false · POST testas → tylus 200, consent_log +0, jobs +0.
+Galutinė būsena: be etiketės teksto, wrapper `aria-hidden="true"`,
+input `tabindex="-1"` + `autocomplete="off"`, laukas už viewporto.
+
+**Modalas:** ESC uždaro (v1.1 — `capture` fazė + `stopPropagation`; v1.0 neveikė),
+`hidden` + `display:none`, cookie `psw_seen`, checkout be modalo, JS 0.
+
+### TRYS MANO MATAVIMO KLAIDOS (visos — tikrinau ne tai, ką reikia)
+```
+1. Playwright isVisible()=true honeypot'ui, kuris x=-9999 → MELAGINGA „matomas".
+   isVisible() tikrina matmenis, NE ar elementas viewporte.
+   Teisingai: getBoundingClientRect() + getComputedStyle() + realus Tab kelias.
+2. „Juosta ne virš poraštės" — lyginau su #footer, kurio VIDUJE pati juosta ir yra.
+   Teisingai: lyginti su .footer-widgets ir .absolute-footer.
+3. Prasimaniau theme_mod `footer_1_content` — Flatsome tokio NETURI.
+   Įrašiau, „radau" tuščią, tada ištryniau. Prieš rašant į temą — PATIKRINTI, ar
+   nustatymas egzistuoja.
+```
+
+### KAS LIEKA (ne šio bloko)
+```
+Vokelio ikona mobiliame meniu — SĄMONINGAI negrąžinta (užimtų svarbią
+  navigacijos vietą funkcijai, kurios žmogus specialiai neieško)
+Atskiras naujienlaiškio puslapis — NEKURIAMAS (neturėtų savarankiško turinio)
+Pagrindiniame puslapyje nedubliuoti, kol poraštė nerodo, kad renka per mažai
+2 000 senų adresų importas — ATSKIRAS darbas, šaltinis `legacy_customer` ir
+  TIKRA sutikimo data, NE šiandienos. Jie buvo KLIENTAI, ne prenumeratoriai —
+  pėdsakas turi tai rodyti.
+Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
+```
 
 ---
 
