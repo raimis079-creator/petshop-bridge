@@ -1,0 +1,164 @@
+{
+ "VERSIJA_RUN": "run436-v1",
+ "sid": 2218,
+ "kontrole_pries": {
+  "jorksyro-terjeras": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/jorksyro-terjeras/",
+   "fin": "200|1"
+  },
+  "suns-serimo-lentele-gramais": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/suns-serimo-lentele-gramais/",
+   "fin": "200|1"
+  },
+  "duk": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/duk/",
+   "fin": "200|1"
+  },
+  "sprendimai": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/sprendimai/",
+   "fin": "200|1"
+  },
+  "kategorija/sunims": {
+   "code": "200",
+   "by": null,
+   "loc": null,
+   "fin": "200|0"
+  },
+  "privatumo-politika": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/privatumo-politika/",
+   "fin": "200|1"
+  }
+ },
+ "deploy": {
+  "VERSIJA": "s436-v1",
+  "act": "deploy",
+  "senas_istrintas": true,
+  "map": {
+   "B": 124697,
+   "irasu": 937
+  },
+  "php": {
+   "B": 2881,
+   "sha": "02e958db35dc9a32"
+  }
+ },
+ "verify": {
+  "VERSIJA": "s436-v1",
+  "act": "verify",
+  "funkcija": "yra",
+  "irasu": 937,
+  "tikrinta_imtis": 100,
+  "BLOGI": [],
+  "imties_verdiktas": "VISI 200"
+ },
+ "po": {
+  "sepija-mineralas-skanestas-pauksciams-20-cm-1-vnt": {
+   "code": "404",
+   "by": null,
+   "loc": null,
+   "fin": "404|0"
+  },
+  "sampunas-jorksyrams-super-beno-york-professional-250-ml": {
+   "code": "404",
+   "by": null,
+   "loc": null,
+   "fin": "404|0"
+  },
+  "exclusion": {
+   "code": "301",
+   "by": "Petshop-Legacy-Category",
+   "loc": "/gamintojas/exclusion/",
+   "fin": "200|1"
+  },
+  "prins-petfoods": {
+   "code": "404",
+   "by": null,
+   "loc": null,
+   "fin": "404|0"
+  },
+  "animonda-gran-carno": {
+   "code": "404",
+   "by": null,
+   "loc": null,
+   "fin": "404|0"
+  },
+  "katems/tualetai-kraiku-semtuveliai-kilimeliai": {
+   "code": "404",
+   "by": null,
+   "loc": null,
+   "fin": "404|0"
+  },
+  "dovanos-sunims-bei-katems": {
+   "code": "404",
+   "by": null,
+   "loc": null,
+   "fin": "404|0"
+  },
+  "sunims/antiparazitines-priemones-sunims": {
+   "code": "301",
+   "by": "Petshop-Legacy-Category",
+   "loc": "/kategorija/sunims/antiparazitines-priemones-sunims/",
+   "fin": "200|1"
+  },
+  "zuvims-2007550667/akvariuminiu-zuvu-maistas": {
+   "code": "301",
+   "by": "Petshop-Legacy-Category",
+   "loc": "/kategorija/zuvims/akvariumo-zuvyciu-maistas/",
+   "fin": "200|1"
+  }
+ },
+ "kontrole_po": {
+  "jorksyro-terjeras": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/jorksyro-terjeras/",
+   "fin": "200|1"
+  },
+  "suns-serimo-lentele-gramais": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/suns-serimo-lentele-gramais/",
+   "fin": "200|1"
+  },
+  "duk": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/duk/",
+   "fin": "200|1"
+  },
+  "sprendimai": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/sprendimai/",
+   "fin": "200|1"
+  },
+  "kategorija/sunims": {
+   "code": "200",
+   "by": null,
+   "loc": null,
+   "fin": "200|0"
+  },
+  "privatumo-politika": {
+   "code": "301",
+   "by": "WordPress",
+   "loc": "/privatumo-politika/",
+   "fin": "200|1"
+  }
+ },
+ "neatpazintas": {
+  "code": "404",
+  "by": null,
+  "loc": null,
+  "fin": "404|0"
+ }
+}
