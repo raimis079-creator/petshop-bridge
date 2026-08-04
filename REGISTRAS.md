@@ -55,7 +55,7 @@
 | DOD-04 | 20 testinių užsakymų | 🔴 | 2026-08-03 | DB: 2. Automatinis mobilus kelias veikia (S374) — galima kartoti scenarijų su skirtingais metodais |
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
-| DOD-07 | Top-100 SEO 301 | 🟡 | 2026-08-04 | Kategorijų sluoksnis ✅ (34 keliai, 1 596 clicks, §12). Liko: 103 ID uodegos + likę produktų/blog URL |
+| DOD-07 | Top-100 SEO 301 | ✅ | 2026-08-04 | 937 keliai · 5 863 clicks · 6 sluoksniai (§12). GSC padengimas: 68,5% srauto veikia arba nukreipta; 4 037 clicks = turinio nebėra (teisingas 404) |
 | DOD-08 | Backup restore testas | ✅ | 2026-08-04 | Pilna grandinė įrodyta: skriptas (§8f) · cron 0 4 * * * · gedimo pranešimai · **atstatymo testas 174/174 (§8g)**. Apribojimas: rtst_ prefiksas, ne švari DB |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
@@ -917,10 +917,62 @@ per mažas, arba keli vienodai stiprūs, arba skaičiai nesutampa. **Spėti
 NELEIDŽIAMA.** Didžiausi: `sunims/transportavimo-dezes` (46 clicks — du kandidatai:
 šunims ir katėms), `vistienos-file-juosteles` (14 — kandidatas ANTIENOS, kita mėsa).
 
+### v2.0 — 6 SLUOKSNIAI, 937 KELIAI (2026-08-04)
+```
+mu-plugins/petshop-legacy-301.php          2 881 B · sha 02e958db35dc9a32
+mu-plugins/petshop-legacy-301-map.json   124 697 B · 937 įrašų
+(senas petshop-legacy-cat-301.php IŠTRINTAS — pakeistas)
+```
+**Žemėlapis ATSKIRAME JSON**, kraunamas TIK kai adresas 404 — kad kiekviena
+užklausa neparsintų 137 KB PHP masyvo.
+
+```
+sluoksnis                                    kelių   clicks
+1  kategorijos be /kategorija/ priešdėlio       34    1 596
+2  seni URL su ID uodegomis                     42      666
+3  pervadinti slug                              10       30
+4  produktai iš šaknies → /product/            805    2 968
+5  likusios kategorijos                         24      102
+6  brendai → /gamintojas/                       22      501
+─────────────────────────────────────────────────────────────
+                                              937    5 863 = 29,7% GSC srauto
+```
+
+### 🔴 KRITINIS RADINYS: /exclusion vedė į ATSITIKTINĮ SKU
+```
+PRIEŠ:  /exclusion (218 clicks) → 301 → /product/exclusion-hepat...
+        X-Redirect-By: WordPress   ← redirect_canonical SPĖJIMAS
+PO:     /exclusion → 301 → /gamintojas/exclusion/
+        X-Redirect-By: Petshop-Legacy-Category
+```
+TŽ v1.56 tai įspėjo („/exclusion 4194 EUR/6mėn, WP spėjimu 301-ina į vieną SKU,
+praeina QA"). **2026-08-04 tai VIS DAR VYKO.** Dabar uždaryta visiems 22 brendams.
+
+### PATIKRA (s436, s437)
+```
+937 įrašai · imtis 100 atsitiktinių → VISI taikiniai 200
+8 testiniai adresai (produktai, kategorijos, brendai) → 301, 1 šuolis, 200
+X-Redirect-By: Petshop-Legacy-Category   visiems
+kontrolė (jorksyro-terjeras, suns-serimo-lentele, duk, sprendimai,
+          kategorija/sunims, privatumo-politika) — NEPAKITO
+neatpažintas adresas → 404, jokio spėjimo
+```
+
+### GSC SUVESTINĖ (2 445 URL / 19 735 clicks)
+```
+jau veikė be nieko (page/post)          45 kelių ·  7 634 clicks
+uždaryta 301 taisyklėmis               937 kelių ·  5 863 clicks
+peržiūrai (CSV)                         40 kelių ·    106 clicks
+lieka 404 (turinio nebėra)             950 kelių ·  4 037 clicks
+```
+**950 likusių — daugiausia prekės, kurių katalogo NEBĖRA** (Beaphar, Frendi,
+GimCat pozicijos ir pan.). 404 jiems yra TEISINGAS atsakymas. Nukreipti „į
+panašiausią" DRAUDŽIAMA.
+
 ### LIKO
 ```
-2 keliai be kandidatų (0 clicks) — palikti 404
-Likę GSC URL iš 2 445 (produktai, blog straipsniai) — dar neanalizuoti
+40 URL peržiūra (CSV Raimio PC) — nebūtina iki launch, 106 clicks / 16 mėn.
+T-14/T-3 galutinė QA: visi seni → 301 → 200, be grandinių, be noindex
 ```
 
 ---
