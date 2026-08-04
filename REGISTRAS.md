@@ -58,9 +58,9 @@
 | DOD-07 | Top-100 SEO 301 | ✅ | 2026-08-04 | 937 keliai · 5 863 clicks · 6 sluoksniai (§12). GSC padengimas: 68,5% srauto veikia arba nukreipta; 4 037 clicks = turinio nebėra (teisingas 404) |
 | DOD-08 | Backup restore testas | ✅ | 2026-08-04 | Pilna grandinė įrodyta: skriptas (§8f) · cron 0 4 * * * · gedimo pranešimai · **atstatymo testas 174/174 (§8g)**. Apribojimas: rtst_ prefiksas, ne švari DB |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-04 | **Serijos ĮRODYTI NEĮMANOMA** — pmxi_history laiko ~19 įrašų, `_vf_last_sync` perrašomas. Įdiegtas kaupiamasis žurnalas (§13); serija kaupsis. Sąveika su pardavimais — tik po launch |
-| DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
+| DOD-10 | Kainodara testuota 20 produktų | ✅ | 2026-07-30 | **UŽDARYTA AUDITU, stipresniu už 20 imtį:** 1 050 prekių su savikaina · 0 neigiamų maržų · 0 žemiau 20% · tipinė ~45%. Formulės atitikties NETIKRINTI (§14) |
 | DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
-| DOD-12 | Savininkas apdoroja užsakymą be programuotojo | 🟡 | — | neformalizuota |
+| DOD-12 | Savininkas apdoroja užsakymą be programuotojo | 🟡 | 2026-08-04 | Techninė pusė patikrinta (§14). Rankinis kelias — TIK Raimis, kontrolinis lapas `DOD12_kontrolinis_lapas.md` |
 | DOD-13 | Post-launch monitoringas | 🔴 | 2026-08-03 | 0 monitoringo. Atskirti nuo backup: uptime (išorinis, be plugino) + PHP klaidų sekimas — DU dalykai |
 | DOD-14 | Mail-Tester ≥8/10 | ✅ | 2026-07-30 | 8,5/10 |
 | DOD-15 | GDPR atitiktis | ✅ | 2026-07-10 | Complianz v7.5.0 + 8 legal psl. |
@@ -1068,6 +1068,54 @@ Stulpelis „užsakymų per valandą" dabar visada 0, bet PO LAUNCH parodys tai,
 dev'e patikrinti neįmanoma: ar importas nesuveikė PIRKIMO metu.
 **DOD-09 nedeklaruoti žaliu net serijai atsiradus** — sąveika su pardavimais
 tikrinama tik po launch (Raimis sutiko).
+
+---
+
+## 14. DOD-10 IR DOD-12 (2026-08-04)
+
+### DOD-10 — UŽDARYTA, BET NE TAIP, KAIP APRAŠYTA TŽ
+TŽ prašo „testuota 20 produktų". **2026-07-30 auditas apėmė 1 050 prekių** —
+stipresnis įrodymas: 0 neigiamų maržų, 0 žemiau 20%, dauguma 30–50%, tipinė ~45%.
+
+**🔴 FORMULĖS ATITIKTIES NETIKRINTI. NIEKADA.**
+```
+Petshop_Pricing formulė duotų ŽEMESNES kainas nei esamos.
+Reprice numuštų katalogą 24 489 € → 21 473 € = −12,3%.
+Esamos kainos SĄMONINGAI aukštesnės (Raimio sprendimas 2026-07-30 „nelendam").
+```
+Kas darys „kainų patikrą pagal formulę", ras 20 neatitikimų ir vadins juos
+klaidomis. **Tai NE klaidos.** Prieš bet kokį kainų darbą — skaityti ZB įrašą.
+
+### DOD-12 — techninė pusė (s455)
+```
+HPOS                    įjungtas
+WCDN 7.2.1              aktyvus · sąskaitų skaitiklis 228 (prieš launch → 101)
+Venipak pluginas        vietoje
+LP Express              prideda 7 savo statusus (lp-parcel-created, lp-label-created,
+                        lp-on-the-way ir kt.) — užsakymų sąraše jų bus daugiau
+```
+**RASTA:** `WC_Email_Customer_Invoice` IŠJUNGTAS → iš admino rankiniu būdu
+sąskaitos klientui NEIŠSIŲSI. Spręsti su kontroliniu lapu.
+
+**Rankinis kelias — TIK Raimis.** Iš serverio pusės neišmatuojama, ar žmogus
+žino, kur spausti. Kontrolinis lapas: `DOD12_kontrolinis_lapas.md`.
+
+### 🔴 MANO KLAIDA: payment_failed dublikatas
+Rašydamas `payment-failed.php` patikrinau kabliuką `woocommerce_order_status_failed`,
+pamačiau `WC_Emails::send_transactional_email` ir nusprendžiau „siunčia TIK adminui".
+**NETIESA** — tai BENDRAS dispečeris, siunčiantis VISUS tam statusui priskirtus
+laiškus, tarp jų ir klientui. `WC_Email_Customer_Failed_Order` buvo ĮJUNGTAS →
+klientas būtų gavęs DU laiškus.
+
+**IŠTAISYTA (Raimio sprendimas: siunčia MŪSŲ):**
+```
+WC_Email_Customer_Failed_Order  TAIP → ne    (backup petshop_wc_failed_email_bak_S456)
+WC_Email_Failed_Order           TAIP         adminui lieka
+```
+
+**TAISYKLĖ KITAM LANGUI:** prieš jungiant srautą prie dispatch tikrinti
+`WC()->mailer()->get_emails()` ir kiekvieno `is_enabled()` + `get_recipient()`,
+**NE kabliuko callback'ų sąrašą.** Kabliukas rodo dispečerį, ne gavėjus.
 
 ---
 
