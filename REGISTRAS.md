@@ -166,7 +166,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | ID | Operacija | Būsena |
 |---|---|---|
 | OPS-01 | Site URL/Home → `https://petshop.lt` (**būtinai https**) | 🔴 |
-| OPS-02 | 6 cron užduotys serveriai.lt (Import #2, #3) | 🔴 |
+| OPS-02 | **11 cron užduočių** serveriai.lt — patikslinta 2026-08-04 (žr. §8e) | 🔴 |
 | OPS-03 | `woocommerce_email_header_image` · `wcdn_settings` · `cmplz_preloaded_privacy_info` | 🔴 |
 | OPS-04 | AVPN/IAPV serijos reset į 101 | 🔴 |
 | OPS-05 | Testinių užsakymų trynimas | 🔴 |
@@ -423,16 +423,12 @@ Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp
 
 ### LIKĘ ŽINGSNIAI (rytojui)
 ```
-1. Lifecycle Rule B2 pusėje — 30 d. prefiksui petshop-backups/
-   DABAR: lifecycleRules = [] → kopijos kauptųsi neribotai
-   Lock 14 d. < Lifecycle 30 d. — konflikto nebus
-2. Eksporto skriptas pagal §8c: DB + mu-plugins + petshop-core + flatsome-child
-   → šifruoti → įkelti → patvirtinti SHA-1 + dydį → ištrinti laikiną
-   → manifestas → pranešimas TIK gedimo atveju
-3. Cron per DirectAdmin: PHP skriptas per /usr/local/bin/phpXX-cli, naktį
-4. Gedimo testai: sugadinti tyčia → ar ateina laiškas;
-   „cron visai nepasileido" perspėjimas
-5. ATSTATYMO TESTAS į švarią DB → tik po jo DOD-08 tampa žalias
+1. ✅ Lifecycle Rule — hide 30 d., delete 1 d. (patvirtinta per API, s390)
+2. ✅ Eksporto skriptas ps-backup.php v1.1 — veikia (žr. §8f)
+3. ✅ Cron 0 4 * * * per URL (CLI šiame hostinge NEPRIEINAMAS, žr. §8f)
+4. ⏳ Gedimo testai: sugadinti tyčia → ar ateina laiškas;
+      „cron visai nepasileido" perspėjimas
+5. ⏳ ATSTATYMO TESTAS į švarią DB → tik po jo DOD-08 tampa žalias
 ```
 
 ### Ko NEDARYTI
@@ -440,6 +436,75 @@ Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp
 NEKEISTI Object Lock — įjungus išjungti NEBEĮMANOMA
 NEDUOTI skriptui trynimo logikos — retenciją tvarko TIK Lifecycle
 NERODYTI raktų pokalbyje — nei B2, nei šifravimo
+```
+
+---
+
+## 8e. CRON UŽDUOTYS — PILNAS SĄRAŠAS (patikrinta ekrane 2026-08-04)
+
+**PRIEŠ MIGRACIJĄ Į petshop.lt VISUOSE ŠIUOSE KEISTI DOMENĄ.**
+Registre anksčiau buvo rašoma „6 cron užduotys" — **netiesa, jų 11.**
+
+```
+min    val   komanda (visos per cronurl 'http://dev.avesa.lt/...')
+────────────────────────────────────────────────────────────────────
+0      *     wp-load.php?import_key=v&import_id=3&action=trigger
+2      *     wp-load.php?import_key=v&import_id=3&action=processing
+0      6     wp-load.php?import_key=v&import_id=2&action=trigger
+1      6     wp-load.php?import_key=v&import_id=2&action=processing
+0      18    wp-load.php?import_key=v&import_id=2&action=trigger
+1      18    wp-load.php?import_key=v&import_id=2&action=processing
+15     *     wp-load.php?import_key=v&import_id=7&action=trigger
+16-59/2 *    wp-load.php?import_key=v&import_id=7&action=processing
+30     6     wp-load.php?import_key=v&import_id=5&action=trigger
+31-59/2 6    wp-load.php?import_key=v&import_id=5&action=processing
+0      4     backup-run.php?ps_backup_key=...        ← NAUJA 2026-08-04
+```
+Keičiasi TIK domenas. `import_key=v`, `import_id` ir `ps_backup_key` lieka tie patys.
+Import #2 sukasi DUKART per parą (6:00 ir 18:00) — anksčiau registre neužfiksuota.
+Import #7 ir #5 irgi aktyvūs.
+
+---
+
+## 8f. BACKUP SKRIPTAS — VEIKIA (2026-08-04)
+
+```
+Skriptas   /home/gyvunai2/backups/ps-backup.php  v1.1 · 19 239 B · chmod 0700
+Paleidiklis .../public_html/dev/backup-run.php · 200 B (tik require)
+Cron        0 4 * * *  http://dev.avesa.lt/backup-run.php?ps_backup_key=...
+Būsena      /home/gyvunai2/backups/.ps-backup-state.json (last_result, last_run)
+```
+
+**SVARBU: CLI ŠIAME HOSTINGE NEPRIEINAMAS.** DirectAdmin periodinės užduotys
+turi TIK URL lauką — jokio „PHP 8.4" pasirinkimo (patikrinta ekrane 2026-08-04;
+serveriai.lt dokumentacijos pavyzdys su php84-cli mūsų paskyrai NEGALIOJA).
+Todėl paleidimas per HTTP su slaptu raktu, kaip ir visi esami importai.
+
+**Apsauga:** `hash_equals` rakto palyginimui · `ignore_user_abort(true)` kad
+cron nutraukęs ryšį neužmuštų proceso · logika už public_html, viešame
+kataloge tik `require`.
+```
+be rakto           403 ✅
+su blogu raktu     403 ✅
+su teisingu raktu  veikia ✅
+```
+
+**Realūs paleidimai (3 iš 3 sėkmingi):**
+```
+06:38 (bridge)  174 lentelės · 488 781 eil. · 17,63 MB · 6,6 s
+06:51 (Raimis naršyklėje) 174 · 488 817 eil. · 17,64 MB · 7,7 s
+      InnoDB 14 consistent snapshot · MyISAM 160 be globalaus LOCK
+      tar 22,15 MB → gzip 17,64 MB → AES-256-CBC + HMAC-SHA256
+      SHA-1 ir dydis patvirtinti B2 pusėje
+Atmintis 135 / 256 MB · laikinų failų liko 0
+```
+
+**Kas dar NEĮRODYTA:**
+```
+- gedimo pranešimas į terra@gyvunai.lt (siunčiamas TIK klaidos atveju)
+- „cron visai nepasileido" perspėjimas
+- ATSTATYMAS iš šifruoto archyvo į švarią DB
+Iki tol DOD-08 lieka 🟡.
 ```
 
 ---
