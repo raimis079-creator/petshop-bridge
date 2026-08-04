@@ -15,8 +15,8 @@
 
 | Blokas | ✅ | 🟡 | 🔴 | ⏸ laukia Raimio |
 |---|---|---|---|---|
-| Launch DoD (22) | 6 | 6 | 8 | 2 nematuota |
-| P0 funkcijos F1–F16 | 16 | 1 | 0 | Identity neįvertintas |
+| Launch DoD (22) | 7 | 5 | 8 | 2 nematuota |
+| P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
 | MVP funkcijos (§4.3) | 5 | 0 | 1 | — |
 | El. laiškų šablonai | 8 | 1 | 9 | — |
 | M8 anketa (9 punktai) | 9 | 0 | 0 | tekstai |
@@ -48,7 +48,7 @@
 
 | ID | Kriterijus | Būsena | Data | Įrodymas / kas trūksta |
 |---|---|---|---|---|
-| DOD-01 | P0 funkcijos F1–F16 100% | 🟡 | 2026-08-04 | F4 ✅ F14 ✅, BET **Identity/Google login (TŽ v1.45 P0) NEĮVERTINTAS** — §11 G1 |
+| DOD-01 | P0 funkcijos F1–F16 100% | ✅ | 2026-08-04 | F4 ✅ F14 ✅ · Identity P0 įvykdytas magic link (§11 G1) |
 | DOD-02 | Kritinių klaidų 0 | ⚪ | — | **nėra bug registro** — nematuojama |
 | P1-MYISAM | MyISAM → InnoDB migracija | 🔴 | 2026-08-03 | 160/174 lentelių MyISAM = 98% duomenų. Architektūros skola, ne tik backup (§8c) |
 | DOD-03 | Aukšto prioriteto klaidų ≤3 | ⚪ | — | tas pats |
@@ -730,7 +730,7 @@ Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
 
 | ID | Blokas | TŽ | Serveryje 2026-08-04 | Būklė |
 |---|---|---|---|---|
-| G1 | **Identity / Google login** (TŽ v1.45) | **P0** | social login plugino NĖRA | 🔴 **sprendimas Raimio** |
+| G1 | Identity / Google login (TŽ v1.45) | P0 | plugino nėra — NEREIKIA | ✅ **UŽDARYTA 2026-08-04: NEBEAKTUALU** |
 | G2 | F22 lojalumas | startas 2026-08-15 | lentelių nėra, Q9 atvira | 🔴 |
 | G3 | Google Merchant Center feed | pre-launch, v1.56 | feed'o nėra; PMax degina ~10k €/m | 🔴 |
 | G4 | Sender webhook statusai (delivered/bounced/opened) | „sekantis techninis blokas" | route yra, statusų grandinės ne | 🔴 |
@@ -750,15 +750,32 @@ G6 ShortPixel · G7 wpo-wcpdf: sąmoningai atidėti pre-launch veiksmai, ne gedi
 ```
 Šie trys buvo klaidingai sudėti į vieną lentelę su tikromis spragomis (2026-08-04),
 todėl sąrašas atrodė grėsmingesnis, nei yra. **REALIAI NEUŽDARYTI — KETURI:**
-G1 Google login · G3 Merchant Center · G5 H1 fix · Redirection 301 infrastruktūra.
+~~G1~~ (uždaryta) · G3 Merchant Center · G5 H1 fix · Redirection 301 infrastruktūra.
 Plius du techniniai mano pusėje: `payment_failed` įvykis, G4 Sender webhook statusai.
 
-### G1 detaliau — vienintelis tyliai iškritęs P0
-TŽ v1.45: Google login + dedup saugiklis. Kritinė vieta: **Google email ≠ senas pirkimo email**
-→ sistema sukurtų NAUJĄ tuščią profilį be istorijos. Tai tiesiogiai liečia Raimio 2 000 senų
-adresų. TŽ sprendimas: savanoriškas susiejimas su nuosavybės patvirtinimu per magic link į
-SENĄ el. paštą. Magic link mechanizmą jau turim (M8) — ne nuo nulio.
-**KLAUSIMAS RAIMIUI: P0 launch'ui ar po launch?** Nuo to priklauso DOD-01 spalva.
+### G1 — UŽDARYTA KAIP NEBEAKTUALU (Raimio sprendimas 2026-08-04)
+
+**TŽ v1.45 Identity sluoksnio P0 reikalavimą ĮVYKDO MAGIC LINK, ne Google login.**
+Magic link veikia ir patikrintas E2E (M8): žmogus įveda el. paštą → gauna nuorodą →
+prisijungia. Slaptažodžio nereikia niekam.
+
+**Google login SĄMONINGAI ATMESTAS. Trys priežastys — NEKELTI IŠ NAUJO:**
+```
+1. Trinties mažinimo tikslą (pagrindinis TŽ v1.45 argumentas) magic link jau
+   išsprendė, ir geriau: be Google paskyros, be trečiosios šalies sutikimo,
+   be papildomo plugino, be duomenų dalijimosi.
+2. Google login ĮNEŠTŲ problemą, kurios dabar NĖRA. Pati TŽ v1.45 įspėja:
+   Google email ≠ senas pirkimo email → tuščias profilis be istorijos.
+   Su magic link tokio atvejo NEBŪNA — žmogus įveda TĄ PATĮ paštą, į kurį
+   gauna laišką. Google login šią riziką KURIA, o ne sprendžia.
+3. Dar vienas pluginas = dar viena priklausomybė, kuri gali sulūžti.
+```
+**LIEKA ATSKIRAS, NESUSIJĘS KLAUSIMAS:** ar senas klientas, pirkęs KITU el. paštu,
+turi kelią prie savo istorijos. Tai duomenų migracijos, ne login klausimas —
+spręsti importuojant 2 000 adresų (`legacy_customer`), ne dabar.
+
+**Į TŽ v1.61:** §4.3 Identity sluoksnis — Google login išbraukiamas, P0 įvykdytas
+magic link mechanizmu.
 
 ### REGISTRO KLAIDOS, KURIAS AUDITAS IŠTAISĖ
 ```
@@ -794,7 +811,6 @@ F4 paieška, M8 anketa 9/9, 3 šablonai, naujienlaiškis, MyISAM radinys.
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
 | Q-BKP | ✅ **UŽDARYTA 2026-08-03:** B2 bucketas, raktas, kredencialai, Object Lock 14 d. — viskas pastatyta ir įrodyta (§8d) | DOD-08 | — |
-| **Q-GOOGLE** | **Google login (TŽ v1.45 P0) — launch'ui ar po launch?** | DOD-01, §11 G1 | skubu |
 | **Q-MERCH** | **Google Merchant Center feed — dabar ar po launch?** (~10 k €/metus) | §11 G3 | skubu |
 | Q-MON | **Monitoringo apimtis** — uptime pakanka, ar reikia ir PHP klaidų sekimo? | DOD-13 | — |
 | Q-PSR2 | **Paysera testinio režimo patvirtinimas** — be jo pilnas mokėjimo ciklas (redirect → callback → `processing`) netestuojamas. Dev režimas testinis, bet konfigūracija nebaigta | F-PSR | — |
