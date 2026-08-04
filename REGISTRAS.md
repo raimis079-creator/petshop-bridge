@@ -881,19 +881,46 @@ PATS PAVADINIMAS — automatika to nerado ir NEGALĖJO. Įrašyta RANKINIU būdu
 kategorijas/prekes kitais pavadinimais. Reikia PERŽIŪROS SĄRAŠO su kandidatais,
 sprendimą priima Raimis. Automatikai spėti NELEIDŽIAMA.
 
-### BENDRA APIMTIS
+### 3 SLUOKSNIS: PERVADINTI SLUG (v1.3, 2026-08-04)
+```
+10 kelių · 30 clicks · analize/legacy_renamed_301_map.json
+```
+**TRYS SĄLYGOS VIENU METU, kitaip — į peržiūrą:**
+```
+panašumas >= 0,85  IR  skaičiai sutampa  IR  kandidatas VIENINTELIS
+```
+**Skaitinis saugiklis (TŽ v1.52 pakuočių asimetrija) — BŪTINAS.** Be jo Royal
+Canin `1-5-kg` vienodai (1.00) atitiko IR `15-kg`, IR `75-kg`. Saugiklis sujungia
+gretimus skaitmenis (`2-5-kg` → `25`) ir lygina aibes. IŠMESTA papildomai:
+bendriniai taikiniai (`kita`) ir kito tėvo kategorijos.
+
+### BENDRA APIMTIS (v1.3)
 ```
 1 sluoksnis  34 kategorijų keliai   1 596 clicks
 2 sluoksnis  42 ID uodegų keliai      666 clicks
-─────────────────────────────────────────────────
-             76 keliai              2 262 clicks = 11,5% viso GSC srauto
-mu-plugins/petshop-legacy-cat-301.php v1.2 · 12 011 B · sha a96b336ffdbae110
+3 sluoksnis  10 pervadintų slug        30 clicks
+──────────────────────────────────────────────────
+             86 keliai              2 292 clicks = 11,6% viso GSC srauto
+mu-plugins/petshop-legacy-cat-301.php v1.3 · 14 608 B · sha 997bf7c581f6e335
 ```
+**PATIKRA (s432):** visi trys sluoksniai — taikiniai 200 · 6 testiniai adresai
+→ 301, po VIENĄ šuolį, galutinis 200 · `X-Redirect-By: Petshop-Legacy-Category` ·
+kontrolė nepakitusi · neatpažinti → 404.
+
+### ⏸ LAUKIA RAIMIO: 40 URL peržiūra (106 clicks)
+```
+CSV Raimio PC: SEO_perziura_40_URL.csv (kandidatai + tuščias „sprendimas" stulpelis)
+JSON repo:     analize/seo_perziura_40.json
+```
+Automatika kandidatus RADO, bet nė vienas nepraėjo trijų sąlygų — arba panašumas
+per mažas, arba keli vienodai stiprūs, arba skaičiai nesutampa. **Spėti
+NELEIDŽIAMA.** Didžiausi: `sunims/transportavimo-dezes` (46 clicks — du kandidatai:
+šunims ir katėms), `vistienos-file-juosteles` (14 — kandidatas ANTIENOS, kita mėsa).
 
 ### LIKO
 ```
-52 keliai (235 clicks) — peržiūros sąrašas su kandidatais, RAIMIO sprendimas
-Likę GSC URL iš 2 445 (produktai, blog) — dar neanalizuoti
+2 keliai be kandidatų (0 clicks) — palikti 404
+Likę GSC URL iš 2 445 (produktai, blog straipsniai) — dar neanalizuoti
 ```
 
 ---
