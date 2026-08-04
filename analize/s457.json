@@ -1,0 +1,130 @@
+{
+ "VERSIJA_RUN": "run457-v1",
+ "sid": 2241,
+ "roles": {
+  "VERSIJA": "s457-v1",
+  "act": "rolės",
+  "roles": {
+   "administrator": {
+    "pav": "Administrator",
+    "caps": 126
+   },
+   "editor": {
+    "pav": "Editor",
+    "caps": 38
+   },
+   "author": {
+    "pav": "Author",
+    "caps": 10
+   },
+   "contributor": {
+    "pav": "Contributor",
+    "caps": 5
+   },
+   "subscriber": {
+    "pav": "Subscriber",
+    "caps": 2
+   },
+   "customer": {
+    "pav": "Customer",
+    "caps": 1
+   },
+   "shop_manager": {
+    "pav": "Shop manager",
+    "caps": 93
+   },
+   "translator": {
+    "pav": "Translator",
+    "caps": 2
+   }
+  },
+  "shop_manager_yra": "TAIP (93 teisių)",
+  "sm_teises": {
+   "manage_woocommerce": "TAIP",
+   "edit_products": "TAIP",
+   "edit_shop_orders": "TAIP",
+   "manage_options": "ne",
+   "edit_plugins": "ne",
+   "edit_themes": "ne",
+   "install_plugins": "ne",
+   "list_users": "TAIP",
+   "edit_users": "ne",
+   "update_core": "ne",
+   "view_woocommerce_reports": "TAIP",
+   "export": "TAIP",
+   "import": "TAIP",
+   "unfiltered_html": "ne"
+  },
+  "vartotojai": {
+   "administrator": 1,
+   "shop_manager": 0,
+   "editor": 0,
+   "customer": 30
+  }
+ },
+ "meniu": {
+  "raw": "<br />\n<b>Warning</b>:  Undefined variable $menu in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-admin/includes/menu.php</b> on line <b>45</b><br />\n<br />\n<b>Warning</b>:  foreach() argument must be of type array|object, null given in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-admin/includes/menu.php</b> on line <b>45</b><br />\n<br />\n<b>Warning</b>:  Undefined variable $submenu in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-admin/includes/menu.php</b> on line <b>8"
+ },
+ "stulpeliai": {
+  "VERSIJA": "s457-v1",
+  "act": "stulpeliai",
+  "uzsakymu_stulpeliai": {
+   "cb": "",
+   "order_number": "Užsakymas",
+   "order_date": "Data",
+   "order_status": "Būsena",
+   "billing_address": "Sąskaitos adresas",
+   "shipping_address": "Pristatymo adresas",
+   "order_total": "Suma",
+   "wc_actions": "Veiksmai"
+  },
+  "prekiu_stulpeliai": {
+   "cb": "",
+   "thumb": "",
+   "name": "Pavadinimas",
+   "sku": "SKU",
+   "is_in_stock": "Sandėlyje",
+   "price": "Kaina",
+   "product_cat": "Kategorijos",
+   "product_tag": "Žymos",
+   "featured": "",
+   "date": "Data"
+  },
+  "statusai_viso": 17,
+  "statusai": {
+   "wc-pending": "Neapmokėtas",
+   "wc-processing": "Vykdomas",
+   "wc-on-hold": "Sustabdytas",
+   "wc-completed": "Įvykdytas",
+   "wc-cancelled": "Atšauktas",
+   "wc-refunded": "Grąžintas",
+   "wc-failed": "Nepavykęs",
+   "wc-lp-courier-await": "Laukiama kurjerio iškvietimo",
+   "wc-lp-parcel-created": "Siunta vykdoma",
+   "wc-lp-parcel-failed": "Siuntos sukurti nepavyko",
+   "wc-lp-label-created": "Paruošta siuntimui",
+   "wc-lp-courier-called": "Kurjeris iškviestas",
+   "wc-lp-on-the-way": "Siunčiama",
+   "wc-lp-delivered": "Siunta pristatyta",
+   "wc-lp-cancelled": "Siunta atšaukta",
+   "wc-lp-parcel-await": "Sustabdytas",
+   "wc-checkout-draft": "Juodraštis"
+  },
+  "uzsakymu_pagal_statusa": [
+   {
+    "status": "wc-completed",
+    "c": "1"
+   },
+   {
+    "status": "wc-pending",
+    "c": "1"
+   }
+  ],
+  "prekes": {
+   "publish": 2776,
+   "draft": 1027,
+   "trash": 0
+  }
+ },
+ "svetaine": "200"
+}
