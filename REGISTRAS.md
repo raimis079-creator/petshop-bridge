@@ -15,7 +15,7 @@
 
 | Blokas | ✅ | 🟡 | 🔴 | ⏸ laukia Raimio |
 |---|---|---|---|---|
-| Launch DoD (22) | 7 | 5 | 8 | 2 nematuota |
+| Launch DoD (22) | 10 | 5 | 5 | 2 nematuota |
 | P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
 | MVP funkcijos (§4.3) | 5 | 0 | 1 | — |
 | El. laiškų šablonai | 8 | 1 | 9 | — |
@@ -1116,6 +1116,65 @@ WC_Email_Failed_Order           TAIP         adminui lieka
 **TAISYKLĖ KITAM LANGUI:** prieš jungiant srautą prie dispatch tikrinti
 `WC()->mailer()->get_emails()` ir kiekvieno `is_enabled()` + `get_recipient()`,
 **NE kabliuko callback'ų sąrašą.** Kabliukas rodo dispečerį, ne gavėjus.
+
+---
+
+## 15. SESIJOS SUVESTINĖ 2026-08-04
+
+### UŽDARYTA ŠIANDIEN
+```
+DOD-07  SEO 301        🔴 → ✅   937 keliai · 5 863 clicks · 6 sluoksniai
+DOD-08  Backup         🟡 → ✅   B2 + Object Lock + atstatymo testas + sargas
+DOD-10  Kainodara      🟡 → ✅   uždaryta 1 050 prekių auditu (§14)
+DOD-01  P0 F1–F16      🟡 → ✅   Identity P0 įvykdytas magic link
+OPS-12  umbrella       🔴 → ✅   lentelė ištrinta, 174 → 173
+G1  Google login       🔴 → ✅   nebeaktualu
+G5  H1 tema-fix        🔴 → ✅   10/10 puslapių po 1 prasmingą H1
+F30b  Atsiliepimai     ⚪ → ✅   veikia (verified buyers only)
+payment_failed                    grandinė pilna: event + job + laiškas
+naujienlaiškis                    poraštės forma + launch modalas
+3 el. laiškų šablonai             consent-changed · dunning-1 · founding
+snippetai                         1 588 → 1 360 (228 TEMP)
+```
+
+### DoD BŪKLĖ
+```
+✅ 10 · 🟡 5 · 🔴 5 · ⚪ 2      (ryte: ✅6 · 🟡5 · 🔴9 · ⚪2)
+```
+Raudoni likę: DOD-13 monitoringas · DOD-17 beta 5–10 klientų ·
+DOD-18 DNS planas · DOD-19 rollback · DOD-20 savaitinis stabilumas · DOD-22 indeksavimas.
+**Visi penki — pre-launch operacijos, ne kodo darbai.**
+
+### NAUJI mu-plugins (visi 2026-08-04)
+```
+petshop-legacy-301.php          2 881 B · 02e958db35dc9a32  + map.json 937 įrašų
+petshop-payment-failed.php      3 704 B · e366969582c29fbb
+petshop-import-log.php          2 826 B · 2f64cc9e95a2bff0
+petshop-code-search.php         (F4, 2026-08-03)
+petshop-pet-claim.php           (M8, 2026-08-03)
+```
+
+### ŠEŠIOS MANO KLAIDOS — VISOS TOS PAČIOS RŪŠIES
+**Pažiūrėjau į VIENĄ vietą ir paskelbiau verdiktą apie visą dalyką:**
+```
+1. footer_1_content         prasimaniau theme_mod, kurio Flatsome NETURI
+2. honeypot „matomas"       Playwright isVisible()=true elementui su x=-9999
+3. „juosta ne virš poraštės" lyginau su #footer, kurio VIDUJE pati juosta
+4. „18 s sustojimas"        tai buvo NEUŽRAKINTO eksporto laikas
+5. nemokamas pristatymas    žiūrėjau WC free_shipping, o riba VENIPAK plugine
+6. payment_failed dublikatas kabliuke mačiau dispečerį, ne gavėjus
+```
+**BENDRA TAISYKLĖ:** prieš verdiktą apie funkciją — patikrinti VISUS jos
+sluoksnius, ne pirmą rastą. Ir: matavimo įrankis gali meluoti (isVisible,
+dry-run skaičiai, kabliukų sąrašai) — verdiktas tik pagal galutinį elgesį.
+
+### RAIMIO RADINIAI, KURIŲ AUTOMATIKA NERADO
+```
+akvariumo-zuvyciu-maistas   kategorija PERVADINTA, ne uodega → 99 clicks
+nemokamas pristatymas       veikia Venipak plugine, kaip Raimis ir sakė
+Pragma išjungta             sąmoningai, kad nesiųstų nesąmonių buhalterei
+petshop.lt nėra nauja       2 445 URL, 19 735 clicks, 2 000 klientų
+```
 
 ---
 
