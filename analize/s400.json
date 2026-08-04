@@ -1,0 +1,27 @@
+{
+ "VERSIJA_RUN": "run400-v1",
+ "sid": 2187,
+ "valymas": {
+  "VERSIJA": "s399-v1",
+  "act": "valyti",
+  "istrinta_lenteliu": 174,
+  "rtst_liko": 0,
+  "gaj6_liko": 174,
+  "failai_istrinti": [
+   ".restore-test.enc",
+   ".restore-test.tar",
+   ".restore-test.sql.gz",
+   ".restore-manifest.json",
+   ".b2restore.php"
+  ]
+ },
+ "po": {
+  "VERSIJA": "s399-v1",
+  "act": "snapshot",
+  "gaj6_lenteliu": 174,
+  "gaj6_hash": "1ecdb5612701e0c6",
+  "rtst_lenteliu": 0,
+  "visos": 174
+ },
+ "svetaine": "200"
+}
