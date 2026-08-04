@@ -1,0 +1,38 @@
+{
+ "VERSIJA_RUN": "run409-v1",
+ "sid": 2195,
+ "patch": {
+  "VERSIJA": "s409-v1",
+  "act": "patch",
+  "pries": {
+   "B": 15284,
+   "sha": "fc71c64fcad1ffeb"
+  },
+  "inkaras": "require_once PETSHOP_CORE_DIR . 'includes/class-account-company.php';",
+  "po": {
+   "B": 15349,
+   "sha": "52d4d62fc18c4936",
+   "require_yra": 1,
+   "backup": "petshop-core.php.bak_S409"
+  }
+ },
+ "patikra": {
+  "VERSIJA": "s409-v1",
+  "act": "patikra",
+  "klase": "yra",
+  "shortcode": "yra",
+  "route": "yra",
+  "HTML": {
+   "B": 2577,
+   "email_laukas": "taip",
+   "varnele": "taip",
+   "honeypot": "taip",
+   "varnele_nepazymeta": "taip",
+   "komentarai_svarus": "taip",
+   "PHP_klaidu": "ne",
+   "privatumo_nuoroda": "taip"
+  },
+  "svetaines_HTTP": 200
+ },
+ "svetaine": "200"
+}
