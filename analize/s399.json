@@ -1,0 +1,64 @@
+{
+ "VERSIJA_RUN": "run399-v1",
+ "sid": 2186,
+ "pries": {
+  "VERSIJA": "s399-v1",
+  "act": "snapshot",
+  "gaj6_lenteliu": 174,
+  "gaj6_hash": "1ecdb5612701e0c6",
+  "rtst_lenteliu": 0,
+  "visos": 174
+ },
+ "restore": {
+  "VERSIJA": "s399-v1",
+  "act": "restore",
+  "sakiniu": 488996,
+  "praleista": 0,
+  "klaidos": [],
+  "sekundziu": 92.3,
+  "rtst_lenteliu_po": 174,
+  "gaj6_lenteliu_po": 174
+ },
+ "palyginimas": {
+  "VERSIJA": "s399-v1",
+  "act": "palyginti",
+  "manifeste_lenteliu": 174,
+  "EILUCIU_SUTAMPA": 174,
+  "neatstatyta": 0,
+  "SKIRTUMAI": [],
+  "kontrolines": {
+   "ps_pets": {
+    "atstatyta": 69,
+    "originale": 69
+   },
+   "ps_feeding_rows": {
+    "atstatyta": 5549,
+    "originale": 5549
+   },
+   "wc_orders": {
+    "atstatyta": 2,
+    "originale": 2
+   },
+   "postmeta": {
+    "atstatyta": 178403,
+    "originale": 178403
+   },
+   "posts": {
+    "atstatyta": 12638,
+    "originale": 12638
+   },
+   "options": {
+    "atstatyta": 1035,
+    "originale": 1034
+   }
+  },
+  "lietuviskos_raides": "Natūralių skanėstų dovanų rinkinys vidutinių ir didelių veislių šunims",
+  "serialized": {
+   "pvz": "a:3:{i:0;s:94:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-xml/petsho",
+   "unserialize": "OK"
+  },
+  "rtst_posts_collation": "utf8mb4_unicode_520_ci",
+  "rtst_posts_engine": "MyISAM"
+ },
+ "svetaine": "200"
+}
