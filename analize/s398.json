@@ -1,0 +1,16 @@
+{
+ "VERSIJA_RUN": "run398-v1",
+ "sid": 2185,
+ "teises": {
+  "VERSIJA": "s398-v1",
+  "act": "teises",
+  "grants": [
+   "GRANT USAGE ON *.* TO `gyvunai2_nbpe1`@`localhost` IDENTIFIED BY PASSWORD '*8D9BBC4F6CD004373BE189B59E448169998BF00B'",
+   "GRANT ALL PRIVILEGES ON `gyvunai2\\_nbpe1`.* TO `gyvunai2_nbpe1`@`localhost`"
+  ],
+  "CREATE_teise": "TAIP",
+  "sukurti_pavyko": "NE",
+  "klaida": "Access denied for user 'gyvunai2_nbpe1'@'localhost' to database 'gyvunai2_rtest'"
+ },
+ "svetaine": "200"
+}
