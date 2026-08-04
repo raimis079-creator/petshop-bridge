@@ -1,0 +1,77 @@
+{
+ "VERSIJA_RUN": "run456-v1",
+ "sid": 2240,
+ "pries": {
+  "VERSIJA": "s456-v1",
+  "act": "x",
+  "pries": false,
+  "laiskai": {
+   "WC_Email_Failed_Order": {
+    "enabled": "TAIP",
+    "gavejas": "uzsakymai@petshop.lt",
+    "pav": "Nepavykęs užsakymas"
+   },
+   "WC_Email_Customer_Failed_Order": {
+    "enabled": "TAIP",
+    "gavejas": "klientas",
+    "pav": "Nepavykęs užsakymas"
+   }
+  },
+  "kabliukas_failed": [
+   "10 wc_update_coupon_usage_counts",
+   "10 WC_Emails::send_transactional_email",
+   "20 petshop_emit_payment_failed"
+  ]
+ },
+ "isjungimas": {
+  "VERSIJA": "s456-v1",
+  "act": "isjungti",
+  "pries": false,
+  "po_irasymo": {
+   "enabled": "no"
+  },
+  "backup": "petshop_wc_failed_email_bak_S456",
+  "laiskai": {
+   "WC_Email_Failed_Order": {
+    "enabled": "TAIP",
+    "gavejas": "uzsakymai@petshop.lt",
+    "pav": "Nepavykęs užsakymas"
+   },
+   "WC_Email_Customer_Failed_Order": {
+    "enabled": "ne",
+    "gavejas": "klientas",
+    "pav": "Nepavykęs užsakymas"
+   }
+  },
+  "kabliukas_failed": [
+   "10 wc_update_coupon_usage_counts",
+   "10 WC_Emails::send_transactional_email",
+   "20 petshop_emit_payment_failed"
+  ]
+ },
+ "patikra": {
+  "VERSIJA": "s456-v1",
+  "act": "x",
+  "pries": {
+   "enabled": "no"
+  },
+  "laiskai": {
+   "WC_Email_Failed_Order": {
+    "enabled": "TAIP",
+    "gavejas": "uzsakymai@petshop.lt",
+    "pav": "Nepavykęs užsakymas"
+   },
+   "WC_Email_Customer_Failed_Order": {
+    "enabled": "ne",
+    "gavejas": "klientas",
+    "pav": "Nepavykęs užsakymas"
+   }
+  },
+  "kabliukas_failed": [
+   "10 wc_update_coupon_usage_counts",
+   "10 WC_Emails::send_transactional_email",
+   "20 petshop_emit_payment_failed"
+  ]
+ },
+ "svetaine": "200"
+}
