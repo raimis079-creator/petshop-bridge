@@ -1,0 +1,161 @@
+{
+ "VERSIJA_RUN": "run406-v1",
+ "sid": 2192,
+ "recon": {
+  "VERSIJA": "s406-v1",
+  "act": "recon",
+  "emitters": [
+   "7: * - consent_changed → jau emit'inama Consent_Sync viduje (cia tik uztikrinam)",
+   "11: * tracking kodas. Idempotencija per _ps_order_shipped_emitted meta zyma.",
+   "13: * Visi event'ai eina per Petshop_Event_Registry::emit() (schema validacija).",
+   "15: * S310 (2026-07-30): po registry emit'o papildomai kviecamas",
+   "16: * Petshop_Email_Dispatch::enqueue() — eventas patenka i laisku outbox'a.",
+   "18: * Registry emit ir dispatch enqueue yra NEPRIKLAUSOMI — jei dispatch klases nera,",
+   "30: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'on_payment_complete' ), 20, 1 );",
+   "34: // apsauga (event_id pagal order_id — ps_emit_event INSERT IGNORE nekartos).",
+   "35: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+   "36: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+   "40: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
+   "47: self::emit_order_paid( $order_id );",
+   "62: self::emit_order_paid( $order_id );",
+   "66: * Sudaro order_paid payload + emit per registry.",
+   "69: private static function emit_order_paid( $order_id ) {",
+   "124: Petshop_Event_Registry::emit( 'order_paid', $email, $payload, array(",
+   "139: const SHIPPED_FLAG_META = '_ps_order_shipped_emitted';",
+   "142: * Tikrina ar order igijo tracking koda; jei taip ir dar nefire'inta — emit order_shipped.",
+   "144: public static function maybe_emit_order_shipped( $order_id ) {",
+   "146: // order_shipped eventas jau emit'intas. Venipak plugin'as perraso",
+   "186: $result = Petshop_Event_Registry::emit( 'order_shipped', $email, $payload, array(",
+   "194: remove_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20 );",
+   "197: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );"
+  ],
+  "ivykiai_pagal_busena": [
+   {
+    "event_name": "cart_abandoned",
+    "status": "sent",
+    "c": "12"
+   },
+   {
+    "event_name": "consent_changed",
+    "status": "sent",
+    "c": "24"
+   },
+   {
+    "event_name": "order_paid",
+    "status": "sent",
+    "c": "34"
+   },
+   {
+    "event_name": "order_shipped",
+    "status": "sent",
+    "c": "19"
+   },
+   {
+    "event_name": "pet_product_assigned",
+    "status": "sent",
+    "c": "4"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "dead",
+    "c": "6"
+   },
+   {
+    "event_name": "pet_profile_created",
+    "status": "sent",
+    "c": "103"
+   },
+   {
+    "event_name": "pet_profile_updated",
+    "status": "sent",
+    "c": "91"
+   },
+   {
+    "event_name": "pet_reminder_due",
+    "status": "sent",
+    "c": "1"
+   },
+   {
+    "event_name": "refill_due",
+    "status": "sent",
+    "c": "3"
+   }
+  ],
+  "consent_pvz": {
+   "id": "355",
+   "event_name": "consent_changed",
+   "email": "s2@example.com",
+   "payload_json": "{\"field\":\"marketing_consent\",\"from_value\":\"\",\"to_value\":\"true\",\"source\":\"s2\"}",
+   "status": "sent",
+   "emitted_at": "2026-07-31 11:41:46",
+   "last_error": null
+  },
+  "consent_jobs": 0,
+  "consent_log_kiekis": 11,
+  "consent_log_pvz": {
+   "id": "18",
+   "customer_id": "0",
+   "email": "unsub-test@example.com",
+   "field": "marketing_consent",
+   "from_value": "true",
+   "to_value": "false",
+   "source": "unsubscribe_link",
+   "ip": "20.171.55.60",
+   "user_agent": "curl/8.5.0",
+   "changed_at": "2026-07-31 08:51:09"
+  },
+  "cron_kabliukai": {
+   "ps_email_dispatch_cron": "2026-08-04 08:48",
+   "petshop_vf_sync_stock_hourly": "2026-08-04 08:59",
+   "petshop_attr_engine_run": "2026-08-04 10:57",
+   "petshop_vf_sync_reprice_daily": "2026-08-05 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-05 04:00",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00",
+   "wpforms_email_summaries_cron": "2026-08-09 21:00"
+  }
+ },
+ "testas": {
+  "VERSIJA": "s406-v1",
+  "act": "enqueue_test",
+  "testinis_pastas": "e2e.consent.5c55fbc3@pastas-test.lt",
+  "enqueue": {
+   "ok": true,
+   "job_id": 30,
+   "duplicate": false
+  },
+  "job_po_enqueue": {
+   "id": "30",
+   "flow": "consent_changed",
+   "status": "pending",
+   "skip_reason": null,
+   "block_reason": null,
+   "subject": "testas",
+   "scheduled_at": "2026-08-04 08:48:10"
+  },
+  "process_dry": {
+   "dry_run": true,
+   "picked": 1,
+   "results": [
+    {
+     "id": 30,
+     "flow": "consent_changed",
+     "action": "WOULD_SEND",
+     "to": "e2e.consent.5c55fbc3@pastas-test.lt",
+     "subject": "Patvirtiname: sutikote gauti mūsų naujienas",
+     "html_len": 1917
+    }
+   ]
+  },
+  "job_po_dry": {
+   "id": "30",
+   "flow": "consent_changed",
+   "status": "pending",
+   "skip_reason": null,
+   "block_reason": null,
+   "last_error": null,
+   "subject": "testas"
+  },
+  "istrintas_job": "30"
+ },
+ "svetaine": "200"
+}
