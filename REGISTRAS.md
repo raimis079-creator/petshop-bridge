@@ -735,10 +735,23 @@ Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
 | G3 | Google Merchant Center feed | pre-launch, v1.56 | feed'o nėra; PMax degina ~10k €/m | 🔴 |
 | G4 | Sender webhook statusai (delivered/bounced/opened) | „sekantis techninis blokas" | route yra, statusų grandinės ne | 🔴 |
 | G5 | H1 tema-lygio fix | blocker nuo v1.53 | nepatikrinta | 🔴 |
-| G6 | ShortPixel ON | pre-launch | INACTIVE 6.5.5 | 🔴 |
-| G7 | wpo-wcpdf trynimas | higiena | INACTIVE 5.15.2, yra | 🔴 |
-| G8 | **Pragma production mode ON** | pre-launch | `NENUSTATYTA` = OFF | 🔴 **launch dieną BŪTINA** |
+| G6 | ShortPixel ON | pre-launch | INACTIVE 6.5.5 | ⚪ **suplanuota**, ne spraga |
+| G7 | wpo-wcpdf trynimas | higiena | INACTIVE 5.15.2, yra | ⚪ **suplanuota**, ne spraga |
+| G8 | Pragma production mode | pre-launch | `NENUSTATYTA` = OFF | ⚪ **RAIMIO NURODYMAS — TEISINGA BŪSENA** |
 | G9 | SMS Sender ID registracija | „pradėti ANKSTI" | nepradėta | 🔴 |
+
+### ⚠️ G6/G7/G8 NĖRA SPRAGOS — NEKELTI JŲ KAIP PROBLEMŲ
+```
+G8 PRAGMA: production mode IŠJUNGTAS PAGAL RAIMIO NURODYMĄ (TŽ v1.38).
+   Priežastis: kad DABAR nesiųstų nesąmonių buhalterei. Įjungiama TIK
+   paleidus naują petshop.lt. Kodas turi saugiklį + žurnalą + [TEST] prefiksą.
+   TAI TEISINGA BŪSENA. Nevadinti „raudonu", nesiūlyti įjungti anksčiau.
+G6 ShortPixel · G7 wpo-wcpdf: sąmoningai atidėti pre-launch veiksmai, ne gedimai.
+```
+Šie trys buvo klaidingai sudėti į vieną lentelę su tikromis spragomis (2026-08-04),
+todėl sąrašas atrodė grėsmingesnis, nei yra. **REALIAI NEUŽDARYTI — KETURI:**
+G1 Google login · G3 Merchant Center · G5 H1 fix · Redirection 301 infrastruktūra.
+Plius du techniniai mano pusėje: `payment_failed` įvykis, G4 Sender webhook statusai.
 
 ### G1 detaliau — vienintelis tyliai iškritęs P0
 TŽ v1.45: Google login + dedup saugiklis. Kritinė vieta: **Google email ≠ senas pirkimo email**
