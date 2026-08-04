@@ -6,14 +6,14 @@ const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.aves
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s459',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s460',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run459-admin'};
+const O={VERSIJA_RUN:'run460-admin'};
 // auth cookie per snippeta
 const PHP=`add_action('wp_loaded',function(){
- if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck459xQ') return;
+ if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck460xQ') return;
  nocache_headers(); header('Content-Type: application/json');
  $u=get_users(array('role'=>'administrator','number'=>1));
  if(!$u){ echo wp_json_encode(array('err'=>'no admin')); exit; }
@@ -23,22 +23,32 @@ const PHP=`add_action('wp_loaded',function(){
  $mgr=WP_Session_Tokens::get_instance($uid);
  $tok=$mgr->create($exp);
  echo wp_json_encode(array('uid'=>$uid,'login'=>$u[0]->user_login,
-   'cookie'=>wp_generate_auth_cookie($uid,$exp,'logged_in',$tok),
-   'name'=>LOGGED_IN_COOKIE)); exit;
+   'logged_in'=>array('name'=>LOGGED_IN_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'logged_in',$tok)),
+   'secure_auth'=>array('name'=>SECURE_AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'secure_auth',$tok)),
+   'auth'=>array('name'=>AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'auth',$tok)),
+   'cookiepath'=>COOKIEPATH,'adminpath'=>ADMIN_COOKIE_PATH,'domain'=>COOKIE_DOMAIN,
+   'force_ssl_admin'=>force_ssl_admin()?1:0)); exit;
 },1);`;
 let sid=null;
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S459 Cookie v2',code:PHP,scope:'global',active:true}));
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S460 Cookie v3',code:PHP,scope:'global',active:true}));
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
 O.sid=sid; sh('sleep 4');
-const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck459xQ"');
+const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck460xQ"');
 let C=null; try{C=JSON.parse(ck);}catch(e){O.cookie_raw=String(ck).slice(0,200);}
-O.cookie_ok = C && C.cookie ? 'yra' : 'NERA';
-if(C && C.cookie){
+O.cookie_ok = C && C.logged_in ? 'yra' : 'NERA';
+O.cookie_info = C ? {cookiepath:C.cookiepath,adminpath:C.adminpath,domain:C.domain,ssl_admin:C.force_ssl_admin} : null;
+if(C && C.logged_in){
  try{
   const b=await chromium.launch();
   const ctx=await b.newContext({viewport:{width:1600,height:1000},ignoreHTTPSErrors:true,locale:'lt-LT'});
-  await ctx.addCookies([{name:C.name,value:C.cookie,domain:'dev.avesa.lt',path:'/',httpOnly:true,secure:true}]);
+  const ck=[
+    {name:C.logged_in.name,value:C.logged_in.val,domain:'dev.avesa.lt',path:'/',httpOnly:true,secure:true,sameSite:'Lax'},
+    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
+    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-includes/',httpOnly:true,secure:true,sameSite:'Lax'},
+    {name:C.auth.name,value:C.auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
+  ];
+  await ctx.addCookies(ck);
   const p=await ctx.newPage();
   const puslapiai=[
     ['prekiu_sarasas','/wp-admin/edit.php?post_type=product'],
@@ -74,5 +84,5 @@ if(C && C.cookie){
 }
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putFile('analize/s459.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s460.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
