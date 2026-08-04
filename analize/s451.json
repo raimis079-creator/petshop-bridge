@@ -1,0 +1,347 @@
+{
+ "VERSIJA_RUN": "run451-v1",
+ "sid": 2234,
+ "rez": {
+  "VERSIJA": "s451-v1",
+  "pmxi_lenteles": [
+   "gaj6_pmxi_files",
+   "gaj6_pmxi_geocoding",
+   "gaj6_pmxi_hash",
+   "gaj6_pmxi_history",
+   "gaj6_pmxi_images",
+   "gaj6_pmxi_imports",
+   "gaj6_pmxi_posts",
+   "gaj6_pmxi_templates"
+  ],
+  "importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "type": "file",
+    "registered_on": "2026-05-27 11:14:21",
+    "executing": "0",
+    "triggered": "0",
+    "processing": "0",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2045",
+    "deleted": "0",
+    "last_activity": "2026-05-27 11:14:21",
+    "iteration": "2",
+    "count": "2045"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "type": "url",
+    "registered_on": "2026-08-04 15:02:02",
+    "executing": "0",
+    "triggered": "1",
+    "processing": "0",
+    "imported": "84",
+    "created": "1",
+    "updated": "83",
+    "skipped": "1056",
+    "deleted": "0",
+    "last_activity": "2026-08-04 15:02:02",
+    "iteration": "44",
+    "count": "2602"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "type": "url",
+    "registered_on": "2026-08-04 19:03:04",
+    "executing": "0",
+    "triggered": "1",
+    "processing": "0",
+    "imported": "787",
+    "created": "0",
+    "updated": "787",
+    "skipped": "1353",
+    "deleted": "0",
+    "last_activity": "2026-08-04 19:03:04",
+    "iteration": "459",
+    "count": "2606"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "type": "url",
+    "registered_on": "2026-08-04 03:32:03",
+    "executing": "0",
+    "triggered": "0",
+    "processing": "0",
+    "imported": "197",
+    "created": "15",
+    "updated": "182",
+    "skipped": "2115",
+    "deleted": "0",
+    "last_activity": "2026-08-04 03:32:03",
+    "iteration": "61",
+    "count": "2312"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "type": "url",
+    "registered_on": "2026-08-04 19:18:41",
+    "executing": "0",
+    "triggered": "0",
+    "processing": "0",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2308",
+    "deleted": "0",
+    "last_activity": "2026-08-04 19:18:41",
+    "iteration": "1322",
+    "count": "2308"
+   }
+  ],
+  "istorija_stulpeliai": [
+   "id",
+   "import_id",
+   "type",
+   "time_run",
+   "date",
+   "summary"
+  ],
+  "istorija_kiekis": 19,
+  "istorija": [
+   {
+    "id": "3794",
+    "import_id": "7",
+    "type": "processing",
+    "time_run": "159",
+    "date": "2026-08-04 19:16:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2308 skipped"
+   },
+   {
+    "id": "3793",
+    "import_id": "7",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-04 19:15:04",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3792",
+    "import_id": "7",
+    "type": "processing",
+    "time_run": "161",
+    "date": "2026-08-04 18:16:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2308 skipped"
+   },
+   {
+    "id": "3791",
+    "import_id": "7",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-04 18:15:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3788",
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "7261",
+    "date": "2026-08-04 17:02:03",
+    "summary": "0 Produktai created 787 updated 1353 skipped"
+   },
+   {
+    "id": "3787",
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-04 17:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3776",
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "14412",
+    "date": "2026-08-04 12:02:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 1042 updated 1564 skipped"
+   },
+   {
+    "id": "3775",
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-04 12:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3754",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "62",
+    "date": "2026-08-04 03:31:01",
+    "summary": "import finished & cron un-triggered<br>15 Produktai created 182 updated 2115 skipped"
+   },
+   {
+    "id": "3753",
+    "import_id": "5",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-04 03:30:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3750",
+    "import_id": "2",
+    "type": "processing",
+    "time_run": "43260",
+    "date": "2026-08-04 03:01:02",
+    "summary": "1 Produktas created 83 updated 1056 skipped"
+   },
+   {
+    "id": "3749",
+    "import_id": "2",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-04 03:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3692",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "29",
+    "date": "2026-08-03 03:31:01",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 26 updated 2271 skipped"
+   },
+   {
+    "id": "3691",
+    "import_id": "5",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-03 03:30:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3630",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "33",
+    "date": "2026-08-02 03:31:01",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 19 updated 2278 skipped"
+   },
+   {
+    "id": "3598",
+    "import_id": "2",
+    "type": "processing",
+    "time_run": "172854",
+    "date": "2026-08-01 15:01:02",
+    "summary": "import finished & cron un-triggered<br>2 Produktai created 311 updated 2289 skipped"
+   },
+   {
+    "id": "3597",
+    "import_id": "2",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-01 15:00:01",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "2",
+    "import_id": "1",
+    "type": "manual",
+    "time_run": "124",
+    "date": "2026-05-27 11:12:17",
+    "summary": "0 Produktai created 0 updated 2045 skipped"
+   },
+   {
+    "id": "1",
+    "import_id": "1",
+    "type": "manual",
+    "time_run": "1259",
+    "date": "2026-05-27 10:35:36",
+    "summary": "2045 Produktai created 0 updated 0 skipped"
+   }
+  ],
+  "cron_dabar": {
+   "petshop_vf_sync_stock_hourly": "2026-08-04 19:59",
+   "petshop_attr_engine_run": "2026-08-04 22:57",
+   "petshop_vf_sync_reprice_daily": "2026-08-05 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-05 04:00",
+   "petshop_pragma_monthly_export": "2026-08-05 08:00"
+  },
+  "vf_last_sync": {
+   "naujausias": "2026-08-04 22:00:53",
+   "seniausias": "2026-08-04 22:00:04",
+   "c": "1161"
+  },
+  "vf_sync_pagal_diena": [
+   {
+    "d": "2026-08-04",
+    "c": "1161"
+   }
+  ],
+  "dead": [
+   {
+    "id": "118",
+    "event_name": "pet_profile_created",
+    "email": "m8e2e_31524@gyvunai.lt",
+    "status": "dead",
+    "attempts": "1",
+    "last_error": "non_retriable: Subscriber not found",
+    "emitted_at": "2026-07-15 09:15:53"
+   },
+   {
+    "id": "117",
+    "event_name": "pet_profile_created",
+    "email": "gutulis@gmail.com",
+    "status": "dead",
+    "attempts": "1",
+    "last_error": "non_retriable: Subscriber not found",
+    "emitted_at": "2026-07-15 05:44:02"
+   },
+   {
+    "id": "114",
+    "event_name": "pet_profile_created",
+    "email": "e2e_empty_1784063882@gyvunai.lt",
+    "status": "dead",
+    "attempts": "1",
+    "last_error": "non_retriable: Subscriber not found",
+    "emitted_at": "2026-07-14 21:18:02"
+   },
+   {
+    "id": "113",
+    "event_name": "pet_profile_created",
+    "email": "e2e_empty_1784063882@gyvunai.lt",
+    "status": "dead",
+    "attempts": "1",
+    "last_error": "non_retriable: Subscriber not found",
+    "emitted_at": "2026-07-14 21:18:02"
+   },
+   {
+    "id": "112",
+    "event_name": "pet_profile_created",
+    "email": "e2e_empty_1784063882@gyvunai.lt",
+    "status": "dead",
+    "attempts": "1",
+    "last_error": "non_retriable: Subscriber not found",
+    "emitted_at": "2026-07-14 21:18:02"
+   },
+   {
+    "id": "111",
+    "event_name": "pet_profile_created",
+    "email": "e2e_1784063882@gyvunai.lt",
+    "status": "dead",
+    "attempts": "1",
+    "last_error": "non_retriable: Subscriber not found",
+    "emitted_at": "2026-07-14 21:18:02"
+   }
+  ],
+  "dead_klaidos": [
+   {
+    "last_error": "non_retriable: Subscriber not found",
+    "c": "6"
+   }
+  ]
+ }
+}
