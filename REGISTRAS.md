@@ -854,16 +854,47 @@ QA sąlygą. Priežastis: `wp_redirect()` savo antraštę nustato PO rankinio
 `header()` ir ją PERRAŠO. Reikšmė privalo eiti TREČIU argumentu (WP 5.1+):
 `wp_redirect($url, 301, 'Petshop-Legacy-Category')`.
 
-### LIKO: 103 URL su ID uodegomis (802 clicks)
+### 2 SLUOKSNIS: ID UODEGOS — UŽDARYTA (v1.2, 2026-08-04)
 ```
-468  zuvims-2007550667/tvenkiniu-zuvu-maistas
- 99  zuvims-2007550667/akvariuminiu-zuvu-maistas
- 46  sunims/transportavimo-dezes-1552155967
+94 keliai su ID uodegomis (802 clicks) → taikinių RASTA 42 (666 clicks)
+   kategorijos 3 · prekės 37 · puslapiai 2
+Žemėlapis: analize/legacy_tail_301_map.json
 ```
-Mechanizmas — **Redirection** (statiškos, keičiamos ranka). PRIEŠ pilną importą
-patikrinti su 3 bandomosiomis taisyklėmis: ar suveikia PRIEŠ WordPress canonical
-ir ar nekuria grandinės. Jei ne — perkelti į tą patį mūsų mechanizmą.
-**DĖMESIO: Redirection 5.9.0 įdiegtas, bet NEAKTYVUS ir jo DB lentelių NĖRA.**
+**REDIRECTION NENAUDOJAMAS. Priežastis — ne gedimas, o nulinė nauda:**
+taikiniai SKIRTINGI (vieni `/kategorija/...`, kiti `/product/...`), tad tai NE
+viena „nukirpk uodegą" taisyklė, o 42 individualūs atitikmenys — lygiai toks pat
+statinis rinkinys kaip kategorijų. Vienas mechanizmas vietoj DVIEJŲ tiesos vietų,
+be papildomo plugino ir be DB lentelių (Redirection 5.9.0 neaktyvus, lentelių nėra).
+
+**PATIKRINTA (s429):** 42 taikiniai visi grąžina 200 · 7 testiniai adresai → 301,
+po VIENĄ šuolį, galutinis 200 · `X-Redirect-By: Petshop-Legacy-Category` ·
+kontrolė nepakitusi · neatpažinta kategorija IR neatpažinta uodega → 404.
+
+### ⚠️ RAIMIO RADINYS: automatika NEGALI rasti PERVADINTŲ kategorijų
+```
+senas:  zuvims/akvariuminiu-zuvu-maistas   (99 clicks)
+naujas: zuvims/akvariumo-zuvyciu-maistas   ← EGZISTUOJA, tik kitu vardu
+```
+Mano paieška ieškojo tikslaus slug atitikmens nukirpus uodegą. Čia pasikeitė
+PATS PAVADINIMAS — automatika to nerado ir NEGALĖJO. Įrašyta RANKINIU būdu.
+**IŠVADA: skaičius „53 neturi kur nukreipti" YRA PER DIDELIS.** Dalis jų turi
+kategorijas/prekes kitais pavadinimais. Reikia PERŽIŪROS SĄRAŠO su kandidatais,
+sprendimą priima Raimis. Automatikai spėti NELEIDŽIAMA.
+
+### BENDRA APIMTIS
+```
+1 sluoksnis  34 kategorijų keliai   1 596 clicks
+2 sluoksnis  42 ID uodegų keliai      666 clicks
+─────────────────────────────────────────────────
+             76 keliai              2 262 clicks = 11,5% viso GSC srauto
+mu-plugins/petshop-legacy-cat-301.php v1.2 · 12 011 B · sha a96b336ffdbae110
+```
+
+### LIKO
+```
+52 keliai (235 clicks) — peržiūros sąrašas su kandidatais, RAIMIO sprendimas
+Likę GSC URL iš 2 445 (produktai, blog) — dar neanalizuoti
+```
 
 ---
 
