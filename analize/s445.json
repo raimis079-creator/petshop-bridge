@@ -1,0 +1,94 @@
+{
+ "VERSIJA_RUN": "run445-v1",
+ "sid": 2227,
+ "rez": {
+  "VERSIJA": "s445-v1",
+  "prekes_pagal_saltini": {
+   "zb": null,
+   "vf": {
+    "id": 21679,
+    "pav": "JosiCat Paté with Beef paštetas katėms su jautiena, 100 g",
+    "kaina": "0.66",
+    "carrier": "venipak",
+    "courier_only": false
+   },
+   "legacy": {
+    "id": 15484,
+    "pav": "Žaislas katei - Plastikinis kamuoliukas, 4 cm",
+    "kaina": "0.49",
+    "carrier": "any",
+    "courier_only": false
+   },
+   "quattro": null,
+   "prins": null
+  },
+  "brangi_preke": {
+   "ID": "16582",
+   "post_title": "QUATTRO visavertis sausas pašaras suaugusioms naminėms katėms su antiena, 7 kg",
+   "price": "60"
+  },
+  "zonos": {
+   "Neringos savivaldybe": {
+    "shopup_venipak_shipping_pickup_method:9": {
+     "t": "VENIPAK paštomatai/atsiėmimo punktai",
+     "cost": null
+    },
+    "shopup_venipak_shipping_courier_method:10": {
+     "t": "VENIPAK Kurjeris",
+     "cost": null
+    },
+    "woo_lithuaniapost_lpexpress_terminal:13": {
+     "t": "LP Express",
+     "cost": "flat"
+    }
+   },
+   "Lietuva": {
+    "shopup_venipak_shipping_courier_method:2": {
+     "t": "VENIPAK Kurjeris",
+     "cost": null
+    },
+    "shopup_venipak_shipping_pickup_method:3": {
+     "t": "VENIPAK paštomatai/atsiėmimo punktai",
+     "cost": null
+    },
+    "shopup_venipak_shipping_courier_method:6": {
+     "t": "VENIPAK Kurjeris",
+     "cost": null
+    },
+    "shopup_venipak_shipping_courier_method:7": {
+     "t": "VENIPAK Kurjeris",
+     "cost": null
+    },
+    "shopup_venipak_shipping_courier_method:8": {
+     "t": "VENIPAK Kurjeris",
+     "cost": null
+    },
+    "woo_lithuaniapost_lpexpress_terminal:12": {
+     "t": "LP Express",
+     "cost": "flat"
+    },
+    "woo_lithuaniapost_lpexpress_terminal:15": {
+     "t": "LP Express kurjeris",
+     "cost": "weight"
+    }
+   },
+   "Baltijos šalys, be LIetuvos": {
+    "shopup_venipak_shipping_pickup_method:5": {
+     "t": "VENIPAK paštomatai/atsiėmimo punktai",
+     "cost": null
+    }
+   }
+  },
+  "free_shipping": {
+   "woocommerce_free_shipping_1_settings": "0"
+  },
+  "mokejimai": {
+   "paysera": "Mokėjimas internetu",
+   "bacs": "Bankinis pavedimas"
+  },
+  "kuponu": 0,
+  "kuponas_pvz": null,
+  "uzsakymai_dabar": 2,
+  "max_id": 34720
+ }
+}
