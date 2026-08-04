@@ -1,0 +1,168 @@
+{
+ "VERSIJA_RUN": "run446-v1",
+ "sid": 2228,
+ "rez": {
+  "VERSIJA": "s446-v1",
+  "free_shipping_opcijos": {
+   "woocommerce_free_shipping_1_settings": {
+    "title": "Nemokamas pristatymas",
+    "requires": "",
+    "min_amount": "0",
+    "ignore_discounts": "no"
+   }
+  },
+  "zonu_metodai": [
+   {
+    "instance_id": "1",
+    "method_id": "free_shipping",
+    "zone_id": "1",
+    "is_enabled": "0"
+   },
+   {
+    "instance_id": "2",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "zone_id": "1",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "3",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "zone_id": "1",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "6",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "zone_id": "1",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "7",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "zone_id": "1",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "8",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "zone_id": "1",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "12",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "zone_id": "1",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "15",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "zone_id": "1",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "5",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "zone_id": "2",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "9",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "zone_id": "3",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "10",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "zone_id": "3",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "13",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "zone_id": "3",
+    "is_enabled": "1"
+   }
+  ],
+  "zonos": [
+   {
+    "zone_id": "1",
+    "zone_name": "Lietuva"
+   },
+   {
+    "zone_id": "2",
+    "zone_name": "Baltijos šalys, be LIetuvos"
+   },
+   {
+    "zone_id": "3",
+    "zone_name": "Neringos savivaldybe"
+   }
+  ],
+  "saltiniai": {
+   "zb": {
+    "id": 14088,
+    "pav": "Trixie Orléans striukė šuniui, L 55 cm, juoda",
+    "kaina": "13.19",
+    "carrier": "venipak",
+    "courier_only": false
+   },
+   "belcor_tofu": {
+    "id": 17710,
+    "pav": "Kraikas katėms Purrfect žalios arbatos kvapo, 6 l (2,5 kg), nedulkantis",
+    "kaina": "4.99",
+    "carrier": "venipak",
+    "courier_only": false
+   },
+   "vf": {
+    "id": 22948,
+    "pav": "8in1 FLAVOURS trigubo skonio skanėstas šuniui, virvelės, 65g",
+    "kaina": "4.49",
+    "carrier": "venipak",
+    "courier_only": false
+   },
+   "legacy": {
+    "id": 17443,
+    "pav": "Minkšta guminė pirštinė KAIRIARANKIAMS gyvūno kailiui šukuoti ir masažuoti",
+    "kaina": "7.19",
+    "carrier": "any",
+    "courier_only": false
+   },
+   "quattro": {
+    "id": 16612,
+    "pav": "QUATTRO begrūdis su antiena didelių veislių jaunų šunų pašaras 3kg",
+    "kaina": "22",
+    "carrier": "venipak",
+    "courier_only": false
+   },
+   "ambrosia": {
+    "id": 19725,
+    "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausas maistas šunims, Rabbit & Fresh Turkey 2 kg",
+    "kaina": "13.49",
+    "carrier": "venipak",
+    "courier_only": false
+   },
+   "prins": {
+    "id": 16889,
+    "pav": "Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg",
+    "kaina": "29.6",
+    "carrier": "venipak",
+    "courier_only": false
+   }
+  },
+  "saltiniu_kiekiai": [
+   {
+    "src": "out_of_stock",
+    "c": "420"
+   },
+   {
+    "src": "vf_dropship",
+    "c": "922"
+   },
+   {
+    "src": "zb_dropship",
+    "c": "949"
+   }
+  ]
+ }
+}
