@@ -1,7 +1,7 @@
 {
  "VERSIJA_RUN": "run390-v1",
  "deakt": [],
- "sid": 2176,
+ "sid": 2177,
  "rez": {
   "VERSIJA": "s390-v1",
   "autorizacija": 200,
@@ -12,9 +12,9 @@
   },
   "lifecycleRules": [
    {
-    "daysFromHidingToDeleting": 30,
+    "daysFromHidingToDeleting": 1,
     "daysFromStartingToCancelingUnfinishedLargeFiles": null,
-    "daysFromUploadingToHiding": null,
+    "daysFromUploadingToHiding": 30,
     "fileNamePrefix": "petshop-backups/"
    }
   ],
@@ -25,11 +25,11 @@
   "taisykles": [
    {
     "prefix": "petshop-backups/",
-    "hide": null,
-    "del": 30
+    "hide": 30,
+    "del": 1
    }
   ],
-  "VERDIKTAS": "PROBLEMA: daysFromUploadingToHiding tuscias arba < 15"
+  "VERDIKTAS": "GERAI: hide >= 15 d., saugiai virs Object Lock 14 d."
  },
  "svetaine": "200"
 }
