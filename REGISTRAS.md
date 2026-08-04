@@ -15,7 +15,7 @@
 
 | Blokas | ✅ | 🟡 | 🔴 | ⏸ laukia Raimio |
 |---|---|---|---|---|
-| Launch DoD (22) | 6 | 5 | 9 | 2 nematuota |
+| Launch DoD (22) | 7 | 4 | 9 | 2 nematuota |
 | P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
 | MVP funkcijos (§4.3) | 4 | 0 | 1 | 1 nepatikrinta |
 | El. laiškų šablonai | 5 | 0 | 12 | — |
@@ -55,7 +55,7 @@
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
 | DOD-07 | Top-100 SEO 301 | 🔴 | 2026-07-30 | 44 URL = 404, 20,5% srauto |
-| DOD-08 | Backup restore testas | 🟡 | 2026-08-03 | Installatron kopijos yra (§8b) · sprendimas užrakintas (§8c) · **B2 infrastruktūra pastatyta ir įrodyta (§8d)**. Trūksta: skripto, cron, restore testo |
+| DOD-08 | Backup restore testas | ✅ | 2026-08-04 | Pilna grandinė įrodyta: skriptas (§8f) · cron 0 4 * * * · gedimo pranešimai · **atstatymo testas 174/174 (§8g)**. Apribojimas: rtst_ prefiksas, ne švari DB |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
 | DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
@@ -141,7 +141,7 @@ Transportas ✅: adapteris `Petshop_Sender_Adapter` v0.4.0, `is_configured=true`
 |---|---|---|---|
 | R1 | F4 SKU/EAN paieška | ✅ 2026-08-03 | `mu-plugins/petshop-code-search.php` v1.0, sha e141c4ae. Matrica 13/13, `s366.json` |
 | R2 | 1518 / 2764 publish prekių be EAN (55%) | ⏸ | **iš kur imti — Raimio sprendimas** |
-| R3 | Backup pluginas neįdiegtas | 🟡 | Pluginas NEREIKALINGAS — Installatron jau daro pilnas kopijas. Lieka DB dažnumas + off-server (§11) |
+| R3 | Backup pluginas neįdiegtas | ✅ 2026-08-04 | Pluginas NEREIKALINGAS. Savas skriptas + B2 + atstatymo testas (§8f, §8g) |
 | R4 | Monitoringo nėra | 🔴 | = DOD-13 |
 | R5 | 5 publish prekės be kainos | ✅ 2026-08-03 | 2 kainos pagal medianą (16,49 / 18,99, `_manual_price_override`), 3 į draft. publish be kainos 5→0. `s364.json` |
 | R6 | F19 prenumerata nepradėta | 🔴 | = F19 |
@@ -426,9 +426,10 @@ Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp
 1. ✅ Lifecycle Rule — hide 30 d., delete 1 d. (patvirtinta per API, s390)
 2. ✅ Eksporto skriptas ps-backup.php v1.1 — veikia (žr. §8f)
 3. ✅ Cron 0 4 * * * per URL (CLI šiame hostinge NEPRIEINAMAS, žr. §8f)
-4. ⏳ Gedimo testai: sugadinti tyčia → ar ateina laiškas;
-      „cron visai nepasileido" perspėjimas
-5. ⏳ ATSTATYMO TESTAS į švarią DB → tik po jo DOD-08 tampa žalias
+4. ✅ Gedimo testai — sugadinus appKey: HTTP 401, būsena FAIL, laikinų 0,
+      laiškas ATĖJO į terra@gyvunai.lt (Gautuosius, ne šlamštą), grąžinus veikia
+5. ✅ ATSTATYMO TESTAS — praėjo (§8g)
+6. ⏳ LIKO: „cron visai nepasileido" perspėjimas (heartbeat pagal .ps-backup-state.json)
 ```
 
 ### Ko NEDARYTI
@@ -499,13 +500,42 @@ su teisingu raktu  veikia ✅
 Atmintis 135 / 256 MB · laikinų failų liko 0
 ```
 
-**Kas dar NEĮRODYTA:**
+**Įrodyta 2026-08-04:** gedimo pranešimas ✅ (laiškas atėjo su tikslia
+priežastimi ir pilnu žurnalu) · atstatymas ✅ (§8g).
+**Liko:** „cron visai nepasileido" perspėjimas.
+
+---
+
+## 8g. ATSTATYMO TESTAS — PRAĖJO (2026-08-04) → DOD-08 ✅
+
 ```
-- gedimo pranešimas į terra@gyvunai.lt (siunčiamas TIK klaidos atveju)
-- „cron visai nepasileido" perspėjimas
-- ATSTATYMAS iš šifruoto archyvo į švarią DB
-Iki tol DOD-08 lieka 🟡.
+1. PARSISIUNTIMAS iš B2 (read-only raktas, 13 skaitymo teisių, deleteFiles NĖRA)
+   18 498 806 B · dydis SUTAMPA · SHA-1 SUTAMPA
+2. HMAC-SHA256 SUTAMPA → archyvas nepakeistas nė vienu baitu
+3. Dešifruota 17,64 MB → tar 22,15 MB → database.sql.gz + manifest.json
+4. ATSTATYMAS: 488 996 SQL sakinių, 92,3 s, 0 klaidų
+5. PALYGINIMAS su manifestu:
+   lentelių 174/174 · eilučių sutampa 174/174 · neatstatytų 0 · skirtumų 0
+   ps_pets 69=69 · ps_feeding_rows 5 549=5 549 · wc_orders 2=2
+   postmeta 178 403=178 403 · posts 12 638=12 638
+   lietuviškos raidės IŠLIKO (ū, ė, ų) · serialized unserialize OK
+   koduotė utf8mb4_unicode_520_ci · variklis MyISAM (kaip originale)
+6. VALYMAS: 174 rtst_ lentelės ištrintos · rtst_ liko 0 · gaj6_ liko 174
+   gaj6_hash 1ecdb5612701e0c6 PRIEŠ = PO → originalas NEPALIESTAS
+   ištrinti: .restore-test.* · .restore-manifest.json · .b2restore.php
 ```
+
+**APRIBOJIMAS, KURĮ BŪTINA ŽINOTI:** atstatyta į TĄ PAČIĄ DB su `rtst_` prefiksu,
+NE į visiškai švarią DB. Priežastis: WP vartotojas `gyvunai2_nbpe1` turi
+`GRANT ALL PRIVILEGES ON gyvunai2_nbpe1.*` — naujų DB kurti NEGALI
+(`Access denied to database 'gyvunai2_rtest'`). DirectAdmin bazę turi kurti
+Raimis rankomis. **Nepatikrinta dėl to:** ar dump'as sukuria bazę nuo nulio
+teisinga koduote (bazės numatytoji yra `latin1`, nors visos lentelės utf8mb4).
+Viskas kita patikrinta.
+
+**`options` 1 035 vs 1 034 originale — NE klaida:** kopija daryta 07:00,
+palyginimas 10:40; WP per tą laiką sukūrė naują įrašą. Su MANIFESTU sutampa
+tiksliai, o tai ir yra kriterijus.
 
 ---
 
