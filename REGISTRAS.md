@@ -55,7 +55,7 @@
 | DOD-04 | 20 testinių užsakymų | 🔴 | 2026-08-03 | DB: 2. Automatinis mobilus kelias veikia (S374) — galima kartoti scenarijų su skirtingais metodais |
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
 | DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
-| DOD-07 | Top-100 SEO 301 | 🔴 | 2026-07-30 | 44 URL = 404, 20,5% srauto |
+| DOD-07 | Top-100 SEO 301 | 🟡 | 2026-08-04 | Kategorijų sluoksnis ✅ (34 keliai, 1 596 clicks, §12). Liko: 103 ID uodegos + likę produktų/blog URL |
 | DOD-08 | Backup restore testas | ✅ | 2026-08-04 | Pilna grandinė įrodyta: skriptas (§8f) · cron 0 4 * * * · gedimo pranešimai · **atstatymo testas 174/174 (§8g)**. Apribojimas: rtst_ prefiksas, ne švari DB |
 | DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-02 | importai suka; 7 d. serija nefiksuota |
 | DOD-10 | Kainodara testuota 20 produktų | 🟡 | 2026-07-30 | recon darytas, formalaus testo nėra |
@@ -734,7 +734,7 @@ Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
 | G2 | F22 lojalumas | startas 2026-08-15 | lentelių nėra, Q9 atvira | 🔴 |
 | G3 | Google Merchant Center feed | pre-launch, v1.56 | feed'o nėra; PMax degina ~10k €/m | 🔴 |
 | G4 | Sender webhook statusai (delivered/bounced/opened) | „sekantis techninis blokas" | route yra, statusų grandinės ne | 🔴 |
-| G5 | H1 tema-lygio fix | blocker nuo v1.53 | nepatikrinta | 🔴 |
+| G5 | H1 tema-lygio fix | blocker nuo v1.53 | **10/10 puslapių po 1 prasmingą H1** | ✅ **UŽDARYTA 2026-08-04 — nebeaktualu** |
 | G6 | ShortPixel ON | pre-launch | INACTIVE 6.5.5 | ⚪ **suplanuota**, ne spraga |
 | G7 | wpo-wcpdf trynimas | higiena | INACTIVE 5.15.2, yra | ⚪ **suplanuota**, ne spraga |
 | G8 | Pragma production mode | pre-launch | `NENUSTATYTA` = OFF | ⚪ **RAIMIO NURODYMAS — TEISINGA BŪSENA** |
@@ -750,7 +750,7 @@ G6 ShortPixel · G7 wpo-wcpdf: sąmoningai atidėti pre-launch veiksmai, ne gedi
 ```
 Šie trys buvo klaidingai sudėti į vieną lentelę su tikromis spragomis (2026-08-04),
 todėl sąrašas atrodė grėsmingesnis, nei yra. **REALIAI NEUŽDARYTI — KETURI:**
-~~G1~~ (uždaryta) · G3 Merchant Center · G5 H1 fix · Redirection 301 infrastruktūra.
+~~G1~~ ~~G5~~ (uždarytos) · **G3 Merchant Center** · Redirection 301 ID uodegoms (§12).
 Plius du techniniai mano pusėje: `payment_failed` įvykis, G4 Sender webhook statusai.
 
 ### G1 — UŽDARYTA KAIP NEBEAKTUALU (Raimio sprendimas 2026-08-04)
@@ -801,6 +801,69 @@ Q25 fulfillment ABC (2026-07)     Q9 lojalumas — terminas 08-15, LIKO 11 D.
 Paskutinis TŽ įrašas — v1.60 (2026-07-30). Nedokumentuota: backup grandinė (§8b–8h),
 F4 paieška, M8 anketa 9/9, 3 šablonai, naujienlaiškis, MyISAM radinys.
 **Siūloma v1.61** po einamųjų darbų.
+
+---
+
+## 12. SEO 301 — KATEGORIJŲ SLUOKSNIS UŽDARYTAS (2026-08-04)
+
+### ŠAKNIS: pasikeitė kategorijų adresų struktūra
+```
+Sena platforma:  /sunims/antiparazitines-priemones-sunims
+Nauja:           /kategorija/sunims/antiparazitines-priemones-sunims/
+                  ^^^^^^^^^^^ woocommerce_permalinks category_base = 'kategorija'
+```
+Todėl liepos 30-os auditas rodė „kategorijos, kurių dev'e NĖRA, reikia Raimio
+sprendimo, ar tokia kategorija apskritai bus". **KATEGORIJOS YRA** — tiesiog kitu
+adresu. Tas sprendimas NEBEREIKALINGAS.
+
+### SPRENDIMAS: `/kategorija/` PALIEKAMA (Raimis + konsultantas)
+Tuščio `category_base` NEDAROM:
+```
+- WooCommerce to nerekomenduoja (URL atpažinimas, našumas, dublikatai)
+- pas mus JAU YRA 6 realūs slug konfliktai:
+  daugiau-pigiau · jautrus-virskinimas · naujas-kaciukas · naujas-suniukas
+  · pasiulymai · sprendimai
+- tuščia bazė = kategorijos/puslapiai/įrašai amžinai kovoja dėl tos pačios
+  adresų erdvės; septintas konfliktas ateity nutiltų TYLIAI
+- 301 taisyklės GRĮŽTAMOS, adresų struktūros keitimas — praktiškai NE
+```
+
+### ĮDIEGTA: `mu-plugins/petshop-legacy-cat-301.php` v1.1
+```
+4 523 B · sha b4177b3b92d8f548 · 34 keliai · 1 596 GSC paspaudimų
+Žemėlapis: analize/legacy_cat_301_map.json
+```
+**ĮŠALDYTAS ISTORINIS RINKINYS, NE DINAMINIS.** Sugeneruotas VIENĄ kartą iš GSC
+(2 445 URL / 19 735 clicks / 16 mėn.) sankirtos su kategorijų medžiu. Naujoms
+kategorijoms taisyklės NEKURIAMOS — antraip vėl tyliai užimtume šakninę URL
+erdvę, kurios dėl to ir atsisakėme. Naujas įrašas — TIK rankiniu būdu su GSC
+pagrindimu.
+
+### VARTAI — VISI ŽALI (s426 → s427)
+```
+seni adresai        404 → 301, po VIENĄ šuolį, galutinis 200   ✅ 5/5
+X-Redirect-By       Petshop-Legacy-Category                     ✅
+34 taikiniai        blogų 0                                     ✅
+kontrolė            sprendimai · jautrus-virskinimas · naujas-suniukas
+                    · duk · privatumo-politika — NEPAKITO       ✅
+/kategorija/sunims/ 200 nepaliesta                              ✅
+neatpažintas        404, JOKIO spėjimo                          ✅
+```
+**PAMOKA:** pirmas bandymas davė `X-Redirect-By: WordPress` = FAIL pagal TŽ v1.56
+QA sąlygą. Priežastis: `wp_redirect()` savo antraštę nustato PO rankinio
+`header()` ir ją PERRAŠO. Reikšmė privalo eiti TREČIU argumentu (WP 5.1+):
+`wp_redirect($url, 301, 'Petshop-Legacy-Category')`.
+
+### LIKO: 103 URL su ID uodegomis (802 clicks)
+```
+468  zuvims-2007550667/tvenkiniu-zuvu-maistas
+ 99  zuvims-2007550667/akvariuminiu-zuvu-maistas
+ 46  sunims/transportavimo-dezes-1552155967
+```
+Mechanizmas — **Redirection** (statiškos, keičiamos ranka). PRIEŠ pilną importą
+patikrinti su 3 bandomosiomis taisyklėmis: ar suveikia PRIEŠ WordPress canonical
+ir ar nekuria grandinės. Jei ne — perkelti į tą patį mūsų mechanizmą.
+**DĖMESIO: Redirection 5.9.0 įdiegtas, bet NEAKTYVUS ir jo DB lentelių NĖRA.**
 
 ---
 
