@@ -1,0 +1,60 @@
+{
+ "VERSIJA_RUN": "run408-v1",
+ "sid": 2194,
+ "deploy": {
+  "VERSIJA": "s408-v1",
+  "act": "deploy",
+  "php": {
+   "B": 8849,
+   "sha": "26dcba410752b5e1"
+  },
+  "js": {
+   "B": 2324,
+   "sha": "de0ed45097a0abc9"
+  },
+  "autoload": "panasu i auto",
+  "main_require": [
+   "14: * - Provider'iai (petshop-esp, ateities petshop-sms) require'ina šį plugin'ą.",
+   "66: require_once PETSHOP_CORE_DIR . 'includes/interface-message-provider.php';",
+   "67: require_once PETSHOP_CORE_DIR . 'includes/class-event-log.php';",
+   "68: require_once PETSHOP_CORE_DIR . 'includes/class-consent-log.php';",
+   "69: require_once PETSHOP_CORE_DIR . 'includes/class-consent-sync.php';",
+   "70: require_once PETSHOP_CORE_DIR . 'includes/class-retry-queue.php';",
+   "71: require_once PETSHOP_CORE_DIR . 'includes/class-action-tokens.php';",
+   "72: require_once PETSHOP_CORE_DIR . 'includes/class-event-registry.php';",
+   "73: require_once PETSHOP_CORE_DIR . 'includes/class-event-emitters.php';",
+   "74: require_once PETSHOP_CORE_DIR . 'includes/class-magic-login.php';",
+   "75: require_once PETSHOP_CORE_DIR . 'includes/class-pet-profile.php';",
+   "76: require_once PETSHOP_CORE_DIR . 'includes/class-pet-products.php';",
+   "77: require_once PETSHOP_CORE_DIR . 'includes/class-pet-ui.php';",
+   "78: require_once PETSHOP_CORE_DIR . 'includes/class-pet-dashboard.php';",
+   "79: require_once PETSHOP_CORE_DIR . 'includes/class-pet-photo.php';",
+   "80: require_once PETSHOP_CORE_DIR . 'includes/class-pet-content.php';",
+   "81: require_once PETSHOP_CORE_DIR . 'includes/class-refill-engine.php';",
+   "82: require_once PETSHOP_CORE_DIR . 'includes/class-reminders.php';",
+   "83: require_once PETSHOP_CORE_DIR . 'includes/class-pet-notes.php';",
+   "86: require_once PETSHOP_CORE_DIR . 'includes/class-feeding-calculator.php';",
+   "87: require_once PETSHOP_CORE_DIR . 'includes/class-feeding-repository.php';",
+   "88: require_once PETSHOP_CORE_DIR . 'includes/class-feeding-package-resolver.php';",
+   "89: require_once PETSHOP_CORE_DIR . 'includes/class-feeding-package-provider.php';",
+   "90: require_once PETSHOP_CORE_DIR . 'includes/class-condition-mapper.php';",
+   "91: require_once PETSHOP_CORE_DIR . 'includes/class-feeding-service.php';",
+   "92: require_once PETSHOP_CORE_DIR . 'includes/class-mixed-feeding-estimator.php';",
+   "93: require_once PETSHOP_CORE_DIR . 'includes/class-admin-reports.php';",
+   "94: require_once PETSHOP_CORE_DIR . 'includes/class-plan-attribution.php';",
+   "95: require_once PETSHOP_CORE_DIR . 'includes/class-account-dashboard.php';",
+   "96: require_once PETSHOP_CORE_DIR . 'includes/class-account-company.php';"
+  ],
+  "main_B": 15284,
+  "klase_uzkrauta": "dar ne (reikia perkrovimo)"
+ },
+ "patikra": {
+  "VERSIJA": "s408-v1",
+  "act": "patikra",
+  "klase": "NERA",
+  "shortcode": "NERA",
+  "route": "NERA",
+  "js_failas": "yra"
+ },
+ "svetaine": "200"
+}
