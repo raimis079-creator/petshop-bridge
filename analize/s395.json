@@ -1,0 +1,51 @@
+{
+ "VERSIJA_RUN": "run395-v1",
+ "sid": 2182,
+ "rez": {
+  "VERSIJA": "s395-v1",
+  "pradine_busena": {
+   "last_result": "OK",
+   "last_run": "2026-08-04T06:51:29+00:00",
+   "file": "petshop-backups/2026/08/petshop-2026-08-04_065122.tar.gz.enc",
+   "bytes": 18498806,
+   "sha1": "6de7f2fba4c4dee272c61ca5ea61a74af108c6e7",
+   "tables": 174,
+   "rows": 488817,
+   "code_files": 293,
+   "duration_s": 7.7
+  },
+  "sugadinta": true,
+  "T1_su_blogu_raktu": {
+   "http": 200,
+   "atsakymas": "07:00:11 aplinka OK · lentelių 174 (InnoDB 14, MyISAM 160)\n07:00:11 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 385.4 GB\n07:00:11 InnoDB 14 lentelės (consistent snapshot)\n07:00:14 MyISAM/kitos 160 lentelės (be globalaus LOCK)\n07:00:14 DB eksportas: 174 lentelių, 488,822 eilučių, 14.26 MB suspausta\n07:00:15 kodas: 293 failų (mu-plugins, petshop-core, flatsome-child)\n07:00:15 tar: 22.15 MB\n07:00:15 gzip: 17.64 MB\n07:00:16 šifruota (AES-256-CBC + HMAC-SHA256): 17.64 MB\n07:00:16 KLAIDA: B2 autorizacija: HTTP 401 bad_auth_token\n",
+   "curl": null
+  },
+  "T1_busena": {
+   "last_result": "FAIL",
+   "last_run": "2026-08-04T07:00:16+00:00",
+   "error": "B2 autorizacija: HTTP 401 bad_auth_token"
+  },
+  "T1_VERDIKTAS": "GERAI: busena FAIL",
+  "grazinta": true,
+  "T2_po_grazinimo": {
+   "http": 200,
+   "atsakymas": "07:00:16 aplinka OK · lentelių 174 (InnoDB 14, MyISAM 160)\n07:00:16 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 385.4 GB\n07:00:16 InnoDB 14 lentelės (consistent snapshot)\n07:00:20 MyISAM/kitos 160 lentelės (be globalaus LOCK)\n07:00:20 DB eksportas: 174 lentelių, 488,822 eilučių, 14.26 MB suspausta\n07:00:20 kodas: 293 failų (mu-plugins, petshop-core, flatsome-child)\n07:00:20 tar: 22.15 MB\n07:00:21 gzip: 17.64 MB\n07:00:21 šifruota (AES-256-CBC + HMAC-SHA256): 17.64 MB\n07:00:24 įkelta: petshop-backups/2026/08/petshop-2026-08-04_070016.tar.gz.enc · 17.64 MB · SHA-1 ir dydis patvirtinti\n07:00:24 BAIGTA sėkmingai per 7.4 s\n"
+  },
+  "T2_busena": {
+   "last_result": "OK",
+   "last_run": "2026-08-04T07:00:24+00:00",
+   "file": "petshop-backups/2026/08/petshop-2026-08-04_070016.tar.gz.enc",
+   "bytes": 18498806,
+   "sha1": "cd577a7e97896dd9551d4999da31c50c8b0cdb5f",
+   "tables": 174,
+   "rows": 488822,
+   "code_files": 293,
+   "duration_s": 7.4
+  },
+  "T2_VERDIKTAS": "GERAI: atsistate",
+  "mail_funkcija_grazino": "true",
+  "sendmail_path": "/usr/sbin/sendmail -t -i",
+  "likę_laikini": []
+ },
+ "svetaine": "200"
+}
