@@ -1,0 +1,141 @@
+{
+ "VERSIJA_RUN": "run453-v1",
+ "sid": 2236,
+ "rez": {
+  "VERSIJA": "s453-v1",
+  "metabox_klases": {
+   "WC_Venipak_Shipping_Method": "ne",
+   "Venipak_Manifest": "ne",
+   "WC_Shopup_Venipak": "ne",
+   "WooCommerce_Delivery_Notes": "yra",
+   "WCDN_Print": "ne",
+   "WC_Emails": "yra"
+  },
+  "wcdn": {
+   "invoiceButtonLabel": "Spausdinti sąskaitą",
+   "processingTemplate": "invoice",
+   "completedTemplate": "invoice",
+   "completedAuto": true,
+   "completedAttach": false,
+   "refundedTemplate": "invoice",
+   "invoiceNumberFormat": "AVPN{order_number}",
+   "numberDaysPdfExpiration": 7,
+   "resetInvoiceNumberYearly": false
+  },
+  "saskaitu_serijos": {
+   "wcdn_invoice_number_counter": "228",
+   "wcdn_invoice_number_counter_year": "a:1:{i:2026;i:1;}",
+   "wpo_wcpdf_documents_settings_invoice": "a:10:{s:7:\"enabled\";s:1:\"1\";s:19:\"attach_to_email_ids\";a:3:{",
+   "petshop_iapv_counter": "141",
+   "petshop_avpn_counter": "202"
+  },
+  "wc_laiskai": {
+   "new_order": {
+    "enabled": "taip",
+    "gavejas": "uzsakymai@petshop.lt",
+    "pav": "Naujas užsakymas"
+   },
+   "cancelled_order": {
+    "enabled": "taip",
+    "gavejas": "uzsakymai@petshop.lt",
+    "pav": "Atšauktas užsakymas"
+   },
+   "customer_cancelled_order": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Atšauktas užsakymas"
+   },
+   "failed_order": {
+    "enabled": "taip",
+    "gavejas": "uzsakymai@petshop.lt",
+    "pav": "Nepavykęs užsakymas"
+   },
+   "customer_failed_order": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Nepavykęs užsakymas"
+   },
+   "customer_on_hold_order": {
+    "enabled": "NE",
+    "gavejas": "klientas",
+    "pav": "Užsakymas sustabdytas"
+   },
+   "customer_processing_order": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Užsakymas vykdomas"
+   },
+   "customer_completed_order": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Įvykdytas užsakymas"
+   },
+   "customer_refunded_order": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Grąžintas užsakymas"
+   },
+   "customer_invoice": {
+    "enabled": "NE",
+    "gavejas": "klientas",
+    "pav": "Užsakymo informacija"
+   },
+   "customer_note": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Pirkėjo pastaba"
+   },
+   "customer_reset_password": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Atkurti slaptažodį"
+   },
+   "customer_new_account": {
+    "enabled": "taip",
+    "gavejas": "klientas",
+    "pav": "Nauja paskyra"
+   },
+   "admin_payment_gateway_enabled": {
+    "enabled": "NE",
+    "gavejas": "uzsakymai@petshop.lt",
+    "pav": "Payment gateway enabled"
+   }
+  },
+  "statusai": [
+   "wc-pending",
+   "wc-processing",
+   "wc-on-hold",
+   "wc-completed",
+   "wc-cancelled",
+   "wc-refunded",
+   "wc-failed",
+   "wc-lp-courier-await",
+   "wc-lp-parcel-created",
+   "wc-lp-parcel-failed",
+   "wc-lp-label-created",
+   "wc-lp-courier-called",
+   "wc-lp-on-the-way",
+   "wc-lp-delivered",
+   "wc-lp-cancelled",
+   "wc-lp-parcel-await",
+   "wc-checkout-draft"
+  ],
+  "kabliukai": {
+   "woocommerce_order_actions": [],
+   "add_meta_boxes": [
+    "10 Petshop_FBT::add_meta_box"
+   ],
+   "woocommerce_admin_order_data_after_shipping_address": [
+    "10 Paysera\\Admin\\PayseraDeliveryAdmin::displayShippingHouseField"
+   ]
+  },
+  "pvz_34720": {
+   "status": "completed",
+   "total": "37.56",
+   "metodas": "Bankinis pavedimas",
+   "shipping": "VENIPAK paštomatai/atsiėmimo punktai",
+   "prekiu": 2,
+   "tracking": null
+  }
+ }
+}
