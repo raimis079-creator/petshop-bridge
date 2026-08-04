@@ -1,0 +1,55 @@
+{
+ "VERSIJA_RUN": "run459-admin",
+ "sid": 2243,
+ "cookie_ok": "yra",
+ "psl": {
+  "prekiu_sarasas": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fedit.php%3Fpost_type%3Dproduct&reauth=1",
+   "title": "Prisijungti ‹ Petshop.lt — WordPress",
+   "prisijungimas": true,
+   "stulpeliai": [],
+   "blokai": [],
+   "meniu": [],
+   "aukstis": 1000,
+   "plotis": 1600,
+   "png": "screenshots/admin_prekiu_sarasas.png"
+  },
+  "prekes_langas": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fpost.php%3Fpost%3D14088%26action%3Dedit&reauth=1",
+   "title": "Prisijungti ‹ Petshop.lt — WordPress",
+   "prisijungimas": true,
+   "stulpeliai": [],
+   "blokai": [],
+   "meniu": [],
+   "aukstis": 1000,
+   "plotis": 1600,
+   "png": "screenshots/admin_prekes_langas.png"
+  },
+  "uzsakymu_sarasas": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dwc-orders&reauth=1",
+   "title": "Prisijungti ‹ Petshop.lt — WordPress",
+   "prisijungimas": true,
+   "stulpeliai": [],
+   "blokai": [],
+   "meniu": [],
+   "aukstis": 1000,
+   "plotis": 1600,
+   "png": "screenshots/admin_uzsakymu_sarasas.png"
+  },
+  "uzsakymo_langas": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dwc-orders%26action%3Dedit%26id%3D34720&reauth=1",
+   "title": "Prisijungti ‹ Petshop.lt — WordPress",
+   "prisijungimas": true,
+   "stulpeliai": [],
+   "blokai": [],
+   "meniu": [],
+   "aukstis": 1000,
+   "plotis": 1600,
+   "png": "screenshots/admin_uzsakymo_langas.png"
+  }
+ }
+}
