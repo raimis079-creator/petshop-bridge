@@ -1,7 +1,81 @@
 {
  "VERSIJA_RUN": "run447-v1",
- "sid": 2229,
- "rez": {
-  "err": "act"
+ "sid": 2230,
+ "paruosimas": {
+  "VERSIJA": "s447-v1",
+  "act": "paruosimas",
+  "prekes": {
+   "zb": {
+    "id": 14088,
+    "pav": "Trixie Orléans striukė šuniui, L 55 cm, juoda",
+    "kaina": "13.19",
+    "sandelyje": true,
+    "perkama": true,
+    "source": "zb",
+    "carrier": "venipak"
+   },
+   "vf": {
+    "id": 22948,
+    "pav": "8in1 FLAVOURS trigubo skonio skanėstas šuniui, virvelės, 65g",
+    "kaina": "4.49",
+    "sandelyje": true,
+    "perkama": true,
+    "source": "vf",
+    "carrier": "venipak"
+   },
+   "legacy": {
+    "id": 17443,
+    "pav": "Minkšta guminė pirštinė KAIRIARANKIAMS gyvūno kailiui šukuoti ir masažuoti",
+    "kaina": "7.19",
+    "sandelyje": true,
+    "perkama": true,
+    "source": "legacy",
+    "carrier": "any"
+   },
+   "belcor": {
+    "id": 17710,
+    "pav": "Kraikas katėms Purrfect žalios arbatos kvapo, 6 l (2,5 kg), nedulkantis",
+    "kaina": "4.99",
+    "sandelyje": true,
+    "perkama": true,
+    "source": "belcor_tofu",
+    "carrier": "venipak"
+   }
+  },
+  "venipak": {
+   "woocommerce_shopup_venipak_shipping_courier_method_10_settings": {
+    "minimum_weight": "",
+    "min_amount_for_free_shipping": ""
+   },
+   "woocommerce_shopup_venipak_shipping_courier_method_2_settings": {
+    "minimum_weight": "",
+    "min_amount_for_free_shipping": ""
+   },
+   "woocommerce_shopup_venipak_shipping_courier_method_6_settings": {
+    "minimum_weight": "50",
+    "min_amount_for_free_shipping": ""
+   },
+   "woocommerce_shopup_venipak_shipping_courier_method_7_settings": {
+    "minimum_weight": "70",
+    "min_amount_for_free_shipping": ""
+   },
+   "woocommerce_shopup_venipak_shipping_courier_method_8_settings": {
+    "minimum_weight": "100",
+    "min_amount_for_free_shipping": ""
+   },
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings": {
+    "minimum_weight": "",
+    "min_amount_for_free_shipping": "30"
+   },
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings": {
+    "minimum_weight": "",
+    "min_amount_for_free_shipping": ""
+   },
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings": {
+    "minimum_weight": "",
+    "min_amount_for_free_shipping": ""
+   }
+  },
+  "uzsakymu_dabar": 2
  }
 }
