@@ -1,0 +1,8 @@
+{
+ "VERSIJA_RUN": "run454-v1",
+ "sid": 2238,
+ "rez": {
+  "raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Call to a member function has_shipping_method() on false in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:378\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php(581): Woo_Lithuaniapost_Admin_Order_Service-&gt;is_shipping_method_supported()\n#1 /home/"
+ },
+ "svetaine": "200"
+}
