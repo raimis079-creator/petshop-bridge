@@ -1,0 +1,111 @@
+{
+ "VERSIJA_RUN": "run478-v1",
+ "sid": 2262,
+ "deploy": {
+  "VERSIJA": "s478-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 4622,
+   "sha": "c271db49416d8995"
+  }
+ },
+ "e2e": {
+  "VERSIJA": "s478-v1",
+  "act": "e2e",
+  "prekes": {
+   "josera_AV2_VF": 17978,
+   "grynai_AV": 17236,
+   "ZB": 12636
+  },
+  "A_tik_AV": {
+   "order": 34855,
+   "tipas": "MAIN",
+   "laukiamas": "MAIN",
+   "ATITINKA": "TAIP",
+   "siuntos": 1,
+   "grupes": [
+    "av"
+   ],
+   "eilutes": [
+    "av/any ×1 — grynai AV prekė (be tiekėjo)"
+   ]
+  },
+  "B_AV_ir_ZB": {
+   "order": 34856,
+   "tipas": "MIXED",
+   "laukiamas": "MIXED",
+   "ATITINKA": "TAIP",
+   "siuntos": 2,
+   "grupes": [
+    "av",
+    "zb"
+   ],
+   "eilutes": [
+    "av/any ×1 — grynai AV prekė (be tiekėjo)",
+    "zb/venipak ×1 — AV šios prekės neturi"
+   ]
+  },
+  "C_josera1_ir_ZB": {
+   "order": 34857,
+   "tipas": "MIXED",
+   "laukiamas": "MIXED",
+   "ATITINKA": "TAIP",
+   "siuntos": 2,
+   "grupes": [
+    "av",
+    "zb"
+   ],
+   "eilutes": [
+    "av/any ×1 — AV turi 2, reikia 1",
+    "zb/venipak ×1 — AV šios prekės neturi"
+   ]
+  },
+  "D_josera3_ir_ZB": {
+   "order": 34858,
+   "tipas": "MIXED",
+   "laukiamas": "MIXED",
+   "ATITINKA": "TAIP",
+   "siuntos": 2,
+   "grupes": [
+    "vf",
+    "zb"
+   ],
+   "eilutes": [
+    "vf/venipak ×3 — AV turi 2, reikia 3 — neužtenka",
+    "zb/venipak ×1 — AV šios prekės neturi"
+   ]
+  },
+  "E_tik_ZB": {
+   "order": 34859,
+   "tipas": "DS",
+   "laukiamas": "DS",
+   "ATITINKA": "TAIP",
+   "siuntos": 1,
+   "grupes": [
+    "zb"
+   ],
+   "eilutes": [
+    "zb/venipak ×2 — AV šios prekės neturi"
+   ]
+  },
+  "IDEMPOTENCIJA": {
+   "pries": "2026-08-05 13:32:24",
+   "po": "2026-08-05 13:32:24",
+   "NEPERSKAICIAVO": "TAIP"
+  },
+  "PO_LIKUCIO_POKYCIO": {
+   "av_buvo": 2,
+   "av_dabar": 0,
+   "eilutes_vis_dar": [
+    "av",
+    "zb"
+   ],
+   "NEPASIKEITE": "tikrinam zemiau"
+  },
+  "istrinta": 5,
+  "max_id_po": 34720,
+  "av_po_valymo": 2,
+  "stock_po": "649"
+ },
+ "svetaine": "200"
+}
