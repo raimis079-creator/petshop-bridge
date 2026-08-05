@@ -1850,6 +1850,61 @@ nusiskenuoja ir pasiima". Manifestas abiejuose pluginuose YRA kaip atsarginis.
 
 ---
 
+### 19.12 ✅ DROPSHIP PERDAVIMAS TIEKĖJAMS
+```
+mu-plugins/petshop-av-dropship.php  v1.1 · 17 935 B · sha d03cbf2128079e65
+```
+**KAIP BUVO DAROMA RANKOMIS** (Raimio laiškas FW: užsakymas 2026-08-05):
+vienas laiškas dienai iš terra@petshop.lt · lentelė Nr · vardas · prekė · kiekis ·
+priedai: lipdukai, KIEKVIENAS pavadintas „772 Simas Šimkus.pdf" + manifestas.
+> Raimis: „Kiekvieną lipduką išsaugau ranka, dabar pas mus labai daug rankinio darbo."
+
+**TECHNINIS PAGRINDAS (s501) — lipduką GALIMA imti po vieną:**
+```
+AJAX woocommerce_shopup_venipak_shipping_get_label_pdf → VIENO užsakymo PDF
+POST https://go.venipak.lt/ws/print_label  (user, pass, pack_no, format)
+pack_numbers = MASYVAS → daugiapakuotės tuo pačiu keliu
+lipdukas 283×425 pt = 10×15 cm (Raimio etikečių spausdintuvas), laukas „1 \ 1"
+manifestas = „Sender's shipment bill" A4, kurjerio parašui, VIENAS partijai
+```
+Bendro PDF skaidyti NEREIKIA.
+
+**VEIKIMAS:** masinis veiksmas „Petshop: perduoti tiekėjams" → puslapis su kortele
+kiekvienam tiekėjui → lentelė (Nr · klientas · prekė+kodas · kiekis) → mygtukas
+su varnelėmis „pridėti lipdukus" / „pridėti manifestą" → wp_mail iš terra@petshop.lt.
+Užsakymai žymimi `_ps_dropship_sent` → kitą kartą į sąrašą NEPATENKA.
+
+**🔴 NE AUTOMATINIS SIUNTIMAS.** Laiškas tiekėjui = užsakymas su Raimio pinigais;
+klaidingas kiekis paaiškėtų tik atvažiavus siuntai. Sistema paruošia — Raimis tvirtina.
+
+**KODAI:** VF ir Quattro kodai SUTAMPA su mūsų SKU. Prins/Ambrosia/Belacor atsirenka
+pagal pavadinimą ir barkodą → jiems rodomas IR EAN.
+**ZB:** laiškas NESIUNČIAMAS (reikia vesti į jų sistemą) — rodoma lentelė kopijavimui.
+
+### 🔒 TIEKĖJŲ EL. PAŠTAI (Raimis 2026-08-05, opcija `ps_tiekeju_pastai`)
+```
+Vetfarmas       ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt
+Belacor         lina.sirvele@belacorinvest.lt
+Ambrosia        info@alphazoo.lt
+Kauno grūdai    e.panaviene@kaunogrudai.lt
+Faunas/Prins    irute@faunas.lt
+```
+Keičiama: WooCommerce → Tiekėjų el. paštai.
+
+### ⚠️ TESTŲ ŠALUTINIS POVEIKIS — KETURIS KARTUS PER SESIJĄ
+```
+S468  _stock 653 → 2     AV rašymas             → saugiklis apsaugotas_rasymas()
+S478  _stock 653 → 649   WC processing          → atstatyta
+S499  _stock 648 → 2     užsakymų atšaukimas    → atstatyta
+S503  2 prekės nesutapo  testiniai užsakymai    → atstatyta
+```
+**Saugiklis saugo TIK nuo pirmos priežasties** — nuo WC nurašymo nepadeda, nes ten
+WooCommerce elgiasi teisėtai.
+**TAISYKLĖ KITAM LANGUI: testuoti su ATSKIRA testine preke, ne su realiomis.**
+Po kiekvieno testo su užsakymais — palyginti `_stock` su `_vf_qty` VISOSE prekėse.
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
