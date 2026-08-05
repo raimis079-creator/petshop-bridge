@@ -1,0 +1,8 @@
+{
+ "VERSIJA_RUN": "run496-v1",
+ "sid": null,
+ "rez": {
+  "raw": "Error: Command failed: curl -sSk --max-time 270 \"https://dev.avesa.lt/?ps_s496=K496pk&act=x&z=0.639601228516872\" 2>&1"
+ },
+ "svetaine": "Error: Command failed: curl -sSk -o /dev/null -w \"%{http_code}\" --max-time 30 \"https://dev.avesa.lt/\" 2>&1"
+}
