@@ -1,0 +1,105 @@
+{
+ "VERSIJA_RUN": "run489-v1",
+ "sid": 2273,
+ "valymas": {
+  "VERSIJA": "s489-v1",
+  "act": "valyti",
+  "rasta": 4,
+  "ids": [
+   "34866",
+   "34863",
+   "34864",
+   "34865"
+  ],
+  "istrinta": 4,
+  "liko": 0,
+  "max_id": 34720,
+  "viso_uzsakymu": 2
+ },
+ "auditas_pries": {
+  "VERSIJA": "s489-v1",
+  "act": "auditas",
+  "VF_NESUTAMPA": 2,
+  "VF_detales": [
+   {
+    "id": 17978,
+    "stock": "1.000000",
+    "vf_qty": "653",
+    "pav": "Josera Sensiplus 12,5 kg - sausas maista"
+   },
+   {
+    "id": 19920,
+    "stock": "203",
+    "vf_qty": "200",
+    "pav": "Josera SensiPlus sausas pašaras jautriem"
+   }
+  ],
+  "av_prekes": [
+   {
+    "post_id": "17978",
+    "meta_value": "2"
+   }
+  ],
+  "josera": {
+   "_stock": "1.000000",
+   "_vf_qty": "653",
+   "_own": "2"
+  }
+ },
+ "taisymas": {
+  "VERSIJA": "s489-v1",
+  "act": "auditas",
+  "VF_NESUTAMPA": 2,
+  "VF_detales": [
+   {
+    "id": 17978,
+    "stock": "1.000000",
+    "vf_qty": "653",
+    "pav": "Josera Sensiplus 12,5 kg - sausas maista"
+   },
+   {
+    "id": 19920,
+    "stock": "203",
+    "vf_qty": "200",
+    "pav": "Josera SensiPlus sausas pašaras jautriem"
+   }
+  ],
+  "istaisyta": 2,
+  "po_taisymo_nesutampa": 0,
+  "av_prekes": [
+   {
+    "post_id": "17978",
+    "meta_value": "2"
+   }
+  ],
+  "josera": {
+   "_stock": "653",
+   "_vf_qty": "653",
+   "_own": "2"
+  }
+ },
+ "av": {
+  "VERSIJA": "s489-v1",
+  "act": "av_atstatyti",
+  "josera_av": "2",
+  "josera_stock": "653"
+ },
+ "auditas_po": {
+  "VERSIJA": "s489-v1",
+  "act": "auditas",
+  "VF_NESUTAMPA": 0,
+  "VF_detales": [],
+  "av_prekes": [
+   {
+    "post_id": "17978",
+    "meta_value": "2"
+   }
+  ],
+  "josera": {
+   "_stock": "653",
+   "_vf_qty": "653",
+   "_own": "2"
+  }
+ },
+ "svetaine": "200"
+}
