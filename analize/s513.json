@@ -1,0 +1,168 @@
+{
+ "VERSIJA_RUN": "run513",
+ "sid": 2296,
+ "rez": {
+  "VERSIJA": "s513-v1",
+  "pvz": [
+   {
+    "pid": 34828,
+    "pav": "Churu Popn Serve skanėstas katėms ",
+    "FS_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "label": "VF (Vetfarmas)",
+      "reason": "VF meta laukai"
+     }
+    },
+    "AV_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "av_qty": null,
+      "av_uztenka": false,
+      "tiekejas": "vf",
+      "reason": "AV šios prekės neturi"
+     }
+    },
+    "AV_is_av": false,
+    "AV_qty": null
+   },
+   {
+    "pid": 34826,
+    "pav": "Churu Popn Serve skanėstas katėms ",
+    "FS_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "label": "VF (Vetfarmas)",
+      "reason": "VF meta laukai"
+     }
+    },
+    "AV_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "av_qty": null,
+      "av_uztenka": false,
+      "tiekejas": "vf",
+      "reason": "AV šios prekės neturi"
+     }
+    },
+    "AV_is_av": false,
+    "AV_qty": null
+   },
+   {
+    "pid": 34824,
+    "pav": "CIAO Bisque konservai katėms su vi",
+    "FS_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "label": "VF (Vetfarmas)",
+      "reason": "VF meta laukai"
+     }
+    },
+    "AV_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "av_qty": null,
+      "av_uztenka": false,
+      "tiekejas": "vf",
+      "reason": "AV šios prekės neturi"
+     }
+    },
+    "AV_is_av": false,
+    "AV_qty": null
+   },
+   {
+    "pid": 34822,
+    "pav": "CIAO Bisque konservai katėms su vi",
+    "FS_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "label": "VF (Vetfarmas)",
+      "reason": "VF meta laukai"
+     }
+    },
+    "AV_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "av_qty": null,
+      "av_uztenka": false,
+      "tiekejas": "vf",
+      "reason": "AV šios prekės neturi"
+     }
+    },
+    "AV_is_av": false,
+    "AV_qty": null
+   },
+   {
+    "pid": 17978,
+    "pav": "Josera Sensiplus 12,5 kg &#8211; s",
+    "FS_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "vf",
+      "carrier": "venipak",
+      "courier_only": false,
+      "label": "VF (Vetfarmas)",
+      "reason": "VF meta laukai"
+     }
+    },
+    "AV_resolve": {
+     "tipas": "array",
+     "reiksme": {
+      "source": "av",
+      "carrier": "any",
+      "courier_only": false,
+      "av_qty": 2,
+      "av_uztenka": true,
+      "tiekejas": "vf",
+      "reason": "AV turi 2, reikia 1"
+     }
+    },
+    "AV_is_av": true,
+    "AV_qty": 2
+   }
+  ],
+  "group_order": {
+   "oid": 34885,
+   "tipas": "array",
+   "reiksme": {
+    "av": {
+     "eilutes": [
+      {
+       "product_id": 17236,
+       "qty": 1,
+       "raktas": 523,
+       "reason": "grynai AV prekė (be tiekėjo)"
+      }
+     ],
+     "carrier": "any",
+     "courier_only": false
+    }
+   }
+  },
+  "order_type": "MAIN"
+ }
+}
