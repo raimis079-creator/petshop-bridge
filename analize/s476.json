@@ -1,0 +1,143 @@
+{
+ "VERSIJA_RUN": "run476-v1",
+ "sid": 2260,
+ "diag": {
+  "VERSIJA": "s476-v1",
+  "act": "diag",
+  "dabar": {
+   "_stock": "2.000000",
+   "_own_stock_qty": "2",
+   "_vf_qty": "653",
+   "_vf_last_sync": "2026-08-05 13:00:04",
+   "_stock_status": "instock"
+  },
+  "wc_lookup": {
+   "product_id": "17978",
+   "stock_quantity": "2",
+   "stock_status": "instock"
+  },
+  "kitos_vf": [
+   {
+    "ID": "17978",
+    "stock": "2.000000",
+    "vfqty": "653"
+   },
+   {
+    "ID": "27822",
+    "stock": "7.000000",
+    "vfqty": "7"
+   },
+   {
+    "ID": "21577",
+    "stock": "362.000000",
+    "vfqty": "362"
+   },
+   {
+    "ID": "31977",
+    "stock": "2.000000",
+    "vfqty": "2"
+   },
+   {
+    "ID": "32457",
+    "stock": "0.000000",
+    "vfqty": "0"
+   },
+   {
+    "ID": "26302",
+    "stock": "174.000000",
+    "vfqty": "174"
+   },
+   {
+    "ID": "18149",
+    "stock": "0.000000",
+    "vfqty": "0"
+   },
+   {
+    "ID": "24421",
+    "stock": "41.000000",
+    "vfqty": "41"
+   }
+  ],
+  "av_zurnalas": "",
+  "filtras_aktyvus": "taip",
+  "pries_save": {
+   "get_stock_quantity": 4,
+   "DB_stock": "2.000000"
+  }
+ },
+ "save_testas": {
+  "VERSIJA": "s476-v1",
+  "act": "save_testas",
+  "save_testas": {
+   "pries_DB": "2.000000",
+   "filtruota_reiksme": 4,
+   "po_DB": "2.000000",
+   "VERDIKTAS": "SAUGU — save() nepakeite DB"
+  }
+ },
+ "diag2": {
+  "VERSIJA": "s476-v1",
+  "act": "diag",
+  "dabar": {
+   "_stock": "2.000000",
+   "_own_stock_qty": "2",
+   "_vf_qty": "653",
+   "_vf_last_sync": "2026-08-05 13:00:04",
+   "_stock_status": "instock"
+  },
+  "wc_lookup": {
+   "product_id": "17978",
+   "stock_quantity": "2",
+   "stock_status": "instock"
+  },
+  "kitos_vf": [
+   {
+    "ID": "17978",
+    "stock": "2.000000",
+    "vfqty": "653"
+   },
+   {
+    "ID": "27822",
+    "stock": "7.000000",
+    "vfqty": "7"
+   },
+   {
+    "ID": "21577",
+    "stock": "362.000000",
+    "vfqty": "362"
+   },
+   {
+    "ID": "31977",
+    "stock": "2.000000",
+    "vfqty": "2"
+   },
+   {
+    "ID": "32457",
+    "stock": "0.000000",
+    "vfqty": "0"
+   },
+   {
+    "ID": "26302",
+    "stock": "174.000000",
+    "vfqty": "174"
+   },
+   {
+    "ID": "18149",
+    "stock": "0.000000",
+    "vfqty": "0"
+   },
+   {
+    "ID": "24421",
+    "stock": "41.000000",
+    "vfqty": "41"
+   }
+  ],
+  "av_zurnalas": "",
+  "filtras_aktyvus": "taip",
+  "pries_save": {
+   "get_stock_quantity": 4,
+   "DB_stock": "2.000000"
+  }
+ },
+ "svetaine": "200"
+}
