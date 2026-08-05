@@ -1,0 +1,55 @@
+{
+ "VERSIJA_RUN": "run494-v1",
+ "sid": 2278,
+ "deploy": {
+  "VERSIJA": "s494-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 10445,
+   "sha": "237346e8e7418b75"
+  }
+ },
+ "paruosti": {
+  "VERSIJA": "s494-v1",
+  "act": "paruosti",
+  "metodai": {
+   "shopup_venipak_shipping_pickup_method:9": "VENIPAK paštomatai/atsiėmimo punktai",
+   "shopup_venipak_shipping_courier_method:10": "VENIPAK Kurjeris",
+   "woo_lithuaniapost_lpexpress_terminal:13": "LP Express",
+   "shopup_venipak_shipping_courier_method:2": "VENIPAK Kurjeris",
+   "shopup_venipak_shipping_pickup_method:3": "VENIPAK paštomatai/atsiėmimo punktai",
+   "shopup_venipak_shipping_courier_method:6": "VENIPAK Kurjeris",
+   "shopup_venipak_shipping_courier_method:7": "VENIPAK Kurjeris",
+   "shopup_venipak_shipping_courier_method:8": "VENIPAK Kurjeris",
+   "woo_lithuaniapost_lpexpress_terminal:12": "LP Express",
+   "woo_lithuaniapost_lpexpress_terminal:15": "LP Express kurjeris",
+   "shopup_venipak_shipping_pickup_method:5": "VENIPAK paštomatai/atsiėmimo punktai"
+  },
+  "sukurti": [
+   34868,
+   34869,
+   34870,
+   34871
+  ],
+  "detales": {
+   "34868": {
+    "tipas": "MAIN",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai"
+   },
+   "34869": {
+    "tipas": "MIXED",
+    "metodas": "VENIPAK kurjeris"
+   },
+   "34870": {
+    "tipas": "MAIN",
+    "metodas": "UNISEND paštomatai"
+   },
+   "34871": {
+    "tipas": "MAIN",
+    "metodas": "UNISEND kurjeris"
+   }
+  },
+  "bulk": "yra"
+ },
+ "svetaine": "200"
+}
