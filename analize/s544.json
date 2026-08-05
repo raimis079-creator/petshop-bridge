@@ -1,0 +1,47 @@
+{
+ "VERSIJA_RUN": "run544",
+ "sid": 2327,
+ "rez": {
+  "VERSIJA": "s544",
+  "failas": "/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+  "failo_B": 32446,
+  "metodai": [
+   "__construct(3)",
+   "add_venipak_shipping_bulk_action_process(3)",
+   "add_venipak_shipping_dispatch_force(0)",
+   "add_venipak_shipping_dispatch(0)",
+   "venipak_shipping_dispatch_order(3)",
+   "getImportXML(3)",
+   "get_product_weight(1)",
+   "get_order_address(1)"
+  ],
+  "manifesto_eilutes": [
+   "76: private $venipak_manifest;",
+   "179: $this->venipak_manifest = $settings->get_option_by_key('shopup_venipak_shipping_field_manifest') ?: '001';",
+   "250: $content = '<div class=\"venipak-shipping-pack\" style=\"display: flex; gap: 5px;\"><a style=\"font-size: 20px; display: flex; align-items: center; gap: 5px;\" class=\"button button-pri",
+   "342: //manifest",
+   "343: $manifest = $document->createElement( 'manifest' );",
+   "344: $manifest_attr = $document->createAttribute('title');",
+   "345: $manifest_value = $client_id . date('ymd') . $this->venipak_manifest;",
+   "346: $manifest_attr->value = $manifest_value;",
+   "347: $manifest->appendChild($manifest_attr);",
+   "348: $description->appendChild($manifest);",
+   "402: $manifest->appendChild($shipment);",
+   "655: $venipak_shipping_order_data['manifest'] = $manifest_value;"
+  ],
+  "pack_eilutes": [
+   "567: $pack_no = $document->createElement( 'pack_no', $pack_nr );",
+   "568: $pack->appendChild($pack_no);",
+   "606: $pack_no = $document->createElement('pack_no', $pack_nr);",
+   "607: $pack->appendChild($pack_no);",
+   "626: $pack_no = $document->createElement('pack_no', $pack_nr);",
+   "627: $pack->appendChild($pack_no);"
+  ],
+  "dispatch_order": "    public function venipak_shipping_dispatch_order($order_ids, $packs, $is_global) {\n        $url = 'https://go.venipak.lt/import/send.php';\n\n        // Retry offsets: 0 (first try), then +1, +5, +10 if pack numbers collide\n        $retry_offsets = array( 0, 1, 5, 10 );\n        $result_xml_string = '';\n\n        foreach ( $retry_offsets as $offset ) {\n            if ( $offset > 0 ) {\n                // Bump the pack number counter before retrying\n                $this->settings->reserve_pack_numbers( $offset );\n            }\n\n            $xml = $this->getImportXML( $order_ids, $packs, $is_global );\n            if ( ! $xml ) return null;\n\n            $body = array( 'user' => $this->venipak_username, 'pass' => $this->venipak_password, 'xml_text' => $xml );\n            $args = array(\n                'body'    => $body,\n                'timeout' => 45,\n                'headers' => array(\n                    'Referer' => 'https://woocommerce.com/',\n                ),\n            );\n            $response = wp_remote_post( $url, $args );\n            $result_xml_string = wp_remote_retrieve_body( $response );\n\n            // Success — break out of retry loop\n            if ( strpos( $result_xml_string, 'type=\"ok\"' ) !== false || $result_xml_string === '' ) {\n                break;\n            }\n\n            // Only retry if the error is about pack number being in use\n            if ( stripos( $result_xml_string, 'is already in use' ) === false ) {\n                break;\n            }\n        }\n\n        if (strpos($result_xml_string, 'type=\"ok\"') !== false || $result_xml_string === '') {\n            foreach ($order_ids as $order_id) {\n                $order = wc_get_order( $order_id );\n                if (!$this->venipak_is_status_change_disabled)  {\n                    $order->update_status('completed', __( 'Order dispatched to Venipak', 'woocommerce-shopup-venipak-shipping' ));\n                }\n\n                $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);\n                $venipak_shipping_order_data['status'] = 'sent';\n                $venipak_shipping_order_data['error_message'] = '';\n                $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));\n                $order->save();\n            }\n            return array('status' => 'ok', 'data' => $venipak_shipping_order_data);\n        } else {\n            $order = wc_get_order( $order_ids[0] );\n            $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);\n            $venipak_shipping_order_data['status'] = 'error';\n            $venipak_shipping_order_data['error_message'] = strip_tags($result_xml_string);\n            $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));\n            $order->save();\n            return array('status' => 'error', 'data' => $venipak_shipping_order_data['error_message']);\n        }\n    }\n",
+  "opcijos": {
+   "manifest_nustatymas": "001",
+   "firstpacknumber": 1000002,
+   "venipak_pack_number": "1000002"
+  }
+ }
+}
