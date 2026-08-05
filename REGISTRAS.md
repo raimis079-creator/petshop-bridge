@@ -1546,7 +1546,7 @@ Kode parašyta: `legacy -> tikras savas sandelis, carrier=any`.
 ```
 1 ✅ AV likučio laukas
 2 ✅ AV kaip šaltinis (§19.2)
-3 ⏳ pardavimo riba (AV + tiekėjas)
+3 ✅ pardavimo riba (AV + tiekėjas) (§19.3)
 4 ⏳ šaltinio fiksavimas užsakymo eilutėje
 5 ⏳ likučio mažinimas išsiuntus
 6 ⏳ užsakymo grupavimas MAIN/DS/MIXED
@@ -1612,6 +1612,49 @@ quattro   64 · belcor_tofu 62 · prins 23+20 · ambrosia 15
 legacy publish pjūvis: instock 816 · outofstock 143 · su kaina 959 · be kainos 0
 top kategorijos: Žaislai šunims 178 · Skanėstai šunims 116 · Konservai katėms 82
 ```
+
+---
+
+### 19.3 ✅ 3 SLUOKSNIS — PARDAVIMO RIBA
+```
+mu-plugins/petshop-av-limit.php  v1.0 · 3 720 B · sha f3008f49a22e65e6
+```
+WooCommerce ribojo pagal `_stock` = VIENO šaltinio kiekį. Dabar riba = **AV + tiekėjas**.
+```
+Josera:  DB _stock 653 + DB _own 2  →  WC rodo 655
+klientui: „Turime" — BE SKAIČIAUS (§17.4)
+```
+**Taikoma TIK toms, kurios turi `_own_stock_qty` IR tiekėjo šaltinį.**
+Grynai AV ir VF-be-AV prekėms — nieko nekeičia (patikrinta).
+`_stock` reikšmė NEKEIČIAMA. Savų rezervacijų NEKURIAMA (§18.6).
+
+**Filtrai:** `woocommerce_product_get_stock_quantity` · `..._get_stock_status` ·
+`woocommerce_get_availability_text` · `woocommerce_get_stock_html` (du pastarieji
+nuima „(127)" iš kliento matomo teksto).
+
+### 19.4 🔴 INCIDENTAS: `_stock` 653 → 2 (S468 testo pasekmė)
+**Rasta:** Josera `_stock` buvo 2, o `_vf_qty` 653. Visos kitos VF prekės rodė
+`_stock = _vf_qty` tiksliai — tik Josera iškrito.
+```
+Priežastis: S468 testo `increase(5)`/`decrease(2)` metu WooCommerce kabliukas
+            perrašė `_stock` AV reikšme. Vėliau nulinių valymas ištrynė žurnalą,
+            todėl pėdsako neliko.
+NE filtro kaltė: save() testas → „prieš 2 → filtruota 4 → po 2" = SAUGU.
+```
+**ATSTATYTA:** `_stock` 2 → 653, lookup lentelė 2 → 653, `_own_stock_qty` nepaliesta.
+
+**SAUGIKLIS (`apsaugotas_rasymas()`, v1.2):** prieš kiekvieną `_own_stock_qty`
+rašymą įsimenamas `_stock`; po rašymo tikrinama ir, jei pasikeitė, GRĄŽINAMA +
+`error_log`. Patikrinta: increase/decrease → `_stock` 653 nepakito.
+```
+petshop-av-stock.php v1.2 · 12 575 B · sha c6cf7e99783591bf
+```
+**KODĖL SVARBU:** be saugiklio kiekvienas AV likučio keitimas galėjo TYLIAI
+sugadinti tiekėjo likutį — prekė rodytųsi turinti 2 vietoj 653, pardavimai
+sustotų be jokio pranešimo.
+
+**KAIP RADAU:** palyginau `_stock` su `_vf_qty` VISOSE prekėse. Vienos prekės
+tikrinimas to nebūtų parodęs.
 
 ---
 
