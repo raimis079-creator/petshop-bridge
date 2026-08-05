@@ -1,0 +1,52 @@
+{
+ "VERSIJA_RUN": "run537",
+ "sid": 2320,
+ "rez": {
+  "VERSIJA": "s537",
+  "failai": [
+   "/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+   "/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-orders-list.php",
+   "/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php",
+   "/wc-venipak-shipping/includes/class-woocommerce-shopup-venipak-shipping.php"
+  ],
+  "kabliukai": {
+   "handle_bulk_actions-woocommerce_page_wc-orders": [
+    "10 Petshop_AV_Dropship::vykdyti",
+    "10 Petshop_AV_Sheets::vykdyti",
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Dispatch::add_venipak_shipping_bulk_action_process",
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Label::add_venipak_shipping_bulk_action_process",
+    "10 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::handle_hpos_action"
+   ],
+   "bulk_actions-woocommerce_page_wc-orders": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Orders_List::add_venipak_shipping_bulk_action",
+    "20 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::register_bulk_actions",
+    "30 Petshop_AV_Sheets::veiksmas",
+    "31 Petshop_AV_Dropship::veiksmas"
+   ]
+  },
+  "venipak_nustatymai": {
+   "shopup_venipak_shipping_field_userid": "07267",
+   "shopup_venipak_shipping_field_username": "Avesa97",
+   "shopup_venipak_shipping_field_password": "YRA (8 sim.)",
+   "shopup_venipak_shipping_field_firstpacknumber": "1000001",
+   "shopup_venipak_shipping_field_manifest": "001",
+   "shopup_venipak_shipping_field_labelformat": "sticker",
+   "shopup_venipak_shipping_field_maxpackproducts": "20",
+   "shopup_venipak_shipping_field_return_service": "0",
+   "shopup_venipak_shipping_field_ismapenabled": "on",
+   "shopup_venipak_shipping_field_googlemapapikey": "YRA (39 sim.)",
+   "shopup_venipak_shipping_field_pickuptype": "all",
+   "shopup_venipak_shipping_field_pickupposition": "after_shipping",
+   "shopup_venipak_shipping_field_pickupwidth": "275",
+   "shopup_venipak_shipping_field_sendername": "UAB Avesa",
+   "shopup_venipak_shipping_field_sendercompanycode": "302568442",
+   "shopup_venipak_shipping_field_sendercountry": "LT",
+   "shopup_venipak_shipping_field_sendercity": "Liucionys",
+   "shopup_venipak_shipping_field_senderaddress": "Liucionių g. 46",
+   "shopup_venipak_shipping_field_senderpostcode": "15166",
+   "shopup_venipak_shipping_field_sendercontactperson": "Raimundas Bulakas",
+   "shopup_venipak_shipping_field_sendercontacttel": "+37068187787",
+   "shopup_venipak_shipping_field_sendercontactemail": "terra@petshop.lt"
+  }
+ }
+}
