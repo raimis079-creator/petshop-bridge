@@ -1267,6 +1267,121 @@ mokami bulk edit           aprašymų paieška+pakeitimas, kainos ±%, atšaukim
 
 ---
 
+## 17. 🔒 SANDĖLIŲ MODELIS — UŽRAKINTA (Raimis 2026-08-05)
+
+> Aptarta ir užrakinta pokalbyje 2026-08-05 rytą. **NEBEDISKUTUOJAMA, tik įgyvendinama.**
+> Konteksto ištrauka iš TŽ: `SANDELIAI_kas_jau_aptarta.md` (Raimio PC).
+
+### 17.1 SEPTYNI ŠALTINIAI — DVI RŪŠYS
+```
+AV        Avesa, TIKRAS FIZINIS sandėlis     likutis RANKINIS · PIRMENYBĖ
+─────────────────────────────────────────────────────────────────────────
+VF        Vetfarmas                          dropship · automatinis XML likutis
+ZB        Žalioji Banga                      dropship · automatinis XML likutis
+QUATTRO   Kauno grūdai                       dropship · likutis RANKINIS
+PRINS     Prins Petfoods                     dropship · likutis RANKINIS
+AMBROSIA                                     dropship · likutis RANKINIS
+BELACOR   Belacor / Tofu                     dropship · likutis RANKINIS
+```
+
+**🔴 „LEGACY" NĖRA SANDĖLIS.** Tai istorinė etiketė, apjungusi PENKIS nesusijusius
+dalykus: 4 dropship tiekėjus + AV. Reiškė „ne per XML importuotas" — tai apie KILMĘ,
+ne apie sandėlį. **Iš naujos logikos žodis „Legacy" DINGSTA.**
+Quattro / Prins / Ambrosia / Belacor elgiasi kaip VF ir ZB — dropship, BE pirmenybės.
+
+**Keturių rankinių tiekėjų tikslumas ~70–80%** (Raimis: „situaciją dėkam ir
+kontroliuojam, nėra kad bet ką parašėme ir pamiršome"). **NEDARYTI iš to problemos** —
+jokių papildomų „nepatikimumo" žymėjimų, jokio REVIEW statuso vien dėl šaltinio.
+
+### 17.2 TAISYKLĖ (Raimio žodžiais)
+> „VF, ZB prekės važiuoja dropshipingu. Bet jei pasitaiko mix užsakymas ir prekė yra
+> iš AV sandėlio, tada pirmenybė AV; jei tik VF ar ZB, tada tik iš ten."
+
+```
+EILUTEI:   AV turi VISĄ kiekį  →  AV
+           kitaip              →  tas dropship tiekėjas, kuriam prekė priklauso
+
+UŽSAKYMAS: grupuojamas pagal šaltinį → TIEK SIUNTŲ, KIEK GRUPIŲ
+```
+Sprendimas priimamas **EILUTEI, ne užsakymui.** Užsakymas tik parodo, kiek siuntų išeina.
+
+**Pavyzdys (Raimio):**
+```
+tik Josera Lamb 10 kg              → VF
+Josera Lamb 10 kg + žaislas (AV)   → Josera iš AV (nes AV turi)
+```
+
+### 17.3 SPRENDIMAI, KURIE UŽDARO KLAUSIMUS
+```
+DVI SIUNTOS         PRIIMTINA. „Stengiuosi, kad tokių būtų minimaliai, bet pasitaiko."
+                    NE gedimas, kurio reikia vengti bet kokia kaina.
+KAINOS              VIENODOS nepriklausomai nuo šaltinio → kainodaros klausimo NĖRA
+PREKĖS DYDIS        taisyklės NEKEIČIA. 1,5 kg pakuotė ir 10 kg maišas — tas pats
+                    principas (Raimis pats prie to priėjo)
+AV DALINIS KIEKIS   AV turi 1, klientas perka 3 → visi 3 iš tiekėjo
+                    (AV likutis lieka gulėti; Raimis retkarčiais RANKOMIS išsiunčia —
+                    „daugiau išimtys nei taisyklė")
+AV LIKUČIO MAŽINIMAS  AUTOMATIŠKAI, kai užsakymas pažymimas išsiųstu (variantas A)
+```
+
+### 17.4 🔴 KLIENTUI LIKUTIS NERODOMAS
+> „Klientui likučio išvis nereikia rodyti, principas arba prekė yra arba nėra,
+> o kai jis renkasi, jis negali paimti minusinio likučio."
+
+```
+RODOMA:      „yra" jei BENT VIENAS šaltinis turi · „nėra" jei visi nuliai
+NERODOMA:    joks skaičius
+RIBOJAMA:    negali įsidėti daugiau nei BENDRAS kiekis (AV + tiekėjas)
+```
+**Pasekmė:** likučių SUMAVIMO RODYMUI NEREIKIA. Sumavimas lieka TIK pardavimo ribai
+ir šaltinio parinkimui. Tai gerokai supaprastina TŽ 0.12 numatytą „daugiašaltinio
+likučio sumavimo logiką".
+
+### 17.5 SITUACIJA A IŠ TŽ — NĖRA PROBLEMA
+TŽ 0.12 rašo, kad situacijos A (ZB konservai su nauju kodu) ir B (Josera dviguba)
+yra „du skirtingi modeliai, reikia vieno nuoseklaus". **Klaidinga prielaida:**
+```
+A = KITAS PARDAVIMO VIENETAS (dėžė vs vienetas) — dvi prekės bet kurioje sistemoje.
+    Daugiašaltiškumo problemos ČIA NĖRA.
+B = ta pati prekė, tas pats vienetas, du šaltiniai — TIKROJI problema.
+```
+Modelis vienas: **viena prekė + AV likutis + tiekėjo likutis.** A lieka dvi atskiros
+prekės, nes tai ir yra du skirtingi produktai.
+
+### 17.6 LAUKŲ SPRENDIMAS
+```
+_own_stock_qty     AV likutis, ATSKIRAS laukas (variantas A)
+```
+**Kodėl ne WooCommerce `_stock`:** VF/ZB sinchronizacija `_stock` PERRAŠO kas valandą.
+Atskiras laukas nesikerta su sync. Struktūra TŽ jau numatyta (0.12), bet realiai
+nenaudojama — užpildyta tik 6 prekėms, visos = 0.
+
+### 17.7 ĮGYVENDINIMO EILĖ
+```
+1. MATAVIMAS         kiek prekių kiekvienam iš 7 · _own_stock_qty būklė
+                     · manage_stock · ar resolve() grąžina 4 tiekėjus ATSKIRAI
+2. LIKUČIO LAUKAS    _own_stock_qty įvedimas + admin laukas prekės lange
+3. PARDAVIMO RIBA    negali pirkti daugiau nei AV + tiekėjas
+4. ŠALTINIO PARINKIMAS eilutei, po checkout
+5. LIKUČIO MAŽINIMAS automatiškai išsiuntus
+6. UŽSAKYMO GRUPAVIMAS MAIN / DS / MIXED
+7. PAKUOTOJO EKRANAS stulpeliai · filtrai · „ką daryti"
+```
+
+### 17.8 ⚠️ RIZIKA ESAMAM KODUI
+`Petshop_Fulfillment_Source::resolve()` (S75) dabar grąžina `legacy` kaip VIENĄ šaltinį.
+Jį reikės išskaidyti į 5 (AV + 4 tiekėjai). **Bet juo remiasi TRYS veikiantys dalykai:**
+```
+S77  krepšelio cross-sell        „tik to paties sandėlio"
+S77  pristatymo metodų ribojimas carrier / courier_only
+S74  FBT kompanionai             „tik to paties sandėlio"
+```
+**ĮTARIMAS (NEPATIKRINTA):** jei Quattro ir Prins iki šiol buvo vienas `legacy`, jie
+galėjo siūlytis vienas kitam per FBT — nors tai DU skirtingi tiekėjai ir DVI siuntos.
+Patikrinti matavimo etape.
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
