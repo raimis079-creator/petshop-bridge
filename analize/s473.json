@@ -1,0 +1,64 @@
+{
+ "VERSIJA_RUN": "run473-v1",
+ "sid": 2257,
+ "deploy": {
+  "VERSIJA": "s473-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 5762,
+   "sha": "a9e6968438ad521b"
+  }
+ },
+ "patikra": {
+  "VERSIJA": "s473-v1",
+  "act": "patikra",
+  "bazinis_pjuvis": {
+   "zb": 662,
+   "legacy": 959,
+   "belcor_tofu": 62,
+   "quattro": 64,
+   "prins": 23,
+   "vf": 991,
+   "ambrosia": 15
+  },
+  "LIKO_LEGACY_VIDUJE": [],
+  "VERDIKTAS": "ISSKAIDYMAS PILNAS — legacy viduje 4 tiekeju NERA",
+  "vezejo_patikra": {
+   "tikrinta": 600,
+   "blogi": [],
+   "VERDIKTAS": "GERAI: visi dropship = venipak"
+  },
+  "AV_Source_pjuvis_600": {
+   "zb/venipak": 509,
+   "av/any": 91
+  },
+  "S1_josera_1": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 2,
+   "av_uztenka": true,
+   "tiekejas": "vf",
+   "reason": "AV turi 2, reikia 1"
+  },
+  "S2_josera_3": {
+   "source": "vf",
+   "carrier": "venipak",
+   "courier_only": false,
+   "av_qty": 2,
+   "av_uztenka": false,
+   "tiekejas": "vf",
+   "reason": "AV turi 2, reikia 3 — neužtenka"
+  },
+  "S3_grynai_av": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 10,
+   "av_uztenka": true,
+   "tiekejas": "av",
+   "reason": "grynai AV prekė (be tiekėjo)"
+  }
+ },
+ "svetaine": "200"
+}
