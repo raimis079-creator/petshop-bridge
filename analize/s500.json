@@ -1,0 +1,56 @@
+{
+ "VERSIJA_RUN": "run500-v1",
+ "sid": 2283,
+ "diag": {
+  "VERSIJA": "s500-v1",
+  "act": "diag",
+  "josera": {
+   "_stock": "2.000000",
+   "_vf_qty": "648",
+   "_own": "2",
+   "_vf_last_sync": "2026-08-05 15:00:03",
+   "zurnalas": ""
+  },
+  "per_wc": {
+   "get_stock_quantity": 4
+  },
+  "tiesiai_is_db": "2.000000",
+  "lookup": "2",
+  "nesutampa": [
+   {
+    "ID": "17978",
+    "stock": "2.000000",
+    "qty": "648"
+   }
+  ]
+ },
+ "taisymas": {
+  "VERSIJA": "s500-v1",
+  "act": "taisyti",
+  "istaisyta": 1,
+  "liko": 0,
+  "josera_po": {
+   "_stock": "648",
+   "_own": "2",
+   "lookup": "648"
+  }
+ },
+ "po": {
+  "VERSIJA": "s500-v1",
+  "act": "diag",
+  "josera": {
+   "_stock": "648",
+   "_vf_qty": "648",
+   "_own": "2",
+   "_vf_last_sync": "2026-08-05 15:00:03",
+   "zurnalas": ""
+  },
+  "per_wc": {
+   "get_stock_quantity": 650
+  },
+  "tiesiai_is_db": "648",
+  "lookup": "648",
+  "nesutampa": []
+ },
+ "svetaine": "200"
+}
