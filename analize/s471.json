@@ -1,0 +1,91 @@
+{
+ "VERSIJA_RUN": "run471-v1",
+ "sid": 2255,
+ "deploy": {
+  "VERSIJA": "s471-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 4608,
+   "sha": "f61afff6fec050f1"
+  }
+ },
+ "testai": {
+  "VERSIJA": "s471-v1",
+  "act": "testai",
+  "testines_prekes": {
+   "josera_av": 17978,
+   "legacy": 15060,
+   "belcor_tofu": 19837,
+   "prins": 16854,
+   "quattro": 16585
+  },
+  "S1_tik_josera_1": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 2,
+   "av_uztenka": true,
+   "tiekejas": "vf",
+   "reason": "AV turi 2, reikia 1"
+  },
+  "S2_josera_3": {
+   "source": "vf",
+   "carrier": "venipak",
+   "courier_only": false,
+   "av_qty": 2,
+   "av_uztenka": false,
+   "tiekejas": "vf",
+   "reason": "AV turi 2, reikia 3 — neužtenka"
+  },
+  "S3_be_av": {
+   "source": "legacy",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": null,
+   "av_uztenka": false,
+   "tiekejas": "legacy",
+   "reason": "AV šios prekės neturi"
+  },
+  "A_grupes": [
+   "av"
+  ],
+  "A_tipas": "MAIN",
+  "B_grupes": [
+   "av",
+   "legacy"
+  ],
+  "B_tipas": "MIXED",
+  "B_detales": {
+   "av": {
+    "carrier": "any",
+    "eil": 1,
+    "reason": "AV turi 2, reikia 1"
+   },
+   "legacy": {
+    "carrier": "any",
+    "eil": 1,
+    "reason": "AV šios prekės neturi"
+   }
+  },
+  "C_grupes": [
+   "vf",
+   "legacy"
+  ],
+  "C_tipas": "MIXED",
+  "D_grupes": [
+   "legacy"
+  ],
+  "D_tipas": "DS",
+  "vezejas_av": "any",
+  "vezejas_zb": "any",
+  "uzsakymas_34720": {
+   "grupes": [
+    "vf"
+   ],
+   "tipas": "DS"
+  },
+  "josera_av_po": 2,
+  "josera_wc_stock": "653.000000"
+ },
+ "svetaine": "200"
+}
