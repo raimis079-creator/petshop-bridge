@@ -1,0 +1,36 @@
+{
+ "VERSIJA_RUN": "run549",
+ "sid": 2332,
+ "rez": {
+  "VERSIJA": "s549",
+  "registracija": {
+   "manifest": "07267260806001",
+   "pack_numbers": [
+    "V07267E1000003"
+   ],
+   "weight": 4.5,
+   "products_count": 5,
+   "status": "sent",
+   "error_message": ""
+  },
+  "manifestas": {
+   "code": {
+    "siusta_code": "07267260806001",
+    "http": 200,
+    "tipas": "application/pdf",
+    "dydis": 66510,
+    "ar_pdf": "TAIP",
+    "pradzia": "",
+    "issaugota": "uploads/ps-backup/manifestas_test.pdf"
+   },
+   "code_pack": {
+    "siusta_code": "V07267E1000003",
+    "http": 200,
+    "tipas": "text/html; charset=UTF-8",
+    "dydis": 34,
+    "ar_pdf": "ne",
+    "pradzia": "Error: Netinkamas manifesto kodas."
+   }
+  }
+ }
+}
