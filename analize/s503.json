@@ -1,0 +1,110 @@
+{
+ "VERSIJA_RUN": "run503-v1",
+ "sid": 2286,
+ "deploy": {
+  "VERSIJA": "s503-v2",
+  "act": "deploy",
+  "failas": {
+   "B": 17935,
+   "sha": "d03cbf2128079e65"
+  }
+ },
+ "pastai": {
+  "VERSIJA": "s503-v2",
+  "act": "pastai",
+  "irasyta": {
+   "vf": "ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt",
+   "belcor_tofu": "lina.sirvele@belacorinvest.lt",
+   "ambrosia": "info@alphazoo.lt",
+   "quattro": "e.panaviene@kaunogrudai.lt",
+   "prins": "irute@faunas.lt"
+  },
+  "blogi_adresai": []
+ },
+ "testai": {
+  "VERSIJA": "s503-v2",
+  "act": "testai",
+  "klase": "yra",
+  "bulk": "yra",
+  "tiekejai": {
+   "vf": [
+    "Vetfarmas",
+    "sku"
+   ],
+   "quattro": [
+    "Quattro / Kauno grūdai",
+    "sku"
+   ],
+   "prins": [
+    "Prins Petfoods",
+    "sku_ean"
+   ],
+   "ambrosia": [
+    "Ambrosia",
+    "sku_ean"
+   ],
+   "belcor_tofu": [
+    "Belacor",
+    "sku_ean"
+   ],
+   "zb": [
+    "Žalioji Banga",
+    "sku"
+   ]
+  },
+  "prekes": {
+   "zb": 14156,
+   "vf": 21828,
+   "quattro": 16618,
+   "prins": 16871
+  },
+  "sukurti": [
+   34876,
+   34877,
+   34878,
+   34879
+  ],
+  "lipduko_vardas": "34876 Simas Šimkus.pdf",
+  "grupes": {
+   "zb": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34876 Simas Šimkus — 1× Chewllagen Jautienos skonio kola [01WH71102]"
+    ]
+   },
+   "vf": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34877 Inga Butkienė — 2× Josera konservuotas pašaras katė [JOS0837]"
+    ]
+   },
+   "quattro": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34878 Mindaugas Nemanis — 3× QUATTRO Sterilised su paukštiena [2.008261]"
+    ]
+   },
+   "prins": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34879 Simas Šimkus — 1× Prins ProCare Grainfree Puppy &  [18146]"
+    ]
+   }
+  },
+  "pastai_nustatyti": {
+   "vf": "ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt",
+   "belcor_tofu": "lina.sirvele@belacorinvest.lt",
+   "ambrosia": "info@alphazoo.lt",
+   "quattro": "e.panaviene@kaunogrudai.lt",
+   "prins": "irute@faunas.lt"
+  }
+ },
+ "valymas": {
+  "VERSIJA": "s503-v2",
+  "act": "valyti",
+  "istrinta": 8,
+  "max_id": 34720,
+  "VF_nesutampa": 2
+ },
+ "svetaine": "200"
+}
