@@ -1,0 +1,46 @@
+{
+ "VERSIJA_RUN": "run530",
+ "sid": 2313,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "z2": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=2",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Surinkimo lapai",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "2 Surinkimo lapai <DABAR>",
+    "3 Venipak",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [
+    "Atidaryti surinkimo lapus → -> https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=lapai&id=0&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage"
+   ],
+   "tekstas": "2 užsakymai su prekėmis iš sandėlio. Lape trys blokai: bendras surinkimas, Venipak eilėmis, LP eilėmis. Dropship eilutės į lapus neįtraukiamos.",
+   "eilutes": [],
+   "kojele": "Atgal | A4 spausdintuvas. Atsidaro naujoje kortelėje, eiga lieka čia. | Toliau",
+   "klaidos": [],
+   "png": "screenshots/s530_z2.png"
+  }
+ },
+ "lapai_is_eigos": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-lapai&ps_ready=1",
+  "antraste": "Surinkimo ir pakavimo lapai",
+  "blokai": [],
+  "prekes": [
+   "3 Ontario Monoproteino konservai šunims su kalakutiena ir saldžiosiomis bulvėmis, 200 g 48375 ☐"
+  ],
+  "klaida": false
+ }
+}
