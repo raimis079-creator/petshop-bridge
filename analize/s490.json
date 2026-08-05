@@ -1,0 +1,65 @@
+{
+ "VERSIJA_RUN": "run490-v1",
+ "sid": 2274,
+ "deploy": {
+  "VERSIJA": "s490-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 8633,
+   "sha": "4995fa9c8c3670cc"
+  }
+ },
+ "testai": {
+  "VERSIJA": "s490-v1",
+  "act": "testai",
+  "klase": "yra",
+  "testines": [
+   {
+    "id": 17236,
+    "pav": "Ontario Monoproteino konservai šunims ",
+    "data": "2027-02-21",
+    "dienu": 199,
+    "skubu": "ne",
+    "pastaba": null
+   },
+   {
+    "id": 17241,
+    "pav": "Ontario Monoproteino konservai šunims ",
+    "data": "2026-09-19",
+    "dienu": 44,
+    "skubu": "taip",
+    "pastaba": null
+   },
+   {
+    "id": 17245,
+    "pav": "Ontario Monoproteino konservai šunims ",
+    "data": "2026-08-17",
+    "dienu": 11,
+    "skubu": "taip",
+    "pastaba": "imti su 09 mėn. galiojimu"
+   },
+   {
+    "id": 17250,
+    "pav": "Ontario Monoproteino konservai šunims ",
+    "data": "2026-07-28",
+    "dienu": -9,
+    "skubu": "taip",
+    "pastaba": null
+   }
+  ],
+  "stulpeliai": [
+   "cb",
+   "name",
+   "sku",
+   "is_in_stock",
+   "ps_av",
+   "ps_expiry",
+   "price"
+  ],
+  "expiry_stulpelis": "yra",
+  "rikiavimas": "yra",
+  "prekiu_be_datos": 2772,
+  "prekiu_su_data": 4
+ },
+ "svetaine": "200"
+}
