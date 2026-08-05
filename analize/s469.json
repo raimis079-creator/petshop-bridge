@@ -1,0 +1,96 @@
+{
+ "VERSIJA_RUN": "run469-v1",
+ "sid": 2253,
+ "rez": {
+  "VERSIJA": "s469-v1",
+  "visos_su_av": [
+   {
+    "ID": "17057",
+    "post_title": "Ontario super premium konservai katėms su vištiena ir lašiša, 95 g",
+    "av": "0"
+   },
+   {
+    "ID": "17493",
+    "post_title": "Miamor Super premium konservai katėms su tunu ir krevetėmis, 100 g",
+    "av": "0"
+   },
+   {
+    "ID": "17978",
+    "post_title": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema",
+    "av": "2"
+   },
+   {
+    "ID": "18369",
+    "post_title": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "av": "0"
+   },
+   {
+    "ID": "19452",
+    "post_title": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey and Salmon – konservai katėms Švelnusis meniu su kalakutiena ir lašiša, 100 g",
+    "av": "0"
+   },
+   {
+    "ID": "19602",
+    "post_title": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 400 g",
+    "av": "0"
+   },
+   {
+    "ID": "22275",
+    "post_title": "Genia aliuminis įtvaras, 90x400mm, 4vnt",
+    "av": "0"
+   },
+   {
+    "ID": "27194",
+    "post_title": "Nobby nailoninis žaislas gyvūnui, varlė su virve, 43cm",
+    "av": "0"
+   },
+   {
+    "ID": "34510",
+    "post_title": "Ruda kiaulės ausis, 1 vnt. × 20 vnt.",
+    "av": "0"
+   }
+  ],
+  "preke_19921": {
+   "pav": "Josera SensiPlus sausas pašaras jautriems šunims su ant",
+   "_own_stock_qty": "",
+   "raw": null,
+   "zurnalas": "",
+   "qty_API": null
+  },
+  "preke_17978": {
+   "pav": "Josera Sensiplus 12,5 kg &#8211; sausas maistas šunims ",
+   "_own_stock_qty": "2",
+   "raw": "2",
+   "zurnalas": [
+    {
+     "kada": "2026-08-05 12:26:41",
+     "buvo": 0,
+     "tapo": 2,
+     "kas": "bdz487",
+     "priezastis": "rankinis"
+    }
+   ],
+   "qty_API": 2
+  },
+  "musu_kabliukai": {
+   "manage_edit-product_columns": [
+    "20 Petshop_AV_Stock::column"
+   ],
+   "manage_product_posts_custom_column": [
+    "20 Petshop_AV_Stock::column_value"
+   ],
+   "quick_edit_custom_box": [
+    "10 Petshop_AV_Stock::quick_edit"
+   ],
+   "save_post_product": [
+    "20 Petshop_AV_Stock::quick_edit_save"
+   ],
+   "woocommerce_process_product_meta": [
+    "10 Petshop_AV_Stock::save"
+   ]
+  },
+  "klase": "yra",
+  "failas": 8379
+ },
+ "svetaine": "200"
+}
