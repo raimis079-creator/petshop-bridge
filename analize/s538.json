@@ -1,0 +1,15 @@
+{
+ "VERSIJA_RUN": "run538",
+ "sid": 2321,
+ "rez": {
+  "VERSIJA": "s538",
+  "dispatch": {
+   "failas": "class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+   "kodas": "    public function add_venipak_shipping_bulk_action_process( $redirect_to, $action, $post_ids ) {\n        if ( $action === 'shopup_venipak_shipping_dispatch' ) {\n            foreach ($post_ids as $order_id) {\n                $this->venipak_shipping_dispatch_order([$order_id], false, false);\n            }\n        }\n        return $redirect_to;\n    }\n"
+  },
+  "label": {
+   "failas": "class-woocommerce-shopup-venipak-shipping-admin-label.php",
+   "kodas": "\tpublic function add_venipak_shipping_bulk_action_process( $redirect_to, $action, $post_ids ) {\n\t\tif ( $action === 'shopup_venipak_shipping_labels' ) {\n\t\t\t$pack_no_collection = [];\n\t\t\tforeach ($post_ids as $post_id) {\n\t\t\t\t$order = wc_get_order($post_id);\n\t\t\t\t$venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);\n\t\t\t\t$pack_numbers = $venipak_shipping_order_data['pack_numbers'];\n\n\t\t\t\t// Add pack numbers to the collection while maintaining their sequence\n\t\t\t\tforeach ($pack_numbers as $pack_number) {\n\t\t\t\t\t$pack_no_collection[] = $pack_number;\n\t\t\t\t}\n\t\t\t}\n\t\t\t$url = 'https://go.venipak.lt/ws/print_label';\n\t\t\t$body = array(\n\t\t\t\t'user' => $this->venipak_username,\n\t\t\t\t'pass' => $this->venipak_password,\n\t\t\t\t'pack_no' => $pack_no_collection,\n\t\t\t\t'format' => $this->label_format,\n\t\t\t\t'carrier' => 'all'\n\t\t\t);\n\t\t\t$args = array(\n\t\t\t\t'body' => $body,\n\t\t\t\t'headers' => array(\n\t\t\t\t\t'Referer' => 'https://woocommerce.com/'\n\t\t\t\t)\n\t\t\t);\n\t\t\t$response = wp_remote_post( $url, $args );\n\t\t\theader(\"Content-type:application/pdf\");\n\t\t\techo wp_remote_retrieve_body( $response );\n\t\t\tdie();\n\t\t}\n\t\treturn $redirect_to;\n\t}\n"
+  }
+ }
+}
