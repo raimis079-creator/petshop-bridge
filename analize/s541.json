@@ -1,0 +1,88 @@
+{
+ "VERSIJA_RUN": "run541",
+ "sid": 2324,
+ "rez": {
+  "VERSIJA": "s541",
+  "statusas": "processing",
+  "apmoketa": "taip",
+  "suma": "53.85",
+  "pristatymas": "VENIPAK paštomatai/atsiėmimo punktai",
+  "shipping_items": [
+   {
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "instance": "3",
+    "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+    "meta": [
+     {
+      "Prekės": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg &times; 3, Churu kreminis skanės"
+     }
+    ]
+   }
+  ],
+  "visi_meta": {
+   "_billing_address_index": "Rai B  Miško g. 1  Agurkiškė Kazlų Rūdos sav. 12222 LT terra@gyvunai.lt +37065082900",
+   "_shipping_address_index": "Rai B  Miško g. 1  Agurkiškė Kazlų Rūdos sav. 12222 LT +37065082900",
+   "_dp_stock_reduced": "yes",
+   "_edit_lock": "1785960251:1",
+   "_petshop_avpn_number": "AVPN000231",
+   "_petshop_dl_purchase_sent": "yes",
+   "_petshop_iapv_number": "IAPV000141",
+   "_petshop_invoice_document_type": "invoice",
+   "_petshop_order_pdf": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/wcdn/invoice/Isankstine-saskaita-IAPV000141.pdf",
+   "_ps_decided_at": "2026-08-05 22:47:47",
+   "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":2,\"vienetai\":5}}",
+   "_ps_order_type": "DS",
+   "_ps_refill_tracked": "yes",
+   "_ps_shipments": "1",
+   "_wc_order_attribution_device_type": "Desktop",
+   "_wc_order_attribution_referrer": "https://dev.avesa.lt/wp-admin/admin.php?page=wc-orders",
+   "_wc_order_attribution_session_count": "2",
+   "_wc_order_attribution_session_entry": "https://dev.avesa.lt/",
+   "_wc_order_attribution_session_pages": "3",
+   "_wc_order_attribution_session_start_time": "2026-08-05 13:36:06",
+   "_wc_order_attribution_source_type": "typein",
+   "_wc_order_attribution_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+   "_wc_order_attribution_utm_source": "(direct)",
+   "_wc_push_notification_sent": "1785959399",
+   "_wcdn_invoice_date": "1785959268",
+   "_wcdn_invoice_number": "AVPN34886",
+   "_wcdn_invoice_number_counter": "258",
+   "is_vat_exempt": "no",
+   "venipak_pickup_point": "3648"
+  },
+  "gavejas": {
+   "vardas": "Rai B",
+   "bill": "Rai B",
+   "tel": "+37065082900",
+   "mail": "terra@gyvunai.lt",
+   "adr": "Miško g. 1",
+   "miestas": "Agurkiškė",
+   "pastas": "12222",
+   "salis": "LT",
+   "bill_adr": "Miško g. 1, Agurkiškė 12222"
+  },
+  "eilutes": [
+   {
+    "n": "Exclusion Mediterraneo Monoprotein sausas pašaras ",
+    "q": 3,
+    "src": "vf",
+    "svoris": "1.5"
+   },
+   {
+    "n": "Churu kreminis skanėstas 10+ katėms su tunu ir laš",
+    "q": 2,
+    "src": "vf",
+    "svoris": ""
+   }
+  ],
+  "istorija": [
+   "22:54 · Payment complete.",
+   "22:54 · Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Rai. Laiškas klientui: NESIŲSTAS.",
+   "22:47 · Email \"Naujas užsakymas\" sent.",
+   "22:47 · Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+   "22:47 · Likutis sumažintas: Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg (71&rarr;68), Churu kreminis skanėstas 10+",
+   "22:47 · Vykdymas: DS — VF 5 vnt (1 siunta(-os))",
+   "22:47 · Stock hold of 60 minutes applied to: - Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg (NGCST01) &times; 3- Ch"
+  ]
+ }
+}
