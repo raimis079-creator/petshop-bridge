@@ -1,0 +1,155 @@
+{
+ "VERSIJA_RUN": "run466-v1",
+ "sid": 2250,
+ "rez": {
+  "VERSIJA": "s466-v1",
+  "metabox_failai": {
+   "class-admin-ui.php": [
+    "25: public function __construct() {",
+    "26: add_action( 'admin_menu', [ $this, 'add_menu' ] );",
+    "27: add_action( 'admin_post_petshop_approve_product',    [ $this, 'handle_approve' ] );",
+    "28: add_action( 'admin_post_petshop_zb_reprice_apply',   [ $this, 'handle_zb_reprice_apply' ] );",
+    "30: add_action( 'manage_product_posts_custom_column',    [ $this, 'render_zb_column' ], 10, 2 );",
+    "31: add_action( 'admin_notices',                         [ $this, 'show_notices' ] );",
+    "33: add_action( 'woocommerce_product_options_stock_fields', [ $this, 'render_own_stock_field' ] );",
+    "34: add_action( 'woocommerce_process_product_meta',         [ $this, 'save_own_stock_field' ] );",
+    "37: public function add_menu(): void {",
+    "42: public function render_main_page(): void {",
+    "64: private function render_review_tab(): void {",
+    "92: $own    = get_post_meta($pid,'_own_stock_qty',true);",
+    "119: private function render_pricing_tab(): void {",
+    "164: private function compute_zb_reprice( Petshop_Pricing $pricing ): array {"
+   ],
+   "class-product-cost-metabox.php": [
+    "50: public static function init(): void {",
+    "51: add_action( 'add_meta_boxes_product', [ __CLASS__, 'register_metabox' ] );",
+    "52: add_action( 'save_post_product', [ __CLASS__, 'save_metabox' ], 20, 2 );",
+    "55: public static function register_metabox(): void {",
+    "56: add_meta_box(",
+    "70: public static function render_metabox( $post ): void {",
+    "113: private static function render_styles(): void {",
+    "156: private static function render_source_badge( array $data ): void {",
+    "187: private static function render_cost_section( array $data ): void {",
+    "220: private static function render_legacy_cost_section( int $product_id, array $data ): void {",
+    "297: private static function render_price_section( float $regular, float $sale, float $price, bool $has_active_sale ): void {",
+    "318: private static function render_margin_section( ?array $margin, ?float $cost_net ): void {",
+    "340: private static function render_lock_section( int $product_id, array $state ): void {",
+    "385: private static function render_supplier_section( array $data ): void {"
+   ]
+  },
+  "resolver": {
+   "B": 6711,
+   "sha": "1fbbe217eff56fae"
+  },
+  "resolver_eilutes": [
+   "22: *   quattro     -> Quattro (Kauno grudai)     carrier=venipak",
+   "23: *   ambrosia    -> Ambrosia                   carrier=venipak",
+   "24: *   belcor_tofu -> Belacor (Tofu kraikas)     carrier=venipak",
+   "25: *   prins       -> Prins                      carrier=venipak",
+   "26: *   legacy      -> tikras savas sandelis      carrier=any",
+   "46: private static function dropship_map(): array {",
+   "48: 'quattro' => [",
+   "50: 'slugs' => [ 'quattro' ],",
+   "53: 'ambrosia' => [",
+   "55: 'slugs' => [ 'ambrosia' ],",
+   "58: 'belcor_tofu' => [",
+   "63: 'prins' => [",
+   "65: 'slugs' => [ 'prins' ],",
+   "74: * @return array{",
+   "75: *   source: string,        // zb|vf|quattro|ambrosia|belcor_tofu|prins|legacy",
+   "77: *   courier_only: bool,    // tik kurjeris (oversize)?",
+   "82: public static function resolve( int $product_id ): array {",
+   "84: $courier_only = get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes';",
+   "87: if ( self::is_zb( $product_id ) ) {",
+   "89: 'source'       => 'zb',",
+   "90: 'carrier'      => 'venipak',",
+   "91: 'courier_only' => $courier_only,",
+   "98: if ( self::is_vf( $product_id ) ) {",
+   "100: 'source'       => 'vf',",
+   "101: 'carrier'      => 'venipak',",
+   "102: 'courier_only' => $courier_only,",
+   "110: if ( $dropship !== null ) {",
+   "112: 'source'       => $dropship['source'],",
+   "113: 'carrier'      => 'venipak',",
+   "114: 'courier_only' => $courier_only,",
+   "122: 'source'       => 'legacy',",
+   "123: 'carrier'      => 'any',",
+   "124: 'courier_only' => $courier_only,",
+   "133: public static function is_venipak_only( int $product_id ): bool {",
+   "135: return $f['carrier'] === 'venipak';",
+   "142: private static function is_zb( int $pid ): bool {",
+   "148: private static function is_vf( int $pid ): bool {",
+   "156: *   1. _legacy_manufacturer substring (case-insensitive)",
+   "165: *   if ( in_array($source, ['quattro','prins']) && ! self::is_food_category($pid) ) continue;",
+   "168: * @return array{source: string, label: string, reason: string}|null",
+   "170: private static function detect_dropship( int $pid ): ?array {",
+   "172: $manuf = (string) get_post_meta( $pid, '_legacy_manufacturer', true );",
+   "175: if ( is_wp_error( $brand_slugs ) || ! is_array( $brand_slugs ) ) {",
+   "181: // Signalas 1: _legacy_manufacturer substring",
+   "182: if ( $manuf !== '' ) {",
+   "184: if ( stripos( $manuf, $needle ) !== false ) {",
+   "186: 'source' => $source,",
+   "188: 'reason' => \"_legacy_manufacturer ~= {$needle}\",",
+   "196: if ( in_array( $slug, $brand_slugs, true ) ) {",
+   "198: 'source' => $source,"
+  ],
+  "resolve_imtis_300": {
+   "vf": {
+    "n": 109,
+    "pvz": "Josera Mini Duck+Potato sausas pašaras mažų v",
+    "carrier": "venipak"
+   },
+   "legacy": {
+    "n": 98,
+    "pvz": "Hikari Friend Medium, 10 kg, - Hikari maistas",
+    "carrier": "any"
+   },
+   "zb": {
+    "n": 70,
+    "pvz": "FARMINA VET LIFE - CAT Dry GASTRO-INTESTINAL ",
+    "carrier": "venipak"
+   },
+   "belcor_tofu": {
+    "n": 10,
+    "pvz": "Kraikas katėms TOFU BeloCat, alavijo / aloe v",
+    "carrier": "venipak"
+   },
+   "quattro": {
+    "n": 6,
+    "pvz": "Quattro SB su lašiša ir kriliu sausas suaugus",
+    "carrier": "venipak"
+   },
+   "ambrosia": {
+    "n": 4,
+    "pvz": "AMBROSIA begrūdis su ėriena ir šviežia lašiša",
+    "carrier": "venipak"
+   },
+   "prins": {
+    "n": 3,
+    "pvz": "Prins ProCare Super Active sausas maistas aug",
+    "carrier": "venipak"
+   }
+  },
+  "manage_stock": [
+   {
+    "meta_value": "no",
+    "c": "58"
+   },
+   {
+    "meta_value": "yes",
+    "c": "3904"
+   }
+  ],
+  "stock_status": [
+   {
+    "meta_value": "instock",
+    "c": "3002"
+   },
+   {
+    "meta_value": "outofstock",
+    "c": "960"
+   }
+  ]
+ },
+ "svetaine": "200"
+}
