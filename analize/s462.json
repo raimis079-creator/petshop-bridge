@@ -1,0 +1,223 @@
+{
+ "VERSIJA_RUN": "run462-v1",
+ "sid": 2246,
+ "rez": {
+  "VERSIJA": "s462-v2",
+  "pluginai": {
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php": {
+    "v": "1.26.3",
+    "pav": "Shipping with Venipak for WooCommerce",
+    "aktyvus": true
+   },
+   "woo-lithuaniapost-main/woo-lithuaniapost.php": {
+    "v": "4.0.32",
+    "pav": "UNISEND for WooCommerce",
+    "aktyvus": true
+   }
+  },
+  "bulk_actions": {
+   "bulk_actions-woocommerce_page_wc-orders": {
+    "shopup_venipak_shipping_dispatch": "Venipak siųsti pasirinktus",
+    "shopup_venipak_shipping_labels": "Venipak lipdukai PDF",
+    "woo_lp_cancel_label": "UNISEND Atšaukti lipdukus",
+    "woo_lp_print_label": "UNISEND Spausdinti lipdukus",
+    "woo_lp_generate_return_orders": "UNISEND Spausdinti grąžinimo lipdukus",
+    "woo_lp_print_manifest": "UNISEND Kviesti kurjerį ir spausdinti manifestą"
+   },
+   "bulk_actions-edit-shop_order": {
+    "shopup_venipak_shipping_dispatch": "Venipak siųsti pasirinktus",
+    "shopup_venipak_shipping_labels": "Venipak lipdukai PDF",
+    "woo_lp_cancel_label": "UNISEND Atšaukti lipdukus",
+    "woo_lp_print_label": "UNISEND Spausdinti lipdukus",
+    "woo_lp_generate_return_orders": "UNISEND Spausdinti grąžinimo lipdukus",
+    "woo_lp_print_manifest": "UNISEND Kviesti kurjerį ir spausdinti manifestą"
+   },
+   "HANDLERS: handle_bulk_actions-woocommerce_page_wc-orders": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Dispatch::add_venipak_shipping_bulk_action_process",
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Label::add_venipak_shipping_bulk_action_process",
+    "10 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::handle_hpos_action"
+   ],
+   "HANDLERS: handle_bulk_actions-edit-shop_order": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Dispatch::add_venipak_shipping_bulk_action_process",
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Label::add_venipak_shipping_bulk_action_process",
+    "10 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::handle_action"
+   ]
+  },
+  "shipping_kabliukai": {
+   "admin_menu": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Settings::add_menu",
+    "10 Woo_Lithuaniapost_Admin_Order_Settings::register_menu"
+   ],
+   "bulk_actions-edit-shop_order": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Orders_List::add_venipak_shipping_bulk_action",
+    "20 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::register_bulk_actions"
+   ],
+   "bulk_actions-woocommerce_page_wc-orders": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Orders_List::add_venipak_shipping_bulk_action",
+    "20 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::register_bulk_actions"
+   ],
+   "handle_bulk_actions-edit-shop_order": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Dispatch::add_venipak_shipping_bulk_action_process",
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Label::add_venipak_shipping_bulk_action_process",
+    "10 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::handle_action"
+   ],
+   "handle_bulk_actions-woocommerce_page_wc-orders": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Dispatch::add_venipak_shipping_bulk_action_process",
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Label::add_venipak_shipping_bulk_action_process",
+    "10 Woo_Lithuaniapost_Admin_Order_Bulk_Actions::handle_hpos_action"
+   ],
+   "wp_ajax_woocommerce_shopup_venipak_shipping_get_label_pdf": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Label::get_label_pdf"
+   ],
+   "wp_ajax_woocommerce_shopup_venipak_shipping_get_manifest_pdf": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Admin_Label::get_manifest_pdf"
+   ],
+   "woocommerce_cart_shipping_method_full_label": [
+    "10 Woocommerce_Shopup_Venipak_Shipping_Public::add_venipak_shipping_logo"
+   ],
+   "woo_lithuaniapost_order_action_generate_manifests": [
+    "10 Woo_Lithuaniapost_Admin_Order_Service::handle_generate_manifests"
+   ],
+   "woo_lithuaniapost_order_action_download_labels": [
+    "10 Woo_Lithuaniapost_Admin_Order_Service::download_labels"
+   ],
+   "woo_lithuaniapost_order_action_get_available_order_actions": [
+    "10 Woo_Lithuaniapost_Admin_Order_Service::get_available_order_actions"
+   ],
+   "woo_lithuaniapost_order_action_get_available_order_actions_by_id": [
+    "10 Woo_Lithuaniapost_Admin_Order_Service::get_available_order_actions_by_id"
+   ],
+   "woo_lithuaniapost__order_action_cancel_labels": [
+    "10 Woo_Lithuaniapost_Admin_Order_Service::handle_cancel_labels"
+   ],
+   "woo_lithuaniapost_api_get_manifest": [
+    "10 Woo_Lithuaniapost_Admin_Api_Hooks::get_manifest"
+   ],
+   "woo_lithuaniapost_api_generate_manifest": [
+    "10 Woo_Lithuaniapost_Admin_Api_Hooks::handle_generate_manifest"
+   ],
+   "admin_post_woo-ltpost-export-table-rates": [
+    "10 Woo_Lithuaniapost_Admin::export_table_rates"
+   ],
+   "admin_post_woo-ltpost-export-country-rates": [
+    "10 Woo_Lithuaniapost_Admin::export_country_rates"
+   ],
+   "admin_post_woo-ltpost-export-country-weight-rates": [
+    "10 Woo_Lithuaniapost_Admin::export_country_weight_rates"
+   ],
+   "admin_post_woo-ltpost-create-label": [
+    "10 Woo_Lithuaniapost_Admin_Order_Settings::generate_label"
+   ],
+   "admin_post_woo-ltpost-create-parcel": [
+    "10 Woo_Lithuaniapost_Admin_Order_Settings::create_parcel"
+   ],
+   "admin_post_woo-ltpost-generate-return-stickers": [
+    "10 Woo_Lithuaniapost_Admin_Order_Settings::generate_return_stickers"
+   ],
+   "woocommerce_order_actions": [
+    "10 Woo_Lithuaniapost_Admin_Order_Actions::add_order_actions"
+   ],
+   "woocommerce_order_action_woo_lp_cancel_label": [
+    "10 Woo_Lithuaniapost_Admin_Order_Actions::process_cancel_label"
+   ],
+   "woocommerce_order_action_woo_lp_print_label": [
+    "10 Woo_Lithuaniapost_Admin_Order_Actions::process_print_label"
+   ],
+   "woocommerce_order_action_woo_lp_print_manifest": [
+    "10 Woo_Lithuaniapost_Admin_Order_Actions::process_print_manifest"
+   ],
+   "admin_action_print_label": [
+    "10 Woo_Lithuaniapost_Admin_Order_Settings::handle_bulk_action"
+   ],
+   "admin_action_print_manifest": [
+    "10 Woo_Lithuaniapost_Admin_Order_Settings::handle_bulk_action"
+   ]
+  },
+  "admin_meniu_slugai": [
+   "lpsettings_woo_lithuaniapost_address_pickup_id",
+   "lpsettings_woo_lithuaniapost_updated_version",
+   "shopup_venipak_shipping_settings",
+   "venipak_pack_number",
+   "woo_lithuaniapost_module_active",
+   "woocommerce_shopup_venipak_shipping_courier_method_10_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_2_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_6_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_7_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_8_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings"
+  ],
+  "klases": {
+   "WC_Venipak_Manifest": "ne",
+   "Venipak_Manifest": "ne",
+   "WC_Shipping_Venipak_Manifest": "ne",
+   "Woo_LithuaniaPost_Admin_Order_Service": "yra",
+   "Woo_LithuaniaPost_Manifest": "ne"
+  },
+  "failai": {
+   "wc-venipak-shipping": {
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-settings.php": [
+     "manifest"
+    ],
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php": [
+     "manifest"
+    ],
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php": [
+     "manifest"
+    ],
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-orders-list.php": [
+     "bulk_actions",
+     "manifest"
+    ],
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php": [
+     "manifest"
+    ],
+    "includes/class-woocommerce-shopup-venipak-shipping.php": [
+     "bulk_actions",
+     "manifest"
+    ]
+   },
+   "woo-lithuaniapost-main": {
+    "vendor/setasign/fpdf/makefont/ttfparser.php": [
+     "multiple"
+    ],
+    "admin/class-woo-lithuaniapost-admin-api-hooks.php": [
+     "manifest"
+    ],
+    "admin/class-woo-lithuaniapost-admin-settings.php": [
+     "multiple"
+    ],
+    "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+     "manifest"
+    ],
+    "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php": [
+     "bulk_actions",
+     "manifest",
+     "print_labels"
+    ],
+    "admin/class-woo-lithuaniapost-admin-order-service.php": [
+     "manifest"
+    ],
+    "admin/api/class-woo-lithuaniapost-admin-courier-api.php": [
+     "manifest"
+    ],
+    "admin/partials/html-lithuaniapost-admin-order-settings.php": [
+     "manifest",
+     "print_labels"
+    ],
+    "admin/class-woo-lithuaniapost-admin-order-settings.php": [
+     "bulk_actions"
+    ],
+    "includes/class-woo-lithuaniapost.php": [
+     "bulk_actions",
+     "manifest"
+    ]
+   }
+  }
+ },
+ "svetaine": "200"
+}
