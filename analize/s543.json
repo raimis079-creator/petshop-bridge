@@ -1,0 +1,37 @@
+{
+ "VERSIJA_RUN": "run543",
+ "sid": 2326,
+ "rez": {
+  "VERSIJA": "s543",
+  "pries": {
+   "venipak_data": "",
+   "pickup": "3648"
+  },
+  "grazino": "https://dev.avesa.lt/wp-admin/admin.php?page=wc-orders",
+  "isvestis": "<br />\n<b>Warning</b>:  Undefined array key \"id\" in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-bulk-actions.php</b> on line <b>103</b><br />",
+  "po": {
+   "venipak_data": "{\"manifest\":\"07267260805001\",\"pack_numbers\":[\"V07267E1000002\"],\"weight\":4.5,\"products_count\":5,\"status\":\"sent\",\"error_message\":\"\"}",
+   "statusas": "completed"
+  },
+  "pastabos": [
+   "23:12:40 · Užsakymas išsiųstas į VENIPAK Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "23:12:40 · Email \"Įvykdytas užsakymas\" sent.",
+   "22:54:44 · Payment complete.",
+   "22:54:44 · Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Rai. Laiškas klientui: NESIŲSTAS."
+  ],
+  "http": [
+   {
+    "url": "https://go.venipak.lt/import/send.php",
+    "siusta": "{\"user\":\"Avesa97\",\"pass\":\"***\",\"xml_text\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\\n<description type=\\\"1\\\"><manifest title=\\\"07267260805001\\\"><shipment><sender><name>UAB Avesa<\\/name><company_code>302568442<\\/company_code><country>LT<\\/country><city>Liucionys<\\/city><address>Liucionių g. 46<\\/address><post_code>15166<\\/post_code><contact_person>Raimundas Bulakas<\\/contact_person><contact_tel>+37068187787<\\/contact_tel><contact_email>terra@petshop.lt<\\/contact_email><\\/sender><consignee><company_code>300906055<\\/company_code><name>Venipak locker, AIBĖ Venipak paštomatas<\\/name><country>LT<\\/country><city>Nemenčinė<\\/city><address>Švenčionių g. 72<\\/address><post_code>15168<\\/post_code><contact_person>Rai B<\\/contact_person><contact_tel>+37065082900<\\/contact_tel><contact_email>terra@gyvunai.lt<\\/contact_email><\\/consignee><attribute><shipment_code>34886<\\/shipment_code><doc_no>34886<\\/doc_no><comment_text\\/><\\/attribute><pack><pack_no>V07267E1000002<\\/pack_no><weight>4.5<\\/weight><description>Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg\\nChuru kreminis skanėstas 10+ katėms su tunu ir lašiša 4vnt\\n<\\/description><\\/pack><\\/shipment><\\/ma",
+    "kodas": 200,
+    "atsakymas": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n  <answer type=\"ok\">\n    <text>V07267E1000002</text></answer>"
+   },
+   {
+    "url": "https://go.venipak.lt/ws/get_pickup_points?country=LT",
+    "siusta": "",
+    "kodas": 200,
+    "atsakymas": "[{\"id\":2630,\"name\":\"Venipak locker, Express Market Venipak pa\\u0161tomatas\",\"code\":\"300906055\",\"address\":\"Pil\\u0117n\\u0173 g. 1\",\"city\":\"Akademija\",\"zip\":\"53347\",\"country\":\"LT\",\"terminal\":\"02\",\"display_name\":\"Akademijos Pil\\u0117n\\u0173 Express Market Venipak pa\\u0161tomatas\",\"description\":\"Pa\\u0161tomatas yra lauke prie sienos, kair\\u0117je \\u012f\\u0117jimo \\u012f parduotuv\\u0119 pus\\u0117je; 24\\/7\",\"working_hours\":\"[{\\\"from_h\\\":\\\"0\\\",\\\"from_m\\\":\\\"0\\\",\\\"to_h\\\":\\\"23\\\",\\\"to_m\\\":\\\"59\\\",\\\"dayOfWeek\\\":1,\\\"openTime\\\":\\\"00:00\\\",\\\"closeTime\\\":\\\"23:59\\\"},{\\\"from_h\\\":\\\"0\\\",\\\"from_m\\\":\\\"0\\\",\\\"to_h\\\":\\\"23\\\",\\\"to_m\\\":\\\"59\\\",\\\"dayOfWeek\\\":2,\\\"openTime\\\":\\\"00:00\\\",\\\"closeTime\\\":\\\"23:59\\\"},{\\\"from_h\\\":\\\"0\\\",\\\"from_m\\\":\\\"0\\\",\\\"to_h\\\":\\\"23\\\",\\\"to_m\\\":\\\"59\\\",\\\"dayOfWeek\\\":3,\\\"openTime\\\":\\\"00:00\\\",\\\"closeTime\\\":\\\"23:59\\\"},{\\\"from_h\\\":\\\"0\\\",\\\"from_m\\\":\\\"0\\\",\\\"to_h\\\":\\\"23\\\",\\\"to_m\\\":\\\"59\\\",\\\"dayOfWeek\\\":4,\\\"openTime\\\":\\\"00:00\\\",\\\"closeTime\\\":\\\"23:59\\\"},{\\\"from_h\\\":\\\"0\\\",\\\"from_m\\\":\\\"0\\\",\\\"to_h\\\":\\\"23\\\",\\\"to_m\\\":\\\"59\\\",\\\"dayOfWeek\\\":5,\\\"openTime\\\":\\\"00:00\\\",\\\"closeTime\\\":\\\"23:59\\\"},{\\\"from_h\\\":\\\"0\\\",\\\"from_m\\\":\\\"0\\\",\\\"to_h\\\":\\\"23\\\",\\\"to_m\\\":\\\"59\\\",\\\"dayOfWeek\\\":6,\\\"openTime\\\":\\\"00:00\\\",\\\"closeTime\\\":\\\"2"
+   }
+  ]
+ }
+}
