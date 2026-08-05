@@ -1,0 +1,47 @@
+{
+ "VERSIJA_RUN": "run540",
+ "sid": 2323,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "z3": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=3",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Venipak",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "3 Venipak <DABAR>",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [
+    "1 · Registruoti siuntas [WC shopup_venipak_shipping_dispatch ids=34882,34881]",
+    "2 · Spausdinti lipdukus [WC shopup_venipak_shipping_labels ids=34882,34881]"
+   ],
+   "tekstas": "2 siuntos. Pirma registruok siuntas Venipak sistemoje, tada spausdink lipdukus 10×15.",
+   "eilutes": [
+    "#34882 Kristina Spiriūtė Venipak paštomatas nenurodytas paštomatas — nėra",
+    "#34881 Inga Korolovienė Venipak paštomatas nenurodytas paštomatas — nėra"
+   ],
+   "kojele": "Atgal | Etikečių spausdintuvas 10×15. Pirma registruoti, tada spausdinti. | Toliau",
+   "statusas": "Registruota 0 iš 2",
+   "siuntos": [
+    "#34882 Kristina Spiriūtė Venipak paštomatas nenurodytas paštomatas — nėra",
+    "#34881 Inga Korolovienė Venipak paštomatas nenurodytas paštomatas — nėra"
+   ],
+   "ispejimas": "Venipak pluginas apie nesėkmę nepraneša — todėl būklę rodome patys. Dažniausia priežastis: paštomato siuntoje nenurodytas paštomatas arba trūksta gavėjo duomenų. Lipdukų nespausdink, kol siuntos kodo nėra — spausdintuvas išmes tuščią lapą.",
+   "klaidos": [],
+   "png": "screenshots/s540_z3.png"
+  }
+ }
+}
