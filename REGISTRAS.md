@@ -1547,7 +1547,7 @@ Kode parašyta: `legacy -> tikras savas sandelis, carrier=any`.
 1 ✅ AV likučio laukas
 2 ✅ AV kaip šaltinis (§19.2)
 3 ✅ pardavimo riba (AV + tiekėjas) (§19.3)
-4 ⏳ šaltinio fiksavimas užsakymo eilutėje
+4 ✅ šaltinio fiksavimas užsakymo eilutėje (§19.5)
 5 ⏳ likučio mažinimas išsiuntus
 6 ⏳ užsakymo grupavimas MAIN/DS/MIXED
 7 ⏳ pakuotojo ekranas
@@ -1655,6 +1655,58 @@ sustotų be jokio pranešimo.
 
 **KAIP RADAU:** palyginau `_stock` su `_vf_qty` VISOSE prekėse. Vienos prekės
 tikrinimas to nebūtų parodęs.
+
+---
+
+### 19.5 ✅ 4 SLUOKSNIS — ŠALTINIO FIKSAVIMAS EILUTĖJE
+```
+mu-plugins/petshop-av-order.php  v1.0 · 4 622 B · sha c271db49416d8995
+```
+Konsultanto punktas 3. Sprendimas priimamas VIENĄ kartą (payment_complete /
+processing / on-hold) ir ĮRAŠOMAS. Vėliau tik SKAITOMAS.
+```
+EILUTĖJE:  _ps_source · _ps_carrier · _ps_source_qty · _ps_source_at · _ps_source_reason
+UŽSAKYME:  _ps_order_type (MAIN|DS|MIXED|REVIEW) · _ps_groups · _ps_shipments · _ps_decided_at
++ automatinė pastaba: „Vykdymas: MIXED — AV 1 vnt · ZB 1 vnt (2 siuntos)"
+```
+
+**E2E 5/5 (s478):**
+```
+A tik AV              → MAIN  1 siunta · av/any
+B AV + ZB             → MIXED 2 · av/any + zb/venipak
+C Josera 1 + ZB       → MIXED 2 · av/any „AV turi 2, reikia 1"
+D Josera 3 + ZB       → MIXED 2 · vf/venipak ×3 „neužtenka" + zb
+E tik ZB              → DS    1 · zb/venipak
+IDEMPOTENCIJA: antras statuso keitimas NEPERSKAIČIAVO
+PO LIKUČIO POKYČIO: AV 2→0, bet eilutė LIKO „av" ✅ ← šio sluoksnio TIKSLAS
+```
+
+### 19.6 🔴 RADINYS PENKTAM SLUOKSNIUI: WooCommerce JAU mažina `_stock`
+```
+woocommerce_payment_complete        → wc_maybe_reduce_stock_levels
+woocommerce_order_status_processing → wc_maybe_reduce_stock_levels
+```
+S478 testo metu Josera `_stock` 653 → 649 (Josera ×1 + ×3 = 4 vnt). **Ne klaida —
+normalus WC veikimas.** Atstatyta (s479): `_stock` ir lookup → 653.
+
+**PASEKMĖ 5 SLUOKSNIUI — negalima tiesiog „sumažinti AV":**
+```
+eilutėms _ps_source = av   → mažinti _own_stock_qty IR SUSTABDYTI WC mažinimą
+eilutėms su tiekėju        → palikti WC elgtis kaip įprasta
+```
+Antraip AV prekei nusirašytų DU kartus (vienetas iš `_own_stock_qty` + vienetas
+iš `_stock`), nors fiziškai išėjo vienas.
+`woocommerce_can_reduce_order_stock` filtras tuščias, BET veikia VISAM užsakymui,
+ne eilutei — reikės tikslesnio kelio.
+
+### ⚠️ MANO TESTŲ ŠALUTINIAI POVEIKIAI (du per vieną dieną)
+```
+S468  _stock 653 → 2    AV rašymas perrašė _stock  → saugiklis apsaugotas_rasymas()
+S478  _stock 653 → 649  WC pats sumažino per processing → atstatyta rankomis
+```
+**TAISYKLĖ:** po kiekvieno testo, kuris liečia užsakymus ar likučius, PALYGINTI
+`_stock` su `_vf_qty`/`_zb_qty` — ne tik tikrinamos prekės, o pjūvį.
+Vienos prekės tikrinimas šito neparodo.
 
 ---
 
