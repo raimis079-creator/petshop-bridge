@@ -1,0 +1,506 @@
+{
+ "VERSIJA_RUN": "run509",
+ "sid": 2292,
+ "rez": {
+  "VERSIJA": "s509-v1",
+  "mu": {
+   "automation-by-installatron.php": {
+    "B": 983,
+    "sha": "2a867b38cac8f47c"
+   },
+   "petshop-av-admin.php": {
+    "B": 7510,
+    "sha": "d6397e214953bd84"
+   },
+   "petshop-av-dropship.php": {
+    "B": 17935,
+    "sha": "d03cbf2128079e65"
+   },
+   "petshop-av-expiry.php": {
+    "B": 8633,
+    "sha": "4995fa9c8c3670cc"
+   },
+   "petshop-av-limit.php": {
+    "B": 3720,
+    "sha": "f3008f49a22e65e6"
+   },
+   "petshop-av-order.php": {
+    "B": 4923,
+    "sha": "b2adf4764d2fb18e"
+   },
+   "petshop-av-reduce.php": {
+    "B": 5742,
+    "sha": "ee0cac53c62d66b5"
+   },
+   "petshop-av-sheets.php": {
+    "B": 10445,
+    "sha": "237346e8e7418b75"
+   },
+   "petshop-av-source.php": {
+    "B": 5762,
+    "sha": "a9e6968438ad521b"
+   },
+   "petshop-av-stock.php": {
+    "B": 12575,
+    "sha": "c6cf7e99783591bf"
+   },
+   "petshop-code-search.php": {
+    "B": 5447,
+    "sha": "e141c4ae01efd115"
+   },
+   "petshop-desk.php": {
+    "B": 13061,
+    "sha": "785b35d1e34b9f99"
+   },
+   "petshop-feeding-calc-rest.php": {
+    "B": 19012,
+    "sha": "97c890453fd6bd2b"
+   },
+   "petshop-import-log.php": {
+    "B": 2826,
+    "sha": "2f64cc9e95a2bff0"
+   },
+   "petshop-legacy-301.php": {
+    "B": 2881,
+    "sha": "02e958db35dc9a32"
+   },
+   "petshop-m8-food.php": {
+    "B": 35513,
+    "sha": "d94db9f5befc824e"
+   },
+   "petshop-payment-failed.php": {
+    "B": 3704,
+    "sha": "e366969582c29fbb"
+   },
+   "petshop-pet-claim.php": {
+    "B": 7126,
+    "sha": "5bb63c37aedeadc8"
+   },
+   "petshop-ps-pets-migration-freeze.php": {
+    "B": 7018,
+    "sha": "ab725943e9dcd876"
+   }
+  },
+  "klases": {
+   "Petshop_Desk": "YRA",
+   "Petshop_AV_Stock": "YRA",
+   "Petshop_AV_Source": "YRA",
+   "Petshop_AV_Limit": "YRA",
+   "Petshop_AV_Order": "YRA",
+   "Petshop_AV_Reduce": "YRA",
+   "Petshop_AV_Admin": "YRA",
+   "Petshop_AV_Expiry": "YRA",
+   "Petshop_AV_Sheets": "YRA",
+   "Petshop_AV_Dropship": "YRA",
+   "Petshop_Fulfillment_Source": "YRA",
+   "Petshop_Pricing": "YRA"
+  },
+  "statusai": {
+   "wc-pending": "Neapmokėtas",
+   "wc-processing": "Vykdomas",
+   "wc-on-hold": "Sustabdytas",
+   "wc-completed": "Įvykdytas",
+   "wc-cancelled": "Atšauktas",
+   "wc-refunded": "Grąžintas",
+   "wc-failed": "Nepavykęs",
+   "wc-lp-courier-await": "Laukiama kurjerio iškvietimo",
+   "wc-lp-parcel-created": "Siunta vykdoma",
+   "wc-lp-parcel-failed": "Siuntos sukurti nepavyko",
+   "wc-lp-label-created": "Paruošta siuntimui",
+   "wc-lp-courier-called": "Kurjeris iškviestas",
+   "wc-lp-on-the-way": "Siunčiama",
+   "wc-lp-delivered": "Siunta pristatyta",
+   "wc-lp-cancelled": "Siunta atšaukta",
+   "wc-lp-parcel-await": "Sustabdytas",
+   "wc-checkout-draft": "Juodraštis"
+  },
+  "hpos": "ĮJUNGTA",
+  "uzsakymu_pagal_statusa": [
+   {
+    "status": "wc-cancelled",
+    "c": "1"
+   },
+   {
+    "status": "wc-completed",
+    "c": "2"
+   },
+   {
+    "status": "wc-pending",
+    "c": "2"
+   },
+   {
+    "status": "wc-processing",
+    "c": "2"
+   }
+  ],
+  "max_order_id": 34885,
+  "meta_raktai": [
+   {
+    "meta_key": "_petshop_avpn_number",
+    "c": "4"
+   },
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "c": "6"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "c": "5"
+   },
+   {
+    "meta_key": "venipak_pickup_point",
+    "c": "1"
+   },
+   {
+    "meta_key": "venipak_shipping_order_data",
+    "c": "1"
+   }
+  ],
+  "visi_meta_top": [
+   {
+    "meta_key": "_shipping_address_index",
+    "c": "7"
+   },
+   {
+    "meta_key": "_billing_address_index",
+    "c": "7"
+   },
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "c": "6"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "c": "5"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "c": "5"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "c": "5"
+   },
+   {
+    "meta_key": "_petshop_test",
+    "c": "5"
+   },
+   {
+    "meta_key": "_petshop_avpn_number",
+    "c": "4"
+   },
+   {
+    "meta_key": "_dp_stock_reduced",
+    "c": "4"
+   },
+   {
+    "meta_key": "_wc_push_notification_sent",
+    "c": "4"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf_token",
+    "c": "3"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf",
+    "c": "3"
+   },
+   {
+    "meta_key": "_edit_lock",
+    "c": "2"
+   },
+   {
+    "meta_key": "_ps_order_type",
+    "c": "2"
+   },
+   {
+    "meta_key": "_ps_groups",
+    "c": "2"
+   },
+   {
+    "meta_key": "_ps_shipments",
+    "c": "2"
+   },
+   {
+    "meta_key": "_ps_decided_at",
+    "c": "2"
+   },
+   {
+    "meta_key": "_petshop_completed_pdf",
+    "c": "2"
+   },
+   {
+    "meta_key": "_wc_order_attribution_device_type",
+    "c": "1"
+   },
+   {
+    "meta_key": "venipak_shipping_order_data",
+    "c": "1"
+   },
+   {
+    "meta_key": "_ps_order_shipped_emitted",
+    "c": "1"
+   },
+   {
+    "meta_key": "_ps_completed_at",
+    "c": "1"
+   },
+   {
+    "meta_key": "_petshop_iapv_number",
+    "c": "1"
+   },
+   {
+    "meta_key": "_petshop_order_pdf",
+    "c": "1"
+   },
+   {
+    "meta_key": "_ps_av_reduced",
+    "c": "1"
+   },
+   {
+    "meta_key": "is_vat_exempt",
+    "c": "1"
+   },
+   {
+    "meta_key": "venipak_pickup_point",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_source_type",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_source",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_push_notification_claimed",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_entry",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_start_time",
+    "c": "1"
+   },
+   {
+    "meta_key": "_petshop_dl_purchase_sent",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_pages",
+    "c": "1"
+   },
+   {
+    "meta_key": "_ps_refill_tracked",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_count",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_user_agent",
+    "c": "1"
+   }
+  ],
+  "prekes": {
+   "own_stock": 1,
+   "expiry": 0,
+   "expiry_note": 0,
+   "publish": 2776
+  },
+  "gateways": {
+   "paysera": {
+    "pav": "Mokėjimas internetu",
+    "refund": "ne"
+   },
+   "bacs": {
+    "pav": "Bankinis pavedimas",
+    "refund": "ne"
+   }
+  },
+  "wcdn": {
+   "pluginas": "YRA",
+   "kr_funkcijos": {
+    "petshop_credit_note_number": "ne",
+    "petshop_get_avpn": "ne",
+    "petshop_next_invoice_number": "ne"
+   },
+   "opcijos": [
+    "petshop_avpn_counter",
+    "wcdn_allow_tracking",
+    "wcdn_db_version",
+    "wcdn_invoice_number_counter",
+    "wcdn_invoice_number_counter_year",
+    "wcdn_legacy_backup",
+    "wcdn_legacy_backup_autoload",
+    "wcdn_migration_7_0_2_completed",
+    "wcdn_migration_7_1_0_completed",
+    "wcdn_migration_7_1_2_completed",
+    "wcdn_migration_7_completed",
+    "wcdn_settings",
+    "wcdn_template_settings",
+    "wcdn_version"
+   ]
+  },
+  "musu_puslapiai": {
+   "ps-desk": null,
+   "ps-lapai": null,
+   "ps-dropship": null,
+   "ps-dropship-nustatymai": null,
+   "petshop-reports": null
+  },
+  "shipping": [
+   {
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "c": "5"
+   },
+   {
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "c": "3"
+   },
+   {
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "c": "3"
+   }
+  ],
+  "temp_snippets": [
+   {
+    "id": "2292",
+    "name": "TEMP S509 Recon",
+    "active": "1"
+   },
+   {
+    "id": "2291",
+    "name": "TEMP S508 Cookie",
+    "active": "0"
+   },
+   {
+    "id": "2290",
+    "name": "TEMP S507 Desk",
+    "active": "0"
+   },
+   {
+    "id": "2289",
+    "name": "TEMP S506 Langas recon",
+    "active": "0"
+   },
+   {
+    "id": "2288",
+    "name": "TEMP S505 Patikra",
+    "active": "0"
+   },
+   {
+    "id": "2287",
+    "name": "TEMP S504 Stock fix",
+    "active": "0"
+   },
+   {
+    "id": "2286",
+    "name": "TEMP S503 Dropship v11",
+    "active": "0"
+   },
+   {
+    "id": "2285",
+    "name": "TEMP S502 Dropship",
+    "active": "0"
+   },
+   {
+    "id": "2284",
+    "name": "TEMP S501 Lipdukai",
+    "active": "0"
+   },
+   {
+    "id": "2283",
+    "name": "TEMP S500 Stock fix",
+    "active": "0"
+   },
+   {
+    "id": "2282",
+    "name": "TEMP S499 Galutinis",
+    "active": "0"
+   },
+   {
+    "id": "2281",
+    "name": "TEMP S498 Valymas",
+    "active": "0"
+   },
+   {
+    "id": "2280",
+    "name": "TEMP S497 Pakuotes v2",
+    "active": "0"
+   },
+   {
+    "id": "2279",
+    "name": "TEMP S495 Cookie",
+    "active": "0"
+   },
+   {
+    "id": "2278",
+    "name": "TEMP S494 AV Sheets",
+    "active": "0"
+   },
+   {
+    "id": "2277",
+    "name": "TEMP S493 Lapu recon",
+    "active": "0"
+   },
+   {
+    "id": "2276",
+    "name": "TEMP S492 Galutinis valymas",
+    "active": "0"
+   },
+   {
+    "id": "2275",
+    "name": "TEMP S491 Expiry valymas",
+    "active": "0"
+   },
+   {
+    "id": "2274",
+    "name": "TEMP S490 AV Expiry",
+    "active": "0"
+   },
+   {
+    "id": "2273",
+    "name": "TEMP S489 Valymas",
+    "active": "0"
+   },
+   {
+    "id": "2272",
+    "name": "TEMP S488 AV Admin v12",
+    "active": "0"
+   },
+   {
+    "id": "2271",
+    "name": "TEMP S487 Cookie",
+    "active": "0"
+   },
+   {
+    "id": "2270",
+    "name": "TEMP S486 AV Admin v11",
+    "active": "0"
+   },
+   {
+    "id": "2269",
+    "name": "TEMP S485 Cookie",
+    "active": "0"
+   },
+   {
+    "id": "2268",
+    "name": "TEMP S484 DB tikrinimas",
+    "active": "0"
+   }
+  ],
+  "snippetu_viso": 1426,
+  "tiekeju_pastai": {
+   "vf": "ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt",
+   "belcor_tofu": "lina.sirvele@belacorinvest.lt",
+   "ambrosia": "info@alphazoo.lt",
+   "quattro": "e.panaviene@kaunogrudai.lt",
+   "prins": "irute@faunas.lt"
+  }
+ }
+}
