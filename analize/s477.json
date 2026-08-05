@@ -1,0 +1,55 @@
+{
+ "VERSIJA_RUN": "run477-v1",
+ "sid": 2261,
+ "deploy": {
+  "VERSIJA": "s477-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 12575,
+   "sha": "c6cf7e99783591bf"
+  }
+ },
+ "atstatyti": {
+  "VERSIJA": "s477-v1",
+  "act": "atstatyti",
+  "pries": {
+   "_stock": "2.000000",
+   "_vf_qty": "653"
+  },
+  "po": {
+   "_stock": "653",
+   "_own_stock_qty": "2",
+   "lookup": "653"
+  }
+ },
+ "saugiklis": {
+  "VERSIJA": "s477-v1",
+  "act": "saugiklio_testas",
+  "testas": {
+   "pradzia": {
+    "_stock": "653",
+    "av": 2
+   },
+   "po_increase": {
+    "_stock": "653",
+    "av": 5
+   },
+   "po_decrease": {
+    "_stock": "653",
+    "av": 2
+   },
+   "STOCK_NEPAKITO": "TAIP",
+   "AV_GRAZINTA": "TAIP"
+  },
+  "galutine": {
+   "DB_stock": "653",
+   "DB_own": "2",
+   "WC_qty_su_filtru": 655,
+   "klientui": {
+    "availability": "Turime",
+    "class": "in-stock"
+   }
+  }
+ },
+ "svetaine": "200"
+}
