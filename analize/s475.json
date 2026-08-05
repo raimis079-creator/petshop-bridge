@@ -1,0 +1,69 @@
+{
+ "VERSIJA_RUN": "run475-v1",
+ "sid": 2259,
+ "deploy": {
+  "VERSIJA": "s475-v2",
+  "act": "deploy",
+  "failas": {
+   "B": 3720,
+   "sha": "f3008f49a22e65e6"
+  }
+ },
+ "testai": {
+  "VERSIJA": "s475-v2",
+  "act": "testai",
+  "klase": "yra",
+  "josera_AV_ir_VF": {
+   "id": 17978,
+   "pav": "Josera Sensiplus 12,5 kg - sausas maistas ",
+   "DB_stock": "2.000000",
+   "DB_own": "2",
+   "WC_get_stock_quantity": 4,
+   "WC_stock_status": "instock",
+   "is_in_stock": "taip",
+   "availability": {
+    "availability": "Turime",
+    "class": "in-stock"
+   },
+   "stock_html": "Turime",
+   "saltinis": "av"
+  },
+  "grynai_AV": {
+   "id": 17236,
+   "pav": "Ontario Monoproteino konservai šunims su k",
+   "DB_stock": "10",
+   "DB_own": "",
+   "WC_get_stock_quantity": 10,
+   "WC_stock_status": "instock",
+   "is_in_stock": "taip",
+   "availability": {
+    "availability": "Turime",
+    "class": "in-stock"
+   },
+   "stock_html": "Turime",
+   "saltinis": "av"
+  },
+  "VF_be_AV": {
+   "id": 17947,
+   "pav": "Josidog adult Sensitive 15 kg sausas maist",
+   "DB_stock": "178.000000",
+   "DB_own": "",
+   "WC_get_stock_quantity": 178,
+   "WC_stock_status": "instock",
+   "is_in_stock": "taip",
+   "availability": {
+    "availability": "Turime",
+    "class": "in-stock"
+   },
+   "stock_html": "Turime",
+   "saltinis": "vf"
+  },
+  "SUMA_TEISINGA": "TAIP",
+  "GRYNAI_AV_NEPAKEISTA": "TAIP",
+  "VF_BE_AV_NEPAKEISTA": "TAIP",
+  "SKAICIUS_NERODOMAS": "TAIP",
+  "DB_stock_po": "2.000000",
+  "DB_own_po": "2"
+ },
+ "svetaine": "200"
+}
