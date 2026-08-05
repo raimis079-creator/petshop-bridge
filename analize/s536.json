@@ -1,0 +1,74 @@
+{
+ "VERSIJA_RUN": "run536",
+ "sid": 2319,
+ "rez": {
+  "VERSIJA": "s536",
+  "uzsakymai": {
+   "34881": {
+    "statusas": "processing",
+    "meta": {
+     "_ps_av_reduced": "2026-08-05 20:17:05",
+     "_ps_decided_at": "2026-08-05 20:17:04",
+     "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+     "_ps_order_type": "MAIN",
+     "_ps_shipments": "1"
+    },
+    "istorija": [
+     "20:17 · Email \"Užsakymas vykdomas\" sent.",
+     "20:17 · Email \"Naujas užsakymas\" sent.",
+     "20:17 · AV nurašymas: #17236 grynai AV 4 -> 3",
+     "20:17 · Likutis sumažintas: Ontario Monoproteino konservai šunims su kalakutiena ir saldžiosiomis bulvėmis, 200 g (4&rarr;4)",
+     "20:17 · Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))",
+     "20:17 · Payment complete."
+    ]
+   },
+   "34882": {
+    "statusas": "processing",
+    "meta": {
+     "_ps_av_reduced": "2026-08-05 16:32:26",
+     "_ps_decided_at": "2026-08-05 16:32:25",
+     "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2},\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+     "_ps_order_type": "MIXED",
+     "_ps_shipments": "2"
+    },
+    "istorija": [
+     "16:32 · Email \"Užsakymas vykdomas\" sent.",
+     "16:32 · Email \"Naujas užsakymas\" sent.",
+     "16:32 · S507 demo Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "16:32 · AV nurašymas: #17236 grynai AV 7 -> 5",
+     "16:32 · Likutis sumažintas: Ontario Monoproteino konservai šunims su kalakutiena ir saldžiosiomis bulvėmis, 200 g (7&rarr;7), Gemon mini adult visav",
+     "16:32 · Vykdymas: MIXED — AV 2 vnt · ZB 1 vnt (2 siunta(-os))"
+    ]
+   },
+   "34883": {
+    "statusas": "processing",
+    "meta": {
+     "_ps_decided_at": "2026-08-05 16:32:27",
+     "_ps_groups": "{\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":3}}",
+     "_ps_order_type": "DS",
+     "_ps_shipments": "1"
+    },
+    "istorija": [
+     "16:32 · Email \"Užsakymas vykdomas\" sent.",
+     "16:32 · Email \"Naujas užsakymas\" sent.",
+     "16:32 · S507 demo Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "16:32 · Likutis sumažintas: Gemon mini adult visavertis pašaras suaugusiems šunims su lašiša ir ryžiais 3kg (3&rarr;0)",
+     "16:32 · Vykdymas: DS — ZB 3 vnt (1 siunta(-os))"
+    ]
+   }
+  },
+  "venipak_opcijos": [
+   "shopup_venipak_shipping_settings",
+   "venipak_pack_number",
+   "woocommerce_shopup_venipak_shipping_courier_method_10_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_2_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_6_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_7_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_8_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings"
+  ],
+  "venipak_nustatymai_yra": "ne"
+ }
+}
