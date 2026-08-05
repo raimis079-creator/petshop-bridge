@@ -1,0 +1,118 @@
+{
+ "VERSIJA_RUN": "run506-v1",
+ "sid": 2289,
+ "rez": {
+  "VERSIJA": "s506-v1",
+  "statusai": {
+   "wc-pending": "Neapmokėtas",
+   "wc-processing": "Vykdomas",
+   "wc-on-hold": "Sustabdytas",
+   "wc-completed": "Įvykdytas",
+   "wc-cancelled": "Atšauktas",
+   "wc-refunded": "Grąžintas",
+   "wc-failed": "Nepavykęs",
+   "wc-lp-courier-await": "Laukiama kurjerio iškvietimo",
+   "wc-lp-parcel-created": "Siunta vykdoma",
+   "wc-lp-parcel-failed": "Siuntos sukurti nepavyko",
+   "wc-lp-label-created": "Paruošta siuntimui",
+   "wc-lp-courier-called": "Kurjeris iškviestas",
+   "wc-lp-on-the-way": "Siunčiama",
+   "wc-lp-delivered": "Siunta pristatyta",
+   "wc-lp-cancelled": "Siunta atšaukta",
+   "wc-lp-parcel-await": "Sustabdytas",
+   "wc-checkout-draft": "Juodraštis"
+  },
+  "naudojami": [
+   {
+    "status": "wc-completed",
+    "c": "1"
+   },
+   {
+    "status": "wc-pending",
+    "c": "1"
+   }
+  ],
+  "uzsakymo_meta": {
+   "_billing_address_index": "Rai B  Miško g. 1  Agurkiškė Kazlų Rūdos sav. 12222 LT ",
+   "_shipping_address_index": "Rai B  Miško g. 1  Agurkiškė Kazlų Rūdos sav. 12222 LT ",
+   "is_vat_exempt": "no",
+   "venipak_pickup_point": "3648",
+   "_wc_order_attribution_source_type": "typein",
+   "_wc_order_attribution_utm_source": "(direct)",
+   "_wc_order_attribution_session_entry": "http://dev.avesa.lt/",
+   "_wc_order_attribution_session_start_time": "2026-07-20 07:39:42",
+   "_wc_order_attribution_session_pages": "19",
+   "_wc_order_attribution_session_count": "1",
+   "_wc_order_attribution_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+   "_wc_order_attribution_device_type": "Desktop",
+   "_petshop_invoice_document_type": "invoice",
+   "_petshop_avpn_number": "AVPN000150",
+   "_petshop_iapv_number": "IAPV000139",
+   "_petshop_order_pdf": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/u",
+   "_dp_stock_reduced": "yes",
+   "_wcdn_invoice_number_counter": "177",
+   "_wcdn_invoice_number": "AVPN34720",
+   "_wcdn_invoice_date": "1784537685",
+   "_petshop_completed_pdf": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/u",
+   "_wc_push_notification_claimed": "1784537687",
+   "_wc_push_notification_sent": "1784537687",
+   "_petshop_dl_purchase_sent": "yes",
+   "_ps_refill_tracked": "yes",
+   "_edit_lock": "1785879107:1"
+  },
+  "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+  "adresas": {
+   "vardas": "Rai B",
+   "adr": "Miško g. 1",
+   "miestas": "Agurkiškė",
+   "pasto": "12222",
+   "tel": "+37065082900",
+   "email": "terra@gyvunai.lt"
+  },
+  "wcdn": {
+   "wcdn_get_document_number": "ne",
+   "wcdn_get_invoice_number": "ne",
+   "WooCommerce_Delivery_Notes": "yra"
+  },
+  "wcdn_meta": [
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "c": "1"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "c": "1"
+   }
+  ],
+  "siuntos_meta": [
+   {
+    "meta_key": "_ps_refill_tracked",
+    "c": "1"
+   },
+   {
+    "meta_key": "venipak_pickup_point",
+    "c": "1"
+   }
+  ],
+  "customer_note": "",
+  "ajax": {
+   "venipak_label": "https://dev.avesa.lt/wp-admin/admin-ajax.php?action=woocommerce_shopup_venipak_shipping_get_label_pdf&order_id=",
+   "venipak_manifest": "https://dev.avesa.lt/wp-admin/admin-ajax.php?action=woocommerce_shopup_venipak_shipping_get_manifest_pdf",
+   "venipak_dispatch": "https://dev.avesa.lt/wp-admin/admin-ajax.php?action=woocommerce_shopup_venipak_shipping_dispatch"
+  },
+  "lp_veiksmai": {
+   "woo_lithuaniapost_order_action_create_parcel": "yra",
+   "woo_lithuaniapost_order_action_generate_stickers": "yra",
+   "woo_lithuaniapost_order_action_generate_manifests": "yra"
+  }
+ },
+ "svetaine": "200"
+}
