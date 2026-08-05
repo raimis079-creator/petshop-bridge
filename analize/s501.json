@@ -1,0 +1,82 @@
+{
+ "VERSIJA_RUN": "run501-v1",
+ "sid": 2284,
+ "rez": {
+  "VERSIJA": "s501-v1",
+  "label_klase": {
+   "B": 4916,
+   "eil": [
+    "23: class Woocommerce_Shopup_Venipak_Shipping_Admin_Label {",
+    "62: private $label_format;",
+    "78: public function __construct( $plugin_name, $version, $settings ) {",
+    "83: $this->venipak_username = $settings->get_option_by_key('shopup_venipak_shipping_field_username');",
+    "84: $this->venipak_password = $settings->get_option_by_key('shopup_venipak_shipping_field_password');",
+    "85: $this->label_format = $settings->get_option_by_key('shopup_venipak_shipping_field_labelformat');",
+    "89: public function add_venipak_shipping_bulk_action_process( $redirect_to, $action, $post_ids ) {",
+    "90: if ( $action === 'shopup_venipak_shipping_labels' ) {",
+    "92: foreach ($post_ids as $post_id) {",
+    "93: $order = wc_get_order($post_id);",
+    "94: $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);",
+    "95: $pack_numbers = $venipak_shipping_order_data['pack_numbers'];",
+    "98: foreach ($pack_numbers as $pack_number) {",
+    "99: $pack_no_collection[] = $pack_number;",
+    "102: $url = 'https://go.venipak.lt/ws/print_label';",
+    "107: 'format' => $this->label_format,",
+    "112: 'headers' => array(",
+    "116: $response = wp_remote_post( $url, $args );",
+    "117: header(\"Content-type:application/pdf\");",
+    "126: public function get_label_pdf() {",
+    "130: $order_id = isset( $_GET['order_id'] ) ? intval( $_GET['order_id'] ) : 0;",
+    "131: if ( ! $order_id ) {",
+    "134: $order = wc_get_order( $order_id );",
+    "135: $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);",
+    "136: $pack_numbers = $venipak_shipping_order_data['pack_numbers'];",
+    "138: $url = 'https://go.venipak.lt/ws/print_label';",
+    "142: 'pack_no' => $pack_numbers,",
+    "143: 'format' => $this->label_format,",
+    "148: 'headers' => array(",
+    "152: $response = wp_remote_post( $url, $args );",
+    "153: header(\"Content-type:application/pdf\");",
+    "159: public function get_manifest_pdf() {",
+    "163: $order_id = isset( $_GET['order_id'] ) ? intval( $_GET['order_id'] ) : 0;",
+    "164: if ( ! $order_id ) {",
+    "167: $order = wc_get_order( $order_id );",
+    "168: $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);",
+    "171: $url = 'https://go.venipak.lt/ws/print_list';",
+    "179: 'headers' => array(",
+    "183: $response = wp_remote_post( $url, $args );",
+    "184: header(\"Content-type:application/pdf\");"
+   ]
+  },
+  "ajax_endpointai": {
+   "wp_ajax_woocommerce_shopup_venipak_shipping_dispatch": "Woocommerce_Shopup_Venipak_Shipping_Admin_Dispatch::add_venipak_shipping_dispatch",
+   "wp_ajax_woocommerce_shopup_venipak_shipping_dispatch_force": "Woocommerce_Shopup_Venipak_Shipping_Admin_Dispatch::add_venipak_shipping_dispatch_force",
+   "wp_ajax_woocommerce_shopup_venipak_shipping_get_label_pdf": "Woocommerce_Shopup_Venipak_Shipping_Admin_Label::get_label_pdf",
+   "wp_ajax_woocommerce_shopup_venipak_shipping_get_manifest_pdf": "Woocommerce_Shopup_Venipak_Shipping_Admin_Label::get_manifest_pdf",
+   "wp_ajax_woocommerce_venipak_shipping_pickup_points": "Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout::add_venipak_shipping_pickup_points",
+   "wp_ajax_nopriv_woocommerce_venipak_shipping_pickup_points": "Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout::add_venipak_shipping_pickup_points",
+   "wp_ajax_woocommerce_venipak_shipping_checkout_settings": "Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout::add_venipak_shipping_checkout_settings",
+   "wp_ajax_nopriv_woocommerce_venipak_shipping_checkout_settings": "Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout::add_venipak_shipping_checkout_settings",
+   "wp_ajax_woo_lithuaniapost_handle_parcel_save": "Woo_Lithuaniapost_Admin_Order_Service::handle_parcel_save",
+   "wp_ajax_save_selected_lpexpress_terminal": "Woo_Lithuaniapost_Public::save_selected_terminal_session",
+   "wp_ajax_nopriv_save_selected_lpexpress_terminal": "Woo_Lithuaniapost_Public::save_selected_terminal_session",
+   "wp_ajax_get_terminals_by_country_code": "Woo_Lithuaniapost_Public::get_terminal_list_json",
+   "wp_ajax_nopriv_get_terminals_by_country_code": "Woo_Lithuaniapost_Public::get_terminal_list_json",
+   "wp_ajax_woo_lithuaniapost_check_plan": "Woo_Lithuaniapost_Public::ajax_check_plan",
+   "wp_ajax_nopriv_woo_lithuaniapost_check_plan": "Woo_Lithuaniapost_Public::ajax_check_plan",
+   "wp_ajax_woo_lithuaniapost_get_saved_terminal": "Woo_Lithuaniapost_Public::ajax_get_saved_terminal",
+   "wp_ajax_nopriv_woo_lithuaniapost_get_saved_terminal": "Woo_Lithuaniapost_Public::ajax_get_saved_terminal"
+  },
+  "meta": [
+   {
+    "meta_key": "_ps_refill_tracked",
+    "c": "1"
+   },
+   {
+    "meta_key": "venipak_pickup_point",
+    "c": "1"
+   }
+  ]
+ },
+ "svetaine": "200"
+}
