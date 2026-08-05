@@ -1,0 +1,35 @@
+{
+ "VERSIJA_RUN": "run524",
+ "sid": 2307,
+ "rez": {
+  "VERSIJA": "s524-v1",
+  "sheets_vykdyti": "\tpublic static function vykdyti( $redirect, $veiksmas, $ids ) {\n\t\tif ( self::VEIKSMAS !== $veiksmas ) { return $redirect; }\n\t\t$ids = array_map( 'intval', (array) $ids );\n\t\tif ( ! $ids ) { return $redirect; }\n\t\tset_transient( 'ps_sheets_' . get_current_user_id(), $ids, 900 );\n\t\treturn add_query_arg( [ 'page' => 'ps-lapai', 'ps_ready' => 1 ], admin_url( 'admin.php' ) );\n\t}\n",
+  "sheets_veiksmas": "\tpublic static function veiksmas( $veiksmai ) {\n\t\t$veiksmai[ self::VEIKSMAS ] = 'Petshop: surinkimo ir pakavimo lapai';\n\t\treturn $veiksmai;\n\t}\n",
+  "sheets_uzs_veiksmas": "\tpublic static function uzsakymo_veiksmas( $veiksmai ) {\n\t\t$veiksmai['ps_lapas'] = 'Petshop: pakavimo lapas';\n\t\treturn $veiksmai;\n\t}\n",
+  "sheets_vieno": "\tpublic static function vieno_uzsakymo( $order ) {\n\t\t$id = is_object( $order ) ? $order->get_id() : (int) $order;\n\t\tset_transient( 'ps_sheets_' . get_current_user_id(), [ $id ], 900 );\n\t}\n",
+  "sheets_meniu": "\tpublic static function meniu() {\n\t\tadd_submenu_page( null, 'Surinkimo lapai', 'Surinkimo lapai',\n\t\t\t'edit_shop_orders', 'ps-lapai', [ __CLASS__, 'puslapis' ] );\n\t}\n",
+  "sheets_init": "\tpublic static function init() {\n\t\tadd_filter( 'bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'veiksmas' ], 30 );\n\t\tadd_filter( 'bulk_actions-edit-shop_order', [ __CLASS__, 'veiksmas' ], 30 );\n\t\tadd_filter( 'handle_bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'vykdyti' ], 10, 3 );\n\t\tadd_filter( 'handle_bulk_actions-edit-shop_order', [ __CLASS__, 'vykdyti' ], 10, 3 );\n\t\tadd_action( 'admin_menu', [ __CLASS__, 'meniu' ] );\n\t\t// vieno užsakymo lapas iš užsakymo lango\n\t\tadd_filter( 'woocommerce_order_actions', [ __CLASS__, 'uzsakymo_veiksmas' ], 10, 1 );\n\t\tadd_action( 'woocommerce_order_action_ps_lapas', [ __CLASS__, 'vieno_uzsakymo' ], 10, 1 );\n\t}\n",
+  "ds_vykdyti": "\tpublic static function vykdyti( $redirect, $veiksmas, $ids ) {\n\t\tif ( self::VEIKSMAS !== $veiksmas ) { return $redirect; }\n\t\t$ids = array_map( 'intval', (array) $ids );\n\t\tif ( ! $ids ) { return $redirect; }\n\t\tset_transient( 'ps_dropship_' . get_current_user_id(), $ids, 1800 );\n\t\treturn add_query_arg( [ 'page' => 'ps-dropship' ], admin_url( 'admin.php' ) );\n\t}\n",
+  "ds_veiksmas": "\tpublic static function veiksmas( $v ) {\n\t\t$v[ self::VEIKSMAS ] = 'Petshop: perduoti tiekėjams';\n\t\treturn $v;\n\t}\n",
+  "ds_meniu": "\tpublic static function meniu() {\n\t\tadd_submenu_page( null, 'Perduoti tiekėjams', 'Perduoti tiekėjams',\n\t\t\t'edit_shop_orders', 'ps-dropship', [ __CLASS__, 'puslapis' ] );\n\t\tadd_submenu_page( 'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai',\n\t\t\t'manage_woocommerce', 'ps-dropship-nustatymai', [ __CLASS__, 'nustatymai' ] );\n\t}\n",
+  "ds_init": "\tpublic static function init() {\n\t\tadd_filter( 'bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'veiksmas' ], 31 );\n\t\tadd_filter( 'bulk_actions-edit-shop_order', [ __CLASS__, 'veiksmas' ], 31 );\n\t\tadd_filter( 'handle_bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'vykdyti' ], 10, 3 );\n\t\tadd_filter( 'handle_bulk_actions-edit-shop_order', [ __CLASS__, 'vykdyti' ], 10, 3 );\n\t\tadd_action( 'admin_menu', [ __CLASS__, 'meniu' ] );\n\t\tadd_action( 'admin_post_ps_dropship_send', [ __CLASS__, 'siusti' ] );\n\t\tadd_action( 'admin_post_ps_dropship_nust', [ __CLASS__, 'saugoti_nustatymus' ] );\n\t}\n",
+  "ds_grupuoti": "\tprotected static function grupuoti( array $ids ) {\n\t\t$g = [];\n\t\tforeach ( $ids as $id ) {\n\t\t\t$o = wc_get_order( $id );\n\t\t\tif ( ! $o ) { continue; }\n\t\t\tif ( $o->get_meta( '_ps_dropship_sent' ) ) { continue; }   // jau perduota\n\n\t\t\tforeach ( $o->get_items() as $item ) {\n\t\t\t\t$src = $item->get_meta( '_ps_source' );\n\t\t\t\tif ( ! $src || 'av' === $src ) { continue; }             // AV renkam patys\n\t\t\t\t$pid = (int) $item->get_product_id();\n\t\t\t\t$p   = $item->get_product();\n\n\t\t\t\tif ( ! isset( $g[ $src ] ) ) { $g[ $src ] = []; }\n\t\t\t\tif ( ! isset( $g[ $src ][ $id ] ) ) {\n\t\t\t\t\t$g[ $src ][ $id ] = [\n\t\t\t\t\t\t'nr'       => $o->get_order_number(),\n\t\t\t\t\t\t'klientas' => trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ),\n\t\t\t\t\t\t'metodas'  => $o->get_shipping_method(),\n\t\t\t\t\t\t'pakuociu' => self::pakuociu( $o ),\n\t\t\t\t\t\t'eilutes'  => [],\n\t\t\t\t\t];\n\t\t\t\t}\n\t\t\t\t$g[ $src ][ $id ]['eilutes'][] = [\n\t\t\t\t\t'pav' => $item->get_name(),\n\t\t\t\t\t'qty' => (int) $item->get_quantity(),\n\t\t\t\t\t'sku' => $p ? $p->get_sku() : '',\n\t\t\t\t\t'ean' => $p ? ( $p->get_meta( '_ean' ) ?: $p->get_global_unique_id() ) : '',\n\t\t\t\t];\n\t\t\t}\n\t\t}\n\t\treturn $g;\n\t}\n",
+  "transientai": {
+   "petshop-av-sheets.php": [
+    "ps_sheets_"
+   ],
+   "petshop-av-dropship.php": [
+    "ps_dropship_"
+   ]
+  },
+  "meniu_registracija": {
+   "petshop-av-sheets.php": [
+    "add_submenu_page( null, 'Surinkimo lapai', 'Surinkimo lapai',\n\t\t\t'edit_shop_orders', 'ps-lapai', [ __CLASS__, 'puslapis' ] );"
+   ],
+   "petshop-av-dropship.php": [
+    "add_submenu_page( null, 'Perduoti tiekėjams', 'Perduoti tiekėjams',\n\t\t\t'edit_shop_orders', 'ps-dropship', [ __CLASS__, 'puslapis' ] );",
+    "add_submenu_page( 'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai',\n\t\t\t'manage_woocommerce', 'ps-dropship-nustatymai', [ __CLASS__, 'nustatymai' ] );"
+   ]
+  }
+ }
+}
