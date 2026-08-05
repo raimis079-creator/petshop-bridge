@@ -1,0 +1,126 @@
+{
+ "VERSIJA_RUN": "run526",
+ "sid": 2309,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "nauji": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "desk_yra": true,
+   "eilutes": [
+    {
+     "nr": "#34883",
+     "kl": "Elena Karazijaitė",
+     "vyk": "DROPSHIP",
+     "suma": "48,77 €\napmokėta",
+     "bus": "Vykdomas",
+     "src": [
+      "ZB"
+     ]
+    },
+    {
+     "nr": "#34882",
+     "kl": "Kristina Spiriūtė",
+     "vyk": "MIŠRUS\n2 siuntos",
+     "suma": "22,90 €\napmokėta",
+     "bus": "Vykdomas",
+     "src": [
+      "AV",
+      "ZB"
+     ]
+    },
+    {
+     "nr": "#34881",
+     "kl": "Inga Korolovienė",
+     "vyk": "SAVA",
+     "suma": "6,02 €\napmokėta",
+     "bus": "Vykdomas",
+     "src": [
+      "AV"
+     ]
+    }
+   ],
+   "rail": [
+    "Nauji 3",
+    "Neapmokėti 0",
+    "Paruošta siųsti 0",
+    "Klausimai 0",
+    "Atšaukti 2",
+    "Visi užsakymai 7"
+   ],
+   "filtrai": [
+    "Vykdymas: visi",
+    "Pristatymas: visi",
+    "Data: visos"
+   ],
+   "tuscia": false,
+   "meniu_paslept": "none",
+   "aukstis": 968,
+   "klaidos": [],
+   "png": "screenshots/s526_nauji.png"
+  }
+ },
+ "nauji_eilutes": [
+  {
+   "nr": "#34883",
+   "vyk": "DROPSHIP",
+   "vei": "Perduoti"
+  },
+  {
+   "nr": "#34882",
+   "vyk": "MIŠRUS",
+   "vei": "Surinkti"
+  },
+  {
+   "nr": "#34881",
+   "vyk": "SAVA",
+   "vei": "Surinkti"
+  }
+ ],
+ "surinkti": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-lapai&ps_ready=1",
+  "h1": "Surinkimo ir pakavimo lapai",
+  "tekstas": "Iš karto rodyti turinį Eiti prie įrankių juostos Skydelis Pradžia Atnaujinimai 3 Flatsome Flatsome Theme Registration Help & Guides Status Features Change log License Theme Options Advanced Setup Wizard Darbalaukis Įrašai Visi įrašai Pridėti įrašą Kategorijos Žymos Portfolio Portfolio Add New Categories Tags Failai Failų saugykla Įkelti failą Puslapiai Visi puslapiai Pridėti puslapį Komentarai UX Blocks UX Blocks Add"
+ },
+ "perduoti": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-dropship",
+  "tekstas": "Iš karto rodyti turinį Eiti prie įrankių juostos Skydelis Pradžia Atnaujinimai 3 Flatsome Flatsome Theme Registration Help & Guides Status Features Change log License Theme Options Advanced Setup Wizard Darbalaukis Įrašai Visi įrašai Pridėti įrašą Kategorijos Žymos Portfolio Portfolio Add New Categories Tags Failai Failų saugykla Įkelti failą Puslapiai Visi puslapiai Pridėti puslapį Komentarai UX Blocks UX Blocks Add"
+ },
+ "bulk_matomas": {
+  "on": true,
+  "cnt": "Pažymėta 3"
+ },
+ "bulk_rez": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-lapai&ps_ready=1",
+  "tekstas": "Iš karto rodyti turinį Eiti prie įrankių juostos Skydelis Pradžia Atnaujinimai 3 Flatsome Flatsome Theme Registration Help & Guides Status Features Change log License Theme Options Advanced Setup Wizard Darbalaukis Įrašai Visi įrašai Pridėti įrašą Kategorijos Žymos Portfolio Portfolio Add New Catego"
+ },
+ "wc_bulk": [
+  "-1 = Masiniai veiksmai",
+  "mark_processing = Keisti statusą į Vykdomas",
+  "mark_on-hold = Keisti statusą į Sustabdyta",
+  "mark_completed = Keisti statusą į Įvykdyta",
+  "mark_cancelled = Pakeisti statusą į atšauktas",
+  "trash = Perkelti į šiukšlinę",
+  "shopup_venipak_shipping_dispatch = Venipak siųsti pasirinktus",
+  "shopup_venipak_shipping_labels = Venipak lipdukai PDF",
+  "wcdn_print_invoice = Spausdinti sąskaitą",
+  "wcdn_print_deliverynote = Spausdinti važtaraštį",
+  "wcdn_print_receipt = Spausdinti kvitą",
+  "wcdn_print_creditnote = Spausdinti kreditinę sąskaitą",
+  "wcdn_print_packingslip = Spausdinti važtaraštį",
+  "woo_lp_cancel_label = UNISEND Atšaukti lipdukus",
+  "woo_lp_print_label = UNISEND Spausdinti lipdukus",
+  "woo_lp_generate_return_orders = UNISEND Spausdinti grąžinimo lipdukus",
+  "woo_lp_print_manifest = UNISEND Kviesti kurjerį ir spausdinti manifestą",
+  "ps_surinkimo_lapai = Petshop: surinkimo ir pakavimo lapai",
+  "ps_dropship = Petshop: perduoti tiekėjams"
+ ]
+}
