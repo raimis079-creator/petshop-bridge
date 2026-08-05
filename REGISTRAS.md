@@ -1549,8 +1549,9 @@ Kode parašyta: `legacy -> tikras savas sandelis, carrier=any`.
 3 ✅ pardavimo riba (AV + tiekėjas) (§19.3)
 4 ✅ šaltinio fiksavimas užsakymo eilutėje (§19.5)
 5 ✅ likučio mažinimas ir grąžinimas (§19.7)
-6 ⏳ užsakymo grupavimas MAIN/DS/MIXED
-7 ⏳ pakuotojo ekranas
+6 ✅ užsakymo grupavimas MAIN/DS/MIXED (§19.8)
+7 ✅ pakuotojo ekranas (§19.8)
+8 ✅ galiojimo terminai (§19.9)
 ```
 
 ---
@@ -1753,6 +1754,56 @@ BLOGAI:  "#$pid AV $av→$rez"     PHP bando → baitus įtraukti į kintamojo v
                                   → Warning: Undefined variable $av→
 GERAI:   "#{$pid} AV {$av} -> {$rez}"
 ```
+
+---
+
+### 19.8 ✅ 6+7 SLUOKSNIAI — PAKUOTOJO EKRANAS
+```
+mu-plugins/petshop-av-admin.php  v1.2 · 7 510 B · sha d6397e214953bd84
+```
+Užsakymų sąraše (patikrinta EKRANO NUOTRAUKA s487):
+```
+#34866  MIXED  2 siuntos  AV 1 · VF 1    1 Josera Sensiplu… · 1 Josera SensiPl…
+#34865  MIXED  3 siuntos  AV 1 · ZB 1 · VF 2
+#34864  DS                ZB 1           1 Monge VetSolut…
+#34863  MAIN              AV 2           2 Ontario Monopr…
+```
+Stulpeliai „Vykdymas" (tipas + siuntos + šaltiniai spalvomis) ir „Prekės" (kiekis +
+pavadinimas + spalvotas taškas pagal šaltinį). Filtras pagal tipą. „Origin" nuimtas.
+
+**🔴 KLAIDA v1.0: `remove_all_actions('admin_notices')` NUKIRTO VISĄ PUSLAPĮ.**
+WooCommerce HPOS ekranas turinį piešia per TUOS PAČIUS pranešimų kabliukus.
+Ekrano nuotrauka parodė baltą lapą — sidebar yra, turinio nėra.
+**Pakeista tiksliniu CSS slėpimu.** TAISYKLĖ: `remove_all_actions` admin ekranuose
+NENAUDOTI — šalina daugiau, nei matai.
+
+### 19.9 ✅ GALIOJIMO TERMINAI — BE PARTIJŲ APSKAITOS
+```
+mu-plugins/petshop-av-expiry.php  v1.0 · 8 633 B · sha 4995fa9c8c3670cc
+```
+**RAIMIO FIZINĖ SISTEMA JAU VEIKIA:** naujesnis galiojimas dedamas į lentynos GALĄ,
+imama iš PRIEKIO → teisinga partija išeina savaime. Įrašų tam NEREIKIA.
+> „Stengiuosi dedamas naujausio galiojimo sudėti į lentynos galą, kad nesimaišytų.
+>  Tik būna niuansų, kai užsakinėji retesnes prekes su galiojimais, tai dedi į vieną
+>  dėžę, tada svarbu pakuojant paimti su senesniu galiojimu."
+
+**TODĖL NE PARTIJŲ APSKAITA.** Ji reikalautų suvesti KIEKVIENĄ priėmimą; pamiršus
+vieną įrašą visi tolesni skaičiai melagingi — blogiau nei be sistemos.
+
+**VIETOJ TO:**
+```
+_ps_expiry        galiojimo data — pildoma TIK kai svarbu
+_ps_expiry_note   pastaba pakuojant („imti su 09 mėn.") — retoms prekėms vienoje dėžėje
+stulpelis         spalvos: >60 d. ramu · ≤60 geltona · ≤30 raudona · <0 raudonas fonas
+filtras           Artėja arba pasibaigė · Pasibaigę · Turi datą · Turi pastabą
+```
+**NIEKO NESUVEDINĖJAM IŠ ANKSTO.** Iš ~960 AV prekių galiojimas svarbus ~300
+(konservai 161, skanėstai 116, sausas maistas, papildai). Žaislai (178), dubenėliai
+(37), antkakliai, kraikai jo NETURI. Realiai per mėnesį susives keliolika.
+**Tuščias laukas = norma, ne spraga.**
+
+Testai: 199 d. skubu=ne · 44 d. taip · 11 d. taip+pastaba · −9 d. taip.
+Po testų valyta: prekių su data 0.
 
 ---
 
