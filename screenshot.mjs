@@ -50,9 +50,8 @@ if(C && C.logged_in){
   ];
   await ctx.addCookies(ck);
   const p=await ctx.newPage();
-  const KL=[]; p.on('console',m=>{if(m.type()==='error')KL.push(m.text().slice(0,160));});
-  p.on('pageerror',e=>KL.push('PAGEERROR '+String(e).slice(0,160)));
-  p.on('requestfailed',rq=>KL.push('REQFAIL '+rq.url().slice(0,110)));
+  const KL=[]; p.on('console',m=>{if(m.type()==='error')KL.push(m.text().slice(0,150));});
+  p.on('pageerror',e=>KL.push('PAGEERROR '+String(e).slice(0,150)));
   const puslapiai=[
     ['z1','/wp-admin/admin.php?page=ps-desk&view=rytas&z=1'],
     ['z2','/wp-admin/admin.php?page=ps-desk&view=rytas&z=2'],
@@ -68,44 +67,18 @@ if(C && C.logged_in){
       await p.waitForTimeout(3500);
       const dbg=await p.evaluate(()=>({url:location.href,title:document.title,
         prisijungimas: !!document.querySelector('#loginform')}));
-      const info=await p.evaluate(()=>{
-        const R={
-          antraste:(document.querySelector('.pd-rh2, .pd-rdone h2')||{}).innerText,
-          zingsniai:[...document.querySelectorAll('.pd-step')].map(x=>x.innerText.replace(/\s+/g,' ').trim()+
-            (x.className.indexOf('dabar')>-1?' <DABAR>':x.className.indexOf('atlikta')>-1?' <ATLIKTA>':'')),
-          kortos:[...document.querySelectorAll('.pd-rcard')].map(x=>x.innerText.replace(/\n/g,' | ')),
-          mygtukai:[...document.querySelectorAll('.pd-rbig')].map(x=>x.innerText+
-            (x.href?' -> '+x.href.slice(0,150):' [WC '+x.getAttribute('data-wcnew')+' ids='+x.getAttribute('data-ids')+']')),
-          tekstas:(document.querySelector('.pd-rnote')||{}).innerText,
-          eilutes:[...document.querySelectorAll('.pd-rtbl tbody tr')].map(x=>x.innerText.replace(/\s+/g,' ').trim()),
-          kojele:(document.querySelector('.pd-ryt-f')||{}).innerText.replace(/\n/g,' | ')
-        };
-        return {RYTAS:R,
-        const eil=[...document.querySelectorAll('.pd-tbl tbody tr')].map(r=>({
-          nr:(r.querySelector('.pd-nr')||{}).innerText,
-          kl:(r.querySelector('.pd-cust')||{}).innerText,
-          vyk:(r.querySelector('.pd-exec')||{}).innerText,
-          suma:(r.querySelector('.pd-sum')||{}).innerText,
-          bus:(r.querySelector('.pd-pill')||{}).innerText,
-          vei:(r.querySelector('[data-act]')||{}).innerText,
-          src:[...r.querySelectorAll('.pd-src')].map(x=>x.innerText)
-        }));
-        const rail=[...document.querySelectorAll('.pd-q')].map(x=>x.innerText.replace(/\s+/g,' ').trim());
-        const filt=[...document.querySelectorAll('.pd-sel')].map(x=>x.options[x.selectedIndex].text);
-        return {desk_yra:!!document.querySelector('.pd'), eilutes:eil, rail:rail, filtrai:filt,
-          tuscia:!!document.querySelector('.pd-empty'),
-          meniu_paslept:getComputedStyle(document.getElementById('adminmenumain')||document.body).display,
-          aukstis:document.body.scrollHeight};
-        const th=[...document.querySelectorAll('table.wp-list-table thead th')].map(x=>(x.innerText||'').trim()).filter(Boolean);
-        const mb=[...document.querySelectorAll('.postbox, .woocommerce-order-data, #woocommerce-order-items')].map(x=>{
-          const h=x.querySelector('h2,h3,.hndle,.postbox-header');
-          return (h?h.innerText:(x.id||'')).replace(/\s+/g,' ').trim().slice(0,50);
-        }).filter(Boolean);
-        const menu=[...document.querySelectorAll('#adminmenu > li > a')].map(x=>(x.innerText||'').replace(/\s+/g,' ').trim().split('\n')[0]).filter(Boolean);
-        return {stulpeliai:th, blokai:mb, meniu:menu,
-          aukstis:document.body.scrollHeight, plotis:document.body.scrollWidth};
-      });
-      O.psl[v]={http:rp?rp.status():null, ...dbg, ...info, klaidos:KL.slice(0,12)};
+      const info=await p.evaluate(()=>({
+        antraste:(document.querySelector('.pd-rh2, .pd-rdone h2')||{}).innerText,
+        zingsniai:[...document.querySelectorAll('.pd-step')].map(x=>x.innerText.replace(/\s+/g,' ').trim()+
+          (x.className.indexOf('dabar')>-1?' <DABAR>':x.className.indexOf('atlikta')>-1?' <OK>':'')),
+        kortos:[...document.querySelectorAll('.pd-rcard')].map(x=>x.innerText.replace(/\n/g,' | ')),
+        mygtukai:[...document.querySelectorAll('.pd-rbig')].map(x=>x.innerText+
+          (x.href?' -> '+String(x.href).slice(0,140):' [WC '+x.getAttribute('data-wcnew')+' ids='+x.getAttribute('data-ids')+']')),
+        tekstas:(document.querySelector('.pd-rnote')||{}).innerText,
+        eilutes:[...document.querySelectorAll('.pd-rtbl tbody tr')].map(x=>x.innerText.replace(/\s+/g,' ').trim()),
+        kojele:(document.querySelector('.pd-ryt-f')||{}).innerText.replace(/\n/g,' | ')
+      }));
+      O.psl[v]={http:rp?rp.status():null, ...dbg, ...info, klaidos:KL.slice(0,8)};
       const png=await p.screenshot({fullPage:true});
       putFile('screenshots/s529_'+v+'.png', png);
       O.psl[v].png='screenshots/s529_'+v+'.png';
