@@ -1481,6 +1481,80 @@ Antro tiekėjo kodo prireiks TIK jei ta pati prekė ateis ir iš ZB — dabar to
 
 ---
 
+## 19. SANDĖLIŲ ĮGYVENDINIMAS — 1 SLUOKSNIS BAIGTAS (2026-08-05)
+
+### ✅ AV LIKUČIO LAUKAS
+```
+mu-plugins/petshop-av-stock.php  v1.1 · 11 412 B · sha bca43eb1fbd92260
+```
+**Kodėl ATSKIRAS mu-plugin, o ne class-product-cost-metabox.php papildymas:**
+tas failas 26 504 B su veikiančia savikainos/maržos/lock logika. Likutis priklauso
+ATSARGŲ kortelei, ne kainodaros blokui.
+
+**Kodėl `_own_stock_qty`, o ne WooCommerce `_stock`:** VF/ZB sync `_stock` PERRAŠO
+kas valandą. Atskiras laukas nesikerta.
+
+**Ką duoda:**
+```
+laukas          WooCommerce → Prekė → Atsargos → „AV sandėlio likutis"
+stulpelis       prekių sąraše (62 px, centruotas), žalias >0 · raudonas 0 · pilkas —
+greitas red.    Quick Edit + reikšmė atsinaujina BE perkrovimo (ajaxSuccess)
+rikiavimas      pagal AV
+filtras         AV turi (>0) · AV pasibaigė (0) · AV neturi (tuščia)
+žurnalas        _own_stock_log: kada · buvo · tapo · kas · priežastis (50 paskutinių)
+API             Petshop_AV_Stock::qty() / has() / decrease() / increase()
+```
+
+**🔴 TUŠČIAS ≠ NULIS.** Tuščias = „AV šios prekės neturi". Nulis = „AV turėjo, bet
+nebeliko". Resolverio `legacy` reiškia „neatpažinta tiekėjui", NE „guli AV" —
+**AV priklausymą lemia TIK `_own_stock_qty` reikšmė.**
+
+### TESTAI (s468, s470)
+```
+increase 5 → 5 · has(3) taip · has(9) ne · decrease 2 → 3
+decrease 99 → WP_Error „AV turi 3, prašoma 99"
+decrease 0  → WP_Error „Kiekis turi būti teigiamas"
+WooCommerce _stock 653 → 653  NEPALIESTAS ✅
+žurnalas fiksuoja net vartotoją (bdz487, „rankinis")
+```
+**Raimio įvestas realus likutis (Josera Sensiplus 12,5 kg, id 17978, av=2) veikia.**
+
+### NULINIŲ VALYMAS
+8 prekės turėjo `_own_stock_qty = 0` — likučiai iš TŽ 0.12 recon, niekada nekeisti.
+Ištrinta **tik tos, kurios NETURI žurnalo** (= rankomis niekas nelietė): 8 → 0.
+Raimio Josera nepaliesta (turi žurnalo įrašą).
+**Katalogе dabar VIENA prekė su AV likučiu.**
+
+### MANO KLAIDOS ŠIAME BLOKE
+```
+1. stulpelio plotis nenurodytas → antraštė „AV" užlipo ant „Kaina"
+2. po Quick Edit reikšmė neatsinaujino → atrodė, kad neišsisaugojo
+   (realiai DB buvo teisingai)
+```
+Abi — tikrinau per API, ne akimis. Tas pats šablonas kaip visą savaitę.
+
+### RESOLVERIS — ĮTARIMAS NEPASITVIRTINO
+`Petshop_Fulfillment_Source::resolve()` **JAU grąžina visus atskirai:**
+```
+imtis 300: vf 109 · legacy 98 · zb 70 · belcor_tofu 10 · quattro 6 · ambrosia 4 · prins 3
+```
+Quattro/Prins/Ambrosia/Belacor NĖRA suplakti į `legacy`. **FBT jų nemaišo.**
+Kode parašyta: `legacy -> tikras savas sandelis, carrier=any`.
+→ **Išskaidymo NEREIKIA.** Reikia tik papildyti AV logika (2 sluoksnis).
+
+### EILĖ
+```
+1 ✅ AV likučio laukas
+2 ⏳ resolve() papildymas — jei _own_stock_qty > 0 → šaltinis 'av'
+3 ⏳ pardavimo riba (AV + tiekėjas)
+4 ⏳ šaltinio fiksavimas užsakymo eilutėje
+5 ⏳ likučio mažinimas išsiuntus
+6 ⏳ užsakymo grupavimas MAIN/DS/MIXED
+7 ⏳ pakuotojo ekranas
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
