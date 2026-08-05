@@ -21,8 +21,6 @@ fs.writeFileSync('/tmp/f.b64','PD9waHAKLyoqCiAqIFBldHNob3AgQVYgU3RvY2sgdjEuMSAoU
 const dep=sh('curl -sSk --max-time 200 -X POST --data-urlencode f@/tmp/f.b64 "'+SITE+'/?ps_s470=K470av&act=deploy&z='+Math.random()+'"');
 try{O.deploy=JSON.parse(dep);}catch(e){O.deploy={raw:String(dep).slice(0,300)};}
 sh('sleep 3');
-function q(a){const x=sh('curl -sSk --max-time 240 "'+SITE+'/?ps_s470=K470av&act='+a+'&z='+Math.random()+'"');
- try{return JSON.parse(x);}catch(e){return {raw:String(x).slice(0,400)};}}
 O.nuliai_pries=q('nuliai');
 O.nuliai_valymas=q('nuliai&apply=VALYK');
 O.testai=q('testai');
