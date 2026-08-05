@@ -1,0 +1,85 @@
+{
+ "VERSIJA_RUN": "run502-v1",
+ "sid": 2285,
+ "deploy": {
+  "VERSIJA": "s502-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 15481,
+   "sha": "c032053087447626"
+  }
+ },
+ "testai": {
+  "VERSIJA": "s502-v1",
+  "act": "testai",
+  "klase": "yra",
+  "bulk": "yra",
+  "tiekejai": {
+   "vf": [
+    "Vetfarmas",
+    "sku"
+   ],
+   "quattro": [
+    "Quattro / Kauno grūdai",
+    "sku"
+   ],
+   "prins": [
+    "Prins Petfoods",
+    "sku_ean"
+   ],
+   "ambrosia": [
+    "Ambrosia",
+    "sku_ean"
+   ],
+   "belcor_tofu": [
+    "Belacor",
+    "sku_ean"
+   ],
+   "zb": [
+    "Žalioji Banga",
+    "sku"
+   ]
+  },
+  "prekes": {
+   "zb": 13051,
+   "vf": 27071,
+   "quattro": 16715,
+   "prins": 16791
+  },
+  "sukurti": [
+   34872,
+   34873,
+   34874,
+   34875
+  ],
+  "lipduko_vardas": "34872 Simas Šimkus.pdf",
+  "grupes": {
+   "zb": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34872 Simas Šimkus — 1× Monge spec.line monoprotein mini [01M04003000]"
+    ]
+   },
+   "vf": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34873 Inga Butkienė — 2× Nobleza automatinis vandens font [871913819974]"
+    ]
+   },
+   "quattro": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34874 Mindaugas Nemanis — 3× QUATTRO 1,5 kg Salmon for Steril [2.011759]"
+    ]
+   },
+   "prins": {
+    "uzsakymu": 1,
+    "pvz": [
+     "34875 Simas Šimkus — 1× Prins ProCare Protection Lamb Hy [19346]"
+    ]
+   }
+  },
+  "pastai_nustatyti": []
+ },
+ "svetaine": "200"
+}
