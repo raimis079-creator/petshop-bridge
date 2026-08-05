@@ -1,0 +1,297 @@
+{
+ "VERSIJA_RUN": "run515",
+ "sid": 2298,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "nauji": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "desk_yra": true,
+   "eilutes": [
+    {
+     "nr": "#34883",
+     "kl": "Elena Karazijaitė",
+     "vyk": "DROPSHIP",
+     "suma": "48,77 €\napmokėta",
+     "bus": "Vykdomas",
+     "vei": "Perduoti",
+     "src": [
+      "ZB"
+     ]
+    },
+    {
+     "nr": "#34882",
+     "kl": "Kristina Spiriūtė",
+     "vyk": "MIŠRUS\n2 siuntos",
+     "suma": "22,90 €\napmokėta",
+     "bus": "Vykdomas",
+     "vei": "Surinkti",
+     "src": [
+      "AV",
+      "ZB"
+     ]
+    }
+   ],
+   "rail": [
+    "Nauji 2",
+    "Neapmokėti 2",
+    "Paruošta siųsti 0",
+    "Klausimai 0",
+    "Atšaukti 1",
+    "Visi užsakymai 7"
+   ],
+   "filtrai": [
+    "Vykdymas: visi",
+    "Pristatymas: visi",
+    "Data: visos"
+   ],
+   "tuscia": false,
+   "meniu_paslept": "none",
+   "aukstis": 968,
+   "klaidos": [],
+   "png": "screenshots/s515_nauji.png"
+  },
+  "visi": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "desk_yra": true,
+   "eilutes": [
+    {
+     "nr": "#34885",
+     "kl": "Gabrielius Kosulis",
+     "vyk": "SAVA",
+     "suma": "6,02 €\nneapmokėta",
+     "bus": "Atšauktas",
+     "vei": "Atidaryti",
+     "src": [
+      "AV"
+     ]
+    },
+    {
+     "nr": "#34884",
+     "kl": "Iveta Miliauskienė",
+     "vyk": "MIŠRUS\n2 siuntos",
+     "suma": "36,20 €\napmokėta",
+     "bus": "Įvykdytas",
+     "vei": "Atidaryti",
+     "src": [
+      "AV",
+      "ZB"
+     ]
+    },
+    {
+     "nr": "#34883",
+     "kl": "Elena Karazijaitė",
+     "vyk": "DROPSHIP",
+     "suma": "48,77 €\napmokėta",
+     "bus": "Vykdomas",
+     "vei": "Perduoti",
+     "src": [
+      "ZB"
+     ]
+    },
+    {
+     "nr": "#34882",
+     "kl": "Kristina Spiriūtė",
+     "vyk": "MIŠRUS\n2 siuntos",
+     "suma": "22,90 €\napmokėta",
+     "bus": "Vykdomas",
+     "vei": "Surinkti",
+     "src": [
+      "AV",
+      "ZB"
+     ]
+    },
+    {
+     "nr": "#34881",
+     "kl": "Inga Korolovienė",
+     "vyk": "SAVA",
+     "suma": "6,02 €\nneapmokėta",
+     "bus": "Neapmokėtas",
+     "vei": "Priminti",
+     "src": [
+      "AV"
+     ]
+    },
+    {
+     "nr": "#34720",
+     "kl": "Rai B",
+     "vyk": "DROPSHIP",
+     "suma": "37,56 €\napmokėta",
+     "bus": "Įvykdytas",
+     "vei": "Atidaryti",
+     "src": [
+      "VF"
+     ]
+    },
+    {
+     "nr": "#34645",
+     "kl": "terra@gyvunai.lt",
+     "vyk": "SAVA",
+     "suma": "0,00 €\nneapmokėta",
+     "bus": "Neapmokėtas",
+     "vei": "Priminti",
+     "src": [
+      "AV"
+     ]
+    }
+   ],
+   "rail": [
+    "Nauji 2",
+    "Neapmokėti 2",
+    "Paruošta siųsti 0",
+    "Klausimai 0",
+    "Atšaukti 1",
+    "Visi užsakymai 7"
+   ],
+   "filtrai": [
+    "Vykdymas: visi",
+    "Pristatymas: visi",
+    "Data: visos",
+    "Būsena: visos"
+   ],
+   "tuscia": false,
+   "meniu_paslept": "none",
+   "aukstis": 968,
+   "klaidos": [],
+   "png": "screenshots/s515_visi.png"
+  },
+  "klausimai": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "desk_yra": true,
+   "eilutes": [],
+   "rail": [
+    "Nauji 2",
+    "Neapmokėti 2",
+    "Paruošta siųsti 0",
+    "Klausimai 0",
+    "Atšaukti 1",
+    "Visi užsakymai 7"
+   ],
+   "filtrai": [
+    "Vykdymas: visi",
+    "Pristatymas: visi",
+    "Data: visos"
+   ],
+   "tuscia": true,
+   "meniu_paslept": "none",
+   "aukstis": 968,
+   "klaidos": [],
+   "png": "screenshots/s515_klausimai.png"
+  },
+  "neapmoketi": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neapmoketi",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "desk_yra": true,
+   "eilutes": [
+    {
+     "nr": "#34881",
+     "kl": "Inga Korolovienė",
+     "vyk": "SAVA",
+     "suma": "6,02 €\nneapmokėta",
+     "bus": "Neapmokėtas",
+     "vei": "Priminti",
+     "src": [
+      "AV"
+     ]
+    },
+    {
+     "nr": "#34645",
+     "kl": "terra@gyvunai.lt",
+     "vyk": "SAVA",
+     "suma": "0,00 €\nneapmokėta",
+     "bus": "Neapmokėtas",
+     "vei": "Priminti",
+     "src": [
+      "AV"
+     ]
+    }
+   ],
+   "rail": [
+    "Nauji 2",
+    "Neapmokėti 2",
+    "Paruošta siųsti 0",
+    "Klausimai 0",
+    "Atšaukti 1",
+    "Visi užsakymai 7"
+   ],
+   "filtrai": [
+    "Vykdymas: visi",
+    "Pristatymas: visi",
+    "Data: visos"
+   ],
+   "tuscia": false,
+   "meniu_paslept": "none",
+   "aukstis": 968,
+   "klaidos": [],
+   "png": "screenshots/s515_neapmoketi.png"
+  },
+  "filtras": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&vykdymas=misrus",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "desk_yra": true,
+   "eilutes": [
+    {
+     "nr": "#34884",
+     "kl": "Iveta Miliauskienė",
+     "vyk": "MIŠRUS\n2 siuntos",
+     "suma": "36,20 €\napmokėta",
+     "bus": "Įvykdytas",
+     "vei": "Atidaryti",
+     "src": [
+      "AV",
+      "ZB"
+     ]
+    },
+    {
+     "nr": "#34882",
+     "kl": "Kristina Spiriūtė",
+     "vyk": "MIŠRUS\n2 siuntos",
+     "suma": "22,90 €\napmokėta",
+     "bus": "Vykdomas",
+     "vei": "Surinkti",
+     "src": [
+      "AV",
+      "ZB"
+     ]
+    }
+   ],
+   "rail": [
+    "Nauji 2",
+    "Neapmokėti 2",
+    "Paruošta siųsti 0",
+    "Klausimai 0",
+    "Atšaukti 1",
+    "Visi užsakymai 7"
+   ],
+   "filtrai": [
+    "Mišrūs",
+    "Pristatymas: visi",
+    "Data: visos",
+    "Būsena: visos"
+   ],
+   "tuscia": false,
+   "meniu_paslept": "none",
+   "aukstis": 968,
+   "klaidos": [],
+   "png": "screenshots/s515_filtras.png"
+  }
+ }
+}
