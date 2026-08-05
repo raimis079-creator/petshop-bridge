@@ -1,0 +1,103 @@
+{
+ "VERSIJA_RUN": "run482-v1",
+ "sid": 2266,
+ "deploy": {
+  "VERSIJA": "s482-v3",
+  "act": "deploy",
+  "failas": {
+   "B": 5742,
+   "sha": "ee0cac53c62d66b5"
+  }
+ },
+ "prioritetai": {
+  "VERSIJA": "s482-v3",
+  "act": "prioritetai",
+  "eiliskumas": {
+   "woocommerce_order_status_processing": [
+    "10 wc_maybe_reduce_stock_levels",
+    "15 Petshop_AV_Reduce::mazinti",
+    "5 Petshop_AV_Order::fiksuoti"
+   ],
+   "woocommerce_payment_complete": [
+    "10 wc_maybe_reduce_stock_levels",
+    "15 Petshop_AV_Reduce::mazinti",
+    "5 Petshop_AV_Order::fiksuoti"
+   ]
+  }
+ },
+ "e2e": {
+  "VERSIJA": "s482-v3",
+  "act": "e2e",
+  "PRIES": {
+   "josera": {
+    "stock": 653,
+    "av": 2
+   },
+   "grynai_av": {
+    "stock": 8
+   },
+   "zb": {
+    "stock": 33
+   }
+  },
+  "prekes": {
+   "josera": 17978,
+   "grynai_av": 17236,
+   "zb": 12685
+  },
+  "PO_PROCESSING": {
+   "josera": {
+    "stock": 653,
+    "av": 1
+   },
+   "grynai_av": {
+    "stock": 7
+   },
+   "zb": {
+    "stock": 32
+   }
+  },
+  "uzsakymas": {
+   "id": 34862,
+   "tipas": "MIXED"
+  },
+  "uzsakymo_meta": {
+   "_ps_order_type": "MIXED",
+   "_ps_shipments": "2",
+   "_ps_av_reduced": "2026-08-05 13:43:49"
+  },
+  "eilutes": [
+   "av ×1 reduced=1",
+   "av ×1 reduced=1",
+   "zb ×1 reduced="
+  ],
+  "V1_josera_AV_krito_1": "TAIP",
+  "V2_josera_stock_NEPAKITO": "TAIP",
+  "V3_grynai_av_krito_1": "TAIP",
+  "V4_zb_krito_1": "TAIP",
+  "PO_CANCELLED": {
+   "josera": {
+    "stock": 653,
+    "av": 2
+   },
+   "grynai_av": {
+    "stock": 8
+   },
+   "zb": {
+    "stock": 33
+   }
+  },
+  "V5_josera_AV_grazinta": "TAIP",
+  "V6_grynai_av_grazinta": "TAIP",
+  "GALUTINE": {
+   "josera": {
+    "stock": "653",
+    "av": 2
+   },
+   "grynai_av": "8",
+   "zb": "33",
+   "max_order_id": 34720
+  }
+ },
+ "svetaine": "200"
+}
