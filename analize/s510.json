@@ -1,0 +1,491 @@
+{
+ "VERSIJA_RUN": "run510",
+ "sid": 2293,
+ "rez": {
+  "VERSIJA": "s510-v1",
+  "klases": {
+   "Petshop_Desk": {
+    "metodai": [
+     "::init()",
+     "::meniu()",
+     "::spalva($status)",
+     "::siuntos_kodas($o)",
+     "::puslapis()",
+     "::keisti_statusa()"
+    ],
+    "konstantos": {
+     "SPALVOS": "array(14)",
+     "SALTINIAI": "array(7)"
+    }
+   },
+   "Petshop_AV_Stock": {
+    "metodai": [
+     "::init()",
+     "::sortable($cols)",
+     "::sort_query($q)",
+     "::filter_dropdown()",
+     "::filter_query($q)",
+     "::qty($product_id)",
+     "::has($product_id,$need)",
+     "::decrease($product_id,$by,$priezastis)",
+     "::increase($product_id,$by,$priezastis)",
+     "::apsaugotas_rasymas($product_id,$reiksme)",
+     "::log($product_id,$buvo,$tapo,$priezastis)",
+     "::field()",
+     "::save($post_id)",
+     "::column($cols)",
+     "::column_value($col,$post_id)",
+     "::quick_edit($col,$post_type)",
+     "::quick_edit_js()",
+     "::quick_edit_save($post_id,$post)"
+    ],
+    "konstantos": {
+     "META": "_own_stock_qty"
+    }
+   },
+   "Petshop_AV_Source": {
+    "metodai": [
+     "::resolve($product_id,$qty)",
+     "::is_av($product_id,$qty)",
+     "::group($eilutes)",
+     "::order_type($grupes)",
+     "::group_order($order)"
+    ],
+    "konstantos": []
+   },
+   "Petshop_AV_Limit": {
+    "metodai": [
+     "::init()",
+     "::taikoma($product_id)",
+     "::stock_qty($qty,$product)",
+     "::stock_status($status,$product)",
+     "::availability_text($text,$product)",
+     "::stock_html($html,$product)"
+    ],
+    "konstantos": []
+   },
+   "Petshop_AV_Order": {
+    "metodai": [
+     "::init()",
+     "::nuspresta($order)",
+     "::fiksuoti($order_id,$priverstinai)",
+     "::skaityti($order)"
+    ],
+    "konstantos": []
+   },
+   "Petshop_AV_Reduce": {
+    "metodai": [
+     "::init()",
+     "::wc_kiekis($qty,$order,$item)",
+     "::mazinti($order_id)",
+     "::grazinti($order_id)"
+    ],
+    "konstantos": []
+   },
+   "Petshop_AV_Admin": {
+    "metodai": [
+     "::init()",
+     "::stulpeliai($cols)",
+     "::reiksme($col,$order)",
+     "::filtras()",
+     "::filtro_query($args)",
+     "::stilius()",
+     "::slepti_reklamas()"
+    ],
+    "konstantos": {
+     "SPALVOS": "array(7)"
+    }
+   },
+   "Petshop_AV_Expiry": {
+    "metodai": [
+     "::init()",
+     "::data($product_id)",
+     "::pastaba($product_id)",
+     "::dienu($product_id)",
+     "::skubu($product_id)",
+     "::laukai()",
+     "::saugoti($post_id)",
+     "::stulpelis($cols)",
+     "::reiksme($col,$post_id)",
+     "::rikiavimas($cols)",
+     "::rikiavimo_query($q)",
+     "::filtras()",
+     "::filtro_query($q)",
+     "::stilius()"
+    ],
+    "konstantos": {
+     "META": "_ps_expiry",
+     "META_NOTE": "_ps_expiry_note",
+     "ISPEJIMAS": 60
+    }
+   },
+   "Petshop_AV_Sheets": {
+    "metodai": [
+     "::init()",
+     "::veiksmas($veiksmai)",
+     "::uzsakymo_veiksmas($veiksmai)",
+     "::vieno_uzsakymo($order)",
+     "::vykdyti($redirect,$veiksmas,$ids)",
+     "::meniu()",
+     "::vezejas($order)",
+     "::duomenys($ids)",
+     "::puslapis()",
+     "::spausdinti($d,$viso)"
+    ],
+    "konstantos": {
+     "VEIKSMAS": "ps_surinkimo_lapai"
+    }
+   },
+   "Petshop_AV_Dropship": {
+    "metodai": [
+     "::tiekejai()",
+     "::init()",
+     "::veiksmas($v)",
+     "::vykdyti($redirect,$veiksmas,$ids)",
+     "::meniu()",
+     "::grupuoti($ids)",
+     "::pakuociu($order)",
+     "::lipduko_vardas($order)",
+     "::puslapis()",
+     "::nustatymai()",
+     "::saugoti_nustatymus()",
+     "::siusti()",
+     "::lipdukas($order_id)",
+     "::manifestas($order_ids)"
+    ],
+    "konstantos": {
+     "VEIKSMAS": "ps_dropship",
+     "OPT_EMAIL": "ps_tiekeju_pastai"
+    }
+   },
+   "Petshop_Fulfillment_Source": {
+    "metodai": [
+     "::dropship_map()",
+     "::resolve($product_id)",
+     "::is_venipak_only($product_id)",
+     "::is_zb($pid)",
+     "::is_vf($pid)",
+     "::detect_dropship($pid)"
+    ],
+    "konstantos": []
+   }
+  },
+  "av_source_const": [],
+  "dropship_const": {
+   "VEIKSMAS": "ps_dropship",
+   "OPT_EMAIL": "ps_tiekeju_pastai"
+  },
+  "item_meta": [
+   {
+    "meta_key": "_product_id",
+    "c": "16"
+   },
+   {
+    "meta_key": "_variation_id",
+    "c": "16"
+   },
+   {
+    "meta_key": "_qty",
+    "c": "16"
+   },
+   {
+    "meta_key": "_tax_class",
+    "c": "16"
+   },
+   {
+    "meta_key": "_line_subtotal",
+    "c": "16"
+   },
+   {
+    "meta_key": "_line_subtotal_tax",
+    "c": "16"
+   },
+   {
+    "meta_key": "_line_total",
+    "c": "16"
+   },
+   {
+    "meta_key": "_line_tax",
+    "c": "16"
+   },
+   {
+    "meta_key": "_line_tax_data",
+    "c": "16"
+   },
+   {
+    "meta_key": "rate_percent",
+    "c": "9"
+   },
+   {
+    "meta_key": "rate_id",
+    "c": "9"
+   },
+   {
+    "meta_key": "label",
+    "c": "9"
+   },
+   {
+    "meta_key": "compound",
+    "c": "9"
+   },
+   {
+    "meta_key": "tax_amount",
+    "c": "9"
+   },
+   {
+    "meta_key": "shipping_tax_amount",
+    "c": "9"
+   },
+   {
+    "meta_key": "_reduced_stock",
+    "c": "7"
+   },
+   {
+    "meta_key": "method_id",
+    "c": "6"
+   },
+   {
+    "meta_key": "instance_id",
+    "c": "6"
+   },
+   {
+    "meta_key": "cost",
+    "c": "6"
+   },
+   {
+    "meta_key": "total_tax",
+    "c": "6"
+   },
+   {
+    "meta_key": "taxes",
+    "c": "6"
+   },
+   {
+    "meta_key": "_refunded_item_id",
+    "c": "6"
+   },
+   {
+    "meta_key": "_ps_source",
+    "c": "3"
+   },
+   {
+    "meta_key": "_ps_carrier",
+    "c": "3"
+   },
+   {
+    "meta_key": "_ps_source_qty",
+    "c": "3"
+   },
+   {
+    "meta_key": "_ps_source_at",
+    "c": "3"
+   },
+   {
+    "meta_key": "_ps_source_reason",
+    "c": "3"
+   },
+   {
+    "meta_key": "Prekės",
+    "c": "1"
+   },
+   {
+    "meta_key": "_ps_av_reduced_qty",
+    "c": "1"
+   }
+  ],
+  "uzsakymai": [
+   {
+    "id": "34885",
+    "nr": "34885",
+    "st": "cancelled",
+    "suma": "6.02",
+    "metodas": "UNISEND kurjeris",
+    "wcdn": "",
+    "avpn": "",
+    "ps_source": "",
+    "ds_sent": "",
+    "eilutes": [
+     {
+      "n": "Ontario Monoproteino konservai šunims ",
+      "q": 1,
+      "ps_source": "",
+      "av": "",
+      "visi_meta": []
+     }
+    ]
+   },
+   {
+    "id": "34884",
+    "nr": "34884",
+    "st": "completed",
+    "suma": "36.20",
+    "metodas": "VENIPAK kurjeris",
+    "wcdn": "AVPN34884",
+    "avpn": "AVPN000229",
+    "ps_source": "",
+    "ds_sent": "",
+    "eilutes": [
+     {
+      "n": "Ontario Monoproteino konservai šunims ",
+      "q": 1,
+      "ps_source": "",
+      "av": "",
+      "visi_meta": [
+       "_reduced_stock"
+      ]
+     },
+     {
+      "n": "Gemon mini adult visavertis pašaras su",
+      "q": 2,
+      "ps_source": "",
+      "av": "",
+      "visi_meta": [
+       "_reduced_stock"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "34883",
+    "nr": "34883",
+    "st": "processing",
+    "suma": "48.77",
+    "metodas": "UNISEND paštomatai",
+    "wcdn": "AVPN34883",
+    "avpn": "AVPN000228",
+    "ps_source": "",
+    "ds_sent": "",
+    "eilutes": [
+     {
+      "n": "Gemon mini adult visavertis pašaras su",
+      "q": 3,
+      "ps_source": "zb",
+      "av": "",
+      "visi_meta": [
+       "_ps_source",
+       "_ps_carrier",
+       "_ps_source_qty",
+       "_ps_source_at",
+       "_ps_source_reason",
+       "_reduced_stock"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "34882",
+    "nr": "34882",
+    "st": "processing",
+    "suma": "22.90",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "wcdn": "AVP10707",
+    "avpn": "AVPN000227",
+    "ps_source": "",
+    "ds_sent": "",
+    "eilutes": [
+     {
+      "n": "Ontario Monoproteino konservai šunims ",
+      "q": 2,
+      "ps_source": "av",
+      "av": "",
+      "visi_meta": [
+       "_ps_source",
+       "_ps_carrier",
+       "_ps_source_qty",
+       "_ps_source_at",
+       "_ps_source_reason",
+       "_reduced_stock",
+       "_ps_av_reduced_qty"
+      ]
+     },
+     {
+      "n": "Gemon mini adult visavertis pašaras su",
+      "q": 1,
+      "ps_source": "zb",
+      "av": "",
+      "visi_meta": [
+       "_ps_source",
+       "_ps_carrier",
+       "_ps_source_qty",
+       "_ps_source_at",
+       "_ps_source_reason",
+       "_reduced_stock"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "34881",
+    "nr": "34881",
+    "st": "pending",
+    "suma": "6.02",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "wcdn": "AVPN34881",
+    "avpn": "",
+    "ps_source": "",
+    "ds_sent": "",
+    "eilutes": [
+     {
+      "n": "Ontario Monoproteino konservai šunims ",
+      "q": 1,
+      "ps_source": "",
+      "av": "",
+      "visi_meta": []
+     }
+    ]
+   }
+  ],
+  "kreditine_failai": [
+   {
+    "failas": "/themes/flatsome-child/woocommerce-delivery-notes/base.php",
+    "B": 21549,
+    "kr_avpn": 1
+   }
+  ],
+  "avpn_counter": "230",
+  "wcdn_settings": {
+   "storeName": "UAB Avesa",
+   "storeLogo": "http://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+   "storeAddress": "Liucionių g. 46, Liucionių k.<br />Nemenčinės sen., Vilniaus r., 15166<br />Lietuva",
+   "email": "terra@petshop.lt",
+   "phone": "+370 681 87787",
+   "footerText": "",
+   "complimentaryClose": "",
+   "policies": "",
+   "printEndpoint": "print-order",
+   "defaultDocumentLabel": "Document",
+   "textDirection": "ltr",
+   "enablePDF": true,
+   "pdfPaperSize": "A4",
+   "pdfUseCurrencyCode": true,
+   "showCustomerEmailLink": true,
+   "customerEmailText": "Peržiūrėti ir spausdinti",
+   "showAdminEmailLink": true,
+   "adminEmailText": "Print order",
+   "showViewOrderButton": true,
+   "showPrintButtonMyAccountPage": true,
+   "autoPrintDialog": false,
+   "viewOrderButtonLabel": "Spausdinti",
+   "invoiceButtonLabel": "Spausdinti sąskaitą",
+   "deliveryNoteButtonLabel": "Spausdinti važtaraštį",
+   "receiptButtonLabel": "Spausdinti kvitą",
+   "creditNoteButtonLabel": "Spausdinti kreditinę sąskaitą",
+   "packingSlipButtonLabel": "Spausdinti važtaraštį",
+   "processingTemplate": "invoice",
+   "processingAuto": false,
+   "processingAttach": false,
+   "completedTemplate": "invoice",
+   "completedAuto": true,
+   "completedAttach": false,
+   "refundedTemplate": "invoice",
+   "refundedAuto": false,
+   "refundedAttach": false,
+   "enablePayNow": true,
+   "enablePDFStorage": false,
+   "invoiceNumberFormat": "AVPN{order_number}",
+   "numberDaysPdfExpiration": 7,
+   "myAccountPageButtonLabel": "Spausdinti",
+   "resetInvoiceNumberYearly": false
+  }
+ }
+}
