@@ -1545,12 +1545,72 @@ Kode parašyta: `legacy -> tikras savas sandelis, carrier=any`.
 ### EILĖ
 ```
 1 ✅ AV likučio laukas
-2 ⏳ resolve() papildymas — jei _own_stock_qty > 0 → šaltinis 'av'
+2 ✅ AV kaip šaltinis (§19.2)
 3 ⏳ pardavimo riba (AV + tiekėjas)
 4 ⏳ šaltinio fiksavimas užsakymo eilutėje
 5 ⏳ likučio mažinimas išsiuntus
 6 ⏳ užsakymo grupavimas MAIN/DS/MIXED
 7 ⏳ pakuotojo ekranas
+```
+
+---
+
+### 19.2 ✅ 2 SLUOKSNIS — AV KAIP ŠALTINIS
+```
+mu-plugins/petshop-av-source.php  v1.1 · 5 762 B · sha a9e6968438ad521b
+```
+**`class-fulfillment-source.php` NEPALIESTAS.** Nauja klasė jo rezultatą PAPILDO —
+tas failas yra vienintelė sandėlio tiesos vieta, ir juo remiasi S77 cross-sell,
+S77 pristatymo ribojimas ir S74 FBT.
+
+**API:** `Petshop_AV_Source::resolve($pid,$qty)` · `is_av()` · `group()` ·
+`order_type()` · `group_order($order)`
+
+### 🔴 DVI AV RŪŠYS (išmatuota s472 — KEIČIA ANKSTESNĘ PRIELAIDĄ)
+```
+GRYNAI AV        959 publish · _legacy_source=excel_v2_20260604
+                 likutis WooCommerce `_stock` (5, 3, 12, 1 — REALŪS)
+                 niekada nebuvo pas tiekėją → sync jų NELIEČIA
+                 `_own_stock_qty` NEREIKIA
+AV + TIEKĖJAS    Josera tipo · likutis `_own_stock_qty`
+                 prekė yra IR pas VF/ZB, IR pas Raimį; `_stock` perrašo sync
+```
+Mano ankstesnė prielaida „AV priklausymą lemia TIK `_own_stock_qty`" buvo PER SIAURA.
+Resolverio `legacy` = grynai AV → verčiam į `av`, `carrier: any`.
+
+### SCENARIJŲ TESTAI (s471, s473)
+```
+Josera 1 vnt (AV 2)    → av       any      „AV turi 2, reikia 1"
+Josera 3 vnt (AV 2)    → vf       venipak  „neužtenka"
+grynai AV (legacy)     → av       any      „grynai AV prekė (be tiekėjo)" qty 10
+
+A tik Josera 1     → [av]            MAIN
+B Josera 1 + kita  → [av, legacy]    MIXED
+C Josera 3 + kita  → [vf, legacy]    MIXED   ← AV iškrito, neužteko
+D tik dropship     → [legacy]        DS
+```
+
+### VEŽĖJO SAUGIKLIS
+`AV_Source::resolve()` grąžina `carrier: venipak` **BET KOKIAM dropship šaltiniui**,
+nesvarbu ką sako bazinis resolveris. **LP Express TIK iš AV.**
+Patikrinta 600 prekių — blogų 0.
+
+### ✅ RAIMIO KLAUSIMAS: „ar Legacy reikia išskaidyti į Belacor/Prins/Ambrosia/Quattro?"
+**JAU PADARYTA** (S75, 2026-06-08). Patikrinta VISOS 2 776 publish prekės:
+```
+VERDIKTAS: legacy viduje 4 tiekėjų NĖRA · liko: []
+quattro 64 · belcor_tofu 62 · prins 23+20 draft · ambrosia 15 · legacy 959
+```
+Resolveris skiria pagal `_legacy_manufacturer`. **Nieko daryti nereikia.**
+
+### PILNAS ŠALTINIŲ PJŪVIS (visos publish+draft)
+```
+vf       991 publish + 170 draft
+zb       662 publish + 397 draft
+legacy   959 publish + 441 draft   ← AV
+quattro   64 · belcor_tofu 62 · prins 23+20 · ambrosia 15
+legacy publish pjūvis: instock 816 · outofstock 143 · su kaina 959 · be kainos 0
+top kategorijos: Žaislai šunims 178 · Skanėstai šunims 116 · Konservai katėms 82
 ```
 
 ---
