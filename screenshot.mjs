@@ -6,14 +6,14 @@ const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.aves
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s529',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s530',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run529'};
+const O={VERSIJA_RUN:'run530'};
 // auth cookie per snippeta
 const PHP=`add_action('wp_loaded',function(){
- if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck529xQ') return;
+ if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck530xQ') return;
  nocache_headers(); header('Content-Type: application/json');
  $u=get_users(array('role'=>'administrator','number'=>1));
  if(!$u){ echo wp_json_encode(array('err'=>'no admin')); exit; }
@@ -30,11 +30,11 @@ const PHP=`add_action('wp_loaded',function(){
    'force_ssl_admin'=>force_ssl_admin()?1:0)); exit;
 },1);`;
 let sid=null;
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S529 Cookie',code:PHP,scope:'global',active:true}));
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S530 Cookie',code:PHP,scope:'global',active:true}));
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
 O.sid=sid; sh('sleep 4');
-const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck529xQ"');
+const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck530xQ"');
 let C=null; try{C=JSON.parse(ck);}catch(e){O.cookie_raw=String(ck).slice(0,200);}
 O.cookie_ok = C && C.logged_in ? 'yra' : 'NERA';
 O.cookie_info = C ? {cookiepath:C.cookiepath,adminpath:C.adminpath,domain:C.domain,ssl_admin:C.force_ssl_admin} : null;
@@ -53,12 +53,7 @@ if(C && C.logged_in){
   const KL=[]; p.on('console',m=>{if(m.type()==='error')KL.push(m.text().slice(0,150));});
   p.on('pageerror',e=>KL.push('PAGEERROR '+String(e).slice(0,150)));
   const puslapiai=[
-    ['z1','/wp-admin/admin.php?page=ps-desk&view=rytas&z=1'],
     ['z2','/wp-admin/admin.php?page=ps-desk&view=rytas&z=2'],
-    ['z3','/wp-admin/admin.php?page=ps-desk&view=rytas&z=3'],
-    ['z4','/wp-admin/admin.php?page=ps-desk&view=rytas&z=4'],
-    ['z5','/wp-admin/admin.php?page=ps-desk&view=rytas&z=5'],
-    ['z6','/wp-admin/admin.php?page=ps-desk&view=rytas&z=6'],
   ];
   O.psl={};
   for(const [v,u] of puslapiai){
@@ -79,9 +74,28 @@ if(C && C.logged_in){
         kojele:(document.querySelector('.pd-ryt-f')||{}).innerText.replace(/\n/g,' | ')
       }));
       O.psl[v]={http:rp?rp.status():null, ...dbg, ...info, klaidos:KL.slice(0,8)};
+      if(v==='z2'){
+        try{
+          const [np]=await Promise.all([
+            ctx.waitForEvent('page',{timeout:40000}),
+            p.click('.pd-rbig')
+          ]);
+          await np.waitForLoadState('domcontentloaded');
+          await np.waitForTimeout(2500);
+          O.lapai_is_eigos=await np.evaluate(()=>({
+            url:location.href,
+            antraste:(document.querySelector('.wrap h1, h1')||{}).innerText,
+            blokai:[...document.querySelectorAll('h2,h3')].map(x=>x.innerText.replace(/\s+/g,' ').trim()).filter(Boolean).slice(0,8),
+            prekes:[...document.querySelectorAll('table tbody tr')].map(x=>x.innerText.replace(/\s+/g,' ').trim()).slice(0,10),
+            klaida:document.body.innerText.indexOf('Nepakanka teisi')>-1||document.body.innerText.indexOf('nuoroda, kuria')>-1
+          }));
+          const pg=await np.screenshot({fullPage:true}); putFile('screenshots/s530_lapai_is_eigos.png',pg);
+          await np.close();
+        }catch(e){ O.lapai_is_eigos={KLAIDA:String(e).slice(0,200)}; }
+      }
       const png=await p.screenshot({fullPage:true});
-      putFile('screenshots/s529_'+v+'.png', png);
-      O.psl[v].png='screenshots/s529_'+v+'.png';
+      putFile('screenshots/s530_'+v+'.png', png);
+      O.psl[v].png='screenshots/s530_'+v+'.png';
     }catch(e){ O.psl[v]={KLAIDA:String(e).slice(0,150)}; }
   }
   await b.close();
@@ -89,5 +103,5 @@ if(C && C.logged_in){
 }
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putFile('analize/s529.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s530.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
