@@ -1807,6 +1807,49 @@ Po testų valyta: prekių su data 0.
 
 ---
 
+### 19.10 ✅ SURINKIMO IR PAKAVIMO LAPAI
+```
+mu-plugins/petshop-av-sheets.php  v1.0 · 10 445 B · sha 237346e8e7418b75
+```
+Masinis veiksmas „Petshop: surinkimo ir pakavimo lapai" (7-as; esami 6 nepaliesti)
++ vieno užsakymo veiksmas užsakymo lange.
+
+**TRYS BLOKAI (Raimio patvirtinta, s495 ekrano nuotrauka):**
+```
+SURINKTI IŠ SANDĖLIO   bendri kiekiai · ☐ braukymui · vienas ėjimas
+VENIPAK                užsakymai eilėmis
+LP EXPRESS / UNISEND   užsakymai eilėmis
+```
+**KODĖL VENIPAK IR LP ATSKIRAI** (Raimis pakartojo 2×, aš buvau ėmęs siūlyti atgal —
+NEBEKELTI): lipdukai formuojami ATSKIRAIS mygtukais → krūvelės atskiros; lapas eina
+lygiagrečiai su savo krūvele. Plius LP siuntoms renkamas DYDIS, Venipak — ne.
+
+Į lapus patenka **TIK AV eilutės**. Mišrus užsakymas pažymimas
+„dalis siuntos (2 siuntos)" — pakuotojas mato, kad tai ne visas užsakymas.
+`_ps_expiry_note` rodoma ABIEJOSE vietose (surinkime ir prie eilutės).
+Spausdinant meniu/mygtukai dingsta, Venipak ir LP — atskiruose A4 lapuose.
+
+### 19.11 DAUGIAPAKUOTĖS SIUNTOS — IŠTIRTA, NESTATOMA
+Raimis: vienas užsakymas kurjeriu gali būti 4 dėžės = 4 lipdukai. **Tik kurjeriui** —
+į paštomatą kiekviena dėžė yra atskira siunta.
+```
+VENIPAK   RANKINIS: $_POST['packs'] → dispatch_order($ids, $packs, $is_global)
+                    grąžina KELIS pack_numbers (po vieną dėžei)
+                    nustatymas shopup_venipak_shipping_field_maxpackproducts
+                    (kiek prekių telpa į pakuotę — galėtų skaičiuoti automatiškai)
+LP        AUTOMATINIS: NAWebCo\BoxPacker\Packer pagal svorį ir matmenis
+                    resolve_shipping_size($planCode, $package)
+                    ⚠ remiasi weight/width/height/length — be matmenų bus SPĖJIMAS
+```
+**SPRENDIMAS: NESTATYTI, kol per abu vežėjus nepraeis bent po vieną TIKRĄ siuntą.**
+Dabar matomas tik kodas; kaip atrodo reali sąsaja ir ką ji priima — nežinoma.
+Tas pats galioja LP DYDŽIO laukui (§19 anksčiau).
+
+Kurjeriui bendro siuntų skaičiaus nurodyti NEREIKIA — Raimis: „kurjeriai siuntas
+nusiskenuoja ir pasiima". Manifestas abiejuose pluginuose YRA kaip atsarginis.
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
