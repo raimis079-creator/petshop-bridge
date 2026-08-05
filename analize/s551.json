@@ -1,0 +1,88 @@
+{
+ "VERSIJA_RUN": "run551",
+ "sid": 2334,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "z1": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=1&naujai=1",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Į rytinę partiją patenka",
+   "zingsniai": [
+    "1 Peržiūra <DABAR>",
+    "2 Surinkimo lapai",
+    "3 Venipak",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [
+    "2 | iš sandėlio (AV) | 2 Venipak · 0 LP",
+    "2 | tiekėjams | ZB 2",
+    "0 | klausimai | į partiją NEPATENKA"
+   ],
+   "mygtukai": [],
+   "tekstas": "Partija sudaryta 00:27. Perskaičiuoti iš naujo",
+   "eilutes": [
+    "#34883 Elena Karazijaitė DROPSHIP LP Express ZB",
+    "#34882 Kristina Spiriūtė MIŠRUS Venipak paštomatas ZB",
+    "#34881 Inga Korolovienė SAVA Venipak paštomatas —"
+   ],
+   "kojele": "Partija užrakinama — vėliau atėję užsakymai jos nepakeis. | Pradėti",
+   "grupes": [],
+   "klaidos": [],
+   "png": "screenshots/s551_z1.png"
+  },
+  "z3": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=3",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Venipak",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "3 Venipak <DABAR>",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [],
+   "tekstas": "Kiekvienas sandėlis registruojamas atskirai — taip gaunamas savas manifestas tam kurjerio paėmimui. Siuntėjas visose siuntose lieka UAB Avesa.",
+   "eilutes": [
+    "#34881 Inga Korolovienė Venipak paštomatas nenurodytas paštomatas",
+    "#34882 Kristina Spiriūtė AVZB Atidaryti"
+   ],
+   "kojele": "Atgal | Etikečių spausdintuvas 10×15. Pirma registruoti, tada spausdinti. | Toliau",
+   "grupes": [
+    {
+     "antraste": "Savas sandėlis · manifestas 07267260806001 · registruota 0 iš 1",
+     "mygtukai": [
+      "Registruoti 1 siuntą →sandelis=av",
+      "Lipdukai 10×15"
+     ],
+     "eilutes": [
+      "#34881 Inga Korolovienė Venipak paštomatas nenurodytas paštomatas"
+     ]
+    },
+    {
+     "antraste": "Mišrūs užsakymai · registruojami rankomis",
+     "mygtukai": [],
+     "eilutes": [
+      "#34882 Kristina Spiriūtė AVZB Atidaryti"
+     ]
+    }
+   ],
+   "klaidos": [],
+   "png": "screenshots/s551_z3.png"
+  }
+ }
+}
