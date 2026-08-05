@@ -1,0 +1,216 @@
+{
+ "VERSIJA_RUN": "run464-v1",
+ "sid": 2248,
+ "rez": {
+  "VERSIJA": "s464-v1",
+  "venipak_formatas": {
+   "shopup_venipak_shipping_settings": {
+    "shopup_venipak_shipping_field_labelformat": "sticker",
+    "shopup_venipak_shipping_field_pickuptype": "all"
+   }
+  },
+  "lp_formatas": {
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings": {
+    "plan": "TERMINAL",
+    "parcel_type": "H2T",
+    "size_cost": "",
+    "type": "class"
+   },
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings": {
+    "plan": "TERMINAL",
+    "parcel_type": "H2T",
+    "size_cost": "",
+    "type": "class"
+   },
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings": {
+    "plan": "HANDS",
+    "parcel_type": "H2H",
+    "size_cost": "",
+    "type": "class"
+   }
+  },
+  "nr_paieska": {
+   "VENIPAK": {
+    "uninstall.php": [
+     "20: * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913"
+    ],
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php": [
+     "446: $comment_door_code = $document->createElement( 'comment_door_code', $order->get_meta('venipak_door_code') );",
+     "447: $comment_office_no = $document->createElement( 'comment_office_no', $order->get_meta('venipak_office_no') );",
+     "470: $attribute->appendChild($comment_door_code);",
+     "472: $attribute->appendChild($comment_office_no);",
+     "473: $comment_call = $document->createElement( 'comment_call', '1' );",
+     "474: $attribute->appendChild($comment_call);",
+     "477: $shipment_code = $document->createElement( 'shipment_code', $order->get_id() );",
+     "479: $doc_no = $document->createElement( 'doc_no', $order->get_id() );"
+    ],
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-orders-list.php": [
+     "111: $post_id = $order->get_id();"
+    ],
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php": [
+     "191: <span class=\"button button-primary\" onclick=\"event.stopPropagation(); shopup_venipak_shipping_dispatch_order_by_id({ id: <?php",
+     "194: <span class=\"button button-primary\" onclick=\"event.stopPropagation(); shopup_venipak_shipping_dispatch_order_by_id({ id: <?php",
+     "197: <div id=\"shopup_venipak_shipping_wrapper_order_<?php echo $order->get_id(); ?>\" style=\"margin-top: 10px;\">",
+     "203: <a class=\"button button-primary\" target=\"_blank\" href=\"<?php echo admin_url('admin-ajax.php'); ?>?action=woocommerce_shopup_v",
+     "204: <a class=\"button button-primary\" target=\"_blank\" href=\"<?php echo admin_url('admin-ajax.php'); ?>?action=woocommerce_shopup_v"
+    ],
+    "includes/class-woocommerce-shopup-venipak-shipping.php": [
+     "298: * The reference to the class that orchestrates the hooks with the plugin."
+    ],
+    "includes/class-woocommerce-shopup-venipak-shipping-loader.php": [
+     "61: * @param    object               $component        A reference to the instance of the object on which the action is defined.",
+     "75: * @param    object               $component        A reference to the instance of the object on which the filter is defined.",
+     "92: * @param    object               $component        A reference to the instance of the object on which the filter is defined."
+    ],
+    "public/class-woocommerce-shopup-venipak-shipping-public.php": [
+     "86: $product = wc_get_product($product->get_id());"
+    ]
+   },
+   "LP": {
+    "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+     "155: $result = apply_filters(\"woo_lithuaniapost_order_action_generate_stickers\", [$order->get_id()]);",
+     "164: $result = apply_filters(\"woo_lithuaniapost__order_action_cancel_labels\", [$order->get_id()]);",
+     "176: $result = apply_filters(\"woo_lithuaniapost_order_action_generate_manifests\", [$order->get_id()]);",
+     "185: $result = apply_filters(\"woo_lithuaniapost_order_action_generate_return_stickers\", [$order->get_id()]);",
+     "197: return $order->get_id();"
+    ],
+    "admin/class-woo-lithuaniapost-admin-order-service.php": [
+     "130: const CN_PARCEL_TYPE_NOTES = 'Sell Items';",
+     "359: 'order_id' => $order->get_id()",
+     "489: $returnOrderBarcodes = isset($returnedOrders) ? $returnedOrders[$order->get_id()] : false;",
+     "494: $errors[LpOrderActionErrorKey::FAILED_RETURN_ORDER][] = $order->get_id();",
+     "524: 'contentDescription' => __(self::CN_PARCEL_TYPE_NOTES, 'woo-lithuaniapost'),",
+     "717: $comment = $_REQUEST['order_comments'] ?? null;",
+     "730: 'comment' => $comment ?? null,",
+     "733: 'idRef' => $order->get_id(),"
+    ],
+    "admin/partials/includes/html-cn-editor.php": [
+     "24: <label for=\"parcel_type_notes\" class=\"admin__field-label\">",
+     "25: <?php _e('Parcel Type Notes', 'woo-lithuaniapost'); ?>",
+     "30: id=\"parcel_type_notes\" type=\"text\" class=\"admin__control-text widefat\"/>",
+     "187: <label for=\"notes\" class=\"admin__field-label\">",
+     "188: <?php _e('Notes', 'woo-lithuaniapost'); ?>",
+     "191: <textarea name=\"cnForm[documents][notes]\" id=\"parcel_description\"",
+     "192: class=\"admin__control-textarea widefat\"><?php echo $cn_data->documents->notes ?? null; ?></textarea>"
+    ],
+    "admin/class-woo-lithuaniapost-admin-order-settings.php": [
+     "95: \"id\" => $item->get_id(),",
+     "96: \"order_id\" => $item->get_id(),",
+     "104: \"actions\" => $item->get_id()",
+     "201: $result = apply_filters(\"woo_lithuaniapost_order_action_generate_return_stickers\", [$order->get_id()]);"
+    ],
+    "templates/emails/tracking-email.php": [
+     "7: <?= __( 'Order nr.', 'woo-lithuaniapost' ); ?> <?= $order->get_order_number (); ?><br>"
+    ],
+    "includes/class-woo-lithuaniapost-loader.php": [
+     "61: * @param    object               $component        A reference to the instance of the object on which the action is defined.",
+     "75: * @param    object               $component        A reference to the instance of the object on which the filter is defined.",
+     "92: * @param    object               $component        A reference to the instance of the object on which the filter is defined."
+    ],
+    "includes/class-woo-lithuaniapost.php": [
+     "562: * The reference to the class that orchestrates the hooks with the plugin."
+    ],
+    "public/class-woo-lithuaniapost-public.php": [
+     "557: if ($order instanceof WC_Order && $order->get_id()) {",
+     "559: '{unisend_tracking_number}' => '<a href=\"' . get_rest_url(null, '/unisend/tracking/' . $order->get_id()) . '\">' .",
+     "604: return $method->get_id() == $selected_method && $method->get_method_id() == 'woo_lithuaniapost_lpexpress_terminal';"
+    ]
+   }
+  },
+  "wcdn_klases": {
+   "WooCommerce_Delivery_Notes": "yra",
+   "WooCommerce_Delivery_Notes_Print": "ne",
+   "WCDN_Print": "ne"
+  },
+  "wcdn_nustatymai": {
+   "wcdn_allow_tracking": "dismissed",
+   "wcdn_db_version": "7.3.0",
+   "wcdn_invoice_number_counter": "228",
+   "wcdn_invoice_number_counter_year": [
+    2026
+   ],
+   "wcdn_legacy_backup": [
+    "wcdn_admin_installation_timestamp",
+    "wcdn_db_version",
+    "wcdn_flush_rewrite_rules",
+    "wcdn_migration_lock",
+    "wcdn_notices",
+    "wcdn_version"
+   ],
+   "wcdn_legacy_backup_autoload": [
+    "wcdn_admin_installation_timestamp",
+    "wcdn_db_version",
+    "wcdn_flush_rewrite_rules",
+    "wcdn_migration_lock",
+    "wcdn_notices",
+    "wcdn_version"
+   ],
+   "wcdn_migration_7_0_2_completed": "1",
+   "wcdn_migration_7_1_0_completed": "1",
+   "wcdn_migration_7_1_2_completed": "1",
+   "wcdn_migration_7_completed": "1",
+   "wcdn_settings": [
+    "storeName",
+    "storeLogo",
+    "storeAddress",
+    "email",
+    "phone",
+    "footerText",
+    "complimentaryClose",
+    "policies",
+    "printEndpoint",
+    "defaultDocumentLabel",
+    "textDirection",
+    "enablePDF",
+    "pdfPaperSize",
+    "pdfUseCurrencyCode",
+    "showCustomerEmailLink",
+    "customerEmailText",
+    "showAdminEmailLink",
+    "adminEmailText",
+    "showViewOrderButton",
+    "showPrintButtonMyAccountPage",
+    "autoPrintDialog",
+    "viewOrderButtonLabel",
+    "invoiceButtonLabel",
+    "deliveryNoteButtonLabel",
+    "receiptButtonLabel",
+    "creditNoteButtonLabel",
+    "packingSlipButtonLabel",
+    "processingTemplate",
+    "processingAuto",
+    "processingAttach",
+    "completedTemplate",
+    "completedAuto",
+    "completedAttach",
+    "refundedTemplate",
+    "refundedAuto",
+    "refundedAttach",
+    "enablePayNow",
+    "enablePDFStorage",
+    "invoiceNumberFormat",
+    "numberDaysPdfExpiration",
+    "myAccountPageButtonLabel",
+    "resetInvoiceNumberYearly"
+   ],
+   "wcdn_template_settings": [
+    "invoice",
+    "receipt",
+    "deliverynote",
+    "packingslip"
+   ],
+   "wcdn_version": "7.3.0"
+  },
+  "wcdn_failai": [
+   "base.php",
+   "creditnote.php",
+   "deliverynote.php",
+   "invoice.php",
+   "packingslip.php",
+   "receipt.php",
+   "inc/class-woocommerce-delivery-notes.php",
+   "inc/index.php"
+  ]
+ },
+ "svetaine": "200"
+}
