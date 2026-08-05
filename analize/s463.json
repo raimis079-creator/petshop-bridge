@@ -1,0 +1,199 @@
+{
+ "VERSIJA_RUN": "run463-v1",
+ "sid": 2247,
+ "rez": {
+  "VERSIJA": "s463-v1",
+  "LP_dydzio_paieska": {
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php": [
+    "12: require_once plugin_dir_path(dirname(__FILE__)) . 'admin/api/class-woo-lithuaniapost-admin-parcel-api.php';",
+    "57: private $parcel_api;",
+    "71: $this->parcel_api = new Woo_Lithuaniapost_Admin_Parcel_Api($plugin_name, $version);",
+    "187: public function handle_parcel_validation(array $parcel, callable $error_callback):bool {",
+    "188: $result = $this->parcel_api->validate_parcel($parcel, $error_callback);"
+   ],
+   "admin/class-woo-lithuaniapost-admin-size-service.php": [
+    "18: class Woo_Lithuaniapost_Admin_Size_Service",
+    "53: public function resolve_shipping_size($planCode, $package)",
+    "85: $packages = self::package_size($packages, $planCode, $total_weight_in_g);",
+    "89: public function resolve_order_size($order, $lp_shipping_method)",
+    "114: $packages = $this->package_size($packages, $plan_code, $total_weight_in_g);",
+    "118: private function get_available_sizes($plan_code, $total_weight)",
+    "121: return $this->get_bp_sizes($total_weight);",
+    "123: return $this->get_lp_sizes($total_weight);",
+    "126: private function get_lp_sizes($weight)",
+    "130: $sizes['s'] = [2, 38.1, 30.5];",
+    "133: $sizes['m'] = [60, 60, 60];",
+    "136: $sizes['l'] = [105, 105, 105];"
+   ],
+   "admin/class-woo-lithuaniapost-admin-settings.php": [
+    "427: LpOrderStatus::$PARCEL_DELIVERED->to_order_status() => _x('Delivered', 'Order status', 'woo-lithuaniapost'),"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "118: case LpOrderAction::CREATE_PARCEL:",
+    "119: $actions ['woo_lp_create_parcel'] = __('UNISEND Create Shipping Parcel', 'woo-lithuaniapost');",
+    "142: public function process_create_parcel($order)",
+    "144: do_action(\"woo_lithuaniapost_order_action_create_parcel\", $order, false);"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "4: require_once plugin_dir_path(dirname(__FILE__)) . 'admin/api/class-woo-lithuaniapost-admin-parcel-api.php';",
+    "36: public static $PARCEL_CREATED;",
+    "37: public static $PARCEL_FAILED;",
+    "42: public static $PARCEL_DELIVERED;",
+    "43: public static $PARCEL_CANCELED;",
+    "44: public static $PARCEL_PENDING;",
+    "66: return $this == LpOrderStatus::$SHIPPING_INITIATED || $this == LpOrderStatus::$COURIER_PENDING || $this == LpOrderStatus::$COURIER_C",
+    "71: return $this == LpOrderStatus::$PARCEL_CREATED;",
+    "86: $all_statuses = [self::$PARCEL_CREATED, self::$PARCEL_FAILED, self::$COURIER_PENDING, self::$COURIER_CALLED, self::$SHIPPING_INITIAT",
+    "96: LpOrderStatus::$PARCEL_CREATED = new LpOrderStatus(\"lp-parcel-created\", \"PARCEL_CREATED\");",
+    "97: LpOrderStatus::$PARCEL_FAILED = new LpOrderStatus(\"lp-parcel-failed\", \"PARCEL_FAILED\");",
+    "102: LpOrderStatus::$PARCEL_DELIVERED = new LpOrderStatus(\"lp-delivered\", \"PARCEL_DELIVERED\");"
+   ],
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "92: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);",
+    "93: $order->update_meta_data('_woo_lithuaniapost_lpexpress_courier_called_date', date('Y-m-d H:i:s'));"
+   ],
+   "admin/class-woo-lithuaniapost-admin-error-handler.php": [
+    "45: $this->handlers[] = new Error_Handler(self::ERROR_KEY_ORDER_EDIT, [new Error_Condition_Value('action', 'woo_lithuaniapost_handle_par",
+    "47: $this->handlers[] = new Error_Handler(self::ERROR_KEY_UNISEND_ORDER_EDIT, [new Error_Condition_Value('action', 'woo-ltpost-create-pa"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-parcel-api.php": [
+    "14: class Woo_Lithuaniapost_Admin_Parcel_Api extends Woo_Lithuaniapost_Admin_Api",
+    "19: const PARCEL_URI = 'parcel';",
+    "20: const PARCEL_IDREF_URI = 'parcel/idref/';",
+    "21: const PARCEL_VALIDATE_URI = 'parcel/validate';",
+    "55: public function create_parcel(array $create_parcel_request, callable $error_callback)",
+    "57: return $this->post(self::PARCEL_URI, $create_parcel_request, $error_callback);",
+    "60: public function validate_parcel($validate_parcel_request, callable $error_callback)",
+    "62: return $this->post(self::PARCEL_VALIDATE_URI, $validate_parcel_request, $error_callback);",
+    "65: public function get_parcel($order_id)",
+    "67: return $this->get(self::PARCEL_IDREF_URI . $order_id);",
+    "70: public function update_parcel($order_id, array $update_parcel_request)",
+    "72: return $this->put(self::PARCEL_IDREF_URI . $order_id, $update_parcel_request);"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-shipping-api.php": [
+    "89: //parcelId: long"
+   ],
+   "admin/partials/includes/html-shipment-editor-side.php": [
+    "22: <?php if ($this->is_action_available(LpOrderAction::CREATE_PARCEL, $available_actions) || $this->is_action_available(LpOrderAction::INIT",
+    "24: $parcel_create_error = $this->get_order()->get_meta('_woo_lithuaniapost_parcel_create_error');",
+    "27: <?php if ($parcel_create_error): ?>",
+    "28: <p class=\"notice notice-error\"><?php _e('Parcel create failed', 'woo-lithuaniapost'); ?>:</p>",
+    "29: <?php if (is_array($parcel_create_error)): ?>",
+    "30: <?php foreach ($parcel_create_error as $error): ?>",
+    "31: <input type=\"hidden\" id=\"parcel_create_error\" name=\"parcel_create_error\"",
+    "33: <input type=\"hidden\" id=\"parcel_create_error_description\" name=\"parcel_create_error_description\"",
+    "35: <input type=\"hidden\" id=\"parcel_create_error_field\" name=\"parcel_create_error_field\"",
+    "40: <input type=\"hidden\" id=\"parcel_create_error\" name=\"parcel_create_error\"",
+    "41: value=\"<?php echo @$parcel_create_error->error; ?>\"/>",
+    "42: <input type=\"hidden\" id=\"parcel_create_error_description\" name=\"parcel_create_error_description\""
+   ]
+  },
+  "lp_meta_raktai": [
+   {
+    "meta_key": "venipak_pickup_point",
+    "c": "1"
+   }
+  ],
+  "uzsakymas_34720": {
+   "meta": {
+    "_billing_address_index": "Rai B  Miško g. 1  Agurkiškė Kazlų Rūdos sav. 12222 LT terra@gyvunai.lt +37",
+    "_shipping_address_index": "Rai B  Miško g. 1  Agurkiškė Kazlų Rūdos sav. 12222 LT +37065082900",
+    "is_vat_exempt": "no",
+    "venipak_pickup_point": "3648",
+    "_wc_order_attribution_source_type": "typein",
+    "_wc_order_attribution_utm_source": "(direct)",
+    "_wc_order_attribution_session_entry": "http://dev.avesa.lt/",
+    "_wc_order_attribution_session_start_time": "2026-07-20 07:39:42",
+    "_wc_order_attribution_session_pages": "19",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)",
+    "_wc_order_attribution_device_type": "Desktop",
+    "_petshop_invoice_document_type": "invoice",
+    "_petshop_avpn_number": "AVPN000150",
+    "_petshop_iapv_number": "IAPV000139",
+    "_petshop_order_pdf": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/wcdn/invoice/",
+    "_dp_stock_reduced": "yes",
+    "_wcdn_invoice_number_counter": "177",
+    "_wcdn_invoice_number": "AVPN34720",
+    "_wcdn_invoice_date": "1784537685",
+    "_petshop_completed_pdf": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/wcdn/invoice/",
+    "_wc_push_notification_claimed": "1784537687",
+    "_wc_push_notification_sent": "1784537687",
+    "_petshop_dl_purchase_sent": "yes",
+    "_ps_refill_tracked": "yes",
+    "_edit_lock": "1785879107:1"
+   },
+   "shipping_method": "VENIPAK paštomatai/atsiėmimo punktai",
+   "billing": {
+    "vardas": "Rai",
+    "pavarde": "B",
+    "tel": "+37065082900",
+    "email": "terra@gyvunai.lt",
+    "adr": "Miško g. 1",
+    "miestas": "Agurkiškė",
+    "pasto_kodas": "12222",
+    "salis": "LT"
+   },
+   "shipping": {
+    "vardas": "Rai",
+    "adr": "Miško g. 1",
+    "miestas": "Agurkiškė",
+    "pasto_kodas": "12222"
+   }
+  },
+  "VENIPAK_kliento_laukai": {
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php": [
+    "$contact_email = $document->createElement( 'contact_email', $order->get_billing_email() );",
+    "$is_shipping_address = $order->get_shipping_address_1() && $ship_to_billing !== 'billing_only';",
+    "$full_name = $order->get_shipping_first_name() . ' ' . $order->get_shipping_last_name();",
+    "$full_name = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();",
+    "$address = $order->get_shipping_address_1() . ' ' . $order->get_shipping_address_2();",
+    "$city = $order->get_shipping_city();",
+    "$postcode = $order->get_shipping_postcode();",
+    "$country = $order->get_shipping_country();",
+    "$phone = $order->get_shipping_phone() ? $order->get_shipping_phone() : $order->get_billing_phone();",
+    "$address = $order->get_billing_address_1() . ' ' . $order->get_billing_address_2();"
+   ],
+   "public/class-woocommerce-shopup-venipak-shipping-public-pickup-checkout.php": [
+    "$country = WC()->customer->get_shipping_country();"
+   ],
+   "public/class-woocommerce-shopup-venipak-shipping-public-email.php": [
+    "$country = $order->get_shipping_country() ? $order->get_shipping_country() : $order->get_billing_country();",
+    "$response = wp_remote_get( \"https://go.venipak.lt/ws/get_pickup_points?country=\" . $order->get_shipping_country()"
+   ],
+   "public/class-woocommerce-shopup-venipak-shipping-public.php": [
+    "$shipping_country = $order->get_shipping_country();"
+   ]
+  },
+  "LP_kliento_laukai": {
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "$receiver_phone = $order->get_billing_phone() ? $order->get_billing_phone() : null;",
+    "if ($order->get_shipping_country() != 'LT') {",
+    "$order->get_shipping_first_name(),",
+    "$order->get_shipping_last_name(),",
+    "'email' => $order->get_billing_email()",
+    "'locality' => $order->get_shipping_city(),",
+    "'address' => $order->get_shipping_address_1() . ' ' . $order->get_shipping_address_2(),",
+    "'postalCode' => $order->get_shipping_postcode(),",
+    "'countryCode' => $order->get_shipping_country()",
+    "$address1 = $order->get_shipping_address_1();"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-settings.php": [
+    "if ($item instanceof \\Automattic\\WooCommerce\\Admin\\Overrides\\OrderRefund || !method_exists($item, 'get_s",
+    "$address = $item->get_shipping_address_1();",
+    "$address = sprintf('%s, %s %s, %s', $address, $item->get_shipping_postcode(), $item->get_shipping_ci",
+    "$customer = sprintf('%s %s', $item->get_shipping_first_name(), $item->get_shipping_last_name());"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php": [
+    "$mailer->send ( $order->get_billing_email (), $subject,"
+   ],
+   "includes/shipping/rates/class-woo-lithuaniapost-country-rates.php": [
+    "$selected_destination   = WC ()->customer->get_shipping_country ();"
+   ],
+   "public/class-woo-lithuaniapost-public.php": [
+    "$shipping_country_code = $_POST['s_country'] ?? WC()->customer->get_shipping_country();"
+   ]
+  }
+ },
+ "svetaine": "200"
+}
