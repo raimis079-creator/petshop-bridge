@@ -1,0 +1,156 @@
+{
+ "VERSIJA_RUN": "run470-v1",
+ "sid": 2254,
+ "deploy": {
+  "VERSIJA": "s470-v2",
+  "act": "deploy",
+  "failas": {
+   "B": 11412,
+   "sha": "bca43eb1fbd92260"
+  }
+ },
+ "nuliai_pries": {
+  "VERSIJA": "s470-v2",
+  "act": "nuliai",
+  "nuliniu": 8,
+  "detales": [
+   {
+    "id": 27194,
+    "pav": "Nobby nailoninis žaislas gyvūnui, varlė su vi",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 19602,
+    "pav": "Animonda GranCarno Adult Beef + Chicken: kons",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 18369,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vital",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 19452,
+    "pav": "Animonda Vom Feinsten Adult Pate Mild Menu wi",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 17057,
+    "pav": "Ontario super premium konservai katėms su viš",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 17493,
+    "pav": "Miamor Super premium konservai katėms su tunu",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 34510,
+    "pav": "Ruda kiaulės ausis, 1 vnt. × 20 vnt.",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 22275,
+    "pav": "Genia aliuminis įtvaras, 90x400mm, 4vnt",
+    "turi_zurnala": "ne"
+   }
+  ]
+ },
+ "nuliai_valymas": {
+  "VERSIJA": "s470-v2",
+  "act": "nuliai",
+  "nuliniu": 8,
+  "detales": [
+   {
+    "id": 27194,
+    "pav": "Nobby nailoninis žaislas gyvūnui, varlė su vi",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 19602,
+    "pav": "Animonda GranCarno Adult Beef + Chicken: kons",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 18369,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vital",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 19452,
+    "pav": "Animonda Vom Feinsten Adult Pate Mild Menu wi",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 17057,
+    "pav": "Ontario super premium konservai katėms su viš",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 17493,
+    "pav": "Miamor Super premium konservai katėms su tunu",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 34510,
+    "pav": "Ruda kiaulės ausis, 1 vnt. × 20 vnt.",
+    "turi_zurnala": "ne"
+   },
+   {
+    "id": 22275,
+    "pav": "Genia aliuminis įtvaras, 90x400mm, 4vnt",
+    "turi_zurnala": "ne"
+   }
+  ],
+  "istrinta": 8,
+  "liko_nuliniu": 0
+ },
+ "testai": {
+  "VERSIJA": "s470-v2",
+  "act": "testai",
+  "klase": "yra",
+  "testine_preke": {
+   "id": 17978,
+   "pav": "Josera Sensiplus 12,5 kg - sausas maistas šunims s",
+   "wc_stock": 653
+  },
+  "saltinis": "vf",
+  "T0_pradzia": 2,
+  "T1_increase_5": 7,
+  "T1_qty": 7,
+  "T1_has_3": "taip",
+  "T1_has_9": "ne",
+  "T2_decrease_2": 5,
+  "T2_qty": 5,
+  "T3_decrease_99": "WP_Error: AV turi 5, prašoma 99",
+  "T4_decrease_0": "WP_Error: Kiekis turi būti teigiamas",
+  "T5_wc_stock_po": 653,
+  "T5_WC_NEPALIESTAS": "TAIP",
+  "T6_zurnalo_irasu": 3,
+  "T6_paskutinis": {
+   "kada": "2026-08-05 12:35:55",
+   "buvo": 7,
+   "tapo": 5,
+   "kas": "sistema",
+   "priezastis": "S468 testas"
+  },
+  "po_valymo": 2,
+  "stulpelis_sarase": "yra",
+  "stulpeliu_tvarka": [
+   "cb",
+   "name",
+   "sku",
+   "is_in_stock",
+   "ps_av",
+   "price"
+  ],
+  "rikiavimas": "yra",
+  "visos_su_av_po": [
+   {
+    "post_id": "17978",
+    "meta_value": "2"
+   }
+  ]
+ },
+ "svetaine": "200"
+}
