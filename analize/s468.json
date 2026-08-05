@@ -1,0 +1,53 @@
+{
+ "VERSIJA_RUN": "run468-v1",
+ "sid": 2252,
+ "deploy": {
+  "VERSIJA": "s468-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 8379,
+   "sha": "afacc4768baeab0e"
+  }
+ },
+ "testai": {
+  "VERSIJA": "s468-v1",
+  "act": "testai",
+  "klase": "yra",
+  "testine_preke": {
+   "id": 17978,
+   "pav": "Josera Sensiplus 12,5 kg - sausas maistas šunims s",
+   "wc_stock": 653
+  },
+  "saltinis": "vf",
+  "T0_pradzia": 0,
+  "T1_increase_5": 5,
+  "T1_qty": 5,
+  "T1_has_3": "taip",
+  "T1_has_9": "ne",
+  "T2_decrease_2": 3,
+  "T2_qty": 3,
+  "T3_decrease_99": "WP_Error: AV turi 3, prašoma 99",
+  "T4_decrease_0": "WP_Error: Kiekis turi būti teigiamas",
+  "T5_wc_stock_po": 653,
+  "T5_WC_NEPALIESTAS": "TAIP",
+  "T6_zurnalo_irasu": 2,
+  "T6_paskutinis": {
+   "kada": "2026-08-05 12:22:15",
+   "buvo": 5,
+   "tapo": 3,
+   "kas": "sistema",
+   "priezastis": "S468 testas"
+  },
+  "po_valymo": 0,
+  "stulpelis_sarase": "yra",
+  "stulpeliu_tvarka": [
+   "cb",
+   "name",
+   "sku",
+   "is_in_stock",
+   "ps_av",
+   "price"
+  ]
+ },
+ "svetaine": "200"
+}
