@@ -1,0 +1,16 @@
+{
+ "VERSIJA_RUN": "run474-v1",
+ "sid": 2258,
+ "deploy": {
+  "VERSIJA": "s474-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 3720,
+   "sha": "f3008f49a22e65e6"
+  }
+ },
+ "testai": {
+  "raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Call to protected method WC_Product::get_availability_text() from global scope in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:48\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook-&gt;apply_filters()\n#2 /home/gyvunai2/doma"
+ },
+ "svetaine": "200"
+}
