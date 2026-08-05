@@ -1337,16 +1337,15 @@ RIBOJAMA:    negali įsidėti daugiau nei BENDRAS kiekis (AV + tiekėjas)
 ir šaltinio parinkimui. Tai gerokai supaprastina TŽ 0.12 numatytą „daugiašaltinio
 likučio sumavimo logiką".
 
-### 17.5 SITUACIJA A IŠ TŽ — NĖRA PROBLEMA
-TŽ 0.12 rašo, kad situacijos A (ZB konservai su nauju kodu) ir B (Josera dviguba)
-yra „du skirtingi modeliai, reikia vieno nuoseklaus". **Klaidinga prielaida:**
-```
-A = KITAS PARDAVIMO VIENETAS (dėžė vs vienetas) — dvi prekės bet kurioje sistemoje.
-    Daugiašaltiškumo problemos ČIA NĖRA.
-B = ta pati prekė, tas pats vienetas, du šaltiniai — TIKROJI problema.
-```
-Modelis vienas: **viena prekė + AV likutis + tiekėjo likutis.** A lieka dvi atskiros
-prekės, nes tai ir yra du skirtingi produktai.
+### 17.5 ~~SITUACIJA A~~ — MANO KLAIDA, IŠTAISYTA 2026-08-05
+**Buvau parašęs:** „A = dėžė vs vienetas, du skirtingi produktai, problemos nėra."
+**NETIESA.** Prielaidą apie dėžes išsigalvojau — Raimis apie jas nekalbėjo.
+
+**Raimio faktas:** *„dažniausiai ir perku po 1 ir parduodu po 1. Kad pirkti dėžę ir
+paskui pardavinėti, tai beveik nebūna."*
+
+→ **A ir B yra TAS PATS ATVEJIS.** Tas pats vienetas, du kodai. Jokio prieštaravimo
+TŽ 0.12 nėra. Konsultantas teisus: **viena WooCommerce prekė, keli tiekimo šaltiniai.**
 
 ### 17.6 LAUKŲ SPRENDIMAS
 ```
@@ -1379,6 +1378,106 @@ S74  FBT kompanionai             „tik to paties sandėlio"
 **ĮTARIMAS (NEPATIKRINTA):** jei Quattro ir Prins iki šiol buvo vienas `legacy`, jie
 galėjo siūlytis vienas kitam per FBT — nors tai DU skirtingi tiekėjai ir DVI siuntos.
 Patikrinti matavimo etape.
+
+---
+
+## 18. SANDĖLIŲ MODELIS — KONSULTANTO PATAISOS + FAKTINĖ BŪKLĖ (2026-08-05)
+
+### 18.1 GRUPAVIMAS: SANDĖLIS → VEŽĖJAS → SIUNTA
+Konsultantas pasiūlė hierarchiją; **Raimis ištaisė esminę klaidą:**
+```
+AV    → Venipak ARBA LP Express     ← LP TIK iš AV
+VF    → tik Venipak
+ZB    → tik Venipak
+Quattro / Prins / Ambrosia / Belacor → tik Venipak
+```
+**LP Express galimas TIK iš AV sandėlio.** Vežėjo pasirinkimas egzistuoja tik AV
+siuntoms; visų dropship siuntų vežėjas — Venipak automatiškai.
+Bendras surinkimo lapas apima TIK fiziškai AV renkamas prekes.
+
+### 18.2 ŠALTINIS FIKSUOJAMAS UŽSAKYMO EILUTĖJE (konsultanto punktas 3 — PRIIMTA)
+`resolve()` NEGALI būti perskaičiuojamas vėliau pagal dabartinius likučius —
+šiandien AV, rytoj po likučio pasikeitimo sistema nuspręs VF. **Kiekvienoje
+užsakymo eilutėje IŠSAUGOTI:**
+```
+fulfillment_source · rezervuotas kiekis · tiekėjo SKU · siuntos grupė
+```
+**Mano santraukos spraga:** aprašiau `resolve()` kaip veiksmą po checkout, bet
+NEPASAKIAU, kad rezultatas turi būti ĮRAŠYTAS.
+
+### 18.3 SIUNTOS OBJEKTAS SU SAVO BŪSENA (konsultanto punktas 5 — PRIIMTA)
+Vienas užsakymas = kelios siuntos (AV + VF + ZB). Reikia NE tik užsakymo statuso:
+```
+laukiama · perduota tiekėjui · komplektuojama · išsiųsta
+sekimo numeris · pristatyta / klaida
+```
+**Užsakymas NEGALI būti „įvykdytas", kol neuždarytos VISOS jo siuntos.**
+
+### 18.4 KLIENTO KOMUNIKACIJA (konsultanto punktas 6 — PRIIMTA)
+```
+vienas PRADINIS pranešimas: „Užsakymas bus pristatytas keliomis siuntomis"
+atskiras IŠSIUNTIMO pranešimas KIEKVIENAI realiai siuntai
+visi sekimo numeriai matomi užsakymo puslapyje
+```
+NE du identiški „užsakymas išsiųstas" — klientas manytų gavęs dvigubą užsakymą.
+
+### 18.5 SPAUSDINIMO ŽYMA (konsultanto punktas 7 — PRIIMTA)
+Užsakymui reikia žymos: **kada pateko į spausdinimą · kokioje partijoje ·
+ar jau atspausdintas pakavimo lapas / lipdukas.**
+Kitaip tą patį užsakymą kitą rytą galima surinkti ANTRĄ KARTĄ.
+
+### 18.6 ⚠️ REZERVACIJOS — APIMTIS MAŽINAMA (konsultanto punktas 4 — DALINAI)
+Konsultantas siūlo `available = physical − reservations` su atskiru rezervacijų
+sluoksniu. **WooCommerce TAI JAU TURI** — neapmokėtiems užsakymams likutis
+laikomas nurodytą laiką. Antras sluoksnis = DVI TIESOS VIETOS.
+**Sprendimas: naudoti esamą WC mechanizmą, savo rezervacijų NEKURTI.**
+Prie dešimčių užsakymų per dieną to pakanka.
+
+### 18.7 🔴 FAKTINĖ BŪKLĖ (s465) — DVIŠALTINIŲ PREKIŲ NĖRA
+```
+prekių su IR vf, IR zb            0
+_active_fulfillment_source        zb 948 · vf 920 · out_of_stock 424
+                                  „av" arba „legacy" — NĖ VIENOS
+_own_stock_qty                    9 prekės, VISOS = 0
+```
+**Situacijos A ir B egzistuoja TŽ dokumente, bet NE duomenyse.**
+→ Sujungimo įrankio NEREIKIA. Migracijos NEREIKIA.
+→ Reikia tik, kad modelis LEISTŲ tokią situaciją, kai ji atsiras.
+
+**EAN dublikatai (26 grupės) — NE dvišaltinės prekės, o DUOMENŲ KLAIDOS:**
+```
+4011905925713  Šiaurės elnias · Tinginys su virve · Besmegenis
+5904760213357  Prisukama pelytė · Vabzdys · Kalėdinė pelytė
+3182550702355  Royal Canin 2 kg · Royal Canin 10 kg
+000000000000   placeholder
+```
+Raimis: *„čia prekės migravusios iš senos Petshop, ten viskas rankiniu būdu buvo
+vedama, tai gali būti."*
+**MANO MATAVIMO KLAIDA:** lentelėje ID kartojosi 2–3×, nes prekė turi tą patį EAN
+KELIUOSE laukuose (`_ean` + `_zb_ean`). Realių dublikatų dar mažiau.
+
+### 18.8 🔒 KODŲ MODELIS (Raimis + Claude sutarė)
+```
+Gamintojo EAN    ant maišo, VIENAS ir tas pats abiejuose sandėliuose
+Tiekėjo kodas    VF/ZB vidinis numeris — jų vidaus reikalas
+TAVO SKU         vienas, kuriuo prekė vadinama parduotuvėje
+```
+**PREKĖ VIENA, su VIENU tavo SKU.** Šaltiniai — tos prekės SAVYBĖ, ne atskiros prekės.
+```
+Josera Mini Lamb 10 kg
+   SKU JOS-MINI-10 · EAN 4032254749356
+   AV likutis 3        (rankinis)
+   VF kodas 12345      likutis 796 (XML)
+```
+**Kodėl NE dvi prekės:** du puslapiai tam pačiam maišui → Google dublikatas,
+klientas mato prekę dukart, statistika skyla, aprašymai taisomi dviese.
+
+### 18.9 MINIMALUS ŽINGSNIS
+Šiandien prekė turi VIENĄ tiekėjo kodą (`_vf_sku` ARBA `_zb_ean`).
+**Nereikia nieko pertvarkyti — reikia PRIDĖTI `_own_stock_qty`.**
+Prekė lieka VF preke su VF kodu, tik papildomai turi AV likutį.
+Antro tiekėjo kodo prireiks TIK jei ta pati prekė ateis ir iš ZB — dabar tokių NĖRA.
+**Tai vienas naujas laukas, NE architektūros perdarymas.**
 
 ---
 
