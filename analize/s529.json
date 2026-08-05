@@ -1,0 +1,164 @@
+{
+ "VERSIJA_RUN": "run529",
+ "sid": 2312,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "z1": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=1",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Į rytinę partiją patenka",
+   "zingsniai": [
+    "1 Peržiūra <DABAR>",
+    "2 Surinkimo lapai",
+    "3 Venipak",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [
+    "2 | iš sandėlio (AV) | 2 Venipak · 0 LP",
+    "2 | tiekėjams | ZB 2",
+    "0 | klausimai | į partiją NEPATENKA"
+   ],
+   "mygtukai": [],
+   "tekstas": "Partija sudaryta 20:53. Perskaičiuoti iš naujo",
+   "eilutes": [
+    "#34883 Elena Karazijaitė DROPSHIP LP Express ZB",
+    "#34882 Kristina Spiriūtė MIŠRUS Venipak paštomatas ZB",
+    "#34881 Inga Korolovienė SAVA Venipak paštomatas —"
+   ],
+   "kojele": "Partija užrakinama — vėliau atėję užsakymai jos nepakeis. | Pradėti",
+   "klaidos": [],
+   "png": "screenshots/s529_z1.png"
+  },
+  "z2": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=2",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Surinkimo lapai",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "2 Surinkimo lapai <DABAR>",
+    "3 Venipak",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [
+    "Atidaryti surinkimo lapus → -> https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=lapai&id=0&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage"
+   ],
+   "tekstas": "2 užsakymai su prekėmis iš sandėlio. Lape trys blokai: bendras surinkimas, Venipak eilėmis, LP eilėmis. Dropship eilutės į lapus neįtraukiamos.",
+   "eilutes": [],
+   "kojele": "Atgal | A4 spausdintuvas. Atsidaro naujoje kortelėje, eiga lieka čia. | Toliau",
+   "klaidos": [],
+   "png": "screenshots/s529_z2.png"
+  },
+  "z3": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=3",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Venipak",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "3 Venipak <DABAR>",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [
+    "1 · Registruoti siuntas [WC shopup_venipak_shipping_dispatch ids=34882,34881]",
+    "2 · Spausdinti lipdukus [WC shopup_venipak_shipping_labels ids=34882,34881]"
+   ],
+   "tekstas": "2 siuntos. Pirma registruok siuntas Venipak sistemoje, tada spausdink lipdukus 10×15.",
+   "eilutes": [],
+   "kojele": "Atgal | Etikečių spausdintuvas 10×15. Pirma registruoti, tada spausdinti. | Toliau",
+   "klaidos": [],
+   "png": "screenshots/s529_z3.png"
+  },
+  "z4": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=4",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "LP Express",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "✓ Venipak <OK>",
+    "4 LP Express <DABAR>",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [],
+   "tekstas": "LP Express siuntų šioje partijoje nėra.",
+   "eilutes": [],
+   "kojele": "Atgal | LP siuntoms dydis renkamas formuojant lipduką. | Toliau",
+   "klaidos": [],
+   "png": "screenshots/s529_z4.png"
+  },
+  "z5": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=5",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Perduoti tiekėjams",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "✓ Venipak <OK>",
+    "✓ LP Express <OK>",
+    "5 Tiekėjams <DABAR>",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [
+    "Atidaryti perdavimo ekraną → -> https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=perduoti&id=0&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fp"
+   ],
+   "tekstas": "Žalioji Banga — 2 užsakymai",
+   "eilutes": [],
+   "kojele": "Atgal | Laiškai neišeina be tavo paspaudimo perdavimo ekrane. | Toliau",
+   "klaidos": [],
+   "png": "screenshots/s529_z5.png"
+  },
+  "z6": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=6",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Rytas uždarytas",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "✓ Venipak <OK>",
+    "✓ LP Express <OK>",
+    "✓ Tiekėjams <OK>",
+    "6 Baigta <DABAR>"
+   ],
+   "kortos": [
+    "2 | surinkti iš sandėlio",
+    "2 | Venipak lipdukai",
+    "0 | LP lipdukai",
+    "2 | perduota tiekėjams"
+   ],
+   "mygtukai": [],
+   "eilutes": [],
+   "kojele": "Atgal | Uždaryti",
+   "klaidos": [],
+   "png": "screenshots/s529_z6.png"
+  }
+ }
+}
