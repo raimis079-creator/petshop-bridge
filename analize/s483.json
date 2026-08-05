@@ -1,0 +1,54 @@
+{
+ "VERSIJA_RUN": "run483-v1",
+ "sid": 2267,
+ "deploy": {
+  "VERSIJA": "s483-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 6810,
+   "sha": "deb94d2dadd3f97c"
+  }
+ },
+ "sukurti": {
+  "VERSIJA": "s483-v1",
+  "act": "sukurti",
+  "sukurti": {
+   "MAIN": {
+    "id": 34863,
+    "tipas": "",
+    "siuntos": "",
+    "grupes": null
+   },
+   "DS": {
+    "id": 34864,
+    "tipas": "",
+    "siuntos": "",
+    "grupes": null
+   },
+   "MIXED": {
+    "id": 34865,
+    "tipas": "",
+    "siuntos": "",
+    "grupes": null
+   },
+   "MIXED2": {
+    "id": 34866,
+    "tipas": "",
+    "siuntos": "",
+    "grupes": null
+   }
+  },
+  "stulpeliai": [
+   "cb",
+   "order_number",
+   "order_date",
+   "order_status",
+   "ps_vykdymas",
+   "ps_prekes",
+   "order_total",
+   "wc_actions"
+  ],
+  "ORIGIN_NUIMTAS": "TAIP"
+ },
+ "svetaine": "200"
+}
