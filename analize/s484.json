@@ -1,0 +1,179 @@
+{
+ "VERSIJA_RUN": "run484-v1",
+ "sid": 2268,
+ "tikrinti": {
+  "VERSIJA": "s484-v1",
+  "act": "tikrinti",
+  "ids": [
+   34863,
+   34864,
+   34865,
+   34866
+  ],
+  "uzsakymai": {
+   "34863": {
+    "DB_meta": [
+     {
+      "meta_key": "_ps_av_reduced",
+      "meta_value": "2026-08-05 13:50:24"
+     },
+     {
+      "meta_key": "_ps_decided_at",
+      "meta_value": "2026-08-05 13:50:24"
+     },
+     {
+      "meta_key": "_ps_groups",
+      "meta_value": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}"
+     },
+     {
+      "meta_key": "_ps_order_type",
+      "meta_value": "MAIN"
+     },
+     {
+      "meta_key": "_ps_shipments",
+      "meta_value": "1"
+     }
+    ],
+    "objektas": {
+     "tipas": "MAIN",
+     "siuntos": "1"
+    },
+    "statusas": "processing"
+   },
+   "34864": {
+    "DB_meta": [
+     {
+      "meta_key": "_ps_decided_at",
+      "meta_value": "2026-08-05 13:50:26"
+     },
+     {
+      "meta_key": "_ps_groups",
+      "meta_value": "{\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}"
+     },
+     {
+      "meta_key": "_ps_order_type",
+      "meta_value": "DS"
+     },
+     {
+      "meta_key": "_ps_shipments",
+      "meta_value": "1"
+     }
+    ],
+    "objektas": {
+     "tipas": "DS",
+     "siuntos": "1"
+    },
+    "statusas": "processing"
+   },
+   "34865": {
+    "DB_meta": [
+     {
+      "meta_key": "_ps_av_reduced",
+      "meta_value": "2026-08-05 13:50:27"
+     },
+     {
+      "meta_key": "_ps_decided_at",
+      "meta_value": "2026-08-05 13:50:27"
+     },
+     {
+      "meta_key": "_ps_groups",
+      "meta_value": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":2}}"
+     },
+     {
+      "meta_key": "_ps_order_type",
+      "meta_value": "MIXED"
+     },
+     {
+      "meta_key": "_ps_shipments",
+      "meta_value": "3"
+     }
+    ],
+    "objektas": {
+     "tipas": "MIXED",
+     "siuntos": "3"
+    },
+    "statusas": "processing"
+   },
+   "34866": {
+    "DB_meta": [
+     {
+      "meta_key": "_ps_av_reduced",
+      "meta_value": "2026-08-05 13:50:29"
+     },
+     {
+      "meta_key": "_ps_decided_at",
+      "meta_value": "2026-08-05 13:50:29"
+     },
+     {
+      "meta_key": "_ps_groups",
+      "meta_value": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}"
+     },
+     {
+      "meta_key": "_ps_order_type",
+      "meta_value": "MIXED"
+     },
+     {
+      "meta_key": "_ps_shipments",
+      "meta_value": "2"
+     }
+    ],
+    "objektas": {
+     "tipas": "MIXED",
+     "siuntos": "2"
+    },
+    "statusas": "processing"
+   }
+  }
+ },
+ "save_tyrimas": {
+  "VERSIJA": "s484-v1",
+  "act": "save_tyrimas",
+  "tyrimas": {
+   "po_update_status": "MAIN",
+   "po_seno_objekto_save": "MAIN",
+   "VERDIKTAS": "save() NEISTRYNE"
+  },
+  "po_perkrovimo": {
+   "tipas": "MAIN",
+   "siuntos": "1"
+  }
+ },
+ "perfiksuoti": {
+  "VERSIJA": "s484-v1",
+  "act": "perfiksuoti",
+  "po_perfiksavimo": {
+   "34863": {
+    "tipas": "MAIN",
+    "siuntos": "1",
+    "grupes": [
+     "av"
+    ]
+   },
+   "34864": {
+    "tipas": "DS",
+    "siuntos": "1",
+    "grupes": [
+     "zb"
+    ]
+   },
+   "34865": {
+    "tipas": "MIXED",
+    "siuntos": "3",
+    "grupes": [
+     "av",
+     "zb",
+     "vf"
+    ]
+   },
+   "34866": {
+    "tipas": "MIXED",
+    "siuntos": "2",
+    "grupes": [
+     "av",
+     "vf"
+    ]
+   }
+  }
+ },
+ "svetaine": "200"
+}
