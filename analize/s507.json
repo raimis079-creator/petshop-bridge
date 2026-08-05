@@ -1,0 +1,48 @@
+{
+ "VERSIJA_RUN": "run507-v1",
+ "sid": 2290,
+ "deploy": {
+  "VERSIJA": "s507-v1",
+  "act": "deploy",
+  "failas": {
+   "B": 13061,
+   "sha": "785b35d1e34b9f99"
+  }
+ },
+ "demo": {
+  "VERSIJA": "s507-v1",
+  "act": "demo",
+  "testine_preke": 34880,
+  "sukurti": [
+   34881,
+   34882,
+   34883,
+   34884,
+   34885
+  ],
+  "detales": {
+   "34881": {
+    "st": "pending",
+    "tipas": ""
+   },
+   "34882": {
+    "st": "processing",
+    "tipas": "MIXED"
+   },
+   "34883": {
+    "st": "processing",
+    "tipas": "DS"
+   },
+   "34884": {
+    "st": "completed",
+    "tipas": ""
+   },
+   "34885": {
+    "st": "cancelled",
+    "tipas": ""
+   }
+  },
+  "meniu": "klasė yra"
+ },
+ "svetaine": "200"
+}
