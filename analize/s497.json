@@ -1,0 +1,98 @@
+{
+ "VERSIJA_RUN": "run497-v1",
+ "sid": 2280,
+ "rez": {
+  "VERSIJA": "s497-v1",
+  "VP_dispatch": {
+   "B": 32446,
+   "eil": [
+    "9: * @package    Woocommerce_Shopup_Venipak_Shipping",
+    "10: * @subpackage Woocommerce_Shopup_Venipak_Shipping/admin",
+    "19: * @package    Woocommerce_Shopup_Venipak_Shipping",
+    "20: * @subpackage Woocommerce_Shopup_Venipak_Shipping/admin",
+    "155: private $shopup_venipak_shipping_field_maxpackproducts;",
+    "191: $this->shopup_venipak_shipping_field_maxpackproducts = intval($settings->get_option_by_key('shopup_venipak_shipping_f",
+    "224: $venipak_shipping_order_data['pack_numbers'] = [];",
+    "241: $packs = isset( $_POST['packs'] ) ? $_POST['packs'] : false;",
+    "243: $result = $this->venipak_shipping_dispatch_order([$order_id], $packs, $is_global);",
+    "248: $pack_numbers = $result['data']['pack_numbers'];",
+    "249: $pack_numbers_string = implode(', ', $pack_numbers);",
+    "250: $content = '<div class=\"venipak-shipping-pack\" style=\"display: flex; gap: 5px;\"><a style=\"font-size: 20px; displa",
+    "263: public function venipak_shipping_dispatch_order($order_ids, $packs, $is_global) {",
+    "266: // Retry offsets: 0 (first try), then +1, +5, +10 if pack numbers collide",
+    "272: // Bump the pack number counter before retrying",
+    "273: $this->settings->reserve_pack_numbers( $offset );",
+    "276: $xml = $this->getImportXML( $order_ids, $packs, $is_global );",
+    "295: // Only retry if the error is about pack number being in use",
+    "331: public function getImportXML($order_ids, $packs, $is_global_force) {",
+    "337: $description = $document->createElement( 'description' );",
+    "343: $manifest = $document->createElement( 'manifest' );",
+    "395: $product_quantity = $product_item->get_quantity();"
+   ]
+  },
+  "VP_order": {
+   "NERA": "woocommerce-shopup-venipak-shipping-admin-order-display.php",
+   "kataloge": [
+    "woocommerce-shopup-venipak-shipping-admin-display.php"
+   ]
+  },
+  "LP_size": {
+   "B": 7196,
+   "eil": [
+    "3: use NAWebCo\\BoxPacker\\GenericPackable;",
+    "4: use NAWebCo\\BoxPacker\\Packer;",
+    "14: * @package    Woo_Lithuaniapost",
+    "15: * @subpackage Woo_Lithuaniapost/admin",
+    "53: public function resolve_shipping_size($planCode, $package)",
+    "55: $total_weight = 0;",
+    "56: $packages = [];",
+    "65: foreach ($package['contents'] as $content) {",
+    "66: $quantity = $content['quantity']; // get quantity",
+    "69: $product_weight = $product->get_weight(); // get the product weight",
+    "70: if ($product_weight) {",
+    "71: // Add the line item weight to the total weight calculation",
+    "72: $total_weight += floatval($product_weight * $quantity);",
+    "78: $packages[] = [$width > 0 ? $width : $default_width, $height > 0 ? $height : $default_height, $length > 0 ? $",
+    "81: if (empty($packages)) return null;",
+    "83: $total_weight_in_g = apply_filters('woo_lithuaniapost_admin_util_convert_to_grams', $total_weight);",
+    "85: $packages = self::package_size($packages, $planCode, $total_weight_in_g);",
+    "86: return !empty($packages) ? strtoupper($packages[0]) : null;",
+    "91: $packages = [];",
+    "101: $total_weight_in_g = apply_filters('woo_lithuaniapost__order_action_get_order_weight_in_g', $order);",
+    "110: $packages[] = [$width > 0 ? $width : $default_width, $height > 0 ? $height : $default_height, $length > 0 ? $",
+    "113: if (empty($packages)) return null;"
+   ]
+  },
+  "LP_service": {
+   "B": 47497,
+   "eil": [
+    "4: require_once plugin_dir_path(dirname(__FILE__)) . 'admin/api/class-woo-lithuaniapost-admin-parcel-api.php';",
+    "20: * @package    Woo_Lithuaniapost",
+    "21: * @subpackage Woo_Lithuaniapost/admin",
+    "30: * @package    Woo_Lithuaniapost",
+    "31: * @subpackage Woo_Lithuaniapost/admin",
+    "36: public static $PARCEL_CREATED;",
+    "37: public static $PARCEL_FAILED;",
+    "42: public static $PARCEL_DELIVERED;",
+    "43: public static $PARCEL_CANCELED;",
+    "44: public static $PARCEL_PENDING;",
+    "66: return $this == LpOrderStatus::$SHIPPING_INITIATED || $this == LpOrderStatus::$COURIER_PENDING || $this == LpOrderSta",
+    "71: return $this == LpOrderStatus::$PARCEL_CREATED;",
+    "86: $all_statuses = [self::$PARCEL_CREATED, self::$PARCEL_FAILED, self::$COURIER_PENDING, self::$COURIER_CALLED, self::$S",
+    "96: LpOrderStatus::$PARCEL_CREATED = new LpOrderStatus(\"lp-parcel-created\", \"PARCEL_CREATED\");",
+    "97: LpOrderStatus::$PARCEL_FAILED = new LpOrderStatus(\"lp-parcel-failed\", \"PARCEL_FAILED\");",
+    "102: LpOrderStatus::$PARCEL_DELIVERED = new LpOrderStatus(\"lp-delivered\", \"PARCEL_DELIVERED\");",
+    "103: LpOrderStatus::$PARCEL_CANCELED = new LpOrderStatus(\"lp-cancelled\", \"PARCEL_CANCELED\");",
+    "104: LpOrderStatus::$PARCEL_PENDING = new LpOrderStatus(\"lp-parcel-await\", \"PARCEL_PENDING\");",
+    "119: const CREATE_PARCEL = \"CREATE_PARCEL\";",
+    "129: const CN_PARCEL_TYPE = 'sell';",
+    "130: const CN_PARCEL_TYPE_NOTES = 'Sell Items';",
+    "151: private $parcel_api;"
+   ]
+  },
+  "meta_raktai": [
+   "venipak_pickup_point"
+  ]
+ },
+ "svetaine": "200"
+}
