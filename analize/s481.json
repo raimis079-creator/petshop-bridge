@@ -1,0 +1,32 @@
+{
+ "VERSIJA_RUN": "run481-v1",
+ "sid": 2265,
+ "deploy_order": {
+  "VERSIJA": "s481-v2",
+  "act": "deploy_order",
+  "order_failas": {
+   "B": 4923,
+   "sha": "b2adf4764d2fb18e"
+  }
+ },
+ "prioritetai": {
+  "VERSIJA": "s481-v2",
+  "act": "prioritetai",
+  "eiliskumas": {
+   "woocommerce_order_status_processing": [
+    "10 wc_maybe_reduce_stock_levels",
+    "15 Petshop_AV_Reduce::mazinti",
+    "5 Petshop_AV_Order::fiksuoti"
+   ],
+   "woocommerce_payment_complete": [
+    "10 wc_maybe_reduce_stock_levels",
+    "15 Petshop_AV_Reduce::mazinti",
+    "5 Petshop_AV_Order::fiksuoti"
+   ]
+  }
+ },
+ "e2e": {
+  "raw": "<br />\n<b>Warning</b>:  Undefined variable $av→ in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins/petshop-av-reduce.php</b> on line <b>90</b><br />\n<br />\n<b>Warning</b>:  Undefined variable $dabar→ in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins/petshop-av-reduce.php</b> on line <b>79</b><br />\n{\n    \"VERSIJA\": \"s481-v2\",\n    \"act\": \"e2e\",\n    \"PRIES\": {\n        \"josera\": {\n            \"stock\": 653,\n            \"av\": 2\n        },\n        \"gr"
+ },
+ "svetaine": "200"
+}
