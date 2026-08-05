@@ -1,0 +1,51 @@
+{
+ "VERSIJA_RUN": "run479-v1",
+ "sid": 2263,
+ "atstatyti": {
+  "VERSIJA": "s479-v1",
+  "act": "atstatyti",
+  "pries": {
+   "_stock": "649",
+   "_vf_qty": "653",
+   "_own": "2"
+  },
+  "po": {
+   "_stock": "653",
+   "lookup": "653",
+   "_own": "2"
+  }
+ },
+ "elgsena": {
+  "VERSIJA": "s479-v1",
+  "act": "wc_elgsena",
+  "kabliukai": {
+   "woocommerce_payment_complete": [
+    "10 wc_paying_customer",
+    "10 wc_maybe_reduce_stock_levels",
+    "10 WC_MNM_Order::remove_get_product_from_item_filter",
+    "11 wc_release_stock_for_order",
+    "20 Petshop_AV_Order::fiksuoti",
+    "20 Petshop_Event_Emitters::on_payment_complete",
+    "30 Petshop_Refill_Engine::on_order_paid"
+   ],
+   "woocommerce_order_status_processing": [
+    "10 wc_downloadable_product_permissions",
+    "10 wc_update_total_sales_counts",
+    "10 wc_update_coupon_usage_counts",
+    "10 wc_maybe_reduce_stock_levels",
+    "11 wc_release_stock_for_order",
+    "20 Petshop_AV_Order::fiksuoti",
+    "20 Petshop_Event_Emitters::on_order_paid_status",
+    "30 Petshop_Refill_Engine::on_order_paid"
+   ],
+   "woocommerce_reduce_order_stock": [
+    "10 closure"
+   ],
+   "woocommerce_can_reduce_order_stock": []
+  },
+  "manage_stock_josera": "yes",
+  "wc_stock_valdymas": "yes",
+  "IŠVADA": "WooCommerce mazina _stock per wc_maybe_reduce_stock_levels prie payment_complete/processing. AV mazinimas (5 sluoksnis) turi vykti ATSKIRAI ir TIK toms eilutems, kuriu _ps_source=av, o WC mazinima toms eilutems reikes SUSTABDYTI, kitaip nusirasys DU kartus."
+ },
+ "svetaine": "200"
+}
