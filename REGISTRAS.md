@@ -1548,7 +1548,7 @@ Kode parašyta: `legacy -> tikras savas sandelis, carrier=any`.
 2 ✅ AV kaip šaltinis (§19.2)
 3 ✅ pardavimo riba (AV + tiekėjas) (§19.3)
 4 ✅ šaltinio fiksavimas užsakymo eilutėje (§19.5)
-5 ⏳ likučio mažinimas išsiuntus
+5 ✅ likučio mažinimas ir grąžinimas (§19.7)
 6 ⏳ užsakymo grupavimas MAIN/DS/MIXED
 7 ⏳ pakuotojo ekranas
 ```
@@ -1707,6 +1707,52 @@ S478  _stock 653 → 649  WC pats sumažino per processing → atstatyta rankomi
 **TAISYKLĖ:** po kiekvieno testo, kuris liečia užsakymus ar likučius, PALYGINTI
 `_stock` su `_vf_qty`/`_zb_qty` — ne tik tikrinamos prekės, o pjūvį.
 Vienos prekės tikrinimas šito neparodo.
+
+---
+
+### 19.7 ✅ 5 SLUOKSNIS — AV NURAŠYMAS BE DUBLIAVIMO
+```
+mu-plugins/petshop-av-reduce.php  v1.1 · 5 742 B · sha ee0cac53c62d66b5
+mu-plugins/petshop-av-order.php   v1.1 · 4 923 B · sha b2adf4764d2fb18e (prioritetas 5)
+```
+
+**🔴 KABLIUKŲ EILIŠKUMAS — BŪTINA ŽINOTI:**
+```
+5   Petshop_AV_Order::fiksuoti        įrašo _ps_source į eilutes
+10  wc_maybe_reduce_stock_levels      WooCommerce mažina _stock
+15  Petshop_AV_Reduce::mazinti        mažina _own_stock_qty
+```
+**S480 KLAIDA:** fiksavimas buvo prioritetu 20 → `_ps_source` dar neegzistavo, kai
+jo prireikė. NEI WC stabdymas, NEI AV nurašymas nesuveikė. Perkelta į 5.
+
+**KAIP SUSTABDOM WC eilutei:** `woocommerce_order_item_quantity` grąžina 0 toms
+eilutėms, kurių `_ps_source = av`. Švariau nei `can_reduce_order_stock`, kuris
+veikia VISAM užsakymui.
+
+**TRYS ELGSENOS:**
+```
+_ps_source=av + turi _own_stock_qty   → mažinam _own_stock_qty, _stock NELIEČIAM
+_ps_source=av + grynai AV (null)      → mažinam _stock rankomis (ten likutis gyvena)
+tiekėjo eilutės                       → WooCommerce elgiasi kaip įprasta
+```
+
+**E2E 6/6 (s482) — mišrus užsakymas Josera(AV) + grynai AV + ZB:**
+```
+PRIEŠ       Josera stock 653 · AV 2 | grynai AV 8 | ZB 33
+PO process  Josera stock 653 · AV 1 | grynai AV 7 | ZB 32
+PO cancel   Josera stock 653 · AV 2 | grynai AV 8 | ZB 33   ← viskas grįžo
+V1 AV krito 1 ✅ · V2 _stock NEPAKITO ✅ · V3 grynai AV ✅ · V4 ZB ✅
+V5 AV grąžinta ✅ · V6 grynai AV grąžinta ✅
+```
+Grąžinimas: `woocommerce_order_status_cancelled` + `..._refunded`, idempotentiška
+per `_ps_av_restored`.
+
+### ⚠️ PHP PAMOKA: rodyklė eilutės interpoliacijoje
+```
+BLOGAI:  "#$pid AV $av→$rez"     PHP bando → baitus įtraukti į kintamojo vardą
+                                  → Warning: Undefined variable $av→
+GERAI:   "#{$pid} AV {$av} -> {$rez}"
+```
 
 ---
 
