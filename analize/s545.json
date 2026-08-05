@@ -1,0 +1,61 @@
+{
+ "VERSIJA_RUN": "run545",
+ "sid": 2328,
+ "rez": {
+  "VERSIJA": "s545",
+  "konstruktorius": "    public function __construct( $plugin_name, $version, $settings ) {\n        $this->plugin_name = $plugin_name;\n        $this->version = $version;\n        $this->settings = $settings;\n        $this->venipak_userid = $settings->get_option_by_key('shopup_venipak_shipping_field_userid');\n        $this->venipak_username = $settings->get_option_by_key('shopup_venipak_shipping_field_username');\n        $this->venipak_password = $settings->get_option_by_key('shopup_venipak_shipping_field_password');\n        $this->venipak_manifest = $settings->get_option_by_key('shopup_venipak_shipping_field_manifest') ?: '001';\n        $this->venipak_return_service = intval($settings->get_option_by_key('shopup_venipak_shipping_field_return_service'));\n        $this->venipak_sender_name = $settings->get_option_by_key('shopup_venipak_shipping_field_sendername');\n        $this->venipak_sender_company_code = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercompanycode');\n        $this->venipak_sender_country = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercountry');\n        $this->venipak_sender_city = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercity');\n        $this->venipak_sender_address = $settings->get_option_by_key('shopup_venipak_shipping_field_senderaddress');\n        $this->venipak_sender_post_code = $settings->get_option_by_key('shopup_venipak_shipping_field_senderpostcode');\n        $this->venipak_sender_contact_person = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontactperson');\n        $this->venipak_sender_contact_tel = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontacttel');\n        $this->venipak_sender_contact_email = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontactemail');\n        $this->venipak_is_status_change_disabled = $settings->get_option_by_key('shopup_venipak_shipping_field_isstatuschangedisabled');\n        $this->shopup_venipak_shipping_field_maxpackproducts = intval($settings->get_option_by_key('shopup_venipak_shipping_field_maxpackproducts'));\n        $this->shopup_venipak_shipping_field_forcedispatch = $settings->get_option_by_key('shopup_venipak_shipping_field_forcedispatch');\n    }\n",
+  "savybes": [
+   "private plugin_name",
+   "private version",
+   "private settings",
+   "private venipak_username",
+   "private venipak_password",
+   "private venipak_userid",
+   "private venipak_manifest",
+   "private venipak_return_service",
+   "private venipak_sender_name",
+   "private venipak_sender_company_code",
+   "private venipak_sender_country",
+   "private venipak_sender_city",
+   "private venipak_sender_address",
+   "private venipak_sender_post_code",
+   "private venipak_sender_contact_person",
+   "private venipak_sender_contact_tel",
+   "private venipak_sender_contact_email",
+   "private venipak_is_status_change_disabled",
+   "private shopup_venipak_shipping_field_maxpackproducts",
+   "private shopup_venipak_shipping_field_forcedispatch"
+  ],
+  "instancija": "rasta, manifest='001'",
+  "keitimas": "PAVYKO",
+  "savybiu_reiksmes": {
+   "venipak_is_status_change_disabled": "NULL",
+   "venipak_username": "'Avesa97'",
+   "settings": "Woocommerce_Shopup_Venipak_Shipping_Admin_Settings"
+  },
+  "visi_nustatymu_raktai": [
+   "shopup_venipak_shipping_field_userid",
+   "shopup_venipak_shipping_field_username",
+   "shopup_venipak_shipping_field_password",
+   "shopup_venipak_shipping_field_firstpacknumber",
+   "shopup_venipak_shipping_field_manifest",
+   "shopup_venipak_shipping_field_labelformat",
+   "shopup_venipak_shipping_field_maxpackproducts",
+   "shopup_venipak_shipping_field_return_service",
+   "shopup_venipak_shipping_field_ismapenabled",
+   "shopup_venipak_shipping_field_googlemapapikey",
+   "shopup_venipak_shipping_field_pickuptype",
+   "shopup_venipak_shipping_field_pickupposition",
+   "shopup_venipak_shipping_field_pickupwidth",
+   "shopup_venipak_shipping_field_sendername",
+   "shopup_venipak_shipping_field_sendercompanycode",
+   "shopup_venipak_shipping_field_sendercountry",
+   "shopup_venipak_shipping_field_sendercity",
+   "shopup_venipak_shipping_field_senderaddress",
+   "shopup_venipak_shipping_field_senderpostcode",
+   "shopup_venipak_shipping_field_sendercontactperson",
+   "shopup_venipak_shipping_field_sendercontacttel",
+   "shopup_venipak_shipping_field_sendercontactemail"
+  ]
+ }
+}
