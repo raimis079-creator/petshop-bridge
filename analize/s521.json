@@ -1,0 +1,95 @@
+{
+ "VERSIJA_RUN": "run521",
+ "sid": 2304,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "neapmoketi": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neapmoketi",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "desk_yra": true,
+   "eilutes": [
+    {
+     "nr": "#34881",
+     "kl": "Inga Korolovienė",
+     "vyk": "SAVA",
+     "suma": "6,02 €\nneapmokėta",
+     "bus": "Neapmokėtas",
+     "src": [
+      "AV"
+     ]
+    },
+    {
+     "nr": "#34645",
+     "kl": "terra@gyvunai.lt",
+     "vyk": "SAVA",
+     "suma": "0,00 €\nneapmokėta",
+     "bus": "Neapmokėtas",
+     "src": [
+      "AV"
+     ]
+    }
+   ],
+   "rail": [
+    "Nauji 2",
+    "Neapmokėti 2",
+    "Paruošta siųsti 0",
+    "Klausimai 0",
+    "Atšaukti 1",
+    "Visi užsakymai 7"
+   ],
+   "filtrai": [
+    "Vykdymas: visi",
+    "Pristatymas: visi",
+    "Data: visos"
+   ],
+   "tuscia": false,
+   "meniu_paslept": "none",
+   "aukstis": 968,
+   "klaidos": [],
+   "png": "screenshots/s521_neapmoketi.png"
+  }
+ },
+ "pries": [
+  {
+   "nr": "#34881",
+   "bus": "Neapmokėtas",
+   "vei": "Pažymėti apmokėtu",
+   "url": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=apmoketa&id=34881&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dneapmoketi&_wpnonce=399cee1d97"
+  },
+  {
+   "nr": "#34645",
+   "bus": "Neapmokėtas",
+   "vei": "Pažymėti apmokėtu",
+   "url": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=apmoketa&id=34645&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dneapmoketi&_wpnonce=08206c7f91"
+  }
+ ],
+ "dialogas": "Užsakymas #34881 · 6,02 €\\n\\nPažymėti kaip APMOKĖTĄ? Prekės bus nurašytos iš likučio, klientas gaus patvirtinimą.",
+ "po": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neapmoketi&pd_ok=apmoketa&pd_nr=34881",
+  "pranesimas": "Užsakymas #34881 pažymėtas apmokėtu. Prekės nurašytos, klientui išsiųstas patvirtinimas.\n✕",
+  "rail": [
+   "Nauji 3",
+   "Neapmokėti 1",
+   "Paruošta siųsti 0",
+   "Klausimai 0",
+   "Atšaukti 1",
+   "Visi užsakymai 7"
+  ],
+  "eilutes": [
+   "#34645"
+  ]
+ },
+ "busena_34881": {
+  "bus": "Vykdomas",
+  "pay": "apmokėta",
+  "vei": "Surinkti"
+ }
+}
