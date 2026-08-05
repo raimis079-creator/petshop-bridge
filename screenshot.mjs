@@ -1,85 +1,24 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-import { chromium } from 'playwright';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s508',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s509',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run508-admin'};
-// auth cookie per snippeta
-const PHP=`add_action('wp_loaded',function(){
- if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck508xQ') return;
- nocache_headers(); header('Content-Type: application/json');
- $u=get_users(array('role'=>'administrator','number'=>1));
- if(!$u){ echo wp_json_encode(array('err'=>'no admin')); exit; }
- $uid=$u[0]->ID;
- $exp=time()+300;
- // BUTINA sesijos zetonas — be jo wp_validate_auth_cookie ATMETA
- $mgr=WP_Session_Tokens::get_instance($uid);
- $tok=$mgr->create($exp);
- echo wp_json_encode(array('uid'=>$uid,'login'=>$u[0]->user_login,
-   'logged_in'=>array('name'=>LOGGED_IN_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'logged_in',$tok)),
-   'secure_auth'=>array('name'=>SECURE_AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'secure_auth',$tok)),
-   'auth'=>array('name'=>AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'auth',$tok)),
-   'cookiepath'=>COOKIEPATH,'adminpath'=>ADMIN_COOKIE_PATH,'domain'=>COOKIE_DOMAIN,
-   'force_ssl_admin'=>force_ssl_admin()?1:0)); exit;
-},1);`;
+const O={VERSIJA_RUN:'run509'};
+const PHP=Buffer.from('PD9waHAKLyoqIFRFTVAgUzUwOSBEZXNrIHYyIHJlY29uICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgICBpZiAoICEgaXNzZXQoJF9HRVRbJ3BzX3M1MDknXSkgfHwgJF9HRVRbJ3BzX3M1MDknXSAhPT0gJ0s1MDlkaycgKSByZXR1cm47CiAgICBub2NhY2hlX2hlYWRlcnMoKTsgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAgIEBzZXRfdGltZV9saW1pdCgyNDApOwogICAgZ2xvYmFsICR3cGRiOyAkcGY9JHdwZGItPnByZWZpeDsKICAgICRyPWFycmF5KCdWRVJTSUpBJz0+J3M1MDktdjEnKTsKCiAgICAvLyAxLiBtdS1wbHVnaW5zCiAgICAkbXU9YXJyYXkoKTsKICAgIGZvcmVhY2goZ2xvYihXUE1VX1BMVUdJTl9ESVIuJy8qLnBocCcpIGFzICRmKXsKICAgICAgICAkbXVbYmFzZW5hbWUoJGYpXT1hcnJheSgnQic9PmZpbGVzaXplKCRmKSwnc2hhJz0+c3Vic3RyKGhhc2hfZmlsZSgnc2hhMjU2JywkZiksMCwxNikpOwogICAgfQogICAgJHJbJ211J109JG11OwoKICAgIC8vIDIuIGtsYXPEl3MKICAgICRrbD1hcnJheSgnUGV0c2hvcF9EZXNrJywnUGV0c2hvcF9BVl9TdG9jaycsJ1BldHNob3BfQVZfU291cmNlJywnUGV0c2hvcF9BVl9MaW1pdCcsCiAgICAgICdQZXRzaG9wX0FWX09yZGVyJywnUGV0c2hvcF9BVl9SZWR1Y2UnLCdQZXRzaG9wX0FWX0FkbWluJywnUGV0c2hvcF9BVl9FeHBpcnknLAogICAgICAnUGV0c2hvcF9BVl9TaGVldHMnLCdQZXRzaG9wX0FWX0Ryb3BzaGlwJywnUGV0c2hvcF9GdWxmaWxsbWVudF9Tb3VyY2UnLCdQZXRzaG9wX1ByaWNpbmcnKTsKICAgICRyWydrbGFzZXMnXT1hcnJheSgpOwogICAgZm9yZWFjaCgka2wgYXMgJGMpICRyWydrbGFzZXMnXVskY109Y2xhc3NfZXhpc3RzKCRjKT8nWVJBJzonbmUnOwoKICAgIC8vIDMuIHN0YXR1c2FpCiAgICAkclsnc3RhdHVzYWknXT1mdW5jdGlvbl9leGlzdHMoJ3djX2dldF9vcmRlcl9zdGF0dXNlcycpP3djX2dldF9vcmRlcl9zdGF0dXNlcygpOmFycmF5KCk7CgogICAgLy8gNC4gSFBPUyArIHXFvnNha3ltxbMgc2thacSNaWFpCiAgICAkaHBvcyA9IGNsYXNzX2V4aXN0cygnXEF1dG9tYXR0aWNcV29vQ29tbWVyY2VcVXRpbGl0aWVzXE9yZGVyVXRpbCcpCiAgICAgICAgPyBcQXV0b21hdHRpY1xXb29Db21tZXJjZVxVdGlsaXRpZXNcT3JkZXJVdGlsOjpjdXN0b21fb3JkZXJzX3RhYmxlX3VzYWdlX2lzX2VuYWJsZWQoKSA6IGZhbHNlOwogICAgJHJbJ2hwb3MnXT0kaHBvcz8nxK5KVU5HVEEnOiduZSc7CiAgICBpZigkaHBvcyl7CiAgICAgICAgJHJbJ3V6c2FreW11X3BhZ2FsX3N0YXR1c2EnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoCiAgICAgICAgICAiU0VMRUNUIHN0YXR1cyxDT1VOVCgqKSBjIEZST00geyRwZn13Y19vcmRlcnMgV0hFUkUgdHlwZT0nc2hvcF9vcmRlcicgR1JPVVAgQlkgc3RhdHVzIixBUlJBWV9BKTsKICAgICAgICAkclsnbWF4X29yZGVyX2lkJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIE1BWChpZCkgRlJPTSB7JHBmfXdjX29yZGVycyIpOwogICAgICAgICRyWydtZXRhX3Jha3RhaSddPSR3cGRiLT5nZXRfcmVzdWx0cygKICAgICAgICAgICJTRUxFQ1QgbWV0YV9rZXksQ09VTlQoKikgYyBGUk9NIHskcGZ9d2Nfb3JkZXJzX21ldGEKICAgICAgICAgICBXSEVSRSBtZXRhX2tleSBJTiAoJ19wc19zb3VyY2UnLCdfcHNfc291cmNlcycsJ193Y2RuX2ludm9pY2VfbnVtYmVyJywnX3BzX2Ryb3BzaGlwX3NlbnQnLAogICAgICAgICAgICAgJ3ZlbmlwYWtfc2hpcHBpbmdfb3JkZXJfZGF0YScsJ19wZXRzaG9wX2F2cG5fbnVtYmVyJywnX3BldHNob3BfaW52b2ljZV9kb2N1bWVudF90eXBlJywKICAgICAgICAgICAgICdfYmlsbGluZ192YXRfY29kZScsJ3ZlbmlwYWtfcGlja3VwX3BvaW50JykKICAgICAgICAgICBHUk9VUCBCWSBtZXRhX2tleSIsQVJSQVlfQSk7CiAgICAgICAgJHJbJ3Zpc2lfbWV0YV90b3AnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoCiAgICAgICAgICAiU0VMRUNUIG1ldGFfa2V5LENPVU5UKCopIGMgRlJPTSB7JHBmfXdjX29yZGVyc19tZXRhIEdST1VQIEJZIG1ldGFfa2V5IE9SREVSIEJZIGMgREVTQyBMSU1JVCA0MCIsQVJSQVlfQSk7CiAgICB9CgogICAgLy8gNS4gcHJla2nFsyBsYXVrYWkKICAgICRyWydwcmVrZXMnXT1hcnJheSgKICAgICAgJ293bl9zdG9jayc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cG9zdG1ldGEgV0hFUkUgbWV0YV9rZXk9J19vd25fc3RvY2tfcXR5JyBBTkQgbWV0YV92YWx1ZTw+JyciKSwKICAgICAgJ2V4cGlyeSc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cG9zdG1ldGEgV0hFUkUgbWV0YV9rZXk9J19wc19leHBpcnknIEFORCBtZXRhX3ZhbHVlPD4nJyIpLAogICAgICAnZXhwaXJ5X25vdGUnPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBvc3RtZXRhIFdIRVJFIG1ldGFfa2V5PSdfcHNfZXhwaXJ5X25vdGUnIEFORCBtZXRhX3ZhbHVlPD4nJyIpLAogICAgICAncHVibGlzaCc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cG9zdHMgV0hFUkUgcG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcG9zdF9zdGF0dXM9J3B1Ymxpc2gnIiksCiAgICApOwoKICAgIC8vIDYuIG1va8SXamltbyDFoWxpdXphaSArIHJlZnVuZCBwYWxhaWt5bWFzCiAgICAkZ3c9YXJyYXkoKTsKICAgIGlmKGZ1bmN0aW9uX2V4aXN0cygnV0MnKSYmV0MoKS0+cGF5bWVudF9nYXRld2F5cyl7CiAgICAgICAgZm9yZWFjaChXQygpLT5wYXltZW50X2dhdGV3YXlzLT5wYXltZW50X2dhdGV3YXlzKCkgYXMgJGlkPT4kZyl7CiAgICAgICAgICAgIGlmKCRnLT5lbmFibGVkIT09J3llcycpIGNvbnRpbnVlOwogICAgICAgICAgICAkZ3dbJGlkXT1hcnJheSgncGF2Jz0+JGctPmdldF90aXRsZSgpLCdyZWZ1bmQnPT4kZy0+c3VwcG9ydHMoJ3JlZnVuZHMnKT8nVEFJUCc6J25lJyk7CiAgICAgICAgfQogICAgfQogICAgJHJbJ2dhdGV3YXlzJ109JGd3OwoKICAgIC8vIDcuIFdDRE4gLyBrcmVkaXRpbsSXcwogICAgJHJbJ3djZG4nXT1hcnJheSgKICAgICAgJ3BsdWdpbmFzJz0+Y2xhc3NfZXhpc3RzKCdXb29Db21tZXJjZV9EZWxpdmVyeV9Ob3RlcycpPydZUkEnOiduZScsCiAgICAgICdrcl9mdW5rY2lqb3MnPT5hcnJheSgpLAogICAgKTsKICAgIGZvcmVhY2goYXJyYXkoJ3BldHNob3BfY3JlZGl0X25vdGVfbnVtYmVyJywncGV0c2hvcF9nZXRfYXZwbicsJ3BldHNob3BfbmV4dF9pbnZvaWNlX251bWJlcicpIGFzICRmbikKICAgICAgICAkclsnd2NkbiddWydrcl9mdW5rY2lqb3MnXVskZm5dPWZ1bmN0aW9uX2V4aXN0cygkZm4pPydZUkEnOiduZSc7CiAgICAkclsnd2NkbiddWydvcGNpam9zJ109YXJyYXkoKTsKICAgIGZvcmVhY2goJHdwZGItPmdldF9jb2woIlNFTEVDVCBvcHRpb25fbmFtZSBGUk9NIHskcGZ9b3B0aW9ucyBXSEVSRSBvcHRpb25fbmFtZSBMSUtFICclYXZwbiUnIE9SIG9wdGlvbl9uYW1lIExJS0UgJyVrcmVkaXQlJyBPUiBvcHRpb25fbmFtZSBMSUtFICd3Y2RuJScgTElNSVQgMzAiKSBhcyAkbykKICAgICAgICAkclsnd2NkbiddWydvcGNpam9zJ11bXT0kbzsKCiAgICAvLyA4LiBhZG1pbiBtZW5pdSBwdXNsYXBpYWkgKG3Fq3PFsykKICAgICRyWydtdXN1X3B1c2xhcGlhaSddPWFycmF5KCk7CiAgICBmb3JlYWNoKGFycmF5KCdwcy1kZXNrJywncHMtbGFwYWknLCdwcy1kcm9wc2hpcCcsJ3BzLWRyb3BzaGlwLW51c3RhdHltYWknLCdwZXRzaG9wLXJlcG9ydHMnKSBhcyAkcyl7CiAgICAgICAgJHJbJ211c3VfcHVzbGFwaWFpJ11bJHNdPW51bGw7IC8vIHXFvnBpbGR5cyBhZG1pbl9tZW51LCDEjWlhIHRpayBzxIVyYcWhYXMga8SFIHRpa3JpbnRpCiAgICB9CgogICAgLy8gOS4gcHJpc3RhdHltbyBtZXRvZGFpCiAgICAkclsnc2hpcHBpbmcnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBtZXRob2RfaWQsQ09VTlQoKikgYyBGUk9NIHskcGZ9d29vY29tbWVyY2Vfc2hpcHBpbmdfem9uZV9tZXRob2RzIFdIRVJFIGlzX2VuYWJsZWQ9MSBHUk9VUCBCWSBtZXRob2RfaWQiLEFSUkFZX0EpOwoKICAgIC8vIDEwLiBsaWvEmSBURU1QIHNuaXBwZXQnYWkKICAgICRyWyd0ZW1wX3NuaXBwZXRzJ109JHdwZGItPmdldF9yZXN1bHRzKAogICAgICAiU0VMRUNUIGlkLG5hbWUsYWN0aXZlIEZST00geyRwZn1zbmlwcGV0cyBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyBPUkRFUiBCWSBpZCBERVNDIExJTUlUIDI1IixBUlJBWV9BKTsKICAgICRyWydzbmlwcGV0dV92aXNvJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1zbmlwcGV0cyIpOwoKICAgIC8vIDExLiB0aWVrxJdqxbMgcGHFoXRhaQogICAgJHJbJ3RpZWtlanVfcGFzdGFpJ109Z2V0X29wdGlvbigncHNfdGlla2VqdV9wYXN0YWknLGFycmF5KCkpOwoKICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9QUkVUVFlfUFJJTlQpOyBleGl0Owp9LCAxKTsK','base64').toString('utf8').replace(/^<\?php\s*/,'');
 let sid=null;
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S508 Cookie',code:PHP,scope:'global',active:true}));
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S509 Recon',code:PHP,scope:'global',active:true}));
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
-O.sid=sid; sh('sleep 4');
-const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck508xQ"');
-let C=null; try{C=JSON.parse(ck);}catch(e){O.cookie_raw=String(ck).slice(0,200);}
-O.cookie_ok = C && C.logged_in ? 'yra' : 'NERA';
-O.cookie_info = C ? {cookiepath:C.cookiepath,adminpath:C.adminpath,domain:C.domain,ssl_admin:C.force_ssl_admin} : null;
-if(C && C.logged_in){
- try{
-  const b=await chromium.launch();
-  const ctx=await b.newContext({viewport:{width:1600,height:1000},ignoreHTTPSErrors:true,locale:'lt-LT'});
-  const ck=[
-    {name:C.logged_in.name,value:C.logged_in.val,domain:'dev.avesa.lt',path:'/',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-includes/',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.auth.name,value:C.auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
-  ];
-  await ctx.addCookies(ck);
-  const p=await ctx.newPage();
-  const puslapiai=[
-    ['desk','/wp-admin/admin.php?page=ps-desk'],
-  ];
-  O.psl={};
-  for(const [v,u] of puslapiai){
-    try{
-      const rp=await p.goto(SITE+u,{waitUntil:'domcontentloaded',timeout:70000});
-      await p.waitForTimeout(3500);
-      const dbg=await p.evaluate(()=>({url:location.href,title:document.title,
-        prisijungimas: !!document.querySelector('#loginform')}));
-      const info=await p.evaluate(()=>{
-        const th=[...document.querySelectorAll('table.wp-list-table thead th')].map(x=>(x.innerText||'').trim()).filter(Boolean);
-        const mb=[...document.querySelectorAll('.postbox, .woocommerce-order-data, #woocommerce-order-items')].map(x=>{
-          const h=x.querySelector('h2,h3,.hndle,.postbox-header');
-          return (h?h.innerText:(x.id||'')).replace(/\s+/g,' ').trim().slice(0,50);
-        }).filter(Boolean);
-        const menu=[...document.querySelectorAll('#adminmenu > li > a')].map(x=>(x.innerText||'').replace(/\s+/g,' ').trim().split('\n')[0]).filter(Boolean);
-        return {stulpeliai:th, blokai:mb, meniu:menu,
-          aukstis:document.body.scrollHeight, plotis:document.body.scrollWidth};
-      });
-      O.psl[v]={http:rp?rp.status():null, ...dbg, ...info};
-      const png=await p.screenshot({fullPage:true});
-      putFile('screenshots/s508_'+v+'.png', png);
-      O.psl[v].png='screenshots/s508_'+v+'.png';
-    }catch(e){ O.psl[v]={KLAIDA:String(e).slice(0,150)}; }
-  }
-  await b.close();
- }catch(e){ O.NARSYKLE=String(e).slice(0,300); }
-}
+O.sid=sid; sh('sleep 5');
+const out=sh('curl -sSk --max-time 200 "'+SITE+'/?ps_s509=K509dk"');
+try{O.rez=JSON.parse(out);}catch(e){O.rez={raw:String(out).slice(0,1500)};}
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putFile('analize/s508.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s509.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
