@@ -1,87 +1,24 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-import { chromium } from 'playwright';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s591',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s592',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run591'};
-// auth cookie per snippeta
-const PHP=`add_action('wp_loaded',function(){
- if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck591xQ') return;
- nocache_headers(); header('Content-Type: application/json');
- $u=get_users(array('role'=>'administrator','number'=>1));
- if(!$u){ echo wp_json_encode(array('err'=>'no admin')); exit; }
- $uid=$u[0]->ID;
- $exp=time()+300;
- // BUTINA sesijos zetonas — be jo wp_validate_auth_cookie ATMETA
- $mgr=WP_Session_Tokens::get_instance($uid);
- $tok=$mgr->create($exp);
- echo wp_json_encode(array('uid'=>$uid,'login'=>$u[0]->user_login,
-   'logged_in'=>array('name'=>LOGGED_IN_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'logged_in',$tok)),
-   'secure_auth'=>array('name'=>SECURE_AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'secure_auth',$tok)),
-   'auth'=>array('name'=>AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'auth',$tok)),
-   'cookiepath'=>COOKIEPATH,'adminpath'=>ADMIN_COOKIE_PATH,'domain'=>COOKIE_DOMAIN,
-   'force_ssl_admin'=>force_ssl_admin()?1:0)); exit;
-},1);`;
+const O={VERSIJA_RUN:'run592'};
+const PHP=Buffer.from('PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICAgIGlmICggISBpc3NldCgkX0dFVFsncHNfczU5MiddKSB8fCAkX0dFVFsncHNfczU5MiddICE9PSAnSzU5MmJyJyApIHJldHVybjsKICAgIG5vY2FjaGVfaGVhZGVycygpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICAgQHNldF90aW1lX2xpbWl0KDI0MCk7CiAgICBnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OwogICAgJHI9YXJyYXkoJ1ZFUlNJSkEnPT4nczU5MicpOwoKICAgIC8vIDEuIHZpc2kgcHJla2nFsyDFvmVua2xhaSBzdSBwdWJsaXNoIGtpZWtpYWlzCiAgICAkcm93cz0kd3BkYi0+Z2V0X3Jlc3VsdHMoCiAgICAgICJTRUxFQ1QgdC5uYW1lLCB0LnRlcm1faWQsIENPVU5UKERJU1RJTkNUIHAuSUQpIGMKICAgICAgIEZST00geyRwZn10ZXJtcyB0CiAgICAgICBJTk5FUiBKT0lOIHskcGZ9dGVybV90YXhvbm9teSB0dCBPTiB0dC50ZXJtX2lkPXQudGVybV9pZCBBTkQgdHQudGF4b25vbXk9J3Byb2R1Y3RfYnJhbmQnCiAgICAgICBJTk5FUiBKT0lOIHskcGZ9dGVybV9yZWxhdGlvbnNoaXBzIHRyIE9OIHRyLnRlcm1fdGF4b25vbXlfaWQ9dHQudGVybV90YXhvbm9teV9pZAogICAgICAgSU5ORVIgSk9JTiB7JHBmfXBvc3RzIHAgT04gcC5JRD10ci5vYmplY3RfaWQgQU5EIHAucG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcC5wb3N0X3N0YXR1cz0ncHVibGlzaCcKICAgICAgIEdST1VQIEJZIHQudGVybV9pZCBPUkRFUiBCWSBjIERFU0MiLCBBUlJBWV9BKTsKICAgICRyWyd6ZW5rbGFpJ109JHJvd3M7CiAgICAkclsnemVua2x1X3Zpc28nXT1jb3VudCgkcm93cyk7CiAgICAkclsncHJla2l1X3N1X3plbmtsdSddPShpbnQpJHdwZGItPmdldF92YXIoCiAgICAgICJTRUxFQ1QgQ09VTlQoRElTVElOQ1QgcC5JRCkgRlJPTSB7JHBmfXBvc3RzIHAKICAgICAgIElOTkVSIEpPSU4geyRwZn10ZXJtX3JlbGF0aW9uc2hpcHMgdHIgT04gdHIub2JqZWN0X2lkPXAuSUQKICAgICAgIElOTkVSIEpPSU4geyRwZn10ZXJtX3RheG9ub215IHR0IE9OIHR0LnRlcm1fdGF4b25vbXlfaWQ9dHIudGVybV90YXhvbm9teV9pZCBBTkQgdHQudGF4b25vbXk9J3Byb2R1Y3RfYnJhbmQnCiAgICAgICBXSEVSRSBwLnBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHAucG9zdF9zdGF0dXM9J3B1Ymxpc2gnIik7CiAgICAkclsndmlzb19wdWJsaXNoJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wb3N0cyBXSEVSRSBwb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwb3N0X3N0YXR1cz0ncHVibGlzaCciKTsKCiAgICAvLyAyLiBraWVrIHByZWtpxbMgcGFnYWwgZGFiYXJ0aW7EryBzcHJlbmRpbcSFIGt1cmlhbSBzYW5kxJdsaXVpCiAgICAkaWRzPSR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgSUQgRlJPTSB7JHBmfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSdwdWJsaXNoJyIpOwogICAgJHNrPWFycmF5KCk7CiAgICBmb3JlYWNoKCRpZHMgYXMgJHBpZCl7CiAgICAgICAgJHM9Jz8nOwogICAgICAgIGlmKGNsYXNzX2V4aXN0cygnUGV0c2hvcF9GdWxmaWxsbWVudF9Tb3VyY2UnKSl7CiAgICAgICAgICAgICR2PVBldHNob3BfRnVsZmlsbG1lbnRfU291cmNlOjpyZXNvbHZlKCRwaWQpOwogICAgICAgICAgICAkcz1pc19hcnJheSgkdik/JHZbJ3NvdXJjZSddOic/JzsKICAgICAgICB9CiAgICAgICAgaWYoIWlzc2V0KCRza1skc10pKSAkc2tbJHNdPTA7CiAgICAgICAgJHNrWyRzXSsrOwogICAgfQogICAgYXJzb3J0KCRzayk7CiAgICAkclsnZGFiYXJ0aW5pc19wYXNraXJzdHltYXMnXT0kc2s7CgogICAgLy8gMy4gQW1icm9zaWEgcG/FvnltaWFpOiBnYW1pbnRvamFpIHRhcnAgbGVnYWN5IHByZWtpxbMKICAgICRtYW51Zj0kd3BkYi0+Z2V0X3Jlc3VsdHMoCiAgICAgICJTRUxFQ1QgbS5tZXRhX3ZhbHVlIHYsIENPVU5UKCopIGMgRlJPTSB7JHBmfXBvc3RtZXRhIG0KICAgICAgIElOTkVSIEpPSU4geyRwZn1wb3N0cyBwIE9OIHAuSUQ9bS5wb3N0X2lkIEFORCBwLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJyBBTkQgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnCiAgICAgICBXSEVSRSBtLm1ldGFfa2V5PSdfbGVnYWN5X21hbnVmYWN0dXJlcicgQU5EIG0ubWV0YV92YWx1ZTw+JycKICAgICAgIEdST1VQIEJZIG0ubWV0YV92YWx1ZSBPUkRFUiBCWSBjIERFU0MgTElNSVQgNjAiLCBBUlJBWV9BKTsKICAgICRyWydsZWdhY3lfZ2FtaW50b2phaSddPSRtYW51ZjsKICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9QUkVUVFlfUFJJTlQpOyBleGl0Owp9LCAxKTsK','base64').toString('utf8').replace(/^<\?php\s*/,'');
 let sid=null;
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S591 Cookie',code:PHP,scope:'global',active:true}));
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S592 Zenklai',code:PHP,scope:'global',active:true}));
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
-O.sid=sid; sh('sleep 4');
-const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck591xQ"');
-let C=null; try{C=JSON.parse(ck);}catch(e){O.cookie_raw=String(ck).slice(0,200);}
-O.cookie_ok = C && C.logged_in ? 'yra' : 'NERA';
-O.cookie_info = C ? {cookiepath:C.cookiepath,adminpath:C.adminpath,domain:C.domain,ssl_admin:C.force_ssl_admin} : null;
-if(C && C.logged_in){
- try{
-  const b=await chromium.launch();
-  const ctx=await b.newContext({viewport:{width:1600,height:1000},ignoreHTTPSErrors:true,locale:'lt-LT'});
-  const ck=[
-    {name:C.logged_in.name,value:C.logged_in.val,domain:'dev.avesa.lt',path:'/',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-includes/',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.auth.name,value:C.auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
-  ];
-  await ctx.addCookies(ck);
-  const p=await ctx.newPage();
-  const puslapiai=[
-    ['klausimai','/wp-admin/admin.php?page=ps-desk&eile=klausimai'],
-  ];
-  O.psl={};
-  for(const [v,u] of puslapiai){
-    try{
-      const rp=await p.goto(SITE+u,{waitUntil:'domcontentloaded',timeout:70000});
-      await p.waitForTimeout(3500);
-      const dbg=await p.evaluate(()=>({url:location.href,title:document.title,
-        prisijungimas: !!document.querySelector('#loginform')}));
-      const info=await p.evaluate(()=>{
-        const T=e=>e&&e.innerText?e.innerText.replace(/\s+/g,' ').trim():'';
-        return {
-          rail:[...document.querySelectorAll('.pd-q')].map(x=>T(x)),
-          korteles:[...document.querySelectorAll('.pd-kcard')].map(k=>({
-            antraste:T(k.querySelector('.pd-kh')),
-            priezastis:T(k.querySelector('.pd-kwhy')),
-            eilutes:[...k.querySelectorAll('.pd-kline')].map(l=>T(l)),
-            mygtukai:[...k.querySelectorAll('.pd-kbtns a, .pd-kf a')].map(b=>T(b))
-          }))
-        };
-      });
-      O.psl[v]={http:rp?rp.status():null, ...dbg, ...info};
-      const png=await p.screenshot({fullPage:true});
-      putFile('screenshots/s591_'+v+'.png', png);
-      O.psl[v].png='screenshots/s591_'+v+'.png';
-    }catch(e){ O.psl[v]={KLAIDA:String(e).slice(0,150)}; }
-  }
-  await b.close();
- }catch(e){ O.NARSYKLE=String(e).slice(0,300); }
-}
+O.sid=sid; sh('sleep 5');
+const out=sh('curl -sSk --max-time 200 "'+SITE+'/?ps_s592=K592br"');
+try{O.rez=JSON.parse(out);}catch(e){O.rez={raw:String(out).slice(0,1500)};}
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putFile('analize/s591.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s592.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
