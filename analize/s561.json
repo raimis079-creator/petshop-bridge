@@ -1,0 +1,148 @@
+{
+ "VERSIJA_RUN": "run561",
+ "sid": 2344,
+ "rez": {
+  "VERSIJA": "s561",
+  "klases": {
+   "Petshop_AV_Stock": {
+    "metodai": [
+     "::init()",
+     "::sortable($cols)",
+     "::sort_query($q)",
+     "::filter_dropdown()",
+     "::filter_query($q)",
+     "::qty($product_id)",
+     "::has($product_id,$need=…)",
+     "::decrease($product_id,$by,$priezastis=…)",
+     "::increase($product_id,$by,$priezastis=…)",
+     "::apsaugotas_rasymas($product_id,$reiksme)",
+     "::log($product_id,$buvo,$tapo,$priezastis)",
+     "::field()",
+     "::save($post_id)",
+     "::column($cols)",
+     "::column_value($col,$post_id)",
+     "::quick_edit($col,$post_type)",
+     "::quick_edit_js()",
+     "::quick_edit_save($post_id,$post)"
+    ],
+    "konst": {
+     "META": "_own_stock_qty"
+    }
+   },
+   "Petshop_AV_Expiry": {
+    "metodai": [
+     "::init()",
+     "::data($product_id)",
+     "::pastaba($product_id)",
+     "::dienu($product_id)",
+     "::skubu($product_id)",
+     "::laukai()",
+     "::saugoti($post_id)",
+     "::stulpelis($cols)",
+     "::reiksme($col,$post_id)",
+     "::rikiavimas($cols)",
+     "::rikiavimo_query($q)",
+     "::filtras()",
+     "::filtro_query($q)",
+     "::stilius()"
+    ],
+    "konst": {
+     "META": "_ps_expiry",
+     "META_NOTE": "_ps_expiry_note",
+     "ISPEJIMAS": 60
+    }
+   },
+   "Petshop_AV_Reduce": {
+    "metodai": [
+     "::init()",
+     "::wc_kiekis($qty,$order,$item)",
+     "::mazinti($order_id)",
+     "::grazinti($order_id)"
+    ],
+    "konst": []
+   },
+   "Petshop_AV_Source": {
+    "metodai": [
+     "::resolve($product_id,$qty=…)",
+     "::is_av($product_id,$qty=…)",
+     "::group($eilutes)",
+     "::order_type($grupes)",
+     "::group_order($order)"
+    ],
+    "konst": []
+   },
+   "Petshop_AV_Dropship": {
+    "metodai": [
+     "::tiekejai()",
+     "::init()",
+     "::veiksmas($v)",
+     "::vykdyti($redirect,$veiksmas,$ids)",
+     "::meniu()",
+     "::grupuoti($ids)",
+     "::pakuociu($order)",
+     "::lipduko_vardas($order)",
+     "::puslapis()",
+     "::nustatymai()",
+     "::saugoti_nustatymus()",
+     "::siusti()",
+     "::lipdukas($order_id)",
+     "::manifestas($order_ids)"
+    ],
+    "konst": {
+     "VEIKSMAS": "ps_dropship",
+     "OPT_EMAIL": "ps_tiekeju_pastai"
+    }
+   }
+  },
+  "meta": {
+   "own_stock": "1",
+   "expiry_raktai": [
+    "_download_expiry"
+   ]
+  },
+  "lenteles": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_shipments",
+   "gaj6_ps_webhook_log"
+  ],
+  "tiekeju_pastai": {
+   "vf": "ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt",
+   "belcor_tofu": "lina.sirvele@belacorinvest.lt",
+   "ambrosia": "info@alphazoo.lt",
+   "quattro": "e.panaviene@kaunogrudai.lt",
+   "prins": "irute@faunas.lt"
+  },
+  "dropship_siusti": "\tpublic static function siusti() {\n\t\tif ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }\n\t\tcheck_admin_referer( 'ps_dropship_send' );\n\n\t\t$src = sanitize_key( $_POST['tiekejas'] ?? '' );\n\t\t$ids = array_filter( array_map( 'intval', explode( ',', (string) ( $_POST['uzsakymai'] ?? '' ) ) ) );\n\t\tif ( ! $src || ! $ids ) { wp_safe_redirect( admin_url( 'admin.php?page=ps-dropship' ) ); exit; }\n\n\t\t$t      = self::tiekejai();\n\t\t$vardas = $t[ $src ][0] ?? strtoupper( $src );\n\t\t$pastai = (array) get_option( self::OPT_EMAIL, [] );\n\t\t$pastas = $pastai[ $src ] ?? '';\n\t\tif ( ! $pastas ) { wp_die( 'Nenurodytas tiekėjo el. paštas' ); }\n\n\t\t$g = self::grupuoti( $ids );\n\t\t$uzsakymai = $g[ $src ] ?? [];\n\t\tif ( ! $uzsakymai ) { wp_die( 'Nėra ką siųsti' ); }\n\n\t\t$rodyti_ean = ( ( $t[ $src ][1] ?? 'sku' ) === 'sku_ean' );\n\t\t$data = date_i18n( 'Y-m-d' );\n\n\t\t// LENTELĖ — tokia pat struktūra kaip Raimio rankiniuose laiškuose\n\t\t$h  = '<p>Laba diena,</p><p>šiandienai</p>';\n\t\t$h .= '<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse:collapse;font-family:Arial;font-size:13px;\">';\n\t\tforeach ( $uzsakymai as $u ) {\n\t\t\t$n = count( $u['eilutes'] ) + ( $u['pakuociu'] > 1 ? 1 : 0 );\n\t\t\t$pirma = true;\n\t\t\tforeach ( $u['eilutes'] as $e ) {\n\t\t\t\t$h .= '<tr>';\n\t\t\t\tif ( $pirma ) {\n\t\t\t\t\t$h .= '<td rowspan=\"' . $n . '\" valign=\"top\"><b>' . esc_html( $u['nr'] ) . '</b></td>';\n\t\t\t\t\t$h .= '<td rowspan=\"' . $n . '\" valign=\"top\">' . esc_html( $u['klientas'] ) . '</td>';\n\t\t\t\t}\n\t\t\t\t$h .= '<td>' . esc_html( $e['pav'] );\n\t\t\t\tif ( $e['sku'] ) { $h .= ' <span style=\"color:#666\">' . esc_html( $e['sku'] ) . '</span>'; }\n\t\t\t\tif ( $rodyti_ean && $e['ean'] ) { $h .= '<br><span style=\"color:#666;font-size:11px\">EAN ' . esc_html( $e['ean'] ) . '</span>'; }\n\t\t\t\t$h .= '</td><td align=\"center\">' . (int) $e['qty'] . '</td></tr>';\n\t\t\t\t$pirma = false;\n\t\t\t}\n\t\t\tif ( $u['pakuociu'] > 1 ) {\n\t\t\t\t$h .= '<tr><td colspan=\"2\"><i>' . (int) $u['pakuociu'] . ' lipdukai</i></td></tr>';\n\t\t\t}\n\t\t}\n\t\t$h .= '</table>';\n\t\t$h .= '<p>Linkėjimai,<br>UAB Avesa<br>terra@petshop.lt</p>';\n\n\t\t// PRIEDAI\n\t\t$priedai = [];\n\t\tif ( ! empty( $_POST['su_lipdukais'] ) ) {\n\t\t\tforeach ( array_keys( $uzsakymai ) as $oid ) {\n\t\t\t\t$f = self::lipdukas( $oid );\n\t\t\t\tif ( $f ) { $priedai[] = $f; }\n\t\t\t}\n\t\t}\n\t\tif ( ! empty( $_POST['su_manifestu'] ) ) {\n\t\t\t$m = self::manifestas( array_keys( $uzsakymai ) );\n\t\t\tif ( $m ) { $priedai[] = $m; }\n\t\t}\n\n\t\t$antraste = [\n\t\t\t'Content-Type: text/html; charset=UTF-8',\n\t\t\t'From: UAB Avesa <terra@petshop.lt>',\n\t\t\t'Reply-To: terra@petshop.lt',\n\t\t];\n\t\t$ok = wp_mail( $pastas, 'užsakymas ' . $data, $h, $antraste, $priedai );\n\n\t\tif ( $ok ) {\n\t\t\tforeach ( array_keys( $uzsakymai ) as $oid ) {\n\t\t\t\t$o = wc_get_order( $oid );\n\t\t\t\tif ( ! $o ) { continue; }\n"
+ }
+}
