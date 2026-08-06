@@ -63,3 +63,49 @@ Backup: wp-content/uploads/ps-backup/*.bak_sNNN
 
 ## _ps_sandelis (S595)
 av 1401 · vf 1161 · zb 1059 · quattro 64 · belcor_tofu 62 · prins 43 · ambrosia 15
+
+## ===== PERDAVIMAS KITAM POKALBIO LANGUI (2026-08-06) =====
+
+### TEMA: PREKIŲ SRITIS
+
+Dokumentai: TŽ MASTER v1.62 (sk. 35 ir 36), deployment_log v1.3.62.
+Sk. 36 PATIKSLINA 0.12 — skaityti abu.
+
+### KANONINIAI LAUKAI
+_ps_sandelis      kilmė, 7 reikšmės, įrašyta 3805 prekėms (S595)
+_own_stock_qty    AV likutis — turi būti VISOMS, dabar tik 3 prekės
+_stock            parduodamas kiekis; importas jį PERRAŠO
+
+### UŽRAKTO NEREIKIA (patikrinta S596)
+Importai #5/#7 = only režimas, rašo tik _vf_*; #2 sąrašas tuščias, #3 nerašo.
+Mūsų laukų XML neturi → perrašyti negali.
+
+### KITAS ETAPAS (eilės tvarka)
+1 resolveris skaito _ps_sandelis
+2 AV_Source supranta „av" vietoj „legacy"
+3 prekė be sandėlio → Klausimai
+4 AV likutis visoms prekėms į _own_stock_qty (MIGRACIJA iš _stock + Raimio inventorizacija)
+5 Prekių langas: katalogas (kilmė, AV likutis, savikaina, marža)
+6 Tiekimas perkeliamas po Prekėmis + USB skeneris priėmime
+7 Akcijos (TŽ 8.4: kategorijų antkainiai, apvalinimas, preview 10, audit log), rinkiniai
+
+### KO NEPRALEISTI (iš TŽ, jau aprašyta — NEIŠRADINĖTI IŠ NAUJO)
+- 8.1–8.5 kainodara: A kategorinė / B manual / C global; apvalinimas .X9;
+  lock laimi; kaina < savikainos neleidžiama
+- 8.4 kainodaros admin UI jau suprojektuotas
+- 27 aprašymai: 9 petshop_desc_* laukai, accordion, fallback į post_content
+- 6.5 dublikatai: EAN → SKU+tiekėjas → pavadinimas+brandas
+- 6.4 NIEKADA neištrinti produkto automatiškai
+- 0.10 _manual_price_override = kainos užraktas; _cost_price BE PVM
+- rinkiniai nemaišo sandėlių, IŠSKYRUS AV
+
+### PRIĖMIMAS
+PDF nuskaitymas ATMESTAS. USB skeneris (veikia kaip klaviatūra) — lenkų
+smulkmenoms. Sąlyga: EAN. Skeneris tik priėmime, ne surinkime.
+
+### MENIU
+Užsakymai lieka kaip yra + eilė „Laukia prekių".
+Prekės: Katalogas · Tiekimas · Sandėlis · Akcijos · Rinkiniai.
+
+### DARBALAUKIS BAIGTAS — netaisyti be priežasties
+Visa jo būklė aukščiau šiame faile. Raimis testuoja.
