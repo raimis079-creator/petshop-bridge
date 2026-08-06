@@ -1,0 +1,558 @@
+{
+ "VERSIJA_RUN": "run597",
+ "temp_off": [],
+ "sid": 2380,
+ "rez": {
+  "VERSIJA": "s597",
+  "statusai": [
+   {
+    "post_status": "draft",
+    "c": "1028"
+   },
+   {
+    "post_status": "private",
+    "c": "1"
+   },
+   {
+    "post_status": "publish",
+    "c": "2776"
+   }
+  ],
+  "variacijos": 158,
+  "sandeliai": [
+   {
+    "v": "vf",
+    "s": "publish",
+    "c": "991"
+   },
+   {
+    "v": "av",
+    "s": "publish",
+    "c": "959"
+   },
+   {
+    "v": "zb",
+    "s": "publish",
+    "c": "662"
+   },
+   {
+    "v": "av",
+    "s": "draft",
+    "c": "441"
+   },
+   {
+    "v": "zb",
+    "s": "draft",
+    "c": "397"
+   },
+   {
+    "v": "vf",
+    "s": "draft",
+    "c": "170"
+   },
+   {
+    "v": "quattro",
+    "s": "publish",
+    "c": "64"
+   },
+   {
+    "v": "belcor_tofu",
+    "s": "publish",
+    "c": "62"
+   },
+   {
+    "v": "prins",
+    "s": "publish",
+    "c": "23"
+   },
+   {
+    "v": "prins",
+    "s": "draft",
+    "c": "20"
+   },
+   {
+    "v": "ambrosia",
+    "s": "publish",
+    "c": "15"
+   },
+   {
+    "v": "av",
+    "s": "private",
+    "c": "1"
+   }
+  ],
+  "be_sandelio": [],
+  "be_sandelio_pvz": [],
+  "pagal_sandeli": [
+   {
+    "sandelis": "av",
+    "viso_publish": 959,
+    "turi_own_qty": 0,
+    "own_qty_suma": 0,
+    "turi_stock": 903,
+    "stock_gt0": 760,
+    "stock_suma": 10281,
+    "manage_stock_yes": 903,
+    "zb_cost": 0,
+    "vf_cost": 0,
+    "vf_pers": 0
+   },
+   {
+    "sandelis": "vf",
+    "viso_publish": 991,
+    "turi_own_qty": 1,
+    "own_qty_suma": 2,
+    "turi_stock": 991,
+    "stock_gt0": 850,
+    "stock_suma": 156713,
+    "manage_stock_yes": 991,
+    "zb_cost": 0,
+    "vf_cost": 991,
+    "vf_pers": 991
+   },
+   {
+    "sandelis": "zb",
+    "viso_publish": 662,
+    "turi_own_qty": 0,
+    "own_qty_suma": 0,
+    "turi_stock": 662,
+    "stock_gt0": 601,
+    "stock_suma": 15594,
+    "manage_stock_yes": 662,
+    "zb_cost": 662,
+    "vf_cost": 0,
+    "vf_pers": 0
+   },
+   {
+    "sandelis": "quattro",
+    "viso_publish": 64,
+    "turi_own_qty": 0,
+    "own_qty_suma": 0,
+    "turi_stock": 64,
+    "stock_gt0": 63,
+    "stock_suma": 2201,
+    "manage_stock_yes": 64,
+    "zb_cost": 0,
+    "vf_cost": 0,
+    "vf_pers": 0
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "viso_publish": 62,
+    "turi_own_qty": 0,
+    "own_qty_suma": 0,
+    "turi_stock": 62,
+    "stock_gt0": 40,
+    "stock_suma": 564,
+    "manage_stock_yes": 62,
+    "zb_cost": 0,
+    "vf_cost": 0,
+    "vf_pers": 0
+   },
+   {
+    "sandelis": "prins",
+    "viso_publish": 23,
+    "turi_own_qty": 0,
+    "own_qty_suma": 0,
+    "turi_stock": 23,
+    "stock_gt0": 23,
+    "stock_suma": 337,
+    "manage_stock_yes": 23,
+    "zb_cost": 0,
+    "vf_cost": 0,
+    "vf_pers": 0
+   },
+   {
+    "sandelis": "ambrosia",
+    "viso_publish": 15,
+    "turi_own_qty": 0,
+    "own_qty_suma": 0,
+    "turi_stock": 15,
+    "stock_gt0": 15,
+    "stock_suma": 202,
+    "manage_stock_yes": 15,
+    "zb_cost": 0,
+    "vf_cost": 0,
+    "vf_pers": 0
+   }
+  ],
+  "cost_laukai": [
+   {
+    "meta_key": "_cost_price",
+    "c": "360"
+   },
+   {
+    "meta_key": "_vf_cost_xml",
+    "c": "1161"
+   },
+   {
+    "meta_key": "_vf_personal_xml",
+    "c": "1161"
+   },
+   {
+    "meta_key": "_zb_cost",
+    "c": "1059"
+   }
+  ],
+  "av_pvz": [
+   {
+    "ID": "34512",
+    "t": "Ruda avies koja, 1 vnt. × 20 vnt.",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34510",
+    "t": "Ruda kiaulės ausis, 1 vnt. × 20 vnt.",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34500",
+    "t": "Animonda Carny Adult Beef + Turkey + Shrimp – konservai katė",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34498",
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras kat",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "outofstock"
+   },
+   {
+    "ID": "34488",
+    "t": "Animonda Vom Feinsten Adult with Poultry and Veal – konserva",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34486",
+    "t": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaug",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34484",
+    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34449",
+    "t": "Miamor konservai katėms su tunu ir krevetėmis, 100 g × 24 vn",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34245",
+    "t": "Susidėk skanėstų rinkinį katei · 10 vnt (paslėptas)",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34244",
+    "t": "Susidėk skanėstų rinkinį katei · 7 vnt (paslėptas)",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34243",
+    "t": "Susidėk skanėstų rinkinį katei · 5 vnt (paslėptas)",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   },
+   {
+    "ID": "34242",
+    "t": "Susidėk skanėstų rinkinį katei (TESTAS)",
+    "stock": null,
+    "own": null,
+    "man": "no",
+    "st": "instock"
+   }
+  ],
+  "own_qty_visi": [
+   {
+    "ID": "17978",
+    "t": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria ",
+    "own": "2",
+    "sand": "vf",
+    "stock": "2.000000"
+   }
+  ],
+  "kodas": [
+   {
+    "f": "/mu-plugins/petshop-av-reduce.php",
+    "b": 5742,
+    "sha": "ee0cac53c62d66b5",
+    "hit": {
+     "_own_stock_qty": 3,
+     "Stock::qty": 2
+    }
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "b": 114420,
+    "sha": "b0136cb48a598646",
+    "hit": {
+     "AV_Source": 4,
+     "_own_stock_qty": 2,
+     "Stock::qty": 1
+    }
+   },
+   {
+    "f": "/mu-plugins/petshop-av-limit.php",
+    "b": 3720,
+    "sha": "f3008f49a22e65e6",
+    "hit": {
+     "_own_stock_qty": 1,
+     "Stock::qty": 3
+    }
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "b": 36165,
+    "sha": "971d5988acb59ddb",
+    "hit": {
+     "AV_Source": 2,
+     "Stock::qty": 1
+    }
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "b": 5762,
+    "sha": "a9e6968438ad521b",
+    "hit": {
+     "AV_Source": 1,
+     "_own_stock_qty": 3,
+     "function resolve": 1,
+     "Stock::qty": 1
+    }
+   },
+   {
+    "f": "/mu-plugins/petshop-av-order.php",
+    "b": 4923,
+    "sha": "b2adf4764d2fb18e",
+    "hit": {
+     "AV_Source": 3
+    }
+   },
+   {
+    "f": "/mu-plugins/petshop-av-stock.php",
+    "b": 12575,
+    "sha": "c6cf7e99783591bf",
+    "hit": {
+     "_own_stock_qty": 9,
+     "Stock::qty": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-core/includes/class-pet-dashboard.php",
+    "b": 23638,
+    "sha": "cdfec80645dc0215",
+    "hit": {
+     "function resolve": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-core/includes/class-magic-login.php",
+    "b": 27630,
+    "sha": "74295df81c871177",
+    "hit": {
+     "function resolve": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-core/includes/class-pet-profile.php",
+    "b": 45686,
+    "sha": "679d83d3d721f6d2",
+    "hit": {
+     "function resolve": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-core/includes/class-event-emitters.php",
+    "b": 12724,
+    "sha": "4bfb138743347821",
+    "hit": {
+     "function resolve": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-core/includes/class-feeding-package-resolver.php",
+    "b": 2189,
+    "sha": "7fdd3327ee887bf2",
+    "hit": {
+     "function resolve": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-core/includes/class-shipments.php",
+    "b": 7902,
+    "sha": "c07d9171d5e8aefa",
+    "hit": {
+     "function resolve": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-xml/includes/class-product-cost-resolver.php",
+    "b": 11986,
+    "sha": "7fcebb15732b296f",
+    "hit": {
+     "function resolve": 5
+    }
+   },
+   {
+    "f": "/plugins/petshop-xml/includes/class-admin-ui.php",
+    "b": 21817,
+    "sha": "8abae6c6512ccd4f",
+    "hit": {
+     "_own_stock_qty": 5,
+     "_active_fulfillment_source": 1
+    }
+   },
+   {
+    "f": "/plugins/petshop-xml/includes/class-fulfillment.php",
+    "b": 3702,
+    "sha": "aa20d6a6b0bcd756",
+    "hit": {
+     "_own_stock_qty": 3,
+     "_active_fulfillment_source": 2
+    }
+   },
+   {
+    "f": "/plugins/petshop-xml/includes/class-fulfillment-source.php",
+    "b": 6711,
+    "sha": "1fbbe217eff56fae",
+    "hit": {
+     "function resolve": 1,
+     "class Petshop_Fulfillment_Source": 1
+    }
+   }
+  ],
+  "failai": {
+   "/mu-plugins/automation-by-installatron.php": 983,
+   "/mu-plugins/petshop-av-admin.php": 7510,
+   "/mu-plugins/petshop-av-dropship.php": 18048,
+   "/mu-plugins/petshop-av-expiry.php": 8633,
+   "/mu-plugins/petshop-av-limit.php": 3720,
+   "/mu-plugins/petshop-av-order.php": 4923,
+   "/mu-plugins/petshop-av-reduce.php": 5742,
+   "/mu-plugins/petshop-av-sheets.php": 10335,
+   "/mu-plugins/petshop-av-source.php": 5762,
+   "/mu-plugins/petshop-av-stock.php": 12575,
+   "/mu-plugins/petshop-av-tiekimas.php": 36165,
+   "/mu-plugins/petshop-code-search.php": 5447,
+   "/mu-plugins/petshop-desk.php": 114420,
+   "/mu-plugins/petshop-feeding-calc-rest.php": 19012,
+   "/mu-plugins/petshop-import-log.php": 2826,
+   "/mu-plugins/petshop-legacy-301.php": 2881,
+   "/mu-plugins/petshop-m8-food.php": 35513,
+   "/mu-plugins/petshop-payment-failed.php": 3704,
+   "/mu-plugins/petshop-pet-claim.php": 7126,
+   "/mu-plugins/petshop-ps-pets-migration-freeze.php": 7018,
+   "/plugins/petshop-attributes/petshop-attributes.php": 12730,
+   "/plugins/petshop-core/includes/class-account-avatar.php": 3557,
+   "/plugins/petshop-core/includes/class-account-company.php": 6688,
+   "/plugins/petshop-core/includes/class-account-dashboard.php": 12116,
+   "/plugins/petshop-core/includes/class-action-tokens.php": 12929,
+   "/plugins/petshop-core/includes/class-admin-reports.php": 13526,
+   "/plugins/petshop-core/includes/class-cart-abandonment.php": 15446,
+   "/plugins/petshop-core/includes/class-cart-recovery.php": 13087,
+   "/plugins/petshop-core/includes/class-cart-tracker.php": 12361,
+   "/plugins/petshop-core/includes/class-condition-mapper.php": 4383,
+   "/plugins/petshop-core/includes/class-consent-log.php": 5081,
+   "/plugins/petshop-core/includes/class-consent-sync.php": 8299,
+   "/plugins/petshop-core/includes/class-contact-policy.php": 7195,
+   "/plugins/petshop-core/includes/class-email-dispatch.php": 22467,
+   "/plugins/petshop-core/includes/class-email-layout.php": 5980,
+   "/plugins/petshop-core/includes/class-email-suppression.php": 13735,
+   "/plugins/petshop-core/includes/class-event-emitters.php": 12724,
+   "/plugins/petshop-core/includes/class-event-log.php": 9977,
+   "/plugins/petshop-core/includes/class-event-registry.php": 5884,
+   "/plugins/petshop-core/includes/class-feeding-calculator.php": 12241,
+   "/plugins/petshop-core/includes/class-feeding-package-provider.php": 618,
+   "/plugins/petshop-core/includes/class-feeding-package-resolver.php": 2189,
+   "/plugins/petshop-core/includes/class-feeding-repository.php": 7552,
+   "/plugins/petshop-core/includes/class-feeding-service.php": 37188,
+   "/plugins/petshop-core/includes/class-feeding-ui.php": 8853,
+   "/plugins/petshop-core/includes/class-magic-login.php": 27630,
+   "/plugins/petshop-core/includes/class-mixed-feeding-estimator.php": 5989,
+   "/plugins/petshop-core/includes/class-newsletter-footer.php": 2247,
+   "/plugins/petshop-core/includes/class-newsletter.php": 8841,
+   "/plugins/petshop-core/includes/class-pet-content.php": 7809,
+   "/plugins/petshop-core/includes/class-pet-dashboard.php": 23638,
+   "/plugins/petshop-core/includes/class-pet-drafts.php": 23922,
+   "/plugins/petshop-core/includes/class-pet-notes.php": 9130,
+   "/plugins/petshop-core/includes/class-pet-photo.php": 8508,
+   "/plugins/petshop-core/includes/class-pet-products.php": 9168,
+   "/plugins/petshop-core/includes/class-pet-profile.php": 45686,
+   "/plugins/petshop-core/includes/class-pet-ui.php": 7190,
+   "/plugins/petshop-core/includes/class-plan-attribution.php": 6954,
+   "/plugins/petshop-core/includes/class-post-purchase.php": 6117,
+   "/plugins/petshop-core/includes/class-product-calc.php": 13571,
+   "/plugins/petshop-core/includes/class-refill-engine.php": 17648,
+   "/plugins/petshop-core/includes/class-refill-feedback.php": 13304,
+   "/plugins/petshop-core/includes/class-reminders.php": 10649,
+   "/plugins/petshop-core/includes/class-retry-queue.php": 8386,
+   "/plugins/petshop-core/includes/class-shipments.php": 7902,
+   "/plugins/petshop-core/includes/class-unsubscribe.php": 6232,
+   "/plugins/petshop-core/includes/class-weight-filter.php": 10184,
+   "/plugins/petshop-core/includes/class-welcome-modal.php": 6345,
+   "/plugins/petshop-core/includes/interface-message-provider.php": 3049,
+   "/plugins/petshop-core/includes/tpl-myaccount-dashboard.php": 823,
+   "/plugins/petshop-core/includes/tpl-myaccount-my-address.php": 3799,
+   "/plugins/petshop-core/petshop-core.php": 15489,
+   "/plugins/petshop-core/templates/emails/cart-abandoned-1.php": 3328,
+   "/plugins/petshop-core/templates/emails/cart-abandoned-2.php": 2505,
+   "/plugins/petshop-core/templates/emails/consent-changed.php": 3630,
+   "/plugins/petshop-core/templates/emails/dunning-1.php": 3238,
+   "/plugins/petshop-core/templates/emails/founding.php": 3555,
+   "/plugins/petshop-core/templates/emails/order-paid.php": 2333,
+   "/plugins/petshop-core/templates/emails/post-purchase-2d.php": 3940,
+   "/plugins/petshop-core/templates/emails/refill.php": 2870,
+   "/plugins/petshop-esp/includes/class-sender-adapter.php": 17707,
+   "/plugins/petshop-esp/includes/class-webhook-receiver.php": 8639,
+   "/plugins/petshop-esp/petshop-esp.php": 4095,
+   "/plugins/petshop-fbt/petshop-fbt.php": 36414,
+   "/plugins/petshop-feeds/petshop-feeds.php": 8579,
+   "/plugins/petshop-fonts/petshop-fonts.php": 2758,
+   "/plugins/petshop-pragma/petshop-pragma.php": 22662,
+   "/plugins/petshop-promotions/petshop-promotions.php": 32801,
+   "/plugins/petshop-xml/includes/class-admin-ui.php": 21817,
+   "/plugins/petshop-xml/includes/class-ean-lookup.php": 5730,
+   "/plugins/petshop-xml/includes/class-fulfillment-source.php": 6711,
+   "/plugins/petshop-xml/includes/class-fulfillment.php": 3702,
+   "/plugins/petshop-xml/includes/class-import-rules-vf.php": 16132,
+   "/plugins/petshop-xml/includes/class-import-rules.php": 4404,
+   "/plugins/petshop-xml/includes/class-pricing-vf.php": 20752,
+   "/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php": 19099,
+   "/plugins/petshop-xml/includes/class-pricing.php": 11475,
+   "/plugins/petshop-xml/includes/class-product-cost-metabox.php": 26504,
+   "/plugins/petshop-xml/includes/class-product-cost-resolver.php": 11986,
+   "/plugins/petshop-xml/includes/class-vf-import.php": 29533,
+   "/plugins/petshop-xml/petshop-xml.php": 59535
+  }
+ }
+}
