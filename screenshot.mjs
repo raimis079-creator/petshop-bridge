@@ -1,86 +1,24 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-import { chromium } from 'playwright';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s587',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s588',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run587'};
-// auth cookie per snippeta
-const PHP=`add_action('wp_loaded',function(){
- if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck587xQ') return;
- nocache_headers(); header('Content-Type: application/json');
- $u=get_users(array('role'=>'administrator','number'=>1));
- if(!$u){ echo wp_json_encode(array('err'=>'no admin')); exit; }
- $uid=$u[0]->ID;
- $exp=time()+300;
- // BUTINA sesijos zetonas — be jo wp_validate_auth_cookie ATMETA
- $mgr=WP_Session_Tokens::get_instance($uid);
- $tok=$mgr->create($exp);
- echo wp_json_encode(array('uid'=>$uid,'login'=>$u[0]->user_login,
-   'logged_in'=>array('name'=>LOGGED_IN_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'logged_in',$tok)),
-   'secure_auth'=>array('name'=>SECURE_AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'secure_auth',$tok)),
-   'auth'=>array('name'=>AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'auth',$tok)),
-   'cookiepath'=>COOKIEPATH,'adminpath'=>ADMIN_COOKIE_PATH,'domain'=>COOKIE_DOMAIN,
-   'force_ssl_admin'=>force_ssl_admin()?1:0)); exit;
-},1);`;
+const O={VERSIJA_RUN:'run588'};
+const PHP=Buffer.from('PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICAgIGlmICggISBpc3NldCgkX0dFVFsncHNfczU4OCddKSB8fCAkX0dFVFsncHNfczU4OCddICE9PSAnSzU4OGF2JyApIHJldHVybjsKICAgIG5vY2FjaGVfaGVhZGVycygpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICAgQHNldF90aW1lX2xpbWl0KDI0MCk7CiAgICBnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OwogICAgJHI9YXJyYXkoJ1ZFUlNJSkEnPT4nczU4OCcpOwoKICAgIC8vIDEuIGtvbmtyZXRhdXMgdXpzYWt5bW8gcHJla2VzCiAgICAkbz13Y19nZXRfb3JkZXIoMzQ4ODcpOwogICAgaWYoJG8pewogICAgICAgIGZvcmVhY2goJG8tPmdldF9pdGVtcygpIGFzICRpaWQ9PiRpdCl7CiAgICAgICAgICAgICRwaWQ9JGl0LT5nZXRfcHJvZHVjdF9pZCgpOwogICAgICAgICAgICAkeD1hcnJheSgncGlkJz0+JHBpZCwncGF2Jz0+bWJfc3Vic3RyKCRpdC0+Z2V0X25hbWUoKSwwLDQyKSwKICAgICAgICAgICAgICAnaXRlbV9zcmMnPT4kaXQtPmdldF9tZXRhKCdfcHNfc291cmNlJykpOwogICAgICAgICAgICBpZihjbGFzc19leGlzdHMoJ1BldHNob3BfQVZfU291cmNlJykpICR4WydyZXNvbHZlJ109UGV0c2hvcF9BVl9Tb3VyY2U6OnJlc29sdmUoJHBpZCwoaW50KSRpdC0+Z2V0X3F1YW50aXR5KCkpOwogICAgICAgICAgICBpZihjbGFzc19leGlzdHMoJ1BldHNob3BfRnVsZmlsbG1lbnRfU291cmNlJykpICR4WydmcyddPVBldHNob3BfRnVsZmlsbG1lbnRfU291cmNlOjpyZXNvbHZlKCRwaWQpOwogICAgICAgICAgICBmb3JlYWNoKGFycmF5KCdfb3duX3N0b2NrX3F0eScsJ196Yl9jb3N0JywnX2xlZ2FjeV9tYW51ZmFjdHVyZXInLCdfbGVnYWN5X3NvdXJjZScsJ192Zl9xdHknLCdfcHNfc291cmNlJykgYXMgJGspewogICAgICAgICAgICAgICAgJHY9Z2V0X3Bvc3RfbWV0YSgkcGlkLCRrLHRydWUpOyBpZigkdiE9PScnKSAkeFsnbWV0YSddWyRrXT1pc19hcnJheSgkdik/J2FycmF5JzptYl9zdWJzdHIoKHN0cmluZykkdiwwLDQwKTsKICAgICAgICAgICAgfQogICAgICAgICAgICAkdD13cF9nZXRfcG9zdF90ZXJtcygkcGlkLCdwcm9kdWN0X2JyYW5kJyxhcnJheSgnZmllbGRzJz0+J25hbWVzJykpOwogICAgICAgICAgICAkeFsnYnJhbmQnXT1pc19hcnJheSgkdCk/aW1wbG9kZSgnLCAnLCR0KTonJzsKICAgICAgICAgICAgJHJbJ3V6c2FreW1vX3ByZWtlcyddW109JHg7CiAgICAgICAgfQogICAgfQoKICAgIC8vIDIuIGtpZWsgcHVibGlzaCBwcmVraXUgaXMgdmlzbyBpciBraWVrIHR1cmkgenltZXMKICAgICRyWyd2aXNvX3B1Ymxpc2gnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSdwdWJsaXNoJyIpOwogICAgJHJbJ3N1X2F2X2xpa3VjaXUnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBvc3RtZXRhIFdIRVJFIG1ldGFfa2V5PSdfb3duX3N0b2NrX3F0eScgQU5EIG1ldGFfdmFsdWU8PicnIik7CiAgICAkclsnc3VfemJfY29zdCddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cG9zdG1ldGEgV0hFUkUgbWV0YV9rZXk9J196Yl9jb3N0JyBBTkQgbWV0YV92YWx1ZTw+JyciKTsKICAgICRyWydzdV92ZiddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcGZ9cG9zdG1ldGEgV0hFUkUgbWV0YV9rZXk9J192Zl9xdHknIik7CiAgICAkclsnc3VfbGVnYWN5X21hbnVmJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn1wb3N0bWV0YSBXSEVSRSBtZXRhX2tleT0nX2xlZ2FjeV9tYW51ZmFjdHVyZXInIEFORCBtZXRhX3ZhbHVlPD4nJyIpOwoKICAgIC8vIDMuIGltdGlzOiA0MCBhdHNpdGlrdGluaXUgcHVibGlzaCBwcmVraXUg4oCUIGtva3Mgc2FsdGluaXMKICAgICRpZHM9JHdwZGItPmdldF9jb2woIlNFTEVDVCBJRCBGUk9NIHskcGZ9cG9zdHMgV0hFUkUgcG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcG9zdF9zdGF0dXM9J3B1Ymxpc2gnIE9SREVSIEJZIFJBTkQoKSBMSU1JVCA0MCIpOwogICAgJHNrPWFycmF5KCk7CiAgICBmb3JlYWNoKCRpZHMgYXMgJHBpZCl7CiAgICAgICAgJHM9Jz8nOwogICAgICAgIGlmKGNsYXNzX2V4aXN0cygnUGV0c2hvcF9BVl9Tb3VyY2UnKSl7CiAgICAgICAgICAgICR2PVBldHNob3BfQVZfU291cmNlOjpyZXNvbHZlKCRwaWQsMSk7CiAgICAgICAgICAgICRzPWlzX2FycmF5KCR2KT8oJHZbJ3NvdXJjZSddLicgLyAnLigkdlsndGlla2VqYXMnXT8/Jy0nKSk6Jz8nOwogICAgICAgIH0KICAgICAgICBpZighaXNzZXQoJHNrWyRzXSkpICRza1skc109MDsKICAgICAgICAkc2tbJHNdKys7CiAgICB9CiAgICAkclsnaW10aXNfNDAnXT0kc2s7CiAgICBlY2hvIHdwX2pzb25fZW5jb2RlKCRyLCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fUFJFVFRZX1BSSU5UKTsgZXhpdDsKfSwgMSk7Cg==','base64').toString('utf8').replace(/^<\?php\s*/,'');
 let sid=null;
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S587 Cookie',code:PHP,scope:'global',active:true}));
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S588 AV',code:PHP,scope:'global',active:true}));
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
-O.sid=sid; sh('sleep 4');
-const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck587xQ"');
-let C=null; try{C=JSON.parse(ck);}catch(e){O.cookie_raw=String(ck).slice(0,200);}
-O.cookie_ok = C && C.logged_in ? 'yra' : 'NERA';
-O.cookie_info = C ? {cookiepath:C.cookiepath,adminpath:C.adminpath,domain:C.domain,ssl_admin:C.force_ssl_admin} : null;
-if(C && C.logged_in){
- try{
-  const b=await chromium.launch();
-  const ctx=await b.newContext({viewport:{width:1600,height:1000},ignoreHTTPSErrors:true,locale:'lt-LT'});
-  const ck=[
-    {name:C.logged_in.name,value:C.logged_in.val,domain:'dev.avesa.lt',path:'/',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-includes/',httpOnly:true,secure:true,sameSite:'Lax'},
-    {name:C.auth.name,value:C.auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
-  ];
-  await ctx.addCookies(ck);
-  const p=await ctx.newPage();
-  const puslapiai=[
-    ['meniu','/wp-admin/admin.php?page=ps-desk'],
-    ['wc','/wp-admin/admin.php?page=wc-orders'],
-  ];
-  O.psl={};
-  for(const [v,u] of puslapiai){
-    try{
-      const rp=await p.goto(SITE+u,{waitUntil:'domcontentloaded',timeout:70000});
-      await p.waitForTimeout(3500);
-      const dbg=await p.evaluate(()=>({url:location.href,title:document.title,
-        prisijungimas: !!document.querySelector('#loginform')}));
-      const info=await p.evaluate(()=>{
-        const T=e=>e&&e.innerText?e.innerText.replace(/\s+/g,' ').trim():'';
-        const top=[...document.querySelectorAll('#adminmenu > li > a')].map(x=>T(x).split(' ')[0]);
-        const wcli=[...document.querySelectorAll('#adminmenu a')].filter(x=>(x.getAttribute('href')||'').indexOf('wc-orders')>-1);
-        const wcsub=wcli.map(x=>getComputedStyle(x).display);
-        return {meniu_virsus:top, wc_nuorodos_meniu:wcsub,
-          brand:T(document.querySelector('.pd-brand')),
-          h1:T(document.querySelector('.wrap h1, h1')),
-          desk_yra:!!document.querySelector('.pd')};
-      });
-      O.psl[v]={http:rp?rp.status():null, ...dbg, ...info};
-      const png=await p.screenshot({fullPage:true});
-      putFile('screenshots/s587_'+v+'.png', png);
-      O.psl[v].png='screenshots/s587_'+v+'.png';
-    }catch(e){ O.psl[v]={KLAIDA:String(e).slice(0,150)}; }
-  }
-  await b.close();
- }catch(e){ O.NARSYKLE=String(e).slice(0,300); }
-}
+O.sid=sid; sh('sleep 5');
+const out=sh('curl -sSk --max-time 200 "'+SITE+'/?ps_s588=K588av"');
+try{O.rez=JSON.parse(out);}catch(e){O.rez={raw:String(out).slice(0,1500)};}
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putFile('analize/s587.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s588.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
