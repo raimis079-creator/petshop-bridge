@@ -6,14 +6,14 @@ const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.aves
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s559',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s560',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run559'};
+const O={VERSIJA_RUN:'run560'};
 // auth cookie per snippeta
 const PHP=`add_action('wp_loaded',function(){
- if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck559xQ') return;
+ if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck560xQ') return;
  nocache_headers(); header('Content-Type: application/json');
  $u=get_users(array('role'=>'administrator','number'=>1));
  if(!$u){ echo wp_json_encode(array('err'=>'no admin')); exit; }
@@ -30,11 +30,11 @@ const PHP=`add_action('wp_loaded',function(){
    'force_ssl_admin'=>force_ssl_admin()?1:0)); exit;
 },1);`;
 let sid=null;
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S559 Cookie',code:PHP,scope:'global',active:true}));
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S560 Cookie',code:PHP,scope:'global',active:true}));
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
 O.sid=sid; sh('sleep 4');
-const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck559xQ"');
+const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck560xQ"');
 let C=null; try{C=JSON.parse(ck);}catch(e){O.cookie_raw=String(ck).slice(0,200);}
 O.cookie_ok = C && C.logged_in ? 'yra' : 'NERA';
 O.cookie_info = C ? {cookiepath:C.cookiepath,adminpath:C.adminpath,domain:C.domain,ssl_admin:C.force_ssl_admin} : null;
@@ -70,9 +70,10 @@ if(C && C.logged_in){
         };
       });
       O.psl[v]={http:rp?rp.status():null, ...dbg, ...info};
-      const png=await p.screenshot({clip:{x:0,y:0,width:1400,height:130}});
-      putFile('screenshots/s559_'+v+'.png', png);
-      O.psl[v].png='screenshots/s559_'+v+'.png';
+      const el=await p.$('.pd-top');
+      const png=el?await el.screenshot():await p.screenshot({clip:{x:0,y:0,width:1400,height:120}});
+      putFile('screenshots/s560_'+v+'.png', png);
+      O.psl[v].png='screenshots/s560_'+v+'.png';
     }catch(e){ O.psl[v]={KLAIDA:String(e).slice(0,150)}; }
   }
   await b.close();
@@ -80,5 +81,5 @@ if(C && C.logged_in){
 }
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putFile('analize/s559.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s560.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
