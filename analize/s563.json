@@ -1,0 +1,53 @@
+{
+ "VERSIJA_RUN": "run563",
+ "sid": 2346,
+ "rez": {
+  "VERSIJA": "s563",
+  "lenteles": {
+   "partijos": "gaj6_ps_tiekimas",
+   "eilutes": "gaj6_ps_tiekimas_eil"
+  },
+  "uzsakymai": {
+   "34881": {
+    "pries": "—",
+    "po": "—",
+    "partijos": "—"
+   },
+   "34882": {
+    "pries": "—",
+    "po": "1",
+    "partijos": "1"
+   },
+   "34883": {
+    "pries": "—",
+    "po": "—",
+    "partijos": "—"
+   }
+  },
+  "partijos": [
+   {
+    "id": "1",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "sukurta": "2026-08-06 11:26:19",
+    "uzsakyta": null,
+    "gauta": null,
+    "siuntos_kodas": null,
+    "pastaba": null
+   }
+  ],
+  "eilutes": [
+   {
+    "id": "1",
+    "partija_id": "1",
+    "product_id": "12636",
+    "order_id": "34882",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null,
+    "pastaba": null,
+    "preke": "Gemon mini adult visavertis pašaras suau"
+   }
+  ]
+ }
+}
