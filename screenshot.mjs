@@ -1,24 +1,87 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
+import { chromium } from 'playwright';
 const TOKG=process.env.GH_TOKEN, REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.avesa.lt';
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s563',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s564',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run563'};
-const PHP=Buffer.from('PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICAgIGlmICggISBpc3NldCgkX0dFVFsncHNfczU2MyddKSB8fCAkX0dFVFsncHNfczU2MyddICE9PSAnSzU2M3RrJyApIHJldHVybjsKICAgIG5vY2FjaGVfaGVhZGVycygpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICAgZ2xvYmFsICR3cGRiOyAkcGY9JHdwZGItPnByZWZpeDsKICAgICRyPWFycmF5KCdWRVJTSUpBJz0+J3M1NjMnKTsKICAgIGlmKCFjbGFzc19leGlzdHMoJ1BldHNob3BfQVZfVGlla2ltYXMnKSl7IGVjaG8gd3BfanNvbl9lbmNvZGUoYXJyYXkoJ2Vycic9PidrbGFzxJdzIG7El3JhJykpOyBleGl0OyB9CgogICAgJHJbJ2xlbnRlbGVzJ109YXJyYXkoCiAgICAgICdwYXJ0aWpvcyc9PiR3cGRiLT5nZXRfdmFyKCJTSE9XIFRBQkxFUyBMSUtFICd7JHBmfXBzX3RpZWtpbWFzJyIpLAogICAgICAnZWlsdXRlcyc9PiR3cGRiLT5nZXRfdmFyKCJTSE9XIFRBQkxFUyBMSUtFICd7JHBmfXBzX3RpZWtpbWFzX2VpbCciKSwKICAgICk7CiAgICAvLyBwYWxlaWTFvmlhbSBrYXVwaW3EhSBtacWhcmllbXMgdcW+c2FreW1hbXMKICAgIGZvcmVhY2goYXJyYXkoMzQ4ODIsMzQ4ODMsMzQ4ODEpIGFzICRpZCl7CiAgICAgICAgJG89d2NfZ2V0X29yZGVyKCRpZCk7IGlmKCEkbykgY29udGludWU7CiAgICAgICAgJHByaWVzPSRvLT5nZXRfbWV0YSgnX3BzX3RpZWtpbWFzX2xhdWtpYScpOwogICAgICAgIFBldHNob3BfQVZfVGlla2ltYXM6OmlzX3V6c2FreW1vKCRpZCk7CiAgICAgICAgJG8yPXdjX2dldF9vcmRlcigkaWQpOwogICAgICAgICRyWyd1enNha3ltYWknXVskaWRdPWFycmF5KCdwcmllcyc9PiRwcmllcz86J+KAlCcsJ3BvJz0+JG8yLT5nZXRfbWV0YSgnX3BzX3RpZWtpbWFzX2xhdWtpYScpPzon4oCUJywKICAgICAgICAgICdwYXJ0aWpvcyc9PiRvMi0+Z2V0X21ldGEoJ19wc190aWVraW1hc19wYXJ0aWpvcycpPzon4oCUJyk7CiAgICB9CiAgICAkclsncGFydGlqb3MnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCAqIEZST00geyRwZn1wc190aWVraW1hcyBPUkRFUiBCWSBpZCIsQVJSQVlfQSk7CiAgICAkZWlsPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUICogRlJPTSB7JHBmfXBzX3RpZWtpbWFzX2VpbCBPUkRFUiBCWSBpZCIsQVJSQVlfQSk7CiAgICBmb3JlYWNoKCRlaWwgYXMgJiRlKXsgJHA9d2NfZ2V0X3Byb2R1Y3QoJGVbJ3Byb2R1Y3RfaWQnXSk7ICRlWydwcmVrZSddPSRwP21iX3N1YnN0cigkcC0+Z2V0X25hbWUoKSwwLDQwKTonPyc7IH0KICAgICRyWydlaWx1dGVzJ109JGVpbDsKICAgIGVjaG8gd3BfanNvbl9lbmNvZGUoJHIsIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9QUkVUVFlfUFJJTlQpOyBleGl0Owp9LCAxKTsK','base64').toString('utf8').replace(/^<\?php\s*/,'');
+const O={VERSIJA_RUN:'run564'};
+// auth cookie per snippeta
+const PHP=`add_action('wp_loaded',function(){
+ if(!isset($_GET['ps_ck'])||$_GET['ps_ck']!=='Ck564xQ') return;
+ nocache_headers(); header('Content-Type: application/json');
+ $u=get_users(array('role'=>'administrator','number'=>1));
+ if(!$u){ echo wp_json_encode(array('err'=>'no admin')); exit; }
+ $uid=$u[0]->ID;
+ $exp=time()+300;
+ // BUTINA sesijos zetonas — be jo wp_validate_auth_cookie ATMETA
+ $mgr=WP_Session_Tokens::get_instance($uid);
+ $tok=$mgr->create($exp);
+ echo wp_json_encode(array('uid'=>$uid,'login'=>$u[0]->user_login,
+   'logged_in'=>array('name'=>LOGGED_IN_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'logged_in',$tok)),
+   'secure_auth'=>array('name'=>SECURE_AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'secure_auth',$tok)),
+   'auth'=>array('name'=>AUTH_COOKIE,'val'=>wp_generate_auth_cookie($uid,$exp,'auth',$tok)),
+   'cookiepath'=>COOKIEPATH,'adminpath'=>ADMIN_COOKIE_PATH,'domain'=>COOKIE_DOMAIN,
+   'force_ssl_admin'=>force_ssl_admin()?1:0)); exit;
+},1);`;
 let sid=null;
-fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S563 Kaupimas',code:PHP,scope:'global',active:true}));
+fs.writeFileSync('/tmp/sn.json',JSON.stringify({name:'TEMP S564 Cookie',code:PHP,scope:'global',active:true}));
 for(let i=0;i<3&&!sid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/sn.json "'+API+'"');
  try{const j=JSON.parse(t); if(j&&j.id)sid=j.id;}catch(e){} if(!sid)sh('sleep 4');}
-O.sid=sid; sh('sleep 5');
-const out=sh('curl -sSk --max-time 200 "'+SITE+'/?ps_s563=K563tk"');
-try{O.rez=JSON.parse(out);}catch(e){O.rez={raw:String(out).slice(0,1500)};}
+O.sid=sid; sh('sleep 4');
+const ck=sh('curl -sSk --max-time 60 "'+SITE+'/?ps_ck=Ck564xQ"');
+let C=null; try{C=JSON.parse(ck);}catch(e){O.cookie_raw=String(ck).slice(0,200);}
+O.cookie_ok = C && C.logged_in ? 'yra' : 'NERA';
+O.cookie_info = C ? {cookiepath:C.cookiepath,adminpath:C.adminpath,domain:C.domain,ssl_admin:C.force_ssl_admin} : null;
+if(C && C.logged_in){
+ try{
+  const b=await chromium.launch();
+  const ctx=await b.newContext({viewport:{width:1600,height:1000},ignoreHTTPSErrors:true,locale:'lt-LT'});
+  const ck=[
+    {name:C.logged_in.name,value:C.logged_in.val,domain:'dev.avesa.lt',path:'/',httpOnly:true,secure:true,sameSite:'Lax'},
+    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
+    {name:C.secure_auth.name,value:C.secure_auth.val,domain:'dev.avesa.lt',path:'/wp-includes/',httpOnly:true,secure:true,sameSite:'Lax'},
+    {name:C.auth.name,value:C.auth.val,domain:'dev.avesa.lt',path:'/wp-admin',httpOnly:true,secure:true,sameSite:'Lax'},
+  ];
+  await ctx.addCookies(ck);
+  const p=await ctx.newPage();
+  const puslapiai=[
+    ['tiekimas','/wp-admin/admin.php?page=ps-tiekimas'],
+  ];
+  O.psl={};
+  for(const [v,u] of puslapiai){
+    try{
+      const rp=await p.goto(SITE+u,{waitUntil:'domcontentloaded',timeout:70000});
+      await p.waitForTimeout(3500);
+      const dbg=await p.evaluate(()=>({url:location.href,title:document.title,
+        prisijungimas: !!document.querySelector('#loginform')}));
+      const info=await p.evaluate(()=>{
+        const T=e=>e&&e.innerText?e.innerText.replace(/\s+/g,' ').trim():'';
+        return {
+          tabai:[...document.querySelectorAll('.nav-tab')].map(x=>T(x)),
+          kortos:[...document.querySelectorAll('.ps-tk-k')].map(k=>({
+            antraste:T(k.querySelector('.ps-tk-h')),
+            eilutes:[...k.querySelectorAll('tbody tr')].map(t=>T(t)),
+            mygtukai:[...k.querySelectorAll('.ps-tk-f button, .ps-tk-pridek button')].map(b=>T(b))
+          })),
+          tuscia:T(document.querySelector('.ps-tk-tuscia'))
+        };
+      });
+      O.psl[v]={http:rp?rp.status():null, ...dbg, ...info};
+      const png=await p.screenshot({fullPage:true});
+      putFile('screenshots/s564_'+v+'.png', png);
+      O.psl[v].png='screenshots/s564_'+v+'.png';
+    }catch(e){ O.psl[v]={KLAIDA:String(e).slice(0,150)}; }
+  }
+  await b.close();
+ }catch(e){ O.NARSYKLE=String(e).slice(0,300); }
+}
 if(sid){fs.writeFileSync('/tmp/off.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/off.json "'+API+'/'+sid+'"');}
-putFile('analize/s563.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s564.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
