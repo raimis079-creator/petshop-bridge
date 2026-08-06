@@ -1,0 +1,72 @@
+{
+ "VERSIJA_RUN": "run588",
+ "sid": 2371,
+ "rez": {
+  "VERSIJA": "s588",
+  "uzsakymo_prekes": [
+   {
+    "pid": 17415,
+    "pav": "Monge BWild begrūdžiai konservai šunims su",
+    "item_src": "av",
+    "resolve": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 25,
+     "av_uztenka": true,
+     "tiekejas": "av",
+     "reason": "grynai AV prekė (be tiekėjo)"
+    },
+    "fs": {
+     "source": "legacy",
+     "carrier": "any",
+     "courier_only": false,
+     "label": "Legacy (savas sandėlis)",
+     "reason": "nera tiekejo / dropship pozymiu"
+    },
+    "meta": {
+     "_legacy_manufacturer": "Monge & C. S.p.a.",
+     "_legacy_source": "excel_v2_20260604"
+    },
+    "brand": "Monge"
+   },
+   {
+    "pid": 16107,
+    "pav": "Skanėstai šunims - Mėsos kąsneliai su višt",
+    "item_src": "av",
+    "resolve": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 0,
+     "av_uztenka": true,
+     "tiekejas": "av",
+     "reason": "grynai AV prekė (be tiekėjo)"
+    },
+    "fs": {
+     "source": "legacy",
+     "carrier": "any",
+     "courier_only": false,
+     "label": "Legacy (savas sandėlis)",
+     "reason": "nera tiekejo / dropship pozymiu"
+    },
+    "meta": {
+     "_legacy_manufacturer": "Ad Bi",
+     "_legacy_source": "excel_v2_20260604"
+    },
+    "brand": "Ad Bi"
+   }
+  ],
+  "viso_publish": 2776,
+  "su_av_likuciu": 3,
+  "su_zb_cost": 1054,
+  "su_vf": 1161,
+  "su_legacy_manuf": 1519,
+  "imtis_40": {
+   "zb / zb": 10,
+   "vf / vf": 22,
+   "belcor_tofu / belcor_tofu": 1,
+   "av / av": 7
+  }
+ }
+}
