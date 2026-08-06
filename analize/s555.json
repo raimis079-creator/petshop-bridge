@@ -1,0 +1,42 @@
+{
+ "VERSIJA_RUN": "run555",
+ "sid": 2338,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "sarasas": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "eilutes": [
+    "#34883 | DROPSHIP ZB 09:00 · praėjo, keliaus rytoj",
+    "#34882 | MIŠRUS 2 siuntos ZB 09:00 · praėjo, keliaus rytoj",
+    "#34881 | SAVA"
+   ],
+   "ribos": [
+    "ZB 09:00 · praėjo, keliaus rytoj",
+    "ZB 09:00 · praėjo, keliaus rytoj"
+   ],
+   "png": "screenshots/s555_sarasas.png"
+  },
+  "z5": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=5",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "eilutes": [
+    " | "
+   ],
+   "ribos": [
+    "09:00 · praėjo, keliaus rytoj"
+   ],
+   "png": "screenshots/s555_z5.png"
+  }
+ }
+}
