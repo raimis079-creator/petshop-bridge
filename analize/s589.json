@@ -1,0 +1,55 @@
+{
+ "VERSIJA_RUN": "run589",
+ "sid": 2372,
+ "rez": {
+  "VERSIJA": "s589",
+  "prekes": [
+   {
+    "pid": 17415,
+    "pav": "Monge BWild begrūdžiai konservai šunim",
+    "wc_stock": 25,
+    "manage": "taip",
+    "status": "instock",
+    "own_stock_meta": "",
+    "AV_Stock_qty": null,
+    "resolve_av_qty": 25
+   },
+   {
+    "pid": 16107,
+    "pav": "Skanėstai šunims - Mėsos kąsneliai su ",
+    "wc_stock": 0,
+    "manage": "taip",
+    "status": "outofstock",
+    "own_stock_meta": "",
+    "AV_Stock_qty": null,
+    "resolve_av_qty": 0
+   },
+   {
+    "pid": 17236,
+    "pav": "Ontario Monoproteino konservai šunims ",
+    "wc_stock": 3,
+    "manage": "taip",
+    "status": "instock",
+    "own_stock_meta": "0",
+    "AV_Stock_qty": 0,
+    "resolve_av_qty": 3
+   },
+   {
+    "pid": 12636,
+    "pav": "Gemon mini adult visavertis pašaras su",
+    "wc_stock": 4,
+    "manage": "taip",
+    "status": "instock",
+    "own_stock_meta": "",
+    "AV_Stock_qty": null,
+    "resolve_av_qty": null
+   }
+  ],
+  "viso_publish": 2776,
+  "manage_stock_yes": 3905,
+  "stock_nulis": 395,
+  "stock_teigiamas": 2483,
+  "qty_kodas": "\tpublic static function qty( $product_id ) {\n\t\t$v = get_post_meta( (int) $product_id, self::META, true );\n\t\tif ( '' === $v || null === $v ) { return null; }\n\t\treturn max( 0, (int) $v );\n\t}\n",
+  "resolve_kodas": "\tpublic static function resolve( $product_id, $qty = 1 ) {\n\t\t$product_id = (int) $product_id;\n\t\t$qty        = max( 1, (int) $qty );\n\n\t\t$baze = class_exists( 'Petshop_Fulfillment_Source' )\n\t\t\t? Petshop_Fulfillment_Source::resolve( $product_id )\n\t\t\t: [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];\n\n\t\t// `legacy` = AV sandėlis (resolverio komentaras: „tikras savas sandelis\").\n\t\t// 959 publish prekės iš _legacy_source=excel_v2_20260604 su REALIAIS likučiais\n\t\t// WooCommerce `_stock` lauke (niekas jų neperrašo — sinchronizacijos nėra).\n\t\t// Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.\n\t\tif ( 'legacy' === $baze['source'] ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => (int) get_post_meta( $product_id, '_stock', true ),\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => 'av',\n\t\t\t\t'reason'       => 'grynai AV prekė (be tiekėjo)',\n\t\t\t];\n\t\t}\n\n\t\t$av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;\n\t\t$uztenka   = ( null !== $av && $av >= $qty );\n\t\t$tiekejas  = $baze['source'];\n\n\t\tif ( $uztenka ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',          // AV gali ir Venipak, ir LP\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => $av,\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t\t'reason'       => \"AV turi $av, reikia $qty\",\n\t\t\t];\n\t\t}\n\n\t\t// SAUGIKLIS: LP Express galimas TIK iš AV (Raimis §18.1).\n\t\t// Bet kuris dropship šaltinis → venipak, nesvarbu ką grąžino bazinis resolveris.\n\t\treturn [\n\t\t\t'source'       => $tiekejas,\n\t\t\t'carrier'      => 'venipak',\n\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t'av_qty'       => $av,\n\t\t\t'av_uztenka'   => false,\n\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t'reason'       => ( null === $av )\n\t\t\t\t? 'AV šios prekės neturi'\n\t\t\t\t: \"AV turi $av, reikia $qty — neužtenka\",\n\t\t];\n\t}\n"
+ }
+}
