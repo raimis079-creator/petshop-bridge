@@ -1,0 +1,97 @@
+{
+ "VERSIJA_RUN": "run553",
+ "sid": 2336,
+ "cookie_ok": "yra",
+ "cookie_info": {
+  "cookiepath": "/",
+  "adminpath": "/wp-admin",
+  "domain": "",
+  "ssl_admin": 1
+ },
+ "psl": {
+  "sarasas": {
+   "KLAIDA": "Error: page.evaluate: TypeError: Cannot read properties of undefined (reading 'replace')\n    at eval (eval at evaluate (:311:30), <anonymous>:10:68)\n "
+  },
+  "z3": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=3",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Venipak",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "3 Venipak <DABAR>",
+    "4 LP Express",
+    "5 Tiekėjams",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [],
+   "tekstas": "Kiekvienas sandėlis registruojamas atskirai — taip gaunamas savas manifestas tam kurjerio paėmimui. Siuntėjas visose siuntose lieka UAB Avesa.",
+   "eilutes": [
+    "#34881 Inga Korolovienė Venipak paštomatas nenurodytas paštomatas",
+    "#34882 Kristina Spiriūtė AVZB Atidaryti"
+   ],
+   "kojele": "Atgal | Etikečių spausdintuvas 10×15. Pirma registruoti, tada spausdinti. | Toliau",
+   "ribos": [],
+   "sarasas": [
+    "#34881 | ",
+    "#34882 | "
+   ],
+   "grupes": [
+    {
+     "antraste": "Savas sandėlis · manifestas 07267260806001 · registruota 0 iš 1",
+     "mygtukai": [
+      "Registruoti 1 siuntą →sandelis=av",
+      "Lipdukai 10×15"
+     ],
+     "eilutes": [
+      "#34881 Inga Korolovienė Venipak paštomatas nenurodytas paštomatas"
+     ]
+    },
+    {
+     "antraste": "Mišrūs užsakymai · registruojami rankomis",
+     "mygtukai": [],
+     "eilutes": [
+      "#34882 Kristina Spiriūtė AVZB Atidaryti"
+     ]
+    }
+   ],
+   "klaidos": [],
+   "png": "screenshots/s553_z3.png"
+  },
+  "z5": {
+   "http": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas&z=5",
+   "title": "Petshop darbalaukis ‹ Petshop.lt — WordPress",
+   "prisijungimas": false,
+   "antraste": "Perduoti tiekėjams",
+   "zingsniai": [
+    "✓ Peržiūra <OK>",
+    "✓ Surinkimo lapai <OK>",
+    "✓ Venipak <OK>",
+    "✓ LP Express <OK>",
+    "5 Tiekėjams <DABAR>",
+    "6 Baigta"
+   ],
+   "kortos": [],
+   "mygtukai": [
+    "Atidaryti perdavimo ekraną → -> https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=perduoti&id=0&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fp"
+   ],
+   "eilutes": [
+    "Žalioji Banga 2 užsakymai 09:00 · praėjo, keliaus rytoj"
+   ],
+   "kojele": "Atgal | Laiškai neišeina be tavo paspaudimo perdavimo ekrane. | Toliau",
+   "ribos": [
+    "09:00 · praėjo, keliaus rytoj"
+   ],
+   "sarasas": [
+    " | "
+   ],
+   "grupes": [],
+   "klaidos": [],
+   "png": "screenshots/s553_z5.png"
+  }
+ }
+}
