@@ -1,0 +1,143 @@
+{
+ "VERSIJA_RUN": "run596",
+ "sid": 2379,
+ "rez": {
+  "VERSIJA": "s596",
+  "importai": [
+   {
+    "id": "1",
+    "pav": "goods_clean.xml",
+    "is_update_stock": "?",
+    "is_update_prices": "?",
+    "is_update_attributes": "1",
+    "is_update_custom_fields": "1",
+    "update_custom_fields_logic": "full_update",
+    "custom_fields_list": "0",
+    "update_all_data": "yes",
+    "is_keep_former_posts": "no"
+   },
+   {
+    "id": "2",
+    "pav": "products.php",
+    "is_update_stock": "?",
+    "is_update_prices": "?",
+    "is_update_attributes": "0",
+    "is_update_custom_fields": "1",
+    "update_custom_fields_logic": "full_update",
+    "custom_fields_list": "0",
+    "update_all_data": "no",
+    "is_keep_former_posts": "no"
+   },
+   {
+    "id": "3",
+    "pav": "stocks.php",
+    "is_update_stock": "?",
+    "is_update_prices": "?",
+    "is_update_attributes": "0",
+    "is_update_custom_fields": "0",
+    "update_custom_fields_logic": "full_update",
+    "custom_fields_list": "0",
+    "update_all_data": "no",
+    "is_keep_former_posts": "no"
+   },
+   {
+    "id": "5",
+    "pav": "petshop-xml-vf-fetcher.php",
+    "is_update_stock": "?",
+    "is_update_prices": "?",
+    "is_update_attributes": "0",
+    "is_update_custom_fields": "1",
+    "update_custom_fields_logic": "only",
+    "custom_fields_list": [
+     "_vf_supplier_sku _vf_barcode _vf_brand_raw _vf_category_raw _vf_cost_xml _vf_personal_xml _vf_qty _vf_description_base64"
+    ],
+    "update_all_data": "no",
+    "is_keep_former_posts": "no"
+   },
+   {
+    "id": "7",
+    "pav": "petshop-xml-vf-fetcher.php",
+    "is_update_stock": "?",
+    "is_update_prices": "?",
+    "is_update_attributes": "0",
+    "is_update_custom_fields": "1",
+    "update_custom_fields_logic": "only",
+    "custom_fields_list": [
+     "_vf_qty"
+    ],
+    "update_all_data": "no",
+    "is_keep_former_posts": "no"
+   }
+  ],
+  "kabliukai": {
+   "pmxi_saved_post": [
+    "10 petshop_xml_after_import"
+   ],
+   "pmxi_update_post_meta": [],
+   "woocommerce_product_set_stock": [
+    "10 Automattic\\WooCommerce\\Internal\\PushNotifications\\Triggers\\StockNotificationRecoveryHandler::on_stock_change"
+   ],
+   "updated_post_meta": [
+    "10 wp_cache_set_posts_last_changed",
+    "10 wc_maybe_schedule_sale_events_on_meta_change",
+    "10 WC_Post_Data::flush_object_meta_cache"
+   ],
+   "added_post_meta": [
+    "10 wp_cache_set_posts_last_changed",
+    "10 wc_maybe_schedule_sale_events_on_meta_change",
+    "10 WC_Post_Data::flush_object_meta_cache"
+   ]
+  },
+  "laukai_koduose": {
+   "petshop-m8-food.php": {
+    "_stock": 7
+   },
+   "petshop-av-reduce.php": {
+    "_own_stock_qty": 3,
+    "_stock": 18
+   },
+   "petshop-desk.php": {
+    "_own_stock_qty": 2,
+    "_stock": 5
+   },
+   "petshop-av-limit.php": {
+    "_own_stock_qty": 1,
+    "_stock": 11
+   },
+   "petshop-av-source.php": {
+    "_own_stock_qty": 3,
+    "_stock": 7
+   },
+   "petshop-av-order.php": {
+    "_stock": 1
+   },
+   "petshop-av-stock.php": {
+    "_own_stock_qty": 9,
+    "_stock": 24
+   },
+   "petshop-xml.php": {
+    "_stock": 4
+   },
+   "class-admin-ui.php": {
+    "_own_stock_qty": 5,
+    "_stock": 14
+   },
+   "class-ean-lookup.php": {
+    "_stock": 3
+   },
+   "class-fulfillment.php": {
+    "_own_stock_qty": 3,
+    "_stock": 23
+   },
+   "class-pricing-vf.php": {
+    "_stock": 1
+   },
+   "class-vf-import.php": {
+    "_stock": 2
+   },
+   "class-pricing-vf.v1.5.5.bak.php": {
+    "_stock": 1
+   }
+  }
+ }
+}
