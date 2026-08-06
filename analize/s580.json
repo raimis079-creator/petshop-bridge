@@ -1,0 +1,28 @@
+{
+ "VERSIJA_RUN": "run580",
+ "sid": 2363,
+ "rez": {
+  "VERSIJA": "s580",
+  "rezimas": "TESTAS",
+  "pries": {
+   "510": {
+    "reduced": "",
+    "src": "av",
+    "pid": 17236
+   }
+  },
+  "eilutes": {
+   "510": "rezervacija nuimta (testui)"
+  },
+  "likutis_17236": 0,
+  "resolve": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 3,
+   "av_uztenka": true,
+   "tiekejas": "av",
+   "reason": "grynai AV prekė (be tiekėjo)"
+  }
+ }
+}
