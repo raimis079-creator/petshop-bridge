@@ -1,0 +1,93 @@
+{
+ "version": "S675-V1",
+ "errors": [],
+ "deploy": {
+  "v": "DEPLOY675",
+  "bytes": 98880,
+  "sha": "5bafcdeddd36c501",
+  "sintakse": "OK",
+  "backup": "ok",
+  "irasyta": 98880,
+  "failas_yra": true,
+  "failo_dydis": 98880
+ },
+ "pries": {
+  "langeliu": 50,
+  "mygtukas": true,
+  "pirmos": [
+   {
+    "id": "19902",
+    "buvo": "2"
+   },
+   {
+    "id": "19708",
+    "buvo": "43"
+   },
+   {
+    "id": "19692",
+    "buvo": "45"
+   },
+   {
+    "id": "19685",
+    "buvo": "60"
+   }
+  ]
+ },
+ "rezimas": {
+  "vidus": true,
+  "klase": true
+ },
+ "ivesta": [
+  {
+   "st": "av",
+   "id": "19902",
+   "buvo": "2",
+   "ivestis": "77"
+  },
+  {
+   "st": "av",
+   "id": "19708",
+   "buvo": "43",
+   "ivestis": "+5"
+  },
+  {
+   "st": "kaina",
+   "id": "19902",
+   "buvo": "8.42",
+   "cost": "",
+   "lock": "0",
+   "ivestis": "12,99"
+  },
+  {
+   "st": "kaina",
+   "id": "19708",
+   "buvo": "2.6",
+   "cost": "",
+   "lock": "0",
+   "ivestis": "+1,50"
+  }
+ ],
+ "po_ivedimo": {
+  "pakeista": 4,
+  "persp": 0,
+  "detalus": "(2 likučiai, 2 kainos)",
+  "kiek": "4",
+  "juosta": true,
+  "rodo": [
+   "av: 77buvo 2",
+   "kaina: 12,99buvo 8,42bus užrakinta",
+   "av: 48buvo 43",
+   "kaina: 4,10buvo 2,60bus užrakinta"
+  ]
+ },
+ "po_saugojimo": {
+  "pranesimas": null,
+  "pakeista_liko": 4
+ },
+ "js": [],
+ "sveikata": {
+  "http": 200,
+  "len": 299043,
+  "fatal": false
+ }
+}
