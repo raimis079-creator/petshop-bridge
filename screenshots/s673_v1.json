@@ -1,0 +1,77 @@
+{
+ "version": "S673-V1",
+ "errors": [],
+ "deploy": {
+  "v": "DEPLOY673",
+  "bytes": 89325,
+  "sha": "079a3f1eeec10037",
+  "sintakse": "OK",
+  "backup": "ok",
+  "irasyta": 89325,
+  "failas_yra": true,
+  "failo_dydis": 89325
+ },
+ "pries": {
+  "langeliu": 50,
+  "mygtukas": true,
+  "pirmos": [
+   {
+    "id": "19902",
+    "buvo": "2"
+   },
+   {
+    "id": "19708",
+    "buvo": "43"
+   },
+   {
+    "id": "19692",
+    "buvo": "45"
+   },
+   {
+    "id": "19685",
+    "buvo": "60"
+   }
+  ]
+ },
+ "rezimas": {
+  "vidus": true,
+  "klase": true
+ },
+ "ivesta": [
+  {
+   "id": "19902",
+   "buvo": "2",
+   "ivestis": "77"
+  },
+  {
+   "id": "19708",
+   "buvo": "43",
+   "ivestis": "+5"
+  },
+  {
+   "id": "19692",
+   "buvo": "45",
+   "ivestis": "-2"
+  }
+ ],
+ "po_ivedimo": {
+  "pakeista": 3,
+  "kiek": "3",
+  "juosta": true,
+  "rodo": [
+   "77buvo 2",
+   "48buvo 43",
+   "43buvo 45"
+  ]
+ },
+ "po_saugojimo": {
+  "pranesimas": "Išsaugota 3 eilučių · GavimasAtšaukti šią operaciją×",
+  "pakeista_liko": 3
+ },
+ "js": [],
+ "sveikata": {
+  "http": 200,
+  "len": 299041,
+  "fatal": false
+ }
+}
