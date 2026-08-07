@@ -5,11 +5,11 @@ const WU=process.env.WP_USER, WP=process.env.WP_APP_PASS, SITE='https://dev.aves
 function sh(c){try{return execSync(c+' 2>&1',{maxBuffer:20e6,shell:'/bin/bash'}).toString();}catch(e){return String(e).slice(0,300);}}
 function putFile(name,buf){const u='https://api.github.com/repos/'+REPO+'/contents/'+name;let s='';
  for(let i=0;i<6;i++){try{const j=JSON.parse(execSync('curl -sk --max-time 30 -H "Authorization: Bearer '+TOKG+'" "'+u+'?n='+Math.random()+'"',{maxBuffer:80e6}).toString());if(j.sha)s=j.sha;}catch(e){}
-  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s625',content:buf.toString('base64'),...(s?{sha:s}:{})}));
+  fs.writeFileSync('/tmp/pj.json',JSON.stringify({message:'s626',content:buf.toString('base64'),...(s?{sha:s}:{})}));
   const c=execSync('curl -sk --max-time 90 -o /dev/null -w "%{http_code}" -X PUT -H "Authorization: Bearer '+TOKG+'" -d @/tmp/pj.json "'+u+'"',{maxBuffer:80e6}).toString().trim();
   if(c==='200'||c==='201')return c; execSync('sleep 3');}return 'fail';}
 const AUTH='-u "'+WU+':'+WP+'"', API=SITE+'/wp-json/code-snippets/v1/snippets';
-const O={VERSIJA_RUN:'run625'};
+const O={VERSIJA_RUN:'run626'};
 // deaktyvuojam senus TEMP
 try{const lst=JSON.parse(sh('curl -sSk --max-time 60 '+AUTH+' "'+API+'"'));
  O.temp_off=[]; O.esami=[];
@@ -45,36 +45,36 @@ const ap=sh('curl -sSk --max-time 260 "'+SITE+'/?ps_stock=dry&k=ps2026"');
 try{O.stock=JSON.parse(ap);}catch(e){O.stock={raw:String(ap).slice(0,2500)};}
 sh('sleep 3');
 // 3) DB PATIKRA
-const VER=`add_action('wp_loaded',function(){ if(($_GET['ps_chk']??'')!=='K625v')return;
+const VER=`add_action('wp_loaded',function(){ if(($_GET['ps_d']??'')!=='K626d')return;
  if(!headers_sent()){nocache_headers();header('Content-Type: application/json; charset=utf-8');}
- global $wpdb;$p=$wpdb->prefix;$t=$p.'ps_sources';$r=array();
- $r['lentele']=($wpdb->get_var("SHOW TABLES LIKE '$t'")===$t)?'TAIP':'NE';
- if($r['lentele']==='TAIP'){
-  $r['irasu']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t");
-  $r['prekiu']=(int)$wpdb->get_var("SELECT COUNT(DISTINCT product_id) FROM $t");
-  $r['pagal_src']=$wpdb->get_results("SELECT source,COUNT(*) c,SUM(stock_qty>0) su_lik,SUM(cost_net>0) su_cost FROM $t GROUP BY source ORDER BY c DESC",ARRAY_A);
-  $r['daugiasaltiniu']=(int)$wpdb->get_var("SELECT COUNT(*) FROM (SELECT product_id FROM $t GROUP BY product_id HAVING COUNT(*)>1) x");
-  $r['dublikatai']=(int)$wpdb->get_var("SELECT COUNT(*) FROM (SELECT product_id,source FROM $t GROUP BY product_id,source HAVING COUNT(*)>1) x");
-  $r['pvz']=$wpdb->get_results("SELECT * FROM $t WHERE product_id=17978",ARRAY_A);
-  $r['cost_null']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE cost_net IS NULL");
-  $r['cost_0']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE cost_net=0");
-  $r['cost_teigiama']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE cost_net>0");
-  $r['sync_null']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE synced_at IS NULL");
-  $r['sync_bloga']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE synced_at='0000-00-00 00:00:00'");
-  $r['qty_null']=(int)$wpdb->get_var("SELECT COUNT(*) FROM $t WHERE stock_qty IS NULL");
-  $r['prekiu_db']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$p}posts WHERE post_type='product' AND post_status IN ('publish','draft','private')");
-  $r['siukslineje']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$p}posts WHERE post_type='product' AND post_status='trash'");
-  $r['be_irasu']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$p}posts po WHERE po.post_type='product' AND po.post_status IN ('publish','draft','private') AND NOT EXISTS(SELECT 1 FROM $t s WHERE s.product_id=po.ID)");
+ @set_time_limit(280); global $wpdb;$p=$wpdb->prefix;$r=array();
+ $ids=$wpdb->get_col("SELECT ID FROM {$p}posts WHERE post_type='product' AND post_status='publish'");
+ $plus=array();$minus=array();$sumP=0;$sumM=0;$nP=0;$nM=0;$pagalSand=array();
+ foreach($ids as $pid){
+  $now=get_post_meta($pid,'_stock',true); if($now===''||$now===null)continue; $now=(int)$now;
+  $a=Petshop_Stock_Service::parduodama($pid); $d=(int)$a['qty']-$now;
+  if($d===0)continue;
+  $sd=get_post_meta($pid,'_ps_sandelis',true);
+  if(!isset($pagalSand[$sd]))$pagalSand[$sd]=array('kiek'=>0,'suma'=>0,'plius'=>0,'minus'=>0);
+  $pagalSand[$sd]['kiek']++; $pagalSand[$sd]['suma']+=$d;
+  if($d>0){$nP++;$sumP+=$d;$pagalSand[$sd]['plius']++;
+    if(count($plus)<12)$plus[]=array('id'=>$pid,'sand'=>$sd,'dabar'=>$now,'servisas'=>$a['qty'],'kodel'=>$a['kodel'],'saltiniai'=>$a['saltiniai']);}
+  else{$nM++;$sumM+=$d;$pagalSand[$sd]['minus']++;
+    if(count($minus)<5)$minus[]=array('id'=>$pid,'sand'=>$sd,'dabar'=>$now,'servisas'=>$a['qty']);}
  }
+ $r['padidejo']=array('prekiu'=>$nP,'suma'=>$sumP);
+ $r['sumazejo']=array('prekiu'=>$nM,'suma'=>$sumM);
+ $r['pagal_sandeli']=$pagalSand;
+ $r['padidejo_pvz']=$plus; $r['sumazejo_pvz']=$minus;
  echo wp_json_encode($r,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);exit;},1);`;
-fs.writeFileSync('/tmp/v.json',JSON.stringify({name:'TEMP S625 Verify',code:VER,scope:'global',active:true}));
+fs.writeFileSync('/tmp/v.json',JSON.stringify({name:'TEMP S626 Skirtumai',code:VER,scope:'global',active:true}));
 let vid=null;
 for(let i=0;i<3&&!vid;i++){const t=sh('curl -sSk --max-time 60 '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/v.json "'+API+'"');
  try{const j=JSON.parse(t);if(j&&j.id)vid=j.id;}catch(e){} if(!vid)sh('sleep 4');}
 O.vid=vid; sh('sleep 5');
-const vv=sh('curl -sSk --max-time 120 "'+SITE+'/?ps_chk=K625v"');
+const vv=sh('curl -sSk --max-time 120 "'+SITE+'/?ps_d=K626d"');
 try{O.PATIKRA=JSON.parse(vv);}catch(e){O.PATIKRA={raw:String(vv).slice(0,2000)};}
 if(vid){fs.writeFileSync('/tmp/voff.json',JSON.stringify({active:false}));
  sh('curl -sSk --max-time 30 -o /dev/null '+AUTH+' -H "Content-Type: application/json" -X POST --data-binary @/tmp/voff.json "'+API+'/'+vid+'"');}
-putFile('analize/s625.json', Buffer.from(JSON.stringify(O,null,1)));
+putFile('analize/s626.json', Buffer.from(JSON.stringify(O,null,1)));
 console.log('OK');
