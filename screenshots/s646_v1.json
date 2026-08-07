@@ -1,0 +1,76 @@
+{
+ "version": "S646-V1",
+ "errors": [],
+ "sveikata_pries": {
+  "shop": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  },
+  "admin": {
+   "http": 200,
+   "len": 10155,
+   "fatal": false
+  },
+  "wc": {
+   "http": 200,
+   "len": 10211,
+   "fatal": false
+  }
+ },
+ "diegejas": 2407,
+ "deploy": {
+  "v": "DEPLOY646",
+  "bytes": 35821,
+  "sha": "b18be9465fe186d9",
+  "sintakse": "OK",
+  "backup": "naujas failas",
+  "irasyta": 35821,
+  "failas_yra": true,
+  "failo_dydis": 35821
+ },
+ "sveikata_po": {
+  "shop": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  },
+  "admin": {
+   "http": 200,
+   "len": 10155,
+   "fatal": false
+  },
+  "wc": {
+   "http": 200,
+   "len": 10211,
+   "fatal": false
+  }
+ },
+ "ok": true,
+ "katalogas": {
+  "http": 200,
+  "ms": 3963,
+  "len": 10213,
+  "fatal": false,
+  "eiluciu": 0,
+  "rail": 0,
+  "klaida": []
+ },
+ "shot": {
+  "js": [],
+  "url": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-katalogas&reauth=1",
+  "prekiu": 0,
+  "suvestine": [],
+  "eiles": []
+ }
+}
