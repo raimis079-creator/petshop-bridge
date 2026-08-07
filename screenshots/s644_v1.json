@@ -1,0 +1,170 @@
+{
+ "version": "S644-V1",
+ "errors": [],
+ "snip": 2405,
+ "testas": {
+  "v": "T644",
+  "testai": [],
+  "preke": {
+   "id": 12814,
+   "pav": "Hau&Miau vištienos file 500g"
+  },
+  "0_PRADZIA": {
+   "sandelis": "av",
+   "own": "",
+   "stock": "42.000000",
+   "be_saltinio": "",
+   "registras": [
+    {
+     "source": "av",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "1",
+     "priority": "1"
+    }
+   ]
+  },
+  "1_po_vf": {
+   "sandelis": "vf",
+   "own": "",
+   "stock": "42.000000",
+   "be_saltinio": "",
+   "registras": [
+    {
+     "source": "av",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "0",
+     "priority": "1"
+    },
+    {
+     "source": "vf",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "1",
+     "priority": "2"
+    }
+   ]
+  },
+  "1_verdiktas": "laukiam: registre atsiranda vf, av lieka bet is_active=0",
+  "2_po_grazinimo": {
+   "sandelis": "av",
+   "own": "",
+   "stock": "42.000000",
+   "be_saltinio": "",
+   "registras": [
+    {
+     "source": "av",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "1",
+     "priority": "1"
+    },
+    {
+     "source": "vf",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "0",
+     "priority": "2"
+    }
+   ]
+  },
+  "3_be_saltinio": {
+   "sandelis": "",
+   "own": "",
+   "stock": "42.000000",
+   "be_saltinio": "1",
+   "registras": [
+    {
+     "source": "av",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "1",
+     "priority": "1"
+    },
+    {
+     "source": "vf",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "0",
+     "priority": "2"
+    }
+   ]
+  },
+  "3_be_saltinio_sarase": true,
+  "4_GALAS": {
+   "sandelis": "av",
+   "own": "",
+   "stock": "42.000000",
+   "be_saltinio": "",
+   "registras": [
+    {
+     "source": "av",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "1",
+     "priority": "1"
+    },
+    {
+     "source": "vf",
+     "supplier_sku": "",
+     "ean": "",
+     "is_active": "0",
+     "priority": "2"
+    }
+   ]
+  },
+  "GRIZO_META": true,
+  "GRIZO_REGISTRAS": false,
+  "registras_pries": {
+   "av": "1"
+  },
+  "registras_po": {
+   "av": "1",
+   "vf": "0"
+  },
+  "5_nauja_preke": {
+   "id": 34888,
+   "snap": {
+    "sandelis": "quattro",
+    "own": "",
+    "stock": "7",
+    "be_saltinio": "",
+    "registras": [
+     {
+      "source": "quattro",
+      "supplier_sku": "",
+      "ean": "",
+      "is_active": "1",
+      "priority": "2"
+     }
+    ]
+   }
+  },
+  "5_stock_service": {
+   "qty": 7,
+   "av": 0,
+   "tiekejo": 7,
+   "kodel": "QUATTRO 7",
+   "perspejimai": [],
+   "saltiniai": [
+    {
+     "source": "quattro",
+     "raw": 7,
+     "iskaityta": 7,
+     "kodel": "rankinis likutis · atimtas 0 vnt. rezervas",
+     "duomenu_amzius_val": null
+    }
+   ],
+   "is_lenteles": true
+  },
+  "6_registras_viso": 3806,
+  "6_neaktyvus": 1
+ },
+ "isjungta": false,
+ "sveikata": {
+  "http": 200,
+  "len": 303278,
+  "fatal": false
+ }
+}
