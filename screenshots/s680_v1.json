@@ -1,0 +1,62 @@
+{
+ "version": "S680-V1",
+ "errors": [],
+ "snip": 2453,
+ "rez": {
+  "v": "A680",
+  "snip512": {
+   "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+   "active": "1",
+   "kodas": "/** Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems) */\nif (!defined('ABSPATH')) return;\n\n/* ---------- LT -> ascii (markeriu atpazinimui) ---------- */\nif (!function_exists('psdp_ascii')) {\nfunction psdp_ascii($s){\n    $s = wp_strip_all_tags($s);\n    $map = array(\n        \"\\xC4\\x85\"=>'a',\"\\xC4\\x8D\"=>'c',\"\\xC4\\x99\"=>'e',\"\\xC4\\x97\"=>'e',\"\\xC4\\xAF\"=>'i',\n        \"\\xC5\\xA1\"=>'s',\"\\xC5\\xB3\"=>'u',\"\\xC5\\xAB\"=>'u',\"\\xC5\\xBE\"=>'z',\n        \"\\xC4\\x84\"=>'a',\"\\xC4\\x8C\"=>'c',\"\\xC4\\x98\"=>'e',\"\\xC4\\x96\"=>'e',\"\\xC4\\xAE\"=>'i',\n        \"\\xC5\\xA0\"=>'s',\"\\xC5\\xB2\"=>'u',\"\\xC5\\xAA\"=>'u',\"\\xC5\\xBD\"=>'z'\n    );\n    return strtolower(strtr($s, $map));\n}\n}\n\n/* ---------- markerio fraze -> kanonine antraste ---------- */\nif (!function_exists('psdp_title')) {\nfunction psdp_title($m){\n    $t = psdp_ascii($m);\n    if (strpos($t,'pagrindinis aprasymas')!==false) return \"Apra\\xC5\\xA1ymas\";\n    // \"Analitine sudetis\" turi būti tikrintas PIRMA, ne \"sudetis\"!\n    if (strpos($t,'analitin')===0) return \"Analitin\\xC4\\x97s sudedamosios dalys\";\n    if (strpos($t,'sud')===0) return \"Sud\\xC4\\x97tis\";\n    if (strpos($t,'pried')!==false || strpos($t,'maisto pried')!==false || strpos($t,'technologiniai pried')!==false) return \"Priedai\";\n    if (strpos($t,'serim')===0 || strpos($t,'rekomenduojamas kiekis')===0) return \"\\xC5\\xA0\\xC4\\x97rimo instrukcija\";\n    if (strpos($t,'ispejim')!==false) return \"\\xC4\\xAEsp\\xC4\\x97jimai\";\n    if (strpos($t,'pagaminta')!==false) return \"Pagaminta\";\n    return trim(wp_strip_all_tags($m));\n}\n}\n\n/* ---------- bendras valymas: dekodavimas + siuksles ---------- */\nif (!function_exists('psdp_clean')) {\nfunction psdp_clean($html){\n    if (!is_string($html)) return '';\n    $html = html_entity_decode($html, ENT_QUOTES | ENT_HTML5, 'UTF-8');\n    $html = preg_replace('#<style[^>]*>.*?</style>#is', ' ', $html);\n    $html = preg_replace('#<script[^>]*>.*?</script>#is', ' ', $html);\n    $html = preg_replace('#<!--.*?-->#s', ' ', $html);\n    $html = preg_replace('/Trumpas\\s+prek\\x{0117}s\\s+apra\\x{0161}ymas/iu', ' ', $html);\n    return $html;\n}\n}\n\n/* ---------- MAISTUI: kirpti tik fizinius pakuotes matmenis (x x cm), svori palikti ---------- */\nif (!function_exists('psdp_cut_dims')) {\nfunction psdp_cut_dims($html){\n    $html = preg_replace('/(?:Pakuot\\x{0117}s\\s+(?:dydis|matmenys)|I\\x{0161}matavimai|Matmenys)\\s*:?\\s*\\d+[.,]?\\d*\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*(?:\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*)?\\s*(?:cm|mm)\\.?/iu', ' ', $html);\n    $html = preg_replace('/\\b\\d+[.,]?\\d*\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*\\s*(?:cm|mm)\\b\\.?/iu', ' ', $html);\n    $html = preg_replace('#<p>\\s*</p>#i', '', $html);\n    return $html;\n}\n}\n\n/* ---------- FALLBACK valymas (aksesuarams) ---------- */\nif (!function_exists('psdp_fallback_clean')) {\nfunction psdp_fallback_clean($html){\n    $html = preg_replace('#<li>\\s*</li>#i', ' ', $html);\n    $html = preg_replace('/<(h[1-6]|strong|b|p)[^>]*>\\s*Pagrindinis\\s+apra\\x{0161}ymas\\s*<\\/\\1>/iu', ' ', $html);\n    $html = preg_replace('#<p>\\s*</p>#i', '', $html);\n    $html = preg_replace('#<ul>\\s*</ul>#i', '', $html);\n    return $html;\n}\n}\n\n/* ---------- skaidymas: du keliai (dvitaskis + heading) + kanonine tvarka ---------- */\nif (!function_exists('psdp_split')) {\nfunction psdp_split($html){\n    if (!is_string($html) || $html === '') return array();\n\n    // dvitaskio kelias (rizikingi trumpi markeriai - PRIVALO dvitaskis)\n    $patC = '/(?:<(?:strong|b|h[1-6]|p|span|em|div)[^>]*>\\s*)*\\s*('\n          . 'Sud\\x{0117}tis'\n          . '|Maisto\\s+pried[a-z\\x{0105}-\\x{017E}]*'\n          . '|Technologiniai\\s+pried[a-z\\x{0105}-\\x{017E}]*'\n          . '|Pried[a-z\\x{0105}-\\x{017E}]*\\/kg[^:<\\n]{0,30}'\n          . '|Pried[a-z\\x{0105}-\\x{017E}]*'\n          . '|Pagaminta'\n          . '|\\x{012E}sp\\x{0117}jim[a-z\\x{0105}-\\x{017E}]*'\n          . ')\\s*(?:<\\/(?:strong|b|span|em)>\\s*)*\\s*:/iu';\n\n    // heading kelias (palaiko \"Analitine sudetis\" formas, ne tik \"Analitines sudedamosios dalys\")\n    $patH = '/(?:<(?:strong|b|h[1-6]|p|s"
+  },
+  "kiti": [
+   {
+    "id": "329",
+    "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+    "active": "1"
+   },
+   {
+    "id": "512",
+    "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+    "active": "1"
+   },
+   {
+    "id": "513",
+    "name": "Petshop Katalogo Auditas v1 (read-only)",
+    "active": "1"
+   },
+   {
+    "id": "562",
+    "name": "Petshop Sprendimai Shortcode Variklis v9",
+    "active": "1"
+   },
+   {
+    "id": "2453",
+    "name": "TEMP Akordeono Recon (S680)",
+    "active": "1"
+   }
+  ],
+  "top_meta": [
+   {
+    "meta_key": "total_sales",
+    "c": "1996"
+   },
+   {
+    "meta_key": "rank_math_title",
+    "c": "1112"
+   },
+   {
+    "meta_key": "rank_math_description",
+    "c": "1076"
+   },
+   {
+    "meta_key": "venipak_is_locker_excluded",
+    "c": "9"
+   },
+   {
+    "meta_key": "wc_productdata_options",
+    "c": "9"
+   }
+  ]
+ }
+}
