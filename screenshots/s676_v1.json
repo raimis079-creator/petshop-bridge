@@ -1,0 +1,189 @@
+{
+ "version": "S676-V1",
+ "errors": [],
+ "snip": 2447,
+ "rez": {
+  "v": "Z676",
+  "zurnalas": [
+   {
+    "id": "11",
+    "operacija": "KN26080720221512",
+    "product_id": "19902",
+    "laukas": "_manual_price_override",
+    "buvo": null,
+    "tapo": "yes",
+    "pokytis": null,
+    "priezastis": "kaina",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:22:15",
+    "atsaukta": "0"
+   },
+   {
+    "id": "10",
+    "operacija": "KN26080720221512",
+    "product_id": "19902",
+    "laukas": "_regular_price",
+    "buvo": "8.42",
+    "tapo": "12.99",
+    "pokytis": null,
+    "priezastis": "kaina",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:22:15",
+    "atsaukta": "0"
+   },
+   {
+    "id": "9",
+    "operacija": "KN26080720221512",
+    "product_id": "19708",
+    "laukas": "_manual_price_override",
+    "buvo": null,
+    "tapo": "yes",
+    "pokytis": null,
+    "priezastis": "kaina",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:22:15",
+    "atsaukta": "0"
+   },
+   {
+    "id": "8",
+    "operacija": "KN26080720221512",
+    "product_id": "19708",
+    "laukas": "_regular_price",
+    "buvo": "2.6",
+    "tapo": "4.1",
+    "pokytis": null,
+    "priezastis": "kaina",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:22:15",
+    "atsaukta": "0"
+   },
+   {
+    "id": "7",
+    "operacija": "AV26080720221416",
+    "product_id": "19902",
+    "laukas": "_stock",
+    "buvo": "2",
+    "tapo": "77",
+    "pokytis": "75",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:22:14",
+    "atsaukta": "0"
+   },
+   {
+    "id": "6",
+    "operacija": "AV26080720221416",
+    "product_id": "19708",
+    "laukas": "_stock",
+    "buvo": "43",
+    "tapo": "48",
+    "pokytis": "5",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:22:14",
+    "atsaukta": "0"
+   },
+   {
+    "id": "5",
+    "operacija": "AV26080720082080",
+    "product_id": "18278",
+    "laukas": "_stock",
+    "buvo": "10",
+    "tapo": "12",
+    "pokytis": "2",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:08:20",
+    "atsaukta": "0"
+   },
+   {
+    "id": "4",
+    "operacija": "AV26080720082080",
+    "product_id": "18188",
+    "laukas": "_stock",
+    "buvo": "0",
+    "tapo": "1",
+    "pokytis": "1",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:08:20",
+    "atsaukta": "0"
+   },
+   {
+    "id": "3",
+    "operacija": "AV26080720004238",
+    "product_id": "19902",
+    "laukas": "_stock",
+    "buvo": "2",
+    "tapo": "77",
+    "pokytis": "75",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:00:42",
+    "atsaukta": "1"
+   },
+   {
+    "id": "2",
+    "operacija": "AV26080720004238",
+    "product_id": "19708",
+    "laukas": "_stock",
+    "buvo": "43",
+    "tapo": "48",
+    "pokytis": "5",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:00:42",
+    "atsaukta": "1"
+   },
+   {
+    "id": "1",
+    "operacija": "AV26080720004238",
+    "product_id": "19692",
+    "laukas": "_stock",
+    "buvo": "45",
+    "tapo": "43",
+    "pokytis": "-2",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:00:42",
+    "atsaukta": "1"
+   }
+  ],
+  "dabar": {
+   "19708": {
+    "pav": "Animonda Carny Adult Beef + Chicke",
+    "_stock": "48",
+    "_regular_price": "4.1",
+    "_price": "4.1",
+    "_manual_price_override": "yes",
+    "kaina_klientui": 4.1
+   },
+   "19902": {
+    "pav": "„DuvoPlius” žaislas šuniui – pliuš",
+    "_stock": "77",
+    "_regular_price": "12.99",
+    "_price": "12.99",
+    "_manual_price_override": "yes",
+    "kaina_klientui": 12.99
+   }
+  },
+  "atsaukta": 8,
+  "operaciju": 3,
+  "po_atsaukimo": {
+   "19708": {
+    "_stock": "43",
+    "_regular_price": "2.6",
+    "_price": "2.6",
+    "lock": "",
+    "kaina_klientui": 2.6
+   },
+   "19902": {
+    "_stock": "2",
+    "_regular_price": "8.42",
+    "_price": "8.42",
+    "lock": "",
+    "kaina_klientui": 8.42
+   }
+  }
+ }
+}
