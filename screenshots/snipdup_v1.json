@@ -1,0 +1,741 @@
+{
+ "version": "SNIPDUP-V1",
+ "pairs": {
+  "492": {
+   "name": "Petshop Filtru Atidarymas v2 (CSS+JS)",
+   "active": true,
+   "scope": "global",
+   "priority": 10,
+   "modified": "2026-06-21 22:34:49",
+   "len": 1619,
+   "sha": "6fa067eaae1ed1d8",
+   "code_b64": "LyoqCiAqIEZpbHRydSBhdGlkYXJ5bWFzOiAoMSkgaXNqdW5ndGkgWUlUSCBsYXp5LWxvYWQ7ICgyKSBDU1MrSlMgZm9yc3VvdGkgcGlybW8gZmlsdHJvCiAqIChQYXNraXJ0aXMgc2FtcHVudW9zZSBpciB0LnQuKSAuZmlsdGVyLWNvbnRlbnQgbWF0b21hLCBuZXByaWtsYXVzb21haSBudW8gWUlUSCB0b2dnbGUgSlMuCiAqLwppZiAoICEgZGVmaW5lZCggJ0FCU1BBVEgnICkgKSB7IGV4aXQ7IH0KCmZvcmVhY2ggKCBhcnJheSgKICAgICd5aXRoX3djYW5fc2hvdWxkX2xhenlfbG9hZF9maWx0ZXJzJywKICAgICd5aXRoX3djYW5fc2hvdWxkX3Nob3dfZmlsdGVyc19wbGFjZWhvbGRlcnMnLAopIGFzICRob29rICkgeyBhZGRfZmlsdGVyKCAkaG9vaywgJ19fcmV0dXJuX2ZhbHNlJywgOTkgKTsgfQoKYWRkX2FjdGlvbiggJ3dwX2Zvb3RlcicsIGZ1bmN0aW9uICgpIHsKICAgID8+CjxzdHlsZSBpZD0icHMtb3Blbi1maWx0ZXIiPgoueWl0aC13Y2FuLWZpbHRlcnMgLmZpbHRlcnMtY29udGFpbmVyIGZvcm0gPiAueWl0aC13Y2FuLWZpbHRlcjpmaXJzdC1jaGlsZCA+IC5maWx0ZXItY29udGVudHsKICBkaXNwbGF5OmJsb2NrICFpbXBvcnRhbnQ7aGVpZ2h0OmF1dG8gIWltcG9ydGFudDttYXgtaGVpZ2h0Om5vbmUgIWltcG9ydGFudDtvdmVyZmxvdzp2aXNpYmxlICFpbXBvcnRhbnQ7Cn0KLnlpdGgtd2Nhbi1maWx0ZXJzIC5maWx0ZXJzLWNvbnRhaW5lciBmb3JtID4gLnlpdGgtd2Nhbi1maWx0ZXI6Zmlyc3QtY2hpbGQgPiAuZmlsdGVyLXRpdGxle2N1cnNvcjpkZWZhdWx0O30KPC9zdHlsZT4KPHNjcmlwdD4KKGZ1bmN0aW9uKCl7CiAgZnVuY3Rpb24gb3BlbkZpcnN0KCl7CiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcueWl0aC13Y2FuLWZpbHRlcnMgLmZpbHRlcnMtY29udGFpbmVyIGZvcm0nKS5mb3JFYWNoKGZ1bmN0aW9uKGYpewogICAgICB2YXIgZmlyc3Q9Zi5xdWVyeVNlbGVjdG9yKCc6c2NvcGUgPiAueWl0aC13Y2FuLWZpbHRlcicpOwogICAgICBpZighZmlyc3QpIHJldHVybjsKICAgICAgdmFyIGM9Zmlyc3QucXVlcnlTZWxlY3RvcignOnNjb3BlID4gLmZpbHRlci1jb250ZW50Jyk7CiAgICAgIGlmKGMpeyBjLnN0eWxlLnNldFByb3BlcnR5KCdkaXNwbGF5JywnYmxvY2snLCdpbXBvcnRhbnQnKTsgYy5zdHlsZS5zZXRQcm9wZXJ0eSgnaGVpZ2h0JywnYXV0bycsJ2ltcG9ydGFudCcpOyBjLnN0eWxlLnNldFByb3BlcnR5KCdtYXgtaGVpZ2h0Jywnbm9uZScsJ2ltcG9ydGFudCcpOyB9CiAgICAgIGZpcnN0LmNsYXNzTGlzdC5hZGQoJ2ZpbHRlci1vcGVuJywnb3BlbmVkJywndG9nZ2xlZCcpOwogICAgfSk7CiAgfQogIGlmKGRvY3VtZW50LnJlYWR5U3RhdGUhPT0nbG9hZGluZycpIHNldFRpbWVvdXQob3BlbkZpcnN0LDYwMCk7CiAgZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsZnVuY3Rpb24oKXsgc2V0VGltZW91dChvcGVuRmlyc3QsNjAwKTsgc2V0VGltZW91dChvcGVuRmlyc3QsMTUwMCk7IH0pOwogIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdsb2FkJyxmdW5jdGlvbigpeyBzZXRUaW1lb3V0KG9wZW5GaXJzdCw0MDApOyB9KTsKfSkoKTsKPC9zY3JpcHQ+CiAgICA8P3BocAp9LCA5OSApOwo="
+  },
+  "493": {
+   "name": "Petshop Filtru Atidarymas v1 (no lazy-load)",
+   "active": true,
+   "scope": "global",
+   "priority": 10,
+   "modified": "2026-06-21 22:25:44",
+   "len": 1245,
+   "sha": "48b104fe04f0effd",
+   "code_b64": "LyoqCiAqIFNhbXB1bnUvdmlzdSBmaWx0cnUgYXRpZGFyeW1hczogaXNqdW5ndGkgWUlUSCBsYXp5LWxvYWQgKHBsYWNlaG9sZGVyKSAtPiBzZXJ2ZXJpbyByZW5kZXJpcyBnZXJiaWEgdG9nZ2xlX3N0eWxlPW9wZW5lZC4KICogKyBDU1MgZHJhdWRpa2xpcyBwaXJtYW0gZmlsdHJ1aSAoUGFza2lydGlzKSBzYW1wdW51IGthdGVnb3Jpam9qZS4KICovCmlmICggISBkZWZpbmVkKCAnQUJTUEFUSCcgKSApIHsgZXhpdDsgfQoKLyogMSkgSXNqdW5ndGkgbGF6eS1sb2FkL3BsYWNlaG9sZGVyIChob29rJ2FpIHN1dGFtcGEgc3UgbWV0b2R1IHBhdmFkaW5pbWFpcykgKi8KZm9yZWFjaCAoIGFycmF5KAogICAgJ3lpdGhfd2Nhbl9zaG91bGRfbGF6eV9sb2FkX2ZpbHRlcnMnLAogICAgJ3lpdGhfd2Nhbl9zaG91bGRfc2hvd19maWx0ZXJzX3BsYWNlaG9sZGVycycsCiAgICAneWl0aF93Y2FuX2xhenlfbG9hZF9maWx0ZXJzJywKICAgICd5aXRoX3djYW5fc2hvd19maWx0ZXJzX3BsYWNlaG9sZGVycycsCikgYXMgJGhvb2sgKSB7CiAgICBhZGRfZmlsdGVyKCAkaG9vaywgJ19fcmV0dXJuX2ZhbHNlJywgOTkgKTsKfQoKLyogMikgQ1NTIGRyYXVkaWtsaXM6IHBpcm1hcyBmaWx0cmFzIChQYXNraXJ0aXMpIGF0aWRhcnl0YXMgKi8KYWRkX2FjdGlvbiggJ3dwX2hlYWQnLCBmdW5jdGlvbiAoKSB7CiAgICBlY2hvICc8c3R5bGUgaWQ9InBzLW9wZW4tZmlsdGVyIj4nCiAgICAgICAuICcueWl0aC13Y2FuLWZpbHRlcnMgLnlpdGgtd2Nhbi1maWx0ZXI6Zmlyc3QtY2hpbGQgLmZpbHRlci1jb250ZW50LCcKICAgICAgIC4gJy55aXRoLXdjYW4tZmlsdGVycyAueWl0aC13Y2FuLWZpbHRlcjpmaXJzdC1jaGlsZCAuZmlsdGVycy1jb250YWluZXIsJwogICAgICAgLiAnLnlpdGgtd2Nhbi1maWx0ZXJzIC55aXRoLXdjYW4tZmlsdGVyOmZpcnN0LWNoaWxkIHVsLmZpbHRlci1jb250ZW50LCcKICAgICAgIC4gJy55aXRoLXdjYW4tZmlsdGVycyAueWl0aC13Y2FuLWZpbHRlcjpmaXJzdC1jaGlsZCAueWl0aC13Y2FuLXRlcm1zeycKICAgICAgIC4gJ2Rpc3BsYXk6YmxvY2sgIWltcG9ydGFudDtoZWlnaHQ6YXV0byAhaW1wb3J0YW50O21heC1oZWlnaHQ6bm9uZSAhaW1wb3J0YW50O292ZXJmbG93OnZpc2libGUgIWltcG9ydGFudDt9JwogICAgICAgLiAnLnlpdGgtd2Nhbi1maWx0ZXJzIC55aXRoLXdjYW4tZmlsdGVyLmZpbHRlci10YXg6Zmlyc3QtY2hpbGR7fScKICAgICAgIC4gJzwvc3R5bGU+JzsKfSwgOTkgKTsK"
+  },
+  "707": {
+   "name": "Petshop UI Lokalizacija v1",
+   "active": true,
+   "scope": "global",
+   "priority": 10,
+   "modified": "2026-07-13 13:55:11",
+   "len": 1557,
+   "sha": "a1209f8b70636a0c",
+   "code_b64": "aWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyByZXR1cm47IH0KCi8qKgogKiBQZXRzaG9wIFVJIExva2FsaXphY2lqYSB2MgogKiBOZWnFoXZlcnN0xbMgYW5nbGnFoWvFsyBVSSBlaWx1xI1pxbMgdmVydGltYXMgxK8gbGlldHV2acWzLgogKiAzIHNsdW9rc25pYWk6IGdldHRleHQsIGdldHRleHRfd2l0aF9jb250ZXh0LCB3aWRnZXRfdGl0bGUgKFdDL1lJVEggd2lkZ2V0IGFudHJhxaF0xJdzKS4KICogUGxlxI1pYW1hOiBwcmlkxJdrIGVpbHV0xJkgxK8gJG1hcCAobWF0Y2ggcGFnYWwgb3JpZ2luYWxpxIUgYW5nbGnFoWvEhSBlaWx1dMSZLCB0aWtzbMWzIGNhc2UpLgogKi8KZnVuY3Rpb24gcGV0c2hvcF91aV9sMTBuX21hcCgpIHsKCXJldHVybiBhcnJheSgKCQkvLyBXb29Db21tZXJjZSB3aWRnZXQgYW50cmHFoXTEl3MgKHNob3Atc2lkZWJhcikg4oCUIHNhdWdvbW9zIHN1IGRpZMW+aW9zaW9tCgkJJ0FjdGl2ZSBGaWx0ZXJzJyAgICA9PiAnQWt0eXbFq3MgZmlsdHJhaScsCgkJJ0FjdGl2ZSBmaWx0ZXJzJyAgICA9PiAnQWt0eXbFq3MgZmlsdHJhaScsCgkJJ0ZpbHRlciBieScgICAgICAgICA9PiAnRmlsdHJ1b3RpIHBhZ2FsJywKCQknRmlsdGVyIGJ5IHByaWNlJyAgID0+ICdGaWx0cnVvdGkgcGFnYWwga2FpbsSFJywKCQkvLyBZSVRIIEFqYXggZmlsdHJhcwoJCSdDbGVhcicgICAgICAgICAgICAgPT4gJ0nFoXZhbHl0aScsCgkJLy8gV29vQ29tbWVyY2UKCQknU2VsZWN0IG9wdGlvbnMnICAgID0+ICdQYXNpcmlua3RpJywKCQknQWRkIHRvIGNhcnQnICAgICAgID0+ICfEriBrcmVwxaFlbMSvJywKCQknUmVhZCBtb3JlJyAgICAgICAgID0+ICdQbGHEjWlhdScsCgkJLy8gUmlua2luaW8gZMSXxb7ElyAoYnVpbGQtYS1ib3gpCgkJJ0NsZWFyIHNlbGVjdGlvbnMnICA9PiAnScWhdmFseXRpIHBhc2lyaW5raW11cycsCgkJJ0NsZWFyIHNlbGVjdGlvbicgICA9PiAnScWhdmFseXRpIHBhc2lyaW5raW3EhScsCgkpOwp9CgphZGRfZmlsdGVyKCAnZ2V0dGV4dCcsIGZ1bmN0aW9uICggJHRyYW5zbGF0aW9uLCAkdGV4dCwgJGRvbWFpbiApIHsKCSRtYXAgPSBwZXRzaG9wX3VpX2wxMG5fbWFwKCk7CglyZXR1cm4gaXNzZXQoICRtYXBbICR0ZXh0IF0gKSA/ICRtYXBbICR0ZXh0IF0gOiAkdHJhbnNsYXRpb247Cn0sIDIwLCAzICk7CgphZGRfZmlsdGVyKCAnZ2V0dGV4dF93aXRoX2NvbnRleHQnLCBmdW5jdGlvbiAoICR0cmFuc2xhdGlvbiwgJHRleHQsICRjb250ZXh0LCAkZG9tYWluICkgewoJJG1hcCA9IHBldHNob3BfdWlfbDEwbl9tYXAoKTsKCXJldHVybiBpc3NldCggJG1hcFsgJHRleHQgXSApID8gJG1hcFsgJHRleHQgXSA6ICR0cmFuc2xhdGlvbjsKfSwgMjAsIDQgKTsKCi8vIFdpZGdldCBhbnRyYcWhdMSXcyAoV0MgbGF5ZXJlZCBuYXYgZmlsdGVycyDigJ5BY3RpdmUgRmlsdGVycyIgaXIga3QuKSDigJQgbmVpbmEgcGVyIGdldHRleHQKYWRkX2ZpbHRlciggJ3dpZGdldF90aXRsZScsIGZ1bmN0aW9uICggJHRpdGxlICkgewoJJG1hcCA9IHBldHNob3BfdWlfbDEwbl9tYXAoKTsKCXJldHVybiBpc3NldCggJG1hcFsgJHRpdGxlIF0gKSA/ICRtYXBbICR0aXRsZSBdIDogJHRpdGxlOwp9LCAyMCApOwo="
+  },
+  "1357": {
+   "name": "Feeding Calc REST v1",
+   "active": true,
+   "scope": "global",
+   "priority": 10,
+   "modified": "2026-07-22 16:06:38",
+   "len": 1704,
+   "sha": "38b4b21c00cb8fc4",
+   "code_b64": "LyoqCiAqIEZlZWRpbmcgQ2FsYyBSRVNUIHYxIOKAlCBQT1NUIC93cC1qc29uL3BldHNob3AvdjEvZmVlZGluZy1jYWxjCiAqIFXFviBmZWF0dXJlIGZsYWc6IHB1YmxpYyB0aWsga2FpIHBldHNob3BfZmVlZGluZ19jYWxjX2VuYWJsZWQ9MTsgYWRtaW4gdmlzYWRhIChFMkUpLgogKiBLdmllxI1pYSBQZXRzaG9wX0ZlZWRpbmdfU2VydmljZTo6Y2FsYygpLiBGcm9udGVuZGFzIG5pZWtvIG5lc2thacSNaXVvamEuCiAqLwphZGRfYWN0aW9uKCdyZXN0X2FwaV9pbml0JywgZnVuY3Rpb24oKXsKCXJlZ2lzdGVyX3Jlc3Rfcm91dGUoJ3BldHNob3AvdjEnLCAnL2ZlZWRpbmctY2FsYycsIGFycmF5KAoJCSdtZXRob2RzJyAgPT4gJ1BPU1QnLAoJCSdwZXJtaXNzaW9uX2NhbGxiYWNrJyA9PiBmdW5jdGlvbigpewoJCQkkZW5hYmxlZCA9ICggY2xhc3NfZXhpc3RzKCdQZXRzaG9wX0ZlZWRpbmdfU2VydmljZScpICYmIG1ldGhvZF9leGlzdHMoJ1BldHNob3BfRmVlZGluZ19TZXJ2aWNlJywnY2FsY19lbmFibGVkJykgKQoJCQkJPyBQZXRzaG9wX0ZlZWRpbmdfU2VydmljZTo6Y2FsY19lbmFibGVkKCkgOiBmYWxzZTsKCQkJcmV0dXJuICRlbmFibGVkIHx8IGN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJyk7CgkJfSwKCQknY2FsbGJhY2snID0+IGZ1bmN0aW9uKCBXUF9SRVNUX1JlcXVlc3QgJHJlcSApewoJCQlpZiAoICEgY2xhc3NfZXhpc3RzKCdQZXRzaG9wX0ZlZWRpbmdfU2VydmljZScpIHx8ICEgbWV0aG9kX2V4aXN0cygnUGV0c2hvcF9GZWVkaW5nX1NlcnZpY2UnLCdjYWxjJykgKSB7CgkJCQlyZXR1cm4gbmV3IFdQX1JFU1RfUmVzcG9uc2UoYXJyYXkoJ3N0YXR1cyc9PidzeXN0ZW1fZXJyb3InLCdyZWFzb25fY29kZXMnPT5hcnJheSgnU1lTVEVNX0VSUk9SJyksJ21lc3NhZ2VfbHQnPT4nU2lzdGVtb3Mga2xhaWRhLicpLCAyMDApOwoJCQl9CgkJCSRwID0gJHJlcS0+Z2V0X2pzb25fcGFyYW1zKCk7IGlmICggISBpc19hcnJheSgkcCkgKSAkcCA9IGFycmF5KCk7CgkJCSRpbiA9IGFycmF5KAoJCQkJJ3Byb2R1Y3RfaWQnICAgICAgICAgICA9PiBpc3NldCgkcFsncHJvZHVjdF9pZCddKSA/IChpbnQpICRwWydwcm9kdWN0X2lkJ10gOiAwLAoJCQkJJ3dlaWdodF9rZycgICAgICAgICAgICA9PiAoIGlzc2V0KCRwWyd3ZWlnaHRfa2cnXSkgJiYgJHBbJ3dlaWdodF9rZyddICE9PSBudWxsICYmICRwWyd3ZWlnaHRfa2cnXSAhPT0gJycgKSA/IChmbG9hdCkgJHBbJ3dlaWdodF9rZyddIDogbnVsbCwKCQkJCSd3ZWlnaHRfaW50ZXJ2YWxfY29kZScgPT4gaXNzZXQoJHBbJ3dlaWdodF9pbnRlcnZhbF9jb2RlJ10pID8gc2FuaXRpemVfdGV4dF9maWVsZCgoc3RyaW5nKSRwWyd3ZWlnaHRfaW50ZXJ2YWxfY29kZSddKSA6IG51bGwsCgkJCQknYWN0aXZpdHlfY29kZScgICAgICAgID0+IGlzc2V0KCRwWydhY3Rpdml0eV9jb2RlJ10pID8gc2FuaXRpemVfdGV4dF9maWVsZCgoc3RyaW5nKSRwWydhY3Rpdml0eV9jb2RlJ10pIDogbnVsbCwKCQkJCSdzcGVjaWVzX2NvZGUnICAgICAgICAgPT4gaXNzZXQoJHBbJ3NwZWNpZXNfY29kZSddKSA/IHNhbml0aXplX3RleHRfZmllbGQoKHN0cmluZykkcFsnc3BlY2llc19jb2RlJ10pIDogbnVsbCwKCQkJKTsKCQkJcmV0dXJuIG5ldyBXUF9SRVNUX1Jlc3BvbnNlKCBQZXRzaG9wX0ZlZWRpbmdfU2VydmljZTo6Y2FsYygkaW4pLCAyMDAgKTsKCQl9LAoJKSk7Cn0pOwo="
+  },
+  "1358": {
+   "name": "Feeding Calc REST v1",
+   "active": true,
+   "scope": "global",
+   "priority": 10,
+   "modified": "2026-07-22 16:09:21",
+   "len": 1704,
+   "sha": "38b4b21c00cb8fc4",
+   "code_b64": "LyoqCiAqIEZlZWRpbmcgQ2FsYyBSRVNUIHYxIOKAlCBQT1NUIC93cC1qc29uL3BldHNob3AvdjEvZmVlZGluZy1jYWxjCiAqIFXFviBmZWF0dXJlIGZsYWc6IHB1YmxpYyB0aWsga2FpIHBldHNob3BfZmVlZGluZ19jYWxjX2VuYWJsZWQ9MTsgYWRtaW4gdmlzYWRhIChFMkUpLgogKiBLdmllxI1pYSBQZXRzaG9wX0ZlZWRpbmdfU2VydmljZTo6Y2FsYygpLiBGcm9udGVuZGFzIG5pZWtvIG5lc2thacSNaXVvamEuCiAqLwphZGRfYWN0aW9uKCdyZXN0X2FwaV9pbml0JywgZnVuY3Rpb24oKXsKCXJlZ2lzdGVyX3Jlc3Rfcm91dGUoJ3BldHNob3AvdjEnLCAnL2ZlZWRpbmctY2FsYycsIGFycmF5KAoJCSdtZXRob2RzJyAgPT4gJ1BPU1QnLAoJCSdwZXJtaXNzaW9uX2NhbGxiYWNrJyA9PiBmdW5jdGlvbigpewoJCQkkZW5hYmxlZCA9ICggY2xhc3NfZXhpc3RzKCdQZXRzaG9wX0ZlZWRpbmdfU2VydmljZScpICYmIG1ldGhvZF9leGlzdHMoJ1BldHNob3BfRmVlZGluZ19TZXJ2aWNlJywnY2FsY19lbmFibGVkJykgKQoJCQkJPyBQZXRzaG9wX0ZlZWRpbmdfU2VydmljZTo6Y2FsY19lbmFibGVkKCkgOiBmYWxzZTsKCQkJcmV0dXJuICRlbmFibGVkIHx8IGN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJyk7CgkJfSwKCQknY2FsbGJhY2snID0+IGZ1bmN0aW9uKCBXUF9SRVNUX1JlcXVlc3QgJHJlcSApewoJCQlpZiAoICEgY2xhc3NfZXhpc3RzKCdQZXRzaG9wX0ZlZWRpbmdfU2VydmljZScpIHx8ICEgbWV0aG9kX2V4aXN0cygnUGV0c2hvcF9GZWVkaW5nX1NlcnZpY2UnLCdjYWxjJykgKSB7CgkJCQlyZXR1cm4gbmV3IFdQX1JFU1RfUmVzcG9uc2UoYXJyYXkoJ3N0YXR1cyc9PidzeXN0ZW1fZXJyb3InLCdyZWFzb25fY29kZXMnPT5hcnJheSgnU1lTVEVNX0VSUk9SJyksJ21lc3NhZ2VfbHQnPT4nU2lzdGVtb3Mga2xhaWRhLicpLCAyMDApOwoJCQl9CgkJCSRwID0gJHJlcS0+Z2V0X2pzb25fcGFyYW1zKCk7IGlmICggISBpc19hcnJheSgkcCkgKSAkcCA9IGFycmF5KCk7CgkJCSRpbiA9IGFycmF5KAoJCQkJJ3Byb2R1Y3RfaWQnICAgICAgICAgICA9PiBpc3NldCgkcFsncHJvZHVjdF9pZCddKSA/IChpbnQpICRwWydwcm9kdWN0X2lkJ10gOiAwLAoJCQkJJ3dlaWdodF9rZycgICAgICAgICAgICA9PiAoIGlzc2V0KCRwWyd3ZWlnaHRfa2cnXSkgJiYgJHBbJ3dlaWdodF9rZyddICE9PSBudWxsICYmICRwWyd3ZWlnaHRfa2cnXSAhPT0gJycgKSA/IChmbG9hdCkgJHBbJ3dlaWdodF9rZyddIDogbnVsbCwKCQkJCSd3ZWlnaHRfaW50ZXJ2YWxfY29kZScgPT4gaXNzZXQoJHBbJ3dlaWdodF9pbnRlcnZhbF9jb2RlJ10pID8gc2FuaXRpemVfdGV4dF9maWVsZCgoc3RyaW5nKSRwWyd3ZWlnaHRfaW50ZXJ2YWxfY29kZSddKSA6IG51bGwsCgkJCQknYWN0aXZpdHlfY29kZScgICAgICAgID0+IGlzc2V0KCRwWydhY3Rpdml0eV9jb2RlJ10pID8gc2FuaXRpemVfdGV4dF9maWVsZCgoc3RyaW5nKSRwWydhY3Rpdml0eV9jb2RlJ10pIDogbnVsbCwKCQkJCSdzcGVjaWVzX2NvZGUnICAgICAgICAgPT4gaXNzZXQoJHBbJ3NwZWNpZXNfY29kZSddKSA/IHNhbml0aXplX3RleHRfZmllbGQoKHN0cmluZykkcFsnc3BlY2llc19jb2RlJ10pIDogbnVsbCwKCQkJKTsKCQkJcmV0dXJuIG5ldyBXUF9SRVNUX1Jlc3BvbnNlKCBQZXRzaG9wX0ZlZWRpbmdfU2VydmljZTo6Y2FsYygkaW4pLCAyMDAgKTsKCQl9LAoJKSk7Cn0pOwo="
+  },
+  "2051": {
+   "name": "Petshop UI Lokalizacija v1 (LIVE)",
+   "active": true,
+   "scope": "global",
+   "priority": 10,
+   "modified": "2026-08-02 00:37:18",
+   "len": 3821,
+   "sha": "408d17d8de3eeea7",
+   "code_b64": "LyoqCiAqIFBldHNob3AgVUkgTG9rYWxpemFjaWphIHYxIChMSVZFKQogKgogKiBWZXLEjWlhIFRJSyB0dW9zIHRla3N0dXMsIGt1cmnFsyBjYWxsLXNpdGUgYnV2byBJxaBNQVRVT1RBUyBlbXBpcmnFoWthaQogKiAoVUkgTG9jYWxpemF0aW9uIFJ1bnRpbWUgQXVkaXQgdjI6IGtldHVyaSBmaWx0cmFpLCA5IHB1c2xhcGlhaSwgY2FjaGUgYnlwYXNzKS4KICoKICog4piFIFJBS1RBUyDigJQgRE9NRU5BUyBQSVJNQVMsIHRhZGEgdGVrc3Rhcy4gUHJpZcW+YXN0aXM6IGBTdWJtaXRgIGVnemlzdHVvamEKICogICBEVklFSlVPU0UgZG9tZW51b3NlIHNraXJ0aW5nb21pcyByZWlrxaFtxJdtaXM6CiAqICAgICBmbGF0c29tZSAgICAgKDE3eCkgPSBwYWllxaFrb3MgbXlndHVrYXMgIC0+IOKAnkllxaFrb3RpIgogKiAgICAgd3Bmb3Jtcy1saXRlICgxMXgpID0gZm9ybW9zIHNpdW50aW1hcyAgIC0+IOKAnlNpxbNzdGkiCiAqICAgR2xvYmFsaSBsZW50ZWzElyBwYWdhbCB0ZWtzdMSFIGp1b3Mgc3VwbGFrdMWzLgogKgogKiDimIUgU8SETU9OSU5HQUkgTkXErlRSQVVLVEEgKFJhaW1pbyBzcHJlbmRpbWFzIDIwMjYtMDgtMDEpOgogKiAgIC0gRm9sbG93IG9uIEZhY2Vib29rL0luc3RhZ3JhbS9Ud2l0dGVyLCBTZW5kIHVzIGFuIGVtYWlsIOKAlCBpa29ub3MKICogICAgIFBBU0zEllBUT1MgcGVyIHRoZW1lX21vZHMgKHZpc29zIGtldHVyaW9zIGJ1dm8gcGxhY2Vob2xkZXInaWFpKSwKICogICAgIHRvZMSXbCB2ZXJ0aW1haSBixat0xbMgbmVneXZhcyBrb2Rhcy4KICogICAtIE5leHQgLyBQcmV2aW91cyAoZmxhdHNvbWUsIDl4KSDigJQgdmllbiBkb21lbmFzIE5FR0FSQU5UVU9KQSwga2FkIHRhaQogKiAgICAgcHVzbGFwaWF2aW1hcy4gRmxhdHNvbWUgdHVvcyBwYcSNaXVzIHRla3N0dXMgbmF1ZG9qYSBrYXJ1c2VsxJdzZSwKICogICAgIGdhbGVyaWpvc2UgaXIgc2xhbmtpa2xpdW9zZS4g4oCeS2l0YXMgcHVzbGFwaXMiIGdhbGVyaWpvamUgYsWrdMWzCiAqICAgICBLTEFJRElOR0FTIHByaWVpbmFtdW1vIHRla3N0YXMuIFJlaWtpYSBlbGVtZW50byBseWdpbyDEr3JvZHltby4KICogICAtIGAldiBBZGQgdG8gY2FydCB0byBjb250aW51ZSZoZWxsaXA7YCAobWl4LWFuZC1tYXRjaCkg4oCUIG5lYWnFoWt1LCBrdW8KICogICAgIHBha2VpxI1pYW1hcyAldiBpciBhciB0ZWtzdGFzIGFwc2tyaXRhaSByb2RvbWFzLiBCZSBmcm9udC1lbmQgcGF2eXpkxb5pbwogKiAgICAgdmVydGltbyByYWtpbnRpIG5lZ2FsaW1hLgogKgogKiDimIUgTkVMSUXEjElBTUEg4oCUIEpBVSBJxaBWRVJTVEEgKHBlcnJhxaF5bWFzIHN1Z2FkaW50xbMgdmVpa2lhbnTEryBkYWx5a8SFKToKICogICBgQWRkIHRvIGNhcnRgIChteWd0dWtvIHRla3N0YXMpLCBgQ2hlY2tvdXRgIChhYnUga29udGVrc3RhaSksIGBGaWx0ZXJgLgogKiAgIMSMaWEgdmVyxI1pYW1hcyBUSUsgYEFkZCB0byBjYXJ0OiAmbGRxdW87JXMmcmRxdW87YCDigJQgYXRza2lyYXMgZGluYW1pbmlzCiAqICAgYXJpYS1sYWJlbCBzdSBwcmVrxJdzIHBhdmFkaW5pbXUsIG5lIG15Z3R1a2FzLiBgJXNgIFBSSVZBTE8gacWhbGlrdGkuCiAqCiAqIOKYhSBORSBQRVIgR0VUVEVYVCAodHZhcmtvbWEga2l0dXIsIG5lIMSNaWEpOgogKiAgIGBTaWduIHVwIGZvciBOZXdzbGV0dGVyYCDigJQgRmxhdHNvbWUgTlVTVEFUWU3FsiBudW1hdHl0b2ppIHJlaWvFoW3Ely4KICogICBDb21wbGlhbnogVENGIHRla3N0YXMg4oCUIHBlciBDb21wbGlhbnogbnVzdGF0eW11cy4KICovCgppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAncGV0c2hvcF9pMThuX21hcCcgKSApIHsKCWZ1bmN0aW9uIHBldHNob3BfaTE4bl9tYXAoKSB7CgkJcmV0dXJuIGFycmF5KAoJCQknZmxhdHNvbWUnID0+IGFycmF5KAoJCQkJJ1N1Ym1pdCcgICAgICAgICA9PiAnSWXFoWtvdGknLAoJCQkJJ01lbnUnICAgICAgICAgICA9PiAnTWVuaXUnLAoJCQkJJ0dvIHRvIHRvcCcgICAgICA9PiAnR3LEr8W+dGkgxK8gcHVzbGFwaW8gdmlyxaHFsycsCgkJCQknUGF5bWVudCBpY29ucycgID0+ICdNb2vEl2ppbW8gYsWrZGFpJywKCQkJCSdDaGVja291dCBzdGVwcycgPT4gJ0F0c2lza2FpdHltbyBlaWdhJywKCQkJCS8vIFMzMzA6IEFVRElUVU9UQSAyMDI2LTA4LTAxLiBWaXNpIEdZVkkgYXR2ZWphaSDigJQgcHVzbGFwaWF2aW1hcwoJCQkJLy8gKGEubmV4dC9wcmV2LnBhZ2UtbnVtYmVyIGFyaWEtbGFiZWwpOiAvcGFyZHVvdHV2ZS8gMXgsCgkJCQkvLyAvcGFyZHVvdHV2ZS9wYWdlLzIvIDJ4LiB1eC1yZWxheSBrYXJ1c2VsZSBORU5BVURPSkFNQToKCQkJCS8vIDAgbXlndHVrdSBmcm9udC1lbmQnZSwgMCBpcmFzdSB0dXJpbnlqZSwgc2hvcnRjb2RlIE5FUkVHSVNUUlVPVEFTLgoJCQkJLy8g4piFIEpFSSBBVEVJVFlKRSBJSlVOR0lBTUFTIHV4LXJlbGF5IOKAlCBTSVVPUyBEVSBQRVJaSVVSRVRJIElTIE5BVUpPOgoJCQkJLy8gICBGbGF0c29tZSBhYmllbSBrb21wb25lbnRhbXMgbmF1ZG9qYSBUQSBQQVRJIHRla3N0YSBpciBkb21lbmEKCQkJCS8vICAgKGVzY19hdHRyX18oJ05leHQnLCdmbGF0c29tZScpKSwgZ2V0dGV4dCBmaWx0cmFzIGp1IE5FQVRTS0lSSUEuCgkJCQknTmV4dCcgICAgICAgICAgID0+ICdLaXRhcyBwdXNsYXBpcycsCgkJCQknUHJldmlvdXMnICAgICAgID0+ICdBbmtzdGVzbmlzIHB1c2xhcGlzJywKCQkJKSwKCQkJJ3dwZm9ybXMtbGl0ZScgPT4gYXJyYXkoCgkJCQknU3VibWl0JyA9PiAnU2nFs3N0aScsCgkJCSksCgkJCSd3b29jb21tZXJjZScgPT4gYXJyYXkoCgkJCQknUHJvZHVjdCBQYWdpbmF0aW9uJyAgICAgICAgICAgPT4gJ1ByZWtpxbMgcHVzbGFwacWzIG5hdmlnYWNpamEnLAoJCQkJJ0FkZCB0byBjYXJ0OiAmbGRxdW87JXMmcmRxdW87JyA9PiAnxK5kxJd0aSDEryBrcmVwxaFlbMSvOiDigJ4lc+KAnCcsCgkJCSksCgkJCSdjb21wbGlhbnotZ2RwcicgPT4gYXJyYXkoCgkJCQknQ2xvc2UgZGlhbG9nJyA9PiAnVcW+ZGFyeXRpIGRpYWxvZ8SFJywKCQkJKSwKCQkpOwoJfQoKCS8qKiBTdSBrb250ZWtzdHU6IGRvbWVuYXMgPT4ga29udGVrc3RhcyA9PiB0ZWtzdGFzID0+IHZlcnRpbWFzICovCglmdW5jdGlvbiBwZXRzaG9wX2kxOG5fbWFwX2N0eCgpIHsKCQlyZXR1cm4gYXJyYXkoCgkJCSd3b29jb21tZXJjZScgPT4gYXJyYXkoCgkJCQknYmxvY2sgdGl0bGUnID0+IGFycmF5KAoJCQkJCSdDbGVhciBmaWx0ZXJzJyA9PiAnScWhdmFseXRpIGZpbHRydXMnLAoJCQkJKSwKCQkJKSwKCQkJJ3lpdGgtd29vY29tbWVyY2UtYWpheC1uYXZpZ2F0aW9uJyA9PiBhcnJheSgKCQkJCSdbRlJPTlRFTkRdIFNob3cgbW9yZSBsaW5rIG9uIHRheCBmaWx0ZXJzJyA9PiBhcnJheSgKCQkJCQknU2hvdyBtb3JlJyA9PiAnUm9keXRpIGRhdWdpYXUnLAoJCQkJKSwKCQkJKSwKCQkpOwoJfQp9CgphZGRfZmlsdGVyKAoJJ2dldHRleHQnLAoJc3RhdGljIGZ1bmN0aW9uICggJHZlcnRpbWFzLCAkdGVrc3RhcywgJGRvbWFpbiApIHsKCQkkbWFwID0gcGV0c2hvcF9pMThuX21hcCgpOwoJCWlmICggaXNzZXQoICRtYXBbICRkb21haW4gXVsgJHRla3N0YXMgXSApICkgewoJCQlyZXR1cm4gJG1hcFsgJGRvbWFpbiBdWyAkdGVrc3RhcyBdOwoJCX0KCQlyZXR1cm4gJHZlcnRpbWFzOwoJfSwKCTIwLAoJMwopOwoKYWRkX2ZpbHRlcigKCSdnZXR0ZXh0X3dpdGhfY29udGV4dCcsCglzdGF0aWMgZnVuY3Rpb24gKCAkdmVydGltYXMsICR0ZWtzdGFzLCAkY29udGV4dCwgJGRvbWFpbiApIHsKCQkkbWFwID0gcGV0c2hvcF9pMThuX21hcF9jdHgoKTsKCQlpZiAoIGlzc2V0KCAkbWFwWyAkZG9tYWluIF1bICRjb250ZXh0IF1bICR0ZWtzdGFzIF0gKSApIHsKCQkJcmV0dXJuICRtYXBbICRkb21haW4gXVsgJGNvbnRleHQgXVsgJHRla3N0YXMgXTsKCQl9CgkJcmV0dXJuICR2ZXJ0aW1hczsKCX0sCgkyMCwKCTQKKTsK"
+  }
+ },
+ "active_hashes": [
+  {
+   "id": 469,
+   "name": "Petshop Dev App Passwords v1",
+   "scope": "global",
+   "len": 385,
+   "sha": "bb8e450862a24e51",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 472,
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+   "scope": "global",
+   "len": 10744,
+   "sha": "efdca8a1390e725f",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 648,
+   "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+   "scope": "global",
+   "len": 741,
+   "sha": "733ab9ea3513ea8a",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 461,
+   "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+   "scope": "global",
+   "len": 1745,
+   "sha": "1d7a443af4fe03a5",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 463,
+   "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+   "scope": "global",
+   "len": 7584,
+   "sha": "1a4f5b8ecfb1950f",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 464,
+   "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+   "scope": "global",
+   "len": 8137,
+   "sha": "0a7c05d3b60c5be0",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 239,
+   "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)",
+   "scope": "global",
+   "len": 1220,
+   "sha": "f55a497a7fd60086",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 465,
+   "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+   "scope": "global",
+   "len": 6656,
+   "sha": "6cf4bcd85d220e5b",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 375,
+   "name": "Baltymu Saltinis Dry-Run Konservai v2",
+   "scope": "global",
+   "len": 6572,
+   "sha": "af5b0f42469c28bc",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 329,
+   "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+   "scope": "global",
+   "len": 21825,
+   "sha": "d994bc6a858f21af",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 332,
+   "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+   "scope": "global",
+   "len": 7855,
+   "sha": "f07725ae81e6f88f",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 492,
+   "name": "Petshop Filtru Atidarymas v2 (CSS+JS)",
+   "scope": "global",
+   "len": 1619,
+   "sha": "6fa067eaae1ed1d8",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 493,
+   "name": "Petshop Filtru Atidarymas v1 (no lazy-load)",
+   "scope": "global",
+   "len": 1245,
+   "sha": "48b104fe04f0effd",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 494,
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+   "scope": "global",
+   "len": 7696,
+   "sha": "bb0bdd775ed335b9",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 502,
+   "name": "Higienos Modulis v1.0",
+   "scope": "global",
+   "len": 7560,
+   "sha": "a6a41ab6904bdfb9",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 503,
+   "name": "Grauziko Rusis Modulis v1.2",
+   "scope": "global",
+   "len": 5793,
+   "sha": "e586ef292426bb67",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 507,
+   "name": "Paukscio Rusis Modulis v1.3",
+   "scope": "global",
+   "len": 4948,
+   "sha": "ac472dfdca374c75",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 509,
+   "name": "Zuvies Rusis Modulis v1.0",
+   "scope": "global",
+   "len": 5998,
+   "sha": "376a8c19443f6c92",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 510,
+   "name": "Pasaro Forma Modulis v1.1",
+   "scope": "global",
+   "len": 4984,
+   "sha": "4d94d479d6d4f966",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 512,
+   "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+   "scope": "global",
+   "len": 9892,
+   "sha": "00186c3a62a95ec9",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 513,
+   "name": "Petshop Katalogo Auditas v1 (read-only)",
+   "scope": "global",
+   "len": 13522,
+   "sha": "4bfb31a4eb1f10b5",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 514,
+   "name": "Petshop Import-Risk Recon v1 (read-only)",
+   "scope": "global",
+   "len": 3835,
+   "sha": "a9a9d804e2be84ab",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 518,
+   "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)",
+   "scope": "global",
+   "len": 469,
+   "sha": "9747da046c4e9891",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 520,
+   "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)",
+   "scope": "front-end",
+   "len": 439,
+   "sha": "043e2c6269a37cec",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 524,
+   "name": "Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)",
+   "scope": "global",
+   "len": 13547,
+   "sha": "fbe7f62d2af12bde",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 525,
+   "name": "Petshop UI: kortelės + mobile sticky ATC",
+   "scope": "global",
+   "len": 4346,
+   "sha": "ad9fdcc04ff24683",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 532,
+   "name": "Petshop MnM Fiksuoti komponentų kiekiai v2",
+   "scope": "global",
+   "len": 2050,
+   "sha": "acc5f209b29e994a",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 535,
+   "name": "Petshop MnM Sutaupymo žymeklis v7 (be badge)",
+   "scope": "global",
+   "len": 3828,
+   "sha": "2f0970c0d8d57a1e",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 539,
+   "name": "Petshop Rinkinių Kūrimo Forma v2",
+   "scope": "admin",
+   "len": 40139,
+   "sha": "71046f7db5be8e83",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 632,
+   "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)",
+   "scope": "front-end",
+   "len": 575,
+   "sha": "b453a3f856df9bad",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 547,
+   "name": "Petshop Susidėjimo Rinkinio Vitrina v19",
+   "scope": "global",
+   "len": 32923,
+   "sha": "3e613629a6c79ae6",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 628,
+   "name": "Petshop Complianz X = Atmesti v1",
+   "scope": "front-end",
+   "len": 719,
+   "sha": "825fbb16da57a8f2",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 550,
+   "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+   "scope": "admin",
+   "len": 52201,
+   "sha": "213de3366637fd70",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 558,
+   "name": "Petshop Choice Krepšelio Elgsena",
+   "scope": "global",
+   "len": 3560,
+   "sha": "58a091ee81473ebd",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 560,
+   "name": "Petshop Rinkinio CTA Banneris kategorijose v7",
+   "scope": "front-end",
+   "len": 4688,
+   "sha": "65a7727fd4f4fbe9",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 561,
+   "name": "Petshop Rinkinių Gyvūno Filtras v1",
+   "scope": "front-end",
+   "len": 3383,
+   "sha": "fa3b66d0f11d1bac",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 566,
+   "name": "Petshop Akcijos Shortcode v1.3",
+   "scope": "global",
+   "len": 5878,
+   "sha": "c9c6f1b50e1c7c1f",
+   "routes": [],
+   "shortcodes": [
+    "add_shortcode('psc_akcijos'"
+   ]
+  },
+  {
+   "id": 563,
+   "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)",
+   "scope": "front-end",
+   "len": 4621,
+   "sha": "7bd6f77114437a92",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 562,
+   "name": "Petshop Sprendimai Shortcode Variklis v9",
+   "scope": "front-end",
+   "len": 20407,
+   "sha": "5d0c8a20ab711ffb",
+   "routes": [],
+   "shortcodes": [
+    "add_shortcode('psc_sprendimas_bundle'",
+    "add_shortcode('psc_sprendimas_kategorija'",
+    "add_shortcode('psc_sprendimas_nuoroda'",
+    "add_shortcode('psc_sprendimas_sunerimti'",
+    "add_shortcode('psc_sprendimas_produktai'",
+    "add_shortcode('psc_sprendimas_krypties_kortele'"
+   ]
+  },
+  {
+   "id": 565,
+   "name": "Petshop VF Sync v1.1 (reprice+stock+publish)",
+   "scope": "global",
+   "len": 21945,
+   "sha": "d7011ff0dcc2c875",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 567,
+   "name": "Petshop Daugiau=Pigiau Stock Sync v1.2",
+   "scope": "global",
+   "len": 4535,
+   "sha": "ed83e952574dc377",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 568,
+   "name": "Petshop Daugiau=Pigiau Display v1.2",
+   "scope": "global",
+   "len": 3245,
+   "sha": "56e98e51e61b2dde",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 569,
+   "name": "Petshop Pack/Rinkinys Auto-Categories v1.3",
+   "scope": "global",
+   "len": 5628,
+   "sha": "8718aca6429acb70",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 570,
+   "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+   "scope": "global",
+   "len": 4731,
+   "sha": "7c2758e9ef08bebf",
+   "routes": [],
+   "shortcodes": [
+    "add_shortcode('psc_daugiau_pigiau'"
+   ]
+  },
+  {
+   "id": 572,
+   "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+   "scope": "admin",
+   "len": 42434,
+   "sha": "b15595ae40db60b4",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 573,
+   "name": "Petshop DP Kortelės Ženkliukas v4",
+   "scope": "global",
+   "len": 3886,
+   "sha": "05d3ad327bef6992",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 582,
+   "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+   "scope": "global",
+   "len": 753,
+   "sha": "06e81ef623eb6543",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 587,
+   "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+   "scope": "global",
+   "len": 467,
+   "sha": "c38d1c86e00160c6",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 619,
+   "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+   "scope": "front-end",
+   "len": 4710,
+   "sha": "e8645d5ea116b609",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 594,
+   "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+   "scope": "global",
+   "len": 890,
+   "sha": "90d335919f45a430",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 615,
+   "name": "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)",
+   "scope": "front-end",
+   "len": 1705,
+   "sha": "08d3db8e8a8ba002",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 614,
+   "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+   "scope": "front-end",
+   "len": 15490,
+   "sha": "feaaec6e4843b102",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 609,
+   "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)",
+   "scope": "front-end",
+   "len": 1740,
+   "sha": "66f383130ebeb428",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 610,
+   "name": "Petshop Topbar v2",
+   "scope": "front-end",
+   "len": 742,
+   "sha": "b007d4977749dbb8",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 613,
+   "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+   "scope": "front-end",
+   "len": 491,
+   "sha": "6e9e3b5f0efa287c",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 653,
+   "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+   "scope": "global",
+   "len": 1973,
+   "sha": "f61c92567a2851e9",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 692,
+   "name": "Petshop Maisto Tipo Mygtukai v1",
+   "scope": "global",
+   "len": 2251,
+   "sha": "0f603f603b213c3f",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 693,
+   "name": "Petshop Mobile Filtru Dublio Fix v1",
+   "scope": "global",
+   "len": 910,
+   "sha": "3c4da948783aab69",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 688,
+   "name": "Petshop Kategorijos Landing v1 (sunims)",
+   "scope": "global",
+   "len": 12043,
+   "sha": "4fa4ad9d9a9d3e7c",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 685,
+   "name": "Atrinktos Prekės Modulis v1 (rotacija)",
+   "scope": "global",
+   "len": 9082,
+   "sha": "70e6d5244c230d7b",
+   "routes": [],
+   "shortcodes": [
+    "add_shortcode( 'petshop_atrinktos'"
+   ]
+  },
+  {
+   "id": 705,
+   "name": "Petshop Produktu Nuotrauku Vienodinimas v1",
+   "scope": "global",
+   "len": 1523,
+   "sha": "370b8abaa59f5af7",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 707,
+   "name": "Petshop UI Lokalizacija v1",
+   "scope": "global",
+   "len": 1557,
+   "sha": "a1209f8b70636a0c",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 709,
+   "name": "Petshop Build-a-box UI Valymas v1",
+   "scope": "global",
+   "len": 994,
+   "sha": "a93404e95efd667a",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 1357,
+   "name": "Feeding Calc REST v1",
+   "scope": "global",
+   "len": 1704,
+   "sha": "38b4b21c00cb8fc4",
+   "routes": [
+    "register_rest_route('petshop/v1', '/feeding-calc'"
+   ],
+   "shortcodes": []
+  },
+  {
+   "id": 1358,
+   "name": "Feeding Calc REST v1",
+   "scope": "global",
+   "len": 1704,
+   "sha": "38b4b21c00cb8fc4",
+   "routes": [
+    "register_rest_route('petshop/v1', '/feeding-calc'"
+   ],
+   "shortcodes": []
+  },
+  {
+   "id": 2024,
+   "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+   "scope": "global",
+   "len": 1158,
+   "sha": "0ef9a3d822dd7cbe",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 2029,
+   "name": "Petshop MyAccount LT Slug 301 v1 (LIVE)",
+   "scope": "global",
+   "len": 1758,
+   "sha": "40f3c7db67950425",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 2037,
+   "name": "Petshop Paskyros Sablonas v1 (LIVE)",
+   "scope": "global",
+   "len": 1151,
+   "sha": "c5ce96f2e8ed427b",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 2051,
+   "name": "Petshop UI Lokalizacija v1 (LIVE)",
+   "scope": "global",
+   "len": 3821,
+   "sha": "408d17d8de3eeea7",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 2384,
+   "name": "Petshop Sources v1.1 (ps_sources lentele + NULL)",
+   "scope": "global",
+   "len": 15231,
+   "sha": "436da0e60fbe6765",
+   "routes": [],
+   "shortcodes": []
+  },
+  {
+   "id": 2387,
+   "name": "Petshop Stock Service v1.2 (parduodamas kiekis)",
+   "scope": "global",
+   "len": 8293,
+   "sha": "31ed4dba95a176e3",
+   "routes": [],
+   "shortcodes": []
+  }
+ ],
+ "dup_groups": [
+  {
+   "sha": "38b4b21c00cb8fc4",
+   "ids": [
+    1357,
+    1358
+   ],
+   "name": "Feeding Calc REST v1"
+  }
+ ],
+ "rest_routes": {
+  "register_rest_route('petshop/v1', '/feeding-calc'": [
+   1357,
+   1358
+  ]
+ },
+ "errors": [],
+ "active_count": 71
+}
