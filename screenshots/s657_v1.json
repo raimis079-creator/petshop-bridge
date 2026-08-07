@@ -1,0 +1,268 @@
+{
+ "version": "S657-V1",
+ "errors": [],
+ "sveikata_pries": {
+  "shop": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "snip": 2420,
+ "dry": {
+  "v": "A657",
+  "rezimas": "dry",
+  "backup_yra": true,
+  "profiliai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "raktu_pries": 469,
+    "buvo": "none",
+    "patikra_raktu": 469,
+    "patikra_ok": true,
+    "veiksmas": "DRY — butu keista i taxable"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "veiksmas": "DRY — butu keista i taxable"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "veiksmas": "DRY — butu keista i taxable"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "veiksmas": "DRY — butu keista i taxable"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "veiksmas": "DRY — butu keista i taxable"
+   }
+  ],
+  "prekiu_none": 988,
+  "po_taisymo": [
+   {
+    "sandelis": "ambrosia",
+    "tax": "taxable",
+    "c": "15"
+   },
+   {
+    "sandelis": "av",
+    "tax": "taxable",
+    "c": "959"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "tax": "taxable",
+    "c": "62"
+   },
+   {
+    "sandelis": "prins",
+    "tax": "taxable",
+    "c": "23"
+   },
+   {
+    "sandelis": "quattro",
+    "tax": "taxable",
+    "c": "64"
+   },
+   {
+    "sandelis": "vf",
+    "tax": "none",
+    "c": "33"
+   },
+   {
+    "sandelis": "vf",
+    "tax": "taxable",
+    "c": "958"
+   },
+   {
+    "sandelis": "zb",
+    "tax": "none",
+    "c": "536"
+   },
+   {
+    "sandelis": "zb",
+    "tax": "taxable",
+    "c": "126"
+   }
+  ],
+  "lookup_busena": [
+   {
+    "tax_status": null,
+    "c": "1"
+   },
+   {
+    "tax_status": "none",
+    "c": "988"
+   },
+   {
+    "tax_status": "taxable",
+    "c": "2974"
+   }
+  ],
+  "kontroline": {
+   "id": 12452,
+   "tax": "none",
+   "kaina_klientui": 15.89,
+   "be_pvm": 15.89
+  }
+ },
+ "apply": {
+  "v": "A657",
+  "rezimas": "apply",
+  "backup_yra": true,
+  "profiliai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "raktu_pries": 469,
+    "buvo": "none",
+    "patikra_raktu": 469,
+    "patikra_ok": true,
+    "irasyta": 1,
+    "po_irasymo": "taxable",
+    "raktu_po": 469
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "irasyta": 1,
+    "po_irasymo": "taxable",
+    "raktu_po": 475
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "irasyta": 1,
+    "po_irasymo": "taxable",
+    "raktu_po": 475
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "irasyta": 1,
+    "po_irasymo": "taxable",
+    "raktu_po": 475
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "raktu_pries": 475,
+    "buvo": "none",
+    "patikra_raktu": 475,
+    "patikra_ok": true,
+    "irasyta": 1,
+    "po_irasymo": "taxable",
+    "raktu_po": 475
+   }
+  ],
+  "prekiu_none": 988,
+  "pataisyta": 988,
+  "lookup": "wc_update_product_lookup_tables_column(tax_status)",
+  "po_taisymo": [
+   {
+    "sandelis": "ambrosia",
+    "tax": "taxable",
+    "c": "15"
+   },
+   {
+    "sandelis": "av",
+    "tax": "taxable",
+    "c": "959"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "tax": "taxable",
+    "c": "62"
+   },
+   {
+    "sandelis": "prins",
+    "tax": "taxable",
+    "c": "23"
+   },
+   {
+    "sandelis": "quattro",
+    "tax": "taxable",
+    "c": "64"
+   },
+   {
+    "sandelis": "vf",
+    "tax": "taxable",
+    "c": "991"
+   },
+   {
+    "sandelis": "zb",
+    "tax": "taxable",
+    "c": "662"
+   }
+  ],
+  "lookup_busena": [
+   {
+    "tax_status": null,
+    "c": "1"
+   },
+   {
+    "tax_status": "taxable",
+    "c": "3962"
+   }
+  ],
+  "kontroline": {
+   "id": 12452,
+   "tax": "taxable",
+   "kaina_klientui": 15.89,
+   "be_pvm": 13.1322
+  }
+ },
+ "sveikata_po": {
+  "shop": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "rest_gyvas": 200
+}
