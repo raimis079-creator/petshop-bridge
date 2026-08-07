@@ -1,0 +1,96 @@
+{
+ "version": "S674-V1",
+ "errors": [],
+ "snip": 2444,
+ "rez": {
+  "v": "Z674",
+  "lentele_yra": true,
+  "irasu": 3,
+  "zurnalas": [
+   {
+    "id": "3",
+    "operacija": "AV26080720004238",
+    "product_id": "19902",
+    "laukas": "_stock",
+    "buvo": "2",
+    "tapo": "77",
+    "pokytis": "75",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:00:42",
+    "atsaukta": "0"
+   },
+   {
+    "id": "2",
+    "operacija": "AV26080720004238",
+    "product_id": "19708",
+    "laukas": "_stock",
+    "buvo": "43",
+    "tapo": "48",
+    "pokytis": "5",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:00:42",
+    "atsaukta": "0"
+   },
+   {
+    "id": "1",
+    "operacija": "AV26080720004238",
+    "product_id": "19692",
+    "laukas": "_stock",
+    "buvo": "45",
+    "tapo": "43",
+    "pokytis": "-2",
+    "priezastis": "gavimas",
+    "user_id": "1",
+    "sukurta": "2026-08-07 23:00:42",
+    "atsaukta": "0"
+   }
+  ],
+  "dabar": {
+   "19692": {
+    "pav": "Animonda Carny Adult Beef + Heart – kons",
+    "sandelis": "av",
+    "_stock": "43",
+    "_own_stock_qty": "",
+    "_stock_status": "instock",
+    "stock_service": 43
+   },
+   "19708": {
+    "pav": "Animonda Carny Adult Beef + Chicken + Du",
+    "sandelis": "av",
+    "_stock": "48",
+    "_own_stock_qty": "",
+    "_stock_status": "instock",
+    "stock_service": 48
+   },
+   "19902": {
+    "pav": "„DuvoPlius” žaislas šuniui – pliušinis m",
+    "sandelis": "av",
+    "_stock": "77",
+    "_own_stock_qty": "",
+    "_stock_status": "instock",
+    "stock_service": 77
+   }
+  },
+  "atsaukta_operacija": "AV26080720004238",
+  "atsaukta_eiluciu": 3,
+  "po_atsaukimo": {
+   "19692": {
+    "_stock": "45",
+    "_own_stock_qty": "",
+    "stock_service": 45
+   },
+   "19708": {
+    "_stock": "43",
+    "_own_stock_qty": "",
+    "stock_service": 43
+   },
+   "19902": {
+    "_stock": "2",
+    "_own_stock_qty": "",
+    "stock_service": 2
+   }
+  }
+ }
+}
