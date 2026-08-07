@@ -1,0 +1,200 @@
+{
+ "VERSIJA_RUN": "run623",
+ "temp_off": [],
+ "esami": [
+  {
+   "id": 2384,
+   "name": "Petshop Sources v1.0 (ps_sources lentele + migracija)",
+   "active": true
+  }
+ ],
+ "upd": "{\"id\":2384,\"name\":\"Petshop Sources v1.1 (ps_sources lentele + NULL taisymas)\",\"desc\":\"\",\"code\":\"\\/**\\n * Petshop Sources v1.1 (ps_sources lentel\\u0117 + migracija)\\n *\\n * E0 pirmas \\u017eingsnis. Dau",
+ "sid": 2384,
+ "fix": {
+  "VERSIJA": "sources-1.1",
+  "veiksmas": "fix",
+  "lentele_yra": "TAIP",
+  "taisymas": {
+   "synced_pries": 1585,
+   "cost0_pries": 1230,
+   "qty0_pries": 987,
+   "cost_pakeista_i_null": 1230,
+   "cost_liko_tikras_0": 0,
+   "qty_pakeista_i_null": 58,
+   "synced_po": 0,
+   "cost_null_po": 1230,
+   "cost0_po": 0,
+   "irasu_viso": 3805
+  }
+ },
+ "dry_po": {
+  "VERSIJA": "sources-1.1",
+  "veiksmas": "dry",
+  "lentele_yra": "TAIP",
+  "santrauka": {
+   "prekiu": 3804,
+   "irasu": 3805,
+   "be_saltinio": 0,
+   "daugiasaltiniu": 1
+  },
+  "pagal_saltini": {
+   "zb": {
+    "irasu": 1059,
+    "su_likuciu": 912,
+    "su_savikaina": 1054,
+    "be_savikainos": 5
+   },
+   "av": {
+    "irasu": 1401,
+    "su_likuciu": 827,
+    "su_savikaina": 220,
+    "be_savikainos": 1181
+   },
+   "vf": {
+    "irasu": 1161,
+    "su_likuciu": 934,
+    "su_savikaina": 1161,
+    "be_savikainos": 0
+   },
+   "prins": {
+    "irasu": 43,
+    "su_likuciu": 23,
+    "su_savikaina": 1,
+    "be_savikainos": 42
+   },
+   "belcor_tofu": {
+    "irasu": 62,
+    "su_likuciu": 40,
+    "su_savikaina": 60,
+    "be_savikainos": 2
+   },
+   "quattro": {
+    "irasu": 64,
+    "su_likuciu": 63,
+    "su_savikaina": 64,
+    "be_savikainos": 0
+   },
+   "ambrosia": {
+    "irasu": 15,
+    "su_likuciu": 15,
+    "su_savikaina": 15,
+    "be_savikainos": 0
+   }
+  },
+  "saltiniu_skaicius": {
+   "1": 3803,
+   "2": 1
+  },
+  "be_saltinio_pvz": [],
+  "daugiasaltiniu_pvz": [
+   {
+    "id": "17978",
+    "pav": "Josera Sensiplus 12,5 kg &#8211; sausas maist",
+    "saltiniai": [
+     "av:2",
+     "vf:782"
+    ]
+   }
+  ],
+  "KRYZMINE": {
+   "tikrinta": 2776,
+   "nesutampa": 0,
+   "sutampa": 2776,
+   "pvz": []
+  },
+  "PASTABA": "Nieko neirasyta. Lentele nesukurta."
+ },
+ "vid": 2386,
+ "PATIKRA": {
+  "lentele": "TAIP",
+  "irasu": 3805,
+  "prekiu": 3804,
+  "pagal_src": [
+   {
+    "source": "av",
+    "c": "1401",
+    "su_lik": "827",
+    "su_cost": "220"
+   },
+   {
+    "source": "vf",
+    "c": "1161",
+    "su_lik": "934",
+    "su_cost": "1161"
+   },
+   {
+    "source": "zb",
+    "c": "1059",
+    "su_lik": "912",
+    "su_cost": "1054"
+   },
+   {
+    "source": "quattro",
+    "c": "64",
+    "su_lik": "63",
+    "su_cost": "64"
+   },
+   {
+    "source": "belcor_tofu",
+    "c": "62",
+    "su_lik": "40",
+    "su_cost": "60"
+   },
+   {
+    "source": "prins",
+    "c": "43",
+    "su_lik": "23",
+    "su_cost": "1"
+   },
+   {
+    "source": "ambrosia",
+    "c": "15",
+    "su_lik": "15",
+    "su_cost": "15"
+   }
+  ],
+  "daugiasaltiniu": 1,
+  "dublikatai": 0,
+  "pvz": [
+   {
+    "id": "2272",
+    "product_id": "17978",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "2",
+    "cost_net": null,
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "id": "2273",
+    "product_id": "17978",
+    "source": "vf",
+    "supplier_sku": "JOS0914",
+    "ean": "403225478598",
+    "stock_qty": "782",
+    "cost_net": "20.6344",
+    "synced_at": "2026-08-07 13:00:03",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-07 13:36:26"
+   }
+  ],
+  "cost_null": 1230,
+  "cost_0": 0,
+  "cost_teigiama": 2575,
+  "sync_null": 1585,
+  "sync_bloga": 0,
+  "qty_null": 58,
+  "prekiu_db": 3804,
+  "siukslineje": 0,
+  "be_irasu": 0
+ }
+}
