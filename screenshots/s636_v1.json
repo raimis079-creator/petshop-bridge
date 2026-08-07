@@ -1,0 +1,224 @@
+{
+ "version": "S636-V1",
+ "errors": [],
+ "pries": {
+  "http": 200,
+  "len": 316561,
+  "style_ps_open": 2,
+  "yith_filter_blokai": 105,
+  "filter_content": 19,
+  "placeholder": 0
+ },
+ "isjungta_1358": {
+  "name": "Feeding Calc REST v1",
+  "active": false
+ },
+ "isjungta_493": {
+  "name": "Petshop Filtru Atidarymas v1 (no lazy-load)",
+  "active": false
+ },
+ "po": {
+  "http": 200,
+  "len": 316095,
+  "style_ps_open": 1,
+  "yith_filter_blokai": 95,
+  "filter_content": 17,
+  "placeholder": 0
+ },
+ "probe": {
+  "http": 200,
+  "id": 2396,
+  "active": true
+ },
+ "probe_id": 2396,
+ "db": {
+  "v": "SNIPDB-V1",
+  "table": "gaj6_snippets",
+  "exists": true,
+  "total": 1530,
+  "active": 70,
+  "kandidatai": 113,
+  "kand_pvz": [
+   {
+    "id": "611",
+    "name": "Petshop Frontpage Setter v1 (TEMP)",
+    "active": "0"
+   },
+   {
+    "id": "612",
+    "name": "Petshop Bulk Snippet Delete v2 (TEMP)",
+    "active": "0"
+   },
+   {
+    "id": "686",
+    "name": "Petshop Atrinktos Verify tmp",
+    "active": "0"
+   },
+   {
+    "id": "687",
+    "name": "Petshop CatRecon tmp",
+    "active": "0"
+   },
+   {
+    "id": "689",
+    "name": "Petshop WidRecon tmp",
+    "active": "0"
+   },
+   {
+    "id": "690",
+    "name": "Petshop WidClear tmp",
+    "active": "0"
+   },
+   {
+    "id": "691",
+    "name": "Petshop FoodRecon tmp",
+    "active": "0"
+   },
+   {
+    "id": "694",
+    "name": "Petshop KatesRecon tmp",
+    "active": "0"
+   },
+   {
+    "id": "695",
+    "name": "Petshop Cat77 tmp",
+    "active": "0"
+   },
+   {
+    "id": "696",
+    "name": "Petshop CatVar tmp",
+    "active": "0"
+   },
+   {
+    "id": "697",
+    "name": "Petshop Pixi tmp",
+    "active": "0"
+   },
+   {
+    "id": "698",
+    "name": "Petshop Grauz tmp",
+    "active": "0"
+   },
+   {
+    "id": "699",
+    "name": "Petshop GrauzVar tmp",
+    "active": "0"
+   },
+   {
+    "id": "700",
+    "name": "Petshop Pauk tmp",
+    "active": "0"
+   },
+   {
+    "id": "701",
+    "name": "Petshop PZVar tmp",
+    "active": "0"
+   },
+   {
+    "id": "702",
+    "name": "Petshop RVRecon tmp",
+    "active": "0"
+   },
+   {
+    "id": "703",
+    "name": "Petshop RVClear tmp",
+    "active": "0"
+   },
+   {
+    "id": "704",
+    "name": "Petshop ImgRecon tmp",
+    "active": "0"
+   },
+   {
+    "id": "706",
+    "name": "Petshop TxtFind tmp",
+    "active": "0"
+   },
+   {
+    "id": "708",
+    "name": "Petshop WTitle tmp",
+    "active": "0"
+   },
+   {
+    "id": "710",
+    "name": "Petshop PscFind tmp",
+    "active": "0"
+   },
+   {
+    "id": "711",
+    "name": "Petshop Test3 Idempotency tmp",
+    "active": "0"
+   },
+   {
+    "id": "712",
+    "name": "Petshop MailRecon tmp",
+    "active": "0"
+   },
+   {
+    "id": "714",
+    "name": "Petshop Test11 RetryQueue tmp",
+    "active": "0"
+   },
+   {
+    "id": "715",
+    "name": "Petshop Test11b RetryQueue tmp",
+    "active": "0"
+   }
+  ],
+  "saugiklis_aktyvus_tarp_kand": 0,
+  "saugiklis_svarbus": [],
+  "liktu": 1417,
+  "neaktyvus_be_temp": 654,
+  "backup_yra": false,
+  "backup_sukurta": 1530
+ },
+ "js_klaidos": [],
+ "dom": {
+  "filtru": 7,
+  "sarasas": [
+   {
+    "i": 0,
+    "title": "Vienas baltymo šaltinis",
+    "display": "block",
+    "h": 22
+   },
+   {
+    "i": 1,
+    "title": "Grūdų tipas",
+    "display": "block",
+    "h": 61
+   },
+   {
+    "i": 2,
+    "title": "Speciali mityba",
+    "display": "block",
+    "h": 263
+   },
+   {
+    "i": 3,
+    "title": "Baltymų šaltinis",
+    "display": "none",
+    "h": 0
+   },
+   {
+    "i": 4,
+    "title": "Amžius",
+    "display": "none",
+    "h": 0
+   },
+   {
+    "i": 5,
+    "title": "Pakuotės dydis",
+    "display": "none",
+    "h": 0
+   },
+   {
+    "i": 6,
+    "title": "Prekės ženklas",
+    "display": "none",
+    "h": 0
+   }
+  ],
+  "styleTags": 1
+ }
+}
