@@ -1,0 +1,410 @@
+{
+ "VERSIJA_RUN": "run625",
+ "temp_off": [],
+ "esami": [
+  {
+   "id": 2387,
+   "name": "Petshop Stock Service v1.0 (parduodamo kiekio skaiciavimas)",
+   "active": true
+  }
+ ],
+ "esami_src": [
+  {
+   "id": 2384,
+   "name": "Petshop Sources v1.1 (ps_sources lentele + NULL)"
+  }
+ ],
+ "upd": "{\"id\":2387,\"name\":\"Petshop Stock Service v1.1 (parduodamas kiekis \\u00b7 rankiniai tiekejai)\",\"desc\":\"\",\"code\":\"\\/**\\n * Petshop Stock Service v1.1 (parduodamo kiekio skai\\u010diavimas)\\n *\\n * E0 ant",
+ "sid": 2387,
+ "pervadinta": "{\"id\":2384,\"name\":\"Petshop Sources v1.1 (ps_sources lentele + NULL)\",\"desc\":\"\",\"code\":\"\\/**\\n * Petshop Sources v1.1 (ps",
+ "stock": {
+  "VERSIJA": "stock-1.1",
+  "REZIMAS": "TIK SKAITYMAS",
+  "nustatymai": {
+   "sena_po_val": 24,
+   "saugos_rezervas": 1,
+   "av_rezervas": 0
+  },
+  "su_rezervu_1": {
+   "tikrinta": 2776,
+   "sutampa": 1184,
+   "skiriasi": 1592,
+   "skirtumas_suma": -376
+  },
+  "su_rezervu_0": {
+   "sutampa": 2771,
+   "skiriasi": 5
+  },
+  "sena_xml_saltiniu": 9,
+  "be_sync_datos_saltiniu": 0,
+  "priezastys": [],
+  "skirtumu_pvz": [
+   {
+    "id": "12452",
+    "pav": "Eukanuba Active Small Adult (vištiena) 3",
+    "sandelis": "zb",
+    "dabar_stock": 8,
+    "servisas": 7,
+    "be_rezervo": 8,
+    "kodel": "ZB 7",
+    "perspejimai": []
+   },
+   {
+    "id": "12453",
+    "pav": "Eukanuba Medium Adult visavertis pašaras",
+    "sandelis": "zb",
+    "dabar_stock": 13,
+    "servisas": 12,
+    "be_rezervo": 13,
+    "kodel": "ZB 12",
+    "perspejimai": []
+   },
+   {
+    "id": "12455",
+    "pav": "Eukanuba Daily Care Sensitive Skin Adult",
+    "sandelis": "zb",
+    "dabar_stock": 1,
+    "servisas": 0,
+    "be_rezervo": 1,
+    "kodel": "ZB 0",
+    "perspejimai": []
+   },
+   {
+    "id": "12456",
+    "pav": "Eukanuba Golden Retriever Adult (vištien",
+    "sandelis": "zb",
+    "dabar_stock": 22,
+    "servisas": 21,
+    "be_rezervo": 22,
+    "kodel": "ZB 21",
+    "perspejimai": []
+   },
+   {
+    "id": "12457",
+    "pav": "Eukanuba German Shephed Adult (vištiena)",
+    "sandelis": "zb",
+    "dabar_stock": 4,
+    "servisas": 3,
+    "be_rezervo": 4,
+    "kodel": "ZB 3",
+    "perspejimai": []
+   },
+   {
+    "id": "12458",
+    "pav": "Eukanuba West Highland Terrier Adult (vi",
+    "sandelis": "zb",
+    "dabar_stock": 14,
+    "servisas": 13,
+    "be_rezervo": 14,
+    "kodel": "ZB 13",
+    "perspejimai": []
+   },
+   {
+    "id": "12459",
+    "pav": "Eukanuba Adult Large CKN EDB 16.5kg",
+    "sandelis": "zb",
+    "dabar_stock": 12,
+    "servisas": 11,
+    "be_rezervo": 12,
+    "kodel": "ZB 11",
+    "perspejimai": []
+   },
+   {
+    "id": "12461",
+    "pav": "Eukanuba Puppy & Junior Medium Breed PFB",
+    "sandelis": "zb",
+    "dabar_stock": 11,
+    "servisas": 10,
+    "be_rezervo": 11,
+    "kodel": "ZB 10",
+    "perspejimai": []
+   },
+   {
+    "id": "12464",
+    "pav": "Eukanuba Adult Medium Breed 18kg",
+    "sandelis": "zb",
+    "dabar_stock": 6,
+    "servisas": 5,
+    "be_rezervo": 6,
+    "kodel": "ZB 5",
+    "perspejimai": []
+   },
+   {
+    "id": "12466",
+    "pav": "Eukanuba Veterinary Diets Dermatosis FP ",
+    "sandelis": "zb",
+    "dabar_stock": 25,
+    "servisas": 24,
+    "be_rezervo": 25,
+    "kodel": "ZB 24",
+    "perspejimai": []
+   },
+   {
+    "id": "12468",
+    "pav": "Eukanuba Intestinal Disorders Adult (viš",
+    "sandelis": "zb",
+    "dabar_stock": 3,
+    "servisas": 2,
+    "be_rezervo": 3,
+    "kodel": "ZB 2",
+    "perspejimai": []
+   },
+   {
+    "id": "12469",
+    "pav": "IAMS Kitten (vištiena) 10kg",
+    "sandelis": "zb",
+    "dabar_stock": 5,
+    "servisas": 4,
+    "be_rezervo": 5,
+    "kodel": "ZB 4",
+    "perspejimai": []
+   },
+   {
+    "id": "12470",
+    "pav": "IAMS Adult Cat (vištiena) 10kg",
+    "sandelis": "zb",
+    "dabar_stock": 7,
+    "servisas": 6,
+    "be_rezervo": 7,
+    "kodel": "ZB 6",
+    "perspejimai": []
+   },
+   {
+    "id": "12471",
+    "pav": "IAMS Adult Cat (ėriena) 10kg",
+    "sandelis": "zb",
+    "dabar_stock": 10,
+    "servisas": 9,
+    "be_rezervo": 10,
+    "kodel": "ZB 9",
+    "perspejimai": []
+   },
+   {
+    "id": "12472",
+    "pav": "IAMS Adult Cat (žuvimi) 10kg",
+    "sandelis": "zb",
+    "dabar_stock": 14,
+    "servisas": 13,
+    "be_rezervo": 14,
+    "kodel": "ZB 13",
+    "perspejimai": []
+   },
+   {
+    "id": "12473",
+    "pav": "IAMS Adult Cat Hairball (vištiena) 10kg",
+    "sandelis": "zb",
+    "dabar_stock": 5,
+    "servisas": 4,
+    "be_rezervo": 5,
+    "kodel": "ZB 4",
+    "perspejimai": []
+   },
+   {
+    "id": "12482",
+    "pav": "Family Cat Premium Adult visavertis paša",
+    "sandelis": "zb",
+    "dabar_stock": 112,
+    "servisas": 111,
+    "be_rezervo": 112,
+    "kodel": "ZB 111",
+    "perspejimai": []
+   },
+   {
+    "id": "12522",
+    "pav": "Monge visavertis sausas pašaras suaugusi",
+    "sandelis": "zb",
+    "dabar_stock": 9,
+    "servisas": 8,
+    "be_rezervo": 9,
+    "kodel": "ZB 8",
+    "perspejimai": []
+   },
+   {
+    "id": "12525",
+    "pav": "Monge mini puppy sausas pašaras mažų vei",
+    "sandelis": "zb",
+    "dabar_stock": 18,
+    "servisas": 17,
+    "be_rezervo": 18,
+    "kodel": "ZB 17",
+    "perspejimai": []
+   },
+   {
+    "id": "12527",
+    "pav": "Monge Dry Dog Mini Adult 3 kg sausas paš",
+    "sandelis": "zb",
+    "dabar_stock": 12,
+    "servisas": 11,
+    "be_rezervo": 12,
+    "kodel": "ZB 11",
+    "perspejimai": []
+   },
+   {
+    "id": "12528",
+    "pav": "Monge mini adult sausas pašaras (vištien",
+    "sandelis": "zb",
+    "dabar_stock": 14,
+    "servisas": 13,
+    "be_rezervo": 14,
+    "kodel": "ZB 13",
+    "perspejimai": []
+   },
+   {
+    "id": "12531",
+    "pav": "Monge medium puppy sausas pašaras (višti",
+    "sandelis": "zb",
+    "dabar_stock": 1,
+    "servisas": 0,
+    "be_rezervo": 1,
+    "kodel": "ZB 0",
+    "perspejimai": []
+   },
+   {
+    "id": "12533",
+    "pav": "Monge maxi puppy visavertis sausas pašar",
+    "sandelis": "zb",
+    "dabar_stock": 22,
+    "servisas": 21,
+    "be_rezervo": 22,
+    "kodel": "ZB 21",
+    "perspejimai": []
+   },
+   {
+    "id": "12534",
+    "pav": "Monge maxi adult visavertis sausas pašar",
+    "sandelis": "zb",
+    "dabar_stock": 16,
+    "servisas": 15,
+    "be_rezervo": 16,
+    "kodel": "ZB 15",
+    "perspejimai": []
+   },
+   {
+    "id": "12536",
+    "pav": "Monge extra small adult sausas pašaras (",
+    "sandelis": "zb",
+    "dabar_stock": 53,
+    "servisas": 52,
+    "be_rezervo": 53,
+    "kodel": "ZB 52",
+    "perspejimai": []
+   }
+  ],
+  "pvz_josera": {
+   "qty": 783,
+   "av": 2,
+   "tiekejo": 781,
+   "kodel": "AV 2 + VF 781",
+   "perspejimai": [],
+   "saltiniai": [
+    {
+     "source": "av",
+     "raw": 2,
+     "iskaityta": 2,
+     "kodel": "sava lentyna"
+    },
+    {
+     "source": "vf",
+     "raw": 782,
+     "iskaityta": 781,
+     "kodel": "atimtas 1 vnt. saugos rezervas",
+     "duomenu_amzius_val": 0.9
+    }
+   ]
+  },
+  "PASTABA": "Nieko nekeista. Servisas prie WooCommerce neprijungtas."
+ },
+ "vid": 2389,
+ "PATIKRA": {
+  "lentele": "TAIP",
+  "irasu": 3805,
+  "prekiu": 3804,
+  "pagal_src": [
+   {
+    "source": "av",
+    "c": "1401",
+    "su_lik": "827",
+    "su_cost": "220"
+   },
+   {
+    "source": "vf",
+    "c": "1161",
+    "su_lik": "934",
+    "su_cost": "1161"
+   },
+   {
+    "source": "zb",
+    "c": "1059",
+    "su_lik": "912",
+    "su_cost": "1054"
+   },
+   {
+    "source": "quattro",
+    "c": "64",
+    "su_lik": "63",
+    "su_cost": "64"
+   },
+   {
+    "source": "belcor_tofu",
+    "c": "62",
+    "su_lik": "40",
+    "su_cost": "60"
+   },
+   {
+    "source": "prins",
+    "c": "43",
+    "su_lik": "23",
+    "su_cost": "1"
+   },
+   {
+    "source": "ambrosia",
+    "c": "15",
+    "su_lik": "15",
+    "su_cost": "15"
+   }
+  ],
+  "daugiasaltiniu": 1,
+  "dublikatai": 0,
+  "pvz": [
+   {
+    "id": "2272",
+    "product_id": "17978",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "2",
+    "cost_net": null,
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "id": "2273",
+    "product_id": "17978",
+    "source": "vf",
+    "supplier_sku": "JOS0914",
+    "ean": "403225478598",
+    "stock_qty": "782",
+    "cost_net": "20.6344",
+    "synced_at": "2026-08-07 13:00:03",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-07 13:36:26"
+   }
+  ],
+  "cost_null": 1230,
+  "cost_0": 0,
+  "cost_teigiama": 2575,
+  "sync_null": 1585,
+  "sync_bloga": 0,
+  "qty_null": 58,
+  "prekiu_db": 3804,
+  "siukslineje": 0,
+  "be_irasu": 0
+ }
+}
