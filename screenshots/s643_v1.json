@@ -1,0 +1,168 @@
+{
+ "version": "S643-V1",
+ "errors": [],
+ "sveikata_pries": {
+  "/parduotuve/": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "/": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  },
+  "/wp-admin/edit.php?post_type=product": {
+   "http": 200,
+   "len": 10211,
+   "fatal": false
+  }
+ },
+ "naujas": {
+  "id": 2404,
+  "len": 29893
+ },
+ "v20_off": false,
+ "v21_on": true,
+ "sveikata_po": {
+  "/parduotuve/": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "/": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  },
+  "/wp-admin/edit.php?post_type=product": {
+   "http": 200,
+   "len": 10211,
+   "fatal": false
+  }
+ },
+ "sveikata_ok": true,
+ "syncdry": {
+  "VERSIJA": "sources-2.1",
+  "veiksmas": "syncdry",
+  "lentele_yra": "TAIP",
+  "SYNC_DRY": {
+   "prekiu": 3804,
+   "reiktu_prideti": 0,
+   "reiktu_isjungti": 0,
+   "be_saltinio": 0,
+   "tvarkoje": 3804
+  },
+  "SYNC_PVZ": [],
+  "cron_kitas": "2026-08-08 04:20:00",
+  "PASTABA": "Nieko neirasyta."
+ },
+ "stockdry": {
+  "VERSIJA": "stock-1.3",
+  "REZIMAS": "TIK SKAITYMAS",
+  "nustatymai": {
+   "sena_po_val": 24,
+   "saugos_rezervas": 0,
+   "av_rezervas": 0
+  },
+  "su_rezervu_1": {
+   "tikrinta": 2776,
+   "sutampa": 2776,
+   "skiriasi": 0,
+   "skirtumas_suma": 0
+  },
+  "su_rezervu_0": {
+   "sutampa": 2776,
+   "skiriasi": 0
+  },
+  "sena_xml_saltiniu": 9,
+  "be_sync_datos_saltiniu": 0,
+  "priezastys": [],
+  "skirtumu_pvz": [],
+  "pvz_josera": {
+   "qty": 780,
+   "av": 0,
+   "tiekejo": 780,
+   "kodel": "VF 780",
+   "perspejimai": [],
+   "saltiniai": [
+    {
+     "source": "vf",
+     "raw": 780,
+     "iskaityta": 780,
+     "kodel": "atimtas 0 vnt. saugos rezervas",
+     "duomenu_amzius_val": 0.7
+    }
+   ],
+   "is_lenteles": true
+  },
+  "PASTABA": "Nieko nekeista. Servisas prie WooCommerce neprijungtas."
+ },
+ "srcdry": {
+  "VERSIJA": "sources-2.1",
+  "veiksmas": "dry",
+  "lentele_yra": "TAIP",
+  "santrauka": {
+   "prekiu": 3804,
+   "irasu": 3804,
+   "be_saltinio": 0,
+   "daugiasaltiniu": 0
+  },
+  "pagal_saltini": {
+   "zb": {
+    "irasu": 1059,
+    "su_likuciu": 912,
+    "su_savikaina": 1054,
+    "be_savikainos": 5
+   },
+   "av": {
+    "irasu": 1400,
+    "su_likuciu": 826,
+    "su_savikaina": 220,
+    "be_savikainos": 1180
+   },
+   "vf": {
+    "irasu": 1161,
+    "su_likuciu": 940,
+    "su_savikaina": 1161,
+    "be_savikainos": 0
+   },
+   "prins": {
+    "irasu": 43,
+    "su_likuciu": 23,
+    "su_savikaina": 1,
+    "be_savikainos": 42
+   },
+   "belcor_tofu": {
+    "irasu": 62,
+    "su_likuciu": 40,
+    "su_savikaina": 60,
+    "be_savikainos": 2
+   },
+   "quattro": {
+    "irasu": 64,
+    "su_likuciu": 63,
+    "su_savikaina": 64,
+    "be_savikainos": 0
+   },
+   "ambrosia": {
+    "irasu": 15,
+    "su_likuciu": 15,
+    "su_savikaina": 15,
+    "be_savikainos": 0
+   }
+  },
+  "saltiniu_skaicius": {
+   "1": 3804
+  },
+  "be_saltinio_pvz": [],
+  "daugiasaltiniu_pvz": [],
+  "KRYZMINE": {
+   "tikrinta": 2776,
+   "nesutampa": 0,
+   "sutampa": 2776,
+   "pvz": []
+  },
+  "PASTABA": "Nieko neirasyta. Lentele nesukurta."
+ }
+}
