@@ -1,0 +1,762 @@
+{
+ "version": "S654-V1",
+ "errors": [],
+ "snip": 2417,
+ "rez": {
+  "v": "R654",
+  "kode": [
+   {
+    "f": "wp-content/plugins/wp-all-import-pro/actions/wp_ajax_auto_detect_cf.php",
+    "n": 1,
+    "pvz": [
+     "', '_download_expiry', '_download_type', '_product_url', '_button_text', '_backorders', '_tax_status', '_tax_class', '_product_image_gallery', '_default_attributes','total_sales', '_product_"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce-xml-csv-product-import/libraries/parser/ProductsParser.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce-xml-csv-product-import/libraries/importer/products/ImportProduct.php",
+    "n": 2,
+    "pvz": [
+     "$tax_status = wc_clean($this->getValue('product_tax_status'));",
+     "$this->setProperty('tax_status', $tax_status != '' ? $tax_status : null);"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce-xml-csv-product-import/views/admin/import/product/_tabs/_general.php",
+    "n": 13,
+    "pvz": [
+     "<input type=\"radio\" id=\"multiple_product_tax_status_yes\" class=\"switcher\" name=\"is_multiple_product_tax_status\" value=\"yes\" <?php echo 'no' !",
+     "= $post['is_multiple_product_tax_status'] ? 'checked=\"checked\"': '' ?>/>",
+     "<label for=\"multiple_product_tax_status_yes\"><?php _e(\"Tax Status\", PMWI_Plugin::TEXT_DOMAIN); ?></label>",
+     "<div class=\"switcher-target-multiple_product_tax_status_yes set_with_xpath\">"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce-xml-csv-product-import/plugin.php",
+    "n": 3,
+    "pvz": [
+     "'is_multiple_product_tax_status' => 'yes',",
+     "'multiple_product_tax_status' => 'none',",
+     "'single_product_tax_status' => '',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/includes/settings-lpexpress-terminal.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => ["
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/class-woo-lithuaniapost-shipping-lpexpress-terminal.php",
+    "n": 1,
+    "pvz": [
+     "$this->tax_status = $this->get_option ( 'tax_status' );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/StoreApi/Utilities/ProductQuery.php",
+    "n": 2,
+    "pvz": [
+     "wc_product_meta_lookup.tax_status = \"taxable\" AND ( 0=1 OR ' . implode( ' OR ', $or_queries ) . ')",
+     "OR ( wc_product_meta_lookup.tax_status != \"taxable\" AND wc_product_meta_lookup.`' . esc_sql( $column ) . '` ' . esc_sql( $operat"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/StoreApi/Utilities/LocalPickupUtils.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => 'taxable',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Blocks/BlockTypes/ProductCollection/QueryBuilder.php",
+    "n": 2,
+    "pvz": [
+     "wc_product_meta_lookup.tax_status = \"taxable\" AND ( 0=1 OR ' . implode( ' OR ', $or_queries ) . ')",
+     "OR ( wc_product_meta_lookup.tax_status != \"taxable\" AND wc_product_meta_lookup.`' . esc_sql( $column ) . '` ' . esc_sql( $operat"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Blocks/Shipping/ShippingController.php",
+    "n": 2,
+    "pvz": [
+     "'tax_status' => array(",
+     "'taxes' => $settings['tax_status'],"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Blocks/Shipping/PickupLocation.php",
+    "n": 1,
+    "pvz": [
+     "$this->tax_status = $this->get_option( 'tax_status' );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/RestApi/Routes/V4/Orders/Schema/OrderFeeSchema.php",
+    "n": 2,
+    "pvz": [
+     "'tax_status' => array(",
+     "'tax_status' => $order_item->get_tax_status(),"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/RestApi/Routes/V4/Orders/UpdateUtils.php",
+    "n": 1,
+    "pvz": [
+     "$this->maybe_set_item_props( $item, array( 'name', 'tax_class', 'tax_status', 'total' ), $request_data );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/RestApi/Routes/V4/ShippingZoneMethod/ShippingMethodSchema.php",
+    "n": 1,
+    "pvz": [
+     "$common_fields = array( 'cost', 'min_amount', 'requires', 'class_cost', 'no_class_cost', 'tax_status' );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/RestApi/Routes/V4/Products/Controller.php",
+    "n": 3,
+    "pvz": [
+     "if ( isset( $request['tax_status'] ) ) {",
+     "$product->set_tax_status( $request['tax_status'] );",
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/ProductFilters/QueryClauses.php",
+    "n": 2,
+    "pvz": [
+     "wc_product_meta_lookup.tax_status = \"taxable\" AND ( 0=1 OR ' . implode( ' OR ', $or_queries ) . ')",
+     "OR ( wc_product_meta_lookup.tax_status != \"taxable\" AND wc_product_meta_lookup.`' . esc_sql( $column ) . '` ' . esc_sql( $operat"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/CLI/Migrator/Core/WooCommerceProductImporter.php",
+    "n": 4,
+    "pvz": [
+     "if ( ! empty( $product_data['tax_status'] ) ) {",
+     "$product->set_tax_status( $product_data['tax_status'] );",
+     "if ( ! empty( $var_data['tax_status'] ) ) {",
+     "$variation->set_tax_status( $var_data['tax_status'] );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/CLI/Migrator/Platforms/Webflow/WebflowMapper.php",
+    "n": 2,
+    "pvz": [
+     "'tax_status' => 'taxable',",
+     "'tax_status' => 'taxable',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/src/Internal/CLI/Migrator/Platforms/Shopify/ShopifyMapper.php",
+    "n": 3,
+    "pvz": [
+     "$simple_data['tax_status'] = $variant_node->taxable ? 'taxable' : 'none';",
+     "$simple_data['tax_status'] = $shopify_product->taxable ? 'taxable' : 'none';",
+     "$variation_data['tax_status'] = $variant_node->taxable ? 'taxable' : 'none';"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-cart-totals.php",
+    "n": 1,
+    "pvz": [
+     "$item->taxable = ProductTaxStatus::TAXABLE === $cart_item['data']->get_tax_status();"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-install.php",
+    "n": 1,
+    "pvz": [
+     "`tax_status` varchar(100) NULL default 'taxable',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version1/class-wc-rest-products-v1-controller.php",
+    "n": 6,
+    "pvz": [
+     "'tax_status' => $product->get_tax_status(),",
+     "'tax_status' => $variation->get_tax_status(),",
+     "if ( isset( $request['tax_status'] ) ) {",
+     "$product->set_tax_status( $request['tax_status'] );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version1/class-wc-rest-orders-v1-controller.php",
+    "n": 3,
+    "pvz": [
+     "'tax_status' => ProductTaxStatus::TAXABLE,",
+     "$this->maybe_set_item_props( $item, array( 'name', 'tax_class', 'tax_status', 'total' ), $posted );",
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version2/class-wc-rest-product-variations-v2-controller.php",
+    "n": 2,
+    "pvz": [
+     "'tax_status' => $object->get_tax_status(),",
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version2/class-wc-rest-order-refunds-v2-controller.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version2/class-wc-rest-orders-v2-controller.php",
+    "n": 2,
+    "pvz": [
+     "$this->maybe_set_item_props( $item, array( 'name', 'tax_class', 'tax_status', 'total' ), $posted );",
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version2/class-wc-rest-products-v2-controller.php",
+    "n": 5,
+    "pvz": [
+     "case 'tax_status':",
+     "$base_data['tax_status'] = $product->get_tax_status( $context );",
+     "if ( isset( $request['tax_status'] ) ) {",
+     "$product->set_tax_status( $request['tax_status'] );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version3/class-wc-rest-product-variations-controller.php",
+    "n": 2,
+    "pvz": [
+     "'tax_status' => $object->get_tax_status(),",
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/rest-api/Controllers/Version3/class-wc-rest-products-controller.php",
+    "n": 3,
+    "pvz": [
+     "if ( isset( $request['tax_status'] ) ) {",
+     "$product->set_tax_status( $request['tax_status'] );",
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-order-item-shipping.php",
+    "n": 6,
+    "pvz": [
+     "'tax_status' => ProductTaxStatus::TAXABLE,",
+     "if ( wc_tax_enabled() && ProductTaxStatus::TAXABLE === $this->get_tax_status() ) {",
+     "* Set tax_status.",
+     "public function set_tax_status( $value ) {"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/data-stores/class-wc-product-variation-data-store-cpt.php",
+    "n": 4,
+    "pvz": [
+     "* @throws WC_Data_Exception If WC_Product::set_tax_status() is called with an invalid tax status (via read_product_data), or when passing an invali",
+     "* @throws WC_Data_Exception If WC_Product::set_tax_status() is called with an invalid tax status.",
+     "'_tax_status' => 'tax_status',",
+     "$product->set_tax_status( $parent_data['tax_status'] );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/data-stores/class-wc-product-data-store-cpt.php",
+    "n": 5,
+    "pvz": [
+     "'_tax_status',",
+     "'_tax_status' => 'tax_status',",
+     "'_tax_status' => 'tax_status',",
+     "ge_rating', 'stock_quantity', 'stock_status', 'manage_stock', 'downloadable', 'virtual', 'tax_status', 'tax_class' );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/data-stores/class-wc-order-item-fee-data-store.php",
+    "n": 3,
+    "pvz": [
+     "protected $internal_meta_keys = array( '_fee_amount', '_tax_class', '_tax_status', '_line_subtotal', '_line_subtotal_tax', '_line_total', '_line_tax', '_line_tax_data' );",
+     "'tax_status' => get_metadata( 'order_item', $id, '_tax_status', true ),",
+     "'_tax_status' => $item->get_tax_status( 'edit' ),"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-shipping-rate.php",
+    "n": 9,
+    "pvz": [
+     "'tax_status' => ProductTaxStatus::TAXABLE,",
+     "* @param string $tax_status Tax status.",
+     "( $id = '', $label = '', $cost = 0, $taxes = array(), $method_id = '', $instance_id = 0, $tax_status = ProductTaxStatus::TAXABLE, $description = '', $delivery_time = '' ) {",
+     "$this->set_tax_status( $tax_status );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-order-item-fee.php",
+    "n": 8,
+    "pvz": [
+     "'tax_status' => ProductTaxStatus::TAXABLE,",
+     "if ( ProductTaxStatus::TAXABLE !== $item->get_tax_status() ) {",
+     "* Set tax_status.",
+     "public function set_tax_status( $value ) {"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/import/class-wc-product-csv-importer.php",
+    "n": 2,
+    "pvz": [
+     "public function parse_tax_status_field( $value ) {",
+     "'tax_status' => array( $this, 'parse_tax_status_field' ),"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-product-query.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => '',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-tracker.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => $shipping_method->tax_status,"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/importers/mappings/default.php",
+    "n": 1,
+    "pvz": [
+     "'Tax status' => 'tax_status',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/importers/mappings/shopify.php",
+    "n": 1,
+    "pvz": [
+     "'Variant Taxable' => 'tax_status',"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/importers/class-wc-product-csv-importer-controller.php",
+    "n": 2,
+    "pvz": [
+     "__( 'Tax status', 'woocommerce' ) => 'tax_status',",
+     "'tax_status' => __( 'Tax status', 'woocommerce' ),"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/views/html-bulk-edit-product.php",
+    "n": 1,
+    "pvz": [
+     "<select class=\"tax_status\" name=\"_tax_status\">"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/views/html-quick-edit-product.php",
+    "n": 1,
+    "pvz": [
+     "<select class=\"tax_status\" name=\"_tax_status\">"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-post-types.php",
+    "n": 3,
+    "pvz": [
+     "'_tax_status' => 'tax_status',",
+     "if ( ! empty( $request_data['_tax_status'] ) ) {",
+     "$product->set_tax_status( wc_clean( $request_data['_tax_status'] ) );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/list-tables/class-wc-admin-list-table-products.php",
+    "n": 1,
+    "pvz": [
+     "<div class=\"tax_status\">' . esc_html( $this->object->get_tax_status() ) . '</div>"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/meta-boxes/views/html-product-data-general.php",
+    "n": 2,
+    "pvz": [
+     "'id' => '_tax_status',",
+     "'value' => $product_object->get_tax_status( 'edit' ),"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/admin/meta-boxes/class-wc-meta-box-product-data.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => isset( $_POST['_tax_status'] ) ? wc_clean( wp_unslash( $_POST['_tax_status'] ) ) : null,"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/export/class-wc-product-csv-exporter.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => __( 'Tax status', 'woocommerce' ),"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-order.php",
+    "n": 3,
+    "pvz": [
+     ">get_prices_include_tax() && wc_tax_enabled() && ProductTaxStatus::TAXABLE === $item->get_tax_status() ) {",
+     "if ( ProductTaxStatus::TAXABLE !== $item->get_tax_status() || ! wc_tax_enabled() ) {",
+     "if ( is_callable( array( $item, 'get_tax_status' ) ) && in_array( $item->get_tax_status(), array( ProductTaxStatus::TAXABLE, ProductTaxStatus::SHIPPING ), true ) ) {"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-product.php",
+    "n": 9,
+    "pvz": [
+     "'tax_status' => ProductTaxStatus::TAXABLE,",
+     "public function get_tax_status( $context = 'view' ) {",
+     "return $this->get_prop( 'tax_status', $context );",
+     "public function set_tax_status( $status ) {"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-shipping-method.php",
+    "n": 3,
+    "pvz": [
+     "public $tax_status = ProductTaxStatus::TAXABLE;",
+     "return wc_tax_enabled() && ProductTaxStatus::TAXABLE === $this->tax_status && ( WC()->customer && ! WC()->customer->get_is_vat_exempt() );",
+     "$rate->set_tax_status( $this->tax_status );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/shipping/local-pickup/class-wc-shipping-local-pickup.php",
+    "n": 2,
+    "pvz": [
+     "$this->tax_status = $this->get_option( 'tax_status' );",
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/shipping/flat-rate/includes/settings-flat-rate.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php",
+    "n": 1,
+    "pvz": [
+     "$this->tax_status = $this->get_option( 'tax_status' );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/shipping/legacy-flat-rate/class-wc-shipping-legacy-flat-rate.php",
+    "n": 1,
+    "pvz": [
+     "$this->tax_status = $this->get_option( 'tax_status' );"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/shipping/legacy-flat-rate/includes/settings-flat-rate.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => array("
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/wc-product-functions.php",
+    "n": 3,
+    "pvz": [
+     "'tax_status', // When last column is updated, woocommerce_product_lookup_table_is_generating is updat",
+     "case 'tax_status':",
+     "if ( 'tax_status' === $column ) {"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-order-item.php",
+    "n": 2,
+    "pvz": [
+     "public function get_tax_status() {",
+     "if ( '0' !== $this->get_tax_class() && ProductTaxStatus::TAXABLE === $this->get_tax_status() && wc_tax_enabled() ) {"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-checkout.php",
+    "n": 1,
+    "pvz": [
+     "'tax_status' => $shipping_rate->tax_status,"
+    ]
+   },
+   {
+    "f": "wp-content/plugins/woocommerce/includes/class-wc-order-item-product.php",
+    "n": 2,
+    "pvz": [
+     "public function get_tax_status() {",
+     "return $product ? $product->get_tax_status() : ProductTaxStatus::TAXABLE;"
+    ]
+   }
+  ],
+  "snippetuose": [
+   {
+    "id": "40",
+    "name": "ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas",
+    "active": "0"
+   },
+   {
+    "id": "193",
+    "name": "Petshop SKU Supplier Info Lookup v1 (prekiu savikainai ieskoti)",
+    "active": "0"
+   },
+   {
+    "id": "2415",
+    "name": "TEMP Marzos Recon (S652)",
+    "active": "0"
+   },
+   {
+    "id": "2416",
+    "name": "TEMP Marzos Recon 2 (S653)",
+    "active": "0"
+   },
+   {
+    "id": "2417",
+    "name": "TEMP PVM Saltinio Recon (S654)",
+    "active": "1"
+   }
+  ],
+  "importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "tax": {
+     "is_multiple_product_tax_status": "yes",
+     "multiple_product_tax_status": "none",
+     "single_product_tax_status": ""
+    }
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "tax": {
+     "is_multiple_product_tax_status": "yes",
+     "multiple_product_tax_status": "none",
+     "single_product_tax_status": ""
+    }
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "tax": {
+     "is_multiple_product_tax_status": "yes",
+     "multiple_product_tax_status": "none",
+     "single_product_tax_status": ""
+    }
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "tax": {
+     "is_multiple_product_tax_status": "yes",
+     "multiple_product_tax_status": "none",
+     "single_product_tax_status": ""
+    }
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "tax": {
+     "is_multiple_product_tax_status": "yes",
+     "multiple_product_tax_status": "none",
+     "single_product_tax_status": ""
+    }
+   }
+  ],
+  "zb_none": {
+   "n": 536,
+   "brendai": [
+    {
+     "b": "Trixie",
+     "c": "156"
+    },
+    {
+     "b": "Farmina",
+     "c": "128"
+    },
+    {
+     "b": "Monge",
+     "c": "101"
+    },
+    {
+     "b": "Eukanuba",
+     "c": "33"
+    },
+    {
+     "b": "Real Dog",
+     "c": "21"
+    },
+    {
+     "b": "Chewllagen",
+     "c": "19"
+    },
+    {
+     "b": "Gemon",
+     "c": "17"
+    },
+    {
+     "b": "Dogoteka",
+     "c": "14"
+    }
+   ],
+   "sukurta": [
+    {
+     "d": "2026-06-04",
+     "c": "387"
+    },
+    {
+     "d": "2026-06-06",
+     "c": "63"
+    },
+    {
+     "d": "2026-06-05",
+     "c": "44"
+    },
+    {
+     "d": "2026-06-14",
+     "c": "32"
+    },
+    {
+     "d": "2026-06-12",
+     "c": "6"
+    },
+    {
+     "d": "2026-06-13",
+     "c": "3"
+    }
+   ],
+   "redaguota": [
+    {
+     "d": "2026-08-07",
+     "c": "528"
+    },
+    {
+     "d": "2026-07-03",
+     "c": "4"
+    },
+    {
+     "d": "2026-07-10",
+     "c": "1"
+    },
+    {
+     "d": "2026-07-29",
+     "c": "1"
+    },
+    {
+     "d": "2026-06-14",
+     "c": "1"
+    },
+    {
+     "d": "2026-07-21",
+     "c": "1"
+    }
+   ]
+  },
+  "zb_taxable": {
+   "n": 126,
+   "brendai": [
+    {
+     "b": "Trixie",
+     "c": "83"
+    },
+    {
+     "b": "Farmina",
+     "c": "26"
+    },
+    {
+     "b": "Dogoteka",
+     "c": "5"
+    },
+    {
+     "b": "Eukanuba",
+     "c": "4"
+    },
+    {
+     "b": "Chewllagen",
+     "c": "2"
+    },
+    {
+     "b": "IAMS",
+     "c": "2"
+    },
+    {
+     "b": "Monge",
+     "c": "1"
+    },
+    {
+     "b": "Vitapol",
+     "c": "1"
+    }
+   ],
+   "sukurta": [
+    {
+     "d": "2026-06-04",
+     "c": "122"
+    },
+    {
+     "d": "2026-06-05",
+     "c": "2"
+    },
+    {
+     "d": "2026-06-06",
+     "c": "2"
+    }
+   ],
+   "redaguota": [
+    {
+     "d": "2026-08-07",
+     "c": "125"
+    },
+    {
+     "d": "2026-06-23",
+     "c": "1"
+    }
+   ]
+  },
+  "vf_none": {
+   "n": 33,
+   "brendai": [],
+   "sukurta": [
+    {
+     "d": "2026-08-04",
+     "c": "15"
+    },
+    {
+     "d": "2026-08-01",
+     "c": "10"
+    },
+    {
+     "d": "2026-06-12",
+     "c": "5"
+    },
+    {
+     "d": "2026-07-02",
+     "c": "2"
+    },
+    {
+     "d": "2026-06-23",
+     "c": "1"
+    }
+   ],
+   "redaguota": [
+    {
+     "d": "2026-08-07",
+     "c": "33"
+    }
+   ]
+  },
+  "be_lauko": 0,
+  "viso_publish": 2776,
+  "wc_default_tax": "base"
+ }
+}
