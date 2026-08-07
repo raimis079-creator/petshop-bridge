@@ -1,0 +1,91 @@
+{
+ "version": "S658-V1",
+ "errors": [],
+ "snip": 2421,
+ "rez": {
+  "v": "V658",
+  "null_lookup": [
+   {
+    "product_id": "34888",
+    "post_type": "product",
+    "post_status": "draft",
+    "post_title": "ZZ TEST S644 registro tikrinimas"
+   }
+  ],
+  "none_liko": 0,
+  "none_liko_lookup": 0,
+  "artimiausi_importai": [],
+  "dabar": "2026-08-07 19:12:55",
+  "paskutiniai": [
+   {
+    "import_id": "7",
+    "date": "2026-08-07 15:16:03",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 41 updated 2268 skipped"
+   },
+   {
+    "import_id": "7",
+    "date": "2026-08-07 15:15:03",
+    "summary": "triggered by cron"
+   },
+   {
+    "import_id": "7",
+    "date": "2026-08-07 14:16:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 3 updated 2306 skipped"
+   },
+   {
+    "import_id": "7",
+    "date": "2026-08-07 14:15:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "import_id": "3",
+    "date": "2026-08-07 12:02:01",
+    "summary": "0 Produktai created 966 updated 1414 skipped"
+   },
+   {
+    "import_id": "3",
+    "date": "2026-08-07 12:00:03",
+    "summary": "triggered by cron"
+   }
+  ],
+  "prekes": [
+   {
+    "id": 12452,
+    "pav": "Eukanuba Active Small Adult (vištien",
+    "tax": "taxable",
+    "regular": "15.89",
+    "klientui": 15.89,
+    "be_pvm": 13.13,
+    "pvm": 2.76
+   },
+   {
+    "id": 14222,
+    "pav": "DOGOTEKA Celervis Pet 100ml",
+    "tax": "taxable",
+    "regular": "21.79",
+    "klientui": 21.79,
+    "be_pvm": 18.01,
+    "pvm": 3.78
+   },
+   {
+    "id": 14218,
+    "pav": "DOGOTEKA CortiAdapt skystis 100ml",
+    "tax": "taxable",
+    "regular": "38.79",
+    "klientui": 38.79,
+    "be_pvm": 32.06,
+    "pvm": 6.73
+   },
+   {
+    "id": 19210,
+    "pav": "Aquaris KI-JA-KO STAPLE 3 mm, 10 kg,",
+    "tax": "taxable",
+    "regular": "75.65",
+    "klientui": 75.65,
+    "be_pvm": 62.52,
+    "pvm": 13.13
+   }
+  ],
+  "kesas": "istrintas"
+ }
+}
