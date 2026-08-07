@@ -1,0 +1,114 @@
+{
+ "version": "S655-V1",
+ "errors": [],
+ "snip": 2418,
+ "rez": {
+  "v": "R655",
+  "snip40": {
+   "name": "ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas",
+   "active": "0",
+   "scope": "global",
+   "modified": "2026-05-29 08:49:50",
+   "kodas": "// ZB prekės: mokesčių statusas + amžiaus apribojimo nuėmimas\n// Paleisti: ?zb_tax_age_fix=1\nadd_action('init', function() {\n    if ( ! isset($_GET['zb_tax_age_fix']) || ! current_user_can('manage_options') ) return;\n\n    global $wpdb;\n\n    $ids = $wpdb->get_col(\"\n        SELECT p.ID \n        FROM {$wpdb->posts} p\n        INNER JOIN {$wpdb->postmeta} pm ON pm.post_id = p.ID \n            AND pm.meta_key = '_zb_enabled' \n            AND pm.meta_value = 'yes'\n        WHERE p.post_type = 'product'\n        AND p.post_status != 'trash'\n    \");\n\n    $count = 0;\n    foreach ( $ids as $id ) {\n        update_post_meta($id, '_tax_status', 'taxable');\n        update_post_meta($id, 'minimum_allowed_age', '');\n        $count++;\n    }\n\n    echo '<pre>';\n    echo \"✅ Pataisyta: $count prekių\\n\";\n    echo \"   → Mokesčių statusas: Apmokestinama\\n\";\n    echo \"   → Amžiaus apribojimas: nuimtas\\n\";\n    echo '</pre>';\n    exit;\n});"
+  },
+  "profiliai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "is_multiple": "yes",
+    "multiple": "none",
+    "single": "",
+    "options_ilgis": 25690,
+    "raktu": 469
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "is_multiple": "yes",
+    "multiple": "none",
+    "single": "",
+    "options_ilgis": 26205,
+    "raktu": 475
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "is_multiple": "yes",
+    "multiple": "none",
+    "single": "",
+    "options_ilgis": 25009,
+    "raktu": 475
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "is_multiple": "yes",
+    "multiple": "none",
+    "single": "",
+    "options_ilgis": 26933,
+    "raktu": 475
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "is_multiple": "yes",
+    "multiple": "none",
+    "single": "",
+    "options_ilgis": 25106,
+    "raktu": 475
+   }
+  ],
+  "zb_taxable_pvz": [
+   {
+    "ID": "12469",
+    "post_title": "IAMS Kitten (vištiena) 10kg",
+    "post_modified": "2026-08-07 15:02:06",
+    "brendas": "IAMS"
+   },
+   {
+    "ID": "12472",
+    "post_title": "IAMS Adult Cat (žuvimi) 10kg",
+    "post_modified": "2026-08-07 15:02:07",
+    "brendas": "IAMS"
+   },
+   {
+    "ID": "12936",
+    "post_title": "Vitapol Visavertis ėdalas triušiams, maišas 20kg",
+    "post_modified": "2026-08-07 16:02:12",
+    "brendas": "Vitapol"
+   },
+   {
+    "ID": "13067",
+    "post_title": "Trixie Išmatų semtuvas su grėbliu, 57-102 cm, pilka-mėlyna",
+    "post_modified": "2026-08-07 16:02:25",
+    "brendas": "Trixie"
+   },
+   {
+    "ID": "13100",
+    "post_title": "Trixie Juosmens diržas su pavadėliu, diržas 60-120 cm-40 mm, pavadėlis 1,00-1,35 m-25 mm,",
+    "post_modified": "2026-08-07 16:02:28",
+    "brendas": "Trixie"
+   },
+   {
+    "ID": "13133",
+    "post_title": "Trixie Ratukai Guliver boksams 39871-39874, 9054, 4 vnt.",
+    "post_modified": "2026-08-07 16:02:34",
+    "brendas": "Trixie"
+   }
+  ],
+  "zb_enabled_pagal_tax": [
+   {
+    "tax": "none",
+    "enabled": "yes",
+    "c": "536"
+   },
+   {
+    "tax": "taxable",
+    "enabled": "yes",
+    "c": "126"
+   }
+  ],
+  "backup_yra": false,
+  "backup_sukurta": 5
+ }
+}
