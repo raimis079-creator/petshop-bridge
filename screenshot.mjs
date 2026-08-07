@@ -12,17 +12,23 @@ async function putResult(n,o){
   const r=await fetch(url,{method:'PUT',headers:{Authorization:'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(b)});
   console.log('putResult',n,r.status);
 }
-const out={version:'S668-V1',errors:[]};
+const out={version:'S669-V1',errors:[]};
 let id=null;
 try{
   const r=await fetch(BASE,{method:'POST',headers:{Authorization:AUTH,'Content-Type':'application/json'},
-    body:JSON.stringify({name:'TEMP Rinkiniu Trynimas (S668)',code:Buffer.from(A,'base64').toString('utf8'),scope:'global',active:true,priority:11})});
+    body:JSON.stringify({name:'TEMP Rinkiniu Trynimas APPLY (S669)',code:Buffer.from(A,'base64').toString('utf8'),scope:'global',active:true,priority:11})});
   id=(await r.json()).id; out.snip=id;
   await new Promise(x=>setTimeout(x,3000));
-  const u='https://dev.avesa.lt/?ps_t668=T668x&k=ps2026&ids='+IDS+'&rezimas=dry&cb='+Date.now();
+  const u='https://dev.avesa.lt/?ps_t668=T668x&k=ps2026&ids='+IDS+'&rezimas=apply&cb='+Date.now();
   const t=await (await fetch(u,{headers:{'User-Agent':'Mozilla/5.0'}})).text();
-  try{out.dry=JSON.parse(t);}catch(e){out.raw=t.slice(0,2500);}
+  try{out.apply=JSON.parse(t);}catch(e){out.raw=t.slice(0,2500);}
 }catch(e){out.errors.push(String(e));}
 if(id) await fetch(BASE+'/'+id,{method:'POST',headers:{Authorization:AUTH,'Content-Type':'application/json'},body:JSON.stringify({active:false})});
-await putResult('s668_v1.json',out);
+try{
+  for(const [n,u] of [['shop','https://dev.avesa.lt/parduotuve/'],['home','https://dev.avesa.lt/']]){
+    const r=await fetch(u+'?cb='+Date.now(),{headers:{'User-Agent':'Mozilla/5.0'}});
+    const t=await r.text(); (out.sveikata=out.sveikata||{})[n]={http:r.status,len:t.length,fatal:/Fatal error/i.test(t)};
+  }
+}catch(e){out.errors.push({s:'sv',e:String(e)});}
+await putResult('s669_v1.json',out);
 console.log('DONE');
