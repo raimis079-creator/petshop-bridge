@@ -1,123 +1,76 @@
-// S636 — storas ėjimas: (1) išjungti 1358 ir 493, (2) diegti DB probe snippetą,
-// (3) dry-run trynimo kandidatai + backup, (4) filtrų puslapio ekrano nuotrauka
-const USER = process.env.WP_USER.trim();
-const PASS = process.env.WP_APP_PASS.trim();
-const AUTH = 'Basic ' + Buffer.from(USER + ':' + PASS).toString('base64');
-const BASE = 'https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
-const TOK  = process.env.GH_TOKEN;
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+// S637 — A/B testas 493 + DB pavadinimų analizė
+const USER=process.env.WP_USER.trim(), PASS=process.env.WP_APP_PASS.trim();
+const AUTH='Basic '+Buffer.from(USER+':'+PASS).toString('base64');
+const BASE='https://dev.avesa.lt/wp-json/code-snippets/v1/snippets';
+const TOK=process.env.GH_TOKEN;
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+const PROBE2='aWYoIWRlZmluZWQoJ0FCU1BBVEgnKSlyZXR1cm47CmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgaWYoKCRfR0VUWydwc19zbmlwZGIyJ10/PycnKSE9PSdTNjM3eCcpIHJldHVybjsKICBpZighKCBjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpIHx8ICgoJF9HRVRbJ2snXT8/JycpPT09J3BzMjAyNicpICkpIHJldHVybjsKICBnbG9iYWwgJHdwZGI7ICR0ID0gJHdwZGItPnByZWZpeC4nc25pcHBldHMnOyAkb3V0ID0gYXJyYXkoJ3YnPT4nU05JUERCMi1WMScpOwogICRvdXRbJ3RvdGFsJ10gPSAoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00gJHQiKTsKICAkb3V0WydhY3RpdmVfcmVpa3NtZXMnXSA9ICR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIGFjdGl2ZSwgQ09VTlQoKikgYyBGUk9NICR0IEdST1VQIEJZIGFjdGl2ZSIsIEFSUkFZX0EpOwogICRvdXRbJ3N0dWxwZWxpYWknXSA9ICR3cGRiLT5nZXRfY29sKCJTSE9XIENPTFVNTlMgRlJPTSAkdCIpOwogIC8vIHBhdmFkaW5pbXUgc2FibG9uYWk6IHBpcm1pIDIgem9kemlhaQogICRvdXRbJ3RvcF9zYWJsb25haSddID0gJHdwZGItPmdldF9yZXN1bHRzKAogICAgIlNFTEVDVCBTVUJTVFJJTkdfSU5ERVgobmFtZSwnICcsMykgc2FiLCBDT1VOVCgqKSBjLCBTVU0oYWN0aXZlPTEpIGFrdAogICAgIEZST00gJHQgR1JPVVAgQlkgc2FiIEhBVklORyBjPj01IE9SREVSIEJZIGMgREVTQyBMSU1JVCA0MCIsIEFSUkFZX0EpOwogIC8vIHBvenltaWFpIGF0c2tpcmFpCiAgJHBhdCA9IGFycmF5KAogICAgJ3ByZWZpeF9URU1QJyAgID0+ICJuYW1lIExJS0UgJ1RFTVAlJyIsCiAgICAnem9kaXNfVEVNUCcgICAgPT4gIm5hbWUgTElLRSAnJVRFTVAlJyIsCiAgICAnem9kaXNfdG1wJyAgICAgPT4gIm5hbWUgTElLRSAnJXRtcCUnIiwKICAgICdza2xpYXVzdF90ZW1wJyA9PiAibmFtZSBMSUtFICclKHRlbXApJSciLAogICAgJ3VpX2F1ZGl0JyAgICAgID0+ICJuYW1lIExJS0UgJyVVSSBMb2NhbGl6YXRpb24gUnVudGltZSBBdWRpdCUnIiwKICAgICdyZWNvbicgICAgICAgICA9PiAibmFtZSBMSUtFICclUmVjb24lJyIsCiAgICAnZHJ5JyAgICAgICAgICAgPT4gIm5hbWUgTElLRSAnJURyeSUnIiwKICApOwogIGZvcmVhY2goJHBhdCBhcyAkaz0+JHcpewogICAgJG91dFsncG96eW1pYWknXVska10gPSBhcnJheSgKICAgICAgJ3Zpc28nICAgICAgPT4gKGludCkgJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NICR0IFdIRVJFICR3IiksCiAgICAgICduZWFrdHl2dXMnID0+IChpbnQpICR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkdCBXSEVSRSAoJHcpIEFORCBhY3RpdmU9MCIpLAogICAgICAnYWt0eXZ1cycgICA9PiAoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00gJHQgV0hFUkUgKCR3KSBBTkQgYWN0aXZlPTEiKSwKICAgICk7CiAgfQogIC8vIE5FQUtUWVZVUyBCRSBqb2tpbyB0ZW1wIHBvenltaW8g4oCUIGthIGppZSBpcyB0aWtydWp1IHlyYQogICRub3RlbXAgPSAiYWN0aXZlPTAgQU5EIG5hbWUgTk9UIExJS0UgJyVURU1QJScgQU5EIG5hbWUgTk9UIExJS0UgJyV0bXAlJyI7CiAgJG91dFsnbmVha3R5dnVzX2JlX3RlbXBfa2lla2lzJ10gPSAoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00gJHQgV0hFUkUgJG5vdGVtcCIpOwogICRvdXRbJ25lYWt0eXZ1c19iZV90ZW1wX3B2eiddID0gJHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgaWQsbmFtZSBGUk9NICR0IFdIRVJFICRub3RlbXAgT1JERVIgQlkgaWQgREVTQyBMSU1JVCAzMCIsIEFSUkFZX0EpOwogIC8vIHNlbmEga29waWphCiAgJGIgPSAkdC4nX2Jha19zNjM2JzsKICAkb3V0WydiYWNrdXAnXSA9IGFycmF5KCd5cmEnPT4oYm9vbCkkd3BkYi0+Z2V0X3ZhcigiU0hPVyBUQUJMRVMgTElLRSAnJGInIiksCiAgICAgICAgICAgICAgICAgICAgICAgICAnZWlsdWNpdSc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NICRiIikpOwogIGhlYWRlcignQ29udGVudC1UeXBlOmFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICBlY2hvIHdwX2pzb25fZW5jb2RlKCRvdXQsIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9QUkVUVFlfUFJJTlQpOyBleGl0Owp9LCA2KTsK';
 
-const PROBE_B64 = 'aWYoIWRlZmluZWQoJ0FCU1BBVEgnKSlyZXR1cm47CmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgaWYoKCRfR0VUWydwc19zbmlwZGInXT8/JycpIT09J1M2MzZ4JykgcmV0dXJuOwogIGlmKCEoIGN1cnJlbnRfdXNlcl9jYW4oJ21hbmFnZV9vcHRpb25zJykgfHwgKCgkX0dFVFsnayddPz8nJyk9PT0ncHMyMDI2JykgKSkgcmV0dXJuOwogIGdsb2JhbCAkd3BkYjsgJHQgPSAkd3BkYi0+cHJlZml4LidzbmlwcGV0cyc7ICRvdXQgPSBhcnJheSgndic9PidTTklQREItVjEnKTsKICAkb3V0Wyd0YWJsZSddID0gJHQ7CiAgJG91dFsnZXhpc3RzJ10gPSAoYm9vbCkgJHdwZGItPmdldF92YXIoIlNIT1cgVEFCTEVTIExJS0UgJyR0JyIpOwogIGlmKCEkb3V0WydleGlzdHMnXSl7IGhlYWRlcignQ29udGVudC1UeXBlOmFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0KTsgZXhpdDsgfQogICRvdXRbJ3RvdGFsJ10gID0gKGludCkgJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NICR0Iik7CiAgJG91dFsnYWN0aXZlJ10gPSAoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00gJHQgV0hFUkUgYWN0aXZlPTEiKTsKICAvLyBUUllOSU1PIEtBTkRJREFUQUk6IG5lYWt0eXbFq3MgSVIgcGF2YWRpbmltZSBURU1QIC8gKHRlbXApIC8gdG1wCiAgJHdoZXJlID0gImFjdGl2ZT0wIEFORCAoIG5hbWUgTElLRSAnVEVNUCUnIE9SIG5hbWUgTElLRSAnJSh0ZW1wKSUnIE9SIG5hbWUgTElLRSAnJSB0bXAlJyBPUiBuYW1lIExJS0UgJyV0bXAgJScgT1IgbmFtZSBMSUtFICclVEVNUCAlJyBPUiBuYW1lIExJS0UgJyUodG1wKSUnICkiOwogICRvdXRbJ2thbmRpZGF0YWknXSA9IChpbnQpICR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkdCBXSEVSRSAkd2hlcmUiKTsKICAkb3V0WydrYW5kX3B2eiddICAgPSAkd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBpZCxuYW1lLGFjdGl2ZSBGUk9NICR0IFdIRVJFICR3aGVyZSBPUkRFUiBCWSBpZCBMSU1JVCAyNSIsIEFSUkFZX0EpOwogIC8vIFNBVUdJS0xJUzogYXIgdGFycCBrYW5kaWRhdMWzIG7El3JhIGFrdHl2acWzIGFyYmEgc3ZhcmJpxbMgSUQKICAkb3V0WydzYXVnaWtsaXNfYWt0eXZ1c190YXJwX2thbmQnXSA9IChpbnQpICR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkdCBXSEVSRSAoJHdoZXJlKSBBTkQgYWN0aXZlPTEiKTsKICAka2VlcCA9IGFycmF5KDIzODQsMjM4Nyw0OTIsNDkzLDEzNTcsMTM1OCw3MDcsMjA1MSw0NzIsNDY5KTsKICAkb3V0WydzYXVnaWtsaXNfc3ZhcmJ1cyddID0gJHdwZGItPmdldF9jb2woIlNFTEVDVCBpZCBGUk9NICR0IFdIRVJFICgkd2hlcmUpIEFORCBpZCBJTiAoIi5pbXBsb2RlKCcsJywka2VlcCkuIikiKTsKICAvLyBMSUtVVElTIHBvIGhpcG90ZXRpbmlvIHRyeW5pbW8KICAkb3V0WydsaWt0dSddID0gJG91dFsndG90YWwnXSAtICRvdXRbJ2thbmRpZGF0YWknXTsKICAvLyBuZWFrdHl2xatzIEJFIHRlbXAgcG/FvnltaW8gKGrFsyBuZWxpZXNpbSkKICAkb3V0WyduZWFrdHl2dXNfYmVfdGVtcCddID0gKGludCkgJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NICR0IFdIRVJFIGFjdGl2ZT0wIEFORCBOT1QgKCAkd2hlcmUgKSIpOwogIC8vIGFyIHlyYSBiYWNrdXAgbGVudGVsxJcKICAkYiA9ICR0LidfYmFrX3M2MzYnOwogICRvdXRbJ2JhY2t1cF95cmEnXSA9IChib29sKSAkd3BkYi0+Z2V0X3ZhcigiU0hPVyBUQUJMRVMgTElLRSAnJGInIik7CiAgaWYoKCRfR0VUWydkbyddPz8nJyk9PT0nYmFja3VwJyAmJiAhJG91dFsnYmFja3VwX3lyYSddKXsKICAgICR3cGRiLT5xdWVyeSgiQ1JFQVRFIFRBQkxFICRiIExJS0UgJHQiKTsKICAgICR3cGRiLT5xdWVyeSgiSU5TRVJUIElOVE8gJGIgU0VMRUNUICogRlJPTSAkdCIpOwogICAgJG91dFsnYmFja3VwX3N1a3VydGEnXSA9IChpbnQpICR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkYiIpOwogIH0gZWxzZWlmKCRvdXRbJ2JhY2t1cF95cmEnXSkgewogICAgJG91dFsnYmFja3VwX2VpbHVjaXUnXSA9IChpbnQpICR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSAkYiIpOwogIH0KICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTphcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgZWNobyB3cF9qc29uX2VuY29kZSgkb3V0LCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fUFJFVFRZX1BSSU5UKTsgZXhpdDsKfSwgNik7Cg==';
-
-async function putResult(name, obj) {
-  const url = 'https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/screenshots/' + name;
-  let sha;
-  const g = await fetch(url, { headers: { Authorization: 'Bearer ' + TOK } });
-  if (g.status === 200) sha = (await g.json()).sha;
-  const body = { message: 'result ' + name, content: Buffer.from(JSON.stringify(obj, null, 1)).toString('base64') };
-  if (sha) body.sha = sha;
-  const r = await fetch(url, { method: 'PUT', headers: { Authorization: 'Bearer ' + TOK, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  console.log('putResult', name, r.status);
+async function putResult(name,obj){
+  const url='https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/screenshots/'+name;
+  let sha; const g=await fetch(url,{headers:{Authorization:'Bearer '+TOK}});
+  if(g.status===200) sha=(await g.json()).sha;
+  const body={message:'result '+name,content:Buffer.from(JSON.stringify(obj,null,1)).toString('base64')};
+  if(sha) body.sha=sha;
+  const r=await fetch(url,{method:'PUT',headers:{Authorization:'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  console.log('putResult',name,r.status);
 }
-async function putFile(path, buf, msg) {
-  const url = 'https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/' + path;
-  let sha;
-  const g = await fetch(url, { headers: { Authorization: 'Bearer ' + TOK } });
-  if (g.status === 200) sha = (await g.json()).sha;
-  const body = { message: msg, content: buf.toString('base64') };
-  if (sha) body.sha = sha;
-  const r = await fetch(url, { method: 'PUT', headers: { Authorization: 'Bearer ' + TOK, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  console.log('putFile', path, r.status);
+const out={version:'S637-V1',errors:[]};
+const FURL='https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/';
+
+async function setActive(id,val){
+  const r=await fetch(BASE+'/'+id,{method:'POST',headers:{Authorization:AUTH,'Content-Type':'application/json'},body:JSON.stringify({active:val})});
+  await r.text();
+  const v=await(await fetch(BASE+'/'+id,{headers:{Authorization:AUTH}})).json();
+  return v.active;
 }
 
-const out = { version: 'S636-V1', errors: [] };
-
-// ---------- 0) PRIEŠ: filtrų puslapio HTML matavimas ----------
-const FURL = 'https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/';
-async function matuok(tag) {
-  try {
-    const r = await fetch(FURL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    const h = await r.text();
-    return {
-      http: r.status, len: h.length,
-      style_ps_open: (h.match(/id="ps-open-filter"/g) || []).length,
-      yith_filter_blokai: (h.match(/yith-wcan-filter/g) || []).length,
-      filter_content: (h.match(/filter-content/g) || []).length,
-      placeholder: (h.match(/yith-wcan-filters-placeholder|filters-placeholder/g) || []).length,
-    };
-  } catch (e) { return { err: String(e) }; }
-}
-out.pries = await matuok('pries');
-
-// ---------- 1) IŠJUNGTI 1358 ir 493 ----------
-for (const id of [1358, 493]) {
-  try {
-    const r = await fetch(BASE + '/' + id, {
-      method: 'POST', headers: { Authorization: AUTH, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ active: false }),
-    });
-    await r.text();
-    const v = await (await fetch(BASE + '/' + id, { headers: { Authorization: AUTH } })).json();
-    out['isjungta_' + id] = { name: v.name, active: v.active };
-  } catch (e) { out.errors.push({ step: 'off' + id, e: String(e) }); }
-}
-
-// ---------- 2) PO: tas pats matavimas ----------
-await new Promise(r => setTimeout(r, 4000));
-out.po = await matuok('po');
-
-// ---------- 3) DB probe snippeto diegimas ----------
-try {
-  const code = Buffer.from(PROBE_B64, 'base64').toString('utf8');
-  const r = await fetch(BASE, {
-    method: 'POST', headers: { Authorization: AUTH, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: 'TEMP Snippetu DB Probe v1 (S636)', code, scope: 'global', active: true, priority: 10 }),
-  });
-  const j = await r.json();
-  out.probe = { http: r.status, id: j.id, active: j.active };
-  out.probe_id = j.id;
-} catch (e) { out.errors.push({ step: 'probe', e: String(e) }); }
-
-// ---------- 4) dry-run + backup ----------
-if (out.probe_id) {
-  await new Promise(r => setTimeout(r, 3000));
-  try {
-    const u = 'https://dev.avesa.lt/?ps_snipdb=S636x&k=ps2026&do=backup&cb=' + Date.now();
-    const r = await fetch(u, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    const t = await r.text();
-    try { out.db = JSON.parse(t); } catch (e) { out.db_raw = t.slice(0, 2500); }
-  } catch (e) { out.errors.push({ step: 'db', e: String(e) }); }
-}
-
-// ---------- 5) ekrano nuotrauka ----------
-try {
-  const { chromium } = await import('playwright');
-  const br = await chromium.launch();
-  const pg = await br.newPage({ viewport: { width: 1400, height: 1100 }, ignoreHTTPSErrors: true });
-  const errs = [];
-  pg.on('pageerror', e => errs.push(String(e)));
-  await pg.goto(FURL, { waitUntil: 'domcontentloaded', timeout: 60000 });
-  await pg.waitForTimeout(4000);
-  const buf = await pg.screenshot({ fullPage: false });
-  await putFile('screenshots/s636_filtrai.png', buf, 'S636 filtrai po isjungimo');
-  out.js_klaidos = errs;
-  // matomumo matavimas naršyklėje
-  out.dom = await pg.evaluate(() => {
-    const fs = document.querySelectorAll('.yith-wcan-filters .yith-wcan-filter');
-    const res = [];
-    fs.forEach((f, i) => {
-      const c = f.querySelector('.filter-content');
-      const t = f.querySelector('.filter-title');
-      res.push({
-        i, title: t ? t.textContent.trim().slice(0, 30) : null,
-        display: c ? getComputedStyle(c).display : 'NO-CONTENT',
-        h: c ? Math.round(c.getBoundingClientRect().height) : 0,
+// ---- A/B testas su narsykle ----
+try{
+  const {chromium}=await import('playwright');
+  const br=await chromium.launch();
+  const pg=await br.newPage({viewport:{width:1400,height:1100},ignoreHTTPSErrors:true});
+  const errs=[]; pg.on('pageerror',e=>errs.push(String(e)));
+  async function matuok(){
+    await pg.goto(FURL+'?cb='+Date.now(),{waitUntil:'domcontentloaded',timeout:60000});
+    await pg.waitForTimeout(4500);
+    return await pg.evaluate(()=>{
+      const fs=document.querySelectorAll('.yith-wcan-filters .yith-wcan-filter');
+      const res=[]; fs.forEach((f,i)=>{
+        const c=f.querySelector('.filter-content'), t=f.querySelector('.filter-title');
+        res.push({i,t:t?t.textContent.trim().slice(0,26):null,
+          d:c?getComputedStyle(c).display:'NONE',h:c?Math.round(c.getBoundingClientRect().height):0});
       });
+      return {n:fs.length,f:res,styles:document.querySelectorAll('#ps-open-filter').length};
     });
-    return { filtru: fs.length, sarasas: res.slice(0, 8), styleTags: document.querySelectorAll('#ps-open-filter').length };
-  });
+  }
+  // A: 493 ISJUNGTAS (dabartine busena)
+  out.A_493_off_state=await setActive(493,false);
+  out.A_493_off=await matuok();
+  // B: 493 IJUNGTAS (kaip buvo pries)
+  out.B_493_on_state=await setActive(493,true);
+  await pg.waitForTimeout(2500);
+  out.B_493_on=await matuok();
+  // grazinam i A
+  out.galutine_493=await setActive(493,false);
+  await pg.waitForTimeout(2000);
+  out.C_patikra=await matuok();
+  out.js_klaidos=errs;
   await br.close();
-} catch (e) { out.errors.push({ step: 'shot', e: String(e) }); }
+}catch(e){out.errors.push({step:'ab',e:String(e)});}
 
-await putResult('s636_v1.json', out);
+// ---- DB analize ----
+try{
+  const code=Buffer.from(PROBE2,'base64').toString('utf8');
+  const r=await fetch(BASE,{method:'POST',headers:{Authorization:AUTH,'Content-Type':'application/json'},
+    body:JSON.stringify({name:'TEMP Snippetu DB Probe v2 (S637)',code,scope:'global',active:true,priority:10})});
+  const j=await r.json(); out.probe2_id=j.id;
+  await new Promise(r=>setTimeout(r,3000));
+  const u='https://dev.avesa.lt/?ps_snipdb2=S637x&k=ps2026&cb='+Date.now();
+  const rr=await fetch(u,{headers:{'User-Agent':'Mozilla/5.0'}});
+  const t=await rr.text();
+  try{out.db=JSON.parse(t);}catch(e){out.db_raw=t.slice(0,3000);}
+}catch(e){out.errors.push({step:'db2',e:String(e)});}
+
+await putResult('s637_v1.json',out);
 console.log('DONE');
