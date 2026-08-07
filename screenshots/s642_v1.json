@@ -1,0 +1,99 @@
+{
+ "version": "S642-V1",
+ "errors": [],
+ "sveikata_pries": {
+  "https://dev.avesa.lt/parduotuve/": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "https://dev.avesa.lt/": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "naujas_sources": {
+  "id": 2402,
+  "len": 19370
+ },
+ "naujas_stock": {
+  "id": 2403,
+  "len": 9625
+ },
+ "senas_2384_off": false,
+ "senas_2387_off": false,
+ "naujas_sources_on": true,
+ "naujas_stock_on": true,
+ "sveikata_po": {
+  "https://dev.avesa.lt/parduotuve/": {
+   "http": 200,
+   "len": 303278,
+   "fatal": false
+  },
+  "https://dev.avesa.lt/": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "sveikata_ok": true,
+ "dry": {
+  "VERSIJA": "stock-1.3",
+  "REZIMAS": "TIK SKAITYMAS",
+  "nustatymai": {
+   "sena_po_val": 24,
+   "saugos_rezervas": 0,
+   "av_rezervas": 0
+  },
+  "su_rezervu_1": {
+   "tikrinta": 2776,
+   "sutampa": 2776,
+   "skiriasi": 0,
+   "skirtumas_suma": 0
+  },
+  "su_rezervu_0": {
+   "sutampa": 2776,
+   "skiriasi": 0
+  },
+  "sena_xml_saltiniu": 9,
+  "be_sync_datos_saltiniu": 0,
+  "priezastys": [],
+  "skirtumu_pvz": [],
+  "pvz_josera": {
+   "qty": 780,
+   "av": 0,
+   "tiekejo": 780,
+   "kodel": "VF 780",
+   "perspejimai": [],
+   "saltiniai": [
+    {
+     "source": "vf",
+     "raw": 780,
+     "iskaityta": 780,
+     "kodel": "atimtas 0 vnt. saugos rezervas",
+     "duomenu_amzius_val": 0.5
+    }
+   ],
+   "is_lenteles": true
+  },
+  "PASTABA": "Nieko nekeista. Servisas prie WooCommerce neprijungtas."
+ },
+ "src_dry": {
+  "santrauka": {
+   "prekiu": 3804,
+   "irasu": 3804,
+   "be_saltinio": 0,
+   "daugiasaltiniu": 0
+  },
+  "KRYZMINE": {
+   "tikrinta": 2776,
+   "nesutampa": 0,
+   "sutampa": 2776,
+   "pvz": []
+  },
+  "saltiniu_skaicius": {
+   "1": 3804
+  }
+ }
+}
