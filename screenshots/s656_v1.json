@@ -1,0 +1,56 @@
+{
+ "version": "S656-V1",
+ "errors": [],
+ "snip": 2419,
+ "rez": {
+  "v": "R656",
+  "nustatymai": {
+   "woocommerce_calc_taxes": "yes",
+   "woocommerce_prices_include_tax": "yes",
+   "woocommerce_tax_based_on": "shipping",
+   "woocommerce_default_country": "LT",
+   "woocommerce_tax_display_shop": "incl",
+   "woocommerce_tax_display_cart": "incl",
+   "woocommerce_price_display_suffix": "",
+   "woocommerce_tax_total_display": "single"
+  },
+  "tarifai": [
+   {
+    "tax_rate_id": "1",
+    "tax_rate_country": "LT",
+    "tax_rate": "21.0000",
+    "tax_rate_name": "PVM",
+    "tax_rate_class": "",
+    "tax_rate_priority": "1"
+   }
+  ],
+  "simuliacija": {
+   "id": 12452,
+   "pav": "Eukanuba Active Small Adult (vištiena) 3kg",
+   "regular_price_lauke": "15.89",
+   "DABAR": {
+    "tax_status": "none",
+    "get_price": "15.89",
+    "kaina_klientui": 15.89,
+    "be_pvm": 15.89,
+    "su_pvm": 15.89
+   },
+   "PO_PERJUNGIMO": {
+    "tax_status": "taxable",
+    "kaina_klientui": 15.89,
+    "be_pvm": 13.132231,
+    "su_pvm": 15.89
+   },
+   "PASTABA": "Objektas NEISSAUGOTAS — set_tax_status tik atmintyje",
+   "db_po": "none"
+  },
+  "etalonas_taxable": {
+   "id": 12469,
+   "pav": "IAMS Kitten (vištiena) 10kg",
+   "regular": "46.39",
+   "kaina_klientui": 46.39,
+   "be_pvm": 38.338843,
+   "su_pvm": 46.39
+  }
+ }
+}
