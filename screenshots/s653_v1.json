@@ -1,0 +1,143 @@
+{
+ "version": "S653-V1",
+ "errors": [],
+ "snip": 2416,
+ "rez": {
+  "v": "R653",
+  "tax_pagal_sandeli": [
+   {
+    "sandelis": "ambrosia",
+    "tax": "taxable",
+    "c": "15"
+   },
+   {
+    "sandelis": "av",
+    "tax": "taxable",
+    "c": "959"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "tax": "taxable",
+    "c": "62"
+   },
+   {
+    "sandelis": "prins",
+    "tax": "taxable",
+    "c": "23"
+   },
+   {
+    "sandelis": "quattro",
+    "tax": "taxable",
+    "c": "64"
+   },
+   {
+    "sandelis": "vf",
+    "tax": "taxable",
+    "c": "958"
+   },
+   {
+    "sandelis": "vf",
+    "tax": "none",
+    "c": "33"
+   },
+   {
+    "sandelis": "zb",
+    "tax": "none",
+    "c": "536"
+   },
+   {
+    "sandelis": "zb",
+    "tax": "taxable",
+    "c": "126"
+   }
+  ],
+  "vf_pvz": [
+   {
+    "id": 17947,
+    "kaina": 32.89,
+    "cost": 18.108,
+    "tax": "taxable",
+    "santykis": 1.816
+   },
+   {
+    "id": 17950,
+    "kaina": 32.49,
+    "cost": 22.344,
+    "tax": "taxable",
+    "santykis": 1.454
+   },
+   {
+    "id": 17953,
+    "kaina": 34.99,
+    "cost": 24.064,
+    "tax": "taxable",
+    "santykis": 1.454
+   },
+   {
+    "id": 17956,
+    "kaina": 41.09,
+    "cost": 28.248,
+    "tax": "taxable",
+    "santykis": 1.455
+   },
+   {
+    "id": 17959,
+    "kaina": 23.09,
+    "cost": 15.864,
+    "tax": "taxable",
+    "santykis": 1.455
+   },
+   {
+    "id": 17962,
+    "kaina": 33.49,
+    "cost": 23.024,
+    "tax": "taxable",
+    "santykis": 1.455
+   },
+   {
+    "id": 17965,
+    "kaina": 29.69,
+    "cost": 20.448,
+    "tax": "taxable",
+    "santykis": 1.452
+   },
+   {
+    "id": 17969,
+    "kaina": 27.09,
+    "cost": 18.608,
+    "tax": "taxable",
+    "santykis": 1.456
+   }
+  ],
+  "vf_santykis": {
+   "n": 300,
+   "min": 1.447,
+   "mediana": 1.491,
+   "max": 1.819
+  },
+  "pricing_metodai": [
+   "calculate",
+   "get_markup",
+   "preview_price",
+   "round_to_99",
+   "calculate_final_price",
+   "get_markup_table",
+   "get_default_markup"
+  ],
+  "pricing_test": {
+   "vitaminai_16.20": 28.49,
+   "vitaminai_13.39": 23.49,
+   "sausas_10.00": 15.19
+  },
+  "zb_kaina_lygi_rrp": {
+   "lygu": 379,
+   "nelygu": 121
+  },
+  "zb_santykis": {
+   "n": 500,
+   "min": 1.344,
+   "mediana": 1.817,
+   "max": 2.333
+  }
+ }
+}
