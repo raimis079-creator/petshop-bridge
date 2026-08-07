@@ -1,0 +1,381 @@
+{
+ "version": "S637-V1",
+ "errors": [],
+ "A_493_off_state": false,
+ "A_493_off": {
+  "n": 7,
+  "f": [
+   {
+    "i": 0,
+    "t": "Vienas baltymo šaltinis",
+    "d": "block",
+    "h": 22
+   },
+   {
+    "i": 1,
+    "t": "Grūdų tipas",
+    "d": "block",
+    "h": 61
+   },
+   {
+    "i": 2,
+    "t": "Speciali mityba",
+    "d": "block",
+    "h": 263
+   },
+   {
+    "i": 3,
+    "t": "Baltymų šaltinis",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 4,
+    "t": "Amžius",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 5,
+    "t": "Pakuotės dydis",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 6,
+    "t": "Prekės ženklas",
+    "d": "none",
+    "h": 0
+   }
+  ],
+  "styles": 1
+ },
+ "B_493_on_state": true,
+ "B_493_on": {
+  "n": 7,
+  "f": [
+   {
+    "i": 0,
+    "t": "Vienas baltymo šaltinis",
+    "d": "block",
+    "h": 22
+   },
+   {
+    "i": 1,
+    "t": "Grūdų tipas",
+    "d": "block",
+    "h": 61
+   },
+   {
+    "i": 2,
+    "t": "Speciali mityba",
+    "d": "block",
+    "h": 263
+   },
+   {
+    "i": 3,
+    "t": "Baltymų šaltinis",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 4,
+    "t": "Amžius",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 5,
+    "t": "Pakuotės dydis",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 6,
+    "t": "Prekės ženklas",
+    "d": "none",
+    "h": 0
+   }
+  ],
+  "styles": 2
+ },
+ "galutine_493": false,
+ "C_patikra": {
+  "n": 7,
+  "f": [
+   {
+    "i": 0,
+    "t": "Vienas baltymo šaltinis",
+    "d": "block",
+    "h": 22
+   },
+   {
+    "i": 1,
+    "t": "Grūdų tipas",
+    "d": "block",
+    "h": 61
+   },
+   {
+    "i": 2,
+    "t": "Speciali mityba",
+    "d": "block",
+    "h": 263
+   },
+   {
+    "i": 3,
+    "t": "Baltymų šaltinis",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 4,
+    "t": "Amžius",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 5,
+    "t": "Pakuotės dydis",
+    "d": "none",
+    "h": 0
+   },
+   {
+    "i": 6,
+    "t": "Prekės ženklas",
+    "d": "none",
+    "h": 0
+   }
+  ],
+  "styles": 1
+ },
+ "js_klaidos": [],
+ "probe2_id": 2397,
+ "db": {
+  "v": "SNIPDB2-V1",
+  "total": 1531,
+  "active_reiksmes": [
+   {
+    "active": "-1",
+    "c": "693"
+   },
+   {
+    "active": "0",
+    "c": "767"
+   },
+   {
+    "active": "1",
+    "c": "71"
+   }
+  ],
+  "stulpeliai": [
+   "id",
+   "name",
+   "description",
+   "code",
+   "tags",
+   "scope",
+   "condition_id",
+   "priority",
+   "active",
+   "modified",
+   "revision",
+   "cloud_id"
+  ],
+  "top_sablonai": [
+   {
+    "sab": "UI Localization Runtime",
+    "c": "91",
+    "akt": "0"
+   },
+   {
+    "sab": "Petshop Attr Modulis:",
+    "c": "11",
+    "akt": "3"
+   },
+   {
+    "sab": "Baltymu Saltinis Apply",
+    "c": "9",
+    "akt": "0"
+   },
+   {
+    "sab": "P0 (temp)",
+    "c": "7",
+    "akt": "0"
+   },
+   {
+    "sab": "Baltymu Saltinis Sausas",
+    "c": "5",
+    "akt": "0"
+   },
+   {
+    "sab": "S212-C Promo Test",
+    "c": "5",
+    "akt": "0"
+   }
+  ],
+  "pozymiai": {
+   "prefix_TEMP": {
+    "viso": 169,
+    "neaktyvus": 2,
+    "aktyvus": 2
+   },
+   "zodis_TEMP": {
+    "viso": 625,
+    "neaktyvus": 9,
+    "aktyvus": 2
+   },
+   "zodis_tmp": {
+    "viso": 106,
+    "neaktyvus": 106,
+    "aktyvus": 0
+   },
+   "skliaust_temp": {
+    "viso": 454,
+    "neaktyvus": 5,
+    "aktyvus": 0
+   },
+   "ui_audit": {
+    "viso": 91,
+    "neaktyvus": 91,
+    "aktyvus": 0
+   },
+   "recon": {
+    "viso": 80,
+    "neaktyvus": 68,
+    "aktyvus": 1
+   },
+   "dry": {
+    "viso": 63,
+    "neaktyvus": 56,
+    "aktyvus": 4
+   }
+  },
+  "neaktyvus_be_temp_kiekis": 652,
+  "neaktyvus_be_temp_pvz": [
+   {
+    "id": "2135",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2134",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2133",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2132",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2131",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2130",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2129",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2128",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2127",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2126",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2125",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2124",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2123",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2122",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2121",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2120",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2119",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2118",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2117",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2116",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2115",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2114",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2113",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2112",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2111",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2110",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2109",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2108",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2107",
+    "name": "UI Localization Runtime Audit"
+   },
+   {
+    "id": "2106",
+    "name": "UI Localization Runtime Audit"
+   }
+  ],
+  "backup": {
+   "yra": true,
+   "eiluciu": 1530
+  }
+ }
+}
