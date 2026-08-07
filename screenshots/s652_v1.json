@@ -1,0 +1,124 @@
+{
+ "version": "S652-V1",
+ "errors": [],
+ "snip": 2415,
+ "rez": {
+  "v": "R652",
+  "prekes": {
+   "DOGOTEKA Celervis Pet 100ml": {
+    "id": 14222,
+    "meta": {
+     "_regular_price": "21.79",
+     "_tax_status": "none",
+     "_tax_class": "",
+     "_price": "21.79",
+     "_zb_cost": "16.2",
+     "_zb_rrp": "21.79",
+     "_zb_qty": "27",
+     "_zb_ean": "943214066",
+     "_zb_brand": "Dogoteka",
+     "_zb_supplier_sku": "01DOG0202",
+     "_zb_enabled": "yes",
+     "_zb_weight": "0,0000",
+     "_zb_length": "0,0000",
+     "_zb_width": "0,0000",
+     "_zb_last_sync": "2026-08-07 18:02:28",
+     "_zb_category": "Šunims / Vitaminai ir papildai šunims / Dogoteka šunims",
+     "_zb_height": "0,0000"
+    },
+    "wc_regular": "21.79",
+    "wc_price": "21.79",
+    "tax_class": "none/",
+    "kategorijos": [
+     "vitaminai-ir-papildai-sunims"
+    ]
+   },
+   "DOGOTEKA CortiAdapt skystis 100ml": {
+    "id": 14218,
+    "meta": {
+     "_zb_supplier_sku": "01DOG0301",
+     "_zb_brand": "Dogoteka",
+     "_zb_ean": "A935561454",
+     "_zb_qty": "10",
+     "_zb_rrp": "38.79",
+     "_zb_cost": "28.8",
+     "_price": "38.79",
+     "_zb_width": "0,0000",
+     "_zb_enabled": "yes",
+     "_zb_weight": "0,0000",
+     "_zb_length": "0,0000",
+     "_tax_class": "",
+     "_tax_status": "none",
+     "_regular_price": "38.79",
+     "_zb_height": "0,0000",
+     "_zb_category": "Šunims / Vitaminai ir papildai šunims / Dogoteka šunims",
+     "_zb_last_sync": "2026-08-07 18:02:27"
+    },
+    "wc_regular": "38.79",
+    "wc_price": "38.79",
+    "tax_class": "none/",
+    "kategorijos": [
+     "higienos-priemones-sunims"
+    ]
+   },
+   "Aquaris KI-JA-KO STAPLE 3 mm": {
+    "id": 19210,
+    "meta": {
+     "_regular_price": "75.65",
+     "_price": "75.65",
+     "_tax_status": "taxable",
+     "_tax_class": "",
+     "_cost_price": "52.0800",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09"
+    },
+    "wc_regular": "75.65",
+    "wc_price": "75.65",
+    "tax_class": "taxable/",
+    "kategorijos": [
+     "tvenkiniu-zuvu-maistas"
+    ]
+   }
+  },
+  "pricing_yra": true,
+  "pricing_metodai": [
+   "calculate",
+   "get_markup",
+   "apply_psychological_rounding",
+   "preview_price",
+   "round_to_99",
+   "calculate_final_price",
+   "get_markup_table",
+   "get_default_markup"
+  ],
+  "pricing_konstantos": {
+   "VAT": 1.21,
+   "PSYCH_ROUNDING_MAX_UPLIFT": 0.05,
+   "PSYCH_ROUNDING_FLOOR_EUR": 1,
+   "MIN_MARGIN_MARKUP": 0.25
+  },
+  "pricing_savybes": {
+   "category_markups": true,
+   "priority_order": true,
+   "default_markup": true
+  },
+  "wc_nustatymai": {
+   "woocommerce_prices_include_tax": "yes",
+   "woocommerce_calc_taxes": "yes",
+   "woocommerce_tax_based_on": "shipping"
+  },
+  "klases": {
+   "Petshop_Pricing_ZB": false,
+   "Petshop_Pricing_VF": true
+  },
+  "zb_statistika": {
+   "n": 400,
+   "m_be_pvm_mediana": 33.4,
+   "m_be_pvm_min": 10,
+   "m_be_pvm_max": 48.1,
+   "m_su_pvm_mediana": 45,
+   "m_su_pvm_min": 25.6,
+   "m_su_pvm_max": 57.1
+  }
+ }
+}
