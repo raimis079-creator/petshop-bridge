@@ -1,0 +1,142 @@
+{
+ "version": "S640-V1",
+ "errors": [],
+ "pries": {
+  "http": 200,
+  "len": 302504
+ },
+ "snip": {
+  "http": 200,
+  "id": 2400,
+  "active": false,
+  "code_len": 11509
+ },
+ "aktyvuota": true,
+ "po": {
+  "http": 200,
+  "len": 303278,
+  "fatal": false
+ },
+ "dry": {
+  "VERSIJA": "S640-sources-v2-dry",
+  "REZIMAS": "TIK SKAITYMAS",
+  "santrauka": {
+   "tikrinta": 2776,
+   "is_lenteles": 2776,
+   "fallback_i_meta": 0,
+   "saltiniai_sutampa": 2776,
+   "saltiniai_skiriasi": 0,
+   "qty_v1_lygu_v2": 2776,
+   "qty_v1_nelygu_v2": 0,
+   "v2_lygu_stock": 2776,
+   "v2_nelygu_stock": 0,
+   "v1_lygu_stock": 2776
+  },
+  "saltiniu_skirtumai": [],
+  "qty_skirtumai": [],
+  "stock_skirtumai": [],
+  "pvz": {
+   "16317": {
+    "pav": "Ruda avies koja, 1 vnt.",
+    "registras": [
+     {
+      "source": "av",
+      "supplier_sku": null,
+      "ean": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1"
+     }
+    ],
+    "v2": {
+     "qty": 0,
+     "av": 0,
+     "tiekejo": 0,
+     "kodel": "AV 0",
+     "perspejimai": [],
+     "saltiniai": [
+      {
+       "source": "av",
+       "raw": 0,
+       "iskaityta": 0,
+       "kodel": "sava lentyna"
+      }
+     ],
+     "is_lenteles": true
+    },
+    "v1_qty": 0,
+    "stock": "0"
+   },
+   "17978": {
+    "pav": "Josera Sensiplus 12,5 kg – sausas maista",
+    "registras": [
+     {
+      "source": "vf",
+      "supplier_sku": "JOS0914",
+      "ean": "403225478598",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "v2": {
+     "qty": 780,
+     "av": 0,
+     "tiekejo": 780,
+     "kodel": "VF 780",
+     "perspejimai": [],
+     "saltiniai": [
+      {
+       "source": "vf",
+       "raw": 780,
+       "iskaityta": 780,
+       "kodel": "įskaityta",
+       "duomenu_amzius_val": 0.4
+      }
+     ],
+     "is_lenteles": true
+    },
+    "v1_qty": 780,
+    "stock": "780.000000"
+   },
+   "18623": {
+    "pav": "Exclusion Hepatic dietinis sausas šunų m",
+    "registras": [
+     {
+      "source": "av",
+      "supplier_sku": null,
+      "ean": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1"
+     }
+    ],
+    "v2": {
+     "qty": 0,
+     "av": 0,
+     "tiekejo": 0,
+     "kodel": "AV 0",
+     "perspejimai": [],
+     "saltiniai": [
+      {
+       "source": "av",
+       "raw": 0,
+       "iskaityta": 0,
+       "kodel": "sava lentyna"
+      }
+     ],
+     "is_lenteles": true
+    },
+    "v1_qty": 0,
+    "stock": "0"
+   }
+  },
+  "PASTABA": "Nieko nekeista. Veikiancios klases neliestos."
+ },
+ "isjungta_po": false,
+ "galutine": {
+  "http": 200,
+  "len": 303278,
+  "fatal": false
+ }
+}
