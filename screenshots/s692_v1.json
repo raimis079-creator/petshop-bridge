@@ -1,0 +1,79 @@
+{
+ "version": "S692-V1",
+ "errors": [],
+ "deploy": {
+  "v": "DEPLOY692",
+  "bytes": 122500,
+  "sha": "4539ea5c5a9dd612",
+  "sintakse": "OK",
+  "backup": "ok",
+  "irasyta": 122500,
+  "failas_yra": true,
+  "failo_dydis": 122500
+ },
+ "pries": {
+  "meta": {
+   "_regular_price": "5.69",
+   "_price": "5.69",
+   "_sale_price": "",
+   "_stock": "5",
+   "_own_stock_qty": "",
+   "_stock_status": "instock",
+   "_manual_price_override": ""
+  },
+  "lookup": {
+   "min_price": "5.6900",
+   "max_price": "5.6900",
+   "onsale": "0",
+   "stock_quantity": "5",
+   "stock_status": "instock",
+   "tax_status": "taxable"
+  },
+  "wc_objektas": {
+   "get_price": "5.69",
+   "get_regular_price": "5.69",
+   "get_stock_quantity": 5,
+   "get_stock_status": "instock",
+   "is_in_stock": 1,
+   "kaina_klientui": 5.69
+  }
+ },
+ "rasta": [
+  "24171",
+  "15734",
+  "14948",
+  "14945",
+  "14941",
+  "14937",
+  "14929"
+ ],
+ "issaugota": "Išsaugota 1 · Kainos keitimas · užrakinta 1Atšaukti×",
+ "js": [],
+ "po": {
+  "meta": {
+   "_regular_price": "9.02",
+   "_price": "9.02",
+   "_sale_price": "",
+   "_stock": "5",
+   "_own_stock_qty": "",
+   "_stock_status": "instock",
+   "_manual_price_override": "yes"
+  },
+  "lookup": {
+   "min_price": "9.0200",
+   "max_price": "9.0200",
+   "onsale": "0",
+   "stock_quantity": "5",
+   "stock_status": "instock",
+   "tax_status": "taxable"
+  },
+  "wc_objektas": {
+   "get_price": "9.02",
+   "get_regular_price": "9.02",
+   "get_stock_quantity": 5,
+   "get_stock_status": "instock",
+   "is_in_stock": 1,
+   "kaina_klientui": 9.02
+  }
+ }
+}
