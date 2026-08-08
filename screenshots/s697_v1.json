@@ -1,0 +1,68 @@
+{
+ "version": "S697-V1",
+ "errors": [],
+ "sveikata_pries": {
+  "shop": {
+   "http": 200,
+   "len": 299041,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "deploy": {
+  "v": "DEPLOY697",
+  "bytes": 7833,
+  "sha": "51cfadd12fc705a3",
+  "sintakse": "OK",
+  "backup": "naujas failas",
+  "irasyta": 7833,
+  "failo_dydis": 7833
+ },
+ "sveikata_po": {
+  "shop": {
+   "http": 200,
+   "len": 299041,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "auditas": {
+  "versija": "1.0",
+  "veiksmas": "auditas",
+  "nesutapimai": {
+   "kaina": 0,
+   "likutis": 0,
+   "busena": 0,
+   "pvm": 0,
+   "viso": 2744
+  },
+  "pastaba": "Nieko nekeista. Suderinimui: &ps_wc_sync=suderinti"
+ },
+ "testas_pries": {
+  "meta": "5.69",
+  "price": "5.69",
+  "lookup": "5.6900"
+ },
+ "raw_rasymas": {
+  "rasyta": "7.77",
+  "budas": "update_post_meta be CRUD"
+ },
+ "testas_po": {
+  "meta": "7.77",
+  "price": "7.77",
+  "lookup": "5.6900"
+ },
+ "testas_grazinta": {
+  "meta": "5.69",
+  "price": "5.69",
+  "lookup": "5.6900"
+ }
+}
