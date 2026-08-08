@@ -1,0 +1,49 @@
+{
+ "version": "S715-V1",
+ "errors": [],
+ "deploy": {
+  "v": "DEPLOY715",
+  "bytes": 140769,
+  "sha": "8e628d09e157e498",
+  "sintakse": "OK",
+  "backup": "ok",
+  "irasyta": 140769,
+  "failas_yra": true,
+  "failo_dydis": 140769
+ },
+ "dry": {
+  "v": "F716",
+  "rezimas": "dry",
+  "klaidinga_zyme": 123,
+  "zyme_is_viso": 123,
+  "tikrai_be_saltinio": 0,
+  "be_sandelio_lauko_su_registru": 262,
+  "pagal_saltini": [
+   {
+    "source": "zb",
+    "c": "262"
+   }
+  ]
+ },
+ "apply": {
+  "v": "F716",
+  "rezimas": "apply",
+  "klaidinga_zyme": 123,
+  "zyme_is_viso": 123,
+  "tikrai_be_saltinio": 0,
+  "be_sandelio_lauko_su_registru": 262,
+  "pagal_saltini": [
+   {
+    "source": "zb",
+    "c": "262"
+   }
+  ],
+  "zyme_nuimta": 123,
+  "liko_zymes": 0
+ },
+ "sveikata": {
+  "http": 200,
+  "len": 299041,
+  "fatal": false
+ }
+}
