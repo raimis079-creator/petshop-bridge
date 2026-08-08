@@ -1,0 +1,104 @@
+{
+ "version": "S691-V1",
+ "errors": [],
+ "snip": 2467,
+ "rez": {
+  "v": "S691",
+  "rezimas": "testas",
+  "preke": {
+   "id": 14929,
+   "pav": "Žirklės nagams (giljotina), 11 cm"
+  },
+  "PRIES": {
+   "meta": {
+    "_regular_price": "5.69",
+    "_price": "5.69",
+    "_sale_price": "",
+    "_stock": "5",
+    "_own_stock_qty": "",
+    "_stock_status": "instock",
+    "_manual_price_override": ""
+   },
+   "lookup": {
+    "min_price": "5.6900",
+    "max_price": "5.6900",
+    "onsale": "0",
+    "stock_quantity": "5",
+    "stock_status": "instock",
+    "tax_status": "taxable"
+   },
+   "wc_objektas": {
+    "get_price": "5.69",
+    "get_regular_price": "5.69",
+    "get_stock_quantity": 5,
+    "get_stock_status": "instock",
+    "is_in_stock": 1,
+    "kaina_klientui": 5.69
+   }
+  },
+  "PO_KATALOGO_RASYMO": {
+   "meta": {
+    "_regular_price": "9.02",
+    "_price": "9.02",
+    "_sale_price": "",
+    "_stock": "12",
+    "_own_stock_qty": "",
+    "_stock_status": "instock",
+    "_manual_price_override": ""
+   },
+   "lookup": {
+    "min_price": "5.6900",
+    "max_price": "5.6900",
+    "onsale": "0",
+    "stock_quantity": "5",
+    "stock_status": "instock",
+    "tax_status": "taxable"
+   },
+   "wc_objektas": {
+    "get_price": "9.02",
+    "get_regular_price": "9.02",
+    "get_stock_quantity": 12,
+    "get_stock_status": "instock",
+    "is_in_stock": 1,
+    "kaina_klientui": 9.02
+   }
+  },
+  "SVIEZIAS_WC": {
+   "get_price": "9.02",
+   "get_regular_price": "9.02",
+   "get_stock_quantity": 12
+  },
+  "PO_GRAZINIMO": {
+   "meta": {
+    "_regular_price": "5.69",
+    "_price": "5.69",
+    "_sale_price": "",
+    "_stock": "5",
+    "_own_stock_qty": "",
+    "_stock_status": "instock",
+    "_manual_price_override": ""
+   },
+   "lookup": {
+    "min_price": "5.6900",
+    "max_price": "5.6900",
+    "onsale": "0",
+    "stock_quantity": "5",
+    "stock_status": "instock",
+    "tax_status": "taxable"
+   },
+   "wc_objektas": {
+    "get_price": "5.69",
+    "get_regular_price": "5.69",
+    "get_stock_quantity": 5,
+    "get_stock_status": "instock",
+    "is_in_stock": 1,
+    "kaina_klientui": 5.69
+   }
+  },
+  "funkcijos": {
+   "wc_update_product_lookup_tables_column": true,
+   "wc_update_product_lookup_tables": true,
+   "wc_get_container": true
+  }
+ }
+}
