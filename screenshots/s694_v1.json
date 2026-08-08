@@ -1,0 +1,87 @@
+{
+ "version": "S694-V1",
+ "errors": [],
+ "snip": 2473,
+ "rez": {
+  "v": "A694",
+  "pazeidimu_failu": 9,
+  "pagal_faila": {
+   "wp-content/plugins/wordpress-importer/class-wp-import.php": {
+    "tipas": "plugin",
+    "laukai": {
+     "_thumbnail_id": "SQL"
+    }
+   },
+   "wp-content/plugins/woocommerce-xml-csv-product-import/helpers/pmwi_update_prices.php": {
+    "tipas": "plugin",
+    "laukai": {
+     "_price": 1,
+     "_regular_price": 1,
+     "_sale_price": 1,
+     "_sale_price_dates_from": 1,
+     "_sale_price_dates_to": 1
+    }
+   },
+   "wp-content/plugins/petshop-xml/petshop-xml.php": {
+    "tipas": "plugin",
+    "laukai": {
+     "_price": 4,
+     "_regular_price": 3,
+     "_stock_status": 1,
+     "_weight": 1
+    }
+   },
+   "wp-content/plugins/petshop-xml/includes/class-admin-ui.php": {
+    "tipas": "plugin",
+    "laukai": {
+     "_price": 1,
+     "_regular_price": 1
+    }
+   },
+   "wp-content/plugins/petshop-xml/includes/class-fulfillment.php": {
+    "tipas": "plugin",
+    "laukai": {
+     "_manage_stock": 1
+    }
+   },
+   "wp-content/plugins/petshop-xml/includes/class-vf-import.php": {
+    "tipas": "plugin",
+    "laukai": {
+     "_price": 2,
+     "_regular_price": 1,
+     "_sale_price": 2,
+     "_sku": 1
+    }
+   },
+   "wp-content/plugins/woocommerce-mix-and-match-products/includes/data/class-wc-product-mix-and-match-data-store-cpt.php": {
+    "tipas": "plugin",
+    "laukai": {
+     "_sale_price": 2
+    }
+   },
+   "wp-content/mu-plugins/petshop-katalogas.php": {
+    "tipas": "mu-plugin",
+    "laukai": {
+     "_price": 1,
+     "_regular_price": 1,
+     "_stock": 1,
+     "_stock_status": 1
+    }
+   },
+   "wp-content/mu-plugins/petshop-av-stock.php": {
+    "tipas": "mu-plugin",
+    "laukai": {
+     "_stock": 1
+    }
+   }
+  },
+  "lookup_nesutapimai": {
+   "kaina": 0,
+   "likutis": 0,
+   "busena": 0,
+   "viso_publish": 2744
+  },
+  "kainos_pvz": [],
+  "likucio_pvz": []
+ }
+}
