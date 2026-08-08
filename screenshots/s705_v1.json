@@ -1,0 +1,192 @@
+{
+ "version": "S705-V1",
+ "errors": [],
+ "snip": 2494,
+ "rez": {
+  "v": "P705",
+  "dabar": "2026-08-08 23:04:46",
+  "istorijos_stulpeliai": [
+   "id",
+   "import_id",
+   "type",
+   "time_run",
+   "date",
+   "summary"
+  ],
+  "paskutiniai": [
+   {
+    "id": "4038",
+    "import_id": "7",
+    "type": "processing",
+    "time_run": "155",
+    "date": "2026-08-08 19:16:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2309 skipped"
+   },
+   {
+    "id": "4037",
+    "import_id": "7",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-08 19:15:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "4036",
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "3662",
+    "date": "2026-08-08 19:02:02",
+    "summary": "0 Produktai created 500 updated 1000 skipped"
+   },
+   {
+    "id": "4035",
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-08 19:00:03",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "4034",
+    "import_id": "7",
+    "type": "processing",
+    "time_run": "159",
+    "date": "2026-08-08 18:16:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2309 skipped"
+   },
+   {
+    "id": "4033",
+    "import_id": "7",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-08 18:15:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "4026",
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "10847",
+    "date": "2026-08-08 15:02:03",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 1042 updated 1567 skipped"
+   },
+   {
+    "id": "4025",
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-08 15:00:03",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3998",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "143",
+    "date": "2026-08-08 03:31:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 1006 updated 1303 skipped"
+   },
+   {
+    "id": "3997",
+    "import_id": "5",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-08 03:30:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3938",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "69",
+    "date": "2026-08-07 03:31:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 226 updated 2083 skipped"
+   },
+   {
+    "id": "3937",
+    "import_id": "5",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-07 03:30:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "3906",
+    "import_id": "2",
+    "type": "processing",
+    "time_run": "172859",
+    "date": "2026-08-06 15:01:03",
+    "summary": "0 Produktai created 262 updated 1928 skipped"
+   },
+   {
+    "id": "3905",
+    "import_id": "2",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-06 15:00:02",
+    "summary": "triggered by cron"
+   }
+  ],
+  "redaguota_pagal_valandas": [
+   {
+    "val": "2026-08-08 23:00",
+    "c": "1367"
+   },
+   {
+    "val": "2026-08-08 22:00",
+    "c": "294"
+   },
+   {
+    "val": "2026-08-08 21:00",
+    "c": "254"
+   },
+   {
+    "val": "2026-08-08 20:00",
+    "c": "288"
+   },
+   {
+    "val": "2026-08-08 17:00",
+    "c": "15"
+   },
+   {
+    "val": "2026-08-08 11:00",
+    "c": "1"
+   },
+   {
+    "val": "2026-08-08 10:00",
+    "c": "1"
+   },
+   {
+    "val": "2026-08-08 06:00",
+    "c": "1"
+   },
+   {
+    "val": "2026-08-07 22:00",
+    "c": "33"
+   }
+  ],
+  "sargas": {
+   "versija": "1.3",
+   "nesutapimai": {
+    "kaina": 0,
+    "likutis": 0,
+    "busena": 0,
+    "pvm": 0,
+    "viso": 2744
+   }
+  },
+  "log": "nera debug.log",
+  "sinchro": {
+   "vf": {
+    "naujausia": "2026-08-08 23:00:52",
+    "seniausia": "2026-08-08 23:00:05",
+    "kiek": "1161"
+   },
+   "zb": {
+    "naujausia": "2026-08-08 23:03:04",
+    "seniausia": "2026-06-07 19:02:37",
+    "kiek": "1060"
+   }
+  }
+ }
+}
