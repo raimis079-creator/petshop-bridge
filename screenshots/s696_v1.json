@@ -1,0 +1,60 @@
+{
+ "version": "S696-V1",
+ "errors": [],
+ "snip": 2475,
+ "rez": {
+  "v": "K696",
+  "vf_630_660": "\t}\n\n\t// Cache invalidacija (butina, kad frontend pamatytu naujas reiksmes)\n\tif ( function_exists( 'wc_delete_product_transients' ) ) {\n\t\twc_delete_product_transients( $post_id );\n\t}\n\tclean_post_cache( $post_id );\n\n\t// Per-product lookup table refresh (wp_wc_product_meta_lookup: min/max_price, onsale).\n\t// Be sito: net jei _price teisingas, kataloge gali rodyti sena kaina is lookup lenteles.\n\tif ( class_exists( 'WC_Data_Store' ) ) {\n\t\ttry {\n\t\t\t$data_store = WC_Data_Store::load( 'product' );\n\t\t\tif ( method_exists( $data_store, 'update_lookup_table' ) ) {\n\t\t\t\t$data_store->update_lookup_table( $post_id, 'wc_product_meta_lookup' );\n\t\t\t}\n\t\t} catch ( \\Exception $e ) {\n\t\t\t// Lookup table neatnaujinta — ne katastrofa, kaina pati teisinga, lookup atsigaus\n\t\t\t// per kita save'a arba per global wc_update_product_lookup_tables().\n\t\t\tpetshop_xml_log( \"VF PRICE SYNC: lookup update fail post {$post_id} | \" . $e->getMessage() );\n\t\t}\n\t}\n\n\treturn $final_price;\n}\n\n/**\n * Helper: VF SKU lookup egzistuojantiems produktams.",
+  "petshop_xml": {
+   "radiniai": [
+    {
+     "eilute": 789,
+     "laukas": "_price",
+     "kontekstas": "        $has_price = ( $price !== '' && $price !== null && (float) $price > 0 );\n\n        if ( $zb_cost > 0 && ! $already && ! $has_price && class_exists( 'Petshop_Pricing' ) ) {\n            $pricing   = new Petshop_Pricing();\n            $cat_slugs = petshop_xml_get_cat_slugs( $post_id );\n            $result    = $pricing->calculate_final_price( $zb_cost, $cat_slugs );\n            $final     = $result['price'];\n            update_post_meta( $post_id, '_price', $final );\n            update_post_meta( $post_id, '_regular_price', $final );\n            // A variantas: kaina fiksuojama, importas nebeperrasys\n            update_post_meta( $post_id, '_zb_price_initialized', 'yes' );\n            petshop_xml_log( \"ZB KONSERVAS->DRAFT post {$post_id} | formule kaina={$final} (initialized, A)\" );\n        }"
+    },
+    {
+     "eilute": 790,
+     "laukas": "_regular_price",
+     "kontekstas": "\n        if ( $zb_cost > 0 && ! $already && ! $has_price && class_exists( 'Petshop_Pricing' ) ) {\n            $pricing   = new Petshop_Pricing();\n            $cat_slugs = petshop_xml_get_cat_slugs( $post_id );\n            $result    = $pricing->calculate_final_price( $zb_cost, $cat_slugs );\n            $final     = $result['price'];\n            update_post_meta( $post_id, '_price', $final );\n            update_post_meta( $post_id, '_regular_price', $final );\n            // A variantas: kaina fiksuojama, importas nebeperrasys\n            update_post_meta( $post_id, '_zb_price_initialized', 'yes' );\n            petshop_xml_log( \"ZB KONSERVAS->DRAFT post {$post_id} | formule kaina={$final} (initialized, A)\" );\n        }\n    }"
+    },
+    {
+     "eilute": 1020,
+     "laukas": "_stock_status",
+     "kontekstas": "            // BUVUSI PUBLISH -> LIEKA PUBLISH (SEO + paklausa \"pranesk kai bus\").\n            // Pazymim was_published (jei dar nebuvo) ir qty_zero pradzios data.\n            update_post_meta( $post_id, '_zb_was_published', 'yes' );\n            if ( ! get_post_meta( $post_id, '_zb_qty_zero_since', true ) ) {\n                update_post_meta( $post_id, '_zb_qty_zero_since', current_time( 'mysql' ) );\n            }\n            // Statusas lieka publish; WC stock status -> outofstock (zyma)\n            update_post_meta( $post_id, '_stock_status', 'outofstock' );\n            $fulfillment->recalculate( $post_id );\n            if ( $cur_status !== 'publish' ) {\n                wp_update_post( [ 'ID' => $post_id, 'post_status' => 'publish' ] );\n            }\n            petshop_xml_log( \"QTY_ZERO PUBLISH-KEPT post {$post_id} | was_published, SEO+demand (S98)\" );"
+    },
+    {
+     "eilute": 1107,
+     "laukas": "_price",
+     "kontekstas": "    $price_action = 'none';\n\n    if ( ! $price_locked && ! $price_initialized && ! $has_valid_price ) {\n        $price_result  = $pricing->calculate_final_price( $zb_cost, $cat_slugs );\n        $final_price   = $price_result['price'];\n        $review_reason = array_merge( $review_reason, $price_result['review_reasons'] );\n\n        update_post_meta( $post_id, '_price', $final_price );\n        update_post_meta( $post_id, '_regular_price', $final_price );\n        update_post_meta( $post_id, '_zb_price_initialized', 'yes' );\n        $price_action = 'new';\n\n    } elseif ( ! $price_locked && $cost_changed ) {"
+    },
+    {
+     "eilute": 1108,
+     "laukas": "_regular_price",
+     "kontekstas": "\n    if ( ! $price_locked && ! $price_initialized && ! $has_valid_price ) {\n        $price_result  = $pricing->calculate_final_price( $zb_cost, $cat_slugs );\n        $final_price   = $price_result['price'];\n        $review_reason = array_merge( $review_reason, $price_result['review_reasons'] );\n\n        update_post_meta( $post_id, '_price', $final_price );\n        update_post_meta( $post_id, '_regular_price', $final_price );\n        update_post_meta( $post_id, '_zb_price_initialized', 'yes' );\n        $price_action = 'new';\n\n    } elseif ( ! $price_locked && $cost_changed ) {\n        $price_result = $pricing->calculate_final_price( $zb_cost, $cat_slugs );"
+    },
+    {
+     "eilute": 1136,
+     "laukas": "_regular_price",
+     "kontekstas": "            $review_reason[] = 'reprice_blocked_by_sale';\n            $price_action    = 'blocked_by_sale';\n            petshop_xml_log( \"AUTO-REPRICE BLOCKED post {$post_id} | new_regular={$new_regular} <= sale={$sale_price}\" );\n\n        } elseif ( abs( $new_regular - $old_regular ) > 0.001 ) {\n            $review_reason = array_merge( $review_reason, $price_result['review_reasons'] );\n\n            update_post_meta( $post_id, '_regular_price', $new_regular );\n            if ( $sale_active ) {\n                update_post_meta( $post_id, '_price', $sale_price );\n            } else {\n                update_post_meta( $post_id, '_price', $new_regular );\n            }"
+    },
+    {
+     "eilute": 1138,
+     "laukas": "_price",
+     "kontekstas": "            petshop_xml_log( \"AUTO-REPRICE BLOCKED post {$post_id} | new_regular={$new_regular} <= sale={$sale_price}\" );\n\n        } elseif ( abs( $new_regular - $old_regular ) > 0.001 ) {\n            $review_reason = array_merge( $review_reason, $price_result['review_reasons'] );\n\n            update_post_meta( $post_id, '_regular_price', $new_regular );\n            if ( $sale_active ) {\n                update_post_meta( $post_id, '_price', $sale_price );\n            } else {\n                update_post_meta( $post_id, '_price', $new_regular );\n            }\n            if ( ! $price_initialized ) {\n                update_post_meta( $post_id, '_zb_price_initialized', 'yes' );"
+    },
+    {
+     "eilute": 1140,
+     "laukas": "_price",
+     "kontekstas": "        } elseif ( abs( $new_regular - $old_regular ) > 0.001 ) {\n            $review_reason = array_merge( $review_reason, $price_result['review_reasons'] );\n\n            update_post_meta( $post_id, '_regular_price', $new_regular );\n            if ( $sale_active ) {\n                update_post_meta( $post_id, '_price', $sale_price );\n            } else {\n                update_post_meta( $post_id, '_price', $new_regular );\n            }\n            if ( ! $price_initialized ) {\n                update_post_meta( $post_id, '_zb_price_initialized', 'yes' );\n            }\n            if ( function_exists( 'wc_delete_product_transients' ) ) {"
+    },
+    {
+     "eilute": 1157,
+     "laukas": "_weight",
+     "kontekstas": "            petshop_xml_log( \"AUTO-REPRICE post {$post_id} | cost {$old_cost}->{$zb_cost} | regular {$old_regular}->{$new_regular}\" . ( $sale_active ? ' | sale kept=' . $sale_price : '' ) );\n\n        } else {\n            $price_action = 'unchanged_after_rounding';\n        }\n    }\n\n    if ( $zb_weight > 0 ) update_post_meta( $post_id, '_weight', $zb_weight );\n    if ( $zb_length > 0 ) update_post_meta( $post_id, '_length', $zb_length );\n    if ( $zb_width  > 0 ) update_post_meta( $post_id, '_width', $zb_width );\n    if ( $zb_height > 0 ) update_post_meta( $post_id, '_height', $zb_height );\n\n    if ( $rules->is_oversize( $zb_weight, $zb_length, $zb_width, $zb_height ) ) {"
+    }
+   ],
+   "lookup": false,
+   "save": false
+  }
+ }
+}
