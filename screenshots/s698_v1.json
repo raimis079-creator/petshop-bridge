@@ -1,0 +1,69 @@
+{
+ "version": "S698-V1",
+ "errors": [],
+ "sveikata_pries": {
+  "shop": {
+   "http": 200,
+   "len": 299041,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "deploy": {
+  "v": "DEPLOY698",
+  "bytes": 8411,
+  "sha": "211aeeb222b82671",
+  "sintakse": "OK",
+  "backup": "ok",
+  "irasyta": 8411,
+  "failo_dydis": 8411
+ },
+ "sveikata_po": {
+  "shop": {
+   "http": 200,
+   "len": 299041,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  }
+ },
+ "auditas": {
+  "versija": "1.1",
+  "veiksmas": "auditas",
+  "nesutapimai": {
+   "kaina": 0,
+   "likutis": 0,
+   "busena": 0,
+   "pvm": 0,
+   "viso": 2744
+  },
+  "pastaba": "Nieko nekeista. Suderinimui: &ps_wc_sync=suderinti"
+ },
+ "testas_pries": {
+  "meta": "5.69",
+  "price": "5.69",
+  "lookup": "5.6900"
+ },
+ "klase": "{\n    \"versija\": \"1.1\",\n    \"veiksmas\": \"auditas\",\n    \"nesutapimai\": {\n        ",
+ "raw_rasymas": {
+  "rasyta": "7.77",
+  "budas": "update_post_meta be CRUD"
+ },
+ "testas_po": {
+  "meta": "7.77",
+  "price": "7.77",
+  "lookup": "5.6900"
+ },
+ "testas_grazinta": {
+  "meta": "5.69",
+  "price": "5.69",
+  "lookup": "5.6900"
+ }
+}
