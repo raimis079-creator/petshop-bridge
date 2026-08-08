@@ -1,0 +1,22 @@
+{
+ "version": "S702-V1",
+ "errors": [],
+ "snip": 2488,
+ "rez": {
+  "v": "D702",
+  "1_po_meta": {
+   "meta": "4.44",
+   "lookup": "5.6900"
+  },
+  "ds_instance": "WC_Product_Data_Store_CPT",
+  "is_callable": true,
+  "2_po_update_lookup_table": "5.6900",
+  "B_klaida": "Call to protected method WC_Data_Store_WP::update_lookup_table() from global scope",
+  "pr_regular_pries_save": "4.44",
+  "4_po_save": "5.6900",
+  "5_galutinis": {
+   "meta": "5.69",
+   "lookup": "5.6900"
+  }
+ }
+}
