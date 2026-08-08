@@ -1,0 +1,110 @@
+{
+ "version": "S710-V1",
+ "errors": [],
+ "sveikata_pries": {
+  "shop": {
+   "http": 200,
+   "len": 299041,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  },
+  "xml": {
+   "http": 200,
+   "len": 10211,
+   "fatal": false
+  }
+ },
+ "dry": {
+  "v": "B709",
+  "rezimas": "dry",
+  "failai": {
+   "plugins/petshop-xml/includes/class-vf-import.php": {
+    "yra": true,
+    "dydis_pries": 29533,
+    "jau_pazymeta": false,
+    "vietu_rasta": 1,
+    "dydis_po": 30180,
+    "sintakse": "OK"
+   },
+   "plugins/petshop-xml/petshop-xml.php": {
+    "yra": true,
+    "dydis_pries": 59535,
+    "jau_pazymeta": false,
+    "vietu_rasta": 4,
+    "dydis_po": 60703,
+    "sintakse": "OK"
+   },
+   "plugins/petshop-xml/includes/class-admin-ui.php": {
+    "yra": true,
+    "dydis_pries": 21817,
+    "jau_pazymeta": false,
+    "vietu_rasta": 1,
+    "dydis_po": 22109,
+    "sintakse": "OK"
+   }
+  }
+ },
+ "apply": {
+  "v": "B709",
+  "rezimas": "apply",
+  "failai": {
+   "plugins/petshop-xml/includes/class-vf-import.php": {
+    "yra": true,
+    "dydis_pries": 29533,
+    "jau_pazymeta": false,
+    "vietu_rasta": 1,
+    "dydis_po": 30180,
+    "sintakse": "OK",
+    "backup": "ok",
+    "irasyta": 30180,
+    "dydis_diske": 30180,
+    "patikra_diske": true
+   },
+   "plugins/petshop-xml/petshop-xml.php": {
+    "yra": true,
+    "dydis_pries": 59535,
+    "jau_pazymeta": false,
+    "vietu_rasta": 4,
+    "dydis_po": 60703,
+    "sintakse": "OK",
+    "backup": "ok",
+    "irasyta": 60703,
+    "dydis_diske": 60703,
+    "patikra_diske": true
+   },
+   "plugins/petshop-xml/includes/class-admin-ui.php": {
+    "yra": true,
+    "dydis_pries": 21817,
+    "jau_pazymeta": false,
+    "vietu_rasta": 1,
+    "dydis_po": 22109,
+    "sintakse": "OK",
+    "backup": "ok",
+    "irasyta": 22109,
+    "dydis_diske": 22109,
+    "patikra_diske": true
+   }
+  }
+ },
+ "sveikata_po": {
+  "shop": {
+   "http": 200,
+   "len": 299041,
+   "fatal": false
+  },
+  "home": {
+   "http": 200,
+   "len": 226614,
+   "fatal": false
+  },
+  "xml": {
+   "http": 200,
+   "len": 10211,
+   "fatal": false
+  }
+ }
+}
