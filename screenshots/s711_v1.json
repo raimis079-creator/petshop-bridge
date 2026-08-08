@@ -1,0 +1,42 @@
+{
+ "version": "S711-V1",
+ "errors": [],
+ "deploy": {
+  "v": "DEPLOY711",
+  "bytes": 140452,
+  "sha": "40a9dd975482eafe",
+  "sintakse": "OK",
+  "backup": "ok",
+  "irasyta": 140452,
+  "failas_yra": true,
+  "failo_dydis": 140452
+ },
+ "pradzia": {
+  "eiluciu": 1,
+  "varneliu": 1,
+  "juosta_pasleps": true
+ },
+ "po_zymejimo": {
+  "kiek": "1",
+  "juosta": true,
+  "eilute_zym": 1
+ },
+ "perziura": {
+  "matomas": true,
+  "antraste": "Perkelti į juodraščius",
+  "santrauka": "Bus paliesta 0 prekių · praleista 1",
+  "eiluciu": 0,
+  "persp": 0
+ },
+ "po_vykdymo": {
+  "pranesimas": null,
+  "langas_uzdarytas": true,
+  "pazymeta": 1
+ },
+ "js": [],
+ "sveikata": {
+  "http": 200,
+  "len": 299041,
+  "fatal": false
+ }
+}
