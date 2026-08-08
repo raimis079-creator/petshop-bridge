@@ -1,0 +1,45 @@
+{
+ "version": "S700-V1",
+ "errors": [],
+ "deploy": {
+  "v": "DEPLOY700",
+  "bytes": 9157,
+  "sha": "ffe32b3c7fb0ce01",
+  "sintakse": "OK",
+  "backup": "ok",
+  "irasyta": 9157,
+  "failo_dydis": 9157
+ },
+ "pries": {
+  "meta": "5.69",
+  "lookup": "5.6900"
+ },
+ "po_raw": {
+  "meta": "7.77",
+  "lookup": "5.6900"
+ },
+ "stock_testas": {
+  "meta": "9",
+  "lookup": "5"
+ },
+ "grazinta": {
+  "meta": "5.69",
+  "lookup": "5.6900"
+ },
+ "grazinta_stock": {
+  "meta": "5",
+  "lookup": "5"
+ },
+ "auditas": {
+  "kaina": 0,
+  "likutis": 0,
+  "busena": 0,
+  "pvm": 0,
+  "viso": 2744
+ },
+ "sveikata": {
+  "http": 200,
+  "len": 299041,
+  "fatal": false
+ }
+}
