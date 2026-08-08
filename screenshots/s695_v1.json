@@ -1,0 +1,85 @@
+{
+ "version": "S695-V1",
+ "errors": [],
+ "snip": 2474,
+ "rez": {
+  "v": "K695",
+  "failai": {
+   "mu-plugins/petshop-av-stock.php": {
+    "dydis": 12575,
+    "radiniai": [
+     {
+      "eilute": 150,
+      "laukas": "_stock",
+      "kontekstas": "\n\t\tif ( null === $reiksme ) { delete_post_meta( $product_id, self::META ); }\n\t\telse { update_post_meta( $product_id, self::META, (int) $reiksme ); }\n\n\t\t$stock_po = get_post_meta( $product_id, '_stock', true );\n\t\tif ( (string) $stock_pries !== (string) $stock_po ) {\n\t\t\tupdate_post_meta( $product_id, '_stock', $stock_pries );\n\t\t\tif ( function_exists( 'wc_update_product_stock_status' ) ) {\n\t\t\t\twc_delete_product_transients( $product_id );\n\t\t\t}\n\t\t\terror_log( \"[Petshop_AV_Stock] SAUGIKLIS: _stock $product_id buvo pakeistas \""
+     }
+    ],
+    "ar_kviecia_lookup": false,
+    "ar_kviecia_save": false,
+    "ar_kviecia_transients": true
+   },
+   "plugins/petshop-xml/includes/class-fulfillment.php": {
+    "dydis": 3702,
+    "radiniai": [
+     {
+      "eilute": 68,
+      "laukas": "_manage_stock",
+      "kontekstas": "    /**\n     * Nustato WC stock.\n     * Pataisyta: naudojame wc_update_product_stock($id, $qty, 'set') — ne rankinį _stock rašymą (fix #1).\n     * v1.5.0: nepakeista.\n     */\n    private function set_wc_stock( int $post_id, int $qty, string $source ): void {\n        update_post_meta( $post_id, '_manage_stock', 'yes' );\n        update_post_meta( $post_id, '_active_fulfillment_source', $source );\n        // wc_update_product_stock pats tvarko _stock ir _stock_status\n        wc_update_product_stock( $post_id, $qty, 'set' );\n    }"
+     }
+    ],
+    "ar_kviecia_lookup": false,
+    "ar_kviecia_save": false,
+    "ar_kviecia_transients": false
+   },
+   "plugins/petshop-xml/includes/class-admin-ui.php": {
+    "dydis": 21817,
+    "radiniai": [
+     {
+      "eilute": 390,
+      "laukas": "_price",
+      "kontekstas": "\n            // Visada pazymim initialized (freeze ateiciai), net jei kaina nesikeicia.\n            update_post_meta( $pid, '_zb_price_initialized', 'yes' );\n\n            if ( abs( $new - $old ) < 0.005 ) continue;\n\n            update_post_meta( $pid, '_price', $new );\n            update_post_meta( $pid, '_regular_price', $new );\n            $applied++;\n        }\n"
+     },
+     {
+      "eilute": 391,
+      "laukas": "_regular_price",
+      "kontekstas": "            // Visada pazymim initialized (freeze ateiciai), net jei kaina nesikeicia.\n            update_post_meta( $pid, '_zb_price_initialized', 'yes' );\n\n            if ( abs( $new - $old ) < 0.005 ) continue;\n\n            update_post_meta( $pid, '_price', $new );\n            update_post_meta( $pid, '_regular_price', $new );\n            $applied++;\n        }\n\n        wp_safe_redirect( admin_url('admin.php?page=petshop-xml&tab=pricing&repriced='.$applied) );"
+     }
+    ],
+    "ar_kviecia_lookup": false,
+    "ar_kviecia_save": false,
+    "ar_kviecia_transients": false
+   }
+  },
+  "vf_import": {
+   "radiniai": [
+    {
+     "eilute": 395,
+     "laukas": "_sku",
+     "kontekstas": "\t\t\t\t'vf_sku'      => $vf_sku,\n\t\t\t\t'conflict_id' => (int) $sku_owner,\n\t\t\t] );\n\t\t} else {\n\t\t\t// Saugu — perrasom hash i gryna VF SKU\n\t\t\tupdate_post_meta( $post_id, '_sku', $vf_sku );\n\t\t\tupdate_post_meta( $post_id, '_vf_wc_sku', $vf_sku );\n\t\t}\n\t}"
+    },
+    {
+     "eilute": 618,
+     "laukas": "_regular_price",
+     "kontekstas": "\t// Apsauga: jei regular netinkamas — nieko nedarom, grazinam 0 (blocker'is paims '_price <= 0')\n\tif ( $regular <= 0 ) {\n\t\treturn 0.0;\n\t}\n\n\tupdate_post_meta( $post_id, '_regular_price', $regular );\n\n\t$final_price = $regular;\n\tif ( $sale > 0 && $sale < $regular ) {"
+    },
+    {
+     "eilute": 622,
+     "laukas": "_sale_price",
+     "kontekstas": "\n\tupdate_post_meta( $post_id, '_regular_price', $regular );\n\n\t$final_price = $regular;\n\tif ( $sale > 0 && $sale < $regular ) {\n\t\tupdate_post_meta( $post_id, '_sale_price', $sale );\n\t\tupdate_post_meta( $post_id, '_price', $sale );\n\t\t$final_price = $sale;\n\t} else {"
+    },
+    {
+     "eilute": 623,
+     "laukas": "_price",
+     "kontekstas": "\tupdate_post_meta( $post_id, '_regular_price', $regular );\n\n\t$final_price = $regular;\n\tif ( $sale > 0 && $sale < $regular ) {\n\t\tupdate_post_meta( $post_id, '_sale_price', $sale );\n\t\tupdate_post_meta( $post_id, '_price', $sale );\n\t\t$final_price = $sale;\n\t} else {\n\t\t// Sale tuscias arba netinkamas (>=regular) -> istrinam _sale_price meta,"
+    },
+    {
+     "eilute": 629,
+     "laukas": "_price",
+     "kontekstas": "\t\t$final_price = $sale;\n\t} else {\n\t\t// Sale tuscias arba netinkamas (>=regular) -> istrinam _sale_price meta,\n\t\t// kad nelikta sena reiksme. _price = regular.\n\t\tdelete_post_meta( $post_id, '_sale_price' );\n\t\tupdate_post_meta( $post_id, '_price', $regular );\n\t}\n\n\t// Cache invalidacija (butina, kad frontend pamatytu naujas reiksmes)"
+    }
+   ],
+   "save": true,
+   "lookup": true
+  }
+ }
+}
