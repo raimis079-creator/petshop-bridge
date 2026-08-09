@@ -1,0 +1,106 @@
+{
+  "diegimas": {
+    "laikas": "2026-08-09 17:10:23",
+    "irasyta": 15351,
+    "md5_ok": true
+  },
+  "rez": {
+    "laikas": "2026-08-09 17:10:27",
+    "versija": "1.1",
+    "mnm_stulpeliai": [
+      "child_item_id",
+      "product_id",
+      "container_id",
+      "menu_order"
+    ],
+    "mnm_pvz": {
+      "child_item_id": "18",
+      "product_id": "19574",
+      "container_id": "34156",
+      "menu_order": "0"
+    },
+    "mnm_lentele": 362,
+    "T1_eilute": {
+      "child_item_id": "18",
+      "product_id": "19574",
+      "container_id": "34156",
+      "menu_order": "0"
+    },
+    "T1_veikia_su": "NERADO nė vieno kelio",
+    "T2_broliai_12456": [
+      {
+        "id": 12456,
+        "pav": "Eukanuba Golden Retriever Adult (vištien",
+        "g": 12000,
+        "eur_kg": 4.87,
+        "panasu": 100,
+        "si": true
+      }
+    ],
+    "T3_su_broliais": [
+      {
+        "pid": "12695",
+        "n": 2,
+        "broliai": [
+          {
+            "g": 150,
+            "eur_kg": 9.27,
+            "pav": "Monge VetSolution Dog Wet Dermatosis 150",
+            "si": false
+          },
+          {
+            "g": 12000,
+            "eur_kg": 8.57,
+            "pav": "Monge VetSolution Dog Dermatosis 12kg",
+            "si": true
+          }
+        ]
+      },
+      {
+        "pid": "12697",
+        "n": 3,
+        "broliai": [
+          {
+            "g": 150,
+            "eur_kg": 9.27,
+            "pav": "Monge VetSolution Dog Wet Gastrointestin",
+            "si": false
+          },
+          {
+            "g": 400,
+            "eur_kg": 7.73,
+            "pav": "Monge VetSolution Dog Wet Gastrointestin",
+            "si": false
+          },
+          {
+            "g": 12000,
+            "eur_kg": 8.57,
+            "pav": "Monge VetSolution Dog Gastrointestinal A",
+            "si": true
+          }
+        ]
+      },
+      {
+        "pid": "12706",
+        "n": 2,
+        "broliai": [
+          {
+            "g": 2000,
+            "eur_kg": 12.3,
+            "pav": "Monge VetSolution Dog Obesity 2kg",
+            "si": false
+          },
+          {
+            "g": 12000,
+            "eur_kg": 8.57,
+            "pav": "Monge VetSolution Dog Obesity 12kg",
+            "si": true
+          }
+        ]
+      }
+    ],
+    "T3_nesamone": "nerasta"
+  },
+  "deakt": 200,
+  "svetaine": 200
+}
