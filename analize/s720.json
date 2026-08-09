@@ -1,0 +1,190 @@
+{
+  "steps": [
+    "patikros TEMP #2516 st=200",
+    "deakt patikros TEMP #2516 st=200"
+  ],
+  "apply_http": 200,
+  "apply": {
+    "VERSIJA": "sources-2.2",
+    "veiksmas": "sandelisapply",
+    "lentele_yra": "TAIP",
+    "irasyta": 362,
+    "pagal_sandeli": {
+      "zb": 362
+    },
+    "liko_kandidatu": 0
+  },
+  "dry_po": {
+    "VERSIJA": "sources-2.2",
+    "veiksmas": "sandelisdry",
+    "lentele_yra": "TAIP",
+    "kandidatu": 0,
+    "pagal_sandeli": [],
+    "zurnale_jau": 362,
+    "pvz": [],
+    "PASTABA": "Nieko neirasyta."
+  },
+  "ver_http": 200,
+  "patikra": {
+    "VERSIJA": "S720 PATIKRA",
+    "laikas": "2026-08-09 12:20:56",
+    "sandelio_reiksmes": [
+      {
+        "v": "av",
+        "c": "1388"
+      },
+      {
+        "v": "vf",
+        "c": "1161"
+      },
+      {
+        "v": "zb",
+        "c": "1059"
+      },
+      {
+        "v": "quattro",
+        "c": "65"
+      },
+      {
+        "v": "prins",
+        "c": "43"
+      },
+      {
+        "v": "belcor_tofu",
+        "c": "42"
+      },
+      {
+        "v": "ambrosia",
+        "c": "15"
+      }
+    ],
+    "liko_be_lauko": 0,
+    "dublikatai_meta": 0,
+    "zurnalo_irasu": 362,
+    "zurnalo_pvz": [
+      {
+        "pid": 14062,
+        "sandelis": "zb",
+        "laikas": "2026-08-09 12:20:40"
+      },
+      {
+        "pid": 14064,
+        "sandelis": "zb",
+        "laikas": "2026-08-09 12:20:40"
+      },
+      {
+        "pid": 14067,
+        "sandelis": "zb",
+        "laikas": "2026-08-09 12:20:40"
+      }
+    ],
+    "zurnalo_paskutinis": {
+      "pid": 34792,
+      "sandelis": "zb",
+      "laikas": "2026-08-09 12:20:42"
+    },
+    "registras": [
+      {
+        "source": "ambrosia",
+        "is_active": "1",
+        "c": "15"
+      },
+      {
+        "source": "av",
+        "is_active": "1",
+        "c": "1400"
+      },
+      {
+        "source": "belcor_tofu",
+        "is_active": "1",
+        "c": "62"
+      },
+      {
+        "source": "prins",
+        "is_active": "1",
+        "c": "43"
+      },
+      {
+        "source": "quattro",
+        "is_active": "1",
+        "c": "65"
+      },
+      {
+        "source": "vf",
+        "is_active": "1",
+        "c": "1161"
+      },
+      {
+        "source": "zb",
+        "is_active": "1",
+        "c": "1059"
+      }
+    ],
+    "prekiu_busenos": [
+      {
+        "st": "draft",
+        "c": "1039"
+      },
+      {
+        "st": "publish",
+        "c": "2734"
+      },
+      {
+        "st": "trash",
+        "c": "32"
+      }
+    ],
+    "pvz_14062": {
+      "sandelis": "zb",
+      "st": "publish",
+      "kaina": "34.99",
+      "stock": "0.000000",
+      "zb_qty": "0",
+      "tax": "taxable",
+      "resolve": {
+        "source": "zb",
+        "carrier": "venipak",
+        "courier_only": false,
+        "label": "ZB (Žalioji Banga)",
+        "reason": "ZB meta laukai"
+      }
+    },
+    "pvz_14072": {
+      "sandelis": "zb",
+      "st": "publish",
+      "kaina": "65.59",
+      "stock": "17.000000",
+      "zb_qty": "17",
+      "tax": "taxable",
+      "resolve": {
+        "source": "zb",
+        "carrier": "venipak",
+        "courier_only": false,
+        "label": "ZB (Žalioji Banga)",
+        "reason": "ZB meta laukai"
+      }
+    },
+    "pvz_14064": {
+      "sandelis": "zb",
+      "st": "publish",
+      "kaina": "42.99",
+      "stock": "11.000000",
+      "zb_qty": "11",
+      "tax": "taxable",
+      "resolve": {
+        "source": "zb",
+        "carrier": "venipak",
+        "courier_only": false,
+        "label": "ZB (Žalioji Banga)",
+        "reason": "ZB meta laukai"
+      }
+    },
+    "klase_versija": "2.2"
+  },
+  "svetaine_http": 200,
+  "aktyvus_temp": [],
+  "aktyvus_sources": [
+    "#2403 Petshop Stock Service v1.3 (per registra)",
+    "#2515 Petshop Sources v2.2 (registras + palaikymas + sandelio pildymas)"
+  ]
+}
