@@ -1,0 +1,144 @@
+{
+  "diegimas": {
+    "laikas": "2026-08-09 16:15:21",
+    "irasyta": 15733,
+    "md5_ok": true
+  },
+  "rez": {
+    "laikas": "2026-08-09 16:15:25",
+    "versija": "1.0",
+    "sekciju_variklis": "VEIKIA (psdp_split)",
+    "T1_svoriu_sumos": {
+      "maistas": 100,
+      "skanestai": 100,
+      "papildai": 100,
+      "aksesuarai": 100
+    },
+    "T1_verdiktas": "GERAI",
+    "T2_tipai": [
+      {
+        "id": "20355",
+        "pav": "Comfy minkštas kilimėlis gyvūnui, ruda",
+        "tipas": "aksesuarai"
+      },
+      {
+        "id": "17487",
+        "pav": "Miamor skanėstai katėms &#8211; jautie",
+        "tipas": "skanestai"
+      },
+      {
+        "id": "26909",
+        "pav": "JosiDog Economy sausas pašaras šunims,",
+        "tipas": "maistas"
+      },
+      {
+        "id": "13963",
+        "pav": "Trixie Gertuvė butelis su dubenėliu, n",
+        "tipas": "aksesuarai"
+      },
+      {
+        "id": "14225",
+        "pav": "DOGOTEKA DOGOMilk 150ml",
+        "tipas": "papildai"
+      },
+      {
+        "id": "20961",
+        "pav": "Exclusion Hypoallergenic sausas pašara",
+        "tipas": "maistas"
+      }
+    ],
+    "T3_balai": [
+      {
+        "id": "20355",
+        "pav": "Comfy minkštas kilimėlis gyvūnui",
+        "tipas": "aksesuarai",
+        "balas": 100,
+        "surinkta": 100,
+        "galima": 100,
+        "truksta": "",
+        "netaikoma": []
+      },
+      {
+        "id": "17487",
+        "pav": "Miamor skanėstai katėms &#8211; ",
+        "tipas": "skanestai",
+        "balas": 80,
+        "surinkta": 80,
+        "galima": 100,
+        "truksta": "savikaina",
+        "netaikoma": []
+      },
+      {
+        "id": "26909",
+        "pav": "JosiDog Economy sausas pašaras š",
+        "tipas": "maistas",
+        "balas": 100,
+        "surinkta": 100,
+        "galima": 100,
+        "truksta": "",
+        "netaikoma": []
+      },
+      {
+        "id": "13963",
+        "pav": "Trixie Gertuvė butelis su dubenė",
+        "tipas": "aksesuarai",
+        "balas": 90,
+        "surinkta": 90,
+        "galima": 100,
+        "truksta": "EAN",
+        "netaikoma": []
+      }
+    ],
+    "T4_ean_netaikoma": {
+      "be_zymes": {
+        "balas": 0,
+        "galima": 100,
+        "surinkta": 0
+      },
+      "su_zyme": {
+        "balas": 0,
+        "galima": 90,
+        "surinkta": 0,
+        "netaikoma": [
+          "EAN"
+        ]
+      }
+    },
+    "T4_vardiklis_sumazejo": "GERAI",
+    "T4_balas_pakilo": "GERAI",
+    "T5_su_ean": {
+      "balas": 10,
+      "be_ean_buvo": 0
+    },
+    "T5_verdiktas": "GERAI",
+    "T6_pilna_be_truksta": "GERAI",
+    "T7_dry": {
+      "apdorota": 400,
+      "dry": true,
+      "kitas_poslinkis": 400,
+      "vidurkis": 79,
+      "pagal_tipa": {
+        "aksesuarai": {
+          "n": 202,
+          "vidurkis": 79
+        },
+        "maistas": {
+          "n": 154,
+          "vidurkis": 85
+        },
+        "skanestai": {
+          "n": 38,
+          "vidurkis": 59
+        },
+        "papildai": {
+          "n": 6,
+          "vidurkis": 66
+        }
+      },
+      "pilni": 0
+    },
+    "T8_cron": "2026-08-10 05:00"
+  },
+  "deakt": 200,
+  "svetaine": 200
+}
