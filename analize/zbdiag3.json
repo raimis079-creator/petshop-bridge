@@ -1,0 +1,560 @@
+{
+  "steps": [
+    "sukurtas TEMP #2511 status=200",
+    "deaktyvuotas TEMP #2511 status=200"
+  ],
+  "http": 200,
+  "rezultatas": {
+    "VERSIJA": "ZBDIAG v3",
+    "laikas": "2026-08-09 11:44:50",
+    "A_wpai": [
+      {
+        "id": "1",
+        "name": "goods_clean.xml",
+        "update_all_data": "yes",
+        "is_update_custom_fields": "1",
+        "update_custom_fields_logic": "full_update",
+        "custom_fields_list": "0",
+        "custom_fields_only_list": "",
+        "custom_fields_except_list": "",
+        "is_keep_former_posts": "no",
+        "create_new_records": "1",
+        "is_delete_missing": "0",
+        "custom_name": [
+          "_zb_cost",
+          "_zb_qty",
+          "_zb_ean",
+          "_zb_supplier_sku",
+          "_zb_brand",
+          "_zb_rrp",
+          "_zb_weight",
+          "_zb_length",
+          "_zb_width",
+          "_zb_height"
+        ]
+      },
+      {
+        "id": "2",
+        "name": "products.php",
+        "update_all_data": "no",
+        "is_update_custom_fields": "1",
+        "update_custom_fields_logic": "full_update",
+        "custom_fields_list": "0",
+        "custom_fields_only_list": "",
+        "custom_fields_except_list": "",
+        "is_keep_former_posts": "no",
+        "create_new_records": "1",
+        "is_delete_missing": "0",
+        "custom_name": [
+          "_zb_cost",
+          "_zb_rrp",
+          "_zb_qty",
+          "_zb_ean",
+          "_zb_brand",
+          "_zb_supplier_sku",
+          "_zb_enabled",
+          "_zb_weight",
+          "_zb_length",
+          "_zb_width",
+          "_zb_height",
+          "_zb_category"
+        ]
+      },
+      {
+        "id": "3",
+        "name": "stocks.php",
+        "update_all_data": "no",
+        "is_update_custom_fields": "0",
+        "update_custom_fields_logic": "full_update",
+        "custom_fields_list": "0",
+        "custom_fields_only_list": "",
+        "custom_fields_except_list": "",
+        "is_keep_former_posts": "no",
+        "create_new_records": "0",
+        "is_delete_missing": "0",
+        "custom_name": []
+      },
+      {
+        "id": "5",
+        "name": "petshop-xml-vf-fetcher.php",
+        "update_all_data": "no",
+        "is_update_custom_fields": "1",
+        "update_custom_fields_logic": "only",
+        "custom_fields_list": [
+          "_vf_supplier_sku _vf_barcode _vf_brand_raw _vf_category_raw _vf_cost_xml _vf_personal_xml _vf_qty _vf_description_base64"
+        ],
+        "custom_fields_only_list": "_vf_supplier_sku _vf_barcode _vf_brand_raw _vf_category_raw _vf_cost_xml _vf_personal_xml _vf_qty _vf_description_base64",
+        "custom_fields_except_list": "",
+        "is_keep_former_posts": "no",
+        "create_new_records": "1",
+        "is_delete_missing": "0",
+        "custom_name": [
+          "_vf_supplier_sku",
+          "_vf_barcode",
+          "_vf_brand_raw",
+          "_vf_category_raw",
+          "_vf_cost_xml",
+          "_vf_personal_xml",
+          "_vf_qty",
+          "_vf_description_base64"
+        ]
+      },
+      {
+        "id": "7",
+        "name": "petshop-xml-vf-fetcher.php",
+        "update_all_data": "no",
+        "is_update_custom_fields": "1",
+        "update_custom_fields_logic": "only",
+        "custom_fields_list": [
+          "_vf_qty"
+        ],
+        "custom_fields_only_list": "_vf_qty",
+        "custom_fields_except_list": "",
+        "is_keep_former_posts": "no",
+        "create_new_records": "0",
+        "is_delete_missing": "0",
+        "custom_name": [
+          "_vf_qty"
+        ]
+      }
+    ],
+    "B_snippetai": [
+      {
+        "id": "2378",
+        "name": "TEMP S595 Sandeliai",
+        "active": "-1"
+      },
+      {
+        "id": "2379",
+        "name": "TEMP S596 Importai",
+        "active": "-1"
+      },
+      {
+        "id": "2380",
+        "name": "TEMP S597 Prekiu recon",
+        "active": "-1"
+      },
+      {
+        "id": "2381",
+        "name": "TEMP S598 Kodo dump",
+        "active": "-1"
+      },
+      {
+        "id": "2382",
+        "name": "TEMP S619 Recon",
+        "active": "-1"
+      },
+      {
+        "id": "2383",
+        "name": "TEMP S620 VF",
+        "active": "-1"
+      },
+      {
+        "id": "2384",
+        "name": "Petshop Sources v1.1 (ps_sources lentele + NULL)",
+        "active": "0"
+      },
+      {
+        "id": "2387",
+        "name": "Petshop Stock Service v1.2 (parduodamas kiekis)",
+        "active": "0"
+      },
+      {
+        "id": "2390",
+        "name": "TEMP S626 Skirtumai",
+        "active": "-1"
+      },
+      {
+        "id": "2391",
+        "name": "TEMP S628 Neigiami likuciai",
+        "active": "-1"
+      },
+      {
+        "id": "2392",
+        "name": "TEMP S629 Dublikatai",
+        "active": "-1"
+      },
+      {
+        "id": "2393",
+        "name": "TEMP S630 Likuciu taisymas",
+        "active": "-1"
+      },
+      {
+        "id": "2394",
+        "name": "TEMP S631 Own patikra",
+        "active": "0"
+      },
+      {
+        "id": "2400",
+        "name": "TEMP Petshop Sources V2 Dry (S640)",
+        "active": "0"
+      },
+      {
+        "id": "2401",
+        "name": "TEMP Petshop Sources V2.1 Dry (S641)",
+        "active": "0"
+      },
+      {
+        "id": "2402",
+        "name": "Petshop Sources v2.0 (registras + gyvi skaiciai)",
+        "active": "0"
+      },
+      {
+        "id": "2403",
+        "name": "Petshop Stock Service v1.3 (per registra)",
+        "active": "1"
+      },
+      {
+        "id": "2404",
+        "name": "Petshop Sources v2.1 (registras + palaikymas)",
+        "active": "1"
+      },
+      {
+        "id": "2405",
+        "name": "TEMP Registro Gyvas Testas (S644)",
+        "active": "0"
+      },
+      {
+        "id": "2415",
+        "name": "TEMP Marzos Recon (S652)",
+        "active": "0"
+      },
+      {
+        "id": "2416",
+        "name": "TEMP Marzos Recon 2 (S653)",
+        "active": "0"
+      },
+      {
+        "id": "2417",
+        "name": "TEMP PVM Saltinio Recon (S654)",
+        "active": "0"
+      },
+      {
+        "id": "2418",
+        "name": "TEMP PVM Recon 2 (S655)",
+        "active": "0"
+      },
+      {
+        "id": "2419",
+        "name": "TEMP PVM Simuliacija (S656)",
+        "active": "0"
+      },
+      {
+        "id": "2420",
+        "name": "TEMP PVM Taisymas (S657)",
+        "active": "0"
+      },
+      {
+        "id": "2423",
+        "name": "TEMP ZB Kainu Matavimas (S660)",
+        "active": "0"
+      },
+      {
+        "id": "2431",
+        "name": "TEMP Rinkiniu Recon (S665)",
+        "active": "0"
+      },
+      {
+        "id": "2432",
+        "name": "TEMP Kandidatu Sarasas (S666)",
+        "active": "0"
+      },
+      {
+        "id": "2438",
+        "name": "TEMP PVM Patikra (S671)",
+        "active": "0"
+      },
+      {
+        "id": "2444",
+        "name": "TEMP Zurnalo Patikra (S674)",
+        "active": "0"
+      },
+      {
+        "id": "2452",
+        "name": "TEMP Aprasymu Recon (S679)",
+        "active": "0"
+      },
+      {
+        "id": "2467",
+        "name": "TEMP Sinchronizacijos Testas (S691)",
+        "active": "0"
+      },
+      {
+        "id": "2470",
+        "name": "TEMP Sinchro Snap (S692)",
+        "active": "0"
+      },
+      {
+        "id": "2472",
+        "name": "TEMP Sinchro Snap (S693)",
+        "active": "0"
+      },
+      {
+        "id": "2477",
+        "name": "TEMP Sinchro Snap (S697)",
+        "active": "0"
+      },
+      {
+        "id": "2480",
+        "name": "TEMP Sinchro Snap (S698)",
+        "active": "0"
+      },
+      {
+        "id": "2484",
+        "name": "TEMP Sinchro Snap (S700)",
+        "active": "0"
+      },
+      {
+        "id": "2491",
+        "name": "TEMP Sinchro Snap (S704)",
+        "active": "0"
+      },
+      {
+        "id": "2495",
+        "name": "TEMP Sinchronizacijos Aprepties Patikra (S706)",
+        "active": "0"
+      },
+      {
+        "id": "2497",
+        "name": "TEMP ZB Senu Perkelimas (S708)",
+        "active": "0"
+      },
+      {
+        "id": "2504",
+        "name": "TEMP Masinio Rezultato Patikra (S713)",
+        "active": "0"
+      },
+      {
+        "id": "2505",
+        "name": "TEMP Be Saltinio Tyrimas (S714)",
+        "active": "0"
+      },
+      {
+        "id": "2507",
+        "name": "TEMP Zymiu Taisymas (S716)",
+        "active": "0"
+      },
+      {
+        "id": "2508",
+        "name": "TEMP ZB Diagnostika v1 (S717)",
+        "active": "0"
+      },
+      {
+        "id": "2509",
+        "name": "TEMP ZBDIAG v1 (read-only)",
+        "active": "0"
+      },
+      {
+        "id": "2510",
+        "name": "TEMP ZBDIAG v2 (read-only)",
+        "active": "0"
+      },
+      {
+        "id": "2511",
+        "name": "TEMP ZBDIAG v3 (read-only)",
+        "active": "1"
+      }
+    ],
+    "B_snip_2403": [
+      "186: 'sandelis'=>get_post_meta($pid,'_ps_sandelis',true),"
+    ],
+    "B_snip_2404": [
+      "27: *   hook _ps_sandelis pakeitimas                 → sandėlį pakeitus",
+      "36: *  - Abu reikalauja rakto. Esamų laukų nekeičia NIEKADA — _ps_sandelis lieka vietoje.",
+      "93: $sand = get_post_meta($pid, '_ps_sandelis', true);",
+      "336: $sand  = get_post_meta($pid, '_ps_sandelis', true);",
+      "437: if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid );",
+      "440: if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid );",
+      "549: 'sandelis'=>get_post_meta($pid,'_ps_sandelis',true),"
+    ],
+    "B_snip_2511": [
+      "30: // B. Snippetai su _ps_sandelis",
+      "31: $sn = $wpdb->get_results(\"SELECT id,name,active FROM {$wpdb->prefix}snippets WHERE code LIKE '%_ps_sandelis%'\", ARRAY_A);",
+      "37: foreach($lines as $i=>$L){ if(strpos($L,'_ps_sandelis')!==false) $hits[]=($i+1).': '.trim(mb_substr($L,0,180)); }",
+      "44: $code=file_get_contents($f); if(strpos($code,'_ps_sandelis')===false) continue;",
+      "46: foreach($lines as $i=>$L){ if(strpos($L,'_ps_sandelis')!==false) $hits[]=($i+1).': '.trim(mb_substr($L,0,180)); }",
+      "53: $out['D_key_yra_bet_tuscia']=(int)$wpdb->get_var(\"SELECT COUNT(*) FROM {$wpdb->postmeta} WHERE meta_key='_ps_sandelis' AND (meta_value='' OR meta_value IS NULL)\");",
+      "56: $missIds = $wpdb->get_col(\"SELECT p.ID FROM {$wpdb->posts} p JOIN {$wpdb->prefix}ps_sources s ON s.product_id=p.ID AND s.source='zb' AND s.is_active=1 LEFT JOIN {$wpdb->postmeta}",
+      "57: $zbIds  = $wpdb->get_col(\"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_ps_sandelis' AND meta_value='zb'\");"
+    ],
+    "C_mu": {
+      "petshop-katalogas.php": [
+        "80: * melavo: prekės turėjo ZB sandėlį, tik neturėjo `_ps_sandelis` lauko.",
+        "190: $sand = get_post_meta( $pid, '_ps_sandelis', true );",
+        "502: 'sand' => (string) get_post_meta( $pid, '_ps_sandelis', true ),",
+        "660: 'br' => '', 'sand' => (string) $mv( '_ps_sandelis' ),",
+        "1072: if ( $sand === '' ) { $sand = (string) $mv( '_ps_sandelis' ); }",
+        "1232: '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
+        "1297: $sand  = $v( '_ps_sandelis' );"
+      ]
+    },
+    "D_sources_stulpeliai": [
+      "id",
+      "product_id",
+      "source",
+      "supplier_sku",
+      "ean",
+      "stock_qty",
+      "cost_net",
+      "synced_at",
+      "is_active",
+      "is_sellable",
+      "priority",
+      "created_at",
+      "updated_at"
+    ],
+    "D_key_yra_bet_tuscia": 0,
+    "E_be_lauko_kiekis": 362,
+    "E_su_zb_kiekis": 697,
+    "E_miss": {
+      "n": 362,
+      "_product_attributes": 329,
+      "_manual_price_override": 0,
+      "_thumbnail_id": 326,
+      "_tax_status": 362,
+      "_regular_price": 324,
+      "_price": 324,
+      "_zb_sku": 0,
+      "_zb_last_sync": 362,
+      "su_kategorija": 362,
+      "modif_siandien": 361
+    },
+    "E_zb_ok": {
+      "n": 697,
+      "_product_attributes": 645,
+      "_manual_price_override": 0,
+      "_thumbnail_id": 580,
+      "_tax_status": 697,
+      "_regular_price": 697,
+      "_price": 697,
+      "_zb_sku": 0,
+      "_zb_last_sync": 697,
+      "su_kategorija": 697,
+      "modif_siandien": 682
+    },
+    "F_zb_ok_sukurta": [
+      {
+        "d": "2026-06-04",
+        "c": "280"
+      },
+      {
+        "d": "2026-06-14",
+        "c": "277"
+      },
+      {
+        "d": "2026-06-05",
+        "c": "46"
+      },
+      {
+        "d": "2026-07-14",
+        "c": "26"
+      },
+      {
+        "d": "2026-06-12",
+        "c": "17"
+      },
+      {
+        "d": "2026-06-06",
+        "c": "14"
+      },
+      {
+        "d": "2026-06-13",
+        "c": "11"
+      },
+      {
+        "d": "2026-06-18",
+        "c": "9"
+      },
+      {
+        "d": "2026-07-17",
+        "c": "7"
+      },
+      {
+        "d": "2026-05-27",
+        "c": "5"
+      },
+      {
+        "d": "2026-07-15",
+        "c": "2"
+      },
+      {
+        "d": "2026-08-01",
+        "c": "1"
+      }
+    ],
+    "G_pmxi_paskutiniai": [
+      {
+        "import_id": "1",
+        "paskutinis": "2026-05-27 11:12:17",
+        "viso": "2"
+      },
+      {
+        "import_id": "2",
+        "paskutinis": "2026-08-06 15:01:03",
+        "viso": "4"
+      },
+      {
+        "import_id": "3",
+        "paskutinis": "2026-08-09 07:02:02",
+        "viso": "4"
+      },
+      {
+        "import_id": "5",
+        "paskutinis": "2026-08-09 03:31:02",
+        "viso": "5"
+      },
+      {
+        "import_id": "7",
+        "paskutinis": "2026-08-09 08:16:02",
+        "viso": "4"
+      }
+    ],
+    "G_pmxi_10": [
+      {
+        "import_id": "7",
+        "date": "2026-08-09 08:16:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2309 skipped"
+      },
+      {
+        "import_id": "7",
+        "date": "2026-08-09 07:16:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2309 skipped"
+      },
+      {
+        "import_id": "3",
+        "date": "2026-08-09 07:02:02",
+        "summary": "0 Produktai created 514 updated 1026 skipped"
+      },
+      {
+        "import_id": "5",
+        "date": "2026-08-09 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1 updated 2308 skipped"
+      },
+      {
+        "import_id": "3",
+        "date": "2026-08-09 03:02:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1042 updated 1567 skipped"
+      },
+      {
+        "import_id": "5",
+        "date": "2026-08-08 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1006 updated 1303 skipped"
+      },
+      {
+        "import_id": "5",
+        "date": "2026-08-07 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 226 updated 2083 skipped"
+      },
+      {
+        "import_id": "2",
+        "date": "2026-08-06 15:01:03",
+        "summary": "0 Produktai created 362 updated 2218 skipped"
+      },
+      {
+        "import_id": "2",
+        "date": "2026-08-04 03:01:02",
+        "summary": "import finished & cron un-triggered<br>2 Produktai created 142 updated 2458 skipped"
+      }
+    ]
+  }
+}
