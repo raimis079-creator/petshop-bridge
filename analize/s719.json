@@ -1,0 +1,295 @@
+{
+  "steps": [
+    "WPAI TEMP #2514 st=200",
+    "deakt WPAI TEMP #2514 st=200",
+    "v2.2 snippet #2515 st=200",
+    "deakt v2.1 #2404 st=200"
+  ],
+  "wpai_http": 200,
+  "wpai": {
+    "VERSIJA": "S719 WPAI",
+    "laikas": "2026-08-09 12:13:33",
+    "imp_1": {
+      "pries": {
+        "logic": "full_update",
+        "only": ""
+      },
+      "po": {
+        "logic": "only",
+        "only": "_zb_cost _zb_qty _zb_ean _zb_supplier_sku _zb_brand _zb_rrp _zb_weight _zb_length _zb_width _zb_height",
+        "is_upd_cf": "1"
+      },
+      "db_upd": 1,
+      "po_unserialize": "TAIP"
+    },
+    "imp_2": {
+      "pries": {
+        "logic": "full_update",
+        "only": ""
+      },
+      "po": {
+        "logic": "only",
+        "only": "_zb_cost _zb_rrp _zb_qty _zb_ean _zb_brand _zb_supplier_sku _zb_enabled _zb_weight _zb_length _zb_width _zb_height _zb_category",
+        "is_upd_cf": "1"
+      },
+      "db_upd": 1,
+      "po_unserialize": "TAIP"
+    }
+  },
+  "v22_id": 2515,
+  "svetaine_http": 200,
+  "dry_http": 200,
+  "dry": {
+    "VERSIJA": "sources-2.2",
+    "veiksmas": "sandelisdry",
+    "lentele_yra": "TAIP",
+    "kandidatu": 362,
+    "pagal_sandeli": {
+      "zb": 362
+    },
+    "zurnale_jau": 0,
+    "pvz": [
+      {
+        "id": 14062,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Nero Guolis su uždengimu sofai, ketur"
+      },
+      {
+        "id": 14064,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie paltukas šunims Pontis"
+      },
+      {
+        "id": 14067,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Apsauginis bodis šunims, XS: 25 cm, p"
+      },
+      {
+        "id": 14072,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Monge Dry Cat Adult 10kg"
+      },
+      {
+        "id": 14075,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Apsauginis rūbelis (bodis) šuniui, XS"
+      },
+      {
+        "id": 14076,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Apsauginis rūbelis (bodis) šuniui , S"
+      },
+      {
+        "id": 14077,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Apsauginis rūbelis (bodis) šuniui, S-"
+      },
+      {
+        "id": 14078,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Apsauginis rūbelis (bodis) šuniui, M "
+      },
+      {
+        "id": 14088,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Orléans striukė šuniui, L 55 cm, juod"
+      },
+      {
+        "id": 14103,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie BE NORDIC Husum lietpaltis, XS: 30 cm"
+      },
+      {
+        "id": 14104,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie BE NORDIC Husum lietpaltis, S: 35 cm,"
+      },
+      {
+        "id": 14105,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie BE NORDIC Husum lietpaltis, S: 40 cm,"
+      },
+      {
+        "id": 14106,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie BE NORDIC Husum lietpaltis, M: 45 cm,"
+      },
+      {
+        "id": 14107,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie BE NORDIC Husum lietpaltis, XL: 70 cm"
+      },
+      {
+        "id": 14108,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "TRIXIE Vimy lietpaltis, XS: 25 cm, žydras"
+      },
+      {
+        "id": 14111,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "TRIXIE CityStyle Berlin megztinis šuniui , X"
+      },
+      {
+        "id": 14112,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie CityStyle Oslo striukė šuniui , XS: 3"
+      },
+      {
+        "id": 14113,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie CityStyle Oslo striukė, S: 36 cm, šv."
+      },
+      {
+        "id": 14114,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Minot striukė šuniui S:36cm, raudona"
+      },
+      {
+        "id": 14115,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie paltukas šunims Pontis"
+      },
+      {
+        "id": 14137,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie CityStyle Oslo striukė, M: 45 cm, šv."
+      },
+      {
+        "id": 14144,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "TRIXIE CityStyle Berlin megztinis, XS: 27 cm"
+      },
+      {
+        "id": 14146,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie CityStyle Berlin megztinis, XS: 27 cm"
+      },
+      {
+        "id": 14154,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Jautienos skonio kolageno ritinys"
+      },
+      {
+        "id": 14155,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Jautienos skonio kolageno ritinys"
+      },
+      {
+        "id": 14156,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Jautienos skonio kolageno spurga "
+      },
+      {
+        "id": 14157,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Jautienos skonio kolageno traškuč"
+      },
+      {
+        "id": 14158,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Jautienos skonio kolageno Maži ri"
+      },
+      {
+        "id": 14159,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Jautienos skonio kolageno Vidutin"
+      },
+      {
+        "id": 14160,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Vištienos skonio kolageno ritinys"
+      },
+      {
+        "id": 14161,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Vištienos skonio kolageno ritinys"
+      },
+      {
+        "id": 14162,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Vištienos skonio kolageno spurga "
+      },
+      {
+        "id": 14163,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Vištienos skonio kolageno traškuč"
+      },
+      {
+        "id": 14164,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Chewllagen Vištienos skonio kolageno Maži ri"
+      },
+      {
+        "id": 14169,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Maro kampinis Tualetas namelis katei,"
+      },
+      {
+        "id": 14171,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Family Cat visavertis pašaras suaugusioms ka"
+      },
+      {
+        "id": 14173,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Family Dog visavertis pašaras suaugusiems šu"
+      },
+      {
+        "id": 14175,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Automatinis kačių tualetas, plastikas"
+      },
+      {
+        "id": 14177,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Masažo, kailio priežiūros arka katėms"
+      },
+      {
+        "id": 14178,
+        "busena": "publish",
+        "bus": "zb",
+        "pav": "Trixie Batres draskyklė stulpas katėms , 62 "
+      }
+    ],
+    "PASTABA": "Nieko neirasyta."
+  }
+}
