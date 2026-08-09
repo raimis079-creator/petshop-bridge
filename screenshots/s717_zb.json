@@ -1,0 +1,598 @@
+{
+ "version": "D717",
+ "errors": [],
+ "data": {
+  "v": "D717",
+  "A_visos_prekes": [
+   {
+    "st": "draft",
+    "c": "1039"
+   },
+   {
+    "st": "publish",
+    "c": "2734"
+   },
+   {
+    "st": "trash",
+    "c": "32"
+   }
+  ],
+  "A_registras_pagal_saltini": [
+   {
+    "source": "ambrosia",
+    "is_active": "1",
+    "c": "15"
+   },
+   {
+    "source": "av",
+    "is_active": "1",
+    "c": "1400"
+   },
+   {
+    "source": "belcor_tofu",
+    "is_active": "1",
+    "c": "62"
+   },
+   {
+    "source": "prins",
+    "is_active": "1",
+    "c": "43"
+   },
+   {
+    "source": "quattro",
+    "is_active": "1",
+    "c": "65"
+   },
+   {
+    "source": "vf",
+    "is_active": "1",
+    "c": "1161"
+   },
+   {
+    "source": "zb",
+    "is_active": "1",
+    "c": "1059"
+   }
+  ],
+  "B_sandelis_reiksmes": [
+   {
+    "v": "av",
+    "c": "1388"
+   },
+   {
+    "v": "vf",
+    "c": "1161"
+   },
+   {
+    "v": "zb",
+    "c": "697"
+   },
+   {
+    "v": "(tuscia)",
+    "c": "362"
+   },
+   {
+    "v": "quattro",
+    "c": "65"
+   },
+   {
+    "v": "prins",
+    "c": "43"
+   },
+   {
+    "v": "belcor_tofu",
+    "c": "42"
+   },
+   {
+    "v": "ambrosia",
+    "c": "15"
+   }
+  ],
+  "B_be_sandelio_kiekis": 362,
+  "B_be_sandelio_pagal_busena": [
+   {
+    "st": "draft",
+    "c": "54"
+   },
+   {
+    "st": "publish",
+    "c": "308"
+   }
+  ],
+  "B_be_sandelio_registras": [
+   {
+    "source": "zb",
+    "is_active": "1",
+    "c": "362"
+   }
+  ],
+  "B_be_sandelio_be_registro": 0,
+  "B_be_sandelio_sukurta": [
+   {
+    "d": "2026-08-03",
+    "c": "1"
+   },
+   {
+    "d": "2026-07-16",
+    "c": "14"
+   },
+   {
+    "d": "2026-07-05",
+    "c": "16"
+   },
+   {
+    "d": "2026-07-04",
+    "c": "1"
+   },
+   {
+    "d": "2026-06-14",
+    "c": "30"
+   },
+   {
+    "d": "2026-06-13",
+    "c": "7"
+   },
+   {
+    "d": "2026-06-12",
+    "c": "11"
+   },
+   {
+    "d": "2026-06-08",
+    "c": "1"
+   },
+   {
+    "d": "2026-06-06",
+    "c": "51"
+   },
+   {
+    "d": "2026-06-04",
+    "c": "230"
+   }
+  ],
+  "B_be_sandelio_modifikuota": [
+   {
+    "d": "2026-08-09",
+    "c": "361"
+   },
+   {
+    "d": "2026-08-08",
+    "c": "1"
+   }
+  ],
+  "B_be_sandelio_meta": {
+   "_zb_cost": 362,
+   "_zb_qty": 362,
+   "_zb_barcode": 0,
+   "_zb_last_sync": 362,
+   "_zb_enabled": 362,
+   "_vf_qty": 0,
+   "_sku": 362,
+   "_price": 324,
+   "_stock": 362,
+   "_stock_status": 362
+  },
+  "B_pavyzdziai": [
+   {
+    "ID": "14062",
+    "st": "publish",
+    "pav": "Trixie Nero Guolis su uždengimu sofai, ket",
+    "post_date": "2026-06-04 12:49:21",
+    "post_modified": "2026-08-08 06:01:05",
+    "sku": "0TR2073_37577",
+    "zb_qty": "0",
+    "stock": "0.000000",
+    "kaina": "34.99",
+    "sync": "2026-08-08 06:01:05",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14064",
+    "st": "publish",
+    "pav": "Trixie paltukas šunims Pontis",
+    "post_date": "2026-06-04 12:49:21",
+    "post_modified": "2026-08-09 08:02:09",
+    "sku": "0TR117_680345",
+    "zb_qty": "11",
+    "stock": "11.000000",
+    "kaina": "42.99",
+    "sync": "2026-08-09 08:02:09",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14067",
+    "st": "publish",
+    "pav": "Trixie Apsauginis bodis šunims, XS: 25 cm,",
+    "post_date": "2026-06-04 12:49:21",
+    "post_modified": "2026-08-09 08:02:09",
+    "sku": "0TR234_19531",
+    "zb_qty": "4",
+    "stock": "4.000000",
+    "kaina": "24.99",
+    "sync": "2026-08-09 08:02:09",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14072",
+    "st": "publish",
+    "pav": "Monge Dry Cat Adult 10kg",
+    "post_date": "2026-06-04 12:49:24",
+    "post_modified": "2026-08-09 08:02:10",
+    "sku": "01M121110",
+    "zb_qty": "17",
+    "stock": "17.000000",
+    "kaina": "65.59",
+    "sync": "2026-08-09 08:02:10",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14075",
+    "st": "publish",
+    "pav": "Trixie Apsauginis rūbelis (bodis) šuniui, ",
+    "post_date": "2026-06-04 12:49:24",
+    "post_modified": "2026-08-09 08:02:10",
+    "sku": "0TR234_19532",
+    "zb_qty": "4",
+    "stock": "4.000000",
+    "kaina": "24.99",
+    "sync": "2026-08-09 08:02:10",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14076",
+    "st": "publish",
+    "pav": "Trixie Apsauginis rūbelis (bodis) šuniui ,",
+    "post_date": "2026-06-04 12:49:24",
+    "post_modified": "2026-08-09 08:02:10",
+    "sku": "0TR234_19533",
+    "zb_qty": "6",
+    "stock": "6.000000",
+    "kaina": "27.99",
+    "sync": "2026-08-09 08:02:10",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14077",
+    "st": "publish",
+    "pav": "Trixie Apsauginis rūbelis (bodis) šuniui, ",
+    "post_date": "2026-06-04 12:49:24",
+    "post_modified": "2026-08-09 08:02:10",
+    "sku": "0TR234_19534",
+    "zb_qty": "17",
+    "stock": "17.000000",
+    "kaina": "29.99",
+    "sync": "2026-08-09 08:02:10",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14078",
+    "st": "publish",
+    "pav": "Trixie Apsauginis rūbelis (bodis) šuniui, ",
+    "post_date": "2026-06-04 12:49:24",
+    "post_modified": "2026-08-09 08:02:11",
+    "sku": "0TR234_19535",
+    "zb_qty": "3",
+    "stock": "3.000000",
+    "kaina": "29.99",
+    "sync": "2026-08-09 08:02:10",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14088",
+    "st": "publish",
+    "pav": "Trixie Orléans striukė šuniui, L 55 cm, ju",
+    "post_date": "2026-06-04 12:49:29",
+    "post_modified": "2026-08-09 08:02:11",
+    "sku": "0TR1171_30517",
+    "zb_qty": "9",
+    "stock": "9.000000",
+    "kaina": "17.99",
+    "sync": "2026-08-09 08:02:11",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14103",
+    "st": "publish",
+    "pav": "Trixie BE NORDIC Husum lietpaltis, XS: 30 ",
+    "post_date": "2026-06-04 12:49:32",
+    "post_modified": "2026-08-09 08:02:13",
+    "sku": "0TR113_680211",
+    "zb_qty": "3",
+    "stock": "3.000000",
+    "kaina": "22.99",
+    "sync": "2026-08-09 08:02:13",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14104",
+    "st": "publish",
+    "pav": "Trixie BE NORDIC Husum lietpaltis, S: 35 c",
+    "post_date": "2026-06-04 12:49:32",
+    "post_modified": "2026-08-09 08:02:14",
+    "sku": "0TR113_680212",
+    "zb_qty": "3",
+    "stock": "3.000000",
+    "kaina": "24.99",
+    "sync": "2026-08-09 08:02:14",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   },
+   {
+    "ID": "14105",
+    "st": "publish",
+    "pav": "Trixie BE NORDIC Husum lietpaltis, S: 40 c",
+    "post_date": "2026-06-04 12:49:32",
+    "post_modified": "2026-08-09 08:02:14",
+    "sku": "0TR113_680213",
+    "zb_qty": "6",
+    "stock": "6.000000",
+    "kaina": "24.99",
+    "sync": "2026-08-09 08:02:14",
+    "registras": {
+     "source": "zb",
+     "supplier_sku": "",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2"
+    },
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    }
+   }
+  ],
+  "C_zb_su_sandeliu_pvz": [
+   {
+    "ID": 6349,
+    "pav": "KOMP053 Monge Cat 4&#215;10 Hairball+Ste",
+    "sandelis": "zb",
+    "sukurta": "2026-05-27 13:54:49",
+    "sync": "2026-08-09 08:02:27"
+   },
+   {
+    "ID": 6350,
+    "pav": "KOMP054 Monge Dog 3&#215;12, 1&#215;7.5 ",
+    "sandelis": "zb",
+    "sukurta": "2026-05-27 13:54:49",
+    "sync": "2026-07-02 22:02:09"
+   },
+   {
+    "ID": 6351,
+    "pav": "KOMP055 Gemon Cat 4&#215;7 Kitten+Urinar",
+    "sandelis": "zb",
+    "sukurta": "2026-05-27 13:54:49",
+    "sync": "2026-07-02 22:02:09"
+   },
+   {
+    "ID": 6379,
+    "pav": "KOMP056 Gemon Cat 4&#215;7 Urinary2+Ster",
+    "sandelis": "zb",
+    "sukurta": "2026-05-27 13:54:57",
+    "sync": "2026-07-02 22:02:10"
+   },
+   {
+    "ID": 6382,
+    "pav": "KOMP058 Monge Dog 4x12kg Puppy Lamb+Rabb",
+    "sandelis": "zb",
+    "sukurta": "2026-05-27 13:54:57",
+    "sync": "2026-07-02 22:02:10"
+   }
+  ],
+  "D_kode_naudojama": [
+   {
+    "failas": "wp-content/mu-plugins/petshop-katalogas.php",
+    "kiek": 7,
+    "eilutes": [
+     "80: * melavo: prekės turėjo ZB sandėlį, tik neturėjo `_ps_sandelis` lauko.",
+     "190: $sand = get_post_meta( $pid, '_ps_sandelis', true );",
+     "502: 'sand' => (string) get_post_meta( $pid, '_ps_sandelis', true ),",
+     "660: 'br' => '', 'sand' => (string) $mv( '_ps_sandelis' ),",
+     "1072: if ( $sand === '' ) { $sand = (string) $mv( '_ps_sandelis' ); }",
+     "1232: '_ps_sandelis','_own_stock_qty','_stock','_cost_price',"
+    ]
+   }
+  ],
+  "E_importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "mini_ps_sandelis": "ne",
+    "mini_zb": "TAIP"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "mini_ps_sandelis": "ne",
+    "mini_zb": "TAIP"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "mini_ps_sandelis": "ne",
+    "mini_zb": "ne"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "mini_ps_sandelis": "ne",
+    "mini_zb": "ne"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "mini_ps_sandelis": "ne",
+    "mini_zb": "ne"
+   }
+  ],
+  "F_zb_sync_amzius": [
+   {
+    "grupe": "1-7 d.",
+    "c": "2"
+   },
+   {
+    "grupe": "senesne nei 7 d.",
+    "c": "15"
+   },
+   {
+    "grupe": "sviezia (<24h)",
+    "c": "1042"
+   }
+  ],
+  "G_publish_su_likuciu": 284,
+  "G_lookup_atitikimas": [
+   {
+    "stock_status": "instock",
+    "c": "322"
+   },
+   {
+    "stock_status": "outofstock",
+    "c": "40"
+   }
+  ]
+ },
+ "snippet_id": 2508
+}
