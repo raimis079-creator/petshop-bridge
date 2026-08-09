@@ -1,0 +1,117 @@
+{
+  "rez": {
+    "stulpeliai": [
+      {
+        "Field": "child_item_id",
+        "Type": "bigint(20) unsigned",
+        "Null": "NO",
+        "Key": "PRI",
+        "Default": null,
+        "Extra": "auto_increment"
+      },
+      {
+        "Field": "product_id",
+        "Type": "bigint(20) unsigned",
+        "Null": "NO",
+        "Key": "MUL",
+        "Default": null,
+        "Extra": ""
+      },
+      {
+        "Field": "container_id",
+        "Type": "bigint(20) unsigned",
+        "Null": "NO",
+        "Key": "MUL",
+        "Default": null,
+        "Extra": ""
+      },
+      {
+        "Field": "menu_order",
+        "Type": "bigint(20) unsigned",
+        "Null": "NO",
+        "Key": "",
+        "Default": null,
+        "Extra": ""
+      }
+    ],
+    "eiluciu": 362,
+    "pvz": [
+      {
+        "child_item_id": "18",
+        "product_id": "19574",
+        "container_id": "34156",
+        "menu_order": "0"
+      },
+      {
+        "child_item_id": "17",
+        "product_id": "17156",
+        "container_id": "34153",
+        "menu_order": "5"
+      },
+      {
+        "child_item_id": "16",
+        "product_id": "19530",
+        "container_id": "34153",
+        "menu_order": "4"
+      },
+      {
+        "child_item_id": "15",
+        "product_id": "17179",
+        "container_id": "34153",
+        "menu_order": "3"
+      },
+      {
+        "child_item_id": "12",
+        "product_id": "17421",
+        "container_id": "34153",
+        "menu_order": "0"
+      }
+    ],
+    "komponentu_pvz": [
+      {
+        "child_item_id": "18",
+        "product_id": "19574",
+        "container_id": "34156",
+        "menu_order": "0"
+      },
+      {
+        "child_item_id": "17",
+        "product_id": "17156",
+        "container_id": "34153",
+        "menu_order": "5"
+      },
+      {
+        "child_item_id": "16",
+        "product_id": "19530",
+        "container_id": "34153",
+        "menu_order": "4"
+      }
+    ],
+    "josera": [
+      {
+        "ID": "18032",
+        "post_title": "Josera Mini Chicken&Rice 10 kg - sausas maistas suaugusiems mažų veislių šunims su paukštiena"
+      },
+      {
+        "ID": "18029",
+        "post_title": "Josera Mini Duck+Potato sausas pašaras mažų veislių šunims su antiena, 10 kg"
+      },
+      {
+        "ID": "18026",
+        "post_title": "Josera Mini Duck+Potato sausas pašaras mažų veislių šunims su antiena, 3 kg"
+      },
+      {
+        "ID": "18022",
+        "post_title": "Josera Mini Junior Duck and Salmon sausas pašaras mažų veislių jauniems šunims su antiena ir lašiša, 10 kg"
+      },
+      {
+        "ID": "18018",
+        "post_title": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg - sausas maistas mažų veislių šunims su ėriena"
+      },
+      {
+        "ID": "18011",
+        "post_title": "Josera Naturecat 10 kg - begrūdis sausas maistas katėms"
+      }
+    ]
+  }
+}
