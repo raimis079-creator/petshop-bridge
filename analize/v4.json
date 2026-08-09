@@ -1,0 +1,126 @@
+{
+  "diegimas": {
+    "laikas": "2026-08-09 17:06:26",
+    "irasyta": 13528,
+    "md5_ok": true
+  },
+  "rez": {
+    "laikas": "2026-08-09 17:06:30",
+    "versija": "1.0",
+    "DIAGNOSTIKA": {
+      "versija": "1.0",
+      "raktai": {
+        "_mnm_data": 0,
+        "_mnm_child_ids": 0,
+        "_mnm_contents": 0,
+        "_children": 0,
+        "_petshop_fbt_ids": 9,
+        "_dp_base_product_id": 8
+      },
+      "mnm_lentele": 362,
+      "pakuotes_testas": {
+        "12 kg": 12000,
+        "400 g": 400,
+        "1,5 kg": 1500,
+        "85 g": 85,
+        "niekas": null
+      }
+    },
+    "T1_mnm_saltinis": "nerasta",
+    "T2_fbt": {
+      "tevas": "17978",
+      "reiksme": "Array\n(\n)\n",
+      "tikrinam_vaika": 0
+    },
+    "T3_dp_bazine": "17493",
+    "T3_rezultatas": [
+      {
+        "id": 34449,
+        "pav": "Miamor konservai katėms su tunu ir krevetėmis, 100 g × 24 vnt.",
+        "busena": "publish",
+        "pastaba": "24 vnt. pakuotė",
+        "nuoroda": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&atv=34449"
+      }
+    ],
+    "T4_tikrai_yra": {
+      "a:2:{i:0;i:8125;i:1;i:9000;} ieskom 12": "nerado"
+    },
+    "T5_broliai_pid": "12456",
+    "T5_broliai": [
+      {
+        "id": 13019,
+        "pav": "Eukanuba Yorkshire Terrier Adult (",
+        "g": 2000,
+        "kaina": 13.29,
+        "eur_kg": 6.65,
+        "panasu": 80,
+        "si": false
+      },
+      {
+        "id": 12458,
+        "pav": "Eukanuba West Highland Terrier Adu",
+        "g": 2500,
+        "kaina": 15.29,
+        "eur_kg": 6.12,
+        "panasu": 78,
+        "si": false
+      },
+      {
+        "id": 12452,
+        "pav": "Eukanuba Active Small Adult (višti",
+        "g": 3000,
+        "kaina": 15.89,
+        "eur_kg": 5.3,
+        "panasu": 74,
+        "si": false
+      },
+      {
+        "id": 12456,
+        "pav": "Eukanuba Golden Retriever Adult (v",
+        "g": 12000,
+        "kaina": 58.49,
+        "eur_kg": 4.87,
+        "panasu": 100,
+        "si": true
+      },
+      {
+        "id": 12457,
+        "pav": "Eukanuba German Shephed Adult (viš",
+        "g": 12000,
+        "kaina": 58.49,
+        "eur_kg": 4.87,
+        "panasu": 78,
+        "si": false
+      }
+    ],
+    "T5_nesamones": [],
+    "T6_matomumas": {
+      "parduotuveje": true,
+      "busena": "publish",
+      "katalogo": "visible",
+      "sandelyje": true,
+      "paieskoje": true,
+      "noindex": false,
+      "feeduose": true,
+      "nuoroda": "https://dev.avesa.lt/product/eukanuba-active-small-adult-vistiena-3kg/"
+    },
+    "T6_juodrastis": {
+      "parduotuveje": false,
+      "busena": "draft",
+      "katalogo": "visible",
+      "sandelyje": false,
+      "paieskoje": false,
+      "noindex": false,
+      "feeduose": false,
+      "nuoroda": ""
+    },
+    "T7_dalyvauja": {
+      "rinkiniai": [],
+      "fbt": [],
+      "dp": [],
+      "akcijos": []
+    }
+  },
+  "deakt": 200,
+  "svetaine": 200
+}
