@@ -1,0 +1,643 @@
+{
+  "steps": [
+    "deaktyvuotas senas TEMP #2396 TEMP Snippetu DB Probe v1 (S636)",
+    "deaktyvuotas senas TEMP #2397 TEMP Snippetu DB Probe v2 (S637)",
+    "sukurtas TEMP #2509 status=200",
+    "deaktyvuotas TEMP #2509 status=200"
+  ],
+  "http": 200,
+  "rezultatas": {
+    "VERSIJA": "ZBDIAG v1",
+    "laikas": "2026-08-09 11:31:42",
+    "zb_meta_raktai": [
+      {
+        "meta_key": "_zb_weight",
+        "c": "1124"
+      },
+      {
+        "meta_key": "_zb_length",
+        "c": "1124"
+      },
+      {
+        "meta_key": "_zb_height",
+        "c": "1124"
+      },
+      {
+        "meta_key": "_zb_width",
+        "c": "1124"
+      },
+      {
+        "meta_key": "_zb_last_sync",
+        "c": "1060"
+      },
+      {
+        "meta_key": "_zb_qty",
+        "c": "1060"
+      },
+      {
+        "meta_key": "_zb_ean",
+        "c": "1059"
+      },
+      {
+        "meta_key": "_zb_supplier_sku",
+        "c": "1059"
+      },
+      {
+        "meta_key": "_zb_brand",
+        "c": "1059"
+      },
+      {
+        "meta_key": "_zb_cost",
+        "c": "1059"
+      },
+      {
+        "meta_key": "_zb_rrp",
+        "c": "1059"
+      },
+      {
+        "meta_key": "_zb_category",
+        "c": "1059"
+      },
+      {
+        "meta_key": "_zb_enabled",
+        "c": "1054"
+      },
+      {
+        "meta_key": "_zb_skip_reason",
+        "c": "333"
+      },
+      {
+        "meta_key": "_zb_draft_reason",
+        "c": "333"
+      },
+      {
+        "meta_key": "_zb_price_initialized",
+        "c": "62"
+      },
+      {
+        "meta_key": "_zb_cost_prev",
+        "c": "5"
+      }
+    ],
+    "pmxi_imports": [
+      {
+        "id": "1",
+        "friendly_name": "",
+        "registered_on": "2026-05-27 11:14:21",
+        "last_activity": "2026-05-27 11:14:21",
+        "count": "2045",
+        "imported": "0",
+        "created": "0",
+        "updated": "0",
+        "skipped": "2045",
+        "deleted": "0",
+        "executing": "0",
+        "processing": "0",
+        "triggered": "0",
+        "failed": "0"
+      },
+      {
+        "id": "2",
+        "friendly_name": "",
+        "registered_on": "2026-08-09 03:02:03",
+        "last_activity": "2026-08-09 03:02:02",
+        "count": "2602",
+        "imported": "362",
+        "created": "0",
+        "updated": "362",
+        "skipped": "2218",
+        "deleted": "0",
+        "executing": "0",
+        "processing": "0",
+        "triggered": "1",
+        "failed": "0"
+      },
+      {
+        "id": "3",
+        "friendly_name": "",
+        "registered_on": "2026-08-09 08:03:02",
+        "last_activity": "2026-08-09 08:03:02",
+        "count": "2609",
+        "imported": "514",
+        "created": "0",
+        "updated": "514",
+        "skipped": "1026",
+        "deleted": "0",
+        "executing": "0",
+        "processing": "0",
+        "triggered": "1",
+        "failed": "0"
+      },
+      {
+        "id": "5",
+        "friendly_name": "",
+        "registered_on": "2026-08-09 03:31:35",
+        "last_activity": "2026-08-09 03:31:35",
+        "count": "2309",
+        "imported": "1",
+        "created": "0",
+        "updated": "1",
+        "skipped": "2308",
+        "deleted": "0",
+        "executing": "0",
+        "processing": "0",
+        "triggered": "0",
+        "failed": "0"
+      },
+      {
+        "id": "7",
+        "friendly_name": "",
+        "registered_on": "2026-08-09 08:18:36",
+        "last_activity": "2026-08-09 08:18:36",
+        "count": "2309",
+        "imported": "0",
+        "created": "0",
+        "updated": "0",
+        "skipped": "2309",
+        "deleted": "0",
+        "executing": "0",
+        "processing": "0",
+        "triggered": "0",
+        "failed": "0"
+      }
+    ],
+    "pmxi_history_20": [
+      {
+        "import_id": "7",
+        "type": "processing",
+        "time_run": "154",
+        "date": "2026-08-09 08:16:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2309 skipped"
+      },
+      {
+        "import_id": "7",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-09 08:15:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "7",
+        "type": "processing",
+        "time_run": "156",
+        "date": "2026-08-09 07:16:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2309 skipped"
+      },
+      {
+        "import_id": "7",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-09 07:15:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "3",
+        "type": "processing",
+        "time_run": "3660",
+        "date": "2026-08-09 07:02:02",
+        "summary": "0 Produktai created 514 updated 1026 skipped"
+      },
+      {
+        "import_id": "3",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-09 07:00:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "5",
+        "type": "processing",
+        "time_run": "33",
+        "date": "2026-08-09 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1 updated 2308 skipped"
+      },
+      {
+        "import_id": "5",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-09 03:30:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "3",
+        "type": "processing",
+        "time_run": "10847",
+        "date": "2026-08-09 03:02:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1042 updated 1567 skipped"
+      },
+      {
+        "import_id": "3",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-09 03:00:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "5",
+        "type": "processing",
+        "time_run": "143",
+        "date": "2026-08-08 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1006 updated 1303 skipped"
+      },
+      {
+        "import_id": "5",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-08 03:30:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "5",
+        "type": "processing",
+        "time_run": "69",
+        "date": "2026-08-07 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 226 updated 2083 skipped"
+      },
+      {
+        "import_id": "2",
+        "type": "processing",
+        "time_run": "216060",
+        "date": "2026-08-06 15:01:03",
+        "summary": "0 Produktai created 362 updated 2218 skipped"
+      },
+      {
+        "import_id": "2",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-06 15:00:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "2",
+        "type": "processing",
+        "time_run": "172837",
+        "date": "2026-08-04 03:01:02",
+        "summary": "import finished & cron un-triggered<br>2 Produktai created 142 updated 2458 skipped"
+      },
+      {
+        "import_id": "2",
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-04 03:00:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "import_id": "1",
+        "type": "manual",
+        "time_run": "124",
+        "date": "2026-05-27 11:12:17",
+        "summary": "0 Produktai created 0 updated 2045 skipped"
+      },
+      {
+        "import_id": "1",
+        "type": "manual",
+        "time_run": "1259",
+        "date": "2026-05-27 10:35:36",
+        "summary": "2045 Produktai created 0 updated 0 skipped"
+      }
+    ],
+    "zb_pagal_cost_status": [
+      {
+        "post_status": "draft",
+        "c": "407"
+      },
+      {
+        "post_status": "publish",
+        "c": "652"
+      }
+    ],
+    "zb_pagal_sandeli_status": [
+      {
+        "post_status": "draft",
+        "c": "353"
+      },
+      {
+        "post_status": "publish",
+        "c": "344"
+      }
+    ],
+    "zb_be_ps_sandelis": 362,
+    "sync_raktas": "_zb_last_sync",
+    "sync_pavyzdziai": [
+      "2026-08-09 10:02:31",
+      "2026-06-07 19:02:37",
+      "2026-08-09 10:02:55",
+      "2026-08-09 08:02:34",
+      "2026-06-19 00:02:04"
+    ],
+    "sync_amziaus_pasiskirstymas": {
+      "publish": {
+        "a_<24h": 651,
+        "b_24-48h": 1
+      },
+      "draft": {
+        "a_<24h": 391,
+        "b_24-48h": 1,
+        "d_>7d": 15
+      }
+    },
+    "pasene_>24h": [
+      {
+        "id": "13597",
+        "st": "draft",
+        "v": "2026-06-14 23:02:45",
+        "h": 1329.5
+      },
+      {
+        "id": "33822",
+        "st": "draft",
+        "v": "2026-06-18 22:02:37",
+        "h": 1234.5
+      },
+      {
+        "id": "14768",
+        "st": "draft",
+        "v": "2026-06-19 00:02:04",
+        "h": 1232.5
+      },
+      {
+        "id": "6350",
+        "st": "draft",
+        "v": "2026-07-02 22:02:09",
+        "h": 898.5
+      },
+      {
+        "id": "6351",
+        "st": "draft",
+        "v": "2026-07-02 22:02:09",
+        "h": 898.5
+      },
+      {
+        "id": "6379",
+        "st": "draft",
+        "v": "2026-07-02 22:02:10",
+        "h": 898.5
+      },
+      {
+        "id": "6382",
+        "st": "draft",
+        "v": "2026-07-02 22:02:10",
+        "h": 898.5
+      },
+      {
+        "id": "13679",
+        "st": "draft",
+        "v": "2026-07-03 23:02:19",
+        "h": 873.5
+      },
+      {
+        "id": "13685",
+        "st": "draft",
+        "v": "2026-07-03 23:02:20",
+        "h": 873.5
+      },
+      {
+        "id": "13618",
+        "st": "draft",
+        "v": "2026-07-03 23:02:15",
+        "h": 873.5
+      },
+      {
+        "id": "13628",
+        "st": "draft",
+        "v": "2026-07-03 23:02:16",
+        "h": 873.5
+      },
+      {
+        "id": "13105",
+        "st": "draft",
+        "v": "2026-07-10 23:02:49",
+        "h": 705.5
+      },
+      {
+        "id": "34653",
+        "st": "draft",
+        "v": "2026-07-14 23:03:01",
+        "h": 609.5
+      },
+      {
+        "id": "13700",
+        "st": "draft",
+        "v": "2026-07-21 20:02:47",
+        "h": 444.5
+      },
+      {
+        "id": "13148",
+        "st": "draft",
+        "v": "2026-07-29 22:02:26",
+        "h": 250.5
+      },
+      {
+        "id": "13151",
+        "st": "draft",
+        "v": "2026-08-07 22:02:53",
+        "h": 34.5
+      },
+      {
+        "id": "14062",
+        "st": "publish",
+        "v": "2026-08-08 06:01:05",
+        "h": 26.5
+      }
+    ],
+    "zb_publish_be_sync_datos": 0,
+    "nauji_zb_draftai_nuo_0808": [
+      {
+        "ID": "33996",
+        "post_title": "K9®Petnešos šuniui, M/0: 58–76 cm/40 mm, kamufliažinės",
+        "post_modified": "2026-08-09 11:02:57",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33984",
+        "post_title": "Monge VetSolution Dog Wet Gastrointestinal 400g",
+        "post_modified": "2026-08-09 11:02:54",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33982",
+        "post_title": "Monge VetSolution Dog Wet Diabetic/Obesity 400g",
+        "post_modified": "2026-08-09 11:02:53",
+        "stock": "82.000000"
+      },
+      {
+        "ID": "34854",
+        "post_title": "KOMP047 Real Dog 4*20kg + Real dog Sensitive with DUCK 15kg",
+        "post_modified": "2026-08-09 11:02:53",
+        "stock": "8.000000"
+      },
+      {
+        "ID": "33972",
+        "post_title": "Monge Monoprotein - Cat Flakes su kalakutiena ir morkomis, suaugusioms katėms 80g",
+        "post_modified": "2026-08-09 11:02:49",
+        "stock": "178.000000"
+      },
+      {
+        "ID": "33968",
+        "post_title": "Trixie Noah vital guolis, stačiakamp., 60x50cm, šv. pilkas",
+        "post_modified": "2026-08-09 11:02:46",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33970",
+        "post_title": "Trixie Jimmy guolis, ovalus, 75x65cm, juodas",
+        "post_modified": "2026-08-09 11:02:46",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33962",
+        "post_title": "Trixie Rustic rieb. odos antkaklis Heartbeat, M 38-47cm/40mm, juodas",
+        "post_modified": "2026-08-09 11:02:45",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "34071",
+        "post_title": "1.0_16281 TRIXIE Comfort Soft touring petnešos, S-M 35-60cm/20mm, juodos",
+        "post_modified": "2026-08-09 11:02:41",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33958",
+        "post_title": "Trixie Comfort Soft touring petnešos, S 33-50cm/20mm, fuksija",
+        "post_modified": "2026-08-09 11:02:41",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33940",
+        "post_title": "Trixie Premium pavadys, su neoprenu L-XL 1m/25mm, šv. deim./karamelė",
+        "post_modified": "2026-08-09 11:02:38",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33938",
+        "post_title": "Trixie Premium touring petnešos, M-L 50-90cm/25mm, juodos",
+        "post_modified": "2026-08-09 11:02:35",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "13525",
+        "post_title": "Saulėgrąžos 10kg",
+        "post_modified": "2026-08-09 11:02:28",
+        "stock": "56.000000"
+      },
+      {
+        "ID": "33928",
+        "post_title": "SIMBA - Wet CAT Chunkies with FOWL AND DUCK 415g",
+        "post_modified": "2026-08-09 11:02:28",
+        "stock": "128.000000"
+      },
+      {
+        "ID": "33930",
+        "post_title": "SIMBA - Wet CAT Chunkies with WILD GAMES 415g",
+        "post_modified": "2026-08-09 11:02:28",
+        "stock": "73.000000"
+      },
+      {
+        "ID": "33932",
+        "post_title": "SIMBA - Wet CAT Chunkies with LAMB 415g",
+        "post_modified": "2026-08-09 11:02:28",
+        "stock": "214.000000"
+      },
+      {
+        "ID": "33906",
+        "post_title": "Trixie Dangteliai skardinėms, ø 7.6 cm, 3 vnt., įv. spalvų",
+        "post_modified": "2026-08-09 11:02:15",
+        "stock": "3.000000"
+      },
+      {
+        "ID": "33908",
+        "post_title": "Trixie Dangteliai skardinėms, ø 10.6 cm, 2 vnt., įv. spalvų",
+        "post_modified": "2026-08-09 11:02:15",
+        "stock": "4.000000"
+      },
+      {
+        "ID": "33886",
+        "post_title": "Trixie Panic petnešos su apsauga nuo nuo pabėgimo, S-M 40-65 cm-15 mm, juodos",
+        "post_modified": "2026-08-09 11:02:04",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33870",
+        "post_title": "Monge Fresh Senior konservuotas pašaras pagyvenusiems šunims su kalakutiena ir daržovėmis 400g",
+        "post_modified": "2026-08-09 10:03:01",
+        "stock": "284.000000"
+      },
+      {
+        "ID": "33874",
+        "post_title": "Real Dog triušio ausys natūralios 500g",
+        "post_modified": "2026-08-09 10:03:01",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "34830",
+        "post_title": "KOMP044 Real dog Sensitive Duck 4x15kg",
+        "post_modified": "2026-08-09 10:03:01",
+        "stock": "8.000000"
+      },
+      {
+        "ID": "33860",
+        "post_title": "Monge Grill konservuotas pašaras jauniems šunims su vištiena ir kalakutiena 100g",
+        "post_modified": "2026-08-09 10:03:00",
+        "stock": "474.000000"
+      },
+      {
+        "ID": "33864",
+        "post_title": "Monge Fresh Puppy konservuotas pašaras jauniems šunims su vištiena 400g",
+        "post_modified": "2026-08-09 10:03:00",
+        "stock": "276.000000"
+      },
+      {
+        "ID": "33866",
+        "post_title": "Monge Fresh adult konservuotas pašaras šunims su vištiena 400g",
+        "post_modified": "2026-08-09 10:03:00",
+        "stock": "201.000000"
+      },
+      {
+        "ID": "33868",
+        "post_title": "Monge Fresh adult konservuotas pašaras šunims su vištiena 400g",
+        "post_modified": "2026-08-09 10:03:00",
+        "stock": "320.000000"
+      },
+      {
+        "ID": "33854",
+        "post_title": "Monge VetSolution Dog Mobility 12kg",
+        "post_modified": "2026-08-09 10:02:57",
+        "stock": "0.000000"
+      },
+      {
+        "ID": "33828",
+        "post_title": "Monge Grill konservuotas pašaras sterilizuotoms katėms mix su vištiena/veršiena/upėtakiu 85g x12",
+        "post_modified": "2026-08-09 10:02:56",
+        "stock": "107.000000"
+      },
+      {
+        "ID": "33830",
+        "post_title": "Monge Grill konservuotas pašaras sterilizuotoms katėms mix su aviena/triušiena 85g x12",
+        "post_modified": "2026-08-09 10:02:56",
+        "stock": "114.000000"
+      },
+      {
+        "ID": "33832",
+        "post_title": "Monge GRILL MIX Dog Adult salmon/pork/lamb 100gx12",
+        "post_modified": "2026-08-09 10:02:56",
+        "stock": "148.000000"
+      }
+    ],
+    "ps_sources_zb": [
+      {
+        "is_active": "1",
+        "c": "1059"
+      }
+    ],
+    "zb_publish_likuciai": [
+      {
+        "grupe": "0_arba_maziau",
+        "c": "51"
+      },
+      {
+        "grupe": "daugiau_uz_0",
+        "c": "601"
+      }
+    ]
+  }
+}
