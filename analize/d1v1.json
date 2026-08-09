@@ -1,0 +1,68 @@
+{
+  "steps": [
+    "setter #2518 st=200",
+    "diegimas #2519 st=200",
+    "deakt #2519 st=200"
+  ],
+  "setter_http": 200,
+  "setter": {
+    "ok": true,
+    "len": 25612
+  },
+  "pirmas": {
+    "VERSIJA": "D1 V1",
+    "laikas": "2026-08-09 15:00:56",
+    "zingsniai": [
+      "irasyta /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins/petshop-ivykiai.php: 19207"
+    ],
+    "failo_dydis": 19207,
+    "md5_sutampa": true,
+    "failas_yra": true,
+    "klase_ikrauta": false
+  },
+  "testas_http": 200,
+  "testas": {
+    "VERSIJA": "D1 V1",
+    "laikas": "2026-08-09 15:01:00",
+    "zingsniai": [],
+    "failas_yra": true,
+    "klase_ikrauta": true,
+    "statistika_pries": {
+      "lentele": "nėra"
+    },
+    "test_pid": 34880,
+    "testas": "PS-TEST-001 nerastas",
+    "backfill_dry": {
+      "saltinis": "gaj6_ps_av_zurnalas",
+      "rasta": 27,
+      "perkelta": 13,
+      "praleista": 14,
+      "dry": true,
+      "saltinio_stulpeliai": [
+        "id",
+        "operacija",
+        "product_id",
+        "laukas",
+        "buvo",
+        "tapo",
+        "pokytis",
+        "priezastis",
+        "user_id",
+        "sukurta",
+        "atsaukta"
+      ]
+    },
+    "statistika_po": {
+      "lentele": "gaj6_ps_ivykiai",
+      "versija": "1.0",
+      "is_viso": 0,
+      "prekiu": 0,
+      "pagal_tipa": [],
+      "pagal_saltini": [],
+      "seniausias": null,
+      "naujausias": null
+    }
+  },
+  "svetaine_http": 200,
+  "adminas_http": 200
+}
