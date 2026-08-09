@@ -1,0 +1,52 @@
+{
+  "rez": {
+    "laikas": "2026-08-09 23:10:38",
+    "moduliai": {
+      "katalogas": "3.5",
+      "ivykiai": "1.2",
+      "pardavimai": "1.0",
+      "pilnumas": "1.1",
+      "rysiai": "1.2",
+      "sources": "2.2"
+    },
+    "ivykiu_lenteleje": 69,
+    "su_pardavimu_meta": 3774,
+    "su_pilnumu": 3764,
+    "sandelis_uzpildytas": 3805,
+    "cron": {
+      "petshop_attr_engine_run": "08-09 22:57",
+      "petshop_pragma_monthly_export": "09-05 08:00",
+      "petshop_vf_sync_publish_daily": "08-10 04:00",
+      "petshop_vf_sync_reprice_daily": "08-10 03:00",
+      "petshop_vf_sync_stock_hourly": "08-09 20:59",
+      "ps_cart_abandon_check": "08-09 20:14",
+      "ps_email_dispatch_cron": "08-09 20:13",
+      "ps_esp_cron_process_pending": "08-09 20:12",
+      "ps_ivykiai_valymas": "08-10 04:40",
+      "ps_pardavimai_naktinis": "08-10 04:50",
+      "ps_pet_drafts_cleanup_daily": "08-10 02:40",
+      "ps_pilnumas_naktinis": "08-10 05:00",
+      "ps_post_purchase_check": "08-09 20:39",
+      "ps_refill_daily_check": "08-10 08:00",
+      "ps_reminders_daily_check": "08-10 09:00",
+      "ps_sources_naktinis": "08-10 04:20",
+      "ps_suppression_daily_reconcile": "08-10 05:30"
+    },
+    "aktyvus_temp": [
+      {
+        "id": "2567",
+        "name": "TEMP pabaiga"
+      }
+    ],
+    "aktyvus_snippetai": 70,
+    "kopijos": {
+      "ps_katalogas_v28_bak": "140769 B",
+      "ps_katalogas_v29_bak": "166127 B",
+      "ps_katalogas_v32_bak": "160929 B",
+      "ps_katalogas_v33_bak": "164390 B",
+      "ps_katalogas_v34_bak": "167674 B"
+    }
+  },
+  "svetaine": 200,
+  "likę_temp": []
+}
