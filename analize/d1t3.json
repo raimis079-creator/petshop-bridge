@@ -1,0 +1,138 @@
+{
+  "steps": [
+    "#2522 st=200",
+    "deakt st=200"
+  ],
+  "setter": "{\"ok\":true,\"len\":27300}",
+  "diegimas": {
+    "VERSIJA": "D1 T3",
+    "laikas": "2026-08-09 15:08:09",
+    "irasyta": 20475,
+    "md5_ok": true,
+    "PASTABA": "mu-plugin perrasytas; testai kitame kvietime"
+  },
+  "http": 200,
+  "rez": {
+    "VERSIJA": "D1 T3",
+    "laikas": "2026-08-09 15:08:13",
+    "klases_versija": "1.1",
+    "test_pid": 34889,
+    "T9_sena_reiksme": "GERAI",
+    "T9_irasas": [
+      {
+        "id": "19",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:08:13",
+        "tipas": "kaina",
+        "laukas": "_regular_price",
+        "sena": "11.11",
+        "nauja": "22.22",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Reguliari kaina"
+      }
+    ],
+    "T10_stock": [
+      {
+        "id": "20",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:08:13",
+        "tipas": "likutis",
+        "laukas": "_stock",
+        "sena": "100",
+        "nauja": "42",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Likutis"
+      },
+      {
+        "id": "17",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:04:35",
+        "tipas": "likutis",
+        "laukas": "_stock",
+        "sena": "",
+        "nauja": "100",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Likutis"
+      },
+      {
+        "id": "13",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:04:35",
+        "tipas": "likutis",
+        "laukas": "_stock_status",
+        "sena": "",
+        "nauja": "instock",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Likučio būsena"
+      }
+    ],
+    "T11_tik_savo": 0,
+    "atstatyta": "10.00",
+    "backfill": {
+      "saltinis": "gaj6_ps_av_zurnalas",
+      "rasta": 27,
+      "perkelta": 13,
+      "praleista": 14,
+      "dry": false,
+      "saltinio_stulpeliai": [
+        "id",
+        "operacija",
+        "product_id",
+        "laukas",
+        "buvo",
+        "tapo",
+        "pokytis",
+        "priezastis",
+        "user_id",
+        "sukurta",
+        "atsaukta"
+      ]
+    },
+    "statistika": {
+      "lentele": "gaj6_ps_ivykiai",
+      "versija": "1.1",
+      "is_viso": 35,
+      "prekiu": 12,
+      "pagal_tipa": [
+        {
+          "tipas": "likutis",
+          "c": "19"
+        },
+        {
+          "tipas": "kaina",
+          "c": "11"
+        },
+        {
+          "tipas": "busena",
+          "c": "3"
+        },
+        {
+          "tipas": "duomenys",
+          "c": "2"
+        }
+      ],
+      "pagal_saltini": [
+        {
+          "saltinis": "sistema",
+          "c": "22"
+        },
+        {
+          "saltinis": "perkelta",
+          "c": "13"
+        }
+      ],
+      "seniausias": "2026-08-08 10:45:11",
+      "naujausias": "2026-08-09 15:08:14"
+    }
+  },
+  "svetaine": 200,
+  "aktyvus_temp": []
+}
