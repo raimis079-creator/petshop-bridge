@@ -1,0 +1,390 @@
+{
+  "steps": [
+    "sukurtas TEMP #2510 status=200",
+    "deaktyvuotas TEMP #2510 status=200"
+  ],
+  "http": 200,
+  "rezultatas": {
+    "VERSIJA": "ZBDIAG v2",
+    "laikas": "2026-08-09 11:35:29",
+    "draft_reason_pasiskirstymas": [
+      {
+        "reason": "konservas_below_minimum",
+        "c": "313"
+      },
+      {
+        "reason": "qty_zero_on_new",
+        "c": "20"
+      }
+    ],
+    "skip_reason_pasiskirstymas": [
+      {
+        "reason": "konservas_below_minimum",
+        "c": "199"
+      },
+      {
+        "reason": "cost_below_minimum",
+        "c": "114"
+      },
+      {
+        "reason": "qty_zero_on_new",
+        "c": "20"
+      }
+    ],
+    "draft_be_reason_count": 74,
+    "draft_be_reason_pvz": [
+      {
+        "ID": "34854",
+        "post_title": "KOMP047 Real Dog 4*20kg + Real dog Sensitive with DUCK 15kg",
+        "post_date": "2026-08-05 06:01:26",
+        "stock": "8.000000",
+        "sync": "2026-08-09 11:02:53"
+      },
+      {
+        "ID": "34830",
+        "post_title": "KOMP044 Real dog Sensitive Duck 4x15kg",
+        "post_date": "2026-08-04 18:01:05",
+        "stock": "8.000000",
+        "sync": "2026-08-09 10:03:01"
+      },
+      {
+        "ID": "34792",
+        "post_title": "Beaphar STOP IT GRANULATE 2X200G",
+        "post_date": "2026-08-03 18:01:52",
+        "stock": "16.000000",
+        "sync": "2026-08-09 09:02:45"
+      },
+      {
+        "ID": "34692",
+        "post_title": "Beaphar CANICOMFORT COLLAR DOG 65CM",
+        "post_date": "2026-07-16 18:01:34",
+        "stock": "11.000000",
+        "sync": "2026-08-09 09:02:44"
+      },
+      {
+        "ID": "34691",
+        "post_title": "Beaphar CANICOMFORT SPRAY 60ML",
+        "post_date": "2026-07-16 18:01:34",
+        "stock": "5.000000",
+        "sync": "2026-08-09 09:02:44"
+      },
+      {
+        "ID": "34690",
+        "post_title": "Beaphar CANICOMFORT REFILL 48ML",
+        "post_date": "2026-07-16 18:01:34",
+        "stock": "3.000000",
+        "sync": "2026-08-09 09:02:44"
+      },
+      {
+        "ID": "34689",
+        "post_title": "Beaphar CANICOMFORT STARTER-KIT",
+        "post_date": "2026-07-16 18:01:34",
+        "stock": "4.000000",
+        "sync": "2026-08-09 09:02:44"
+      },
+      {
+        "ID": "34688",
+        "post_title": "Beaphar CatComfort Calming Spray 60ml (pak3)",
+        "post_date": "2026-07-16 18:01:34",
+        "stock": "6.000000",
+        "sync": "2026-08-09 09:02:44"
+      },
+      {
+        "ID": "34687",
+        "post_title": "Beaphar Lactol Puppy 500g (pak6)",
+        "post_date": "2026-07-16 18:01:32",
+        "stock": "5.000000",
+        "sync": "2026-08-09 09:02:44"
+      },
+      {
+        "ID": "34686",
+        "post_title": "Beaphar NO STRESS STARTER PACK DOG 30ML",
+        "post_date": "2026-07-16 18:01:32",
+        "stock": "6.000000",
+        "sync": "2026-08-09 09:02:43"
+      },
+      {
+        "ID": "34685",
+        "post_title": "Beaphar NO STRESS STARTER PACK CAT 30ML (pak3)",
+        "post_date": "2026-07-16 18:01:32",
+        "stock": "9.000000",
+        "sync": "2026-08-09 09:02:43"
+      },
+      {
+        "ID": "34684",
+        "post_title": "Beaphar KITTY'S + Taurine + Biotin, 750tab.",
+        "post_date": "2026-07-16 18:01:32",
+        "stock": "12.000000",
+        "sync": "2026-08-09 09:02:43"
+      },
+      {
+        "ID": "34683",
+        "post_title": "Beaphar KITTY'S MIX, 750tab. (pak6)",
+        "post_date": "2026-07-16 18:01:32",
+        "stock": "0.000000",
+        "sync": "2026-08-09 09:02:43"
+      },
+      {
+        "ID": "34682",
+        "post_title": "Beaphar TOP 10 For Dogs, 750tab. (pak6)",
+        "post_date": "2026-07-16 18:01:31",
+        "stock": "18.000000",
+        "sync": "2026-08-09 09:02:43"
+      },
+      {
+        "ID": "34681",
+        "post_title": "Beaphar CATCOMFORT Excellence REFILL 48ML",
+        "post_date": "2026-07-16 18:01:31",
+        "stock": "3.000000",
+        "sync": "2026-08-09 09:02:42"
+      }
+    ],
+    "draft_su_likuciu_pagal_reason": [
+      {
+        "reason": "konservas_below_minimum",
+        "c": "269"
+      },
+      {
+        "reason": "(be_reason)",
+        "c": "42"
+      }
+    ],
+    "import2_istorija": [
+      {
+        "type": "processing",
+        "time_run": "216060",
+        "date": "2026-08-06 15:01:03",
+        "summary": "0 Produktai created 362 updated 2218 skipped"
+      },
+      {
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-06 15:00:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "type": "processing",
+        "time_run": "172837",
+        "date": "2026-08-04 03:01:02",
+        "summary": "import finished & cron un-triggered<br>2 Produktai created 142 updated 2458 skipped"
+      },
+      {
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-04 03:00:02",
+        "summary": "triggered by cron"
+      }
+    ],
+    "import3_istorija_6": [
+      {
+        "type": "processing",
+        "time_run": "3660",
+        "date": "2026-08-09 07:02:02",
+        "summary": "0 Produktai created 514 updated 1026 skipped"
+      },
+      {
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-09 07:00:02",
+        "summary": "triggered by cron"
+      },
+      {
+        "type": "processing",
+        "time_run": "10847",
+        "date": "2026-08-09 03:02:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1042 updated 1567 skipped"
+      },
+      {
+        "type": "trigger",
+        "time_run": null,
+        "date": "2026-08-09 03:00:02",
+        "summary": "triggered by cron"
+      }
+    ],
+    "zb_log": "nera failo: /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/petshop-private-logs/zb-import.log",
+    "ps_lenteles": [
+      "gaj6_ps_action_tokens",
+      "gaj6_ps_av_zurnalas",
+      "gaj6_ps_carts",
+      "gaj6_ps_consent_log",
+      "gaj6_ps_email_jobs",
+      "gaj6_ps_email_suppression",
+      "gaj6_ps_event_log",
+      "gaj6_ps_feeding_import_log",
+      "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+      "gaj6_ps_feeding_map",
+      "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+      "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+      "gaj6_ps_feeding_rows",
+      "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+      "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+      "gaj6_ps_feeding_rows_bak_s304",
+      "gaj6_ps_feeding_tables",
+      "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+      "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+      "gaj6_ps_istrintos_prekes_s668",
+      "gaj6_ps_pet_notes",
+      "gaj6_ps_pet_products",
+      "gaj6_ps_pet_profile_drafts",
+      "gaj6_ps_pets",
+      "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+      "gaj6_ps_pets_bak_20260722_181456_hint",
+      "gaj6_ps_pets_bak_20260723_prof",
+      "gaj6_ps_pets_bak_20260726",
+      "gaj6_ps_pets_bak_20260726_ft",
+      "gaj6_ps_pets_bak_20260727_wet",
+      "gaj6_ps_pets_bak_20260731_pries_restore",
+      "gaj6_ps_plan_events",
+      "gaj6_ps_refill_tracking",
+      "gaj6_ps_reminders",
+      "gaj6_ps_shipments",
+      "gaj6_ps_sources",
+      "gaj6_ps_tiekimas",
+      "gaj6_ps_tiekimas_eil",
+      "gaj6_ps_webhook_log"
+    ],
+    "pvz": {
+      "33928": {
+        "title": "SIMBA - Wet CAT Chunkies with FOWL AND DUCK 415g",
+        "status": "draft",
+        "date": "2026-06-14 13:11:08",
+        "meta": [
+          {
+            "meta_key": "_stock",
+            "meta_value": "128.000000"
+          },
+          {
+            "meta_key": "_stock_status",
+            "meta_value": "instock"
+          },
+          {
+            "meta_key": "_price",
+            "meta_value": "1.09"
+          },
+          {
+            "meta_key": "_zb_qty",
+            "meta_value": "128"
+          },
+          {
+            "meta_key": "_zb_brand",
+            "meta_value": "Simba"
+          },
+          {
+            "meta_key": "_zb_enabled",
+            "meta_value": "yes"
+          },
+          {
+            "meta_key": "_zb_skip_reason",
+            "meta_value": "konservas_below_minimum"
+          },
+          {
+            "meta_key": "_zb_draft_reason",
+            "meta_value": "konservas_below_minimum"
+          },
+          {
+            "meta_key": "_zb_last_sync",
+            "meta_value": "2026-08-09 11:02:28"
+          },
+          {
+            "meta_key": "_ps_sandelis",
+            "meta_value": "zb"
+          }
+        ]
+      },
+      "33972": {
+        "title": "Monge Monoprotein - Cat Flakes su kalakutiena ir morkomis, suaugusioms katėms 80g",
+        "status": "draft",
+        "date": "2026-06-14 13:11:56",
+        "meta": [
+          {
+            "meta_key": "_stock",
+            "meta_value": "178.000000"
+          },
+          {
+            "meta_key": "_stock_status",
+            "meta_value": "instock"
+          },
+          {
+            "meta_key": "_price",
+            "meta_value": "1.69"
+          },
+          {
+            "meta_key": "_zb_qty",
+            "meta_value": "178"
+          },
+          {
+            "meta_key": "_zb_brand",
+            "meta_value": "Monge"
+          },
+          {
+            "meta_key": "_zb_enabled",
+            "meta_value": "yes"
+          },
+          {
+            "meta_key": "_zb_skip_reason",
+            "meta_value": "konservas_below_minimum"
+          },
+          {
+            "meta_key": "_zb_draft_reason",
+            "meta_value": "konservas_below_minimum"
+          },
+          {
+            "meta_key": "_zb_last_sync",
+            "meta_value": "2026-08-09 11:02:49"
+          },
+          {
+            "meta_key": "_ps_sandelis",
+            "meta_value": "zb"
+          }
+        ]
+      },
+      "33982": {
+        "title": "Monge VetSolution Dog Wet Diabetic/Obesity 400g",
+        "status": "draft",
+        "date": "2026-06-14 13:12:10",
+        "meta": [
+          {
+            "meta_key": "_stock",
+            "meta_value": "82.000000"
+          },
+          {
+            "meta_key": "_stock_status",
+            "meta_value": "instock"
+          },
+          {
+            "meta_key": "_price",
+            "meta_value": "3.09"
+          },
+          {
+            "meta_key": "_zb_qty",
+            "meta_value": "82"
+          },
+          {
+            "meta_key": "_zb_brand",
+            "meta_value": "Monge"
+          },
+          {
+            "meta_key": "_zb_enabled",
+            "meta_value": "yes"
+          },
+          {
+            "meta_key": "_zb_skip_reason",
+            "meta_value": "konservas_below_minimum"
+          },
+          {
+            "meta_key": "_zb_draft_reason",
+            "meta_value": "konservas_below_minimum"
+          },
+          {
+            "meta_key": "_zb_last_sync",
+            "meta_value": "2026-08-09 11:02:53"
+          },
+          {
+            "meta_key": "_ps_sandelis",
+            "meta_value": "zb"
+          }
+        ]
+      }
+    }
+  }
+}
