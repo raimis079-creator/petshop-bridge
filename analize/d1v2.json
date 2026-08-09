@@ -1,0 +1,194 @@
+{
+  "steps": [
+    "#2524 st=200",
+    "deakt st=200"
+  ],
+  "setter": "{\"ok\":true,\"len\":19400}",
+  "diegimas": {
+    "VERSIJA": "D1 V2",
+    "laikas": "2026-08-09 15:14:51",
+    "irasyta": 14549,
+    "md5_ok": true,
+    "PASTABA": "diegimas; testai kitame kvietime"
+  },
+  "http": 200,
+  "rez": {
+    "VERSIJA": "D1 V2",
+    "laikas": "2026-08-09 15:14:56",
+    "versija": "1.0",
+    "saltinis_veikia": true,
+    "statistika": {
+      "versija": "1.0",
+      "lookup_eiluciu": 20,
+      "stats_eiluciu": 13,
+      "pagal_busena": [
+        {
+          "status": "wc-cancelled",
+          "c": "2"
+        },
+        {
+          "status": "wc-completed",
+          "c": "3"
+        },
+        {
+          "status": "wc-processing",
+          "c": "7"
+        },
+        {
+          "status": "wc-refunded",
+          "c": "1"
+        }
+      ],
+      "preku_su_meta": 0,
+      "abc_pasiskirstymas": []
+    },
+    "T1_kontrole": [
+      {
+        "pid": "12636",
+        "vnt": "6",
+        "paj": "90.54",
+        "uzs": "3"
+      },
+      {
+        "pid": "18527",
+        "vnt": "5",
+        "paj": "67.32",
+        "uzs": "2"
+      },
+      {
+        "pid": "17236",
+        "vnt": "4",
+        "paj": "5.92",
+        "uzs": "3"
+      },
+      {
+        "pid": "24003",
+        "vnt": "4",
+        "paj": "8.24",
+        "uzs": "2"
+      },
+      {
+        "pid": "17415",
+        "vnt": "1",
+        "paj": "1.64",
+        "uzs": "1"
+      }
+    ],
+    "T1_palyginimas": [
+      {
+        "pid": "12636",
+        "kontrole_vnt": 6,
+        "modulis_vnt": 6,
+        "kontrole_paj": 90.54,
+        "modulis_paj": 90.54,
+        "sutampa": "TAIP"
+      },
+      {
+        "pid": "18527",
+        "kontrole_vnt": 5,
+        "modulis_vnt": 5,
+        "kontrole_paj": 67.32,
+        "modulis_paj": 67.32,
+        "sutampa": "TAIP"
+      },
+      {
+        "pid": "17236",
+        "kontrole_vnt": 4,
+        "modulis_vnt": 4,
+        "kontrole_paj": 5.92,
+        "modulis_paj": 5.92,
+        "sutampa": "TAIP"
+      },
+      {
+        "pid": "24003",
+        "kontrole_vnt": 4,
+        "modulis_vnt": 4,
+        "kontrole_paj": 8.24,
+        "modulis_paj": 8.24,
+        "sutampa": "TAIP"
+      },
+      {
+        "pid": "17415",
+        "kontrole_vnt": 1,
+        "modulis_vnt": 1,
+        "kontrole_paj": 1.64,
+        "modulis_paj": 1.64,
+        "sutampa": "TAIP"
+      }
+    ],
+    "T2_visi_vnt": 4,
+    "T2_tik_geri_vnt": 3,
+    "T2_filtras_veikia": "TAIP",
+    "T2_busenos": [
+      {
+        "status": "wc-cancelled",
+        "vnt": "2"
+      },
+      {
+        "status": "wc-completed",
+        "vnt": "12"
+      },
+      {
+        "status": "wc-processing",
+        "vnt": "-9"
+      },
+      {
+        "status": "wc-refunded",
+        "vnt": "-1"
+      }
+    ],
+    "T3_laikotarpiai": {
+      "d30": 6,
+      "d90": 6,
+      "d365": 6
+    },
+    "T3_monotonija": "GERAI",
+    "T4_test_pid": 34889,
+    "T4_dienu_su_30vnt": 60,
+    "T4_laukiama": 60,
+    "T4_verdiktas": "GERAI",
+    "T4_nulis_pardavimu": "GERAI (null)",
+    "T4_greitas_tempas": "GERAI",
+    "T5_perskaiciuota": {
+      "pid": 12636,
+      "v30": 6,
+      "v90": 6,
+      "v365": 6,
+      "pajamos365": 90.54,
+      "marza": 40.7,
+      "dienu": 20
+    },
+    "T5_is_meta": {
+      "v30": 6,
+      "v90": 6,
+      "v365": 6,
+      "pajamos365": 90.54,
+      "marza365": 40.7,
+      "uzsakymai": 3,
+      "abc": "",
+      "dienu": 20,
+      "paskutinis": "2026-08-05 16:32:29",
+      "atnaujinta": "2026-08-09 15:14:56"
+    },
+    "T5_meta_sutampa": "GERAI",
+    "T6_abc_dry": {
+      "A": 0,
+      "B": 0,
+      "C": 1,
+      "be_pardavimu": 3773,
+      "dry": true,
+      "pajamos_viso": 90.54
+    },
+    "T7_batch_dry": {
+      "apdorota": 300,
+      "su_pardavimais": 1,
+      "dry": true,
+      "kitas_poslinkis": 300,
+      "liko": 3474
+    },
+    "T8_cron": "2026-08-10 04:50",
+    "T8_ivykiu_cron": "2026-08-10 04:40",
+    "T9_neterso_juostos": "GERAI"
+  },
+  "svetaine": 200
+}
