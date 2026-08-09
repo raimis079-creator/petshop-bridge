@@ -1,0 +1,168 @@
+{
+  "steps": [
+    "#2520 st=200",
+    "deakt #2520 st=200"
+  ],
+  "http": 200,
+  "rez": {
+    "VERSIJA": "D1 TEST v2",
+    "laikas": "2026-08-09 15:04:35",
+    "senas_id": 34880,
+    "senas_busena": false,
+    "senas_tipas": false,
+    "saltinis_id": "sukurta nauja",
+    "test_pid": 34889,
+    "T1_meta_hook": "GERAI",
+    "T1_irasas": [
+      {
+        "id": "6",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:04:35",
+        "tipas": "kaina",
+        "laukas": "_regular_price",
+        "sena": "",
+        "nauja": "77.77",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Reguliari kaina"
+      }
+    ],
+    "T2_be_pokycio": "GERAI",
+    "T3_nestebimas": "GERAI",
+    "T4_op_nr": "GERAI",
+    "T4_irasas": {
+      "id": "7",
+      "product_id": "34889",
+      "laikas": "2026-08-09 15:04:35",
+      "tipas": "kaina",
+      "laukas": "_regular_price",
+      "sena": "",
+      "nauja": "88.88",
+      "saltinis": "sistema",
+      "kas": "",
+      "op_nr": "TEST-OP-1",
+      "pastaba": "Reguliari kaina"
+    },
+    "T5_op_nr_isvalytas": "GERAI",
+    "T6_busena": "GERAI",
+    "T6_irasai": [
+      {
+        "id": "10",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:04:35",
+        "tipas": "busena",
+        "laukas": "post_status",
+        "sena": "publish",
+        "nauja": "draft",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Prekyboje → Juodraštis"
+      },
+      {
+        "id": "9",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:04:35",
+        "tipas": "busena",
+        "laukas": "post_status",
+        "sena": "draft",
+        "nauja": "publish",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Juodraštis → Prekyboje"
+      }
+    ],
+    "T7_wc_crud_likutis": "GERAI",
+    "T7_irasas": [
+      {
+        "id": "13",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:04:35",
+        "tipas": "likutis",
+        "laukas": "_stock_status",
+        "sena": "",
+        "nauja": "instock",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Likučio būsena"
+      }
+    ],
+    "T8_filtras_kaina": 5,
+    "T8_filtras_busena": 3,
+    "T8_santrauka": [
+      {
+        "tipas": "busena",
+        "c": "3",
+        "paskutinis": "2026-08-09 15:04:35"
+      },
+      {
+        "tipas": "duomenys",
+        "c": "2",
+        "paskutinis": "2026-08-09 15:04:35"
+      },
+      {
+        "tipas": "kaina",
+        "c": "5",
+        "paskutinis": "2026-08-09 15:04:35"
+      },
+      {
+        "tipas": "likutis",
+        "c": "3",
+        "paskutinis": "2026-08-09 15:04:35"
+      }
+    ],
+    "T9_sena_reiksme": "BLOGAI",
+    "T9_irasas": [
+      {
+        "id": "15",
+        "product_id": "34889",
+        "laikas": "2026-08-09 15:04:35",
+        "tipas": "kaina",
+        "laukas": "_regular_price",
+        "sena": "",
+        "nauja": "22.22",
+        "saltinis": "sistema",
+        "kas": "",
+        "op_nr": "",
+        "pastaba": "Reguliari kaina"
+      }
+    ],
+    "ATSTATYTA_kaina": "10.00",
+    "statistika": {
+      "lentele": "gaj6_ps_ivykiai",
+      "versija": "1.0",
+      "is_viso": 17,
+      "prekiu": 1,
+      "pagal_tipa": [
+        {
+          "tipas": "kaina",
+          "c": "8"
+        },
+        {
+          "tipas": "likutis",
+          "c": "4"
+        },
+        {
+          "tipas": "busena",
+          "c": "3"
+        },
+        {
+          "tipas": "duomenys",
+          "c": "2"
+        }
+      ],
+      "pagal_saltini": [
+        {
+          "saltinis": "sistema",
+          "c": "17"
+        }
+      ],
+      "seniausias": "2026-08-09 15:04:35",
+      "naujausias": "2026-08-09 15:04:35"
+    }
+  },
+  "svetaine": 200
+}
