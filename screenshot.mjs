@@ -11,16 +11,22 @@ async function putRaw(path,b64,msg){
 }
 const putJson=(p,o)=>putRaw(p, Buffer.from(JSON.stringify(o,null,2)).toString('base64'),'kal2');
 const pause=ms=>new Promise(x=>setTimeout(x,ms));
+async function jsonSafe(r){
+  const t=await r.text();
+  const i=t.indexOf('[')>=0 && (t.indexOf('[')<t.indexOf('{')||t.indexOf('{')<0) ? t.indexOf('[') : t.indexOf('{');
+  if(i<0) return null;
+  try{ return JSON.parse(t.slice(i)); }catch(e){ return null; }
+}
 async function main(){
   const out={VERSIJA:'KAL2'};
   let r=await fetch(`${WP}/wp-json/code-snippets/v1/snippets`,{headers:{Authorization:AUTH}});
-  const list=await r.json();
+  const list=await jsonSafe(r);
   for(const t of (Array.isArray(list)?list:[]).filter(s=>s.active&&/^TEMP/i.test(s.name||''))){
     await fetch(`${WP}/wp-json/code-snippets/v1/snippets/${t.id}`,{method:'POST',headers:{Authorization:AUTH,'Content-Type':'application/json'},body:JSON.stringify({active:false})});
   }
   r=await fetch(`${WP}/wp-json/code-snippets/v1/snippets`,{method:'POST',headers:{Authorization:AUTH,'Content-Type':'application/json'},
     body:JSON.stringify({name:'TEMP kal2', code:PHP.replace(/^<\?php\s*/,''), scope:'global', active:true})});
-  const s=await r.json();
+  const s=await jsonSafe(r)||{};
   await pause(2500);
 
   const {chromium}=await import('playwright');
@@ -71,7 +77,7 @@ async function main(){
   await br.close();
   await fetch(`${WP}/wp-json/code-snippets/v1/snippets/${s.id}`,{method:'POST',headers:{Authorization:AUTH,'Content-Type':'application/json'},body:JSON.stringify({active:false})});
   r=await fetch(`${WP}/wp-json/code-snippets/v1/snippets`,{headers:{Authorization:AUTH}});
-  const l2=await r.json();
+  const l2=await jsonSafe(r);
   out.liko_temp=(Array.isArray(l2)?l2:[]).filter(x=>x.active&&/^TEMP/i.test(x.name||'')).map(x=>x.name);
   await putJson('analize/kal2.json', out);
 }
