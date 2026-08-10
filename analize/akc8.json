@@ -1,0 +1,46 @@
+{
+  "rez": {
+    "VERSIJA": "AKC8",
+    "akcija": {
+      "id": "1",
+      "pavadinimas": "Ambrosia rugpjūtis −15 %",
+      "busena": "juodrastis",
+      "taikinys_tipas": "brendas",
+      "taikinys": "{\"brendai\":[329],\"atributai\":{\"pa_pakuotes_dydis\":[425]}}",
+      "isimtys": "{\"ids\":[]}",
+      "metodas": "proc",
+      "reiksme": "15.00",
+      "apvalinti": "0",
+      "nuo": "2026-08-10 19:12:00",
+      "iki": "2026-08-17 19:12:00",
+      "prioritetas": "10",
+      "gyva": "1",
+      "pastaba": "",
+      "sukurta": "2026-08-10 22:12:03",
+      "atnaujinta": "2026-08-10 22:19:31",
+      "taikyta_at": null,
+      "autorius": "1"
+    },
+    "terminai": {
+      "product_brand": [
+        {
+          "id": 329,
+          "name": "Ambrosia",
+          "slug": "ambrosia",
+          "count": 15
+        }
+      ],
+      "pa_brendas": [
+        {
+          "id": 231,
+          "name": "Ambrosia",
+          "slug": "ambrosia",
+          "count": 0
+        }
+      ]
+    },
+    "ambrosia_publish": 15,
+    "ambrosia_draft": 0,
+    "ambrosia_any": 15
+  }
+}
