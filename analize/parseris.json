@@ -1,0 +1,252 @@
+{
+  "diegimas": {
+    "laikas": "2026-08-10 13:49:55",
+    "irasyta": 17726,
+    "md5_ok": true
+  },
+  "rez": {
+    "laikas": "2026-08-10 13:50:01",
+    "versija": "1.0",
+    "statistika": {
+      "versija": "1.0",
+      "baltymu": 10,
+      "grudu": 13,
+      "be_grudu_z": 8
+    },
+    "T1_kontrolinis": {
+      "baltymu_saltinis": "Antiena (rastas žodis „antien\")",
+      "gyvuno_rusis": "Šunims (rastas žodis „šunims\")",
+      "amzius": "Suaugusiems (rastas žodis „suaugus\")",
+      "speciali_mityba": "—",
+      "be_grudu": "Be grūdų (aiškus gamintojo pareiškimas)",
+      "monoprotein": "Taip (sudėtyje tik vienas gyvūninis baltymas)",
+      "pakuotes_dydis": "12,5 kg (dydis pavadinime arba tekste)"
+    },
+    "T1_verdiktas": "GERAI",
+    "T1_citata_grudai": "…dėtis: dehidratuota antiena (30 %), bulvių krakmolas, gyvūniniai riebalai. [[Be grūdų]] – sudėtyje nenaudojame kviečių, kukurūzų ar sojos.\nAnalitinės sudedamosios…",
+    "T2_su_grudais": {
+      "grudai": "Su ryžiais",
+      "baltymas": "Vištiena",
+      "mono": "Taip",
+      "pagrindas_mono": "sudėtyje tik vienas gyvūninis baltymas"
+    },
+    "T3_sekcijos": [
+      "Sudėtis",
+      "Analitinės sudedamosios dalys",
+      "Šėrimo instrukcija",
+      "Gamintojas"
+    ],
+    "T4_taikyti_dry": {
+      "pid": 34889,
+      "dry": true,
+      "priskirta": [
+        {
+          "tax": "pa_baltymu_saltinis",
+          "reiksme": "Antiena",
+          "term_id": 277
+        },
+        {
+          "tax": "pa_gyvuno_rusis",
+          "reiksme": "Šunims",
+          "term_id": 252
+        },
+        {
+          "tax": "pa_amzius",
+          "reiksme": "Suaugusiems",
+          "term_id": 264
+        },
+        {
+          "tax": "pa_be_grudu",
+          "reiksme": "Be grūdų",
+          "term_id": 409
+        },
+        {
+          "tax": "pa_monoprotein",
+          "reiksme": "Taip",
+          "term_id": 295
+        },
+        {
+          "tax": "pa_pakuotes_dydis",
+          "reiksme": "12,5 kg",
+          "term_id": 451
+        }
+      ],
+      "praleista": [],
+      "klaidos": []
+    },
+    "T5_zb_dry": {
+      "tikrinta": 300,
+      "su_siulymais": 145,
+      "be_teksto": 7,
+      "priskirta": 256,
+      "praleista": 268,
+      "kitas_poslinkis": 300,
+      "pagal_lauka": {
+        "pa_be_grudu": {
+          "Su grūdais": 24,
+          "Su ryžiais": 90,
+          "Be grūdų": 3
+        },
+        "pa_monoprotein": {
+          "Ne": 71,
+          "Taip": 28
+        },
+        "pa_baltymu_saltinis": {
+          "Vištiena": 31,
+          "Lašiša": 1,
+          "Jautiena": 1
+        },
+        "pa_amzius": {
+          "Suaugusiems": 7
+        }
+      },
+      "pavyzdziai": [
+        {
+          "id": 12452,
+          "pav": "Eukanuba Active Small Adult (vištiena) 3kg",
+          "siulymai": "be_grudu=Su grūdais"
+        },
+        {
+          "id": 12453,
+          "pav": "Eukanuba Medium Adult visavertis pašaras su vi",
+          "siulymai": "be_grudu=Su grūdais"
+        },
+        {
+          "id": 12454,
+          "pav": "Eukanuba Mini & Medium Adult (ėriena ir ryžiai",
+          "siulymai": "be_grudu=Su ryžiais · monoprotein=Ne"
+        },
+        {
+          "id": 12455,
+          "pav": "Eukanuba Daily Care Sensitive Skin Adult (žuvi",
+          "siulymai": "be_grudu=Su grūdais"
+        },
+        {
+          "id": 12456,
+          "pav": "Eukanuba Golden Retriever Adult (vištiena) 12k",
+          "siulymai": "be_grudu=Su grūdais · monoprotein=Ne"
+        },
+        {
+          "id": 12457,
+          "pav": "Eukanuba German Shephed Adult (vištiena) 12kg",
+          "siulymai": "be_grudu=Su ryžiais · monoprotein=Ne"
+        },
+        {
+          "id": 12458,
+          "pav": "Eukanuba West Highland Terrier Adult (vištiena",
+          "siulymai": "be_grudu=Su grūdais · monoprotein=Ne"
+        },
+        {
+          "id": 12459,
+          "pav": "Eukanuba Adult Large CKN EDB 16.5kg",
+          "siulymai": "baltymu_saltinis=Vištiena · be_grudu=Su grūdais · monoprotein=Ne"
+        },
+        {
+          "id": 12460,
+          "pav": "Eukanuba Puppy & Junior Small Breed PFB 18kg",
+          "siulymai": "baltymu_saltinis=Vištiena · be_grudu=Su ryžiais · monoprotein=Ne"
+        },
+        {
+          "id": 12461,
+          "pav": "Eukanuba Puppy & Junior Medium Breed PFB 18kg",
+          "siulymai": "baltymu_saltinis=Vištiena · be_grudu=Su ryžiais · monoprotein=Ne"
+        },
+        {
+          "id": 12462,
+          "pav": "Eukanuba Puppy & Junior Large Breed PFB 18kg",
+          "siulymai": "baltymu_saltinis=Vištiena · be_grudu=Su ryžiais · monoprotein=Ne"
+        },
+        {
+          "id": 12463,
+          "pav": "Eukanuba Adult Small Breed PFB 18kg",
+          "siulymai": "baltymu_saltinis=Vištiena · be_grudu=Su grūdais · monoprotein=Ne"
+        }
+      ],
+      "dry": true
+    },
+    "T6_vf_dry": {
+      "tikrinta": 200,
+      "su_siulymais": 108,
+      "be_teksto": 0,
+      "priskirta": 127,
+      "praleista": 99,
+      "kitas_poslinkis": 200,
+      "pagal_lauka": {
+        "pa_be_grudu": {
+          "Su ryžiais": 43,
+          "Su grūdais": 18,
+          "Be grūdų": 44
+        },
+        "pa_baltymu_saltinis": {
+          "Lašiša": 4,
+          "Antiena": 4,
+          "Vištiena": 11,
+          "Žuvis (balta)": 3
+        }
+      },
+      "pavyzdziai": [
+        {
+          "id": 17947,
+          "pav": "Josidog adult Sensitive 15 kg sausas maistas j",
+          "siulymai": "be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17950,
+          "pav": "Josidog Regular 15 kg - sausas maistas šunims",
+          "siulymai": "be_grudu=Su grūdais"
+        },
+        {
+          "id": 17953,
+          "pav": "Josidog Junior 15 kg - sausas maistas šuniukam",
+          "siulymai": "be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17956,
+          "pav": "Josidog Family 15 kg sausas maistas kalėms ir ",
+          "siulymai": "be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17962,
+          "pav": "Josidog Active 15 kg - sausas maistas aktyviem",
+          "siulymai": "be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17965,
+          "pav": "Josicat Classic Sterilised 10 kg sausas maista",
+          "siulymai": "baltymu_saltinis=Lašiša · be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17978,
+          "pav": "Josera Sensiplus 12,5 kg - sausas maistas šuni",
+          "siulymai": "baltymu_saltinis=Antiena · be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17983,
+          "pav": "Josera Sensicat 2 kg - sausas maistas katėms s",
+          "siulymai": "be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17986,
+          "pav": "Josera SensiCat 10 kg - sausas maistas katėms ",
+          "siulymai": "be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17992,
+          "pav": "Josera Senior 10 kg - sausas maistas vyresnio ",
+          "siulymai": "be_grudu=Su ryžiais"
+        },
+        {
+          "id": 17995,
+          "pav": "Josera Salmon & Potato 12,5 kg - begrūdis saus",
+          "siulymai": "be_grudu=Be grūdų"
+        },
+        {
+          "id": 18000,
+          "pav": "Josera Optiness 12,5 kg - begrūdis sausas mais",
+          "siulymai": "be_grudu=Be grūdų"
+        }
+      ],
+      "dry": true
+    }
+  }
+}
