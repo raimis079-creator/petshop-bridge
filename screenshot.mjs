@@ -38,8 +38,8 @@ async function main(){
   const jsErr=[]; page.on('pageerror',e=>jsErr.push(String(e)));
   page.setDefaultTimeout(12000);
 
-  await page.goto(`${WP}/?ps_uxlog2=1&k=dq7m3z`,{waitUntil:'domcontentloaded',timeout:45000});
-  await page.goto(`${WP}/wp-admin/admin.php?page=ps-katalogas&kruva=visos&q=EU221Y`,{waitUntil:'domcontentloaded',timeout:45000});
+  await page.goto(`${WP}/?ps_uxlog2=1&k=dq7m3z`,{waitUntil:'networkidle',timeout:60000});
+  await page.goto(`${WP}/wp-admin/admin.php?page=ps-katalogas&kruva=visos&q=EU221Y`,{waitUntil:'networkidle',timeout:60000});
   await pause(2000);
 
   /* Visi paspaudimai per JS — kortele dengia sarasa, elementHandle.click nutrunka */
@@ -48,8 +48,13 @@ async function main(){
     var el=els[a.idx||0]; if(!el) return false; el.click(); return true;
   },{sel:sel,idx:idx||0});
 
+  out.eiluciu=await page.evaluate(()=>document.querySelectorAll('.pskat-t tbody tr[data-id]').length);
   out.atidaryta=await spausk('.pskat-t tbody tr[data-id] a.atv');
-  await pause(3500);
+  try{ await page.waitForSelector('.kort-kaina input',{timeout:25000}); out.kortele_ikrauta=true; }
+  catch(e){ out.kortele_ikrauta=false;
+    out.kort_html=await page.evaluate(()=>{ const t=document.querySelector('.kort-turinys'); return t?t.textContent.slice(0,200):'nera'; }); }
+  await pause(1200);
+  if(!out.kortele_ikrauta){ await putJson('analize/uxs9.json', out); await br.close(); await off(sd.id); return; }
   const kaina0=await page.evaluate(()=>{ const i=document.querySelector('.kort-kaina input'); return i?i.value:null; });
   out.kaina_pradine=kaina0;
 
