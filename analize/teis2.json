@@ -1,0 +1,67 @@
+{
+  "VERSIJA": "TEIS2",
+  "serveris": {
+    "VERSIJA": "DARB2",
+    "teises_klase": true,
+    "versija": "1.0",
+    "role": [
+      "read",
+      "upload_files",
+      "manage_woocommerce",
+      "view_woocommerce_reports",
+      "edit_products",
+      "edit_others_products",
+      "edit_published_products",
+      "publish_products",
+      "read_private_products",
+      "manage_product_terms",
+      "edit_product_terms",
+      "assign_product_terms",
+      "edit_shop_orders",
+      "edit_others_shop_orders",
+      "edit_published_shop_orders",
+      "read_private_shop_orders",
+      "read_private_shop_coupons",
+      "ps_akcijas_taikyti"
+    ],
+    "vartotojas": "jau buvo #75",
+    "gali": {
+      "manage_woocommerce": "TAIP",
+      "edit_products": "TAIP",
+      "publish_products": "TAIP",
+      "upload_files": "TAIP",
+      "ps_akcijas_taikyti": "TAIP",
+      "delete_products": "ne",
+      "delete_published_products": "ne",
+      "manage_options": "ne",
+      "activate_plugins": "ne",
+      "edit_users": "ne",
+      "edit_themes": "ne",
+      "export": "ne"
+    }
+  },
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas",
+  "mato_kataloga": true,
+  "wp_meniu": [
+    "Skydelis",
+    "Petshop užsakymai",
+    "Petshop prekės",
+    "Failai",
+    "WooCommerce",
+    "Produktai",
+    "Mokėjimai",
+    "Petshop ataskaitos",
+    "Statistika",
+    "YITH",
+    "Profilis"
+  ],
+  "mato_akcijas": true,
+  "blokuota": {
+    "admin.php?page=wc-settings": "ATIDARE: Deja, Jūs negalite peržiūrėti šio puslapio.",
+    "plugins.php": "ATIDARE: Deja, Jūs negalite peržiūrėti šio puslapio.",
+    "users.php": "BLOKUOTA (Petshop)",
+    "options-general.php": "ATIDARE: Deja, Jūs negalite peržiūrėti šio puslapio.",
+    "tools.php": "ATIDARE: Deja, Jūs negalite peržiūrėti šio puslapio."
+  },
+  "liko_temp": []
+}
