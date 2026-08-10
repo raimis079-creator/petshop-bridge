@@ -1,0 +1,32 @@
+{
+  "VERSIJA": "UXD1-RUN",
+  "deploy": {
+    "VERSIJA": "UXD1",
+    "petshop-katalogas.php": {
+      "dydis": 222801,
+      "md5": "4aa48f26394f9a18e7ba2bec45c7bb23",
+      "laukta": "4aa48f26394f9a18e7ba2bec45c7bb23",
+      "bak": true
+    },
+    "petshop-gavimas.php": {
+      "dydis": 31995,
+      "md5": "78d41a6403c64b5fa53d3cbba7bbd829",
+      "laukta": "78d41a6403c64b5fa53d3cbba7bbd829",
+      "bak": true
+    }
+  },
+  "verify": {
+    "VERSIJA": "UXV1",
+    "katalogas_v": "4.2",
+    "gavimas_v": "1.1",
+    "css_quattro": true,
+    "css_belacor": true,
+    "test_pid": 34822,
+    "atributai_rodomi": true,
+    "marza_data_grind": true,
+    "php_klaidos": [],
+    "html_dydis": 14342
+  },
+  "svetaine": 200,
+  "liko_temp": []
+}
