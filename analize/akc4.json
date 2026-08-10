@@ -1,0 +1,52 @@
+{
+  "VERSIJA": "AKC4",
+  "deploy": {
+    "VERSIJA": "UXD5",
+    "petshop-katalogas.php": {
+      "dydis": 277009,
+      "md5": "fa7123a7f8184757447cf3a591885581",
+      "laukta": "fa7123a7f8184757447cf3a591885581"
+    },
+    "petshop-akcijos.php": {
+      "dydis": 70465,
+      "md5": "1dec27ab1604d93a48384571b91c69f6",
+      "laukta": "1dec27ab1604d93a48384571b91c69f6"
+    }
+  },
+  "verify": {
+    "VERSIJA": "UXV6",
+    "katalogas": "4.9",
+    "akcijos": "1.0",
+    "lenteles": true,
+    "lentele_yra": "gaj6_ps_akcijos",
+    "prekiu_lentele": "gaj6_ps_akciju_prekes",
+    "cron": "2026-08-10 19:08",
+    "ambrosia_term": 231,
+    "perziura_viso": 0,
+    "perziura_ok": 0,
+    "perziura_pvz": []
+  },
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-akcijos",
+  "sarasas": "Akcijų\n0\nPrekių akcijoje\n5\nValdoma per šį langą\n0\n5 prekės turi akcijos kainą, uždėtą ne per šį langą — jos nesivaldo automatiškai.\nAkcijų dar nėra\n\nAkcija čia yra gyvas įrašas: turi pavadinimą, laikotarpį ir pabaigą. Suplanuotą galima sukurti savaitėmis į priekį — ji pati įsijungs ir pati išsijungs.\n\n+ Sukurti pirmą akciją",
+  "forma": {
+    "tabai": [
+      "Brendui",
+      "Kategorijai",
+      "Atskiroms prekėms"
+    ],
+    "brendu": 62,
+    "kategoriju": 80,
+    "atributu": 4,
+    "mygtukai": [
+      "Peržiūrėti",
+      "Išsaugoti"
+    ]
+  },
+  "perziura": {
+    "suvestine": "Atrinkta | 0 | Bus taikoma | 0 | Praleista | 0 | Žemiau maržos ribos | 0 | Vid. nuolaida | — | Mažiausia marža | —",
+    "eiluciu": 0,
+    "pirma": null
+  },
+  "js_klaidos": [],
+  "liko_temp": []
+}
