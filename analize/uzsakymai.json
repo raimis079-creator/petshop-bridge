@@ -1,0 +1,105 @@
+{
+  "diegimas": {
+    "laikas": "2026-08-10 13:37:13",
+    "irasyta": 25669,
+    "md5_ok": true
+  },
+  "rez": {
+    "laikas": "2026-08-10 13:37:18",
+    "versija": "1.1",
+    "hook_prijungtas": 25,
+    "PRIES": {
+      "av_likutis": 61,
+      "partijose": {
+        "partijose": 51,
+        "av": 61,
+        "skirtumas": 10,
+        "sutampa": false
+      },
+      "savikaina": 31.881,
+      "partijos": [
+        {
+          "id": "3",
+          "liko": "7",
+          "gal": "2028-01-31"
+        },
+        {
+          "id": "2",
+          "liko": "20",
+          "gal": "2027-06-30"
+        },
+        {
+          "id": "1",
+          "liko": "24",
+          "gal": "2027-09-30"
+        }
+      ]
+    },
+    "uzsakymas": 34890,
+    "PO": {
+      "av_likutis": 58,
+      "partijose": {
+        "partijose": 48,
+        "av": 58,
+        "skirtumas": 10,
+        "sutampa": false
+      },
+      "savikaina": 31.8144,
+      "partijos": [
+        {
+          "id": "3",
+          "liko": "7",
+          "gal": "2028-01-31"
+        },
+        {
+          "id": "2",
+          "liko": "17",
+          "gal": "2027-06-30"
+        },
+        {
+          "id": "1",
+          "liko": "24",
+          "gal": "2027-09-30"
+        }
+      ]
+    },
+    "zyme": "NĖRA",
+    "T1_partijose_pokytis": 3,
+    "T1_verdiktas": "GERAI",
+    "T2_fefo": "tikrinam: partijos pries/po aukščiau",
+    "T3_idempotentiskumas": "GERAI — antra karta nenurasе",
+    "T4_pastabos": [
+      "Email \"Užsakymas vykdomas\" sent.",
+      "Email \"Naujas užsakymas\" sent.",
+      "Testinis užsakymas partijų nurašymui Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+      "Partijos nurašytos: #34889 −3 vnt. (1 partijos)",
+      "AV nurašymas: #34889 grynai AV 61 -> 58"
+    ],
+    "T5_grazinimas": "Grąžinus viršytų partijoje gautą kiekį",
+    "T6_per_didelis_grazinimas": "GERAI: Grąžinus viršytų partijoje gautą kiekį",
+    "ATSTATYTA": {
+      "busena": "draft",
+      "uzsakymas_istrintas": false
+    },
+    "KONTROLE_stock_vs_vfqty": "0",
+    "statistika": {
+      "versija": "1.1",
+      "partiju": 3,
+      "preku": 1,
+      "su_likuciu": 3,
+      "importuotu": 1,
+      "pakuociu_eil": 4,
+      "valiutos": [
+        {
+          "valiuta": "EUR",
+          "c": "2"
+        },
+        {
+          "valiuta": "PLN",
+          "c": "1"
+        }
+      ]
+    }
+  },
+  "svetaine": 200
+}
