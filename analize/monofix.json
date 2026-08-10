@@ -1,0 +1,44 @@
+{
+  "diegimas": {
+    "laikas": "2026-08-10 14:26:15",
+    "irasyta": 25728,
+    "md5_ok": true
+  },
+  "rez": {
+    "laikas": "2026-08-10 14:26:20",
+    "versija": "1.3",
+    "ATSAUKIMAS": {
+      "tikrinta": 1163,
+      "nuimta": 1163,
+      "praleista": 0,
+      "zurnale_liko": 2547
+    },
+    "po_atsaukimo": 496,
+    "BAIGTA": true,
+    "IS_NAUJO": {
+      "operacija": "MONO2608101126",
+      "apdorota": 3774,
+      "priskirta": 15,
+      "pagal_reiksme": {
+        "Taip": 15
+      }
+    },
+    "galutinis": 499,
+    "pagal_termina": [
+      {
+        "name": "Taip",
+        "count": "435"
+      },
+      {
+        "name": "Ne",
+        "count": "64"
+      }
+    ],
+    "kontrole": {
+      "pa_be_grudu": 1015,
+      "pa_baltymu_saltinis": 1233,
+      "pa_amzius": 1054
+    }
+  },
+  "svetaine": 200
+}
