@@ -1,3 +1,51 @@
 {
-  "klaida": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'focus')\n    at eval (eval at evaluate (:311:30), <anonymous>:2:7)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+  "VERSIJA": "UXS9",
+  "versija": {
+    "VERSIJA": "UXV5",
+    "katalogas": "4.8",
+    "failo_md5": "15ed3aadbcd10e4e9d59dca06e6da5cc",
+    "dydis": 274995
+  },
+  "eiluciu": 1,
+  "atidaryta": true,
+  "kortele_ikrauta": true,
+  "kaina_pradine": "1.51",
+  "juosta": {
+    "matoma": true,
+    "tekstas": "Neįrašyta: 1 · Kaina su PVM",
+    "mygtukai": [
+      "Atmesti",
+      "Įrašyti"
+    ]
+  },
+  "s_juosta": 201,
+  "esc": {
+    "matomas": true,
+    "antraste": "Išsaugoti pakeitimus?",
+    "laukai": "Neįrašyta: Kaina su PVM",
+    "mygtukai": [
+      "Grįžti į kortelę",
+      "Uždaryti neišsaugojus",
+      "Išsaugoti ir uždaryti"
+    ]
+  },
+  "s_klausimas": 201,
+  "po_grizti": {
+    "kortele_atvira": true,
+    "kaina": "7.77"
+  },
+  "kita_preke_klausia": true,
+  "po_prarasti": {
+    "kaina": "1.51",
+    "juosta_paslepta": true
+  },
+  "po_irasymo": {
+    "kaina": "8.88",
+    "juosta_paslepta": false,
+    "geltonas": true
+  },
+  "kaina_atstatyta": "1.51",
+  "s_pabaiga": 201,
+  "js_klaidos": [],
+  "liko_temp": []
 }
