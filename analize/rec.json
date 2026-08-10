@@ -1,0 +1,127 @@
+{
+  "rez": {
+    "laikas": "2026-08-10 13:32:48",
+    "hookai": {
+      "woocommerce_reduce_order_stock": [
+        "10 → closure"
+      ],
+      "woocommerce_payment_complete": [
+        "5 → Petshop_AV_Order::fiksuoti",
+        "10 → wc_paying_customer",
+        "10 → wc_maybe_reduce_stock_levels",
+        "10 → WC_MNM_Order::remove_get_product_from_item_filter",
+        "11 → wc_release_stock_for_order",
+        "15 → Petshop_AV_Reduce::mazinti",
+        "20 → Petshop_Event_Emitters::on_payment_complete",
+        "30 → Petshop_Refill_Engine::on_order_paid"
+      ],
+      "woocommerce_order_status_processing": [
+        "5 → Petshop_AV_Order::fiksuoti",
+        "10 → wc_downloadable_product_permissions",
+        "10 → wc_update_total_sales_counts",
+        "10 → wc_update_coupon_usage_counts",
+        "10 → wc_maybe_reduce_stock_levels",
+        "11 → wc_release_stock_for_order",
+        "15 → Petshop_AV_Reduce::mazinti",
+        "20 → Petshop_Event_Emitters::on_order_paid_status",
+        "30 → Petshop_Refill_Engine::on_order_paid"
+      ],
+      "woocommerce_order_status_completed": [
+        "1 → closure",
+        "5 → closure",
+        "10 → wc_paying_customer",
+        "10 → wc_downloadable_product_permissions",
+        "10 → wc_update_total_sales_counts",
+        "10 → wc_update_coupon_usage_counts",
+        "10 → wc_maybe_reduce_stock_levels",
+        "10 → Petshop_Post_Purchase::stamp",
+        "10 → WC_Emails::send_transactional_email",
+        "11 → wc_release_stock_for_order",
+        "20 → Petshop_Event_Emitters::on_order_paid_status",
+        "30 → Petshop_Refill_Engine::on_order_paid"
+      ],
+      "woocommerce_order_status_changed": [
+        "1 → closure",
+        "10 → Woo_Lithuaniapost_Admin_Order_Service::on_status_changed",
+        "10 → Automattic\\WooCommerce\\Caches\\OrderCountCacheService::update_on_order_status_changed",
+        "10 → Automattic\\WooCommerce\\Internal\\PushNotifications\\Triggers\\NewOrderNotificationTrigger::on_order_status_changed"
+      ],
+      "woocommerce_restore_order_stock": [
+        "10 → closure"
+      ],
+      "woocommerce_order_item_quantity": [
+        "20 → Petshop_AV_Reduce::wc_kiekis"
+      ],
+      "woocommerce_can_reduce_order_stock": []
+    },
+    "mu_failai": {
+      "petshop-av-limit.php": [
+        "23: * SAUGIKLIS: veikia TIK toms prekėms, kurios turi `_own_stock_qty` IR tiekėjo"
+      ],
+      "petshop-av-reduce.php": [
+        "9: * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus.",
+        "12: *   _ps_source = av   → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM",
+        "17: * Tai švariau nei `can_reduce_order_stock`, kuris veikia VISAM užsakymui.",
+        "65: // GRYNAI AV prekės likutis gyvena `_stock`, ne `_own_stock_qty` —"
+      ],
+      "petshop-av-source.php": [
+        "24: *      Resolveris grąžina `legacy`; mes verčiam į `av`. `_own_stock_qty` NEREIKIA.",
+        "26: *      Likutis `_own_stock_qty`; `_stock` perrašo sync.",
+        "59: // Joms `_own_stock_qty` NEREIKIA — jos ir taip AV."
+      ],
+      "petshop-av-stock.php": [
+        "9: *   `_own_stock_qty` su sync nesikerta.",
+        "36: const META = '_own_stock_qty';",
+        "133: * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.",
+        "182: 'id'          => 'ps_own_stock_qty',",
+        "205: if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }",
+        "206: $raw = trim( (string) wp_unslash( $_POST['ps_own_stock_qty'] ) );",
+        "251: <input type=\"number\" name=\"ps_own_stock_qty\" class=\"ps-av-qty\"",
+        "286: var v = (p.get('ps_own_stock_qty') || '').trim();",
+        "298: if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }"
+      ],
+      "petshop-desk.php": [
+        "665: *   `_own_stock_qty` reikalingas TIK toms prekėms, kurios turi ir",
+        "1498: $n = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$wpdb->prefix}postmeta WHERE meta_key='_own_stock_qty' AND meta_value>0\" );"
+      ],
+      "petshop-ivykiai.php": [
+        "136: '_own_stock_qty'         => array( 'likutis',  'AV likutis' ),",
+        "452: 'laukas'   => isset( $e['laukas'] ) ? $e['laukas'] : '_own_stock_qty',"
+      ],
+      "petshop-katalogas.php": [
+        "110: * `_own_stock_qty`. Ta pati taisyklė, kurią skaitant naudoja gyvi_is_meta().",
+        "145: * Išimtis: `_own_stock_qty` — tai MŪSŲ laukas, CRUD jo nepažįsta.",
+        "256: * Prekė be tiekėjo laiko likutį `_stock`; prekė su tiekėju — `_own_stock_qty`,",
+        "261: $own  = get_post_meta( $pid, '_own_stock_qty', true );",
+        "263: return '_own_stock_qty';",
+        "337: /* _own_stock_qty — mūsų laukas, WooCommerce jo nepažįsta */",
+        "1706: $vardai = array( '_stock' => 'Likutis', '_own_stock_qty' => 'AV likutis',",
+        "2015: '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
+        "2087: $own   = $v( '_own_stock_qty' );"
+      ],
+      "petshop-partijos.php": [
+        "240: * S590 taisykle: preke be tiekejo -> `_stock`; su tiekeju -> `_own_stock_qty`.",
+        "245: if ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }"
+      ]
+    },
+    "snippetai": [
+      {
+        "id": "567",
+        "name": "Petshop Daugiau=Pigiau Stock Sync v1.2",
+        "active": "1"
+      },
+      {
+        "id": "2515",
+        "name": "Petshop Sources v2.2 (registras + palaikymas + sandelio pildymas)",
+        "active": "1"
+      },
+      {
+        "id": "2584",
+        "name": "TEMP rec",
+        "active": "1"
+      }
+    ],
+    "hpos": "taip",
+    "uzsakymu": 9
+  }
+}
