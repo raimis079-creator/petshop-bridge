@@ -1,0 +1,29 @@
+{
+  "rez": {
+    "laikas": "2026-08-10 10:26:53",
+    "failas": {
+      "dydis": 35513,
+      "mtime": "2026-07-28 08:31"
+    },
+    "antraste": "<?php\n/**\n * Plugin Name: Petshop M8 Food Linking\n * Description: B/C busenu srautas — maisto kandidatai is pirkimu, priskyrimas su patvirtinimu, brand irasas, katalogo paieska. M8 IA v1.1.\n */\nif ( ! defined('ABSPATH') ) exit;\n\nclass Petshop_M8_Food {\n\n\t/** Rusies -> pagrindinio maisto kategorija (su vaikinemis: sausas + slapias). */\n\tconst SPECIES_CAT = array( 'dog' => 71, 'cat' => 78 );\n\n\tpublic static function init(){ add_action('rest_api_init', array(__CLASS__,'routes')); }\n\n\tpublic static function routes(){\n\t\t$auth = array( __CLASS__, 'perm' );\n\t\tregister_rest_route('petshop/v1','/pet-food-candidates/(?P<id>\\d+)',array(\n\t\t\t'methods'=>'GET','permission_callback'=>$auth,'callback'=>array(__CLASS__,'candidates')));\n\t\tregister_rest_route('petshop/v1','/pet-food-assign',array(\n\t\t\t'methods'=>'POST','permission_callback'=>$auth,'callback'=>array(__CLASS__,'assign')));\n\t\tregister_rest_route('petshop/v1','/pet-food-brand',array(\n\t\t\t'methods'=>'POST','permission_callback'=>$auth,'callback'=>array(__CLASS__,'brand')));\n\t\tregister_rest_route('petshop/v1','/pet-suggestions/(?P<id>\\\\d+)',array(\n\t\t\t'methods'=>'GET','permission_callback'=>$auth,'callback'=>array(__CLASS__,'suggestions')));\n\t\t// S232: SLAPIO maisto paieska. Skiriasi nuo product-search:\n\t\t//  - konservu kategorijos (ne sausas maistas)\n\t\t//  - JOKIO ps_feeding_map reikalavimo (slapiam serimo lenteles nereikia —\n\t\t//    kieki nurodo pats zmogus)\n\t\t//  - grazinam isparsinta pakuote, kad UI galetu rodyti \"3 paketeliai per diena\"\n\t\tregister_rest_route('petshop/v1','/wet-food-search',array(",
+    "kabliukai": [],
+    "raso_atributus": [
+      "pa_paskirtis",
+      "pa_baltymu_saltinis",
+      "pa_be_grudu",
+      "pa_pakuotes_dydis",
+      "pa_monoprotein",
+      "pa_gyvuno_rusis"
+    ],
+    "ant_issaugojimo": "NE",
+    "hookai_attr": [
+      "10: closure"
+    ],
+    "naujos_30d": 95,
+    "nauju_padengimas": {
+      "pa_gyvuno_rusis": 0,
+      "pa_pakuotes_dydis": 0,
+      "pa_baltymu_saltinis": 0
+    }
+  }
+}
