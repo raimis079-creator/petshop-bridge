@@ -1,0 +1,402 @@
+{
+  "VERSIJA": "AKC2",
+  "recon": {
+    "VERSIJA": "AKC2",
+    "failai": {
+      "petshop-xml/petshop-xml.php": 60703,
+      "petshop-xml/includes/class-product-cost-resolver.php": 11986,
+      "petshop-xml/includes/class-admin-ui.php": 22109,
+      "petshop-xml/includes/class-ean-lookup.php": 5730,
+      "petshop-xml/includes/class-fulfillment.php": 3702,
+      "petshop-xml/includes/class-pricing-vf.php": 20752,
+      "petshop-xml/includes/class-pricing.php": 11475,
+      "petshop-xml/includes/class-product-cost-metabox.php": 26504,
+      "petshop-xml/includes/class-import-rules.php": 4404,
+      "petshop-xml/includes/class-vf-import.php": 30180,
+      "petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php": 19099,
+      "petshop-xml/includes/class-fulfillment-source.php": 6711,
+      "petshop-xml/includes/class-import-rules-vf.php": 16132,
+      "petshop-promotions/petshop-promotions.php": 32801
+    },
+    "promo_guard_eilutes": {
+      "petshop-xml/petshop-xml.php": [
+        "1127: $sale_price  = get_post_meta( $post_id, '_sale_price', true );",
+        "1133: $sale_from = (int) get_post_meta( $post_id, '_sale_price_dates_from', true );",
+        "1134: $sale_to   = (int) get_post_meta( $post_id, '_sale_price_dates_to', true );"
+      ],
+      "petshop-xml/includes/class-pricing-vf.php": [
+        "10: *      Kai VF turi akcija (base < personal), $base_price JAU YRA po VF",
+        "11: *      akcijos (-25% ar kt.). Antras supplier_discount taikymas ant $base",
+        "17: *      Kai VF turi akcija, min(regular,sale) tampa regular, sale = 0.",
+        "112: *   APSAUGA NUO NETIKRU AKCIJU PO APVALINIMO:",
+        "149: *   - Akcijos logika: regular_price nuo personal, sale_price nuo base (jei base < personal)",
+        "205: * v1.7.0: Brand'ai, kuriems VF akcija taikoma TYLIAI (be zenkliuko).",
+        "206: * Kai VF turi akcija (base<personal), regular_price = min(reg,sale), sale=0.",
+        "377: *   base_price     = VF kaina mums siandien (su VF akcija jei yra), BE PVM, BE supplier discount",
+        "378: *   personal_price = standartine VF kaina mums (be akcijos), BE PVM, BE supplier discount",
+        "394: // v1.7.0: VF akcija ($base_price kai base<personal) JAU YRA supplier discount.",
+        "396: //   Kai VF neturi akcijos ($base = $personal), rezultatas nepakinta,",
+        "398: //   saugikliu (real_base >= real_personal reiskia jokios akcijos).",
+        "431: // abu -> 10.09). Tokiu atveju sale isvaloma — geriau jokios akcijos nei netikra.",
+        "432: // Verslo logika: akcija egzistuoja TIK kai galutine sale < galutine regular."
+      ],
+      "petshop-xml/includes/class-product-cost-metabox.php": [
+        "85: $sale    = (float) get_post_meta( $product_id, '_sale_price', true );"
+      ],
+      "petshop-xml/includes/class-vf-import.php": [
+        "28: *        + _sale_price > 0) -> reprice BLOKUOJAMAS + review flag",
+        "35: *      Anksciau: update_post_meta('_price', regular) + jei sale > 0, update_post_meta('_sale_price', sale).",
+        "36: *        PROBLEMA: _price likdavo = regular, net kai _sale_price < _regular_price. Frontend per",
+        "41: *        _sale_price istrinamas (svari busena). Po rasymo — wc_delete_product_transients() +",
+        "247: *      - NEKEICIAM: _price, _regular_price, _sale_price",
+        "440: $existing_sale = get_post_meta( $post_id, '_sale_price', true );",
+        "470: // Helper raso _regular_price, _sale_price, _price (S72 prevencija) +",
+        "591: * Sinchroniskai rasom _regular_price, _sale_price, _price + atnaujinam cache/lookup.",
+        "594: *   99 VF prekems _sale_price < _regular_price, BET _price likdavo = regular.",
+        "601: *   - $sale > 0 IR $sale < $regular  -> _price = $sale,    _sale_price = $sale",
+        "602: *   - kitu atveju                    -> _price = $regular, _sale_price IRASOMAS (svari busena)",
+        "622: update_post_meta( $post_id, '_sale_price', $sale );",
+        "626: // Sale tuscias arba netinkamas (>=regular) -> istrinam _sale_price meta,",
+        "628: delete_post_meta( $post_id, '_sale_price' );",
+        "27: *     2. Promo guard: jei preke turi aktyvu akciju batch (_petshop_sale_batch",
+        "439: $promo_batch   = (string) get_post_meta( $post_id, '_petshop_sale_batch', true );",
+        "29: *        'vf_reprice_blocked_by_promo' (petshop-promotions sale neperrasoma).",
+        "431: //     ir rasoma TIK jei skiriasi (churn guard). Promo batch -> blokuojama.",
+        "438: // Promo guard: aktyvi petshop-promotions akcija -> reprice neliecia sale.",
+        "441: $has_promo     = ( $price_initialized && $promo_batch !== '' && $existing_sale !== '' && (float) $existing_sale > 0 );",
+        "443: if ( $has_promo ) {",
+        "445: if ( strpos( $rr, 'vf_reprice_blocked_by_promo' ) === false ) {",
+        "447: update_post_meta( $post_id, '_petshop_price_review_reason', $rr ? $rr . ', vf_reprice_blocked_by_promo' : 'vf_reprice_blocked_by_promo' );",
+        "449: petshop_xml_log( \"VF REPRICE BLOCKED (promo batch '{$promo_batch}') post {$post_id} | sku={$vf_sku}\" );",
+        "37: *        wp_wc_product_meta_lookup rodydavo \"regular -> regular\" (netikra akcija). 99 prekes 2026-06-08"
+      ],
+      "petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php": [
+        "99: *   APSAUGA NUO NETIKRU AKCIJU PO APVALINIMO:",
+        "136: *   - Akcijos logika: regular_price nuo personal, sale_price nuo base (jei base < personal)",
+        "354: *   base_price     = VF kaina mums siandien (su VF akcija jei yra), BE PVM, BE supplier discount",
+        "355: *   personal_price = standartine VF kaina mums (be akcijos), BE PVM, BE supplier discount",
+        "403: // abu -> 10.09). Tokiu atveju sale isvaloma — geriau jokios akcijos nei netikra.",
+        "404: // Verslo logika: akcija egzistuoja TIK kai galutine sale < galutine regular."
+      ],
+      "petshop-promotions/petshop-promotions.php": [
+        "22: *   - Apply: rasoma per WC API (set_sale_price + sale datos + save) -> WC pats",
+        "24: *   - WC native sale datos (_sale_price_dates_from/to). Po datos pabaigos WC",
+        "662: $product->set_sale_price( (string) $sale );",
+        "713: if ( $p && ! $p->is_type( 'variable' ) && $p->get_sale_price() !== '' ) {",
+        "726: $product->set_sale_price( '' );",
+        "26: *   - Batch zyme: _petshop_sale_batch, _petshop_sale_batch_label,",
+        "27: *     _petshop_sale_batch_applied_at, _petshop_sale_batch_rule.",
+        "43: const MK_BATCH   = '_petshop_sale_batch';",
+        "44: const MK_LABEL   = '_petshop_sale_batch_label';",
+        "45: const MK_APPLIED = '_petshop_sale_batch_applied_at';",
+        "46: const MK_RULE    = '_petshop_sale_batch_rule';",
+        "3: * Plugin Name: Petshop Promotions",
+        "39: define( 'PETSHOP_PROMO_VERSION', '1.1' );",
+        "66: 'manage_woocommerce', 'petshop-promotions', [ $this, 'render' ] );",
+        "345: <h1>🏷️ Masines akcijos <span style=\"font-size:12px;color:#999;\">v<?php echo PETSHOP_PROMO_VERSION; ?></span></h1>",
+        "738: wp_safe_redirect( add_query_arg( array_merge( [ 'page' => 'petshop-promotions' ], $args ), admin_url( 'admin.php' ) ) );",
+        "743: if ( ! current_user_can( 'manage_woocommerce' ) || ( $_GET['page'] ?? '' ) !== 'petshop-promotions' ) {",
+        "5: * Description: Masines akcijos — filtrai, dry-run, apply su batch zyme, remove pagal batch. Atskira nuo ZB/VF kainodaros.",
+        "16: *   - Admin irankis \"Masines akcijos\" (WooCommerce submeniu).",
+        "65: add_submenu_page( 'woocommerce', 'Masines akcijos', '🏷️ Masines akcijos',",
+        "346: <p style=\"color:#555;max-width:820px;\">Filtrai atrenka prekes -> dry-run -> apply su patvirtinimu. Sale rasoma kaip WooCommerce akcija (regular nel",
+        "391: <h2>2. Akcijos taisykle</h2>",
+        "430: <th>Akcijos pavadinimas</th>",
+        "474: <li>Bus uzdeta akcija: <strong style=\"color:#c0392b;\"><?php echo (int) $summary['apply']; ?></strong></li>",
+        "497: <p style=\"margin:14px 0 6px;color:#555;\">Nuimk varnele nuo prekiu, kuriu NENORI itraukti i akcija (pvz. didesnes pakuotes). Apply taikys tik pazymet"
+      ]
+    },
+    "visos_akcijos": [
+      {
+        "id": 19715,
+        "pav": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas m",
+        "st": "publish",
+        "reg": "14.29",
+        "sale": "12.15",
+        "_price": "14.29",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19720,
+        "pav": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas m",
+        "st": "publish",
+        "reg": "58.99",
+        "sale": "50.14",
+        "_price": "58.99",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19725,
+        "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausa",
+        "st": "publish",
+        "reg": "13.49",
+        "sale": "11.47",
+        "_price": "13.49",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19730,
+        "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausa",
+        "st": "publish",
+        "reg": "58.99",
+        "sale": "50.14",
+        "_price": "58.99",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19740,
+        "pav": "Ambrosia Senior begrūdis su kalakutiena ir šviežia lašiša sa",
+        "st": "publish",
+        "reg": "58.99",
+        "sale": "50.14",
+        "_price": "58.99",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19747,
+        "pav": "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas",
+        "st": "publish",
+        "reg": "13.49",
+        "sale": "11.47",
+        "_price": "13.49",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19751,
+        "pav": "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas",
+        "st": "publish",
+        "reg": "58.99",
+        "sale": "50.14",
+        "_price": "58.99",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19756,
+        "pav": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista",
+        "st": "publish",
+        "reg": "14.29",
+        "sale": "12.15",
+        "_price": "14.29",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19760,
+        "pav": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista",
+        "st": "publish",
+        "reg": "59.99",
+        "sale": "50.99",
+        "_price": "59.99",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19765,
+        "pav": "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maist",
+        "st": "publish",
+        "reg": "13.49",
+        "sale": "11.47",
+        "_price": "13.49",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19770,
+        "pav": "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maist",
+        "st": "publish",
+        "reg": "58.99",
+        "sale": "50.14",
+        "_price": "58.99",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19775,
+        "pav": "AMBROSIA Puppy begrūdis su vištiena ir šviežia žuvimi sausas",
+        "st": "publish",
+        "reg": "13.49",
+        "sale": "11.47",
+        "_price": "13.49",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19780,
+        "pav": "AMBROSIA Junior begrūdis su šviežia vištiena ir lašiša sausa",
+        "st": "publish",
+        "reg": "13.49",
+        "sale": "11.47",
+        "_price": "13.49",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 19785,
+        "pav": "AMBROSIA  Junior begrūdis su šviežia vištiena ir lašiša saus",
+        "st": "publish",
+        "reg": "58.99",
+        "sale": "50.14",
+        "_price": "58.99",
+        "nuo": "2026-06-08",
+        "iki": "2026-06-09",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": 22275,
+        "pav": "Genia aliuminis įtvaras, 90x400mm, 4vnt",
+        "st": "publish",
+        "reg": "32.59",
+        "sale": "10.09",
+        "_price": "10.09",
+        "nuo": null,
+        "iki": null,
+        "batch": null
+      },
+      {
+        "id": 23882,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 75 mg, N10",
+        "st": "draft",
+        "reg": "8.89",
+        "sale": "6.29",
+        "_price": "6.29",
+        "nuo": null,
+        "iki": null,
+        "batch": null
+      },
+      {
+        "id": 23886,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 225 mg, N10",
+        "st": "publish",
+        "reg": "15.89",
+        "sale": "11.19",
+        "_price": "11.19",
+        "nuo": null,
+        "iki": null,
+        "batch": null
+      },
+      {
+        "id": 23890,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 450 mg, N10",
+        "st": "publish",
+        "reg": "24.49",
+        "sale": "17.19",
+        "_price": "17.19",
+        "nuo": null,
+        "iki": null,
+        "batch": null
+      },
+      {
+        "id": 26919,
+        "pav": "Flexadin Advanced Muscle support šunims, N30",
+        "st": "publish",
+        "reg": "42.49",
+        "sale": "33.99",
+        "_price": "33.99",
+        "nuo": null,
+        "iki": null,
+        "batch": null
+      }
+    ]
+  },
+  "dry": {
+    "VERSIJA": "AKCVAL",
+    "rezimas": "DRY",
+    "trinsim": 14,
+    "paliekam": [
+      {
+        "id": 22275,
+        "pav": "Genia aliuminis įtvaras, 90x400mm, 4vnt",
+        "sale": "10.09",
+        "batch": null
+      },
+      {
+        "id": 23882,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 75 mg, N10",
+        "sale": "6.29",
+        "batch": null
+      },
+      {
+        "id": 23886,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 225 mg, N10",
+        "sale": "11.19",
+        "batch": null
+      },
+      {
+        "id": 23890,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 450 mg, N10",
+        "sale": "17.19",
+        "batch": null
+      },
+      {
+        "id": 26919,
+        "pav": "Flexadin Advanced Muscle support šunims, N30",
+        "sale": "33.99",
+        "batch": null
+      }
+    ]
+  },
+  "apply": {
+    "VERSIJA": "AKCVAL",
+    "rezimas": "APPLY",
+    "trinsim": 14,
+    "paliekam": [
+      {
+        "id": 22275,
+        "pav": "Genia aliuminis įtvaras, 90x400mm, 4vnt",
+        "sale": "10.09",
+        "batch": null
+      },
+      {
+        "id": 23882,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 75 mg, N10",
+        "sale": "6.29",
+        "batch": null
+      },
+      {
+        "id": 23886,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 225 mg, N10",
+        "sale": "11.19",
+        "batch": null
+      },
+      {
+        "id": 23890,
+        "pav": "Vetoquinol papildas Zylkene kapsulėmis 450 mg, N10",
+        "sale": "17.19",
+        "batch": null
+      },
+      {
+        "id": 26919,
+        "pav": "Flexadin Advanced Muscle support šunims, N30",
+        "sale": "33.99",
+        "batch": null
+      }
+    ],
+    "kopija_irasyta": 14,
+    "isvalyta": 14,
+    "klaidos": [],
+    "liko_su_sale": 5,
+    "liko_batch": 1,
+    "price_neatitinka_regular": 0
+  },
+  "liko_temp": []
+}
