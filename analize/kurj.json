@@ -1,0 +1,80 @@
+{
+  "rez": {
+    "laikas": "2026-08-10 15:11:20",
+    "meta_raktai": [
+      {
+        "meta_key": "woo_lithuaniapost_allowed_terminal",
+        "c": "9",
+        "teigiamu": "0"
+      },
+      {
+        "meta_key": "woo_lithuaniapost_allowed_terminal_parcel_locker",
+        "c": "9",
+        "teigiamu": "0"
+      }
+    ],
+    "mu_failai": {
+      "petshop-av-source.php": [
+        "41: *   courier_only: bool,",
+        "54: : [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];",
+        "64: 'courier_only' => ! empty( $baze['courier_only'] ),",
+        "80: 'courier_only' => ! empty( $baze['courier_only'] ),",
+        "93: 'courier_only' => ! empty( $baze['courier_only'] ),"
+      ],
+      "petshop-desk.php": [
+        "511: * [source, carrier, courier_only, av_qty, av_uztenka, tiekejas, reason]."
+      ],
+      "petshop-katalogas.php": [
+        "1036: $kurj = get_post_meta( $pid, '_ps_tik_kurjeriu', true ) === 'yes'",
+        "1037: || get_post_meta( $pid, '_petshop_courier_only', true ) === 'yes';",
+        "1037: || get_post_meta( $pid, '_petshop_courier_only', true ) === 'yes';",
+        "1036: $kurj = get_post_meta( $pid, '_ps_tik_kurjeriu', true ) === 'yes'"
+      ],
+      "petshop-m8-food.php": [
+        "105: *   4. courier_only apsauga  5. savaitinė rotacija  6. iki 3 prekių",
+        "232: // courier_only NIEKADA nesiūlom — jis apribotų pristatymo būdus.",
+        "233: if ( ! empty( $r['courier_only'] ) ) { continue; }",
+        "692: $pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;",
+        "719: $pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;"
+      ]
+    },
+    "snippetai": [
+      {
+        "id": "44",
+        "name": "Pataisyti prekes su per dideliais matmenimis - kurjeris",
+        "active": "0"
+      },
+      {
+        "id": "194",
+        "name": "Venipak Shipping Lock v3",
+        "active": "0"
+      },
+      {
+        "id": "2250",
+        "name": "TEMP S466 Own Stock recon",
+        "active": "-1"
+      },
+      {
+        "id": "2228",
+        "name": "TEMP S446 FreeShip v1",
+        "active": "-1"
+      },
+      {
+        "id": "2227",
+        "name": "TEMP S445 Matrica v1",
+        "active": "-1"
+      },
+      {
+        "id": "2605",
+        "name": "TEMP kurj",
+        "active": "1"
+      }
+    ],
+    "serimo_funkcijos": {
+      "petshop_fc_get_table": "ne",
+      "Petshop_Feeding": "ne",
+      "ps_feeding_rows": "ne"
+    },
+    "ps_feeding_lentele": "yra"
+  }
+}
