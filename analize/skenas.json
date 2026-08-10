@@ -1,0 +1,237 @@
+{
+  "rez": {
+    "laikas": "2026-08-10 11:08:32",
+    "REZIMAS": "READ-ONLY",
+    "A_wpai": {
+      "1": {
+        "name": "goods_clean.xml",
+        "update_all_data": "yes",
+        "is_update_categories": "1",
+        "update_categories_logic": "full_update",
+        "taxonomies_list": "0",
+        "taxonomies_only_list": "",
+        "taxonomies_except_list": "",
+        "is_update_attributes": "1",
+        "update_attributes_logic": "full_update",
+        "attributes_list": "0",
+        "attributes_only_list": "",
+        "tax_logic": "product_brand=single | product_visibility=single | product_cat=single | product_tag=single | pos_product_visibility=single"
+      },
+      "2": {
+        "name": "products.php",
+        "update_all_data": "no",
+        "is_update_categories": "0",
+        "update_categories_logic": "full_update",
+        "taxonomies_list": "0",
+        "taxonomies_only_list": "",
+        "taxonomies_except_list": "",
+        "is_update_attributes": "0",
+        "update_attributes_logic": "full_update",
+        "attributes_list": "0",
+        "attributes_only_list": "",
+        "tax_logic": "product_brand=single | product_visibility=single | product_cat=single | product_tag=single | pos_product_visibility=single"
+      },
+      "3": {
+        "name": "stocks.php",
+        "update_all_data": "no",
+        "is_update_categories": "0",
+        "update_categories_logic": "full_update",
+        "taxonomies_list": "0",
+        "taxonomies_only_list": "",
+        "taxonomies_except_list": "",
+        "is_update_attributes": "0",
+        "update_attributes_logic": "full_update",
+        "attributes_list": "0",
+        "attributes_only_list": "",
+        "tax_logic": "product_brand=single | product_visibility=single | product_cat=single | product_tag=single | pos_product_visibility=single"
+      },
+      "5": {
+        "name": "petshop-xml-vf-fetcher.php",
+        "update_all_data": "no",
+        "is_update_categories": "0",
+        "update_categories_logic": "full_update",
+        "taxonomies_list": "0",
+        "taxonomies_only_list": "",
+        "taxonomies_except_list": "",
+        "is_update_attributes": "0",
+        "update_attributes_logic": "full_update",
+        "attributes_list": "0",
+        "attributes_only_list": "",
+        "tax_logic": "product_brand=single | product_visibility=single | product_cat=single | product_tag=single | pos_product_visibility=single"
+      },
+      "7": {
+        "name": "petshop-xml-vf-fetcher.php",
+        "update_all_data": "no",
+        "is_update_categories": "0",
+        "update_categories_logic": "full_update",
+        "taxonomies_list": "0",
+        "taxonomies_only_list": "",
+        "taxonomies_except_list": "",
+        "is_update_attributes": "0",
+        "update_attributes_logic": "full_update",
+        "attributes_list": "0",
+        "attributes_only_list": "",
+        "tax_logic": "product_brand=single | product_visibility=single | product_cat=single | product_tag=single | pos_product_visibility=single"
+      }
+    },
+    "B_brendai_viso": 122,
+    "B_pagal_sandeli": {
+      "av": {
+        "viso": 1400,
+        "su_brendu": 1206,
+        "BE_BRENDO": 194
+      },
+      "vf": {
+        "viso": 1161,
+        "su_brendu": 1154,
+        "BE_BRENDO": 7
+      },
+      "zb": {
+        "viso": 1059,
+        "su_brendu": 922,
+        "BE_BRENDO": 137
+      }
+    },
+    "B_brendo_meta_raktai": [
+      {
+        "meta_key": "_vf_brand_raw",
+        "c": "1161"
+      },
+      {
+        "meta_key": "_vf_brand_normalized",
+        "c": "1151"
+      },
+      {
+        "meta_key": "_zb_brand",
+        "c": "1059"
+      }
+    ],
+    "C_zb_pagal_modifikavima": {
+      "2026-08-10": {
+        "n": 1042,
+        "su_atr": 961,
+        "su_brendu": 906
+      },
+      "2026-08-09": {
+        "n": 1,
+        "su_atr": 1,
+        "su_brendu": 1
+      },
+      "2026-08-08": {
+        "n": 10,
+        "su_atr": 10,
+        "su_brendu": 10
+      },
+      "2026-07-14": {
+        "n": 1,
+        "su_atr": 0,
+        "su_brendu": 0
+      },
+      "2026-07-02": {
+        "n": 4,
+        "su_atr": 0,
+        "su_brendu": 4
+      },
+      "2026-06-27": {
+        "n": 1,
+        "su_atr": 1,
+        "su_brendu": 1
+      }
+    },
+    "D_vf_pagal_modifikavima": {
+      "2026-08-10": {
+        "n": 1161,
+        "su_atr": 1098
+      }
+    },
+    "E_pmxi": [
+      {
+        "import_id": "7",
+        "date": "2026-08-10 07:16:03",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 115 updated 2194 skipped"
+      },
+      {
+        "import_id": "7",
+        "date": "2026-08-10 06:16:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 43 updated 2266 skipped"
+      },
+      {
+        "import_id": "3",
+        "date": "2026-08-10 04:02:02",
+        "summary": "0 Produktai created 995 updated 1545 skipped"
+      },
+      {
+        "import_id": "5",
+        "date": "2026-08-10 03:31:01",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 15 updated 2294 skipped"
+      },
+      {
+        "import_id": "2",
+        "date": "2026-08-10 03:01:03",
+        "summary": "0 Produktai created 119 updated 191 skipped"
+      },
+      {
+        "import_id": "3",
+        "date": "2026-08-09 23:02:03",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1042 updated 1567 skipped"
+      },
+      {
+        "import_id": "5",
+        "date": "2026-08-09 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1 updated 2308 skipped"
+      },
+      {
+        "import_id": "5",
+        "date": "2026-08-08 03:31:02",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 1006 updated 1303 skipped"
+      },
+      {
+        "import_id": "2",
+        "date": "2026-08-06 15:01:03",
+        "summary": "import finished & cron un-triggered<br>0 Produktai created 363 updated 2239 skipped"
+      },
+      {
+        "import_id": "2",
+        "date": "2026-08-04 03:01:02",
+        "summary": "import finished & cron un-triggered<br>2 Produktai created 142 updated 2458 skipped"
+      }
+    ],
+    "F_meta_su_pa": 3614,
+    "F_meta_registruota_bet_terminu_nera": {
+      "tikrinta": 400,
+      "nesutampa": 143,
+      "pvz": [
+        {
+          "id": "12550",
+          "pav": "Monge puppy sausas pašaras (lašiša ir ry",
+          "sand": "zb"
+        },
+        {
+          "id": "12549",
+          "pav": "Monge Dry Dog Spec. Line &#8211; All Bre",
+          "sand": "zb"
+        },
+        {
+          "id": "12547",
+          "pav": "Monge puppy sausas pašaras (ėriena ir ry",
+          "sand": "zb"
+        },
+        {
+          "id": "12544",
+          "pav": "Monge mini adult sausas pašaras mažų vei",
+          "sand": "zb"
+        },
+        {
+          "id": "12543",
+          "pav": "Monge mini adult sausas pašaras (lašiša ",
+          "sand": "zb"
+        },
+        {
+          "id": "12541",
+          "pav": "Monge spec. line monoprotein mini adult ",
+          "sand": "zb"
+        }
+      ]
+    }
+  }
+}
