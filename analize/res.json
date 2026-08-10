@@ -1,0 +1,61 @@
+{
+  "rez": {
+    "laikas": "2026-08-10 15:14:16",
+    "priskyrimai": {
+      "petshop-av-source.php": [
+        "54: : [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];",
+        "64: 'courier_only' => ! empty( $baze['courier_only'] ),",
+        "80: 'courier_only' => ! empty( $baze['courier_only'] ),",
+        "93: 'courier_only' => ! empty( $baze['courier_only'] ),",
+        "124: $grupes[ $s ] = [ 'eilutes' => [], 'carrier' => $x['carrier'], 'courier_only' => false ];",
+        "132: if ( $x['courier_only'] ) { $grupes[ $s ]['courier_only'] = true; }"
+      ],
+      "petshop-m8-food.php": [
+        "692: $pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;",
+        "719: $pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;"
+      ]
+    },
+    "egzistuoja": {
+      "Petshop_Fulfillment": "taip",
+      "petshop_fulfillment_resolve": "ne",
+      "Petshop_AV_Source": "taip"
+    },
+    "aktyvus_snippetai": [
+      {
+        "id": "2606",
+        "name": "TEMP res",
+        "active": "1"
+      }
+    ],
+    "snippeto_2606": [
+      "5: // kur skaiciuojamas courier_only",
+      "8: if(strpos($c,'courier_only')===false) continue;",
+      "11: if(preg_match(\"/courier_only\\s*'?\\]?\\s*=[^=]/\",$L)||strpos($L,\"'courier_only' =>\")!==false)",
+      "21: $sn=$wpdb->get_results(\"SELECT id,name,active FROM {$wpdb->prefix}snippets WHERE active=1 AND code LIKE '%courier_only%'\", ARRAY",
+      "26: foreach($lines as $i=>$L){ if(strpos($L,'courier_only')!==false) $h[]=($i+1).': '.trim(mb_substr($L,0,130)); }"
+    ],
+    "av_source_metodai": [
+      "resolve",
+      "is_av",
+      "group",
+      "order_type",
+      "group_order"
+    ],
+    "tualeto_resolveris": {
+      "source": "zb",
+      "carrier": "venipak",
+      "courier_only": false,
+      "av_qty": null,
+      "av_uztenka": false,
+      "tiekejas": "zb",
+      "reason": "AV šios prekės neturi"
+    },
+    "tualeto_id": 32554,
+    "tualeto_svoris": "0.0000",
+    "tualeto_matmenys": [
+      "0.0000",
+      "0.0000",
+      "0.0000"
+    ]
+  }
+}
