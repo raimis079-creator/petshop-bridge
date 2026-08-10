@@ -1,0 +1,132 @@
+{
+  "VERSIJA": "AKC1",
+  "rez": {
+    "VERSIJA": "AKC1",
+    "su_sale_kaina": 18,
+    "su_datomis": 14,
+    "be_datu": 4,
+    "pasibaigusios_datos": 14,
+    "su_batch_zyme": 14,
+    "pavyzdziai": [
+      {
+        "id": "19715",
+        "pav": "Ambrosia begrūdis su šviežia kalakutiena ir antien",
+        "reg": "14.29",
+        "sale": "12.15",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": "19720",
+        "pav": "Ambrosia begrūdis su šviežia kalakutiena ir antien",
+        "reg": "58.99",
+        "sale": "50.14",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": "19725",
+        "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakut",
+        "reg": "13.49",
+        "sale": "11.47",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": "19730",
+        "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakut",
+        "reg": "58.99",
+        "sale": "50.14",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": "19740",
+        "pav": "Ambrosia Senior begrūdis su kalakutiena ir šviežia",
+        "reg": "58.99",
+        "sale": "50.14",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": "19747",
+        "pav": "AMBROSIA begrūdis su ėriena ir šviežia lašiša saus",
+        "reg": "13.49",
+        "sale": "11.47",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": "19751",
+        "pav": "AMBROSIA begrūdis su ėriena ir šviežia lašiša saus",
+        "reg": "58.99",
+        "sale": "50.14",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      },
+      {
+        "id": "19756",
+        "pav": "AMBROSIA begrūdis su ėriena ir šviežia elniena sau",
+        "reg": "14.29",
+        "sale": "12.15",
+        "nuo": "1780952400",
+        "iki": "1781038800",
+        "batch": "sale_20260609_195007_514"
+      }
+    ],
+    "batchai": [
+      {
+        "b": "sale_20260609_195007_514",
+        "c": "15"
+      }
+    ],
+    "plugin_klases": {
+      "Petshop_Bulk_Sales": true,
+      "Petshop_Promotions": false,
+      "Petshop_Pricing": true
+    },
+    "aktyvus_pluginai": [
+      "petshop-attributes/petshop-attributes.php",
+      "petshop-core/petshop-core.php",
+      "petshop-esp/petshop-esp.php",
+      "petshop-fbt/petshop-fbt.php",
+      "petshop-feeds/petshop-feeds.php",
+      "petshop-fonts/petshop-fonts.php",
+      "petshop-pragma/petshop-pragma.php",
+      "petshop-promotions/petshop-promotions.php",
+      "petshop-xml/petshop-xml.php"
+    ],
+    "plugin_katalogai": [
+      "petshop-attributes",
+      "petshop-core",
+      "petshop-esp",
+      "petshop-fbt",
+      "petshop-feeds",
+      "petshop-fonts",
+      "petshop-pragma",
+      "petshop-promotions",
+      "petshop-xml"
+    ],
+    "kuponu": 0,
+    "manual_override": 2,
+    "partiju": 3,
+    "partiju_su_likuciu": 0,
+    "pasiulymu_puslapis": true,
+    "kategorijos": {
+      "akcijos": "nera",
+      "daugiau-pigiau": {
+        "id": 91,
+        "count": 8
+      },
+      "geriausia-iki": "nera"
+    }
+  },
+  "liko_temp": []
+}
