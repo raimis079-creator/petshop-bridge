@@ -1,0 +1,85 @@
+{
+  "rez": {
+    "laikas": "2026-08-10 14:31:26",
+    "moduliai": {
+      "Katalogas": "3.6",
+      "Ivykiai": "1.2",
+      "Pardavimai": "1.0",
+      "Pilnumas": "1.1",
+      "Rysiai": "1.2",
+      "Sources": "2.2",
+      "Partijos": "1.1",
+      "Gavimas": "1.0",
+      "Parseris": "1.3"
+    },
+    "atributai": {
+      "pa_be_grudu": 1015,
+      "pa_monoprotein": 499,
+      "pa_baltymu_saltinis": 1233,
+      "pa_amzius": 1054,
+      "pa_speciali_mityba": 649,
+      "pa_gyvuno_rusis": 2689,
+      "pa_pakuotes_dydis": 1229
+    },
+    "pagal_sandeli": {
+      "av": {
+        "viso": 1400,
+        "be_grudu": 601,
+        "baltymas": 639
+      },
+      "vf": {
+        "viso": 1161,
+        "be_grudu": 351,
+        "baltymas": 512
+      },
+      "zb": {
+        "viso": 1059,
+        "be_grudu": 339,
+        "baltymas": 606
+      }
+    },
+    "parserio_zurnale": 2562,
+    "partiju": {
+      "versija": "1.1",
+      "partiju": 3,
+      "preku": 1,
+      "su_likuciu": 3,
+      "importuotu": 1,
+      "pakuociu_eil": 4,
+      "valiutos": [
+        {
+          "valiuta": "EUR",
+          "c": "2"
+        },
+        {
+          "valiuta": "PLN",
+          "c": "1"
+        }
+      ]
+    },
+    "ivykiu": 96,
+    "aktyvus_temp": [
+      {
+        "id": "2600",
+        "name": "TEMP pab2"
+      }
+    ],
+    "uzsakymu": 9,
+    "cron": {
+      "ps_cart_abandon_check": "08-10 11:34",
+      "ps_email_dispatch_cron": "08-10 11:33",
+      "ps_esp_cron_process_pending": "08-10 11:32",
+      "ps_ivykiai_valymas": "08-11 04:40",
+      "ps_pardavimai_naktinis": "08-11 04:50",
+      "ps_pet_drafts_cleanup_daily": "08-11 02:40",
+      "ps_pilnumas_naktinis": "08-11 05:00",
+      "ps_post_purchase_check": "08-10 11:39",
+      "ps_refill_daily_check": "08-11 08:00",
+      "ps_reminders_daily_check": "08-11 09:00",
+      "ps_sources_naktinis": "08-11 04:20",
+      "ps_suppression_daily_reconcile": "08-11 05:30"
+    }
+  },
+  "svetaine": 200,
+  "liko_temp": []
+}
