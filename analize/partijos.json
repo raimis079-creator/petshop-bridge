@@ -1,0 +1,157 @@
+{
+  "diegimas": {
+    "laikas": "2026-08-10 12:53:53",
+    "irasyta": 20509,
+    "md5_ok": true
+  },
+  "rez": {
+    "laikas": "2026-08-10 12:53:58",
+    "versija": "1.0",
+    "lenteles": "paruostos",
+    "test_pid": 34889,
+    "av_laukas": "_stock",
+    "av_preke": true,
+    "T1_eur": {
+      "partijos_id": 1,
+      "kiekis": 24,
+      "savikaina": 33,
+      "likutis": 24,
+      "savikaina_prekes": 33
+    },
+    "T2_pln": {
+      "partijos_id": 2,
+      "kiekis": 30,
+      "savikaina": 32.9466,
+      "likutis": 54,
+      "savikaina_prekes": 32.9703
+    },
+    "T2_laukiama_eur": 32.9466,
+    "T3_svertine": 32.9703,
+    "T3_laukiama": 32.9703,
+    "T3_cost_price_meta": "32.97",
+    "T4_likutis": 54,
+    "T4_verdiktas": "GERAI",
+    "T5_fefo_dry": {
+      "prasyta": 10,
+      "padengta": 10,
+      "nepadengta": 0,
+      "planas": [
+        {
+          "partijos_id": 2,
+          "imam": 10,
+          "buvo": 30,
+          "geriausia_iki": "2027-06-30",
+          "savikaina": 32.9466
+        }
+      ],
+      "dry": true
+    },
+    "T5_verdiktas": "GERAI — imta arčiausiai galiojanti",
+    "T6_nurasyta": {
+      "padengta": 10,
+      "nepadengta": 0
+    },
+    "T6_partijos_po": [
+      {
+        "id": "2",
+        "liko": "20",
+        "gal": "2027-06-30"
+      },
+      {
+        "id": "1",
+        "liko": "24",
+        "gal": "2027-09-30"
+      }
+    ],
+    "T7_per_daug": {
+      "prasyta": 999,
+      "padengta": 44,
+      "ispejimas": "Partijose trūksta 955 vnt. — likutis ir partijos nesutampa"
+    },
+    "T8_pakuotes_60vnt": {
+      "viso_kg": 5.14,
+      "pagal_medziaga": {
+        "Popierius": 0.24,
+        "Plastikas": 0.1,
+        "Metalas": 4.8
+      },
+      "eilutes": [
+        {
+          "pavadinimas": "dėžutė",
+          "tipas": "grupine",
+          "medziaga": "Popierius",
+          "pakuociu": 10,
+          "kg": 0.15
+        },
+        {
+          "pavadinimas": "plėvelė",
+          "tipas": "grupine",
+          "medziaga": "Plastikas",
+          "pakuociu": 10,
+          "kg": 0.1
+        },
+        {
+          "pavadinimas": "skardinė",
+          "tipas": "pirmine",
+          "medziaga": "Metalas",
+          "pakuociu": 60,
+          "kg": 4.8
+        },
+        {
+          "pavadinimas": "etiketė",
+          "tipas": "pirmine",
+          "medziaga": "Popierius",
+          "pakuociu": 60,
+          "kg": 0.09
+        }
+      ]
+    },
+    "T8_verdiktas": "GERAI (5,14 kg)",
+    "T9_gpais": [
+      {
+        "metai": 2026,
+        "vienetu": 30,
+        "viso_kg": 2.57,
+        "pagal_medziaga": {
+          "Popierius": 0.12,
+          "Plastikas": 0.05,
+          "Metalas": 2.4
+        }
+      }
+    ],
+    "T9_verdiktas": "GERAI — tik importuota partija",
+    "T10_santrauka": {
+      "partiju": 2,
+      "su_likuciu": 2,
+      "savikaina": 32.9757,
+      "paskutine": 32.9466,
+      "av_likutis": 54,
+      "artimiausias": "2027-06-30",
+      "valdo_partijos": true
+    },
+    "T10_ivykiai": [
+      "_cost_price 32.97→32.98 | Savikaina",
+      "partija 24→54 | Gavimas: +30 vnt. po 32,95 € · iki 2027-06-30",
+      "_cost_price 33.00→32.97 | Savikaina"
+    ],
+    "statistika": {
+      "versija": "1.0",
+      "partiju": 2,
+      "preku": 1,
+      "su_likuciu": 2,
+      "importuotu": 1,
+      "pakuociu_eil": 4,
+      "valiutos": [
+        {
+          "valiuta": "EUR",
+          "c": "1"
+        },
+        {
+          "valiuta": "PLN",
+          "c": "1"
+        }
+      ]
+    }
+  },
+  "svetaine": 200
+}
