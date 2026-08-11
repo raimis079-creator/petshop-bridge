@@ -1,0 +1,39 @@
+{
+  "rez": {
+    "VERSIJA": "PAR",
+    "dydis": 25728,
+    "antraste": "<?php\n/**\n * Petshop Parseris v1.0 (S738) — ATRIBUTAI IS GAMINTOJO TEKSTO\n *\n * KAM DU DARBAI VIENU VARIKLIU:\n *   1) nauja preke — ikliji gamintojo aprasyma, sistema pasiulo atributus;\n *   2) esamos prekes — 1 059 ZB prekiu, kuriose `pa_be_grudu` turi tik 2\n *      (TZ v1.67 punktas 1). Tas pats parseris, tik masiniu rezimu.\n *\n * KODEL TAISYKLES, NE AI (savininko klausimas 2026-08-10): domenas siauras —\n * baltymu saltiniu ~30, grudu kultūru ~8, amziaus zymu ~6. Ten, kur sarasas\n * baigtinis, taisykle pranasesne: deterministiska (tas pats tekstas visada\n * duoda ta pati rezultata), auditojama (matai, KURI taisykle suveike),\n * nemokama, veikia be interneto. Ankstesnis parseris v10 (2026-06-15) taip\n * apdorojo 1 207 prekes su ~93 % sekme.\n *\n * NEIGIMO ATPAZINIMAS — SVARBIAUSIA VIETA. Tekste „Be grūdų — nenaudojame\n * kviečių, kukurūzų\" paprasta paieska randa zodi „kviečių\" ir nusprendzia,\n * kad preke turi grudu. Butent del to 2026-08-10 dry-run'e i konfliktus\n * pateko FARMINA N&D PRIME, kuri yra grain-free linija. Todel tikrinama,\n * ar pries rasta zodi nera neigimo („be\", „nera\", „nenaudojame\", „without\",\n * „free\"), ir jei yra — radinys praleidziamas.\n *\n * KIEKVIENAS SIULYMAS TURI CITATA. Nera citatos — nera siulymo, laukas lieka\n * tuscias su zyme „tekste neradau\". Tai apsauga nuo tylaus spejimo: sistema\n * niekada nesako „taip nusprendziau\", ji visada parodo teksto v",
+    "klase": true,
+    "versija": "1.3",
+    "metodai": [
+      "taisykles",
+      "grudai",
+      "be_grudu_zodziai",
+      "normalizuoti",
+      "neigtas",
+      "rasti",
+      "citata",
+      "sudeties_sekcija",
+      "analizuoti",
+      "sekcijos",
+      "taikyti",
+      "zurnalas_irasyti",
+      "pradeti_operacija",
+      "baigti_operacija",
+      "zurnalo_santrauka",
+      "atsaukti",
+      "registruoti_atributa",
+      "masinis",
+      "statistika"
+    ],
+    "taisykles": {
+      "10": "* KODEL TAISYKLES, NE AI (savininko klausimas 2026-08-10): domenas siauras —",
+      "64": "*  TAISYKLES",
+      "67": "public static function taisykles() {",
+      "73": "array( 'r' => 'Jautiena',      'z' => array( 'jautien', 'wołowina' ) ),",
+      "92": "array( 'r' => 'Jautriam virškinimui','z' => array( 'jautriam virškinim', 'jautrus virškinim', 'sensitive digest', 'lengvai virškinam' )",
+      "216": "$tais    = self::taisykles();",
+      "586": "'baltymu'    => count( self::taisykles()['pa_baltymu_saltinis'] ),"
+    }
+  }
+}
