@@ -1,0 +1,113 @@
+{
+  "VERSIJA": "GI3",
+  "deploy": {
+    "VERSIJA": "GIDEP",
+    "petshop-katalogas.php": {
+      "dydis": 284274,
+      "ok": true
+    },
+    "petshop-akcijos.php": {
+      "dydis": 95300,
+      "ok": true
+    }
+  },
+  "valyta": {
+    "istrinta": 0
+  },
+  "testiniai": {
+    "VERSIJA": "GITEST",
+    "prekes": [
+      {
+        "pid": 14929,
+        "pav": "Žirklės nagams (giljotina), 11 cm",
+        "iki": "2026-08-23",
+        "dienu": 12
+      },
+      {
+        "pid": 14932,
+        "pav": "Žirklės gyvūno kailiui, 16 cm",
+        "iki": "2026-09-05",
+        "dienu": 25
+      },
+      {
+        "pid": 14935,
+        "pav": "Žirklės gyvūno kailiui filiruoti, 1",
+        "iki": "2026-09-25",
+        "dienu": 45
+      },
+      {
+        "pid": 14937,
+        "pav": "Žirklutės gyvūno nagams kirpti, vid",
+        "iki": "2026-10-25",
+        "dienu": 75
+      },
+      {
+        "pid": 14941,
+        "pav": "Žirklutės gyvūno nagams kirpti, maž",
+        "iki": "2026-12-29",
+        "dienu": 140
+      },
+      {
+        "pid": 14945,
+        "pav": "Žirklutės gyvūno nagams kirpti, maž",
+        "iki": "2027-06-07",
+        "dienu": 300
+      }
+    ],
+    "iterpta": 6
+  },
+  "rail": [
+    "Visos3774",
+    "Žemiau maržos ribos38",
+    "Be savikainos1221",
+    "Reikia užsakyti987",
+    "AV pasibaigę516",
+    "Baigiasi greičiau nei tiekiama1",
+    "Negyvos atsargos (AV)812",
+    "Geriausia iki ≤ 30 d.2",
+    "Artėja geriausia iki2",
+    "Duomenų skolos1960",
+    "Be nuotraukos263",
+    "Trūksta turinio304",
+    "Be EAN2286",
+    "Negaunama iš tiekėjo17",
+    "Be šaltinio registre1"
+  ],
+  "eilutes": [
+    "\t75\t | SUK | \tŽirklutės gyvūno nagams kirpti, vidutinės, M, Zolux ⌂ | 550018 · 3336025500186 · Zolux | \tAV\t2\t—\t2\t7,58\t—\t—\t | 0 | \t2026-10-25 | po 75 d",
+    "\t65\t | PRI | \tŽirklės gyvūno kailiui filiruoti, 16 cm ⌂ | 57450 | \tAV\t3\t—\t3\t5,49\t—\t—\t | 0 | \t2026-09-25 | po 45 d. · 10 vnt. | \t2026-06-04"
+  ],
+  "gi_stulpelis": [
+    "",
+    "",
+    "",
+    "Prekė ▲",
+    "Sandėlis",
+    "AV",
+    "Tiekėjo",
+    "Parduodama",
+    "Kaina€ su PVM",
+    "Savikaina€ be PVM",
+    "Marža% · € vnt.",
+    "Pardavimai30 d. · ABC · dienų",
+    "Geriausia ikiliko dienų",
+    "Atnaujinta"
+  ],
+  "kritine": [
+    "\t65\t | PRI | \tŽirklės gyvūno kailiui, 16 cm ⌂ | 57449 | \tAV\t5\t—\t5\t5,49\t—\t—\t | 0 | \t2026-09-05 | po 25 d. · 10 vnt. | \t20",
+    "\t65\t | SUK | \tŽirklės nagams (giljotina), 11 cm ⌂ | 2370 | \tAV\t5\t—\t5\t5,69🔒\t—\t—\t | 0 | \t2026-08-23 | po 12 d. · 10 vnt. "
+  ],
+  "tabai": [
+    "Brendui",
+    "Kategorijai",
+    "Atskiroms prekėms",
+    "Geriausia iki"
+  ],
+  "akc_perziura": {
+    "suv": "Atrinkta | 4 | Bus taikoma | 3 | Praleista | 1 | Žemiau maržos ribos | 0 | Vid. nuolaida | 25 % | Mažiausia marža | —",
+    "eiluciu": 4,
+    "pvz": "Žirklutės gyvūno nagams kirpti, vidutinės, M, Zolux | 550018 | \t7,58 €\t\t−24.9 %\t—\t—\t×"
+  },
+  "js_klaidos": [],
+  "liko_temp": []
+}
