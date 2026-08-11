@@ -1,0 +1,50 @@
+{
+  "VERSIJA": "P5",
+  "deploy": {
+    "VERSIJA": "P5DEP",
+    "katalogas": {
+      "dydis": 313084,
+      "ok": true
+    },
+    "test_pid": 14954,
+    "test_part": 10,
+    "pries": {
+      "id": "10",
+      "kiekis_liko": "5",
+      "savikaina_eur": "4.0000",
+      "geriausia_iki": "2026-08-03"
+    }
+  },
+  "kortele": {
+    "eiluciu": 1,
+    "laukai": [
+      "kiekis_liko",
+      "savikaina_eur",
+      "geriausia_iki"
+    ],
+    "data": "2026-08-03",
+    "liko": "pasibaigęs"
+  },
+  "pries": "2026-08-03",
+  "geltonas": true,
+  "po": {
+    "reiksme": "2027-02-11",
+    "stat": "…",
+    "liko": "pasibaigęs",
+    "geltonas": true
+  },
+  "db": {
+    "po": {
+      "id": "10",
+      "kiekis_liko": "5",
+      "savikaina_eur": "4.0000",
+      "geriausia_iki": "2027-02-11"
+    }
+  },
+  "pasibaige_po": {
+    "rail": "Pasibaigę0",
+    "eiluciu": 0
+  },
+  "js_klaidos": [],
+  "liko_temp": []
+}
