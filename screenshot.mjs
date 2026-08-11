@@ -1,4 +1,5 @@
 // RINK-RECON-0811 v1
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 import fs from 'fs';
 import { execSync } from 'child_process';
 const B = 'https://dev.avesa.lt';
@@ -8,9 +9,11 @@ const TOK = process.env.GH_TOKEN || '';
 fs.mkdirSync('screenshots',{recursive:true});
 
 async function wp(path, opts={}){
-  const r = await fetch(B+path, {...opts, headers:{'Authorization':AUTH,'Content-Type':'application/json',...(opts.headers||{})}});
-  const t = await r.text();
-  return {status:r.status, text:t};
+  try{
+    const r = await fetch(B+path, {...opts, headers:{'Authorization':AUTH,'Content-Type':'application/json',...(opts.headers||{})}});
+    const t = await r.text();
+    return {status:r.status, text:t};
+  }catch(e){ return {status:0, text:String(e)}; }
 }
 function jsonSafe(t){ const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x;})); try{return JSON.parse(t.slice(i));}catch(e){return null;} }
 
