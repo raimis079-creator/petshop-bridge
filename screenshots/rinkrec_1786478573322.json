@@ -1,0 +1,168 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-11T20:02:40.834Z",
+ "snip_id": 2734,
+ "snip_status": 200,
+ "recon": {
+  "marker": "MNM-STOCK-TEST v1",
+  "container": {
+   "id": 34172,
+   "type": "mix-and-match",
+   "manage_stock": false,
+   "stock_qty": null,
+   "stock_status": "instock",
+   "is_in_stock": true,
+   "price": "21.29"
+  },
+  "api": {
+   "wc_mnm_get_child_items": false,
+   "get_child_items_method": true,
+   "class": "WC_Product_Mix_and_Match"
+  },
+  "children": [
+   {
+    "id": 26077,
+    "t": "Churu Luxury kreminis skanėstas katėms su tunu ir karališkosiomis krevetėmis N4",
+    "stock": 388,
+    "status": "instock",
+    "manage": true,
+    "ci_class": "WC_MNM_Child_Item"
+   },
+   {
+    "id": 21609,
+    "t": "Churu Pops skanėstas katėms su tunu ir vištiena, 60 g., 4 vnt.",
+    "stock": 1680,
+    "status": "instock",
+    "manage": true,
+    "ci_class": "WC_MNM_Child_Item"
+   },
+   {
+    "id": 26064,
+    "t": "Churu Tidbits skanėstai katėms su tunu ir lašiša, 36g 3 vnt",
+    "stock": 289,
+    "status": "instock",
+    "manage": true,
+    "ci_class": "WC_MNM_Child_Item"
+   },
+   {
+    "id": 24009,
+    "t": "Churu Fun Bites skanėstas katėms su tunu ir sūriu suktinukai 96g",
+    "stock": 104,
+    "status": "instock",
+    "manage": true,
+    "ci_class": "WC_MNM_Child_Item"
+   },
+   {
+    "id": 21599,
+    "t": "Churu kreminis skanėstas kačiukams su vištiena, 4vnt",
+    "stock": 643,
+    "status": "instock",
+    "manage": true,
+    "ci_class": "WC_MNM_Child_Item"
+   }
+  ],
+  "fixed": "{\"21599\":1,\"21609\":2,\"24009\":1,\"26064\":1,\"26077\":2}",
+  "hooks": {
+   "woocommerce_reduce_order_stock": [
+    "10:closure"
+   ],
+   "woocommerce_payment_complete_reduce_order_stock": [],
+   "woocommerce_can_reduce_order_stock": [],
+   "woocommerce_before_save_order_items": [
+    "10:Automattic\\WooCommerce\\Internal\\RestockRefundedItemsAdjuster::initialize_restock_refunded_items"
+   ],
+   "woocommerce_add_to_cart": [
+    "10:petshop_gtm_queue_atc",
+    "10:WC_MNM_Cart::add_mnm_items_to_cart",
+    "10:WC_Cart_Session::persistent_cart_update",
+    "10:WC_Cart_Session::maybe_set_cart_cookies",
+    "20:Petshop_Cart_Tracker::on_cart_change",
+    "20:WC_Cart::calculate_totals"
+   ],
+   "woocommerce_product_get_stock_status": [
+    "20:Petshop_AV_Limit::stock_status"
+   ],
+   "woocommerce_product_is_in_stock": [
+    "10:closure"
+   ]
+  },
+  "before": {
+   "21599": 643,
+   "21609": 1680,
+   "24009": 104,
+   "26064": 289,
+   "26077": 388
+  },
+  "cont_before": {
+   "qty": null,
+   "status": "instock"
+  },
+  "config_used": {
+   "21599": 1,
+   "21609": 2,
+   "24009": 1,
+   "26064": 1,
+   "26077": 2
+  },
+  "add_item_id": 537,
+  "order_id": 34897,
+  "order_items": [
+   {
+    "id": 537,
+    "name": "Churu įvairių skonių rinkinys katėms · 7 vnt.",
+    "pid": 34172,
+    "qty": 1,
+    "meta": []
+   }
+  ],
+  "after": {
+   "21599": 643,
+   "21609": 1680,
+   "24009": 104,
+   "26064": 289,
+   "26077": 388
+  },
+  "cont_after": {
+   "qty": null,
+   "status": "instock"
+  },
+  "DIFF": {
+   "21599": {
+    "pries": 643,
+    "po": 643,
+    "skirtumas": 0
+   },
+   "21609": {
+    "pries": 1680,
+    "po": 1680,
+    "skirtumas": 0
+   },
+   "24009": {
+    "pries": 104,
+    "po": 104,
+    "skirtumas": 0
+   },
+   "26064": {
+    "pries": 289,
+    "po": 289,
+    "skirtumas": 0
+   },
+   "26077": {
+    "pries": 388,
+    "po": 388,
+    "skirtumas": 0
+   }
+  },
+  "VERDIKTAS": "NENURASO",
+  "restored": {
+   "21599": 643,
+   "21609": 1680,
+   "24009": 104,
+   "26064": 289,
+   "26077": 388
+  },
+  "order_deleted": true,
+  "restore_ok": true
+ },
+ "snip_deact": 200
+}
