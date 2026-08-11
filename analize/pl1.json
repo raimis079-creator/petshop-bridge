@@ -1,0 +1,35 @@
+{
+  "VERSIJA": "PL1",
+  "deploy": {
+    "VERSIJA": "PLDEP",
+    "katalogas": {
+      "dydis": 299227,
+      "ok": true
+    }
+  },
+  "logika": {
+    "VERSIJA": "PLTEST",
+    "versija": "5.3",
+    "A_ateityje": {
+      "paleidimas": "2026-10-01",
+      "nera_pardavimo": null,
+      "su_pardavimu": 102
+    },
+    "B_praeityje": {
+      "paleidimas": "2026-06-20",
+      "migruota_birzelio_4": 52,
+      "publikuota_rugpjucio_1": 10,
+      "su_pardavimu_rugpjucio_5": 6
+    },
+    "nustatyta": "2026-10-01"
+  },
+  "su_ateities_paleidimu": {
+    "rail": "Neparduodama ≥ 60 d.0",
+    "juosta": "Skaičiuojama nuo paskutinio pardavimo. Jei prekė dar neparduota — nuo 2026-10-01 (parduotuvės paleidimo) arba nuo vėlesnio publikavimo.",
+    "paleidimas": "Parduotuvės paleidimas: 2026-10-01\nkeisti",
+    "eiluciu": 1,
+    "pirma": "Pagal šiuos filtrus prekių nėra."
+  },
+  "js_klaidos": [],
+  "liko_temp": []
+}
