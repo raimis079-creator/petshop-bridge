@@ -1,0 +1,40 @@
+{
+  "VERSIJA": "G3",
+  "deploy": {
+    "VERSIJA": "G3",
+    "gavimas": {
+      "dydis": 50890,
+      "ok": true
+    }
+  },
+  "rez": {
+    "tekstas": "Tokios prekės sistemoje dar nėra.\n+ Sukurti naują prekę",
+    "yra_mygtukas": true
+  },
+  "forma": {
+    "pav": "Testinis skanestas XYZ",
+    "laukai": [
+      "n-pav",
+      "n-sku",
+      "n-ean",
+      "n-kaina",
+      "n-kat",
+      "n-brendas",
+      "n-rusis",
+      "n-pak",
+      "n-svoris",
+      "n-apras"
+    ],
+    "kategoriju": 1,
+    "brendu": 1,
+    "pilnumas": "Trūksta: kainos, kategorijos, nuotraukos, aprašymo. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras."
+  },
+  "pilnumas_pries": "Trūksta: nuotraukos. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras.",
+  "po_kurimo": {
+    "modalas_uzdarytas": true,
+    "stat": "kuriama…",
+    "lentele": "TESTAS Skanėstas šunims 100 g | GAVTEST001 · 4770000999123 · juodraštis | \t\t\t—\t\tAV 0\t×"
+  },
+  "js_klaidos": [],
+  "liko_temp": []
+}
