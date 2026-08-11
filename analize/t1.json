@@ -1,0 +1,68 @@
+{
+  "VERSIJA": "T1",
+  "deploy": {
+    "VERSIJA": "T1",
+    "petshop-gavimas.php": {
+      "dydis": 64863,
+      "ok": true
+    },
+    "petshop-katalogas.php": {
+      "dydis": 319220,
+      "ok": true
+    }
+  },
+  "kat_pasirinkta": "Akvariumo žuvyčių maistas",
+  "sudeliota": {
+    "stat": "sudėta į 4 skiltis · maistas",
+    "sekcijos": [
+      "Aprašymas → Sausas maistas suaugusiems sunims su viena baltymu rusi",
+      "Sudėtis → dziovinta vistiena 45%, ryziai, vistienos riebalai, zuv",
+      "Analitinės sudedamosios dalys — tekste nerasta → (tuščia)",
+      "Priedai → vitaminas A 15000 TV, vitaminas D3 1000 TV, cinko oksid",
+      "Šėrimo instrukcija → 2 kg sunui 40 g per para, 10 kg sunui 150 g per para."
+    ],
+    "atributai": [
+      "Baltymų šaltinis: Vištienarastas žodis „vištien\" (sudėtyje)",
+      "Gyvūno rūšis: Šunimsrastas žodis „šunims\"",
+      "Amžius: Suaugusiemsrastas žodis „suaugus\"",
+      "Speciali mityba: Jautriam virškinimuirastas žodis „lengvai virškinam\"",
+      "Grūdai: Su ryžiaisgrūdų kultūra sudėtyje",
+      "Pakuotės dydis: 2 kgdydis pavadinime arba tekste"
+    ],
+    "pilnumas": "Trūksta: nuotraukos. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras."
+  },
+  "po": {
+    "uzdaryta": true,
+    "lentele": "TESTAS Sausas maistas šunims su vištiena 2 kg | GAVTEST002 · be EAN · juodraštis | \t\t\t—\t\tAV 0\t×"
+  },
+  "db": {
+    "pid": 34895,
+    "html": "<p>Sausas maistas suaugusiems sunims su viena baltymu rusimi. Lengvai virskinamas, tinka jautrios virskinimo sistemos sunims, be dirbtiniu kvapiuju medziagu ir dazikliu. Kasdienei mitybai.</p><p><strong>Sudėtis:</strong> dziovinta vistiena 45%, ryziai, vistienos riebalai, zuvu taukai, dziovinti obuoliai.<br />\nAnalitines sudedamosios dalys: zali baltymai 30%, zali riebalai 18%, zali pelenai 7%, drėgnis 8%.</p><p><strong>Priedai:</strong> vitaminas A 15000 TV, vitaminas D3 1000 TV, cinko oksidas 80 mg.</p><p><strong>Šėrimo instrukcija:</strong> 2 kg sunui 40 g per para, 10 kg sunui 150 g per para.</p>",
+    "statusas": "draft",
+    "lentyneles": [
+      "Aprašymas",
+      "Sudėtis",
+      "Priedai",
+      "Šėrimo instrukcija"
+    ],
+    "atributai": {
+      "pa_baltymu_saltinis": [
+        "Vištiena"
+      ],
+      "pa_gyvuno_rusis": [
+        "Šunims"
+      ],
+      "pa_be_grudu": [
+        "Su ryžiais"
+      ],
+      "pa_pakuotes_dydis": [
+        "2 kg"
+      ]
+    },
+    "pilnumas": "45",
+    "kodai": "|savikaina|serimo_lentele|analitines|ean|nuotrauka|",
+    "istrinta": true
+  },
+  "js_klaidos": [],
+  "liko_temp": []
+}
