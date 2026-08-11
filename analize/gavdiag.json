@@ -1,0 +1,58 @@
+{
+  "serveris": {
+    "VERSIJA": "GAVDIAG",
+    "gavimas": "1.2",
+    "partijos": "1.1",
+    "katalogas": "5.8",
+    "vartai": "1.0",
+    "ajax": [
+      "wp_ajax_ps_gav_paieska",
+      "wp_ajax_ps_gav_irasyti",
+      "wp_ajax_ps_gav_praeitas"
+    ],
+    "error_log": "",
+    "gav_metodai": [
+      "init",
+      "meniu",
+      "be_diakritiku",
+      "ajax_paieska",
+      "ajax_praeitas",
+      "ajax_irasyti",
+      "puslapis"
+    ],
+    "part_metodai": [
+      "lentele",
+      "pakuociu_lentele",
+      "uztikrinti_lenteles",
+      "av_preke",
+      "priimti",
+      "av_laukas",
+      "av_likutis",
+      "svertine_savikaina",
+      "paskutine_savikaina",
+      "perskaiciuoti_savikaina",
+      "nurasyti",
+      "partijos",
+      "artimiausias_galiojimas",
+      "santrauka",
+      "pakuotes",
+      "irasyti_pakuote",
+      "pakuociu_svoris",
+      "gpais_pagal_metus",
+      "kabinti_uzsakymus",
+      "uzsakymo_nurasymas",
+      "grazinti_i_partija",
+      "sutapimo_patikra",
+      "statistika"
+    ]
+  },
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-gavimas",
+  "langas": {
+    "juosta": true,
+    "turinys": "Apie WordPress\nPetshop.lt\n Flatsome\n3\nGalimi 3 atnaujinimai\n0\nModeruojama 0 komentarų\nNaujas\nWPForms\nSveiki, Rai\nIšleistas WordPress 7.0.3! Prašome atsinaujinti dabar.\nPETSHOP\nKatalogas\nAkcijos\nGavimas\nTiekimas\nUžsakymai\nPrekių gavimas į AV sandėlį\nTiekėjas\nGavimo data\nValiuta\nEUR\nPLN\nUSD\nGBP\nImport"
+  },
+  "paieskos_laukas": null,
+  "js_klaidos": [],
+  "konsole": [],
+  "blogi": []
+}
