@@ -1,1 +1,34 @@
-{"klaida":"Error: page.evaluate: TypeError: Cannot read properties of null (reading 'value')\n    at eval (eval at evaluate (:311:30), <anonymous>:1:48)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"}
+{
+  "VERSIJA": "V6",
+  "deploy": {
+    "VERSIJA": "V6",
+    "petshop-gavimas.php": {
+      "dydis": 70794,
+      "ok": true
+    },
+    "petshop-katalogas.php": {
+      "dydis": 322265,
+      "ok": true
+    }
+  },
+  "kat_pries": 81,
+  "kat_pvz": [
+    "Animonda konservai šunims (36)",
+    "DAUGIAU=PIGIAU (8)",
+    "DAUGIAU=PIGIAU › Graužikams",
+    "DAUGIAU=PIGIAU › Katėms",
+    "DAUGIAU=PIGIAU › Paukščiams"
+  ],
+  "kat_po_filtro": {
+    "kiek": 3,
+    "sar": [
+      "KATĖMS › Maistas katėms › Sausas maistas katėms (205)",
+      "ŠUNIMS › Maistas šunims › Sausas maistas šunims (510)"
+    ]
+  },
+  "sargas_gavime": "Nauja prekė dar nesukurta — jei išeisi, įvesti duomenys dings.\n\nIšeiti?",
+  "liko_gavime": true,
+  "kortele": null,
+  "kort_yra": false,
+  "kort_html": "nera"
+}
