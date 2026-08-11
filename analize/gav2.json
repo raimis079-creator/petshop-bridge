@@ -1,18 +1,21 @@
 {
+  "laukas_yra": true,
   "rez": {
-    "success": true,
-    "data": [
-      {
-        "id": 34889,
-        "pav": "PS-TEST-001 (testinė prekė, neliesti)",
-        "sku": "PS-TEST-001",
-        "ean": "",
-        "av": 54,
-        "sav": "32.95",
-        "sand": "",
-        "busena": "draft",
-        "av_preke": true
-      }
-    ]
-  }
+    "matoma": true,
+    "eiluciu": 12,
+    "tekstas": "Animonda konservai katėms su žvėriena ir kalakutienos filė, 85 g, Vom Feinsten Adult Feines with Wild and Turkey Fillet\n83064 · be EAN · juodraštis\nAV 0\nAnimonda konservai katėms su veršienos ir vištienos filė, 85 g, Vom"
+  },
+  "pasirinkta": true,
+  "lentele": {
+    "eiluciu": 1,
+    "tekstas": "Animonda konservai katėms su žvėriena ir kalakutienos filė, 85 g, Vom Feinsten Adult Feines with Wild and Turkey Fillet | 83064 · be EAN · juodraštis | \t\t\t—\t\tAV 0\t×"
+  },
+  "js_klaidos": [],
+  "konsole": [],
+  "ajax": [
+    {
+      "st": 200,
+      "body": "{\"success\":true,\"data\":[{\"id\":\"19324\",\"pav\":\"Animonda konservai kat\\u0117ms su \\u017ev\\u0117riena ir kalakutienos fil\\u0117, 85 g,  Vom Feinsten Adult Feines with Wild and Turkey Fillet\",\"sku\":\"83064\",\"ean\":\"\",\"av\":0,\"sav\":\"\",\"sand\":\"av\",\"busena\":\"draft\",\"av_preke\":true},{\"id\":\"19327\",\"pav\":\"Animond"
+    }
+  ]
 }
