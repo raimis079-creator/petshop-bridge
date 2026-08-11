@@ -1,0 +1,83 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-11T20:14:16.100Z",
+ "snip_id": 2738,
+ "snip_status": 200,
+ "recon": {
+  "marker": "MNM-CART-ZERO v1",
+  "orig": {
+   "id": 26077,
+   "qty": 388,
+   "ss": "instock"
+  },
+  "NULINIS_KOMPONENTAS": {
+   "add_to_cart": "PRIDETA",
+   "cart_items": 6,
+   "notices": [],
+   "ex": null,
+   "cont_in_stock": 1,
+   "cont_purchasable": 1
+  },
+  "LIKUTIS_1_REIKIA_2": {
+   "add_to_cart": "PRIDETA",
+   "cart_items": 6,
+   "notices": []
+  },
+  "atstatyta": {
+   "qty": 388,
+   "ss": "instock"
+  },
+  "mnm_filtrai": [
+   "wc_mnm_child_item_quantity_input_args",
+   "wc_mnm_child_item_quantity_input_default_value",
+   "wc_mnm_child_item_details",
+   "wc_mnm_before_child_items",
+   "wc_mnm_after_child_items",
+   "wc_mnm_child_item_discount_from_regular",
+   "wc_mnm_child_item_cart_item_identifier",
+   "wc_mnm_child_item_shipped_individually",
+   "wc_mnm_child_item_has_cumulative_weight",
+   "wc_mnm_child_item_classes",
+   "wc_mnm_child_item_image_html"
+  ],
+  "mnm_opts": [
+   {
+    "option_name": "mnm_p6_result",
+    "option_value": "{\"found_pos\":false,\"has_filter_string\":false}"
+   },
+   {
+    "option_name": "mnm_p7_result",
+    "option_value": "{\"get_quantity_locations\":[\"class-wc-mnm-child-item.php\",\"class-wc-mnm-stock-manager-item.php\"],\"get_quantity_bodies\":{\"class-wc-mnm-child-item.php\":\"function get_quantity( $type = 'value' ) {\\n\\n\\t\\tif ( 'min' === $type ) {\\n\\t\\t\\t$qty = 0;\\n\\t\\t} elseif ( 'step' === $type ) {\\n\\t\\t\\t$qty = 1;\\n\\t\\t} elseif ( 'max' === $type ) {\\n\\t\\t\\t$child_max     = $this->get_product()->get_max_purchase_quantity();\\n\\t\\t\\t$container_max = $this->get_container()->get_max_container_size();\\n\\n\\t\\t\\tif ( $child_max > 0 ) {\\n\\t\\t\\t\\t$qty = $container_max ? min( $child_max, $container_max ) : $child_max;\\n\\t\\t\\t} else {\\n\\t\\t\\t\\t$qty = $container_max;\\n\\t\\t\\t}\\n\\t\\t} else {\\n\\t\\t\\t$child_id   = $this->get_product()->get_id();\\n\\t\\t\\t$input_name = wc_mnm_get_child_input_name( $this->get_container_id() );\\n\\t\\t\\tif ( $this->get_quantity( 'min' ) === $this->get_quantity( 'max' ) ) {\\n\\t\\t\\t\\t$qty = $this->get_quantity( 'min' );\\n\\t\\t\\t} elseif ( isset( $_REQUEST[ $input_name ] ) ) {\\n\\t\\t\\t\\tif ( ! empty( $_REQUEST[ $input_name ][ $child_id ] ) ) {\\n\\t\\t\\t\\t\\t$qty = intval( $_REQUEST[ $input_name ][ $child_id ] );\\n\\t\\t\\t\\t} else {\\n\\t\\t\\t\\t\\t$qty = '';\\n\\t\\t\\t\\t\\t\\/\\/ Some users filter this to 0 to make their plus\\/minus buttons work better so we want that to persist in the edit context.\\n\\t\\t\\t\\t\\t$filtered_qty = apply_filters( 'wc_mnm_child_item_quantity_input_default_value', $qty, $this, $this->get_container() );\\n\\t\\t\\t\\t\\tif ( 0 === $filtered_qty ) {\\n\\t\\t\\t\\t\\t\\t$qty = 0;\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t}\\n\\t\\t\\t} else {\\n\\t\\t\\t\\t$qty = $this->get_quantity( 'min' ) ? $this->get_quantity( 'min' ) : '';\\n\\n\\t\\t\\t\\t\\/**\\n\\t\\t\\t\\t * Default quantity input value.\\n\\t\\t\\t\\t * \\n\\t\\t\\t\\t * @since 2.0.0\\n\\t\\t\\t\\t *\\n\\t\\t\\t\\t * @param array - The attributes that will print in the opening template.\\n\\t\\t\\t\\t * @param obj $child_item WC_MNM_Child_Item the child item class.\\n\\t\\t\\t\\t *\\/\\n\\t\\t\\t\\t$qty = apply_filters( 'wc_mnm_child_item_quantity_input_default_value', $qty, $this, $this->get_container() );\\n\\n\\t\\t\\t\\tif ( has_filter( 'woocommerce_mnm_quantity_input' ) ) {\\n\\t\\t\\t\\t\\twc_deprecated_hook( 'woocommerce_mnm_quantity_input', '2.0.0', 'wc_mnm_child_item_quantity_input_$type: note that the 2nd parameter will be a WC_MNM_Child_Item instance.' );\\n\\t\\t\\t\\t\\t\\/**\\n\\t\\t\\t\\t\\t * Default quantity input value.\\n\\t\\t\\t\\t\\t * \\n\\t\\t\\t\\t\\t * @since 1.0.0\\n\\t\\t\\t\\t\\t * @deprecated 2.0.0\\n\\t\\t\\t\\t\\t *\\n\\t\\t\\t\\t\\t * @param array - The attributes that will print in the opening template.\\n\\t\\t\\t\\t\\t * @param obj $child_item WC_MNM_Child_Item the child item class.\\n\\t\\t\\t\\t\\t *\\/\\n\\t\\t\\t\\t\\t$qty = apply_filters( 'woocommerce_mnm_quantity_input', $qty, $this->get_product(), $this->get_container() );\\n\\t\\t\\t\\t}\\n\\t\\t\\t}\\n\\t\\t}\\n\\n\\t\\tif ( has_filter( 'woocommerce_mnm_quantity_input_' . $type ) ) {\\n\\t\\t\\twc_deprecated_hook( 'woocommerce_mnm_quantity_input_' . $type, '2.0.0', 'wc_mnm_child_item_quantity_input_$type: note that t\",\"class-wc-mnm-stock-manager-item.php\":\"function get_quantity() {\\n\\t\\treturn $this->quantity;\\n\\t}\\n\\n\\t\\/**\\n\\t * Get the child item object for this item.\\n\\t *\\n\\t * @return WC_MNM_Child_Item\\n\\t *\\/\\n\\tpublic function get_child_item() {\\n\\t\\treturn $this->child_item;\\n\\t}\\n\\n\\t\\/**\\n\\t * Get the product object for this item.\\n\\t *\\n\\t * @return WC_Product}false\\n\\t *\\/\\n\\tpublic function get_product() {\\n\\t\\treturn $this->get_child_item() && $this->get_child_item()->get_product() ? $this->get_child_item()->get_product() : false;\\n\\t}\\n\\n\\t\\/**\\n\\t * Get the stock-managed product object for this item.\\n\\t * Mostly it's the same, except when a variation is managed at the parent-product level.\\n\\t *\\n\\t * @return WC_Product|false\\n\\t *\\/\\n\\tpublic function get_managed_product() {\\n\\n\\t\\tif ( is_null( $this->managed_product ) ) {\\n\\t\\t\\t$this->managed_product = $this->get_child_item()->get_product();\\n\\n\\t\\t\\tif ( $this->managed_product && $this->managed_product->get_id() !== $this->get_managed_by_id() ) {\\n\\t\\t\\t\\t$this->managed_product = wc_get_product( $this->get_managed_by_id() );\\n\\t\\t\\t}\\n\\t\\t}\\n\\n\\t\\treturn $this->managed_product;\\n\\t}\\n}\\n\\/**\\n * Formerly the WC_Mix_and_Match_Stock_Manager_Item class.\\n * Renamed in 2.7.0\\n *\\/\\nclass_alias( 'WC_MNM_Stock_Manager_Item', 'WC_Mix_and_Match_Stock_Manager_Item' );\\n\"}}"
+   },
+   {
+    "option_name": "mnm_probe3_result",
+    "option_value": "{\"plugin_dir\":\"\\/home\\/gyvunai2\\/domains\\/avesa.lt\\/public_html\\/dev\\/wp-content\\/plugins\\/woocommerce-mix-and-match-products\",\"quantity_filters\":{\"woocommerce_quantity_input_min\":\"mnm-add-to-cart-button.php\",\"woocommerce_quantity_input_max\":\"mnm-add-to-cart-button.php\",\"wc_mnm_child_item_quantity_input_default_value\":\"class-wc-mnm-child-item.php\",\"woocommerce_mnm_quantity_input\":\"class-wc-mnm-child-item.php\",\"woocommerce_mnm_quantity_input_\":\"class-wc-mnm-child-item.php\",\"wc_mnm_child_item_quantity_input_\":\"class-wc-mnm-child-item.php\",\"wc_mnm_child_item_quantity_name_prefix\":\"class-wc-mnm-child-item.php\",\"wc_mnm_quantity_name_prefix\":\"wc-mnm-core-functions.php\",\"wc_mnm_container_quantity_message\":\"wc-mnm-core-functions.php\",\"wc_mnm_center_align_quantity\":\"wc-mnm-template-functions.php\",\"wc_mnm_child_item_quantity_input_args\":\"wc-mnm-template-functions.php\",\"woocommerce_mnm_child_quantity_input_args\":\"wc-mnm-template-functions.php\",\"wc_mnm_container_quantity_error_message\":\"trait-wc-mnm-container-validation.php\"}}"
+   },
+   {
+    "option_name": "mnm_probe2_result",
+    "option_value": "{\"container_metas\":[{\"meta_key\":\"_mnm_max_price\",\"meta_value\":\"17.99\"},{\"meta_key\":\"_mnm_max_regular_price\",\"meta_value\":\"17.99\"},{\"meta_key\":\"_mnm_base_regular_price\",\"meta_value\":\"17.99\"},{\"meta_key\":\"_mnm_base_sale_price\",\"meta_value\":\"\"},{\"meta_key\":\"_mnm_layout_override\",\"meta_value\":\"no\"},{\"meta_key\":\"_mnm_layout_style\",\"meta_value\":\"tabular\"},{\"meta_key\":\"_mnm_add_to_cart_form_location\",\"meta_value\":\"default\"},{\"meta_key\":\"_mnm_min_container_size\",\"meta_value\":\"11\"},{\"meta_key\":\"_mnm_max_container_size\",\"meta_value\":\"11\"},{\"meta_key\":\"_mnm_per_product_pricing\",\"meta_value\":\"no\"},{\"meta_key\":\"_mnm_per_product_discount\",\"meta_value\":\"0\"},{\"meta_key\":\"_mnm_packing_mode\",\"meta_value\":\"together\"},{\"meta_key\":\"_mnm_weight_cumulative\",\"meta_value\":\"no\"},{\"meta_key\":\"_mnm_content_source\",\"meta_value\":\"products\"},{\"meta_key\":\"_mnm_child_category_ids\",\"meta_value\":\"a:0:{}\"},{\"meta_key\":\"_mnm_base_price\",\"meta_value\":\"17.99\"}],\"product_get_min_container_size\":11,\"product_get_max_container_size\":11,\"product_get_container_size\":11,\"meta_child_item_quantities\":\"\",\"meta_mnm_data\":\"\",\"get_quantity_signature\":[\"type=\\\"value\\\"\"],\"get_quantity_min\":0,\"get_quantity_max\":11,\"get_quantity_default\":\"\",\"first_child_meta\":[],\"mnm_const\":\"2.8.7\"}"
+   },
+   {
+    "option_name": "wc_mnm_install_timestamp",
+    "option_value": "1782826592"
+   },
+   {
+    "option_name": "mnm_render_result",
+    "option_value": "{\"func_woocommerce_mnm_add_to_cart\":false,\"func_wc_mnm_template_add_to_cart\":true,\"func_wc_mnm_content_loop\":true,\"hook_exists\":true,\"hook_callbacks\":[\"-10: _wc_mnm_add_template_backcompatibility\",\"10: WC_MNM_Flatsome_Compatibility::filter_plus_minus_buttons\",\"10: wc_mnm_template_add_to_cart\"],\"hidden_type\":\"mix-and-match\",\"hidden_child_count\":12,\"rendered_html_length\":50776,\"rendered_html_sample\":\"\\n<form\\n\\tclass=\\\"mnm_form cart cart_group layout_tabular\\\"\\n\\taction=\\\"https:\\/\\/dev.avesa.lt\\/product\\/konservu-rinkinys-400g-%c2%b7-12-vnt-pasleptas\\/\\\"\\n\\tmethod=\\\"post\\\"\\n\\tenctype=\\\"multipart\\/form-data\\\"\\n\\tdata-per_product_pricing=\\\"false\\\" data-product_id=\\\"34184\\\" data-container_id=\\\"34184\\\" data-min_container_size=\\\"12\"}"
+   },
+   {
+    "option_name": "mnm_probe4_result",
+    "option_value": "{\"quantity_input_args_context\":\"ld_item->get_quantity( 'min' );\\n\\t$max_qty = $child_item->get_quantity( 'max' );\\n\\n\\t$required_text = sprintf(\\n\\t\\t\\/\\/ translators: %1$d: Quantity, %2$s: Product name.\\n\\t\\t_x( '&times;%1$d <span class=\\\"screen-reader-text\\\">%2$s<\\/span>', '[Frontend]', 'woocommerce-mix-and-match-products' ),\\n\\t\\t$min_qty,\\n\\t\\twp_strip_all_tags( $child_item->get_product()->get_name() )\\n\\t);\\n\\n\\t$checkbox_label = sprintf(\\n\\t\\t\\/\\/ translators: %1$d: Quantity, %2$s: Product name.\\n\\t\\t_x( 'Add %1$d <span class=\\\"screen-reader-text\\\">%2$s<\\/span>', '[Frontend]', 'woocommerce-mix-and-match-products' ),\\n\\t\\t$max_qty,\\n\\t\\twp_strip_all_tags( $child_item->get_product()->get_name() )\\n\\t);\\n\\n\\t$input_args = array(\\n\\t\\t'input_id'        => uniqid( 'quantity_' ),\\n\\t\\t'input_name'      => wc_mnm_get_child_input_name( $child_item->get_container_id(), $child_item->get_product()->get_id() ),\\n\\t\\t'input_value'     => $child_item->get_quantity( 'value' ),\\n\\t\\t'min_value'       => $min_qty,\\n\\t\\t'max_value'       => $max_qty,\\n\\t\\t'placeholder'     => 0,\\n\\t\\t'step'            => $child_item->get_quantity( 'step' ),\\n\\t\\t'classes'         => array( 'qty', 'mnm-quantity', 'input-text' ),\\n\\t\\t'wrapper_classes' => array( 'quantity' ),\\n\\t\\t'required_text'   => $required_text,\\n\\t\\t'checkbox_label'  => $checkbox_label,\\n\\t);\\n\\n\\tif ( wc_string_to_bool( get_option( 'wc_mnm_display_plus_minus_buttons', 'no' ) ) ) {\\n\\t\\t$input_args['wrapper_classes'][] = 'buttons_added';\\n\\t}\\n\\n\\tif ( $max_qty && $min_qty === $max_qty ) {\\n\\t\\t$input_args['wrapper_classes'][] = 'required';\\n\\t}\\n\\n\\t\\/**\\n\\t * Filter wc_mnm_child_item_quantity_input_args.\\n\\t *\\n\\t * @since 2.0.0\\n\\t *\\n\\t * @param array $args\\n\\t * @param obj WC_Product\\n\\t * @param obj WC_Product_Mix_and_Match\\n\\t *\\/\\n\\t$input_args = apply_filters( 'wc_mnm_child_item_quantity_input_args', $input_args, $child_item, $product );\\n\\n\\t\\/\\/ Backcompatibility.\\n\\tif ( has_filter( 'woocommerce_mnm_child_quantity_input_args' ) ) {\\n\\t\\twc_deprecated_hook( 'woocommerce_mnm_child_quantity_input_args', '2.0.0', 'wc_mnm_child_item_quantity_input_args : note that the 2nd parame\"}"
+   },
+   {
+    "option_name": "mnm_probe5_result",
+    "option_value": "[]"
+   },
+   {
+    "option_name": "mnm_probe_result",
+    "option_value": "{\"mnm_tables\":[\"gaj6_wc_mnm_child_items\"],\"child_count\":11,\"child_item_methods\":[\"get_child_item_id\",\"get_product_id\",\"get_variation_id\",\"get_the_id\",\"get_container_id\",\"get_menu_order\",\"get_discount\",\"get_priced_individually\",\"get_product\",\"get_raw_price\",\"get_raw_regular_price\",\"get_container\",\"get_data_attributes\",\"get_quantity\",\"get_availability_html\",\"get_availability\",\"get_title\",\"get_permalink\",\"set_child_item_id\",\"set_product_id\",\"set_variation_id\",\"set_container_id\",\"set_menu_order\",\"get_input_name\",\"set_clone_mode\",\"get_clone_mode\",\"get_data_store\",\"get_id\",\"get_data\",\"get_data_keys\",\"get_extra_data_keys\",\"get_meta_data\",\"get_meta\",\"set_meta_data\",\"get_meta_cache_key\",\"set_id\",\"set_defaults\",\"set_object_read\",\"get_object_read\",\"set_props\",\"get_changes\"],\"child_item_class\":\"WC_MNM_Child_Item\",\"sample_get_quantity\":\"\",\"sample_child_id\":24,\"sample_product_id\":16942,\"columns_gaj6_wc_mnm_child_items\":[\"child_item_id\",\"product_id\",\"container_id\",\"menu_order\"],\"sample_rows_gaj6_wc_mnm_child_items\":[{\"child_item_id\":\"18\",\"product_id\":\"19574\",\"container_id\":\"34156\",\"menu_order\":\"0\"},{\"child_item_id\":\"17\",\"product_id\":\"17156\",\"container_id\":\"34153\",\"menu_order\":\"5\"},{\"child_item_id\":\"16\",\"product_id\":\"19530\",\"container_id\":\"34153\",\"menu_order\":\"4\"}]}"
+   }
+  ]
+ },
+ "snip_deact": 200
+}
