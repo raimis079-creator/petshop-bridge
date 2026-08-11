@@ -1,0 +1,72 @@
+{
+  "rez": {
+    "VERSIJA": "AN",
+    "params": [
+      {
+        "n": "tekstas",
+        "opt": false,
+        "def": null
+      },
+      {
+        "n": "pavadinimas",
+        "opt": true,
+        "def": "\"\""
+      },
+      {
+        "n": "laukai",
+        "opt": true,
+        "def": "[]"
+      }
+    ],
+    "bandymas_1arg": {
+      "pa_baltymu_saltinis": {
+        "reiksme": "Vištiena",
+        "citata": "džiovinta [[vištien]]a 45%, ryžiai, kukurūzų krakmolas, žuvų taukai.",
+        "pagrindas": "rastas žodis „vištien\" (sudėtyje)"
+      },
+      "pa_gyvuno_rusis": {
+        "reiksme": "Šunims",
+        "citata": "…sios dalys: žali baltymai 30%, žali riebalai 18%.\nŠėrimo instrukcija: 2 kg [[šuniui]] — 40 g per parą.",
+        "pagrindas": "rastas žodis „šuniui\""
+      },
+      "pa_amzius": null,
+      "pa_speciali_mityba": null,
+      "pa_be_grudu": {
+        "reiksme": "Su ryžiais",
+        "citata": "džiovinta vištiena 45%, [[ryžiai]], kukurūzų krakmolas, žuvų taukai.",
+        "pagrindas": "grūdų kultūra sudėtyje"
+      },
+      "pa_monoprotein": null,
+      "pa_pakuotes_dydis": {
+        "reiksme": "2 kg",
+        "citata": "[[2 kg]]",
+        "pagrindas": "dydis pavadinime arba tekste"
+      }
+    },
+    "bandymas_2arg": {
+      "pa_baltymu_saltinis": {
+        "reiksme": "Vištiena",
+        "citata": "maistas\ndžiovinta [[vištien]]a 45%, ryžiai, kukurūzų krakmolas, žuvų taukai.",
+        "pagrindas": "rastas žodis „vištien\" (sudėtyje)"
+      },
+      "pa_gyvuno_rusis": {
+        "reiksme": "Šunims",
+        "citata": "…sios dalys: žali baltymai 30%, žali riebalai 18%.\nŠėrimo instrukcija: 2 kg [[šuniui]] — 40 g per parą.",
+        "pagrindas": "rastas žodis „šuniui\""
+      },
+      "pa_amzius": null,
+      "pa_speciali_mityba": null,
+      "pa_be_grudu": {
+        "reiksme": "Su ryžiais",
+        "citata": "džiovinta vištiena 45%, [[ryžiai]], kukurūzų krakmolas, žuvų taukai.",
+        "pagrindas": "grūdų kultūra sudėtyje"
+      },
+      "pa_monoprotein": null,
+      "pa_pakuotes_dydis": {
+        "reiksme": "2 kg",
+        "citata": "[[2 kg]]",
+        "pagrindas": "dydis pavadinime arba tekste"
+      }
+    }
+  }
+}
