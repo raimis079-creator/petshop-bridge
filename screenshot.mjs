@@ -14,7 +14,7 @@ const sr=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.
 const sn=js(sr.text); out.snip=sn&&sn.id?sn.id:null;
 await new Promise(r=>setTimeout(r,3000));
 
-const URL_=B+'/produktas/churu-ivairiu-skoniu-rinkinys-katems-7-vnt/';
+let URL_=null;
 async function apziura(pg,zyme){
   const r={};
   try{
@@ -48,7 +48,11 @@ try{
   const br=await chromium.launch();
   const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1500,height:1200}});
   const pg=await ctx.newPage();
-  out.normalus=await apziura(pg,'normalus');
+  const ir=await pg.goto(B+'/?ps_front=Fr55Nb2',{timeout:60000});
+  out.urls=js(await ir.text());
+  URL_=out.urls && out.urls.url_cont ? out.urls.url_cont : null;
+  out.used_url=URL_;
+  out.normalus=URL_?await apziura(pg,'normalus'):{err:'no url'};
   const z=await pg.goto(`${B}/?ps_front=Fr55Nb2&act=zero`,{timeout:60000}); out.zero=js(await z.text());
   await pg.waitForTimeout(2000);
   out.nulinis=await apziura(pg,'nulinis');
