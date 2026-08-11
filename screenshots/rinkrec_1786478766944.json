@@ -1,0 +1,249 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-11T20:05:54.101Z",
+ "snip_id": 2735,
+ "snip_status": 200,
+ "recon": {
+  "marker": "MNM-STOCK-TEST v2 (per krepseli)",
+  "cart_ready": true,
+  "before": {
+   "21599": 643,
+   "21609": 1680,
+   "24009": 104,
+   "26064": 289,
+   "26077": 388
+  },
+  "config": {
+   "42": {
+    "product_id": 26077,
+    "quantity": 2
+   },
+   "43": {
+    "product_id": 21609,
+    "quantity": 2
+   },
+   "44": {
+    "product_id": 26064,
+    "quantity": 1
+   },
+   "45": {
+    "product_id": 24009,
+    "quantity": 1
+   },
+   "46": {
+    "product_id": 21599,
+    "quantity": 1
+   }
+  },
+  "used_format": "mnm_config_ci_assoc",
+  "tried": {
+   "mnm_config_ci_assoc": {
+    "ret": "7329bd1c3037a904f87b",
+    "cart_items": 6
+   }
+  },
+  "cart": [
+   {
+    "pid": 34172,
+    "qty": 1,
+    "keys": [
+     "mnm_config",
+     "mnm_contents"
+    ],
+    "mnm_child": null,
+    "mnm_container": null,
+    "mnm_config": {
+     "42": {
+      "product_id": 26077,
+      "quantity": 2
+     },
+     "43": {
+      "product_id": 21609,
+      "quantity": 2
+     },
+     "44": {
+      "product_id": 26064,
+      "quantity": 1
+     },
+     "45": {
+      "product_id": 24009,
+      "quantity": 1
+     },
+     "46": {
+      "product_id": 21599,
+      "quantity": 1
+     }
+    }
+   },
+   {
+    "pid": 26077,
+    "qty": 2,
+    "keys": [
+     "mnm_container",
+     "mnm_child_id",
+     "child_item_id"
+    ],
+    "mnm_child": 34172,
+    "mnm_container": "7329bd1c3037a904f87b8653b4665bb4",
+    "mnm_config": null
+   },
+   {
+    "pid": 21609,
+    "qty": 2,
+    "keys": [
+     "mnm_container",
+     "mnm_child_id",
+     "child_item_id"
+    ],
+    "mnm_child": 34172,
+    "mnm_container": "7329bd1c3037a904f87b8653b4665bb4",
+    "mnm_config": null
+   },
+   {
+    "pid": 26064,
+    "qty": 1,
+    "keys": [
+     "mnm_container",
+     "mnm_child_id",
+     "child_item_id"
+    ],
+    "mnm_child": 34172,
+    "mnm_container": "7329bd1c3037a904f87b8653b4665bb4",
+    "mnm_config": null
+   },
+   {
+    "pid": 24009,
+    "qty": 1,
+    "keys": [
+     "mnm_container",
+     "mnm_child_id",
+     "child_item_id"
+    ],
+    "mnm_child": 34172,
+    "mnm_container": "7329bd1c3037a904f87b8653b4665bb4",
+    "mnm_config": null
+   },
+   {
+    "pid": 21599,
+    "qty": 1,
+    "keys": [
+     "mnm_container",
+     "mnm_child_id",
+     "child_item_id"
+    ],
+    "mnm_child": 34172,
+    "mnm_container": "7329bd1c3037a904f87b8653b4665bb4",
+    "mnm_config": null
+   }
+  ],
+  "create_order": 34898,
+  "order_items": [
+   {
+    "pid": 34172,
+    "qty": 1,
+    "name": "Churu įvairių skonių rinkinys katėms · 7",
+    "meta_keys": [
+     "_mnm_container_size",
+     "_mnm_config",
+     "_mnm_cart_key",
+     "_per_product_pricing",
+     "_bundle_weight"
+    ]
+   },
+   {
+    "pid": 26077,
+    "qty": 2,
+    "name": "Churu Luxury kreminis skanėstas katėms s",
+    "meta_keys": [
+     "_mnm_container",
+     "_mnm_item_needs_shipping"
+    ]
+   },
+   {
+    "pid": 21609,
+    "qty": 2,
+    "name": "Churu Pops skanėstas katėms su tunu ir v",
+    "meta_keys": [
+     "_mnm_container",
+     "_mnm_item_needs_shipping"
+    ]
+   },
+   {
+    "pid": 26064,
+    "qty": 1,
+    "name": "Churu Tidbits skanėstai katėms su tunu i",
+    "meta_keys": [
+     "_mnm_container",
+     "_mnm_item_needs_shipping"
+    ]
+   },
+   {
+    "pid": 24009,
+    "qty": 1,
+    "name": "Churu Fun Bites skanėstas katėms su tunu",
+    "meta_keys": [
+     "_mnm_container",
+     "_mnm_item_needs_shipping"
+    ]
+   },
+   {
+    "pid": 21599,
+    "qty": 1,
+    "name": "Churu kreminis skanėstas kačiukams su vi",
+    "meta_keys": [
+     "_mnm_container",
+     "_mnm_item_needs_shipping"
+    ]
+   }
+  ],
+  "after": {
+   "21599": 642,
+   "21609": 1678,
+   "24009": 103,
+   "26064": 288,
+   "26077": 386
+  },
+  "DIFF": {
+   "21599": {
+    "pries": 643,
+    "po": 642,
+    "sk": -1,
+    "tiketasi": -1
+   },
+   "21609": {
+    "pries": 1680,
+    "po": 1678,
+    "sk": -2,
+    "tiketasi": -2
+   },
+   "24009": {
+    "pries": 104,
+    "po": 103,
+    "sk": -1,
+    "tiketasi": -1
+   },
+   "26064": {
+    "pries": 289,
+    "po": 288,
+    "sk": -1,
+    "tiketasi": -1
+   },
+   "26077": {
+    "pries": 388,
+    "po": 386,
+    "sk": -2,
+    "tiketasi": -2
+   }
+  },
+  "VERDIKTAS": "NURASO",
+  "restored": {
+   "21599": "ok",
+   "21609": "ok",
+   "24009": "ok",
+   "26064": "ok",
+   "26077": "ok"
+  },
+  "order_deleted": true
+ },
+ "snip_deact": 200
+}
