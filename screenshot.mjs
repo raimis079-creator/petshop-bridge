@@ -81,6 +81,12 @@ async function main(){
   out.kortele=await page.evaluate(()=>{
     const h=document.querySelector('.kort-pav-t'); return h?h.textContent.trim().slice(0,40):null; });
   /* Keiciam kaina ir irasom — ar zalias patvirtinimas */
+  out.kort_yra=await page.evaluate(()=>!!document.querySelector('.kort-kaina input'));
+  if(!out.kort_yra){
+    out.kort_html=await page.evaluate(()=>{ const t=document.querySelector('.kort-turinys'); return t?t.innerText.slice(0,200):'nera'; });
+    await putRaw('analize/v6.json', Buffer.from(JSON.stringify(out,null,2)).toString('base64'),'v6');
+    await br.close(); await off(sd.id); return;
+  }
   const k0=await page.evaluate(()=>document.querySelector('.kort-kaina input').value);
   await page.evaluate(()=>{ const i=document.querySelector('.kort-kaina input');
     i.focus(); i.value=(parseFloat(i.value||'1')+0.01).toFixed(2); i.dispatchEvent(new Event('input',{bubbles:true})); });
