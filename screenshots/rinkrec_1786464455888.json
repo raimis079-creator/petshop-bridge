@@ -1,0 +1,517 @@
+{
+ "marker": "RINK-RECON3-0811",
+ "ts": "2026-08-11T16:07:27.821Z",
+ "snip_id": 2707,
+ "snip_status": 200,
+ "recon": {
+  "marker": "RINKREC3 v1",
+  "parent_count": 5,
+  "parents": [
+   {
+    "id": 34207,
+    "t": "Susidėk konservų rinkinį šunims",
+    "st": "publish",
+    "type": "simple",
+    "cats": [
+     "Konservų rinkiniai"
+    ],
+    "vis": [],
+    "sku": "Konservu-rinkiniai-sunims-susidek",
+    "no_gram": "",
+    "glabel": "",
+    "cfg": {
+     "mix": {
+      "label": "Mix",
+      "gramaturos": {
+       "400": {
+        "6": {
+         "product_id": 34208,
+         "price": 13.99
+        },
+        "12": {
+         "product_id": 34209,
+         "price": 27.49
+        }
+       },
+       "800": {
+        "6": {
+         "product_id": 34210,
+         "price": 20.3
+        },
+        "12": {
+         "product_id": 34211,
+         "price": 39.99
+        },
+        "15": {
+         "product_id": 34212,
+         "price": 49.2
+        }
+       }
+      }
+     },
+     "mono": {
+      "label": "Monoproteinas",
+      "gramaturos": {
+       "400": {
+        "6": {
+         "product_id": 34213,
+         "price": 21.99
+        },
+        "12": {
+         "product_id": 34214,
+         "price": 43.1
+        }
+       }
+      }
+     },
+     "be_grudu": {
+      "label": "Be grūdų",
+      "gramaturos": {
+       "400": {
+        "6": {
+         "product_id": 34215,
+         "price": 11.69
+        },
+        "12": {
+         "product_id": 34216,
+         "price": 22.69
+        }
+       }
+      }
+     }
+    },
+    "cfg_len": 528
+   },
+   {
+    "id": 34217,
+    "t": "Susidėk konservų rinkinį katėms",
+    "st": "publish",
+    "type": "simple",
+    "cats": [
+     "Konservų rinkiniai"
+    ],
+    "vis": [],
+    "sku": "Konservu-rinkiniai-katems-susidek",
+    "no_gram": "",
+    "glabel": "",
+    "cfg": {
+     "mix": {
+      "label": "Mix",
+      "gramaturos": {
+       "100": {
+        "16": {
+         "product_id": 34218,
+         "price": 16.2
+        },
+        "32": {
+         "product_id": 34219,
+         "price": 30.99
+        }
+       },
+       "400": {
+        "6": {
+         "product_id": 34220,
+         "price": 14.99
+        },
+        "12": {
+         "product_id": 34221,
+         "price": 29.2
+        }
+       }
+      }
+     },
+     "jautrus": {
+      "label": "Jautriam virškinimui",
+      "gramaturos": {
+       "100": {
+        "12": {
+         "product_id": 34222,
+         "price": 24.09
+        },
+        "24": {
+         "product_id": 34223,
+         "price": 46.99
+        }
+       }
+      }
+     }
+    },
+    "cfg_len": 362
+   },
+   {
+    "id": 34228,
+    "t": "Susidėk skanėstų rinkinį jautresniam šuniui (TESTAS)",
+    "st": "publish",
+    "type": "simple",
+    "cats": [
+     "Skanėstų rinkiniai"
+    ],
+    "vis": [],
+    "sku": "DOG-CHOICE-SKANESTAI-TEST",
+    "no_gram": "yes",
+    "glabel": "",
+    "cfg": {
+     "jautresniam": {
+      "label": "Jautresniam šuniui",
+      "gramaturos": {
+       "std": {
+        "5": {
+         "product_id": 34229,
+         "price": 19.9
+        },
+        "7": {
+         "product_id": 34230,
+         "price": 26.9
+        },
+        "10": {
+         "product_id": 34231,
+         "price": 36.9
+        }
+       }
+      }
+     }
+    },
+    "cfg_len": 189
+   },
+   {
+    "id": 34232,
+    "t": "Susidėk kramtalų rinkinį šuniui (TESTAS)",
+    "st": "publish",
+    "type": "simple",
+    "cats": [
+     "Kramtalų rinkiniai"
+    ],
+    "vis": [],
+    "sku": "DOG-CHOICE-KRAMTALAI-TEST",
+    "no_gram": "yes",
+    "glabel": "Šuns dydis",
+    "cfg": {
+     "mazas": {
+      "label": "Mažam šuniui",
+      "gramaturos": {
+       "std": {
+        "3": {
+         "product_id": 34233,
+         "price": 3.9
+        },
+        "5": {
+         "product_id": 34234,
+         "price": 5.9
+        },
+        "7": {
+         "product_id": 34235,
+         "price": 7.9
+        }
+       }
+      }
+     },
+     "vidutinis": {
+      "label": "Vidutiniam šuniui",
+      "gramaturos": {
+       "std": {
+        "3": {
+         "product_id": 34236,
+         "price": 13.9
+        },
+        "5": {
+         "product_id": 34237,
+         "price": 20.9
+        },
+        "7": {
+         "product_id": 34238,
+         "price": 27.9
+        }
+       }
+      }
+     },
+     "didelis": {
+      "label": "Dideliam šuniui",
+      "gramaturos": {
+       "std": {
+        "3": {
+         "product_id": 34239,
+         "price": 29.9
+        },
+        "5": {
+         "product_id": 34240,
+         "price": 46.9
+        },
+        "7": {
+         "product_id": 34241,
+         "price": 62.9
+        }
+       }
+      }
+     }
+    },
+    "cfg_len": 542
+   },
+   {
+    "id": 34242,
+    "t": "Susidėk skanėstų rinkinį katei (TESTAS)",
+    "st": "publish",
+    "type": "simple",
+    "cats": [
+     "Skanėstų rinkiniai"
+    ],
+    "vis": [],
+    "sku": "CAT-CHOICE-SKANESTAI-TEST",
+    "no_gram": "yes",
+    "glabel": "",
+    "cfg": {
+     "mix": {
+      "label": "Mix",
+      "gramaturos": {
+       "std": {
+        "5": {
+         "product_id": 34243,
+         "price": 14.9
+        },
+        "7": {
+         "product_id": 34244,
+         "price": 19.9
+        },
+        "10": {
+         "product_id": 34245,
+         "price": 26.9
+        }
+       }
+      }
+     }
+    },
+    "cfg_len": 161
+   }
+  ],
+  "choice_kids": 36,
+  "kid_map": [
+   {
+    "id": 34190,
+    "p": 34196
+   },
+   {
+    "id": 34191,
+    "p": 34196
+   },
+   {
+    "id": 34192,
+    "p": 34196
+   },
+   {
+    "id": 34193,
+    "p": 34196
+   },
+   {
+    "id": 34194,
+    "p": 34196
+   },
+   {
+    "id": 34195,
+    "p": 34196
+   },
+   {
+    "id": 34209,
+    "p": 34207
+   },
+   {
+    "id": 34210,
+    "p": 34207
+   },
+   {
+    "id": 34211,
+    "p": 34207
+   },
+   {
+    "id": 34208,
+    "p": 34207
+   },
+   {
+    "id": 34212,
+    "p": 34207
+   },
+   {
+    "id": 34213,
+    "p": 34207
+   },
+   {
+    "id": 34214,
+    "p": 34207
+   },
+   {
+    "id": 34215,
+    "p": 34207
+   },
+   {
+    "id": 34216,
+    "p": 34207
+   },
+   {
+    "id": 34218,
+    "p": 34217
+   },
+   {
+    "id": 34219,
+    "p": 34217
+   },
+   {
+    "id": 34220,
+    "p": 34217
+   },
+   {
+    "id": 34221,
+    "p": 34217
+   },
+   {
+    "id": 34222,
+    "p": 34217
+   },
+   {
+    "id": 34223,
+    "p": 34217
+   },
+   {
+    "id": 34229,
+    "p": 34228
+   },
+   {
+    "id": 34230,
+    "p": 34228
+   },
+   {
+    "id": 34231,
+    "p": 34228
+   },
+   {
+    "id": 34233,
+    "p": 34232
+   },
+   {
+    "id": 34234,
+    "p": 34232
+   },
+   {
+    "id": 34235,
+    "p": 34232
+   },
+   {
+    "id": 34236,
+    "p": 34232
+   },
+   {
+    "id": 34237,
+    "p": 34232
+   },
+   {
+    "id": 34238,
+    "p": 34232
+   },
+   {
+    "id": 34239,
+    "p": 34232
+   },
+   {
+    "id": 34240,
+    "p": 34232
+   },
+   {
+    "id": 34241,
+    "p": 34232
+   },
+   {
+    "id": 34243,
+    "p": 34242
+   },
+   {
+    "id": 34244,
+    "p": 34242
+   },
+   {
+    "id": 34245,
+    "p": 34242
+   }
+  ],
+  "parent_meta_keys": [
+   "_petshop_choice_parent",
+   "_petshop_choice_gram",
+   "_petshop_choice_size",
+   "_petshop_choice_group",
+   "_petshop_choice_config",
+   "_petshop_choice_version",
+   "_petshop_choice_no_gram",
+   "_petshop_choice_group_label"
+  ],
+  "s547_tail": "         jQuery(document.body).on('wc-mnm-container-updated wc-mnm-initialize updated_wc_div', function(){\n                setTimeout(function(){ moveButton(); updateSummary(); }, 50);\n            });\n            jQuery(document).on('change keyup click', '.psc-form input.qty, .psc-form .mnm_child_products button, .psc-form .plus, .psc-form .minus', function(){\n                setTimeout(updateSummary, 80);\n            });\n        }\n\n        // ETAPAS 6: slepia out-of-stock konservus (eilutes su \"Neturime\"/disabled input)\n        function hideOutOfStock() {\n            var form = visibleForm();\n            if (!form) return;\n            var rows = form.querySelectorAll('.mnm_child_products tr, .mnm_child_products .mnm_item');\n            rows.forEach(function(row){\n                if (row.querySelector('th')) return;\n                var input = row.querySelector('input.qty, input[type=number]');\n                var txt = row.textContent || '';\n                var isOOS = (input && (input.disabled || input.max === '0')) ||\n                            (/Neturime|Out of stock|Šiuo metu nėra/i.test(txt) && !(input && !input.disabled));\n                row.style.display = isOOS ? 'none' : '';\n            });\n        }\n\n        rebuildGrams();\n        rebuildSizes();\n        updateView();\n        // MnM inicijuojasi vėlai — kartotinai\n        window.addEventListener('load', function(){ setTimeout(function(){ moveButton(); hideOutOfStock(); updateSummary(); }, 400); });\n        var _t=0, _iv=setInterval(function(){ moveButton(); hideOutOfStock(); updateSummary(); if(++_t>=8) clearInterval(_iv); }, 400);\n    })();\n    </script>\n    <?php\n}, 100);\n\n// === Punktas 4: MnM angliškų tekstų vertimas į LT (JS override) ===\n// MnM statusą renderina per savo i18n/JS su placeholder'iais (%v, %s), todėl gettext\n// nepatikimas. Vietoj to — JS keičia matomą tekstą DOM'e po kiekvieno MnM atnaujinimo.\nadd_action('wp_footer', function() {\n    if (empty($GLOBALS['petshop_is_choice_page'])) return;\n    ?>\n    <script>\n    (function(){\n        function ltTranslate(root){\n            root = root || document;\n            // 1. Statuso/pranešimų tekstai\n            var statusEls = root.querySelectorAll('.mnm_price, .mnm_message, .mnm_status, .cart .quantity_message, .mnm_add_to_cart .mnm_message, .psc-form .mnm_price, .psc-form .mnm_message');\n            statusEls.forEach(function(el){\n                var t = el.innerHTML;\n                if (!t || (t.indexOf('items')<0 && t.indexOf('item')<0 && t.indexOf('select')<0 && t.indexOf('selected')<0)) return;\n                var orig = t;\n                t = t.replace(/You have selected\\s+(\\d+)\\s+items?\\./gi, 'Pasirinkote $1 vnt.');\n                t = t.replace(/Please select\\s+(\\d+)\\s+items?\\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');\n                t = t.replace(/Please choose\\s+(\\d+)\\s+items?\\s+to continue/gi, 'Pasirinkite $1 vnt., kad tęstumėte');\n                t = t.replace(/You can select more or add to cart to continue/gi, 'Galite rinktis daugiau arba įdėti į krepšelį');\n                t = t.replace(/Add to cart to continue/gi, 'Įdėkite į krepšelį');\n                t = t.replace(/(\\d+)\\s*\\/\\s*(\\d+)\\s+items/gi, '$1/$2 vnt.');\n                t = t.replace(/(\\d+)\\s+items?\\b/gi, '$1 vnt.');\n                if (t !== orig) el.innerHTML = t;\n            });\n\n            // 2. Lentelės antraštės ir kiti fiksuoti MnM UI string'ai (PRODUCT, QUANTITY ir kt.)\n            var headerMap = {\n                'PRODUCT': 'PREKĖ', 'Product': 'Prekė', 'product': 'prekė',\n                'QUANTITY': 'KIEKIS', 'Quantity': 'Kiekis', 'quantity': 'kiekis',\n                'PRICE': 'KAINA', 'Price': 'Kaina',\n                'Clear': 'Išvalyti', 'Clear selections': 'Išvalyti pasirinkimus',\n                'In stock': 'Turime', 'Out of stock': 'Neturime',\n                'Add to cart': 'Į krepšelį'\n            };\n            var headerEls = root.querySelectorAll('.mnm_child_products th, .mnm_table th, th.product-details, th.product-quantity, th.product-price, th.product-name');\n            headerEls.forEach(function(el){\n                var txt = el.textContent.trim();\n                if (headerMap[txt]) el.textContent = headerMap[txt];\n            });\n        }\n\n        // Vykdom po kiekvieno MnM atnaujinimo\n        function hook(){\n            ltTranslate(document);\n            // MnM trigerina jQuery įvykius\n            if (window.jQuery) {\n                jQuery(document.body).on('wc-mnm-container-updated wc-mnm-initialize updated_wc_div wc_fragments_refreshed', function(){\n                    setTimeout(function(){ ltTranslate(document); }, 50);\n                });\n                jQuery(document).on('change keyup', '.mnm_child_products input.qty', function(){\n                    setTimeout(function(){ ltTranslate(document); }, 100);\n                });\n            }\n            // MutationObserver — VISOMS formoms (matomoms ir paslėptoms)\n            document.querySelectorAll('.psc-form, .petshop-choice-constructor').forEach(function(target){\n                if (window.MutationObserver) {\n                    var obs = new MutationObserver(function(){ ltTranslate(document); });\n                    obs.observe(target, {childList:true, subtree:true, characterData:true});\n                }\n            });\n            // Kartotinis vertimas per pirmas sekundes (MnM inicijuoja formas laipsniškai)\n            var tries = 0;\n            var iv = setInterval(function(){\n                ltTranslate(document);\n                if (++tries >= 6) clearInterval(iv);\n            }, 400);\n        }\n\n        if (document.readyState !== 'loading') hook();\n        else document.addEventListener('DOMContentLoaded', hook);\n        // Papildomai po pilno užkrovimo (MnM inicijuojasi vėlai)\n        window.addEventListener('load', function(){ setTimeout(function(){ ltTranslate(document); }, 300); });\n    })();\n    </script>\n    <?php\n}, 105);\n",
+  "snips": [
+   {
+    "id": "524",
+    "name": "Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)",
+    "active": "1"
+   },
+   {
+    "id": "532",
+    "name": "Petshop MnM Fiksuoti komponentų kiekiai v2",
+    "active": "1"
+   },
+   {
+    "id": "535",
+    "name": "Petshop MnM Sutaupymo žymeklis v7 (be badge)",
+    "active": "1"
+   },
+   {
+    "id": "539",
+    "name": "Petshop Rinkinių Kūrimo Forma v2",
+    "active": "1"
+   },
+   {
+    "id": "547",
+    "name": "Petshop Susidėjimo Rinkinio Vitrina v19",
+    "active": "1"
+   },
+   {
+    "id": "550",
+    "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+    "active": "1"
+   },
+   {
+    "id": "558",
+    "name": "Petshop Choice Krepšelio Elgsena",
+    "active": "1"
+   },
+   {
+    "id": "560",
+    "name": "Petshop Rinkinio CTA Banneris kategorijose v7",
+    "active": "1"
+   },
+   {
+    "id": "561",
+    "name": "Petshop Rinkinių Gyvūno Filtras v1",
+    "active": "1"
+   },
+   {
+    "id": "569",
+    "name": "Petshop Pack/Rinkinys Auto-Categories v1.3",
+    "active": "1"
+   },
+   {
+    "id": "2431",
+    "name": "TEMP Rinkiniu Recon (S665)",
+    "active": "0"
+   },
+   {
+    "id": "2434",
+    "name": "TEMP Rinkiniu Trynimas (S668)",
+    "active": "0"
+   },
+   {
+    "id": "2435",
+    "name": "TEMP Rinkiniu Trynimas APPLY (S669)",
+    "active": "0"
+   },
+   {
+    "id": "2540",
+    "name": "TEMP mnm recon",
+    "active": "0"
+   }
+  ]
+ },
+ "snip_deact": 200
+}
