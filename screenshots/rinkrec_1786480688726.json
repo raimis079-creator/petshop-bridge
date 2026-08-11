@@ -1,0 +1,59 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-11T20:38:00.451Z",
+ "snip_id": 2742,
+ "snip_status": 200,
+ "recon": {
+  "marker": "SESIJOS VALYMAS 2026-08-11",
+  "temp_visi": 40,
+  "temp_aktyvus_pries": [
+   {
+    "id": "2742",
+    "name": "TEMP ZZ Valymas v1",
+    "active": "1"
+   }
+  ],
+  "temp_aktyvus_po": [],
+  "likuciai": {
+   "21599": {
+    "dabar": 643,
+    "turi": 643,
+    "ss": "instock",
+    "ok": true
+   },
+   "21609": {
+    "dabar": 1680,
+    "turi": 1680,
+    "ss": "instock",
+    "ok": true
+   },
+   "24009": {
+    "dabar": 104,
+    "turi": 104,
+    "ss": "instock",
+    "ok": true
+   },
+   "26064": {
+    "dabar": 289,
+    "turi": 289,
+    "ss": "instock",
+    "ok": true
+   },
+   "26077": {
+    "dabar": 388,
+    "turi": 388,
+    "ss": "instock",
+    "ok": true
+   }
+  },
+  "likuciai_blogai": 0,
+  "test_orders_posts": [],
+  "test_orders_hpos": [],
+  "orders_viso": 9,
+  "tmp_options": [],
+  "tmp_options_po": [],
+  "mnm_viso": 53,
+  "mnm_publish": 43
+ },
+ "snip_deact": 200
+}
