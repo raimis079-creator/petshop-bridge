@@ -1,0 +1,84 @@
+{
+  "rez": {
+    "VERSIJA": "GI2",
+    "partiju_su_likuciu_ir_data": 3,
+    "pasiskirstymas": {
+      "pasibaige": 0,
+      "iki30": 0,
+      "iki60": 0,
+      "iki90": 0,
+      "iki180": 0,
+      "toliau": 3
+    },
+    "savikainos_verte": {
+      "pasibaige": 0,
+      "iki30": 0,
+      "iki60": 0,
+      "iki90": 0,
+      "iki180": 0,
+      "toliau": 1494.15
+    },
+    "artimiausios": [
+      {
+        "pid": 34889,
+        "pav": "PS-TEST-001 (testinė prekė, neliesti)",
+        "iki": "2027-06-30",
+        "dienu": 323,
+        "liko": 16,
+        "savikaina": 32.9466
+      },
+      {
+        "pid": 34889,
+        "pav": "PS-TEST-001 (testinė prekė, neliesti)",
+        "iki": "2027-09-30",
+        "dienu": 415,
+        "liko": 24,
+        "savikaina": 33
+      },
+      {
+        "pid": 34889,
+        "pav": "PS-TEST-001 (testinė prekė, neliesti)",
+        "iki": "2028-01-31",
+        "dienu": 538,
+        "liko": 7,
+        "savikaina": 25
+      }
+    ],
+    "unikaliu_prekiu": 1,
+    "av_prekiu": 1400,
+    "av_su_partija": 1,
+    "artimiausias_galiojimas_params": [
+      "pid"
+    ],
+    "santrauka_params": [
+      "pid"
+    ],
+    "pvz_pid": 34889,
+    "pvz_artimiausias": "2027-06-30",
+    "pvz_santrauka": {
+      "partiju": 3,
+      "su_likuciu": 3,
+      "savikaina": 31.7903,
+      "paskutine": 25,
+      "av_likutis": 47,
+      "artimiausias": "2027-06-30",
+      "valdo_partijos": true
+    },
+    "katalogo_eiles": [
+      "be_nuotraukos",
+      "truksta_turinio",
+      "be_ean",
+      "baigiasi",
+      "negyvos",
+      "skolos"
+    ],
+    "pasiulymu_vaikai": [
+      {
+        "id": 689,
+        "slug": "akcijiniai-pasiulymai",
+        "name": "Akcijiniai pasiūlymai",
+        "count": 0
+      }
+    ]
+  }
+}
