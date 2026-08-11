@@ -1,0 +1,138 @@
+{
+  "valymas": {
+    "istrinta": 7,
+    "buvo": [
+      {
+        "id": "4",
+        "product_id": "14929",
+        "pastaba": "GI-TEST",
+        "geriausia_iki": "2026-08-23"
+      },
+      {
+        "id": "5",
+        "product_id": "14932",
+        "pastaba": "GI-TEST",
+        "geriausia_iki": "2026-09-05"
+      },
+      {
+        "id": "6",
+        "product_id": "14935",
+        "pastaba": "GI-TEST",
+        "geriausia_iki": "2026-09-25"
+      },
+      {
+        "id": "7",
+        "product_id": "14937",
+        "pastaba": "GI-TEST",
+        "geriausia_iki": "2026-10-25"
+      },
+      {
+        "id": "8",
+        "product_id": "14941",
+        "pastaba": "GI-TEST",
+        "geriausia_iki": "2026-12-29"
+      },
+      {
+        "id": "9",
+        "product_id": "14945",
+        "pastaba": "GI-TEST",
+        "geriausia_iki": "2027-06-07"
+      },
+      {
+        "id": "10",
+        "product_id": "14954",
+        "pastaba": "GI-PAS",
+        "geriausia_iki": "2027-02-11"
+      }
+    ],
+    "liko_lenteleje": [
+      {
+        "id": "1",
+        "product_id": "34889",
+        "geriausia_iki": "2027-09-30",
+        "kiekis_liko": "24",
+        "pastaba": ""
+      },
+      {
+        "id": "2",
+        "product_id": "34889",
+        "geriausia_iki": "2027-06-30",
+        "kiekis_liko": "16",
+        "pastaba": ""
+      },
+      {
+        "id": "3",
+        "product_id": "34889",
+        "geriausia_iki": "2028-01-31",
+        "kiekis_liko": "7",
+        "pastaba": "GAV26081010181356"
+      }
+    ]
+  },
+  "skolos": {
+    "VERSIJA": "SK1",
+    "prekiu_su_skolomis": 1960,
+    "pagal_lauka": {
+      "EAN": 1371,
+      "savikaina": 744,
+      "šėrimo lentelė": 502,
+      "analitinės sudedamosios dalys": 197,
+      "aprašymas": 193,
+      "šėrimo instrukcija": 189,
+      "pakuotės dydis": 173,
+      "sudėtis": 156,
+      "gyvūno rūšis": 45,
+      "nuotrauka": 39,
+      "EAN ir dar 1": 32,
+      "forma": 22,
+      "šėrimo instrukcija ir dar 1": 12,
+      "paskirtis": 11,
+      "analitinės sudedamosios dalys ir dar 1": 8,
+      "analitinės sudedamosios dalys ir dar 3": 3,
+      "analitinės sudedamosios dalys ir dar 5": 2,
+      "analitinės sudedamosios dalys ir dar 2": 1,
+      "šėrimo instrukcija ir dar 2": 1
+    },
+    "pilnumo_metodai": [
+      "taisykles",
+      "vardai",
+      "tipas",
+      "sekciju_variklis_veikia",
+      "sekcijos",
+      "laukai",
+      "turi_serimo_lentele",
+      "nevertinama",
+      "balas",
+      "truksta_tekstas",
+      "perskaiciuoti",
+      "perskaiciuoti_visus",
+      "eile_skolos",
+      "statistika"
+    ],
+    "konstantos": {
+      "VERSIJA": "1.1"
+    },
+    "balai": [
+      {
+        "grp": "<50",
+        "c": "502"
+      },
+      {
+        "grp": "100",
+        "c": "834"
+      },
+      {
+        "grp": "50-69",
+        "c": "935"
+      },
+      {
+        "grp": "70-89",
+        "c": "852"
+      },
+      {
+        "grp": "90-99",
+        "c": "641"
+      }
+    ]
+  }
+}
