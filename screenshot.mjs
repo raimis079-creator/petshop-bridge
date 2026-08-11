@@ -10,7 +10,7 @@ const out={marker:'FRONT-ZERO-CHECK v1'};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
 const php=Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCSRrPSRfR0VUWydwc19mcm9udCddID8/ICcnOyBpZigkayE9PSdGcjU1TmIyJykgcmV0dXJuOwoJJGFjdD0kX0dFVFsnYWN0J10gPz8gJyc7CgkkVElEPTI2MDc3OyAkQ0lEPTM0MTcyOwoJJG89YXJyYXkoJ21hcmtlcic9PidGUk9OVC1aRVJPJyk7CglpZigkYWN0PT09J3plcm8nKXsKCQkkcD13Y19nZXRfcHJvZHVjdCgkVElEKTsKCQl1cGRhdGVfb3B0aW9uKCdwc190bXBfb3JpZ19xdHknLCRwLT5nZXRfc3RvY2tfcXVhbnRpdHkoKSk7CgkJdXBkYXRlX29wdGlvbigncHNfdG1wX29yaWdfc3MnLCRwLT5nZXRfc3RvY2tfc3RhdHVzKCkpOwoJCSRwLT5zZXRfc3RvY2tfcXVhbnRpdHkoMCk7ICRwLT5zZXRfc3RvY2tfc3RhdHVzKCdvdXRvZnN0b2NrJyk7ICRwLT5zYXZlKCk7CgkJd2NfZGVsZXRlX3Byb2R1Y3RfdHJhbnNpZW50cygkVElEKTsgd2NfZGVsZXRlX3Byb2R1Y3RfdHJhbnNpZW50cygkQ0lEKTsKCQkkb1snemVyb2VkJ109YXJyYXkoJ2lkJz0+JFRJRCwnYnV2byc9PmdldF9vcHRpb24oJ3BzX3RtcF9vcmlnX3F0eScpKTsKCX0gZWxzZWlmKCRhY3Q9PT0ncmVzdG9yZScpewoJCSRwPXdjX2dldF9wcm9kdWN0KCRUSUQpOwoJCSRwLT5zZXRfc3RvY2tfcXVhbnRpdHkoKGludClnZXRfb3B0aW9uKCdwc190bXBfb3JpZ19xdHknKSk7ICRwLT5zZXRfc3RvY2tfc3RhdHVzKGdldF9vcHRpb24oJ3BzX3RtcF9vcmlnX3NzJywnaW5zdG9jaycpKTsgJHAtPnNhdmUoKTsKCQl3Y19kZWxldGVfcHJvZHVjdF90cmFuc2llbnRzKCRUSUQpOyB3Y19kZWxldGVfcHJvZHVjdF90cmFuc2llbnRzKCRDSUQpOwoJCSRvWydyZXN0b3JlZCddPWFycmF5KCdxdHknPT53Y19nZXRfcHJvZHVjdCgkVElEKS0+Z2V0X3N0b2NrX3F1YW50aXR5KCksJ3NzJz0+d2NfZ2V0X3Byb2R1Y3QoJFRJRCktPmdldF9zdG9ja19zdGF0dXMoKSk7CgkJZGVsZXRlX29wdGlvbigncHNfdG1wX29yaWdfcXR5Jyk7IGRlbGV0ZV9vcHRpb24oJ3BzX3RtcF9vcmlnX3NzJyk7Cgl9IGVsc2UgewoJCSRwPXdjX2dldF9wcm9kdWN0KCRUSUQpOwoJCSRvWydzdGF0ZSddPWFycmF5KCdxdHknPT4kcC0+Z2V0X3N0b2NrX3F1YW50aXR5KCksJ3NzJz0+JHAtPmdldF9zdG9ja19zdGF0dXMoKSk7Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==','base64').toString('utf8');
-const sr=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Front Zero v1',code:php,scope:'global',active:true,priority:5})});
+const sr=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Front Zero v2 (URL)',code:php,scope:'global',active:true,priority:5})});
 const sn=js(sr.text); out.snip=sn&&sn.id?sn.id:null;
 await new Promise(r=>setTimeout(r,3000));
 
@@ -48,10 +48,14 @@ try{
   const br=await chromium.launch();
   const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1500,height:1200}});
   const pg=await ctx.newPage();
-  const ir=await pg.goto(B+'/?ps_front=Fr55Nb2',{timeout:60000});
-  out.urls=js(await ir.text());
-  URL_=out.urls && out.urls.url_cont ? out.urls.url_cont : null;
+  const pr=await wp('/wp-json/wp/v2/product/34172?context=edit');
+  const pj=js(pr.text);
+  out.rest_status=pr.status;
+  URL_=pj&&pj.link?pj.link:null;
   out.used_url=URL_;
+  const pr2=await wp('/wp-json/wp/v2/product?per_page=5&search=Susid%C4%97k%20skan%C4%97st%C5%B3');
+  const pj2=js(pr2.text);
+  out.kiti=(pj2||[]).map(x=>({id:x.id,link:x.link,t:(x.title&&x.title.rendered||'').slice(0,50)}));
   out.normalus=URL_?await apziura(pg,'normalus'):{err:'no url'};
   const z=await pg.goto(`${B}/?ps_front=Fr55Nb2&act=zero`,{timeout:60000}); out.zero=js(await z.text());
   await pg.waitForTimeout(2000);
