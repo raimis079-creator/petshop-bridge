@@ -1,0 +1,41 @@
+{
+ "marker": "KLAIDOS RECON v2 KOPIJA",
+ "ts": "2026-08-12T09:15:00.359Z",
+ "snip": 2763,
+ "recon": {
+  "marker": "RECON KOPIJA v2",
+  "petshop-katalogas.php": [
+   "204: *   4. SKU/EAN kopijuojami vienu paspaudimu (📋) — kopijuojama dešimtis",
+   "1251: self::aprasymo_kopija( $pid, $senas );",
+   "1278: self::aprasymo_kopija( $pid, $senas );",
+   "1292: self::aprasymo_kopija( $pid, $senas );",
+   "1372: private static function aprasymo_kopija( $pid, $tekstas ) {",
+   "1426: /* Pilna kopija PRIEŠ trynimą — kad liktų bent pėdsakas */",
+   "1427: $kopija = array( 'post' => get_post( $pid, ARRAY_A ), 'meta' => get_post_meta( $pid ) );",
+   "1436: $wpdb->replace( $bt, array( 'id' => $pid, 'duomenys' => wp_json_encode( $kopija ),",
+   "1795: /* v4.4: SKU ir EAN kopijuojami vienu paspaudimu — iki šiol tekdavo",
+   "1796: žymėti pele, o šie kodai kopijuojami dešimtis kartų per dieną. */",
+   "1797: $kopij = in_array( $laukas, array( '_sku', '_ean' ), true ) && $reiksme !== ''",
+   "1798: ? '<button type=\"button\" class=\"kort-kopij\" title=\"Kopijuoti\" data-kop=\"' . esc_attr( $reiksme ) . '\">📋</button>' : '';",
+   "1803: . $kopij",
+   "1910: . ( $sku_dabar !== '' ? '<button type=\"button\" class=\"kort-kopij\" title=\"Kopijuoti\" data-kop=\"' . esc_attr( $sku_dabar ) . '\">📋</button>' : '' )",
+   "5229: /* v4.4: SKU/EAN kopijavimas vienu paspaudimu */",
+   "5231: var b=e.target.closest(\".kort-kopij\");",
+   "5873: /* v4.4: kopijavimo mygtukas prie SKU/EAN */",
+   "5874: .kort-kopij{background:0;border:0;cursor:pointer;font-size:13px;opacity:.5;padding:0 3px}",
+   "5875: .kort-kopij:hover{opacity:1}"
+  ],
+  "petshop-gavimas.php": [
+   "508: /* v1.5: lyginama BE DIAKRITIKU. Tekstas kopijuojamas is skirtingu"
+  ],
+  "katalogo_veiksmai": {
+   "Redaguoti": 3,
+   "Peržiūrėti": 3,
+   "Ištrinti": 2,
+   "Dubliuoti": 0,
+   "Nauja prekė": 0,
+   "naujas": 10,
+   "pk-veiksmai": 0
+  }
+ }
+}
