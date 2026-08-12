@@ -1,0 +1,53 @@
+{
+ "marker": "V73",
+ "ts": "2026-08-12T15:52:28.927Z",
+ "deploy": {
+  "marker": "DEPLOY",
+  "md5": "fa61d4d8825a5b7e162661a6ec23a150",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-155237",
+  "dest_md5": "fa61d4d8825a5b7e162661a6ec23a150",
+  "sutampa": true
+ },
+ "step1_a": {
+  "v": "7.3",
+  "preke_19715": {
+   "sand": "ambrosia",
+   "partiju_blokas": 2,
+   "nauja_partija": 1,
+   "galiojimo_laukas": 1,
+   "likutis": 1
+  },
+  "preke_16760": {
+   "sand": "prins",
+   "partiju_blokas": 1,
+   "nauja_partija": 1,
+   "galiojimo_laukas": 0,
+   "likutis": 1
+  },
+  "preke_19902": {
+   "sand": "av",
+   "partiju_blokas": 1,
+   "nauja_partija": 1,
+   "galiojimo_laukas": 0,
+   "likutis": 1
+  },
+  "preke_25319": {
+   "sand": "vf",
+   "partiju_blokas": 0,
+   "nauja_partija": 0,
+   "galiojimo_laukas": 0,
+   "likutis": 0
+  }
+ },
+ "step2_a": {
+  "success": true,
+  "data": {
+   "partijos_id": 12,
+   "likutis": 11,
+   "kiekis": 3,
+   "geriausia_iki": "2027-03-31"
+  }
+ }
+}
