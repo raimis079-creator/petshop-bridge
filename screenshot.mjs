@@ -24,7 +24,7 @@ add_action('init', function(){
   wp_safe_redirect( admin_url($to) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Nuotr Autologin v1',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Nuotr Autologin v2',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text); out.snip=j2&&j2.id?j2.id:s2.text.slice(0,150);
 await new Promise(r=>setTimeout(r,3500));
 const files=[];
@@ -52,15 +52,33 @@ try{
     placeholder: document.body.innerHTML.indexOf('woocommerce-placeholder')>=0
   }));
   await pg.screenshot({path:'screenshots/n_kop.png',fullPage:false}); files.push('screenshots/n_kop.png');
-  /* 3. katalogo kortele originalui */
+  /* 3. katalogas: paieska pagal pavadinima */
   await pg.goto(B+'/?ps_auto=Qz7Rk88&u='+encodeURIComponent(U)+'&to='+encodeURIComponent('admin.php?page=ps-katalogas'),{waitUntil:'domcontentloaded',timeout:60000});
   await pg.waitForTimeout(5000);
-  out.kataloge = await pg.evaluate(()=>{
-    const tr=[...document.querySelectorAll('.pskat-t tbody tr[data-id]')].find(x=>+x.dataset.id===19089);
-    if(!tr) return 'eilutes nera pirmame puslapyje';
-    const im=tr.querySelector('img');
-    return { yra_img:!!im, src:im?(im.currentSrc||im.src):'' };
+  await pg.evaluate(()=>{
+    const inp=document.querySelector('#pskat-q, input[type=search], .pskat-paieska input');
+    if(inp){ inp.value='Baltos triušio ausys'; inp.dispatchEvent(new Event('input',{bubbles:true})); }
   });
+  await pg.waitForTimeout(4000);
+  out.sarasas = await pg.evaluate(()=>{
+    const eil=[...document.querySelectorAll('.pskat-t tbody tr[data-id]')].slice(0,6);
+    return eil.map(tr=>{ const im=tr.querySelector('img');
+      return { id:tr.dataset.id, pav:(tr.innerText||'').slice(0,60).replace(/\n/g,' | '),
+               img: im?(im.currentSrc||im.src||im.getAttribute('src')||'NERA SRC'):'NERA IMG' }; });
+  });
+  await pg.screenshot({path:'screenshots/n_sarasas.png',fullPage:false}); files.push('screenshots/n_sarasas.png');
+  /* 4. kortele + Nuotrauku skirtukas */
+  await pg.evaluate(()=>{ const a=[...document.querySelectorAll('.pskat-t .atv')].find(x=>{const tr=x.closest('tr');return tr&&+tr.dataset.id===19089;}); if(a) a.click(); });
+  await pg.waitForTimeout(6000);
+  await pg.evaluate(()=>{ const b=[...document.querySelectorAll('.kort-tabs button')].find(x=>/Nuotr/i.test(x.textContent)); if(b) b.click(); });
+  await pg.waitForTimeout(2500);
+  out.kortele = await pg.evaluate(()=>({
+    pav:(document.querySelector('.kort-pav-t')||{}).textContent||'',
+    galvos_img:(document.querySelector('.kort-img')||{}).src||'nera',
+    pane:[...document.querySelectorAll('.kort-pane[data-p=fot] img')].map(i=>i.currentSrc||i.src).slice(0,4),
+    pane_tekstas:((document.querySelector('.kort-pane[data-p=fot]')||{}).innerText||'').slice(0,300)
+  }));
+  await pg.screenshot({path:'screenshots/n_kortele.png',fullPage:false}); files.push('screenshots/n_kortele.png');
   out.js_klaidos=errs;
   await br.close();
 }catch(e){ out.err=String(e).slice(0,500); }
@@ -73,7 +91,7 @@ for (const f of files){
   }catch(e){}
 }
 const body={message:'res nv',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/nuotrauka_viz.json',{headers:{'Authorization':'Bearer '+TOK}});
+const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/nuotrauka_viz2.json',{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/nuotrauka_viz.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/nuotrauka_viz2.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log(JSON.stringify(out).slice(0,1500));
