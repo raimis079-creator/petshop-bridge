@@ -1,0 +1,89 @@
+{
+ "marker": "KOPIJA DEPLOY v1",
+ "ts": "2026-08-12T09:28:48.836Z",
+ "snip_dep": 2765,
+ "snip_auto": 2766,
+ "dep_petshop-gavimas.php": {
+  "marker": "DEPLOY KOPIJA v1",
+  "f": "petshop-gavimas.php",
+  "bytes": 80765,
+  "md5": "05f5288a1aff7abdc7e2adfb79999048",
+  "lint": "include OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-gavimas.php-20260812-092900",
+  "irasyta": 80765,
+  "dest_md5": "05f5288a1aff7abdc7e2adfb79999048",
+  "sutampa": true
+ },
+ "dep_petshop-katalogas.php": "<br />\n<b>Fatal error</b>:  Cannot declare class Petshop_Katalogas, because the name is already in use in <b>/tmp/ps-dep-petshop-katalogas.php</b> on line <b>452</b><br />\n<!DOCTYPE html>\n<html lang=\"lt-LT\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='noindex, nofollow' />\n\t<title>WordPress &rsaquo; Klaida</title>\n\t<style type=\"text/css\">\n\t\thtml {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\t\tbody {\n\t\t\tbackground: #fff;\n\t\t\tborder: 1px solid #ccd0d4;\n\t\t\tcolor: #444;\n\t\t\tfont-f",
+ "kandidatai": [
+  {
+   "id": 34828,
+   "name": "Churu Popn Serve skanėstas katėms  su tunu,35g",
+   "kat": [
+    "Skanėstai katėms"
+   ]
+  },
+  {
+   "id": 34826,
+   "name": "Churu Popn Serve skanėstas katėms  su vištiena ir šukutėmis,35g",
+   "kat": [
+    "Skanėstai katėms"
+   ]
+  },
+  {
+   "id": 34824,
+   "name": "CIAO Bisque konservai katėms su vištiena ir lašiša,40g",
+   "kat": [
+    "Konservai katėms"
+   ]
+  },
+  {
+   "id": 34822,
+   "name": "CIAO Bisque konservai katėms su vištiena,40g",
+   "kat": [
+    "Konservai katėms"
+   ]
+  },
+  {
+   "id": 34820,
+   "name": "CIAO Stew konservai katėms su vištiena ir lašiša,40g",
+   "kat": [
+    "Konservai katėms"
+   ]
+  }
+ ],
+ "testId": 34828,
+ "gavimas_kopija": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-gavimas&kopija=34828",
+  "fatal": "",
+  "forma_matoma": true,
+  "kop_laukas": true,
+  "kop_inf": "Perimta iš Churu Popn Serve skanėstas katėms su tunu,35g (#34828): kategorija KATĖMS › Skanėstai katėms (90), brendas, rūšis, pakuotės dydis, svoris ir aprašymo karkasas.\nNeperimta sąmoningai: SKU, EAN, kaina, nuotrauka, likutis, tiekėjo laukai ir Sudėtis su Analitinėmis — kito skonio sudėtis kitokia. Panašios prekės kaina: 2,59 €.\nAtšaukti perėmimą",
+  "kat": "KATĖMS › Skanėstai katėms (90) [96]",
+  "brendas": "Churu [340]",
+  "rusis": "Katėms [253]",
+  "pak": "— []",
+  "svoris": "",
+  "sku": "",
+  "ean": "",
+  "kaina": "",
+  "sek_laukai": 3,
+  "sek_antrastes": [
+   "Aprašymas",
+   "Sudėtis — tekste nerasta",
+   "Analitinės sudedamosios dalys — tekste nerasta"
+  ],
+  "pilnumas": "Trūksta: kainos, nuotraukos. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras."
+ },
+ "kortele": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&preke=34828",
+  "nuorodos": [],
+  "fatal": ""
+ },
+ "js_klaidos": [],
+ "failai": [
+  "screenshots/kop_gavimas.png",
+  "screenshots/kop_kortele.png"
+ ]
+}
