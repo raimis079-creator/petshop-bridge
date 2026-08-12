@@ -6,52 +6,48 @@ const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'ATSTATYMAS DRY2', ts:new Date().toISOString()};
+const out={marker:'PARTIJOS DUMP', ts:new Date().toISOString()};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
 const php = `
 add_action('init', function(){
-  if ( ( $_GET['ps_rec'] ?? '' ) !== 'At5tR9' ) return;
-  @set_time_limit(240);
-  global $wpdb; $p=$wpdb->prefix; $z=$p.'ps_ivykiai';
-  $o=array('marker'=>'ATSTATYMAS APPLY');
-  /* TIK tos, kurias ZMOGUS isieme ir AUTOMATIKA grazino. Preke #34907
-     i sarasa buvo patekusi klaidingai: ji sukurta juodrastyje ir ZMOGAUS
-     publikuota — jokio automatikos isikisimo ten nebuvo. */
-  $ids = array(26471, 26473, 25319);
-  $sar=array();
-  foreach($ids as $pid){
-    $pries = get_post_status($pid);
-    $isimta = $wpdb->get_var($wpdb->prepare(
-      "SELECT MAX(laikas) FROM {$z} WHERE product_id=%d AND laukas='post_status'
-        AND nauja='draft' AND saltinis='zmogus'", $pid));
-    if ( ! $isimta ) { $sar[]=array('id'=>$pid,'praleista'=>'nerasta rankinio isemimo'); continue; }
-    update_post_meta($pid,'_ps_ranka_isimta','taip');
-    update_post_meta($pid,'_ps_ranka_isimta_kada',$isimta);
-    if ( get_post_meta($pid,'_ps_ranka_isimta_kas',true) === '' ) {
-      update_post_meta($pid,'_ps_ranka_isimta_kas','Rai');
+  if ( ( $_GET['ps_dump'] ?? '' ) !== 'Pk4tD1' ) return;
+  @set_time_limit(180);
+  $o=array('marker'=>'PARTIJOS');
+  $f=WPMU_PLUGIN_DIR.'/petshop-partijos.php';
+  $o['yra']=file_exists($f);
+  if($o['yra']){ $o['b64']=base64_encode(file_get_contents($f)); $o['dydis']=filesize($f); }
+  global $wpdb; $p=$wpdb->prefix;
+  $o['lenteles']=$wpdb->get_col("SHOW TABLES LIKE '{$p}ps_%'");
+  foreach(array('ps_pakuotes','ps_partijos') as $l){
+    $t=$p.$l;
+    if($wpdb->get_var("SHOW TABLES LIKE '{$t}'")===$t){
+      $o['stulpeliai_'.$l]=$wpdb->get_col("SHOW COLUMNS FROM {$t}");
+      $o['kiek_'.$l]=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$t}");
+      $o['pvz_'.$l]=$wpdb->get_results("SELECT * FROM {$t} ORDER BY id DESC LIMIT 3", ARRAY_A);
     }
-    if ( $pries === 'publish' ) { wp_update_post(array('ID'=>$pid,'post_status'=>'draft')); clean_post_cache($pid); }
-    $sar[]=array('id'=>$pid,'pav'=>mb_substr(html_entity_decode(get_the_title($pid)),0,44),
-      'buvo'=>$pries,'tapo'=>get_post_status($pid),
-      'zyme'=>get_post_meta($pid,'_ps_ranka_isimta',true),'isimta'=>$isimta);
   }
-  $o['rezultatas']=$sar;
-  delete_transient('ps_kat_duomenys');
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode($o, JSON_UNESCAPED_UNICODE); exit;
 }, 1);
 `;
-
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Atstatymas v3',code:php,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Partijos Dump v1',code:php,scope:'global',active:true,priority:5})});
 const j1=js(s1.text); out.snip=j1&&j1.id?j1.id:s1.text.slice(0,150);
 await new Promise(r=>setTimeout(r,4000));
 try{
-  const res=execSync(`curl -sk "${B}/?ps_rec=At5tR9" --max-time 150`,{encoding:'utf8',maxBuffer:20*1024*1024});
-  out.dry=js(res)||res.slice(0,900);
+  const res=execSync(`curl -sk "${B}/?ps_dump=Pk4tD1" --max-time 150`,{encoding:'utf8',maxBuffer:60*1024*1024});
+  const j=js(res);
+  if(j&&j.b64){
+    const body={message:'partijos',content:Buffer.from(j.b64).toString('base64')};
+    const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/partijos.b64`,{headers:{'Authorization':'Bearer '+TOK}});
+    if(g.status===200){ body.sha=(await g.json()).sha; }
+    await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/partijos.b64`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    delete j.b64;
+  }
+  out.recon=j||res.slice(0,800);
 }catch(e){ out.err=String(e).slice(0,300); }
 if(j1&&j1.id) await wp('/wp-json/code-snippets/v1/snippets/'+j1.id,{method:'DELETE'});
-const body={message:'res atst2',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atst3.json`,{headers:{'Authorization':'Bearer '+TOK}});
+const body={message:'res part',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
+const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/part.json`,{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atst3.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/part.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log('ok');
