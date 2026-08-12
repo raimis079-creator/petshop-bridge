@@ -1,0 +1,36 @@
+{
+ "marker": "RANKOS DEPLOY",
+ "ts": "2026-08-12T12:04:24.677Z",
+ "snip": 2794,
+ "dep_petshop-rankos.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-rankos.php",
+  "md5": "390e94480bb42090928cdd8b7f51c76f",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "dest_md5": "390e94480bb42090928cdd8b7f51c76f",
+  "sutampa": true
+ },
+ "dep_petshop-katalogas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "md5": "e0548602bf7701fa6c154f0802b6e78d",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-120435",
+  "dest_md5": "e0548602bf7701fa6c154f0802b6e78d",
+  "sutampa": true
+ },
+ "testas": {
+  "marker": "RANKOS TESTAS",
+  "modulis": true,
+  "po_isemimo": {
+   "busena": "draft",
+   "zyme": "taip",
+   "kada": "2026-08-12 15:04:42",
+   "kas": "Rai"
+  },
+  "po_automatikos": "draft",
+  "vartai_veikia": true
+ }
+}
