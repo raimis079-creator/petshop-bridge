@@ -1,0 +1,100 @@
+{
+ "marker": "PILNA KOPIJA v2",
+ "ts": "2026-08-12T10:03:21.562Z",
+ "snip_dep": 2775,
+ "snip_auto": 2776,
+ "dep_petshop-gavimas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-gavimas.php",
+  "bytes": 85716,
+  "md5": "911dea7e70af191ac6d2c1d3a6706003",
+  "lint": "token_get_all OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-gavimas.php-20260812-100333",
+  "irasyta": 85716,
+  "dest_md5": "911dea7e70af191ac6d2c1d3a6706003",
+  "sutampa": true
+ },
+ "testId": 34498,
+ "saltinis": {
+  "id": 34498,
+  "name": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+  "brands": [],
+  "weight": "",
+  "images": [
+   {
+    "id": 34503,
+    "date_created": "2026-07-06T21:41:17",
+    "date_created_gmt": "2026-07-06T15:41:17",
+    "date_modified": "2026-07-06T21:41:17",
+    "date_modified_gmt": "2026-07-06T15:41:17",
+    "src": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498.jpg",
+    "name": "Exclusion-Mediterraneo-Mono-Protein-konservuotas-pasaras-katems-su-tunu-85-g-pack",
+    "alt": "",
+    "srcset": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498.jpg 1000w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-400x400.jpg 400w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-800x800.jpg 800w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-280x280.jpg 280w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-768x768.jpg 768w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-300x300.jpg 300w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-100x100.jpg 100w",
+    "sizes": "(max-width: 1000px) 100vw, 1000px",
+    "thumbnail": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-300x300.jpg"
+   }
+  ],
+  "_links": {
+   "self": [
+    {
+     "href": "https://dev.avesa.lt/wp-json/wc/v3/products/34498",
+     "targetHints": {
+      "allow": [
+       "GET",
+       "POST",
+       "PUT",
+       "PATCH",
+       "DELETE"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://dev.avesa.lt/wp-json/wc/v3/products"
+    }
+   ]
+  }
+ },
+ "forma": {
+  "fatal": "",
+  "pav": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+  "sku": "",
+  "ean": "",
+  "kaina": "",
+  "kat": "KATĖMS › Maistas katėms › Konservai katėms (148) [79]",
+  "brendas": "— []",
+  "rusis": "Katėms [253]",
+  "pak": "10 × 85 g [734]",
+  "svoris": "",
+  "foto": true,
+  "foto_src": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-280x280.jpg",
+  "sekcijos": [
+   {
+    "a": "Aprašymas",
+    "n": 476
+   },
+   {
+    "a": "Sudėtis",
+    "n": 275
+   },
+   {
+    "a": "Analitinės sudedamosios dalys",
+    "n": 815
+   },
+   {
+    "a": "Priedai — tekste nerasta",
+    "n": 0
+   },
+   {
+    "a": "Šėrimo instrukcija — tekste nerasta",
+    "n": 0
+   }
+  ],
+  "kop_inf": "Kopija iš Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt. (#34498): perimta — pavadinimas, 2 kategorijos, rūšis, pakuotės dydis, aprašymas (3 skiltys), nuotrauka.\nAtributai: Amžius: Suaugusiems · Baltymų šaltinis: Lašiša · Grūdai: Su ryžiais · Monoprotein: Taip · Speciali mityba: Šlapimo takams\nNeužpildyta tyčia: SKU, EAN, kaina (originalo kaina 13,2 €). Tiekėjo laukai neperkeliami — nauja prekė yra AV sandėlio.\nAtšaukti kopiją",
+  "pilnumas": "Trūksta: kainos. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras."
+ },
+ "js_klaidos": []
+}
