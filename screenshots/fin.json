@@ -1,74 +1,64 @@
 {
- "before_total": 11,
- "targets": [
-  "wh_e2e_test@example.com",
-  "m4_consent_test@example.com",
-  "esp_v020_test@example.com",
-  "reactivate_test@example.com",
-  "whunsub+1783977217390@example.com",
-  "whsite+1783977112277@example.com",
-  "webhooklong+1783976488633@example.com",
-  "webhooktest+1783976179722@example.com"
- ],
- "delete_resp": "{\"delete_instance\":\"03c2c38a-9bc9-446e-9d7a-cc952880ed75\",\"message\":\"Subscribers are being deleted\",\"success\":true}",
- "checks": [
-  {
-   "after_s": 10,
-   "liko_test": 0,
-   "viso": 3
-  }
- ],
- "final": [
-  {
-   "e": "terra@gyvunai.lt",
-   "st": "unsubscribed"
+ "marker": "SERIMAS Q",
+ "ts": "2026-08-12T19:57:45.718Z",
+ "php_ilgis": 2073,
+ "snip": 2862,
+ "testas": {
+  "gavimas": "1.12",
+  "suvestine": {
+   "tikrinta": 400,
+   "maistas": 385,
+   "serimas_rastas": 271,
+   "serimas_nerastas": 114
   },
-  {
-   "e": "raimundas@gyvunai.lt",
-   "st": "active"
-  },
-  {
-   "e": "terra@petshop.lt",
-   "st": "active"
-  }
- ],
- "groups": [
-  {
-   "t": "PS_TEST",
-   "id": "bDxp2q",
-   "act": 4
-  },
-  {
-   "t": "PS_SUPPRESSED_OR_ARCHIVE",
-   "id": "dPlYRA",
-   "act": 0
-  },
-  {
-   "t": "PS_LEGACY_IMPORT",
-   "id": "aOkZQR",
-   "act": 0
-  },
-  {
-   "t": "PS_ALL_ACTIVE",
-   "id": "dNj8P2",
-   "act": 0
-  }
- ],
- "domains": [
-  {
-   "d": "petshop.lt",
-   "v": 1,
-   "spf": 1,
-   "dkim": 1,
-   "dmarc": 1
-  }
- ],
- "ps_field_count": 26,
- "workflows": [
-  {
-   "t": "PS E2E order_paid test",
-   "s": "DRAFT",
-   "id": "e1wk0P"
-  }
- ]
+  "pavyzdziai": [
+   {
+    "id": 16718,
+    "pav": "QUATTRO 1,5 kg Duck for Adult Indoor C",
+    "tipas": "maistas",
+    "sekcijos": [
+     "Aprašymas",
+     "Sudėtis",
+     "Šėrimo instrukcija"
+    ],
+    "serimas": "2kg: 23-33g; 3kg: 30-43g; 4kg: 36-52g; 5kg: 42-60g; 6kg: 47-68g; 7kg: "
+   },
+   {
+    "id": 16147,
+    "pav": "ShinyCat konservai katėms su vištiena,",
+    "tipas": "maistas",
+    "sekcijos": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Šėrimo instrukcija"
+    ],
+    "serimas": "mažoms katėms – 1 skardinė per dieną, vidutinio dydžio katėms – 2 skar"
+   },
+   {
+    "id": 16150,
+    "pav": "ShinyCat konservai katėms su vištiena,",
+    "tipas": "maistas",
+    "sekcijos": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Šėrimo instrukcija"
+    ],
+    "serimas": "mažoms katėms – 1 skardinė per dieną, vidutinio dydžio katėms – 2 skar"
+   },
+   {
+    "id": 16152,
+    "pav": "ShinyCat konservai katėms su vištiena ",
+    "tipas": "maistas",
+    "sekcijos": [
+     "Aprašymas",
+     "Sudėtis",
+     "Analitinės sudedamosios dalys",
+     "Šėrimo instrukcija"
+    ],
+    "serimas": "mažoms katėms – 1 skardinė per dieną, vidutinio dydžio katėms – 2 skar"
+   }
+  ]
+ }
 }
