@@ -1,0 +1,192 @@
+{
+ "marker": "VARTAI RECON",
+ "ts": "2026-08-12T11:54:36.290Z",
+ "snip": 2792,
+ "recon": {
+  "marker": "VARTAI",
+  "cron": [
+   {
+    "hook": "ps_cart_abandon_check",
+    "kada": "2026-08-12 11:54",
+    "kada_lt": "2026-08-12 14:54"
+   },
+   {
+    "hook": "ps_esp_cron_process_pending",
+    "kada": "2026-08-12 11:57",
+    "kada_lt": "2026-08-12 14:57"
+   },
+   {
+    "hook": "ps_email_dispatch_cron",
+    "kada": "2026-08-12 11:58",
+    "kada_lt": "2026-08-12 14:58"
+   },
+   {
+    "hook": "petshop_vf_sync_stock_hourly",
+    "kada": "2026-08-12 11:59",
+    "kada_lt": "2026-08-12 14:59"
+   },
+   {
+    "hook": "ps_akcijos_valanda",
+    "kada": "2026-08-12 12:08",
+    "kada_lt": "2026-08-12 15:08"
+   },
+   {
+    "hook": "ps_vartai_valanda",
+    "kada": "2026-08-12 12:13",
+    "kada_lt": "2026-08-12 15:13"
+   },
+   {
+    "hook": "ps_post_purchase_check",
+    "kada": "2026-08-12 12:39",
+    "kada_lt": "2026-08-12 15:39"
+   },
+   {
+    "hook": "petshop_attr_engine_run",
+    "kada": "2026-08-12 22:57",
+    "kada_lt": "2026-08-13 01:57"
+   },
+   {
+    "hook": "ps_pet_drafts_cleanup_daily",
+    "kada": "2026-08-13 02:40",
+    "kada_lt": "2026-08-13 05:40"
+   },
+   {
+    "hook": "petshop_vf_sync_reprice_daily",
+    "kada": "2026-08-13 03:00",
+    "kada_lt": "2026-08-13 06:00"
+   },
+   {
+    "hook": "petshop_vf_sync_publish_daily",
+    "kada": "2026-08-13 04:00",
+    "kada_lt": "2026-08-13 07:00"
+   },
+   {
+    "hook": "ps_sources_naktinis",
+    "kada": "2026-08-13 04:20",
+    "kada_lt": "2026-08-13 07:20"
+   },
+   {
+    "hook": "ps_ivykiai_valymas",
+    "kada": "2026-08-13 04:40",
+    "kada_lt": "2026-08-13 07:40"
+   },
+   {
+    "hook": "ps_pardavimai_naktinis",
+    "kada": "2026-08-13 04:50",
+    "kada_lt": "2026-08-13 07:50"
+   },
+   {
+    "hook": "ps_pilnumas_naktinis",
+    "kada": "2026-08-13 05:00",
+    "kada_lt": "2026-08-13 08:00"
+   },
+   {
+    "hook": "ps_suppression_daily_reconcile",
+    "kada": "2026-08-13 05:30",
+    "kada_lt": "2026-08-13 08:30"
+   },
+   {
+    "hook": "ps_refill_daily_check",
+    "kada": "2026-08-13 08:00",
+    "kada_lt": "2026-08-13 11:00"
+   },
+   {
+    "hook": "ps_reminders_daily_check",
+    "kada": "2026-08-13 09:00",
+    "kada_lt": "2026-08-13 12:00"
+   },
+   {
+    "hook": "petshop_pragma_monthly_export",
+    "kada": "2026-09-05 08:00",
+    "kada_lt": "2026-09-05 11:00"
+   }
+  ],
+  "preke": {
+   "sku": "S-H203JA",
+   "busena": "publish",
+   "vf": "yes",
+   "zb": "",
+   "sandelis": "vf",
+   "vf_qty": "3",
+   "zb_qty": "",
+   "vartai": "",
+   "i_juodrasti": "",
+   "publikuota": "2026-06-06 17:38:00"
+  },
+  "ps_meta": [
+   {
+    "meta_key": "_ps_sandelis",
+    "v": "vf"
+   },
+   {
+    "meta_key": "_ps_sales_30d",
+    "v": "0"
+   },
+   {
+    "meta_key": "_ps_sales_90d",
+    "v": "0"
+   },
+   {
+    "meta_key": "_ps_sales_365d",
+    "v": "0"
+   },
+   {
+    "meta_key": "_ps_revenue_365d",
+    "v": "0"
+   },
+   {
+    "meta_key": "_ps_orders_365d",
+    "v": "0"
+   },
+   {
+    "meta_key": "_ps_last_sale",
+    "v": ""
+   },
+   {
+    "meta_key": "_ps_margin_365d",
+    "v": "0"
+   },
+   {
+    "meta_key": "_ps_sales_updated",
+    "v": "2026-08-12 07:50:53"
+   },
+   {
+    "meta_key": "_ps_pilnumas",
+    "v": "100"
+   },
+   {
+    "meta_key": "_ps_pilnumas_truksta",
+    "v": ""
+   },
+   {
+    "meta_key": "_ps_pilnumas_updated",
+    "v": "2026-08-12 08:01:49"
+   },
+   {
+    "meta_key": "_ps_publikuota",
+    "v": "2026-06-06 17:38:00"
+   },
+   {
+    "meta_key": "_ps_pilnumas_kodai",
+    "v": ""
+   }
+  ],
+  "zurnalas": "gaj6_ps_ivykiai",
+  "stulpeliai": [
+   "id",
+   "product_id",
+   "laikas",
+   "tipas",
+   "laukas",
+   "sena",
+   "nauja",
+   "saltinis",
+   "kas",
+   "op_nr",
+   "pastaba"
+  ],
+  "siandien": [],
+  "kiek_07": 0,
+  "vartai": "irasyta i vartai.b64"
+ }
+}
