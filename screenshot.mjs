@@ -7,7 +7,7 @@ const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'KOPIJA DEPLOY v1', ts:new Date().toISOString()};
+const out={marker:'KOPIJA DEPLOY v2', ts:new Date().toISOString()};
 
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
@@ -33,18 +33,20 @@ add_action('wp_loaded', function(){
   $o['f']=$f; $o['bytes']=strlen($kodas); $o['md5']=md5($kodas);
   $tmp = sys_get_temp_dir().'/ps-dep-'.$f;
   file_put_contents($tmp, $kodas);
-  $lint = null;
+  /* Sintakse tikrinama PARSERIU, ne include: include\'as klasei be
+     class_exists apvalkalo duotu „Cannot declare class" ir nutrauktu diegima. */
+  $ok = null; $lint = null;
   if ( function_exists('shell_exec') ) {
     $php = PHP_BINARY ?: 'php';
     $lint = trim((string) @shell_exec( escapeshellcmd($php).' -l '.escapeshellarg($tmp).' 2>&1' ));
+    if ( $lint !== '' ) { $ok = ( stripos($lint,'No syntax errors') !== false ); }
+  }
+  if ( $ok === null ) {
+    try { @token_get_all( $kodas, TOKEN_PARSE ); $ok = true; $lint = 'token_get_all OK'; }
+    catch ( \\ParseError $e ) { $ok = false; $lint = 'ParseError: '.$e->getMessage().' eil. '.$e->getLine(); }
+    catch ( \\Throwable $e ) { $ok = false; $lint = 'Throwable: '.$e->getMessage(); }
   }
   $o['lint'] = $lint;
-  $ok = ( $lint !== null && $lint !== '' ) ? ( stripos($lint,'No syntax errors') !== false ) : null;
-  if ( $ok === null ) {
-    try { include $tmp; $ok = true; $o['lint']='include OK'; }
-    catch (\\ParseError $e) { $ok = false; $o['lint']='ParseError: '.$e->getMessage().' eil. '.$e->getLine(); }
-    catch (\\Throwable $e) { $ok = true; $o['lint']='Runtime: '.$e->getMessage().' (sintakse OK)'; }
-  }
   $o['sintakse_ok'] = $ok;
   if ( $ok ) {
     $dest = WPMU_PLUGIN_DIR.'/'.$f;
@@ -60,7 +62,7 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode($o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Kopija Deploy v1',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Kopija Deploy v2',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text); out.snip_dep=j1&&j1.id?j1.id:s1.text.slice(0,200);
 
 /* 2) autologin */
@@ -79,12 +81,12 @@ add_action('init', function(){
   wp_safe_redirect( admin_url($to) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Kopija Autologin v1',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Kopija Autologin v2',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text); out.snip_auto=j2&&j2.id?j2.id:s2.text.slice(0,200);
 await new Promise(r=>setTimeout(r,4000));
 
 /* 3) failu irasymas */
-for (const f of ['petshop-gavimas.php','petshop-katalogas.php']) {
+for (const f of ['petshop-katalogas.php']) {
   try{
     const raw = execSync(`curl -s "https://raw.githubusercontent.com/${REPO}/main/deploy/${f}.b64" --max-time 90`,{encoding:'utf8',maxBuffer:60*1024*1024}).trim();
     fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
@@ -126,14 +128,22 @@ try{
       };
     });
 
-    await pg.goto(`${B}/?ps_auto=Qz7Rk88&u=${encodeURIComponent(U)}&to=${encodeURIComponent('admin.php?page=ps-katalogas&preke='+testId)}`,{waitUntil:'domcontentloaded',timeout:60000});
-    await pg.waitForTimeout(4500);
+    await pg.goto(`${B}/?ps_auto=Qz7Rk88&u=${encodeURIComponent(U)}&to=${encodeURIComponent('admin.php?page=ps-katalogas')}`,{waitUntil:'domcontentloaded',timeout:60000});
+    await pg.waitForTimeout(4000);
+    out.kortele = await pg.evaluate(async(id)=>{
+      const el=[...document.querySelectorAll('script')].map(s=>s.textContent).join('');
+      const m=el.match(/NONCE\s*=\s*"([a-z0-9]+)"/i);
+      const n=m?m[1]:'';
+      const r=await fetch(ajaxurl+'?action=ps_kat_kortele&nonce='+n+'&id='+id,{credentials:'same-origin'});
+      const t=await r.text();
+      const d=document.createElement('div'); d.innerHTML=t;
+      return {
+        nonce_rastas:!!n, ilgis:t.length,
+        nuorodos:[...d.querySelectorAll('.kort-nuor a')].map(a=>a.textContent.trim()+' → '+a.getAttribute('href')),
+        fatal:/Fatal error|Parse error/i.test(t)?t.slice(0,300):''
+      };
+    }, testId);
     await pg.screenshot({path:'screenshots/kop_kortele.png',fullPage:false}); files.push('screenshots/kop_kortele.png');
-    out.kortele = await pg.evaluate(()=>({
-      url:location.href,
-      nuorodos:[...document.querySelectorAll('.kort-nuor a')].map(a=>a.textContent.trim()+' → '+a.getAttribute('href')),
-      fatal:/Fatal error|Parse error/i.test(document.body.innerText)?document.body.innerText.slice(0,300):''
-    }));
   }
   out.js_klaidos=errs;
   await br.close();
@@ -152,5 +162,5 @@ for (const f of files) {
   }catch(e){}
 }
 out.failai=files;
-out.put=await putResult('kopija_deploy.json', out);
+out.put=await putResult('kopija_deploy2.json', out);
 console.log(JSON.stringify(out).slice(0,3000));
