@@ -22,7 +22,7 @@ add_action('init', function(){
   wp_safe_redirect( admin_url( isset($_GET['to']) ? $_GET['to'] : 'index.php' ) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP GPAIS Autologin v3',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP GPAIS Autologin v4',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text);
 await new Promise(r=>setTimeout(r,3500));
 const files=[];
@@ -34,8 +34,18 @@ try{
   await pg.goto(B+'/?ps_auto=Qz7Rk88&u='+encodeURIComponent(U)+'&to='+encodeURIComponent('admin.php?page=ps-katalogas'),{waitUntil:'domcontentloaded',timeout:60000});
   await pg.waitForSelector('.pskat-t .atv',{timeout:45000});
   await pg.waitForTimeout(1500);
-  await pg.click('.pskat-t .atv');
-  await pg.waitForSelector('.kort-tabs button',{timeout:45000});
+  await pg.evaluate(()=>{ const a=document.querySelector('.pskat-t .atv'); if(a) a.click(); });
+  try{ await pg.waitForSelector('.kort-tabs button',{timeout:30000}); }
+  catch(e){
+    out.diagnostika = await pg.evaluate(()=>({
+      kort:!!document.getElementById('pskat-kort'),
+      hidden:(document.getElementById('pskat-kort')||{}).hidden,
+      turinys:((document.querySelector('.kort-turinys')||{}).innerText||'').slice(0,300),
+      atv:document.querySelectorAll('.pskat-t .atv').length
+    }));
+    await pg.screenshot({path:'screenshots/gp_diag.png',fullPage:false}); files.push('screenshots/gp_diag.png');
+    throw e;
+  }
   await pg.waitForTimeout(2000);
   out.skirtukai = await pg.evaluate(()=>[...document.querySelectorAll('.kort-tabs button')].map(b=>b.textContent.trim()));
   await pg.evaluate(()=>{ const b=[...document.querySelectorAll('.kort-tabs button')].find(x=>/GPAIS/i.test(x.textContent)); if(b) b.click(); });
@@ -84,7 +94,7 @@ for (const f of files){
   }catch(e){}
 }
 const body={message:'res gp',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gp.json',{headers:{'Authorization':'Bearer '+TOK}});
+const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gp2.json',{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gp.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gp2.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log(JSON.stringify(out).slice(0,1200));
