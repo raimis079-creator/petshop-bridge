@@ -1,0 +1,64 @@
+{
+ "marker": "SARGAS NARSYKLE v1",
+ "snip": 2759,
+ "setup": {
+  "marker": "SETUP",
+  "komponentas": {
+   "id": 26077,
+   "likutis": 4,
+   "ss": "instock"
+  },
+  "rinkinys": {
+   "id": 34172,
+   "in_stock": 1,
+   "ss": "instock",
+   "galima": 2,
+   "url": "https://dev.avesa.lt/product/churu-ivairiu-skoniu-rinkinys-katems-%c2%b7-7-vnt/"
+  }
+ },
+ "url": "https://dev.avesa.lt/product/churu-ivairiu-skoniu-rinkinys-katems-%c2%b7-7-vnt/",
+ "puslapis": {
+  "title": "Churu įvairių skonių rinkinys katėms · 7 vnt. – Petshop.lt",
+  "stock": "Turime",
+  "btn": {
+   "txt": "Į krepšelį",
+   "disabled": false
+  },
+  "qtyMax": "2"
+ },
+ "pirkimo_err": "TimeoutError: elementHandle.fill: Timeout 30000ms exceeded.\nCall log:\n    - fill(\"3\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n    - waiting 2",
+ "setup0": {
+  "marker": "SETUP",
+  "komponentas": {
+   "id": 26077,
+   "likutis": 0,
+   "ss": "outofstock"
+  },
+  "rinkinys": {
+   "id": 34172,
+   "in_stock": 0,
+   "ss": "outofstock",
+   "galima": 0,
+   "url": "https://dev.avesa.lt/product/churu-ivairiu-skoniu-rinkinys-katems-%c2%b7-7-vnt/"
+  }
+ },
+ "puslapis0": {
+  "stock": "Neturime",
+  "btn": false
+ },
+ "restore": {
+  "marker": "SETUP",
+  "komponentas": {
+   "id": 26077,
+   "likutis": 385,
+   "ss": "instock"
+  },
+  "rinkinys": {
+   "id": 34172,
+   "in_stock": 1,
+   "ss": "instock",
+   "galima": 100,
+   "url": "https://dev.avesa.lt/product/churu-ivairiu-skoniu-rinkinys-katems-%c2%b7-7-vnt/"
+  }
+ }
+}
