@@ -1,0 +1,38 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-12T08:53:09.049Z",
+ "snip_id": 2757,
+ "snip_status": 200,
+ "recon": {
+  "marker": "SARGO DIAG v1",
+  "klase": true,
+  "hook_woocommerce_add_to_cart_validation": [
+   "10:wc_protected_product_add_to_cart (args=2)",
+   "10:closure (args=3)",
+   "10:WC_MNM_Cart::add_to_cart_validation (args=6)",
+   "20:Petshop_Rinkiniu_Likuciai::krepselio_sargas (args=5)"
+  ],
+  "hook_woocommerce_product_is_in_stock": [
+   "10:closure (args=2)",
+   "20:Petshop_Rinkiniu_Likuciai::ar_yra (args=2)"
+  ],
+  "hook_woocommerce_product_get_stock_status": [
+   "20:Petshop_AV_Limit::stock_status (args=2)",
+   "30:Petshop_Rinkiniu_Likuciai::busena (args=2)"
+  ],
+  "hook_woocommerce_check_cart_items": [
+   "1:WC_Cart::check_cart_items (args=1)",
+   "1:WC_Cart::check_cart_coupons (args=1)",
+   "10:Petshop_Rinkiniu_Likuciai::krepselio_perziura (args=1)",
+   "15:WC_MNM_Cart::check_cart_items (args=1)"
+  ],
+  "galima_34172": 100,
+  "tiesiogiai_999": {
+   "rez": "ATMETE",
+   "pranesimai": [
+    "error: „Churu įvairių skonių rinkinys katėms · 7 vnt.\" šiuo metu galime surinkti tik 100 vnt."
+   ]
+  }
+ },
+ "snip_deact": 200
+}
