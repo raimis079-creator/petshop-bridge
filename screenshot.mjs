@@ -31,7 +31,7 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V70 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V71 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text);
 const phpAuto = `
 add_action('init', function(){
@@ -44,16 +44,18 @@ add_action('init', function(){
   wp_safe_redirect( admin_url( isset(\$_GET['to']) ? \$_GET['to'] : 'index.php' ) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V70 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V71 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text);
 await new Promise(r=>setTimeout(r,4000));
 try{
-  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=660f62848233036ecd244956ee8258d4a21a77c0',{headers:{'Authorization':'Bearer '+TOK}});
-  const gj=await gg.json();
-  const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
-  fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
-  const res=execSync('curl -sk -X POST "'+B+'/?ps_dep=Kp5tW7&f=petshop-katalogas.php" --data @/tmp/pl.txt --max-time 180',{encoding:'utf8',maxBuffer:20*1024*1024});
-  out.deploy=js(res)||res.slice(0,300);
+  for (const f of ['petshop-gavimas.php','petshop-katalogas.php']) {
+    const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/'+f+'.b64?ref=85570d15e7c7be358e53b9fcf557e4c640803ea1',{headers:{'Authorization':'Bearer '+TOK}});
+    const gj=await gg.json();
+    const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
+    fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
+    const res=execSync('curl -sk -X POST "'+B+'/?ps_dep=Kp5tW7&f='+f+'" --data @/tmp/pl.txt --max-time 180',{encoding:'utf8',maxBuffer:20*1024*1024});
+    out['dep_'+f]=js(res)||res.slice(0,250);
+  }
 }catch(e){ out.deploy_err=String(e).slice(0,300); }
 
 /* SARGAS: inventorius trims prekems */
@@ -78,7 +80,7 @@ add_action('init', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o, JSON_UNESCAPED_UNICODE); exit;
 }, 1);
 `;
-const s3=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V70 Sargas',code:phpInv,scope:'global',active:true,priority:5})});
+const s3=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V71 Sargas',code:phpInv,scope:'global',active:true,priority:5})});
 const j3=js(s3.text);
 await new Promise(r=>setTimeout(r,4000));
 try{
@@ -114,7 +116,7 @@ try{
     await pg.evaluate(()=>{ const i=document.querySelector('.kort-lik-in'); i.value='-1'; document.querySelector('.kort-lik-irasyti').click(); });
     await pg.waitForTimeout(3500);
     out.po_minus = await pg.evaluate(()=>({ dabar:(document.querySelector('.kort-lik-dabar')||{}).textContent||'', stat:(document.querySelector('.kort-lik-stat')||{}).textContent||'' }));
-    await pg.screenshot({path:'screenshots/v70_apz.png',fullPage:false}); files.push('screenshots/v70_apz.png');
+    await pg.screenshot({path:'screenshots/v71_apz.png',fullPage:false}); files.push('screenshots/v71_apz.png');
     /* kategorijų langas atsidaro */
     await pg.evaluate(()=>{ document.querySelector('.kort-kat-keisti').click(); });
     await pg.waitForTimeout(1500);
@@ -123,7 +125,7 @@ try{
       eiluciu:document.querySelectorAll('.kort-kat-e').length,
       pazymeta:document.querySelectorAll('.kort-kat-e input:checked').length
     }));
-    await pg.screenshot({path:'screenshots/v70_kat.png',fullPage:false}); files.push('screenshots/v70_kat.png');
+    await pg.screenshot({path:'screenshots/v71_kat.png',fullPage:false}); files.push('screenshots/v71_kat.png');
   }
   out.js_klaidos=errs;
   await br.close();
@@ -137,7 +139,7 @@ for (const f of files){
   }catch(e){}
 }
 const body={message:'res v70',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v70.json',{headers:{'Authorization':'Bearer '+TOK}});
+const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v71.json',{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v70.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v71.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log(JSON.stringify(out).slice(0,1200));
