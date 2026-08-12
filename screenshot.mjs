@@ -31,7 +31,7 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP GPAIS Deploy v1',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP GPAIS Deploy v2',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text);
 const phpAuto = `
 add_action('init', function(){
@@ -46,12 +46,12 @@ add_action('init', function(){
   wp_safe_redirect( admin_url( isset(\$_GET['to']) ? \$_GET['to'] : 'index.php' ) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP GPAIS Autologin v1',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP GPAIS Autologin v2',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text);
 await new Promise(r=>setTimeout(r,4000));
-for (const f of ['petshop-partijos.php','petshop-katalogas.php']) {
+for (const f of ['petshop-katalogas.php']) {
   try{
-    const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/'+f+'.b64?ref=ce5ae7d1d06d8fb0a8aa63d74d518b88d79bc5dc',{headers:{'Authorization':'Bearer '+TOK}});
+    const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/'+f+'.b64?ref=dc15333f1f7e1ffce6c2b2b71829c3dbd5157b65',{headers:{'Authorization':'Bearer '+TOK}});
     const gj=await gg.json();
     const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
     fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
@@ -84,7 +84,7 @@ try{
     return { laukai:[...f.querySelectorAll('input,select')].length,
              medziagos:[...f.querySelectorAll('.kpf-med option')].map(o=>o.textContent).slice(0,3) };
   });
-  await pg.screenshot({path:'screenshots/gpais_forma.png',fullPage:false}); files.push('screenshots/gpais_forma.png');
+  await pg.screenshot({path:'screenshots/gpais2_forma.png',fullPage:false}); files.push('screenshots/gpais2_forma.png');
   await pg.evaluate(()=>{ document.querySelector('.kpf-irasyti').click(); });
   await pg.waitForTimeout(3500);
   out.po_irasymo = await pg.evaluate(()=>({
@@ -93,7 +93,7 @@ try{
     eiluciu:document.querySelectorAll('.kort-pak-t tr').length-1,
     pirma:(document.querySelector('.kort-pak-t tr:nth-child(2)')||{}).innerText||''
   }));
-  await pg.screenshot({path:'screenshots/gpais_sarasas.png',fullPage:false}); files.push('screenshots/gpais_sarasas.png');
+  await pg.screenshot({path:'screenshots/gpais2_sarasas.png',fullPage:false}); files.push('screenshots/gpais2_sarasas.png');
   /* isvalom testine eilute */
   out.trynimas = await pg.evaluate(async()=>{
     const b=document.querySelector('.kpak-tr'); if(!b) return 'nera mygtuko';
@@ -114,7 +114,7 @@ for (const f of files){
   }catch(e){}
 }
 const body={message:'res gpais',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gpais.json',{headers:{'Authorization':'Bearer '+TOK}});
+const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gpais2.json',{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gpais.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/gpais2.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log(JSON.stringify(out).slice(0,1500));
