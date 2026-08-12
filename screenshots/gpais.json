@@ -1,0 +1,38 @@
+{
+ "marker": "GPAIS DEPLOY",
+ "ts": "2026-08-12T12:41:05.872Z",
+ "dep_petshop-partijos.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-partijos.php",
+  "md5": "d9ca8db2c3fab34112b21e15a2d4b47a",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-partijos.php-20260812-124115",
+  "dest_md5": "d9ca8db2c3fab34112b21e15a2d4b47a",
+  "sutampa": true
+ },
+ "dep_petshop-katalogas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "md5": "3bc59569cc76f166c5bb95a2f39272aa",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-124118",
+  "dest_md5": "3bc59569cc76f166c5bb95a2f39272aa",
+  "sutampa": true
+ },
+ "skirtukai": [
+  "Apžvalga",
+  "Aprašymai",
+  "Nuotraukos",
+  "Pardavimai",
+  "Istorija",
+  "GPAIS pakuotė"
+ ],
+ "pries": {
+  "zyme": "",
+  "mygtukas": true
+ },
+ "forma": "nera formos",
+ "err": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'click')\n    at eval (eval at evaluate (:311:30), <anonymous>:1:45)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+}
