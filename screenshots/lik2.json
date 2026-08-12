@@ -1,0 +1,83 @@
+{
+ "marker": "LIKUCIU TESTAS 2",
+ "ts": "2026-08-12T15:42:40.961Z",
+ "snip": 2828,
+ "step2": {
+  "success": true,
+  "data": {
+   "operacija": "AV26081215424890",
+   "irasyta": 1,
+   "eilutes": [
+    {
+     "id": 19715,
+     "buvo": 9,
+     "tapo": 8,
+     "pastaba": ""
+    }
+   ],
+   "klaidos": [],
+   "priezastis": "Inventorizacija"
+  }
+ },
+ "step3": {
+  "success": false,
+  "data": {
+   "zinute": "nėra galiojančių eilučių",
+   "klaidos": [
+    {
+     "id": 25319,
+     "kl": "likutį valdo tiekėjo XML (VF) — ranka nekeičiamas"
+    }
+   ]
+  }
+ },
+ "step1": {
+  "marker": "BUKLE",
+  "v": "7.2",
+  "preke_19715": {
+   "sand": "ambrosia",
+   "rankinis": "taip",
+   "laukas": "_stock",
+   "_stock": "8",
+   "_own": "",
+   "wc_qty": null,
+   "wc_status": null
+  },
+  "preke_16760": {
+   "sand": "prins",
+   "rankinis": "taip",
+   "laukas": "_stock",
+   "_stock": "0",
+   "_own": "",
+   "wc_qty": null,
+   "wc_status": null
+  },
+  "preke_15835": {
+   "sand": "belcor_tofu",
+   "rankinis": "taip",
+   "laukas": "_stock",
+   "_stock": "0",
+   "_own": "",
+   "wc_qty": null,
+   "wc_status": null
+  },
+  "preke_19902": {
+   "sand": "av",
+   "rankinis": "taip",
+   "laukas": "_stock",
+   "_stock": "2",
+   "_own": "",
+   "wc_qty": null,
+   "wc_status": null
+  },
+  "preke_25319": {
+   "sand": "vf",
+   "rankinis": "ne",
+   "laukas": "_own_stock_qty",
+   "_stock": "3.000000",
+   "_own": "",
+   "wc_qty": null,
+   "wc_status": null
+  }
+ }
+}
