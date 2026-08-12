@@ -1,0 +1,77 @@
+{
+ "marker": "TRUMPAS APRASYMAS v1",
+ "ts": "2026-08-12T10:53:48.896Z",
+ "snip_dep": 2781,
+ "snip_auto": 2782,
+ "dep_petshop-katalogas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "bytes": 331851,
+  "md5": "4de11ebe8036b88e244ed461603b73b3",
+  "lint": "token_get_all OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-105400",
+  "irasyta": 331851,
+  "dest_md5": "4de11ebe8036b88e244ed461603b73b3",
+  "sutampa": true
+ },
+ "testId": 34498,
+ "saltinis": {
+  "id": 34498,
+  "name": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+  "brands": [],
+  "weight": "",
+  "images": [
+   {
+    "id": 34503,
+    "date_created": "2026-07-06T21:41:17",
+    "date_created_gmt": "2026-07-06T15:41:17",
+    "date_modified": "2026-07-06T21:41:17",
+    "date_modified_gmt": "2026-07-06T15:41:17",
+    "src": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498.jpg",
+    "name": "Exclusion-Mediterraneo-Mono-Protein-konservuotas-pasaras-katems-su-tunu-85-g-pack",
+    "alt": "",
+    "srcset": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498.jpg 1000w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-400x400.jpg 400w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-800x800.jpg 800w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-280x280.jpg 280w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-768x768.jpg 768w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-300x300.jpg 300w, https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-100x100.jpg 100w",
+    "sizes": "(max-width: 1000px) 100vw, 1000px",
+    "thumbnail": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-300x300.jpg"
+   }
+  ],
+  "_links": {
+   "self": [
+    {
+     "href": "https://dev.avesa.lt/wp-json/wc/v3/products/34498",
+     "targetHints": {
+      "allow": [
+       "GET",
+       "POST",
+       "PUT",
+       "PATCH",
+       "DELETE"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://dev.avesa.lt/wp-json/wc/v3/products"
+    }
+   ]
+  }
+ },
+ "kortele": {
+  "pav": "„DuvoPlius” žaislas šuniui – pliušinis mėlynasis banginis, 27x8x7cm",
+  "trumpas_blokas": true,
+  "antraste": "TRUMPAS APRAŠYMAS\ntuščias",
+  "reiksme": "",
+  "mygtukai": [
+   "Įrašyti"
+  ],
+  "fatal": ""
+ },
+ "testas": {
+  "po_irasymo": "įrašyta · 8 simb.",
+  "buvo_ilgis": 0
+ },
+ "po_irasymo_db": null,
+ "js_klaidos": []
+}
