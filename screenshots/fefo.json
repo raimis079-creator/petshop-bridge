@@ -1,0 +1,43 @@
+{
+ "marker": "VALYMAS+FEFO TESTAS",
+ "ts": "2026-08-12T18:07:26.609Z",
+ "step1": {
+  "success": true,
+  "data": {
+   "operacija": "AV26081218073315",
+   "irasyta": 1,
+   "eilutes": [
+    {
+     "id": 19902,
+     "buvo": 6,
+     "tapo": 3,
+     "partija": 0,
+     "pastaba": ""
+    }
+   ],
+   "klaidos": [],
+   "priezastis": "Nurašymas"
+  }
+ },
+ "step2": {
+  "marker": "FEFO",
+  "po": {
+   "stock": "3",
+   "partijos": [
+    {
+     "id": "17",
+     "kiekis_liko": "0",
+     "geriausia_iki": "2027-05-31"
+    }
+   ]
+  }
+ },
+ "step3": {
+  "marker": "FEFO",
+  "isvalyta": 1,
+  "galutinis": {
+   "stock": "2",
+   "partiju": 0
+  }
+ }
+}
