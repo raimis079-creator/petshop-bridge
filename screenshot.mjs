@@ -1,13 +1,12 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 import fs from 'fs';
 import { execSync } from 'child_process';
-import { chromium } from 'playwright';
 const B='https://dev.avesa.lt';
 const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'V81', ts:new Date().toISOString()};
+const out={marker:'SERIMAS', ts:new Date().toISOString()};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
 const phpDep = `
@@ -30,87 +29,48 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V81 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Serimas Deploy',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text);
-const phpAuto = `
-add_action('init', function(){
-  if ( ( \$_GET['ps_auto'] ?? '' ) !== 'Qz7Rk88' ) return;
-  \$a = get_users(array('role'=>'administrator','number'=>1)); \$u = \$a ? \$a[0] : null;
-  if ( ! \$u ) { wp_die('no admin'); }
-  wp_set_current_user(\$u->ID);
-  \$tok = \\WP_Session_Tokens::get_instance(\$u->ID)->create(time()+1800);
-  wp_set_auth_cookie(\$u->ID, false, true, \$tok);
-  wp_safe_redirect( admin_url( isset(\$_GET['to']) ? \$_GET['to'] : 'index.php' ) ); exit;
-});
-`;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V81 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
-const j2=js(s2.text);
 await new Promise(r=>setTimeout(r,4000));
 try{
-  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=826a0cdac994aa66c58a2de30c35e0bacfa696d5',{headers:{'Authorization':'Bearer '+TOK}});
+  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-gavimas.php.b64?ref=8ac466d71bdbf96d431decbd030e69913bcec874',{headers:{'Authorization':'Bearer '+TOK}});
   const gj=await gg.json();
   const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
   fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
-  out.deploy=js(execSync('curl -sk -X POST "'+B+'/?ps_dep=Kp5tW7&f=petshop-katalogas.php" --data @/tmp/pl.txt --max-time 180',{encoding:'utf8',maxBuffer:20*1024*1024}));
+  out.deploy=js(execSync('curl -sk -X POST "'+B+'/?ps_dep=Kp5tW7&f=petshop-gavimas.php" --data @/tmp/pl.txt --max-time 180',{encoding:'utf8',maxBuffer:20*1024*1024}));
 }catch(e){ out.deploy_err=String(e).slice(0,200); }
-const files=[];
-try{
-  const br=await chromium.launch();
-  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1500,height:1000}});
-  const pg=await ctx.newPage();
-  const errs=[]; pg.on('pageerror',e=>errs.push(String(e).slice(0,160)));
-  await pg.goto(B+'/?ps_auto=Qz7Rk88&to='+encodeURIComponent('admin.php?page=ps-katalogas'),{waitUntil:'domcontentloaded',timeout:60000});
-  await pg.waitForSelector('.pskat-t .atv',{timeout:45000});
-  const pries = await pg.evaluate(()=>{
-    const tr=document.querySelector('.pskat-t tbody tr[data-id]');
-    return { id:tr.dataset.id, pav:(tr.querySelector('.atv')||{}).textContent.trim(),
-             av:(tr.querySelector('td.av-lang .av-rodo')||{}).textContent.trim() };
-  });
-  out.pries=pries;
-  let ok=false;
-  for(let b=0;b<3 && !ok;b++){
-    await pg.evaluate(()=>{ const k=document.querySelector('.kort-kartoti'); if(k){k.click();return;} const a=document.querySelector('.pskat-t .atv'); if(a) a.click(); });
-    try{ await pg.waitForSelector('.kort-pav-keisti',{timeout:25000}); ok=true; }catch(e){ await pg.waitForTimeout(3000); }
+/* DRY: kiek Quattro prekiu turi serima tekste, bet ne sekcijoje */
+const phpT = `
+add_action('init', function(){
+  if ( ( \$_GET['ps_t'] ?? '' ) !== 'Sr5tQ1' ) return;
+  @set_time_limit(240);
+  global \$wpdb; \$p=\$wpdb->prefix;
+  \$o=array('v'=>Petshop_Gavimas::VERSIJA);
+  \$ids=\$wpdb->get_col("SELECT ID FROM {\$p}posts WHERE post_type='product' AND post_status IN ('publish','draft') AND post_content LIKE '%erimo rekomendacij%' LIMIT 300");
+  \$o['rasta']=count(\$ids);
+  \$pvz=array();
+  foreach (array_slice(\$ids,0,3) as \$pid) {
+    \$t=get_post_field('post_content',\$pid);
+    \$pl=preg_replace('~<\\s*(br|/p|/div|/li)\\s*/?>~i', "\n", \$t);
+    \$pl=html_entity_decode(wp_strip_all_tags(\$pl), ENT_QUOTES, 'UTF-8');
+    \$luk=Petshop_Katalogas::sekciju_lukesciai(wp_get_post_terms(\$pid,'product_cat',array('fields'=>'slugs')));
+    \$info=null;
+    \$r=Petshop_Gavimas::skaidyti(\$pl, array_keys(\$luk['sekcijos']), \$info);
+    \$pvz[]=array('id'=>\$pid,'pav'=>mb_substr(get_the_title(\$pid),0,40),
+      'sekcijos'=>array_keys(\$r),
+      'serimas'=>isset(\$r['Šėrimo instrukcija']) ? mb_substr(\$r['Šėrimo instrukcija'],0,80) : 'NERA');
   }
-  out.kortele=ok;
-  if(ok){
-    /* TESTAS 1: PAVADINIMAS — anksciau sarase neatsinaujindavo */
-    await pg.evaluate((p)=>{
-      document.querySelector('.kort-pav-keisti').click();
-      const ta=document.querySelector('.kort-pav-in'); ta.value=p+' [T]';
-      document.querySelector('.kort-pav-irasyti').click();
-    }, pries.pav);
-    await pg.waitForTimeout(4500);
-    out.po_pavadinimo = await pg.evaluate((id)=>{
-      const tr=document.querySelector('.pskat-t tbody tr[data-id="'+id+'"]');
-      return tr ? (tr.querySelector('.atv')||{}).textContent.trim() : 'eilutes nera';
-    }, pries.id);
-    await pg.screenshot({path:'screenshots/v81.png',fullPage:false}); files.push('screenshots/v81.png');
-    /* grazinam pavadinima */
-    await pg.evaluate((p)=>{
-      document.querySelector('.kort-pav-keisti').click();
-      const ta=document.querySelector('.kort-pav-in'); ta.value=p;
-      document.querySelector('.kort-pav-irasyti').click();
-    }, pries.pav);
-    await pg.waitForTimeout(4000);
-    out.po_grazinimo = await pg.evaluate((id)=>{
-      const tr=document.querySelector('.pskat-t tbody tr[data-id="'+id+'"]');
-      return tr ? (tr.querySelector('.atv')||{}).textContent.trim() : 'nera';
-    }, pries.id);
-  }
-  out.js=errs;
-  await br.close();
-}catch(e){ out.err=String(e).slice(0,400); }
+  \$o['pavyzdziai']=\$pvz;
+  header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o,JSON_UNESCAPED_UNICODE); exit;
+}, 1);
+`;
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Serimas Testas',code:phpT,scope:'global',active:true,priority:5})});
+const j2=js(s2.text);
+await new Promise(r=>setTimeout(r,4000));
+try{ out.testas=js(execSync('curl -sk "'+B+'/?ps_t=Sr5tQ1" --max-time 150',{encoding:'utf8',maxBuffer:20*1024*1024})); }catch(e){ out.t_err='ERR'; }
 for (const j of [j1,j2]) { if(j&&j.id) await wp('/wp-json/code-snippets/v1/snippets/'+j.id,{method:'DELETE'}); }
-for (const f of files){
-  try{ const body={message:'shot',content:fs.readFileSync(f).toString('base64')};
-    const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+f,{headers:{'Authorization':'Bearer '+TOK}});
-    if(g.status===200){ body.sha=(await g.json()).sha; }
-    await fetch('https://api.github.com/repos/'+REPO+'/contents/'+f,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
-  }catch(e){}
-}
-const body={message:'res v81',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v81.json',{headers:{'Authorization':'Bearer '+TOK}});
+const body={message:'res serimas',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
+const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/serimas.json',{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v81.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/serimas.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log('ok');
