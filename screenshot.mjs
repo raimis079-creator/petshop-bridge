@@ -6,73 +6,74 @@ const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'PUBLIKAVIMO RECON', ts:new Date().toISOString()};
+const out={marker:'VARTAI RECON', ts:new Date().toISOString()};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
 const php = `
 add_action('init', function(){
-  if ( ( $_GET['ps_rec'] ?? '' ) !== 'Pb9xK5' ) return;
-  @set_time_limit(240);
+  if ( ( $_GET['ps_rec'] ?? '' ) !== 'Va9tR5' ) return;
+  @set_time_limit(180);
   global $wpdb; $p=$wpdb->prefix;
-  $o=array('marker'=>'RECON PUBLIKAVIMAS');
+  $o=array('marker'=>'VARTAI');
 
-  /* 1. Kas kode raso post_status = publish */
-  $vietos=array();
-  $dirs=array(WPMU_PLUGIN_DIR, WP_PLUGIN_DIR.'/petshop-xml');
-  foreach ($dirs as $d) {
-    if (!is_dir($d)) continue;
-    $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($d));
-    foreach ($it as $f) {
-      if (!$f->isFile() || substr($f->getFilename(),-4)!=='.php') continue;
-      if (strpos($f->getFilename(),'.bak-')===0) continue;
-      $t=@file_get_contents($f->getPathname());
-      if ($t===false) continue;
-      $eil=explode("\\n",$t);
-      foreach ($eil as $i=>$l) {
-        if ( preg_match('~publish~i',$l) && preg_match('~post_status|set_status|wp_publish_post~i',$l) ) {
-          $vietos[] = basename($f->getPathname()).':'.($i+1).' '.trim(mb_substr($l,0,150));
-        }
+  /* 1. vartu failas */
+  $f=WPMU_PLUGIN_DIR.'/petshop-vartai.php';
+  $o['vartai_b64']= file_exists($f) ? base64_encode(file_get_contents($f)) : 'NERA';
+
+  /* 2. cron uzduotys */
+  $cr=_get_cron_array(); $sar=array();
+  foreach((array)$cr as $laikas=>$kabliai){
+    foreach($kabliai as $hook=>$x){
+      if ( stripos($hook,'petshop')!==false || stripos($hook,'ps_')!==false || stripos($hook,'vf')!==false || stripos($hook,'zb')!==false || stripos($hook,'vartai')!==false || stripos($hook,'pmxi')!==false || stripos($hook,'import')!==false ) {
+        $sar[]=array('hook'=>$hook,'kada'=>date('Y-m-d H:i',$laikas),'kada_lt'=>get_date_from_gmt(date('Y-m-d H:i:s',$laikas),'Y-m-d H:i'));
       }
     }
   }
-  $o['publish_vietos']=$vietos;
+  $o['cron']=$sar;
 
-  /* 2. Vartu failas */
-  $v=@file_get_contents(WPMU_PLUGIN_DIR.'/petshop-vartai.php');
-  $o['vartai']= $v===false ? 'NERA' : base64_encode($v);
+  /* 3. prekes 25319 duomenys */
+  $pid=25319;
+  $o['preke']=array('sku'=>get_post_meta($pid,'_sku',true),'busena'=>get_post_status($pid),
+    'vf'=>get_post_meta($pid,'_vf_enabled',true),'zb'=>get_post_meta($pid,'_zb_enabled',true),
+    'sandelis'=>get_post_meta($pid,'_ps_sandelis',true),
+    'vf_qty'=>get_post_meta($pid,'_vf_qty',true),'zb_qty'=>get_post_meta($pid,'_zb_qty',true),
+    'vartai'=>get_post_meta($pid,'_ps_vartai',true),
+    'i_juodrasti'=>get_post_meta($pid,'_ps_i_juodrasti',true),
+    'publikuota'=>get_post_meta($pid,'_ps_publikuota',true));
+  $visi=$wpdb->get_results($wpdb->prepare("SELECT meta_key,LEFT(meta_value,60) v FROM {$p}postmeta WHERE post_id=%d AND meta_key LIKE '_ps%%'",$pid),ARRAY_A);
+  $o['ps_meta']=$visi;
 
-  /* 3. Snippetai su publish */
-  $sn=$wpdb->get_results("SELECT id,name,active FROM {$p}snippets WHERE code LIKE '%post_status%' AND code LIKE '%publish%'", ARRAY_A);
-  $o['snippetai']=$sn;
-
-  /* 4. VF/ZB prekes, kurios siandien tapo publish */
-  $siandien=date('Y-m-d');
-  $eil=$wpdb->get_results($wpdb->prepare(
-    "SELECT ID, post_title, post_status, post_modified FROM {$p}posts
-      WHERE post_type='product' AND post_status='publish' AND post_modified >= %s ORDER BY post_modified DESC LIMIT 40",
-      $siandien.' 00:00:00'), ARRAY_A);
-  foreach ($eil as &$e) {
-    $e['vf']=get_post_meta($e['ID'],'_vf_enabled',true);
-    $e['zb']=get_post_meta($e['ID'],'_zb_enabled',true);
-    $e['vartai']=get_post_meta($e['ID'],'_ps_publikuota',true);
-    $e['juodr']=get_post_meta($e['ID'],'_ps_i_juodrasti',true);
+  /* 4. kiek prekiu 07:01 pakeista i publish (is zurnalo) */
+  $z=$p.'ps_katalogo_zurnalas';
+  $lentele=$wpdb->get_var("SHOW TABLES LIKE '{$z}'");
+  if(!$lentele){ $z=$p.'ps_ivykiai'; $lentele=$wpdb->get_var("SHOW TABLES LIKE '{$z}'"); }
+  $o['zurnalas']=$lentele;
+  if($lentele){
+    $o['stulpeliai']=$wpdb->get_col("SHOW COLUMNS FROM {$z}");
+    $o['siandien']=$wpdb->get_results("SELECT * FROM {$z} WHERE sukurta >= '2026-08-12 06:00:00' AND sukurta <= '2026-08-12 08:00:00' LIMIT 10", ARRAY_A);
+    $o['kiek_07']= (int) $wpdb->get_var("SELECT COUNT(*) FROM {$z} WHERE sukurta >= '2026-08-12 06:30:00' AND sukurta <= '2026-08-12 07:30:00'");
   }
-  $o['siandien_publish']=$eil;
-  $o['siandien_publish_kiek']=count($eil);
-
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode($o, JSON_UNESCAPED_UNICODE); exit;
 }, 1);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Publikavimo Recon v1',code:php,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Vartai Recon v1',code:php,scope:'global',active:true,priority:5})});
 const j1=js(s1.text); out.snip=j1&&j1.id?j1.id:s1.text.slice(0,150);
 await new Promise(r=>setTimeout(r,4000));
 try{
-  const res=execSync(`curl -sk "${B}/?ps_rec=Pb9xK5" --max-time 180`,{encoding:'utf8',maxBuffer:40*1024*1024});
-  out.recon=js(res)||res.slice(0,1500);
+  const res=execSync(`curl -sk "${B}/?ps_rec=Va9tR5" --max-time 120`,{encoding:'utf8',maxBuffer:40*1024*1024});
+  const j=js(res);
+  if(j&&j.vartai_b64&&j.vartai_b64!=='NERA'){ fs.writeFileSync('screenshots/vartai.b64', j.vartai_b64);
+    const body={message:'vartai',content:Buffer.from(j.vartai_b64).toString('base64')};
+    const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/vartai.b64`,{headers:{'Authorization':'Bearer '+TOK}});
+    if(g.status===200){ body.sha=(await g.json()).sha; }
+    await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/vartai.b64`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    delete j.vartai_b64; j.vartai='irasyta i vartai.b64';
+  }
+  out.recon=j||res.slice(0,1000);
 }catch(e){ out.err=String(e).slice(0,300); }
 if(j1&&j1.id) await wp('/wp-json/code-snippets/v1/snippets/'+j1.id,{method:'DELETE'});
-const body={message:'res pub',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/publikavimas.json`,{headers:{'Authorization':'Bearer '+TOK}});
+const body={message:'res vartai',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
+const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/vartai.json`,{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/publikavimas.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/vartai.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log('ok');
