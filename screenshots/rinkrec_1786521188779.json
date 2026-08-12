@@ -1,0 +1,179 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-12T07:52:58.041Z",
+ "snip_id": 2747,
+ "snip_status": 200,
+ "recon": {
+  "marker": "MU RECON v1",
+  "dir": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins",
+  "mu_files": [
+   {
+    "f": "automation-by-installatron.php",
+    "size": 983,
+    "mtime": "2026-05-05 15:43"
+   },
+   {
+    "f": "petshop-akcijos.php",
+    "size": 96257,
+    "mtime": "2026-08-11 07:10"
+   },
+   {
+    "f": "petshop-av-admin.php",
+    "size": 7510,
+    "mtime": "2026-08-05 11:03"
+   },
+   {
+    "f": "petshop-av-dropship.php",
+    "size": 18048,
+    "mtime": "2026-08-05 19:20"
+   },
+   {
+    "f": "petshop-av-expiry.php",
+    "size": 8633,
+    "mtime": "2026-08-05 11:21"
+   },
+   {
+    "f": "petshop-av-limit.php",
+    "size": 3720,
+    "mtime": "2026-08-05 10:08"
+   },
+   {
+    "f": "petshop-av-order.php",
+    "size": 4923,
+    "mtime": "2026-08-05 10:41"
+   },
+   {
+    "f": "petshop-av-reduce.php",
+    "size": 5742,
+    "mtime": "2026-08-05 10:43"
+   },
+   {
+    "f": "petshop-av-sheets.php",
+    "size": 10335,
+    "mtime": "2026-08-05 19:20"
+   },
+   {
+    "f": "petshop-av-source.php",
+    "size": 5762,
+    "mtime": "2026-08-05 09:59"
+   },
+   {
+    "f": "petshop-av-stock.php",
+    "size": 12575,
+    "mtime": "2026-08-05 10:14"
+   },
+   {
+    "f": "petshop-av-tiekimas.php",
+    "size": 36165,
+    "mtime": "2026-08-06 11:12"
+   },
+   {
+    "f": "petshop-code-search.php",
+    "size": 5447,
+    "mtime": "2026-08-03 17:24"
+   },
+   {
+    "f": "petshop-desk.php",
+    "size": 114420,
+    "mtime": "2026-08-06 11:47"
+   },
+   {
+    "f": "petshop-feeding-calc-rest.php",
+    "size": 19012,
+    "mtime": "2026-08-03 11:36"
+   },
+   {
+    "f": "petshop-gavimas.php",
+    "size": 70794,
+    "mtime": "2026-08-11 19:25"
+   },
+   {
+    "f": "petshop-import-log.php",
+    "size": 2826,
+    "mtime": "2026-08-04 19:39"
+   },
+   {
+    "f": "petshop-ivykiai.php",
+    "size": 20773,
+    "mtime": "2026-08-09 12:57"
+   },
+   {
+    "f": "petshop-katalogas.php",
+    "size": 323005,
+    "mtime": "2026-08-11 19:34"
+   },
+   {
+    "f": "petshop-legacy-301.php",
+    "size": 2881,
+    "mtime": "2026-08-04 17:21"
+   },
+   {
+    "f": "petshop-m8-food.php",
+    "size": 35513,
+    "mtime": "2026-07-28 08:31"
+   },
+   {
+    "f": "petshop-pardavimai.php",
+    "size": 14549,
+    "mtime": "2026-08-09 12:14"
+   },
+   {
+    "f": "petshop-parseris.php",
+    "size": 25728,
+    "mtime": "2026-08-10 11:26"
+   },
+   {
+    "f": "petshop-partijos.php",
+    "size": 25669,
+    "mtime": "2026-08-10 10:37"
+   },
+   {
+    "f": "petshop-payment-failed.php",
+    "size": 3704,
+    "mtime": "2026-08-04 18:12"
+   },
+   {
+    "f": "petshop-pet-claim.php",
+    "size": 7126,
+    "mtime": "2026-08-03 12:46"
+   },
+   {
+    "f": "petshop-pilnumas.php",
+    "size": 19024,
+    "mtime": "2026-08-11 07:41"
+   },
+   {
+    "f": "petshop-ps-pets-migration-freeze.php",
+    "size": 7018,
+    "mtime": "2026-07-20 14:15"
+   },
+   {
+    "f": "petshop-rysiai.php",
+    "size": 16535,
+    "mtime": "2026-08-09 14:15"
+   },
+   {
+    "f": "petshop-teises.php",
+    "size": 11705,
+    "mtime": "2026-08-10 20:25"
+   },
+   {
+    "f": "petshop-vartai.php",
+    "size": 6748,
+    "mtime": "2026-08-11 09:03"
+   },
+   {
+    "f": "petshop-wc-sync.php",
+    "size": 10361,
+    "mtime": "2026-08-08 08:20"
+   }
+  ],
+  "katalogas_len": 323005,
+  "nav_snippet": "(nerasta)",
+  "menu_reg": "katalogo langą. '\n\t\t\t. 'Importų ir kitų šaltinių keitimai čia nepatenka.</div>';\n\t\techo '</div>';\n\t}\n\n\t/** v3.3: body klase, kad pilno ekrano CSS galiotu TIK siame puslapyje. */\n\tpublic static function body_klase( $klases ) {\n\t\tif ( isset( $_GET['page'] ) && $_GET['page'] === 'ps-katalogas' ) {\n\t\t\t$klases .= ' petshop-katalogas';\n\t\t}\n\t\treturn $klases;\n\t}\n\n\tpublic static function meniu() {\n\t\tadd_menu_page(\n\t\t\t'Petshop prekės', 'Petshop prekės', 'manage_woocommerce',\n\t\t\t'ps-katalogas', array( __CLASS__, 'puslapis' ), 'dashicons-products', 3\n\t\t);\n\t}\n\n\t/** WooCommerce prekių punktas slepiamas CSS'u — puslapis lieka veikiantis. */\n\tpublic static function slepti_wc_prekes() {\n\t\techo '<style>\n\t\t#adminmenu li#menu-posts-product,\n\t\t#adminmenu li.menu-icon-product,\n\t\t#adminmenu a.menu-top[href=\"edit.php?post_type=product\"]{display:none!important}\n\t\t</style>';\n\t}\n\n\t/* ==================== DUOMENYS ==================== */\n\n\t/**\n\t * Visų prekių pagrindiniai duomenys VIENU praėjimu.\n\t * Meta užkraunama masiškai (update_meta_cache) — kitaip 3 800 prekių\n\t * duotų dešimtis tūkstančių atskirų užklausų.\n\t */\n\tpublic static function surinkti() {\n\t\t$kesas = get_transient( 'ps_kat_duomenys' );\n\t\tif ( is_array( $kesas ) && isset( $kesas['v'] ) && $kesas['v'] === self::VERSIJA ) {\n\t\t\treturn $kesas;\n\t\t}\n\n\t\tglobal $wpdb;\n\t\t$p = $wpdb->prefix;\n\n\t\t/* post_content NEIMAMAS — 3 800 aprašymų neišsitektų atmintyje.\n\t\t   Vietoj jo tik požymis, ar jis netuščias. */\n\t\t$eil = $wpdb->get_results(\n\t\t\t\"SELECT ID, post_title, post_status, post_modified,\n\t\t\t        (TRIM(COALESCE(post_content,'')) <> '') AS turi_turini\n\t\t\t FROM {$p}posts\n\t\t\t WHERE post_type='product' AND post_status IN ('publish','draft','private','pending')\n\t\t\t ORDER BY post_title ASC\", ARRAY_A );\n\n\t\t$ids = wp_list_pluck( $eil, 'ID' );\n\n\t\t/* META VIENU SELECT ir TIK reikalingi raktai.\n\t\t   update_meta_cache() visoms prekėms suvalgo 256 MB ir nulaužia puslapį (S646). */\n\t\t$meta = self::meta_masinis( $ids );\n\n\t\t/* REGISTRAS, kategorijos, brendai, tipai — po vieną užklausą kiekvienam */\n\t\t$reg   = self::registras_masinis( $ids );\n\t\t$kat   = self::terminai( $ids, 'product_cat' );\n\t\t$brend = sel",
+  "katalogas_head": "<?php\n/**\n * Petshop Katalogas v6.1 (E1, S768) — SARGAS NAVIGACIJOJE IR GRIZIMAS I VIETA.\n *   v6.1 TAISYMAS: v6.0 navigacijos sargas apemė ir saraso eilutes, kurias jau\n *   perima senesnis sargas. Du perėmimai su `stopImmediatePropagation`\n *   nutraukdavo Enter grandinę, ir kaina apskritai NEISSISAUGODAVO — klaida\n *   rimtesnė uz ta, kuria taisiau. Dabar naujasis sargas liecia tik isorines\n *   nuorodas ir niekada — korteles vidu.\n *   Savininko pastabos po testavimo:\n *   1. „Jei einu is lango i langa, turi VISADA klausti ar issaugoti — man\n *      nusimuse ir viskas dingo.\" Sargas perimdavo tik korteles uzdaryma;\n *      paspaudus „Akcijos\" ar „Gavimas\" puslapis keisdavosi ir neirasyti\n *      laukai dingdavo tyliai. Dabar perimamos ir navigacijos, ir eiliu, ir\n *      saraso nuorodos.\n *   2. „Po kiekvieno issaugojimo turi buti refresh, nes neaisku ar\n *      issisaugojo.\" Pilnas perkrovimas atimtu vieta sarase, todel irašytas\n *      laukas trumpam nusidazo ZALIAI — irodymas, kad serveris ATSAKE.\n *   3. „Isejus is korteles kataloge ismeta visai i kita vieta.\" Uzdarius\n *      eilute parodoma ir pazymima geltonai 2,6 s.\n *\n * Petshop Katalogas v5.9 ",
+  "writable": true,
+  "teises": "<?php\n/**\n * Petshop Teises v1.1 (S756) — DARBUOTOJO ROLE IR SVARUS EKRANAS.\n *\n * KAM (savininko patikslinimas 2026-08-10): tikslas — kad ZMOGUS\n * NESIPAINIOTU, o ne kad ko nors nematytu. Naujokui atsidarius WordPress\n * admina, jis mato septyniolika meniu punktu, is kuriu darbui reikia penkiu.\n * Visa kita — triuksmas, kuriame lengva pasiklysti ir netycia atsidurti ne\n * ten, kur reikia.\n *\n * SPRENDIMAS: role „Petshop darbuotojas\" su ISVALYTU ekranu. Meniu paliekami\n * TIK darbo langai; po prisijungimo zmogus patenka tiesiai i Kataloga, ne i\n * tuscia Skydeli. Apribojimai yra salutinis efektas, ne tikslas.\n *\n * KA GALI:\n *   Katalogas · Akcijos · Gavimas · Tiekimas · Uzsakymai (visi Petshop langai)\n *   prekiu kurimas, redagavimas, publikavimas, atributai, kategorijos\n *   nuotrauku ikelimas, uzsakymu tvarkymas, WooCommerce ataskaitos\n *\n * KO NEMATO (nes darbui nereikia, ne del nepasitikejimo):\n *   WooCommerce nustatymai, pluginai, temos, kodo redaktorius, atnaujinimai,\n *   vartotojai, irankiai, YITH, mokejimu skydeliai, svetimi pranesimai.\n *\n * VIENINTELIS TIKRAS DRAUDIMAS: prekes istrynimas VISAM LAIKUI. I siuksline\n * mesti galima (atstatoma vienu paspaudimu), o galutinis trynimas panaikina\n * SEO nuoroda, uzsakymu istorija ir tiekejo susiejima — to neatsuka nei\n * zurnalas, nei atsargine kopija.\n *\n * ATSKIRA TEISE `ps_akcijas_taikyti`: akcijos KURIMAS ir perziura leidziami\n * visiems darbuotojams, o IJUNGIMAS (realus kainu keitimas visam katalogui)\n * — atskira teise. Pagal nutylejima darbuotojas ja TURI (savininko prasymas\n * „kad galetu ramiai testuotis\"); atimama viena eilute — zr. `TAIKO_AKCIJAS`.\n *\n * @package Petshop\n */\n\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Teises {\n\n\tconst VERSIJA = '1.1';\n\tconst ROLE     = 'ps_darbuotojas';\n\tconst OPT      = 'ps_teises_versija';\n\n\t/** Ar darbuotojas gali IJUNGTI akcijas (keisti kainas). false = tik savininkas. */\n\tconst TAIKO_AKCIJAS = true;\n\n\tpublic static function init() {\n\t\tadd_action( 'init', array( __CLASS__, 'uztikrinti_role' ) );\n\t\tadd_action( 'admin_menu', array( __CLASS__, 'valyti_meniu' ), 999 );\n\t\tadd_action( 'admin_init', array( __CLASS__, 'blokuoti_puslapius' ) );\n\t\tadd_action( 'admin_bar_menu', array( __CLASS__, 'valyti_juosta' ), 999 );\n\t\tadd_filter( 'login_redirect', array( __CLASS__, 'po_prisijungimo' ), 10, 3 );\n\t\tadd_action( 'admin_init', array( __CLASS__, 'nuo_skydelio' ) );\n\t\tadd_action( 'admin_print_scripts', array( __CLASS__, 'slepti_prane"
+ },
+ "snip_deact": 200
+}
