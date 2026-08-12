@@ -1,0 +1,58 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-12T08:56:24.171Z",
+ "snip_id": 2758,
+ "snip_status": 200,
+ "recon": {
+  "marker": "SARGO DIAG2",
+  "fixed": {
+   "21599": 1,
+   "21609": 2,
+   "24009": 1,
+   "26064": 1,
+   "26077": 2
+  },
+  "galima_pries": 2,
+  "rezultatas": "PRIEME",
+  "krepselyje": [
+   {
+    "pid": 34172,
+    "qty": 3,
+    "vaikas": 0
+   },
+   {
+    "pid": 26077,
+    "qty": 6,
+    "vaikas": 1
+   },
+   {
+    "pid": 21609,
+    "qty": 6,
+    "vaikas": 1
+   },
+   {
+    "pid": 26064,
+    "qty": 3,
+    "vaikas": 1
+   },
+   {
+    "pid": 24009,
+    "qty": 3,
+    "vaikas": 1
+   },
+   {
+    "pid": 21599,
+    "qty": 3,
+    "vaikas": 1
+   }
+  ],
+  "seklys": [],
+  "pranesimai": [],
+  "perziura_pranesimai": [
+   "error: Deja, šiuo metu neturime pakankamo produkto \"Churu Luxury kreminis skanėstas katėms su tunu ir karališkosiomis krevetėmis N4\" kiekio, kad galėtume įvykdyti Jūsų užsakymą (turimas kiekis: 4). Atsiprašome.",
+   "error: „Churu įvairių skonių rinkinys katėms · 7 vnt.\": krepšelyje 3 vnt., o šiuo metu galime surinkti 2. Sumažinkite kiekį."
+  ],
+  "atstatyta": 385
+ },
+ "snip_deact": 200
+}
