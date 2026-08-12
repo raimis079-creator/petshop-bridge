@@ -1,0 +1,58 @@
+{
+ "marker": "KALENDORIUS",
+ "ts": "2026-08-12T17:06:03.432Z",
+ "dep_petshop-kalendorius.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-kalendorius.php",
+  "md5": "504cffaa5eb9af360ff03fc33a72b1cd",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "dest_md5": "504cffaa5eb9af360ff03fc33a72b1cd",
+  "sutampa": true
+ },
+ "dep_petshop-katalogas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "md5": "4d1f7d8a94f7c495a0060dcfd15d452f",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-170615",
+  "dest_md5": "4d1f7d8a94f7c495a0060dcfd15d452f",
+  "sutampa": true
+ },
+ "dep_petshop-gavimas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-gavimas.php",
+  "md5": "0cca094644bb4f7df280e60fcdf240c7",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-gavimas.php-20260812-170617",
+  "dest_md5": "0cca094644bb4f7df280e60fcdf240c7",
+  "sutampa": true
+ },
+ "kortele": true,
+ "laukas": {
+  "tipas": "text",
+  "klases": "kpart-gal ps-data"
+ },
+ "kalendorius": {
+  "menuo": "Rugpjūtis 2026",
+  "savaite": [
+   "Pr",
+   "An",
+   "Tr",
+   "Kt",
+   "Pn",
+   "Št",
+   "Sk"
+  ],
+  "mygtukai": [
+   "Šiandien",
+   "+6 mėn.",
+   "+1 metai",
+   "Išvalyti"
+  ]
+ },
+ "pasirinkta": "2027-02-12",
+ "js_klaidos": []
+}
