@@ -7,7 +7,7 @@ const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'V77', ts:new Date().toISOString()};
+const out={marker:'V78', ts:new Date().toISOString()};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
 const phpDep = `
@@ -31,7 +31,7 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V77 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V78 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text);
 const phpAuto = `
 add_action('init', function(){
@@ -44,17 +44,35 @@ add_action('init', function(){
   wp_safe_redirect( admin_url( isset(\$_GET['to']) ? \$_GET['to'] : 'index.php' ) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V77 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V78 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text);
 await new Promise(r=>setTimeout(r,4000));
 try{
-  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=b020b4c9ef3715300c766a5f2965790bd6883434',{headers:{'Authorization':'Bearer '+TOK}});
+  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=f5661c4414aab701c273b122bf1e55fe06b83187',{headers:{'Authorization':'Bearer '+TOK}});
   const gj=await gg.json();
   const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
   fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
   const res=execSync('curl -sk -X POST "'+B+'/?ps_dep=Kp5tW7&f=petshop-katalogas.php" --data @/tmp/pl.txt --max-time 180',{encoding:'utf8',maxBuffer:20*1024*1024});
   out.deploy=js(res)||res.slice(0,200);
 }catch(e){ out.deploy_err=String(e).slice(0,200); }
+const phpV = `
+add_action('init', function(){
+  if ( ( $_GET['ps_val'] ?? '' ) !== 'Vv2tX9' ) return;
+  global $wpdb; $t=$wpdb->prefix.'ps_partijos';
+  $n=$wpdb->query("DELETE FROM {$t} WHERE product_id=19902");
+  $pid=19902;
+  update_post_meta($pid,'_stock','2'); update_post_meta($pid,'_stock_status','instock');
+  $wpdb->update($wpdb->prefix.'wc_product_meta_lookup', array('stock_quantity'=>2), array('product_id'=>$pid));
+  clean_post_cache($pid); delete_transient('ps_kat_duomenys');
+  header('Content-Type: application/json'); echo wp_json_encode(array('istrinta'=>$n)); exit;
+}, 1);
+`;
+const s3=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V78 Valymas',code:phpV,scope:'global',active:true,priority:5})});
+const j3=js(s3.text);
+await new Promise(r=>setTimeout(r,3500));
+try{ out.valymas=js(execSync('curl -sk "'+B+'/?ps_val=Vv2tX9" --max-time 90',{encoding:'utf8'})); }catch(e){ out.valymas='ERR'; }
+if(j3&&j3.id) await wp('/wp-json/code-snippets/v1/snippets/'+j3.id,{method:'DELETE'});
+
 const files=[];
 try{
   const br=await chromium.launch();
@@ -104,7 +122,7 @@ try{
                parduodama:(tr.querySelector('td.pard')||{}).textContent.trim() };
     });
     out.stat = await pg.evaluate(()=>(document.querySelector('.kort-lik-stat')||{}).textContent||'');
-    await pg.screenshot({path:'screenshots/v77.png',fullPage:false}); files.push('screenshots/v77.png');
+    await pg.screenshot({path:'screenshots/v78.png',fullPage:false}); files.push('screenshots/v78.png');
     /* partijos lentele ir istorija */
     await pg.waitForTimeout(2500);
     out.partijos = await pg.evaluate(()=>[...document.querySelectorAll('.kort-part tr')].slice(1,4).map(tr=>tr.innerText.replace(/	/g,' | ')));
@@ -117,6 +135,8 @@ try{
     /* grazinam atgal */
     await pg.evaluate(()=>{ document.querySelector('.kort-lik-in').value='-4'; document.querySelector('.kort-lik-irasyti').click(); });
     await pg.waitForTimeout(4000);
+    await pg.waitForTimeout(2500);
+    out.partijos_po = await pg.evaluate(()=>[...document.querySelectorAll('.kort-part tr')].slice(1,4).map(tr=>tr.innerText.split(String.fromCharCode(9)).join(' | ')));
     out.po_grazinimo = await pg.evaluate(()=>{
       const tr=document.querySelector('.pskat-t tbody tr[data-id]');
       return { kortele:(document.querySelector('.kort-lik-dabar')||{}).textContent||'',
@@ -135,7 +155,7 @@ for (const f of files){
   }catch(e){}
 }
 const body={message:'res v75',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v77.json',{headers:{'Authorization':'Bearer '+TOK}});
+const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v78.json',{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v77.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v78.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log('ok');
