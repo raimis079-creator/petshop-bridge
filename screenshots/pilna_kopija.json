@@ -1,0 +1,70 @@
+{
+ "marker": "PILNA KOPIJA v1",
+ "ts": "2026-08-12T09:55:25.364Z",
+ "snip_dep": 2771,
+ "snip_auto": 2772,
+ "dep_petshop-gavimas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-gavimas.php",
+  "bytes": 85259,
+  "md5": "bb2ecb6c832a2a7017f1420c634faf92",
+  "lint": "token_get_all OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-gavimas.php-20260812-095535",
+  "irasyta": 85259,
+  "dest_md5": "bb2ecb6c832a2a7017f1420c634faf92",
+  "sutampa": true
+ },
+ "dep_petshop-katalogas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "bytes": 324341,
+  "md5": "be1997a7151a8a4114fe0f398b8c3a4a",
+  "lint": "token_get_all OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-095538",
+  "irasyta": 324341,
+  "dest_md5": "be1997a7151a8a4114fe0f398b8c3a4a",
+  "sutampa": true
+ },
+ "testId": 34498,
+ "forma": {
+  "fatal": "",
+  "pav": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt.",
+  "sku": "",
+  "ean": "",
+  "kaina": "",
+  "kat": "KATĖMS › Maistas katėms › Konservai katėms (148) [79]",
+  "brendas": "— []",
+  "rusis": "Katėms [253]",
+  "pak": "10 × 85 g [734]",
+  "svoris": "",
+  "foto": true,
+  "foto_src": "https://dev.avesa.lt/wp-content/uploads/2026/07/dp-clean-34498-280x280.jpg",
+  "sekcijos": [
+   {
+    "a": "Aprašymas",
+    "n": 476
+   },
+   {
+    "a": "Sudėtis",
+    "n": 275
+   },
+   {
+    "a": "Analitinės sudedamosios dalys",
+    "n": 815
+   },
+   {
+    "a": "Priedai — tekste nerasta",
+    "n": 0
+   },
+   {
+    "a": "Šėrimo instrukcija — tekste nerasta",
+    "n": 0
+   }
+  ],
+  "kop_inf": "Kopija iš Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g × 10 vnt. (#34498): perimta viskas — pavadinimas, 2 kategorijos, brendas, rūšis, pakuotės dydis, svoris, aprašymas su visomis skiltimis, nuotrauka.\nAtributai: Amžius: Suaugusiems · Baltymų šaltinis: Lašiša · Grūdai: Su ryžiais · Monoprotein: Taip · Speciali mityba: Šlapimo takams\nNeužpildyta tyčia: SKU, EAN, kaina (originalo kaina 13,2 €). Tiekėjo laukai neperkeliami — nauja prekė yra AV sandėlio.\nAtšaukti kopiją",
+  "pilnumas": "Trūksta: kainos. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras."
+ },
+ "js_klaidos": []
+}
