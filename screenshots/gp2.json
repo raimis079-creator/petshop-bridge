@@ -1,5 +1,11 @@
 {
  "marker": "GPAIS TESTAS",
- "ts": "2026-08-12T13:00:51.573Z",
- "err": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/?ps_auto=Qz7Rk88&u=bdz487&to=admin.php%3Fpage%3Dps-katalogas\", waiting until \"domcontentloaded\"\n"
+ "ts": "2026-08-12T13:05:17.909Z",
+ "diagnostika": {
+  "kort": true,
+  "hidden": false,
+  "turinys": "Nepavyko susisiekti su serveriu.\nBandyti dar kartą",
+  "atv": 50
+ },
+ "err": "TimeoutError: page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('.kort-tabs button') to be visible\n"
 }
