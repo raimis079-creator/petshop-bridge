@@ -1,0 +1,97 @@
+{
+ "marker": "V70 DEPLOY + SARGAS",
+ "ts": "2026-08-12T14:25:28.202Z",
+ "deploy": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "md5": "629ec40064f5629b5fff9295d0ec7364",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-142538",
+  "dest_md5": "629ec40064f5629b5fff9295d0ec7364",
+  "sutampa": true
+ },
+ "sargas": {
+  "marker": "SARGAS",
+  "v": "7.0",
+  "preke_34907": {
+   "likutis": 1,
+   "likucio_priez": 1,
+   "partijos": 6,
+   "kategorijos": 1,
+   "sudelioti": 1,
+   "karkasas": 1,
+   "aprasymas": 1,
+   "trumpas": 1,
+   "nuotrauka": 2,
+   "galerija": 2,
+   "atributai": 0,
+   "kaina": 1,
+   "sku": 1,
+   "gpais": 1,
+   "kopijuoti": 1,
+   "veiksmai": 0,
+   "ilgis": 21171
+  },
+  "preke_25319": {
+   "likutis": 1,
+   "likucio_priez": 1,
+   "partijos": 5,
+   "kategorijos": 1,
+   "sudelioti": 1,
+   "karkasas": 1,
+   "aprasymas": 1,
+   "trumpas": 1,
+   "nuotrauka": 2,
+   "galerija": 2,
+   "atributai": 0,
+   "kaina": 1,
+   "sku": 1,
+   "gpais": 1,
+   "kopijuoti": 1,
+   "veiksmai": 0,
+   "ilgis": 19182
+  },
+  "preke_19902": {
+   "likutis": 1,
+   "likucio_priez": 1,
+   "partijos": 4,
+   "kategorijos": 1,
+   "sudelioti": 1,
+   "karkasas": 1,
+   "aprasymas": 1,
+   "trumpas": 1,
+   "nuotrauka": 2,
+   "galerija": 2,
+   "atributai": 0,
+   "kaina": 1,
+   "sku": 1,
+   "gpais": 1,
+   "kopijuoti": 1,
+   "veiksmai": 0,
+   "ilgis": 17964
+  }
+ },
+ "kortele_atsidare": true,
+ "pries": {
+  "likutis": "2 vnt.",
+  "kategorijos": [
+   "ŠUNIMS › Žaislai šunims"
+  ],
+  "sudelioti": true
+ },
+ "po_plius": {
+  "dabar": "3 vnt.",
+  "stat": "buvo 2 → 3"
+ },
+ "po_minus": {
+  "dabar": "2 vnt.",
+  "stat": "buvo 3 → 2"
+ },
+ "kategoriju_langas": {
+  "matomas": true,
+  "eiluciu": 80,
+  "pazymeta": 1
+ },
+ "js_klaidos": []
+}
