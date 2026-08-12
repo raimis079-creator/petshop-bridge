@@ -43,7 +43,7 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode($o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Deploy v2',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Deploy v3',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text); out.snip_dep=j1&&j1.id?j1.id:s1.text.slice(0,200);
 const phpAuto = `
 add_action('init', function(){
@@ -60,12 +60,14 @@ add_action('init', function(){
   wp_safe_redirect( admin_url($to) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Autologin v2',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Autologin v3',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text); out.snip_auto=j2&&j2.id?j2.id:s2.text.slice(0,200);
 await new Promise(r=>setTimeout(r,4000));
 for (const f of ['petshop-gavimas.php']) {
   try{
-    const raw = execSync(`curl -s "https://raw.githubusercontent.com/${REPO}/main/deploy/${f}.b64" --max-time 90`,{encoding:'utf8',maxBuffer:60*1024*1024}).trim();
+    const gg=await fetch(`https://api.github.com/repos/${REPO}/contents/deploy/${f}.b64?ref=862428bbda0347356844fab2ba4915b937ce3086`,{headers:{'Authorization':'Bearer '+TOK}});
+    const gj=await gg.json();
+    const raw = Buffer.from(gj.content||'','base64').toString('utf8').trim();
     fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
     const res=execSync(`curl -sk -X POST "${B}/?ps_dep=Kp5tW7&f=${f}" --data @/tmp/pl.txt --max-time 180`,{encoding:'utf8',maxBuffer:20*1024*1024});
     out['dep_'+f]=js(res)||res.slice(0,400);
@@ -116,5 +118,5 @@ for (const f of files) {
     await fetch(`https://api.github.com/repos/${REPO}/contents/${f}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
   }catch(e){}
 }
-out.put=await putResult('pilna_kopija2.json', out);
+out.put=await putResult('pilna_kopija3.json', out);
 console.log(JSON.stringify(out).slice(0,2500));
