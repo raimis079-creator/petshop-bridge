@@ -7,7 +7,7 @@ const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'V80', ts:new Date().toISOString()};
+const out={marker:'V81', ts:new Date().toISOString()};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
 const phpDep = `
@@ -30,7 +30,7 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V80 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V81 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text);
 const phpAuto = `
 add_action('init', function(){
@@ -43,11 +43,11 @@ add_action('init', function(){
   wp_safe_redirect( admin_url( isset(\$_GET['to']) ? \$_GET['to'] : 'index.php' ) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V80 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V81 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text);
 await new Promise(r=>setTimeout(r,4000));
 try{
-  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=9d5b7ce1394cab9081876625c719bf4d2658dba9',{headers:{'Authorization':'Bearer '+TOK}});
+  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=826a0cdac994aa66c58a2de30c35e0bacfa696d5',{headers:{'Authorization':'Bearer '+TOK}});
   const gj=await gg.json();
   const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
   fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
@@ -56,40 +56,51 @@ try{
 const files=[];
 try{
   const br=await chromium.launch();
-  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1100,height:950}});
+  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1500,height:1000}});
   const pg=await ctx.newPage();
-  const errs=[]; pg.on('pageerror',e=>errs.push(String(e).slice(0,150)));
-  await pg.goto(B+'/?ps_auto=Qz7Rk88&to='+encodeURIComponent('admin.php?page=ps-katalogas&q=Ambrosia'),{waitUntil:'domcontentloaded',timeout:60000});
+  const errs=[]; pg.on('pageerror',e=>errs.push(String(e).slice(0,160)));
+  await pg.goto(B+'/?ps_auto=Qz7Rk88&to='+encodeURIComponent('admin.php?page=ps-katalogas'),{waitUntil:'domcontentloaded',timeout:60000});
   await pg.waitForSelector('.pskat-t .atv',{timeout:45000});
+  const pries = await pg.evaluate(()=>{
+    const tr=document.querySelector('.pskat-t tbody tr[data-id]');
+    return { id:tr.dataset.id, pav:(tr.querySelector('.atv')||{}).textContent.trim(),
+             av:(tr.querySelector('td.av-lang .av-rodo')||{}).textContent.trim() };
+  });
+  out.pries=pries;
   let ok=false;
   for(let b=0;b<3 && !ok;b++){
-    await pg.evaluate(()=>{ const k=document.querySelector('.kort-kartoti'); if(k){k.click();return;}
-      const tr=[...document.querySelectorAll('.pskat-t tbody tr[data-id]')].find(x=>/Ambrosia/i.test(x.innerText));
-      const a=(tr||document).querySelector('.atv'); if(a) a.click(); });
-    try{ await pg.waitForSelector('.kort-lik-irasyti',{timeout:25000}); ok=true; }catch(e){ await pg.waitForTimeout(3000); }
+    await pg.evaluate(()=>{ const k=document.querySelector('.kort-kartoti'); if(k){k.click();return;} const a=document.querySelector('.pskat-t .atv'); if(a) a.click(); });
+    try{ await pg.waitForSelector('.kort-pav-keisti',{timeout:25000}); ok=true; }catch(e){ await pg.waitForTimeout(3000); }
   }
   out.kortele=ok;
   if(ok){
-    await pg.evaluate(()=>{
-      const p=document.querySelector('.kort-lik-priez'); p.value='gavimas'; p.dispatchEvent(new Event('change',{bubbles:true}));
-      document.querySelector('.kort-lik-in').value='+6';
-      document.querySelector('.kort-lik-gal').value='2027-05-31';
-      const t=document.querySelector('.kort-tiek-in'); if(t) t.value='25';
-      document.querySelector('.kort-lik').scrollIntoView({block:'center'});
-    });
-    await pg.waitForTimeout(1200);
-    out.vaizdas = await pg.evaluate(()=>{
-      const L=document.querySelector('.kort-lik');
-      return { antraste:(L.querySelector('.kort-antr')||{}).innerText||'',
-               eilutes:[...L.querySelectorAll('.kort-lik-eil')].map(e=>e.innerText.split(String.fromCharCode(10)).slice(0,3).join(' | ')),
-               tiekejo_laukas:!!L.querySelector('.kort-tiek-in'),
-               av_galiojimas:!!L.querySelector('.kort-lik-gal') };
-    });
-    await pg.screenshot({path:'screenshots/v80.png',fullPage:false}); files.push('screenshots/v80.png');
+    /* TESTAS 1: PAVADINIMAS — anksciau sarase neatsinaujindavo */
+    await pg.evaluate((p)=>{
+      document.querySelector('.kort-pav-keisti').click();
+      const ta=document.querySelector('.kort-pav-in'); ta.value=p+' [T]';
+      document.querySelector('.kort-pav-irasyti').click();
+    }, pries.pav);
+    await pg.waitForTimeout(4500);
+    out.po_pavadinimo = await pg.evaluate((id)=>{
+      const tr=document.querySelector('.pskat-t tbody tr[data-id="'+id+'"]');
+      return tr ? (tr.querySelector('.atv')||{}).textContent.trim() : 'eilutes nera';
+    }, pries.id);
+    await pg.screenshot({path:'screenshots/v81.png',fullPage:false}); files.push('screenshots/v81.png');
+    /* grazinam pavadinima */
+    await pg.evaluate((p)=>{
+      document.querySelector('.kort-pav-keisti').click();
+      const ta=document.querySelector('.kort-pav-in'); ta.value=p;
+      document.querySelector('.kort-pav-irasyti').click();
+    }, pries.pav);
+    await pg.waitForTimeout(4000);
+    out.po_grazinimo = await pg.evaluate((id)=>{
+      const tr=document.querySelector('.pskat-t tbody tr[data-id="'+id+'"]');
+      return tr ? (tr.querySelector('.atv')||{}).textContent.trim() : 'nera';
+    }, pries.id);
   }
   out.js=errs;
   await br.close();
-}catch(e){ out.err=String(e).slice(0,300); }
+}catch(e){ out.err=String(e).slice(0,400); }
 for (const j of [j1,j2]) { if(j&&j.id) await wp('/wp-json/code-snippets/v1/snippets/'+j.id,{method:'DELETE'}); }
 for (const f of files){
   try{ const body={message:'shot',content:fs.readFileSync(f).toString('base64')};
@@ -98,8 +109,8 @@ for (const f of files){
     await fetch('https://api.github.com/repos/'+REPO+'/contents/'+f,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
   }catch(e){}
 }
-const body={message:'res v80',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v80.json',{headers:{'Authorization':'Bearer '+TOK}});
+const body={message:'res v81',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
+const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v81.json',{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v80.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v81.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log('ok');
