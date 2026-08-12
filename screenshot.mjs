@@ -1,162 +1,63 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 import fs from 'fs';
 import { execSync } from 'child_process';
-import { chromium } from 'playwright';
 const B='https://dev.avesa.lt';
 const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'V79', ts:new Date().toISOString()};
+const out={marker:'VALYMAS+FEFO TESTAS', ts:new Date().toISOString()};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
-const phpDep = `
-add_action('wp_loaded', function(){
-  if ( ( \$_GET['ps_dep'] ?? '' ) !== 'Kp5tW7' ) return;
-  @set_time_limit(240);
-  \$o=array('marker'=>'DEPLOY');
-  \$f=basename( \$_GET['f'] ?? '' ); \$b64=\$_POST['turinys'] ?? '';
-  if(!\$f||!\$b64){ \$o['err']='nera'; header('Content-Type: application/json'); echo wp_json_encode(\$o); exit; }
-  \$k=base64_decode(\$b64); \$o['md5']=md5(\$k);
-  \$ok=null;
-  try{ @token_get_all(\$k, TOKEN_PARSE); \$ok=true; \$o['lint']='OK'; }
-  catch(\\ParseError \$e){ \$ok=false; \$o['lint']='ParseError: '.\$e->getMessage().' eil. '.\$e->getLine(); }
-  \$o['sintakse_ok']=\$ok;
-  if(\$ok){
-    \$d=WPMU_PLUGIN_DIR.'/'.\$f;
-    if(file_exists(\$d)){ \$b=WPMU_PLUGIN_DIR.'/.bak-'.\$f.'-'.date('Ymd-His'); @copy(\$d,\$b); \$o['backup']=basename(\$b); }
-    file_put_contents(\$d,\$k); \$o['dest_md5']=md5_file(\$d); \$o['sutampa']=(\$o['dest_md5']===\$o['md5']);
-    delete_transient('ps_kat_duomenys');
+const php = `
+add_action('init', function(){
+  if ( ( $_GET['ps_f'] ?? '' ) !== 'Fe6tT1' ) return;
+  @set_time_limit(180);
+  global $wpdb; $t=$wpdb->prefix.'ps_partijos'; $pid=19902;
+  $adm=get_users(array('role'=>'administrator','number'=>1)); wp_set_current_user($adm?$adm[0]->ID:0);
+  $o=array('marker'=>'FEFO');
+  $step=(string)($_GET['step'] ?? '1');
+
+  if ($step==='1') {
+    /* FEFO nurasymo testas: likutis 6, partija #17 su 4 vnt. Nurasom -3. */
+    $o['pries']=array('stock'=>get_post_meta($pid,'_stock',true),
+      'partijos'=>$wpdb->get_results("SELECT id,kiekis_liko,geriausia_iki FROM {$t} WHERE product_id={$pid}", ARRAY_A));
+    $_POST=array('priezastis'=>'nurasymas','pakeitimai'=>wp_json_encode(array(array('id'=>$pid,'ivestis'=>'-3'))),'nonce'=>wp_create_nonce('ps_kat'));
+    $_REQUEST=$_POST;
+    Petshop_Katalogas::ajax_av_irasyti();
   }
-  header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o); exit;
-}, 99);
-`;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V79 Deploy',code:phpDep,scope:'global',active:true,priority:5})});
-const j1=js(s1.text);
-const phpAuto = `
-add_action('init', function(){
-  if ( ( \$_GET['ps_auto'] ?? '' ) !== 'Qz7Rk88' ) return;
-  \$a = get_users(array('role'=>'administrator','number'=>1)); \$u = \$a ? \$a[0] : null;
-  if ( ! \$u ) { wp_die('no admin'); }
-  wp_set_current_user(\$u->ID);
-  \$tok = \\WP_Session_Tokens::get_instance(\$u->ID)->create(time()+1800);
-  wp_set_auth_cookie(\$u->ID, false, true, \$tok);
-  wp_safe_redirect( admin_url( isset(\$_GET['to']) ? \$_GET['to'] : 'index.php' ) ); exit;
-});
-`;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V79 Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
-const j2=js(s2.text);
-await new Promise(r=>setTimeout(r,4000));
-try{
-  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=6400fbe85d2a678434356178c0be73e93967d6c2',{headers:{'Authorization':'Bearer '+TOK}});
-  const gj=await gg.json();
-  const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
-  fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
-  const res=execSync('curl -sk -X POST "'+B+'/?ps_dep=Kp5tW7&f=petshop-katalogas.php" --data @/tmp/pl.txt --max-time 180',{encoding:'utf8',maxBuffer:20*1024*1024});
-  out.deploy=js(res)||res.slice(0,200);
-}catch(e){ out.deploy_err=String(e).slice(0,200); }
-const phpV = `
-add_action('init', function(){
-  if ( ( $_GET['ps_val'] ?? '' ) !== 'Vv2tX9' ) return;
-  global $wpdb; $t=$wpdb->prefix.'ps_partijos';
-  $n=$wpdb->query("DELETE FROM {$t} WHERE product_id=19902");
-  $pid=19902;
-  update_post_meta($pid,'_stock','2'); update_post_meta($pid,'_stock_status','instock');
-  $wpdb->update($wpdb->prefix.'wc_product_meta_lookup', array('stock_quantity'=>2), array('product_id'=>$pid));
-  clean_post_cache($pid); delete_transient('ps_kat_duomenys');
-  header('Content-Type: application/json'); echo wp_json_encode(array('istrinta'=>$n)); exit;
+  if ($step==='2') {
+    $o['po']=array('stock'=>get_post_meta($pid,'_stock',true),
+      'partijos'=>$wpdb->get_results("SELECT id,kiekis_liko,geriausia_iki FROM {$t} WHERE product_id={$pid}", ARRAY_A));
+    header('Content-Type: application/json'); echo wp_json_encode($o,JSON_UNESCAPED_UNICODE); exit;
+  }
+  if ($step==='3') {
+    /* VALYMAS: testines partijos salinamos, likutis grazinamas i 2 */
+    $n=$wpdb->query("DELETE FROM {$t} WHERE product_id={$pid}");
+    update_post_meta($pid,'_stock','2'); update_post_meta($pid,'_stock_status','instock');
+    $wpdb->update($wpdb->prefix.'wc_product_meta_lookup', array('stock_quantity'=>2), array('product_id'=>$pid));
+    update_post_meta($pid,'_cost_price','4.18');
+    clean_post_cache($pid); delete_transient('ps_kat_duomenys');
+    $o['isvalyta']=$n;
+    $o['galutinis']=array('stock'=>get_post_meta($pid,'_stock',true),
+      'partiju'=>(int)$wpdb->get_var("SELECT COUNT(*) FROM {$t} WHERE product_id={$pid}"));
+    header('Content-Type: application/json'); echo wp_json_encode($o,JSON_UNESCAPED_UNICODE); exit;
+  }
 }, 1);
 `;
-const s3=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP V79 Valymas',code:phpV,scope:'global',active:true,priority:5})});
-const j3=js(s3.text);
-await new Promise(r=>setTimeout(r,3500));
-try{ out.valymas=js(execSync('curl -sk "'+B+'/?ps_val=Vv2tX9" --max-time 90',{encoding:'utf8'})); }catch(e){ out.valymas='ERR'; }
-if(j3&&j3.id) await wp('/wp-json/code-snippets/v1/snippets/'+j3.id,{method:'DELETE'});
-
-const files=[];
-try{
-  const br=await chromium.launch();
-  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1500,height:1050}});
-  const pg=await ctx.newPage();
-  const errs=[]; pg.on('pageerror',e=>errs.push(String(e).slice(0,180)));
-  await pg.goto(B+'/?ps_auto=Qz7Rk88&to='+encodeURIComponent('admin.php?page=ps-katalogas'),{waitUntil:'domcontentloaded',timeout:60000});
-  await pg.waitForSelector('.pskat-t .atv',{timeout:45000});
-  /* imam pirma eilute ir isimenam jos AV reiksme sarase */
-  const pries = await pg.evaluate(()=>{
-    const tr=document.querySelector('.pskat-t tbody tr[data-id]');
-    return { id:tr.dataset.id, av:(tr.querySelector('td.av-lang .av-rodo')||{}).textContent.trim() };
-  });
-  out.sarase_pries=pries;
-  out.stulpeliai = await pg.evaluate(()=>[...document.querySelectorAll('.pskat-t thead th')].map(t=>t.textContent.trim()).filter(Boolean).slice(0,10));
-  out.zyme = await pg.evaluate(()=>{
-    const tr=[...document.querySelectorAll('.pskat-t tbody tr[data-id]')].find(x=>{const s=x.querySelector('.sand');return s&&!/^(AV|VF|ZB)$/.test(s.textContent.trim());});
-    if(!tr) return 'ne-XML prekes siame puslapyje nera';
-    const s=tr.querySelector('.sand');
-    return { tiekejas:s.textContent.trim(), paaiskinimas:s.dataset.p||'' };
-  });
-  let ok=false;
-  for(let b=0;b<3 && !ok;b++){
-    await pg.evaluate(()=>{ const k=document.querySelector('.kort-kartoti'); if(k){k.click();return;} const a=document.querySelector('.pskat-t .atv'); if(a) a.click(); });
-    try{ await pg.waitForSelector('.kort-lik-irasyti',{timeout:25000}); ok=true; }catch(e){ await pg.waitForTimeout(3000); }
-  }
-  if(ok){
-    out.gav_laukai = await pg.evaluate(()=>{
-      const g=document.querySelector('.kort-lik-gav');
-      const pr=document.querySelector('.kort-lik-priez');
-      const pries=g.classList.contains('on');
-      pr.value='gavimas'; pr.dispatchEvent(new Event('change',{bubbles:true}));
-      return { pries_pasirinkimo:pries, po_pasirinkimo:g.classList.contains('on'),
-               laukai:[...g.querySelectorAll('input')].map(i=>i.className) };
-    });
-    await pg.evaluate(()=>{
-      document.querySelector('.kort-lik-in').value='+4';
-      document.querySelector('.kort-lik-gal').value='2027-05-31';
-      document.querySelector('.kort-lik-sav').value='3,50';
-      document.querySelector('.kort-lik-irasyti').click();
-    });
-    await pg.waitForTimeout(5000);
-    out.po_irasymo = await pg.evaluate(()=>{
-      const tr=document.querySelector('.pskat-t tbody tr[data-id]');
-      return { kortele:(document.querySelector('.kort-lik-dabar')||{}).textContent||'',
-               sarase:(tr.querySelector('td.av-lang .av-rodo')||{}).textContent.trim(),
-               parduodama:(tr.querySelector('td.pard')||{}).textContent.trim() };
-    });
-    out.stat = await pg.evaluate(()=>(document.querySelector('.kort-lik-stat')||{}).textContent||'');
-    await pg.screenshot({path:'screenshots/v79.png',fullPage:false}); files.push('screenshots/v79.png');
-    /* partijos lentele ir istorija */
-    await pg.waitForTimeout(2500);
-    out.partijos = await pg.evaluate(()=>[...document.querySelectorAll('.kort-part tr')].slice(1,4).map(tr=>tr.innerText.replace(/	/g,' | ')));
-    await pg.evaluate(()=>{ const b=[...document.querySelectorAll('.kort-tabs button')].find(x=>/Istor/i.test(x.textContent)); if(b) b.click(); });
-    await pg.waitForTimeout(2500);
-    out.istorija = await pg.evaluate(()=>{
-      const p=document.querySelector('.kort-pane[data-p=ist]');
-      return (p? p.innerText : '').split(String.fromCharCode(10)).filter(Boolean).slice(0,10);
-    });
-    /* grazinam atgal */
-    await pg.evaluate(()=>{ const p=document.querySelector('.kort-lik-priez'); if(p){p.value='nurasymas'; p.dispatchEvent(new Event('change',{bubbles:true}));}
-      document.querySelector('.kort-lik-in').value='-4'; document.querySelector('.kort-lik-irasyti').click(); });
-    await pg.waitForTimeout(6000);
-    await pg.waitForTimeout(2500);
-    out.partijos_po = await pg.evaluate(()=>[...document.querySelectorAll('.kort-part tr')].slice(1,4).map(tr=>tr.innerText.split(String.fromCharCode(9)).join(' | ')));
-    out.po_grazinimo = await pg.evaluate(()=>{
-      const tr=document.querySelector('.pskat-t tbody tr[data-id]');
-      return { kortele:(document.querySelector('.kort-lik-dabar')||{}).textContent||'',
-               sarase:(tr.querySelector('td.av-lang .av-rodo')||{}).textContent.trim() };
-    });
-  }
-  out.js_klaidos=errs;
-  await br.close();
-}catch(e){ out.err=String(e).slice(0,400); }
-for (const j of [j1,j2]) { if(j&&j.id) await wp('/wp-json/code-snippets/v1/snippets/'+j.id,{method:'DELETE'}); }
-for (const f of files){
-  try{ const body={message:'shot',content:fs.readFileSync(f).toString('base64')};
-    const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+f,{headers:{'Authorization':'Bearer '+TOK}});
-    if(g.status===200){ body.sha=(await g.json()).sha; }
-    await fetch('https://api.github.com/repos/'+REPO+'/contents/'+f,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
-  }catch(e){}
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP FEFO Testas',code:php,scope:'global',active:true,priority:5})});
+const j1=js(s1.text);
+await new Promise(r=>setTimeout(r,4000));
+for (const st of ['1','2','3']) {
+  try{
+    const res=execSync(`curl -sk "${B}/?ps_f=Fe6tT1&step=${st}" --max-time 120`,{encoding:'utf8',maxBuffer:20*1024*1024});
+    out['step'+st]=js(res)||res.slice(0,300);
+  }catch(e){ out['step'+st]='ERR'; }
+  await new Promise(r=>setTimeout(r,1500));
 }
-const body={message:'res v75',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v79.json',{headers:{'Authorization':'Bearer '+TOK}});
+if(j1&&j1.id) await wp('/wp-json/code-snippets/v1/snippets/'+j1.id,{method:'DELETE'});
+const body={message:'res fefo',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
+const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/fefo.json`,{headers:{'Authorization':'Bearer '+TOK}});
 if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/v79.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/fefo.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
 console.log('ok');
