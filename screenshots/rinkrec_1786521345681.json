@@ -1,0 +1,70 @@
+{
+ "marker": "RINK-RECON4-0811",
+ "ts": "2026-08-12T07:55:33.475Z",
+ "snip_id": 2748,
+ "snip_status": 200,
+ "recon": {
+  "marker": "NAV RECON v1",
+  "hits_petshop-katalogas.php": {
+   "navigacija": 7694,
+   "juosta": 9332
+  },
+  "menu_petshop-katalogas.php": [
+   " 'Petshop prekės', 'Petshop prekės', 'manage_woocommerce', 'ps-katalogas', array( __CLASS__, 'puslapis' ), 'dashicons-products', 3 "
+  ],
+  "class_petshop-katalogas.php": "Petshop_Katalogas",
+  "ver_petshop-katalogas.php": "6.1",
+  "hits_petshop-akcijos.php": {
+   "navigacija": 39305,
+   "juosta": 59806
+  },
+  "menu_petshop-akcijos.php": [
+   " 'ps-katalogas', 'Akcijos', 'Akcijos', 'manage_woocommerce', 'ps-akcijos', array( __CLASS__, 'puslapis' ) "
+  ],
+  "class_petshop-akcijos.php": "Petshop_Akcijos",
+  "ver_petshop-akcijos.php": "1.8",
+  "hits_petshop-gavimas.php": {
+   "navigacija": 1574
+  },
+  "menu_petshop-gavimas.php": [
+   " 'ps-katalogas', 'Prekių gavimas', 'Gavimas', 'manage_woocommerce', 'ps-gavimas', array( __CLASS__, 'puslapis' ) "
+  ],
+  "class_petshop-gavimas.php": "Petshop_Gavimas",
+  "ver_petshop-gavimas.php": "1.6",
+  "hits_petshop-partijos.php": {
+   "juosta": 8839
+  },
+  "menu_petshop-partijos.php": [],
+  "class_petshop-partijos.php": "Petshop_Partijos",
+  "ver_petshop-partijos.php": "1.1",
+  "hits_petshop-teises.php": {
+   "juosta": 2268
+  },
+  "menu_petshop-teises.php": [],
+  "class_petshop-teises.php": "Petshop_Teises",
+  "ver_petshop-teises.php": "1.1",
+  "akc_nav": "holder=\"pasirinkite datą\"><button type=\"button\" class=\"kal-x\" title=\"Išvalyti\">×</button></span></label>';\n\t\techo '<label class=\"l\">Iki<span class=\"ps-data\" data-laukas=\"f-iki\">'\n\t\t\t. '<input type=\"text\" class=\"f-iki\" readonly value=\"'\n\t\t\t. esc_attr( $d['iki'] ? date( 'Y-m-d H:i', strtotime( $d['iki'] ) ) : '' )\n\t\t\t. '\" placeholder=\"pasirinkite datą\"><button type=\"button\" class=\"kal-x\" title=\"Išvalyti\">×</button></span></label>';\n\t\techo '</div>';\n\t\techo '<div class=\"pastaba-m\">Pabaiga privaloma. Akcija be pabaigos niekada neišsijungia — dev bazėje keturios tokios prekės kabojo mėnesius.</div>';\n\t\techo '<div class=\"eile\"><label class=\"l\">Prioritetas<input type=\"number\" class=\"f-prioritetas\" min=\"1\" max=\"99\" value=\"'\n\t\t\t. (int) $d['prioritetas'] . '\"></label>';\n\t\techo '<label class=\"varnele\"><input type=\"checkbox\" class=\"f-gyva\"' . checked( ! empty( $d['gyva'] ), true, false )\n\t\t\t. '> Gyva akcija <i>naujos prekės, atitinkančios taikinį, įtraukiamos automatiškai</i></label></div>';\n\t\techo '<div class=\"pastaba-m\">Mažesnis prioriteto skaičius laimi, jei prekė patenka į dvi akcijas.</div>';\n\t\techo '</div>';\n\n\t\techo '<div class=\"blokas\"><div class=\"antr\">Pastaba</div>';\n\t\techo '<textarea class=\"f-pastaba\" rows=\"2\" placeholder=\"kodėl daroma, su kuo suderinta\">' . esc_textarea( (string) $d['pastaba'] ) . '</textarea>';\n\t\techo '</div>';\n\n\t\techo '</div>'; /* /kaire */\n\n\t\t/* ---- DESINE: perziura ---- */\n\t\techo '<div class=\"psakc-desine\">';\n\t\techo '<div class=\"perz-juosta\">';\n\t\techo '<button type=\"button\" class=\"ak-perziureti\">Peržiūrėti</button>';\n\t\techo '<button type=\"button\" class=\"ak-issaugoti\">Išsaugoti</button>';\n\t\tif ( $id && $d['busena'] !== 'aktyvi' ) { echo '<button type=\"button\" class=\"ak-ijungti\">Įjungti akciją</button>'; }\n\t\tif ( $id && $d['busena'] === 'aktyvi' ) { echo '<button type=\"button\" class=\"ak-isjungti\">Išjungti</button>'; }\n\t\techo '<a class=\"ak-atgal\" href=\"' . esc_url( admin_url( 'admin.php?page=ps-akcijos' ) ) . '\">← Į sąrašą</a>';\n\t\techo '<span class=\"ak-stat\"></span></div>';\n\t\techo '<div class=\"perz-suv\"></div>';\n\t\techo '<div class=\"perz-turinys\"><div class=\"tuscia\">Paspauskite „Peržiūrėti\" — pamatysite, kurias prekes akcija palies, kokia bus marža ir ką praleis.</div></div>';\n\t\techo '</div>';\n\n\t\techo '</div></div>';\n\t}\n\n\t/* ---------- STILIUS ---------- */\n\n\tprivate static function stilius() {\n\t\techo '<style>\n\t\t#adminmenumain,#adminmenuwrap,#adminmenuback{display:none!important}\n\t\t#wpcontent,#wpfooter{margin-left:0!important;padding-left:0}\n\t\tbody.petshop-akcijos{background:#e9ebe7!important}\n\t\t.psakc-bar{display:flex;align-items:center;gap:18px;background:#1d2422;color:#e8ebe6;padding:10px 18px;\n\t\t\tposition:sticky;top:32px;z-index:60}\n\t\t.psakc-bar .pskat-logo{font-weight:700;letter-spacing:.06em;font-size:13px}\n\t\t.psakc-bar .pskat-nav a{color:#a9b3ad;text-decoration:none;margin-right:16px;font-size:13px}\n\t\t.psakc-bar .pskat-nav a.on,.psakc-bar .pskat-nav a:hover{color:#fff}\n\t\t.psakc-ve",
+  "ivykiai_api": [
+   "lentele()",
+   "uztikrinti_lentele()",
+   "stebimi()",
+   "saltinis()",
+   "kas()",
+   "pradeti_operacija( $op_nr )",
+   "baigti_operacija()",
+   "irasyti( $pid, $tipas, $args = array()",
+   "kabinti()",
+   "pries_irasyma( $check, $object_id, $meta_key, $meta_value )",
+   "meta_pakeista( $meta_id, $post_id, $meta_key, $meta_value )",
+   "meta_prideta( $meta_id, $post_id, $meta_key, $meta_value )",
+   "statusas_pakeistas( $naujas, $senas, $post )",
+   "juosta( $pid, $args = array()",
+   "santrauka( $pid )",
+   "perkelti_av_zurnala( $dry = true )",
+   "valyti( $dienos = 400 )",
+   "statistika()"
+  ],
+  "ivykiai_head": "<?php\n/**\n * Petshop Ivykiai v1.0 (D1, S721) — VIENINGA PREKES LAIKO JUOSTA\n *\n * KAM: iki siol prekes istorija gyveno trijose vietose — AV zurnale\n * (ps_av_zurnalas), kainu zurnale ir \"visi pakeitimai\". Klausimas \"kas ir kada\n * pakeite si lauka\" reikalavo trijų uzklausu ir vis tiek turejo aklas zonas:\n * importo padaryti pokyciai nebuvo fiksuojami niekur. `_ps_sandelis` istorija\n * (S718) uztruko keturis diagnostikos run'us butent del to.\n *\n * SPRENDIMAS: viena lentele `ps_ivykiai`, i kuria rasoma is VISU keliu:\n *   - hook'ai ant meta pokyciu (gaudo ir katalogo mygtuka, ir WC redagavimo\n *     puslapi, ir importa, ir cron'a — nesvarbu, kas raso)\n *   - statuso perejimai (publish -> draft ir atgal)\n *   - tiesioginis API kvietimas is musu moduliu (op_nr masiniams veiksmams)\n *\n * KRITINE ARCHITEKTURINE TAISYKLE: kabinama ant `updated_post_meta`, NE ant\n * musu mygtuku. Jei kabintume tik prie katalogo veiksmu, WC lange padarytas\n * keitimas dingtu is istorijos ir gautume ta pacia akla zona, del kurios sis\n * modulis ir kuriamas.\n *\n * APSAUGOS:\n *   - stebimi TIK baltajame saraše esantys raktai (importas paliecia tukstancius\n *     meta eiluciu; be saraso lentele uzsipildytu siuksliu per viena nakti)\n *   - rasoma tik kai reiksme REALIAI pasikeite (sena !== nauja po normalizavimo)\n *   - statinis rekursijos sargas + limitas vienai prekei per uzklausa\n *   - jei lenteles nera arba rasymas nepavyko — TYLIAI praleidziama, niekada\n *     nemetama klaida i vartotojo k"
+ },
+ "snip_deact": 200
+}
