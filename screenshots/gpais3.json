@@ -1,0 +1,46 @@
+{
+ "marker": "GPAIS DEPLOY",
+ "ts": "2026-08-12T13:17:32.948Z",
+ "dep_petshop-katalogas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "md5": "417b295da9368b78451ce72675a4afe2",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-131743",
+  "dest_md5": "417b295da9368b78451ce72675a4afe2",
+  "sutampa": true
+ },
+ "kortele_atsidare": true,
+ "skirtukai": [
+  "Apžvalga",
+  "Aprašymai",
+  "Nuotraukos",
+  "Pardavimai",
+  "Istorija",
+  "GPAIS pakuotė"
+ ],
+ "pries": {
+  "zyme": "",
+  "mygtukas": true
+ },
+ "forma": {
+  "laukai": 6,
+  "medziagos": [
+   "Plastikas (PET, PE, PP)",
+   "Popierius ir kartonas",
+   "Stiklas"
+  ]
+ },
+ "po_irasymo": {
+  "stat": "įrašyta",
+  "zyme": "",
+  "eiluciu": 1,
+  "pirma": "dėžutė (testas)\tPirminė\tPlastikas\t15,5 g\t1\tklientui\tKeistiIštrinti"
+ },
+ "trynimas": {
+  "stat": "eilutė ištrinta",
+  "zyme": ""
+ },
+ "js_klaidos": []
+}
