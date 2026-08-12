@@ -1,0 +1,46 @@
+{
+ "marker": "MINIATIURA FIX",
+ "ts": "2026-08-12T11:42:50.547Z",
+ "snip": 2789,
+ "dep_petshop-gavimas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-gavimas.php",
+  "md5": "2849c545c63766eb304f2be9a05ea06e",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-gavimas.php-20260812-114302",
+  "dest_md5": "2849c545c63766eb304f2be9a05ea06e",
+  "sutampa": true,
+  "kesas_isvalytas": true
+ },
+ "dep_petshop-katalogas.php": {
+  "marker": "DEPLOY",
+  "f": "petshop-katalogas.php",
+  "md5": "b2113c34ee5a3b6342c8e46ee0b64052",
+  "lint": "OK",
+  "sintakse_ok": true,
+  "backup": ".bak-petshop-katalogas.php-20260812-114308",
+  "dest_md5": "b2113c34ee5a3b6342c8e46ee0b64052",
+  "sutampa": true,
+  "kesas_isvalytas": true
+ },
+ "miniatiuros": {
+  "19089": "nera eilutes siame puslapyje",
+  "34907": "nera eilutes siame puslapyje"
+ },
+ "miniatiuros2": {
+  "19089": "https://dev.avesa.lt/wp-content/uploads/2026/08/triusio-ausys-baltos-skanestas-sunims-280x280.png",
+  "34907": "https://dev.avesa.lt/wp-content/uploads/2026/08/triusio-ausys-baltos-skanestas-sunims-280x280.png"
+ },
+ "gavimas": {
+  "mygtukai": [
+   "Atsisakyti",
+   "Sukurti ir kurti kitą",
+   "Sukurti ir įtraukti į gavimą"
+  ],
+  "forma": true,
+  "foto": true,
+  "sukurtos_blokas": true
+ },
+ "js_klaidos": []
+}
