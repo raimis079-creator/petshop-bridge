@@ -1,0 +1,94 @@
+{
+ "marker": "SARGAS DEPLOY+TEST v1",
+ "snip_deploy": 2755,
+ "deploy": {
+  "marker": "RINK DEPLOY v1",
+  "bytes": 8750,
+  "md5": "3a97e2a5f3cb091bde354fc40bb02408",
+  "lint": "include OK (klase uzkrauta)",
+  "sintakse_ok": true,
+  "irasyta": 8750,
+  "dest_md5": "3a97e2a5f3cb091bde354fc40bb02408",
+  "sutampa": true
+ },
+ "snip_test": 2756,
+ "testas": {
+  "marker": "SARGO TESTAS v1",
+  "pradzia": {
+   "komponentas": 26077,
+   "likutis": 385,
+   "ss": "instock"
+  },
+  "A_nulis": {
+   "komponento_likutis": 0,
+   "galima_surinkti": 0,
+   "is_in_stock": 0,
+   "stock_status": "outofstock",
+   "krepselis": "ATMETE",
+   "eiluciu": 0,
+   "pranesimai": [
+    "error: Jūs negalite įdėti produkto &quot;Churu įvairių skonių rinkinys katėms · 7 vnt.&quot; į krepšelį, nes šio produkto šiuo metu neturime."
+   ],
+   "html": "Šiuo metu nėra sandėlyje"
+  },
+  "B_vienas_reikia2": {
+   "komponento_likutis": 1,
+   "galima_surinkti": 0,
+   "is_in_stock": 0,
+   "stock_status": "outofstock",
+   "krepselis": "ATMETE",
+   "eiluciu": 0,
+   "pranesimai": [
+    "error: Jūs negalite įdėti produkto &quot;Churu įvairių skonių rinkinys katėms · 7 vnt.&quot; į krepšelį, nes šio produkto šiuo metu neturime."
+   ],
+   "html": "Šiuo metu nėra sandėlyje"
+  },
+  "C_keturi": {
+   "komponento_likutis": 4,
+   "galima_surinkti": 2,
+   "is_in_stock": 1,
+   "stock_status": "instock",
+   "krepselis": "PRIEME",
+   "eiluciu": 6,
+   "pranesimai": [],
+   "html": "Liko 2 vnt."
+  },
+  "D_keturi_imam3": {
+   "komponento_likutis": 4,
+   "galima_surinkti": 2,
+   "is_in_stock": 1,
+   "stock_status": "instock",
+   "krepselis": "PRIEME",
+   "eiluciu": 6,
+   "pranesimai": [],
+   "html": "Liko 2 vnt."
+  },
+  "E_normalus": {
+   "komponento_likutis": 385,
+   "galima_surinkti": 100,
+   "is_in_stock": 1,
+   "stock_status": "instock",
+   "krepselis": "PRIEME",
+   "eiluciu": 6,
+   "pranesimai": [],
+   "html": "Yra sandėlyje"
+  },
+  "atstatyta": {
+   "likutis": 385,
+   "ss": "instock",
+   "ok": true
+  },
+  "susidejimo": {
+   "34208": {
+    "galima": 62,
+    "dydis": 6,
+    "in_stock": 1
+   },
+   "34243": {
+    "galima": 648,
+    "dydis": 5,
+    "in_stock": 1
+   }
+  }
+ }
+}
