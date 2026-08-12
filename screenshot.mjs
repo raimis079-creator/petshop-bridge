@@ -7,7 +7,7 @@ const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
 const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'PILNA KOPIJA v1', ts:new Date().toISOString()};
+const out={marker:'PILNA KOPIJA v2', ts:new Date().toISOString()};
 async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
 function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
 async function putResult(name,obj){
@@ -43,7 +43,7 @@ add_action('wp_loaded', function(){
   header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode($o); exit;
 }, 99);
 `;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Deploy v1',code:phpDep,scope:'global',active:true,priority:5})});
+const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Deploy v2',code:phpDep,scope:'global',active:true,priority:5})});
 const j1=js(s1.text); out.snip_dep=j1&&j1.id?j1.id:s1.text.slice(0,200);
 const phpAuto = `
 add_action('init', function(){
@@ -60,10 +60,10 @@ add_action('init', function(){
   wp_safe_redirect( admin_url($to) ); exit;
 });
 `;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Autologin v1',code:phpAuto,scope:'global',active:true,priority:5})});
+const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Pilna Kopija Autologin v2',code:phpAuto,scope:'global',active:true,priority:5})});
 const j2=js(s2.text); out.snip_auto=j2&&j2.id?j2.id:s2.text.slice(0,200);
 await new Promise(r=>setTimeout(r,4000));
-for (const f of ['petshop-gavimas.php','petshop-katalogas.php']) {
+for (const f of ['petshop-gavimas.php']) {
   try{
     const raw = execSync(`curl -s "https://raw.githubusercontent.com/${REPO}/main/deploy/${f}.b64" --max-time 90`,{encoding:'utf8',maxBuffer:60*1024*1024}).trim();
     fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
@@ -78,6 +78,8 @@ let testId=0;
 if (Array.isArray(jq)) { const c=jq.find(x=>x.images&&x.images.length); testId=c?c.id:(jq[0]&&jq[0].id); }
 if(!testId){ const q2=await wp('/wp-json/wc/v3/products?status=publish&per_page=5&_fields=id,name'); const j2b=js(q2.text); testId=(Array.isArray(j2b)&&j2b[0])?j2b[0].id:0; }
 out.testId=testId;
+const bq=await wp('/wp-json/wc/v3/products/'+testId+'?_fields=id,name,brands,weight,images');
+out.saltinis=js(bq.text)||String(bq.text).slice(0,200);
 const files=[];
 try{
   const br=await chromium.launch();
@@ -114,5 +116,5 @@ for (const f of files) {
     await fetch(`https://api.github.com/repos/${REPO}/contents/${f}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
   }catch(e){}
 }
-out.put=await putResult('pilna_kopija.json', out);
+out.put=await putResult('pilna_kopija2.json', out);
 console.log(JSON.stringify(out).slice(0,2500));
