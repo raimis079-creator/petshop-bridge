@@ -1,0 +1,62 @@
+{
+ "marker": "NAV DEPLOY v1",
+ "ts": "2026-08-13T08:22:56.333Z",
+ "snip1": 2874,
+ "snip2": 2875,
+ "deploy": {
+  "petshop-rinkiniai.php": "<br />\n<b>Fatal error</b>:  Cannot declare class Petshop_Rinkiniai, because the name is already in use in <b>/tmp/ps-rink-test-1786609384.php</b> on line <b>58</b><br />\n<!DOCTYPE html>\n<html lang=\"lt-LT\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='noindex, nofollow' />\n\t<title>WordPress &rsaquo; Klaida</title>\n\t<style type=\"text/css\">\n\t\thtml {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\t\tbody {\n\t\t\tbackground: #fff;\n\t\t\tborder: 1px solid #ccd0d4;\n\t\t\tcolor: #444;\n\t\t\tfont-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif;\n\t\t\tmargin: 2em auto;\n\t\t\tpadding: 1em 2em;\n\t\t\tmax-width: 700px;\n\t\t\t-webkit-box-",
+  "petshop-katalogas.php": "<br />\n<b>Fatal error</b>:  Cannot declare class Petshop_Katalogas, because the name is already in use in <b>/tmp/ps-rink-test-1786609387.php</b> on line <b>760</b><br />\n<!DOCTYPE html>\n<html lang=\"lt-LT\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='noindex, nofollow' />\n\t<title>WordPress &rsaquo; Klaida</title>\n\t<style type=\"text/css\">\n\t\thtml {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\t\tbody {\n\t\t\tbackground: #fff;\n\t\t\tborder: 1px solid #ccd0d4;\n\t\t\tcolor: #444;\n\t\t\tfont-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif;\n\t\t\tmargin: 2em auto;\n\t\t\tpadding: 1em 2em;\n\t\t\tmax-width: 700px;\n\t\t\t-webkit-box"
+ },
+ "rinkiniai": {
+  "title": "Rinkiniai ‹ Petshop.lt — WordPress",
+  "juosta": [],
+  "logo": "",
+  "paieska": false,
+  "eiles": [
+   "7Visi",
+   "2Kiekiai nefiksuoti",
+   "2Be savikainos",
+   "1Komponentas neparduodamas",
+   "1Juodraščiai",
+   "3Sutvarkyta"
+  ],
+  "eil": 7,
+  "tipai": [
+   "Konservų rinkiniai, RINKIN",
+   "RINKINIAI, Skanėstų rinkin",
+   "RINKINIAI, Skanėstų rinkin",
+   "—"
+  ],
+  "kaina_tipas": "",
+  "fatal": ""
+ },
+ "forma": {
+  "title": "Rinkiniai ‹ Petshop.lt — WordPress",
+  "juosta": [],
+  "logo": "",
+  "paieska": false,
+  "eiles": [],
+  "eil": 0,
+  "tipai": [],
+  "kaina_tipas": "number",
+  "fatal": ""
+ },
+ "katalogas": {
+  "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+  "juosta": [
+   "Katalogas [AKTYVUS]",
+   "Akcijos",
+   "Gavimas",
+   "Tiekimas",
+   "Užsakymai"
+  ],
+  "logo": "PETSHOP",
+  "paieska": true,
+  "eiles": [],
+  "eil": 0,
+  "tipai": [],
+  "kaina_tipas": "",
+  "fatal": ""
+ },
+ "js": []
+}
