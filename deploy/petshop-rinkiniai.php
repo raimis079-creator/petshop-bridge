@@ -57,9 +57,12 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.11';
+	const VERSIJA = '1.13';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
+
+	/** Virs sio svorio siunta i pastomata nebetelpa (savininko sprendimas 2026-08-13). */
+	const PASTOMATO_RIBA = 25.0;
 
 	/* ==================== PALEIDIMAS ==================== */
 
@@ -69,6 +72,7 @@ class Petshop_Rinkiniai {
 		/* 200, nes aprasymu akordeonas (512) kabinasi prio 98 — su mazesniu
 		   prioritetu jis perrasytu musu skirtuka atgal i savo psdp_render. */
 		add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 200 );
+		add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
@@ -259,6 +263,38 @@ class Petshop_Rinkiniai {
 		echo '</div>';
 	}
 
+	/**
+	 * Sunki siunta i pastomata netelpa.
+	 *
+	 * Virs PASTOMATO_RIBA kg klientui pastomatu pasirinkimas issijungia — lieka
+	 * tik kurjeris. Tikrinam VISO krepselio svori, ne vienos prekes: du 15 kg
+	 * maisai atskirai telpa, kartu — ne.
+	 *
+	 * Metodus atpazistam pagal pavadinima ir ID, nes vezejai vadinami ivairiai
+	 * (venipak pickup point, omniva terminal, DPD locker...).
+	 */
+	public static function pastomato_sargas( $rates, $package ) {
+		if ( is_admin() && ! wp_doing_ajax() ) { return $rates; }
+		$kg = 0.0;
+		foreach ( (array) ( $package['contents'] ?? array() ) as $eil ) {
+			if ( ! empty( $eil['mnm_child_id'] ) ) { continue; }   /* vaikai — kad nesidubliuotu */
+			$p = $eil['data'] ?? null;
+			if ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; }
+			$w = (float) $p->get_weight();
+			if ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; }
+		}
+		if ( $kg <= self::PASTOMATO_RIBA ) { return $rates; }
+
+		$zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' );
+		foreach ( $rates as $raktas => $tarifas ) {
+			$tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() );
+			foreach ( $zodziai as $z ) {
+				if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; }
+			}
+		}
+		return $rates;
+	}
+
 	/** Rinkinio sudeties isvaizda prekes puslapyje. */
 	public static function front_stilius() {
 		if ( ! is_product() ) { return; }
@@ -304,6 +340,12 @@ class Petshop_Rinkiniai {
 			if ( $v !== '' && $v !== false && $v !== null ) { return (float) $v; }
 		}
 		return null;
+	}
+
+	/** Siuntimo klases terminas pagal slug. */
+	private static function klases_id( $slug ) {
+		$t = get_term_by( 'slug', $slug, 'product_shipping_class' );
+		return ( $t && ! is_wp_error( $t ) ) ? (int) $t->term_id : 0;
 	}
 
 	/** Sandelis rankiniam atrinkimui (kaip 539: pozymiu nebuvimas = AV). */
@@ -469,6 +511,43 @@ class Petshop_Rinkiniai {
 		$out = array( 679 );
 		if ( $rankiniu ) { $out = array_merge( $out, array_map( 'intval', $rankiniu ) ); }
 		return array_values( array_unique( array_filter( array_map( 'intval', $out ) ) ) );
+	}
+
+	/**
+	 * Rinkinio svoris ir siuntimo klase.
+	 *
+	 * KODEL SVARBU: rinkinys uzsakyme yra VIENA preke, todel WooCommerce siuntimo
+	 * kaina skaiciuoja pagal PREKES svori. Iki siol jis buvo tuscias — 24 kg
+	 * maisai siuntimui svere nuli, ir siunta „tilpdavo" i pastomata, nors
+	 * fiziskai netelpa.
+	 *
+	 * MnM turi `_mnm_weight_cumulative`, bet juo nesiremiam: jis suveikia tik
+	 * krepselyje ir tik kai pluginas taip nusprendzia. Ivedam svori tiesiai i
+	 * preke — taip ji matoma ir uzsakyme, ir manifeste, ir ataskaitose.
+	 */
+	public static function svoris( $kiekiai ) {
+		$suma = 0.0; $truksta = array();
+		foreach ( (array) $kiekiai as $cid => $kiek ) {
+			$p = wc_get_product( (int) $cid );
+			if ( ! $p ) { continue; }
+			$w = (float) $p->get_weight();
+			if ( $w > 0 ) { $suma += $w * max( 1, (int) $kiek ); }
+			else { $truksta[] = array( 'id' => (int) $cid, 'pav' => $p->get_name() ); }
+		}
+		return array( 'kg' => round( $suma, 3 ), 'truksta' => $truksta );
+	}
+
+	/**
+	 * Siuntimo klase pagal gradacija. Kurjerio kaina imama pagal svori, todel
+	 * klase parenkam automatiskai — kad nereiktu galvoti kiekvienam rinkiniui.
+	 */
+	public static function siuntimo_klase( $kg ) {
+		$kg = (float) $kg;
+		if ( $kg <= 0 ) { return ''; }
+		if ( $kg <= 50 )  { return 'iki-50kg'; }
+		if ( $kg <= 70 )  { return '50-70kg'; }
+		if ( $kg <= 100 ) { return '70-100kg'; }
+		return '100-200kg';
 	}
 
 	/** Svorio reiksmes, surikiuotos pagal tikra dydi (ne abecele). */
@@ -1196,6 +1275,7 @@ class Petshop_Rinkiniai {
 
 			var $ = function(s){ return document.querySelector(s); };
 			function eur(n){ return (n===null||n===undefined||isNaN(n))?'—':Number(n).toFixed(2).replace('.',',')+' €'; }
+			function siuntKlase(kg){ return kg<=50?'Iki 50kg':(kg<=70?'50-70kg':(kg<=100?'70-100kg':'100-200kg')); }
 			/* Kaina ivedama lietuviskai: 13,90. type=number tokio formato nepriima,
 			   todel laukas paprastas, o cia normalizuojam abu variantus. */
 			function skaicius(v){
@@ -1218,6 +1298,12 @@ class Petshop_Rinkiniai {
 					if (!c.yra) negalimi.push(c);
 					sand[c.sandelis]=1;
 				});
+				var svoris=0, beSvorio=[];
+				K.forEach(function(c){
+					if(c.svoris_kg>0) svoris += c.svoris_kg * c.kiekis;
+					else beSvorio.push(c.pav);
+				});
+				svoris=Math.round(svoris*1000)/1000;
 				var kaina = skaicius($('#psr-kaina') ? $('#psr-kaina').value : PRADINE_KAINA);
 				var tikslas = parseInt($('#psr-tikslas')?$('#psr-tikslas').value:35)||35;
 				var marza = (!truksta && kaina>0) ? kaina-sav : null;
@@ -1227,7 +1313,8 @@ class Petshop_Rinkiniai {
 				var drops = Object.keys(sand).filter(function(s){return s!=='av';});
 				return { vnt:vnt, sav:sav, suma:suma, truksta:truksta, kaina:kaina, tikslas:tikslas,
 					marza:marza, proc:proc, rek:rek, maxM:maxM, lubos:lubos, negalimi:negalimi,
-					mix: drops.length>1, sand:Object.keys(sand) };
+					mix: drops.length>1, sand:Object.keys(sand),
+					svoris:svoris, beSvorio:beSvorio };
 			}
 
 			/* ---------- vieta kataloge (atkartoja snippet 569) ---------- */
@@ -1357,11 +1444,17 @@ class Petshop_Rinkiniai {
 						?(s.suma>s.kaina?'<span class="psr-ok">'+eur(s.suma-s.kaina)+' ('+Math.round((s.suma-s.kaina)/s.suma*100)+'%)</span>':'<b class="psr-bad">brangiau ❌</b>')
 						:'—')+'</td></tr>'
 					+'<tr><td>Galima parduoti</td><td class="r">'+(s.lubos!==null?'<b class="'+(s.lubos<5?'psr-bad':'psr-ok')+'">'+s.lubos+' vnt.</b>':'—')+'</td></tr>'
+					+'<tr><td>Svoris</td><td class="r">'+(s.svoris>0
+						?'<b>'+String(s.svoris).replace('.',',')+' kg</b>'+(s.svoris>25?' <span class="psr-bad">⚠</span>':'')
+						:'<span class="psr-warn">nežinomas</span>')+'</td></tr>'
+					+(s.svoris>0?'<tr><td>Siuntimo klasė</td><td class="r psr-mut">'+siuntKlase(s.svoris)+'</td></tr>':'')
 					+'</table>';
 				if(s.kaina>0&&s.suma>0&&s.suma<=s.kaina) h+='<div class="psr-perspejimas r">Rinkinys brangesnis nei prekės atskirai ('+eur(s.suma)+'). Klientui tai atrodys kaip apgaulė.</div>';
 				if(s.marza!==null&&s.marza<0) h+='<div class="psr-perspejimas r">Marža minusinė — parduodi žemiau savikainos.</div>';
 				if(s.negalimi.length) h+='<div class="psr-perspejimas r">'+s.negalimi.length+' prekės be likučio: '+esc(s.negalimi[0].pav.slice(0,34))+(s.negalimi.length>1?'…':'')+'. Rinkinio surinkti negalima.</div>';
 				if(s.mix) h+='<div class="psr-perspejimas y">Rinkinyje kelių dropship tiekėjų prekės ('+s.sand.join(', ').toUpperCase()+') — klientui išeis kelios siuntos.</div>';
+				if(s.beSvorio.length) h+='<div class="psr-perspejimas y"><b>'+s.beSvorio.length+' prekės be svorio</b> ('+esc(s.beSvorio[0].slice(0,34))+(s.beSvorio.length>1?'…':'')+'). Siuntimo kaina bus paskaičiuota neteisingai — įrašyk svorį prekės kortelėje.</div>';
+				if(s.svoris>25) h+='<div class="psr-perspejimas r"><b>Svoris '+String(s.svoris).replace('.',',')+' kg — per didelis paštomatui.</b> Klientui paštomatų pasirinkimas bus išjungtas, liks tik kurjeris.</div>';
 				var senas=$('#psr-kaina');
 				var fokusas = senas && document.activeElement===senas;
 				var poz = fokusas ? senas.selectionStart : null;
@@ -1614,14 +1707,16 @@ class Petshop_Rinkiniai {
 			'likutis'   => ( $lik === null || $lik === '' ) ? null : (int) $lik,
 			'yra'       => ( $p->get_stock_status() === 'instock' && $p->get_status() === 'publish' ),
 			'sandelis'  => self::sandelis( $pid ),
-			'svoris'    => self::svoris( $pid ),
+			'svoris'    => self::svoris_tekstas( $pid ),
+			'svoris_kg' => (float) $p->get_weight(),
 			'foto'      => wp_get_attachment_image_url( $p->get_image_id(), 'thumbnail' ) ?: '',
 			'kat'       => array_map( 'intval', wc_get_product_term_ids( $pid, 'product_cat' ) ),
 			'kiekis'    => (int) $kiekis,
 		);
 	}
 
-	private static function svoris( $pid ) {
+	/** Pakuotes dydis rodymui (atributas), ne fizinis svoris. */
+	private static function svoris_tekstas( $pid ) {
 		$t = wc_get_product_terms( $pid, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );
 		return ( is_wp_error( $t ) || empty( $t ) ) ? '' : $t[0];
 	}
@@ -1814,6 +1909,15 @@ class Petshop_Rinkiniai {
 			$prod->update_meta_data( '_mnm_content_source', 'products' );
 			$prod->update_meta_data( '_mnm_per_product_pricing', 'no' );
 			$prod->update_meta_data( self::META_KIEKIAI, wp_json_encode( $kiekiai ) );
+
+			/* Svoris: suma is komponentu. Be jo siuntimo kaina butu neteisinga. */
+			$sv = self::svoris( $kiekiai );
+			if ( $sv['kg'] > 0 ) {
+				$prod->set_weight( $sv['kg'] );
+				$klase = self::siuntimo_klase( $sv['kg'] );
+				if ( $klase ) { $prod->set_shipping_class_id( self::klases_id( $klase ) ); }
+			}
+			$prod->update_meta_data( '_mnm_weight_cumulative', 'no' );   /* svoris jau irasytas i preke */
 			$prod->set_category_ids( self::kategorijos( array_keys( $kiekiai ), $kat ) );
 			$prod->save();
 			$pid = $prod->get_id();
@@ -1909,6 +2013,13 @@ class Petshop_Rinkiniai {
 			$prod->set_stock_status( 'instock' );      /* tikra busena skaiciuoja snippet 567 */
 			$prod->update_meta_data( '_dp_base_product_id', $bid );
 			$prod->update_meta_data( '_dp_pack_qty', $qty );
+
+			$bw = (float) $baze->get_weight();
+			if ( $bw > 0 ) {
+				$prod->set_weight( round( $bw * $qty, 3 ) );
+				$klase = self::siuntimo_klase( $bw * $qty );
+				if ( $klase ) { $prod->set_shipping_class_id( self::klases_id( $klase ) ); }
+			}
 
 			/* kategorijos: bazines prekes + DAUGIAU=PIGIAU (91) */
 			$kategorijos = wc_get_product_term_ids( $bid, 'product_cat' );
