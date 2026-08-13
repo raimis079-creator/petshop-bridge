@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.14';
+	const VERSIJA = '1.15';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -299,6 +299,19 @@ class Petshop_Rinkiniai {
 		return $rates;
 	}
 
+	/** Ar dabar rodomas rinkinio (arba DP pako) puslapis. Kesuojam — gettext
+	 *  kvieciamas simtus kartu viename uzklausime. */
+	private static function rinkinio_puslapis() {
+		static $atsakymas = null;
+		if ( $atsakymas !== null ) { return $atsakymas; }
+		if ( ! function_exists( 'is_product' ) || ! is_product() ) { return $atsakymas = false; }
+		global $post;
+		if ( ! $post ) { return $atsakymas = false; }
+		$atsakymas = ( get_post_meta( $post->ID, self::META_KIEKIAI, true ) !== '' )
+			|| ( get_post_meta( $post->ID, '_dp_base_product_id', true ) !== '' );
+		return $atsakymas;
+	}
+
 	/**
 	 * Mix and Match vertimai.
 	 *
@@ -308,11 +321,27 @@ class Petshop_Rinkiniai {
 	 * atnaujinima.
 	 */
 	public static function vertimai( $vertimas, $tekstas, $domenas ) {
-		if ( $domenas !== 'woocommerce-mix-and-match-products' ) { return $vertimas; }
+		/*
+		 * Domeno netikrinam: Mix and Match viduje naudoja kelis („wc-mnm",
+		 * „woocommerce-mix-and-match-products"), o lenteles antrastes „PRODUCT"
+		 * ir „QUANTITY" ejo pro sali, kai filtravau tik pagal viena. Vietoj to
+		 * ribojam pagal VIETA — verciam tik rinkinio puslapyje, kad nepaliestume
+		 * likusios parduotuves.
+		 */
+		if ( is_admin() || ! self::rinkinio_puslapis() ) { return $vertimas; }
 		$zodynas = array(
 			'Product'                => 'Prekė',
+			'PRODUCT'                => 'Prekė',
+			'Products'               => 'Prekės',
 			'Quantity'               => 'Kiekis',
+			'QUANTITY'               => 'Kiekis',
+			'Qty'                    => 'Kiekis',
 			'Price'                  => 'Kaina',
+			'Subtotal'               => 'Suma',
+			'Total'                  => 'Iš viso',
+			'Description'            => 'Aprašymas',
+			'Select options'         => 'Pasirinkti',
+			'Choose an option'       => 'Pasirinkite',
 			'Clear'                  => 'Išvalyti',
 			'Clear selections'       => 'Išvalyti pasirinkimus',
 			'Reset selections'       => 'Išvalyti pasirinkimus',
@@ -343,7 +372,7 @@ class Petshop_Rinkiniai {
 	}
 
 	public static function vertimai_daugiskaita( $vertimas, $vienas, $daug, $skaicius, $domenas ) {
-		if ( $domenas !== 'woocommerce-mix-and-match-products' ) { return $vertimas; }
+		if ( is_admin() || ! self::rinkinio_puslapis() ) { return $vertimas; }
 		$sablonas = ( $skaicius === 1 ) ? $vienas : $daug;
 		return str_replace( array( 'items', 'item' ), array( 'vnt.', 'vnt.' ), $sablonas );
 	}
