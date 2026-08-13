@@ -1,0 +1,47 @@
+{
+ "marker": "APPLY VISOS",
+ "ts": "2026-08-13T07:36:01.562Z",
+ "porcijos": [
+  {
+   "i": 1,
+   "pakeista": 70,
+   "liko_saugu": 71,
+   "rizikinga": 33,
+   "nepavyko": 185
+  },
+  {
+   "i": 2,
+   "pakeista": 70,
+   "liko_saugu": 71,
+   "rizikinga": 88,
+   "nepavyko": 255
+  },
+  {
+   "i": 3,
+   "pakeista": 70,
+   "liko_saugu": 71,
+   "rizikinga": 107,
+   "nepavyko": 329
+  },
+  {
+   "i": 4,
+   "pakeista": 51,
+   "liko_saugu": 51,
+   "rizikinga": 113,
+   "nepavyko": 510
+  }
+ ],
+ "viso_pakeista": 261,
+ "galutinis": {
+  "rezimas": "dry",
+  "grupe": "saugu",
+  "gavimas": "1.13",
+  "maistas": 1677,
+  "jau_tvarkinga": 1054,
+  "saugu": 0,
+  "rizikinga": 113,
+  "nepavyko": 510,
+  "pakeista": 0,
+  "pakeistos": []
+ }
+}
