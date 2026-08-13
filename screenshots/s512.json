@@ -1,0 +1,61 @@
+{
+ "marker": "PATIKRA 0813",
+ "ts": "2026-08-13T16:17:27.418Z",
+ "snip": 2905,
+ "snip_status": 200,
+ "rez": {
+  "marker": "S512",
+  "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+  "active": "1",
+  "len": 9895,
+  "hooks": [
+   {
+    "tipas": "filter",
+    "hook": "woocommerce_short_description",
+    "cb": "function($html",
+    "prio": "10"
+   },
+   {
+    "tipas": "filter",
+    "hook": "woocommerce_product_tabs",
+    "cb": "function($tabs",
+    "prio": "10"
+   },
+   {
+    "tipas": "action",
+    "hook": "wp_head",
+    "cb": "function(",
+    "prio": "10"
+   }
+  ],
+  "funkcijos": [
+   "psdp_ascii",
+   "psdp_title",
+   "psdp_clean",
+   "psdp_cut_dims",
+   "psdp_fallback_clean",
+   "psdp_split",
+   "psdp_render"
+  ],
+  "head": "/** Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems) */\nif (!defined('ABSPATH')) return;\n\n/* ---------- LT -> ascii (markeriu atpazinimui) ---------- */\nif (!function_exists('psdp_ascii')) {\nfunction psdp_ascii($s){\n    $s = wp_strip_all_tags($s);\n    $map = array(\n        \"\\xC4\\x85\"=>'a',\"\\xC4\\x8D\"=>'c',\"\\xC4\\x99\"=>'e',\"\\xC4\\x97\"=>'e',\"\\xC4\\xAF\"=>'i',\n        \"\\xC5\\xA1\"=>'s',\"\\xC5\\xB3\"=>'u',\"\\xC5\\xAB\"=>'u',\"\\xC5\\xBE\"=>'z',\n        \"\\xC4\\x84\"=>'a',\"\\xC4\\x8C\"=>'c',\"\\xC4\\x98\"=>'e',\"\\xC4\\x96\"=>'e',\"\\xC4\\xAE\"=>'i',\n        \"\\xC5\\xA0\"=>'s',\"\\xC5\\xB2\"=>'u',\"\\xC5\\xAA\"=>'u',\"\\xC5\\xBD\"=>'z'\n    );\n    return strtolower(strtr($s, $map));\n}\n}\n\n/* ---------- markerio fraze -> kanonine antraste ---------- */\nif (!function_exists('psdp_title')) {\nfunction psdp_title($m){\n    $t = psdp_ascii($m);\n    if (strpos($t,'pagrindinis aprasymas')!==false) return \"Apra\\xC5\\xA1ymas\";\n    // \"Analitine sudetis\" turi būti tikrintas PIRMA, ne \"sudetis\"!\n    if (strpos($t,'analitin')===0) return \"Analitin\\xC4\\x97s sudedamosios dalys\";\n    if (strpos($t,'sud')===0) return \"Sud\\xC4\\x97tis\";\n    if (strpos($t,'pried')!==false || strpos($t,'maisto pried')!==false || strpos($t,'technologiniai pri",
+  "the_content": [
+   "8:apply_block_hooks_to_content_from_post_object",
+   "8:WP_Embed::run_shortcode",
+   "8:WP_Embed::autoembed",
+   "9:do_blocks",
+   "10:wptexturize",
+   "10:wpautop",
+   "10:shortcode_unautop",
+   "10:prepend_attachment",
+   "10:wp_replace_insecure_home_url",
+   "10:cmplz_document::revert_divs_to_summary",
+   "10:flatsome_contentfix",
+   "11:capital_P_dangit",
+   "11:do_shortcode",
+   "12:wp_filter_content_tags",
+   "20:convert_smilies",
+   "20:closure"
+  ],
+  "turi_desc_heading": 1
+ }
+}
