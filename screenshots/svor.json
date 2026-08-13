@@ -1,0 +1,203 @@
+{
+ "marker": "PATIKRA 0813",
+ "ts": "2026-08-13T17:39:57.645Z",
+ "snip": 2910,
+ "snip_status": 200,
+ "rez": {
+  "marker": "SVORIS/SIUNTIMAS",
+  "prekes": [
+   {
+    "id": 34899,
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas",
+    "tipas": "mix-and-match",
+    "svoris": "",
+    "matmenys": [
+     "",
+     "",
+     ""
+    ],
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "virtual": 0,
+    "needs_shipping": 1,
+    "mnm_weight_cumulative": "no",
+    "komponentai": [
+     {
+      "id": 18560,
+      "q": 2,
+      "w": "12",
+      "sc": ""
+     }
+    ],
+    "komp_svoriu_suma": 24,
+    "be_svorio": 0,
+    "fulfillment": {
+     "source": "legacy",
+     "carrier": "any",
+     "courier_only": false,
+     "label": "Legacy (savas sandėlis)",
+     "reason": "nera tiekejo / dropship pozymiu"
+    }
+   },
+   {
+    "id": 34484,
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų m",
+    "tipas": "simple",
+    "svoris": "",
+    "matmenys": [
+     "",
+     "",
+     ""
+    ],
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "virtual": 0,
+    "needs_shipping": 1,
+    "mnm_weight_cumulative": "",
+    "komponentai": [
+     {
+      "id": 18587,
+      "q": 2,
+      "w": "7",
+      "sc": ""
+     }
+    ],
+    "komp_svoriu_suma": 14,
+    "be_svorio": 0,
+    "fulfillment": {
+     "source": "legacy",
+     "carrier": "any",
+     "courier_only": false,
+     "label": "Legacy (savas sandėlis)",
+     "reason": "nera tiekejo / dropship pozymiu"
+    }
+   },
+   {
+    "id": 34918,
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas",
+    "tipas": "mix-and-match",
+    "svoris": "",
+    "matmenys": [
+     "",
+     "",
+     ""
+    ],
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "virtual": 0,
+    "needs_shipping": 1,
+    "mnm_weight_cumulative": "no",
+    "komponentai": [
+     {
+      "id": 18590,
+      "q": 1,
+      "w": "2",
+      "sc": ""
+     },
+     {
+      "id": 22935,
+      "q": 1,
+      "w": "",
+      "sc": ""
+     },
+     {
+      "id": 27198,
+      "q": 1,
+      "w": "",
+      "sc": ""
+     }
+    ],
+    "komp_svoriu_suma": 2,
+    "be_svorio": 2,
+    "fulfillment": {
+     "source": "legacy",
+     "carrier": "any",
+     "courier_only": false,
+     "label": "Legacy (savas sandėlis)",
+     "reason": "nera tiekejo / dropship pozymiu"
+    }
+   },
+   {
+    "id": 34175,
+    "pav": "Stirnos ir avies kojų rinkinys šunims · 14 v",
+    "tipas": "mix-and-match",
+    "svoris": "",
+    "matmenys": [
+     "",
+     "",
+     ""
+    ],
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "virtual": 0,
+    "needs_shipping": 1,
+    "mnm_weight_cumulative": "no",
+    "komponentai": [
+     {
+      "id": 19092,
+      "q": 5,
+      "w": "0.1",
+      "sc": ""
+     },
+     {
+      "id": 16298,
+      "q": 5,
+      "w": "",
+      "sc": ""
+     },
+     {
+      "id": 16317,
+      "q": 2,
+      "w": "",
+      "sc": ""
+     },
+     {
+      "id": 19104,
+      "q": 2,
+      "w": "0.11",
+      "sc": ""
+     }
+    ],
+    "komp_svoriu_suma": 0.72,
+    "be_svorio": 2,
+    "fulfillment": {
+     "source": "legacy",
+     "carrier": "any",
+     "courier_only": false,
+     "label": "Legacy (savas sandėlis)",
+     "reason": "nera tiekejo / dropship pozymiu"
+    }
+   }
+  ],
+  "klases": [
+   {
+    "id": 237,
+    "slug": "100-200kg",
+    "n": "100-200kg",
+    "c": 0
+   },
+   {
+    "id": 235,
+    "slug": "50-70kg",
+    "n": "50-70kg",
+    "c": 0
+   },
+   {
+    "id": 236,
+    "slug": "70-100kg",
+    "n": "70-100kg",
+    "c": 0
+   },
+   {
+    "id": 234,
+    "slug": "iki-50kg",
+    "n": "Iki 50kg",
+    "c": 0
+   }
+  ],
+  "funkcijos": {
+   "fulfillment": true,
+   "hide_parcel": true
+  }
+ }
+}
