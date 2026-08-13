@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.8';
+	const VERSIJA = '1.9';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -66,6 +66,7 @@ class Petshop_Rinkiniai {
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );
 		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ) );
+		add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 25 );
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
@@ -167,6 +168,66 @@ class Petshop_Rinkiniai {
 		return $tekstas;
 	}
 
+	/**
+	 * Pilnas prekes aprasymas — po „Placiau". Rodomas su HTML (lentelemis,
+	 * sarasais), nes ten daznai buna sudetis ir analize, o tai klientui svarbu.
+	 * Isimam tik ta dali, kuri jau parodyta trumpai, kad nesikartotu.
+	 */
+	private static function pilnas_aprasas( $preke, $jau_rodoma = '' ) {
+		$html = trim( (string) $preke->get_description() );
+		if ( $html === '' ) { return ''; }
+
+		/* Jei trumpas aprasymas yra pilno pradzia — nukerpam, kad nesidubliuotu */
+		if ( $jau_rodoma !== '' ) {
+			$plikas = trim( wp_strip_all_tags( $html ) );
+			$pradzia = mb_substr( $plikas, 0, mb_strlen( $jau_rodoma ) );
+			if ( mb_strtolower( $pradzia ) === mb_strtolower( $jau_rodoma ) ) {
+				$poz = mb_strpos( $html, mb_substr( $jau_rodoma, -40 ) );
+				if ( $poz !== false ) { $html = trim( mb_substr( $html, $poz + 40 ) ); }
+			}
+		}
+		if ( trim( wp_strip_all_tags( $html ) ) === '' ) { return ''; }
+		return wp_kses_post( $html );
+	}
+
+	/**
+	 * Aprasymo skirtukas rinkiniams.
+	 *
+	 * Aprasymu akordeonas (snippet 512) kabinasi ant `woocommerce_product_tabs`
+	 * ir skaido teksta i sekcijas pagal antrastes („Sudėtis", „Analizė"...).
+	 * Rinkinio aprasyme tokiu antrasciu yra — bet jos priklauso KOMPONENTAMS,
+	 * ne rinkiniui. Todel akordeonas issikirpdavo vienos prekes sudeti i atskira
+	 * sekcija, o rinkinio sudetis suirdavo.
+	 *
+	 * Rinkiniams paliekam paprasta skirtuka su musu strukturuota turiniu.
+	 */
+	public static function tabai( $tabs ) {
+		global $product;
+		if ( ! $product || ! is_a( $product, 'WC_Product' ) ) { return $tabs; }
+		$pid = $product->get_id();
+		$rinkinys = ( get_post_meta( $pid, self::META_KIEKIAI, true ) !== '' )
+			|| ( get_post_meta( $pid, '_dp_base_product_id', true ) !== '' );
+		if ( ! $rinkinys ) { return $tabs; }
+
+		$leisti = array( 'description', 'additional_information', 'reviews' );
+		foreach ( array_keys( $tabs ) as $raktas ) {
+			if ( ! in_array( $raktas, $leisti, true ) ) { unset( $tabs[ $raktas ] ); }
+		}
+		if ( isset( $tabs['description'] ) ) {
+			$tabs['description']['title']    = 'Aprašymas';
+			$tabs['description']['priority'] = 10;
+			$tabs['description']['callback'] = array( __CLASS__, 'aprasymo_turinys' );
+		}
+		return $tabs;
+	}
+
+	public static function aprasymo_turinys() {
+		global $post;
+		echo '<div class="ps-rink-aprasymas">';
+		echo wp_kses_post( wpautop( do_shortcode( $post->post_content ) ) );
+		echo '</div>';
+	}
+
 	/** Rinkinio sudeties isvaizda prekes puslapyje. */
 	public static function front_stilius() {
 		if ( ! is_product() ) { return; }
@@ -179,6 +240,19 @@ class Petshop_Rinkiniai {
 		.ps-rink-img img{width:74px;height:74px;object-fit:contain;background:#fff;border:1px solid #eee;border-radius:4px}
 		.ps-rink-tekstas h4{margin:0 0 5px;font-size:15px;line-height:1.35}
 		.ps-rink-tekstas p{margin:0;color:#555;font-size:14px;line-height:1.5}
+		.ps-rink-daugiau{margin-top:8px}
+		.ps-rink-daugiau>summary{cursor:pointer;color:#2e5c48;font-size:13.5px;font-weight:600;list-style:none;display:inline-flex;align-items:center;gap:6px;padding:3px 0}
+		.ps-rink-daugiau>summary::-webkit-details-marker{display:none}
+		.ps-rink-daugiau>summary::after{content:'▾';font-size:11px;transition:transform .15s}
+		.ps-rink-daugiau[open]>summary::after{transform:rotate(180deg)}
+		.ps-rink-daugiau>summary:hover{color:#1d4030}
+		.ps-rink-pilnas{margin-top:8px;padding:12px 14px;background:#f7f7f5;border-radius:4px;font-size:13.5px;line-height:1.6;color:#444}
+		.ps-rink-pilnas h1,.ps-rink-pilnas h2,.ps-rink-pilnas h3,.ps-rink-pilnas h4{font-size:14px;margin:12px 0 4px;color:#2e5c48}
+		.ps-rink-pilnas h1:first-child,.ps-rink-pilnas h2:first-child,.ps-rink-pilnas h3:first-child{margin-top:0}
+		.ps-rink-pilnas p{margin:0 0 8px}
+		.ps-rink-pilnas ul,.ps-rink-pilnas ol{margin:0 0 8px 18px}
+		.ps-rink-pilnas table{width:100%;border-collapse:collapse;margin:6px 0}
+		.ps-rink-pilnas td,.ps-rink-pilnas th{padding:4px 8px;border-bottom:1px solid #e5e5e0;text-align:left}
 		@media(max-width:600px){.ps-rink-img{width:56px}.ps-rink-img img{width:56px;height:56px}}
 		</style>
 		<?php
@@ -1659,12 +1733,19 @@ class Petshop_Rinkiniai {
 			$cp = wc_get_product( $cid );
 			if ( ! $cp ) { continue; }
 			$aprasas = self::svarus_aprasas( $cp );
+			$pilnas  = self::pilnas_aprasas( $cp, $aprasas );
 			$img = $cp->get_image_id() ? wp_get_attachment_image( $cp->get_image_id(), 'thumbnail', false, array( 'class' => 'ps-rink-foto' ) ) : '';
 			$turinys .= '<div class="ps-rink-preke">' . "\n";
 			if ( $img ) { $turinys .= '  <div class="ps-rink-img">' . $img . "</div>\n"; }
 			$turinys .= '  <div class="ps-rink-tekstas">' . "\n";
 			$turinys .= '    <h4>' . ( $kiek > 1 ? $kiek . ' × ' : '' ) . esc_html( $cp->get_name() ) . "</h4>\n";
 			if ( $aprasas !== '' ) { $turinys .= '    <p>' . esc_html( $aprasas ) . "</p>\n"; }
+			if ( $pilnas !== '' ) {
+				$turinys .= '    <details class="ps-rink-daugiau">' . "\n";
+				$turinys .= '      <summary>Plačiau apie šią prekę</summary>' . "\n";
+				$turinys .= '      <div class="ps-rink-pilnas">' . $pilnas . "</div>\n";
+				$turinys .= "    </details>\n";
+			}
 			$turinys .= "  </div>\n</div>\n";
 		}
 		$turinys .= "</div>\n";
