@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.23';
+	const VERSIJA = '1.24';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -2385,7 +2385,7 @@ class Petshop_Rinkiniai {
 	/* v3: v2 metu parasas jau buvo atnaujintas, bet paveiksla dar piese senoji
 	   539 funkcija — todel v1.22 nusprende, kad kompozicija sviezia, ir praleido.
 	   Keiciant versija parasas nesutampa ir viskas persipiesia is naujo. */
-	const KOMPOZICIJOS_VERSIJA = 'v3-herojus';
+	const KOMPOZICIJOS_VERSIJA = 'v4-herojus-66';
 
 	private static function kompozicija( $pid, $komponentai, $priverstinai = false ) {
 		/*
@@ -2469,7 +2469,10 @@ class Petshop_Rinkiniai {
 			if ( $n === 1 ) {
 				$laukai[] = array( $krastas, $krastas, $vidus_p, $vidus_a );
 			} else {
-				$hero_p = (int) round( $vidus_p * 0.58 );
+				/* 0.66 — savininko sprendimas 2026-08-13: pagrindine preke turi
+				   dominuoti aiskiau. Palydovams lieka apie treciadalis ploco,
+				   to uztenka, kad jie liktu atpazistami. */
+				$hero_p = (int) round( $vidus_p * 0.66 );
 				$sal_p  = $vidus_p - $hero_p - $tarpas;
 				$laukai[] = array( $krastas, $krastas, $hero_p, $vidus_a );
 				$kiek = $n - 1;
@@ -2541,6 +2544,19 @@ class Petshop_Rinkiniai {
 		elseif ( $info['mime'] === 'image/png' ) { $src = @imagecreatefrompng( $kelias ); }
 		elseif ( $info['mime'] === 'image/webp' && function_exists( 'imagecreatefromwebp' ) ) { $src = @imagecreatefromwebp( $kelias ); }
 		if ( ! $src ) { return; }
+
+		/*
+		 * Nukerpam tuscius kampus. Gamintoju nuotraukose aplink preke daznai
+		 * lieka daug balto ploto — del to preke laukelyje atrodo perpus mazesne,
+		 * nei galetu. Nukirpus, ji uzpildo laukeli ir kompozicija atrodo tvirciau.
+		 */
+		if ( function_exists( 'imagecropauto' ) ) {
+			$kirpta = @imagecropauto( $src, IMG_CROP_SIDES, 0.55 );
+			if ( $kirpta !== false && imagesx( $kirpta ) > 40 && imagesy( $kirpta ) > 40 ) {
+				imagedestroy( $src );
+				$src = $kirpta;
+			}
+		}
 
 		$sw = imagesx( $src ); $sh = imagesy( $src );
 		$k  = min( $plotis / $sw, $aukstis / $sh );
