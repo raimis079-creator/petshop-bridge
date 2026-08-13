@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.22';
+	const VERSIJA = '1.23';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -2382,7 +2382,10 @@ class Petshop_Rinkiniai {
 	 * kopija su tuo paciu tinkleliu.
 	 */
 	/** Isdestymo algoritmo versija — keiciant ji, senos kompozicijos persipiesia. */
-	const KOMPOZICIJOS_VERSIJA = 'v2-herojus';
+	/* v3: v2 metu parasas jau buvo atnaujintas, bet paveiksla dar piese senoji
+	   539 funkcija — todel v1.22 nusprende, kad kompozicija sviezia, ir praleido.
+	   Keiciant versija parasas nesutampa ir viskas persipiesia is naujo. */
+	const KOMPOZICIJOS_VERSIJA = 'v3-herojus';
 
 	private static function kompozicija( $pid, $komponentai, $priverstinai = false ) {
 		/*
