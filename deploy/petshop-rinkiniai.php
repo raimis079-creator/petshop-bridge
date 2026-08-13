@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.18';
+	const VERSIJA = '1.20';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -70,6 +70,7 @@ class Petshop_Rinkiniai {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );
 		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ) );
 		add_filter( 'body_class', array( __CLASS__, 'front_klase' ) );
+		add_filter( 'woocommerce_single_product_image_gallery_classes', array( __CLASS__, 'galerijos_klases' ) );
 		/* 200, nes aprasymu akordeonas (512) kabinasi prio 98 — su mazesniu
 		   prioritetu jis perrasytu musu skirtuka atgal i savo psdp_render. */
 		add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 200 );
@@ -457,9 +458,31 @@ class Petshop_Rinkiniai {
 		return $klases;
 	}
 
+	/** Zenklo tekstas paduodamas per inline stiliu (patikimiau nei HTML perrasymas). */
+	public static function galerijos_klases( $klases ) {
+		if ( self::rinkinio_puslapis() ) { $klases[] = 'ps-rink-galerija'; }
+		return $klases;
+	}
+
+
 	public static function front_stilius() {
 		if ( ! is_product() ) { return; }
+
+		/* Zenklo tekstas — i CSS kintamaji, kad nereiktu perrasyti galerijos HTML */
+		$zenklas = '';
+		global $post;
+		if ( $post ) {
+			$kiekiai = json_decode( (string) get_post_meta( $post->ID, self::META_KIEKIAI, true ), true );
+			if ( is_array( $kiekiai ) && $kiekiai ) {
+				$vnt = array_sum( array_map( 'intval', $kiekiai ) );
+				$zodis = ( $vnt === 1 ) ? 'PREKĖ' : ( ( $vnt % 10 >= 2 && $vnt % 10 <= 9 && ( $vnt % 100 < 10 || $vnt % 100 >= 20 ) ) ? 'PREKĖS' : 'PREKIŲ' );
+				$zenklas = $vnt . '\A' . $zodis;
+			}
+		}
 		?>
+		<?php if ( $zenklas ) : ?>
+		<style>body.ps-fiksuotas-rinkinys{--ps-rink-zenklas:"<?php echo esc_html( $zenklas ); ?>"}</style>
+		<?php endif; ?>
 		<style>
 		.ps-rink-sudetis{margin:14px 0}
 		.ps-rink-preke{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #eee}
@@ -468,6 +491,14 @@ class Petshop_Rinkiniai {
 		.ps-rink-img img{width:74px;height:74px;object-fit:contain;background:#fff;border:1px solid #eee;border-radius:4px}
 		.ps-rink-tekstas h4{margin:0 0 5px;font-size:15px;line-height:1.35}
 		.ps-rink-tekstas p{margin:0;color:#555;font-size:14px;line-height:1.5}
+		/* Rinkinio zenklas ant nuotraukos — CSS, ne idegintas i paveiksla.
+		   Pakeitus sudeti skaicius atsinaujina pats, o nuotraukos perpiesti nereikia. */
+		body.ps-fiksuotas-rinkinys .woocommerce-product-gallery{position:relative}
+		body.ps-fiksuotas-rinkinys .woocommerce-product-gallery::before{
+			content:var(--ps-rink-zenklas,"");position:absolute;top:14px;left:14px;z-index:5;
+			background:#2e5c48;color:#fff;border-radius:50%;width:64px;height:64px;
+			display:grid;place-items:center;text-align:center;font-size:11.5px;font-weight:700;line-height:1.15;
+			white-space:pre-line;pointer-events:none}
 		.ps-rink-nauda{background:#f6f8f6;border:1px solid #dfe7df;border-radius:4px;padding:10px 14px;margin:14px 0}
 		.ps-rink-nauda table{width:100%;border-collapse:collapse;font-size:14px}
 		.ps-rink-nauda td{padding:3px 0;border:0}
@@ -2364,68 +2395,107 @@ class Petshop_Rinkiniai {
 		return self::kompozicija_vidine( $pid, $komponentai );
 	}
 
+	/**
+	 * Kompozicijos nuotrauka.
+	 *
+	 * Drobe VISADA kvadratine — katalogo miniatiuros kvadratines, o ankstesne
+	 * 3x1 juosta ten virsdavo siaura ruozeliu su tusciais pakrasciais.
+	 *
+	 * Du isdestymai (savininko sprendimas 2026-08-13):
+	 *
+	 *   2-3 prekes — HEROJUS + PALYDOVAI. Brangiausia preke kaireje, didele;
+	 *   priedai desineje, mazesni. Taip 12 kg maisas ir 113 g skanestas
+	 *   nebeatrodo vienodai svarbus, o dydis ekrane atitinka tikrove.
+	 *
+	 *   4 ir daugiau — LYGUS TINKLELIS. Herojaus isdestymas cia jau susigrustu:
+	 *   palydovai taptu per smulkus, kad ka nors reikstu.
+	 *
+	 * Zenklo („3 PREKES") i nuotrauka NEDEGINAM — ji piesia vitrina per CSS.
+	 * Taip pakeitus sudeti nereikia perpiesti paveikslo, ir nelieka pavojaus,
+	 * kad nuotraukoje liks senas skaicius.
+	 */
 	private static function kompozicija_vidine( $pid, $komponentai ) {
 		if ( ! function_exists( 'imagecreatetruecolor' ) ) { return array( 'error' => 'GD neprieinamas' ); }
-		$plytele = 380; $tarpas = 30; $krastas = 30;
 
-		$keliai = array(); $matyti = array();
+		/* Nuotraukos + kainos: brangiausia bus herojus */
+		$prekes = array(); $matyti = array();
 		foreach ( $komponentai as $cid ) {
+			$cid = (int) $cid;
 			if ( isset( $matyti[ $cid ] ) ) { continue; }
 			$matyti[ $cid ] = true;
 			$cp = wc_get_product( $cid );
-			if ( ! $cp ) { continue; }
-			$img = $cp->get_image_id();
-			if ( ! $img ) { continue; }
-			$f = get_attached_file( $img );
-			if ( $f && file_exists( $f ) ) { $keliai[] = $f; }
+			if ( ! $cp || ! $cp->get_image_id() ) { continue; }
+			$f = get_attached_file( $cp->get_image_id() );
+			if ( ! $f || ! file_exists( $f ) ) { continue; }
+			$prekes[] = array( 'kelias' => $f, 'kaina' => (float) $cp->get_price() );
 		}
-		$n = count( $keliai );
+		$n = count( $prekes );
 		if ( $n < 1 ) { return array( 'error' => 'Nėra nuotraukų' ); }
 
-		$isdest = array( 1=>array(1,1,0), 2=>array(2,1,0), 3=>array(3,1,0), 4=>array(2,2,0),
-			5=>array(3,2,2), 6=>array(3,2,0), 7=>array(4,2,3), 8=>array(4,2,0),
-			9=>array(3,3,0), 10=>array(4,3,2), 11=>array(4,3,3), 12=>array(4,3,0) );
-		$L = isset( $isdest[ $n ] ) ? $isdest[ $n ]
-			: array( (int) ceil( sqrt( $n ) ), (int) ceil( $n / ceil( sqrt( $n ) ) ), 0 );
-		list( $stulp, $eil, $paskutine ) = $L;
+		$S = 1000;                 /* kvadratine drobe */
+		$krastas = 46;
+		$tarpas  = 18;
 
-		$pl = $stulp * $plytele + ( $stulp - 1 ) * $tarpas + $krastas * 2;
-		$au = $eil   * $plytele + ( $eil   - 1 ) * $tarpas + $krastas * 2;
-		$drobe = imagecreatetruecolor( $pl, $au );
-		imagefilledrectangle( $drobe, 0, 0, $pl - 1, $au - 1, imagecolorallocate( $drobe, 248, 248, 248 ) );
-		$baltas = imagecolorallocate( $drobe, 255, 255, 255 );
+		$drobe = imagecreatetruecolor( $S, $S );
+		imagefilledrectangle( $drobe, 0, 0, $S - 1, $S - 1, imagecolorallocate( $drobe, 255, 255, 255 ) );
+		imagealphablending( $drobe, true );
 
-		foreach ( $keliai as $i => $kelias ) {
-			$r = (int) ( $i / $stulp ); $s = $i % $stulp;
-			if ( $paskutine > 0 && $r === $eil - 1 ) {
-				$plotis = $paskutine * $plytele + ( $paskutine - 1 ) * $tarpas;
-				$x = (int) ( ( $pl - $plotis ) / 2 ) + $s * ( $plytele + $tarpas );
+		$laukai = array();
+
+		if ( $n <= 3 ) {
+			/* HEROJUS + PALYDOVAI: brangiausia i prieki */
+			usort( $prekes, function( $a, $b ) { return $b['kaina'] <=> $a['kaina']; } );
+			$vidus_p = $S - $krastas * 2;
+			$vidus_a = $S - $krastas * 2;
+
+			if ( $n === 1 ) {
+				$laukai[] = array( $krastas, $krastas, $vidus_p, $vidus_a );
 			} else {
-				$x = $krastas + $s * ( $plytele + $tarpas );
+				$hero_p = (int) round( $vidus_p * 0.58 );
+				$sal_p  = $vidus_p - $hero_p - $tarpas;
+				$laukai[] = array( $krastas, $krastas, $hero_p, $vidus_a );
+				$kiek = $n - 1;
+				$sal_a = (int) round( ( $vidus_a - $tarpas * ( $kiek - 1 ) ) / $kiek );
+				for ( $i = 0; $i < $kiek; $i++ ) {
+					$laukai[] = array(
+						$krastas + $hero_p + $tarpas,
+						$krastas + $i * ( $sal_a + $tarpas ),
+						$sal_p, $sal_a
+					);
+				}
 			}
-			$y = $krastas + $r * ( $plytele + $tarpas );
-			imagefilledrectangle( $drobe, $x, $y, $x + $plytele - 1, $y + $plytele - 1, $baltas );
+		} else {
+			/* LYGUS TINKLELIS */
+			$stulp = (int) ceil( sqrt( $n ) );
+			$eil   = (int) ceil( $n / $stulp );
+			$plot  = (int) round( ( $S - $krastas * 2 - $tarpas * ( $stulp - 1 ) ) / $stulp );
+			$auks  = (int) round( ( $S - $krastas * 2 - $tarpas * ( $eil - 1 ) ) / $eil );
+			for ( $i = 0; $i < $n; $i++ ) {
+				$r = (int) floor( $i / $stulp );
+				$c = $i % $stulp;
+				/* paskutine eilute centruojam, jei nepilna */
+				$eiluteje = min( $stulp, $n - $r * $stulp );
+				$poslinkis = ( $eiluteje < $stulp )
+					? (int) round( ( ( $stulp - $eiluteje ) * ( $plot + $tarpas ) ) / 2 )
+					: 0;
+				$laukai[] = array(
+					$krastas + $poslinkis + $c * ( $plot + $tarpas ),
+					$krastas + $r * ( $auks + $tarpas ),
+					$plot, $auks
+				);
+			}
+		}
 
-			$info = @getimagesize( $kelias );
-			if ( ! $info ) { continue; }
-			$src = null;
-			if ( $info['mime'] === 'image/jpeg' ) { $src = @imagecreatefromjpeg( $kelias ); }
-			elseif ( $info['mime'] === 'image/png' ) { $src = @imagecreatefrompng( $kelias ); }
-			elseif ( $info['mime'] === 'image/webp' && function_exists( 'imagecreatefromwebp' ) ) { $src = @imagecreatefromwebp( $kelias ); }
-			if ( ! $src ) { continue; }
-			$sw = imagesx( $src ); $sh = imagesy( $src );
-			$k = min( $plytele / $sw, $plytele / $sh );
-			$nw = (int) ( $sw * $k ); $nh = (int) ( $sh * $k );
-			imagecopyresampled( $drobe, $src,
-				$x + (int) ( ( $plytele - $nw ) / 2 ), $y + (int) ( ( $plytele - $nh ) / 2 ),
-				0, 0, $nw, $nh, $sw, $sh );
-			imagedestroy( $src );
+		foreach ( $prekes as $i => $pr ) {
+			if ( ! isset( $laukai[ $i ] ) ) { break; }
+			list( $x, $y, $p, $a ) = $laukai[ $i ];
+			self::piesti( $drobe, $pr['kelias'], $x, $y, $p, $a );
 		}
 
 		$up = wp_upload_dir();
 		$vardas = 'rink-kompozicija-' . $pid . '-' . time() . '.jpg';
 		$kelias = trailingslashit( $up['path'] ) . $vardas;
-		imagejpeg( $drobe, $kelias, 88 );
+		imagejpeg( $drobe, $kelias, 90 );
 		imagedestroy( $drobe );
 		if ( ! file_exists( $kelias ) ) { return array( 'error' => 'Nepavyko išsaugoti' ); }
 
@@ -2441,7 +2511,33 @@ class Petshop_Rinkiniai {
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 		wp_update_attachment_metadata( $att, wp_generate_attachment_metadata( $att, $kelias ) );
 		set_post_thumbnail( $pid, $att );
-		return array( 'media_id' => $att, 'url' => wp_get_attachment_url( $att ) );
+		return array( 'media_id' => $att, 'url' => wp_get_attachment_url( $att ), 'isdestymas' => ( $n <= 3 ? 'herojus' : 'tinklelis' ) );
+	}
+
+	/** Ipiesia nuotrauka i nurodyta laukeli islaikant proporcijas. */
+	private static function piesti( $drobe, $kelias, $x, $y, $plotis, $aukstis ) {
+		$info = @getimagesize( $kelias );
+		if ( ! $info ) { return; }
+		$src = null;
+		if ( $info['mime'] === 'image/jpeg' ) { $src = @imagecreatefromjpeg( $kelias ); }
+		elseif ( $info['mime'] === 'image/png' ) { $src = @imagecreatefrompng( $kelias ); }
+		elseif ( $info['mime'] === 'image/webp' && function_exists( 'imagecreatefromwebp' ) ) { $src = @imagecreatefromwebp( $kelias ); }
+		if ( ! $src ) { return; }
+
+		$sw = imagesx( $src ); $sh = imagesy( $src );
+		$k  = min( $plotis / $sw, $aukstis / $sh );
+		$nw = max( 1, (int) round( $sw * $k ) );
+		$nh = max( 1, (int) round( $sh * $k ) );
+
+		$laik = imagecreatetruecolor( $nw, $nh );
+		imagefilledrectangle( $laik, 0, 0, $nw - 1, $nh - 1, imagecolorallocate( $laik, 255, 255, 255 ) );
+		imagecopyresampled( $laik, $src, 0, 0, 0, 0, $nw, $nh, $sw, $sh );
+		imagecopy( $drobe, $laik,
+			$x + (int) round( ( $plotis - $nw ) / 2 ),
+			$y + (int) round( ( $aukstis - $nh ) / 2 ),
+			0, 0, $nw, $nh );
+		imagedestroy( $laik );
+		imagedestroy( $src );
 	}
 
 	/* ==================== STILIUS ==================== */
