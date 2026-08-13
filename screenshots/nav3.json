@@ -1,0 +1,117 @@
+{
+ "marker": "NAV DEPLOY v3",
+ "ts": "2026-08-13T08:34:55.289Z",
+ "snip1": 2878,
+ "snip2": 2879,
+ "deploy": {
+  "petshop-rinkiniai.php": {
+   "marker": "RINK DEPLOY v2",
+   "http": 200,
+   "bytes": 83283,
+   "md5": "691e92dd34475af730acd1ba4e93d9eb",
+   "failas": "petshop-rinkiniai.php",
+   "budai": {
+    "shell_exec": false,
+    "exec": false,
+    "proc_open": false,
+    "popen": false,
+    "passthru": false,
+    "system": false
+   },
+   "budas": "include-rename",
+   "lint": "sintakse OK (vykdymo pastaba: Call to undefined method Petshop_Rinkiniai_PsChk4966::init())",
+   "sintakse_ok": true,
+   "backup": ".bak-petshop-rinkiniai.php-20260813-083504.txt",
+   "senas_md5": "691e92dd34475af730acd1ba4e93d9eb",
+   "irasyta": 83283,
+   "dest_md5": "691e92dd34475af730acd1ba4e93d9eb",
+   "sutampa": true
+  },
+  "petshop-katalogas.php": {
+   "marker": "RINK DEPLOY v2",
+   "http": 200,
+   "bytes": 399018,
+   "md5": "4d961a56d40a693699d8b37c2250dd04",
+   "failas": "petshop-katalogas.php",
+   "budai": {
+    "shell_exec": false,
+    "exec": false,
+    "proc_open": false,
+    "popen": false,
+    "passthru": false,
+    "system": false
+   },
+   "budas": "include-rename",
+   "lint": "sintakse OK (vykdymo pastaba: Call to undefined method Petshop_Katalogas_PsChk7113::init())",
+   "sintakse_ok": true,
+   "backup": ".bak-petshop-katalogas.php-20260813-083506.txt",
+   "senas_md5": "4d961a56d40a693699d8b37c2250dd04",
+   "irasyta": 399018,
+   "dest_md5": "4d961a56d40a693699d8b37c2250dd04",
+   "sutampa": true
+  }
+ },
+ "rinkiniai": {
+  "juosta": [
+   "Katalogas",
+   "Rinkiniai*",
+   "Akcijos",
+   "Gavimas",
+   "Tiekimas",
+   "Užsakymai"
+  ],
+  "logo": "PETSHOP",
+  "eil": 15,
+  "tipai": [
+   "RinkinysKonservų rinki",
+   "RinkinysRINKINIAI, Ska",
+   "RinkinysRINKINIAI, Ska",
+   "Rinkinys—",
+   "RinkinysKramtalų rinki"
+  ],
+  "eiles": [
+   "15Visi",
+   "2Kiekiai nefiksuoti",
+   "5Be savikainos",
+   "0Komponentas neparduodamas",
+   "8Daugiau=pigiau",
+   "1Juodraščiai",
+   "8Sutvarkyta"
+  ],
+  "kaina": "",
+  "fatal": ""
+ },
+ "forma": {
+  "juosta": [
+   "Katalogas",
+   "Rinkiniai*",
+   "Akcijos",
+   "Gavimas",
+   "Tiekimas",
+   "Užsakymai"
+  ],
+  "logo": "PETSHOP",
+  "eil": 0,
+  "tipai": [],
+  "eiles": [],
+  "kaina": "text",
+  "fatal": ""
+ },
+ "katalogas": {
+  "juosta": [
+   "Katalogas*",
+   "Rinkiniai",
+   "Akcijos",
+   "Gavimas",
+   "Tiekimas",
+   "Užsakymai"
+  ],
+  "logo": "PETSHOP",
+  "eil": 0,
+  "tipai": [],
+  "eiles": [],
+  "kaina": "",
+  "fatal": ""
+ },
+ "js": []
+}
