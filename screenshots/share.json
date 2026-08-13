@@ -1,0 +1,38 @@
+{
+ "marker": "SHARE",
+ "ts": "2026-08-13T07:57:05.078Z",
+ "recon": {
+  "tema": "flatsome-child",
+  "parent": "flatsome",
+  "theme_mods_share": [],
+  "hook_woocommerce_share": [
+   "10 → flatsome_product_share"
+  ],
+  "hook_flatsome_product_share": "tuscias",
+  "hook_woocommerce_single_product_summary": [
+   "0 → flatsome_woocommerce_product_breadcrumb",
+   "1 → flatsome_product_brands",
+   "5 → woocommerce_template_single_title",
+   "7 → flatsome_product_mobile_next_prev_nav",
+   "10 → woocommerce_template_single_rating",
+   "10 → woocommerce_template_single_price",
+   "11 → closure",
+   "11 → closure",
+   "20 → woocommerce_template_single_excerpt",
+   "20 → flatsome_before_add_to_cart_html",
+   "25 → closure",
+   "30 → woocommerce_template_single_add_to_cart",
+   "30 → flatsome_after_add_to_cart_html",
+   "31 → Petshop_Product_Calc::widget",
+   "40 → woocommerce_template_single_meta",
+   "50 → woocommerce_template_single_sharing",
+   "60 → WC_Structured_Data::generate_product_data"
+  ],
+  "hook_woocommerce_after_single_product_summary": [
+   "-1000 → wc_mnm_template_add_to_cart_after_summary",
+   "10 → woocommerce_output_product_data_tabs",
+   "15 → woocommerce_upsell_display",
+   "20 → woocommerce_output_related_products"
+  ]
+ }
+}
