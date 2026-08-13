@@ -1,43 +1,21 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 import fs from 'fs';
-import { chromium } from 'playwright';
+import { execSync } from 'child_process';
 const B='https://dev.avesa.lt';
+const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
 const TOK=process.env.GH_TOKEN||'';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'FRONT MNM STRUKTURA'};
+const out={marker:'PATIKRA 0813',ts:new Date().toISOString()};
+async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
+function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
+const s=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP RINK PULLD 0813',code:Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCgkX0dFVFsncHNfcHVsbEQnXSA/PyAnJykhPT0nUGxEZEtrMycpIHJldHVybjsKCUBzZXRfdGltZV9saW1pdCgxODApOwoJJG8gPSBhcnJheSgnbWFya2VyJz0+J1BVTEwgREVQTE9ZIHYzJyk7CgkkdXJsID0gJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9yYWltaXMwNzktY3JlYXRvci9wZXRzaG9wLWJyaWRnZS8wZWUxOTA0ODJmMDVhYjQwMGIzOTlkYjA4ZDZkMjAzZTE2NzE2Yjg3L2RlcGxveS9wZXRzaG9wLXJpbmtpbmlhaS5waHAnOwoJJHIgPSB3cF9yZW1vdGVfZ2V0KCR1cmwsIGFycmF5KCd0aW1lb3V0Jz0+NjApKTsKCWlmIChpc193cF9lcnJvcigkcikpIHsgJG9bJ2VyciddID0gJHItPmdldF9lcnJvcl9tZXNzYWdlKCk7IH0KCWVsc2UgewoJCSRrb2RhcyA9IHdwX3JlbW90ZV9yZXRyaWV2ZV9ib2R5KCRyKTsKCQkkb1snaHR0cCddID0gd3BfcmVtb3RlX3JldHJpZXZlX3Jlc3BvbnNlX2NvZGUoJHIpOwoJCSRvWydieXRlcyddID0gc3RybGVuKCRrb2Rhcyk7CgkJJG9bJ3N1dGFtcGEnXSA9IChtZDUoJGtvZGFzKSA9PT0gJzk5M2I0YjdjOTcyNWUzYTFhYTk0YTBmYTVkYzhhMzk2Jyk7CgkJaWYgKCRvWydzdXRhbXBhJ10gJiYgc3RybGVuKCRrb2RhcykgPiA1MDAwMCkgewoJCQkvKiBTaW50YWtzZXMgcGF0aWtyYToga2xhc2UgcGVydmFkaW5hbSwga2FkIG5ldXprbGl1dHUgdXogamF1IHV6a3JhdXRvcy4gKi8KCQkJJHRlc3RhcyA9IHN0cl9yZXBsYWNlKAoJCQkJYXJyYXkoJ2NsYXNzIFBldHNob3BfUmlua2luaWFpJywgJ1BldHNob3BfUmlua2luaWFpOjppbml0KCk7JywgJ1BldHNob3BfUmlua2luaWFpOjpWRVJTSUpBJyksCgkJCQlhcnJheSgnY2xhc3MgUGV0c2hvcF9SaW5raW5pYWlfU2ludGFrc2UnLCAnJywgJ1BldHNob3BfUmlua2luaWFpX1NpbnRha3NlOjpWRVJTSUpBJyksCgkJCQkka29kYXMKCQkJKTsKCQkJJHRtcCA9IHN5c19nZXRfdGVtcF9kaXIoKS4nL3Jpbmstc2ludC0nLnRpbWUoKS4nLnBocCc7CgkJCWZpbGVfcHV0X2NvbnRlbnRzKCR0bXAsICR0ZXN0YXMpOwoJCQkkb2sgPSBudWxsOwoJCQl0cnkgeyBpbmNsdWRlICR0bXA7ICRvayA9IHRydWU7ICRvWydsaW50J10gPSAnc2ludGFrc2Ugc3ZhcmknOyB9CgkJCWNhdGNoIChQYXJzZUVycm9yICRlKSB7ICRvayA9IGZhbHNlOyAkb1snbGludCddID0gJ1BhcnNlRXJyb3I6ICcuJGUtPmdldE1lc3NhZ2UoKS4nIGVpbC4nLiRlLT5nZXRMaW5lKCk7IH0KCQkJY2F0Y2ggKFRocm93YWJsZSAkZSkgeyAkb2sgPSB0cnVlOyAkb1snbGludCddID0gJ3J1bnRpbWU6ICcuJGUtPmdldE1lc3NhZ2UoKTsgfQoJCQlAdW5saW5rKCR0bXApOwoJCQkkb1snc2ludGFrc2UnXSA9ICRvazsKCQkJaWYgKCRvaykgewoJCQkJJGRlc3QgPSBXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLXJpbmtpbmlhaS5waHAnOwoJCQkJJGJhayA9IFdQTVVfUExVR0lOX0RJUi4nLy5iYWstcmlua2luaWFpLScuZGF0ZSgnWW1kLUhpcycpLicudHh0JzsKCQkJCUBjb3B5KCRkZXN0LCAkYmFrKTsKCQkJCSRvWydrb3BpamEnXSA9IGJhc2VuYW1lKCRiYWspOwoJCQkJJG9bJ2lyYXN5dGEnXSA9IGZpbGVfcHV0X2NvbnRlbnRzKCRkZXN0LCAka29kYXMpOwoJCQkJJG9bJ2Rlc3RfbWQ1J10gPSBtZDVfZmlsZSgkZGVzdCk7CgkJCQkkb1snZ2VyYWknXSA9ICgkb1snZGVzdF9tZDUnXSA9PT0gJzk5M2I0YjdjOTcyNWUzYTFhYTk0YTBmYTVkYzhhMzk2Jyk7CgkJCQlkZWxldGVfdHJhbnNpZW50KCdwc19yaW5rX21lZGlzJyk7CgkJCQlkZWxldGVfdHJhbnNpZW50KCdwc19yaW5rX3J1c3lzJyk7CgkJCX0KCQl9Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOwoJZWNobyB3cF9qc29uX2VuY29kZSgkbyk7CglleGl0Owp9LCAxMzApOwo=','base64').toString('utf8'),scope:'global',active:true,priority:5})});
+const j=js(s.text); out.snip=j&&j.id?j.id:null; out.snip_status=s.status;
+await new Promise(r=>setTimeout(r,4000));
 try{
-  const br=await chromium.launch();
-  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1500,height:1200}});
-  const pg=await ctx.newPage();
-  await pg.goto(B+'/?post_type=product&p=34918&preview=true',{waitUntil:'domcontentloaded',timeout:60000});
-  await pg.waitForTimeout(5000);
-  out.info=await pg.evaluate(()=>{
-    const n=s=>(s||'').replace(/\s+/g,' ').trim();
-    const f=document.querySelector('form.cart, .mnm_form, form.mnm_form');
-    const el=[];
-    if(f){
-      f.querySelectorAll('*').forEach(x=>{
-        const t=n(x.textContent);
-        if(!t || t.length>90) return;
-        if(x.children.length>2) return;
-        el.push({tag:x.tagName.toLowerCase(),cls:(x.className||'').toString().slice(0,60),txt:t.slice(0,80)});
-      });
-    }
-    return {
-      yraForma:!!f,
-      formaKlases:f?(f.className||'').toString():'',
-      elementai:el.slice(0,40),
-      angliski:[...document.querySelectorAll('body *')].map(x=>n(x.textContent))
-        .filter(t=>t.length<120 && /You have selected|Clear selection|PRODUCT|QUANTITY|items|Add to cart to continue/i.test(t))
-        .slice(0,10),
-      kaina:n((document.querySelector('.price')||{}).textContent),
-      statusas:n((document.querySelector('.mnm_price, .mnm-container-status, .mnm_message, .woocommerce-mnm-status')||{}).textContent),
-      klases:[...new Set([...document.querySelectorAll('[class*="mnm"]')].map(x=>(x.className||'').toString().split(' ').filter(c=>c.includes('mnm')).join(' ')))].slice(0,20)
-    };
-  });
-  await pg.screenshot({path:'screenshots/front_mnm.png',fullPage:false});
-  await br.close();
+  const res=execSync(`curl -sk "${B}/?ps_pullD=PlDdKk3" --max-time 120`,{encoding:'utf8',maxBuffer:20*1024*1024});
+  out.rez=js(res); if(!out.rez) out.raw=res.slice(0,600);
 }catch(e){ out.err=String(e).slice(0,300); }
-async function put(p,buf,m){const r=await fetch('https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/'+p,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify({message:m,content:buf.toString('base64')})});return r.status}
-if(fs.existsSync('screenshots/front_mnm.png')) await put('screenshots/front_mnm.png',fs.readFileSync('screenshots/front_mnm.png'),'front mnm shot');
-console.log(await put('screenshots/front_mnm.json',Buffer.from(JSON.stringify(out,null,1)),'front mnm rez'));
+if(out.snip) await wp('/wp-json/code-snippets/v1/snippets/'+out.snip,{method:'POST',body:JSON.stringify({active:false})});
+const r=await fetch('https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/screenshots/pullD.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify({message:'pullD rez',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')})});
+console.log('put',r.status);
