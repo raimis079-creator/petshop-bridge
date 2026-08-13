@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.5';
+	const VERSIJA = '1.6';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -1129,8 +1129,12 @@ class Petshop_Rinkiniai {
 				if(!K.length){
 					h='<div class="psr-tipas tuscia">Tipas nustatomas pagal sudėtį: <b>ta pati prekė × N</b> → Daugiau=pigiau pakas, <b>kelios skirtingos</b> → rinkinys.</div>';
 				} else if(t==='dp'){
+					var sku=$('#psr-sku');
+					if(sku && !sku.value.trim() && K[0].sku){ sku.value='DP-'+K[0].sku+'-'+K[0].kiekis; tikrinti(); }
 					h='<div class="psr-tipas dp"><b>Daugiau=pigiau pakas</b> — '+esc(K[0].pav.slice(0,40))+' × '+K[0].kiekis+' vnt.'
-					 +'<div class="psr-mut">Klientas matys ženklą „×'+K[0].kiekis+' VNT.\u201c, juostą „EKONOMIŠKA PAKUOTĖ\u201c ir vieneto kainą. Nuotrauka — bazinės prekės, kompozicija negeneruojama. Kategorija: DAUGIAU=PIGIAU.</div></div>';
+					 +'<div class="psr-mut">Klientas matys ženklą „×'+K[0].kiekis+' VNT.\u201c, juostą „EKONOMIŠKA PAKUOTĖ\u201c ir vieneto kainą. '
+					 +'Iš bazinės prekės perimama: aprašymas, nuotrauka, atributai (filtrams), kategorijos ir brendas. '
+					 +'SKU sugeneruojamas automatiškai. Kompozicija negeneruojama.</div></div>';
 				} else {
 					h='<div class="psr-tipas mnm"><b>Rinkinys</b> — '+K.length+' skirtingos prekės'
 					 +'<div class="psr-mut">Klientas matys sudėties sąrašą. Nuotrauka sugeneruojama iš komponentų. Kategorija: RINKINIAI + porūšis.</div></div>';
@@ -1245,7 +1249,7 @@ class Petshop_Rinkiniai {
 				var s=skaiciuoti();
 				var truk=[];
 				if(!$('#psr-pav').value.trim()) truk.push('pavadinimo');
-				if(!$('#psr-sku').value.trim()) truk.push('SKU');
+				if(!$('#psr-sku').value.trim() && tipas()!=='dp') truk.push('SKU');
 				if(!(s.kaina>0)) truk.push('kainos');
 				if(!K.length) truk.push('prekių');
 				var ok = truk.length===0;
@@ -1539,8 +1543,9 @@ class Petshop_Rinkiniai {
 		$komp  = (array) ( $d['komponentai'] ?? array() );
 
 		$klaidos = array();
+		$dp_tipas = ( ( $d['tipas'] ?? '' ) === 'dp' );
 		if ( $pav === '' ) { $klaidos[] = 'Trūksta pavadinimo.'; }
-		if ( $sku === '' ) { $klaidos[] = 'Trūksta SKU.'; }
+		if ( $sku === '' && ! $dp_tipas ) { $klaidos[] = 'Trūksta SKU.'; }
 		if ( $kaina <= 0 ) { $klaidos[] = 'Kaina turi būti teigiama.'; }
 		if ( ! $komp )     { $klaidos[] = 'Pridėkite bent vieną prekę.'; }
 
@@ -1648,6 +1653,18 @@ class Petshop_Rinkiniai {
 		if ( ! $baze ) { wp_send_json_error( 'Bazinė prekė #' . $bid . ' nerasta.' ); }
 		if ( $qty < 2 ) { wp_send_json_error( 'Pakui reikia bent 2 vnt.' ); }
 
+		/* SKU: jei neirasytas, generuojam pagal esama tvarka — DP-{bazes SKU}-{N} */
+		if ( $sku === '' || $sku === null ) {
+			$bsku = (string) $baze->get_sku();
+			$sku  = 'DP-' . ( $bsku !== '' ? $bsku : $bid ) . '-' . $qty;
+			$n = 2;
+			while ( wc_get_product_id_by_sku( $sku ) && wc_get_product_id_by_sku( $sku ) !== (int) $id ) {
+				$sku = 'DP-' . ( $bsku !== '' ? $bsku : $bid ) . '-' . $qty . '-' . $n;
+				$n++;
+				if ( $n > 20 ) { break; }
+			}
+		}
+
 		$naujas = ! $id;
 		if ( ! $naujas ) {
 			$esamas = get_post( $id );
@@ -1686,7 +1703,55 @@ class Petshop_Rinkiniai {
 			if ( $kat ) { $kategorijos = array_merge( $kategorijos, $kat ); }
 			$prod->set_category_ids( array_values( array_unique( array_map( 'intval', $kategorijos ) ) ) );
 
+			/*
+			 * ATRIBUTAI. Be ju pakas iskrenta is parduotuves filtru — klientas,
+			 * filtruodamas „be grudu" ar „12 kg", pako nemato. Todel perkeliam
+			 * VISUS bazines prekes atributus.
+			 *
+			 * Isimtis — pakuotes dydis: pakas nera 12 kg, jis yra 2 x 12 kg.
+			 * Jei kataloge jau yra multipack terminas („12 kg x 2", „2 x 12 kg"),
+			 * naudojam ji; jei ne — paliekam bazines reiksme, kad filtras bent
+			 * veiktu. Naujo termino cia NEKURIAM: terminu sarasas — katalogo
+			 * struktura, ja tvarko savininkas, ne rinkiniu langas.
+			 */
+			$atributai = array();
+			foreach ( (array) $baze->get_attributes() as $raktas => $atr ) {
+				$naujas_atr = clone $atr;
+				if ( $raktas === 'pa_pakuotes_dydis' && $atr->is_taxonomy() ) {
+					$bazes_dydis = wc_get_product_terms( $bid, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );
+					$multi = null;
+					if ( ! empty( $bazes_dydis[0] ) ) {
+						$d = trim( $bazes_dydis[0] );
+						$variantai = array(
+							$d . ' × ' . $qty, $d . ' x ' . $qty, $d . '×' . $qty,
+							$qty . ' × ' . $d, $qty . ' x ' . $d, $qty . '×' . $d,
+						);
+						foreach ( $variantai as $v ) {
+							$t = get_term_by( 'name', $v, 'pa_pakuotes_dydis' );
+							if ( $t && ! is_wp_error( $t ) ) { $multi = (int) $t->term_id; break; }
+						}
+					}
+					if ( $multi ) { $naujas_atr->set_options( array( $multi ) ); }
+				}
+				$atributai[ $raktas ] = $naujas_atr;
+			}
+			if ( $atributai ) { $prod->set_attributes( $atributai ); }
+
+			/* brendas ir zymos — kad pakas gyventu kartu su bazine preke */
+			$brand = wp_get_post_terms( $bid, 'product_brand', array( 'fields' => 'ids' ) );
+
 			$prod->save();
+
+			/* Taksonominiai atributai neislieka be `_product_attributes` — todel
+			   set_attributes() PRIES save(), o terminai priskiriami PO jo. */
+			foreach ( (array) $baze->get_attributes() as $raktas => $atr ) {
+				if ( ! $atr->is_taxonomy() ) { continue; }
+				$ids_t = ( $raktas === 'pa_pakuotes_dydis' && isset( $atributai[ $raktas ] ) )
+					? $atributai[ $raktas ]->get_options()
+					: wc_get_product_terms( $bid, $raktas, array( 'fields' => 'ids' ) );
+				if ( $ids_t ) { wp_set_object_terms( $prod->get_id(), array_map( 'intval', $ids_t ), $raktas ); }
+			}
+			if ( $brand && ! is_wp_error( $brand ) ) { wp_set_object_terms( $prod->get_id(), array_map( 'intval', $brand ), 'product_brand' ); }
 			$pid = $prod->get_id();
 			if ( ! $pid ) { wp_send_json_error( 'Nepavyko išsaugoti pako.' ); }
 
