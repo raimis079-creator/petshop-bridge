@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.17';
+	const VERSIJA = '1.18';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -81,6 +81,7 @@ class Petshop_Rinkiniai {
 		add_filter( 'gettext_with_context', array( __CLASS__, 'vertimai_kontekste' ), 20, 4 );
 		add_filter( 'ngettext', array( __CLASS__, 'vertimai_daugiskaita' ), 20, 5 );
 		add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'sutaupote' ), 11 );
+		add_filter( 'woocommerce_get_availability_text', array( __CLASS__, 'komponento_bukle' ), 20, 2 );
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
@@ -383,6 +384,24 @@ class Petshop_Rinkiniai {
 		if ( is_admin() || ! self::rinkinio_puslapis() ) { return $vertimas; }
 		$sablonas = ( $skaicius === 1 ) ? $vienas : $daug;
 		return str_replace( array( 'items', 'item' ), array( 'vnt.', 'vnt.' ), $sablonas );
+	}
+
+	/**
+	 * Komponento bukle rinkinio sudetyje — be skaiciu.
+	 *
+	 * Kiek konkreciai turim vienos prekes, klientui ne tik nesvarbu, bet ir
+	 * klaidina: jis perka rinkini, ne ta preke atskirai. „Liko 2 vnt." salia
+	 * komponento skaitosi kaip rinkinio likutis, nors reiskia visai kita.
+	 * Todel cia tik „Turime" arba „Neturime".
+	 *
+	 * Liecia TIK komponentus — pacio rinkinio bukle lieka kaip buvo.
+	 */
+	public static function komponento_bukle( $tekstas, $preke ) {
+		if ( is_admin() || ! self::rinkinio_puslapis() ) { return $tekstas; }
+		global $post;
+		if ( $post && $preke && (int) $preke->get_id() === (int) $post->ID ) { return $tekstas; }
+		if ( ! $preke ) { return $tekstas; }
+		return $preke->is_in_stock() ? 'Turime' : 'Neturime';
 	}
 
 	/**
