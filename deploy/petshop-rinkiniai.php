@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.21';
+	const VERSIJA = '1.22';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -2397,11 +2397,16 @@ class Petshop_Rinkiniai {
 		}
 		update_post_meta( $pid, '_ps_rink_komp_hash', $parasas );
 
-		if ( function_exists( 'petshop_generate_composition' ) ) {
-			$args = array();
-			foreach ( $komponentai as $cid ) { $args[] = array( 'id' => $cid ); }
-			return petshop_generate_composition( $pid, $args );
-		}
+		/*
+		 * Anksciau cia pirma buvo kviecama snippet 539 funkcija
+		 * `petshop_generate_composition()`, o mano isdestymas likdavo atsargine
+		 * varianta. Del to nauja kompozicija (herojus + palydovai) taip ir
+		 * nepasirodydavo — 539 pieste 3x1 juosta ir grazindavo rezultata pirma.
+		 *
+		 * Dabar rinkiniu langas piesia pats: isdestymo taisykle (2-3 prekes —
+		 * herojus, 4+ — tinklelis) yra sio lango sprendimas, todel ir piesimas
+		 * turi likti cia. Snippet 539 forma nepaliesta — ji piesia savo.
+		 */
 		return self::kompozicija_vidine( $pid, $komponentai );
 	}
 
