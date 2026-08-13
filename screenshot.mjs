@@ -1,108 +1,49 @@
+// RINK-RECON4-0811
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 import fs from 'fs';
 import { execSync } from 'child_process';
-import { chromium } from 'playwright';
-const B='https://dev.avesa.lt';
-const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
-const TOK=process.env.GH_TOKEN||'', REPO=process.env.GH_REPO||'';
+const B = 'https://dev.avesa.lt';
+const U = process.env.WP_USER, P = (process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH = 'Basic ' + Buffer.from(U+':'+P).toString('base64');
+const TOK = process.env.GH_TOKEN || '';
 fs.mkdirSync('screenshots',{recursive:true});
-const out={marker:'BUSENA', ts:new Date().toISOString()};
-async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
-function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
-const phpDep = `
-add_action('wp_loaded', function(){
-  if ( ( \$_GET['ps_dep'] ?? '' ) !== 'Kp5tW7' ) return;
-  @set_time_limit(240);
-  \$o=array(); \$f=basename( \$_GET['f'] ?? '' ); \$b64=\$_POST['turinys'] ?? '';
-  if(!\$f||!\$b64){ \$o['err']='nera'; header('Content-Type: application/json'); echo wp_json_encode(\$o); exit; }
-  \$k=base64_decode(\$b64); \$o['md5']=md5(\$k);
-  \$ok=null;
-  try{ @token_get_all(\$k, TOKEN_PARSE); \$ok=true; }
-  catch(\\ParseError \$e){ \$ok=false; \$o['lint']=\$e->getMessage(); }
-  \$o['sintakse_ok']=\$ok;
-  if(\$ok){
-    \$d=WPMU_PLUGIN_DIR.'/'.\$f;
-    if(file_exists(\$d)){ @copy(\$d, WPMU_PLUGIN_DIR.'/.bak-'.\$f.'-'.date('Ymd-His')); }
-    file_put_contents(\$d,\$k); \$o['sutampa']=(md5_file(\$d)===\$o['md5']);
-    delete_transient('ps_kat_duomenys');
-  }
-  header('Content-Type: application/json; charset=utf-8'); echo wp_json_encode(\$o); exit;
-}, 99);
-`;
-const s1=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Busena Deploy',code:phpDep,scope:'global',active:true,priority:5})});
-const j1=js(s1.text);
-const phpAuto = `
-add_action('init', function(){
-  if ( ( \$_GET['ps_auto'] ?? '' ) !== 'Qz7Rk88' ) return;
-  \$a = get_users(array('role'=>'administrator','number'=>1)); \$u = \$a ? \$a[0] : null;
-  if ( ! \$u ) { wp_die('no admin'); }
-  wp_set_current_user(\$u->ID);
-  \$tok = \\WP_Session_Tokens::get_instance(\$u->ID)->create(time()+1800);
-  wp_set_auth_cookie(\$u->ID, false, true, \$tok);
-  wp_safe_redirect( admin_url( isset(\$_GET['to']) ? \$_GET['to'] : 'index.php' ) ); exit;
-});
-`;
-const s2=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP Busena Autologin',code:phpAuto,scope:'global',active:true,priority:5})});
-const j2=js(s2.text);
-await new Promise(r=>setTimeout(r,4000));
-try{
-  const gg=await fetch('https://api.github.com/repos/'+REPO+'/contents/deploy/petshop-katalogas.php.b64?ref=7e2d5454a2ae6f09ebf4a767f9009af1d323beac',{headers:{'Authorization':'Bearer '+TOK}});
-  const gj=await gg.json();
-  const raw=Buffer.from(gj.content||'','base64').toString('utf8').trim();
-  fs.writeFileSync('/tmp/pl.txt','turinys='+encodeURIComponent(raw));
-  out.deploy=js(execSync('curl -sk -X POST "'+B+'/?ps_dep=Kp5tW7&f=petshop-katalogas.php" --data @/tmp/pl.txt --max-time 180',{encoding:'utf8',maxBuffer:20*1024*1024}));
-}catch(e){ out.deploy_err=String(e).slice(0,200); }
-const files=[];
-try{
-  const br=await chromium.launch();
-  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:950}});
-  const pg=await ctx.newPage();
-  const errs=[]; pg.on('pageerror',e=>errs.push(String(e).slice(0,160)));
-  pg.on('dialog', async d=>{ await d.accept(); });
-  await pg.goto(B+'/?ps_auto=Qz7Rk88&to='+encodeURIComponent('admin.php?page=ps-katalogas'),{waitUntil:'domcontentloaded',timeout:60000});
-  await pg.waitForSelector('.pskat-t .atv',{timeout:45000});
-  let ok=false;
-  for(let b=0;b<3 && !ok;b++){
-    await pg.evaluate(()=>{ const k=document.querySelector('.kort-kartoti'); if(k){k.click();return;} const a=document.querySelector('.pskat-t .atv'); if(a) a.click(); });
-    try{ await pg.waitForSelector('.kort-busena',{timeout:25000}); ok=true; }catch(e){ await pg.waitForTimeout(3000); }
-  }
-  out.kortele=ok;
-  if(ok){
-    out.pradzia = await pg.evaluate(()=>{
-      const b=document.querySelector('.kort-busena');
-      return { klase:b.className, tekstas:b.innerText.replace(/\n/g,' | ') };
-    });
-    await pg.screenshot({path:'screenshots/busena1.png',fullPage:false}); files.push('screenshots/busena1.png');
-    await pg.click('.kb-keisti');
-    await pg.waitForTimeout(4000);
-    out.po_isemimo = await pg.evaluate(()=>{
-      const b=document.querySelector('.kort-busena');
-      const tr=document.querySelector('.pskat-t tbody tr[data-id]');
-      return { klase:b.className, tekstas:b.innerText.replace(/\n/g,' | '),
-               sarase:(tr? tr.innerText.slice(0,80).replace(/\n/g,' ') : '') };
-    });
-    await pg.screenshot({path:'screenshots/busena2.png',fullPage:false}); files.push('screenshots/busena2.png');
-    await pg.click('.kb-keisti');
-    await pg.waitForTimeout(4000);
-    out.po_grazinimo = await pg.evaluate(()=>{
-      const b=document.querySelector('.kort-busena');
-      return { klase:b.className, tekstas:b.innerText.replace(/\n/g,' | ') };
-    });
-  }
-  out.js=errs;
-  await br.close();
-}catch(e){ out.err=String(e).slice(0,300); }
-for (const j of [j1,j2]) { if(j&&j.id) await wp('/wp-json/code-snippets/v1/snippets/'+j.id,{method:'DELETE'}); }
-for (const f of files){
-  try{ const body={message:'shot',content:fs.readFileSync(f).toString('base64')};
-    const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+f,{headers:{'Authorization':'Bearer '+TOK}});
-    if(g.status===200){ body.sha=(await g.json()).sha; }
-    await fetch('https://api.github.com/repos/'+REPO+'/contents/'+f,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
-  }catch(e){}
+
+async function wp(path, opts={}){
+  try{
+    const r = await fetch(B+path, {...opts, headers:{'Authorization':AUTH,'Content-Type':'application/json',...(opts.headers||{})}});
+    const t = await r.text();
+    return {status:r.status, text:t};
+  }catch(e){ return {status:0, text:String(e)}; }
 }
-const body={message:'res busena',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/busena.json',{headers:{'Authorization':'Bearer '+TOK}});
-if(g.status===200){ body.sha=(await g.json()).sha; }
-await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/busena.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json'},body:JSON.stringify(body)});
-console.log('ok');
+function jsonSafe(t){ const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x;})); try{return JSON.parse(t.slice(i));}catch(e){return null;} }
+
+const out = {marker:'RINK-RECON4-0811', ts:new Date().toISOString()};
+
+// 1. TEMP snippet: DB recon for MnM bundles
+const phpB64 = `YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCgkX0dFVFsncHNfcGF0aWtyYSddID8/ICcnKSE9PSdQdDExWno5JykgcmV0dXJuOwoJQHNldF90aW1lX2xpbWl0KDE4MCk7CglnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OwoJJG89YXJyYXkoJ21hcmtlcic9PidTS1VCSSBQQVRJS1JBJywnbGFpa2FzJz0+Y3VycmVudF90aW1lKCdteXNxbCcpKTsKCgkvLyAxLiBNbk0gcHJla2VzIHBhZ2FsIGJ1c2VuYQoJJG9bJ21ubV9wYWdhbF9idXNlbmEnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIgoJCVNFTEVDVCBwLnBvc3Rfc3RhdHVzIHN0LCBDT1VOVCgqKSBuIEZST00geyRwZn1wb3N0cyBwCgkJSk9JTiB7JHBmfXRlcm1fcmVsYXRpb25zaGlwcyB0ciBPTiB0ci5vYmplY3RfaWQ9cC5JRAoJCUpPSU4geyRwZn10ZXJtX3RheG9ub215IHR0IE9OIHR0LnRlcm1fdGF4b25vbXlfaWQ9dHIudGVybV90YXhvbm9teV9pZAoJCUpPSU4geyRwZn10ZXJtcyB0IE9OIHQudGVybV9pZD10dC50ZXJtX2lkCgkJV0hFUkUgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCB0dC50YXhvbm9teT0ncHJvZHVjdF90eXBlJyBBTkQgdC5zbHVnPSdtaXgtYW5kLW1hdGNoJwoJCUdST1VQIEJZIHAucG9zdF9zdGF0dXMiLCBBUlJBWV9BKTsKCgkvLyAyLiBLb25rcmV0dXMgcmlua2luaWFpCgkkb1sncmlua2luaWFpJ109YXJyYXkoKTsKCWZvcmVhY2goYXJyYXkoMzQxNzIsMzQxNzAsMzQxNjgsMzQxNzUsMzQxNTYsMzQxNTMsMzQxNTgsMzQxOTYsMzQyMDcsMzQyMTcsMzQyMzIsMzQyNDIpIGFzICRpZCl7CgkJJHA9Z2V0X3Bvc3QoJGlkKTsKCQkkb1sncmlua2luaWFpJ11bXT1hcnJheSgnaWQnPT4kaWQsJ3lyYSc9PiRwPzE6MCwnc3QnPT4kcD8kcC0+cG9zdF9zdGF0dXM6J05FUkEnLAoJCQkndGlwYXMnPT4kcD9pbXBsb2RlKCcsJywoYXJyYXkpd3BfZ2V0X29iamVjdF90ZXJtcygkaWQsJ3Byb2R1Y3RfdHlwZScsYXJyYXkoJ2ZpZWxkcyc9PiduYW1lcycpKSk6Jy0nLAoJCQkncGF2Jz0+JHA/bWJfc3Vic3RyKCRwLT5wb3N0X3RpdGxlLDAsNDQpOictJyk7Cgl9CgkvLyAzLiBjaGlsZF9pdGVtcwoJJG9bJ2NoaWxkX2l0ZW1zJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn13Y19tbm1fY2hpbGRfaXRlbXMiKTsKCSRvWydrb250ZWluZXJpdSddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVChESVNUSU5DVCBjb250YWluZXJfaWQpIEZST00geyRwZn13Y19tbm1fY2hpbGRfaXRlbXMiKTsKCS8vIDQuIERQIHBha2FpCgkkb1snZHAnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBvc3RtZXRhIFdIRVJFIG1ldGFfa2V5PSdfZHBfYmFzZV9wcm9kdWN0X2lkJyIpOwoJLy8gNS4gU2l1a3NsaW7El2plCgkkb1snc2l1a3NsaXVvc2UnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBJRCxwb3N0X3RpdGxlLHBvc3RfbW9kaWZpZWQgRlJPTSB7JHBmfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSd0cmFzaCcgT1JERVIgQlkgcG9zdF9tb2RpZmllZCBERVNDIExJTUlUIDEyIixBUlJBWV9BKTsKCS8vIDYuIG11LXBsdWdpbnMgZmFpbGFpCgkkb1snbXUnXT1hcnJheSgpOwoJZm9yZWFjaChnbG9iKFdQTVVfUExVR0lOX0RJUi4nLyoucGhwJykgYXMgJGYpewoJCSRvWydtdSddW109YXJyYXkoJ2YnPT5iYXNlbmFtZSgkZiksJ2tiJz0+cm91bmQoZmlsZXNpemUoJGYpLzEwMjQpLCdtJz0+ZGF0ZSgnbS1kIEg6aScsZmlsZW10aW1lKCRmKSkpOwoJfQoJJG9bJ2tsYXNlX3JpbmtpbmlhaSddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pYWknKTsKCSRvWydrbGFzZV9saWt1Y2lhaSddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pdV9MaWt1Y2lhaScpOwoJJG9bJ3ZlcnNpamEnXT1jbGFzc19leGlzdHMoJ1BldHNob3BfUmlua2luaWFpJyk/UGV0c2hvcF9SaW5raW5pYWk6OlZFUlNJSkE6Jy0nOwoJLy8gNy4gQWRtaW4gbWVuaXUgcmVnaXN0cmFjaWphCgkkb1snc3VibWVudSddPWFycmF5KCk7CglnbG9iYWwgJHN1Ym1lbnU7CglpZihpc3NldCgkc3VibWVudVsncHMta2F0YWxvZ2FzJ10pKSBmb3JlYWNoKCRzdWJtZW51Wydwcy1rYXRhbG9nYXMnXSBhcyAkcyl7ICRvWydzdWJtZW51J11bXT0kc1swXS4nIOKGkiAnLiRzWzJdOyB9CgkvLyA4LiBOYXZpZ2FjaWpvcyBqdW9zdGEga2F0YWxvZ28gZmFpbGUKCSRrPUBmaWxlX2dldF9jb250ZW50cyhXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWthdGFsb2dhcy5waHAnKTsKCSRvWyduYXZfdHVyaV9yaW5raW5pdXMnXT0kaz8oc3RyaXBvcygkaywncHMtcmlua2luaWFpJykhPT1mYWxzZT8xOjApOm51bGw7CglpZigkayl7ICRwPXN0cmlwb3MoJGssJ2Z1bmN0aW9uIG5hdmlnYWNpamEnKTsgJG9bJ25hdl9rb2RhcyddPSRwIT09ZmFsc2U/c3Vic3RyKCRrLCRwLDE4MDApOicobmVyYXN0YSknOyB9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMwKTsK`;
+const php = Buffer.from(phpB64,'base64').toString('utf8');
+const snipRes = await wp('/wp-json/code-snippets/v1/snippets', {method:'POST', body:JSON.stringify({name:'TEMP ZZ Nav3 v1', code:php, scope:'global', active:true, priority:10})});
+const snip = jsonSafe(snipRes.text);
+out.snip_id = snip && snip.id ? snip.id : null;
+out.snip_status = snipRes.status;
+await new Promise(r=>setTimeout(r,3000));
+
+// 2. Call the gate
+try {
+  const res = execSync(`curl -sk "${B}/?ps_nav3=Nv33Kp7&k=ps2026" --max-time 120`, {encoding:'utf8', maxBuffer: 20*1024*1024});
+  out.recon = jsonSafe(res);
+  if(!out.recon) out.recon_raw = res.slice(0,3000);
+} catch(e){ out.recon_err = String(e).slice(0,500); }
+
+// 3. Deactivate temp snippet
+if(out.snip_id){
+  const d = await wp('/wp-json/code-snippets/v1/snippets/'+out.snip_id, {method:'POST', body:JSON.stringify({active:false})});
+  out.snip_deact = d.status;
+}
+
+// 4. Write result via Contents API
+const fn = 'screenshots/rinkrec_'+Date.now()+'.json';
+const body = {message:'rinkrec result', content: Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
+const pr = await fetch('https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/'+fn, {method:'PUT', headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'bridge'}, body:JSON.stringify(body)});
+console.log('putResult', pr.status, fn);
+fs.writeFileSync(fn.replace('screenshots/','screenshots/local_'), JSON.stringify(out).slice(0,500));
