@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.13';
+	const VERSIJA = '1.14';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -69,10 +69,14 @@ class Petshop_Rinkiniai {
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );
 		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ) );
+		add_filter( 'body_class', array( __CLASS__, 'front_klase' ) );
 		/* 200, nes aprasymu akordeonas (512) kabinasi prio 98 — su mazesniu
 		   prioritetu jis perrasytu musu skirtuka atgal i savo psdp_render. */
 		add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 200 );
 		add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );
+		add_filter( 'gettext', array( __CLASS__, 'vertimai' ), 20, 3 );
+		add_filter( 'ngettext', array( __CLASS__, 'vertimai_daugiskaita' ), 20, 5 );
+		add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'sutaupote' ), 11 );
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
@@ -295,7 +299,108 @@ class Petshop_Rinkiniai {
 		return $rates;
 	}
 
+	/**
+	 * Mix and Match vertimai.
+	 *
+	 * Pluginas neisverstas: klientas mato „PRODUCT / QUANTITY",
+	 * „You have selected 3 items. Add to cart to continue…" ir „(3/3 items)".
+	 * Verciam per gettext — taip nereikia liesti plugino failu, kurie dings per
+	 * atnaujinima.
+	 */
+	public static function vertimai( $vertimas, $tekstas, $domenas ) {
+		if ( $domenas !== 'woocommerce-mix-and-match-products' ) { return $vertimas; }
+		$zodynas = array(
+			'Product'                => 'Prekė',
+			'Quantity'               => 'Kiekis',
+			'Price'                  => 'Kaina',
+			'Clear'                  => 'Išvalyti',
+			'Clear selections'       => 'Išvalyti pasirinkimus',
+			'Reset selections'       => 'Išvalyti pasirinkimus',
+			'In stock'               => 'Turime',
+			'Out of stock'           => 'Neturime',
+			'Add to cart to continue&hellip;' => 'Įsidėkite į krepšelį',
+			'Add to cart to continue…'        => 'Įsidėkite į krepšelį',
+		);
+		if ( isset( $zodynas[ $tekstas ] ) ) { return $zodynas[ $tekstas ]; }
+
+		/* Frazes su skaiciais — keiciam pagal dali, nes tikslus formatas kinta */
+		if ( mb_strpos( $tekstas, 'You have selected' ) !== false ) {
+			return str_replace(
+				array( 'You have selected', 'items', 'item', 'Add to cart to continue&hellip;', 'Add to cart to continue…', '.' ),
+				array( 'Pasirinkote', 'vnt.', 'vnt.', 'Įsidėkite į krepšelį', 'Įsidėkite į krepšelį', '.' ),
+				$tekstas
+			);
+		}
+		if ( mb_strpos( $tekstas, 'Please select' ) !== false ) {
+			return str_replace(
+				array( 'Please select', 'more items', 'more item', 'items', 'item' ),
+				array( 'Pasirinkite dar', 'vnt.', 'vnt.', 'vnt.', 'vnt.' ),
+				$tekstas
+			);
+		}
+		if ( $tekstas === '%1$s / %2$s items' || $tekstas === '%s items' ) { return str_replace( 'items', 'vnt.', $tekstas ); }
+		return $vertimas;
+	}
+
+	public static function vertimai_daugiskaita( $vertimas, $vienas, $daug, $skaicius, $domenas ) {
+		if ( $domenas !== 'woocommerce-mix-and-match-products' ) { return $vertimas; }
+		$sablonas = ( $skaicius === 1 ) ? $vienas : $daug;
+		return str_replace( array( 'items', 'item' ), array( 'vnt.', 'vnt.' ), $sablonas );
+	}
+
+	/**
+	 * „Sutaupote X €" po kaina.
+	 *
+	 * Stipriausias pardavimo argumentas ir vienintelis skaicius, kurio klientas
+	 * pats neapskaiciuos. DP pakai ji jau turi (snippet 570) — rinkiniams
+	 * pridedam cia, kad butu vienodai.
+	 */
+	public static function sutaupote() {
+		global $product;
+		if ( ! $product || ! is_a( $product, 'WC_Product' ) ) { return; }
+		$pid = $product->get_id();
+		if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return; }   /* DP tvarko 570 */
+
+		$kiekiai = json_decode( (string) get_post_meta( $pid, self::META_KIEKIAI, true ), true );
+		if ( ! is_array( $kiekiai ) || ! $kiekiai ) { return; }
+
+		$atskirai = 0; $vnt = 0;
+		foreach ( $kiekiai as $cid => $kiek ) {
+			$c = wc_get_product( (int) $cid );
+			if ( ! $c ) { return; }
+			$kaina = (float) $c->get_price();
+			if ( $kaina <= 0 ) { return; }
+			$atskirai += $kaina * max( 1, (int) $kiek );
+			$vnt += max( 1, (int) $kiek );
+		}
+		$rinkinio = (float) $product->get_price();
+		if ( $rinkinio <= 0 || $atskirai <= $rinkinio ) { return; }
+
+		$skirtumas = $atskirai - $rinkinio;
+		$proc = round( $skirtumas / $atskirai * 100 );
+		?>
+		<div class="ps-rink-nauda">
+			<table>
+				<tr><td>Rinkinyje</td><td class="ps-r"><b><?php echo (int) $vnt; ?> vnt.</b></td></tr>
+				<tr><td>Perkant atskirai</td><td class="ps-r ps-sen"><?php echo wp_kses_post( wc_price( $atskirai ) ); ?></td></tr>
+				<tr class="ps-taupo"><td><b>Sutaupote</b></td>
+					<td class="ps-r"><b><?php echo wp_kses_post( wc_price( $skirtumas ) ); ?> (<?php echo (int) $proc; ?>%)</b></td></tr>
+			</table>
+		</div>
+		<?php
+	}
+
 	/** Rinkinio sudeties isvaizda prekes puslapyje. */
+	public static function front_klase( $klases ) {
+		if ( is_product() ) {
+			global $post;
+			if ( $post && get_post_meta( $post->ID, self::META_KIEKIAI, true ) ) {
+				$klases[] = 'ps-fiksuotas-rinkinys';
+			}
+		}
+		return $klases;
+	}
+
 	public static function front_stilius() {
 		if ( ! is_product() ) { return; }
 		?>
@@ -307,6 +412,21 @@ class Petshop_Rinkiniai {
 		.ps-rink-img img{width:74px;height:74px;object-fit:contain;background:#fff;border:1px solid #eee;border-radius:4px}
 		.ps-rink-tekstas h4{margin:0 0 5px;font-size:15px;line-height:1.35}
 		.ps-rink-tekstas p{margin:0;color:#555;font-size:14px;line-height:1.5}
+		.ps-rink-nauda{background:#f6f8f6;border:1px solid #dfe7df;border-radius:4px;padding:10px 14px;margin:14px 0}
+		.ps-rink-nauda table{width:100%;border-collapse:collapse;font-size:14px}
+		.ps-rink-nauda td{padding:3px 0;border:0}
+		.ps-rink-nauda .ps-r{text-align:right}
+		.ps-rink-nauda .ps-sen{color:#888;text-decoration:line-through}
+		.ps-rink-nauda .ps-taupo td{color:#2e5c48;padding-top:7px;border-top:1px solid #dfe7df;font-size:15px}
+		/* Fiksuotam rinkiniui klientas nieko nesirenka — pasirinkimo valdikliai
+		   tik klaidina. Kiekiai jau nustatyti, todel slepiam „Isvalyti" ir bukles
+		   eilute; sudeties lentele lieka matoma. */
+		body.ps-fiksuotas-rinkinys .mnm_reset_link,
+		body.ps-fiksuotas-rinkinys .mnm-reset,
+		body.ps-fiksuotas-rinkinys a.reset_variations,
+		body.ps-fiksuotas-rinkinys .mnm_message,
+		body.ps-fiksuotas-rinkinys .mnm-container-status{display:none!important}
+		body.ps-fiksuotas-rinkinys .mnm_price .amount{font-weight:600}
 		.ps-rink-daugiau{margin-top:8px}
 		.ps-rink-daugiau>summary{cursor:pointer;color:#2e5c48;font-size:13.5px;font-weight:600;list-style:none;display:inline-flex;align-items:center;gap:6px;padding:3px 0}
 		.ps-rink-daugiau>summary::-webkit-details-marker{display:none}
