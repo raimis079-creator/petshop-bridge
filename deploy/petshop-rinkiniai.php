@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.6';
+	const VERSIJA = '1.7';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -65,6 +65,7 @@ class Petshop_Rinkiniai {
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );
+		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ) );
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
@@ -115,6 +116,23 @@ class Petshop_Rinkiniai {
 			. '</form>'
 			. '<div class="pskat-meta">Rinkinių valdymas</div>'
 			. '</div>';
+	}
+
+	/** Rinkinio sudeties isvaizda prekes puslapyje. */
+	public static function front_stilius() {
+		if ( ! is_product() ) { return; }
+		?>
+		<style>
+		.ps-rink-sudetis{margin:14px 0}
+		.ps-rink-preke{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #eee}
+		.ps-rink-preke:last-child{border-bottom:0}
+		.ps-rink-img{flex:none;width:74px}
+		.ps-rink-img img{width:74px;height:74px;object-fit:contain;background:#fff;border:1px solid #eee;border-radius:4px}
+		.ps-rink-tekstas h4{margin:0 0 5px;font-size:15px;line-height:1.35}
+		.ps-rink-tekstas p{margin:0;color:#555;font-size:14px;line-height:1.5}
+		@media(max-width:600px){.ps-rink-img{width:56px}.ps-rink-img img{width:56px;height:56px}}
+		</style>
+		<?php
 	}
 
 	/* ==================== PAGALBINES ==================== */
@@ -277,6 +295,59 @@ class Petshop_Rinkiniai {
 		if ( ! $balsai ) { return null; }
 		arsort( $balsai );
 		return (int) array_key_first( $balsai );
+	}
+
+	/**
+	 * Kur rinkinys atsiras kataloge.
+	 *
+	 * RINKINIAI (679) — VISADA. Be jo rinkinys parduotuveje praktiskai nerandamas:
+	 * misrus rinkinys (maistas + skanestas + zaislas) neturi dominuojancios
+	 * kategorijos, tad anksciau likdavo tik „Kita" — t.y. niekur.
+	 *
+	 * Gyvuno rusis (SUNIMS/KATEMS/...) — pagal komponentus. Net jei prekes is
+	 * skirtingu skyriu (maistas, zaislas), jos beveik visada to paties gyvuno.
+	 *
+	 * Porusis (Konservu/Skanestu/Kramtalu rinkiniai) — tik jei rinkinys vienos
+	 * rusies. Misriam porusio nera ir tai normalu; jis lieka po RINKINIAI.
+	 */
+	private static function kategorijos( $komponentu_ids, $rankiniu = array() ) {
+		$out = array( 679 );                       /* RINKINIAI — visada */
+
+		$rusis = self::rusis( $komponentu_ids );
+		if ( $rusis ) { $out[] = $rusis; }
+
+		/* Porusis pagal komponentu kategorijas ir pavadinimus */
+		$skaic = array(); $pav = array();
+		foreach ( (array) $komponentu_ids as $cid ) {
+			$p = wc_get_product( $cid );
+			if ( $p ) { $pav[] = mb_strtolower( $p->get_name() ); }
+			foreach ( wc_get_product_term_ids( $cid, 'product_cat' ) as $kid ) {
+				if ( in_array( (int) $kid, array( 91, 679, 682, 683, 684 ), true ) ) { continue; }
+				$skaic[ (int) $kid ] = ( $skaic[ (int) $kid ] ?? 0 ) + 1;
+			}
+		}
+		if ( $skaic ) {
+			arsort( $skaic );
+			$vyrauja = (int) array_key_first( $skaic );
+			$viso    = array_sum( $skaic );
+			/* porusi skiriam tik kai bent 2/3 komponentu is tos pacios kategorijos */
+			if ( $skaic[ $vyrauja ] >= ceil( $viso * 0.66 ) ) {
+				$t = get_term( $vyrauja, 'product_cat' );
+				$vardas = ( $t && ! is_wp_error( $t ) ) ? mb_strtolower( $t->name ) : '';
+				if ( mb_strpos( $vardas, 'konserv' ) !== false ) {
+					$out[] = 682;
+				} elseif ( mb_strpos( $vardas, 'skanėst' ) !== false || mb_strpos( $vardas, 'skanest' ) !== false ) {
+					$tekstas = implode( ' ', $pav );
+					$kramtalai = array( 'ausis', 'ausys', 'koja', 'kojos', 'trachėj', 'kaul', 'snukis', 'kanop', 'sausgysl', 'kramtal', 'ragas', 'uodeg', 'sparn' );
+					$rasta = false;
+					foreach ( $kramtalai as $zodis ) { if ( mb_strpos( $tekstas, $zodis ) !== false ) { $rasta = true; break; } }
+					$out[] = $rasta ? 684 : 683;
+				}
+			}
+		}
+
+		if ( $rankiniu ) { $out = array_merge( $out, array_map( 'intval', $rankiniu ) ); }
+		return array_values( array_unique( array_filter( array_map( 'intval', $out ) ) ) );
 	}
 
 	/** Svorio reiksmes, surikiuotos pagal tikra dydi (ne abecele). */
@@ -1566,10 +1637,34 @@ class Petshop_Rinkiniai {
 		}
 		if ( $viso < 1 ) { wp_send_json_error( 'Kiekių suma turi būti bent 1.' ); }
 
-		/* aprasymas — toks pat kaip 539, kad rinkiniai atrodytu vienodai */
-		$turinys = '<h3>Rinkinyje rasite (' . $viso . ' vnt.):</h3>' . "\n<ol>\n";
-		foreach ( $pavadinimai as $n ) { $turinys .= '  <li>' . esc_html( $n ) . "</li>\n"; }
-		$turinys .= "</ol>\n";
+		/*
+		 * Aprasymas. Anksciau buvo tik sarasas pavadinimu — klientas nezinojo,
+		 * ka perka. Dabar prie kiekvienos prekes pridedam jos pacios aprasyma
+		 * (trumpa, o jei jo nera — pirma pilno aprasymo pastraipa).
+		 */
+		$turinys = '<h3>Rinkinyje rasite (' . $viso . ' vnt.):</h3>' . "\n";
+		$turinys .= '<div class="ps-rink-sudetis">' . "\n";
+		foreach ( $kiekiai as $cid => $kiek ) {
+			$cp = wc_get_product( $cid );
+			if ( ! $cp ) { continue; }
+			$aprasas = trim( wp_strip_all_tags( $cp->get_short_description() ) );
+			if ( $aprasas === '' ) {
+				$pilnas = trim( wp_strip_all_tags( $cp->get_description() ) );
+				if ( $pilnas !== '' ) {
+					$dalys = preg_split( '/\n\s*\n/', $pilnas );
+					$aprasas = trim( $dalys[0] );
+					if ( mb_strlen( $aprasas ) > 320 ) { $aprasas = mb_substr( $aprasas, 0, 320 ) . '…'; }
+				}
+			}
+			$img = $cp->get_image_id() ? wp_get_attachment_image( $cp->get_image_id(), 'thumbnail', false, array( 'class' => 'ps-rink-foto' ) ) : '';
+			$turinys .= '<div class="ps-rink-preke">' . "\n";
+			if ( $img ) { $turinys .= '  <div class="ps-rink-img">' . $img . "</div>\n"; }
+			$turinys .= '  <div class="ps-rink-tekstas">' . "\n";
+			$turinys .= '    <h4>' . ( $kiek > 1 ? $kiek . ' × ' : '' ) . esc_html( $cp->get_name() ) . "</h4>\n";
+			if ( $aprasas !== '' ) { $turinys .= '    <p>' . esc_html( $aprasas ) . "</p>\n"; }
+			$turinys .= "  </div>\n</div>\n";
+		}
+		$turinys .= "</div>\n";
 
 		/* TA PATI PREKE x N -> „Daugiau=pigiau" pakas, ne MnM. Priezastis — vitrina:
 		   pakas turi savo isvaizda (zenklas xN, ekonomiska pakuote, vieneto kaina),
@@ -1601,7 +1696,7 @@ class Petshop_Rinkiniai {
 			$prod->update_meta_data( '_mnm_content_source', 'products' );
 			$prod->update_meta_data( '_mnm_per_product_pricing', 'no' );
 			$prod->update_meta_data( self::META_KIEKIAI, wp_json_encode( $kiekiai ) );
-			if ( $kat ) { $prod->set_category_ids( $kat ); }
+			$prod->set_category_ids( self::kategorijos( array_keys( $kiekiai ), $kat ) );
 			$prod->save();
 			$pid = $prod->get_id();
 			if ( ! $pid ) { wp_send_json_error( 'Nepavyko išsaugoti prekės.' ); }
