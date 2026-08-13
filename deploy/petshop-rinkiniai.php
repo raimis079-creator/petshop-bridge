@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.7';
+	const VERSIJA = '1.8';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -116,6 +116,55 @@ class Petshop_Rinkiniai {
 			. '</form>'
 			. '<div class="pskat-meta">Rinkinių valdymas</div>'
 			. '</div>';
+	}
+
+	/**
+	 * Prekes aprasymas rinkinio sudeciai.
+	 *
+	 * PROBLEMA, kuria tai sprendzia: prekiu aprasymuose yra sekciju antrastes
+	 * („Sudėtis", „Analizė", „Papildai", „Pagrindinis aprašymas"...). Ikelus
+	 * toki teksta i rinkinio aprasyma, aprasymu akordeonas (snippet 512) jas
+	 * atpazista ir issikerpa i atskiras sekcijas — rinkinio sudetis suira, o
+	 * viduryje atsiranda svetimas „Sudėtis" blokas su vienos prekes sudetimi.
+	 *
+	 * Todel imam tik pirma prasminga pastraipa IKI pirmos sekcijos antrastes.
+	 */
+	private static function svarus_aprasas( $preke ) {
+		$tekstas = trim( wp_strip_all_tags( $preke->get_short_description() ) );
+		if ( $tekstas === '' ) {
+			$tekstas = trim( wp_strip_all_tags( $preke->get_description() ) );
+		}
+		if ( $tekstas === '' ) { return ''; }
+
+		/* Sekciju zymekliai — ties jais kerpam. Be /u nesugautu lietuvisku raidziu. */
+		$zymekliai = array(
+			'Sudėtis', 'Sudetis', 'Sudedamosios', 'Analizė', 'Analize',
+			'Analitinės', 'Analitines', 'Papildai', 'Priedai', 'Maistiniai priedai',
+			'Pagrindinis aprašymas', 'Pagrindinis aprasymas', 'Šėrimo', 'Serimo',
+			'Rekomenduojama', 'Naudojimas', 'Laikymas', 'Gamintojas', 'Šalis',
+			'Techninė', 'Techniniai', 'Sudėtinės', 'Energinė',
+		);
+		$riba = mb_strlen( $tekstas );
+		foreach ( $zymekliai as $z ) {
+			$poz = mb_stripos( $tekstas, $z );
+			if ( $poz !== false && $poz < $riba && $poz > 0 ) { $riba = $poz; }
+		}
+		$tekstas = trim( mb_substr( $tekstas, 0, $riba ) );
+
+		/* Pastraipa: imam pirma, o ne visa teksta */
+		$dalys = preg_split( '/\n\s*\n/u', $tekstas );
+		$tekstas = trim( $dalys[0] );
+
+		/* Sutvarkom sujungtus sakinius: „...prisiglausti!Pagrindinis" */
+		$tekstas = preg_replace( '/([.!?])(\p{Lu})/u', '$1 $2', $tekstas );
+		$tekstas = preg_replace( '/\s+/u', ' ', $tekstas );
+
+		if ( mb_strlen( $tekstas ) > 300 ) {
+			$kirpta = mb_substr( $tekstas, 0, 300 );
+			$tsk = mb_strrpos( $kirpta, '.' );
+			$tekstas = ( $tsk !== false && $tsk > 120 ) ? mb_substr( $kirpta, 0, $tsk + 1 ) : $kirpta . '…';
+		}
+		return $tekstas;
 	}
 
 	/** Rinkinio sudeties isvaizda prekes puslapyje. */
@@ -300,52 +349,16 @@ class Petshop_Rinkiniai {
 	/**
 	 * Kur rinkinys atsiras kataloge.
 	 *
-	 * RINKINIAI (679) — VISADA. Be jo rinkinys parduotuveje praktiskai nerandamas:
-	 * misrus rinkinys (maistas + skanestas + zaislas) neturi dominuojancios
-	 * kategorijos, tad anksciau likdavo tik „Kita" — t.y. niekur.
+	 * TIK RINKINIAI (679) automatiskai. Visa kita — savininko rankomis.
 	 *
-	 * Gyvuno rusis (SUNIMS/KATEMS/...) — pagal komponentus. Net jei prekes is
-	 * skirtingu skyriu (maistas, zaislas), jos beveik visada to paties gyvuno.
-	 *
-	 * Porusis (Konservu/Skanestu/Kramtalu rinkiniai) — tik jei rinkinys vienos
-	 * rusies. Misriam porusio nera ir tai normalu; jis lieka po RINKINIAI.
+	 * Kodel ne automatiskai: bandymas atspeti pagal komponentus davė bloga
+	 * rezultata. „Maistas + skanestas + zaislas" atsidure po SUNIMS, nors
+	 * savininkas ji mato kaip „Sausas maistas sunims" rinkini. Sprendima, kur
+	 * rinkinys parduodamas, priima zmogus, ne balsavimo algoritmas — cia
+	 * rinkodara, ne duomenu apdorojimas.
 	 */
 	private static function kategorijos( $komponentu_ids, $rankiniu = array() ) {
-		$out = array( 679 );                       /* RINKINIAI — visada */
-
-		$rusis = self::rusis( $komponentu_ids );
-		if ( $rusis ) { $out[] = $rusis; }
-
-		/* Porusis pagal komponentu kategorijas ir pavadinimus */
-		$skaic = array(); $pav = array();
-		foreach ( (array) $komponentu_ids as $cid ) {
-			$p = wc_get_product( $cid );
-			if ( $p ) { $pav[] = mb_strtolower( $p->get_name() ); }
-			foreach ( wc_get_product_term_ids( $cid, 'product_cat' ) as $kid ) {
-				if ( in_array( (int) $kid, array( 91, 679, 682, 683, 684 ), true ) ) { continue; }
-				$skaic[ (int) $kid ] = ( $skaic[ (int) $kid ] ?? 0 ) + 1;
-			}
-		}
-		if ( $skaic ) {
-			arsort( $skaic );
-			$vyrauja = (int) array_key_first( $skaic );
-			$viso    = array_sum( $skaic );
-			/* porusi skiriam tik kai bent 2/3 komponentu is tos pacios kategorijos */
-			if ( $skaic[ $vyrauja ] >= ceil( $viso * 0.66 ) ) {
-				$t = get_term( $vyrauja, 'product_cat' );
-				$vardas = ( $t && ! is_wp_error( $t ) ) ? mb_strtolower( $t->name ) : '';
-				if ( mb_strpos( $vardas, 'konserv' ) !== false ) {
-					$out[] = 682;
-				} elseif ( mb_strpos( $vardas, 'skanėst' ) !== false || mb_strpos( $vardas, 'skanest' ) !== false ) {
-					$tekstas = implode( ' ', $pav );
-					$kramtalai = array( 'ausis', 'ausys', 'koja', 'kojos', 'trachėj', 'kaul', 'snukis', 'kanop', 'sausgysl', 'kramtal', 'ragas', 'uodeg', 'sparn' );
-					$rasta = false;
-					foreach ( $kramtalai as $zodis ) { if ( mb_strpos( $tekstas, $zodis ) !== false ) { $rasta = true; break; } }
-					$out[] = $rasta ? 684 : 683;
-				}
-			}
-		}
-
+		$out = array( 679 );
 		if ( $rankiniu ) { $out = array_merge( $out, array_map( 'intval', $rankiniu ) ); }
 		return array_values( array_unique( array_filter( array_map( 'intval', $out ) ) ) );
 	}
@@ -1137,9 +1150,7 @@ class Petshop_Rinkiniai {
 				return res;
 			}
 			function pieštiVieta(){
-				var a=autoVieta(), dp=(tipas()==='dp'), h='<div class="psr-chips">';
-				if(a.tipas!==null) h+='<span class="psr-chip auto">'+esc(VARDAI[a.tipas]||'')+'</span>';
-				if(!dp && a.porusis) h+='<span class="psr-chip auto">'+esc(VARDAI[a.porusis]||'')+'</span>';
+				var dp=(tipas()==='dp'), h='<div class="psr-chips">';
 				h+='<span class="psr-chip auto">'+(dp?'DAUGIAU=PIGIAU':'RINKINIAI')+'</span>';
 				KAT_RANK.forEach(function(id,i){
 					h+='<span class="psr-chip">'+esc(VARDAI[id]||id)+'<button type="button" data-i="'+i+'">✕</button></span>';
@@ -1647,15 +1658,7 @@ class Petshop_Rinkiniai {
 		foreach ( $kiekiai as $cid => $kiek ) {
 			$cp = wc_get_product( $cid );
 			if ( ! $cp ) { continue; }
-			$aprasas = trim( wp_strip_all_tags( $cp->get_short_description() ) );
-			if ( $aprasas === '' ) {
-				$pilnas = trim( wp_strip_all_tags( $cp->get_description() ) );
-				if ( $pilnas !== '' ) {
-					$dalys = preg_split( '/\n\s*\n/', $pilnas );
-					$aprasas = trim( $dalys[0] );
-					if ( mb_strlen( $aprasas ) > 320 ) { $aprasas = mb_substr( $aprasas, 0, 320 ) . '…'; }
-				}
-			}
+			$aprasas = self::svarus_aprasas( $cp );
 			$img = $cp->get_image_id() ? wp_get_attachment_image( $cp->get_image_id(), 'thumbnail', false, array( 'class' => 'ps-rink-foto' ) ) : '';
 			$turinys .= '<div class="ps-rink-preke">' . "\n";
 			if ( $img ) { $turinys .= '  <div class="ps-rink-img">' . $img . "</div>\n"; }
