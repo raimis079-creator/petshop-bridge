@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.20';
+	const VERSIJA = '1.21';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -1881,6 +1881,7 @@ class Petshop_Rinkiniai {
 					aprasymas:$('#psr-apr').value,
 					publikuoti:$('#psr-publikuoti').checked?1:0,
 					tipas:tipas(),
+					pergeneruoti:(document.getElementById('psr-regen')&&document.getElementById('psr-regen').checked)?1:0,
 					kat:KAT_RANK,
 					komponentai:K.map(function(c){return {id:c.id,kiekis:c.kiekis};})
 				}));
@@ -2166,7 +2167,8 @@ class Petshop_Rinkiniai {
 			if ( function_exists( 'wc_delete_product_transients' ) ) { wc_delete_product_transients( $pid ); }
 
 			/* kompozicija: naujam visada, esamam — jei pasikeite sudetis */
-			$komp_rez = self::kompozicija( $pid, array_keys( $kiekiai ), $naujas );
+			$priverstinai = $naujas || ! empty( $d['pergeneruoti'] );
+			$komp_rez = self::kompozicija( $pid, array_keys( $kiekiai ), $priverstinai );
 
 			/* zurnalas */
 			if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {
@@ -2379,13 +2381,21 @@ class Petshop_Rinkiniai {
 	 * (kad rinkiniai atrodytu vienodai, nesvarbu kur sukurti). Jei ne — savo
 	 * kopija su tuo paciu tinkleliu.
 	 */
+	/** Isdestymo algoritmo versija — keiciant ji, senos kompozicijos persipiesia. */
+	const KOMPOZICIJOS_VERSIJA = 'v2-herojus';
+
 	private static function kompozicija( $pid, $komponentai, $priverstinai = false ) {
+		/*
+		 * I parasa iskaitom ir algoritmo versija. Kitaip, pakeitus isdestyma,
+		 * seni rinkiniai liktu su sena nuotrauka net ir issaugoti is naujo —
+		 * juk komponentai nepasikeite, tik piesimo budas.
+		 */
+		$parasas = md5( self::KOMPOZICIJOS_VERSIJA . '|' . implode( ',', $komponentai ) );
 		if ( ! $priverstinai && get_post_thumbnail_id( $pid ) ) {
 			$sena = (string) get_post_meta( $pid, '_ps_rink_komp_hash', true );
-			$nauja = md5( implode( ',', $komponentai ) );
-			if ( $sena === $nauja ) { return array( 'praleista' => true ); }
+			if ( $sena === $parasas ) { return array( 'praleista' => true ); }
 		}
-		update_post_meta( $pid, '_ps_rink_komp_hash', md5( implode( ',', $komponentai ) ) );
+		update_post_meta( $pid, '_ps_rink_komp_hash', $parasas );
 
 		if ( function_exists( 'petshop_generate_composition' ) ) {
 			$args = array();
