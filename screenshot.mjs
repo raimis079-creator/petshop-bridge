@@ -1,49 +1,21 @@
-// RINK-RECON4-0811
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 import fs from 'fs';
 import { execSync } from 'child_process';
-const B = 'https://dev.avesa.lt';
-const U = process.env.WP_USER, P = (process.env.WP_APP_PASS||'').replace(/\s+/g,'');
-const AUTH = 'Basic ' + Buffer.from(U+':'+P).toString('base64');
-const TOK = process.env.GH_TOKEN || '';
+const B='https://dev.avesa.lt';
+const U=process.env.WP_USER,P=(process.env.WP_APP_PASS||'').replace(/\s+/g,'');
+const AUTH='Basic '+Buffer.from(U+':'+P).toString('base64');
+const TOK=process.env.GH_TOKEN||'';
 fs.mkdirSync('screenshots',{recursive:true});
-
-async function wp(path, opts={}){
-  try{
-    const r = await fetch(B+path, {...opts, headers:{'Authorization':AUTH,'Content-Type':'application/json',...(opts.headers||{})}});
-    const t = await r.text();
-    return {status:r.status, text:t};
-  }catch(e){ return {status:0, text:String(e)}; }
-}
-function jsonSafe(t){ const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x;})); try{return JSON.parse(t.slice(i));}catch(e){return null;} }
-
-const out = {marker:'RINK-RECON4-0811', ts:new Date().toISOString()};
-
-// 1. TEMP snippet: DB recon for MnM bundles
-const phpB64 = `YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCgkX0dFVFsncHNfcGF0aWtyYSddID8/ICcnKSE9PSdQdDExWno5JykgcmV0dXJuOwoJQHNldF90aW1lX2xpbWl0KDE4MCk7CglnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OwoJJG89YXJyYXkoJ21hcmtlcic9PidTS1VCSSBQQVRJS1JBJywnbGFpa2FzJz0+Y3VycmVudF90aW1lKCdteXNxbCcpKTsKCgkvLyAxLiBNbk0gcHJla2VzIHBhZ2FsIGJ1c2VuYQoJJG9bJ21ubV9wYWdhbF9idXNlbmEnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIgoJCVNFTEVDVCBwLnBvc3Rfc3RhdHVzIHN0LCBDT1VOVCgqKSBuIEZST00geyRwZn1wb3N0cyBwCgkJSk9JTiB7JHBmfXRlcm1fcmVsYXRpb25zaGlwcyB0ciBPTiB0ci5vYmplY3RfaWQ9cC5JRAoJCUpPSU4geyRwZn10ZXJtX3RheG9ub215IHR0IE9OIHR0LnRlcm1fdGF4b25vbXlfaWQ9dHIudGVybV90YXhvbm9teV9pZAoJCUpPSU4geyRwZn10ZXJtcyB0IE9OIHQudGVybV9pZD10dC50ZXJtX2lkCgkJV0hFUkUgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCB0dC50YXhvbm9teT0ncHJvZHVjdF90eXBlJyBBTkQgdC5zbHVnPSdtaXgtYW5kLW1hdGNoJwoJCUdST1VQIEJZIHAucG9zdF9zdGF0dXMiLCBBUlJBWV9BKTsKCgkvLyAyLiBLb25rcmV0dXMgcmlua2luaWFpCgkkb1sncmlua2luaWFpJ109YXJyYXkoKTsKCWZvcmVhY2goYXJyYXkoMzQxNzIsMzQxNzAsMzQxNjgsMzQxNzUsMzQxNTYsMzQxNTMsMzQxNTgsMzQxOTYsMzQyMDcsMzQyMTcsMzQyMzIsMzQyNDIpIGFzICRpZCl7CgkJJHA9Z2V0X3Bvc3QoJGlkKTsKCQkkb1sncmlua2luaWFpJ11bXT1hcnJheSgnaWQnPT4kaWQsJ3lyYSc9PiRwPzE6MCwnc3QnPT4kcD8kcC0+cG9zdF9zdGF0dXM6J05FUkEnLAoJCQkndGlwYXMnPT4kcD9pbXBsb2RlKCcsJywoYXJyYXkpd3BfZ2V0X29iamVjdF90ZXJtcygkaWQsJ3Byb2R1Y3RfdHlwZScsYXJyYXkoJ2ZpZWxkcyc9PiduYW1lcycpKSk6Jy0nLAoJCQkncGF2Jz0+JHA/bWJfc3Vic3RyKCRwLT5wb3N0X3RpdGxlLDAsNDQpOictJyk7Cgl9CgkvLyAzLiBjaGlsZF9pdGVtcwoJJG9bJ2NoaWxkX2l0ZW1zJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn13Y19tbm1fY2hpbGRfaXRlbXMiKTsKCSRvWydrb250ZWluZXJpdSddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVChESVNUSU5DVCBjb250YWluZXJfaWQpIEZST00geyRwZn13Y19tbm1fY2hpbGRfaXRlbXMiKTsKCS8vIDQuIERQIHBha2FpCgkkb1snZHAnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBvc3RtZXRhIFdIRVJFIG1ldGFfa2V5PSdfZHBfYmFzZV9wcm9kdWN0X2lkJyIpOwoJLy8gNS4gU2l1a3NsaW7El2plCgkkb1snc2l1a3NsaXVvc2UnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBJRCxwb3N0X3RpdGxlLHBvc3RfbW9kaWZpZWQgRlJPTSB7JHBmfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSd0cmFzaCcgT1JERVIgQlkgcG9zdF9tb2RpZmllZCBERVNDIExJTUlUIDEyIixBUlJBWV9BKTsKCS8vIDYuIG11LXBsdWdpbnMgZmFpbGFpCgkkb1snbXUnXT1hcnJheSgpOwoJZm9yZWFjaChnbG9iKFdQTVVfUExVR0lOX0RJUi4nLyoucGhwJykgYXMgJGYpewoJCSRvWydtdSddW109YXJyYXkoJ2YnPT5iYXNlbmFtZSgkZiksJ2tiJz0+cm91bmQoZmlsZXNpemUoJGYpLzEwMjQpLCdtJz0+ZGF0ZSgnbS1kIEg6aScsZmlsZW10aW1lKCRmKSkpOwoJfQoJJG9bJ2tsYXNlX3JpbmtpbmlhaSddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pYWknKTsKCSRvWydrbGFzZV9saWt1Y2lhaSddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pdV9MaWt1Y2lhaScpOwoJJG9bJ3ZlcnNpamEnXT1jbGFzc19leGlzdHMoJ1BldHNob3BfUmlua2luaWFpJyk/UGV0c2hvcF9SaW5raW5pYWk6OlZFUlNJSkE6Jy0nOwoJLy8gNy4gQWRtaW4gbWVuaXUgcmVnaXN0cmFjaWphCgkkb1snc3VibWVudSddPWFycmF5KCk7CglnbG9iYWwgJHN1Ym1lbnU7CglpZihpc3NldCgkc3VibWVudVsncHMta2F0YWxvZ2FzJ10pKSBmb3JlYWNoKCRzdWJtZW51Wydwcy1rYXRhbG9nYXMnXSBhcyAkcyl7ICRvWydzdWJtZW51J11bXT0kc1swXS4nIOKGkiAnLiRzWzJdOyB9CgkvLyA4LiBOYXZpZ2FjaWpvcyBqdW9zdGEga2F0YWxvZ28gZmFpbGUKCSRrPUBmaWxlX2dldF9jb250ZW50cyhXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWthdGFsb2dhcy5waHAnKTsKCSRvWyduYXZfdHVyaV9yaW5raW5pdXMnXT0kaz8oc3RyaXBvcygkaywncHMtcmlua2luaWFpJykhPT1mYWxzZT8xOjApOm51bGw7CglpZigkayl7ICRwPXN0cmlwb3MoJGssJ2Z1bmN0aW9uIG5hdmlnYWNpamEnKTsgJG9bJ25hdl9rb2RhcyddPSRwIT09ZmFsc2U/c3Vic3RyKCRrLCRwLDE4MDApOicobmVyYXN0YSknOyB9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMwKTsK`;
-const php = Buffer.from(phpB64,'base64').toString('utf8');
-const snipRes = await wp('/wp-json/code-snippets/v1/snippets', {method:'POST', body:JSON.stringify({name:'TEMP ZZ Nav3 v1', code:php, scope:'global', active:true, priority:10})});
-const snip = jsonSafe(snipRes.text);
-out.snip_id = snip && snip.id ? snip.id : null;
-out.snip_status = snipRes.status;
-await new Promise(r=>setTimeout(r,3000));
-
-// 2. Call the gate
-try {
-  const res = execSync(`curl -sk "${B}/?ps_nav3=Nv33Kp7&k=ps2026" --max-time 120`, {encoding:'utf8', maxBuffer: 20*1024*1024});
-  out.recon = jsonSafe(res);
-  if(!out.recon) out.recon_raw = res.slice(0,3000);
-} catch(e){ out.recon_err = String(e).slice(0,500); }
-
-// 3. Deactivate temp snippet
-if(out.snip_id){
-  const d = await wp('/wp-json/code-snippets/v1/snippets/'+out.snip_id, {method:'POST', body:JSON.stringify({active:false})});
-  out.snip_deact = d.status;
-}
-
-// 4. Write result via Contents API
-const fn = 'screenshots/rinkrec_'+Date.now()+'.json';
-const body = {message:'rinkrec result', content: Buffer.from(JSON.stringify(out,null,1)).toString('base64')};
-const pr = await fetch('https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/'+fn, {method:'PUT', headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'bridge'}, body:JSON.stringify(body)});
-console.log('putResult', pr.status, fn);
-fs.writeFileSync(fn.replace('screenshots/','screenshots/local_'), JSON.stringify(out).slice(0,500));
+const out={marker:'PATIKRA 0813',ts:new Date().toISOString()};
+async function wp(p,o={}){try{const r=await fetch(B+p,{...o,headers:{'Authorization':AUTH,'Content-Type':'application/json',...(o.headers||{})}});return{status:r.status,text:await r.text()}}catch(e){return{status:0,text:String(e)}}}
+function js(t){const i=Math.min(...['[','{'].map(c=>{const x=t.indexOf(c);return x<0?1e9:x}));try{return JSON.parse(t.slice(i))}catch(e){return null}}
+const s=await wp('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP RINK PATIKRA 0813a',code:Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmKCgkX0dFVFsncHNfcGF0aWtyYSddID8/ICcnKSE9PSdQdDExWno5JykgcmV0dXJuOwoJQHNldF90aW1lX2xpbWl0KDE4MCk7CglnbG9iYWwgJHdwZGI7ICRwZj0kd3BkYi0+cHJlZml4OwoJJG89YXJyYXkoJ21hcmtlcic9PidTS1VCSSBQQVRJS1JBJywnbGFpa2FzJz0+Y3VycmVudF90aW1lKCdteXNxbCcpKTsKCgkvLyAxLiBNbk0gcHJla2VzIHBhZ2FsIGJ1c2VuYQoJJG9bJ21ubV9wYWdhbF9idXNlbmEnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIgoJCVNFTEVDVCBwLnBvc3Rfc3RhdHVzIHN0LCBDT1VOVCgqKSBuIEZST00geyRwZn1wb3N0cyBwCgkJSk9JTiB7JHBmfXRlcm1fcmVsYXRpb25zaGlwcyB0ciBPTiB0ci5vYmplY3RfaWQ9cC5JRAoJCUpPSU4geyRwZn10ZXJtX3RheG9ub215IHR0IE9OIHR0LnRlcm1fdGF4b25vbXlfaWQ9dHIudGVybV90YXhvbm9teV9pZAoJCUpPSU4geyRwZn10ZXJtcyB0IE9OIHQudGVybV9pZD10dC50ZXJtX2lkCgkJV0hFUkUgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCB0dC50YXhvbm9teT0ncHJvZHVjdF90eXBlJyBBTkQgdC5zbHVnPSdtaXgtYW5kLW1hdGNoJwoJCUdST1VQIEJZIHAucG9zdF9zdGF0dXMiLCBBUlJBWV9BKTsKCgkvLyAyLiBLb25rcmV0dXMgcmlua2luaWFpCgkkb1sncmlua2luaWFpJ109YXJyYXkoKTsKCWZvcmVhY2goYXJyYXkoMzQxNzIsMzQxNzAsMzQxNjgsMzQxNzUsMzQxNTYsMzQxNTMsMzQxNTgsMzQxOTYsMzQyMDcsMzQyMTcsMzQyMzIsMzQyNDIpIGFzICRpZCl7CgkJJHA9Z2V0X3Bvc3QoJGlkKTsKCQkkb1sncmlua2luaWFpJ11bXT1hcnJheSgnaWQnPT4kaWQsJ3lyYSc9PiRwPzE6MCwnc3QnPT4kcD8kcC0+cG9zdF9zdGF0dXM6J05FUkEnLAoJCQkndGlwYXMnPT4kcD9pbXBsb2RlKCcsJywoYXJyYXkpd3BfZ2V0X29iamVjdF90ZXJtcygkaWQsJ3Byb2R1Y3RfdHlwZScsYXJyYXkoJ2ZpZWxkcyc9PiduYW1lcycpKSk6Jy0nLAoJCQkncGF2Jz0+JHA/bWJfc3Vic3RyKCRwLT5wb3N0X3RpdGxlLDAsNDQpOictJyk7Cgl9CgkvLyAzLiBjaGlsZF9pdGVtcwoJJG9bJ2NoaWxkX2l0ZW1zJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwZn13Y19tbm1fY2hpbGRfaXRlbXMiKTsKCSRvWydrb250ZWluZXJpdSddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVChESVNUSU5DVCBjb250YWluZXJfaWQpIEZST00geyRwZn13Y19tbm1fY2hpbGRfaXRlbXMiKTsKCS8vIDQuIERQIHBha2FpCgkkb1snZHAnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHBmfXBvc3RtZXRhIFdIRVJFIG1ldGFfa2V5PSdfZHBfYmFzZV9wcm9kdWN0X2lkJyIpOwoJLy8gNS4gU2l1a3NsaW7El2plCgkkb1snc2l1a3NsaXVvc2UnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBJRCxwb3N0X3RpdGxlLHBvc3RfbW9kaWZpZWQgRlJPTSB7JHBmfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSd0cmFzaCcgT1JERVIgQlkgcG9zdF9tb2RpZmllZCBERVNDIExJTUlUIDEyIixBUlJBWV9BKTsKCS8vIDYuIG11LXBsdWdpbnMgZmFpbGFpCgkkb1snbXUnXT1hcnJheSgpOwoJZm9yZWFjaChnbG9iKFdQTVVfUExVR0lOX0RJUi4nLyoucGhwJykgYXMgJGYpewoJCSRvWydtdSddW109YXJyYXkoJ2YnPT5iYXNlbmFtZSgkZiksJ2tiJz0+cm91bmQoZmlsZXNpemUoJGYpLzEwMjQpLCdtJz0+ZGF0ZSgnbS1kIEg6aScsZmlsZW10aW1lKCRmKSkpOwoJfQoJJG9bJ2tsYXNlX3JpbmtpbmlhaSddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pYWknKTsKCSRvWydrbGFzZV9saWt1Y2lhaSddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pdV9MaWt1Y2lhaScpOwoJJG9bJ3ZlcnNpamEnXT1jbGFzc19leGlzdHMoJ1BldHNob3BfUmlua2luaWFpJyk/UGV0c2hvcF9SaW5raW5pYWk6OlZFUlNJSkE6Jy0nOwoJLy8gNy4gQWRtaW4gbWVuaXUgcmVnaXN0cmFjaWphCgkkb1snc3VibWVudSddPWFycmF5KCk7CglnbG9iYWwgJHN1Ym1lbnU7CglpZihpc3NldCgkc3VibWVudVsncHMta2F0YWxvZ2FzJ10pKSBmb3JlYWNoKCRzdWJtZW51Wydwcy1rYXRhbG9nYXMnXSBhcyAkcyl7ICRvWydzdWJtZW51J11bXT0kc1swXS4nIOKGkiAnLiRzWzJdOyB9CgkvLyA4LiBOYXZpZ2FjaWpvcyBqdW9zdGEga2F0YWxvZ28gZmFpbGUKCSRrPUBmaWxlX2dldF9jb250ZW50cyhXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWthdGFsb2dhcy5waHAnKTsKCSRvWyduYXZfdHVyaV9yaW5raW5pdXMnXT0kaz8oc3RyaXBvcygkaywncHMtcmlua2luaWFpJykhPT1mYWxzZT8xOjApOm51bGw7CglpZigkayl7ICRwPXN0cmlwb3MoJGssJ2Z1bmN0aW9uIG5hdmlnYWNpamEnKTsgJG9bJ25hdl9rb2RhcyddPSRwIT09ZmFsc2U/c3Vic3RyKCRrLCRwLDE4MDApOicobmVyYXN0YSknOyB9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMwKTsK','base64').toString('utf8'),scope:'global',active:true,priority:5})});
+const j=js(s.text); out.snip=j&&j.id?j.id:null; out.snip_status=s.status;
+await new Promise(r=>setTimeout(r,4000));
+try{
+  const res=execSync(`curl -sk "${B}/?ps_patikra=Pt11Zz9" --max-time 120`,{encoding:'utf8',maxBuffer:20*1024*1024});
+  out.rez=js(res); if(!out.rez) out.raw=res.slice(0,600);
+}catch(e){ out.err=String(e).slice(0,300); }
+if(out.snip) await wp('/wp-json/code-snippets/v1/snippets/'+out.snip,{method:'POST',body:JSON.stringify({active:false})});
+const r=await fetch('https://api.github.com/repos/raimis079-creator/petshop-bridge/contents/screenshots/patikra0813.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify({message:'patikra0813 rez',content:Buffer.from(JSON.stringify(out,null,1)).toString('base64')})});
+console.log('put',r.status);
