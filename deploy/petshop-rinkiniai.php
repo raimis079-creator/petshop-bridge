@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.3';
+	const VERSIJA = '1.4';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -221,6 +221,64 @@ class Petshop_Rinkiniai {
 		return $rez;
 	}
 
+	/**
+	 * Gyvunu rusys — imamos IS MENIU, ne iraso i koda. Jei rytoj atsiras nauja
+	 * rusis (pvz. „Ropliams"), filtras ja paims pats. Rinkinys priskiriamas
+	 * pagal komponentu kategorijas, o ne pagal pavadinima — „Churu" pavadinime
+	 * gyvuno nera, bet komponentai guli po KATEMS.
+	 */
+	public static function rusys() {
+		$kesas = get_transient( 'ps_rink_rusys' );
+		if ( is_array( $kesas ) ) { return $kesas; }
+		$medis = self::medis();
+		$out = array();
+		$meniu = wp_get_nav_menu_object( 'Pagrindinis meniu' );
+		$neimti = array( 'RINKINIAI', 'PASIŪLYMAI', 'SPRENDIMAI', 'AKCIJOS', 'DAUGIAU=PIGIAU' );
+		if ( $meniu ) {
+			foreach ( (array) wp_get_nav_menu_items( $meniu->term_id ) as $it ) {
+				if ( (int) $it->menu_item_parent !== 0 || $it->object !== 'product_cat' ) { continue; }
+				$id = (int) $it->object_id;
+				$v  = isset( $medis['vardai'][ $id ] ) ? $medis['vardai'][ $id ] : $it->title;
+				if ( in_array( mb_strtoupper( $v ), $neimti, true ) ) { continue; }
+				$out[] = array(
+					'id'    => $id,
+					'v'     => $v,
+					'palik' => isset( $medis['palik'][ $id ] ) ? $medis['palik'][ $id ] : array( $id ),
+				);
+			}
+		}
+		set_transient( 'ps_rink_rusys', $out, 6 * HOUR_IN_SECONDS );
+		return $out;
+	}
+
+	/** Kuriai rusiai priklauso rinkinys — balsuoja komponentu kategorijos. */
+	private static function rusis( $komponentu_ids, $rinkinio_kat = array() ) {
+		$rusys = self::rusys();
+		if ( ! $rusys ) { return null; }
+		$balsai = array();
+		foreach ( (array) $komponentu_ids as $cid ) {
+			foreach ( wc_get_product_term_ids( $cid, 'product_cat' ) as $kid ) {
+				foreach ( $rusys as $r ) {
+					if ( in_array( (int) $kid, $r['palik'], true ) ) {
+						$balsai[ $r['id'] ] = ( $balsai[ $r['id'] ] ?? 0 ) + 1;
+					}
+				}
+			}
+		}
+		if ( ! $balsai ) {
+			foreach ( (array) $rinkinio_kat as $kid ) {
+				foreach ( $rusys as $r ) {
+					if ( in_array( (int) $kid, $r['palik'], true ) ) {
+						$balsai[ $r['id'] ] = ( $balsai[ $r['id'] ] ?? 0 ) + 1;
+					}
+				}
+			}
+		}
+		if ( ! $balsai ) { return null; }
+		arsort( $balsai );
+		return (int) array_key_first( $balsai );
+	}
+
 	/** Svorio reiksmes, surikiuotos pagal tikra dydi (ne abecele). */
 	public static function svoriai() {
 		$t = get_terms( array( 'taxonomy' => 'pa_pakuotes_dydis', 'hide_empty' => true ) );
@@ -266,6 +324,7 @@ class Petshop_Rinkiniai {
 			$suma  = $baze ? (float) $baze->get_price() * $qty : 0;
 			$lik   = $baze ? $baze->get_stock_quantity() : null;
 
+			$prod = wc_get_product( $pid );
 			$out[] = array(
 				'id' => $pid, 'pav' => $post->post_title, 'busena' => $post->post_status,
 				'sku' => (string) get_post_meta( $pid, '_sku', true ),
@@ -280,6 +339,13 @@ class Petshop_Rinkiniai {
 				'kat' => wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) ),
 				'tipas' => 'dp', 'baze' => $bid,
 				'baze_pav' => $baze ? $baze->get_name() : '(nerasta #' . $bid . ')',
+				'foto' => ( $prod && $prod->get_image_id() ) ? wp_get_attachment_image_url( $prod->get_image_id(), 'thumbnail' ) : '',
+				'rusis' => self::rusis( array( $bid ), wc_get_product_term_ids( $pid, 'product_cat' ) ),
+				'keista' => mb_substr( $post->post_modified, 0, 10 ),
+				'komp' => $baze ? array( array(
+					'id' => $bid, 'pav' => $baze->get_name(), 'kiekis' => $qty,
+					'foto' => $baze->get_image_id() ? wp_get_attachment_image_url( $baze->get_image_id(), 'thumbnail' ) : '',
+				) ) : array(),
 			);
 		}
 		return $out;
@@ -312,6 +378,7 @@ class Petshop_Rinkiniai {
 				"SELECT product_id FROM {$p}wc_mnm_child_items WHERE container_id=%d ORDER BY menu_order", $pid ) );
 
 			$sav = 0; $suma = 0; $truksta = 0; $vnt = 0; $lubos = null; $negalimi = array(); $sandeliai = array();
+			$komp = array();
 			foreach ( $vaikai as $vid ) {
 				$vid = (int) $vid;
 				$vp = wc_get_product( $vid );
@@ -330,6 +397,10 @@ class Petshop_Rinkiniai {
 				}
 				if ( $vp->get_stock_status() !== 'instock' || $vp->get_status() !== 'publish' ) { $negalimi[] = $vid; }
 				$sandeliai[ self::sandelis( $vid ) ] = true;
+				$komp[] = array(
+					'id' => $vid, 'pav' => $vp->get_name(), 'kiekis' => $q,
+					'foto' => $vp->get_image_id() ? wp_get_attachment_image_url( $vp->get_image_id(), 'thumbnail' ) : '',
+				);
 			}
 
 			$kaina = (float) get_post_meta( $pid, '_price', true );
@@ -354,6 +425,10 @@ class Petshop_Rinkiniai {
 				'sandeliai' => array_keys( $sandeliai ),
 				'kat'       => wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) ),
 				'tipas'     => 'mnm',
+				'foto'      => get_post_thumbnail_id( $pid ) ? wp_get_attachment_image_url( get_post_thumbnail_id( $pid ), 'thumbnail' ) : '',
+				'rusis'     => self::rusis( $vaikai, wc_get_product_term_ids( $pid, 'product_cat' ) ),
+				'keista'    => mb_substr( $post->post_modified, 0, 10 ),
+				'komp'      => $komp,
 			);
 		}
 		return $out;
@@ -380,125 +455,94 @@ class Petshop_Rinkiniai {
 
 	/* ==================== SARASAS ==================== */
 
-	private static function sarasas() {
-		$sar = self::rinkiniai();
-		$q = isset( $_GET['q'] ) ? mb_strtolower( sanitize_text_field( wp_unslash( $_GET['q'] ) ) ) : '';
-		if ( $q !== '' ) {
-			$sar = array_values( array_filter( $sar, function( $r ) use ( $q ) {
-				return mb_strpos( mb_strtolower( $r['pav'] . ' ' . $r['sku'] ), $q ) !== false;
-			} ) );
-		}
-		$nauja = admin_url( 'admin.php?page=' . self::SLUG . '&veiksmas=naujas' );
+	/* ==================== SARASAS ==================== */
 
-		/* darbo eiles — skaiciai, ne teorija */
-		$e = array( 'nefix' => 0, 'nocost' => 0, 'dead' => 0, 'juod' => 0, 'ok' => 0, 'dp' => 0 );
+	/**
+	 * Sarasas sukurtas galvojant apie 200+ rinkiniu, ne apie 14.
+	 * Serveris paduoda visus duomenis vienu kartu, filtravimas/rikiavimas vyksta
+	 * narsykleje — taip kiekvienas filtro paspaudimas neperkrauna puslapio.
+	 * Prie kelių tukstanciu tektu pereiti i serverio puse; iki tol tai greiciau.
+	 */
+	private static function sarasas() {
+		$sar    = self::rinkiniai();
+		$rusys  = self::rusys();
+		$nauja  = admin_url( 'admin.php?page=' . self::SLUG . '&veiksmas=naujas' );
+
+		/* kategorijos filtrui — tik tos, kurios realiai naudojamos */
+		$kat = array();
 		foreach ( $sar as $r ) {
-			$bl = self::bedos( $r );
-			if ( ! $r['fiksuota'] ) { $e['nefix']++; }
-			if ( $r['truksta'] ) { $e['nocost']++; }
-			if ( $r['negalimi'] ) { $e['dead']++; }
-			if ( $r['busena'] !== 'publish' ) { $e['juod']++; }
-			if ( ( $r['tipas'] ?? '' ) === 'dp' ) { $e['dp']++; }
-			if ( ! $bl ) { $e['ok']++; }
+			foreach ( (array) $r['kat'] as $k ) { $kat[ $k ] = ( $kat[ $k ] ?? 0 ) + 1; }
 		}
-		$filtras = isset( $_GET['eile'] ) ? sanitize_key( $_GET['eile'] ) : '';
+		ksort( $kat );
+
+		$duomenys = array();
+		foreach ( $sar as $r ) {
+			$proc = ( $r['marza'] !== null && $r['kaina'] > 0 ) ? round( $r['marza'] / $r['kaina'] * 100 ) : null;
+			$duomenys[] = array(
+				'id'    => (int) $r['id'],
+				'pav'   => $r['pav'],
+				'sku'   => $r['sku'],
+				'st'    => $r['busena'],
+				'tipas' => $r['tipas'] ?? 'mnm',
+				'kaina' => (float) $r['kaina'],
+				'sav'   => $r['savikaina'],
+				'suma'  => (float) $r['suma'],
+				'marza' => $r['marza'],
+				'pct'   => $proc,
+				'vnt'   => (int) $r['vnt'],
+				'poz'   => (int) $r['poz'],
+				'miss'  => (int) $r['truksta'],
+				'lubos' => $r['lubos'],
+				'sand'  => array_values( (array) $r['sandeliai'] ),
+				'rusis' => $r['rusis'] ?? null,
+				'kat'   => array_values( (array) $r['kat'] ),
+				'foto'  => $r['foto'] ?? '',
+				'komp'  => array_slice( (array) ( $r['komp'] ?? array() ), 0, 8 ),
+				'keista' => $r['keista'] ?? '',
+				'nuoroda' => admin_url( 'admin.php?page=' . self::SLUG . '&veiksmas=keisti&id=' . (int) $r['id'] ),
+				'perziura' => get_permalink( (int) $r['id'] ),
+			);
+		}
 
 		echo '<h1 class="wp-heading-inline">Rinkiniai</h1> ';
 		echo '<a href="' . esc_url( $nauja ) . '" class="page-title-action">➕ Sukurti rinkinį</a>';
-		echo '<p class="description">Bet kokių prekių derinys su fiksuota kaina — maistas, kraikas, aksesuarai, dovanų rinkiniai. Klientas gauna tai, ką sudėjome.</p>';
-		if ( $q !== '' ) {
-			echo '<p class="description">Paieška: <b>' . esc_html( $q ) . '</b> — rasta ' . count( $sar ) . '. '
-				. '<a href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG ) ) . '">išvalyti</a></p>';
-		}
+		echo '<p class="description">Bet kokių prekių derinys su fiksuota kaina. Klientas gauna tai, ką sudėjome.</p>';
 
-		$eiles = array(
-			''       => array( 'Visi', count( $sar ), '' ),
-			'nefix'  => array( 'Kiekiai nefiksuoti', $e['nefix'], 'y' ),
-			'nocost' => array( 'Be savikainos', $e['nocost'], 'y' ),
-			'dead'   => array( 'Komponentas neparduodamas', $e['dead'], 'y' ),
-			'dp'     => array( 'Daugiau=pigiau', $e['dp'], 'b' ),
-			'juod'   => array( 'Juodraščiai', $e['juod'], 'b' ),
-			'ok'     => array( 'Sutvarkyta', $e['ok'], 'g' ),
-		);
-		echo '<div class="psr-eiles">';
-		foreach ( $eiles as $k => $v ) {
-			$url = admin_url( 'admin.php?page=' . self::SLUG . ( $k ? '&eile=' . $k : '' ) );
-			echo '<a class="psr-eile ' . esc_attr( $v[2] ) . ( $filtras === $k ? ' on' : '' ) . '" href="' . esc_url( $url ) . '">'
-				. '<b>' . (int) $v[1] . '</b><span>' . esc_html( $v[0] ) . '</span></a>';
-		}
-		echo '</div>';
+		echo '<div id="psr-eiles" class="psr-eiles"></div>';
+		echo '<div id="psr-eile-paaisk" class="psr-eile-paaisk"></div>';
+		echo '<div id="psr-filtrai" class="psr-filtrai-blk"></div>';
+		echo '<div id="psr-masiniai"></div>';
+		echo '<div class="psr-virsus">'
+			. '<span class="psr-mut" id="psr-rodoma"></span><span class="psr-sp"></span>'
+			. '<span class="psr-f"><label>Rikiuoti</label><select id="psr-sort">'
+			. '<option value="keista">Paskutinis keitimas</option>'
+			. '<option value="pav">Pavadinimas</option>'
+			. '<option value="marza">Marža €</option>'
+			. '<option value="pct">Marža %</option>'
+			. '<option value="kaina">Kaina</option>'
+			. '<option value="lubos">Galima parduoti</option>'
+			. '</select></span><span class="psr-grupe" id="psr-vaizdas"></span></div>';
+		echo '<div id="psr-turinys"></div>';
 
-		echo '<table class="wp-list-table widefat fixed striped psr-lentele"><thead><tr>'
-			. '<th style="width:60px">Vnt.</th><th>Rinkinys</th><th style="width:120px">Tipas</th>'
-			. '<th style="width:90px" class="r">Savikaina</th><th style="width:90px" class="r">Atskirai</th>'
-			. '<th style="width:90px" class="r">Kaina</th><th style="width:120px" class="r">Marža</th>'
-			. '<th style="width:100px" class="r">Galima parduoti</th><th style="width:180px">Būklė</th>'
-			. '</tr></thead><tbody>';
-
-		$rodyta = 0;
-		foreach ( $sar as $r ) {
-			$bl = self::bedos( $r );
-			if ( $filtras === 'nefix'  && $r['fiksuota'] ) { continue; }
-			if ( $filtras === 'nocost' && ! $r['truksta'] ) { continue; }
-			if ( $filtras === 'dead'   && ! $r['negalimi'] ) { continue; }
-			if ( $filtras === 'juod'   && $r['busena'] === 'publish' ) { continue; }
-			if ( $filtras === 'dp'     && ( $r['tipas'] ?? '' ) !== 'dp' ) { continue; }
-			if ( $filtras === 'ok'     && $bl ) { continue; }
-			$rodyta++;
-
-			$keisti = admin_url( 'admin.php?page=' . self::SLUG . '&veiksmas=keisti&id=' . $r['id'] );
-			$proc   = ( $r['marza'] !== null && $r['kaina'] > 0 ) ? round( $r['marza'] / $r['kaina'] * 100 ) : null;
-			$rink   = array_values( array_filter( $r['kat'], function( $c ) { return stripos( $c, 'rinkin' ) !== false; } ) );
-
-			echo '<tr>';
-			echo '<td class="r"><b>' . ( $r['fiksuota'] ? (int) $r['vnt'] : '<span class="psr-bad">0/' . (int) $r['vnt'] . '</span>' ) . '</b></td>';
-			echo '<td><strong><a href="' . esc_url( $keisti ) . '">' . esc_html( $r['pav'] ) . '</a></strong>';
-			if ( $r['busena'] !== 'publish' ) { echo ' <span class="psr-z b">' . esc_html( self::busena_pav( $r['busena'] ) ) . '</span>'; }
-			echo '<div class="psr-mut">#' . (int) $r['id'] . ( $r['sku'] ? ' · ' . esc_html( $r['sku'] ) : '' ) . ' · ' . (int) $r['poz'] . ' pozicijos</div>';
-			echo '<div class="row-actions"><span><a href="' . esc_url( $keisti ) . '">Redaguoti</a> | </span>'
-				. '<span><a href="#" class="psr-kopijuoti" data-id="' . (int) $r['id'] . '">Kopijuoti</a> | </span>'
-				. '<span><a href="' . esc_url( get_permalink( $r['id'] ) ) . '" target="_blank">Peržiūrėti</a> | </span>'
-				. '<span class="trash"><a href="#" class="psr-trinti" data-id="' . (int) $r['id'] . '" data-pav="' . esc_attr( $r['pav'] ) . '">Ištrinti</a></span></div>';
-			echo '</td>';
-			echo '<td>' . ( ( $r['tipas'] ?? 'mnm' ) === 'dp'
-				? '<span class="psr-z b">Daugiau=pigiau</span><div class="psr-mut">' . esc_html( mb_substr( $r['baze_pav'], 0, 26 ) ) . '</div>'
-				: '<span class="psr-z gr">Rinkinys</span><div class="psr-mut">' . esc_html( $rink ? implode( ', ', $rink ) : '—' ) . '</div>' ) . '</td>';
-			echo '<td class="r">' . ( $r['savikaina'] !== null ? number_format( $r['savikaina'], 2, ',', ' ' ) . ' €' : '<span class="psr-mut">—</span>' ) . '</td>';
-			echo '<td class="r psr-mut">' . number_format( $r['suma'], 2, ',', ' ' ) . ' €</td>';
-			echo '<td class="r"><b>' . number_format( $r['kaina'], 2, ',', ' ' ) . ' €</b></td>';
-			echo '<td class="r">' . ( $r['marza'] !== null
-				? ( $r['marza'] < 0
-					? '<b class="psr-bad">' . number_format( $r['marza'], 2, ',', ' ' ) . ' € (' . $proc . '%) ❌</b>'
-					: '<b class="psr-ok">' . number_format( $r['marza'], 2, ',', ' ' ) . ' € (' . $proc . '%) ✅</b>' )
-				: '<span class="psr-mut">—</span>' ) . '</td>';
-			echo '<td class="r">' . ( $r['lubos'] !== null
-				? '<b class="' . ( $r['lubos'] < 5 ? 'psr-bad' : 'psr-ok' ) . '">' . (int) $r['lubos'] . ' vnt.</b>'
-				: '<span class="psr-mut">—</span>' ) . '</td>';
-			echo '<td>' . ( $bl ? implode( ' ', array_map( function( $b ) {
-				return '<span class="psr-z ' . esc_attr( $b[0] ) . '">' . esc_html( $b[1] ) . '</span>';
-			}, $bl ) ) : '<span class="psr-z g">✓ sutvarkyta</span>' ) . '</td>';
-			echo '</tr>';
-		}
-		if ( ! $rodyta ) {
-			echo '<tr><td colspan="9" class="psr-tuscia">Pagal šį filtrą rinkinių nėra.</td></tr>';
-		}
-		echo '</tbody></table>';
-
-		wp_nonce_field( 'ps_rink', 'ps_rink_nonce' );
-		self::sarasas_js();
+		self::sarasas_js( $duomenys, $rusys, array_keys( $kat ) );
 	}
 
+	/**
+	 * Bukle = ka mato klientas + kas neaisku mums. Pirmas zenklas — svarbiausias.
+	 * Zodziai kliento kalba: ne „nesurenkamas", o „klientas mato Neturime".
+	 */
 	private static function bedos( $r ) {
 		$b = array();
-		if ( ( $r['tipas'] ?? 'mnm' ) === 'dp' && ! $r['baze_pav'] ) { $b[] = array( 'r', 'bazinė prekė nerasta' ); }
-		if ( ! $r['fiksuota'] ) { $b[] = array( 'y', 'kiekiai nefiksuoti' ); }
-		if ( $r['truksta'] )    { $b[] = array( 'y', $r['truksta'] . ' be savikainos' ); }
-		if ( $r['marza'] !== null && $r['marza'] < 0 ) { $b[] = array( 'r', 'marža minusinė' ); }
-		if ( $r['negalimi'] )   { $b[] = array( 'r', $r['negalimi'] . ' neparduodami' ); }
-		if ( $r['lubos'] !== null && $r['lubos'] < 5 ) { $b[] = array( 'y', 'likutis ' . $r['lubos'] ); }
-		if ( count( $r['sandeliai'] ) > 1 && ! in_array( 'av', $r['sandeliai'], true ) ) {
-			$b[] = array( 'y', 'keli tiekėjai' );
+		if ( $r['busena'] !== 'publish' ) {
+			$b[] = array( 'b', 'juodraštis · klientas nemato' );
+		} elseif ( $r['lubos'] === 0 ) {
+			$b[] = array( 'r', 'klientas mato „Neturime"' );
 		}
+		if ( $r['lubos'] !== null && $r['lubos'] > 0 && $r['lubos'] < 5 ) { $b[] = array( 'y', 'likutis ' . $r['lubos'] ); }
+		if ( $r['truksta'] ) { $b[] = array( 'y', $r['truksta'] . ' be savikainos' ); }
+		if ( $r['marza'] !== null && $r['marza'] < 0 ) { $b[] = array( 'r', 'marža minusinė' ); }
+		if ( ( $r['tipas'] ?? 'mnm' ) === 'mnm' && ! $r['fiksuota'] ) { $b[] = array( 'y', 'kiekiai nefiksuoti' ); }
+		if ( ( $r['tipas'] ?? 'mnm' ) === 'dp' && empty( $r['baze_pav'] ) ) { $b[] = array( 'r', 'bazinė prekė nerasta' ); }
 		return $b;
 	}
 
@@ -507,36 +551,296 @@ class Petshop_Rinkiniai {
 		return $m[ $b ] ?? $b;
 	}
 
-	private static function sarasas_js() {
-		$nonce = wp_create_nonce( 'ps_rink' );
+	private static function sarasas_js( $duomenys, $rusys, $kategorijos ) {
+		$nonce  = wp_create_nonce( 'ps_rink' );
 		$grizti = admin_url( 'admin.php?page=' . self::SLUG );
 		?>
 		<script>
 		(function(){
 			var N='<?php echo esc_js( $nonce ); ?>';
-			document.querySelectorAll('.psr-trinti').forEach(function(a){
-				a.addEventListener('click',function(e){
-					e.preventDefault();
-					var id=this.dataset.id, pav=this.dataset.pav;
-					if(!confirm('Ištrinti rinkinį „'+pav+'"?\n\nPrekė bus perkelta į šiukšlinę (atstatoma). Komponentų ryšiai pašalinami.')) return;
-					var fd=new FormData(); fd.append('action','ps_rink_trinti'); fd.append('nonce',N); fd.append('id',id);
-					fetch(ajaxurl,{method:'POST',body:fd}).then(function(r){return r.json()}).then(function(j){
-						if(j.success){ location.href='<?php echo esc_js( $grizti ); ?>'; }
-						else alert('Klaida: '+(j.data||'nežinoma'));
-					});
+			var R=<?php echo wp_json_encode( $duomenys ); ?>;
+			var RUSYS=<?php echo wp_json_encode( array_map( function( $r ) { return array( 'id' => $r['id'], 'v' => $r['v'] ); }, $rusys ) ); ?>;
+			var KAT=<?php echo wp_json_encode( $kategorijos ); ?>;
+			var f={eile:'',tipas:'',rusis:'',bus:'',sand:'',marza:'',kat:'',q:''};
+			var vaizdas='lentele', kryptis={}, pazymeti={};
+			var $=function(s){return document.querySelector(s);};
+
+			function eur(n){return (n===null||n===undefined||isNaN(n))?'—':Number(n).toFixed(2).replace('.',',')+' €';}
+			function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+
+			/* Bukle kliento kalba — tas pats, kas serveryje, kad nesiskirtu. */
+			function bedos(x){
+				var b=[];
+				if(x.st!=='publish') b.push(['b','juodraštis · klientas nemato']);
+				else if(x.lubos===0) b.push(['r','klientas mato „Neturime“']);
+				if(x.lubos!==null&&x.lubos>0&&x.lubos<5) b.push(['y','likutis '+x.lubos]);
+				if(x.miss) b.push(['y',x.miss+' be savikainos']);
+				if(x.marza!==null&&x.marza<0) b.push(['r','marža minusinė']);
+				if(x.tipas==='mnm'&&x.vnt===0) b.push(['y','kiekiai nefiksuoti']);
+				return b;
+			}
+
+			/* Eiles = darbo krepseliai: kiekviena atsako „ka dabar daryti". */
+			var EILES=[
+			 ['','Visi rinkiniai','',function(){return true;},'Viskas, kas sukurta — ir prekyboje, ir juodraščiai.'],
+			 ['prekyboje','Prekyboje','g',function(x){return x.st==='publish'&&x.lubos!==0;},'Publikuoti ir klientas gali nusipirkti.'],
+			 ['neparduoda','Klientas negali nusipirkti','r',function(x){return x.st==='publish'&&x.lubos===0;},'Rinkinys publikuotas, bet trūksta prekių — parduotuvėje rodomas kaip „Neturime“. Papildyk likutį arba nuimk iš prekybos.'],
+			 ['likutis','Likutis baigiasi','y',function(x){return x.lubos!==null&&x.lubos>0&&x.lubos<5;},'Liko mažiau nei 5 rinkiniai. Verta užsakyti prekių.'],
+			 ['nocost','Be savikainos','y',function(x){return x.miss>0;},'Bent vienos prekės savikaina neįrašyta — maržos apskaičiuoti negalima.'],
+			 ['juod','Juodraščiai','b',function(x){return x.st!=='publish';},'Sukurti, bet dar nepublikuoti. Klientas jų nemato.']
+			];
+
+			function filtruoti(){
+				var e=EILES.filter(function(x){return x[0]===f.eile;})[0]||EILES[0];
+				var out=R.filter(e[3]);
+				if(f.tipas) out=out.filter(function(x){return x.tipas===f.tipas;});
+				if(f.rusis) out=out.filter(function(x){return String(x.rusis)===String(f.rusis);});
+				if(f.bus)   out=out.filter(function(x){return f.bus==='publish'?x.st==='publish':x.st!=='publish';});
+				if(f.sand)  out=out.filter(function(x){return x.sand.indexOf(f.sand)>=0;});
+				if(f.kat)   out=out.filter(function(x){return x.kat.indexOf(f.kat)>=0;});
+				if(f.marza) out=out.filter(function(x){
+					if(f.marza==='nezinoma') return x.marza===null;
+					if(x.pct===null) return false;
+					if(f.marza==='zema') return x.pct<25;
+					if(f.marza==='vid') return x.pct>=25&&x.pct<35;
+					if(f.marza==='auksta') return x.pct>=35;
+					return true;
 				});
-			});
-			document.querySelectorAll('.psr-kopijuoti').forEach(function(a){
-				a.addEventListener('click',function(e){
-					e.preventDefault();
-					location.href='<?php echo esc_js( admin_url( 'admin.php?page=' . self::SLUG . '&veiksmas=naujas' ) ); ?>&kopija='+this.dataset.id;
+				var q=(f.q||'').toLowerCase().trim();
+				if(q) out=out.filter(function(x){
+					if((x.pav+' '+x.sku).toLowerCase().indexOf(q)>=0) return true;
+					return x.komp.some(function(c){return c.pav.toLowerCase().indexOf(q)>=0;});
 				});
-			});
+				var s=$('#psr-sort').value, kr=kryptis[s]||1;
+				out.sort(function(a,b){
+					if(s==='pav') return a.pav.localeCompare(b.pav)*kr;
+					if(s==='keista') return (a.keista<b.keista?1:a.keista>b.keista?-1:0)*kr;
+					var va=a[s]===null?-99999:a[s], vb=b[s]===null?-99999:b[s];
+					return (vb-va)*kr;
+				});
+				return out;
+			}
+
+			function pieštiEiles(){
+				document.getElementById('psr-eiles').innerHTML=EILES.map(function(e){
+					var n=R.filter(e[3]).length;
+					return '<button class="psr-eile '+e[2]+(f.eile===e[0]?' on':'')+'" title="'+esc(e[4])+'"'
+						+' data-e="'+e[0]+'"><b>'+n+'</b><span>'+e[1]+'</span></button>';
+				}).join('');
+				document.querySelectorAll('#psr-eiles .psr-eile').forEach(function(b){
+					b.onclick=function(){ var k=this.dataset.e; f.eile=(f.eile===k?'':k); pieštiEiles(); pieszti(); };
+				});
+				var e=EILES.filter(function(x){return x[0]===f.eile;})[0];
+				document.getElementById('psr-eile-paaisk').innerHTML=(e&&e[0])?'<b>'+esc(e[1])+'</b> — '+esc(e[4]):'';
+			}
+
+			function grupe(laukas,reiksmes){
+				return '<span class="psr-grupe">'+reiksmes.map(function(t){
+					return '<button class="'+(f[laukas]===t[0]?'on':'')+(t[2]===0?' tuscia':'')+'"'
+						+(t[3]?' title="'+esc(t[3])+'"':'')
+						+' data-l="'+laukas+'" data-v="'+t[0]+'">'+esc(t[1])
+						+(t[2]?' <i>'+t[2]+'</i>':'')+'</button>';
+				}).join('')+'</span>';
+			}
+			function pieštiFiltrus(){
+				var rsk={}, ksk={};
+				R.forEach(function(x){ if(x.rusis) rsk[x.rusis]=(rsk[x.rusis]||0)+1;
+					x.kat.forEach(function(k){ksk[k]=(ksk[k]||0)+1;}); });
+				var h='<div class="psr-frow">';
+				h+='<span class="psr-f"><label>Tipas</label>'+grupe('tipas',[['','Visi'],['mnm','Rinkinys'],['dp','Daugiau=pigiau']])+'</span>';
+				var rr=[['','Visi']];
+				RUSYS.forEach(function(g){
+					var n=rsk[g.id]||0;
+					var v=g.v.charAt(0)+g.v.slice(1).toLowerCase();
+					rr.push([String(g.id),v,n,n?n+' rinkiniai':'kol kas nėra, bet galima kurti']);
+				});
+				h+='<span class="psr-f"><label>Gyvūnas</label>'+grupe('rusis',rr)+'</span>';
+				h+='<span class="psr-f"><label>Būsena</label>'+grupe('bus',[['','Visos'],['publish','Prekyboje'],['draft','Juodraščiai']])+'</span>';
+				h+='</div><div class="psr-frow">';
+				h+='<span class="psr-f"><label>Kategorija</label><select data-l="kat"><option value="">— visos —</option>'
+					+KAT.map(function(k){return '<option value="'+esc(k)+'"'+(f.kat===k?' selected':'')+'>'+esc(k)+' ('+(ksk[k]||0)+')</option>';}).join('')
+					+'</select></span>';
+				h+='<span class="psr-f"><label>Marža</label><select data-l="marza">'
+					+[['','— bet kokia —'],['zema','žemiau 25 %'],['vid','25–35 %'],['auksta','virš 35 %'],['nezinoma','nežinoma']]
+						.map(function(m){return '<option value="'+m[0]+'"'+(f.marza===m[0]?' selected':'')+'>'+m[1]+'</option>';}).join('')
+					+'</select></span>';
+				h+='<span class="psr-f"><label>Sandėlis</label>'+grupe('sand',[['','Visi'],['av','AV'],['vf','VF'],['zb','ZB']])+'</span>';
+				h+='<span class="psr-f psr-f-plati"><label>Paieška</label><input type="text" id="psr-q" value="'+esc(f.q)+'" placeholder="rinkinio pavadinimas, SKU arba prekė viduje…"></span>';
+				h+='</div>';
+				var akt=[];
+				if(f.tipas) akt.push(['Tipas: '+(f.tipas==='dp'?'Daugiau=pigiau':'Rinkinys'),'tipas']);
+				if(f.rusis){ var g=RUSYS.filter(function(x){return String(x.id)===String(f.rusis);})[0]; akt.push(['Gyvūnas: '+(g?g.v:f.rusis),'rusis']); }
+				if(f.bus) akt.push(['Būsena: '+(f.bus==='publish'?'Prekyboje':'Juodraščiai'),'bus']);
+				if(f.kat) akt.push(['Kategorija: '+f.kat,'kat']);
+				if(f.marza) akt.push(['Marža: '+f.marza,'marza']);
+				if(f.sand) akt.push(['Sandėlis: '+f.sand.toUpperCase(),'sand']);
+				if(f.q) akt.push(['Paieška: '+f.q,'q']);
+				if(akt.length) h+='<div class="psr-aktyvus"><span class="psr-mut">Filtrai:</span>'
+					+akt.map(function(a){return '<span class="psr-chip">'+esc(a[0])+'<button data-x="'+a[1]+'">✕</button></span>';}).join('')
+					+'<button class="button button-small" id="psr-isvalyti">Išvalyti visus</button></div>';
+				document.getElementById('psr-filtrai').innerHTML=h;
+
+				document.querySelectorAll('#psr-filtrai .psr-grupe button').forEach(function(b){
+					b.onclick=function(){ f[this.dataset.l]=this.dataset.v; pieszti(); };
+				});
+				document.querySelectorAll('#psr-filtrai select[data-l]').forEach(function(sel){
+					sel.onchange=function(){ f[this.dataset.l]=this.value; pieszti(); };
+				});
+				document.querySelectorAll('#psr-filtrai .psr-chip button').forEach(function(b){
+					b.onclick=function(){ f[this.dataset.x]=''; pieszti(); };
+				});
+				var iv=document.getElementById('psr-isvalyti');
+				if(iv) iv.onclick=function(){ f={eile:f.eile,tipas:'',rusis:'',bus:'',sand:'',marza:'',kat:'',q:''}; pieszti(); };
+				var qi=document.getElementById('psr-q');
+				if(qi){ qi.oninput=function(){ f.q=this.value; pieszti(); };
+					if(f.q){ qi.focus(); qi.setSelectionRange(qi.value.length,qi.value.length); } }
+			}
+
+			function komponentai(x){
+				var fo=x.komp.filter(function(c){return c.foto;}).slice(0,6);
+				if(!fo.length) return '';
+				return '<div class="psr-komp-eil">'+fo.map(function(c){
+					return '<img src="'+c.foto+'" title="'+esc(c.pav)+(c.kiekis>1?' ×'+c.kiekis:'')+'">';}).join('')
+					+(x.poz>6?'<span class="psr-dar">+'+(x.poz-6)+'</span>':'')+'</div>';
+			}
+			function zenklai(x){
+				var b=bedos(x);
+				return b.length?b.map(function(z){return '<span class="psr-z '+z[0]+'">'+z[1]+'</span>';}).join('')
+					:'<span class="psr-z g">✓ prekyboje</span>';
+			}
+
+			function lentele(sar){
+				var h='<table class="wp-list-table widefat striped psr-lentele"><thead><tr>'
+					+'<th style="width:26px"><input type="checkbox" id="psr-visi"></th>'
+					+'<th style="width:66px"></th>'
+					+'<th class="psr-sort" data-s="pav">Rinkinys</th>'
+					+'<th style="width:118px">Tipas</th>'
+					+'<th style="width:56px" class="r">Vnt.</th>'
+					+'<th style="width:88px" class="r psr-sort" data-s="sav">Savikaina</th>'
+					+'<th style="width:88px" class="r">Atskirai</th>'
+					+'<th style="width:88px" class="r psr-sort" data-s="kaina">Kaina</th>'
+					+'<th style="width:118px" class="r psr-sort" data-s="marza">Marža</th>'
+					+'<th style="width:96px" class="r psr-sort" data-s="lubos">Galima parduoti</th>'
+					+'<th style="width:168px">Būklė</th></tr></thead><tbody>';
+				if(!sar.length) h+='<tr><td colspan="11"><div class="psr-tuscia"><b>Nieko nerasta</b>Pakeisk filtrą arba paieškos žodį.</div></td></tr>';
+				sar.forEach(function(x){
+					h+='<tr class="'+(pazymeti[x.id]?'psr-pazymeta':'')+'">'
+						+'<td><input type="checkbox" class="psr-chk" value="'+x.id+'" '+(pazymeti[x.id]?'checked':'')+'></td>'
+						+'<td>'+(x.foto?'<img class="psr-foto" src="'+x.foto+'">':'<div class="psr-foto-n">nėra</div>')+'</td>'
+						+'<td><div class="psr-pav"><a href="'+x.nuoroda+'">'+esc(x.pav)+'</a></div>'
+						+'<div class="psr-mut">#'+x.id+(x.sku?' · '+esc(x.sku):'')+' · '+x.poz+' pozicijos · keista '+x.keista+'</div>'
+						+komponentai(x)
+						+'<div class="row-actions"><span><a href="'+x.nuoroda+'">Redaguoti</a> | </span>'
+						+'<span><a href="'+x.nuoroda+'&kopija='+x.id+'">Kopijuoti</a> | </span>'
+						+'<span><a href="'+x.perziura+'" target="_blank">Peržiūrėti</a> | </span>'
+						+'<span class="trash"><a class="psr-trinti" data-id="'+x.id+'" data-pav="'+esc(x.pav)+'">Ištrinti</a></span></div></td>'
+						+'<td>'+(x.tipas==='dp'?'<span class="psr-z b">Daugiau=pigiau</span>':'<span class="psr-z gr">Rinkinys</span>')
+						+'<div class="psr-mut">'+esc((x.kat[0]||'—')).slice(0,22)+'</div></td>'
+						+'<td class="r"><b>'+x.vnt+'</b></td>'
+						+'<td class="r">'+(x.sav===null?'<span class="psr-mut">—</span>':eur(x.sav))+'</td>'
+						+'<td class="r psr-mut">'+eur(x.suma)+'</td>'
+						+'<td class="r"><b>'+eur(x.kaina)+'</b></td>'
+						+'<td class="r">'+(x.marza===null?'<span class="psr-mut">—</span>'
+							:(x.marza<0?'<b class="psr-bad">'+eur(x.marza)+' ('+x.pct+'%)</b>':'<b class="psr-ok">'+eur(x.marza)+' ('+x.pct+'%)</b>'))+'</td>'
+						+'<td class="r">'+(x.lubos===null?'<span class="psr-mut">—</span>'
+							:'<b class="'+(x.lubos===0?'psr-bad':(x.lubos<5?'psr-warn':'psr-ok'))+'">'+x.lubos+' vnt.</b>')+'</td>'
+						+'<td>'+zenklai(x)+'</td></tr>';
+				});
+				return h+'</tbody></table>';
+			}
+
+			function korteles(sar){
+				if(!sar.length) return '<div class="psr-tuscia"><b>Nieko nerasta</b>Pakeisk filtrą.</div>';
+				return '<div class="psr-korteles">'+sar.map(function(x){
+					var b=bedos(x);
+					return '<div class="psr-kort"><div class="psr-kfoto">'
+						+(x.foto?'<img src="'+x.foto+'">':'<span class="psr-mut">nėra nuotraukos</span>')
+						+'<span class="psr-zenklas">'+(x.tipas==='dp'?'<span class="psr-z b">×'+x.vnt+'</span>':'<span class="psr-z gr">'+x.vnt+' vnt.</span>')+'</span></div>'
+						+'<div class="psr-kbody"><div class="psr-kpav"><a href="'+x.nuoroda+'">'+esc(x.pav)+'</a></div>'
+						+'<div class="psr-kkaina">'+eur(x.kaina)+' '+(x.marza===null?'<span class="psr-mut">marža —</span>'
+							:'<span class="'+(x.marza<0?'psr-bad':'psr-ok')+'" style="font-size:12px">'+x.pct+'%</span>')+'</div>'
+						+'<div class="psr-kmeta"><span>'+(x.lubos===null?'—':x.lubos+' vnt.')+'</span><span>'
+						+(b.length?'<span class="'+(b[0][0]==='r'?'psr-bad':(b[0][0]==='b'?'psr-mut':'psr-warn'))+'">'+b[0][1]+'</span>':'<span class="psr-ok">✓ prekyboje</span>')
+						+'</span></div></div></div>';
+				}).join('')+'</div>';
+			}
+
+			function pieštiMasinius(){
+				var n=Object.keys(pazymeti).filter(function(k){return pazymeti[k];}).length;
+				document.getElementById('psr-masiniai').innerHTML = n
+					? '<div class="psr-masiniai"><b>Pažymėta: '+n+'</b>'
+						+'<button class="button button-small" data-m="publish">Publikuoti</button>'
+						+'<button class="button button-small" data-m="draft">Į juodraščius</button>'
+						+'<button class="button button-small" data-m="csv">Eksportuoti CSV</button>'
+						+'<span class="psr-sp"></span>'
+						+'<button class="button button-small" data-m="atzymeti">Atžymėti</button></div>'
+					: '';
+				document.querySelectorAll('#psr-masiniai button').forEach(function(b){
+					b.onclick=function(){
+						var m=this.dataset.m;
+						if(m==='atzymeti'){ pazymeti={}; pieszti(); return; }
+						var ids=Object.keys(pazymeti).filter(function(k){return pazymeti[k];});
+						if(m==='csv'){ eksportas(ids); return; }
+						if(!confirm(ids.length+' rinkiniams pakeisti būseną į „'+(m==='publish'?'Prekyboje':'Juodraštis')+'"?')) return;
+						alert('Masinis būsenos keitimas dar neįjungtas — bus kitame žingsnyje.');
+					};
+				});
+			}
+			function eksportas(ids){
+				var sar=R.filter(function(x){return ids.indexOf(String(x.id))>=0;});
+				var eil=[['ID','Pavadinimas','SKU','Tipas','Vnt','Savikaina','Atskirai','Kaina','Marza','Marza%','Galima parduoti','Busena']];
+				sar.forEach(function(x){ eil.push([x.id,x.pav,x.sku,x.tipas,x.vnt,x.sav,x.suma,x.kaina,x.marza,x.pct,x.lubos,x.st]); });
+				var csv=eil.map(function(r){return r.map(function(c){return '"'+String(c===null?'':c).replace(/"/g,'""')+'"';}).join(';');}).join('\n');
+				var a=document.createElement('a');
+				a.href='data:text/csv;charset=utf-8,\ufeff'+encodeURIComponent(csv);
+				a.download='rinkiniai-'+new Date().toISOString().slice(0,10)+'.csv';
+				a.click();
+			}
+
+			function pieszti(){
+				pieštiFiltrus();
+				var sar=filtruoti();
+				document.getElementById('psr-rodoma').textContent='Rodoma '+sar.length+' iš '+R.length;
+				document.getElementById('psr-vaizdas').innerHTML=
+					[['lentele','☰ Lentelė'],['korteles','▦ Kortelės']].map(function(v){
+						return '<button class="'+(vaizdas===v[0]?'on':'')+'" data-v="'+v[0]+'">'+v[1]+'</button>';}).join('');
+				document.querySelectorAll('#psr-vaizdas button').forEach(function(b){
+					b.onclick=function(){ vaizdas=this.dataset.v; pieszti(); };
+				});
+				document.getElementById('psr-turinys').innerHTML = vaizdas==='lentele'?lentele(sar):korteles(sar);
+				pieštiMasinius();
+
+				document.querySelectorAll('.psr-chk').forEach(function(c){
+					c.onchange=function(){ pazymeti[this.value]=this.checked; pieszti(); };
+				});
+				var v=document.getElementById('psr-visi');
+				if(v) v.onchange=function(){ var c=this.checked; sar.forEach(function(x){pazymeti[x.id]=c;}); pieszti(); };
+				document.querySelectorAll('.psr-sort').forEach(function(th){
+					th.onclick=function(){
+						var k=this.dataset.s, s=document.getElementById('psr-sort');
+						if(s.value===k) kryptis[k]=(kryptis[k]||1)*-1; else { s.value=k; kryptis[k]=1; }
+						pieszti();
+					};
+				});
+				document.querySelectorAll('.psr-trinti').forEach(function(a){
+					a.onclick=function(e){
+						e.preventDefault();
+						var id=this.dataset.id;
+						if(!confirm('Ištrinti rinkinį „'+this.dataset.pav+'"?\n\nPrekė bus perkelta į šiukšlinę (atstatoma).')) return;
+						var fd=new FormData(); fd.append('action','ps_rink_trinti'); fd.append('nonce',N); fd.append('id',id);
+						fetch(ajaxurl,{method:'POST',body:fd}).then(function(r){return r.json();}).then(function(j){
+							if(j.success) location.href='<?php echo esc_js( $grizti ); ?>';
+							else alert('Klaida: '+(j.data||'nežinoma'));
+						});
+					};
+				});
+			}
+			document.getElementById('psr-sort').onchange=pieszti;
+			pieštiEiles(); pieszti();
 		})();
 		</script>
 		<?php
 	}
-
 
 	/* ==================== FORMA ==================== */
 
@@ -1589,6 +1893,53 @@ class Petshop_Rinkiniai {
 		.psr-eile.g{border-left-color:#00a32a}.psr-eile.g b{color:#007017}
 		.psr-eile.b{border-left-color:#72aee6}.psr-eile.b b{color:#0a4b78}
 
+		/* --- sarasas --- */
+		.psr-eiles{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+		.psr-eile{background:#fff;border:1px solid #c3c4c7;border-left:3px solid #c3c4c7;border-radius:3px;padding:7px 13px;text-align:left;min-width:118px;cursor:pointer}
+		.psr-eile:hover{box-shadow:0 1px 4px rgba(0,0,0,.08)}
+		.psr-eile b{display:block;font-size:19px;line-height:1.2}
+		.psr-eile span{font-size:11.5px;color:#646970}
+		.psr-eile.on{border-color:#2271b1;border-left-color:#2271b1;background:#f0f6fc}
+		.psr-eile.y{border-left-color:#dba617}.psr-eile.y b{color:#996800}
+		.psr-eile.r{border-left-color:#d63638}.psr-eile.r b{color:#d63638}
+		.psr-eile.g{border-left-color:#00a32a}.psr-eile.g b{color:#007017}
+		.psr-eile.b{border-left-color:#72aee6}.psr-eile.b b{color:#0a4b78}
+		.psr-eile-paaisk{background:#fff;border:1px solid #c3c4c7;border-left:3px solid #72aee6;border-radius:3px;padding:8px 12px;margin:-6px 0 12px;font-size:12.5px}
+		.psr-eile-paaisk:empty{display:none}
+		.psr-filtrai-blk{background:#fff;border:1px solid #c3c4c7;border-radius:3px;padding:10px 12px;margin-bottom:12px}
+		.psr-frow{display:flex;flex-wrap:wrap;gap:9px 16px;align-items:center}
+		.psr-frow+.psr-frow{margin-top:9px;padding-top:9px;border-top:1px solid #f0f0f1}
+		.psr-f-plati{flex:1;min-width:260px}
+		.psr-f-plati input{flex:1;min-width:200px}
+		.psr-grupe{display:inline-flex;border:1px solid #8c8f94;border-radius:3px;overflow:hidden}
+		.psr-grupe button{border:0;background:#fff;padding:4px 11px;font-size:12.5px;color:#50575e;border-right:1px solid #dcdcde;cursor:pointer}
+		.psr-grupe button:last-child{border-right:0}
+		.psr-grupe button.on{background:#2271b1;color:#fff}
+		.psr-grupe button.tuscia{color:#a7aaad}
+		.psr-grupe button i{font-style:normal;font-size:11px;opacity:.65}
+		.psr-aktyvus{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:9px}
+		.psr-virsus{display:flex;align-items:center;gap:12px;margin-bottom:9px;flex-wrap:wrap}
+		.psr-foto{width:56px;height:56px;object-fit:contain;background:#fff;border:1px solid #e5e5e5;border-radius:3px;display:block}
+		.psr-foto-n{width:56px;height:56px;border:1px dashed #c3c4c7;border-radius:3px;display:grid;place-items:center;color:#a7aaad;font-size:10px}
+		.psr-pav{font-weight:600;font-size:13.5px;line-height:1.35}
+		.psr-komp-eil{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+		.psr-komp-eil img{width:22px;height:22px;object-fit:contain;background:#fff;border:1px solid #eee;border-radius:2px}
+		.psr-dar{font-size:10.5px;color:#787c82;align-self:center}
+		.psr-lentele th.psr-sort{cursor:pointer}
+		.psr-lentele th.psr-sort:hover{color:#2271b1}
+		.psr-lentele td{vertical-align:top}
+		.psr-lentele tr.psr-pazymeta td{background:#f0f6fc}
+		.psr-masiniai{background:#2c3338;color:#fff;border-radius:3px;padding:8px 14px;display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:12.5px}
+		.psr-korteles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+		.psr-kort{background:#fff;border:1px solid #c3c4c7;border-radius:3px;overflow:hidden}
+		.psr-kort:hover{box-shadow:0 2px 8px rgba(0,0,0,.09)}
+		.psr-kfoto{height:150px;display:grid;place-items:center;background:#fafafa;border-bottom:1px solid #f0f0f1;position:relative}
+		.psr-kfoto img{max-width:88%;max-height:88%;object-fit:contain}
+		.psr-zenklas{position:absolute;top:7px;left:7px}
+		.psr-kbody{padding:9px 11px}
+		.psr-kpav{font-weight:600;font-size:13px;line-height:1.35;height:53px;overflow:hidden}
+		.psr-kkaina{font-size:16px;font-weight:600;margin-top:5px}
+		.psr-kmeta{display:flex;justify-content:space-between;font-size:11.5px;color:#646970;margin-top:5px;border-top:1px solid #f0f0f1;padding-top:6px}
 		.psr-z{display:inline-block;font-size:11px;border:1px solid;border-radius:2px;padding:0 6px;white-space:nowrap;margin:0 2px 2px 0}
 		.psr-z.g{background:#edfaef;border-color:#b8e6c1;color:#00622a}
 		.psr-z.y{background:#fcf9e8;border-color:#e8dfa8;color:#7a5c00}
