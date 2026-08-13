@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.4';
+	const VERSIJA = '1.5';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -1946,12 +1946,20 @@ class Petshop_Rinkiniai {
 		.psr-z.r{background:#fcf0f1;border-color:#f0c3c4;color:#8a2424}
 		.psr-z.b{background:#f0f6fc;border-color:#c5d9ed;color:#0a4b78}
 
-		.psr-forma{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start;margin-top:14px}
+		.psr-forma{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:16px;align-items:start;margin-top:14px}
+		.psr-kaire{min-width:0}
 		@media(max-width:1400px){.psr-forma{grid-template-columns:1fr}}
 		.psr-kort{background:#fff;border:1px solid #c3c4c7;border-radius:3px;margin-bottom:16px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
 		.psr-kort>h3{margin:0;padding:10px 14px;font-size:13.5px;border-bottom:1px solid #f0f0f1;background:#f6f7f7;display:flex;align-items:center;gap:8px}
 		.psr-vidus{padding:12px 14px}
-		.psr-lipni{position:sticky;top:46px}
+		/* Anksciau „lipni" buvo tik kainodaros kortele, o perziura po ja slinko ir
+		   uzdengdavo — atrode, kad puse lango juda, puse ne. Dabar lipni yra VISA
+		   desine kolona su savo vidine slinktimi: nieko nepersidengia. */
+		.psr-lipni{position:static}
+		.psr-desine{position:sticky;top:calc(var(--wp-admin--admin-bar--height, 32px) + 14px);max-height:calc(100vh - 130px);overflow-y:auto;overflow-x:hidden;padding-right:2px}
+		.psr-desine::-webkit-scrollbar{width:8px}
+		.psr-desine::-webkit-scrollbar-thumb{background:#c3c4c7;border-radius:4px}
+		@media(max-width:1400px){.psr-desine{position:static;max-height:none;overflow:visible}}
 		.psr-kort .form-table th{width:150px;padding:10px 10px 10px 0}
 		.psr-kort .form-table td{padding:8px 0}
 
@@ -1960,7 +1968,7 @@ class Petshop_Rinkiniai {
 		.psr-f>label{font-size:12px;color:#646970;white-space:nowrap}
 		.psr-f-plati{flex:1;min-width:300px}
 		.psr-f-plati input{flex:1;min-width:180px}
-		.psr-rez{max-height:430px;overflow:auto}
+		.psr-rez{max-height:430px;overflow:auto;position:relative}
 		.psr-rez-juosta{position:sticky;top:0;z-index:2;background:#f6f7f7;border-bottom:1px solid #ddd;padding:6px 12px;display:flex;gap:14px;align-items:center;font-size:12.5px}
 		.psr-rez-t{border:0;box-shadow:none}
 		.psr-rez-t th{position:sticky;top:31px;background:#fff;z-index:1;font-size:11.5px}
@@ -1996,7 +2004,7 @@ class Petshop_Rinkiniai {
 		.psr-perz-sud ol{margin:5px 0 0 18px;padding:0}
 		.psr-perz-sud li{margin-bottom:2px}
 
-		.psr-juosta{position:sticky;bottom:0;background:#fff;border-top:1px solid #c3c4c7;padding:10px 16px;display:flex;gap:10px;align-items:center;margin:0 -20px -10px;box-shadow:0 -2px 6px rgba(0,0,0,.05);z-index:20;flex-wrap:wrap}
+		.psr-juosta{position:sticky;bottom:0;background:#fff;border-top:1px solid #c3c4c7;padding:10px 16px;display:flex;gap:10px;align-items:center;margin:14px -20px 0;box-shadow:0 -2px 8px rgba(0,0,0,.08);z-index:100;flex-wrap:wrap}
 		.psr-tipas{margin:0;padding:10px 14px;border-bottom:1px solid #f0f0f1;font-size:12.5px}
 		.psr-tipas.tuscia{background:#fbfbfc;color:#646970}
 		.psr-tipas.dp{background:#f0f6fc;border-left:3px solid #2271b1}
