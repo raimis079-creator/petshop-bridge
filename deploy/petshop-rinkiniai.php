@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.10';
+	const VERSIJA = '1.11';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -179,17 +179,46 @@ class Petshop_Rinkiniai {
 		$html = trim( (string) $preke->get_description() );
 		if ( $html === '' ) { return ''; }
 
-		/* Jei trumpas aprasymas yra pilno pradzia — nukerpam, kad nesidubliuotu */
+		/*
+		 * VALYMAS. Prekiu aprasymuose (ypac importuotuose) buna:
+		 *   - <style> blokai (.b2b-black { color:#000 !important; }) — be valymo
+		 *     jie issilieja i puslapi kaip tekstas;
+		 *   - <div>/<section> su savo klasemis ir grid stiliais — jie suardo
+		 *     rinkinio isdestyma i stulpelius;
+		 *   - inline style="" atributai, kurie perima musu apipavidalinima.
+		 * Todel paliekam tik teksto zymes, be klasiu ir stiliu.
+		 */
+		$html = preg_replace( '#<style\b[^>]*>.*?</style>#is', '', $html );
+		$html = preg_replace( '#<script\b[^>]*>.*?</script>#is', '', $html );
+		/* CSS likuciai, likę be zymiu: „.klase { ... }" */
+		$html = preg_replace( '/\.[a-z0-9_-]+\s*(,\s*\.[a-z0-9_ *-]+)*\s*\{[^}]*\}/i', '', $html );
+
 		if ( $jau_rodoma !== '' ) {
-			$plikas = trim( wp_strip_all_tags( $html ) );
+			$plikas  = trim( wp_strip_all_tags( $html ) );
 			$pradzia = mb_substr( $plikas, 0, mb_strlen( $jau_rodoma ) );
 			if ( mb_strtolower( $pradzia ) === mb_strtolower( $jau_rodoma ) ) {
-				$poz = mb_strpos( $html, mb_substr( $jau_rodoma, -40 ) );
-				if ( $poz !== false ) { $html = trim( mb_substr( $html, $poz + 40 ) ); }
+				$uodega = mb_substr( $jau_rodoma, -40 );
+				$poz = mb_strpos( $html, $uodega );
+				if ( $poz !== false ) { $html = trim( mb_substr( $html, $poz + mb_strlen( $uodega ) ) ); }
 			}
 		}
+
+		$leidziamos = array(
+			'p' => array(), 'br' => array(), 'strong' => array(), 'b' => array(),
+			'em' => array(), 'i' => array(), 'u' => array(),
+			'ul' => array(), 'ol' => array(), 'li' => array(),
+			'h3' => array(), 'h4' => array(), 'h5' => array(), 'h6' => array(),
+			'table' => array(), 'thead' => array(), 'tbody' => array(),
+			'tr' => array(), 'td' => array(), 'th' => array(),
+			'span' => array(),
+		);
+		$html = wp_kses( $html, $leidziamos );
+		$html = force_balance_tags( $html );
+		$html = preg_replace( '/(<p>\s*<\/p>|<span>\s*<\/span>)/', '', $html );
+		$html = trim( $html );
+
 		if ( trim( wp_strip_all_tags( $html ) ) === '' ) { return ''; }
-		return wp_kses_post( $html );
+		return $html;
 	}
 
 	/**
@@ -248,7 +277,10 @@ class Petshop_Rinkiniai {
 		.ps-rink-daugiau>summary::after{content:'▾';font-size:11px;transition:transform .15s}
 		.ps-rink-daugiau[open]>summary::after{transform:rotate(180deg)}
 		.ps-rink-daugiau>summary:hover{color:#1d4030}
-		.ps-rink-pilnas{margin-top:8px;padding:12px 14px;background:#f7f7f5;border-radius:4px;font-size:13.5px;line-height:1.6;color:#444}
+		.ps-rink-pilnas{margin-top:8px;padding:12px 14px;background:#f7f7f5;border-radius:4px;font-size:13.5px;line-height:1.6;color:#444;overflow-x:auto;max-width:100%;display:block!important;column-count:initial!important}
+		.ps-rink-pilnas *{max-width:100%;float:none!important;position:static!important;display:revert}
+		.ps-rink-sudetis,.ps-rink-preke,.ps-rink-tekstas{display:block;column-count:initial!important}
+		.ps-rink-preke{display:flex!important}
 		.ps-rink-pilnas h1,.ps-rink-pilnas h2,.ps-rink-pilnas h3,.ps-rink-pilnas h4{font-size:14px;margin:12px 0 4px;color:#2e5c48}
 		.ps-rink-pilnas h1:first-child,.ps-rink-pilnas h2:first-child,.ps-rink-pilnas h3:first-child{margin-top:0}
 		.ps-rink-pilnas p{margin:0 0 8px}
