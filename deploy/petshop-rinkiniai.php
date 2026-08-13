@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.15';
+	const VERSIJA = '1.16';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -75,6 +75,10 @@ class Petshop_Rinkiniai {
 		add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 200 );
 		add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );
 		add_filter( 'gettext', array( __CLASS__, 'vertimai' ), 20, 3 );
+		/* Lenteles antrastes registruotos per _x() su kontekstu — jos eina
+		   pro `gettext_with_context`, ne pro `gettext`. Be sio filtro liko
+		   „PRODUCT" ir „QUANTITY". */
+		add_filter( 'gettext_with_context', array( __CLASS__, 'vertimai_kontekste' ), 20, 4 );
 		add_filter( 'ngettext', array( __CLASS__, 'vertimai_daugiskaita' ), 20, 5 );
 		add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'sutaupote' ), 11 );
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
@@ -371,6 +375,10 @@ class Petshop_Rinkiniai {
 		return $vertimas;
 	}
 
+	public static function vertimai_kontekste( $vertimas, $tekstas, $kontekstas, $domenas ) {
+		return self::vertimai( $vertimas, $tekstas, $domenas );
+	}
+
 	public static function vertimai_daugiskaita( $vertimas, $vienas, $daug, $skaicius, $domenas ) {
 		if ( is_admin() || ! self::rinkinio_puslapis() ) { return $vertimas; }
 		$sablonas = ( $skaicius === 1 ) ? $vienas : $daug;
@@ -450,11 +458,15 @@ class Petshop_Rinkiniai {
 		/* Fiksuotam rinkiniui klientas nieko nesirenka — pasirinkimo valdikliai
 		   tik klaidina. Kiekiai jau nustatyti, todel slepiam „Isvalyti" ir bukles
 		   eilute; sudeties lentele lieka matoma. */
+		body.ps-fiksuotas-rinkinys .mnm_reset,
 		body.ps-fiksuotas-rinkinys .mnm_reset_link,
 		body.ps-fiksuotas-rinkinys .mnm-reset,
 		body.ps-fiksuotas-rinkinys a.reset_variations,
 		body.ps-fiksuotas-rinkinys .mnm_message,
+		body.ps-fiksuotas-rinkinys .mnm_status,
 		body.ps-fiksuotas-rinkinys .mnm-container-status{display:none!important}
+		/* Kiekio laukelis fiksuotam rinkiniui — tik skaicius, be redagavimo */
+		body.ps-fiksuotas-rinkinys .mnm-quantity{pointer-events:none;background:transparent;border:0;text-align:center}
 		body.ps-fiksuotas-rinkinys .mnm_price .amount{font-weight:600}
 		.ps-rink-daugiau{margin-top:8px}
 		.ps-rink-daugiau>summary{cursor:pointer;color:#2e5c48;font-size:13.5px;font-weight:600;list-style:none;display:inline-flex;align-items:center;gap:6px;padding:3px 0}
