@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.9';
+	const VERSIJA = '1.10';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -66,7 +66,9 @@ class Petshop_Rinkiniai {
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );
 		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ) );
-		add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 25 );
+		/* 200, nes aprasymu akordeonas (512) kabinasi prio 98 — su mazesniu
+		   prioritetu jis perrasytu musu skirtuka atgal i savo psdp_render. */
+		add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 200 );
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
