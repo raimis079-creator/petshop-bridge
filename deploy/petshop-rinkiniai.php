@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.16';
+	const VERSIJA = '1.17';
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -465,6 +465,25 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys .mnm_message,
 		body.ps-fiksuotas-rinkinys .mnm_status,
 		body.ps-fiksuotas-rinkinys .mnm-container-status{display:none!important}
+		/*
+		 * Lenteles antrastes „PRODUCT" / „QUANTITY".
+		 *
+		 * Bandyta versti per gettext ir gettext_with_context — nepavyko nei karto:
+		 * sablone jos irasytos tiesiai, be vertimo funkcijos, todel i WordPress
+		 * vertimu sluoksni is viso nepatenka. Vietoj to keiciam per CSS —
+		 * veikia nepriklausomai nuo to, kaip tekstas atsiranda, ir isliks po
+		 * plugino atnaujinimo.
+		 */
+		body.ps-fiksuotas-rinkinys th.product-details,
+		body.ps-fiksuotas-rinkinys th.product-quantity,
+		body.ps-fiksuotas-rinkinys th.product-price{font-size:0!important;line-height:0!important}
+		body.ps-fiksuotas-rinkinys th.product-details::after{content:"Prekė"}
+		body.ps-fiksuotas-rinkinys th.product-quantity::after{content:"Kiekis"}
+		body.ps-fiksuotas-rinkinys th.product-price::after{content:"Kaina"}
+		body.ps-fiksuotas-rinkinys th.product-details::after,
+		body.ps-fiksuotas-rinkinys th.product-quantity::after,
+		body.ps-fiksuotas-rinkinys th.product-price::after{
+			font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.3px;display:inline-block}
 		/* Kiekio laukelis fiksuotam rinkiniui — tik skaicius, be redagavimo */
 		body.ps-fiksuotas-rinkinys .mnm-quantity{pointer-events:none;background:transparent;border:0;text-align:center}
 		body.ps-fiksuotas-rinkinys .mnm_price .amount{font-weight:600}
