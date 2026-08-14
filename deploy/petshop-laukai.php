@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.13';   /* v1.13: grupe imama ir is paties rinkinio */
+	const VERSIJA = '1.14';   /* v1.14: grupe vietoj seimos — ir juostoje, ir panelėje */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -455,19 +455,21 @@ class Petshop_Laukai {
 	}
 
 	/** Kiti tos pacios seimos laukai — mygtukai virsuje. */
+	/**
+	 * Juostoje rodom tik TOS PACIOS GRUPES rinkinius. Anksciau jungiau pagal
+	 * seima („Sunims"), ir kramtalu puslapyje kabejo hipoalerginiai skanestai —
+	 * klientui tai butu sokinejimas i visai kita lentyna.
+	 */
 	private static function seimos_laukai( $lid ) {
-		$seima = get_post_meta( $lid, self::META_SEIMA, true );
-		if ( ! $seima ) { return array(); }
+		$grupe = self::grupe( $lid );
 		$q = new WP_Query( array(
-			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 12,
+			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 20,
 			'fields' => 'ids', 'orderby' => 'menu_order title', 'order' => 'ASC',
-			'meta_query' => array(
-				array( 'key' => self::META_LAUKAS, 'value' => 'yes' ),
-				array( 'key' => self::META_SEIMA, 'value' => $seima ),
-			),
+			'meta_query' => array( array( 'key' => self::META_LAUKAS, 'value' => 'yes' ) ),
 		) );
 		$r = array();
 		foreach ( $q->posts as $id ) {
+			if ( self::grupe( $id ) !== $grupe ) { continue; }
 			$r[] = array(
 				'id'   => (int) $id,
 				'pav'  => get_post_meta( $id, '_ps_laukas_trumpas', true ) ?: get_the_title( $id ),
@@ -1254,8 +1256,11 @@ class Petshop_Laukai {
 			. '<input type="text" id="n-pav" placeholder="Skanėstų dėžė šuniui — be vištienos"></div>';
 		echo '<div class="pslka-laukas"><label>Trumpas pavadinimas <span>mygtukui vitrinoje</span></label>'
 			. '<input type="text" id="n-trumpas" placeholder="Be vištienos"></div>';
-		echo '<div class="pslka-laukas"><label>Šeima <span>pagal ją laukai grupuojami ir rodomi kartu</span></label>'
-			. '<input type="text" id="n-seima" placeholder="Šunims" value="Šunims"></div>';
+		echo '<div class="pslka-laukas"><label>Grupė <span>kartu rodomi vitrinoje ir sąraše</span></label><select id="n-seima">';
+		foreach ( self::grupiu_vardai() as $gk => $gv ) {
+			echo '<option value="' . esc_attr( $gk ) . '">' . esc_html( $gv ) . '</option>';
+		}
+		echo '</select></div>';
 		echo '<div class="pslka-laukas"><label>Kaip vadinti</label>'
 			. '<select id="n-zodis"><option value="deze">dėžė</option><option value="dezute">dėžutė</option></select></div>';
 		echo '<div class="pslka-laukas"><label>Aprašymas</label><textarea id="n-aprasas" rows="3"></textarea></div>';
@@ -1287,8 +1292,12 @@ class Petshop_Laukai {
 		echo '<div class="pslka-laukas"><label>Pavadinimas</label><input type="text" id="s-pav" value="' . esc_attr( get_the_title( $lid ) ) . '"></div>';
 		echo '<div class="pslka-laukas"><label>Trumpas <span>mygtukui</span></label><input type="text" id="s-trumpas" value="'
 			. esc_attr( get_post_meta( $lid, '_ps_laukas_trumpas', true ) ) . '"></div>';
-		echo '<div class="pslka-laukas"><label>Šeima</label><input type="text" id="s-seima" value="'
-			. esc_attr( get_post_meta( $lid, self::META_SEIMA, true ) ) . '"></div>';
+		$dab_grupe = get_post_meta( $lid, '_ps_laukas_grupe', true ) ?: self::grupe( $lid );
+		echo '<div class="pslka-laukas"><label>Grupė <span>kartu rodomi vitrinoje</span></label><select id="s-seima">';
+		foreach ( self::grupiu_vardai() as $gk => $gv ) {
+			echo '<option value="' . esc_attr( $gk ) . '"' . selected( $dab_grupe, $gk, false ) . '>' . esc_html( $gv ) . '</option>';
+		}
+		echo '</select></div>';
 		echo '<div class="pslka-laukas"><label>Kaip vadinti</label><select id="s-zodis">'
 			. '<option value="deze"' . selected( $zodis, 'deze', false ) . '>dėžė</option>'
 			. '<option value="dezute"' . selected( $zodis, 'dezute', false ) . '>dėžutė</option></select></div>';
@@ -1679,7 +1688,11 @@ class Petshop_Laukai {
 		if ( ! $lid ) { wp_send_json_error( 'Nepavyko sukurti.' ); }
 		update_post_meta( $lid, self::META_LAUKAS, 'yes' );
 		update_post_meta( $lid, self::META_ZODIS, ( $_POST['zodis'] ?? '' ) === 'dezute' ? 'dezute' : 'deze' );
-		update_post_meta( $lid, self::META_SEIMA, sanitize_text_field( wp_unslash( $_POST['seima'] ?? '' ) ) );
+		$g = sanitize_key( $_POST['seima'] ?? '' );
+		if ( isset( self::grupiu_vardai()[ $g ] ) ) {
+			update_post_meta( $lid, '_ps_laukas_grupe', $g );
+			update_post_meta( $lid, self::META_SEIMA, self::grupiu_vardai()[ $g ] );
+		}
 		update_post_meta( $lid, '_ps_laukas_trumpas', sanitize_text_field( wp_unslash( $_POST['trumpas'] ?? '' ) ) );
 		update_post_meta( $lid, self::META_PAKOPOS, wp_json_encode( array() ) );
 		wp_send_json_success( array( 'id' => $lid, 'url' => self::nuoroda( array( 'id' => $lid ) ) ) );
@@ -1696,7 +1709,11 @@ class Petshop_Laukai {
 		$p->set_description( wp_kses_post( wp_unslash( $_POST['aprasas'] ?? '' ) ) );
 		$p->save();
 		update_post_meta( $lid, self::META_ZODIS, ( $_POST['zodis'] ?? '' ) === 'dezute' ? 'dezute' : 'deze' );
-		update_post_meta( $lid, self::META_SEIMA, sanitize_text_field( wp_unslash( $_POST['seima'] ?? '' ) ) );
+		$g = sanitize_key( $_POST['seima'] ?? '' );
+		if ( isset( self::grupiu_vardai()[ $g ] ) ) {
+			update_post_meta( $lid, '_ps_laukas_grupe', $g );
+			update_post_meta( $lid, self::META_SEIMA, self::grupiu_vardai()[ $g ] );
+		}
 		update_post_meta( $lid, '_ps_laukas_trumpas', sanitize_text_field( wp_unslash( $_POST['trumpas'] ?? '' ) ) );
 		wc_delete_product_transients( $lid );
 		wp_send_json_success( array( 'ok' => 1 ) );
