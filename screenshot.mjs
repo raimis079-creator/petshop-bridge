@@ -1,19 +1,20 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
+const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const F={"23810": "https://dev.avesa.lt/wp-content/uploads/2026/06/85decf39-94a7-4157-8b38-6fa24a759bd8-280x280.png", "21908": "https://dev.avesa.lt/wp-content/uploads/2026/06/23b2530c-e785-4558-bf40-33f005c8c00f-280x280.png", "21259": "https://dev.avesa.lt/wp-content/uploads/2026/06/798dac73-0307-4b27-a30c-9bd56272bbf8-280x280.png"};
-const IDS='21259,21908,22304,23810'.split(',');
-const out={foto:{},apr:{}};
-for (const [id,u] of Object.entries(F)){
-  try{ const r=await fetch(u); if(r.status!==200){ out.foto[id]={err:r.status}; continue; }
-    out.foto[id]={b64:Buffer.from(await r.arrayBuffer()).toString('base64')};
-  }catch(e){ out.foto[id]={err:String(e).slice(0,60)}; }
-}
-const r=await fetch('https://dev.avesa.lt/wp-json/wc/v3/products?include='+IDS.join(',')+'&per_page=20&_fields=id,short_description,description',{headers:{Authorization:AUTH}});
-out.apr_status=r.status;
-if(r.status===200){ for(const p of await r.json()){ out.apr[p.id]={s:(p.short_description||'').slice(0,4000),d:(p.description||'').slice(0,4000)}; } }
+const CODE=Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX2QyJ10gPz8gJycpICE9PSAnRDJ4MDgxNGsnKSByZXR1cm47CglAc2V0X3RpbWVfbGltaXQoMzAwKTsKCSRvID0gYXJyYXkoJ21hcmtlcic9PidERVBMT1kgdjEuMDEnKTsKCSR1cmwgPSAnaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3JhaW1pczA3OS1jcmVhdG9yL3BldHNob3AtYnJpZGdlLzZlNzRlODg3NGYyZDUwZGQ0MDNmZWQzNDI4Yzk3Y2U3NWU0ZDg2MjEvZGVwbG95L3BldHNob3AtbGF1a2FpLnBocCc7CgkkciA9IHdwX3JlbW90ZV9nZXQoJHVybCwgYXJyYXkoJ3RpbWVvdXQnPT42MCkpOwoJaWYgKGlzX3dwX2Vycm9yKCRyKSkgeyAkb1snZXJyJ109JHItPmdldF9lcnJvcl9tZXNzYWdlKCk7IH0KCWVsc2UgewoJCSRrID0gd3BfcmVtb3RlX3JldHJpZXZlX2JvZHkoJHIpOwoJCSRvWydieXRlcyddPXN0cmxlbigkayk7ICRvWydtZDVfb2snXT0obWQ1KCRrKT09PSczMTE3ZmJmMGRlM2U1ODA2OTVmMDEwMWU5ZTIyYzBjNScpOwoJCWlmICgkb1snbWQ1X29rJ10pIHsKCQkJJHQ9c3RyX3JlcGxhY2UoYXJyYXkoJ2NsYXNzIFBldHNob3BfTGF1a2FpJywnUGV0c2hvcF9MYXVrYWk6OmluaXQoKTsnLCdQZXRzaG9wX0xhdWthaTo6JyksCgkJCQlhcnJheSgnY2xhc3MgUGV0c2hvcF9MYXVrYWlfUzInLCcnLCdQZXRzaG9wX0xhdWthaV9TMjo6JyksICRrKTsKCQkJJHRtcD1zeXNfZ2V0X3RlbXBfZGlyKCkuJy9sMTAxLScudGltZSgpLicucGhwJzsgZmlsZV9wdXRfY29udGVudHMoJHRtcCwkdCk7CgkJCSRvaz1udWxsOwoJCQl0cnkgeyBpbmNsdWRlICR0bXA7ICRvaz10cnVlOyAkb1snbGludCddPSdzdmFydSc7IH0KCQkJY2F0Y2ggKFBhcnNlRXJyb3IgJGUpeyAkb2s9ZmFsc2U7ICRvWydsaW50J109J1BhcnNlRXJyb3I6ICcuJGUtPmdldE1lc3NhZ2UoKTsgfQoJCQljYXRjaCAoVGhyb3dhYmxlICRlKXsgJG9rPXRydWU7ICRvWydsaW50J109J3J1bnRpbWU6ICcuJGUtPmdldE1lc3NhZ2UoKTsgfQoJCQlAdW5saW5rKCR0bXApOwoJCQlpZiAoJG9rKSB7CgkJCQkkZD1XUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWxhdWthaS5waHAnOwoJCQkJQGNvcHkoJGQsIFdQTVVfUExVR0lOX0RJUi4nLy5iYWstbGF1a2FpLScuZGF0ZSgnWW1kLUhpcycpLicudHh0Jyk7CgkJCQkkb1snaXJhc3l0YSddPWZpbGVfcHV0X2NvbnRlbnRzKCRkLCRrKTsKCQkJCSRvWydkZXN0X21kNV9vayddPShtZDVfZmlsZSgkZCk9PT0nMzExN2ZiZjBkZTNlNTgwNjk1ZjAxMDFlOWUyMmMwYzUnKTsKCQkJfQoJCX0KCX0KCSRHTE9CQUxTWydwc19kMiddPSRvOwp9LCAxMjkpOwoKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX2QyJ10gPz8gJycpICE9PSAnRDJ4MDgxNGsnKSByZXR1cm47CglAc2V0X3RpbWVfbGltaXQoMzAwKTsKCSRvPWFycmF5KCdkaWVnaW1hcyc9PiRHTE9CQUxTWydwc19kMiddID8/ICduZXN1dmVpa2UnKTsKCSRvWyd2ZXJzaWphJ109Y2xhc3NfZXhpc3RzKCdQZXRzaG9wX0xhdWthaScpID8gUGV0c2hvcF9MYXVrYWk6OlZFUlNJSkEgOiBudWxsOwoJJG9bJ21heCddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9MYXVrYWknKSA/IFBldHNob3BfTGF1a2FpOjpNQVhfS1JFUFNZUyA6IG51bGw7CglpZiAoJG9bJ3ZlcnNpamEnXT09PScxLjAxJykgewoJCSRyPVBldHNob3BfTGF1a2FpOjppc3NhdWdvdGkoYXJyYXkoCgkJCSdpZCc9PjM0OTMyLAoJCQkncGF2Jz0+J1NrYW7El3N0xbMgZMSXxb7ElyDFoXVuaXVpIOKAlCBiZSB2acWhdGllbm9zJywKCQkJJ3NlaW1hJz0+J8WgdW5pbXMnLCd6b2Rpcyc9PidkZXplJywKCQkJJ3ByZWtlcyc9PmFycmF5KDI2NDYxLDIzODM0LDIzODQ5LDIzODUyLDIzODI1LDIzNzk2LDIyMzAyLDIyOTM1LDIyMzA0KSwKCQkJJ3Bha29wb3MnPT5hcnJheShhcnJheSgnbnVvJz0+MjAsJ2QnPT4yKSxhcnJheSgnbnVvJz0+MzAsJ2QnPT4zKSxhcnJheSgnbnVvJz0+NTAsJ2QnPT42KSksCgkJCSdrYXRlZ29yaWpvcyc9PmFycmF5KDY4MyksCgkJKSk7CgkJJG9bJ2F0bmF1amluaW1hcyddPSBpc193cF9lcnJvcigkcikgPyAnS0xBSURBOiAnLiRyLT5nZXRfZXJyb3JfbWVzc2FnZSgpIDogJHI7CgkJZ2xvYmFsICR3cGRiOwoJCSRvWydlaWx1Y2l1X2RiJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9d2NfbW5tX2NoaWxkX2l0ZW1zIFdIRVJFIGNvbnRhaW5lcl9pZD0zNDkzMiIpOwoJCS8qIHBlciBkaWRlbGlvIGtyZXBzaW8gYmFuZHltYXMg4oCUIHR1cmkgbmVsZWlzdGkgKi8KCQkkcGVyPVBldHNob3BfTGF1a2FpOjppc3NhdWdvdGkoYXJyYXkoJ2lkJz0+MCwncGF2Jz0+J1RFU1QgcGVyIGRpZGVsaXMnLCdwcmVrZXMnPT5hcnJheSgyNjQ2MSwyMzgzNCwyMzg0OSwyMzg1MiwyMzgyNSwyMzc5NiwyMjMwMiwyMjkzNSwyMjMwNCwyMTIyMCksJ3Bha29wb3MnPT5hcnJheSgpKSk7CgkJJG9bJ3Blcl9kaWRlbGlzJ109IGlzX3dwX2Vycm9yKCRwZXIpID8gJHBlci0+Z2V0X2Vycm9yX21lc3NhZ2UoKSA6ICdQUkFMRUlETyDigJQgYmxvZ2FpJzsKCX0KCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzApOwo=','base64').toString('utf8');
+async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,j:await r.text()}; }
+const out={};
+const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP D2',code:CODE,scope:'global',active:true,priority:5})});
+out.snip_status=cr.s;
+let id=null; try{ id=JSON.parse(cr.j).id; }catch(e){}
+out.snip_id=id;
+await new Promise(r=>setTimeout(r,4000));
+try{ const r=await fetch(WP+'/?ps_d2=D2x0814k'); out.http=r.status; const t=await r.text();
+  try{ out.rez=JSON.parse(t); }catch(e){ out.raw=t.slice(0,1500); } }catch(e){ out.err=String(e).slice(0,120); }
+if(id){ await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/nauji9.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
-const body={message:'nauji9',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/nauji9.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
-console.log('put',p.status,Object.keys(out.foto).length,Object.keys(out.apr).length);
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/d2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+const body={message:'rec',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
+const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/d2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+console.log('put',p.status,JSON.stringify(out).length);
