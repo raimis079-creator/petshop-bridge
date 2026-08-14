@@ -1,0 +1,25 @@
+{
+ "marker": "RINK APPLY 0814",
+ "ts": "2026-08-14T08:21:50.457Z",
+ "snip": 2931,
+ "snip_status": 200,
+ "rez": {
+  "marker": "A APPLY v1",
+  "ts": "2026-08-14 08:21:58",
+  "klase": true,
+  "versija": "1.25",
+  "filtras_update": 10,
+  "filtras_add": 10,
+  "crud_hook": 10,
+  "apply": {
+   "viso": 36,
+   "pakeista": 36,
+   "atsargine": "ps_rink_cumulative_bak_0814"
+  },
+  "patikra": {
+   "yes_db": 36,
+   "laukiam": 36,
+   "gerai": true
+  }
+ }
+}
