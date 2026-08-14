@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.05';   /* v1.05: nera „akcijos" zymes — laukas nera nukainotas */
+	const VERSIJA = '1.06';   /* v1.06: akcijos zymes filtras 999 — MnM savo kabliuka deda veliau */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -57,7 +57,9 @@ class Petshop_Laukai {
 		/* Laukas nera nukainota preke. WC ji tokia laiko, nes iprasta kaina
 		   yra visu krepsio prekiu suma (32,21 EUR), o aktyvi — 0, kol klientas
 		   nieko nepasirinko. Del to krepselyje kabejo „Akcija: -100 %". */
-		add_filter( 'woocommerce_product_is_on_sale', array( __CLASS__, 'ne_akcija' ), 20, 2 );
+		/* 999, nes MnM savo kabliuka registruoja veliau ir su 20 jis mus perrasydavo
+		   — patikrinta gyvai: is_on_sale liko true. */
+		add_filter( 'woocommerce_product_is_on_sale', array( __CLASS__, 'ne_akcija' ), 999, 2 );
 
 		/* Kiekio laukelis: leidziam kelis to paties vienetus. */
 		add_filter( 'wc_mnm_child_item_quantity_input_args', array( __CLASS__, 'kiekio_laukelis' ), 10, 3 );
