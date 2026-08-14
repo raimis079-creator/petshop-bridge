@@ -1,16 +1,22 @@
 {
  "marker": "PATIKRA 126",
- "ts": "2026-08-14T13:30:15.128Z",
- "snip": 2948,
+ "ts": "2026-08-14T13:32:11.659Z",
+ "snip": 2949,
  "snip_status": 200,
  "rez": {
   "marker": "DIEGIMAS+PATIKRA",
-  "ts": "2026-08-14 13:30:22",
+  "ts": "2026-08-14 13:32:18",
   "diegimas": {
    "marker": "DEPLOY v1.26",
-   "ts": "2026-08-14 13:30:22",
-   "bytes": 14,
-   "md5_ok": false
+   "ts": "2026-08-14 13:32:18",
+   "http": 200,
+   "bytes": 161697,
+   "gautas_md5": "fa22c39cdf7759eefca91dae02580344",
+   "md5_ok": true,
+   "lint": "svaru",
+   "kopija": ".bak-rinkiniai-20260814-133218.txt",
+   "irasyta": 161697,
+   "dest_md5_ok": true
   },
   "versija": "1.26",
   "metodai": {
