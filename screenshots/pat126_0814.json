@@ -1,24 +1,33 @@
 {
  "marker": "PATIKRA 126",
- "ts": "2026-08-14T13:33:24.137Z",
- "snip": 2950,
+ "ts": "2026-08-14T13:47:18.289Z",
+ "snip": 2951,
  "snip_status": 200,
  "rez": {
   "marker": "DIEGIMAS+PATIKRA",
-  "ts": "2026-08-14 13:33:31",
+  "ts": "2026-08-14 13:47:25",
   "diegimas": {
-   "marker": "DEPLOY v1.26",
-   "ts": "2026-08-14 13:33:31",
+   "marker": "DEPLOY v1.27",
+   "ts": "2026-08-14 13:47:25",
    "http": 200,
-   "bytes": 161697,
-   "gautas_md5": "fa22c39cdf7759eefca91dae02580344",
+   "bytes": 175934,
+   "gautas_md5": "a90a5b9df0363c44ef4c73f46ddfd19c",
    "md5_ok": true,
    "lint": "svaru",
-   "kopija": ".bak-rinkiniai-20260814-133331.txt",
-   "irasyta": 161697,
+   "kopija": ".bak-rinkiniai-20260814-134725.txt",
+   "irasyta": 175934,
    "dest_md5_ok": true
   },
   "versija": "1.26",
+  "nauji": {
+   "ajax_seimos_kaina": false,
+   "ajax_seimos_krepsys": false,
+   "seimos_js": false
+  },
+  "kabliukai": {
+   "kaina": false,
+   "krepsys": false
+  },
   "metodai": {
    "seimos": true,
    "seima": true,
@@ -27,59 +36,6 @@
    "seimos_grupe": true,
    "juosta": true,
    "eur": true
-  },
-  "sarasas": {
-   "ilgis": 4003,
-   "eiluciu": 6,
-   "juosteliu": 3,
-   "seimu_id": [
-    "34196",
-    "34207",
-    "34217",
-    "34228",
-    "34232",
-    "34242"
-   ],
-   "zymos": {
-    "Tėvinio nebėra": 2,
-    "Brangiau nei atskirai": 6,
-    "Sutvarkyta": 0,
-    "be savikainos": 3,
-    "krepšys &gt; 8": 3
-   },
-   "eiles": {
-    "Visos šeimos": 6,
-    "Brangiau nei atskirai": 5,
-    "Prekės be savikainos": 2,
-    "Krepšys per didelis": 3,
-    "Tėvinio nebėra": 1
-   }
-  },
-  "seima34207": {
-   "ilgis": 4696,
-   "grupiu": 6,
-   "dydziu_eil": 2,
-   "krepsio_eil": 6,
-   "brangiau": 0,
-   "apsaugu": 1,
-   "apsaugos": [
-    "Sutvarkyta"
-   ]
-  },
-  "mono": {
-   "brangiau": 2,
-   "apsaugos": [
-    "Dėžė brangesnė nei prekės atskirai"
-   ],
-   "permoka": "7,05 €"
-  },
-  "naslaitis": {
-   "ilgis": 501,
-   "be_config": true
-  },
-  "skirtukai": {
-   "ilgis": 444,
-   "nuorodu": 2
   }
  }
 }
