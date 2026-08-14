@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.12';   /* v1.12: rinkiklio uzklausu eiles sargas */
+	const VERSIJA = '1.13';   /* v1.13: grupe imama ir is paties rinkinio */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -1024,6 +1024,15 @@ class Petshop_Laukai {
 	public static function grupe( $lid ) {
 		$rankinis = get_post_meta( $lid, '_ps_laukas_grupe', true );
 		if ( $rankinis ) { return $rankinis; }
+
+		/* Pirma — pats rinkinys: jo pavadinimas ir kategorijos. Kramtalai guli
+		   „Skanestu sunims" kategorijoje, todel is vien krepsio prekiu ju
+		   atskirti neimanoma — rinkinys pats pasako, kas jis toks. */
+		$savo = get_the_title( $lid ) . ' ' . implode( ' ',
+			(array) wp_get_post_terms( $lid, 'product_cat', array( 'fields' => 'names' ) ) );
+		if ( preg_match( '/kramt/iu', $savo ) ) { return 'kramtalai'; }
+		if ( preg_match( '/kat[ėe]/iu', $savo ) ) { return 'kates'; }
+
 		$kramtalas = false; $kates = false; $sunys = false;
 		foreach ( self::krepsys( $lid ) as $cid ) {
 			$kat = wp_get_post_terms( $cid, 'product_cat', array( 'fields' => 'names' ) );
