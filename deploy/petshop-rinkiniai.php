@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.26';   /* v1.26: „Pasirenkami rinkiniai" skirtukas — seimos, laukai, apsaugos */
+	const VERSIJA = '1.27';   /* v1.27: redagavimas — kainos, krepsys, apsaugos */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -86,6 +86,8 @@ class Petshop_Rinkiniai {
 		add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
+		add_action( 'wp_ajax_ps_rink_seimos_kaina',   array( __CLASS__, 'ajax_seimos_kaina' ) );
+		add_action( 'wp_ajax_ps_rink_seimos_krepsys', array( __CLASS__, 'ajax_seimos_krepsys' ) );
 		add_filter( 'admin_body_class', array( __CLASS__, 'body_klase' ) );
 
 		/* v1.25: LIKUCIO UZRAKTAS. Rinkinys ir DP pakas savo likucio NETURI —
@@ -1258,6 +1260,7 @@ class Petshop_Rinkiniai {
 
 	/** Grupes vidus: dydziu/kainu lentele, krepsys, apsaugos. */
 	private static function seimos_grupe( $tid, $gk, $gd ) {
+		$gk_akt = $gk;
 		global $wpdb;
 		$tbl = $wpdb->prefix . 'wc_mnm_child_items';
 
@@ -1356,11 +1359,11 @@ class Petshop_Rinkiniai {
 		echo '<div class="psr-vidus" style="padding:0">';
 		echo '<table class="wp-list-table widefat striped psr-lentele"><thead><tr>'
 			. '<th style="width:34%">Prekė</th><th>Kaina</th><th>Savikaina</th><th>Marža</th>'
-			. '<th>Likutis</th><th>Sandėlis</th><th>Aprašymas</th></tr></thead><tbody>';
-		if ( ! $krepsys ) { echo '<tr><td colspan="7" class="psr-tuscia">Krepšys tuščias.</td></tr>'; }
+			. '<th>Likutis</th><th>Sandėlis</th><th>Aprašymas</th><th></th></tr></thead><tbody>';
+		if ( ! $krepsys ) { echo '<tr><td colspan="8" class="psr-tuscia">Krepšys tuščias.</td></tr>'; }
 		foreach ( $krepsys as $p ) {
 			if ( ! empty( $p['nera'] ) ) {
-				echo '<tr><td colspan="7" class="psr-bad">Prekės #' . $p['id'] . ' nebėra</td></tr>';
+				echo '<tr><td colspan="8" class="psr-bad">Prekės #' . $p['id'] . ' nebėra</td></tr>';
 				continue;
 			}
 			echo '<tr>';
@@ -1372,11 +1375,31 @@ class Petshop_Rinkiniai {
 			echo '<td>' . ( $p['yra'] ? ( $p['lik'] === null ? '—' : (int) $p['lik'] ) : '<span class="psr-z r">neturime</span>' ) . '</td>';
 			echo '<td class="psr-mut">' . esc_html( $p['sand'] ) . '</td>';
 			echo '<td>' . ( $p['apr'] ? '<span class="psr-z g">yra</span>' : '<span class="psr-z y">nėra</span>' ) . '</td>';
+			echo '<td class="r"><button type="button" class="button psr-isimti" data-preke="' . $p['id']
+				. '" title="Išimti iš krepšio">×</button></td>';
 			echo '</tr>';
 		}
-		echo '</tbody></table></div></div>';
+		echo '</tbody></table>';
+
+		echo '<div class="psr-filtrai">';
+		echo '<span class="psr-f"><label>Sandėlis</label><span id="psr-f-sand">';
+		foreach ( array( '' => 'Visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB' ) as $kk => $vv ) {
+			echo '<button type="button" class="button psr-wh' . ( $kk === '' ? ' button-primary' : '' )
+				. '" data-wh="' . esc_attr( $kk ) . '">' . esc_html( $vv ) . '</button>';
+		}
+		echo '</span></span>';
+		echo '<span class="psr-f"><label>Savikaina</label><select id="psr-f-savik">'
+			. '<option value="">— bet kokia —</option><option value="a">iki 2 €</option><option value="b">2–5 €</option>'
+			. '<option value="c">5–15 €</option><option value="d">virš 15 €</option><option value="x">be savikainos</option></select></span>';
+		echo '<span class="psr-f psr-f-plati"><label>Pridėti prekę</label>'
+			. '<input type="text" id="psr-q" placeholder="pavadinimas arba SKU…" autocomplete="off">'
+			. '<button type="button" class="button" id="psr-browse">Rodyti visus tinkamus</button></span>';
+		echo '</div>';
+		echo '<div id="psr-rez" class="psr-rez"></div>';
+		echo '</div></div>';
 
 		self::apsaugos( $eilutes, $krepsys, $k_visos, $truksta );
+		self::seimos_js( $tid, $gk_akt, $akt_gram );
 	}
 
 	/** Apsaugos — skaiciuojamos is tu paciu duomenu, ne irasytos ranka. */
@@ -1424,9 +1447,255 @@ class Petshop_Rinkiniai {
 		echo '</div></div>';
 	}
 
+
+	/** Redagavimo JS. Kaina issaugoma pametus fokusa; krepsys — mygtuku. */
+	private static function seimos_js( $tid, $gk, $gram ) {
+		$nonce = wp_create_nonce( 'ps_rink' );
+		?>
+		<div id="psr-stat" class="psr-stat"></div>
+		<script>
+		(function(){
+			var TEV=<?php echo (int) $tid; ?>, GR='<?php echo esc_js( $gk ); ?>', GRAM='<?php echo esc_js( $gram ); ?>';
+			var N='<?php echo esc_js( $nonce ); ?>', A=ajaxurl;
+			var stat=document.getElementById('psr-stat');
+			function saky(t,bloga){
+				stat.textContent=t; stat.className='psr-stat '+(bloga?'bloga':'gerai')+' rodo';
+				clearTimeout(stat._t); stat._t=setTimeout(function(){stat.classList.remove('rodo');}, bloga?9000:3500);
+			}
+			function siusti(veiksmas,duom,ok){
+				var f=new FormData(); f.append('action',veiksmas); f.append('nonce',N); f.append('tevas',TEV);
+				f.append('gr',GR); f.append('gram',GRAM);
+				for(var k in duom) f.append(k,duom[k]);
+				fetch(A,{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();})
+					.then(function(j){ if(j&&j.success){ ok(j.data); } else { saky((j&&j.data)||'Nepavyko.',true); } })
+					.catch(function(){ saky('Ryšio klaida.',true); });
+			}
+
+			/* --- kaina --- */
+			document.querySelectorAll('.psr-kaina').forEach(function(inp){
+				inp.dataset.buvo=inp.value;
+				inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ inp.blur(); } });
+				inp.addEventListener('blur',function(){
+					if(inp.value===inp.dataset.buvo) return;
+					inp.disabled=true;
+					siusti('ps_rink_seimos_kaina',{gr:inp.dataset.gr,gram:inp.dataset.gram,sz:inp.dataset.sz,kaina:inp.value},
+						function(){ saky('Kaina išsaugota. Perkraunu, kad marža persiskaičiuotų…'); setTimeout(function(){location.reload();},700); });
+					setTimeout(function(){ if(inp.disabled){ inp.disabled=false; inp.value=inp.dataset.buvo; } },4000);
+				});
+			});
+
+			/* --- isimimas --- */
+			document.querySelectorAll('.psr-isimti').forEach(function(b){
+				b.addEventListener('click',function(){
+					if(!confirm('Išimti šią prekę iš krepšio? Ji dings iš visų šios gramatūros dydžių.')) return;
+					b.disabled=true;
+					siusti('ps_rink_seimos_krepsys',{veiksmas:'isimti',preke:b.dataset.preke},
+						function(d){ saky(d.zinute); setTimeout(function(){location.reload();},600); });
+					setTimeout(function(){ b.disabled=false; },4000);
+				});
+			});
+
+			/* --- paieska --- */
+			var q=document.getElementById('psr-q'), rez=document.getElementById('psr-rez'), laik=0, wh='';
+			document.querySelectorAll('#psr-f-sand .psr-wh').forEach(function(b){
+				b.addEventListener('click',function(){
+					document.querySelectorAll('#psr-f-sand .psr-wh').forEach(function(x){x.classList.remove('button-primary');});
+					b.classList.add('button-primary'); wh=b.dataset.wh; ieskoti(false);
+				});
+			});
+			document.getElementById('psr-browse').addEventListener('click',function(){ ieskoti(true); });
+			q.addEventListener('input',function(){ clearTimeout(laik); laik=setTimeout(function(){ieskoti(false);},350); });
+
+			function ieskoti(browse){
+				var t=q.value.trim();
+				if(!browse && t.length<2){ rez.innerHTML=''; return; }
+				rez.innerHTML='<div class="psr-tuscia">Ieškoma…</div>';
+				var u=A+'?action=ps_rink_paieska&nonce='+N+'&q='+encodeURIComponent(t)
+					+'&sand='+wh+'&savik='+document.getElementById('psr-f-savik').value+(browse?'&browse=1':'');
+				fetch(u,{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){
+					if(!j||!j.success){ rez.innerHTML='<div class="psr-tuscia">Nepavyko ieškoti.</div>'; return; }
+					var sar=(j.data&&j.data.prekes)||[];
+					if(!sar.length){ rez.innerHTML='<div class="psr-tuscia">Nerasta. Atlaisvink filtrus.</div>'; return; }
+					var h='<div class="psr-mut" style="padding:6px 12px">rasta '+sar.length+' — rodomos pirmos 40</div>'
+						+'<table class="wp-list-table widefat striped psr-rez-t"><thead><tr><th>Prekė</th>'
+						+'<th>Kaina</th><th>Savikaina</th><th>Sandėlis</th><th></th></tr></thead><tbody>';
+					sar.slice(0,40).forEach(function(p){
+						h+='<tr><td>'+(p.pav||'')+'<div class="psr-mut">#'+p.id+'</div></td>'
+						 +'<td>'+(p.kaina!=null?Number(p.kaina).toFixed(2).replace('.',',')+' €':'—')+'</td>'
+						 +'<td>'+(p.savikaina!=null?Number(p.savikaina).toFixed(2).replace('.',',')+' €':'<span class="psr-bad">nėra</span>')+'</td>'
+						 +'<td class="psr-mut">'+((p.sandelis||'av')+'').toUpperCase()+(p.yra?'':' <span class="psr-z r">neturime</span>')+'</td>'
+						 +'<td class="r"><button type="button" class="button button-primary psr-prideti" data-preke="'+p.id+'">Pridėti</button></td></tr>';
+					});
+					rez.innerHTML=h+'</tbody></table>';
+					rez.querySelectorAll('.psr-prideti').forEach(function(b){
+						b.addEventListener('click',function(){
+							b.disabled=true;
+							siusti('ps_rink_seimos_krepsys',{veiksmas:'prideti',preke:b.dataset.preke},
+								function(d){ saky(d.zinute); setTimeout(function(){location.reload();},600); });
+							setTimeout(function(){ b.disabled=false; },4000);
+						});
+					});
+				});
+			}
+		})();
+		</script>
+		<?php
+	}
+
 	/** Kaina lietuviskai. */
 	private static function eur( $n ) {
 		return number_format( (float) $n, 2, ',', ' ' ) . ' €';
+	}
+
+
+	/* ==================== v1.27: REDAGAVIMAS ==================== */
+
+	/**
+	 * Kainos keitimas. Kaina gyvena DVIEJOSE vietose: tevinio `_petshop_choice_config`
+	 * JSON'e (is jo vitrina piesia mygtukus) ir pacioje pasleptoje prekeje. Jei
+	 * pakeisi tik viena — vitrina rodys viena, o i krepseli kris kita.
+	 */
+	public static function ajax_seimos_kaina() {
+		check_ajax_referer( 'ps_rink', 'nonce' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'Neturite teisių.' ); }
+
+		$tid   = (int) ( $_POST['tevas'] ?? 0 );
+		$gk    = sanitize_key( $_POST['gr'] ?? '' );
+		$gram  = sanitize_text_field( wp_unslash( $_POST['gram'] ?? '' ) );
+		$sz    = sanitize_text_field( wp_unslash( $_POST['sz'] ?? '' ) );
+		$kaina = round( (float) str_replace( ',', '.', (string) ( $_POST['kaina'] ?? 0 ) ), 2 );
+
+		if ( $kaina <= 0 ) { wp_send_json_error( 'Kaina turi būti teigiama.' ); }
+
+		$cfg = json_decode( (string) get_post_meta( $tid, '_petshop_choice_config', true ), true );
+		if ( ! isset( $cfg[ $gk ]['gramaturos'][ $gram ][ $sz ] ) ) { wp_send_json_error( 'Toks dydis nerastas.' ); }
+
+		$hid = (int) $cfg[ $gk ]['gramaturos'][ $gram ][ $sz ]['product_id'];
+		$prod = wc_get_product( $hid );
+		if ( ! $prod ) { wp_send_json_error( 'Paslėpta prekė #' . $hid . ' nerasta.' ); }
+
+		/* APSAUGA: dėžė negali būti brangesnė nei tos pačios prekės atskirai. */
+		$pigiausia = self::krepsio_pigiausia( $hid );
+		if ( $pigiausia !== null && $kaina > (int) $sz * $pigiausia + 0.005 ) {
+			wp_send_json_error( sprintf(
+				'Dėžė brangesnė nei prekės atskirai: %s vnt. pigiausiai kainuotų %s, o siūlai %s. Publikuoti negalima.',
+				(int) $sz, self::eur( (int) $sz * $pigiausia ), self::eur( $kaina ) ) );
+		}
+
+		$prod->set_price( $kaina );
+		$prod->set_regular_price( $kaina );
+		$prod->save();
+
+		$cfg[ $gk ]['gramaturos'][ $gram ][ $sz ]['price'] = $kaina;
+		update_post_meta( $tid, '_petshop_choice_config', wp_slash( wp_json_encode( $cfg ) ) );
+
+		/* tevinio kaina = pirmo dydzio, kaip 550 formoje */
+		$fg = array_key_first( $cfg );
+		$fgram = array_key_first( $cfg[ $fg ]['gramaturos'] );
+		$fsz = array_key_first( $cfg[ $fg ]['gramaturos'][ $fgram ] );
+		$tp = wc_get_product( $tid );
+		if ( $tp ) {
+			$tp->set_price( $cfg[ $fg ]['gramaturos'][ $fgram ][ $fsz ]['price'] );
+			$tp->set_regular_price( $cfg[ $fg ]['gramaturos'][ $fgram ][ $fsz ]['price'] );
+			$tp->save();
+		}
+		wc_delete_product_transients( $hid );
+
+		if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {
+			Petshop_Ivykiai::irasyti( $hid, 'rinkinys_pakeistas', array(
+				'saltinis' => 'Pasirenkami rinkiniai', 'reiksme' => 'kaina → ' . self::eur( $kaina ) ) );
+		}
+		wp_send_json_success( array( 'kaina' => $kaina, 'hid' => $hid ) );
+	}
+
+	/** Pigiausia krepsio prekes kaina — kainos apsaugai. */
+	private static function krepsio_pigiausia( $hid ) {
+		global $wpdb;
+		$ids = $wpdb->get_col( $wpdb->prepare(
+			"SELECT product_id FROM {$wpdb->prefix}wc_mnm_child_items WHERE container_id=%d", (int) $hid ) );
+		$k = array();
+		foreach ( $ids as $cid ) {
+			$p = wc_get_product( (int) $cid );
+			if ( $p && (float) $p->get_price() > 0 ) { $k[] = (float) $p->get_price(); }
+		}
+		return $k ? min( $k ) : null;
+	}
+
+	/**
+	 * Krepsio keitimas. Krepsys priklauso GRAMATURAI, todel prekė dedama/isimama
+	 * is VISU tos gramaturos dydziu — kitaip 6 vnt. ir 12 vnt. turetu skirtinga
+	 * pasirinkima, ko klientas nesupranta.
+	 */
+	public static function ajax_seimos_krepsys() {
+		check_ajax_referer( 'ps_rink', 'nonce' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'Neturite teisių.' ); }
+		global $wpdb;
+
+		$tid  = (int) ( $_POST['tevas'] ?? 0 );
+		$gk   = sanitize_key( $_POST['gr'] ?? '' );
+		$gram = sanitize_text_field( wp_unslash( $_POST['gram'] ?? '' ) );
+		$pid  = (int) ( $_POST['preke'] ?? 0 );
+		$veiksmas = sanitize_key( $_POST['veiksmas'] ?? '' );
+
+		$cfg = json_decode( (string) get_post_meta( $tid, '_petshop_choice_config', true ), true );
+		if ( ! isset( $cfg[ $gk ]['gramaturos'][ $gram ] ) ) { wp_send_json_error( 'Grupė arba gramatūra nerasta.' ); }
+
+		$hids = array();
+		foreach ( $cfg[ $gk ]['gramaturos'][ $gram ] as $si ) { $hids[] = (int) $si['product_id']; }
+		$hids = array_filter( $hids );
+		if ( ! $hids ) { wp_send_json_error( 'Šios gramatūros dydžių nėra.' ); }
+
+		$tbl = $wpdb->prefix . 'wc_mnm_child_items';
+
+		if ( $veiksmas === 'prideti' ) {
+			$p = wc_get_product( $pid );
+			if ( ! $p ) { wp_send_json_error( 'Prekė #' . $pid . ' nerasta.' ); }
+			$esami = $wpdb->get_col( $wpdb->prepare(
+				"SELECT product_id FROM {$tbl} WHERE container_id=%d", $hids[0] ) );
+			if ( in_array( (string) $pid, array_map( 'strval', $esami ), true ) ) {
+				wp_send_json_error( 'Ši prekė krepšyje jau yra.' );
+			}
+			if ( count( $esami ) >= 8 ) {
+				wp_send_json_error( 'Krepšyje jau 8 prekės. Virš 8 dėžė pralaimi savo kategorijai — pirma išimk kurią nors.' );
+			}
+			/* sandelio taisykle: viena grupe = vienas sandelis = viena siunta */
+			$naujo = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'av' );
+			foreach ( $esami as $cid ) {
+				$s = strtolower( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'av' );
+				if ( $s !== $naujo ) {
+					wp_send_json_error( 'Krepšyje jau yra ' . strtoupper( $s ) . ' sandėlio prekių, o ši — '
+						. strtoupper( $naujo ) . '. Vienas krepšys = vienas sandėlis = viena siunta.' );
+				}
+			}
+			foreach ( $hids as $hid ) {
+				$eile = (int) $wpdb->get_var( $wpdb->prepare(
+					"SELECT COALESCE(MAX(menu_order),0)+1 FROM {$tbl} WHERE container_id=%d", $hid ) );
+				$wpdb->insert( $tbl, array( 'product_id' => $pid, 'container_id' => $hid, 'menu_order' => $eile ),
+					array( '%d', '%d', '%d' ) );
+				wc_delete_product_transients( $hid );
+			}
+			$zinute = 'Pridėta: ' . $p->get_name();
+		} elseif ( $veiksmas === 'isimti' ) {
+			$esami = $wpdb->get_col( $wpdb->prepare(
+				"SELECT product_id FROM {$tbl} WHERE container_id=%d", $hids[0] ) );
+			if ( count( $esami ) <= 2 ) {
+				wp_send_json_error( 'Krepšyje liktų mažiau nei 2 prekės — klientui nebūtų iš ko rinktis.' );
+			}
+			foreach ( $hids as $hid ) {
+				$wpdb->delete( $tbl, array( 'container_id' => $hid, 'product_id' => $pid ), array( '%d', '%d' ) );
+				wc_delete_product_transients( $hid );
+			}
+			$p = wc_get_product( $pid );
+			$zinute = 'Išimta: ' . ( $p ? $p->get_name() : '#' . $pid );
+		} else {
+			wp_send_json_error( 'Nežinomas veiksmas.' );
+		}
+
+		if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {
+			Petshop_Ivykiai::irasyti( $tid, 'rinkinys_pakeistas', array(
+				'saltinis' => 'Pasirenkami rinkiniai', 'reiksme' => $zinute . ' (' . $gk . ' / ' . $gram . ' g)' ) );
+		}
+		wp_send_json_success( array( 'zinute' => $zinute ) );
 	}
 
 	/* ==================== SARASAS ==================== */
@@ -3162,6 +3431,18 @@ class Petshop_Rinkiniai {
 		.psr-z.b{background:#f0f6fc;border-color:#c5d9ed;color:#0a4b78}
 
 
+
+		.psr-kaina{width:82px;text-align:right;padding:3px 6px;border:1px solid #8c8f94;border-radius:3px;font-size:13px}
+		.psr-kaina:focus{border-color:#2271b1;box-shadow:0 0 0 1px #2271b1;outline:0}
+		.psr-kaina:disabled{background:#f0f0f1}
+		.psr-isimti{color:#b32d2e;border-color:#dcdcde}
+		.psr-stat{position:fixed;right:18px;bottom:18px;z-index:9999;padding:11px 16px;border-radius:4px;
+			font-size:13.5px;box-shadow:0 3px 12px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);
+			transition:opacity .2s,transform .2s;pointer-events:none;max-width:420px}
+		.psr-stat.rodo{opacity:1;transform:none}
+		.psr-stat.gerai{background:#00a32a;color:#fff}
+		.psr-stat.bloga{background:#d63638;color:#fff}
+		.psr-rez{max-height:340px;overflow:auto;border-top:1px solid #f0f0f1}
 		/* v1.26 pasirenkami */
 		.psr-skirtukai{border-bottom:1px solid #c3c4c7;display:flex;gap:4px;margin:14px 0 18px}
 		.psr-skirtukai a{padding:9px 15px;text-decoration:none;color:#646970;font-size:14px;border:1px solid transparent;border-bottom:0;margin-bottom:-1px;border-radius:3px 3px 0 0}
