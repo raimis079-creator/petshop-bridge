@@ -1339,7 +1339,9 @@ class Petshop_Rinkiniai {
 			$brangiau = ( $ats_lo !== null && $kaina > $ats_lo + 0.005 );
 			echo '<tr>';
 			echo '<td><b>' . $n . '</b> vnt. <span class="psr-mut">' . esc_html( $e['gram'] ) . ' g</span></td>';
-			echo '<td>' . self::eur( $kaina ) . '</td>';
+			echo '<td><span class="psr-kaina-lauk"><input type="text" class="psr-kaina" value="'
+				. esc_attr( number_format( $kaina, 2, ',', '' ) ) . '" data-gr="' . esc_attr( $gk_akt )
+				. '" data-gram="' . esc_attr( $e['gram'] ) . '" data-sz="' . (int) $n . '"> €</span></td>';
 			echo '<td>' . ( $n ? self::eur( $kaina / $n ) : '—' ) . '</td>';
 			echo '<td class="psr-mut">' . ( $s_visos && ! $truksta
 				? self::eur( $n * min( $s_visos ) ) . ( min( $s_visos ) !== max( $s_visos ) ? '–' . self::eur( $n * max( $s_visos ) ) : '' )
