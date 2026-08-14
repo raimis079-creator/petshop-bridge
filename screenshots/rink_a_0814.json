@@ -1,0 +1,222 @@
+{
+ "marker": "RINK A 0814",
+ "ts": "2026-08-14T08:10:59.333Z",
+ "snip": 2930,
+ "snip_status": 200,
+ "rez": {
+  "marker": "A ETAPAS v1",
+  "ts": "2026-08-14 08:11:07",
+  "diegimas": {
+   "http": 200,
+   "bytes": 141106,
+   "md5_ok": true,
+   "lint": "svaru",
+   "kopija": ".bak-rinkiniai-20260814-081107.txt",
+   "irasyta": 141106,
+   "dest_md5_ok": true
+  },
+  "sargas": {
+   "tid": 34918,
+   "ar_rinkinys": true,
+   "_stock": {
+    "pries": "",
+    "rasymo_rez": false,
+    "po": "",
+    "blokuota": true
+   },
+   "_own": {
+    "pries": "",
+    "rasymo_rez": false,
+    "po": "",
+    "blokuota": true
+   },
+   "kontrole": {
+    "pid": 34889,
+    "praejo": true
+   }
+  },
+  "fiksuoti": [
+   {
+    "id": 34153,
+    "pav": "Rinkinys išrankiems šunims · 6×400g",
+    "bukle": "publish",
+    "pastaba": "kiekiai po 1 (be meta)",
+    "dabar_cost": "",
+    "planas_cost": null,
+    "be_savikainos": 3,
+    "dabar_kg": "",
+    "auto_kg": 2.4,
+    "be_svorio": 0
+   },
+   {
+    "id": 34156,
+    "pav": "Animonda GranCarno rinkinys · 6×400g",
+    "bukle": "publish",
+    "pastaba": "kiekiai po 1 (be meta)",
+    "dabar_cost": "",
+    "planas_cost": 7.7,
+    "be_savikainos": 0,
+    "dabar_kg": "",
+    "auto_kg": 2.4,
+    "be_svorio": 0
+   },
+   {
+    "id": 34168,
+    "pav": "Jaučio ir kiaulės ausų rinkinys šunims · 15 v",
+    "bukle": "publish",
+    "pastaba": "",
+    "dabar_cost": "",
+    "planas_cost": null,
+    "be_savikainos": 2,
+    "dabar_kg": "",
+    "auto_kg": 0.5,
+    "be_svorio": 2
+   },
+   {
+    "id": 34170,
+    "pav": "Churu kreminių skanėstų rinkinys katėms · 9 v",
+    "bukle": "publish",
+    "pastaba": "",
+    "dabar_cost": "",
+    "planas_cost": 14.36,
+    "be_savikainos": 0,
+    "dabar_kg": "",
+    "auto_kg": 0,
+    "be_svorio": 4
+   },
+   {
+    "id": 34172,
+    "pav": "Churu įvairių skonių rinkinys katėms · 7 vnt.",
+    "bukle": "publish",
+    "pastaba": "",
+    "dabar_cost": "",
+    "planas_cost": 14.2,
+    "be_savikainos": 0,
+    "dabar_kg": "",
+    "auto_kg": 0,
+    "be_svorio": 5
+   },
+   {
+    "id": 34175,
+    "pav": "Stirnos ir avies kojų rinkinys šunims · 14 vn",
+    "bukle": "publish",
+    "pastaba": "",
+    "dabar_cost": "",
+    "planas_cost": null,
+    "be_savikainos": 3,
+    "dabar_kg": "",
+    "auto_kg": 0.72,
+    "be_svorio": 2
+   },
+   {
+    "id": 34918,
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas ",
+    "bukle": "draft",
+    "pastaba": "",
+    "dabar_cost": "",
+    "planas_cost": 24.0665,
+    "be_savikainos": 0,
+    "dabar_kg": "2",
+    "auto_kg": 2,
+    "be_svorio": 2
+   },
+   {
+    "id": 34927,
+    "pav": "startas",
+    "bukle": "draft",
+    "pastaba": "",
+    "dabar_cost": "",
+    "planas_cost": 26.0145,
+    "be_savikainos": 0,
+    "dabar_kg": "1.5",
+    "auto_kg": 1.5,
+    "be_svorio": 3
+   }
+  ],
+  "dp": [
+   {
+    "id": 34449,
+    "pav": "Miamor konservai katėms su tunu ir krevetėmis",
+    "bukle": "publish",
+    "baze": 17493,
+    "qty": 24,
+    "dabar_cost": "",
+    "planas_cost": null,
+    "dabar_kg": "",
+    "auto_kg": 2.4
+   },
+   {
+    "id": 34484,
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "bukle": "publish",
+    "baze": 18587,
+    "qty": 2,
+    "dabar_cost": "",
+    "planas_cost": 74.97,
+    "dabar_kg": "",
+    "auto_kg": 14
+   },
+   {
+    "id": 34486,
+    "pav": "Animonda GranCarno Adult Beef + Duck Hearts: ",
+    "bukle": "publish",
+    "baze": 19594,
+    "qty": 6,
+    "dabar_cost": "",
+    "planas_cost": 7.8,
+    "dabar_kg": "",
+    "auto_kg": 2.4
+   },
+   {
+    "id": 34510,
+    "pav": "Ruda kiaulės ausis, 1 vnt. × 20 vnt.",
+    "bukle": "publish",
+    "baze": 16305,
+    "qty": 20,
+    "dabar_cost": "",
+    "planas_cost": 13.2,
+    "dabar_kg": "",
+    "auto_kg": 0
+   },
+   {
+    "id": 34512,
+    "pav": "Ruda avies koja, 1 vnt. × 20 vnt.",
+    "bukle": "publish",
+    "baze": 16317,
+    "qty": 20,
+    "dabar_cost": "",
+    "planas_cost": 10,
+    "dabar_kg": "",
+    "auto_kg": 0
+   },
+   {
+    "id": 34917,
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas ",
+    "bukle": "draft",
+    "baze": 18560,
+    "qty": 2,
+    "dabar_cost": "",
+    "planas_cost": 107.61,
+    "dabar_kg": "",
+    "auto_kg": 24
+   },
+   {
+    "id": 34920,
+    "pav": "konservai",
+    "bukle": "draft",
+    "baze": 18518,
+    "qty": 6,
+    "dabar_cost": "",
+    "planas_cost": 10.098,
+    "dabar_kg": "",
+    "auto_kg": 2.4
+   }
+  ],
+  "surenkami_cumulative": {
+   "viso": 36,
+   "dabar_yes": 0,
+   "dabar_no": 36,
+   "svoris_irasytas": []
+  }
+ }
+}
