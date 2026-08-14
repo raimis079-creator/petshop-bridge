@@ -2,7 +2,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 import { chromium } from 'playwright';
 import fs from 'fs';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const RAW='https://raw.githubusercontent.com/'+REPO+'/8ff495a4010df5dc5b37a9eba2a52b9578b928be/maketai/vitrina_v2.html';
+const RAW='https://raw.githubusercontent.com/'+REPO+'/9ce1d1c9118991a65610a8d10f32bd230b917e4f/maketai/vitrina_v2.html';
 const r=await fetch(RAW); const html=await r.text();
 fs.writeFileSync('/tmp/m.html',html);
 console.log('html',html.length);
