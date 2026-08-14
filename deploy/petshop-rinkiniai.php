@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.27';   /* v1.27: redagavimas — kainos, krepsys, apsaugos */
+	const VERSIJA = '1.28';   /* v1.28: „Pasirenkami" skirtukas veda i Surenkamus rinkinius */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -1032,8 +1032,9 @@ class Petshop_Rinkiniai {
 		if ( $veiksmas === 'naujas' || ( $veiksmas === 'keisti' && $id ) ) {
 			self::forma( $veiksmas === 'keisti' ? $id : 0 );
 		} elseif ( $skirtukas === 'pasirenkami' ) {
-			self::skirtukai( 'pasirenkami' );
-			if ( $id ) { self::seima( $id ); } else { self::seimos(); }
+			/* Senos nuorodos (issaugotos, laiskuose) nebeturi ka rodyti — vedam i nauja langa. */
+			wp_safe_redirect( admin_url( 'admin.php?page=ps-laukai' ) );
+			exit;
 		} else {
 			self::skirtukai( 'paruosti' );
 			self::sarasas();
@@ -1051,9 +1052,12 @@ class Petshop_Rinkiniai {
 	 */
 	private static function skirtukai( $akt ) {
 		$b = admin_url( 'admin.php?page=' . self::SLUG );
+		/* Senasis „Pasirenkami" modelis (seimos su fiksuotais dydziais) istrintas
+		   2026-08-14. Skirtukas dabar veda i „Surenkamus rinkinius" — nauja
+		   petshop-laukai panele: laisvas kiekis nuo 3 vnt. ir pakopines nuolaidos. */
 		$sk = array(
 			'paruosti'    => array( 'Paruošti rinkiniai', $b ),
-			'pasirenkami' => array( 'Pasirenkami rinkiniai', $b . '&sk=pasirenkami' ),
+			'pasirenkami' => array( 'Surenkami rinkiniai', admin_url( 'admin.php?page=ps-laukai' ) ),
 		);
 		echo '<h1 class="wp-heading-inline">Rinkiniai</h1>';
 		echo '<p class="description">Paruošti rinkiniai ir pakai — prekės su savo kortele. '
