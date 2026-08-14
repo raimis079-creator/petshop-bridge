@@ -1,0 +1,68 @@
+{
+ "marker": "RINK RECON 0814",
+ "ts": "2026-08-14T07:10:43.587Z",
+ "snip": 2925,
+ "snip_status": 200,
+ "rez": {
+  "marker": "RINK RECON v1",
+  "ts": "2026-08-14 07:10:51",
+  "failas": {
+   "yra": true,
+   "dydis": 136041,
+   "md5": "d92530e32bde16412cfa6a9baba839fd",
+   "laukiam": "d92530e32bde16412cfa6a9baba839fd",
+   "mtime": "2026-08-13 19:35:35",
+   "sutampa": true
+  },
+  "mnm": {
+   "viso": 47,
+   "pagal_busena": {
+    "trash": 3,
+    "publish": 42,
+    "draft": 2
+   }
+  },
+  "dp": {
+   "viso": 10,
+   "pagal_busena": {
+    "publish": 5,
+    "trash": 3,
+    "draft": 2
+   }
+  },
+  "lentele": {
+   "vardas": "gaj6_wc_mnm_child_items",
+   "yra": true,
+   "stulpeliai": [
+    "child_item_id",
+    "product_id",
+    "container_id",
+    "menu_order"
+   ],
+   "viso_eiluciu": 358,
+   "pavyzdys": [
+    {
+     "child_item_id": "12",
+     "product_id": "17421",
+     "container_id": "34153",
+     "menu_order": "0"
+    },
+    {
+     "child_item_id": "13",
+     "product_id": "19586",
+     "container_id": "34153",
+     "menu_order": "1"
+    },
+    {
+     "child_item_id": "14",
+     "product_id": "19574",
+     "container_id": "34153",
+     "menu_order": "2"
+    }
+   ],
+   "pk": "child_item_id",
+   "tevo_stulp": "product_id",
+   "vaiko_stulp": null
+  }
+ }
+}
