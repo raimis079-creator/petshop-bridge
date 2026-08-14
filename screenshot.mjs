@@ -1,20 +1,53 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+import { chromium } from 'playwright';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const WP='https://dev.avesa.lt';
-const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const CODE=Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX2szJ10gPz8gJycpICE9PSAnSzN4MDgxNHEnKSByZXR1cm47CglpZiAoIWNsYXNzX2V4aXN0cygnUGV0c2hvcF9MYXVrYWknKSkgeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKGFycmF5KCdlcnInPT4na2xhc2VzIG5lcmEnKSk7IGV4aXQ7IH0KCUBzZXRfdGltZV9saW1pdCgzMDApOwoJJG89YXJyYXkoJ21hcmtlcic9PidMSUtVU0lVIExBVUtVIEtVUklNQVMnLCd0cyc9PmRhdGUoJ1ktbS1kIEg6aTpzJykpOwoKCSRsYXVrYWk9YXJyYXkoCgkJJ2hpcG8nPT5hcnJheSgncGF2Jz0+J1NrYW7El3N0xbMgZMSXxb7ElyDFoXVuaXVpIOKAlCBoaXBvYWxlcmdpbsSXJywndHJ1bXBhcyc9PidIaXBvYWxlcmdpbmlzJywKCQkJJ3ByZWtlcyc9PmFycmF5KDIzODM0LDIzODM3LDIzODQ2LDI0NDkyLDIzODQ5LDIzODUyLDIzODU1LDIzODA3LDIzODEwKSwKCQkJJ3Bha29wb3MnPT5hcnJheShhcnJheSgnbnVvJz0+MTUsJ2QnPT4yKSxhcnJheSgnbnVvJz0+MjUsJ2QnPT4zKSxhcnJheSgnbnVvJz0+NDAsJ2QnPT41KSksCgkJCSdhcHJhc2FzJz0+J1NrYW7El3N0YWkgxaF1bmltcywga3VyaWUgbmV0b2xlcnVvamEgxK9wcmFzdMWzIGJhbHR5bcWzLiBExJdrIMSvIGTEl8W+xJksIGthcyB0aW5rYSB0YXZvIMWhdW5pdWkg4oCUIHZpZW5vZMWzIGFyIHNraXJ0aW5nxbMsIGtpZWsgbm9yaS4nKSwKCQknamF1dHJ1cyc9PmFycmF5KCdwYXYnPT4nU2thbsSXc3TFsyBkxJfFvsSXIMWhdW5pdWkg4oCUIGphdXRyaWFtIHZpcsWha2luaW11aScsJ3RydW1wYXMnPT4nSmF1dHJpYW0gdmlyxaFraW5pbXVpJywKCQkJJ3ByZWtlcyc9PmFycmF5KDIwMzI3LDI1MzQwLDIxODc4LDIxODg0LDIxODkwLDIxODkzLDIxODk5LDIxOTA1LDIxOTA4KSwKCQkJJ3Bha29wb3MnPT5hcnJheShhcnJheSgnbnVvJz0+MjAsJ2QnPT4yKSxhcnJheSgnbnVvJz0+MzUsJ2QnPT40KSksCgkJCSdhcHJhc2FzJz0+J0xlbmd2YWkgdmlyxaFraW5hbWkgc2thbsSXc3RhaSBqYXV0cmVzbmlvIHNrcmFuZMW+aW8gxaF1bmltcy4gRMSXayDEryBkxJfFvsSZLCBrYXMgdGlua2EgdGF2byDFoXVuaXVpIOKAlCB2aWVub2TFsyBhciBza2lydGluZ8WzLCBraWVrIG5vcmkuJyksCgkJJ21vbm8nPT5hcnJheSgncGF2Jz0+J1NrYW7El3N0xbMgZMSXxb7ElyDFoXVuaXVpIOKAlCBtb25vcHJvdGVpbmFzJywndHJ1bXBhcyc9PidNb25vcHJvdGVpbmFzJywKCQkJJ3ByZWtlcyc9PmFycmF5KDIyNDIxLDIwMzI3LDIxODc4LDIxODg0LDIxMjU2LDIxMjIzLDIxMjIwLDIxMjYyLDIxMjU5KSwKCQkJJ3Bha29wb3MnPT5hcnJheShhcnJheSgnbnVvJz0+MjAsJ2QnPT4yKSxhcnJheSgnbnVvJz0+NDAsJ2QnPT40KSksCgkJCSdhcHJhc2FzJz0+J1ZpZW5vIGJhbHR5bW8gxaFhbHRpbmlvIHNrYW7El3N0YWkg4oCUIGthaSBzdmFyYnUgdGlrc2xpYWkgxb5pbm90aSwga8SFIMWhdW8gZ2F1bmEuIETEl2sgxK8gZMSXxb7EmSwga2llayBub3JpLicpLAoJKTsKCSRlc2FtaT1nZXRfb3B0aW9uKCdwc19sYXVrYWlfdGVzdGFpJywgYXJyYXkoKSk7CglpZiAoIWlzX2FycmF5KCRlc2FtaSkpIHsgJGVzYW1pPWFycmF5KCk7IH0KCglmb3JlYWNoICgkbGF1a2FpIGFzICRyYWt0YXM9PiRsKSB7CgkJJHI9UGV0c2hvcF9MYXVrYWk6Omlzc2F1Z290aShhcnJheSgKCQkJJ2lkJz0+aXNzZXQoJGVzYW1pWyRyYWt0YXNdKSA/IChpbnQpJGVzYW1pWyRyYWt0YXNdIDogMCwKCQkJJ3Bhdic9PiRsWydwYXYnXSwgJ3NlaW1hJz0+J8WgdW5pbXMnLCAnem9kaXMnPT4nZGV6ZScsCgkJCSdwcmVrZXMnPT4kbFsncHJla2VzJ10sICdwYWtvcG9zJz0+JGxbJ3Bha29wb3MnXSwKCQkJJ2thdGVnb3Jpam9zJz0+YXJyYXkoNjgzKSwgJ2FwcmFzYXMnPT4kbFsnYXByYXNhcyddLAoJCSkpOwoJCWlmIChpc193cF9lcnJvcigkcikpIHsgJG9bJ3JlenVsdGF0YWknXVskcmFrdGFzXT0nS0xBSURBOiAnLiRyLT5nZXRfZXJyb3JfbWVzc2FnZSgpOyBjb250aW51ZTsgfQoJCSRlc2FtaVskcmFrdGFzXT0kclsnaWQnXTsKCQl1cGRhdGVfcG9zdF9tZXRhKCRyWydpZCddLCAnX3BzX2xhdWthc190cnVtcGFzJywgJGxbJ3RydW1wYXMnXSk7CgkJJG9bJ3JlenVsdGF0YWknXVskcmFrdGFzXT1hcnJheSgnaWQnPT4kclsnaWQnXSwncHJla2l1Jz0+JHJbJ3ByZWtpdSddLCdzYW5kZWxpcyc9PiRyWydzYW5kZWxpcyddLAoJCQknc2F1Z2knPT4kclsnc2F1Z2knXSwncGFrb3Bvcyc9PiRyWydwYWtvcG9zJ10sJ3BlcnNwZWppbWFpJz0+JHJbJ3BlcnNwZWppbWFpJ10sCgkJCSd1cmwnPT5nZXRfcGVybWFsaW5rKCRyWydpZCddKSk7Cgl9Cgl1cGRhdGVfb3B0aW9uKCdwc19sYXVrYWlfdGVzdGFpJywgJGVzYW1pKTsKCS8qIHBpcm1hbSBsYXVrdWkgaXJhc29tIHRydW1wYSBwYXZhZGluaW1hIGlyIHNlaW1hLCBrYWQganVvc3RvamUgYnV0dSBrZXR1cmkgKi8KCXVwZGF0ZV9wb3N0X21ldGEoMzQ5MzIsICdfcHNfbGF1a2FzX3RydW1wYXMnLCAnQmUgdmnFoXRpZW5vcycpOwoJdXBkYXRlX3Bvc3RfbWV0YSgzNDkzMiwgJ19wc19sYXVrYXNfc2VpbWEnLCAnxaB1bmltcycpOwoKCSRvWyd2aXNpJ109YXJyYXkoKTsKCWZvcmVhY2ggKFBldHNob3BfTGF1a2FpOjp2aXNpKCkgYXMgJHYpIHsKCQkkb1sndmlzaSddW109YXJyYXkoJ2lkJz0+JHZbJ2lkJ10sJ3Bhdic9PiR2WydwYXYnXSwnc2VpbWEnPT4kdlsnc2VpbWEnXSwncHJla2l1Jz0+JHZbJ3ByZWtpdSddLAoJCQknbWFyem9zJz0+JHZbJ21hcnpvcyddLCdzYXVnaSc9PiR2WydzYXVnaSddLCdiZV9zYXZpa2Fpbm9zJz0+JHZbJ2JlX3NhdmlrYWlub3MnXSwnbmV0dXJpbWUnPT4kdlsnbmV0dXJpbWUnXSk7Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMxKTsK','base64').toString('utf8');
-async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,j:await r.text()}; }
-const out={};
-const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP K3',code:CODE,scope:'global',active:true,priority:5})});
-out.snip_status=cr.s;
-let id=null; try{ id=JSON.parse(cr.j).id; }catch(e){}
-out.snip_id=id;
-await new Promise(r=>setTimeout(r,4000));
-try{ const r=await fetch(WP+'/?ps_k3=K3x0814q'); out.http=r.status; const t=await r.text();
-  try{ out.rez=JSON.parse(t); }catch(e){ out.raw=t.slice(0,1500); } }catch(e){ out.err=String(e).slice(0,120); }
-if(id){ await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
+const URL='https://dev.avesa.lt/product/skanestu-deze-suniui-be-vistienos/';
+const out={zingsniai:[]};
+async function put(name,buf){
+  try{ let sha=null;
+    const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});
+    if(g.status===200) sha=(await g.json()).sha;
+    const body={message:name,content:buf.toString('base64')}; if(sha) body.sha=sha;
+    await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+  }catch(e){}
+}
+async function z(p,fn){ try{ await fn(); out.zingsniai.push(p+' OK'); }catch(e){ out.zingsniai.push(p+' KLAIDA: '+String(e).split('\n')[0].slice(0,120)); } }
+let br;
+try{
+  br=await chromium.launch({args:['--ignore-certificate-errors']});
+  const ctx=await br.newContext({viewport:{width:1440,height:1000},ignoreHTTPSErrors:true});
+  const pg=await ctx.newPage();
+  const kl=[]; pg.on('pageerror',e=>kl.push(String(e).slice(0,110)));
+  await z('atidarymas', async()=>{
+    await pg.goto(URL,{waitUntil:'domcontentloaded',timeout:60000}); await pg.waitForTimeout(2000);
+    out.mygtuku=await pg.locator('.pslk-lbtn').count();
+    out.mygtukai=await pg.locator('.pslk-lbtn').allInnerTexts();
+    out.aktyvus=(await pg.locator('.pslk-lbtn.on').innerText().catch(()=>'')).trim();
+    await put('lk7_juosta.jpg', await pg.screenshot({type:'jpeg',quality:80,clip:{x:0,y:0,width:1440,height:640}}));
+  });
+  await z('persijungimas i mono', async()=>{
+    const nuoroda=pg.locator('.pslk-lbtn', {hasText:'Monoproteinas'});
+    await nuoroda.click(); await pg.waitForLoadState('domcontentloaded'); await pg.waitForTimeout(2000);
+    out.mono_url=pg.url();
+    out.mono_h1=(await pg.locator('.pslk-h1').innerText()).split('\n')[0].trim();
+    out.mono_pakopos=(await pg.locator('.pslk-pakopos').innerText()).trim();
+    out.mono_korteliu=await pg.locator('.pslk-kort').count();
+    out.mono_aktyvus=(await pg.locator('.pslk-lbtn.on').innerText()).trim();
+  });
+  await z('mono: 6 vnt brangesnes', async()=>{
+    const k=pg.locator('.pslk-kort').last();
+    await k.locator('.pslk-deti').click(); await pg.waitForTimeout(300);
+    for(let i=0;i<3;i++){ await k.locator('.pslk-stp button[data-d="1"]').click(); await pg.waitForTimeout(150); }
+    out.mono_dbr=(await pg.locator('#pslk-dbr').innerText()).trim();
+    out.mono_kita=(await pg.locator('#pslk-kita').innerText()).trim();
+    out.mono_viso=(await pg.locator('#pslk-viso').innerText()).trim();
+    await put('lk8_mono.jpg', await pg.screenshot({type:'jpeg',quality:80,fullPage:true}));
+  });
+  out.js_klaidos=kl.slice(0,5);
+}catch(e){ out.fatal=String(e).slice(0,200); }
+finally{ if(br) await br.close(); }
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/k3.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
-const body={message:'rec',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/k3.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
-console.log('put',p.status,JSON.stringify(out).length);
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/lk2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+const body={message:'lk2',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/lk2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+console.log('ok');
