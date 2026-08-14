@@ -1,36 +1,18 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import { chromium } from 'playwright';
-import fs from 'fs';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const RAW='https://raw.githubusercontent.com/'+REPO+'/9ce1d1c9118991a65610a8d10f32bd230b917e4f/maketai/vitrina_v2.html';
-const r=await fetch(RAW); const html=await r.text();
-fs.writeFileSync('/tmp/m.html',html);
-console.log('html',html.length);
-const br=await chromium.launch();
-async function put(name,buf){
-  let sha=null;
-  try{const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
-  const body={message:name,content:buf.toString('base64')}; if(sha) body.sha=sha;
-  const p=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
-  console.log('put',name,p.status,buf.length);
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
+const IDS='20327,21220,21223,21256,21262,21878,21884,21890,21893,21899,21905,22302,22421,22935,23796,23807,23825,23834,23837,23846,23849,23852,23855,24492,25340,26461'.split(',');
+const out={};
+for(let i=0;i<IDS.length;i+=10){
+  const dalis=IDS.slice(i,i+10).join(',');
+  const r=await fetch('https://dev.avesa.lt/wp-json/wc/v3/products?include='+dalis+'&per_page=10&_fields=id,short_description,description',{headers:{Authorization:AUTH}});
+  if(r.status!==200){ out['err_'+i]=r.status; continue; }
+  for(const p of await r.json()){
+    out[p.id]={s:(p.short_description||'').slice(0,4000), d:(p.description||'').slice(0,4000)};
+  }
 }
-// desktop tuscia
-let pg=await br.newPage({viewport:{width:1440,height:1000}});
-await pg.goto('file:///tmp/m.html'); await pg.waitForTimeout(700);
-await put('mv2_d_tuscia.jpg', await pg.screenshot({type:'jpeg',quality:82,fullPage:true}));
-// desktop su prekem (3x pirmos, 3x astuntos -> -3%)
-await pg.evaluate(()=>{const ids=LAUKAI[Object.keys(LAUKAI)[0]].krepsys.map(p=>p.id);
-  for(let i=0;i<3;i++)k(ids[0],1); for(let i=0;i<2;i++)k(ids[3],1); for(let i=0;i<3;i++)k(ids[7],1);});
-await pg.waitForTimeout(500);
-await put('mv2_d_pilna.jpg', await pg.screenshot({type:'jpeg',quality:82,fullPage:true}));
-await pg.close();
-// mobile
-pg=await br.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true});
-await pg.goto('file:///tmp/m.html'); await pg.waitForTimeout(700);
-await pg.evaluate(()=>{const ids=LAUKAI[Object.keys(LAUKAI)[0]].krepsys.map(p=>p.id);
-  for(let i=0;i<5;i++)k(ids[0],1); for(let i=0;i<2;i++)k(ids[2],1);});
-await pg.waitForTimeout(400);
-await put('mv2_m_virsus.jpg', await pg.screenshot({type:'jpeg',quality:80}));
-await put('mv2_m_pilnas.jpg', await pg.screenshot({type:'jpeg',quality:74,fullPage:true}));
-await br.close();
-console.log('baigta');
+let sha=null;
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/apr.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+const body={message:'apr',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
+const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/apr.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+console.log('put',p.status,Object.keys(out).length);
