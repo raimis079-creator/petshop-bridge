@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.04';   /* v1.04: laukeliu raktas — prekes ID (MnM taip skaito POST) */
+	const VERSIJA = '1.05';   /* v1.05: nera „akcijos" zymes — laukas nera nukainotas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -53,6 +53,11 @@ class Petshop_Laukai {
 	public static function init() {
 		/* Pakopu variklis. 100 — po MnM, kuris savo kainas sudeda ties 10. */
 		add_action( 'woocommerce_before_calculate_totals', array( __CLASS__, 'pakopos_krepselyje' ), 100 );
+
+		/* Laukas nera nukainota preke. WC ji tokia laiko, nes iprasta kaina
+		   yra visu krepsio prekiu suma (32,21 EUR), o aktyvi — 0, kol klientas
+		   nieko nepasirinko. Del to krepselyje kabejo „Akcija: -100 %". */
+		add_filter( 'woocommerce_product_is_on_sale', array( __CLASS__, 'ne_akcija' ), 20, 2 );
 
 		/* Kiekio laukelis: leidziam kelis to paties vienetus. */
 		add_filter( 'wc_mnm_child_item_quantity_input_args', array( __CLASS__, 'kiekio_laukelis' ), 10, 3 );
@@ -244,6 +249,12 @@ class Petshop_Laukai {
 		$args['min_value'] = 0;
 		$args['max_value'] = '';   /* tuscia = neribota */
 		return $args;
+	}
+
+	/** Laukas niekada nera „akcijoje" — nuolaida gimsta tik is pakopu. */
+	public static function ne_akcija( $ar, $product ) {
+		if ( $product instanceof WC_Product && self::yra_laukas( $product->get_id() ) ) { return false; }
+		return $ar;
 	}
 
 	/** Uzsakymo eiluteje paliekam pedsaka, kokia pakopa suveike. */
