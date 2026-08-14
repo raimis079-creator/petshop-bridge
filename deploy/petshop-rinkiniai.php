@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.25';   /* v1.25: likucio uzraktas + _cost_price + rankinis svoris */
+	const VERSIJA = '1.26';   /* v1.26: „Pasirenkami rinkiniai" skirtukas — seimos, laukai, apsaugos */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -1025,12 +1025,388 @@ class Petshop_Rinkiniai {
 		self::navigacija();
 		echo '<div class="wrap psrink">';
 
+		$skirtukas = isset( $_GET['sk'] ) ? sanitize_key( $_GET['sk'] ) : 'paruosti';
+
 		if ( $veiksmas === 'naujas' || ( $veiksmas === 'keisti' && $id ) ) {
 			self::forma( $veiksmas === 'keisti' ? $id : 0 );
+		} elseif ( $skirtukas === 'pasirenkami' ) {
+			self::skirtukai( 'pasirenkami' );
+			if ( $id ) { self::seima( $id ); } else { self::seimos(); }
 		} else {
+			self::skirtukai( 'paruosti' );
 			self::sarasas();
 		}
 		echo '</div>';
+	}
+
+
+	/* ==================== v1.26: PASIRENKAMI RINKINIAI ==================== */
+
+	/**
+	 * Skirtukai. Paruosti rinkiniai ir DP gyvena sename sarase; pasirenkami —
+	 * atskirai, nes tai ne prekes, o seimos: viena eilute = viena seima, ne 36
+	 * pasleptos prekes.
+	 */
+	private static function skirtukai( $akt ) {
+		$b = admin_url( 'admin.php?page=' . self::SLUG );
+		$sk = array(
+			'paruosti'    => array( 'Paruošti rinkiniai', $b ),
+			'pasirenkami' => array( 'Pasirenkami rinkiniai', $b . '&sk=pasirenkami' ),
+		);
+		echo '<h1 class="wp-heading-inline">Rinkiniai</h1>';
+		echo '<p class="description">Paruošti rinkiniai ir pakai — prekės su savo kortele. '
+			. 'Pasirenkami — šeimos, kurių turinį susideda klientas.</p>';
+		echo '<div class="psr-skirtukai">';
+		foreach ( $sk as $k => $v ) {
+			echo '<a class="' . ( $k === $akt ? 'on' : '' ) . '" href="' . esc_url( $v[1] ) . '">'
+				. esc_html( $v[0] ) . '</a>';
+		}
+		echo '</div>';
+	}
+
+	/**
+	 * Susidejimo seimos. Tevinis turi `_petshop_is_choice_bundle`, o dydziai —
+	 * `_petshop_choice_parent`. Naslaiciai (dydziai be tevinio) rodomi atskirai,
+	 * kitaip jie liktu nematomi, kaip #34196.
+	 */
+	public static function seimos() {
+		global $wpdb;
+		$tevai = $wpdb->get_col( "SELECT post_id FROM {$wpdb->postmeta}
+			WHERE meta_key='_petshop_is_choice_bundle' AND meta_value='yes'" );
+		$vaikai = $wpdb->get_results( "SELECT post_id, meta_value AS tevas FROM {$wpdb->postmeta}
+			WHERE meta_key='_petshop_choice_parent'", ARRAY_A );
+
+		$pagal_teva = array();
+		foreach ( $vaikai as $v ) { $pagal_teva[ (int) $v['tevas'] ][] = (int) $v['post_id']; }
+
+		$visi = array_map( 'intval', $tevai );
+		foreach ( array_keys( $pagal_teva ) as $t ) { if ( ! in_array( $t, $visi, true ) ) { $visi[] = (int) $t; } }
+
+		$eil = array();
+		foreach ( $visi as $tid ) {
+			$eil[] = self::seimos_eilute( $tid, $pagal_teva[ $tid ] ?? array() );
+		}
+		usort( $eil, function( $a, $b ) { return $a['id'] <=> $b['id']; } );
+		self::seimu_lentele( $eil );
+	}
+
+	/** Vienos seimos suvestine sarasui. */
+	private static function seimos_eilute( $tid, $dydziai ) {
+		global $wpdb;
+		$post = get_post( $tid );
+		$cfg  = json_decode( (string) get_post_meta( $tid, '_petshop_choice_config', true ), true );
+		$tbl  = $wpdb->prefix . 'wc_mnm_child_items';
+
+		$grupes = array(); $kainos = array(); $krepsiai = array(); $ivertinta = array();
+		if ( is_array( $cfg ) ) {
+			foreach ( $cfg as $gk => $gd ) {
+				$grupes[] = ( $gd['label'] ?? $gk );
+				foreach ( (array) ( $gd['gramaturos'] ?? array() ) as $gram => $dyd ) {
+					foreach ( (array) $dyd as $sz => $si ) {
+						$hid = (int) ( $si['product_id'] ?? 0 );
+						$kainos[] = (float) ( $si['price'] ?? 0 );
+						if ( ! $hid ) { continue; }
+						$rows = $wpdb->get_col( $wpdb->prepare(
+							"SELECT product_id FROM {$tbl} WHERE container_id=%d", $hid ) );
+						$krepsiai[] = count( $rows );
+						/* marzos intervalas: pigiausias ir brangiausias imanomas pasirinkimas */
+						$sav = array(); $truksta = 0;
+						foreach ( $rows as $cid ) {
+							$c = self::savikaina( (int) $cid );
+							if ( $c === null ) { $truksta++; } else { $sav[] = $c; }
+						}
+						$kaina = (float) ( $si['price'] ?? 0 );
+						if ( $sav && ! $truksta && $kaina > 0 ) {
+							$net = $kaina / 1.21;
+							$n   = (int) $sz;
+							$ivertinta[] = array(
+								round( ( $net - $n * max( $sav ) ) / $net * 100 ),
+								round( ( $net - $n * min( $sav ) ) / $net * 100 ),
+								$kaina, $n * min( $sav ) * 1.21,
+							);
+						} elseif ( $truksta ) {
+							$ivertinta[] = null;
+						}
+					}
+				}
+			}
+		}
+
+		$m_lo = null; $m_hi = null; $brangiau = 0;
+		foreach ( $ivertinta as $iv ) {
+			if ( $iv === null ) { continue; }
+			$m_lo = ( $m_lo === null ) ? $iv[0] : min( $m_lo, $iv[0] );
+			$m_hi = ( $m_hi === null ) ? $iv[1] : max( $m_hi, $iv[1] );
+			if ( $iv[2] > $iv[3] + 0.005 ) { $brangiau++; }
+		}
+
+		return array(
+			'id'       => (int) $tid,
+			'pav'      => $post ? $post->post_title : '— tėvinio nebėra —',
+			'yra'      => (bool) $post,
+			'busena'   => $post ? $post->post_status : '',
+			'grupes'   => $grupes,
+			'dydziu'   => count( $dydziai ),
+			'krepsys'  => $krepsiai ? ( min( $krepsiai ) === max( $krepsiai )
+				? (string) min( $krepsiai )
+				: min( $krepsiai ) . '–' . max( $krepsiai ) ) : '—',
+			'per_didelis' => $krepsiai ? ( max( $krepsiai ) > 8 ) : false,
+			'm_lo'     => $m_lo,
+			'm_hi'     => $m_hi,
+			'brangiau' => $brangiau,
+			'be_sav'   => count( array_filter( $ivertinta, function( $x ) { return $x === null; } ) ),
+		);
+	}
+
+	/** Marzos intervalo juosta. Vienas skaicius cia meluotu — renkasi klientas. */
+	private static function juosta( $lo, $hi ) {
+		if ( $lo === null ) { return '<span class="psr-mut">negalima suskaičiuoti</span>'; }
+		$p = function( $v ) { return max( 0, min( 100, $v + 20 ) ); };
+		$a = $p( $lo ); $b = $p( $hi );
+		return '<div class="psr-juostele"><u style="left:20%"></u><u style="left:45%"></u>'
+			. '<i class="' . ( $lo < 20 ? 'bloga' : '' ) . '" style="left:' . $a . '%;width:'
+			. max( 2, $b - $a ) . '%"></i></div>'
+			. '<div class="psr-juostele-t"><span>' . (int) $lo . ' %</span><span>' . (int) $hi . ' %</span></div>';
+	}
+
+	private static function seimu_lentele( $eil ) {
+		$sk = array( 'visos' => count( $eil ), 'brangiau' => 0, 'be_sav' => 0, 'didelis' => 0, 'naslaitis' => 0 );
+		foreach ( $eil as $e ) {
+			if ( $e['brangiau'] ) { $sk['brangiau']++; }
+			if ( $e['be_sav'] ) { $sk['be_sav']++; }
+			if ( $e['per_didelis'] ) { $sk['didelis']++; }
+			if ( ! $e['yra'] ) { $sk['naslaitis']++; }
+		}
+		echo '<div class="psr-eiles">';
+		echo '<button class="psr-eile on"><b>' . $sk['visos'] . '</b><span>Visos šeimos</span></button>';
+		echo '<button class="psr-eile r"><b>' . $sk['brangiau'] . '</b><span>Brangiau nei atskirai</span></button>';
+		echo '<button class="psr-eile y"><b>' . $sk['be_sav'] . '</b><span>Prekės be savikainos</span></button>';
+		echo '<button class="psr-eile y"><b>' . $sk['didelis'] . '</b><span>Krepšys per didelis</span></button>';
+		echo '<button class="psr-eile r"><b>' . $sk['naslaitis'] . '</b><span>Tėvinio nebėra</span></button>';
+		echo '</div>';
+
+		echo '<table class="wp-list-table widefat striped psr-lentele"><thead><tr>'
+			. '<th style="width:26%">Šeima</th><th>Grupės</th><th>Dydžių</th><th>Krepšys</th>'
+			. '<th style="min-width:170px">Marža blogiausiu–geriausiu atveju</th><th>Būsena</th>'
+			. '</tr></thead><tbody>';
+		if ( ! $eil ) { echo '<tr><td colspan="6" class="psr-tuscia">Susidėjimo rinkinių nerasta.</td></tr>'; }
+		foreach ( $eil as $e ) {
+			$nuoroda = admin_url( 'admin.php?page=' . self::SLUG . '&sk=pasirenkami&id=' . $e['id'] );
+			echo '<tr>';
+			echo '<td><a class="psr-pav" href="' . esc_url( $nuoroda ) . '">' . esc_html( $e['pav'] ) . '</a>'
+				. '<div class="psr-mut">#' . $e['id'] . '</div></td>';
+			echo '<td class="psr-mut">' . ( $e['grupes'] ? esc_html( implode( ' · ', $e['grupes'] ) ) : '—' ) . '</td>';
+			echo '<td>' . $e['dydziu'] . '</td>';
+			echo '<td>' . esc_html( $e['krepsys'] ) . '</td>';
+			echo '<td>' . self::juosta( $e['m_lo'], $e['m_hi'] ) . '</td>';
+			echo '<td>';
+			if ( ! $e['yra'] )        { echo '<span class="psr-z r">Tėvinio nebėra</span>'; }
+			elseif ( $e['brangiau'] ) { echo '<span class="psr-z r">Brangiau nei atskirai</span>'; }
+			else                      { echo '<span class="psr-z g">Sutvarkyta</span>'; }
+			if ( $e['be_sav'] )      { echo ' <span class="psr-z y">' . $e['be_sav'] . ' be savikainos</span>'; }
+			if ( $e['per_didelis'] ) { echo ' <span class="psr-z y">krepšys &gt; 8</span>'; }
+			echo '</td></tr>';
+		}
+		echo '</tbody></table>';
+		echo '<p class="psr-mut" style="margin-top:14px">Pasirenkamas rinkinys nėra prekė — jis yra mini katalogas, '
+			. 'todėl į prekių sąrašą neįrašomas. Jo prekės kataloge jau yra kiekviena atskira eilute. '
+			. '<b>Marža rodoma intervalu</b>, nes renkasi klientas.</p>';
+	}
+
+	/** Vienos seimos vidus: grupes, dydziai su kainomis, krepsys, apsaugos. */
+	public static function seima( $tid ) {
+		global $wpdb;
+		$post = get_post( $tid );
+		$cfg  = json_decode( (string) get_post_meta( $tid, '_petshop_choice_config', true ), true );
+		$grizti = admin_url( 'admin.php?page=' . self::SLUG . '&sk=pasirenkami' );
+
+		echo '<p><a class="button" href="' . esc_url( $grizti ) . '">← Šeimos</a> '
+			. '<b style="font-size:15px;margin-left:8px">' . esc_html( $post ? $post->post_title : '— tėvinio nebėra —' )
+			. '</b> <span class="psr-z b">#' . (int) $tid . '</span></p>';
+
+		if ( ! is_array( $cfg ) || ! $cfg ) {
+			echo '<div class="psr-kort"><div class="psr-vidus psr-tuscia">'
+				. 'Šios šeimos nustatymų (<code>_petshop_choice_config</code>) nėra — greičiausiai tėvinis ištrintas, '
+				. 'o dydžiai liko. Kol tvarkome, jie nerodomi klientams tik todėl, kad paslėpti nuo katalogo.'
+				. '</div></div>';
+			return;
+		}
+
+		$akt = isset( $_GET['gr'] ) ? sanitize_key( $_GET['gr'] ) : (string) array_key_first( $cfg );
+		if ( ! isset( $cfg[ $akt ] ) ) { $akt = (string) array_key_first( $cfg ); }
+
+		/* grupiu juosta */
+		echo '<div class="psr-kort"><h3>Grupės <span class="psr-mut">klientui tai pirmas pasirinkimas</span></h3>'
+			. '<div class="psr-vidus"><div class="psr-grupe">';
+		foreach ( $cfg as $gk => $gd ) {
+			$n = 0;
+			foreach ( (array) ( $gd['gramaturos'] ?? array() ) as $dyd ) { $n += count( (array) $dyd ); }
+			$u = admin_url( 'admin.php?page=' . self::SLUG . '&sk=pasirenkami&id=' . (int) $tid . '&gr=' . $gk );
+			echo '<a class="button ' . ( $gk === $akt ? 'button-primary' : '' ) . '" href="' . esc_url( $u ) . '">'
+				. esc_html( $gd['label'] ?? $gk ) . ' <i class="psr-mut">(' . $n . ' dydžiai)</i></a>';
+		}
+		echo '</div></div></div>';
+
+		self::seimos_grupe( $tid, $akt, $cfg[ $akt ] );
+	}
+
+
+	/** Grupes vidus: dydziu/kainu lentele, krepsys, apsaugos. */
+	private static function seimos_grupe( $tid, $gk, $gd ) {
+		global $wpdb;
+		$tbl = $wpdb->prefix . 'wc_mnm_child_items';
+
+		/* krepsys — imamas is pirmo dydzio; visi grupes dydziai turi ta pati */
+		$hid_pirmas = 0; $eilutes = array();
+		foreach ( (array) ( $gd['gramaturos'] ?? array() ) as $gram => $dyd ) {
+			foreach ( (array) $dyd as $sz => $si ) {
+				if ( ! $hid_pirmas ) { $hid_pirmas = (int) ( $si['product_id'] ?? 0 ); }
+				$eilutes[] = array( 'gram' => $gram, 'sz' => (int) $sz,
+					'kaina' => (float) ( $si['price'] ?? 0 ), 'hid' => (int) ( $si['product_id'] ?? 0 ) );
+			}
+		}
+		usort( $eilutes, function( $a, $b ) { return array( $a['gram'], $a['sz'] ) <=> array( $b['gram'], $b['sz'] ); } );
+
+		$krepsys = array();
+		if ( $hid_pirmas ) {
+			$ids = $wpdb->get_col( $wpdb->prepare(
+				"SELECT product_id FROM {$tbl} WHERE container_id=%d ORDER BY menu_order", $hid_pirmas ) );
+			foreach ( $ids as $cid ) {
+				$p = wc_get_product( (int) $cid );
+				if ( ! $p ) { $krepsys[] = array( 'id' => (int) $cid, 'nera' => true ); continue; }
+				$sav = self::savikaina( (int) $cid );
+				$kaina = (float) $p->get_price();
+				$krepsys[] = array(
+					'id'    => (int) $cid,
+					'pav'   => $p->get_name(),
+					'kaina' => $kaina,
+					'sav'   => $sav,
+					'marza' => ( $sav !== null && $kaina > 0 ) ? round( ( ( $kaina / 1.21 ) - $sav ) / ( $kaina / 1.21 ) * 100 ) : null,
+					'yra'   => $p->is_in_stock(),
+					'lik'   => $p->get_stock_quantity(),
+					'sand'  => strtoupper( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'AV' ),
+					'apr'   => ( trim( wp_strip_all_tags( $p->get_short_description() ) ) !== ''
+						|| trim( wp_strip_all_tags( $p->get_description() ) ) !== '' ),
+				);
+			}
+		}
+
+		$k_visos = array(); $s_visos = array(); $truksta = 0;
+		foreach ( $krepsys as $p ) {
+			if ( ! empty( $p['nera'] ) ) { continue; }
+			$k_visos[] = $p['kaina'];
+			if ( $p['sav'] === null ) { $truksta++; } else { $s_visos[] = $p['sav']; }
+		}
+
+		/* ---------- dydziai ---------- */
+		echo '<div class="psr-kort"><h3>Dydžiai ir kainos</h3><div class="psr-vidus" style="padding:0">';
+		echo '<table class="wp-list-table widefat striped psr-lentele"><thead><tr>'
+			. '<th>Dydis</th><th>Dėžės kaina</th><th>Už vnt.</th><th>Savikaina</th>'
+			. '<th>Atskirai kainuotų</th><th style="min-width:170px">Marža</th></tr></thead><tbody>';
+		foreach ( $eilutes as $e ) {
+			$n = $e['sz']; $kaina = $e['kaina'];
+			$ats_lo = $k_visos ? $n * min( $k_visos ) : null;
+			$ats_hi = $k_visos ? $n * max( $k_visos ) : null;
+			$m_lo = null; $m_hi = null;
+			if ( $s_visos && ! $truksta && $kaina > 0 ) {
+				$net = $kaina / 1.21;
+				$m_lo = round( ( $net - $n * max( $s_visos ) ) / $net * 100 );
+				$m_hi = round( ( $net - $n * min( $s_visos ) ) / $net * 100 );
+			}
+			$brangiau = ( $ats_lo !== null && $kaina > $ats_lo + 0.005 );
+			echo '<tr>';
+			echo '<td><b>' . $n . '</b> vnt. <span class="psr-mut">' . esc_html( $e['gram'] ) . ' g</span></td>';
+			echo '<td>' . self::eur( $kaina ) . '</td>';
+			echo '<td>' . ( $n ? self::eur( $kaina / $n ) : '—' ) . '</td>';
+			echo '<td class="psr-mut">' . ( $s_visos && ! $truksta
+				? self::eur( $n * min( $s_visos ) ) . ( min( $s_visos ) !== max( $s_visos ) ? '–' . self::eur( $n * max( $s_visos ) ) : '' )
+				: '—' ) . '</td>';
+			echo '<td' . ( $brangiau ? ' class="psr-bad"' : '' ) . '>'
+				. ( $ats_lo === null ? '—' : self::eur( $ats_lo ) . ( $ats_lo !== $ats_hi ? '–' . self::eur( $ats_hi ) : '' ) )
+				. ( $brangiau ? '<div class="psr-mut psr-bad">dėžė brangesnė</div>' : '' ) . '</td>';
+			echo '<td>' . self::juosta( $m_lo, $m_hi ) . '</td>';
+			echo '</tr>';
+		}
+		echo '</tbody></table></div></div>';
+
+		/* ---------- krepsys ---------- */
+		echo '<div class="psr-kort"><h3>Krepšys — iš ko klientas renkasi '
+			. '<span class="psr-z b">' . count( $krepsys ) . ' iš 8</span>'
+			. '<span class="psr-sp"></span><span class="psr-mut">savikaina rodoma renkant — pagal ją atrenkamos prekės</span></h3>';
+		echo '<div class="psr-vidus" style="padding:0">';
+		echo '<table class="wp-list-table widefat striped psr-lentele"><thead><tr>'
+			. '<th style="width:34%">Prekė</th><th>Kaina</th><th>Savikaina</th><th>Marža</th>'
+			. '<th>Likutis</th><th>Sandėlis</th><th>Aprašymas</th></tr></thead><tbody>';
+		if ( ! $krepsys ) { echo '<tr><td colspan="7" class="psr-tuscia">Krepšys tuščias.</td></tr>'; }
+		foreach ( $krepsys as $p ) {
+			if ( ! empty( $p['nera'] ) ) {
+				echo '<tr><td colspan="7" class="psr-bad">Prekės #' . $p['id'] . ' nebėra</td></tr>';
+				continue;
+			}
+			echo '<tr>';
+			echo '<td>' . esc_html( $p['pav'] ) . '<div class="psr-mut">#' . $p['id'] . '</div></td>';
+			echo '<td>' . self::eur( $p['kaina'] ) . '</td>';
+			echo '<td>' . ( $p['sav'] === null ? '<span class="psr-bad">nėra</span>' : self::eur( $p['sav'] ) ) . '</td>';
+			echo '<td' . ( ( $p['marza'] !== null && $p['marza'] < 20 ) ? ' class="psr-warn"' : '' ) . '>'
+				. ( $p['marza'] === null ? '—' : $p['marza'] . ' %' ) . '</td>';
+			echo '<td>' . ( $p['yra'] ? ( $p['lik'] === null ? '—' : (int) $p['lik'] ) : '<span class="psr-z r">neturime</span>' ) . '</td>';
+			echo '<td class="psr-mut">' . esc_html( $p['sand'] ) . '</td>';
+			echo '<td>' . ( $p['apr'] ? '<span class="psr-z g">yra</span>' : '<span class="psr-z y">nėra</span>' ) . '</td>';
+			echo '</tr>';
+		}
+		echo '</tbody></table></div></div>';
+
+		self::apsaugos( $eilutes, $krepsys, $k_visos, $truksta );
+	}
+
+	/** Apsaugos — skaiciuojamos is tu paciu duomenu, ne irasytos ranka. */
+	private static function apsaugos( $eilutes, $krepsys, $k_visos, $truksta ) {
+		$a = array();
+		if ( $k_visos ) {
+			$brangus = array();
+			foreach ( $eilutes as $e ) {
+				if ( $e['kaina'] > $e['sz'] * min( $k_visos ) + 0.005 ) {
+					$brangus[] = $e['sz'] . ' vnt. (permoka ' . self::eur( $e['kaina'] - $e['sz'] * min( $k_visos ) ) . ')';
+				}
+			}
+			if ( $brangus ) {
+				$a[] = array( 'r', 'Dėžė brangesnė nei prekės atskirai',
+					implode( ', ', $brangus ) . ' — pigiausiai renkantis klientas permoka. Publikuoti negalima.' );
+			}
+		}
+		$nera = 0; $be_apr = 0;
+		foreach ( $krepsys as $p ) {
+			if ( ! empty( $p['nera'] ) ) { continue; }
+			if ( ! $p['yra'] ) { $nera++; }
+			if ( ! $p['apr'] ) { $be_apr++; }
+		}
+		if ( $nera )    { $a[] = array( 'y', 'Krepšyje trūksta prekių', $nera . ' iš ' . count( $krepsys ) . ' neturime — klientas mato mažiau pasirinkimo.' ); }
+		if ( $truksta ) { $a[] = array( 'y', 'Prekės be savikainos', $truksta . ' prekės — maržos suskaičiuoti negalima.' ); }
+		if ( $be_apr )  { $a[] = array( 'y', 'Prekės be aprašymo', $be_apr . ' prekės — klientas nemato, ką renkasi.' ); }
+		if ( count( $krepsys ) > 8 ) { $a[] = array( 'y', 'Krepšys per didelis', count( $krepsys ) . ' prekės. Virš 8 dėžė pralaimi savo kategorijai.' ); }
+		if ( $k_visos && min( $k_visos ) > 0 && max( $k_visos ) / min( $k_visos ) > 1.5 ) {
+			$a[] = array( 'y', 'Krepšyje labai skirtingos kainos',
+				self::eur( min( $k_visos ) ) . '–' . self::eur( max( $k_visos ) )
+				. ' (' . number_format( max( $k_visos ) / min( $k_visos ), 1, ',', '' ) . '×). Su fiksuota kaina marža nestabili.' );
+		}
+		$sand = array();
+		foreach ( $krepsys as $p ) { if ( empty( $p['nera'] ) ) { $sand[ $p['sand'] ] = 1; } }
+		if ( count( $sand ) > 1 ) {
+			$a[] = array( 'r', 'Kelių sandėlių prekės', implode( ' + ', array_keys( $sand ) ) . ' — klientui tai bus dvi siuntos.' );
+		}
+		if ( ! $a ) { $a[] = array( 'g', 'Sutvarkyta', 'Kainos, likučiai, savikainos ir aprašymai švarūs.' ); }
+
+		echo '<div class="psr-kort"><h3>Apsaugos</h3><div class="psr-vidus">';
+		foreach ( $a as $x ) {
+			echo '<div class="psr-apsauga psr-' . $x[0] . '-l"><b>' . esc_html( $x[1] ) . '</b>'
+				. '<span>' . esc_html( $x[2] ) . '</span></div>';
+		}
+		echo '</div></div>';
+	}
+
+	/** Kaina lietuviskai. */
+	private static function eur( $n ) {
+		return number_format( (float) $n, 2, ',', ' ' ) . ' €';
 	}
 
 	/* ==================== SARASAS ==================== */
@@ -2765,6 +3141,23 @@ class Petshop_Rinkiniai {
 		.psr-z.r{background:#fcf0f1;border-color:#f0c3c4;color:#8a2424}
 		.psr-z.b{background:#f0f6fc;border-color:#c5d9ed;color:#0a4b78}
 
+
+		/* v1.26 pasirenkami */
+		.psr-skirtukai{border-bottom:1px solid #c3c4c7;display:flex;gap:4px;margin:14px 0 18px}
+		.psr-skirtukai a{padding:9px 15px;text-decoration:none;color:#646970;font-size:14px;border:1px solid transparent;border-bottom:0;margin-bottom:-1px;border-radius:3px 3px 0 0}
+		.psr-skirtukai a.on{background:#f0f0f1;border-color:#c3c4c7;color:#1d2327;font-weight:600}
+		.psr-juostele{position:relative;height:22px;border:1px solid #dcdcde;border-radius:2px;background:linear-gradient(90deg,#fcf0f1 0 20%,#fcf9e8 20% 45%,#f6faf7 45% 100%)}
+		.psr-juostele i{position:absolute;top:3px;bottom:3px;background:#00a32a;border-radius:2px}
+		.psr-juostele i.bloga{background:#d63638}
+		.psr-juostele u{position:absolute;top:0;bottom:0;width:1px;background:#fff;text-decoration:none}
+		.psr-juostele-t{display:flex;justify-content:space-between;font-size:11px;color:#646970;margin-top:2px}
+		.psr-apsauga{padding:9px 0 9px 11px;border-top:1px solid #f0f0f1;border-left:3px solid #c3c4c7;font-size:12.5px}
+		.psr-apsauga:first-child{border-top:0;padding-top:0}
+		.psr-apsauga b{display:block}
+		.psr-apsauga span{color:#646970}
+		.psr-r-l{border-left-color:#d63638}.psr-y-l{border-left-color:#dba617}.psr-g-l{border-left-color:#00a32a}
+		.psr-grupe{display:flex;gap:6px;flex-wrap:wrap}
+		.psr-grupe .button i{font-style:normal}
 		.psr-forma{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:16px;align-items:start;margin-top:14px}
 		.psr-kaire{min-width:0}
 		@media(max-width:1400px){.psr-forma{grid-template-columns:1fr}}
