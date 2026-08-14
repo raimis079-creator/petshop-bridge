@@ -17,8 +17,8 @@ try{
     const ctx = await br.newContext({viewport:{width:vw,height:vh}, ignoreHTTPSErrors:true, deviceScaleFactor:1});
     const pg = await ctx.newPage();
     const errs=[]; pg.on('pageerror',e=>errs.push(String(e).slice(0,150)));
-    await pg.goto('https://dev.avesa.lt/?p=34207', {waitUntil:'networkidle', timeout:60000});
-    await pg.waitForTimeout(3500);
+    await pg.goto('https://dev.avesa.lt/?p=34207', {waitUntil:'domcontentloaded', timeout:90000});
+    await pg.waitForTimeout(8000);
     const buf = await pg.screenshot({fullPage:true, type:'jpeg', quality:60});
     await put(`vitrina_${name}_0814.jpg`, buf);
     out[name] = {url: pg.url(), errs, h: await pg.evaluate(()=>document.body.scrollHeight)};
