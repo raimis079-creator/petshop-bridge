@@ -1,20 +1,77 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+import { chromium } from 'playwright';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const WP='https://dev.avesa.lt';
-const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const CODE=Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX2QzJ10gPz8gJycpICE9PSAnRDN5MDgxNGMnKSByZXR1cm47CglAc2V0X3RpbWVfbGltaXQoMzAwKTsKCSRvPWFycmF5KCdtYXJrZXInPT4nREVQTE9ZIHYxLjAyJyk7Cgkkcj13cF9yZW1vdGVfZ2V0KCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcmFpbWlzMDc5LWNyZWF0b3IvcGV0c2hvcC1icmlkZ2UvMTA4YTAzMDhhYjZlOTlkODExZTVkN2MzNzUyMWM4NGVjNTljMWU5MS9kZXBsb3kvcGV0c2hvcC1sYXVrYWkucGhwJywgYXJyYXkoJ3RpbWVvdXQnPT42MCkpOwoJaWYgKGlzX3dwX2Vycm9yKCRyKSkgeyAkb1snZXJyJ109JHItPmdldF9lcnJvcl9tZXNzYWdlKCk7IH0KCWVsc2UgewoJCSRrPXdwX3JlbW90ZV9yZXRyaWV2ZV9ib2R5KCRyKTsKCQkkb1snYnl0ZXMnXT1zdHJsZW4oJGspOyAkb1snbWQ1X29rJ109KG1kNSgkayk9PT0nYzQ4ZWQ0OWFhYTJkOTQ0MzgzNjgwNTNkZGRkZjkyNmMnKTsKCQlpZiAoJG9bJ21kNV9vayddKSB7CgkJCSR0PXN0cl9yZXBsYWNlKGFycmF5KCdjbGFzcyBQZXRzaG9wX0xhdWthaScsJ1BldHNob3BfTGF1a2FpOjppbml0KCk7JywnUGV0c2hvcF9MYXVrYWk6OicpLAoJCQkJYXJyYXkoJ2NsYXNzIFBldHNob3BfTGF1a2FpX1MzJywnJywnUGV0c2hvcF9MYXVrYWlfUzM6OicpLCAkayk7CgkJCSR0bXA9c3lzX2dldF90ZW1wX2RpcigpLicvbDEwMi0nLnRpbWUoKS4nLnBocCc7IGZpbGVfcHV0X2NvbnRlbnRzKCR0bXAsJHQpOwoJCQkkb2s9bnVsbDsKCQkJdHJ5IHsgaW5jbHVkZSAkdG1wOyAkb2s9dHJ1ZTsgJG9bJ2xpbnQnXT0nc3ZhcnUnOyB9CgkJCWNhdGNoIChQYXJzZUVycm9yICRlKXsgJG9rPWZhbHNlOyAkb1snbGludCddPSdQYXJzZUVycm9yOiAnLiRlLT5nZXRNZXNzYWdlKCkuJyBlaWwuJy4kZS0+Z2V0TGluZSgpOyB9CgkJCWNhdGNoIChUaHJvd2FibGUgJGUpeyAkb2s9dHJ1ZTsgJG9bJ2xpbnQnXT0ncnVudGltZTogJy4kZS0+Z2V0TWVzc2FnZSgpOyB9CgkJCUB1bmxpbmsoJHRtcCk7CgkJCWlmICgkb2spIHsKCQkJCSRkPVdQTVVfUExVR0lOX0RJUi4nL3BldHNob3AtbGF1a2FpLnBocCc7CgkJCQlAY29weSgkZCwgV1BNVV9QTFVHSU5fRElSLicvLmJhay1sYXVrYWktJy5kYXRlKCdZbWQtSGlzJykuJy50eHQnKTsKCQkJCSRvWydpcmFzeXRhJ109ZmlsZV9wdXRfY29udGVudHMoJGQsJGspOwoJCQkJJG9bJ2Rlc3RfbWQ1X29rJ109KG1kNV9maWxlKCRkKT09PSdjNDhlZDQ5YWFhMmQ5NDQzODM2ODA1M2RkZGRmOTI2YycpOwoJCQl9CgkJfQoJfQoJJEdMT0JBTFNbJ3BzX2QzJ109JG87Cn0sIDEyOSk7CmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CglpZiAoKCRfR0VUWydwc19kMyddID8/ICcnKSAhPT0gJ0QzeTA4MTRjJykgcmV0dXJuOwoJJG89YXJyYXkoJ2RpZWdpbWFzJz0+JEdMT0JBTFNbJ3BzX2QzJ10gPz8gJ25lc3V2ZWlrZScpOwoJJG9bJ3ZlcnNpamEnXT1jbGFzc19leGlzdHMoJ1BldHNob3BfTGF1a2FpJykgPyBQZXRzaG9wX0xhdWthaTo6VkVSU0lKQSA6IG51bGw7Cglmb3JlYWNoIChhcnJheSgndml0cmluYScsJ3ZpdHJpbmFfaW5pdCcsJ3ZpdHJpbmFfa2xhc2UnKSBhcyAkbSkgewoJCSRvWydtZXRvZGFpJ11bJG1dPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9MYXVrYWknKSA/IG1ldGhvZF9leGlzdHMoJ1BldHNob3BfTGF1a2FpJywkbSkgOiBudWxsOwoJfQoJJG9bJ3VybCddPWdldF9wZXJtYWxpbmsoMzQ5MzIpOwoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0sIDEzMCk7Cg==','base64').toString('utf8');
-async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,j:await r.text()}; }
+const URL='https://dev.avesa.lt/product/skanestu-deze-suniui-be-vistienos/';
 const out={};
-const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP D3',code:CODE,scope:'global',active:true,priority:5})});
-out.snip_status=cr.s;
-let id=null; try{ id=JSON.parse(cr.j).id; }catch(e){}
-out.snip_id=id;
-await new Promise(r=>setTimeout(r,4000));
-try{ const r=await fetch(WP+'/?ps_d3=D3y0814c'); out.http=r.status; const t=await r.text();
-  try{ out.rez=JSON.parse(t); }catch(e){ out.raw=t.slice(0,1500); } }catch(e){ out.err=String(e).slice(0,120); }
-if(id){ await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
+async function put(name,buf){
+  let sha=null;
+  try{const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  const body={message:name,content:buf.toString('base64')}; if(sha) body.sha=sha;
+  const p=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+  console.log('put',name,p.status);
+}
+const br=await chromium.launch({args:['--ignore-certificate-errors']});
+const ctx=await br.newContext({viewport:{width:1440,height:1000},ignoreHTTPSErrors:true});
+const pg=await ctx.newPage();
+const klaidos=[]; pg.on('console',m=>{ if(m.type()==='error') klaidos.push(m.text().slice(0,120)); });
+pg.on('pageerror',e=>klaidos.push('PAGEERROR '+String(e).slice(0,120)));
+const r=await pg.goto(URL,{waitUntil:'domcontentloaded',timeout:60000});
+out.http=r.status();
+await pg.waitForTimeout(1800);
+out.blokas = await pg.locator('.pslk').count();
+out.korteliu = await pg.locator('.pslk-kort').count();
+out.foto = await pg.locator('.pslk-kort img').count();
+out.cta_pradzia = (await pg.locator('#pslk-cta').textContent().catch(()=>'')).trim();
+out.cta_disabled = await pg.locator('#pslk-cta').isDisabled().catch(()=>null);
+await put('lk_1_pradzia.jpg', await pg.screenshot({type:'jpeg',quality:80,fullPage:true}));
+
+/* 2 vnt — CTA turi likti uzrakintas */
+await pg.locator('.pslk-kort').first().locator('.pslk-deti').click();
+await pg.locator('#pslk-k-'+ (await pg.locator('.pslk-kort').first().getAttribute('id')).replace('pslk-k-','') + ' .pslk-stp button[data-d="1"]').click();
+await pg.waitForTimeout(400);
+out.po2_cta=(await pg.locator('#pslk-cta').textContent()).trim();
+out.po2_disabled=await pg.locator('#pslk-cta').isDisabled();
+
+/* 3 vnt */
+await pg.locator('.pslk-kort').first().locator('.pslk-stp button[data-d="1"]').click();
+await pg.waitForTimeout(300);
+out.po3_cta=(await pg.locator('#pslk-cta').textContent()).trim();
+out.po3_disabled=await pg.locator('#pslk-cta').isDisabled();
+out.po3_deze=await pg.locator('.pslk-el').count();
+out.po3_zenkl=await pg.locator('.pslk-el u').first().textContent().catch(()=>null);
+
+/* iki -2 %: dar 3 vnt */
+for(let i=0;i<3;i++){ await pg.locator('.pslk-kort').first().locator('.pslk-stp button[data-d="1"]').click(); await pg.waitForTimeout(120); }
+out.po6_dbr=(await pg.locator('#pslk-dbr').textContent()).trim();
+out.po6_viso=(await pg.locator('#pslk-viso').textContent()).trim();
+out.po6_po=(await pg.locator('#pslk-po').textContent()).trim();
+await put('lk_2_pilna.jpg', await pg.screenshot({type:'jpeg',quality:80,fullPage:true}));
+
+/* greita perziura */
+await pg.locator('.pslk-apie').nth(2).click();
+await pg.waitForTimeout(600);
+out.pz_rodo=await pg.locator('#pslk-pz.rodo').count();
+out.pz_apr_ilgis=(await pg.locator('#pslk-pz-apr').textContent()).length;
+await put('lk_3_perziura.jpg', await pg.screenshot({type:'jpeg',quality:80}));
+await pg.keyboard.press('Escape'); await pg.waitForTimeout(300);
+out.pz_uzsidare=(await pg.locator('#pslk-pz.rodo').count())===0;
+
+/* ADD TO CART — tikras kelias */
+await pg.locator('#pslk-cta').click();
+await pg.waitForTimeout(3500);
+out.po_krepselio_url=pg.url();
+out.klaidu_zinutes=await pg.locator('.woocommerce-error, .message-container .woocommerce-error li').allTextContents().catch(()=>[]);
+await put('lk_4_po_krepselio.jpg', await pg.screenshot({type:'jpeg',quality:80,fullPage:true}));
+const cart=await ctx.newPage();
+await cart.goto('https://dev.avesa.lt/cart/',{waitUntil:'domcontentloaded'});
+await cart.waitForTimeout(1500);
+out.krepselio_eilutes=await cart.locator('.cart_item').count();
+out.krepselio_tekstas=(await cart.locator('.cart-collaterals, .cart_totals').first().innerText().catch(()=>'')).slice(0,300);
+await put('lk_5_krepselis.jpg', await cart.screenshot({type:'jpeg',quality:80,fullPage:true}));
+out.js_klaidos=klaidos.slice(0,6);
+await br.close();
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/d3.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
-const body={message:'rec',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/d3.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
-console.log('put',p.status,JSON.stringify(out).length);
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/lk.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+const body={message:'lk',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/lk.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+console.log(JSON.stringify(out));
