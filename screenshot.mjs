@@ -1,33 +1,20 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import { chromium } from 'playwright';
-import fs from 'fs';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const RAW='https://raw.githubusercontent.com/'+REPO+'/94bc7198630d18d26b6d9f7a9af17e032ae0493b/maketai/vitrina_v2.html';
-const r=await fetch(RAW); const html=await r.text();
-fs.writeFileSync('/tmp/m.html',html);
-console.log('html',html.length);
-const br=await chromium.launch();
-async function put(name,buf){
-  let sha=null;
-  try{const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
-  const body={message:name,content:buf.toString('base64')}; if(sha) body.sha=sha;
-  const p=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
-  console.log('put',name,p.status,buf.length);
-}
-let pg=await br.newPage({viewport:{width:1440,height:1000}});
-await pg.goto('file:///tmp/m.html'); await pg.waitForTimeout(900);
-await pg.evaluate(()=>{const ids=LAUKAI[Object.keys(LAUKAI)[0]].krepsys.map(p=>p.id);
-  for(let i=0;i<3;i++)k(ids[0],1); for(let i=0;i<2;i++)k(ids[3],1); for(let i=0;i<3;i++)k(ids[7],1); k(ids[8],2); k(ids[5],1);});
-await pg.waitForTimeout(400);
-await put('mv4_d_pilna.jpg', await pg.screenshot({type:'jpeg',quality:82,fullPage:true}));
-await pg.evaluate(()=>perziura(LAUKAI[Object.keys(LAUKAI)[0]].krepsys[0].id));
-await pg.waitForTimeout(400);
-await put('mv4_d_modal.jpg', await pg.screenshot({type:'jpeg',quality:82}));
-await pg.close();
-pg=await br.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true});
-await pg.goto('file:///tmp/m.html'); await pg.waitForTimeout(900);
-await pg.evaluate(()=>perziura(LAUKAI[Object.keys(LAUKAI)[0]].krepsys[1].id));
-await pg.waitForTimeout(400);
-await put('mv4_m_modal.jpg', await pg.screenshot({type:'jpeg',quality:80}));
-await br.close();
-console.log('baigta');
+const WP='https://dev.avesa.lt';
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
+const CODE=Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX2llcyddID8/ICcnKSAhPT0gJ0llczA4MTRqJykgcmV0dXJuOwoJQHNldF90aW1lX2xpbWl0KDMwMCk7CglnbG9iYWwgJHdwZGI7Cgkkbz1hcnJheSgnbWFya2VyJz0+J05FTU9LQU1PIFBSSVNUQVRZTU8gUEFJRVNLQScsJ3RzJz0+ZGF0ZSgnWS1tLWQgSDppOnMnKSk7CgkkZnI9JyVuZW1va2FtJSc7CgoJLyogMSkgbnVzdGF0eW1haSAqLwoJJG9bJ29wdGlvbnMnXT1hcnJheSgpOwoJZm9yZWFjaCAoJHdwZGItPmdldF9yZXN1bHRzKCR3cGRiLT5wcmVwYXJlKAoJCSJTRUxFQ1Qgb3B0aW9uX25hbWUsIG9wdGlvbl92YWx1ZSBGUk9NIHskd3BkYi0+b3B0aW9uc30KCQkgV0hFUkUgb3B0aW9uX3ZhbHVlIExJS0UgJXMgQU5EIG9wdGlvbl9uYW1lIE5PVCBMSUtFICdfdHJhbnNpZW50JScgTElNSVQgNDAiLCAkZnIpLCBBUlJBWV9BKSBhcyAkcikgewoJCWlmICghcHJlZ19tYXRjaCgnL25lbW9rYW1bXjxdezAsNjB9cHJpc3RhdHltL2l1JywgJHJbJ29wdGlvbl92YWx1ZSddLCAkbSkpIHsgY29udGludWU7IH0KCQkkb1snb3B0aW9ucyddWyRyWydvcHRpb25fbmFtZSddXT1tYl9zdWJzdHIodHJpbSgkbVswXSksMCw5MCk7Cgl9CgkvKiAyKSBDb2RlIFNuaXBwZXRzICovCgkkc25pcD0kd3BkYi0+cHJlZml4LidzbmlwcGV0cyc7CglpZiAoJHdwZGItPmdldF92YXIoIlNIT1cgVEFCTEVTIExJS0UgJyRzbmlwJyIpKSB7CgkJZm9yZWFjaCAoJHdwZGItPmdldF9yZXN1bHRzKCR3cGRiLT5wcmVwYXJlKAoJCQkiU0VMRUNUIGlkLG5hbWUsYWN0aXZlLGNvZGUgRlJPTSAkc25pcCBXSEVSRSBjb2RlIExJS0UgJXMiLCAkZnIpLCBBUlJBWV9BKSBhcyAkcikgewoJCQlwcmVnX21hdGNoX2FsbCgnL1teXG5dezAsNDB9bmVtb2thbVteXG5dezAsNzB9L2l1JywkclsnY29kZSddLCRtKTsKCQkJJG9bJ3NuaXBwZXRzJ11bXT1hcnJheSgnaWQnPT4oaW50KSRyWydpZCddLCdwYXYnPT4kclsnbmFtZSddLCdha3R5dnVzJz0+KGludCkkclsnYWN0aXZlJ10sCgkJCQkndmlldG9zJz0+YXJyYXlfc2xpY2UoYXJyYXlfbWFwKGZ1bmN0aW9uKCR4KXsgcmV0dXJuIHRyaW0oJHgpOyB9LCAkbVswXSksMCw0KSk7CgkJfQoJfQoJLyogMykgbXUtcGx1Z2lucyBpciB2YWlraW5lIHRlbWEgKi8KCWZvcmVhY2ggKGFycmF5KFdQTVVfUExVR0lOX0RJUiwgZ2V0X3N0eWxlc2hlZXRfZGlyZWN0b3J5KCkpIGFzICRkaXIpIHsKCQlpZiAoIWlzX2RpcigkZGlyKSkgY29udGludWU7CgkJJGl0PW5ldyBSZWN1cnNpdmVJdGVyYXRvckl0ZXJhdG9yKG5ldyBSZWN1cnNpdmVEaXJlY3RvcnlJdGVyYXRvcigkZGlyKSk7CgkJZm9yZWFjaCAoJGl0IGFzICRmKSB7CgkJCWlmICghJGYtPmlzRmlsZSgpIHx8ICFpbl9hcnJheSgkZi0+Z2V0RXh0ZW5zaW9uKCksYXJyYXkoJ3BocCcsJ2pzJywnY3NzJyksdHJ1ZSkpIGNvbnRpbnVlOwoJCQkkdD1maWxlX2dldF9jb250ZW50cygkZi0+Z2V0UGF0aG5hbWUoKSk7CgkJCWlmIChzdHJpcG9zKCR0LCduZW1va2FtJyk9PT1mYWxzZSkgY29udGludWU7CgkJCXByZWdfbWF0Y2hfYWxsKCcvW15cbl17MCw0MH1bTm5dZW1va2FtW15cbl17MCw3MH0vdScsJHQsJG0pOwoJCQkkb1snZmFpbGFpJ11bc3RyX3JlcGxhY2UoQUJTUEFUSCwnJywkZi0+Z2V0UGF0aG5hbWUoKSldPWFycmF5X3NsaWNlKGFycmF5X21hcCgndHJpbScsJG1bMF0pLDAsNCk7CgkJfQoJfQoJLyogNCkgaXJhc2FpL3B1c2xhcGlhaSAqLwoJZm9yZWFjaCAoJHdwZGItPmdldF9yZXN1bHRzKCR3cGRiLT5wcmVwYXJlKAoJCSJTRUxFQ1QgSUQscG9zdF90aXRsZSxwb3N0X3R5cGUgRlJPTSB7JHdwZGItPnBvc3RzfQoJCSBXSEVSRSBwb3N0X3N0YXR1cz0ncHVibGlzaCcgQU5EIHBvc3RfY29udGVudCBMSUtFICVzIExJTUlUIDIwIiwgJGZyKSwgQVJSQVlfQSkgYXMgJHIpIHsKCQkkb1snaXJhc2FpJ11bXT1hcnJheSgnaWQnPT4oaW50KSRyWydJRCddLCdwYXYnPT4kclsncG9zdF90aXRsZSddLCd0aXBhcyc9PiRyWydwb3N0X3R5cGUnXSk7Cgl9CgkvKiA1KSBXQyBwcmlzdGF0eW1vIHpvbm9zIGlyIG1ldG9kYWkg4oCUIGFyIHJpYmEgaXMgdGlrcnVqdSB0aWsgcGFzdG9tYXR1aSAqLwoJaWYgKGNsYXNzX2V4aXN0cygnV0NfU2hpcHBpbmdfWm9uZXMnKSkgewoJCWZvcmVhY2ggKFdDX1NoaXBwaW5nX1pvbmVzOjpnZXRfem9uZXMoKSBhcyAkeikgewoJCQlmb3JlYWNoICgkelsnc2hpcHBpbmdfbWV0aG9kcyddIGFzICRtMikgewoJCQkJaWYgKCRtMi0+aWQgPT09ICdmcmVlX3NoaXBwaW5nJyB8fCBzdHJpcG9zKCRtMi0+Z2V0X3RpdGxlKCksJ25lbW9rYW0nKSE9PWZhbHNlKSB7CgkJCQkJJG9bJ3djX21ldG9kYWknXVtdPWFycmF5KCd6b25hJz0+JHpbJ3pvbmVfbmFtZSddLCdpZCc9PiRtMi0+aWQsCgkJCQkJCSdwYXYnPT4kbTItPmdldF90aXRsZSgpLCdpanVuZ3Rhcyc9PiRtMi0+aXNfZW5hYmxlZCgpLAoJCQkJCQknc3VtYSc9Pm1ldGhvZF9leGlzdHMoJG0yLCdnZXRfb3B0aW9uJyk/JG0yLT5nZXRfb3B0aW9uKCdtaW5fYW1vdW50Jyk6bnVsbCk7CgkJCQl9CgkJCX0KCQl9Cgl9CgloZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMwKTsK','base64').toString('utf8');
+async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,j:await r.text()}; }
+const out={};
+const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP IES',code:CODE,scope:'global',active:true,priority:5})});
+out.snip_status=cr.s;
+let id=null; try{ id=JSON.parse(cr.j).id; }catch(e){}
+out.snip_id=id;
+await new Promise(r=>setTimeout(r,4000));
+try{ const r=await fetch(WP+'/?ps_ies=Ies0814j'); out.http=r.status; const t=await r.text();
+  try{ out.rez=JSON.parse(t); }catch(e){ out.raw=t.slice(0,1500); } }catch(e){ out.err=String(e).slice(0,120); }
+if(id){ await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
+let sha=null;
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/ies.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+const body={message:'rec',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
+const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/ies.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+console.log('put',p.status,JSON.stringify(out).length);
