@@ -1097,32 +1097,38 @@ class Petshop_Rinkiniai {
 		$cfg  = json_decode( (string) get_post_meta( $tid, '_petshop_choice_config', true ), true );
 		$tbl  = $wpdb->prefix . 'wc_mnm_child_items';
 
-		$grupes = array(); $kainos = array(); $krepsiai = array(); $ivertinta = array();
+		$grupes = array(); $kainos = array(); $krepsiai = array(); $ivertinta = array(); $brangiau = 0;
 		if ( is_array( $cfg ) ) {
 			foreach ( $cfg as $gk => $gd ) {
 				$grupes[] = ( $gd['label'] ?? $gk );
 				foreach ( (array) ( $gd['gramaturos'] ?? array() ) as $gram => $dyd ) {
-					foreach ( (array) $dyd as $sz => $si ) {
-						$hid = (int) ( $si['product_id'] ?? 0 );
-						$kainos[] = (float) ( $si['price'] ?? 0 );
-						if ( ! $hid ) { continue; }
+					/* Krepsys priklauso GRAMATURAI, ne grupei: mix 400 g ir 800 g turi
+					   skirtingas prekes. Nuskaitom viena karta kiekvienai gramaturai. */
+					$pirmas = 0;
+					foreach ( (array) $dyd as $si0 ) { $pirmas = (int) ( $si0['product_id'] ?? 0 ); if ( $pirmas ) { break; } }
+					$sav = array(); $kain_kr = array(); $truksta = 0;
+					if ( $pirmas ) {
 						$rows = $wpdb->get_col( $wpdb->prepare(
-							"SELECT product_id FROM {$tbl} WHERE container_id=%d", $hid ) );
+							"SELECT product_id FROM {$tbl} WHERE container_id=%d", $pirmas ) );
 						$krepsiai[] = count( $rows );
-						/* marzos intervalas: pigiausias ir brangiausias imanomas pasirinkimas */
-						$sav = array(); $truksta = 0;
 						foreach ( $rows as $cid ) {
 							$c = self::savikaina( (int) $cid );
 							if ( $c === null ) { $truksta++; } else { $sav[] = $c; }
+							$cp = wc_get_product( (int) $cid );
+							if ( $cp && (float) $cp->get_price() > 0 ) { $kain_kr[] = (float) $cp->get_price(); }
 						}
+					}
+					foreach ( (array) $dyd as $sz => $si ) {
 						$kaina = (float) ( $si['price'] ?? 0 );
+						$kainos[] = $kaina;
+						$n = (int) $sz;
+						/* Kainu palyginimui savikainos NEREIKIA — tik prekiu kainu. */
+						if ( $kain_kr && $kaina > $n * min( $kain_kr ) + 0.005 ) { $brangiau++; }
 						if ( $sav && ! $truksta && $kaina > 0 ) {
 							$net = $kaina / 1.21;
-							$n   = (int) $sz;
 							$ivertinta[] = array(
 								round( ( $net - $n * max( $sav ) ) / $net * 100 ),
 								round( ( $net - $n * min( $sav ) ) / $net * 100 ),
-								$kaina, $n * min( $sav ) * 1.21,
 							);
 						} elseif ( $truksta ) {
 							$ivertinta[] = null;
@@ -1132,12 +1138,11 @@ class Petshop_Rinkiniai {
 			}
 		}
 
-		$m_lo = null; $m_hi = null; $brangiau = 0;
+		$m_lo = null; $m_hi = null;
 		foreach ( $ivertinta as $iv ) {
 			if ( $iv === null ) { continue; }
 			$m_lo = ( $m_lo === null ) ? $iv[0] : min( $m_lo, $iv[0] );
 			$m_hi = ( $m_hi === null ) ? $iv[1] : max( $m_hi, $iv[1] );
-			if ( $iv[2] > $iv[3] + 0.005 ) { $brangiau++; }
 		}
 
 		return array(
@@ -1256,16 +1261,31 @@ class Petshop_Rinkiniai {
 		global $wpdb;
 		$tbl = $wpdb->prefix . 'wc_mnm_child_items';
 
-		/* krepsys — imamas is pirmo dydzio; visi grupes dydziai turi ta pati */
-		$hid_pirmas = 0; $eilutes = array();
-		foreach ( (array) ( $gd['gramaturos'] ?? array() ) as $gram => $dyd ) {
-			foreach ( (array) $dyd as $sz => $si ) {
-				if ( ! $hid_pirmas ) { $hid_pirmas = (int) ( $si['product_id'] ?? 0 ); }
-				$eilutes[] = array( 'gram' => $gram, 'sz' => (int) $sz,
-					'kaina' => (float) ( $si['price'] ?? 0 ), 'hid' => (int) ( $si['product_id'] ?? 0 ) );
-			}
+		/* Krepsys priklauso GRAMATURAI: mix 400 g ir 800 g turi skirtingas prekes.
+		   Rodom aktyvios gramaturos krepsi; jei ju kelios — leidziam persijungti. */
+		$gramos = array_keys( (array) ( $gd['gramaturos'] ?? array() ) );
+		sort( $gramos, SORT_NUMERIC );
+		$akt_gram = isset( $_GET['gm'] ) ? sanitize_text_field( wp_unslash( $_GET['gm'] ) ) : (string) reset( $gramos );
+		if ( ! in_array( $akt_gram, array_map( 'strval', $gramos ), true ) ) { $akt_gram = (string) reset( $gramos ); }
+
+		$eilutes = array(); $hid_pirmas = 0;
+		foreach ( (array) ( $gd['gramaturos'][ $akt_gram ] ?? array() ) as $sz => $si ) {
+			if ( ! $hid_pirmas ) { $hid_pirmas = (int) ( $si['product_id'] ?? 0 ); }
+			$eilutes[] = array( 'gram' => $akt_gram, 'sz' => (int) $sz,
+				'kaina' => (float) ( $si['price'] ?? 0 ), 'hid' => (int) ( $si['product_id'] ?? 0 ) );
 		}
-		usort( $eilutes, function( $a, $b ) { return array( $a['gram'], $a['sz'] ) <=> array( $b['gram'], $b['sz'] ); } );
+		usort( $eilutes, function( $a, $b ) { return $a['sz'] <=> $b['sz']; } );
+
+		if ( count( $gramos ) > 1 ) {
+			echo '<div class="psr-kort"><h3>Gramatūra <span class="psr-mut">kiekviena turi savo krepšį</span></h3>'
+				. '<div class="psr-vidus"><div class="psr-grupe">';
+			foreach ( $gramos as $g ) {
+				$u = add_query_arg( 'gm', $g );
+				echo '<a class="button ' . ( (string) $g === $akt_gram ? 'button-primary' : '' ) . '" href="'
+					. esc_url( $u ) . '">' . esc_html( $g ) . ' g</a>';
+			}
+			echo '</div></div></div>';
+		}
 
 		$krepsys = array();
 		if ( $hid_pirmas ) {
