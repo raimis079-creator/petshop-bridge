@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.03';   /* v1.03: vitrina piesiama pries produkto sekcija (ne jos viduje) */
+	const VERSIJA = '1.04';   /* v1.04: laukeliu raktas — prekes ID (MnM taip skaito POST) */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -488,6 +488,7 @@ class Petshop_Laukai {
 		if ( trim( wp_strip_all_tags( $t ) ) === '' ) { $t = $cp->get_description(); }
 		$t = preg_replace( '#<style.*?</style>#si', '', $t );
 		$t = preg_replace( '#</p>|<br\s*/?>#i', "\n", $t );
+		$t = preg_replace( '/(Trumpas prekės aprašymas|Prekės aprašymas|Pagrindinis aprašymas)/ui', "\n", $t );
 		$t = wp_strip_all_tags( $t );
 		$eil = array();
 		foreach ( explode( "\n", $t ) as $x ) {
@@ -576,7 +577,9 @@ class Petshop_Laukai {
 							<?php else : ?>
 								<span class="pslk-nera">Šiuo metu neturime</span>
 							<?php endif; ?>
-							<input type="hidden" name="<?php echo esc_attr( $laukelis ); ?>[<?php echo (int) $pr['cid']; ?>]"
+							<?php /* MnM POST skaito pagal PREKES ID, ne krepsio eilutes ID — patikrinta
+							         gyvai: su cid meta „Product #521 does not exist". */ ?>
+							<input type="hidden" name="<?php echo esc_attr( $laukelis ); ?>[<?php echo (int) $pr['pid']; ?>]"
 								value="0" id="pslk-in-<?php echo (int) $pr['cid']; ?>">
 						</div>
 					<?php endforeach; ?>
