@@ -1,84 +1,20 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import { chromium } from 'playwright';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
+const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const KODAS=Buffer.from('YWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CglpZiAoKCRfR0VUWydwc19sb2dpbiddID8/ICcnKSAhPT0gJ0xvZzA4MTR0JykgcmV0dXJuOwoJJHUgPSBnZXRfdXNlcl9ieSgnbG9naW4nLCAnUmFpJyk7CglpZiAoISR1KSB7ICRhZG0gPSBnZXRfdXNlcnMoYXJyYXkoJ3JvbGUnPT4nYWRtaW5pc3RyYXRvcicsJ251bWJlcic9PjEpKTsgJHUgPSAkYWRtID8gJGFkbVswXSA6IG51bGw7IH0KCWlmICghJHUpIHsgd3BfZGllKCduZXJhIGFkbWluJyk7IH0KCXdwX3NldF9jdXJyZW50X3VzZXIoJHUtPklEKTsKCXdwX3NldF9hdXRoX2Nvb2tpZSgkdS0+SUQsIGZhbHNlKTsKCXdwX3NhZmVfcmVkaXJlY3QoYWRtaW5fdXJsKCdhZG1pbi5waHA/cGFnZT1wcy1sYXVrYWknKSk7CglleGl0Owp9LCAxKTsK','base64').toString('utf8');
-async function wpapi(p,o={}){ const r=await fetch('https://dev.avesa.lt'+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()}; }
-const out={zingsniai:[]};
-async function put(n,b){ try{ let sha=null;
-  const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});
-  if(g.status===200) sha=(await g.json()).sha;
-  const bd={message:n,content:b.toString('base64')}; if(sha) bd.sha=sha;
-  await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+n,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(bd)});
-}catch(e){} }
-async function z(p,fn){ try{ await fn(); out.zingsniai.push(p+' OK'); }catch(e){ out.zingsniai.push(p+' KLAIDA: '+String(e).split('\n')[0].slice(0,120)); } }
-let br,snipId=null;
-try{
-  const cr=await wpapi('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP LOGIN 0814',code:KODAS,scope:'global',active:true,priority:1})});
-  try{ snipId=JSON.parse(cr.t).id; }catch(e){}
-  await new Promise(r=>setTimeout(r,3500));
-  br=await chromium.launch({args:['--ignore-certificate-errors']});
-  const ctx=await br.newContext({viewport:{width:1440,height:1000},ignoreHTTPSErrors:true});
-  const pg=await ctx.newPage();
-  const kl=[]; pg.on('pageerror',e=>kl.push(String(e).slice(0,110)));
-  await z('kates vitrina', async()=>{
-    await pg.goto('https://dev.avesa.lt/product/skanestu-dezute-katei/',{waitUntil:'domcontentloaded',timeout:60000});
-    await pg.waitForTimeout(2000);
-    out.kates_h1=(await pg.locator('.pslk-h1').innerText()).split('\n')[0].trim();
-    out.kates_korteliu=await pg.locator('.pslk-kort').count();
-    out.kates_deze_antraste=(await pg.locator('.pslk-deze-v h3').innerText());
-    out.kates_mygtukas=(await pg.locator('.pslk-deti').first().innerText());
-    out.kates_juostos=await pg.locator('.pslk-lbtn').allInnerTexts();
-    const k=pg.locator('.pslk-kort').first();
-    await k.locator('.pslk-deti').click();
-    for(let i=0;i<4;i++){ await k.locator('.pslk-stp button[data-d="1"]').click(); await pg.waitForTimeout(120); }
-    await pg.waitForTimeout(600);
-    out.kates_kita=(await pg.locator('#pslk-kita').innerText()).trim();
-    out.kates_dbr=(await pg.locator('#pslk-dbr').innerText()).trim();
-    out.kates_cta=(await pg.locator('#pslk-cta').innerText()).trim();
-    await put('kt1_kates.jpg', await pg.screenshot({type:'jpeg',quality:80,fullPage:true}));
-  });
-  await z('kramtalai vitrina', async()=>{
-    await pg.goto('https://dev.avesa.lt/product/kramtalu-deze-suniui/',{waitUntil:'domcontentloaded',timeout:60000});
-    await pg.waitForTimeout(2000);
-    out.kram_h1=(await pg.locator('.pslk-h1').innerText()).split('\n')[0].trim();
-    out.kram_korteliu=await pg.locator('.pslk-kort').count();
-    out.kram_pakopos=(await pg.locator('.pslk-pakopos').innerText()).trim();
-    out.kram_juostos=await pg.locator('.pslk-lbtn').allInnerTexts();
-    const k=pg.locator('.pslk-kort').nth(1);
-    await k.locator('.pslk-deti').click();
-    for(let i=0;i<7;i++){ await k.locator('.pslk-stp button[data-d="1"]').click(); await pg.waitForTimeout(110); }
-    await pg.waitForTimeout(600);
-    out.kram_dbr=(await pg.locator('#pslk-dbr').innerText()).trim();
-    out.kram_viso=(await pg.locator('#pslk-viso').innerText()).trim();
-    await put('kt2_kramtalai.jpg', await pg.screenshot({type:'jpeg',quality:80,fullPage:true}));
-  });
-  await z('sunu vitrina', async()=>{
-    await pg.goto('https://dev.avesa.lt/product/skanestu-deze-suniui-be-vistienos/',{waitUntil:'domcontentloaded'});
-    await pg.waitForTimeout(1800);
-    out.sunu_juostos=await pg.locator('.pslk-lbtn').allInnerTexts();
-  });
-  await z('admin sarasas', async()=>{
-    await pg.goto('https://dev.avesa.lt/?ps_login=Log0814t',{waitUntil:'domcontentloaded'});
-    await pg.waitForTimeout(2500);
-    out.grupiu_antrastes=await pg.locator('.pslka-seima').allInnerTexts();
-    out.korteliu=await pg.locator('.pslka-kortele').count();
-    await pg.goto('https://dev.avesa.lt/wp-admin/admin.php?page=ps-laukai&id=34936',{waitUntil:'domcontentloaded'});
-    await pg.waitForTimeout(1500);
-    out.grupes_laukas_tipas=await pg.locator('#s-seima').evaluate(e=>e.tagName);
-    out.grupes_variantai=await pg.locator('#s-seima option').allInnerTexts();
-    out.grupes_pasirinkta=await pg.locator('#s-seima').inputValue();
-    await pg.goto('https://dev.avesa.lt/wp-admin/admin.php?page=ps-laukai&veiksmas=naujas',{waitUntil:'domcontentloaded'});
-    await pg.waitForTimeout(1200);
-    out.naujo_grupes_variantai=await pg.locator('#n-seima option').allInnerTexts();
-    await put('kt3_admin.jpg', await pg.screenshot({type:'jpeg',quality:80,fullPage:true}));
-  });
-  out.js_klaidos=kl.slice(0,5);
-}catch(e){ out.fatal=String(e).slice(0,200); }
-finally{ if(br) await br.close();
-  if(snipId){ try{ await wpapi('/wp-json/code-snippets/v1/snippets/'+snipId,{method:'POST',body:JSON.stringify({id:snipId,active:false})}); }catch(e){} } }
+const CODE=Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX3ZmbSddID8/ICcnKSAhPT0gJ1ZmbTA4MTVhJykgcmV0dXJuOwoJQHNldF90aW1lX2xpbWl0KDMwMCk7Cgkkbz1hcnJheSgnbWFya2VyJz0+J1ZGIE1BUlpPUyBQQUdBTCBLQVRFR09SSUpBUycsJ3RzJz0+ZGF0ZSgnWS1tLWQgSDppOnMnKSk7CgoJLyogMSkga3VyIGd5dmVuYSBrYWlub2RhcmEgKi8KCSRrYW5kPWFycmF5KAoJCVdQX1BMVUdJTl9ESVIuJy9wZXRzaG9wLXhtbC9pbmNsdWRlcy9jbGFzcy1wcmljaW5nLnBocCcsCgkJV1BfUExVR0lOX0RJUi4nL3BldHNob3AteG1sL2luY2x1ZGVzL2NsYXNzLXByaWNpbmctdmYucGhwJywKCQlXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLXhtbC5waHAnLAoJKTsKCWZvcmVhY2ggKCRrYW5kIGFzICRmKSB7ICRvWydmYWlsYWknXVtzdHJfcmVwbGFjZShBQlNQQVRILCcnLCRmKV0gPSBmaWxlX2V4aXN0cygkZikgPyBmaWxlc2l6ZSgkZikgOiAnbmVyYSc7IH0KCgkvKiBwbGF0ZXNuZSBwYWllc2thICovCglmb3JlYWNoIChhcnJheShXUF9QTFVHSU5fRElSLicvcGV0c2hvcC14bWwnLCBXUE1VX1BMVUdJTl9ESVIpIGFzICRkaXIpIHsKCQlpZiAoIWlzX2RpcigkZGlyKSkgY29udGludWU7CgkJJGl0PW5ldyBSZWN1cnNpdmVJdGVyYXRvckl0ZXJhdG9yKG5ldyBSZWN1cnNpdmVEaXJlY3RvcnlJdGVyYXRvcigkZGlyKSk7CgkJZm9yZWFjaCAoJGl0IGFzICRmKSB7CgkJCWlmICghJGYtPmlzRmlsZSgpIHx8ICRmLT5nZXRFeHRlbnNpb24oKSE9PSdwaHAnKSBjb250aW51ZTsKCQkJJHQ9ZmlsZV9nZXRfY29udGVudHMoJGYtPmdldFBhdGhuYW1lKCkpOwoJCQlpZiAoIXByZWdfbWF0Y2goJy9tYXJrdXB8YW50a2FpbnxtYXJ6YXxtYXLFvmEvaScsJHQpKSBjb250aW51ZTsKCQkJJG9bJ3Jhc3RhX2ZhaWx1b3NlJ11bXT1zdHJfcmVwbGFjZShBQlNQQVRILCcnLCRmLT5nZXRQYXRobmFtZSgpKTsKCQl9Cgl9CgoJLyogMikga2xhc2VzIGlyIGp1IHRhaXN5a2xlcyAqLwoJZm9yZWFjaCAoYXJyYXkoJ1BldHNob3BfUHJpY2luZycsJ1BldHNob3BfUHJpY2luZ19WRicpIGFzICRrbCkgewoJCWlmICghY2xhc3NfZXhpc3RzKCRrbCkpIHsgJG9bJ2tsYXNlcyddWyRrbF09J25lcmEnOyBjb250aW51ZTsgfQoJCSRyPW5ldyBSZWZsZWN0aW9uQ2xhc3MoJGtsKTsKCQkkb1sna2xhc2VzJ11bJGtsXT1hcnJheSgnZmFpbGFzJz0+c3RyX3JlcGxhY2UoQUJTUEFUSCwnJywkci0+Z2V0RmlsZU5hbWUoKSksCgkJCSdtZXRvZGFpJz0+Z2V0X2NsYXNzX21ldGhvZHMoJGtsKSk7CgkJLyoga29uc3RhbnRvcyBpciBzdGF0aW5pYWkgbGF1a2FpIOKAlCBkYXpuaWF1c2lhaSB0ZW4gaXIgZ3l2ZW5hIGxlbnRlbGUgKi8KCQlmb3JlYWNoICgkci0+Z2V0Q29uc3RhbnRzKCkgYXMgJGs9PiR2KSB7ICRvWydrb25zdGFudG9zJ11bJGtsXVska109IGlzX3NjYWxhcigkdik/JHY6JHY7IH0KCQlmb3JlYWNoICgkci0+Z2V0UHJvcGVydGllcygpIGFzICRwKSB7CgkJCSRwLT5zZXRBY2Nlc3NpYmxlKHRydWUpOwoJCQlpZiAoJHAtPmlzU3RhdGljKCkpIHsgJG9bJ3N0YXRpbmlhaSddWyRrbF1bJHAtPmdldE5hbWUoKV09JHAtPmdldFZhbHVlKCk7IH0KCQl9Cgl9CgoJLyogMykgZmlsdHJhaS9vcHRpb25haSwga3VyaXVvc2UgZ2FsaSBidXRpIGFudGthaW5pYWkgKi8KCWdsb2JhbCAkd3BkYjsKCWZvcmVhY2ggKCR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIG9wdGlvbl9uYW1lIEZST00geyR3cGRiLT5vcHRpb25zfQoJCVdIRVJFIG9wdGlvbl9uYW1lIExJS0UgJyVtYXJrdXAlJyBPUiBvcHRpb25fbmFtZSBMSUtFICclYW50a2FpbiUnIE9SIG9wdGlvbl9uYW1lIExJS0UgJyVwcmljaW5nJScKCQkgICBPUiBvcHRpb25fbmFtZSBMSUtFICclbWFyemElJyBMSU1JVCAzMCIsIEFSUkFZX0EpIGFzICRyMikgewoJCSRvWydvcHRpb25haSddWyRyMlsnb3B0aW9uX25hbWUnXV09Z2V0X29wdGlvbigkcjJbJ29wdGlvbl9uYW1lJ10pOwoJfQoJaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7CglleGl0Owp9LCAxMzEpOwo=','base64').toString('utf8');
+async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,t:await r.text()}; }
+const out={};
+const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP VFM',code:CODE,scope:'global',active:true,priority:5})});
+out.snip_status=cr.s;
+let id=null; try{ id=JSON.parse(cr.t).id; }catch(e){}
+out.snip_id=id;
+await new Promise(r=>setTimeout(r,4000));
+try{ const r=await fetch(WP+'/?ps_vfm=Vfm0815a'); out.http=r.status; const t=await r.text();
+  try{ out.rez=JSON.parse(t); }catch(e){ out.raw=t.slice(0,1500); } }catch(e){ out.err=String(e).slice(0,120); }
+if(id){ await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/kt.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
-const b={message:'kt',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) b.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/kt.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)});
-console.log('ok');
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/vfm.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
+const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/vfm.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+console.log('put',p.status);
