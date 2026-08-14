@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.24';
+	const VERSIJA = '1.25';   /* v1.25: likucio uzraktas + _cost_price + rankinis svoris */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -87,6 +87,16 @@ class Petshop_Rinkiniai {
 		add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );
 		add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );
 		add_filter( 'admin_body_class', array( __CLASS__, 'body_klase' ) );
+
+		/* v1.25: LIKUCIO UZRAKTAS. Rinkinys ir DP pakas savo likucio NETURI —
+		   MnM likuti skaiciuoja petshop-rinkiniu-likuciai.php is komponentu,
+		   DP — snippet 567 is bazines prekes. Bet kokia irasyta reiksme butu
+		   dviguba apskaita, todel rasymas blokuojamas DUOMENU lygmenyje:
+		   ir tiesioginis update/add_post_meta, ir WC CRUD kelias (kortele,
+		   importai, WC prekes langas). */
+		add_filter( 'update_post_metadata', array( __CLASS__, 'likucio_uzraktas_meta' ), 10, 5 );
+		add_filter( 'add_post_metadata',    array( __CLASS__, 'likucio_uzraktas_meta' ), 10, 5 );
+		add_action( 'woocommerce_before_product_object_save', array( __CLASS__, 'likucio_uzraktas_crud' ) );
 	}
 
 	public static function meniu() {
@@ -570,6 +580,75 @@ class Petshop_Rinkiniai {
 			if ( $v !== '' && $v !== false && $v !== null ) { return (float) $v; }
 		}
 		return null;
+	}
+
+	/* ==================== v1.25: LIKUCIO UZRAKTAS ==================== */
+
+	/**
+	 * Ar preke yra rinkinys (MnM) arba DP pakas. Kesuojama uzklausos ribose,
+	 * nes update_post_metadata filtras kvieciamas del KIEKVIENO meta iraso
+	 * visame WP — turi buti pigus.
+	 */
+	public static function ar_rinkinys( $pid ) {
+		static $kesas = array();
+		$pid = (int) $pid;
+		if ( ! $pid ) { return false; }
+		if ( isset( $kesas[ $pid ] ) ) { return $kesas[ $pid ]; }
+		if ( get_post_type( $pid ) !== 'product' ) { return $kesas[ $pid ] = false; }
+		if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return $kesas[ $pid ] = true; }
+		$tipas = get_the_terms( $pid, 'product_type' );
+		if ( is_array( $tipas ) ) {
+			foreach ( $tipas as $t ) { if ( $t->slug === 'mix-and-match' ) { return $kesas[ $pid ] = true; } }
+		}
+		return $kesas[ $pid ] = false;
+	}
+
+	/**
+	 * Tiesioginio meta rasymo blokas. Tuscia reiksme praleidziam (WC pats
+	 * raso `_stock = ''`, kai manage_stock isjungtas — tai valymas, ne
+	 * likutis), `_manage_stock = no` praleidziam. Visa kita rinkiniui —
+	 * blokuojama: grazinus false, update_post_meta nieko neiraso.
+	 */
+	public static function likucio_uzraktas_meta( $check, $object_id, $meta_key, $meta_value, $extra = null ) {
+		if ( $meta_key !== '_stock' && $meta_key !== '_own_stock_qty' && $meta_key !== '_manage_stock' ) { return $check; }
+		if ( ! self::ar_rinkinys( $object_id ) ) { return $check; }
+		if ( $meta_key === '_manage_stock' ) {
+			return ( $meta_value === 'no' || $meta_value === '' ) ? $check : false;
+		}
+		return ( $meta_value === '' || $meta_value === null ) ? $check : false;
+	}
+
+	/**
+	 * WC CRUD kelias: katalogo kortele ir importai likuti raso per
+	 * set_stock_quantity(), kuris atnaujina ir wc_product_meta_lookup
+	 * tiesiogine SQL — meta filtras to nepagauna. Todel pries issaugant
+	 * rinkinio objekta likutis nuvalomas.
+	 */
+	public static function likucio_uzraktas_crud( $product ) {
+		if ( ! $product || ! self::ar_rinkinys( $product->get_id() ) ) { return; }
+		if ( $product->get_manage_stock() || $product->get_stock_quantity() !== null ) {
+			$product->set_manage_stock( false );
+			$product->set_stock_quantity( null );
+		}
+	}
+
+	/**
+	 * v1.25: rankinio svorio taisykle (kurjeriui). Ranka irasyta reiksme
+	 * NUSTELBIA automatika ir islieka per visus persirasymus, kol formoje
+	 * neistrinama (tuscias laukas = grizta automatika). Ta pati logika
+	 * kaip `_ps_ranka_isimta`. Ivestis, lygi automatinei, rankiniu nelaikoma.
+	 */
+	private static function svorio_sprendimas( $prod, $auto_kg, $ivestis ) {
+		if ( $ivestis !== null ) {
+			$r = (float) str_replace( ',', '.', (string) $ivestis );
+			if ( $ivestis === '' || $r <= 0 || abs( $r - (float) $auto_kg ) <= 0.0005 ) {
+				$prod->delete_meta_data( '_ps_svoris_ranka' );
+			} else {
+				$prod->update_meta_data( '_ps_svoris_ranka', $r );
+			}
+		}
+		$ranka = (float) $prod->get_meta( '_ps_svoris_ranka' );
+		return ( $ranka > 0 ) ? $ranka : (float) $auto_kg;
 	}
 
 	/** Siuntimo klases terminas pagal slug. */
@@ -2057,6 +2136,8 @@ class Petshop_Rinkiniai {
 		$publ  = ! empty( $d['publikuoti'] );
 		$kat   = array_map( 'intval', (array) ( $d['kat'] ?? array() ) );
 		$komp  = (array) ( $d['komponentai'] ?? array() );
+		/* v1.25: neprivalomas rankinis svoris (kurjeriui). null = formoje lauko nebuvo. */
+		$svoris_iv = array_key_exists( 'svoris', $d ) ? trim( (string) $d['svoris'] ) : null;
 
 		$klaidos = array();
 		$dp_tipas = ( ( $d['tipas'] ?? '' ) === 'dp' );
@@ -2115,7 +2196,7 @@ class Petshop_Rinkiniai {
 		   o MnM klientui parodytu pasirinkimo forma, kurios cia nereikia. */
 		$tipas = ( ( $d['tipas'] ?? '' ) === 'dp' || ( count( $kiekiai ) === 1 && $viso >= 2 ) ) ? 'dp' : 'mnm';
 		if ( $tipas === 'dp' ) {
-			return self::issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai );
+			return self::issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv );
 		}
 
 		try {
@@ -2141,13 +2222,26 @@ class Petshop_Rinkiniai {
 			$prod->update_meta_data( '_mnm_per_product_pricing', 'no' );
 			$prod->update_meta_data( self::META_KIEKIAI, wp_json_encode( $kiekiai ) );
 
-			/* Svoris: suma is komponentu. Be jo siuntimo kaina butu neteisinga. */
+			/* Svoris: suma is komponentu; ranka irasytas nustelbia (v1.25). */
 			$sv = self::svoris( $kiekiai );
-			if ( $sv['kg'] > 0 ) {
-				$prod->set_weight( $sv['kg'] );
-				$klase = self::siuntimo_klase( $sv['kg'] );
+			$kg = self::svorio_sprendimas( $prod, $sv['kg'], $svoris_iv );
+			if ( $kg > 0 ) {
+				$prod->set_weight( $kg );
+				$klase = self::siuntimo_klase( $kg );
 				if ( $klase ) { $prod->set_shipping_class_id( self::klases_id( $klase ) ); }
 			}
+
+			/* v1.25: savikaina i _cost_price — kad katalogo kortele ir marzos
+			   ataskaitos matytu rinkini kaip normalia preke. Jei bent vienos
+			   komponento savikainos nera — NErasom nieko (geriau tuscia nei
+			   melas) ir istrinam sena, kad neliktu pasenusio skaiciaus. */
+			$sav_suma = 0.0; $sav_truksta = 0;
+			foreach ( $kiekiai as $sav_cid => $sav_kiek ) {
+				$sav_c = self::savikaina( (int) $sav_cid );
+				if ( $sav_c === null ) { $sav_truksta++; } else { $sav_suma += $sav_c * (int) $sav_kiek; }
+			}
+			if ( $sav_truksta === 0 && $sav_suma > 0 ) { $prod->update_meta_data( '_cost_price', round( $sav_suma, 4 ) ); }
+			else { $prod->delete_meta_data( '_cost_price' ); }
 			$prod->update_meta_data( '_mnm_weight_cumulative', 'no' );   /* svoris jau irasytas i preke */
 			$prod->set_category_ids( self::kategorijos( array_keys( $kiekiai ), $kat ) );
 			$prod->save();
@@ -2195,7 +2289,7 @@ class Petshop_Rinkiniai {
 	 * ir nurasomas is bazines prekes (snippet 567), todel `manage_stock=no`.
 	 * Nuotrauka — bazines prekes; kompozicija cia netinka (ta pati preke kartojasi).
 	 */
-	private static function issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai ) {
+	private static function issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv = null ) {
 		$bid  = (int) array_key_first( $kiekiai );
 		$qty  = (int) reset( $kiekiai );
 		$baze = wc_get_product( $bid );
@@ -2246,10 +2340,17 @@ class Petshop_Rinkiniai {
 			$prod->update_meta_data( '_dp_base_product_id', $bid );
 			$prod->update_meta_data( '_dp_pack_qty', $qty );
 
-			$bw = (float) $baze->get_weight();
-			if ( $bw > 0 ) {
-				$prod->set_weight( round( $bw * $qty, 3 ) );
-				$klase = self::siuntimo_klase( $bw * $qty );
+			/* v1.25: savikaina = bazes savikaina x N; jei bazes nera — trinam sena. */
+			$bsav = self::savikaina( $bid );
+			if ( $bsav !== null && $bsav > 0 ) { $prod->update_meta_data( '_cost_price', round( $bsav * $qty, 4 ) ); }
+			else { $prod->delete_meta_data( '_cost_price' ); }
+
+			/* Svoris: bazes x N; ranka irasytas nustelbia (v1.25). */
+			$auto_kg = round( (float) $baze->get_weight() * $qty, 3 );
+			$kg = self::svorio_sprendimas( $prod, $auto_kg, $svoris_iv );
+			if ( $kg > 0 ) {
+				$prod->set_weight( $kg );
+				$klase = self::siuntimo_klase( $kg );
 				if ( $klase ) { $prod->set_shipping_class_id( self::klases_id( $klase ) ); }
 			}
 
