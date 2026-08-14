@@ -1,0 +1,8 @@
+{
+ "marker": "PATIKRA 126",
+ "ts": "2026-08-14T13:23:48.549Z",
+ "snip": 2945,
+ "snip_status": 200,
+ "rez": null,
+ "raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Call to private method Petshop_Rinkiniai::skirtukai() from global scope in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:58\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook-&gt;apply_filters()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/plugin.php(522): WP_Hook-&gt;do_action()\n#3 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-settings.php(764): do_action()\n#4 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-config.php(112): require_once('...')\n#5 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-load.php(50): require_once('...')\n#6 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-blog-header.php(13): require_once('...')\n#7 /home/gyvunai2/domains/avesa.lt/public_html/dev/index.php(17): require('...')\n#8 {main}\n  thrown in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>58</b><br />\n<!DOCTYPE html>\n<html lang=\"lt-LT\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='noindex, nofollow' />\n\t<title>WordPress &rsaquo; Klaida</title>\n\t<style type=\"text/css\">\n\t\tht"
+}
