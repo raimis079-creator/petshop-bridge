@@ -10,7 +10,7 @@ out.snip_status=cr.s;
 let id=null; try{ id=JSON.parse(cr.j).id; }catch(e){}
 out.snip_id=id;
 await new Promise(r=>setTimeout(r,4000));
-try{ const r=await fetch(WP+'/?ps_nj=Nj0814u'); out.http=r.status; const t=await r.text();
+try{ const r=await fetch(WP+'/?ps_nj=Nj0814u&vykdyti=taip'); out.http=r.status; const t=await r.text();
   try{ out.rez=JSON.parse(t); }catch(e){ out.raw=t.slice(0,1500); } }catch(e){ out.err=String(e).slice(0,120); }
 if(id){ await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
 let sha=null;
