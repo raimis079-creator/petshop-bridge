@@ -220,7 +220,7 @@ const vnt = () => Object.values(sel).reduce((a,b)=>a+b,0);
 function suma(){ let s=0; for(const [id,q] of Object.entries(sel)){ const p=L().krepsys.find(x=>x.id==id); if(p) s+=p.k*q; } return s; }
 function pakopa(s){ let d=0,k=null; for(const p of L().pakopos){ if(s>=p.nuo) d=p.d; else if(!k) k=p; } return {d,k}; }
 const brand = pav => pav.split(' ')[0].replace(/,$/,'');
-const vardas = pav => pav.replace(/^\S+\s/,'');
+const vardas = pav => { const v=pav.replace(/^\S+\s/,''); return v.charAt(0).toUpperCase()+v.slice(1); };
 
 function pieskLaukus(){
   document.getElementById('laukai').innerHTML = Object.entries(LAUKAI).map(([k,l])=>
