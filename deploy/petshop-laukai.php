@@ -13,7 +13,7 @@
  *
  * MODELIS:
  * - Vienas laukas = vienas MnM konteineris: kainos atskirai, min 3, maks. neribota.
- * - Krepsys = iki 8 vaikiniu prekiu, visos is TO PACIO sandelio (viena siunta).
+ * - Krepsys = iki 9 vaikiniu prekiu, visos is TO PACIO sandelio (viena siunta).
  * - Klientas gali imti kelis to paties vienetus — MnM kiekio laukelis.
  * - Nuolaida pakopomis pagal krepselio SUMA, ne pagal kieki. Ji taikoma
  *   VISOMS lauko prekems, ne paskutinei.
@@ -22,15 +22,15 @@
  * MnM moka tik viena fiksuota procenta. Pakopa priklauso nuo sumos, kuri
  * paaiskeja tik surinkus krepseli, todel kaina koreguojama
  * `woocommerce_before_calculate_totals` metu — kiekvienai vaikinei prekei
- * atskirai. Taip kiekviena preke lieka atskira eilute su savo savikaina,
- * ir Pragma gauna teisingus duomenis (ne viena „rinkinio\" eilute).
+ * atskirai. Taip kiekviena preke lieka atskira eilute su savo kaina ir
+ * savikaina — to reikia pardavumo analizei: kuri deze ka realiai parduoda.
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.00';
+	const VERSIJA = '1.01';   /* v1.01: krepsys 9 prekes (3x3 vitrinoje) */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -45,8 +45,8 @@ class Petshop_Laukai {
 
 	/** Maziausias kiekis, kad deze butu deze, o ne viena preke. */
 	const MIN_KIEKIS = 3;
-	/** Virs 8 pasirinkimu deze pralaimi savo kategorijai (savininko sprendimas). */
-	const MAX_KREPSYS = 8;
+	/** 9 prekes — 3x3 tinklelis vitrinoje uzsipildo svariai (savininko sprendimas 2026-08-14). */
+	const MAX_KREPSYS = 9;
 	/** Po nuolaidos silpniausios prekes marza privalo likti bent tiek. */
 	const MARZOS_RIBA = 20.0;
 
