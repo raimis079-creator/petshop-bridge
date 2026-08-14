@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.06';   /* v1.06: akcijos zymes filtras 999 — MnM savo kabliuka deda veliau */
+	const VERSIJA = '1.07';   /* v1.07: admin panele — laukai, pakopos, krepsys */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -67,6 +67,14 @@ class Petshop_Laukai {
 		/* Vitrina: savas sablonas vietoj MnM saraso. */
 		add_action( 'wp', array( __CLASS__, 'vitrina_init' ), 20 );
 		add_filter( 'body_class', array( __CLASS__, 'vitrina_klase' ) );
+
+		/* Admin panele. */
+		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 21 );
+		add_action( 'wp_ajax_ps_laukai_naujas',      array( __CLASS__, 'ajax_naujas' ) );
+		add_action( 'wp_ajax_ps_laukai_nustatymai',  array( __CLASS__, 'ajax_nustatymai' ) );
+		add_action( 'wp_ajax_ps_laukai_pakopos',     array( __CLASS__, 'ajax_pakopos' ) );
+		add_action( 'wp_ajax_ps_laukai_krepsys',     array( __CLASS__, 'ajax_krepsys' ) );
+		add_action( 'wp_ajax_ps_laukai_paieska',     array( __CLASS__, 'ajax_paieska' ) );
 
 		/* Uzsakyme irasom, kokia pakopa suveike — kad apskaita ir grazinimai
 		   rodytu, kodel kaina buvo mazesne nei kortele. */
@@ -478,7 +486,11 @@ class Petshop_Laukai {
 			if ( ! $cp ) { continue; }
 			$pav = $cp->get_name();
 			$zenklas = mb_strtoupper( preg_replace( '/[,;].*$/u', '', mb_substr( $pav, 0, mb_strpos( $pav . ' ', ' ' ) ) ) );
+			/* Kortelese kartojasi „Skanestas sunims, …" — nukertam bendra pradzia,
+			   kad liktu tik tai, kas skiria. Pilnas pavadinimas lieka perziuroje. */
 			$vardas = trim( preg_replace( '/^\S+\s/u', '', $pav ) );
+			$vardas = preg_replace( '/^(skanėstai|skanėstas|skanėstų)\s+(šunims|katėms|šuniukams|kačiukams)\s*,?\s*/ui', '', $vardas );
+			if ( $vardas === '' ) { $vardas = trim( preg_replace( '/^\S+\s/u', '', $pav ) ); }
 			$vardas = mb_strtoupper( mb_substr( $vardas, 0, 1 ) ) . mb_substr( $vardas, 1 );
 			$r[] = array(
 				'cid'    => (int) $ci->get_child_item_id(),
@@ -900,6 +912,632 @@ class Petshop_Laukai {
 		})();
 		</script>
 		<?php
+	}
+
+	/* ==================== v1.07: ADMIN PANELE ==================== */
+
+	public static function meniu() {
+		add_submenu_page(
+			'ps-katalogas', 'Laukai', 'Laukai', 'manage_woocommerce',
+			'ps-laukai', array( __CLASS__, 'puslapis' )
+		);
+	}
+
+	public static function puslapis() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_die( 'Neturite teisių.' ); }
+		self::admin_stilius();
+		$id = isset( $_GET['id'] ) ? (int) $_GET['id'] : 0;
+		$veiksmas = isset( $_GET['veiksmas'] ) ? sanitize_key( $_GET['veiksmas'] ) : '';
+		echo '<div class="wrap pslka">';
+		if ( $veiksmas === 'naujas' ) { self::admin_naujas(); }
+		elseif ( $id ) { self::admin_laukas( $id ); }
+		else { self::admin_sarasas(); }
+		echo '</div>';
+	}
+
+	private static function nuoroda( $args = array() ) {
+		return add_query_arg( array_merge( array( 'page' => 'ps-laukai' ), $args ), admin_url( 'admin.php' ) );
+	}
+
+	/* ---------- SARASAS ---------- */
+
+	private static function admin_sarasas() {
+		$laukai = self::visi();
+		$seimos = array();
+		foreach ( $laukai as $l ) { $seimos[ $l['seima'] ?: '— be šeimos —' ][] = $l; }
+
+		$gilios = 0; $nepilni = 0; $be_pak = 0; $problemos = 0;
+		foreach ( $laukai as $l ) {
+			$max = 0;
+			foreach ( $l['pakopos'] as $p ) { $max = max( $max, $p['d'] ); }
+			if ( $l['saugi'] > 0 && $max > $l['saugi'] ) { $gilios++; }
+			if ( $l['prekiu'] < self::MAX_KREPSYS ) { $nepilni++; }
+			if ( ! $l['pakopos'] ) { $be_pak++; }
+			if ( $l['be_savikainos'] || $l['neturime'] ) { $problemos++; }
+		}
+
+		echo '<h1 class="wp-heading-inline">Laukai</h1> ';
+		echo '<a class="page-title-action" href="' . esc_url( self::nuoroda( array( 'veiksmas' => 'naujas' ) ) ) . '">Naujas laukas</a>';
+		echo '<p class="description">Laukas — tai dėžė, kurios turinį klientas susideda pats: iki '
+			. self::MAX_KREPSYS . ' prekių iš vieno sandėlio, laisvas kiekis nuo ' . self::MIN_KIEKIS
+			. ' vnt. ir nuolaida pakopomis pagal krepšelio sumą.</p>';
+
+		echo '<div class="pslka-eiles">';
+		echo '<span class="pslka-e"><b>' . count( $laukai ) . '</b><span>Visi laukai</span></span>';
+		echo '<span class="pslka-e r"><b>' . $gilios . '</b><span>Nuolaida per gili</span></span>';
+		echo '<span class="pslka-e y"><b>' . $be_pak . '</b><span>Be pakopų</span></span>';
+		echo '<span class="pslka-e y"><b>' . $nepilni . '</b><span>Krepšys nepilnas</span></span>';
+		echo '<span class="pslka-e y"><b>' . $problemos . '</b><span>Prekių bėdos</span></span>';
+		echo '</div>';
+
+		if ( ! $laukai ) {
+			echo '<div class="pslka-kort"><div class="pslka-vidus pslka-tuscia">Laukų dar nėra. '
+				. 'Spausk „Naujas laukas“ ir susidėk pirmą dėžę.</div></div>';
+			return;
+		}
+
+		foreach ( $seimos as $seima => $sar ) {
+			echo '<h2 class="pslka-seima">' . esc_html( $seima ) . ' <span>' . count( $sar ) . '</span></h2>';
+			echo '<div class="pslka-tinkl">';
+			foreach ( $sar as $l ) {
+				$max = 0;
+				foreach ( $l['pakopos'] as $p ) { $max = max( $max, $p['d'] ); }
+				$gilu = ( $l['saugi'] > 0 && $max > $l['saugi'] );
+				echo '<a class="pslka-kortele" href="' . esc_url( self::nuoroda( array( 'id' => $l['id'] ) ) ) . '">';
+				echo '<b>' . esc_html( $l['pav'] ) . '</b>';
+				echo '<div class="pslka-met">' . (int) $l['prekiu'] . ' prekės'
+					. ( $l['kainos'] ? ' · ' . self::eur( $l['kainos'][0] ) . '–' . self::eur( $l['kainos'][1] ) : '' )
+					. ( $l['marzos'] ? ' · marža ' . $l['marzos'][0] . '–' . $l['marzos'][1] . ' %' : '' ) . '</div>';
+				echo '<div>';
+				if ( $l['pakopos'] ) {
+					foreach ( $l['pakopos'] as $p ) {
+						echo '<span class="pslka-z ' . ( $gilu && $p['d'] > $l['saugi'] ? 'r' : 'b' ) . '">'
+							. self::sk( $p['nuo'] ) . ' € −' . self::sk( $p['d'] ) . ' %</span>';
+					}
+				} else { echo '<span class="pslka-z y">pakopų nėra</span>'; }
+				echo '</div><div style="margin-top:6px">';
+				if ( $gilu ) { echo '<span class="pslka-z r">nuolaida per gili</span>'; }
+				elseif ( ! $l['be_savikainos'] && ! $l['neturime'] && $l['pakopos'] ) { echo '<span class="pslka-z g">sutvarkyta</span>'; }
+				if ( $l['prekiu'] < self::MAX_KREPSYS ) { echo '<span class="pslka-z y">vietos dar ' . ( self::MAX_KREPSYS - $l['prekiu'] ) . '</span>'; }
+				if ( $l['be_savikainos'] ) { echo '<span class="pslka-z y">' . $l['be_savikainos'] . ' be savikainos</span>'; }
+				if ( $l['neturime'] ) { echo '<span class="pslka-z r">' . $l['neturime'] . ' neturime</span>'; }
+				echo '</div></a>';
+			}
+			echo '</div>';
+		}
+	}
+
+	/* ---------- NAUJAS ---------- */
+
+	private static function admin_naujas() {
+		echo '<h1>Naujas laukas</h1>';
+		echo '<p class="description">Pirma duok pavadinimą ir šeimą — prekes ir pakopas sudėsi kitame žingsnyje.</p>';
+		echo '<div class="pslka-kort" style="max-width:640px"><div class="pslka-vidus">';
+		echo '<div class="pslka-laukas"><label>Pavadinimas <span>matys klientas</span></label>'
+			. '<input type="text" id="n-pav" placeholder="Skanėstų dėžė šuniui — be vištienos"></div>';
+		echo '<div class="pslka-laukas"><label>Trumpas pavadinimas <span>mygtukui vitrinoje</span></label>'
+			. '<input type="text" id="n-trumpas" placeholder="Be vištienos"></div>';
+		echo '<div class="pslka-laukas"><label>Šeima <span>pagal ją laukai grupuojami ir rodomi kartu</span></label>'
+			. '<input type="text" id="n-seima" placeholder="Šunims" value="Šunims"></div>';
+		echo '<div class="pslka-laukas"><label>Kaip vadinti</label>'
+			. '<select id="n-zodis"><option value="deze">dėžė</option><option value="dezute">dėžutė</option></select></div>';
+		echo '<div class="pslka-laukas"><label>Aprašymas</label><textarea id="n-aprasas" rows="3"></textarea></div>';
+		echo '<p><button class="button button-primary" id="n-kurti">Sukurti ir dėti prekes</button> '
+			. '<a class="button" href="' . esc_url( self::nuoroda() ) . '">Atgal</a></p>';
+		echo '</div></div>';
+		self::admin_js( 0 );
+	}
+
+	/* ---------- VIENAS LAUKAS ---------- */
+
+	private static function admin_laukas( $lid ) {
+		$p = wc_get_product( $lid );
+		if ( ! $p || ! self::yra_laukas( $lid ) ) {
+			echo '<div class="notice notice-error"><p>Toks laukas nerastas.</p></div>'; return;
+		}
+		$pakopos = self::pakopos( $lid );
+		$saugi   = self::saugi_pakopa( $lid );
+		$kr      = self::krepsys( $lid );
+		$zodis   = get_post_meta( $lid, self::META_ZODIS, true ) ?: 'deze';
+
+		echo '<p><a class="button" href="' . esc_url( self::nuoroda() ) . '">← Laukai</a> '
+			. '<b style="font-size:15px;margin-left:8px">' . esc_html( get_the_title( $lid ) ) . '</b> '
+			. '<span class="pslka-z b">#' . (int) $lid . '</span> '
+			. '<a class="button" style="margin-left:8px" target="_blank" href="' . esc_url( get_permalink( $lid ) ) . '">Peržiūrėti parduotuvėje</a></p>';
+
+		/* --- nustatymai --- */
+		echo '<div class="pslka-kort"><h3>Nustatymai</h3><div class="pslka-vidus pslka-du">';
+		echo '<div class="pslka-laukas"><label>Pavadinimas</label><input type="text" id="s-pav" value="' . esc_attr( get_the_title( $lid ) ) . '"></div>';
+		echo '<div class="pslka-laukas"><label>Trumpas <span>mygtukui</span></label><input type="text" id="s-trumpas" value="'
+			. esc_attr( get_post_meta( $lid, '_ps_laukas_trumpas', true ) ) . '"></div>';
+		echo '<div class="pslka-laukas"><label>Šeima</label><input type="text" id="s-seima" value="'
+			. esc_attr( get_post_meta( $lid, self::META_SEIMA, true ) ) . '"></div>';
+		echo '<div class="pslka-laukas"><label>Kaip vadinti</label><select id="s-zodis">'
+			. '<option value="deze"' . selected( $zodis, 'deze', false ) . '>dėžė</option>'
+			. '<option value="dezute"' . selected( $zodis, 'dezute', false ) . '>dėžutė</option></select></div>';
+		echo '<div class="pslka-laukas" style="grid-column:1/-1"><label>Aprašymas</label>'
+			. '<textarea id="s-aprasas" rows="2">' . esc_textarea( wp_strip_all_tags( $p->get_description() ) ) . '</textarea></div>';
+		echo '<div style="grid-column:1/-1"><button class="button button-primary" id="s-saugoti">Išsaugoti nustatymus</button></div>';
+		echo '</div></div>';
+
+		/* --- pakopos --- */
+		echo '<div class="pslka-kort"><h3>Nuolaidos pakopos <span class="pslka-mut">nuolaida nuo krepšelio sumos, ne nuo kiekio</span>'
+			. '<span class="pslka-sp"></span>';
+		echo '<span class="pslka-z ' . ( $saugi < 3 ? 'r' : 'b' ) . '">didžiausia saugi nuolaida ' . (int) $saugi . ' %</span></h3>';
+		echo '<div class="pslka-vidus" style="padding:0"><table class="wp-list-table widefat striped">'
+			. '<thead><tr><th style="width:150px">Nuo sumos</th><th style="width:130px">Nuolaida</th>'
+			. '<th>Marža blogiausiu atveju</th><th>Kiek maždaug reikia</th><th></th></tr></thead><tbody id="pak-kunas"></tbody></table>'
+			. '<div style="padding:10px 14px"><button class="button" id="pak-prideti">＋ Pakopa</button> '
+			. '<button class="button button-primary" id="pak-saugoti">Išsaugoti pakopas</button></div></div></div>';
+
+		/* --- krepsys --- */
+		echo '<div class="pslka-kort"><h3>Krepšys — iš ko klientas renkasi '
+			. '<span class="pslka-z b">' . count( $kr ) . ' iš ' . self::MAX_KREPSYS . '</span>'
+			. '<span class="pslka-sp"></span><span class="pslka-mut">savikaina rodoma renkant — pagal ją atrenkamos prekės</span></h3>';
+		echo '<div class="pslka-vidus" style="padding:0"><table class="wp-list-table widefat striped">'
+			. '<thead><tr><th style="width:36%">Prekė</th><th>Kaina</th><th>Savikaina</th><th>Marža</th>'
+			. '<th>Likutis</th><th>Sandėlis</th><th></th></tr></thead><tbody>';
+		if ( ! $kr ) { echo '<tr><td colspan="7" class="pslka-tuscia">Krepšys tuščias.</td></tr>'; }
+		foreach ( $kr as $cid ) {
+			$cp = wc_get_product( $cid );
+			if ( ! $cp ) { echo '<tr><td colspan="7" class="pslka-bad">Prekės #' . (int) $cid . ' nebėra</td></tr>'; continue; }
+			$sav = self::savikaina( $cid );
+			$k = (float) $cp->get_price();
+			$m = ( $sav !== null && $k > 0 ) ? round( ( ( $k / 1.21 ) - $sav ) / ( $k / 1.21 ) * 100 ) : null;
+			$riboja = ( $m !== null && $m === self::min_marza( $lid ) );
+			echo '<tr><td>' . esc_html( $cp->get_name() ) . '<div class="pslka-mut">#' . (int) $cid . '</div></td>';
+			echo '<td>' . self::eur( $k ) . '</td>';
+			echo '<td>' . ( $sav === null ? '<span class="pslka-bad">nėra</span>' : self::eur( $sav ) ) . '</td>';
+			echo '<td' . ( $riboja ? ' class="pslka-warn"' : '' ) . '>' . ( $m === null ? '—' : $m . ' %' . ( $riboja ? ' ← riboja' : '' ) ) . '</td>';
+			echo '<td>' . ( $cp->is_in_stock() ? (int) $cp->get_stock_quantity() : '<span class="pslka-z r">neturime</span>' ) . '</td>';
+			echo '<td class="pslka-mut">' . esc_html( strtoupper( (string) get_post_meta( $cid, '_ps_sandelis', true ) ?: 'AV' ) ) . '</td>';
+			echo '<td class="r"><button class="button pslka-isimti" data-preke="' . (int) $cid . '">×</button></td></tr>';
+		}
+		echo '</tbody></table>';
+
+		/* --- pridejimas --- */
+		echo '<div class="pslka-filtrai">';
+		echo '<span class="pslka-f"><label>Sandėlis</label><span id="f-sand">';
+		foreach ( array( '' => 'Visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB' ) as $k2 => $v2 ) {
+			echo '<button class="button pslka-wh' . ( $k2 === '' ? ' button-primary' : '' ) . '" data-wh="' . esc_attr( $k2 ) . '">' . esc_html( $v2 ) . '</button>';
+		}
+		echo '</span></span>';
+		echo '<span class="pslka-f"><label>Savikaina</label><select id="f-savik">'
+			. '<option value="">— bet kokia —</option><option value="a">iki 2 €</option><option value="b">2–5 €</option>'
+			. '<option value="c">5–15 €</option><option value="d">virš 15 €</option></select></span>';
+		echo '<span class="pslka-f"><label>Marža nuo</label><select id="f-marza">'
+			. '<option value="">— bet kokia —</option><option value="25">25 %</option><option value="27">27 %</option><option value="30">30 %</option></select></span>';
+		echo '<span class="pslka-f pslka-plati"><label>Pridėti prekę</label>'
+			. '<input type="text" id="f-q" placeholder="pavadinimas arba SKU…" autocomplete="off"></span>';
+		echo '</div><div id="f-rez" class="pslka-rez"></div></div></div>';
+
+		/* --- apsaugos --- */
+		echo '<div class="pslka-kort"><h3>Apsaugos</h3><div class="pslka-vidus">';
+		foreach ( self::apsaugos( $lid ) as $a ) {
+			echo '<div class="pslka-apsauga a-' . $a[0] . '"><b>' . esc_html( $a[1] ) . '</b><span>' . esc_html( $a[2] ) . '</span></div>';
+		}
+		echo '</div></div>';
+
+		echo '<div id="pslka-stat" class="pslka-stat"></div>';
+		self::admin_js( $lid, $pakopos, $saugi );
+	}
+
+	/** Silpniausia krepsio marza — ja riboja visa lauka. */
+	private static function min_marza( $lid ) {
+		$m = array();
+		foreach ( self::krepsys( $lid ) as $cid ) {
+			$cp = wc_get_product( $cid ); $sav = self::savikaina( $cid );
+			if ( ! $cp || $sav === null ) { continue; }
+			$k = (float) $cp->get_price(); if ( $k <= 0 ) { continue; }
+			$m[] = round( ( ( $k / 1.21 ) - $sav ) / ( $k / 1.21 ) * 100 );
+		}
+		return $m ? min( $m ) : null;
+	}
+
+	/** Apsaugos — skaiciuojamos is duomenu, ne irasytos ranka. */
+	private static function apsaugos( $lid ) {
+		$a = array();
+		$kr = self::krepsys( $lid );
+		$saugi = self::saugi_pakopa( $lid );
+		$pakopos = self::pakopos( $lid );
+		$gilios = array();
+		foreach ( $pakopos as $p ) { if ( $saugi > 0 && $p['d'] > $saugi ) { $gilios[] = self::sk( $p['nuo'] ) . ' € −' . self::sk( $p['d'] ) . ' %'; } }
+		if ( $gilios ) {
+			$a[] = array( 'r', 'Nuolaida gilesnė, nei krepšys atlaiko',
+				implode( ', ', $gilios ) . ' — po nuolaidos silpniausios prekės marža nukristų žemiau ' . self::MARZOS_RIBA . ' %.' );
+		}
+		$nera = 0; $be_sav = 0; $kainos = array(); $sand = array();
+		foreach ( $kr as $cid ) {
+			$cp = wc_get_product( $cid ); if ( ! $cp ) { continue; }
+			if ( ! $cp->is_in_stock() ) { $nera++; }
+			if ( self::savikaina( $cid ) === null ) { $be_sav++; }
+			if ( (float) $cp->get_price() > 0 ) { $kainos[] = (float) $cp->get_price(); }
+			$sand[ strtoupper( (string) get_post_meta( $cid, '_ps_sandelis', true ) ?: 'AV' ) ] = 1;
+		}
+		if ( ! $pakopos ) { $a[] = array( 'y', 'Pakopų nėra', 'Klientas nuolaidos negaus — dėžė veiks kaip paprastas sąrašas.' ); }
+		if ( $nera )    { $a[] = array( 'y', 'Krepšyje trūksta prekių', $nera . ' iš ' . count( $kr ) . ' neturime — klientas mato mažiau pasirinkimo.' ); }
+		if ( $be_sav )  { $a[] = array( 'y', 'Prekės be savikainos', $be_sav . ' prekės — saugios nuolaidos suskaičiuoti negalima.' ); }
+		if ( count( $kr ) < self::MAX_KREPSYS ) { $a[] = array( 'y', 'Krepšys nepilnas', count( $kr ) . ' iš ' . self::MAX_KREPSYS . ' — vitrinoje lieka tuščios vietos.' ); }
+		if ( count( $sand ) > 1 ) { $a[] = array( 'r', 'Kelių sandėlių prekės', implode( ' + ', array_keys( $sand ) ) . ' — klientui tai bus dvi siuntos.' ); }
+		if ( $kainos && min( $kainos ) > 0 && max( $kainos ) / min( $kainos ) > 3 ) {
+			$a[] = array( 'y', 'Krepšyje labai skirtingos kainos',
+				self::eur( min( $kainos ) ) . '–' . self::eur( max( $kainos ) ) . ' — pakopą klientas pasieks labai skirtingu prekių kiekiu.' );
+		}
+		if ( ! $a ) { $a[] = array( 'g', 'Sutvarkyta', 'Pakopos telpa į maržą, krepšys pilnas, vienas sandėlis, savikainos ir likučiai švarūs.' ); }
+		return $a;
+	}
+
+	private static function eur( $n ) { return number_format( (float) $n, 2, ',', ' ' ) . ' €'; }
+	private static function sk( $n ) { return rtrim( rtrim( number_format( (float) $n, 2, ',', '' ), '0' ), ',' ); }
+
+
+	private static function admin_stilius() {
+		?>
+		<style>
+		.pslka h2.pslka-seima{font-size:15px;margin:22px 0 10px;font-weight:600}
+		.pslka h2.pslka-seima span{color:#646970;font-weight:400;font-size:12.5px}
+		.pslka-eiles{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+		.pslka-e{background:#fff;border:1px solid #c3c4c7;border-left:3px solid #c3c4c7;border-radius:3px;padding:7px 13px;min-width:118px;display:block}
+		.pslka-e b{display:block;font-size:19px;line-height:1.2}
+		.pslka-e span{font-size:11.5px;color:#646970}
+		.pslka-e.y{border-left-color:#dba617}.pslka-e.y b{color:#996800}
+		.pslka-e.r{border-left-color:#d63638}.pslka-e.r b{color:#d63638}
+		.pslka-tinkl{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+		.pslka-kortele{display:block;background:#fff;border:1px solid #c3c4c7;border-radius:3px;padding:12px 14px;text-decoration:none;color:#3c434a}
+		.pslka-kortele:hover{box-shadow:0 2px 8px rgba(0,0,0,.09);color:#3c434a}
+		.pslka-kortele b{font-size:14.5px;display:block;margin-bottom:3px}
+		.pslka-met{font-size:12px;color:#646970;margin-bottom:8px}
+		.pslka-kort{background:#fff;border:1px solid #c3c4c7;border-radius:3px;margin-bottom:16px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+		.pslka-kort>h3{margin:0;padding:10px 14px;font-size:13.5px;border-bottom:1px solid #f0f0f1;background:#f6f7f7;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+		.pslka-vidus{padding:12px 14px}
+		.pslka-du{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px}
+		.pslka-sp{flex:1}
+		.pslka-mut{color:#646970;font-size:11.5px;font-weight:400}
+		.pslka-bad{color:#b32d2e}.pslka-warn{color:#996800}
+		.pslka-tuscia{color:#646970;padding:16px;text-align:center}
+		.r{text-align:right}
+		.pslka-z{display:inline-block;font-size:11px;border:1px solid;border-radius:2px;padding:0 6px;white-space:nowrap;margin:0 3px 3px 0}
+		.pslka-z.g{background:#edfaef;border-color:#b8e6c1;color:#00622a}
+		.pslka-z.y{background:#fcf9e8;border-color:#e8dfa8;color:#7a5c00}
+		.pslka-z.r{background:#fcf0f1;border-color:#f0c3c4;color:#8a2424}
+		.pslka-z.b{background:#f0f6fc;border-color:#c5d9ed;color:#0a4b78}
+		.pslka-laukas label{display:block;font-size:12px;font-weight:600;margin-bottom:3px}
+		.pslka-laukas label span{font-weight:400;color:#646970}
+		.pslka-laukas input[type=text],.pslka-laukas select,.pslka-laukas textarea{width:100%}
+		.pslka-in{width:88px;text-align:right}
+		.pslka-filtrai{padding:10px 14px;background:#fbfbfc;border-top:1px solid #f0f0f1;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+		.pslka-f{display:flex;align-items:center;gap:6px}
+		.pslka-f>label{font-size:12px;color:#646970;white-space:nowrap}
+		.pslka-plati{flex:1;min-width:260px}
+		.pslka-plati input{flex:1;min-width:180px}
+		.pslka-wh{padding:3px 10px !important;font-size:12.5px !important;height:auto !important}
+		.pslka-rez{max-height:330px;overflow:auto;border-top:1px solid #f0f0f1}
+		.pslka-apsauga{padding:9px 0 9px 11px;border-top:1px solid #f0f0f1;border-left:3px solid #c3c4c7;font-size:12.5px}
+		.pslka-apsauga:first-child{border-top:0;padding-top:0}
+		.pslka-apsauga b{display:block}.pslka-apsauga span{color:#646970}
+		.a-r{border-left-color:#d63638}.a-y{border-left-color:#dba617}.a-g{border-left-color:#00a32a}
+		.pslka-stat{position:fixed;right:18px;bottom:18px;z-index:9999;padding:11px 16px;border-radius:4px;font-size:13.5px;
+			box-shadow:0 3px 12px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);transition:.2s;max-width:440px;pointer-events:none}
+		.pslka-stat.rodo{opacity:1;transform:none}
+		.pslka-stat.gerai{background:#00a32a;color:#fff}
+		.pslka-stat.bloga{background:#d63638;color:#fff}
+		</style>
+		<?php
+	}
+
+	private static function admin_js( $lid, $pakopos = array(), $saugi = 0 ) {
+		$nonce = wp_create_nonce( 'ps_laukai' );
+		?>
+		<script>
+		(function(){
+			var LID=<?php echo (int) $lid; ?>, N='<?php echo esc_js( $nonce ); ?>', A=ajaxurl;
+			var PAK=<?php echo wp_json_encode( array_values( $pakopos ) ); ?>;
+			var SAUGI=<?php echo (int) $saugi; ?>;
+			var KAINOS=<?php echo wp_json_encode( array_map( 'floatval', self::krepsio_kainos( $lid ) ) ); ?>;
+			function eur(n){ return n.toFixed(2).replace('.',',')+' €'; }
+			function stat(t,bloga){
+				var s=document.getElementById('pslka-stat'); if(!s) { alert(t); return; }
+				s.textContent=t; s.className='pslka-stat rodo '+(bloga?'bloga':'gerai');
+				clearTimeout(s._t); s._t=setTimeout(function(){ s.classList.remove('rodo'); }, bloga?9000:3000);
+			}
+			function siusti(veiksmas,duom,ok){
+				var f=new FormData(); f.append('action',veiksmas); f.append('nonce',N); f.append('lid',LID);
+				for(var k in duom){ f.append(k, typeof duom[k]==='object' ? JSON.stringify(duom[k]) : duom[k]); }
+				fetch(A,{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();})
+					.then(function(j){ if(j&&j.success){ ok(j.data); } else { stat((j&&j.data)||'Nepavyko.',true); } })
+					.catch(function(){ stat('Ryšio klaida.',true); });
+			}
+
+			/* --- naujas laukas --- */
+			var kurti=document.getElementById('n-kurti');
+			if(kurti){ kurti.addEventListener('click',function(){
+				var pav=document.getElementById('n-pav').value.trim();
+				if(!pav){ stat('Pavadinimas būtinas.',true); return; }
+				kurti.disabled=true;
+				siusti('ps_laukai_naujas',{pav:pav,trumpas:document.getElementById('n-trumpas').value,
+					seima:document.getElementById('n-seima').value,zodis:document.getElementById('n-zodis').value,
+					aprasas:document.getElementById('n-aprasas').value},
+					function(d){ location.href=d.url; });
+				setTimeout(function(){ kurti.disabled=false; },5000);
+			}); }
+			if(!LID) return;
+
+			/* --- nustatymai --- */
+			var sav=document.getElementById('s-saugoti');
+			if(sav){ sav.addEventListener('click',function(){
+				sav.disabled=true;
+				siusti('ps_laukai_nustatymai',{pav:document.getElementById('s-pav').value,
+					trumpas:document.getElementById('s-trumpas').value, seima:document.getElementById('s-seima').value,
+					zodis:document.getElementById('s-zodis').value, aprasas:document.getElementById('s-aprasas').value},
+					function(){ stat('Nustatymai išsaugoti.'); sav.disabled=false; });
+				setTimeout(function(){ sav.disabled=false; },5000);
+			}); }
+
+			/* --- pakopos --- */
+			function marzaPo(d){ return SAUGI>0 ? null : null; }
+			function kiekReikia(nuo){
+				if(!KAINOS.length) return '—';
+				var pig=Math.min.apply(null,KAINOS), br=Math.max.apply(null,KAINOS);
+				var a=Math.ceil(nuo/br), b=Math.ceil(nuo/pig);
+				return a===b ? a+' vnt.' : a+'–'+b+' vnt.';
+			}
+			function pieskPakopas(){
+				var t=document.getElementById('pak-kunas'); if(!t) return;
+				if(!PAK.length){ t.innerHTML='<tr><td colspan="5" class="pslka-tuscia">Pakopų nėra — klientas nuolaidos negaus.</td></tr>'; return; }
+				t.innerHTML=PAK.map(function(p,i){
+					var gilu = SAUGI>0 && p.d>SAUGI;
+					return '<tr><td><input type="text" class="pslka-in pak-nuo" data-i="'+i+'" value="'+String(p.nuo).replace('.',',')+'"> €</td>'
+						+'<td><input type="text" class="pslka-in pak-d" style="width:60px" data-i="'+i+'" value="'+String(p.d).replace('.',',')+'"> %</td>'
+						+'<td class="'+(gilu?'pslka-bad':'')+'">'+(gilu?'per gili — riba '+SAUGI+' %':'telpa į '+SAUGI+' % ribą')+'</td>'
+						+'<td class="pslka-mut">'+kiekReikia(p.nuo)+'</td>'
+						+'<td class="r"><button class="button pak-trinti" data-i="'+i+'">×</button></td></tr>';
+				}).join('');
+				t.querySelectorAll('.pak-nuo').forEach(function(x){ x.addEventListener('change',function(){
+					PAK[+x.dataset.i].nuo=parseFloat(x.value.replace(',','.'))||0; PAK.sort(function(a,b){return a.nuo-b.nuo;}); pieskPakopas(); }); });
+				t.querySelectorAll('.pak-d').forEach(function(x){ x.addEventListener('change',function(){
+					PAK[+x.dataset.i].d=parseFloat(x.value.replace(',','.'))||0; pieskPakopas(); }); });
+				t.querySelectorAll('.pak-trinti').forEach(function(x){ x.addEventListener('click',function(){
+					PAK.splice(+x.dataset.i,1); pieskPakopas(); }); });
+			}
+			var pr=document.getElementById('pak-prideti');
+			if(pr){ pr.addEventListener('click',function(){
+				var pask=PAK.length?PAK[PAK.length-1]:{nuo:10,d:0};
+				PAK.push({nuo:pask.nuo+10, d:Math.min(pask.d+1, SAUGI||1)});
+				pieskPakopas();
+			}); }
+			var ps=document.getElementById('pak-saugoti');
+			if(ps){ ps.addEventListener('click',function(){
+				ps.disabled=true;
+				siusti('ps_laukai_pakopos',{pakopos:PAK}, function(d){
+					if(d.perspejimai && d.perspejimai.length){ stat(d.perspejimai.join(' '),true); }
+					else { stat('Pakopos išsaugotos.'); }
+					setTimeout(function(){ location.reload(); },1200);
+				});
+				setTimeout(function(){ ps.disabled=false; },5000);
+			}); }
+			pieskPakopas();
+
+			/* --- krepsys --- */
+			document.querySelectorAll('.pslka-isimti').forEach(function(b){
+				b.addEventListener('click',function(){
+					if(!confirm('Išimti šią prekę iš krepšio?')) return;
+					b.disabled=true;
+					siusti('ps_laukai_krepsys',{veiksmas:'isimti',preke:b.dataset.preke},
+						function(d){ stat(d.zinute); setTimeout(function(){ location.reload(); },700); });
+					setTimeout(function(){ b.disabled=false; },5000);
+				});
+			});
+
+			/* --- paieska --- */
+			var q=document.getElementById('f-q'), rez=document.getElementById('f-rez'), laik=0, wh='';
+			if(q){
+				document.querySelectorAll('#f-sand .pslka-wh').forEach(function(b){
+					b.addEventListener('click',function(){
+						document.querySelectorAll('#f-sand .pslka-wh').forEach(function(x){ x.classList.remove('button-primary'); });
+						b.classList.add('button-primary'); wh=b.dataset.wh; ieskoti();
+					});
+				});
+				q.addEventListener('input',function(){ clearTimeout(laik); laik=setTimeout(ieskoti,350); });
+				document.getElementById('f-savik').addEventListener('change',ieskoti);
+				document.getElementById('f-marza').addEventListener('change',ieskoti);
+			}
+			function ieskoti(){
+				var t=q.value.trim();
+				if(t.length<2){ rez.innerHTML=''; return; }
+				rez.innerHTML='<div class="pslka-tuscia">Ieškoma…</div>';
+				var u=A+'?action=ps_laukai_paieska&nonce='+N+'&lid='+LID+'&q='+encodeURIComponent(t)
+					+'&sand='+wh+'&savik='+document.getElementById('f-savik').value+'&marza='+document.getElementById('f-marza').value;
+				fetch(u,{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){
+					if(!j||!j.success){ rez.innerHTML='<div class="pslka-tuscia">Nepavyko ieškoti.</div>'; return; }
+					var sar=j.data.prekes||[];
+					if(!sar.length){ rez.innerHTML='<div class="pslka-tuscia">Nerasta. Atlaisvink filtrus.</div>'; return; }
+					var h='<table class="wp-list-table widefat striped"><thead><tr><th style="width:36%">Prekė</th><th>Kaina</th>'
+						+'<th>Savikaina</th><th>Marža</th><th>Sandėlis</th><th>Įtaka nuolaidai</th><th></th></tr></thead><tbody>';
+					sar.forEach(function(p){
+						h+='<tr><td>'+p.pav+'<div class="pslka-mut">#'+p.id+'</div></td>'
+						 +'<td>'+(p.kaina!=null?eur(p.kaina):'—')+'</td>'
+						 +'<td>'+(p.savikaina!=null?eur(p.savikaina):'<span class="pslka-bad">nėra</span>')+'</td>'
+						 +'<td>'+(p.marza!=null?p.marza+' %':'—')+'</td>'
+						 +'<td class="pslka-mut">'+(p.sandelis||'AV')+(p.yra?'':' <span class="pslka-z r">neturime</span>')+'</td>'
+						 +'<td class="'+(p.krenta?'pslka-warn':'')+'">'+(p.krenta?'nukristų iki '+p.nauja_saugi+' %':'nekeičia')+'</td>'
+						 +'<td class="r"><button class="button button-primary pslka-prideti" data-preke="'+p.id+'">Pridėti</button></td></tr>';
+					});
+					rez.innerHTML=h+'</tbody></table>';
+					rez.querySelectorAll('.pslka-prideti').forEach(function(b){
+						b.addEventListener('click',function(){
+							b.disabled=true;
+							siusti('ps_laukai_krepsys',{veiksmas:'prideti',preke:b.dataset.preke},
+								function(d){ stat(d.zinute); setTimeout(function(){ location.reload(); },700); });
+							setTimeout(function(){ b.disabled=false; },5000);
+						});
+					});
+				});
+			}
+		})();
+		</script>
+		<?php
+	}
+
+	/** Krepsio kainos JS'ui — kiek vienetu reikia pakopai pasiekti. */
+	public static function krepsio_kainos( $lid ) {
+		$k = array();
+		foreach ( self::krepsys( $lid ) as $cid ) {
+			$cp = wc_get_product( $cid );
+			if ( $cp && (float) $cp->get_price() > 0 ) { $k[] = (float) $cp->get_price(); }
+		}
+		return $k;
+	}
+
+	/* ---------- AJAX ---------- */
+
+	private static function tikrink() {
+		check_ajax_referer( 'ps_laukai', 'nonce' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'Neturite teisių.' ); }
+	}
+
+	public static function ajax_naujas() {
+		self::tikrink();
+		$pav = sanitize_text_field( wp_unslash( $_POST['pav'] ?? '' ) );
+		if ( $pav === '' ) { wp_send_json_error( 'Pavadinimas būtinas.' ); }
+		$prod = new WC_Product_Mix_and_Match();
+		$prod->set_name( $pav );
+		$prod->set_status( 'draft' );   /* be prekiu publikuoti negalima */
+		$prod->set_priced_per_product( true );
+		$prod->set_min_container_size( self::MIN_KIEKIS );
+		$prod->set_max_container_size( 0 );
+		$prod->set_manage_stock( false );
+		$prod->set_description( wp_kses_post( wp_unslash( $_POST['aprasas'] ?? '' ) ) );
+		$lid = $prod->save();
+		if ( ! $lid ) { wp_send_json_error( 'Nepavyko sukurti.' ); }
+		update_post_meta( $lid, self::META_LAUKAS, 'yes' );
+		update_post_meta( $lid, self::META_ZODIS, ( $_POST['zodis'] ?? '' ) === 'dezute' ? 'dezute' : 'deze' );
+		update_post_meta( $lid, self::META_SEIMA, sanitize_text_field( wp_unslash( $_POST['seima'] ?? '' ) ) );
+		update_post_meta( $lid, '_ps_laukas_trumpas', sanitize_text_field( wp_unslash( $_POST['trumpas'] ?? '' ) ) );
+		update_post_meta( $lid, self::META_PAKOPOS, wp_json_encode( array() ) );
+		wp_send_json_success( array( 'id' => $lid, 'url' => self::nuoroda( array( 'id' => $lid ) ) ) );
+	}
+
+	public static function ajax_nustatymai() {
+		self::tikrink();
+		$lid = (int) ( $_POST['lid'] ?? 0 );
+		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks laukas nerastas.' ); }
+		$pav = sanitize_text_field( wp_unslash( $_POST['pav'] ?? '' ) );
+		if ( $pav === '' ) { wp_send_json_error( 'Pavadinimas būtinas.' ); }
+		$p = wc_get_product( $lid );
+		$p->set_name( $pav );
+		$p->set_description( wp_kses_post( wp_unslash( $_POST['aprasas'] ?? '' ) ) );
+		$p->save();
+		update_post_meta( $lid, self::META_ZODIS, ( $_POST['zodis'] ?? '' ) === 'dezute' ? 'dezute' : 'deze' );
+		update_post_meta( $lid, self::META_SEIMA, sanitize_text_field( wp_unslash( $_POST['seima'] ?? '' ) ) );
+		update_post_meta( $lid, '_ps_laukas_trumpas', sanitize_text_field( wp_unslash( $_POST['trumpas'] ?? '' ) ) );
+		wc_delete_product_transients( $lid );
+		wp_send_json_success( array( 'ok' => 1 ) );
+	}
+
+	public static function ajax_pakopos() {
+		self::tikrink();
+		$lid = (int) ( $_POST['lid'] ?? 0 );
+		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks laukas nerastas.' ); }
+		$raw = json_decode( (string) wp_unslash( $_POST['pakopos'] ?? '[]' ), true );
+		if ( ! is_array( $raw ) ) { $raw = array(); }
+		$sv = self::svarios_pakopos( $lid, $raw );
+		update_post_meta( $lid, self::META_PAKOPOS, wp_json_encode( $sv['pakopos'] ) );
+		wp_send_json_success( array( 'pakopos' => $sv['pakopos'], 'perspejimai' => $sv['perspejimai'] ) );
+	}
+
+	public static function ajax_krepsys() {
+		self::tikrink();
+		global $wpdb;
+		$lid = (int) ( $_POST['lid'] ?? 0 );
+		$pid = (int) ( $_POST['preke'] ?? 0 );
+		$veiksmas = sanitize_key( $_POST['veiksmas'] ?? '' );
+		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks laukas nerastas.' ); }
+		$esami = self::krepsys( $lid );
+		$tbl = $wpdb->prefix . 'wc_mnm_child_items';
+
+		if ( $veiksmas === 'prideti' ) {
+			$p = wc_get_product( $pid );
+			if ( ! $p ) { wp_send_json_error( 'Prekė #' . $pid . ' nerasta.' ); }
+			if ( in_array( $pid, $esami, true ) ) { wp_send_json_error( 'Ši prekė krepšyje jau yra.' ); }
+			if ( count( $esami ) >= self::MAX_KREPSYS ) {
+				wp_send_json_error( 'Krepšyje jau ' . self::MAX_KREPSYS . ' prekės — pirma išimk kurią nors.' );
+			}
+			$naujo = strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'AV' );
+			foreach ( $esami as $cid ) {
+				$s = strtoupper( (string) get_post_meta( $cid, '_ps_sandelis', true ) ?: 'AV' );
+				if ( $s !== $naujo ) {
+					wp_send_json_error( 'Krepšyje jau yra ' . $s . ' sandėlio prekių, o ši — ' . $naujo
+						. '. Vienas krepšys = vienas sandėlis = viena siunta.' );
+				}
+			}
+			$eile = (int) $wpdb->get_var( $wpdb->prepare(
+				"SELECT COALESCE(MAX(menu_order),0)+1 FROM {$tbl} WHERE container_id=%d", $lid ) );
+			$wpdb->insert( $tbl, array( 'product_id' => $pid, 'container_id' => $lid, 'menu_order' => $eile ), array( '%d','%d','%d' ) );
+			$zinute = 'Pridėta: ' . $p->get_name();
+		} elseif ( $veiksmas === 'isimti' ) {
+			if ( count( $esami ) <= 2 ) { wp_send_json_error( 'Krepšyje liktų mažiau nei 2 prekės — klientui nebūtų iš ko rinktis.' ); }
+			$wpdb->delete( $tbl, array( 'container_id' => $lid, 'product_id' => $pid ), array( '%d','%d' ) );
+			$p = wc_get_product( $pid );
+			$zinute = 'Išimta: ' . ( $p ? $p->get_name() : '#' . $pid );
+		} else { wp_send_json_error( 'Nežinomas veiksmas.' ); }
+
+		wc_delete_product_transients( $lid );
+		/* Pakopos gali nebetilpti i nauja krepsi — persvarstom is karto. */
+		$sv = self::svarios_pakopos( $lid, self::pakopos( $lid ) );
+		update_post_meta( $lid, self::META_PAKOPOS, wp_json_encode( $sv['pakopos'] ) );
+		if ( $sv['perspejimai'] ) { $zinute .= ' ' . implode( ' ', $sv['perspejimai'] ); }
+		wp_send_json_success( array( 'zinute' => $zinute ) );
+	}
+
+	public static function ajax_paieska() {
+		self::tikrink();
+		$lid = (int) ( $_GET['lid'] ?? 0 );
+		$q = sanitize_text_field( wp_unslash( $_GET['q'] ?? '' ) );
+		$sand = sanitize_key( $_GET['sand'] ?? '' );
+		$savik = sanitize_key( $_GET['savik'] ?? '' );
+		$marza_nuo = (int) ( $_GET['marza'] ?? 0 );
+		if ( mb_strlen( $q ) < 2 ) { wp_send_json_success( array( 'prekes' => array() ) ); }
+
+		$args = array(
+			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 60,
+			'fields' => 'ids', 's' => $q,
+		);
+		if ( $sand ) { $args['meta_query'] = array( array( 'key' => '_ps_sandelis', 'value' => $sand, 'compare' => 'LIKE' ) ); }
+		$q2 = new WP_Query( $args );
+		$esami = self::krepsys( $lid );
+		$dabartine_min = self::min_marza( $lid );
+		$saugi = self::saugi_pakopa( $lid );
+
+		$r = array();
+		foreach ( $q2->posts as $pid ) {
+			if ( in_array( (int) $pid, $esami, true ) ) { continue; }
+			$p = wc_get_product( $pid );
+			if ( ! $p || $p->get_type() === 'mix-and-match' ) { continue; }
+			$k = (float) $p->get_price();
+			$sav = self::savikaina( $pid );
+			$m = ( $sav !== null && $k > 0 ) ? round( ( ( $k / 1.21 ) - $sav ) / ( $k / 1.21 ) * 100 ) : null;
+			if ( $marza_nuo && ( $m === null || $m < $marza_nuo ) ) { continue; }
+			if ( $savik === 'a' && ( $sav === null || $sav >= 2 ) ) { continue; }
+			if ( $savik === 'b' && ( $sav === null || $sav < 2 || $sav >= 5 ) ) { continue; }
+			if ( $savik === 'c' && ( $sav === null || $sav < 5 || $sav >= 15 ) ) { continue; }
+			if ( $savik === 'd' && ( $sav === null || $sav < 15 ) ) { continue; }
+
+			/* Itaka nuolaidai: ar sita preke taps silpniausia grandimi. */
+			$nauja_saugi = $saugi;
+			if ( $m !== null ) {
+				$min = ( $dabartine_min === null ) ? $m : min( $dabartine_min, $m );
+				$nauja_saugi = max( 0, (int) floor( ( 1 - ( 1 - $min / 100 ) / ( 1 - self::MARZOS_RIBA / 100 ) ) * 100 ) );
+			}
+			$r[] = array(
+				'id' => (int) $pid, 'pav' => $p->get_name(), 'kaina' => $k,
+				'savikaina' => $sav, 'marza' => $m,
+				'sandelis' => strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'AV' ),
+				'yra' => $p->is_in_stock(),
+				'krenta' => ( $nauja_saugi < $saugi ), 'nauja_saugi' => $nauja_saugi,
+			);
+			if ( count( $r ) >= 30 ) { break; }
+		}
+		wp_send_json_success( array( 'prekes' => $r ) );
 	}
 
 	/* ==================== BUKLE ==================== */
