@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.09';   /* v1.09: korteles nuotraukos rėmai */
+	const VERSIJA = '1.10';   /* v1.10: skirtukai kaip Rinkiniuose */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -930,10 +930,26 @@ class Petshop_Laukai {
 		$id = isset( $_GET['id'] ) ? (int) $_GET['id'] : 0;
 		$veiksmas = isset( $_GET['veiksmas'] ) ? sanitize_key( $_GET['veiksmas'] ) : '';
 		echo '<div class="wrap pslka">';
+		self::skirtukai();
 		if ( $veiksmas === 'naujas' ) { self::admin_naujas(); }
 		elseif ( $id ) { self::admin_laukas( $id ); }
 		else { self::admin_sarasas(); }
 		echo '</div>';
+	}
+
+	/**
+	 * Tie patys skirtukai kaip Rinkiniuose — kad zmogus nejaustu, jog persoko
+	 * i kita sistema. Kaire nuoroda veda atgal i petshop-rinkinius.
+	 */
+	private static function skirtukai() {
+		$r = admin_url( 'admin.php?page=ps-rinkiniai' );
+		echo '<h1 class="wp-heading-inline">Rinkiniai</h1>';
+		echo '<p class="description">Paruošti rinkiniai ir pakai — prekės su savo kortele. '
+			. 'Surenkami — rinkiniai, kurių turinį susideda klientas.</p>';
+		echo '<div class="pslka-skirtukai">'
+			. '<a href="' . esc_url( $r ) . '">Paruošti rinkiniai</a>'
+			. '<a class="on" href="' . esc_url( self::nuoroda() ) . '">Surenkami rinkiniai</a>'
+			. '</div>';
 	}
 
 	private static function nuoroda( $args = array() ) {
@@ -975,8 +991,8 @@ class Petshop_Laukai {
 			);
 		}
 
-		echo '<h1 class="wp-heading-inline">Surenkami rinkiniai</h1> ';
-		echo '<a class="page-title-action" href="' . esc_url( self::nuoroda( array( 'veiksmas' => 'naujas' ) ) ) . '">➕ Sukurti rinkinį</a>';
+		echo '<h2 class="pslka-antraste">Surenkami rinkiniai '
+			. '<a class="page-title-action" href="' . esc_url( self::nuoroda( array( 'veiksmas' => 'naujas' ) ) ) . '">➕ Sukurti rinkinį</a></h2>';
 		echo '<p class="description">Klientas susideda pats: iki ' . self::MAX_KREPSYS . ' prekių iš vieno sandėlio, '
 			. 'laisvas kiekis nuo ' . self::MIN_KIEKIS . ' vnt. ir nuolaida pakopomis pagal krepšelio sumą.</p>';
 
@@ -1387,6 +1403,11 @@ class Petshop_Laukai {
 		.pslka-e span{font-size:11.5px;color:#646970}
 		.pslka-e.y{border-left-color:#dba617}.pslka-e.y b{color:#996800}
 		.pslka-e.r{border-left-color:#d63638}.pslka-e.r b{color:#d63638}
+		.pslka-skirtukai{border-bottom:1px solid #c3c4c7;display:flex;gap:4px;margin:14px 0 18px}
+		.pslka-skirtukai a{padding:9px 15px;text-decoration:none;color:#646970;font-size:14px;
+			border:1px solid transparent;border-bottom:0;margin-bottom:-1px;border-radius:3px 3px 0 0}
+		.pslka-skirtukai a.on{background:#f0f0f1;border-color:#c3c4c7;color:#1d2327;font-weight:600}
+		.pslka-antraste{font-size:18px;font-weight:600;margin:0 0 4px;display:flex;align-items:center;gap:12px}
 		.pslka-filtrai-blk{background:#fff;border:1px solid #c3c4c7;border-radius:3px;padding:10px 12px;margin-bottom:12px}
 		.pslka-frow{display:flex;flex-wrap:wrap;gap:9px 16px;align-items:center}
 		.pslka-frow+.pslka-frow{margin-top:9px;padding-top:9px;border-top:1px solid #f0f0f1}
