@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.08';   /* v1.08: „Surenkami rinkiniai" — filtrai ir trys grupes */
+	const VERSIJA = '1.09';   /* v1.09: korteles nuotraukos rėmai */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -1403,11 +1403,12 @@ class Petshop_Laukai {
 		.pslka-e{cursor:pointer;font:inherit;text-align:left}
 		.pslka-e.on{border-color:#2271b1;border-left-color:#2271b1;background:#f0f6fc}
 		.pslka-e.b{border-left-color:#2271b1}
-		.pslka-kfoto{height:130px;display:grid;place-items:center;background:#fafafa;border-bottom:1px solid #f0f0f1}
-		.pslka-kfoto img{max-width:80%;max-height:80%;object-fit:contain}
+		.pslka-kfoto{height:130px;display:grid;place-items:center;background:#fafafa;
+			border-bottom:1px solid #f0f0f1;overflow:hidden;padding:10px}
+		.pslka-kfoto img{max-width:100%;max-height:110px;width:auto;height:auto;object-fit:contain;display:block}
 		.pslka-kbody{padding:10px 12px}
-		.pslka-kortele{padding:0;overflow:hidden}
-		.pslka-kortele b{padding:0}
+		.pslka-kortele{padding:0;overflow:hidden;display:flex;flex-direction:column}
+		.pslka-kortele b{padding:0;min-height:2.6em}
 		.pslka-tinkl{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
 		.pslka-kortele{display:block;background:#fff;border:1px solid #c3c4c7;border-radius:3px;padding:12px 14px;text-decoration:none;color:#3c434a}
 		.pslka-kortele:hover{box-shadow:0 2px 8px rgba(0,0,0,.09);color:#3c434a}
