@@ -1,0 +1,782 @@
+{
+ "marker": "POOL 0814",
+ "ts": "2026-08-14T08:28:25.785Z",
+ "snip": 2933,
+ "snip_status": 200,
+ "rez": {
+  "marker": "POOL v1",
+  "ts": "2026-08-14 08:28:33",
+  "seimos": {
+   "34207": {
+    "pav": "Susidėk konservų rinkinį šunims",
+    "trumpas": "",
+    "no_gram": "",
+    "group_label": "",
+    "kaina": "13.99",
+    "config": {
+     "mix": {
+      "label": "Mix",
+      "gramaturos": {
+       "400": {
+        "6": {
+         "hid": 34208,
+         "price": 13.99,
+         "yra": true
+        },
+        "12": {
+         "hid": 34209,
+         "price": 27.49,
+         "yra": true
+        }
+       },
+       "800": {
+        "6": {
+         "hid": 34210,
+         "price": 20.3,
+         "yra": true
+        },
+        "12": {
+         "hid": 34211,
+         "price": 39.99,
+         "yra": true
+        },
+        "15": {
+         "hid": 34212,
+         "price": 49.2,
+         "yra": true
+        }
+       }
+      }
+     },
+     "mono": {
+      "label": "Monoproteinas",
+      "gramaturos": {
+       "400": {
+        "6": {
+         "hid": 34213,
+         "price": 21.99,
+         "yra": true
+        },
+        "12": {
+         "hid": 34214,
+         "price": 43.1,
+         "yra": true
+        }
+       }
+      }
+     },
+     "be_grudu": {
+      "label": "Be grūdų",
+      "gramaturos": {
+       "400": {
+        "6": {
+         "hid": 34215,
+         "price": 11.69,
+         "yra": true
+        },
+        "12": {
+         "hid": 34216,
+         "price": 22.69,
+         "yra": true
+        }
+       }
+      }
+     }
+    },
+    "pool": {
+     "mix|400": [
+      {
+       "id": 19594,
+       "pav": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 400 g",
+       "sku": "82746",
+       "kaina": 2.36,
+       "sav": 1.3,
+       "yra": true,
+       "likutis": 67,
+       "kg": 0.4,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82746-animonda-grancarno-adult-jautiena-su-anciu-sirdelemis-konservai-sunims_1754644444-280x280.jpg"
+      },
+      {
+       "id": 19586,
+       "pav": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g",
+       "sku": "82733",
+       "kaina": 2.36,
+       "sav": 1.3,
+       "yra": true,
+       "likutis": 92,
+       "kg": 0.4,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82733-animonda-grancarno-adult-jautiena-su-eriena-konservai-sunims_1754565003-280x280.jpg"
+      },
+      {
+       "id": 17159,
+       "pav": "Ontario konservai šunims su ėriena ir šaltalankiu, 400 g, Lamb Pate with Sea Buckthorn",
+       "sku": "48381",
+       "kaina": 2.59,
+       "sav": 1.39,
+       "yra": true,
+       "likutis": 24,
+       "kg": 0.4,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ontario-lamb-pate-400g-konservai-sunims-su-eriena_1779958797-280x280.webp"
+      },
+      {
+       "id": 19549,
+       "pav": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 400 g",
+       "sku": "82802",
+       "kaina": 2.36,
+       "sav": 1.3,
+       "yra": true,
+       "likutis": 53,
+       "kg": 0.4,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82802-animonda-grancarno-adult-su-paukstienos-sirdelemis-konservai-sunims_1754568246-280x280.jpg"
+      },
+      {
+       "id": 19475,
+       "pav": "Animonda GranCarno Adult: konservai šunims su širdimis, 400 g",
+       "sku": "82731",
+       "kaina": 2.45,
+       "sav": 1.3,
+       "yra": true,
+       "likutis": 40,
+       "kg": 0.4,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82477-animonda-grancarno-adult-su-sirdimis_1754555473-280x280.jpg"
+      },
+      {
+       "id": 19566,
+       "pav": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 400 g",
+       "sku": "82801",
+       "kaina": 2.45,
+       "sav": 1.3,
+       "yra": true,
+       "likutis": 101,
+       "kg": 0.4,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82801-animonda-grancarno-adult-su-antiena-konservai-sunims_1754642984-280x280.jpg"
+      }
+     ],
+     "mix|800": [
+      {
+       "id": 19590,
+       "pav": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 800 g",
+       "sku": "82747",
+       "kaina": 3.35,
+       "sav": 2.01,
+       "yra": true,
+       "likutis": 24,
+       "kg": 0.8,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82747-animonda-grancarno-adult-jautiena-su-anciu-sirdelemis-konservai-sunims_1754644665-280x280.jpg"
+      },
+      {
+       "id": 19582,
+       "pav": "Animonda GranCarno Adult Beef + Lamb: konserv",
+       "sku": "82742",
+       "kaina": 3.59,
+       "sav": 2.01,
+       "yra": true,
+       "likutis": 83,
+       "kg": 0.8,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82742-animonda-grancarno-adult-jautiena-su-eriena-konservai-sunims_1754565034-280x280.jpg"
+      },
+      {
+       "id": 19570,
+       "pav": "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 800 g",
+       "sku": "82744",
+       "kaina": 3.39,
+       "sav": 2.01,
+       "yra": true,
+       "likutis": 61,
+       "kg": 0.8,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82744-animonda-grancarno-adult-jautiena-konservai-sunims_1754570190-280x280.jpg"
+      },
+      {
+       "id": 19562,
+       "pav": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 800 g",
+       "sku": "82804",
+       "kaina": 3.49,
+       "sav": 2.01,
+       "yra": true,
+       "likutis": 46,
+       "kg": 0.8,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82804-animonda-grancarno-adult-su-antiena-konservai-sunims_1754643067-280x280.jpg"
+      },
+      {
+       "id": 19545,
+       "pav": "Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širdelėmis, 800 g",
+       "sku": "82805",
+       "kaina": 3.39,
+       "sav": 2.01,
+       "yra": true,
+       "likutis": 35,
+       "kg": 0.8,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/82805-animonda-grancarno-adult-su-paukstienos-sirdelmis-konservai-sunims_1754568326-280x280.jpg"
+      },
+      {
+       "id": 19578,
+       "pav": "Animonda GranCarno Adult Beef + Rabbit with Herbs: konservai suaugusiems šunims su šviežia jautiena ir triušiena, paskaninta žolelėmis, 800 g",
+       "sku": "82767",
+       "kaina": 3.49,
+       "sav": 2.01,
+       "yra": true,
+       "likutis": 44,
+       "kg": 0.8,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/an-animonda-grancarno-adult-beef-rabbit-with-herbs-konservai-suaugusiems-sunims-su-sviezia-jautiena-ir-triusiena-paskaninta-zolelem-1-280x280.jpg"
+      }
+     ],
+     "mono|400": [
+      {
+       "id": 18521,
+       "pav": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jautiena, 400 g",
+       "sku": "NGABA40",
+       "kaina": 2.49,
+       "sav": 1.683,
+       "yra": true,
+       "likutis": 513,
+       "kg": 0.4,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/exclusion-mediteraneo-monoprotein-jautiena-konservai-sunims_1776419773-280x280.jpg"
+      },
+      {
+       "id": 18518,
+       "pav": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kalakutiena, 400 g",
+       "sku": "NGAUA40",
+       "kaina": 2.49,
+       "sav": 1.683,
+       "yra": true,
+       "likutis": 687,
+       "kg": 0.4,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/exclusion-mediteraneo-monoprotein-kalakutiena-400g_1776418657-280x280.jpg"
+      },
+      {
+       "id": 18512,
+       "pav": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+       "sku": "NGALA40",
+       "kaina": 2.49,
+       "sav": 1.683,
+       "yra": true,
+       "likutis": 832,
+       "kg": 0.4,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/exclusion-mediteraneo-monoprotein-eriena-konservai-sunims_1776419348-280x280.jpg"
+      },
+      {
+       "id": 18515,
+       "pav": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g",
+       "sku": "NGAVA40",
+       "kaina": 2.49,
+       "sav": 1.683,
+       "yra": true,
+       "likutis": 397,
+       "kg": 0.4,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/exclusion-mediteranio-monoprotein-versiena-400g-konservai-sunims_1776417809-280x280.jpg"
+      }
+     ],
+     "be_grudu|400": [
+      {
+       "id": 23478,
+       "pav": "Landfleisch konservai šunims, paukštiena+lašiša, 400g",
+       "sku": "440614",
+       "kaina": 1.79,
+       "sav": 1.18,
+       "yra": true,
+       "likutis": 649,
+       "kg": 0,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/6ca85ecc-2fc5-4ca2-b719-c7feff08f3a1-280x280.png"
+      },
+      {
+       "id": 23480,
+       "pav": "Landfleisch konservai šunims, paukšt. širdys+menkė, 400g",
+       "sku": "440615",
+       "kaina": 1.79,
+       "sav": 1.18,
+       "yra": true,
+       "likutis": 177,
+       "kg": 0,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/5d7b8785-b1a0-4f0f-bade-0ba19a6112f3-280x280.png"
+      },
+      {
+       "id": 23472,
+       "pav": "Landfleisch konservai šunims, jaučių širdys+makaronai, 400g",
+       "sku": "440611",
+       "kaina": 1.79,
+       "sav": 1.18,
+       "yra": true,
+       "likutis": 1066,
+       "kg": 0,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/7790a080-3f15-441f-b13d-d43bde3b9057-280x280.png"
+      },
+      {
+       "id": 22983,
+       "pav": "Landfleisch konservai katėms su  jautiena ir menke, 400 g.",
+       "sku": "440451",
+       "kaina": 1.79,
+       "sav": 1.18,
+       "yra": true,
+       "likutis": 180,
+       "kg": 0,
+       "sandelis": "vf",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/d57b81ea-7f34-471b-9ef8-e40d412297d4-280x280.png"
+      }
+     ]
+    }
+   },
+   "34232": {
+    "pav": "Susidėk kramtalų rinkinį šuniui (TESTAS)",
+    "trumpas": "Pasirink pagal šuns dydį ir susidėk mėgstamus kramtukus į vieną rinkinį.",
+    "no_gram": "yes",
+    "group_label": "Šuns dydis",
+    "kaina": "3.9",
+    "config": {
+     "mazas": {
+      "label": "Mažam šuniui",
+      "gramaturos": {
+       "std": {
+        "3": {
+         "hid": 34233,
+         "price": 3.9,
+         "yra": true
+        },
+        "5": {
+         "hid": 34234,
+         "price": 5.9,
+         "yra": true
+        },
+        "7": {
+         "hid": 34235,
+         "price": 7.9,
+         "yra": true
+        }
+       }
+      }
+     },
+     "vidutinis": {
+      "label": "Vidutiniam šuniui",
+      "gramaturos": {
+       "std": {
+        "3": {
+         "hid": 34236,
+         "price": 13.9,
+         "yra": true
+        },
+        "5": {
+         "hid": 34237,
+         "price": 20.9,
+         "yra": true
+        },
+        "7": {
+         "hid": 34238,
+         "price": 27.9,
+         "yra": true
+        }
+       }
+      }
+     },
+     "didelis": {
+      "label": "Dideliam šuniui",
+      "gramaturos": {
+       "std": {
+        "3": {
+         "hid": 34239,
+         "price": 29.9,
+         "yra": true
+        },
+        "5": {
+         "hid": 34240,
+         "price": 46.9,
+         "yra": true
+        },
+        "7": {
+         "hid": 34241,
+         "price": 62.9,
+         "yra": true
+        }
+       }
+      }
+     }
+    },
+    "pool": {
+     "mazas|std": [
+      {
+       "id": 19095,
+       "pav": "Balta kiaulės knyslė, 1 vnt.",
+       "sku": "708001",
+       "kaina": 0.65,
+       "sav": 0.27,
+       "yra": true,
+       "likutis": 47,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ba-balta-kiaules-knysle-1-vnt-1-280x280.jpg"
+      },
+      {
+       "id": 16302,
+       "pav": "Ruda kiaulės knyslė, 1 vnt.",
+       "sku": "354900",
+       "kaina": 0.65,
+       "sav": 0.27,
+       "yra": true,
+       "likutis": 77,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ki-kiaules-knysle-ruda-1-vnt-1-280x280.png"
+      },
+      {
+       "id": 19086,
+       "pav": "Baltos vištos kojelės, 5 vnt.",
+       "sku": "256500",
+       "kaina": 1,
+       "sav": null,
+       "yra": true,
+       "likutis": 10,
+       "kg": 0.1,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ba-baltos-vistos-kojos-5-vnt-1-280x280.jpg"
+      },
+      {
+       "id": 16292,
+       "pav": "Rudos vištos kojelės. 5 vnt.",
+       "sku": "256400",
+       "kaina": 1,
+       "sav": null,
+       "yra": true,
+       "likutis": 9,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ru-rudos-vistos-kojeles-5-vnt-1-280x280.png"
+      },
+      {
+       "id": 17647,
+       "pav": "Kramtukai dantų priežiūrai su karotinu, 1 vnt., 50 g",
+       "sku": "G374",
+       "kaina": 1.23,
+       "sav": null,
+       "yra": false,
+       "likutis": 0,
+       "kg": 0.05,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/g374alda-skanestai-sunims-su-karotinu_1751909794-280x280.jpg"
+      },
+      {
+       "id": 17644,
+       "pav": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+       "sku": "G378",
+       "kaina": 1.23,
+       "sav": null,
+       "yra": true,
+       "likutis": 34,
+       "kg": 0.05,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/g378alda-skanestai-sunims-su-juros-dumbliais_1737315821-280x280.jpg"
+      },
+      {
+       "id": 17641,
+       "pav": "Kramtukai su juka ir ciberžole, 1 vnt., 50 g",
+       "sku": "G377",
+       "kaina": 1.23,
+       "sav": null,
+       "yra": true,
+       "likutis": 36,
+       "kg": 0.05,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/g377-skanestai-sunims-su-juka-ir-ciberzole_1756459050-280x280.jpg"
+      },
+      {
+       "id": 19098,
+       "pav": "Balta jaučio ausis, 1 vnt.",
+       "sku": "341000",
+       "kaina": 1.29,
+       "sav": null,
+       "yra": true,
+       "likutis": 71,
+       "kg": 0.1,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ja-jaucio-ausis-balta-1-280x280.png"
+      },
+      {
+       "id": 16311,
+       "pav": "Ruda jaučio ausis, 1 vnt.",
+       "sku": "723000",
+       "kaina": 1.29,
+       "sav": null,
+       "yra": true,
+       "likutis": 300,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ja-jaucio-ausis-ruda-1-280x280.png"
+      },
+      {
+       "id": 16305,
+       "pav": "Ruda kiaulės ausis, 1 vnt.",
+       "sku": "338000",
+       "kaina": 1.29,
+       "sav": 0.66,
+       "yra": true,
+       "likutis": 200,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ru-ruda-kiaules-ausis-1-vnt-1-280x280.png"
+      },
+      {
+       "id": 15867,
+       "pav": "Veršiuko ausis, 1 vnt.",
+       "sku": "341000-v",
+       "kaina": 1.39,
+       "sav": null,
+       "yra": true,
+       "likutis": 23,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ve-versiuko-ausis-1-vnt-1-280x280.png"
+      },
+      {
+       "id": 19092,
+       "pav": "Balta stirnos koja, 1 vnt.",
+       "sku": "718000",
+       "kaina": 1.49,
+       "sav": null,
+       "yra": true,
+       "likutis": 54,
+       "kg": 0.1,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/08/stirnos-koja-nauja-1-1-280x280.jpg"
+      }
+     ],
+     "vidutinis|std": [
+      {
+       "id": 15864,
+       "pav": "Veršiuko koja, 1 vnt.",
+       "sku": "2820",
+       "kaina": 3.19,
+       "sav": null,
+       "yra": true,
+       "likutis": 55,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ve-versiuko-koja-1-vnt-1-280x280.png"
+      },
+      {
+       "id": 16295,
+       "pav": "Rudos (natūralios) triušio ausys",
+       "sku": "711002",
+       "kaina": 3.8,
+       "sav": null,
+       "yra": true,
+       "likutis": 9,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/tr-triusio-ausys-rudos-250-g-1-280x280.png"
+      },
+      {
+       "id": 17386,
+       "pav": "Natūralios triušio ausys su kailiuku, 100 g",
+       "sku": "711004",
+       "kaina": 3.9,
+       "sav": null,
+       "yra": true,
+       "likutis": 9,
+       "kg": 0.1,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/na-naturalios-triusio-ausys-su-kailiuku-10-vnt-1-280x280.png"
+      },
+      {
+       "id": 19089,
+       "pav": "Baltos triušio ausys, 100 g",
+       "sku": "711003",
+       "kaina": 4.65,
+       "sav": null,
+       "yra": true,
+       "likutis": 8,
+       "kg": 0.11,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/08/triusio-ausys-baltos-skanestas-sunims-280x280.png"
+      },
+      {
+       "id": 17312,
+       "pav": "Natūralūs skanėstai šunims - Elnio rago kramtukas, kietas",
+       "sku": "400500",
+       "kaina": 5.23,
+       "sav": null,
+       "yra": true,
+       "likutis": 16,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/na-naturalus-skanestai-sunims-elnio-rago-kramtukas-kietas-1-280x280.jpg"
+      },
+      {
+       "id": 17309,
+       "pav": "Natūralūs skanėstai šunims - Elnio rago kramtukas, minkštas",
+       "sku": "400501",
+       "kaina": 5.23,
+       "sav": null,
+       "yra": true,
+       "likutis": 14,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/na-naturalus-skanestai-sunims-elnio-rago-kramtukas-minkstas-1-280x280.jpg"
+      }
+     ],
+     "didelis|std": [
+      {
+       "id": 17808,
+       "pav": "Kietas sūrio skanėstas šunims - \"Kramtukas iš Himalajų\", S dydis",
+       "sku": "8594198750011",
+       "kaina": 6.29,
+       "sav": null,
+       "yra": true,
+       "likutis": 3,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ki-kietas-surio-skanestas-sunims-kramtukas-is-himalaju-s-dydis-1-280x280.jpg"
+      },
+      {
+       "id": 17609,
+       "pav": "Kramtukas šunims iš kavamedžio, XS dydžio",
+       "sku": "5904181401517",
+       "kaina": 7.83,
+       "sav": null,
+       "yra": true,
+       "likutis": 3,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/kavamedzio-kramtukai-sunims-4dogs-skanestai-280x280.jpg"
+      },
+      {
+       "id": 17615,
+       "pav": "Kramtukas šunims iš kavamedžio, S dydžio",
+       "sku": "5904181400749",
+       "kaina": 8.57,
+       "sav": null,
+       "yra": false,
+       "likutis": 0,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/kavamedzio-kramtukai-sunims-4dogs-skanestai-4-280x280.jpg"
+      },
+      {
+       "id": 18468,
+       "pav": "Galvijų trachėjos, pjaustytos, 500 g",
+       "sku": "10088302",
+       "kaina": 8.58,
+       "sav": null,
+       "yra": true,
+       "likutis": 14,
+       "kg": 0.5,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/trachejos-500g_1756729851-280x280.jpg"
+      },
+      {
+       "id": 17621,
+       "pav": "Kramtukas šunims iš juodmedžio, M dydžio",
+       "sku": "5904181401562",
+       "kaina": 8.96,
+       "sav": null,
+       "yra": true,
+       "likutis": 3,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/kr-kramtukas-sunims-is-juodmedzio-m-dydzio-1-280x280.jpg"
+      },
+      {
+       "id": 17618,
+       "pav": "Kramtukas šunims iš kavamedžio, M dydžio",
+       "sku": "5904181400756",
+       "kaina": 9.75,
+       "sav": null,
+       "yra": true,
+       "likutis": 2,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/kavamedzio-kramtukai-sunims-4dogs-skanestai-6-280x280.jpg"
+      },
+      {
+       "id": 16072,
+       "pav": "Skanėstai šunims - Triušio ausys su vištiena, 500 g, AL64",
+       "sku": "AL64",
+       "kaina": 10.15,
+       "sav": null,
+       "yra": false,
+       "likutis": 0,
+       "kg": 0.5,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/al64-triusio-ausys-su-vistiena_1763466169-2-280x280.jpg"
+      },
+      {
+       "id": 16078,
+       "pav": "Skanėstai šunims - Triušio ausys su antiena, 500 g, AL68",
+       "sku": "AL68",
+       "kaina": 10.95,
+       "sav": null,
+       "yra": false,
+       "likutis": 0,
+       "kg": 0.5,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/al-68-triusio-ausys-apvyniotos-antiena-skanestai-sunims_1763464633-2-280x280.jpg"
+      },
+      {
+       "id": 15964,
+       "pav": "Triušio ausys su antiena 500 g, natūralūs skanėstai šunims",
+       "sku": "H-138-402086",
+       "kaina": 10.95,
+       "sav": 6.46,
+       "yra": false,
+       "likutis": 0,
+       "kg": 0.5,
+       "sandelis": "belcor_tofu",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/skanestas-sunims-triusio-ausys-su-antiena-500_1721128672-280x280.jpg"
+      },
+      {
+       "id": 16075,
+       "pav": "Skanėstai šunims - Triušio ausys su jautiena ir antiena, 500 g, AL131",
+       "sku": "AL131",
+       "kaina": 10.96,
+       "sav": null,
+       "yra": false,
+       "likutis": 0,
+       "kg": 0.5,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/al-68-triusio-ausys-apvyniotos-antiena-skanestai-sunims_1763464633-280x280.jpg"
+      },
+      {
+       "id": 17814,
+       "pav": "Kietas sūrio skanėstas šunims \"Kramtukas iš Himalajų\", L dydis",
+       "sku": "8594198750035",
+       "kaina": 11.85,
+       "sav": null,
+       "yra": true,
+       "likutis": 3,
+       "kg": 0,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/ki-kietas-surio-skanestas-sunims-kramtukas-is-himalaju-l-dydis-1-280x280.jpg"
+      },
+      {
+       "id": 19309,
+       "pav": "Antienos dešrelės, 500 g, natūralūs skanėstai šunims",
+       "sku": "HM-8179",
+       "kaina": 11.92,
+       "sav": null,
+       "yra": true,
+       "likutis": 2,
+       "kg": 0.5,
+       "sandelis": "av",
+       "img": "https://dev.avesa.lt/wp-content/uploads/2026/06/skanestai-sunims-antienos-desreles-500g-hm-8163-280x280.jpg"
+      }
+     ]
+    }
+   }
+  }
+ }
+}
