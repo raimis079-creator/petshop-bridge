@@ -1,16 +1,328 @@
 {
  "marker": "LAUKAI 0814",
- "ts": "2026-08-14T13:03:32.382Z",
- "snip": 2941,
+ "ts": "2026-08-14T13:05:34.077Z",
+ "snip": 2942,
  "snip_status": 200,
  "rez": {
   "marker": "LAUKU DUOMENYS",
-  "ts": "2026-08-14 13:03:40",
+  "ts": "2026-08-14 13:05:42",
   "kategorijos": {
+   "95": "Skanėstai šunims",
+   "96": "Skanėstai katėms",
+   "97": "Skanėstai graužikams",
+   "98": "Skanėstai paukščiams",
+   "683": "Skanėstų rinkiniai",
    "684": "Kramtalų rinkiniai"
   },
-  "prekiu": 3,
-  "su_savikaina": 0,
-  "laukai": []
+  "prekiu": 397,
+  "su_savikaina": 270,
+  "laukai": [
+   {
+    "raktas": "Šunims | pa_gyvuno_rusis | Šunims",
+    "n": 282,
+    "su_sav": 182,
+    "marza_min": 16,
+    "marza_vid": 28,
+    "kaina_min": 0.63,
+    "kaina_max": 168.29
+   },
+   {
+    "raktas": "Šunims | pa_monoprotein | Taip",
+    "n": 110,
+    "su_sav": 63,
+    "marza_min": 16,
+    "marza_vid": 30,
+    "kaina_min": 0.65,
+    "kaina_max": 168.29
+   },
+   {
+    "raktas": "Katėms | pa_gyvuno_rusis | Katėms",
+    "n": 90,
+    "su_sav": 68,
+    "marza_min": 23,
+    "marza_vid": 26,
+    "kaina_min": 1.39,
+    "kaina_max": 66.89
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Vištiena",
+    "n": 84,
+    "su_sav": 73,
+    "marza_min": 20,
+    "marza_vid": 27,
+    "kaina_min": 1,
+    "kaina_max": 68.19
+   },
+   {
+    "raktas": "Šunims | pa_be_grudu | Be grūdų",
+    "n": 68,
+    "su_sav": 19,
+    "marza_min": 23,
+    "marza_vid": 32,
+    "kaina_min": 0.63,
+    "kaina_max": 20.99
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Jautiena",
+    "n": 47,
+    "su_sav": 22,
+    "marza_min": 24,
+    "marza_vid": 30,
+    "kaina_min": 1.29,
+    "kaina_max": 134.69
+   },
+   {
+    "raktas": "Šunims | pa_speciali_mityba | Hipoalerginis",
+    "n": 43,
+    "su_sav": 18,
+    "marza_min": 28,
+    "marza_vid": 32,
+    "kaina_min": 0.65,
+    "kaina_max": 30
+   },
+   {
+    "raktas": "Katėms | pa_baltymu_saltinis | Vištiena",
+    "n": 42,
+    "su_sav": 38,
+    "marza_min": 23,
+    "marza_vid": 24,
+    "kaina_min": 2.39,
+    "kaina_max": 66.89
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Antiena",
+    "n": 37,
+    "su_sav": 20,
+    "marza_min": 16,
+    "marza_vid": 28,
+    "kaina_min": 0.63,
+    "kaina_max": 14.75
+   },
+   {
+    "raktas": "Šunims | pa_speciali_mityba | Jautriam virškinimui",
+    "n": 36,
+    "su_sav": 34,
+    "marza_min": 24,
+    "marza_vid": 28,
+    "kaina_min": 0.63,
+    "kaina_max": 113.39
+   },
+   {
+    "raktas": "Šunims | pa_be_grudu | Su ryžiais",
+    "n": 30,
+    "su_sav": 13,
+    "marza_min": 16,
+    "marza_vid": 27,
+    "kaina_min": 1.23,
+    "kaina_max": 66.89
+   },
+   {
+    "raktas": "Šunims | pa_amzius | Jauniems",
+    "n": 23,
+    "su_sav": 4,
+    "marza_min": 27,
+    "marza_vid": 36,
+    "kaina_min": 0.65,
+    "kaina_max": 18.99
+   },
+   {
+    "raktas": "Graužikams | pa_gyvuno_rusis | Graužikams",
+    "n": 22,
+    "su_sav": 20,
+    "marza_min": 31,
+    "marza_vid": 32,
+    "kaina_min": 1.49,
+    "kaina_max": 9.29
+   },
+   {
+    "raktas": "Šunims | pa_be_grudu | Su grūdais",
+    "n": 18,
+    "su_sav": 17,
+    "marza_min": 26,
+    "marza_vid": 31,
+    "kaina_min": 3.99,
+    "kaina_max": 68.19
+   },
+   {
+    "raktas": "Katėms | pa_monoprotein | Taip",
+    "n": 18,
+    "su_sav": 15,
+    "marza_min": 23,
+    "marza_vid": 26,
+    "kaina_min": 2.39,
+    "kaina_max": 34.39
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Triušiena",
+    "n": 17,
+    "su_sav": 7,
+    "marza_min": 25,
+    "marza_vid": 29,
+    "kaina_min": 3.8,
+    "kaina_max": 12.91
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Ėriena",
+    "n": 17,
+    "su_sav": 9,
+    "marza_min": 26,
+    "marza_vid": 32,
+    "kaina_min": 1.59,
+    "kaina_max": 12.58
+   },
+   {
+    "raktas": "Šunims | pa_speciali_mityba | Svorio kontrolei",
+    "n": 15,
+    "su_sav": 15,
+    "marza_min": 26,
+    "marza_vid": 27,
+    "kaina_min": 0.83,
+    "kaina_max": 26.99
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Žuvis (balta)",
+    "n": 13,
+    "su_sav": 7,
+    "marza_min": 24,
+    "marza_vid": 27,
+    "kaina_min": 2.49,
+    "kaina_max": 13.9
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Lašiša",
+    "n": 12,
+    "su_sav": 12,
+    "marza_min": 23,
+    "marza_vid": 24,
+    "kaina_min": 2.49,
+    "kaina_max": 6.09
+   },
+   {
+    "raktas": "Katėms | pa_amzius | Suaugusiems",
+    "n": 12,
+    "su_sav": 2,
+    "marza_min": 32,
+    "marza_vid": 32,
+    "kaina_min": 1.39,
+    "kaina_max": 8.94
+   },
+   {
+    "raktas": "Katėms | pa_baltymu_saltinis | Lašiša",
+    "n": 11,
+    "su_sav": 11,
+    "marza_min": 23,
+    "marza_vid": 25,
+    "kaina_min": 1.39,
+    "kaina_max": 45.09
+   },
+   {
+    "raktas": "Šunims | pa_amzius | Suaugusiems",
+    "n": 11,
+    "su_sav": 10,
+    "marza_min": 26,
+    "marza_vid": 26,
+    "kaina_min": 1.49,
+    "kaina_max": 8.69
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Žvėriena",
+    "n": 10,
+    "su_sav": 6,
+    "marza_min": 26,
+    "marza_vid": 26,
+    "kaina_min": 1.49,
+    "kaina_max": 10.79
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Kiauliena",
+    "n": 8,
+    "su_sav": 6,
+    "marza_min": 33,
+    "marza_vid": 40,
+    "kaina_min": 0.65,
+    "kaina_max": 168.29
+   },
+   {
+    "raktas": "Katėms | pa_be_grudu | Be grūdų",
+    "n": 7,
+    "su_sav": 4,
+    "marza_min": 23,
+    "marza_vid": 24,
+    "kaina_min": 2.59,
+    "kaina_max": 34.39
+   },
+   {
+    "raktas": "Katėms | pa_baltymu_saltinis | Žuvis (balta)",
+    "n": 7,
+    "su_sav": 7,
+    "marza_min": 23,
+    "marza_vid": 26,
+    "kaina_min": 2.49,
+    "kaina_max": 19.79
+   },
+   {
+    "raktas": "Katėms | pa_baltymu_saltinis | Tunas",
+    "n": 7,
+    "su_sav": 7,
+    "marza_min": 23,
+    "marza_vid": 24,
+    "kaina_min": 2.39,
+    "kaina_max": 45.09
+   },
+   {
+    "raktas": "Katėms | pa_amzius | Jauniems",
+    "n": 6,
+    "su_sav": 3,
+    "marza_min": 23,
+    "marza_vid": 24,
+    "kaina_min": 2.49,
+    "kaina_max": 21.29
+   },
+   {
+    "raktas": "Graužikams | pa_be_grudu | Su grūdais",
+    "n": 6,
+    "su_sav": 6,
+    "marza_min": 31,
+    "marza_vid": 32,
+    "kaina_min": 4.99,
+    "kaina_max": 9.29
+   },
+   {
+    "raktas": "Katėms | pa_baltymu_saltinis | Jautiena",
+    "n": 5,
+    "su_sav": 2,
+    "marza_min": 23,
+    "marza_vid": 24,
+    "kaina_min": 2.45,
+    "kaina_max": 3.89
+   },
+   {
+    "raktas": "Katėms | pa_speciali_mityba | Svorio kontrolei",
+    "n": 4,
+    "su_sav": 4,
+    "marza_min": 26,
+    "marza_vid": 34,
+    "kaina_min": 15.79,
+    "kaina_max": 26.69
+   },
+   {
+    "raktas": "Graužikams | pa_be_grudu | Be grūdų",
+    "n": 4,
+    "su_sav": 4,
+    "marza_min": 32,
+    "marza_vid": 32,
+    "kaina_min": 4.39,
+    "kaina_max": 5.09
+   },
+   {
+    "raktas": "Šunims | pa_baltymu_saltinis | Kalakutiena",
+    "n": 4,
+    "su_sav": 3,
+    "marza_min": 27,
+    "marza_vid": 35,
+    "kaina_min": 1.55,
+    "kaina_max": 17.09
+   }
+  ]
  }
 }
