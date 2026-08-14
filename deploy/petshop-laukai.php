@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.02';   /* v1.02: vitrinos sablonas — deze, pakopu juosta, greita perziura */
+	const VERSIJA = '1.03';   /* v1.03: vitrina piesiama pries produkto sekcija (ne jos viduje) */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -412,7 +412,14 @@ class Petshop_Laukai {
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 
-		add_action( 'woocommerce_before_single_product_summary', array( __CLASS__, 'vitrina' ), 5 );
+		/* Piesiam PRIES visa produkto sekcija: `before_single_product_summary` yra
+		   Flatsome galerijos stulpelio viduje, kuri mes slepiam — blokas butu
+		   DOM'e, bet nematomas ir nepaspaudziamas. */
+		add_action( 'woocommerce_before_single_product', array( __CLASS__, 'vitrina' ), 20 );
+
+		/* „Sutaupote" juosta is petshop-rinkiniu laukui netinka — ji skaiciuoja
+		   nuo konteinerio kainos, kuri cia 0, todel rodo 100 %. */
+		remove_action( 'woocommerce_single_product_summary', array( 'Petshop_Rinkiniai', 'sutaupote' ), 11 );
 	}
 
 	public static function vitrina_klase( $k ) {
@@ -632,10 +639,8 @@ class Petshop_Laukai {
 	private static function vitrinos_stilius() {
 		?>
 		<style id="pslk-stilius">
-		.ps-laukas .product-main > .row > .large-6:first-child,
-		.ps-laukas .product-gallery, .ps-laukas .product-info > .price-wrapper,
-		.ps-laukas .product-footer, .ps-laukas .product-info .cart { display:none !important; }
-		.ps-laukas .product-main { padding-top:14px }
+		.ps-laukas .product-main, .ps-laukas .product-footer,
+		.ps-laukas .related, .ps-laukas .product-page-sections { display:none !important; }
 		.pslk{--z:#0F6E56;--zt:#0B5443;--zf:#EAF3EF;--kraft:#EFE7D8;--kraft2:#E4D8C2;--kraft3:#D9CBB0;
 			max-width:1220px;margin:0 auto;padding:4px 0 60px;color:#2B2B2B;
 			font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.5}
