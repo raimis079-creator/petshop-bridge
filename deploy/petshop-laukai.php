@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.14';   /* v1.14: grupe vietoj seimos — ir juostoje, ir panelėje */
+	const VERSIJA = '1.15';   /* v1.15: publikavimas panelėje + pavadinimu brukšnys */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -78,6 +78,7 @@ class Petshop_Laukai {
 		add_action( 'wp_ajax_ps_laukai_prekes',      array( __CLASS__, 'ajax_prekes' ) );
 		add_action( 'wp_ajax_ps_laukai_prideti_kelias', array( __CLASS__, 'ajax_prideti_kelias' ) );
 		add_action( 'wp_ajax_ps_laukai_foto',        array( __CLASS__, 'ajax_foto' ) );
+		add_action( 'wp_ajax_ps_laukai_busena',      array( __CLASS__, 'ajax_busena' ) );
 
 		/* Uzsakyme irasom, kokia pakopa suveike — kad apskaita ir grazinimai
 		   rodytu, kodel kaina buvo mazesne nei kortele. */
@@ -495,6 +496,9 @@ class Petshop_Laukai {
 			   kad liktu tik tai, kas skiria. Pilnas pavadinimas lieka perziuroje. */
 			$vardas = trim( preg_replace( '/^\S+\s/u', '', $pav ) );
 			$vardas = preg_replace( '/^(skanėstai|skanėstas|skanėstų)\s+(šunims|katėms|šuniukams|kačiukams)\s*,?\s*/ui', '', $vardas );
+			/* Dalies tiekeju pavadinimai yra „Miamor - kremine pasta…": nukirtus
+			   zenkla lieka kabantis brukšnys. */
+			$vardas = preg_replace( '/^[\s\-–—:,\.]+/u', '', $vardas );
 			if ( $vardas === '' ) { $vardas = trim( preg_replace( '/^\S+\s/u', '', $pav ) ); }
 			$vardas = mb_strtoupper( mb_substr( $vardas, 0, 1 ) ) . mb_substr( $vardas, 1 );
 			$r[] = array(
@@ -1282,10 +1286,31 @@ class Petshop_Laukai {
 		$kr      = self::krepsys( $lid );
 		$zodis   = get_post_meta( $lid, self::META_ZODIS, true ) ?: 'deze';
 
-		echo '<p><a class="button" href="' . esc_url( self::nuoroda() ) . '">← Surenkami rinkiniai</a> '
-			. '<b style="font-size:15px;margin-left:8px">' . esc_html( get_the_title( $lid ) ) . '</b> '
-			. '<span class="pslka-z b">#' . (int) $lid . '</span> '
-			. '<a class="button" style="margin-left:8px" target="_blank" href="' . esc_url( get_permalink( $lid ) ) . '">Peržiūrėti parduotuvėje</a></p>';
+		$busena = get_post_status( $lid );
+		$kliutys = self::publikavimo_kliutys( $lid );
+
+		echo '<div class="pslka-galva">';
+		echo '<a class="button" href="' . esc_url( self::nuoroda() ) . '">← Surenkami rinkiniai</a> ';
+		echo '<b style="font-size:15px">' . esc_html( get_the_title( $lid ) ) . '</b> ';
+		echo '<span class="pslka-z b">#' . (int) $lid . '</span> ';
+		echo $busena === 'publish'
+			? '<span class="pslka-z g" id="b-zyme">prekyboje · klientas mato</span>'
+			: '<span class="pslka-z y" id="b-zyme">juodraštis · klientas nemato</span>';
+		echo '<span class="pslka-sp"></span>';
+		echo '<a class="button" target="_blank" href="' . esc_url( get_permalink( $lid ) ) . '">Peržiūrėti parduotuvėje</a> ';
+		if ( $busena === 'publish' ) {
+			echo '<button class="button" id="b-jungiklis" data-i="juodrastis">Grąžinti į juodraštį</button>';
+		} else {
+			echo '<button class="button button-primary" id="b-jungiklis" data-i="publish"'
+				. ( $kliutys ? ' disabled title="' . esc_attr( implode( ' ', $kliutys ) ) . '"' : '' )
+				. '>Publikuoti</button>';
+		}
+		echo '</div>';
+		if ( $busena !== 'publish' && $kliutys ) {
+			echo '<div class="pslka-kliutys"><b>Publikuoti dar negalima</b>';
+			foreach ( $kliutys as $k ) { echo '<span>' . esc_html( $k ) . '</span>'; }
+			echo '</div>';
+		}
 
 		/* --- nustatymai --- */
 		echo '<div class="pslka-kort"><h3>Nustatymai</h3><div class="pslka-vidus pslka-du">';
@@ -1360,6 +1385,47 @@ class Petshop_Laukai {
 		self::rinkiklio_js( $lid );
 	}
 
+	/**
+	 * Kas trukdo publikuoti. Ne perspejimai, o tikros kliutys: su tokiu rinkiniu
+	 * klientas arba nieko negaletu nusipirkti, arba matytu tuscia langa.
+	 */
+	public static function publikavimo_kliutys( $lid ) {
+		$k = array();
+		$kr = self::krepsys( $lid );
+		if ( count( $kr ) < self::MIN_KIEKIS ) {
+			$k[] = 'Krepšyje ' . count( $kr ) . ' prekės, o klientas privalo įdėti bent '
+				. self::MIN_KIEKIS . ' — nusipirkti būtų neįmanoma.';
+		}
+		$turim = 0;
+		foreach ( $kr as $cid ) { $p = wc_get_product( $cid ); if ( $p && $p->is_in_stock() ) { $turim++; } }
+		if ( $turim < self::MIN_KIEKIS ) {
+			$k[] = 'Sandėlyje turime tik ' . $turim . ' iš ' . count( $kr ) . ' krepšio prekių.';
+		}
+		if ( trim( get_the_title( $lid ) ) === '' ) { $k[] = 'Nėra pavadinimo.'; }
+		return $k;
+	}
+
+	/** Busenos jungiklis. Pakopu nebuvimas netrukdo — tik nuolaidos nebus. */
+	public static function ajax_busena() {
+		self::tikrink();
+		$lid = (int) ( $_POST['lid'] ?? 0 );
+		$i   = sanitize_key( $_POST['i'] ?? '' );
+		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks rinkinys nerastas.' ); }
+
+		if ( $i === 'publish' ) {
+			$kliutys = self::publikavimo_kliutys( $lid );
+			if ( $kliutys ) { wp_send_json_error( implode( ' ', $kliutys ) ); }
+			wp_update_post( array( 'ID' => $lid, 'post_status' => 'publish' ) );
+			$zinute = 'Paskelbta — klientas jau mato.';
+			if ( ! self::pakopos( $lid ) ) { $zinute .= ' Pakopų nėra, tad nuolaidos klientas negaus.'; }
+		} else {
+			wp_update_post( array( 'ID' => $lid, 'post_status' => 'draft' ) );
+			$zinute = 'Grąžinta į juodraštį — klientas nebemato.';
+		}
+		wc_delete_product_transients( $lid );
+		wp_send_json_success( array( 'zinute' => $zinute, 'busena' => get_post_status( $lid ) ) );
+	}
+
 	/** Silpniausia krepsio marza — ja riboja visa lauka. */
 	private static function min_marza( $lid ) {
 		$m = array();
@@ -1432,6 +1498,11 @@ class Petshop_Laukai {
 		.pslka-gfoto{display:flex;gap:22px;flex-wrap:wrap}
 		.pslka-gf{text-align:center;font-size:12.5px}
 		.pslka-gf b{display:block;margin:6px 0 2px}
+		.pslka-galva{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+		.pslka-kliutys{background:#fcf9e8;border:1px solid #e8dfa8;border-left:3px solid #dba617;
+			border-radius:3px;padding:9px 12px;margin-bottom:14px;font-size:12.5px}
+		.pslka-kliutys b{display:block;margin-bottom:3px}
+		.pslka-kliutys span{display:block;color:#7a5c00}
 		.pslka-skirtukai{border-bottom:1px solid #c3c4c7;display:flex;gap:4px;margin:14px 0 18px}
 		.pslka-skirtukai a{padding:9px 15px;text-decoration:none;color:#646970;font-size:14px;
 			border:1px solid transparent;border-bottom:0;margin-bottom:-1px;border-radius:3px 3px 0 0}
@@ -1538,6 +1609,16 @@ class Petshop_Laukai {
 				setTimeout(function(){ kurti.disabled=false; },5000);
 			}); }
 			if(!LID) return;
+
+			/* --- busena --- */
+			var bj=document.getElementById('b-jungiklis');
+			if(bj){ bj.addEventListener('click',function(e){
+				e.preventDefault(); bj.disabled=true;
+				siusti('ps_laukai_busena',{i:bj.dataset.i}, function(d){
+					stat(d.zinute); setTimeout(function(){ location.reload(); },900);
+				});
+				setTimeout(function(){ bj.disabled=false; },5000);
+			}); }
 
 			/* --- nustatymai --- */
 			var sav=document.getElementById('s-saugoti');
