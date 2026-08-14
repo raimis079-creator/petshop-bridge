@@ -1,7 +1,772 @@
 {
  "marker": "RINK RECON5 0814",
- "ts": "2026-08-14T07:43:54.657Z",
- "snip": null,
- "snip_status": 0,
- "err": "Error: Command failed: curl -sk \"https://dev.avesa.lt/?ps_rink_recon5=RcN0814v\" --max-time 200"
+ "ts": "2026-08-14T07:47:23.692Z",
+ "snip": 2929,
+ "snip_status": 200,
+ "rez": {
+  "marker": "RINK RECON v5",
+  "ts": "2026-08-14 07:47:32",
+  "surenkami": [
+   {
+    "id": 34190,
+    "pav": "Susirink konservų rinkinį šunims pats 400g · 6 vnt",
+    "bukle": "publish",
+    "tevas": "34196",
+    "grupe": "",
+    "dydis": "6",
+    "gramai": "400",
+    "min": "6",
+    "max": "6",
+    "kaina": "14.99",
+    "vaiku": 8,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 02:02:46",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34191,
+    "pav": "Susirink konservų rinkinį šunims pats 400g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34196",
+    "grupe": "",
+    "dydis": "12",
+    "gramai": "400",
+    "min": "12",
+    "max": "12",
+    "kaina": "29.3",
+    "vaiku": 8,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 02:02:46",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34192,
+    "pav": "Susirink konservų rinkinį šunims pats 400g · 15 vnt",
+    "bukle": "publish",
+    "tevas": "34196",
+    "grupe": "",
+    "dydis": "15",
+    "gramai": "400",
+    "min": "15",
+    "max": "15",
+    "kaina": "35.89",
+    "vaiku": 8,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 02:02:47",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34193,
+    "pav": "Susirink konservų rinkinį šunims pats 800g · 6 vnt",
+    "bukle": "publish",
+    "tevas": "34196",
+    "grupe": "",
+    "dydis": "6",
+    "gramai": "800",
+    "min": "6",
+    "max": "6",
+    "kaina": "20.4",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 02:02:47",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34194,
+    "pav": "Susirink konservų rinkinį šunims pats 800g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34196",
+    "grupe": "",
+    "dydis": "12",
+    "gramai": "800",
+    "min": "12",
+    "max": "12",
+    "kaina": "39.6",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 02:02:47",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34195,
+    "pav": "Susirink konservų rinkinį šunims pats 800g · 15 vnt",
+    "bukle": "publish",
+    "tevas": "34196",
+    "grupe": "",
+    "dydis": "15",
+    "gramai": "800",
+    "min": "15",
+    "max": "15",
+    "kaina": "48.75",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 02:02:47",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34208,
+    "pav": "Susidėk konservų rinkinį šunims · Mix · 400g · 6 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "mix",
+    "dydis": "6",
+    "gramai": "400",
+    "min": "6",
+    "max": "6",
+    "kaina": "13.99",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:55",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34209,
+    "pav": "Susidėk konservų rinkinį šunims · Mix · 400g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "mix",
+    "dydis": "12",
+    "gramai": "400",
+    "min": "12",
+    "max": "12",
+    "kaina": "27.49",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:55",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34210,
+    "pav": "Susidėk konservų rinkinį šunims · Mix · 800g · 6 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "mix",
+    "dydis": "6",
+    "gramai": "800",
+    "min": "6",
+    "max": "6",
+    "kaina": "20.3",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:55",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34211,
+    "pav": "Susidėk konservų rinkinį šunims · Mix · 800g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "mix",
+    "dydis": "12",
+    "gramai": "800",
+    "min": "12",
+    "max": "12",
+    "kaina": "39.99",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:56",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34212,
+    "pav": "Susidėk konservų rinkinį šunims · Mix · 800g · 15 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "mix",
+    "dydis": "15",
+    "gramai": "800",
+    "min": "15",
+    "max": "15",
+    "kaina": "49.2",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:56",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34213,
+    "pav": "Susidėk konservų rinkinį šunims · Monoproteinas · 400g · 6 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "mono",
+    "dydis": "6",
+    "gramai": "400",
+    "min": "6",
+    "max": "6",
+    "kaina": "21.99",
+    "vaiku": 4,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:56",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34214,
+    "pav": "Susidėk konservų rinkinį šunims · Monoproteinas · 400g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "mono",
+    "dydis": "12",
+    "gramai": "400",
+    "min": "12",
+    "max": "12",
+    "kaina": "43.1",
+    "vaiku": 4,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:56",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34215,
+    "pav": "Susidėk konservų rinkinį šunims · Be grūdų · 400g · 6 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "be_grudu",
+    "dydis": "6",
+    "gramai": "400",
+    "min": "6",
+    "max": "6",
+    "kaina": "11.69",
+    "vaiku": 4,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:56",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34216,
+    "pav": "Susidėk konservų rinkinį šunims · Be grūdų · 400g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34207",
+    "grupe": "be_grudu",
+    "dydis": "12",
+    "gramai": "400",
+    "min": "12",
+    "max": "12",
+    "kaina": "22.69",
+    "vaiku": 4,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 19:50:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34218,
+    "pav": "Susidėk konservų rinkinį katėms · Mix · 100g · 16 vnt",
+    "bukle": "publish",
+    "tevas": "34217",
+    "grupe": "mix",
+    "dydis": "16",
+    "gramai": "100",
+    "min": "16",
+    "max": "16",
+    "kaina": "16.2",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 22:45:01",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34219,
+    "pav": "Susidėk konservų rinkinį katėms · Mix · 100g · 32 vnt",
+    "bukle": "publish",
+    "tevas": "34217",
+    "grupe": "mix",
+    "dydis": "32",
+    "gramai": "100",
+    "min": "32",
+    "max": "32",
+    "kaina": "30.99",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 22:45:01",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34220,
+    "pav": "Susidėk konservų rinkinį katėms · Mix · 400g · 6 vnt",
+    "bukle": "publish",
+    "tevas": "34217",
+    "grupe": "mix",
+    "dydis": "6",
+    "gramai": "400",
+    "min": "6",
+    "max": "6",
+    "kaina": "14.99",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 22:45:01",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34221,
+    "pav": "Susidėk konservų rinkinį katėms · Mix · 400g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34217",
+    "grupe": "mix",
+    "dydis": "12",
+    "gramai": "400",
+    "min": "12",
+    "max": "12",
+    "kaina": "29.2",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 22:45:01",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34222,
+    "pav": "Susidėk konservų rinkinį katėms · Jautriam virškinimui · 100g · 12 vnt",
+    "bukle": "publish",
+    "tevas": "34217",
+    "grupe": "jautrus",
+    "dydis": "12",
+    "gramai": "100",
+    "min": "12",
+    "max": "12",
+    "kaina": "24.09",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 22:45:02",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34223,
+    "pav": "Susidėk konservų rinkinį katėms · Jautriam virškinimui · 100g · 24 vnt",
+    "bukle": "publish",
+    "tevas": "34217",
+    "grupe": "jautrus",
+    "dydis": "24",
+    "gramai": "100",
+    "min": "24",
+    "max": "24",
+    "kaina": "46.99",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-01 22:45:02",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34229,
+    "pav": "Susidėk skanėstų rinkinį jautresniam šuniui · 5 vnt",
+    "bukle": "publish",
+    "tevas": "34228",
+    "grupe": "jautresniam",
+    "dydis": "5",
+    "gramai": "std",
+    "min": "5",
+    "max": "5",
+    "kaina": "19.9",
+    "vaiku": 15,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 11:12:19",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34230,
+    "pav": "Susidėk skanėstų rinkinį jautresniam šuniui · 7 vnt",
+    "bukle": "publish",
+    "tevas": "34228",
+    "grupe": "jautresniam",
+    "dydis": "7",
+    "gramai": "std",
+    "min": "7",
+    "max": "7",
+    "kaina": "26.9",
+    "vaiku": 15,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 11:12:19",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34231,
+    "pav": "Susidėk skanėstų rinkinį jautresniam šuniui · 10 vnt",
+    "bukle": "publish",
+    "tevas": "34228",
+    "grupe": "jautresniam",
+    "dydis": "10",
+    "gramai": "std",
+    "min": "10",
+    "max": "10",
+    "kaina": "36.9",
+    "vaiku": 15,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 11:12:19",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34233,
+    "pav": "Susidėk kramtalų rinkinį · Mažam šuniui · 3 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "mazas",
+    "dydis": "3",
+    "gramai": "std",
+    "min": "3",
+    "max": "3",
+    "kaina": "3.9",
+    "vaiku": 12,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34234,
+    "pav": "Susidėk kramtalų rinkinį · Mažam šuniui · 5 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "mazas",
+    "dydis": "5",
+    "gramai": "std",
+    "min": "5",
+    "max": "5",
+    "kaina": "5.9",
+    "vaiku": 12,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34235,
+    "pav": "Susidėk kramtalų rinkinį · Mažam šuniui · 7 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "mazas",
+    "dydis": "7",
+    "gramai": "std",
+    "min": "7",
+    "max": "7",
+    "kaina": "7.9",
+    "vaiku": 12,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34236,
+    "pav": "Susidėk kramtalų rinkinį · Vidutiniam šuniui · 3 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "vidutinis",
+    "dydis": "3",
+    "gramai": "std",
+    "min": "3",
+    "max": "3",
+    "kaina": "13.9",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34237,
+    "pav": "Susidėk kramtalų rinkinį · Vidutiniam šuniui · 5 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "vidutinis",
+    "dydis": "5",
+    "gramai": "std",
+    "min": "5",
+    "max": "5",
+    "kaina": "20.9",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34238,
+    "pav": "Susidėk kramtalų rinkinį · Vidutiniam šuniui · 7 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "vidutinis",
+    "dydis": "7",
+    "gramai": "std",
+    "min": "7",
+    "max": "7",
+    "kaina": "27.9",
+    "vaiku": 6,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34239,
+    "pav": "Susidėk kramtalų rinkinį · Dideliam šuniui · 3 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "didelis",
+    "dydis": "3",
+    "gramai": "std",
+    "min": "3",
+    "max": "3",
+    "kaina": "29.9",
+    "vaiku": 12,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34240,
+    "pav": "Susidėk kramtalų rinkinį · Dideliam šuniui · 5 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "didelis",
+    "dydis": "5",
+    "gramai": "std",
+    "min": "5",
+    "max": "5",
+    "kaina": "46.9",
+    "vaiku": 12,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:57",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34241,
+    "pav": "Susidėk kramtalų rinkinį · Dideliam šuniui · 7 vnt",
+    "bukle": "publish",
+    "tevas": "34232",
+    "grupe": "didelis",
+    "dydis": "7",
+    "gramai": "std",
+    "min": "7",
+    "max": "7",
+    "kaina": "62.9",
+    "vaiku": 12,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 12:46:58",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34243,
+    "pav": "Susidėk skanėstų rinkinį katei · 5 vnt",
+    "bukle": "publish",
+    "tevas": "34242",
+    "grupe": "mix",
+    "dydis": "5",
+    "gramai": "std",
+    "min": "5",
+    "max": "5",
+    "kaina": "14.9",
+    "vaiku": 10,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 13:05:52",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34244,
+    "pav": "Susidėk skanėstų rinkinį katei · 7 vnt",
+    "bukle": "publish",
+    "tevas": "34242",
+    "grupe": "mix",
+    "dydis": "7",
+    "gramai": "std",
+    "min": "7",
+    "max": "7",
+    "kaina": "19.9",
+    "vaiku": 10,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 13:05:52",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   },
+   {
+    "id": 34245,
+    "pav": "Susidėk skanėstų rinkinį katei · 10 vnt",
+    "bukle": "publish",
+    "tevas": "34242",
+    "grupe": "mix",
+    "dydis": "10",
+    "gramai": "std",
+    "min": "10",
+    "max": "10",
+    "kaina": "26.9",
+    "vaiku": 10,
+    "cumulative": "no",
+    "svoris": "",
+    "katalogo_matomumas": "2026-07-02 13:05:52",
+    "vis": [
+     "exclude-from-catalog",
+     "exclude-from-search"
+    ]
+   }
+  ],
+  "tevai": {
+   "34196": "POSTO NERA",
+   "34207": {
+    "pav": "Susidėk konservų rinkinį šunims",
+    "bukle": "publish",
+    "tipas": "product"
+   },
+   "34217": {
+    "pav": "Susidėk konservų rinkinį katėms",
+    "bukle": "publish",
+    "tipas": "product"
+   },
+   "34228": {
+    "pav": "Susidėk skanėstų rinkinį jautresniam šuniui (TESTAS)",
+    "bukle": "publish",
+    "tipas": "product"
+   },
+   "34232": {
+    "pav": "Susidėk kramtalų rinkinį šuniui (TESTAS)",
+    "bukle": "publish",
+    "tipas": "product"
+   },
+   "34242": {
+    "pav": "Susidėk skanėstų rinkinį katei (TESTAS)",
+    "bukle": "publish",
+    "tipas": "product"
+   }
+  },
+  "cumulative_pasiskirstymas": [
+   {
+    "meta_value": "no",
+    "c": "57"
+   }
+  ],
+  "aktyvus_temp": [
+   {
+    "id": "2929",
+    "name": "TEMP RINK RECON 0814 v5"
+   }
+  ]
+ }
 }
