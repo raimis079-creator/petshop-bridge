@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.11';   /* v1.11: prekiu rinkiklis su filtrais + nuotraukos */
+	const VERSIJA = '1.12';   /* v1.12: rinkiklio uzklausu eiles sargas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -2089,7 +2089,7 @@ class Petshop_Laukai {
 		(function(){
 			var LID=<?php echo (int) $lid; ?>;
 			var N=window.PSLKA_NONCE, A=ajaxurl;
-			var pazymeta={}, laik=0, wh='';
+			var pazymeta={}, laik=0, wh='', eile=0;
 			function eur(n){ return Number(n).toFixed(2).replace('.',',')+' €'; }
 			function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
 				return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -2169,7 +2169,11 @@ class Petshop_Laukai {
 			function krauti(){
 				var rez=document.getElementById('r-rez');
 				rez.innerHTML='<div class="pslka-tuscia">Renkama…</div>';
+				/* Eiles sargas: greitai spaudant filtrus uzklausos grizta ne ta tvarka,
+				   ir senesne perrasydavo naujesne — ekranas rodydavo ne ta, kas pasirinkta. */
+				var mano=++eile;
 				fetch(A+'?'+param(),{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){
+					if(mano!==eile) return;
 					if(!j||!j.success){ rez.innerHTML='<div class="pslka-tuscia">Nepavyko.</div>'; return; }
 					var sar=j.data.prekes||[];
 					document.getElementById('r-rasta').textContent='Tinka '+j.data.rasta+' prekės';
