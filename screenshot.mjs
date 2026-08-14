@@ -1,20 +1,33 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+import { chromium } from 'playwright';
+import fs from 'fs';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const WP='https://dev.avesa.lt';
-const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const CODE=Buffer.from('YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX2QyJ10gPz8gJycpICE9PSAnRDJ4MDgxNGsnKSByZXR1cm47CglAc2V0X3RpbWVfbGltaXQoMzAwKTsKCSRvID0gYXJyYXkoJ21hcmtlcic9PidERVBMT1kgdjEuMDEnKTsKCSR1cmwgPSAnaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3JhaW1pczA3OS1jcmVhdG9yL3BldHNob3AtYnJpZGdlLzZlNzRlODg3NGYyZDUwZGQ0MDNmZWQzNDI4Yzk3Y2U3NWU0ZDg2MjEvZGVwbG95L3BldHNob3AtbGF1a2FpLnBocCc7CgkkciA9IHdwX3JlbW90ZV9nZXQoJHVybCwgYXJyYXkoJ3RpbWVvdXQnPT42MCkpOwoJaWYgKGlzX3dwX2Vycm9yKCRyKSkgeyAkb1snZXJyJ109JHItPmdldF9lcnJvcl9tZXNzYWdlKCk7IH0KCWVsc2UgewoJCSRrID0gd3BfcmVtb3RlX3JldHJpZXZlX2JvZHkoJHIpOwoJCSRvWydieXRlcyddPXN0cmxlbigkayk7ICRvWydtZDVfb2snXT0obWQ1KCRrKT09PSczMTE3ZmJmMGRlM2U1ODA2OTVmMDEwMWU5ZTIyYzBjNScpOwoJCWlmICgkb1snbWQ1X29rJ10pIHsKCQkJJHQ9c3RyX3JlcGxhY2UoYXJyYXkoJ2NsYXNzIFBldHNob3BfTGF1a2FpJywnUGV0c2hvcF9MYXVrYWk6OmluaXQoKTsnLCdQZXRzaG9wX0xhdWthaTo6JyksCgkJCQlhcnJheSgnY2xhc3MgUGV0c2hvcF9MYXVrYWlfUzInLCcnLCdQZXRzaG9wX0xhdWthaV9TMjo6JyksICRrKTsKCQkJJHRtcD1zeXNfZ2V0X3RlbXBfZGlyKCkuJy9sMTAxLScudGltZSgpLicucGhwJzsgZmlsZV9wdXRfY29udGVudHMoJHRtcCwkdCk7CgkJCSRvaz1udWxsOwoJCQl0cnkgeyBpbmNsdWRlICR0bXA7ICRvaz10cnVlOyAkb1snbGludCddPSdzdmFydSc7IH0KCQkJY2F0Y2ggKFBhcnNlRXJyb3IgJGUpeyAkb2s9ZmFsc2U7ICRvWydsaW50J109J1BhcnNlRXJyb3I6ICcuJGUtPmdldE1lc3NhZ2UoKTsgfQoJCQljYXRjaCAoVGhyb3dhYmxlICRlKXsgJG9rPXRydWU7ICRvWydsaW50J109J3J1bnRpbWU6ICcuJGUtPmdldE1lc3NhZ2UoKTsgfQoJCQlAdW5saW5rKCR0bXApOwoJCQlpZiAoJG9rKSB7CgkJCQkkZD1XUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWxhdWthaS5waHAnOwoJCQkJQGNvcHkoJGQsIFdQTVVfUExVR0lOX0RJUi4nLy5iYWstbGF1a2FpLScuZGF0ZSgnWW1kLUhpcycpLicudHh0Jyk7CgkJCQkkb1snaXJhc3l0YSddPWZpbGVfcHV0X2NvbnRlbnRzKCRkLCRrKTsKCQkJCSRvWydkZXN0X21kNV9vayddPShtZDVfZmlsZSgkZCk9PT0nMzExN2ZiZjBkZTNlNTgwNjk1ZjAxMDFlOWUyMmMwYzUnKTsKCQkJfQoJCX0KCX0KCSRHTE9CQUxTWydwc19kMiddPSRvOwp9LCAxMjkpOwoKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKCWlmICgoJF9HRVRbJ3BzX2QyJ10gPz8gJycpICE9PSAnRDJ4MDgxNGsnKSByZXR1cm47CglAc2V0X3RpbWVfbGltaXQoMzAwKTsKCSRvPWFycmF5KCdkaWVnaW1hcyc9PiRHTE9CQUxTWydwc19kMiddID8/ICduZXN1dmVpa2UnKTsKCSRvWyd2ZXJzaWphJ109Y2xhc3NfZXhpc3RzKCdQZXRzaG9wX0xhdWthaScpID8gUGV0c2hvcF9MYXVrYWk6OlZFUlNJSkEgOiBudWxsOwoJJG9bJ21heCddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9MYXVrYWknKSA/IFBldHNob3BfTGF1a2FpOjpNQVhfS1JFUFNZUyA6IG51bGw7CglpZiAoJG9bJ3ZlcnNpamEnXT09PScxLjAxJykgewoJCSRyPVBldHNob3BfTGF1a2FpOjppc3NhdWdvdGkoYXJyYXkoCgkJCSdpZCc9PjM0OTMyLAoJCQkncGF2Jz0+J1NrYW7El3N0xbMgZMSXxb7ElyDFoXVuaXVpIOKAlCBiZSB2acWhdGllbm9zJywKCQkJJ3NlaW1hJz0+J8WgdW5pbXMnLCd6b2Rpcyc9PidkZXplJywKCQkJJ3ByZWtlcyc9PmFycmF5KDI2NDYxLDIzODM0LDIzODQ5LDIzODUyLDIzODI1LDIzNzk2LDIyMzAyLDIyOTM1LDIyMzA0KSwKCQkJJ3Bha29wb3MnPT5hcnJheShhcnJheSgnbnVvJz0+MjAsJ2QnPT4yKSxhcnJheSgnbnVvJz0+MzAsJ2QnPT4zKSxhcnJheSgnbnVvJz0+NTAsJ2QnPT42KSksCgkJCSdrYXRlZ29yaWpvcyc9PmFycmF5KDY4MyksCgkJKSk7CgkJJG9bJ2F0bmF1amluaW1hcyddPSBpc193cF9lcnJvcigkcikgPyAnS0xBSURBOiAnLiRyLT5nZXRfZXJyb3JfbWVzc2FnZSgpIDogJHI7CgkJZ2xvYmFsICR3cGRiOwoJCSRvWydlaWx1Y2l1X2RiJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9d2NfbW5tX2NoaWxkX2l0ZW1zIFdIRVJFIGNvbnRhaW5lcl9pZD0zNDkzMiIpOwoJCS8qIHBlciBkaWRlbGlvIGtyZXBzaW8gYmFuZHltYXMg4oCUIHR1cmkgbmVsZWlzdGkgKi8KCQkkcGVyPVBldHNob3BfTGF1a2FpOjppc3NhdWdvdGkoYXJyYXkoJ2lkJz0+MCwncGF2Jz0+J1RFU1QgcGVyIGRpZGVsaXMnLCdwcmVrZXMnPT5hcnJheSgyNjQ2MSwyMzgzNCwyMzg0OSwyMzg1MiwyMzgyNSwyMzc5NiwyMjMwMiwyMjkzNSwyMjMwNCwyMTIyMCksJ3Bha29wb3MnPT5hcnJheSgpKSk7CgkJJG9bJ3Blcl9kaWRlbGlzJ109IGlzX3dwX2Vycm9yKCRwZXIpID8gJHBlci0+Z2V0X2Vycm9yX21lc3NhZ2UoKSA6ICdQUkFMRUlETyDigJQgYmxvZ2FpJzsKCX0KCWhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzApOwo=','base64').toString('utf8');
-async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,j:await r.text()}; }
-const out={};
-const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP D2',code:CODE,scope:'global',active:true,priority:5})});
-out.snip_status=cr.s;
-let id=null; try{ id=JSON.parse(cr.j).id; }catch(e){}
-out.snip_id=id;
-await new Promise(r=>setTimeout(r,4000));
-try{ const r=await fetch(WP+'/?ps_d2=D2x0814k'); out.http=r.status; const t=await r.text();
-  try{ out.rez=JSON.parse(t); }catch(e){ out.raw=t.slice(0,1500); } }catch(e){ out.err=String(e).slice(0,120); }
-if(id){ await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
-let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/d2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
-const body={message:'rec',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/d2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
-console.log('put',p.status,JSON.stringify(out).length);
+const RAW='https://raw.githubusercontent.com/'+REPO+'/94bc7198630d18d26b6d9f7a9af17e032ae0493b/maketai/vitrina_v2.html';
+const r=await fetch(RAW); const html=await r.text();
+fs.writeFileSync('/tmp/m.html',html);
+console.log('html',html.length);
+const br=await chromium.launch();
+async function put(name,buf){
+  let sha=null;
+  try{const g=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  const body={message:name,content:buf.toString('base64')}; if(sha) body.sha=sha;
+  const p=await fetch('https://api.github.com/repos/'+REPO+'/contents/screenshots/'+name,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+  console.log('put',name,p.status,buf.length);
+}
+let pg=await br.newPage({viewport:{width:1440,height:1000}});
+await pg.goto('file:///tmp/m.html'); await pg.waitForTimeout(900);
+await pg.evaluate(()=>{const ids=LAUKAI[Object.keys(LAUKAI)[0]].krepsys.map(p=>p.id);
+  for(let i=0;i<3;i++)k(ids[0],1); for(let i=0;i<2;i++)k(ids[3],1); for(let i=0;i<3;i++)k(ids[7],1); k(ids[8],2); k(ids[5],1);});
+await pg.waitForTimeout(400);
+await put('mv4_d_pilna.jpg', await pg.screenshot({type:'jpeg',quality:82,fullPage:true}));
+await pg.evaluate(()=>perziura(LAUKAI[Object.keys(LAUKAI)[0]].krepsys[0].id));
+await pg.waitForTimeout(400);
+await put('mv4_d_modal.jpg', await pg.screenshot({type:'jpeg',quality:82}));
+await pg.close();
+pg=await br.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true});
+await pg.goto('file:///tmp/m.html'); await pg.waitForTimeout(900);
+await pg.evaluate(()=>perziura(LAUKAI[Object.keys(LAUKAI)[0]].krepsys[1].id));
+await pg.waitForTimeout(400);
+await put('mv4_m_modal.jpg', await pg.screenshot({type:'jpeg',quality:80}));
+await br.close();
+console.log('baigta');
