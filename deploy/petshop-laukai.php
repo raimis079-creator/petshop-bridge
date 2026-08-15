@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.18';   /* v1.18: dovanos perziura atskirta nuo pasirinkimo */
+	const VERSIJA = '1.19';   /* v1.19: istaisytas issigriovęs tinklelis — kaires kolonos apvalkalas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -872,6 +872,11 @@ class Petshop_Laukai {
 
 			<form class="pslk-tinkl" method="post" enctype="multipart/form-data"
 				action="<?php echo esc_url( $p->get_permalink() ); ?>" id="pslk-forma">
+				<?php /* Vitrina yra dvieju stulpeliu tinklelis (korteles | deze). Viskas,
+				         kas priklauso kairei pusei, privalo buti VIENAME grid elemente —
+				         kitaip juosta uzima kaire kolona, korteles nustumia i desine,
+				         o deze iskrenta zemyn uz ekrano. */ ?>
+				<div class="pslk-kaire">
 				<div class="pslk-visi">
 					<span>Nežinai, nuo ko pradėti? <b><?php echo count( $prekes ); ?> skoniai</b> — imk po vieną kiekvieno.</span>
 					<button type="button" id="pslk-visi">Po 1 vnt. visų</button>
@@ -903,6 +908,7 @@ class Petshop_Laukai {
 								value="0" id="pslk-in-<?php echo (int) $pr['cid']; ?>">
 						</div>
 					<?php endforeach; ?>
+				</div>
 				</div>
 
 				<aside class="pslk-sonas">
@@ -1034,6 +1040,7 @@ class Petshop_Laukai {
 		.pslk-lbtn small{font-weight:400;opacity:.75;margin-left:5px}
 		.pslk-tinkl{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:30px;align-items:start}
 		@media(max-width:960px){.pslk-tinkl{grid-template-columns:1fr;gap:18px}}
+		.pslk-kaire{min-width:0}
 		.pslk-korteles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 		@media(max-width:760px){.pslk-korteles{grid-template-columns:repeat(2,1fr);gap:10px}}
 		@media(max-width:420px){.pslk-korteles{grid-template-columns:1fr}}
