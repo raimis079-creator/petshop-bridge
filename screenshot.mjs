@@ -49,7 +49,7 @@ const valymas = await snip('TEMP VALYMAS', [
 " $istrinta = array();",
 " foreach ($ids as $id) { if ($wpdb->delete($t, array('id'=>(int)$id), array('%d'))) { $istrinta[] = (int)$id; } }",
 " header('Content-Type: application/json'); echo wp_json_encode(array('istrinta'=>$istrinta)); exit;",
-"}, 131);"].join(chr(10)));
+"}, 131);"].join(String.fromCharCode(10)));
 await new Promise(r=>setTimeout(r,4500));
 try{ const rv = await fetch(WP+'/?ps_val=V9x'); out.valymas = JSON.parse(await rv.text()); }catch(e){ out.val_err=String(e).slice(0,120); }
 await off(valymas.id);
