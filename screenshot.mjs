@@ -14,17 +14,17 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 
 /* diegimas */
 const b64 = fs.readFileSync('deploy/petshop-laukai.php').toString('base64');
-const s1 = await snip('TEMP SET 123', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_s123'] ?? '') !== 'S123x') return;
-	update_option('ps_l_b64_123', '${b64}', false);
+const s1 = await snip('TEMP SET 124', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_s124'] ?? '') !== 'S124x') return;
+	update_option('ps_l_b64_124', '${b64}', false);
 	header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-await fetch(WP+'/?ps_s123=S123x').then(r=>r.text()).catch(()=>{});
+await fetch(WP+'/?ps_s124=S124x').then(r=>r.text()).catch(()=>{});
 await off(s1); await new Promise(r=>setTimeout(r,3000));
-const s2 = await snip('TEMP DEP 123', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_d123'] ?? '') !== 'D123x') return;
-	\$o=array(); \$b=get_option('ps_l_b64_123');
+const s2 = await snip('TEMP DEP 124', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_d124'] ?? '') !== 'D124x') return;
+	\$o=array(); \$b=get_option('ps_l_b64_124');
 	if(!\$b){ \$o['klaida']='tuscia'; }
 	else { \$k=base64_decode(\$b);
 		try { token_get_all(\$k, TOKEN_PARSE); \$o['sintakse']='OK';
@@ -32,16 +32,16 @@ const s2 = await snip('TEMP DEP 123', `add_action('wp_loaded', function(){
 			file_put_contents(\$kl,\$k); clearstatcache(true,\$kl);
 			\$o['sutampa']=(md5_file(\$kl)===md5(\$k));
 		} catch (ParseError \$e){ \$o['sintakse']='KLAIDA: '.\$e->getMessage(); }
-		delete_option('ps_l_b64_123'); }
+		delete_option('ps_l_b64_124'); }
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d123=D123x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
+try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d124=D124x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
 await off(s2); await new Promise(r=>setTimeout(r,2500));
 
 /* 5 testines dezes — pilna sutarta struktura */
-const s3 = await snip('TEMP DEZ 123', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_z123'] ?? '') !== 'Z123x') return;
+const s3 = await snip('TEMP DEZ 124', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_z124'] ?? '') !== 'Z124x') return;
 	\$o=array('versija'=>Petshop_Laukai::VERSIJA);
 	\$dov = wp_json_encode(array(16305,19098,17386));
 	\$rink = array(
@@ -90,8 +90,34 @@ const s3 = await snip('TEMP DEZ 123', `add_action('wp_loaded', function(){
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.paruosimas = JSON.parse(await (await fetch(WP+'/?ps_z123=Z123x')).text()); }catch(e){ out.paruosimas_err=String(e).slice(0,300); }
+try{ out.paruosimas = JSON.parse(await (await fetch(WP+'/?ps_z124=Z124x')).text()); }catch(e){ out.paruosimas_err=String(e).slice(0,300); }
 await off(s3); await new Promise(r=>setTimeout(r,2000));
+
+
+/* PAVADINIMU APREPTIS — taisykle ant visu konservu, ne 9 pavyzdziu */
+const audCode = `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_vardai'] ?? '') !== 'V124x') return;
+	\$ids = get_posts(array('post_type'=>'product','post_status'=>'publish','numberposts'=>-1,'fields'=>'ids',
+		'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'term_id','terms'=>array(73,79,86)))));
+	\$ref = new ReflectionMethod('Petshop_Laukai','skonio_pavadinimas');
+	\$ref->setAccessible(true);
+	\$blogi=array(); \$gerai=0;
+	foreach (\$ids as \$pid) {
+		\$pav = get_the_title(\$pid);
+		\$tr = \$ref->invoke(null, \$pav);
+		\$fallback = (\$tr === \$pav);
+		\$ilgas = mb_strlen(\$tr) > 42;
+		if (\$fallback || \$ilgas) { \$blogi[] = array('id'=>(int)\$pid,'pav'=>\$pav,'tr'=>\$tr,'kodel'=>\$fallback?'fallback':'ilgas'); }
+		else { \$gerai++; }
+	}
+	header('Content-Type: application/json');
+	echo wp_json_encode(array('viso'=>count(\$ids),'gerai'=>\$gerai,'blogu'=>count(\$blogi),'blogi'=>array_slice(\$blogi,0,40)));
+	exit;
+}, 131);`;
+const sA = await snip('TEMP VARDAI 124', audCode);
+await new Promise(r=>setTimeout(r,4000));
+try{ out.vardai = JSON.parse(await (await fetch(WP+'/?ps_vardai=V124x')).text()); }catch(e){ out.vardai_err=String(e).slice(0,200); }
+await off(sA); await new Promise(r=>setTimeout(r,2000));
 
 const D = out.paruosimas && out.paruosimas.dezes;
 const d800 = D && D['TEST Konservu deze 800 Be vistienos'];
@@ -132,7 +158,8 @@ T.t6_po1 = { praejo: k2==='11 vnt.', kiek: k2, cta: (await page.locator('#pslk-c
 await page.evaluate(()=>document.querySelector('.pslk-p').click());
 await page.waitForTimeout(700);
 const aprIlgis = await page.evaluate(()=>{var a=document.getElementById('pslk-pz-apr');return a?a.textContent.length:0;});
-T.t7_pilnas_aprasas = { praejo: aprIlgis>700, ilgis: aprIlgis };
+const aprTekstas = await page.evaluate(()=>{var a=document.getElementById('pslk-pz-apr');return a?a.textContent:'';});
+T.t7_pilnas_svarus_aprasas = { praejo: aprIlgis>700 && aprTekstas.indexOf('&#')<0 && aprTekstas.indexOf('&nbsp')<0, ilgis: aprIlgis, esybes: aprTekstas.indexOf('&#')>=0 };
 await page.evaluate(()=>document.querySelector('.pslk-pz-x').click());
 await page.waitForTimeout(400);
 /* dovanos atrakinimas + krepselis */
@@ -140,11 +167,28 @@ for(let i=0;i<10;i++){ await page.evaluate(()=>{var b=document.querySelector('.p
 await page.waitForTimeout(800);
 const atr = await page.locator('#pslk-dov.atrakinta').count();
 T.t8_dovana_atsirakina = { praejo: atr===1, suma:(await page.locator('#pslk-suma').textContent()).trim() };
-/* antros dovanos pasirinkimas */
-await page.evaluate(()=>{document.querySelectorAll('.pslk-dovk')[1].click();});
+/* dovanos KEITIMAS tikru peles paspaudimu (evaluate slepe gedima) */
+await page.locator('.pslk-dovk').nth(1).click();
 await page.waitForTimeout(500);
 const in2 = await page.locator('#pslk-dov-in').inputValue();
-T.t9_dovanos_pasirinkimas = { praejo: in2==='19098', input: in2 };
+const pz2 = await page.locator('#pslk-pz.rodo').count();
+T.t9_dovanos_keitimas_pele = { praejo: in2==='19098' && pz2===0, input: in2, perziura_atsidare: pz2 };
+/* treciа — irgi pele, per nuotrauka */
+await page.locator('.pslk-dovk').nth(2).locator('img').click();
+await page.waitForTimeout(500);
+const in3 = await page.locator('#pslk-dov-in').inputValue();
+T.t9b_keitimas_per_foto = { praejo: in3==='17386', input: in3 };
+/* „Apie ›" vis dar atidaro perziura */
+await page.locator('.pslk-dovk').nth(0).locator('.pslk-dov-apie').click();
+await page.waitForTimeout(500);
+const pz3 = await page.locator('#pslk-pz.rodo').count();
+const apr3 = await page.evaluate(()=>{var a=document.getElementById('pslk-pz-apr');return a?a.textContent:'';});
+T.t9c_apie_perziura = { praejo: pz3===1 && apr3.indexOf('&#')<0, esybiu_nera: apr3.indexOf('&#')<0 };
+await page.evaluate(()=>document.querySelector('.pslk-pz-x').click());
+await page.waitForTimeout(300);
+/* grazinam antra dovana krepselio testui */
+await page.locator('.pslk-dovk').nth(1).click();
+await page.waitForTimeout(400);
 await page.evaluate(()=>document.getElementById('pslk-cta').click());
 await page.waitForTimeout(4500);
 await page.goto(WP+'/cart/',{waitUntil:'domcontentloaded',timeout:60000});
@@ -164,18 +208,18 @@ async function shot(vardas){
 await page.goto(d800.url,{waitUntil:'networkidle',timeout:60000});
 await page.waitForTimeout(2500);
 await page.evaluate(()=>{ var c=document.querySelector('.cmplz-cookiebanner'); if(c) c.style.display='none'; });
-await shot('v123_tuscia');
+await shot('v124_tuscia');
 await page.evaluate(()=>document.getElementById('pslk-visi').click());
 await page.waitForTimeout(600);
 for(let i=0;i<6;i++){ await page.evaluate(()=>{var b=document.querySelector('.pslk-kort .pslk-stp button[data-d="1"]');if(b)b.click();}); await page.waitForTimeout(90); }
 await page.waitForTimeout(900);
-await shot('v123_pilna');
+await shot('v124_pilna');
 out.viso = Object.keys(T).length;
 out.praejo = Object.values(T).filter(x=>x.praejo).length;
 await br.close();
 }
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw123.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw124.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw123.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw124.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('ok');
