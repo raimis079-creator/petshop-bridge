@@ -11,43 +11,43 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 
 const kodas = [
 "add_action('wp_loaded', function(){",
-" if ((\\$_GET['ps_at2'] ?? '') !== 'A2x') return;",
-" \\$o = array();",
-" global \\$wpdb, \\$menu, \\$submenu;",
-" \\$o['lenteles'] = \\$wpdb->get_col(\"SHOW TABLES LIKE '{\\$wpdb->prefix}ps%'\");",
-" \\$o['mnm'] = \\$wpdb->get_var(\"SHOW TABLES LIKE '{\\$wpdb->prefix}wc_mnm_child_items'\");",
-" \\$o['uzsakymu_hpos'] = (int) \\$wpdb->get_var(\"SELECT COUNT(*) FROM {\\$wpdb->prefix}wc_orders\");",
-" \\$o['meniu'] = array();",
-" if (is_array(\\$menu)) { foreach (\\$menu as \\$m) {",
-"   \\$pav = wp_strip_all_tags(\\$m[0]);",
-"   if (stripos(\\$pav, 'petshop') === false) continue;",
-"   \\$v = array();",
-"   if (!empty(\\$submenu[\\$m[2]])) { foreach (\\$submenu[\\$m[2]] as \\$s) { \\$v[] = wp_strip_all_tags(\\$s[0]) . ' | ' . \\$s[2]; } }",
-"   \\$o['meniu'][\\$pav] = \\$v;",
+" if (($_GET['ps_at3'] ?? '') !== 'A3x') return;",
+" $o = array();",
+" global $wpdb, $menu, $submenu;",
+" $o['lenteles'] = $wpdb->get_col(\"SHOW TABLES LIKE '{$wpdb->prefix}ps%'\");",
+" $o['mnm'] = $wpdb->get_var(\"SHOW TABLES LIKE '{$wpdb->prefix}wc_mnm_child_items'\");",
+" $o['uzsakymu_hpos'] = (int) $wpdb->get_var(\"SELECT COUNT(*) FROM {$wpdb->prefix}wc_orders\");",
+" $o['meniu'] = array();",
+" if (is_array($menu)) { foreach ($menu as $m) {",
+"   $pav = wp_strip_all_tags($m[0]);",
+"   if (stripos($pav, 'petshop') === false) continue;",
+"   $v = array();",
+"   if (!empty($submenu[$m[2]])) { foreach ($submenu[$m[2]] as $s) { $v[] = wp_strip_all_tags($s[0]) . ' | ' . $s[2]; } }",
+"   $o['meniu'][$pav] = $v;",
 " } }",
-" \\$o['moduliai'] = array();",
-" foreach (glob(WPMU_PLUGIN_DIR . '/*.php') as \\$f) {",
-"   \\$b = basename(\\$f);",
-"   if (strpos(\\$b, 'pardav') === false && strpos(\\$b, 'ataskait') === false && strpos(\\$b, 'ivyki') === false) continue;",
-"   \\$t = file_get_contents(\\$f);",
-"   \\$o['moduliai'][\\$b] = array('kb' => round(strlen(\\$t)/1024), 'klases' => array());",
-"   foreach (array('class ', 'add_submenu_page', 'CREATE TABLE', 'dbDelta', 'skirtuk') as \\$z) {",
-"     \\$o['moduliai'][\\$b]['turi'][\\$z] = substr_count(\\$t, \\$z);",
+" $o['moduliai'] = array();",
+" foreach (glob(WPMU_PLUGIN_DIR . '/*.php') as $f) {",
+"   $b = basename($f);",
+"   if (strpos($b, 'pardav') === false && strpos($b, 'ataskait') === false && strpos($b, 'ivyki') === false) continue;",
+"   $t = file_get_contents($f);",
+"   $o['moduliai'][$b] = array('kb' => round(strlen($t)/1024), 'klases' => array());",
+"   foreach (array('class ', 'add_submenu_page', 'CREATE TABLE', 'dbDelta', 'skirtuk') as $z) {",
+"     $o['moduliai'][$b]['turi'][$z] = substr_count($t, $z);",
 "   }",
 " }",
-" header('Content-Type: application/json'); echo wp_json_encode(\\$o); exit;",
+" header('Content-Type: application/json'); echo wp_json_encode($o); exit;",
 "}, 131);"
 ].join("\n");
 
-const s = await snip('TEMP ATAS2', kodas);
+const s = await snip('TEMP ATAS3', kodas);
 out.snippetas = s;
 await new Promise(r=>setTimeout(r,5000));
-try{ const r = await fetch(WP+'/?ps_at2=A2x'); const t = await r.text();
+try{ const r = await fetch(WP+'/?ps_at3=A3x'); const t = await r.text();
   try{ out.r = JSON.parse(t); }catch(e){ out.ne_json = t.slice(0,200); }
 }catch(e){ out.e=String(e).slice(0,150); }
 await off(s.id);
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas3.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas3.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('ok');
