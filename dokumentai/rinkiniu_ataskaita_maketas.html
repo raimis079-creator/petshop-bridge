@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAKETAS · Petshop ataskaitos → Rinkiniai (standartas v2)</title>
+<style>
+:root{
+  --fon:#f0f0f1; --korta:#fff; --linija:#dcdcde; --tekstas:#1d2327;
+  --mut:#787c82; --akc:#2271b1; --ok:#00794b; --bad:#b32d2e; --gelsva:#dba617;
+  --ok-fonas:#edfaef; --bad-fonas:#fcf0f1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fon);color:var(--tekstas);
+  font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif}
+.demo-juosta{background:#1d2327;color:#fff;padding:8px 20px;font-size:12px}
+.demo-juosta b{color:#f0c33c}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 20px 60px}
+h1{font-size:23px;font-weight:400;margin:8px 0 4px}
+h2{font-size:15px;margin:30px 0 10px}
+.aprasas{color:var(--mut);margin:0 0 14px}
+.sviezuma{float:right;color:var(--mut);font-size:12px;margin-top:14px}
+
+.periodas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;background:var(--korta);
+  border:1px solid var(--linija);border-radius:6px;padding:10px 14px;margin:12px 0 16px}
+.presetai{display:flex;gap:4px}
+.presetai button{border:1px solid var(--linija);background:#fff;border-radius:4px;
+  padding:5px 11px;cursor:pointer;font-size:12.5px;color:var(--tekstas)}
+.presetai button.akt{background:var(--akc);border-color:var(--akc);color:#fff}
+.periodas label{font-weight:600}
+.periodas select,.periodas input[type=date]{border:1px solid var(--linija);border-radius:4px;padding:5px 8px;font-size:12.5px}
+.palyginys{color:var(--mut);font-size:12px;margin-left:auto}
+
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.kpi .k{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:13px 15px;position:relative}
+.k h3{margin:0 0 4px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:600}
+.k .reiksme{font-size:22px;font-weight:600;line-height:1.15}
+.k .delta{font-size:12px;font-weight:600;margin-top:2px;display:inline-block;padding:1px 7px;border-radius:10px}
+.delta.up{color:var(--ok);background:var(--ok-fonas)}
+.delta.down{color:var(--bad);background:var(--bad-fonas)}
+.delta.neut{color:var(--mut);background:#f0f0f1}
+.k .pries{color:var(--mut);font-size:11.5px;margin-left:6px}
+.k svg.spark{position:absolute;right:12px;bottom:12px;opacity:.9}
+
+.tt{display:inline-flex;width:14px;height:14px;border-radius:50%;background:#e3e5e8;color:var(--mut);
+  font-size:10px;align-items:center;justify-content:center;cursor:help;position:relative;vertical-align:1px;margin-left:4px;font-style:normal}
+.tt:hover::after{content:attr(data-t);position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  background:#1d2327;color:#fff;padding:7px 10px;border-radius:5px;width:240px;font-size:11.5px;line-height:1.45;
+  font-weight:400;text-transform:none;letter-spacing:0;z-index:20;text-align:left}
+
+.diagrama{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:14px 16px;margin-top:14px}
+.diagrama .galva{display:flex;gap:16px;align-items:center;margin-bottom:6px}
+.diagrama .galva b{font-size:13px}
+.legenda{display:flex;gap:14px;font-size:12px;color:var(--mut);margin-left:auto}
+.legenda i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;font-style:normal}
+
+.veiksmai{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:860px){.veiksmai{grid-template-columns:1fr}}
+.v{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:13px 15px}
+.v.bad-r{border-left:4px solid var(--bad)}
+.v.ok-r{border-left:4px solid var(--ok)}
+.v h3{margin:0 0 8px;font-size:13px}
+.v ul{margin:0;padding:0;list-style:none}
+.v li{padding:6px 0;border-top:1px solid #f0f0f1;display:flex;gap:8px;align-items:baseline}
+.v li:first-child{border-top:none}
+.v li a{color:var(--akc);text-decoration:none;font-weight:600}
+.v li .kodel{color:var(--mut);font-size:12px;margin-left:auto;text-align:right}
+
+.lent-galva{display:flex;gap:10px;align-items:center;margin:0 0 8px}
+.lent-galva input[type=search]{border:1px solid var(--linija);border-radius:4px;padding:6px 10px;width:230px;font-size:12.5px}
+.lent-galva .csv{margin-left:auto;border:1px solid var(--linija);background:#fff;border-radius:4px;padding:6px 12px;cursor:pointer;font-size:12.5px}
+table.d{width:100%;border-collapse:collapse;background:var(--korta);border:1px solid var(--linija);border-radius:6px;overflow:hidden}
+.d th{background:#fff;border-bottom:1px solid var(--linija);padding:9px 10px;font-size:11.5px;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--mut);text-align:right;cursor:pointer;user-select:none;white-space:nowrap}
+.d th:first-child{text-align:left}
+.d th .r{font-size:9px;margin-left:3px;opacity:.6}
+.d th.akt{color:var(--akc)}
+.d td{padding:9px 10px;border-bottom:1px solid #f0f0f1;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.d td:first-child{text-align:left;white-space:normal}
+.d tr:hover td{background:#f6f9fc}
+.d a{color:var(--akc);text-decoration:none;font-weight:600}
+.d .sub{color:var(--mut);font-size:11.5px;font-weight:400}
+.d .ok{color:var(--ok);font-weight:700}.d .bad{color:var(--bad);font-weight:700}
+.d .mut{color:var(--mut)}
+.zyme{display:inline-block;font-size:10px;border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:1px;font-weight:600}
+.zyme.mnm{background:#e7f0f7;color:#2271b1}
+.zyme.dp{background:#f0e9f5;color:#8c5e9e}
+.maza{color:var(--mut)!important;font-weight:400!important}
+.maza-z{font-size:10px;background:#f0f0f1;color:var(--mut);border-radius:8px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.verdiktas{font-size:11px;font-weight:700;border-radius:3px;padding:2px 7px}
+.verdiktas.prideda{background:var(--ok-fonas);color:var(--ok)}
+.verdiktas.perkelia{background:var(--bad-fonas);color:var(--bad)}
+.verdiktas.neaisku{background:#f0f0f1;color:var(--mut)}
+.spejimas{background:#fcf9e8;border-left:4px solid var(--gelsva);padding:10px 14px;margin:12px 0;border-radius:0 4px 4px 0}
+.pastaba{color:var(--mut);font-size:12px;margin-top:8px}
+
+.pakopos{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:14px 16px}
+.pak-eil{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid #f0f0f1;font-size:12.5px}
+.pak-eil:first-of-type{border-top:none}
+.pak-eil .pav{width:150px}
+.pak-eil .juosta{flex:1;height:16px;background:#f0f0f1;border-radius:3px;overflow:hidden}
+.pak-eil .juosta b{display:block;height:16px;background:var(--akc)}
+.pak-eil .sk{width:230px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+footer{margin-top:40px;color:var(--mut);font-size:12px;border-top:1px solid var(--linija);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="demo-juosta">MAKETAS peržiūrai · <b>visi skaičiai — DEMO duomenys</b> (dev'e realių rinkinių pardavimų nėra). Rikiavimas, paieška, laikotarpiai ir tooltip'ai veikia.</div>
+<div class="wrap">
+
+<span class="sviezuma">Duomenys atnaujinti prieš 4 min. · dienos suvestinė 03:15</span>
+<h1>Rinkiniai</h1>
+<p class="aprasas">Paruošti rinkiniai (MnM) ir DP pakai: kiek uždirba, ar prideda pardavimų, ar tik perkelia juos su mažesne marža. Savikaina — komponentų suma pardavimo dieną.</p>
+
+<!-- ======== 1. LAIKOTARPIS ======== -->
+<div class="periodas">
+  <div class="presetai" id="presetai">
+    <button data-p="7">7 d.</button>
+    <button data-p="30" class="akt">30 d.</button>
+    <button data-p="men">Šis mėnuo</button>
+    <button data-p="pmen">Praėjęs mėn.</button>
+    <button data-p="visi">Nuo pradžios</button>
+  </div>
+  <label>nuo</label><input type="date" value="2026-07-17">
+  <label>iki</label><input type="date" value="2026-08-16">
+  <label style="margin-left:10px">Tipas</label>
+  <select><option>— visi —</option><option>MnM rinkiniai</option><option>DP pakai</option></select>
+  <label>Gyvūnas</label>
+  <select><option>— visi —</option><option>Šunims</option><option>Katėms</option><option>Graužikams</option></select>
+  <span class="palyginys">lyginama su: <b>birž. 17 – liep. 16</b> (ankstesnės 30 d.)</span>
+</div>
+
+<!-- ======== 2. KPI SU DELTA ======== -->
+<div class="kpi">
+  <div class="k"><h3>Pajamos su PVM <i class="tt" data-t="Visų rinkinių ir DP pakų eilučių suma su PVM pasirinktu laikotarpiu. Grąžinimai atimti grąžinimo dieną.">i</i></h3>
+    <div class="reiksme">2 148,30 €</div>
+    <span class="delta up">▲ 11,2 %</span><span class="pries">buvo 1 931,80 €</span>
+    <svg class="spark" width="72" height="26" viewBox="0 0 72 26"><polyline fill="none" stroke="#2271b1" stroke-width="1.6" points="0,19 9,17 18,20 27,14 36,16 45,12 54,14 63,8 72,10"/></svg>
+  </div>
+  <div class="k"><h3>Pelnas <i class="tt" data-t="Pajamos be PVM (÷1,21) minus komponentų savikainų suma iš užsakymo eilučių pardavimo momentu. Eilutės be savikainos NEĮSKAIČIUOTOS.">i</i></h3>
+    <div class="reiksme">412,60 €</div>
+    <span class="delta up">▲ 6,4 %</span><span class="pries">buvo 387,80 €</span>
+    <svg class="spark" width="72" height="26" viewBox="0 0 72 26"><polyline fill="none" stroke="#00794b" stroke-width="1.6" points="0,18 9,19 18,16 27,17 36,14 45,15 54,13 63,11 72,12"/></svg>
+  </div>
+  <div class="k"><h3>Marža <i class="tt" data-t="Pelnas ÷ pajamos be PVM × 100, tik iš eilučių su žinoma savikaina.">i</i></h3>
+    <div class="reiksme">23,2 %</div>
+    <span class="delta down">▼ 1,0 p.p.</span><span class="pries">buvo 24,2 %</span>
+  </div>
+  <div class="k"><h3>Parduota rinkinių</h3>
+    <div class="reiksme">61</div>
+    <span class="delta up">▲ 17,3 %</span><span class="pries">MnM 38 · DP 23</span>
+  </div>
+  <div class="k"><h3>Dalis parduotuvės apyvartoje <i class="tt" data-t="Rinkinių pajamos ÷ visos parduotuvės pajamos. Rodo, ar rinkinių strategija auga greičiau už parduotuvę.">i</i></h3>
+    <div class="reiksme">6,8 %</div>
+    <span class="delta up">▲ 0,9 p.p.</span><span class="pries">buvo 5,9 %</span>
+  </div>
+</div>
+
+<div class="spejimas"><b>2</b> eilutės be savikainos (legacy komponentai) į maržą neįskaičiuotos — tikras pelnas MAŽESNIS nei rodomas. <a href="#" style="color:var(--akc)">Rodyti eilutes →</a></div>
+
+<!-- ======== 3. TENDENCIJA ======== -->
+<div class="diagrama">
+  <div class="galva"><b>Pajamos ir pelnas pagal dieną</b>
+    <div class="legenda"><span><i style="background:#2271b1"></i>Pajamos su PVM</span><span><i style="background:#00794b"></i>Pelnas</span><span style="opacity:.75"><i style="background:#c3c4c7"></i>ankstesnis laikotarpis</span></div>
+  </div>
+  <svg width="100%" height="190" viewBox="0 0 1080 190" preserveAspectRatio="none" aria-label="Laiko eilutė">
+    <g stroke="#f0f0f1"><line x1="0" y1="40" x2="1080" y2="40"/><line x1="0" y1="85" x2="1080" y2="85"/><line x1="0" y1="130" x2="1080" y2="130"/></g>
+    <text x="4" y="36" font-size="10" fill="#787c82">120 €</text>
+    <text x="4" y="81" font-size="10" fill="#787c82">80 €</text>
+    <text x="4" y="126" font-size="10" fill="#787c82">40 €</text>
+    <polyline fill="none" stroke="#c3c4c7" stroke-width="1.4" stroke-dasharray="4 4" points="0,146 77,138 154,150 231,134 308,144 385,128 462,136 539,124 616,131 693,118 770,126 847,114 924,122 1001,111 1080,116"/>
+    <polyline fill="none" stroke="#2271b1" stroke-width="2.2" points="0,138 77,124 154,142 231,108 308,122 385,94 462,114 539,84 616,101 693,72 770,92 847,60 924,80 1001,48 1080,66"/>
+    <polyline fill="none" stroke="#00794b" stroke-width="2" points="0,166 77,162 154,167 231,156 308,160 385,148 462,156 539,144 616,150 693,138 770,146 847,130 924,140 1001,122 1080,130"/>
+  </svg>
+</div>
+
+<!-- ======== 4. VEIKSMAI ======== -->
+<h2>Ką daryti</h2>
+<div class="veiksmai">
+  <div class="v bad-r"><h3>Įtariama kanibalizacija — peržiūrėti</h3>
+    <ul>
+      <li><a href="#">Jaučio ausų rinkinys 10 vnt.</a><span class="kodel">bendri vnt. −4 % · marža rinkinyje 19 % vs 31 % atskirai</span></li>
+      <li><a href="#">Josera Lamb 15 kg ×2 pakas</a><span class="kodel">bendri vnt. +1 % · marža pake 14 % vs 18 % atskirai</span></li>
+    </ul>
+  </div>
+  <div class="v ok-r"><h3>Veikia — prideda pardavimų</h3>
+    <ul>
+      <li><a href="#">Kramtalų startinis rinkinys</a><span class="kodel">bendri vnt. +38 % · marža 27 %</span></li>
+      <li><a href="#">Ėriuko skanėstų rinkinys</a><span class="kodel">bendri vnt. +22 % · marža 29 %</span></li>
+      <li><a href="#">Exclusion 12 kg ×2 pakas</a><span class="kodel">bendri vnt. +15 % · marža 21 %</span></li>
+    </ul>
+  </div>
+</div>
+<p class="pastaba">Taisyklės: „kanibalizuoja" — komponentų bendri vienetai (rinkinys + atskirai) neaugo ARBA krito, o maržos skirtumas &gt; 5 p.p. rinkinio nenaudai. „Veikia" — bendri vienetai augo &gt; 10 %. Ribos — nustatymai. Verdiktas — heuristika iš palyginimo su ankstesniu laikotarpiu, ne A/B įrodymas — todėl „peržiūrėti", ne „naikinti".</p>
+
+<!-- ======== 5. RINKINIU LENTELE ======== -->
+<h2>Rinkiniai ir pakai</h2>
+<div class="lent-galva">
+  <input type="search" id="pai" placeholder="Ieškoti rinkinio…">
+  <span class="pastaba" style="margin:0">Spausk stulpelio antraštę rikiavimui</span>
+  <button class="csv" onclick="csv()">⬇ CSV eksportas</button>
+</div>
+<table class="d" id="lent">
+<thead><tr>
+  <th data-k="0">Rinkinys</th>
+  <th data-k="1" class="akt">Parduota <span class="r">▼</span></th>
+  <th data-k="2">Pajamos</th>
+  <th data-k="3">Savikaina</th>
+  <th data-k="4">Pelnas</th>
+  <th data-k="5">Marža</th>
+  <th data-k="6">Nuolaida klientui <i class="tt" data-t="„Sutaupote" suma: komponentų kainų suma atskirai minus rinkinio kaina, × parduota vnt. Tai marža, kurią atidavei už apjungimą.">i</i></th>
+  <th data-k="7">Nuolaidos grąža <i class="tt" data-t="Bendrų komponentų vienetų pokytis % (rinkinys + atskirai, prieš ankstesnį laikotarpį). Atsako: ar atiduota nuolaida atnešė augimą.">i</i></th>
+  <th data-k="8">Verdiktas</th>
+</tr></thead>
+<tbody>
+<tr><td><a href="#">Kramtalų startinis rinkinys</a><span class="zyme mnm">MnM</span><div class="sub">5 komponentai · <a href="#" style="font-weight:400">užsakymai (14) →</a></div></td>
+  <td><b>14</b></td><td>489,30 €</td><td>295,10 €</td><td>109,30 €</td><td class="ok">27,0 %</td><td>61,60 € <span class="sub">(4,40 €/vnt.)</span></td><td class="ok">+38 %</td><td><span class="verdiktas prideda">PRIDEDA</span></td></tr>
+<tr><td><a href="#">Ėriuko skanėstų rinkinys</a><span class="zyme mnm">MnM</span><div class="sub">4 komponentai · <a href="#" style="font-weight:400">užsakymai (11) →</a></div></td>
+  <td><b>11</b></td><td>362,45 €</td><td>212,60 €</td><td>86,95 €</td><td class="ok">29,0 %</td><td>36,30 € <span class="sub">(3,30 €/vnt.)</span></td><td class="ok">+22 %</td><td><span class="verdiktas prideda">PRIDEDA</span></td></tr>
+<tr><td><a href="#">Exclusion 12 kg ×2 pakas</a><span class="zyme dp">DP</span><div class="sub">bazinė #30411 · <a href="#" style="font-weight:400">užsakymai (9) →</a></div></td>
+  <td><b>9</b></td><td>598,20 €</td><td>391,30 €</td><td>103,10 €</td><td>20,9 %</td><td>53,10 € <span class="sub">(5,90 €/vnt.)</span></td><td class="ok">+15 %</td><td><span class="verdiktas prideda">PRIDEDA</span></td></tr>
+<tr><td><a href="#">Josera Lamb 15 kg ×2 pakas</a><span class="zyme dp">DP</span><div class="sub">bazinė #29877 · <a href="#" style="font-weight:400">užsakymai (8) →</a></div></td>
+  <td><b>8</b></td><td>486,10 €</td><td>345,80 €</td><td>55,90 €</td><td class="bad">13,9 %</td><td>71,20 € <span class="sub">(8,90 €/vnt.)</span></td><td>+1 %</td><td><span class="verdiktas perkelia">PERKELIA</span></td></tr>
+<tr><td><a href="#">Jaučio ausų rinkinys 10 vnt.</a><span class="zyme mnm">MnM</span><div class="sub">1 komponentas ×10 · <a href="#" style="font-weight:400">užsakymai (7) →</a></div></td>
+  <td><b>7</b></td><td>146,30 €</td><td>97,90 €</td><td>23,00 €</td><td class="bad">19,0 %</td><td>21,70 € <span class="sub">(3,10 €/vnt.)</span></td><td class="bad">−4 %</td><td><span class="verdiktas perkelia">PERKELIA</span></td></tr>
+<tr><td><a href="#">Kojų rinkinys</a><span class="zyme mnm">MnM</span><div class="sub">3 komponentai · <a href="#" style="font-weight:400">užsakymai (2) →</a></div></td>
+  <td><b>2</b></td><td>41,80 €</td><td>27,30 €</td><td>7,25 €</td><td class="maza">21,0 % <span class="maza-z">maža imtis</span></td><td>4,20 €</td><td class="maza">— <span class="maza-z">maža imtis</span></td><td><span class="verdiktas neaisku">PER MAŽAI</span></td></tr>
+</tbody>
+</table>
+<p class="pastaba">Rinkinio pavadinimas veda į kortelę; „užsakymai (N) →" — į užsakymus su šiuo rinkiniu; paspaudus eilutę atsidaro kanibalizacijos analizė (pavyzdys žemiau). MnM / DP žymės — kad abu modeliai gyventų vienoje lentelėje, bet filtruotųsi atskirai.</p>
+
+<!-- ======== 6. KANIBALIZACIJOS DRILL-DOWN ======== -->
+<h2>Kanibalizacijos analizė <span style="font-weight:400;color:var(--mut);font-size:13px">— atsidaro paspaudus eilutę lentelėje</span></h2>
+<div class="diagrama" style="border-left:4px solid var(--bad)">
+  <div class="galva" style="align-items:baseline;flex-wrap:wrap"><b style="font-size:15px">Jaučio ausų rinkinys 10 vnt.</b>
+    <span class="pastaba" style="margin:0">komponentas: Džiovintos jaučio ausys #27114 · rinkinio kaina 20,90 € · atskirai 10 vnt. = 24,00 €</span></div>
+  <table class="d" style="margin-top:8px">
+  <thead><tr><th></th><th>Vnt. per 30 d.</th><th>Ankstesnės 30 d.</th><th>Pokytis</th><th>Pajamos</th><th>Marža</th></tr></thead>
+  <tbody>
+  <tr><td>Komponentas <b>rinkinyje</b></td><td>70</td><td>30</td><td class="ok">+40</td><td>146,30 €</td><td class="bad">19,0 %</td></tr>
+  <tr><td>Komponentas <b>atskirai</b> kataloge</td><td>96</td><td>143</td><td class="bad">−47</td><td>230,40 €</td><td class="ok">31,0 %</td></tr>
+  <tr style="background:#fafafa"><td><b>Iš viso</b></td><td><b>166</b></td><td><b>173</b></td><td class="bad"><b>−4 %</b></td><td>376,70 €</td><td>25,7 % <span class="sub">(buvo 29,8 %)</span></td></tr>
+  </tbody>
+  </table>
+  <p class="pastaba" style="margin-bottom:0">Skaitosi taip: rinkinys pardavė 70 vnt., bet atskiri pardavimai krito 47 vnt. — <b>žmonės, kurie ir taip būtų pirkę, tiesiog perėjo į pigesnį formatą</b>. Bendri vienetai neaugo, o svertinė marža krito 4,1 p.p. Veiksmas: mažinti nuolaidą arba didinti rinkinio dydį (10 → 15 vnt.), kad formatas taikytų į didesnį poreikį, ne į tą patį pirkėją. Palyginimui „PRIDEDA" atveju atskiri pardavimai nekrenta arba krenta mažiau, nei rinkinys prideda.</p>
+</div>
+
+<!-- ======== 7. DP PAKOPOS ======== -->
+<h2>DP pakopos — kurią realiai perka <i class="tt" data-t="Daugiau=pigiau produkto pirkimų pasiskirstymas pagal pakopą. Jei visi ima žemiausią — aukštesnės pakopos neatlieka darbo ir jų nuolaida dovanojama veltui.">i</i></h2>
+<div class="pakopos">
+  <div style="font-weight:600;margin-bottom:6px">Josera Lamb 15 kg <span class="sub" style="color:var(--mut);font-weight:400">· bazinė kaina 62,90 €</span></div>
+  <div class="pak-eil"><span class="pav">×1 (be nuolaidos)</span><span class="juosta"><b style="width:74%"></b></span><span class="sk">37 vnt. · 74 % pirkimų · marža 18,0 %</span></div>
+  <div class="pak-eil"><span class="pav">×2 (−7 %)</span><span class="juosta"><b style="width:22%"></b></span><span class="sk">11 vnt. · 22 % · marža 13,9 %</span></div>
+  <div class="pak-eil"><span class="pav">×3 (−11 %)</span><span class="juosta"><b style="width:4%"></b></span><span class="sk">2 vnt. · 4 % · marža 11,2 % <span class="maza-z">maža imtis</span></span></div>
+  <div style="border-top:1px solid #f0f0f1;margin-top:8px;padding-top:8px" class="pastaba">×3 pakopa per 30 d. nupirkta 2 kartus — nuolaidos gylis neatlieka darbo. Veiksmas: bandyti ×3 keisti į ×2+dovana (skanėstai iš VF, savikaina ~2 €) — kaštas mažesnis už 11 % nuolaidą, o suvokiama vertė didesnė. Pakopos imamos iš užsakymo eilučių `_dp_pack_qty`.</div>
+</div>
+
+<!-- ======== 8. NUOLAIDOS EFEKTYVUMAS ======== -->
+<h2>Nuolaidos efektyvumas <i class="tt" data-t="Visi rinkiniai sugrupuoti pagal „Sutaupote" gylį (% nuo komponentų kainos atskirai). Atsako į klausimą: koks nuolaidos dydis realiai judina pardavimą.">i</i></h2>
+<table class="d">
+<thead><tr><th>Nuolaidos gylis</th><th>Rinkinių</th><th>Parduota</th><th>Vid. parduota / rinkiniui</th><th>Vid. marža</th><th>Nuolaidos grąža <i class="tt" data-t="Vidutinis bendrų komponentų vienetų pokytis šios grupės rinkiniuose.">i</i></th></tr></thead>
+<tbody>
+<tr><td>iki 5 %</td><td>3</td><td>9</td><td>3,0</td><td class="ok">28,4 %</td><td>+6 %</td></tr>
+<tr><td>5–10 %</td><td>5</td><td>34</td><td>6,8</td><td class="ok">25,1 %</td><td class="ok">+24 %</td></tr>
+<tr><td>10–15 %</td><td>4</td><td>18</td><td>4,5</td><td class="bad">16,2 %</td><td>+9 %</td></tr>
+</tbody>
+</table>
+<p class="pastaba">Demo duomenyse matosi tipinis dėsnis: 5–10 % nuolaida judina pirkimą beveik taip pat kaip 10–15 %, bet marža skiriasi 9 p.p. — gilesnė nuolaida dažniausiai dovanojama veltui. Kai susikaups realių duomenų, ši lentelė pasakys tavo tikslų tašką.</p>
+
+<footer>Petshop ataskaitų standartas v2 · Rinkinių ataskaita · maketas peržiūrai · visi tekstai ir ribos — savininko tvirtinimui</footer>
+</div>
+
+<script>
+(function(){
+  const t=document.getElementById('lent'), tb=t.tBodies[0];
+  let ak=1, kr=-1;
+  t.tHead.addEventListener('click',e=>{
+    const th=e.target.closest('th'); if(!th||e.target.classList.contains('tt'))return;
+    const k=+th.dataset.k; if(isNaN(k))return;
+    kr=(k===ak)?-kr:-1; ak=k;
+    t.querySelectorAll('th').forEach(x=>{x.classList.remove('akt');const r=x.querySelector('.r');if(r)r.remove();});
+    th.classList.add('akt'); th.insertAdjacentHTML('beforeend','<span class="r">'+(kr<0?'▼':'▲')+'</span>');
+    const eil=[...tb.rows];
+    eil.sort((a,b)=>{
+      const va=a.cells[k].innerText.trim(), vb=b.cells[k].innerText.trim();
+      const na=parseFloat(va.replace(/[^\d,.-]/g,'').replace(',','.')), nb=parseFloat(vb.replace(/[^\d,.-]/g,'').replace(',','.'));
+      if(!isNaN(na)&&!isNaN(nb)) return (na-nb)*(-kr);
+      return va.localeCompare(vb,'lt')*(-kr);
+    });
+    eil.forEach(r=>tb.appendChild(r));
+  });
+})();
+document.getElementById('pai').addEventListener('input',function(){
+  const q=this.value.toLowerCase();
+  document.querySelectorAll('#lent tbody tr').forEach(r=>{
+    r.style.display=r.cells[0].innerText.toLowerCase().includes(q)?'':'none';
+  });
+});
+document.getElementById('presetai').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  document.querySelectorAll('#presetai button').forEach(x=>x.classList.remove('akt'));
+  b.classList.add('akt');
+});
+function csv(){
+  const eil=[...document.querySelectorAll('#lent tr')].map(r=>[...r.cells].map(c=>'"'+c.innerText.replace(/\s*užsakymai.*→/,'').replace(/"/g,'""').replace(/\n/g,' ')+'"').join(';')).join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\ufeff'+eil],{type:'text/csv;charset=utf-8'}));
+  a.download='rinkiniai.csv'; a.click();
+}
+</script>
+</body>
+</html>
