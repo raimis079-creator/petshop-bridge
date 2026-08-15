@@ -855,6 +855,11 @@ class Petshop_Laukai {
 					. ( $b['busena'] !== 'publish' ? '<i title="juodraštis — klientas nemato">•</i>' : '' )
 					. '</a>';
 			}
+			/* Naujas rinkinys BUTENT sitai grupei ir siam dydziui — grupe ir
+			   pakuote nukeliauja per nuoroda, nereikia rinktis is naujo. */
+			echo '<a class="pslka-grbtn pslka-grnaujas" href="'
+				. esc_url( self::nuoroda( array( 'veiksmas' => 'naujas', 'grupe' => $grupe, 'dydis' => $dydis ) ) )
+				. '" title="Naujas rinkinys šiai grupei' . ( $dydis !== '' ? ' ir pakuotei ' . esc_attr( $dydis ) : '' ) . '">＋</a>';
 			echo '</div>';
 		}
 		echo '</div></div>';
@@ -1979,6 +1984,7 @@ class Petshop_Laukai {
 			: '<span class="pslka-z y" id="b-zyme">juodraštis · klientas nemato</span>';
 		echo '<span class="pslka-sp"></span>';
 		echo '<a class="button" target="_blank" href="' . esc_url( get_permalink( $lid ) ) . '">Peržiūrėti parduotuvėje</a> ';
+		echo '<button class="button pslka-trinti-btn" id="b-trinti">Ištrinti</button> ';
 		if ( $busena === 'publish' ) {
 			echo '<button class="button" id="b-jungiklis" data-i="juodrastis">Grąžinti į juodraštį</button>';
 		} else {
@@ -2296,6 +2302,10 @@ class Petshop_Laukai {
 		.pslka-grbtn small{background:rgba(0,0,0,.08);border-radius:9px;padding:0 6px;font-size:11px;font-weight:700}
 		.pslka-grbtn.on small{background:rgba(255,255,255,.25)}
 		.pslka-grbtn i{color:#b26200;font-style:normal;font-weight:800}
+		.pslka-grnaujas{border-style:dashed;color:#646970;font-weight:800;padding:5px 12px}
+		.pslka-grnaujas:hover{border-color:#00a32a;color:#00a32a}
+		.pslka-trinti-btn{color:#b32d2e !important;border-color:#b32d2e !important}
+		.pslka-trinti-btn:hover{background:#b32d2e !important;color:#fff !important}
 		.pslka-apsauga{padding:9px 0 9px 11px;border-top:1px solid #f0f0f1;border-left:3px solid #c3c4c7;font-size:12.5px}
 		.pslka-apsauga:first-child{border-top:0;padding-top:0}
 		.pslka-apsauga b{display:block}.pslka-apsauga span{color:#646970}
@@ -2343,13 +2353,31 @@ class Petshop_Laukai {
 				var pav=document.getElementById('n-pav').value.trim();
 				if(!pav){ stat('Pavadinimas būtinas.',true); return; }
 				kurti.disabled=true;
+				var nd=document.getElementById('n-dydis');
 				siusti('ps_laukai_naujas',{pav:pav,trumpas:document.getElementById('n-trumpas').value,
 					seima:document.getElementById('n-seima').value,zodis:document.getElementById('n-zodis').value,
+					dydis: nd?nd.value.trim():'',
 					aprasas:document.getElementById('n-aprasas').value},
 					function(d){ location.href=d.url; });
 				setTimeout(function(){ kurti.disabled=false; },5000);
 			}); }
 			if(!LID) return;
+
+			/* --- trynimas --- */
+			var bt=document.getElementById('b-trinti');
+			if(bt){ bt.addEventListener('click',function(e){
+				e.preventDefault();
+				var pav=document.getElementById('s-pav').value;
+				if(!confirm('Perkelti „'+pav+'\u201C į šiukšlinę?\n\nRinkinys dings iš parduotuvės, bet jį bus galima grąžinti.')) return;
+				var visam=false;
+				if(confirm('Ištrinti IŠ KARTO ir NEGRĮŽTAMAI?\n\nGerai = trinam visam laikui.\nAtšaukti = tik į šiukšlinę.')) visam=true;
+				bt.disabled=true;
+				siusti('ps_laukai_trinti',{visam:visam?'1':'0'},function(d){
+					stat(d.zinute);
+					setTimeout(function(){ location.href=d.nuoroda; },1200);
+				});
+				setTimeout(function(){ bt.disabled=false; },5000);
+			}); }
 
 			/* --- busena --- */
 			var bj=document.getElementById('b-jungiklis');
@@ -2631,6 +2659,14 @@ class Petshop_Laukai {
 		if ( ! $lid ) { wp_send_json_error( 'Nepavyko sukurti.' ); }
 		update_post_meta( $lid, self::META_LAUKAS, 'yes' );
 		update_post_meta( $lid, self::META_ZODIS, ( $_POST['zodis'] ?? '' ) === 'dezute' ? 'dezute' : 'deze' );
+		/* Pakuote is kurimo formos: su ja rinkinys is karto atsistoja i savo
+		   dydzio eilute vitrinoje ir gauna konservu minimuma. */
+		$n_dydis = sanitize_text_field( wp_unslash( $_POST['dydis'] ?? '' ) );
+		if ( $n_dydis !== '' ) {
+			update_post_meta( $lid, self::META_DYDIS, $n_dydis );
+			$prod->set_min_container_size( 6 );
+			$prod->save();
+		}
 		$g = sanitize_key( $_POST['seima'] ?? '' );
 		if ( isset( self::grupiu_vardai()[ $g ] ) ) {
 			update_post_meta( $lid, '_ps_laukas_grupe', $g );
@@ -2723,6 +2759,29 @@ class Petshop_Laukai {
 	 *    nieko nepasako, o dovana renkantis svarbiausia kaina;
 	 * 3) rikiuoja pagal kaina didejant — dovanos savikaina yra dezes savikaina.
 	 */
+	/**
+	 * Rinkinio trynimas. MnM vaiku eilutes gyvena atskiroje lenteleje — be ju
+	 * isvalymo liktu naslaiciai, rodantys i neegzistuojancia preke.
+	 * Pirmas paspaudimas — i siuksline (grazinama), su „visam" — negriztamai.
+	 */
+	public static function ajax_trinti() {
+		self::tikrink();
+		global $wpdb;
+		$lid = (int) ( $_POST['lid'] ?? 0 );
+		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks rinkinys nerastas.' ); }
+		$visam = ( $_POST['visam'] ?? '' ) === '1';
+		$pav = get_the_title( $lid );
+
+		if ( ! $visam ) {
+			if ( ! wp_trash_post( $lid ) ) { wp_send_json_error( 'Nepavyko perkelti į šiukšlinę.' ); }
+			wp_send_json_success( array( 'zinute' => '„' . $pav . '" perkeltas į šiukšlinę — dar galima grąžinti.',
+				'nuoroda' => self::nuoroda() ) );
+		}
+		$wpdb->delete( $wpdb->prefix . 'wc_mnm_child_items', array( 'container_id' => $lid ), array( '%d' ) );
+		if ( ! wp_delete_post( $lid, true ) ) { wp_send_json_error( 'Nepavyko ištrinti.' ); }
+		wp_send_json_success( array( 'zinute' => '„' . $pav . '" ištrintas negrįžtamai.', 'nuoroda' => self::nuoroda() ) );
+	}
+
 	public static function ajax_dov_paieska() {
 		self::tikrink();
 		$lid   = (int) ( $_GET['lid'] ?? 0 );
