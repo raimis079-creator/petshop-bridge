@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.38';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.39';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -2417,8 +2417,14 @@ class Petshop_Laukai {
 				if(drb) drb.addEventListener('click',function(e){ e.preventDefault(); dovIeskoti(); });
 				dq.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); dovIeskoti(); } });
 			}
+			/* Lenktyniu sargas: uzsikrovus paleidziama paieska be filtro, o zmogus
+			   tuo metu jau pasirenka kategorija. Letesnis PIRMAS atsakymas
+			   ateidavo paskutinis ir perrasydavo filtruota sarasa — atrodydavo,
+			   kad filtras neveikia (rasta narsykleje 08-15). */
+			var dovSeq=0;
 			function dovIeskoti(){
 				var rez=document.getElementById('dov-rez'); if(!rez) return;
+				var mano=++dovSeq;
 				var f=document.getElementById('dov-filtras').value;
 				rez.innerHTML='<div class="pslka-tuscia">Ieškoma…</div>';
 				var u=A+'?action=ps_laukai_dov_paieska&nonce='+N+'&lid='+LID
@@ -2432,11 +2438,13 @@ class Petshop_Laukai {
 					if(!r.ok) throw new Error('HTTP '+r.status);
 					return r.text();
 				}).then(function(tekstas){
+					if(mano!==dovSeq) return null;   /* pasenes atsakymas — metam */
 					var j;
 					try { j=JSON.parse(tekstas); }
 					catch(e){ throw new Error('Serveris grąžino ne JSON: '+tekstas.slice(0,120)); }
 					return j;
 				}).then(function(j){
+					if(j===null || mano!==dovSeq) return;
 					if(!j||!j.success){ rez.innerHTML='<div class="pslka-tuscia">Nepavyko ieškoti.</div>'; return; }
 					var sar=j.data.prekes||[];
 					if(!sar.length){ rez.innerHTML='<div class="pslka-tuscia">Nieko nerasta — atlaisvink filtrus.</div>'; return; }
@@ -2462,6 +2470,7 @@ class Petshop_Laukai {
 						});
 					});
 				}).catch(function(e){
+					if(mano!==dovSeq) return;
 					rez.innerHTML='<div class="pslka-tuscia">Paieška nepavyko: '+esc(String(e.message||e))
 						+'<br><button class="button" id="dov-kartoti">Bandyti dar kartą</button></div>';
 					var kk=document.getElementById('dov-kartoti');
