@@ -11,48 +11,40 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 
 const kodas = [
 "add_action('wp_loaded', function(){",
-" if (($_GET['ps_at4'] ?? '') !== 'A4x') return;",
-" $o = array();",
-" global $wpdb;",
-" $t = $wpdb->prefix . 'ps_ivykiai';",
-" $o['stulpeliai'] = $wpdb->get_results(\"SHOW COLUMNS FROM $t\", ARRAY_A);",
-" $o['eiluciu'] = (int) $wpdb->get_var(\"SELECT COUNT(*) FROM $t\");",
-" $o['pavyzdziai'] = $wpdb->get_results(\"SELECT * FROM $t ORDER BY id DESC LIMIT 5\", ARRAY_A);",
-" $o['tipai'] = $wpdb->get_results(\"SELECT tipas, COUNT(*) k FROM $t GROUP BY tipas ORDER BY k DESC LIMIT 15\", ARRAY_A);",
-" $f = WPMU_PLUGIN_DIR . '/petshop-ivykiai.php';",
-" $src = file_exists($f) ? file_get_contents($f) : '';",
-" $o['ivykiai_klase'] = array();",
-" foreach (explode(chr(10), $src) as $eil) {",
-"   $e = trim($eil);",
-"   if (strpos($e,'class ')===0 || strpos($e,'public static function')===0 || strpos($e,'const ')===0) { $o['ivykiai_klase'][] = substr($e,0,120); }",
-" }",
-" $o['ataskaitu_meniu'] = array();",
+" if (($_GET['ps_at5'] ?? '') !== 'A5x') return;",
+" $o = array('snippetai'=>array(), 'moduliai'=>array());",
 " foreach (glob(WPMU_PLUGIN_DIR . '/*.php') as $ff) {",
 "   $s = file_get_contents($ff);",
-"   if (stripos($s, 'ataskait') === false) continue;",
-"   $eil = array();",
-"   foreach (explode(chr(10), $s) as $l) { if (stripos($l,'ataskait')!==false && (stripos($l,'menu')!==false || stripos($l,'page')!==false)) { $eil[] = trim(substr($l,0,140)); } }",
-"   if ($eil) { $o['ataskaitu_meniu'][basename($ff)] = array_slice($eil,0,6); }",
+"   if (stripos($s, 'ps-ataskaitos') !== false || stripos($s, 'Petshop ataskaitos') !== false) {",
+"     $eil = array();",
+"     foreach (explode(chr(10), $s) as $l) { if (stripos($l,'ataskait')!==false) { $eil[] = trim(substr($l,0,150)); } }",
+"     $o['moduliai'][basename($ff)] = array_slice($eil, 0, 8);",
+"   }",
 " }",
-" $p = WPMU_PLUGIN_DIR . '/petshop-pardavimai.php';",
-" $ps = file_exists($p) ? file_get_contents($p) : '';",
-" $o['pardavimai'] = array();",
-" foreach (explode(chr(10), $ps) as $eil) {",
-"   $e = trim($eil);",
-"   if (strpos($e,'class ')===0 || strpos($e,'public static function')===0 || strpos($e,'add_action')===0) { $o['pardavimai'][] = substr($e,0,120); }",
+" global $wpdb;",
+" $t = $wpdb->prefix . 'snippets';",
+" $eil = $wpdb->get_results(\"SELECT id, name, active FROM $t WHERE code LIKE '%ataskait%' OR name LIKE '%taskait%'\", ARRAY_A);",
+" $o['snippetai'] = $eil;",
+" foreach ($eil as $sn) {",
+"   $kodas = $wpdb->get_var($wpdb->prepare(\"SELECT code FROM $t WHERE id=%d\", $sn['id']));",
+"   $rast = array();",
+"   foreach (explode(chr(10), (string)$kodas) as $l) {",
+"     if (stripos($l,'add_menu_page')!==false || stripos($l,'add_submenu_page')!==false || stripos($l,'skirtuk')!==false) { $rast[] = trim(substr($l,0,150)); }",
+"   }",
+"   if ($rast) { $o['detales'][$sn['id'].' '.$sn['name']] = array_slice($rast,0,8); }",
 " }",
 " header('Content-Type: application/json'); echo wp_json_encode($o); exit;",
 "}, 131);"].join("\n");
 
-const s = await snip('TEMP ATAS4', kodas);
+const s = await snip('TEMP ATAS5', kodas);
 out.snippetas = s;
 await new Promise(r=>setTimeout(r,5000));
-try{ const r = await fetch(WP+'/?ps_at4=A4x'); const t = await r.text();
+try{ const r = await fetch(WP+'/?ps_at5=A5x'); const t = await r.text();
   try{ out.r = JSON.parse(t); }catch(e){ out.ne_json = t.slice(0,200); }
 }catch(e){ out.e=String(e).slice(0,150); }
 await off(s.id);
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas4.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas5.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas4.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/atas5.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('ok');
