@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.34';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.35';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -2639,10 +2639,21 @@ class Petshop_Laukai {
 		$kr = self::krepsys( $lid );
 		$sand = $kr ? ( strtoupper( (string) get_post_meta( $kr[0], '_ps_sandelis', true ) ) ?: 'AV' ) : 'AV';
 
+		/* Greitis: 120 prekiu × po kelias taksonomijos uzklausas kiekvienai buvo
+		   per letas kelias — narsykleje uzklausa pakibdavo ties „Ieškoma…"
+		   (pastaba 08-15). Dabar rusi ir gyvuna atrenkam WP_Query lygyje. */
 		$args = array(
-			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 120,
+			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 60,
 			'fields' => 'ids', 'orderby' => 'title', 'order' => 'ASC',
+			'no_found_rows' => true, 'update_post_term_cache' => false,
 		);
+		$tax = array();
+		if ( $gyv === 'sunims' || $gyv === 'katems' ) {
+			$tax[] = array( 'taxonomy' => 'pa_gyvuno_rusis', 'field' => 'name',
+				'terms' => ( $gyv === 'sunims' ? array( 'Šunims', 'Šuniukams' ) : array( 'Katėms', 'Kačiukams' ) ),
+				'operator' => 'IN' );
+		}
+		if ( $tax ) { $tax['relation'] = 'AND'; $args['tax_query'] = $tax; }
 		if ( mb_strlen( $q ) >= 2 ) { $args['s'] = $q; }
 		$args['meta_query'] = array(
 			'relation' => 'OR',
@@ -2666,21 +2677,15 @@ class Petshop_Laukai {
 
 			$kat = (array) wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) );
 			$kat_t = mb_strtolower( implode( ' ', $kat ) . ' ' . $p->get_name() );
+			$atributo_nera = ( trim( (string) $p->get_attribute( 'pa_gyvuno_rusis' ) ) === '' );
 
 			/* Gyvunas: pirma atributas (patikimas), tada pavadinimas/kategorija.
 			   Katės dėžei siūlyti jaučio ausį — akivaizdi klaida (pastaba 08-15). */
-			if ( $gyv === 'sunims' || $gyv === 'katems' ) {
-				$at = mb_strtolower( (string) $p->get_attribute( 'pa_gyvuno_rusis' ) );
-				$tinka = false;
-				if ( $at !== '' ) {
-					$tinka = ( $gyv === 'sunims' )
-						? ( mb_strpos( $at, 'šun' ) !== false || mb_strpos( $at, 'sun' ) !== false )
-						: ( mb_strpos( $at, 'kat' ) !== false );
-				} else {
-					$tinka = ( $gyv === 'sunims' )
-						? ( preg_match( '/šun|šuni/u', $kat_t ) && ! preg_match( '/katėm|kačiuk/u', $kat_t ) )
-						: (bool) preg_match( '/katė|kačiuk/u', $kat_t );
-				}
+			/* Atsarga prekems be atributo: sprendziam is pavadinimo/kategorijos. */
+			if ( ( $gyv === 'sunims' || $gyv === 'katems' ) && $atributo_nera ) {
+				$tinka = ( $gyv === 'sunims' )
+					? ( preg_match( '/šun|šuni/u', $kat_t ) && ! preg_match( '/katėm|kačiuk/u', $kat_t ) )
+					: (bool) preg_match( '/katė|kačiuk/u', $kat_t );
 				if ( ! $tinka ) { continue; }
 			}
 			if ( $rusis === 'skanestai' && ! preg_match( '/skanėst|užkand|lazdel|pagalvėl/u', $kat_t ) ) { continue; }
