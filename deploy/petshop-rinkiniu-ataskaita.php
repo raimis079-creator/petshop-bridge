@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Statistika — Rinkiniai (ataskaita)
  * Description: „Petshop ataskaitos" → „Surenkami rinkiniai": pinigai, prekiu lentele, piltuvelis.
- * Version: 1.0
+ * Version: 1.1
  *
  * Kabinamas ant esamo konteinerio `petshop-reports` (class-admin-reports.php),
  * kad visos ataskaitos gyventu vienoje vietoje.
@@ -78,18 +78,22 @@ class Petshop_Rinkiniu_Ataskaita {
 		);
 
 		foreach ( $uzs as $ord ) {
+			/* MnM sieja vaikus su konteineriu per krepselio MAISA, ne per eilutes ID:
+			   konteineryje `_mnm_cart_key`, vaikuose `_mnm_container` su ta pacia
+			   verte (patikrinta uzsakyme #34952). */
 			$konteineriai = array();
 			foreach ( $ord->get_items() as $it ) {
-				$pid = $it->get_product_id();
 				$p = $it->get_product();
-				if ( $p && $p->get_type() === 'mix-and-match' ) { $konteineriai[ $it->get_id() ] = $pid; }
+				if ( ! $p || $p->get_type() !== 'mix-and-match' ) { continue; }
+				$raktas = (string) $it->get_meta( '_mnm_cart_key', true );
+				if ( $raktas !== '' ) { $konteineriai[ $raktas ] = $it->get_product_id(); }
 			}
 			if ( ! $konteineriai ) { continue; }
 
 			$sio_uzsakymo = false;
 			foreach ( $ord->get_items() as $it ) {
-				$tevas = (int) $it->get_meta( '_mnm_container_id', true );
-				if ( ! $tevas ) { continue; }
+				$tevas = (string) $it->get_meta( '_mnm_container', true );
+				if ( $tevas === '' ) { continue; }
 				$deze = isset( $konteineriai[ $tevas ] ) ? $konteineriai[ $tevas ] : 0;
 				if ( ! $deze ) { continue; }
 				if ( $deze_id && $deze !== $deze_id ) { continue; }
