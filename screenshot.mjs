@@ -4,43 +4,30 @@ const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const out={};
 async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,t:await r.text()}; }
-async function snip(name,code){ const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name,code,scope:'global',active:true,priority:5})}); let id=null; try{ id=JSON.parse(cr.t).id; }catch(e){} return id; }
-async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
-const s = await snip('TEMP REC3', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_rec3'] ?? '') !== 'R3x') return;
-	\$o=array('kabliukai'=>array());
-	\$ieskom = array('woocommerce_before_main_content','woocommerce_archive_description','woocommerce_before_shop_loop',
-		'woocommerce_after_shop_loop','woocommerce_shop_loop_header','loop_shop_before','woocommerce_before_shop_loop_item');
-	foreach (glob(WPMU_PLUGIN_DIR.'/*.php') as \$f) {
-		\$t = file_get_contents(\$f);
-		foreach (\$ieskom as \$k) {
-			if (strpos(\$t,\$k)!==false) {
-				preg_match_all('/add_action\\\\(\\\\s*[\\\\\\'"]'.preg_quote(\$k,'/').'[\\\\\\'"]\\\\s*,\\\\s*array\\\\([^,]+,\\\\s*[\\\\\\'"]([a-zA-Z_0-9]+)/', \$t, \$m);
-				\$o['kabliukai'][basename(\$f)][\$k] = \$m[1] ?: array('(rastas tekste)');
-			}
-		}
-	}
-	/* globalus filtrai/snippetai irgi gali piesti */
-	global \$wp_filter;
-	foreach (array('woocommerce_before_shop_loop','woocommerce_archive_description','woocommerce_before_main_content') as \$k) {
-		\$o['gyvi'][\$k] = array();
-		if (isset(\$wp_filter[\$k])) {
-			foreach (\$wp_filter[\$k]->callbacks as \$prio => \$cbs) {
-				foreach (\$cbs as \$id => \$cb) {
-					\$pav = is_array(\$cb['function'])
-						? (is_object(\$cb['function'][0]) ? get_class(\$cb['function'][0]) : (string)\$cb['function'][0]).'::'.\$cb['function'][1]
-						: (is_string(\$cb['function']) ? \$cb['function'] : 'closure');
-					\$o['gyvi'][\$k][] = \$prio.' '.\$pav;
-				}
-			}
-		}
-	}
-	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit; }, 131);`);
-await new Promise(r=>setTimeout(r,4500));
-try{ out.r = JSON.parse(await (await fetch(WP+'/?ps_rec3=R3x')).text()); }catch(e){ out.e=String(e).slice(0,250); }
-await off(s);
+/* konkretus 547 */
+try{ const r=await api('/wp-json/code-snippets/v1/snippets/547');
+  out.s547 = r.s===200 ? (()=>{const j=JSON.parse(r.t); return {id:j.id,pav:j.name,aktyvus:j.active,ilgis:(j.code||'').length,
+    kabliukas:(j.code||'').match(/add_action\(\s*['"]([a-z_]+)/i)?.[1]||'?',
+    pradzia:(j.code||'').slice(0,260)};})() : {http:r.s, t:r.t.slice(0,160)};
+}catch(e){ out.e547=String(e).slice(0,180); }
+/* visi puslapiai */
+try{
+  let visi=[];
+  for (let p=1;p<=6;p++){
+    const r=await api('/wp-json/code-snippets/v1/snippets?per_page=100&page='+p);
+    if(r.s!==200) break;
+    const j=JSON.parse(r.t); if(!j.length) break;
+    visi = visi.concat(j.map(s=>({id:s.id,pav:s.name,akt:s.active})));
+    if(j.length<100) break;
+  }
+  out.viso = visi.length;
+  out.rinkiniu_snippetai = visi.filter(s=>/rinkin|susid|kategor|juost|kviet|blok/i.test(s.pav));
+  out.id_ruozas = { min: Math.min(...visi.map(s=>s.id)), max: Math.max(...visi.map(s=>s.id)) };
+  out.aktyvus = visi.filter(s=>s.akt);
+  out.apie547 = visi.filter(s=>s.id>=540 && s.id<=560);
+}catch(e){ out.e_sar=String(e).slice(0,180); }
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/rec3.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/s547.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/rec3.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/s547.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('ok');
