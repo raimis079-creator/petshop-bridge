@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.31';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.32';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -1615,7 +1615,17 @@ class Petshop_Laukai {
 	 */
 	public static function grupe( $lid ) {
 		$rankinis = get_post_meta( $lid, '_ps_laukas_grupe', true );
-		if ( $rankinis ) { return $rankinis; }
+		if ( $rankinis ) {
+			/* Meta gali buti irasyta ne raktu, o grupes VARDU (taip nutiko kuriant
+			   testines dezes per koda). Filtrai lygina raktus, tad vardas duotu
+			   tuscia sarasa. Priimam abu — ir grazinam rakta. */
+			$vardai = self::grupiu_vardai();
+			if ( isset( $vardai[ $rankinis ] ) ) { return $rankinis; }
+			foreach ( $vardai as $rakt => $vard ) {
+				if ( self::sulyginti( $vard ) === self::sulyginti( $rankinis ) ) { return $rakt; }
+			}
+			return $rankinis;
+		}
 
 		/* Pirma — pats rinkinys: jo pavadinimas ir kategorijos. Kramtalai guli
 		   „Skanestu sunims" kategorijoje, todel is vien krepsio prekiu ju
@@ -1653,6 +1663,12 @@ class Petshop_Laukai {
 			'kons_sunims' => 'Konservai šunims',
 			'kons_kates'  => 'Konservai katėms',
 		);
+	}
+
+	/** Palyginimui: be diakritiku, mazosiomis — „Konservai sunims" = „Konservai šunims". */
+	private static function sulyginti( $t ) {
+		$t = mb_strtolower( trim( (string) $t ) );
+		return strtr( $t, array( 'ą'=>'a','č'=>'c','ę'=>'e','ė'=>'e','į'=>'i','š'=>'s','ų'=>'u','ū'=>'u','ž'=>'z' ) );
 	}
 
 	/** Pirmos krepsio prekes nuotrauka — kortelei sarase. */
