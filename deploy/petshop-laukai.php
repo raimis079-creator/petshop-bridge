@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.21';   /* v1.21: skonio vardo atsarga sugadintiems katalogo pavadinimams + kablelis kainoje */
+	const VERSIJA = '1.22';   /* v1.22: iki 12 skoniu, per-dezes min, pilnas aprasas perziuroje, kompaktiskesnes korteles */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -52,7 +52,10 @@ class Petshop_Laukai {
 	/** Maziausias kiekis, kad deze butu deze, o ne viena preke. */
 	const MIN_KIEKIS = 3;
 	/** 9 prekes — 3x3 tinklelis vitrinoje uzsipildo svariai (savininko sprendimas 2026-08-14). */
-	const MAX_KREPSYS = 9;
+	/* 12, ne 9: savininko sprendimas 2026-08-15 — konservu dezei devyniu
+	   skoniu maza, kai klientas deda 13–17 vnt. Skanestu dezems niekas
+	   nesikeicia: ju krepsiai lieka po 9, cia tik virsutine riba. */
+	const MAX_KREPSYS = 12;
 	/** Po nuolaidos silpniausios prekes marza privalo likti bent tiek. */
 	const MARZOS_RIBA = 20.0;
 
@@ -550,9 +553,12 @@ class Petshop_Laukai {
 		if ( $aprasas !== '' ) { $prod->set_description( $aprasas ); }
 		if ( $kat ) { $prod->set_category_ids( $kat ); }
 
-		/* Esme: kainos atskirai, min 3, be virsutines ribos. */
+		/* Esme: kainos atskirai, be virsutines ribos. Min — per-dezes:
+		   skanestams 3, konservams 6 (savininko sprendimas 2026-08-15).
+		   MnM min laiko paciame produkte, papildomo meta nereikia. */
 		$prod->set_priced_per_product( true );
-		$prod->set_min_container_size( self::MIN_KIEKIS );
+		$min = isset( $args['min'] ) ? max( 2, (int) $args['min'] ) : (int) ( $prod->get_min_container_size() ?: self::MIN_KIEKIS );
+		$prod->set_min_container_size( $min );
 		$prod->set_max_container_size( 0 );
 		$prod->set_discount( '' );        /* nuolaida tvarkom patys, pakopomis */
 		$prod->set_manage_stock( false ); /* likutis gyvena prekese */
@@ -757,7 +763,8 @@ class Petshop_Laukai {
 			else { $eil[] = $x; }
 		}
 		$t = implode( "\n", $eil );
-		if ( mb_strlen( $t ) > 700 ) { $t = mb_substr( $t, 0, 700 ); $t = mb_substr( $t, 0, mb_strrpos( $t, '.' ) + 1 ); }
+		/* Kirpimo nebera (buvo 700): perziuros langas slenka, o klientas nori
+		   PILNO apraso — nukirptas atrodo kaip klaida (savininko pastaba 08-15). */
 		return $t;
 	}
 
@@ -878,7 +885,7 @@ class Petshop_Laukai {
 
 		self::vitrinos_stilius();
 		?>
-		<div class="pslk">
+		<div class="pslk<?php echo $dydis !== '' ? ' pslk-kons' : ''; ?>">
 			<h1 class="pslk-h1"><?php echo esc_html( get_the_title( $lid ) ); ?>
 				<?php if ( $pakopos ) : ?><span class="pslk-pakopos">
 					<?php foreach ( $pakopos as $i => $pk ) : ?>
@@ -1089,6 +1096,17 @@ class Petshop_Laukai {
 		.pslk-tinkl{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:30px;align-items:start}
 		@media(max-width:960px){.pslk-tinkl{grid-template-columns:1fr;gap:18px}}
 		.pslk-kaire{min-width:0}
+		/* Konservu dezems (dydis nustatytas) — 4 stulpeliai ir mazesne foto:
+		   12 skoniu po 3 stulpelius istempia puslapi per tris ekranus.
+		   Skanestu vitrina (be dydzio) lieka kaip patvirtinta. */
+		.pslk-kons .pslk-korteles{grid-template-columns:repeat(4,1fr);gap:12px}
+		@media(max-width:1100px){.pslk-kons .pslk-korteles{grid-template-columns:repeat(3,1fr)}}
+		@media(max-width:760px){.pslk-kons .pslk-korteles{grid-template-columns:repeat(2,1fr)}}
+		.pslk-kons .pslk-f{height:112px}
+		.pslk-kons .pslk-f img{max-width:104px;max-height:104px}
+		.pslk-kons .pslk-kort{padding:11px 11px 10px}
+		.pslk-kons .pslk-p{font-size:12.5px;min-height:2.6em}
+		.pslk-kons .pslk-kaina{font-size:15px;margin-bottom:8px}
 		.pslk-korteles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 		@media(max-width:760px){.pslk-korteles{grid-template-columns:repeat(2,1fr);gap:10px}}
 		@media(max-width:420px){.pslk-korteles{grid-template-columns:1fr}}
