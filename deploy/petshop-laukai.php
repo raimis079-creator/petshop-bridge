@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.15';   /* v1.15: publikavimas panelėje + pavadinimu brukšnys */
+	const VERSIJA = '1.16';   /* v1.16: dovanu variklis (konservu dezes) + dydzio laukas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -42,6 +42,12 @@ class Petshop_Laukai {
 	const META_SANDELIS = '_ps_laukas_sandelis';
 	/** Seima grupavimui admin lange (pvz. „Sunims\"). */
 	const META_SEIMA = '_ps_laukas_seima';
+	/** Dovanu prekiu ID (JSON, iki 3). Konservu dezems. */
+	const META_DOVANOS = '_ps_laukas_dovanos';
+	/** Suma su PVM, nuo kurios dovana atrakinama. 0 = dovanu nera. */
+	const META_DOV_RIBA = '_ps_laukas_dovanos_riba';
+	/** Pakuotes dydis (800 g / 400 g / 100 g) — vitrinos dydzio eilutei. */
+	const META_DYDIS = '_ps_laukas_dydis';
 
 	/** Maziausias kiekis, kad deze butu deze, o ne viena preke. */
 	const MIN_KIEKIS = 3;
@@ -79,6 +85,19 @@ class Petshop_Laukai {
 		add_action( 'wp_ajax_ps_laukai_prideti_kelias', array( __CLASS__, 'ajax_prideti_kelias' ) );
 		add_action( 'wp_ajax_ps_laukai_foto',        array( __CLASS__, 'ajax_foto' ) );
 		add_action( 'wp_ajax_ps_laukai_busena',      array( __CLASS__, 'ajax_busena' ) );
+
+		/* Dovanu variklis (v1.16). Sinchronizacija — ties krepselio ivykiais,
+		   NE ties calculate_totals: ten prekiu deti negalima. */
+		add_filter( 'woocommerce_add_cart_item_data', array( __CLASS__, 'dovana_i_krepseli' ), 10, 2 );
+		add_action( 'woocommerce_add_to_cart',                    array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );
+		add_action( 'woocommerce_after_cart_item_quantity_update', array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );
+		add_action( 'woocommerce_cart_item_removed',              array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );
+		add_action( 'woocommerce_cart_loaded_from_session',       array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );
+		/* Kaina 0 — kiekvieno skaiciavimo metu, po pakopu. */
+		add_action( 'woocommerce_before_calculate_totals', array( __CLASS__, 'dovanos_kaina' ), 101 );
+		add_filter( 'woocommerce_cart_item_quantity', array( __CLASS__, 'dovanos_kiekis' ), 10, 3 );
+		add_filter( 'woocommerce_cart_item_price',    array( __CLASS__, 'dovanos_zyme' ), 10, 3 );
+		add_action( 'woocommerce_checkout_create_order_line_item', array( __CLASS__, 'dovanos_eilute' ), 11, 4 );
 
 		/* Uzsakyme irasom, kokia pakopa suveike — kad apskaita ir grazinimai
 		   rodytu, kodel kaina buvo mazesne nei kortele. */
@@ -278,6 +297,204 @@ class Petshop_Laukai {
 		if ( isset( $reiksmes['ps_laukas_pradine'] ) ) {
 			$item->add_meta_data( '_ps_laukas_pradine', (float) $reiksmes['ps_laukas_pradine'], true );
 		}
+	}
+
+
+	/* ==================== DOVANU MODELIS (v1.16) ====================
+	 *
+	 * Konservu dezems pakopu NEDAROM — savininko sprendimas 2026-08-15:
+	 * musu kainos nera uzkeltos, tad procentine nuolaida butu arba melas,
+	 * arba maržos praradimas. Vietoj jos — DVI paskatos:
+	 *   1) nemokamas pristatymas (jau veikia WooCommerce nustatymuose),
+	 *   2) DOVANA pasiekus sumos riba — klientas renkasi is triju.
+	 *
+	 * Pakopos ir dovana yra NEPRIKLAUSOMI mechanizmai: skanestu deze turi
+	 * pakopas ir neturi dovanos, konservu deze — atvirksciai. Techniskai
+	 * niekas netrukdo turėti abu, bet to nedarom (klientui du pazadai vienu
+	 * metu — triukšmas).
+	 */
+
+	/** Dovanos riba EUR su PVM. 0 = dovanu sis laukas neturi. */
+	public static function dovanos_riba( $pid ) {
+		$v = get_post_meta( (int) $pid, self::META_DOV_RIBA, true );
+		return $v === '' ? 0.0 : (float) $v;
+	}
+
+	/** Dovanu prekiu ID (iki 3). Grazina tik tas, kurias realiai galima siusti. */
+	public static function dovanos( $pid, $tik_turimos = true ) {
+		$raw = get_post_meta( (int) $pid, self::META_DOVANOS, true );
+		$ids = $raw ? (array) json_decode( $raw, true ) : array();
+		$ids = array_values( array_filter( array_map( 'intval', $ids ) ) );
+		if ( ! $tik_turimos ) { return $ids; }
+		$out = array();
+		foreach ( $ids as $id ) {
+			$p = wc_get_product( $id );
+			/* Dovana, kurios nera sandelyje, nerodoma: pazadas, kurio negalim
+			   ivykdyti, brangesnis nei pati dovana. */
+			if ( $p && $p->is_in_stock() ) { $out[] = $id; }
+		}
+		return $out;
+	}
+
+	/** Pakuotes dydis (800 g / 400 g / 100 g). Vitrinai — dydzio eilutei virs lauku. */
+	public static function dydis( $pid ) {
+		return (string) get_post_meta( (int) $pid, self::META_DYDIS, true );
+	}
+
+	/** Ar sis laukas dirba su dovana (o ne su pakopomis). */
+	public static function su_dovana( $pid ) {
+		return self::dovanos_riba( $pid ) > 0 && self::dovanos( $pid ) !== array();
+	}
+
+	/* ==================== DOVANU VARIKLIS ====================
+	 *
+	 * Dovana krepselyje yra ATSKIRA eilute su kaina 0, o ne konteinerio
+	 * priedas. Taip todel, kad:
+	 *   — sandelininkas mato ja kaip preke, kuria reikia idėti i deze;
+	 *   — apskaita mato realia savikaina (dovana kainuoja mums, ne klientui);
+	 *   — grazinimo atveju ja galima nurasyti atskirai.
+	 *
+	 * Sinchronizacija daroma NE ties calculate_totals (ten prekiu dėti negalima
+	 * — begalinis ciklas), o ties krepselio ivykiais: idėjus, pakeitus kieki,
+	 * isėmus, uzkrovus is sesijos.
+	 */
+
+	/** Ar si krepselio eilute yra dovana. */
+	private static function ar_dovana( $eil ) {
+		return ! empty( $eil['ps_dovana_tevas'] );
+	}
+
+	/**
+	 * Konteineriu sumos krepselyje: [konteinerio_raktas => vaiku suma su PVM].
+	 * Dovanu eilutes i suma NESKAICIUOJAMOS — kitaip dovana pati islaikytu
+	 * riba, kai klientas isima prekes.
+	 */
+	private static function konteineriu_sumos( $cart ) {
+		$sumos = array();
+		foreach ( $cart->get_cart() as $raktas => $eil ) {
+			if ( self::ar_dovana( $eil ) ) { continue; }
+			$tevas = self::tevo_raktas( $eil );
+			if ( ! $tevas ) { continue; }
+			$p = $eil['data'];
+			if ( ! $p instanceof WC_Product ) { continue; }
+			$kaina = self::pradine_kaina( $eil );
+			if ( ! isset( $sumos[ $tevas ] ) ) { $sumos[ $tevas ] = 0.0; }
+			$sumos[ $tevas ] += $kaina * (int) $eil['quantity'];
+		}
+		return $sumos;
+	}
+
+	/**
+	 * Sutvarko dovanas krepselyje: prideda truktamas, isima nebepriklausancias.
+	 * Saugiklis `$dirba` — kad `add_to_cart` viduje kiles ivykis nesuktu ratu.
+	 */
+	public static function sinchronizuoti_dovanas() {
+		static $dirba = false;
+		if ( $dirba ) { return; }
+		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) { return; }
+		if ( ! function_exists( 'WC' ) || ! WC()->cart ) { return; }
+		$cart = WC()->cart;
+		if ( ! $cart instanceof WC_Cart ) { return; }
+
+		$dirba = true;
+
+		$sumos = self::konteineriu_sumos( $cart );
+
+		/* 1) kokios dovanos PRIVALO buti: [tevo_raktas => prekes_id] */
+		$reikia = array();
+		foreach ( $cart->get_cart() as $raktas => $eil ) {
+			if ( empty( $eil['product_id'] ) ) { continue; }
+			$lid = (int) $eil['product_id'];
+			if ( ! self::yra_laukas( $lid ) || ! self::su_dovana( $lid ) ) { continue; }
+			$suma = isset( $sumos[ $raktas ] ) ? $sumos[ $raktas ] : 0.0;
+			if ( $suma < self::dovanos_riba( $lid ) ) { continue; }
+
+			$galimos = self::dovanos( $lid );
+			if ( ! $galimos ) { continue; }
+			$pasirinkta = isset( $eil['ps_laukas_dovana'] ) ? (int) $eil['ps_laukas_dovana'] : 0;
+			/* Jei klientas nieko nepasirinko arba pasirinkta dingo is sandelio —
+			   duodam pirma is saraso, kad pazadas nepakibtu. */
+			if ( ! $pasirinkta || ! in_array( $pasirinkta, $galimos, true ) ) {
+				$pasirinkta = $galimos[0];
+			}
+			$reikia[ $raktas ] = $pasirinkta;
+		}
+
+		/* 2) kas jau yra */
+		$yra = array();
+		foreach ( $cart->get_cart() as $raktas => $eil ) {
+			if ( ! self::ar_dovana( $eil ) ) { continue; }
+			$yra[ $raktas ] = array(
+				'tevas'  => (string) $eil['ps_dovana_tevas'],
+				'preke'  => (int) $eil['product_id'],
+				'kiekis' => (int) $eil['quantity'],
+			);
+		}
+
+		/* 3) isimam tai, kas nebepriklauso arba pasikeite */
+		foreach ( $yra as $raktas => $d ) {
+			$ok = isset( $reikia[ $d['tevas'] ] ) && $reikia[ $d['tevas'] ] === $d['preke'];
+			if ( ! $ok ) {
+				$cart->remove_cart_item( $raktas );
+				unset( $yra[ $raktas ] );
+				continue;
+			}
+			if ( $d['kiekis'] !== 1 ) {
+				/* Dovana visada viena. */
+				$cart->set_quantity( $raktas, 1, false );
+			}
+		}
+
+		/* 4) pridedam truktamas */
+		foreach ( $reikia as $tevo_raktas => $preke ) {
+			$rasta = false;
+			foreach ( $yra as $d ) {
+				if ( $d['tevas'] === $tevo_raktas && $d['preke'] === $preke ) { $rasta = true; break; }
+			}
+			if ( $rasta ) { continue; }
+			$cart->add_to_cart( $preke, 1, 0, array(), array(
+				'ps_dovana_tevas' => $tevo_raktas,
+				'ps_dovana'       => 1,
+			) );
+		}
+
+		$dirba = false;
+	}
+
+	/** Dovanos kaina krepselyje — visada 0. */
+	public static function dovanos_kaina( $cart ) {
+		if ( ! $cart instanceof WC_Cart ) { return; }
+		foreach ( $cart->get_cart() as $raktas => $eil ) {
+			if ( ! self::ar_dovana( $eil ) ) { continue; }
+			$p = $eil['data'];
+			if ( $p instanceof WC_Product ) { $p->set_price( 0 ); }
+		}
+	}
+
+	/** Kliento pasirinkta dovana atkeliauja su vitrinos forma. */
+	public static function dovana_i_krepseli( $duom, $pid ) {
+		if ( ! empty( $_POST['ps_laukas_dovana'] ) ) {
+			$duom['ps_laukas_dovana'] = (int) $_POST['ps_laukas_dovana'];
+		}
+		return $duom;
+	}
+
+	/** Dovanos eilute krepselyje: kiekis nekeiciamas, kaina — zodis. */
+	public static function dovanos_kiekis( $html, $raktas, $eil ) {
+		if ( ! self::ar_dovana( $eil ) ) { return $html; }
+		return '1';
+	}
+
+	public static function dovanos_zyme( $kaina, $eil, $raktas ) {
+		if ( ! self::ar_dovana( $eil ) ) { return $kaina; }
+		return '<span class="ps-dovana-zyme">Dovana</span>';
+	}
+
+	/** Uzsakyme dovana pazymima, kad sandelininkas ir apskaita matytu, kodel 0 EUR. */
+	public static function dovanos_eilute( $item, $raktas, $reiksmes, $order ) {
+		if ( empty( $reiksmes['ps_dovana'] ) ) { return; }
+		$item->add_meta_data( '_ps_dovana', 1, true );
+		$item->add_meta_data( 'Dovana', 'taip', true );
 	}
 
 	/* ==================== LAUKO KURIMAS ==================== */
