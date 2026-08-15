@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.16';   /* v1.16: dovanu variklis (konservu dezes) + dydzio laukas */
+	const VERSIJA = '1.17';   /* v1.17: vitrina — dydzio eilute, dovanos, po 1 vnt., isemimas is dezes */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -689,10 +689,13 @@ class Petshop_Laukai {
 		foreach ( $q->posts as $id ) {
 			if ( self::grupe( $id ) !== $grupe ) { continue; }
 			$r[] = array(
-				'id'   => (int) $id,
-				'pav'  => get_post_meta( $id, '_ps_laukas_trumpas', true ) ?: get_the_title( $id ),
-				'kiek' => count( self::krepsys( $id ) ),
-				'url'  => get_permalink( $id ),
+				'id'    => (int) $id,
+				'pav'   => get_post_meta( $id, '_ps_laukas_trumpas', true ) ?: get_the_title( $id ),
+				'kiek'  => count( self::krepsys( $id ) ),
+				'url'   => get_permalink( $id ),
+				/* Dydis (800 g / 400 g / 100 g). Tuscias — laukas be dydzio lygmens
+				   (skanestai, kramtalai): tada dydzio eilutes vitrina nerodo. */
+				'dydis' => self::dydis( $id ),
 			);
 		}
 		return $r;
@@ -755,6 +758,28 @@ class Petshop_Laukai {
 	}
 
 	/** Nemokamo pristatymo riba. Vienaskaita — kalbam apie sio kliento siunta. */
+
+	/**
+	 * Dovanu duomenys vitrinai. Rodom tik tas, kurias realiai galim issiusti —
+	 * dovana, kurios nera sandelyje, yra pazadas, kurio neivykdysim.
+	 */
+	private static function dovanu_duomenys( $lid ) {
+		$out = array();
+		foreach ( self::dovanos( $lid ) as $id ) {
+			$p = wc_get_product( $id );
+			if ( ! $p ) { continue; }
+			$foto = wp_get_attachment_image_url( $p->get_image_id(), 'woocommerce_thumbnail' );
+			$out[] = array(
+				'id'   => (int) $id,
+				'pav'  => $p->get_name(),
+				'foto' => $foto ? $foto : wc_placeholder_img_src( 'woocommerce_thumbnail' ),
+				'apr'  => self::trumpas_aprasas( $id ),
+				'kaina'=> (float) $p->get_price(),
+			);
+		}
+		return $out;
+	}
+
 	private static function pristatymo_riba() {
 		return (float) apply_filters( 'ps_laukas_pristatymo_riba', 30.0 );
 	}
@@ -770,6 +795,33 @@ class Petshop_Laukai {
 		$zodis   = self::zodis( $lid );
 		$broliai = self::seimos_laukai( $lid );
 		$riba    = self::pristatymo_riba();
+		$dydis   = self::dydis( $lid );
+		$dovanos = self::dovanu_duomenys( $lid );
+		$dovRiba = self::dovanos_riba( $lid );
+
+		/* Dydzio lygmuo (konservu dezes). Jei nė vienas grupes laukas dydzio
+		   neturi, si eilute nerodoma is viso — skanestu vitrina lieka kaip buvo.
+		   Perjungiant dydi vedam i TA PATI poreiki, jei jis tame dydyje egzistuoja
+		   (800 g monoproteino nera ir nebus — tada vedam i pirma to dydzio lauka). */
+		$dydziai = array();
+		foreach ( $broliai as $b ) {
+			if ( $b['dydis'] === '' ) { continue; }
+			if ( ! isset( $dydziai[ $b['dydis'] ] ) ) {
+				$dydziai[ $b['dydis'] ] = array( 'url' => $b['url'], 'kiek' => 0 );
+			}
+			$dydziai[ $b['dydis'] ]['kiek']++;
+			/* tas pats poreikis kitame dydyje — pirmenybe jam */
+			if ( $b['pav'] === ( get_post_meta( $lid, '_ps_laukas_trumpas', true ) ?: get_the_title( $lid ) ) ) {
+				$dydziai[ $b['dydis'] ]['url'] = $b['url'];
+			}
+		}
+		/* Laukai rodomi TIK to paties dydzio — kitaip 400 g monoproteinas kabetu
+		   800 g puslapyje, kur jo nera. */
+		if ( $dydziai ) {
+			$broliai = array_values( array_filter( $broliai, function( $b ) use ( $dydis ) {
+				return $b['dydis'] === $dydis;
+			} ) );
+		}
 		$laukelis = function_exists( 'wc_mnm_get_child_input_name' )
 			? wc_mnm_get_child_input_name( $lid ) : 'mnm_quantity';
 
@@ -780,6 +832,9 @@ class Petshop_Laukai {
 			'zodis'   => $zodis,
 			'riba'    => $riba,
 			'laukelis'=> $laukelis,
+			'dovanos' => $dovanos,
+			'dovRiba' => $dovRiba,
+			'suDovana'=> self::su_dovana( $lid ),
 		);
 
 		self::vitrinos_stilius();
@@ -796,6 +851,16 @@ class Petshop_Laukai {
 				<p class="pslk-ivadas"><?php echo esc_html( wp_strip_all_tags( $p->get_description() ) ); ?></p>
 			<?php endif; ?>
 
+			<?php if ( count( $dydziai ) > 1 ) : ?>
+				<div class="pslk-dydis">
+					<span class="pslk-det">Pakuotė</span>
+					<?php foreach ( $dydziai as $d => $inf ) : ?>
+						<a class="pslk-dbtn<?php echo $d === $dydis ? ' on' : ''; ?>" href="<?php echo esc_url( $inf['url'] ); ?>">
+							<?php echo esc_html( $d ); ?></a>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+
 			<?php if ( count( $broliai ) > 1 ) : ?>
 				<div class="pslk-laukai">
 					<?php foreach ( $broliai as $b ) : ?>
@@ -807,6 +872,10 @@ class Petshop_Laukai {
 
 			<form class="pslk-tinkl" method="post" enctype="multipart/form-data"
 				action="<?php echo esc_url( $p->get_permalink() ); ?>" id="pslk-forma">
+				<div class="pslk-visi">
+					<span>Nežinai, nuo ko pradėti? <b><?php echo count( $prekes ); ?> skoniai</b> — imk po vieną kiekvieno.</span>
+					<button type="button" id="pslk-visi">Po 1 vnt. visų</button>
+				</div>
 				<div class="pslk-korteles">
 					<?php foreach ( $prekes as $pr ) : ?>
 						<div class="pslk-kort<?php echo $pr['yra'] ? '' : ' nera'; ?>" id="pslk-k-<?php echo (int) $pr['cid']; ?>">
@@ -843,6 +912,21 @@ class Petshop_Laukai {
 							<div class="pslk-grid" id="pslk-grid"></div>
 							<div class="pslk-zinia" id="pslk-zinia"></div>
 						</div>
+						<?php if ( $dovanos ) : ?>
+							<div class="pslk-dov" id="pslk-dov">
+								<div class="pslk-dov-a"><span>Dovana</span><span class="bl" id="pslk-dov-bl"></span></div>
+								<div class="pslk-dovs">
+									<?php foreach ( $dovanos as $i => $g ) : ?>
+										<div class="pslk-dovk<?php echo $i === 0 ? ' pas' : ''; ?>" data-gid="<?php echo (int) $g['id']; ?>">
+											<img src="<?php echo esc_url( $g['foto'] ); ?>" alt="" loading="lazy">
+											<span class="pv"><?php echo esc_html( $g['pav'] ); ?></span>
+										</div>
+									<?php endforeach; ?>
+								</div>
+							</div>
+							<input type="hidden" name="ps_laukas_dovana" id="pslk-dov-in"
+								value="<?php echo (int) $dovanos[0]['id']; ?>">
+						<?php endif; ?>
 						<div class="pslk-eiga">
 							<div class="pslk-eiga-e"><div id="pslk-dbr"></div><div class="pslk-kita" id="pslk-kita"></div></div>
 							<div class="pslk-juosta" id="pslk-juosta"><i id="pslk-fill"></i></div>
@@ -904,6 +988,35 @@ class Petshop_Laukai {
 			background:#FBF3E2;border:1px solid #EBD9B4;border-radius:20px;padding:5px 14px;margin-left:12px}
 		.pslk-pakopos i{font-style:normal;opacity:.45;margin:0 4px}
 		.pslk-ivadas{color:#6b6b6b;margin:6px 0 18px;max-width:66ch}
+		/* Dydzio eilute — virs poreikiu. Kvadratiniai mygtukai, kad butu
+		   matomas skirtumas nuo apvaliu poreikio mygtuku. */
+		.pslk-dydis{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+		.pslk-det{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#9a9a9a;margin-right:2px}
+		.pslk-dbtn{border:2px solid #E6E6E3;background:#fff;border-radius:10px;padding:9px 20px;
+			font-weight:800;font-size:14.5px;color:#555;text-decoration:none}
+		.pslk-dbtn:hover{border-color:#BFCEC8;color:#555}
+		.pslk-dbtn.on{border-color:var(--z);background:var(--z);color:#fff}
+		/* „Po 1 vnt. visu" — atsakymas i tuscia deze: vienu paspaudimu pilna. */
+		.pslk-visi{display:flex;align-items:center;gap:12px;background:var(--zf);border:1px solid #BFCEC8;
+			border-radius:10px;padding:11px 14px;margin-bottom:14px;font-size:13.5px;color:var(--zt)}
+		.pslk-visi button{margin-left:auto;border:2px solid var(--z);background:#fff;color:var(--z);font-weight:800;
+			font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;border-radius:8px;padding:9px 15px;cursor:pointer;white-space:nowrap}
+		.pslk-visi button:hover{background:var(--z);color:#fff}
+		/* Dovanos: matomos nuo pirmos sekundes kaip tikslas, atrakinamos pasiekus suma. */
+		.pslk-dov{border-top:1px solid #EFEAE0;padding:15px 18px}
+		.pslk-dov-a{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.05em;
+			text-transform:uppercase;color:#C7891C;margin-bottom:10px}
+		.pslk-dov-a .bl{margin-left:auto;font-size:11px;font-weight:700;color:#9a9a9a;text-transform:none;letter-spacing:0}
+		.pslk-dovs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+		.pslk-dovk{border:2px solid #E6E6E3;border-radius:10px;padding:8px 5px 7px;text-align:center;
+			background:#FAFAF8;opacity:.55;position:relative;cursor:default}
+		.pslk-dovk img{max-width:44px;max-height:44px;object-fit:contain;display:block;margin:0 auto 3px}
+		.pslk-dovk .pv{font-size:10.5px;font-weight:700;line-height:1.25;color:#555;display:block}
+		.pslk-dov.atrakinta .pslk-dovk{cursor:pointer;opacity:1;background:#fff}
+		.pslk-dov.atrakinta .pslk-dovk:hover{border-color:#C7891C}
+		.pslk-dov.atrakinta .pslk-dovk.pas{border-color:#C7891C;background:#FBF3E2}
+		.pslk-dov.atrakinta .pslk-dovk.pas::after{content:'✓';position:absolute;top:-8px;right:-8px;width:20px;height:20px;
+			border-radius:50%;background:#C7891C;color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center}
 		.pslk-laukai{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
 		.pslk-lbtn{border:2px solid #E6E6E3;background:#fff;border-radius:24px;padding:9px 18px;
 			font-weight:700;font-size:13.5px;color:#555;text-decoration:none;display:inline-block}
@@ -956,6 +1069,13 @@ class Petshop_Laukai {
 		.pslk-el{position:relative;background:#fff;border-radius:9px;border:1px solid var(--kraft3);height:64px;
 			display:grid;place-items:center;box-shadow:0 2px 4px rgba(0,0,0,.06)}
 		.pslk-el img{max-width:52px;max-height:52px;object-fit:contain}
+		.pslk-el{cursor:pointer}
+		.pslk-el:hover{border-color:#b32d2e}
+		.pslk-el:hover::after{content:'−1';position:absolute;inset:0;display:grid;place-items:center;
+			background:rgba(255,255,255,.86);border-radius:9px;font-weight:800;color:#b32d2e;font-size:15px}
+		.pslk-el.dov{border:2px solid #C7891C;background:#FBF3E2;cursor:default}
+		.pslk-el.dov:hover{border-color:#C7891C}
+		.pslk-el.dov:hover::after{display:none}
 		.pslk-el u{position:absolute;top:-7px;right:-7px;min-width:21px;height:21px;border-radius:11px;background:var(--z);
 			color:#fff;font-size:11.5px;font-weight:800;display:grid;place-items:center;padding:0 5px;text-decoration:none}
 		.pslk-tuscia{border:2px dashed #CBBD9F;border-radius:9px;height:64px;display:grid;place-items:center;color:#B3A483;font-weight:800;font-size:14px}
@@ -1021,6 +1141,10 @@ class Petshop_Laukai {
 			var D=window.PSLK; if(!D) return;
 			var sel={}, pz=null;
 			var pagalCid={}; D.prekes.forEach(function(p){ pagalCid[p.cid]=p; });
+			var dovanos=D.dovanos||[], dovPagal={};
+			dovanos.forEach(function(g){ dovPagal[g.id]=g; });
+			var dovPas=dovanos.length?dovanos[0].id:0;
+			function dovAtrakinta(s){ return D.suDovana && dovanos.length && s+0.0001>=D.dovRiba; }
 			function eur(n){ return n.toFixed(2).replace('.',',')+' €'; }
 			function vnt(){ var s=0; for(var k in sel) s+=sel[k]; return s; }
 			function suma(){ var s=0; for(var k in sel){ var p=pagalCid[k]; if(p) s+=p.kaina*sel[k]; } return s; }
@@ -1048,24 +1172,59 @@ class Petshop_Laukai {
 				var yra=Object.keys(sel);
 				if(yra.length){
 					yra.forEach(function(cid){ var p=pagalCid[cid];
-						h+='<div class="pslk-el">'+(p&&p.foto?'<img src="'+p.foto+'" alt="">':'')
+						h+='<div class="pslk-el" data-cid="'+cid+'" title="Paspaudus — vienu mažiau">'
+						 +(p&&p.foto?'<img src="'+p.foto+'" alt="">':'')
 						 +(sel[cid]>1?'<u>×'+sel[cid]+'</u>':'')+'</div>'; });
 				} else {
 					for(var i=1;i<=D.min;i++) h+='<div class="pslk-tuscia">'+i+'</div>';
 				}
+				/* Dovana krenta i deze tik tada, kai riba pasiekta — kitaip klientas
+				   matytu daikta, kurio dar neuzsidirbo. */
+				if(dovAtrakinta(s)){ var gg=dovPagal[dovPas];
+					if(gg){ h+='<div class="pslk-el dov" title="Dovana"><img src="'+gg.foto+'" alt=""></div>'; } }
 				g.innerHTML=h;
+				var dovB=document.getElementById('pslk-dov');
+				if(dovB){
+					var atr=dovAtrakinta(s);
+					dovB.classList.toggle('atrakinta',atr);
+					document.getElementById('pslk-dov-bl').textContent = atr ? 'rinkis vieną' : ('nuo '+eur(D.dovRiba));
+					Array.prototype.forEach.call(dovB.querySelectorAll('.pslk-dovk'),function(k){
+						k.classList.toggle('pas', +k.dataset.gid===dovPas); });
+					var din=document.getElementById('pslk-dov-in'); if(din) din.value=atr?dovPas:'';
+				}
 				document.getElementById('pslk-kiek').textContent=n?n+' vnt.':'tuščia';
 				document.getElementById('pslk-zinia').textContent=yra.length?'':'Įdėk bent '+D.min+' — vienodus ar skirtingus.';
 
 				/* eiga */
 				var dbr=document.getElementById('pslk-dbr'), kita=document.getElementById('pslk-kita');
-				if(d>0){ dbr.innerHTML='Turi <b>−'+d+' %</b> · sutaupai '+eur(nuolEur); }
+				if(D.suDovana){
+					/* Konservu deze: jokiu procentu. Du tikslai vienoje juostoje —
+					   nemokamas pristatymas ir dovana. */
+					var atr2=dovAtrakinta(s);
+					dbr.innerHTML = atr2 ? 'Dovana tavo 🎁' : (s+0.0001>=D.riba ? 'Pristatymas nemokamas' : '');
+					if(s+0.0001<D.riba){ kita.innerHTML='Dar <b>'+eur(D.riba-s)+'</b> iki nemokamo pristatymo'; }
+					else if(!atr2){ kita.innerHTML='Dar <b>'+eur(D.dovRiba-s)+'</b> iki dovanos'; }
+					else { kita.innerHTML=''; }
+					var maxD=Math.max(D.dovRiba,D.riba);
+					document.getElementById('pslk-fill').style.width=Math.min(100,s/maxD*100)+'%';
+					var jd=document.getElementById('pslk-juosta');
+					Array.prototype.forEach.call(jd.querySelectorAll('.pslk-zyme'),function(x){ x.remove(); });
+					[[D.riba,'pristatymas'],[D.dovRiba,'dovana']].forEach(function(z){
+						var el=document.createElement('span');
+						el.className='pslk-zyme'+(s+0.0001>=z[0]?' pas':'');
+						el.style.left=Math.min(97,z[0]/maxD*100)+'%';
+						el.innerHTML='<u></u><s>'+z[1]+'</s>';
+						jd.appendChild(el);
+					});
+				}
+				else if(d>0){ dbr.innerHTML='Turi <b>−'+d+' %</b> · sutaupai '+eur(nuolEur); }
 				else if(D.pakopos.length){ dbr.innerHTML='Nuolaida nuo '+eur(D.pakopos[0].nuo); }
 				else { dbr.textContent=''; }
 				if(r.kita){ kita.innerHTML='Dar <b>'+eur(r.kita.nuo-s)+'</b> ir visai '+D.zodis.n+' <b>−'+r.kita.d+' %</b>'; }
 				else if(d>0){ kita.innerHTML='Didžiausia nuolaida jau tavo'; }
 				else { kita.innerHTML=''; }
 
+				if(!D.suDovana){
 				var max=virs?virs.nuo*1.12:1;
 				document.getElementById('pslk-fill').style.width=Math.min(100,s/max*100)+'%';
 				var j=document.getElementById('pslk-juosta');
@@ -1077,6 +1236,7 @@ class Petshop_Laukai {
 					el.innerHTML='<u></u><s>'+p.nuo+' €</s>';
 					j.appendChild(el);
 				});
+				}
 
 				/* sumos */
 				document.getElementById('pslk-suma').textContent=eur(s);
@@ -1109,7 +1269,22 @@ class Petshop_Laukai {
 				document.getElementById('pslk-pz').classList.add('rodo');
 				document.body.style.overflow='hidden';
 			}
-			function uzdaryk(){ document.getElementById('pslk-pz').classList.remove('rodo'); document.body.style.overflow=''; pz=null; }
+			/* Dovanos perziura — tas pats langas kaip prekems (savininko reikalavimas).
+			   Skirtumas vienas: kiekio mygtuku nera, nes dovana visada viena. */
+			function dovPerziura(gid){
+				var g=dovPagal[gid]; if(!g) return;
+				pz=null;
+				document.getElementById('pslk-pz-f').innerHTML='<img src="'+g.foto+'" alt="">';
+				document.getElementById('pslk-pz-b').textContent='Dovana';
+				document.getElementById('pslk-pz-pav').textContent=g.pav;
+				document.getElementById('pslk-pz-kaina').innerHTML='<span style="color:#C7891C">Nemokamai nuo '+eur(D.dovRiba)+'</span>';
+				document.getElementById('pslk-pz-apr').textContent=g.apr||'Aprašymas ruošiamas.';
+				document.querySelector('.pslk-pz-v2').style.display='none';
+				document.getElementById('pslk-pz').classList.add('rodo');
+				document.body.style.overflow='hidden';
+			}
+			function uzdaryk(){ document.getElementById('pslk-pz').classList.remove('rodo'); document.body.style.overflow='';
+				var v2=document.querySelector('.pslk-pz-v2'); if(v2) v2.style.display=''; pz=null; }
 			function pzAtnaujink(){
 				if(pz===null) return;
 				var n=sel[pz]||0;
@@ -1127,6 +1302,21 @@ class Petshop_Laukai {
 				if(stp){ e.preventDefault();
 					var cid2=stp.dataset.cid ? +stp.dataset.cid : pz;
 					if(cid2) keisk(cid2, +stp.dataset.d); return; }
+				/* Langelis dezeje — vienu maziau. Paspaudimas nuima VIENA, ne visus:
+				   ×3 langelis klientui reiskia tris vienetus, tad lukestis — kad
+				   sumazetu vienetu. Nuemus per daug tektu grizti i kaire puse. */
+				var el2=t.closest ? t.closest('.pslk-el') : null;
+				if(el2 && !el2.classList.contains('dov') && el2.dataset.cid){
+					e.preventDefault(); keisk(+el2.dataset.cid,-1); return; }
+				var visi=t.closest ? t.closest('#pslk-visi') : null;
+				if(visi){ e.preventDefault();
+					D.prekes.forEach(function(p){ if(p.yra) keisk(p.cid,1); }); return; }
+				var dk=t.closest ? t.closest('.pslk-dovk') : null;
+				if(dk){ e.preventDefault();
+					var db=document.getElementById('pslk-dov');
+					if(db && db.classList.contains('atrakinta')){ dovPas=+dk.dataset.gid; atnaujink(); }
+					else { dovPerziura(+dk.dataset.gid); }
+					return; }
 				var ap=t.closest ? t.closest('.pslk-apie, .pslk-f, .pslk-p') : null;
 				if(ap && ap.dataset.cid){ e.preventDefault(); perziura(+ap.dataset.cid); return; }
 				if(t.closest && t.closest('.pslk-pz-x')){ uzdaryk(); return; }
