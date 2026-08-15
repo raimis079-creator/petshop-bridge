@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.33';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.34';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -1973,6 +1973,9 @@ class Petshop_Laukai {
 		echo '<div class="pslka-frow">'
 			. '<span class="pslka-f pslka-plati"><label>Paieška</label>'
 			. '<input type="text" id="dov-q" placeholder="palik tuščią — parodysim pigiausias"></span>'
+			. '<span class="pslka-f"><label>Gyvūnas</label><select id="dov-gyv">'
+			. '<option value="">— visi —</option><option value="sunims">Šunims</option>'
+			. '<option value="katems">Katėms</option></select></span>'
 			. '<span class="pslka-f"><label>Rūšis</label><select id="dov-rusis">'
 			. '<option value="">— visos —</option><option value="skanestai">Skanėstai</option>'
 			. '<option value="kramtalai">Kramtalai</option><option value="zaislai">Žaislai</option></select></span>'
@@ -1985,6 +1988,8 @@ class Petshop_Laukai {
 			. '<span class="pslka-f"><label>Sandėlis</label>'
 			. '<span class="pslka-z b" title="Sandėlis imamas iš krepšio — dovana iš kito reikštų antrą siuntą">'
 			. esc_html( $kr_sand ) . ' · kaip krepšys</span></span>'
+			. '<span class="pslka-f"><label>&nbsp;</label>'
+			. '<button type="button" class="button button-primary" id="dov-rodyti">Rodyti</button></span>'
 			. '</div>';
 		echo '<div id="dov-rez" class="pslka-rez"></div></div></div></div>';
 
@@ -2314,9 +2319,12 @@ class Petshop_Laukai {
 			var dq=document.getElementById('dov-q'), dlaik=0;
 			if(dq){
 				dq.addEventListener('input',function(){ clearTimeout(dlaik); dlaik=setTimeout(dovIeskoti,350); });
-				['dov-rusis','dov-iki','dov-filtras'].forEach(function(id){
+				['dov-rusis','dov-iki','dov-filtras','dov-gyv'].forEach(function(id){
 					var e=document.getElementById(id); if(e) e.addEventListener('change',dovIeskoti);
 				});
+				var drb=document.getElementById('dov-rodyti');
+				if(drb) drb.addEventListener('click',function(e){ e.preventDefault(); dovIeskoti(); });
+				dq.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); dovIeskoti(); } });
 			}
 			function dovIeskoti(){
 				var rez=document.getElementById('dov-rez'); if(!rez) return;
@@ -2325,9 +2333,20 @@ class Petshop_Laukai {
 				var u=A+'?action=ps_laukai_dov_paieska&nonce='+N+'&lid='+LID
 					+'&q='+encodeURIComponent(dq.value.trim())
 					+'&rusis='+document.getElementById('dov-rusis').value
+					+'&gyv='+document.getElementById('dov-gyv').value
 					+'&iki='+document.getElementById('dov-iki').value
 					+'&turimi='+(f==='visos'?'0':'1')+'&sav='+(f==='turimi_sav'?'1':'0');
-				fetch(u,{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){
+				/* Saugiklis: be jo kiekviena serverio klaida palikdavo amzina
+				   „Ieškoma…" ir zmogus nezinodavo, ar laukti (pastaba 08-15). */
+				fetch(u,{credentials:'same-origin'}).then(function(r){
+					if(!r.ok) throw new Error('HTTP '+r.status);
+					return r.text();
+				}).then(function(tekstas){
+					var j;
+					try { j=JSON.parse(tekstas); }
+					catch(e){ throw new Error('Serveris grąžino ne JSON: '+tekstas.slice(0,120)); }
+					return j;
+				}).then(function(j){
 					if(!j||!j.success){ rez.innerHTML='<div class="pslka-tuscia">Nepavyko ieškoti.</div>'; return; }
 					var sar=j.data.prekes||[];
 					if(!sar.length){ rez.innerHTML='<div class="pslka-tuscia">Nieko nerasta — atlaisvink filtrus.</div>'; return; }
@@ -2352,6 +2371,11 @@ class Petshop_Laukai {
 							setTimeout(function(){ b.disabled=false; },4000);
 						});
 					});
+				}).catch(function(e){
+					rez.innerHTML='<div class="pslka-tuscia">Paieška nepavyko: '+esc(String(e.message||e))
+						+'<br><button class="button" id="dov-kartoti">Bandyti dar kartą</button></div>';
+					var kk=document.getElementById('dov-kartoti');
+					if(kk) kk.addEventListener('click',function(){ dovIeskoti(); });
 				});
 			}
 			var drs=document.getElementById('dov-riba-saugoti');
@@ -2606,6 +2630,7 @@ class Petshop_Laukai {
 		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks rinkinys nerastas.' ); }
 		$q     = sanitize_text_field( wp_unslash( $_GET['q'] ?? '' ) );
 		$rusis = sanitize_key( $_GET['rusis'] ?? '' );
+		$gyv   = sanitize_key( $_GET['gyv'] ?? '' );
 		$iki   = (float) str_replace( ',', '.', (string) ( $_GET['iki'] ?? 0 ) );
 		$tik_turimi = ( $_GET['turimi'] ?? '1' ) === '1';
 		$tik_sav    = ( $_GET['sav'] ?? '' ) === '1';
@@ -2641,6 +2666,23 @@ class Petshop_Laukai {
 
 			$kat = (array) wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) );
 			$kat_t = mb_strtolower( implode( ' ', $kat ) . ' ' . $p->get_name() );
+
+			/* Gyvunas: pirma atributas (patikimas), tada pavadinimas/kategorija.
+			   Katės dėžei siūlyti jaučio ausį — akivaizdi klaida (pastaba 08-15). */
+			if ( $gyv === 'sunims' || $gyv === 'katems' ) {
+				$at = mb_strtolower( (string) $p->get_attribute( 'pa_gyvuno_rusis' ) );
+				$tinka = false;
+				if ( $at !== '' ) {
+					$tinka = ( $gyv === 'sunims' )
+						? ( mb_strpos( $at, 'šun' ) !== false || mb_strpos( $at, 'sun' ) !== false )
+						: ( mb_strpos( $at, 'kat' ) !== false );
+				} else {
+					$tinka = ( $gyv === 'sunims' )
+						? ( preg_match( '/šun|šuni/u', $kat_t ) && ! preg_match( '/katėm|kačiuk/u', $kat_t ) )
+						: (bool) preg_match( '/katė|kačiuk/u', $kat_t );
+				}
+				if ( ! $tinka ) { continue; }
+			}
 			if ( $rusis === 'skanestai' && ! preg_match( '/skanėst|užkand|lazdel|pagalvėl/u', $kat_t ) ) { continue; }
 			if ( $rusis === 'kramtalai' && ! preg_match( '/kramt|ausis|ausys|kaulas|sausgysl/u', $kat_t ) ) { continue; }
 			if ( $rusis === 'zaislai'   && ! preg_match( '/žaisl/u', $kat_t ) ) { continue; }
