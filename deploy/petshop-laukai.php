@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.29';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.30';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -786,6 +786,22 @@ class Petshop_Laukai {
 	 * Dovanu duomenys vitrinai. Rodom tik tas, kurias realiai galim issiusti —
 	 * dovana, kurios nera sandelyje, yra pazadas, kurio neivykdysim.
 	 */
+	/**
+	 * Trumpas dovanos vardas kortelei. „Animonda skanėstai katėms nuo plaukų
+	 * kamuoliukų - Milkies Adult Harmony Anti-Hairball, 30 g" uzima visa kortele
+	 * ir griauna vaizda. Pilnas vardas lieka perziuroje.
+	 */
+	private static function dovanos_vardas( $pav ) {
+		$t = $pav;
+		$t = preg_replace( '/[,·]\s*\d+[.,]?\d*\s*(g|kg|ml|vnt\.?)\s*$/iu', '', $t );
+		/* Po bruksnio paprastai eina konkretus produkto vardas. */
+		if ( preg_match( '/^(.*?)\s+[-–—]\s+(.+)$/u', $t, $m ) && mb_strlen( $m[2] ) >= 3 ) { $t = $m[2]; }
+		$t = preg_replace( '/\s*(katėms|šunims|kačiukams|šuniukams)\s*/ui', ' ', $t );
+		$t = trim( preg_replace( '/\s+/u', ' ', $t ), " -–—,·" );
+		if ( $t === '' || mb_strlen( $t ) < 3 ) { return $pav; }
+		return mb_strtoupper( mb_substr( $t, 0, 1 ) ) . mb_substr( $t, 1 );
+	}
+
 	private static function dovanu_duomenys( $lid ) {
 		$out = array();
 		foreach ( self::dovanos( $lid ) as $id ) {
@@ -793,8 +809,9 @@ class Petshop_Laukai {
 			if ( ! $p ) { continue; }
 			$foto = wp_get_attachment_image_url( $p->get_image_id(), 'woocommerce_thumbnail' );
 			$out[] = array(
-				'id'   => (int) $id,
-				'pav'  => $p->get_name(),
+				'id'    => (int) $id,
+				'pav'   => self::dovanos_vardas( $p->get_name() ),
+				'pilnas'=> $p->get_name(),
 				'foto' => $foto ? $foto : wc_placeholder_img_src( 'woocommerce_thumbnail' ),
 				'apr'  => self::trumpas_aprasas( $p ),
 				'kaina'=> (float) $p->get_price(),
@@ -1105,7 +1122,8 @@ class Petshop_Laukai {
 		.pslk-dovk{border:2px solid #E6E6E3;border-radius:10px;padding:8px 5px 7px;text-align:center;
 			background:#FAFAF8;opacity:.55;position:relative;cursor:default}
 		.pslk-dovk img{max-width:44px;max-height:44px;object-fit:contain;display:block;margin:0 auto 3px}
-		.pslk-dovk .pv{font-size:10.5px;font-weight:700;line-height:1.25;color:#555;display:block}
+		.pslk-dovk .pv{font-size:10.5px;font-weight:700;line-height:1.25;color:#555;
+			display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
 		.pslk-dovk img{cursor:pointer}
 		.pslk-dov-apie{display:block;margin-top:4px;font-size:10px;font-weight:700;color:var(--z);cursor:pointer}
 		.pslk-dov-apie:hover{text-decoration:underline}
@@ -1248,7 +1266,12 @@ class Petshop_Laukai {
 			background:#F2F2EF;font-size:19px;color:#555;z-index:2;cursor:pointer}
 		.pslk-pz-v{display:grid;grid-template-columns:290px 1fr;gap:26px;padding:28px}
 		@media(max-width:640px){.pslk-pz-v{grid-template-columns:1fr;gap:14px;padding:20px}}
-		.pslk-pz-f{display:grid;place-items:center;background:#FAFAF8;border-radius:12px;padding:18px;min-height:250px}
+		/* align-self:start — be jo fotolangas issitempia per visa teksto auksti
+		   (1500 px), o centruota nuotrauka atsiduria puslapio viduryje: atidarius
+		   matai tuscia pilka plota (savininko pastaba 08-15). sticky — nuotrauka
+		   lieka matoma slenkant aprasyma. */
+		.pslk-pz-f{display:grid;place-items:center;background:#FAFAF8;border-radius:12px;padding:18px;
+			min-height:250px;align-self:start;position:sticky;top:0}
 		.pslk-pz-f img{max-width:100%;max-height:260px;object-fit:contain}
 		.pslk-pz-pav{font-size:19px;font-weight:800;line-height:1.3;margin:4px 0 10px}
 		.pslk-pz-kaina{font-size:21px;font-weight:800;margin-bottom:14px}
@@ -1423,7 +1446,7 @@ class Petshop_Laukai {
 				pz=null;
 				document.getElementById('pslk-pz-f').innerHTML='<img src="'+g.foto+'" alt="">';
 				document.getElementById('pslk-pz-b').textContent='Dovana';
-				document.getElementById('pslk-pz-pav').textContent=g.pav;
+				document.getElementById('pslk-pz-pav').textContent=g.pilnas||g.pav;
 				document.getElementById('pslk-pz-kaina').innerHTML='<span style="color:#C7891C">Nemokamai nuo '+eur(D.dovRiba)+'</span>';
 				document.getElementById('pslk-pz-apr').innerHTML=aprHtml(g.apr);
 				document.querySelector('.pslk-pz-v2').style.display='none';
