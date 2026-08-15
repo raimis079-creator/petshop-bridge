@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.24';   /* v1.24: dovanos keitimas tikru paspaudimu + aprasu simboliu valymas */
+	const VERSIJA = '1.25';   /* v1.25: tikslu korteles (pristatymas/dovana) vietoj anonimines juostos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -993,10 +993,26 @@ class Petshop_Laukai {
 							<input type="hidden" name="ps_laukas_dovana" id="pslk-dov-in"
 								value="<?php echo (int) $dovanos[0]['id']; ?>">
 						<?php endif; ?>
-						<div class="pslk-eiga">
-							<div class="pslk-eiga-e"><div id="pslk-dbr"></div><div class="pslk-kita" id="pslk-kita"></div></div>
-							<div class="pslk-juosta" id="pslk-juosta"><i id="pslk-fill"></i></div>
-						</div>
+						<?php if ( $dovanos ) : ?>
+							<?php /* Du tikslai — dvi atskiros korteles su savo progresu.
+							         Viena juosta su dviem brukšneliais kliento nekabina:
+							         zenklai susispaudzia, o „dar liko X" nesimato (08-15). */ ?>
+							<div class="pslk-eiga"><div class="pslk-tikslai">
+								<div class="pslk-tk" id="pslk-tk-pr">
+									<div class="v"><span class="ik">🚚</span><span class="tx">Nemokamas pristatymas į paštomatą</span><span class="liko"></span></div>
+									<div class="jt"><i></i></div>
+								</div>
+								<div class="pslk-tk dov" id="pslk-tk-dov">
+									<div class="v"><span class="ik">🎁</span><span class="tx">Dovana — rinkis vieną iš <?php echo count( $dovanos ); ?></span><span class="liko"></span></div>
+									<div class="jt"><i></i></div>
+								</div>
+							</div></div>
+						<?php else : ?>
+							<div class="pslk-eiga">
+								<div class="pslk-eiga-e"><div id="pslk-dbr"></div><div class="pslk-kita" id="pslk-kita"></div></div>
+								<div class="pslk-juosta" id="pslk-juosta"><i id="pslk-fill"></i></div>
+							</div>
+						<?php endif; ?>
 						<div class="pslk-sumos">
 							<div class="pslk-eil"><span>Suma</span><span class="r" id="pslk-suma">0,00 €</span></div>
 							<div class="pslk-eil" id="pslk-neil" style="display:none"><span>Nuolaida <span id="pslk-np"></span></span><span class="r pslk-n" id="pslk-nuol"></span></div>
@@ -1171,6 +1187,19 @@ class Petshop_Laukai {
 		.pslk-tuscia{border:2px dashed #CBBD9F;border-radius:9px;height:64px;display:grid;place-items:center;color:#B3A483;font-weight:800;font-size:14px}
 		.pslk-zinia{font-size:12.5px;color:#8a7a5c;margin-top:12px;text-align:center}
 		.pslk-eiga{padding:15px 18px 6px;border-top:1px solid #EFEAE0}
+		.pslk-tikslai{display:flex;flex-direction:column;gap:10px;padding-bottom:9px}
+		.pslk-tk{border:1.5px solid #EFEAE0;border-radius:10px;padding:10px 12px 11px;transition:background .25s,border-color .25s}
+		.pslk-tk .v{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#4c4c4c;line-height:1.3}
+		.pslk-tk .ik{font-size:16px;flex:none}
+		.pslk-tk .liko{margin-left:auto;font-weight:800;color:var(--zt);white-space:nowrap;font-size:12.5px}
+		.pslk-tk .jt{height:6px;background:#EDEDE9;border-radius:4px;margin-top:8px;overflow:hidden}
+		.pslk-tk .jt i{display:block;height:100%;background:linear-gradient(90deg,var(--z),#199A76);width:0;transition:width .35s cubic-bezier(.4,0,.2,1)}
+		.pslk-tk.dov .jt i{background:linear-gradient(90deg,#C7891C,#E0A83A)}
+		.pslk-tk.gauta{background:var(--zf);border-color:#BFCEC8}
+		.pslk-tk.gauta .v,.pslk-tk.gauta .liko{color:var(--zt)}
+		.pslk-tk.dov.gauta{background:#FBF3E2;border-color:#EBD9B4}
+		.pslk-tk.dov.gauta .v,.pslk-tk.dov.gauta .liko{color:#8a6a1c}
+		.pslk-tk.gauta .jt{display:none}
 		.pslk-eiga-e{display:flex;align-items:baseline;gap:8px;margin-bottom:9px;flex-wrap:wrap;font-size:14.5px;font-weight:800;color:var(--zt)}
 		.pslk-eiga-e b{font-size:18px}
 		.pslk-kita{margin-left:auto;font-size:12.5px;color:#666;text-align:right;font-weight:400}
@@ -1286,28 +1315,22 @@ class Petshop_Laukai {
 				document.getElementById('pslk-zinia').textContent=yra.length?'':'Įdėk bent '+D.min+' — vienodus ar skirtingus.';
 
 				/* eiga */
-				var dbr=document.getElementById('pslk-dbr'), kita=document.getElementById('pslk-kita');
 				if(D.suDovana){
-					/* Konservu deze: jokiu procentu. Du tikslai vienoje juostoje —
-					   nemokamas pristatymas ir dovana. */
-					var atr2=dovAtrakinta(s);
-					dbr.innerHTML = atr2 ? 'Dovana tavo 🎁' : (s+0.0001>=D.riba ? 'Pristatymas nemokamas' : '');
-					if(s+0.0001<D.riba){ kita.innerHTML='Dar <b>'+eur(D.riba-s)+'</b> iki nemokamo pristatymo'; }
-					else if(!atr2){ kita.innerHTML='Dar <b>'+eur(D.dovRiba-s)+'</b> iki dovanos'; }
-					else { kita.innerHTML=''; }
-					var maxD=Math.max(D.dovRiba,D.riba)*1.12;
-					document.getElementById('pslk-fill').style.width=Math.min(100,s/maxD*100)+'%';
-					var jd=document.getElementById('pslk-juosta');
-					Array.prototype.forEach.call(jd.querySelectorAll('.pslk-zyme'),function(x){ x.remove(); });
-					[[D.riba,'pristatymas'],[D.dovRiba,'dovana']].forEach(function(z){
-						var el=document.createElement('span');
-						el.className='pslk-zyme'+(s+0.0001>=z[0]?' pas':'');
-						el.style.left=Math.min(97,z[0]/maxD*100)+'%';
-						el.innerHTML='<u></u><s>'+z[1]+'</s>';
-						jd.appendChild(el);
-					});
+					/* Du tikslai — dvi korteles su savo progresu ir „dar liko".
+					   dbr/kita/juostos kons rezime DOM'e NERA — ju neliesti. */
+					function tikslas(id,riba,gautaTxt){
+						var el=document.getElementById(id); if(!el) return;
+						var gauta = s+0.0001>=riba;
+						el.classList.toggle('gauta',gauta);
+						el.querySelector('.liko').textContent = gauta ? '✓' : 'dar '+eur(riba-s);
+						if(gauta){ el.querySelector('.tx').textContent = gautaTxt; }
+						else { el.querySelector('.jt i').style.width = Math.min(100, s/riba*100)+'%'; }
+					}
+					tikslas('pslk-tk-pr', D.riba, 'Pristatymas į paštomatą — nemokamas');
+					tikslas('pslk-tk-dov', D.dovRiba, 'Dovana tavo — rinkis vieną');
 				}
-				else if(d>0){ dbr.innerHTML='Turi <b>−'+d+' %</b> · sutaupai '+eur(nuolEur); }
+				else { var dbr=document.getElementById('pslk-dbr'), kita=document.getElementById('pslk-kita');
+				if(d>0){ dbr.innerHTML='Turi <b>−'+d+' %</b> · sutaupai '+eur(nuolEur); }
 				else if(D.pakopos.length){ dbr.innerHTML='Nuolaida nuo '+eur(D.pakopos[0].nuo); }
 				else { dbr.textContent=''; }
 				if(r.kita){ kita.innerHTML='Dar <b>'+eur(r.kita.nuo-s)+'</b> ir visai '+D.zodis.n+' <b>−'+r.kita.d+' %</b>'; }
@@ -1316,6 +1339,7 @@ class Petshop_Laukai {
 
 				if(!D.suDovana){
 				var max=virs?virs.nuo*1.12:1;
+				/* pastaba: sis blokas dabar gyvena else-sakoje virsuje pradetoje */
 				document.getElementById('pslk-fill').style.width=Math.min(100,s/max*100)+'%';
 				var j=document.getElementById('pslk-juosta');
 				Array.prototype.forEach.call(j.querySelectorAll('.pslk-zyme'),function(x){ x.remove(); });
@@ -1326,6 +1350,7 @@ class Petshop_Laukai {
 					el.innerHTML='<u></u><s>'+p.nuo+' €</s>';
 					j.appendChild(el);
 				});
+				}
 				}
 
 				/* sumos */
@@ -1341,9 +1366,10 @@ class Petshop_Laukai {
 				var c=document.getElementById('pslk-cta');
 				if(n>=D.min){ c.disabled=false; c.textContent='Įsidėti į krepšelį'; }
 				else { var tr=D.min-n; c.disabled=true; c.textContent='Įdėk dar '+tr; }
-				document.getElementById('pslk-po').innerHTML=(moka>0&&moka<D.riba)
+				document.getElementById('pslk-po').innerHTML = D.suDovana ? ''
+					: ((moka>0&&moka<D.riba)
 					? 'Dar <b>'+eur(D.riba-moka)+'</b> iki nemokamo pristatymo į paštomatą'
-					: 'Nemokamas pristatymas į paštomatą nuo '+D.riba.toFixed(0)+' €';
+					: 'Nemokamas pristatymas į paštomatą nuo '+D.riba.toFixed(0)+' €');
 			}
 
 			/* greita perziura */
