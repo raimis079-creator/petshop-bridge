@@ -10,17 +10,17 @@ async function snip(name,code){ const cr=await api('/wp-json/code-snippets/v1/sn
 async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
 
 const b64 = fs.readFileSync('deploy/petshop-laukai.php').toString('base64');
-const s1 = await snip('TEMP SET 127', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_s127'] ?? '') !== 'S127x') return;
-	update_option('ps_l_b64_127', '${b64}', false);
+const s1 = await snip('TEMP SET 128', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_s128'] ?? '') !== 'S128x') return;
+	update_option('ps_l_b64_128', '${b64}', false);
 	header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-await fetch(WP+'/?ps_s127=S127x').then(r=>r.text()).catch(()=>{});
+await fetch(WP+'/?ps_s128=S128x').then(r=>r.text()).catch(()=>{});
 await off(s1); await new Promise(r=>setTimeout(r,3000));
-const s2 = await snip('TEMP DEP 127', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_d127'] ?? '') !== 'D127x') return;
-	\$o=array(); \$b=get_option('ps_l_b64_127');
+const s2 = await snip('TEMP DEP 128', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_d128'] ?? '') !== 'D128x') return;
+	\$o=array(); \$b=get_option('ps_l_b64_128');
 	if(!\$b){ \$o['klaida']='tuscia'; }
 	else { \$k=base64_decode(\$b);
 		try { token_get_all(\$k, TOKEN_PARSE); \$o['sintakse']='OK';
@@ -28,11 +28,11 @@ const s2 = await snip('TEMP DEP 127', `add_action('wp_loaded', function(){
 			file_put_contents(\$kl,\$k); clearstatcache(true,\$kl);
 			\$o['sutampa']=(md5_file(\$kl)===md5(\$k));
 		} catch (ParseError \$e){ \$o['sintakse']='KLAIDA: '.\$e->getMessage(); }
-		delete_option('ps_l_b64_127'); }
+		delete_option('ps_l_b64_128'); }
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d127=D127x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
+try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d128=D128x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
 await off(s2); await new Promise(r=>setTimeout(r,2500));
 
 const URL8='/product/test-konservu-deze-800-be-vistienos/';
@@ -57,7 +57,7 @@ await page.locator('.pslk-p').first().click();
 await page.waitForTimeout(800);
 const boldN = await page.locator('#pslk-pz-apr b').count();
 T.t1_prekes_antrastes = { praejo: boldN>=2, bold: boldN };
-await shot(page,'v127_perziura_preke');
+await shot(page,'v128_perziura_preke');
 await page.evaluate(()=>document.querySelector('.pslk-pz-x').click());
 await page.waitForTimeout(400);
 /* dovanos perziura su antrastemis */
@@ -65,7 +65,7 @@ await page.locator('.pslk-dovk').nth(0).click();
 await page.waitForTimeout(800);
 const boldD = await page.locator('#pslk-pz-apr b').count();
 T.t2_dovanos_antrastes = { praejo: (await page.locator('#pslk-pz.rodo').count())===1 && boldD>=2, bold: boldD };
-await shot(page,'v127_perziura_dovana');
+await shot(page,'v128_perziura_dovana');
 await page.evaluate(()=>document.querySelector('.pslk-pz-x').click());
 
 /* MOBILE 390px: dovanu langas — Raimio gedimo medziokle */
@@ -89,13 +89,13 @@ try{
   aprM = await pm.evaluate(()=>{var a=document.getElementById('pslk-pz-apr');return a?a.textContent.slice(0,80):'';});
 }catch(e){ klaidaM=String(e).slice(0,220); }
 T.t3_mobile_dovanos_langas = { praejo: langasM===1 && aprM.length>20, korteliu: dovYra, langas: langasM, apr: aprM, klaida: klaidaM };
-await shot(pm,'v127_mobile_dovana');
+await shot(pm,'v128_mobile_dovana');
 T.t4_js = { praejo: jsErr.length===0 && jsErrM.length===0, desktop: jsErr, mobile: jsErrM };
 await br.close();
 out.viso=Object.keys(T).length; out.praejo=Object.values(T).filter(x=>x.praejo).length;
 
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw127.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw128.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw127.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw128.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('ok');
