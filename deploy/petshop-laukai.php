@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.19';   /* v1.19: istaisytas issigriovęs tinklelis — kaires kolonos apvalkalas */
+	const VERSIJA = '1.20';   /* v1.20: kliento akys — skonio vardai, kainos inkaras, dovanos/juostos slifas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -721,6 +721,10 @@ class Petshop_Laukai {
 			$vardas = preg_replace( '/^[\s\-–—:,\.]+/u', '', $vardas );
 			if ( $vardas === '' ) { $vardas = trim( preg_replace( '/^\S+\s/u', '', $pav ) ); }
 			$vardas = mb_strtoupper( mb_substr( $vardas, 0, 1 ) ) . mb_substr( $vardas, 1 );
+			/* Konservu pavadinimai kito rasto („…: konservai šunims su X, 800 g") —
+			   jiems skonio taisykle. Jei nesuveike, lieka bendroji. */
+			$skonis = self::skonio_pavadinimas( $pav );
+			if ( $skonis !== $pav ) { $vardas = $skonis; }
 			$r[] = array(
 				'cid'    => (int) $ci->get_child_item_id(),
 				'pid'    => $pid,
@@ -780,6 +784,25 @@ class Petshop_Laukai {
 		return $out;
 	}
 
+	/**
+	 * Skonio pavadinimas kortelei. Katalogo pavadinimas („Animonda GranCarno
+	 * Adult Beef: konservai šunims su šviežia jautiena, 800 g") kortelei per
+	 * ilgas ir nukerpamas daugtaškiu — klientas skirtumo tarp devynių
+	 * „GranCarno Adult…" nemato. Kortelei reikia SKONIO; pilnas pavadinimas
+	 * lieka greitoje peržiūroje.
+	 * Atsargiai: jei šablonas neatpažįstamas — grąžinam pilną pavadinimą,
+	 * geriau ilgas nei sugadintas.
+	 */
+	private static function skonio_pavadinimas( $pav ) {
+		$t = $pav;
+		if ( strpos( $t, ':' ) !== false ) { $t = trim( substr( $t, strpos( $t, ':' ) + 1 ) ); }
+		$t = preg_replace( '/,\s*[\d.,]+\s*(g|kg|ml|l)\s*$/iu', '', $t );
+		$t = preg_replace( '/^.*?(konservai|šlapias maistas)\s+(suaugusiems\s+)?(šunims|katėms|kačiukams|šuniukams)\s*(su\s+)?/iu', '', $t );
+		$t = trim( $t, " \t-–—" );
+		if ( $t === '' || mb_strlen( $t ) < 3 || $t === $pav ) { return $pav; }
+		return mb_strtoupper( mb_substr( $t, 0, 1 ) ) . mb_substr( $t, 1 );
+	}
+
 	private static function pristatymo_riba() {
 		return (float) apply_filters( 'ps_laukas_pristatymo_riba', 30.0 );
 	}
@@ -798,6 +821,11 @@ class Petshop_Laukai {
 		$dydis   = self::dydis( $lid );
 		$dovanos = self::dovanu_duomenys( $lid );
 		$dovRiba = self::dovanos_riba( $lid );
+
+		/* Kainos inkaras: kiek kainuoja „po viena kiekvieno". Klientas per 5 s
+		   privalo pamatyti KAINA — tuscia deze su 0,00 EUR jos neduoda. */
+		$po1 = 0.0; $po1n = 0;
+		foreach ( $prekes as $pr ) { if ( $pr['yra'] ) { $po1 += $pr['kaina']; $po1n++; } }
 
 		/* Dydzio lygmuo (konservu dezes). Jei nė vienas grupes laukas dydzio
 		   neturi, si eilute nerodoma is viso — skanestu vitrina lieka kaip buvo.
@@ -878,8 +906,8 @@ class Petshop_Laukai {
 				         o deze iskrenta zemyn uz ekrano. */ ?>
 				<div class="pslk-kaire">
 				<div class="pslk-visi">
-					<span>Nežinai, nuo ko pradėti? <b><?php echo count( $prekes ); ?> skoniai</b> — imk po vieną kiekvieno.</span>
-					<button type="button" id="pslk-visi">Po 1 vnt. visų</button>
+					<span>Nežinai, nuo ko pradėti? Imk <b>po vieną kiekvieno skonio</b> — visi jau atrinkti.</span>
+					<button type="button" id="pslk-visi"><?php echo (int) $po1n; ?> skoniai · <?php echo esc_html( wc_format_decimal( $po1, 2 ) ); ?> €</button>
 				</div>
 				<div class="pslk-korteles">
 					<?php foreach ( $prekes as $pr ) : ?>
@@ -1011,14 +1039,18 @@ class Petshop_Laukai {
 		/* „Po 1 vnt. visu" — atsakymas i tuscia deze: vienu paspaudimu pilna. */
 		.pslk-visi{display:flex;align-items:center;gap:12px;background:var(--zf);border:1px solid #BFCEC8;
 			border-radius:10px;padding:11px 14px;margin-bottom:14px;font-size:13.5px;color:var(--zt)}
-		.pslk-visi button{margin-left:auto;border:2px solid var(--z);background:#fff;color:var(--z);font-weight:800;
-			font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;border-radius:8px;padding:9px 15px;cursor:pointer;white-space:nowrap}
-		.pslk-visi button:hover{background:var(--z);color:#fff}
+		.pslk-visi button{margin-left:auto;border:0;background:var(--z);color:#fff;font-weight:800;
+			font-size:13.5px;letter-spacing:.02em;border-radius:9px;padding:12px 18px;cursor:pointer;white-space:nowrap;
+			box-shadow:0 3px 10px rgba(15,110,86,.25)}
+		.pslk-visi button:hover{background:var(--zt)}
+		.pslk-visi button::before{content:'+ ';font-weight:800}
+		@media(max-width:560px){.pslk-visi{flex-direction:column;align-items:stretch;text-align:center}
+			.pslk-visi button{margin-left:0}}
 		/* Dovanos: matomos nuo pirmos sekundes kaip tikslas, atrakinamos pasiekus suma. */
 		.pslk-dov{border-top:1px solid #EFEAE0;padding:15px 18px}
-		.pslk-dov-a{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.05em;
+		.pslk-dov-a{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:12.5px;font-weight:800;letter-spacing:.05em;
 			text-transform:uppercase;color:#C7891C;margin-bottom:10px}
-		.pslk-dov-a .bl{margin-left:auto;font-size:11px;font-weight:700;color:#9a9a9a;text-transform:none;letter-spacing:0}
+		.pslk-dov-a .bl{margin-left:auto;font-size:11.5px;font-weight:700;color:#8a7a5c;text-transform:none;letter-spacing:0;white-space:nowrap}
 		.pslk-dovs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 		.pslk-dovk{border:2px solid #E6E6E3;border-radius:10px;padding:8px 5px 7px;text-align:center;
 			background:#FAFAF8;opacity:.55;position:relative;cursor:default}
@@ -1027,6 +1059,11 @@ class Petshop_Laukai {
 		.pslk-dovk img{cursor:pointer}
 		.pslk-dov-apie{display:block;margin-top:4px;font-size:10px;font-weight:700;color:var(--z);cursor:pointer}
 		.pslk-dov-apie:hover{text-decoration:underline}
+		/* Viena dovana siaurame stulpelyje atrodo kaip klaida — istempiam gulsčiai. */
+		.pslk-dovk:only-child{grid-column:1/-1;display:flex;align-items:center;gap:12px;text-align:left;padding:10px 12px}
+		.pslk-dovk:only-child img{margin:0;max-width:52px;max-height:52px}
+		.pslk-dovk:only-child .pv{font-size:12px}
+		.pslk-dovk:only-child .pslk-dov-apie{margin:0 0 0 auto;font-size:11px;white-space:nowrap}
 		.pslk-dov.atrakinta .pslk-dovk{cursor:pointer;opacity:1;background:#fff}
 		.pslk-dov.atrakinta .pslk-dovk:hover{border-color:#C7891C}
 		.pslk-dov.atrakinta .pslk-dovk.pas{border-color:#C7891C;background:#FBF3E2}
@@ -1106,8 +1143,8 @@ class Petshop_Laukai {
 		.pslk-zyme{position:absolute;top:-3px;transform:translateX(-50%)}
 		.pslk-zyme u{display:block;width:3px;height:15px;background:#D6D6D1;border-radius:2px;text-decoration:none}
 		.pslk-zyme.pas u{background:var(--zt)}
-		.pslk-zyme s{position:absolute;top:17px;left:50%;transform:translateX(-50%);font-size:10.5px;color:#9a9a9a;
-			text-decoration:none;white-space:nowrap;font-weight:700}
+		.pslk-zyme s{position:absolute;top:17px;left:50%;transform:translateX(-50%);font-size:11px;color:#9a9a9a;
+			text-decoration:none;white-space:nowrap;font-weight:700;letter-spacing:.02em}
 		.pslk-zyme.pas s{color:var(--zt)}
 		.pslk-sumos{padding:4px 18px 18px}
 		.pslk-eil{display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0;border-top:1px solid #F1F1EE}
@@ -1221,7 +1258,7 @@ class Petshop_Laukai {
 					if(s+0.0001<D.riba){ kita.innerHTML='Dar <b>'+eur(D.riba-s)+'</b> iki nemokamo pristatymo'; }
 					else if(!atr2){ kita.innerHTML='Dar <b>'+eur(D.dovRiba-s)+'</b> iki dovanos'; }
 					else { kita.innerHTML=''; }
-					var maxD=Math.max(D.dovRiba,D.riba);
+					var maxD=Math.max(D.dovRiba,D.riba)*1.12;
 					document.getElementById('pslk-fill').style.width=Math.min(100,s/maxD*100)+'%';
 					var jd=document.getElementById('pslk-juosta');
 					Array.prototype.forEach.call(jd.querySelectorAll('.pslk-zyme'),function(x){ x.remove(); });
