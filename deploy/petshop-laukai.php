@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.25';   /* v1.25: tikslu korteles (pristatymas/dovana) vietoj anonimines juostos */
+	const VERSIJA = '1.26';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -1241,6 +1241,8 @@ class Petshop_Laukai {
 		.pslk-pz-f img{max-width:100%;max-height:260px;object-fit:contain}
 		.pslk-pz-pav{font-size:19px;font-weight:800;line-height:1.3;margin:4px 0 10px}
 		.pslk-pz-kaina{font-size:21px;font-weight:800;margin-bottom:14px}
+		.pslk-pz-apr b{display:block;margin-top:12px;color:#2B2B2B;font-size:13px;letter-spacing:.02em}
+		.pslk-pz-apr b:first-child{margin-top:0}
 		.pslk-pz-apr{font-size:13.5px;color:#4c4c4c;line-height:1.6;white-space:pre-line;
 			border-top:1px solid #F0F0ED;padding-top:13px;margin-bottom:18px}
 		.pslk-pz-v2{display:flex;gap:10px}
@@ -1265,6 +1267,19 @@ class Petshop_Laukai {
 			var dovPas=dovanos.length?dovanos[0].id:0;
 			function dovAtrakinta(s){ return D.suDovana && dovanos.length && s+0.0001>=D.dovRiba; }
 			function eur(n){ return n.toFixed(2).replace('.',',')+' €'; }
+			/* Tiekejo aprasymas — vientisa mase. Eilute, kuri baigiasi dvitaskiu
+			   ir nera per ilga („Sudėtis:", „Analitinė sudėtis:", „Trumpa apžvalga:"),
+			   yra antraste — paryskinam ir atskiriam tarpu. Tekstas escapinamas,
+			   nes is textContent pereinam i innerHTML. */
+			function aprHtml(t){
+				if(!t) return 'Aprašymas ruošiamas.';
+				var esc=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+				return esc.split('\n').map(function(e){
+					var ee=e.trim();
+					if(ee.length>1 && ee.length<70 && ee.slice(-1)===':'){ return '<b>'+ee+'</b>'; }
+					return ee;
+				}).join('\n');
+			}
 			function vnt(){ var s=0; for(var k in sel) s+=sel[k]; return s; }
 			function suma(){ var s=0; for(var k in sel){ var p=pagalCid[k]; if(p) s+=p.kaina*sel[k]; } return s; }
 			function pakopa(s){ var d=0,kita=null;
@@ -1380,7 +1395,7 @@ class Petshop_Laukai {
 				document.getElementById('pslk-pz-b').textContent=p.zenklas;
 				document.getElementById('pslk-pz-pav').textContent=p.pav;
 				document.getElementById('pslk-pz-kaina').innerHTML=eur(p.kaina)+' <small style="font-size:12px;font-weight:400;color:#9a9a9a">/ vnt.</small>';
-				document.getElementById('pslk-pz-apr').textContent=p.apr||'Aprašymas ruošiamas.';
+				document.getElementById('pslk-pz-apr').innerHTML=aprHtml(p.apr);
 				pzAtnaujink();
 				document.getElementById('pslk-pz').classList.add('rodo');
 				document.body.style.overflow='hidden';
@@ -1394,7 +1409,7 @@ class Petshop_Laukai {
 				document.getElementById('pslk-pz-b').textContent='Dovana';
 				document.getElementById('pslk-pz-pav').textContent=g.pav;
 				document.getElementById('pslk-pz-kaina').innerHTML='<span style="color:#C7891C">Nemokamai nuo '+eur(D.dovRiba)+'</span>';
-				document.getElementById('pslk-pz-apr').textContent=g.apr||'Aprašymas ruošiamas.';
+				document.getElementById('pslk-pz-apr').innerHTML=aprHtml(g.apr);
 				document.querySelector('.pslk-pz-v2').style.display='none';
 				document.getElementById('pslk-pz').classList.add('rodo');
 				document.body.style.overflow='hidden';
