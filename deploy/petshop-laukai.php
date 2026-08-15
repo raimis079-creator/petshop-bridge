@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.28';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.29';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -1002,12 +1002,16 @@ class Petshop_Laukai {
 							         Viena juosta su dviem brukšneliais kliento nekabina:
 							         zenklai susispaudzia, o „dar liko X" nesimato (08-15). */ ?>
 							<div class="pslk-eiga"><div class="pslk-tikslai">
+								<?php /* Vektoriniai zenkliukai, ne emoji: emoji kiekvienoje sistemoje
+								         piesiami kitaip (Android/iOS/Windows) ir atrodo kaip lipdukai
+								         salia tvarkingos tipografijos (savininko pastaba 08-15).
+								         currentColor — zenkliukas seka korteles busenos spalva. */ ?>
 								<div class="pslk-tk" id="pslk-tk-pr">
-									<div class="v"><span class="ik">🚚</span><span class="tx">Nemokamas pristatymas į paštomatą</span><span class="liko"></span></div>
+									<div class="v"><span class="ik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg></span><span class="tx">Nemokamas pristatymas į paštomatą</span><span class="liko"></span></div>
 									<div class="jt"><i></i></div>
 								</div>
 								<div class="pslk-tk dov" id="pslk-tk-dov">
-									<div class="v"><span class="ik">🎁</span><span class="tx">Dovana — rinkis vieną iš <?php echo count( $dovanos ); ?></span><span class="liko"></span></div>
+									<div class="v"><span class="ik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h16v9H4z"/><path d="M3 7.5h18V11H3z"/><path d="M12 7.5V20"/><path d="M12 7.5S10.8 4 8.8 4a2 2 0 000 3.5H12zm0 0s1.2-3.5 3.2-3.5a2 2 0 010 3.5H12z"/></svg></span><span class="tx">Dovana — rinkis vieną iš <?php echo count( $dovanos ); ?></span><span class="liko"></span></div>
 									<div class="jt"><i></i></div>
 								</div>
 							</div></div>
@@ -1194,7 +1198,10 @@ class Petshop_Laukai {
 		.pslk-tikslai{display:flex;flex-direction:column;gap:10px;padding-bottom:9px}
 		.pslk-tk{border:1.5px solid #EFEAE0;border-radius:10px;padding:10px 12px 11px;transition:background .25s,border-color .25s}
 		.pslk-tk .v{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#4c4c4c;line-height:1.3}
-		.pslk-tk .ik{font-size:16px;flex:none}
+		.pslk-tk .ik{flex:none;width:19px;height:19px;color:#9a9a9a;display:grid;place-items:center}
+		.pslk-tk .ik svg{width:19px;height:19px;display:block}
+		.pslk-tk.gauta .ik{color:var(--z)}
+		.pslk-tk.dov.gauta .ik{color:#C7891C}
 		.pslk-tk .liko{margin-left:auto;font-weight:800;color:var(--zt);white-space:nowrap;font-size:12.5px}
 		.pslk-tk .jt{height:6px;background:#EDEDE9;border-radius:4px;margin-top:8px;overflow:hidden}
 		.pslk-tk .jt i{display:block;height:100%;background:linear-gradient(90deg,var(--z),#199A76);width:0;transition:width .35s cubic-bezier(.4,0,.2,1)}
