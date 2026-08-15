@@ -14,17 +14,17 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 
 /* diegimas */
 const b64 = fs.readFileSync('deploy/petshop-laukai.php').toString('base64');
-const s1 = await snip('TEMP SET 124', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_s124'] ?? '') !== 'S124x') return;
-	update_option('ps_l_b64_124', '${b64}', false);
+const s1 = await snip('TEMP SET 125', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_s125'] ?? '') !== 'S125x') return;
+	update_option('ps_l_b64_125', '${b64}', false);
 	header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-await fetch(WP+'/?ps_s124=S124x').then(r=>r.text()).catch(()=>{});
+await fetch(WP+'/?ps_s125=S125x').then(r=>r.text()).catch(()=>{});
 await off(s1); await new Promise(r=>setTimeout(r,3000));
-const s2 = await snip('TEMP DEP 124', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_d124'] ?? '') !== 'D124x') return;
-	\$o=array(); \$b=get_option('ps_l_b64_124');
+const s2 = await snip('TEMP DEP 125', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_d125'] ?? '') !== 'D125x') return;
+	\$o=array(); \$b=get_option('ps_l_b64_125');
 	if(!\$b){ \$o['klaida']='tuscia'; }
 	else { \$k=base64_decode(\$b);
 		try { token_get_all(\$k, TOKEN_PARSE); \$o['sintakse']='OK';
@@ -32,16 +32,16 @@ const s2 = await snip('TEMP DEP 124', `add_action('wp_loaded', function(){
 			file_put_contents(\$kl,\$k); clearstatcache(true,\$kl);
 			\$o['sutampa']=(md5_file(\$kl)===md5(\$k));
 		} catch (ParseError \$e){ \$o['sintakse']='KLAIDA: '.\$e->getMessage(); }
-		delete_option('ps_l_b64_124'); }
+		delete_option('ps_l_b64_125'); }
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d124=D124x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
+try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d125=D125x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
 await off(s2); await new Promise(r=>setTimeout(r,2500));
 
 /* 5 testines dezes — pilna sutarta struktura */
-const s3 = await snip('TEMP DEZ 124', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_z124'] ?? '') !== 'Z124x') return;
+const s3 = await snip('TEMP DEZ 125', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_z125'] ?? '') !== 'Z125x') return;
 	\$o=array('versija'=>Petshop_Laukai::VERSIJA);
 	\$dov = wp_json_encode(array(16305,19098,17386));
 	\$rink = array(
@@ -90,13 +90,13 @@ const s3 = await snip('TEMP DEZ 124', `add_action('wp_loaded', function(){
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.paruosimas = JSON.parse(await (await fetch(WP+'/?ps_z124=Z124x')).text()); }catch(e){ out.paruosimas_err=String(e).slice(0,300); }
+try{ out.paruosimas = JSON.parse(await (await fetch(WP+'/?ps_z125=Z125x')).text()); }catch(e){ out.paruosimas_err=String(e).slice(0,300); }
 await off(s3); await new Promise(r=>setTimeout(r,2000));
 
 
 /* PAVADINIMU APREPTIS — taisykle ant visu konservu, ne 9 pavyzdziu */
 const audCode = `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_vardai'] ?? '') !== 'V124x') return;
+	if ((\$_GET['ps_vardai'] ?? '') !== 'V125x') return;
 	\$ids = get_posts(array('post_type'=>'product','post_status'=>'publish','numberposts'=>-1,'fields'=>'ids',
 		'tax_query'=>array(array('taxonomy'=>'product_cat','field'=>'term_id','terms'=>array(73,79,86)))));
 	\$ref = new ReflectionMethod('Petshop_Laukai','skonio_pavadinimas');
@@ -114,9 +114,9 @@ const audCode = `add_action('wp_loaded', function(){
 	echo wp_json_encode(array('viso'=>count(\$ids),'gerai'=>\$gerai,'blogu'=>count(\$blogi),'blogi'=>array_slice(\$blogi,0,40)));
 	exit;
 }, 131);`;
-const sA = await snip('TEMP VARDAI 124', audCode);
+const sA = await snip('TEMP VARDAI 125', audCode);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.vardai = JSON.parse(await (await fetch(WP+'/?ps_vardai=V124x')).text()); }catch(e){ out.vardai_err=String(e).slice(0,200); }
+try{ out.vardai = JSON.parse(await (await fetch(WP+'/?ps_vardai=V125x')).text()); }catch(e){ out.vardai_err=String(e).slice(0,200); }
 await off(sA); await new Promise(r=>setTimeout(r,2000));
 
 const D = out.paruosimas && out.paruosimas.dezes;
@@ -195,6 +195,26 @@ await page.goto(WP+'/cart/',{waitUntil:'domcontentloaded',timeout:60000});
 await page.waitForTimeout(2500);
 const kr = await page.locator('.woocommerce-cart-form, .cart, table').first().innerText().catch(()=>'');
 T.t10_krepselis = { praejo: kr.toLowerCase().includes('jaučio') && kr.includes('0,00'), jaucio: kr.toLowerCase().includes('jaučio') };
+/* tikslu korteles: pries riba rodo „dar X", pasiekus — gauta */
+await page.goto(d800.url,{waitUntil:'domcontentloaded',timeout:60000});
+await page.waitForTimeout(2000);
+await page.evaluate(()=>document.getElementById('pslk-visi').click());
+await page.waitForTimeout(800);
+const tkPr = await page.locator('#pslk-tk-pr .liko').textContent();
+const tkDov = await page.locator('#pslk-tk-dov .liko').textContent();
+const prGauta0 = await page.locator('#pslk-tk-pr.gauta').count();
+T.t12_tikslai_pries = { praejo: tkPr.includes('dar')===false ? prGauta0===1 : true, pr: tkPr.trim(), dov: tkDov.trim() };
+for(let i=0;i<6;i++){ await page.evaluate(()=>{var b=document.querySelector('.pslk-kort .pslk-stp button[data-d="1"]');if(b)b.click();}); await page.waitForTimeout(90); }
+await page.waitForTimeout(800);
+const prG = await page.locator('#pslk-tk-pr.gauta').count();
+const dovG = await page.locator('#pslk-tk-dov.gauta').count();
+T.t13_tikslai_pasiekti = { praejo: prG===1 && dovG===1, pr: prG, dov: dovG };
+/* skanestu regresija: pakopu juosta tebegyva */
+await page.goto(WP+'/product/skanestu-deze-suniui-be-vistienos/',{waitUntil:'domcontentloaded',timeout:60000});
+await page.waitForTimeout(2200);
+const skJuosta = await page.locator('#pslk-juosta').count();
+const skZymes = await page.locator('.pslk-zyme').count();
+T.t14_skanestai_regresija = { praejo: skJuosta===1 && skZymes>=2, juosta: skJuosta, zymes: skZymes };
 T.t11_js = { praejo: jsErr.length===0, klaidos: jsErr };
 
 /* nuotraukos */
@@ -208,18 +228,18 @@ async function shot(vardas){
 await page.goto(d800.url,{waitUntil:'networkidle',timeout:60000});
 await page.waitForTimeout(2500);
 await page.evaluate(()=>{ var c=document.querySelector('.cmplz-cookiebanner'); if(c) c.style.display='none'; });
-await shot('v124_tuscia');
+await shot('v125_tuscia');
 await page.evaluate(()=>document.getElementById('pslk-visi').click());
 await page.waitForTimeout(600);
 for(let i=0;i<6;i++){ await page.evaluate(()=>{var b=document.querySelector('.pslk-kort .pslk-stp button[data-d="1"]');if(b)b.click();}); await page.waitForTimeout(90); }
 await page.waitForTimeout(900);
-await shot('v124_pilna');
+await shot('v125_pilna');
 out.viso = Object.keys(T).length;
 out.praejo = Object.values(T).filter(x=>x.praejo).length;
 await br.close();
 }
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw124.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw125.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw124.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw125.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('ok');
