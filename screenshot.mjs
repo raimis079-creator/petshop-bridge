@@ -1,13 +1,14 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+import fs from 'fs';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const out={};
 async function irasyk(){
   let sha=null;
-  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/v133.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/v133b.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/v133.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/v133b.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 }
 async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(name,code){ const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name,code,scope:'global',active:true,priority:5})}); let id=null; try{ id=JSON.parse(cr.t).id; }catch(e){} return id; }
@@ -20,6 +21,31 @@ async function get(u,bandymai){ bandymai=bandymai||3;
   }
 }
 try{
+
+const b64 = fs.readFileSync('deploy/petshop-laukai.php').toString('base64');
+const sA = await snip('TEMP SET 133b', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_s133b'] ?? '') !== 'S133bx') return;
+	update_option('ps_l_b64_133b','${b64}',false);
+	header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit; }, 131);`);
+await new Promise(r=>setTimeout(r,4500));
+out.set = await get('/?ps_s133b=S133bx');
+await off(sA); await new Promise(r=>setTimeout(r,3000));
+const sB = await snip('TEMP DEP 133b', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_d133b'] ?? '') !== 'D133bx') return;
+	\$o=array(); \$b=get_option('ps_l_b64_133b');
+	if(!\$b){ \$o['klaida']='tuscia'; }
+	else { \$k=base64_decode(\$b);
+		try { token_get_all(\$k, TOKEN_PARSE); \$o['sintakse']='OK';
+			\$kl=WPMU_PLUGIN_DIR.'/petshop-laukai.php';
+			file_put_contents(\$kl,\$k); clearstatcache(true,\$kl);
+			\$o['sutampa']=(md5_file(\$kl)===md5(\$k)); \$o['md5']=md5(\$k);
+		} catch (ParseError \$e){ \$o['sintakse']='KLAIDA: '.\$e->getMessage(); }
+		delete_option('ps_l_b64_133b'); }
+	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit; }, 131);`);
+await new Promise(r=>setTimeout(r,4500));
+out.diegimas = await get('/?ps_d133b=D133bx');
+await off(sB); await new Promise(r=>setTimeout(r,3000));
+
 const s = await snip('TEMP V133', `add_action('wp_loaded', function(){
 	\$v=\$_GET['ps_v133'] ?? ''; if(\$v==='') return;
 	wp_set_current_user(1);
