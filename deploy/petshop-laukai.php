@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.26';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.27';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -1276,7 +1276,12 @@ class Petshop_Laukai {
 				var esc=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 				return esc.split('\n').map(function(e){
 					var ee=e.trim();
+					/* Antraste visa eilute („Trumpa apžvalga:") */
 					if(ee.length>1 && ee.length<70 && ee.slice(-1)===':'){ return '<b>'+ee+'</b>'; }
+					/* Tiekejo rastas: etikete ir turinys vienoje eiluteje
+					   („Sudėtis: 68% jautiena…") — etikete iskeliame i antraste. */
+					var m=ee.match(/^([A-ZĄČĘĖĮŠŲŪŽ][^:.!?]{1,38}):\s+(.+)$/);
+					if(m){ return '<b>'+m[1]+':</b>'+m[2]; }
 					return ee;
 				}).join('\n');
 			}
