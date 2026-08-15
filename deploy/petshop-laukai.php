@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.22';   /* v1.22: iki 12 skoniu, per-dezes min, pilnas aprasas perziuroje, kompaktiskesnes korteles */
+	const VERSIJA = '1.23';   /* v1.23: perziuroje PILNAS aprasas (ne short) — prioriteto apvertimas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -748,8 +748,11 @@ class Petshop_Laukai {
 
 	/** Aprasas greitai perziurai. Analitines dalys sulipdomos i viena eilute. */
 	private static function trumpas_aprasas( $cp ) {
-		$t = $cp->get_short_description();
-		if ( trim( wp_strip_all_tags( $t ) ) === '' ) { $t = $cp->get_description(); }
+		/* PILNAS aprasas pirmas (savininko reikalavimas 08-15): prekes turi ir
+		   trumpa (163 z.), ir pilna (1300–1600 z.) — perziuroje rodomas pilnas,
+		   trumpas tik atsarga, kai pilno nera. */
+		$t = $cp->get_description();
+		if ( trim( wp_strip_all_tags( $t ) ) === '' ) { $t = $cp->get_short_description(); }
 		$t = preg_replace( '#<style.*?</style>#si', '', $t );
 		$t = preg_replace( '#</p>|<br\s*/?>#i', "\n", $t );
 		$t = preg_replace( '/(Trumpas prekės aprašymas|Prekės aprašymas|Pagrindinis aprašymas)/ui', "\n", $t );
