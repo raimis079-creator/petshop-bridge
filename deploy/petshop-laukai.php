@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.36';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.37';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -2252,6 +2252,11 @@ class Petshop_Laukai {
 			var SAUGI=<?php echo (int) $saugi; ?>;
 			var KAINOS=<?php echo wp_json_encode( array_map( 'floatval', self::krepsio_kainos( $lid ) ) ); ?>;
 			function eur(n){ return n.toFixed(2).replace('.',',')+' €'; }
+			/* esc() sitame bloke NEBUVO — dovanu lentele luzdavo ties pirmu prekes
+			   pavadinimu ir langas amzinai rodydavo „Ieškoma…" (rasta naršyklėje
+			   2026-08-15; serverio testai to nepagavo, nes luzo piesimas, ne uzklausa). */
+			function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+				return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 			function stat(t,bloga){
 				var s=document.getElementById('pslka-stat'); if(!s) { alert(t); return; }
 				s.textContent=t; s.className='pslka-stat rodo '+(bloga?'bloga':'gerai');
