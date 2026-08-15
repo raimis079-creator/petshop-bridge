@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.32';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.33';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -88,6 +88,7 @@ class Petshop_Laukai {
 		add_action( 'wp_ajax_ps_laukai_prideti_kelias', array( __CLASS__, 'ajax_prideti_kelias' ) );
 		add_action( 'wp_ajax_ps_laukai_foto',        array( __CLASS__, 'ajax_foto' ) );
 		add_action( 'wp_ajax_ps_laukai_dovanos',     array( __CLASS__, 'ajax_dovanos' ) );
+		add_action( 'wp_ajax_ps_laukai_dov_paieska', array( __CLASS__, 'ajax_dov_paieska' ) );
 		add_action( 'wp_ajax_ps_laukai_busena',      array( __CLASS__, 'ajax_busena' ) );
 
 		/* Dovanu variklis (v1.16). Sinchronizacija — ties krepselio ivykiais,
@@ -1967,10 +1968,25 @@ class Petshop_Laukai {
 		echo '<div class="pslka-vidus" style="padding:0"><table class="wp-list-table widefat striped">'
 			. '<thead><tr><th style="width:44%">Dovana</th><th>Kaina</th><th>Savikaina</th><th>Likutis</th><th></th></tr></thead>'
 			. '<tbody id="dov-kunas"></tbody></table>'
-			. '<div style="padding:10px 14px" id="dov-pridejimas">'
-			. '<input type="text" id="dov-q" class="regular-text" placeholder="ieškok dovanos pagal pavadinimą…"> '
-			. '<span class="pslka-mut">tas pats sandėlis kaip krepšys — kitaip būtų dvi siuntos</span>'
-			. '<div id="dov-rez" class="pslka-rez"></div></div></div></div>';
+			. '<div style="padding:10px 14px" id="dov-pridejimas">';
+		$kr_sand = $kr ? ( strtoupper( (string) get_post_meta( $kr[0], '_ps_sandelis', true ) ) ?: 'AV' ) : 'AV';
+		echo '<div class="pslka-frow">'
+			. '<span class="pslka-f pslka-plati"><label>Paieška</label>'
+			. '<input type="text" id="dov-q" placeholder="palik tuščią — parodysim pigiausias"></span>'
+			. '<span class="pslka-f"><label>Rūšis</label><select id="dov-rusis">'
+			. '<option value="">— visos —</option><option value="skanestai">Skanėstai</option>'
+			. '<option value="kramtalai">Kramtalai</option><option value="zaislai">Žaislai</option></select></span>'
+			. '<span class="pslka-f"><label>Kaina iki</label><select id="dov-iki">'
+			. '<option value="">— bet kokia —</option><option value="1.5">1,50 €</option><option value="2.5">2,50 €</option>'
+			. '<option value="4">4 €</option><option value="7">7 €</option></select></span>'
+			. '<span class="pslka-f"><label>Rodyti</label><select id="dov-filtras">'
+			. '<option value="turimi">Tik turimas</option><option value="turimi_sav">Turimas su savikaina</option>'
+			. '<option value="visos">Visas</option></select></span>'
+			. '<span class="pslka-f"><label>Sandėlis</label>'
+			. '<span class="pslka-z b" title="Sandėlis imamas iš krepšio — dovana iš kito reikštų antrą siuntą">'
+			. esc_html( $kr_sand ) . ' · kaip krepšys</span></span>'
+			. '</div>';
+		echo '<div id="dov-rez" class="pslka-rez"></div></div></div></div>';
 
 		/* --- krepsys --- */
 		echo '<div class="pslka-kort"><h3>Krepšys — iš ko klientas renkasi '
@@ -2296,30 +2312,47 @@ class Petshop_Laukai {
 				if(pr) pr.style.display = DOV.length>=3 ? 'none' : '';
 			}
 			var dq=document.getElementById('dov-q'), dlaik=0;
-			if(dq){ dq.addEventListener('input',function(){ clearTimeout(dlaik); dlaik=setTimeout(dovIeskoti,350); }); }
+			if(dq){
+				dq.addEventListener('input',function(){ clearTimeout(dlaik); dlaik=setTimeout(dovIeskoti,350); });
+				['dov-rusis','dov-iki','dov-filtras'].forEach(function(id){
+					var e=document.getElementById(id); if(e) e.addEventListener('change',dovIeskoti);
+				});
+			}
 			function dovIeskoti(){
-				var rez=document.getElementById('dov-rez'), t=dq.value.trim();
-				if(t.length<2){ rez.innerHTML=''; return; }
+				var rez=document.getElementById('dov-rez'); if(!rez) return;
+				var f=document.getElementById('dov-filtras').value;
 				rez.innerHTML='<div class="pslka-tuscia">Ieškoma…</div>';
-				fetch(A+'?action=ps_laukai_paieska&nonce='+N+'&lid='+LID+'&q='+encodeURIComponent(t),{credentials:'same-origin'})
-					.then(function(r){return r.json();}).then(function(j){
-						var sar=(j&&j.data&&j.data.prekes)||[];
-						if(!sar.length){ rez.innerHTML='<div class="pslka-tuscia">Nieko nerasta.</div>'; return; }
-						rez.innerHTML=sar.slice(0,12).map(function(p){
-							return '<div class="pslka-rez-e"><span>'+esc(p.pav)+'</span>'
-								+'<span class="pslka-mut">'+eur(p.kaina)+'</span>'
-								+'<button class="button dov-prideti" data-id="'+p.id+'">Dovana</button></div>';
-						}).join('');
-						rez.querySelectorAll('.dov-prideti').forEach(function(b){
-							b.addEventListener('click',function(){
-								b.disabled=true;
-								siusti('ps_laukai_dovanos',{veiksmas:'prideti',preke:b.dataset.id},function(d){
-									DOV=d.dovanos; pieskDovanas(); rez.innerHTML=''; dq.value='';
-									stat('Dovana pridėta.'); });
-								setTimeout(function(){ b.disabled=false; },4000);
-							});
+				var u=A+'?action=ps_laukai_dov_paieska&nonce='+N+'&lid='+LID
+					+'&q='+encodeURIComponent(dq.value.trim())
+					+'&rusis='+document.getElementById('dov-rusis').value
+					+'&iki='+document.getElementById('dov-iki').value
+					+'&turimi='+(f==='visos'?'0':'1')+'&sav='+(f==='turimi_sav'?'1':'0');
+				fetch(u,{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){
+					if(!j||!j.success){ rez.innerHTML='<div class="pslka-tuscia">Nepavyko ieškoti.</div>'; return; }
+					var sar=j.data.prekes||[];
+					if(!sar.length){ rez.innerHTML='<div class="pslka-tuscia">Nieko nerasta — atlaisvink filtrus.</div>'; return; }
+					var h='<div class="pslka-mut" style="padding:8px 4px">Rodoma '+sar.length+' iš '+j.data.viso
+						+' · rikiuota nuo pigiausios</div>';
+					h+='<table class="wp-list-table widefat striped"><thead><tr><th style="width:44%">Prekė</th>'
+						+'<th>Kaina</th><th>Savikaina</th><th>Likutis</th><th></th></tr></thead><tbody>';
+					sar.forEach(function(p){
+						h+='<tr><td>'+(p.foto?'<img src="'+p.foto+'" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;margin-right:8px">':'')
+							+esc(p.pav)+'<div class="pslka-mut">#'+p.id+(p.kat?' · '+esc(p.kat):'')+'</div></td>'
+							+'<td>'+eur(p.kaina)+'</td>'
+							+'<td>'+(p.savikaina!=null?eur(p.savikaina):'<span class="pslka-z y">nėra</span>')+'</td>'
+							+'<td>'+(p.yra?'<span class="pslka-z g">turime</span>':'<span class="pslka-z r">neturime</span>')+'</td>'
+							+'<td class="r"><button class="button button-primary dov-prideti" data-id="'+p.id+'">Dovana</button></td></tr>';
+					});
+					rez.innerHTML=h+'</tbody></table>';
+					rez.querySelectorAll('.dov-prideti').forEach(function(b){
+						b.addEventListener('click',function(){
+							b.disabled=true;
+							siusti('ps_laukai_dovanos',{veiksmas:'prideti',preke:b.dataset.id},function(d){
+								DOV=d.dovanos; pieskDovanas(); dovIeskoti(); stat('Dovana pridėta.'); });
+							setTimeout(function(){ b.disabled=false; },4000);
 						});
 					});
+				});
 			}
 			var drs=document.getElementById('dov-riba-saugoti');
 			if(drs){ drs.addEventListener('click',function(){
@@ -2334,6 +2367,8 @@ class Petshop_Laukai {
 				setTimeout(function(){ drs.disabled=false; },5000);
 			}); }
 			pieskDovanas();
+			/* Siulomi rodomi is karto — tuscias langas nepasako, ka rinktis. */
+			if(dq) dovIeskoti();
 
 			/* --- pakopos --- */
 			function marzaPo(d){ return SAUGI>0 ? null : null; }
@@ -2555,6 +2590,71 @@ class Petshop_Laukai {
 				'foto' => wp_get_attachment_image_url( $p->get_image_id(), 'thumbnail' ) );
 		}
 		wp_send_json_success( array( 'dovanos' => $r ) );
+	}
+
+	/**
+	 * Dovanu paieska. Nuo krepsio paieskos skiriasi trimis dalykais:
+	 * 1) sandelis NEPASIRENKAMAS — jis visada toks, kaip krepsio, kitaip butu
+	 *    dvi siuntos; filtro rodyti nereikia, serveris ji uzdeda pats;
+	 * 2) be uzklausos grazina SIULOMUS (pigiausius turimus) — tuscias langas
+	 *    nieko nepasako, o dovana renkantis svarbiausia kaina;
+	 * 3) rikiuoja pagal kaina didejant — dovanos savikaina yra dezes savikaina.
+	 */
+	public static function ajax_dov_paieska() {
+		self::tikrink();
+		$lid   = (int) ( $_GET['lid'] ?? 0 );
+		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks rinkinys nerastas.' ); }
+		$q     = sanitize_text_field( wp_unslash( $_GET['q'] ?? '' ) );
+		$rusis = sanitize_key( $_GET['rusis'] ?? '' );
+		$iki   = (float) str_replace( ',', '.', (string) ( $_GET['iki'] ?? 0 ) );
+		$tik_turimi = ( $_GET['turimi'] ?? '1' ) === '1';
+		$tik_sav    = ( $_GET['sav'] ?? '' ) === '1';
+
+		/* Sandelis — is krepsio, ne is vartotojo. */
+		$kr = self::krepsys( $lid );
+		$sand = $kr ? ( strtoupper( (string) get_post_meta( $kr[0], '_ps_sandelis', true ) ) ?: 'AV' ) : 'AV';
+
+		$args = array(
+			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 120,
+			'fields' => 'ids', 'orderby' => 'title', 'order' => 'ASC',
+		);
+		if ( mb_strlen( $q ) >= 2 ) { $args['s'] = $q; }
+		$args['meta_query'] = array(
+			'relation' => 'OR',
+			array( 'key' => '_ps_sandelis', 'value' => $sand, 'compare' => '=' ),
+		);
+		if ( $sand === 'AV' ) { $args['meta_query'][] = array( 'key' => '_ps_sandelis', 'compare' => 'NOT EXISTS' ); }
+
+		$q2 = new WP_Query( $args );
+		$esamos = self::dovanos( $lid );
+		$r = array();
+		foreach ( $q2->posts as $pid ) {
+			if ( in_array( (int) $pid, $esamos, true ) ) { continue; }
+			$p = wc_get_product( $pid );
+			if ( ! $p || $p->get_type() === 'mix-and-match' ) { continue; }
+			if ( $tik_turimi && ! $p->is_in_stock() ) { continue; }
+			$k = (float) $p->get_price();
+			if ( $k <= 0 ) { continue; }
+			if ( $iki > 0 && $k > $iki ) { continue; }
+			$sav = self::savikaina( $pid );
+			if ( $tik_sav && $sav === null ) { continue; }
+
+			$kat = (array) wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) );
+			$kat_t = mb_strtolower( implode( ' ', $kat ) . ' ' . $p->get_name() );
+			if ( $rusis === 'skanestai' && ! preg_match( '/skanėst|užkand|lazdel|pagalvėl/u', $kat_t ) ) { continue; }
+			if ( $rusis === 'kramtalai' && ! preg_match( '/kramt|ausis|ausys|kaulas|sausgysl/u', $kat_t ) ) { continue; }
+			if ( $rusis === 'zaislai'   && ! preg_match( '/žaisl/u', $kat_t ) ) { continue; }
+
+			$r[] = array(
+				'id' => (int) $pid, 'pav' => $p->get_name(), 'kaina' => $k,
+				'savikaina' => $sav, 'yra' => $p->is_in_stock(),
+				'sandelis' => $sand,
+				'foto' => wp_get_attachment_image_url( $p->get_image_id(), 'thumbnail' ),
+				'kat' => implode( ', ', array_slice( $kat, 0, 2 ) ),
+			);
+		}
+		usort( $r, function( $a, $b ) { return $a['kaina'] <=> $b['kaina']; } );
+		wp_send_json_success( array( 'prekes' => array_slice( $r, 0, 40 ), 'sandelis' => $sand, 'viso' => count( $r ) ) );
 	}
 
 	public static function ajax_pakopos() {
