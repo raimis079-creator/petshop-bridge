@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.20';   /* v1.20: kliento akys — skonio vardai, kainos inkaras, dovanos/juostos slifas */
+	const VERSIJA = '1.21';   /* v1.21: skonio vardo atsarga sugadintiems katalogo pavadinimams + kablelis kainoje */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -798,8 +798,19 @@ class Petshop_Laukai {
 		if ( strpos( $t, ':' ) !== false ) { $t = trim( substr( $t, strpos( $t, ':' ) + 1 ) ); }
 		$t = preg_replace( '/,\s*[\d.,]+\s*(g|kg|ml|l)\s*$/iu', '', $t );
 		$t = preg_replace( '/^.*?(konservai|šlapias maistas)\s+(suaugusiems\s+)?(šunims|katėms|kačiukams|šuniukams)\s*(su\s+)?/iu', '', $t );
-		$t = trim( $t, " \t-–—" );
-		if ( $t === '' || mb_strlen( $t ) < 3 || $t === $pav ) { return $pav; }
+		$t = trim( $t, " \t-–—,." );
+		/* Kataloge pasitaiko nukirstu pavadinimu („…Beef + Lamb: konserv") —
+		   po dvitaskio lieka vien boilerplate nuolauza. Tada imam dali PRIES
+		   dvitaski be zenklo zodzio: „GranCarno Adult Beef + Lamb". */
+		if ( $t === '' || mb_strlen( $t ) < 3 || preg_match( '/^(konserv\w*|šlapias( maistas)?|maistas)$/iu', $t ) ) {
+			if ( strpos( $pav, ':' ) !== false ) {
+				$pries = trim( substr( $pav, 0, strpos( $pav, ':' ) ) );
+				$pries = trim( preg_replace( '/^\S+\s+/u', '', $pries ) );
+				if ( mb_strlen( $pries ) >= 3 ) { return $pries; }
+			}
+			return $pav;
+		}
+		if ( $t === $pav ) { return $pav; }
 		return mb_strtoupper( mb_substr( $t, 0, 1 ) ) . mb_substr( $t, 1 );
 	}
 
@@ -907,7 +918,7 @@ class Petshop_Laukai {
 				<div class="pslk-kaire">
 				<div class="pslk-visi">
 					<span>Nežinai, nuo ko pradėti? Imk <b>po vieną kiekvieno skonio</b> — visi jau atrinkti.</span>
-					<button type="button" id="pslk-visi"><?php echo (int) $po1n; ?> skoniai · <?php echo esc_html( wc_format_decimal( $po1, 2 ) ); ?> €</button>
+					<button type="button" id="pslk-visi"><?php echo (int) $po1n; ?> skoniai · <?php echo esc_html( number_format( $po1, 2, ',', '' ) ); ?> €</button>
 				</div>
 				<div class="pslk-korteles">
 					<?php foreach ( $prekes as $pr ) : ?>
