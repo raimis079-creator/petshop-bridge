@@ -6,9 +6,9 @@ const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS)
 const out={};
 async function irasyk(){
   let sha=null;
-  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow5.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow6.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow5.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow6.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 }
 async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(name,code){ const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name,code,scope:'global',active:true,priority:5})}); let id=null; try{ id=JSON.parse(cr.t).id; }catch(e){} return id; }
@@ -18,16 +18,16 @@ try{
 /* Laikinas prisijungimas per slapuka — slapukas siunciamas ir su admin-ajax */
 
 const b64 = (await import('fs')).readFileSync('deploy/petshop-laukai.php').toString('base64');
-const sS = await snip('TEMP SET 139', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_s139'] ?? '') !== 'S139x') return;
-	update_option('ps_l_b64_139','${b64}',false);
+const sS = await snip('TEMP SET 140', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_s140'] ?? '') !== 'S140x') return;
+	update_option('ps_l_b64_140','${b64}',false);
 	header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit; }, 131);`);
 await new Promise(r=>setTimeout(r,4500));
-try{ out.set = await (await fetch(WP+'/?ps_s139=S139x')).json(); }catch(e){ out.set_err=String(e).slice(0,120); }
+try{ out.set = await (await fetch(WP+'/?ps_s140=S140x')).json(); }catch(e){ out.set_err=String(e).slice(0,120); }
 await off(sS); await new Promise(r=>setTimeout(r,3000));
-const sD = await snip('TEMP DEP 139', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_d139'] ?? '') !== 'D139x') return;
-	\$o=array(); \$b=get_option('ps_l_b64_139');
+const sD = await snip('TEMP DEP 140', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_d140'] ?? '') !== 'D140x') return;
+	\$o=array(); \$b=get_option('ps_l_b64_140');
 	if(!\$b){ \$o['klaida']='tuscia'; }
 	else { \$k=base64_decode(\$b);
 		try { token_get_all(\$k, TOKEN_PARSE); \$o['sintakse']='OK';
@@ -35,10 +35,10 @@ const sD = await snip('TEMP DEP 139', `add_action('wp_loaded', function(){
 			file_put_contents(\$kl,\$k); clearstatcache(true,\$kl);
 			\$o['sutampa']=(md5_file(\$kl)===md5(\$k));
 		} catch (ParseError \$e){ \$o['sintakse']='KLAIDA: '.\$e->getMessage(); }
-		delete_option('ps_l_b64_139'); }
+		delete_option('ps_l_b64_140'); }
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit; }, 131);`);
 await new Promise(r=>setTimeout(r,4500));
-try{ out.diegimas = await (await fetch(WP+'/?ps_d139=D139x')).json(); }catch(e){ out.dep_err=String(e).slice(0,120); }
+try{ out.diegimas = await (await fetch(WP+'/?ps_d140=D140x')).json(); }catch(e){ out.dep_err=String(e).slice(0,120); }
 await off(sD); await new Promise(r=>setTimeout(r,3000));
 
 sAuth = await snip('TEMP LOGIN', `add_action('init', function(){
@@ -77,6 +77,42 @@ if (out.puslapis.yra_dovanu_blokas) {
   await page.waitForTimeout(8000);
   out.rez_skanestai = (await page.locator('#dov-rez').innerText().catch(()=>'')).slice(0,400);
   out.eiluciu_skanestai = await page.locator('#dov-rez tbody tr').count();
+  /* KURIMAS: „＋" mygtukas 400 g eiluteje */
+  const plius = page.locator('.pslka-grnaujas').first();
+  out.plius_yra = await plius.count();
+  if (out.plius_yra) {
+    const href = await plius.getAttribute('href');
+    out.plius_href = (href||'').slice(-70);
+    await page.goto(href, {waitUntil:'domcontentloaded', timeout:45000});
+    await page.waitForTimeout(2500);
+    out.kurimo_forma = {
+      dydis_uzpildytas: await page.locator('#n-dydis').inputValue().catch(()=>''),
+      grupe_parinkta: await page.locator('#n-seima').inputValue().catch(()=>''),
+      dydzio_laukas: await page.locator('#n-dydis').count()
+    };
+    /* sukuriam testini */
+    await page.fill('#n-pav','ZZZ TRYNIMO TESTAS');
+    await page.fill('#n-trumpas','Trynimui');
+    await page.click('#n-kurti');
+    await page.waitForTimeout(6000);
+    out.sukurta = { url: page.url(),
+      dydis: await page.locator('#s-dydis').inputValue().catch(()=>''),
+      min: await page.locator('#s-min').inputValue().catch(()=>''),
+      grupe: await page.locator('#s-seima').inputValue().catch(()=>'') };
+    /* TRYNIMAS negriztamai */
+    page.on('dialog', async d => { await d.accept(); });
+    const tr = page.locator('#b-trinti');
+    out.trinti_yra = await tr.count();
+    if (out.trinti_yra) {
+      await tr.click();
+      await page.waitForTimeout(7000);
+      out.po_trynimo = { url: page.url(),
+        yra_sarase: (await page.locator('body').innerText()).includes('ZZZ TRYNIMO TESTAS') };
+    }
+    await page.goto(WP+'/wp-admin/admin.php?page=ps-laukai&id=34942',{waitUntil:'domcontentloaded',timeout:45000});
+    await page.waitForTimeout(3000);
+  }
+
   /* GRUPES JUOSTA */
   out.juosta = {
     mygtuku: await page.locator('.pslka-grbtn').count(),
@@ -114,9 +150,9 @@ if (out.puslapis.yra_dovanu_blokas) {
     pirmos: (await page.locator('#dov-rez tbody tr td:first-child').allTextContents()).slice(0,3).map(x=>x.replace(/\s+/g,' ').trim().slice(0,52)) };
   const b = await page.screenshot({fullPage:false});
   let sha=null;
-  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow5.png`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow6.png`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const bo={message:'shot',content:b.toString('base64')}; if(sha) bo.sha=sha;
-  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow5.png`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(bo)});
+  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/brow6.png`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(bo)});
 }
 out.js_klaidos = klaidos; out.konsole = konsole.slice(0,8); out.ajax = uzklausos.slice(0,8);
 await br.close();
