@@ -7,9 +7,9 @@ const out={};
 const NL = String.fromCharCode(10);
 async function irasyk(){
   let sha=null;
-  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 }
 async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(name,code){ const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name,code,scope:'global',active:true,priority:5})}); let j=null; try{j=JSON.parse(cr.t);}catch(e){} return j?j.id:null; }
@@ -35,10 +35,16 @@ await page.evaluate(()=>document.getElementById('pslk-cta').click());
 await page.waitForTimeout(5000);
 
 /* 2) checkout */
-await page.goto(WP+'/atsiskaitymas/',{waitUntil:'domcontentloaded',timeout:60000}).catch(()=>{});
-if ((await page.locator('#billing_first_name, #billing-first_name').count())===0) {
-  await page.goto(WP+'/checkout/',{waitUntil:'domcontentloaded',timeout:60000}).catch(()=>{});
-}
+await page.goto(WP+'/checkout/',{waitUntil:'domcontentloaded',timeout:60000}).catch(()=>{});
+await page.waitForTimeout(2500);
+/* slapuku juosta uzdengia #place_order — priimam ir nuimam */
+await page.evaluate(()=>{
+  var b=document.querySelector('.cmplz-btn.cc-accept-all, .cmplz-accept, #cmplz-accept');
+  if(b) b.click();
+  document.querySelectorAll('.cmplz-cookiebanner, #cmplz-cookiebanner-container, .cmplz-blocked-content-notice').forEach(e=>e.remove());
+});
+await page.waitForTimeout(1500);
+
 await page.waitForTimeout(4000);
 out.checkout_url = page.url();
 async function fill(sel,val){ const l=page.locator(sel); if(await l.count()){ await l.first().fill(val).catch(()=>{}); return true; } return false; }
@@ -63,19 +69,21 @@ const btn = page.locator('#place_order');
 out.mygtukas = await btn.count();
 if (out.mygtukas) { await btn.click().catch(e=>out.klik=String(e).slice(0,120)); await page.waitForTimeout(12000); }
 out.po_uzsakymo = page.url();
+out.klaidos_checkout = (await page.locator('.woocommerce-error li, .woocommerce-NoticeGroup li, .wc-block-components-notice-banner').allTextContents().catch(()=>[])).slice(0,6);
+out.gauta_nr = (await page.locator('.woocommerce-order-overview__order strong, .woocommerce-thankyou-order-details').allTextContents().catch(()=>[])).slice(0,3);
 out.tekstas = (await page.locator('body').innerText()).slice(0,500).replace(/\s+/g,' ');
 out.js = jsErr;
 const sh = await page.screenshot({fullPage:false});
 let sha0=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs.png`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha0=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.png`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha0=(await g.json()).sha;}catch(e){}
 const bo={message:'shot',content:sh.toString('base64')}; if(sha0) bo.sha=sha0;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs.png`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(bo)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.png`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(bo)});
 await br.close();
 
 /* 3) patikra bazėje — ar savikaina eilutėse */
-const sT = await snip('TEMP UZS TIK', [
+const sT = await snip('TEMP UZS TIK2', [
 "add_action('wp_loaded', function(){",
-" if (($_GET['ps_ut'] ?? '') !== 'UT1x') return;",
+" if (($_GET['ps_ut2'] ?? '') !== 'UT2x') return;",
 " $o=array();",
 " $q = wc_get_orders(array('limit'=>1,'orderby'=>'date','order'=>'DESC'));",
 " if (!$q) { $o['klaida']='uzsakymu nera'; }",
@@ -99,7 +107,7 @@ const sT = await snip('TEMP UZS TIK', [
 " header('Content-Type: application/json'); echo wp_json_encode($o); exit;",
 "}, 131);"].join(NL));
 await new Promise(r=>setTimeout(r,4500));
-try{ out.baze = JSON.parse(await (await fetch(WP+'/?ps_ut=UT1x')).text()); }catch(e){ out.baze_e=String(e).slice(0,180); }
+try{ out.baze = JSON.parse(await (await fetch(WP+'/?ps_ut2=UT2x')).text()); }catch(e){ out.baze_e=String(e).slice(0,180); }
 await off(sT);
 }catch(e){ out.bendra=String(e).slice(0,250); }
 await irasyk();
