@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.39';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.40';   /* v1.40: kurimas su pakuote is grupes juostos + rinkinio trynimas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -89,6 +89,7 @@ class Petshop_Laukai {
 		add_action( 'wp_ajax_ps_laukai_foto',        array( __CLASS__, 'ajax_foto' ) );
 		add_action( 'wp_ajax_ps_laukai_dovanos',     array( __CLASS__, 'ajax_dovanos' ) );
 		add_action( 'wp_ajax_ps_laukai_dov_paieska', array( __CLASS__, 'ajax_dov_paieska' ) );
+		add_action( 'wp_ajax_ps_laukai_trinti',      array( __CLASS__, 'ajax_trinti' ) );
 		add_action( 'wp_ajax_ps_laukai_busena',      array( __CLASS__, 'ajax_busena' ) );
 
 		/* Dovanu variklis (v1.16). Sinchronizacija — ties krepselio ivykiais,
@@ -1946,11 +1947,18 @@ class Petshop_Laukai {
 			. '<input type="text" id="n-pav" placeholder="Skanėstų dėžė šuniui — be vištienos"></div>';
 		echo '<div class="pslka-laukas"><label>Trumpas pavadinimas <span>mygtukui vitrinoje</span></label>'
 			. '<input type="text" id="n-trumpas" placeholder="Be vištienos"></div>';
+		/* Grupe ir pakuote gali ateiti is nuorodos — spaudziant „＋" konkrecioje
+		   grupes/dydzio eiluteje jos jau parinktos (savininko pastaba 08-15). */
+		$is_url_grupe = isset( $_GET['grupe'] ) ? sanitize_key( $_GET['grupe'] ) : '';
+		$is_url_dydis = isset( $_GET['dydis'] ) ? sanitize_text_field( wp_unslash( $_GET['dydis'] ) ) : '';
 		echo '<div class="pslka-laukas"><label>Grupė <span>kartu rodomi vitrinoje ir sąraše</span></label><select id="n-seima">';
 		foreach ( self::grupiu_vardai() as $gk => $gv ) {
-			echo '<option value="' . esc_attr( $gk ) . '">' . esc_html( $gv ) . '</option>';
+			echo '<option value="' . esc_attr( $gk ) . '"' . selected( $is_url_grupe, $gk, false ) . '>' . esc_html( $gv ) . '</option>';
 		}
 		echo '</select></div>';
+		echo '<div class="pslka-laukas"><label>Pakuotė <span>konservams: 400 g, 800 g, 100 g; skanėstams palik tuščią</span></label>'
+			. '<input type="text" id="n-dydis" list="n-dydziai" value="' . esc_attr( $is_url_dydis ) . '" placeholder="pvz. 400 g">'
+			. '<datalist id="n-dydziai"><option value="400 g"><option value="800 g"><option value="100 g"><option value="85 g"></datalist></div>';
 		echo '<div class="pslka-laukas"><label>Kaip vadinti</label>'
 			. '<select id="n-zodis"><option value="deze">dėžė</option><option value="dezute">dėžutė</option></select></div>';
 		echo '<div class="pslka-laukas"><label>Aprašymas</label><textarea id="n-aprasas" rows="3"></textarea></div>';
