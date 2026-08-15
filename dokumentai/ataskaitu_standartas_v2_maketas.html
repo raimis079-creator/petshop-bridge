@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAKETAS · Petshop ataskaitos → Surenkami rinkiniai (standartas v2)</title>
+<style>
+:root{
+  --fon:#f0f0f1; --korta:#fff; --linija:#dcdcde; --tekstas:#1d2327;
+  --mut:#787c82; --akc:#2271b1; --ok:#00794b; --bad:#b32d2e; --gelsva:#dba617;
+  --ok-fonas:#edfaef; --bad-fonas:#fcf0f1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fon);color:var(--tekstas);
+  font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif}
+.demo-juosta{background:#1d2327;color:#fff;padding:8px 20px;font-size:12px}
+.demo-juosta b{color:#f0c33c}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 20px 60px}
+h1{font-size:23px;font-weight:400;margin:8px 0 4px}
+h2{font-size:15px;margin:30px 0 10px}
+.aprasas{color:var(--mut);margin:0 0 14px}
+.sviezuma{float:right;color:var(--mut);font-size:12px;margin-top:14px}
+
+/* ---- laikotarpio juosta ---- */
+.periodas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;background:var(--korta);
+  border:1px solid var(--linija);border-radius:6px;padding:10px 14px;margin:12px 0 16px}
+.presetai{display:flex;gap:4px}
+.presetai button{border:1px solid var(--linija);background:#fff;border-radius:4px;
+  padding:5px 11px;cursor:pointer;font-size:12.5px;color:var(--tekstas)}
+.presetai button.akt{background:var(--akc);border-color:var(--akc);color:#fff}
+.periodas label{font-weight:600}
+.periodas select,.periodas input[type=date]{border:1px solid var(--linija);border-radius:4px;padding:5px 8px;font-size:12.5px}
+.palyginys{color:var(--mut);font-size:12px;margin-left:auto}
+
+/* ---- KPI korteles ---- */
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.kpi .k{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:13px 15px;position:relative}
+.k h3{margin:0 0 4px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:600}
+.k .reiksme{font-size:22px;font-weight:600;line-height:1.15}
+.k .delta{font-size:12px;font-weight:600;margin-top:2px;display:inline-block;padding:1px 7px;border-radius:10px}
+.delta.up{color:var(--ok);background:var(--ok-fonas)}
+.delta.down{color:var(--bad);background:var(--bad-fonas)}
+.delta.neut{color:var(--mut);background:#f0f0f1}
+.k .pries{color:var(--mut);font-size:11.5px;margin-left:6px}
+.k svg.spark{position:absolute;right:12px;bottom:12px;opacity:.9}
+
+/* ---- tooltip ---- */
+.tt{display:inline-flex;width:14px;height:14px;border-radius:50%;background:#e3e5e8;color:var(--mut);
+  font-size:10px;align-items:center;justify-content:center;cursor:help;position:relative;vertical-align:1px;margin-left:4px;font-style:normal}
+.tt:hover::after{content:attr(data-t);position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  background:#1d2327;color:#fff;padding:7px 10px;border-radius:5px;width:230px;font-size:11.5px;line-height:1.45;
+  font-weight:400;text-transform:none;letter-spacing:0;z-index:20;text-align:left}
+
+/* ---- diagrama ---- */
+.diagrama{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:14px 16px;margin-top:14px}
+.diagrama .galva{display:flex;gap:16px;align-items:center;margin-bottom:6px}
+.diagrama .galva b{font-size:13px}
+.legenda{display:flex;gap:14px;font-size:12px;color:var(--mut);margin-left:auto}
+.legenda i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;font-style:normal}
+
+/* ---- veiksmu blokai ---- */
+.veiksmai{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:860px){.veiksmai{grid-template-columns:1fr}}
+.v{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:13px 15px}
+.v.bad-r{border-left:4px solid var(--bad)}
+.v.ok-r{border-left:4px solid var(--ok)}
+.v h3{margin:0 0 8px;font-size:13px}
+.v ul{margin:0;padding:0;list-style:none}
+.v li{padding:6px 0;border-top:1px solid #f0f0f1;display:flex;gap:8px;align-items:baseline}
+.v li:first-child{border-top:none}
+.v li a{color:var(--akc);text-decoration:none;font-weight:600}
+.v li .kodel{color:var(--mut);font-size:12px;margin-left:auto;text-align:right}
+
+/* ---- lentele ---- */
+.lent-galva{display:flex;gap:10px;align-items:center;margin:0 0 8px}
+.lent-galva input[type=search]{border:1px solid var(--linija);border-radius:4px;padding:6px 10px;width:230px;font-size:12.5px}
+.lent-galva .csv{margin-left:auto;border:1px solid var(--linija);background:#fff;border-radius:4px;padding:6px 12px;cursor:pointer;font-size:12.5px}
+table.d{width:100%;border-collapse:collapse;background:var(--korta);border:1px solid var(--linija);border-radius:6px;overflow:hidden}
+.d th{background:#fff;border-bottom:1px solid var(--linija);padding:9px 10px;font-size:11.5px;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--mut);text-align:right;cursor:pointer;user-select:none;white-space:nowrap}
+.d th:first-child{text-align:left}
+.d th .r{font-size:9px;margin-left:3px;opacity:.6}
+.d th.akt{color:var(--akc)}
+.d td{padding:9px 10px;border-bottom:1px solid #f0f0f1;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.d td:first-child{text-align:left;white-space:normal}
+.d tr:hover td{background:#f6f9fc}
+.d a{color:var(--akc);text-decoration:none;font-weight:600}
+.d .sub{color:var(--mut);font-size:11.5px;font-weight:400}
+.d .ok{color:var(--ok);font-weight:700}.d .bad{color:var(--bad);font-weight:700}
+.d .mut{color:var(--mut)}
+.d .dalis{display:inline-block;min-width:64px}
+.d .dalis i{display:block;height:4px;border-radius:2px;background:#e3e5e8;margin-top:3px;font-style:normal}
+.d .dalis i b{display:block;height:4px;border-radius:2px;background:var(--akc)}
+.spejimas{background:#fcf9e8;border-left:4px solid var(--gelsva);padding:10px 14px;margin:12px 0;border-radius:0 4px 4px 0}
+.spejimas a{color:var(--akc)}
+
+/* ---- piltuvelis ---- */
+.pilt{display:flex;gap:0;background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:18px 16px;align-items:stretch;overflow-x:auto}
+.pilt .zings{flex:1;min-width:130px;text-align:center;position:relative;padding:0 8px}
+.pilt .zings .sk{font-size:21px;font-weight:600}
+.pilt .zings .pav{color:var(--mut);font-size:12px;margin-top:2px}
+.pilt .perej{width:70px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--mut);font-size:11.5px}
+.pilt .perej b{font-size:13px;color:var(--tekstas)}
+.pilt .perej.silpna b{color:var(--bad)}
+.pilt .perej svg{margin-bottom:2px}
+.pastaba{color:var(--mut);font-size:12px;margin-top:8px}
+footer{margin-top:40px;color:var(--mut);font-size:12px;border-top:1px solid var(--linija);padding-top:12px}
+
+/* ---- skirtuku pasiskirstymas ---- */
+.skirt{display:inline-flex;gap:3px;align-items:center}
+.skirt b{display:inline-block;height:14px;border-radius:3px;min-width:6px}
+.skirt-leg{font-size:11px;color:var(--mut)}
+.maza{color:var(--mut)!important;font-weight:400!important}
+.maza-z{font-size:10px;background:#f0f0f1;color:var(--mut);border-radius:8px;padding:0 6px;margin-left:4px;white-space:nowrap}
+
+/* ---- prekes drill-down panele ---- */
+.drill{background:var(--korta);border:1px solid var(--linija);border-left:4px solid var(--akc);border-radius:6px;padding:16px 18px;margin-top:14px}
+.drill .galva{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.drill .galva h3{margin:0;font-size:15px}
+.drill .galva .sub{color:var(--mut);font-size:12px}
+.drill .mini-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px}
+.drill .mk{border:1px solid #f0f0f1;border-radius:5px;padding:9px 11px}
+.drill .mk .p{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut)}
+.drill .mk .s{font-size:17px;font-weight:600;margin-top:2px}
+.drill .pjuviai{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:860px){.drill .pjuviai{grid-template-columns:1fr}}
+.drill .pj{border:1px solid #f0f0f1;border-radius:5px;padding:10px 12px}
+.drill .pj h4{margin:0 0 8px;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.drill .eilute{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12.5px}
+.drill .eilute .pav{width:120px}
+.drill .eilute .juosta{flex:1;height:6px;background:#f0f0f1;border-radius:3px;overflow:hidden}
+.drill .eilute .juosta b{display:block;height:6px;background:var(--akc)}
+.drill .eilute .sk{width:110px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="demo-juosta">MAKETAS peržiūrai · tikri skaičiai — tik užsakymas #34952; <b>laiko eilutės ir elgsena — DEMO duomenys</b>, kad matytųsi pilnas vaizdas. Rikiavimas, laikotarpiai ir tooltip'ai veikia.</div>
+<div class="wrap">
+
+<span class="sviezuma">Duomenys atnaujinti prieš 4 min. · dienos suvestinė 03:15</span>
+<h1>Surenkami rinkiniai</h1>
+<p class="aprasas">Ką klientai renkasi ir kiek iš to uždirbame. Savikaina — iš užsakymo eilutės pardavimo dieną.</p>
+
+<!-- ======== 1. LAIKOTARPIS ======== -->
+<div class="periodas">
+  <div class="presetai" id="presetai">
+    <button data-p="7">7 d.</button>
+    <button data-p="30" class="akt">30 d.</button>
+    <button data-p="men">Šis mėnuo</button>
+    <button data-p="pmen">Praėjęs mėn.</button>
+    <button data-p="visi">Nuo pradžios</button>
+  </div>
+  <label>nuo</label><input type="date" value="2026-07-17">
+  <label>iki</label><input type="date" value="2026-08-16">
+  <label style="margin-left:10px">Rinkinys</label>
+  <select><option>— visi —</option><option>Šunų skanėstų dėžė 400 g</option><option>Kačių skanėstų dėžė</option><option>Kramtalų dėžė</option></select>
+  <span class="palyginys">lyginama su: <b>birž. 17 – liep. 16</b> (ankstesnės 30 d.)</span>
+</div>
+
+<!-- ======== 2. KPI SU DELTA ======== -->
+<div class="kpi">
+  <div class="k"><h3>Pajamos su PVM <i class="tt" data-t="Visų dėžių eilučių suma su PVM pasirinktu laikotarpiu. Grąžinimai atimti.">i</i></h3>
+    <div class="reiksme">1 284,60 €</div>
+    <span class="delta up">▲ 18,4 %</span><span class="pries">buvo 1 085,10 €</span>
+    <svg class="spark" width="72" height="26" viewBox="0 0 72 26"><polyline fill="none" stroke="#2271b1" stroke-width="1.6" points="0,20 9,18 18,21 27,15 36,16 45,11 54,13 63,7 72,9"/></svg>
+  </div>
+  <div class="k"><h3>Pelnas <i class="tt" data-t="Pajamos be PVM (÷1,21) minus savikaina iš užsakymo eilučių. Dovanų savikaina jau atimta. Eilutės be savikainos NEĮSKAIČIUOTOS.">i</i></h3>
+    <div class="reiksme">228,90 €</div>
+    <span class="delta up">▲ 12,1 %</span><span class="pries">buvo 204,20 €</span>
+    <svg class="spark" width="72" height="26" viewBox="0 0 72 26"><polyline fill="none" stroke="#00794b" stroke-width="1.6" points="0,19 9,20 18,17 27,18 36,14 45,15 54,12 63,10 72,11"/></svg>
+  </div>
+  <div class="k"><h3>Marža <i class="tt" data-t="Pelnas ÷ pajamos be PVM × 100. Skaičiuojama tik iš eilučių su žinoma savikaina.">i</i></h3>
+    <div class="reiksme">21,6 %</div>
+    <span class="delta down">▼ 1,2 p.p.</span><span class="pries">buvo 22,8 %</span>
+  </div>
+  <div class="k"><h3>Užsakymai su dėže</h3>
+    <div class="reiksme">27</div>
+    <span class="delta up">▲ 22,7 %</span><span class="pries">buvo 22</span>
+  </div>
+  <div class="k"><h3>Vid. čekis / dydis</h3>
+    <div class="reiksme">47,58 €</div>
+    <span class="delta neut">— 0,3 %</span><span class="pries">14,2 vnt. dėžėje</span>
+  </div>
+</div>
+
+<div class="spejimas"><b>3</b> eilutės be savikainos (Rumen konservai) į maržą neįskaičiuotos — tikras pelnas MAŽESNIS nei rodomas. <a href="#">Rodyti eilutes →</a></div>
+
+<!-- ======== 3. TENDENCIJA ======== -->
+<div class="diagrama">
+  <div class="galva"><b>Pajamos ir pelnas pagal dieną</b>
+    <div class="legenda"><span><i style="background:#2271b1"></i>Pajamos su PVM</span><span><i style="background:#00794b"></i>Pelnas</span><span style="opacity:.75"><i style="background:#c3c4c7"></i>ankstesnis laikotarpis</span></div>
+  </div>
+  <svg width="100%" height="190" viewBox="0 0 1080 190" preserveAspectRatio="none" aria-label="Laiko eilutė">
+    <g stroke="#f0f0f1"><line x1="0" y1="40" x2="1080" y2="40"/><line x1="0" y1="85" x2="1080" y2="85"/><line x1="0" y1="130" x2="1080" y2="130"/></g>
+    <text x="4" y="36" font-size="10" fill="#787c82">90 €</text>
+    <text x="4" y="81" font-size="10" fill="#787c82">60 €</text>
+    <text x="4" y="126" font-size="10" fill="#787c82">30 €</text>
+    <polyline fill="none" stroke="#c3c4c7" stroke-width="1.4" stroke-dasharray="4 4" points="0,150 77,142 154,155 231,138 308,148 385,132 462,140 539,128 616,135 693,122 770,130 847,118 924,126 1001,115 1080,120"/>
+    <polyline fill="none" stroke="#2271b1" stroke-width="2.2" points="0,140 77,128 154,145 231,112 308,126 385,98 462,118 539,88 616,105 693,76 770,96 847,64 924,84 1001,52 1080,70"/>
+    <polyline fill="none" stroke="#00794b" stroke-width="2" points="0,168 77,164 154,169 231,158 308,162 385,150 462,158 539,146 616,152 693,140 770,148 847,132 924,142 1001,124 1080,132"/>
+  </svg>
+  <div class="pastaba">Diagrama skaito dienos suvestinę <code>ps_ataskaitu_dienos</code>, ne žalius užsakymus — atsidaro akimirksniu ir su 10 000 užsakymų.</div>
+</div>
+
+<!-- ======== 4. VEIKSMAI ======== -->
+<h2>Ką daryti</h2>
+<div class="veiksmai">
+  <div class="v bad-r"><h3>Kandidatai išimti iš dėžės</h3>
+    <ul>
+      <li><a href="#">GranCarno jautiena + stirniena 400 g</a><span class="kodel">rodyta 412 · įdėta 6 (1,5 %) · marža <b style="color:var(--bad)">12,3 %</b></span></li>
+      <li><a href="#">GranCarno jautiena + kalakut. širdys</a><span class="kodel">rodyta 388 · įdėta 9 (2,3 %) · marža <b style="color:var(--bad)">14,1 %</b></span></li>
+      <li><a href="#">Rumen didžprusk. konservai 400 g</a><span class="kodel">savikaina neįvesta — pelnas nežinomas</span></li>
+    </ul>
+  </div>
+  <div class="v ok-r"><h3>Lyderiai — verta plėsti</h3>
+    <ul>
+      <li><a href="#">Exclusion Mediterraneo elnienos 400 g</a><span class="kodel">įdėta 21,4 % rodymų · marža <b style="color:var(--ok)">34,2 %</b></span></li>
+      <li><a href="#">Miamor Feine Filets tunas 100 g</a><span class="kodel">įdėta 18,7 % · marža <b style="color:var(--ok)">31,8 %</b></span></li>
+      <li><a href="#">Prins NatureCare ėriena 400 g</a><span class="kodel">įdėta 15,2 % · marža <b style="color:var(--ok)">28,9 %</b></span></li>
+    </ul>
+  </div>
+</div>
+<p class="pastaba">Taisyklės: „išimti" — įdėjimo dalis &lt; 3 % IR marža &lt; 20 %, arba savikaina nežinoma. „Lyderis" — įdėjimo dalis &gt; 10 % IR marža &gt; 25 %. Ribos — nustatymai, ne konstantos.</p>
+
+<!-- ======== 5. RINKINIAI IR DYDZIAI ======== -->
+<h2>Rinkiniai ir dydžiai</h2>
+<table class="d">
+<thead><tr>
+  <th>Rinkinys · dydis</th>
+  <th>Atidarė</th>
+  <th>Konversija <i class="tt" data-t="Atidarė dėžę → nupirko, ta pati sesija. Pagrindinis dėžės sveikatos rodiklis.">i</i></th>
+  <th>Parduota</th>
+  <th>Vid. dydis</th>
+  <th>Pajamos</th>
+  <th>Pelnas</th>
+  <th>Marža</th>
+  <th>Skirtukai <i class="tt" data-t="Įdėjimų pasiskirstymas pagal aktyvų filtrą įdėjimo momentu. Rodo, per kurį skirtuką klientai realiai renkasi.">i</i></th>
+</tr></thead>
+<tbody>
+<tr><td><a href="#">Konservų dėžė šunims · 400 g</a><div class="sub">konservai šunims</div></td>
+  <td>486</td><td class="ok">2,7 %</td><td><b>13</b></td><td>10,8 vnt.</td><td>512,40 €</td><td>96,10 €</td><td class="ok">22,7 %</td>
+  <td><span class="skirt"><b style="background:#2271b1;width:38px" title="Be vištienos 54%"></b><b style="background:#72aee6;width:20px" title="Monoproteinas 28%"></b><b style="background:#c3c4c7;width:13px" title="Visi 18%"></b></span><div class="skirt-leg">be višt. 54 · mono 28 · visi 18</div></td></tr>
+<tr><td><a href="#">Konservų dėžė šunims · 800 g</a><div class="sub">konservai šunims</div></td>
+  <td>214</td><td>1,9 %</td><td><b>4</b></td><td>12,5 vnt.</td><td>247,80 €</td><td>41,20 €</td><td>20,1 %</td>
+  <td><span class="skirt"><b style="background:#2271b1;width:46px" title="Be vištienos 71%"></b><b style="background:#c3c4c7;width:19px" title="Visi 29%"></b></span><div class="skirt-leg">be višt. 71 · visi 29 <span class="maza-z">mono paslėptas</span></div></td></tr>
+<tr><td><a href="#">Konservų dėžė katėms</a><div class="sub">konservai katėms · 1 dydis</div></td>
+  <td>398</td><td class="ok">2,3 %</td><td><b>9</b></td><td>11,2 vnt.</td><td>289,10 €</td><td>63,40 €</td><td class="ok">26,5 %</td>
+  <td><span class="skirt"><b style="background:#8c5e9e;width:34px" title="Išrankioms 49%"></b><b style="background:#2271b1;width:22px" title="Be vištienos 31%"></b><b style="background:#72aee6;width:14px" title="Monoproteinas 20%"></b></span><div class="skirt-leg">išrank. 49 · be višt. 31 · mono 20</div></td></tr>
+<tr><td><a href="#">Šunų skanėstų dėžė</a><div class="sub">šunų skanėstai</div></td>
+  <td>96</td><td class="maza">1,0 % <span class="maza-z">maža imtis</span></td><td><b>1</b></td><td>9,0 vnt.</td><td>31,20 €</td><td>6,90 €</td><td>26,7 %</td>
+  <td class="mut">—</td></tr>
+</tbody>
+</table>
+<p class="pastaba">400 g atidaroma dvigubai dažniau ir konvertuoja geriau, bet 800 g čekis didesnis — abu skaičiai reikalingi kartu. „Mono paslėptas" 800 g — nes tinkamų produktų nėra (užrakintas sprendimas). Eilutės su per maža imtimi žymimos, kad iš 96 atidarymų nedarytum išvadų.</p>
+
+<!-- ======== 6. LENTELE ======== -->
+<h2>Prekės dėžėse</h2>
+<div class="lent-galva">
+  <input type="search" id="pai" placeholder="Ieškoti prekės…">
+  <span class="pastaba" style="margin:0">Spausk stulpelio antraštę rikiavimui</span>
+  <button class="csv" onclick="csv()">⬇ CSV eksportas</button>
+</div>
+<table class="d" id="lent">
+<thead><tr>
+  <th data-k="0">Prekė</th>
+  <th data-k="1">Rodyta <i class="tt" data-t="Kiek kartų prekės kortelė buvo matoma atidarytoje dėžėje. Iš elgsenos įvykių, renkamų tik su statistikos sutikimu.">i</i></th>
+  <th data-k="2">Įdėta</th>
+  <th data-k="3">Įdėjimo dalis <i class="tt" data-t="Įdėta ÷ rodyta. Pagrindinis „ar prekė traukia" rodiklis — nepriklauso nuo srauto dydžio.">i</i></th>
+  <th data-k="4" class="akt">Parduota <span class="r">▼</span></th>
+  <th data-k="5">Pajamos</th>
+  <th data-k="6">Savikaina</th>
+  <th data-k="7">Pelnas</th>
+  <th data-k="8">Marža</th>
+  <th data-k="9">Dalis apyvartoje</th>
+</tr></thead>
+<tbody>
+<tr><td><a href="#">Exclusion Mediterraneo elnienos 400 g</a><div class="sub">#31240 · <a href="#" style="font-weight:400">užsakymai (9) →</a></div></td>
+  <td>402</td><td>86</td><td class="ok">21,4 %</td><td><b>64</b></td><td>238,40 €</td><td>142,10 €</td><td>54,94 €</td><td class="ok">27,9 %</td>
+  <td><span class="dalis">18,6 %<i><b style="width:62%"></b></i></span></td></tr>
+<tr><td><a href="#">Miamor Feine Filets tunas 100 g</a><div class="sub">#28911 · <a href="#" style="font-weight:400">užsakymai (11) →</a></div></td>
+  <td>371</td><td>69</td><td class="ok">18,7 %</td><td><b>58</b></td><td>127,60 €</td><td>71,90 €</td><td>33,56 €</td><td class="ok">31,8 %</td>
+  <td><span class="dalis">9,9 %<i><b style="width:33%"></b></i></span></td></tr>
+<tr><td><a href="#">Prins NatureCare ėriena 400 g</a><div class="sub">#30177 · <a href="#" style="font-weight:400">užsakymai (8) →</a></div></td>
+  <td>355</td><td>54</td><td>15,2 %</td><td><b>41</b></td><td>151,70 €</td><td>89,20 €</td><td>36,19 €</td><td class="ok">28,9 %</td>
+  <td><span class="dalis">11,8 %<i><b style="width:39%"></b></i></span></td></tr>
+<tr><td><a href="#">Animonda GranCarno jautiena 800 g</a><div class="sub">#29054 · dovana 3 vnt. · <a href="#" style="font-weight:400">užsakymai (7) →</a></div></td>
+  <td>420</td><td>38</td><td>9,0 %</td><td><b>33</b></td><td>96,03 €</td><td>66,40 €</td><td>12,97 €</td><td class="bad">16,3 %</td>
+  <td><span class="dalis">7,5 %<i><b style="width:25%"></b></i></span></td></tr>
+<tr><td><a href="#">GranCarno jautiena + kalakut. širdys 400 g</a><div class="sub">#29061 · <a href="#" style="font-weight:400">užsakymai (4) →</a></div></td>
+  <td>388</td><td>9</td><td class="bad">2,3 %</td><td><b>8</b></td><td>18,32 €</td><td>13,01 €</td><td>2,13 €</td><td class="bad">14,1 %</td>
+  <td><span class="dalis">1,4 %<i><b style="width:5%"></b></i></span></td></tr>
+<tr><td><a href="#">GranCarno jautiena + stirniena 400 g</a><div class="sub">#29063 · <a href="#" style="font-weight:400">užsakymai (3) →</a></div></td>
+  <td>412</td><td>6</td><td class="bad">1,5 %</td><td><b>6</b></td><td>13,74 €</td><td>9,96 €</td><td>1,40 €</td><td class="bad">12,3 %</td>
+  <td><span class="dalis">1,1 %<i><b style="width:4%"></b></i></span></td></tr>
+<tr><td><a href="#">Rumen didžprusk. konservai 400 g</a><div class="sub">#31502 · <a href="#" style="font-weight:400">užsakymai (3) →</a></div></td>
+  <td>298</td><td>14</td><td>4,7 %</td><td><b>12</b></td><td>32,28 €</td><td class="bad">nežinoma</td><td class="mut">—</td><td class="mut">—</td>
+  <td><span class="dalis">2,5 %<i><b style="width:9%"></b></i></span></td></tr>
+</tbody>
+</table>
+<p class="pastaba">Prekės pavadinimas veda į kortelę; „užsakymai (N) →" — į užsakymų sąrašą su šia preke dėžėje; paspaudus eilutę atsidaro prekės analizė (pavyzdys žemiau). Rodyta / Įdėta — iš elgsenos suvestinės; brūkšnys reikštų „dar nerenkama".</p>
+
+<!-- ======== 7. PREKES DRILL-DOWN ======== -->
+<h2>Prekės analizė <span style="font-weight:400;color:var(--mut);font-size:13px">— atsidaro paspaudus eilutę lentelėje</span></h2>
+<div class="drill">
+  <div class="galva"><h3>Animonda GranCarno jautiena 800 g</h3><span class="sub">#29054 · VF sandėlis · savikaina 2,01 € · <a href="#" style="color:var(--akc)">prekės kortelė →</a></span></div>
+  <div class="mini-kpi">
+    <div class="mk"><div class="p">Įdėjimo dalis</div><div class="s">9,0 %</div></div>
+    <div class="mk"><div class="p">Išėmimo rodiklis <i class="tt" data-t="Iš įdėtų — kiek vėliau išimta prieš perkant. Aukštas = gerai atrodo kortelėje, nuvilia pagalvojus: kandidatas keisti nuotrauką ar aprašą, ne būtinai išimti.">i</i></div><div class="s bad" style="color:var(--bad)">37 %</div></div>
+    <div class="mk"><div class="p">Išliko iki pirkimo</div><div class="s">58 %</div></div>
+    <div class="mk"><div class="p">Marža</div><div class="s" style="color:var(--bad)">16,3 %</div></div>
+  </div>
+  <div class="pjuviai">
+    <div class="pj"><h4>Įdėjimai pagal skirtuką</h4>
+      <div class="eilute"><span class="pav">Visi skoniai</span><span class="juosta"><b style="width:72%"></b></span><span class="sk">27 (72 %)</span></div>
+      <div class="eilute"><span class="pav">Be vištienos</span><span class="juosta"><b style="width:28%"></b></span><span class="sk">11 (28 %)</span></div>
+      <div class="eilute"><span class="pav">Monoproteinas</span><span class="juosta"><b style="width:0%"></b></span><span class="sk mut">nerodoma</span></div>
+    </div>
+    <div class="pj"><h4>Išėmimai pagal dėžės pilnumą <i class="tt" data-t="Kiek vnt. buvo dėžėje išėmimo momentu (kiek_dezeje stulpelis). Rodo, ties kuriuo žingsniu prekė metama vardan kitos.">i</i></h4>
+      <div class="eilute"><span class="pav">1–4 vnt.</span><span class="juosta"><b style="width:14%"></b></span><span class="sk">2</span></div>
+      <div class="eilute"><span class="pav">5–8 vnt.</span><span class="juosta"><b style="width:36%"></b></span><span class="sk">5</span></div>
+      <div class="eilute"><span class="pav">9–12 vnt. <i class="tt" data-t="Išiminėjama daugiausia jau surinkus dėžę — prekė aukojama vietos kitai, kai artėja dovanos riba.">i</i></span><span class="juosta"><b style="width:50%"></b></span><span class="sk">7</span></div>
+    </div>
+  </div>
+  <p class="pastaba" style="margin-bottom:0">Skaitosi taip: prekė dedama daugiausia iš „Visi skoniai" (pati netraukia per filtrus), o 37 % įdėjimų vėliau išimama — dažniausiai dėžei jau prisipildžius. Kartu su 16,3 % marža — aiškus kandidatas keisti. Pakeitimų poros („ką įdeda vietoj jos") — kai susikaups duomenų.</p>
+</div>
+
+<!-- ======== 8. PILTUVELIS ======== -->
+<h2>Piltuvėlis</h2>
+<div class="pilt">
+  <div class="zings"><div class="sk">1 240</div><div class="pav">Atidarė dėžę</div></div>
+  <div class="perej"><svg width="26" height="10"><path d="M0 5h20m-5-4 5 4-5 4" stroke="#787c82" fill="none" stroke-width="1.4"/></svg><b>31 %</b></div>
+  <div class="zings"><div class="sk">386</div><div class="pav">Prisidėjo bent vieną</div></div>
+  <div class="perej"><svg width="26" height="10"><path d="M0 5h20m-5-4 5 4-5 4" stroke="#787c82" fill="none" stroke-width="1.4"/></svg><b>47 %</b></div>
+  <div class="zings"><div class="sk">182</div><div class="pav">Pasiekė minimumą</div></div>
+  <div class="perej silpna"><svg width="26" height="10"><path d="M0 5h20m-5-4 5 4-5 4" stroke="#b32d2e" fill="none" stroke-width="1.4"/></svg><b>38 %</b><span>silpna vieta</span></div>
+  <div class="zings"><div class="sk">69</div><div class="pav">Įsidėjo į krepšelį</div></div>
+  <div class="perej"><svg width="26" height="10"><path d="M0 5h20m-5-4 5 4-5 4" stroke="#787c82" fill="none" stroke-width="1.4"/></svg><b>39 %</b></div>
+  <div class="zings"><div class="sk">27</div><div class="pav">Nupirko</div></div>
+</div>
+<p class="pastaba">Procentai tarp žingsnių — čia gyvena sprendimai: 38 % nuo „pasiekė minimumą" iki krepšelio reiškia, kad žmonės surenka dėžę ir vis tiek išeina — tikrinti kainos suvokimą arba dovanos ribą. Silpniausia grandis pažymima automatiškai.</p>
+
+<h2 style="font-size:14px;margin-top:22px">Piltuvėlis pjūviais <span style="font-weight:400;color:var(--mut)">— tas pats kelias, perjungiamas pagal</span>
+  <span class="presetai" style="display:inline-flex;vertical-align:-4px;margin-left:6px"><button class="akt">skirtuką</button><button>dydį</button><button>rinkinį</button></span></h2>
+<table class="d">
+<thead><tr><th>Skirtukas</th><th>Atidarė</th><th>Prisidėjo</th><th>Pasiekė min.</th><th>Į krepšelį</th><th>Nupirko</th><th>Konversija <i class="tt" data-t="Atidarė → nupirko. Lyginti eilutes tarpusavyje — matosi, kuris filtras atveda perkančius, o kuris tik žiūrinčius.">i</i></th></tr></thead>
+<tbody>
+<tr><td>Be vištienos</td><td>512</td><td>218</td><td>121</td><td>52</td><td><b>21</b></td><td class="ok">4,1 %</td></tr>
+<tr><td>Išrankioms <span class="sub">(katės)</span></td><td>301</td><td>124</td><td>58</td><td>24</td><td><b>9</b></td><td class="ok">3,0 %</td></tr>
+<tr><td>Monoproteinas</td><td>187</td><td>61</td><td>22</td><td>8</td><td><b>3</b></td><td class="maza">1,6 % <span class="maza-z">maža imtis</span></td></tr>
+<tr><td>Visi skoniai</td><td>240</td><td>63</td><td>19</td><td>7</td><td><b>4</b></td><td class="bad">1,7 %</td></tr>
+</tbody>
+</table>
+<p class="pastaba">Skaitosi taip: „Be vištienos" atveda perkančius (4,1 %), „Visi skoniai" — žiūrinčius (1,7 %). Vadinasi specializacijos strategija dėžėse veikia — filtruoti atėję žmonės perka dvigubai dažniau.</p>
+
+<!-- ======== 9. KELIAS DEZEJE ======== -->
+<h2>Kelias dėžėje</h2>
+<div class="veiksmai" style="grid-template-columns:1fr 1fr 1fr">
+  <div class="v"><h3>Kabliukai <i class="tt" data-t="Dažniausiai įdedama PIRMOJI (kiek_dezeje = 1 įdėjimo momentu). Šios prekės įtraukia žmogų į dėžę — neišimti, net jei marža vidutinė.">i</i></h3>
+    <ul>
+      <li><a href="#">Exclusion elnienos 400 g</a><span class="kodel">pirmoji 31 % sesijų</span></li>
+      <li><a href="#">Miamor tunas 100 g</a><span class="kodel">pirmoji 22 %</span></li>
+      <li><a href="#">Prins ėriena 400 g</a><span class="kodel">pirmoji 14 %</span></li>
+    </ul>
+  </div>
+  <div class="v"><h3>Uždarytojos <i class="tt" data-t="Paskutinė įdėta prieš „į krepšelį". Prekės, kurios užbaigia sprendimą — dažnai pigesnės, kuriomis užpildoma dėžė iki ribos.">i</i></h3>
+    <ul>
+      <li><a href="#">GranCarno jautiena 400 g</a><span class="kodel">paskutinė 26 %</span></li>
+      <li><a href="#">Rumen konservai 400 g</a><span class="kodel">paskutinė 19 %</span></li>
+      <li><a href="#">Miamor tunas 100 g</a><span class="kodel">paskutinė 12 %</span></li>
+    </ul>
+  </div>
+  <div class="v"><h3>Nupirktose dėžėse <i class="tt" data-t="Kokioje dalyje NUPIRKTŲ dėžių prekė yra — iš užsakymų eilučių. „Ties kuria preke daugiausia pirkimų".">i</i></h3>
+    <ul>
+      <li><a href="#">Exclusion elnienos 400 g</a><span class="kodel">yra 78 % dėžių</span></li>
+      <li><a href="#">Miamor tunas 100 g</a><span class="kodel">67 %</span></li>
+      <li><a href="#">Prins ėriena 400 g</a><span class="kodel">52 %</span></li>
+    </ul>
+  </div>
+</div>
+<p class="pastaba">Kabliukas ≠ uždarytoja ≠ pelningiausia — trys skirtingi vaidmenys dėžėje. Exclusion įtraukia ir yra beveik visose nupirktose dėžėse (nors marža 27,9 %), o GranCarno gyvena kaip užpildas gale — tai keičia sprendimą „išimti ar palikti": užpildo vaidmuo irgi vaidmuo, bet jam užtenka vienos pigios prekės, ne trijų. Kategorijų pjūvis (baltymo šaltinis, gamintojas) — tie patys trys sąrašai, perjungus dimensiją; kategorija priskiriama agregavimo metu iš prekės taksonomijos.</p>
+
+<footer>Petshop ataskaitų standartas v2 · maketas peržiūrai · visi tekstai ir ribos — savininko tvirtinimui</footer>
+</div>
+
+<script>
+/* Rikiavimas */
+(function(){
+  const t=document.getElementById('lent'), tb=t.tBodies[0];
+  let ak=4, kr=-1;
+  t.tHead.addEventListener('click',e=>{
+    const th=e.target.closest('th'); if(!th||e.target.classList.contains('tt'))return;
+    const k=+th.dataset.k;
+    kr=(k===ak)?-kr:-1; ak=k;
+    t.querySelectorAll('th').forEach(x=>{x.classList.remove('akt');const r=x.querySelector('.r');if(r)r.remove();});
+    th.classList.add('akt'); th.insertAdjacentHTML('beforeend','<span class="r">'+(kr<0?'▼':'▲')+'</span>');
+    const eil=[...tb.rows];
+    eil.sort((a,b)=>{
+      const va=a.cells[k].innerText.trim(), vb=b.cells[k].innerText.trim();
+      const na=parseFloat(va.replace(/[^\d,.-]/g,'').replace(',','.')), nb=parseFloat(vb.replace(/[^\d,.-]/g,'').replace(',','.'));
+      if(!isNaN(na)&&!isNaN(nb)) return (na-nb)*(-kr);
+      return va.localeCompare(vb,'lt')*(-kr);
+    });
+    eil.forEach(r=>tb.appendChild(r));
+  });
+})();
+/* Paieska */
+document.getElementById('pai').addEventListener('input',function(){
+  const q=this.value.toLowerCase();
+  document.querySelectorAll('#lent tbody tr').forEach(r=>{
+    r.style.display=r.cells[0].innerText.toLowerCase().includes(q)?'':'none';
+  });
+});
+/* Presetai */
+document.getElementById('presetai').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  document.querySelectorAll('#presetai button').forEach(x=>x.classList.remove('akt'));
+  b.classList.add('akt');
+});
+/* Demo CSV */
+function csv(){
+  const eil=[...document.querySelectorAll('#lent tr')].map(r=>[...r.cells].map(c=>'"'+c.innerText.replace(/\s*užsakymai.*→/,'').replace(/"/g,'""').replace(/\n/g,' ')+'"').join(';')).join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\ufeff'+eil],{type:'text/csv;charset=utf-8'}));
+  a.download='surenkami-rinkiniai.csv'; a.click();
+}
+</script>
+</body>
+</html>
