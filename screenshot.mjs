@@ -7,9 +7,9 @@ const out={};
 const NL = String.fromCharCode(10);
 async function irasyk(){
   let sha=null;
-  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs3.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs3.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 }
 async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(name,code){ const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name,code,scope:'global',active:true,priority:5})}); let j=null; try{j=JSON.parse(cr.t);}catch(e){} return j?j.id:null; }
@@ -53,7 +53,7 @@ await fill('#billing_last_name','Statistikos');
 await fill('#billing_address_1','Testine g. 1');
 await fill('#billing_city','Vilnius');
 await fill('#billing_postcode','01100');
-await fill('#billing_phone','60000000');
+await fill('#billing_phone','+37061234567');
 await fill('#billing_email','testas.stat@example.com');
 /* pristatymas — pirmas galimas */
 const sm = page.locator('input[name^="shipping_method"]');
@@ -75,15 +75,15 @@ out.tekstas = (await page.locator('body').innerText()).slice(0,500).replace(/\s+
 out.js = jsErr;
 const sh = await page.screenshot({fullPage:false});
 let sha0=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.png`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha0=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs3.png`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha0=(await g.json()).sha;}catch(e){}
 const bo={message:'shot',content:sh.toString('base64')}; if(sha0) bo.sha=sha0;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs2.png`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(bo)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/uzs3.png`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(bo)});
 await br.close();
 
 /* 3) patikra bazėje — ar savikaina eilutėse */
-const sT = await snip('TEMP UZS TIK2', [
+const sT = await snip('TEMP UZS TIK3', [
 "add_action('wp_loaded', function(){",
-" if (($_GET['ps_ut2'] ?? '') !== 'UT2x') return;",
+" if (($_GET['ps_ut3'] ?? '') !== 'UT3x') return;",
 " $o=array();",
 " $q = wc_get_orders(array('limit'=>1,'orderby'=>'date','order'=>'DESC'));",
 " if (!$q) { $o['klaida']='uzsakymu nera'; }",
@@ -107,7 +107,7 @@ const sT = await snip('TEMP UZS TIK2', [
 " header('Content-Type: application/json'); echo wp_json_encode($o); exit;",
 "}, 131);"].join(NL));
 await new Promise(r=>setTimeout(r,4500));
-try{ out.baze = JSON.parse(await (await fetch(WP+'/?ps_ut2=UT2x')).text()); }catch(e){ out.baze_e=String(e).slice(0,180); }
+try{ out.baze = JSON.parse(await (await fetch(WP+'/?ps_ut3=UT3x')).text()); }catch(e){ out.baze_e=String(e).slice(0,180); }
 await off(sT);
 }catch(e){ out.bendra=String(e).slice(0,250); }
 await irasyk();
