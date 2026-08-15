@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.40';   /* v1.40: kurimas su pakuote is grupes juostos + rinkinio trynimas */
+	const VERSIJA = '1.41';   /* v1.41: iejimo rinkinys — kategorijos banneris randa deze pagal grupe, ne pagal ID */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -48,6 +48,10 @@ class Petshop_Laukai {
 	const META_DOV_RIBA = '_ps_laukas_dovanos_riba';
 	/** Pakuotes dydis (800 g / 400 g / 100 g) — vitrinos dydzio eilutei. */
 	const META_DYDIS = '_ps_laukas_dydis';
+	/* Iejimas: viena dezė grupeje, i kuria veda kategorijos banneris. Klientas
+	   ieina i VIENA lauka, o dydzius ir poreikius renkasi jau vitrinoje
+	   (savininko patikslinimas 2026-08-15). */
+	const META_IEJIMAS = '_ps_laukas_iejimas';
 
 	/** Maziausias kiekis, kad deze butu deze, o ne viena preke. */
 	const MIN_KIEKIS = 3;
@@ -853,6 +857,8 @@ class Petshop_Laukai {
 					. esc_url( self::nuoroda( array( 'id' => $b['id'] ) ) ) . '">'
 					. esc_html( $b['pav'] )
 					. '<small>' . (int) $b['prekiu'] . '</small>'
+					. ( get_post_meta( $b['id'], self::META_IEJIMAS, true ) === 'yes'
+						? '<i title="įėjimas iš kategorijos" style="color:#00a32a">▸</i>' : '' )
 					. ( $b['busena'] !== 'publish' ? '<i title="juodraštis — klientas nemato">•</i>' : '' )
 					. '</a>';
 			}
@@ -930,6 +936,26 @@ class Petshop_Laukai {
 		}
 		if ( $t === $pav ) { return $pav; }
 		return mb_strtoupper( mb_substr( $t, 0, 1 ) ) . mb_substr( $t, 1 );
+	}
+
+	/**
+	 * Grupes iejimo deze. Pirma — rankiniu budu pazymeta; jei nepazymeta,
+	 * imam pirma publish deze grupeje, kad banneris niekada neliktu tuscias.
+	 * Grazina 0, jei grupeje nera nei vienos publikuotos dezes.
+	 */
+	public static function iejimas( $grupe ) {
+		$q = new WP_Query( array(
+			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 40,
+			'fields' => 'ids', 'orderby' => 'menu_order title', 'order' => 'ASC',
+			'meta_query' => array( array( 'key' => self::META_LAUKAS, 'value' => 'yes' ) ),
+		) );
+		$pirmas = 0;
+		foreach ( $q->posts as $id ) {
+			if ( self::grupe( $id ) !== $grupe ) { continue; }
+			if ( ! $pirmas ) { $pirmas = (int) $id; }
+			if ( get_post_meta( $id, self::META_IEJIMAS, true ) === 'yes' ) { return (int) $id; }
+		}
+		return $pirmas;
 	}
 
 	private static function pristatymo_riba() {
@@ -2031,6 +2057,18 @@ class Petshop_Laukai {
 			. '<datalist id="s-dydziai"><option value="400 g"><option value="800 g"><option value="100 g"><option value="85 g"></datalist></div>';
 		echo '<div class="pslka-laukas"><label>Mažiausias kiekis <span>vnt. dėžėje</span></label>'
 			. '<input type="number" id="s-min" min="2" max="24" value="' . (int) $p->get_min_container_size() . '"></div>';
+		/* Iejimas: kategorijos banneris veda BUTENT i sia deze; dydzius ir
+		   poreikius klientas renkasi jau viduje. Vienas grupei. */
+		$dab_iej = get_post_meta( $lid, self::META_IEJIMAS, true ) === 'yes';
+		$kito_iej = self::iejimas( self::grupe( $lid ) );
+		echo '<div class="pslka-laukas" style="grid-column:1/-1"><label>Įėjimas iš kategorijos</label>'
+			. '<label style="font-weight:400;display:flex;align-items:center;gap:8px">'
+			. '<input type="checkbox" id="s-iejimas"' . checked( $dab_iej, true, false ) . '> '
+			. 'Į šią dėžę veda banneris kategorijos viršuje'
+			. ( ! $dab_iej && $kito_iej && $kito_iej !== (int) $lid
+				? ' <span class="pslka-mut">(dabar veda į #' . (int) $kito_iej . ' — ' . esc_html( get_the_title( $kito_iej ) ) . ')</span>'
+				: '' )
+			. '</label></div>';
 		echo '<div class="pslka-laukas" style="grid-column:1/-1"><label>Aprašymas</label>'
 			. '<textarea id="s-aprasas" rows="2">' . esc_textarea( wp_strip_all_tags( $p->get_description() ) ) . '</textarea></div>';
 		echo '<div style="grid-column:1/-1"><button class="button button-primary" id="s-saugoti">Išsaugoti nustatymus</button></div>';
@@ -2405,7 +2443,8 @@ class Petshop_Laukai {
 				siusti('ps_laukai_nustatymai',{pav:document.getElementById('s-pav').value,
 					trumpas:document.getElementById('s-trumpas').value, seima:document.getElementById('s-seima').value,
 					zodis:document.getElementById('s-zodis').value, aprasas:document.getElementById('s-aprasas').value,
-					dydis: dd?dd.value:'', min: mn?mn.value:0, dov_riba: dr?dr.value:''},
+					dydis: dd?dd.value:'', min: mn?mn.value:0, dov_riba: dr?dr.value:'',
+					iejimas: (document.getElementById('s-iejimas')||{}).checked ? '1' : '0'},
 					function(){ stat('Nustatymai išsaugoti.'); sav.disabled=false; });
 				setTimeout(function(){ sav.disabled=false; },5000);
 			}); }
@@ -2713,6 +2752,22 @@ class Petshop_Laukai {
 		}
 		$riba = (float) str_replace( ',', '.', (string) ( $_POST['dov_riba'] ?? 0 ) );
 		update_post_meta( $lid, self::META_DOV_RIBA, $riba > 0 ? $riba : '' );
+
+		/* Iejimas — vienas grupei: pazymejus sia, nuo kitu zyme nuimam. */
+		if ( isset( $_POST['iejimas'] ) ) {
+			if ( $_POST['iejimas'] === '1' ) {
+				$grupe = self::grupe( $lid );
+				$q = new WP_Query( array( 'post_type' => 'product', 'post_status' => array( 'publish', 'draft' ),
+					'posts_per_page' => 40, 'fields' => 'ids',
+					'meta_query' => array( array( 'key' => self::META_LAUKAS, 'value' => 'yes' ) ) ) );
+				foreach ( $q->posts as $id ) {
+					if ( (int) $id !== $lid && self::grupe( $id ) === $grupe ) { delete_post_meta( $id, self::META_IEJIMAS ); }
+				}
+				update_post_meta( $lid, self::META_IEJIMAS, 'yes' );
+			} else {
+				delete_post_meta( $lid, self::META_IEJIMAS );
+			}
+		}
 
 		wc_delete_product_transients( $lid );
 		wp_send_json_success( array( 'ok' => 1 ) );
