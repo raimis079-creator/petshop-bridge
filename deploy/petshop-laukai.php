@@ -773,7 +773,7 @@ class Petshop_Laukai {
 				'id'   => (int) $id,
 				'pav'  => $p->get_name(),
 				'foto' => $foto ? $foto : wc_placeholder_img_src( 'woocommerce_thumbnail' ),
-				'apr'  => self::trumpas_aprasas( $id ),
+				'apr'  => self::trumpas_aprasas( $p ),
 				'kaina'=> (float) $p->get_price(),
 			);
 		}
