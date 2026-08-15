@@ -14,18 +14,18 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 
 /* ===== DIEGIMAS ===== */
 const b64 = fs.readFileSync('deploy/petshop-laukai.php').toString('base64');
-const s1 = await snip('TEMP SET 120', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_s120'] ?? '') !== 'S120x') return;
-	update_option('ps_l_b64_120', '${b64}', false);
+const s1 = await snip('TEMP SET 121', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_s121'] ?? '') !== 'S121x') return;
+	update_option('ps_l_b64_121', '${b64}', false);
 	header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-await fetch(WP+'/?ps_s120=S120x').then(r=>r.text()).catch(()=>{});
+await fetch(WP+'/?ps_s121=S121x').then(r=>r.text()).catch(()=>{});
 await off(s1); await new Promise(r=>setTimeout(r,3000));
 
-const s2 = await snip('TEMP DEP 120', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_d120'] ?? '') !== 'D120x') return;
-	\$o=array(); \$b=get_option('ps_l_b64_120');
+const s2 = await snip('TEMP DEP 121', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_d121'] ?? '') !== 'D121x') return;
+	\$o=array(); \$b=get_option('ps_l_b64_121');
 	if(!\$b){ \$o['klaida']='tuscia'; }
 	else { \$k=base64_decode(\$b);
 		try { token_get_all(\$k, TOKEN_PARSE); \$o['sintakse']='OK';
@@ -33,16 +33,16 @@ const s2 = await snip('TEMP DEP 120', `add_action('wp_loaded', function(){
 			file_put_contents(\$kl,\$k); clearstatcache(true,\$kl);
 			\$o['sutampa']=(md5_file(\$kl)===md5(\$k)); \$o['md5']=md5(\$k);
 		} catch (ParseError \$e){ \$o['sintakse']='KLAIDA: '.\$e->getMessage(); }
-		delete_option('ps_l_b64_120'); }
+		delete_option('ps_l_b64_121'); }
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d120=D120x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
+try{ out.diegimas = JSON.parse(await (await fetch(WP+'/?ps_d121=D121x')).text()); }catch(e){ out.diegimas_err=String(e).slice(0,150); }
 await off(s2); await new Promise(r=>setTimeout(r,2500));
 
 /* ===== dezes ===== */
-const s3 = await snip('TEMP DEZ 120', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_z120'] ?? '') !== 'Z120x') return;
+const s3 = await snip('TEMP DEZ 121', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_z121'] ?? '') !== 'Z121x') return;
 	\$o=array('versija'=>Petshop_Laukai::VERSIJA);
 	foreach (array(
 		array('TEST Konservu deze suniui 800 g', array(19570,19562,19582,19590,19578,19504,19496,19488,19479), '800 g', 45),
@@ -69,7 +69,7 @@ const s3 = await snip('TEMP DEZ 120', `add_action('wp_loaded', function(){
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;
 }, 131);`);
 await new Promise(r=>setTimeout(r,4000));
-try{ out.paruosimas = JSON.parse(await (await fetch(WP+'/?ps_z120=Z120x')).text()); }catch(e){ out.paruosimas_err=String(e).slice(0,200); }
+try{ out.paruosimas = JSON.parse(await (await fetch(WP+'/?ps_z121=Z121x')).text()); }catch(e){ out.paruosimas_err=String(e).slice(0,200); }
 await off(s3); await new Promise(r=>setTimeout(r,2000));
 
 /* ===== TESTAI ===== */
@@ -176,7 +176,7 @@ async function shot(pg,vardas){
 await page.goto(D['800 g'].url,{waitUntil:'networkidle',timeout:60000});
 await page.waitForTimeout(2500);
 await page.evaluate(()=>{ var c=document.querySelector('.cmplz-cookiebanner'); if(c) c.style.display='none'; });
-await shot(page,'v120_tuscia');
+await shot(page,'v121_tuscia');
 /* ar deze matoma pirmame ekrane */
 T.t11_deze_matoma = await page.evaluate(()=>{
   var s=document.querySelector('.pslk-sonas'); if(!s) return {praejo:false, kodel:'nera sono'};
@@ -188,7 +188,7 @@ await page.evaluate(()=>document.getElementById('pslk-visi').click());
 await page.waitForTimeout(600);
 for(let i=0;i<8;i++){ await page.evaluate(()=>{var b=document.querySelector('.pslk-kort .pslk-stp button[data-d="1"]');if(b)b.click();}); await page.waitForTimeout(90); }
 await page.waitForTimeout(900);
-await shot(page,'v120_pilna');
+await shot(page,'v121_pilna');
 out.viso = Object.keys(T).length;
 out.praejo = Object.values(T).filter(x=>x.praejo).length;
 
@@ -196,7 +196,7 @@ await br.close();
 }
 
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw120.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw121.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw120.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+const p=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/pw121.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('put',p.status);
