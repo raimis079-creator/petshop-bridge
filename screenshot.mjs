@@ -4,44 +4,49 @@ const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const out={};
 async function api(path,opt={}){ const r=await fetch(WP+path,{...opt,headers:{Authorization:AUTH,'Content-Type':'application/json',...(opt.headers||{})}}); return {s:r.status,t:await r.text()}; }
-/* 1) snippetai */
-try{
-  const r = await api('/wp-json/code-snippets/v1/snippets?per_page=100');
-  const j = JSON.parse(r.t);
-  out.snippetai = j.map(s=>({id:s.id,pav:s.name,aktyvus:s.active,keista:s.modified||''}))
-    .sort((a,b)=>String(b.keista).localeCompare(String(a.keista)));
-}catch(e){ out.sn_err=String(e).slice(0,200); }
-/* 2) mu-plugins failai + kategorijos puslapio blokai */
 async function snip(name,code){ const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name,code,scope:'global',active:true,priority:5})}); let id=null; try{ id=JSON.parse(cr.t).id; }catch(e){} return id; }
 async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
-const s = await snip('TEMP REC', `add_action('wp_loaded', function(){
-	if ((\$_GET['ps_rec'] ?? '') !== 'R1x') return;
-	\$o=array('failai'=>array());
-	foreach (glob(WPMU_PLUGIN_DIR.'/*.php') as \$f) {
-		\$o['failai'][] = array(basename(\$f), date('Y-m-d H:i', filemtime(\$f)), round(filesize(\$f)/1024).' KB');
+const s = await snip('TEMP REC2', `add_action('wp_loaded', function(){
+	if ((\$_GET['ps_rec2'] ?? '') !== 'R2x') return;
+	\$o=array();
+	foreach (array(73,79,95,96,72) as \$tid) {
+		\$t = get_term(\$tid,'product_cat');
+		if (\$t && !is_wp_error(\$t)) \$o['nuorodos'][\$t->name] = get_term_link(\$t);
 	}
-	/* ko ieskom kategorijos puslapyje: kviecianciu bloku pedsakai */
-	\$o['paieska']=array();
-	foreach (glob(WPMU_PLUGIN_DIR.'/*.php') as \$f) {
+	/* petshop-katalogas kabliukai ir ju funkcijos */
+	\$f = WPMU_PLUGIN_DIR.'/petshop-katalogas.php';
+	if (file_exists(\$f)) {
 		\$t = file_get_contents(\$f);
-		foreach (array('rinkin','susidėk','susidek','juosta','banner','reklam','kviet','promo','hero') as \$z) {
-			if (stripos(\$t, \$z)!==false) { \$o['paieska'][basename(\$f)][] = \$z; }
-		}
+		preg_match_all('/add_action\\\\(\\\\s*[\\\\\\'"]([a-z_0-9]+)[\\\\\\'"]\\\\s*,\\\\s*array\\\\([^,]+,\\\\s*[\\\\\\'"]([a-zA-Z_0-9]+)/', \$t, \$m);
+		\$o['katalogo_kabliukai'] = array_map(null, \$m[1], \$m[2]);
+		preg_match('/const VERSIJA\\\\s*=\\\\s*[\\\\\\'"]([^\\\\\\'"]+)/', \$t, \$v);
+		\$o['katalogo_versija'] = \$v[1] ?? '?';
+	}
+	\$o['moduliai']=array();
+	foreach (glob(WPMU_PLUGIN_DIR.'/*.php') as \$ff) {
+		\$o['moduliai'][basename(\$ff)] = date('m-d H:i', filemtime(\$ff));
 	}
 	header('Content-Type: application/json'); echo wp_json_encode(\$o); exit; }, 131);`);
 await new Promise(r=>setTimeout(r,4500));
-try{ out.rec = JSON.parse(await (await fetch(WP+'/?ps_rec=R1x')).text()); }catch(e){ out.rec_err=String(e).slice(0,200); }
+try{ out.info = JSON.parse(await (await fetch(WP+'/?ps_rec2=R2x')).text()); }catch(e){ out.e=String(e).slice(0,250); }
 await off(s);
-/* 3) kategorijos puslapio HTML */
-try{
-  const r = await fetch(WP+'/product-category/sunims/maistas-sunims/konservai-sunims/',{headers:{Authorization:AUTH}});
-  const t = await r.text();
-  out.kategorija = { http:r.status, ilgis:t.length,
-    blokai: ['pslk','pskat','ps-rinkiniai','rinkiniai','susidek','Susidėk','maisto-tipas','ps-juosta','category-banner','term-description']
-      .reduce((a,z)=>{a[z]=t.indexOf(z)>0;return a;},{}) };
-}catch(e){ out.kat_err=String(e).slice(0,200); }
+const url = out.info && out.info.nuorodos && out.info.nuorodos['Konservai šunims'];
+if (url) {
+  try{
+    const r = await fetch(url,{headers:{Authorization:AUTH}});
+    const t = await r.text();
+    out.puslapis = { url, http:r.status, ilgis:t.length };
+    /* kas yra tarp breadcrumb ir pirmos prekes */
+    const i = t.indexOf('woocommerce-breadcrumb');
+    const j = t.indexOf('product-small');
+    out.tarpas = i>0 && j>i ? t.slice(i, Math.min(i+2600, j)).replace(/\s+/g,' ') : '(nerasta)';
+    out.zymes = {};
+    ['pskat','ps-kat','pslk','rinkin','Susidėk','maisto-tipas','ps-tipas','category-description','term-description','shop-page-title','ps-hero','ps-kviet']
+      .forEach(z=>{ out.zymes[z]=t.indexOf(z)>0; });
+  }catch(e){ out.p_err=String(e).slice(0,200); }
+}
 let sha=null;
-try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/rec.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/rec2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
 const body={message:'rez',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) body.sha=sha;
-await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/rec.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
+await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/rec2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(body)});
 console.log('ok');
