@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.17';   /* v1.17: vitrina — dydzio eilute, dovanos, po 1 vnt., isemimas is dezes */
+	const VERSIJA = '1.18';   /* v1.18: dovanos perziura atskirta nuo pasirinkimo */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -918,8 +918,14 @@ class Petshop_Laukai {
 								<div class="pslk-dovs">
 									<?php foreach ( $dovanos as $i => $g ) : ?>
 										<div class="pslk-dovk<?php echo $i === 0 ? ' pas' : ''; ?>" data-gid="<?php echo (int) $g['id']; ?>">
-											<img src="<?php echo esc_url( $g['foto'] ); ?>" alt="" loading="lazy">
+											<?php /* Nuotrauka atidaro perziura, korteles kunas — renka dovana.
+											         Buvo suplakta i viena: atrakinus dovana perziura tapdavo
+											         nepasiekiama, nors klientas kaip tik tada ir nori pamatyti,
+											         ka renkasi. Rasta testuojant, ne teoriskai. */ ?>
+											<img src="<?php echo esc_url( $g['foto'] ); ?>" alt="" loading="lazy"
+												class="pslk-dov-f" data-gid="<?php echo (int) $g['id']; ?>">
 											<span class="pv"><?php echo esc_html( $g['pav'] ); ?></span>
+											<span class="pslk-dov-apie" data-gid="<?php echo (int) $g['id']; ?>">Apie ›</span>
 										</div>
 									<?php endforeach; ?>
 								</div>
@@ -1012,6 +1018,9 @@ class Petshop_Laukai {
 			background:#FAFAF8;opacity:.55;position:relative;cursor:default}
 		.pslk-dovk img{max-width:44px;max-height:44px;object-fit:contain;display:block;margin:0 auto 3px}
 		.pslk-dovk .pv{font-size:10.5px;font-weight:700;line-height:1.25;color:#555;display:block}
+		.pslk-dovk img{cursor:pointer}
+		.pslk-dov-apie{display:block;margin-top:4px;font-size:10px;font-weight:700;color:var(--z);cursor:pointer}
+		.pslk-dov-apie:hover{text-decoration:underline}
 		.pslk-dov.atrakinta .pslk-dovk{cursor:pointer;opacity:1;background:#fff}
 		.pslk-dov.atrakinta .pslk-dovk:hover{border-color:#C7891C}
 		.pslk-dov.atrakinta .pslk-dovk.pas{border-color:#C7891C;background:#FBF3E2}
@@ -1311,6 +1320,9 @@ class Petshop_Laukai {
 				var visi=t.closest ? t.closest('#pslk-visi') : null;
 				if(visi){ e.preventDefault();
 					D.prekes.forEach(function(p){ if(p.yra) keisk(p.cid,1); }); return; }
+				/* Perziura — VISADA pasiekiama, ir uzrakinta, ir atrakinta. */
+				var dovF=t.closest ? t.closest('.pslk-dov-f, .pslk-dov-apie') : null;
+				if(dovF){ e.preventDefault(); dovPerziura(+dovF.dataset.gid); return; }
 				var dk=t.closest ? t.closest('.pslk-dovk') : null;
 				if(dk){ e.preventDefault();
 					var db=document.getElementById('pslk-dov');
