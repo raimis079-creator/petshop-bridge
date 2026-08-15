@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.41';   /* v1.41: iejimo rinkinys — kategorijos banneris randa deze pagal grupe, ne pagal ID */
+	const VERSIJA = '1.42';   /* v1.42: kataloge matomas TIK iejimas, kitos grupes dezes slepiamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -556,7 +556,9 @@ class Petshop_Laukai {
 		}
 		$prod->set_name( $pav );
 		$prod->set_status( 'publish' );
-		$prod->set_catalog_visibility( 'visible' );
+		/* Matomuma nustatom PABAIGOJE pagal iejimo taisykle — cia priverstinis
+		   „visible" panaikindavo slepima ir kataloge vel atsirasdavo visos
+		   grupes dezes (rasta 2026-08-15). */
 		if ( $aprasas !== '' ) { $prod->set_description( $aprasas ); }
 		if ( $kat ) { $prod->set_category_ids( $kat ); }
 
@@ -586,6 +588,8 @@ class Petshop_Laukai {
 		$svarios = self::svarios_pakopos( $lid, $pakopos );
 		update_post_meta( $lid, self::META_PAKOPOS, wp_json_encode( $svarios['pakopos'] ) );
 
+		/* Kataloge matomas tik grupes iejimas. */
+		self::sutvarkyti_matomuma( self::grupe( $lid ) );
 		wc_delete_product_transients( $lid );
 
 		return array(
@@ -956,6 +960,35 @@ class Petshop_Laukai {
 			if ( get_post_meta( $id, self::META_IEJIMAS, true ) === 'yes' ) { return (int) $id; }
 		}
 		return $pirmas;
+	}
+
+	/**
+	 * Kataloge rodoma TIK iejimo deze. Kitos tos pacios grupes dezes slepiamos:
+	 * klientas ieina i VIENA lauka, o poreikius ir dydzius renkasi vitrinoje
+	 * (savininko sprendimas 2026-08-15). Slepiam per catalog_visibility —
+	 * nuorodos veikia, tad vitrinos skirtukai nenukencia.
+	 * Grazina, kiek dežiu pakeista.
+	 */
+	public static function sutvarkyti_matomuma( $grupe ) {
+		$iej = self::iejimas( $grupe );
+		$q = new WP_Query( array(
+			'post_type' => 'product', 'post_status' => array( 'publish', 'draft' ),
+			'posts_per_page' => 60, 'fields' => 'ids',
+			'meta_query' => array( array( 'key' => self::META_LAUKAS, 'value' => 'yes' ) ),
+		) );
+		$keista = array();
+		foreach ( $q->posts as $id ) {
+			if ( self::grupe( $id ) !== $grupe ) { continue; }
+			$p = wc_get_product( $id );
+			if ( ! $p ) { continue; }
+			$nori = ( (int) $id === (int) $iej ) ? 'visible' : 'hidden';
+			if ( $p->get_catalog_visibility() !== $nori ) {
+				$p->set_catalog_visibility( $nori );
+				$p->save();
+				$keista[] = array( (int) $id, get_the_title( $id ), $nori );
+			}
+		}
+		return $keista;
 	}
 
 	private static function pristatymo_riba() {
@@ -2767,6 +2800,7 @@ class Petshop_Laukai {
 			} else {
 				delete_post_meta( $lid, self::META_IEJIMAS );
 			}
+			self::sutvarkyti_matomuma( self::grupe( $lid ) );
 		}
 
 		wc_delete_product_transients( $lid );
