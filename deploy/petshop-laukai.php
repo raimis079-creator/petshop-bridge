@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.37';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.38';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -809,6 +809,57 @@ class Petshop_Laukai {
 	 * (raktazodziu spejimas buvo klaida — „Kramtalai" grazindavo nuli), rodomos
 	 * to gyvuno, kuriam dezė skirta, ir su prekiu skaiciumi.
 	 */
+	/**
+	 * Tos pacios grupes dezes — perjungimas neiseinant is redagavimo. Vitrinoje
+	 * klientas mato skirtukus, o admine tekdavo grizti i sarasa ir vel ieskoti
+	 * (savininko pastaba 08-15). Rikiuojam pagal dydi, kaip vitrinoje.
+	 */
+	private static function grupes_juosta( $lid ) {
+		$grupe = self::grupe( $lid );
+		$q = new WP_Query( array(
+			'post_type' => 'product', 'post_status' => array( 'publish', 'draft' ),
+			'posts_per_page' => 40, 'fields' => 'ids', 'orderby' => 'title', 'order' => 'ASC',
+			'meta_query' => array( array( 'key' => self::META_LAUKAS, 'value' => 'yes' ) ),
+		) );
+		$broliai = array();
+		foreach ( $q->posts as $id ) {
+			if ( self::grupe( $id ) !== $grupe ) { continue; }
+			$broliai[] = array(
+				'id'      => (int) $id,
+				'pav'     => get_post_meta( $id, '_ps_laukas_trumpas', true ) ?: get_the_title( $id ),
+				'dydis'   => self::dydis( $id ),
+				'prekiu'  => count( self::krepsys( $id ) ),
+				'busena'  => get_post_status( $id ),
+			);
+		}
+		if ( count( $broliai ) < 2 ) { return; }
+
+		$vardai = self::grupiu_vardai();
+		echo '<div class="pslka-kort pslka-grjuosta"><h3>' . esc_html( $vardai[ $grupe ] ?? $grupe )
+			. ' <span class="pslka-mut">' . count( $broliai ) . ' rinkiniai · spausk, kad pereitum</span></h3>';
+		echo '<div class="pslka-vidus" style="padding:12px 14px">';
+
+		/* Grupuojam pagal dydi — konservams tai duoda dvi eilutes (400/800). */
+		$pagal = array();
+		foreach ( $broliai as $b ) { $pagal[ $b['dydis'] ][] = $b; }
+		ksort( $pagal );
+		foreach ( $pagal as $dydis => $sar ) {
+			echo '<div class="pslka-grow">';
+			if ( $dydis !== '' ) { echo '<span class="pslka-grlab">' . esc_html( $dydis ) . '</span>'; }
+			foreach ( $sar as $b ) {
+				$dabar = ( $b['id'] === (int) $lid );
+				echo '<a class="pslka-grbtn' . ( $dabar ? ' on' : '' ) . '" href="'
+					. esc_url( self::nuoroda( array( 'id' => $b['id'] ) ) ) . '">'
+					. esc_html( $b['pav'] )
+					. '<small>' . (int) $b['prekiu'] . '</small>'
+					. ( $b['busena'] !== 'publish' ? '<i title="juodraštis — klientas nemato">•</i>' : '' )
+					. '</a>';
+			}
+			echo '</div>';
+		}
+		echo '</div></div>';
+	}
+
 	private static function dovanu_kategoriju_sarasas( $lid ) {
 		$kates = in_array( self::grupe( $lid ), array( 'kates', 'kons_kates' ), true );
 		$saknis = $kates ? 77 : 70;   /* KATĖMS / ŠUNIMS */
@@ -1942,6 +1993,8 @@ class Petshop_Laukai {
 			echo '</div>';
 		}
 
+		self::grupes_juosta( $lid );
+
 		/* --- nustatymai --- */
 		echo '<div class="pslka-kort"><h3>Nustatymai</h3><div class="pslka-vidus pslka-du">';
 		echo '<div class="pslka-laukas"><label>Pavadinimas</label><input type="text" id="s-pav" value="' . esc_attr( get_the_title( $lid ) ) . '"></div>';
@@ -2229,6 +2282,20 @@ class Petshop_Laukai {
 		.pslka-plati input{flex:1;min-width:180px}
 		.pslka-wh{padding:3px 10px !important;font-size:12.5px !important;height:auto !important}
 		.pslka-rez{max-height:330px;overflow:auto;border-top:1px solid #f0f0f1}
+		/* Grupes juosta — tie patys skirtukai kaip vitrinoje, tik admine. */
+		.pslka-grjuosta h3{margin-bottom:0}
+		.pslka-grow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+		.pslka-grow:last-child{margin-bottom:0}
+		.pslka-grlab{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+			color:#646970;min-width:52px}
+		.pslka-grbtn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+			border:1px solid #c3c4c7;background:#fff;color:#2c3338;border-radius:14px;padding:5px 13px;
+			font-size:13px;font-weight:600;line-height:1.6}
+		.pslka-grbtn:hover{border-color:#2271b1;color:#2271b1}
+		.pslka-grbtn.on{background:#2271b1;border-color:#2271b1;color:#fff}
+		.pslka-grbtn small{background:rgba(0,0,0,.08);border-radius:9px;padding:0 6px;font-size:11px;font-weight:700}
+		.pslka-grbtn.on small{background:rgba(255,255,255,.25)}
+		.pslka-grbtn i{color:#b26200;font-style:normal;font-weight:800}
 		.pslka-apsauga{padding:9px 0 9px 11px;border-top:1px solid #f0f0f1;border-left:3px solid #c3c4c7;font-size:12.5px}
 		.pslka-apsauga:first-child{border-top:0;padding-top:0}
 		.pslka-apsauga b{display:block}.pslka-apsauga span{color:#646970}
