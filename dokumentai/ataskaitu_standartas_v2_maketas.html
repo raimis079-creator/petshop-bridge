@@ -340,7 +340,7 @@ footer{margin-top:40px;color:var(--mut);font-size:12px;border-top:1px solid var(
 <p class="pastaba">Procentai tarp žingsnių — čia gyvena sprendimai: 38 % nuo „pasiekė minimumą" iki krepšelio reiškia, kad žmonės surenka dėžę ir vis tiek išeina — tikrinti kainos suvokimą arba dovanos ribą. Silpniausia grandis pažymima automatiškai.</p>
 
 <h2 style="font-size:14px;margin-top:22px">Piltuvėlis pjūviais <span style="font-weight:400;color:var(--mut)">— tas pats kelias, perjungiamas pagal</span>
-  <span class="presetai" style="display:inline-flex;vertical-align:-4px;margin-left:6px"><button class="akt">skirtuką</button><button>dydį</button><button>rinkinį</button></span></h2>
+  <span class="presetai" style="display:inline-flex;vertical-align:-4px;margin-left:6px"><button class="akt">skirtuką</button><button>dydį</button><button>rinkinį</button><button>įrenginį</button></span></h2>
 <table class="d">
 <thead><tr><th>Skirtukas</th><th>Atidarė</th><th>Prisidėjo</th><th>Pasiekė min.</th><th>Į krepšelį</th><th>Nupirko</th><th>Konversija <i class="tt" data-t="Atidarė → nupirko. Lyginti eilutes tarpusavyje — matosi, kuris filtras atveda perkančius, o kuris tik žiūrinčius.">i</i></th></tr></thead>
 <tbody>
@@ -378,6 +378,43 @@ footer{margin-top:40px;color:var(--mut);font-size:12px;border-top:1px solid var(
   </div>
 </div>
 <p class="pastaba">Kabliukas ≠ uždarytoja ≠ pelningiausia — trys skirtingi vaidmenys dėžėje. Exclusion įtraukia ir yra beveik visose nupirktose dėžėse (nors marža 27,9 %), o GranCarno gyvena kaip užpildas gale — tai keičia sprendimą „išimti ar palikti": užpildo vaidmuo irgi vaidmuo, bet jam užtenka vienos pigios prekės, ne trijų. Kategorijų pjūvis (baltymo šaltinis, gamintojas) — tie patys trys sąrašai, perjungus dimensiją; kategorija priskiriama agregavimo metu iš prekės taksonomijos.</p>
+
+<!-- ======== 10. DOVANA ======== -->
+<h2>Dovana — ar riba veikia <i class="tt" data-t="Dėžės su dovana = konteineriai, kuriuose yra dovanos eilutė. Iš VISŲ užsakymų (sutikimo nereikia). Atsako: ar dovanos riba pakelia čekį labiau, nei kainuoja pati dovana.">i</i></h2>
+<div class="kpi" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+  <div class="k"><h3>Nupirkta su dovana</h3><div class="reiksme">19 <span style="font-size:14px;color:var(--mut);font-weight:400">iš 27 (70 %)</span></div><span class="delta up">▲ 8 p.p.</span><span class="pries">buvo 62 %</span></div>
+  <div class="k"><h3>Vid. čekis su dovana</h3><div class="reiksme">51,20 €</div><span class="pries" style="margin-left:0">be dovanos — 38,40 €</span></div>
+  <div class="k"><h3>Čekio prieaugis</h3><div class="reiksme" style="color:var(--ok)">+12,80 €</div><span class="pries" style="margin-left:0">dovanos kaštas 2,20 €/dėžei</span></div>
+  <div class="k"><h3>Grąža <i class="tt" data-t="Čekio prieaugis ÷ dovanos savikaina. Virš 1 — dovana atsiperka. Skaičius orientacinis: dalis prieaugio būtų buvusi ir be dovanos, todėl žiūrėti tendenciją, ne absoliutą.">i</i></h3><div class="reiksme" style="color:var(--ok)">5,8×</div><span class="delta up">▲ 0,7</span><span class="pries">buvo 5,1×</span></div>
+</div>
+<div class="veiksmai" style="margin-top:12px">
+  <div class="v"><h3>Kurią dovaną renkasi <i class="tt" data-t="Faktinės dovanų eilutės nupirktose dėžėse. „Keitė dovaną" — elgsenos įvykis, iš sutikusių su statistika.">i</i></h3>
+    <ul>
+      <li><a href="#">VF skanėstai ėriena 80 g</a><span class="kodel">11 dėžių (58 %)</span></li>
+      <li><a href="#">Kramtukas jautienos odos</a><span class="kodel">6 (32 %)</span></li>
+      <li><a href="#">Katžolės žaisliukas</a><span class="kodel">2 (10 %)</span></li>
+    </ul>
+  </div>
+  <div class="v"><h3>Riba kaip variklis <i class="tt" data-t="Sesijos, pasiekusios dovanos ribą, vs nepasiekusios — konversija į pirkimą. Iš sutikusių su statistika.">i</i></h3>
+    <ul>
+      <li>Pasiekė ribą → nupirko<span class="kodel"><b style="color:var(--ok)">34 %</b></span></li>
+      <li>Nepasiekė ribos → nupirko<span class="kodel">9 %</span></li>
+      <li>Keitė dovaną prieš pirkimą<span class="kodel">7 sesijos</span></li>
+    </ul>
+  </div>
+</div>
+<p class="pastaba">Skaitosi taip: 70 % dėžių nuperkama pasiekus dovanos ribą, o čekis su dovana 12,80 € didesnis už 2,20 € kaštą — riba dirba. Jei „su dovana" dalis kristų žemiau ~40 % arba grąža artėtų prie 1× — riba per aukšta arba dovanos neįdomios.</p>
+
+<!-- ======== 11. IRENGINIAI ======== -->
+<h2>Įrenginiai — per kur perka <i class="tt" data-t="Pirkimai — iš užsakymo meta _ps_irenginys (visi užsakymai, sutikimo nereikia). Elgsenos žingsniai — iš įvykių.">i</i></h2>
+<table class="d">
+<thead><tr><th>Įrenginys</th><th>Atidarė <i class="tt" data-t="Iš visų lankytojų — 1 sluoksnio įvykiai be sesijos irgi turi įrenginį.">i</i></th><th>Įsidėjo į krepšelį</th><th>Konversija <i class="tt" data-t="Atidarė → nupirko, iš sutikusių su statistika.">i</i></th><th>Nupirkta dėžių</th><th>Pajamos</th><th>Vid. čekis</th></tr></thead>
+<tbody>
+<tr><td>Mobilus</td><td>782 (63 %)</td><td>36</td><td class="bad">1,6 %</td><td><b>13</b></td><td>562,90 €</td><td>43,30 €</td></tr>
+<tr><td>Kompiuteris</td><td>458 (37 %)</td><td>33</td><td class="ok">3,1 %</td><td><b>14</b></td><td>721,70 €</td><td>51,55 €</td></tr>
+</tbody>
+</table>
+<p class="pastaba">Skaitosi taip: srautas mobilus (63 %), pinigai — iš kompiuterio. Mobili konversija perpus žemesnė — dėžės rinkimas telefone yra daug paspaudimų; jei realūs skaičiai bus panašūs, tai konkretus UX darbas su išmatuojamu prizu. Nupirkta/pajamos — iš VISŲ užsakymų, konversija — iš sutikusių.</p>
 
 <footer>Petshop ataskaitų standartas v2 · maketas peržiūrai · visi tekstai ir ribos — savininko tvirtinimui</footer>
 </div>
