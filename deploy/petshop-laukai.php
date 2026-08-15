@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.35';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.36';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -802,6 +802,29 @@ class Petshop_Laukai {
 		$t = trim( preg_replace( '/\s+/u', ' ', $t ), " -–—,·" );
 		if ( $t === '' || mb_strlen( $t ) < 3 ) { return $pav; }
 		return mb_strtoupper( mb_substr( $t, 0, 1 ) ) . mb_substr( $t, 1 );
+	}
+
+	/**
+	 * Kategoriju sarasas dovanu rinkikliui. Imamos TIKROS katalogo kategorijos
+	 * (raktazodziu spejimas buvo klaida — „Kramtalai" grazindavo nuli), rodomos
+	 * to gyvuno, kuriam dezė skirta, ir su prekiu skaiciumi.
+	 */
+	private static function dovanu_kategoriju_sarasas( $lid ) {
+		$kates = in_array( self::grupe( $lid ), array( 'kates', 'kons_kates' ), true );
+		$saknis = $kates ? 77 : 70;   /* KATĖMS / ŠUNIMS */
+		$terms = get_terms( array(
+			'taxonomy' => 'product_cat', 'hide_empty' => true,
+			'child_of' => $saknis, 'orderby' => 'count', 'order' => 'DESC',
+		) );
+		$h = '<select id="dov-kat"><option value="">— visos ' . ( $kates ? 'katėms' : 'šunims' ) . ' —</option>';
+		if ( ! is_wp_error( $terms ) ) {
+			foreach ( $terms as $t ) {
+				/* Maistas dovana nebuna — nesiūlom to, ko niekada nepasirinks. */
+				if ( preg_match( '/maistas|konservai|kraikai|tualet/ui', $t->name ) ) { continue; }
+				$h .= '<option value="' . (int) $t->term_id . '">' . esc_html( $t->name ) . ' (' . (int) $t->count . ')</option>';
+			}
+		}
+		return $h . '</select>';
 	}
 
 	private static function dovanu_duomenys( $lid ) {
@@ -1973,21 +1996,17 @@ class Petshop_Laukai {
 		echo '<div class="pslka-frow">'
 			. '<span class="pslka-f pslka-plati"><label>Paieška</label>'
 			. '<input type="text" id="dov-q" placeholder="palik tuščią — parodysim pigiausias"></span>'
-			. '<span class="pslka-f"><label>Gyvūnas</label><select id="dov-gyv">'
-			. '<option value="">— visi —</option><option value="sunims">Šunims</option>'
-			. '<option value="katems">Katėms</option></select></span>'
-			. '<span class="pslka-f"><label>Rūšis</label><select id="dov-rusis">'
-			. '<option value="">— visos —</option><option value="skanestai">Skanėstai</option>'
-			. '<option value="kramtalai">Kramtalai</option><option value="zaislai">Žaislai</option></select></span>'
+			. '<span class="pslka-f"><label>Kategorija</label>' . self::dovanu_kategoriju_sarasas( $lid ) . '</span>'
 			. '<span class="pslka-f"><label>Kaina iki</label><select id="dov-iki">'
 			. '<option value="">— bet kokia —</option><option value="1.5">1,50 €</option><option value="2.5">2,50 €</option>'
 			. '<option value="4">4 €</option><option value="7">7 €</option></select></span>'
 			. '<span class="pslka-f"><label>Rodyti</label><select id="dov-filtras">'
 			. '<option value="turimi">Tik turimas</option><option value="turimi_sav">Turimas su savikaina</option>'
 			. '<option value="visos">Visas</option></select></span>'
-			. '<span class="pslka-f"><label>Sandėlis</label>'
-			. '<span class="pslka-z b" title="Sandėlis imamas iš krepšio — dovana iš kito reikštų antrą siuntą">'
-			. esc_html( $kr_sand ) . ' · kaip krepšys</span></span>'
+			. '<span class="pslka-f"><label>Automatiškai</label>'
+			. '<span class="pslka-z b" title="Sandėlis imamas iš krepšio, gyvūnas — iš rinkinio grupės">'
+			. esc_html( $kr_sand ) . ' · ' . ( in_array( self::grupe( $lid ), array( 'kates', 'kons_kates' ), true ) ? 'katėms' : 'šunims' )
+			. '</span></span>'
 			. '<span class="pslka-f"><label>&nbsp;</label>'
 			. '<button type="button" class="button button-primary" id="dov-rodyti">Rodyti</button></span>'
 			. '</div>';
@@ -2319,7 +2338,7 @@ class Petshop_Laukai {
 			var dq=document.getElementById('dov-q'), dlaik=0;
 			if(dq){
 				dq.addEventListener('input',function(){ clearTimeout(dlaik); dlaik=setTimeout(dovIeskoti,350); });
-				['dov-rusis','dov-iki','dov-filtras','dov-gyv'].forEach(function(id){
+				['dov-kat','dov-iki','dov-filtras'].forEach(function(id){
 					var e=document.getElementById(id); if(e) e.addEventListener('change',dovIeskoti);
 				});
 				var drb=document.getElementById('dov-rodyti');
@@ -2332,8 +2351,7 @@ class Petshop_Laukai {
 				rez.innerHTML='<div class="pslka-tuscia">Ieškoma…</div>';
 				var u=A+'?action=ps_laukai_dov_paieska&nonce='+N+'&lid='+LID
 					+'&q='+encodeURIComponent(dq.value.trim())
-					+'&rusis='+document.getElementById('dov-rusis').value
-					+'&gyv='+document.getElementById('dov-gyv').value
+					+'&kat='+document.getElementById('dov-kat').value
 					+'&iki='+document.getElementById('dov-iki').value
 					+'&turimi='+(f==='visos'?'0':'1')+'&sav='+(f==='turimi_sav'?'1':'0');
 				/* Saugiklis: be jo kiekviena serverio klaida palikdavo amzina
@@ -2629,8 +2647,12 @@ class Petshop_Laukai {
 		$lid   = (int) ( $_GET['lid'] ?? 0 );
 		if ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'Toks rinkinys nerastas.' ); }
 		$q     = sanitize_text_field( wp_unslash( $_GET['q'] ?? '' ) );
-		$rusis = sanitize_key( $_GET['rusis'] ?? '' );
-		$gyv   = sanitize_key( $_GET['gyv'] ?? '' );
+		$kat_id = (int) ( $_GET['kat'] ?? 0 );
+		/* Gyvunas NEPASIRENKAMAS — jis issprendziamas is dezes grupes. Kates
+		   dezei siulyti jaucio ausi butu klaida, o dar vienas filtras zmogui —
+		   dar vienas budas suklysti (savininko sprendimas 08-15). */
+		$g = self::grupe( $lid );
+		$gyv = ( $g === 'kates' || $g === 'kons_kates' ) ? 'katems' : 'sunims';
 		$iki   = (float) str_replace( ',', '.', (string) ( $_GET['iki'] ?? 0 ) );
 		$tik_turimi = ( $_GET['turimi'] ?? '1' ) === '1';
 		$tik_sav    = ( $_GET['sav'] ?? '' ) === '1';
@@ -2652,6 +2674,10 @@ class Petshop_Laukai {
 			$tax[] = array( 'taxonomy' => 'pa_gyvuno_rusis', 'field' => 'name',
 				'terms' => ( $gyv === 'sunims' ? array( 'Šunims', 'Šuniukams' ) : array( 'Katėms', 'Kačiukams' ) ),
 				'operator' => 'IN' );
+		}
+		if ( $kat_id > 0 ) {
+			$tax[] = array( 'taxonomy' => 'product_cat', 'field' => 'term_id',
+				'terms' => array( $kat_id ), 'include_children' => true );
 		}
 		if ( $tax ) { $tax['relation'] = 'AND'; $args['tax_query'] = $tax; }
 		if ( mb_strlen( $q ) >= 2 ) { $args['s'] = $q; }
@@ -2688,9 +2714,6 @@ class Petshop_Laukai {
 					: (bool) preg_match( '/katė|kačiuk/u', $kat_t );
 				if ( ! $tinka ) { continue; }
 			}
-			if ( $rusis === 'skanestai' && ! preg_match( '/skanėst|užkand|lazdel|pagalvėl/u', $kat_t ) ) { continue; }
-			if ( $rusis === 'kramtalai' && ! preg_match( '/kramt|ausis|ausys|kaulas|sausgysl/u', $kat_t ) ) { continue; }
-			if ( $rusis === 'zaislai'   && ! preg_match( '/žaisl/u', $kat_t ) ) { continue; }
 
 			$r[] = array(
 				'id' => (int) $pid, 'pav' => $p->get_name(), 'kaina' => $k,
