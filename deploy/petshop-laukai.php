@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.23';   /* v1.23: perziuroje PILNAS aprasas (ne short) — prioriteto apvertimas */
+	const VERSIJA = '1.24';   /* v1.24: dovanos keitimas tikru paspaudimu + aprasu simboliu valymas */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -755,6 +755,11 @@ class Petshop_Laukai {
 		if ( trim( wp_strip_all_tags( $t ) ) === '' ) { $t = $cp->get_short_description(); }
 		$t = preg_replace( '#<style.*?</style>#si', '', $t );
 		$t = preg_replace( '#</p>|<br\s*/?>#i', "\n", $t );
+		/* Importuotuose aprasuose lieka HTML esybiu (&#8211; ir pan.) ir
+		   sarasu simboliu — klientui tai atrodo kaip šiukšlės (pastaba 08-15). */
+		$t = html_entity_decode( $t, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+		$t = preg_replace( '/^[\s\*\-•·>–—]+/mu', '', $t );
+		$t = str_replace( array( '&nbsp;', "\xc2\xa0" ), ' ', $t );
 		$t = preg_replace( '/(Trumpas prekės aprašymas|Prekės aprašymas|Pagrindinis aprašymas)/ui', "\n", $t );
 		$t = wp_strip_all_tags( $t );
 		$eil = array();
@@ -1396,9 +1401,14 @@ class Petshop_Laukai {
 				var visi=t.closest ? t.closest('#pslk-visi') : null;
 				if(visi){ e.preventDefault();
 					D.prekes.forEach(function(p){ if(p.yra) keisk(p.cid,1); }); return; }
-				/* Perziura — VISADA pasiekiama, ir uzrakinta, ir atrakinta. */
-				var dovF=t.closest ? t.closest('.pslk-dov-f, .pslk-dov-apie') : null;
-				if(dovF){ e.preventDefault(); dovPerziura(+dovF.dataset.gid); return; }
+				/* Dovanos kortele: ATRAKINTA — bet koks paspaudimas RENKA (iskaitant
+				   nuotrauka: realus peles paspaudimas beveik visada pataiko i ja),
+				   perziura tik per „Apie ›". UZRAKINTA — bet koks paspaudimas rodo
+				   perziura. Buvo atvirksciai (nuotrauka=perziura) — testas prasileido,
+				   nes evaluate().click() apeina vaikus; realus klientas pakeisti
+				   dovanos negalejo. */
+				var dovA=t.closest ? t.closest('.pslk-dov-apie') : null;
+				if(dovA){ e.preventDefault(); dovPerziura(+dovA.dataset.gid); return; }
 				var dk=t.closest ? t.closest('.pslk-dovk') : null;
 				if(dk){ e.preventDefault();
 					var db=document.getElementById('pslk-dov');
