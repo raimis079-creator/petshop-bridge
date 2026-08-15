@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.27';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
+	const VERSIJA = '1.28';   /* v1.26: perziuros teksto tipografija — antrastes (eilutes su dvitaskiu) paryskinamos */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -754,6 +754,10 @@ class Petshop_Laukai {
 		$t = $cp->get_description();
 		if ( trim( wp_strip_all_tags( $t ) ) === '' ) { $t = $cp->get_short_description(); }
 		$t = preg_replace( '#<style.*?</style>#si', '', $t );
+		/* Serimo lenteles: be sito <table> suvirsta i „5 kg255 - 295 g10 kg…".
+		   Langeliai skiriami bruksniu, eilutes — nauja eilute. */
+		$t = preg_replace( '#</t[dh]>\s*<t[dh][^>]*>#i', ' — ', $t );
+		$t = preg_replace( '#</tr>#i', "\n", $t );
 		$t = preg_replace( '#</p>|<br\s*/?>#i', "\n", $t );
 		/* Importuotuose aprasuose lieka HTML esybiu (&#8211; ir pan.) ir
 		   sarasu simboliu — klientui tai atrodo kaip šiukšlės (pastaba 08-15). */
