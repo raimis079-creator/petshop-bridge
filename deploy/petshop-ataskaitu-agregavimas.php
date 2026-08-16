@@ -82,6 +82,7 @@ class Petshop_Ataskaitu_Agregavimas {
 
 		$eil = array();
 		self::elgsena( $diena, $eil );
+		self::piltuvelis( $diena, $eil );
 		self::sekos_rodikliai( $diena, $eil );
 		self::pardavimai( $diena, $eil );
 		return self::irasyti( $diena, $eil );
@@ -156,6 +157,31 @@ class Petshop_Ataskaitu_Agregavimas {
 		), ARRAY_A );
 		foreach ( (array) $g as $x ) {
 			self::pridek( $eil, 'laukai', $x['grupe'], $x, (int) $x['kiek'] );
+		}
+	}
+
+	/**
+	 * PILTUVELIS — atskira sritis, be `preke_id` dimensijos.
+	 *
+	 * KODEL ATSKIRAI. `sritis='laukai'` eilutese `sesiju` skaiciuojamas kartu su
+	 * preke_id, todel viena sesija, idejusi keturias prekes, duoda keturias
+	 * eilutes po 1 sesija. Sudejus jas piltuveleje gaudavosi „atidare 2 ->
+	 * prisidejo 8" — nesamone, nes unikalus skaiciai NESUDEDAMI. Cia sesijos
+	 * skaiciuojamos dezes lygmeniu, tad ekranas gali saugiai sumuoti.
+	 */
+	private static function piltuvelis( $diena, &$eil ) {
+		global $wpdb;
+		$i = self::ivykiai();
+		$r = $wpdb->get_results( $wpdb->prepare(
+			"SELECT tipas, deze_id, dydis, skirtukas, irenginys,
+			        COUNT(DISTINCT NULLIF(sesija,'')) ses
+			 FROM $i WHERE DATE(laikas)=%s AND aplinka=%s AND sritis='laukai'
+			   AND tipas IN ('atidare','idejo','min_pasiekta','krepselis')
+			 GROUP BY tipas,deze_id,dydis,skirtukas,irenginys",
+			$diena, self::aplinka()
+		), ARRAY_A );
+		foreach ( (array) $r as $x ) {
+			self::pridek( $eil, 'piltuvelis', $x['tipas'], $x, 0, (int) $x['ses'] );
 		}
 	}
 
@@ -363,7 +389,7 @@ class Petshop_Ataskaitu_Agregavimas {
 				/* Piltuvelio paskutinis zingsnis — tik jei uzsakyma galima susieti
 				   su elgsenos sesija (t. y. buvo statistikos sutikimas). */
 				if ( $sesija !== '' && $k['laukas'] ) {
-					self::pridek( $eil, 'laukai', 'nupirko',
+					self::pridek( $eil, 'piltuvelis', 'nupirko',
 						array( 'deze_id' => $k['deze_id'], 'dydis' => $k['dydis'], 'skirtukas' => $k['skirtukas'], 'irenginys' => $ireng ), 1, 1 );
 				}
 			}
@@ -405,6 +431,7 @@ class Petshop_Ataskaitu_Agregavimas {
 
 		$eil = array();
 		self::elgsena( $diena, $eil );
+		self::piltuvelis( $diena, $eil );
 		self::sekos_rodikliai( $diena, $eil );
 		self::pardavimai( $diena, $eil );
 
