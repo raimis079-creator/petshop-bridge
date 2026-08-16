@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Anketos Ataskaita
  * Description: Kontrakto §6 P1 — sesios "Augintinio anketa" skiltys ant ataskaitu standarto v2 karkaso.
- * Version: 1.1
+ * Version: 2.0
  *
  * SESIOS SKILTYS (kontraktas §6, eile fiksuota):
  *  1. Variklio sveikata / piltuvelis   — kur zmones iskrenta ir ar variklis atsako
@@ -11,6 +11,14 @@
  *  4. Duomenu kokybe                    — RECOMMENDABLE vs HIGH_CONFIDENCE tarpas
  *  5. Refill / gyvybingumas             — due -> priminimas -> pirkimas
  *  6. Pinigai / cohort                  — SAZININGAI "duomenu dar nepakanka" iki istorijos
+ *
+ * v2.0 (savininko pastaba 2026-08-16): sesios skiltys buvo sukrautos i VIENA
+ * ritini. Tuscioje dev bazeje atrode tvarkingai, bet su realiais duomenimis
+ * tai butu kilometrinis puslapis, o KIEKVIENAS atidarymas paleisdavo VISU
+ * sesiu skilciu uzklausas (iskaitant 2000 uzsakymu istraukima 6-ai skilciai).
+ * Dabar: skirtukai. Viena skiltis = vienas ekranas, skaiciuojama TIK atidaryta.
+ * Pasirinkimas isimenamas vartotojo meta — laikotarpio mygtukai skirtuko
+ * nebenumeta. Lenteles ribojamos (`EIL_RIBA`), su pastaba kiek is kiek rodoma.
  *
  * v1.1: KPI kortelių apvalkalas buvo `psru-k-eile` — TOKIOS KLASĖS KARKASE NĖRA,
  * todėl kortelės krito viena po kita per visą plotį. Teisinga: `psru-kpi`
@@ -29,13 +37,45 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Anketos_Ataskaita {
 
-	const VERSIJA = '1.1';
+	const VERSIJA = '2.0';
 	const PARENT  = 'petshop-reports';
 	const SLUG    = 'petshop-reports-anketa';
 	const CAP     = 'manage_woocommerce';
 
 	/** Nuo kiek uzsakymu 6 skiltis rodo pinigus, o ne "duomenu dar nepakanka". */
 	const OPT_PINIGU_RIBA = 'ps_anketa_pinigu_riba';
+	/** Kiek eiluciu rodyti lentelese (likusios — per CSV). */
+	const OPT_EIL_RIBA = 'ps_anketa_eil_riba';
+	const EIL_RIBA = 50;
+	/** Kiek uzsakymu daugiausiai imti 6 skilciai — apsauga nuo letos ataskaitos. */
+	const OPT_UZS_RIBA = 'ps_anketa_uzs_riba';
+	const UZS_RIBA = 500;
+	const META_SKILTIS = 'ps_anketa_skiltis';
+
+	public static function skiltys() {
+		return array(
+			'piltuvelis'    => array( 'Piltuvėlis',      'Kur žmonės iškrenta anketoje.' ),
+			'rekomendacijos'=> array( 'Rekomendacijos',  'Ką variklis atsako ir kodėl nepavyksta.' ),
+			'paklausa'      => array( 'Paklausa',        'Kuo šeria klientai ir ko trūksta kataloge.' ),
+			'kokybe'        => array( 'Duomenų kokybė',  'Kiek profilių tinka varikliui ir ko juose trūksta.' ),
+			'refill'        => array( 'Refill',          'Ar priminimai virsta pirkimais.' ),
+			'pinigai'       => array( 'Pinigai',         'Ar profilis susijęs su didesniu krepšeliu.' ),
+		);
+	}
+
+	public static function eil_riba() {
+		$n = (int) get_option( self::OPT_EIL_RIBA, self::EIL_RIBA );
+		return ( $n >= 5 ) ? $n : self::EIL_RIBA;
+	}
+
+	/** Lenteles apkarpymas su saziningu prierasu — likusios eina i CSV. */
+	private static function riboti( $eilutes, $U ) {
+		$riba = self::eil_riba();
+		$viso = count( $eilutes );
+		if ( $viso <= $riba ) { return array( $eilutes, '' ); }
+		return array( array_slice( $eilutes, 0, $riba ),
+			'<p class="psru-pastaba">Rodoma ' . (int) $riba . ' iš ' . (int) $viso . ' — visos eilutės CSV eksporte.</p>' );
+	}
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 41 );
@@ -87,17 +127,40 @@ class Petshop_Anketos_Ataskaita {
 		}
 		$U  = 'Petshop_Ataskaitu_UI';
 		$lt = $U::laikotarpis();
+		$sk = self::skiltys();
 
-		$U::antraste( 'Augintinio anketa',
-			'Kontrakto §6 skiltys: kur žmonės iškrenta, ką variklis atsako, ko trūksta kataloge ir duomenyse.' );
+		/* Skirtukas: is URL, kitaip paskutinis ziuretas, kitaip pirmas.
+		   Isiminimas butinas — laikotarpio mygtukai eina per karkaso nuoroda(),
+		   kuri musu parametro nezino ir be to numestu i pirma skilti. */
+		$uid = get_current_user_id();
+		$dabar = isset( $_GET['skiltis'] ) ? sanitize_key( $_GET['skiltis'] ) : '';
+		if ( ! isset( $sk[ $dabar ] ) ) {
+			$isimintas = $uid ? (string) get_user_meta( $uid, self::META_SKILTIS, true ) : '';
+			$dabar = isset( $sk[ $isimintas ] ) ? $isimintas : 'piltuvelis';
+		} elseif ( $uid ) {
+			update_user_meta( $uid, self::META_SKILTIS, $dabar );
+		}
+
+		$U::antraste( 'Augintinio anketa · ' . $sk[ $dabar ][0], $sk[ $dabar ][1] );
+
+		/* Skirtuku juosta — WP nativus stilius, laikotarpis issaugomas nuorodose */
+		echo '<h2 class="nav-tab-wrapper psru-tabai" style="margin:14px 0 0">';
+		foreach ( $sk as $k => $v ) {
+			$akt = ( $k === $dabar ) ? ' nav-tab-active' : '';
+			echo '<a class="nav-tab' . esc_attr( $akt ) . '" href="' . esc_url( $U::nuoroda( self::SLUG, array( 'skiltis' => $k ) ) ) . '">' . esc_html( $v[0] ) . '</a>';
+		}
+		echo '</h2>';
+
 		$U::juosta( self::SLUG, $lt );
 
-		self::skiltis_1( $U, $lt );
-		self::skiltis_2( $U, $lt );
-		self::skiltis_3( $U, $lt );
-		self::skiltis_4( $U, $lt );
-		self::skiltis_5( $U, $lt );
-		self::skiltis_6( $U, $lt );
+		switch ( $dabar ) {
+			case 'rekomendacijos': self::skiltis_2( $U, $lt ); break;
+			case 'paklausa':       self::skiltis_3( $U, $lt ); break;
+			case 'kokybe':         self::skiltis_4( $U, $lt ); break;
+			case 'refill':         self::skiltis_5( $U, $lt ); break;
+			case 'pinigai':        self::skiltis_6( $U, $lt ); break;
+			default:               self::skiltis_1( $U, $lt ); break;
+		}
 
 		$U::pabaiga();
 	}
@@ -106,7 +169,7 @@ class Petshop_Anketos_Ataskaita {
 
 	private static function skiltis_1( $U, $lt ) {
 		global $wpdb;
-		echo '<h2 class="psru-h2">1. Anketos piltuvėlis ir variklio sveikata</h2>';
+		
 
 		$a = self::ivykiai_intervale( 'anketa', $lt['nuo'], $lt['iki'] );
 		$zingsniai = array(
@@ -161,11 +224,13 @@ class Petshop_Anketos_Ataskaita {
 				);
 			}
 			echo '<h3 class="psru-h3">Ties kuo sustoja — tušti laukai metimo momentu</h3>';
+			list( $eil, $prierasas ) = self::riboti( $eil, $U );
 			$U::lentele( 'ank-laukai', array(
 				array( 'pav' => 'Laukas', 'kaire' => 1 ),
 				array( 'pav' => 'Kiek kartų liko tuščias' ),
 				array( 'pav' => 'Dalis metusiųjų', 'tt' => 'Iš visų šio laikotarpio anketos metimų.' ),
 			), $eil, array( 'failas' => 'anketa-laukai.csv', 'rikiuoti' => 1 ) );
+			echo $prierasas; // phpcs:ignore
 		} elseif ( $met ) {
 			$U::spejimas( 'Metimų yra, bet laukų būsena neužfiksuota — tikėtina, senesni įvykiai iki laukų sąrašo įvedimo.' );
 		}
@@ -183,7 +248,7 @@ class Petshop_Anketos_Ataskaita {
 
 	private static function skiltis_2( $U, $lt ) {
 		global $wpdb;
-		echo '<h2 class="psru-h2">2. Rekomendacijos: kiek atsako ir kodėl nepavyksta</h2>';
+		
 		$rl = self::t( 'ps_rec_log' );
 		if ( ! self::lentele_yra( $rl ) ) { $U::spejimas( 'Lentelės <code>ps_rec_log</code> nėra.' ); return; }
 
@@ -234,10 +299,12 @@ class Petshop_Anketos_Ataskaita {
 			);
 		}
 		echo '<h3 class="psru-h3">Gedimų priežastys</h3>';
+		list( $eil, $prierasas ) = self::riboti( $eil, $U );
 		$U::lentele( 'rec-reason', array(
 			array( 'pav' => 'Kodas', 'kaire' => 1 ), array( 'pav' => 'Kartų' ),
 			array( 'pav' => 'Dalis nesėkmių' ), array( 'pav' => 'Ką tai reiškia', 'kaire' => 1 ),
 		), $eil, array( 'failas' => 'rec-priezastys.csv', 'rikiuoti' => 1 ) );
+		echo $prierasas; // phpcs:ignore
 
 		/* Piltuvelis: parodyta -> paspausta -> i krepseli -> pirkta */
 		$r = self::ivykiai_intervale( 'rec', $lt['nuo'], $lt['iki'] );
@@ -254,7 +321,7 @@ class Petshop_Anketos_Ataskaita {
 
 	private static function skiltis_3( $U, $lt ) {
 		global $wpdb;
-		echo '<h2 class="psru-h2">3. Paklausa ir asortimento spragos</h2>';
+		
 		$p = self::t( 'ps_pets' );
 		$al = self::t( 'ps_brand_alias' );
 
@@ -280,12 +347,14 @@ class Petshop_Anketos_Ataskaita {
 			);
 		}
 		echo '<h3 class="psru-h3">Kuo šeria dabar (perėmimo taikiniai)</h3>';
+		list( $eil, $prierasas ) = self::riboti( $eil, $U );
 		$U::lentele( 'ank-brandai', array(
 			array( 'pav' => 'Kliento įvestis', 'kaire' => 1 ),
 			array( 'pav' => 'Profilių' ),
 			array( 'pav' => 'Susieta su', 'kaire' => 1, 'tt' => 'Brand žodyno canonical_id. Nesusietus tvirtini skiltyje „Brand žodynas".' ),
 			array( 'pav' => 'Mūsų kataloge', 'kaire' => 1 ),
 		), $eil, array( 'failas' => 'anketa-brandai.csv', 'rikiuoti' => 1 ) );
+		echo $prierasas; // phpcs:ignore
 
 		/* Poreikiu paklausa vs katalogo padengimas */
 		$need_map = array(
@@ -331,16 +400,18 @@ class Petshop_Anketos_Ataskaita {
 		$eil3 = array();
 		foreach ( $pavieniai as $k => $n ) { $eil3[] = array( esc_html( $k ), number_format( $n, 0, ',', ' ' ) ); }
 		echo '<h3 class="psru-h3">Deklaruoti jautrumai</h3>';
+		list( $eil3, $prierasas3 ) = self::riboti( $eil3, $U );
 		$U::lentele( 'ank-jautrumai', array(
 			array( 'pav' => 'Jautrumas', 'kaire' => 1 ), array( 'pav' => 'Profilių' ),
 		), $eil3, array( 'paieska' => false, 'failas' => 'anketa-jautrumai.csv' ) );
+		echo $prierasas3; // phpcs:ignore
 	}
 
 	/* ========== 4. DUOMENU KOKYBE ========== */
 
 	private static function skiltis_4( $U, $lt ) {
 		global $wpdb;
-		echo '<h2 class="psru-h2">4. Duomenų kokybė — kiek profilių tinka varikliui</h2>';
+		
 		$p = self::t( 'ps_pets' );
 		$f = self::test_filtras( 'p' );
 
@@ -425,7 +496,7 @@ class Petshop_Anketos_Ataskaita {
 	/* ========== 5. REFILL / GYVYBINGUMAS ========== */
 
 	private static function skiltis_5( $U, $lt ) {
-		echo '<h2 class="psru-h2">5. Refill — ar priminimai virsta pirkimais</h2>';
+		
 		$r = self::ivykiai_intervale( 'refill', $lt['nuo'], $lt['iki'] );
 		$due = self::sk( $r, 'refill_due' );
 		$snt = self::sk( $r, 'refill_reminder_sent' );
@@ -452,7 +523,7 @@ class Petshop_Anketos_Ataskaita {
 
 	private static function skiltis_6( $U, $lt ) {
 		global $wpdb;
-		echo '<h2 class="psru-h2">6. Pinigai: ar profilis keičia pirkimą</h2>';
+		
 		$riba = (int) $U::nustatymas( self::OPT_PINIGU_RIBA, 30 );
 		$p = self::t( 'ps_pets' );
 
@@ -463,7 +534,8 @@ class Petshop_Anketos_Ataskaita {
 		$uzs = array();
 		if ( function_exists( 'wc_get_orders' ) ) {
 			$uzs = wc_get_orders( array(
-				'limit' => 2000, 'status' => array( 'wc-processing', 'wc-completed' ),
+				'limit' => (int) $U::nustatymas( self::OPT_UZS_RIBA, self::UZS_RIBA ),
+				'status' => array( 'wc-processing', 'wc-completed' ),
 				'date_created' => $lt['nuo'] . '...' . $lt['iki'], 'return' => 'objects',
 			) );
 		}
@@ -504,6 +576,10 @@ class Petshop_Anketos_Ataskaita {
 		$U::kpi( 'Skirtumas', ( $vid_be > 0 ? $U::proc( ( ( $vid_su - $vid_be ) / $vid_be ) * 100 ) : '—' ), null,
 			'su profiliu vs be', 'Tai PRISKYRIMAS, ne priežastingumas: profilį susikuria labiau įsitraukę klientai.' );
 		echo '</div>';
+		$uzs_riba = (int) $U::nustatymas( self::OPT_UZS_RIBA, self::UZS_RIBA );
+		if ( $viso_uzs >= $uzs_riba ) {
+			$U::spejimas( 'Imta naujausių <b>' . (int) $uzs_riba . '</b> užsakymų — riba saugo ataskaitos greitį. Keiskim nustatymu <code>' . esc_html( self::OPT_UZS_RIBA ) . '</code>.' );
+		}
 		$U::spejimas( 'Skaičiai rodo <b>sąsają</b>, ne priežastį. Profilio turėjimas ir didesnis krepšelis gali turėti bendrą priežastį — įsitraukimą.' );
 	}
 }
