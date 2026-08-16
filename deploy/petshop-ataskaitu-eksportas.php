@@ -502,9 +502,18 @@ class Petshop_Ataskaitu_Eksportas {
 
 	/* ---------- PARUOSTI ---------- */
 
+	/** Ankstesnis toks pat ilgio laikotarpis — kanibalizacijos palyginimui. */
+	private static function ankstesnis( $nuo, $iki ) {
+		$dienu = max( 1, (int) round( ( strtotime( $iki ) - strtotime( $nuo ) ) / DAY_IN_SECONDS ) + 1 );
+		$p_iki = gmdate( 'Y-m-d', strtotime( $nuo . ' -1 day' ) );
+		return array( gmdate( 'Y-m-d', strtotime( $p_iki . ' -' . ( $dienu - 1 ) . ' day' ) ), $p_iki );
+	}
+
 	private static function lapai_paruosti( $nuo, $iki ) {
 		$eil = Petshop_Ataskaitu_Agregavimas::eilutes( $nuo, $iki, array( 'pardavimai', 'parduotuve' ) );
 		$rink = Petshop_Paruostu_Ataskaita::rinkiniai();
+		list( $p_nuo, $p_iki ) = self::ankstesnis( $nuo, $iki );
+		$pries = Petshop_Ataskaitu_Agregavimas::eilutes( $p_nuo, $p_iki, array( 'pardavimai' ) );
 
 		$m = array();
 		foreach ( $eil as $e ) {
@@ -583,10 +592,65 @@ class Petshop_Ataskaitu_Eksportas {
 			);
 		}
 
+		/* --- Kanibalizacija: komponentai rinkinyje vs atskirai kataloge --- */
+		$vnt = function( $duomenys, $rid, $komp, $ka ) {
+			$r = 0;
+			foreach ( $duomenys as $e ) {
+				if ( $e['sritis'] !== 'pardavimai' ) { continue; }
+				if ( $ka === 'rinkinyje' ) {
+					if ( $e['tipas'] === 'parduota' && (int) $e['deze_id'] === $rid && (int) $e['preke_id'] > 0 ) { $r += (int) $e['kiekis']; }
+				} else {
+					if ( $e['tipas'] === 'atskirai' && in_array( (int) $e['preke_id'], $komp, true ) ) { $r += (int) $e['kiekis']; }
+				}
+			}
+			return $r;
+		};
+
+		$kn = self::galva( 'KANIBALIZACIJA — ar rinkinys prideda, ar tik perkelia', $nuo, $iki );
+		$kn[] = array( 'Lyginama su', $p_nuo . ' – ' . $p_iki );
+		$kn[] = array( '' );
+		$kn[] = array(
+			array( 'v' => 'ID', 't' => 'h' ), array( 'v' => 'Rinkinys', 't' => 'h' ),
+			array( 'v' => 'Vnt. rinkinyje', 't' => 'h' ), array( 'v' => 'Vnt. rinkinyje (buvo)', 't' => 'h' ),
+			array( 'v' => 'Vnt. atskirai', 't' => 'h' ), array( 'v' => 'Vnt. atskirai (buvo)', 't' => 'h' ),
+			array( 'v' => 'Iš viso dabar', 't' => 'h' ), array( 'v' => 'Iš viso buvo', 't' => 'h' ),
+			array( 'v' => 'Bendras pokytis', 't' => 'h' ), array( 'v' => 'Verdiktas', 't' => 'h' ),
+		);
+		$r_prideda  = Petshop_Ataskaitu_UI::nustatymas( 'ps_rib_prideda', 10 );
+		$r_perkelia = Petshop_Ataskaitu_UI::nustatymas( 'ps_rib_perkelia', 2 );
+		$r_imtis    = Petshop_Ataskaitu_UI::nustatymas( 'ps_rib_min_imtis_rink', 5 );
+		foreach ( $rink as $rid => $x ) {
+			$komp = $x['komp'];
+			$vr = $vnt( $eil, $rid, $komp, 'rinkinyje' );
+			$vrp = $vnt( $pries, $rid, $komp, 'rinkinyje' );
+			$va = $vnt( $eil, $rid, $komp, 'atskirai' );
+			$vap = $vnt( $pries, $rid, $komp, 'atskirai' );
+			if ( ! $vr && ! $va && ! $vrp && ! $vap ) { continue; }
+			$dabar = $vr + $va; $buvo = $vrp + $vap;
+			$pok = $buvo > 0 ? ( $dabar / $buvo ) - 1 : null;
+			$parduota = isset( $m[ $rid ] ) ? $m[ $rid ]['parduota'] : 0;
+			$verd = 'PER MAŽAI';
+			if ( $parduota >= $r_imtis && $pok !== null && $buvo >= 10 ) {
+				if ( $pok * 100 > $r_prideda ) { $verd = 'PRIDEDA'; }
+				elseif ( $pok * 100 <= $r_perkelia ) { $verd = 'PERKELIA'; }
+			}
+			$kn[] = array(
+				array( 'v' => $rid, 't' => 'n' ), $x['pav'],
+				array( 'v' => $vr, 't' => 'n' ), array( 'v' => $vrp, 't' => 'n' ),
+				array( 'v' => $va, 't' => 'n' ), array( 'v' => $vap, 't' => 'n' ),
+				array( 'v' => $dabar, 't' => 'n' ), array( 'v' => $buvo, 't' => 'n' ),
+				array( 'v' => $pok, 't' => 'p' ), $verd,
+			);
+		}
+		if ( count( $kn ) === 7 ) {
+			$kn[] = array( 'Šiuo laikotarpiu komponentų pardavimų nebuvo — palyginti nėra ko.' );
+		}
+
 		return array(
-			'Rinkiniai'     => array( 'eilutes' => $r,  'placiai' => array( 9, 44, 8, 11, 12, 12, 12, 10 ) ),
-			'DP pakopos'    => array( 'eilutes' => $pk, 'placiai' => array( 9, 40, 11, 11, 12, 10 ) ),
-			'Žali duomenys' => array( 'eilutes' => $z,  'placiai' => array( 11, 12, 14, 12, 10, 40, 10, 9, 12, 13 ) ),
+			'Rinkiniai'      => array( 'eilutes' => $r,  'placiai' => array( 9, 44, 8, 11, 12, 12, 12, 10 ) ),
+			'Kanibalizacija' => array( 'eilutes' => $kn, 'placiai' => array( 9, 40, 14, 20, 13, 19, 13, 13, 15, 12 ) ),
+			'DP pakopos'     => array( 'eilutes' => $pk, 'placiai' => array( 9, 40, 11, 11, 12, 10 ) ),
+			'Žali duomenys'  => array( 'eilutes' => $z,  'placiai' => array( 11, 12, 14, 12, 10, 40, 10, 9, 12, 13 ) ),
 		);
 	}
 }
