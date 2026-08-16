@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const out={versija:'DEPLOY-B1'}; const NL=String.fromCharCode(10);
+const out={versija:'DEPLOY-B2'}; const NL=String.fromCharCode(10);
 async function irasyk(){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/ata2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
@@ -22,7 +22,7 @@ async function shot(page,vardas){
   await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/${vardas}.png`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)});
 }
 
-const FAILAI=['petshop-statistika.php','petshop-ataskaitu-agregavimas.php','petshop-ataskaitos-ui.php','petshop-rinkiniu-ataskaita.php','petshop-paruostu-ataskaita.php'];
+const FAILAI=['petshop-ataskaitos-ui.php','petshop-rinkiniu-ataskaita.php'];
 
 try{
 /* ---- 1) ikeliam turini i opcijas ---- */
@@ -45,8 +45,8 @@ for (let i=0;i<FAILAI.length;i++){
 /* ---- 2) rasom failus + lenteles + agregavimas ---- */
 const kodas=[
 "add_action('wp_loaded', function(){",
-" if ((\$_GET['ps_dep'] ?? '') !== 'DepB1x') return;",
-" \$o=array('v'=>'DEPLOY-B1','failai'=>array());",
+" if ((\$_GET['ps_dep'] ?? '') !== 'DepB2x') return;",
+" \$o=array('v'=>'DEPLOY-B2','failai'=>array());",
 " \$sar=array("+FAILAI.map((f,i)=>"'"+f+"'=>'ps_dep_b64_"+i+"'").join(',')+");",
 " foreach (\$sar as \$vardas => \$raktas) {",
 "   \$b=get_option(\$raktas);",
@@ -60,16 +60,16 @@ const kodas=[
 " }",
 " header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;",
 "}, 131);"].join(NL);
-const sD=await snip('TEMP DEP WRITE B1', kodas);
+const sD=await snip('TEMP DEP WRITE B2', kodas);
 await new Promise(r=>setTimeout(r,4500));
-try{ out.rasymas=JSON.parse(await (await fetch(WP+'/?ps_dep=DepB1x')).text()); }catch(e){ out.rasymas_e=String(e).slice(0,200); }
+try{ out.rasymas=JSON.parse(await (await fetch(WP+'/?ps_dep=DepB2x')).text()); }catch(e){ out.rasymas_e=String(e).slice(0,200); }
 await off(sD); await new Promise(r=>setTimeout(r,3500));
 
 /* ---- 3) lenteles + agregavimas + patikra ---- */
 const kodas2=[
 "add_action('wp_loaded', function(){",
-" if ((\$_GET['ps_agr'] ?? '') !== 'AgrB1x') return;",
-" global \$wpdb; \$o=array('v'=>'AGR-B1');",
+" if ((\$_GET['ps_agr'] ?? '') !== 'AgrB2x') return;",
+" global \$wpdb; \$o=array('v'=>'AGR-B2');",
 " \$o['klases']=array(",
 "  'statistika'=>class_exists('Petshop_Statistika')?Petshop_Statistika::VERSIJA:'NERA',",
 "  'agregavimas'=>class_exists('Petshop_Ataskaitu_Agregavimas')?'yra':'NERA',",
@@ -77,7 +77,7 @@ const kodas2=[
 "  'surenkami'=>class_exists('Petshop_Rinkiniu_Ataskaita')?Petshop_Rinkiniu_Ataskaita::VERSIJA:'NERA',",
 "  'paruosti'=>class_exists('Petshop_Paruostu_Ataskaita')?'yra':'NERA',",
 " );",
-" if(class_exists('Petshop_Statistika')){ delete_option('ps_stat_schema'); Petshop_Statistika::uztikrinti_lentele(); }",
+
 " \$t1=\$wpdb->prefix.'ps_laukai_ivykiai'; \$t2=\$wpdb->prefix.'ps_ataskaitu_dienos';",
 " \$o['ivykiai_stulpeliai']=\$wpdb->get_col(\"SHOW COLUMNS FROM \$t1\");",
 " \$o['dienos_yra']=(\$wpdb->get_var(\"SHOW TABLES LIKE '\$t2'\")===\$t2)?'yra':'NERA';",
@@ -91,15 +91,15 @@ const kodas2=[
 " }",
 " header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;",
 "}, 131);"].join(NL);
-const sA=await snip('TEMP AGR B1', kodas2);
+const sA=await snip('TEMP AGR B2', kodas2);
 await new Promise(r=>setTimeout(r,4500));
-try{ out.agregavimas=JSON.parse(await (await fetch(WP+'/?ps_agr=AgrB1x')).text()); }catch(e){ out.agr_e=String(e).slice(0,200); }
+try{ out.agregavimas=JSON.parse(await (await fetch(WP+'/?ps_agr=AgrB2x')).text()); }catch(e){ out.agr_e=String(e).slice(0,200); }
 await off(sA); await new Promise(r=>setTimeout(r,3000));
 
 /* ---- 4) vizuali patikra ---- */
-const sL=await snip('TEMP DEP LOGIN B1',[
+const sL=await snip('TEMP DEP LOGIN B2',[
 "add_action('init', function(){",
-" if ((\$_GET['ps_login'] ?? '') !== 'LogB1x') return;",
+" if ((\$_GET['ps_login'] ?? '') !== 'LogB2x') return;",
 " \$a = get_users(array('role'=>'administrator','number'=>1,'fields'=>'ID'));",
 " if (!\$a) return;",
 " wp_set_current_user((int)\$a[0]); wp_set_auth_cookie((int)\$a[0], false, is_ssl());",
@@ -113,7 +113,7 @@ const page=await ctx.newPage();
 const jsErr=[]; page.on('pageerror',e=>jsErr.push(String(e).slice(0,160)));
 const konsole=[]; page.on('console',m=>{ if(m.type()==='error') konsole.push(m.text().slice(0,140)); });
 
-await page.goto(WP+'/?ps_login=LogB1x',{waitUntil:'domcontentloaded',timeout:60000});
+await page.goto(WP+'/?ps_login=LogB2x',{waitUntil:'domcontentloaded',timeout:60000});
 await page.waitForTimeout(4000);
 out.url=page.url();
 out.meniu=await page.locator('#adminmenu a[href*="petshop-reports"]').allTextContents().catch(()=>[]);
