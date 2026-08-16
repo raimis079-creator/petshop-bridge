@@ -134,6 +134,17 @@ is jos galima susisukti bet koki pjuvi pivot'u neprasant naujos ataskaitos.
 Skaiciai rasomi kaip SKAICIAI, formatavimas paliekamas Excel'iui (€ formatas
 `#,##0.00 €`, procentai `0.0%` dalimis, kad veiktu vidurkiai).
 
+**Pirmoji versija Excel'yje NEATSIDARE.** Priezastis: `<sheetViews/>` stovejo PO
+`</sheetData>` ir dar buvo tuscias. OOXML reikalauja grieztos elementu tvarkos
+(`dimension` → `sheetViews` → `sheetFormatPr` → `cols` → `sheetData` →
+`pageMargins`), o tuscias `sheetViews` neleistinas. openpyxl toki faila atidaro
+— Excel atsisako. Papildomai trukо `dimension` ir `docProps/`.
+
+Pamoka: **„openpyxl atidare" NEIRODO, kad Excel atidarys.** Nuo siol XLSX
+tikrinamas lokaliai PHP CLI (`php-zip`) + struktūros validacija: ZIP vientisumas,
+XML sintakse, elementu tvarka, rysiu (rels) taikiniai, Content_Types dengimas,
+IR antra nepriklausoma biblioteka (`xlsx2csv`).
+
 **Klaida, kuria sugavo failo patikra openpyxl'iu:** „Idejimo dalis" rode
 **225 %** (idejo 9, rodyta 4). `rodyta` fiksuojama viena karta per kortele, o
 `idejo` — kas paspaudima, iskaitant kiekio didinima. Dalis perskaiciuota
@@ -158,8 +169,11 @@ atgal, o ne kiek zmoniu tai padare.
 - **Santykiai tarp skirtingu matavimo vienetu meluoja.** Ivykiai/ivykiai davė
   225 %; teisingas vardiklis buvo sesijos. Pries dalindamas — patikrink, ar
   skaitiklis ir vardiklis matuoja TA PATI dalyka.
-- **XLSX be bibliotekos imanomas:** `ZipArchive` + 5 XML failai. Skaiciai
-  rasomi be `t=`, tekstas su `t="inlineStr"` — jokio sharedStrings nereikia.
+- **XLSX be bibliotekos imanomas:** `ZipArchive` + XML. BET elementu tvarka
+  worksheet'e yra grieztа ir tusciu elementu (`<sheetViews/>`) buti negali —
+  kitaip Excel failo neatidaro, nors Python bibliotekos ji skaito.
+- **Vienas skaitytojas nera patikra.** Failo formatas tikrinamas bent dviem
+  nepriklausomomis priemonemis + struktūros validacija.
 - Snippet'e PHP klases vardas su `\\` uz string ribu = ParseError; naudoti
   `class_exists($kintamasis)` + `call_user_func()`.
 
