@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Pet Kontraktas
  * Description: PET INTELLIGENCE DATA CONTRACT v1.1 schema ir brand zodynas (§1-§3, §5).
- * Version: 1.1
+ * Version: 1.2
  *
  * NAUJAS modulis — i M8 koda nelendama (savininko procesas 2026-08-16).
  * Cia gyvena: schema (ps_pets papildymai + 3 naujos lenteles), brand alias
@@ -32,6 +32,17 @@
  *    (parent 'petshop-reports'), patvirtinimas vienu paspaudimu, patvirtintas
  *    aliasas nebeperrasomas automatikos (irasyti_alias tai jau saugo).
  *
+ * v1.2 (dvi spragos, rastos savininko klausus "kas pildys zodyna"):
+ *  (a) SEKLA BUVO VIENKARTINE — pridejus nauja brenda i WooCommerce zodynas
+ *      apie ji nesuzinodavo, kol kas nors jo neirasydavo anketoje, ir TAVO
+ *      turimas brendas keliaudavo per REVIEW eile. Dabar kabliukas ant
+ *      `created_product_brand` / `edited_product_brand` iraso ji kaip AUTO
+ *      is karto. Papildomai `sekla_is_katalogo()` — vienkartinis pilnas
+ *      suvienodinimas (kvieciamas is admin mygtuko).
+ *  (b) NEBUVO "tai ne brendas" — siuksles ("testas", atsitiktinis tekstas)
+ *      kabodavo NEW eileje amzinai. Prideta busena `atmesta`: eiluteje lieka
+ *      (kad tas pats tekstas nebegrizt), bet is darbo eiles dingsta.
+ *
  * SCHEMA:
  *  ps_pets            +4 stulpeliai (IF NOT EXISTS — MariaDB 10.6 palaiko)
  *  ps_pet_field_log   §2 — lauku istorija, AMZINAI
@@ -43,9 +54,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Pet_Kontraktas {
 
-	const VERSIJA         = '1.1';
+	const VERSIJA         = '1.2';
 	const SCHEMOS_RAKTAS  = 'ps_pet_kontraktas_schema';
-	const SCHEMOS_VERSIJA = 2;
+	const SCHEMOS_VERSIJA = 3;
 
 	/* Klasifikavimo ribos — nustatymai, ne konstantos (DoD #8). Konstantos = DEFAULT. */
 	const OPT_AUTO_RIBA   = 'ps_brand_auto_riba';    /* >= sio panasumo -> AUTO   */
@@ -63,6 +74,9 @@ class Petshop_Pet_Kontraktas {
 		add_action( 'delete_user', array( __CLASS__, 'gdpr_vartotojas' ), 5 );
 		add_action( 'admin_menu', array( __CLASS__, 'admin_meniu' ), 40 );
 		add_action( 'admin_post_ps_brand_veiksmas', array( __CLASS__, 'admin_veiksmas' ) );
+		/* (a) naujas brendas kataloge -> iskart i zodyna kaip AUTO */
+		add_action( 'created_product_brand', array( __CLASS__, 'brendas_sukurtas' ), 10, 2 );
+		add_action( 'edited_product_brand', array( __CLASS__, 'brendas_sukurtas' ), 10, 2 );
 	}
 
 	/* ==================== GDPR (§7, DoD #10) ==================== */
@@ -111,6 +125,60 @@ class Petshop_Pet_Kontraktas {
 
 	/* ==================== BRAND REVIEW ADMIN (DoD #4) ==================== */
 
+	/**
+	 * (a) Naujas ar pervadintas `product_brand` terminas — iskart i zodyna.
+	 * Zmogaus patvirtintu irasu NELIECIAM (irasyti_alias tai saugo).
+	 */
+	public static function brendas_sukurtas( $term_id, $tt_id = 0 ) {
+		$t = get_term( (int) $term_id, 'product_brand' );
+		if ( ! $t || is_wp_error( $t ) ) { return; }
+		self::sekla_terminui( $t );
+	}
+
+	private static function sekla_terminui( $t ) {
+		global $wpdb;
+		$dabar = current_time( 'mysql', true );
+		$n = 0;
+		foreach ( array( $t->name, $t->slug ) as $sal ) {
+			$a = self::normalizuoti( $sal );
+			if ( $a === '' ) { continue; }
+			$yra = $wpdb->get_row( $wpdb->prepare(
+				"SELECT id, patvirtino, busena FROM " . self::lentele_alias() . " WHERE alias=%s", $a ), ARRAY_A );
+			if ( $yra ) {
+				/* Zmogaus sprendimas — sventas. Atmestu irgi neprikeliam. */
+				if ( $yra['patvirtino'] !== null || $yra['busena'] === 'atmesta' ) { continue; }
+				$wpdb->update( self::lentele_alias(), array(
+					'canonical_id' => $t->slug, 'busena' => 'auto', 'confidence' => 1.00, 'atnaujinta' => $dabar,
+				), array( 'id' => $yra['id'] ) );
+				$n++;
+				continue;
+			}
+			$wpdb->query( $wpdb->prepare(
+				"INSERT IGNORE INTO " . self::lentele_alias() . "
+				 (alias,canonical_id,busena,confidence,patvirtino,sukurta,atnaujinta)
+				 VALUES (%s,%s,'auto',1.00,NULL,%s,%s)", $a, $t->slug, $dabar, $dabar ) );
+			$n++;
+		}
+		return $n;
+	}
+
+	/** Vienkartinis pilnas suvienodinimas — is admin mygtuko. */
+	public static function sekla_is_katalogo() {
+		$ts = get_terms( array( 'taxonomy' => 'product_brand', 'hide_empty' => false, 'number' => 1000 ) );
+		$n = 0;
+		if ( is_array( $ts ) ) { foreach ( $ts as $t ) { $n += (int) self::sekla_terminui( $t ); } }
+		return $n;
+	}
+
+	/** (b) "Tai ne brendas" — eilute lieka, bet is darbo eiles dingsta. */
+	public static function atmesti_alias( $alias_id, $user_id ) {
+		global $wpdb;
+		return false !== $wpdb->update( self::lentele_alias(), array(
+			'canonical_id' => '', 'busena' => 'atmesta', 'confidence' => 0.00,
+			'patvirtino' => (int) $user_id, 'atnaujinta' => current_time( 'mysql', true ),
+		), array( 'id' => (int) $alias_id ) );
+	}
+
 	public static function admin_meniu() {
 		add_submenu_page( 'petshop-reports', 'Brand zodynas', 'Brand zodynas',
 			'manage_woocommerce', self::ADMIN_SLUG, array( __CLASS__, 'admin_render' ) );
@@ -131,7 +199,15 @@ class Petshop_Pet_Kontraktas {
 		check_admin_referer( 'ps_brand_veiksmas' );
 		$id  = isset( $_POST['alias_id'] ) ? (int) $_POST['alias_id'] : 0;
 		$can = isset( $_POST['canonical_id'] ) ? sanitize_title( wp_unslash( $_POST['canonical_id'] ) ) : '';
-		if ( $id && $can ) { self::patvirtinti_alias( $id, $can, get_current_user_id() ); }
+		$veiksmas = isset( $_POST['ps_veiksmas'] ) ? sanitize_key( wp_unslash( $_POST['ps_veiksmas'] ) ) : 'tvirtinti';
+
+		if ( $veiksmas === 'sekla' ) {
+			$n = self::sekla_is_katalogo();
+			wp_safe_redirect( admin_url( 'admin.php?page=' . self::ADMIN_SLUG . '&ps_sekla=' . (int) $n ) );
+			exit;
+		}
+		if ( $veiksmas === 'atmesti' && $id ) { self::atmesti_alias( $id, get_current_user_id() ); }
+		elseif ( $id && $can ) { self::patvirtinti_alias( $id, $can, get_current_user_id() ); }
 		wp_safe_redirect( admin_url( 'admin.php?page=' . self::ADMIN_SLUG ) );
 		exit;
 	}
@@ -139,22 +215,59 @@ class Petshop_Pet_Kontraktas {
 	public static function admin_render() {
 		global $wpdb;
 		$t = self::lentele_alias();
-		$eile = $wpdb->get_results( "SELECT * FROM $t WHERE busena IN ('review','new') ORDER BY busena DESC, confidence DESC LIMIT 200", ARRAY_A );
+		$rodyti_atmestus = ( isset( $_GET['atmesti'] ) && $_GET['atmesti'] === '1' );
+		$eile = $rodyti_atmestus
+			? $wpdb->get_results( "SELECT * FROM $t WHERE busena='atmesta' ORDER BY atnaujinta DESC LIMIT 200", ARRAY_A )
+			: $wpdb->get_results( "SELECT * FROM $t WHERE busena IN ('review','new') ORDER BY busena DESC, confidence DESC LIMIT 200", ARRAY_A );
 		$busenos = $wpdb->get_results( "SELECT busena, COUNT(*) n FROM $t GROUP BY busena", ARRAY_A );
-		echo '<div class="wrap"><h1>Brand zodynas (kontraktas §3)</h1><p>';
+		echo '<div class="wrap"><h1>Brand žodynas</h1>';
+		if ( isset( $_GET['ps_sekla'] ) ) {
+			echo '<div class="notice notice-success"><p>Iš katalogo įrašyta / atnaujinta aliasų: <b>' . (int) $_GET['ps_sekla'] . '</b>.</p></div>';
+		}
+		echo '<p>';
 		foreach ( $busenos as $b ) { echo esc_html( strtoupper( $b['busena'] ) . ': ' . $b['n'] ) . ' &nbsp; '; }
 		echo '</p>';
-		if ( ! $eile ) { echo '<p><b>REVIEW eile tuscia</b> — visi aliasai susieti.</p></div>'; return; }
+		echo '<p class="description">Kliento įvestys susiejamos automatiškai. Čia lieka tik tos, kurių sistema netvirtina pati. Patvirtintas aliasas įsimenamas visam laikui.</p>';
+
+		/* Seklos mygtukas — po naujo brendo kataloge arba po importo */
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="margin:10px 0 16px">';
+		wp_nonce_field( 'ps_brand_veiksmas' );
+		echo '<input type="hidden" name="action" value="ps_brand_veiksmas"><input type="hidden" name="ps_veiksmas" value="sekla">';
+		echo '<button class="button">Suvienodinti su katalogu</button> ';
+		echo '<span class="description">Įrašo visus <code>product_brand</code> terminus kaip patikimus. Nauji brendai tai daro patys — tai atsarginis mygtukas.</span>';
+		echo '</form>';
+
+		echo '<p><a href="' . esc_url( admin_url( 'admin.php?page=' . self::ADMIN_SLUG . ( $rodyti_atmestus ? '' : '&atmesti=1' ) ) ) . '">' .
+			( $rodyti_atmestus ? '← Grįžti į darbo eilę' : 'Rodyti atmestus' ) . '</a></p>';
+		if ( ! $eile ) {
+			echo '<p><b>' . ( $rodyti_atmestus ? 'Atmestų nėra.' : 'Darbo eilė tuščia — visi kliento įvesti brandai susieti.' ) . '</b></p></div>';
+			return;
+		}
 		echo '<table class="widefat striped" style="max-width:820px"><thead><tr><th>Aliasas</th><th>Busena</th><th>Spejimas</th><th>Conf</th><th>Patvirtinti kaip</th></tr></thead><tbody>';
 		foreach ( $eile as $e ) {
 			echo '<tr><td><code>' . esc_html( $e['alias'] ) . '</code></td><td>' . esc_html( $e['busena'] ) . '</td><td>' . esc_html( $e['canonical_id'] ) . '</td><td>' . esc_html( $e['confidence'] ) . '</td><td>';
 			echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="display:flex;gap:6px">';
 			wp_nonce_field( 'ps_brand_veiksmas' );
 			echo '<input type="hidden" name="action" value="ps_brand_veiksmas"><input type="hidden" name="alias_id" value="' . (int) $e['id'] . '">';
-			echo '<input type="text" name="canonical_id" value="' . esc_attr( $e['canonical_id'] ) . '" placeholder="canonical-slug">';
-			echo '<button class="button button-primary">Patvirtinti</button></form></td></tr>';
+			echo '<input type="hidden" name="ps_veiksmas" value="tvirtinti">';
+			echo '<input type="text" name="canonical_id" value="' . esc_attr( $e['canonical_id'] ) . '" placeholder="canonical-slug" list="ps-brand-slugai">';
+			echo '<button class="button button-primary">Patvirtinti</button></form>';
+			if ( $e['busena'] !== 'atmesta' ) {
+				echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="margin-top:4px">';
+				wp_nonce_field( 'ps_brand_veiksmas' );
+				echo '<input type="hidden" name="action" value="ps_brand_veiksmas"><input type="hidden" name="ps_veiksmas" value="atmesti">';
+				echo '<input type="hidden" name="alias_id" value="' . (int) $e['id'] . '">';
+				echo '<button class="button-link" style="color:#b32d2e">Tai ne brendas</button></form>';
+			}
+			echo '</td></tr>';
 		}
-		echo '</tbody></table><p>Patvirtintas aliasas isimenamas visam laikui ir automatikos nebeperrasomas.</p></div>';
+		echo '</tbody></table>';
+		/* Slug'u sarasas — kad nereiketu ju atsiminti ranka */
+		$ts = get_terms( array( 'taxonomy' => 'product_brand', 'hide_empty' => false, 'number' => 1000 ) );
+		echo '<datalist id="ps-brand-slugai">';
+		if ( is_array( $ts ) ) { foreach ( $ts as $tt ) { echo '<option value="' . esc_attr( $tt->slug ) . '">' . esc_html( $tt->name ) . '</option>'; } }
+		echo '</datalist>';
+		echo '<p class="description">„Tai ne brendas" palieka įrašą duomenyse, bet iš darbo eilės pašalina — tas pats tekstas daugiau nebeklaus.</p></div>';
 	}
 
 	/* ==================== LENTELES ==================== */
@@ -202,7 +315,7 @@ class Petshop_Pet_Kontraktas {
 			id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
 			alias VARCHAR(190) NOT NULL,
 			canonical_id VARCHAR(64) NOT NULL DEFAULT '',
-			busena ENUM('auto','review','new') NOT NULL DEFAULT 'review',
+			busena ENUM('auto','review','new','atmesta') NOT NULL DEFAULT 'review',
 			confidence DECIMAL(3,2) NOT NULL DEFAULT 0.00,
 			patvirtino BIGINT UNSIGNED NULL,
 			sukurta DATETIME NOT NULL,
@@ -232,6 +345,9 @@ class Petshop_Pet_Kontraktas {
 			KEY laikas (laikas),
 			KEY hash (input_hash)
 		) $c" );
+
+		/* v3: busena +atmesta (siuksliu salinimas is darbo eiles) */
+		$wpdb->query( "ALTER TABLE $al MODIFY busena ENUM('auto','review','new','atmesta') NOT NULL DEFAULT 'review'" );
 
 		/* v2: user_id NULL leidziamas — GDPR anonimizacijai (§7) */
 		$wpdb->query( "ALTER TABLE $fl MODIFY user_id BIGINT UNSIGNED NULL" );
