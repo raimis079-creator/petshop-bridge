@@ -6,9 +6,9 @@ const D64=''; const V64='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmICg
 const out={versija:'P1C-1'};
 async function irasyk(){
   let sha=null;
-  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/p1c.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
+  try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/p1c2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const b={message:'p0z ivykiai deploy+verify',content:Buffer.from(JSON.stringify(out)).toString('base64')}; if(sha) b.sha=sha;
-  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/p1c.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)});
+  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/p1c2.json`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)});
 }
 async function api(p,o={}){ const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(n,b64){ const code=Buffer.from(b64,'base64').toString('utf8'); const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:n,code,scope:'global',active:true,priority:5})}); let j=null; try{j=JSON.parse(cr.t);}catch(e){} return j?j.id:null; }
@@ -16,7 +16,7 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 try{
   const s2=await snip('TEMP P1C MAGICTEST',V64);
   await new Promise(r=>setTimeout(r,7000));
-  try{ out.verify=JSON.parse(await (await fetch(WP+'/?ps_p0=MAGT')).text()); }catch(e){ out.e2=String(e).slice(0,300); }
+  try{ {const _t=await (await fetch(WP+'/?ps_p0=MAGT')).text(); try{out.verify=JSON.parse(_t);}catch(e){out.raw=_t.slice(0,1500);}} }catch(e){ out.e2=String(e).slice(0,300); }
   await off(s2);
 }catch(e){ out.bendra=String(e).slice(0,300); }
 await irasyk();
