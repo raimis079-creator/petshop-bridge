@@ -269,7 +269,9 @@ class Petshop_Ataskaitu_UI {
 
 	/** $irasai: [['pav'=>html,'kodel'=>html], ...] */
 	public static function veiksmai( $tipas, $antraste, $irasai, $tuscia = 'Kandidatų nėra.' ) {
-		echo '<div class="psru-v psru-v-' . esc_attr( $tipas ) . '"><h3>' . esc_html( $antraste ) . '</h3><ul>';
+		/* Antrasteje leidziamas HTML — i ja deda tooltip'a (`tt()`). Su esc_html
+		   vartotojas matydavo zalia `<i class=...>` koda ekrane. */
+		echo '<div class="psru-v psru-v-' . esc_attr( $tipas ) . '"><h3>' . wp_kses_post( $antraste ) . '</h3><ul>';
 		if ( ! $irasai ) { echo '<li class="psru-mut">' . esc_html( $tuscia ) . '</li>'; }
 		foreach ( $irasai as $i ) {
 			echo '<li>' . wp_kses_post( $i['pav'] ) . '<span class="psru-kodel">' . wp_kses_post( $i['kodel'] ) . '</span></li>';
@@ -285,8 +287,14 @@ class Petshop_Ataskaitu_UI {
 			$pr = (float) $zingsniai[ $i - 1 ]['sk'];
 			$per[ $i ] = $pr > 0 ? ( $zingsniai[ $i ]['sk'] / $pr ) * 100 : 0;
 		}
+		/* Silpna vieta zymima tik kai yra ka lyginti: su nuliniais skaiciais
+		   „silpniausias perejimas" butu atsitiktinis pirmas. */
+		$yra_duomenu = false;
+		foreach ( $zingsniai as $z ) { if ( (int) $z['sk'] > 0 ) { $yra_duomenu = true; break; } }
 		$silpna = 0; $min = null;
-		foreach ( $per as $i => $v ) { if ( $min === null || $v < $min ) { $min = $v; $silpna = $i; } }
+		if ( $yra_duomenu ) {
+			foreach ( $per as $i => $v ) { if ( $min === null || $v < $min ) { $min = $v; $silpna = $i; } }
+		}
 
 		echo '<div class="psru-pilt">';
 		foreach ( $zingsniai as $i => $z ) {
