@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Anketos Ataskaita
  * Description: Kontrakto §6 P1 — sesios "Augintinio anketa" skiltys ant ataskaitu standarto v2 karkaso.
- * Version: 2.2
+ * Version: 2.3
  *
  * SESIOS SKILTYS (kontraktas §6, eile fiksuota):
  *  1. Variklio sveikata / piltuvelis   — kur zmones iskrenta ir ar variklis atsako
@@ -11,6 +11,11 @@
  *  4. Duomenu kokybe                    — RECOMMENDABLE vs HIGH_CONFIDENCE tarpas
  *  5. Refill / gyvybingumas             — due -> priminimas -> pirkimas
  *  6. Pinigai / cohort                  — SAZININGAI "duomenu dar nepakanka" iki istorijos
+ *
+ * v2.3: perimta ir LIKUSI izvalgu ekrano dalis — rusiu ir maitinimo budo
+ * pasiskirstymas su lietuviskomis etiketemis (LABELS, nukopijuota is originalo
+ * class-admin-reports.php, kad ekrane nesikeistu zodziai). Po sito senajame
+ * ekrane nebelieka NIEKO, ko cia nera, ir jis tampa pradzios ekranu.
  *
  * v2.2: Mitybos plano blokas buvo UZ ankstyvo return'o („duomenu nepakanka"),
  * todel su mazu uzsakymu skaiciumi jo nesimatydavo. Bet jis nuo uzsakymu
@@ -52,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Anketos_Ataskaita {
 
-	const VERSIJA = '2.2';
+	const VERSIJA = '2.3';
 	const PARENT  = 'petshop-reports';
 	const SLUG    = 'petshop-reports-anketa';
 	const CAP     = 'manage_woocommerce';
@@ -106,6 +111,26 @@ class Petshop_Anketos_Ataskaita {
 	private static function ui() { return class_exists( 'Petshop_Ataskaitu_UI' ); }
 
 	private static function t( $vardas ) { global $wpdb; return $wpdb->prefix . $vardas; }
+
+	/** Kodai lieka DB, ekrane — lietuviskai (perimta is class-admin-reports.php). */
+	const LABELS = array(
+		'species' => array( 'dog' => 'Šunys', 'cat' => 'Katės', 'rodent' => 'Graužikai',
+			'bird' => 'Paukščiai', 'fish' => 'Žuvys', 'reptile' => 'Ropliai', 'other' => 'Kiti' ),
+		'feeding' => array( 'dry_only' => 'Tik sausu', 'dry_wet' => 'Sausu ir šlapiu',
+			'wet_only' => 'Tik šlapiu', 'dry_home' => 'Sausu ir naminiu',
+			'dry_raw' => 'Sausu ir žaliu / BARF', 'other' => 'Kita', '' => 'Neatsakė' ),
+		'need' => array( 'digestion' => 'Jautrus virškinimas', 'skin_coat' => 'Oda ir kailis',
+			'weight_control' => 'Svorio kontrolė', 'joints' => 'Sąnariai',
+			'picky_eater' => 'Išrankus ėdimas', 'urinary' => 'Šlapimo takai',
+			'other' => 'Kita (patikslinta)', 'none' => 'Nieko iš šių', '' => 'Neatsakė' ),
+		'sens' => array( 'chicken' => 'Vištiena', 'beef' => 'Jautiena', 'grains' => 'Grūdai',
+			'dairy' => 'Pieno produktai', 'fish' => 'Žuvis', 'none' => 'Nepastebėta', 'unknown' => 'Nepastebėta' ),
+	);
+
+	private static function lt( $grupe, $kodas ) {
+		$m = self::LABELS;
+		return isset( $m[ $grupe ][ $kodas ] ) ? $m[ $grupe ][ $kodas ] : ( $kodas === '' ? 'Neatsakė' : $kodas );
+	}
 
 	/** DoD #7: testiniai profiliai ismetami visur. */
 	private static function test_filtras( $alias = 'p' ) {
@@ -339,6 +364,35 @@ class Petshop_Anketos_Ataskaita {
 		
 		$p = self::t( 'ps_pets' );
 		$al = self::t( 'ps_brand_alias' );
+		$f = self::test_filtras( 'p' );
+
+		/* --- Kas per gyvunai ir kuo maitina (perimta is izvalgu ekrano) --- */
+		$viso_prof = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $p p WHERE (p.status IS NULL OR p.status<>'deleted') $f" );
+		$rusys = $wpdb->get_results( "SELECT species v, COUNT(*) n FROM $p p
+			WHERE (p.status IS NULL OR p.status<>'deleted') $f GROUP BY species ORDER BY n DESC", ARRAY_A );
+		$maitina = $wpdb->get_results( "SELECT IFNULL(feeding_type,'') v, COUNT(*) n FROM $p p
+			WHERE (p.status IS NULL OR p.status<>'deleted') $f GROUP BY feeding_type ORDER BY n DESC", ARRAY_A );
+
+		$eil0 = array();
+		foreach ( (array) $rusys as $x ) {
+			$eil0[] = array( 'Rūšis', esc_html( self::lt( 'species', $x['v'] ) ),
+				number_format( (int) $x['n'], 0, ',', ' ' ),
+				$U::juostele( $U::proc( $viso_prof ? ( $x['n'] / $viso_prof ) * 100 : 0 ), $viso_prof ? ( $x['n'] / $viso_prof ) * 100 : 0 ) );
+		}
+		foreach ( (array) $maitina as $x ) {
+			$eil0[] = array( 'Maitinimo būdas', esc_html( self::lt( 'feeding', $x['v'] ) ),
+				number_format( (int) $x['n'], 0, ',', ' ' ),
+				$U::juostele( $U::proc( $viso_prof ? ( $x['n'] / $viso_prof ) * 100 : 0 ), $viso_prof ? ( $x['n'] / $viso_prof ) * 100 : 0 ) );
+		}
+		$ster = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $p p WHERE is_sterilised='yes' $f" );
+		$eil0[] = array( 'Kita', 'Sterilizuoti', number_format( $ster, 0, ',', ' ' ),
+			$U::juostele( $U::proc( $viso_prof ? ( $ster / $viso_prof ) * 100 : 0 ), $viso_prof ? ( $ster / $viso_prof ) * 100 : 0 ) );
+
+		echo '<h3 class="psru-h3">Kas per gyvūnai ir kuo maitinami</h3>';
+		$U::lentele( 'ank-sudetis', array(
+			array( 'pav' => 'Pjūvis', 'kaire' => 1 ), array( 'pav' => 'Reikšmė', 'kaire' => 1 ),
+			array( 'pav' => 'Profilių' ), array( 'pav' => 'Dalis' ),
+		), $eil0, array( 'paieska' => false, 'failas' => 'anketa-sudetis.csv' ) );
 
 		/* Ka klientai seria — raw brandas + ar mes ji turim */
 		$br = $wpdb->get_results(
@@ -386,7 +440,7 @@ class Petshop_Anketos_Ataskaita {
 			$term = $slug ? get_term_by( 'slug', $slug, 'pa_speciali_mityba' ) : null;
 			$kiek = $term ? (int) $term->count : 0;
 			$eil2[] = array(
-				esc_html( $x['k'] ),
+				esc_html( self::lt( 'need', $x['k'] ) ),
 				number_format( (int) $x['n'], 0, ',', ' ' ),
 				$slug ? '<code>' . esc_html( $slug ) . '</code>' : '<span class="psru-mut">nėra atitikmens</span>',
 				$kiek ? number_format( $kiek, 0, ',', ' ' ) : '<b class="psru-maza-z">0 — spraga</b>',
@@ -413,7 +467,10 @@ class Petshop_Anketos_Ataskaita {
 		}
 		arsort( $pavieniai );
 		$eil3 = array();
-		foreach ( $pavieniai as $k => $n ) { $eil3[] = array( esc_html( $k ), number_format( $n, 0, ',', ' ' ) ); }
+		foreach ( $pavieniai as $k => $n ) {
+			$pav = ( strpos( $k, 'kita: ' ) === 0 ) ? $k : self::lt( 'sens', $k );
+			$eil3[] = array( esc_html( $pav ), number_format( $n, 0, ',', ' ' ) );
+		}
 		echo '<h3 class="psru-h3">Deklaruoti jautrumai</h3>';
 		list( $eil3, $prierasas3 ) = self::riboti( $eil3, $U );
 		$U::lentele( 'ank-jautrumai', array(
