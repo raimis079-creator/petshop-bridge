@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const out={versija:'XLSX-K1'}; const NL=String.fromCharCode(10);
+const out={versija:'XLSX-K2'}; const NL=String.fromCharCode(10);
 async function irasyk(){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/ata2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
@@ -14,18 +14,18 @@ async function irasyk(){
 async function api(p,o={}){ const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(n,c){ const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:n,code:c,scope:'global',active:true,priority:5})}); let j=null; try{j=JSON.parse(cr.t);}catch(e){} return j?j.id:null; }
 async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
-const FAILAI=['petshop-ataskaitu-eksportas.php','petshop-ataskaitos-ui.php'];
+const FAILAI=['petshop-ataskaitu-eksportas.php','petshop-rinkiniu-ataskaita.php'];
 try{
 for (let i=0;i<FAILAI.length;i++){
   const b64=fs.readFileSync('deploy/'+FAILAI[i]).toString('base64');
-  const sS=await snip('TEMP X SET '+i,["add_action('wp_loaded', function(){"," if ((\$_GET['ps_s'] ?? '') !== 'X"+i+"x') return;"," update_option('ps_x_b64_"+i+"', '"+b64+"', false);"," header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit;","}, 131);"].join(NL));
+  const sS=await snip('TEMP Y SET '+i,["add_action('wp_loaded', function(){"," if ((\$_GET['ps_s'] ?? '') !== 'Y"+i+"x') return;"," update_option('ps_x_b64_"+i+"', '"+b64+"', false);"," header('Content-Type: application/json'); echo wp_json_encode(array('ok'=>1)); exit;","}, 131);"].join(NL));
   await new Promise(r=>setTimeout(r,4500));
-  try{ await fetch(WP+'/?ps_s=X'+i+'x'); }catch(e){}
+  try{ await fetch(WP+'/?ps_s=Y'+i+'x'); }catch(e){}
   await off(sS); await new Promise(r=>setTimeout(r,2500));
 }
-const sW=await snip('TEMP X WRITE',[
+const sW=await snip('TEMP Y WRITE',[
 "add_action('wp_loaded', function(){",
-" if ((\$_GET['ps_w'] ?? '') !== 'XWx') return;",
+" if ((\$_GET['ps_w'] ?? '') !== 'YWx') return;",
 " \$o=array('failai'=>array());",
 " \$sar=array("+FAILAI.map((f,i)=>"'"+f+"'=>'ps_x_b64_"+i+"'").join(',')+");",
 " foreach (\$sar as \$v => \$r) {",
@@ -38,16 +38,16 @@ const sW=await snip('TEMP X WRITE',[
 " header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;",
 "}, 131);"].join(NL));
 await new Promise(r=>setTimeout(r,4500));
-try{ out.diegimas=JSON.parse(await (await fetch(WP+'/?ps_w=XWx')).text()); }catch(e){ out.e1=String(e).slice(0,150); }
+try{ out.diegimas=JSON.parse(await (await fetch(WP+'/?ps_w=YWx')).text()); }catch(e){ out.e1=String(e).slice(0,150); }
 await off(sW); await new Promise(r=>setTimeout(r,3000));
 
-const sL=await snip('TEMP X LOGIN',["add_action('init', function(){"," if ((\$_GET['ps_login'] ?? '') !== 'XLx') return;"," \$a=get_users(array('role'=>'administrator','number'=>1,'fields'=>'ID')); if(!\$a) return;"," wp_set_current_user((int)\$a[0]); wp_set_auth_cookie((int)\$a[0], false, is_ssl());"," wp_safe_redirect(admin_url('admin.php?page=petshop-reports-rinkiniai')); exit;","}, 1);"].join(NL));
+const sL=await snip('TEMP Y LOGIN',["add_action('init', function(){"," if ((\$_GET['ps_login'] ?? '') !== 'YLx') return;"," \$a=get_users(array('role'=>'administrator','number'=>1,'fields'=>'ID')); if(!\$a) return;"," wp_set_current_user((int)\$a[0]); wp_set_auth_cookie((int)\$a[0], false, is_ssl());"," wp_safe_redirect(admin_url('admin.php?page=petshop-reports-rinkiniai')); exit;","}, 1);"].join(NL));
 await new Promise(r=>setTimeout(r,4500));
 const br=await chromium.launch({args:['--no-sandbox','--ignore-certificate-errors','--disable-http2']});
 const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1500,height:1000},httpCredentials:{username:process.env.WP_USER,password:process.env.WP_APP_PASS},acceptDownloads:true});
 const page=await ctx.newPage();
 const jsErr=[]; page.on('pageerror',e=>jsErr.push(String(e).slice(0,150)));
-await page.goto(WP+'/?ps_login=XLx',{waitUntil:'domcontentloaded',timeout:60000});
+await page.goto(WP+'/?ps_login=YLx',{waitUntil:'domcontentloaded',timeout:60000});
 await page.waitForTimeout(4000);
 out.mygtukas=await page.locator('.psru-xlsx').count();
 out.mygtuko_url=await page.locator('.psru-xlsx').getAttribute('href').catch(()=>'');
