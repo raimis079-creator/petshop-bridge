@@ -1,6 +1,6 @@
 # PET INTELLIGENCE DATA CONTRACT v1.0
 
-Versija: 1.0 · Data: 2026-08-16 · Statusas: PROJEKTAS SAVININKO TVIRTINIMUI
+Versija: 1.1 · Data: 2026-08-16 · Statusas: PATVIRTINTA SAVININKO (2026-08-16)
 Dalyviai: Raimis (savininkas), ekspertas-konsultantas, vykdytojas.
 
 ## KAS TAI IR KODĖL
@@ -227,7 +227,28 @@ dar nepakanka" iki realios istorijos; slenkstis — nustatymas, ne konstanta).
 Septintos ataskaitos NEKURIAME. Nauji klausimai ateityje = SQL iš šių
 keturių sluoksnių, ne naujas duomenų rinkimas.
 
-## 7. DoD (P0)
+## 7. SAUGOJIMO POLITIKA — „auksas" (savininko sprendimas 2026-08-16)
+
+| Duomenys | Saugojimas |
+|---|---|
+| `ps_rec_log` | AMŽINAI |
+| `ps_pet_field_log` | AMŽINAI |
+| `ps_brand_alias` | AMŽINAI |
+| Įvykiai `anketa` / `rec` / `refill` | AMŽINAI ŽALI — 90 d. valymo taisyklė jiems NEGALIOJA |
+| Įvykiai `laukai` (dėžės) | 90 d. žali → dienos agregatas amžinai (kaip iki šiol) |
+
+**KRITINIS PATAISYMAS (rasta 2026-08-16):** dabartinis
+`Petshop_Statistika::valyti()` trina žalius įvykius pagal DIENĄ visoms
+sritims, o agregavimą tikrina tik `laukai` srityje — anketos auksas būtų
+ištrintas kartu su dėžių klikais. Taisoma P0 pradžioje: trynimas TIK
+`sritis='laukai'` eilutėms. Tai pirmas P0 darbas, nes saugo neatkuriamą.
+
+**GDPR:** klientui ištrynus paskyrą — ANONIMIZACIJA, ne trynimas
+(`user_id -> NULL`, elgsenos/sprendimų istorija lieka be asmens). Techniškai
+paruošiami abu keliai (anonimizuoti / trinti pilnai) vienu jungikliu;
+galutinį žodį taria savininko teisininkas.
+
+## 8. DoD (P0)
 
 1. Visi §4 įvykiai realiai įrašomi suvaidinus kelią naršyklėje (Playwright),
    įskaitant `anketa_abandoned` su laukų būsena.
@@ -240,3 +261,6 @@ keturių sluoksnių, ne naujas duomenų rinkimas.
 6. `ps_pet_field_log` pildosi iš anketos, profilio redagavimo ir sistemos.
 7. `is_test=1` profiliai visur išfiltruoti.
 8. Visos ribos — wp options, ne konstantos.
+9. `valyti()` trina TIK `sritis='laukai'`; anketa/rec/refill įvykiai išlieka
+   žali (patikrinta: po valymo jų COUNT nepakinta).
+10. Anonimizacijos kelias veikia: user_id -> NULL, istorija lieka.
