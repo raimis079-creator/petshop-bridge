@@ -71,6 +71,7 @@ class Petshop_Statistika_Vitrina {
 			'deze'  => $deze,
 			'dydis' => class_exists( 'Petshop_Statistika' ) ? Petshop_Statistika::dezes_dydis( $deze ) : '',
 			'map'   => self::cid_zemelapis( $deze ),
+			'dovriba' => (float) get_post_meta( $deze, '_ps_laukas_dovanos_riba', true ),
 		);
 		?>
 <script id="ps-stat-vitrina">
@@ -130,6 +131,13 @@ class Petshop_Statistika_Vitrina {
 		if (!cid) { return 0; }
 		var p = C.map ? C.map[String(cid)] : 0;
 		return p ? p : 0;
+	}
+	/* Kai ID jau yra produkto ID (dovanos) — vertimo nereikia. */
+	function ivykisPid(tipas, produktas, verte, kiek){
+		eile.push({ tipas:tipas, deze:C.deze, preke:produktas||0, verte:(verte===undefined||verte===null)?'':String(verte), kiek:kiek||0 });
+		if (eile.length >= 20) { siusk(); return; }
+		if (laikmatis) { clearTimeout(laikmatis); }
+		laikmatis = setTimeout(siusk, 5000);
 	}
 	function ivykis(tipas, cid, verte, kiek){
 		eile.push({ tipas:tipas, deze:C.deze, preke:pid(cid), verte:(verte===undefined||verte===null)?'':String(verte), kiek:kiek||0 });
@@ -244,11 +252,13 @@ class Petshop_Statistika_Vitrina {
 			return;
 		}
 
-		/* Dovanos pasirinkimas */
+		/* Dovanos pasirinkimas. Dovanos ID jau YRA produkto ID — jis nera MnM
+		   vaikine eilute, todel cid zemelapio jam taikyti NEGALIMA (kitaip
+		   virstu nuliu; reali klaida, sugauta 2026-08-16). */
 		var dovk = t.closest('.pslk-dovk');
 		if (dovk) {
 			var gid = parseInt(dovk.dataset.gid,10) || 0;
-			ivykis('dovana_rinko', gid, '', kiekDezeje());
+			ivykisPid('dovana_rinko', gid, '', kiekDezeje());
 			return;
 		}
 
@@ -262,7 +272,9 @@ class Petshop_Statistika_Vitrina {
 			return;
 		}
 
-		/* I krepseli — tik kai mygtukas aktyvus (t. y. minimumas surinktas) */
+		/* I krepseli. Fiksuojam PASPAUDIMA ant aktyvaus mygtuko: mygtukas lieka
+		   disabled, kol minimumas nesurinktas, tad klaidingu ijungimu praktiskai
+		   nera. Serverio patvirtinimo nelaukiam — navigacija jau vyksta. */
 		var cta = t.closest('#pslk-cta');
 		if (cta && !cta.disabled) {
 			var suma = (document.getElementById('pslk-viso') || {}).textContent || '';
@@ -291,8 +303,9 @@ class Petshop_Statistika_Vitrina {
 		}
 		var dov = document.getElementById('pslk-dov');
 		if (dov && dov.classList.contains('atrakinta') && pirmaKarta('dov')) {
-			var riba = (document.getElementById('pslk-dov-bl') || {}).textContent || '';
-			ivykis('dovana_atrakinta', 0, riba.replace(/[^\d,.]/g,'').replace(',','.'), kiekDezeje());
+			/* Riba imama IS KONFIGURACIJOS, o ne is antrastes teksto: atrakinus
+			   ten irasoma „rinkis viena" — jokio skaiciaus (klaida 2026-08-16). */
+			ivykis('dovana_atrakinta', 0, C.dovriba || '', kiekDezeje());
 		}
 	}
 	try {
