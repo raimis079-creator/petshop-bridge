@@ -353,7 +353,7 @@ class Petshop_Rinkiniu_Ataskaita {
 			$r = $d . '|' . $e['dydis'];
 			if ( ! isset( $grupes[ $r ] ) ) {
 				$grupes[ $r ] = array( 'deze' => $d, 'dydis' => $e['dydis'], 'atidare' => 0, 'nupirko' => 0,
-					'parduota' => 0, 'vnt' => 0, 'suma_ct' => 0, 'sav_ct' => 0, 'be_sav_ct' => 0, 'skirt' => array() );
+					'parduota' => 0, 'vnt' => 0, 'suma_ct' => 0, 'sav_ct' => 0, 'be_sav_ct' => 0, 'dov_sav' => 0, 'skirt' => array() );
 			}
 			$g =& $grupes[ $r ];
 			if ( $e['sritis'] === 'laukai' ) {
@@ -368,6 +368,7 @@ class Petshop_Rinkiniu_Ataskaita {
 					if ( (int) $e['preke_id'] === 0 ) { $g['parduota'] += (int) $e['kiekis']; $g['suma_ct'] += (int) $e['suma_ct']; }
 					else { $g['vnt'] += (int) $e['kiekis']; $g['sav_ct'] += (int) $e['sav_ct']; }
 				} elseif ( $e['tipas'] === 'be_sav_suma' ) { $g['be_sav_ct'] += (int) $e['suma_ct']; }
+				elseif ( $e['tipas'] === 'dovana' ) { $g['dov_sav'] += (int) $e['sav_ct']; }
 			}
 			unset( $g );
 		}
@@ -387,7 +388,9 @@ class Petshop_Rinkiniu_Ataskaita {
 			}
 			$su_sav = max( 0, $vaiku_suma - $g['be_sav_ct'] );
 			$be_pvm = Petshop_Ataskaitu_UI::be_pvm( $su_sav );
-			$pelnas = (int) round( $be_pvm ) - $vaiku_sav;
+			/* Dovanos savikaina atimama ir cia — kitaip sios lenteles pelnas
+			   nesutaptu su virsuje esanciu KPI (buvo 5,15 vs 4,49 €). */
+			$pelnas = (int) round( $be_pvm ) - $vaiku_sav - (int) $g['dov_sav'];
 			$marza  = $be_pvm > 0 ? ( $pelnas / $be_pvm ) * 100 : null;
 
 			$sk_html = '—';
@@ -603,9 +606,12 @@ class Petshop_Rinkiniu_Ataskaita {
 			}
 		}
 
-		$sarasas = function( $duom, $formatas ) {
+		/* $vardiklis: kabliukams/uzdarytojoms — visu ivykiu suma (dalis sesiju),
+		   „nupirktose dezese" — NUPIRKTU DEZIU skaicius. Anksciau abiem buvo
+		   naudojama suma, todel „yra 9 % deziu" reiske „1 is 11 eiluciu" — melas. */
+		$sarasas = function( $duom, $formatas, $vardiklis = null ) {
 			arsort( $duom );
-			$viso = array_sum( $duom );
+			$viso = ( $vardiklis === null ) ? array_sum( $duom ) : (int) $vardiklis;
 			$out = array();
 			foreach ( array_slice( $duom, 0, 3, true ) as $pid => $v ) {
 				if ( ! $pid ) { continue; }
@@ -623,7 +629,7 @@ class Petshop_Rinkiniu_Ataskaita {
 		Petshop_Ataskaitu_UI::veiksmai( '', 'Uždarytojos' . Petshop_Ataskaitu_UI::tt( 'Paskutinė įdėta prieš „į krepšelį". Prekės, kurios užbaigia sprendimą — dažnai jomis užpildoma dėžė iki ribos.' ),
 			$sarasas( $uzdaryt, 'paskutinė %d %%' ), 'Duomenų dar nėra.' );
 		Petshop_Ataskaitu_UI::veiksmai( '', 'Nupirktose dėžėse' . Petshop_Ataskaitu_UI::tt( 'Kokioje dalyje nupirktų dėžių prekė yra. Iš užsakymų — sutikimo nereikia.' ),
-			$dezes_sk > 0 ? $sarasas( array_map( function( $v ) use ( $dezes_sk ) { return $v; }, $prekiu_dezese ), 'yra %d %% dėžių' ) : array(), 'Pardavimų dar nėra.' );
+			$dezes_sk > 0 ? $sarasas( $prekiu_dezese, 'yra %1$d %% dėžių (%2$d)', $dezes_sk ) : array(), 'Pardavimų dar nėra.' );
 		echo '</div>';
 		echo '<p class="psru-pastaba">Kabliukas ≠ uždarytoja ≠ pelningiausia — trys skirtingi vaidmenys dėžėje. Prekė gali būti žemos maržos, bet gyventi kaip užpildas gale: tai keičia sprendimą „išimti ar palikti".</p>';
 	}
@@ -672,9 +678,13 @@ class Petshop_Rinkiniu_Ataskaita {
 			$dp ? 'buvo ' . round( $dalis_p ) . ' %' : '' );
 		Petshop_Ataskaitu_UI::kpi( 'Vid. čekis su dovana', Petshop_Ataskaitu_UI::eur( $cekis_sd ), null,
 			'be dovanos — ' . ( $be_sk > 0 ? Petshop_Ataskaitu_UI::eur( $cekis_be ) : '—' ) );
-		Petshop_Ataskaitu_UI::kpi( 'Čekio prieaugis', '<span style="color:' . ( $prieaugis >= 0 ? '#00794b' : '#b32d2e' ) . '">' . Petshop_Ataskaitu_UI::eur( $prieaugis ) . '</span>', null,
-			'dovanos kaštas ' . Petshop_Ataskaitu_UI::eur( $kastas ) . '/dėžei' );
-		Petshop_Ataskaitu_UI::kpi( 'Grąža', $kastas > 0 ? number_format( $graza, 1, ',', ' ' ) . '×' : '—', null, '',
+		/* Be „be dovanos" deziu palyginimo grupes nera — cekio prieaugis butu
+		   lygus visam cekiui, o graza absurdiskai didele (72,9x incidentas). */
+		$yra_palyginimas = ( $be_sk > 0 );
+		Petshop_Ataskaitu_UI::kpi( 'Čekio prieaugis',
+			$yra_palyginimas ? '<span style="color:' . ( $prieaugis >= 0 ? '#00794b' : '#b32d2e' ) . '">' . Petshop_Ataskaitu_UI::eur( $prieaugis ) . '</span>' : '—', null,
+			$yra_palyginimas ? 'dovanos kaštas ' . Petshop_Ataskaitu_UI::eur( $kastas ) . '/dėžei' : 'nėra dėžių be dovanos — nėra su kuo lyginti' );
+		Petshop_Ataskaitu_UI::kpi( 'Grąža', ( $yra_palyginimas && $kastas > 0 ) ? number_format( $graza, 1, ',', ' ' ) . '×' : '—', null, '',
 			'Čekio prieaugis ÷ dovanos savikaina. Virš 1 — dovana atsiperka. Skaičius orientacinis: dalis prieaugio būtų buvusi ir be dovanos, todėl žiūrėti tendenciją, ne absoliutą.' );
 		echo '</div>';
 
