@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Rec Variklis
  * Description: Rekomendaciju variklis v1 — GET /petshop/v1/pet-recommendations/{pet_id}. Profilio faktai x produkto deklaruoti pozymiai x verifikuotos serimo lenteles.
- * Version: 1.0
+ * Version: 1.1
  *
  * PRINCIPAS: siulom TIK sausa maista su verifikuota serimo lentele — jei
  * negalim suskaiciuoti paros normos ir €/d, nesiulom (geriau nesiulyti, nei
@@ -29,6 +29,12 @@
  *  jautrumai zinomi), hipo +1 (hipoalerginis, kai jautrumai zinomi);
  *  lygiosios -> pigesnis pirmiau. primary_need NEBLOKUOJA (§1.3).
  *
+ * v1.1 (7 punktas, savininko strateginiam sprendimui): marzos svoris
+ * 'marza' — DEFAULT 0 (ISJUNGTA, niekas nesikeicia). Ijungus (>0), bonusas
+ * kandidatams, kuriu apytiksle marza >= ps_variklio_marza_min (default 30%%).
+ * Savikaina: _cost_price -> _vf_cost -> _zb_cost (NET, x1.21 PVM aproksimacija
+ * — dokumentuota kaip apytiksle, ne buhalterine).
+ *
  * Atsakymas nesa engine_version/inputs/reason — juos i ps_rec_log raso
  * petshop-rec-log (v1.2) tuo paciu §5 mechanizmu.
  */
@@ -37,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rec_Variklis {
 
-	const VERSIJA        = '1.0';
+	const VERSIJA        = '1.1';
 	const ENGINE_VERSION = 'variklis_v1';
 	const OPT_SVORIAI    = 'ps_variklio_svoriai';
 	const OPT_KIEK       = 'ps_variklio_kiek';
@@ -71,7 +77,7 @@ class Petshop_Rec_Variklis {
 	}
 
 	public static function svoriai() {
-		$d = array( 'need' => 3, 'steril' => 1, 'mono' => 1, 'hipo' => 1 );
+		$d = array( 'need' => 3, 'steril' => 1, 'mono' => 1, 'hipo' => 1, 'marza' => 0 );
 		$o = get_option( self::OPT_SVORIAI, array() );
 		return is_array( $o ) ? array_merge( $d, array_map( 'intval', $o ) ) : $d;
 	}
@@ -181,6 +187,19 @@ class Petshop_Rec_Variklis {
 				$mono = wp_get_object_terms( $pid, 'pa_monoprotein', array( 'fields' => 'slugs' ) );
 				if ( ! is_wp_error( $mono ) && $mono ) { $score += $w['mono']; }
 				if ( in_array( 'hipoalerginis', $sm, true ) ) { $score += $w['hipo']; }
+			}
+			if ( ! empty( $w['marza'] ) ) {
+				$kaina = (float) wc_get_price_to_display( $pr );
+				$sav = 0.0;
+				foreach ( array( '_cost_price', '_vf_cost', '_zb_cost' ) as $mk ) {
+					$v = get_post_meta( $pid, $mk, true );
+					if ( $v !== '' && $v !== false ) { $sav = (float) str_replace( ',', '.', $v ); break; }
+				}
+				if ( $sav > 0 && $kaina > 0 ) {
+					$marza = ( $kaina - $sav * 1.21 ) / $kaina * 100;
+					$min = (float) get_option( 'ps_variklio_marza_min', 30 );
+					if ( $marza >= $min ) { $score += (int) $w['marza']; }
+				}
 			}
 			$eiles[] = array( 'pid' => $pid, 'pr' => $pr, 'score' => $score, 'need' => $nm ? 1 : 0, 'kaina' => (float) wc_get_price_to_display( $pr ) );
 		}
