@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Pet Kontraktas
  * Description: PET INTELLIGENCE DATA CONTRACT v1.1 schema ir brand zodynas (§1-§3, §5).
- * Version: 1.0
+ * Version: 1.1
  *
  * NAUJAS modulis — i M8 koda nelendama (savininko procesas 2026-08-16).
  * Cia gyvena: schema (ps_pets papildymai + 3 naujos lenteles), brand alias
@@ -23,6 +23,15 @@
  *  4. canonical_id = Woo `product_brand` termino SLUG (pvz. royal-canin,
  *     ne royal_canin) — viena tiesa, be antro zodyno.
  *
+ * v1.1 (§7 GDPR + DoD #4/#10):
+ *  - schema v2: field_log ir rec_log `user_id` leidzia NULL (anonimizacijai);
+ *  - GDPR jungiklis `ps_gdpr_rezimas` (anonimizuoti|trinti, DEFAULT anonimizuoti,
+ *    galutini zodi taria teisininkas) + kabliukas ant `delete_user`.
+ *    ps_laukai_ivykiai anonimizacija = user_id 0 (ten 0 IR YRA anonimas);
+ *  - Brand REVIEW eile adminui: Petshop ataskaitos -> "Brand zodynas"
+ *    (parent 'petshop-reports'), patvirtinimas vienu paspaudimu, patvirtintas
+ *    aliasas nebeperrasomas automatikos (irasyti_alias tai jau saugo).
+ *
  * SCHEMA:
  *  ps_pets            +4 stulpeliai (IF NOT EXISTS — MariaDB 10.6 palaiko)
  *  ps_pet_field_log   §2 — lauku istorija, AMZINAI
@@ -34,9 +43,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Pet_Kontraktas {
 
-	const VERSIJA         = '1.0';
+	const VERSIJA         = '1.1';
 	const SCHEMOS_RAKTAS  = 'ps_pet_kontraktas_schema';
-	const SCHEMOS_VERSIJA = 1;
+	const SCHEMOS_VERSIJA = 2;
 
 	/* Klasifikavimo ribos — nustatymai, ne konstantos (DoD #8). Konstantos = DEFAULT. */
 	const OPT_AUTO_RIBA   = 'ps_brand_auto_riba';    /* >= sio panasumo -> AUTO   */
@@ -46,8 +55,106 @@ class Petshop_Pet_Kontraktas {
 	/** Trumpesnes ivestys niekada ne-AUTO (kontraktas: "RC" netvirtinama automatiskai). */
 	const MIN_AUTO_ILGIS = 4;
 
+	const OPT_GDPR = 'ps_gdpr_rezimas'; /* anonimizuoti | trinti */
+	const ADMIN_SLUG = 'petshop-reports-brandai';
+
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'uztikrinti_schema' ), 4 );
+		add_action( 'delete_user', array( __CLASS__, 'gdpr_vartotojas' ), 5 );
+		add_action( 'admin_menu', array( __CLASS__, 'admin_meniu' ), 40 );
+		add_action( 'admin_post_ps_brand_veiksmas', array( __CLASS__, 'admin_veiksmas' ) );
+	}
+
+	/* ==================== GDPR (§7, DoD #10) ==================== */
+
+	public static function gdpr_rezimas() {
+		$r = get_option( self::OPT_GDPR, 'anonimizuoti' );
+		return ( $r === 'trinti' ) ? 'trinti' : 'anonimizuoti';
+	}
+
+	/**
+	 * Vienas jungiklis, du keliai. Anonimizacija: istorija LIEKA be asmens
+	 * (user_id -> NULL; ps_laukai_ivykiai -> 0, nes ten 0 = anonimas pagal
+	 * dizaina). ps_pets eilute lieka analitikai, bet asmens laukai isvalomi.
+	 * Trynimas: pets + field_log + rec_log salinami; elgsenos ivykiai
+	 * nuasmeninami (jie ir taip be turinio apie asmeni).
+	 */
+	public static function gdpr_vartotojas( $user_id ) {
+		global $wpdb;
+		$uid = (int) $user_id;
+		if ( $uid <= 0 ) { return array(); }
+		$P  = $wpdb->prefix;
+		$re = self::gdpr_rezimas();
+		$k  = array( 'rezimas' => $re );
+		if ( $re === 'trinti' ) {
+			$petai = $wpdb->get_col( $wpdb->prepare( "SELECT id FROM {$P}ps_pets WHERE user_id=%d", $uid ) );
+			$k['field_log'] = (int) $wpdb->query( $wpdb->prepare( "DELETE FROM {$P}ps_pet_field_log WHERE user_id=%d", $uid ) );
+			if ( $petai ) {
+				$in = implode( ',', array_map( 'intval', $petai ) );
+				$k['field_log'] += (int) $wpdb->query( "DELETE FROM {$P}ps_pet_field_log WHERE pet_id IN ($in)" );
+			}
+			$k['rec_log'] = (int) $wpdb->query( $wpdb->prepare( "DELETE FROM {$P}ps_rec_log WHERE user_id=%d", $uid ) );
+			$k['pets']    = (int) $wpdb->query( $wpdb->prepare( "DELETE FROM {$P}ps_pets WHERE user_id=%d", $uid ) );
+			$k['ivykiai'] = (int) $wpdb->query( $wpdb->prepare( "UPDATE {$P}ps_laukai_ivykiai SET user_id=0 WHERE user_id=%d", $uid ) );
+			return $k;
+		}
+		$k['field_log'] = (int) $wpdb->query( $wpdb->prepare( "UPDATE {$P}ps_pet_field_log SET user_id=NULL WHERE user_id=%d", $uid ) );
+		$k['rec_log']   = (int) $wpdb->query( $wpdb->prepare( "UPDATE {$P}ps_rec_log SET user_id=NULL WHERE user_id=%d", $uid ) );
+		$k['ivykiai']   = (int) $wpdb->query( $wpdb->prepare( "UPDATE {$P}ps_laukai_ivykiai SET user_id=0 WHERE user_id=%d", $uid ) );
+		$k['pets']      = (int) $wpdb->query( $wpdb->prepare(
+			"UPDATE {$P}ps_pets SET pet_name=NULL, birth_date=NULL, photo_file_id=NULL,
+			 species_detail=NULL, current_food_free_text=NULL, client_ref=NULL,
+			 source_draft_id=NULL, status='deleted', updated_at=UTC_TIMESTAMP()
+			 WHERE user_id=%d", $uid ) );
+		return $k;
+	}
+
+	/* ==================== BRAND REVIEW ADMIN (DoD #4) ==================== */
+
+	public static function admin_meniu() {
+		add_submenu_page( 'petshop-reports', 'Brand zodynas', 'Brand zodynas',
+			'manage_woocommerce', self::ADMIN_SLUG, array( __CLASS__, 'admin_render' ) );
+	}
+
+	public static function patvirtinti_alias( $alias_id, $canonical_id, $user_id ) {
+		global $wpdb;
+		$canonical_id = sanitize_title( $canonical_id );
+		if ( $canonical_id === '' ) { return false; }
+		return false !== $wpdb->update( self::lentele_alias(), array(
+			'canonical_id' => $canonical_id, 'busena' => 'auto', 'confidence' => 1.00,
+			'patvirtino' => (int) $user_id, 'atnaujinta' => current_time( 'mysql', true ),
+		), array( 'id' => (int) $alias_id ) );
+	}
+
+	public static function admin_veiksmas() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_die( 'teises' ); }
+		check_admin_referer( 'ps_brand_veiksmas' );
+		$id  = isset( $_POST['alias_id'] ) ? (int) $_POST['alias_id'] : 0;
+		$can = isset( $_POST['canonical_id'] ) ? sanitize_title( wp_unslash( $_POST['canonical_id'] ) ) : '';
+		if ( $id && $can ) { self::patvirtinti_alias( $id, $can, get_current_user_id() ); }
+		wp_safe_redirect( admin_url( 'admin.php?page=' . self::ADMIN_SLUG ) );
+		exit;
+	}
+
+	public static function admin_render() {
+		global $wpdb;
+		$t = self::lentele_alias();
+		$eile = $wpdb->get_results( "SELECT * FROM $t WHERE busena IN ('review','new') ORDER BY busena DESC, confidence DESC LIMIT 200", ARRAY_A );
+		$busenos = $wpdb->get_results( "SELECT busena, COUNT(*) n FROM $t GROUP BY busena", ARRAY_A );
+		echo '<div class="wrap"><h1>Brand zodynas (kontraktas §3)</h1><p>';
+		foreach ( $busenos as $b ) { echo esc_html( strtoupper( $b['busena'] ) . ': ' . $b['n'] ) . ' &nbsp; '; }
+		echo '</p>';
+		if ( ! $eile ) { echo '<p><b>REVIEW eile tuscia</b> — visi aliasai susieti.</p></div>'; return; }
+		echo '<table class="widefat striped" style="max-width:820px"><thead><tr><th>Aliasas</th><th>Busena</th><th>Spejimas</th><th>Conf</th><th>Patvirtinti kaip</th></tr></thead><tbody>';
+		foreach ( $eile as $e ) {
+			echo '<tr><td><code>' . esc_html( $e['alias'] ) . '</code></td><td>' . esc_html( $e['busena'] ) . '</td><td>' . esc_html( $e['canonical_id'] ) . '</td><td>' . esc_html( $e['confidence'] ) . '</td><td>';
+			echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="display:flex;gap:6px">';
+			wp_nonce_field( 'ps_brand_veiksmas' );
+			echo '<input type="hidden" name="action" value="ps_brand_veiksmas"><input type="hidden" name="alias_id" value="' . (int) $e['id'] . '">';
+			echo '<input type="text" name="canonical_id" value="' . esc_attr( $e['canonical_id'] ) . '" placeholder="canonical-slug">';
+			echo '<button class="button button-primary">Patvirtinti</button></form></td></tr>';
+		}
+		echo '</tbody></table><p>Patvirtintas aliasas isimenamas visam laikui ir automatikos nebeperrasomas.</p></div>';
 	}
 
 	/* ==================== LENTELES ==================== */
@@ -125,6 +232,10 @@ class Petshop_Pet_Kontraktas {
 			KEY laikas (laikas),
 			KEY hash (input_hash)
 		) $c" );
+
+		/* v2: user_id NULL leidziamas — GDPR anonimizacijai (§7) */
+		$wpdb->query( "ALTER TABLE $fl MODIFY user_id BIGINT UNSIGNED NULL" );
+		$wpdb->query( "ALTER TABLE $rl MODIFY user_id BIGINT UNSIGNED NULL" );
 
 		/* Sekmes salyga: visos trys lenteles realiai egzistuoja. */
 		foreach ( array( $fl, $al, $rl ) as $t ) {
