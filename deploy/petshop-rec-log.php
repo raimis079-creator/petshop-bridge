@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Rec Log
  * Description: Kontrakto §5 sprendimu zurnalas ir §4.2 rec piltuvelio ivykiai. M8 kodas neliestas — kabinamasi ant REST ir Woo kabliuku.
- * Version: 1.1
+ * Version: 1.2
  *
  * SPRENDIMO MOMENTAS = GET /petshop/v1/pet-food-candidates/{pet_id}
  * (petshop-m8-food.php `candidates()`): tai vienintele vieta, kur variklis
@@ -27,6 +27,10 @@
  * nepriklausomai nuo ids istraukimo (jei raktu nera — rasoma su ok ir
  * parodyti_ids [], bet skaicius teisingas).
  *
+ * v1.2: logina ir NAUJA VARIKLI /pet-recommendations/{id} — engine_version,
+ * inputs, rezultatas, reason imami is paties variklio atsakymo (tikslesni nei
+ * spejimas kabliuke); senas /pet-food-candidates kelias nepakito.
+ *
  *   rec_clicked      ATIDETA: reikia M8 dashboard zymejimo (atskiras GO)
  */
 
@@ -34,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rec_Log {
 
-	const VERSIJA        = '1.1';
+	const VERSIJA        = '1.2';
 	const ENGINE_VERSION = 'm8food_v1';
 	const TRANS_TTL      = 1800; /* 30 min sprendimo -> pirkimo susiejimui */
 
@@ -66,12 +70,12 @@ class Petshop_Rec_Log {
 	public static function po( $response, $handler, $request ) {
 		if ( ! self::galima() ) { return $response; }
 		$route = $request->get_route();
-		if ( ! preg_match( '#^/petshop/v1/pet-food-candidates/(\d+)$#', $route, $m ) ) { return $response; }
+		if ( ! preg_match( '#^/petshop/v1/(pet-food-candidates|pet-recommendations)/(\d+)$#', $route, $m ) ) { return $response; }
 		if ( is_wp_error( $response ) ) { return $response; }
 		if ( $response instanceof WP_REST_Response && $response->get_status() >= 400 ) { return $response; }
 
 		global $wpdb;
-		$pet_id = (int) $m[1];
+		$pet_id = (int) $m[2];
 		$uid    = get_current_user_id();
 		$data   = ( $response instanceof WP_REST_Response ) ? $response->get_data() : array();
 		if ( ! is_array( $data ) ) { return $response; }
@@ -88,14 +92,24 @@ class Petshop_Rec_Log {
 		$pet = $wpdb->get_row( $wpdb->prepare(
 			"SELECT species, is_test FROM {$wpdb->prefix}ps_pets WHERE id=%d", $pet_id ), ARRAY_A );
 
-		$inputs = array( 'species' => $pet ? $pet['species'] : null );
+		$engine = isset( $data['engine_version'] ) ? sanitize_key( $data['engine_version'] ) : self::ENGINE_VERSION;
+		if ( isset( $data['inputs'] ) && is_array( $data['inputs'] ) ) {
+			$inputs = $data['inputs']; /* variklis pats sako, ka naudojo (§5.1) */
+		} else {
+			$inputs = array( 'species' => $pet ? $pet['species'] : null );
+		}
 		$inputs_json = wp_json_encode( $inputs );
 
-		$rezultatas = $kandidatai ? 'ok' : 'failed';
-		$reason = null;
-		if ( ! $kandidatai ) {
-			$reason = ( isset( $data['reason'] ) && $data['reason'] === 'species_unsupported' )
-				? 'species_unsupported' : 'no_purchase_history';
+		if ( isset( $data['rezultatas'] ) && in_array( $data['rezultatas'], array( 'ok', 'fallback', 'failed' ), true ) ) {
+			$rezultatas = $data['rezultatas'];
+			$reason = ( ! empty( $data['reason'] ) ) ? substr( sanitize_key( $data['reason'] ), 0, 32 ) : null;
+		} else {
+			$rezultatas = $kandidatai ? 'ok' : 'failed';
+			$reason = null;
+			if ( ! $kandidatai ) {
+				$reason = ( isset( $data['reason'] ) && $data['reason'] === 'species_unsupported' )
+					? 'species_unsupported' : 'no_purchase_history';
+			}
 		}
 
 		$rid = self::rec_id();
@@ -104,7 +118,7 @@ class Petshop_Rec_Log {
 			'pet_id'         => $pet_id,
 			'user_id'        => $uid ? $uid : null,
 			'laikas'         => current_time( 'mysql', true ),
-			'engine_version' => self::ENGINE_VERSION,
+			'engine_version' => $engine,
 			'rezultatas'     => $rezultatas,
 			'reason_code'    => $reason,
 			'kandidatu_sk'   => count( $kandidatai ),
