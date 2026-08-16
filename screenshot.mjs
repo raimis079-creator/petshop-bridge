@@ -2,7 +2,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const out={versija:'RECON-A1'}; const NL=String.fromCharCode(10);
+const out={versija:'RECON-A2'}; const NL=String.fromCharCode(10);
 async function irasyk(){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/ata2.json`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
@@ -15,13 +15,14 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 try{
 const kodas=[
 "add_action('wp_loaded', function(){",
-" if ((\$_GET['ps_rec'] ?? '') !== 'RecA1x') return;",
-" global \$wpdb; \$o=array('v'=>'RECON-A1');",
+" if ((\$_GET['ps_rec'] ?? '') !== 'RecA2x') return;",
+" global \$wpdb; \$o=array('v'=>'RECON-A2');",
 " \$o['php']=PHP_VERSION; \$o['wp']=get_bloginfo('version');",
 " \$o['wc']=defined('WC_VERSION')?WC_VERSION:'nera';",
 " \$o['prefiksas']=\$wpdb->prefix;",
 " /* HPOS */",
-" \$o['hpos']= (class_exists('Automattic\\\\WooCommerce\\\\Utilities\\\\OrderUtil') && Automattic\\\\WooCommerce\\\\Utilities\\\\OrderUtil::custom_orders_table_usage_is_enabled()) ? 'taip':'ne';",
+" \$hc='Automattic'.chr(92).'WooCommerce'.chr(92).'Utilities'.chr(92).'OrderUtil';",
+" \$o['hpos']= (class_exists(\$hc) && call_user_func(array(\$hc,'custom_orders_table_usage_is_enabled'))) ? 'taip':'ne';",
 " /* mu-plugins */",
 " \$f=@scandir(WPMU_PLUGIN_DIR); \$o['mu']=array();",
 " foreach((array)\$f as \$x){ if(substr(\$x,-4)==='.php'){ \$o['mu'][\$x]=filesize(WPMU_PLUGIN_DIR.'/'.\$x); } }",
@@ -67,10 +68,11 @@ const kodas=[
 " \$o['cmplz']=function_exists('cmplz_has_consent')?'yra':'nera';",
 " header('Content-Type: application/json'); echo wp_json_encode(\$o); exit;",
 "}, 131);"].join(NL);
-const s = await snip('TEMP RECON ATA A1', kodas);
+const s = await snip('TEMP RECON ATA A2', kodas);
 out.snip_id = s;
 await new Promise(r=>setTimeout(r,5000));
-try{ out.rez = JSON.parse(await (await fetch(WP+'/?ps_rec=RecA1x')).text()); }catch(e){ out.klaida=String(e).slice(0,200); }
+try{ out.rez = JSON.parse(await (await fetch(WP+'/?ps_rec=RecA2x')).text()); }catch(e){ out.klaida=String(e).slice(0,200); }
+try{ const g=await api('/wp-json/code-snippets/v1/snippets/'+s); const j=JSON.parse(g.t); out.snip_busena={active:j.active,klaida:j.code_error||null}; }catch(e){ out.snip_busena_e=String(e).slice(0,120); }
 await off(s);
 }catch(e){ out.bendra=String(e).slice(0,250); }
 await irasyk();
