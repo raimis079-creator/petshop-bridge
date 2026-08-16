@@ -294,12 +294,18 @@ class Petshop_Ataskaitu_Eksportas {
 		$s[] = array( 'PASTABA: eilutės be savikainos į maržą neįskaičiuotos — tikras pelnas mažesnis.' );
 
 		/* --- 2. Prekes --- */
-		$rodyta = array(); $idejo = array(); $iseme = array(); $prekes = array();
+		/* Mate/idejo — SESIJOMIS (kitaip „idejimo dalis" virsija 100 %, nes
+		   `rodyta` fiksuojama karta per kortele, o `idejo` — kas paspaudima).
+		   Idejimai ir isemimai vienetais laikomi atskirai. */
+		$rodyta = array(); $idejo = array(); $idejo_vnt = array(); $iseme = array(); $prekes = array();
 		foreach ( $eil as $e ) {
 			$pid = (int) $e['preke_id'];
 			if ( $e['sritis'] === 'laukai' && $pid ) {
-				if ( $e['tipas'] === 'rodyta' ) { $rodyta[ $pid ] = ( $rodyta[ $pid ] ?? 0 ) + (int) $e['kiekis']; }
-				elseif ( $e['tipas'] === 'idejo' ) { $idejo[ $pid ] = ( $idejo[ $pid ] ?? 0 ) + (int) $e['kiekis']; }
+				if ( $e['tipas'] === 'rodyta' ) { $rodyta[ $pid ] = ( $rodyta[ $pid ] ?? 0 ) + (int) $e['sesiju']; }
+				elseif ( $e['tipas'] === 'idejo' ) {
+					$idejo[ $pid ] = ( $idejo[ $pid ] ?? 0 ) + (int) $e['sesiju'];
+					$idejo_vnt[ $pid ] = ( $idejo_vnt[ $pid ] ?? 0 ) + (int) $e['kiekis'];
+				}
 				elseif ( $e['tipas'] === 'iseme' ) { $iseme[ $pid ] = ( $iseme[ $pid ] ?? 0 ) + (int) $e['kiekis']; }
 			}
 			if ( $e['sritis'] === 'pardavimai' && $e['tipas'] === 'parduota' && $pid ) {
@@ -318,8 +324,9 @@ class Petshop_Ataskaitu_Eksportas {
 		$p = self::galva( 'PREKĖS DĖŽĖSE', $nuo, $iki );
 		$p[] = array(
 			array( 'v' => 'Prekės ID', 't' => 'h' ), array( 'v' => 'Prekė', 't' => 'h' ),
-			array( 'v' => 'Rodyta', 't' => 'h' ), array( 'v' => 'Įdėta', 't' => 'h' ),
-			array( 'v' => 'Įdėjimo dalis', 't' => 'h' ), array( 'v' => 'Išimta', 't' => 'h' ),
+			array( 'v' => 'Matė (sesijos)', 't' => 'h' ), array( 'v' => 'Įsidėjo (sesijos)', 't' => 'h' ),
+			array( 'v' => 'Įdėjimo dalis', 't' => 'h' ), array( 'v' => 'Įdėta vnt.', 't' => 'h' ),
+			array( 'v' => 'Išimta', 't' => 'h' ),
 			array( 'v' => 'Išėmimo rodiklis', 't' => 'h' ), array( 'v' => 'Parduota vnt.', 't' => 'h' ),
 			array( 'v' => 'Pajamos', 't' => 'h' ), array( 'v' => 'Savikaina', 't' => 'h' ),
 			array( 'v' => 'Pelnas', 't' => 'h' ), array( 'v' => 'Marža', 't' => 'h' ),
@@ -327,7 +334,8 @@ class Petshop_Ataskaitu_Eksportas {
 		);
 		arsort( $prekes );
 		foreach ( $prekes as $pid => $x ) {
-			$r = $rodyta[ $pid ] ?? 0; $i = $idejo[ $pid ] ?? 0; $is = $iseme[ $pid ] ?? 0;
+			$r = $rodyta[ $pid ] ?? 0; $i = $idejo[ $pid ] ?? 0;
+			$iv = $idejo_vnt[ $pid ] ?? 0; $is = $iseme[ $pid ] ?? 0;
 			$bp = Petshop_Ataskaitu_UI::be_pvm( $x['suma'] );
 			$pel = (int) round( $bp ) - $x['sav'];
 			$p[] = array(
@@ -335,9 +343,10 @@ class Petshop_Ataskaitu_Eksportas {
 				get_the_title( $pid ) ?: ( '#' . $pid ),
 				array( 'v' => $r, 't' => 'n' ),
 				array( 'v' => $i, 't' => 'n' ),
-				array( 'v' => $r > 0 ? $i / $r : null, 't' => 'p' ),
+				array( 'v' => $r > 0 ? min( 1, $i / $r ) : null, 't' => 'p' ),
+				array( 'v' => $iv, 't' => 'n' ),
 				array( 'v' => $is, 't' => 'n' ),
-				array( 'v' => $i > 0 ? $is / $i : null, 't' => 'p' ),
+				array( 'v' => $iv > 0 ? $is / $iv : null, 't' => 'p' ),
 				array( 'v' => $x['vnt'], 't' => 'n' ),
 				array( 'v' => self::ct( $x['suma'] ), 't' => 'e' ),
 				array( 'v' => self::ct( $x['sav'] ), 't' => 'e' ),
@@ -449,7 +458,7 @@ class Petshop_Ataskaitu_Eksportas {
 
 		return array(
 			'Suvestinė'   => array( 'eilutes' => $s,  'placiai' => array( 26, 16 ) ),
-			'Prekės'      => array( 'eilutes' => $p,  'placiai' => array( 10, 46, 9, 9, 13, 9, 15, 12, 12, 12, 12, 10, 14 ) ),
+			'Prekės'      => array( 'eilutes' => $p,  'placiai' => array( 10, 46, 13, 15, 13, 11, 9, 15, 12, 12, 12, 12, 10, 14 ) ),
 			'Rinkiniai'   => array( 'eilutes' => $rd, 'placiai' => array( 10, 34, 9, 10, 10, 12, 11, 11, 12, 12, 10 ) ),
 			'Piltuvėlis'  => array( 'eilutes' => $pl, 'placiai' => array( 24, 10, 12, 14 ) ),
 			'Žali duomenys' => array( 'eilutes' => $z, 'placiai' => array( 11, 12, 16, 10, 30, 10, 40, 8, 14, 10, 9, 9, 12, 13 ) ),
