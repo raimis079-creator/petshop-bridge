@@ -72,7 +72,7 @@ class Petshop_Rinkiniu_Ataskaita {
 	/** Eilutes uz laikotarpi, apribotos siuo ekranu (tik surenkamos dezes). */
 	private static function duomenys( $nuo, $iki, $deze_id = 0 ) {
 		$dezes = self::dezes();
-		$eil = Petshop_Ataskaitu_Agregavimas::eilutes( $nuo, $iki, array( 'laukai', 'pardavimai', 'parduotuve' ) );
+		$eil = Petshop_Ataskaitu_Agregavimas::eilutes( $nuo, $iki, array( 'laukai', 'piltuvelis', 'pardavimai', 'parduotuve' ) );
 		$out = array();
 		foreach ( $eil as $e ) {
 			if ( $e['sritis'] === 'parduotuve' ) { $out[] = $e; continue; }
@@ -140,10 +140,15 @@ class Petshop_Rinkiniu_Ataskaita {
 		return $o;
 	}
 
+	/**
+	 * Sesijos imamos IS `piltuvelis` srities: ten jos suskaiciuotos dezes
+	 * lygmeniu, be preke_id, todel jas galima sumuoti. `laukai` srityje tas
+	 * pats skaicius butu isputas tiek kartu, kiek prekiu palietė sesija.
+	 */
 	private static function sesiju( $eil, $tipas ) {
 		$s = 0;
 		foreach ( $eil as $e ) {
-			if ( $e['sritis'] === 'laukai' && $e['tipas'] === $tipas ) { $s += (int) $e['sesiju']; }
+			if ( $e['sritis'] === 'piltuvelis' && $e['tipas'] === $tipas ) { $s += (int) $e['sesiju']; }
 		}
 		return $s;
 	}
@@ -356,10 +361,11 @@ class Petshop_Rinkiniu_Ataskaita {
 					'parduota' => 0, 'vnt' => 0, 'suma_ct' => 0, 'sav_ct' => 0, 'be_sav_ct' => 0, 'dov_sav' => 0, 'skirt' => array() );
 			}
 			$g =& $grupes[ $r ];
-			if ( $e['sritis'] === 'laukai' ) {
+			if ( $e['sritis'] === 'piltuvelis' ) {
 				if ( $e['tipas'] === 'atidare' ) { $g['atidare'] += (int) $e['sesiju']; }
 				elseif ( $e['tipas'] === 'nupirko' ) { $g['nupirko'] += (int) $e['sesiju']; }
-				elseif ( $e['tipas'] === 'idejo' && $e['skirtukas'] !== '' ) {
+			} elseif ( $e['sritis'] === 'laukai' ) {
+				if ( $e['tipas'] === 'idejo' && $e['skirtukas'] !== '' ) {
 					if ( ! isset( $g['skirt'][ $e['skirtukas'] ] ) ) { $g['skirt'][ $e['skirtukas'] ] = 0; }
 					$g['skirt'][ $e['skirtukas'] ] += (int) $e['kiekis'];
 				}
@@ -559,7 +565,7 @@ class Petshop_Rinkiniu_Ataskaita {
 
 		$g = array();
 		foreach ( $eil as $e ) {
-			if ( $e['sritis'] !== 'laukai' ) { continue; }
+			if ( $e['sritis'] !== 'piltuvelis' ) { continue; }
 			$r = (string) $e[ $pjuvis ];
 			if ( ! isset( $g[ $r ] ) ) { $g[ $r ] = array( 'atidare' => 0, 'idejo' => 0, 'min_pasiekta' => 0, 'krepselis' => 0, 'nupirko' => 0 ); }
 			if ( isset( $g[ $r ][ $e['tipas'] ] ) ) { $g[ $r ][ $e['tipas'] ] += (int) $e['sesiju']; }
@@ -718,7 +724,7 @@ class Petshop_Rinkiniu_Ataskaita {
 			$i = $e['irenginys'];
 			if ( $i !== 'mobile' && $i !== 'desktop' ) { continue; }
 			if ( $g[ $i ] === null ) { $g[ $i ] = array( 'atidare' => 0, 'krepselis' => 0, 'nupirko' => 0, 'dezes' => 0, 'suma_ct' => 0 ); }
-			if ( $e['sritis'] === 'laukai' ) {
+			if ( $e['sritis'] === 'piltuvelis' ) {
 				if ( isset( $g[ $i ][ $e['tipas'] ] ) ) { $g[ $i ][ $e['tipas'] ] += (int) $e['sesiju']; }
 			} elseif ( $e['sritis'] === 'pardavimai' && $e['tipas'] === 'parduota' && (int) $e['preke_id'] === 0 ) {
 				$g[ $i ]['dezes'] += (int) $e['kiekis'];
