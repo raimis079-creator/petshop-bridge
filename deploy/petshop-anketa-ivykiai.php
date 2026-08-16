@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Anketa Ivykiai
  * Description: Kontrakto §4.1 anketos ivykiai, §2 lauku istorija ir §3 brand susiejimas per REST kabliukus — M8 kodas NELIECIAMAS.
- * Version: 1.1
+ * Version: 1.2
  *
  * ARCHITEKTURA (savininko procesas 2026-08-16: i M8 lendama tik §5, visa
  * kita — nauji failai):
@@ -34,6 +34,10 @@
  * buvo slopinamas visada. Dabar metodas nustatomas is o.method ARBA
  * Request.method, o "baigta" zymi tik POST/PATCH/PUT.
  *
+ * v1.2: pet-form.js dabar zymi root'a data-step atributu — zingsniu ivykiai
+ * imami IS JO (tikslus), o .pspet-btn paspaudimu euristika lieka tik
+ * atsarginiu keliu, kai atributo nera. data-step='complete' => baigta.
+ *
  * §1.1 pastaba: 'none' siuntima is UI (DoD #5) turi daryti pati anketa —
  * tai vienintelis likes M8 UI pakeitimas, jam reikia atskiro savininko GO.
  */
@@ -42,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Anketa_Ivykiai {
 
-	const VERSIJA = '1.1';
+	const VERSIJA = '1.2';
 	/** Anketos versija naujiems irasams (is drafts payload_version=1). */
 	const QV = 'v1';
 
@@ -284,14 +288,43 @@ function laukuBusena(r){
  });
  return 's'+zingsnis+'|+'+pilni.join(',')+'|-'+tusti.join(',');
 }
+var stepHost=null,turiAtr=false;
+function stepDabar(){
+ var h=stepHost||document.querySelector('#pspet-form-host [data-step], .pspet-wrap[data-step], [data-step].pspet-wrap');
+ if(!h){h=document.querySelector('#pspet-form-host, .pspet-wrap');if(h&&!h.getAttribute('data-step'))h=h.closest('[data-step]')||h;}
+ return h&&h.getAttribute?h.getAttribute('data-step'):null;
+}
 function pradzia(){
  if(pradeta)return;pradeta=true;
- siusti('anketa_started',QV);siusti('step_started','1');
+ siusti('anketa_started',QV);
+ var pr=stepDabar();
+ if(pr){turiAtr=true;zingsnis=pr;siusti('step_started',String(pr));}
+ else{siusti('step_started','1');}
+ /* TIKSLUS kelias: data-step atributo stebejimas (pet-form.js v-data-step) */
+ var r0=saknis();
+ var tikslas=r0?(r0.getAttribute('data-step')?r0:(r0.closest?r0.closest('[data-step]'):null)):null;
+ if(!tikslas&&r0&&r0.parentElement&&r0.parentElement.getAttribute('data-step'))tikslas=r0.parentElement;
+ if(tikslas){
+  stepHost=tikslas;turiAtr=true;
+  var mo2=new MutationObserver(function(ms){
+   ms.forEach(function(m){
+    if(m.attributeName!=='data-step')return;
+    var nau=tikslas.getAttribute('data-step');
+    if(nau===null||String(nau)===String(zingsnis))return;
+    if(nau==='complete'){baigta=true;siusti('step_completed',String(zingsnis));zingsnis=nau;return;}
+    siusti('step_completed',String(zingsnis));
+    zingsnis=nau;
+    siusti('step_started',String(nau));
+   });
+  });
+  mo2.observe(tikslas,{attributes:true,attributeFilter:['data-step']});
+ }
+ /* ATSARGINE euristika — tik kai data-step nera */
  document.addEventListener('click',function(ev){
+  if(turiAtr)return;
   var b=ev.target&&ev.target.closest?ev.target.closest('.pspet-btn'):null;
   if(!b)return;var r=saknis();if(!r||!r.contains(b))return;
-  /* euristika: mygtukas anketoje = zingsnio riba (dokumentuota modulio antrasteje) */
-  siusti('step_completed',String(zingsnis));zingsnis++;
+  siusti('step_completed',String(zingsnis));zingsnis=(parseInt(zingsnis,10)||1)+1;
   setTimeout(function(){if(!baigta&&saknis())siusti('step_started',String(zingsnis));},400);
  },true);
 }
