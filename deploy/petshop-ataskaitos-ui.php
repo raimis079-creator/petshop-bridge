@@ -126,6 +126,12 @@ class Petshop_Ataskaitu_UI {
 			echo '</select>';
 		}
 		echo '<button class="button">Rodyti</button>';
+		/* Eksportas — paprasta nuoroda, todel gali gyventi formos viduje:
+		   ji nesubmit'ina ir „Rodyti" elgesio nekeicia. */
+		if ( class_exists( 'Petshop_Ataskaitu_Eksportas' ) ) {
+			$ekranas = ( strpos( $slug, 'paruosti' ) !== false ) ? 'paruosti' : 'surenkami';
+			Petshop_Ataskaitu_Eksportas::mygtukas( $ekranas, $lt );
+		}
 		if ( $lt['lyginam'] ) {
 			echo '<span class="psru-palyginys">lyginama su: <b>' . esc_html( $lt['pries_nuo'] . ' – ' . $lt['pries_iki'] ) . '</b></span>';
 		}
@@ -351,6 +357,7 @@ class Petshop_Ataskaitu_UI {
 .psru-pbtn{border:1px solid var(--linija);background:#fff;border-radius:4px;padding:5px 11px;font-size:12.5px;color:var(--tekstas);text-decoration:none}
 .psru-pbtn.akt{background:var(--akc);border-color:var(--akc);color:#fff}
 .psru-palyginys{color:var(--mut);font-size:12px;margin-left:auto}
+.psru-xlsx{text-decoration:none;margin-left:6px}
 .psru-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
 .psru-k{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:13px 15px;position:relative}
 .psru-k h3{margin:0 0 4px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:600}
