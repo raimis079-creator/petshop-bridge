@@ -264,9 +264,22 @@ class Petshop_Rinkiniu_Ataskaita {
 
 	/* ---------- 3. KA DARYTI ---------- */
 
+	/**
+	 * „Idejimo dalis" skaiciuojama SESIJOMIS, ne ivykiais.
+	 *
+	 * `rodyta` fiksuojama viena karta per kortele (kai ji pateko i ekrana), o
+	 * `idejo` — kiekvienas paspaudimas, iskaitant kiekio didinima. Dalinant
+	 * ivykius is ivykiu gaudavosi 225 % (idejo 9, rodyta 4) — beprasmis
+	 * skaicius. Sesiju santykis atsako i tikra klausima: is tu, kas preke
+	 * MATE, kiek ja isidejo. Jis niekada nevirsija 100 %.
+	 *
+	 * Isemimo rodiklis paliekamas VEIKSMAIS: ten domina, kiek kartu preke
+	 * grazinta atgal, o ne kiek zmoniu tai padare.
+	 */
 	private static function prekiu_metrikos( $eil ) {
-		$rodyta = self::elgsena( $eil, 'rodyta' );
-		$idejo  = self::elgsena( $eil, 'idejo' );
+		$rodyta = self::elgsena( $eil, 'rodyta', 'sesiju' );
+		$idejo  = self::elgsena( $eil, 'idejo', 'sesiju' );
+		$idejo_vnt = self::elgsena( $eil, 'idejo' );
 		$iseme  = self::elgsena( $eil, 'iseme' );
 
 		$prekes = array();
@@ -295,17 +308,18 @@ class Petshop_Rinkiniu_Ataskaita {
 
 		$out = array();
 		foreach ( $prekes as $pid => $x ) {
-			$r = isset( $rodyta[ $pid ] ) ? (int) $rodyta[ $pid ] : 0;
-			$i = isset( $idejo[ $pid ] ) ? (int) $idejo[ $pid ] : 0;
+			$r  = isset( $rodyta[ $pid ] ) ? (int) $rodyta[ $pid ] : 0;
+			$i  = isset( $idejo[ $pid ] ) ? (int) $idejo[ $pid ] : 0;
+			$iv = isset( $idejo_vnt[ $pid ] ) ? (int) $idejo_vnt[ $pid ] : 0;
 			$is = isset( $iseme[ $pid ] ) ? (int) $iseme[ $pid ] : 0;
 			$be_pvm = Petshop_Ataskaitu_UI::be_pvm( $x['suma_ct'] );
 			$pelnas = $x['be_sav'] ? null : (int) round( $be_pvm ) - $x['sav_ct'];
 			$out[ $pid ] = array(
 				'id' => $pid,
 				'pav' => get_the_title( $pid ) ?: ( '#' . $pid ),
-				'rodyta' => $r, 'idejo' => $i, 'iseme' => $is,
-				'dalis' => $r > 0 ? ( $i / $r ) * 100 : null,
-				'isemimo' => $i > 0 ? ( $is / $i ) * 100 : null,
+				'rodyta' => $r, 'idejo' => $iv, 'ses_idejo' => $i, 'iseme' => $is,
+				'dalis' => $r > 0 ? min( 100, ( $i / $r ) * 100 ) : null,
+				'isemimo' => $iv > 0 ? ( $is / $iv ) * 100 : null,
 				'vnt' => $x['vnt'], 'suma_ct' => $x['suma_ct'], 'sav_ct' => $x['sav_ct'],
 				'be_sav' => $x['be_sav'],
 				'pelnas_ct' => $pelnas,
@@ -468,9 +482,9 @@ class Petshop_Rinkiniu_Ataskaita {
 		echo '<h2>Prekės dėžėse</h2>';
 		Petshop_Ataskaitu_UI::lentele( 'psru-prekes', array(
 			array( 'pav' => 'Prekė', 'kaire' => true ),
-			array( 'pav' => 'Rodyta', 'tt' => 'Kiek kartų prekės kortelė buvo matoma atidarytoje dėžėje. Renkama iš visų lankytojų (anonimiškai).' ),
+			array( 'pav' => 'Matė', 'tt' => 'Kiek sesijų matė šios prekės kortelę atidarytoje dėžėje. Renkama iš visų lankytojų (anonimiškai).' ),
 			array( 'pav' => 'Įdėta' ),
-			array( 'pav' => 'Įdėjimo dalis', 'tt' => 'Įdėta ÷ rodyta. Pagrindinis „ar prekė traukia" rodiklis — nepriklauso nuo srauto dydžio.' ),
+			array( 'pav' => 'Įdėjimo dalis', 'tt' => 'Iš tų, kas prekę MATĖ — kiek jos įsidėjo. Skaičiuojama sesijomis, todėl niekada neviršija 100 %. Pagrindinis „ar prekė traukia" rodiklis: nepriklauso nuo srauto dydžio.' ),
 			array( 'pav' => 'Parduota' ),
 			array( 'pav' => 'Pajamos' ),
 			array( 'pav' => 'Savikaina' ),
