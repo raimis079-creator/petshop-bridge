@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Refill Ivykiai
  * Description: Kontrakto §4.3 refill sritis — veidrodis is ps_event_log/ps_email_jobs + refill_purchase kabliukas. petshop-core NELIESTAS.
- * Version: 1.1
+ * Version: 1.2
  *
  * KODEL VEIDRODIS: refill_due gimsta Petshop_Refill_Engine::check_due(), kuris
  * saukia Event_Registry::emit() ir Email_Dispatch::enqueue() — WP do_action
@@ -17,6 +17,15 @@
  * v1.1: stulpeliu kandidatai papildyti realiais vardais (recon per verify):
  * event_log tipo stulpelis = event_name, jobs el. pastas = recipient_email.
  *
+ * v1.2 (dvi skolos is 2026-08-16 verify):
+ *  - LAIKO ZONA: Statistika::irasyti() raso current_time('mysql') = LOKALUS
+ *    laikas, o as skaiciavau strtotime($laikas.' UTC') -> ~3 val. poslinkis,
+ *    del kurio sviezias pirkimas rodydavo '+-1d'. Dabar lyginam per
+ *    current_time('timestamp') ta pacia skale, ir neigiamas rezultatas
+ *    apkerpamas i 0 (pirkimas negali ivykti pries due).
+ *  - IDEMPOTENCIJA: order meta _ps_refill_purchase_logged — hook'as gali
+ *    suveikti kelis kartus (checkout retry, admin), ivykis turi buti vienas.
+ *
  * Stulpeliu vardai aptinkami dinamiskai (SHOW COLUMNS) — jei schema kitokia,
  * veidrodis tyliai praleidzia ir raso diagnoze i option, o ne griuna.
  * Rodykles (paskutinis apdorotas id) — options (DoD #8):
@@ -27,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Refill_Ivykiai {
 
-	const VERSIJA = '1.1';
+	const VERSIJA = '1.2';
 	const OPT_EV  = 'ps_refill_iv_event_id';
 	const OPT_JOB = 'ps_refill_iv_job_id';
 	const OPT_DIAG = 'ps_refill_iv_diag';
@@ -121,12 +130,13 @@ class Petshop_Refill_Ivykiai {
 		$uid = (int) $order->get_customer_id();
 		if ( ! $uid ) { return; }
 		$P = $wpdb->prefix;
-		$riba = gmdate( 'Y-m-d H:i:s', time() - self::LANGAS_D * DAY_IN_SECONDS );
+		$riba = date( 'Y-m-d H:i:s', (int) current_time( 'timestamp' ) - self::LANGAS_D * DAY_IN_SECONDS );
 		$due = $wpdb->get_results( $wpdb->prepare(
 			"SELECT verte, laikas FROM {$P}ps_laukai_ivykiai
 			 WHERE sritis='refill' AND tipas='refill_due' AND user_id=%d AND laikas>=%s
 			 ORDER BY id DESC LIMIT 50", $uid, $riba ), ARRAY_A );
 		if ( ! $due ) { return; }
+		if ( $order->get_meta( '_ps_refill_purchase_logged' ) ) { return; } /* idempotencija */
 		$pagal_preke = array();
 		foreach ( $due as $d ) {
 			$dalys = explode( ':', $d['verte'] );
@@ -136,8 +146,13 @@ class Petshop_Refill_Ivykiai {
 		foreach ( $order->get_items() as $item ) {
 			$pid = (int) $item->get_product_id();
 			if ( isset( $pagal_preke[ $pid ] ) ) {
-				$dienos = (int) floor( ( time() - strtotime( $pagal_preke[ $pid ] . ' UTC' ) ) / DAY_IN_SECONDS );
+				/* ta pati laiko skale kaip Statistika::irasyti() — current_time('mysql') */
+				$dabar = (int) current_time( 'timestamp' );
+				$dienos = (int) floor( ( $dabar - strtotime( $pagal_preke[ $pid ] ) ) / DAY_IN_SECONDS );
+				if ( $dienos < 0 ) { $dienos = 0; }
 				self::ivykis( 'refill_purchase', (int) $order_id . ':+' . $dienos . 'd', $uid );
+				$order->update_meta_data( '_ps_refill_purchase_logged', current_time( 'mysql', true ) );
+				$order->save();
 				return; /* vienas ivykis uzsakymui */
 			}
 		}
