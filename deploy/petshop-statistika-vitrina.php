@@ -45,6 +45,23 @@ class Petshop_Statistika_Vitrina {
 		return ( get_post_meta( $id, '_ps_laukas', true ) === 'yes' ) ? $id : 0;
 	}
 
+	/**
+	 * cid -> product_id. Vitrinos `data-cid` yra MnM VAIKINES EILUTES id
+	 * (`wc_mnm_child_items.child_item_id`), o ne produkto ID — patikrinta
+	 * narsykleje: `mnm_quantity[19570]` sedi elemente `pslk-in-907`.
+	 * Be sio vertimo elgsena ir pardavimai gyventu skirtingais ID ir
+	 * „idejimo dalis" niekada nesusiskaiciuotu.
+	 */
+	public static function cid_zemelapis( $deze ) {
+		global $wpdb;
+		$t = $wpdb->prefix . 'wc_mnm_child_items';
+		if ( $wpdb->get_var( "SHOW TABLES LIKE '$t'" ) !== $t ) { return array(); }
+		$r = $wpdb->get_results( $wpdb->prepare( "SELECT child_item_id, product_id FROM $t WHERE container_id=%d", (int) $deze ), ARRAY_A );
+		$out = array();
+		foreach ( (array) $r as $x ) { $out[ (string) (int) $x['child_item_id'] ] = (int) $x['product_id']; }
+		return $out;
+	}
+
 	public static function skriptas() {
 		$deze = self::deze_id();
 		if ( ! $deze ) { return; }
@@ -53,6 +70,7 @@ class Petshop_Statistika_Vitrina {
 			'url'   => admin_url( 'admin-ajax.php' ),
 			'deze'  => $deze,
 			'dydis' => class_exists( 'Petshop_Statistika' ) ? Petshop_Statistika::dezes_dydis( $deze ) : '',
+			'map'   => self::cid_zemelapis( $deze ),
 		);
 		?>
 <script id="ps-stat-vitrina">
@@ -106,8 +124,15 @@ class Petshop_Statistika_Vitrina {
 		} catch(e){}
 	}
 
-	function ivykis(tipas, preke, verte, kiek){
-		eile.push({ tipas:tipas, deze:C.deze, preke:preke||0, verte:(verte===undefined||verte===null)?'':String(verte), kiek:kiek||0 });
+	/* Visur toliau dirbam su cid (taip patogiau DOM'e), o i eile deda jau
+	   product_id — kad elgsena ir pardavimai sutaptu vienu raktu. */
+	function pid(cid){
+		if (!cid) { return 0; }
+		var p = C.map ? C.map[String(cid)] : 0;
+		return p ? p : 0;
+	}
+	function ivykis(tipas, cid, verte, kiek){
+		eile.push({ tipas:tipas, deze:C.deze, preke:pid(cid), verte:(verte===undefined||verte===null)?'':String(verte), kiek:kiek||0 });
 		if (eile.length >= 20) { siusk(); return; }
 		if (laikmatis) { clearTimeout(laikmatis); }
 		laikmatis = setTimeout(siusk, 5000);
