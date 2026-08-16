@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-03 (vakaras, po backup audito) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-16 (ataskaitų standartas v2) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -1905,6 +1905,55 @@ Po kiekvieno testo su užsakymais — palyginti `_stock` su `_vf_qty` VISOSE pre
 
 ---
 
+## 20. ATASKAITŲ STANDARTAS v2 — ĮDIEGTA DEV (2026-08-16)
+
+> Spec: `dokumentai/petshop_ataskaitu_standartas_v2_spec_v1_2.md` · maketai
+> `ataskaitu_standartas_v2_maketas.html`, `rinkiniu_ataskaita_maketas.html`
+> Sesijos: S813–S838 (`deployment_log_v1_4_5.md`)
+
+**Principas:** kiek uždirbau ir ar auga → kas tai lemia → ką daryti. Ekranai
+skaito dienos suvestinę, NIEKADA ne žalius užsakymus.
+
+### Moduliai (visi `mu-plugins`, dev.avesa.lt)
+
+| Failas | Ver. | Būklė |
+|---|---|---|
+| `petshop-statistika.php` | 2.0 | ✅ schema v2, du sluoksniai, uždarymo meta |
+| `petshop-statistika-vitrina.php` | 1.0 | ✅ 9 įvykių tipai, laukai NEKEISTI |
+| `petshop-ataskaitu-agregavimas.php` | 1.0 | ✅ cron 03:15 + šiandienos sluoksnis |
+| `petshop-ataskaitos-ui.php` | 1.0 | ✅ bendras karkasas visoms ataskaitoms |
+| `petshop-rinkiniu-ataskaita.php` | 2.0 | ✅ „Surenkami rinkiniai", 11 sekcijų |
+| `petshop-paruostu-ataskaita.php` | 1.0 | 🟡 „Rinkiniai" — veikia, bet be duomenų |
+
+### DB
+
+- `gaj6_ps_laukai_ivykiai` — schema v2 (+`dydis`, `skirtukas`, `kiek_dezeje`, `irenginys`)
+- `gaj6_ps_ataskaitu_dienos` — NAUJA, dienos suvestinė, pinigai CENTAIS
+- Naujas uždarymo meta: `_ps_stat_sesija`, `_ps_irenginys`, `_ps_dydis`, `_ps_kaina_atskirai_vnt`
+
+### Užrakinti sprendimai
+
+- Savikaina fiksuojama PARDAVIMO momentu — praeities marža nesikeičia
+- Grąžinimai mažina GRĄŽINIMO dienos skaičius, istorija atgaline data nekinta
+- Du sluoksniai: be sutikimo — anoniminiai įvykiai (jokio ID įrenginyje);
+  su Complianz statistikos sutikimu — sesija, ir tik tada piltuvėlis/kabliukai
+- Sekos metrikos ekranuose žymimos „iš sutikusių su statistika"; pinigai — iš visų
+- Ribos (kandidatų, lyderių, kanibalizacijos) — wp options, ne konstantos
+- E2 daromas atskiru moduliu; `petshop-laukai.php` (183 KB) nekeičiamas
+
+### 🔴 LIKO
+
+```
+1. E6 DoD: dev'e 0 paruoštų rinkinių ir 0 DP pakų → kanibalizacijos
+   verdiktai NEPATIKRINTI. Reikia 2 testinių užsakymų — ⏸ RAIMIS
+   (savo iniciatyva nekurta: paveiktų likučius ir AVPN serijas)
+2. Produkcijai: `ps_stat_pradzia` = launch data
+3. Produkcijai: patikrinti cmplz_has_consent('statistics') gyvai
+4. Ribų peržiūra, kai susikaups realių duomenų
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -1925,6 +1974,7 @@ Po kiekvieno testo su užsakymais — palyginti `_stock` su `_vf_qty` VISOSE pre
 | Q-GDPR | Duomenų retencija: kada trinti `ps_carts`/`ps_shipments` | — | — |
 | Q-PSR | Paysera Recurring atsakymas (nefiksuotas) | F19 | — |
 | Q-EM | El. paštas „Apie mus" / „Privatumo politika" psl. | — | — |
+| Q-ATA | 2 testiniai užsakymai kanibalizacijos verdiktams patikrinti | §20 | — |
 
 ---
 
