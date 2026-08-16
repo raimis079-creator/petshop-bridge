@@ -75,7 +75,10 @@ class Petshop_Ataskaitu_Eksportas {
 			if ( $reiksme === null || $reiksme === '' ) {
 				return '<c r="' . $nuoroda . '" s="' . $s . '"/>';
 			}
-			return '<c r="' . $nuoroda . '" s="' . $s . '"><v>' . (float) $reiksme . '</v></c>';
+			/* Taskas, ne kablelis: lokale skaiciaus i XML patekti negali. */
+			$v = rtrim( rtrim( number_format( (float) $reiksme, 6, '.', '' ), '0' ), '.' );
+			if ( $v === '' || $v === '-' ) { $v = '0'; }
+			return '<c r="' . $nuoroda . '" s="' . $s . '" t="n"><v>' . $v . '</v></c>';
 		}
 		return '<c r="' . $nuoroda . '" s="' . $s . '" t="inlineStr"><is><t xml:space="preserve">' . self::esc( $reiksme ) . '</t></is></c>';
 	}
@@ -84,9 +87,23 @@ class Petshop_Ataskaitu_Eksportas {
 	 * Lapas is eiluciu. Kiekviena eilute — masyvas langeliu:
 	 * array( array('v'=>..,'t'=>'e'), 'paprastas tekstas', ... )
 	 */
+	/**
+	 * OOXML reikalauja GRIEZTOS elementu tvarkos:
+	 *   dimension -> sheetViews -> sheetFormatPr -> cols -> sheetData -> pageMargins
+	 * Pirmoje versijoje `<sheetViews/>` stovejo PO `sheetData` ir dar buvo
+	 * tuscias — openpyxl toki faila atidaro, Excel atsisako („neskaitomas
+	 * turinys"). Tvarka ir uzpildymas cia nera grazbylyste, o salyga atsidaryti.
+	 */
 	private static function lapas( $eilutes, $placiai = array() ) {
+		$eil_sk = count( $eilutes );
+		$st_sk = 1;
+		foreach ( $eilutes as $e ) { $st_sk = max( $st_sk, count( $e ) ); }
+
 		$x = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n"
-			. '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">';
+			. '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+			. '<dimension ref="A1:' . self::stulpelis( $st_sk ) . max( 1, $eil_sk ) . '"/>'
+			. '<sheetViews><sheetView workbookViewId="0"/></sheetViews>'
+			. '<sheetFormatPr defaultRowHeight="15"/>';
 
 		if ( $placiai ) {
 			$x .= '<cols>';
@@ -113,8 +130,7 @@ class Petshop_Ataskaitu_Eksportas {
 			$x .= '</row>';
 		}
 		$x .= '</sheetData>';
-		/* Uzsaldom antraste — su 20 stulpeliu be to nesusigaudysi. */
-		$x .= '<sheetViews/>';
+		$x .= '<pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3"/>';
 		$x .= '</worksheet>';
 		return $x;
 	}
@@ -175,13 +191,32 @@ class Petshop_Ataskaitu_Eksportas {
 		for ( $i = 1; $i <= $n; $i++ ) {
 			$ct .= '<Override PartName="/xl/worksheets/sheet' . $i . '.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>';
 		}
+		$ct .= '<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>';
+		$ct .= '<Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>';
 		$ct .= '</Types>';
 		$z->addFromString( '[Content_Types].xml', $ct );
 
 		$z->addFromString( '_rels/.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n"
 			. '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
 			. '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>'
+			. '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>'
+			. '<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/>'
 			. '</Relationships>' );
+
+		$dabar = gmdate( 'Y-m-d\TH:i:s\Z' );
+		$z->addFromString( 'docProps/core.xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n"
+			. '<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" '
+			. 'xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" '
+			. 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
+			. '<dc:creator>petshop.lt</dc:creator><cp:lastModifiedBy>petshop.lt</cp:lastModifiedBy>'
+			. '<dcterms:created xsi:type="dcterms:W3CDTF">' . $dabar . '</dcterms:created>'
+			. '<dcterms:modified xsi:type="dcterms:W3CDTF">' . $dabar . '</dcterms:modified>'
+			. '</cp:coreProperties>' );
+
+		$z->addFromString( 'docProps/app.xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n"
+			. '<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" '
+			. 'xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">'
+			. '<Application>Petshop</Application></Properties>' );
 
 		$wb = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n"
 			. '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
