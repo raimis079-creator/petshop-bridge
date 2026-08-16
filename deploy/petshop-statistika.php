@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Statistika
  * Description: Elgsenos ivykiai (surenkamos dezes), savikaina ir uzsakymo atributai pardavimo momentu.
- * Version: 2.0
+ * Version: 2.1
  *
  * Du sluoksniai, sąmoningai atskirti:
  *
@@ -24,6 +24,17 @@
  *    `_ps_kaina_atskirai_vnt`;
  *  - valymas nebetrina neagreguotu dienu (buvo duomenu praradimo klaida).
  *
+ * v2.1 (PET INTELLIGENCE DATA CONTRACT v1.1 §7, DoD #8 ir #9):
+ *  - VALYMO IZOLIACIJA. valyti() trynė VISU sriciu eilutes tos dienos, o
+ *    agregavima tikrino TIK `laukai` srityje. `ps_ataskaitu_dienos` jau turi
+ *    keturias sritis (laukai, pardavimai, parduotuve, piltuvelis), o pagal
+ *    kontrakta atsiras `anketa`, `rec`, `refill` — ju ivykiai saugomi AMZINAI
+ *    ZALI. Dabar trinamos TIK tos sritys, kurios ir agreguojamos;
+ *  - SAUGOMOS_SRITYS — anketa/rec/refill niekada netrinami, net jei kas nors
+ *    juos irasytu i nustatyma. Konfiguracija negali sunaikinti neatkuriamo;
+ *  - ribos i wp options (DoD #8): `ps_stat_zaliu_dienos` (90),
+ *    `ps_stat_valomos_sritys` (['laukai']). Konstantos lieka DEFAULT'ais.
+ *
  * REALYBES PATIKSLINIMAI (recon 2026-08-16, NE prielaidos):
  *  - dydis gyvena dezes PRODUKTO meta `_ps_laukas_dydis` ('400 g','800 g','100 g'),
  *    ne krepselio pasirinkime — normalizuojam i '400','800','100';
@@ -36,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Statistika {
 
-	const VERSIJA         = '2.0';
+	const VERSIJA         = '2.1';
 	const SCHEMOS_RAKTAS  = 'ps_stat_schema';
 	const SCHEMOS_VERSIJA = 2;
 
@@ -48,8 +59,23 @@ class Petshop_Statistika {
 	const META_EIL_DYDIS    = '_ps_dydis';
 	const OPT_PRADZIA       = 'ps_stat_pradzia';
 
+	/* --- v2.1: ribos gyvena wp options, konstantos yra tik DEFAULT'ai (DoD #8) --- */
+	const OPT_ZALIU_DIENOS   = 'ps_stat_zaliu_dienos';
+	const OPT_VALOMOS_SRITYS = 'ps_stat_valomos_sritys';
+
 	/** Neapdoroti ivykiai — 90 dienu (savininko sprendimas). Trinami TIK po agregavimo. */
 	const ZALIU_DIENOS = 90;
+
+	/** Kurios sritys apskritai valomos. DEFAULT — tik dezes. */
+	const VALOMOS_SRITYS = array( 'laukai' );
+
+	/**
+	 * NELIECIAMOS. Kontrakto §7 „auksas": elgsenos ir sprendimu istorija saugoma
+	 * AMZINAI ZALIA. Sis sarasas yra KODE, ne nustatyme — jei kas nors netycia
+	 * iraso 'anketa' i `ps_stat_valomos_sritys`, valymas vis tiek jos nelies.
+	 * Neatkuriamas duomuo neturi priklausyti nuo konfiguracijos klaidos.
+	 */
+	const SAUGOMOS_SRITYS = array( 'anketa', 'rec', 'refill' );
 
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'uztikrinti_lentele' ) );
@@ -422,10 +448,37 @@ class Petshop_Statistika {
 		return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $d ) ? $d : '';
 	}
 
+	/** Zaliu ivykiu saugojimo trukme dienomis — nustatymas, ne konstanta (DoD #8). */
+	public static function zaliu_dienos() {
+		$n = (int) get_option( self::OPT_ZALIU_DIENOS, self::ZALIU_DIENOS );
+		return ( $n >= 1 ) ? $n : self::ZALIU_DIENOS;
+	}
+
 	/**
-	 * Trinam TIK tas dienas, kurios jau yra suvestineje. Anksciau trynem pagal
-	 * data aklai — po 90 d. istorija dingdavo negriztamai (klaida, rasta
-	 * auditu 2026-08-16).
+	 * Sritys, kurias valymui LEISTA liesti.
+	 * Nustatymas gali sarasa siaurinti ar plesti, bet SAUGOMOS_SRITYS is jo
+	 * ismetamos visada — jos yra kontrakto §7 auksas.
+	 */
+	public static function valomos_sritys() {
+		$s = get_option( self::OPT_VALOMOS_SRITYS, self::VALOMOS_SRITYS );
+		if ( ! is_array( $s ) || empty( $s ) ) { $s = self::VALOMOS_SRITYS; }
+		$s = array_map( 'sanitize_key', $s );
+		$s = array_diff( $s, self::SAUGOMOS_SRITYS ); /* SARGAS — nepasalinamas */
+		return array_values( array_unique( $s ) );
+	}
+
+	/**
+	 * Trinam TIK tas dienas, kurios jau yra suvestineje, ir TIK tas sritis,
+	 * kurios apskritai valomos.
+	 *
+	 * Dvi klaidos, kurias tai uzdaro:
+	 *  - anksciau trynem pagal data aklai — po 90 d. istorija dingdavo (2026-08-16 auditas);
+	 *  - v2.0 tikrino agregavima TIK `laukai` srityje, o DELETE eme VISAS tos
+	 *    dienos eilutes. Sritys anketa/rec/refill butu dingusios kartu su dezes
+	 *    klikais, nors ju niekas neagregavo ir agreguoti neketina.
+	 *
+	 * Dabar kiekviena sritis vertinama atskirai: trinama tik tada, kai TOS
+	 * srities tos dienos suvestine jau egzistuoja.
 	 */
 	public static function valyti() {
 		global $wpdb;
@@ -433,19 +486,26 @@ class Petshop_Statistika {
 		$d = self::lentele_dienos();
 		if ( $wpdb->get_var( "SHOW TABLES LIKE '$d'" ) !== $d ) { return 0; }
 
-		$riba = gmdate( 'Y-m-d', time() - ( self::ZALIU_DIENOS * DAY_IN_SECONDS ) );
-		$dienos = $wpdb->get_col( $wpdb->prepare(
-			"SELECT DISTINCT DATE(laikas) FROM $t WHERE laikas < %s LIMIT 200", $riba . ' 00:00:00'
-		) );
+		$sritys = self::valomos_sritys();
+		if ( empty( $sritys ) ) { return 0; }
+
+		$riba = gmdate( 'Y-m-d', time() - ( self::zaliu_dienos() * DAY_IN_SECONDS ) );
 		$istrinta = 0;
-		foreach ( (array) $dienos as $diena ) {
-			$yra = (int) $wpdb->get_var( $wpdb->prepare(
-				"SELECT COUNT(*) FROM $d WHERE diena=%s AND sritis=%s", $diena, 'laukai'
+
+		foreach ( $sritys as $sritis ) {
+			$dienos = $wpdb->get_col( $wpdb->prepare(
+				"SELECT DISTINCT DATE(laikas) FROM $t WHERE sritis=%s AND laikas < %s LIMIT 200",
+				$sritis, $riba . ' 00:00:00'
 			) );
-			if ( ! $yra ) { continue; } /* neagreguota — NELIECIAM */
-			$istrinta += (int) $wpdb->query( $wpdb->prepare(
-				"DELETE FROM $t WHERE DATE(laikas)=%s", $diena
-			) );
+			foreach ( (array) $dienos as $diena ) {
+				$yra = (int) $wpdb->get_var( $wpdb->prepare(
+					"SELECT COUNT(*) FROM $d WHERE diena=%s AND sritis=%s", $diena, $sritis
+				) );
+				if ( ! $yra ) { continue; } /* neagreguota — NELIECIAM */
+				$istrinta += (int) $wpdb->query( $wpdb->prepare(
+					"DELETE FROM $t WHERE DATE(laikas)=%s AND sritis=%s", $diena, $sritis
+				) );
+			}
 		}
 		return $istrinta;
 	}
