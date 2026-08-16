@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Anketa Ivykiai
  * Description: Kontrakto §4.1 anketos ivykiai, §2 lauku istorija ir §3 brand susiejimas per REST kabliukus — M8 kodas NELIECIAMAS.
- * Version: 1.0
+ * Version: 1.1
  *
  * ARCHITEKTURA (savininko procesas 2026-08-16: i M8 lendama tik §5, visa
  * kita — nauji failai):
@@ -28,6 +28,12 @@
  *    data-step (atskiras savininko sprendimas, ne sio modulio darbas);
  *  - lauko "uzpildyta" pill'ams nustatoma pagal aria-pressed/active klase.
  *
+ * v1.1 KLAIDOS TAISYMAS (rasta Playwright diagnostika 2026-08-16): fetch
+ * apvyniojimas be options objekta GET uzklausa laikė ne-GET — puslapio
+ * pet-profile SARASO uzkrovimas pazymedavo anketa "baigta" ir abandoned
+ * buvo slopinamas visada. Dabar metodas nustatomas is o.method ARBA
+ * Request.method, o "baigta" zymi tik POST/PATCH/PUT.
+ *
  * §1.1 pastaba: 'none' siuntima is UI (DoD #5) turi daryti pati anketa —
  * tai vienintelis likes M8 UI pakeitimas, jam reikia atskiro savininko GO.
  */
@@ -36,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Anketa_Ivykiai {
 
-	const VERSIJA = '1.0';
+	const VERSIJA = '1.1';
 	/** Anketos versija naujiems irasams (is drafts payload_version=1). */
 	const QV = 'v1';
 
@@ -293,8 +299,9 @@ function pradzia(){
 var of=window.fetch;
 window.fetch=function(u,o){
  var url=String(u&&u.url?u.url:u);
+ var met=((o&&o.method)||(u&&u.method)||'GET').toUpperCase();
  var p=of.apply(this,arguments);
- if(/\/petshop\/v1\/(pet-profile|pet-draft)(\/|$|\?)/.test(url)&&(!o||!o.method||o.method.toUpperCase()!=='GET')){
+ if(/\/petshop\/v1\/(pet-profile|pet-draft)(\/|$|\?)/.test(url)&&(met==='POST'||met==='PATCH'||met==='PUT')){
   p=p.then(function(r){if(r&&r.ok)baigta=true;return r;});
  }
  return p;
