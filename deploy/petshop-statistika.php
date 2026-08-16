@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Statistika
  * Description: Elgsenos ivykiai (surenkamos dezes), savikaina ir uzsakymo atributai pardavimo momentu.
- * Version: 2.1
+ * Version: 2.2
  *
  * Du sluoksniai, sąmoningai atskirti:
  *
@@ -35,6 +35,12 @@
  *  - ribos i wp options (DoD #8): `ps_stat_zaliu_dienos` (90),
  *    `ps_stat_valomos_sritys` (['laukai']). Konstantos lieka DEFAULT'ais.
  *
+ * v2.2 (kontraktas §4 — anketa/rec/refill ivykiams):
+ *  - schema v3: + `user_id` (prisijungusio kliento ivykiai uzklausiami pagal
+ *    vartotoja — kontrakto reikalavimas "turi buti uzklausiamas");
+ *  - `verte` 64 -> 190 (anketa_abandoned nesa lauku busenu sarasa).
+ *  Sritis `laukai` rasoma kaip iki siol — user_id jai 0.
+ *
  * REALYBES PATIKSLINIMAI (recon 2026-08-16, NE prielaidos):
  *  - dydis gyvena dezes PRODUKTO meta `_ps_laukas_dydis` ('400 g','800 g','100 g'),
  *    ne krepselio pasirinkime — normalizuojam i '400','800','100';
@@ -47,9 +53,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Statistika {
 
-	const VERSIJA         = '2.1';
+	const VERSIJA         = '2.2';
 	const SCHEMOS_RAKTAS  = 'ps_stat_schema';
-	const SCHEMOS_VERSIJA = 2;
+	const SCHEMOS_VERSIJA = 3;
 
 	const META_SAVIKAINA    = '_ps_savikaina_vnt';
 	const META_SAV_SALTINIS = '_ps_savikaina_saltinis';
@@ -128,12 +134,13 @@ class Petshop_Statistika {
 			deze_id BIGINT UNSIGNED NOT NULL DEFAULT 0,
 			preke_id BIGINT UNSIGNED NOT NULL DEFAULT 0,
 			tipas VARCHAR(24) NOT NULL DEFAULT '',
-			verte VARCHAR(64) NOT NULL DEFAULT '',
+			verte VARCHAR(190) NOT NULL DEFAULT '',
 			dydis VARCHAR(8) NOT NULL DEFAULT '',
 			skirtukas VARCHAR(24) NOT NULL DEFAULT '',
 			kiek_dezeje SMALLINT UNSIGNED NOT NULL DEFAULT 0,
 			irenginys VARCHAR(8) NOT NULL DEFAULT '',
 			aplinka VARCHAR(8) NOT NULL DEFAULT 'dev',
+			user_id BIGINT UNSIGNED NOT NULL DEFAULT 0,
 			PRIMARY KEY (id),
 			KEY laikas (laikas),
 			KEY deze (deze_id, tipas),
@@ -160,6 +167,10 @@ class Petshop_Statistika {
 			UNIQUE KEY dim (diena, aplinka, sritis, deze_id, preke_id, dydis, skirtukas, irenginys, tipas),
 			KEY dsk (diena, sritis, tipas)
 		) $c;" );
+
+		/* v3 migracija esamai lentelei (MariaDB 10.6: IF NOT EXISTS palaikomas) */
+		$wpdb->query( "ALTER TABLE $t ADD COLUMN IF NOT EXISTS user_id BIGINT UNSIGNED NOT NULL DEFAULT 0" );
+		$wpdb->query( "ALTER TABLE $t MODIFY verte VARCHAR(190) NOT NULL DEFAULT ''" );
 
 		update_option( self::SCHEMOS_RAKTAS, self::SCHEMOS_VERSIJA, false );
 	}
@@ -381,13 +392,14 @@ class Petshop_Statistika {
 			'deze_id'     => $deze,
 			'preke_id'    => isset( $args['preke'] ) ? (int) $args['preke'] : 0,
 			'tipas'       => $tipas,
-			'verte'       => isset( $args['verte'] ) ? substr( (string) $args['verte'], 0, 64 ) : '',
+			'verte'       => isset( $args['verte'] ) ? substr( (string) $args['verte'], 0, 190 ) : '',
 			'dydis'       => $dydis,
 			'skirtukas'   => $skirtukas,
 			'kiek_dezeje' => isset( $args['kiek_dezeje'] ) ? max( 0, min( 65535, (int) $args['kiek_dezeje'] ) ) : 0,
 			'irenginys'   => $ireng,
 			'aplinka'     => self::aplinka(),
-		), array( '%s','%s','%s','%d','%d','%s','%s','%s','%s','%d','%s','%s' ) );
+			'user_id'     => isset( $args['user_id'] ) ? (int) $args['user_id'] : 0,
+		), array( '%s','%s','%s','%d','%d','%s','%s','%s','%s','%d','%s','%s','%d' ) );
 	}
 
 	/**
