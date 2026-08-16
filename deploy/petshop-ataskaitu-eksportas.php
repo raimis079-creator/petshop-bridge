@@ -289,6 +289,57 @@ class Petshop_Ataskaitu_Eksportas {
 		);
 	}
 
+	/**
+	 * „Kaip skaityti" lapas. Zaliuose duomenyse ta pati deze gyvena keliose
+	 * eilutese (konteineris + vaikai + `parduota_sd`), todel sumavus stulpeli
+	 * gaunama kelis kartus per daug. Be sio zodyno failas klaidina — tai ne
+	 * papildoma dokumentacija, o teisingo skaitymo salyga.
+	 */
+	private static function lapas_zodynas( $ekranas ) {
+		$e = array(
+			array( 'KAIP SKAITYTI ŠĮ FAILĄ' ),
+			array( '' ),
+			array( array( 'v' => '⚠ SVARBIAUSIA: „Žalių duomenų" stulpelio „Suma EUR" SUMUOTI NEGALIMA', 't' => 'h' ) ),
+			array( 'Ta pati dėžė ten yra kelis kartus: viena eilutė be prekės ID (visa dėžės vertė)' ),
+			array( 'ir po eilutę kiekvienam jos viduje esančiam vienetui. Sudėjus gautum kelis kartus per daug.' ),
+			array( '' ),
+			array( 'Teisingai:' ),
+			array( '  · Dėžės pajamos    = eilutės „parduota", kur PREKĖS ID TUŠČIAS' ),
+			array( '  · Prekių analizė   = eilutės „parduota", kur prekės ID UŽPILDYTAS' ),
+			array( '  · Bendra apyvarta  = eilutės „parduotuve / pajamos"' ),
+			array( '' ),
+			array( array( 'v' => 'Sritis', 't' => 'h' ), array( 'v' => 'Ką reiškia', 't' => 'h' ) ),
+			array( 'pardavimai', 'Pardavimai iš užsakymų' ),
+			array( 'piltuvelis', 'Sesijos pagal žingsnį (atidarė → nupirko). Tik iš sutikusių su statistika' ),
+			array( 'laukai', 'Elgsena vitrinoje pagal prekę (matė, įdėjo, išėmė)' ),
+			array( 'parduotuve', 'VISOS parduotuvės pajamos — vardiklis „dalis apyvartoje"' ),
+			array( '' ),
+			array( array( 'v' => 'Tipas', 't' => 'h' ), array( 'v' => 'Ką reiškia', 't' => 'h' ) ),
+			array( 'parduota (be prekės ID)', 'Parduota dėžė / rinkinys. Suma = visa dėžės vertė su PVM' ),
+			array( 'parduota (su prekės ID)', 'Vienetas dėžės viduje. Suma = to vieneto dalis' ),
+			array( 'parduota_sd', 'Ta pati dėžė, bet su dovana. NESUMUOTI su „parduota" — dublikatas' ),
+			array( 'dovana', 'Dovanos eilutė: pajamos 0, savikaina reali (mažina pelną)' ),
+			array( 'be_savikainos', 'Eilutė, kuriai savikaina neįvesta. Į maržą NEĮSKAIČIUOTA' ),
+			array( 'be_sav_suma', 'Tos eilutės suma — kiek pajamų liko be maržos skaičiavimo' ),
+			array( 'atskirai', 'Komponentas, parduotas ATSKIRAI kataloge (ne rinkinyje)' ),
+			array( 'dp_pakopa', 'DP pako pakopa (x2, x3…) — kiek kurios perkama' ),
+			array( 'grazinta', 'Grąžinimas. Skaičius NEIGIAMAS, mažina grąžinimo dienos sumas' ),
+			array( 'rodyta / idejo / iseme', 'Elgsena: matė kortelę / įsidėjo / išėmė' ),
+			array( '' ),
+			array( array( 'v' => 'Kiti niuansai', 't' => 'h' ) ),
+			array( 'Marža skaičiuojama BE PVM: (kaina ÷ 1,21) − savikaina' ),
+			array( 'Savikaina fiksuota PARDAVIMO dieną — vėliau ją pakeitus istorija nesikeičia' ),
+			array( 'Tuščias „Įrenginys" = užsakymas iš laikotarpio prieš įrenginio fiksavimą' ),
+		);
+		if ( $ekranas === 'paruosti' ) {
+			$e[] = array( '' );
+			$e[] = array( array( 'v' => 'Šis failas — TIK paruošti rinkiniai ir DP pakai', 't' => 'h' ) );
+			$e[] = array( 'Surenkamos dėžės (kur klientas pats renka turinį) čia NERODOMOS —' );
+			$e[] = array( 'jos yra lange „Surenkami rinkiniai" ir jo Excel faile.' );
+		}
+		return array( 'eilutes' => $e, 'placiai' => array( 30, 78 ) );
+	}
+
 	/* ---------- SURENKAMI ---------- */
 
 	private static function lapai_surenkami( $nuo, $iki ) {
@@ -492,6 +543,7 @@ class Petshop_Ataskaitu_Eksportas {
 		}
 
 		return array(
+			'Kaip skaityti' => self::lapas_zodynas( 'surenkami' ),
 			'Suvestinė'   => array( 'eilutes' => $s,  'placiai' => array( 26, 16 ) ),
 			'Prekės'      => array( 'eilutes' => $p,  'placiai' => array( 10, 46, 13, 15, 13, 11, 9, 15, 12, 12, 12, 12, 10, 14 ) ),
 			'Rinkiniai'   => array( 'eilutes' => $rd, 'placiai' => array( 10, 34, 9, 10, 10, 12, 11, 11, 12, 12, 10 ) ),
@@ -555,7 +607,13 @@ class Petshop_Ataskaitu_Eksportas {
 				array( 'v' => $bp > 0 ? $pel / $bp : null, 't' => 'p' ),
 			);
 		}
-		if ( count( $r ) === 5 ) { $r[] = array( 'Šiuo laikotarpiu paruoštų rinkinių ar DP pakų pardavimų nebuvo.' ); }
+		if ( count( $r ) === 5 ) {
+			$r[] = array( 'Šiuo laikotarpiu paruoštų rinkinių ar DP pakų pardavimų nebuvo.' );
+			$r[] = array( '' );
+			$r[] = array( 'SVARBU: tai NEREIŠKIA, kad pardavimų apskritai nebuvo.' );
+			$r[] = array( 'Šis langas rodo tik PARUOŠTUS rinkinius (sudėtis nustatyta iš anksto) ir DP pakus.' );
+			$r[] = array( 'SURENKAMOS dėžės — kur klientas pats renkasi turinį — rodomos lange „Surenkami rinkiniai".' );
+		}
 
 		$pk = self::galva( 'DP PAKOPOS', $nuo, $iki );
 		$pk[] = array( array( 'v' => 'ID', 't' => 'h' ), array( 'v' => 'Pakas', 't' => 'h' ),
@@ -573,23 +631,46 @@ class Petshop_Ataskaitu_Eksportas {
 			}
 		}
 
+		/* Zali duomenys — TIK sio lango apimtis: paruosti rinkiniai, DP pakai,
+		   komponentai parduoti atskirai ir bendra apyvarta. Surenkamu deziu
+		   eilutes cia nerodomos, nes lentele virsuje ju irgi neskaiciuoja —
+		   kitaip failas pats sau priestarautu („pardavimu nebuvo", o zemiau
+		   pilna eiluciu). */
 		$z = array( array(
 			array( 'v' => 'Diena', 't' => 'h' ), array( 'v' => 'Sritis', 't' => 'h' ), array( 'v' => 'Tipas', 't' => 'h' ),
-			array( 'v' => 'Rinkinio ID', 't' => 'h' ), array( 'v' => 'Prekės ID', 't' => 'h' ),
+			array( 'v' => 'Rinkinio ID', 't' => 'h' ), array( 'v' => 'Rinkinys', 't' => 'h' ),
+			array( 'v' => 'Kategorija', 't' => 'h' ),
+			array( 'v' => 'Prekės ID', 't' => 'h' ),
 			array( 'v' => 'Prekė', 't' => 'h' ), array( 'v' => 'Įrenginys', 't' => 'h' ),
 			array( 'v' => 'Kiekis', 't' => 'h' ), array( 'v' => 'Suma EUR', 't' => 'h' ), array( 'v' => 'Savikaina EUR', 't' => 'h' ),
 		) );
+		$praleista = 0;
 		foreach ( $eil as $e ) {
 			$pid = (int) $e['preke_id'];
+			$rid = (int) $e['deze_id'];
+			$kat = '';
+			if ( $e['sritis'] === 'parduotuve' ) { $kat = 'Visa parduotuvė'; }
+			elseif ( $rid && isset( $rink[ $rid ] ) ) { $kat = ( $rink[ $rid ]['tipas'] === 'dp' ) ? 'DP pakas' : 'Paruoštas rinkinys'; }
+			elseif ( $e['tipas'] === 'atskirai' ) { $kat = 'Komponentas atskirai'; }
+			elseif ( $e['tipas'] === 'grazinta' ) { $kat = 'Grąžinimas'; }
+			else { $praleista++; continue; }   /* surenkamos dezes — kitas langas */
+
 			$z[] = array(
 				$e['diena'], $e['sritis'], $e['tipas'],
-				array( 'v' => (int) $e['deze_id'] ?: null, 't' => 'n' ),
+				array( 'v' => $rid ?: null, 't' => 'n' ),
+				$rid && isset( $rink[ $rid ] ) ? $rink[ $rid ]['pav'] : '',
+				$kat,
 				array( 'v' => $pid ?: null, 't' => 'n' ), $pid ? get_the_title( $pid ) : '',
 				$e['irenginys'],
 				array( 'v' => (int) $e['kiekis'], 't' => 'n' ),
 				array( 'v' => self::ct( $e['suma_ct'] ), 't' => 'e' ),
 				array( 'v' => self::ct( $e['sav_ct'] ), 't' => 'e' ),
 			);
+		}
+		if ( $praleista > 0 ) {
+			$z[] = array( '' );
+			$z[] = array( 'Praleista ' . $praleista . ' eilutės — jos priklauso SURENKAMOMS dėžėms.' );
+			$z[] = array( 'Jas rasi lange „Surenkami rinkiniai" ir jo Excel faile.' );
 		}
 
 		/* --- Kanibalizacija: komponentai rinkinyje vs atskirai kataloge --- */
@@ -647,10 +728,11 @@ class Petshop_Ataskaitu_Eksportas {
 		}
 
 		return array(
+			'Kaip skaityti'  => self::lapas_zodynas( 'paruosti' ),
 			'Rinkiniai'      => array( 'eilutes' => $r,  'placiai' => array( 9, 44, 8, 11, 12, 12, 12, 10 ) ),
 			'Kanibalizacija' => array( 'eilutes' => $kn, 'placiai' => array( 9, 40, 14, 20, 13, 19, 13, 13, 15, 12 ) ),
 			'DP pakopos'     => array( 'eilutes' => $pk, 'placiai' => array( 9, 40, 11, 11, 12, 10 ) ),
-			'Žali duomenys'  => array( 'eilutes' => $z,  'placiai' => array( 11, 12, 14, 12, 10, 40, 10, 9, 12, 13 ) ),
+			'Žali duomenys'  => array( 'eilutes' => $z,  'placiai' => array( 11, 12, 14, 12, 30, 20, 10, 40, 10, 9, 12, 13 ) ),
 		);
 	}
 }
