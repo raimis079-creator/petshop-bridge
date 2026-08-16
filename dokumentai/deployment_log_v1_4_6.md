@@ -129,7 +129,12 @@ nutruktu be ispejimo. Todel jokiu isoriniu priklausomybiu.
 Lapai „Surenkamiems": Suvestine · Prekes · Rinkiniai · Piltuvelis · **Zali
 duomenys**. Paskutinis yra svarbiausias: visa dienos suvestine be apdorojimo,
 is jos galima susisukti bet koki pjuvi pivot'u neprasant naujos ataskaitos.
-„Rinkiniams": Rinkiniai · DP pakopos · Zali duomenys.
+„Rinkiniams": Rinkiniai · **Kanibalizacija** · DP pakopos · Zali duomenys.
+
+Kanibalizacijos lapas rodo tai, ko lentele ekrane nesutalpina: komponentu
+vienetai RINKINYJE ir ATSKIRAI kataloge, abu su ankstesnio laikotarpio
+stulpeliais, bendras pokytis ir verdiktas. Ankstesnis laikotarpis
+skaiciuojamas automatiskai — toks pat dienu skaicius pries.
 
 Skaiciai rasomi kaip SKAICIAI, formatavimas paliekamas Excel'iui (€ formatas
 `#,##0.00 €`, procentai `0.0%` dalimis, kad veiktu vidurkiai).
