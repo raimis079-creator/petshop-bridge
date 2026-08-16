@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Anketos Ataskaita
  * Description: Kontrakto §6 P1 — sesios "Augintinio anketa" skiltys ant ataskaitu standarto v2 karkaso.
- * Version: 2.0
+ * Version: 2.2
  *
  * SESIOS SKILTYS (kontraktas §6, eile fiksuota):
  *  1. Variklio sveikata / piltuvelis   — kur zmones iskrenta ir ar variklis atsako
@@ -11,6 +11,21 @@
  *  4. Duomenu kokybe                    — RECOMMENDABLE vs HIGH_CONFIDENCE tarpas
  *  5. Refill / gyvybingumas             — due -> priminimas -> pirkimas
  *  6. Pinigai / cohort                  — SAZININGAI "duomenu dar nepakanka" iki istorijos
+ *
+ * v2.2: Mitybos plano blokas buvo UZ ankstyvo return'o („duomenu nepakanka"),
+ * todel su mazu uzsakymu skaiciumi jo nesimatydavo. Bet jis nuo uzsakymu
+ * slenkscio NEPRIKLAUSO — jis apie plana, ne apie krepseliu palyginima.
+ * Perkeltas PRIES slenkscio patikra.
+ *
+ * v2.1: perimti TRYS blokai is senojo ekrano „Augintiniu anketos izvalgos"
+ * (class-admin-reports.php), kuriu cia truko — kad nebutu dvieju ekranu apie
+ * ta pati. Logika perkelta IS ORIGINALO, ne is prielaidos:
+ *   „Kita" laisvi tekstai (primary_need_other, feeding_type_other,
+ *   current_food_free_text, species_detail)  -> Paklausa
+ *   Daugiausiai priskirtas maistas (primary_product_id/wet_product_id) -> Paklausa
+ *   Pirkimai is Mitybos plano (Petshop_Plan_Attribution::stats) -> Pinigai
+ * Senasis ekranas lieka kaip meniu TEVAS (jis registruoja visa meniu) —
+ * jo trinti negalima.
  *
  * v2.0 (savininko pastaba 2026-08-16): sesios skiltys buvo sukrautos i VIENA
  * ritini. Tuscioje dev bazeje atrode tvarkingai, bet su realiais duomenimis
@@ -37,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Anketos_Ataskaita {
 
-	const VERSIJA = '2.0';
+	const VERSIJA = '2.2';
 	const PARENT  = 'petshop-reports';
 	const SLUG    = 'petshop-reports-anketa';
 	const CAP     = 'manage_woocommerce';
@@ -405,6 +420,54 @@ class Petshop_Anketos_Ataskaita {
 			array( 'pav' => 'Jautrumas', 'kaire' => 1 ), array( 'pav' => 'Profilių' ),
 		), $eil3, array( 'paieska' => false, 'failas' => 'anketa-jautrumai.csv' ) );
 		echo $prierasas3; // phpcs:ignore
+
+		/* --- Daugiausiai priskirtas maistas (perimta is izvalgu ekrano) --- */
+		$mst = $wpdb->get_results(
+			"SELECT primary_product_id pid, COUNT(*) n FROM $p p
+			 WHERE primary_product_id IS NOT NULL AND primary_product_id>0
+			 " . self::test_filtras( 'p' ) . " GROUP BY primary_product_id ORDER BY n DESC LIMIT 60", ARRAY_A );
+		$eil4 = array();
+		foreach ( (array) $mst as $x ) {
+			$pr = wc_get_product( (int) $x['pid'] );
+			$eil4[] = array(
+				$pr ? '<a href="' . esc_url( get_edit_post_link( (int) $x['pid'] ) ) . '">' . esc_html( $pr->get_name() ) . '</a>'
+				    : '<span class="psru-mut">prekė #' . (int) $x['pid'] . ' nerasta</span>',
+				$pr ? esc_html( $pr->get_sku() ) : '—',
+				number_format( (int) $x['n'], 0, ',', ' ' ),
+			);
+		}
+		echo '<h3 class="psru-h3">Dažniausiai priskirtas maistas</h3>';
+		list( $eil4, $prierasas4 ) = self::riboti( $eil4, $U );
+		$U::lentele( 'ank-maistas', array(
+			array( 'pav' => 'Prekė', 'kaire' => 1 ), array( 'pav' => 'SKU', 'kaire' => 1 ),
+			array( 'pav' => 'Profilių', 'tt' => 'Kiek augintinių profilių turi šią prekę kaip pagrindinį maistą.' ),
+		), $eil4, array( 'failas' => 'anketa-maistas.csv', 'rikiuoti' => 2 ) );
+		echo $prierasas4; // phpcs:ignore
+
+		/* --- „Kita" laisvi tekstai: ko zmones prasi, o mes nesiulom --- */
+		$laisvi = array(
+			'primary_need_other'     => 'Aktualiausia',
+			'feeding_type_other'     => 'Maitinimo būdas',
+			'current_food_free_text' => 'Dabartinis maistas',
+			'species_detail'         => 'Veislė / rūšies patikslinimas',
+		);
+		$eil5 = array();
+		foreach ( $laisvi as $L => $kont ) {
+			$r = $wpdb->get_results( "SELECT `$L` v, COUNT(*) n FROM $p p
+				WHERE `$L` IS NOT NULL AND `$L`<>'' " . self::test_filtras( 'p' ) . "
+				GROUP BY `$L` ORDER BY n DESC LIMIT 40", ARRAY_A );
+			foreach ( (array) $r as $x ) {
+				$eil5[] = array( esc_html( $kont ), esc_html( $x['v'] ), number_format( (int) $x['n'], 0, ',', ' ' ) );
+			}
+		}
+		echo '<h3 class="psru-h3">„Kita" — ką žmonės įrašė patys</h3>';
+		echo '<p class="psru-pastaba">Tai, kam sąraše vietos neatsirado. Vertingiausia asortimento signalų dalis: pasikartojantis tekstas = trūkstamas pasirinkimas anketoje arba prekė kataloge.</p>';
+		list( $eil5, $prierasas5 ) = self::riboti( $eil5, $U );
+		$U::lentele( 'ank-kita', array(
+			array( 'pav' => 'Kontekstas', 'kaire' => 1 ), array( 'pav' => 'Tekstas', 'kaire' => 1 ),
+			array( 'pav' => 'Kartų' ),
+		), $eil5, array( 'failas' => 'anketa-kita.csv', 'rikiuoti' => 2 ) );
+		echo $prierasas5; // phpcs:ignore
 	}
 
 	/* ========== 4. DUOMENU KOKYBE ========== */
@@ -557,6 +620,9 @@ class Petshop_Anketos_Ataskaita {
 		$U::kpi( 'Užsakymų laikotarpiu', number_format( $viso_uzs, 0, ',', ' ' ), null, '', '' );
 		echo '</div>';
 
+		/* Plano priskyrimas nepriklauso nuo krepseliu palyginimo slenkscio */
+		self::planas( $U, $lt );
+
 		if ( $viso_uzs < $riba ) {
 			$U::spejimas(
 				'<b>Duomenų dar nepakanka.</b> Palyginimui reikia bent ' . (int) $riba .
@@ -581,6 +647,49 @@ class Petshop_Anketos_Ataskaita {
 			$U::spejimas( 'Imta naujausių <b>' . (int) $uzs_riba . '</b> užsakymų — riba saugo ataskaitos greitį. Keiskim nustatymu <code>' . esc_html( self::OPT_UZS_RIBA ) . '</code>.' );
 		}
 		$U::spejimas( 'Skaičiai rodo <b>sąsają</b>, ne priežastį. Profilio turėjimas ir didesnis krepšelis gali turėti bendrą priežastį — įsitraukimą.' );
+	}
+
+	/**
+	 * Pirkimai is Mitybos plano — perimta is izvalgu ekrano.
+	 * Skaiciuoja NE MES: kvieciam kanonini Petshop_Plan_Attribution::stats().
+	 * Dienu skaicius imamas is bendro laikotarpio, kad skirtukas neturetu savo
+	 * atskiro filtro (buvo atskiros 7/30/visi nuorodos — dvi filtru sistemos
+	 * viename ekrane klaidina).
+	 */
+	private static function planas( $U, $lt ) {
+		if ( ! class_exists( 'Petshop_Plan_Attribution' ) ) { return; }
+		$dienos = ( $lt['preset'] === 'visi' ) ? null : (int) $lt['dienu'];
+		$st = Petshop_Plan_Attribution::stats( $dienos );
+		if ( ! $st ) { return; }
+
+		echo '<h3 class="psru-h3">Pirkimai iš Mitybos plano</h3>';
+		$adds = (int) $st['adds']; $conv = (int) $st['converted'];
+		echo '<div class="psru-kpi">';
+		$U::kpi( 'Įdėta į krepšelį', number_format( $adds, 0, ',', ' ' ), null, 'eilučių iš plano', '' );
+		$U::kpi( 'Pateko į užsakymą', number_format( $conv, 0, ',', ' ' ), null,
+			$U::maza_imtis( $U::proc( $adds ? ( $conv / $adds ) * 100 : 0 ) . ' konversija', $adds ), '' );
+		$U::kpi( 'Užsakymų su plano prekėmis', number_format( (int) $st['orders'], 0, ',', ' ' ), null, '', '' );
+		$U::kpi( 'Vertė užsakymuose', number_format( (float) $st['conv_value'], 2, ',', ' ' ) . ' €', null,
+			'įdėta už ' . number_format( (float) $st['add_value'], 2, ',', ' ' ) . ' €',
+			'Vertė skaičiuojama pagal kainą įdėjimo į krepšelį metu.' );
+		echo '</div>';
+
+		if ( ! empty( $st['by_source'] ) ) {
+			$lbl = array( 'plan_dry' => 'Sausas maistas', 'plan_wet' => 'Konservai', 'calc_product' => 'Prekės skaičiuoklė' );
+			$eil = array();
+			foreach ( $st['by_source'] as $r ) {
+				$src = isset( $r['source'] ) ? $r['source'] : '';
+				$eil[] = array(
+					esc_html( isset( $lbl[ $src ] ) ? $lbl[ $src ] : $src ),
+					number_format( (int) ( isset( $r['adds'] ) ? $r['adds'] : 0 ), 0, ',', ' ' ),
+					number_format( (int) ( isset( $r['converted'] ) ? $r['converted'] : 0 ), 0, ',', ' ' ),
+				);
+			}
+			$U::lentele( 'ank-planas', array(
+				array( 'pav' => 'Iš kur', 'kaire' => 1 ), array( 'pav' => 'Įdėta' ), array( 'pav' => 'Užsakyta' ),
+			), $eil, array( 'paieska' => false, 'failas' => 'anketa-planas.csv' ) );
+		}
+		$U::spejimas( 'Tai <b>priskyrimas, ne priežastingumas</b> — dalis šių prekių būtų nupirkta ir be plano.' );
 	}
 }
 
