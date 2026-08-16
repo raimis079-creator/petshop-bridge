@@ -1924,12 +1924,22 @@ skaito dienos suvestinę, NIEKADA ne žalius užsakymus.
 | `petshop-ataskaitos-ui.php` | 1.0 | ✅ bendras karkasas visoms ataskaitoms |
 | `petshop-rinkiniu-ataskaita.php` | 2.0 | ✅ „Surenkami rinkiniai", 11 sekcijų |
 | `petshop-paruostu-ataskaita.php` | 1.0 | 🟡 „Rinkiniai" — veikia, bet be duomenų |
+| `petshop-ataskaitu-eksportas.php` | 1.0 | ✅ XLSX atsisiuntimas, keli lapai + žali duomenys |
 
 ### DB
 
 - `gaj6_ps_laukai_ivykiai` — schema v2 (+`dydis`, `skirtukas`, `kiek_dezeje`, `irenginys`)
 - `gaj6_ps_ataskaitu_dienos` — NAUJA, dienos suvestinė, pinigai CENTAIS
 - Naujas uždarymo meta: `_ps_stat_sesija`, `_ps_irenginys`, `_ps_dydis`, `_ps_kaina_atskirai_vnt`
+
+### Excel eksportas
+
+Mygtukas „⬇ Atsisiųsti į Excel" abiejuose languose. Savas XLSX rašytojas per
+`ZipArchive` — be PhpSpreadsheet (jis serveryje yra, bet priklauso importo
+pluginui). Skaičiai eksportuojami kaip skaičiai, ne tekstas.
+
+Lapai: Suvestinė · Prekės · Rinkiniai · Piltuvėlis · **Žali duomenys**
+(pastarasis — visa dienos suvestinė pivot'ams, be apdorojimo).
 
 ### Užrakinti sprendimai
 
