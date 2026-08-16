@@ -365,6 +365,15 @@ class Petshop_Statistika {
 	}
 
 	/**
+	 * IVYKIU TIPAI (spec v1.1 §3.1 + du patikslinimai is realybes):
+	 *  atidare, rodyta, idejo, iseme, min_pasiekta, dovana_atrakinta,
+	 *  dovana_rinko, dydis_perjunge, krepselis.
+	 *
+	 *  - `rodyta` spec'e nebuvo, bet be jo „idejimo dalis" neturi vardiklio ir
+	 *    prekiu lentele negali atsakyti „ar preke traukia" — tik „kiek parduota";
+	 *  - spec'o `po1` NENAUDOJAMAS: vitrinoje paspaudimas ant dezes langelio
+	 *    nuima viena vieneta, tad tai paprastas `iseme`, o ne atskiras tipas.
+	 *
 	 * DU SLUOKSNIAI (savininko sprendimas 2026-08-16):
 	 *  1) be sutikimo — ivykiai rasomi ANONIMISKAI (sesija priverstinai ''),
 	 *     jokio identifikatoriaus irenginyje. Is cia veikia idejimo dalys,
