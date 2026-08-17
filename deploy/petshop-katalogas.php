@@ -5865,8 +5865,10 @@ class Petshop_Katalogas {
 				try{ localStorage.setItem("ps_kat_fr", b ? "1" : "0"); }catch(e){}
 				aukstis();
 			}
-			var frPr="0";
-			try{ frPr=localStorage.getItem("ps_kat_fr")||"0"; }catch(e){}
+			/* v8.6.3: numatytai SUSKLEISTA. Kas dirba su sąrašu, filtrus
+			   atsidaro retai, o prekių eilučių nori kuo daugiau. */
+			var frPr="1";
+			try{ frPr=localStorage.getItem("ps_kat_fr")||"1"; }catch(e){}
 			frBusena(frPr==="1");
 			document.addEventListener("click", function(e){
 				if(e.target.closest("#fr-sukl")){ frBusena(true); return; }
@@ -7823,6 +7825,39 @@ class Petshop_Katalogas {
 	 */
 	private static function stilius_v37() {
 		echo '<style>
+		/* ==================== v8.6.3 · KOMPAKTIŠKA FILTRŲ DĖŽĖ ====================
+		   Buvo: keturios eilutės per visą plotį, „pridėti sąlygą" nubėgęs į
+		   dešinę, vaizdai atskirai, vardo laukelis dar toliau. Plotis buvo
+		   naudojamas tuštumai, o aukštis — tai, ko trūksta labiausiai.
+		   Dabar: viskas kairėje, viena eilutė kiek įmanoma, mažesni tarpai. */
+		.pskat-filters{padding:6px 10px 7px;margin-bottom:8px}
+		.pskat-filters .frline{display:flex;align-items:center;flex-wrap:wrap;
+			gap:4px 10px;margin:0;padding:2px 0;min-height:0}
+		.pskat-filters .frline + .frline{border-top:1px solid #eef1ee;margin-top:3px;padding-top:5px}
+		.pskat-filters .ax{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+			color:#8a958e;margin-right:1px}
+		.pskat-filters select,.pskat-filters input[type=text]{font-size:12.5px;padding:2px 6px;
+			height:26px;border:1px solid #dfe5e1;border-radius:4px;background:#fff}
+		.pskat-filters .sep{display:none}
+		.pskat-filters .kiek-sar{font-size:11px;color:#9aa49d}
+		.pskat-filters .clear{font-size:12px;margin-left:auto}
+		/* Sąlygų kūriklis — prie sąlygų, ne ekrano gale. */
+		.pskat-sal .sal-pr{margin-left:0}
+		.pskat-sal .sal-p{padding:2px 8px;font-size:12px}
+		/* Vaizdai ir jų įrašymas — vienoje eilutėje, kairėje. */
+		.pskat-vaizdai .vz{padding:2px 9px;font-size:12px}
+		.pskat-vaizdai .vz-f{margin-left:0;gap:4px}
+		.pskat-vaizdai .vz-f input{width:112px}
+		.pskat-vaizdai .vz-b{padding:2px 9px;font-size:12px}
+		/* Suvestinė apačioje — buvo trys eilutės aukščio, užtenka vienos. */
+		.pskat-suv{margin:8px 0 0}
+		.pskat-suv .p{padding:5px 12px}
+		.pskat-suv .l{font-size:10.5px}
+		.pskat-suv .v{font-size:14px}
+		.pskat-psl{padding:5px 0 0;font-size:12px}
+		/* Greitojo redagavimo juosta — buvo atskira dėžė su savo tarpais. */
+		.pskat-red{margin:0 0 8px}
+
 		/* ==================== v8.6 · DU SLINKTIES LAUKAI ====================
 		   Iki v8.6 slinko visas puslapis: nuvažiavus iki 40-tos prekės dingdavo
 		   ir filtrai, ir kairės eilės, ir lentelės antraštė — nebežinai, kuris
@@ -7843,6 +7878,10 @@ class Petshop_Katalogas {
 		.fr-sukl:hover{border-color:#2271b1;color:#2271b1}
 		.frl-sant .fr-sukl{position:static;margin-right:8px}
 		.frl-sant{align-items:center;flex-wrap:wrap;gap:6px}
+		/* v8.6.3 KLAIDA IR PATAISA: `.frline{display:flex}` nustelbdavo
+		   `hidden` atributą, todėl suskleista santrauka rodydavosi VISADA —
+		   vietoj vienos eilutės vietoj keturių gaudavosi penkios. */
+		.frline[hidden]{display:none!important}
 		.frl-sant .sal-r{background:#f2f5f3}
 		body.fr-suskleista .pskat-filters .frl-1,
 		body.fr-suskleista .pskat-filters .frl-2,
