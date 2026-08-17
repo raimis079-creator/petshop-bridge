@@ -5854,8 +5854,22 @@ class Petshop_Katalogas {
 				if(!L) return;
 				document.body.classList.add("pskat-pilnas");
 				var t=L.getBoundingClientRect().top;
-				var h=Math.max(320, Math.floor(window.innerHeight - t - 4));
+				var h=Math.max(320, Math.floor(window.innerHeight - t - 2));
 				L.style.height=h+"px";
+
+				/* v8.6.5: prekių lauko aukštis NESKAIČIUOJAMAS, o IŠMATUOJAMAS.
+				   Anksčiau jis buvo paliktas `flex` valiai, ir puslapiavimas
+				   kiekvieną kartą nukrisdavo lygiai 9 px žemiau lango krašto —
+				   dėl paraščių, kurių aritmetikoje neįvertinau. Dabar: laukas
+				   suspaudžiamas iki nulio, išmatuojama, kiek užima visa kita,
+				   ir laukui atiduodama tiksliai tai, kas liko. */
+				var M=document.querySelector(".pskat-main");
+				var A=document.querySelector(".pskat-lent-lauk");
+				if(!M||!A) return;
+				A.style.height="0px";
+				var uzimta=M.scrollHeight;
+				var laisva=M.clientHeight-uzimta;
+				A.style.height=Math.max(120, Math.floor(laisva))+"px";
 			}
 			aukstis();
 			window.addEventListener("resize", aukstis);
@@ -7919,7 +7933,7 @@ class Petshop_Katalogas {
 		/* v8.6.5: `flex:1 1 auto` reiškė „imk pagal turinį" — laukas išstumdavo
 		   puslapiavimą už lango ribų, o `overflow:hidden` jį nukirpdavo.
 		   `flex:1 1 0` reiškia „imk tiek, kiek liko po apatinių juostų". */
-		.pskat-lent-lauk{flex:1 1 0;min-height:120px;overflow-y:auto;overflow-x:auto;
+		.pskat-lent-lauk{flex:0 0 auto;min-height:120px;overflow-y:auto;overflow-x:auto;
 			border:1px solid #d3d8d2;border-radius:9px;background:#fff;
 			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
 		.pskat-lent-lauk::-webkit-scrollbar{width:11px;height:11px}
