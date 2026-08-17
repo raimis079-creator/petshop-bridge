@@ -2,8 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmICgoaXNzZXQoJF9HRVRbJ3BzX2c4MjEnXSk/JF9HRVRbJ3BzX2c4MjEnXTonJykgIT09ICdHODIxJykgcmV0dXJuOwogQHNldF90aW1lX2xpbWl0KDkwMCk7CiBnbG9iYWwgJHdwZGI7ICRQPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCd2Jz0+J0c4MjEnLCd0cyc9PmN1cnJlbnRfdGltZSgnbXlzcWwnKSk7CgogJGNoazEzPWZ1bmN0aW9uKCRkMTIpeyAkcz0wOyBmb3IoJGk9MDskaTwxMjskaSsrKXsgJHMgKz0gKChpbnQpJGQxMlskaV0pICogKCgkaSUyKT8zOjEpOyB9IHJldHVybiAoc3RyaW5nKSgoMTAtJHMlMTApJTEwKTsgfTsKICRvazEzPWZ1bmN0aW9uKCR2KSB1c2UoJGNoazEzKXsgJHY9KHN0cmluZykkdjsgcmV0dXJuIChzdHJsZW4oJHYpPT09MTMgJiYgY3R5cGVfZGlnaXQoJHYpICYmICRjaGsxMyhzdWJzdHIoJHYsMCwxMikpPT09c3Vic3RyKCR2LDEyLDEpKTsgfTsKCiAvKiAxLiBQTEFOQVMgSVMgS09QSUpPUyB2cyBSRUFMWUJFIERCICovCiAkZmFpbGFzPWdldF9vcHRpb24oJ3BzX2d0aW5fYmFja3VwX2ZhaWxhcycpOwogJG9bJ2tvcGlqYSddPSRmYWlsYXM7ICRvWydrb3BpamFfeXJhJ109ZmlsZV9leGlzdHMoJGZhaWxhcyk/MTowOwogJHN1dGFtcGE9MDsgJG5lc3V0YW1wYT0wOyAkYmxvZ2k9YXJyYXkoKTsKIGlmKGZpbGVfZXhpc3RzKCRmYWlsYXMpKXsKICAgJGs9anNvbl9kZWNvZGUoZmlsZV9nZXRfY29udGVudHMoJGZhaWxhcyksIHRydWUpOwogICAkcGxhbmFzPWlzc2V0KCRrWydwbGFuYXMnXSk/JGtbJ3BsYW5hcyddOmFycmF5KCk7CiAgICRvWydwbGFuZV9pcmFzdSddPWNvdW50KCRwbGFuYXMpOwogICBmb3JlYWNoKCRwbGFuYXMgYXMgJHgpewogICAgICRkYWJhcj0oc3RyaW5nKWdldF9wb3N0X21ldGEoKGludCkkeFsnaWQnXSwnX2dsb2JhbF91bmlxdWVfaWQnLHRydWUpOwogICAgIGlmKCRkYWJhcj09PShzdHJpbmcpJHhbJ25hdWphcyddKSAkc3V0YW1wYSsrOwogICAgIGVsc2UgeyAkbmVzdXRhbXBhKys7IGlmKGNvdW50KCRibG9naSk8MTUpICRibG9naVtdPWFycmF5KCdpZCc9PiR4WydpZCddLCdsYXVrZSc9PiRkYWJhciwndHVyZWpvX2J1dGknPT4oc3RyaW5nKSR4WyduYXVqYXMnXSk7IH0KICAgfQogfQogJG9bJ3BhdGlrcmEnXT1hcnJheSgnc3V0YW1wYSc9PiRzdXRhbXBhLCduZXN1dGFtcGEnPT4kbmVzdXRhbXBhLCduZXN1dGFwaW11X3B2eic9PiRibG9naSk7CgogLyogMi4gTlVMSVMgUFJJRUtZSkUg4oCUIGFyIG5lZGluZ28gKi8KICRvWydpbGdpdV9wYXNpc2tpcnN0eW1hcyddPSR3cGRiLT5nZXRfcmVzdWx0cygiU0VMRUNUIENIQVJfTEVOR1RIKG0ubWV0YV92YWx1ZSkgaWxnaXMsIENPVU5UKCopIG4KICAgRlJPTSB7JFB9cG9zdG1ldGEgbSBKT0lOIHskUH1wb3N0cyBwIE9OIHAuSUQ9bS5wb3N0X2lkCiAgIFdIRVJFIG0ubWV0YV9rZXk9J19nbG9iYWxfdW5pcXVlX2lkJyBBTkQgbS5tZXRhX3ZhbHVlPD4nJyBBTkQgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJwogICBHUk9VUCBCWSBpbGdpcyBPUkRFUiBCWSBuIERFU0MiLCBBUlJBWV9BKTsKICRvWydwcmFzaWRlZGFfbnVsaXUnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JFB9cG9zdG1ldGEgV0hFUkUgbWV0YV9rZXk9J19nbG9iYWxfdW5pcXVlX2lkJyBBTkQgbWV0YV92YWx1ZSBMSUtFICcwJSciKTsKICRvWyduZV9za2FpY2lhaSddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskUH1wb3N0bWV0YSBXSEVSRSBtZXRhX2tleT0nX2dsb2JhbF91bmlxdWVfaWQnIEFORCBtZXRhX3ZhbHVlPD4nJyBBTkQgbWV0YV92YWx1ZSBOT1QgUkVHRVhQICdeWzAtOV0rJCciKTsKICRvWyduZXR2YXJraW5naV9wdnonXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBwLklELCBMRUZUKHAucG9zdF90aXRsZSw0MCkgcGF2LCBtLm1ldGFfdmFsdWUgdgogICBGUk9NIHskUH1wb3N0bWV0YSBtIEpPSU4geyRQfXBvc3RzIHAgT04gcC5JRD1tLnBvc3RfaWQKICAgV0hFUkUgbS5tZXRhX2tleT0nX2dsb2JhbF91bmlxdWVfaWQnIEFORCBtLm1ldGFfdmFsdWU8PicnIEFORCBwLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJwogICAgIEFORCBDSEFSX0xFTkdUSChtLm1ldGFfdmFsdWUpIE5PVCBJTiAoOCwxMiwxMywxNCkgTElNSVQgMTAiLCBBUlJBWV9BKTsKCiAvKiAzLiBHQUxVVElOSVMgUEpVVklTICovCiAkdmlzaT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBtLm1ldGFfdmFsdWUgdiBGUk9NIHskUH1wb3N0bWV0YSBtIEpPSU4geyRQfXBvc3RzIHAgT04gcC5JRD1tLnBvc3RfaWQKICAgV0hFUkUgbS5tZXRhX2tleT0nX2dsb2JhbF91bmlxdWVfaWQnIEFORCBtLm1ldGFfdmFsdWU8PicnIEFORCBwLnBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHAucG9zdF9zdGF0dXM9J3B1Ymxpc2gnIiwgQVJSQVlfQSk7CiAkZz0wOyBmb3JlYWNoKCR2aXNpIGFzICR4KSBpZigkb2sxMygkeFsndiddKSkgJGcrKzsKICRvWydnYWx1dGluaXMnXT1hcnJheSgndXpwaWxkeXRhJz0+Y291bnQoJHZpc2kpLCdnYWxpb2phX2VhbjEzJz0+JGcsCiAgICdwdWJsaXNoX3Zpc28nPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JFB9cG9zdHMgV0hFUkUgcG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcG9zdF9zdGF0dXM9J3B1Ymxpc2gnIikpOwoKIC8qIDQuIFZGIHByZWtpdSBwanV2aXMgYXRza2lyYWkgKi8KICRvWyd2Zl9wanV2aXMnXT0kd3BkYi0+Z2V0X3JvdygiU0VMRUNUIENPVU5UKCopIHZmX3Zpc28sCiAgICBTVU0oQ0FTRSBXSEVOIENIQVJfTEVOR1RIKGcubWV0YV92YWx1ZSk9MTMgVEhFTiAxIEVMU0UgMCBFTkQpIHN1MTMKICAgRlJPTSB7JFB9cG9zdG1ldGEgYiBKT0lOIHskUH1wb3N0cyBwIE9OIHAuSUQ9Yi5wb3N0X2lkCiAgIExFRlQgSk9JTiB7JFB9cG9zdG1ldGEgZyBPTiBnLnBvc3RfaWQ9cC5JRCBBTkQgZy5tZXRhX2tleT0nX2dsb2JhbF91bmlxdWVfaWQnCiAgIFdIRVJFIGIubWV0YV9rZXk9J192Zl9iYXJjb2RlJyBBTkQgYi5tZXRhX3ZhbHVlPD4nJyBBTkQgcC5wb3N0X3N0YXR1cz0ncHVibGlzaCciLCBBUlJBWV9BKTsKCiAvKiA1LiBBVVRIIFNMQVBVS0FTIEhUTUwgUEFUSUtSQUkgKi8KICR1aWQ9KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIElEIEZST00geyRQfXVzZXJzIE9SREVSIEJZIElEIEFTQyBMSU1JVCAxIik7CiAkb1snYXV0aF91c2VyJ109JHVpZDsKICRvWydhdXRoX2Nvb2tpZSddPXdwX2dlbmVyYXRlX2F1dGhfY29va2llKCR1aWQsIHRpbWUoKSszMDAsICdsb2dnZWRfaW4nKTsKICRvWydhdXRoX2Nvb2tpZV9uYW1lJ109TE9HR0VEX0lOX0NPT0tJRTsKICRvWyd0ZXN0aW5lX3ByZWtlJ109MTc5Nzg7CgogJHdwZGItPnF1ZXJ5KCJVUERBVEUgeyRQfXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzEpOwo=';
-const out={versija:'G821'};
+const B64='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmICgoaXNzZXQoJF9HRVRbJ3BzX2c4MjInXSk/JF9HRVRbJ3BzX2c4MjInXTonJykgIT09ICdHODIyJykgcmV0dXJuOwogZ2xvYmFsICR3cGRiOyAkUD0kd3BkYi0+cHJlZml4OwogJHVpZD0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgdS5JRCBGUk9NIHskUH11c2VycyB1IEpPSU4geyRQfXVzZXJtZXRhIG0gT04gbS51c2VyX2lkPXUuSUQKICAgV0hFUkUgbS5tZXRhX2tleT0neyRQfWNhcGFiaWxpdGllcycgQU5EIG0ubWV0YV92YWx1ZSBMSUtFICclYWRtaW5pc3RyYXRvciUnIE9SREVSIEJZIHUuSUQgQVNDIExJTUlUIDEiKTsKICRleHA9dGltZSgpKzkwMDsKICRvPWFycmF5KCd2Jz0+J0c4MjInLCd1aWQnPT4kdWlkLAogICdsb2dnZWRfaW4nPT5hcnJheSgndmFyZGFzJz0+TE9HR0VEX0lOX0NPT0tJRSwncmVpa3NtZSc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCR1aWQsJGV4cCwnbG9nZ2VkX2luJykpLAogICdzZWN1cmUnPT5hcnJheSgndmFyZGFzJz0+U0VDVVJFX0FVVEhfQ09PS0lFLCdyZWlrc21lJz0+d3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoJHVpZCwkZXhwLCdzZWN1cmVfYXV0aCcpKSwKICAnYXV0aCc9PmFycmF5KCd2YXJkYXMnPT5BVVRIX0NPT0tJRSwncmVpa3NtZSc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCR1aWQsJGV4cCwnYXV0aCcpKSwKICAncHJla2VzJz0+YXJyYXkoMTc5NzgsMTI0NTIpLAogICdkYic9PmFycmF5KAogICAgMTc5Nzg9PmdldF9wb3N0X21ldGEoMTc5NzgsJ19nbG9iYWxfdW5pcXVlX2lkJyx0cnVlKSwKICAgIDEyNDUyPT5nZXRfcG9zdF9tZXRhKDEyNDUyLCdfZ2xvYmFsX3VuaXF1ZV9pZCcsdHJ1ZSkpLAogKTsKICR3cGRiLT5xdWVyeSgiVVBEQVRFIHskUH1zbmlwcGV0cyBTRVQgYWN0aXZlPTAgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uJyk7IGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzEpOwo=';
+const out={versija:'G822'};
 async function put(name,buf,msg){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/${name}`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
@@ -12,24 +12,42 @@ async function put(name,buf,msg){
 }
 async function api(p,o={}){ const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(n,b64){ const code=Buffer.from(b64,'base64').toString('utf8'); const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:n,code,scope:'global',active:true,priority:5})}); let j=null; try{j=JSON.parse(cr.t);}catch(e){} out.snip_status=cr.s; return j?j.id:null; }
+let d=null;
 try{
-  const s=await snip('TEMP G821 GTIN patikra',B64);
+  const s=await snip('TEMP G822 slapukai',B64);
   await new Promise(r=>setTimeout(r,8000));
-  const t=await (await fetch(WP+'/?ps_g821=G821')).text();
-  let d=null; try{ d=JSON.parse(t); out.d=d; }catch(e){ out.zalias=t.slice(0,600); }
-  /* REALUS ADMIN HTML — ar laukas tikrai uzpildytas */
-  if(d && d.auth_cookie){
-    const ck=d.auth_cookie_name+'='+d.auth_cookie;
-    for(const pid of [17978, d.testine_preke, 12452]){
-      try{
-        const r=await fetch(WP+'/wp-admin/post.php?post='+pid+'&action=edit',{headers:{Cookie:ck}});
-        const h=await r.text();
-        const m=h.match(/id=["']_global_unique_id["'][^>]*value=["']([^"']*)["']/i) || h.match(/name=["']_global_unique_id["'][^>]*value=["']([^"']*)["']/i);
-        out['html_'+pid]={status:r.status, baitai:h.length, gtin_lauke: m?m[1]:'(nerasta lauko)', prisijunges: h.indexOf('wp-admin')>0};
-      }catch(e){ out['html_'+pid]={klaida:String(e).slice(0,120)}; }
-    }
-  }
+  const t=await (await fetch(WP+'/?ps_g822=G822')).text();
+  try{ d=JSON.parse(t); out.db=d.db; out.uid=d.uid; }catch(e){ out.zalias=t.slice(0,400); }
   if(s) await api('/wp-json/code-snippets/v1/snippets/'+s,{method:'POST',body:JSON.stringify({id:s,active:false})});
-}catch(e){ out.klaida=String(e).slice(0,300); }
+}catch(e){ out.klaida=String(e).slice(0,250); }
+
+if(d && d.logged_in){
+  const {chromium}=await import('playwright');
+  const br=await chromium.launch();
+  const ctx=await br.newContext({viewport:{width:1500,height:1000}, ignoreHTTPSErrors:true});
+  await ctx.addCookies([
+    {name:d.logged_in.vardas, value:d.logged_in.reiksme, domain:'dev.avesa.lt', path:'/'},
+    {name:d.secure.vardas,    value:d.secure.reiksme,    domain:'dev.avesa.lt', path:'/'},
+    {name:d.auth.vardas,      value:d.auth.reiksme,      domain:'dev.avesa.lt', path:'/wp-admin'},
+  ]);
+  const pg=await ctx.newPage();
+  const jsKlaidos=[]; pg.on('pageerror',e=>jsKlaidos.push(String(e).slice(0,120)));
+  out.ekranai={};
+  for(const pid of d.prekes){
+    try{
+      await pg.goto(WP+'/wp-admin/post.php?post='+pid+'&action=edit',{waitUntil:'domcontentloaded',timeout:60000});
+      await pg.waitForTimeout(2500);
+      let inv=null;
+      try{ await pg.click('.inventory_options a, li.inventory_tab a',{timeout:8000}); await pg.waitForTimeout(1200); }catch(e){ inv='skirtukas nerastas'; }
+      const val=await pg.evaluate(()=>{ const el=document.querySelector('#_global_unique_id, input[name="_global_unique_id"]'); return el? el.value : null; });
+      const pav=await pg.evaluate(()=>{ const t=document.querySelector('#title'); return t? t.value.slice(0,60) : (document.title||'').slice(0,60); });
+      const buf=await pg.screenshot({fullPage:false});
+      await put('gtin_'+pid+'.png', buf, 'gtin vizuali patikra '+pid);
+      out.ekranai[pid]={gtin_ekrane:val, pavadinimas:pav, skirtukas:inv, url:pg.url().slice(0,90)};
+    }catch(e){ out.ekranai[pid]={klaida:String(e).slice(0,160)}; }
+  }
+  out.js_klaidos=jsKlaidos;
+  await br.close();
+}
 const zlib=await import('zlib');
-await put('g821.json.gz', zlib.gzipSync(Buffer.from(JSON.stringify(out))), 'g821 gtin patikra');
+await put('g822.json.gz', zlib.gzipSync(Buffer.from(JSON.stringify(out))), 'g822 vizuali patikra');
