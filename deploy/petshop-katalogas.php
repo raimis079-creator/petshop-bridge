@@ -5820,7 +5820,7 @@ class Petshop_Katalogas {
 
 			/* ---------- v8.6.1: TIKRAS AUKŠTIS ----------
 			   Fiksuotas `100vh − 118px` buvo spėjimas: WordPress juosta,
-			   atnaujinimo pranešimai ir mūsų topbar'as užima kintamą aukštį,
+			   atnaujinimo pranešimai ir mūsų viršutinė juosta užima kintamą aukštį,
 			   todėl prekių laukas likdavo siauras ruoželis. Dabar matuojam. */
 			function aukstis(){
 				var L=document.querySelector(".pskat-layout");
@@ -7790,7 +7790,7 @@ class Petshop_Katalogas {
 		   Dabar viršus stovi, kairė turi savo juostą, o slenka tik prekės. */
 		.pskat-layout{height:calc(100vh - 118px);min-height:320px;overflow:hidden}
 		/* v8.6.1: 118px buvo SPĖJIMAS. Virš lango dar yra WordPress juosta,
-		   atnaujinimo pranešimai ir mūsų topbar'as — jų aukštis kinta.
+		   atnaujinimo pranešimai ir mūsų viršutinė juosta — jų aukštis kinta.
 		   Tikrasis aukštis MATUOJAMAS naršyklėje (žr. `aukstis()`), o šitas
 		   lieka tik kaip atsarginis, kol JS nesuveikė. */
 		body.pskat-pilnas{overflow:hidden}
