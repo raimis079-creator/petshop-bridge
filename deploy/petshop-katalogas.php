@@ -5817,6 +5817,33 @@ class Petshop_Katalogas {
 				window.location.href="' . $baze . '".split("?")[0]+"?"+u.toString();
 			}
 
+
+			/* ---------- v8.6.1: TIKRAS AUKŠTIS ----------
+			   Fiksuotas `100vh − 118px` buvo spėjimas: WordPress juosta,
+			   atnaujinimo pranešimai ir mūsų topbar'as užima kintamą aukštį,
+			   todėl prekių laukas likdavo siauras ruoželis. Dabar matuojam. */
+			function aukstis(){
+				var L=document.querySelector(".pskat-layout");
+				if(!L) return;
+				document.body.classList.add("pskat-pilnas");
+				var t=L.getBoundingClientRect().top;
+				var h=Math.max(320, Math.floor(window.innerHeight - t - 4));
+				L.style.height=h+"px";
+			}
+			aukstis();
+			window.addEventListener("resize", aukstis);
+			/* Pranešimai (WP atnaujinimai, pluginų juostos) atsiranda vėliau
+			   ir pastumia langą — permatuojam, kai jie nusėda. */
+			setTimeout(aukstis, 350); setTimeout(aukstis, 1200);
+			document.addEventListener("click", function(e){
+				if(e.target.closest(".notice-dismiss")) setTimeout(aukstis, 120);
+			});
+			if(window.ResizeObserver){
+				var ro=new ResizeObserver(function(){ aukstis(); });
+				var vb=document.getElementById("wpbody-content");
+				if(vb) ro.observe(vb);
+			}
+
 			/* ---------- v8.4: SĄLYGŲ PRIDĖJIMAS ----------
 			   Operatoriai priklauso nuo lauko tipo: skaičiui nesiūlom
 			   „prasideda", o loginiam — „tarp". Sąlyga įrašoma į `sal`
@@ -7761,7 +7788,14 @@ class Petshop_Katalogas {
 		   ir filtrai, ir kairės eilės, ir lentelės antraštė — nebežinai, kuris
 		   stulpelis marža, o kuris savikaina.
 		   Dabar viršus stovi, kairė turi savo juostą, o slenka tik prekės. */
-		.pskat-layout{height:calc(100vh - 118px);min-height:0;overflow:hidden}
+		.pskat-layout{height:calc(100vh - 118px);min-height:320px;overflow:hidden}
+		/* v8.6.1: 118px buvo SPĖJIMAS. Virš lango dar yra WordPress juosta,
+		   atnaujinimo pranešimai ir mūsų topbar'as — jų aukštis kinta.
+		   Tikrasis aukštis MATUOJAMAS naršyklėje (žr. `aukstis()`), o šitas
+		   lieka tik kaip atsarginis, kol JS nesuveikė. */
+		body.pskat-pilnas{overflow:hidden}
+		body.pskat-pilnas #wpbody-content{padding-bottom:0}
+		body.pskat-pilnas #wpfooter{display:none}
 		.pskat-rail{overflow-y:auto;overflow-x:hidden;height:100%;
 			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
 		.pskat-rail::-webkit-scrollbar{width:9px}
