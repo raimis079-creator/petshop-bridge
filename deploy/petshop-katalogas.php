@@ -1,5 +1,12 @@
 <?php
 /**
+ * Petshop Katalogas v8.7.1 (S903) - STULPELIU ANTRASTE NEJUDA.
+ *
+ * SAVININKAS: "desineje puseje virsus nejudetu, ir as slinkdamas prekes
+ * matyciau ka kiekvieno stulpelio reiksme." Antraste sticky prie juostos
+ * apacios (--ps-virsus). Laukas nebe scroll konteineris placiam ekranui;
+ * siauram (<=1400px) grazinamas overflow-x, ten antraste nuslenka.
+ *
  * Petshop Katalogas v8.7 (S902) - NORMALUS DARBINIS LANGAS.
  *
  * SAVININKAS (2026-08-17, su ekrano nuotraukomis): v8.6-v8.6.5b fiksuoto
@@ -7900,14 +7907,22 @@ class Petshop_Katalogas {
 		.pskat-rail::-webkit-scrollbar-track{background:transparent}
 		/* Prekiu lentele: laukas tik horizontaliai slinkciai siauram ekranui.
 		   Aukscio ribos NERA - lentele auga pagal turini, slenka puslapis. */
-		.pskat-lent-lauk{overflow-x:auto;border:1px solid #d3d8d2;border-radius:9px;background:#fff;
-			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
-		.pskat-lent-lauk::-webkit-scrollbar{height:11px}
-		.pskat-lent-lauk::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:6px}
-		.pskat-lent-lauk::-webkit-scrollbar-track{background:#f2f4f1}
+		/* v8.7.1 (savininkas): stulpeliu antraste NEJUDA slenkant prekes -
+		   sticky prie virsutines juostos apacios. Kad sticky veiktu pries
+		   viso puslapio slinkti, laukas NEGALI buti scroll konteineris,
+		   todel overflow-x tik siauram ekranui (ten antraste nuslenka -
+		   samoningas kompromisas). */
+		.pskat-lent-lauk{border:1px solid #d3d8d2;border-radius:9px;background:#fff}
+		@media (max-width:1400px){
+			.pskat-lent-lauk{overflow-x:auto;
+				scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
+			.pskat-lent-lauk::-webkit-scrollbar{height:11px}
+			.pskat-lent-lauk::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:6px}
+			.pskat-lent-lauk::-webkit-scrollbar-track{background:#f2f4f1}
+		}
 		/* Remeli pereme laukas - lentelei jo nebereikia. */
 		.pskat-lent-lauk .pskat-t{border:0;border-radius:0;overflow:visible}
-		.pskat-lent-lauk .pskat-t thead th{position:sticky;top:0;z-index:6;
+		.pskat-lent-lauk .pskat-t thead th{position:sticky;top:var(--ps-virsus,118px);z-index:6;
 			background:#f7f9f6;box-shadow:inset 0 -1px 0 #d3d8d2}
 		/* Suvestine ir puslapiavimas - normaliame sraute po lentele. */
 		.pskat-main > .pskat-suv,
