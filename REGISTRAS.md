@@ -50,7 +50,7 @@
 |---|---|---|---|---|
 | DOD-01 | P0 funkcijos F1–F16 100% | ✅ | 2026-08-04 | F4 ✅ F14 ✅ · Identity P0 įvykdytas magic link (§11 G1) |
 | DOD-02 | Kritinių klaidų 0 | ⚪ | — | **nėra bug registro** — nematuojama |
-| P1-MYISAM | MyISAM → InnoDB migracija | 🔴 | 2026-08-03 | 160/174 lentelių MyISAM = 98% duomenų. Architektūros skola, ne tik backup (§8c) |
+| P1-MYISAM | MyISAM → InnoDB migracija | ✅ | 2026-08-17 | **UŽDARYTA.** 177/177 konvertuota, 0 klaidų, 16,4 s. Visa bazė 191 InnoDB. Sargas `petshop-innodb.php` v1.0 neleidžia naujoms gimti MyISAM (§8j) |
 | DOD-03 | Aukšto prioriteto klaidų ≤3 | ⚪ | — | tas pats |
 | DOD-04 | 20 testinių užsakymų | 🟡 | 2026-08-04 | **20/20 sukurta, 0 klaidų** (§13). Po patikros IŠTRINTI Raimio nurodymu. Programinis kelias — checkout/pristatymo atrinkimas NEPATIKRINTAS |
 | DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
@@ -372,17 +372,80 @@ DB eksportas PHP: 146,5 MB → 13,96 MB (10,5:1), 18,4 s, atmintis 116/256 MB
 NEPATIKRINTA: LOCK TABLES teisė (SHOW GRANTS neįvykdytas — testas nutrūko)
 ```
 
-### ATVIRAS P1 PRIEŠ LAUNCH — MyISAM → InnoDB
+### P1 MyISAM → InnoDB — UŽDARYTA 2026-08-17 (žr. §8j)
 ```
-160 iš 174 lentelių yra MyISAM = 98% duomenų (131,9 iš 135 MB).
-Tai ne tik backup, o visos parduotuvės architektūros skola: MyISAM turi
-lentelės lygio užraktus, InnoDB — eilutės lygio + transakcijas.
-Darbo eiga: (1) inventorizuoti indeksus, FULLTEXT, pluginų priklausomybes;
-(2) konvertuoti klone; (3) pilna funkcinė + našumo regresija;
-(4) tik tada dev/produkcija per priežiūros langą.
-Po konversijos visas DB backupas taps nuosekliu InnoDB snapshotu BE svetainės
-stabdymo.
+Buvo: 160/174 (matuota 08-03) → 177/191 (matuota 08-17).
+Dabar: 191 lentelė InnoDB, MyISAM 0.
+Planuota eiga „konvertuoti klone" NEĮVYKDYTA IR NEBUVO ĮMANOMA:
+WP vartotojas turi GRANT ALL tik gyvunai2_nbpe1.* — naujos DB kurti negali.
+Atsitraukimo kelias vietoj klono: automatinis backup į B2 (§8f), paskutinė
+kopija prieš darbą 08-17 01:00, sargas patvirtino OK.
+Rezultatas: DB backupas nuo šiol yra nuoseklus InnoDB snapshotas BE
+svetainės stabdymo — pagrindinis §8c argumentas įvykdytas.
 ```
+
+---
+
+## 8j. MyISAM → InnoDB — ĮVYKDYTA (2026-08-17) [S902–S912]
+
+```
+PRIEŠ   177 MyISAM · 14 InnoDB · 156,4 MB MyISAM
+PO      191 InnoDB · MyISAM 0 · 314,3 MB (~2×, laisva 35 GB)
+Trukmė  16,4 s trimis paketais · klaidų 0 · neatsivertusių 0
+```
+
+**Kodėl nebuvo blokerių** (išmatuota S905, ne prielaida):
+```
+FULLTEXT indeksų MyISAM lentelėse   0
+indeksų virš 3072 B                 0
+koduotės                            visos utf8mb4
+MariaDB 10.6.17 · innodb_file_per_table=1 · buffer_pool 4 GB
+```
+
+**Paketai:** bak+ps+woo 75 (2,8 s) · as+kita 90 (8,7 s) · wp_core 12 (4,9 s).
+Kiekvienai lentelei `COUNT(*)` prieš → ALTER → variklio patikra → `COUNT(*)` po.
+
+**Nepriklausoma patikra:** 177 lentelių eilutės prieš/po — 8 skirtumai, VISI
+į didėjimo pusę. Septyni akivaizdūs (sesijos, ActionScheduler, snippetai).
+Aštuntas — `options` +395 — nenurašytas į „cache", o pamatuotas: 711 iš 1 677
+yra transient'ai, realių nustatymų 966.
+
+**Kontroliniai skaičiai sutapo su nepriklausomais šaltiniais:** prekyboje
+2 615 · juodraščiai 1 134 (savininko ekrano kopija) · feeding_rows 5 549 ·
+ps_pets 69 (§8g atstatymo testo skaičiai) · lietuviškos raidės išliko ·
+ROLLBACK veikia (MyISAM to nemokėjo).
+
+**Vizuali regresija:** parduotuvė, katalogas, užsakymai, WP prekių sąrašas —
+200, JS klaidų 0.
+
+### ŠAKNIS — `default_storage_engine=MyISAM`
+
+Serverio nustatymas, mums nepasiekiamas. **Be jo konversija būtų vienkartinis
+valymas** — kiekviena nauja lentelė gimtų MyISAM ir po kelių mėnesių viskas
+grįžtų.
+
+`petshop-innodb.php` v1.0 (mu-plugin, 2 126 B): `query` filtras pagauna TIK
+`CREATE TABLE` ir prideda `ENGINE=InnoDB`. Išimtys: `... LIKE ...`,
+jau nurodytas `ENGINE=`, `CREATE INDEX`, `TEMPORARY`.
+
+**Kaina išmatuota:** užklausų puslapiui 70 → 70 (nulis pridėtų) · titulinis
+1 777 → 1 672 ms (skirtumas triukšme). Atmestas `SET SESSION` variantas —
+jis būtų kainavęs po vieną DB užklausą kiekvienam puslapio atidarymui.
+
+**Patikra:** `CREATE TABLE` be ENGINE → InnoDB ✅ · `dbDelta` → InnoDB ✅.
+
+> **LAIKINA APEITIS.** Q-ENGINE: paklausti serveriai.lt, ar keis
+> `default_storage_engine` paskyros lygmeniu. Pakeitus — `petshop-innodb.php`
+> galima tiesiog ištrinti.
+
+### RADINYS ŠALIA — mu-plugins svoris kliento pusėje
+
+52 failai, 1 746 KB, kraunasi VISADA, ir kliento puslapyje. Tarp jų
+`petshop-katalogas.php` 433 KB, `petshop-desk.php` 112 KB,
+`petshop-gavimas.php` 95 KB, `petshop-akcijos.php` 94 KB — administravimo
+įrankiai, kurių pirkėjas nemato. **Kaina NEIŠMATUOTA** (OPcache didžiąją
+parsinimo dalį panaikina). Kandidatas atskiram darbui: pirma matavimas,
+paskui išvada apie `is_admin()` sąlygą.
 
 ---
 
