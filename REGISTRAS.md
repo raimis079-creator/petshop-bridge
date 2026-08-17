@@ -449,6 +449,79 @@ paskui išvada apie `is_admin()` sąlygą.
 
 ---
 
+## 8k. SANDĖLIŲ MODELIS — 2026-08-17 RADINIAI [S920–S970]
+
+### §29 fulfillment — audito prielaida buvo klaidinga
+```
+palygintos VISOS 3 749 prekės: resolve() vs _ps_sandelis
+sutampa 3 732 (99,5 %) · nesutampa 17
+iš 17 resolveris TEISUS 12 kartų — klaidingas dažniau _ps_sandelis
+```
+Auditas siūlė perjungti resolverį skaityti `_ps_sandelis`. **Tai būtų
+regresija**: 6 iš nesutapimų yra rinkinių laukai (`_ps_laukas=yes`), kuriems
+`_ps_sandelis=vf` yra klaida, o resolveris atsako teisingai.
+Iš 12 §29 punktų nuo resolverio priklauso 3 (2, 3, 12).
+Pilnai: `dokumentai/petshop_fulfillment_tyrimas_2026-08-17.md`.
+
+**Neuždaryta:** 34909 FLEXI publish be `_ps_sandelis` ir be registro įrašo
+(+4 tokios) — naujos prekės į `ps_sources` nepatenka. `ps_sources` 6 įrašai
+su `source='VF'` DIDŽIOSIOMIS.
+
+### Paslėpta prekė rinkinyje — VEIKIA (empiriškai, S930–S934)
+```
+publish + hidden  → MnM priima, į krepšelį PAVYKO, klaidų 0
+draft             → NEVEIKTŲ (MnM tikrina tik statusą)
+priedas: MnM paslėptai prekei NEGENERUOJA nuorodos į jos puslapį
+```
+`WC_MNM_Child_Item::is_visible()` tikrina TIK `post_status`, katalogo
+matomumas jam nerūpi. Testinės prekės sukurtos ir ištrintos, liko 0.
+
+### Dvigubų šaltinių NĖRA, bet 27 prekės ne ten, kur turėtų
+```
+ps_sources: 3 828 eilutės / 3 828 prekės — po vieną kiekvienai
+prekių su 2+ šaltiniais: 0 · _own_stock_qty>0: 0
+```
+Bet pjūvis **pagal pavadinimą** (savininko nurodymu) parodė:
+```
+27 Josera/JosiDog/Exclusion/GreenPetFood prekės su _ps_sandelis=av
+nė viena neturi _vf_cost · 11 turi VF formato SKU
+realūs likučiai: Intestinal 18/39/41 vnt., konservai 17–32
+4 PUBLISH su likučiu 0 (18563, 18569, 18608, 18623) — VF tuo metu turi
+```
+
+### Kodėl jos ten — NE BANAS, o nesuporavimas
+`block_vf_create()` v1.5.16 (S100) modelis: Legacy duoda pavadinimą,
+aprašymą ir **pardavimo kainą**; VF duoda savikainą + `_vf_qty`.
+Match raktas: VF `sku_id` ↔ Legacy `_vf_supplier_sku`.
+```
+prekių su _vf_supplier_sku   1 163   (visos ir su _vf_qty)
+tų 27 suporuota                  0
+tų 27 _manual_price_override     0   ← apsaugos NĖRA
+```
+**Modelis veikia — 1 163 prekės tai įrodo.** Tos 27 stovi už suporavimo
+slenksčio: SKU teisingas, bet `_sku` lauke, ne `_vf_supplier_sku`.
+
+> **ĮSPĖJIMAS:** nuėmus `block_vf_create` grįžtų 78 dublikatai per importą
+> tiems 1 163, o šios 27 vis tiek liktų nesuporuotos. Problema ne bane.
+
+### Neuždaryta — rytdienai
+```
+Q-VF-XML   ar tie 27 SKU ŠIANDIEN yra VF XML sraute
+Q-VF-KAINA ar VF update rašo į kainos laukus — KOMENTARAS sako „ne",
+           kodas NEPERSKAITYTAS (tiltas lūžo 4-tą kartą)
+Q-EXPORT   savininko eksportas iš gyvosios petshop.lt — įrodymas, ar
+           18/39/41 vnt. realiai lentynoje. Apimtis TIK AV prekėms;
+           tikrasis perkėlimas T-3, kai katalogas užšaldytas
+```
+
+### Savikainos spraga (negrįžtama)
+`_ps_savikaina_vnt` minimas tik `petshop-statistika.php` ir tik kaip
+konstanta. Fiksavimo pagal eilutės `_ps_source` NĖRA. Šiandien nekliudo
+(dvigubų 0), bet atsiradus pirmai dvigubai prekei praėjusio mėnesio pelno
+nebeperskaičiuosi.
+
+---
+
 ## 8d. B2 INFRASTRUKTŪRA — PASTATYTA IR ĮRODYTA (2026-08-03 vakaras)
 
 ### Kas veikia (visi punktai patikrinti realiais veiksmais, ne nustatymų skaitymu)
