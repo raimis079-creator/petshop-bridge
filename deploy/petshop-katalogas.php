@@ -6189,7 +6189,7 @@ class Petshop_Katalogas {
 				return {proc:Math.round((be-cost)/be*1000)/10, eur:Math.round((be-cost)*100)/100, cost:cost};
 			}
 			function atverkLangeli(td){
-				var sp=td.querySelector(".av-rodo, .kaina-rodo");
+				var sp=td.querySelector(".av-rodo, .kaina-rodo, .sav-rodo");
 				if(!sp) return;
 				var st=td.dataset.st;
 				var esama=pak[st][td.dataset.id];
@@ -6309,7 +6309,7 @@ class Petshop_Katalogas {
 				pak={av:{},kaina:{}};
 				langeliai().forEach(function(td){
 					var inp=td.querySelector(".av-ivestis"); if(inp) inp.remove();
-					var sp=td.querySelector(".av-rodo, .kaina-rodo");
+					var sp=td.querySelector(".av-rodo, .kaina-rodo, .sav-rodo");
 					if(sp) sp.hidden=false;
 					if(td.classList.contains("pakeista")){ td.classList.remove("pakeista","persp"); grazintiRodini(td); }
 				});
