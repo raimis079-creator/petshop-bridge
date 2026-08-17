@@ -782,7 +782,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Katalogas {
 
-	const VERSIJA   = '8.3';
+	const VERSIJA   = '8.4';
 	const PVM       = 0.21;
 	const PUSLAPIS  = 50;
 
@@ -3850,21 +3850,47 @@ class Petshop_Katalogas {
 
 			$s_list = self::saltiniai_prekei( $pid, isset( $reg[ $pid ] ) ? $reg[ $pid ] : array(), $m );
 
+			/* v8.4: BUVIMAS ir VYKDYMAS atskirti.
+			   `sand` = is kur siunciam (viena reiksme, kaip ir buvo).
+			   `turi_*` = ar TOJE vietoje yra likutis (kelios vienu metu).
+			   Del to preke, gulinti ir AV, ir VF, nebedingsta is filtro.
+			   Savikaina renkama i du atskirus laukus, o aktyvioji
+			   pasirenkama pagal AV likuti (savininko sprendimas 2026-08-17):
+			   AV turi -> AV savikaina; AV tuscias -> tiekejo. */
 			$av = null; $tiek = null; $sand = ''; $ssku = ''; $sync = null; $cost = null;
+			$cost_av = null; $cost_tiek = null;
+			$turi = array( 'av' => false, 'vf' => false, 'zb' => false );
 			foreach ( $s_list as $s ) {
-				if ( $s['source'] === 'av' ) {
+				$src = strtolower( trim( (string) $s['source'] ) );
+				if ( $src === 'av' ) {
 					$av = $s['stock_qty'];
-					if ( $cost === null ) { $cost = $s['cost_net']; }
+					if ( $cost_av === null ) { $cost_av = $s['cost_net']; }
 					if ( $sand === '' ) { $sand = 'av'; }
+					if ( $av !== null && (int) $av > 0 ) { $turi['av'] = true; }
 				} else {
 					$tiek = $s['stock_qty'];
-					$sand = $s['source'];
+					$sand = $src;
 					$ssku = (string) $s['supplier_sku'];
 					$sync = $s['synced_at'];
-					if ( $s['cost_net'] !== null ) { $cost = $s['cost_net']; }
+					if ( $s['cost_net'] !== null ) { $cost_tiek = $s['cost_net']; }
+					if ( isset( $turi[ $src ] ) && $tiek !== null && (int) $tiek > 0 ) { $turi[ $src ] = true; }
 				}
 			}
 			if ( $sand === '' ) { $sand = (string) $mv( '_ps_sandelis' ); }
+			/* v8.4: sandelis VISADA mazosiomis. Gavimas (petshop-gavimas.php:434)
+			   ir laukai (petshop-laukai.php:581) raso didziosiomis; normalizuojam
+			   skaitymo vietoje, kad nesvarbu butu, kas ir kaip irase. */
+			$sand = strtolower( trim( (string) $sand ) );
+
+			/* AKTYVIOJI savikaina. Iki v8.4 tiekejo saka perrasydavo AV
+			   savikaina besalygiskai — dvigubai prekei butu laimejes tiekejas. */
+			if ( $av !== null && (int) $av > 0 && $cost_av !== null ) {
+				$cost = $cost_av;
+			} elseif ( $cost_tiek !== null ) {
+				$cost = $cost_tiek;
+			} else {
+				$cost = $cost_av;
+			}
 
 			/* v5.8: SAVIKAINA — tiekejo pateikta kaina YRA musu savikaina
 			   (savininko sprendimas 2026-08-11).
@@ -3930,6 +3956,13 @@ class Petshop_Katalogas {
 				'price' => $kaina,
 				'sale'  => $akcija,
 				'cost'  => $cost,
+				/* v8.4: abi savikainos matomos atskirai — filtruoti galima
+				   ir „kur AV pigiau nei tiekejo", o tai pirkimo sprendimas. */
+				'cost_av'   => $cost_av,
+				'cost_tiek' => $cost_tiek,
+				'turi_av'   => $turi['av'],
+				'turi_vf'   => $turi['vf'],
+				'turi_zb'   => $turi['zb'],
 				'marza' => $marza,
 				'grind' => self::grindys_prekei( $kats ),
 				'kat'   => $kats,
@@ -4279,81 +4312,20 @@ class Petshop_Katalogas {
 	 * ta pati „Be EAN" eilė veikia ir prekyboje, ir juodraščiuose, bet niekada
 	 * nemaišo abiejų vienoje krūvoje.
 	 */
+	/**
+	 * v8.4: eilių skaičiai per tą patį sąlygų variklį.
+	 *
+	 * Anksčiau `eiles()` ir `filtruoti()` turėjo DVI atskiras to paties
+	 * dalyko kopijas — todėl kairėje galėjo rodyti vieną skaičių, o
+	 * atidarius eilę rasti kitą. Dabar šaltinis vienas.
+	 */
 	public static function eiles( $prekes, $kruva ) {
-		$e = array_fill_keys( array(
-			'visos_kruvoje','zemiau_ribos','be_savikainos',
-			'uzsakyti','av_pasibaige',
-			'pr_foto','pr_apras','pr_ean','pr_sync','be_saltinio',
-			/* v2.9 */
-			'baigiasi','negyvos','skolos',
-			/* v5.1 · v5.4 */
-			'gi_pasibaige','gi_kritine','gi_arteja',
-			/* v5.6: „Duomenu skolos" isskaidytos i konkrecius laukus */
-			'sk_savikaina','sk_serimo_lentele','sk_analitines','sk_sudetis',
-			'sk_serimo_instr','sk_aprasymas','sk_pakuotes_dydis','sk_gyvuno_rusis',
-		), 0 );
-		$gir = self::gi_ribos();
-		$nd  = self::nepard_riba();
-
+		$sal = self::eiliu_salygos();
+		$e   = array_fill_keys( array_keys( $sal ), 0 );
 		foreach ( $prekes as $r ) {
 			if ( ! self::kruvoje( $r, $kruva ) ) { continue; }
-			$e['visos_kruvoje']++;
-
-			if ( $r['cost'] === null ) { $e['be_savikainos']++; }
-			elseif ( $r['marza'] !== null && $r['marza'] < $r['grind'] ) { $e['zemiau_ribos']++; }
-
-			if ( $r['pard'] <= 0 ) { $e['uzsakyti']++; }
-			if ( $r['av'] !== null && (int) $r['av'] === 0 ) { $e['av_pasibaige']++; }
-			if ( ! $r['foto'] ) { $e['pr_foto']++; }
-			if ( ! $r['apras'] ) { $e['pr_apras']++; }
-			if ( $r['ean'] === '' ) { $e['pr_ean']++; }
-			if ( $r['nesalt'] ) { $e['be_saltinio']++; }
-			if ( in_array( $r['sand'], array( 'vf', 'zb' ), true ) && self::pasenes( $r['sync'] ) ) { $e['pr_sync']++; }
-
-			/* --- v2.9 eiles --- */
-
-			/* Baigiasi greiciau nei tiekiama. */
-			if ( $r['dienu'] !== null && $r['dienu'] <= 14 ) { $e['baigiasi']++; }
-
-			/* v5.2: NEPARDUODAMA — TIK AV. Dropship prekes guli pas tiekeja,
-			   pinigu nesaisto, todel i sia eile joms vietos nera.
-			   Riba pasirenkama (60/90/180/360 arba nuo–iki), o skaicius imamas
-			   nuo paskutinio pardavimo — todel vakar publikuota preke cia
-			   neatsiranda, kol nepraeis pati riba. */
-			if ( $r['sand'] === 'av' && $r['av'] !== null && (int) $r['av'] > 0
-				&& $r['nepard'] !== null && $r['nepard'] >= $nd['nuo']
-				&& ( $nd['iki'] === null || $r['nepard'] <= $nd['iki'] ) ) { $e['negyvos']++; }
-
-			/* Duomenu skolos — nepilnos, bet TIK prekyboje esancios. */
-			if ( $r['pbalas'] !== null && $r['pbalas'] < 100 && $r['st'] === 'publish' ) {
-				$e['skolos']++;
-				/* v5.6: bendras skaicius 1 960 nesako, KA daryti. Isskaidyta i
-				   konkrecias eiles: atsidarai, sutvarkai, preke is eiles
-				   dingsta. Vertikalus bruksniai butini — be ju „sudetis"
-				   sutaptu su „analitines sudedamosios dalys". */
-				$kod = $r['pkodai'];
-				if ( $kod !== '' ) {
-					if ( strpos( $kod, '|savikaina|' ) !== false )      { $e['sk_savikaina']++; }
-					if ( strpos( $kod, '|serimo_lentele|' ) !== false ) { $e['sk_serimo_lentele']++; }
-					if ( strpos( $kod, '|analitines|' ) !== false )     { $e['sk_analitines']++; }
-					if ( strpos( $kod, '|sudetis|' ) !== false )        { $e['sk_sudetis']++; }
-					if ( strpos( $kod, '|serimo_instr|' ) !== false )   { $e['sk_serimo_instr']++; }
-					if ( strpos( $kod, '|aprasymas|' ) !== false )      { $e['sk_aprasymas']++; }
-					if ( strpos( $kod, '|pakuotes_dydis|' ) !== false ) { $e['sk_pakuotes_dydis']++; }
-					if ( strpos( $kod, '|gyvuno_rusis|' ) !== false )   { $e['sk_gyvuno_rusis']++; }
-				}
-			}
-
-			/* v5.1: GERIAUSIA IKI. Dvi eilės, ne viena: 30 dienų prekė jau
-			   reikalauja nuolaidos, o 90 dienų — dar spėsi parduoti įprasta
-			   kaina, jei imsiesi dabar. Sumaišius abi į vieną krūvą, skubūs
-			   atvejai paskęsta tarp neskubių. */
-			if ( $r['gid'] !== null ) {
-				/* v5.4: pasibaigusios — ATSKIRAI. Tokia preke ne nuolaidos
-				   klausimas, o nurasymo: parduoti jos nebegalima. */
-				if ( $r['gid'] < 0 ) { $e['gi_pasibaige']++; }
-				elseif ( $r['gid'] <= $gir['kritine'] ) { $e['gi_kritine']++; }
-				elseif ( $r['gid'] <= $gir['arteja'] ) { $e['gi_arteja']++; }
+			foreach ( $sal as $view => $s ) {
+				if ( self::atitinka( $r, $s ) ) { $e[ $view ]++; }
 			}
 		}
 		return $e;
@@ -4524,85 +4496,268 @@ class Petshop_Katalogas {
 
 	/* ==================== FILTRAVIMAS ==================== */
 
+
+	/* ==================== v8.4 · SĄLYGŲ VARIKLIS ====================
+	 *
+	 * Iki v8.4 langas turėjo DVI atskiras sistemas: darbo eilės (`view`)
+	 * buvo užkoduotos `switch` sakinyje, o filtrai — šeši fiksuoti
+	 * palyginimai. Eilė nebuvo išreikšta filtru, todėl jos NEBUVO GALIMA
+	 * PATIKSLINTI: „Be savikainos" duodavo 443, bet pasakyti „iš jų tik
+	 * tos, kurios turi likutį" buvo neįmanoma.
+	 *
+	 * Dabar viskas yra sąlyga: laukas + operatorius + reikšmė. Eilė yra
+	 * tiesiog iš anksto paruoštas sąlygų rinkinys. Naujas laukas =
+	 * viena eilutė registre, ne naujas filtras sąsajoje.
+	 *
+	 * Jungimas — TIK IR. `turi_av` / `turi_vf` / `turi_zb` esant atskirais
+	 * laukais, ARBA poreikis dingsta: „AV arba VF" virsta dviem sąlygom.
+	 */
+
+	/** Laukų registras. Tipas lemia, kokie operatoriai siūlomi sąsajoje. */
+	public static function laukai() {
+		return array(
+			/* tapatybė */
+			'n'          => array( 'g' => 'Prekė',    'v' => 'Pavadinimas',        't' => 'tekst' ),
+			'sku'        => array( 'g' => 'Prekė',    'v' => 'SKU',                't' => 'tekst' ),
+			'ean'        => array( 'g' => 'Prekė',    'v' => 'EAN',                't' => 'tekst' ),
+			'ssku'       => array( 'g' => 'Prekė',    'v' => 'Tiekėjo kodas',      't' => 'tekst' ),
+			'br'         => array( 'g' => 'Prekė',    'v' => 'Brendas',            't' => 'sar' ),
+			'kat'        => array( 'g' => 'Prekė',    'v' => 'Kategorija',         't' => 'mas' ),
+			'st'         => array( 'g' => 'Prekė',    'v' => 'Būsena',             't' => 'sar' ),
+			'tipas'      => array( 'g' => 'Prekė',    'v' => 'Tipas',              't' => 'sar' ),
+			/* vieta ir likučiai */
+			'sand'       => array( 'g' => 'Vieta',    'v' => 'Vykdymo sandėlis',   't' => 'sar' ),
+			'turi_av'    => array( 'g' => 'Vieta',    'v' => 'Guli AV',            't' => 'log' ),
+			'turi_vf'    => array( 'g' => 'Vieta',    'v' => 'Guli VF',            't' => 'log' ),
+			'turi_zb'    => array( 'g' => 'Vieta',    'v' => 'Guli ZB',            't' => 'log' ),
+			'av'         => array( 'g' => 'Vieta',    'v' => 'AV likutis',         't' => 'sk' ),
+			'tiek'       => array( 'g' => 'Vieta',    'v' => 'Tiekėjo likutis',    't' => 'sk' ),
+			'pard'       => array( 'g' => 'Vieta',    'v' => 'Parduodama',         't' => 'sk' ),
+			'dienu'      => array( 'g' => 'Vieta',    'v' => 'Dienų atsargai',     't' => 'sk' ),
+			'nepard'     => array( 'g' => 'Vieta',    'v' => 'Neparduodama d.',    't' => 'sk' ),
+			'v30'        => array( 'g' => 'Vieta',    'v' => 'Pardavimai 30 d.',   't' => 'sk' ),
+			'abc'        => array( 'g' => 'Vieta',    'v' => 'ABC',                't' => 'sar' ),
+			/* pinigai */
+			'price'      => array( 'g' => 'Pinigai',  'v' => 'Kaina su PVM',       't' => 'sk' ),
+			'cost'       => array( 'g' => 'Pinigai',  'v' => 'Savikaina',          't' => 'sk' ),
+			'cost_av'    => array( 'g' => 'Pinigai',  'v' => 'AV savikaina',       't' => 'sk' ),
+			'cost_tiek'  => array( 'g' => 'Pinigai',  'v' => 'Tiekėjo savikaina',  't' => 'sk' ),
+			'marza'      => array( 'g' => 'Pinigai',  'v' => 'Marža %',            't' => 'sk' ),
+			'pmarza'     => array( 'g' => 'Pinigai',  'v' => 'Marža €',            't' => 'sk' ),
+			'grind'      => array( 'g' => 'Pinigai',  'v' => 'Maržos riba',        't' => 'sk' ),
+			'siul'       => array( 'g' => 'Pinigai',  'v' => 'Siūloma kaina',      't' => 'sk' ),
+			'sale'       => array( 'g' => 'Pinigai',  'v' => 'Akcijos kaina',      't' => 'sk' ),
+			'lock'       => array( 'g' => 'Pinigai',  'v' => 'Rankinė kaina',      't' => 'log' ),
+			/* turinys */
+			'foto'       => array( 'g' => 'Turinys',  'v' => 'Turi nuotrauką',     't' => 'log' ),
+			'apras'      => array( 'g' => 'Turinys',  'v' => 'Turi aprašymą',      't' => 'log' ),
+			'pbalas'     => array( 'g' => 'Turinys',  'v' => 'Pilnumas %',         't' => 'sk' ),
+			'skola'      => array( 'g' => 'Turinys',  'v' => 'Duomenų skola',      't' => 'sar' ),
+			/* kita */
+			'gid'        => array( 'g' => 'Kita',     'v' => 'Dienų iki geriausia iki', 't' => 'sk' ),
+			'gikiek'     => array( 'g' => 'Kita',     'v' => 'Partijos kiekis',    't' => 'sk' ),
+			'nesalt'     => array( 'g' => 'Kita',     'v' => 'Be šaltinio',        't' => 'log' ),
+			'delist'     => array( 'g' => 'Kita',     'v' => 'Išimta',             't' => 'log' ),
+			'sync_pasenes' => array( 'g' => 'Kita',   'v' => 'Sinchronizacija pasenusi', 't' => 'log' ),
+			'upd'        => array( 'g' => 'Kita',     'v' => 'Atnaujinta',         't' => 'data' ),
+		);
+	}
+
+	/** Lauko reikšmė. Keli laukai skaičiuojami, ne saugomi. */
+	private static function lauko_reiksme( $r, $l ) {
+		if ( $l === 'sync_pasenes' ) {
+			return in_array( $r['sand'], array( 'vf', 'zb' ), true ) && self::pasenes( $r['sync'] );
+		}
+		if ( $l === 'skola' ) { return isset( $r['pkodai'] ) ? $r['pkodai'] : ''; }
+		return array_key_exists( $l, $r ) ? $r[ $l ] : null;
+	}
+
+	private static function tuscia( $v ) {
+		if ( $v === null ) { return true; }
+		if ( is_array( $v ) ) { return count( $v ) === 0; }
+		if ( is_bool( $v ) ) { return false; }
+		return trim( (string) $v ) === '';
+	}
+
+	/** Viena sąlyga: array( 'l' => laukas, 'op' => operatorius, 'r' => reikšmė ) */
+	public static function salyga( $r, $s ) {
+		$l  = isset( $s['l'] ) ? $s['l'] : '';
+		$op = isset( $s['op'] ) ? $s['op'] : '';
+		$a  = array_key_exists( 'r', $s ) ? $s['r'] : null;
+		$v  = self::lauko_reiksme( $r, $l );
+
+		switch ( $op ) {
+			case 'tuscia':    return self::tuscia( $v );
+			case 'netuscia':  return ! self::tuscia( $v );
+			case 'taip':      return (bool) $v === true;
+			case 'ne':        return (bool) $v === false;
+
+			case '=':   if ( self::tuscia( $v ) ) { return false; }
+			            return is_numeric( $v ) && is_numeric( $a )
+			                 ? (float) $v == (float) $a : (string) $v === (string) $a;
+			case '!=':  return ! self::salyga( $r, array( 'l' => $l, 'op' => '=', 'r' => $a ) );
+			case '>':   return ! self::tuscia( $v ) && (float) $v >  (float) $a;
+			case '<':   return ! self::tuscia( $v ) && (float) $v <  (float) $a;
+			case '>=':  return ! self::tuscia( $v ) && (float) $v >= (float) $a;
+			case '<=':  return ! self::tuscia( $v ) && (float) $v <= (float) $a;
+			case 'tarp': return ! self::tuscia( $v ) && is_array( $a )
+			                 && (float) $v >= (float) $a[0] && (float) $v <= (float) $a[1];
+
+			/* palyginimas su KITU lauku — „marža žemiau savo kategorijos ribos" */
+			case '<lauk': $b = self::lauko_reiksme( $r, (string) $a );
+			              return ! self::tuscia( $v ) && ! self::tuscia( $b ) && (float) $v <  (float) $b;
+			case '>lauk': $b = self::lauko_reiksme( $r, (string) $a );
+			              return ! self::tuscia( $v ) && ! self::tuscia( $b ) && (float) $v >  (float) $b;
+
+			case 'vienas_is':     return ! self::tuscia( $v )
+			                        && in_array( (string) $v, array_map( 'strval', (array) $a ), true );
+			case 'ne_vienas_is':  return self::tuscia( $v )
+			                        || ! in_array( (string) $v, array_map( 'strval', (array) $a ), true );
+
+			case 'turi':    return is_array( $v ) && in_array( $a, $v, true );
+			case 'neturi':  return ! ( is_array( $v ) && in_array( $a, $v, true ) );
+
+			case 'yra':     return ! self::tuscia( $v )
+			                    && mb_strpos( mb_strtolower( (string) $v ), mb_strtolower( (string) $a ) ) !== false;
+			case 'nera':    return ! self::salyga( $r, array( 'l' => $l, 'op' => 'yra', 'r' => $a ) );
+			case 'prasideda': return ! self::tuscia( $v )
+			                    && mb_strpos( mb_strtolower( (string) $v ), mb_strtolower( (string) $a ) ) === 0;
+
+			/* skolos žyma: pkodai laiko „|raktas|raktas|" */
+			case 'skola_yra': return ! self::tuscia( $v )
+			                    && strpos( (string) $v, '|' . $a . '|' ) !== false;
+
+			default: return true;
+		}
+	}
+
+	/** Visos sąlygos — IR. Tuščias rinkinys praleidžia viską. */
+	public static function atitinka( $r, $salygos ) {
+		if ( ! is_array( $salygos ) || ! $salygos ) { return true; }
+		foreach ( $salygos as $s ) {
+			if ( ! is_array( $s ) || ! isset( $s['l'] ) ) { continue; }
+			if ( ! self::salyga( $r, $s ) ) { return false; }
+		}
+		return true;
+	}
+
+	/**
+	 * Darbo eilės kaip sąlygų rinkiniai.
+	 *
+	 * Perrašyta 1:1 pagal senąjį `switch` — kontrolinė patikra reikalauja,
+	 * kad kiekvienos eilės skaičius nepasikeistų nė vienetu.
+	 */
+	public static function eiliu_salygos() {
+		$nd = self::nepard_riba();
+		$gr = self::gi_ribos();
+		$sk = array( 'sk_savikaina' => 'savikaina', 'sk_serimo_lentele' => 'serimo_lentele',
+			'sk_analitines' => 'analitines', 'sk_sudetis' => 'sudetis',
+			'sk_serimo_instr' => 'serimo_instr', 'sk_aprasymas' => 'aprasymas',
+			'sk_pakuotes_dydis' => 'pakuotes_dydis', 'sk_gyvuno_rusis' => 'gyvuno_rusis' );
+
+		$e = array(
+			'visos_kruvoje' => array(),
+			'be_savikainos' => array( array( 'l' => 'cost', 'op' => 'tuscia' ) ),
+			'zemiau_ribos'  => array( array( 'l' => 'marza', 'op' => 'netuscia' ),
+			                          array( 'l' => 'marza', 'op' => '<lauk', 'r' => 'grind' ) ),
+			'uzsakyti'      => array( array( 'l' => 'pard', 'op' => '<=', 'r' => 0 ) ),
+			'av_pasibaige'  => array( array( 'l' => 'av', 'op' => 'netuscia' ),
+			                          array( 'l' => 'av', 'op' => '=', 'r' => 0 ) ),
+			'pr_foto'       => array( array( 'l' => 'foto', 'op' => 'ne' ) ),
+			'pr_apras'      => array( array( 'l' => 'apras', 'op' => 'ne' ) ),
+			'pr_ean'        => array( array( 'l' => 'ean', 'op' => 'tuscia' ) ),
+			'pr_sync'       => array( array( 'l' => 'sync_pasenes', 'op' => 'taip' ) ),
+			'be_saltinio'   => array( array( 'l' => 'nesalt', 'op' => 'taip' ) ),
+			'baigiasi'      => array( array( 'l' => 'dienu', 'op' => 'netuscia' ),
+			                          array( 'l' => 'dienu', 'op' => '<=', 'r' => 14 ) ),
+			'negyvos'       => array( array( 'l' => 'sand', 'op' => '=', 'r' => 'av' ),
+			                          array( 'l' => 'av', 'op' => '>', 'r' => 0 ),
+			                          array( 'l' => 'nepard', 'op' => 'netuscia' ),
+			                          array( 'l' => 'nepard', 'op' => '>=', 'r' => $nd['nuo'] ) ),
+			'skolos'        => array( array( 'l' => 'pbalas', 'op' => 'netuscia' ),
+			                          array( 'l' => 'pbalas', 'op' => '<', 'r' => 100 ),
+			                          array( 'l' => 'st', 'op' => '=', 'r' => 'publish' ) ),
+			'gi_pasibaige'  => array( array( 'l' => 'gid', 'op' => 'netuscia' ),
+			                          array( 'l' => 'gid', 'op' => '<', 'r' => 0 ) ),
+			'gi_kritine'    => array( array( 'l' => 'gid', 'op' => '>=', 'r' => 0 ),
+			                          array( 'l' => 'gid', 'op' => '<=', 'r' => $gr['kritine'] ) ),
+			'gi_arteja'     => array( array( 'l' => 'gid', 'op' => '>', 'r' => $gr['kritine'] ),
+			                          array( 'l' => 'gid', 'op' => '<=', 'r' => $gr['arteja'] ) ),
+		);
+		if ( $nd['iki'] !== null ) {
+			$e['negyvos'][] = array( 'l' => 'nepard', 'op' => '<=', 'r' => $nd['iki'] );
+		}
+		foreach ( $sk as $view => $raktas ) {
+			$e[ $view ] = array(
+				array( 'l' => 'st', 'op' => '=', 'r' => 'publish' ),
+				array( 'l' => 'skola', 'op' => 'skola_yra', 'r' => $raktas ),
+			);
+		}
+		return $e;
+	}
+
+	/** Seni URL filtrai -> sąlygos. Kad esamos nuorodos ir eilės veiktų. */
+	public static function senas_i_salygas( $f ) {
+		$s = array();
+		if ( ! empty( $f['sand'] ) )  { $s[] = array( 'l' => 'sand',  'op' => '=', 'r' => strtolower( $f['sand'] ) ); }
+		if ( ! empty( $f['brand'] ) ) { $s[] = array( 'l' => 'br',    'op' => '=', 'r' => $f['brand'] ); }
+		if ( ! empty( $f['kat'] ) )   { $s[] = array( 'l' => 'kat',   'op' => 'turi', 'r' => $f['kat'] ); }
+		if ( ! empty( $f['tipas'] ) ) { $s[] = array( 'l' => 'tipas', 'op' => '=', 'r' => $f['tipas'] ); }
+
+		if ( ! empty( $f['likutis'] ) ) {
+			switch ( $f['likutis'] ) {
+				case 'av_turi':  $s[] = array( 'l' => 'av', 'op' => '>', 'r' => 0 ); break;
+				case 'av_nulis': $s[] = array( 'l' => 'av', 'op' => 'netuscia' );
+				                 $s[] = array( 'l' => 'av', 'op' => '=', 'r' => 0 ); break;
+				case 'tiekejas': $s[] = array( 'l' => 'av', 'op' => '<=', 'r' => 0 );
+				                 $s[] = array( 'l' => 'tiek', 'op' => '>', 'r' => 0 ); break;
+				case 'niekas':   $s[] = array( 'l' => 'pard', 'op' => '<=', 'r' => 0 ); break;
+			}
+		}
+		if ( ! empty( $f['marza'] ) ) {
+			switch ( $f['marza'] ) {
+				case 'nera': $s[] = array( 'l' => 'marza', 'op' => 'tuscia' ); break;
+				case 'zem':  $s[] = array( 'l' => 'marza', 'op' => 'netuscia' );
+				             $s[] = array( 'l' => 'marza', 'op' => '<lauk', 'r' => 'grind' ); break;
+				case 'lt10': $s[] = array( 'l' => 'marza', 'op' => '<', 'r' => 10 ); break;
+				case 'lt20': $s[] = array( 'l' => 'marza', 'op' => '<', 'r' => 20 ); break;
+				case 'lt30': $s[] = array( 'l' => 'marza', 'op' => '<', 'r' => 30 ); break;
+				case 'gt40': $s[] = array( 'l' => 'marza', 'op' => '>', 'r' => 40 ); break;
+			}
+		}
+		return $s;
+	}
+
+	/**
+	 * v8.4: filtravimas per sąlygų variklį.
+	 *
+	 * Trys sluoksniai lieka tie patys, bet 2 ir 3 dabar yra sąlygos:
+	 *   1) KRŪVA        — `kruvoje()`, nepaliesta
+	 *   2) EILĖ         — `eiliu_salygos()[ view ]`
+	 *   3) FILTRAI      — seni URL parametrai + laisvos sąlygos iš `$f['s']`
+	 *
+	 * `$f['s']` yra naujas: laisvas sąlygų masyvas. Jei jo nėra, elgesys
+	 * identiškas senajam — todėl visos esamos nuorodos veikia toliau.
+	 */
 	public static function filtruoti( $prekes, $f ) {
+		$eiles = self::eiliu_salygos();
+		$view  = isset( $f['view'] ) ? $f['view'] : 'visos_kruvoje';
+		$se    = isset( $eiles[ $view ] ) ? $eiles[ $view ] : array();
+		$sf    = self::senas_i_salygas( $f );
+		$sl    = ( isset( $f['s'] ) && is_array( $f['s'] ) ) ? $f['s'] : array();
+		$visos = array_merge( $se, $sf, $sl );
+
+		$q = isset( $f['q'] ) ? trim( (string) $f['q'] ) : '';
+		if ( $q !== '' ) { $q = mb_strtolower( $q ); }
+
 		$out = array();
 		foreach ( $prekes as $r ) {
-
-			/* 1) KRŪVA — visada pirma */
 			if ( ! self::kruvoje( $r, $f['kruva'] ) ) { continue; }
-
-			/* 2) EILĖ — kokią problemą tvarkom */
-			switch ( $f['view'] ) {
-				case 'visos_kruvoje': break;
-				case 'be_savikainos': if ( $r['cost'] !== null ) { continue 2; } break;
-				case 'zemiau_ribos':  if ( $r['marza'] === null || $r['marza'] >= $r['grind'] ) { continue 2; } break;
-				case 'uzsakyti':      if ( $r['pard'] > 0 ) { continue 2; } break;
-				case 'av_pasibaige':  if ( $r['av'] === null || (int) $r['av'] !== 0 ) { continue 2; } break;
-				case 'pr_foto':       if ( $r['foto'] ) { continue 2; } break;
-				case 'pr_apras':      if ( $r['apras'] ) { continue 2; } break;
-				case 'pr_ean':        if ( $r['ean'] !== '' ) { continue 2; } break;
-				case 'pr_sync':       if ( ! in_array( $r['sand'], array( 'vf','zb' ), true ) || ! self::pasenes( $r['sync'] ) ) { continue 2; } break;
-				case 'be_saltinio':   if ( ! $r['nesalt'] ) { continue 2; } break;
-				/* v2.9 */
-				case 'baigiasi':      if ( $r['dienu'] === null || $r['dienu'] > 14 ) { continue 2; } break;
-				case 'negyvos':       $ndf = self::nepard_riba();
-				                      if ( $r['sand'] !== 'av' || $r['av'] === null || (int) $r['av'] <= 0
-				                           || $r['nepard'] === null || $r['nepard'] < $ndf['nuo']
-				                           || ( $ndf['iki'] !== null && $r['nepard'] > $ndf['iki'] ) ) { continue 2; } break;
-				case 'skolos':        if ( $r['pbalas'] === null || $r['pbalas'] >= 100 || $r['st'] !== 'publish' ) { continue 2; } break;
-				/* v5.6 */
-				case 'sk_savikaina':
-				case 'sk_serimo_lentele':
-				case 'sk_analitines':
-				case 'sk_sudetis':
-				case 'sk_serimo_instr':
-				case 'sk_aprasymas':
-				case 'sk_pakuotes_dydis':
-				case 'sk_gyvuno_rusis':
-					$rk = substr( $f['view'], 3 );
-					if ( $r['st'] !== 'publish' || $r['pkodai'] === ''
-						|| strpos( $r['pkodai'], '|' . $rk . '|' ) === false ) { continue 2; }
-					break;
-				/* v5.1 */
-				case 'gi_pasibaige':  if ( $r['gid'] === null || $r['gid'] >= 0 ) { continue 2; } break;
-				case 'gi_kritine':    if ( $r['gid'] === null || $r['gid'] < 0
-				                           || $r['gid'] > self::gi_ribos()['kritine'] ) { continue 2; } break;
-				case 'gi_arteja':     $gr = self::gi_ribos();
-				                      if ( $r['gid'] === null || $r['gid'] < 0
-				                           || $r['gid'] <= $gr['kritine'] || $r['gid'] > $gr['arteja'] ) { continue 2; } break;
-				default: break;
-			}
-
-			/* 3) FILTRAI */
-			if ( $f['sand'] !== '' && $r['sand'] !== $f['sand'] ) { continue; }
-			if ( $f['brand'] !== '' && $r['br'] !== $f['brand'] ) { continue; }
-			if ( $f['kat'] !== '' && ! in_array( $f['kat'], $r['kat'], true ) ) { continue; }
-			if ( $f['tipas'] !== '' && $r['tipas'] !== $f['tipas'] ) { continue; }
-
-			if ( $f['likutis'] !== '' ) {
-				$av = (int) $r['av']; $ti = (int) $r['tiek'];
-				if ( $f['likutis'] === 'av_turi'   && $av <= 0 ) { continue; }
-				if ( $f['likutis'] === 'av_nulis'  && ! ( $r['av'] !== null && $av === 0 ) ) { continue; }
-				if ( $f['likutis'] === 'tiekejas'  && ! ( $av <= 0 && $ti > 0 ) ) { continue; }
-				if ( $f['likutis'] === 'niekas'    && $r['pard'] > 0 ) { continue; }
-			}
-
-			if ( $f['marza'] !== '' ) {
-				$m = $r['marza'];
-				if ( $f['marza'] === 'nera' ) { if ( $m !== null ) { continue; } }
-				elseif ( $m === null ) { continue; }
-				elseif ( $f['marza'] === 'zem'  && $m >= $r['grind'] ) { continue; }
-				elseif ( $f['marza'] === 'lt10' && $m >= 10 ) { continue; }
-				elseif ( $f['marza'] === 'lt20' && $m >= 20 ) { continue; }
-				elseif ( $f['marza'] === 'lt30' && $m >= 30 ) { continue; }
-				elseif ( $f['marza'] === 'gt40' && $m <= 40 ) { continue; }
-			}
-
-			if ( $f['q'] !== '' ) {
+			if ( ! self::atitinka( $r, $visos ) ) { continue; }
+			if ( $q !== '' ) {
 				$h = mb_strtolower( $r['n'] . ' ' . $r['sku'] . ' ' . $r['ean'] . ' ' . $r['ssku'] . ' ' . $r['br'] );
-				if ( mb_strpos( $h, mb_strtolower( $f['q'] ) ) === false ) { continue; }
+				if ( mb_strpos( $h, $q ) === false ) { continue; }
 			}
-
 			$out[] = $r;
 		}
 		return $out;
