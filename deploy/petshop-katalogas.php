@@ -5539,6 +5539,10 @@ class Petshop_Katalogas {
 	}
 
 	private static function lentele( $lapas, $sort, $kryp, $f ) {
+		/* v8.6: lentelė gyvena savame slinkties lauke — antraštė prilipusi,
+		   filtrai ir kairė juosta nejuda. Nuvažiavus iki 40-tos prekės vis
+		   tiek matai, kuris stulpelis yra kuris. */
+		echo '<div class="pskat-lent-lauk">';
 		echo '<table class="pskat-t"><thead><tr>';
 		echo '<th class="ck"><input type="checkbox" id="ps-visi" title="Pažymėti visas puslapyje"></th>';
 		/* v3.1: bukles taskas rikiuojamas pagal pilnumo bala. */
@@ -5783,6 +5787,7 @@ class Petshop_Katalogas {
 			echo '</tr>';
 		}
 		echo '</tbody></table>';
+		echo '</div>';
 	}
 
 	private static function puslapiavimas( $psl, $psl_n, $viso, $per, $f, $sort, $kryp ) {
@@ -7751,6 +7756,41 @@ class Petshop_Katalogas {
 	 */
 	private static function stilius_v37() {
 		echo '<style>
+		/* ==================== v8.6 · DU SLINKTIES LAUKAI ====================
+		   Iki v8.6 slinko visas puslapis: nuvažiavus iki 40-tos prekės dingdavo
+		   ir filtrai, ir kairės eilės, ir lentelės antraštė — nebežinai, kuris
+		   stulpelis marža, o kuris savikaina.
+		   Dabar viršus stovi, kairė turi savo juostą, o slenka tik prekės. */
+		.pskat-layout{height:calc(100vh - 118px);min-height:0;overflow:hidden}
+		.pskat-rail{overflow-y:auto;overflow-x:hidden;height:100%;
+			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
+		.pskat-rail::-webkit-scrollbar{width:9px}
+		.pskat-rail::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:5px}
+		.pskat-rail::-webkit-scrollbar-track{background:transparent}
+		.pskat-main{display:flex;flex-direction:column;height:100%;min-height:0;
+			padding-bottom:14px;overflow:hidden}
+		/* Filtrai, redagavimo juosta, laikotarpis — nejuda. */
+		.pskat-main > .pskat-filters,
+		.pskat-main > .pskat-red,
+		.pskat-main > .pskat-laikot{flex:none}
+		/* Prekių laukas — vienintelis, kuris slenka. */
+		.pskat-lent-lauk{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:auto;
+			border:1px solid #d3d8d2;border-radius:9px;background:#fff;
+			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
+		.pskat-lent-lauk::-webkit-scrollbar{width:11px;height:11px}
+		.pskat-lent-lauk::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:6px}
+		.pskat-lent-lauk::-webkit-scrollbar-track{background:#f2f4f1}
+		/* Rėmelį perėmė laukas — lentelei jo nebereikia, kitaip būtų dvigubas. */
+		.pskat-lent-lauk .pskat-t{border:0;border-radius:0;overflow:visible}
+		/* Antraštė prilipusi prie lauko viršaus. */
+		.pskat-lent-lauk .pskat-t thead th{position:sticky;top:0;z-index:6;
+			background:#f7f9f6;box-shadow:inset 0 -1px 0 #d3d8d2}
+		/* Suvestinė ir puslapiavimas lieka po lentele — slenka kartu su ja. */
+		.pskat-main > .pskat-suv,
+		.pskat-main > .pskat-psl{flex:none;margin-top:10px}
+		body.yra-pakeitimu .pskat-main{padding-bottom:14px}
+		/* Išsaugojimo ir masinių veiksmų juostos ir taip yra `fixed`. */
+
 		/* v8.4: sąlygos ir vaizdai — tie patys dažai kaip filtrų eilutėje,
 		   kad langas neatrodytų kaip du skirtingi langai. */
 		.pskat-sal{align-items:center;flex-wrap:wrap;gap:6px}
