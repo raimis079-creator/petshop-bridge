@@ -1,58 +1,23 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import crypto from 'crypto';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP='https://dev.avesa.lt';
-const out={versija:'G816'};
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
+const B64='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmICgoaXNzZXQoJF9HRVRbJ3BzX2c4MjAnXSk/JF9HRVRbJ3BzX2c4MjAnXTonJykgIT09ICdHODIwJykgcmV0dXJuOwogQHNldF90aW1lX2xpbWl0KDkwMCk7CiBnbG9iYWwgJHdwZGI7ICRQPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCd2Jz0+J0c4MjAnLCd0cyc9PmN1cnJlbnRfdGltZSgnbXlzcWwnKSk7CgogJGNoazEzPWZ1bmN0aW9uKCRkMTIpeyAkcz0wOyBmb3IoJGk9MDskaTwxMjskaSsrKXsgJHMgKz0gKChpbnQpJGQxMlskaV0pICogKCgkaSUyKT8zOjEpOyB9IHJldHVybiAoc3RyaW5nKSgoMTAtJHMlMTApJTEwKTsgfTsKICRvazEzPWZ1bmN0aW9uKCR2KSB1c2UoJGNoazEzKXsgcmV0dXJuIChzdHJsZW4oJHYpPT09MTMgJiYgY3R5cGVfZGlnaXQoJHYpICYmICRjaGsxMyhzdWJzdHIoJHYsMCwxMikpPT09c3Vic3RyKCR2LDEyLDEpKTsgfTsKICRvazEyPWZ1bmN0aW9uKCR2KXsgaWYoc3RybGVuKCR2KSE9PTEyIHx8ICFjdHlwZV9kaWdpdCgkdikpIHJldHVybiBmYWxzZTsgJHM9MDsgZm9yKCRpPTA7JGk8MTE7JGkrKyl7ICRzICs9ICgoaW50KSR2WyRpXSkgKiAoKCRpJTI9PT0wKT8zOjEpOyB9IHJldHVybiAoKDEwLSRzJTEwKSUxMCk9PT0oaW50KSR2WzExXTsgfTsKICRvazg9ZnVuY3Rpb24oJHYpeyBpZihzdHJsZW4oJHYpIT09OCB8fCAhY3R5cGVfZGlnaXQoJHYpKSByZXR1cm4gZmFsc2U7ICRzPTA7IGZvcigkaT0wOyRpPDc7JGkrKyl7ICRzICs9ICgoaW50KSR2WyRpXSkgKiAoKCRpJTI9PT0wKT8zOjEpOyB9IHJldHVybiAoKDEwLSRzJTEwKSUxMCk9PT0oaW50KSR2WzddOyB9OwogJG5ybT1mdW5jdGlvbigkdil7IHJldHVybiBwcmVnX3JlcGxhY2UoJy9bXjAtOV0vJywnJywgKHN0cmluZykkdik7IH07CgogJHJvd3M9JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgcC5JRCwKICAgIE1BWChDQVNFIFdIRU4gbS5tZXRhX2tleT0nX3piX2VhbicgVEhFTiBtLm1ldGFfdmFsdWUgRU5EKSB6YiwKICAgIE1BWChDQVNFIFdIRU4gbS5tZXRhX2tleT0nX2VhbicgVEhFTiBtLm1ldGFfdmFsdWUgRU5EKSBlYW4sCiAgICBNQVgoQ0FTRSBXSEVOIG0ubWV0YV9rZXk9J19nbG9iYWxfdW5pcXVlX2lkJyBUSEVOIG0ubWV0YV92YWx1ZSBFTkQpIGd1aWQsCiAgICBNQVgoQ0FTRSBXSEVOIG0ubWV0YV9rZXk9J192Zl9iYXJjb2RlJyBUSEVOIG0ubWV0YV92YWx1ZSBFTkQpIHZmLAogICAgTUFYKENBU0UgV0hFTiBtLm1ldGFfa2V5PSdfc2t1JyBUSEVOIG0ubWV0YV92YWx1ZSBFTkQpIHNrdQogIEZST00geyRQfXBvc3RzIHAgTEVGVCBKT0lOIHskUH1wb3N0bWV0YSBtIE9OIG0ucG9zdF9pZD1wLklECiAgICBBTkQgbS5tZXRhX2tleSBJTiAoJ196Yl9lYW4nLCdfZWFuJywnX2dsb2JhbF91bmlxdWVfaWQnLCdfdmZfYmFyY29kZScsJ19za3UnKQogIFdIRVJFIHAucG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcC5wb3N0X3N0YXR1cz0ncHVibGlzaCcKICBHUk9VUCBCWSBwLklEIiwgQVJSQVlfQSk7CgogJHBsYW5hcz1hcnJheSgpOyAkc3Q9YXJyYXkoJ3Zpc28nPT4wLCdrZWlzaW0nPT4wLCdwcmFsZWlzdGFfa29uZmxpa3Rhc192Zic9PjAsJ3ByYWxlaXN0YV9rb25mbGlrdGFzXzEzJz0+MCwnbmVzaWtlaWNpYSc9PjAsJ25lcmEnPT4wKTsKICRrb25mbGlrdGFpPWFycmF5KCk7CgogZm9yZWFjaCgkcm93cyBhcyAkcil7CiAgICRzdFsndmlzbyddKys7CiAgICRpZD0oaW50KSRyWydJRCddOwogICAkemI9JG5ybSgkclsnemInXSk7ICRlYW49JG5ybSgkclsnZWFuJ10pOyAkZ3VpZD0kbnJtKCRyWydndWlkJ10pOyAkdmY9JG5ybSgkclsndmYnXSk7CiAgICRnZXJpPWFycmF5KCk7IGZvcmVhY2goYXJyYXkoJ3piJz0+JHpiLCdlYW4nPT4kZWFuLCdndWlkJz0+JGd1aWQpIGFzICRrPT4kdil7IGlmKCRvazEzKCR2KSkgJGdlcmlbJHZdPSRrOyB9CgogICAvKiBLT05GTElLVEFTIEE6IGR1IHNraXJ0aW5naSBnYWxpb2phbnR5cyAxMyAqLwogICBpZihjb3VudCgkZ2VyaSk+MSl7ICRzdFsncHJhbGVpc3RhX2tvbmZsaWt0YXNfMTMnXSsrOyAka29uZmxpa3RhaVtdPWFycmF5KCdpZCc9PiRpZCwnc2t1Jz0+JHJbJ3NrdSddLCd0aXBhcyc9PidkdV9nZXJpXzEzJywncmVpa3NtZXMnPT5hcnJheV9rZXlzKCRnZXJpKSk7IGNvbnRpbnVlOyB9CiAgIC8qIEtPTkZMSUtUQVMgQjogVkYgYXRrdXJpbWFzIG5lc3V0YW1wYSBzdSB0dXJpbXUgZ2VydSAxMyAqLwogICBpZihjb3VudCgkZ2VyaSk9PT0xICYmICR2ZiE9PScnICYmIHN0cmxlbigkdmYpPT09MTIpewogICAgICRldGFsb25hcz1hcnJheV9rZXlfZmlyc3QoJGdlcmkpOwogICAgIGlmKCR2Zi4kY2hrMTMoJHZmKSAhPT0gJGV0YWxvbmFzKXsKICAgICAgICRzdFsncHJhbGVpc3RhX2tvbmZsaWt0YXNfdmYnXSsrOwogICAgICAgJGtvbmZsaWt0YWlbXT1hcnJheSgnaWQnPT4kaWQsJ3NrdSc9PiRyWydza3UnXSwndGlwYXMnPT4ndmZfdnNfbGVnYWN5JywndmZfYXRrdXJ0YSc9PiR2Zi4kY2hrMTMoJHZmKSwnZXNhbWFzJz0+JGV0YWxvbmFzKTsKICAgICAgIGNvbnRpbnVlOwogICAgIH0KICAgfQogICAkbmF1amFzPScnOwogICBpZihjb3VudCgkZ2VyaSk9PT0xKXsgJG5hdWphcz1hcnJheV9rZXlfZmlyc3QoJGdlcmkpOyB9CiAgIGVsc2VpZigkdmYhPT0nJyAmJiBzdHJsZW4oJHZmKT09PTEyKXsgJG5hdWphcz0kdmYuJGNoazEzKCR2Zik7IH0KICAgZWxzZSB7CiAgICAgJGsxMj0nJzsgZm9yZWFjaChhcnJheSgkemIsJGVhbiwkZ3VpZCkgYXMgJHYpeyBpZihzdHJsZW4oJHYpPT09MTIpeyAkazEyPSR2OyBicmVhazsgfSB9CiAgICAgJGs4PScnOyBmb3JlYWNoKGFycmF5KCR6YiwkZWFuLCRndWlkKSBhcyAkdil7IGlmKCRvazgoJHYpKXsgJGs4PSR2OyBicmVhazsgfSB9CiAgICAgaWYoJGsxMiE9PScnKXsgJG5hdWphcyA9ICRvazEyKCRrMTIpID8gJGsxMiA6ICRrMTIuJGNoazEzKCRrMTIpOyB9CiAgICAgZWxzZWlmKCRrOCE9PScnKSAkbmF1amFzPSRrODsKICAgfQogICBpZigkbmF1amFzPT09JycpeyAkc3RbJ25lcmEnXSsrOyBjb250aW51ZTsgfQogICBpZigkbmF1amFzPT09JGd1aWQpeyAkc3RbJ25lc2lrZWljaWEnXSsrOyBjb250aW51ZTsgfQogICAkcGxhbmFzW109YXJyYXkoJ2lkJz0+JGlkLCdza3UnPT4kclsnc2t1J10sJ3NlbmFzJz0+JGd1aWQsJ25hdWphcyc9PiRuYXVqYXMpOwogICAkc3RbJ2tlaXNpbSddKys7CiB9CgogLyogQVRTQVJHSU5FIEtPUElKQSBQUklFUyBSQVNBTlQgKi8KICR1cD13cF91cGxvYWRfZGlyKCk7CiAkZGlyPXRyYWlsaW5nc2xhc2hpdCgkdXBbJ2Jhc2VkaXInXSkuJ3BzLWJhY2t1cHMnOwogaWYoIWlzX2RpcigkZGlyKSkgQHdwX21rZGlyX3AoJGRpcik7CiAkZmFpbGFzPSRkaXIuJy9ndGluX2JhY2t1cF8nLmRhdGUoJ1ltZF9IaXMnKS4nLmpzb24nOwogJGtvcGlqYT1hcnJheSgnc3VrdXJ0YSc9PmN1cnJlbnRfdGltZSgnbXlzcWwnKSwnbGF1a2FzJz0+J19nbG9iYWxfdW5pcXVlX2lkJywnaXJhc3UnPT5jb3VudCgkcGxhbmFzKSwKICAgJ2F0c3VrdHVtYXMnPT4na2lla3ZpZW5hbSBpZCBncmF6aW50aSBzZW5hcyByZWlrc21lOyB0dXNjaWEgPSB0cmludGkgbWV0YScsCiAgICdwbGFuYXMnPT4kcGxhbmFzLCdrb25mbGlrdGFpJz0+JGtvbmZsaWt0YWkpOwogJG9rID0gKGJvb2wpIEBmaWxlX3B1dF9jb250ZW50cygkZmFpbGFzLCB3cF9qc29uX2VuY29kZSgka29waWphKSk7CiAkb1sna29waWphX2ZhaWxhcyddPSRmYWlsYXM7ICRvWydrb3BpamFfaXJhc3l0YSddPSRvazsgJG9bJ2tvcGlqYV9keWRpcyddPSRvaz9maWxlc2l6ZSgkZmFpbGFzKTowOwogdXBkYXRlX29wdGlvbigncHNfZ3Rpbl9iYWNrdXBfZmFpbGFzJywgJGZhaWxhcywgZmFsc2UpOwoKIGlmKCEkb2spewogICAkb1snTlVUUkFVS1RBJ109J2F0c2FyZ2luZSBrb3BpamEgbmVpcmFzeXRhIOKAlCBhcHBseSBuZXZ5a2R5dGFzJzsKICAgJHdwZGItPnF1ZXJ5KCJVUERBVEUgeyRQfXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKIH0KCiAvKiBBUFBMWSAqLwogJG9rX249MDsgJGtsYWlkb3M9MDsKIGZvcmVhY2goJHBsYW5hcyBhcyAkeCl7CiAgICRyPXVwZGF0ZV9wb3N0X21ldGEoJHhbJ2lkJ10sJ19nbG9iYWxfdW5pcXVlX2lkJywkeFsnbmF1amFzJ10pOwogICBpZigkcj09PWZhbHNlKSAka2xhaWRvcysrOyBlbHNlICRva19uKys7CiB9CiAkc3RbJ2lyYXN5dGEnXT0kb2tfbjsgJHN0WydpcmFzeW1vX2tsYWlkb3MnXT0ka2xhaWRvczsKCiAvKiBQQVRJS1JBIFRPSkUgUEFDSU9KRSBVWktMQVVTT0pFIChwcmVsaW1pbmFyaSkgKi8KICRwbz0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBtLm1ldGFfdmFsdWUgdiBGUk9NIHskUH1wb3N0bWV0YSBtIEpPSU4geyRQfXBvc3RzIHAgT04gcC5JRD1tLnBvc3RfaWQKICAgV0hFUkUgbS5tZXRhX2tleT0nX2dsb2JhbF91bmlxdWVfaWQnIEFORCBtLm1ldGFfdmFsdWU8PicnIEFORCBwLnBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHAucG9zdF9zdGF0dXM9J3B1Ymxpc2gnIiwgQVJSQVlfQSk7CiAkZz0wOyBmb3JlYWNoKCRwbyBhcyAkeCl7ICR2PSR4Wyd2J107IGlmKCRvazEzKCR2KXx8JG9rMTIoJHYpfHwkb2s4KCR2KSkgJGcrKzsgfQogJHN0Wydwb19hcHBseV91enBpbGR5dGEnXT1jb3VudCgkcG8pOyAkc3RbJ3BvX2FwcGx5X2dhbGlvamEnXT0kZzsKCiB1cGRhdGVfb3B0aW9uKCdwc19ndGluX3p1cm5hbGFzJywgYXJyYXkoJ2thZGEnPT5jdXJyZW50X3RpbWUoJ215c3FsJyksJ3N0YXRpc3Rpa2EnPT4kc3QsJ2tvcGlqYSc9PiRmYWlsYXMpLCBmYWxzZSk7CiAkb1snc3RhdGlzdGlrYSddPSRzdDsgJG9bJ2tvbmZsaWt0YWknXT0ka29uZmxpa3RhaTsgJG9bJ3B2eiddPWFycmF5X3NsaWNlKCRwbGFuYXMsMCwxMCk7CgogJHdwZGItPnF1ZXJ5KCJVUERBVEUgeyRQfXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzEpOwo=';
+const out={versija:'G820'};
 async function put(name,buf,msg){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/${name}`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const b={message:msg,content:buf.toString('base64')}; if(sha) b.sha=sha;
   return (await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/${name}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)})).status;
 }
-/* ---- A. GOOGLE SA, trecias bandymas ---- */
-out.google={};
+async function api(p,o={}){ const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()}; }
+async function snip(n,b64){ const code=Buffer.from(b64,'base64').toString('utf8'); const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:n,code,scope:'global',active:true,priority:5})}); let j=null; try{j=JSON.parse(cr.t);}catch(e){} out.snip_status=cr.s; return j?j.id:null; }
 try{
-  let raw=(process.env.GTM_SA_JSON||'').trim();
-  let sa=null; let fmt='';
-  const bandymai=[ ['tiesiogiai',()=>JSON.parse(raw)],
-                   ['skliaustai',()=>JSON.parse('{'+raw+'}')],
-                   ['dvigubas',()=>JSON.parse(JSON.parse(raw))],
-                   ['base64',()=>JSON.parse(Buffer.from(raw,'base64').toString('utf8'))] ];
-  for(const [n,f] of bandymai){ try{ const r=f(); if(r && r.client_email){ sa=r; fmt=n; break; } }catch(e){} }
-  out.google.formatas=fmt||'neatpazintas'; out.google.ilgis=raw.length;
-  if(!sa) out.google.pradzia_forma=raw.slice(0,40).replace(/[A-Za-z0-9+/=]{12,}/g,'…');
-  if(sa){
-    out.google.client_email=sa.client_email; out.google.project=sa.project_id;
-    const now=Math.floor(Date.now()/1000);
-    const hdr=Buffer.from(JSON.stringify({alg:'RS256',typ:'JWT'})).toString('base64url');
-    const cl=Buffer.from(JSON.stringify({iss:sa.client_email,scope:'https://www.googleapis.com/auth/content',aud:'https://oauth2.googleapis.com/token',exp:now+3600,iat:now})).toString('base64url');
-    const sig=crypto.createSign('RSA-SHA256').update(hdr+'.'+cl).sign(sa.private_key).toString('base64url');
-    const tr=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion='+hdr+'.'+cl+'.'+sig});
-    const tj=await tr.json(); out.google.token_status=tr.status;
-    if(tj.access_token){
-      const ai=await fetch('https://shoppingcontent.googleapis.com/content/v2.1/accounts/authinfo',{headers:{Authorization:'Bearer '+tj.access_token}});
-      out.google.authinfo_status=ai.status; out.google.authinfo=(await ai.text()).slice(0,800);
-    } else out.google.token_klaida=JSON.stringify(tj).slice(0,300);
-  }
-}catch(e){ out.google.klaida=String(e).slice(0,250); }
-
-/* ---- B. VF XML SALTINIS ---- */
-out.vf={};
-try{
-  const U=WP+'/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz';
-  const r=await fetch(U); const x=await r.text();
-  out.vf.status=r.status; out.vf.baitai=x.length; out.vf.ct=r.headers.get('content-type');
-  out.vf.pradzia=x.slice(0,600);
-  const tagai={};
-  const m1=x.match(/<([a-z0-9_]*(?:barcode|ean|gtin)[a-z0-9_]*)>/gi)||[];
-  for(const t of m1){ tagai[t]=(tagai[t]||0)+1; }
-  out.vf.kodo_tagai=tagai;
-  const vals=[...x.matchAll(/<([a-z0-9_]*(?:barcode|ean|gtin)[a-z0-9_]*)>([^<]*)<\//gi)].map(m=>m[2].trim()).filter(Boolean);
-  const ilgiai={}; for(const v of vals){ ilgiai[v.length]=(ilgiai[v.length]||0)+1; }
-  out.vf.reiksmiu=vals.length; out.vf.ilgiai=ilgiai; out.vf.pvz_reiksmes=vals.slice(0,10);
-  const SKU=['JOS0617','JOS0813','JOS0723','JOS0910','JOS0931','JOS0799','JOS0914'];
-  out.vf.paieska={};
-  for(const s of SKU){ const i=x.indexOf(s); out.vf.paieska[s]= i<0 ? 'nerasta' : x.slice(Math.max(0,i-450), i+450).replace(/\s+/g,' '); }
-}catch(e){ out.vf.klaida=String(e).slice(0,250); }
+  const s=await snip('TEMP G820 GTIN apply',B64);
+  await new Promise(r=>setTimeout(r,8000));
+  const t=await (await fetch(WP+'/?ps_g820=G820')).text();
+  try{ out.d=JSON.parse(t); }catch(e){ out.zalias=t.slice(0,800); }
+  if(s) await api('/wp-json/code-snippets/v1/snippets/'+s,{method:'POST',body:JSON.stringify({id:s,active:false})});
+}catch(e){ out.klaida=String(e).slice(0,300); }
 const zlib=await import('zlib');
-await put('g816.json.gz', zlib.gzipSync(Buffer.from(JSON.stringify(out))), 'g816 vf xml + google');
+await put('g820.json.gz', zlib.gzipSync(Buffer.from(JSON.stringify(out))), 'g820 gtin apply');
