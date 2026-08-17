@@ -1,5 +1,28 @@
 <?php
 /**
+ * Petshop Katalogas v8.3 (S716) — BUSENA MATOSI IS KARTO, IR JA GALIMA KEISTI.
+ *
+ * TESTUOTOJO PASTABA: „ziurint preke kortelėje neaisku, ar ji aktyvi
+ * (prekyboje), ar deaktyvuota (juodrasciuose)."
+ *
+ * Buvo tiesa: busena kortelėje gyveno tik po „Veiksmai" meniu — t. y. reikejo
+ * ATIDARYTI meniu, kad suzinotum tai, kas svarbiausia. Sarase juodrastis
+ * pazymetas, bet kortelėje — ne.
+ *
+ * KODEL NE VARNELE (testuotojo pasiulymas): varnele sarase JAU reiskia
+ * „pazymeta masiniam veiksmui". Ta pati zenkla dviem skirtingoms prasmems
+ * naudoti negalima — anksciau ar veliau kas nors nuzymes preke manydamas, kad
+ * isjungia ja is prekybos.
+ *
+ * SPRENDIMAS — juosta po pavadinimu, kurios negalima nepastebeti:
+ *   · PREKYBOJE — zalias taskas, zalias tekstas „Prekyboje · pirkejas mato";
+ *   · JUODRASTYJE — gelsvas fonas, „Juodrastyje · pirkejas nemato".
+ * Salia — mygtukas busenai perjungti VIENU paspaudimu, nes zmogus, kuris ka
+ * tik pamate busena, dazniausiai nori ja ir pakeisti.
+ *
+ * ISIMTA RANKA (`_ps_ranka_isimta`) rodoma ta pacia juosta, tik su spyna —
+ * kad nesusimaisytu „dar nebaigta" su „nusprendziau neprekiauti".
+ *
  * Petshop Katalogas v8.2 (S711) — SUDELIOJIMO REZULTATAS MATOSI IS KARTO.
  *
  * SAVININKAS: „niekas nepasikeite, per sudejimo mygtukus niekas neveikia."
@@ -759,7 +782,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Katalogas {
 
-	const VERSIJA   = '8.2';
+	const VERSIJA   = '8.3';
 	const PVM       = 0.21;
 	const PUSLAPIS  = 50;
 
@@ -806,6 +829,8 @@ class Petshop_Katalogas {
 		add_action( 'wp_ajax_ps_kat_eilute', array( __CLASS__, 'ajax_eilute' ) );
 		/* v8.0: tiekejo (ne XML) likutis — atskiras nuo AV. */
 		add_action( 'wp_ajax_ps_kat_tiekejo_likutis', array( __CLASS__, 'ajax_tiekejo_likutis' ) );
+		/* v8.3: busenos perjungimas kortelėje. */
+		add_action( 'wp_ajax_ps_kat_busena', array( __CLASS__, 'ajax_busena' ) );
 
 		/* Pakeitus prekę bet kur — WooCommerce, importe, kitur — katalogo kešas
 		   turi pasenti iškart, kitaip langas iki 5 min. rodytų senus skaičius. */
@@ -1542,6 +1567,48 @@ class Petshop_Katalogas {
 	 * Atskiras nuo AV samoningai: tai kiekis, gulintis PAS TIEKEJA. Partiju,
 	 * galiojimu ir savikainos cia nera — ju mes nezinom ir nevaldom.
 	 */
+	/**
+	 * v8.3: busenos perjungimas.
+	 *
+	 * Naudojamas `wp_update_post` — tas pats kelias, kaip WooCommerce lange,
+	 * todel `Petshop_Rankos` vartai suveikia savaime: zmogaus atliktas
+	 * isemimas pazymimas, o grazinimas zyme nuima.
+	 */
+	public static function ajax_busena() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
+		check_ajax_referer( 'ps_kat', 'nonce' );
+
+		$pid = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0;
+		if ( ! $pid || get_post_type( $pid ) !== 'product' ) { wp_send_json_error( 'nėra prekės' ); }
+
+		$buvo = get_post_status( $pid );
+		$tapo = ( $buvo === 'publish' ) ? 'draft' : 'publish';
+
+		$r = wp_update_post( array( 'ID' => $pid, 'post_status' => $tapo ), true );
+		if ( is_wp_error( $r ) ) { wp_send_json_error( $r->get_error_message() ); }
+
+		/* Ar tikrai pasikeite: `Petshop_Rankos` vartai gali sustabdyti
+		   grazinima, jei preke isimta ranka — ir tai teisinga elgsena. */
+		clean_post_cache( $pid );
+		$dabar = get_post_status( $pid );
+
+		if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {
+			try { Petshop_Ivykiai::irasyti( $pid, 'busena', array(
+				'laukas' => 'būsena', 'buvo' => $buvo, 'tapo' => $dabar,
+				'pastaba' => 'Pakeista kortelėje' ) ); }
+			catch ( Throwable $e ) { /* zurnalas neprivalo blokuoti */ }
+		}
+		self::kesas_lauk( $pid );
+		if ( function_exists( 'wc_delete_product_transients' ) ) { wc_delete_product_transients( $pid ); }
+
+		wp_send_json_success( array(
+			'busena'    => $dabar,
+			'prekyboje' => ( $dabar === 'publish' ),
+			'pavyko'    => ( $dabar === $tapo ),
+			'ranka'     => ( class_exists( 'Petshop_Rankos' ) && Petshop_Rankos::isimta( $pid ) ),
+		) );
+	}
+
 	public static function ajax_tiekejo_likutis() {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
 		check_ajax_referer( 'ps_kat', 'nonce' );
@@ -2321,6 +2388,20 @@ class Petshop_Katalogas {
 			. '<span class="kort-pav-stat"></span></div>'
 			. '<div class="kort-uzuomina">Nuoroda (slug) nesikeičia — ji jau indeksuota paieškos sistemose.</div>'
 			. '</div>';
+		/* v8.3: BUSENOS JUOSTA. Pirmas dalykas, kuri zmogus turi matyti — ar
+		   preke apskritai parduodama. */
+		$bus = get_post_status( $pid );
+		$prekyboje = ( $bus === 'publish' );
+		$ranka = ( class_exists( 'Petshop_Rankos' ) && Petshop_Rankos::isimta( $pid ) );
+		echo '<div class="kort-busena ' . ( $prekyboje ? 'yra' : 'ne' ) . '" data-id="' . (int) $pid . '">'
+			. '<span class="kb-taskas"></span>'
+			. '<b class="kb-tekstas">' . ( $prekyboje ? 'Prekyboje' : 'Juodraštyje' ) . '</b>'
+			. '<span class="kb-paaisk">' . ( $prekyboje ? 'pirkėjas mato' : 'pirkėjas nemato' ) . '</span>'
+			. ( $ranka ? '<span class="kb-ranka" title="Išimta žmogaus — automatika negrąžins">🔒 išimta ranka</span>' : '' )
+			. '<button type="button" class="kb-keisti">'
+			. ( $prekyboje ? 'Išimti iš prekybos' : 'Grąžinti į prekybą' ) . '</button>'
+			. '<span class="kb-stat"></span></div>';
+
 		echo '<div class="kort-sub">#' . (int) $pid . ' · ' . esc_html( (string) $mv( '_sku' ) )
 			. ( $r['ean'] !== '' ? ' · ' . esc_html( $r['ean'] ) : '' )
 			. ( $r['br'] !== '' ? ' · ' . esc_html( $r['br'] ) : '' ) . '</div>';
@@ -4713,10 +4794,10 @@ class Petshop_Katalogas {
 	public static function navigacija( $dabartinis = '' ) {
 		$langai = array(
 			'ps-katalogas' => 'Katalogas',
-			'ps-rinkiniai' => 'Rinkiniai',
 			'ps-akcijos'   => 'Akcijos',
 			'ps-gavimas'   => 'Gavimas',
 			'ps-tiekimas'  => 'Tiekimas',
+			'ps-rinkiniai' => 'Rinkiniai',
 			'ps-desk'      => 'Užsakymai',
 		);
 		$out = '';
@@ -6137,6 +6218,35 @@ class Petshop_Katalogas {
 					inp.addEventListener("keydown",function(ev){ if(ev.key==="Enter"){ ev.preventDefault(); irasyti(); } });
 				}
 
+				/* --- v8.3: BUSENA --- */
+				var BS=document.querySelector(".kort-busena");
+				if(BS && !BS.dataset.paleista){
+					BS.dataset.paleista="1";
+					var BID=parseInt(BS.dataset.id,10);
+					var bmyg=BS.querySelector(".kb-keisti"), bst=BS.querySelector(".kb-stat");
+					bmyg.onclick=function(){
+						var yra=BS.classList.contains("yra");
+						if(yra && !confirm("Išimti prekę iš prekybos?\n\nPirkėjas jos nebematys, o automatika negrąžins.")) return;
+						bst.textContent="saugoma…"; bmyg.disabled=true;
+						var fd=new FormData();
+						fd.append("action","ps_kat_busena"); fd.append("nonce",NONCE); fd.append("id",BID);
+						fetch(AJAX,{method:"POST",body:fd,credentials:"same-origin"})
+							.then(function(r){return r.json();})
+							.then(function(j){
+								bmyg.disabled=false;
+								if(!j||!j.success){ bst.textContent=(j&&j.data)?(j.data.zinute||j.data):"nepavyko"; return; }
+								var p=j.data.prekyboje;
+								BS.classList.toggle("yra",p); BS.classList.toggle("ne",!p);
+								BS.querySelector(".kb-tekstas").textContent=p?"Prekyboje":"Juodraštyje";
+								BS.querySelector(".kb-paaisk").textContent=p?"pirkėjas mato":"pirkėjas nemato";
+								bmyg.textContent=p?"Išimti iš prekybos":"Grąžinti į prekybą";
+								bst.textContent=j.data.pavyko?"":"būsena nepasikeitė — prekė išimta ranka";
+								if(window.psAtnaujintiEilute) window.psAtnaujintiEilute(BID);
+							})
+							.catch(function(){ bmyg.disabled=false; bst.textContent="ryšio klaida"; });
+					};
+				}
+
 				/* --- v8.0: TIEKEJO LIKUTIS (Ambrosia, Prins ir kiti be XML) --- */
 				var T=document.querySelector(".kort-tiek-irasyti");
 				if(T && !T.dataset.paleista){
@@ -7161,6 +7271,17 @@ class Petshop_Katalogas {
 		.kort-persp-x{background:#f6f7f7;border:1px solid #dcdcde;border-left:4px solid #8a8f88;border-radius:6px;
 			padding:9px 11px;margin-top:8px;font-size:12.5px;color:#3d4650;line-height:1.55}
 		.pskat-t td.nerd .av-rodo{color:#8a8f88}
+		.kort-busena{display:flex;align-items:center;gap:9px;margin:8px 0 4px;padding:7px 12px;
+			border-radius:8px;font-size:13px;border:1px solid transparent}
+		.kort-busena.yra{background:#eef7f0;border-color:#cfe6d6;color:#1e7a3c}
+		.kort-busena.ne{background:#fdf6e3;border-color:#efe0b8;color:#8a5b00}
+		.kb-taskas{width:9px;height:9px;border-radius:50%;background:currentColor;flex:none}
+		.kb-paaisk{color:#6b7280;font-size:12px}
+		.kb-ranka{font-size:12px;color:#8a5b00}
+		.kb-keisti{margin-left:auto;border:1px solid #cfd6cc;background:#fff;border-radius:6px;
+			padding:4px 12px;cursor:pointer;font-size:12.5px;color:#3d4650}
+		.kb-keisti:hover{background:#f2f7f3}
+		.kb-stat{font-size:12px}
 		.kort-lik-eil{border-top:1px solid #f0f0f1;padding:10px 0}
 		.kort-lik-eil:first-of-type{border-top:0}
 		.kort-lik-av{background:#fbfcfa;margin:0 -14px -12px;padding:10px 14px 12px;border-top:1px solid #e8ebe6}
