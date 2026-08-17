@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Sargas v1.1 (DOD-13)
+ * Petshop Sargas v1.2 (DOD-13)
  *
  * KAM: realiausias incidentas sioje sistemoje nera „svetaine nukrito".
  * Svetaine bus gyva, grazi, ir niekas nepastebes, kad nakti nesuveike ZB
@@ -34,6 +34,10 @@
  *
  * v1.1 (2026-08-17): laiskai siunciami HTML su <pre> — Outlook gryname
  * tekste ismeta eiluciu luzius ir suvestine tampa neskaitoma.
+ *
+ * v1.2 (2026-08-17): 48 val. malones laikas po idiegimo + pavojus tik
+ * „irodytiems" cron'ams. Be to pirmas rytas butu davęs melaginga signala
+ * apie 44 cron'us.
  *
  * NUSTATYMAI (keiciami be kodo):
  *   ps_sargas_pastas        gavejas (numatyta: terra@gyvunai.lt)
@@ -81,6 +85,10 @@ class Petshop_Sargas {
 
 	public static function lentele() {
 		global $wpdb;
+		/* v1.2: idiegimo momentas — nuo jo skaiciuojamas malones laikas */
+		if ( ! get_option( 'ps_sargas_start' ) ) {
+			update_option( 'ps_sargas_start', time(), false );
+		}
 		$t = $wpdb->prefix . self::LENTELE;
 		if ( $wpdb->get_var( "SHOW TABLES LIKE '$t'" ) === $t ) { return; }
 		$c = $wpdb->get_charset_collate();
@@ -256,7 +264,29 @@ class Petshop_Sargas {
 
 	/* ==================== KASDIENINIS TIKRINIMAS ==================== */
 
+	/**
+	 * v1.2: MALONES LAIKAS IR „IRODYTU" CRON'U TAISYKLE.
+	 *
+	 * PRIEZASTIS (ismatuota 2026-08-17, pirma suvestine): tuoj po idiegimo
+	 * atsiskaite 6 cron'ai, o 44 „tyli". Rytojaus 07:00 patikra butu
+	 * issiuntusi pavojaus laiska apie 44 — ir tai butu MELAGINGAS signalas:
+	 * modulis idiegtas pries desimt minuciu, o dev'e nera lankytoju, per
+	 * kuriuos WP-Cron apskritai paleidziamas. Dalis tu 44 cia nepasileis
+	 * niekada, o produkcijoje su srautu — pasileis.
+	 *
+	 * Sargas, kuris rekia pirma ryta, yra sargas, kurio antra savaite
+	 * nebeskaitai. Todel:
+	 *   1) 48 val. po idiegimo — jokiu pavojaus laisku;
+	 *   2) po ju pavojus TIK tiems, kurie BENT KARTA atsiskaite (irodyta,
+	 *      kad realiai veikia) arba yra MUSU (ps_ / petshop_ / actionscheduler);
+	 *   3) visi kiti lieka informacija savaitineje suvestineje, ne pavojumi.
+	 */
 	public static function kasdien() {
+		$start = (int) get_option( 'ps_sargas_start', 0 );
+		if ( $start && ( time() - $start ) < 2 * DAY_IN_SECONDS ) {
+			return; /* malones laikas */
+		}
+
 		$val    = (int) get_option( 'ps_sargas_cron_valandos', 24 );
 		$riba   = time() - ( $val * HOUR_IN_SECONDS );
 		$zinios = get_option( self::CRON_ZINIOS, array() );
@@ -266,7 +296,13 @@ class Petshop_Sargas {
 		foreach ( self::laukiami() as $hook => $sched ) {
 			/* reciau nei kas para vykstantiems netaikom paros ribos */
 			if ( in_array( $sched, array( 'weekly', 'monthly' ), true ) ) { continue; }
+
 			$pask = isset( $zinios[ $hook ] ) ? (int) $zinios[ $hook ] : 0;
+			$musu = ( 0 === strpos( $hook, 'ps_' ) || 0 === strpos( $hook, 'petshop' ) || 0 === strpos( $hook, 'action_scheduler' ) );
+
+			/* svetimas cron'as, kurio NIEKADA nemateme — ne musu reikalas */
+			if ( ! $pask && ! $musu ) { continue; }
+
 			if ( $pask < $riba ) {
 				$tyli[] = $hook . ' (' . $sched . ') — '
 					. ( $pask ? 'paskutinis ' . gmdate( 'Y-m-d H:i', $pask ) : 'niekada nefiksuotas' );
@@ -311,9 +347,16 @@ class Petshop_Sargas {
 
 		$e = "Savaitine sargo suvestine — " . current_time( 'Y-m-d' ) . "\n";
 		$e .= str_repeat( '-', 46 ) . "\n\n";
+		$start = (int) get_option( 'ps_sargas_start', 0 );
+		$malone = ( $start && ( time() - $start ) < 2 * DAY_IN_SECONDS );
 		$e .= "CRON'AI\n";
 		$e .= "  atsiskaite:      {$cron_ok}\n";
-		$e .= "  tyli:            {$cron_ne}\n\n";
+		$e .= "  tyli:            {$cron_ne}\n";
+		if ( $malone ) {
+			$e .= "  (malones laikas — pirmas 48 val. po idiegimo pavojaus\n";
+			$e .= "   laisku nesiunciam; „tyli\" skaicius dar nieko nereiskia)\n";
+		}
+		$e .= "\n";
 		$e .= "KLAIDOS (7 d.)\n";
 		if ( $pagal ) {
 			foreach ( $pagal as $r ) {
