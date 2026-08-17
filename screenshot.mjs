@@ -3,21 +3,25 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP='https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='YWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmICgoaXNzZXQoJF9HRVRbJ3BzX205MzAnXSk/JF9HRVRbJ3BzX205MzAnXTonJykhPT0nTTkzMCcpIHJldHVybjsKIEBzZXRfdGltZV9saW1pdCg2MDApOwogZ2xvYmFsICR3cGRiOyAkUD0kd3BkYi0+cHJlZml4OyAkbz1hcnJheSgndic9PidNOTMwJyk7CgogLyogMS4gTW5NIHBsdWdpbmFzICovCiAkb1snbW5tX2tsYXNlcyddPWFycmF5KCk7CiBmb3JlYWNoKGFycmF5KCdXQ19Qcm9kdWN0X01peF9hbmRfTWF0Y2gnLCdXQ19NaXhfYW5kX01hdGNoJywnV0NfTU5NX0NhcnQnLCdXQ19NaXhfYW5kX01hdGNoX1Byb2R1Y3RfRGF0YScsJ1dDX01OTV9Qcm9kdWN0X1F1ZXJ5JykgYXMgJGspCiAgICRvWydtbm1fa2xhc2VzJ11bJGtdPWNsYXNzX2V4aXN0cygkayk/J1lSQSc6J25lcmEnOwogaWYoY2xhc3NfZXhpc3RzKCdXQ19Qcm9kdWN0X01peF9hbmRfTWF0Y2gnKSl7CiAgICRyPW5ldyBSZWZsZWN0aW9uQ2xhc3MoJ1dDX1Byb2R1Y3RfTWl4X2FuZF9NYXRjaCcpOwogICAkb1snbW5tX2ZhaWxhcyddPXN0cl9yZXBsYWNlKEFCU1BBVEgsJycsJHItPmdldEZpbGVOYW1lKCkpOwogICAkbXM9YXJyYXkoKTsKICAgZm9yZWFjaCgkci0+Z2V0TWV0aG9kcygpIGFzICRtKXsKICAgICBpZigkbS0+Y2xhc3MhPT0nV0NfUHJvZHVjdF9NaXhfYW5kX01hdGNoJykgY29udGludWU7CiAgICAgJG49JG0tPmdldE5hbWUoKTsKICAgICBpZihwcmVnX21hdGNoKCcvY2hpbGR8Y29udGVudHxxdWVyeXxhbGxvd2VkfGNhdGVnb3J8dmlzaWIvaScsJG4pKXsKICAgICAgICRwYXI9YXJyYXkoKTsgZm9yZWFjaCgkbS0+Z2V0UGFyYW1ldGVycygpIGFzICRwcCkgJHBhcltdPSckJy4kcHAtPmdldE5hbWUoKTsKICAgICAgICRtc1tdPSRuLicoJy5pbXBsb2RlKCcsICcsJHBhcikuJyknOwogICAgIH0KICAgfQogICAkb1snbW5tX21ldG9kYWknXT0kbXM7CiB9CiAvKiBNbk0gdmVyc2lqYSAqLwogaWYoIWZ1bmN0aW9uX2V4aXN0cygnZ2V0X3BsdWdpbnMnKSkgcmVxdWlyZV9vbmNlIEFCU1BBVEguJ3dwLWFkbWluL2luY2x1ZGVzL3BsdWdpbi5waHAnOwogZm9yZWFjaChnZXRfcGx1Z2lucygpIGFzICRmPT4kZCl7IGlmKHN0cmlwb3MoJGYsJ21peC1hbmQtbWF0Y2gnKSE9PWZhbHNlKSAkb1snbW5tX3BsdWdpbmFzJ109YXJyYXkoJGYsJGRbJ1ZlcnNpb24nXSk7IH0KCiAvKiAyLiBlc2FtYXMgcmlua2lueXMgLSBrYWlwIHN1a29uZmlndXJ1b3RhcyAqLwogJG1ubT0kd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIHAuSUQgRlJPTSB7JFB9cG9zdHMgcAogICBKT0lOIHskUH10ZXJtX3JlbGF0aW9uc2hpcHMgdHIgT04gdHIub2JqZWN0X2lkPXAuSUQKICAgSk9JTiB7JFB9dGVybV90YXhvbm9teSB0dCBPTiB0dC50ZXJtX3RheG9ub215X2lkPXRyLnRlcm1fdGF4b25vbXlfaWQgQU5EIHR0LnRheG9ub215PSdwcm9kdWN0X3R5cGUnCiAgIEpPSU4geyRQfXRlcm1zIHQgT04gdC50ZXJtX2lkPXR0LnRlcm1faWQgQU5EIHQuc2x1Zz0nbWl4LWFuZC1tYXRjaCcKICAgV0hFUkUgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJyBMSU1JVCA1Iik7CiAkb1snbW5tX3ByZWtlcyddPSRtbm07CiBpZigkbW5tKXsKICAgJHBpZD0oaW50KSRtbm1bMF07CiAgICRvWydwdnpfaWQnXT0kcGlkOyAkb1sncHZ6X3BhdiddPWdldF90aGVfdGl0bGUoJHBpZCk7CiAgICRtZXRhPWdldF9wb3N0X21ldGEoJHBpZCk7CiAgICRzdj1hcnJheSgpOwogICBmb3JlYWNoKCRtZXRhIGFzICRrPT4kdil7IGlmKHN0cnBvcygkaywnX21ubScpPT09MHx8c3RycG9zKCRrLCdfcHNfJyk9PT0wKSAkc3ZbJGtdPW1iX3N1YnN0cihtYXliZV9zZXJpYWxpemUoJHZbMF0pLDAsMTIwKTsgfQogICAkb1sncHZ6X21ldGEnXT0kc3Y7CiB9CiAvKiAzLiBrYWlwIGF0cmVua2FtaSB2YWlrYWkgLSBNbk0gc2FsdGluaW8gZ3JlcCAqLwogJG1mPVdQX1BMVUdJTl9ESVIuJy93b29jb21tZXJjZS1taXgtYW5kLW1hdGNoLXByb2R1Y3RzJzsKICRvWydtbm1fZGlyJ109aXNfZGlyKCRtZik/J1lSQSc6J25lcmEnOwogaWYoaXNfZGlyKCRtZikpewogICAkaGl0cz1hcnJheSgpOwogICAkaXQ9bmV3IFJlY3Vyc2l2ZUl0ZXJhdG9ySXRlcmF0b3IobmV3IFJlY3Vyc2l2ZURpcmVjdG9yeUl0ZXJhdG9yKCRtZikpOwogICBmb3JlYWNoKCRpdCBhcyAkZil7CiAgICAgaWYoc3Vic3RyKCRmLC00KSE9PScucGhwJykgY29udGludWU7CiAgICAgJGM9QGZpbGVfZ2V0X2NvbnRlbnRzKCRmKTsgaWYoISRjKSBjb250aW51ZTsKICAgICBmb3JlYWNoKGFycmF5KCdjYXRhbG9nX3Zpc2liaWxpdHknLCdleGNsdWRlLWZyb20tY2F0YWxvZycsJ2V4Y2x1ZGUtZnJvbS1zZWFyY2gnLCdpc192aXNpYmxlJywnd2NfZ2V0X3Byb2R1Y3RzJywnZ2V0X2NoaWxkcmVuJykgYXMgJG5lZWRsZSl7CiAgICAgICAkbj1zdWJzdHJfY291bnQoJGMsJG5lZWRsZSk7CiAgICAgICBpZigkbikgJGhpdHNbc3RyX3JlcGxhY2UoJG1mLicvJywnJywkZildWyRuZWVkbGVdPSRuOwogICAgIH0KICAgfQogICAkb1snbW5tX2dyZXAnXT0kaGl0czsKIH0KIC8qIDQuIGFyIHlyYSBwYXNsZXB0YSBwcmVrZSBqYXUgZGFiYXIgKi8KICRvWydwYXNsZXB0YV9kYWJhciddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskUH1wb3N0cyBwCiAgIEpPSU4geyRQfXRlcm1fcmVsYXRpb25zaGlwcyB0ciBPTiB0ci5vYmplY3RfaWQ9cC5JRAogICBKT0lOIHskUH10ZXJtX3RheG9ub215IHR0IE9OIHR0LnRlcm1fdGF4b25vbXlfaWQ9dHIudGVybV90YXhvbm9teV9pZCBBTkQgdHQudGF4b25vbXk9J3Byb2R1Y3RfdmlzaWJpbGl0eScKICAgSk9JTiB7JFB9dGVybXMgdCBPTiB0LnRlcm1faWQ9dHQudGVybV9pZCBBTkQgdC5zbHVnPSdleGNsdWRlLWZyb20tY2F0YWxvZycKICAgV0hFUkUgcC5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0sIDEzMSk7Cg==';
-const out={versija:'F927'};
+const out={versija:'M930'};
 async function put(name,buf,msg){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/${name}`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const b={message:msg,content:buf.toString('base64')}; if(sha) b.sha=sha;
-  await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/${name}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)});
+  const r=await fetch(`https://api.github.com/repos/${REPO}/contents/screenshots/${name}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)});
+  return r.status;
 }
 async function api(p,o={}){ const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()}; }
 async function snip(n,b64){ const code=Buffer.from(b64,'base64').toString('utf8'); const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:n,code,scope:'global',active:true,priority:5})}); let j=null; try{j=JSON.parse(cr.t);}catch(e){} return j?j.id:null; }
 async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+id,{method:'POST',body:JSON.stringify({id,active:false})}); }
 try{
-  const s=await snip('TEMP F927',B64);
+  const s=await snip('TEMP M930',B64);
+  out.snip=s;
   await new Promise(r=>setTimeout(r,6000));
-  const t=await (await fetch(WP+'/?ps_f927=CHK')).text();
-  try{ out.d=JSON.parse(t); }catch(e){ out.zalias=t.slice(0,500); }
+  const r=await fetch(WP+'/?ps_m930=M930');
+  out.http=r.status;
+  const t=await r.text();
+  try{ out.d=JSON.parse(t); }catch(e){ out.zalias=t.slice(0,1200); }
   await off(s);
-}catch(e){ out.klaida=String(e).slice(0,300); }
-await put('f927.json', Buffer.from(JSON.stringify(out)), 'f927 kas pakeite');
+}catch(e){ out.klaida=String(e).slice(0,400); }
+await put('m930.json', Buffer.from(JSON.stringify(out)), 'm930 mnm recon');
