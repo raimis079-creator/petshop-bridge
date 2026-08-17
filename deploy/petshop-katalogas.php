@@ -5303,7 +5303,8 @@ class Petshop_Katalogas {
 	private static function filtrai( $f, $sar, $sort, $kryp, $per ) {
 		$sand = array( '' => 'visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB', 'quattro' => 'Quattro',
 			'belcor_tofu' => 'Belacor tofu', 'prins' => 'Prins', 'ambrosia' => 'Ambrosia' );
-		echo '<div class="pskat-filters"><div class="frline">';
+		echo '<div class="pskat-filters" id="pskat-filters"><div class="frline frl-1">';
+		echo '<button type="button" class="fr-sukl" id="fr-sukl" title="Suskleisti / išskleisti filtrus">⌃</button>';
 		self::sel( 'sand', 'Tiekėjas', $sand, $f['sand'] );
 		echo '<span class="sep"></span>';
 		self::sel_paieska( 'kat', 'Kategorija', $sar['kategorijos'], $f['kat'] );
@@ -5311,7 +5312,7 @@ class Petshop_Katalogas {
 		self::sel_paieska( 'brand', 'Brendas', $sar['brendai'], $f['brand'] );
 		echo '<span class="kiek-sar">' . count( $sar['brendai'] ) . ' brendai · ' . count( $sar['kategorijos'] ) . ' kategorijos</span>';
 		echo '<a class="clear" href="' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'sal'=>null,'psl'=>null ) ) . '">Išvalyti filtrus</a>';
-		echo '</div><div class="frline">';
+		echo '</div><div class="frline frl-2">';
 		self::sel( 'likutis', 'Likutis', array( '' => 'visi', 'av_turi' => 'AV turi', 'av_nulis' => 'AV pasibaigę',
 			'tiekejas' => 'tik tiekėjas', 'niekas' => 'niekas neturi' ), $f['likutis'] );
 		echo '<span class="sep"></span>';
@@ -5336,7 +5337,7 @@ class Petshop_Katalogas {
 		$sal   = self::sal_is_teksto( $sal_t );
 		$reg   = self::laukai();
 
-		echo '<div class="frline pskat-sal">';
+		echo '<div class="frline pskat-sal frl-3">';
 		echo '<span class="ax">Sąlygos</span>';
 		if ( $sal ) {
 			foreach ( $sal as $i => $x ) {
@@ -5363,7 +5364,7 @@ class Petshop_Katalogas {
 
 		/* ---------- v8.4: IŠSAUGOTI VAIZDAI ---------- */
 		$vaizdai = self::vaizdai();
-		echo '<div class="frline pskat-vaizdai"><span class="ax">Vaizdai</span>';
+		echo '<div class="frline pskat-vaizdai frl-4"><span class="ax">Vaizdai</span>';
 		foreach ( $vaizdai as $v ) {
 			$on = ( $sal_t !== '' && $v['sal'] === $sal_t ) ? ' on' : '';
 			echo '<a class="vz' . $on . '" href="' . self::url( array( 'sal' => $v['sal'] ?: null, 'psl' => null ) ) . '">'
@@ -5378,6 +5379,27 @@ class Petshop_Katalogas {
 		echo '<button type="submit" name="ka" value="irasyti" class="vz-b">Išsaugoti šį vaizdą</button>';
 		echo '<button type="submit" name="ka" value="atstatyti" class="vz-b vz-mut" title="Grąžinti penkis pradinius vaizdus">Atstatyti</button>';
 		echo '</form>';
+		echo '</div>';
+
+		/* v8.6.2: SUSKLEISTA SANTRAUKA.
+		   Suskleidus dėžę viena eilutė lieka: aktyvūs filtrai ir sąlygos.
+		   Be jos žmogus nematytų, kodėl sąraše 312, o ne 2 615. */
+		$akt = array();
+		if ( ! empty( $f['sand'] ) )    { $akt[] = 'tiekėjas: ' . $f['sand']; }
+		if ( ! empty( $f['kat'] ) )     { $akt[] = 'kategorija: ' . $f['kat']; }
+		if ( ! empty( $f['brand'] ) )   { $akt[] = 'brendas: ' . $f['brand']; }
+		if ( ! empty( $f['likutis'] ) ) { $akt[] = 'likutis: ' . $f['likutis']; }
+		if ( ! empty( $f['marza'] ) )   { $akt[] = 'marža: ' . $f['marza']; }
+		if ( ! empty( $f['tipas'] ) )   { $akt[] = 'tipas: ' . $f['tipas']; }
+		foreach ( $sal as $x ) { $akt[] = self::sal_zodziais( $x ); }
+		echo '<div class="frline frl-sant" hidden>';
+		echo '<button type="button" class="fr-sukl" id="fr-iskl" title="Išskleisti filtrus">⌄ Filtrai</button>';
+		if ( $akt ) {
+			foreach ( $akt as $a ) { echo '<span class="sal-p sal-r">' . esc_html( $a ) . '</span>'; }
+			echo '<a class="clear" href="' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'sal'=>null,'psl'=>null ) ) . '">Išvalyti</a>';
+		} else {
+			echo '<span class="sal-tuscia">filtrų nėra — visos krūvos prekės</span>';
+		}
 		echo '</div>';
 
 		echo '</div>';
@@ -5832,6 +5854,24 @@ class Petshop_Katalogas {
 			}
 			aukstis();
 			window.addEventListener("resize", aukstis);
+
+			/* v8.6.2: filtrų dėžės suskleidimas. Būsena įsimenama — kas dirba
+			   su sąrašu, filtrus atsidaro retai, o prekių eilučių nori kuo
+			   daugiau. */
+			function frBusena(b){
+				document.body.classList.toggle("fr-suskleista", b);
+				var sant=document.querySelector(".frl-sant");
+				if(sant) sant.hidden = !b;
+				try{ localStorage.setItem("ps_kat_fr", b ? "1" : "0"); }catch(e){}
+				aukstis();
+			}
+			var frPr="0";
+			try{ frPr=localStorage.getItem("ps_kat_fr")||"0"; }catch(e){}
+			frBusena(frPr==="1");
+			document.addEventListener("click", function(e){
+				if(e.target.closest("#fr-sukl")){ frBusena(true); return; }
+				if(e.target.closest("#fr-iskl")){ frBusena(false); return; }
+			});
 			/* Pranešimai (WP atnaujinimai, pluginų juostos) atsiranda vėliau
 			   ir pastumia langą — permatuojam, kai jie nusėda. */
 			setTimeout(aukstis, 350); setTimeout(aukstis, 1200);
@@ -7794,6 +7834,22 @@ class Petshop_Katalogas {
 		   Tikrasis aukštis MATUOJAMAS naršyklėje (žr. `aukstis()`), o šitas
 		   lieka tik kaip atsarginis, kol JS nesuveikė. */
 		body.pskat-pilnas{overflow:hidden}
+		/* v8.6.2: suskleidžiamos filtrų eilutės. Fiksuotame lange kiekvienas
+		   viršuje suėstas pikselis atimamas TIESIAI iš prekių — todėl dvi
+		   naujos eilutės (sąlygos, vaizdai) turi būti nuimamos. */
+		.pskat-filters{position:relative}
+		.fr-sukl{position:absolute;right:8px;top:6px;z-index:3;border:1px solid #dfe5e1;background:#fff;
+			border-radius:4px;font-size:12px;line-height:1;padding:3px 8px;cursor:pointer;color:#5a6a60}
+		.fr-sukl:hover{border-color:#2271b1;color:#2271b1}
+		.frl-sant .fr-sukl{position:static;margin-right:8px}
+		.frl-sant{align-items:center;flex-wrap:wrap;gap:6px}
+		.frl-sant .sal-r{background:#f2f5f3}
+		body.fr-suskleista .pskat-filters .frl-1,
+		body.fr-suskleista .pskat-filters .frl-2,
+		body.fr-suskleista .pskat-filters .frl-3,
+		body.fr-suskleista .pskat-filters .frl-4{display:none}
+		body.fr-suskleista .pskat-filters .frl-sant{display:flex!important}
+		body.fr-suskleista .pskat-filters{padding:5px 10px}
 		body.pskat-pilnas #wpbody-content{padding-bottom:0}
 		body.pskat-pilnas #wpfooter{display:none}
 		.pskat-rail{overflow-y:auto;overflow-x:hidden;height:100%;
