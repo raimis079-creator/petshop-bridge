@@ -7916,7 +7916,10 @@ class Petshop_Katalogas {
 		.pskat-main > .pskat-red,
 		.pskat-main > .pskat-laikot{flex:none}
 		/* Prekių laukas — vienintelis, kuris slenka. */
-		.pskat-lent-lauk{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:auto;
+		/* v8.6.5: `flex:1 1 auto` reiškė „imk pagal turinį" — laukas išstumdavo
+		   puslapiavimą už lango ribų, o `overflow:hidden` jį nukirpdavo.
+		   `flex:1 1 0` reiškia „imk tiek, kiek liko po apatinių juostų". */
+		.pskat-lent-lauk{flex:1 1 0;min-height:120px;overflow-y:auto;overflow-x:auto;
 			border:1px solid #d3d8d2;border-radius:9px;background:#fff;
 			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
 		.pskat-lent-lauk::-webkit-scrollbar{width:11px;height:11px}
@@ -7929,7 +7932,13 @@ class Petshop_Katalogas {
 			background:#f7f9f6;box-shadow:inset 0 -1px 0 #d3d8d2}
 		/* Suvestinė ir puslapiavimas lieka po lentele — slenka kartu su ja. */
 		.pskat-main > .pskat-suv,
-		.pskat-main > .pskat-psl{flex:none;margin-top:10px}
+		.pskat-main > .pskat-psl{flex:none;margin-top:8px}
+		/* Puslapiavimas — visada matomas, tai vienintelis kelias į kitas prekes. */
+		.pskat-main > .pskat-psl{display:flex;align-items:center;gap:10px;
+			padding:6px 2px 2px;font-size:12.5px;color:#3c4a41}
+		.pskat-main > .pskat-psl a{padding:2px 10px;border:1px solid #cfd8d2;border-radius:4px;
+			background:#fff;text-decoration:none;color:#22401f}
+		.pskat-main > .pskat-psl a:hover{border-color:#2271b1;color:#2271b1}
 		body.yra-pakeitimu .pskat-main{padding-bottom:14px}
 		/* Išsaugojimo ir masinių veiksmų juostos ir taip yra `fixed`. */
 
