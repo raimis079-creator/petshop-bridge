@@ -808,6 +808,8 @@ class Petshop_Katalogas {
 		add_action( 'wp_ajax_ps_kat_av', array( __CLASS__, 'ajax_av_irasyti' ) );
 		add_action( 'wp_ajax_ps_kat_atsaukti', array( __CLASS__, 'ajax_atsaukti' ) );
 		add_action( 'wp_ajax_ps_kat_kaina', array( __CLASS__, 'ajax_kaina_irasyti' ) );
+		/* v8.5: savikaina redaguojama ir sąraše, ne tik kortelėje. */
+		add_action( 'wp_ajax_ps_kat_sav', array( __CLASS__, 'ajax_sav_irasyti' ) );
 		add_action( 'wp_ajax_ps_kat_laukas', array( __CLASS__, 'ajax_laukas_irasyti' ) );
 		add_action( 'wp_ajax_ps_kat_aprasymas', array( __CLASS__, 'ajax_aprasymas' ) );
 		add_action( 'wp_ajax_ps_kat_isimti', array( __CLASS__, 'ajax_isimti' ) );
@@ -1105,6 +1107,105 @@ class Petshop_Katalogas {
 	 * Kainų partija. Kaina rašoma į `_regular_price` IR `_price`, kad parduotuvė
 	 * pasikeistų iškart. Kartu uždedamas `_manual_price_override=yes`.
 	 */
+
+	/**
+	 * v8.5: SAVIKAINA greitame redagavime.
+	 *
+	 * Iki v8.5 sąraše buvo redaguojami tik AV likutis ir kaina, o savikaina —
+	 * tik kortelėje, po vieną prekę. Vedant savikainas masiškai tai reiškia
+	 * atidaryti ir uždaryti kortelę kiekvienai prekei.
+	 *
+	 * Taisyklė ta pati kaip kortelėje (`ajax_laukas_irasyti`): jei savikainą
+	 * valdo tiekėjas, įrašymas ATMETAMAS. Rašymas į `_cost_price` VF/ZB prekei
+	 * nieko nepakeistų — resolveris jo net nepamatytų, o pranešti „išsaugota"
+	 * reikštų meluoti.
+	 */
+	public static function ajax_sav_irasyti() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
+		check_ajax_referer( 'ps_kat', 'nonce' );
+
+		$raw = isset( $_POST['pakeitimai'] ) ? wp_unslash( $_POST['pakeitimai'] ) : '';
+		$sar = json_decode( $raw, true );
+		if ( ! is_array( $sar ) || ! $sar ) { wp_send_json_error( 'nėra ką išsaugoti' ); }
+		if ( count( $sar ) > 300 ) { wp_send_json_error( 'per daug eilučių vienu kartu (riba 300)' ); }
+		if ( ! self::uztikrinti_zurnala() ) { wp_send_json_error( 'nepavyko paruošti žurnalo' ); }
+
+		$planas = array(); $klaidos = array();
+		foreach ( $sar as $e ) {
+			$pid = isset( $e['id'] ) ? (int) $e['id'] : 0;
+			$iv  = isset( $e['ivestis'] ) ? str_replace( array( ',', ' ' ), array( '.', '' ), trim( (string) $e['ivestis'] ) ) : '';
+			if ( ! $pid || get_post_type( $pid ) !== 'product' ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'nėra prekės' ); continue; }
+			/* v8.5: TIK AV sandėlis (savininko sprendimas 2026-08-17).
+			   Dropship prekių savikaina ateina iš tiekėjo — Quattro ir Prins
+			   per kainoraštį, VF/ZB per XML. Rankinis įrašas ten arba būtų
+			   perrašytas per naktį, arba resolverio net nepamatytas. */
+			$sand = strtolower( trim( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) );
+			if ( $sand !== 'av' ) {
+				$klaidos[] = array( 'id' => $pid, 'kl' => 'ne AV sandėlis (' . ( $sand ?: 'nenurodytas' ) . ') — savikaina redaguojama tik AV prekėms' ); continue;
+			}
+			if ( self::tiekejo_savikaina( $pid ) ) {
+				$klaidos[] = array( 'id' => $pid, 'kl' => 'savikainą valdo tiekėjas — įrašyti negalima' ); continue;
+			}
+			/* Tuščia įvestis = savikainos ištrynimas. Vedant masiškai to reikia:
+			   klaidingai įvestas skaičius turi būti pašalinamas, ne paliekamas. */
+			if ( $iv === '' ) {
+				$buvo = get_post_meta( $pid, '_cost_price', true );
+				if ( $buvo === '' || $buvo === null ) { continue; }
+				$planas[] = array( 'pid' => $pid, 'buvo' => (float) $buvo, 'tapo' => null );
+				continue;
+			}
+			if ( ! preg_match( '/^([+-]?)(\d{1,6}(?:\.\d{1,4})?)$/', $iv, $m ) ) {
+				$klaidos[] = array( 'id' => $pid, 'kl' => 'netinkama savikaina: ' . $iv ); continue;
+			}
+			$buvo = get_post_meta( $pid, '_cost_price', true );
+			$buvo = ( $buvo === '' || $buvo === null ) ? null : (float) $buvo;
+			$sk   = (float) $m[2];
+			if ( $m[1] === '+' )     { $tapo = (float) $buvo + $sk; }
+			elseif ( $m[1] === '-' ) { $tapo = (float) $buvo - $sk; }
+			else                     { $tapo = $sk; }
+			$tapo = round( $tapo, 4 );
+			if ( $tapo <= 0 ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'savikaina turi būti didesnė už nulį' ); continue; }
+			if ( $tapo > 9999 ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'savikaina per didelė (riba 9999)' ); continue; }
+			$planas[] = array( 'pid' => $pid, 'buvo' => $buvo, 'tapo' => $tapo );
+		}
+		if ( ! $planas ) { wp_send_json_error( array( 'zinute' => 'nėra galiojančių eilučių', 'klaidos' => $klaidos ) ); }
+
+		global $wpdb;
+		$t   = self::zurnalo_lentele();
+		$op  = 'SV' . gmdate( 'ymdHis' ) . wp_rand( 10, 99 );
+		$now = current_time( 'mysql' );
+		$uid = get_current_user_id();
+		$ok  = array();
+
+		foreach ( $planas as $p ) {
+			$pid = $p['pid'];
+			if ( $p['tapo'] === null ) {
+				delete_post_meta( $pid, '_cost_price' );
+			} else {
+				update_post_meta( $pid, '_cost_price', (string) $p['tapo'] );
+				update_post_meta( $pid, '_cost_price_source', 'ranka' );
+				update_post_meta( $pid, '_cost_price_manual_at', $now );
+				update_post_meta( $pid, '_cost_price_manual_by', $uid );
+			}
+			$wpdb->insert( $t, array(
+				'operacija' => $op, 'product_id' => $pid, 'laukas' => '_cost_price',
+				'buvo' => $p['buvo'] === null ? null : (string) $p['buvo'],
+				'tapo' => $p['tapo'] === null ? null : (string) $p['tapo'],
+				'pokytis' => null, 'priezastis' => 'savikaina', 'user_id' => $uid, 'sukurta' => $now,
+			) );
+			/* Marža grąžinama iškart — kad eilutė persidažytų be perkrovimo. */
+			$kaina = get_post_meta( $pid, '_regular_price', true );
+			$mz    = ( $p['tapo'] === null ) ? null : self::marza( $kaina === '' ? null : (float) $kaina, $p['tapo'] );
+			$ok[]  = array( 'id' => $pid, 'buvo' => $p['buvo'], 'tapo' => $p['tapo'], 'marza' => $mz );
+		}
+		delete_transient( 'ps_kat_duomenys' );
+
+		wp_send_json_success( array(
+			'operacija' => $op, 'irasyta' => count( $ok ),
+			'eilutes' => $ok, 'klaidos' => $klaidos, 'priezastis' => 'Savikainos keitimas',
+		) );
+	}
+
 	public static function ajax_kaina_irasyti() {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
 		check_ajax_referer( 'ps_kat', 'nonce' );
@@ -5395,7 +5496,7 @@ class Petshop_Katalogas {
 			echo '<option value="' . esc_attr( $k ) . '">' . esc_html( $v ) . '</option>';
 		}
 		echo '</select>';
-		echo '<span class="pat">Spustelk <b>AV</b> arba <b>kainą</b> ir rašyk. <b>Enter</b> — žemyn, '
+		echo '<span class="pat">Spustelk <b>AV</b>, <b>kainą</b> arba <b>savikainą</b> ir rašyk. <b>Enter</b> — žemyn, '
 			. '<b>Tab</b> — į šoną. <b>12</b> nustato, <b>+5</b> prideda, <b>−2</b> atima.'
 			. '<i>Kainą pakeitus, prekė iškrenta iš automatinės kainodaros.</i></span>';
 		echo '<button class="baigti" id="red-baigti">Išjungti režimą</button>';
@@ -5597,14 +5698,23 @@ class Petshop_Katalogas {
 			}
 			echo '</span></td>';
 
-			/* SAVIKAINA */
-			echo '<td class="num">';
+			/* SAVIKAINA — v8.5: redaguojama vietoje, bet TIK AV prekėms.
+			   Dropship savikaina ateina iš tiekėjo, todėl ten laukelio nėra
+			   visai: matomas laukelis, kuris nieko nekeičia, yra blogiau
+			   nei jokio laukelio. */
+			$sav_rd = ( $r['sand'] === 'av' );
+			echo '<td class="num sav-lang' . ( $sav_rd ? ' red-lang' : ' nerd' ) . '"'
+				. ( $sav_rd ? ' data-st="sav" data-id="' . (int) $r['id'] . '"'
+					. ' data-buvo="' . ( $r['cost'] === null ? '' : (float) $r['cost'] ) . '"'
+					. ' data-kaina="' . ( $r['price'] === null ? '' : (float) $r['price'] ) . '"'
+					. ' data-grind="' . (float) $r['grind'] . '"' : '' ) . '>';
+			echo '<span class="sav-rodo">';
 			if ( $r['cost'] === null ) {
 				echo '<span class="nezinoma bs" data-p="Savikaina nesuvesta — be jos nematyti nei maržos, nei atsargų vertės">—</span>';
 			} else {
 				echo '<span data-p="Be PVM · su PVM ' . esc_attr( $eur( $r['cost'] * ( 1 + self::PVM ) ) ) . ' €">' . $eur( $r['cost'] ) . '</span>';
 			}
-			echo '</td>';
+			echo '</span></td>';
 
 			/* MARŽA PLOKŠTELE */
 			echo '<td class="num">';
@@ -6028,7 +6138,7 @@ class Petshop_Katalogas {
 
 			/* ---- GREITAS REDAGAVIMAS: AV ir KAINA ---- */
 			var redRezimas=false;
-			var pak={av:{},kaina:{}};
+			var pak={av:{},kaina:{},sav:{}};
 			var redJuosta=document.getElementById("pskat-red");
 			var sgJuosta=document.getElementById("pskat-saugoti");
 			var PVM=1.21;
@@ -6037,7 +6147,7 @@ class Petshop_Katalogas {
 				var s = st ? "td.red-lang[data-st=" + st + "]" : "td.red-lang";
 				return Array.prototype.slice.call(document.querySelectorAll(s));
 			}
-			function kiekViso(){ return Object.keys(pak.av).length + Object.keys(pak.kaina).length; }
+			function kiekViso(){ return Object.keys(pak.av).length + Object.keys(pak.kaina).length + Object.keys(pak.sav).length; }
 			function atnaujintiKieki(){
 				var n=kiekViso();
 				document.getElementById("sg-kiek").textContent=n;
@@ -6045,8 +6155,8 @@ class Petshop_Katalogas {
 				document.body.classList.toggle("yra-pakeitimu", n>0);
 				var d=document.getElementById("sg-detalus");
 				if(d){
-					var a=Object.keys(pak.av).length, k=Object.keys(pak.kaina).length;
-					var t=[]; if(a) t.push(a+" likučiai"); if(k) t.push(k+" kainos");
+					var a=Object.keys(pak.av).length, k=Object.keys(pak.kaina).length, sv=Object.keys(pak.sav).length;
+					var t=[]; if(a) t.push(a+" likučiai"); if(k) t.push(k+" kainos"); if(sv) t.push(sv+" savikainos");
 					d.textContent = t.length ? "(" + t.join(", ") + ")" : "";
 				}
 			}
@@ -6096,11 +6206,15 @@ class Petshop_Katalogas {
 				var v=inp.value.trim().replace(/\u2212/g,"-").replace(/\s+/g,"");
 				inp.remove();
 				var st=td.dataset.st;
-				var sp=td.querySelector(".av-rodo, .kaina-rodo");
+				var sp=td.querySelector(".av-rodo, .kaina-rodo, .sav-rodo");
 				sp.hidden=false;
 				if(!issaugoti) return;
 				if(v===""){ delete pak[st][td.dataset.id]; td.classList.remove("pakeista","persp"); grazintiRodini(td); atnaujintiKieki(); return; }
-				var geras = st==="av" ? /^[+-]?\d{1,6}$/.test(v) : /^[+-]?\d{1,6}([.,]\d{1,2})?$/.test(v);
+				/* v8.5: savikainai leidžiama 4 skaitmenys po kablelio — tiekėjų
+				   kainoraščiuose taip ir ateina (7,2727), o apvalinimas iki centų
+				   maržą pastumtų. */
+				var geras = st==="av" ? /^[+-]?\d{1,6}$/.test(v)
+					: ( st==="sav" ? /^[+-]?\d{1,6}([.,]\d{1,4})?$/.test(v) : /^[+-]?\d{1,6}([.,]\d{1,2})?$/.test(v) );
 				var tapo = geras ? apskaiciuoti(td,v) : null;
 				if(tapo===null){
 					td.classList.add("bloga");
@@ -6118,6 +6232,19 @@ class Petshop_Katalogas {
 				i.textContent="buvo "+buvoT;
 				sp.appendChild(i);
 				td.classList.remove("persp");
+				if(st==="sav"){
+					/* v8.5: marža persiskaičiuoja iškart — vedant savikainas
+					   svarbiausia matyti, ar prekė neatsiduria žemiau ribos. */
+					var kn=skai(td.dataset.kaina), gr=skai(td.dataset.grind);
+					if(kn && tapo>0){
+						var mp=Math.round(((kn/PVM)/tapo-1)*1000)/10;
+						var mm=document.createElement("i"); mm.className="mz";
+						mm.textContent="marža "+String(mp).replace(".",",")+" %";
+						if(mp<0){ mm.classList.add("bad"); mm.textContent+=" · žemiau savikainos"; td.classList.add("persp"); }
+						else if(mp<gr){ mm.classList.add("warn"); mm.textContent+=" · žemiau ribos"; td.classList.add("persp"); }
+						sp.appendChild(mm);
+					}
+				}
 				if(st==="kaina"){
 					var m=marzaSk(td,tapo);
 					if(m){
@@ -6137,7 +6264,7 @@ class Petshop_Katalogas {
 				atnaujintiKieki();
 			}
 			function grazintiRodini(td){
-				var sp=td.querySelector(".av-rodo, .kaina-rodo");
+				var sp=td.querySelector(".av-rodo, .kaina-rodo, .sav-rodo");
 				if(!sp) return;
 				if(td.dataset.st==="av"){
 					sp.innerHTML = td.dataset.buvo==="" ? "<span class=\"nezinoma\">—</span>" : td.dataset.buvo;
@@ -6198,7 +6325,8 @@ class Petshop_Katalogas {
 			function saugoti(){
 				var av=Object.keys(pak.av).map(function(id){ return {id:+id, ivestis:pak.av[id]}; });
 				var kn=Object.keys(pak.kaina).map(function(id){ return {id:+id, ivestis:pak.kaina[id]}; });
-				if(!av.length && !kn.length) return;
+				var sv=Object.keys(pak.sav).map(function(id){ return {id:+id, ivestis:pak.sav[id]}; });
+				if(!av.length && !kn.length && !sv.length) return;
 				var zemiau=document.querySelectorAll("td.kaina-lang.persp").length;
 				if(zemiau && !confirm(zemiau+" kaina(-os) krenta žemiau maržos ribos arba savikainos. Tęsti?")) return;
 				var b=document.getElementById("sg-saugoti");
@@ -6207,6 +6335,7 @@ class Petshop_Katalogas {
 				var darbai=[];
 				if(av.length) darbai.push(siusti("ps_kat_av",av,priez));
 				if(kn.length) darbai.push(siusti("ps_kat_kaina",kn,null));
+				if(sv.length) darbai.push(siusti("ps_kat_sav",sv,null));
 				Promise.all(darbai).then(function(rez){
 					b.disabled=false; b.textContent="Išsaugoti";
 					var blogas=rez.filter(function(j){ return !(j&&j.success); });
@@ -6225,7 +6354,7 @@ class Petshop_Katalogas {
 						var i=td.querySelectorAll("i");
 						for(var q=0;q<i.length;q++){ if(i[q].className==="uzr-persp"||i[q].textContent.indexOf("buvo ")===0) i[q].remove(); }
 					});
-					pak={av:{},kaina:{}}; atnaujintiKieki();
+					pak={av:{},kaina:{},sav:{}}; atnaujintiKieki();
 				}).catch(function(){
 					b.disabled=false; b.textContent="Išsaugoti"; alert("Ryšio klaida.");
 				});
