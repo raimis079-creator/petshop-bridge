@@ -5303,8 +5303,34 @@ class Petshop_Katalogas {
 	private static function filtrai( $f, $sar, $sort, $kryp, $per ) {
 		$sand = array( '' => 'visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB', 'quattro' => 'Quattro',
 			'belcor_tofu' => 'Belacor tofu', 'prins' => 'Prins', 'ambrosia' => 'Ambrosia' );
-		echo '<div class="pskat-filters" id="pskat-filters"><div class="frline frl-1">';
-		echo '<button type="button" class="fr-sukl" id="fr-sukl" title="Suskleisti / išskleisti filtrus">⌃</button>';
+		/* v8.6.4: JUNGIKLIS — vienas, su užrašu, VISADA toje pačioje vietoje.
+		   v8.6.2 jis buvo 12 px ženkliukas dešiniame kampe, dar ir ant
+		   „Išvalyti filtrus" užlipęs. Valdiklis, kurio reikia ieškoti, nėra
+		   valdiklis. */
+		$sal_t0 = isset( $f['sal'] ) ? (string) $f['sal'] : '';
+		$sal0   = self::sal_is_teksto( $sal_t0 );
+		$akt = array();
+		if ( ! empty( $f['sand'] ) )    { $akt[] = 'tiekėjas: ' . $f['sand']; }
+		if ( ! empty( $f['kat'] ) )     { $akt[] = 'kategorija: ' . $f['kat']; }
+		if ( ! empty( $f['brand'] ) )   { $akt[] = 'brendas: ' . $f['brand']; }
+		if ( ! empty( $f['likutis'] ) ) { $akt[] = 'likutis: ' . $f['likutis']; }
+		if ( ! empty( $f['marza'] ) )   { $akt[] = 'marža: ' . $f['marza']; }
+		if ( ! empty( $f['tipas'] ) )   { $akt[] = 'tipas: ' . $f['tipas']; }
+		foreach ( $sal0 as $x ) { $akt[] = self::sal_zodziais( $x ); }
+
+		echo '<div class="pskat-filters" id="pskat-filters">';
+		echo '<div class="frline frl-sant">';
+		echo '<button type="button" class="fr-jung" id="fr-jung">'
+			. '<span class="rod">▸</span> Filtrai<span class="kiek">' . ( $akt ? ' · ' . count( $akt ) : '' ) . '</span></button>';
+		if ( $akt ) {
+			foreach ( $akt as $a ) { echo '<span class="sal-p sal-r">' . esc_html( $a ) . '</span>'; }
+			echo '<a class="clear" href="' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'sal'=>null,'psl'=>null ) ) . '">Išvalyti</a>';
+		} else {
+			echo '<span class="sal-tuscia">filtrų nėra — visos krūvos prekės</span>';
+		}
+		echo '</div>';
+
+		echo '<div class="frline frl-1">';
 		self::sel( 'sand', 'Tiekėjas', $sand, $f['sand'] );
 		echo '<span class="sep"></span>';
 		self::sel_paieska( 'kat', 'Kategorija', $sar['kategorijos'], $f['kat'] );
@@ -5379,27 +5405,6 @@ class Petshop_Katalogas {
 		echo '<button type="submit" name="ka" value="irasyti" class="vz-b">Išsaugoti šį vaizdą</button>';
 		echo '<button type="submit" name="ka" value="atstatyti" class="vz-b vz-mut" title="Grąžinti penkis pradinius vaizdus">Atstatyti</button>';
 		echo '</form>';
-		echo '</div>';
-
-		/* v8.6.2: SUSKLEISTA SANTRAUKA.
-		   Suskleidus dėžę viena eilutė lieka: aktyvūs filtrai ir sąlygos.
-		   Be jos žmogus nematytų, kodėl sąraše 312, o ne 2 615. */
-		$akt = array();
-		if ( ! empty( $f['sand'] ) )    { $akt[] = 'tiekėjas: ' . $f['sand']; }
-		if ( ! empty( $f['kat'] ) )     { $akt[] = 'kategorija: ' . $f['kat']; }
-		if ( ! empty( $f['brand'] ) )   { $akt[] = 'brendas: ' . $f['brand']; }
-		if ( ! empty( $f['likutis'] ) ) { $akt[] = 'likutis: ' . $f['likutis']; }
-		if ( ! empty( $f['marza'] ) )   { $akt[] = 'marža: ' . $f['marza']; }
-		if ( ! empty( $f['tipas'] ) )   { $akt[] = 'tipas: ' . $f['tipas']; }
-		foreach ( $sal as $x ) { $akt[] = self::sal_zodziais( $x ); }
-		echo '<div class="frline frl-sant" hidden>';
-		echo '<button type="button" class="fr-sukl" id="fr-iskl" title="Išskleisti filtrus">⌄ Filtrai</button>';
-		if ( $akt ) {
-			foreach ( $akt as $a ) { echo '<span class="sal-p sal-r">' . esc_html( $a ) . '</span>'; }
-			echo '<a class="clear" href="' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'sal'=>null,'psl'=>null ) ) . '">Išvalyti</a>';
-		} else {
-			echo '<span class="sal-tuscia">filtrų nėra — visos krūvos prekės</span>';
-		}
 		echo '</div>';
 
 		echo '</div>';
@@ -5859,9 +5864,9 @@ class Petshop_Katalogas {
 			   su sąrašu, filtrus atsidaro retai, o prekių eilučių nori kuo
 			   daugiau. */
 			function frBusena(b){
+				/* v8.6.4: santraukos eilutė matoma VISADA — joje gyvena
+				   jungiklis. Slepiamos tik keturios filtrų eilutės. */
 				document.body.classList.toggle("fr-suskleista", b);
-				var sant=document.querySelector(".frl-sant");
-				if(sant) sant.hidden = !b;
 				try{ localStorage.setItem("ps_kat_fr", b ? "1" : "0"); }catch(e){}
 				aukstis();
 			}
@@ -5871,8 +5876,7 @@ class Petshop_Katalogas {
 			try{ frPr=localStorage.getItem("ps_kat_fr")||"1"; }catch(e){}
 			frBusena(frPr==="1");
 			document.addEventListener("click", function(e){
-				if(e.target.closest("#fr-sukl")){ frBusena(true); return; }
-				if(e.target.closest("#fr-iskl")){ frBusena(false); return; }
+				if(e.target.closest("#fr-jung")){ frBusena(!document.body.classList.contains("fr-suskleista")); return; }
 			});
 			/* Pranešimai (WP atnaujinimai, pluginų juostos) atsiranda vėliau
 			   ir pastumia langą — permatuojam, kai jie nusėda. */
@@ -7873,10 +7877,19 @@ class Petshop_Katalogas {
 		   viršuje suėstas pikselis atimamas TIESIAI iš prekių — todėl dvi
 		   naujos eilutės (sąlygos, vaizdai) turi būti nuimamos. */
 		.pskat-filters{position:relative}
-		.fr-sukl{position:absolute;right:8px;top:6px;z-index:3;border:1px solid #dfe5e1;background:#fff;
-			border-radius:4px;font-size:12px;line-height:1;padding:3px 8px;cursor:pointer;color:#5a6a60}
-		.fr-sukl:hover{border-color:#2271b1;color:#2271b1}
-		.frl-sant .fr-sukl{position:static;margin-right:8px}
+		.fr-jung{display:inline-flex;align-items:center;gap:6px;border:1px solid #cfd8d2;background:#fff;
+			border-radius:5px;font-size:12.5px;line-height:1;padding:5px 12px;cursor:pointer;color:#22401f;
+			font-weight:600;margin-right:4px}
+		.fr-jung:hover{border-color:#2271b1;color:#2271b1;background:#f4f9fb}
+		.fr-jung .rod{display:inline-block;transition:transform .12s;font-size:10px;color:#7a8b80}
+		body:not(.fr-suskleista) .fr-jung .rod{transform:rotate(90deg)}
+		.fr-jung .kiek{color:#7a8b80;font-weight:400}
+		/* v8.6.4: WordPress atnaujinimo pranešimas šitame lange nereikalingas —
+		   jis atima eilutę prekių, o atnaujinti vis tiek negalima (WP 7.0
+		   užrakintas). Matomas visur kitur admine. */
+		body.pskat-pilnas .update-nag,
+		body.pskat-pilnas #wpbody-content > .updated,
+		body.pskat-pilnas #wpbody-content > .update-nag{display:none!important}
 		.frl-sant{align-items:center;flex-wrap:wrap;gap:6px}
 		/* v8.6.3 KLAIDA IR PATAISA: `.frline{display:flex}` nustelbdavo
 		   `hidden` atributą, todėl suskleista santrauka rodydavosi VISADA —
@@ -7887,7 +7900,7 @@ class Petshop_Katalogas {
 		body.fr-suskleista .pskat-filters .frl-2,
 		body.fr-suskleista .pskat-filters .frl-3,
 		body.fr-suskleista .pskat-filters .frl-4{display:none}
-		body.fr-suskleista .pskat-filters .frl-sant{display:flex!important}
+		.frl-sant{padding-top:0!important;border-top:0!important}
 		body.fr-suskleista .pskat-filters{padding:5px 10px}
 		body.pskat-pilnas #wpbody-content{padding-bottom:0}
 		body.pskat-pilnas #wpfooter{display:none}
