@@ -172,7 +172,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | OPS-03 | `woocommerce_email_header_image` · `wcdn_settings` · `cmplz_preloaded_privacy_info` | 🔴 |
 | OPS-04 | AVPN/IAPV serijos reset į 101 | 🔴 |
 | OPS-05 | Testinių užsakymų trynimas | 🔴 |
-| OPS-06 | Feed URL resubmit (Kaina24, Kainos.lt) | 🔴 |
+| OPS-06 | Feed URL resubmit (Kaina24, Kainos.lt) | 🔴 **feed'ai NEGYVI** — miršta ties 256M, pirma reikia variklio (§8m) |
 | OPS-07 | „Discourage search engines" išjungti | 🔴 (= DOD-22) |
 | OPS-08 | Sender tracking CNAME | 🟡 |
 | OPS-09 | Complianz Website Scan + slapukų sąrašas · enhanced conversions | 🟡 |
@@ -569,6 +569,82 @@ Sprendimas prekybinis; savininkas nurodė prie prekių nelįsti.**
 ### F-PSR TAPO KRITINIU KELIU
 DOD-18 §4.4/16 žingsnis būtų PIRMAS Paysera ciklo bandymas — 03:00, be
 palaikymo. **Perjungimo datos negalima fiksuoti, kol F-PSR neuždarytas.**
+
+---
+
+## 8m. Q-MERCH: GOOGLE ZVALGYBA IR GTIN SKOLA — 2026-08-17/18 (naktis) [S971–S986]
+
+### Piltuvelis (savininko klausimas apie testinius rinkinius — NEKLIUDO)
+```
+publish                     2 609
+– paslėptos (hidden)            5
+– rinkiniai (mix-and-match)     8
+= FEED'O KANDIDATAI         2 596
+```
+Rinkiniai atsijoja savaime, nes į feed'ą jie pagal seną sprendimą neina.
+
+### 🔴 KAINA24 IR KAINOS.LT FEED'AI YRA NEGYVI
+```
+/feed/kaina24 · /feed/kainos → Fatal: memory 268435456 exhausted
+priežastis: petshop-feeds v1.0.0 → posts_per_page=-1 + wc_get_product() visoms
+memory_limit 256M · WP_MEMORY_LIMIT 40M
+```
+**OPS-06 prielaida buvo klaidinga** — resubmitinti nėra ko. Tas pats kodas jau
+filtruoja `instock`, tad savininko sprendimas (be likučio nesiųsti) sutampa.
+
+### GTIN skola ir jos šaknis
+```
+PRIEŠ: _global_unique_id užpildyta 1 252 · galioja tik 394 (31 %)
+VF XML <barcode>: 2 326 reikšmės, VISOS lygiai 12 simbolių, galioja 0
+```
+**Šaknis — tiekėjo pusėje.** Vetfarmas siunčia nukirstą EAN-13 (be kontrolinio
+skaitmens). ZB pusė švari (97 % galioja). Atkūrimas galimas: kontrolinis
+skaitmuo skaičiuojamas iš pirmųjų dvylikos (GS1 mod-10).
+
+### Taisymas atliktas (S977–S978)
+```
+pakeista            1 963 prekės, tik laukas _global_unique_id
+praleista           46 konfliktinės (41 VF vs Legacy + 5 du geri 13)
+patikra             perskaityta iš DB: 1 963 / 1 963 sutampa, 0 nesutapimų
+vizualiai           17978 → 4032254785989 · 12452 → 8710255120072 (ekranai repo)
+kopija              uploads/ps-backups/gtin_backup_20260817_204552.json (148 KB)
+PO: užpildyta 2 021 · galioja 2 015 · VF prekės su 13 zn. 979/979
+be jokio kodo lieka 594 (žaislai, aksesuarai)
+```
+
+### 🔒 REGRESIJOS ŠAKNIS UŽDARYTA — `class-vf-import.php` v1.5.7
+`petshop_xml_vf_create_new()` rašė žalią 12 simbolių barkodą į `_ean` ir
+`_global_unique_id` **be `$is_update` apsaugos** → kitas Import #5 būtų
+grąžinęs 979 prekes atgal. Pridėtas `petshop_xml_gtin_normalize()`.
+```
+_vf_barcode paliktas ŽALIAS — suporavimo raktas find_by_ean() užklausoje
+idempotencija: 965 iš 979 sutaps su tuo, kas jau lauke
+Import #5 mapinimas švarus — rašo tik _vf_* laukus, GTIN jame nėra
+```
+
+### Savininko sprendimai (2026-08-18)
+```
+Q-MERCH-2   feed'as SAVAS (ne GLA pluginas) — vienas variklis, trys išvestys
+Q-MERCH-3   prekės be likučio į feed'us NESIUNČIAMOS — paspaudimai mokami
+14 konfliktų → variantas 1: VF yra tiesos šaltinis, importas užrašys pats
+```
+
+### Google API — prieiga yra, bet uždaryta
+```
+claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
+token 200 · authinfo 403 — Content API for Shopping neįjungtas (projektas 683712074632)
+```
+**Reikia savininko:** (1) Google Cloud → įjungti Content API for Shopping;
+(2) Merchant Center → Naudotojai → pridėti tą adresą (Skaitytojo teisių užtenka).
+Iki tol Merchant Center paskyros būklė nežinoma.
+
+### Neuždaryta
+```
+feed'o variklis su paketais (dabartinis miršta ties 256M)
+Google kategorijų mapinimas — 80 kategorijų, nulis susiejimų
+128 prekės be brendo · 46 be aprašymo · 3 be kainos · 1 352 be svorio
+4 CATIT prekės su 11 ženklų kodais (19042, 19045, 19048, 19051) — sena skola
+```
 
 ---
 
@@ -2157,12 +2233,14 @@ Lapai: Suvestinė · Prekės · Rinkiniai · Piltuvėlis · **Žali duomenys**
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
 | Q-BKP | ✅ **UŽDARYTA 2026-08-03:** B2 bucketas, raktas, kredencialai, Object Lock 14 d. — viskas pastatyta ir įrodyta (§8d) | DOD-08 | — |
-| **Q-MERCH** | **Google Merchant Center feed — dabar ar po launch?** (~10 k €/metus) | §11 G3 | skubu |
+| **Q-MERCH-1** | **Ar Merchant Center paskyra egzistuoja?** Tikrinti negalim: Content API neįjungtas + paslaugos aktas nepridėtas prie MC (§8m S985). Du savininko veiksmai | Google feed | skubu |
+| ~~Q-MERCH-2~~ | ✅ **UŽDARYTA 2026-08-18:** feed'as SAVAS, ne GLA pluginas | — | — |
+| ~~Q-MERCH-3~~ | ✅ **UŽDARYTA 2026-08-18:** prekės be likučio į feed'us nesiunčiamos | — | — |
 | Q-MON | **Monitoringo apimtis** — uptime pakanka, ar reikia ir PHP klaidų sekimo? | DOD-13 | — |
 | Q-PSR2 | **Paysera testinio režimo patvirtinimas** — be jo pilnas mokėjimo ciklas (redirect → callback → `processing`) netestuojamas. Dev režimas testinis, bet konfigūracija nebaigta | F-PSR | — |
 | Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
 | Q21 | FB paskyros revival + reali nuoroda | OPS-10 | — |
-| Q-R2 | 1518 prekių be EAN — iš kur imti | F4 vertė | — |
+| Q-R2 | Prekės be EAN — patikslinta 2026-08-18: po GTIN taisymo liko **594** publish prekės be jokio kodo (§8m) | F4 vertė · Google | — |
 | Q-R7 | 1022 draft prekės — publish/trinti/palikti | — | — |
 | Q-SEO | Kurios 404 kategorijos apskritai bus | DOD-07 | — |
 | Q-M8 | Anketos tekstai + „14 dienų" frazė | M8 9b | — |
