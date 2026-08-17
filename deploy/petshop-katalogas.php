@@ -1,5 +1,21 @@
 <?php
 /**
+ * Petshop Katalogas v8.7 (S902) - NORMALUS DARBINIS LANGAS.
+ *
+ * SAVININKAS (2026-08-17, su ekrano nuotraukomis): v8.6-v8.6.5b fiksuoto
+ * ekrano koncepcija realiame ekrane palikdavo prekems 120 px ruozeli -
+ * matesi 1-4 eilutes su vidiniu scroll-u. Nurodymas: "reikia paprasciausiai
+ * normalaus darbinio lango".
+ *
+ * ISMESTA: aukstis() JS matavimai, body.pskat-pilnas, .pskat-layout
+ * fiksuotas aukstis, .pskat-main flex-stulpelis su overflow:hidden,
+ * .pskat-lent-lauk vertikalus scroll-as ir aukscio ribos.
+ * LIEKA: filtru suskleidimas (v8.6.2-8.6.4), sticky virsutine juosta,
+ * sticky kaires eiles (top pagal ismatuota juostos apacia --ps-virsus),
+ * update-nag slepimas. Puslapis slenka normaliai, prekiu telpa tiek,
+ * kiek ju yra puslapyje.
+ *
+ * ---- ankstesne istorija ----
  * Petshop Katalogas v8.3 (S716) — BUSENA MATOSI IS KARTO, IR JA GALIMA KEISTI.
  *
  * TESTUOTOJO PASTABA: „ziurint preke kortelėje neaisku, ar ji aktyvi
@@ -5845,64 +5861,34 @@ class Petshop_Katalogas {
 			}
 
 
-			/* ---------- v8.6.1: TIKRAS AUKŠTIS ----------
-			   Fiksuotas `100vh − 118px` buvo spėjimas: WordPress juosta,
-			   atnaujinimo pranešimai ir mūsų viršutinė juosta užima kintamą aukštį,
-			   todėl prekių laukas likdavo siauras ruoželis. Dabar matuojam. */
-			function aukstis(){
-				var L=document.querySelector(".pskat-layout");
-				if(!L) return;
-				document.body.classList.add("pskat-pilnas");
-				var t=L.getBoundingClientRect().top;
-				var h=Math.max(320, Math.floor(window.innerHeight - t - 2));
-				L.style.height=h+"px";
-
-				/* v8.6.5: prekių lauko aukštis NESKAIČIUOJAMAS, o IŠMATUOJAMAS.
-				   Anksčiau jis buvo paliktas `flex` valiai, ir puslapiavimas
-				   kiekvieną kartą nukrisdavo lygiai 9 px žemiau lango krašto —
-				   dėl paraščių, kurių aritmetikoje neįvertinau. Dabar: laukas
-				   suspaudžiamas iki nulio, išmatuojama, kiek užima visa kita,
-				   ir laukui atiduodama tiksliai tai, kas liko. */
-				var M=document.querySelector(".pskat-main");
-				var A=document.querySelector(".pskat-lent-lauk");
-				if(!M||!A) return;
-				A.style.height="0px";
-				var uzimta=M.scrollHeight;
-				var laisva=M.clientHeight-uzimta;
-				A.style.height=Math.max(120, Math.floor(laisva))+"px";
+			/* ---------- v8.7: NORMALUS LANGAS ----------
+			   v8.6 fiksuoto ekrano koncepcija (langas = ekrano aukstis,
+			   prekems atiduodama "kas liko" po JS matavimu) realiame ekrane
+			   palikdavo prekems 120 px ruozeli su vidiniu scroll-u.
+			   Ismesta visa matavimo masinerija: puslapis vel slenka
+			   normaliai, prekiu lentele auga pagal turini.
+			   Lieka VIENAS matavimas - virsutines juostos apacia, kad
+			   kaires eiles (sticky) nesulistu po ja. */
+			function virsus(){
+				var b=document.querySelector(".pskat-bar");
+				var t=b?Math.max(0,Math.round(b.getBoundingClientRect().bottom)):118;
+				document.documentElement.style.setProperty("--ps-virsus", t+"px");
 			}
-			aukstis();
-			window.addEventListener("resize", aukstis);
+			virsus();
+			window.addEventListener("resize", virsus);
+			setTimeout(virsus, 400); setTimeout(virsus, 1200);
 
-			/* v8.6.2: filtrų dėžės suskleidimas. Būsena įsimenama — kas dirba
-			   su sąrašu, filtrus atsidaro retai, o prekių eilučių nori kuo
-			   daugiau. */
+			/* v8.6.2 (lieka): filtru dezes suskleidimas. Busena isimenama. */
 			function frBusena(b){
-				/* v8.6.4: santraukos eilutė matoma VISADA — joje gyvena
-				   jungiklis. Slepiamos tik keturios filtrų eilutės. */
 				document.body.classList.toggle("fr-suskleista", b);
 				try{ localStorage.setItem("ps_kat_fr", b ? "1" : "0"); }catch(e){}
-				aukstis();
 			}
-			/* v8.6.3: numatytai SUSKLEISTA. Kas dirba su sąrašu, filtrus
-			   atsidaro retai, o prekių eilučių nori kuo daugiau. */
 			var frPr="1";
 			try{ frPr=localStorage.getItem("ps_kat_fr")||"1"; }catch(e){}
 			frBusena(frPr==="1");
 			document.addEventListener("click", function(e){
 				if(e.target.closest("#fr-jung")){ frBusena(!document.body.classList.contains("fr-suskleista")); return; }
 			});
-			/* Pranešimai (WP atnaujinimai, pluginų juostos) atsiranda vėliau
-			   ir pastumia langą — permatuojam, kai jie nusėda. */
-			setTimeout(aukstis, 350); setTimeout(aukstis, 1200);
-			document.addEventListener("click", function(e){
-				if(e.target.closest(".notice-dismiss")) setTimeout(aukstis, 120);
-			});
-			if(window.ResizeObserver){
-				var ro=new ResizeObserver(function(){ aukstis(); });
-				var vb=document.getElementById("wpbody-content");
-				if(vb) ro.observe(vb);
-			}
 
 			/* ---------- v8.4: SĄLYGŲ PRIDĖJIMAS ----------
 			   Operatoriai priklauso nuo lauko tipo: skaičiui nesiūlom
@@ -7876,20 +7862,13 @@ class Petshop_Katalogas {
 		/* Greitojo redagavimo juosta — buvo atskira dėžė su savo tarpais. */
 		.pskat-red{margin:0 0 8px}
 
-		/* ==================== v8.6 · DU SLINKTIES LAUKAI ====================
-		   Iki v8.6 slinko visas puslapis: nuvažiavus iki 40-tos prekės dingdavo
-		   ir filtrai, ir kairės eilės, ir lentelės antraštė — nebežinai, kuris
-		   stulpelis marža, o kuris savikaina.
-		   Dabar viršus stovi, kairė turi savo juostą, o slenka tik prekės. */
-		.pskat-layout{height:calc(100vh - 118px);min-height:320px;overflow:hidden}
-		/* v8.6.1: 118px buvo SPĖJIMAS. Virš lango dar yra WordPress juosta,
-		   atnaujinimo pranešimai ir mūsų viršutinė juosta — jų aukštis kinta.
-		   Tikrasis aukštis MATUOJAMAS naršyklėje (žr. `aukstis()`), o šitas
-		   lieka tik kaip atsarginis, kol JS nesuveikė. */
-		body.pskat-pilnas{overflow:hidden}
-		/* v8.6.2: suskleidžiamos filtrų eilutės. Fiksuotame lange kiekvienas
-		   viršuje suėstas pikselis atimamas TIESIAI iš prekių — todėl dvi
-		   naujos eilutės (sąlygos, vaizdai) turi būti nuimamos. */
+		/* ==================== v8.7 · NORMALUS LANGAS ====================
+		   v8.6 "du slinkties laukai" (fiksuotas ekrano aukstis, vidinis
+		   prekiu scroll-as, JS matavimai) ismestas: realiame ekrane
+		   prekems likdavo 120 px. Dabar puslapis slenka normaliai;
+		   virsutine juosta ir kaires eiles - sticky, tad orientyrai
+		   nedingsta, o prekiu telpa tiek, kiek ju yra. */
+		/* v8.6.2 (lieka): suskleidziamos filtru eilutes. */
 		.pskat-filters{position:relative}
 		.fr-jung{display:inline-flex;align-items:center;gap:6px;border:1px solid #cfd8d2;background:#fff;
 			border-radius:5px;font-size:12.5px;line-height:1;padding:5px 12px;cursor:pointer;color:#22401f;
@@ -7898,16 +7877,12 @@ class Petshop_Katalogas {
 		.fr-jung .rod{display:inline-block;transition:transform .12s;font-size:10px;color:#7a8b80}
 		body:not(.fr-suskleista) .fr-jung .rod{transform:rotate(90deg)}
 		.fr-jung .kiek{color:#7a8b80;font-weight:400}
-		/* v8.6.4: WordPress atnaujinimo pranešimas šitame lange nereikalingas —
-		   jis atima eilutę prekių, o atnaujinti vis tiek negalima (WP 7.0
-		   užrakintas). Matomas visur kitur admine. */
-		body.pskat-pilnas .update-nag,
-		body.pskat-pilnas #wpbody-content > .updated,
-		body.pskat-pilnas #wpbody-content > .update-nag{display:none!important}
+		/* WP atnaujinimo pranesimas siame lange nereikalingas - WP 7.0
+		   uzrakintas, o pranesimas atima eilute prekiu. Matomas visur kitur. */
+		.update-nag,
+		#wpbody-content > .updated,
+		#wpbody-content > .update-nag{display:none!important}
 		.frl-sant{align-items:center;flex-wrap:wrap;gap:6px}
-		/* v8.6.3 KLAIDA IR PATAISA: `.frline{display:flex}` nustelbdavo
-		   `hidden` atributą, todėl suskleista santrauka rodydavosi VISADA —
-		   vietoj vienos eilutės vietoj keturių gaudavosi penkios. */
 		.frline[hidden]{display:none!important}
 		.frl-sant .sal-r{background:#f2f5f3}
 		body.fr-suskleista .pskat-filters .frl-1,
@@ -7916,45 +7891,32 @@ class Petshop_Katalogas {
 		body.fr-suskleista .pskat-filters .frl-4{display:none}
 		.frl-sant{padding-top:0!important;border-top:0!important}
 		body.fr-suskleista .pskat-filters{padding:5px 10px}
-		body.pskat-pilnas #wpbody-content{padding-bottom:0}
-		body.pskat-pilnas #wpfooter{display:none}
-		.pskat-rail{overflow-y:auto;overflow-x:hidden;height:100%;
+		/* Kaires eiles - sticky po virsutine juosta, su savo slinktimi. */
+		.pskat-rail{position:sticky;top:var(--ps-virsus,118px);align-self:flex-start;
+			max-height:calc(100vh - var(--ps-virsus,118px));overflow-y:auto;overflow-x:hidden;
 			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
 		.pskat-rail::-webkit-scrollbar{width:9px}
 		.pskat-rail::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:5px}
 		.pskat-rail::-webkit-scrollbar-track{background:transparent}
-		.pskat-main{display:flex;flex-direction:column;height:100%;min-height:0;
-			padding-bottom:14px;overflow:hidden}
-		/* Filtrai, redagavimo juosta, laikotarpis — nejuda. */
-		.pskat-main > .pskat-filters,
-		.pskat-main > .pskat-red,
-		.pskat-main > .pskat-laikot{flex:none}
-		/* Prekių laukas — vienintelis, kuris slenka. */
-		/* v8.6.5: `flex:1 1 auto` reiškė „imk pagal turinį" — laukas išstumdavo
-		   puslapiavimą už lango ribų, o `overflow:hidden` jį nukirpdavo.
-		   `flex:1 1 0` reiškia „imk tiek, kiek liko po apatinių juostų". */
-		.pskat-lent-lauk{flex:0 0 auto;min-height:120px;overflow-y:auto;overflow-x:auto;
-			border:1px solid #d3d8d2;border-radius:9px;background:#fff;
+		/* Prekiu lentele: laukas tik horizontaliai slinkciai siauram ekranui.
+		   Aukscio ribos NERA - lentele auga pagal turini, slenka puslapis. */
+		.pskat-lent-lauk{overflow-x:auto;border:1px solid #d3d8d2;border-radius:9px;background:#fff;
 			scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
-		.pskat-lent-lauk::-webkit-scrollbar{width:11px;height:11px}
+		.pskat-lent-lauk::-webkit-scrollbar{height:11px}
 		.pskat-lent-lauk::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:6px}
 		.pskat-lent-lauk::-webkit-scrollbar-track{background:#f2f4f1}
-		/* Rėmelį perėmė laukas — lentelei jo nebereikia, kitaip būtų dvigubas. */
+		/* Remeli pereme laukas - lentelei jo nebereikia. */
 		.pskat-lent-lauk .pskat-t{border:0;border-radius:0;overflow:visible}
-		/* Antraštė prilipusi prie lauko viršaus. */
 		.pskat-lent-lauk .pskat-t thead th{position:sticky;top:0;z-index:6;
 			background:#f7f9f6;box-shadow:inset 0 -1px 0 #d3d8d2}
-		/* Suvestinė ir puslapiavimas lieka po lentele — slenka kartu su ja. */
+		/* Suvestine ir puslapiavimas - normaliame sraute po lentele. */
 		.pskat-main > .pskat-suv,
-		.pskat-main > .pskat-psl{flex:none;margin-top:8px}
-		/* Puslapiavimas — visada matomas, tai vienintelis kelias į kitas prekes. */
+		.pskat-main > .pskat-psl{margin-top:8px}
 		.pskat-main > .pskat-psl{display:flex;align-items:center;gap:10px;
 			padding:6px 2px 2px;font-size:12.5px;color:#3c4a41}
 		.pskat-main > .pskat-psl a{padding:2px 10px;border:1px solid #cfd8d2;border-radius:4px;
 			background:#fff;text-decoration:none;color:#22401f}
 		.pskat-main > .pskat-psl a:hover{border-color:#2271b1;color:#2271b1}
-		body.yra-pakeitimu .pskat-main{padding-bottom:14px}
-		/* Išsaugojimo ir masinių veiksmų juostos ir taip yra `fixed`. */
 
 		/* v8.4: sąlygos ir vaizdai — tie patys dažai kaip filtrų eilutėje,
 		   kad langas neatrodytų kaip du skirtingi langai. */
