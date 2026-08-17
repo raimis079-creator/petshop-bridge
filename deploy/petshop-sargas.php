@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Sargas v1.0 (DOD-13)
+ * Petshop Sargas v1.1 (DOD-13)
  *
  * KAM: realiausias incidentas sioje sistemoje nera „svetaine nukrito".
  * Svetaine bus gyva, grazi, ir niekas nepastebes, kad nakti nesuveike ZB
@@ -31,6 +31,9 @@
  * PRIKLAUSOMYBIU NULIS. Sentry ir panasus samoningai atmesti: dar viena
  * isorine priklausomybe + menesinis mokestis, o 90 % naudos gaunam is to,
  * ka jau turim.
+ *
+ * v1.1 (2026-08-17): laiskai siunciami HTML su <pre> — Outlook gryname
+ * tekste ismeta eiluciu luzius ir suvestine tampa neskaitoma.
  *
  * NUSTATYMAI (keiciami be kodo):
  *   ps_sargas_pastas        gavejas (numatyta: terra@gyvunai.lt)
@@ -209,12 +212,31 @@ class Petshop_Sargas {
 		return true;
 	}
 
+	/**
+	 * v1.1: SIUNCIAM HTML SU <pre>, NE gryna teksta.
+	 *
+	 * PRIEZASTIS (ismatuota 2026-08-17, savininko ekrano kopija): Outlook
+	 * gryname tekste nusprendzia, kad tai „flowed" tekstas, ir ISMETA
+	 * EILUCIU LUZIUS — virsuje parodo „We removed extra line breaks from
+	 * this message". Testiniam laiskui tai nesvarbu, bet savaitine
+	 * suvestine sudelioja stulpeliais, ir suplakta i viena kamuoli ji
+	 * tampa neskaitoma. <pre> blokas lygiavima apsaugo.
+	 *
+	 * Serverio puseje wp_mail() abiem atvejais grazina true — problema
+	 * matosi TIK gavejo ekrane.
+	 */
 	private static function siusti( $tema, $tekstas ) {
+		$html = '<html><body style="margin:0;padding:16px;background:#fff">'
+			. '<pre style="font:13px/1.5 Consolas,Menlo,monospace;color:#22301f;'
+			. 'white-space:pre;margin:0">'
+			. esc_html( $tekstas )
+			. '</pre></body></html>';
+
 		wp_mail(
 			self::pastas(),
 			'[Petshop sargas] ' . $tema,
-			$tekstas,
-			array( 'Content-Type: text/plain; charset=UTF-8' )
+			$html,
+			array( 'Content-Type: text/html; charset=UTF-8' )
 		);
 	}
 
