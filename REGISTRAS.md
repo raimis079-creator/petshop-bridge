@@ -66,7 +66,7 @@
 | DOD-15 | GDPR atitiktis | ✅ | 2026-07-10 | Complianz v7.5.0 + 8 legal psl. |
 | DOD-16 | VMI sąskaitos su realia transakcija | ✅ | 2026-06 | AVPN/IAPV testuota |
 | DOD-17 | Beta testas 5–10 klientų | 🔴 | — | nepradėta |
-| DOD-18 | DNS planas + sena platforma read-only | 🔴 | — | nepradėta |
+| DOD-18 | DNS planas + sena platforma | 🟡 | 2026-08-17 | **PLANAS PARAŠYTAS** (`dokumentai/DOD-18_perjungimas.md`). Naktinis, su patikromis. Sena platforma IŠJUNGIAMA (ne read-only). Blokuoja F-PSR |
 | DOD-19 | Rollback planas | 🔴 | — | nepradėta |
 | DOD-20 | Savaitinis stabilumas ≥99% | 🔴 | — | 7 d. staging monitoringas |
 | DOD-21 | GSC auditas + top-100 301 lentelė | 🟡 ~70% | 2026-07-30 | eksportas yra, mapping juodraštis ne |
@@ -180,7 +180,10 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | OPS-11 | TEMP snippetų trynimas WP admin (REST DELETE neveikia) | 🔴 higiena: 2136–2139, 2141–2160 |
 | OPS-12 | `gaj6_umbrella_redirects` — kilmė patvirtinta, IŠTRINTA 2026-08-04 (§13). Lentelių 174→173 | ✅ |
 
-**DNS valdomas iv.lt**, ne serveriai.lt.
+**DNS — IŠTAISYTA 2026-08-17 (išmatuota, ne prielaida):** zoną valdo
+`ns1–ns4.serveriai.lt`. Ankstesnis įrašas „DNS valdomas iv.lt" NETIKSLUS —
+iv.lt greičiausiai registratorius. **A įrašą keičiam SAVO DirectAdmin'e**,
+be trečios šalies. Žr. §8l.
 
 ---
 
@@ -519,6 +522,53 @@ Q-EXPORT   savininko eksportas iš gyvosios petshop.lt — įrodymas, ar
 konstanta. Fiksavimo pagal eilutės `_ps_source` NĖRA. Šiandien nekliudo
 (dvigubų 0), bet atsiradus pirmai dvigubai prekei praėjusio mėnesio pelno
 nebeperskaičiuosi.
+
+---
+
+## 8l. PERJUNGIMAS IR MONITORINGAS — 2026-08-17 (naktis) [S713–S720]
+
+### DNS išmatuotas
+```
+šis serveris          79.98.29.24
+petshop.lt A          213.226.161.16  IR  213.226.161.15   ← DU įrašai!
+www.petshop.lt        CNAME → petshop.lt
+A TTL 3600 · NS TTL 86400 · NS: ns1–ns4.serveriai.lt
+MX isopas.serveriai.lt · SPF jau su spf.serveriai.lt + sendersrv.com
+eShoprent: HTTP 200, nginx/1.22.1, gyva
+```
+**Du radiniai:** (1) zoną valdo serveriai.lt, ne iv.lt — A įrašą keiti pats;
+(2) A įrašų DU, pakeitus vieną dalis srauto liktų sename serveryje.
+
+### DOD-13 UŽDARYTAS — `petshop-sargas.php` v1.2
+```
+klaidų gaudymas + cron sargas · lentelė ps_sargas_klaidos (InnoDB)
+cron'ai atrandami AUTOMATIŠKAI (50), vardai nehardkodinti
+laiškai HTML su <pre> — Outlook plain-text laužo lygiavimą
+48 val. malonės laikas · pavojus tik „įrodytiems" cron'ams
+gavėjas terra@gyvunai.lt (ps_sargas_pastas)
+```
+**DOD-20 septynių dienų laikrodis paleistas 2026-08-17.**
+Uptime lieka savininkui — UptimeRobot, išorinis, su SMS.
+**Šalutinis produktas:** `ps_sargas_klaidos` gali uždaryti ir `klaidos.md`
+poreikį (DOD-02/03) — patikrinti.
+
+### Q-R7 juodraščiai — ATSAKYMAS KITOKS, NEI ATRODĖ
+```
+juodraščių 1 140 · su likučiu 547 · per 7 d. nauji 99
+_vf_supplier_sku 184 · _zb_supplier_sku 486  →  670 UŽSTOJA IMPORTĄ
+```
+`block_vf_create` tikrina `post_status != 'trash'`, ne `= 'publish'` —
+juodraštis su tiekėjo SKU importui atrodo kaip suporuota prekė.
+Sąraše: `JOS0398`, `JOS0439`, `NGCSB03`, `NGCST03` — **naujosios Josera ir
+Exclusion pakuotės**, tos pačios, kurių VF sraute yra.
+Priežastys: `konservas_below_minimum` 313 · `qty_zero` 104 · trūksta
+nuotraukos/aprašymo 39.
+**Tai ne valymo, o įėjimo taisyklių klausimas — tas pats kaip Q-VF-KAT.
+Sprendimas prekybinis; savininkas nurodė prie prekių nelįsti.**
+
+### F-PSR TAPO KRITINIU KELIU
+DOD-18 §4.4/16 žingsnis būtų PIRMAS Paysera ciklo bandymas — 03:00, be
+palaikymo. **Perjungimo datos negalima fiksuoti, kol F-PSR neuždarytas.**
 
 ---
 
