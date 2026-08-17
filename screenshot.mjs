@@ -17,7 +17,7 @@ async function off(id){ if(id) await api('/wp-json/code-snippets/v1/snippets/'+i
 try{
   const s=await snip('TEMP C907',B64);
   await new Promise(r=>setTimeout(r,6000));
-  const r=await fetch(WP+'/?ps_c907=C907&pak=bak,ps,woo');
+  const r=await fetch(WP+'/?ps_c907=C907&pak=as,kita');
   const txt=await r.text();
   try{ out.paketai.push(JSON.parse(txt)); }catch(e){ out.zalias=txt.slice(0,600); }
   await off(s);
@@ -25,4 +25,4 @@ try{
   const home=await fetch(WP+'/'); out.parduotuve=home.status;
   const kat=await fetch(WP+'/wp-admin/admin.php?page=ps-katalogas',{headers:{Authorization:AUTH}}); out.katalogas=kat.status;
 }catch(e){ out.klaida=String(e).slice(0,400); }
-await put('c907.json', Buffer.from(JSON.stringify(out)), 'c907 paketas1');
+await put('c908.json', Buffer.from(JSON.stringify(out)), 'c908 paketas2');
