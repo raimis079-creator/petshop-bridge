@@ -800,6 +800,8 @@ class Petshop_Katalogas {
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 8 );
+		/* v8.4: išsaugoti vaizdai — įrašymas, trynimas, atstatymas. */
+		add_action( 'admin_post_ps_kat_vaizdas', array( __CLASS__, 'vaizdo_veiksmas' ) );
 		add_filter( 'admin_body_class', array( __CLASS__, 'body_klase' ) );
 		add_action( 'admin_head', array( __CLASS__, 'slepti_wc_prekes' ) );
 		add_action( 'wp_ajax_ps_kat_kortele', array( __CLASS__, 'ajax_kortele' ) );
@@ -4513,6 +4515,126 @@ class Petshop_Katalogas {
 	 * laukais, ARBA poreikis dingsta: „AV arba VF" virsta dviem sąlygom.
 	 */
 
+
+	/* ==================== v8.4 · SĄLYGOS URL EILUTĖJE ====================
+	 * Formatas: `laukas~operatorius~reikšmė`, kelios per kabliataškį.
+	 * Pvz. `sal=cost~tuscia;av~>~0` — savikaina tuščia IR AV likutis > 0.
+	 * Skaitoma akimis, todėl nuorodą galima ir pačiam susikurti. */
+
+	public static function sal_is_teksto( $t ) {
+		$t = trim( (string) $t );
+		if ( $t === '' ) { return array(); }
+		$reg = self::laukai();
+		$ops = array( 'tuscia','netuscia','taip','ne','=','!=','>','<','>=','<=','tarp',
+			'<lauk','>lauk','vienas_is','ne_vienas_is','turi','neturi','yra','nera','prasideda','skola_yra' );
+		$out = array();
+		foreach ( explode( ';', $t ) as $d ) {
+			$d = trim( $d );
+			if ( $d === '' ) { continue; }
+			$p = explode( '~', $d );
+			$l = isset( $p[0] ) ? trim( $p[0] ) : '';
+			$op = isset( $p[1] ) ? trim( $p[1] ) : '';
+			if ( ! isset( $reg[ $l ] ) || ! in_array( $op, $ops, true ) ) { continue; }
+			$s = array( 'l' => $l, 'op' => $op );
+			if ( isset( $p[2] ) ) {
+				$r = $p[2];
+				if ( $op === 'tarp' || $op === 'vienas_is' || $op === 'ne_vienas_is' ) {
+					$s['r'] = array_map( 'trim', explode( ',', $r ) );
+				} else {
+					$s['r'] = trim( $r );
+				}
+			}
+			$out[] = $s;
+		}
+		return $out;
+	}
+
+	public static function sal_i_teksta( $salygos ) {
+		$d = array();
+		foreach ( (array) $salygos as $s ) {
+			if ( ! isset( $s['l'], $s['op'] ) ) { continue; }
+			$x = $s['l'] . '~' . $s['op'];
+			if ( array_key_exists( 'r', $s ) ) {
+				$x .= '~' . ( is_array( $s['r'] ) ? implode( ',', $s['r'] ) : (string) $s['r'] );
+			}
+			$d[] = $x;
+		}
+		return implode( ';', $d );
+	}
+
+	/** Sąlygos aprašymas žmogui — plokštelei virš lentelės. */
+	public static function sal_zodziais( $s ) {
+		$reg = self::laukai();
+		$v = isset( $reg[ $s['l'] ]['v'] ) ? $reg[ $s['l'] ]['v'] : $s['l'];
+		$r = array_key_exists( 'r', $s ) ? ( is_array( $s['r'] ) ? implode( ', ', $s['r'] ) : (string) $s['r'] ) : '';
+		$z = array( 'tuscia' => 'tuščia', 'netuscia' => 'užpildyta', 'taip' => 'taip', 'ne' => 'ne',
+			'=' => '=', '!=' => '≠', '>' => '>', '<' => '<', '>=' => '≥', '<=' => '≤',
+			'tarp' => 'tarp', '<lauk' => 'mažiau nei', '>lauk' => 'daugiau nei',
+			'vienas_is' => 'vienas iš', 'ne_vienas_is' => 'nė vienas iš', 'turi' => 'turi',
+			'neturi' => 'neturi', 'yra' => 'yra', 'nera' => 'nėra', 'prasideda' => 'prasideda',
+			'skola_yra' => 'trūksta' );
+		$op = isset( $z[ $s['op'] ] ) ? $z[ $s['op'] ] : $s['op'];
+		if ( $s['op'] === '<lauk' || $s['op'] === '>lauk' ) {
+			$r = isset( $reg[ $r ]['v'] ) ? $reg[ $r ]['v'] : $r;
+		}
+		return trim( $v . ' ' . $op . ' ' . $r );
+	}
+
+	/* ==================== v8.4 · IŠSAUGOTI VAIZDAI ====================
+	 * Vaizdas = vardas + sąlygos + rikiavimas. Visa lango būsena ir taip
+	 * gyvena URL eilutėje, todėl vaizdas yra tik jos pavadinimas.
+	 * Penki paruošti ateina kaip pradiniai, bet gyvena toje pačioje
+	 * vietoje kaip savi — juos galima pervadinti, keisti ir trinti. */
+
+	const VAIZDU_RAKTAS = 'ps_kat_vaizdai';
+
+	public static function vaizdai_pradiniai() {
+		return array(
+			array( 'v' => 'Kasdienis', 'sal' => '' ),
+			array( 'v' => 'Pinigai',   'sal' => 'cost~netuscia;marza~<lauk~grind' ),
+			array( 'v' => 'Likučiai',  'sal' => 'turi_av~taip;dienu~<=~30' ),
+			array( 'v' => 'Turinys',   'sal' => 'pbalas~<~100' ),
+			array( 'v' => 'Tiekimas',  'sal' => 'pard~<=~0' ),
+		);
+	}
+
+	public static function vaizdai() {
+		$u = get_current_user_id();
+		$v = get_user_meta( $u, self::VAIZDU_RAKTAS, true );
+		if ( $v === '' || $v === null ) { return self::vaizdai_pradiniai(); }
+		return is_array( $v ) ? $v : array();
+	}
+
+	public static function vaizdai_irasyti( $sar ) {
+		update_user_meta( get_current_user_id(), self::VAIZDU_RAKTAS, array_values( $sar ) );
+	}
+
+	/** Vaizdų veiksmai: išsaugoti dabartinį, ištrinti, atstatyti pradinius. */
+	public static function vaizdo_veiksmas() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_die( 'Nepakanka teisių.' ); }
+		check_admin_referer( 'ps_kat_vaizdas' );
+		$k = isset( $_POST['ka'] ) ? sanitize_key( $_POST['ka'] ) : '';
+		$sar = self::vaizdai();
+		if ( $k === 'irasyti' ) {
+			$v = sanitize_text_field( wp_unslash( isset( $_POST['vardas'] ) ? $_POST['vardas'] : '' ) );
+			$sal = sanitize_text_field( wp_unslash( isset( $_POST['sal'] ) ? $_POST['sal'] : '' ) );
+			if ( $v !== '' ) {
+				$rasta = false;
+				foreach ( $sar as $i => $x ) { if ( $x['v'] === $v ) { $sar[ $i ]['sal'] = $sal; $rasta = true; } }
+				if ( ! $rasta ) { $sar[] = array( 'v' => $v, 'sal' => $sal ); }
+				self::vaizdai_irasyti( $sar );
+			}
+		} elseif ( $k === 'trinti' ) {
+			$v = sanitize_text_field( wp_unslash( isset( $_POST['vardas'] ) ? $_POST['vardas'] : '' ) );
+			foreach ( $sar as $i => $x ) { if ( $x['v'] === $v ) { unset( $sar[ $i ] ); } }
+			self::vaizdai_irasyti( $sar );
+		} elseif ( $k === 'atstatyti' ) {
+			delete_user_meta( get_current_user_id(), self::VAIZDU_RAKTAS );
+		}
+		$grizti = isset( $_POST['_grizti'] ) ? esc_url_raw( wp_unslash( $_POST['_grizti'] ) ) : admin_url( 'admin.php?page=ps-katalogas' );
+		wp_safe_redirect( $grizti ); exit;
+	}
+
 	/** Laukų registras. Tipas lemia, kokie operatoriai siūlomi sąsajoje. */
 	public static function laukai() {
 		return array(
@@ -4854,7 +4976,10 @@ class Petshop_Katalogas {
 			'marza'   => isset( $_GET['marza'] ) ? sanitize_key( $_GET['marza'] ) : '',
 			'tipas'   => isset( $_GET['tipas'] ) ? sanitize_key( $_GET['tipas'] ) : '',
 			'q'       => isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '',
+			/* v8.4: laisvos sąlygos iš URL. */
+			'sal'     => isset( $_GET['sal'] ) ? sanitize_text_field( wp_unslash( $_GET['sal'] ) ) : '',
 		);
+		$f['s'] = self::sal_is_teksto( $f['sal'] );
 		$sort  = isset( $_GET['sort'] ) ? sanitize_key( $_GET['sort'] ) : 'n';
 		$kryp  = ( isset( $_GET['kryp'] ) && $_GET['kryp'] === 'desc' ) ? 'desc' : 'asc';
 		$per   = isset( $_GET['per'] ) ? max( 25, min( 200, (int) $_GET['per'] ) ) : self::PUSLAPIS;
@@ -4929,7 +5054,7 @@ class Petshop_Katalogas {
 
 	private static function url( $pakeitimai = array() ) {
 		$b = array( 'page' => 'ps-katalogas' );
-		foreach ( array( 'kruva','view','sand','kat','brand','likutis','marza','tipas','q','sort','kryp','per','psl' ) as $k ) {
+		foreach ( array( 'kruva','view','sand','kat','brand','likutis','marza','tipas','q','sal','vaizdas','sort','kryp','per','psl' ) as $k ) {
 			if ( isset( $_GET[ $k ] ) && $_GET[ $k ] !== '' ) { $b[ $k ] = sanitize_text_field( wp_unslash( $_GET[ $k ] ) ); }
 		}
 		foreach ( $pakeitimai as $k => $v ) {
@@ -4973,7 +5098,8 @@ class Petshop_Katalogas {
 				<input type="hidden" name="kruva" value="' . esc_attr( $f['kruva'] ) . '">
 				<input type="hidden" name="view" value="' . esc_attr( $f['view'] ) . '">
 				<span class="lupa" aria-hidden="true">🔍</span>
-				<input type="search" name="q" value="' . esc_attr( $f['q'] ) . '" placeholder="Ieškoti: pavadinimas, SKU, EAN, tiekėjo kodas…">
+				<input type="search" name="q" value="' . esc_attr( $f['q'] ) . '" autocomplete="off" placeholder="Ieškoti: pavadinimas, SKU, EAN, tiekėjo kodas…">'
+				. ( $f['q'] !== '' ? '<a class="isvalyti" href="' . self::url( array( 'q' => null, 'psl' => null ) ) . '" title="Išvalyti paiešką">×</a>' : '' ) . '
 			</form>
 			<div class="pskat-meta">Duomenys ' . $laikas . ' · <a href="' . self::url( array( 'atnaujinti' => '1' ) ) . '">atnaujinti</a></div>
 		</div>';
@@ -5083,7 +5209,7 @@ class Petshop_Katalogas {
 		echo '<span class="sep"></span>';
 		self::sel_paieska( 'brand', 'Brendas', $sar['brendai'], $f['brand'] );
 		echo '<span class="kiek-sar">' . count( $sar['brendai'] ) . ' brendai · ' . count( $sar['kategorijos'] ) . ' kategorijos</span>';
-		echo '<a class="clear" href="' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'psl'=>null ) ) . '">Išvalyti filtrus</a>';
+		echo '<a class="clear" href="' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'sal'=>null,'psl'=>null ) ) . '">Išvalyti filtrus</a>';
 		echo '</div><div class="frline">';
 		self::sel( 'likutis', 'Likutis', array( '' => 'visi', 'av_turi' => 'AV turi', 'av_nulis' => 'AV pasibaigę',
 			'tiekejas' => 'tik tiekėjas', 'niekas' => 'niekas neturi' ), $f['likutis'] );
@@ -5098,7 +5224,62 @@ class Petshop_Katalogas {
 			echo '<option value="' . $v . '"' . selected( (int) $per, $v, false ) . '>' . $v . '</option>';
 		}
 		echo '</select>';
-		echo '</div></div>';
+		echo '</div>';
+
+		/* ---------- v8.4: SĄLYGOS ----------
+		   Iki v8.4 filtrai buvo šeši fiksuoti laukeliai, o darbo eilės —
+		   atskira užkoduota sistema. Todėl eilės nebuvo galima patikslinti:
+		   „Be savikainos" duodavo 443, bet „iš jų tik su likučiu" —
+		   neįmanoma. Dabar viskas yra sąlyga, ir jos dedamos laisvai. */
+		$sal_t = isset( $f['sal'] ) ? (string) $f['sal'] : '';
+		$sal   = self::sal_is_teksto( $sal_t );
+		$reg   = self::laukai();
+
+		echo '<div class="frline pskat-sal">';
+		echo '<span class="ax">Sąlygos</span>';
+		if ( $sal ) {
+			foreach ( $sal as $i => $x ) {
+				$be = $sal; unset( $be[ $i ] );
+				echo '<span class="sal-p">' . esc_html( self::sal_zodziais( $x ) )
+					. '<a href="' . self::url( array( 'sal' => self::sal_i_teksta( $be ) ?: null, 'psl' => null ) ) . '" title="Pašalinti">×</a></span>';
+			}
+		} else {
+			echo '<span class="sal-tuscia">nėra — visos krūvos prekės</span>';
+		}
+		echo '<span class="sal-pr"><select id="sal-l"><option value="">+ pridėti sąlygą</option>';
+		$gr = array();
+		foreach ( $reg as $k => $x ) { $gr[ $x['g'] ][ $k ] = $x; }
+		foreach ( $gr as $g => $laukai ) {
+			echo '<optgroup label="' . esc_attr( $g ) . '">';
+			foreach ( $laukai as $k => $x ) {
+				echo '<option value="' . esc_attr( $k ) . '" data-t="' . esc_attr( $x['t'] ) . '">' . esc_html( $x['v'] ) . '</option>';
+			}
+			echo '</optgroup>';
+		}
+		echo '</select><select id="sal-op"></select><input type="text" id="sal-r" placeholder="reikšmė" autocomplete="off">'
+			. '<button type="button" id="sal-add">Pridėti</button></span>';
+		echo '</div>';
+
+		/* ---------- v8.4: IŠSAUGOTI VAIZDAI ---------- */
+		$vaizdai = self::vaizdai();
+		echo '<div class="frline pskat-vaizdai"><span class="ax">Vaizdai</span>';
+		foreach ( $vaizdai as $v ) {
+			$on = ( $sal_t !== '' && $v['sal'] === $sal_t ) ? ' on' : '';
+			echo '<a class="vz' . $on . '" href="' . self::url( array( 'sal' => $v['sal'] ?: null, 'psl' => null ) ) . '">'
+				. esc_html( $v['v'] ) . '</a>';
+		}
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="vz-f">';
+		wp_nonce_field( 'ps_kat_vaizdas' );
+		echo '<input type="hidden" name="action" value="ps_kat_vaizdas">';
+		echo '<input type="hidden" name="sal" value="' . esc_attr( $sal_t ) . '">';
+		echo '<input type="hidden" name="_grizti" value="' . esc_attr( self::url( array() ) ) . '">';
+		echo '<input type="text" name="vardas" placeholder="vaizdo vardas" autocomplete="off">';
+		echo '<button type="submit" name="ka" value="irasyti" class="vz-b">Išsaugoti šį vaizdą</button>';
+		echo '<button type="submit" name="ka" value="atstatyti" class="vz-b vz-mut" title="Grąžinti penkis pradinius vaizdus">Atstatyti</button>';
+		echo '</form>';
+		echo '</div>';
+
+		echo '</div>';
 	}
 
 	private static function suvestine_juosta( $s, $viso ) {
@@ -5510,7 +5691,7 @@ class Petshop_Katalogas {
 		echo '<script>
 		(function(){
 			var AJAX="' . $ajax . '", NONCE="' . $nonce . '";
-			var laukai=["kruva","view","sand","kat","brand","likutis","marza","tipas","q","sort","kryp","per"];
+			var laukai=["kruva","view","sand","kat","brand","likutis","marza","tipas","q","sal","sort","kryp","per"];
 			function eiti(){
 				var u=new URLSearchParams(window.location.search);
 				u.set("page","ps-katalogas"); u.delete("psl");
@@ -5520,6 +5701,56 @@ class Petshop_Katalogas {
 				});
 				window.location.href="' . $baze . '".split("?")[0]+"?"+u.toString();
 			}
+
+			/* ---------- v8.4: SĄLYGŲ PRIDĖJIMAS ----------
+			   Operatoriai priklauso nuo lauko tipo: skaičiui nesiūlom
+			   „prasideda", o loginiam — „tarp". Sąlyga įrašoma į `sal`
+			   parametrą, kurį serveris išverčia atgal. */
+			var OPS={
+				sk:   [["=","="],["!=","≠"],[">",">"],["<","<"],[">=","≥"],["<=","≤"],["tarp","tarp (a,b)"],["tuscia","tuščia"],["netuscia","užpildyta"]],
+				tekst:[["yra","yra"],["nera","nėra"],["prasideda","prasideda"],["=","tiksliai"],["tuscia","tuščia"],["netuscia","užpildyta"]],
+				sar:  [["=","="],["!=","≠"],["vienas_is","vienas iš (a,b)"],["ne_vienas_is","nė vienas iš"],["tuscia","tuščia"],["netuscia","užpildyta"]],
+				mas:  [["turi","turi"],["neturi","neturi"]],
+				log:  [["taip","taip"],["ne","ne"]],
+				data: [["yra","yra"],["tuscia","tuščia"],["netuscia","užpildyta"]]
+			};
+			var selL=document.getElementById("sal-l"),
+			    selO=document.getElementById("sal-op"),
+			    inpR=document.getElementById("sal-r"),
+			    btnA=document.getElementById("sal-add");
+			function opsAtnaujinti(){
+				if(!selL||!selO) return;
+				var o=selL.options[selL.selectedIndex], t=o?o.getAttribute("data-t"):"";
+				selO.innerHTML="";
+				(OPS[t]||OPS.tekst).forEach(function(p){
+					var e=document.createElement("option"); e.value=p[0]; e.textContent=p[1]; selO.appendChild(e);
+				});
+				bereiksmes();
+			}
+			function bereiksmes(){
+				if(!selO||!inpR) return;
+				var v=selO.value, be=(v==="tuscia"||v==="netuscia"||v==="taip"||v==="ne");
+				inpR.style.display= be ? "none" : "";
+				if(be) inpR.value="";
+			}
+			function pridetiSalyga(){
+				if(!selL||!selL.value) return;
+				var v=selO.value, r=inpR.value.trim();
+				var be=(v==="tuscia"||v==="netuscia"||v==="taip"||v==="ne");
+				if(!be && r==="") { inpR.focus(); return; }
+				var nauja=selL.value+"~"+v+(be?"":"~"+r);
+				var u=new URLSearchParams(window.location.search);
+				var esamos=u.get("sal")||"";
+				u.set("page","ps-katalogas");
+				u.set("sal", esamos ? esamos+";"+nauja : nauja);
+				u.delete("psl");
+				window.location.href=location.pathname+"?"+u.toString();
+			}
+			if(selL){ selL.addEventListener("change", opsAtnaujinti); opsAtnaujinti(); }
+			if(selO){ selO.addEventListener("change", bereiksmes); }
+			if(btnA){ btnA.addEventListener("click", pridetiSalyga); }
+			if(inpR){ inpR.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); pridetiSalyga(); } }); }
+
 			document.querySelectorAll("[data-f]").forEach(function(el){
 				el.addEventListener("change", eiti);
 				if(el.tagName==="INPUT"){
@@ -7391,6 +7622,37 @@ class Petshop_Katalogas {
 	 */
 	private static function stilius_v37() {
 		echo '<style>
+		/* v8.4: sąlygos ir vaizdai — tie patys dažai kaip filtrų eilutėje,
+		   kad langas neatrodytų kaip du skirtingi langai. */
+		.pskat-sal{align-items:center;flex-wrap:wrap;gap:6px}
+		.pskat-sal .sal-p{display:inline-flex;align-items:center;gap:6px;background:#eef4f0;border:1px solid #cfe0d6;
+			border-radius:14px;padding:3px 10px;font-size:12.5px;color:#22401f}
+		.pskat-sal .sal-p a{text-decoration:none;color:#7a8b80;font-weight:700;line-height:1}
+		.pskat-sal .sal-p a:hover{color:#b3261e}
+		.pskat-sal .sal-tuscia{font-size:12.5px;color:#8a958e}
+		.pskat-sal .sal-pr{display:inline-flex;gap:4px;align-items:center;margin-left:auto}
+		.pskat-sal .sal-pr select,.pskat-sal .sal-pr input{font-size:12.5px;padding:3px 6px}
+		.pskat-sal .sal-pr input{width:110px}
+		.pskat-sal .sal-pr button{font-size:12.5px;padding:3px 10px;cursor:pointer;border:1px solid #cfe0d6;
+			background:#fff;border-radius:4px}
+		.pskat-vaizdai{align-items:center;flex-wrap:wrap;gap:6px}
+		.pskat-vaizdai .vz{display:inline-block;padding:3px 10px;border:1px solid #dfe5e1;border-radius:14px;
+			font-size:12.5px;text-decoration:none;color:#3c4a41;background:#fff}
+		.pskat-vaizdai .vz:hover{border-color:#2271b1}
+		.pskat-vaizdai .vz.on{background:#22401f;color:#fff;border-color:#22401f}
+		.pskat-vaizdai .vz-f{display:inline-flex;gap:4px;align-items:center;margin-left:auto}
+		.pskat-vaizdai .vz-f input{font-size:12.5px;padding:3px 6px;width:130px}
+		.pskat-vaizdai .vz-b{font-size:12.5px;padding:3px 10px;cursor:pointer;border:1px solid #cfe0d6;
+			background:#fff;border-radius:4px}
+		.pskat-vaizdai .vz-mut{color:#7a8b80}
+		/* v8.4: paieškos valymas — kryžiukas, kuris IŠ TIKRŲJŲ pateikia formą.
+		   Iki šiol `url()` nešiojo `q` su kiekviena nuoroda, todėl ištrynus
+		   tekstą ir paspaudus bet ką kita, jis grįždavo. */
+		.pskat-search .isvalyti{position:absolute;right:10px;top:50%;transform:translateY(-50%);
+			text-decoration:none;color:#8a958e;font-size:15px;font-weight:700;line-height:1}
+		.pskat-search .isvalyti:hover{color:#b3261e}
+		.pskat-search{position:relative}
+
 		.pskat-app, .pskat-kort { color:#1d2b24; }
 		.pskat-app .sml, .pskat-app .sml2, .pskat-kort .sml, .pskat-kort .sml2 { color:#3d4650 !important; }
 		.pskat-app .mini-t, .pskat-kort .mini-t { color:#3d4650 !important; }
