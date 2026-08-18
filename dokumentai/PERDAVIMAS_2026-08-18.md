@@ -1,121 +1,118 @@
-# PERDAVIMAS Į NAUJĄ LANGĄ — 2026-08-18 (naktis)
+# PERDAVIMAS Į NAUJĄ LANGĄ — 2026-08-18 (vakaras)
 
-## Pirmi žingsniai naujame lange
+## Pirmi žingsniai
 
 1. Prijungti GitHub PAT (bridge `raimis079-creator/petshop-bridge`, workflow `298960963`)
-2. Perskaityti `REGISTRAS.md` **§8m** — visa šios nakties esmė
-3. `deployment_log_v1_5_2.md` [S971–S986] — detalės
+2. `REGISTRAS.md` **§8m** (GTIN, Google žvalgyba) ir **§8n** (feed'ai, aprašymai, svoriai)
+3. `deployment_log_v1_5_3.md` — [S971–S986] naktis, [S987–S1002] diena
 
-**Dokumentų būklė:** TŽ MASTER v1.79 (nekeista) · deployment_log **v1.5.2** ·
-REGISTRAS su §8m, atnaujintais OPS-06, Q-MERCH-1/2/3, Q-R2.
-
----
-
-## KAS PADARYTA ŠIĄNAKT
-
-```
-✅ Q-MERCH žvalgyba: piltuvelis 2 596 kandidatai, laukų padengimas išmatuotas
-✅ RADINYS: Kaina24/Kainos.lt feed'ai NEGYVI (miršta ties 256M)
-✅ RADINYS: VF siunčia 12 simbolių barkodus — nukirstas EAN-13 (tiekėjo pusė)
-✅ GTIN taisymas: 1 963 prekės · galiojantys 394 → 2 015 · vizualiai patvirtinta
-✅ ŠAKNIS: class-vf-import.php v1.5.7 — normalizavimas prieš rašymą
-✅ Idempotencija įrodyta: kitas Import #5 nebeperrašinės (965/979)
-```
-
-Atsarginės kopijos: `uploads/ps-backups/gtin_backup_20260817_204552.json` ir
-`class-vf-import_v156_20260817_211108.php.bak`.
+**Dokumentai:** TŽ MASTER v1.79 (nekeista) · deployment_log **v1.5.3** · REGISTRAS su §8m ir §8n
 
 ---
 
-## LAUKIA SAVININKO — DU MYGTUKAI (blokuoja Google)
+## KAS PADARYTA PER PARĄ
 
 ```
-1. Google Cloud → projektas prefab-envoy-482617-b4
-   → įjungti "Content API for Shopping"
-2. Merchant Center → Nustatymai → Naudotojai → pridėti
-   claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
-   (Skaitytojo teisių pakanka)
+✅ GTIN: galiojantys 394 → 2 015; šaknis uždaryta (class-vf-import v1.5.7)
+✅ Regresijos testas įvyko realiame importe (03:32) — nauja prekė gimė su 13 zn. GTIN
+✅ petshop-feeds v2.1.0: trys kanalai, statiniai failai, cron 04:30, administracija
+✅ Aprašymai: katalogo eilė „Be aprašymo" 88 → 0
+✅ Svoriai: 740 pakeitimų; rasta 26 kraikai su litrais vietoj kilogramų
 ```
 
-Po to per vieną tilto paleidimą matysis: ar paskyra egzistuoja, ar domenas
-patvirtintas, kiek prekių, kokie atmetimai istorijoje. Iki tol **Q-MERCH-1
-lieka neatsakytas** ir Google darbo tęsti prasmės nedaug.
+Kopijos visiems veiksmams — `uploads/ps-backups/` (sąrašas deployment_log pabaigoje).
 
 ---
 
-## KITAS DARBAS (eilės tvarka)
+## LAUKIA SAVININKO
 
-**1. Feed'o variklis** — vienas modulis, trys išvestys (Google, Kaina24, Kainos.lt).
-```
-BŪTINA: paketais (batch), ne posts_per_page=-1 — dabartinis miršta ties 256M
-filtras: publish · ne hidden · ne rinkinys · instock (savininko sprendimas)
-GTIN: _global_unique_id; jei nėra → brand + mpn(SKU) + identifier_exists:no
-variantai: 39 tėvai / 158 variacijos → reikės item_group_id
-```
+**1. Prekių ženklai** — `prekiu_zenklai_su_pasiulymais_2026-08-18.xlsx`
+(114 eilučių, 34 su pasiūlymu ir įrodymu, nuorodos į prekes svetainėje).
+Kai grįš užpildytas — priskirti vienu veiksmu su kopija ir patikra.
 
-**2. Google kategorijų mapinimas** — 80 `product_cat` → Google taksonomija.
-Rankinis vienkartinis darbas, nulis susiejimų šiandien.
-
-**3. Duomenų spragos prieš siuntimą**
+**2. Du Google mygtukai** (be jų Q-MERCH-1 stovi):
 ```
-128 prekės be brendo · 46 be aprašymo · 3 be kainos · 1 352 be svorio
-594 prekės be jokio kodo
-4 CATIT su 11 ženklų kodais: 19042, 19045, 19048, 19051
+Google Cloud → projektas prefab-envoy-482617-b4 → įjungti Content API for Shopping
+Merchant Center → Naudotojai → claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
 ```
 
-**Merchant Center jungimas — TIK po perjungimo.** Google tikrina realius prekių
-URL ir domeno nuosavybę; dev.avesa.lt yra `noindex`. Domeno patvirtinimą
-petshop.lt galima daryti jau dabar — senoji svetainė gyva.
+**3. Q-VARTAI** — ar publikavimo vartų riba 120 → 90? Pilnumo riba jau 90,
+vartų sąmoningai palikta 120.
+
+---
+
+## KITAS DARBAS
+
+**Google kategorijų mapinimas** — 80 `product_cat` → Google taksonomija.
+Feed'as veikia ir be jo, bet su mapinimu reklama tikslesnė.
+
+**Variantinės prekės** — 39 tėvai / 158 variantai eina vienu įrašu su žemiausia
+kaina. Kaina24 priimtina, Google — ne visai.
+
+**Nauja skola:** `petshop-xml.php:343,344,513,515` — `Array to string conversion`,
+kai tiekėjas atsiunčia `brand` kaip masyvą. Liečia ZB (#2) ir VF (#5).
+
+**Kosmetika:** stulpelis „Feed'ai" prekių sąraše nukrenta į dešinį kraštą.
+
+**Po perjungimo (OPS-06):** paduoti `https://petshop.lt/feed/kaina24|kainos|google`.
 
 ---
 
 ## KRITINIS KELIAS NEPASIKEITĖ — F-PSR (Paysera)
 
 ```
-Projektas 29276 · dev režimas testinis, konfigūracija NEBAIGTA
-Q-PSR2 laukia · savininkas 2026-08-17: „nepajungta, nepraeisi"
+Projektas 29276 · dev režimas testinis, konfigūracija NEBAIGTA · Q-PSR2 laukia
 Perjungimo datos fiksuoti negalima, kol neuždaryta.
 ```
 
 ---
 
-## ATVIRI KLAUSIMAI
-
-```
-Q-MERCH-1   ar MC paskyra egzistuoja — laukia dviejų mygtukų aukščiau
-Q-PSR2      Paysera patvirtinimas — BLOKUOJA perjungimą
-Q-VF-KAT    120 iš 241 kategorijų nesumapinta (682 prekės) — NELENDAM
-Q-R7        670 juodraščių užstoja importą — prekybinis sprendimas
-Q-VARIANTAI seni variantai iškrito į atskiras prekes — mastas neišmatuotas
-Q-SEO       kurios 404 kategorijos bus — blokuoja 44 URL mapinimą
-Q-ENGINE    serveriai.lt: ar keis default_storage_engine
-```
-
 ## KO NELIESTI BE SAVININKO
 
 ```
-prekės apskritai · kategorijų mapinimas · _vf_supplier_sku toms 27 prekėms
-SEO 44 URL · ZB kainos
+prekės apskritai · kategorijų mapinimas · ZB kainos · SEO 44 URL
+216 prekių, kur _weight jau bruto (Eukanuba 12,220 ir pan.)
+8 Churu „4 × 14 g" — bazė teisinga, klydo skaitiklis
+publikavimo vartų riba 120 (petshop-vartai.php)
+4 TEST prekės (34943, 34945, 34946, 34948) — savininkas ištrins pats
 ```
 
 ---
 
-## TILTO PAMOKOS (šios sesijos)
+## TILTO IR KODO PAMOKOS (šios paros)
 
 ```
-exec() SERVERYJE IŠJUNGTAS. php -l neveiks. Sintaksės patikra prieš rašant failą:
-  token_get_all($kodas, TOKEN_PARSE) + catch (\ParseError)
-  (tas pats būdas jau buvo S518 — buvo pamirštas)
+exec() SERVERYJE IŠJUNGTAS → sintaksė: token_get_all($k, TOKEN_PARSE) + catch ParseError
 
-wp-admin puslapiui per Playwright NEUŽTENKA logged_in slapuko —
-  reikia ir SECURE_AUTH_COOKIE, kitaip gauni 10 KB puslapį be turinio
-  ir „patikra" būna tuščia.
+wp-admin per Playwright: logged_in slapuko NEUŽTENKA — reikia ir SECURE_AUTH_COOKIE
 
-GTM_SA_JSON paslaptis yra JSON BE išorinių riestinių skliaustų:
-  JSON.parse('{'+raw+'}')
+GTM_SA_JSON yra JSON BE išorinių riestinių skliaustų: JSON.parse('{'+raw+'}')
 
-update_post_meta grąžina false, kai reikšmė NESIKEIČIA. Tai ne klaida.
-  Tikrinti perskaitymu, ne grąžinamos reikšmės skaičiavimu.
+update_post_meta grąžina false, kai reikšmė NESIKEIČIA — tai ne klaida
 
-runner.mjs rašyti IŠ NAUJO kiekvienam paleidimui, niekada per sed grandinę.
+'init' per anksti WooCommerce'ui: wc_get_product() grąžina false → naudoti 'wp_loaded'
+
+HTML esybės: dekoduoti → valyti žymes → dekoduoti. Atvirkščiai &lt;p&gt; atsiverčia į HTML
+
+Katalogo skaičiai remiasi _ps_pilnumas_kodai, ne pačiais laukais. Pakeitus duomenį —
+  perskaičiuoti (Petshop_Pilnumas::perskaiciuoti), kitaip ekranas rodo seną tiesą
+
+Ta pati riba gali gyventi dviejuose moduliuose (120 simb.: pilnumas IR vartai)
+
+Prieš taisant „klaidas" — patikrinti, ar klysta ne tavo taisyklė (8 Churu, 216 bruto)
+
+Nuorodos žmogui veda ten, kur GREIČIAU (svetainė), ne kur techniškai teisingiau (admin)
+
+runner.mjs rašyti IŠ NAUJO kiekvienam paleidimui, niekada per sed grandinę
+```
+
+---
+
+## APRAŠYMŲ STILIAUS STANDARTAS (iš savininko taisymų, trys raundai)
+
+```
+2–3 sakiniai, minimum 90 simbolių
+1: kas tai ir kaip atrodo   2: kam tinka (PIRKĖJO nauda)   3: matmenys
+Neišvardinti visų detalių · nerašyti poveikio teiginių („valo dantis")
+Licencinių personažų neminėti · rašyti tik tai, kas matyti nuotraukoje ar pavadinime
 ```
