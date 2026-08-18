@@ -2328,6 +2328,35 @@ naujas, ne migruojamas; nėra ko perkelti, bet nėra ir paveldėtų klaidų.
 1,00× visose (variantai yra spalvos, ne dydžiai). Skaidyti su `item_group_id`
 nereikia. Pastaba: nė vienas variantas neturi savo GTIN (SKU jau atskirti).
 
+### 🔴 SEO META — RASTA 2026-08-18, NEUŽDARYTA
+
+```
+SEO pluginas         NĖRA nė vieno aktyvaus (Yoast/RankMath/AIOSEO/SEOPress — visi 0)
+meta description     puslapiuose NERODOMA niekur
+og:title             nėra — nuorodos socialiniuose tinkluose be kortelės
+title                yra, bet iš temos: „Pavadinimas – Petshop.lt"
+canonical            yra (WordPress savas)
+```
+
+**Bet duomenys BAZĖJE YRA** — migracijos metu perkelti, net dviem formatais:
+```
+_yoast_wpseo_title      1 111 prekių      rank_math_title        1 111
+_yoast_wpseo_metadesc   1 075 prekių      rank_math_description  1 075
+(iš 2 606 publish — apie 43 %)
+```
+Nė vienas pluginas neįdiegtas, todėl laukai guli negyvi. Įdiegus pluginą jie
+atgytų vienu veiksmu.
+
+**Planas (nepradėta):**
+1. Pasirinkti pluginą — duomenys tinka abiem; rekomendacija **Rank Math**
+   (lengvesnis, geresnis WooCommerce palaikymas)
+2. Patikrinti, ar tie 1 111 tekstų geri — atkeliavo iš senos platformos, gali
+   turėti seną domeną, senas kainas ar tuščią šabloną
+3. Likusioms ~1 495 — šablonas plugine, ne rankinis rašymas
+
+**Susiję:** `blog_public = 0` (dev uždarytas nuo paieškos) — DoD-22 / OPS-07,
+prieš perjungimą būtina įjungti.
+
 ### Nauja skola — `Array to string conversion` (ištirta 2026-08-18, PALIKTA STEBĖTI)
 ```
 petshop-xml.php:343,344 (petshop_xml_block_zb_create)
