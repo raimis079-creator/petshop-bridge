@@ -2,8 +2,13 @@
 /**
  * Plugin Name: Petshop Feeds
  * Description: XML feed'ai Kaina24, Kainos.lt ir Google Merchant Center
- * Version: 2.1.0
+ * Version: 2.2.0
  * Author: Petshop.lt
+ *
+ * v2.2.0 (2026-08-18) — Google kategorijos (google_product_category).
+ *   55 musu kategorijos susietos su oficialiu Google sarasu; savininkas
+ *   patvirtino. Akciju skiltys nesumapintos samoningai — preke gauna
+ *   kategorija is kitos savo kategorijos.
  *
  * v2.1.0 (2026-08-18) — administracija: varneles prekes kortelеje (Atsargos),
  *   stulpelis prekiu sarase ir masiniai veiksmai (isjungti/ijungti grupe).
@@ -47,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PS_FEEDS_VERSIJA', '2.1.0' );
+define( 'PS_FEEDS_VERSIJA', '2.2.0' );
 define( 'PS_FEEDS_PAKETAS', 200 );
 
 /* =======================================================================
@@ -166,6 +171,108 @@ function ps_feeds_giliausia_kategorija( int $id ) {
 }
 
 /**
+ * Google kategoriju zemelapis: musu product_cat term_id => [Google ID, kelias].
+ *
+ * v2.2.0 (2026-08-18). ID paimti is oficialaus Google saraso
+ * (taxonomy-with-ids.en-US.txt), NE is atminties. Savininkas peziurejo ir
+ * patvirtino 2026-08-18. Padengia 2 435 is 2 440 prekiu.
+ *
+ * Nesumapintos SAMONINGAI: DAUGIAU=PIGIAU, DOVANOS, RINKINIAI, SPRENDIMAI —
+ * tai akciju skiltys, ne prekiu tipai. Tokioms prekems kategorija imama is
+ * kitos ju kategorijos (zr. ps_feeds_google_kategorija).
+ */
+function ps_feeds_google_zemelapis(): array {
+	return array(
+		70 => array( 5, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies' ),
+		71 => array( 3530, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food' ),
+		72 => array( 3530, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food' ),
+		73 => array( 3530, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food' ),
+		75 => array( 6385, 'Animals & Pet Supplies > Pet Supplies > Pet Grooming Supplies > Pet Combs & Brushes' ),
+		76 => array( 6406, 'Animals & Pet Supplies > Pet Supplies > Pet Grooming Supplies > Pet Shampoo & Conditioner' ),
+		77 => array( 4, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies' ),
+		78 => array( 3367, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Food' ),
+		79 => array( 3367, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Food' ),
+		80 => array( 3367, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Food' ),
+		81 => array( 3367, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Food' ),
+		82 => array( 6383, 'Animals & Pet Supplies > Pet Supplies > Pet Grooming Supplies' ),
+		83 => array( 3530, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food' ),
+		85 => array( 3530, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food' ),
+		86 => array( 3530, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food' ),
+		87 => array( 5013, 'Animals & Pet Supplies > Pet Supplies > Small Animal Supplies' ),
+		88 => array( 5015, 'Animals & Pet Supplies > Pet Supplies > Small Animal Supplies > Small Animal Food' ),
+		89 => array( 3, 'Animals & Pet Supplies > Pet Supplies > Bird Supplies' ),
+		90 => array( 4990, 'Animals & Pet Supplies > Pet Supplies > Bird Supplies > Bird Food' ),
+		93 => array( 6, 'Animals & Pet Supplies > Pet Supplies > Fish Supplies' ),
+		94 => array( 5024, 'Animals & Pet Supplies > Pet Supplies > Fish Supplies > Fish Food' ),
+		95 => array( 5011, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Treats' ),
+		96 => array( 5002, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Treats' ),
+		97 => array( 7517, 'Animals & Pet Supplies > Pet Supplies > Small Animal Supplies > Small Animal Treats' ),
+		98 => array( 4993, 'Animals & Pet Supplies > Pet Supplies > Bird Supplies > Bird Treats' ),
+		100 => array( 5024, 'Animals & Pet Supplies > Pet Supplies > Fish Supplies > Fish Food' ),
+		101 => array( 5086, 'Animals & Pet Supplies > Pet Supplies > Pet Medicine' ),
+		102 => array( 5086, 'Animals & Pet Supplies > Pet Supplies > Pet Medicine' ),
+		106 => array( 5000, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Litter Boxes' ),
+		107 => array( 4999, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Litter' ),
+		108 => array( 6248, 'Animals & Pet Supplies > Pet Supplies > Pet Flea & Tick Control' ),
+		109 => array( 6248, 'Animals & Pet Supplies > Pet Supplies > Pet Flea & Tick Control' ),
+		111 => array( 6252, 'Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers' ),
+		112 => array( 6252, 'Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers' ),
+		114 => array( 5001, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys' ),
+		115 => array( 5010, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys' ),
+		116 => array( 6250, 'Animals & Pet Supplies > Pet Supplies > Pet Collars & Harnesses' ),
+		117 => array( 6250, 'Animals & Pet Supplies > Pet Supplies > Pet Collars & Harnesses' ),
+		121 => array( 6251, 'Animals & Pet Supplies > Pet Supplies > Pet Carriers & Crates' ),
+		122 => array( 6251, 'Animals & Pet Supplies > Pet Supplies > Pet Carriers & Crates' ),
+		123 => array( 6251, 'Animals & Pet Supplies > Pet Supplies > Pet Carriers & Crates' ),
+		124 => array( 4997, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Furniture' ),
+		125 => array( 7274, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Kennels & Runs' ),
+		130 => array( 6383, 'Animals & Pet Supplies > Pet Supplies > Pet Grooming Supplies' ),
+		233 => array( 4434, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Beds' ),
+		304 => array( 5017, 'Animals & Pet Supplies > Pet Supplies > Small Animal Supplies > Small Animal Habitats & Cages' ),
+		305 => array( 5004, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Apparel' ),
+		371 => array( 6, 'Animals & Pet Supplies > Pet Supplies > Fish Supplies' ),
+		569 => array( 4433, 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Beds' ),
+		639 => array( 6385, 'Animals & Pet Supplies > Pet Supplies > Pet Grooming Supplies > Pet Combs & Brushes' ),
+		654 => array( 4434, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Beds' ),
+		655 => array( 5, 'Animals & Pet Supplies > Pet Supplies > Dog Supplies' ),
+		656 => array( 8068, 'Animals & Pet Supplies > Pet Supplies > Pet First Aid & Emergency Kits' ),
+		657 => array( 5014, 'Animals & Pet Supplies > Pet Supplies > Small Animal Supplies > Small Animal Bedding' ),
+		666 => array( 7385, 'Animals & Pet Supplies > Pet Supplies > Bird Supplies > Bird Cage Accessories' ),
+	);
+}
+
+/**
+ * Google kategorija prekei: einam per VISAS jos kategorijas nuo giliausios,
+ * grazinam pirma, kuri turi atitikmeni. Taip akciju skiltyse esancios prekes
+ * vis tiek gauna teisinga kategorija.
+ */
+function ps_feeds_google_kategorija( int $id ) {
+	$z = ps_feeds_google_zemelapis();
+	$terms = get_the_terms( $id, 'product_cat' );
+	if ( ! $terms || is_wp_error( $terms ) ) {
+		return null;
+	}
+	$rikiuota = array();
+	foreach ( $terms as $t ) {
+		$rikiuota[] = array( count( get_ancestors( $t->term_id, 'product_cat' ) ), $t->term_id );
+	}
+	usort( $rikiuota, function ( $a, $b ) { return $b[0] <=> $a[0]; } );
+
+	foreach ( $rikiuota as $r ) {
+		if ( isset( $z[ $r[1] ] ) ) {
+			return $z[ $r[1] ];
+		}
+		/* jei pati kategorija nesumapinta — bandom jos tevus */
+		foreach ( get_ancestors( $r[1], 'product_cat' ) as $a ) {
+			if ( isset( $z[ $a ] ) ) {
+				return $z[ $a ];
+			}
+		}
+	}
+	return null;
+}
+
+/**
  * Vienos prekes duomenys. Grazina null, jei preke netinkama.
  */
 function ps_feeds_preke( int $id ) {
@@ -257,6 +364,7 @@ function ps_feeds_preke( int $id ) {
 		'kat_nuoroda' => $kat ? get_term_link( $kat ) : '',
 		'svoris'      => (string) $pr->get_weight(),
 		'specs'       => $specs,
+		'g_kat'       => ps_feeds_google_kategorija( $id ),
 	);
 }
 
@@ -427,6 +535,9 @@ function ps_feeds_google_eilute( array $p ): string {
 		$x .= '      <g:identifier_exists>no</g:identifier_exists>' . "\n";
 	}
 
+	if ( ! empty( $p['g_kat'] ) ) {
+		$x .= '      <g:google_product_category>' . (int) $p['g_kat'][0] . '</g:google_product_category>' . "\n";
+	}
 	if ( $p['kat_vardas'] ) {
 		$x .= '      <g:product_type>' . ps_feeds_cdata( $p['kat_vardas'] ) . '</g:product_type>' . "\n";
 	}
