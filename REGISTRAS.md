@@ -2277,14 +2277,56 @@ skliaustuose kg → imami jie; litrai be skliaustų → neliečiama
 Family Dog 15,080) — tikslesnės už neto taisyklę; 8 Churu „4 × 14 g", kur
 klydo skaitiklis, ne bazė.
 
-### Prekių ženklai — laukia savininko
+### Prekių ženklai — UŽDARYTA 2026-08-18
 ```
-114 be product_brand · 23 rasta aprašymuose · 10 nuotraukose · 80 be nieko
+114 be product_brand:  81 užpildė savininkas · 33 pagal mano pasiūlymus su įrodymu
+patikra 114/114 · be ženklo publish liko 27 (visos UŽ feed'o ribų)
 ```
-Nuotraukos duoda ~11 %: AV prekės fotografuotos be pakuotės, o ženklas ten.
-Priskirta NIEKO — klaidingas ženklas Google akyse blogiau nei tuščias laukas
-(lyginama su EAN priešdėliu). Perduota Excel su pasiūlymais, įrodymu ir
-nuorodomis į prekes svetainėje.
+**Feed'o kandidatuose (2 227): be ženklo 0 · be nei ženklo, nei GTIN 0.**
+Vadinasi, nė viena feed'o prekė nebekris Google dėl trūkstamo identifikatoriaus.
+
+**Taksonomijos valymas (savininko pastebėjimai):**
+```
+Hau&amp;Miau  → Hau&Miau        25 prek.   (HTML esybė)
+PET NOVA      → Pet Nova         8 prek.
+BEEZTEES      → Beeztees         4 prek.
+8IN1          → 8in1            21 prek.
+HAPPET        → Happet          50 prek.
+GreenPetFood  → Green Petfood   10 perkelta (dublikatas sujungtas)
+K9 (0 prekių) → ištrintas
+Vetfarmas     → SILICA GEL      (didmenininkas ≠ ženklas, savininko pastaba)
+ženklų sistemoje: 122 → 135
+```
+**⚠️ `wp_update_term` ampersandą UŽKODUOJA atgal** — `Hau&amp;Miau` po pirmo
+taisymo grįžo, `D&D Home` gimė sugadintas. Taisyti tik tiesiogine užklausa į
+`terms` + `clean_term_cache`. Variklyje paliktas nuolatinis esybių sargas.
+
+**Nuotraukų derlius:** 10 iš 90 (11 %). AV prekės fotografuotos be pakuotės, o
+ženklas gyvena pakuotėje. Platus teksto skenavimas (43 ženklai, pilni aprašymai)
+davė NULĮ — aprašymai kalba apie prekę, ne apie gamintoją.
+
+**Lieka:** 15 prekių be ženklo grįš į feed'ą, kai atsiras likutis (palutės,
+gumuoti pavadžiai, sepija, masažinė pirštinė).
+
+### Google kategorijos — `petshop-feeds` v2.2.0 (2026-08-18)
+```
+55 mūsų kategorijos susietos su oficialiu Google sąrašu
+ID iš taxonomy-with-ids.en-US.txt (parsisiųsta per tiltą), NE iš atminties
+savininkas peržiūrėjo ir patvirtino
+rezultatas: 2 227 / 2 227 prekių turi <g:google_product_category> (100 %)
+```
+Nesumapintos sąmoningai: DAUGIAU=PIGIAU, DOVANOS, RINKINIAI, SPRENDIMAI — tai
+akcijų skiltys, ne prekių tipai. Variklis tokioms prekėms eina nuo giliausios
+kategorijos aukštyn per tėvus, kol randa atitikmenį, todėl jos irgi gauna tikrą
+kategoriją.
+
+**Patikrinta atskirai:** senoji petshop.lt Google feed'o NETURI (visi įprasti
+adresai 404, `google_product_category` nerasta nė karto). Google kanalas —
+naujas, ne migruojamas; nėra ko perkelti, bet nėra ir paveldėtų klaidų.
+
+**Variantinės prekės — problemos NĖRA:** 39 tėvai, kainų skirtumas tarp variantų
+1,00× visose (variantai yra spalvos, ne dydžiai). Skaidyti su `item_group_id`
+nereikia. Pastaba: nė vienas variantas neturi savo GTIN (SKU jau atskirti).
 
 ### Nauja skola — `Array to string conversion` (ištirta 2026-08-18, PALIKTA STEBĖTI)
 ```
@@ -2317,7 +2359,8 @@ kuri masyvą paverčia pirma reikšme; 8 eilutės dviejose funkcijose, logika ne
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
 | Q-BKP | ✅ **UŽDARYTA 2026-08-03:** B2 bucketas, raktas, kredencialai, Object Lock 14 d. — viskas pastatyta ir įrodyta (§8d) | DOD-08 | — |
-| **Q-ZENKLAI** | **114 prekių be prekės ženklo** — Excel su pasiūlymais perduota 2026-08-18, laukia užpildymo | Google feed | — |
+| ~~Q-ZENKLAI~~ | ✅ **UŽDARYTA 2026-08-18:** visos 114 priskirtos (81 savininkas + 33 pagal įrodymus); taksonomija išvalyta (§8n) | — | — |
+| ~~Q-KATEGORIJOS~~ | ✅ **UŽDARYTA 2026-08-18:** 55 kategorijos susietos su Google taksonomija, savininkas patvirtino, feed'e 100 % (§8n) | — | — |
 | **Q-SVORIS** | **998 prekės be svorio** — pavadinime kiekio nėra, reikia sverti arba tiekėjo duomenų | pristatymo tikslumas | — |
 | **Q-VARTAI** | Ar publikavimo vartų riba (120 simb.) keičiama į 90, kaip pilnumo? Įleistų liesesnius tiekėjų aprašymus | — | — |
 | **Q-MERCH-1** | **Ar Merchant Center paskyra egzistuoja?** Tikrinti negalim: Content API neįjungtas + paslaugos aktas nepridėtas prie MC (§8m S985). Du savininko veiksmai | Google feed | skubu |
