@@ -172,7 +172,7 @@ Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai kat
 | OPS-03 | `woocommerce_email_header_image` · `wcdn_settings` · `cmplz_preloaded_privacy_info` | 🔴 |
 | OPS-04 | AVPN/IAPV serijos reset į 101 | 🔴 |
 | OPS-05 | Testinių užsakymų trynimas | 🔴 |
-| OPS-06 | Feed URL resubmit (Kaina24, Kainos.lt) | 🔴 **feed'ai NEGYVI** — miršta ties 256M, pirma reikia variklio (§8m) |
+| OPS-06 | Feed URL resubmit (Kaina24, Kainos.lt, Google) | 🟡 **variklis veikia** (petshop-feeds v2.1.0, §8n). Lieka: paduoti `https://petshop.lt/feed/...` po perjungimo |
 | OPS-07 | „Discourage search engines" išjungti | 🔴 (= DOD-22) |
 | OPS-08 | Sender tracking CNAME | 🟡 |
 | OPS-09 | Complianz Website Scan + slapukų sąrašas · enhanced conversions | 🟡 |
@@ -2226,6 +2226,72 @@ Lapai: Suvestinė · Prekės · Rinkiniai · Piltuvėlis · **Žali duomenys**
 
 ---
 
+## 8n. FEED'Ų VARIKLIS, APRAŠYMAI, SVORIAI — 2026-08-18 [S987–S1002]
+
+### `petshop-feeds` v2.1.0 — trys kanalai iš vieno variklio
+```
+v1.0.0 mirdavo ties 256M (posts_per_page=-1). v2 — paketai po 200, statiniai failai.
+uploads/petshop-feeds/{kaina24,kainos,google}.xml · cron 04:30 · endpointai atiduoda failą
+generavimas 15,6 s · atminties pikas 112 MB · 2 232 prekės · XML galioja visuose trijuose
+```
+**Ištaisyta iš v1.0.0:** kategorija buvo imama `end()` (abėcėlės paskutinė, ne giliausia);
+EAN iš `_zb_ean`/`_ean` (dabar kanoninis `_global_unique_id`); rinkiniai nebuvo filtruojami.
+
+**Formatas patikslintas pagal gyvus petshop.lt srautus:** `<ean_code>` = GTIN,
+`<model>` = SKU (senasis šablonas EAN rašė į `<model>` ir `ean_code` neturėjo).
+Kainos.lt: `<item_price>`, 200×200 miniatiūra, `<categories>`, be `<model>`.
+
+**Prekių ribojimas:** `_ps_feed_off_kaina24|kainos|google` + `_do_not_export`.
+Varnelės prekės kortelėje (Atsargos), stulpelis sąraše, 5 masiniai veiksmai.
+
+### Aprašymai: 88 → 0
+```
+88  pradžia (katalogo eilė „Be aprašymo")
+65  po 44 aprašymų įrašymo
+32  po ribos 120 → 90 (petshop-pilnumas v1.3, konstanta APRASYMO_MIN)
+ 0  po likusių 32
+```
+**⚠️ Riba 120 gyvena dviejose vietose.** Pilnumas (rodiklis) — dabar 90.
+**`petshop-vartai.php` — SĄMONINGAI palikta 120**, nes ji sprendžia, kas patenka
+į prekybą (VF/ZB be aprašymo → juodraštis). Keisti tik atskiru sprendimu.
+
+**Pamoka:** katalogo skaičius remiasi `_ps_pilnumas_kodai`, ne `post_content`.
+Pakeitus duomenį — perskaičiuoti žymą, kitaip ekranas rodo seną tiesą.
+
+### Svoriai: 740 pakeitimų
+```
+užpildyta 710 · ištaisyta 30 · patikra 740/740
+be svorio lieka 998 (žaislai, petnešos, guoliai — pavadinime kiekio nėra)
+```
+**Rasta migracijos klaidų:** 26 kraikams į `_weight` įrašyti LITRAI
+(BeloCat 18 l → 18 kg vietoj 7 kg; TOFU 6 l → 6 vietoj 2,65) — vežėjui
+deklaruota dvigubai daugiau. Plius 4 sausi maistai su neteisingu skaičiumi.
+
+**Taisyklė (savininko sprendimas — NETO su išimtimis):**
+```
+40/70/85 g +8 g · 100 g +20 g · 200–415 g +70 g · 800 g+ +100 g
+TOFU kraikas +150 g · sausas maistas neto (12,5 kg lieka 12,5)
+skliaustuose kg → imami jie; litrai be skliaustų → neliečiama
+```
+**NELIESTA sąmoningai:** 216 prekių, kur bazėje jau bruto (Eukanuba 12,220,
+Family Dog 15,080) — tikslesnės už neto taisyklę; 8 Churu „4 × 14 g", kur
+klydo skaitiklis, ne bazė.
+
+### Prekių ženklai — laukia savininko
+```
+114 be product_brand · 23 rasta aprašymuose · 10 nuotraukose · 80 be nieko
+```
+Nuotraukos duoda ~11 %: AV prekės fotografuotos be pakuotės, o ženklas ten.
+Priskirta NIEKO — klaidingas ženklas Google akyse blogiau nei tuščias laukas
+(lyginama su EAN priešdėliu). Perduota Excel su pasiūlymais, įrodymu ir
+nuorodomis į prekes svetainėje.
+
+### Nauja skola
+`petshop-xml.php:343,344,513,515` — `Array to string conversion`: kai tiekėjas
+atsiunčia `brand` kaip masyvą, į lauką patenka žodis „Array". Liečia ZB (#2) ir VF (#5).
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -2233,6 +2299,9 @@ Lapai: Suvestinė · Prekės · Rinkiniai · Piltuvėlis · **Žali duomenys**
 | Q6 | Prenumeratos pluginas | F19 | — |
 | Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
 | Q-BKP | ✅ **UŽDARYTA 2026-08-03:** B2 bucketas, raktas, kredencialai, Object Lock 14 d. — viskas pastatyta ir įrodyta (§8d) | DOD-08 | — |
+| **Q-ZENKLAI** | **114 prekių be prekės ženklo** — Excel su pasiūlymais perduota 2026-08-18, laukia užpildymo | Google feed | — |
+| **Q-SVORIS** | **998 prekės be svorio** — pavadinime kiekio nėra, reikia sverti arba tiekėjo duomenų | pristatymo tikslumas | — |
+| **Q-VARTAI** | Ar publikavimo vartų riba (120 simb.) keičiama į 90, kaip pilnumo? Įleistų liesesnius tiekėjų aprašymus | — | — |
 | **Q-MERCH-1** | **Ar Merchant Center paskyra egzistuoja?** Tikrinti negalim: Content API neįjungtas + paslaugos aktas nepridėtas prie MC (§8m S985). Du savininko veiksmai | Google feed | skubu |
 | ~~Q-MERCH-2~~ | ✅ **UŽDARYTA 2026-08-18:** feed'as SAVAS, ne GLA pluginas | — | — |
 | ~~Q-MERCH-3~~ | ✅ **UŽDARYTA 2026-08-18:** prekės be likučio į feed'us nesiunčiamos | — | — |
