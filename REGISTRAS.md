@@ -2286,9 +2286,27 @@ Priskirta NIEKO — klaidingas ženklas Google akyse blogiau nei tuščias lauka
 (lyginama su EAN priešdėliu). Perduota Excel su pasiūlymais, įrodymu ir
 nuorodomis į prekes svetainėje.
 
-### Nauja skola
-`petshop-xml.php:343,344,513,515` — `Array to string conversion`: kai tiekėjas
-atsiunčia `brand` kaip masyvą, į lauką patenka žodis „Array". Liečia ZB (#2) ir VF (#5).
+### Nauja skola — `Array to string conversion` (ištirta 2026-08-18, PALIKTA STEBĖTI)
+```
+petshop-xml.php:343,344 (petshop_xml_block_zb_create)
+petshop-xml.php:513,515 (petshop_xml_block_vf_create)
+per parą 7 įspėjimai (VF eilutė 513 — 4 kartai)
+```
+**Į bazę NEPATENKA:** 0 meta laukų, 0 terminų, 0 pavadinimų su reikšme „Array".
+Kintamasis gyvena tik sargiklio funkcijoje, kuri sprendžia, ar leisti kurti prekę.
+
+**Kur gali kliūti:** VF sargiklyje `if ($sku==='' && $brand==='' && $category==='')`
+— jei `brand` tampa „Array" vietoj tuščios eilutės, sąlyga neįvyksta ir prekė eina
+į taisyklių tikrinimą, užuot praėjusi pro šalį. Elgsena skiriasi nuo numatytos,
+duomenys nesugadinami.
+
+**Sprendimas atidėtas (savininkas 2026-08-18): „palauksime daugiau duomenų".**
+Įspėjimas dabar veikia kaip tiekėjo duomenų kokybės indikatorius — sutvarkius kodą
+prieš suprantant, KURIE įrašai jį sukelia, signalas dingtų. Kai sargas sukaups
+daugiau, tirti, ar tai sistemingas šaltinio brokas.
+
+**Taisymas, kai ateis laikas:** pakeisti tiesioginį `(string)` į pagalbinę funkciją,
+kuri masyvą paverčia pirma reikšme; 8 eilutės dviejose funkcijose, logika nesikeičia.
 
 ---
 
