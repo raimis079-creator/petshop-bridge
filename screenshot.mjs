@@ -1,45 +1,45 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
-const out={versija:'H092'};
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfaDA5MyddKSA/ICRfR0VUWydwc19oMDkzJ10gOiAnJykgIT09ICdHTycpIHJldHVybjsKIEBzZXRfdGltZV9saW1pdCgxODApOwogZ2xvYmFsICR3cGRiOyAkUD0kd3BkYi0+cHJlZml4OwogJG8gPSBhcnJheSgndic9PidIMDkzJyk7CiAkbXUgPSBXUE1VX1BMVUdJTl9ESVIgLiAnL3BldHNob3Atc2NoZW1hLnBocCc7CiAka29kID0gYmFzZTY0X2RlY29kZSgnUEQ5d2FIQUtMeW9xQ2lBcUlGQnNkV2RwYmlCT1lXMWxPaUJRWlhSemFHOXdJRk5qYUdWdFlTRGlnSlFnY0hKbGEybkZzeUJ1WVhMRm9YbHRieUIwWVd0bGJHbHpDaUFxSUVSbGMyTnlhWEIwYVc5dU9pQlFjbWxrWldSaElFSnlaV0ZrWTNKMWJXSk1hWE4wSUhOamFHVnR4SVVnY0hKbGEybkZzeUJ3ZFhOc1lYQnBZVzF6TGlCU1lXNXJJRTFoZEdnZ2FzU0ZJR25Gb1habFpHRWdhMkYwWldkdmNtbHFiMjF6TENCaVpYUWdibVVnY0hKbGE4U1hiWE1zSUc1dmNuTWdZc1dyZEdWdWRDQndjbVZyYWNXeklIQjFjMnhoY0dsMWIzTmxJRWR2YjJkc1pTQndZV2xseGFGcmIzTWdjbVY2ZFd4MFlYUmxJSEp2Wkc4Z2RHRnJaV3pFcnlCMmFXVjBiMm9nWVdSeVpYTnZMZ29nS2lCV1pYSnphVzl1T2lBeExqQXVNQW9nS2dvZ0tpQlV4YjBnd3FkVE9DQnlaV2xyWVd4aGRXcGhPaUJRY205a2RXTjBJSE5qYUdWdFlTd2dRbkpsWVdSamNuVnRZa3hwYzNRc0lFOXlaMkZ1YVhwaGRHbHZiaTRLSUNvZ1NjV2hiV0YwZFc5MFlTQXlNREkyTFRBNExURTVJQ2hJTURreUtUb2dhMkYwWldkdmNtbHFiMnBsSUVKeVpXRmtZM0oxYldKTWFYTjBJSGx5WVN3Z2NISmxhOFNYYW1VZ2JzU1hjbUV1Q2lBcUNpQXFJRlJoYTJWc2FYTWdjM1JoZEc5dFlYTWdhY1doSUhCcGNtMXBic1NYY3lCcllYUmxaMjl5YVdwdmN5QW9VbUZ1YXlCTllYUm9JR0J5WVc1clgyMWhkR2hmY0hKcGJXRnllVjl3Y205a2RXTjBYMk5oZEdBcExBb2dLaUJ2SUdwdmN5QnVaWE5oYm5RZzRvQ1VJR25Gb1NCbmFXeHBZWFZ6YVc5eklIQnlhWE5yYVhKMGIzTWdhMkYwWldkdmNtbHFiM01zSUhOMUlIWnBjMkZwY3lCd2NtOTB4SmQyYVdGcGN5NEtJQ292Q2dwcFppQW9JV1JsWm1sdVpXUW9KMEZDVTFCQlZFZ25LU2tnWlhocGREc0tDbVpwYm1Gc0lHTnNZWE56SUZCbGRITm9iM0JmVTJOb1pXMWhYMVJoYTJWc2FYTWdld29LQ1dOdmJuTjBJRlpGVWxOSlNrRWdQU0FuTVM0d0xqQW5Pd29LQ1hCMVlteHBZeUJ6ZEdGMGFXTWdablZ1WTNScGIyNGdjSEpoWkhwcFlTZ3BJSHNLQ1FsaFpHUmZabWxzZEdWeUtDZHlZVzVyWDIxaGRHZ3Zhbk52Ymw5c1pDY3NJRnRmWDBOTVFWTlRYMThzSUNkd2NtbGtaWFJwSjEwc0lEazVMQ0F5S1RzS0NYMEtDZ2x3ZFdKc2FXTWdjM1JoZEdsaklHWjFibU4wYVc5dUlIQnlhV1JsZEdrb0pHUmhkR0VzSUNScWMyOXViR1FwSUhzS0Nna0phV1lnS0NGbWRXNWpkR2x2Ymw5bGVHbHpkSE1vSjJselgzQnliMlIxWTNRbktTQjhmQ0FoYVhOZmNISnZaSFZqZENncEtTQnlaWFIxY200Z0pHUmhkR0U3Q2drSmFXWWdLQ0ZwYzE5aGNuSmhlU2drWkdGMFlTa3BJSEpsZEhWeWJpQWtaR0YwWVRzS0Nna0pMeThnU21WcElGSmhibXNnVFdGMGFDQnJZV1JoSUc1dmNuTWdjSEpoWk1TWGN5QnB4YUYyWlhOMGFTQndZWFJ6SU9LQWxDQnVaV1IxWW14cGRXOXFZVzB1Q2drSlptOXlaV0ZqYUNBb0tHRnljbUY1S1NBa1pHRjBZU0JoY3lBa1lteHZhMkZ6S1NCN0Nna0pDV2xtSUNnaGFYTmZZWEp5WVhrb0pHSnNiMnRoY3lrZ2ZId2daVzF3ZEhrb0pHSnNiMnRoYzFzblFIUjVjR1VuWFNrcElHTnZiblJwYm5WbE93b0pDUWtrZENBOUlDUmliRzlyWVhOYkowQjBlWEJsSjEwN0Nna0pDV2xtSUNocGMxOWhjbkpoZVNna2RDa2dQeUJwYmw5aGNuSmhlU2duUW5KbFlXUmpjblZ0WWt4cGMzUW5MQ0FrZEN3Z2RISjFaU2tnT2lBa2RDQTlQVDBnSjBKeVpXRmtZM0oxYldKTWFYTjBKeWtnZXdvSkNRa0pjbVYwZFhKdUlDUmtZWFJoT3dvSkNRbDlDZ2tKZlFvS0NRa2thV1FnUFNCblpYUmZkR2hsWDBsRUtDazdDZ2tKYVdZZ0tDRWthV1FwSUhKbGRIVnliaUFrWkdGMFlUc0tDZ2tKSkdWc1pXMWxiblJoYVNBOUlGdGRPd29KQ1NSd2Izb2dQU0F4T3dvS0NRa2taV3hsYldWdWRHRnBXMTBnUFNCYkNna0pDU2RBZEhsd1pTY2dJQ0FnUFQ0Z0oweHBjM1JKZEdWdEp5d0tDUWtKSjNCdmMybDBhVzl1SnlBOVBpQWtjRzk2S3lzc0Nna0pDU2R1WVcxbEp5QWdJQ0FnUFQ0Z1gxOG9KMUJ5WVdURnZtbGhKeXdnSjNCbGRITm9iM0FuS1N3S0NRa0pKMmwwWlcwbklDQWdJQ0E5UGlCb2IyMWxYM1Z5YkNnbkx5Y3BMQW9KQ1YwN0Nnb0pDU1IwWlhKdGFXNWhjeUE5SUhObGJHWTZPbkJwY20xcGJtVmZhMkYwWldkdmNtbHFZU2drYVdRcE93b0tDUWxwWmlBb0pIUmxjbTFwYm1GektTQjdDZ2tKQ1NSbmNtRnVaR2x1WlNBOUlHRnljbUY1WDNKbGRtVnljMlVvWjJWMFgyRnVZMlZ6ZEc5eWN5Z2tkR1Z5YldsdVlYTXRQblJsY20xZmFXUXNJQ2R3Y205a2RXTjBYMk5oZENjcEtUc0tDUWtKSkdkeVlXNWthVzVsVzEwZ1BTQWtkR1Z5YldsdVlYTXRQblJsY20xZmFXUTdDZ29KQ1FsbWIzSmxZV05vSUNna1ozSmhibVJwYm1VZ1lYTWdKSFJwWkNrZ2V3b0pDUWtKSkhRZ1BTQm5aWFJmZEdWeWJTZ2tkR2xrTENBbmNISnZaSFZqZEY5allYUW5LVHNLQ1FrSkNXbG1JQ2doSkhRZ2ZId2dhWE5mZDNCZlpYSnliM0lvSkhRcEtTQmpiMjUwYVc1MVpUc0tDUWtKQ1NSdWRXOXliMlJoSUQwZ1oyVjBYM1JsY20xZmJHbHVheWdrZENrN0Nna0pDUWxwWmlBb2FYTmZkM0JmWlhKeWIzSW9KRzUxYjNKdlpHRXBLU0JqYjI1MGFXNTFaVHNLQ1FrSkNTUmxiR1Z0Wlc1MFlXbGJYU0E5SUZzS0NRa0pDUWtuUUhSNWNHVW5JQ0FnSUQwK0lDZE1hWE4wU1hSbGJTY3NDZ2tKQ1FrSkozQnZjMmwwYVc5dUp5QTlQaUFrY0c5Nkt5c3NDZ2tKQ1FrSkoyNWhiV1VuSUNBZ0lDQTlQaUIzY0Y5emRISnBjRjloYkd4ZmRHRm5jeWdrZEMwK2JtRnRaU2tzQ2drSkNRa0pKMmwwWlcwbklDQWdJQ0E5UGlBa2JuVnZjbTlrWVN3S0NRa0pDVjA3Q2drSkNYMEtDUWw5Q2dvSkNTOHZJRkJoYzJ0MWRHbHVhWE1nYm1GeWVYTWc0b0NVSUhCaGRHa2djSEpsYThTWExDQmlaU0JnYVhSbGJXQWdLR1JoWW1GeWRHbHVhWE1nY0hWemJHRndhWE1wTGdvSkNTUmxiR1Z0Wlc1MFlXbGJYU0E5SUZzS0NRa0pKMEIwZVhCbEp5QWdJQ0E5UGlBblRHbHpkRWwwWlcwbkxBb0pDUWtuY0c5emFYUnBiMjRuSUQwK0lDUndiM29zQ2drSkNTZHVZVzFsSnlBZ0lDQWdQVDRnZDNCZmMzUnlhWEJmWVd4c1gzUmhaM01vWjJWMFgzUm9aVjkwYVhSc1pTZ2thV1FwS1N3S0NRbGRPd29LQ1Fra1pHRjBZVnNuUW5KbFlXUmpjblZ0WWt4cGMzUW5YU0E5SUZzS0NRa0pKMEIwZVhCbEp5QWdJQ0FnSUNBZ0lDQWdQVDRnSjBKeVpXRmtZM0oxYldKTWFYTjBKeXdLQ1FrSkowQnBaQ2NnSUNBZ0lDQWdJQ0FnSUNBZ1BUNGdkSEpoYVd4cGJtZHpiR0Z6YUdsMEtHZGxkRjl3WlhKdFlXeHBibXNvSkdsa0tTa2dMaUFuSTJKeVpXRmtZM0oxYldJbkxBb0pDUWtuYVhSbGJVeHBjM1JGYkdWdFpXNTBKeUE5UGlBa1pXeGxiV1Z1ZEdGcExBb0pDVjA3Q2dvSkNYSmxkSFZ5YmlBa1pHRjBZVHNLQ1gwS0Nna3ZLaW9nVUdseWJXbHV4SmNnYTJGMFpXZHZjbWxxWVNCd1lXZGhiQ0JTWVc1cklFMWhkR2dzSUd0cGRIVWdZWFIyWldwMUlPS0FsQ0JuYVd4cFlYVnphV0VnY0hKcGMydHBjblJoTGlBcUx3b0pjSEpwZG1GMFpTQnpkR0YwYVdNZ1puVnVZM1JwYjI0Z2NHbHliV2x1WlY5cllYUmxaMjl5YVdwaEtDUnBaQ2tnZXdvS0NRa2tjR2x5YldsdVpTQTlJQ2hwYm5RcElHZGxkRjl3YjNOMFgyMWxkR0VvSkdsa0xDQW5jbUZ1YTE5dFlYUm9YM0J5YVcxaGNubGZjSEp2WkhWamRGOWpZWFFuTENCMGNuVmxLVHNLQ1FscFppQW9KSEJwY20xcGJtVXBJSHNLQ1FrSkpIUWdQU0JuWlhSZmRHVnliU2drY0dseWJXbHVaU3dnSjNCeWIyUjFZM1JmWTJGMEp5azdDZ2tKQ1dsbUlDZ2tkQ0FtSmlBaGFYTmZkM0JmWlhKeWIzSW9KSFFwS1NCeVpYUjFjbTRnSkhRN0Nna0pmUW9LQ1Fra2RHVnliV2x1WVdrZ1BTQm5aWFJmZEdobFgzUmxjbTF6S0NScFpDd2dKM0J5YjJSMVkzUmZZMkYwSnlrN0Nna0phV1lnS0NFa2RHVnliV2x1WVdrZ2ZId2dhWE5mZDNCZlpYSnliM0lvSkhSbGNtMXBibUZwS1NrZ2NtVjBkWEp1SUc1MWJHdzdDZ29KQ1NSblpYSnBZWFZ6YVdGeklEMGdiblZzYkRzS0NRa2taM2xzYVhNZ1BTQXRNVHNLQ1FsbWIzSmxZV05vSUNna2RHVnliV2x1WVdrZ1lYTWdKSFFwSUhzS0NRa0pKR2NnUFNCamIzVnVkQ2huWlhSZllXNWpaWE4wYjNKektDUjBMVDUwWlhKdFgybGtMQ0FuY0hKdlpIVmpkRjlqWVhRbktTazdDZ2tKQ1dsbUlDZ2taeUErSUNSbmVXeHBjeWtnZXlBa1ozbHNhWE1nUFNBa1p6c2dKR2RsY21saGRYTnBZWE1nUFNBa2REc2dmUW9KQ1gwS0NRbHlaWFIxY200Z0pHZGxjbWxoZFhOcFlYTTdDZ2w5Q24wS0NsQmxkSE5vYjNCZlUyTm9aVzFoWDFSaGEyVnNhWE02T25CeVlXUjZhV0VvS1RzSycpOwogJG9rPXRydWU7ICRrbD0nJzsKIHRyeSB7IHRva2VuX2dldF9hbGwoJGtvZCwgVE9LRU5fUEFSU0UpOyB9IGNhdGNoIChQYXJzZUVycm9yICRlKSB7ICRvaz1mYWxzZTsgJGtsPSRlLT5nZXRNZXNzYWdlKCk7IH0KICRvWydzaW50YWtzZSddID0gJG9rID8gJ09LJyA6ICgnS0xBSURBOiAnLiRrbCk7CiBpZigkb2spewogICBAZmlsZV9wdXRfY29udGVudHMoJG11LCAka29kKTsKICAgJG9bJ2R5ZGlzJ10gPSBmaWxlX2V4aXN0cygkbXUpID8gZmlsZXNpemUoJG11KSA6IDA7CiAgICRvWydtZDUnXSAgID0gZmlsZV9leGlzdHMoJG11KSA/IG1kNV9maWxlKCRtdSkgOiBudWxsOwogICAkciA9IHdwX3JlbW90ZV9nZXQoaG9tZV91cmwoJy8nKSwgYXJyYXkoJ3RpbWVvdXQnPT4yNSwnc3NsdmVyaWZ5Jz0+ZmFsc2UsJ3JlZGlyZWN0aW9uJz0+MCkpOwogICAkb1snbG9vcGJhY2tfcHJhZGluaXMnXSA9IGlzX3dwX2Vycm9yKCRyKSA/ICgnV1BfRVJST1I6ICcuJHItPmdldF9lcnJvcl9tZXNzYWdlKCkpIDogKGludCkgd3BfcmVtb3RlX3JldHJpZXZlX3Jlc3BvbnNlX2NvZGUoJHIpOwogICAkcGlkID0gKGludCkgJHdwZGItPmdldF92YXIoIlNFTEVDVCBJRCBGUk9NIHskUH1wb3N0cyBXSEVSRSBwb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwb3N0X3N0YXR1cz0ncHVibGlzaCcgT1JERVIgQlkgSUQgREVTQyBMSU1JVCAxIik7CiAgICRvWydiYW5kb21vamlfcHJla2UnXSA9ICRwaWQgPyBnZXRfcGVybWFsaW5rKCRwaWQpIDogbnVsbDsKICAgaWYoJHBpZCl7CiAgICAgJHIyID0gd3BfcmVtb3RlX2dldChnZXRfcGVybWFsaW5rKCRwaWQpLCBhcnJheSgndGltZW91dCc9PjI1LCdzc2x2ZXJpZnknPT5mYWxzZSkpOwogICAgICRvWydsb29wYmFja19wcmVrZSddID0gaXNfd3BfZXJyb3IoJHIyKSA/ICdXUF9FUlJPUicgOiAoaW50KSB3cF9yZW1vdGVfcmV0cmlldmVfcmVzcG9uc2VfY29kZSgkcjIpOwogICB9CiAgIGlmKCRvWydsb29wYmFja19wcmFkaW5pcyddICE9PSAyMDApeyBAdW5saW5rKCRtdSk7ICRvWydBVFNBVUtUQSddPTE7IH0KIH0KICR3cGRiLT5xdWVyeSgiVVBEQVRFIHskUH1zbmlwcGV0cyBTRVQgYWN0aXZlPTAgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMxKTsK';
+const out={versija:'H093'};
+const miegok=(ms)=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const b={message:msg,content:buf.toString('base64')}; if(sha) b.sha=sha;
   return (await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)})).status;
 }
+async function api(p,o={}){ try{const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()};}catch(e){return {s:0,t:String(e).slice(0,200)};} }
 function schema(html){
   const ld=[...html.matchAll(/<script[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]);
   const tipai=[]; let bc=null;
   for(const b of ld){ try{ const j=JSON.parse(b); const g=j['@graph']||[j];
-    for(const x of g){ const t=x['@type']; if(!t) continue;
-      const tn=Array.isArray(t)?t.join('/'):t; tipai.push(tn);
-      if(/BreadcrumbList/.test(tn) && x.itemListElement) bc=x.itemListElement.map(i=>(i.name||(i.item&&i.item.name)||'?'));
-    } }catch(e){ tipai.push('NEPARSINTA'); } }
-  return {blokai:ld.length, tipai, breadcrumb_elementai:bc};
+    for(const x of g){ const t=x['@type']; if(!t) continue; const tn=Array.isArray(t)?t.join('/'):t; tipai.push(tn);
+      if(/BreadcrumbList/.test(tn)&&x.itemListElement) bc=x.itemListElement.map(i=>i.position+'. '+(i.name||'?')); } }catch(e){ tipai.push('NEPARSINTA'); } }
+  return {tipai, takelis:bc};
 }
-async function tirk(vardas,u){
-  try{ const r=await fetch(u); const h=await r.text(); const s=schema(h);
-    out[vardas]={url:String(u).replace(WP,''), http:r.status, ...s,
-      breadcrumb_html: /woocommerce-breadcrumb|rank-math-breadcrumb|class="[^"]*breadcrumb/i.test(h)?'yra':'nera',
-      canonical:(h.match(/<link rel="canonical"[^>]*href="([^"]+)"/i)||[null,'NERA'])[1],
-      og_image:(h.match(/<meta property="og:image"[^>]*content="([^"]+)"/i)||[null,'nera'])[1]};
-  }catch(e){ out[vardas]={klaida:String(e).slice(0,120)}; }
-}
+async function tirk(v,u){ try{ const r=await fetch(u); const h=await r.text(); out[v]={url:String(u).replace(WP,''),http:r.status,...schema(h)}; }catch(e){ out[v]={klaida:String(e).slice(0,100)}; } }
 try{
+  const ls=await api('/wp-json/code-snippets/v1/snippets');
+  let sar=[]; try{sar=JSON.parse(ls.t);}catch(e){}
+  for(const s of (Array.isArray(sar)?sar:[])){ if(String(s.name||'').startsWith('TEMP') && s.active){ await api('/wp-json/code-snippets/v1/snippets/'+s.id,{method:'POST',body:JSON.stringify({id:s.id,active:false})}); } }
+  const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP H093 schema takelis',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  let j=null; try{j=JSON.parse(cr.t);}catch(e){}
+  await miegok(9000);
+  const rr=await fetch(WP+'/?ps_h093=GO'); const tt=await rr.text();
+  try{ out.DIEGIMAS=JSON.parse(tt); }catch(e){ out.DIEGIMAS={ZALIAS:tt.slice(0,500)}; }
+  if(j&&j.id) await api('/wp-json/code-snippets/v1/snippets/'+j.id,{method:'POST',body:JSON.stringify({id:j.id,active:false})});
+  await miegok(1500);
   const idx=await (await fetch(WP+'/sitemap_index.xml')).text();
   const failai=[...idx.matchAll(/<loc>([^<]+)<\/loc>/gi)].map(m=>m[1]);
-  out.sitemap_failai=failai.map(f=>f.replace(WP,''));
-  const imk=async(zym)=>{ const f=failai.find(x=>x.includes(zym)); if(!f) return null;
-    const x=await (await fetch(f)).text(); const u=[...x.matchAll(/<loc>([^<]+)<\/loc>/gi)].map(m=>m[1]); return u[Math.min(1,u.length-1)]||null; };
-  const preke=await imk('product-sitemap') || 'https://dev.avesa.lt/product/sampunas-neutralizuojantis-nemalonius-kvapus-frexin-220-g/';
-  const kat  =await imk('product_cat-sitemap');
-  const str  =await imk('post-sitemap');
-  const psl  =await imk('page-sitemap');
+  const f=failai.find(x=>x.includes('product-sitemap'));
+  if(f){ const x=await (await fetch(f)).text(); const u=[...x.matchAll(/<loc>([^<]+)<\/loc>/gi)].map(m=>m[1]);
+    await tirk('PREKE_1', u[1]); await tirk('PREKE_2', u[50]||u[2]); }
+  const fk=failai.find(x=>x.includes('product_cat-sitemap'));
+  if(fk){ const x=await (await fetch(fk)).text(); const u=[...x.matchAll(/<loc>([^<]+)<\/loc>/gi)].map(m=>m[1]); await tirk('KATEGORIJA', u[1]); }
   await tirk('PRADINIS', WP+'/');
-  await tirk('PREKE', preke);
-  if(kat) await tirk('KATEGORIJA', kat);
-  if(str) await tirk('STRAIPSNIS', str);
-  if(psl) await tirk('PUSLAPIS', psl);
+  const fr=await fetch(WP+'/',{redirect:'manual'}); out.frontas=fr.status;
 }catch(e){ out.klaida=String(e).slice(0,400); }
-await put('screenshots/h092.json', Buffer.from(JSON.stringify(out,null,1)), 'h092 schema penkiuose puslapiu tipuose');
+await put('screenshots/h093.json', Buffer.from(JSON.stringify(out,null,1)), 'h093 breadcrumb schema prekems');
