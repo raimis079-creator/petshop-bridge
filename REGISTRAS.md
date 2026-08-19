@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-19 vėlyva naktis (TŽ auditas; priežiūros režimas ✅; NF sluoksnis pirmą kartą išmatuotas) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-19 naktis II (feed'ų esybės 117→0; BreadcrumbList ✅) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -3204,6 +3204,113 @@ sluoksnis, ne vienas iš dviejų. Po perjungimo — 1 min. patikra.
 
 ---
 
+## 8ž. SCHEMA, ESYBĖS, FEED'AI — 2026-08-19 (naktis II) [S1115–S1122]
+
+### ⏰ RYTOJ (2026-08-20) — PIRMAS DARBAS
+
+> **Naktį suksis `ps_feeds_naktinis` (01:30) ir ZB importai.**
+> Klausimas: **kiek pavadinimų su `&amp;` GRĮŽO.**
+
+```
+1. prekių su esybėmis pavadinime      šiandien po taisymo: 0
+2. feed'ų cdata_amp (3 failai)        šiandien: 0 / 0 / 0
+```
+
+**Skaičius rytoj = šaknies skubumo matas:**
+
+| Grįžo | Ką reiškia |
+|---|---|
+| 0 | šaknis nekenkia — pakanka stebėti |
+| 1–50 | ZB importas grąžina dalį — taisyti profilį neskubant |
+| **50+** | **grąžina masiškai — taisyti PRIEŠ perjungimą** |
+
+Antra rytojaus eilutė: **DOD-20 stabilumo serija užsidaro 2026-08-24.**
+
+---
+
+### ✅ BreadcrumbList prekėms — TŽ §S8 uždarytas
+
+`mu-plugins/petshop-schema.php` v1.0.2 · md5 `78879f3c…` · kopija `deploy/`
+
+```
+1. Pradžia > 2. ŠUNIMS > 3. Maistas šunims > 4. Sausas maistas šunims > 5. [prekė]
+```
+
+Kabinasi ant `rank_math/json_ld`. Takelis iš pirminės Rank Math kategorijos,
+jos nesant — iš giliausios priskirtos, su protėviais. Nedubliuoja, jei Rank
+Math kada nors pradėtų išvesti pati.
+
+### 🔒 Mano „raudonas" §8z buvo klaidingas
+
+Buvau įrašęs „BreadcrumbList nėra". Tikrinau **tik pradinį puslapį**, o ten
+jos ir neturi būti. Realiai kategorijose ji **buvo**, prekėse — nebuvo.
+
+> **Puslapio tipas yra matavimo sąlyga, ne smulkmena.** Trečiasis kartas, kai
+> per skubą paskelbiu raudoną, kurio nėra.
+
+---
+
+### ★ FEED'AI: 117 įrašų su sugadintais pavadinimais → 0
+
+```
+PRIEŠ   google/kaina24/kainos:  CDATA blokų su &amp;: 117 · 117 · 117
+PO      visuose trijuose:       0 · 0 · 0
+```
+
+**CDATA viduje esybės nedekoduojamos.** Google Merchant, Kaina24 ir Kainos.lt
+gaudavo pažodžiui `Lamb, Pork &amp; Buffalo`.
+
+> **★ Tas pats duomuo, trys skirtingi verdiktai. ★**
+> HTML kode `&amp;` — **norma** (naršyklė parodo `&`).
+> XML CDATA viduje ir JSON-LD — **klaida**.
+> Todėl prekės puslapis atrodė tvarkingas, o feed'ai tyliai gedo.
+
+### Dry-run → APPLY
+
+```
+publish 148 · draft 160 · VISO 308 · nesikeičiančių 0
+esybių rūšis: TIK viena — &amp;, 510 kartų
+kilmė: zb 238 (77 %) · av 68 · prins 2
+
+kopija     ps-backups/post_titles_h098.json  37 168 B
+pataisyta  308 / 308 · klaidų 0 · liko 0
+```
+
+Naudotas `$wpdb->update` + `clean_post_cache()`, **ne** `wp_update_post()` —
+kad nepasileistų `save_post` kabliukai ir nebūtų liestas `slug`.
+**301 sluoksnis ir SEO nepaliesti.**
+
+Feed'ai pergeneruoti per `do_action('ps_feeds_naktinis')`: 27,9 s, 130 MB.
+
+### ⚠️ NELIESTA sąmoningai
+
+```
+post_excerpt   888 prekių
+post_content   322 prekių
+terminai         4
+```
+
+Aprašymuose `&amp;` gali būti **teisėtas** — ten HTML pasitaiko. Aklas
+dekodavimas juos sugadintų. Reikia atskiro dry-run su kitokia logika.
+Bet jie eina į tuos pačius feed'us.
+
+### 🔒 Trys bandymai dėl schemos `&amp;` — visi nepavykę
+
+v1.0.0 → v1.0.1 (`ENT_HTML5`) → v1.0.2 (kartotinis dekodavimas). Sustota pagal
+taisyklę. **Priežastis neįrodyta** — labiausiai tikėtina Rank Math išvedimo
+elgsena, bet to netvirtinu. Sustojimas pasirodė teisingas: ieškant priežasties
+paaiškėjo, kad tikroji problema feed'uose.
+
+### Šalutinis: feed variklio API
+
+`get_declared_classes()` su filtru „feed" grąžino tik `Petshop_Feeding_*` —
+generatoriaus klasės fronto užklausoje neužkraunamos. Tikrasis kelias rastas
+**cron lentelėje**: `ps_feeds_naktinis`.
+
+> **Kabliuko vardas iš cron lentelės patikimesnis už klasės paiešką.**
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -3238,7 +3345,9 @@ sluoksnis, ne vienas iš dviejų. Po perjungimo — 1 min. patikra.
 | **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
 | **Q-SAUGA** | 🔴 **NF9 (login limitai) ir NF10 (2FA admin) neįgyvendinti** — saugumo pluginų nėra nė vieno (§8z). Diegiam ar formaliai išbraukiam iš TŽ? | NF5 | — |
 | **Q-REDIS** | 🟡 Objektų kešas (Redis) — didžiausia likusi našumo galimybė prie 2 609 prekių, 78 užklausų, 112 MB piko (§8z) | greitis | — |
-| **Q-BREADCRUMB** | 🔴 BreadcrumbList schema — TŽ §S8 jos reikalauja, vitrinoje nėra (§8z) | SEO | prieš launch |
+| ~~Q-BREADCRUMB~~ | ✅ **UŽDARYTA 2026-08-19:** buvo klaidingai raudona (tikrinta tik pradiniame psl.). Kategorijose buvo, prekėms įdiegta `petshop-schema.php` v1.0.2 (§8ž) | — | — |
+| **Q-ESYBES-2** | 🟡 **`post_excerpt` 888 + `post_content` 322 prekių su `&amp;`** — eina į tuos pačius feed'us, bet aklas dekodavimas sugadintų teisėtą HTML. Reikia atskiro dry-run (§8ž) | feed'ai | — |
+| **Q-ZB-SAKNIS** | 🔴 **ZB Import #2/#3 įrašo `&amp;` į pavadinimus** — 238 iš 308. ⏰ Rytoj matuojam, kiek grįžo (§8ž) | feed'ai | **prieš perjungimą** |
 | **Q-D7D8** | 🔴 **TŽ §14 D7 (klientų bazė) + D8 (užsakymų istorija) — MVP prioriteto, NEPADARYTA, registre nefiksuota.** Sena platforma dingsta 2026-10-15 | duomenys | **prieš 10-15** |
 | **Q-SVARI-DB** | 🟡 DirectAdmin: sukurti `gyvunai2_rtst` (utf8mb4) + priskirti esamą vartotoją `gyvunai2_nbpe1`. Uždaro DOD-19 §8 (§8y) | DOD-19 | — |
 | **Q-SUBDOM** | 🟡 Akla zona po perkėlimo — prašyti SSH žmogaus subdomeno į naują dokumentų šaknį (§8y) | perjungimas | prieš T-0 |
