@@ -1,10 +1,27 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
-const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfaDA4NiddKSA/ICRfR0VUWydwc19oMDg2J10gOiAnJykgIT09ICdGSVgnKSByZXR1cm47CiBAc2V0X3RpbWVfbGltaXQoMjQwKTsKIGdsb2JhbCAkd3BkYjsgJFA9JHdwZGItPnByZWZpeDsKICRvID0gYXJyYXkoJ3YnPT4nSDA4NicpOwogJHVwID0gd3BfdXBsb2FkX2RpcigpOwogJGJrID0gdHJhaWxpbmdzbGFzaGl0KCR1cFsnYmFzZWRpciddKS4ncHMtYmFja3Vwcyc7CiBpZighaXNfZGlyKCRiaykpIEBta2RpcigkYmssIDA3NTUsIHRydWUpOwoKIC8qIC0tLS0tLS0tLS0gMS4gd3AtY29uZmlnLnBocCAtLS0tLS0tLS0tICovCiAkd2MgPSBBQlNQQVRILid3cC1jb25maWcucGhwJzsKICR0ICA9IEBmaWxlX2dldF9jb250ZW50cygkd2MpOwogaWYoJHQgPT09IGZhbHNlKXsgJG9bJ3dwX2NvbmZpZyddID0gJ05FUEFWWUtPIFBFUlNLQUlUWVRJJzsgfQogZWxzZSB7CiAgICRvWyd3cF9jb25maWdfZHlkaXNfcHJpZXMnXSA9IHN0cmxlbigkdCk7CiAgICRrb3AgPSAkYmsuJy93cC1jb25maWcucGhwLmJha19oMDg2JzsKICAgQGZpbGVfcHV0X2NvbnRlbnRzKCRrb3AsICR0KTsKICAgJG9bJ2tvcGlqYSddID0gZmlsZV9leGlzdHMoJGtvcCkgPyBmaWxlc2l6ZSgka29wKSA6ICdORVBBVllLTyc7CgogICAkcmVpa2lhID0gYXJyYXkoKTsKICAgaWYoc3RycG9zKCR0LCdESVNBTExPV19GSUxFX0VESVQnKSA9PT0gZmFsc2UpICRyZWlraWFbXSA9ICJkZWZpbmUoJ0RJU0FMTE9XX0ZJTEVfRURJVCcsIHRydWUpOyI7CiAgIGlmKHN0cnBvcygkdCwnV1BfREVCVUdfRElTUExBWScpICAgPT09IGZhbHNlKSAkcmVpa2lhW10gPSAiZGVmaW5lKCdXUF9ERUJVR19ESVNQTEFZJywgZmFsc2UpOyI7CiAgICRvWydrb190cnVrbyddID0gZW1wdHkoJHJlaWtpYSkgPyAnbmlla28g4oCUIGphdSBidXZvJyA6ICRyZWlraWE7CgogICBpZighZW1wdHkoJHJlaWtpYSkgJiYgZmlsZV9leGlzdHMoJGtvcCkpewogICAgICRibG9rYXMgPSAiXG4vKiBQZXRzaG9wIHNhdWdhIChIMDg2LCAyMDI2LTA4LTE5KSAqL1xuIi5pbXBsb2RlKCJcbiIsICRyZWlraWEpLiJcbiI7CiAgICAgJGl2ZXN0ID0gZmFsc2U7ICRuYXVqYXMgPSAkdDsKICAgICBmb3JlYWNoKGFycmF5KCIvKiBUaGF0J3MgYWxsLCBzdG9wIGVkaXRpbmciLCAiLyoqIFRoYXQncyBhbGwsIHN0b3AgZWRpdGluZyIsICJyZXF1aXJlX29uY2UgQUJTUEFUSCAuICd3cC1zZXR0aW5ncy5waHAnIiwgInJlcXVpcmVfb25jZSggQUJTUEFUSCAuICd3cC1zZXR0aW5ncy5waHAnIikgYXMgJHp5bWUpewogICAgICAgJHBveiA9IHN0cnBvcygkdCwgJHp5bWUpOwogICAgICAgaWYoJHBveiAhPT0gZmFsc2UpeyAkbmF1amFzID0gc3Vic3RyKCR0LDAsJHBveikuJGJsb2thcy4iXG4iLnN1YnN0cigkdCwkcG96KTsgJGl2ZXN0ID0gdHJ1ZTsgJG9bJ3p5bWUnXSA9ICR6eW1lOyBicmVhazsgfQogICAgIH0KICAgICAkb1sndmlldGFfcmFzdGEnXSA9ICRpdmVzdDsKICAgICBpZigkaXZlc3QpewogICAgICAgJG9rID0gdHJ1ZTsgJGtsPScnOwogICAgICAgdHJ5IHsgdG9rZW5fZ2V0X2FsbCgkbmF1amFzLCBUT0tFTl9QQVJTRSk7IH0gY2F0Y2ggKFBhcnNlRXJyb3IgJGUpIHsgJG9rPWZhbHNlOyAka2w9JGUtPmdldE1lc3NhZ2UoKTsgfQogICAgICAgJG9bJ3NpbnRha3NlJ10gPSAkb2sgPyAnT0snIDogKCdLTEFJREE6ICcuJGtsKTsKICAgICAgIGlmKCRvayl7CiAgICAgICAgIEBmaWxlX3B1dF9jb250ZW50cygkd2MsICRuYXVqYXMpOwogICAgICAgICAkb1snd3BfY29uZmlnX2R5ZGlzX3BvJ10gPSBmaWxlc2l6ZSgkd2MpOwogICAgICAgICAkciA9IHdwX3JlbW90ZV9nZXQoaG9tZV91cmwoJy8nKSwgYXJyYXkoJ3RpbWVvdXQnPT4yNSwnc3NsdmVyaWZ5Jz0+ZmFsc2UsJ3JlZGlyZWN0aW9uJz0+MCkpOwogICAgICAgICAkb1snbG9vcGJhY2tfcG9fY29uZmlnJ10gPSBpc193cF9lcnJvcigkcikgPyAoJ1dQX0VSUk9SOiAnLiRyLT5nZXRfZXJyb3JfbWVzc2FnZSgpKSA6IChpbnQpIHdwX3JlbW90ZV9yZXRyaWV2ZV9yZXNwb25zZV9jb2RlKCRyKTsKICAgICAgICAgaWYoJG9bJ2xvb3BiYWNrX3BvX2NvbmZpZyddICE9PSAyMDApewogICAgICAgICAgIEBmaWxlX3B1dF9jb250ZW50cygkd2MsICR0KTsKICAgICAgICAgICAkb1snQVRTQVVLVEFfQ09ORklHJ10gPSAnZ3JhemludGEgaXMga29waWpvcyc7CiAgICAgICAgIH0KICAgICAgIH0KICAgICB9CiAgIH0KIH0KCiAvKiAtLS0tLS0tLS0tIDIuIGhpZ2llbm9zIG11LXBsdWdpbiAtLS0tLS0tLS0tICovCiAkbXUgPSBXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWhpZ2llbmEucGhwJzsKICRrb2QgPSBiYXNlNjRfZGVjb2RlKCdQRDl3YUhBS0x5b3FDaUFxSUZCc2RXZHBiaUJPWVcxbE9pQlFaWFJ6YUc5d0lFaHBaMmxsYm1FS0lDb2dSR1Z6WTNKcGNIUnBiMjQ2SUU1bGNtOWtieUJYYjNKa1VISmxjM01nZG1WeWMybHFiM01nYVhJZ2JtVnlaV2xyWVd4cGJtZkZzeUJoYm5SeVljV2h4STFweGJNdUlGWmxjbk5wYW05eklHRjBjMnRzWldsa2FXMWhjeUJzWldsa3hiNXBZU0JweGFFZ2EyRnlkRzhnWVhSeWFXNXJkR2tnYzNabGRHRnBibVZ6SUhCaFoyRnNJTVcrYVc1dmJXRnpJSE53Y21GbllYTXVDaUFxSUZabGNuTnBiMjQ2SURFdU1DNHdDaUFxTHdwcFppQW9JV1JsWm1sdVpXUW9KMEZDVTFCQlZFZ25LU2tnWlhocGREc0tDaTh2SUR4dFpYUmhJRzVoYldVOUltZGxibVZ5WVhSdmNpSWdZMjl1ZEdWdWREMGlWMjl5WkZCeVpYTnpJSGd1ZVM1NklqNEtjbVZ0YjNabFgyRmpkR2x2YmlnbmQzQmZhR1ZoWkNjc0lDZDNjRjluWlc1bGNtRjBiM0luS1RzS1lXUmtYMlpwYkhSbGNpZ25kR2hsWDJkbGJtVnlZWFJ2Y2ljc0lDZGZYM0psZEhWeWJsOWxiWEIwZVY5emRISnBibWNuS1RzS0NpOHZJRkpsWVd4c2VTQlRhVzF3YkdVZ1JHbHpZMjkyWlhKNUlHbHlJRmRwYm1SdmQzTWdUR2wyWlNCWGNtbDBaWElnNG9DVUlHNWxibUYxWkc5cVlXMXBMQ0JpWlhRZ2MydGxiR0pwWVNCMlpYSnphV3JFaFFweVpXMXZkbVZmWVdOMGFXOXVLQ2QzY0Y5b1pXRmtKeXdnSjNKelpGOXNhVzVySnlrN0NuSmxiVzkyWlY5aFkzUnBiMjRvSjNkd1gyaGxZV1FuTENBbmQyeDNiV0Z1YVdabGMzUmZiR2x1YXljcE93b0tMeThnV0MxUWFXNW5ZbUZqYXlCaGJuUnlZY1doZE1TWENtRmtaRjltYVd4MFpYSW9KM2R3WDJobFlXUmxjbk1uTENCbWRXNWpkR2x2YmlBb0pHZ3BJSHNnZFc1elpYUW9KR2hiSjFndFVHbHVaMkpoWTJzblhTazdJSEpsZEhWeWJpQWthRHNnZlNrN0NnPT0nKTsKICRvazIgPSB0cnVlOyAka2wyPScnOwogdHJ5IHsgdG9rZW5fZ2V0X2FsbCgka29kLCBUT0tFTl9QQVJTRSk7IH0gY2F0Y2ggKFBhcnNlRXJyb3IgJGUpIHsgJG9rMj1mYWxzZTsgJGtsMj0kZS0+Z2V0TWVzc2FnZSgpOyB9CiAkb1snaGlnaWVuYV9zaW50YWtzZSddID0gJG9rMiA/ICdPSycgOiAoJ0tMQUlEQTogJy4ka2wyKTsKIGlmKCRvazIpewogICBAZmlsZV9wdXRfY29udGVudHMoJG11LCAka29kKTsKICAgJG9bJ2hpZ2llbmFfbWQ1J10gPSBmaWxlX2V4aXN0cygkbXUpID8gbWQ1X2ZpbGUoJG11KSA6IG51bGw7CiAgICRyMiA9IHdwX3JlbW90ZV9nZXQoaG9tZV91cmwoJy8nKSwgYXJyYXkoJ3RpbWVvdXQnPT4yNSwnc3NsdmVyaWZ5Jz0+ZmFsc2UsJ3JlZGlyZWN0aW9uJz0+MCkpOwogICAkb1snbG9vcGJhY2tfcG9faGlnaWVub3MnXSA9IGlzX3dwX2Vycm9yKCRyMikgPyAoJ1dQX0VSUk9SOiAnLiRyMi0+Z2V0X2Vycm9yX21lc3NhZ2UoKSkgOiAoaW50KSB3cF9yZW1vdGVfcmV0cmlldmVfcmVzcG9uc2VfY29kZSgkcjIpOwogICBpZigkb1snbG9vcGJhY2tfcG9faGlnaWVub3MnXSAhPT0gMjAwKXsgQHVubGluaygkbXUpOyAkb1snQVRTQVVLVEFfSElHSUVOQSddPTE7IH0KICAgZWxzZSB7CiAgICAgJGggPSB3cF9yZW1vdGVfcmV0cmlldmVfYm9keSgkcjIpOwogICAgICRvWydnZW5lcmF0b3JfbGlrbyddID0gKHN0cmlwb3MoJGgsICduYW1lPSJnZW5lcmF0b3IiJykgIT09IGZhbHNlKSA/ICdUQUlQJyA6ICduZSc7CiAgIH0KIH0KCiAvKiAtLS0tLS0tLS0tIDMuIHJlYWRtZS5odG1sIC8gbGljZW5zZS50eHQgLS0tLS0tLS0tLSAqLwogZm9yZWFjaChhcnJheSgncmVhZG1lLmh0bWwnLCdsaWNlbnNlLnR4dCcpIGFzICRmKXsKICAgJHAgPSBBQlNQQVRILiRmOwogICBpZihmaWxlX2V4aXN0cygkcCkpewogICAgIEByZW5hbWUoJHAsICRiay4nLycuJGYuJy5iYWtfaDA4NicpOwogICAgICRvWydpc3RyYXVrdGEnXVskZl0gPSBmaWxlX2V4aXN0cygkcCkgPyAnTElLTycgOiAncGVya2VsdGEgaSBwcy1iYWNrdXBzJzsKICAgfSBlbHNlIHsgJG9bJ2lzdHJhdWt0YSddWyRmXSA9ICduZWJ1dm8nOyB9CiB9CgogJHdwZGItPnF1ZXJ5KCJVUERBVEUgeyRQfXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzEpOwo=';
-const out={versija:'H086b',wp:WP};
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfaDA4NyddKSA/ICRfR0VUWydwc19oMDg3J10gOiAnJykgIT09ICdQRVJGJykgcmV0dXJuOwogQHNldF90aW1lX2xpbWl0KDE4MCk7CiBnbG9iYWwgJHdwZGI7ICRQPSR3cGRiLT5wcmVmaXg7CiAkbyA9IGFycmF5KCd2Jz0+J0gwODcnKTsKICRvWydwaHAnXSAgICAgICA9IFBIUF9WRVJTSU9OOwogJG9bJ2F0bWludGllc19yaWJhJ10gPSBpbmlfZ2V0KCdtZW1vcnlfbGltaXQnKTsKICRvWyd3cF9tZW1vcnknXSA9IGRlZmluZWQoJ1dQX01FTU9SWV9MSU1JVCcpID8gV1BfTUVNT1JZX0xJTUlUIDogJ25lbnVzdGF0eXRhJzsKICRvWydvYmplY3RfY2FjaGUnXSA9IChib29sKSB3cF91c2luZ19leHRfb2JqZWN0X2NhY2hlKCkgPyAnWVJBJyA6ICdORVJBJzsKICRvWydvcGNhY2hlJ10gICA9IGZ1bmN0aW9uX2V4aXN0cygnb3BjYWNoZV9nZXRfc3RhdHVzJykgPyAneXJhIGZ1bmtjaWphJyA6ICduZXJhJzsKIGlmKGZ1bmN0aW9uX2V4aXN0cygnb3BjYWNoZV9nZXRfc3RhdHVzJykpeyAkcz1Ab3BjYWNoZV9nZXRfc3RhdHVzKGZhbHNlKTsgJG9bJ29wY2FjaGVfaWp1bmd0YXMnXSA9ICgkcyAmJiAhZW1wdHkoJHNbJ29wY2FjaGVfZW5hYmxlZCddKSkgPyAnVEFJUCcgOiAnTkUnOyB9CiAkb1sndXprbGF1c3Vfc2lhbWVfcHVzbGFweWplJ10gPSBnZXRfbnVtX3F1ZXJpZXMoKTsKICRvWydnZW5lcmF2aW1vX2xhaWthc19zJ10gPSByb3VuZCh0aW1lcl9zdG9wKDApLCAzKTsKICRvWydhdG1pbnRpZXNfbmF1ZG9qaW1hc19NQiddID0gcm91bmQobWVtb3J5X2dldF9wZWFrX3VzYWdlKHRydWUpLzEwNDg1NzYsIDEpOwogJG9bJ2FrdHl2dXNfcGx1Z2luYWknXSA9IGNvdW50KChhcnJheSkgZ2V0X29wdGlvbignYWN0aXZlX3BsdWdpbnMnLCBhcnJheSgpKSk7CiAkb1snbXVfZmFpbGFpJ10gPSBjb3VudChnbG9iKFdQTVVfUExVR0lOX0RJUi4nLyoucGhwJykpOwogJG9bJ2F1dG9sb2FkX0tCJ10gPSByb3VuZCgoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIFNVTShMRU5HVEgob3B0aW9uX3ZhbHVlKSkgRlJPTSB7JFB9b3B0aW9ucyBXSEVSRSBhdXRvbG9hZD0neWVzJyIpLzEwMjQsIDEpOwogJG9bJ2F1dG9sb2FkX2lyYXN1J10gPSAoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRQfW9wdGlvbnMgV0hFUkUgYXV0b2xvYWQ9J3llcyciKTsKICR0b3AgPSAkd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBvcHRpb25fbmFtZSwgUk9VTkQoTEVOR1RIKG9wdGlvbl92YWx1ZSkvMTAyNCwxKSBrYiBGUk9NIHskUH1vcHRpb25zIFdIRVJFIGF1dG9sb2FkPSd5ZXMnIE9SREVSIEJZIExFTkdUSChvcHRpb25fdmFsdWUpIERFU0MgTElNSVQgOCIsIEFSUkFZX0EpOwogJG9bJ2F1dG9sb2FkX3RvcCddID0gJHRvcDsKICRvWyd0cmFuc2llbnR1J10gPSAoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRQfW9wdGlvbnMgV0hFUkUgb3B0aW9uX25hbWUgTElLRSAnX3RyYW5zaWVudF8lJyIpOwogJG9bJ3ByZWtpdV9wdWJsaXNoJ10gPSAoaW50KSAkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRQfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSdwdWJsaXNoJyIpOwogJHdwZGItPnF1ZXJ5KCJVUERBVEUgeyRQfXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzEpOwo=';
+const out={versija:'H087',wp:WP};
 const miegok=(ms)=>new Promise(r=>setTimeout(r,ms));
+
+/* ---------- 1. TLS PATIKRA su GRIEZTU tikrinimu (be apejimo) ---------- */
+out.TLS={};
+try{ const r=await fetch(WP+'/',{redirect:'manual'}); out.TLS.griezta='PRAEJO, http '+r.status; }
+catch(e){ out.TLS.griezta='NEPRAEJO: '+String(e.cause?e.cause.code||e.cause.message:e).slice(0,160); }
+try{
+  const tls=await import('tls');
+  const u=new URL(WP);
+  const info=await new Promise((res,rej)=>{
+    const s=tls.connect({host:u.hostname,port:443,servername:u.hostname,rejectUnauthorized:false,timeout:15000},()=>{
+      const c=s.getPeerCertificate(); res({CN:(c.subject||{}).CN, SAN:(c.subjectaltname||'').slice(0,200), nuo:c.valid_from, iki:c.valid_to, isdave:(c.issuer||{}).O, patikima:s.authorized, priezastis:s.authorizationError?String(s.authorizationError):null}); s.end();
+    });
+    s.on('error',e=>rej(e)); s.on('timeout',()=>rej(new Error('timeout')));
+  });
+  out.TLS.sertifikatas=info;
+}catch(e){ out.TLS.sertifikatas='KLAIDA: '+String(e).slice(0,150); }
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 async function put(path,buf,msg){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
@@ -12,25 +29,51 @@ async function put(path,buf,msg){
   return (await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)})).status;
 }
 async function api(p,o={}){ try{const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()};}catch(e){return {s:0,t:String(e).slice(0,200)};} }
-async function tikr(p){ try{ const r=await fetch(WP+p,{redirect:'manual'}); return {http:r.status}; }catch(e){ return {klaida:String(e).slice(0,80)}; } }
 
 try{
-  /* ================= 1. SAUGOS PATAISOS ================= */
+  /* ---------- 2. TTFB (5 matavimai) ---------- */
+  const t=[];
+  for(let i=0;i<5;i++){ const a=Date.now(); const r=await fetch(WP+'/?nocache='+Math.random()); await r.arrayBuffer(); t.push(Date.now()-a); await miegok(600); }
+  t.sort((x,y)=>x-y);
+  out.PILNAS_HTML_ms={matavimai:t, mediana:t[2], min:t[0], max:t[4]};
+
+  /* ---------- 3. puslapio svoris ---------- */
+  const r0=await fetch(WP+'/'); const html=await r0.text();
+  const hdr={}; for(const k of ['content-encoding','cache-control','content-length']) if(r0.headers.get(k)) hdr[k]=r0.headers.get(k);
+  out.HTML={dydis_KB: Math.round(html.length/1024), antrastes:hdr};
+
+  const css=[...html.matchAll(/<link[^>]+rel=["']stylesheet["'][^>]*href=["']([^"']+)/gi)].map(m=>m[1]);
+  const js =[...html.matchAll(/<script[^>]+src=["']([^"']+)/gi)].map(m=>m[1]);
+  const img=[...html.matchAll(/<img[^>]+src=["']([^"']+)/gi)].map(m=>m[1]);
+  out.RESURSAI={css:css.length, js:js.length, img:img.length};
+
+  const blok=[...html.matchAll(/<script[^>]+src=[^>]*>/gi)].filter(s=>!/defer|async/i.test(s[0]));
+  const head=html.slice(0, html.search(/<\/head>/i));
+  out.RESURSAI.js_be_defer_async = blok.length;
+  out.RESURSAI.js_head_blokuojantys = [...head.matchAll(/<script[^>]+src=[^>]*>/gi)].filter(s=>!/defer|async/i.test(s[0])).length;
+
+  async function sverk(sar, kiek){
+    let viso=0, n=0, gz=0, be_cache=0;
+    for(const u of sar.slice(0,kiek)){
+      try{ const abs=u.startsWith('http')?u:(u.startsWith('//')?'https:'+u:WP+(u.startsWith('/')?'':'/')+u);
+        const r=await fetch(abs); const b=await r.arrayBuffer(); viso+=b.byteLength; n++;
+        if(r.headers.get('content-encoding')) gz++;
+        const cc=r.headers.get('cache-control')||''; if(!/max-age=\d{5,}/.test(cc)) be_cache++;
+      }catch(e){}
+    }
+    return {tikrinta:n, KB:Math.round(viso/1024), suspausta:gz, be_ilgo_cache:be_cache};
+  }
+  out.SVORIS={css: await sverk(css,25), js: await sverk(js,30), img: await sverk(img,20)};
+
+  /* ---------- 4. serverio pusė ---------- */
   const ls=await api('/wp-json/code-snippets/v1/snippets');
   let sar=[]; try{sar=JSON.parse(ls.t);}catch(e){}
   for(const s of (Array.isArray(sar)?sar:[])){ if(String(s.name||'').startsWith('TEMP') && s.active){ await api('/wp-json/code-snippets/v1/snippets/'+s.id,{method:'POST',body:JSON.stringify({id:s.id,active:false})}); } }
-  const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP H086 saugos pataisos',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP H087 nasumo profilis',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
   let j=null; try{j=JSON.parse(cr.t);}catch(e){}
-  out.snip=j?j.id:('KLAIDA '+cr.s);
   await miegok(9000);
-  const rr=await fetch(WP+'/?ps_h086=FIX'); const tt=await rr.text();
-  try{ out.PATAISOS=JSON.parse(tt); }catch(e){ out.PATAISOS={ZALIAS:tt.slice(0,500)}; }
+  const rr=await fetch(WP+'/?ps_h087=PERF'); const tt=await rr.text();
+  try{ out.SERVERIS=JSON.parse(tt); }catch(e){ out.SERVERIS={ZALIAS:tt.slice(0,400)}; }
   if(j&&j.id) await api('/wp-json/code-snippets/v1/snippets/'+j.id,{method:'POST',body:JSON.stringify({id:j.id,active:false})});
-
-  out.PO_PATAISU = { frontas: await tikr('/'), readme: await tikr('/readme.html'), license: await tikr('/license.txt') };
-  const hp = await (await fetch(WP+'/')).text();
-  out.PO_PATAISU.generator = /name="generator"/i.test(hp) ? 'DAR YRA' : 'pasalintas';
-
-  out.greitis="atskirai — Playwright diegimas kabo";
 }catch(e){ out.klaida=String(e).slice(0,400); }
-await put('screenshots/h086b.json', Buffer.from(JSON.stringify(out,null,1)), 'h086b saugos pataisos');
+await put('screenshots/h087.json', Buffer.from(JSON.stringify(out,null,1)), 'h087 nasumo profilis + TLS');
