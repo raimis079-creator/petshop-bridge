@@ -1,0 +1,33 @@
+{
+ "versija": "H084",
+ "wp": "https://dev.avesa.lt",
+ "snip": 3538,
+ "d": {
+  "v": "H084",
+  "db_vardas": "gyvunai2_nbpe1",
+  "db_vartotojas": "gyvunai2_nbpe1",
+  "db_hostas": "localhost",
+  "serveris": "10.6.17-MariaDB-log",
+  "teises": [
+   "GRANT USAGE ON *.* TO `gyvunai2_nbpe1`@`localhost` IDENTIFIED BY ***",
+   "GRANT ALL PRIVILEGES ON `gyvunai2\\_nbpe1`.* TO `gyvunai2_nbpe1`@`localhost`"
+  ],
+  "matomos_db": [
+   "gyvunai2_nbpe1",
+   "information_schema"
+  ],
+  "lenteles_kurimas": "TAIP",
+  "bazes_kurimas": "NE: Access denied for user 'gyvunai2_nbpe1'@'localhost' to database 'gyvunai2_rtst_h084'",
+  "lenteliu_kiek": 194,
+  "bazes_koduote": "latin1",
+  "bazes_collation": "latin1_swedish_ci",
+  "prieziura_yra": true,
+  "prieziura_md5": "726867acabaa1067ad8d6ae19e0c9983",
+  "veliava_yra": false,
+  "skriptai": {
+   "backup-run.php": 200,
+   "watch-run.php": 143
+  }
+ },
+ "frontas": 200
+}
