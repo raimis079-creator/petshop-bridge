@@ -1,35 +1,35 @@
 # DOD-19 — ATSITRAUKIMO PLANAS (rollback)
 
-**Versija:** 1.0 · 2026-08-17
-**Būsena:** juodraštis, laukia savininko sprendimų §7
-**Priklausomybė:** DOD-18 (DNS/perjungimo planas) — dar neparašytas, nes
-neišspręstas esminis klausimas, žr. §0.
+**Versija:** 2.0 · 2026-08-19
+**Būsena:** ✅ PATVIRTINTAS. §7 klausimai atsakyti, §0 neaiškumas išspręstas.
+**Priklausomybė:** DOD-18 parašytas (`dokumentai/DOD-18_perjungimas.md`).
+**Perjungimo data:** 2026-09-01/02, naktį, vidury savaitės.
 
 ---
 
-## 0. KĄ BŪTINA ŽINOTI PRIEŠ SKAITANT
+## 0. IŠMATUOTA BŪKLĖ (v1.0 neaiškumas IŠSPRĘSTAS)
 
-Šis planas parašytas **nežinant, kaip technikai vyks perjungimas**. Registre
-(§8b) užfiksuotas faktas, kuris viską keičia:
+v1.0 buvo parašyta nežinant, kaip technikai vyks perjungimas. **Dabar žinoma
+(§8l, 2026-08-17 DNS matavimas):**
 
 ```
-domains/  avesa.lt 8 863 MB · gyvunai.lt 3 574 · sushimo.lt 675 · petshop.lt 17 MB
+šis serveris          79.98.29.24
+petshop.lt A          213.226.161.16  IR  213.226.161.15    ← DU įrašai
+www.petshop.lt        CNAME → petshop.lt
+A TTL 3600 · NS TTL 86400 · NS: ns1–ns4.serveriai.lt
+eShoprent: HTTP 200, nginx/1.22.1 — gyva
 ```
 
-`petshop.lt` katalogas serveryje — 17 MB. **Tikroji parduotuvė gyvena po
-`avesa.lt`.** Todėl perjungimas gali būti vienas iš dviejų visiškai skirtingų
-dalykų:
+**Galioja SCENARIJUS B — tikras DNS keitimas.** Domenas rodo į eShoprent
+serverius, ne į šį. Vadinasi §3.1 trukmė priklauso nuo TTL, ir T-2 TTL
+mažinimas yra **privalomas**, ne rekomendacija.
 
-| Scenarijus | Kas vyksta | Rollback greitis |
-|---|---|---|
-| **A. Domenas jau rodo į šį serverį** | DirectAdmin nustatymo pakeitimas + WP Site URL | **minutės**, DNS nedalyvauja |
-| **B. Domenas rodo į seną hostingą** | tikras A įrašo keitimas per iv.lt | **TTL trukmė**, gali būti valandos |
+**Du radiniai, kurių v1.0 neturėjo:**
 
-**Neatsakytas klausimas:** kur šiandien rodo `petshop.lt` A įrašas.
-Patikrinama iš serverio pusės (`dig`/`gethostbyname`) — įtraukta į §6 kaip
-pirmas T-14 darbas. Nuo atsakymo priklauso §3 laikai.
-
-Visa kita šiame dokumente galioja abiem scenarijams.
+1. **Zoną valdo serveriai.lt, ne iv.lt.** A įrašą keiti pats, tarpininko nėra.
+2. **A įrašų DU.** Pakeitus vieną, dalis srauto liktų sename serveryje, ir
+   užsakymai pasiskirstytų per dvi sistemas. **Keisti BŪTINA abu**, ir tai
+   galioja tiek perjungimui, tiek grįžimui.
 
 ---
 
@@ -78,22 +78,26 @@ arba nusipirkti neįmanoma. Viskas kita — taisoma gyvai.
 
 ### 3.1 SRAUTO grąžinimas — greičiausias
 
-**Scenarijus A** (domenas jau šiame serveryje):
-```
-1. DirectAdmin: petshop.lt dokumentų šaknis → atgal į seną katalogą
-2. WP nekeičiamas
-Trukmė: ~5 min. TTL NEDALYVAUJA.
-```
+**Galioja tik scenarijus B (žr. §0).**
 
-**Scenarijus B** (tikras DNS):
 ```
-1. iv.lt: A įrašas → atgal į seną IP
+1. serveriai.lt zonoje: ABU A įrašai → atgal į 213.226.161.16 ir .15
 2. Laukiama TTL
-Trukmė: TTL. Todėl T-2 PRIVALOMA sumažinti TTL iki 300 s — žr. §6.
+Trukmė: 5 min., JEI TTL sumažintas iš anksto. Kitaip — iki 1 val.
 ```
 
-> **Jei TTL nebuvo sumažintas iš anksto, šis kelias trunka tiek, kiek buvo
-> senasis TTL (dažnai 24 val.), ir jokio būdo pagreitinti NĖRA.**
+> **TTL mažinimas T-2 yra privalomas.** Jei jis nebus sumažintas, grįžimas
+> truks tiek, kiek buvo senasis TTL (3600 s), ir pagreitinti NEĮMANOMA.
+
+**Antras žingsnis, kurio v1.0 neturėjo — PAYSERA.**
+
+Jei perjungimo metu buvo pakeisti Paysera projekto 29276 adresai, grįžtant
+juos reikia **grąžinti taip pat**. Kitaip senoji platforma priims užsakymus,
+bet mokėjimai lūš.
+
+```
+grįžimas = DNS (abu A įrašai)  +  Paysera adresai, JEI buvo keisti
+```
 
 ### 3.2 KODO atsukimas — kai svetainė gyva, bet lūžta funkcija
 
@@ -203,35 +207,106 @@ daroma 04:00; jei perjungiama 10:00, prarandama 6 valandų darbo.
 
 ---
 
-## 7. KLAUSIMAI SAVININKUI
+## 7. SAVININKO ATSAKYMAI (2026-08-19) — UŽRAKINTA
 
 ```
-K1  Perjungimo langas — naktis, savaitgalis ar darbo valandos?
-    Nuo to priklauso, kiek laiko yra reaguoti be klientų.
+K1  Perjungimo langas
+    ✅ NAKTIS, vidury savaitės. Data 2026-09-01/02.
+    Pagrindimas (savininko): nuo mėnesio 6–7 d. prasideda didesni pirkimai
+    (atlyginimai), 10–14 d. — pikas. Perjungti prieš piką = klaida
+    brangiausiu metu. Mėnesio pradžia = klaida pigiausiu metu, plius
+    savaitė su mažu srautu prieš piką.
 
-K2  Kas turi būti pasiekiamas tą dieną ir kokiais kanalais?
-    (serveriai.lt palaikymas, iv.lt DNS, Paysera)
+K2  Kas pasiekiamas
+    Naktį — niekas. Todėl langas renkamas taip, kad RYTOJAUS dieną būtų
+    pasiekiami serveriai.lt, Paysera ir tiekėjai. Antradienis/trečiadienis.
 
-K3  Sena platforma po perjungimo — išjungiama, ar lieka read-only?
-    DOD-18 formuluotė sako „read-only", bet sprendimas nefiksuotas.
-    Jei lieka gyva, ji yra atsitraukimo kelias. Jei išjungiama —
-    §3.1 nustoja veikti, ir lieka tik 3.2/3.3.
+K3  Sena platforma po perjungimo
+    ✅ LIEKA GYVA. Sutartis su eShoprent galioja iki 2026-10-15.
+    Perjungus rugsėjo pradžioje lieka PENKIOS SAVAITĖS atsarginio kelio.
+    Tai iš esmės panaikina „taško be grįžimo" §3.1 lygmenyje.
+    ⚠️ Sutarties NEnutraukti anksčiau — su ja dingsta §3.1.
 
-K4  Kiek laiko po perjungimo esi pasiruošęs stebėti aktyviai?
-    Nuo to priklauso, ar §4 „taškas be grįžimo" bus valdomas.
+K4  Aktyvaus stebėjimo trukmė
+    Pirmos 2–3 valandos po perjungimo. Sprendimas grįžti priimamas jose,
+    kol užsakymų nėra arba jų vienetai.
 ```
+
+---
+
+## 7b. PAYSERA — PRIVALOMAS ŽINGSNIS PERJUNGIMO NAKTĮ
+
+Išmatuota 2026-08-19 (§8v): Paysera projekte 29276 adresai įrašyti
+**fiksuotai ir tikrinami**. Bandymas iš `dev.avesa.lt` grąžino `bad_referer`
+(0x13). Domenas po perjungimo sutaps savaime, bet **kelias skiriasi**:
+
+```
+sena platforma:  petshop.lt/index.php?route=extension/payment/paysera/callback
+nauja sistema:   petshop.lt/?wc-api=paysera_callback
+```
+
+**Rizika:** nukreipimas veiks, klientas sumokės, pinigai bus nurašyti, o
+callback nueis į adresą, kurio nebėra → užsakymas liks „laukiama apmokėjimo".
+Iš išorės atrodo gerai.
+
+**PRIVALOMA PROCEDŪRA:**
+
+```
+1. DNS pakeitimas (ABU A įrašai)
+2. PRIEŠ SKELBIANT — 2,21 € pirkimas jau ties petshop.lt
+      ✅ veikia            → uždaryta, tęsiam
+      🔴 callback nulūžta  → pataisyti callbackurl projekte, pakartoti
+3. Skelbiama TIK po sėkmingo pirkimo
+```
+
+> **NELEIDŽIAMA perjungti ir palikti mokėjimą nepatikrintą iki ryto.**
+> Tai vienintelė vieta, kur klaida reiškia paimtus pinigus be užsakymo.
+
+**Plius:** patikrinti, kad `test_mode = no`. Išmatuota, kad jis kartą grįžo
+į `yes` savaime — **tikrinti du kartus**.
 
 ---
 
 ## 8. KO ŠIAME PLANE DAR NĖRA
 
-Sąžiningai — kad nebūtų laikoma baigtu:
+Sąžiningai — kad nebūtų laikoma baigtu.
 
 ```
-- priežiūros režimo jungiklis NEEGZISTUOJA (§6 T-0) — reikia pasidaryti
-- „cron visai nepasileido" perspėjimas neįdiegtas (petshop-sargas.php v1.0
-  parašytas 2026-08-17, dar neįdiegtas)
-- atstatymas į ŠVARIĄ bazę nepatikrintas (reikia, kad savininkas
-  DirectAdmin'e sukurtų testinę DB)
-- DOD-18 neparašytas — be jo §3.1 laikai yra prielaida
+🔴 priežiūros režimo jungiklis NEEGZISTUOJA (§6 T-0) — reikia pasidaryti
+🔴 atstatymas į ŠVARIĄ bazę nepatikrintas — reikia testinės DB DirectAdmin'e
+🟡 SSL sertifikatas petshop.lt vardui naujame serveryje — NEPATIKRINTA
+🟡 Q-PSR3: kas realiai įrašyta projekto 29276 accepturl/cancelurl/callbackurl
+```
+
+**Uždaryta nuo v1.0:**
+
+```
+✅ DOD-18 parašytas
+✅ DNS scenarijus išmatuotas (B, du A įrašai, serveriai.lt)
+✅ petshop-sargas.php v1.2 įdiegtas ir veikia (§8u)
+✅ §7 klausimai atsakyti
+✅ Paysera rizika išmatuota ir procedūra užrakinta (§7b)
+```
+
+---
+
+## 9. VIENO PUSLAPIO SANTRAUKA PERJUNGIMO NAKČIAI
+
+```
+PRIEŠ (T-2)     TTL 3600 → 300 · abiem A įrašams
+PRIEŠ (T-1)     rankinė pilna kopija · užsirašyti prekių/užsakymų skaičius
+PRIEŠ (T-1)     patikrinti SSL petshop.lt · patikrinti test_mode = no
+
+T-0  1.  DNS: ABU A įrašai → 79.98.29.24
+     2.  palaukti, kol atsidaro petshop.lt
+     3.  ⚠️ 2,21 € PIRKIMAS — mokėjimo grandinės patikra
+     4.  jei OK → blog_public = 1 (DOD-22), og:image → petshop.lt
+     5.  skelbti
+
+GRĮŽIMAS        ABU A įrašai → 213.226.161.16 ir .15
+                + Paysera adresai, jei buvo keisti
+                sena platforma gyva iki 2026-10-15
+
+SPRENDIMAS      priimamas per pirmas 2–3 val.
+                po pirmo realaus užsakymo §3.3 UŽDARYTAS
 ```
