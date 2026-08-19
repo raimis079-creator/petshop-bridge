@@ -1,0 +1,124 @@
+{
+ "versija": "H089",
+ "PRIES": {
+  "js": {
+   "http": 200,
+   "cc": null,
+   "exp": null
+  },
+  "css": {
+   "http": 200,
+   "cc": "max-age=604800",
+   "exp": "yra"
+  }
+ },
+ "PATAISOS": {
+  "v": "H089",
+  "autoload_reiksmes": [
+   {
+    "autoload": "off",
+    "kiek": "1714",
+    "kb": "8515.6"
+   },
+   {
+    "autoload": "auto",
+    "kiek": "396",
+    "kb": "235.6"
+   },
+   {
+    "autoload": "on",
+    "kiek": "344",
+    "kb": "94.9"
+   },
+   {
+    "autoload": "no",
+    "kiek": "10",
+    "kb": "67.4"
+   },
+   {
+    "autoload": "yes",
+    "kiek": "2",
+    "kb": "0.0"
+   }
+  ],
+  "autoload_KB_viso": 330.5,
+  "autoload_irasu_viso": 742,
+  "autoload_top": [
+   {
+    "option_name": "petshop_zb_image_index",
+    "kb": "61.4"
+   },
+   {
+    "option_name": "rewrite_rules",
+    "kb": "28.4"
+   },
+   {
+    "option_name": "_transient_wp_core_block_css_files",
+    "kb": "21.7"
+   },
+   {
+    "option_name": "wcdn_template_settings",
+    "kb": "20.9"
+   },
+   {
+    "option_name": "jetpack_active_plan",
+    "kb": "17.4"
+   },
+   {
+    "option_name": "wh2_probe_result",
+    "kb": "17.0"
+   },
+   {
+    "option_name": "wh_probe_result",
+    "kb": "12.4"
+   },
+   {
+    "option_name": "gaj6_user_roles",
+    "kb": "9.9"
+   },
+   {
+    "option_name": "cron",
+    "kb": "9.8"
+   },
+   {
+    "option_name": "rank-math-options-titles",
+    "kb": "9.8"
+   },
+   {
+    "option_name": "_transient_wc_attribute_taxonomies",
+    "kb": "6.2"
+   },
+   {
+    "option_name": "mnm_p7_result",
+    "kb": "4.2"
+   }
+  ],
+  "transientu_pries": 1436,
+  "transientu_dydis_KB_pries": 1009.5,
+  "pasibaigusiu": 0,
+  "istrinta_poru": 0,
+  "transientu_po": 1436,
+  "transientu_dydis_KB_po": 1009.5,
+  "htaccess_dydis_pries": 1309,
+  "kopija": 1309,
+  "htaccess_dydis_po": 2068,
+  "loopback_frontas": 200,
+  "turto_http": 200,
+  "turto_cache_control": "public, max-age=31536000",
+  "turto_expires": "Thu, 19 Aug 2027 16:22:20 GMT"
+ },
+ "PO": {
+  "js": {
+   "http": 200,
+   "cc": "public, max-age=31536000",
+   "exp": "yra"
+  },
+  "css": {
+   "http": 200,
+   "cc": "public, max-age=31536000",
+   "exp": "yra"
+  }
+ },
+ "frontas": 200,
+ "wp_admin": 302
+}
