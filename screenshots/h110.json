@@ -1,0 +1,83 @@
+{
+ "versija": "H110",
+ "PRIES": {
+  "cart": {
+   "http": 200,
+   "loc": null
+  },
+  "checkout": {
+   "http": 302,
+   "loc": "/cart/"
+  },
+  "krepselis": {
+   "http": 404,
+   "loc": null
+  },
+  "kasa": {
+   "http": 404,
+   "loc": null
+  }
+ },
+ "D": {
+  "v": "H110",
+  "kopija": 204,
+  "slug": {
+   "12": {
+    "buvo": "cart",
+    "dabar": "krepselis",
+    "url": "https://dev.avesa.lt/krepselis/",
+    "old_slug_meta": []
+   },
+   "13": {
+    "buvo": "checkout",
+    "dabar": "kasa",
+    "url": "https://dev.avesa.lt/kasa/",
+    "old_slug_meta": []
+   }
+  },
+  "terms": {
+   "id": 34524,
+   "title": "Pirkimo sąlygos ir taisyklės",
+   "url": "https://dev.avesa.lt/taisykles/",
+   "irasyta": 34524
+  },
+  "rewrite_flush": "ok",
+  "po": {
+   "cart": {
+    "id": 12,
+    "slug": "krepselis",
+    "url": "https://dev.avesa.lt/krepselis/"
+   },
+   "checkout": {
+    "id": 13,
+    "slug": "kasa",
+    "url": "https://dev.avesa.lt/kasa/"
+   }
+  },
+  "wc_funkcijos": {
+   "cart_url": "https://dev.avesa.lt/krepselis/",
+   "checkout_url": "https://dev.avesa.lt/kasa/"
+  }
+ },
+ "PO": {
+  "krepselis": {
+   "http": 200,
+   "loc": null
+  },
+  "kasa": {
+   "http": 302,
+   "loc": "/krepselis/"
+  },
+  "cart_senas": {
+   "http": 404,
+   "loc": null
+  },
+  "checkout_senas": {
+   "http": 404,
+   "loc": null
+  }
+ },
+ "frontas": 200,
+ "krepselio_h1": "?",
+ "krepselio_title": "Krepšelis - Petshop.lt"
+}
