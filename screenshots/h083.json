@@ -1,0 +1,65 @@
+{
+ "versija": "H083",
+ "rest_pries": {
+  "statusas": 200,
+  "kiek": 1746
+ },
+ "temp_isjungta": 0,
+ "snip": 3537,
+ "A_diegimas": {
+  "v": "H083",
+  "faze": "A",
+  "dydis": 6235,
+  "md5_laukiamas": "726867acabaa1067ad8d6ae19e0c9983",
+  "sintakse": "OK",
+  "irasyta_baitu": 6235,
+  "md5_diske": "726867acabaa1067ad8d6ae19e0c9983",
+  "loopback": 200
+ },
+ "frontas_be_veliavos": {
+  "http": 200,
+  "retry": null
+ },
+ "B_veliava": {
+  "v": "H083",
+  "faze": "B",
+  "veliava_yra": true
+ },
+ "SU_VELIAVA": {
+  "frontas": {
+   "http": 503,
+   "retry": "1800"
+  },
+  "prekе": {
+   "http": 503,
+   "retry": "1800"
+  },
+  "wc_api": {
+   "http": 400,
+   "retry": null
+  },
+  "wp_admin": {
+   "http": 302,
+   "retry": null
+  },
+  "wp_login": {
+   "http": 200,
+   "retry": null
+  },
+  "REST_TILTAS": {
+   "statusas": 200,
+   "kiek": 1747
+  }
+ },
+ "C_valymas": {
+  "v": "H083",
+  "faze": "C",
+  "veliava_yra": false,
+  "valyta": 1
+ },
+ "frontas_po_valymo": {
+  "http": 200,
+  "retry": null
+ },
+ "temp_liko_aktyviu": 0
+}
