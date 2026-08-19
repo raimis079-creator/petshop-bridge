@@ -1,0 +1,91 @@
+{
+ "versija": "H092",
+ "sitemap_failai": [
+  "/page-sitemap.xml",
+  "/product-sitemap1.xml",
+  "/product-sitemap2.xml",
+  "/product-sitemap3.xml",
+  "/product-sitemap4.xml",
+  "/product-sitemap5.xml",
+  "/product-sitemap6.xml",
+  "/product-sitemap7.xml",
+  "/product-sitemap8.xml",
+  "/product-sitemap9.xml",
+  "/product-sitemap10.xml",
+  "/product-sitemap11.xml",
+  "/product-sitemap12.xml",
+  "/product-sitemap13.xml",
+  "/product-sitemap14.xml",
+  "/category-sitemap.xml",
+  "/product_brand-sitemap.xml",
+  "/product_cat-sitemap.xml"
+ ],
+ "PRADINIS": {
+  "url": "/",
+  "http": 200,
+  "blokai": 1,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "ImageObject",
+   "WebPage",
+   "Person",
+   "Article"
+  ],
+  "breadcrumb_elementai": null,
+  "breadcrumb_html": "nera",
+  "canonical": "NERA",
+  "og_image": "https://dev.avesa.lt/wp-content/uploads/2026/08/petshop-og-image-1200x630-1.png"
+ },
+ "PREKE": {
+  "url": "/product/kramtalu-deze-suniui/",
+  "http": 200,
+  "blokai": 1,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "ImageObject",
+   "ItemPage",
+   "Product"
+  ],
+  "breadcrumb_elementai": null,
+  "breadcrumb_html": "yra",
+  "canonical": "NERA",
+  "og_image": "https://dev.avesa.lt/wp-content/uploads/2026/08/petshop-og-image-1200x630-1.png"
+ },
+ "KATEGORIJA": {
+  "url": "/kategorija/sunims/",
+  "http": 200,
+  "blokai": 2,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "CollectionPage",
+   "BreadcrumbList"
+  ],
+  "breadcrumb_elementai": [
+   "Pradžia",
+   "ŠUNIMS"
+  ],
+  "breadcrumb_html": "yra",
+  "canonical": "NERA",
+  "og_image": "https://dev.avesa.lt/wp-content/uploads/2026/08/petshop-og-image-1200x630-1.png"
+ },
+ "PUSLAPIS": {
+  "url": "/paskyra/",
+  "http": 200,
+  "blokai": 1,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "ImageObject",
+   "WebPage",
+   "Person",
+   "Article"
+  ],
+  "breadcrumb_elementai": null,
+  "breadcrumb_html": "nera",
+  "canonical": "NERA",
+  "og_image": "https://dev.avesa.lt/wp-content/uploads/2026/08/petshop-og-image-1200x630-1.png"
+ }
+}
