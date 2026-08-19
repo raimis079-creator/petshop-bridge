@@ -1,0 +1,126 @@
+{
+ "versija": "H121",
+ "D": {
+  "v": "H121",
+  "rezimas": "TIK SKAITYMAS",
+  "wc_versija": "11.0.1",
+  "hpos": "ijungtas",
+  "vietos": {
+   "src/Checkout/Helpers/ReserveStock.php": [
+    "88: $minutes = (int) apply_filters( 'woocommerce_order_hold_stock_minutes', $minutes, $order );"
+   ],
+   "uninstall.php": [
+    "19: wp_clear_scheduled_hook( 'woocommerce_cancel_unpaid_orders' );",
+    "32: as_unschedule_all_actions( 'woocommerce_cancel_unpaid_orders' );"
+   ],
+   "includes/class-wc-install.php": [
+    "1107: wp_clear_scheduled_hook( 'woocommerce_cancel_unpaid_orders' );"
+   ],
+   "includes/data-stores/class-wc-coupon-data-store-cpt.php": [
+    "519: * It will use `woocommerce_coupon_hold_minutes` filter to get the value, defaulting to `woocommerce_hold_stock_minutes` option if set, with a 1-minute minimum if set to 0.",
+    "525: $default_hold_time_minutes = (int) get_option( 'woocommerce_hold_stock_minutes', 1 );",
+    "528: // Held time is at least 1 minute if `woocommerce_hold_stock_minutes` is set to 0."
+   ],
+   "includes/admin/settings/class-wc-settings-products.php": [
+    "264: 'id'                => 'woocommerce_hold_stock_minutes',"
+   ],
+   "includes/class-woocommerce.php": [
+    "1711: $held_duration = get_option( 'woocommerce_hold_stock_minutes', '60' );",
+    "1713: if ( '' !== $held_duration ) {",
+    "1719: $cancel_unpaid_interval = apply_filters( 'woocommerce_cancel_unpaid_orders_interval_minutes', absint( $held_duration ) );",
+    "1721: as_schedule_single_action( time() + ( absint( $cancel_unpaid_interval ) * 60 ), 'woocommerce_cancel_unpaid_orders', array(), 'woocommerce', true );"
+   ],
+   "includes/wc-order-functions.php": [
+    "1079: function wc_cancel_unpaid_orders() {",
+    "1080: $held_duration = get_option( 'woocommerce_hold_stock_minutes', '60' );",
+    "1084: as_unschedule_all_actions( 'woocommerce_cancel_unpaid_orders' );",
+    "1087: wp_clear_scheduled_hook( 'woocommerce_cancel_unpaid_orders' );",
+    "1090: if ( $held_duration < 1 || 'yes' !== get_option( 'woocommerce_manage_stock' ) ) {",
+    "1099: * @param int $cancel_unpaid_interval The interval at which to cancel unpaid orders in minutes.",
+    "1101: $cancel_unpaid_interval = apply_filters( 'woocommerce_cancel_unpaid_orders_interval_minutes', absint( $held_duration ) );",
+    "1104: if ( $cancel_unpaid_interval < 1 ) {",
+    "1110: as_schedule_single_action( time() + ( absint( $cancel_unpaid_interval ) * 60 ), 'woocommerce_cancel_unpaid_orders', array(), 'woocommerce', false );",
+    "1112: wp_schedule_single_event( time() + ( absint( $cancel_unpaid_interval ) * 60 ), 'woocommerce_cancel_unpaid_orders' );",
+    "1116: $unpaid_orders = $data_store->get_unpaid_orders( strtotime( '-' . absint( $held_duration ) . ' MINUTES', current_time( 'timestamp' ) ) );",
+    "1141: if ( apply_filters( 'woocommerce_cancel_unpaid_order', in_array( $order->get_created_via(), array( 'checkout', 'store-api' ), true ), $order ) ) {",
+    "1147: add_action( 'woocommerce_cancel_unpaid_orders', 'wc_cancel_unpaid_orders' );"
+   ],
+   "includes/wc-stock-functions.php": [
+    "462: $reserve_stock->reserve_stock_for_order( $order, (int) get_option( 'woocommerce_hold_stock_minutes', 60 ) );"
+   ],
+   "includes/wc-formatting-functions.php": [
+    "1241: function wc_format_option_hold_stock_minutes( $value, $option, $raw_value ) {",
+    "1246: as_unschedule_all_actions( 'woocommerce_cancel_unpaid_orders' );",
+    "1248: wp_clear_scheduled_hook( 'woocommerce_cancel_unpaid_orders' );",
+    "1257: * @param int $cancel_unpaid_interval The interval at which to cancel unpaid orders in minutes.",
+    "1259: $cancel_unpaid_interval = apply_filters( 'woocommerce_cancel_unpaid_orders_interval_minutes', absint( $value ) );",
+    "1262: as_schedule_single_action( time() + ( absint( $cancel_unpaid_interval ) * 60 ), 'woocommerce_cancel_unpaid_orders', array(), 'woocommerce', true );",
+    "1264: wp_schedule_single_event( time() + ( absint( $cancel_unpaid_interval ) * 60 ), 'woocommerce_cancel_unpaid_orders' );",
+    "1270: add_filter( 'woocommerce_admin_settings_sanitize_option_woocommerce_hold_stock_minutes', 'wc_format_option_hold_stock_minutes', 10, 3 );"
+   ],
+   "includes/wc-deprecated-functions.php": [
+    "720: function woocommerce_cancel_unpaid_orders() {",
+    "721: wc_deprecated_function( __FUNCTION__, '3.0', 'wc_cancel_unpaid_orders' );",
+    "722: wc_cancel_unpaid_orders();"
+   ]
+  },
+  "funkcija": [
+   "1079: function wc_cancel_unpaid_orders() {",
+   "1080: \t$held_duration = get_option( 'woocommerce_hold_stock_minutes', '60' );",
+   "1081: ",
+   "1082: \t// Clear existing scheduled events (both Action Scheduler and WP-Cron).",
+   "1083: \tif ( function_exists( 'as_unschedule_all_actions' ) ) {",
+   "1084: \t\tas_unschedule_all_actions( 'woocommerce_cancel_unpaid_orders' );",
+   "1085: \t}",
+   "1086: \t// Always clear WP-Cron events as well in case they exist.",
+   "1087: \twp_clear_scheduled_hook( 'woocommerce_cancel_unpaid_orders' );",
+   "1088: ",
+   "1089: \t// Check if we should reschedule. Don't reschedule if stock management is disabled or hold duration is not set.",
+   "1090: \tif ( $held_duration < 1 || 'yes' !== get_option( 'woocommerce_manage_stock' ) ) {",
+   "1091: \t\treturn;",
+   "1092: \t}",
+   "1093: ",
+   "1094: \t/**",
+   "1095: \t * Filters the interval at which to cancel unpaid orders in minutes.",
+   "1096: \t *",
+   "1097: \t * @since 5.1.0",
+   "1098: \t *",
+   "1099: \t * @param int $cancel_unpaid_interval The interval at which to cancel unpaid orders in minutes.",
+   "1100: \t */",
+   "1101: \t$cancel_unpaid_interval = apply_filters( 'woocommerce_cancel_unpaid_orders_interval_minutes', absint( $held_duration ) );",
+   "1102: ",
+   "1103: \t// Don't reschedule if the interval is 0 to prevent endless loops.",
+   "1104: \tif ( $cancel_unpaid_interval < 1 ) {",
+   "1105: \t\treturn;",
+   "1106: \t}",
+   "1107: ",
+   "1108: \t// Schedule the next event using Action Scheduler if available, otherwise fall back to WordPress cron.",
+   "1109: \tif ( function_exists( 'as_schedule_single_action' ) ) {",
+   "1110: \t\tas_schedule_single_action( time() + ( absint( $cancel_unpaid_interval ) * 60 ), 'woocommerce_cancel_unpaid_orders', array(), 'woocommerce', false );",
+   "1111: \t} else {",
+   "1112: \t\twp_schedule_single_event( time() + ( absint( $cancel_unpaid_interval ) * 60 ), 'woocommerce_cancel_unpaid_orders' );",
+   "1113: \t}",
+   "1114: ",
+   "1115: \t$data_store    = WC_Data_Store::load( 'order' );",
+   "1116: \t$unpaid_orders = $data_store->get_unpaid_orders( strtotime( '-' . absint( $held_duration ) . ' MINUTES', current_time( 'timestamp' ) ) );",
+   "1117: ",
+   "1118: \tif ( $unpaid_orders ) {",
+   "1119: \t\tforeach ( $unpaid_orders as $unpaid_order ) {",
+   "1120: \t\t\t$order = wc_get_order( $unpaid_order );",
+   "1121: ",
+   "1122: \t\t\tif ( ! $order instanceof WC_Order ) {",
+   "1123: \t\t\t\tcontinue;",
+   "1124: \t\t\t}",
+   "1125: ",
+   "1126: \t\t\t/**",
+   "1127: \t\t\t * Filters whether an unpaid order should be automatically cancelled.",
+   "1128: \t\t\t *",
+   "1129: \t\t\t * By default, only orders created via customer-facing checkout (classic checkout",
+   "1130: \t\t\t * or checkout block) are automatically cancelled. Orders created through other",
+   "1131: \t\t\t * means (admin, REST API, plugins) are not cancelled.",
+   "1132: \t\t\t *",
+   "1133: \t\t\t * @since 2.0.3"
+  ],
+  "cron": "nerasta cancel/unpaid cron"
+ }
+}
