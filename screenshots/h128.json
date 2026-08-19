@@ -1,0 +1,230 @@
+{
+ "versija": "H128",
+ "D": {
+  "v": "H128",
+  "rezimas": "TIK SKAITYMAS",
+  "uzduotis": [
+   {
+    "status": "canceled",
+    "kiek": "1",
+    "pirmas": "2026-08-19 20:52:04",
+    "paskutinis": "2026-08-19 20:52:04"
+   },
+   {
+    "status": "complete",
+    "kiek": "751",
+    "pirmas": "2026-07-19 02:26:03",
+    "paskutinis": "2026-08-19 19:52:03"
+   },
+   {
+    "status": "pending",
+    "kiek": "1",
+    "pirmas": "2026-08-19 22:03:21",
+    "paskutinis": "2026-08-19 22:03:21"
+   }
+  ],
+  "uzduotis_paskutines": [
+   {
+    "action_id": "134877",
+    "status": "pending",
+    "scheduled_date_gmt": "2026-08-19 22:03:21",
+    "last_attempt_gmt": "0000-00-00 00:00:00"
+   },
+   {
+    "action_id": "134810",
+    "status": "canceled",
+    "scheduled_date_gmt": "2026-08-19 20:52:04",
+    "last_attempt_gmt": "0000-00-00 00:00:00"
+   },
+   {
+    "action_id": "134757",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-08-19 19:52:03",
+    "last_attempt_gmt": "2026-08-19 19:52:04"
+   },
+   {
+    "action_id": "134671",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-08-19 18:52:03",
+    "last_attempt_gmt": "2026-08-19 18:52:03"
+   },
+   {
+    "action_id": "134579",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-08-19 17:52:03",
+    "last_attempt_gmt": "2026-08-19 17:52:03"
+   },
+   {
+    "action_id": "134519",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-08-19 16:52:03",
+    "last_attempt_gmt": "2026-08-19 16:52:03"
+   }
+  ],
+  "atsaukti": [
+   {
+    "nr": "35003",
+    "budas": "paysera",
+    "sukurta": "2026-08-19 12:11:46",
+    "atnaujinta": "2026-08-19 13:50:05",
+    "pastabos": [
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Ne",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Paysera: Neapmokėto užsakymo būsena"
+    ]
+   },
+   {
+    "nr": "34885",
+    "budas": "",
+    "sukurta": "2026-08-05 13:32:31",
+    "atnaujinta": "2026-08-05 13:32:32",
+    "pastabos": [
+     "Email \"Atšauktas užsakymas\" sent.",
+     "S507 demo Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas."
+    ]
+   },
+   {
+    "nr": "34645",
+    "budas": "bacs",
+    "sukurta": "2026-07-14 14:32:41",
+    "atnaujinta": "2026-08-05 17:30:07",
+    "pastabos": [
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Atšaukta darbalaukyje. Vartotojas: Rai. Laiškas klientui: NESIŲSTAS."
+    ]
+   }
+  ],
+  "rezervuota_stulpeliai": [
+   "order_id",
+   "product_id",
+   "stock_quantity",
+   "timestamp",
+   "expires"
+  ],
+  "rezervuota_dabar": [
+   {
+    "order_id": "34594",
+    "product_id": "15484",
+    "stock_quantity": "1",
+    "timestamp": "2026-07-10 16:59:06",
+    "expires": "2026-07-10 17:59:06"
+   }
+  ],
+  "rezervuota_kiek": 1,
+  "reserve_stock": [
+   "73: public function reserve_stock_for_order( $order, $minutes = 60 ) {",
+   "74: if ( ! $this->is_enabled() ) {",
+   "75: return;",
+   "76: }",
+   "77: ",
+   "78: /**",
+   "79: * Filters the number of minutes an order should reserve stock for.",
+   "80: *",
+   "81: * This hook allows the number of minutes that stock in an order should be reserved for to be filtered, useful for third party developers to increase/reduce t",
+   "82: *",
+   "83: * @since 8.8.0",
+   "84: *",
+   "85: * @param int       $minutes How long to reserve stock for the order in minutes.",
+   "86: * @param \\WC_Order $order Order object.",
+   "87: */",
+   "88: $minutes = (int) apply_filters( 'woocommerce_order_hold_stock_minutes', $minutes, $order );",
+   "89: if ( ! $minutes ) {",
+   "90: return;",
+   "91: }",
+   "92: ",
+   "93: $held_stock_notes = array();",
+   "94: try {",
+   "95: $rows = array();",
+   "96: ",
+   "97: foreach ( $order->get_items() as $item ) {",
+   "98: $is_target_item = $item->is_type( OrderItemType::LINE_ITEM ) && $item->get_quantity() > 0;",
+   "99: if ( ! $is_target_item ) {",
+   "100: continue;",
+   "101: }",
+   "102: ",
+   "103: /** @var \\WC_Order_Item_Product $item */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort",
+   "104: $product = $item->get_product();",
+   "105: if ( ! $product instanceof \\WC_Product ) {",
+   "106: continue;",
+   "107: }",
+   "108: ",
+   "109: if ( ! $product->is_in_stock() ) {",
+   "110: throw new ReserveStockException(",
+   "111: 'woocommerce_product_out_of_stock',",
+   "112: sprintf(",
+   "113: /* translators: %s: product name */",
+   "114: __( '&quot;%s&quot; is out of stock and cannot be purchased.', 'woocommerce' ),",
+   "115: $product->get_name()",
+   "116: ),",
+   "117: 403",
+   "118: );",
+   "119: }",
+   "120: ",
+   "121: // If stock management is off, no need to reserve any stock here.",
+   "122: if ( ! $product->managing_stock() || $product->backorders_allowed() ) {",
+   "123: continue;",
+   "124: }",
+   "125: ",
+   "126: $managed_by_id = $product->get_stock_managed_by_id();",
+   "127: ",
+   "128: /**",
+   "129: * Filter order item quantity.",
+   "130: *",
+   "131: * @since 4.5.0",
+   "132: * @param int|float              $quantity Quantity.",
+   "133: * @param \\WC_Order              $order    Order data.",
+   "134: * @param \\WC_Order_Item_Product $item     Order item data.",
+   "135: */",
+   "136: $item_quantity = apply_filters( 'woocommerce_order_item_quantity', $item->get_quantity(), $order, $item );",
+   "137: ",
+   "138: $rows[ $managed_by_id ] = $item_quantity + ( $rows[ $managed_by_id ] ?? 0 );",
+   "139: ",
+   "140: if ( count( $held_stock_notes ) < 5 ) {",
+   "141: // translators: %1$s is a product's formatted name, %2$d: is the quantity of said product to which the stock hold applied.",
+   "142: $held_stock_notes[] = sprintf( _x( '- %1$s &times; %2$d', 'held stock note', 'woocommerce' ), $product->get_formatted_name(), $rows[ $managed_by_id ] );",
+   "143: }",
+   "144: }",
+   "145: ",
+   "146: if ( ! empty( $rows ) ) {",
+   "147: // Reliability: consistent lock order = no cross-product ordering deadlocks from concurrent orders with same products added in different sequences.",
+   "148: ksort( $rows );",
+   "149: foreach ( $rows as $product_id => $quantity ) {",
+   "150: $this->reserve_stock_for_product( $product_id, $quantity, $order, $minutes );",
+   "151: }",
+   "152: }",
+   "153: } catch ( ReserveStockException $e ) {",
+   "154: $this->release_stock_for_order( $order );",
+   "155: throw $e;",
+   "156: }",
+   "157: ",
+   "158: // Add order note after successfully holding the stock.",
+   "159: if ( ! empty( $held_stock_notes ) ) {",
+   "160: $remaining_count = count( $rows ) - count( $held_stock_notes );",
+   "161: if ( $remaining_count > 0 ) {",
+   "162: $held_stock_notes[] = sprintf(",
+   "163: // translators: %d is the remaining order items count.",
+   "164: _nx( '- ...and %d more item.', '- ... and %d more items.', $remaining_count, 'held stock note', 'woocommerce' ),",
+   "165: $remaining_count",
+   "166: );",
+   "167: }",
+   "168: ",
+   "169: $order->add_order_note(",
+   "170: sprintf(",
+   "171: // translators: %1$s is a time in minutes, %2$s is a list of products and quantities.",
+   "172: _x( 'Stock hold of %1$s minutes applied to: %2$s', 'held stock note', 'woocommerce' ),",
+   "173: $minutes,",
+   "174: '<br>' . implode( '<br>', $held_stock_notes )",
+   "175: ),",
+   "176: false,",
+   "177: false,",
+   "178: array(",
+   "179: 'note_group' => OrderNoteGroup::PRODUCT_STOCK,",
+   "180: )",
+   "181: );",
+   "182: }",
+   "183: }"
+  ],
+  "pending_dabar": []
+ }
+}
