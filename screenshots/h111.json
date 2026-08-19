@@ -1,0 +1,45 @@
+{
+ "versija": "H111",
+ "D": {
+  "v": "H111",
+  "meta": {
+   "12": "pridėta: cart",
+   "13": "pridėta: checkout"
+  },
+  "patikra": {
+   "12": [
+    "cart"
+   ],
+   "13": [
+    "checkout"
+   ]
+  }
+ },
+ "PATIKRA": {
+  "cart_senas": {
+   "http": 404,
+   "loc": null
+  },
+  "checkout_senas": {
+   "http": 404,
+   "loc": null
+  },
+  "krepselis": {
+   "http": 200,
+   "loc": null
+  },
+  "kasa": {
+   "http": 302,
+   "loc": "/krepselis/"
+  },
+  "paskyra": {
+   "http": 200,
+   "loc": null
+  },
+  "parduotuve": {
+   "http": 200,
+   "loc": null
+  }
+ },
+ "frontas": 200
+}
