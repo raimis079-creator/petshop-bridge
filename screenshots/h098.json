@@ -1,0 +1,120 @@
+{
+ "versija": "H098",
+ "D": {
+  "v": "H098",
+  "rezimas": "APPLY",
+  "rasta": 308,
+  "kopija": 37168,
+  "pataisyta": 308,
+  "klaidu": 0,
+  "praleista": 0,
+  "liko_su_esybemis": 0,
+  "pavyzdziai_po": [
+   "Eukanuba Mini & Medium Adult (ėriena ir ryžiai) 2,5kg",
+   "Monge Dry Dog Puppy&Junior GRAIN FREE Duck & potatoes 2,5kg",
+   "Gemon BFB - Dry Dog Puppy & Junior Chicken 31/16 20 kg",
+   "Real Dog SP Puppy All Breeds Lamb, Pork & Buffalo with Brown Rice 12 kg"
+  ],
+  "feed_klases": [
+   "Petshop_Feeding_Calculator",
+   "Petshop_Feeding_Repository",
+   "Petshop_Feeding_Package_Resolver",
+   "Petshop_Feeding_Package_Provider",
+   "Petshop_Feeding_Service",
+   "Petshop_Mixed_Feeding_Estimator",
+   "Petshop_Feeding_UI",
+   "Petshop_Refill_Feedback"
+  ],
+  "feed_metodai": {
+   "Petshop_Feeding_Calculator": [
+    "static calculate($in)",
+    "static finish($method, $tier, $portion, $in, $notes)",
+    "static required_condition_dimensions($rows)",
+    "static conditions_match($row_cond, $user_cond)",
+    "static weight_in($w, $from, $to)",
+    "static lerp($a, $b, $t)",
+    "static num($v)",
+    "static out($status, $method, $tier, $portion, $dur, $epd, $epm, $notes)"
+   ],
+   "Petshop_Feeding_Repository": [
+    "__construct($wpdb=?)",
+    "get_for_product($product_id)",
+    "classify_support($t)"
+   ],
+   "Petshop_Feeding_Package_Resolver": [
+    "static resolve($raw)",
+    "static g($n, $u)",
+    "static out($status, $g, $src, $method)"
+   ],
+   "Petshop_Feeding_Package_Provider": [
+    "static for_product($product_id)"
+   ],
+   "Petshop_Feeding_Service": [
+    "static evaluate($in)",
+    "static apply_axis_defaults($rt, $in)",
+    "static needs_input_age()",
+    "static calc_enabled()",
+    "static calc($in)",
+    "static table_weight_range($rows)",
+    "static kg($v)",
+    "static calc_one($rows, $axis_flat, $wb, $w, $conds)",
+    "static raw_at_weight($rows, $axis_flat, $wb, $w, $cat_axis, $act_sel, $act_opts)",
+    "static raw_over_interval($rows, $axis_flat, $wb, $iv, $cat_axis, $act_sel, $act_opts)",
+    "static activity_options($rows, $axis)",
+    "static act_label($c)",
+    "static interval_options($rows)",
+    "static iv($lo, $hi)",
+    "static price_ctx($product)",
+    "static money($v)",
+    "static lt($v)",
+    "static basis_label($basis, $activity_mode, $too_wide)",
+    "static msg($status, $reason)",
+    "static shell($status, $avail, $reason, $message_lt)",
+    "static unavailable($reason, $message_lt)"
+   ],
+   "Petshop_Mixed_Feeding_Estimator": [
+    "static enabled()",
+    "static estimate($species, $feeding_type, $wet_g, $norm_min_g, $norm_max_g, $pkg_g=?, $price=?)",
+    "static money($v)"
+   ],
+   "Petshop_Feeding_UI": [
+    "static init()",
+    "static render_pet_feeding()",
+    "static shortcode_feeding()",
+    "static feeding_demo_enabled()",
+    "static build_pet_feeding_html()",
+    "static register_routes()",
+    "static get_owned_pet($pet_id)",
+    "static species_matches_product($species, $product_id)",
+    "static handle_calculate($request)"
+   ],
+   "Petshop_Refill_Feedback": [
+    "static maybe_upgrade()",
+    "static submit($refill_id, $pet_id, $product_id, $feedback, $source=?, $cycle=?)",
+    "static cycle_key($row)",
+    "static link($refill_id, $cycle=?)",
+    "static init()",
+    "static add_rewrite()",
+    "static prepare_context($context, $flow, $row)",
+    "static handle()",
+    "static label($v)",
+    "static home()",
+    "static page($title, $html)"
+   ]
+  },
+  "feed_cron": {
+   "petshop_vf_sync_stock_hourly": "2026-08-19 17:59",
+   "petshop_attr_engine_run": "2026-08-19 22:57",
+   "ps_feeds_naktinis": "2026-08-20 01:30",
+   "petshop_vf_sync_reprice_daily": "2026-08-20 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-20 04:00",
+   "petshop_pragma_monthly_export": "2026-09-05 08:00"
+  }
+ },
+ "frontas": 200,
+ "PREKE": {
+  "http": 200,
+  "title": "FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Lamb ADULT MED&amp;MAX 10 kg - Petshop.lt",
+  "h1": "FARMINA N&#038;D TROPICAL SELECTION &#8211; DOG Dry Lamb ADULT MED&#038;MAX 10 kg"
+ }
+}
