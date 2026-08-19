@@ -1,0 +1,22 @@
+{
+ "versija": "H116",
+ "D": {
+  "v": "H116",
+  "kabliukai": [
+   "329: add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_zb_create', 10, 3 );",
+   "448: add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_zb_cheap_update', 11, 4 );",
+   "498: add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_vf_create', 10, 3 );"
+  ],
+  "wpai_kabliukai": [
+   "329: add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_zb_create', 10, 3 );",
+   "448: add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_zb_cheap_update', 11, 4 );",
+   "498: add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_vf_create', 10, 3 );",
+   "595: add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_legacy_update', 9, 4 );",
+   "625: add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_junk_update', 10, 4 );",
+   "663: add_action( 'pmxi_saved_post', 'petshop_xml_after_import', 10, 3 );",
+   "810: if ( function_exists( 'wp_all_import_get_import_id' ) ) {",
+   "816: $pmxi_posts = $wpdb->prefix . 'pmxi_posts';",
+   "1281: add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_vf_trash_update', 10, 4 );"
+  ]
+ }
+}
