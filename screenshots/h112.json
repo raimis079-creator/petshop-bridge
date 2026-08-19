@@ -1,0 +1,194 @@
+{
+ "versija": "H112",
+ "D": {
+  "v": "H112",
+  "dod03": {
+   "viso_irasu": 24,
+   "is_musu_snippetu": 12,
+   "PRODUKCINIU": 12,
+   "produkciniai_pagal_lygi": [
+    {
+     "lygis": "deprecated",
+     "kiek": "7",
+     "parasu": "6"
+    },
+    {
+     "lygis": "warning",
+     "kiek": "4",
+     "parasu": "4"
+    },
+    {
+     "lygis": "fatal",
+     "kiek": "1",
+     "parasu": "1"
+    }
+   ],
+   "produkciniai_sarasas": [
+    {
+     "lygis": "fatal",
+     "zinute": "Allowed memory size of 268435456 bytes exhausted (tried to allocate 4096 bytes)",
+     "failas": "/wp-includes/meta.php",
+     "eilute": "1225",
+     "url": "/feed/kaina24/",
+     "kiek": "3",
+     "laikas": "2026-08-17 23:12:22"
+    },
+    {
+     "lygis": "warning",
+     "zinute": "Array to string conversion",
+     "failas": "/wp-content/plugins/petshop-xml/petshop-xml.php",
+     "eilute": "343",
+     "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
+     "kiek": "27",
+     "laikas": "2026-08-19 18:01:29"
+    },
+    {
+     "lygis": "warning",
+     "zinute": "Array to string conversion",
+     "failas": "/wp-content/plugins/petshop-xml/petshop-xml.php",
+     "eilute": "344",
+     "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
+     "kiek": "27",
+     "laikas": "2026-08-19 18:01:29"
+    },
+    {
+     "lygis": "warning",
+     "zinute": "Array to string conversion",
+     "failas": "/wp-content/plugins/petshop-xml/petshop-xml.php",
+     "eilute": "513",
+     "url": "/wp-load.php?import_key=v&import_id=5&action=processing",
+     "kiek": "7",
+     "laikas": "2026-08-19 06:32:05"
+    },
+    {
+     "lygis": "warning",
+     "zinute": "Array to string conversion",
+     "failas": "/wp-content/plugins/petshop-xml/petshop-xml.php",
+     "eilute": "515",
+     "url": "/wp-load.php?import_key=v&import_id=5&action=processing",
+     "kiek": "2",
+     "laikas": "2026-08-19 06:32:06"
+    },
+    {
+     "lygis": "deprecated",
+     "zinute": "Creation of dynamic property postitPublic::$plugin_dir_url is deprecated",
+     "failas": "/wp-content/plugins/postit/includes/postit-base.php",
+     "eilute": "24",
+     "url": "/?ps_sd=TESTAS",
+     "kiek": "8266",
+     "laikas": "2026-08-19 21:54:09"
+    },
+    {
+     "lygis": "deprecated",
+     "zinute": "Creation of dynamic property postitAdmin::$plugin_dir_url is deprecated",
+     "failas": "/wp-content/plugins/postit/includes/postit-base.php",
+     "eilute": "24",
+     "url": "/wp-admin/admin.php?page=ps-katalogas",
+     "kiek": "2824",
+     "laikas": "2026-08-19 21:44:29"
+    },
+    {
+     "lygis": "deprecated",
+     "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+     "failas": "/wp-includes/functions.php",
+     "eilute": "7374",
+     "url": "/wp-admin/post.php?post=17978&action=edit",
+     "kiek": "384",
+     "laikas": "2026-08-19 21:41:07"
+    },
+    {
+     "lygis": "deprecated",
+     "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+     "failas": "/wp-includes/functions.php",
+     "eilute": "2196",
+     "url": "/wp-admin/post.php?post=17978&action=edit",
+     "kiek": "384",
+     "laikas": "2026-08-19 21:41:07"
+    },
+    {
+     "lygis": "deprecated",
+     "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+     "failas": "/wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-meta-box.php",
+     "eilute": "119",
+     "url": "/wp-admin/post.php?post=17978&action=edit",
+     "kiek": "5",
+     "laikas": "2026-08-18 14:34:06"
+    },
+    {
+     "lygis": "deprecated",
+     "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+     "failas": "/wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-meta-box.php",
+     "eilute": "119",
+     "url": "/wp-admin/post.php?post=12&action=edit",
+     "kiek": "4",
+     "laikas": "2026-08-19 21:41:08"
+    },
+    {
+     "lygis": "deprecated",
+     "zinute": "preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+     "failas": "/wp-includes/kses.php",
+     "eilute": "2018",
+     "url": "/product/ps-testas-1-eur/",
+     "kiek": "3",
+     "laikas": "2026-08-19 15:08:51"
+    }
+   ]
+  },
+  "payment_failed_kode": {
+   "wp-content/mu-plugins/petshop-payment-failed.php": [
+    "6: * `payment_failed → dunning-1`, šablonas įdiegtas 2026-08-04, BET įvykio",
+    "28: add_action( 'woocommerce_order_status_failed', 'petshop_emit_payment_failed', 20, 1 );",
+    "37: petshop_emit_payment_failed( $order_id );",
+    "41: function petshop_emit_payment_failed( $order_id ) {",
+    "46: if ( $order->get_meta( '_ps_payment_failed_emitted' ) ) { return; }",
+    "71: $rez = Petshop_Event_Registry::emit( 'payment_failed', $email, $payload, array("
+   ],
+   "wp-content/plugins/petshop-core/templates/emails/dunning-1.php": [
+    "3: * Sablonas: payment_failed — apmokejimas neivyko (dunning, 1-as laiskas)."
+   ],
+   "wp-content/plugins/petshop-core/includes/class-email-dispatch.php": [
+    "52: 'payment_failed'          => array( 'class' => 'transactional', 'template' => 'dunning-1',         'delay' => 0 ),"
+   ],
+   "wp-content/plugins/petshop-core/includes/class-event-registry.php": [
+    "16: * subscription_t5_notice, subscription_t2_sms_needed, payment_failed,",
+    "39: 'payment_failed'              => false,  // dalinai"
+   ]
+  },
+  "payment_failed_snippetuose": [
+   {
+    "id": "753",
+    "name": "S188 Deploy tmp",
+    "active": "0"
+   },
+   {
+    "id": "3559",
+    "name": "TEMP H107 krepselis NF21 klaidos",
+    "active": "0"
+   },
+   {
+    "id": "3563",
+    "name": "TEMP H112 dod03 payment_failed",
+    "active": "1"
+   }
+  ],
+  "woo_failed_kabliukai": {
+   "woocommerce_order_status_failed": 2,
+   "woocommerce_payment_complete": 7,
+   "woocommerce_order_status_changed": 2
+  },
+  "ivykiu_stulpeliai": [
+   "id",
+   "product_id",
+   "laikas",
+   "tipas",
+   "laukas",
+   "sena",
+   "nauja",
+   "saltinis",
+   "kas",
+   "op_nr",
+   "pastaba"
+  ],
+  "ivykiu_irasu": 2306
+ }
+}
