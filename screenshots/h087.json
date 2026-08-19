@@ -1,0 +1,64 @@
+{
+ "versija": "H087",
+ "wp": "https://dev.avesa.lt",
+ "TLS": {
+  "griezta": "NEPRAEJO: UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+  "sertifikatas": {
+   "CN": "*.serveriai.lt",
+   "SAN": "DNS:*.serveriai.lt, DNS:serveriai.lt",
+   "nuo": "Apr  2 00:00:00 2026 GMT",
+   "iki": "Oct 17 23:59:59 2026 GMT",
+   "isdave": "PerfectSSL",
+   "patikima": false,
+   "priezastis": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+  }
+ },
+ "PILNAS_HTML_ms": {
+  "matavimai": [
+   1813,
+   1832,
+   1940,
+   2555,
+   2562
+  ],
+  "mediana": 1940,
+  "min": 1813,
+  "max": 2562
+ },
+ "HTML": {
+  "dydis_KB": 230,
+  "antrastes": {
+   "content-encoding": "gzip"
+  }
+ },
+ "RESURSAI": {
+  "css": 11,
+  "js": 19,
+  "img": 20,
+  "js_be_defer_async": 13,
+  "js_head_blokuojantys": 5
+ },
+ "SVORIS": {
+  "css": {
+   "tikrinta": 11,
+   "KB": 295,
+   "suspausta": 11,
+   "be_ilgo_cache": 0
+  },
+  "js": {
+   "tikrinta": 19,
+   "KB": 370,
+   "suspausta": 19,
+   "be_ilgo_cache": 18
+  },
+  "img": {
+   "tikrinta": 20,
+   "KB": 342,
+   "suspausta": 0,
+   "be_ilgo_cache": 5
+  }
+ },
+ "SERVERIS": {
+  "ZALIAS": "<br />\n<b>Fatal error</b>:  Uncaught TypeError: round(): Argument #1 ($num) must be of type int|float, string given in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:14\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(14): round()\n#1 /h"
+ }
+}
