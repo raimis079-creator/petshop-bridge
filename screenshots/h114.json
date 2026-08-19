@@ -1,0 +1,48 @@
+{
+ "versija": "H114",
+ "D": {
+  "v": "H114",
+  "rezimas": "TIK MATAVIMAS",
+  "saltiniai": {
+   "2": {
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+    "name": "products.php",
+    "root_element": "item"
+   },
+   "5": {
+    "path": "http://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+    "name": "petshop-xml-vf-fetcher.php",
+    "root_element": "data"
+   }
+  },
+  "rezultatai": {
+   "VF": {
+    "kiek_irasu": 2351,
+    "masyvu": [],
+    "pavyzdziai": [],
+    "saltinis": "vietinis failas (8 MB)",
+    "elemento_vardas": "row"
+   },
+   "ZB": {
+    "kiek_irasu": 1,
+    "masyvu": {
+     "name": 1,
+     "category": 1,
+     "brand": 1,
+     "price": 1,
+     "qty": 1
+    },
+    "pavyzdziai": [
+     "name x2622 |  01A1B01030 8710255120072 9.792 15.89 7 20,0000 20,0000 20,0000 1,0000 01A1B02031 8710255119786 9.792 15.89 13 ",
+     "category x2622 |  01A1B01030 8710255120072 9.792 15.89 7 20,0000 20,0000 20,0000 1,0000 01A1B02031 8710255119786 9.792 15.89 13 ",
+     "brand x2622 |  01A1B01030 8710255120072 9.792 15.89 7 20,0000 20,0000 20,0000 1,0000 01A1B02031 8710255119786 9.792 15.89 13 ",
+     "price x2622 |  01A1B01030 8710255120072 9.792 15.89 7 20,0000 20,0000 20,0000 1,0000 01A1B02031 8710255119786 9.792 15.89 13 ",
+     "qty x2622 |  01A1B01030 8710255120072 9.792 15.89 7 20,0000 20,0000 20,0000 1,0000 01A1B02031 8710255119786 9.792 15.89 13 "
+    ],
+    "saltinis": "parsiusta (5.3 MB)",
+    "elemento_vardas": "items"
+   }
+  }
+ },
+ "frontas": 200
+}
