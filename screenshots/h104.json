@@ -1,0 +1,72 @@
+{
+ "versija": "H104",
+ "DIEGIMAS": {
+  "v": "H104",
+  "faze": "A",
+  "sintakse": "OK",
+  "dydis": 5473,
+  "md5": "8624aee11a7929545d6c8fd71f7b01d6",
+  "loopback_frontas": 200,
+  "loopback_login": 200,
+  "ar_klase_yra": "ne"
+ },
+ "BANDYMAI": [
+  {
+   "nr": 1,
+   "http": 200,
+   "uzrakinta": "ne",
+   "klaida": "iprasta login klaida"
+  },
+  {
+   "nr": 2,
+   "http": 200,
+   "uzrakinta": "ne",
+   "klaida": "iprasta login klaida"
+  },
+  {
+   "nr": 3,
+   "http": 200,
+   "uzrakinta": "ne",
+   "klaida": "iprasta login klaida"
+  },
+  {
+   "nr": 4,
+   "http": 200,
+   "uzrakinta": "ne",
+   "klaida": "iprasta login klaida"
+  },
+  {
+   "nr": 5,
+   "http": 200,
+   "uzrakinta": "TAIP",
+   "klaida": "iprasta login klaida"
+  },
+  {
+   "nr": 6,
+   "http": 200,
+   "uzrakinta": "TAIP",
+   "klaida": "iprasta login klaida"
+  },
+  {
+   "nr": 7,
+   "klaida": "TypeError: fetch failed"
+  }
+ ],
+ "REST_PO_BLOKO": {
+  "statusas": 200,
+  "kiek": 1767
+ },
+ "frontas_po_bloko": 200,
+ "VALYMAS": {
+  "v": "H104",
+  "faze": "C",
+  "istrinta_skaitikliu_eiluciu": 2,
+  "mu_yra": true,
+  "mu_md5": "8624aee11a7929545d6c8fd71f7b01d6",
+  "isjungimo_veliava_yra": false
+ },
+ "bandymas_po_valymo": {
+  "nr": 99,
+  "klaida": "TypeError: fetch failed"
+ }
+}
