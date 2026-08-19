@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-19 naktis IV (nustatymų spragos: taisyklės + privatumas ✅ · adresai sulietuvinti · pavedimo taisyklė) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-19 naktis V (krepšelio atšaukimas ĮRODYTAS · bacs rekvizitai veikia · 7 klaidingi verdiktai ištaisyti) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -3564,6 +3564,166 @@ PAŠALINTI, kai priežastis nustatyta
 
 ---
 
+## 8cc. LAIŠKAI, PAVEDIMAI IR SEPTYNI KLAIDINGI VERDIKTAI — 2026-08-19 (naktis V) [S1143–S1155]
+
+### ⏰ RYTOJ (2026-08-20) — SĄRAŠAS
+
+```
+1. kiek pavadinimų su &amp; grįžo po nakties ZB importo   (šiandien: 0)
+2. tipu-zurnalas.json — Array-to-string šaknis
+3. petshop-tipu-zurnalas.php PAŠALINTI, kai priežastis aiški
+4. DOD-20 stabilumo serija užsidaro 2026-08-24
+5. SPRENDIMAS: ką daryti su petshop-nepamoketi.php (žr. žemiau)
+6. SPRENDIMAS: žymė „3+ paros" prie eilės „Neapmokėti"
+```
+
+---
+
+### ✅ KREPŠELIO ATŠAUKIMAS — ĮRODYTA, NE SPĖTA
+
+Savininko klausimas: *„o tikrai krepšelis neapmokėtas pasinaikins po 90 min?"*
+
+**Taip. Įrodymas — realus užsakymas:**
+
+```
+35003 · paysera
+sukurta   2026-08-19 12:11
+atšaukta  2026-08-19 13:50    (99 min)
+pastaba   „Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas."
+          „Email „Atšauktas užsakymas" sent."
+```
+
+Action Scheduler: **751 sėkmingas ciklas** nuo 2026-07-19, kas valandą.
+
+**Kodėl 99, o ne 90:** užduotis sukasi kas valandą, tad atšaukiama artimiausiu
+ciklu po ribos → realiai 90–150 min. Normalu.
+
+> ⚠️ `get_unpaid_orders_gmt` naudoja **`date_updated_gmt`**, ne sukūrimo datą.
+> Palietus neapmokėtą užsakymą, laikrodis prasideda iš naujo. WooCommerce
+> elgesys, ne mūsų.
+
+`wc_reserved_stock`: 1 užstrigęs įrašas iš 2026-07-10, galiojimas pasibaigęs —
+nekenkia, naujų nesikaupia.
+
+---
+
+### ❌ BANKINIS PAVEDIMAS — 3 PARŲ TAISYKLĖ NEVEIKIA IR NEVEIKS
+
+`OrdersTableDataStore::get_unpaid_orders_gmt()` eilutė 1208–1210:
+
+```sql
+AND status = %s        →  OrderInternalStatus::PENDING
+```
+
+**Atrenkamas TIK `pending`.** Bankinio pavedimo užsakymas iškart po kasos
+keliauja į **`on-hold`** („Awaiting BACS payment"), todėl į atranką nepatenka
+niekada. Realus patikrinimas: `get_unpaid_orders(90 min)` grąžino **0**.
+
+```
+petshop-nepamoketi.php v1.0.0   moka tik SULAIKYTI atšaukimą
+                                filtras jam NIEKADA nepasieks
+```
+
+**Vadinasi `on-hold` užsakymai kaupiasi neribotai**, o prekės juose lieka
+nurašytos. Tai ne gedimas — tiesiog WooCommerce jų neliečia.
+
+### 🔴 ATVIRAS SPRENDIMAS
+
+Savininko modelis (2026-08-19): **ne automatinis atšaukimas, o eilė su žyme.**
+
+```
+eilė „Neapmokėti" (JAU YRA darbalaukyje)
+   + žymė „bankinis pavedimas, laukia 3+ paras"     ← naujas
+   + mygtukas „Atšaukti"                             ← JAU YRA (§35.3)
+   + prekės grįžta į likutį                          ← JAU YRA
+   + vienas priminimas klientui per 48 val.          ← naujas, šablonas dunning-1 GULI PARUOŠTAS
+```
+
+**Savininko principas:** „aš paprastinu sistemą, o ne ją sunkinu ir užkraunu"
+— bet **kalbant apie darbą ateityje**, ne apie dabartinę apimtį. Automatika
+čia reiškia mažiau savininko veiksmų, ne daugiau kodo.
+
+`petshop-nepamoketi.php` likimas — **laukia sprendimo**: šalinti (negyvas
+kodas) ar palikti (jei kada `on-hold` atsidurtų atrankoje).
+
+---
+
+### ★ BACS REKVIZITAI VEIKIA — MANO VERDIKTAS BUVO KLAIDINGAS
+
+Buvau paskelbęs: *„veikiantis mokėjimo būdas, kuriuo neįmanoma sumokėti"*.
+**Netiesa.** Savininkas atsiuntė realų laišką su rekvizitais.
+
+Peržiūrėjus **16 676 failus** (temos + VISI pluginai + mu-plugins):
+
+```
+themes/flatsome-child/functions.php
+  416: 'Mokėjimo rekvizitai:'
+  419: 'Bankas: AB Swedbank'
+  420: 'Šąskaita: LT127300010124940593'
+  442: $heading = 'Užsakymas gautas, ačiū!'
+```
+
+Rekvizitai įrašyti **temos kode**, ne `woocommerce_bacs_accounts`. Todėl
+standartinis laukas ir buvo tuščias. Tie patys rekvizitai dar
+`woocommerce-pip/invoice.php` ir `woocommerce-delivery-notes/base.php`.
+
+`customer_on_hold_order` išjungtas **sąmoningai** — jį pakeičia temos laiškas.
+
+> **🔒 PAMOKA: `mu-plugins` + `petshop-core` NĖRA visa sistema.**
+> Flatsome child tema šiame projekte turi daug logikos. Ieškant „ar kas nors
+> tai daro" privaloma peržiūrėti IR temą, IR visus pluginus.
+
+---
+
+### ✅ KLIENTŲ LAIŠKAI — patikrinta
+
+```
+customer_processing_order  ✅   customer_new_account      ✅
+customer_completed_order   ✅   customer_reset_password   ✅
+customer_refunded_order    ✅   customer_note             ✅
+customer_cancelled_order   ✅   customer_verify_email     ✅
+customer_on_hold_order     NE  ← pakeičia temos laiškas
+customer_failed_order      NE  ← WooCommerce numatytoji; dengia dunning-1
+customer_invoice           NE
+```
+
+### Meniu, Action Scheduler, kuponai — švaru
+
+```
+meniu „Pagrindinis"   79 punktai · 12 su `#` — mega-meniu antraštės (normalu)
+                      IŠSKYRUS „Susidėk savo rinkinį" — ⏸ ar turi vesti?
+Action Scheduler      37 174 įvykdyta · 6 nepavyko (visi wpo-wcpdf, 06-25)
+                      24 laukia, nė vieno vėluojančio
+kuponai               0 aktyvių
+vartotojai            34 klientai · 1 administratorius · 1 darbuotojas
+```
+
+---
+
+### 🔒 SEPTYNI KLAIDINGI VERDIKTAI PER VIENĄ DIENĄ
+
+| # | Paskelbiau | Realiai | Kodėl suklydau |
+|---|---|---|---|
+| 1 | SSL raudonas | procedūra patvirtinta tiekėjo | neperskaičiau DOD-19 §7c |
+| 2 | „55 % pasiruošę" | skaičius be pagrindo | įspūdis, ne skaičiavimas |
+| 3 | BreadcrumbList nėra | kategorijose BUVO | tikrinau tik pradinį puslapį |
+| 4 | `/krepselis/` 404 | `/cart/` ir buvo tikrasis | spėjau adresą |
+| 5 | `free_shipping` off → lūžę | veikia per vežėjus | **atsakymas buvo eilute žemiau** |
+| 6 | cron neveikia | Action Scheduler, ne WP-Cron | ne ta planuoklė |
+| 7 | bacs rekvizitų nėra | yra temos kode | ieškojau 2 kataloguose iš daugelio |
+
+> **Visos septynios — matavimo, ne kodo klaidos.** Tris kartus priežastis ta
+> pati: **padariau išvadą iš dalies duomenų, nors visuma buvo prieš akis.**
+
+**Metodinė taisyklė:**
+```
+1. perskaityk VISĄ savo išvestį prieš darydamas išvadą iš pirmos eilutės
+2. patikrink, ar matuoji TEISINGOJE vietoje (puslapio tipas, planuoklė, katalogas)
+3. nulinis/tuščias rezultatas įtartinesnis už blogą — pirma patikrink matavimą
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -3597,8 +3757,10 @@ PAŠALINTI, kai priežastis nustatyta
 | **Q-PERKEL** | 🔴 **Kaip `petshop.lt` ras svetainę** — failų perkėlimas per SSH. Kreiptis į palaikymo ŽMOGŲ, ne AI agentą | perjungimas | **prieš T-0** |
 | **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
 | ~~Q-KREPS404~~ | ✅ **UŽDARYTA 2026-08-19:** buvo MANO klaida — `/cart/` ir buvo tikrasis adresas. Dabar sulietuvinta į `/krepselis/` ir `/kasa/` (§8bb) | — | — |
-| ~~Q-KREPS404-senas~~ | 🟡 **`/krepselis/` grąžina 404** — nepatikrinta, ar tai tikrasis krepšelio adresas. Prie §0.6 reikia patikros ir, jei reikia, 301 (§8aa) | 404 | prieš launch |
 | **Q-A11Y** | 🟡 Naujienlaiškio varnelė `psnl-check` be prieinamo vardo; `h1→h4` prekės psl.; 12 nuorodų be teksto kategorijoje (§8aa) | NF19 | — |
+| **Q-ONHOLD** | 🔴 **`on-hold` (bacs) užsakymai NIEKADA neatšaukiami** — WooCommerce atrenka tik `pending` (§8cc). Sprendimas: žymė „3+ paros“ eilėje „Neapmokėti“ + priminimas per 48 val. (`dunning-1` paruoštas) | operacijos | — |
+| **Q-NEPAM-MOD** | 🟡 `petshop-nepamoketi.php` — filtras jo niekada nepasieks (§8cc). Šalinti ar palikti? | higiena | — |
+| **Q-MENIU** | 🟡 Meniu punktas „Susidėk savo rinkinį“ turi `#` adresą — ar turi kur nors vesti? (§8cc) | UX | — |
 | **Q-SAUGA** | 🟡 **NF9 ✅ ĮDIEGTA 2026-08-19** (§8aa). Liko **NF10 (2FA admin)** — diegiam ar formaliai išbraukiam iš TŽ? — saugumo pluginų nėra nė vieno (§8z). Diegiam ar formaliai išbraukiam iš TŽ? | NF5 | — |
 | **Q-REDIS** | 🟡 Objektų kešas (Redis) — didžiausia likusi našumo galimybė prie 2 609 prekių, 78 užklausų, 112 MB piko (§8z) | greitis | — |
 | ~~Q-BREADCRUMB~~ | ✅ **UŽDARYTA 2026-08-19:** buvo klaidingai raudona (tikrinta tik pradiniame psl.). Kategorijose buvo, prekėms įdiegta `petshop-schema.php` v1.0.2 (§8ž) | — | — |
