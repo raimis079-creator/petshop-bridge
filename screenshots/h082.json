@@ -1,0 +1,27 @@
+{
+ "versija": "H082",
+ "frontas_pradzioje": {
+  "http": 503,
+  "retry": "1800"
+ },
+ "kelias1_senas_snippetas": {
+  "v": "H081",
+  "faze": "C",
+  "veliava_yra": false,
+  "valyta": 1
+ },
+ "frontas_po_kelio1": {
+  "http": 200,
+  "retry": null
+ },
+ "rest_statusas": 200,
+ "rest_snippetu": 0,
+ "frontas_pabaigoje": {
+  "http": 200,
+  "retry": null
+ },
+ "wp_admin": {
+  "http": 302,
+  "retry": null
+ }
+}
