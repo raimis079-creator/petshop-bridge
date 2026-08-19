@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-19 naktis II (feed'ų esybės 117→0; BreadcrumbList ✅) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-19 naktis III (NF9 ✅ · NF19 ✅ · TŽ v1.87 lentelės pataisytos) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -3311,6 +3311,110 @@ generatoriaus klasės fronto užklausoje neužkraunamos. Tikrasis kelias rastas
 
 ---
 
+## 8aa. NF9, NF19 IR ESYBIŲ UODEGA — 2026-08-19 (naktis III) [S1123–S1130]
+
+### ✅ NF9 — prisijungimo bandymų ribojimas ĮDIEGTAS
+
+`mu-plugins/petshop-login-sargas.php` v1.0.0 · md5 `8624aee1…` · kopija `deploy/`
+
+**Priežastis:** H085 parodė, kad saugumo pluginų nėra **nė vieno**, o
+`wp-login.php` priima neribotai. Po dviejų savaičių svetainė tampa vieša.
+
+**Savas modulis, ne pluginas** — pluginų jau 27 prie TŽ §11.4 ribos 25.
+
+| Bandymas | Rezultatas |
+|---|---|
+| 1–4 | įprasta klaida, neužrakinta |
+| **5** | **užrakinta** ✅ |
+| Po valymo | `uzrakinta: ne` ✅ |
+| **REST tuo metu** | **200, 1 767 snippetai** — tiltas nepaliestas |
+
+**Trys saugikliai:**
+```
+1. IŠJUNGIMAS   uploads/ps-login-sargas.off — failas per DirectAdmin
+2. NELIEČIAMA   REST · magic link (M8 P0) · prisijungę · cron
+3. RIBA         ilgiausia pauzė 15 min. Jokių juodųjų sąrašų
+```
+
+Adresas imamas **tik iš `REMOTE_ADDR`**; `X-Forwarded-For` sąmoningai
+neskaitomas — jį galima suklastoti, ir juo pasitikint sargą apeitų būtent
+tas, nuo ko jis saugo.
+
+> **🔒 Įrodytas ir IŠJUNGIMO kelias**, ne tik užrakinimas. Vakar priežiūros
+> režimas parodė, kad blokuojantis kodas be patikrintos atrakinimo pusės yra
+> spąstai sau pačiam.
+
+**Šalutinis:** testo metu dvi POST į `wp-login.php` grąžino `fetch failed`, o
+REST tuo pačiu metu veikė → panašu, kad serveryje yra **ir sava apsauga** nuo
+pakartotinių POST. Neįrodyta.
+
+### ✅ NF19 — WCAG bazinė patikra atlikta
+
+| Patikra | Pradinis | Prekė | Kategorija |
+|---|---|---|---|
+| `lang="lt-LT"` | ✅ | ✅ | ✅ |
+| Paveikslėliai be `alt` | **0/20** | **0/23** | **0/22** |
+| `<h1>` skaičius | 1 | 1 | 1 |
+| „Pereiti prie turinio" | ✅ | ✅ | ✅ |
+| Mastelis užrakintas | ne ✅ | ne ✅ | ne ✅ |
+| Bendriniai nuorodų tekstai | 0 ✅ | 0 ✅ | 0 ✅ |
+
+Nulis paveikslėlių be `alt` iš ~65 — WooCommerce parduotuvėje retas dalykas.
+
+**Trys smulkmenos:**
+```
+🔴 <input type="checkbox" class="psnl-check">   MŪSŲ naujienlaiškio varnelė
+   be id+label ir be aria-label → ekrano skaitytuvas neperskaito, ką ji reiškia
+🟡 psnl_website (meškerė šlamštui) — vertėtų aria-hidden="true"
+🟡 prekės puslapyje h1 → h4, praleistas lygis
+🟡 kategorijoje 12 nuorodų be teksto (greičiausiai ikonos, nepatikrinta)
+```
+`rememberme` varnelė greičiausiai **klaidingai** pažymėta — WooCommerce naudoja
+apgaubiantį `<label>`, kurio patikra nemato. Netvirtinama.
+
+### ✅ Taksonomijos terminai — 4 pataisyti, poveikis nulinis
+
+```
+Hau&amp;Miau · Hagen GmbH&amp;Co. KG · Monge &amp; C. S.p.a. · Finnern GmbH&amp;Co
+→ visi keturi taksonomijoje pa_brendas, prekių 0
+kopija ps-backups/terms_h103.json · slug'ai nepaliesti
+```
+
+**Pataisymas mano paties vertinimo:** sakiau, kad jie eina į feed'ų `<g:brand>`.
+Netikslu — feed'ai naudoja `product_brand`, kuri išvalyta 2026-08-18. Šitie
+keturi yra likučiai **senajame atribute** be nė vienos prekės. Higiena, ne
+gedimas.
+
+### Esybių sluoksnis — pilna švara
+
+| Sluoksnis | Būklė |
+|---|---|
+| Prekių pavadinimai | ✅ 0 |
+| Feed'ai — **visi laukai**, 3 failai | ✅ 0 |
+| Taksonomijos terminai | ✅ 0 |
+| Rank Math meta aprašymai | ✅ 0 |
+| Įrašų/puslapių pavadinimai | ✅ 0 |
+| `post_excerpt` | 🟡 423 su užkoduotu HTML — **kosmetika** |
+| `post_content` | 🟡 17 su dvigubu kodavimu |
+
+**Aprašymų „pavojus" NEPASITVIRTINO.** Maniau, kad lankytojas mato `<p>` kaip
+tekstą. Išmatuota: filtras esybes dekoduoja, tekstas rodomas teisingai. Lieka
+tik `<p>` viduje `<p>` — negaliojantis HTML, galima tuščia pastraipa.
+
+### 🟡 NEPATIKRINTA — rytojui
+
+```
+/krepselis/ grąžino 404
+```
+Spėjau adresą. Gali reikšti, kad krepšelis gyvena kitu adresu (**mano klaida**)
+arba kad lietuviškas adresas neveikia. **Netvirtinama, kad tai gedimas** — prie
+§0.6 „404 nulinė tolerancija" reikia pažiūrėti tikrąjį `woocommerce_cart_page_id`
+adresą ir, jei sena platforma turėjo `/krepselis/`, pridėti 301.
+
+Taip pat neuždaryta: **NF21** — ar XML sync klaidos tikrai išeina laišku.
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -3343,7 +3447,9 @@ generatoriaus klasės fronto užklausoje neužkraunamos. Tikrasis kelias rastas
 | **Q-STRAIPS** | 🟡 Komerciniai straipsniai poz. 16–39 su 10+ tūkst. parodymų — pakelti pigiau nei rašyti naują | §8s | po launch |
 | **Q-PERKEL** | 🔴 **Kaip `petshop.lt` ras svetainę** — failų perkėlimas per SSH. Kreiptis į palaikymo ŽMOGŲ, ne AI agentą | perjungimas | **prieš T-0** |
 | **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
-| **Q-SAUGA** | 🔴 **NF9 (login limitai) ir NF10 (2FA admin) neįgyvendinti** — saugumo pluginų nėra nė vieno (§8z). Diegiam ar formaliai išbraukiam iš TŽ? | NF5 | — |
+| **Q-KREPS404** | 🟡 **`/krepselis/` grąžina 404** — nepatikrinta, ar tai tikrasis krepšelio adresas. Prie §0.6 reikia patikros ir, jei reikia, 301 (§8aa) | 404 | prieš launch |
+| **Q-A11Y** | 🟡 Naujienlaiškio varnelė `psnl-check` be prieinamo vardo; `h1→h4` prekės psl.; 12 nuorodų be teksto kategorijoje (§8aa) | NF19 | — |
+| **Q-SAUGA** | 🟡 **NF9 ✅ ĮDIEGTA 2026-08-19** (§8aa). Liko **NF10 (2FA admin)** — diegiam ar formaliai išbraukiam iš TŽ? — saugumo pluginų nėra nė vieno (§8z). Diegiam ar formaliai išbraukiam iš TŽ? | NF5 | — |
 | **Q-REDIS** | 🟡 Objektų kešas (Redis) — didžiausia likusi našumo galimybė prie 2 609 prekių, 78 užklausų, 112 MB piko (§8z) | greitis | — |
 | ~~Q-BREADCRUMB~~ | ✅ **UŽDARYTA 2026-08-19:** buvo klaidingai raudona (tikrinta tik pradiniame psl.). Kategorijose buvo, prekėms įdiegta `petshop-schema.php` v1.0.2 (§8ž) | — | — |
 | **Q-ESYBES-2** | 🟡 **`post_excerpt` 888 + `post_content` 322 prekių su `&amp;`** — eina į tuos pačius feed'us, bet aklas dekodavimas sugadintų teisėtą HTML. Reikia atskiro dry-run (§8ž) | feed'ai | — |
