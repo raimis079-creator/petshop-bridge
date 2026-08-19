@@ -1,0 +1,87 @@
+{
+ "versija": "H124",
+ "D": {
+  "v": "H124",
+  "rezimas": "TIK SKAITYMAS",
+  "bacs": {
+   "enabled": "yes",
+   "title": "Bankinis pavedimas",
+   "description": "Apmokėkite padarydami pavedimą į mūsų banko sąskaitą. Prašome įrašyti Jūsų užsakymo numerį kaip mokėjimo paskirtį. Užsakymas nebus išsiųstas kol pavedimas nepas",
+   "instructions": ""
+  },
+  "bacs_saskaitos": "saskaitu NERA",
+  "bacs_klase": {
+   "has_fields": false,
+   "instructions_ivestos": "NE"
+  },
+  "bacs_pastaba": "WooCommerce bacs uzsakyma deda i busena on-hold (jei krepselyje yra prekiu)",
+  "kabliukai": {
+   "woocommerce_order_status_on-hold": [
+    "5 → Petshop_AV_Order::fiksuoti",
+    "10 → wc_update_total_sales_counts",
+    "10 → wc_update_coupon_usage_counts",
+    "10 → wc_maybe_reduce_stock_levels",
+    "11 → wc_release_stock_for_order"
+   ],
+   "woocommerce_order_status_pending_to_on-hold": [
+    "10 → WC_Emails::send_transactional_email"
+   ],
+   "woocommerce_order_status_on-hold_to_processing": [
+    "10 → WC_Emails::send_transactional_email"
+   ]
+  },
+  "musu_ivykiai": [
+   "50: 'order_paid'              => array( 'class' => 'transactional', 'template' => 'order-paid',        'delay' => 0 ),",
+   "51: 'order_shipped'           => array( 'class' => 'transactional', 'template' => 'order-shipped',     'delay' => 0 ),",
+   "52: 'payment_failed'          => array( 'class' => 'transactional', 'template' => 'dunning-1',         'delay' => 0 ),",
+   "53: 'shipment_returned'       => array( 'class' => 'transactional', 'template' => 'shipment-returned', 'delay' => 0 ),",
+   "54: 'consent_changed'         => array( 'class' => 'transactional', 'template' => 'consent-changed',   'delay' => 0 ),",
+   "55: 'pet_reminder_due'        => array( 'class' => 'transactional', 'template' => 'pet-reminder',      'delay' => 0 ),",
+   "56: 'subscription_t5_notice'  => array( 'class' => 'transactional', 'template' => 'subscription-t5',   'delay' => 0 ),",
+   "59: 'refill_due'              => array( 'class' => 'service', 'template' => 'refill',            'delay' => 0 ),",
+   "63: 'cart_abandoned'          => array( 'class' => 'marketing', 'template' => 'cart-abandoned-1',  'delay' => 0 ),",
+   "66: 'cart_abandoned_2'        => array( 'class' => 'marketing', 'template' => 'cart-abandoned-2',  'delay' => 0 ),",
+   "69: 'post_purchase_2d'        => array( 'class' => 'service', 'template' => 'post-purchase-2d',  'delay' => 0 ),",
+   "70: 'post_purchase_7d'        => array( 'class' => 'service', 'template' => 'post-purchase-7d',  'delay' => 604800 ),",
+   "71: 'post_purchase_14d'       => array( 'class' => 'service', 'template' => 'post-purchase-14d', 'delay' => 1209600 ),",
+   "74: 'win_back_60'             => array( 'class' => 'marketing', 'template' => 'win-back-60',   'delay' => 0 ),",
+   "75: 'win_back_90'             => array( 'class' => 'marketing', 'template' => 'win-back-90',   'delay' => 0 ),",
+   "76: 'win_back_120'            => array( 'class' => 'marketing', 'template' => 'win-back-120',  'delay' => 0 ),",
+   "77: 'legacy_reactivation_l1'  => array( 'class' => 'marketing', 'template' => 'legacy-l1',     'delay' => 0 ),",
+   "78: 'founding_activation'     => array( 'class' => 'marketing', 'template' => 'founding',      'delay' => 0 ),"
+  ],
+  "on_hold_musu_kode": {
+   "wp-content/mu-plugins/petshop-ataskaitu-agregavimas.php": [
+    "271: 'status'       => array( 'processing', 'completed', 'on-hold' ),"
+   ],
+   "wp-content/mu-plugins/petshop-m8-food.php": [
+    "531: 'status'      => array('wc-processing','wc-completed','wc-on-hold'),"
+   ],
+   "wp-content/mu-plugins/petshop-nepamoketi.php": [
+    "29: const BUDAI   = ['bacs'];                // mokėjimo būdai, kuriems taikoma"
+   ],
+   "wp-content/mu-plugins/petshop-desk.php": [
+    "37: 'on-hold'           => array( '#FBF2DE', '#96660C' ),",
+    "107: 'neapmoketi' => array( 'pending', 'failed', 'on-hold', 'lp-parcel-await' ),",
+    "129: 'customer_processing_order', 'customer_completed_order', 'customer_on_hold_order',",
+    "630: if ( 'processing' === $st || 'on-hold' === $st ) {",
+    "787: $args['status'] = array( 'processing', 'on-hold' );"
+   ],
+   "wp-content/mu-plugins/petshop-rinkiniai.php": [
+    "3135: $statusai = array( 'wc-pending', 'wc-processing', 'wc-on-hold' );"
+   ],
+   "wp-content/mu-plugins/petshop-av-tiekimas.php": [
+    "692: 'status'     => array( 'processing', 'on-hold' ),"
+   ],
+   "wp-content/mu-plugins/petshop-av-order.php": [
+    "42: add_action( 'woocommerce_order_status_on-hold', [ __CLASS__, 'fiksuoti' ], 5, 1 );"
+   ],
+   "wp-content/plugins/petshop-core/includes/class-refill-engine.php": [
+    "446: 'status'      => array( 'wc-processing', 'wc-completed', 'wc-on-hold' ),"
+   ]
+  },
+  "paysera_raktai": [
+   "enabled"
+  ]
+ }
+}
