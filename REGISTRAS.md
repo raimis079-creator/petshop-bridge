@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-19 naktis III (NF9 ✅ · NF19 ✅ · TŽ v1.87 lentelės pataisytos) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-19 naktis IV (nustatymų spragos: taisyklės + privatumas ✅ · adresai sulietuvinti · pavedimo taisyklė) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -208,6 +208,9 @@ Po taisymų senų adresų srauto danga **78 % → 95 %**.
 | OPS-13 | **Priežiūros režimas** — įdiegtas ir patikrintas (§8y). Naudojimas: sukurti/ištrinti `uploads/ps-prieziura.flag` | ✅ 2026-08-19 |
 | OPS-14 | **Tilto adresas** — workflow'e `WP_URL` secret. Perjungus nustatyti `https://petshop.lt` | 🟡 paruošta |
 | OPS-15 | **27 aktyvūs pluginai** vs TŽ §11.4 riba ≤25 — peržiūrėti | 🔴 |
+| OPS-18 | `force_ssl_checkout` → `yes` po perjungimo (§8bb) | 🔴 T-0 |
+| OPS-19 | `/product/ps-testas-1-eur/` — Paysera testinė prekė pašalinti (§8bb) | 🔴 |
+| OPS-20 | `petshop-tipu-zurnalas.php` PAŠALINTI, kai Array-to-string priežastis nustatyta | 🟡 |
 | OPS-16 | **robots.txt po perjungimo** — virtualus, keisis savaime (§8z). Po T-0 patikrinti 1 min. | 🟡 patikra |
 | OPS-17 | **NF1–NF4 greičio matavimas** — įmanomas TIK po perjungimo (dev sertifikatas negalioja, §8z) | ⏸ po T-0 |
 | OPS-12 | `gaj6_umbrella_redirects` — kilmė patvirtinta, IŠTRINTA 2026-08-04 (§13). Lentelių 174→173 | ✅ |
@@ -3415,6 +3418,152 @@ Taip pat neuždaryta: **NF21** — ar XML sync klaidos tikrai išeina laišku.
 
 ---
 
+## 8bb. NUSTATYMŲ SPRAGOS IR NEAPMOKĖTI UŽSAKYMAI — 2026-08-19 (naktis IV) [S1131–S1142]
+
+### 🔒 Nauja klaidų klasė: „nustatymas yra, bet rodo ne ten"
+
+Taisyklių puslapis nebuvo klaida — niekas nelūžo, žurnale tuščia, testai žali.
+Tiesiog **konfigūracija, kurios niekas nepriskyrė**. Toks dalykas pasirodo tik
+tada, kai jo prireikia — o prireikia pirmą dieną, su realiu klientu.
+
+> **Todėl atliktas atskiras nustatymų PILNUMO auditas** (H118) — ne „ar veikia",
+> o „ar apskritai užpildyta". Vienas patikrinimas davė šešis radinius.
+
+### ✅ Sutvarkyta
+
+| # | Radinys | Buvo | Dabar |
+|---|---|---|---|
+| 1 | `woocommerce_terms_page_id` | **NENUSTATYTA** | 34524 „Pirkimo sąlygos ir taisyklės" |
+| 2 | `wp_page_for_privacy_policy` | 34526 „Slapukų naudojimas", **draft**, `/?page_id=` | 34525 „Privatumo politika", publish |
+| 3 | Krepšelio adresas | `/cart/` | **`/krepselis/`** |
+| 4 | Kasos adresas | `/checkout/` | **`/kasa/`** |
+| 5 | `hold_stock_minutes` | 60 | **90** + atskira pavedimo taisyklė |
+
+**Dėl §2 svarbu:** abu WooCommerce tekstai (`checkout_privacy_policy_text`,
+`registration_privacy_policy_text`) turi žymę `[privacy_policy]`, kurią
+WordPress keičia nuoroda. Vadinasi kasoje ir registracijoje nuoroda
+**realiai buvo rodoma ir vedė į juodraštį** — ten, kur žmogus sutinka su
+duomenų tvarkymu.
+
+### ⚪ Ne radiniai (mano klaidos)
+
+```
+free_shipping (off) zonoje „Lietuva"  → nemokamas pristatymas nuo €30 veikia
+                                        per VEŽĖJŲ metodus; free_shipping
+                                        išjungtas SĄMONINGAI. Atsakymas buvo
+                                        toje pačioje išvestyje, eilute žemiau.
+/cart/ 404                            → tai ir buvo tikrasis adresas
+```
+
+### Adresai dabar nuoseklūs
+
+```
+/parduotuve/ · /krepselis/ · /kasa/ · /paskyra/ · /taisykles/
+```
+
+`wc_get_cart_url()` ir `wc_get_checkout_url()` persitvarkė **pačios** —
+WooCommerce adresą sudaro iš puslapio ID, ne teksto. Priklausomybių patikra
+(H108): temos failai 0, mu-plugins 0, postmeta 0; vienintelis snippetas su
+`/cart/` mini jį **komentare**, o kodas naudoja `is_cart()`.
+
+**GSC patikra:** senoji petshop.lt krepšelį turėjo adresu
+`/index.php?route=checkout/cart`. Nei `/cart/`, nei `/krepselis/` GSC eksporte
+(2 445 URL) **nėra**. Vadinasi §0.6 nepažeidžiamas.
+
+---
+
+### ✅ Neapmokėti užsakymai — pavedimas atskirtas nuo kortelės
+
+**Problema:** `hold_stock_minutes` yra VIENAS skaičius visiems. 60 min. tinka
+pamestam krepšeliui, bet naikina bankinį pavedimą — pinigai ateina per parą,
+o užsakymas atšaukiamas po valandos.
+
+**Sprendimas** (perskaičius WooCommerce 11.0.1 kodą, ne iš atminties):
+
+```
+wc-order-functions.php:1141
+  apply_filters( 'woocommerce_cancel_unpaid_order', $sprendimas, $order )
+```
+Filtras gauna PATĮ užsakymą → mokėjimo būdą galima perskaityti.
+
+```
+hold_stock_minutes            90    (Paysera / kortelė)
+petshop-nepamoketi.php v1.0.0       bacs + jaunesnis nei 3 paros → NEATŠAUKTI
+```
+
+**🔒 Saugumo riba:** modulis gali tik SULAIKYTI atšaukimą, niekada jo sukelti
+(pirma eilutė: `if (!$atsaukti) return $atsaukti;`). Blogiausias padarinys —
+prekės pagulės ilgiau. Prie kiekvieno sulaikymo rašoma pastaba užsakymo
+istorijoje. Išjungimas: `uploads/ps-nepamoketi.off`.
+
+**Sausas bandymas:** užsakymas 34952, `bacs`, 95,6 val. (3,98 paros) →
+`WC sakytų ATŠAUKTI` → `po mūsų ATŠAUKTI` ✅ — riba praėjusi, sulaikymo nėra.
+⚠️ Antroji šaka (jaunesnis nei 3 paros → sulaikyti) realiu užsakymu
+**nepatikrinta** — dev'e tokio nėra.
+
+### 🔒 Mano klaida: žiūrėjau ne tą planuoklę
+
+Buvau pareiškęs, kad „automatinis atšaukimas iš viso neveikia", nes
+`_get_cron_array()` nerodė užduoties. **Netiesa.** WooCommerce 11 naudoja
+**Action Scheduler**, ne WP-Cron. Užduotis buvo suplanuota visą laiką.
+
+> **Nerandama užduotis reiškia, kad ieškai ne toje planuoklėje.**
+
+---
+
+### ✅ NF9 ir NF19 (žr. §8aa) · ✅ `payment_failed` — registras buvo pasenęs
+
+```
+mu-plugins/petshop-payment-failed.php
+  28: add_action('woocommerce_order_status_failed', 'petshop_emit_payment_failed', 20, 1)
+  71: Petshop_Event_Registry::emit('payment_failed', ...)
+class-email-dispatch.php:52  payment_failed → dunning-1
+woocommerce_order_status_failed — 2 registruoti kabliukai
+```
+
+REGISTRAS §5 teigė „įvykio DB NĖRA VISAI — niekas jo nekviečia". **Grandinė
+surišta nuo galo iki galo.** `class-event-registry.php:39` rodo
+`'payment_failed' => false // dalinai` — tai „empiriškai nepatvirtinta" žymė,
+ne „neveikia". Tikrinama perjungimo naktį greta Paysera callback'o.
+
+### DOD-03 — švarus matavimas
+
+```
+žurnale viso        24
+iš MŪSŲ snippetų    12   ← diagnostikos triukšmas
+PRODUKCINIŲ         12
+   fatal        1   atminties limitas /feed/kaina24/ 08-17 (po v2.2.0 nekartojosi)
+   warning      4 parašai — VISI „Array to string conversion" petshop-xml.php
+   deprecated   7 parašai (8 266 kartai iš `postit`)
+```
+
+Keturi warning yra **du defektai** poromis: eilutės 343/344 ir 513/515.
+Kartojasi **kas importą**, paskutinį kartą 2026-08-19 18:01.
+
+**Sargas turėtų atskirti snippetų klaidas nuo produkcinių** — kitaip po
+perjungimo tas pats iškraipymas kartosis.
+
+### 🔬 Array to string — priežastis NENUSTATYTA, pastatytas stebėtojas
+
+Dvi hipotezės krito:
+```
+1. „laukai kartojasi XML'e"      → paneigta (H115): ZB 2 622, VF 2 351, nė vieno
+2. „tuščias elementas <brand/>"  → ZB neturi nė vieno tuščio
+```
+
+Trečios hipotezės nekelta. `petshop-xml` pažymėtas **„NELIESTI"**, todėl
+vietoj spėjimo įdiegtas `petshop-tipu-zurnalas.php` v1.0.0 — kabinasi tuo
+pačiu filtru prioritetu 999, grąžina reikšmę **nepakeistą**, rašo tik kai
+laukas nėra paprasta reikšmė.
+
+```
+rezultatas   uploads/ps-backups/tipu-zurnalas.json
+riba         150 įrašų · išjungimas uploads/ps-tipu-zurnalas.off
+PAŠALINTI, kai priežastis nustatyta
+```
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -3447,7 +3596,8 @@ Taip pat neuždaryta: **NF21** — ar XML sync klaidos tikrai išeina laišku.
 | **Q-STRAIPS** | 🟡 Komerciniai straipsniai poz. 16–39 su 10+ tūkst. parodymų — pakelti pigiau nei rašyti naują | §8s | po launch |
 | **Q-PERKEL** | 🔴 **Kaip `petshop.lt` ras svetainę** — failų perkėlimas per SSH. Kreiptis į palaikymo ŽMOGŲ, ne AI agentą | perjungimas | **prieš T-0** |
 | **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
-| **Q-KREPS404** | 🟡 **`/krepselis/` grąžina 404** — nepatikrinta, ar tai tikrasis krepšelio adresas. Prie §0.6 reikia patikros ir, jei reikia, 301 (§8aa) | 404 | prieš launch |
+| ~~Q-KREPS404~~ | ✅ **UŽDARYTA 2026-08-19:** buvo MANO klaida — `/cart/` ir buvo tikrasis adresas. Dabar sulietuvinta į `/krepselis/` ir `/kasa/` (§8bb) | — | — |
+| ~~Q-KREPS404-senas~~ | 🟡 **`/krepselis/` grąžina 404** — nepatikrinta, ar tai tikrasis krepšelio adresas. Prie §0.6 reikia patikros ir, jei reikia, 301 (§8aa) | 404 | prieš launch |
 | **Q-A11Y** | 🟡 Naujienlaiškio varnelė `psnl-check` be prieinamo vardo; `h1→h4` prekės psl.; 12 nuorodų be teksto kategorijoje (§8aa) | NF19 | — |
 | **Q-SAUGA** | 🟡 **NF9 ✅ ĮDIEGTA 2026-08-19** (§8aa). Liko **NF10 (2FA admin)** — diegiam ar formaliai išbraukiam iš TŽ? — saugumo pluginų nėra nė vieno (§8z). Diegiam ar formaliai išbraukiam iš TŽ? | NF5 | — |
 | **Q-REDIS** | 🟡 Objektų kešas (Redis) — didžiausia likusi našumo galimybė prie 2 609 prekių, 78 užklausų, 112 MB piko (§8z) | greitis | — |
