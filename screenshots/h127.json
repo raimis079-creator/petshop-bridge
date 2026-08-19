@@ -1,0 +1,29 @@
+{
+ "versija": "H127",
+ "D": {
+  "v": "H127",
+  "get_unpaid_orders_gmt": [
+   "1197: public function get_unpaid_orders_gmt( $gmt_timestamp ) {",
+   "1198: global $wpdb;",
+   "1199: ",
+   "1200: $orders_table    = self::get_orders_table_name();",
+   "1201: $order_types_sql = \"('\" . implode( \"','\", wc_get_order_types() ) . \"')\";",
+   "1202: ",
+   "1203: // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared",
+   "1204: return $wpdb->get_col(",
+   "1205: $wpdb->prepare(",
+   "1206: \"SELECT id FROM {$orders_table} WHERE",
+   "1207: {$orders_table}.type IN {$order_types_sql}",
+   "1208: AND {$orders_table}.status = %s",
+   "1209: AND {$orders_table}.date_updated_gmt < %s\",",
+   "1210: OrderInternalStatus::PENDING,",
+   "1211: gmdate( 'Y-m-d H:i:s', absint( $gmt_timestamp ) )",
+   "1212: )",
+   "1213: );",
+   "1214: // phpcs:enable",
+   "1215: }"
+  ],
+  "grazina_dabar": [],
+  "grazina_kiek": 0
+ }
+}
