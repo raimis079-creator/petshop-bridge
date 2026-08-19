@@ -1,0 +1,77 @@
+{
+ "versija": "H093",
+ "DIEGIMAS": {
+  "v": "H093",
+  "sintakse": "OK",
+  "dydis": 3180,
+  "md5": "396102c7c9aff85648b7b4674251117d",
+  "loopback_pradinis": 200,
+  "bandomoji_preke": "https://dev.avesa.lt/product/sampunas-neutralizuojantis-nemalonius-kvapus-frexin-220-g/",
+  "loopback_preke": 200
+ },
+ "PREKE_1": {
+  "url": "/product/kramtalu-deze-suniui/",
+  "http": 200,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "ImageObject",
+   "ItemPage",
+   "Product",
+   "BreadcrumbList"
+  ],
+  "takelis": [
+   "1. Pradžia",
+   "2. RINKINIAI",
+   "3. Kramtalų rinkiniai",
+   "4. Skanėstų dėžė šuniui"
+  ]
+ },
+ "PREKE_2": {
+  "url": "/product/farmina-nd-tropical-selection-dog-dry-lamb-adult-medmax-10-kg/",
+  "http": 200,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "ImageObject",
+   "ItemPage",
+   "Product",
+   "BreadcrumbList"
+  ],
+  "takelis": [
+   "1. Pradžia",
+   "2. ŠUNIMS",
+   "3. Maistas šunims",
+   "4. Sausas maistas šunims",
+   "5. FARMINA N&amp;D TROPICAL SELECTION &#8211; DOG Dry Lamb ADULT MED&amp;MAX 10 kg"
+  ]
+ },
+ "KATEGORIJA": {
+  "url": "/kategorija/sunims/",
+  "http": 200,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "CollectionPage",
+   "BreadcrumbList"
+  ],
+  "takelis": [
+   "1. ?",
+   "2. ?"
+  ]
+ },
+ "PRADINIS": {
+  "url": "/",
+  "http": 200,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "ImageObject",
+   "WebPage",
+   "Person",
+   "Article"
+  ],
+  "takelis": null
+ },
+ "frontas": 200
+}
