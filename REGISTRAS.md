@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-19 naktis (TŽ v1.86 pilnas auditas; priežiūros režimas ✅; atstatymo recon) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-19 vėlyva naktis (TŽ auditas; priežiūros režimas ✅; NF sluoksnis pirmą kartą išmatuotas) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -208,6 +208,8 @@ Po taisymų senų adresų srauto danga **78 % → 95 %**.
 | OPS-13 | **Priežiūros režimas** — įdiegtas ir patikrintas (§8y). Naudojimas: sukurti/ištrinti `uploads/ps-prieziura.flag` | ✅ 2026-08-19 |
 | OPS-14 | **Tilto adresas** — workflow'e `WP_URL` secret. Perjungus nustatyti `https://petshop.lt` | 🟡 paruošta |
 | OPS-15 | **27 aktyvūs pluginai** vs TŽ §11.4 riba ≤25 — peržiūrėti | 🔴 |
+| OPS-16 | **robots.txt po perjungimo** — virtualus, keisis savaime (§8z). Po T-0 patikrinti 1 min. | 🟡 patikra |
+| OPS-17 | **NF1–NF4 greičio matavimas** — įmanomas TIK po perjungimo (dev sertifikatas negalioja, §8z) | ⏸ po T-0 |
 | OPS-12 | `gaj6_umbrella_redirects` — kilmė patvirtinta, IŠTRINTA 2026-08-04 (§13). Lentelių 174→173 | ✅ |
 
 **DNS — IŠTAISYTA 2026-08-17 (išmatuota, ne prielaida):** zoną valdo
@@ -3039,6 +3041,169 @@ Nedaryta — savininko sprendimas. → **OPS-15**
 
 ---
 
+## 8z. NF SLUOKSNIS: SAUGA, GREITIS, ROBOTS — 2026-08-19 (vėlyva naktis) [S1107–S1114]
+
+TŽ audito (§8y) „E dalies" vykdymas. Pirmas kartas, kai TŽ §5 nefunkciniai
+reikalavimai apskritai matuojami.
+
+### ✅ Keturios saugos pataisos
+
+| Pataisa | Patikra |
+|---|---|
+| `DISALLOW_FILE_EDIT = true` | wp-config 3 827 → 3 939 B, loopback 200 |
+| `WP_DEBUG_DISPLAY = false` | ta pati |
+| `readme.html` pašalintas | **404** (buvo 200) |
+| `license.txt` pašalintas | **404** |
+| `<meta generator>` pašalintas | vitrinoje nebėra |
+
+Naujas modulis `mu-plugins/petshop-higiena.php` v1.0.0 · md5 `b1226cc0…` ·
+kopija `deploy/`. Šalina generator, RSD, wlwmanifest, X-Pingback.
+
+`readme.html` ir `license.txt` **ne ištrinti, o perkelti** į `ps-backups`.
+
+### Saugos būklė iš išorės
+
+```
+/wp-json/wp/v2/users   403   ┐
+/wp-content/uploads/   403   ├ visi identiško dydžio (401 B)
+/wp-config.php.bak     403   ┘ = serverio lygio WAF, ne WordPress
+debug.log · .env       404
+wp-config.php teisės   0600
+administratorių        1 (bdz487, ne „admin")
+```
+
+**Saugumo pluginų — NĖ VIENO.** NF9 (login limitai) ir NF10 (2FA)
+**neįgyvendinti**. Prie vieno admin su neatspėjamu vardu tai nedega, bet TŽ
+jų reikalauja → savininko sprendimas: diegiam ar formaliai išbraukiam.
+
+**Nepatikrinta:** `xmlrpc.php` (užklausa nulūžo).
+
+### 🔒 Pataisymas: registre buvo „WP 7.0"
+
+`<meta generator>` rodė **WordPress 6.9.4**. Registro ir TŽ suvestinės
+teiginys „WP 7.0" netikslus.
+
+---
+
+### ★ Kodėl PageSpeed neveikia — sertifikatas
+
+```
+dev.avesa.lt:  CN *.serveriai.lt · SAN *.serveriai.lt, serveriai.lt
+               dev.avesa.lt SAN sąraše NĖRA
+               UNABLE_TO_VERIFY_LEAF_SIGNATURE
+```
+
+Bendras hostingo sertifikatas, ne mūsų domenui. Google atsisako matuoti
+svetainę su negaliojančiu sertifikatu — tas pats ir Lighthouse.
+
+> **Tai buvo priešais akis nuo pirmos dienos.** Tilto skripte visą laiką
+> stovi `NODE_TLS_REJECT_UNAUTHORIZED='0'` — klaidą ignoruojam nuo pradžių,
+> tik niekas nebuvo jos pavadinęs vardu.
+
+**NF3/NF4 išvada: Lighthouse dev'e IŠMATUOTI NEĮMANOMA.** Tai ne skola, o
+aplinkos apribojimas. Po perjungimo `petshop.lt` gaus tikrą Let's Encrypt
+sertifikatą (DOD-19 §7c) ir matavimas veiks.
+
+Du bandymai prieš tai nulūžo: PSI API → HTTP 429 (bendras runner'ių IP,
+Google kvota); `playwright install` kabėjo 17 min.
+
+### Našumo profilis (be naršyklės)
+
+```
+pilnas HTML      mediana 1 940 ms      HTML dydis   230 KB (gzip ✅)
+CSS 11 / 295 KB · JS 19 / 370 KB · IMG 20 / 342 KB   →  ~1,2 MB
+JS be defer/async 13 (5 iš jų <head>, blokuojantys)
+
+PHP 8.3.20 · OPcache ✅ · objektų kešas NĖRA
+užklausų 78 · generavimas ~1 s · atminties pikas 112 MB
+transientų 1 436 (1 009 KB) · prekių publish 2 609
+```
+
+**Objektų kešo nebuvimas — didžiausia likusi galimybė.** TŽ §10 Redis mini
+kaip „optional", bet tai buvo prieš 2 609 prekes.
+
+### ✅ Kešavimo antraštės sutvarkytos
+
+| Failas | Prieš | Po |
+|---|---|---|
+| `wp-embed.min.js` | **jokios `Cache-Control`** | `public, max-age=31536000` |
+| `dashicons.min.css` | `max-age=604800` | `public, max-age=31536000` |
+
+`.htaccess` 1 309 → 2 068 B, kopija `ps-backups/htaccess.bak_h089`, blokas
+apgaubtas `<IfModule>`.
+
+### ✅ Autoload išvalytas
+
+```
+330,5 KB → 218,1 KB   (−34 %)      742 → 737 įrašai
+
+wh_probe_result · wh2_probe_result · mnm_p7_result   ← MŪSŲ senų run'ų likučiai
+jetpack_active_plan                                  ← Jetpack neįdiegtas
+petshop_zb_image_index   autoload auto → off  (NEIŠTRINTA — reikalinga importui)
+```
+Kopija: `ps-backups/options_h090.json` (56 383 B).
+
+**Transientai — nieko neištrinta, ir tai teisingas rezultatas.** Iš 1 436
+pasibaigusių 0.
+
+### 🔒 Dvi matavimo klaidos
+
+1. `round(timer_stop(0), 3)` — `timer_stop()` grąžina **eilutę**; PHP 8.3 tai
+   `TypeError`. Snippetas nulūžo.
+2. `autoload_KB` parodė **0** — neteisinga. Nuo WP 6.6 `autoload` reikšmės
+   yra `on`/`off`/`auto`, ne `yes`/`no`.
+
+> **Nulinis rezultatas yra įtartinesnis už blogą rezultatą.** „0 KB autoload"
+> turėjo iškart sukelti klausimą, o ne pasitenkinimą.
+
+---
+
+### ★ robots.txt po perjungimo — VEIKS SAVAIME
+
+Savininko klausimas. **Anksčiau atsakiau „keisis savaime" nepatikrinęs.**
+
+```
+fizinis /robots.txt   NĖRA
+generuoja             0  → RankMath\Sitemap\Sitemap_Index::add_sitemap_directive
+                      10 → WooCommerce::robots_txt
+```
+
+Fizinio failo nėra → `Sitemap:` eilutė sudaroma iš `home_url()` kiekvienos
+užklausos metu. Pakeitus Site URL ji tampa teisinga tą pačią sekundę.
+
+> **⚠️ Įspėjimas ateičiai:** jei kas nors įkels FIZINĮ `robots.txt` į šaknį,
+> jis TYLIAI perims viską — nei Rank Math, nei WooCommerce eilutės nebeveiks,
+> o sitemap nuoroda liks užšalusi.
+
+**Šalutinis radinys:** su `blog_public = 0` robots.txt vis tiek rodo
+`Disallow: /wp-admin/`, t.y. **leidžia visą svetainę**, ir dar skelbia
+sitemap'ą. Indeksavimą stabdo **tik `<meta name="robots" content="noindex,
+nofollow">`**. Vadinasi DOD-22 varnelė yra **vienintelis** apsaugos
+sluoksnis, ne vienas iš dviejų. Po perjungimo — 1 min. patikra.
+
+---
+
+### TŽ §5 NF lentelė — pirmas kartas išmatuota
+
+| NF | Reikalavimas | Būklė |
+|---|---|---|
+| NF1–NF2 | LCP / TTI | 🟡 netiesioginiai skaičiai; tikri po perjungimo |
+| NF3–NF4 | Lighthouse ≥85 / ≥90 | ⏸ **neįmanoma dev'e** (sertifikatas) |
+| NF5 | Uptime | 🟡 vidinis sargas; išorinio nėra |
+| NF6–NF7 | Kopijos + restore | ✅ |
+| NF8 | SSL | 🔴 → sprendžiama po DNS |
+| NF9 | Brute force | 🔴 **neįgyvendinta** |
+| NF10 | 2FA admin | 🔴 **neįgyvendinta** |
+| NF11 | WAF | 🟡 serverio lygio YRA |
+| NF12–NF17 | GDPR, VMI, mobile | ✅ |
+| NF18 | Naršyklės | 🔴 netestuota |
+| NF19 | WCAG 2.1 AA | 🔴 neišmatuota |
+| NF20 | WebP + kešavimas | ✅ **kešavimas sutvarkytas** |
+| NF21 | XML sync logging | 🟡 |
+| NF22 | Audit trail | 🟡 tik kainai |
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -3071,6 +3236,9 @@ Nedaryta — savininko sprendimas. → **OPS-15**
 | **Q-STRAIPS** | 🟡 Komerciniai straipsniai poz. 16–39 su 10+ tūkst. parodymų — pakelti pigiau nei rašyti naują | §8s | po launch |
 | **Q-PERKEL** | 🔴 **Kaip `petshop.lt` ras svetainę** — failų perkėlimas per SSH. Kreiptis į palaikymo ŽMOGŲ, ne AI agentą | perjungimas | **prieš T-0** |
 | **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
+| **Q-SAUGA** | 🔴 **NF9 (login limitai) ir NF10 (2FA admin) neįgyvendinti** — saugumo pluginų nėra nė vieno (§8z). Diegiam ar formaliai išbraukiam iš TŽ? | NF5 | — |
+| **Q-REDIS** | 🟡 Objektų kešas (Redis) — didžiausia likusi našumo galimybė prie 2 609 prekių, 78 užklausų, 112 MB piko (§8z) | greitis | — |
+| **Q-BREADCRUMB** | 🔴 BreadcrumbList schema — TŽ §S8 jos reikalauja, vitrinoje nėra (§8z) | SEO | prieš launch |
 | **Q-D7D8** | 🔴 **TŽ §14 D7 (klientų bazė) + D8 (užsakymų istorija) — MVP prioriteto, NEPADARYTA, registre nefiksuota.** Sena platforma dingsta 2026-10-15 | duomenys | **prieš 10-15** |
 | **Q-SVARI-DB** | 🟡 DirectAdmin: sukurti `gyvunai2_rtst` (utf8mb4) + priskirti esamą vartotoją `gyvunai2_nbpe1`. Uždaro DOD-19 §8 (§8y) | DOD-19 | — |
 | **Q-SUBDOM** | 🟡 Akla zona po perkėlimo — prašyti SSH žmogaus subdomeno į naują dokumentų šaknį (§8y) | perjungimas | prieš T-0 |
