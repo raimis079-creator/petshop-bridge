@@ -1,0 +1,65 @@
+{
+ "versija": "H126",
+ "D": {
+  "v": "H126",
+  "rezimas": "TIK SKAITYMAS",
+  "hold_stock_minutes_DABAR": "90",
+  "modulis": {
+   "yra": true,
+   "md5": "c4c954927fc95a33d545a023f2db7f96",
+   "klase_uzkrauta": "TAIP"
+  },
+  "modulio_veliava": "dirba",
+  "filtras_uzregistruotas": 1,
+  "data_store_klase": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+  "ds_klase": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+  "get_unpaid_orders": {
+   "failas": "wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/OrdersTableDataStore.php",
+   "eilute": 1184,
+   "kodas": [
+    "1184: public function get_unpaid_orders( $date ) {",
+    "1185: $timezone_offset = wc_timezone_offset();",
+    "1186: $gmt_timestamp   = $date - $timezone_offset;",
+    "1187: return $this->get_unpaid_orders_gmt( absint( $gmt_timestamp ) );",
+    "1188: }"
+   ]
+  },
+  "uzsakymai_pagal_busena": [
+   {
+    "status": "wc-processing",
+    "kiek": "4"
+   },
+   {
+    "status": "wc-cancelled",
+    "kiek": "3"
+   },
+   {
+    "status": "wc-completed",
+    "kiek": "3"
+   },
+   {
+    "status": "wc-on-hold",
+    "kiek": "1"
+   }
+  ],
+  "bacs_uzsakymai": [
+   {
+    "status": "wc-cancelled",
+    "kiek": "1"
+   },
+   {
+    "status": "wc-completed",
+    "kiek": "2"
+   },
+   {
+    "status": "wc-on-hold",
+    "kiek": "1"
+   },
+   {
+    "status": "wc-processing",
+    "kiek": "1"
+   }
+  ],
+  "kita_uzduotis": "2026-08-19 22:03"
+ }
+}
