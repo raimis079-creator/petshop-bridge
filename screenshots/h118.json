@@ -1,0 +1,148 @@
+{
+ "versija": "H118",
+ "D": {
+  "v": "H118",
+  "rezimas": "TIK SKAITYMAS",
+  "wp": {
+   "blogname": "Petshop.lt",
+   "blogdescription": "Gyvūnų parduotuvė",
+   "admin_email": "terra@gyvunai.lt",
+   "timezone_string": "Europe/Vilnius",
+   "gmt_offset": "3",
+   "date_format": "Y-m-d",
+   "start_of_week": "1",
+   "blog_public": "0",
+   "wp_page_for_privacy_policy": "34526",
+   "default_comment_status": "",
+   "users_can_register": "0",
+   "privacy_psl": "Slapukų naudojimas → https://dev.avesa.lt/?page_id=34526"
+  },
+  "wc_parduotuve": {
+   "store_address": "Liucionių g. 46",
+   "store_address_2": "",
+   "store_city": "Liucionių k.",
+   "store_postcode": "15166",
+   "default_country": "LT",
+   "allowed_countries": "specific",
+   "ship_to_countries": "",
+   "currency": "EUR",
+   "price_num_decimals": "2",
+   "price_decimal_sep": ",",
+   "price_thousand_sep": " ",
+   "weight_unit": "kg",
+   "dimension_unit": "cm"
+  },
+  "wc_atsargos": {
+   "manage_stock": "yes",
+   "hold_stock_minutes": "60",
+   "notify_low_stock": "yes",
+   "notify_no_stock": "yes",
+   "stock_email_recipient": "terra@petshop.lt",
+   "notify_low_stock_amount": "2",
+   "hide_out_of_stock_items": "no"
+  },
+  "wc_kasa": {
+   "enable_guest_checkout": "yes",
+   "enable_checkout_login_reminder": "yes",
+   "enable_signup_and_login_from_checkout": "yes",
+   "enable_myaccount_registration": "yes",
+   "enable_coupons": "yes",
+   "force_ssl_checkout": "no",
+   "terms_page_id": "34524",
+   "checkout_privacy_policy_text": "Jūsų asmeniniai duomenys bus naudojami patirčiai šioje svetainėje gerinti, prieigai prie p",
+   "registration_privacy_policy_text": "Jūsų asmeniniai duomenys bus naudojami užsakymui apdoroti, patirčiai šioje svetainėje geri",
+   "erasure_request_removes_order_data": "yes"
+  },
+  "wc_laiskai": {
+   "from_name": "Petshop.lt",
+   "from_address": "uzsakymai@petshop.lt",
+   "header_image": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+   "footer_text": "{site_title}<br />{store_address}",
+   "base_color": "#2d6a35",
+   "admin_new_order": {
+    "enabled": "yes",
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   "admin_cancelled_order": {
+    "enabled": "yes",
+    "recipient": "uzsakymai@petshop.lt"
+   },
+   "admin_failed_order": {
+    "enabled": "yes",
+    "recipient": "uzsakymai@petshop.lt"
+   }
+  },
+  "zonos": [
+   {
+    "vardas": "Neringos savivaldybe",
+    "sritys": 2,
+    "metodai": [
+     "shopup_venipak_shipping_pickup_method (ON)",
+     "shopup_venipak_shipping_courier_method (ON)",
+     "woo_lithuaniapost_lpexpress_terminal (ON)"
+    ]
+   },
+   {
+    "vardas": "Lietuva",
+    "sritys": 1,
+    "metodai": [
+     "free_shipping (off)",
+     "shopup_venipak_shipping_courier_method (ON)",
+     "shopup_venipak_shipping_pickup_method (ON)",
+     "shopup_venipak_shipping_courier_method (ON)",
+     "shopup_venipak_shipping_courier_method (ON)",
+     "shopup_venipak_shipping_courier_method (ON)",
+     "woo_lithuaniapost_lpexpress_terminal (ON)",
+     "woo_lithuaniapost_lpexpress_terminal (ON)"
+    ]
+   },
+   {
+    "vardas": "Baltijos šalys, be LIetuvos",
+    "sritys": 2,
+    "metodai": [
+     "shopup_venipak_shipping_pickup_method (ON)"
+    ]
+   }
+  ],
+  "zonos_likusios": "NIEKO — kitoms sritims pristatymo NEBUS",
+  "mokejimai": {
+   "paysera": {
+    "enabled": "yes",
+    "title": "Mokėjimas internetu"
+   },
+   "bacs": {
+    "enabled": "yes",
+    "title": "Bankinis pavedimas"
+   },
+   "cheque": {
+    "enabled": "no",
+    "title": "Apmokėjimas čekiu"
+   },
+   "cod": {
+    "enabled": "no",
+    "title": "Apmokėjimas grynais atsiimant (COD)"
+   }
+  },
+  "paysera": {
+   "enabled": "yes",
+   "test": "?",
+   "projectid": "?"
+  },
+  "kita": {
+   "placeholder_image": "10",
+   "shop_page_display": "",
+   "default_catalog_orderby": "",
+   "cart_redirect_after_add": "no",
+   "uploads_use_yearmonth_folders": "1",
+   "permalink_structure": "/%postname%/",
+   "woocommerce_permalinks": "[masyvas 5]",
+   "woocommerce_permalinks_detalus": {
+    "product_base": "/product",
+    "category_base": "kategorija",
+    "tag_base": "product-tag",
+    "attribute_base": "",
+    "use_verbose_page_rules": false
+   }
+  }
+ }
+}
