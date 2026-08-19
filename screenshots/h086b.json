@@ -1,0 +1,40 @@
+{
+ "versija": "H086b",
+ "wp": "https://dev.avesa.lt",
+ "snip": 3540,
+ "PATAISOS": {
+  "v": "H086",
+  "wp_config_dydis_pries": 3827,
+  "kopija": 3827,
+  "ko_truko": [
+   "define('DISALLOW_FILE_EDIT', true);",
+   "define('WP_DEBUG_DISPLAY', false);"
+  ],
+  "zyme": "/* That's all, stop editing",
+  "vieta_rasta": true,
+  "sintakse": "OK",
+  "wp_config_dydis_po": 3939,
+  "loopback_po_config": 200,
+  "higiena_sintakse": "OK",
+  "higiena_md5": "b1226cc0eda4e007dd7f2f02d1150b36",
+  "loopback_po_higienos": 200,
+  "generator_liko": "ne",
+  "istraukta": {
+   "readme.html": "perkelta i ps-backups",
+   "license.txt": "perkelta i ps-backups"
+  }
+ },
+ "PO_PATAISU": {
+  "frontas": {
+   "http": 200
+  },
+  "readme": {
+   "http": 404
+  },
+  "license": {
+   "http": 404
+  },
+  "generator": "pasalintas"
+ },
+ "greitis": "atskirai — Playwright diegimas kabo"
+}
