@@ -1,3639 +1,8204 @@
-# REGISTRAS.md — petshop.lt · VIENINTELIS BŪKLĖS ŠALTINIS
+# deployment_log.md — v1.6.6
 
-> **SKAITYTI PIRMĄ. VISADA.** Šis failas atsako į vienintelį klausimą:
-> *kas padaryta, kas ne, kieno eilė.*
->
-> `STATE.md` nuo šiol yra **ISTORIJA** (kaip padaryta, kokios pamokos, kokie SHA).
-> Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
-> Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
+> **Padalinta 2026-08-12.** Senesnes sesijas (iki 2026-07-31 imtinai) rasi
+> faile `deployment_log_ARCHYVAS_iki_2026-07-31.md`. Cia — tik 2026-08 ir
+> velesni irasai, kad faila butu galima atnaujinti nerizikuojant prarasti
+> istorijos.
 
-**Atnaujinta:** 2026-08-19 naktis IV (nustatymų spragos: taisyklės + privatumas ✅ · adresai sulietuvinti · pavedimo taisyklė) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+## IRASAI (naujausi virsuje)
 
 ---
 
-## 0. SANTRAUKA
-
-| Blokas | ✅ | 🟡 | 🔴 | ⏸ laukia Raimio |
-|---|---|---|---|---|
-| Launch DoD (22) | 10 | 5 | 5 | 2 nematuota |
-| P0 funkcijos F1–F16 | 16 | 0 | 0 | — |
-| MVP funkcijos (§4.3) | 5 | 0 | 1 | — |
-| El. laiškų šablonai | 8 | 1 | 9 | — |
-| M8 anketa (9 punktai) | 9 | 0 | 0 | tekstai |
-| Pre-launch operacijos | 0 | 2 | 9 | — |
-
-**Vienu sakiniu:** kodas beveik padarytas, testavimo/operacijų sluoksnis dalinai, ir
-**TŽ auditas 2026-08-04 rado 9 blokus, kurių registre nebuvo (§11)** — tarp jų vienas P0.
+## 2026-08-19 (naktis V) — LAISKAI, PAVEDIMAI, SEPTYNI KLAIDINGI VERDIKTAI [S1143-S1155]
 
 ---
 
-## 1. TAISYKLĖS (kaip šis failas gyvena)
+### ⏰ RYTOJ (2026-08-20)
 
-1. **Būseną keičia TIK įrodymas su data.** „Mechanizmas egzistuoja" ≠ „sistema tai daro".
-   Prieš žymint ✅ atsakyti: kas paleidžia · ar kelias pasiekiamas · kas jei neįvyksta · ar rezultatas patvirtintas.
-2. **Kiekviena nauja rasta spraga rašoma ČIA** tą pačią sesiją, ne tik sesijos pasakojime.
-3. **Sesijos pabaigoje Claude atnaujina TIK šį failą** (pilnu perrašymu) + prideda istorijos bloką į STATE.md.
-4. **ID nekeičiami niekada.** Užbaigtas darbas lieka lentelėje su ✅ ir data — netrinamas.
-6. **JOKIU MOKAMU PLUGINU, PASLAUGU AR PRENUMERATU BE RAIMIO ZINIOS.** Tai 100%
-   jo sprendimas. Konsultanto rekomendacija, kad ir kaip detali — **pasiulymas, ne
-   nurodymas**. Pries diegiant bet ka, kas kainuoja arba isveza duomenis pas isorini
-   tiekeja, Claude klausia patvirtinimo tiesiogiai. (Kilme: 2026-08-03 idiegtas
-   WP Umbrella pagal perduota konsultanto teksta — Raimis apie tai nezinojo.
-   Pasalintas ta pacia diena, `s368.json`.)
-7. **Vienas langas — vienas tiltas.** Prieš `dispatch` patikrinti, ar `screenshot.mjs` HEAD commit yra mano paskutinis PUT. Jei ne — STOP.
+```
+1. kiek pavadinimu su &amp; grizo po nakties ZB importo   (siandien: 0)
+2. tipu-zurnalas.json — Array-to-string saknis
+3. petshop-tipu-zurnalas.php PASALINTI, kai priezastis aiski
+4. DOD-20 stabilumo serija uzsidaro 2026-08-24
+5. SPRENDIMAS: petshop-nepamoketi.php — salinti ar palikti
+6. SPRENDIMAS: zyme „3+ paros\" prie eiles „Neapmoketi\"
+```
 
 ---
 
-## 2. LAUNCH DoD (TŽ §19.1) — 22 punktai
+### S1143 — KLIENTU LAISKU PATIKRA
 
-| ID | Kriterijus | Būsena | Data | Įrodymas / kas trūksta |
-|---|---|---|---|---|
-| DOD-01 | P0 funkcijos F1–F16 100% | ✅ | 2026-08-04 | F4 ✅ F14 ✅ · Identity P0 įvykdytas magic link (§11 G1) |
-| DOD-02 | Kritinių klaidų 0 | 🟡 | 2026-08-19 | **DABAR MATUOJAMA** (`ps_sargas_klaidos`, §8u): 2 fatal per 2,5 d. — (1) atminties limitas `/feed/kaina24/` 08-17, **po feed v2.2.0 pataisos nepasikartojo**; (2) `exec()` — Claude paleidimas, ne sistemos. Realių kritinių klaidų **0** |
-| P1-MYISAM | MyISAM → InnoDB migracija | ✅ | 2026-08-17 | **UŽDARYTA.** 177/177 konvertuota, 0 klaidų, 16,4 s. Visa bazė 191 InnoDB. Sargas `petshop-innodb.php` v1.0 neleidžia naujoms gimti MyISAM (§8j) |
-| DOD-03 | Aukšto prioriteto klaidų ≤3 | 🟡 | 2026-08-19 | 5 warning parašai / 50 įvykių, visi `Array to string conversion` mūsų moduliuose. Deprecated 10 953 — 85 % iš `postit` plugino (PHP 8.3 nesuderinamumas) |
-| DOD-04 | 20 testinių užsakymų | 🟡 | 2026-08-04 | **20/20 sukurta, 0 klaidų** (§13). Po patikros IŠTRINTI Raimio nurodymu. Programinis kelias — checkout/pristatymo atrinkimas NEPATIKRINTAS |
-| DOD-05 | 2 stabilūs pristatymo būdai | ✅ | 2026-06-01 | Venipak + LP Express live |
-| DOD-06 | Paysera + bankinis | ✅ | 2026-06-01 | — |
-| DOD-07 | Top-100 SEO 301 | ✅ | 2026-08-04 | 937 keliai · 5 863 clicks · 6 sluoksniai (§12). GSC padengimas: 68,5% srauto veikia arba nukreipta; 4 037 clicks = turinio nebėra (teisingas 404) |
-| DOD-08 | Backup restore testas | ✅ | 2026-08-04 | Pilna grandinė įrodyta: skriptas (§8f) · cron 0 4 * * * · gedimo pranešimai · **atstatymo testas 174/174 (§8g)**. Apribojimas: rtst_ prefiksas, ne švari DB |
-| DOD-09 | XML sync 7 d. be klaidų | 🟡 | 2026-08-04 | **Serijos ĮRODYTI NEĮMANOMA** — pmxi_history laiko ~19 įrašų, `_vf_last_sync` perrašomas. Įdiegtas kaupiamasis žurnalas (§13); serija kaupsis. Sąveika su pardavimais — tik po launch |
-| DOD-10 | Kainodara testuota 20 produktų | ✅ | 2026-07-30 | **UŽDARYTA AUDITU, stipresniu už 20 imtį:** 1 050 prekių su savikaina · 0 neigiamų maržų · 0 žemiau 20% · tipinė ~45%. Formulės atitikties NETIKRINTI (§14) |
-| DOD-11 | Manual override 5 produktais | 🟡 | 2026-08-03 | 2 iš 5 (14824, 33249 per R5) |
-| DOD-12 | Savininkas apdoroja užsakymą be programuotojo | 🟡 | 2026-08-04 | Techninė pusė patikrinta (§14). Rankinis kelias — TIK Raimis, kontrolinis lapas `DOD12_kontrolinis_lapas.md` |
-| DOD-13 | Post-launch monitoringas | 🟡 | 2026-08-19 | **PHP klaidų sekimas ✅ VEIKIA** — `petshop-sargas.php` v1.2 (15 389 B), lentelė `ps_sargas_klaidos` rašo iki šiol, cron sargas 59/59 be vėlavimo (§8u). **Trūksta tik išorinio uptime** — UptimeRobot, savininko pusė |
-| DOD-14 | Mail-Tester ≥8/10 | ✅ | 2026-07-30 | 8,5/10 |
-| DOD-15 | GDPR atitiktis | ✅ | 2026-07-10 | Complianz v7.5.0 + 8 legal psl. |
-| DOD-16 | VMI sąskaitos su realia transakcija | ✅ | 2026-06 | AVPN/IAPV testuota |
-| DOD-17 | Beta testas 5–10 klientų | 🔴 | — | nepradėta |
-| DOD-18 | DNS planas + sena platforma | 🟡 | 2026-08-17 | **PLANAS PARAŠYTAS** (`dokumentai/DOD-18_perjungimas.md`). Naktinis, su patikromis. Sena platforma IŠJUNGIAMA (ne read-only). Blokuoja F-PSR |
-| DOD-19 | Rollback planas | ✅ | 2026-08-19 | **v2.2.** v2.1 buvo ✅ su dviem 🔴 §8 punktais; abu uždaryti tą pačią naktį: (1) **priežiūros režimo jungiklis ĮDIEGTAS** — `petshop-prieziura.php` v1.0.1, vėliava failu `uploads/ps-prieziura.flag`, 503+Retry-After, `wc-api` ir REST praleidžiami (§8y); (2) **atstatymo apribojimai IŠMATUOTI** — DB kūrimo teisės nėra (patvirtinta empiriškai), bazės koduotė **latin1** (buvo „nepatikrinta"). Liko vienas savininko veiksmas DirectAdmin'e |
-| DOD-20 | Savaitinis stabilumas ≥99% | 🟡 | 2026-08-19 | **Laikrodis paleistas 2026-08-17 19:23.** Praėjo 2,5 d. iš 7 → serija užsidaro **2026-08-24**. Kol kas: 0 vėluojančių cron, frontas 200, 0 fatal po 08-18 |
-| DOD-21 | GSC auditas + top-100 301 lentelė | 🟡 ~70% | 2026-07-30 | eksportas yra, mapping juodraštis ne |
-| DOD-22 | „Discourage search engines" išjungti | 🔴 | — | pre-launch, viena varnelė |
+Ta pati klase kaip taisykliu puslapis: ar laiskas apskritai IJUNGTAS.
+
+```
+processing ✅ completed ✅ refunded ✅ cancelled ✅
+new_account ✅ reset_password ✅ note ✅ verify_email ✅
+on_hold NE · failed NE · invoice NE
+```
 
 ---
 
-## 3. FUNKCIJOS
+### S1144 — ★ KLAIDINGAS VERDIKTAS: „BACS REKVIZITU NERA\" ★
 
-### P0 (F1–F16)
-| ID | Funkcija | Būsena | Data | Pastaba |
-|---|---|---|---|---|
-| F4 | Paieška + SKU/EAN | ✅ | 2026-08-03 | Tikslus atitikmuo (NE euristika pagal ilgį): Woo SKU + global_unique_id lookup + legacy `_ean`/`_vf_barcode`/`_zb_ean`. Vienas produktas → 302; keli → sąrašas + dublikatų žurnalas; be atitikmens tekstinė paieška nepaliesta |
-| F14 | Mobile checkout | ✅ | 2026-08-03 | Playwright 390×844 iPhone UA, pilnas svečio kelias iki užsakymo 34793 (bacs). 10/10 + hScroll 0/11, uždengtų CTA 0, 1 POST, sumos sutampa, paštomatas išlieka. `s374.json` |
-| — | F1–F3, F5–F13, F15, F16 | ✅ | — | — |
-| F-PSR | Paysera pilnas mokėjimo ciklas (redirect → callback → `processing`) | 🟡 | 2026-08-19 | **IŠMATUOTA (§8v).** Konfigūracija PILNA: projektas 29276, slaptažodis 32 simb., gateway įjungtas, EUR. Užsakymas sukuriamas prieš nukreipimą (35003, 2,21 €, `pending`, „Mokėjimas internetu") — grandinė iki Paysera VEIKIA. Testas iš `dev.avesa.lt` **neįmanomas**: Paysera projekte adresai įrašyti fiksuotai, grąžina `bad_referer` (0x13). Savininko sprendimas: netestuoti, **tikrinti perjungimo naktį** pagal §8v procedūrą |
+Paskelbiau: „veikiantis mokejimo budas, kuriuo neimanoma sumoketi\".
+Savininkas atsiunte REALU laiska su rekvizitais.
 
-### MVP (TŽ §4.3)
-| ID | Funkcija | Būsena | Data | Pastaba |
-|---|---|---|---|---|
-| F17 | XML 2-as tiekėjas | ✅ | — | VF 1077 prekės |
-| F18 | Kaina24 / kainos.lt | ✅ | — | URL resubmit po migracijos |
-| F19 | **Ribota prenumerata** | 🔴 | — | **NEPRADĖTA. Didžiausias likęs kodo blokas.** Blokuoja Q10 + Q6 + Paysera Recurring |
-| F20 | Basic Pet Profile | ✅✅ | 2026-08-03 | M8 gerokai viršyta |
-| F21 | Basic email automation | ✅ 3/3 | 2026-08-02 | cart_abandoned · post_purchase · refill |
-| F30b | Atsiliepimai | ✅ | 2026-08-04 | Patikrinta gyvai: reviews=yes · verified buyers only=yes · rating=yes |
+Perziurejus **16 676 failus** (temos + VISI pluginai + mu-plugins):
+```
+themes/flatsome-child/functions.php
+  416: 'Mokejimo rekvizitai:'
+  419: 'Bankas: AB Swedbank'
+  420: 'Saskaita: LT127300010124940593'
+  442: $heading = 'Uzsakymas gautas, aciu!'
+```
+Rekvizitai TEMOS kode, ne `woocommerce_bacs_accounts`. Todel standartinis
+laukas ir buvo tuscias. `customer_on_hold_order` isjungtas SAMONINGAI.
+
+**Kur suklydau:** ieskojau tik `mu-plugins` ir `petshop-core` — dviejuose
+kataloguose is daugelio.
+
+> **🔒 `mu-plugins` + `petshop-core` NERA visa sistema.** Flatsome child tema
+> siame projekte turi daug logikos.
 
 ---
 
-## 4. M8 ANKETA — UŽDARYTA 9/9
+### S1145 — ★ KREPSELIO ATSAUKIMAS: IRODYTA ★
 
-| # | Darbas | Būsena | Įrodymas |
+Savininko klausimas: „o tikrai krepselis pasinaikins po 90 min?\"
+
+```
+uzsakymas 35003 · paysera
+sukurta   2026-08-19 12:11
+atsaukta  2026-08-19 13:50   (99 min)
+pastaba   „Neapmoketas uzsakymas atsauktas, baigesi laukimo laikas.\"
+          „Email „Atsauktas uzsakymas\" sent.\"
+
+Action Scheduler: 751 sekmingas ciklas nuo 2026-07-19, kas valanda
+```
+
+**Kodel 99, ne 90:** uzduotis sukasi kas valanda → atsaukiama artimiausiu
+ciklu po ribos (90–150 min).
+
+⚠️ `get_unpaid_orders_gmt` naudoja `date_updated_gmt`, ne sukurimo data —
+paliestas uzsakymas pradeda laikrodi is naujo.
+
+---
+
+### S1146 — ★ BACS 3 PARU TAISYKLE NEVEIKS NIEKADA ★
+
+`OrdersTableDataStore::get_unpaid_orders_gmt()` 1208-1210:
+```sql
+AND status = %s   →   OrderInternalStatus::PENDING
+```
+**TIK `pending`.** Bacs uzsakymas yra `on-hold` → i atranka nepatenka.
+Realus bandymas: `get_unpaid_orders(90 min)` grazino **0**.
+
+Vadinasi `petshop-nepamoketi.php` filtras NIEKADA nepasieks. Modulis moka
+tik sulaikyti atsaukima, sukelti — ne.
+
+**Pasekme:** `on-hold` uzsakymai kaupiasi neribotai, prekes juose nurasytos.
+
+---
+
+### S1147 — SAVININKO MODELIS: EILE SU ZYME, NE AUTOMATINIS ATSAUKIMAS
+
+```
+eile „Neapmoketi\" (JAU YRA)
+   + zyme „bankinis pavedimas, laukia 3+ paras\"    ← naujas
+   + mygtukas „Atsaukti\"                            ← JAU YRA (§35.3)
+   + prekes grizta i likuti                         ← JAU YRA
+   + vienas priminimas per 48 val.                  ← dunning-1 GULI PARUOSTAS
+```
+
+**Savininko principas:** „as paprastinu sistema, o ne ja sunkinu\" — bet
+kalbant apie DARBA ATEITYJE. Automatika = maziau savininko veiksmu.
+
+Mano pirmine reakcija („del vieno uzsakymo nestatom automatikos\") buvo
+klaidinga: ziurejau i dabartine apimti, savininkas — i busima darba.
+
+---
+
+### S1148 — SALUTINIAI: MENIU, ACTION SCHEDULER, KUPONAI
+
+```
+meniu 79 punktai · 12 su `#` = mega-meniu antrastes (normalu)
+      isskyrus „Susideok savo rinkini\" — ⏸ ar turi vesti?
+AS    37 174 ivykdyta · 6 nepavyko (visi wpo-wcpdf, paskutinis 06-25)
+kuponai 0 · vartotojai 34+1+1
+wc_reserved_stock: 1 uzstriges irasas is 07-10, galiojimas baiges — nekenkia
+```
+
+---
+
+### S1149-S1155 — ★★★ SEPTYNI KLAIDINGI VERDIKTAI PER DIENA ★★★
+
+| # | Paskelbiau | Realiai | Kodel |
 |---|---|---|---|
-| 1 | `create_pet_result()` atskyrimas | ✅ | 6/6 paritetas su baseline |
-| 2 | UNIQUE(client_ref) + duplicate-key recovery | ✅ | 8/8 su lenktynių simuliacija |
-| 3 | POST /pet-draft | ✅ | 31/31 |
-| 4 | magic-login priima draft_id | ✅ | 10/10 |
-| 5 | Claim grandinė + state cleanup | ✅ | 17/17 |
-| 6 | pet-form.js serverinis draftas | ✅ | S1 realiu keliu ant SHA `4bf522cc` |
-| 7 | Cron cleanup + stale claim recovery | ✅ | 10/10 |
-| 8 | E2E dviem įrenginiais + neigiami keliai | ✅ | E0-A/E0-B/paritetas/N1/N2/N3/N4 — `s352.json`, `s353.json` |
-| 9 | duplicate_candidate ekranas | ✅ | D1/D2 naršyklėje — `s360.json` |
-| 9b | **Tekstai: landing peržiūra + „14 dienų"** | ⏸ | **RAIMIO** |
+| 1 | SSL raudonas | procedura patvirtinta | neperskaiciau DOD-19 §7c |
+| 2 | „55 % pasiruose\" | be pagrindo | ispudis, ne skaiciavimas |
+| 3 | BreadcrumbList nera | kategorijose BUVO | tikrinau tik pradini psl. |
+| 4 | `/krepselis/` 404 | `/cart/` ir buvo tikrasis | spejau adresa |
+| 5 | free_shipping off → luze | veikia per vezejus | **atsakymas buvo eilute zemiau** |
+| 6 | cron neveikia | Action Scheduler | ne ta planuokle |
+| 7 | bacs rekvizitu nera | yra temos kode | 2 katalogai is daugelio |
+
+**Visos septynios — MATAVIMO, ne kodo klaidos.**
+
+> 🔒 **METODINE TAISYKLE:**
+> ```
+> 1. perskaityk VISA savo isvesti pries darydamas isvada is pirmos eilutes
+> 2. patikrink, ar matuoji TEISINGOJE vietoje
+>    (puslapio tipas · planuokle · katalogas · statusas)
+> 3. nulinis rezultatas itartinesnis uz bloga — pirma patikrink matavima
+> ```
+
+**Sesijos pastebejimas:** naudingiausias irankis nebuvo tiltas. Tai buvo
+savininko klausimai — „kur cia?\", „neteisus, skaityk\", „meluoji\",
+„o tikrai?\". Kiekvienas pataise MATAVIMA, ne koda.
+
+Auksciausias decision Nr.: **S1155.**
 
 ---
 
-## 5. EL. LAIŠKŲ SLUOKSNIS
+## 2026-08-19 (naktis IV) — NUSTATYMU SPRAGOS, ADRESAI, NEAPMOKETI [S1131-S1142]
 
-**Principas (TŽ v1.60, užrakinta):** šablonai gyvena `petshop-core/templates/emails/`, Sender = tik transportas. Sender workflow'ai nenaudojami.
-
-Transportas ✅: adapteris `Petshop_Sender_Adapter` v0.4.0, `is_configured=true`, DKIM/SPF/Reply-To įrodyti, Mail-Tester 8,5/10.
-
-| Šablonas | Būsena | Prioritetas |
-|---|---|---|
-| order-paid · refill · cart-abandoned-1 · cart-abandoned-2 · post-purchase-2d | ✅ 5 | — |
-| **consent-changed · dunning-1 · founding** | ✅ 3 · 2026-08-04 | §8i |
-| payment_failed → dunning-1 | 🟡 | Šablonas ✅, BET `payment_failed` ĮVYKIO DB NĖRA VISAI — niekas jo neiškviečia (§8i) |
-| founding_activation → founding | ✅ | Šablonas veikia; laukia rugpjūčio waitlist arkos |
-| consent_changed | ✅ | Šablonas veikia, grandinė įrodyta WOULD_SEND (§8i) |
-| shipment_returned · pet_reminder_due · subscription_t5_notice | 🔴 | subscription_t5 priklauso nuo F19 |
-| post_purchase_7d · post_purchase_14d | 🔴 | po launch |
-| win_back_60/90/120 · legacy_reactivation_l1 | 🔴 | po launch |
-| order_shipped | ⚪ sąmoningai | siunčia WooCommerce |
-
-**Naujienlaiškis:** ✅ PADARYTA 2026-08-04 — poraštės forma + launch modalas (§8j). Vokelio ikona SĄMONINGAI negrąžinta.
-
-**Sender skola:** tracking CNAME. Nuorodos eina per bendrą `campaign-statistics.com`. Hostname **kopijuoti iš Sender nustatymų**, ne iš užrašų (mūsų įrašas: `link.petshop.lt`).
+Sesija atsake i savininko klausima „o kas dar tokio gali buti?\" — ir paaiskejo,
+kad taisykliu puslapis nebuvo pavienis atvejis, o KLASE.
 
 ---
 
-## 6. AUDITO RADINIAI (2026-08-02)
+### S1131 — ★ NAUJA KLAIDU KLASE ★
 
-| ID | Radinys | Būsena | Pastaba |
-|---|---|---|---|
-| R1 | F4 SKU/EAN paieška | ✅ 2026-08-03 | `mu-plugins/petshop-code-search.php` v1.0, sha e141c4ae. Matrica 13/13, `s366.json` |
-| R2 | 1518 / 2764 publish prekių be EAN (55%) | ⏸ | **iš kur imti — Raimio sprendimas** |
-| R3 | Backup pluginas neįdiegtas | ✅ 2026-08-04 | Pluginas NEREIKALINGAS. Savas skriptas + B2 + atstatymo testas (§8f, §8g) |
-| R4 | Monitoringo nėra | 🟡 | PHP klaidų sekimas veikia; lieka išorinis uptime (§8u) |
-| R5 | 5 publish prekės be kainos | ✅ 2026-08-03 | 2 kainos pagal medianą (16,49 / 18,99, `_manual_price_override`), 3 į draft. publish be kainos 5→0. `s364.json` |
-| R6 | F19 prenumerata nepradėta | 🔴 | = F19 |
-| R7 | 1022 draft prekės | ⏸ | publish / trinti / palikti — Raimio |
+```
+nustatymas EGZISTUOJA, bet niekada nebuvo priskirtas arba rodo i sena vieta
+```
 
----
+Nelauzia nieko. Zurnale tuscia. Testai zali. Pasirodo tik ta akimirka, kai
+jo prireikia — o prireikia PIRMA DIENA, su realiu klientu.
 
-## 7. SEO MIGRACIJA
-
-Padaryta ~70–80%: GSC eksportas (2445 URL), top-100 auditas, redirect probe, 33/36 blog straipsnių, 2 veikiantys 301 snippetai.
-
-**Rizika:** top-100 dengia 79,2% srauto. Prieš dev: 56 URL = 200, **44 URL = 404 → 20,5% viso srauto neuždengta.**
-
-Trys tipai: (1) kategorijos, kurių dev'e nėra — **ar jos apskritai bus, Raimio sprendimas**; (2) seni kategorijų URL su ID uodegomis — grynas 301; (3) prekės — EAN/SKU match.
-
-Trūksta 3 blog straipsnių. Galutinis 301 failas generuojamas T-14/T-3, kai katalogas užšaldytas. **Nepradėti be Raimio.**
-
-**2026-08-18 papildyta — on-page SEO sluoksnis pastatytas (§8o):**
-
-| Sluoksnis | Būklė |
-|---|---|
-| SEO pluginas | ✅ Rank Math v1.0.276, nemokama, 3 moduliai |
-| Prekių title | ✅ 2 607/2 607 iš šablono |
-| Prekių meta aprašymai | ✅ 2 607/2 607 (45 % optimalaus ilgio, 14 % per trumpi) |
-| Sitemap | ✅ 5 failai, kategorijos + gamintojai įtraukti |
-| Kategorijų aprašymai | ✅ 56 (5 hub'ai turi įvadą viršuje; 19 sąmoningai be teksto) |
-| Kategorijų meta | ✅ 56, savi — seni iš petshop.lt NEKELTI (§8p) |
-| Aprašymo vieta puslapyje | ✅ po prekių tinklelio, su išskleidimu (mu-plugin v1.1.0) |
-| Pradinio psl. title | 🔴 „Pagrindinis (test)" |
-| og:image | 🔴 nėra numatytojo |
-
-**PATAISYTA 2026-08-18 (vakaras):** sesijos metu buvo kartojama, kad „GSC
-eksportas blokuoja" — tai **klaidinga**. Eksportas padarytas 2026-07-30:
-**2 445 URL / 19 735 paspaudimai** (§12). Teiginys atėjo iš TŽ MASTER teksto,
-kuris buvo teisingas liepą ir nuo tada pasenęs.
-
-**Vadinasi kategorijų P1 galima perskaičiuoti DABAR** — sujungiant §12 GSC
-duomenis su 55 senomis kategorijomis. Raimio laukti nereikia.
-
-✅ **PRIEŠTARAVIMAS IŠSPRĘSTAS 2026-08-18 (§8r):** išmatuota, ne perrašyta.
-**Abu buvo netikslūs.** §7 skaičius per mažas; §12 išvada „950 likusių — 404
-teisingas" neatlaikė: tarp jų buvo kategorijų ir brendų, kurie egzistuoja.
-Po taisymų senų adresų srauto danga **78 % → 95 %**.
+**Todel atliktas atskiras NUSTATYMU PILNUMO auditas (H118)** — ne „ar veikia\",
+o „ar apskritai uzpildyta\". Vienas patikrinimas — sesi radiniai.
 
 ---
 
-## 8. PRE-LAUNCH OPERACIJOS
+### S1132 — ✅ TAISYKLIU PUSLAPIS PRISKIRTAS
 
-| ID | Operacija | Būsena |
-|---|---|---|
-| OPS-01 | Site URL/Home → `https://petshop.lt` (**būtinai https**) | 🔴 |
-| OPS-02 | **12 cron užduočių** serveriai.lt — patikslinta 2026-08-04 (žr. §8e) | 🔴 |
-| OPS-03 | `woocommerce_email_header_image` · `wcdn_settings` · `cmplz_preloaded_privacy_info` | 🔴 |
-| OPS-04 | AVPN/IAPV serijos reset į 101 | 🔴 |
-| OPS-05 | Testinių užsakymų trynimas | 🔴 |
-| OPS-06 | Feed URL resubmit (Kaina24, Kainos.lt, Google) | 🟡 **variklis veikia** (petshop-feeds v2.1.0, §8n). Lieka: paduoti `https://petshop.lt/feed/...` po perjungimo |
-| OPS-07 | „Discourage search engines" išjungti | 🔴 (= DOD-22) |
-| OPS-08 | Sender tracking CNAME | 🟡 |
-| OPS-09 | Complianz Website Scan + slapukų sąrašas · enhanced conversions | 🟡 |
-| OPS-10 | Flatsome social nuorodos (dabar placeholder'iai `http://url`) | 🔴 laukia Raimio nuorodų |
-| OPS-11 | TEMP snippetų trynimas WP admin (REST DELETE neveikia) | 🔴 higiena: 2136–2139, 2141–2160 |
-| OPS-13 | **Priežiūros režimas** — įdiegtas ir patikrintas (§8y). Naudojimas: sukurti/ištrinti `uploads/ps-prieziura.flag` | ✅ 2026-08-19 |
-| OPS-14 | **Tilto adresas** — workflow'e `WP_URL` secret. Perjungus nustatyti `https://petshop.lt` | 🟡 paruošta |
-| OPS-15 | **27 aktyvūs pluginai** vs TŽ §11.4 riba ≤25 — peržiūrėti | 🔴 |
-| OPS-18 | `force_ssl_checkout` → `yes` po perjungimo (§8bb) | 🔴 T-0 |
-| OPS-19 | `/product/ps-testas-1-eur/` — Paysera testinė prekė pašalinti (§8bb) | 🔴 |
-| OPS-20 | `petshop-tipu-zurnalas.php` PAŠALINTI, kai Array-to-string priežastis nustatyta | 🟡 |
-| OPS-16 | **robots.txt po perjungimo** — virtualus, keisis savaime (§8z). Po T-0 patikrinti 1 min. | 🟡 patikra |
-| OPS-17 | **NF1–NF4 greičio matavimas** — įmanomas TIK po perjungimo (dev sertifikatas negalioja, §8z) | ⏸ po T-0 |
-| OPS-12 | `gaj6_umbrella_redirects` — kilmė patvirtinta, IŠTRINTA 2026-08-04 (§13). Lentelių 174→173 | ✅ |
+`woocommerce_terms_page_id` buvo **NENUSTATYTA** → 34524 „Pirkimo salygos ir
+taisykles\". Be jo kasoje nebuvo su kuo susieti „sutinku su taisyklemis\"
+varneles. Teisiniai puslapiai egzistavo nuo liepos — tik niekas ju nepriskyre.
 
-**DNS — IŠTAISYTA 2026-08-17 (išmatuota, ne prielaida):** zoną valdo
-`ns1–ns4.serveriai.lt`. Ankstesnis įrašas „DNS valdomas iv.lt" NETIKSLUS —
-iv.lt greičiausiai registratorius. **A įrašą keičiam SAVO DirectAdmin'e**,
-be trečios šalies. Žr. §8l.
+Rasta atsitiktinai, tikrinant krepselio adresa.
 
 ---
 
-## 8b. BACKUP FAKTINĖ BŪKLĖ (išmatuota 2026-08-03, NE prielaidos)
+### S1133 — ★ PRIVATUMO POLITIKA VEDE I JUODRASTI ★
 
-> **KLAIDA, KURIĄ REIKĖJO IŠTAISYTI:** iki 2026-08-03 registre ir pokalbiuose buvo
-> teigiama „0 backup pluginų / jokių kopijų nėra". **Netiesa.** Installatron kas
-> kelias dienas daro pilnas kopijas — niekas apie tai nežinojo, nes jos nematomos
-> DirectAdmin backup ekrane. Prieš teigiant „nėra" — PAMATUOTI.
-
-### Kas realiai yra
 ```
-/home/gyvunai2/application_backups/          34 216 MB · katalogas RAŠOMAS
-  app_dev-avesa-lt_Petshop-NEW_2026-08-03_05-22-45.tar.gz   8 180 MB  (02:31)
-  app_dev-avesa-lt_Petshop-NEW_2026-07-30_17-22-13.tar.gz   8 174 MB
-  app_dev-avesa-lt_Petshop-NEW_2026-07-24_23-23-20.tar.gz   8 173 MB
-  app_dev-avesa-lt_Petshop-NEW_2026-07-22_05-22-07.tar.gz   8 172 MB
-  app_sushimo-lt_Sushi-Mo_ ×3                                 505 MB kiekviena
-```
-Archyvo turinys patikrintas neišpakuojant (`s378.json`, 233 631 įrašų):
-```
-APP-DATA.SQL     121,4 MB   ← DUOMENŲ BAZĖ VIDUJE
-wp-content     8 795,0 MB   161 845 failų
-wp-includes       49,6 MB · wp-admin 8,9 MB · wp-config.php · .htaccess
-```
-**Kopija pilna** — failai + DB + konfigūracija.
-
-### Trys spragos (kodėl DOD-08 dar ne žalias)
-```
-1. LAIKYMO VIETA  tame pačiame serveryje -> serverio praradimas = kopijų praradimas
-2. DAŽNUMAS       kas 2-6 dienos (07-22, 07-24, 07-30, 08-03). Parduotuvei per reta
-3. NETESTUOTA     atstatymas niekada nebandytas -> vis dar prielaida, ne įrodymas
+buvo    wp_page_for_privacy_policy = 34526
+        pavadinimas  „Slapuku naudojimas\"
+        slug         slapuku-politika-old
+        busena       DRAFT
+        adresas      /?page_id=34526
+dabar   34525 „Privatumo politika\" · publish · /privatumo-politika/
 ```
 
-### Įrodyta rizika, ne teorinė
-2026-08-03 archyve `mu-plugins` yra 4 failai, serveryje — 6. Trūksta
-`petshop-pet-claim.php` (dublikato ekranas) ir `petshop-code-search.php` (F4),
-nes abu sukurti PO 02:31 kopijos. Atstačius iš jos dingtų abu — 12 KB iš 8 GB,
-niekas nepastebėtų. **mu-plugins turi būti atskiras punktas kiekviename
-atstatymo teste.**
+Complianz kadaise sukure 34526, veliau pakeite nauju 34591, senaji pervadino
+i `-old` ir nuvere i juodrasti. `wp_page_for_privacy_policy` liko rodyti i
+senaji.
 
-### DB eksportas — išmatuota
+**Kodel tai nebuvo tik teorija:**
 ```
-174 lentelės · 492 225 eilutės
-neuspausta 146,5 MB -> suspausta 13,96 MB (10,5:1)
-trukmė 18,4 s · atminties pikas 116 MB (riba 256 MB)
+woocommerce_checkout_privacy_policy_text      turi [privacy_policy]  TAIP
+woocommerce_registration_privacy_policy_text  turi [privacy_policy]  TAIP
 ```
-Grynu PHP, be `mysqldump`. 30 dienų kopijų ≈ 420 MB.
-
-### Hostingo ribos
-```
-SSH                IŠJUNGTAS (patvirtinta serveriai.lt) -> restic/rclone atkrenta
-DirectAdmin cron   tik URL arba PHP skriptas per /usr/local/bin/phpXX-cli
-                   -> shell komandų NĖRA, BET PHP skriptas gali viską, ko reikia
-open_basedir       /home/gyvunai2/:/tmp:/usr/share/pear
-serveriai.lt       serverio lygmens kopijos NĖRA garantuotas atkūrimo šaltinis
-                   (jų pačių formuluotė, klausta 2026-08-03)
-```
-
-### Vietos paskirstymas (65 GB mįslė išspręsta)
-```
-application_backups  34 216 MB  ← DĖL JŲ viršyta 10 GB riba pilnoms DA kopijoms
-imap                 16 015 MB
-domains              13 130 MB   avesa.lt 8 863 · gyvunai.lt 3 574 ·
-                                 sushimo.lt 675 · petshop.lt 17
-public_html           3 559 MB
-disko laisva            312 GB
-```
-**petshop.lt katalogas tik 17 MB** — tikroji parduotuvė gyvena po `avesa.lt`.
-Svarbu prieš domeno perjungimą.
-
-### Neišspręsta techninė detalė
-Išeinantis HTTPS iš serverio **NEPATIKRINTAS**. Bandymas (`s376`) pakabino
-svetainę 134 s ir bridge negavo atsakymo. Gali reikšti, kad išeinantys
-jungimai filtruojami ir „kabo" vietoj atmetimo. **Kartoti atsargiai:** po vieną
-kryptį, 5 s riba, atskirai nuo visko kito. Jei kabo — bet kuris į debesį
-siunčiantis sprendimas elgtųsi taip pat, ir tai paveiktų gyvą parduotuvę.
-
-### Kiti žingsniai (nė vienas nereikalauja pirkinio)
-```
-1. Installatron grafikas — koks dažnumas, ar galima padidinti be mokesčio
-2. Išeinantis HTTPS — atsargus pakartotinis testas
-3. Atstatymo testas — DB + failo žymekliai, mu-plugins atskirai
-4. DB eksportas už serverio ribų — lieka tik Q-BKP (kur laikyti)
-```
+Abu tekstai naudoja zyme, kuria WordPress keicia nuoroda. Vadinasi kasoje ir
+registracijoje nuoroda **realiai buvo rodoma ir vede i juodrasti** — tiksliai
+ten, kur zmogus sutinka su duomenu tvarkymu.
 
 ---
 
-## 8c. DB BACKUP — UŽRAKINTAS SPRENDIMAS (2026-08-03)
+### S1134 — KREPSELIO IR KASOS ADRESAI SULIETUVINTI
 
-> **STATUSAS: PASIRINKTAS SPRENDIMAS, NE UŽBAIGTAS BACKUPAS.**
-> Žalias tampa TIK po atstatymo testo (kriterijai apačioje).
-
-### Saugykla
 ```
-Backblaze B2 EU Central (Amsterdamas) · privatus bucketas · pirmi 10 GB nemokami
-Kasdienis serverio raktas: TIK tas bucketas · TIK petshop-backups/ prefiksas
-                           writeFiles · BE readFiles · BE deleteFiles
-Atstatymo raktas: read-only, serveryje NELAIKOMAS, tik slaptažodžių tvarkyklėje
-Master key serveryje NIEKADA
-Retencija: B2 Lifecycle Rule ~30 d. pagal prefiksą (datuoti vardai, ne versijos)
-           SKRIPTAS KOPIJŲ NETRINA — apsauga nuo ransomware
-```
-Vientisumas tikrinamas per B2 Native API: įkeliant pateikiamas SHA-1, atsakyme
-grąžinamas `contentLength` + `contentSha1` — patvirtinama BE skaitymo teisės.
-
-### Šifravimas
-```
-Šifruojama PRIEŠ įkeliant (ne tik gzip)
-Raktų failas: /home/gyvunai2/... UŽ public_html, chmod 600
-ANTRA rakto kopija PRIVALOMA kitoje vietoje (slaptažodžių tvarkyklė) —
-  vienintelė kopija tame pačiame hostinge padarytų B2 kopijas NEATKURIAMAS
-Raktai NIEKADA nerodomi pokalbyje
+/cart/      -> /krepselis/     (ID 12)
+/checkout/  -> /kasa/          (ID 13)
 ```
 
-### Apimtis
-```
-ĮTRAUKTI: visa DB (174 lentelės) + mu-plugins (156 KB)
-          + petshop-core (6 908 KB) + flatsome-child (737 KB)
-NEĮTRAUKTI: uploads · Flatsome pagrindinė tema · trečiųjų šalių pluginai
-            · raktų failas
-```
-Pirmoje versijoje NIEKO nepraleidžiama (nei `shortpixel_queue`, nei
-`actionscheduler_logs`) — optimizacija tik PO veikiančio restore testo.
+Adresai dabar nuoseklus: `/parduotuve/ /krepselis/ /kasa/ /paskyra/ /taisykles/`.
 
-### DB nuoseklumas — GLOBALUS UŽRAKTAS ATMESTAS
-```
-IŠMATUOTA (s381): LOCK TABLES READ visoms 174 lentelėms SUSTABDĖ svetainę.
-  Užklausa negrįžo per 45 s; lygiagreti patikra grąžino 000 (jokio atsakymo).
-  Priežastis: READ užraktas MyISAM blokuoja rašymus, o WP rašo beveik
-  kiekvienoje užklausoje (sesijos, transientai, options).
-  Svetainė po testo sveika: / 200 · /parduotuve/ 200 · /cart/ 200 · REST 200.
+**Priklausomybiu patikra PRIES keiciant (H108):** temos failai 0, mu-plugins 0,
+postmeta 0, posts 0; vienintelis snippetas su `/cart/` mini ji **komentare**,
+o kodas naudoja `is_cart()`.
 
-KLAIDA, KURIĄ REIKIA ŽINOTI: teiginys „sustos ~18 s" BUVO NEPAGRĮSTAS —
-  18 s buvo NEUŽRAKINTO eksporto trukmė. Kiek truktų laukimas užraktų —
-  NEIŠMATUOTA. Neteigti to, kas nepamatuota.
-```
-**v1 metodas:**
-```
-InnoDB (14 lentelių, 3,2 MB)   → viena REPEATABLE READ consistent snapshot
-MyISAM (160 lentelių, 131,9 MB) → lentelė po lentelės, srautiniu SELECT,
-                                  BE globalaus explicit LOCK TABLES
-Kopija žymima: consistency = mixed_engine_best_effort
-               NE „transakcinis snapshot" — mišrioje DB tai netiesa
-```
-`READ LOCAL` netinka: leidžia lygiagrečius INSERT į MyISAM, bet neatlaisvina
-UPDATE/DELETE, kurių WP naudoja daug.
+`wc_get_cart_url()` ir `wc_get_checkout_url()` persitvarke **pacios** —
+WooCommerce adresa sudaro is puslapio ID.
 
-### Koduotė
-```
-DB numatytoji latin1 / latin1_swedish_ci, BET lentelės utf8mb4 (172 iš 174
-  utf8mb4_unicode_520_ci, 2 utf8mb4_general_ci)
-Eksporto jungtis: mysqli_set_charset(...,'utf8mb4') + patikrinti
-  @@character_set_client/connection/results
-Dump antraštėje: SET NAMES utf8mb4
-Atkuriant: jungtis taip pat utf8mb4; tikrinti lietuviškas raides, emoji
-  ir PHP serialized reikšmes
-```
-
-### Manifestas prie KIEKVIENOS kopijos
-```
-consistency: mixed_engine_best_effort · export_started_at · export_finished_at
-lentelių sąrašas su ENGINE · eilučių skaičiai · eksporto klaidos
-kodo failų SHA-256
-```
-Jei bent viena lentelė neperskaitoma arba eksportas nutrūksta — archyvas
-NEŽYMIMAS sėkmingu ir „backup OK" pranešimas NESIUNČIAMAS.
-
-### Žalias TIK po
-```
-tikro įkėlimo į B2 · hash ir dydžio patvirtinimo
-gedimo pranešimo testo IR „cron visai nepasileido" perspėjimo testo
-atstatymo į VISIŠKAI ŠVARIĄ DB (ne ant esamos)
-schemų + 174 lentelių eilučių skaičių palyginimo
-kritinių lentelių kontrolinių sumų (ps_pets, ps_feeding_rows, wc_orders, postmeta)
-custom kodo failų SHA-256 palyginimo
-```
-
-### Techninė aplinka (išmatuota, ne prielaidos)
-```
-cURL 8.5.0 · OpenSSL 1.0.2k-fips · allow_url_fopen=1
-gzopen · gzencode · curl_init · mysqli_connect · fsockopen — VISI yra
-disable_functions: link, symlink, exec, passthru, proc_*, shell_exec, system, popen
-WP_HTTP_BLOCK_EXTERNAL neapibrėžta
-Išeinantis HTTPS VEIKIA (s379): github · b2api · wasabi · google · sender · wporg
-  visi DNS OK, TCP:443 OK, TLS OK. Ankstesnis 134 s kabėjimas — laikinas epizodas.
-Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp — visos rašomos
-DB eksportas PHP: 146,5 MB → 13,96 MB (10,5:1), 18,4 s, atmintis 116/256 MB
-NEPATIKRINTA: LOCK TABLES teisė (SHOW GRANTS neįvykdytas — testas nutrūko)
-```
-
-### P1 MyISAM → InnoDB — UŽDARYTA 2026-08-17 (žr. §8j)
-```
-Buvo: 160/174 (matuota 08-03) → 177/191 (matuota 08-17).
-Dabar: 191 lentelė InnoDB, MyISAM 0.
-Planuota eiga „konvertuoti klone" NEĮVYKDYTA IR NEBUVO ĮMANOMA:
-WP vartotojas turi GRANT ALL tik gyvunai2_nbpe1.* — naujos DB kurti negali.
-Atsitraukimo kelias vietoj klono: automatinis backup į B2 (§8f), paskutinė
-kopija prieš darbą 08-17 01:00, sargas patvirtino OK.
-Rezultatas: DB backupas nuo šiol yra nuoseklus InnoDB snapshotas BE
-svetainės stabdymo — pagrindinis §8c argumentas įvykdytas.
-```
+**GSC patikra:** senoji petshop.lt krepseli turejo adresu
+`/index.php?route=checkout/cart` (68 parodymai, 0 paspaudimu). Nei `/cart/`,
+nei `/krepselis/` GSC eksporte (2 445 URL) NERA → §0.6 nepazeidziamas.
 
 ---
 
-## 8j. MyISAM → InnoDB — ĮVYKDYTA (2026-08-17) [S902–S912]
+### S1135 — ★ MANO KLAIDA: ATSAKYMAS BUVO MANO PACIO ISVESTYJE ★
 
+Paskelbiau: „free_shipping isjungtas — nemokamas pristatymas gali neveikti\".
+
+Savininkas: „skaityk kas juostoj parasyta, o ne isgalvok\".
+
+Toje pacioje isvestyje, EILUTE ZEMIAU:
 ```
-PRIEŠ   177 MyISAM · 14 InnoDB · 156,4 MB MyISAM
-PO      191 InnoDB · MyISAM 0 · 314,3 MB (~2×, laisva 35 GB)
-Trukmė  16,4 s trimis paketais · klaidų 0 · neatsivertusių 0
+zona „Lietuva\":
+  free_shipping                            (off)
+  shopup_venipak_shipping_courier_method   (ON)  x4
+  shopup_venipak_shipping_pickup_method    (ON)
+  woo_lithuaniapost_lpexpress_terminal     (ON)  x2
 ```
+Septyni aktyvus metodai. Nemokamas pristatymas nuo €30 i pastomatus veikia per
+VEZEJU metodus; `free_shipping` isjungtas SAMONINGAI.
 
-**Kodėl nebuvo blokerių** (išmatuota S905, ne prielaida):
-```
-FULLTEXT indeksų MyISAM lentelėse   0
-indeksų virš 3072 B                 0
-koduotės                            visos utf8mb4
-MariaDB 10.6.17 · innodb_file_per_table=1 · buffer_pool 4 GB
-```
-
-**Paketai:** bak+ps+woo 75 (2,8 s) · as+kita 90 (8,7 s) · wp_core 12 (4,9 s).
-Kiekvienai lentelei `COUNT(*)` prieš → ALTER → variklio patikra → `COUNT(*)` po.
-
-**Nepriklausoma patikra:** 177 lentelių eilutės prieš/po — 8 skirtumai, VISI
-į didėjimo pusę. Septyni akivaizdūs (sesijos, ActionScheduler, snippetai).
-Aštuntas — `options` +395 — nenurašytas į „cache", o pamatuotas: 711 iš 1 677
-yra transient'ai, realių nustatymų 966.
-
-**Kontroliniai skaičiai sutapo su nepriklausomais šaltiniais:** prekyboje
-2 615 · juodraščiai 1 134 (savininko ekrano kopija) · feeding_rows 5 549 ·
-ps_pets 69 (§8g atstatymo testo skaičiai) · lietuviškos raidės išliko ·
-ROLLBACK veikia (MyISAM to nemokėjo).
-
-**Vizuali regresija:** parduotuvė, katalogas, užsakymai, WP prekių sąrašas —
-200, JS klaidų 0.
-
-### ŠAKNIS — `default_storage_engine=MyISAM`
-
-Serverio nustatymas, mums nepasiekiamas. **Be jo konversija būtų vienkartinis
-valymas** — kiekviena nauja lentelė gimtų MyISAM ir po kelių mėnesių viskas
-grįžtų.
-
-`petshop-innodb.php` v1.0 (mu-plugin, 2 126 B): `query` filtras pagauna TIK
-`CREATE TABLE` ir prideda `ENGINE=InnoDB`. Išimtys: `... LIKE ...`,
-jau nurodytas `ENGINE=`, `CREATE INDEX`, `TEMPORARY`.
-
-**Kaina išmatuota:** užklausų puslapiui 70 → 70 (nulis pridėtų) · titulinis
-1 777 → 1 672 ms (skirtumas triukšme). Atmestas `SET SESSION` variantas —
-jis būtų kainavęs po vieną DB užklausą kiekvienam puslapio atidarymui.
-
-**Patikra:** `CREATE TABLE` be ENGINE → InnoDB ✅ · `dbDelta` → InnoDB ✅.
-
-> **LAIKINA APEITIS.** Q-ENGINE: paklausti serveriai.lt, ar keis
-> `default_storage_engine` paskyros lygmeniu. Pakeitus — `petshop-innodb.php`
-> galima tiesiog ištrinti.
-
-### RADINYS ŠALIA — mu-plugins svoris kliento pusėje
-
-52 failai, 1 746 KB, kraunasi VISADA, ir kliento puslapyje. Tarp jų
-`petshop-katalogas.php` 433 KB, `petshop-desk.php` 112 KB,
-`petshop-gavimas.php` 95 KB, `petshop-akcijos.php` 94 KB — administravimo
-įrankiai, kurių pirkėjas nemato. **Kaina NEIŠMATUOTA** (OPcache didžiąją
-parsinimo dalį panaikina). Kandidatas atskiram darbui: pirma matavimas,
-paskui išvada apie `is_admin()` sąlygą.
+> **Perskaityti VISA isvesti pries darant isvada is pirmos eilutes.**
 
 ---
 
-## 8k. SANDĖLIŲ MODELIS — 2026-08-17 RADINIAI [S920–S970]
+### S1136 — NEAPMOKETI: PAVEDIMAS ATSKIRTAS NUO KORTELES
 
-### §29 fulfillment — audito prielaida buvo klaidinga
-```
-palygintos VISOS 3 749 prekės: resolve() vs _ps_sandelis
-sutampa 3 732 (99,5 %) · nesutampa 17
-iš 17 resolveris TEISUS 12 kartų — klaidingas dažniau _ps_sandelis
-```
-Auditas siūlė perjungti resolverį skaityti `_ps_sandelis`. **Tai būtų
-regresija**: 6 iš nesutapimų yra rinkinių laukai (`_ps_laukas=yes`), kuriems
-`_ps_sandelis=vf` yra klaida, o resolveris atsako teisingai.
-Iš 12 §29 punktų nuo resolverio priklauso 3 (2, 3, 12).
-Pilnai: `dokumentai/petshop_fulfillment_tyrimas_2026-08-17.md`.
+**Savininko klausimas:** „ar tai galima isskirti? Nes negaliu prekiu laikyti
+neaisku kiek krepseliuose.\"
 
-**Neuždaryta:** 34909 FLEXI publish be `_ps_sandelis` ir be registro įrašo
-(+4 tokios) — naujos prekės į `ps_sources` nepatenka. `ps_sources` 6 įrašai
-su `source='VF'` DIDŽIOSIOMIS.
-
-### Paslėpta prekė rinkinyje — VEIKIA (empiriškai, S930–S934)
-```
-publish + hidden  → MnM priima, į krepšelį PAVYKO, klaidų 0
-draft             → NEVEIKTŲ (MnM tikrina tik statusą)
-priedas: MnM paslėptai prekei NEGENERUOJA nuorodos į jos puslapį
-```
-`WC_MNM_Child_Item::is_visible()` tikrina TIK `post_status`, katalogo
-matomumas jam nerūpi. Testinės prekės sukurtos ir ištrintos, liko 0.
-
-### Dvigubų šaltinių NĖRA, bet 27 prekės ne ten, kur turėtų
-```
-ps_sources: 3 828 eilutės / 3 828 prekės — po vieną kiekvienai
-prekių su 2+ šaltiniais: 0 · _own_stock_qty>0: 0
-```
-Bet pjūvis **pagal pavadinimą** (savininko nurodymu) parodė:
-```
-27 Josera/JosiDog/Exclusion/GreenPetFood prekės su _ps_sandelis=av
-nė viena neturi _vf_cost · 11 turi VF formato SKU
-realūs likučiai: Intestinal 18/39/41 vnt., konservai 17–32
-4 PUBLISH su likučiu 0 (18563, 18569, 18608, 18623) — VF tuo metu turi
-```
-
-### Kodėl jos ten — NE BANAS, o nesuporavimas
-`block_vf_create()` v1.5.16 (S100) modelis: Legacy duoda pavadinimą,
-aprašymą ir **pardavimo kainą**; VF duoda savikainą + `_vf_qty`.
-Match raktas: VF `sku_id` ↔ Legacy `_vf_supplier_sku`.
-```
-prekių su _vf_supplier_sku   1 163   (visos ir su _vf_qty)
-tų 27 suporuota                  0
-tų 27 _manual_price_override     0   ← apsaugos NĖRA
-```
-**Modelis veikia — 1 163 prekės tai įrodo.** Tos 27 stovi už suporavimo
-slenksčio: SKU teisingas, bet `_sku` lauke, ne `_vf_supplier_sku`.
-
-> **ĮSPĖJIMAS:** nuėmus `block_vf_create` grįžtų 78 dublikatai per importą
-> tiems 1 163, o šios 27 vis tiek liktų nesuporuotos. Problema ne bane.
-
-### Neuždaryta — rytdienai
-```
-Q-VF-XML   ar tie 27 SKU ŠIANDIEN yra VF XML sraute
-Q-VF-KAINA ar VF update rašo į kainos laukus — KOMENTARAS sako „ne",
-           kodas NEPERSKAITYTAS (tiltas lūžo 4-tą kartą)
-Q-EXPORT   savininko eksportas iš gyvosios petshop.lt — įrodymas, ar
-           18/39/41 vnt. realiai lentynoje. Apimtis TIK AV prekėms;
-           tikrasis perkėlimas T-3, kai katalogas užšaldytas
-```
-
-### Savikainos spraga (negrįžtama)
-`_ps_savikaina_vnt` minimas tik `petshop-statistika.php` ir tik kaip
-konstanta. Fiksavimo pagal eilutės `_ps_source` NĖRA. Šiandien nekliudo
-(dvigubų 0), bet atsiradus pirmai dvigubai prekei praėjusio mėnesio pelno
-nebeperskaičiuosi.
-
----
-
-## 8l. PERJUNGIMAS IR MONITORINGAS — 2026-08-17 (naktis) [S713–S720]
-
-### DNS išmatuotas
-```
-šis serveris          79.98.29.24
-petshop.lt A          213.226.161.16  IR  213.226.161.15   ← DU įrašai!
-www.petshop.lt        CNAME → petshop.lt
-A TTL 3600 · NS TTL 86400 · NS: ns1–ns4.serveriai.lt
-MX isopas.serveriai.lt · SPF jau su spf.serveriai.lt + sendersrv.com
-eShoprent: HTTP 200, nginx/1.22.1, gyva
-```
-**Du radiniai:** (1) zoną valdo serveriai.lt, ne iv.lt — A įrašą keiti pats;
-(2) A įrašų DU, pakeitus vieną dalis srauto liktų sename serveryje.
-
-### DOD-13 UŽDARYTAS — `petshop-sargas.php` v1.2
-```
-klaidų gaudymas + cron sargas · lentelė ps_sargas_klaidos (InnoDB)
-cron'ai atrandami AUTOMATIŠKAI (50), vardai nehardkodinti
-laiškai HTML su <pre> — Outlook plain-text laužo lygiavimą
-48 val. malonės laikas · pavojus tik „įrodytiems" cron'ams
-gavėjas terra@gyvunai.lt (ps_sargas_pastas)
-```
-**DOD-20 septynių dienų laikrodis paleistas 2026-08-17.**
-Uptime lieka savininkui — UptimeRobot, išorinis, su SMS.
-**Šalutinis produktas:** `ps_sargas_klaidos` gali uždaryti ir `klaidos.md`
-poreikį (DOD-02/03) — patikrinti.
-
-### Q-R7 juodraščiai — ATSAKYMAS KITOKS, NEI ATRODĖ
-```
-juodraščių 1 140 · su likučiu 547 · per 7 d. nauji 99
-_vf_supplier_sku 184 · _zb_supplier_sku 486  →  670 UŽSTOJA IMPORTĄ
-```
-`block_vf_create` tikrina `post_status != 'trash'`, ne `= 'publish'` —
-juodraštis su tiekėjo SKU importui atrodo kaip suporuota prekė.
-Sąraše: `JOS0398`, `JOS0439`, `NGCSB03`, `NGCST03` — **naujosios Josera ir
-Exclusion pakuotės**, tos pačios, kurių VF sraute yra.
-Priežastys: `konservas_below_minimum` 313 · `qty_zero` 104 · trūksta
-nuotraukos/aprašymo 39.
-**Tai ne valymo, o įėjimo taisyklių klausimas — tas pats kaip Q-VF-KAT.
-Sprendimas prekybinis; savininkas nurodė prie prekių nelįsti.**
-
-### F-PSR TAPO KRITINIU KELIU
-DOD-18 §4.4/16 žingsnis būtų PIRMAS Paysera ciklo bandymas — 03:00, be
-palaikymo. **Perjungimo datos negalima fiksuoti, kol F-PSR neuždarytas.**
-
----
-
-## 8m. Q-MERCH: GOOGLE ZVALGYBA IR GTIN SKOLA — 2026-08-17/18 (naktis) [S971–S986]
-
-### Piltuvelis (savininko klausimas apie testinius rinkinius — NEKLIUDO)
-```
-publish                     2 609
-– paslėptos (hidden)            5
-– rinkiniai (mix-and-match)     8
-= FEED'O KANDIDATAI         2 596
-```
-Rinkiniai atsijoja savaime, nes į feed'ą jie pagal seną sprendimą neina.
-
-### 🔴 KAINA24 IR KAINOS.LT FEED'AI YRA NEGYVI
-```
-/feed/kaina24 · /feed/kainos → Fatal: memory 268435456 exhausted
-priežastis: petshop-feeds v1.0.0 → posts_per_page=-1 + wc_get_product() visoms
-memory_limit 256M · WP_MEMORY_LIMIT 40M
-```
-**OPS-06 prielaida buvo klaidinga** — resubmitinti nėra ko. Tas pats kodas jau
-filtruoja `instock`, tad savininko sprendimas (be likučio nesiųsti) sutampa.
-
-### GTIN skola ir jos šaknis
-```
-PRIEŠ: _global_unique_id užpildyta 1 252 · galioja tik 394 (31 %)
-VF XML <barcode>: 2 326 reikšmės, VISOS lygiai 12 simbolių, galioja 0
-```
-**Šaknis — tiekėjo pusėje.** Vetfarmas siunčia nukirstą EAN-13 (be kontrolinio
-skaitmens). ZB pusė švari (97 % galioja). Atkūrimas galimas: kontrolinis
-skaitmuo skaičiuojamas iš pirmųjų dvylikos (GS1 mod-10).
-
-### Taisymas atliktas (S977–S978)
-```
-pakeista            1 963 prekės, tik laukas _global_unique_id
-praleista           46 konfliktinės (41 VF vs Legacy + 5 du geri 13)
-patikra             perskaityta iš DB: 1 963 / 1 963 sutampa, 0 nesutapimų
-vizualiai           17978 → 4032254785989 · 12452 → 8710255120072 (ekranai repo)
-kopija              uploads/ps-backups/gtin_backup_20260817_204552.json (148 KB)
-PO: užpildyta 2 021 · galioja 2 015 · VF prekės su 13 zn. 979/979
-be jokio kodo lieka 594 (žaislai, aksesuarai)
-```
-
-### 🔒 REGRESIJOS ŠAKNIS UŽDARYTA — `class-vf-import.php` v1.5.7
-`petshop_xml_vf_create_new()` rašė žalią 12 simbolių barkodą į `_ean` ir
-`_global_unique_id` **be `$is_update` apsaugos** → kitas Import #5 būtų
-grąžinęs 979 prekes atgal. Pridėtas `petshop_xml_gtin_normalize()`.
-```
-_vf_barcode paliktas ŽALIAS — suporavimo raktas find_by_ean() užklausoje
-idempotencija: 965 iš 979 sutaps su tuo, kas jau lauke
-Import #5 mapinimas švarus — rašo tik _vf_* laukus, GTIN jame nėra
-```
-
-### Savininko sprendimai (2026-08-18)
-```
-Q-MERCH-2   feed'as SAVAS (ne GLA pluginas) — vienas variklis, trys išvestys
-Q-MERCH-3   prekės be likučio į feed'us NESIUNČIAMOS — paspaudimai mokami
-14 konfliktų → variantas 1: VF yra tiesos šaltinis, importas užrašys pats
-```
-
-### Google API — prieiga yra, bet uždaryta
-```
-claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
-token 200 · authinfo 403 — Content API for Shopping neįjungtas (projektas 683712074632)
-```
-**Reikia savininko:** (1) Google Cloud → įjungti Content API for Shopping;
-(2) Merchant Center → Naudotojai → pridėti tą adresą (Skaitytojo teisių užtenka).
-Iki tol Merchant Center paskyros būklė nežinoma.
-
-### Neuždaryta
-```
-feed'o variklis su paketais (dabartinis miršta ties 256M)
-Google kategorijų mapinimas — 80 kategorijų, nulis susiejimų
-128 prekės be brendo · 46 be aprašymo · 3 be kainos · 1 352 be svorio
-4 CATIT prekės su 11 ženklų kodais (19042, 19045, 19048, 19051) — sena skola
-```
-
----
-
-## 8d. B2 INFRASTRUKTŪRA — PASTATYTA IR ĮRODYTA (2026-08-03 vakaras)
-
-### Kas veikia (visi punktai patikrinti realiais veiksmais, ne nustatymų skaitymu)
-```
-Bucket        petshop-backups · allPrivate · ID 0e02b37ebe34cc9a95f40918
-              Object Lock ĮJUNGTAS, Default Retention 14 d. (NEGRĮŽTAMA)
-Raktas        petshop-backup-write · tik šis bucketas · prefiksas petshop-backups/
-Kredencialai  /home/gyvunai2/backups/.b2creds.php · 391 B · chmod 0600
-              už public_html; reikšmės base64; laukai: keyId, appKey, bucketId,
-              bucket, prefix, encKey (44 simb. = 32 baitai), created
-Šifr. raktas  sugeneruotas serveryje; ANTRA KOPIJA pas Raimį (patvirtinta)
-```
-
-### Įrodymų matrica (s388 → s389)
-```
-                        PRIEŠ Object Lock      PO Object Lock
-autorizacija            200                    200
-įkėlimas                200, SHA-1 + dydis ok  200, SHA-1 + dydis ok
-raktas SKAITO           401 unauthorized       401 unauthorized
-raktas TRINA            200 — IŠTRYNĖ ❌       401 access_denied ✅
-```
-**Radinys:** Backblaze „Write Only" sąsajoje reiškia „rašyti IR trinti" —
-rakto galiose `deleteFiles` yra ir Backblaze jo neatima. Apsauga veikia
-BUCKET'O, ne rakto lygiu. Ekrano užrašas „Write Only" NĖRA įrodymas —
-tik realus bandymas ištrinti.
-
-### Techninė aplinka (s379, s375, s380)
-```
-Išeinantis HTTPS VEIKIA: github · b2api · wasabi · google · sender · wporg
-  visi DNS OK, TCP:443 OK, TLS OK
-cURL 8.5.0 · OpenSSL 1.0.2k-fips · allow_url_fopen=1
-disable_functions: exec, shell_exec, proc_*, system, popen (mysqldump NEĮMANOMAS)
-gzopen · gzencode · curl_init · mysqli_connect · fsockopen — VISI yra
-DB eksportas PHP: 146,5 MB → 13,96 MB (10,5:1), 18,4 s, atmintis 116/256 MB
-Rašomos vietos už public_html: /home/gyvunai2 · /backups · /tmp
-```
-
-### LIKĘ ŽINGSNIAI (rytojui)
-```
-1. ✅ Lifecycle Rule — hide 30 d., delete 1 d. (patvirtinta per API, s390)
-2. ✅ Eksporto skriptas ps-backup.php v1.1 — veikia (žr. §8f)
-3. ✅ Cron 0 4 * * * per URL (CLI šiame hostinge NEPRIEINAMAS, žr. §8f)
-4. ✅ Gedimo testai — sugadinus appKey: HTTP 401, būsena FAIL, laikinų 0,
-      laiškas ATĖJO į terra@gyvunai.lt (Gautuosius, ne šlamštą), grąžinus veikia
-5. ✅ ATSTATYMO TESTAS — praėjo (§8g)
-6. ✅ „cron nepasileido" sargas — ps-backup-watch.php v1.0 (§8h)
-```
-
-### Ko NEDARYTI
-```
-NEKEISTI Object Lock — įjungus išjungti NEBEĮMANOMA
-NEDUOTI skriptui trynimo logikos — retenciją tvarko TIK Lifecycle
-NERODYTI raktų pokalbyje — nei B2, nei šifravimo
-```
-
----
-
-## 8e. CRON UŽDUOTYS — PILNAS SĄRAŠAS (patikrinta ekrane 2026-08-04)
-
-**PRIEŠ MIGRACIJĄ Į petshop.lt VISUOSE ŠIUOSE KEISTI DOMENĄ.**
-Registre anksčiau buvo rašoma „6 cron užduotys" — **netiesa, jų 11.**
-
-```
-min    val   komanda (visos per cronurl 'http://dev.avesa.lt/...')
-────────────────────────────────────────────────────────────────────
-0      *     wp-load.php?import_key=v&import_id=3&action=trigger
-2      *     wp-load.php?import_key=v&import_id=3&action=processing
-0      6     wp-load.php?import_key=v&import_id=2&action=trigger
-1      6     wp-load.php?import_key=v&import_id=2&action=processing
-0      18    wp-load.php?import_key=v&import_id=2&action=trigger
-1      18    wp-load.php?import_key=v&import_id=2&action=processing
-15     *     wp-load.php?import_key=v&import_id=7&action=trigger
-16-59/2 *    wp-load.php?import_key=v&import_id=7&action=processing
-30     6     wp-load.php?import_key=v&import_id=5&action=trigger
-31-59/2 6    wp-load.php?import_key=v&import_id=5&action=processing
-0      4     backup-run.php?ps_backup_key=...        ← NAUJA 2026-08-04
-0      10    watch-run.php?ps_watch_key=...          ← NAUJA 2026-08-04 (sargas)
-```
-**IŠ VISO 12 užduočių.** Keičiasi TIK domenas. `import_key=v`, `import_id`,
-`ps_backup_key` ir `ps_watch_key` lieka tie patys.
-Import #2 sukasi DUKART per parą (6:00 ir 18:00) — anksčiau registre neužfiksuota.
-Import #7 ir #5 irgi aktyvūs.
-
----
-
-## 8f. BACKUP SKRIPTAS — VEIKIA (2026-08-04)
-
-```
-Skriptas   /home/gyvunai2/backups/ps-backup.php  v1.1 · 19 239 B · chmod 0700
-Paleidiklis .../public_html/dev/backup-run.php · 200 B (tik require)
-Cron        0 4 * * *  http://dev.avesa.lt/backup-run.php?ps_backup_key=...
-Būsena      /home/gyvunai2/backups/.ps-backup-state.json (last_result, last_run)
-```
-
-**SVARBU: CLI ŠIAME HOSTINGE NEPRIEINAMAS.** DirectAdmin periodinės užduotys
-turi TIK URL lauką — jokio „PHP 8.4" pasirinkimo (patikrinta ekrane 2026-08-04;
-serveriai.lt dokumentacijos pavyzdys su php84-cli mūsų paskyrai NEGALIOJA).
-Todėl paleidimas per HTTP su slaptu raktu, kaip ir visi esami importai.
-
-**Apsauga:** `hash_equals` rakto palyginimui · `ignore_user_abort(true)` kad
-cron nutraukęs ryšį neužmuštų proceso · logika už public_html, viešame
-kataloge tik `require`.
-```
-be rakto           403 ✅
-su blogu raktu     403 ✅
-su teisingu raktu  veikia ✅
-```
-
-**Realūs paleidimai (3 iš 3 sėkmingi):**
-```
-06:38 (bridge)  174 lentelės · 488 781 eil. · 17,63 MB · 6,6 s
-06:51 (Raimis naršyklėje) 174 · 488 817 eil. · 17,64 MB · 7,7 s
-      InnoDB 14 consistent snapshot · MyISAM 160 be globalaus LOCK
-      tar 22,15 MB → gzip 17,64 MB → AES-256-CBC + HMAC-SHA256
-      SHA-1 ir dydis patvirtinti B2 pusėje
-Atmintis 135 / 256 MB · laikinų failų liko 0
-```
-
-**Įrodyta 2026-08-04:** gedimo pranešimas ✅ (laiškas atėjo su tikslia
-priežastimi ir pilnu žurnalu) · atstatymas ✅ (§8g).
-**Liko:** „cron visai nepasileido" perspėjimas.
-
----
-
-## 8g. ATSTATYMO TESTAS — PRAĖJO (2026-08-04) → DOD-08 ✅
-
-```
-1. PARSISIUNTIMAS iš B2 (read-only raktas, 13 skaitymo teisių, deleteFiles NĖRA)
-   18 498 806 B · dydis SUTAMPA · SHA-1 SUTAMPA
-2. HMAC-SHA256 SUTAMPA → archyvas nepakeistas nė vienu baitu
-3. Dešifruota 17,64 MB → tar 22,15 MB → database.sql.gz + manifest.json
-4. ATSTATYMAS: 488 996 SQL sakinių, 92,3 s, 0 klaidų
-5. PALYGINIMAS su manifestu:
-   lentelių 174/174 · eilučių sutampa 174/174 · neatstatytų 0 · skirtumų 0
-   ps_pets 69=69 · ps_feeding_rows 5 549=5 549 · wc_orders 2=2
-   postmeta 178 403=178 403 · posts 12 638=12 638
-   lietuviškos raidės IŠLIKO (ū, ė, ų) · serialized unserialize OK
-   koduotė utf8mb4_unicode_520_ci · variklis MyISAM (kaip originale)
-6. VALYMAS: 174 rtst_ lentelės ištrintos · rtst_ liko 0 · gaj6_ liko 174
-   gaj6_hash 1ecdb5612701e0c6 PRIEŠ = PO → originalas NEPALIESTAS
-   ištrinti: .restore-test.* · .restore-manifest.json · .b2restore.php
-```
-
-**APRIBOJIMAS, KURĮ BŪTINA ŽINOTI:** atstatyta į TĄ PAČIĄ DB su `rtst_` prefiksu,
-NE į visiškai švarią DB. Priežastis: WP vartotojas `gyvunai2_nbpe1` turi
-`GRANT ALL PRIVILEGES ON gyvunai2_nbpe1.*` — naujų DB kurti NEGALI
-(`Access denied to database 'gyvunai2_rtest'`). DirectAdmin bazę turi kurti
-Raimis rankomis. **Nepatikrinta dėl to:** ar dump'as sukuria bazę nuo nulio
-teisinga koduote (bazės numatytoji yra `latin1`, nors visos lentelės utf8mb4).
-Viskas kita patikrinta.
-
-**`options` 1 035 vs 1 034 originale — NE klaida:** kopija daryta 07:00,
-palyginimas 10:40; WP per tą laiką sukūrė naują įrašą. Su MANIFESTU sutampa
-tiksliai, o tai ir yra kriterijus.
-
----
-
-## 8h. BACKUP SARGAS — VEIKIA (2026-08-04)
-
-```
-Skriptas    /home/gyvunai2/backups/ps-backup-watch.php v1.0 · 4 426 B · 0700
-            sha efb40d007472867a
-Paleidiklis .../dev/watch-run.php · 143 B (tik require)
-Cron        0 10 * * *  http://dev.avesa.lt/watch-run.php?ps_watch_key=...
-Būsena      /home/gyvunai2/backups/.ps-watch-state.json
-Ribos       MAX_VAL 26 h (paros ciklas + 2 h atsargos) · MIN_MB 5
-```
-**Praneša TIK kai negerai.** Normalioje būsenoje tyli — todėl laiškas iš sargo
-visada reiškia tikrą problemą.
-
-**Testų matrica 6/6 (s401.json):**
-```
-be rakto / blogas raktas   403 · 403
-T1 normali būsena          OK, jokio laiško
-T2 kopija prieš 40 val.    „CRON GREIČIAUSIAI NEBEPASILEIDŽIA"
-T3 last_result = FAIL      „Paskutinis bandymas: FAIL — ..."
-T4 kopija 1 KB             „Kopija įtartinai maža: 0 MB (riba 5 MB)"
-T5 būsenos failo nėra      „nė karto nepasileido arba failas ištrintas"
-T6 grąžinus                OK · būsena grąžinta byte-tiksliai
-```
-Keturi gedimo tipai — keturi skirtingi pranešimai, ne bendras „kažkas negerai".
-
-**Kodėl 10:00:** 6 val. po backup'o. Jei naktinis 04:00 nepasileistų arba
-žlugtų, apie tai žinoma tą pačią dieną, ne po savaitės.
-
----
-
-## 8i. EL. LAIŠKŲ ŠABLONAI — TRYS LAUNCH SVORIO ĮDIEGTI (2026-08-04)
-
-**SVARBU KITAM LANGUI: srautų registras JAU PILNAS.** `Petshop_Email_Dispatch::flows()`
-turi visus 18 srautų su `class` / `template` / `delay`. Naujam laiškui KODO KEISTI
-NEREIKIA — pakanka įdėti šabloną `petshop-core/templates/emails/{slug}.php`.
-
-**Šablono kontraktas:** gauna `$payload`, nustato `$subject`, grąžina HTML.
-Pradžioje `if (!defined('ABSPATH')) exit;`. Stilius — table-based, #F3EFE5 fonas,
-600px kortelė, CTA #2d6a35. Pabaigoje UAB Avesa rekvizitai + priežastis, kodėl
-laiškas gautas. Marketingo srautuose PRIVALO būti atsisakymo nuoroda.
-
-```
-consent-changed.php  3 630 B · sha c214ba2ed0f185f3
-dunning-1.php        3 238 B · sha dfc5178ecd23d96b
-founding.php         3 555 B · sha 9b77b8a5f30315c5
-Šablonų viso: 8 iš 18 srautų
-```
-
-**Renderinimo testai 6/6 (s404.json)** — kiekvienas su pilnu IR tuščiu payload:
-```
-                     su duomenimis                    be duomenų
-consent_changed      „...sutikote gauti naujienas"    „...naujienų nebesiųsime"
-payment_failed       „Užsakymas AVPN-1042 laukia..."  „Jūsų užsakymas laukia..."
-founding_activation  su kodo bloku                    be kodo bloko
-Visi: DOCTYPE ✅ · UAB ✅ · PHP klaidų 0 ✅ · lietuviškos raidės ✅
-```
-Tuščio payload testai svarbiausi: realiame gyvenime payload dažnai nepilnas,
-o laiškas su `Undefined` klaida blogiau nei jokio laiško.
-
-**Grandinė įrodyta (s406.json):**
-```
-enqueue → job pending, be block/skip
-process_pending(dry) → picked 1 → WOULD_SEND
-   subject „Patvirtiname: sutikote gauti mūsų naujienas" · html 1 917 B
-cron ps_email_dispatch_cron gyvas
-```
-
-### DU RADINIAI
-
-**1. Klaidingas ankstesnis teiginys.** Buvo manyta: „24 consent_changed įvykiai
-laukia, vos šablonas atsiras — nukeliaus". **NETIESA.** Visi 24 jau `sent`
-(2026-07-31), o `consent_jobs = 0`. Įvykių žurnalas ir laiškų eilė — DU ATSKIRI
-sluoksniai: įvykis nuėjo į Sender kaip kontakto atnaujinimas, laiško darbas
-NEBUVO sukurtas. Šablonas veiks TIK naujiems pakeitimams. Senų perleisti
-NEDERĖTŲ — žmonės gautų patvirtinimą apie savaitės senumo veiksmą.
-(Pavyzdžiai `s2@example.com`, `source: s2` — testiniai, ne klientai.)
-
-**2. `pet_profile_created`: 6 įrašai `dead` iš 109.** Po pakartotinių bandymų
-palikti. Nekritiška, bet gali būti tas pats defektas, kuris pasikartos po
-launch — verta pasižiūrėti, kodėl krito. NEIŠTIRTA.
-
-### `payment_failed` — šablonas be įvykio
-```
-Šablonas ✅ · srautas registre ✅ · ĮVYKIO DB NĖRA NĖ VIENO
-```
-Reikia išsiaiškinti: ar Paysera praneša apie nepavykusius mokėjimus ir ar
-`class-event-emitters.php` turi tam kabliuką. **Atskiras darbas, ne šablonas.**
-
----
-
-## 8j. NAUJIENLAIŠKIS — POKRAŠTĖS FORMA + LAUNCH MODALAS (2026-08-04) ✅
-
-### Kodėl tai buvo verta
-Raimio korekcija: **petshop.lt nėra nauja svetainė.** 2 445 URL, 19 735 paspaudimai
-per 16 mėn., ~2 000 senų klientų el. adresų, kuriuos Raimis perkels. Launch savaitė
-— vienintelis momentas, kai yra ir smalsumas, ir dėmesys. Todėl modalas turi būti
-paruoštas launch DIENAI, ne po jo.
-
-### SPRENDIMAS: JOKIOS NUOLAIDOS
-Maisto marža 15–20%, maistas = 76% pardavimų. Prie 40 € užsakymo tai 6–8 € pelno;
-10% nuolaida atimtų ~4 € — daugiau nei pusę, ir pritrauktų tuos, kurie pirktų ir
-taip. Vietoj to modalas siūlo DU kelius: augintinio anketa (gauni rūšį, svorį,
-jautrumus, ne tik el. paštą) arba tik el. paštas.
-Jei kada norėsis nuolaidos — NE ant maisto (skanėstai/priedai/aksesuarai) ir
-adresuotai seniems klientams, ne visiems praeiviams.
-
-### Komponentai
-```
-class-newsletter.php         v1.1 · 8 841 B · sha d1575ae272fe3dea
-  [petshop_newsletter title= text= button= source=]
-  POST /petshop/v1/newsletter-subscribe
-  VIENAS žingsnis (be double opt-in) — apsauga per consent_changed laišką
-  rate limit 5/val per IP · 3/parą per el. paštą
-newsletter.js                2 324 B · sha de0ed45097a0abc9
-class-newsletter-footer.php  2 247 B · sha 0a35be5c7dd5e3a1
-  add_action('flatsome_before_footer', ..., 20)
-class-welcome-modal.php      v1.1 · 6 345 B · sha 46545bb1f0fa6f2a
-  jungiklis petshop_welcome_modal_enabled — IŠJUNGTAS iki launch
-  12 s delsa · exit intent tik desktop · cookie 90 d.
-Visi keturi per require_once petshop-core.php (backup .bak_S409/.bak_S411/.bak_S419)
-```
-
-### VIETA — kodėl NE widget'as ir NE Footer 1
-Flatsome poraštė = widget zonos `sidebar-footer-1` (TUŠČIA) ir `sidebar-footer-2`
-(4 custom_html). Kabliukas patikrintas KODE (`structure-footer.php:128`):
-```
-add_action('flatsome_before_footer', 'flatsome_html_before_footer');
-```
-Einam prioritetu 20 — PO temos savo HTML bloko. Nauda: pilno pločio blokas,
-nekeičiama veikianti Footer 2 struktūra, neįjungiama nenaudota Footer 1 zona,
-nepriklausom nuo widget nustatymų, forma lieka VIENOJE vietoje (shortcode).
-`custom_html-6` bandymas iš Footer 1 pašalintas.
-
-### PATVIRTINTA NARŠYKLĖJE (s419, s420, s421)
-```
-                          desktop              mobile
-juosta matoma             ✅                   ✅
-juosta                    2602–2934            3798–4234
-Footer 2 kolonos          2934–3329            4234–5379
-teisinis baras            3329–3403            5379–5477
-JUOSTA VIRŠ KOLONŲ        TAIP                 TAIP
-NE teisiniame bare        TAIP                 TAIP
-hScroll                   0                    0
-Footer 2 nepakitusi       ✅                   ✅
-checkout be formos        ✅ · JS klaidų 0
-```
-**Honeypot (4 vartai):** „Nepildykite" innerText → −1 · viewporte → false ·
-Tab kelyje → false · POST testas → tylus 200, consent_log +0, jobs +0.
-Galutinė būsena: be etiketės teksto, wrapper `aria-hidden="true"`,
-input `tabindex="-1"` + `autocomplete="off"`, laukas už viewporto.
-
-**Modalas:** ESC uždaro (v1.1 — `capture` fazė + `stopPropagation`; v1.0 neveikė),
-`hidden` + `display:none`, cookie `psw_seen`, checkout be modalo, JS 0.
-
-### TRYS MANO MATAVIMO KLAIDOS (visos — tikrinau ne tai, ką reikia)
-```
-1. Playwright isVisible()=true honeypot'ui, kuris x=-9999 → MELAGINGA „matomas".
-   isVisible() tikrina matmenis, NE ar elementas viewporte.
-   Teisingai: getBoundingClientRect() + getComputedStyle() + realus Tab kelias.
-2. „Juosta ne virš poraštės" — lyginau su #footer, kurio VIDUJE pati juosta ir yra.
-   Teisingai: lyginti su .footer-widgets ir .absolute-footer.
-3. Prasimaniau theme_mod `footer_1_content` — Flatsome tokio NETURI.
-   Įrašiau, „radau" tuščią, tada ištryniau. Prieš rašant į temą — PATIKRINTI, ar
-   nustatymas egzistuoja.
-```
-
-### KAS LIEKA (ne šio bloko)
-```
-Vokelio ikona mobiliame meniu — SĄMONINGAI negrąžinta (užimtų svarbią
-  navigacijos vietą funkcijai, kurios žmogus specialiai neieško)
-Atskiras naujienlaiškio puslapis — NEKURIAMAS (neturėtų savarankiško turinio)
-Pagrindiniame puslapyje nedubliuoti, kol poraštė nerodo, kad renka per mažai
-2 000 senų adresų importas — ATSKIRAS darbas, šaltinis `legacy_customer` ir
-  TIKRA sutikimo data, NE šiandienos. Jie buvo KLIENTAI, ne prenumeratoriai —
-  pėdsakas turi tai rodyti.
-Modalo jungiklį įjungti launch dieną: petshop_welcome_modal_enabled = 1
-```
-
----
-
-## 11. TŽ v1.60 AUDITO SPRAGOS (2026-08-04) — DEVYNI BLOKAI, KURIŲ REGISTRE NEBUVO
-
-> Pilna ataskaita: `TZ_AUDITAS_2026-08-04.md` (Raimio PC). Gyvas auditas `analize/s422.json`.
-> Registras dengė ~60% TŽ launch apimties. Šie devyni blokai buvo NEFIKSUOTI.
-
-| ID | Blokas | TŽ | Serveryje 2026-08-04 | Būklė |
-|---|---|---|---|---|
-| G1 | Identity / Google login (TŽ v1.45) | P0 | plugino nėra — NEREIKIA | ✅ **UŽDARYTA 2026-08-04: NEBEAKTUALU** |
-| G2 | F22 lojalumas | startas 2026-08-15 | lentelių nėra, Q9 atvira | 🔴 |
-| G3 | Google Merchant Center feed | pre-launch, v1.56 | feed'o nėra; PMax degina ~10k €/m | 🔴 |
-| G4 | Sender webhook statusai | „sekantis techninis blokas" | **svarbioji dalis JAU VEIKĖ** (§13) | 🟡 trūksta tik analitikos |
-| G5 | H1 tema-lygio fix | blocker nuo v1.53 | **10/10 puslapių po 1 prasmingą H1** | ✅ **UŽDARYTA 2026-08-04 — nebeaktualu** |
-| G6 | ShortPixel ON | pre-launch | INACTIVE 6.5.5 | ⚪ **suplanuota**, ne spraga |
-| G7 | wpo-wcpdf trynimas | higiena | INACTIVE 5.15.2, yra | ⚪ **suplanuota**, ne spraga |
-| G8 | Pragma production mode | pre-launch | `NENUSTATYTA` = OFF | ⚪ **RAIMIO NURODYMAS — TEISINGA BŪSENA** |
-| G9 | SMS Sender ID registracija | „pradėti ANKSTI" | nepradėta | 🔴 |
-
-### ⚠️ G6/G7/G8 NĖRA SPRAGOS — NEKELTI JŲ KAIP PROBLEMŲ
-```
-G8 PRAGMA: production mode IŠJUNGTAS PAGAL RAIMIO NURODYMĄ (TŽ v1.38).
-   Priežastis: kad DABAR nesiųstų nesąmonių buhalterei. Įjungiama TIK
-   paleidus naują petshop.lt. Kodas turi saugiklį + žurnalą + [TEST] prefiksą.
-   TAI TEISINGA BŪSENA. Nevadinti „raudonu", nesiūlyti įjungti anksčiau.
-G6 ShortPixel · G7 wpo-wcpdf: sąmoningai atidėti pre-launch veiksmai, ne gedimai.
-```
-Šie trys buvo klaidingai sudėti į vieną lentelę su tikromis spragomis (2026-08-04),
-todėl sąrašas atrodė grėsmingesnis, nei yra. **REALIAI NEUŽDARYTI — KETURI:**
-~~G1~~ ~~G5~~ (uždarytos) · **G3 Merchant Center** · Redirection 301 ID uodegoms (§12).
-Plius du techniniai mano pusėje: `payment_failed` įvykis, G4 Sender webhook statusai.
-
-### G1 — UŽDARYTA KAIP NEBEAKTUALU (Raimio sprendimas 2026-08-04)
-
-**TŽ v1.45 Identity sluoksnio P0 reikalavimą ĮVYKDO MAGIC LINK, ne Google login.**
-Magic link veikia ir patikrintas E2E (M8): žmogus įveda el. paštą → gauna nuorodą →
-prisijungia. Slaptažodžio nereikia niekam.
-
-**Google login SĄMONINGAI ATMESTAS. Trys priežastys — NEKELTI IŠ NAUJO:**
-```
-1. Trinties mažinimo tikslą (pagrindinis TŽ v1.45 argumentas) magic link jau
-   išsprendė, ir geriau: be Google paskyros, be trečiosios šalies sutikimo,
-   be papildomo plugino, be duomenų dalijimosi.
-2. Google login ĮNEŠTŲ problemą, kurios dabar NĖRA. Pati TŽ v1.45 įspėja:
-   Google email ≠ senas pirkimo email → tuščias profilis be istorijos.
-   Su magic link tokio atvejo NEBŪNA — žmogus įveda TĄ PATĮ paštą, į kurį
-   gauna laišką. Google login šią riziką KURIA, o ne sprendžia.
-3. Dar vienas pluginas = dar viena priklausomybė, kuri gali sulūžti.
-```
-**LIEKA ATSKIRAS, NESUSIJĘS KLAUSIMAS:** ar senas klientas, pirkęs KITU el. paštu,
-turi kelią prie savo istorijos. Tai duomenų migracijos, ne login klausimas —
-spręsti importuojant 2 000 adresų (`legacy_customer`), ne dabar.
-
-**Į TŽ v1.61:** §4.3 Identity sluoksnis — Google login išbraukiamas, P0 įvykdytas
-magic link mechanizmu.
-
-### REGISTRO KLAIDOS, KURIAS AUDITAS IŠTAISĖ
-```
-F30b atsiliepimai      buvo ⚪ „nepatikrinta" → REALIAI VEIKIA:
-                       enable_reviews=yes · verification_required=yes · rating=yes
-EAN padengimas         buvo „1 518 be EAN (55%)" → REALIAI 1 936/2 776 = 69,8%
-                       (ankstesnis skaičius rėmėsi VIEN _ean lauku, ne visais 4)
-Snippetų higiena       TŽ v1.38 rašė 311 → REALIAI 1 568 (85 aktyvūs, 208 TEMP)
-Sprendimų puslapiai    visi 6 PUBLISH (34254/58/59/60/61/62) — registre nefiksuota
-Katalogas              2 776 publish · 1 026 draft · 31 vartotojas · 2 užsakymai
-Redirection            įdiegtas 5.9.0 BET NEAKTYVUS ir DB lentelių NĖRA
-                       → DOD-07 infrastruktūra net neinicializuota
-```
-
-### Q KLAUSIMAI SU PRAĖJUSIAIS TERMINAIS
-```
-Q14 Paysera Recurring (2026-06)   Q16 feed'ai (2026-07) ← blokuoja G3
-Q19 istoriniai atsiliepimai (06)  Q23 aprašymų sekcijos (07)
-Q25 fulfillment ABC (2026-07)     Q9 lojalumas — terminas 08-15, LIKO 11 D.
-```
-
-### TŽ ATSILIEKA
-Paskutinis TŽ įrašas — v1.60 (2026-07-30). Nedokumentuota: backup grandinė (§8b–8h),
-F4 paieška, M8 anketa 9/9, 3 šablonai, naujienlaiškis, MyISAM radinys.
-**Siūloma v1.61** po einamųjų darbų.
-
----
-
-## 12. SEO 301 — KATEGORIJŲ SLUOKSNIS UŽDARYTAS (2026-08-04)
-
-### ŠAKNIS: pasikeitė kategorijų adresų struktūra
-```
-Sena platforma:  /sunims/antiparazitines-priemones-sunims
-Nauja:           /kategorija/sunims/antiparazitines-priemones-sunims/
-                  ^^^^^^^^^^^ woocommerce_permalinks category_base = 'kategorija'
-```
-Todėl liepos 30-os auditas rodė „kategorijos, kurių dev'e NĖRA, reikia Raimio
-sprendimo, ar tokia kategorija apskritai bus". **KATEGORIJOS YRA** — tiesiog kitu
-adresu. Tas sprendimas NEBEREIKALINGAS.
-
-### SPRENDIMAS: `/kategorija/` PALIEKAMA (Raimis + konsultantas)
-Tuščio `category_base` NEDAROM:
-```
-- WooCommerce to nerekomenduoja (URL atpažinimas, našumas, dublikatai)
-- pas mus JAU YRA 6 realūs slug konfliktai:
-  daugiau-pigiau · jautrus-virskinimas · naujas-kaciukas · naujas-suniukas
-  · pasiulymai · sprendimai
-- tuščia bazė = kategorijos/puslapiai/įrašai amžinai kovoja dėl tos pačios
-  adresų erdvės; septintas konfliktas ateity nutiltų TYLIAI
-- 301 taisyklės GRĮŽTAMOS, adresų struktūros keitimas — praktiškai NE
-```
-
-### ĮDIEGTA: `mu-plugins/petshop-legacy-cat-301.php` v1.1
-```
-4 523 B · sha b4177b3b92d8f548 · 34 keliai · 1 596 GSC paspaudimų
-Žemėlapis: analize/legacy_cat_301_map.json
-```
-**ĮŠALDYTAS ISTORINIS RINKINYS, NE DINAMINIS.** Sugeneruotas VIENĄ kartą iš GSC
-(2 445 URL / 19 735 clicks / 16 mėn.) sankirtos su kategorijų medžiu. Naujoms
-kategorijoms taisyklės NEKURIAMOS — antraip vėl tyliai užimtume šakninę URL
-erdvę, kurios dėl to ir atsisakėme. Naujas įrašas — TIK rankiniu būdu su GSC
-pagrindimu.
-
-### VARTAI — VISI ŽALI (s426 → s427)
-```
-seni adresai        404 → 301, po VIENĄ šuolį, galutinis 200   ✅ 5/5
-X-Redirect-By       Petshop-Legacy-Category                     ✅
-34 taikiniai        blogų 0                                     ✅
-kontrolė            sprendimai · jautrus-virskinimas · naujas-suniukas
-                    · duk · privatumo-politika — NEPAKITO       ✅
-/kategorija/sunims/ 200 nepaliesta                              ✅
-neatpažintas        404, JOKIO spėjimo                          ✅
-```
-**PAMOKA:** pirmas bandymas davė `X-Redirect-By: WordPress` = FAIL pagal TŽ v1.56
-QA sąlygą. Priežastis: `wp_redirect()` savo antraštę nustato PO rankinio
-`header()` ir ją PERRAŠO. Reikšmė privalo eiti TREČIU argumentu (WP 5.1+):
-`wp_redirect($url, 301, 'Petshop-Legacy-Category')`.
-
-### 2 SLUOKSNIS: ID UODEGOS — UŽDARYTA (v1.2, 2026-08-04)
-```
-94 keliai su ID uodegomis (802 clicks) → taikinių RASTA 42 (666 clicks)
-   kategorijos 3 · prekės 37 · puslapiai 2
-Žemėlapis: analize/legacy_tail_301_map.json
-```
-**REDIRECTION NENAUDOJAMAS. Priežastis — ne gedimas, o nulinė nauda:**
-taikiniai SKIRTINGI (vieni `/kategorija/...`, kiti `/product/...`), tad tai NE
-viena „nukirpk uodegą" taisyklė, o 42 individualūs atitikmenys — lygiai toks pat
-statinis rinkinys kaip kategorijų. Vienas mechanizmas vietoj DVIEJŲ tiesos vietų,
-be papildomo plugino ir be DB lentelių (Redirection 5.9.0 neaktyvus, lentelių nėra).
-
-**PATIKRINTA (s429):** 42 taikiniai visi grąžina 200 · 7 testiniai adresai → 301,
-po VIENĄ šuolį, galutinis 200 · `X-Redirect-By: Petshop-Legacy-Category` ·
-kontrolė nepakitusi · neatpažinta kategorija IR neatpažinta uodega → 404.
-
-### ⚠️ RAIMIO RADINYS: automatika NEGALI rasti PERVADINTŲ kategorijų
-```
-senas:  zuvims/akvariuminiu-zuvu-maistas   (99 clicks)
-naujas: zuvims/akvariumo-zuvyciu-maistas   ← EGZISTUOJA, tik kitu vardu
-```
-Mano paieška ieškojo tikslaus slug atitikmens nukirpus uodegą. Čia pasikeitė
-PATS PAVADINIMAS — automatika to nerado ir NEGALĖJO. Įrašyta RANKINIU būdu.
-**IŠVADA: skaičius „53 neturi kur nukreipti" YRA PER DIDELIS.** Dalis jų turi
-kategorijas/prekes kitais pavadinimais. Reikia PERŽIŪROS SĄRAŠO su kandidatais,
-sprendimą priima Raimis. Automatikai spėti NELEIDŽIAMA.
-
-### 3 SLUOKSNIS: PERVADINTI SLUG (v1.3, 2026-08-04)
-```
-10 kelių · 30 clicks · analize/legacy_renamed_301_map.json
-```
-**TRYS SĄLYGOS VIENU METU, kitaip — į peržiūrą:**
-```
-panašumas >= 0,85  IR  skaičiai sutampa  IR  kandidatas VIENINTELIS
-```
-**Skaitinis saugiklis (TŽ v1.52 pakuočių asimetrija) — BŪTINAS.** Be jo Royal
-Canin `1-5-kg` vienodai (1.00) atitiko IR `15-kg`, IR `75-kg`. Saugiklis sujungia
-gretimus skaitmenis (`2-5-kg` → `25`) ir lygina aibes. IŠMESTA papildomai:
-bendriniai taikiniai (`kita`) ir kito tėvo kategorijos.
-
-### BENDRA APIMTIS (v1.3)
-```
-1 sluoksnis  34 kategorijų keliai   1 596 clicks
-2 sluoksnis  42 ID uodegų keliai      666 clicks
-3 sluoksnis  10 pervadintų slug        30 clicks
-──────────────────────────────────────────────────
-             86 keliai              2 292 clicks = 11,6% viso GSC srauto
-mu-plugins/petshop-legacy-cat-301.php v1.3 · 14 608 B · sha 997bf7c581f6e335
-```
-**PATIKRA (s432):** visi trys sluoksniai — taikiniai 200 · 6 testiniai adresai
-→ 301, po VIENĄ šuolį, galutinis 200 · `X-Redirect-By: Petshop-Legacy-Category` ·
-kontrolė nepakitusi · neatpažinti → 404.
-
-### ⏸ LAUKIA RAIMIO: 40 URL peržiūra (106 clicks)
-```
-CSV Raimio PC: SEO_perziura_40_URL.csv (kandidatai + tuščias „sprendimas" stulpelis)
-JSON repo:     analize/seo_perziura_40.json
-```
-Automatika kandidatus RADO, bet nė vienas nepraėjo trijų sąlygų — arba panašumas
-per mažas, arba keli vienodai stiprūs, arba skaičiai nesutampa. **Spėti
-NELEIDŽIAMA.** Didžiausi: `sunims/transportavimo-dezes` (46 clicks — du kandidatai:
-šunims ir katėms), `vistienos-file-juosteles` (14 — kandidatas ANTIENOS, kita mėsa).
-
-### v2.0 — 6 SLUOKSNIAI, 937 KELIAI (2026-08-04)
-```
-mu-plugins/petshop-legacy-301.php          2 881 B · sha 02e958db35dc9a32
-mu-plugins/petshop-legacy-301-map.json   124 697 B · 937 įrašų
-(senas petshop-legacy-cat-301.php IŠTRINTAS — pakeistas)
-```
-**Žemėlapis ATSKIRAME JSON**, kraunamas TIK kai adresas 404 — kad kiekviena
-užklausa neparsintų 137 KB PHP masyvo.
-
-```
-sluoksnis                                    kelių   clicks
-1  kategorijos be /kategorija/ priešdėlio       34    1 596
-2  seni URL su ID uodegomis                     42      666
-3  pervadinti slug                              10       30
-4  produktai iš šaknies → /product/            805    2 968
-5  likusios kategorijos                         24      102
-6  brendai → /gamintojas/                       22      501
-─────────────────────────────────────────────────────────────
-                                              937    5 863 = 29,7% GSC srauto
-```
-
-### 🔴 KRITINIS RADINYS: /exclusion vedė į ATSITIKTINĮ SKU
-```
-PRIEŠ:  /exclusion (218 clicks) → 301 → /product/exclusion-hepat...
-        X-Redirect-By: WordPress   ← redirect_canonical SPĖJIMAS
-PO:     /exclusion → 301 → /gamintojas/exclusion/
-        X-Redirect-By: Petshop-Legacy-Category
-```
-TŽ v1.56 tai įspėjo („/exclusion 4194 EUR/6mėn, WP spėjimu 301-ina į vieną SKU,
-praeina QA"). **2026-08-04 tai VIS DAR VYKO.** Dabar uždaryta visiems 22 brendams.
-
-### PATIKRA (s436, s437)
-```
-937 įrašai · imtis 100 atsitiktinių → VISI taikiniai 200
-8 testiniai adresai (produktai, kategorijos, brendai) → 301, 1 šuolis, 200
-X-Redirect-By: Petshop-Legacy-Category   visiems
-kontrolė (jorksyro-terjeras, suns-serimo-lentele, duk, sprendimai,
-          kategorija/sunims, privatumo-politika) — NEPAKITO
-neatpažintas adresas → 404, jokio spėjimo
-```
-
-### GSC SUVESTINĖ (2 445 URL / 19 735 clicks)
-```
-jau veikė be nieko (page/post)          45 kelių ·  7 634 clicks
-uždaryta 301 taisyklėmis               937 kelių ·  5 863 clicks
-peržiūrai (CSV)                         40 kelių ·    106 clicks
-lieka 404 (turinio nebėra)             950 kelių ·  4 037 clicks
-```
-**950 likusių — daugiausia prekės, kurių katalogo NEBĖRA** (Beaphar, Frendi,
-GimCat pozicijos ir pan.). 404 jiems yra TEISINGAS atsakymas. Nukreipti „į
-panašiausią" DRAUDŽIAMA.
-
-### LIKO
-```
-40 URL peržiūra (CSV Raimio PC) — nebūtina iki launch, 106 clicks / 16 mėn.
-T-14/T-3 galutinė QA: visi seni → 301 → 200, be grandinių, be noindex
-```
-
----
-
-## 13. 2026-08-04 VAKARO BLOKAS — PENKI DARBAI
-
-### payment_failed — GRANDINĖ UŽDARYTA
-```
-mu-plugins/petshop-payment-failed.php v1.1 · sha e366969582c29fbb
-E2E: event 1 · job 1 · WOULD_SEND „Užsakymas 34832 laukia apmokėjimo" 2 094 B
-antras failed → 0 naujų (idempotencija) · testinis užsakymas ištrintas
-```
-**DVI priežastys, kodėl neveikė (abi svarbios kitam langui):**
-```
-1. Petshop_Event_Emitters kabinasi TIK prie payment_complete / processing /
-   completed / update_order. Prie `woocommerce_order_status_failed` NEBUVO NIEKO.
-2. DU ATSKIRI SLUOKSNIAI: Event_Registry::emit() → ps_event_log (Sender),
-   Email_Dispatch::enqueue() → ps_email_jobs (PATS LAIŠKAS).
-   Vien emit() laiško NESUKURIA. Pirmame bandyme kviečiau tik emit() ir gavau
-   įvykį BE laiško.
-```
-Dublikato nėra: WC prie `failed` siunčia laišką TIK adminui. Patikrinta kabliuku
-PRIEŠ jungiant (TŽ v1.60 „vienas srautas — vienas savininkas").
-Įdėtas ir Paysera atvejis: `pending` po nepavykusio mokėjimo — emituojam tik jei
-yra `transaction_id`.
-
-### Sender webhook — TŽ v1.60 vertinimas PASENĘS
-Svarbioji dalis JAU VEIKĖ: `handle_sender_unsubscribe()`, `handle_sender_bounce()`,
-suppression lentelė KANALINĖ su istorija (suppressed_at + released_at),
-`ps_webhook_log`, realus įrašas iš `sender_reconcile`.
-**Trūksta tik `delivered/opened/clicked` — tai ANALITIKA, ne funkcija.**
-Reputaciją saugantys atsisakymai ir bounce'ai apdorojami. NESTATOM (Raimio
-principas dėl perteklinių saugiklių).
-
-### DOD-04 — 20 užsakymų, 0 klaidų
-```
-ID 34833–34852 · svečias 10 / registruotas 10 · 4,49–659,50 €
-žemiau 30 € — 12, virš — 8 · šaltiniai zb/vf/legacy/belcor atskirai IR mišriai
-PROBLEMOS: nė vienos (suma, prekės, paštas, miestas — visi užpildyti)
-Po patikros IŠTRINTI (Raimio nurodymu): 20/20, saugiklis id>34720,
-realūs 34645 ir 34720 NEPALIESTI. Liko 10 našlaičių order_items eilučių.
-```
-**APRIBOJIMAS:** užsakymai kurti PROGRAMIŠKAI. Patikrinta kūrimo ir kainų logika,
-BET NE checkout/pristatymo metodų atrinkimas — `Fulfillment_Source` ir nemokamo
-pristatymo riba veikia krepšelio etape, kurio šis kelias neliečia.
-
-### 🔴 MANO KLAIDA: nemokamas pristatymas
-Paskelbiau „nemokamo pristatymo NĖRA" pažiūrėjęs į `woocommerce_free_shipping_1_settings`
-(min_amount 0, is_enabled 0). **NETIESA.** Riba sukonfigūruota VENIPAK PLUGINE:
-```
-woocommerce_shopup_venipak_shipping_pickup_method_3_settings
-  min_amount_for_free_shipping: "30"    ← veikia, kaip Raimis ir sakė
-```
-Ta pati klaidos rūšis kaip `footer_1_content` ir honeypot: pažiūrėjau į VIENĄ
-vietą ir paskelbiau verdiktą apie visą dalyką.
-
-### Snippetų valymas
-```
-viso 1 588 → 1 360 · TEMP 228 → 0 · aktyvūs 85 → 82
-```
-Trinta per DB — Code Snippets REST DELETE grąžina `rest_cannot_delete`.
-
-### gaj6_umbrella_redirects — IŠTRINTA
-```
-create_time 2026-08-03 20:37:41  ← tą pačią dieną kaip WP Umbrella diegimas
-įrašų 0 · kodas nenaudoja · umbrella opcijų 0 · pluginų 0
-Backup: opcija petshop_umbrella_redirects_bak_S450 (CREATE + eilutės)
-Lentelių 174 → 173
-```
-
-### 6 „dead" pet_profile_created — NE DEFEKTAS
-```
-last_error: non_retriable: Subscriber not found  (visi 6)
-m8e2e_31524@ · e2e_empty_1784063882@ · e2e_1784063882@ (MŪSŲ testai)
-gutulis@gmail.com (Raimio testinis)
-```
-Sender'yje tokių prenumeratorių nėra → sistema teisingai NEKARTOJO. Nieko taisyti.
-
-### DOD-09 — kodėl serijos įrodyti NEĮMANOMA
-```
-pmxi_history        laiko tik ~19 įrašų, senesnius TRINA
-_vf_last_sync       perrašomas kiekvieną sync (visos 1 161 prekės = šiandien)
-```
-Matoma tik 08-03…08-04. Importai gyvi: #7 kas valandą, #3 12:00 ir 17:00,
-#5 03:30 kasdien, #2 03:00.
-**ĮDIEGTA:** `mu-plugins/petshop-import-log.php` v1.0 · sha 2f64cc9e95a2bff0
-```
-kaupiamasis, NETRINA · perkelti 9 esami įrašai
-kaupia: data · import_id · created/updated/skipped · UŽSAKYMŲ PER VALANDĄ
-petshop_import_log_serija() → ilgiausia parų serija be pertraukos
-```
-Stulpelis „užsakymų per valandą" dabar visada 0, bet PO LAUNCH parodys tai, ko
-dev'e patikrinti neįmanoma: ar importas nesuveikė PIRKIMO metu.
-**DOD-09 nedeklaruoti žaliu net serijai atsiradus** — sąveika su pardavimais
-tikrinama tik po launch (Raimis sutiko).
-
----
-
-## 14. DOD-10 IR DOD-12 (2026-08-04)
-
-### DOD-10 — UŽDARYTA, BET NE TAIP, KAIP APRAŠYTA TŽ
-TŽ prašo „testuota 20 produktų". **2026-07-30 auditas apėmė 1 050 prekių** —
-stipresnis įrodymas: 0 neigiamų maržų, 0 žemiau 20%, dauguma 30–50%, tipinė ~45%.
-
-**🔴 FORMULĖS ATITIKTIES NETIKRINTI. NIEKADA.**
-```
-Petshop_Pricing formulė duotų ŽEMESNES kainas nei esamos.
-Reprice numuštų katalogą 24 489 € → 21 473 € = −12,3%.
-Esamos kainos SĄMONINGAI aukštesnės (Raimio sprendimas 2026-07-30 „nelendam").
-```
-Kas darys „kainų patikrą pagal formulę", ras 20 neatitikimų ir vadins juos
-klaidomis. **Tai NE klaidos.** Prieš bet kokį kainų darbą — skaityti ZB įrašą.
-
-### DOD-12 — techninė pusė (s455)
-```
-HPOS                    įjungtas
-WCDN 7.2.1              aktyvus · sąskaitų skaitiklis 228 (prieš launch → 101)
-Venipak pluginas        vietoje
-LP Express              prideda 7 savo statusus (lp-parcel-created, lp-label-created,
-                        lp-on-the-way ir kt.) — užsakymų sąraše jų bus daugiau
-```
-**RASTA:** `WC_Email_Customer_Invoice` IŠJUNGTAS → iš admino rankiniu būdu
-sąskaitos klientui NEIŠSIŲSI. Spręsti su kontroliniu lapu.
-
-**Rankinis kelias — TIK Raimis.** Iš serverio pusės neišmatuojama, ar žmogus
-žino, kur spausti. Kontrolinis lapas: `DOD12_kontrolinis_lapas.md`.
-
-### 🔴 MANO KLAIDA: payment_failed dublikatas
-Rašydamas `payment-failed.php` patikrinau kabliuką `woocommerce_order_status_failed`,
-pamačiau `WC_Emails::send_transactional_email` ir nusprendžiau „siunčia TIK adminui".
-**NETIESA** — tai BENDRAS dispečeris, siunčiantis VISUS tam statusui priskirtus
-laiškus, tarp jų ir klientui. `WC_Email_Customer_Failed_Order` buvo ĮJUNGTAS →
-klientas būtų gavęs DU laiškus.
-
-**IŠTAISYTA (Raimio sprendimas: siunčia MŪSŲ):**
-```
-WC_Email_Customer_Failed_Order  TAIP → ne    (backup petshop_wc_failed_email_bak_S456)
-WC_Email_Failed_Order           TAIP         adminui lieka
-```
-
-**TAISYKLĖ KITAM LANGUI:** prieš jungiant srautą prie dispatch tikrinti
-`WC()->mailer()->get_emails()` ir kiekvieno `is_enabled()` + `get_recipient()`,
-**NE kabliuko callback'ų sąrašą.** Kabliukas rodo dispečerį, ne gavėjus.
-
----
-
-## 15. SESIJOS SUVESTINĖ 2026-08-04
-
-### UŽDARYTA ŠIANDIEN
-```
-DOD-07  SEO 301        🔴 → ✅   937 keliai · 5 863 clicks · 6 sluoksniai
-DOD-08  Backup         🟡 → ✅   B2 + Object Lock + atstatymo testas + sargas
-DOD-10  Kainodara      🟡 → ✅   uždaryta 1 050 prekių auditu (§14)
-DOD-01  P0 F1–F16      🟡 → ✅   Identity P0 įvykdytas magic link
-OPS-12  umbrella       🔴 → ✅   lentelė ištrinta, 174 → 173
-G1  Google login       🔴 → ✅   nebeaktualu
-G5  H1 tema-fix        🔴 → ✅   10/10 puslapių po 1 prasmingą H1
-F30b  Atsiliepimai     ⚪ → ✅   veikia (verified buyers only)
-payment_failed                    grandinė pilna: event + job + laiškas
-naujienlaiškis                    poraštės forma + launch modalas
-3 el. laiškų šablonai             consent-changed · dunning-1 · founding
-snippetai                         1 588 → 1 360 (228 TEMP)
-```
-
-### DoD BŪKLĖ
-```
-✅ 10 · 🟡 5 · 🔴 5 · ⚪ 2      (ryte: ✅6 · 🟡5 · 🔴9 · ⚪2)
-```
-Raudoni likę: DOD-13 monitoringas · DOD-17 beta 5–10 klientų ·
-DOD-18 DNS planas · DOD-19 rollback · DOD-20 savaitinis stabilumas · DOD-22 indeksavimas.
-**Visi penki — pre-launch operacijos, ne kodo darbai.**
-
-### NAUJI mu-plugins (visi 2026-08-04)
-```
-petshop-legacy-301.php          2 881 B · 02e958db35dc9a32  + map.json 937 įrašų
-petshop-payment-failed.php      3 704 B · e366969582c29fbb
-petshop-import-log.php          2 826 B · 2f64cc9e95a2bff0
-petshop-code-search.php         (F4, 2026-08-03)
-petshop-pet-claim.php           (M8, 2026-08-03)
-```
-
-### ŠEŠIOS MANO KLAIDOS — VISOS TOS PAČIOS RŪŠIES
-**Pažiūrėjau į VIENĄ vietą ir paskelbiau verdiktą apie visą dalyką:**
-```
-1. footer_1_content         prasimaniau theme_mod, kurio Flatsome NETURI
-2. honeypot „matomas"       Playwright isVisible()=true elementui su x=-9999
-3. „juosta ne virš poraštės" lyginau su #footer, kurio VIDUJE pati juosta
-4. „18 s sustojimas"        tai buvo NEUŽRAKINTO eksporto laikas
-5. nemokamas pristatymas    žiūrėjau WC free_shipping, o riba VENIPAK plugine
-6. payment_failed dublikatas kabliuke mačiau dispečerį, ne gavėjus
-```
-**BENDRA TAISYKLĖ:** prieš verdiktą apie funkciją — patikrinti VISUS jos
-sluoksnius, ne pirmą rastą. Ir: matavimo įrankis gali meluoti (isVisible,
-dry-run skaičiai, kabliukų sąrašai) — verdiktas tik pagal galutinį elgesį.
-
-### RAIMIO RADINIAI, KURIŲ AUTOMATIKA NERADO
-```
-akvariumo-zuvyciu-maistas   kategorija PERVADINTA, ne uodega → 99 clicks
-nemokamas pristatymas       veikia Venipak plugine, kaip Raimis ir sakė
-Pragma išjungta             sąmoningai, kad nesiųstų nesąmonių buhalterei
-petshop.lt nėra nauja       2 445 URL, 19 735 clicks, 2 000 klientų
-```
-
----
-
-## 16. 🔴 RYTOJAUS PIRMA TEMA: MULTISANDĖLIS + ADMIN DARBO VIETA
-
-> **PRADĖTI NUO ŠITO.** Raimio nurodymas 2026-08-04 vėlai vakare.
-> NEDARYTI užsakymų sąrašo pertvarkymo, kol neišspręsta multisandėlio logika —
-> antraip pridėsim stulpelius ir po mėnesio perdarysim.
-
-### KONTEKSTAS
-```
-Su užsakymais ir prekėmis dirbs ATSKIRAS ŽMOGUS (patyręs, jau dirba su petshop,
-ne vienerius metus). Reikės atskiro prisijungimo. Darbas KOMPIUTERIU.
-Jis darys VISKĄ: priima · pakuoja · formuoja siuntas · spausdina sąskaitas.
-Raimis padės tik retkarčiais.
-Informacija apie MARŽAS jam REIKALINGA.
-```
-
-### RAIMIO PRINCIPAS
-> „Mes darome super gerą ir patogią svetainę klientui, o sau bele kaip."
-> „Neišradinėjam dviračio — pažiūrim gerąją praktiką kitur."
-
-### KAS JAU IŠMATUOTA (s457, s460 — ekranai per Playwright su auth cookie)
-```
-prekių sąrašas       124 850 px aukščio (~125 ekranai) · 12 stulpelių
-                     nereikalingi: Žymos · Siūloma · Data · ZB
-prekės langas        3 216 px · 18 metaboxų
-                     nereikalingi: Cookie reklamjuosta · Atsisiunčiamo produkto
-                     leidimai · Portfolio liekanos · Vartotojo laukai
-užsakymo langas      2 534 px · 10 blokų (Atsisiunčiamo produkto leidimai,
-                     Custom Fields — fizinėms prekėms NIEKADA nereikia)
-meniu                26 punktų (shop_manager role sutrumpintų ~perpus)
-shop_manager rolė    JAU YRA, 93 teisės, ribos teisingos:
-                     gali prekes/užsakymus/klientus/ataskaitas
-                     negali nustatymų/pluginų/temos/kodo/vartotojų
-                     vartotojų su šia role: 0
-```
-
-### UŽSAKYMŲ SĄRAŠO PROBLEMOS (Raimio ekranas 2026-08-05 00:39)
-```
-8 piktogramų mygtukai BE UŽRAŠŲ (prie 34645 — šeši, sulaužyti į dvi eiles)
-NEMATYTI: ką pirko · pristatymo būdo · ar apmokėta
-„Origin" angliškai, reikšmės „Tiesioginis/Nežinomas" — analitika, ne darbas
-„Venipak būsena" stulpelis TUŠČIAS
-reklaminis pranešimas viršuje užima ~ketvirtadalį ekrano
-```
-
-**SIŪLYTA STRUKTŪRA (aptarti):**
-```
-Nr. · Data · Klientas · KĄ PIRKO · Suma · Apmokėta · Pristatymas · ŠALTINIS · Veiksmas
-+ numatytasis filtras „laukia išsiuntimo"
-```
-
-### 🔴 MULTISANDĖLIS — ESMINIS KLAUSIMAS
-```
-Prekės iš 5+ šaltinių: ZB · VF · Quattro · Belacor · Legacy (+ savas sandėlis)
-Fulfillment_Source::resolve() tai JAU tvarko KREPŠELYJE.
-UŽSAKYMŲ SĄRAŠE to NĖRA.
-```
-Pakuotojui tai svarbiausia informacija: ar pakuoja PATS, ar eina dropshipu.
-**MIŠRUS UŽSAKYMAS** (viena prekė sava, kita ZB) skyla į DVI siuntas —
-stulpelis turi rodyti VISUS užsakyme esančius šaltinius, ne vieną.
-
-**RAIMIS: „tuoj iškils multisandėlio klausimas" — TAI RYTOJAUS TEMA.**
-
-### GALIMA DARYTI IŠKART (nepriklauso nuo multisandėlio, 5 min.)
-```
-nuimti reklaminį pranešimą užsakymų sąrašo viršuje
-nuimti „Origin" stulpelį
-```
-
-### RINKOS PRAKTIKA (patikrinta 2026-08-04)
-```
-Smart Manager (nemokamas)  skaičiuoklės stiliaus redagavimas wp-admin viduje
-Adminimize (nemokamas)     varnelių lentelė: kiekvienas metaboxas × kiekviena rolė
-                           IŠSPRĘSTŲ 18 blokų problemą BE KODO
-                           MINUSAS: nuo ~2015 beveik nekeistas
-mokami bulk edit           aprašymų paieška+pakeitimas, kainos ±%, atšaukimas,
-(50–100 €/m)               filtravimas prieš redagavimą
-```
-**ALTERNATYVA BE PLUGINŲ:** metaboxų slėpimas prekės/užsakymo lange —
-5 eilutės snippet'e, jokios naujos priklausomybės. Aplinkoje jau 29 pluginai.
-
-### SPRENDIMAI, KURIŲ REIKIA IŠ RAIMIO
-```
-1. Multisandėlio apimtis — ką jis realiai apima, kur dabar kliūva
-2. Ar pluginai (Smart Manager / Adminimize), ar savas kodas
-3. Ar pakuotojui reikia maržos UŽSAKYMŲ sąraše, ar tik prekių lange
-```
-
----
-
-## 17. 🔒 SANDĖLIŲ MODELIS — UŽRAKINTA (Raimis 2026-08-05)
-
-> Aptarta ir užrakinta pokalbyje 2026-08-05 rytą. **NEBEDISKUTUOJAMA, tik įgyvendinama.**
-> Konteksto ištrauka iš TŽ: `SANDELIAI_kas_jau_aptarta.md` (Raimio PC).
-
-### 17.1 SEPTYNI ŠALTINIAI — DVI RŪŠYS
-```
-AV        Avesa, TIKRAS FIZINIS sandėlis     likutis RANKINIS · PIRMENYBĖ
-─────────────────────────────────────────────────────────────────────────
-VF        Vetfarmas                          dropship · automatinis XML likutis
-ZB        Žalioji Banga                      dropship · automatinis XML likutis
-QUATTRO   Kauno grūdai                       dropship · likutis RANKINIS
-PRINS     Prins Petfoods                     dropship · likutis RANKINIS
-AMBROSIA                                     dropship · likutis RANKINIS
-BELACOR   Belacor / Tofu                     dropship · likutis RANKINIS
-```
-
-**🔴 „LEGACY" NĖRA SANDĖLIS.** Tai istorinė etiketė, apjungusi PENKIS nesusijusius
-dalykus: 4 dropship tiekėjus + AV. Reiškė „ne per XML importuotas" — tai apie KILMĘ,
-ne apie sandėlį. **Iš naujos logikos žodis „Legacy" DINGSTA.**
-Quattro / Prins / Ambrosia / Belacor elgiasi kaip VF ir ZB — dropship, BE pirmenybės.
-
-**Keturių rankinių tiekėjų tikslumas ~70–80%** (Raimis: „situaciją dėkam ir
-kontroliuojam, nėra kad bet ką parašėme ir pamiršome"). **NEDARYTI iš to problemos** —
-jokių papildomų „nepatikimumo" žymėjimų, jokio REVIEW statuso vien dėl šaltinio.
-
-### 17.2 TAISYKLĖ (Raimio žodžiais)
-> „VF, ZB prekės važiuoja dropshipingu. Bet jei pasitaiko mix užsakymas ir prekė yra
-> iš AV sandėlio, tada pirmenybė AV; jei tik VF ar ZB, tada tik iš ten."
-
-```
-EILUTEI:   AV turi VISĄ kiekį  →  AV
-           kitaip              →  tas dropship tiekėjas, kuriam prekė priklauso
-
-UŽSAKYMAS: grupuojamas pagal šaltinį → TIEK SIUNTŲ, KIEK GRUPIŲ
-```
-Sprendimas priimamas **EILUTEI, ne užsakymui.** Užsakymas tik parodo, kiek siuntų išeina.
-
-**Pavyzdys (Raimio):**
-```
-tik Josera Lamb 10 kg              → VF
-Josera Lamb 10 kg + žaislas (AV)   → Josera iš AV (nes AV turi)
-```
-
-### 17.3 SPRENDIMAI, KURIE UŽDARO KLAUSIMUS
-```
-DVI SIUNTOS         PRIIMTINA. „Stengiuosi, kad tokių būtų minimaliai, bet pasitaiko."
-                    NE gedimas, kurio reikia vengti bet kokia kaina.
-KAINOS              VIENODOS nepriklausomai nuo šaltinio → kainodaros klausimo NĖRA
-PREKĖS DYDIS        taisyklės NEKEIČIA. 1,5 kg pakuotė ir 10 kg maišas — tas pats
-                    principas (Raimis pats prie to priėjo)
-AV DALINIS KIEKIS   AV turi 1, klientas perka 3 → visi 3 iš tiekėjo
-                    (AV likutis lieka gulėti; Raimis retkarčiais RANKOMIS išsiunčia —
-                    „daugiau išimtys nei taisyklė")
-AV LIKUČIO MAŽINIMAS  AUTOMATIŠKAI, kai užsakymas pažymimas išsiųstu (variantas A)
-```
-
-### 17.4 🔴 KLIENTUI LIKUTIS NERODOMAS
-> „Klientui likučio išvis nereikia rodyti, principas arba prekė yra arba nėra,
-> o kai jis renkasi, jis negali paimti minusinio likučio."
-
-```
-RODOMA:      „yra" jei BENT VIENAS šaltinis turi · „nėra" jei visi nuliai
-NERODOMA:    joks skaičius
-RIBOJAMA:    negali įsidėti daugiau nei BENDRAS kiekis (AV + tiekėjas)
-```
-**Pasekmė:** likučių SUMAVIMO RODYMUI NEREIKIA. Sumavimas lieka TIK pardavimo ribai
-ir šaltinio parinkimui. Tai gerokai supaprastina TŽ 0.12 numatytą „daugiašaltinio
-likučio sumavimo logiką".
-
-### 17.5 ~~SITUACIJA A~~ — MANO KLAIDA, IŠTAISYTA 2026-08-05
-**Buvau parašęs:** „A = dėžė vs vienetas, du skirtingi produktai, problemos nėra."
-**NETIESA.** Prielaidą apie dėžes išsigalvojau — Raimis apie jas nekalbėjo.
-
-**Raimio faktas:** *„dažniausiai ir perku po 1 ir parduodu po 1. Kad pirkti dėžę ir
-paskui pardavinėti, tai beveik nebūna."*
-
-→ **A ir B yra TAS PATS ATVEJIS.** Tas pats vienetas, du kodai. Jokio prieštaravimo
-TŽ 0.12 nėra. Konsultantas teisus: **viena WooCommerce prekė, keli tiekimo šaltiniai.**
-
-### 17.6 LAUKŲ SPRENDIMAS
-```
-_own_stock_qty     AV likutis, ATSKIRAS laukas (variantas A)
-```
-**Kodėl ne WooCommerce `_stock`:** VF/ZB sinchronizacija `_stock` PERRAŠO kas valandą.
-Atskiras laukas nesikerta su sync. Struktūra TŽ jau numatyta (0.12), bet realiai
-nenaudojama — užpildyta tik 6 prekėms, visos = 0.
-
-### 17.7 ĮGYVENDINIMO EILĖ
-```
-1. MATAVIMAS         kiek prekių kiekvienam iš 7 · _own_stock_qty būklė
-                     · manage_stock · ar resolve() grąžina 4 tiekėjus ATSKIRAI
-2. LIKUČIO LAUKAS    _own_stock_qty įvedimas + admin laukas prekės lange
-3. PARDAVIMO RIBA    negali pirkti daugiau nei AV + tiekėjas
-4. ŠALTINIO PARINKIMAS eilutei, po checkout
-5. LIKUČIO MAŽINIMAS automatiškai išsiuntus
-6. UŽSAKYMO GRUPAVIMAS MAIN / DS / MIXED
-7. PAKUOTOJO EKRANAS stulpeliai · filtrai · „ką daryti"
-```
-
-### 17.8 ⚠️ RIZIKA ESAMAM KODUI
-`Petshop_Fulfillment_Source::resolve()` (S75) dabar grąžina `legacy` kaip VIENĄ šaltinį.
-Jį reikės išskaidyti į 5 (AV + 4 tiekėjai). **Bet juo remiasi TRYS veikiantys dalykai:**
-```
-S77  krepšelio cross-sell        „tik to paties sandėlio"
-S77  pristatymo metodų ribojimas carrier / courier_only
-S74  FBT kompanionai             „tik to paties sandėlio"
-```
-**ĮTARIMAS (NEPATIKRINTA):** jei Quattro ir Prins iki šiol buvo vienas `legacy`, jie
-galėjo siūlytis vienas kitam per FBT — nors tai DU skirtingi tiekėjai ir DVI siuntos.
-Patikrinti matavimo etape.
-
----
-
-## 18. SANDĖLIŲ MODELIS — KONSULTANTO PATAISOS + FAKTINĖ BŪKLĖ (2026-08-05)
-
-### 18.1 GRUPAVIMAS: SANDĖLIS → VEŽĖJAS → SIUNTA
-Konsultantas pasiūlė hierarchiją; **Raimis ištaisė esminę klaidą:**
-```
-AV    → Venipak ARBA LP Express     ← LP TIK iš AV
-VF    → tik Venipak
-ZB    → tik Venipak
-Quattro / Prins / Ambrosia / Belacor → tik Venipak
-```
-**LP Express galimas TIK iš AV sandėlio.** Vežėjo pasirinkimas egzistuoja tik AV
-siuntoms; visų dropship siuntų vežėjas — Venipak automatiškai.
-Bendras surinkimo lapas apima TIK fiziškai AV renkamas prekes.
-
-### 18.2 ŠALTINIS FIKSUOJAMAS UŽSAKYMO EILUTĖJE (konsultanto punktas 3 — PRIIMTA)
-`resolve()` NEGALI būti perskaičiuojamas vėliau pagal dabartinius likučius —
-šiandien AV, rytoj po likučio pasikeitimo sistema nuspręs VF. **Kiekvienoje
-užsakymo eilutėje IŠSAUGOTI:**
-```
-fulfillment_source · rezervuotas kiekis · tiekėjo SKU · siuntos grupė
-```
-**Mano santraukos spraga:** aprašiau `resolve()` kaip veiksmą po checkout, bet
-NEPASAKIAU, kad rezultatas turi būti ĮRAŠYTAS.
-
-### 18.3 SIUNTOS OBJEKTAS SU SAVO BŪSENA (konsultanto punktas 5 — PRIIMTA)
-Vienas užsakymas = kelios siuntos (AV + VF + ZB). Reikia NE tik užsakymo statuso:
-```
-laukiama · perduota tiekėjui · komplektuojama · išsiųsta
-sekimo numeris · pristatyta / klaida
-```
-**Užsakymas NEGALI būti „įvykdytas", kol neuždarytos VISOS jo siuntos.**
-
-### 18.4 KLIENTO KOMUNIKACIJA (konsultanto punktas 6 — PRIIMTA)
-```
-vienas PRADINIS pranešimas: „Užsakymas bus pristatytas keliomis siuntomis"
-atskiras IŠSIUNTIMO pranešimas KIEKVIENAI realiai siuntai
-visi sekimo numeriai matomi užsakymo puslapyje
-```
-NE du identiški „užsakymas išsiųstas" — klientas manytų gavęs dvigubą užsakymą.
-
-### 18.5 SPAUSDINIMO ŽYMA (konsultanto punktas 7 — PRIIMTA)
-Užsakymui reikia žymos: **kada pateko į spausdinimą · kokioje partijoje ·
-ar jau atspausdintas pakavimo lapas / lipdukas.**
-Kitaip tą patį užsakymą kitą rytą galima surinkti ANTRĄ KARTĄ.
-
-### 18.6 ⚠️ REZERVACIJOS — APIMTIS MAŽINAMA (konsultanto punktas 4 — DALINAI)
-Konsultantas siūlo `available = physical − reservations` su atskiru rezervacijų
-sluoksniu. **WooCommerce TAI JAU TURI** — neapmokėtiems užsakymams likutis
-laikomas nurodytą laiką. Antras sluoksnis = DVI TIESOS VIETOS.
-**Sprendimas: naudoti esamą WC mechanizmą, savo rezervacijų NEKURTI.**
-Prie dešimčių užsakymų per dieną to pakanka.
-
-### 18.7 🔴 FAKTINĖ BŪKLĖ (s465) — DVIŠALTINIŲ PREKIŲ NĖRA
-```
-prekių su IR vf, IR zb            0
-_active_fulfillment_source        zb 948 · vf 920 · out_of_stock 424
-                                  „av" arba „legacy" — NĖ VIENOS
-_own_stock_qty                    9 prekės, VISOS = 0
-```
-**Situacijos A ir B egzistuoja TŽ dokumente, bet NE duomenyse.**
-→ Sujungimo įrankio NEREIKIA. Migracijos NEREIKIA.
-→ Reikia tik, kad modelis LEISTŲ tokią situaciją, kai ji atsiras.
-
-**EAN dublikatai (26 grupės) — NE dvišaltinės prekės, o DUOMENŲ KLAIDOS:**
-```
-4011905925713  Šiaurės elnias · Tinginys su virve · Besmegenis
-5904760213357  Prisukama pelytė · Vabzdys · Kalėdinė pelytė
-3182550702355  Royal Canin 2 kg · Royal Canin 10 kg
-000000000000   placeholder
-```
-Raimis: *„čia prekės migravusios iš senos Petshop, ten viskas rankiniu būdu buvo
-vedama, tai gali būti."*
-**MANO MATAVIMO KLAIDA:** lentelėje ID kartojosi 2–3×, nes prekė turi tą patį EAN
-KELIUOSE laukuose (`_ean` + `_zb_ean`). Realių dublikatų dar mažiau.
-
-### 18.8 🔒 KODŲ MODELIS (Raimis + Claude sutarė)
-```
-Gamintojo EAN    ant maišo, VIENAS ir tas pats abiejuose sandėliuose
-Tiekėjo kodas    VF/ZB vidinis numeris — jų vidaus reikalas
-TAVO SKU         vienas, kuriuo prekė vadinama parduotuvėje
-```
-**PREKĖ VIENA, su VIENU tavo SKU.** Šaltiniai — tos prekės SAVYBĖ, ne atskiros prekės.
-```
-Josera Mini Lamb 10 kg
-   SKU JOS-MINI-10 · EAN 4032254749356
-   AV likutis 3        (rankinis)
-   VF kodas 12345      likutis 796 (XML)
-```
-**Kodėl NE dvi prekės:** du puslapiai tam pačiam maišui → Google dublikatas,
-klientas mato prekę dukart, statistika skyla, aprašymai taisomi dviese.
-
-### 18.9 MINIMALUS ŽINGSNIS
-Šiandien prekė turi VIENĄ tiekėjo kodą (`_vf_sku` ARBA `_zb_ean`).
-**Nereikia nieko pertvarkyti — reikia PRIDĖTI `_own_stock_qty`.**
-Prekė lieka VF preke su VF kodu, tik papildomai turi AV likutį.
-Antro tiekėjo kodo prireiks TIK jei ta pati prekė ateis ir iš ZB — dabar tokių NĖRA.
-**Tai vienas naujas laukas, NE architektūros perdarymas.**
-
----
-
-## 19. SANDĖLIŲ ĮGYVENDINIMAS — 1 SLUOKSNIS BAIGTAS (2026-08-05)
-
-### ✅ AV LIKUČIO LAUKAS
-```
-mu-plugins/petshop-av-stock.php  v1.1 · 11 412 B · sha bca43eb1fbd92260
-```
-**Kodėl ATSKIRAS mu-plugin, o ne class-product-cost-metabox.php papildymas:**
-tas failas 26 504 B su veikiančia savikainos/maržos/lock logika. Likutis priklauso
-ATSARGŲ kortelei, ne kainodaros blokui.
-
-**Kodėl `_own_stock_qty`, o ne WooCommerce `_stock`:** VF/ZB sync `_stock` PERRAŠO
-kas valandą. Atskiras laukas nesikerta.
-
-**Ką duoda:**
-```
-laukas          WooCommerce → Prekė → Atsargos → „AV sandėlio likutis"
-stulpelis       prekių sąraše (62 px, centruotas), žalias >0 · raudonas 0 · pilkas —
-greitas red.    Quick Edit + reikšmė atsinaujina BE perkrovimo (ajaxSuccess)
-rikiavimas      pagal AV
-filtras         AV turi (>0) · AV pasibaigė (0) · AV neturi (tuščia)
-žurnalas        _own_stock_log: kada · buvo · tapo · kas · priežastis (50 paskutinių)
-API             Petshop_AV_Stock::qty() / has() / decrease() / increase()
-```
-
-**🔴 TUŠČIAS ≠ NULIS.** Tuščias = „AV šios prekės neturi". Nulis = „AV turėjo, bet
-nebeliko". Resolverio `legacy` reiškia „neatpažinta tiekėjui", NE „guli AV" —
-**AV priklausymą lemia TIK `_own_stock_qty` reikšmė.**
-
-### TESTAI (s468, s470)
-```
-increase 5 → 5 · has(3) taip · has(9) ne · decrease 2 → 3
-decrease 99 → WP_Error „AV turi 3, prašoma 99"
-decrease 0  → WP_Error „Kiekis turi būti teigiamas"
-WooCommerce _stock 653 → 653  NEPALIESTAS ✅
-žurnalas fiksuoja net vartotoją (bdz487, „rankinis")
-```
-**Raimio įvestas realus likutis (Josera Sensiplus 12,5 kg, id 17978, av=2) veikia.**
-
-### NULINIŲ VALYMAS
-8 prekės turėjo `_own_stock_qty = 0` — likučiai iš TŽ 0.12 recon, niekada nekeisti.
-Ištrinta **tik tos, kurios NETURI žurnalo** (= rankomis niekas nelietė): 8 → 0.
-Raimio Josera nepaliesta (turi žurnalo įrašą).
-**Katalogе dabar VIENA prekė su AV likučiu.**
-
-### MANO KLAIDOS ŠIAME BLOKE
-```
-1. stulpelio plotis nenurodytas → antraštė „AV" užlipo ant „Kaina"
-2. po Quick Edit reikšmė neatsinaujino → atrodė, kad neišsisaugojo
-   (realiai DB buvo teisingai)
-```
-Abi — tikrinau per API, ne akimis. Tas pats šablonas kaip visą savaitę.
-
-### RESOLVERIS — ĮTARIMAS NEPASITVIRTINO
-`Petshop_Fulfillment_Source::resolve()` **JAU grąžina visus atskirai:**
-```
-imtis 300: vf 109 · legacy 98 · zb 70 · belcor_tofu 10 · quattro 6 · ambrosia 4 · prins 3
-```
-Quattro/Prins/Ambrosia/Belacor NĖRA suplakti į `legacy`. **FBT jų nemaišo.**
-Kode parašyta: `legacy -> tikras savas sandelis, carrier=any`.
-→ **Išskaidymo NEREIKIA.** Reikia tik papildyti AV logika (2 sluoksnis).
-
-### EILĖ
-```
-1 ✅ AV likučio laukas
-2 ✅ AV kaip šaltinis (§19.2)
-3 ✅ pardavimo riba (AV + tiekėjas) (§19.3)
-4 ✅ šaltinio fiksavimas užsakymo eilutėje (§19.5)
-5 ✅ likučio mažinimas ir grąžinimas (§19.7)
-6 ✅ užsakymo grupavimas MAIN/DS/MIXED (§19.8)
-7 ✅ pakuotojo ekranas (§19.8)
-8 ✅ galiojimo terminai (§19.9)
-```
-
----
-
-### 19.2 ✅ 2 SLUOKSNIS — AV KAIP ŠALTINIS
-```
-mu-plugins/petshop-av-source.php  v1.1 · 5 762 B · sha a9e6968438ad521b
-```
-**`class-fulfillment-source.php` NEPALIESTAS.** Nauja klasė jo rezultatą PAPILDO —
-tas failas yra vienintelė sandėlio tiesos vieta, ir juo remiasi S77 cross-sell,
-S77 pristatymo ribojimas ir S74 FBT.
-
-**API:** `Petshop_AV_Source::resolve($pid,$qty)` · `is_av()` · `group()` ·
-`order_type()` · `group_order($order)`
-
-### 🔴 DVI AV RŪŠYS (išmatuota s472 — KEIČIA ANKSTESNĘ PRIELAIDĄ)
-```
-GRYNAI AV        959 publish · _legacy_source=excel_v2_20260604
-                 likutis WooCommerce `_stock` (5, 3, 12, 1 — REALŪS)
-                 niekada nebuvo pas tiekėją → sync jų NELIEČIA
-                 `_own_stock_qty` NEREIKIA
-AV + TIEKĖJAS    Josera tipo · likutis `_own_stock_qty`
-                 prekė yra IR pas VF/ZB, IR pas Raimį; `_stock` perrašo sync
-```
-Mano ankstesnė prielaida „AV priklausymą lemia TIK `_own_stock_qty`" buvo PER SIAURA.
-Resolverio `legacy` = grynai AV → verčiam į `av`, `carrier: any`.
-
-### SCENARIJŲ TESTAI (s471, s473)
-```
-Josera 1 vnt (AV 2)    → av       any      „AV turi 2, reikia 1"
-Josera 3 vnt (AV 2)    → vf       venipak  „neužtenka"
-grynai AV (legacy)     → av       any      „grynai AV prekė (be tiekėjo)" qty 10
-
-A tik Josera 1     → [av]            MAIN
-B Josera 1 + kita  → [av, legacy]    MIXED
-C Josera 3 + kita  → [vf, legacy]    MIXED   ← AV iškrito, neužteko
-D tik dropship     → [legacy]        DS
-```
-
-### VEŽĖJO SAUGIKLIS
-`AV_Source::resolve()` grąžina `carrier: venipak` **BET KOKIAM dropship šaltiniui**,
-nesvarbu ką sako bazinis resolveris. **LP Express TIK iš AV.**
-Patikrinta 600 prekių — blogų 0.
-
-### ✅ RAIMIO KLAUSIMAS: „ar Legacy reikia išskaidyti į Belacor/Prins/Ambrosia/Quattro?"
-**JAU PADARYTA** (S75, 2026-06-08). Patikrinta VISOS 2 776 publish prekės:
-```
-VERDIKTAS: legacy viduje 4 tiekėjų NĖRA · liko: []
-quattro 64 · belcor_tofu 62 · prins 23+20 draft · ambrosia 15 · legacy 959
-```
-Resolveris skiria pagal `_legacy_manufacturer`. **Nieko daryti nereikia.**
-
-### PILNAS ŠALTINIŲ PJŪVIS (visos publish+draft)
-```
-vf       991 publish + 170 draft
-zb       662 publish + 397 draft
-legacy   959 publish + 441 draft   ← AV
-quattro   64 · belcor_tofu 62 · prins 23+20 · ambrosia 15
-legacy publish pjūvis: instock 816 · outofstock 143 · su kaina 959 · be kainos 0
-top kategorijos: Žaislai šunims 178 · Skanėstai šunims 116 · Konservai katėms 82
-```
-
----
-
-### 19.3 ✅ 3 SLUOKSNIS — PARDAVIMO RIBA
-```
-mu-plugins/petshop-av-limit.php  v1.0 · 3 720 B · sha f3008f49a22e65e6
-```
-WooCommerce ribojo pagal `_stock` = VIENO šaltinio kiekį. Dabar riba = **AV + tiekėjas**.
-```
-Josera:  DB _stock 653 + DB _own 2  →  WC rodo 655
-klientui: „Turime" — BE SKAIČIAUS (§17.4)
-```
-**Taikoma TIK toms, kurios turi `_own_stock_qty` IR tiekėjo šaltinį.**
-Grynai AV ir VF-be-AV prekėms — nieko nekeičia (patikrinta).
-`_stock` reikšmė NEKEIČIAMA. Savų rezervacijų NEKURIAMA (§18.6).
-
-**Filtrai:** `woocommerce_product_get_stock_quantity` · `..._get_stock_status` ·
-`woocommerce_get_availability_text` · `woocommerce_get_stock_html` (du pastarieji
-nuima „(127)" iš kliento matomo teksto).
-
-### 19.4 🔴 INCIDENTAS: `_stock` 653 → 2 (S468 testo pasekmė)
-**Rasta:** Josera `_stock` buvo 2, o `_vf_qty` 653. Visos kitos VF prekės rodė
-`_stock = _vf_qty` tiksliai — tik Josera iškrito.
-```
-Priežastis: S468 testo `increase(5)`/`decrease(2)` metu WooCommerce kabliukas
-            perrašė `_stock` AV reikšme. Vėliau nulinių valymas ištrynė žurnalą,
-            todėl pėdsako neliko.
-NE filtro kaltė: save() testas → „prieš 2 → filtruota 4 → po 2" = SAUGU.
-```
-**ATSTATYTA:** `_stock` 2 → 653, lookup lentelė 2 → 653, `_own_stock_qty` nepaliesta.
-
-**SAUGIKLIS (`apsaugotas_rasymas()`, v1.2):** prieš kiekvieną `_own_stock_qty`
-rašymą įsimenamas `_stock`; po rašymo tikrinama ir, jei pasikeitė, GRĄŽINAMA +
-`error_log`. Patikrinta: increase/decrease → `_stock` 653 nepakito.
-```
-petshop-av-stock.php v1.2 · 12 575 B · sha c6cf7e99783591bf
-```
-**KODĖL SVARBU:** be saugiklio kiekvienas AV likučio keitimas galėjo TYLIAI
-sugadinti tiekėjo likutį — prekė rodytųsi turinti 2 vietoj 653, pardavimai
-sustotų be jokio pranešimo.
-
-**KAIP RADAU:** palyginau `_stock` su `_vf_qty` VISOSE prekėse. Vienos prekės
-tikrinimas to nebūtų parodęs.
-
----
-
-### 19.5 ✅ 4 SLUOKSNIS — ŠALTINIO FIKSAVIMAS EILUTĖJE
-```
-mu-plugins/petshop-av-order.php  v1.0 · 4 622 B · sha c271db49416d8995
-```
-Konsultanto punktas 3. Sprendimas priimamas VIENĄ kartą (payment_complete /
-processing / on-hold) ir ĮRAŠOMAS. Vėliau tik SKAITOMAS.
-```
-EILUTĖJE:  _ps_source · _ps_carrier · _ps_source_qty · _ps_source_at · _ps_source_reason
-UŽSAKYME:  _ps_order_type (MAIN|DS|MIXED|REVIEW) · _ps_groups · _ps_shipments · _ps_decided_at
-+ automatinė pastaba: „Vykdymas: MIXED — AV 1 vnt · ZB 1 vnt (2 siuntos)"
-```
-
-**E2E 5/5 (s478):**
-```
-A tik AV              → MAIN  1 siunta · av/any
-B AV + ZB             → MIXED 2 · av/any + zb/venipak
-C Josera 1 + ZB       → MIXED 2 · av/any „AV turi 2, reikia 1"
-D Josera 3 + ZB       → MIXED 2 · vf/venipak ×3 „neužtenka" + zb
-E tik ZB              → DS    1 · zb/venipak
-IDEMPOTENCIJA: antras statuso keitimas NEPERSKAIČIAVO
-PO LIKUČIO POKYČIO: AV 2→0, bet eilutė LIKO „av" ✅ ← šio sluoksnio TIKSLAS
-```
-
-### 19.6 🔴 RADINYS PENKTAM SLUOKSNIUI: WooCommerce JAU mažina `_stock`
-```
-woocommerce_payment_complete        → wc_maybe_reduce_stock_levels
-woocommerce_order_status_processing → wc_maybe_reduce_stock_levels
-```
-S478 testo metu Josera `_stock` 653 → 649 (Josera ×1 + ×3 = 4 vnt). **Ne klaida —
-normalus WC veikimas.** Atstatyta (s479): `_stock` ir lookup → 653.
-
-**PASEKMĖ 5 SLUOKSNIUI — negalima tiesiog „sumažinti AV":**
-```
-eilutėms _ps_source = av   → mažinti _own_stock_qty IR SUSTABDYTI WC mažinimą
-eilutėms su tiekėju        → palikti WC elgtis kaip įprasta
-```
-Antraip AV prekei nusirašytų DU kartus (vienetas iš `_own_stock_qty` + vienetas
-iš `_stock`), nors fiziškai išėjo vienas.
-`woocommerce_can_reduce_order_stock` filtras tuščias, BET veikia VISAM užsakymui,
-ne eilutei — reikės tikslesnio kelio.
-
-### ⚠️ MANO TESTŲ ŠALUTINIAI POVEIKIAI (du per vieną dieną)
-```
-S468  _stock 653 → 2    AV rašymas perrašė _stock  → saugiklis apsaugotas_rasymas()
-S478  _stock 653 → 649  WC pats sumažino per processing → atstatyta rankomis
-```
-**TAISYKLĖ:** po kiekvieno testo, kuris liečia užsakymus ar likučius, PALYGINTI
-`_stock` su `_vf_qty`/`_zb_qty` — ne tik tikrinamos prekės, o pjūvį.
-Vienos prekės tikrinimas šito neparodo.
-
----
-
-### 19.7 ✅ 5 SLUOKSNIS — AV NURAŠYMAS BE DUBLIAVIMO
-```
-mu-plugins/petshop-av-reduce.php  v1.1 · 5 742 B · sha ee0cac53c62d66b5
-mu-plugins/petshop-av-order.php   v1.1 · 4 923 B · sha b2adf4764d2fb18e (prioritetas 5)
-```
-
-**🔴 KABLIUKŲ EILIŠKUMAS — BŪTINA ŽINOTI:**
-```
-5   Petshop_AV_Order::fiksuoti        įrašo _ps_source į eilutes
-10  wc_maybe_reduce_stock_levels      WooCommerce mažina _stock
-15  Petshop_AV_Reduce::mazinti        mažina _own_stock_qty
-```
-**S480 KLAIDA:** fiksavimas buvo prioritetu 20 → `_ps_source` dar neegzistavo, kai
-jo prireikė. NEI WC stabdymas, NEI AV nurašymas nesuveikė. Perkelta į 5.
-
-**KAIP SUSTABDOM WC eilutei:** `woocommerce_order_item_quantity` grąžina 0 toms
-eilutėms, kurių `_ps_source = av`. Švariau nei `can_reduce_order_stock`, kuris
-veikia VISAM užsakymui.
-
-**TRYS ELGSENOS:**
-```
-_ps_source=av + turi _own_stock_qty   → mažinam _own_stock_qty, _stock NELIEČIAM
-_ps_source=av + grynai AV (null)      → mažinam _stock rankomis (ten likutis gyvena)
-tiekėjo eilutės                       → WooCommerce elgiasi kaip įprasta
-```
-
-**E2E 6/6 (s482) — mišrus užsakymas Josera(AV) + grynai AV + ZB:**
-```
-PRIEŠ       Josera stock 653 · AV 2 | grynai AV 8 | ZB 33
-PO process  Josera stock 653 · AV 1 | grynai AV 7 | ZB 32
-PO cancel   Josera stock 653 · AV 2 | grynai AV 8 | ZB 33   ← viskas grįžo
-V1 AV krito 1 ✅ · V2 _stock NEPAKITO ✅ · V3 grynai AV ✅ · V4 ZB ✅
-V5 AV grąžinta ✅ · V6 grynai AV grąžinta ✅
-```
-Grąžinimas: `woocommerce_order_status_cancelled` + `..._refunded`, idempotentiška
-per `_ps_av_restored`.
-
-### ⚠️ PHP PAMOKA: rodyklė eilutės interpoliacijoje
-```
-BLOGAI:  "#$pid AV $av→$rez"     PHP bando → baitus įtraukti į kintamojo vardą
-                                  → Warning: Undefined variable $av→
-GERAI:   "#{$pid} AV {$av} -> {$rez}"
-```
-
----
-
-### 19.8 ✅ 6+7 SLUOKSNIAI — PAKUOTOJO EKRANAS
-```
-mu-plugins/petshop-av-admin.php  v1.2 · 7 510 B · sha d6397e214953bd84
-```
-Užsakymų sąraše (patikrinta EKRANO NUOTRAUKA s487):
-```
-#34866  MIXED  2 siuntos  AV 1 · VF 1    1 Josera Sensiplu… · 1 Josera SensiPl…
-#34865  MIXED  3 siuntos  AV 1 · ZB 1 · VF 2
-#34864  DS                ZB 1           1 Monge VetSolut…
-#34863  MAIN              AV 2           2 Ontario Monopr…
-```
-Stulpeliai „Vykdymas" (tipas + siuntos + šaltiniai spalvomis) ir „Prekės" (kiekis +
-pavadinimas + spalvotas taškas pagal šaltinį). Filtras pagal tipą. „Origin" nuimtas.
-
-**🔴 KLAIDA v1.0: `remove_all_actions('admin_notices')` NUKIRTO VISĄ PUSLAPĮ.**
-WooCommerce HPOS ekranas turinį piešia per TUOS PAČIUS pranešimų kabliukus.
-Ekrano nuotrauka parodė baltą lapą — sidebar yra, turinio nėra.
-**Pakeista tiksliniu CSS slėpimu.** TAISYKLĖ: `remove_all_actions` admin ekranuose
-NENAUDOTI — šalina daugiau, nei matai.
-
-### 19.9 ✅ GALIOJIMO TERMINAI — BE PARTIJŲ APSKAITOS
-```
-mu-plugins/petshop-av-expiry.php  v1.0 · 8 633 B · sha 4995fa9c8c3670cc
-```
-**RAIMIO FIZINĖ SISTEMA JAU VEIKIA:** naujesnis galiojimas dedamas į lentynos GALĄ,
-imama iš PRIEKIO → teisinga partija išeina savaime. Įrašų tam NEREIKIA.
-> „Stengiuosi dedamas naujausio galiojimo sudėti į lentynos galą, kad nesimaišytų.
->  Tik būna niuansų, kai užsakinėji retesnes prekes su galiojimais, tai dedi į vieną
->  dėžę, tada svarbu pakuojant paimti su senesniu galiojimu."
-
-**TODĖL NE PARTIJŲ APSKAITA.** Ji reikalautų suvesti KIEKVIENĄ priėmimą; pamiršus
-vieną įrašą visi tolesni skaičiai melagingi — blogiau nei be sistemos.
-
-**VIETOJ TO:**
-```
-_ps_expiry        galiojimo data — pildoma TIK kai svarbu
-_ps_expiry_note   pastaba pakuojant („imti su 09 mėn.") — retoms prekėms vienoje dėžėje
-stulpelis         spalvos: >60 d. ramu · ≤60 geltona · ≤30 raudona · <0 raudonas fonas
-filtras           Artėja arba pasibaigė · Pasibaigę · Turi datą · Turi pastabą
-```
-**NIEKO NESUVEDINĖJAM IŠ ANKSTO.** Iš ~960 AV prekių galiojimas svarbus ~300
-(konservai 161, skanėstai 116, sausas maistas, papildai). Žaislai (178), dubenėliai
-(37), antkakliai, kraikai jo NETURI. Realiai per mėnesį susives keliolika.
-**Tuščias laukas = norma, ne spraga.**
-
-Testai: 199 d. skubu=ne · 44 d. taip · 11 d. taip+pastaba · −9 d. taip.
-Po testų valyta: prekių su data 0.
-
----
-
-### 19.10 ✅ SURINKIMO IR PAKAVIMO LAPAI
-```
-mu-plugins/petshop-av-sheets.php  v1.0 · 10 445 B · sha 237346e8e7418b75
-```
-Masinis veiksmas „Petshop: surinkimo ir pakavimo lapai" (7-as; esami 6 nepaliesti)
-+ vieno užsakymo veiksmas užsakymo lange.
-
-**TRYS BLOKAI (Raimio patvirtinta, s495 ekrano nuotrauka):**
-```
-SURINKTI IŠ SANDĖLIO   bendri kiekiai · ☐ braukymui · vienas ėjimas
-VENIPAK                užsakymai eilėmis
-LP EXPRESS / UNISEND   užsakymai eilėmis
-```
-**KODĖL VENIPAK IR LP ATSKIRAI** (Raimis pakartojo 2×, aš buvau ėmęs siūlyti atgal —
-NEBEKELTI): lipdukai formuojami ATSKIRAIS mygtukais → krūvelės atskiros; lapas eina
-lygiagrečiai su savo krūvele. Plius LP siuntoms renkamas DYDIS, Venipak — ne.
-
-Į lapus patenka **TIK AV eilutės**. Mišrus užsakymas pažymimas
-„dalis siuntos (2 siuntos)" — pakuotojas mato, kad tai ne visas užsakymas.
-`_ps_expiry_note` rodoma ABIEJOSE vietose (surinkime ir prie eilutės).
-Spausdinant meniu/mygtukai dingsta, Venipak ir LP — atskiruose A4 lapuose.
-
-### 19.11 DAUGIAPAKUOTĖS SIUNTOS — IŠTIRTA, NESTATOMA
-Raimis: vienas užsakymas kurjeriu gali būti 4 dėžės = 4 lipdukai. **Tik kurjeriui** —
-į paštomatą kiekviena dėžė yra atskira siunta.
-```
-VENIPAK   RANKINIS: $_POST['packs'] → dispatch_order($ids, $packs, $is_global)
-                    grąžina KELIS pack_numbers (po vieną dėžei)
-                    nustatymas shopup_venipak_shipping_field_maxpackproducts
-                    (kiek prekių telpa į pakuotę — galėtų skaičiuoti automatiškai)
-LP        AUTOMATINIS: NAWebCo\BoxPacker\Packer pagal svorį ir matmenis
-                    resolve_shipping_size($planCode, $package)
-                    ⚠ remiasi weight/width/height/length — be matmenų bus SPĖJIMAS
-```
-**SPRENDIMAS: NESTATYTI, kol per abu vežėjus nepraeis bent po vieną TIKRĄ siuntą.**
-Dabar matomas tik kodas; kaip atrodo reali sąsaja ir ką ji priima — nežinoma.
-Tas pats galioja LP DYDŽIO laukui (§19 anksčiau).
-
-Kurjeriui bendro siuntų skaičiaus nurodyti NEREIKIA — Raimis: „kurjeriai siuntas
-nusiskenuoja ir pasiima". Manifestas abiejuose pluginuose YRA kaip atsarginis.
-
----
-
-### 19.12 ✅ DROPSHIP PERDAVIMAS TIEKĖJAMS
-```
-mu-plugins/petshop-av-dropship.php  v1.1 · 17 935 B · sha d03cbf2128079e65
-```
-**KAIP BUVO DAROMA RANKOMIS** (Raimio laiškas FW: užsakymas 2026-08-05):
-vienas laiškas dienai iš terra@petshop.lt · lentelė Nr · vardas · prekė · kiekis ·
-priedai: lipdukai, KIEKVIENAS pavadintas „772 Simas Šimkus.pdf" + manifestas.
-> Raimis: „Kiekvieną lipduką išsaugau ranka, dabar pas mus labai daug rankinio darbo."
-
-**TECHNINIS PAGRINDAS (s501) — lipduką GALIMA imti po vieną:**
-```
-AJAX woocommerce_shopup_venipak_shipping_get_label_pdf → VIENO užsakymo PDF
-POST https://go.venipak.lt/ws/print_label  (user, pass, pack_no, format)
-pack_numbers = MASYVAS → daugiapakuotės tuo pačiu keliu
-lipdukas 283×425 pt = 10×15 cm (Raimio etikečių spausdintuvas), laukas „1 \ 1"
-manifestas = „Sender's shipment bill" A4, kurjerio parašui, VIENAS partijai
-```
-Bendro PDF skaidyti NEREIKIA.
-
-**VEIKIMAS:** masinis veiksmas „Petshop: perduoti tiekėjams" → puslapis su kortele
-kiekvienam tiekėjui → lentelė (Nr · klientas · prekė+kodas · kiekis) → mygtukas
-su varnelėmis „pridėti lipdukus" / „pridėti manifestą" → wp_mail iš terra@petshop.lt.
-Užsakymai žymimi `_ps_dropship_sent` → kitą kartą į sąrašą NEPATENKA.
-
-**🔴 NE AUTOMATINIS SIUNTIMAS.** Laiškas tiekėjui = užsakymas su Raimio pinigais;
-klaidingas kiekis paaiškėtų tik atvažiavus siuntai. Sistema paruošia — Raimis tvirtina.
-
-**KODAI:** VF ir Quattro kodai SUTAMPA su mūsų SKU. Prins/Ambrosia/Belacor atsirenka
-pagal pavadinimą ir barkodą → jiems rodomas IR EAN.
-**ZB:** laiškas NESIUNČIAMAS (reikia vesti į jų sistemą) — rodoma lentelė kopijavimui.
-
-### 🔒 TIEKĖJŲ EL. PAŠTAI (Raimis 2026-08-05, opcija `ps_tiekeju_pastai`)
-```
-Vetfarmas       ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt
-Belacor         lina.sirvele@belacorinvest.lt
-Ambrosia        info@alphazoo.lt
-Kauno grūdai    e.panaviene@kaunogrudai.lt
-Faunas/Prins    irute@faunas.lt
-```
-Keičiama: WooCommerce → Tiekėjų el. paštai.
-
-### ⚠️ TESTŲ ŠALUTINIS POVEIKIS — KETURIS KARTUS PER SESIJĄ
-```
-S468  _stock 653 → 2     AV rašymas             → saugiklis apsaugotas_rasymas()
-S478  _stock 653 → 649   WC processing          → atstatyta
-S499  _stock 648 → 2     užsakymų atšaukimas    → atstatyta
-S503  2 prekės nesutapo  testiniai užsakymai    → atstatyta
-```
-**Saugiklis saugo TIK nuo pirmos priežasties** — nuo WC nurašymo nepadeda, nes ten
-WooCommerce elgiasi teisėtai.
-**TAISYKLĖ KITAM LANGUI: testuoti su ATSKIRA testine preke, ne su realiomis.**
-Po kiekvieno testo su užsakymais — palyginti `_stock` su `_vf_qty` VISOSE prekėse.
-
----
-
-## 20. ATASKAITŲ STANDARTAS v2 — ĮDIEGTA DEV (2026-08-16)
-
-> Spec: `dokumentai/petshop_ataskaitu_standartas_v2_spec_v1_2.md` · maketai
-> `ataskaitu_standartas_v2_maketas.html`, `rinkiniu_ataskaita_maketas.html`
-> Sesijos: S813–S838 (`deployment_log_v1_4_5.md`)
-
-**Principas:** kiek uždirbau ir ar auga → kas tai lemia → ką daryti. Ekranai
-skaito dienos suvestinę, NIEKADA ne žalius užsakymus.
-
-### Moduliai (visi `mu-plugins`, dev.avesa.lt)
-
-| Failas | Ver. | Būklė |
-|---|---|---|
-| `petshop-statistika.php` | 2.0 | ✅ schema v2, du sluoksniai, uždarymo meta |
-| `petshop-statistika-vitrina.php` | 1.0 | ✅ 9 įvykių tipai, laukai NEKEISTI |
-| `petshop-ataskaitu-agregavimas.php` | 1.0 | ✅ cron 03:15 + šiandienos sluoksnis |
-| `petshop-ataskaitos-ui.php` | 1.0 | ✅ bendras karkasas visoms ataskaitoms |
-| `petshop-rinkiniu-ataskaita.php` | 2.0 | ✅ „Surenkami rinkiniai", 11 sekcijų |
-| `petshop-paruostu-ataskaita.php` | 1.0 | 🟡 „Rinkiniai" — veikia, bet be duomenų |
-| `petshop-ataskaitu-eksportas.php` | 1.0 | ✅ XLSX atsisiuntimas, keli lapai + žali duomenys |
-
-### DB
-
-- `gaj6_ps_laukai_ivykiai` — schema v2 (+`dydis`, `skirtukas`, `kiek_dezeje`, `irenginys`)
-- `gaj6_ps_ataskaitu_dienos` — NAUJA, dienos suvestinė, pinigai CENTAIS
-- Naujas uždarymo meta: `_ps_stat_sesija`, `_ps_irenginys`, `_ps_dydis`, `_ps_kaina_atskirai_vnt`
-
-### Excel eksportas
-
-Mygtukas „⬇ Atsisiųsti į Excel" abiejuose languose. Savas XLSX rašytojas per
-`ZipArchive` — be PhpSpreadsheet (jis serveryje yra, bet priklauso importo
-pluginui). Skaičiai eksportuojami kaip skaičiai, ne tekstas.
-
-Lapai: Suvestinė · Prekės · Rinkiniai · Piltuvėlis · **Žali duomenys**
-(pastarasis — visa dienos suvestinė pivot'ams, be apdorojimo).
-
-### Užrakinti sprendimai
-
-- Savikaina fiksuojama PARDAVIMO momentu — praeities marža nesikeičia
-- Grąžinimai mažina GRĄŽINIMO dienos skaičius, istorija atgaline data nekinta
-- Du sluoksniai: be sutikimo — anoniminiai įvykiai (jokio ID įrenginyje);
-  su Complianz statistikos sutikimu — sesija, ir tik tada piltuvėlis/kabliukai
-- Sekos metrikos ekranuose žymimos „iš sutikusių su statistika"; pinigai — iš visų
-- Ribos (kandidatų, lyderių, kanibalizacijos) — wp options, ne konstantos
-- E2 daromas atskiru moduliu; `petshop-laukai.php` (183 KB) nekeičiamas
-
-### 🔴 LIKO
-
-```
-1. E6 DoD: dev'e 0 paruoštų rinkinių ir 0 DP pakų → kanibalizacijos
-   verdiktai NEPATIKRINTI. Reikia 2 testinių užsakymų — ⏸ RAIMIS
-   (savo iniciatyva nekurta: paveiktų likučius ir AVPN serijas)
-2. Produkcijai: `ps_stat_pradzia` = launch data
-3. Produkcijai: patikrinti cmplz_has_consent('statistics') gyvai
-4. Ribų peržiūra, kai susikaups realių duomenų
-```
-
----
-
-## 8n. FEED'Ų VARIKLIS, APRAŠYMAI, SVORIAI — 2026-08-18 [S987–S1002]
-
-### `petshop-feeds` v2.1.0 — trys kanalai iš vieno variklio
-```
-v1.0.0 mirdavo ties 256M (posts_per_page=-1). v2 — paketai po 200, statiniai failai.
-uploads/petshop-feeds/{kaina24,kainos,google}.xml · cron 04:30 · endpointai atiduoda failą
-generavimas 15,6 s · atminties pikas 112 MB · 2 232 prekės · XML galioja visuose trijuose
-```
-**Ištaisyta iš v1.0.0:** kategorija buvo imama `end()` (abėcėlės paskutinė, ne giliausia);
-EAN iš `_zb_ean`/`_ean` (dabar kanoninis `_global_unique_id`); rinkiniai nebuvo filtruojami.
-
-**Formatas patikslintas pagal gyvus petshop.lt srautus:** `<ean_code>` = GTIN,
-`<model>` = SKU (senasis šablonas EAN rašė į `<model>` ir `ean_code` neturėjo).
-Kainos.lt: `<item_price>`, 200×200 miniatiūra, `<categories>`, be `<model>`.
-
-**Prekių ribojimas:** `_ps_feed_off_kaina24|kainos|google` + `_do_not_export`.
-Varnelės prekės kortelėje (Atsargos), stulpelis sąraše, 5 masiniai veiksmai.
-
-### Aprašymai: 88 → 0
-```
-88  pradžia (katalogo eilė „Be aprašymo")
-65  po 44 aprašymų įrašymo
-32  po ribos 120 → 90 (petshop-pilnumas v1.3, konstanta APRASYMO_MIN)
- 0  po likusių 32
-```
-**⚠️ Riba 120 gyvena dviejose vietose.** Pilnumas (rodiklis) — dabar 90.
-**`petshop-vartai.php` — SĄMONINGAI palikta 120**, nes ji sprendžia, kas patenka
-į prekybą (VF/ZB be aprašymo → juodraštis). Keisti tik atskiru sprendimu.
-
-**Pamoka:** katalogo skaičius remiasi `_ps_pilnumas_kodai`, ne `post_content`.
-Pakeitus duomenį — perskaičiuoti žymą, kitaip ekranas rodo seną tiesą.
-
-### Svoriai: 740 pakeitimų
-```
-užpildyta 710 · ištaisyta 30 · patikra 740/740
-be svorio lieka 998 (žaislai, petnešos, guoliai — pavadinime kiekio nėra)
-```
-**Rasta migracijos klaidų:** 26 kraikams į `_weight` įrašyti LITRAI
-(BeloCat 18 l → 18 kg vietoj 7 kg; TOFU 6 l → 6 vietoj 2,65) — vežėjui
-deklaruota dvigubai daugiau. Plius 4 sausi maistai su neteisingu skaičiumi.
-
-**Taisyklė (savininko sprendimas — NETO su išimtimis):**
-```
-40/70/85 g +8 g · 100 g +20 g · 200–415 g +70 g · 800 g+ +100 g
-TOFU kraikas +150 g · sausas maistas neto (12,5 kg lieka 12,5)
-skliaustuose kg → imami jie; litrai be skliaustų → neliečiama
-```
-**NELIESTA sąmoningai:** 216 prekių, kur bazėje jau bruto (Eukanuba 12,220,
-Family Dog 15,080) — tikslesnės už neto taisyklę; 8 Churu „4 × 14 g", kur
-klydo skaitiklis, ne bazė.
-
-### Prekių ženklai — UŽDARYTA 2026-08-18
-```
-114 be product_brand:  81 užpildė savininkas · 33 pagal mano pasiūlymus su įrodymu
-patikra 114/114 · be ženklo publish liko 27 (visos UŽ feed'o ribų)
-```
-**Feed'o kandidatuose (2 227): be ženklo 0 · be nei ženklo, nei GTIN 0.**
-Vadinasi, nė viena feed'o prekė nebekris Google dėl trūkstamo identifikatoriaus.
-
-**Taksonomijos valymas (savininko pastebėjimai):**
-```
-Hau&amp;Miau  → Hau&Miau        25 prek.   (HTML esybė)
-PET NOVA      → Pet Nova         8 prek.
-BEEZTEES      → Beeztees         4 prek.
-8IN1          → 8in1            21 prek.
-HAPPET        → Happet          50 prek.
-GreenPetFood  → Green Petfood   10 perkelta (dublikatas sujungtas)
-K9 (0 prekių) → ištrintas
-Vetfarmas     → SILICA GEL      (didmenininkas ≠ ženklas, savininko pastaba)
-ženklų sistemoje: 122 → 135
-```
-**⚠️ `wp_update_term` ampersandą UŽKODUOJA atgal** — `Hau&amp;Miau` po pirmo
-taisymo grįžo, `D&D Home` gimė sugadintas. Taisyti tik tiesiogine užklausa į
-`terms` + `clean_term_cache`. Variklyje paliktas nuolatinis esybių sargas.
-
-**Nuotraukų derlius:** 10 iš 90 (11 %). AV prekės fotografuotos be pakuotės, o
-ženklas gyvena pakuotėje. Platus teksto skenavimas (43 ženklai, pilni aprašymai)
-davė NULĮ — aprašymai kalba apie prekę, ne apie gamintoją.
-
-**Lieka:** 15 prekių be ženklo grįš į feed'ą, kai atsiras likutis (palutės,
-gumuoti pavadžiai, sepija, masažinė pirštinė).
-
-### Google kategorijos — `petshop-feeds` v2.2.0 (2026-08-18)
-```
-55 mūsų kategorijos susietos su oficialiu Google sąrašu
-ID iš taxonomy-with-ids.en-US.txt (parsisiųsta per tiltą), NE iš atminties
-savininkas peržiūrėjo ir patvirtino
-rezultatas: 2 227 / 2 227 prekių turi <g:google_product_category> (100 %)
-```
-Nesumapintos sąmoningai: DAUGIAU=PIGIAU, DOVANOS, RINKINIAI, SPRENDIMAI — tai
-akcijų skiltys, ne prekių tipai. Variklis tokioms prekėms eina nuo giliausios
-kategorijos aukštyn per tėvus, kol randa atitikmenį, todėl jos irgi gauna tikrą
-kategoriją.
-
-**Patikrinta atskirai:** senoji petshop.lt Google feed'o NETURI (visi įprasti
-adresai 404, `google_product_category` nerasta nė karto). Google kanalas —
-naujas, ne migruojamas; nėra ko perkelti, bet nėra ir paveldėtų klaidų.
-
-**Variantinės prekės — problemos NĖRA:** 39 tėvai, kainų skirtumas tarp variantų
-1,00× visose (variantai yra spalvos, ne dydžiai). Skaidyti su `item_group_id`
-nereikia. Pastaba: nė vienas variantas neturi savo GTIN (SKU jau atskirti).
-
-### 🔴 SEO META — RASTA 2026-08-18, NEUŽDARYTA
-
-```
-SEO pluginas         NĖRA nė vieno aktyvaus (Yoast/RankMath/AIOSEO/SEOPress — visi 0)
-meta description     puslapiuose NERODOMA niekur
-og:title             nėra — nuorodos socialiniuose tinkluose be kortelės
-title                yra, bet iš temos: „Pavadinimas – Petshop.lt"
-canonical            yra (WordPress savas)
-```
-
-**Bet duomenys BAZĖJE YRA** — migracijos metu perkelti, net dviem formatais:
-```
-_yoast_wpseo_title      1 111 prekių      rank_math_title        1 111
-_yoast_wpseo_metadesc   1 075 prekių      rank_math_description  1 075
-(iš 2 606 publish — apie 43 %)
-```
-Nė vienas pluginas neįdiegtas, todėl laukai guli negyvi. Įdiegus pluginą jie
-atgytų vienu veiksmu.
-
-**Planas (nepradėta):**
-1. Pasirinkti pluginą — duomenys tinka abiem; rekomendacija **Rank Math**
-   (lengvesnis, geresnis WooCommerce palaikymas)
-2. Patikrinti, ar tie 1 111 tekstų geri — atkeliavo iš senos platformos, gali
-   turėti seną domeną, senas kainas ar tuščią šabloną
-3. Likusioms ~1 495 — šablonas plugine, ne rankinis rašymas
-
-**Susiję:** `blog_public = 0` (dev uždarytas nuo paieškos) — DoD-22 / OPS-07,
-prieš perjungimą būtina įjungti.
-
-### Nauja skola — `Array to string conversion` (ištirta 2026-08-18, PALIKTA STEBĖTI)
-```
-petshop-xml.php:343,344 (petshop_xml_block_zb_create)
-petshop-xml.php:513,515 (petshop_xml_block_vf_create)
-per parą 7 įspėjimai (VF eilutė 513 — 4 kartai)
-```
-**Į bazę NEPATENKA:** 0 meta laukų, 0 terminų, 0 pavadinimų su reikšme „Array".
-Kintamasis gyvena tik sargiklio funkcijoje, kuri sprendžia, ar leisti kurti prekę.
-
-**Kur gali kliūti:** VF sargiklyje `if ($sku==='' && $brand==='' && $category==='')`
-— jei `brand` tampa „Array" vietoj tuščios eilutės, sąlyga neįvyksta ir prekė eina
-į taisyklių tikrinimą, užuot praėjusi pro šalį. Elgsena skiriasi nuo numatytos,
-duomenys nesugadinami.
-
-**Sprendimas atidėtas (savininkas 2026-08-18): „palauksime daugiau duomenų".**
-Įspėjimas dabar veikia kaip tiekėjo duomenų kokybės indikatorius — sutvarkius kodą
-prieš suprantant, KURIE įrašai jį sukelia, signalas dingtų. Kai sargas sukaups
-daugiau, tirti, ar tai sistemingas šaltinio brokas.
-
-**Taisymas, kai ateis laikas:** pakeisti tiesioginį `(string)` į pagalbinę funkciją,
-kuri masyvą paverčia pirma reikšme; 8 eilutės dviejose funkcijose, logika nesikeičia.
-
----
-
-## 8o. SEO SLUOKSNIS — RANK MATH IR KATEGORIJŲ DERLIUS — 2026-08-18 (vakaras) [S1003–S1020]
-
-### Kas padaryta
-
-| Darbas | Rezultatas |
-|---|---|
-| Rank Math diegimas | ✅ v1.0.276, nemokama versija (PRO nereikalinga — GTIN eina per savą feed'ą) |
-| Konfigūracija | ✅ moduliai: `sitemap`, `rich-snippet`, `woocommerce`; visa kita išjungta |
-| Konfliktas su Redirection | ✅ nėra — RM `redirections` ir `404-monitor` nebuvo įjungti |
-| URL struktūra | ✅ užrakinta (`strip_category_base`, `wc_remove_*_base` = off) |
-| Sitemap | ✅ 5 failai; kategorijos (58) ir gamintojai (122) įtraukti rankomis |
-| Prekių title | ✅ 1 537 `rank_math_title` ištrinta → šablonas visoms 2 607 |
-| Prekių aprašymai | ✅ 1 473 palikti + `%excerpt%` grandinė = 100 % danga |
-| Esybių nutekėjimas | ✅ mu-plugin filtras, 421 prekė, ateities importai apsaugoti |
-| Senų kategorijų derlius | ✅ 55/55, peržiūros xlsx pas savininką |
-| Meta šablonai | ✅ `%term_description%` pašalintas iš 3 taksonomijų |
-
-### Sprendimas: B variantas (savininkas)
-
-Iš trijų (A palikti viską / B trinti title / C trinti abu) pasirinktas **B**.
-Title yra techninis laukas — šablonas daro geriau; aprašymas yra pardavimo
-tekstas — žmogus daro geriau. Atsarga: `_yoast_wpseo_title` 1 537 įrašai
-bazėje nepaliesti; kopija `ps-backups/rankmath_title_kopija_20260818_165421.json`.
-
-**Naujoms prekėms nereikia nieko** — VF/ZB importas kuria prekę be
-`rank_math_*` laukų, tad šablonas suveikia automatiškai.
-
-### 🔴 BLOKATORIUS: Flatsome išdėstymas
-
-Testas su realiu ~296 žodžių tekstu (S1018):
-
-```
-              aprašymas            prekės prasideda   langas
-desktop   249 px, 784 aukšt.          1 284 px         1 100
-mobile    316 px, 1 500 aukšt.        2 128 px           844
-```
-
-Mobiliajame — **2,5 ekrano teksto iki pirmos prekės**. Sename petshop.lt tekstas
-buvo apačioje. Masinis įkėlimas be temos pataisos pablogintų konversiją.
-
-Papildomai: **hub'uose `term_description` išvis nerodomas** (landing šablonas
-pakeičia archyvą), ir **`wp_update_term` anoniminėje užklausoje nukerpa `h3`/`ul`**
-— importas privalo vykti administratoriaus kontekste.
-
-### Turinio strategija (sutarta)
-
-```
-grindys visiems        55 senų tekstų migracinis valymas, ne perrašymas
-lubos P1               perrašymas Petshop stiliumi, prioritetai IŠ GSC
-formatas               B hub'uose (trumpas įvadas viršuje) + A lapinėse (tekstas apačioje)
-taisyklė               iki migracijos saugom tai, kas turi paieškos istoriją;
-                       po migracijos optimizuojam kontroliuojamais etapais
-taisyklė               netinkantis senas tekstas → 2–3 neutralūs sakiniai,
-                       ne 700 žodžių palikimas
-```
-
-Savininko planas su P1–P4 prioritetais, darbine apimtimi, dalykinėmis pastabomis
-ir turinio standartu: `kategoriju_aprasymai_susisteminti_2026-08-18.xlsx`.
-
-### Hub'ų mechanizmas
-
-Snippetas **688 „Petshop Kategorijos Landing v1 (sunims)"** — aktyvus, 12 043 B,
-valdo **penkis** hub'us (70 ŠUNIMS, 77 KATĖMS, 87 GRAUŽIKAMS, 89 PAUKŠČIAMS,
-93 ŽUVIMS). Įvadai įkoduoti PHP masyve. Pavadinimas ir komentaras pasenę —
-pervadinti pagal konvenciją.
-
-### Eilė
-
-```
-1. 🔴 Flatsome tema: term_description po prekių tinklelio (+readmore)
-2. 🔴 Landing šablonui (688) apatinis term_description blokas
-3. 🟡 55 senų tekstų valymas + įkėlimas (admin kontekste)
-4. 🟡 48 senų meta aprašymų įkėlimas
-5. 🟡 P1 perrašymas — GSC duomenys TURIMI, reikia sujungti su 55 kategorijomis
-```
-
----
-
-## 8p. KATEGORIJŲ SLUOKSNIS UŽDARYTAS — 2026-08-18 (naktis) [S1021–S1038]
-
-### Kas veikia
-
-| Darbas | Rezultatas |
-|---|---|
-| Aprašymo vieta | ✅ `mu-plugins/petshop-kategorijos-aprasymas.php` v1.1.0 — tekstas po prekių, CSS išskleidimas be JS |
-| Hub'ai | ✅ snippet **688 v2** kviečia `Petshop_Kategorijos_Aprasymas::blokas()`; markup vienoje vietoje |
-| Puslapių tekstai | ✅ 56/56 įkelti, perskaitymo patikra simbolis į simbolį |
-| Meta aprašymai | ✅ 56/56 `termmeta rank_math_description`, patikrinta gyvai `<head>` |
-| Seni meta iš petshop.lt | 🔴 **NEKELIAMI** — turi teiginius apie dantų valymą, „geriausią" maistą, „Super Premium klasę" ir brendus |
-
-### Išmatuota: kodėl reikėjo temos pataisos
-
-```
-                    prekės prasideda        aprašymas
-desktop   buvo          1 284 px            249 px (virš prekių)
-          tapo            480 px          2 928 px (po prekių)
-mobile    buvo          2 128 px            316 px
-          tapo            607 px          5 218 px
-```
-
-Mobiliajame buvo **2,5 ekrano teksto iki pirmos prekės**.
-
-### Trys sprendimai, kurie pakeitė planą
-
-**1. „Grindys iš senų tekstų" ATMESTOS.** Dalis senų tekstų dalykiškai klaidingi
-(„sausas maistas valo dantis", „hipoalerginis = be grūdų", triušiai kaip
-graužikai). Grindimis tapo nauji neutralūs tekstai.
-
-**2. Seni meta NEKELIAMI** dėl to paties — jie kartoja būtent tuos teiginius,
-kuriuos išvalėme iš puslapių, ir meta yra matomiausia vieta.
-
-**3. 🔒 VMVT: PAŠARAS TURI BŪTI VISAVERTIS.** Savininko verdiktas. Formuluotė
-suvienodinta 7 vietose:
-
-```
-buvo: patikrinkite, ar pašaras visavertis, ar papildomas
-tapo: patikrinkite, ar pašaras visavertis – papildomas kasdienio maisto nepakeičia
-```
-
-Neutralus „kuris iš dviejų" paslepia svarbiausią dalyką po pasirinkimu, kurio nėra.
-
-### Kopijos
-
-```
-kategoriju_aprasymai_pries_20260818_203802.json   80 įrašų
-kategoriju_meta_pries_20260818_210631.json        80 įrašų
-snippetas_688_pries_*.php                      12 243 B
-petshop-kategorijos-aprasymas_*.bak
-```
-
-### Liko
-
-```
-🟡 „Rinkitės" 17/56 meta — priimtas nedidelis vienodumas
-🟡 367 silpnų prekių aprašymų kategorinis pjūvis (matavimas nepavyko)
-🔴 pradinio puslapio title „Pagrindinis (test)" — savininko formuluotė
-🔴 numatytasis og:image — nėra
-```
-
----
-
-## 8r. 301 SLUOKSNIS IŠMATUOTAS — 2026-08-18 (vėlus vakaras) [S1039–S1052]
-
-### Rezultatas
-
-```
-301 žemėlapis          937 → 1 099   (+162)
-404 su srautu          219 → sutvarkyta 163 (2 838 paspaudimai)
-                             palikta 404      45 (610) — prekių tikrai nebėra
-                             liko neišspręsta 11 (139)
-SENŲ ADRESŲ SRAUTO DANGA      78 %  →  95 %
-```
-
-### 🔒 Metodinė taisyklė (svarbiausia iš sesijos)
-
-> **Imtis iš sprendimo aibės įrodo, kad sprendimas veikia, o ne kad problema
-> išspręsta.** Pirmoji patikra ėmė 70 URL iš 301 žemėlapio ir davė 69/70 —
-> bevertį rezultatą. Testuoti reikia iš PROBLEMOS pusės, t. y. iš GSC.
-
-### Du sargai, be kurių automatika kenkia
-
-| Sargas | Ką pagavo |
-|---|---|
-| **Rūšies** | `/sunims/transportavimo-dezes` → „Transportavimo dėžės KATĖMS" (panašumas 85,1) — 5 atvejai |
-| **Dydžio** | Sepija 20 cm → 15 cm · GimCat 50 g → 40 g · Skudo 4 → Skudo 1 — 20 atvejų |
-
-Panašumo skaičius vienas **neužtenka**. Skaičius prieš lyginant reikia
-normalizuoti (`12-5 kg` == `125 kg`), kitaip 2/3 „neatitikimų" yra tik kitoks
-užrašymas.
-
-### Vardo paieška > raidžių panašumas
-
-24 atvejai išspręsti paėmus pilną 135 brendų ir 80 kategorijų sąrašą ir ieškant
-**vardo kelyje**: `/dovanos-sunims-bei-katems` → DOVANOS (raidžių panašumas
-buvo 57,1 ir būtų atmestas).
-
-### 6 slug konfliktai — 🔴 laukia savininko
-
-`sprendimai · pasiulymai · naujas-suniukas · naujas-kaciukas ·
-jautrus-virskinimas · daugiau-pigiau` — kiekvienas turi IR puslapį, IR
-kategoriją, abu grąžina 200 su **identišku title**. Dev'e nematyti (noindex),
-bet perjungus indeksavimą konkuruos. Sprendimas — skirtingi title (puslapiui
-patarimas, kategorijai prekės).
-
-### Kopijos
-
-```
-legacy_301_map_pries_*.json   (kelios, prieš kiekvieną bangą)
-```
-
----
-
-## 8s. STRAIPSNIAI SUTVARKYTI — 2026-08-19 (rytas) [S1053–S1068]
-
-### Rezultatas
-
-```
-nuorodų sutvarkyta      215 / 216
-nuotraukų perkelta       26 / 26
-sugadintų rašmenų     2 928 → 0
-```
-
-### 🔒 Trys „trūkstami" blog straipsniai — NEREIKALINGI
-
-TŽ juos vardijo kaip P0 nuo liepos. GSC per 16 mėn.:
-
-```
-sterilizuotu-kaciu-maistas          10 paspaudimų
-maistas-sterilizuotai-katei          4
-royal-canin-kaciu-maistas            0
-```
-
-**Iš viso 14.** Savininkas sustabdė prieš rašymą. `Q-BLOG3` uždarytas.
-
-Veislių straipsnių vertinimas patvirtintas: 588 URL, 7 418 paspaudimų,
-489 846 parodymų — pirkimų 0.
-
-### Trys skirtingi gedimai, kurių nesimatė
-
-| Gedimas | Mastas | Kodėl nesimatė |
-|---|---|---|
-| Nuorodos į seną domeną | 287 | atrodė kaip išorinės, slėpėsi nuo statistikos |
-| Nuotraukos iš seno domeno | 26 | senas domenas gyvas, paveikslai kraunasi |
-| Sugadinti lietuviški rašmenys | 2 928 sekos, 4 puslapiai | matomi tik atidžiai skaitant |
-
-Visi trys būtų pasirodę **perjungimo dieną**, ne anksčiau.
-
-### Kodėl turinys imtas iš senos svetainės
-
-Baitų taisymas atkūrė 1 559 iš 2 153. Likusiems **atkurti neįmanoma**: `veislÄs`
-antrasis baitas dingęs, o iš `Ä` vieno negalima pasakyti, ar ten buvo `ą`, `č`,
-`ė` ar `į`. Todėl imtas švarus šaltinis (`div.articleDescription` senojoje
-petshop.lt), o jam pritaikytos mūsų nuorodų taisyklės.
-
-### Sprendimas: santykinės nuorodos
-
-```
-https://petshop.lt/kategorija/…   po launch veikia · dev'e veda į SENĄ svetainę
-/kategorija/…                     po launch veikia · dev'e VEIKIA
-```
-
-Santykinė po domeno keitimo persitvarko pati — pigiausias būdas „po launch'o
-nieko nekeisti", plius leidžia patikrinti prieš perjungimą.
-
-### 🔴 Naujas atviras klausimas
-
-`/sunu-maisto-skaiciuokle` — puslapio dev'e **nerandu**, o trys straipsniai į jį
-rodo. Paieška pagal `skaiciuokl` tarp `page` nieko negrąžino. Netvirtinu, kad
-jo nėra — bet patikrinti prieš launch'ą būtina.
-
-### Kopijos
-
-```
-straipsniu_turinys_pries_*.json · nuotrauku_turinys_pries_*.json
-rasmenys_pries_*.json · turinys_pries_perrasymo_*.json
-prieziuros_pries_*.json · nuorodos_pries_*.json · miamor_pries_*.html
-```
-
----
-
-## 8t. ✅ SEO SLUOKSNIS UŽDARYTAS — 2026-08-19 (priešpiet) [S1069–S1078]
-
-### Būklė
-
-| Sluoksnis | Būklė |
-|---|---|
-| Rank Math | ✅ v1.0.276, 3 moduliai, sitemap 5 failų |
-| Prekių title | ✅ 2 609 / 2 609 per šabloną |
-| Prekių meta aprašymai | ✅ 2 609 / 2 609 |
-| Kategorijų tekstai | ✅ 56 |
-| Kategorijų meta | ✅ 56 |
-| 301 danga | ✅ 95 % (žemėlapis 1 099) |
-| Straipsnių nuorodos | ✅ 231 / 234 |
-| Straipsnių nuotraukos | ✅ 26 mediatekoje |
-| Sugadinti rašmenys | ✅ 0 |
-| Pradinio psl. meta | ✅ |
-| Slug konfliktai | ✅ 12 title |
-| og:image | ✅ 1200×630, ID 35001 |
-
-### 🔒 Metodinė taisyklė
-
-> **Atvirų klausimų sąrašas privalo būti PATIKRINTAS, ne prisimintas.**
-> Savininkui paprašius patikslinti, du „raudoni" punktai nukrito po vienos
-> patikros — vienas iš jų buvo mano paties per griežtas teiginys.
-
-### Du klaidingi „raudoni" punktai
-
-**Šėrimo skaičiuoklė nedingo.** Ji yra straipsnyje `suns-mitybos-auditas-…`
-(ID 14890). Senoje svetainėje buvo atskiras puslapis, naujoje — įdėta į
-straipsnį. Ieškojau pagal slug, ne pagal turinį.
-
-**6 slug konfliktai → realus vienas.** Penkios kategorijos turi 0 prekių, o
-`noindex_empty_taxonomies` įjungtas, tad jos į indeksą nepatenka. Realiai
-konkuruoti galėjo tik DAUGIAU=PIGIAU (4 prekės).
-
-### Pradinio puslapio meta — iš savininko žodžių
-
-Tekstas jau buvo parašytas pačiame puslapyje; meta sudėta iš jo, nieko
-neišgalvojant.
-
-### ⏸ Perjungimo dienos veiksmai (SEO dalis)
-
-```
-blog_public = 0 → 1        DoD #22 · be jo niekas Google nepasiekia
-og:image adresas           dev.avesa.lt → petshop.lt (absoliutus, kitaip negalima)
-sitemap pateikimas         Google Search Console
-```
-
-### 🔴 Liko rankai
-
-Trys prekių aprašymų nuorodos su sugadinta HTML žyma adreso viduje
-(`/triusio-ausys-baltos-250-g</em`). Automatika jų neima sąmoningai —
-spėjimu taisyti sugadintą žymą būtų blogiau nei palikti.
-
----
-
-## 8v. PAYSERA IŠMATUOTA — 2026-08-19 (popiet) [S1079–S1086]
-
-### Ką parodė realus bandymas
-
-Sukurta paslėpta virtuali prekė 1 €, `test_mode` išjungtas, atliktas realus
-pirkimas savininko kortele. **Paysera atmetė užklausą:**
-
-```
-Klaida 0x13 — bad_referer
-„Accepturl, cancelurl, callbacurl arba referer bazinis adresas
- skiriasi nuo projekte patvirtintų adresų"
-```
-
-Projekte 29276 įrašytas `petshop.lt`, užklausa atėjo iš `dev.avesa.lt`.
-**Iki pinigų nepriėjo** — grandinė sustojo pirmame žingsnyje. Tai apsauga,
-ne gedimas.
-
-### 🔒 Ko tai išmokė (svarbiausia)
-
-> **Paysera projekte adresai įrašyti FIKSUOTAI ir tikrinami.** Vadinasi
-> perjungimo naktį adresų klausimas yra **privalomas žingsnis, ne „gal reikės"**.
-
-Domenas po perjungimo sutaps savaime. Bet **kelias skiriasi**:
-
-```
-sena platforma:  petshop.lt/index.php?route=extension/payment/paysera/callback
-nauja sistema:   petshop.lt/?wc-api=paysera_callback
-```
-
-Jei projekte įrašyti pilni keliai su `index.php?route=…`, po perjungimo:
-nukreipimas veiks (domenas sutampa) → klientas sumokės → **callback nueis į
-adresą, kurio nebėra** → užsakymas liks „laukiama apmokėjimo". Pinigai paimti,
-užsakymo nėra, iš išorės atrodo gerai.
-
-### Kas VEIKIA (įrodyta)
-
-```
-užsakymas sukuriamas PRIEŠ nukreipimą      35003 · 2,21 € · pending
-payment_method_title užsipildo             „Mokėjimas internetu"
-nepavykus mokėjimui lieka pending          netampa apmokėtu
-konfigūracija pilna                        ID 29276 · slaptažodis 32 simb. · EUR
-```
-
-### 🔒 SPRENDIMAS (savininkas, 2026-08-19)
-
-Paysera projekto nustatymų **NEKEISTI** — gyva parduotuvė nepaliečiama.
-Testo iš `dev.avesa.lt` atsisakoma. Rizika priimama sąmoningai; blogiausias
-atvejis — kelių dienų vėlavimas, ne katastrofa.
-
-### ⏸ PERJUNGIMO NAKTIES PROCEDŪRA — PRIVALOMA
-
-```
-1. DNS pakeitimas (ABU A įrašai)
-2. TIKRINIMAS PRIEŠ SKELBIANT — 2,21 € pirkimas jau ties petshop.lt:
-      ✅ veikia            → uždaryta, tęsiam
-      🔴 callback nulūžta  → Paysera projekte pataisyti callbackurl,
-                             pakartoti pirkimą
-3. Tik po sėkmingo pirkimo — skelbiam
-```
-
-**NELEIDŽIAMA:** perjungti ir palikti mokėjimą nepatikrintą iki ryto. Tai
-vienintelė vieta, kur klaida reiškia paimtus pinigus be užsakymo.
-
-**Pasiruošimas:** prieš perjungimą pažiūrėti, kas įrašyta projekto 29276
-laukuose `accepturl`, `cancelurl`, `callbackurl`. Jei tik domenas — nieko
-keisti nereikės. Jei pilni keliai — 5 min. pataisymas.
-
-### Šalutiniai radiniai
-
-**Kasoje „Mažo krepšelio mokestis" rodomas DU kartus** — viršuje 1,21 € (su
-PVM), apačioje 1,00 € (be PVM). Skaičiuojama teisingai, bet klientui atrodo
-kaip dvigubas mokestis. Kasoje matomas dvigubas mokestis yra tiksliai ta vieta,
-kur metami krepšeliai. **Sutvarkyti prieš launch.**
-
-**`test_mode` grįžo į `yes` savaime** po to, kai buvo nustatytas `no` ir
-patikrintas. Kas jį grąžino — plugin'as ar savininkas WP admine — neaišku.
-Perjungimo naktį **patikrinti du kartus**.
-
----
-
-## 8x. INFRASTRUKTŪRA IŠMATUOTA — 2026-08-19 (vakaras) [S1087–S1098]
-
-### 🔴 Vienintelis likęs perjungimo neaiškumas
-
-**Kaip `petshop.lt` ras svetainę.**
-
-```
-petshop.lt              → savo tuščias katalogas (4 MB srauto)
-parduotuvė gyvena       → avesa.lt/public_html/dev (9,75 GB)
-```
-
-Patikrinta ekranais, kad per DirectAdmin to nurodyti **neįmanoma**:
-subdomenų valdymas leidžia tik kurti/trinti; parkuojamas domenas rodytų į
-`public_html` (ne `/dev`) ir sukurtų du adresus tam pačiam turiniui, o tai
-griautų visą SEO sluoksnį su vienu canonical.
-
-**Lieka failų perkėlimas per SSH — palaikymo žmogus, ne AI agentas.**
-
-### Tikrieji dydžiai
-
-```
-public_html   9,75 GB          uploads         9,24 GB (95 %)
-be uploads      442 MB         ShortpixelBackups 4,02 GB  ← NEREIKALINGI
-                               petshop-legacy     710 MB  ← senos platformos
-                               wpallimport        258 MB  ← laikini
-```
-
-**Apie 5 GB perkelti nereikia.** Išvalius liktų ~4,5 GB vietoj 9,7.
-
-### 🔒 INODE — 66 %
-
-```
-263 632 / 400 000       liko 136 368
-```
-
-**Perkėlimas inode nepadidins. KOPIJAVIMAS PADVIGUBINTŲ** ir riba būtų
-pasiekta → serveris nustotų priimti failus, WordPress negalėtų įkelti
-nuotraukų.
-
-> **Operacija privalo būti „Perkelti", ne „Kopijuoti".**
-
-Vieta „unlimited", **inode — ne**. Tai antra priežastis valyti prieš perkėlimą.
-
-### Kelių auditas — WordPress pusė paruošta
-
-```
-wp-config   ABSPATH = __DIR__     WP_HOME/WP_SITEURL nenustatyti
-mu-plugins  0 fiksuotų kelių      options 11 · postmeta 8 · snippetai 6
-```
-
-Perkėlus WordPress persitvarkys pats. Rizika yra tik serverio pusėje.
-
-### SSL — nemokamas, bet tik po DNS
-
-Naujajame serveryje `petshop.lt` sertifikatas yra, bet **pasibaigęs
-2022-12-31**. Tiekėjas patvirtino: nemokamas (svetainė jų serveryje),
-prieš DNS išduoti negalima, TTL 300 → įsigaliojimas 5–10 min.
-
-### DNS patikslinimai
-
-```
-serveriai.lt = iv.lt (UAB „Interneto vizija") — VIENA įmonė, viena paskyra
-www.petshop.lt yra CNAME → keisti tik DU A įrašus
-petshop.lt JAU pridėtas prie plano (Aivės „tikėtina, kad ne" — klaidinga)
-```
-
-### 🔒 AI agento atsakymų vertinimas
-
-Penki skirtingi sprendimai: trys prasidėjo „tikėtina", vienas klaidingas
-(siūlė `gyvunai.lt` katalogą), vienas prieštaravo sau, paskutinis siūlė
-įkelti 2–3 GB archyvą per sąsają su 256 MB limitu. **Nė viename neįvertinta
-esminė detalė — poaplankis `dev`.**
-
-> **Serverio konfigūracijos klausimų su AI agentu nespręsti.**
-
-### Šalutiniai radiniai
-
-- `backup-run.php` ir `watch-run.php` kviečiami cron'u **pilnu keliu** →
-  po perkėlimo rodys į seną vietą (greta 6 WP All Import cron'ų)
-- Po perkėlimo `dev.avesa.lt` nustos veikti → **tiltas nutrūks**
-- `uploads` šaknyje šimtai `.webp` failų atsitiktiniais vardais, visi
-  2026-06-12 03:51–06:46 — kilmė neaiški, **netvirtinama, ar naudojami**
-
----
-
-## 8y. TŽ AUDITAS + PRIEŽIŪROS REŽIMAS — 2026-08-19 (naktis) [S1099–S1106]
-
-### TŽ MASTER v1.86 — pirmas pilnas 46 skyrių auditas
-
-Ataskaita: `TZ_MASTER_v1_86_AUDITAS_2026-08-19.md`. Palyginta ~310 punktų.
-
-| Klasė | Kiek |
-|---|---|
-| ✅ padaryta | ~168 (54 %) |
-| 🟡 dalinai | ~34 (11 %) |
-| 🔴 nepadaryta | ~28 (9 %) |
-| ⚪ sąmoningai atmesta / po launch | ~41 (13 %) |
-| ❓ **neišmatuota** | **~39 (13 %)** |
-
-### 🔴 Trys sluoksniai, kurių registre nebuvo VISAI
-
-```
-TŽ §5    NF1–NF22 nefunkciniai      22 punktai, 8 neišmatuoti (3 saugumo)
-TŽ §20   T1–T13 testavimo planas    13 punktų, 4 nedaryti
-TŽ §2.2  techniniai KPI             9 metrikos, 5 nematuotos
-```
-
-Patikrinta grep'u: `Lighthouse`, `Wordfence`, `2FA`, `WP Rocket`, `Cloudflare`,
-`Omniva`, `ACF Pro` — **0 atitikmenų** registre ir žurnale.
-
-Persidengia: greitis (NF1–NF4 = T4 = KPI 1–4), sauga (NF9–NF11 = T7).
-Realiai tai **du matavimai**, ne septyniolika darbų (~1,5 val.).
-
-### 🔴 Radinys, kurio nebuvo nė vienoje lentelėje — TŽ §14 D7/D8
-
-```
-D7  Klientų bazė        MVP prioritetas   NEPADARYTA
-D8  Užsakymų istorija   MVP prioritetas   NEPADARYTA
-```
-
-**Sena platforma išjungiama 2026-10-15.** Po to duomenų nebėra iš kur imti.
-Tas pats terminas galioja Q19 (istoriniai atsiliepimai). → **Q-D7D8**
-
-### Devyni TŽ prieštaravimai realybei
-
-Svarbiausi: §16/§17 rodo go-live 10-15 (sprendimas 09-01/02); §27 aprašo
-`petshop_desc_*` sistemą, kurios nėra nė vienoje iš 2 744 prekių (§41 tai
-išmatavo, §27 nepataisytas); §26.7 etapai 4/8/9 „Laukia", nors veikia nuo
-birželio; §11.5 pluginų versijos pasenusios.
-
----
-
-### ✅ Priežiūros režimas — DOD-19 §8 pirmas raudonas punktas UŽDARYTAS
-
-`mu-plugins/petshop-prieziura.php` **v1.0.1** · 6 235 B · md5 `726867ac…`
-Kopija: `deploy/petshop-prieziura.php`
-
-```
-įjungti    sukurti  wp-content/uploads/ps-prieziura.flag
-išjungti   ištrinti tą patį failą
-```
-
-Vėliava **failu, ne nustatymu DB** — nes DOD-19 §3.3 numato režimą įjungti
-PRIEŠ DB atstatymą, kai jungiklis DB būtų nepasiekiamas.
-
-Failo turinys: 1-oji eilutė = tekstas lankytojui, 2-oji = `Retry-After` sek.
-
-| Kelias su vėliava | Rezultatas |
-|---|---|
-| Vitrina, prekės puslapis | **503 + `Retry-After: 1800`** |
-| `?wc-api=paysera_callback` | **400** (WooCommerce apdorojo) — ne 503 |
-| `/wp-admin/` | 302 |
-| `/wp-login.php` | 200 |
-| **REST code-snippets (tiltas)** | **200, 1 747 snippetai** |
-
-503 pasirinktas sąmoningai: Google 503 neindeksuoja, bet ir **iš indekso
-neišmeta**. 200 arba 302 čia būtų SEO klaida.
-
-### ★ INCIDENTAS S1103 — priežiūros režimas uždarė tiltą
-
-v1.0.0 kabėjo ant `init`. `init` vyksta **ir REST užklausoms** → įjungus
-režimą užsidarė Code Snippets REST API, ir valymo fazė pati save užblokavo.
-Dev'as liko 503 būsenoje **~4 min.**
-
-Išsikapstyta per `?wc-api=` praėjimą — tą patį saugiklį, kuris buvo įdėtas
-mokėjimams saugoti.
-
-> **🔒 NAUJA TAISYKLĖ:** kodas, kuris blokuoja užklausas, privalo būti
-> patikrintas **ir iš savo paties išjungimo kelio pusės**. Neužtenka
-> patikrinti, kad blokavimas veikia — reikia patikrinti, kad IŠJUNGIMAS
-> veikia iš tos pačios būsenos.
-
-**Taisymas struktūrinis:** `template_redirect` vietoj `init`. Jis iš viso
-nevyksta REST, admin-ajax, wc-api ir wp-cron kelyje — praeina savaime, be
-išimčių sąrašo.
-
----
-
-### ✅ Atstatymas į švarią bazę — DOD-19 §8 antras punktas IŠMATUOTAS
-
-```
-DB              gyvunai2_nbpe1 · MariaDB 10.6.17 · 194 lentelės
-teisės          GRANT USAGE ON *.*
-                GRANT ALL PRIVILEGES ON `gyvunai2_nbpe1`.*
-matomos DB      gyvunai2_nbpe1, information_schema (VISKAS)
-lenteles kurti  TAIP
-BAZĘ kurti      NE — „Access denied to database 'gyvunai2_rtst_h084'"
-```
-
-Registro teiginys „WP vartotojas neturi teisės kurti naujų DB" **patvirtintas
-empiriškai**, ne iš atminties.
-
-**Antras neaiškumas uždarytas:** bazės koduotė **`latin1` / `latin1_swedish_ci`**
-(DOD-19 §3.3 rašė „nepatikrinta"). Lentelės utf8mb4. Vadinasi nauja bazė turi
-būti kuriama **utf8mb4**, kitaip atstatant lietuviškos raidės gali nukentėti.
-
-**Laukia savininko (DirectAdmin, ~2 min) → Q-SVARI-DB:**
-```
-1. sukurti bazę   gyvunai2_rtst   utf8mb4 / utf8mb4_unicode_ci
-2. priskirti prie jos ESAMĄ vartotoją gyvunai2_nbpe1 su visomis teisėmis
-```
-Naujo vartotojo NEREIKIA — kitaip reikėtų ir naujo slaptažodžio wp-config'e.
-
----
-
-### Tilto recon — trys faktai
-
-```
-1. adresas    screenshot.mjs 3 eilutė, const WP=... Daugiau NIEKUR.
-2. PAT        workflow viduje GH_TOKEN = github.token (Actions savas).
-              PAT reikalingas TIK Claude dispatch'ui → Q-PAT siauresnis.
-3. AKLA ZONA  po perkėlimo dev.avesa.lt miršta, petshop.lt dar eShoprent
-              → NĖ VIENAS adresas nepasiekia svetainės iš išorės
-```
-
-Akla zona DOD-18/19 **nebuvo aprašyta**. Siūlomas sprendimas → **Q-SUBDOM**:
-prašyti SSH žmogaus subdomeno (pvz. `naujas.avesa.lt`) į NAUJĄ dokumentų šaknį.
-
-**Padaryta:** workflow'e pridėtas `WP_URL: ${{ secrets.WP_URL }}` — perjungimo
-metu adresas keičiamas vienu GitHub secret'u, ne kodu.
-
-### Šalutinis radinys
-
-```
-aktyvūs pluginai   27      TŽ §11.4 riba: ≤25
-mu-plugins failai  56
-```
-Kandidatai peržiūrai: `wordpress-importer`, `wpforms-lite`, `woo-update-manager`.
-Nedaryta — savininko sprendimas. → **OPS-15**
-
----
-
-## 8z. NF SLUOKSNIS: SAUGA, GREITIS, ROBOTS — 2026-08-19 (vėlyva naktis) [S1107–S1114]
-
-TŽ audito (§8y) „E dalies" vykdymas. Pirmas kartas, kai TŽ §5 nefunkciniai
-reikalavimai apskritai matuojami.
-
-### ✅ Keturios saugos pataisos
-
-| Pataisa | Patikra |
-|---|---|
-| `DISALLOW_FILE_EDIT = true` | wp-config 3 827 → 3 939 B, loopback 200 |
-| `WP_DEBUG_DISPLAY = false` | ta pati |
-| `readme.html` pašalintas | **404** (buvo 200) |
-| `license.txt` pašalintas | **404** |
-| `<meta generator>` pašalintas | vitrinoje nebėra |
-
-Naujas modulis `mu-plugins/petshop-higiena.php` v1.0.0 · md5 `b1226cc0…` ·
-kopija `deploy/`. Šalina generator, RSD, wlwmanifest, X-Pingback.
-
-`readme.html` ir `license.txt` **ne ištrinti, o perkelti** į `ps-backups`.
-
-### Saugos būklė iš išorės
-
-```
-/wp-json/wp/v2/users   403   ┐
-/wp-content/uploads/   403   ├ visi identiško dydžio (401 B)
-/wp-config.php.bak     403   ┘ = serverio lygio WAF, ne WordPress
-debug.log · .env       404
-wp-config.php teisės   0600
-administratorių        1 (bdz487, ne „admin")
-```
-
-**Saugumo pluginų — NĖ VIENO.** NF9 (login limitai) ir NF10 (2FA)
-**neįgyvendinti**. Prie vieno admin su neatspėjamu vardu tai nedega, bet TŽ
-jų reikalauja → savininko sprendimas: diegiam ar formaliai išbraukiam.
-
-**Nepatikrinta:** `xmlrpc.php` (užklausa nulūžo).
-
-### 🔒 Pataisymas: registre buvo „WP 7.0"
-
-`<meta generator>` rodė **WordPress 6.9.4**. Registro ir TŽ suvestinės
-teiginys „WP 7.0" netikslus.
-
----
-
-### ★ Kodėl PageSpeed neveikia — sertifikatas
-
-```
-dev.avesa.lt:  CN *.serveriai.lt · SAN *.serveriai.lt, serveriai.lt
-               dev.avesa.lt SAN sąraše NĖRA
-               UNABLE_TO_VERIFY_LEAF_SIGNATURE
-```
-
-Bendras hostingo sertifikatas, ne mūsų domenui. Google atsisako matuoti
-svetainę su negaliojančiu sertifikatu — tas pats ir Lighthouse.
-
-> **Tai buvo priešais akis nuo pirmos dienos.** Tilto skripte visą laiką
-> stovi `NODE_TLS_REJECT_UNAUTHORIZED='0'` — klaidą ignoruojam nuo pradžių,
-> tik niekas nebuvo jos pavadinęs vardu.
-
-**NF3/NF4 išvada: Lighthouse dev'e IŠMATUOTI NEĮMANOMA.** Tai ne skola, o
-aplinkos apribojimas. Po perjungimo `petshop.lt` gaus tikrą Let's Encrypt
-sertifikatą (DOD-19 §7c) ir matavimas veiks.
-
-Du bandymai prieš tai nulūžo: PSI API → HTTP 429 (bendras runner'ių IP,
-Google kvota); `playwright install` kabėjo 17 min.
-
-### Našumo profilis (be naršyklės)
-
-```
-pilnas HTML      mediana 1 940 ms      HTML dydis   230 KB (gzip ✅)
-CSS 11 / 295 KB · JS 19 / 370 KB · IMG 20 / 342 KB   →  ~1,2 MB
-JS be defer/async 13 (5 iš jų <head>, blokuojantys)
-
-PHP 8.3.20 · OPcache ✅ · objektų kešas NĖRA
-užklausų 78 · generavimas ~1 s · atminties pikas 112 MB
-transientų 1 436 (1 009 KB) · prekių publish 2 609
-```
-
-**Objektų kešo nebuvimas — didžiausia likusi galimybė.** TŽ §10 Redis mini
-kaip „optional", bet tai buvo prieš 2 609 prekes.
-
-### ✅ Kešavimo antraštės sutvarkytos
-
-| Failas | Prieš | Po |
-|---|---|---|
-| `wp-embed.min.js` | **jokios `Cache-Control`** | `public, max-age=31536000` |
-| `dashicons.min.css` | `max-age=604800` | `public, max-age=31536000` |
-
-`.htaccess` 1 309 → 2 068 B, kopija `ps-backups/htaccess.bak_h089`, blokas
-apgaubtas `<IfModule>`.
-
-### ✅ Autoload išvalytas
-
-```
-330,5 KB → 218,1 KB   (−34 %)      742 → 737 įrašai
-
-wh_probe_result · wh2_probe_result · mnm_p7_result   ← MŪSŲ senų run'ų likučiai
-jetpack_active_plan                                  ← Jetpack neįdiegtas
-petshop_zb_image_index   autoload auto → off  (NEIŠTRINTA — reikalinga importui)
-```
-Kopija: `ps-backups/options_h090.json` (56 383 B).
-
-**Transientai — nieko neištrinta, ir tai teisingas rezultatas.** Iš 1 436
-pasibaigusių 0.
-
-### 🔒 Dvi matavimo klaidos
-
-1. `round(timer_stop(0), 3)` — `timer_stop()` grąžina **eilutę**; PHP 8.3 tai
-   `TypeError`. Snippetas nulūžo.
-2. `autoload_KB` parodė **0** — neteisinga. Nuo WP 6.6 `autoload` reikšmės
-   yra `on`/`off`/`auto`, ne `yes`/`no`.
-
-> **Nulinis rezultatas yra įtartinesnis už blogą rezultatą.** „0 KB autoload"
-> turėjo iškart sukelti klausimą, o ne pasitenkinimą.
-
----
-
-### ★ robots.txt po perjungimo — VEIKS SAVAIME
-
-Savininko klausimas. **Anksčiau atsakiau „keisis savaime" nepatikrinęs.**
-
-```
-fizinis /robots.txt   NĖRA
-generuoja             0  → RankMath\Sitemap\Sitemap_Index::add_sitemap_directive
-                      10 → WooCommerce::robots_txt
-```
-
-Fizinio failo nėra → `Sitemap:` eilutė sudaroma iš `home_url()` kiekvienos
-užklausos metu. Pakeitus Site URL ji tampa teisinga tą pačią sekundę.
-
-> **⚠️ Įspėjimas ateičiai:** jei kas nors įkels FIZINĮ `robots.txt` į šaknį,
-> jis TYLIAI perims viską — nei Rank Math, nei WooCommerce eilutės nebeveiks,
-> o sitemap nuoroda liks užšalusi.
-
-**Šalutinis radinys:** su `blog_public = 0` robots.txt vis tiek rodo
-`Disallow: /wp-admin/`, t.y. **leidžia visą svetainę**, ir dar skelbia
-sitemap'ą. Indeksavimą stabdo **tik `<meta name="robots" content="noindex,
-nofollow">`**. Vadinasi DOD-22 varnelė yra **vienintelis** apsaugos
-sluoksnis, ne vienas iš dviejų. Po perjungimo — 1 min. patikra.
-
----
-
-### TŽ §5 NF lentelė — pirmas kartas išmatuota
-
-| NF | Reikalavimas | Būklė |
-|---|---|---|
-| NF1–NF2 | LCP / TTI | 🟡 netiesioginiai skaičiai; tikri po perjungimo |
-| NF3–NF4 | Lighthouse ≥85 / ≥90 | ⏸ **neįmanoma dev'e** (sertifikatas) |
-| NF5 | Uptime | 🟡 vidinis sargas; išorinio nėra |
-| NF6–NF7 | Kopijos + restore | ✅ |
-| NF8 | SSL | 🔴 → sprendžiama po DNS |
-| NF9 | Brute force | 🔴 **neįgyvendinta** |
-| NF10 | 2FA admin | 🔴 **neįgyvendinta** |
-| NF11 | WAF | 🟡 serverio lygio YRA |
-| NF12–NF17 | GDPR, VMI, mobile | ✅ |
-| NF18 | Naršyklės | 🔴 netestuota |
-| NF19 | WCAG 2.1 AA | 🔴 neišmatuota |
-| NF20 | WebP + kešavimas | ✅ **kešavimas sutvarkytas** |
-| NF21 | XML sync logging | 🟡 |
-| NF22 | Audit trail | 🟡 tik kainai |
-
----
-
-## 8ž. SCHEMA, ESYBĖS, FEED'AI — 2026-08-19 (naktis II) [S1115–S1122]
-
-### ⏰ RYTOJ (2026-08-20) — PIRMAS DARBAS
-
-> **Naktį suksis `ps_feeds_naktinis` (01:30) ir ZB importai.**
-> Klausimas: **kiek pavadinimų su `&amp;` GRĮŽO.**
-
-```
-1. prekių su esybėmis pavadinime      šiandien po taisymo: 0
-2. feed'ų cdata_amp (3 failai)        šiandien: 0 / 0 / 0
-```
-
-**Skaičius rytoj = šaknies skubumo matas:**
-
-| Grįžo | Ką reiškia |
-|---|---|
-| 0 | šaknis nekenkia — pakanka stebėti |
-| 1–50 | ZB importas grąžina dalį — taisyti profilį neskubant |
-| **50+** | **grąžina masiškai — taisyti PRIEŠ perjungimą** |
-
-Antra rytojaus eilutė: **DOD-20 stabilumo serija užsidaro 2026-08-24.**
-
----
-
-### ✅ BreadcrumbList prekėms — TŽ §S8 uždarytas
-
-`mu-plugins/petshop-schema.php` v1.0.2 · md5 `78879f3c…` · kopija `deploy/`
-
-```
-1. Pradžia > 2. ŠUNIMS > 3. Maistas šunims > 4. Sausas maistas šunims > 5. [prekė]
-```
-
-Kabinasi ant `rank_math/json_ld`. Takelis iš pirminės Rank Math kategorijos,
-jos nesant — iš giliausios priskirtos, su protėviais. Nedubliuoja, jei Rank
-Math kada nors pradėtų išvesti pati.
-
-### 🔒 Mano „raudonas" §8z buvo klaidingas
-
-Buvau įrašęs „BreadcrumbList nėra". Tikrinau **tik pradinį puslapį**, o ten
-jos ir neturi būti. Realiai kategorijose ji **buvo**, prekėse — nebuvo.
-
-> **Puslapio tipas yra matavimo sąlyga, ne smulkmena.** Trečiasis kartas, kai
-> per skubą paskelbiu raudoną, kurio nėra.
-
----
-
-### ★ FEED'AI: 117 įrašų su sugadintais pavadinimais → 0
-
-```
-PRIEŠ   google/kaina24/kainos:  CDATA blokų su &amp;: 117 · 117 · 117
-PO      visuose trijuose:       0 · 0 · 0
-```
-
-**CDATA viduje esybės nedekoduojamos.** Google Merchant, Kaina24 ir Kainos.lt
-gaudavo pažodžiui `Lamb, Pork &amp; Buffalo`.
-
-> **★ Tas pats duomuo, trys skirtingi verdiktai. ★**
-> HTML kode `&amp;` — **norma** (naršyklė parodo `&`).
-> XML CDATA viduje ir JSON-LD — **klaida**.
-> Todėl prekės puslapis atrodė tvarkingas, o feed'ai tyliai gedo.
-
-### Dry-run → APPLY
-
-```
-publish 148 · draft 160 · VISO 308 · nesikeičiančių 0
-esybių rūšis: TIK viena — &amp;, 510 kartų
-kilmė: zb 238 (77 %) · av 68 · prins 2
-
-kopija     ps-backups/post_titles_h098.json  37 168 B
-pataisyta  308 / 308 · klaidų 0 · liko 0
-```
-
-Naudotas `$wpdb->update` + `clean_post_cache()`, **ne** `wp_update_post()` —
-kad nepasileistų `save_post` kabliukai ir nebūtų liestas `slug`.
-**301 sluoksnis ir SEO nepaliesti.**
-
-Feed'ai pergeneruoti per `do_action('ps_feeds_naktinis')`: 27,9 s, 130 MB.
-
-### ⚠️ NELIESTA sąmoningai
-
-```
-post_excerpt   888 prekių
-post_content   322 prekių
-terminai         4
-```
-
-Aprašymuose `&amp;` gali būti **teisėtas** — ten HTML pasitaiko. Aklas
-dekodavimas juos sugadintų. Reikia atskiro dry-run su kitokia logika.
-Bet jie eina į tuos pačius feed'us.
-
-### 🔒 Trys bandymai dėl schemos `&amp;` — visi nepavykę
-
-v1.0.0 → v1.0.1 (`ENT_HTML5`) → v1.0.2 (kartotinis dekodavimas). Sustota pagal
-taisyklę. **Priežastis neįrodyta** — labiausiai tikėtina Rank Math išvedimo
-elgsena, bet to netvirtinu. Sustojimas pasirodė teisingas: ieškant priežasties
-paaiškėjo, kad tikroji problema feed'uose.
-
-### Šalutinis: feed variklio API
-
-`get_declared_classes()` su filtru „feed" grąžino tik `Petshop_Feeding_*` —
-generatoriaus klasės fronto užklausoje neužkraunamos. Tikrasis kelias rastas
-**cron lentelėje**: `ps_feeds_naktinis`.
-
-> **Kabliuko vardas iš cron lentelės patikimesnis už klasės paiešką.**
-
----
-
-## 8aa. NF9, NF19 IR ESYBIŲ UODEGA — 2026-08-19 (naktis III) [S1123–S1130]
-
-### ✅ NF9 — prisijungimo bandymų ribojimas ĮDIEGTAS
-
-`mu-plugins/petshop-login-sargas.php` v1.0.0 · md5 `8624aee1…` · kopija `deploy/`
-
-**Priežastis:** H085 parodė, kad saugumo pluginų nėra **nė vieno**, o
-`wp-login.php` priima neribotai. Po dviejų savaičių svetainė tampa vieša.
-
-**Savas modulis, ne pluginas** — pluginų jau 27 prie TŽ §11.4 ribos 25.
-
-| Bandymas | Rezultatas |
-|---|---|
-| 1–4 | įprasta klaida, neužrakinta |
-| **5** | **užrakinta** ✅ |
-| Po valymo | `uzrakinta: ne` ✅ |
-| **REST tuo metu** | **200, 1 767 snippetai** — tiltas nepaliestas |
-
-**Trys saugikliai:**
-```
-1. IŠJUNGIMAS   uploads/ps-login-sargas.off — failas per DirectAdmin
-2. NELIEČIAMA   REST · magic link (M8 P0) · prisijungę · cron
-3. RIBA         ilgiausia pauzė 15 min. Jokių juodųjų sąrašų
-```
-
-Adresas imamas **tik iš `REMOTE_ADDR`**; `X-Forwarded-For` sąmoningai
-neskaitomas — jį galima suklastoti, ir juo pasitikint sargą apeitų būtent
-tas, nuo ko jis saugo.
-
-> **🔒 Įrodytas ir IŠJUNGIMO kelias**, ne tik užrakinimas. Vakar priežiūros
-> režimas parodė, kad blokuojantis kodas be patikrintos atrakinimo pusės yra
-> spąstai sau pačiam.
-
-**Šalutinis:** testo metu dvi POST į `wp-login.php` grąžino `fetch failed`, o
-REST tuo pačiu metu veikė → panašu, kad serveryje yra **ir sava apsauga** nuo
-pakartotinių POST. Neįrodyta.
-
-### ✅ NF19 — WCAG bazinė patikra atlikta
-
-| Patikra | Pradinis | Prekė | Kategorija |
-|---|---|---|---|
-| `lang="lt-LT"` | ✅ | ✅ | ✅ |
-| Paveikslėliai be `alt` | **0/20** | **0/23** | **0/22** |
-| `<h1>` skaičius | 1 | 1 | 1 |
-| „Pereiti prie turinio" | ✅ | ✅ | ✅ |
-| Mastelis užrakintas | ne ✅ | ne ✅ | ne ✅ |
-| Bendriniai nuorodų tekstai | 0 ✅ | 0 ✅ | 0 ✅ |
-
-Nulis paveikslėlių be `alt` iš ~65 — WooCommerce parduotuvėje retas dalykas.
-
-**Trys smulkmenos:**
-```
-🔴 <input type="checkbox" class="psnl-check">   MŪSŲ naujienlaiškio varnelė
-   be id+label ir be aria-label → ekrano skaitytuvas neperskaito, ką ji reiškia
-🟡 psnl_website (meškerė šlamštui) — vertėtų aria-hidden="true"
-🟡 prekės puslapyje h1 → h4, praleistas lygis
-🟡 kategorijoje 12 nuorodų be teksto (greičiausiai ikonos, nepatikrinta)
-```
-`rememberme` varnelė greičiausiai **klaidingai** pažymėta — WooCommerce naudoja
-apgaubiantį `<label>`, kurio patikra nemato. Netvirtinama.
-
-### ✅ Taksonomijos terminai — 4 pataisyti, poveikis nulinis
-
-```
-Hau&amp;Miau · Hagen GmbH&amp;Co. KG · Monge &amp; C. S.p.a. · Finnern GmbH&amp;Co
-→ visi keturi taksonomijoje pa_brendas, prekių 0
-kopija ps-backups/terms_h103.json · slug'ai nepaliesti
-```
-
-**Pataisymas mano paties vertinimo:** sakiau, kad jie eina į feed'ų `<g:brand>`.
-Netikslu — feed'ai naudoja `product_brand`, kuri išvalyta 2026-08-18. Šitie
-keturi yra likučiai **senajame atribute** be nė vienos prekės. Higiena, ne
-gedimas.
-
-### Esybių sluoksnis — pilna švara
-
-| Sluoksnis | Būklė |
-|---|---|
-| Prekių pavadinimai | ✅ 0 |
-| Feed'ai — **visi laukai**, 3 failai | ✅ 0 |
-| Taksonomijos terminai | ✅ 0 |
-| Rank Math meta aprašymai | ✅ 0 |
-| Įrašų/puslapių pavadinimai | ✅ 0 |
-| `post_excerpt` | 🟡 423 su užkoduotu HTML — **kosmetika** |
-| `post_content` | 🟡 17 su dvigubu kodavimu |
-
-**Aprašymų „pavojus" NEPASITVIRTINO.** Maniau, kad lankytojas mato `<p>` kaip
-tekstą. Išmatuota: filtras esybes dekoduoja, tekstas rodomas teisingai. Lieka
-tik `<p>` viduje `<p>` — negaliojantis HTML, galima tuščia pastraipa.
-
-### 🟡 NEPATIKRINTA — rytojui
-
-```
-/krepselis/ grąžino 404
-```
-Spėjau adresą. Gali reikšti, kad krepšelis gyvena kitu adresu (**mano klaida**)
-arba kad lietuviškas adresas neveikia. **Netvirtinama, kad tai gedimas** — prie
-§0.6 „404 nulinė tolerancija" reikia pažiūrėti tikrąjį `woocommerce_cart_page_id`
-adresą ir, jei sena platforma turėjo `/krepselis/`, pridėti 301.
-
-Taip pat neuždaryta: **NF21** — ar XML sync klaidos tikrai išeina laišku.
-
----
-
-## 8bb. NUSTATYMŲ SPRAGOS IR NEAPMOKĖTI UŽSAKYMAI — 2026-08-19 (naktis IV) [S1131–S1142]
-
-### 🔒 Nauja klaidų klasė: „nustatymas yra, bet rodo ne ten"
-
-Taisyklių puslapis nebuvo klaida — niekas nelūžo, žurnale tuščia, testai žali.
-Tiesiog **konfigūracija, kurios niekas nepriskyrė**. Toks dalykas pasirodo tik
-tada, kai jo prireikia — o prireikia pirmą dieną, su realiu klientu.
-
-> **Todėl atliktas atskiras nustatymų PILNUMO auditas** (H118) — ne „ar veikia",
-> o „ar apskritai užpildyta". Vienas patikrinimas davė šešis radinius.
-
-### ✅ Sutvarkyta
-
-| # | Radinys | Buvo | Dabar |
-|---|---|---|---|
-| 1 | `woocommerce_terms_page_id` | **NENUSTATYTA** | 34524 „Pirkimo sąlygos ir taisyklės" |
-| 2 | `wp_page_for_privacy_policy` | 34526 „Slapukų naudojimas", **draft**, `/?page_id=` | 34525 „Privatumo politika", publish |
-| 3 | Krepšelio adresas | `/cart/` | **`/krepselis/`** |
-| 4 | Kasos adresas | `/checkout/` | **`/kasa/`** |
-| 5 | `hold_stock_minutes` | 60 | **90** + atskira pavedimo taisyklė |
-
-**Dėl §2 svarbu:** abu WooCommerce tekstai (`checkout_privacy_policy_text`,
-`registration_privacy_policy_text`) turi žymę `[privacy_policy]`, kurią
-WordPress keičia nuoroda. Vadinasi kasoje ir registracijoje nuoroda
-**realiai buvo rodoma ir vedė į juodraštį** — ten, kur žmogus sutinka su
-duomenų tvarkymu.
-
-### ⚪ Ne radiniai (mano klaidos)
-
-```
-free_shipping (off) zonoje „Lietuva"  → nemokamas pristatymas nuo €30 veikia
-                                        per VEŽĖJŲ metodus; free_shipping
-                                        išjungtas SĄMONINGAI. Atsakymas buvo
-                                        toje pačioje išvestyje, eilute žemiau.
-/cart/ 404                            → tai ir buvo tikrasis adresas
-```
-
-### Adresai dabar nuoseklūs
-
-```
-/parduotuve/ · /krepselis/ · /kasa/ · /paskyra/ · /taisykles/
-```
-
-`wc_get_cart_url()` ir `wc_get_checkout_url()` persitvarkė **pačios** —
-WooCommerce adresą sudaro iš puslapio ID, ne teksto. Priklausomybių patikra
-(H108): temos failai 0, mu-plugins 0, postmeta 0; vienintelis snippetas su
-`/cart/` mini jį **komentare**, o kodas naudoja `is_cart()`.
-
-**GSC patikra:** senoji petshop.lt krepšelį turėjo adresu
-`/index.php?route=checkout/cart`. Nei `/cart/`, nei `/krepselis/` GSC eksporte
-(2 445 URL) **nėra**. Vadinasi §0.6 nepažeidžiamas.
-
----
-
-### ✅ Neapmokėti užsakymai — pavedimas atskirtas nuo kortelės
-
-**Problema:** `hold_stock_minutes` yra VIENAS skaičius visiems. 60 min. tinka
-pamestam krepšeliui, bet naikina bankinį pavedimą — pinigai ateina per parą,
-o užsakymas atšaukiamas po valandos.
-
-**Sprendimas** (perskaičius WooCommerce 11.0.1 kodą, ne iš atminties):
-
+Galima. Perskaicius WooCommerce 11.0.1 koda (H121), NE is atminties:
 ```
 wc-order-functions.php:1141
   apply_filters( 'woocommerce_cancel_unpaid_order', $sprendimas, $order )
 ```
-Filtras gauna PATĮ užsakymą → mokėjimo būdą galima perskaityti.
+Filtras gauna PATI uzsakyma → mokejimo buda galima perskaityti.
 
 ```
-hold_stock_minutes            90    (Paysera / kortelė)
-petshop-nepamoketi.php v1.0.0       bacs + jaunesnis nei 3 paros → NEATŠAUKTI
+hold_stock_minutes   60 -> 90   (Paysera: pamestas krepselis atsilaisvina greitai)
+petshop-nepamoketi.php v1.0.0   bacs + jaunesnis nei 3 paros -> NEATSAUKTI
+md5 c4c954927fc95a33d545a023f2db7f96 · loopback 200
 ```
 
-**🔒 Saugumo riba:** modulis gali tik SULAIKYTI atšaukimą, niekada jo sukelti
-(pirma eilutė: `if (!$atsaukti) return $atsaukti;`). Blogiausias padarinys —
-prekės pagulės ilgiau. Prie kiekvieno sulaikymo rašoma pastaba užsakymo
-istorijoje. Išjungimas: `uploads/ps-nepamoketi.off`.
+**🔒 SAUGUMO RIBA:** modulis gali tik SULAIKYTI atsaukima, niekada jo sukelti.
+Pirma eilute: `if (!$atsaukti) return $atsaukti;`. Blogiausias padarinys —
+prekes paguleti ilgiau. Prie kiekvieno sulaikymo — pastaba uzsakymo istorijoje.
 
-**Sausas bandymas:** užsakymas 34952, `bacs`, 95,6 val. (3,98 paros) →
-`WC sakytų ATŠAUKTI` → `po mūsų ATŠAUKTI` ✅ — riba praėjusi, sulaikymo nėra.
-⚠️ Antroji šaka (jaunesnis nei 3 paros → sulaikyti) realiu užsakymu
-**nepatikrinta** — dev'e tokio nėra.
-
-### 🔒 Mano klaida: žiūrėjau ne tą planuoklę
-
-Buvau pareiškęs, kad „automatinis atšaukimas iš viso neveikia", nes
-`_get_cron_array()` nerodė užduoties. **Netiesa.** WooCommerce 11 naudoja
-**Action Scheduler**, ne WP-Cron. Užduotis buvo suplanuota visą laiką.
-
-> **Nerandama užduotis reiškia, kad ieškai ne toje planuoklėje.**
+**Sausas bandymas:** uzsakymas 34952, `bacs`, 95,6 val. (3,98 paros) →
+`WC sakytu ATSAUKTI` → `po musu ATSAUKTI` ✅ riba praejusi.
+⚠️ Antroji saka (jaunesnis nei 3 paros → sulaikyti) realiu uzsakymu
+NEPATIKRINTA — dev'e tokio nera.
 
 ---
 
-### ✅ NF9 ir NF19 (žr. §8aa) · ✅ `payment_failed` — registras buvo pasenęs
+### S1137 — ★ MANO KLAIDA: NE TA PLANUOKLE ★
 
+Buvau pareiskes: „cron nerasta → automatinis atsaukimas greiciausiai is viso
+neveikia\". **Netiesa.**
+
+```
+pries_planavima: 1787172724   ← uzduotis BUVO suplanuota
+```
+
+Tikrinau `_get_cron_array()` — WordPress cron'a. WooCommerce 11 naudoja
+**Action Scheduler**, atskira sistema.
+
+> **Nerandama uzduotis reiskia, kad ieskai ne toje planuokleje.**
+
+---
+
+### S1138 — ✅ `payment_failed` — REGISTRAS BUVO PASENES
+
+REGISTRAS §5: „ivykio DB NERA VISAI — niekas jo nekviecia\". Realiai:
 ```
 mu-plugins/petshop-payment-failed.php
   28: add_action('woocommerce_order_status_failed', 'petshop_emit_payment_failed', 20, 1)
   71: Petshop_Event_Registry::emit('payment_failed', ...)
-class-email-dispatch.php:52  payment_failed → dunning-1
+class-email-dispatch.php:52   payment_failed -> dunning-1
 woocommerce_order_status_failed — 2 registruoti kabliukai
 ```
+Grandine surista nuo galo iki galo. `class-event-registry.php:39`
+`'payment_failed' => false // dalinai` = „empiriskai nepatvirtinta\", ne
+„neveikia\". Tikrinama perjungimo nakti greta Paysera callback'o.
 
-REGISTRAS §5 teigė „įvykio DB NĖRA VISAI — niekas jo nekviečia". **Grandinė
-surišta nuo galo iki galo.** `class-event-registry.php:39` rodo
-`'payment_failed' => false // dalinai` — tai „empiriškai nepatvirtinta" žymė,
-ne „neveikia". Tikrinama perjungimo naktį greta Paysera callback'o.
+---
 
-### DOD-03 — švarus matavimas
-
-```
-žurnale viso        24
-iš MŪSŲ snippetų    12   ← diagnostikos triukšmas
-PRODUKCINIŲ         12
-   fatal        1   atminties limitas /feed/kaina24/ 08-17 (po v2.2.0 nekartojosi)
-   warning      4 parašai — VISI „Array to string conversion" petshop-xml.php
-   deprecated   7 parašai (8 266 kartai iš `postit`)
-```
-
-Keturi warning yra **du defektai** poromis: eilutės 343/344 ir 513/515.
-Kartojasi **kas importą**, paskutinį kartą 2026-08-19 18:01.
-
-**Sargas turėtų atskirti snippetų klaidas nuo produkcinių** — kitaip po
-perjungimo tas pats iškraipymas kartosis.
-
-### 🔬 Array to string — priežastis NENUSTATYTA, pastatytas stebėtojas
-
-Dvi hipotezės krito:
-```
-1. „laukai kartojasi XML'e"      → paneigta (H115): ZB 2 622, VF 2 351, nė vieno
-2. „tuščias elementas <brand/>"  → ZB neturi nė vieno tuščio
-```
-
-Trečios hipotezės nekelta. `petshop-xml` pažymėtas **„NELIESTI"**, todėl
-vietoj spėjimo įdiegtas `petshop-tipu-zurnalas.php` v1.0.0 — kabinasi tuo
-pačiu filtru prioritetu 999, grąžina reikšmę **nepakeistą**, rašo tik kai
-laukas nėra paprasta reikšmė.
+### S1139 — DOD-03 SVARUS MATAVIMAS
 
 ```
-rezultatas   uploads/ps-backups/tipu-zurnalas.json
-riba         150 įrašų · išjungimas uploads/ps-tipu-zurnalas.off
-PAŠALINTI, kai priežastis nustatyta
+zurnale viso     24
+is MUSU snippetu 12   ← diagnostikos triuksmas
+PRODUKCINIU      12
+   fatal      1   atminties limitas /feed/kaina24/ 08-17 (po v2.2.0 nekartojosi)
+   warning    4 parasai — VISI „Array to string conversion\" petshop-xml.php
+   deprecated 7 parasai (8 266 kartai is `postit`)
+```
+Keturi warning = **du defektai** poromis (343/344 ir 513/515). Kartojasi
+KAS IMPORTA, paskutinis 2026-08-19 18:01.
+
+**Sargas turetu atskirti snippetu klaidas nuo produkciniu** — kitaip po
+perjungimo tas pats iskraipymas kartosis.
+
+---
+
+### S1140 — ARRAY TO STRING: DVI HIPOTEZES KRITO, PASTATYTAS STEBETOJAS
+
+```
+1. „laukai kartojasi XML'e\"      → paneigta (H115): ZB 2 622, VF 2 351, ne vieno
+2. „tuscias elementas <brand/>\"  → ZB neturi ne vieno tuscio
+```
+
+Trecios hipotezes nekelta. `petshop-xml` pazymetas **„NELIESTI\"**, todel
+vietoj spejimo idiegtas `petshop-tipu-zurnalas.php` v1.0.0 — kabinasi tuo
+paciu filtru prioritetu 999, grazina reiksme NEPAKEISTA.
+
+```
+rezultatas  uploads/ps-backups/tipu-zurnalas.json · riba 150
+isjungimas  uploads/ps-tipu-zurnalas.off
+uzpildys    VF stock hourly · ps_feeds_naktinis 01:30 · VF reprice 03:00
 ```
 
 ---
 
-## 9. LAUKIA RAIMIO SPRENDIMO
+### S1141 — SALUTINIAI RADINIAI
 
-| ID | Klausimas | Blokuoja | Terminas |
+```
+🟡 force_ssl_checkout = no      po perjungimo -> yes (OPS)
+🟡 admin_email = terra@gyvunai.lt   parduotuves laiskai eina i uzsakymai@petshop.lt
+🟡 /product/ps-testas-1-eur/    Paysera testine preke tebera (OPS-05)
+⏸ kitu saliu zona tuscia        savininko nurodymu ATIDETA
+```
+
+---
+
+### S1142 — SESIJOS PAMOKA
+
+**Per siandiena SEPTYNIS kartus paskelbiau raudona, kurio nebuvo:** SSL,
+„55 %\", BreadcrumbList, /krepselis/ 404, free_shipping, cron planuokle,
+ir prekiu ienklu poveikis feed'ams.
+
+Kiekviena karta priezastis ta pati — **matavau ne ten, kur reikia, arba
+neperskaiciau savo paties isvesties iki galo.**
+
+> Naudingiausias dienos irankis nebuvo tiltas. Tai buvo savininko klausimai
+> „kur cia?\", „neteisus, skaityk\", „nerandu\" — kiekvienas is ju pataise
+> matavima, o ne koda.
+
+Auksciausias decision Nr.: **S1142.**
+
+---
+
+## 2026-08-19 (naktis III) — NF9, NF19, ESYBIU UODEGA, TZ v1.87 [S1123-S1130]
+
+---
+
+### S1123 — NF9 PRISIJUNGIMO SARGAS
+
+`mu-plugins/petshop-login-sargas.php` v1.0.0, md5 `8624aee11a7929545d6c8fd71f7b01d6`.
+5 bandymai / 15 min. Savas modulis, ne pluginas (27 pluginai prie ribos 25).
+
+```
+bandymai 1-4   iprasta klaida
+bandymas 5     UZRAKINTA
+po valymo      atrakinta
+REST tuo metu  200, 1 767 snippetai — tiltas nepaliestas
+```
+
+Trys saugikliai: veliava `uploads/ps-login-sargas.off`; REST/magic link/cron
+neliesti; ilgiausia pauze 15 min.
+
+**Adresas TIK is `REMOTE_ADDR`.** `X-Forwarded-For` samoningai neskaitomas —
+ji galima suklastoti, todel juo pasitikint sarga apeitu tas, nuo ko jis saugo.
+
+> **Irodytas IR isjungimo kelias.** Vakar prieziuros rezimas parode, kad
+> blokuojantis kodas be patikrintos atrakinimo puses yra spastai sau paciam.
+
+---
+
+### S1124 — NF19 WCAG BAZINE PATIKRA
+
+```
+lang lt-LT visur · 0 paveiksleliu be alt is ~65 · po viena H1
+skip-link yra · mastelis neuzrakintas · 0 bendriniu nuorodu tekstu
+```
+
+Trys smulkmenos: musu `psnl-check` varnele be prieinamo vardo; `h1 -> h4`
+sokis prekes puslapyje; 12 nuorodu be teksto kategorijoje.
+
+---
+
+### S1125 — TERMINAI: 4 PATAISYTI, POVEIKIS NULINIS
+
+Visi keturi (`Hau&amp;Miau`, `Hagen GmbH&amp;Co. KG`, `Monge &amp; C. S.p.a.`,
+`Finnern GmbH&amp;Co`) yra taksonomijoje `pa_brendas`, **prekiu 0**.
+
+**Pataisiau savo verti nima:** sakiau, kad jie eina i feed'u `<g:brand>`.
+Netikslu — feed'ai naudoja `product_brand`, isvalyta 2026-08-18.
+
+---
+
+### S1126 — APRASYMU „PAVOJUS\" NEPASITVIRTINO
+
+Itariau, kad 888 prekiu lankytojas mato `<p>` kaip teksta. Ismatuota:
+```
+DB          &lt;p&gt;Sausas pasaras...&lt;/p&gt;
+po filtro   <p><p>Sausas pasaras...</p></p>
+```
+Filtras esybes dekoduoja → tekstas rodomas teisingai. Lieka `<p>` viduje `<p>`
+— **kosmetika**, ne gedimas. 423 prekes.
+
+---
+
+### S1127 — ZB IMPORTO PROFILIS: SAKNIS MAZIAU BLOGA
+
+```
+Import #2   title {name[1]} · is_update_title 0 · update_all_data no · fix_characters 0
+Import #3   title tuscias
+Import #5   is_update_title 0
+```
+
+**`is_update_title = 0` reiskia, kad importas ESAMU prekiu pavadinimu
+NELIECIA.** Vakarykstis 308 taisymas negris atgal — `&amp;` gali atsirasti tik
+NAUJOMS prekems. Q-ZB-SAKNIS skubumas smarkiai mazeja.
+
+---
+
+### S1128 — 🟡 NEPATIKRINTA: `/krepselis/` 404
+
+Speju adresa ir pataikiau i 404. Gali reiksti, kad krepselis kitu adresu
+(**mano klaida**) arba kad lietuviskas adresas neveikia. **Netvirtinu, kad tai
+gedimas.** Prie §0.6 verta pasizureti tikraji `woocommerce_cart_page_id`.
+
+---
+
+### S1129 — ★ TZ MASTER v1.87: TAISYTOS PACIOS LENTELES ★
+
+Ne tik pridetas „Papildyta\" blokas. **Pataisytos lenteles**, nes pagal projekto
+taisykle „Papildyta\" blokai yra istorija, o dabartine bukle skaitoma is skyriu.
+Palikus lenteles melagingas, dokumentas ir toliau klaidintu.
+
+```
+Sk. 10    tema „ATVIRAS: Astra Pro vs Flatsome\" -> Flatsome Child (UZDARYTA)
+Sk. 11.5  petshop-xml v1.3.3 -> v1.5.7; petshop-core „planuojamas\" -> aktyvus
+          + ~20 mu-plugins moduliu sarasas
+Sk. 17    Launch readiness -> „PERSKAICIUOTA: perjungimas 2026-09-01/02\"
+Sk. 26.7  etapai 4/8/9 „Laukia\" -> ATMESTA / VEIKIA nuo 2026-06
+```
+Plius septyni „Papildyta (v1.87)\" blokai su visais devyniais prietaravimais,
+NF sluoksnio busena ir esybiu istorija.
+
+**★ INCIDENTAS TAISANT ★** `s.replace('v1.3.3','v1.5.7',1)` pakeite PIRMA
+pasitaikiusi vieta — versiju istorijoje („ZB pricing v1.3.3 -> v1.3.4\"), ne
+§11.5 lenteleje. Pastebeta tik palyginus originala su rezultatu.
+
+> **PAMOKA: eilutes paieska dideliame dokumente be konteksto yra spejimas.**
+> Taisyta i `>v1.3.3<` (lenteles langelio ribos) — vienintele vieta.
+> Klaidingas pakeitimas atsauktas, validacija PASSED, PDF perziuretas akimis.
+
+---
+
+### S1130 — SESIJOS SUVESTINE
+
+Uzdaryta per diena: DOD-19 §8 abu punktai · TZ §S8 · TZ §5 NF9 ir NF19 ·
+feed'u esybes 117→0 · autoload −34 % · kesavimo antrastes · 4 saugos pataisos ·
+TZ v1.87.
+
+Nauji moduliai: `petshop-prieziura` v1.0.1 · `petshop-higiena` v1.0.0 ·
+`petshop-login-sargas` v1.0.0 · `petshop-schema` v1.0.2.
+
+**Tris kartus per diena paskelbiau raudona, kurio nebuvo** (SSL, „55 %\",
+BreadcrumbList). Kiekviena karta priezastis ta pati — matavau ne ten, kur
+reikia, ir skubejau su verdiktu.
+
+Auksciausias decision Nr.: **S1130.**
+
+---
+
+## 2026-08-19 (naktis II) — SCHEMA, ESYBES, FEED'AI [S1115-S1122]
+
+Prasidejo nuo BreadcrumbList, o baigesi 308 prekiu pavadinimu taisymu ir
+trimis issivaliusiais feed'ais. Kelias tarp tu dvieju tasku eina per viena
+mano paties klaidinga teigini.
+
+---
+
+### ⏰ RYTOJ (2026-08-20) — PIRMAS DARBAS PRIES VISKA
+
+**BUTINA PATIKRINTI.** Naktį suksis `ps_feeds_naktinis` (01:30) ir ZB
+importai. Klausimas: **kiek pavadinimu su `&amp;` GRIZO.**
+
+```
+1. SELECT COUNT(*) FROM posts
+   WHERE post_type='product' AND post_status IN ('publish','draft')
+     AND post_title REGEXP '&[a-zA-Z]+;|&#[0-9]+;'
+   siandien po taisymo: 0
+
+2. feed'u cdata_amp: google.xml · kaina24.xml · kainos.xml
+   siandien po pergeneravimo: 0 / 0 / 0
+```
+
+**Skaicius rytoj = saknies skubumo matas:**
+```
+0        saknis nekenkia — pakanka stebeti
+1-50     ZB importas grazina dali — taisyti profili neskubant
+50+      grazina masiskai — taisyti PRIES perjungima, kitaip feed'ai vel sugenda
+```
+
+Antra rytojaus eilute, nesusijusi: **DOD-20 stabilumo serija uzsidaro
+2026-08-24** (paleista 08-17 19:23).
+
+---
+
+### S1115 — BREADCRUMBLIST: MANO „RAUDONAS\" BUVO KLAIDINGAS
+
+§8z buvau irases „BreadcrumbList nera\". **Netiesa.** Tikrinau TIK pradini
+puslapi, o ten jos ir neturi buti.
+
+Ismatuota tikruose puslapiu tipuose (H092):
+```
+pradinis      Organization, WebSite, WebPage         breadcrumb: nera — TEISINGA
+kategorija    CollectionPage, BreadcrumbList ✅      „Pradzia > SUNIMS\"
+preke         ItemPage, Product ✅                    breadcrumb: NERA — tikra spraga
+```
+
+> **PAMOKA: puslapio tipas yra matavimo salyga, ne smulkmena.** Vienas
+> pavyzdys is neteisingos vietos duoda neteisinga verdikta visai svetainei.
+> Tai jau treciasis kartas, kai per skuba paskelbiu raudona, kurio nera.
+
+---
+
+### S1116 — BREADCRUMBLIST PREKEMS — IDIEGTA
+
+`mu-plugins/petshop-schema.php` v1.0.2, md5 `78879f3c211681505dbb3c81c13004f4`,
+kopija `deploy/`. Kabinasi ant `rank_math/json_ld` (prioritetas 99).
+
+```
+/product/farmina-nd-tropical.../
+  1. Pradzia > 2. SUNIMS > 3. Maistas sunims
+  > 4. Sausas maistas sunims > 5. [preke]
+
+/product/trixie-baena-draskykle.../
+  1. Pradzia > 2. KATEMS > 3. Draskykles katems > 4. [preke]
+```
+
+Takelis statomas is pirmines Rank Math kategorijos
+(`rank_math_primary_product_cat`), jos nesant — is giliausios priskirtos, su
+visais protėviais. Jei Rank Math kada nors pradetu isvesti pati —
+nedubliuoja (tikrina grafa pries prideдama).
+
+**TZ §S8 uzdarytas:** Product ✅ · BreadcrumbList ✅ · Organization ✅.
+
+---
+
+### S1117 — TRYS BANDYMAI DEL `&amp;`, VISI NEPAVYKE
+
+Schemoje pavadinimai su `&` rode `N&amp;D`. Bandyta:
+```
+v1.0.0  wp_strip_all_tags                        &amp; ir &#8211; liko
+v1.0.1  + html_entity_decode ENT_HTML5           &#8211; issitaise, &amp; liko
+v1.0.2  + kartotinis dekodavimas iki 4 kartu     &amp; VIS TIEK liko
+```
+
+Pagal taisykle „po 2-3 nesekmingu bandymu STOP\" sustota. **Priezastis
+neistirta.** Labiausiai tiketina — Rank Math uzkoduoja reiksmes isvesdama
+JSON-LD (jos standartine elgsena, ne musu klaida), bet **to NEIRODZIAU**.
+
+Sustojimas pasirode teisingas: ieskant priezasties issiaiskino, kad tikroji
+problema visai kitur.
+
+---
+
+### S1118 — ★ FEED'AI: 117 IRASU SU SUGADINTAIS PAVADINIMAIS ★
+
+```
+/feed/google/     200 · 4 744 KB · CDATA bloku su &amp;: 117
+/feed/kaina24/    200 · 5 737 KB · CDATA bloku su &amp;: 117
+/feed/kainos/     200 · 5 233 KB · CDATA bloku su &amp;: 117
+dvigubo kodavimo (&amp;amp;): 0
+```
+
+**CDATA viduje esybes NEDEKODUOJAMOS.** Vadinasi Google Merchant, Kaina24 ir
+Kainos.lt gaudavo pazodziui:
+```
+Real Dog SP Puppy All Breeds Lamb, Pork &amp; Buffalo with Brown Rice 12 kg
+```
+
+Taip preke ir atrode kainu palyginimo svetainese bei Google Shopping.
+
+**Diagnoze (H096):**
+```
+DB_raw          ... Lamb, Pork &amp; Buffalo ...
+get_the_title   ... Lamb, Pork &amp; Buffalo ...
+dekoduota_1x    ... Lamb, Pork & Buffalo ...      <- SVARU, uztenka vieno karto
+```
+
+> **★ TAS PATS DUOMUO, TRYS SKIRTINGI VERDIKTAI. ★**
+> HTML kode `&amp;` yra NORMA (naršykle parodo `&`).
+> XML CDATA viduje ir JSON-LD — KLAIDA.
+> Todel prekes puslapis atrode tvarkingas, o feed'ai tyliai gedo.
+
+---
+
+### S1119 — DRY-RUN: APIMTIS DIDESNE, NEI ATRODE (H097)
+
+```
+publish     148
+draft       160
+VISO        308        nesikeiciancziu: 0
+esybiu rusis: TIK viena — &amp;, 510 kartu
+
+kilme:  zb 238 (77 %) · av 68 · prins 2
+```
+
+Tos pacios esybes kitur (**NELIESTA samoningai**):
+```
+post_excerpt   888 prekiu
+post_content   322 prekiu
+terminai         4
+```
+Aprasymuose `&amp;` gali buti **teiseta** — ten HTML pasitaiko. Pavadinimuose
+HTML neturi buti is viso, todel tik jie ir taisyti. Aprasymai reikalauja
+atskiro dry-run su kitokia logika.
+
+Pilnas „pries → po\" sarasas: `pavadinimu_dry_run_2026-08-19.md` (46 KB).
+
+---
+
+### S1120 — APPLY: 308/308 (H098)
+
+```
+kopija        ps-backups/post_titles_h098.json   37 168 B
+pataisyta     308 / 308
+klaidu        0
+praleista     0
+liko su esybemis   0
+```
+
+Naudotas `$wpdb->update` + `clean_post_cache()`, **ne** `wp_update_post()` —
+kad nepasileistu `save_post` kabliukai (VF/ZB importo logika, atributu
+variklis) ir nebutu liestas `slug`. **301 sluoksnis ir SEO nepaliesti.**
+
+Patikra po taisymo:
+```
+Eukanuba Mini & Medium Adult (eriena ir ryziai) 2,5kg
+Monge Dry Dog Puppy&Junior GRAIN FREE Duck & potatoes 2,5kg
+Real Dog SP Puppy All Breeds Lamb, Pork & Buffalo with Brown Rice 12 kg
+```
+
+---
+
+### S1121 — FEED'AI PERGENERUOTI IR PATIKRINTI (H099)
+
+Paleista `do_action('ps_feeds_naktinis')`.
+
+```
+trukme         27,9 s
+atminties pikas 130 MB      (S1088 minetas fatal nepasikartojo)
+
+              KB     cdata_amp   amp_viso
+google.xml   4 906       0           0
+kaina24.xml  5 919       0           0
+kainos.xml   5 430       0           0
+```
+
+Patikrinta **ir failuose diske, ir per viesus URL** — visi trys 200,
+`cdata_amp: 0`. Frontas 200.
+
+**117 → 0.**
+
+---
+
+### S1122 — ZVALGYBOS SALUTINIS: FEED VARIKLIO API
+
+Ieskant, kaip pergeneruoti, `get_declared_classes()` su filtru „feed\"
+grazino tik `Petshop_Feeding_*` (serimo skaiciuokle) — feed'u generatoriaus
+klases fronto uzklausoje **neuzkraunamos**.
+
+Tikrasis kelias rastas cron lenteleje:
+```
+ps_feeds_naktinis              2026-08-20 01:30
+petshop_vf_sync_stock_hourly   kas valanda
+petshop_vf_sync_reprice_daily  03:00
+petshop_vf_sync_publish_daily  04:00
+petshop_attr_engine_run        22:57
+petshop_pragma_monthly_export  2026-09-05 08:00
+```
+
+> **Kabliuko vardas is cron lenteles yra patikimesnis uz klases paieska** —
+> klase gali buti neuzkrauta, o cron irasas rodo tikra ivykio pavadinima.
+
+---
+
+### NEUZDARYTA
+
+```
+⏰ RYTOJ: kiek pavadinimu grizo po nakties importo (zr. virsuje)
+🔴 SAKNIS: ZB Import #2/#3 profiliai iraso &amp; — netaisyta
+🟡 post_excerpt 888 · post_content 322 — atskiras dry-run, kitokia logika
+🟡 Rank Math JSON-LD `&amp;` — priezastis neirodyta, is musu puses netaisoma
+🟡 DOD-20 serija uzsidaro 2026-08-24
+```
+
+Auksciausias decision Nr.: **S1122.**
+
+---
+
+## 2026-08-19 (velyva naktis) — NF SLUOKSNIS: SAUGA, GREITIS, ROBOTS [S1107-S1114]
+
+Sesija vykde TZ audito „E dalies\" veiksmus. Rezultatas dvilypis: sauga ir
+higiena uzdaryta realiais pataisymais, o greicio matavimas atsimuse i dalyka,
+kurio niekas nebuvo ivardijes vardu.
+
+---
+
+### S1107 — SAUGOS PATIKRA IS ISORES (H085)
+
+```
+/wp-json/wp/v2/users       403   serverio lygio blokavimas
+/wp-content/uploads/       403
+/wp-config.php.bak         403
+/wp-content/debug.log      404
+/.env                      404
+wp-config.php teises       0600
+administratoriu            1  (prisijungimas bdz487, ne „admin\")
+vartotoju admin/root/test  0
+wp-login.php antrastes     X-Frame-Options, CSP, Referrer-Policy
+```
+
+Visi 403 identisko dydzio (401 B) — tai **serverio lygio WAF**, ne WordPress.
+Vadinasi NF11 is dalies dengia hostingas, nors Wordfence'o nera.
+
+**Saugumo pluginu — NE VIENO.** NF9 (login limitai) ir NF10 (2FA) realiai
+neigyvendinti. Prie vieno administratoriaus su neatspejamu vardu tai nera
+degantis dalykas, bet TZ ju reikalauja — savininko sprendimas.
+
+**NEPATIKRINTA:** `xmlrpc.php` — uzklausa nuluzo (`fetch failed`). Neteigiu,
+kad uzdarytas.
+
+---
+
+### S1108 — PATAISYMAS: REGISTRE BUVO „WP 7.0\"
+
+```
+<meta name="generator" content="WordPress 6.9.4">
+```
+
+Registro ir TZ suvestines teiginys **WP 7.0 — netikslus.** Realiai 6.9.4.
+
+---
+
+### S1109 — KETURIOS SAUGOS PATAISOS (H086b)
+
+| Pataisa | Patikra |
+|---|---|
+| `DISALLOW_FILE_EDIT = true` | wp-config 3 827 -> 3 939 B, loopback 200 |
+| `WP_DEBUG_DISPLAY = false` | ta pati |
+| `readme.html` pasalintas | dabar 404 (buvo 200) |
+| `license.txt` pasalintas | dabar 404 |
+| `<meta generator>` pasalintas | vitrinoje nebera |
+
+Naujas modulis `mu-plugins/petshop-higiena.php` v1.0.0, md5
+`b1226cc0eda4e007dd7f2f02d1150b36`. Salina generator, RSD, wlwmanifest,
+X-Pingback. Kopija `deploy/`.
+
+**Saugikliu grandine suveike:** wp-config kopija i `ps-backups` PRIES keitima
+-> `token_get_all(TOKEN_PARSE)` -> irasymas -> loopback -> tik tada toliau.
+`readme.html` ir `license.txt` ne istrinti, o PERKELTI i `ps-backups`.
+
+---
+
+### S1110 — ★ KODEL PAGESPEED NEVEIKIA: SERTIFIKATAS ★
+
+Savininkas: „neveikia\". Ismatuota:
+
+```
+dev.avesa.lt sertifikatas:
+   CN        *.serveriai.lt
+   SAN       *.serveriai.lt, serveriai.lt      <- dev.avesa.lt NERA
+   isdave    PerfectSSL
+   galioja   2026-04-02 -> 2026-10-17
+   patikimas NE — UNABLE_TO_VERIFY_LEAF_SIGNATURE
+```
+
+Tai bendras hostingo sertifikatas, ne musu domenui. Google atsisako matuoti
+svetaine su negaliojanciu sertifikatu. Tas pats ir su Lighthouse.
+
+**★ Tai buvo priesais akis nuo pirmos dienos.** Tilto skripte visa laika
+stovi `NODE_TLS_REJECT_UNAUTHORIZED='0'` — mes ta klaida ignoruojam nuo pat
+pradziu, tik niekas nebuvo jos pavadines vardu.
+
+**Isvada TZ NF3/NF4:** Lighthouse dev'e ISMATUOTI NEIMANOMA. Tai ne skola ir
+ne neatliktas darbas — tai aplinkos apribojimas. Po perjungimo `petshop.lt`
+gaus tikra Let's Encrypt sertifikata (DOD-19 §7c), ir matavimas veiks.
+
+Du bandymai pries tai nuluzo: PSI API grazino HTTP 429 (GitHub runner'iu
+bendras IP, Google dienos kvota isnaudota svetimu), o `npx playwright install
+--with-deps` kabejo 17 min. Pagal taisykle „po 2-3 nesekmingu bandymu STOP\"
+trecio karto ta pacia kryptimi nedariau.
+
+---
+
+### S1111 — NASUMO PROFILIS BE NARSYKLES (H087, H088)
+
+```
+KLIENTO PUSE (5 matavimai)
+   pilnas HTML       mediana 1 940 ms  (1 813 - 2 562)
+   HTML dydis        230 KB, gzip ijungtas
+   CSS               11 failu, 295 KB
+   JS                19 failu, 370 KB
+   nuotraukos        20, 342 KB
+   VISO              ~1,2 MB
+   JS be defer/async 13 (5 is ju <head> viduje, blokuojantys)
+
+SERVERIO PUSE
+   PHP               8.3.20, limitas 256M
+   OPcache           IJUNGTAS
+   objektu kesas     NERA
+   uzklausu          78
+   generavimo laikas ~1 s
+   atminties pikas   112 MB
+   transientu        1 436 (1 009 KB)
+   prekiu publish    2 609
+```
+
+**Objektu keso nebuvimas** yra didziausia likusi galimybe — TZ §10 Redis mini
+kaip „optional\", bet tai buvo pries 2 609 prekes.
+
+---
+
+### S1112 — DVI MANO MATAVIMO KLAIDOS
+
+**Pirma.** `round(timer_stop(0), 3)` — `timer_stop()` grazina EILUTE. PHP 8.3
+tai jau `TypeError`, ne ispejimas. Snippetas nuluzo, serverio dalis negrizo.
+Pakartota su `(float)`.
+
+**Antra, svarbesne.** `autoload_KB` parode **0**, ir tai buvo NETEISINGA.
+Nuo WordPress 6.6 stulpelio `autoload` reiksmes yra `on`/`off`/`auto`, ne
+`yes`/`no`. Uzklausa `WHERE autoload='yes'` rado 2 senus irasus.
+
+> **PAMOKA: nulinis rezultatas yra itartinesnis uz bloga rezultata.**
+> „0 KB autoload\" turejo iskart sukelti klausima, o ne pasitenkinima.
+
+Permatavus teisingai:
+```
+off      1 714 irasai   8 515 KB   <- nekraunama
+auto       396           235 KB
+on         344            95 KB
+no          10            67 KB
+yes          2             0 KB
+KRAUNAMA: 742 irasai, 330,5 KB
+```
+
+---
+
+### S1113 — KESAVIMO ANTRASTES IR AUTOLOAD VALYMAS (H089, H090)
+
+**`.htaccess` kesavimas:**
+
+| Failas | Pries | Po |
+|---|---|---|
+| `wp-embed.min.js` | **jokios Cache-Control** | `public, max-age=31536000` |
+| `dashicons.min.css` | `max-age=604800` | `public, max-age=31536000` |
+
+`.htaccess` 1 309 -> 2 068 B, kopija `ps-backups/htaccess.bak_h089`. Blokas
+apgaubtas `<IfModule mod_expires.c>` ir `<IfModule mod_headers.c>` — abu
+moduliai ijungti, bet net ju nesant nesulauztu. Frontas 200, wp-admin 302.
+
+**Transientai — NIEKO NEISTRINTA, ir tai teisingas rezultatas.** Is 1 436
+pasibaigusiu **0**. Snippetas rasytas trinti tik pasibaigusius; trynus visus
+WooCommerce juos perskaiciuotu be jokios naudos.
+
+**Autoload valymas:**
+```
+autoload      330,5 KB -> 218,1 KB   (-34 %)
+irasu             742 -> 737
+
+wh_probe_result        istrinta   ┐
+wh2_probe_result       istrinta   ├ MUSU senu run'u likuciai
+mnm_p7_result          istrinta   ┘
+jetpack_active_plan    istrinta     (Jetpack neidiegtas)
+petshop_zb_image_index autoload auto -> off   (NEISTRINTA, reikalinga importui)
+```
+Reiksmiu kopija: `ps-backups/options_h090.json` (56 383 B). Loopback 200.
+
+---
+
+### S1114 — ★ ROBOTS.TXT PO PERJUNGIMO: VEIKS SAVAIME ★
+
+Savininko klausimas. **Anksciau atsakiau „keisis savaime\" NEPATIKRINES.**
+Ismatuota:
+
+```
+fizinis failas /robots.txt   NERA
+generuoja                    WordPress virtualiai:
+                             0  -> RankMath\Sitemap\Sitemap_Index::add_sitemap_directive
+                             10 -> WooCommerce::robots_txt
+do_robotstxt filtru          ne vieno
+Rank Math custom turinys     nera
+```
+
+Fizinio failo nera -> `Sitemap:` eilute sudaroma is `home_url()` kiekvienos
+uzklausos metu. Pakeitus Site URL i `https://petshop.lt` ji **ta pacia
+sekunde** tampa teisinga. WooCommerce eilutes — santykiniai keliai.
+
+> **ISPEJIMAS ATEICIAI:** jei kas nors ikels FIZINI `robots.txt` i sakni, jis
+> TYLIAI perims viska — nei Rank Math, nei WooCommerce eilutes nebeveiks, ir
+> sitemap nuoroda liks uzsalusi.
+
+**Salutinis radinys, kurio neieskojau:**
+```
+blog_public = 0   („Discourage search engines\" IJUNGTA)
+robots.txt        Disallow: /wp-admin/    <- LEIDZIA visa svetaine
+                  Sitemap: .../sitemap_index.xml
+```
+Indeksavima dabar stabdo **tik `<meta name="robots" content="noindex,
+nofollow">`**, o robots.txt yra leidziantis ir dar skelbia sitemap'a. Dev'e
+nekenkia (sertifikatas negalioja, nuorodu nera), bet reiskia, kad DOD-22
+varnele yra VIENINTELIS apsaugos sluoksnis, ne vienas is dvieju.
+Po perjungimo verta 1 min. pasizureti, ar robots.txt atrodo, kaip tikimes.
+
+---
+
+### NF SLUOKSNIO BUKLE PO SIOS SESIJOS
+
+| NF | Reikalavimas | Buvo | Dabar |
 |---|---|---|---|
-| Q6 | Prenumeratos pluginas | F19 | — |
-| Q10 | Kurie 20–30 SKU prenumeratai | F19 | — |
-| Q-BKP | ✅ **UŽDARYTA 2026-08-03:** B2 bucketas, raktas, kredencialai, Object Lock 14 d. — viskas pastatyta ir įrodyta (§8d) | DOD-08 | — |
-| ~~Q-ZENKLAI~~ | ✅ **UŽDARYTA 2026-08-18:** visos 114 priskirtos (81 savininkas + 33 pagal įrodymus); taksonomija išvalyta (§8n) | — | — |
-| ~~Q-KATEGORIJOS~~ | ✅ **UŽDARYTA 2026-08-18:** 55 kategorijos susietos su Google taksonomija, savininkas patvirtino, feed'e 100 % (§8n) | — | — |
-| **Q-SVORIS** | **998 prekės be svorio** — pavadinime kiekio nėra, reikia sverti arba tiekėjo duomenų | pristatymo tikslumas | — |
-| **Q-VARTAI** | Ar publikavimo vartų riba (120 simb.) keičiama į 90, kaip pilnumo? Įleistų liesesnius tiekėjų aprašymus | — | — |
-| **Q-MERCH-1** | **Ar Merchant Center paskyra egzistuoja?** Tikrinti negalim: Content API neįjungtas + paslaugos aktas nepridėtas prie MC (§8m S985). Du savininko veiksmai | Google feed | skubu |
-| ~~Q-MERCH-2~~ | ✅ **UŽDARYTA 2026-08-18:** feed'as SAVAS, ne GLA pluginas | — | — |
-| ~~Q-MERCH-3~~ | ✅ **UŽDARYTA 2026-08-18:** prekės be likučio į feed'us nesiunčiamos | — | — |
-| Q-MON | **Monitoringo apimtis** — uptime pakanka, ar reikia ir PHP klaidų sekimo? | DOD-13 | — |
-| ~~Q-PSR2~~ | ✅ **UŽDARYTA 2026-08-19:** konfigūracija PILNA; testas iš dev neįmanomas (`bad_referer`); savininko sprendimas — tikrinti perjungimo naktį (§8v) | — | — |
-| **Q-PSR3** | 🟡 Prieš perjungimą pažiūrėti, kas įrašyta projekto 29276 laukuose `accepturl`/`cancelurl`/`callbackurl` | perjungimas | prieš T-0 |
-| **Q-KREPS** | 🟡 Kasoje „Mažo krepšelio mokestis" rodomas du kartus (1,21 € ir 1,00 €) — klientui atrodo kaip dvigubas | konversija | prieš launch |
-| Q9 | Lojalumas: pluginas ar savas BonusLedger | — | 2026-08-15 |
-| Q21 | FB paskyros revival + reali nuoroda | OPS-10 | — |
-| Q-R2 | Prekės be EAN — patikslinta 2026-08-18: po GTIN taisymo liko **594** publish prekės be jokio kodo (§8m) | F4 vertė · Google | — |
-| Q-R7 | 1022 draft prekės — publish/trinti/palikti | — | — |
-| ~~Q-GSC~~ | ✅ **NEBLOKUOJA — buvo klaidingai laikoma atviru.** Eksportas padarytas 2026-07-30 (2 445 URL / 19 735 clicks, §12). Kategorijų P1 skaičiuojamas iš turimų duomenų | — | — |
-| ~~Q-SEO-PRIEST~~ | ✅ **UŽDARYTA 2026-08-18:** išmatuota, abu netikslūs; danga 78 % → 95 % (§8r) | — | — |
-| ~~Q-BLOG3~~ | ✅ **UŽDARYTA 2026-08-19: NEREIKALINGI.** Trys straipsniai per 16 mėn. surinko 14 paspaudimų (§8s) | — | — |
-| ~~Q-SKAIC~~ | ✅ **UŽDARYTA:** skaičiuoklė yra straipsnyje ID 14890; nuorodos pataisytos (§8t) | — | — |
-| ~~Q-SLUG6~~ | ✅ **UŽDARYTA:** 12 title; realus konfliktas buvo tik 1 iš 6 (§8t) | — | — |
-| ~~Q-HOME~~ | ✅ **UŽDARYTA:** pradinio psl. title ir meta iš savininko teksto (§8t) | — | — |
-| ~~Q-OGIMG~~ | ✅ **UŽDARYTA:** 1200×630 iš savininko logotipo, ID 35001 (§8t) | — | — |
-| **Q-STRAIPS** | 🟡 Komerciniai straipsniai poz. 16–39 su 10+ tūkst. parodymų — pakelti pigiau nei rašyti naują | §8s | po launch |
-| **Q-PERKEL** | 🔴 **Kaip `petshop.lt` ras svetainę** — failų perkėlimas per SSH. Kreiptis į palaikymo ŽMOGŲ, ne AI agentą | perjungimas | **prieš T-0** |
-| **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
-| ~~Q-KREPS404~~ | ✅ **UŽDARYTA 2026-08-19:** buvo MANO klaida — `/cart/` ir buvo tikrasis adresas. Dabar sulietuvinta į `/krepselis/` ir `/kasa/` (§8bb) | — | — |
-| ~~Q-KREPS404-senas~~ | 🟡 **`/krepselis/` grąžina 404** — nepatikrinta, ar tai tikrasis krepšelio adresas. Prie §0.6 reikia patikros ir, jei reikia, 301 (§8aa) | 404 | prieš launch |
-| **Q-A11Y** | 🟡 Naujienlaiškio varnelė `psnl-check` be prieinamo vardo; `h1→h4` prekės psl.; 12 nuorodų be teksto kategorijoje (§8aa) | NF19 | — |
-| **Q-SAUGA** | 🟡 **NF9 ✅ ĮDIEGTA 2026-08-19** (§8aa). Liko **NF10 (2FA admin)** — diegiam ar formaliai išbraukiam iš TŽ? — saugumo pluginų nėra nė vieno (§8z). Diegiam ar formaliai išbraukiam iš TŽ? | NF5 | — |
-| **Q-REDIS** | 🟡 Objektų kešas (Redis) — didžiausia likusi našumo galimybė prie 2 609 prekių, 78 užklausų, 112 MB piko (§8z) | greitis | — |
-| ~~Q-BREADCRUMB~~ | ✅ **UŽDARYTA 2026-08-19:** buvo klaidingai raudona (tikrinta tik pradiniame psl.). Kategorijose buvo, prekėms įdiegta `petshop-schema.php` v1.0.2 (§8ž) | — | — |
-| **Q-ESYBES-2** | 🟡 **`post_excerpt` 888 + `post_content` 322 prekių su `&amp;`** — eina į tuos pačius feed'us, bet aklas dekodavimas sugadintų teisėtą HTML. Reikia atskiro dry-run (§8ž) | feed'ai | — |
-| **Q-ZB-SAKNIS** | 🔴 **ZB Import #2/#3 įrašo `&amp;` į pavadinimus** — 238 iš 308. ⏰ Rytoj matuojam, kiek grįžo (§8ž) | feed'ai | **prieš perjungimą** |
-| **Q-D7D8** | 🔴 **TŽ §14 D7 (klientų bazė) + D8 (užsakymų istorija) — MVP prioriteto, NEPADARYTA, registre nefiksuota.** Sena platforma dingsta 2026-10-15 | duomenys | **prieš 10-15** |
-| **Q-SVARI-DB** | 🟡 DirectAdmin: sukurti `gyvunai2_rtst` (utf8mb4) + priskirti esamą vartotoją `gyvunai2_nbpe1`. Uždaro DOD-19 §8 (§8y) | DOD-19 | — |
-| **Q-SUBDOM** | 🟡 Akla zona po perkėlimo — prašyti SSH žmogaus subdomeno į naują dokumentų šaknį (§8y) | perjungimas | prieš T-0 |
-| **Q-PAT** | **GitHub PAT baigia galioti 2026-08-26** — be jo tiltas nustoja veikti | visi darbai | **skubu** |
- | — |
-| ~~Q-KAT-FORMATAS~~ | ✅ **UŽDARYTA 2026-08-18:** B hub'uose + A lapinėse (§8o) | — | — |
-| ~~Q-KAT-TEKSTAI~~ | ✅ **UŽDARYTA 2026-08-18:** 56 tekstai + 56 meta gyvi (§8p) | — | — |
-| 🔒 **D-VISAVERTIS** | **UŽRAKINTA:** kasdienis pašaras turi būti visavertis; „papildomas kasdienio maisto nepakeičia". Galioja visiems būsimiems tekstams | turinys | — |
-| Q-SEO | Kurios 404 kategorijos apskritai bus | DOD-07 | — |
-| Q-M8 | Anketos tekstai + „14 dienų" frazė | M8 9b | — |
-| Q-27 | S327 laiško lietuviško stiliaus peržiūra | — | — |
-| Q-GDPR | Duomenų retencija: kada trinti `ps_carts`/`ps_shipments` | — | — |
-| Q-PSR | Paysera Recurring atsakymas (nefiksuotas) | F19 | — |
-| Q-EM | El. paštas „Apie mus" / „Privatumo politika" psl. | — | — |
-| Q-ATA | 2 testiniai užsakymai kanibalizacijos verdiktams patikrinti | §20 | — |
+| NF1-NF2 | LCP / TTI | neismatuota | netiesioginiai skaiciai; tikri po perjungimo |
+| NF3-NF4 | Lighthouse | neismatuota | NEIMANOMA dev'e (sertifikatas) — ne skola |
+| NF8 | SSL | pasibaiges | issprendziama po DNS (DOD-19 §7c) |
+| NF9 | brute force | neismatuota | **NEIGYVENDINTA** — saugumo pluginu nera |
+| NF10 | 2FA admin | neismatuota | **NEIGYVENDINTA** |
+| NF11 | WAF | neismatuota | serverio lygio WAF YRA (403 atsakymai) |
+| NF18 | naršykles | netestuota | netestuota |
+| NF19 | WCAG | neismatuota | neismatuota |
+| NF20 | WebP + kesavimas | dalinai | **kesavimo antrastes sutvarkytos** |
+| NF22 | audit trail | dalinai | dalinai (tik kainai) |
 
 ---
 
-## 10. SIŪLOMA EILĖ
+### NEUZDARYTA
 
 ```
-A — greita (valandos)          R5 kainos ✅ · F4 paieška ✅ · F14 mobile ✅
-                               backup: Installatron kopijos YRA (§8b) ⏸ Q-BKP
-                               monitoringas ⏸ Q-MON
-B — didelis kodas              F19 prenumerata (po Q6+Q10) · 3 launch šablonai
-C — Raimio sprendimai          Q6 Q10 Q-R2 Q-SEO Q-M8
-D — procesas (dienos)          DOD-04 20 užsakymų · DOD-17 beta · DOD-18/19 DNS+rollback
-                               DOD-20 savaitinis monitoringas
-E — pre-launch (T-14 … T-0)    visos OPS-* · DOD-07/21 301 lentelė
+🔴 BreadcrumbList schema — TZ §S8 jos reikalauja, nera
+🔴 NF9/NF10 — saugumo pluginu nera, savininko sprendimas
+🟡 xmlrpc.php busena nepatikrinta
+🟡 objektu kesas (Redis) — didziausia likusi nasumo galimybe
+🟡 13 JS be defer/async, 5 blokuojantys <head> viduje
+🟡 NF18 naršykliu testas, NF19 WCAG
+⏸ NF1-NF4 — matuojama TIK po perjungimo
 ```
 
-Grupėje A padaryta: R5 ✅, F4 ✅, F14 ✅ — DOD-01 UŽDARYTAS.
-Backup pasirodė esąs 🟡, ne 🔴 (§8b). Liko Q-BKP (saugykla) ir Q-MON (apimtis).
+Auksciausias decision Nr.: **S1114.**
+
+---
+
+## 2026-08-19 (naktis) — TZ AUDITAS, PRIEZIUROS REZIMAS, ATSTATYMO RECON [S1099-S1106]
+
+Sesija prasidejo savininko klausimu „ar mes pasiruose paleidimui\" ir baigesi
+tuo, kad viena is mano paciu pataisu 4 minutes laike dev'a 503 busenoje. Abu
+dalykai vertingi, ir antras — labiau.
+
+---
+
+### S1099 — TZ MASTER v1.86 PILNAS AUDITAS (46 skyriai)
+
+Perziuretas VISAS TZ (1 141 pastraipa, 103 lenteles), kiekvienas punktas
+sulygintas su REGISTRU ir siuo zurnalu. Ataskaita:
+`TZ_MASTER_v1_86_AUDITAS_2026-08-19.md`.
+
+```
+punktu palyginta   ~310
+padaryta           ~168 (54 %)
+dalinai             ~34 (11 %)
+nepadaryta          ~28  (9 %)
+samoningai atmesta  ~41 (13 %)
+NEISMATUOTA         ~39 (13 %)   <- didziausia rizikos klase
+```
+
+**★ TRYS SLUOKSNIAI, KURIU REGISTRE NERA VISAI ★**
+
+```
+Sk. 5   NF1-NF22 nefunkciniai      22 punktai, 8 neismatuoti
+Sk. 20  T1-T13 testavimo planas    13 punktu, 4 nedaryti
+Sk. 2.2 techniniai KPI             9 metrikos, 5 nematuotos
+```
+
+Patikrinta grep'u: zodziai `Lighthouse`, `Wordfence`, `2FA`, `WP Rocket`,
+`Cloudflare`, `Omniva`, `ACF Pro` — **0 atitikmenu** nei REGISTRE, nei
+zurnale. Tai ne „blogai padaryta\", tai NEMATUOTA.
+
+Persidengia: greitis (NF1-NF4 = T4 = KPI 1-4) ir sauga (NF9-NF11 = T7).
+Realiai tai **du matavimai**, ne septyniolika darbu.
+
+---
+
+### S1100 — DEVYNI TZ PRIESTARAVIMAI REALYBEI
+
+| # | Vieta | TZ teigia | Realiai |
+|---|---|---|---|
+| B1 | 16/17 | go-live 2026-10-15 | perjungimas 2026-09-01/02 |
+| B2 | 27 | aprasymai per `petshop_desc_*` | lauku NERA ne vienoje is 2 744 prekiu (41 sk.) |
+| B3 | 26.7 | etapai 4/8/9 „Laukia\" | stock sync ir monitoringas veikia nuo birzelio |
+| B4 | 11.5 | `petshop-xml v1.3.3` | v1.5.7; truksta ~14 moduliu |
+| B5 | 13 | Omniva ir Cloudflare = P0 | ne vienas neidiegtas |
+| B6 | 6.3 | 5 lock checkbox'ai per ACF Pro | tik `_manual_price_override` |
+| B7 | 0.12 | `_active_fulfillment_source` | `_ps_sandelis` (36.1) |
+| B8 | 29/35.12 | „12 punktu, saknis resolveris\" | prielaida paneigta S920-S923 |
+| B9 | 10 | tema „ATVIRAS\" | Flatsome Child nuo geguzes |
+
+**★ RADINYS, KURIO NIEKUR NEBUVO: TZ 14 D7 ir D8 ★**
+
+```
+D7  Klientu baze          MVP prioritetas   NEPADARYTA, nera ne vienoje lenteleje
+D8  Uzsakymu istorija     MVP prioritetas   NEPADARYTA
+```
+
+Sena platforma isjungiama 2026-10-15. Po to duomenu nebebus is kur imti.
+Tas pats galioja Q19 (istoriniai atsiliepimai).
+
+---
+
+### S1101 — TILTO RECON: TRYS FAKTAI
+
+```
+1. adresas    screenshot.mjs 3 eilute: const WP='https://dev.avesa.lt'
+              daugiau NIEKUR. Pakeitimas trivialus.
+2. PAT        workflow viduje GH_TOKEN = github.token (Actions savas).
+              PAT reikalingas TIK Claude dispatch'ui ir skaitymui.
+              Q-PAT siauresnis, nei registre atrodo.
+3. AKLA ZONA  po perkelimo dev.avesa.lt mirsta, petshop.lt dar eShoprent
+              -> NE VIENAS adresas nepasiekia svetaines is isores
+```
+
+Akla zona DOD-18/19 nera aprasyta. Silomas sprendimas: SSH zmogaus prasyti
+subdomeno (pvz. `naujas.avesa.lt`), rodancio i NAUJA dokumentu sakni. Tada
+tiltas mato svetaine ir pries DNS, ir po jo.
+
+**Padaryta:** workflow'e pridetas `WP_URL: ${{ secrets.WP_URL }}`. Perjungimo
+metu adresas keiciamas vienu GitHub secret'u, ne kodu. Kol secret nenustatytas
+— galioja `dev.avesa.lt`.
+
+---
+
+### S1102 — PRIEZIUROS REZIMAS v1.0.0 (H081)
+
+DOD-19 8 skyriuje pazymeta: „prieziuros rezimo jungiklis NEEGZISTUOJA\".
+Sukurtas `mu-plugins/petshop-prieziura.php`.
+
+**Pagrindinis sprendimas: veliava FAILU, ne nustatymu duomenu bazeje.**
+
+```
+ijungti    sukurti  wp-content/uploads/ps-prieziura.flag
+isjungti   istrinti ta pati faila
+```
+
+Priezastis konkreti: DOD-19 3.3 numato rezima ijungti PRIES DB atstatyma.
+Jungiklis, gyvenantis DB, tuo metu butu nepasiekiamas — t.y. tiksliai tada,
+kai jo ir reikia.
+
+Trys detales, idetos samoningai:
+
+```
+503 + Retry-After     ne 200 ir ne 302. Google 503 neindeksuoja, BET ir
+                      is indekso NEISMETA. Po viso SEO sluoksnio — kritine
+?wc-api= praleidziamas mokejimu callback'ai NIEKADA neblokuojami. Kitaip
+                      klientas sumoka, o uzsakymas lieka „laukiama apmokejimo\"
+?ps_prieziura=<raktas> perziura be prisijungimo, slapukas 12 val.
+```
+
+---
+
+### S1103 — ★ INCIDENTAS: PRIEZIUROS REZIMAS UZDARE TILTA ★
+
+**Kas nutiko.** v1.0.0 kabejo ant `init`. `init` vyksta IR REST uzklausoms.
+Ijungus rezima uzsidare Code Snippets REST API — t.y. tiltas. H081 pabaigoje
+snippet'o isjungimo kvietimas tyliai grazino 503, o valymo faze C pati save
+uzblokavo.
+
+```
+frontas_su_veliava        503  <- tikslas pasiektas
+C_valymas                 503  <- faze nepasieke PHP
+frontas_po_valymo         503  <- dev liko prieziuros rezime
+```
+
+**Trukme: ~4 min.** Dev'as, ne produkcija, realiu klientu nera.
+
+**Kaip isikapsciau (H082).** Senasis snippetas 3536 liko AKTYVUS — butent
+todel, kad ji isjungianti REST uzklausa buvo blokuota. Iskvietimas per
+`?wc-api=ps&ps_h081=C` praejo pro rezima ir istryne veliava.
+
+> **Tas pats saugiklis, kuris turejo saugoti pinigus (`wc-api` praleidimas),
+> pasirode esas ir avarinis ijejimas.**
+
+**PAMOKA — ★ NAUJA TAISYKLE ★**
+
+> **Kodas, kuris blokuoja uzklausas, PRIVALO buti patikrintas ir is savo
+> paties valymo kelio puses.** Neuztenka patikrinti, kad blokavimas veikia.
+> Reikia patikrinti, kad ISJUNGIMAS irgi veikia — is tos pacios busenos.
+
+Antra pamoka: kai idiegtas modulis gali uzdaryti tilta, valymo faze turi eiti
+per kelia, kuri pats modulis praleidzia. Ne per numatytaji.
+
+---
+
+### S1104 — TAISYMAS v1.0.1: `template_redirect` VIETOJ `init` (H083)
+
+Taisymas struktūrinis, ne pleistras. `template_redirect` is viso nevyksta
+REST, admin-ajax, wc-api ir wp-cron kelyje — vadinasi jie praeina SAVAIME,
+be isimciu saraso. Kodas kartu ir sutrumpejo.
+
+**Patikros su ijungta veliava (H083, visos zalios):**
+
+```
+vitrina /                503 + Retry-After: 1800
+prekes puslapis          503 + Retry-After: 1800
+?wc-api=paysera_callback 400   <- WooCommerce apdorojo, NE 503
+/wp-admin/               302
+/wp-login.php            200
+REST code-snippets       200, 1 747 snippetai   <- TILTAS VEIKIA
+```
+
+Po veliavos istrynimo: frontas 200, TEMP aktyviu 0.
+
+```
+petshop-prieziura.php  v1.0.1  6 235 B  md5 726867acabaa1067ad8d6ae19e0c9983
+kopija: deploy/petshop-prieziura.php
+```
+
+---
+
+### S1105 — ATSTATYMO I SVARIA BAZE RECON (H084)
+
+DOD-19 8 skyriaus antras raudonas punktas. Ismatuota, o ne speta:
+
+```
+DB              gyvunai2_nbpe1 · MariaDB 10.6.17 · 194 lenteles
+vartotojas      gyvunai2_nbpe1
+teises          GRANT USAGE ON *.*
+                GRANT ALL PRIVILEGES ON `gyvunai2_nbpe1`.*
+matomos DB      gyvunai2_nbpe1, information_schema  (VISKAS)
+lenteles kurti  TAIP
+BAZE KURTI      NE: Access denied to database 'gyvunai2_rtst_h084'
+```
+
+**Registro teiginys „WP vartotojas neturi teises kurti nauju DB\"
+PATVIRTINTAS empiriskai**, ne is atminties.
+
+**★ ANTRAS DOD-19 NEAISKUMAS UZDARYTAS ★**
+
+```
+bazes koduote    latin1
+bazes collation  latin1_swedish_ci
+```
+
+DOD-19 3.3 rase: „nepatikrinta, ar bazes numatytoji latin1\". **Patikrinta:
+TAIP, latin1.** Lenteles utf8mb4. Vadinasi atstatant i SVARIA baze dump'as
+sukurtu ja latin1 koduote, ir lietuviskos raides galetu nukentėti — nebent
+naujoji baze is anksto sukuriama utf8mb4.
+
+**Ko reikia is savininko (DirectAdmin, ~2 min):**
+
+```
+1. sukurti baze   gyvunai2_rtst   koduote utf8mb4 / utf8mb4_unicode_ci
+2. priskirti prie jos ESAMA vartotoja gyvunai2_nbpe1 su visomis teisemis
+```
+
+Naujo vartotojo NEREIKIA — kitaip reiketu ir naujo slaptazodzio wp-config'e.
+
+Salutinis: `backup-run.php` (200 B) ir `watch-run.php` (143 B) tebera
+`public_html/dev` saknyje — cron'ai juos kviecia pilnu keliu (S1097).
+
+---
+
+### S1106 — SALUTINIS RADINYS: PLUGINU LIMITAS VIRSYTAS
+
+```
+aktyvus pluginai   27      TZ 11.4 riba: <= 25
+mu-plugins failai  56
+```
+
+Kandidatai perziurai: `wordpress-importer` (vienkartinis), `wpforms-lite`,
+`woo-update-manager`. **Nedaryta — savininko sprendimas.**
+
+Pilnas sarasas H081 rezultate (`screenshots/h081.json`).
+
+---
+
+### NEUZDARYTA
+
+```
+🔴 Q-PERKEL — kaip petshop.lt ras svetaine (SSH zmogus)
+🔴 GitHub PAT iki 2026-08-26
+🔴 D7/D8 — seni klientai ir uzsakymu istorija (kietas terminas 10-15)
+🟡 atstatymas i svaria baze — laukia savininko DirectAdmin veiksmo (S1105)
+🟡 akla zona po perkelimo — silomas subdomenas naujaisiais keliais (S1101)
+🟡 27 aktyvus pluginai vs riba 25
+🟡 greicio ir saugos matavimai (2 matavimai, ~1,5 val.)
+```
+
+Auksciausias decision Nr.: **S1106.**
+
+---
+
+## 2026-08-19 (vakaras) — INFRASTRUKTURA: DNS, SSL, KATALOGAI [S1087-S1098]
+
+Diena baigta klausimu, kuris atrode techniska smulkmena, o pasirode esas
+paskutinis neatsakytas perjungimo klausimas: **kaip petshop.lt ras svetaine.**
+
+---
+
+### S1087 — DOD-19 ROLLBACK: JAU EGZISTAVO
+
+Registre pazymeta „nepradeta". Realiai `dokumentai/DOD-19_rollback.md` v1.0
+parasytas 2026-08-17, 8 770 B. **Trecias kartas per dvi dienas, kai lentele
+melavo.**
+
+Atnaujinta iki **v2.1** (10 866 → 13 392 B): §7 klausimai atsakyti, §0
+neaiskumas issprestas, pridеta §7b Paysera procedura, §7c SSL, §9 vieno
+puslapio santrauka perjungimo nakciai.
+
+**DOD-19: 🔴 → ✅.** Raudonu DoD punktu liko DU: DOD-17 (beta, PO perjungimo)
+ir DOD-22 (varnele).
+
+---
+
+### S1088 — ★ SSL: SERTIFIKATAS YRA, BET PASIBAIGES 2022 M. ★
+
+```
+naujajame serveryje, petshop.lt vardu:
+   CN        petshop.lt      SAN  petshop.lt, www.petshop.lt
+   isdave    Let's Encrypt
+   galiojo   2022-10-02 → 2022-12-31      CERT_HAS_EXPIRED
+
+eShoprent (gyvoji):
+   galioja   2026-08-10 → 2026-11-08      patikima: taip
+```
+
+Jis uzstrigo 2022-aisiais, kai domenas isejo i eShoprent — Let's Encrypt
+atnaujinimas nebepasieke patikros.
+
+**Perjungus DNS be sertifikato:** kiekvienas lankytojas gautu raudona „Jusu
+rysys nera privatus". Nei Google, nei Paysera nesijungtu.
+
+**Tiekejo atsakymas (serveriai.lt, 2026-08-19):**
+```
+✅ NEMOKAMAS — svetaine talpinama ju serveryje. Mokamu (26–350 EUR/men.)
+   PIRKTI NEREIKIA.
+❌ Pries DNS pakeitima isduoti NEGALIMA.
+✅ TTL 3600 → 300 galima; isigaliojimas tarp TTL ir dvigubo TTL → 5–10 min.
+```
+
+---
+
+### S1089 — DNS ZONA: „SERVERIAI.LT NE IV.LT" BUVO NETIKSLU
+
+```
+petshop.lt NS   ns1–ns4.serveriai.lt
+SOA hostmaster  hostmaster.iv.lt        ← iv.lt adresas serveriai.lt zonoje
+iv.lt NS        ns1–ns4.serveriai.lt    ← ir pats iv.lt ten pat
+```
+
+**`serveriai.lt` ir `iv.lt` yra TA PATI imone** — UAB „Interneto vizija".
+Zona valdoma per ta pacia iv.lt paskyra (UAB „Avesa"). Registro teiginys
+apie du skirtingus tiekejus buvo klaidingas.
+
+**Antras radinys:** `www.petshop.lt` yra **CNAME**, ne A irasas.
+```
+petshop.lt      A      213.226.161.16 · .15   TTL 3600
+www.petshop.lt  CNAME  → petshop.lt
+```
+**Keisti reikia DVIEJU irasu, ne keturiu.**
+
+---
+
+### S1090 — DOMENU BUKLE ISMATUOTA
+
+```
+Talpinamos svetaines (planas Universalus, IP 79.98.29.24):
+   avesa.lt      9 483 GB srauto · 1 subdomenas (dev.avesa.lt 9 159 GB)
+   gyvunai.lt       11 GB        · pagrindinis
+   petshop.lt    0,0038 GB       · „nukreipta i IP 213.226.161.16"
+   sushimo.lt   12 050 GB
+Svetaines: NERIBOJAMA (patalpinta 4 vnt.)
+```
+
+**`petshop.lt` JAU pridetas prie plano** — Aives spejimas „tiketina, kad
+nepridetas" buvo klaidingas. Pridеti nieko nereikia, plano riba nera.
+
+Bet jo katalogas praktiskai tuscias (4 MB srauto), o parduotuve gyvena
+`avesa.lt/public_html/dev`.
+
+---
+
+### S1091 — ★ KELIU AUDITAS: WORDPRESS PUSE PARUOSTA ★
+
+Pries bet koki perkelima ismatuota, kiek fiksuotu keliu yra sistemoje:
+
+```
+wp-config     ABSPATH = __DIR__ . '/'      ← skaiciuojamas PATS
+              WP_HOME, WP_SITEURL          ← NENUSTATYTI
+mu-plugins    0 fiksuotu keliu             ← visas kodas per konstantas
+options       11 irasu (kesas, sriftai, ps_* zurnalai)
+postmeta      8 irasai
+snippetai     6
+```
+
+**Perkelus WordPress persitvarkys pats.** Pataisyti reikes vos kelias
+eilutes. Tai atsiperka uz tai, kad visas musu kodas rasytas su
+`WPMU_PLUGIN_DIR` ir `ABSPATH`, ne su tekstiniais keliais.
+
+---
+
+### S1092 — DIRECTADMIN: KATALOGO NURODYTI NEIMANOMA
+
+Patikrinta ekranais:
+```
+Subdomenu valdymas → avesa.lt:  dev.avesa.lt — TIK sukurti/istrinti,
+                                dokumentu saknies keisti NEGALIMA
+Parkuojami domenai:             rodytu i public_html, ne i public_html/dev
+                                + sinonimas = DU adresai tam paciam turiniui
+                                (griautu visa SEO sluoksni su vienu canonical)
+```
+
+**Vadinasi per valdymo pulta `petshop.lt` nukreipti i `dev` katalogа
+neimanoma.** Lieka failu perkelimas.
+
+---
+
+### S1093 — ★ AI AGENTO ATSAKYMU KOKYBE ★
+
+Per pokalbi su serveriai.lt AI agentu („Aive") gauti PENKI skirtingi
+sprendimai, is kuriu:
+- trys prasidejo zodziu „tiketina" (spejimas, ne patikra)
+- vienas KLAIDINGAS: siule konfiguruoti i `gyvunai.lt` kataloga, nors
+  svetaine yra `avesa.lt`
+- vienas PRIESTARAVO SAU: „domeno pavadinimo keisti negalima" + „galima
+  pervadinti"
+- paskutinis siule archyvuoti ir IKELTI archyva, tuoj pat pridurdamas, kad
+  per narsykle galima tik iki 256 MB (archyvas butu 2–3 GB)
+
+**Ne viename atsakyme neivertinta esmine detale — poaplankis `dev`.**
+
+**Isvada: sio klausimo su AI agentu nesprеsti. Reikia zmogaus su SSH.**
+
+---
+
+### S1094 — TIKRIEJI DYDZIAI (mano matavimas buvo neteisingas)
+
+Snippetas H080 rode „uploads 3 300 MB, 60 002 failai" — bet skaitiklis buvo
+apribotas ties 60 000. Realybe:
+
+```
+public_html          9,75 GB
+   wp-content        9,67 GB
+      uploads        9,24 GB   ← 95 %
+      plugins         360 MB
+      themes           39,6 MB
+      languages        22,6 MB
+      mu-plugins       19,8 MB
+   wp-admin           12,5 MB
+   wp-includes        65,7 MB
+```
+
+**Be `uploads` visa svetaine sveria 442 MB.**
+
+---
+
+### S1095 — ★ UPLOADS: 5 GB YRA NEREIKALINGI ★
+
+```
+2026                  3,95 GB   ← tikrosios nuotraukos
+ShortpixelBackups     4,02 GB   ← ORIGINALAI pries suspaudima
+petshop-legacy         710 MB   ← senos platformos likuciai
+wpallimport            258 MB   ← importu laikini failai
+petshop-private-logs   122 MB   ← zurnalai
+```
+
+**`ShortpixelBackups` 4,02 GB** — kopijos, kad butu galima atsaukti
+optimizavima. Svetainei nereikalingos, ne vienas lankytojas ju nemato.
+
+Kartu su `petshop-legacy` ir `wpallimport` — **apie 5 GB, kuriu perkelti
+nereikia**. Isvalius liktu ~4,5 GB vietoj 9,7.
+
+**RADINYS, KURIO NEPAAISKINU:** `uploads` SAKNYJE guli simtai `.webp` failu
+atsitiktiniais vardais (`02606443c962...-lossy-NgH3lt.webp`), visi sukurti
+2026-06-12 tarp 03:51 ir 06:46, bent 8 puslapiai. Atrodo kaip nutrukusio
+optimizavimo palikimas. **Ar naudojami — NETVIRTINU.**
+
+---
+
+### S1096 — ★ INODE: 66 % ★
+
+Savininko klausimas: „Inode nenulus?"
+
+```
+Inode kiekis   263 632 / 400 000       66 %   liko 136 368
+```
+
+**Perkelimas inode NEPADIDINS** — failai persikelia, skaicius tas pats.
+
+**BET KOPIJAVIMAS PADVIGUBINTU** — 400 tukstanciu riba butu pasiekta,
+serveris nustotu priimti naujus failus, WordPress negaletu ikelti nuotrauku.
+
+> **OPERACIJA PRIVALO BUTI „PERKELTI", NE „KOPIJUOTI".**
+
+Antra priezastis valyti pries perkelima: `ShortpixelBackups` ir
+`wpallimport` valgo inode, o vieta yra „unlimited", INODE — NE.
+
+**Silomas papildymas `petshop-sargas.php`:** sekti inode. Isseme riba,
+svetaine sustoja be jokio ispejimo, o simptomai atrodo kaip visai kas kita.
+
+---
+
+### S1097 — SALUTINIS RADINYS: CRON KELIAI
+
+`public_html/dev` saknyje guli `backup-run.php` ir `watch-run.php` — musu
+backup sistemos failai. **serveriai.lt cron'as kviecia juos PILNU KELIU.**
+Po perkelimo tie cron'ai rodys i sena vieta.
+
+Iraso i perjungimo sarasa greta seSiu WP All Import cron'u.
+
+**Ir dar:** po perkelimo `dev.avesa.lt` nustos veikti → **TILTAS NUTRUKS**,
+kol nepataisysim adreso. Perkelima planuoti tada, kai nera skubiu darbu.
+
+---
+
+### S1098 — PAMOKOS
+
+- **★ Lentele melavo TRECIA karta per dvi dienas. ★** §7/§12, DOD-13/20,
+  dabar DOD-19. Kiekviena karta savininkas pastebejo pirmas.
+- **★ AI agentas su „tiketina" nera saltinis. ★** Penki atsakymai, vienas
+  klaidingas, vienas priestaraujantis sau.
+- **Savo matavimo ribas tikrinti.** `60 002 failai` buvo skaitiklio riba,
+  ne tikrove.
+- **Perkelti ≠ kopijuoti, kai inode 66 %.**
+- **Pries judinant 9,7 GB — issiaiskinti, kiek is ju reikalinga.**
+- **„Dvi minutes" pasakyta per anksti** — 60 tukstanciu failu, pasleptu
+  failu ir tikslaus pazymejimo narsykleje darbas tokiu nera.
+
+---
+
+### NEUZDARYTA
+
+```
+🔴 KAIP petshop.lt ras svetaine — vienintelis likes perjungimo neaiskumas
+   → failu perkelimas per SSH (palaikymo zmogus, ne AI agentas)
+🟡 ar valyti ShortpixelBackups (4 GB) pries perkelima — NEGRIZTAMA
+🟡 .webp failai uploads saknyje — kilme neaiski
+🟡 inode sekimas i petshop-sargas.php
+🟡 backup-run.php / watch-run.php cron keliai po perkelimo
+🔴 GitHub PAT iki 2026-08-26
+```
+
+Auksciausias decision Nr.: **S1098.**
+
+---
+
+## 2026-08-19 (popiet) — PAYSERA: KAS DEGA IR KAS NE [S1079-S1086]
+
+Diena baigta tuo, kuo turejo prasideti: ne spejimu apie mokejima, o bandymu.
+Rezultatas — mokejimas NEBUVO neveikiantis. Jis buvo NEISMATUOTAS.
+
+---
+
+### S1079 — ★ TERMINU LOGIKA: SAVININKO ARGUMENTAS PAKEITE DATA ★
+
+Savininkas: „nuo 6-7 d. prasideda didesni pirkimai (atlyginimai), 10-14 d. —
+pikas. Rugsejo 1-2 butu geriau."
+
+**Tai geriausias argumentas is visos dienos.** Perjungti pries pika reiskia,
+kad klaida ivyks brangiausiu metu. Perjungti menesio pradzioje — kai klaida
+kainuoja maziausiai. Plius savaite su gyva sistema ir mazu srautu yra
+geriausias imanomas beta testas.
+
+**Perskaiciuota: rugsejo 1-2 yra ne rizikingesne, o SAUGESNE data.**
+
+---
+
+### S1080 — DOD-17 BETA TESTAS NERA KLIUTIS PRIES PERJUNGIMA
+
+Savininkas: „kaip as testiniam rezime padarysiu realius uzsakymus? Nera logikos."
+
+**Teisus.** TZ numato beta 09-24, kai parduotuve JAU gyva ties petshop.lt, tik
+apie ja dar nezino platuma. Beta klientai uzsako TIKRAI. As ji vakar priskyriau
+prie „ko truksta iki starto" — klaidingai.
+
+**Bet radau tikra problema: TZ turi DU skirtingus grafikus.**
+```
+Marketingo planas:  09-24 soft launch · 10-01 viesas launch
+Etapu lentele:      09-30 launch readiness · 10-15 go-live
+```
+Savininkas paaiskino: spalio 1-15 buvo MAX terminas, ne tikslas.
+
+---
+
+### S1081 — ★ MANO MONITORINGO VERTINIMAS BUVO KLAIDINGAS ★
+
+Savininkas: „ar tikrai? man atrodo mes kazka dareme".
+
+**Tikrai.** §8l (2026-08-17): DOD-13 UZDARYTAS, `petshop-sargas.php` v1.2,
+DOD-20 laikrodis paleistas. **DoD lentele tiesiog nebuvo atnaujinta.**
+
+Ta pati klaida kaip vakar su §7/§12: skaiciau lentele, ne naujausia skyriu.
+Ir kaip tik vakar i dokumentus irasiau taisykle „busena skaityti tik is
+naujausio skyriaus" — o siandien pats jos nesilaikiau.
+
+Antra klaida: „7 dienos suejo 08-24" — pridejau savaite prie neteisingos datos.
+Serija paleista 08-17, uzsidaro 08-24. Savininkas ir cia pataise.
+
+---
+
+### S1082 — MONITORINGAS PATIKRINTAS GYVAI
+
+```
+petshop-sargas.php   15 389 B · klase pakrauta · 2026-08-17 19:23
+ps_sargas_klaidos    18 irasu · 11 007 ivykiu · raso IKI SIOL
+cron                 59 suplanuoti · 0 veluoja
+frontas              200 · 1,5-2,4 s
+```
+
+**DOD-02/03 nebe „nematuojama":**
+```
+deprecated  11 parasu  10 953 ivykiai
+warning      5             50
+fatal        2              4
+```
+
+**Abi fatal istirtos:**
+- `Allowed memory size 268 MB exhausted` — URL `/feed/kaina24/`, 08-17 23:12.
+  Ne musu operacija, o feed'o generavimas. **Po feed v2.2.0 pataisos
+  NEPASIKARTOJO NE KARTO.** PHP limitas 256 MB, dabar naudojama 118.
+- `Call to undefined function exec()` — Claude paleidimas, `exec()` serveryje
+  isjungtas. Nekalta.
+
+**Realiu kritiniu klaidu: 0.**
+
+**Radinys:** `postit` („Post codes by postit.lt") generuoja 9 394 is 11 007
+ispejimu — 85 %. PHP 8.3 nesuderinamumas. Isjungus zurnaluose liktu ~1 600
+irasu vietoj 11 000, ir realios problemos taptu matomos.
+
+---
+
+### S1083 — DNS MODELIS: SAVININKO SUPRATIMAS TEISINGAS
+
+Savininkas: „nuemu nukreipima, migruojam, o jei nepavyks — griztam i eShoprent?
+Jie juk nieko nezinos."
+
+**Taip, butent taip ir veikia.** DNS yra rodykle; eShoprent serveris lieka
+gyvas ir nepaliestas, tik pas ji niekas neuzeina.
+
+**Keturi niuansai:**
+```
+1. A irasu DU (213.226.161.16 IR .15) — keisti ABU, kitaip srautas skyla
+2. TTL 3600 -> 300 bent para PRIES; kitaip grizimas trunka valanda
+3. SSL sertifikatas petshop.lt vardui naujame serveryje
+4. Grizimas grazina SVETAINE, bet ne DUOMENIS — uzsakymai lieka toje bazeje,
+   kurioje atejo
+```
+
+**Sutartis su eShoprent iki 2026-10-15** — penkios savaites atsarginio kelio,
+jei perjungiama rugsejo pradzioje. Tai is esmes panaikina „tasko be grizimo".
+
+---
+
+### S1084 — ★ PAYSERA: REALUS BANDYMAS ★
+
+Paruosta pasleptа virtuali preke 1 EUR (virtuali — kad neprisidetu pristatymas),
+`test_mode` isjungtas, `log_level` = debug.
+
+Kasoje suma **2,21 EUR**: preke 0,83 be PVM + mazo krepselio mokestis 1,00 +
+PVM 0,38. Pristatymas 0,00 (virtuali).
+
+**Paysera atmete:**
+```
+0x13 bad_referer — „adresas skiriasi nuo projekte patvirtintu adresu"
+```
+
+Projekte 29276 irasytas `petshop.lt`, uzklausa atejo is `dev.avesa.lt`.
+**Iki pinigu nepriejo.** Apsauga, ne gedimas.
+
+**KAS VEIKIA (irodyta):** uzsakymas 35003 sukurtas PRIES nukreipima, 2,21 EUR,
+`pending`, `payment_method_title` = „Mokejimas internetu". Nepavykus mokejimui
+liko `pending`, netapo apmoketu. Grandine iki Paysera veikia.
+
+---
+
+### S1085 — ★ MANO PRIELAIDA BUVO KLAIDINGA ★
+
+Pasiuliau „prideti dev.avesa.lt prie patvirtintu adresu — paprastai galima
+nurodyti kelis". Savininkas nerado.
+
+**Tai buvo prielaida, ne zinojimas.** Paysera projekte adresas greiciausiai
+VIENAS laukas, ne sarasas. Pasiunciau ieskoti to, ko gali nebuti.
+
+Savininko sprendimas: **Paysera nustatymu NEKEISTI**, gyvos parduotuves
+neliesti, rizika prisiimti. Blogiausias atvejis — keliu dienu velavimas.
+
+---
+
+### S1086 — PERJUNGIMO NAKTIES PROCEDURA (UZRAKINTA)
+
+```
+1. DNS pakeitimas (ABU A irasai)
+2. TIKRINIMAS PRIES SKELBIANT — 2,21 EUR pirkimas jau ties petshop.lt
+      veikia            -> uzdaryta
+      callback nuluzta  -> pataisyti callbackurl projekte, pakartoti
+3. Tik po sekmingo pirkimo — skelbiam
+```
+
+**NELEIDZIAMA** perjungti ir palikti mokejima nepatikrinta iki ryto.
+
+**Salutiniai radiniai:**
+- Kasoje „Mazo krepselio mokestis" rodomas DU kartus (1,21 su PVM ir 1,00 be).
+  Skaiciuojama teisingai, bet klientui atrodo kaip dvigubas mokestis. Tai
+  tiksliai ta vieta, kur metami krepseliai. **Sutvarkyti pries launch.**
+- `test_mode` GRIZO i `yes` savaime po to, kai buvo nustatytas `no` ir
+  patikrintas. Kas grazino — neaisku. **Perjungimo nakti tikrinti DU kartus.**
+
+---
+
+### PAMOKOS
+
+- **★ Lentele meluoja. Busena — tik is naujausio skyriaus. ★** Antra karta per
+  dvi dienas. Vakar §7/§12, siandien DOD-13/20.
+- **★ „Paprastai galima" nera zinojimas. ★** Pasiulymas, remiantis tuo, kaip
+  sistemos „paprastai" veikia, kainavo savininkui laika.
+- **Savininko verslo logika > mano rizikos vertinimas.** Atlyginimu ciklas
+  pakeite perjungimo data i saugesne, ne rizikingesne.
+- **Neveikiantis ir neismatuotas — skirtingi dalykai.** F-PSR buvo vadinamas
+  kritiniu keliu; realiai tai konfiguracijos perkelimas su keturiais
+  patikrinimais.
+- **Testine preke virtuali** — kitaip prisideda pristatymas ir suma nebe ta.
+
+---
+
+### NEUZDARYTA
+
+```
+🟡 F-PSR — tikrinamas perjungimo nakti (§8v procedura)
+🟡 Q-PSR3 — pasiziureti projekto 29276 accepturl/cancelurl/callbackurl
+🟡 Q-KREPS — dvigubas mazo krepselio mokestis kasoje
+🔴 DOD-19 rollback planas — nepradeta, MANO pusеje
+🟡 DOD-13 — lieka isorinis uptime (UptimeRobot), savininko pusе
+🟡 postit pluginas — 85 % visu PHP ispejimu
+🔴 GitHub PAT iki 2026-08-26
+```
+
+Auksciausias decision Nr.: **S1086**.
+
+---
+
+## 2026-08-19 (priespiet) — SEO SLUOKSNIS UZDARYTAS [S1069-S1078]
+
+Paskutiniai penki punktai. Du is ju pasirode maziau problemiski, nei buvo
+uzrasyta, ir tai svarbiau uz pati darba: **atviru klausimu sarasas buvo
+netikslus, nes remesi mano prielaidomis, o ne patikra.**
+
+---
+
+### S1069 — ★ MANO ATVIRU KLAUSIMU SARASAS BUVO NETIKSLUS ★
+
+Savininkas: „kazka tu cia painioji, patikslink kokie darbai seo dar nepadaryti".
+Teisus. Sarase buvo sumaisyti padaryti, nepadaryti ir NEPATIKRINTI dalykai.
+
+Atlikta pilna busenos patikra (H066) — ir du „raudoni" punktai iskart nukrito.
+
+---
+
+### S1070 — SERIMO SKAICIUOKLE NEDINGO
+
+Anksciau uzrasyta: „🔴 /sunu-maisto-skaiciuokle puslapio dev'e NERANDU".
+
+**Netiesa.** Ji yra straipsnyje `suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti`
+(ID 14890, „Kiek maisto duoti suniui? Tiksli skaiciuokle ir auditas").
+
+Senoje svetaineje ji buvo atskiras puslapis, naujoje ideta i straipsni. Tad tai
+buvo ne dingusi sistema, o **trys nuorodos i sena adresa**. Mano „🔴" buvo per
+grieztas, nes ieskojau pagal slug, o ne pagal turini.
+
+---
+
+### S1071 — 6 SLUG KONFLIKTAI: REALUS TIK VIENAS
+
+Patikrinus prekiu skaicius:
+
+```
+SPRENDIMAI            0 prekiu
+PASIULYMAI            0
+Naujas suniukas       0
+Naujas kaciukas       0
+Jautrus virskinimas   0
+DAUGIAU=PIGIAU        4   <- vienintele netuscia
+```
+
+`noindex_empty_taxonomies` ijungtas (S1006), tad penkios tuscios kategorijos i
+indeksa nepatenka ir konkuruoti negali. **Realus konfliktas — vienas.**
+
+Dev'e to patikrinti negalima, nes viskas noindex; tvirtinta is nustatymo, ne is
+stebejimo. Title vis tiek nustatyti visoms sesioms poroms — pigus draudimas.
+
+---
+
+### S1072 — PRADINIO PUSLAPIO META IS SAVININKO ZODZIU
+
+Pradinio puslapio tekstas jau buvo parasytas savininko:
+
+> Prekes augintiniui pagal realu poreiki. Maistas, prieziura ir sprendimai
+> sunims, katems bei kitiems augintiniams. Nuo 2010 m. padedame issirinkti
+> ne pagal reklama, o pagal sudeti, gamintoja ir praktini naudojima.
+
+Is to ir sudeta, nieko neisgalvojant:
+
+```
+title: Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt
+desc:  Maistas, priežiūra ir sprendimai šunims, katėms ir kitiems augintiniams.
+       Nuo 2010 m. padedame išsirinkti pagal sudėtį, o ne pagal reklamą.  (138 zn.)
+```
+
+Buvo: „Pagrindinis (test) - Petshop.lt".
+
+---
+
+### S1073 — 12 TITLE SESIOMS POROMS
+
+Principas: **puslapis paaiskina, kategorija parduoda.**
+
+```
+daugiau-pigiau   psl „Daugiau = pigiau: kaip veikia kiekio nuolaidos"
+                 kat „Didesnio kiekio pasiulymai"
+jautrus-virsk.   psl „Jautrus virskinimas: ka rinktis augintiniui"
+                 kat „Maistas jautriam virskinimui"
+naujas-suniukas  psl „...ka pasiruosti pirmoms dienoms"
+                 kat „Prekes naujam suniukui"
+```
+
+Gyva patikra patvirtino visas poras.
+
+---
+
+### S1074 — PASKUTINES SENOS NUORODOS
+
+```
+pakeista 16 nuorodu, 13 irasu
+3 nuorodos i skaiciuokle -> /suns-mitybos-auditas-.../
+liko 3
+```
+
+**Liko del sugadinto HTML sename saltinyje:**
+```
+/triusio-ausys-baltos-250-g</em
+```
+
+Adreso viduje istriges `</em`. Automatika ju NEIMA samoningai — taisyti sugadinta
+zyma spejimu butu blogiau nei palikti. Trys prekiu aprasymai, zmogaus ranka.
+
+---
+
+### S1075 — OG:IMAGE
+
+Savininkas atsiunte logotipa 473×191 JPEG. **Per mazas** — dalijimosi paveikslui
+reikia 1200×630, mazesnius Facebook ir LinkedIn ignoruoja arba rodo miniatiura.
+
+Sudetas 1200×630 PNG: baltas fonas (atitinka logotipo fona), logotipas centre
+864×348 (72 % plocio), LANCZOS. Didinimas nesimato, nes logotipas — plokscios
+spalvos be smulkiu detaliu.
+
+```
+attachment ID 35001 · 139 964 B · atsidaro 200
+og:image pradiniame ✅ · kategorijoje ✅ · straipsnyje — SAVAS paveikslas ✅
+```
+
+Paskutinis patvirtina, kad logika teisinga: numatytasis isijungia tik ten, kur
+puslapis savo neturi.
+
+**Adresas absoliutus (`https://dev.avesa.lt/...`) — cia isimtis**, nes socialiniai
+tinklai santykinio kelio neapdoroja. **Perjungimo diena perrasyti i petshop.lt.**
+
+---
+
+### S1076 — SEO SLUOKSNIO BUKLE
+
+```
+Rank Math              ✅  sitemap 5 failu
+prekiu title           ✅  2 609
+prekiu aprasymai       ✅  2 609
+kategoriju tekstai     ✅  56
+kategoriju meta        ✅  56
+301 danga              ✅  95 % (zemelapis 1 099)
+straipsniu nuorodos    ✅  231 / 234
+straipsniu nuotraukos  ✅  26
+rasmenys               ✅  0 sugadintu
+pradinio psl. meta     ✅
+slug konfliktai        ✅  12 title
+og:image               ✅
+```
+
+---
+
+### S1077 — KAS NEIVYKDYTA IR KODEL
+
+```
+3 nuorodos su </em adrese   sugadintas senas HTML, ranka
+blog_public = 0             PERJUNGIMO dienos veiksmas (DoD #22)
+og:image domenas            perjungimo diena i petshop.lt
+```
+
+**Be blog_public=1 nе vienas is siu darbu Google nepasiekia.**
+
+---
+
+### S1078 — PAMOKOS
+
+- **★ Atviru klausimu sarasas privalo buti PATIKRINTAS, ne prisimintas. ★** Du
+  „raudoni" punktai nukrito po vienos patikros; vienas is ju buvo mano paties
+  per grieztas teiginys.
+- **Ieskoti pagal turini, ne tik pagal slug.** Skaiciuokle „dingo" tik todel, kad
+  ieskojau `post_name LIKE '%skaiciuokl%'`.
+- **Tuscia kategorija nekonkuruoja** — `noindex_empty_taxonomies` iskart sumazino
+  6 konfliktus iki 1.
+- **Meta tekstus imti is savininko jau parasyto turinio**, ne kurti is naujo.
+- **og:image = absoliutus adresas.** Vienintele vieta, kur santykinis netinka.
+- **Logotipas 473 px nera og:image** — reikia 1200×630.
+
+---
+
+### NEUZDARYTA (visas projektas)
+
+```
+🔴 3 nuorodos su sugadinta HTML zyma — ranka
+🟡 komerciniai straipsniai poz. 16-39 (10+ tukst. parodymu) — pakelti
+🟡 11 URL (139 clicks) be nukreipimo
+🟡 367 silpni prekiu aprasymai + nepavykes kategorinis pjuvis (S1012)
+🟡 MyISAM -> InnoDB (177 lenteles) — laukia DB eksporto
+⏸ PERJUNGIMO DIENA: blog_public=1 · og:image domenas · Site URL ·
+   6 cron uzduotys · feed URL resubmit · AVPN/IAPV reset
+🔴 GitHub PAT iki 2026-08-26 — RAIMIS
+```
+
+Auksciausias decision Nr.: **S1078**.
+
+---
+
+## 2026-08-19 (rytas) — STRAIPSNIAI: NUORODOS, NUOTRAUKOS, RASMENYS [S1053-S1068]
+
+Diena pradeta nuo klausimo „ar rasyti tris trukstamus blog straipsnius", o baigta
+tuo, kad straipsniu turinys apskritai buvo sugadintas trimis skirtingais budais.
+Nе vienas is ju nebutu matomas, kol nebutu perjungtas domenas.
+
+---
+
+### S1053 — ★ TRYS „TRUKSTAMI" STRAIPSNIAI NEREIKALINGI ★
+
+TZ juos vardijo kaip P0 nuo liepos. GSC duomenys:
+
+```
+sterilizuotu-kaciu-maistas                      10 clicks   876 imp  poz 24,8
+maistas-sterilizuotai-katei-su-antsvorio...      4 clicks   166 imp  poz 10,6
+royal-canin-kaciu-maistas                        0 clicks   258 imp  poz 30,2
+```
+
+**Per 16 menesiu — 14 paspaudimu.** Ne 14 tukstanciu. Savininkas sustabde pries
+pradedant rasyti; Q-BLOG3 uzdarytas kaip nereikalingas.
+
+**Savininko ivertinimas apie veisliu straipsnius patvirtintas duomenimis:**
+588 URL, 7 418 clicks, 489 846 parodymu — o pirkimu is ju, pagal ataskaita, 0.
+
+**Bet greta matosi kitas sluoksnis** — perkanti intencija:
+```
+suns-serimo-lentele-gramais     876 cl  poz  7,4
+geriausias-sausas-sunu-maistas  228 cl  poz 39,5
+hipoalerginis-maistas-sunims    108 cl  poz 16,5
+```
+Du is ju kabo antrame ir treciame Google puslapyje su desimtimis tukstanciu
+parodymu. Pakelti juos pigiau nei rasyti nauja.
+
+---
+
+### S1054 — MANO ANALIZE BUVO KLAIDINGA DU KARTUS
+
+Pirmas bandymas (HTML bloko istraukimas): „ne vienos vidines nuorodos".
+Antras bandymas su kitu selektoriumi: kitas rezultatas. Istraukimas nepatikimas.
+
+**Sprendimas: imti turini per `wp/v2/posts` ir `wp_posts` tiesiogiai, ne parsinti
+temos HTML.** Tada paaiskejo tikras vaizdas (S1055).
+
+---
+
+### S1055 — VEISLIU STRAIPSNIAI YRA `page`, NE `post`
+
+`wp/v2/posts` grazino tik 8 irasus — savininko komercinius tekstus. Veisliu
+straipsniai guli tarp 59 `page` tipo irasu:
+
+```
+taksas             ID 3206  page  11 841 zn.  2026-07-07
+jorksyro-terjeras  ID 3205  page  18 173 zn.
+```
+
+Antrastes sutampa su senosios svetaines H1 simbolis i simboli — **perkelimo daryti
+nereikejo**, jie jau buvo perkelti liepos 7 d.
+
+---
+
+### S1056 — 287 NUORODOS I SENA DOMENA
+
+```
+puslapiai   22 irasai        straipsniai 3        prekes 10
+viso //petshop.lt/ nuorodu: 283
+```
+
+Mano ankstesnе isvada „nera vidiniu nuorodu" buvo klaidinga — jos BUVO, tik
+parasytos absoliuciai i sena domena, tad skaiciavosi kaip isorines.
+
+**Ir jos rasytos SENOS strukturos adresais** (`petshop.lt/sunims/maistas-sunims`),
+tad po perjungimo veiktu tik per 301 suoli.
+
+---
+
+### S1057 — SPRENDIMAS: SANTYKINES NUORODOS
+
+Savininkas norejo `petshop.lt` absoliuciu, kad po launch'o nieko nereiktu keisti.
+Pasiulyta alternatyva, kuri ta pati tiksla pasiekia geriau:
+
+```
+https://petshop.lt/kategorija/sunims/   po launch veikia · dev'e veda i SENA svetaine
+/kategorija/sunims/                     po launch veikia · dev'e VEIKIA
+```
+
+Santykine po perjungimo savaime tampa petshop.lt. Savininkas: „svarbu, kad
+nuorodos veiktu" — pasirinktos santykines, nes leidzia patikrinti PRIES launch'a.
+
+---
+
+### S1058 — 150 NUORODU SUTVARKYTA
+
+```
+216 unikaliu nuorodu 25 straipsniuose
+   issprеsta per 301 zemelapi   150
+   liko                          66
+```
+
+Gyvai po taisymo: `jorksyro-terjeras` 15 nuorodu i kategorijas (buvo 0),
+`taksas` 12, `monoproteininis-maistas` 7 kategorijos + 3 prekes + 5 gamintojai.
+
+---
+
+### S1059 — ★ NUOTRAUKOS IS SENOS SVETAINES ★
+
+66 neissprеstos skilo i tris grupes, ir viena is ju buvo netiketa:
+
+```
+26  PAVEIKSLAI  /image/cache/... — tik dviejuose Josera straipsniuose
+22  kategoriju keliai
+22  prekes, kuriu slug pasikeitе
+```
+
+Abu Josera straipsniai (110 clicks, 17 tukst. parodymu) **visas nuotraukas kroveе
+is senosios svetaines**, o naujoje mediatekoje ju nebuvo **ne vienos**. Perjungimo
+diena abu butu likе be paveikslu.
+
+**Perkelta:**
+```
+rasta senoje    26/26 pasiekiamos
+importuota      26/26 nepavyko 0
+adresai pakeisti 28 vietose
+patikra: 28/28 atsidaro is naujos mediatekos
+```
+
+Adresai irasyti santykiniai, tad domeno keitimas ju nepalies.
+
+---
+
+### S1060 — PRIEZIUROS PRIEMONES: KONTEKSTAS, NE PANASUMAS
+
+`/sunims/prieziuros-priemones` kartojosi 15 veisliu straipsniu. Savininkas
+pasiule vesti i dvi kategorijas. **Perskaicius KONTEKSTA paaiskejo, kad ne:**
+
+```
+• Šukos ar šepečiai – priemonės jų kailio priežiūrai…     <- atskiras punktas
+• Sveikatos priežiūros priemonės – dantų priežiūros…      <- CIA nuoroda
+```
+
+Nuoroda sedi punkte apie dantis ir ausis, o sukos turi savo eilute greta. Tad
+vienas tikslus taikinys: **82 Higienos priemones sunims**. Pritaikyta 15/15.
+
+Patikra parode, kad sukos jau turejo savo nuoroda i **75** — sutvarkyta tarp tu 150.
+
+**Mano klaida paieskoje:** ieskojau `suk`, o kategorija rasoma `Šukos`, tad
+is pradziu maniau, kad antros kategorijos nera.
+
+---
+
+### S1061 — ★ SUGADINTI LIETUVISKI RASMENYS ★
+
+```
+patikrinta irasu   3 823
+pazeista               4      (2 928 sekos)
+   jorksyro-terjeras  1 145
+   biglis               808
+   senbernaras          770
+   miamor-is-meiles-katems 205
+prekes 0 · kategorijos 0 · terminai 0
+```
+
+Klientas maté `PavadÄlis ir antkaklis`, `Å½aislai`, `nedidelio Å«gio`.
+
+---
+
+### S1062 — BAITU TAISYMAS PAVYKO TIK IS DALIES
+
+Chirurginis perkodavimas (tik mojibake sekos, su UTF-8 validacija):
+
+```
+pataisyta 1 559 · liko 594
+```
+
+**Likusiu atkurti NEIMANOMA:** `veislÄs` turi buti `veislės`, bet antrasis baitas
+DINGO. Is `Ä` vieno negalima pasakyti, ar ten buvo `ą`, `č`, `ė` ar `į` — visos
+prasideda tuo paciu baitu. Zmogus atspеja is konteksto, algoritmas ne.
+
+**Todel spеlioti atsisakyta.**
+
+---
+
+### S1063 — TURINYS PAIMTAS IS SENOS SVETAINES
+
+Senojoje petshop.lt tie patys tekstai rodomi TAISYKLINGAI — pazeidimas ivyko
+perkeliant. Selektorius: `div.articleDescription`.
+
+```
+                    mojibake   zodziu senoje / dev'e
+jorksyro-terjeras   866 -> 0     1 652 / 1 669
+biglis              582 -> 0     1 139 / 1 164
+senbernaras         570 -> 0     1 142 / 1 170
+miamor              135 -> 0
+```
+
+Turinys neprarastas (zodziu skaicius sutampa), sumazejo tik HTML apvalkalas.
+Kiekvienam pritaikytos tos pacios nuorodu taisykles.
+
+---
+
+### S1064 — LIKUSIOS NUORODOS UZDARYTOS
+
+18 prekiu, kuriu slug pasikeitе, susietos su ju BRENDO archyvu (Josera 13,
+Prins 1 ir kt.) — zmogus randa tos pacios linijos alternatyvas. Plius 3
+transportavimo dezes.
+
+```
+pakeista 50 nuorodu 8 irasuose
+```
+
+---
+
+### S1065 — BENDRAS REZULTATAS
+
+```
+nuorodu sutvarkyta   215 / 216
+nuotrauku perkelta    26 / 26
+sugadintu rasmenu   2 928 -> 0
+```
+
+---
+
+### S1066 — 🔴 SERIMO SKAICIUOKLES PUSLAPIO DEV'E NERANDU
+
+Trys straipsniai rodo i `/sunu-maisto-skaiciuokle`. Paieska pagal `skaiciuokl`
+tarp `page` tipo irasu **nieko negrazino**.
+
+Tai gali reiksti: skaiciuokle yra kitu adresu, igyvendinta ne kaip puslapis,
+arba jos dev'e nera. NETVIRTINU nе vieno. TZ ji minima kaip veikianti sistema.
+**Patikrinti pries launch'a.**
+
+---
+
+### S1067 — PLAYWRIGHT DIEGIMAS STRINGA
+
+Vakar 1 kartas, siandien 3 is eiles (~16-20 min., zingsnis 4, uzduotis
+nepradedama). Ne musu kodas.
+
+**Sprendimas:** analize perrasyta BE naršyklės — pastraipos, antrastes ir
+nuorodos matomos ir zaliame HTML arba per WP API. Naršyklė reikalinga tik ten,
+kur svarbus isdestymas pikseliais.
+
+---
+
+### S1068 — PAMOKOS
+
+- **★ Neparsinti temos HTML, kai duomenys pasiekiami per API. ★** Du bandymai su
+  skirtingais selektoriais dave skirtingus rezultatus; `wp/v2` ir `wp_posts` —
+  vienas atsakymas.
+- **Absoliucios nuorodos i savo domena yra spastai** — jos atrodo kaip isorines
+  ir slepiasi nuo statistikos.
+- **Santykine nuoroda po domeno keitimo persitvarko pati** — tai pigiausias budas
+  „po launch'o nieko nekeisti".
+- **Nuotraukos is seno domeno = tyliai luztantis turinys.** Niekas nesimato, kol
+  senas domenas gyvas.
+- **Kontekstas > panasumas.** Nuorodos taikini nustato sakinys, kuriame ji sedi.
+- **Sugadinto kodavimo ne visada imanoma atkurti** — kai baitas dingеs, teisingas
+  kelias yra imti sventa saltini, ne spеlioti.
+- **Lietuviskos raides paieskose:** `suk` neranda `Šukos`.
+
+---
+
+### NEUZDARYTA
+
+```
+1. 🔴 /sunu-maisto-skaiciuokle — puslapio dev'e nerandu, 3 straipsniai i ji rodo
+2. 🔴 6 slug konfliktai — vienodi title (S1051)
+3. 🔴 pradinio puslapio title „Pagrindinis (test)"
+4. 🔴 numatytasis og:image
+5. 🟡 komerciniai straipsniai poz. 16-39 — pakelti pigiau nei rasyti nauja
+6. 🟡 11 URL (139 clicks) be nukreipimo
+7. 🟡 367 silpni prekiu aprasymai
+8. GitHub PAT iki 2026-08-26 — RAIMIS
+```
+
+Auksciausias decision Nr.: **S1068**.
+
+---
+
+## 2026-08-18 (velus vakaras) — 301 SLUOKSNIS: NUO DOKUMENTO PRIE MATAVIMO [S1039-S1052]
+
+Diena baigta tuo, ka reikejo padaryti anksciau: ne perrasyti busena is dokumento,
+o ismatuoti. Rezultatas — senu adresu srauto danga 78 % -> 95 %.
+
+**Sesijos taisykle (svarbiausia is visos dienos):**
+
+> Imtis IS SPRENDIMO AIBES irodo, kad sprendimas veikia, o ne kad problema
+> issprеsta. Testuoti reikia is PROBLEMOS puses.
+
+---
+
+### S1039 — §7 vs §12 PRIESTARAVIMAS
+
+REGISTRAS turejo du nesuderinamus teiginius: §7 „44 URL = 20,5 % srauto
+neuzdengta" ir §12 „937 uzdaryti, 950 teisingi 404". Abu netikslus.
+
+---
+
+### S1040 — ★ MANO METODINE KLAIDA ★
+
+Pirma patikra (H038) еme 70 URL imti **is 301 zemelapio**. Rezultatas 69/70 —
+puikus ir bevertis: tie URL zemelapyje ir yra. Paskelbiau, kad §12 teisingas ir
+rugsеji laukia tik QA.
+
+Teisingas testas — is GSC puses. Ji parode kita vaizda (S1041).
+
+---
+
+### S1041 — TIKRAS VAIZDAS: 219 URL SU SRAUTU GRAZINA 404
+
+Patikrinti 512 GSC URL su >=3 paspaudimais (96 % viso srauto be pradinio):
+
+```
+301 -> 200      288 URL   13 275 paspaudimu
+404             219 URL    3 577
+301 -> 404        4
+```
+
+§12 teiginys „950 likusiu — prekiu nebera, 404 teisingas" NEATLAIKO. Tarp 404
+buvo kategorijos ir brendai, kurie naujoje svetaineje EGZISTUOJA:
+
+```
+382 /katems/tualetai-kraiku-semtuveliai-kilimeliai  -> Tualetai, semtuveliai
+180 /dovanos-sunims-bei-katems                       -> DOVANOS
+ 83 /prins-petfoods                                  -> Prins
+```
+
+---
+
+### S1042 — ARITMETINE SPRAGA PAAISKINTA (NEKALTA)
+
+§12 santrauka: 45+937+40+950 = 1 972 is 2 445; clicks 17 640 is 19 735.
+
+```
+pradinis puslapis    3 URL   2 099 clicks   <- nereikia 301
+index.php          216 URL     144
+su parametrais     271 URL      61
+paveikslai          61 URL       0
+```
+
+Truke 2 095 paspaudimai = pradinis puslapis (2 099). Santrauka ji tiesiog
+neitrauke. Jokio paslepto praradimo.
+
+---
+
+### S1043 — DU SARGAI, KURIU IS PRADZIU NETUREJAU
+
+Panasumo skaicius vienas NEUZTENKA.
+
+**Rusies sargas** — `/sunims/transportavimo-dezes-...` (46 clicks) gavo
+kandidata „Transportavimo dezes KATEMS" su panasumu 85,1. Sunims -> katems.
+Sargas pagavo 5 tokius.
+
+**Dydzio sargas** — reikejo normalizuoti uzrasyma (12-5 kg == 125 kg), o tada
+liko TIKRI neatitikimai:
+
+```
+Sepija 20 cm    -> siule 15 cm
+GimCat 50 g     -> siule 40 g
+Skudo 4 boksas  -> siule Skudo 1
+```
+
+Pagavo 20. Be jo butume tyliai siunte pirkejus i ne ta dydi.
+
+---
+
+### S1044 — ★ FORMATO KLAIDA: RAKTUS SPEJAU, NE PERSKAICIAU ★
+
+Pirmas 105 irasu papildymas i zemelapi **nesuveike nе vienas**. Priezastis
+rasta plugino kode:
+
+```php
+petshop_legacy_301_path()  ->  strtolower( trim( path, '/' ) )
+```
+
+Raktai laikomi BE pasvirojo bruksnio, o as irasiau su juo. Klaida mano —
+formata spejau, uzuot perskaites saltini.
+
+**IR TAI PASIRODE LAIME:** kol taisiau, radau, kad 20 is tu 105 atitikmenu buvo
+klaidingi (dydziai). Butu suveikе is karto — butume tyliai kenke.
+
+---
+
+### S1045 — BANGA 1: 85 NUKREIPIMAI
+
+```
+zemelapis 1 042 -> isimta 105 klaidingo formato -> prideta 85 -> 1 022
+patikra   84/85 veikia (1 — tinklo klaida testo metu)
+kontrole  svari, /exclusion tebeveikia per musu taisykle
+```
+
+---
+
+### S1046 — LIKUSIEJI GSC ADRESAI
+
+Patikrinti 465 URL su 1-2 paspaudimais:
+
+```
+veikia 263 (356 clicks) · 404 198 (266 clicks, 11 231 PARODYMU)
+```
+
+Paspaudimu nedaug, bet 11 tukstanciu parodymu — Google tuos adresus vis dar
+rodo. Netikrinta liko 929 URL su 21 paspaudimu kartu — nauda mazesne uz laika.
+
+---
+
+### S1047 — ★ TRECIA TA PACIA KLAIDU KLASE ★
+
+`sed 's/ps_h041/ps_h046/'` be `g` vеliavos pakeite tik PIRMA is dvieju
+atvejų vienoje eiluteje:
+
+```php
+$a=isset($_GET['ps_h046'])?$_GET['ps_h041']:'';   // visada tuscia
+```
+
+Snippetas savo signalo nesulauke. Trecias kartas per sesija, kai LOPIAU vietoj
+to, kad rasyciau is naujo (anksciau: re.sub bad escape, h032->h032b GET raktas).
+
+**TAISYKLE: paleidikli ir snippeta rasyti IS NAUJO. Niekada per sed/regex.**
+
+---
+
+### S1048 — SAVININKO PERZIURA
+
+Is 134 eiluciu savininkas uzpilde 61: 49 x 301 su mano kandidatu, 3 su savo
+taikiniu, 9 x 410, 2 pazymejo „?".
+
+Abu „?" turejo tikslu atitikmeni:
+```
+/contact             -> /kontaktai/
+/p-t-h-certech-sp-j  -> Super Benek   (Certech yra Super Benek gamintojas)
+```
+
+---
+
+### S1049 — VARDO PAIESKA VIETOJ RAIDZIU PANASUMO
+
+24 is 35 likusiu issprеsti paеmus PILNA 135 brendu ir 80 kategoriju sarasa ir
+ieskant VARDO kelyje, o ne lyginant slug raides:
+
+```
+180 /dovanos-sunims-bei-katems  -> DOVANOS       (panasumas buvo 57,1 — atmete)
+ 83 /prins-petfoods             -> Prins         (buvo 74,1 — silpna)
+ 13 /josera-mini-junior-10-kg   -> Josera
+```
+
+Prekes adresas veda i savo brendo archyva — zmogus randa tos pacios linijos
+alternatyvas.
+
+---
+
+### S1050 — GALUTINIS REZULTATAS
+
+```
+zemelapis        937 -> 1 099   (+162 per diena)
+404 su srautu    219 -> sutvarkyta 163 (2 838 clicks)
+                        palikta 404/410 45 (610) — prekiu tikrai nebera
+                        liko neisspresta 11 (139)
+SRAUTO DANGA     78 % -> 95 %
+```
+
+---
+
+### S1051 — DUBLIKATU PATIKRA: 6 SLUG KONFLIKTAI
+
+Iprastos kategorijos dublikatu NETURI — `/sunims/` tvarkingai 301 i
+`/kategorija/sunims/`. Bet 6 slug'ai turi IR puslapi, IR kategorija:
+
+```
+sprendimai · pasiulymai · naujas-suniukas · naujas-kaciukas
+jautrus-virskinimas · daugiau-pigiau
+```
+
+Abu adresai grazina 200 ir **TA PATI title**. Dev'e nematyti (viskas noindex),
+bet perjungus indeksavima jie konkuruos del tos pacios frazes.
+
+**Sprendimas pigus:** skirtingi title. Puslapiui patarimas, kategorijai prekes.
+Sesi title, ne architekturos perdarymas. Laukia savininko formuluociu.
+
+---
+
+### S1052 — 410 NEIGYVENDINTAS (SAMONINGAS SPRENDIMAS)
+
+Pluginas moka tik nukreipti. 45 adresai, pazymeti 410, graziną 404. Praktinis
+skirtumas Google akyse minimalus. Plugino keitimas del beveik nulines naudos —
+neverta.
+
+---
+
+### PAMOKOS
+
+- **★ Imtis is sprendimo aibes nieko neirodo. ★** Testuoti is problemos puses.
+- **Raktu formata skaityti is kodo**, ne speti. Speta klaida kainavo paleidima —
+  bet uz tai atskleide 20 klaidingu atitikmenu.
+- **Panasumo skaicius vienas neuztenka** — reikia rusies ir dydzio sargu.
+- **Vardo paieska > raidziu panasumas** kategorijoms ir brendams.
+- **Skaicius normalizuoti pries lyginant** (12-5 == 125).
+- **★ Nelopyti per sed/regex — rasyti is naujo. ★** Trys incidentai per sesija.
+- **Pradinis puslapis i 301 statistika neitraukiamas** — jam nukreipimo nereikia.
+
+---
+
+### NEUZDARYTA
+
+```
+1. 🔴 TRYS BLOG STRAIPSNIAI — P0 nuo liepos, blogas ~51 % GSC srauto, NEPRADETA
+2. 🔴 6 slug konfliktai — vienodi title, laukia savininko formuluociu
+3. 🔴 pradinio puslapio title „Pagrindinis (test)"
+4. 🔴 numatytasis og:image
+5. 🟡 11 URL (139 clicks) be nukreipimo
+6. 🟡 367 silpni prekiu aprasymai + nepavykes kategorinis pjuvis (S1012)
+7. 🟡 §7 REGISTRE pasenes — pataisyti pagal S1041 matavima
+8. GitHub PAT iki 2026-08-26 — RAIMIS
+```
+
+Auksciausias decision Nr.: **S1052**.
+
+---
+
+## 2026-08-18 (naktis) — KATEGORIJU SLUOKSNIS UZDARYTAS: TEMA, TEKSTAI, META [S1021-S1038]
+
+Tesinys po S1020. Sesijos esme: nuo „kur Flatsome deda teksta" iki 56 tekstu ir
+56 meta aprasymu gyvai. Tris kartus mano pasiulymas buvo paneigtas duomenimis
+arba savininko dalykinemis ziniomis — ir kiekviena karta rezultatas geresnis.
+
+**Sesijos taisykle:**
+
+> Pasiulymas, kuri paneigia matavimas, yra pigus. Pasiulymas, kuris i matavima
+> nezuri, kainuoja po launch'o.
+
+---
+
+### S1021 — KATEGORIJOS APRASYMA IsVEDA WOOCOMMERCE, NE FLATSOME
+
+Zvalgyba gyvame kategorijos puslapyje (kabliukai registruojami tik ten):
+
+```
+woocommerce_archive_description
+   10 | woocommerce_taxonomy_archive_description   <- SITAS
+   10 | woocommerce_product_archive_description
+   10 | WC_Brands::brand_description
+```
+
+Flatsome temoje `term-description` randamas tik Envato importeryje — nesusije.
+Vadinasi perkelimas yra standartinis `remove_action` + `add_action`, be kovos
+su tema.
+
+---
+
+### S1022 — mu-plugin: PETSHOP KATEGORIJOS APRASYMO VIETA v1.0.1
+
+Esminis sprendimas: **WooCommerce funkcija NEPERRASOMA**, tik perkeliama jos
+isvestis per `ob_start()`. Taip islieka visos originalo patikros (taksonomija,
+antras puslapis, `wp_kses_post`, `wc_format_content`), o pasikeicia tik vieta.
+
+```
+remove_action('woocommerce_archive_description','woocommerce_taxonomy_archive_description',10)
+add_action('woocommerce_after_main_content', rodyti_apacioje, 5)
+```
+
+`remove_action` vykdomas per `init` (20), nes mu-plugin'ai kraunami PRIES
+WooCommerce — anksciau kabliuko dar nebutu ka nuimti.
+
+Issleidimas be JS: paslеptas checkbox + label, CSS `max-height` 190 px.
+
+**v1.0.0 -> v1.0.1 taisymas:** `hidden` atributo NEUZTENKA — Flatsome CSS ji
+perraso ir zymimasis langelis lieka MATOMAS. Pastebeta tik ekrano kopijoje, ne
+matavimuose. Sprendimas — iskirpimas (`clip-path`, `opacity:0`, 1x1 px).
+
+---
+
+### S1023 — MATAVIMAI: PRIES IR PO
+
+```
+                    prekes prasideda        aprasymas
+desktop   buvo          1 284 px            249 px (virs prekiu)
+          tapo            480 px          2 928 px (po prekiu)
+mobile    buvo          2 128 px            316 px
+          tapo            607 px          5 218 px
+```
+
+Mobiliajame buvo 2,5 ekrano teksto iki pirmos prekes. Suskleistas blokas
+190 px, isskleistas 784 (desktop) / 1 500 (mobile).
+
+---
+
+### S1024 — v1.1.0 + SNIPPETAS 688 v2: VIENA TIESOS VIETA
+
+Hub'ai naudoja landing sablona (`template_redirect` 5, baigiasi `exit`), tad
+archyvo kabliukai ten nesuveikia. Vietoj HTML kopijavimo i dvi vietas —
+mu-plugin'e atsirado viesas `Petshop_Kategorijos_Aprasymas::blokas()`, o
+snippetas ji kvieciaviena eilute su `class_exists` apsauga.
+
+Snippetas pervadintas: **„Petshop Kategorijos Landing v2 (5 hub'ai + apatinis
+aprasymas)"** — senasis vardas „(sunims)" melavo, nes valdo PENKIS hub'us
+(70, 77, 87, 89, 93). Kopija: `snippetas_688_pries_*.php` (12 243 B).
+
+Patikra: `ps-kat` blokas randamas visuose keturiuose derinuose (hub/lapine x
+desktop/mobile), JS klaidu 0.
+
+---
+
+### S1025 — KATEGORIJU ZEMELAPIS: 54/54 BE TRINTIES
+
+Savininko J stulpelis (sena -> nauja kategorija) susietas su realiais term_id:
+**54 is 54, 0 nerastu, 0 dviprasmisku.**
+
+---
+
+### S1026 — ★ „GRINDYS IS SENU TEKSTU" ATMESTOS ★
+
+Mano pasiulymas buvo: visur suversti isvalyta sena teksta, kad ne viena
+kategorija nebutu tuscia. Savininko K stulpelis: **46 is 55 = perrasyti**.
+
+Is pradziu tai atrode kaip prestaravimas jo paties isvadai („senu tekstu
+nereikia ismesti"). Perskaicius pastabas paaiskejo, kad jis teisus: dalis senu
+tekstu **dalykiskai klaidingi** — „sausas maistas valo dantis", „hipoalerginis
+= be grudu", triusiai vadinami grauzikais, visi konservai vadinami
+pilnaverciais. Publikuoti tokius teiginius blogiau nei tuscias puslapis.
+
+**Tad grindys tapo ne seni tekstai, o neutralus trumpi tekstai is katalogo
+faktu** — savininko paties taisykle, pritaikyta placiai.
+
+---
+
+### S1027 — GRINDU GENERATORIUS IS KATALOGO DUOMENU
+
+Surinkti realus faktai visoms 80 kategoriju: brendai su prekiu skaiciais,
+atributai, kainu rezis. Taisykles: brendas rodomas jei >=3 prekes (iki 5),
+atributas jei >=5 (iki 4). Skaiciu ir kainu tekste NERA — pasentu su kiekvienu
+importu (savininko standarto 15 eil.).
+
+```
+sugeneruota 58 is 80 (22 be publish prekiu) | ilgis vid. 136 zn.
+```
+
+---
+
+### S1028 — SAVININKAS PERRASE VISUS 56
+
+Brendai ismesti beveik visur („skambejo kaip DB eksportas"), generatoriaus
+karkasas panaikintas, ritmas ivairus (2 arba 3 sakiniai). Sutvarkytos
+pavojingos vietos. 5 hub'ams apacios teksto nededama, 13 kategoriju be prekiu
+ir 6 „Kita" tipo — NEKELTI.
+
+Etalonas, kuri pats savininkas ivardijo: *„Vienas suo zaisla nesiojasi, kitas
+tampo, trecias bando isardyti per penkias minutes."*
+
+---
+
+### S1029 — KRITINE PERZIURA: KUR DAR GIRDISI MASINA
+
+Isanalizuota 56 tekstu:
+
+```
+„verta"                    26/56   hedge zodis — didziausia zyme
+„Cia rasite / Cia sudeti"   7      tuscia pradzia, H1 tai jau pasake
+proporciniai teiginiai      2      „didele dalis... be grudu" — pasens su importu
+kreipimasis i skaitytoja   23/56   registras nevienodas
+```
+
+Pataisyta 30 is 56; 26 nepaliesti, nes buvo tvarkingi.
+
+```
+PRIES  „verta" 26 · „Cia" 7 · kreipimasis 23 · proporciniai 2
+PO     „verta"  1 · „Cia" 0 · kreipimasis 46 · proporciniai 0
+```
+
+Palikta „skiriasi" 11 tekstu — tai ne tikas, o tiksliausias zodis.
+
+---
+
+### S1030 — KONSULTANTO PERZIURA: 22 PATAISYMAI
+
+Vertingiausi trys:
+
+**Antiparazitines** — ankstesne versija teige, kad tikrinti reikia „amziu ir
+svori", tarsi tai galiotu visiems produktams vienodai. Dabar: „patikrinkite
+VISUS konkretaus produkto apribojimus". Pridetas saugos sakinys: **„Katems
+naudokite tik joms skirtas priemones"** — sunims skirti preparatai katems buna
+toksiski.
+
+**Smulkus augintiniai** — „Vieno pasaro visiems smulkiems augintiniams nera"
+vietoj „grauziku pasaro". Triusiai nera grauzikai.
+
+**Pirmoji pagalba** — vietoj moralizuojancio „nepakeicia veterinarines
+pagalbos" konkretus veiksmas: „jei bukle kelia nerima, kreipkites".
+
+---
+
+### S1031 — PATAISYMAS SUKURE SUDVEJINIMA
+
+Konsultanto pataisymas #1 padare, kad DVI didziausios P1 kategorijos prasideda
+vienodai: „Sausa maista rinkites…" (72 sausas maistas sunims, 510 prekiu; 81
+sausas maistas katems, 205). Grazinta kitokia pradzia 72-ai.
+
+---
+
+### S1032 — TEKSTAI IKELTI: 56/56
+
+```
+kopija       kategoriju_aprasymai_pries_20260818_203802.json (80 irasu)
+irasyta      56/56 per AUTENTIFIKUOTA wc/v3 REST (ne anonimine uzklausa!)
+patikra      56/56 sutampa simbolis i simboli — kses nieko nenukirpo
+```
+
+Rasymas administratoriaus kontekste butinas: anonimine uzklausa kses'ina ir
+`h3`/`ul` dingsta (S1018).
+
+---
+
+### S1033 — ★ SENI META APRASYMAI NETINKA — IR NE DEL ZENKLU ★
+
+40 keliamu kategoriju turi atitikmeni senoje svetaineje, 34 su meta. 13 su
+„APSILANKYKITE ✓ ➤". Bet svarbiau turinys — net „svarus" prikimsti butent tu
+teiginiu, kuriuos ka tik isvaleme is puslapiu:
+
+```
+Skanestai katems      „…valantys dantu apnasas…"
+Zaislai sunims        „…dantu apnasoms valyti…"
+Maistas sunims        „Ieskote geriausio maisto savo suniui?"
+Sausas maistas katems „Super Premium klases sausi maistai…"
+Pasaras grauzikams    „Visavertis pasaras ivairiems naminiams grauzikams"
+Sausas maistas sunims „…Premium klases maistas (Josera…"
+```
+
+Meta yra MATOMIAUSIA vieta. Perkelti ten teiginius, kuriuos ka tik pasalinom
+is puslapio, butu zingsnis atgal. **Seni meta NEKELIAMI.**
+
+---
+
+### S1034 — 56 NAUJI META APRASYMAI
+
+Ne puslapio teksto santrauka, o atskiras darbas: puslapio tekstas aiskina KAIP
+rinktis, meta pasako KAS cia yra. Todel meta vardija tipus („molio, bentonito,
+silikoniniai"), o tekstas apie tipus nekalba.
+
+---
+
+### S1035 — ★ KONSULTANTO GOOGLE PATIKRA: DU MANO KLAIDINGI TEIGINIAI ★
+
+**(1) „Ne vienas nebus apkirptas" — KLAIDA.** Google dokumentacija: meta
+aprasymo ilgio limito NERA, snippet'as apkerpamas pagal irenginio ploti
+(pikselius, ne simbolius). 100–150 zn. lieka gera UX disciplina, bet NE Google
+taisykle.
+
+**(2) „0 sutapimu su puslapio tekstu" kaip KPI — KLAIDA.** Savininko standarto
+16 eil. draudе NUKOPIJUOTI pirma paragrafa; as tai paverciau nuline metrika,
+kuri verstu perrasineti gera fraze vien del rodiklio.
+
+Taip pat patvirtinta: meta aprasymas NERA reitingavimo veiksnys; Google
+pirmiausia naudoja puslapio turini, o meta — kai jis puslapi apibudina geriau.
+Ir programinis meta generavimas dideliems katalogams yra leidziamas, jei
+tekstai zmogui skaitomi ir ivairus.
+
+**Trys ginciytinos vietos issprestos geriau nei siuliau:**
+```
+Super Premium   mano meta SERP'e neige savo paties kategorija
+Grauzikai       „grauzikams ir kitiems smulkiems augintiniams" — raktazodis
+                grazintas, triusis grauziku netapo
+Antiparazitines „lasiukai, antkakliai" pasako kas viduje; sauga isliko
+```
+
+---
+
+### S1036 — PATAISYMAI SUKURE NAUJA VIENODUMA (PRIIMTA)
+
+```
+„Rinkites"  5/56 -> 17/56 ; antro sakinio pradzia „Rinkites" 12 tekstu
+```
+
+Ta pati vienodo ritmo problema, tik persikelusi i meta. Ivertinta kaip
+**nedidelis trukumas, ne blokatorius** — SERP'e meta matomas po viena.
+
+---
+
+### S1037 — ★ VMVT VERDIKTAS: PASARAS TURI BUTI VISAVERTIS ★
+
+Savininkas: veterinarijos tarnybu pozicija — **kasdienis pasaras turi buti
+VISAVERTIS**. Mano pastaba, kad trumpa formuluote „ar pasaras visavertis" yra
+nebaigta, buvo klaidinga is esmes.
+
+Neutralus „patikrinkite, kuris is dvieju" paslepia svarbiausia dalyka po
+pasirinkimu, kurio nera. Papildomas pasaras yra priedas, ne maistas.
+
+Suvienodinta 7 vietose (5 puslapiu tekstai + 2 meta):
+
+```
+buvo: patikrinkite, ar pasaras visavertis, ar papildomas
+tapo: patikrinkite, ar pasaras visavertis – papildomas kasdienio maisto nepakeicia
+```
+
+Sena formuluote nebeliko NE VIENOJE vietoje.
+
+---
+
+### S1038 — META IKELTI: 56/56 + GYVA PATIKRA
+
+```
+kopija            kategoriju_meta_pries_20260818_210631.json (80 irasu)
+tekstu pataisyta   5/5
+meta irasyta      56/56  (termmeta rank_math_description)
+patikra           tekstai 56/56 · meta 56/56 · termmeta bazeje 56
+```
+
+**Svarbiausia — meta realiai isvedamas `<head>`:**
+```
+Kraikai kaciu tualetams: molio, bentonitiniai, silikoniniai ir augaliniai.
+Skiriasi susokimu, kvapu kontrole ir dulkiu kiekiu.        (126 zn., HTTP 200)
+```
+
+Tai patvirtino ir tai, ko iki tol nebuvau tikrinеs: RM terminu meta raktas
+veikia, o tuscias sablonas (S1019) jo neuzgozia.
+
+---
+
+### PAMOKOS
+
+- **Neperrasyk platformos funkcijos — perkelk jos isvestį.** `ob_start()` +
+  originalus kvietimas islaiko visas patikras ir persiima busimus WooCommerce
+  pakeitimus.
+- **`hidden` atributas nera slepimas** — tema ji perraso. Naudoti iskirpima.
+- **Vizuali patikra pagauna tai, ko matavimai nemato.** Matomas checkbox'as
+  buvo matomas TIK ekrano kopijoje.
+- **Vienas markup, viena vieta.** Landing sablonas kviecia mu-plugin'o metoda,
+  ne kopijuoja HTML.
+- **Turinio importas — tik administratoriaus kontekste** (kses).
+- **Pasenстantys teiginiai tekste:** ne tik skaiciai ir kainos, bet ir
+  proporcijos („didele dalis variantu yra be grudu").
+- **★ Nedaryk KPI is stiliaus taisykles. ★** „0 sutapimu" verte perrasineti
+  gera fraze del rodiklio, o ne del skaitytojo.
+- **Dalykine savininko zinia > mano logika.** Tris kartus is eiles.
+
+---
+
+### NEUZDARYTA
+
+```
+1. „Rinkites" 17/56 meta — priimtas nedidelis trukumas
+2. Pirmosios pagalbos meta neteko nuorodos i veterinara (puslapyje liko)
+3. 367 silpnu prekiu aprasymu kategorinis pjuvis (matavimas nepavykо, S1012)
+4. Pradinio puslapio title „Pagrindinis (test)" — savininko formuluote
+5. Numatytasis og:image — nera
+6. §7 vs §12 priestaravimas REGISTRE — patikrinti pries 301 darbus
+7. 301 zemelapis + 3 trukstami blog straipsniai (51 % GSC srauto)
+8. GitHub PAT iki 2026-08-26 — RAIMIS
+```
+
+Auksciausias decision Nr.: **S1038**.
+
+---
+
+## 2026-08-18 (vakaras) — SEO SLUOKSNIS: RANK MATH, PREKIU META, KATEGORIJU DERLIUS [S1003-S1020]
+
+Sesija pradeta nuo klausimo „ar seni meta tekstai verti ijungimo", o baigta
+Flatsome testu, kuris paneigе abieju pusiu prielaidas. Trys kartus matavimas
+apvertе jau priimta sprendima — kiekviena karta i gera puse.
+
+**Sesijos taisykle:**
+
+> Matavimas paneigе mano paties pasiulyma tris kartus: aprasymu trynimas,
+> front-end „defektas", eShoprent'o „apgalvotas" formatas. Pasiulymas, kuris
+> neatlaiko duomenu, yra pigesnis uz pasiulyma, kuris i juos nezuri.
+
+**Numeracijos pastaba:** ankstesnes sesijos antraste skelbia [S987-S1012], bet
+jos turinys baigiasi ties S1002 ir taip pat sako „Auksciausias sios sesijos
+decision Nr.: S1002". Antraste klaidinga; si sesija tesia nuo S1003.
+
+---
+
+### S1003 — SEO META ZVALGYBA: TEKSTAI SVARUS, BET NEVIENODAI VERTINGI
+
+Bazeje rasta 1 537 title ir 1 484 description, dviem raktu rinkiniais.
+
+```
+Yoast vs RankMath   1 537 sutampa · 0 skiriasi · 0 tik viename
+Focus keyword       0
+Siuksliu NERA:      sablonu %% 0 · senas domenas 0 · kainos 0 · litai 0 · HTML esybes 0
+```
+
+Pasiskirstymas: product/publish 1 111 · draft 386 · trash 40 · page+post 11.
+
+**Kokybe skiriasi kardinaliai:**
+
+| | title (1 537) | description (1 484) |
+|---|---|---|
+| geras ilgis | 615 (30-60) | 1 075 (70-160) |
+| per ilgas | **545 virs 70** | 35 |
+| lygu prekes pavadinimui | **1 055 (69 %)** | 86 |
+
+Isvada: aprasymai verti ijungimo, title — ne, nes du trecdaliai kartoja
+pavadinima, kuri tema ir taip generuoja.
+
+**Radinys, kurio plane nebuvo:** `wp_termmeta` TUSCIA. Kategorijos neturi jokio
+SEO teksto — didesne spraga uz tas 1 495 prekes.
+
+---
+
+### S1004 — RANK MATH: NEMOKAMA VERSIJA PAKANKA
+
+PRO (~8 EUR/men.) prideda pozicijų sekima, Content AI ir GTIN/MPN schemos
+laukus. Pastarieji mums nereikalingi — GTIN i Merchant Center keliauja per
+SAVA feed'a, ne per schema. TZ MASTER sprendimas „pilnas SEO title eis i
+RankMath" jau buvo priimtas anksciau; si sesija ji ivykde.
+
+---
+
+### S1005 — VARTAI RASTI IS KODO, NE IS SPEJIMO
+
+Idiegus v1.0.276 `<head>` NEPASIKEITе. Vietoj bandymu — perskaityta salyga:
+
+```
+class-conditional.php:69   is_configured() -> option 'rank_math_is_configured'
+class-registration.php:63  $invalid = Helper::is_invalid_registration()
+class-registration.php:284 skip_wizard() -> add_option('rank_math_registration_skip')
+```
+
+Abu raktai nustatyti tiksliai taip, kaip juos raso pats vedlys.
+
+---
+
+### S1006 — KONFIGURACIJA PAGAL FAKTINES REIKSMES
+
+Numatytieji buvo netinkami keturiose vietose:
+
+```
+tax_product_cat_sitemap      OFF -> ON    kategorijos nebutu patekusios i sitemap
+tax_product_brand_sitemap    OFF -> ON    /gamintojas/ archyvai taip pat ne
+tax_product_cat_add_meta_box OFF -> ON    savininkas negaletu redaguoti kategorijos SEO
+pt_blocks_robots           index -> noindex  Flatsome vidiniai blokai i Google
+```
+
+Moduliai apkarpyti: `sitemap`, `rich-snippet`, `woocommerce`. Isjungta
+analytics, seo-analysis, content-ai, ai-visibility, link-counter, acf,
+buddypress, bbpress, web-stories, instant-indexing.
+
+`redirections` ir `404-monitor` NEBUVO ijungti — konflikto su Redirection
+pluginu nera.
+
+URL struktura uzrakinta per prievarta: `strip_category_base`,
+`wc_remove_product_base`, `wc_remove_category_base` = off. Ju pakeitimas
+perrasytu visus prekiu URL ir sugriautu 301 zemelapi.
+
+---
+
+### S1007 — CANONICAL DINGIMAS: NE KLAIDA
+
+Po diegimo canonical isnyko is visu puslapiu. Priezastis rasta saltinyje:
+
+```
+class-head.php:235  // If a page is noindex, let's remove the canonical URL.
+class-head.php:237  if ( 'noindex' === $robots['index'] ) remove_action(...)
+```
+
+Dev turi `blog_public=0`, tad viskas noindex. Perjungimo diena canonical grizta
+pats. **Nieko neliesta, blog_public NEJUDINTAS.**
+
+---
+
+### S1008 — SITEMAP: TA PATI UZKLAUSA DIRBA SU SENA BUSENA
+
+Po konfiguracijos visi sitemap grazino 404. Priezastis — `flush_rewrite_rules()`
+buvo iskviestas TOJE PACIOJE uzklausoje, kurioje `is_configured` dar buvo false,
+tad RM Router taisykliu neuzregistravo. Perkrovus naujame cikle:
+
+```
+/sitemap_index.xml         200   18 sekciju
+/product-sitemap.xml       200   201 URL
+/product_cat-sitemap.xml   200    58 kategorijos
+/product_brand-sitemap.xml 200   122 gamintojai
+/page-sitemap.xml          200    33 puslapiai
+```
+
+Sena pamoka („du dispatchai, kai diegiam ir tikrinam") patvirtinta dar karta.
+
+---
+
+### S1009 — B VARIANTAS: TITLE ISTRINTA, APRASYMAI PALIKTI
+
+Savininko sprendimas is triju: (A) palikti viska, (B) trinti title, (C) trinti
+abu. Pasirinkta **B**.
+
+```
+rank_math_title       1 537 -> 0
+ne prekiu paliesta            0     blogas ir puslapiai nepaliesti
+rank_math_description     1 473     nepaliesta
+_yoast_wpseo_title        1 537     atsarga bazeje, grazinimui
+kopija ps-backups/rankmath_title_kopija_20260818_165421.json (3 074 irasai)
+```
+
+**Saziningas apribojimas:** ilgio problema NEISNYKO. Ambrosia title po
+sablono — 151 simbolis, nes tokia yra pacios prekes pavadinimas. Sablonu to
+nesutrumpinsi; vienintelis kelias butu trumpinti pavadinimus, o tai liestu
+kataloga, feed'us ir 301 zemelapi. Neverta: pirmieji 60 simboliu prasideda
+brendu ir tipu, t. y. tuo, ko zmogus iesko.
+
+---
+
+### S1010 — NAUJOS PREKES TVARKOSI SAVAIME
+
+Savininko klausimas: o kas bus su nauja preke is VF/ZB?
+
+Empirinis atsakymas — preke 34948 neturi nei `rank_math` meta, nei trumpo
+aprasymo:
+
+```
+title: TEST Konservu deze katei Be vistienos - Petshop.lt
+desc:  12 skoniu be vistienos — dazniausio alergeno katems. 100 g skardines...
+```
+
+`%excerpt%` neradеs trumpo aprasymo pasiima is pilno. Prekiu, neturinciu nе
+vieno — **0**. Danga po B: title 2 607/2 607, aprasymas 2 607/2 607.
+
+---
+
+### S1011 — ★ MATAVIMAS PANEIGе MANO PASIULYMA ★
+
+Pasiulius istrinti aprasymus, kurie kartoja prekes pavadinima, isskaiciuota:
+
+```
+atkartojimas  135 (102 publish) · ribinis 144 · tikras 1 194
+```
+
+Bet pavyzdziai parodе, kad pakaitalas BLOGESNIS:
+
+```
+[15042] Zaislas suniui - Skraidantis bumerangas
+   dabar        : Zaislas suniui - Skraidantis bumerangas
+   pakeistume i : „Ismatavimai: 28 x 28 x 3 cm"
+```
+
+Bent jau pavadinimo atkartojimas ivardija, kas tai per daiktas. **Trynimas
+NEDARYTAS.**
+
+---
+
+### S1012 — KATALOGO APRASYMU DANGA
+
+```
+2 607 publish prekes
+  gera (70-160)    1 171   45 %
+  ilga (virs 160)  1 069   41 %
+  silpna (po 70)     367   14 %
+  visai be nieko       0
+saltiniai: sava meta 1 075 · trumpas aprasymas 620 · pilnas aprasymas 912
+```
+
+`%excerpt%` grandine laiko 86 % katalogo.
+
+**Nepavykes matavimas, uzrasomas kaip nepavykes:** kategoriju pjuvis nedavе
+rezultato — 912 prekiu nukrito i „(?)", nes saknies paieska nerado tevines
+kategorijos, prie kurios prekes nepriskirtos tiesiogiai. Kol nepataisyta,
+nezinia, kurioje katalogo dalyje tie 367 susitelke.
+
+---
+
+### S1013 — DVIGUBAS KODAVIMAS NUTEKA I META
+
+Silpnuju pavyzdziuose rasta:
+
+```
+[13048] &lt;p&gt;Papildomas pasaras visu veisliu sunims.&lt;/p&gt;
+```
+
+Gyva patikra patvirtino, kad tekstas i meta patenka NEPALIESTAS — Google
+rezultate zmogus matytu `<p>`.
+
+```
+dvigubai uzkoduoti trumpi aprasymai   434 publish   (virsutine riba)
+tikslus paveiktu poaibis              421           (13 turi sava meta)
+sava meta su esybemis                   0
+normalus <p> tagai                    1 195         tvarkoje, RM juos nuvalo
+```
+
+Skirtumas esminis: tikra `<p>` Rank Math pasalina, o `&lt;p&gt;` jam yra
+paprastas tekstas.
+
+---
+
+### S1014 — HIPOTEZе APIE FRONT-END KLAIDINGA
+
+Itariau, kad tas pats kodavimas matomas ir prekes puslapyje. Playwright
+patikrinimas triju prekiu:
+
+```
+13610  matomas tekstas: „Petnesos sunims."   TAGAI_MATOMI 0   JS klaidu 0
+```
+
+WooCommerce trumpa aprasyma praleidzia per filtru grandine, kuri esybes
+issifruoja. Vitrina NIEKADA nebuvo sugadinta. Problema — tik meta lauke, nes
+Rank Math ima `post_excerpt` zalia, aplenkdamas ta pacia grandine.
+
+**Todel taisymas pakeistas:** vietoj 434 prekiu turinio dekodavimo (S3 srautas,
+savininko valdomas) — vienas filtras.
+
+---
+
+### S1015 — mu-plugin: PETSHOP SEO APRASYMO VALYMAS v1.0.0
+
+`rank_math/frontend/description` kabliukas: pakartotinis esybiu dekodavimas
+(iki 3 kartu), tagu salinimas, tarpu suvienodinimas. Jei po valymo liktu
+tuscia — grazinamas originalas.
+
+Vietinis testas pries diegima (PHP 8.3):
+
+```
+&lt;p&gt;Petnesos sunims.&lt;/p&gt;      -> Petnesos sunims.
+&amp;lt;p&amp;gt;Trigubas...   -> Trigubas
+AMBROSIA Junior &amp; Salmon          -> AMBROSIA Junior & Salmon
+&lt;p&gt;&lt;/p&gt;         -> nekeiciama (originalas)
+```
+
+Gyvai po diegimo:
+
+```
+13610  35 -> 16 zn.   lt_gt 1 -> 0
+19785  154 -> 154     nepaliesta, & isliko teisingai uzkoduotas
+```
+
+Ambrosia atvejis atsakе i klausima, kurio nebuvau iskеlеs garsiai: iss-
+ifruotas `&` HTML atributo nesugadina — Rank Math isvesti ekranuoja pats.
+
+```
+mu-plugins/petshop-seo-aprasymas.php   1 838 B   md5 dfebb0c0...   repo deploy/ sinchronizuota
+```
+
+---
+
+### S1016 — SENU KATEGORIJU DERLIUS: 55/55
+
+Savininko klausimas („o gal seni aprasymai geri?") sutaupе didziausia gabala
+darbo. Sena kategorija turi PILNA struktūrini teksta su paantrastemis IR
+atskira meta aprasyma.
+
+Selektorius rastas is HTML: `div.categoryDescription--bottom`.
+
+```
+su turiningu tekstu (>200 zn.)   32     is ju su paantrastemis  27
+tik meta atkartojimas (1-200)    15
+visai tuscios                     8
+su savo meta aprasymu            48
+su reklaminiais zenklais ✓➤      15
+naujoje svetaineje               80 kategoriju, ne viena neturi aprasymo
+```
+
+Didziausias: „Zaislai katems" 9 075 zn., 1 231 zodis, 7 paantrastes.
+
+Perziuros failas: `kategoriju_aprasymai_perziurai_2026-08-18.xlsx` (3 lapai).
+
+---
+
+### S1017 — TURINIO STRATEGIJA: GRINDYS VISIEMS, LUBOS P1
+
+Savininkas grazino sutvarkyta plana su prioritetais P1-P4, darbine apimtimi ir
+dalykinemis pastabomis kiekvienam tekstui. Vertingiausia — pastabu stulpelis:
+„nevadinti triusiu grauzikais", „hipoalerginis != be grudu", „nevadinti visu
+konservu pilnaverciais, atskirti visaverti ir papildoma pasara". Pastaroji dar
+ir teisine — tai zenklinimo kategorijos.
+
+**Sutarta seka (savininko, pakoreguota po diskusijos):**
+
+```
+1. atskirti meta nuo term_description
+2. vienas realus Flatsome testas
+3. grindys 55 tekstams — migracinis valymas, ne perrasymas
+4. tikras P0: GSC -> 44 URL -> 301 + trys straipsniai
+5. tik po to P1 upgrade, prioritetai is GSC, ne is prekiu kiekio
+```
+
+**Savininko taisykle:** iki migracijos saugom tai, kas jau turi paieskos
+istorija; po migracijos optimizuojam kontroliuojamais etapais.
+
+**Savininko korekcija schemai:** nekelti seno teksto vien todel, kad jis
+egzistuoja. Netinkantis arba konceptualiai klaidingas -> 2-3 neutralus
+sakiniai, ne 700 zodziu palikimas.
+
+**Formatas (sprendimas):** ne B visur, o **B hub'uose ir A lapinеse**.
+Lapinеje H1, kelias ir filtrai jau atsako „ar pataikiau", tad virsutinis
+sakinys tik nustumia prekes. Hub'e prekiu virsuje nera — nustumti nera ko.
+
+---
+
+### S1018 — ★ FLATSOME TESTAS: TRYS NEMALONUS ATSAKYMAI ★
+
+Ikeltas realus ~296 zodziu tekstas su trimis `<h3>`, sarasu ir dviem vidinemis
+nuorodomis. Dvi vietos: 72 Sausas maistas sunims (lapine) ir 70 SUNIMS (hub).
+
+**1. Lapinеje tekstas eina VIRS prekiu:**
+
+```
+              aprasymas          prekes prasideda   langas
+desktop   249 px, 784 aukst.        1 284 px         1 100
+mobile    316 px, 1 500 aukst.      2 128 px           844
+```
+
+Mobiliajame — 2,5 ekrano teksto iki pirmos prekes. Sename petshop.lt tekstas
+buvo APACIOJE. Perkelе „kaip yra" gautume blogesne patirti nei dabar.
+
+**2. Hub'e `term_description` isvis nerodomas.** Landing sablonas PAKEICIA
+archyva.
+
+**3. HTML struktura sunaikinta.** `h3` ir `ul` isnyko, `strong` ir nuorodos
+isliko. Priezastis: `wp_update_term` anoniminеje uzklausoje pritaiko kses
+filtra su komentaru lygio tagu sarasu. **Importas privalo vykti administra-
+toriaus kontekste**, kitaip visi 55 tekstai suplokstеs.
+
+**4. Rank Math NEKERPA `%term_description%`:**
+
+```
+meta description = 2 230 simboliu
+```
+
+Visas tekstas suverstas i meta. Spejimas butu buvеs klaidingas.
+
+---
+
+### S1019 — META SABLONAS PASALINTAS
+
+```
+tax_product_cat_description     %term_description% -> tuscia
+tax_product_brand_description   %term_description% -> tuscia
+tax_product_tag_description     %term_description% -> tuscia
+
+gyvos kategorijos meta ilgis: 0
+kopija ps-backups/rankmath_titles_pries_20260818_*.json
+```
+
+Meta rasomas kiekvienai kategorijai atskirai; 48 seni meta aprasymai jau
+surinkti.
+
+---
+
+### S1020 — HUB IVADAS: SNIPPETAS 688, PAVADINIMAS PASENеS
+
+Ieskota per options, postmeta, termmeta, posts, temos ir mu-plugin failus.
+Rasta: snippetas **688 „Petshop Kategorijos Landing v1 (sunims)"**, aktyvus,
+12 043 B.
+
+Pavadinimas meluoja — valdo **penkis** hub'us:
+
+```
+70 SUNIMS (8 plyteles) · 77 KATEMS (8) · 87 GRAUZIKAMS (4)
+89 PAUKSCIAMS (3) · 93 ZUVIMS (3)
+```
+
+Ivadai ikoduoti PHP masyve. Komentaras teberaso „dabar: 70 = SUNIMS" — kiti
+keturi prideti veliau, pavadinimas ir komentaras liko seni. **Pervadinti pagal
+konvencija.**
+
+**Pasiulymas hub'ams:** landing sablonui prideti apatini teksto bloka,
+maitinama is to paties `term_description` — tada hub'as ir lapine elgiasi
+vienodai, o savininkas redaguoja vienoje vietoje.
+
+---
+
+### MANO KLAIDA — DVIEJU FAZIU SNIPPETAS ISSIJUNGе PATS
+
+H027 snippete palikta savеs isjungimo eilute veike KIEKVIENOJE uzklausoje.
+Po `SET` snippetas issijunge, tad `ATSATYTI` pataike i paprasta puslapi ir
+grazino HTML. Testiniai tekstai liko kategorijose, kol nepastebеjau.
+
+Istaisyta H028: abi kategorijos 0 baitu, patikrinta NEPRIKLAUSOMAI per REST
+(ne per ta pati snippeta), kategoriju su aprasymu bazeje — 0.
+
+**Taisykle:** dvieju faziu snippete valymo eilute deti TIK i paskutine faze.
+
+---
+
+### PAMOKOS
+
+- **Rank Math vartai** — `rank_math_is_configured` + `rank_math_registration_skip`.
+  Abu `update_option`, tai tiksliai tas, ka raso vedlys.
+- **Canonical nuimamas nuo noindex puslapiu** — dev'e tai normalu, gryzta su
+  `blog_public=1`.
+- **`%term_description%` NEKERPAMAS** — i meta patenka visas tekstas.
+- **`wp_update_term` anonimineje uzklausoje kses'ina** — h3/ul dingsta.
+  Turinio importas tik administratoriaus kontekste.
+- **`&lt;p&gt;` != `<p>`** — pirmojo joks HTML valytojas nemato kaip tago.
+- **Dvieju faziu snippetas:** valymo eilute tik paskutinеje fazеje.
+- **Playwright diegimas gali uzstrigti** (~20 min., 4 zingsnis). Nutraukus ir
+  paleidus is naujo — praеjo. Ne musu kodo problema.
+- **Python `re.sub` su pakaitalu, kuriame yra `\s`** — `bad escape`. Runner'i
+  rasyti is naujo, ne lopyti per regex.
+- **★ Pasenеs blokatorius yra brangesnis uz nezinoma. ★** Visa sesija remiausi
+  TZ MASTER fraze „BLOKUOJA (owner, DABAR): GSC eksportas" ir tris kartus jа
+  pakartojau savininkui kaip jo neatlikta darba. Registro §12 nuo 2026-08-04
+  rodo, kad eksportas padarytas. Pries vadinant kа nors blokatoriumi — patikrinti
+  NAUJAUSIA saltini, ne ta, kuris pirmas pasitaike.
+
+---
+
+### NEUZDARYTA
+
+```
+1. Flatsome tema: term_description perkelti po prekiu tinklelio (+readmore)
+2. Landing sablonui (688) prideti apatini term_description bloka
+3. Snippeta 688 pervadinti — dabartinis vardas klaidina
+4. 55 senu tekstu valymas ir ikelimas (administratoriaus kontekste)
+5. 48 senu meta aprasymu ikelimas i Rank Math laukus
+6. 367 silpnu prekiu aprasymu kategorinis pjuvis (matavimas nepavyko)
+7. Pradinio puslapio title „Pagrindinis (test)" — savininko formuluote
+8. Numatytasis og:image — nera
+9. GSC: ★ MANO KLAIDA ★ visa sesija kartojau „eksportas blokuoja".
+    NETIESA — padarytas 2026-07-30, 2 445 URL / 19 735 clicks (REGISTRAS §12).
+    Teiginys is TZ MASTER, teisingas liepa, nuo tada pasenеs.
+    P1 perskaiciavima galima daryti DABAR, Raimio laukti nereikia.
+10. REGISTRE PRIESTARAVIMAS: §7 sako „44 URL = 20,5 % neuzdengta", §12
+    (velesnis) sako 937 uzdaryta + 950 teisingi 404. Patikrinti pries 301 darbus
+11. GitHub PAT baigia galioti 2026-08-26 — RAIMIS (vienintelis tikras jo punktas)
+```
+
+Auksciausias decision Nr.: **S1020**.
+
+---
+
+## 2026-08-18 — FEED'U VARIKLIS, APRASYMAI, SVORIAI [S987-S1012]
+
+Diena prasidejo rytine patikra, o baigesi trimis duomenu sluoksniais: feed'u
+infrastruktura, prekiu tekstais ir svoriais. Visur tas pats principas —
+dry-run, apply, perskaitymo patikra.
+
+**Dienos taisykle:**
+
+> Pasakiau „padaryta", nes patikrinau savo lauka — `post_content`. Savininkas
+> atsiuntе ekrano kopija: kataloge „Be aprasymo 88". Abu buvome teisus, tik
+> matavome skirtingus dalykus. Patikra galioja tik tada, kai tikrini TA PATI
+> skaiciu, kuri mato zmogus.
+
+---
+
+### S987 — RYTINE PATIKRA: REGRESIJOS TESTAS IVYKO PATS
+
+Import #5 suko 03:32 ir 06:32 — be musu prasymo.
+
+```
+VF prekes su 12 simboliu GTIN      0
+VF prekes su 13 simboliu GTIN    980   (vakar 979)
+nauja preke 34967 LAB V Lasisu aliejus:
+   _vf_barcode 590324046661 (12) -> _global_unique_id 5903240466610 (13)
+```
+
+Nauja preke gimе su teisingu GTIN. Naktinis v1.5.7 taisymas atlaikе reala
+importa — stipresnis irodymas nei bet kuris musu testas.
+
+**Sargas pagavo tikra defekta:** `Array to string conversion` —
+`petshop-xml.php:343,344,513,515`, eilutеs `$brand = (string) ( $data['brand'] ?? '' )`.
+Kai tiekejas atsiuncia `brand` kaip masyva, i lauka patenka zodis „Array".
+Liecia ir ZB (#2), ir VF (#5). Nauja skola, uzrasyta.
+
+Per para 2 fatal — abu musu (exec() 00:08 ir atminties issekimas 23:12 testuojant
+negyvus feed'us). Sargo grandine veikia nuo pagavimo iki laisko.
+
+---
+
+### S988 — GYVI KAINA24 IR KAINOS.LT SRAUTAI: SABLONAS PERSKAITYTAS
+
+Savininkas atsiuntе abu realius XML is petshop.lt (4,1 MB ir 3,6 MB, po 1 270 prekiu).
+
+**★ RADINYS: `<model>` NERA EAN.** Gyvame feed'e yra DU laukai:
+
+```
+<ean_code>8595091784318</ean_code>   <- tikras EAN (427 is 1 270)
+<model>650501</model>                 <- gamintojo kodas
+```
+
+Kur `ean_code` nebuvo, i `<model>` irasydavo EAN — ir musu v1.0.0 sablonas,
+darytas nuo tokios prekes, ta isimti palaike taisykle: EAN rase i `<model>`,
+o `<ean_code>` neturеjo is viso.
+
+**Kiti skirtumai:** Kainos.lt naudoja `<item_price>` (ne `<price>`), 200x200
+miniatiura (ne originala), `<categories><category>` (be ID ir nuorodos),
+`<spec name= label=>`, neturi `<model>`, `<condition>`, `additional_images`.
+
+**Savininko sprendimas:** ziurime, kur mums naudingiau, ne kas buvo. Aprasymas —
+svarus tekstas. `<ean_code>` = GTIN, `<model>` = SKU. Specs pilnas sarasas
+plius „Speciali mityba" ir „Pakuotes dydis".
+
+**Ir dar:** gyvame feed'e 194 prekes is 1 270 turi `<stock>0</stock>` — tai, ko
+savininkas nebenori.
+
+---
+
+### S989 — `petshop-feeds` v2.0.0: STATINIAI FAILAI VIETOJ MIRTIES
+
+```
+v1.0.0: posts_per_page=-1 + wc_get_product visoms -> memory exhausted (256M)
+v2.0.0: paketai po 200, srautas i faila, wp_cache_flush tarp paketu
+```
+
+Trys kanalai is vieno duomenu sluoksnio: `kaina24.xml`, `kainos.xml`, `google.xml`
+i `uploads/petshop-feeds/`. Endpoint'ai `/feed/kaina24|kainos|google` atiduoda
+STATINI faila (`readfile`) — URL nesikeicia, nes juos savininkas paduos i
+palyginimo svetaines. Cron kasnakt 04:30. Rankinis: `?ps_feeds_generuoti=<raktas>`.
+
+**Istaisyta is v1.0.0 (trys tylios klaidos):**
+1. `end($categories)` — komentaras skelbe „giliausia kategorija", bet end() ima
+   paskutini ABECELES elementa. Dabar gylis per `get_ancestors()`.
+2. EAN buvo imamas is `_zb_ean`/`_ean`; dabar is kanoninio `_global_unique_id`.
+3. Rinkiniai (mix-and-match) nebuvo filtruojami — butu pateke i feed'us.
+
+Prekiu ribojimas (savininko prasymas): `_ps_feed_off_kaina24|kainos|google`
+plius `_do_not_export` visiems.
+
+### S990 — DU SAVO DEFEKTAI, KURIUOS PAGAVO DRY-RUN
+
+**v2.0.1:** paleidimas kabеjo ant `init` — ten WooCommerce duomenu saugyklos dar
+neparuostos ir `wc_get_product()` grazina false VISOMS. Dry-run: 2 235 kandidatai,
+0 irasyta, 0,3 s. Perkelta i `wp_loaded`.
+
+**v2.0.2:** aprasymo valymo eiles tvarka buvo atvirkscia. Bazeje aprasymai
+laikomi su UZKODUOTOMIS zymemis (`&lt;p&gt;`); nuvalius zymes ir tik paskui
+dekodavus esybes, jos atsiversdavo atgal i HTML. Teisingai: dekoduoti, valyti,
+tada tvarkyti likusias esybes.
+
+### S991 — GENERAVIMAS VEIKIA
+
+```
+kandidatai 2 235 · irasyta 2 232 · be kainos 3 · be GTIN 453
+sekundes 15,6 · atminties pikas 112 MB (riba 256)
+/feed/kaina24 200 · 5,87 MB · 2 232    XML GALIOJA
+/feed/kainos  200 · 5,35 MB · 2 232    XML GALIOJA
+/feed/google  200 · 4,69 MB · 2 232    XML GALIOJA
+```
+
+`/feed/google` is pradziu 404 — nauja rewrite taisykle nebuvo isirasiusi;
+`flush_rewrite_rules()` isprendе.
+
+Palyginimui: senas petshop.lt feed'as turi 1 270 prekiu, is ju 194 nulinio
+likucio. Naujas — 2 232 ir nе vienos nulines.
+
+### S992 — v2.1.0: ADMINISTRACIJA
+
+Varneles prekes kortelеje (Prekes duomenys -> Atsargos), stulpelis prekiu sarase,
+penki masiniai veiksmai. Vizualiai patvirtinta ekrano kopijomis; JS klaidu 0.
+
+**Neuzdaryta:** stulpelis „Feed'ai" nukrenta i desini krasta ir lentelеje
+nebetelpa (14 stulpeliu). Kosmetika, savininkui parodyta.
+
+---
+
+### S993 — KATALOGO KOKYBES ATASKAITA
+
+Matuota TIK tai, kas realiai patenka i feed'us (2 235):
+
+```
+be jokiu trukumu    823        be svorio        1 156
+su trukumais      1 412        be GTIN            454
+                               silpnas apras.     200 (is ju 44 tusti)
+                               be brendo          114
+nuotrauku netruksta nе vienai · per ilgu pavadinimu 0
+```
+
+Savininko patikslinimas — filtruoti pagal likuti ir publikavima. **Patikrinta:
+filtras jau buvo idiegtas**; is 2 235 realu kieki turi 2 228, o 7 be kiekio yra
+`_manage_stock=no` (natūralūs kramtalai, DP pakuotes) — jie i feed'a eiti turi.
+Skaiciai pasikeitе vienetais, ataskaita perdaryti nereikеjo.
+
+**Patikslinimas dеl EAN:** is 454 be GTIN — 395 turi brenda (firmines, EAN
+turetu egzistuoti), 59 neturi nei brendo, nei EAN. Google reikalauja bent vieno;
+be abieju preke atmetama.
+
+---
+
+### S994 — ★ 44 APRASYMAI IRASYTI, BET KATALOGAS RODе, KAD NIEKO NEPADARYTA ★
+
+Nuotraukos parsisiustos per tilta i repozitorija (`nuotraukos/<id>.jpg`), kad
+aprasymai butu rasomi pagal tai, kas MATOMA, o ne pagal pavadinima. Radinys
+kelyje: 14990 ir 14993 („Siaures elnias pliusinis, 37 cm") — NE dublikatai,
+o du skirtingi zaislai tuo paciu pavadinimu. Tas pat 16970/16973.
+
+Irasyta 44/44, perskaitymo patikra 44/44. **Bet savininko ekrane „Be aprasymo 88".**
+
+**DIAGNOZE:** katalogas neskaito `post_content`. Filtras `sk_aprasymas` remiasi
+`_ps_pilnumas_kodai` — is anksto apskaiciuota zyma, kuria raso ATSKIRAS modulis
+`petshop-pilnumas.php` (cron 05:00). Aprasymus irasiau, zymos neperskaiciavau.
+
+Po `Petshop_Pilnumas::perskaiciuoti()` 44 prekems: 88 -> 65. Isvalе tik 23.
+
+**Priezastis (petshop-pilnumas.php:236):**
+```php
+$r['aprasymas'] = turi_sekcija($sek,['aprasym'])
+   || mb_strlen(trim(wp_strip_all_tags(post_content))) >= 120;
+```
+Riba 120. Dalis musu tekstu buvo 110–119 simboliu.
+
+### S995 — RIBA 120 -> 90 (`petshop-pilnumas.php` v1.3)
+
+Savininko sprendimas. Riba iskelta i konstanta `APRASYMO_MIN` su paaiskinimu.
+
+**SVARBU:** 120 gyvena DVIEJOSE vietose. `petshop-vartai.php` naudoja ta pacia
+riba kaip PUBLIKAVIMO VARTUS: VF/ZB preke su trumpesniu nei 120 simboliu
+aprasymu keliauja i juodrascius (2026-08 sprendimas, tuomet nukeliavo 86 prekes).
+**Vartu riba SAMONINGAI palikta 120** — ji sprendzia, kas patenka i prekyba, ir
+tai atskiras sprendimas. Pakeista tik pilnumo (rodiklio) riba.
+
+Po pakeitimo ir perskaiciavimo: 65 -> 32.
+
+### S996 — LIKUSIOS 32: 0 PASIEKTAS
+
+Sudetis: 8 musu vakarykscios (nesiekе 90), 2 visiskai tuscios, 4 TEST prekes
+(savininkas: „tegul buna — as paskui jas istrinsiu"), likusios — trumpi seni tekstai.
+
+Savininko nurodymas: rasyti MINIMALIAI, tik iki 90 simboliu. Perrasyta visiems 32,
+vidutinis ilgis 94, trumpiausias 90.
+
+```
+irasyta 32/32 · perskaityta 32/32 · pilnumas perskaiciuotas 32
+„Be aprasymo\" kataloge:  88 -> 65 -> 32 -> 0
+tusciu aprasymu publish:  44 -> 0
+```
+
+**STILIAUS STANDARTAS** (is savininko taisymu, trys raundai): 2–3 sakiniai;
+pirmas — kas tai ir kaip atrodo; antras — kam tinka (PIRKEJO NAUDA, ne prekes
+savybе); trecias — matmenys. Neisvardinti visu detaliu. Nerasyti poveikio
+teiginiu („valo dantis", „islaiko demesi"). Licenciniu personazu neminеti.
+
+---
+
+### S997 — PREKIU ZENKLAI: KA IS TIKRUJU DUODA NUOTRAUKOS
+
+114 prekiu be `product_brand`.
+
+```
+tekste rastas esamas zenklas       23   (patvirtinta: „8in1 kilimeliai",
+                                        „Trixie zaislai katems", „Beeztees Luz")
+„Gamintojas:\" laukas                1
+nuotraukose (peziureta 90)         10
+lieka be nieko                     80
+```
+
+Is nuotrauku: 15066 ir 15205 PET NOVA, 15417 Magic Cat, 15481/15527/15573 Duvo+,
+15515 Happet, 15518 Petstages, 15535 D&D Home, 19262 Trixie.
+
+**Placioji teksto paieska (43 zenklai, pilni aprasymai) davе NULI** — aprasymai
+kalba apie preke, ne apie gaminta ja.
+
+**Savininko lukestis buvo didesnis derlius; pasakyta tiesiai — 10 is 90.**
+Priezastis: AV sandelio prekes fotografuotos BE pakuotes, o zenklas gyvena
+pakuoteje.
+
+Priskirta NIEKO — zenklas keliauja i Google ir lyginamas su EAN priesdeliu,
+tad klaidingas priskyrimas kenkia labiau nei tuscias laukas. Perduota Excel
+lentele su pasiulymais, irodymu („is kur") ir nuorodomis.
+
+**Pamoka dеl nuorodu:** pirma versija turejo nuorodas i wp-admin. Savininkas:
+„man reikia svetaines, taip greiciau". Nuoroda turi vesti ten, kur zmogui
+GREICIAU, ne ten, kur techniskai teisingiau.
+
+---
+
+### S998 — SVORIAI: TAISYKLE IS DUOMENU, NE IS SPEJIMO
+
+Savininkas nurodе bruto principa (400 g konservas -> 500 g, 12 kg maisas -> 12,3).
+Pries taikant — issimatuota, kaip yra dabar:
+
+```
+780 prekiu turi ir svori, ir kieki pavadinime:
+   _weight = neto tiksliai   709  (91 %)
+   didesnis uz neto           63  (nenuoseklu: 40–750 g)
+```
+
+**Dabartine praktika yra NETO.** Eukanuba 12 kg -> 12,220, bet IAMS 10 kg ->
+lygiai 10,000. Pasiulyti du keliai; savininkas pasirinko **B (neto)** su
+isimtimis slapiam maistui.
+
+**Galutines taisykles:**
+```
+40 / 70 / 85 g      +8 g        200–415 g   +70 g
+100 g               +20 g       800 g+      +100 g
+TOFU kraikas        +150 g      sausas maistas — neto (12,5 kg lieka 12,5)
+skliaustuose kg     imamas skliaustu skaicius, ne litrai
+litrai be skliaustu NELIECIAMA (kraikams tankis != 1)
+```
+
+### S999 — ★ DVI TIKROS MIGRACIJOS KLAIDOS ★
+
+```
+Silikoninis kraikas BeloCat 18 l / 7 kg    _weight = 18   turi buti 7
+TOFU BeloCat 6 l (2,5 kg)                  _weight = 6    turi buti 2,65
+Monge monoprotein 12 kg                    _weight = 2,5  turi buti 12
+Eukanuba Active Small 3 kg                 _weight = 1    turi buti 3
+```
+
+26 kraikams i svori irasyti LITRAI — vezejui deklaruojama dvigubai daugiau, nei
+sveria, ir uz tai mokama kiekvienoje siuntoje.
+
+### S1000 — PERZIURA SULAIKе NUO SAVO KLAIDOS
+
+Is 254 nesutapimu tik 30 buvo tikros klaidos:
+
+```
+8 Churu „4 x 14 g\"  — bazeje 0,056 kg TEISINGA, klydo MANO skaitiklis
+216 „nedideliu\"     — bazeje jau BRUTO (12,220 / 15,080); mano taisykle
+                       butu juos sumazinusi iki neto ir istrynusi tikslesni
+                       duomeni. NELIESTA.
+```
+
+### S1001 — IVYKDYTA
+
+```
+uzpildyta 710 · istaisyta 30 · viso 740
+perskaitymo patikra 740/740 · 0 nesutapimu
+kopija ps-backups/svoriai_backup_20260818_122125.json
+17659 TOFU 6 l: 6 -> 2,65   ·   12452 Eukanuba 3 kg: 1 -> 3
+be svorio lieka 998 (zaislai, petnesos, guoliai — pavadinime kiekio nera)
+```
+
+---
+
+### S1002 — GOOGLE PRIEIGA TEBEUZDARYTA
+
+```
+403 · Content API for Shopping has not been used in project 683712074632
+```
+Du savininko mygtukai (§8m S985) dar nepaspausti. Q-MERCH-1 stovi.
+
+---
+
+### KOPIJOS (visos atsuka viena veiksmu)
+
+```
+gtin_backup_20260817_204552.json          GTIN (vakar)
+aprasymai_backup_20260818_095104.json     44 aprasymai
+aprasymai32_backup_20260818_110004.json   32 aprasymai
+svoriai_backup_20260818_122125.json       740 svoriai
+petshop-feeds_v100_20260818_075759.php.bak
+petshop-feeds_v202_20260818_082129.php.bak
+petshop-pilnumas_v12_20260818_103056.php.bak
+```
+
+### TECHNINES PAMOKOS
+
+- **Skaitiklis matuoja ne ta lauka.** Katalogo „Be aprasymo" remiasi
+  `_ps_pilnumas_kodai`, ne `post_content`. Pakeitus duomeni — perskaiciuoti zyma.
+- **Ta pati riba dviejuose moduliuose.** 120 simboliu: pilnumas (rodiklis) ir
+  vartai (publikavimas). Keiciant — patikrinti abu ir pasakyti, kuris nekeiciamas.
+- **`init` per anksti WooCommerce'ui.** `wc_get_product()` ten grazina false.
+  Naudoti `wp_loaded`.
+- **HTML esybiu eile:** dekoduoti -> valyti zymes -> dekoduoti likusias.
+  Atvirksciai — uzkoduotos zymes atsiverčia i HTML.
+- **Litrai nera kilogramai.** Kraikams tankis != 1; teisingas svoris dazniausiai
+  parasytas paciame pavadinime skliaustuose.
+- **Pries taisant „klaidas\" — patikrinti, ar klysta ne tavo taisykle.**
+  8 Churu ir 216 bruto irasu butu buvе sugadinti.
+
+**Auksciausias sios sesijos decision Nr.: S1002.**
+
+---
+
+## 2026-08-17/18 (naktis) — Q-MERCH: GOOGLE ZVALGYBA IR GTIN SKOLA [S971-S986]
+
+Savininko nurodymas: pradeti nuo Google Merchant Center (~10 000 EUR/metus).
+Sesija prasidejo kaip zvalgyba, o baigesi duomenu remontu ir importo saknies
+taisymu — nes zvalgyba parode, kad feed'o statyti dar nebuvo is ko.
+
+**Nakties taisykle:**
+
+> Klausiau „ar galim siusti prekes i Google". Atsakymas buvo „ne, nes 858 is
+> 1 252 GTIN yra negaliojantys". Bet tikroji problema buvo ne skaicius, o tai,
+> kad ji sukure MUSU pacIU kodas, ir kitas importas ja butu atkures. Sutvarkyti
+> duomenis neradus rasytojo — reikstu ta pati darbа kas savaite.
+
+---
+
+### S971 — INFRASTRUKTUROS ZVALGYBA (G810)
+
+```
+WP 6.9.4 · Woo 11.0.1 · EUR · kainos su PVM · salis LT
+publish 2 609 · draft 1 140 · trash 47 · variacijos 158 (39 tevai)
+tipai: simple 2 557 · variable 39 · mix-and-match 13
+matomumas: outofstock 200 · exclude-from-catalog 5 · exclude-from-search 5
+```
+
+**Feed'o piltuvelis** (savininko klausimas: ar testiniai rinkiniai kliudys —
+NEKLIUDO, jie atsijoja savaime):
+
+```
+publish                      2 609
+- pasleptos (hidden)             5
+- rinkiniai (mix-and-match)      8
+= KANDIDATAI                 2 596
+```
+
+**Lauku padengimas kandidatuose:**
+
+| Laukas | Yra | Trukumas |
+|---|---|---|
+| nuotrauka | 2 596 | 0 |
+| kategorija | 2 596 | 0 |
+| kaina > 0 | 2 593 | 3 |
+| aprasymas >=100 simb. | 2 532 | 46 tuscI |
+| brendas (`product_brand`) | 2 468 | 128 |
+| svoris | 1 244 | 1 352 |
+| `_stock_status=instock` | 2 237 | 359 |
+
+**Google kategoriju mapinimo NERA visai** — 80 `product_cat` terminu, nulis
+susiejimu su Google taksonomija. Vienkartinis rankinis darbas.
+
+### S972 — GOOGLE LISTINGS & ADS PEDSAKAI
+
+```
+gla_install_timestamp 1778001697 -> 2026-05-05 17:21 UTC
+gla_* lenteles 6, visos tuscios (budget_recommendations 4 230 = gamyklinis seed)
+gla_merchant_id opcijos NERA · pluginas neaktyvus
+```
+
+Isvada: prie Merchant Center **niekada nebuvo prisijungta** is sios WP kopijos.
+
+### S973 — ★ KAINA24 IR KAINOS.LT FEED'AI YRA NEGYVI ★
+
+```
+/feed/kaina24        -> Fatal error: memory 268435456 exhausted
+/feed/kainos         -> tas pats
+/?petshop_feed=...   -> tas pats
+memory_limit 256M · WP_MEMORY_LIMIT 40M
+```
+
+Priezastis `petshop-feeds` v1.0.0 kode: `posts_per_page => -1` + `wc_get_product()`
+kiekvienai is 2 596 prekiu i viena masyva.
+
+**Tai keicia OPS-06 prielaida.** Registre stovejo „feed URL resubmit po
+perjungimo" — bet resubmitinti nera ko, feed'as nedirba ir dev'e. Google feed'as,
+parasytas tuo paciu principu, mirtu identiskai.
+
+Teigiamas radinys: tas pats kodas JAU filtruoja `_stock_status=instock`, tad
+savininko sprendimas (be likucio nesiusti) sutampa su esama elgsena.
+
+### S974 — GTIN SKOLA: 858 NEGALIOJANTYS KODAI
+
+Google skaito WC standartini lauka `_global_unique_id`:
+
+```
+uzpildyta kandidatams   1 252
+galioja (kontroline)      394   (31 %)
+NEGALIOJA                 858
+is ju 12 simboliu ilgio   942
+```
+
+Kontrolines sumos skaiciuotos isoreje (GS1 mod-10), ne pasitikint ilgiu.
+
+**Saltiniu pjuvis:**
+
+```
+_vf_barcode   1 163 irasu · VISI lygiai 12 simboliu · galioja 0
+_ean          1 457 · 12 zn. 970 · 13 zn. 473
+_zb_ean         576 · 13 zn. 546 · galioja 97 %   <- ZB pusе svari
+```
+
+### S975 — SAKNIS PRIE SALTINIO: TIEKEJAS SIUNCIA 12 SIMBOLIU (G816)
+
+Parsisiustas VF srautas tiesiai is fetcher'io (8 324 602 B):
+
+```
+<barcode> reiksmiu   2 326
+12 simboliu          2 326   <- VISOS
+13 simboliu              0
+```
+
+Pavyzdys `871441400856` (Antos) — prefiksas 871 yra Nyderlandu EAN-13, taigi
+tai nukirstas EAN-13, o ne amerikietiskas UPC-12. Vetfarmas savo B2B sistemoje
+barkodo lauka laiko 12 simboliu. **Mums nepasiekiama.**
+
+Atkurimas imanomas: nukirstas paskutinis skaitmuo yra kontrolinis, skaiciuojamas
+is pirmuju dvylikos.
+
+### S976 — DRY-RUN, KURIS SULAIKE NUO KLAIDOS (G814)
+
+Atkurimas patikrintas pries prekes, turincias ir pilna 13 zenklu `_ean`:
+
+```
+patikrinta poru   41
+sutapo            27   <- algoritmas veikia
+NESUTAPO          14   <- abi reiksmes galiojancios, bet rodo SKIRTINGAS prekes
+```
+
+Pvz. JOS0617 Josidog adult Sensitive 15 kg: Legacy `4032254745501`,
+VF atkurta `4032254770718`.
+
+**Be dry-run'o butume aklai perrase 14 prekiu GTIN.**
+
+### S977 — APPLY (G820)
+
+Praleisti KONFLIKTAI: 41 (VF vs Legacy) + 5 (du skirtingi galiojantys 13).
+
+```
+planuota keisti           1 963
+irase                     1 715
+„klaidu"                    248   <- update_post_meta grazina false, kai reiksme
+                                     nesikeicia; tos prekes koda jau turejo
+kopija  uploads/ps-backups/gtin_backup_20260817_204552.json (148 051 B)
+rodykle opcijoje ps_gtin_backup_failas · zurnalas ps_gtin_zurnalas
+```
+
+Keista tik `_global_unique_id`. `_ean`, `_zb_ean`, `_vf_barcode` NEPALIESTI.
+
+### S978 — NEPRIKLAUSOMA PATIKRA (G821, G822)
+
+```
+plano irasu 1 963 -> perskaityta is DB: sutampa 1 963 · nesutampa 0
+ilgiai po taisymo: 13 zn. 1 968 · 12 zn. 47 (galiojantys UPC) · 11 zn. 4 · 8 zn. 1
+ne skaiciu reiksmiu 0
+```
+
+Tai paaiskino tuos 248: jei butu buve tikros klaidos, perskaitymas rodytu
+248 nesutapimus. Rodo nuli.
+
+**Vizuali patikra (Playwright, admin slapukai):** preke 17978 Josera Sensiplus,
+laukas „GTIN, UPC, EAN, or ISBN" ekrane rodo `4032254785989`; preke 12452
+Eukanuba — `8710255120072`. JS klaidu 0. Ekranai: `screenshots/gtin_17978.png`,
+`gtin_12452.png`.
+
+Pirmas HTML bandymas (G821) grazino 10 KB puslapi be lauko — tik `logged_in`
+slapuko wp-admin'ui NEUZTENKA, reikia ir `SECURE_AUTH_COOKIE`. Iki tol
+„patikra" butu buvusi tuscia.
+
+**PRIES / PO (publish 2 609):**
+
+```
+GTIN uzpildytas   1 252 -> 2 021
+galiojantis        ~394 -> 2 015
+VF prekes su 13 zn.    0 -> 979 / 979
+be jokio kodo lieka 594 (daugiausia zaislai, aksesuarai)
+```
+
+### S979 — IMPORT #5 PERSKAITYTAS (G823)
+
+WP All Import mapinimas svarus — raso TIK `_vf_*` laukus:
+
+```
+custom_name  _vf_supplier_sku _vf_barcode _vf_brand_raw _vf_category_raw
+             _vf_cost_xml _vf_personal_xml _vf_qty _vf_description_base64
+logika       "only" · unique_key {sku_id[1]}
+is_update_*  title/content/categories/attributes/images/status = 0
+```
+
+`_global_unique_id` mapinime NERA.
+
+### S980 — ★ BET GADINO MUSU PACIU KODAS ★ (G824)
+
+`petshop-xml/includes/class-vf-import.php`, `petshop_xml_vf_create_new()`, 365-367:
+
+```php
+// 2. Bendri laukai (EAN)
+if ( $vf_barcode ) {
+    update_post_meta( $post_id, '_ean', $vf_barcode );
+    update_post_meta( $post_id, '_global_unique_id', $vf_barcode );
+}
+```
+
+Blokas **neturi `$is_update` apsaugos** — priesingai nei zemiau esantis SKU
+blokas (`if ( ! $is_update && $vf_sku )`). Kelias iki jo neisvengiamas:
+atnaujinant VF preke `find_by_ean()` ir `find_by_sku()` ieko ISSKYRUS pacia
+preke (`$skip_id`), atitikmens neranda, einama i B scenaiju.
+
+**Kitas Import #5 butu grazines 979 prekes atgal i 12 simboliu.**
+
+`attach_to_existing()` (283-287) liecia tik `_vf_*` — 1 163 suporuotoms
+prekems gresmes nera.
+
+### S981 — v1.5.7 IDIEGTA (G825-G827)
+
+Pridetos `petshop_xml_gtin_normalize()` ir `petshop_xml_gtin_check_digit()`;
+EAN blokas normalizuoja pries rasyma. **`_vf_barcode` paliktas ZALIAS** — jis
+yra suporavimo raktas `Petshop_EAN_Lookup::find_by_ean()` uzklausoje.
+
+```
+senas MD5  8a98db315695931f4542feed51a59c03  (sutapo su nuskaitytu)
+naujas MD5 eed08a9ff69310d1def700d463d2ed8c  (serveryje po irasymo — sutampa)
+kopija     ps-backups/class-vf-import_v156_20260817_211108.php.bak
+repo       plugins/petshop-xml/includes/class-vf-import.php
+titulinis 200 · prekiu sarasas 200 · fatal 0
+```
+
+### S982 — ★ PAMOKA: `exec()` SERVERYJE ISJUNGTAS ★
+
+Pirmas diegimo bandymas (G826) naudojo `php -l` per `exec()` — gautas
+`Fatal error: Call to undefined function exec()`. Failas dеl to liko
+NEPAKEISTAS, nes patikra eina PRIES rasyma. Tvarka issaugojo.
+
+Sprendimas: `token_get_all($kodas, TOKEN_PARSE)` su `catch (\ParseError)`.
+Veikia be shell'o. (Tas pats budas jau buvo naudotas S518 — buvo pamirstas.)
+
+### S983 — FUNKCINIAI TESTAI (G828)
+
+```
+dirbtiniai atvejai   8 / 8  (12->13, jau geras 13, tuscias, raides, 5 zn., 11 zn.)
+idempotencija        979 VF prekiu: 965 sutaps su tuo, kas jau lauke
+_vf_barcode          1 163 x 12 simboliu — liko zalias
+```
+
+Idempotencijos skaicius yra irodymas, kad regresija uzdaryta: kitas importas
+rasytu tiksliai tas pacias reiksmes.
+
+Likusieji 14 skirtumu = tos pacios konfliktines prekes.
+
+### S984 — SAVININKO SPRENDIMAI
+
+```
+Q-MERCH-2  feed'as SAVAS (ne GLA pluginas) — vienas variklis, trys isvestys
+Q-MERCH-3  prekes be likucio i feed'us NESIUNCIAMOS (Google, Kaina24, Kainos.lt)
+           motyvas: paspaudimai mokami, o preke neperkama
+14 KONFLIKTU  variantas 1 — priimti VF kaip tiesos saltini; kitas Import #5
+           uzrasys VF versija, veiksmu nereikia
+```
+
+### S985 — GOOGLE API: PRIEIGA YRA, BET UZDARYTA
+
+Tiltas turi `GTM_SA_JSON` (paslaugos aktas is GTM darbu).
+
+```
+client_email  claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com
+token         200 (JWT RS256 veikia)
+authinfo      403 — Content API for Shopping neijungtas projekte 683712074632
+```
+
+Detale: paslapties turinys yra JSON BE isoriniu rieziniu skliaustu —
+`JSON.parse('{'+raw+'}')`. Trys pirmi bandymai krito, kol tai isaiskejo.
+
+**Reikia savininko (du veiksmai):**
+1. Google Cloud, projektas `prefab-envoy-482617-b4` -> ijungti Content API for Shopping
+2. Merchant Center -> Naudotojai -> prideti ta pati adresa (uztenka Skaitytojo)
+
+### S986 — NEUZDARYTA SIAME BLOKE
+
+```
+1. Feed'o variklis — reikia perrasyti su paketais (dabartinis mirsta ties 256M)
+2. Google kategoriju mapinimas — 80 kategoriju, nulis susiejimu
+3. 594 prekes be jokio kodo — i Google eis brand + mpn(SKU) + identifier_exists:no
+4. 128 prekes be brendo · 46 be aprasymo · 3 be kainos
+5. 4 CATIT prekes su 11 zenklu kodais (19042, 19045, 19048, 19051) — sena skola
+6. Merchant Center paskyros bukle — nezinoma iki S985 dvieju veiksmu
+```
+
+**Auksciausias sios sesijos decision Nr.: S986.**
+
+---
+
+## 2026-08-17 (naktis) — SARGAS GYVAI, DNS ISMATUOTAS, ABU PERJUNGIMO PLANAI [S713-S720]
+
+Vakaro tesinys. Trys ivykiai, is kuriu du atejo NE is testu, o is savininko
+ekrano kopiju.
+
+**Nakties taisykle:**
+
+> `wp_mail()` grazino `true` abiem atvejais. Formatavimo klaida matesi TIK
+> gavejo ekrane. O melaginga aliarma parode ne testas, o pats pirmas realus
+> laiskas. Modulis, kuri buciau paskelbes baigtu, pirma pirmadieni butu
+> atsiuntes neskaitoma kamuoli, o pirma ryta — melaginga pavoju.
+
+---
+
+### S713 — `petshop-sargas.php` v1.0 IDIEGTAS (DOD-13)
+
+```
+failas 12 539 B · MD5 sutampa · klase YRA
+lentele ps_sargas_klaidos · variklis InnoDB (musu ENGINE nurodymas suveike)
+cron kasdien 04:00 · savaitinis pirmadieniais
+laukiami cron'ai: 50 — atrasti AUTOMATISKAI, vardai nehardkodinti
+klaidu gaudymas VEIKIA (testinis irasas pagautas, po to isvalytas)
+parduotuve 200 · katalogas 200
+```
+
+**SPF/DKIM patikra praejo** — laiskas pasieke `terra@gyvunai.lt`. Tai pirmas
+realus isorinio siuntimo is naujo domeno irodymas.
+
+### S714 — v1.1: LAISKAI HTML SU `<pre>`
+
+**Savininko ekrano kopija parode:** Outlook virsuje rodo „We removed extra
+line breaks from this message" — gryname tekste jis nusprendzia, kad tai
+„flowed" tekstas, ir ISMETA eiluciu luzius.
+
+Testiniam laiskui nesvarbu. Bet savaitine suvestine sudelioja stulpeliais
+(`atsiskaite: 47` / `tyli: 3` / `warning 12 unikaliu / 340 kartu`) — suplakta
+i viena kamuoli ji butu neskaitoma.
+
+Sprendimas: `Content-Type: text/html` + `<pre>` blokas su monospace. Isiusta
+REALI suvestine — savininkas patvirtino, kad lygiavimas issilaike.
+
+### S715 — v1.2: MALONES LAIKAS IR „IRODYTU" CRON'U TAISYKLE
+
+**Pirma reali suvestine parode:** `atsiskaite: 6 · tyli: 44`.
+
+Rytojaus 07:00 patikra butu issiuntusi pavojaus laiska apie 44 cron'us —
+MELAGINGAS signalas: modulis idiegtas pries desimt minuciu, o dev'e nera
+lankytoju, per kuriuos WP-Cron apskritai paleidziamas. Dalis tu 44 cia
+nepasileis niekada, o produkcijoje su srautu — pasileis.
+
+```
+1) 48 val. po idiegimo — jokiu pavojaus laisku
+2) po ju pavojus TIK tiems, kurie BENT KARTA atsiskaite (irodyta, kad veikia)
+   arba yra MUSU (ps_ / petshop_ / action_scheduler)
+3) svetimi, kuriu niekada nemateme — ne musu reikalas, lieka tik suvestineje
+```
+
+**Patikrinta realiai:** paleistas `kasdien()` tiesiogiai — laisku kaip buvo 0,
+taip ir liko. Tylejo.
+
+> **Sargas, kuris rekia pirma ryta, yra sargas, kurio antra savaite
+> nebeskaitai.**
+
+**DOD-13 UZDARYTAS. DOD-20 septyniu dienu laikrodis paleistas.**
+
+**Salutinis produktas:** lentele `ps_sargas_klaidos` is esmes YRA tas
+`klaidos.md` registras, kurio reikejo DOD-02/03 matavimui. Tikrinti, ar
+uztenka punktui uzdaryti.
+
+---
+
+### DNS ISMATUOTAS — B SCENARIJUS, BET SU DVIEM RADINIAIS
+
+```
+sis serveris (avesa.lt, dev.avesa.lt)   79.98.29.24
+petshop.lt A                            213.226.161.16  ← eShoprent
+petshop.lt A (ANTRAS)                   213.226.161.15  ← eShoprent
+www.petshop.lt                          CNAME → petshop.lt
+A TTL 3600 · NS TTL 86400
+NS: ns1-ns4.serveriai.lt
+MX: isopas.serveriai.lt
+SPF: v=spf1 a mx include:spf.serveriai.lt include:sendersrv.com ~all
+eShoprent svetaine: HTTP 200, nginx/1.22.1, gyva
+```
+
+**RADINYS 1 — REGISTRAS §8a NETIKSLUS.** Ten uzrasyta „DNS valdomas iv.lt".
+Realiai zona yra ns1-ns4.serveriai.lt; iv.lt greiciausiai registratorius.
+Praktine reiksme didele: **A irasa keiciam SAVO DirectAdmin'e**, be trecios
+salies ir be laukimo. Didziausias palengvejimas visame plane — ir jis buvo
+uzrasytas neteisingai.
+
+**RADINYS 2 — A IRASU YRA DU.** Pakeitus tik viena, dalis srauto toliau eitu
+i eShoprent, ir tai atrodytu kaip atsitiktiniai gedimai, ne kaip klaida.
+
+**Paštas ir SPF jau serveriai.lt puseje** — perjungiant ju liesti nereikia.
+
+---
+
+### DOD-18 IR DOD-19 PARASYTI
+
+`dokumentai/DOD-18_perjungimas.md` · `dokumentai/DOD-19_rollback.md`
+
+**Savininko sprendimas: migracija NAKTI.** Is to seka:
+
+```
++ nera pirkeju → nera uzsakymu → duomenu atstatymas LIEKA ATVIRAS
++ TTL 1 val. nakti kainuoja beveik nieko
++ 04:00 backup ir naktiniai importai — PIRMAS realus ju testas naujoje
+  aplinkoje, stebimas gyvai, o ne randamas ryta
+− serveriai.lt palaikymo nakti NEBUS
+− dirbama vienam ir pavargus
+```
+
+> **Is dvieju minusu seka pagrindine plano taisykle: planas vykdomas
+> MECHANISKAI, be sprendimu priemimo. Kiekvienas „reikes pagalvoti" 03:00
+> yra klaidos vieta.**
+
+**VIETA, KURIOS ANKSCIAU NEMATEME:** tarp Site URL pakeitimo i `petshop.lt`
+ir DNS perjungimo parduotuve nepasiekiama NE VIENU adresu — senasis jau
+nebeveikia, naujasis dar nerodo. Nakti nekainuoja, bet zinoti reikia is
+anksto, kad 02:40 nekiltu panika.
+
+**DIDZIAUSIA RIZIKA IVARDYTA ATSKIRAI:** F-PSR (Paysera pilnas ciklas)
+NETESTUOTAS, ir pagal plana 4.4/16 zingsnis butu PIRMAS kartas. To daryti
+negalima — mokejimu integracija aiskinamasi ne 03:00 be palaikymo.
+**Paysera nuo siol yra KRITINIS KELIAS: ji blokuoja perjungimo nakti, tad
+perjungimo datos negalima fiksuoti, kol F-PSR neuzdarytas.**
+
+---
+
+### S720 — JUODRASCIU AUDITAS (Q-R7): ATSAKYMAS KITOKS, NEI ATRODE
+
+Savininko pozicija buvo: „jie uzdaryti ir mums nemaiso". Kasdieniam darbui —
+tiesa: kliento nemato, i paieska nepatenka, MnM rinkiniu ju nepriima.
+
+**BET:**
+
+```
+juodrasciu            1 140  (su likuciu 547 · per 7 d. nauji 99)
+_vf_supplier_sku       184   ← UZSTOJA VF importa
+_zb_supplier_sku       486   ← UZSTOJA ZB importa
+                       ---
+                       670
+```
+
+Priezastis — `block_vf_create` salyga tikrina `post_status != 'trash'`, NE
+`= 'publish'`. Juodrastis su tiekejo SKU importui atrodo kaip suporuota
+preke, ir naujos prekes kurimas blokuojamas.
+
+**Sarase guli butent tai, ko visa vakara ieskojome:** `JOS0398`, `JOS0439`,
+`NGCSB03`, `NGCST03` — NAUJOSIOS Josera ir Exclusion pakuotes, tos paciso,
+kuriu VF sraute YRA. Jos jau atkeliavo, bet liko juodrasciuose ir dabar
+uzstoja pacios save.
+
+**Kodel jos ten (priezasciu pjuvis):**
+
+```
+313  konservas_below_minimum      kainos filtras
+104  qty_zero                     nulinis likutis kurimo metu
+ 39  missing_image / description
+ 21  qty_zero, qty_zero
+ 20  qty_zero_on_new
+```
+
+Tai NE siuksles — tai prekes, neatitikusios ijimo taisykliu TUO MOMENTU,
+kai atejo.
+
+**Augimas:** 2026-06 → 950, 07 → 81, 08 → 104. Kuriami toliau.
+
+**ISVADA:** Q-R7 nera valymo klausimas. Tai TAS PATS klausimas kaip
+Q-VF-KAT, tik is kitos puses: ijimo taisykles (`konservas_below_minimum`,
+`qty_zero`) galbut per grieztos, ir del ju asortimentas neatsinaujina.
+**Sprendimas prekybinis, ne techninis — savininkas nurode prie prekiu
+nelisti.**
+
+---
+
+---
+
+## 2026-08-17 (vakaras) — SANDELIU MODELIS: KAS PAAISKEJO PJUVIU PAGAL PAVADINIMA [S920-S970]
+
+Diena, kurioje nebuvo idiegta NE VIENO modulio, o verte sukure keturi
+matavimai. Du is ju apverte prielaidas, kuriomis remesi ankstesni
+dokumentai.
+
+**Dienos taisykle:**
+
+> Registras atsako tik i ta klausima, kuri jam uzduodi jo kalba.
+> `ps_sources` rode 0 dvigubu prekiu — ir tai buvo tiesa. Bet savininkas
+> pasake: „ieskok ne pagal kodus, o pagal pavadinima". Tas pats katalogas
+> tuo pat metu turejo 27 VF prekes, sedincias AV sandelyje. Kodai ju
+> nesusiejo, nes jos ir nebuvo susietos — butent tai ir buvo problema.
+
+---
+
+### S920-S923 — §29 FULFILLMENT: AUDITO PRIELAIDA BUVO KLAIDINGA
+
+Auditas teige: „12 neuzdarytu punktu, saknis — resolveris neskaito
+`_ps_sandelis`". Palyginus VISAS 3 749 prekes:
+
+```
+sutampa        3 732   (99,5 %)   trukme 3,5 s, atmintis 108 MB
+nesutampa          17   (0,5 %)
+```
+
+**Is 17 nesutapimu resolveris teisus 12 kartu.** Klaidingas dazniau yra
+`_ps_sandelis`. Sesios prekes su `_ps_sandelis=vf` yra surenkamu rinkiniu
+LAUKAI (`_ps_laukas=yes`) — be SKU, be EAN, be jokio VF meta. Resolveris
+joms teisingai atsako `legacy`.
+
+**Todel audito siulymas — perjungti resolveri skaityti `_ps_sandelis` —
+butu REGRESIJA, ne pataisymas.**
+
+Trys radiniai, kuriu niekas nemate:
+
+```
+34909 FLEXI pavadelis    PUBLISH, be _ps_sandelis, be ps_sources irašo,
+                         bet _vf_qty=10. Kataloso langui jos „nera".
+                         Su ja dar 4 — naujos prekes i registra nepatenka.
+ps_sources              6 irasai su source='VF' DIDZIOSIOMIS (visur kitur 'vf').
+                         Bet koks ===' vf' ju nepagaus. Poveikis nepatikrintas.
+du pasauliai            NE VIENAS failas nenaudoja abieju. Pirkejo puse
+                         (FBT, akcijos, tema, M8) — ant resolve(). Admin puse
+                         (katalogas, gavimas, rinkiniai) — ant _ps_sandelis.
+                         Kai nesutaria, niekas nepranesa.
+```
+
+Is 12 §29 punktu nuo resolverio realiai priklauso TRYS (2, 3, 12), ne visi.
+Pilna ataskaita: `dokumentai/petshop_fulfillment_tyrimas_2026-08-17.md`.
+
+---
+
+### S930-S934 — PASLEPTA PREKE RINKINYJE: VEIKIA (empiriskai)
+
+Savininko klausimas: ar galima preke padaryti „ne public", o is jos
+sudaryta rinkini palikti public?
+
+**Atsakymas: TAIP, bet tik `publish` + `hidden`, ne `draft`.**
+
+MnM 2.8.7 `WC_MNM_Child_Item::is_visible()` tikrina TIK statusa:
+```php
+$visible = 'publish' === $this->get_product()->get_status() || current_user_can(...)
+```
+Katalogo matomumas jam nerupi. Todel `draft` neveiktu, o `publish+hidden` veikia.
+
+**Testas (sukurta, patikrinta, istrinta):**
+```
+paslepta preke   is_visible=false · kataloge NERA (2 604 is 2 615) · paieskoje NERA
+                 is_purchasable=true · likutis veikia
+rinkinys         is_allowed_child=true · vaikas matomas · NUORODA TUSCIA
+i krepseli       PAVYKO, klaidu 0, suma skaiciuojasi
+isvalyta         liko 0
+```
+
+**Netiketas priedas:** MnM paslepta preke NEGENERUOJA nuorodos i jos
+puslapi (`get_permalink()` grazina ''). Papildomo „neperkama atskirai"
+filtro gali ir nereiketi.
+
+**KLAIDA PAKELIUI:** pirmas testas luzo — `set_child_items()` daviau plikus
+ID, o jis laukia masyvo su `product_id`. Liko vienas nesvarus irasas,
+istrintas kitu paleidimu. Parasa reikejo perskaityti PRIES rasant.
+
+**RADINYS:** 35 naslaiciu eilutes `wc_mnm_child_items` (vaikai be konteinerio).
+Daugiausiai 2 galetu buti mano testu. Kiek buvo pries — nepamatuota.
+
+---
+
+### S940 — DVIGUBU SALTINIU MASTAS: NULIS (ir tai klaidino)
+
+```
+ps_sources eiluciu   3 828   ·   prekiu   3 828   <- po VIENA kiekvienai
+prekiu su 2+ saltiniais                       0
+_own_stock_qty > 0                            0
+_cost_price IR _vf_cost toje pacioje          0
+```
+
+Ankstesne aritmetika (3 828 − 3 749 = 79 dvigubos) buvo KLAIDINGA:
+skirtumas — registre likusios prekes, kuriu `posts` lenteleje nebera.
+
+**Uzsakymu logika jau pastatyta** (2026-08-05, penki moduliai vietoje):
+`AV_Order` fiksuoja `_ps_source` KIEKVIENAI eilutei (prioritetas 5),
+`AV_Reduce` nurašo pagal EILUTES saltini, `AV_Limit` riba = AV + tiekejas.
+
+**SPRAGA:** `_ps_savikaina_vnt` minimas TIK `petshop-statistika.php` ir tik
+kaip konstanta. Fiksavimo, kuris ziuretu i eilutes `_ps_source` ir imtu tos
+prekes savikaina IS TO SANDELIO, NERA. Siandien nekliudo (dvigubu 0), bet
+tai vienintele NEGRIZTAMA vieta: praejusio menesio pelno neperskaiciuosi.
+
+---
+
+### S941 — PJUVIS PAGAL PAVADINIMA: 27 VF PREKES AV SANDELYJE
+
+Savininko nurodymu paleista paieska ne pagal kodus, o pagal pavadinima.
+
+```
+tiksliai vienodi pavadinimai   44 grupes · 89 prekes
+is ju skirtingi sandeliai       2 (abu nekalti)
+panasumo poros >=0.80          38 — beveik visos VARIANTAI (1kg vs 10kg,
+                                   skirtingi baltymai, FLEXI spalvos)
+```
+
+Panasumas davė mazai. **Verte davė kryzminis pjuvis:**
+
+```
+27 prekes: Josera / JosiDog / Exclusion / Green Petfood
+           su _ps_sandelis = av
+           NE VIENA neturi _vf_cost
+           11 is ju turi VF formato SKU (JOS0418, HYVM11, INPM11...)
+```
+
+Su realiais likuciais: Intestinal 18/39/41 vnt., konservai 17–32 vnt.
+
+**IR KETURIOS PUBLISH SU LIKUCIU 0:** 18563 elniena, 18569 antiena,
+18608 arkliena, 18623 Hepatic. Klientas mato „nera", VF tuo metu turi.
+Tai ne tik isaldyti pinigai — tai prarasti pardavimai kasdien.
+
+---
+
+### S950-S960 — KODEL JOS TEN: NE BANAS, O NESUPORAVIMAS
+
+Rastas mechanizmas: `petshop_xml_block_vf_create()` (v1.5.16, S100).
+Jo antrastes komentaras aprašo BUTENT si atveji:
+
+> VF prekes (Josera, Exclusion, Churu), kurios YRA Legacy sandelyje
+> (SEO/istorija), turi buti SUPORUOTOS su VF XML. Legacy duoda pavadinima/
+> aprasyma/PARDAVIMO KAINA; VF duoda savikaina + `_vf_qty`.
+> Match raktas: VF `sku_id` <-> Legacy `_vf_supplier_sku`.
+
+Blokas atsirado del realios problemos: VF Import #5 kure **78 dublikatus
+KAS IMPORTA** (Josera/Exclusion/Churu — visa monoprotein/hipoalergine nisa).
+
+**PATIKRA (S960) — lemiamas skaicius:**
+
+```
+prekiu su _vf_supplier_sku     1 163   (VISOS ir su _vf_qty)
+tu 27 suporuota                    0
+tu 27 SKU kaip kitos prekes _vf_supplier_sku   0
+tu 27 _manual_price_override       0 (NE VIENA neuzrakinta)
+```
+
+**ISVADA: modelis „viena preke — du sandeliai" suprojektuotas dar birzeli
+ir VEIKIA — 1 163 prekes tai irodo.** Tos 27 stovi ne uz bano, o uz
+suporavimo slenkscio: turi teisinga SKU, bet ne tame lauke, kurio ieško
+importas (`_sku`, ne `_vf_supplier_sku`).
+
+**SAVININKO SIULYMA NUIMTI BANA REIKIA VERTINTI ATSARGIAI:** nuemus
+`block_vf_create` grizu 78 dublikatai per importa tiems 1 163, o sios 27
+VIS TIEK liktu nesuporuotos — problema ne ten. Skirtumas tarp „durys
+uzrakintos" ir „mes prie duru nepriejom".
+
+---
+
+### KAS LIKO SIAM KLAUSIMUI (vienintelis nezinomasis)
+
+```
+1  ar INPM11 / AM20 / PM37 ir kiti 27 SKU SIANDIEN yra VF XML sraute
+   (jei taip — suporuojam; jei ne — reikia kito sprendimo)
+2  ar VF update tikrai NERASO i kainos laukus
+   KOMENTARAS taip sako. Kodo NEPERSKAICIAU. Is komentaro nepriimu:
+   siandien jau turejome atveji (§29), kur komentaras klaidino 10 savaiciu.
+   Kritiska, nes tu 27 _manual_price_override tuscias — apsaugos nera.
+3  eksportas is gyvosios petshop.lt (savininkas) — atsakys, ar tie
+   18/39/41 vnt. realiai lentynoje, ir kokie buvo tikrieji uzraktai
+```
+
+**SAVININKO SPRENDIMAS del kainu perkelimo is gyvosios petshop.lt:**
+apimtis tik AV prekems (VF/ZB kainas skaiciuoja taisykles, likuciai is XML);
+tikrasis perkelimas T-3, kai katalogas uzsaldytas; SIANDIEN naudojam kaip
+IRODYMA, ne kaip importa.
+
+---
+
+### TILTO GEDIMAI (4 per sesija — ivardijama, ne slepiama)
+
+```
+2x GitHub API 503 (ju puse) · 1x runner.mjs sed grandine sugadino faila
+1x failo vardas virto u970 vietoj b970, snippetas grazino HTML vietoj JSON
+```
+
+Pamoka: **runner.mjs rasyti is naujo kiekvienam paleidimui, ne per `sed`
+grandine.** Ketvirta klaida sustabde `block_vf_create` kuno skaityma —
+pagal anti-rabbit-hole ivardyta ir palikta rytdienai.
+
+---
+
+---
+
+## 2026-08-17 (diena) — MyISAM -> InnoDB: 177 LENTELES, PLIUS SARGAS, KAD NEGRIZTU [S902-S912]
+
+Diena, kurios pagrindinis darbas truko 17 sekundziu, o visa kita buvo
+matavimai pries ir po. Uzdaryta REGISTRAS eilute `P1-MYISAM`, kabejusi
+nuo 2026-08-03.
+
+**Dienos taisykle:**
+
+> Pries prasant savininko kazko, ka jis galbut jau padare — PATIKRINTI
+> REGISTRA. Papraseiau DB eksporto pries migracija; §8f-§8h juodu ant balto
+> sako, kad automatinis backup'as i Backblaze veikia nuo 08-04, o atstatymo
+> testas 174/174 praejo. Savininkas: „Ar vel tau eilini karta siurprizas?"
+> Tai ta pati klaidu rusis, del kurios rasomas sis zurnalas.
+
+---
+
+### S902 — KATALOGAS v8.6.5b -> v8.7 (NORMALUS DARBINIS LANGAS)
+
+Savininkas atsiunte tris ekrano kopijas: sarase matosi 1-4 prekiu eilutes,
+o po jomis tuscia balta erdve iki lango apacios.
+
+**Priezastis — v8.6 koncepcija, ne klaida joje.** v8.6 „du slinkties laukai"
+darė taip: langas = ekrano aukstis, virsus fiksuotas, o prekiu laukui
+atiduodama „kas liko" po JS matavimu (`aukstis()`). Realiame ekrane su WP
+juosta, musu juosta, filtrais ir suvestine „kas liko" buvo 120 px.
+v8.6.1-v8.6.5b buvo penki bandymai ta matavima patikslinti — visi gydė
+simptoma.
+
+**Ismesta:** `aukstis()` JS matavimai, `body.pskat-pilnas`, `.pskat-layout`
+fiksuotas aukstis, `.pskat-main` flex-stulpelis su `overflow:hidden`,
+`.pskat-lent-lauk` vertikalus scroll'as ir aukscio ribos.
+
+**Palikta:** filtru suskleidimas (v8.6.2-8.6.4), `update-nag` slepimas,
+sticky kaires eiles. Vietoj matavimu masinerijos liko VIENAS matavimas —
+virsutines juostos apacia i CSS kintamaji `--ps-virsus`.
+
+```
+eiluciu DOM              50 (visas puslapis)
+lauko aukstis            3 868 px (buvo ~120)
+puslapis slenka          taip
+suvestine + puslapiavimas matomi apacioje
+JS klaidu                0
+```
+
+---
+
+### S903 — KATALOGAS v8.7 -> v8.7.1 (STULPELIU ANTRASTE NEJUDA)
+
+Savininkas: „desineje puseje virsus nejudetu, ir as slinkdamas prekes
+matyciau ka kiekvieno stulpelio reiksme."
+
+v8.7 antraste nuslinkdavo kartu su puslapiu — tai buvo mano samoningas
+kompromisas, apie kuri parasiau, bet jis netiko.
+
+**Sprendimas:** `thead th { position:sticky; top:var(--ps-virsus) }`.
+Kad sticky veiktu pries VISO PUSLAPIO slinkti, laukas negali buti scroll
+konteineris, todel `overflow-x` paliktas tik siauram ekranui (`max-width:1400px`).
+
+```
+thead_top slenkant   100 px = --ps-virsus  (juostos apacia)
+rail_top             100 px  (kaires eiles ten pat)
+patikra              ekrano kopija v871_vidurys.png
+```
+
+---
+
+### S904-S906 — RECON PRIES MIGRACIJA
+
+**S904** — bendra busena. `_cost_price` 694 (patvirtina, kad S881-S901
+importas ivyko), Redirection lenteliu 0 (pluginas NEINICIALIZUOTAS),
+MyISAM 177 is 191.
+
+**S905** — variklio auditas. Trys skaiciai, kurie nuleme visa plana:
+
+```
+FULLTEXT indeksu MyISAM lentelese     0    <- pagrindinis blokeris NERA
+indeksu virs 3072 B                   0    <- antras blokeris NERA
+default_storage_engine             MyISAM  <- TIKROJI SAKNIS
+```
+
+Trecias radinys svarbiausias ir audite jo nebuvo: konversija be jo yra
+vienkartinis valymas, o ne sprendimas — kita nauja lentele vel gimtu MyISAM.
+
+**Taip pat:** teises tik `GRANT ALL ON gyvunai2_nbpe1.*` — naujos DB kurti
+NEGALIMA, todel audito siulytas „klonas + regresija" siuo vartotoju
+neigyvendinamas. Bazes dydis 159,6 MB, tad klonas ir nebutinas.
+
+**S906** — 177 lenteliu sarasas su `COUNT(*)` PRIES, sugrupuotas pagal
+rizika (bak 11 / ps 28 / woo 36 / as 4 / kita 86 / wp_core 12) plius
+backup busenos patikra.
+
+---
+
+### S907-S909 — KONVERSIJA TRIMIS PAKETAIS
+
+Kiekvienai lentelei: `COUNT(*)` pries -> `ALTER TABLE ... ENGINE=InnoDB,
+ROW_FORMAT=DYNAMIC` -> variklio patikra -> `COUNT(*)` po. Nesutapimas
+butu uzfiksuotas kaip klaida, ne praleistas.
+
+```
+S907  bak,ps,woo    75 lenteliu   2,8 s   klaidu 0
+S908  as,kita       90 lenteliu   8,7 s   klaidu 0
+S909  wp_core       12 lenteliu   4,9 s   klaidu 0
+                   ---
+                   177            16,4 s
+```
+
+Po kiekvieno paketo: parduotuve 200, katalogas 200.
+
+```
+191 lentele InnoDB · MyISAM 0
+156,4 MB -> 314,3 MB (~2x, tiketasi; laisvos vietos 35 GB)
+```
+
+**Vizuali regresija (S909, Playwright):** parduotuve, katalogas, uzsakymai,
+WP prekiu sarasas — visi 200, JS klaidu 0, HTTP >=400 nulis.
+Kopijos: `psl_shop.png`, `psl_kat.png`, `psl_uzs.png`, `psl_prek.png`.
+
+---
+
+### S910-S911 — NEPRIKLAUSOMA PATIKRA
+
+Palyginti visu 177 lenteliu eiluciu skaiciai PRIES (S906) ir PO.
+
+```
+skirtumu            8   VISI i didejimo puse, ne vieno sumazejimo
+```
+
+Septyni akivaizdus (sesijos, ActionScheduler, snippetai, mano paties
+rasymo testas). Astuntas — `options` 1 282 -> 1 677, plius 395 per 20 min.
+NENURASYTA i „turbut cache", o pamatuota: is 1 677 dabar **711 yra
+transient'ai**, realiu nustatymu 966. Konversija truko 17 s — prarasti
+nieko nespeta.
+
+**Kontroliniai skaiciai sutampa su NEPRIKLAUSOMAIS saltiniais:**
+
+```
+prekyboje 2 615 · juodrasciai 1 134   <- savininko ryto ekrano kopija
+feeding_rows 5 549 · ps_pets 69       <- §8g atstatymo testo skaiciai
+uzsakymai 10 · vartotojai 36 · pluginai 26 · siteurl/home vietoje
+lietuviskos raides: „Trixie Draskykle stulpas" — e islikusi
+rasymas: INSERT -> SELECT -> DELETE veikia
+ROLLBACK veikia — to MyISAM nemokejo is viso
+```
+
+---
+
+### S912 — `petshop-innodb.php` v1.0 (SARGAS, KAD NEGRIZTU)
+
+Serverio `default_storage_engine` liko MyISAM ir mums nepasiekiamas.
+
+**Atmestas variantas:** `SET SESSION default_storage_engine=InnoDB` per
+`init`. Kaina — po VIENA papildoma DB uzklausa KIEKVIENAM puslapio
+atidarymui. Savininko klausimas „nieko neapkrauname dar sistemos?"
+privertė perskaiciuoti ir rasti pigesni kelia.
+
+**Pasirinkta:** `query` filtras, kuris pagauna TIK `CREATE TABLE` ir
+priduria `ENGINE=InnoDB`. Nulis papildomu uzklausu. Pigiausia atmetimo
+salyga — pirmas simbolis (`$q[0] !== 'C'`), be jokiu funkciju kvietimo.
+
+**Butinos isimtys (visos istestuotos lokaliai, 10/10):**
+
+```
+CREATE TABLE ... LIKE ...   NELIECIAMA  „LIKE x ENGINE=..." = sintakses klaida
+ENGINE= jau nurodytas       NELIECIAMA  autoriaus valia virsesne
+CREATE INDEX / TEMPORARY    NELIECIAMA
+```
+
+**Patikra gyvai:**
+
+```
+CREATE TABLE be ENGINE  -> InnoDB   OK
+dbDelta (taip kuria katalogas) -> InnoDB   OK
+testines lenteles istrintos, liko 0
+```
+
+**Apkrovos matavimas pries/po (7 matavimai, mediana):**
+
+```
+uzklausu puslapiui   70 -> 70          nulis pridetu
+titulinis            1 777 -> 1 672 ms  skirtumas triuksme
+failas               2 126 B is 1 746 KB mu-plugins
+```
+
+**LAIKINAS.** Tikrasis sprendimas — serveriai.lt pakeistas
+`default_storage_engine`. Ji pakeitus si faila galima tiesiog istrinti.
+
+---
+
+### RADINYS SALIA (neistirtas, uzrasomas kad neprazutu)
+
+`mu-plugins` — 52 failai, 1 746 KB, **kraunasi VISADA, ir kliento puslapyje**.
+Tarp ju `petshop-katalogas.php` 433 KB, `petshop-desk.php` 112 KB,
+`petshop-gavimas.php` 95 KB, `petshop-akcijos.php` 94 KB — administravimo
+irankiai, kuriu pirkejas niekada nemato.
+
+Kiek tai realiai kainuoja — **NEZINAU IR NESPEJAU**. OPcache didziaja dalies
+parsinimo panaikina; lieka virsutinio lygio kodas ir kabliuku registracija.
+Gali buti 10 ms, gali buti 100.
+
+Kandidatas atskiram darbui: isMATUOTI, ar admin moduliai kraunasi be reikalo.
+Jei taip — salyga `is_admin() || wp_doing_ajax() || DOING_CRON` modulio
+pradzioje. Pirma matavimas, paskui isvada.
+
+---
+
+## 2026-08-16 (vakaras) – 2026-08-17 (rytas) — AUDITAS IR SAVIKAINU IMPORTAS [S881-S901]
+
+> **PASTABA DEL NUMERACIJOS:** sio bloko darbas vyko kitame pokalbio lange
+> ir per-zingsniniai S numeriai ten nebuvo fiksuojami. Blokas apima tarpa
+> tarp S880 (paskutinis v1.4.8) ir S902. Skaiciai zemiau — is to lango
+> rezultatu, papildomai patvirtinti matavimu 2026-08-17 (S904).
+
+### Neuzdarytu galu auditas
+
+Perskaityti TZ v1.75, `REGISTRAS.md`, `deployment_log_v1_4_8.md`,
+prenumeratos uzrakto dokumentas ir Pet Intelligence kontraktas.
+Rezultatas — `petshop_neuzdaryti_galai_2026-08-16.md`.
+
+```
+Launch DoD          9/22 ivykdyta · 6 nepradeta · 2 nematuojami
+F19 prenumerata     vienintelis MVP punktas su 0 kodo
+Pre-launch OPS      9 is 11 raudoni
+Atviri klausimai    17 laukia savininko · 8 su praejusiais terminais
+MyISAM              160/174 (matuota 08-03; 08-17 buvo 177/191)
+SEO                 20,5 % srauto neuzdengta
+Fulfillment §29     12 punktu, saknis — resolveris neskaito _ps_sandelis
+```
+
+**Audito radinys apie pati procesa:** `REGISTRAS.md` nebuvo atnaujintas nuo
+2026-08-04, nors dirbta 12 dienu. Ta pati klaidu rusis buvo uzfiksuota ir
+ankstesniame audite.
+
+### PAYSERA — IsORINIS APRIBOJIMAS (savininko patikslinimas)
+
+Korteliu aktyvavima daro ne Paysera, o jos partneris; reikalinga gyva
+produkcijos svetaine su Mastercard/Visa zenklais; dev'e neimanoma.
+
+**Pasekme:** F19 (prenumerata su korteles tokenizacija) fiziskai
+nepastatoma pries launch — tai NE apimties sprendimas, o isorine salyga.
+F19 keliama i po-launch formaliai. Is launch blokeriu iskrenta Q6, Q10,
+Q-PSR.
+
+### Savikainu importas is Excel
+
+Saltinis: savininko `products_export_su_visomis_iki_siol_savikainomis_v78.xlsx`.
+Taisykles (savininko): pildyti TIK tuscius laukus, pardavimo kainos
+neliesti is viso, VF ir ZB praleisti — ju savikainos ateina per XML.
+
+**Recon pries rasant:** `_cost_price` yra vienintelis gyvas savikainos
+laukas (369 prekes). `_cost`, `_legacy_cost`, `_petshop_cost` — 0 prekiu
+visame kataloge. `_cost_price_manual_at` = 3, t.y. ranka per visa projekta
+ivesta tris kartus.
+
+**Penki pjuviai pries rasant — ka jie sugavo:**
+
+```
+kontrole pries 345 jau turincias   mediana 1,0000 — jokio PVM/vienetu poslinkio
+dydis pavadinime (kg/g/ml/cm)      6 nesutapimai
+pavadinimu panasumas               753 is 754 virs 0,80
+dublikatai / daugiareiksmiai       4 + 24
+savikaina pries dev kaina          6 nuostolingos
+```
+
+**Dydzio pjuvis buvo vertingiausias** — sugavo tai, ko panasumas nemate:
+
+```
+18036  Josera Mini 1 kg   <- Excel 10 kg   savikaina butu 23,85 vietoj ~4
+18058  Josera Leger 1 kg  <- Excel 10 kg   tas pats
+17250  Ontario antiena 400 g <- jautiena 200 g
+15084  kamuoliukas 12 cm  <- siuniukas 20 cm
+```
+
+Visi keturi susieti PAGAL EAN — vadinasi EAN neteisingas vienoje is
+sistemu. Atskira duomenu skola.
+
+**Rezultatas:**
+
+```
+DRY      324 rasys · 0 praleista
+APPLY    324 irasyta
+PATIKRA  324 rasta · 324 sutampa · 0 nesutampa
+_cost_price kataloge  369 -> 693   (08-17 matuota 694)
+zyme     _cost_price_source = excel_v78_20260817
+atsaukimas  ps_savikainos_bak_20260817
+```
+
+Vizuali patikra: #14951 kortele rodo savikaina be PVM 1,4941 · su PVM
+1,8079 · marza 0,81 EUR / 54,33 %, saltinis Legacy, 0 JS klaidu.
+
+**14 prekiu ATIDETA, i jas nerasyta nieko:** 7 daugiareiksmis raktas,
+4 tualetai (dev kaina 0,00, marzos patikrinti neimanoma), 2 Josera dydzio
+nesutapimai, 1 dublikatas su skirtinga kaina.
+
+**Kas lieka:** is 696 prekiu su likuciu ir be savikainos liko 372. Is ju
+352 — savininko markes (Hau&Miau 32, bioVETERINARY 10, PESS 6 ir pan.),
+kuriu tiekejo eksporte savikainos ir negali buti.
+
+**NEISPRESTA:** 116 prekiu, kurios JAU turi savikaina, skiriasi nuo Excel
+daugiau nei 5 %, ir Excel beveik visada mazesnis. Pagal savininko taisykle
+neliestos. Vienas is dvieju saltiniu neteisingas — sprendimas atidetas.
+
+---
+
+
+---
+
+## 2026-08-16 (vakaras) — PET INTELLIGENCE KONTRAKTAS P0: NUO SCHEMOS IKI VEIKIANCIO VARIKLIO [S843-S872]
+
+Diena, per kuria petshop.lt gavo ATMINTI apie savo sprendimus, o po jos —
+ir varikli, kuris tuos sprendimus priima. Idiegti SEPTYNI moduliai, sukurtos
+TRYS naujos amzinos lenteles, pakeistas vienas M8 failas.
+
+**Dienos taisykle:**
+
+> Parasu nespejam. `claim_draft()` pasirode privatus, jo parametrai buvo
+> (user_id, email, draft_id), o `begin_claim()` — (draft_id, user_id, email),
+> t.y. ATVIRKSCIAI. Trys fatal error'ai is eiles, visi is vienos priezasties:
+> `method_exists()` grazino true, o as is to padariau isvada apie parasa.
+> Reflection pasako TIESA per viena uzklausa.
+
+**Savininko procesas siai dienai (uzrakintas):** etapais, atitikties auditas
+pries kontrakta po KIEKVIENO etapo (kontrakto punktas -> kur kode -> kuo
+patikrinta), i M8 koda lendam TIK ten, kur be to neapsieinam, visa kita —
+nauji failai, revert vietoj lopymo.
+
+---
+
+### S843 — VALYMO IZOLIACIJA (`petshop-statistika.php` v2.0 -> v2.1)
+
+Kontrakto §7 kritinis pataisymas. `valyti()` tikrino agregavima TIK `laukai`
+srityje, o `DELETE` eme VISAS tos dienos eilutes:
+
+```
+SELECT COUNT(*) ... WHERE diena=%s AND sritis='laukai'   <- tikrino TIK laukai
+DELETE FROM ps_laukai_ivykiai WHERE DATE(laikas)=%s      <- trynė VISKA
+```
+
+**Radinys, kurio kontrakte nebuvo:** `ps_ataskaitu_dienos` jau turi KETURIAS
+sritis (laukai 33, pardavimai 16, parduotuve 3, piltuvelis 4). Vadinasi
+problema egzistavo ir be anketos.
+
+Trys pakeitimai: (1) trinama tik `sritis IN (valomos)`, kiekviena sritis
+vertinama atskirai; (2) `const SAUGOMOS_SRITYS = anketa|rec|refill` — KODE,
+ne nustatyme: jei kas nors irasytu 'anketa' i option, valymas vis tiek jos
+nelies; (3) ribos i options (`ps_stat_zaliu_dienos`, `ps_stat_valomos_sritys`)
+— DoD #8.
+
+**Irodymas:** 3x laukai + 3x anketa 200 d. senumo, agregatas ABIEM sritims.
+`valyti()` grazino 3 (ne 6), anketa liko 3. Su option `['laukai','anketa']`
+metodas grazino `["laukai"]`, valyti() grazino 0 — sargas veikia.
+
+---
+
+### S844-S848 — SCHEMA (`petshop-pet-kontraktas.php` v1.0 -> v1.1, NAUJAS)
+
+Recon rado, kad kontrakto raide vietomis nesutampa su realybe. Trys
+nukrypimai, visi ta pacia kryptimi — NEKURTI antro stulpelio ten, kur duomuo
+jau yra:
+
+| Kontraktas | Realybe | Sprendimas |
+|---|---|---|
+| naujas `current_food_brand_raw` | `current_food_brand` JAU pazodine ivestis | nekurti |
+| `is_sterilised` 0/1 | varchar `yes`/`no`/NULL | palikti — trys busenos jau veikia |
+| `sensitivities` JSON | kableliai `chicken,dairy` | palikti — svarbu unknown/none/known, ne formatas |
+
+`ps_pets` +4 stulpeliai. Trys naujos lenteles: `ps_pet_field_log`,
+`ps_brand_alias`, `ps_rec_log` (visos AMZINOS pagal §7).
+
+**Migracijos ataskaita:** alias 121 (AUTO 120 is 122 brand terminu, 2 dublikatai
+po normalizavimo; NEW 1 = „testas"). REVIEW eile TUSCIA — visos 5 realios
+kliento ivestys buvo tikslus sutapimai. Backfill: realus 1/1, testiniai 13/14.
+NULL liko unknown: sensitivities 6, primary_need 6, is_sterilised 6.
+
+v1.1 pridejo GDPR jungikli `ps_gdpr_rezimas` (anonimizuoti|trinti) ant
+`delete_user` ir Brand REVIEW ekrana (Petshop ataskaitos -> Brand zodynas).
+
+---
+
+### S849-S853 — IVYKIAI (`petshop-anketa-ivykiai.php` v1.0 -> v1.2, NAUJAS)
+
+§4.1 anketos ivykiai + §2 lauku istorija BE M8 redagavimo — kabinantis ant
+`rest_request_before/after_callbacks` (momentine kopija pries, skirtumas po).
+
+`petshop-statistika.php` -> v2.2: `+user_id`, `verte` 64 -> 190 (anketa_abandoned
+nesa lauku busena).
+
+**Irodyta gyvai:** POST /pet-profile sukure pet #215 -> `anketa_completed`;
+PATCH -> `profile_updated` su pakeistu lauku sarasu; field_log gavo 9 laukus
+is anketos, `current_weight_kg 12.50->14.00` is profilio, `current_food_brand_id
+royal-canin->josera` is sistemos. Brandas persisieja automatiskai.
+
+**KLAIDA v1.0 (rasta Playwright beacon instrumentacija):** fetch apvyniojimas
+GET uzklausa be options laike ne-GET -> puslapio pet-profile SARASO uzkrovimas
+zymejo anketa „baigta" -> abandoned buvo slopinamas VISADA. Pirmame rune
+atrode, kad beacon'ai neateina; instrumentacija parode, kad jie net nebuvo
+BANDOMI siusti. v1.1 metodas imamas is `o.method` arba `Request.method`.
+
+**DoD #1 uzdarytas narsykleje:**
+
+```
+anketa_started v1 -> step_started 1 -> step_completed 1 -> step_started 2
+anketa_abandoned: s1|+kas_jūsų_augintinis,augintinio_vardas|-svoris_neprivaloma
+0 JS klaidu, ses_len=0 (be sutikimo — anonimiskai, bet rasoma)
+```
+
+---
+
+### S854-S858 — REC LOG (`petshop-rec-log.php` v1.0 -> v1.2, NAUJAS)
+
+§5 sprendimu zurnalas. Sprendimo momentas = GET /pet-food-candidates/{id};
+kabliukas per REST — todel §5 pavyko BE M8 redagavimo (planuota buvo lysti).
+
+reason_code zodyno papildymai: `species_unsupported`, `no_purchase_history`.
+
+**KLAIDA v1.0:** ids emiau is rakto `id`, o payload'e jis `product_id` —
+atsakymas rode 1 kandidata, logas rase failed/0. v1.1: tikrinami id/product_id/ID,
+`kandidatu_sk` = count(candidates).
+
+DoD #3: tikras HPOS uzsakymas -> `rec_purchased rid:34956`, uzsakymas istrintas
+per `$order->delete(true)`.
+
+---
+
+### S859-S862 — GDPR IR BRAND REVIEW
+
+**Anonimizacija (DoD #10):** sintetinis uid -> field_log user_id NULL (eilute
+LIKO), rec_log NULL, ivykiai 0. Trynimo kelias irodytas atskirai. Abu uz vieno
+jungiklio.
+
+**SAVININKO SPRENDIMAS 2026-08-16:** rezimas lieka `anonimizuoti` (default).
+Grizti tik jei: (a) realus trynimo prasymas, (b) keiciama privatumo politika,
+(c) teisininkas nurodo kitaip. Klausimas neaktualus, kol nera realiu klientu.
+
+**REVIEW ekranas (DoD #4):** HTTP 200 per auth cookie, antraste+aliasas+mygtukas
+HTML'e. `patvirtinti_alias()` -> auto/1.00/patvirtino=1, ir PATVIRTINTO
+automatika nebeperraso (patikrinta atskirai).
+
+---
+
+### S863-S866 — VARIKLIS (`petshop-rec-variklis.php` v1.0 -> v1.1, NAUJAS)
+
+Iki siol sistema NEZINOJO, ka pasiulyti: `candidates()` grazindavo tik tai, ka
+klientas JAU pirko. Savininko klausimas („kaip sistema zino?") atskleide, kad
+P0 buvo pamatai po varikliu, ne pats variklis.
+
+**Filtru eile (kritimo vieta = reason_code):** rusis -> life_stage/svoris ->
+publish+rusis+VERIFIKUOTA serimo lentele -> jautrumai (TIK deklaruoti faktai)
+-> amzius (tik prekems SU pozymiu) -> likutis. Rusiavimas: need +3, steril +1,
+mono +1, hipo +1, lygiosios -> pigesnis.
+
+**Gyvas testas** (suo 12 kg, jautrus vistienai, virskinimas, sterilizuotas):
+
+```
+1724 sunu prekes -> 404 su lentele -> 317 be vistienos -> 235 pagal amziu
+-> 208 su likuciu -> TOP 3, visi balai 5, vistienos konfliktu 0
+```
+
+Neigiami: be svorio -> `missing_weight`, roplys -> `species_unsupported`.
+Visi trys sprendimai atsidure `ps_rec_log` su `variklis_v1` ir pilnu
+`inputs_json` — etapo 4 pamatai iskart pradejo dirbti tikram varikliui.
+
+v1.1: marzos svoris uz option `ps_variklio_svoriai['marza']`, **DEFAULT 0
+(ISJUNGTA)** — rusiavimo prioritetai yra savininko strateginis sprendimas.
+
+---
+
+### S867-S869 — M8 UI PAKEITIMAI (VIENINTELIS lindimas i M8)
+
+`pet-form.js` 81 586 -> 82 061 B, du pakeitimai:
+
+1. **`data-step` ant root'o** kiekviename render — tiksli zingsniu numeracija
+   vietoj `.pspet-btn` euristikos. `petshop-anketa-ivykiai.php` v1.2 stebi
+   atributa per MutationObserver; euristika liko tik atsarginiu keliu.
+2. **DoD #5:** jautrumu pill `unknown` -> `none` („Jautrumu nepastebejau").
+   Sena DB reiksme `'unknown'` skaitoma kaip sinonimas, seni NULL nepaliesti.
+
+Diegta per repo-pull su commit-pinned raw URL + MD5 sargu pries ir po.
+Patikra: draft su `sensitivities:'none'` priimtas (201), DB laukas = `none`.
+
+**`petshop-rec-ui.php` v1.0 (NAUJAS):** rekomendaciju blokas paskyroje +
+`rec_clicked`. Kai variklis grazina failed — blokas TYLIAI nesirodo (mate
+gyvai: profilis be life_stage -> bloko nera, priezastis guli rec_log).
+
+---
+
+### S870 — REFILL (`petshop-refill-ivykiai.php` v1.0 -> v1.2, NAUJAS)
+
+§4.3. `Refill_Engine::check_due()` saukia `Event_Registry::emit()` ir
+`Email_Dispatch::enqueue()`, bet WP `do_action` ten NERA. Vietoj lindimo i
+petshop-core — VEIDRODIS kas valanda:
+
+```
+refill_due           <- ps_event_log  (event_name=refill_due)
+refill_reminder_sent <- ps_email_jobs (flow=refill_due, status=sent)
+refill_purchase      <- woocommerce_checkout_order_processed
+```
+
+Stulpeliu vardai aptinkami dinamiskai (SHOW COLUMNS) — v1.0 spejo `event_type`,
+realybeje `event_name`; v1.1 kandidatu sarasas papildytas.
+
+**Kad neapsigauciau:** pirmas „refill_purchase neveikia" buvo TESTO artefaktas —
+naudojau produkta 34956, kurio nebera; `add_product(null)` davė eilute su
+product_id=0. Kodas visa laika buvo teisingas.
+
+**v1.2 dvi skolos uzdarytos:** (a) laiko zona — `Statistika::irasyti()` raso
+`current_time('mysql')` LOKALIAI, o as skaiciavau `strtotime(... . ' UTC')`
+-> ~3 val. poslinkis -> sviezias pirkimas rode `+-1d`; dabar ta pati skale ir
+neigiamas apkerpamas i 0; (b) idempotencija per order meta
+`_ps_refill_purchase_logged`. Testas: 3 hook'ai -> 1 ivykis, verte `+0d`.
+
+**Bonus:** valandinis cron'as jau suveidrodino TIKRUS liepos `refill_due`
+irasus is `ps_event_log` — adapteris dirba produkcineje grandineje.
+
+---
+
+### S871 — MAGIC-LINK E2E: 6 IS 6 NEIGIAMU KELIU
+
+Senas M8 registro punktas, kabejes nuo liepos. Visi seši scenarijai teisingi:
+
+```
+skeneris atidaro nuoroda       token active -> active   NESUNAUDOJO
+nuoroda naudojama dukart       ok -> already_claimed, pet'u 1 (be dublikato)
+svetimas juodrastis            email_mismatch, sukurta 0
+pasibaiges juodrastis          expired, sukurta 0
+pakibes claim                  claiming -> recover_stale_claims -> active
+tas pats email, dvi anketos    abi active, antra claim'inasi be konflikto
+```
+
+magic-login/request: HTTP 200, token `magic_login/active`, atsakymas
+neatskleidzia ar paskyra egzistuoja (enumeracijos apsauga).
+
+**TRYS MANO KLAIDOS, viena po kitos, visos is tos pacios saknies:**
+
+1. `claim_draft()` yra PRIVATUS — `method_exists()` grazino true, iskvietimas
+   davė fatal error. Ta pati klaidos rusis kaip `method_exists()` ant WC data
+   store. Sprendimas: `ReflectionMethod` + `setAccessible(true)`.
+2. Parametru tvarka SPETA: tikroji `claim_draft($user_id,$email,$draft_id)`,
+   o `begin_claim($draft_id,$user_id,$email)` — atvirksciai.
+3. `create_pet_result($user_id,$input,...)` — irgi atvirksciai nei maniau.
+
+**Taisykle ateiciai:** pries kviesiant SVETIMOS klases metoda — Reflection
+parasas, ne `method_exists()` ir ne spejimas is konteksto.
+
+---
+
+### S872-S880 — P1 ATASKAITOS IR ADMIN SUJUNGIMAS (ta pati diena, vakaras)
+
+Savininko sprendimas: „uzdaigiam viska iki galo, po paleidimo man ne iki
+ataskaitu bus". Todel P1 (kontrakto §6) padarytas is karto po P0.
+
+**`petshop-anketos-ataskaita.php` v1.0 -> v2.3 (NAUJAS)** — sesios skiltys ant
+esamo ataskaitu standarto v2 karkaso (`Petshop_Ataskaitu_UI`), be naujo
+karkaso kurimo. Jokiu nauju duomenu nerenkama: viskas is keturiu kontrakto
+sluoksniu.
+
+**TRYS SAVININKO PASTABOS, KURIOS PAKEITE DARBA:**
+
+1. **„Viskas viename lange — kas cia bus, kai subegs visi duomenys?"**
+   Teisinga pastaba. Tuscioje dev bazeje sesios skiltys viename ritinyje
+   atrode tvarkingai, bet su realiais duomenimis butu kilometrinis puslapis,
+   o KIEKVIENAS atidarymas paleisdavo VISU sesiu skilciu uzklausas (iskaitant
+   2000 uzsakymu istraukima). **v2.0: skirtukai** — viena skiltis = vienas
+   ekranas, skaiciuojama TIK atidaryta. Puslapio aukstis 13 000 -> 1 267 px.
+   Pasirinkimas isimenamas vartotojo meta, nes laikotarpio mygtukai eina per
+   karkaso `nuoroda()`, kuri apie `skiltis` parametra nezino ir numestu i
+   pirma skilti. Lenteles ribotos iki 50 eiluciu (`ps_anketa_eil_riba`),
+   uzsakymai iki 500 (`ps_anketa_uzs_riba`) — su prierasu, kiek is kiek.
+
+2. **„Kas ir kaip pildys Brand zodyna?"** Klausimas atskleide DVI spragas
+   mano paties darbe (`petshop-pet-kontraktas.php` v1.1 -> v1.2):
+   - **sekla buvo VIENKARTINE** — pridejus nauja brenda i WooCommerce zodynas
+     apie ji nesuzinodavo, kol kas nors jo neirasydavo anketoje, ir TAVO
+     turimas brendas keliaudavo per REVIEW eile. Dabar kabliukai
+     `created_product_brand` / `edited_product_brand` + atsarginis mygtukas
+     „Suvienodinti su katalogu" (jis ir parode, kad sekla buvo nepilna: rado
+     246 irasus ir prideje trukstama `haumiau`);
+   - **nebuvo „tai ne brendas"** — siuksles kabodavo NEW eileje amzinai.
+     Prideta busena `atmesta`: eilute lieka (tas pats tekstas nebegrizt), bet
+     is darbo eiles dingsta. Patikrinta: automatika atmesto NEBEPRIKELIA.
+   Plius canonical laukas gavo datalist su visais 122 slug'ais.
+
+3. **„Augintiniu anketos izvalgos — turbut sita reikia istrinti?"**
+   Recon parode, kad TRINTI NEGALIMA: `class-admin-reports.php` yra viso
+   „Petshop ataskaitos" meniu TEVAS (`add_menu_page`). Be jo dingtu visos
+   ataskaitos. Be to jame buvo blokai, kuriu naujoje ataskaitoje NEBUVO.
+   Savininko sprendimas: „irasyk siuos laukus i musu ataskaitas" ir „sujunk,
+   kad nebutu 2 atskiri". PERKELTA: „Kita" laisvi tekstai (4 kontekstai vietoj
+   2 — prideti current_food_free_text ir species_detail), dazniausiai
+   priskirtas maistas, rusys / kuo maitina / sterilizuoti, pirkimai is Mitybos
+   plano. Etiketes nukopijuotos IS ORIGINALO (LABELS), kad ekrane nesikeistu
+   zodziai. Tevas perrasytas i **pradzios ekrana su kortelemis**, sarasas
+   sudaromas is REALIAI uzregistruotu submenu punktu — nauja ataskaita
+   atsiras pati.
+
+**MANO KLAIDOS SIAME BLOKE:**
+
+- **KPI kortelems naudojau klase `psru-k-eile`, kurios karkase NERA** —
+  korteles krito viena po kita per visa ploti. HTML patikra rode 13 KPI ir
+  HTTP 200, viskas „gerai". Melagyste matesi TIK ekrano kopijoje. Teisinga
+  klase `psru-kpi`.
+- **Mitybos plano bloka idejau UZ ankstyvo `return`** („duomenu nepakanka"),
+  todel su 7 uzsakymais jis nepasirodydavo, nors duomenu jam pakako. Blokas
+  nuo uzsakymu slenkscio NEPRIKLAUSO — perkeltas pries patikra.
+- Perkeldamas SAMONINGAI pakeiciau viena dalyka: senasis plano blokas turejo
+  SAVO atskirus 7/30/visi filtrus. Dabar paklusta bendrai laikotarpio juostai
+  — dvi filtru sistemos viename ekrane klaidina.
+
+**Sesios skiltys:** Piltuvelis (kur sustoja + tusti laukai) · Rekomendacijos
+(reason_code su paaiskinimais + rec piltuvelis) · Paklausa (6 lenteles) ·
+Duomenu kokybe (RECOMMENDABLE vs HIGH_CONFIDENCE + tarpas + brand eile) ·
+Refill · Pinigai (su saziningu „duomenu dar nepakanka", riba 30 uzsakymu).
+
+Patikrinta narsykleje: visos sesios skiltys, 0 JS klaidu, 2,1-4,1 s.
+
+---
+
+### DIENOS PABAIGOS BUKLE
+
+```
+petshop-statistika.php        v2.2
+petshop-pet-kontraktas.php    v1.2
+petshop-anketa-ivykiai.php    v1.2
+petshop-rec-log.php           v1.2
+petshop-rec-variklis.php      v1.1
+petshop-rec-ui.php            v1.0
+petshop-refill-ivykiai.php    v1.2
+petshop-anketos-ataskaita.php v2.3   (NAUJAS)
+pet-form.js                   82 061 B
+class-admin-reports.php       pradzios ekranas (petshop-core, su backup)
+```
+
+Kontraktas P0 (§1-§5) + P1 (§6) + §7 — UZDARYTA. Zalias sluoksnis renkamas
+nuo sios dienos; atvaizdavimas tikslinamas eigoje, kai bus realiu skaiciu
+(savininko formuluote: „svarbiausia, kad zalia informacija ir visi surinkimo
+laukai suformuoti").
+
+**TAISYKLE, KURIA BUTINA ATSIMINTI:** kiekvienas naujas anketos laukas ar
+variklio parametras PRIVALO buti idetas ir i `inputs_json`, ir i
+`Petshop_Anketa_Ivykiai::LOG_LAUKAI`. Tai ta pati klaidu rusis, kuri projekte
+kartojosi jau penkis kartus — naujas laukas neitrauktas i fiksuota raktu
+sarasa.
+
+---
+
+### KONTRAKTO DoD REGISTRAS (2026-08-16 pabaiga)
+
+```
+#1  §4 ivykiai narsykleje      OK  anketa (Playwright, abandoned su lauku busena)
+                                   rec/refill — serverio keliu, ne narsykleje
+#2  ps_rec_log                 OK
+#3  rec_purchased<->order       OK
+#4  brand AUTO/REVIEW/NEW+UI   OK
+#5  sensitivities 3 busenos    OK  UI siuncia 'none', DB skiria, seni NULL nepaliesti
+#6  ps_pet_field_log 3 saltiniai OK anketa/klientas_profilyje/sistema
+#7  is_test filtravimas        OK  rasymo puseje; ataskaitu JOIN — P1
+#8  ribos = options            OK  7 nauji options
+#9  valyti() izoliacija        OK  + SAUGOMOS_SRITYS sargas
+#10 anonimizacija              OK  abu keliai, default anonimizuoti
+```
+
+**Moduliai serveryje po sios dienos (visi su MD5 sargais ir kopijomis
+`uploads/ps-backups/`, repo `deploy/` sinchronizuotas 1:1):**
+
+```
+petshop-statistika.php        v2.2
+petshop-pet-kontraktas.php    v1.1
+petshop-anketa-ivykiai.php    v1.2
+petshop-rec-log.php           v1.2
+petshop-rec-variklis.php      v1.1
+petshop-rec-ui.php            v1.0
+petshop-refill-ivykiai.php    v1.2
+pet-form.js                   82 061 B (data-step + none)
+```
+
+**LIKE (ne pamesta, ivardinta):**
+
+```
+variklis v2      slapias maistas, svorio diapazono tikrinimas, rusiavimo
+                 prioritetai (marza uz option, default 0 — laukia savininko)
+rec_clicked      vizualus paspaudimas — kai bus RECOMMENDABLE profilis
+P1               sesios ataskaitu skiltys (kontrakto §6)
+higiena          TEMP snippetu trynimas WP admin (REST DELETE neveikia)
+```
+
+---
+
+
+---
+
+## 2026-08-16 — ATASKAITU STANDARTAS v2: NUO SPEC IKI VEIKIANCIU LANGU [S813-S842]
+
+Diena, per kuria „Surenkamu rinkiniu" ataskaita is prezentacijos virto darbo
+irankiu, o vitrina pradejo matuoti save pati. Sukurti PENKI nauji moduliai,
+spec pakeltas i v1.2.
+
+**Dienos taisykle:**
+
+> Skaitikliai meluoja mandagiai. Kiekviena is siandien rastu klaidu atrode
+> kaip veikiantis kodas: deploy log'as sake OK, JS klaidu nebuvo, skaiciai
+> rodesi. Melagyste matesi TIK tada, kai ekrana pamatei akimis arba
+> perskaiciavai suma ranka.
+
+---
+
+### S813-S816 — RECON PRIES KODA
+
+Trys realybes patikslinimai, kurie pakeite spec:
+
+1. **Dydis gyvena produkto meta** `_ps_laukas_dydis` su reiksmemis „400 g",
+   „800 g", „100 g" — ne krepselio pasirinkime. Normalizuojam i „400"/„800".
+2. **Skirtukas NERA filtras dezes viduje.** Kiekvienas skirtukas — atskiras
+   dezes produktas-brolis (34942 „800 Be vistienos", 34945 „400 Monoproteinas").
+   Todel dydi ir skirtuka pildo SERVERIS is dezes produkto, ne narsykle.
+3. **HPOS ijungtas**, WC 11.0.1, PHP 8.3.20. Paruostu MnM rinkiniu ir DP paku
+   dev'e — 0 (norma).
+
+---
+
+### S817-S824 — E1, E3, E4, E5, E6 (schema, agregavimas, karkasas, du langai)
+
+| Modulis | Versija | Ka daro |
+|---|---|---|
+| `petshop-statistika.php` | 2.0 | schema v2 (+dydis, skirtukas, kiek_dezeje, irenginys), `ps_ataskaitu_dienos`, du sluoksniai, nauji uzsakymo meta |
+| `petshop-ataskaitu-agregavimas.php` | 1.0 | cron 03:15, idempotentinis dienos agregavimas, siandienos sluoksnis |
+| `petshop-ataskaitos-ui.php` | 1.0 | bendras karkasas: laikotarpis+palyginimas, KPI su delta, SVG diagrama, lentele su rikiavimu/CSV |
+| `petshop-rinkiniu-ataskaita.php` | 2.0 | 11 sekciju: KPI, tendencija, ka daryti, dydziai, prekes, drill-down, piltuvelis, kelias dezeje, dovana, irenginiai |
+| `petshop-paruostu-ataskaita.php` | 1.0 | naujas langas „Rinkiniai": kanibalizacija, DP pakopos, nuolaidos efektyvumas |
+
+**Kontrolinis skaiciavimas** (uzsakymas #34952): vaiku sumos 1961+288+297+277+
+288+280+285+277+285+297+277 = **4812 ct** — tiksliai konteinerio suma. Pelnas
+4515 → be PVM 3731 → minus savikaina 3216 → minus dovana 66 = **449 ct**.
+Ekranas rode 4,49 €.
+
+---
+
+### S825-S829 — KA PARODE PIRMOJI EKRANO NUOTRAUKA
+
+Penkios klaidos, kuriu skaiciai neparode:
+
+1. **Raw HTML ekrane.** „Kelias dezeje" antrastese matesi
+   `<i class="psru-tt" data-t=...>` — `esc_html()` naikino tooltip'a. → `wp_kses_post()`.
+2. **Melagingas procentas.** „yra 9 % deziu" reiske „1 is 11 EILUCIU", ne is
+   deziu. Vardiklis buvo ne tas. → atskiras `$vardiklis` parametras.
+3. **Graza 72,9x.** Nebuvo nei vienos dezes BE dovanos, tad cekio prieaugis
+   lygus visam cekiui. → be palyginimo grupes rodom „—".
+4. **Pelnas nesutapo:** lenteleje 5,15 €, KPI 4,49 € — trukо dovanos savikainos.
+5. „Silpna vieta" piltuvelyje zymeta net kai visi skaiciai nuliai.
+
+---
+
+### S830-S834 — E2: VITRINA PRADEJO MATUOTI
+
+**Sprendimas: atskiras modulis, laukai NEKEICIAMI.** `petshop-laukai.php` yra
+183 KB veikiancio kodo ir jokio JS ivykiu API neturi. Vietoj perrasymo —
+`petshop-statistika-vitrina.php` v1.0 kabinasi ant vitrinos DOM per delegated
+listener'ius. Jei vitrina kada persidarys, suges tik matavimas, ne pardavimas.
+
+DOM sutartis surasyta modulio antrasteje (patikrinta narsykleje):
+`.pslk-deti[data-cid]`, `.pslk-stp button[data-d]`, `.pslk-el[data-cid]`,
+`.pslk-dovk[data-gid]`, `#pslk-dov.atrakinta`, `#pslk-cta[disabled]`,
+`#pslk-kiek`, `.pslk-dbtn`, `.pslk-kort`.
+
+**Dvi klaidos, kurias sugavo tik realus testas:**
+
+- **`preke_id` buvo 907, 908...** — tai MnM `child_item_id`, ne produkto ID
+  (`mnm_quantity[19570]` sedi elemente `pslk-in-907`). Elgsena ir pardavimai
+  butu gyvene skirtingais raktais ir „idejimo dalis" NIEKADA nebutu
+  susiskaiciavusi. → PHP paduoda cid→product_id zemelapi.
+- **Piltuvelis rode „atidare 2 → prisidejo 8"** — neimanoma. Unikalios sesijos
+  buvo sumuojamos per prekiu eilutes. → atskira sritis `piltuvelis`
+  (GROUP BY be `preke_id`). Po pataisymo: atidare 2 → prisidejo 1 = 50 %.
+
+Isvalyta 13 sugadintu testiniu irasu su blogais ID.
+
+---
+
+### S835-S838 — PILNAS KELIAS IR DAR DVI KLAIDOS
+
+Playwright suvaidino visa kelia: 11 vnt. → 37,89 € → minimumas (6) → 14 vnt. →
+48,06 € → dovanos riba 45 € → dovana pasirinkta → krepselis → dydzio
+perjungimas 800→400.
+
+- **`dovana_rinko` preke buvo 0** — dovanos ID nera MnM vaikine eilute, tad cid
+  zemelapis ji pavertė nuliu. → atskira `ivykisPid()` funkcija be vertimo.
+- **`dovana_atrakinta` verte tuscia** — riba buvo skaitoma is antrastes teksto,
+  o atrakinus ten irasoma „rinkis viena" (jokio skaiciaus). → riba imama is PHP
+  konfiguracijos (`_ps_laukas_dovanos_riba`).
+
+Galutinis rezultatas — visi devyni tipai veikia: `atidare`, `rodyta`, `idejo`,
+`iseme`, `min_pasiekta`, `dovana_atrakinta`, `dovana_rinko`, `dydis_perjunge`,
+`krepselis`. `dydis_perjunge` verte „800>400", `dovana_atrakinta` — „45",
+`dovana_rinko` — 17386.
+
+---
+
+### S839-S842 — EXCEL EKSPORTAS
+
+Raimio pastaba: „kaip kitaip nagrineti". Teisinga — lenteles CSV eksportas ima
+tai, ka mato ekranas („48,12 €", „13,2 %", tarpai tukstanciuose), o Excel'yje
+tai TEKSTAS: nei susumuosi, nei pivot'o padarysi.
+
+**`petshop-ataskaitu-eksportas.php` v1.0** — savas minimalus XLSX rasytojas per
+`ZipArchive` (patikrinta: yra ir veikia). PhpSpreadsheet serveryje irgi yra, bet
+atkeliaves su importo pluginu — jei tas bus atnaujintas ar isjungtas, eksportas
+nutruktu be ispejimo. Todel jokiu isoriniu priklausomybiu.
+
+Lapai „Surenkamiems": Suvestine · Prekes · Rinkiniai · Piltuvelis · **Zali
+duomenys**. Paskutinis yra svarbiausias: visa dienos suvestine be apdorojimo,
+is jos galima susisukti bet koki pjuvi pivot'u neprasant naujos ataskaitos.
+„Rinkiniams": Rinkiniai · **Kanibalizacija** · DP pakopos · Zali duomenys.
+
+Kanibalizacijos lapas rodo tai, ko lentele ekrane nesutalpina: komponentu
+vienetai RINKINYJE ir ATSKIRAI kataloge, abu su ankstesnio laikotarpio
+stulpeliais, bendras pokytis ir verdiktas. Ankstesnis laikotarpis
+skaiciuojamas automatiskai — toks pat dienu skaicius pries.
+
+Skaiciai rasomi kaip SKAICIAI, formatavimas paliekamas Excel'iui (€ formatas
+`#,##0.00 €`, procentai `0.0%` dalimis, kad veiktu vidurkiai).
+
+**Pirmoji versija Excel'yje NEATSIDARE.** Priezastis: `<sheetViews/>` stovejo PO
+`</sheetData>` ir dar buvo tuscias. OOXML reikalauja grieztos elementu tvarkos
+(`dimension` → `sheetViews` → `sheetFormatPr` → `cols` → `sheetData` →
+`pageMargins`), o tuscias `sheetViews` neleistinas. openpyxl toki faila atidaro
+— Excel atsisako. Papildomai trukо `dimension` ir `docProps/`.
+
+Pamoka: **„openpyxl atidare" NEIRODO, kad Excel atidarys.** Nuo siol XLSX
+tikrinamas lokaliai PHP CLI (`php-zip`) + struktūros validacija: ZIP vientisumas,
+XML sintakse, elementu tvarka, rysiu (rels) taikiniai, Content_Types dengimas,
+IR antra nepriklausoma biblioteka (`xlsx2csv`).
+
+**Klaida, kuria sugavo failo patikra openpyxl'iu:** „Idejimo dalis" rode
+**225 %** (idejo 9, rodyta 4). `rodyta` fiksuojama viena karta per kortele, o
+`idejo` — kas paspaudima, iskaitant kiekio didinima. Dalis perskaiciuota
+SESIJOMIS: is tu, kas preke MATE, kiek jos isidejo. Niekada nevirsija 100 %.
+Isemimo rodiklis paliktas veiksmais — ten domina, kiek kartu preke grazinta
+atgal, o ne kiek zmoniu tai padare.
+
+---
+
+### TECHNINES PAMOKOS (SIOS DIENOS)
+
+- **Unikalus skaiciai NESUDEDAMI.** `COUNT(DISTINCT sesija)` su preke_id
+  dimensija ir tada `SUM()` duoda nesamone. Sesijoms reikia atskiros
+  agregavimo srities be prekes dimensijos.
+- **DOM `data-*` nera produkto ID.** MnM vitrinose `data-cid` = `child_item_id`.
+  Pries siejant elgsena su pardavimais — PATIKRINTI, ar tai tas pats raktas.
+- **Busenos tekstas nera duomenu saltinis.** „rinkis viena" pakeicia „nuo 45 €";
+  skaicius imti is konfiguracijos, ne is UI teksto.
+- **Palyginimo grupe gali buti tuscia.** Prieaugio ir grazos rodikliai be
+  kontrolines grupes duoda absurdus (72,9x) — tikrinti vardikli.
+- **`esc_html()` antrastese naikina tooltip'us.** Kur ideda HTML — `wp_kses_post()`.
+- **Santykiai tarp skirtingu matavimo vienetu meluoja.** Ivykiai/ivykiai davė
+  225 %; teisingas vardiklis buvo sesijos. Pries dalindamas — patikrink, ar
+  skaitiklis ir vardiklis matuoja TA PATI dalyka.
+- **XLSX be bibliotekos imanomas:** `ZipArchive` + XML. BET elementu tvarka
+  worksheet'e yra grieztа ir tusciu elementu (`<sheetViews/>`) buti negali —
+  kitaip Excel failo neatidaro, nors Python bibliotekos ji skaito.
+- **Vienas skaitytojas nera patikra.** Failo formatas tikrinamas bent dviem
+  nepriklausomomis priemonemis + struktūros validacija.
+- Snippet'e PHP klases vardas su `\\` uz string ribu = ParseError; naudoti
+  `class_exists($kintamasis)` + `call_user_func()`.
+
+---
+
+### NEUZDARYTA — ATASKAITOS
+
+```
+1. E6 DoD NEIVYKDYTAS: dev'e nera nei vieno paruosto rinkinio ar DP pako,
+   todel kanibalizacijos verdiktai (PRIDEDA/PERKELIA/PER MAZAI) parasyti,
+   bet NEPATIKRINTI su duomenimis. Reikia 2 testiniu uzsakymu — RAIMIS
+   (netariau savo iniciatyva: uzsakymai paveiktu likucius ir AVPN serijas)
+2. Produkcijai: `ps_stat_pradzia` nustatyti launch data
+3. Produkcijai: patikrinti, ar Complianz statistikos kategorija realiai
+   grazina `cmplz_has_consent('statistics')` gyvoje aplinkoje
+4. Ribos (kandidatu, lyderiu, kanibalizacijos) — kol kas numatytosios;
+   perziureti, kai susikaups realiu duomenu
+```
+
+---
+
+---
+
+## 2026-08-13 — RINKINIU LANGAS: NUO SARASO IKI VITRINOS [S781-S812]
+
+Diena apie rinkinius nuo admin saraso iki to, ka mato klientas. Langas
+`petshop-rinkiniai.php` nuo v1.0 iki **v1.24**.
+
+**Dienos taisykle:**
+
+> Kai kas nors neveikia — ziurim, KUR realiai gimsta tekstas ar paveikslas,
+> o ne spejam. Tris kartus is eiles prielaida buvo klaidinga, ir kiekviena
+> karta atsakyma dave tikras HTML/failo pavadinimas.
+
+---
+
+### S781-S784 — NAVIGACIJA IR SARASAS
+
+**Rinkiniu langas dingo is juostos.** Prekes buvo sveikos (42 MnM + 8 DP), bet
+`petshop-katalogas.php` navigacijos juostoje `ps-rinkiniai` nebuvo iraso.
+Pridetas punktas tarp „Tiekimas" ir „Uzsakymai" (failas 405 kb, kopija daryta).
+
+**Sarasas v1.4** — perdarytas galvojant apie 200+ rinkiniu:
+- nuotraukos: rinkinio miniatiura 56 px + komponentu nuotraukeles po pavadinimu
+- filtrai: tipas · **gyvunas** · busena · kategorija · marza · sandelis · paieska
+- paieska ieskо IR tarp prekiu viduje („ausis" randa ir „Jaucio ausu rinkini")
+- rikiavimas paspaudus stulpeli, korteliu vaizdas, masiniai veiksmai, CSV
+- puslapis paduoda duomenis vienu kartu, filtruoja narsykle
+
+**Gyvunu rusys imamos IS MENIU**, ne irasytos i koda: SUNIMS · KATEMS ·
+GRAUZIKAMS · PAUKSCIAMS · ZUVIMS. Rinkinys priskiriamas pagal KOMPONENTU
+kategorijas — „Churu" pavadinime gyvuno nera, bet komponentai guli po KATEMS.
+Atsiradus naujai rusiai meniu, filtras ja paims pats.
+
+**Terminologija (savininko pataisymas):** „sutvarkyta", NE „tvarkoje".
+Eiles perrasytos i darbo krepselius: „Klientas negali nusipirkti" vietoj
+„Nesurenkami", „Likutis baigiasi" vietoj „Liko mazai".
+
+---
+
+### S785-S788 — SVORIS IR SIUNTIMAS
+
+**Rasta: visu rinkiniu svoris tuscias.** 24 kg maisai siuntimo skaiciavimui
+svere nuli — i pastomata tokia siunta „tilpdavo".
+
+| Rinkinys | Svoris prekeje | Komponentu suma |
+|---|---|---|
+| 12 kg × 2 | tuscias | 24 kg |
+| 7 kg × 2 | tuscias | 14 kg |
+| Koju rinkinys | tuscias | 0,72 kg |
+
+**Sprendimas (v1.13):** svoris skaiciuojamas ir irasomas i PACIA preke (ne per
+`_mnm_weight_cumulative`) — taip matomas ir uzsakyme, ir manifeste, ir
+ataskaitose. DP pakui — bazines × N.
+
+**Siuntimo klase** parenkama pagal gradacija: iki 50 kg · 50–70 · 70–100 · 100–200.
+
+**Pastomato riba 25 kg** (savininko sprendimas):
+- klientui — virs 25 kg pastomatu pasirinkimas issijungia, lieka kurjeris;
+  skaiciuojamas VISO krepselio svoris (du 15 kg maisai atskirai telpa, kartu — ne)
+- admin — raudonas ispejimas kainodaros bloke
+
+**Papildomai rasta:** dalis komponentu (skanestai, zaislai) svorio neturi.
+Lange rodomas ispejimas „N prekes be svorio — siuntimo kaina bus neteisinga".
+
+---
+
+### S789-S795 — APRASYMAI: TRYS KLAIDOS IS EILES
+
+**1. Sekcijos suirdavo.** I rinkinio aprasyma patekus komponentu tekstams su
+antrastemis („Sudėtis", „Analizė"), aprasymu akordeonas (**snippet 512**) jas
+atpazindavo ir issikirpdavo i atskiras sekcijas — rinkinio sudetis suirdavo.
+
+**Priezastis rasta diagnostika:** 512 kabinasi ant `woocommerce_product_tabs`
+**prioritetu 98**, o mano filtras buvo 25 — jis mane perrasydavo atgal.
+Sprendimas: prioritetas **200**.
+
+**2. CSS issiliejo i puslapi.** Prekiu aprasymuose yra `<style>` blokai
+(`.b2b-black { color:#000 !important; }`) — jie krito i puslapi kaip tekstas, o
+svetimi `<div>` su savo klasemis suarde isdestyma i stulpelius.
+Sprendimas: `<style>`/`<script>` iskerpami su turiniu, CSS likuciai nuvalomi,
+paliekamos TIK teksto zymes (be klasiu ir `style=""`), `force_balance_tags`.
+
+**3. Pilni aprasymai.** Savininkas: aprasymai turi buti pilni, gal isskleidziami.
+Sprendimas: trumpas tekstas + `<details>` „Placiau apie sia preke" su pilnu
+aprasymu (lentelemis, sudetimi). Veikia be JavaScript.
+
+---
+
+### S796-S800 — VITRINOS TEKSTAI: KUR JIE REALIAI GIMSTA
+
+Klientas mate: „PRODUCT / QUANTITY", „You have selected 3 items. Add to cart to
+continue…", „(3/3 items)", „IŠVALYTI PASIRINKIMUS".
+
+**Trys bandymai, tik trecias pavyko:**
+
+| Bandymas | Kas daryta | Rezultatas |
+|---|---|---|
+| 1 | `gettext` su MnM domenu | pro sali — antrastes kito domeno |
+| 2 | `gettext_with_context` | pro sali |
+| 3 | **CSS `::after`** | veikia |
+
+**Isvada:** antrastes sablone irasytos tiesiai, be vertimo funkcijos — i
+WordPress vertimu sluoksni is viso nepatenka. CSS keitimas veikia nepriklausomai
+ir islieka po plugino atnaujinimo.
+
+Atsakyma dave narsykles recon: `<th class="product-details">` ir
+`<th class="product-quantity">`. Ten pat paaiskejo, kad reset mygtuko klase yra
+`mnm_reset`, o slepiau `mnm_reset_link` — vienos raides skirtumas.
+
+**Isversta ir sutvarkyta:** Preke / Kiekis · „Pasirinkote 3 vnt." ·
+„Isidekite i krepseli" · „Isvalyti pasirinkimus" pasleptas fiksuotiems
+rinkiniams (klientas ten nieko nesirenka) · kiekio laukelis neredaguojamas.
+
+**Komponentu bukle — be skaiciu** (savininko sprendimas): tik „Turime"/„Neturime".
+„Liko 2 vnt." salia komponento skaitosi kaip RINKINIO likutis, nors reiskia kita.
+
+**„Sutaupote" blokas** po kaina — kaip DP pakuose (#570). Rodomas tik kai
+rinkinys realiai pigesnis.
+
+---
+
+### S801-S806 — DP PAKAI: TA PATI PREKE × N
+
+Palyginus teisinga #34484 su sukurtu #34899 paaiskejo, ko truko:
+
+| | Teisingas | Buvo |
+|---|---|---|
+| Tipas | `simple` | `mix-and-match` |
+| DP laukai | `_dp_base_product_id`, `_dp_pack_qty` | nera |
+| Aprasymas | 2 551 simb. | 148 |
+| **Atributai** | **6** | **0** |
+| Kategorijos | DAUGIAU=PIGIAU + Sausas maistas sunims | tik DAUGIAU=PIGIAU |
+
+**Atributai — rimciausia spraga:** be `pa_pakuotes_dydis` ir `pa_gyvuno_rusis`
+pakas iskrenta is parduotuves filtru.
+
+**v1.6:** visi baziniai atributai perkeliami (terminai priskiriami PO save(),
+kitaip WC juos naktį pasalintu); pakuotes dydis keiciamas multipack terminu,
+jei toks jau yra kataloge (naujo NEKURIAM — terminu sarasas yra katalogo
+struktura); brendas perkeliamas; **SKU generuojamas** `DP-{bazes SKU}-{N}`.
+
+---
+
+### S807-S810 — KATEGORIJOS: TIK RINKINIAI
+
+Pirma bandyta speti rusi ir porusi pagal komponentus. Rezultatas blogas:
+misrus rinkinys atsidure po „Kita", veliau po SUNIMS.
+
+**Savininko sprendimas:** automatiskai TIK **RINKINIAI (679)**, visa kita —
+rankomis. Kur rinkinys parduodamas, yra rinkodaros sprendimas, ne balsavimo
+algoritmas.
+
+---
+
+### S811-S812 — KOMPOZICIJA
+
+**Savininko taisykle:** 2–3 prekes → **herojus + palydovai**; 4+ → **lygus
+tinklelis**. Drobe visada **kvadratine** (ankstesne 3×1 juosta kataloge virsdavo
+ruozeliu).
+
+Herojus = **brangiausia** preke (ji beveik visada ir didziausia fiziskai).
+Dalis padidinta iki **66 %** savininko praymu.
+
+**Nuotraukos nesikeite tris kartus is eiles — trys skirtingos priezastys:**
+
+1. **v1.20:** parasas skaiciavo tik komponentus, o pasikeite ISDESTYMAS →
+   i parasa itraukta algoritmo versija
+2. **v1.22:** kompozicija piese **snippet 539** funkcija
+   `petshop_generate_composition()`, nes ji buvo tikrinama pirma. Atsakyma dave
+   failo pavadinimas: `rink-composition-…` (539) vs `rink-kompozicija-…` (musu)
+3. **v1.23:** v1.21 metu parasas jau buvo atnaujintas, bet paveiksla dar piese
+   539 → v1.22 nusprende, kad kompozicija svieza, ir praleido. Versija → v3
+
+**v1.24:** nukerpami tusti balti krastai (`imagecropauto`) — gamintoju
+nuotraukose aplink preke daug tuscio ploto, del to preke laukelyje atrodydavo
+perpus mazesne.
+
+**Zenklas „N PREKES" — CSS, ne idegintas i paveiksla.** Pakeitus sudeti skaicius
+atsinaujina pats, ir nelieka pavojaus, kad paveiksle liks senas.
+
+---
+
+### KAS LIKO
+
+| Klausimas | Bukle |
+|---|---|
+| Rinkinio duomenys katalogo kortelėje | **Neuzbaigta.** Kortele iesko `_cost_price`, likucio ir `ps_sources` — rinkinys ju neturi. Sprendimas: issaugant irasyti apskaiciuota savikaina i `_cost_price`. Likucio NEIRASYTI — butu dviguba apskaita |
+| Komponentai be svorio | skanestai, zaislai — reikia uzpildyti prekiu kortelese |
+| Testinis #34899 | MnM su neteisinga vitrina — perkurti kaip DP arba istrinti |
+| Tevinis #34196 | neatkurtas, 6 dydziai nepasiekiami |
+| Susidejimo rinkiniu redagavimas | nepradeta |
+
+### DIEGIMO PASTABA
+
+Failas 130+ kb per didelis siusti POST'u — snippetas nespeja. Veikiantis budas:
+PUT i repo `deploy/`, tada snippetas parsiuncia per `wp_remote_get` ir irašo.
+Sintakses patikra pries rasyma: klase pervadinama (`Petshop_Rinkiniai_Sintakse`),
+kitaip `include` luzta su „Cannot declare class".
+
+---
+
+## 2026-08-11/13 — RINKINIAI: NUO MAKETO IKI VEIKIANCIO LANGO + LIKUCIU SARGAS [S766-S780]
+
+Trys dienos apie rinkinius. Pradzia — maketai, kuriuos savininkas atmete du
+kartus is eiles, ir teisingai; pabaiga — veikiantis mu-plugin langas ir
+uzdaryta reali skyle parduotuveje.
+
+**Dienos taisykle, kuria savininkas ivardijo:**
+
+> Pries siulant nauja sprendima — pasiziureti, kas JAU padaryta (ekrane, ne tik
+> kode), ir tai panaudoti. Ne perdaryti prasciau.
+
+### IDIEGTA
+
+| Failas | Versija | Ka issprende |
+|---|---|---|
+| petshop-rinkiniu-likuciai.php | **1.0** (naujas) | rinkinys dingsta is prekybos, kai jo neimanoma surinkti |
+| petshop-rinkiniai.php | **1.0 → 1.2** | rinkiniu sarasas, redagavimas, trynimas, kurimas is viso katalogo |
+
+---
+
+### S766-S770 — RECON: KAS REALIAI YRA
+
+43 MnM prekes, 362 komponentu rysiai, 133 unikalus komponentai, 53 konteineriai
+`wc_mnm_child_items` lenteleje (**10 siukslianiu eiluciu** — konteineriai be
+prekiu).
+
+**Du atskiri produktai, dvi mechanikos** (NIEKADA nesuplakti i viena sarasa):
+
+| | Paruostas rinkinys | Susidejimo rinkinys |
+|---|---|---|
+| Sudeti lemia | mes | klientas |
+| Kiekiai | `_petshop_component_quantities` | pool, laisvas pasirinkimas |
+| Struktura | 1 MnM preke | 1 tevine + N pasleptu MnM |
+| Marza | tiksli | intervalas (blogiausias/geriausias) |
+| Kurimo forma | snippet **539** | snippet **550** |
+| Vitrina | — | snippet **547** v19 |
+
+**Rastos spragos:**
+- Tevinis #34196 istrintas, 6 pasleptri dydziai liko publikuoti — parduotuveje
+  nepasiekiami („Susirink konservu rinkini pats" 400g ir 800g)
+- 3 is 7 paruostu rinkiniu BE fiksuotu kiekiu (#34156, #34153, #34158) —
+  klientas gali pasiimti N vnt. to paties
+- 56 is 133 komponentu be savikainos (legacy)
+
+---
+
+### S771 — MnM LIKUCIU NURASYMAS: VEIKIA (patikrinta realiu uzsakymu)
+
+Sukurtas realus uzsakymas dev'e su #34172. Krepselis issiskleide i 6 eilutes
+(konteineris + 5 vaikai su `mnm_child_id`), `wc_reduce_stock_levels` nurase
+**tiksliai pagal fiksuotus kiekius**: −2, −2, −1, −1, −1. Likuciai atstatyti,
+uzsakymai 34897/34898 istrinti.
+
+**TESTAVIMO BUDAS — svarbu:** `$order->add_product($container, 1, ['configuration'=>...])`
+**NESUKURIA vaiku** — uzsakymo eilute lieka be komponentu, ir tada atrodo, kad
+nurasymas neveikia (pirmas testas dave klaidinga „NENURASO"). Teisingai:
+
+```php
+WC()->cart->add_to_cart($CID, 1, 0, [], ['mnm_config' => $conf]);
+// $conf: [child_item_id => ['product_id'=>ID, 'quantity'=>N]]
+// child_item_id is $ci->get_child_item_id(), NE product_id
+```
+
+---
+
+### S772-S774 — RASTA SKYLE: RINKINYS PARDUODAMAS, KAI JO NERA
+
+Nuleidus komponento likuti i 0: konteineris liko `instock` ir `purchasable`,
+krepselis PRIEME rinkini be jokio ispejimo. Tas pats, kai likutis 1, o rinkiniui
+reikia 2.
+
+Iki tol nesimate tik todel, kad likuciai dideli (388, 1680, 104).
+
+**Palyginimui:** „Daugiau=pigiau" pakai (snippet **567**) tai daro teisingai —
+dinaminis `is_in_stock`, krepselio validacija, nurasymas is bazines prekes.
+
+#### Sprendimas: petshop-rinkiniu-likuciai.php v1.0
+
+Du skaiciavimai pagal tipa:
+
+- **Paruostas** (yra fiksuoti kiekiai): `min( likutis[i] / kiekis[i] )` — vieno
+  komponento truksta, rinkinio nera
+- **Susidejimo** (pool): `suma(likuciu) / min_container_size` — vienos rusies
+  pritrukus, klientas pasirinks kita
+
+Filtrai: `woocommerce_product_is_in_stock`, `woocommerce_product_get_stock_status`,
+`woocommerce_get_stock_html`, `woocommerce_add_to_cart_validation`,
+`woocommerce_check_cart_items`.
+
+**Patikrinta NARSYKLEJE, tikru kliento keliu:**
+
+| Bazines prekes likutis | Ka mato klientas |
+|---|---|
+| 4 vnt. (reikia 2) | „Turime", bet kiekio laukelio **max = 2** |
+| 0 vnt. | **„Neturime"**, mygtuko „I krepseli" nera |
+| Per daug krepselyje | Apmokejimas stabdomas su tikslia zinute |
+
+**PASTABA APIE TESTAVIMA:** programinis `WC()->cart->add_to_cart()` **apeina**
+`woocommerce_add_to_cart_validation` — sarga tikrinti TIK per narsykle, kitaip
+gaunami klaidingi rezultatai.
+
+---
+
+### S775-S778 — MAKETAI: DU ATMESTI VARIANTAI
+
+- **v1** — vienas bendras sarasas abiem tipams. Savininkas: „viskas suplakta i
+  1, o is principo tai 2 skirtingi dalykai". **Atmesta teisingai.**
+- **v2/v3** — du skirtukai + kurimas. Savininkas: „ziurek i jau padaryta modeli,
+  perskaityk visus snipetus". **Klaida: perdariau #539 filtracija i savo
+  isgalvota „rusi", nors ten jau buvo kategorija + sandelis.**
+- **v4/v5/v6** — po pilno #539/#550 perskaitymo. Kalba, laukai ir marzos zenklai
+  (**€ su ✅/❌**, NE procentai) paimti 1:1 is esamu formu.
+
+**Kategoriju medis — radinys:** filtruojant `count > 0` iskrenta TIKROSIOS
+tevines (KATEMS, GRAUZIKAMS — ju prekes guli vaikuose), o i virsu iskyla senos
+(„Animonda konservai sunims", „Miamor katems"). Reikia VISU kategoriju + meniu
+tvarkos + rekursinio skaiciavimo. ŠUNIMS su vaikais = 1699, ne 12.
+
+**SPRENDIMAI turi porusius** „Naujas suniukas", „Naujas kaciukas" — visi tusti.
+Rinkiniai ten prasosi.
+
+---
+
+### S779 — petshop-rinkiniai.php v1.0-1.2
+
+**Meniu:** Petshop prekes → Rinkiniai (`add_submenu_page('ps-katalogas', ...)`)
+
+**Sarasas:** darbo eiles (Visi · Kiekiai nefiksuoti · Be savikainos ·
+Komponentas neparduodamas · Juodrasciai · **Sutvarkyta**), savikaina, prekes
+atskirai, kaina, marza €(%), „Galima parduoti".
+
+> **Terminologija:** „sutvarkyta", NE „tvarkoje" (savininko pataisymas).
+
+**Forma:** paieska per **VISA kataloga** (2 566 prekes) — filtrai kategorija
+(medis su palikuonimis) · **svoris `pa_pakuotes_dydis`** (82 reiksmes, rikiuotos
+pagal tikra dydi) · sandelis · savikaina · tekstas. Rezultatuose: nuotrauka,
+svoris, savikaina, pard. kaina, marza, likutis.
+
+**Kainodara:** savikaina · prekes atskirai · norima marza % → **rekomenduojama
+kaina** → tavo kaina → **marza persiskaiciuoja gyvai**.
+
+**Sargai formoje:** rinkinys brangesnis nei prekes atskirai · marza minusine ·
+komponentas be likucio · keli dropship tiekejai · **norima marza nepasiekiama
+nevirsijant iprastos kainos** (fasuotam maistui 35 % dazniausiai neimanoma —
+2× Josera 12,5 kg: savikaina 81,98 €, atskirai 119,18 €, o 35 % reikalautu
+126,12 €).
+
+**Publikavimas:** naujas rinkinys — JUODRASTIS. Varnele „Publikuoti" paleidzia
+i parduotuve. Perziura: kortele „Kaip matys klientas" + nuoroda i tikra puslapi
+(juodrasciui per WP preview).
+
+**Papildomai:** kopijavimas · trynimas su uzsakymu patikra · zurnalas per
+`Petshop_Ivykiai` · sargas del neirasytu pakeitimu.
+
+---
+
+### S780 — TA PATI PREKE × N ≠ MIX&MATCH
+
+Savininkas sukure 12 kg × 2 ir gavo „PRODUCT / QUANTITY / ISVALYTI PASIRINKIMUS"
+vietoj graziosios pakuotes vitrinos.
+
+**Savininko klausimas:** „kai rinkinys ta pati preke, tai taip pat Mix&Match, o
+jei jo netaikysi kaip tada sugaudysi likucius?"
+
+**Atsakymas is kodo:** likuciai gaudomi ir be MnM — snippet **567** nurašo
+`pack_qty × kiekis` is bazines prekes, atstato atsaukus, slepia paka kai
+neuztenka, stabdo krepselyje. Visi 8 esami DP pakai — `simple`, `manage_stock=no`.
+
+**Taisykle:**
+
+| Sudetis | Tipas | Kategorija | Nuotrauka |
+|---|---|---|---|
+| kelios skirtingos prekes | MnM rinkinys | RINKINIAI + porusis | kompozicija (GD) |
+| **ta pati preke × N** | **DP pakas** (`simple` + `_dp_base_product_id` + `_dp_pack_qty`) | **DAUGIAU=PIGIAU (91)** | **bazines prekes** |
+
+Priezastis ne likuciai, o **vitrina**: pakas turi zenkla „×N VNT.", juosta
+„EKONOMISKA PAKUOTE", lentele su bendru kiekiu ir vieneto kaina (#568, #570, #573).
+
+**RINKINIAI negali buti default kategorija** (savininko pastaba).
+
+v1.1 pridejo tipo atpazinima formoje, DP pakus i sarasa (stulpelis „Tipas"),
+atskira DP perziura ir `issaugoti_dp()`.
+
+---
+
+### S780b — KABLELIS KAINOSE
+
+Savininkas: „negaliu irasyti skaiciaus su kableliu pvz 13,90".
+
+`<input type="number">` su LT lokale kablelio nepriima. Pakeista i
+`type="text" inputmode="decimal"` + normalizavimas: `13,90` ir `13.90` abu
+veikia, tarpai nekliudo, isejus is lauko susitvarko i `13,90`. Serverio puseje
+`str_replace(',', '.')`.
+
+Patikrinta 9 atvejais: `1 234,50` → 1234,5 · `,5` → 0,5 · `abc` → 0.
+
+---
+
+### KAS LIKO NEBAIGTA
+
+| Klausimas | Bukle |
+|---|---|
+| v1.1/v1.2 diegimas | **NEPATVIRTINTAS** — tiltas perrase skripta tarp PUT ir dispatch (3 bandymai). Failai atiduoti savininkui rankiniam ikelimui |
+| Testinis 12 kg × 2 | Guli publikuotas kaip MnM su neteisinga vitrina — perkurti kaip DP arba istrinti |
+| Rinkiniu porusiai | Misriems (tualetas + maistas + zaislas) porusio nera — laukia savininko sprendimo |
+| Susidejimo rinkiniu redagavimas | Suplanuotas, nepradetas. Savininkas: „svarbu sukurti 1 karta, paskui kad butu patogu redaguoti, keisti prekes viduje" |
+| 10 siukslianiu `wc_mnm_child_items` eiluciu | Nevalyta |
+| Tevinis #34196 | Neatkurtas |
+
+### TILTO PASTABA
+
+Rezultatus skaityti **TIK per commit SHA** arba **contents API**, ne per
+`raw.githubusercontent.com/.../main/` — CDN velina 30–60 s ir sioje sesijoje
+**tris kartus** dave senus duomenis kaip naujus. Plius: tilta naudoja ir kitas
+procesas, todel pries `dispatch` verta palyginti `screenshot.mjs` md5.
+
+---
+
+## 2026-08-12 — KLAIDU TAISYMO DIENA: KORTELE TAMPA VIENINTELE DARBO VIETA [S689-S707]
+
+Diena pradeta kaip „deganciu klaidu taisymas", bet kas antra klaida atskleide
+ta pati struktūrini trukuma: **funkcijos isbarstytos be principo**. Savininkas
+ju ieskodavo kortelėje ir nerasdavo, nes jos gyveno sarase, Gavime arba
+WooCommerce lange. Diena baigta uzrakinta taisykle:
+
+> **Kortele = viskas apie VIENA preke. Sarasas = masiniai veiksmai.
+> Gavimas = tik priemimas.** Jei ko nors reikia vienai prekei — tai privalo
+> buti kortelėje, net jei jau yra kitur.
+
+### IDIEGTA
+
+| Failas | Versija | Ka issprende |
+|---|---|---|
+| petshop-katalogas.php | 6.1 → **8.0** | kopijavimas · trumpas aprasymas · miniatiuros · likutis · kategorijos · sudeliojimas · partijos · GPAIS · sinchronas · du likuciai |
+| petshop-gavimas.php | 1.4 → **1.11** | prekes kopija · kurimas be gavimo · sekcijos pabaiga · LT datos |
+| petshop-partijos.php | 1.1 → **1.2** | GPAIS medziagu/tipu sarasai + eilutes trynimas |
+| petshop-rankos.php | **1.0** (naujas) | rankinis sprendimas nustelbia automatika (VF+ZB) |
+| petshop-kalendorius.php | **1.0** (naujas) | vienas LT datu parinkiklis visiems langams |
+
+---
+
+### S689-S691 — PREKES KOPIJA
+
+Savininkas: „matau yra panasi preke, kaip padaryti prekes kopija".
+
+**Kodel NE WooCommerce „Dubliuoti":** jis kopijuoja ir `_zb_*`, `_vf_*`,
+`_ean`, `_ps_sandelis` — nauja AV preke atrodytu kaip ZB/VF, o artimiausias
+importas (#2/#3/#6) ja perrasytu arba sujauktu likucius.
+
+Pirma versija perimdavo tik klasifikacija (kategorija, brendas, rusis, dydis),
+o Sudeti samoningai palikdavo tuscia. **Savininkas ta riba panaikino:**
+„turi buti identiska kopija, tik neirasytas prekes kodas ir EAN, kaina".
+
+Galutinis elgesys: perimama VISKAS — pavadinimas, visos kategorijos, brendas,
+visi `pa_*` atributai, visos aprasymo sekcijos, trumpas aprasymas, svoris,
+matmenys, pagrindine nuotrauka ir galerija. Tusti lieka TIK **SKU, EAN,
+kaina**. Tiekejo laukai neperkeliami niekada.
+
+**Ieiti galima dviem keliais:** katalogo kortelėje „Kopijuoti i nauja ↗" arba
+Gavimo formos virsuje „Kopijuoti is panasios prekes".
+
+**Salutinis radinys:** kopijuojamame aprasyme buvo CSS kaip PAPRASTAS TEKSTAS
+(`.b2b-black * { color:#000 !important; }`) — `<style>` zymes buvo nuimtos dar
+importo metu, todel tagu salinimas jo nepagavo. Ismetamos eilutes, atrodancios
+kaip CSS taisykle.
+
+---
+
+### S692-S693 — TRUMPAS APRASYMAS KORTELEJE
+
+Iki siol `post_excerpt` (tekstas virs „I krepseli") buvo redaguojamas TIK
+WooCommerce lange.
+
+**Savininko taisykle (uzrakinta):** „is viso i WC geriau nelysti — ten
+duomenys turi automatiskai koreguotis, kai mes taisome savo kortelėje".
+Techniskai sinchronizacijos nera ir nereikia: kortele raso i TUOS PACIUS
+laukus. WC langas lieka avariniam keliui, ne kasdieniam darbui.
+
+**v6.5 patikslinimas:** laukas atsidaro TEKSTINIU rezimu — savininkas
+pastebejo, kad ten guli `<span style="color:rgb(119,119,119); font-family:...">`
+ir taisyti neimanoma. Dabar: kiekviena eilute virsta `<p>`, o „HTML kodas"
+rezimas lieka nuorodoms ir sarasams; irasant kodas valomas.
+
+---
+
+### S694 — DVI PREKES SU TA PACIA NUOTRAUKA (tikra regresija)
+
+Padarius kopija, **originalo miniatiura sarase dingo**, nors kortelėje ir
+parduotuveje nuotrauka buvo.
+
+**Priezastis `miniatiuros()`:** zemelapis statytas kaip `[attachment_id => pid]`
+— attachment ID kaip RAKTAS. Kai dvi prekes rodo i ta pati faila (o kopija
+butent tai ir daro), antroji perrasydavo pirmaja. Iki kopijavimo funkcijos
+toks atvejis buvo retas, todel klaida gyveno nepastebeta.
+
+Dabar `[attachment_id => [pid, pid, ...]]`.
+
+---
+
+### S695 — PREKIU SUVEDIMAS BE GAVIMO
+
+Savininko eiga: „prekes galiu susivesti su 0 likuciu ir savikaina — tai
+paprasciausia prekes kortele, kuri eina i juodrascius. Cia yra pagreitinimas".
+
+Pridetas antras mygtukas **„Sukurti ir kurti kita"** (i gavimo lentele
+nededama, forma lieka atvira) ir blokas „Si karta sukurta prekiu: N".
+„Irasyti gavima" klaida dabar rodoma LIEKANCIAME bloke — trumpas uzrasas
+dingdavo per 3 s ir atrode, kad mygtukas neveikia.
+
+---
+
+### S696 — RANKINIS SPRENDIMAS NUSTELBIA AUTOMATIKA (petshop-rankos.php v1.0)
+
+**Incidentas:** 2026-08-11 22:43 savininkas isieme VF preke #25319 is prekybos.
+2026-08-12 07:01 cron'as `petshop_vf_sync_publish_daily` (snippetas 565) ja vel
+paskelbe. Istorija parode dvi eilutes: „ranka · Rai" ir po to „automatika".
+
+**Priezastis struktūrine:** juodrastis reiskia DU dalykus — „dar nebaigta" ir
+„nusprendziau neprekiauti". Automatika mato tik `post_status='draft'` ir
+tikrina kokybes kriterijus; prekei, isimtai SAMONINGAI, visi kriterijai kaip
+tik ir buna tenkinami.
+
+**Sprendimas:** kai ZMOGUS perkelia i juodrasti (bet kur), uzdedama
+`_ps_ranka_isimta`. Kol ji yra, jokia automatika nepublikuoja. Vartai
+pastatyti ties `wp_insert_post_data` — pro ji eina VISI (VF cron, ZB importas
+#2, WP All Import). Snippeto 565 taisyti nepakaktu — liktu ZB.
+
+**Patikrinta testu:** imituotas zmogaus isemimas → zyme atsirado; imituotas
+cron → preke liko juodrastyje.
+
+**Atstatytos:** #26471, #26473 (buvo grazintos i prekyba 07:01), #25319.
+
+---
+
+### S697 — GPAIS PAKUOTE (partijos v1.2, katalogas v6.10)
+
+Savininkas: „cia turi buti patikslinimas — GPAIS Pakuote, nes patys
+susimaisysime. Ir nera jokio redagavimo, as net negaliu susivesti duomenu".
+
+Abu teisinga. Skirtukas vadinosi „Pakuote" ir maisesi su `pa_pakuotes_dydis`
+(12 kg, 400 g) — visai kitas dalykas. O `irasyti_pakuote()` egzistavo nuo
+pirmos dienos, bet **jokia sasaja jo nekviete**.
+
+Medziagos ir tipai — FIKSUOTAS sarasas vienoje vietoje: deklaracija sumuojama
+pagal medziagos pavadinima, ir laisvas laukas duotu „Popierius", „popierius"
+ir „Kartonas" kaip tris eilutes.
+
+**Dvi pamokos, kainavusios du diegimus:**
+1. Kortele ikraunama per `innerHTML` — joje esantys `<script>` blokai
+   NEPASILEIDZIA. Duomenys keliauja `data-` atributais.
+2. Katalogas turi DU atskirus `<script>` blokus. Funkcija, idėta i viena ir
+   kvieciama is kito, krito `ReferenceError`, o `.catch()` parode
+   „Nepavyko susisiekti su serveriu" — atrode kaip tinklo problema.
+
+---
+
+### S698 — VISKAS APIE PREKE GYVENA KORTELEJE (v7.0)
+
+Savininkas: „viska sudeliok, nes dabar yra blogai".
+
+**Auditas per 10 tos dienos versiju parode: nieko nedingo.** Bet:
+- AV likucio redagavimo kortelėje NIEKADA nebuvo — tik sarašo „Greitame
+  redagavime";
+- „Sudelioti i lentyneles" — tik Gavimo naujos prekes formoje;
+- kategoriju keitimo — isvis tik WooCommerce lange.
+
+Pridėta visa tai. Papildomai paleistas **SARGAS**: fiksuotas 16 valdikliu
+sarasas tikrinamas trims prekems (AV, VF, juodrastis) pries ir po kiekvieno
+diegimo. Jei kuris nukrenta i 0 — diegimas neskelbiamas padarytu.
+
+---
+
+### S699 — SEKCIJA TURI PABAIGA, NE TIK PRADZIA (gavimas v1.10)
+
+Savininkas: „yra sudetis: ......... ir paskui koks nors tekstas — jis ir ta
+teksta sudeda i sudeties skyriu".
+
+Skaidytojas mokejo atpazinti tik sekcijos PRADZIA. Dabar sekcija uzsidaro ir
+tada, kai (a) pasitaiko NEZINOMA antraste (trumpa eilute su dvitaskiu:
+„Maistine verte:", „Laikymas:"), arba (b) uzdaroje sekcijoje pasitaiko
+SAKINYS (ilga eilute su tasku, be procentu ir kableliu saraso).
+
+**Niekas nemetama:** nutrauktas tekstas keliauja i „Aprasyma", o statusas sako
+„2 eil. liko aprasyme". Pirmoji eilute po antrastes priimama VISADA — kitaip
+sudetis, parasyta vienu sakiniu, iskristu.
+
+---
+
+### S700-S701 — RANKINIS LIKUTIS IR PARTIJOS NE TIK AV
+
+**Tyli klaida, rasta pries diegima:** `av_laukas()` i `_stock` rase tik kai
+sandelis buvo lygiai „av". Ambrosia, Prins, Quattro, Belacor likutis butu
+nugules i `_own_stock_qty`, kurio parduotuve neskaito — skaicius irasytas,
+zurnale matomas, preke NEPARDUODAMA. Recon: Ambrosia preke likuti laiko
+`_stock` (8 vnt.), o `_own_stock_qty` visoje bazeje — 1 irasas.
+
+Ta pati riba buvo ir partijoms: blokas rodomas tik `av_preke()` prekems.
+
+---
+
+### S702 — LIETUVISKAS KALENDORIUS (petshop-kalendorius.php v1.0)
+
+`<input type="date">` piesia NARSYKLES kalendoriu — „August 2026", savaite nuo
+sekmadienio, mm/dd/yyyy. Svetaine to pakeisti negali.
+
+Atskiras modulis, o ne treciasis toks pat sprendimas kataloge: klase `ps-data`
+uzteka. Reiksme visada ISO (2027-09-30). Patikrinta ANGLISKOJE narsykleje
+(`en-US`): „Rugpjutis 2026", savaite Pr–Sk.
+
+*Skola: Akciju langas dar naudoja savo sena kalendoriu.*
+
+---
+
+### S703 — PAKEITIMAS MATOSI IS KARTO (v7.5)
+
+Savininkas: „pakeiciau preke, langas neatsinaujino, isejau — kataloge
+neatsinaujino, cia jau labai blogai".
+
+Kortele ir sarasas rode SKIRTINGA tiesa apie ta pacia preke. Po kiekvieno
+irasymo kvieciamas `ps_kat_eilute` ir eilute atnaujinama vietoje. Perkrauti
+puslapio negalima — dingtu filtrai, slinktis ir atidaryta kortele.
+
+*Papildyta v7.9: kesas valomas PRIES skaitant — kitaip eilute gaudavo dar
+sena momentine kopija.*
+
+---
+
+### S704 — „SANDELIS" → „TIEKEJAS" (v7.6)
+
+Zodis vertė galvoti apie VIETA. Stulpelis, filtras ir eksporto laukas dabar
+vadinasi „Tiekejas", o paaiskinimas sako, is kur ateina likutis.
+
+---
+
+### S705-S707 — DU ATSKIRI LIKUCIAI: TIEKEJO IR AV (v8.0)
+
+Savininkas klausė TRIS kartus, kol atsakiau i tai, ko klause:
+„KODEL prekes kortelėje negaliu ivesti likucio su galiojimu I AV SANDELI?"
+
+**Mano klaidos, viena po kitos:**
+1. v7.7 — sujungiau likuti ir galiojima i viena forma (tai buvo reikalinga:
+   iki tol veike DU keliai — likutis be galiojimo ir atskira „Nauja partija").
+2. v7.10 — nuspredziau, kad viskas, kas ne VF/ZB, guli musu lentynoje, ir
+   emiau rodyti „AV AMBROSIA". **NETIESA, atsaukta.**
+
+**Savininko patikslinimas (uzrakinta):** „Ambrosia — ATSKIRAS SANDELIS,
+dropshipingo, tik jis neduoda XML. O AV yra AVESOS sandelis."
+
+**Teisingas modelis — dvi nepriklausomos eilutes:**
+
+| Eilute | Laukas | Kas tai | Kaip pildoma |
+|---|---|---|---|
+| TIEKEJO | `_stock` | kiek turi Ambrosia / Prins / VF / ZB | VF, ZB — is XML (tik skaitymui); kiti — ranka |
+| AV | `_own_stock_qty` | kiek parsiveze i Avesos sandeli | visada ranka; **cia partijos, galiojimai, savikaina** |
+
+Gryna AV preke (be tiekejo) savo likuti laiko `_stock` — jai tiekejo eilutes
+isvis nera.
+
+**Partijos ir galiojimai priklauso TIK AV:** tiekejo lentynoje gulincios
+prekes galiojimo mes nezinom ir nevaldom.
+
+**Gavimas kuria partija:** pasirinkus priezasti „Gavimas" ir teigiama pokyti,
+kiekis irasomas per `Petshop_Partijos::priimti()` su galiojimu ir savikaina.
+Mazinimas nurasomas FEFO tvarka (`nurasyti()`) — kitaip partiju suma ir
+likutis issiskirtu.
+
+**Istorija (S705, antra savininko pastaba):** likucio keitimai buvo rasomi i
+`ps_av_zurnalas`, o Istorijos skirtukas skaito `Petshop_Ivykiai` — zurnalas
+buvo, tik ne ten, kur zmogus ji skaito. Dabar rasoma i abi.
+
+---
+
+### KAS SIANDIEN PAMOKA (procesas, ne kodas)
+
+1. **Nepradejau nuo savininko lango.** Dvi is triju „regresiju" nebuvo
+   regresijos — funkciju ten niekada nebuvo. Auditas per atsargines kopijas
+   tai parode per 10 minuciu; reikejo daryti ji pirma, ne po trecio priekaisto.
+2. **Tikrinau tik ta, ka ka tik pakeiciau.** Miniatiuru ir `innerHTML` klaidos
+   isaiskejo tik tada, kai jas pamate savininkas. Del to paleistas SARGAS.
+3. **Trys skirtingi taisymai vietoj vieno atsakymo.** Savininkas: „paprasiau
+   normalu klausima sutvarkyti, o tu 3 variantus duodi". Teisinga: pries
+   taisant reikia isitikinti, kad supratau klausima — ne po to.
+4. **Dokumentai atidelioti i „sesijos pabaiga", kuri neateina.** Nuo dabar —
+   po kiekvieno uzdaryto bloko, ne dienos gale.
+
+---
+
+### S711-S713 — MYGTUKAS, MASINIS SUDELIOJIMAS, 261 PREKE SUTVARKYTA (2026-08-13)
+
+**S711 — MYGTUKAS „Sudelioti i lentyneles" (uzdaryta).**
+Savininkas: „per sudejimo mygtukus niekas neveikia." Narsykles testas parode:
+serveris grazina `success` ir „sudeta i 5 skiltis" — t. y. tekstas sudeliojamas
+ir irasomas i baze TEISINGAI. Bet ekranas lieka senas: rengykleje matomas
+ankstesnis tekstas, „Kaip mato pirkejas" nepersipiesia. Zmogui tai atrodo
+lygiai taip pat, kaip neveikiantis mygtukas — ir jis teisus, nes rezultato
+nemato.
+Priezastis: rezultatas rasomas i TinyMCE, o sis ne visada inicializuotas.
+**Katalogas v8.2:** po sekmingo sudeliojimo kortele perpiesiama is serverio.
+
+**S712 — MASINIS SUDELIOJIMAS (snippetas ID 2868).**
+DRY per visas 3 470 prekiu: 1 677 maistas, 761 jau tvarkinga, 406 butu
+pagerinta, 510 neatpazinta.
+
+Savininko klausimas pries APPLY: *„serimo instrukcijose kai kur yra tik tekstas,
+ne lenteles — kaip susidelios?"* Patikrinta, ir atsakymas pasirode NEVIENODAS.
+Todel ivestos DVI GRUPES:
+
+| Grupe | Kiek | Kas tai | Elgesys |
+|---|---|---|---|
+| SAUGU | 293 | tekstas arba lentele su eiluciu luziais | sudeliojama |
+| RIZIKINGA | 113 | lentele sulipusi i VIENA eilute | **neliieciama** |
+
+Rizikos pozymis: serimo tekste ≥8 skaiciai, bet ≤3 eilutes — vadinasi lentele
+prarado struktura. Irasius tokia, pirkejas matytu „Svoris 1,5 2 3 4 5–6 7–12
+13–20 10 kg 35–70 g" — neskaitoma kose. Josera Young Star, Ontario sausas,
+DOGOTEKA.
+
+**S713 — APPLY.** Pirma 20 (juodrasciai), tada 12 prekyboje esanciu — savininkas
+apziurejo parduotuveje: „atrodo viskas gerai". Tada likusios porcijomis po 70.
+
+**Rezultatas: 261 preke sutvarkyta.** Serimo instrukcija turi **1 054** is 1 677
+maisto prekiu (buvo 761). Grupe SAUGU isteko iki nulio.
+
+**Dvi klaidos APPLY eigoje (abi istaisytos):**
+1. Pasiekus riba ciklas tesdavosi per visas 3 470 prekiu — uzklausa nespedavo
+   per laiko limita. Pakeista i `break`.
+2. `Fatal error: Call to private method Petshop_Katalogas::aprasymo_kopija()`.
+   Snippetas negali kviesti privataus kortelės metodo. Kopija rasoma tiesiogiai
+   tuo paciu formatu (`_ps_aprasymo_bak`, iki 5 versiju) — „Grazinti ankstesne"
+   kortelėje veikia visoms 261.
+
+**LIEKA:** 113 rizikingu (reikia lentele ATKURTI, ne perkelti — tam tinka
+serimo lenteliu baze, 525 patikrintos) ir 510 neatpazintu (norma paveiksleliuose
+arba visai kitokia forma).
+
+---
+
+### S709-S710 — SERIMO LENTELES NESUBEGA I SAVO SKILTI
+
+Savininkas rado dvi SKIRTINGAS teksto formas, kuriose serimo norma neatpazistama.
+
+**Forma A (Quattro sausas, #16718): antraste SAKINIO VIDURYJE.**
+„...greipfrutu ekstraktas). Serimo rekomendacijos: 2kg: 23-33g; 3kg: 30-43g..."
+Skaidytojas antrasciu ieskojo tik eilutes pradzioje. **Gavimas v1.12:** pries
+skaidant zinoma antraste su dvitaskiu perkeliama i naujos eilutes pradzia.
+Dvitaskis butinas — be jo „serimo instrukcija nurodyta ant pakuotes" suskaldytu
+sakini.
+
+**Forma B (Quattro sterilizuotoms katems): ANTRASTES NERA ISVIS.**
+Norma pateikta lentele: „Suaugusios kates svoris, kg / 2 3 4 5 6 7 8 /
+Pasaro dienos norma, g / 24-35 32-46 ...". **Gavimas v1.13:** atpazistama pati
+lentele — eilute su „dienos norma", „paros norma", „svoris, kg", „kuno svoris".
+Skaiciu eilutes po jos sekcijos neuzdaro.
+
+Kartu sugrieztintas saraso kriterijus: anksciau uzteko dvieju kableliu, todel
+„Pasara laikykite vesioje, sausoje, nuo saules apsaugotoje vietoje" likdavo
+Analitinese. Dabar sarasui reikia IR skaiciu.
+
+**Mastas (dry-run per 400 prekiu su serimo tekstu):**
+| Etapas | Serimas atpazintas |
+|---|---|
+| pries taisymus | ~230 |
+| po v1.12 | 271 / 385 |
+| po v1.13 | **307 / 385** |
+
+Lieka **78 prekes** — treciai teksto formai (norma paveiksleliuose arba visai
+kitais zodziais).
+
+**NEUZDARYTA — savininkas: „niekas nepasikeite, per sudejimo mygtukus niekas
+neveikia".** Skaidytojas SERVERYJE veikia (patikrinta jo paties tekstu), bet
+mygtukas „Sudelioti i lentyneles" kortelėje rezultato neduoda. Priezastis
+NENUSTATYTA — tai pirmas rytojaus darbas.
+
+---
+
+### RYTOJ (2026-08-13) — PIRMI TRYS DARBAI
+
+**1. KODEL NEVEIKIA MYGTUKAS „Sudelioti i lentyneles" (blokuoja viska kita).**
+Skaidytojas veikia, mygtukas — ne. Tikrinti tokia tvarka, nespeliojant:
+- ar `ajax_aprasymas` gauna `veiksmas=sudelioti` (JS siuncia ar ne);
+- ar tekstas paimamas is rengykles (`rengyklesTurinys()`) — gali grazinti
+  tuscia, kai TinyMCE dar neinicializuotas;
+- ar `_ps_aprasymas_uzrakintas` neblokuoja irasymo;
+- ar HTML → tekstas konversija kortelėje palieka eilucių lauzymus: `<table>`
+  eilutes be `<br>` sulimpa i viena eilute ir lentele tampa neatpazistama.
+  **Tai tiketiniausia priezastis** — savininko tekstas atejo kaip lentele.
+
+**2. MASINIS SUDELIOJIMAS PER SNIPPETA (savininko prasymas).**
+Mygtukas taiso po viena; skolų — simtai. Reikia:
+- DRY: visos maisto/papildu prekes, kuriu `Serimo instrukcija` sekcijos NERA,
+  bet tekste yra normos pozymiu. Ataskaita: id · pavadinimas · kokia forma
+  rasta · ka sudetu (pirmi 80 simboliu);
+- savininko perziura;
+- APPLY atskirai, su `aprasymo_kopija()` kiekvienai prekei (grazinimas per
+  „Grazinti ankstesne" kortelėje);
+- po to — pakartotinis matavimas (307/385 turi kilti).
+**Nepradeti APPLY be DRY perziuros.**
+
+**3. TZ MASTER v1.72** — uzrakinti tris siandienos taisykles:
+- kortele = viskas apie viena preke;
+- rankinis sprendimas nustelbia automatika (`_ps_ranka_isimta`);
+- du atskiri likuciai: TIEKEJO (`_stock`) ir AV (`_own_stock_qty`), partijos ir
+  galiojimai — tik AV.
+
+---
+
+### ATVIRA PO SIOS SESIJOS
+
+- **FEFO nurasymo patikra SASAJOJE** — serveryje patikrinta (likutis 6→3,
+  partija 4→0), naršykleje testas nutruko
+- Akciju langas naudoja sena kalendoriu (S702 skola)
+- `ajax_partija_nauja` endpoint'as liko be sasajos (v8.0 ji pakeite likucio blokas)
+- Sargo etalonas: VF/ZB prekems AV likutis DABAR rodomas (v8.0) — etalona
+  reikia atnaujinti
+- Is ankstesniu: snippetu valymas · Dogoteka RRP (~14 prekiu) · PVM gyvame
+  petshop.lt · 796 prekes be savikainos · aprasymu sablonas Gavime
+
+---
+
+## 2026-08-11 (rytas) — GERIAUSIA IKI · JUDEJIMAS · PUBLIKAVIMO VARTAI [S758-S765]
+
+Sesija prasidejo nuo „geriausia iki", bet savininko patikslinimai atskleide
+tris skirtingas problemas, is kuriu dvi buvo sistemines.
+
+### IDIEGTA
+
+| Failas | Versija | Ka issprende |
+|---|---|---|
+| petshop-katalogas.php | 5.0 → **5.8** | geriausia iki · judejimas · paleidimo data · partiju redagavimas · skolu isskaidymas · savikainos saltiniai |
+| petshop-akcijos.php | 1.6 → **1.8** | ketvirtas taikinys „Geriausia iki" + kelias is katalogo |
+| petshop-pilnumas.php | 1.1 → **1.2** | pilnas truksta raktu sarasas filtravimui |
+| petshop-vartai.php | **1.0** (naujas) | publikavimo vartai VF/ZB prekems |
+
+---
+
+### S758 — GERIAUSIA IKI (katalogas v5.1, akcijos v1.7)
+
+**Recon pries darba:** `Petshop_Partijos` v1.1 veike, datos buvo, FEFO veike,
+`artimiausias_galiojimas()` egzistavo. **Truko VIETOS**, kur pamatytum, KURIOS
+prekes baigiasi: funkcija atsako apie VIENA preke, o sarasui to neuztenka.
+
+**Sprendimas:** `partiju_datos()` — vienas SELECT visoms prekems (per preke
+butu 1 400 uzklausu). Imamos TIK partijos su likuciu: pasibaigusi data ant
+tuscios partijos yra istorija, ne problema.
+
+Akcijose — ketvirtas taikinys „Geriausia iki" su dienu lauku. Pasibaigusios
+datos NEITRAUKIAMOS: tokia preke nurasoma, ne pardavinejama su nuolaida.
+
+---
+
+### S759 — JUDEJIMAS IR GALIOJIMAS ATSKIRTI (v5.2)
+
+**Savininko pastaba:** „tu maisai du skirtingus dalykus: 1. Prekiu judejimas
+2. Prekiu galiojimas".
+
+Buvau sudejes juos i viena „Sandelio" kruva. Tai skirtingi klausimai:
+
+| | Judejimas | Galiojimas |
+|---|---|---|
+| Saltinis | pardavimu istorija | `ps_partijos` datos |
+| Kam taikoma | AV prekems | toms, kurioms data IVESTA |
+| Sprendimas | nuolaida, rinkinys, isemimas | trumpo galiojimo akcija |
+
+**„Negyvos atsargos" pervadinta** — terminas buvo pazodinis „dead stock"
+vertimas, lietuviskai skambejo kaip kapines ir nesake, ka matuoja. Dabar
+„Neparduodama ≥ N d." su pasirenkama riba (60/90/180/360 arba nuo–iki):
+60 dienu be pardavimo skanestams jau signalas, aksesuarams — norma.
+
+**PUBLIKAVIMO MOMENTAS.** `post_date` netiko: dev bazeje 1 605 prekes
+„sukurtos" 2026-06-04 ir dar 927 — 06-06. Tai migracijos importas, ne
+publikavimas, o preke gali menesi guleti juodrasciuose (savininko pastaba).
+Idėtas `_ps_publikuota` per `transition_post_status`, fiksuojamas tik PIRMA
+karta — kitaip uztektu vieno „isimti/grazinti" ir preke vel atrodytu nauja.
+
+**Skaiciavimas:** dienos nuo PASKUTINIO pardavimo, o jei niekada neparduota —
+nuo publikavimo. Vienas skaicius vietoj triju lauku (30/90/365), todel veikia
+bet kokia riba.
+
+---
+
+### S760 — PALEIDIMO DATA KAIP ATSKAITOS TASKAS (v5.3)
+
+**Savininko pastaba:** „mes gal uz menesio tik pasileisme, o statistika rodys,
+kad neparduodama 100 d." — teisinga ir svarbi.
+
+v5.2 skaiciavo nuo publikavimo, o migruotoms prekems tai IMPORTO diena.
+Paleidus parduotuve spali, pirma diena visas katalogas atrodytu neparduodamas
+keturis menesius, ir eile taptu beverte nuo starto.
+
+Dabar atskaitos taskas — **velesnis is dvieju**: prekes publikavimo ir
+parduotuves PALEIDIMO (`ps_paleidimo_data`). Kol paleidimo diena neatejo,
+skaicius **neskaiciuojamas isvis**: klausimas „kodel neparduodama" prie
+uzdarytos parduotuves prasmes neturi.
+
+**Patikra abiem scenarijais:**
+
+```
+Paleidimas 2026-10-01 (ateityje), migruota 06-04, neparduota  → null
+  ta pati, bet pardavimas 05-01                                → 102 d.
+Paleidimas 2026-06-20 (praeityje), migruota 06-04              → 52 d.
+  publikuota 08-01                                             → 10 d.
+  pardavimas 08-05                                             → 6 d.
+```
+
+Ekrane: „Neparduodama ≥ 60 d." 745 → **0**.
+
+**PRIES LAUNCH:** `ps_paleidimo_data` nustatyti tikslia data.
+
+---
+
+### S761 — GALIOJIMO FILTRAI IR KELIAS I AKCIJA (v5.4, akcijos v1.8)
+
+Trys eiles vietoj dvieju: **„Pasibaige" atskirai** — tokia preke nera
+nuolaidos klausimas, o nurasymo; maisyti ja su dar parduodamomis reikstu
+siulyti pirkejui netinkama preke. Sioje eileje akcijos mygtuko NERA.
+
+Ribos keiciamos is lango: ≤30 · ≤60 · ≤90 · ≤180 arba „skubu iki / stebeti
+iki". Sausam maistui 90 d. normalu, sviežiai produkcijai per ilgai.
+
+**Mygtukas „Sukurti trumpo galiojimo akcija →"** perduoda `?gi=N` i Akciju
+langa, kur uzpildomas pavadinimas, taikinys, dienos ir laikotarpis. Be jo eile
+butu tik sarasas: problema matai, bet kad ka nors padarytum, tektu is naujo
+rinkti tas pacias prekes kitame lange.
+
+---
+
+### S762 — PARTIJOS LAUKAI REDAGUOJAMI (v5.5)
+
+**Savininko pastaba:** „nera funkcijos taisyti galiojimo datos — mes
+kalbejome, visi laukai turi buti redaguojami, isskyrus koda".
+
+Partijos is tos taisykles buvo iskritusios: duomenys ivedami Gavimo lange ir
+po to netaisomi niekur. Du realus pagrindai: priimant sunta lengva suklysti,
+o tiekejas gali PRATESTI termina — teisetas sprendimas, kuriam sistema neturi
+trukdyti.
+
+**Redaguojami TRYS:** likutis, savikaina, geriausia iki.
+**Neredaguojami:** gavimo data, tiekejas, gautas kiekis — tai siuntos faktai,
+turintys sutapti su saskaita.
+
+**Patikra:** data 2026-08-03 → 2027-02-11, DB irasyta, preke is „Pasibaige"
+eiles iskrito (1 → 0).
+
+**Atsakymas i savininko klausima:** pardavimo blokavimo NERA. Data yra
+informacija administravime; preke lieka parduodama, likutis nekeiciamas.
+Vienintelis apribojimas — pasibaigusios neitraukiamos i automatine akcija.
+
+---
+
+### S763 — DUOMENU SKOLOS ISSKAIDYTOS (v5.6/v5.7, pilnumas v1.2)
+
+**Savininko pastaba:** „Duomenų skolos — čia labai abstraktu, išskirk
+savikainas; taip patogiau: atsidarai prekes, sutaisai, jos dingsta iš tos
+kategorijos".
+
+Skaicius 1 960 nesake, KA daryti. Recon parode sudeti: EAN 1 427,
+savikaina 744, serimo lentele 502, pakuotes dydis 213, analitines 211,
+serimo instrukcija 205, aprasymas 195, sudetis 156, gyvuno rusis 45.
+
+**Filtravimo klieutis:** `_ps_pilnumas_truksta` yra tekstas zmogui ir
+SUTRUMPINTAS („EAN ir dar 1"), todel preke, kuriai truksta serimo lenteles IR
+sudeties, pagal „sudetis" nebutu rasta. Pilnumas v1.2 raso `_ps_pilnumas_kodai`
+su visais raktais tarp vertikaliu bruksniu; perskaiciuota 2 726 prekems.
+
+**v5.7 — dublikatai pasalinti.** Pirmoji versija salia esamu „Be savikainos"
+(795) ir „Be EAN" (1 459) idejo dar tuos pacius is pilnumo (744 / 1 427).
+Tie patys pavadinimai skirtingais skaiciais klaidina labiau nei vienas.
+
+---
+
+### S764 — SAVIKAINOS SALTINIAI (v5.8)
+
+**Savininko taisykle:** „tiekejo man pateikta kaina yra mano savikaina".
+
+Katalogas eme savikaina TIK is `ps_sources` registro; pridėta atsargine tvarka
+`_cost_price` → `_vf_cost` → `_zb_cost`, vienoda sarase ir korteleje.
+
+**RADINYS:** skaicius nepasikeite (795), nes tos prekes neturi savikainos NE
+VIENAME lauke — patikrinta, 0 is ju turi `_vf_cost`/`_zb_cost`/`_cost_price`.
+Skirtumas nuo pilnumo 744 yra kitos priezasties: pilnumas praleidzia
+„nevertinamas" prekes (DP skelbimus, testines) — 51 preke. Abu skaiciai
+teisingi, tik atsako i skirtingus klausimus.
+
+---
+
+### S765 — PUBLIKAVIMO VARTAI (petshop-vartai v1.0)
+
+**Savininko klausimas:** „kokie reikalavimai publikuotom prekem — kodel VF ar
+ZB preke be nuotraukos, aprasymo patenka i public?"
+
+**Atsakymas is kodo:**
+
+| | Vartai | Rezultatas |
+|---|---|---|
+| VF | `class-vf-import.php` tikrina 5 blokerius: nuotrauka, aprasymas, kaina, EAN, likutis | prekyboje be aprasymo — 10 |
+| ZB | **NETURI**; WP All Import #2 `status: publish`, jokios patikros | prekyboje be aprasymo — 76 |
+
+Visi 5 WP All Import profiliai nustatyti `status: publish`.
+
+**1. VIENKARTINIS VALYMAS:** 86 prekes (ZB 76, VF 10) perkeltos i juodrascius.
+Priezastys: be aprasymo 83, be aprasymo IR nuotraukos 3, vien be nuotraukos 0.
+Patikra: VF/ZB prekyboje 1 643 → 1 557; juodrasciai 1 040 → 1 126.
+**AV NELIESTA** (savininko sprendimas).
+
+**2. NUOLATINE TAISYKLE** (`petshop-vartai.php`): VF/ZB preke be aprasymo
+(< 120 simboliu) arba be nuotraukos keliauja i juodrascius. Taikoma VISOMS,
+ne tik naujoms — sistema dar nepaleista, todel visos de facto naujos.
+
+Be sio modulio vienkartinis valymas beprasmis: ZB importas veikia kas valanda
+ir tas pacias prekes vel publikuotu.
+
+- `pmxi_saved_post` — patikra iskart po importo irašo
+- cron kas valanda — turinys gali dingti ir NE per importa (istrynus nuotrauka
+  is medijos, isvalius aprasyma ranka)
+- **kryptis TIK viena: publish → draft.** Atgal niekada: juodrastyje preke gali
+  guleti del visai kitu priezasciu, ir automatinis publikavimas jas anuliuotu
+- isimtis `_ps_publikuoti_leista='taip'` — kad taisykle nebutu kalejimas
+
+**Patikra realia preke (Eukanuba, ZB):** aprasymas istrintas → vartai grazino
+i draft su zyme; atstatyta → publish, 4 406 simboliai. Isimties zyme veikia.
+
+---
+
+### Technines pamokos
+
+1. **`get_post_field()` be trecio argumento taiko „display" konteksta** ir
+   grazina uzkoduota HTML. Pirmoji diagnostika del to rode `&lt;p&gt;` ir
+   klaidingai atrodė, kad turinys sugadintas. Raw duomenims — trecias
+   argumentas `'raw'` arba tiesioginis SQL.
+
+2. **Aprasymo ilgi matuoti TIK po `html_entity_decode`.** Dalis irasu DB
+   laikomi dukart uzkoduoti; be dekodavimo tagai skaiciuojami kaip turinys ir
+   tuscia preke atrodo aprasyta.
+
+3. **Sutrumpintas tekstas netinka filtravimui.** `_ps_pilnumas_truksta`
+   („EAN ir dar 1") skirtas zmogui; filtrui reikia atskiro pilno lauko.
+
+4. **Migracijos data nera publikavimo data.** Bet kokia „kiek laiko" metrika
+   po migracijos privalo tureti atskaitos taska, kitaip paleidimo diena rodo
+   menesiu senuma.
+
+5. **Vienkartinis valymas be taisykles — beprasmis**, jei duomenis atnesa
+   automatinis importas.
+
+### Aukščiausias sprendimo Nr.: S765.
+
+### ATVIRA po šios sesijos
+- **KITAS:** Rinkiniai
+- **FILTRO KLAIDA:** „be sudeties" rodoma prekems, kurios turi sudeti aprasymo
+  TEKSTE be atskiros antrastes (Farmina). Pilnumas ieško SEKCIJOS antrastes;
+  reikia atsargines patikros pagal raktazodi tekste
+- dukart uzkoduoti aprasymai (`&lt;p&gt;`) — kiek ju is viso, ar reikia masinio
+  dekodavimo
+- parduotuves puse: `/pasiulymai/geriausia-iki/` su noindex (TZ 38.6)
+- katalogo kortele ima brenda is tuscios `pa_brendas`
+- Tiekimas ir Desk dar nenaudoja `Petshop_Katalogas::navigacija()`
+- 5 „svetimos" akcijos be datu (Genia, 3× Zylkene, Flexadin)
+- testine akcija #1 „Ambrosia rugpjutis −15 %" juodrastyje
+
+---
+
+## 2026-08-10 (vakaras II) — AKCIJU LANGAS · DARBUOTOJO ROLE · VIENINGA NAVIGACIJA [S754-S757]
+
+Sesijos tesinys po katalogo UX bloko. Trys nauji moduliai, is kuriu du —
+`petshop-akcijos.php` ir `petshop-teises.php` — anksciau neegzistavo.
+
+### IDIEGTA
+
+| Failas | Versija | Ka issprende |
+|---|---|---|
+| petshop-akcijos.php | **1.6** (naujas) | akciju administravimo langas: brendas/kategorija/prekes, planavimas, gyva taisykle, LT kalendorius |
+| petshop-teises.php | **1.1** (naujas) | darbuotojo role su isvalytu ekranu |
+| petshop-katalogas.php | 4.9 → **5.0** | akcijos indikatorius korteleje · vieninga navigacija |
+| petshop-gavimas.php | 1.1 → **1.2** | vieninga navigacija |
+
+---
+
+### S754 — AKCIJU ADMINISTRAVIMO LANGAS (petshop-akcijos v1.0–v1.6)
+
+**Uzduotis (savininko formuluote):** „kada butu galima uzdeti akcijas Brendui,
+kategorijai ... atskiroms prekems, planuoti akcijas" — t. y. ADMINISTRAVIMO
+irankis, ne kliento pusė.
+
+#### Pries tai — recon (empirinis)
+
+`petshop-promotions` v1.1 (S83, 2026-06-09) yra ir aktyvus, bet panaudotas
+vieną kartą ir paliktas:
+
+```
+18 prekiu su _sale_price
+15 — vienas batch sale_20260609_195007_514 (Ambrosia)
+14 — datos PASIBAIGUSIOS, o _sale_price meta liko kaboti
+ 4 — akcijos kaina BE DATU → akcija amzina, niekas jos neisjungs
+ 0 — kuponu
+```
+
+Priezastis strukturine: senasis modelis yra SNAPSHOT. Atrenki filtrais →
+apply iraso `_sale_price` → **taisykle dingsta**, lieka tik prekes su vienoda
+batch zyme. Nera ko isjungti, nes nera ko.
+
+#### Rinkos peržiura (administravimo pusė)
+
+Du nesuderinami modeliai:
+
+| Modelis | Kas saugoma | Naujos prekes |
+|---|---|---|
+| Snapshot (Shopify, musu senasis) | kaina prekeje | NEpatenka |
+| Taisykle (Magento Catalog Price Rule) | salygos + laikotarpis + prioritetas | patenka automatiskai |
+
+Magento: jei preke atitinka kelias taisykles, taikoma auksciausio prioriteto;
+yra „Stop Further Rules Processing". Zooplus: prenumerata 15 % pirmam ir 5 %
+kitiems, savaitiniai Special Offers, kategoriju savaites. Chewy: Autoship su
+~70 % adopcija. Bendras rastas — **kampanija, ne pavienė akcija**, ir nuolaida
+prirista prie elgsenos, ne prie kainos etiketes.
+
+#### SPRENDIMAS — HIBRIDAS
+
+Taisykle SAUGOMA (kad veiktu planavimas ir naujos prekes), bet
+MATERIALIZUOJAMA i `_sale_price`, nes Kaina24/kainos.lt feed'ai,
+`wc_product_meta_lookup`, `is_on_sale()` ir filtrai skaito butent ji.
+Dinamine kaina reikstu perrasyti visa ta grandine.
+
+**Savininko sprendimai:** gyva taisykle (naujos prekes itraukiamos
+automatiskai); promo guard tikrinamas PIRMA.
+
+#### PROMO GUARD — PATIKRINTAS KODE (blokeris)
+
+Buvo klausimas: ar ZB/VF importas, perskaiciuojantis kainas kas valanda,
+netrina akciju. Atsakymas — NE:
+
+- **ZB** (`petshop-xml.php` 1122–1174): reprice keicia TIK `_regular_price`;
+  kai sale aktyvi, `_price` lieka = `_sale_price`. Jei nauja reguliari
+  nukristu zemiau akcijos — blokuojama (`reprice_blocked_by_sale`).
+- **VF** (`class-vf-import.php`): guard per `_petshop_sale_batch` →
+  `vf_reprice_blocked_by_promo`.
+
+**KRITINE SUDERINAMUMO SALYGA:** VF guard remiasi TIK `_petshop_sale_batch`
+zyme. Naujasis modulis ja RASO — be jos VF importas nusluostytu akcijas per
+pirma valanda.
+
+#### Modelis
+
+Dvi lenteles: `ps_akcijos` (taisykle) + `ps_akciju_prekes` (materializacija su
+BUVUSIA busena kiekvienai prekei — be jos nuemimas butu spejimas, ne
+atstatymas).
+
+Busenos: Juodrastis → Suplanuota → Aktyvi → Pasibaigusi → Archyvas.
+Cron `ps_akcijos_valanda` kas valanda ijungia suplanuotas, isjungia
+pasibaigusias, o gyvoms — pertikrina atranka.
+
+**Pabaigos data PRIVALOMA.** Butent jos nebuvimas paliko 4 amzinas akcijas.
+
+Taikiniai: brendas · kategorija (+palikuonys) · prekiu sarasas; visiems —
+atributu susiaurinimas ir ISIMTYS („visa Ambrosia, bet ne 12 kg").
+Konfliktai: viena preke — viena akcija, laimi auksciausias prioritetas;
+konfliktas rodomas ZMOGUI pries apply, ne sprendziamas tyliai.
+
+#### RADINYS: brendai gyvena `product_brand`, ne `pa_brendas`
+
+Pirmoji versija atranke naudojo `pa_brendas` ir grazino **0**. Recon:
+
+```
+product_brand  122 terminai · Ambrosia = 329 · count 15
+pa_brendas      62 terminai · Ambrosia = 231 · count 0   ← TUSCIAS APVALKALAS
+```
+
+Katalogo sarasas ta jau moka apeiti (`terminai()` su atsargine saka), bet
+atranka pagal tuscia taksonomija tyliai grazino nuli. Dabar taksonomija
+parenkama PAGAL DUOMENIS (`brendo_taksonomija()`), sarasuose — tik netusti
+terminai.
+
+**Katalogo kortele (eil. 1469) vis dar ima `pa_brendas`** — todel korteleje
+brendas nesimato. ATVIRA.
+
+#### v1.3 — „Prekiu 0" prie juodrascio
+
+Skaicius buvo imamas TIK is `ps_akciju_prekes`, o ten irasai atsiranda tik
+ITAIKIUS. Juodrastis su 15 prekiu atrode tuscias. Dabar netaikomoms akcijoms
+skaicius skaiciuojamas is atrankos realiu laiku (zyme ATITINKA vs TAIKOMA), o
+perziura uzsikrauna automatiskai atidarius akcija.
+
+Plius: „N prekiu uzdeta ne per si langa" → mygtukas Parodyti isskleidzia
+sarasa su datomis, kilme ir mygtuku „Nuimti akcija".
+
+#### v1.4 — filtras, kurio nesimato
+
+Akcija rode „8", nors Ambrosia brendas turi 15. Skaicius buvo TEISINGAS —
+taikinyje issaugotas ir `pa_pakuotes_dydis`, bet sarase jo nesimate. Dabar
+taikinys isvardijamas pilnai: `Brendas: Ambrosia · 2 kg`, prireikus
+`· be 3 prekiu`.
+
+**Filtras, kurio nesimato, yra blogesnis uz filtro nebuvima.**
+
+#### v1.5 — teise `ps_akcijas_taikyti`
+
+Akcijos KURIMAS ir perziura — visiems; IJUNGIMAS (realus kainu keitimas
+katalogui) — atskira teise.
+
+#### v1.6 — LT kalendorius ir eilutes isbraukimas
+
+`datetime-local` piesia narsykles kalendoriu narsykles kalba: Chrome rode
+„August 2026", sekmadieni dejo pirma, formatas `08/17/2026`. Savas
+kalendorius: LT menesiai, savaite nuo PIRMADIENIO, ISO formatas, laiko laukas,
+greiti mygtukai (Siandien · +7 · +14 · +30 · Men. pabaiga).
+
+Perziuroje prie kiekvienos eilutes — **×**, kuris preke perkelia i ISIMTIS
+(ne tik paslepia): issaugojus ji nebegris ir gyva akcija jos nebeitrauks.
+
+#### PATIKRA (narsykle, ne teorija)
+
+```
+Ambrosia brendas −15 %  → Atrinkta 15 · Taikoma 15 · Zemiau ribos 0
+                          Vid. nuolaida 15 % · Maziausia marza 17,1 %
+Kalendorius             → „Rugpjutis 2026" · Pr An Tr Kt Pn St Sk · 31 diena
+                          20 d. → 2026-08-20 19:12 · „+30 d." → 2026-09-09 19:12
+Eilutes ×               → 1 → 0 eiluciu · isimtyse +1 · suvestine perskaiciuota
+```
+
+#### AMBROSIA TESTINES AKCIJOS ISVALYTOS
+
+14 prekiu (batch `sale_20260609_195007_514` + pavadinime „Ambrosia") nuimtos
+per WC API (`set_sale_price('')` + `save()`), atsargine kopija i
+`ps_akcijos_bak_*`. Patikra: `_price` = `_regular_price` visoms, 0 neatitikimu.
+Liko 5 ne-Ambrosia (Genia itvaras, 3× Zylkene, Flexadin) — savininko sprendimu
+nelieciamos, langas jas rodo kaip „uzdeta ne per si langa".
+
+---
+
+### S755 — VIENINGA NAVIGACIJA (katalogas v5.0, gavimas v1.2)
+
+Savininko pastaba: „gal ir cia reikia ideti virsuje Gavimas ir Akcijos".
+
+Kiekvienas langas turejo SAVO juosta: kataloge nebuvo nei Akciju, nei Gavimo;
+Akciju lange — nebuvo Gavimo; Gavime — tik „Katalogas". Zmogus, atsidures
+viename lange, nematydavo kelio i kitus.
+
+Sprendimas — ne trys juostos, o VIENAS sarasas vienoje vietoje
+(`Petshop_Katalogas::navigacija()`), kuri naudoja visi moduliai:
+
+```
+PETSHOP · Katalogas · Akcijos · Gavimas · Tiekimas · Uzsakymai
+```
+
+Patikra: visi trys langai grazina ta pati sarasa, aktyvus punktas paryskintas.
+Tiekimas ir Desk savo juostu dar nenaudoja bendros funkcijos — ATVIRA.
+
+---
+
+### S756 — DARBUOTOJO ROLE (petshop-teises v1.0 → v1.1)
+
+**Pirmine formuluote suprasta klaidingai.** v1.0 padaryta kaip SAUGUMO
+sprendimas (apribojimai, draudimai). Savininko patikslinimas: „as specialiai
+sakiau padaryti tokia prieiga, kad zmogus nesipainiotu pradziai, o ne del to,
+kad kazko nematytu ar neistrintu".
+
+**v1.1 — perdaryta i PAPRASTUMO sprendima:**
+
+| | v1.0 | v1.1 |
+|---|---|---|
+| Meniu valymas | juodasis sarasas (salinti YITH, Mokejimus…) | **baltasis sarasas** |
+| Meniu punktu | 11 | **4** |
+| Po prisijungimo | Skydelis | **tiesiai i Kataloga** |
+| Svetimi pranesimai | matomi | **0** |
+| Siuksline | uzdrausta | **leidziama** |
+
+Baltasis sarasas pasirinktas todel, kad juodasis pralaimi kiekvienam naujam
+pluginui: idiegus dar viena, jo meniu punktas darbuotojui atsiranda savaime.
+
+**Vienintelis tikras draudimas:** galutinis trynimas is siuksliines. I
+siuksline mesti galima (atstatoma vienu paspaudimu), o galutinis trynimas
+panaikina SEO nuoroda, uzsakymu istorija ir tiekejo susiejima — to neatsuka
+nei zurnalas, nei atsargine kopija.
+
+Patikra realia darbuotojo paskyra (Playwright, vartotojas `testuotojas` #75):
+
+```
+meniu:        Petshop uzsakymai · Petshop prekes · Failai · Profilis
+submeniu:     Petshop prekes · Gavimas · Akcijos
+pranesimu:    0
+index.php  →  nukreipe i admin.php?page=ps-katalogas
+wc-settings, plugins.php, users.php, options-general.php, tools.php → BLOKUOTA
+gali:  manage_woocommerce · edit_products · publish_products · upload_files · ps_akcijas_taikyti
+negali: manage_options · activate_plugins · edit_users · edit_themes · export
+```
+
+---
+
+### S757 — „GERIAUSIA IKI" BUKLES RECON
+
+Savininko klausimas: „mes dareme geriausia iki, bet tu jas kazkur isemei ir
+paslepei". Recon parode: **niekas neisimta, bet nera vietos, kur pamatytum**.
+
+**Veikia:**
+- `Petshop_Partijos` v1.1 · lenteleje 3 partijos, VISOS su data
+  (2027-06-30, 2027-09-30, 2028-01-31), viena su PLN ir kursu 4,31
+- Gavimo lange — data prie kiekvienos eilutes + masinis irasymas
+- Prekes korteleje — blokas „Partijos" su „Geriausia iki" ir liko menesiu
+- Variklyje: `artimiausias_galiojimas()`, FEFO nurasymas
+
+**Nera:**
+1. Katalogo eiles „Arteja geriausia iki" (esama „Baigiasi greiciau nei
+   tiekiama" yra pardavimu greitis, ne datos)
+2. Bendro saraso — `artimiausias_galiojimas()` atsako apie VIENA preke, bet
+   klausimo „kurios baigiasi per 90 d." niekas neuzduoda
+3. Parduotuves puses: kategorijos `geriausia-iki` ir `trumpos-datos`
+   NEEGZISTUOJA (TZ 38.6 numate `/pasiulymai/geriausia-iki/` su noindex)
+4. Trumpu datu ispardavimo (TZ 38.5)
+
+**SPRENDIMAS RYTDIENAI:** ketvirtas punktas beveik nemokamas — akciju modulis
+jau turi perziura, eiluciu koregavima, marzos grindis, laikotarpi ir isimtis.
+Truksta KETVIRTO taikinio tipo salia „Brendui · Kategorijai · Atskiroms
+prekems" — **„Geriausia iki"** su lauku „datos artimesnes nei N dienu".
+Tada trumpu datu ispardavimas tampa iprasta akcija.
+
+---
+
+### Technines pamokos
+
+1. **Meta reiksmes tikrinti, ne speti.** `product_brand` vs tuscias
+   `pa_brendas`; `belcor_tofu` vs `belacor`. Abu kartus kodas „veike" ir
+   tyliai grazino nuli.
+
+2. **PHP vienguba kabute JS eiluteje** — sioje sesijoje sudege dar du kartus
+   (`feed'ai`, CSS selektorius `'.pr[data-id="'+id+'"]'`). Nuo dabar pries
+   kiekviena siuntima: `php -l` PLIUS JS bloko istraukimas ir `new Function()`
+   patikra.
+
+3. **Code Snippets REST kartais grazina PHP warning pries JSON** →
+   `r.json()` nulūžta ir runas krenta pries darba. Runner'yje privalomas
+   `jsonSafe()` (randa pirma `[` arba `{` ir parsina nuo ten).
+
+4. **Skaicius be konteksto meluoja.** „Prekiu 0" prie juodrascio ir „8" vietoj
+   15 — abu buvo techniskai teisingi, bet be paaiskinimo atrode kaip klaida.
+
+5. **Baltasis sarasas > juodasis** visur, kur valomas UI: juodasis pralaimi
+   kiekvienam naujam pluginui.
+
+### Aukščiausias sprendimo Nr.: S757.
+
+### ATVIRA po šios sesijos
+- **RYTOJ:** „Geriausia iki" (ketvirtas akciju taikinys + katalogo eile) ir
+  Rinkiniai
+- katalogo kortele ima `pa_brendas` (tuscia) — brendas korteleje nesimato
+- Tiekimas ir Desk dar nenaudoja `Petshop_Katalogas::navigacija()`
+- 5 „svetimos" akcijos be datu (Genia, 3× Zylkene, Flexadin) — laukia
+  savininko sprendimo
+- testine akcija #1 „Ambrosia rugpjutis −15 %" juodrastyje — po darbuotojo
+  testavimo trinti
+- savikainos kilmes zyma korteleje · atributu kilmes zyma (parseris vs ranka)
+- akciju rezultatu suvestine po pabaigos (kiek parduota akcijos metu vs pries)
+
+---
+
+## 2026-08-10 (vakaras) — KATALOGO UX SESIJA: v4.2–v4.8 [S747-S753]
+
+Sesija prasidejo pastabu prasymu, o virto astuoniomis versijomis. Pirmos
+keturios ejo per lengvai — pataisiau tai, ka pats siuliau, ir pranesiau
+„padaryta". Savininko atsakymas: „nesuprantu ka tu pataisei — mano manymu
+nieko". Buvo teisus: siuliau tai, kas jau padaryta v4.1, o realiai reikalingi
+darbai (atributai, nuotraukos) gulejo neliesti nuo ankstesniu sesiju.
+
+**Sesijos pamoka Nr. 1:** pastabu sarasas, sudarytas SKAITANT koda, o ne
+DIRBANT su langu, duoda patvirtinimus, ne radinius. Tris kartus is eiles
+„padaryta" reiske „ideta i faila", ne „veikia ekrane".
+
+**Sesijos pamoka Nr. 2:** v4.6 ivede regresija (`height:auto`), kuria pastebejo
+savininkas, ne as. Vizuali patikra buvo atlikta — bet tikrinau TAI, KA
+TAISIAU, o ne ar nesulauzyta kazkas salia.
+
+### IDIEGTA
+
+| Versija | Ka issprende |
+|---|---|
+| v4.2 (S747) | `$kat_tipas` naudotas pries apibrezima → maisto atributai kortelėje niekada nesirode; sandelio spalvos 3 → 7 saltiniams; gyva marza; savikainos ispejimas |
+| v4.3 (S748) | TinyMCE `table` priedas, kurio WP komplekte NERA → raudona klaidos juosta per visa ekrana |
+| v4.4 (S749) | paieskos laukas juodas ant juodo; neirasytu lauku geltona zyma; Enter uzuomina; SKU/EAN kopijavimas |
+| v4.5 (S750) | atributai ir nuotraukos redaguojami VIETOJE (buvo: „keiciami WooCommerce puslapyje") |
+| v4.6 (S751) | kortele `fixed` — atsidaro nuo virsaus; pavadinimas redaguojamas; SKU spyna |
+| v4.7 (S752) | v4.6 regresijos taisymas (`height:auto` nukirto puse korteles); „Ikelti nauja" atskirai; nuotrauku atsaukimas |
+| v4.8 (S753) | neirasytu pakeitimu juosta + uzdarymo klausimas su TRIMIS pasirinkimais |
+
+Gavimas: v1.0 → **v1.1** (sandelio spalvu palete, ta pati kaip kataloge).
+
+---
+
+### S747 — UX AUDITAS: RASTA TYLI KLAIDA (v4.2)
+
+Auditas turejo buti kosmetinis, bet atskleide klaida, kuri veike nuo v3.8:
+
+```php
+$tipas_a = $kat_tipas['tipas'];        // 1333 eil. — NAUDOJAMA
+...
+$kat_tipas = self::sekciju_lukesciai(...); // 1367 eil. — APIBREZIAMA
+```
+
+34 eilutes tarpo. `$tipas_a` visada buvo `null`, todel maisto atributai
+(baltymu saltinis, amzius, grudai, monoprotein, spec. mityba, veisles dydis)
+i kortele NEPATEKDAVO, o kiekvienas atidarymas kele PHP warning. Kortelėje
+matesi tik du bendrieji atributai — ir atrodė, kad taip ir turi buti.
+
+**Sandelio spalvos:** `.sand.s_*` klases turejo tik AV/VF/ZB. Quattro (65
+prekes), belcor_tofu (62), Prins (43), Ambrosia (15) susiliedavo i pilka.
+Pridetos visos; ta pati palete perkelta i Gavimo langa (v1.1).
+
+**RADINYS:** pirmasis bandymas naudojo `belacor`, o tikroji `_ps_sandelis`
+reiksme yra **`belcor_tofu`**. CSS niekada nebutu suveikes. Rasta tik todel,
+kad recon grazino tikras meta reiksmes su skaiciais.
+
+**Gyva marza:** kortelėje perskaiciuojama berasant (patikra: 19,9 % → 36,0 %
+be Enter). **Savikaina nesuvesta** → raudona pastaba vietoj tuscio lauko.
+
+---
+
+### S748 — RENGYKLES KLAIDA (v4.3)
+
+Savininkas: „matau tik klaidas." Kataloge kabojo raudona WP juosta per visa
+ekrano auksti:
+
+```
+Failed to load plugin: table from .../tinymce/plugins/table/plugin.min.js
+```
+
+v4.1 rengykle prase priedo `table`. **WordPress komplekte tokio priedo nera**
+(yra lists, link, paste, wordpress, wplink). Pasalintas is `plugins` ir is
+`toolbar1`.
+
+**Kritine pamoka:** ta pacia juosta MACIAU savo paties screenshot'e valanda
+anksciau — vertikalus tekstas kaireje — ir palaikiau ja apkarpytu stulpeliu.
+Screenshot'as nera patikra, jei ziurima tik i ta vieta, kuri taisyta.
+
+---
+
+### S749 — MATOMUMAS IR NEPRARANDAMI PAKEITIMAI (v4.4)
+
+Savininkas: „virsuje paieskos laukas juodas, net nesimato kur ka irasyti."
+
+Faktas: `background:#141a18` ant juostos `#1d2422`. Juoda ant juodos.
+Dabar baltas laukas su lupa (patikra: `rgb(255,255,255)`).
+
+Plius: pakeistas laukas nusidazo geltonai; „Enter irašo · Esc atstato"
+uzuomina; SKU/EAN kopijavimas vienu paspaudimu; „Trūksta: …" — gintarinis
+akcentas vietoj pilkos smulkmenos.
+
+---
+
+### S750 — ATRIBUTAI IR NUOTRAUKOS VIETOJE (v4.5)
+
+Savininkas: „jokio atributu redagavimo, nuotrauku — kur jau n kartu kalbeta,
+NIEKAS nepadaryta."
+
+Iki siol kortele rode atributus su prierasu „keiciami WooCommerce redagavimo
+puslapyje" — t. y. lauk is lango, i kuri ka tik atejai. Nuotrauku skirtukas
+buvo failu vardu sarasas.
+
+**Atributai:** „keisti" → pasirinkimas → Irasyti. Kelias reiksmes turintys
+(baltymai, spec. mityba, amzius) — varneles; kiti — pasirinkimas.
+Terminai priskiriami **TIK per term_id** (slug kolizija „1,5 kg"/„15 kg"),
+registruojama `_product_attributes`, valomi WC transientai — be sio triju
+zingsniu rinkinio atributas neissilaiko.
+
+**Nuotraukos:** pagrindines keitimas/salinimas, galerijos papildymas, ★
+(padaryti pagrindine), × (ismesti), ← → (tvarka), alt tekstas. Keiciant
+pagrindine senoji nedingsta — keliauja i galerijos pradzia.
+
+Patikra realiu veiksmu: „Šunims" → „Graužikams" (irasyta) → atgal „Šunims".
+
+---
+
+### S751 — KORTELE NUO VIRSAUS, PAVADINIMAS, SKU SPYNA (v4.6)
+
+Savininkas: „prekes korteles langas atsidares matosi ne nuo virsaus."
+
+Priezastis buvo ne ten, kur atrode: `scrollTo(0,0)` suveikdavo, bet **iskart
+po jo** `scrollIntoView` ant saraso eilutes vel nustumdavo langa zemyn, o
+`sticky` kortele sekdavo paskui. Sprendimas: kortele `fixed`.
+
+**Pavadinimas** redaguojamas; slug (`post_name`) SAMONINGAI nekeiciamas —
+jis indeksuotas, keitimas reikstu 301 grandine.
+
+**SKU uzrakintas** (savininko klausimas: „prie ko viskas risasi, ar as
+neteisus?" — teisus). Prie SKU kabo ps_sources registras, tiekeju XML
+sutapdinimas, uzsakymu eilutes, kainu palyginimo feed sarasai. Ne visiskai:
+~1 175 legacy ir naujoms prekems koda suvesti reikia, todel spyna nuimama
+samoningu veiksmu su ispejimu, kas butent nutruks.
+
+---
+
+### S752 — v4.6 REGRESIJA + NUOTRAUKU SAUGIKLIAI (v4.7)
+
+Savininkas: „Aprasymo langas dingo puse lango informacijos."
+
+**Priezastis — mano paties v4.6 kodas:**
+
+```css
+position:fixed; top:32px; bottom:0; height:auto !important;
+```
+
+Pagal CSS: jei `height` yra `auto`, o `top` ir `bottom` abu nustatyti, tai
+**`bottom` IGNORUOJAMAS**, o aukstis skaiciuojamas pagal turini. Kortele
+isaugo iki 1161 px prie 1050 px ekrano, vidine slinktis mire
+(`scrollHeight == clientHeight`) ir apatine dalis liko nukirsta ir
+NEPASIEKIAMA. Taisymas: `height: calc(100vh - 32px)`.
+
+**„Ikelti nauja" atskirai:** buvo vienas mygtukas „Pakeisti…", atidarydavęs
+medijos biblioteka — atrode, kad ikelti naujos apskritai negalima. Dabar
+„Ikelti nauja…" (atsidaro ties ikelimu) ir „Pasirinkti is medijos…".
+
+**Nuotrauka nebekeiciama tyliai:** pries — klausiama, po — juosta su
+„Atsaukti", grazinancia buvusia. Buvusios ID rasomas i ivykiu zurnala
+(iki tol raso tik `tapo` — todel savininko pakeitimo nebuvo galima atsekti).
+
+**ATSTATYTA:** preke #34500 (DP-83724-6) — pagrindine buvo tapusi svetima
+`ryziu-suktinukai-apvynioti-antiena.jpeg`, galerijoje gulejo tikroji
+`dp-clean-34500.jpg`. Grazinta; svetima nuimta nuo prekes, is medijos
+NETRINTA.
+
+---
+
+### S753 — NEIRASYTI PAKEITIMAI (v4.8)
+
+Savininkas: „kodel uzdarant nepaklausia ar issaugoti duomenis? Ne, dabar
+neaisku."
+
+Trys atskiros klaidos viename mechanizme:
+
+1. **Sargas nepilnas.** Kabejo tik ant × ir ←/→. Uzdarant **Esc** klavisu
+   arba paspaudus **kita preke sarase** kortele persikraudavo TYLIAI.
+2. **Klausimas neteisingas.** `confirm()` teturi du mygtukus → buvo galima
+   tik „prarasti" arba „likti". **Issaugoti nebuvo kaip.**
+3. **Irasymas nematomas.** Vyko per Enter, kurio nesimato.
+
+Dabar: juosta korteles apacioje „Neirašyta: N · Kaina su PVM" su
+[Irašyti] [Atmesti]; uzdarymo langas su TRIMIS pasirinkimais (Grizti /
+Uzdaryti neissaugojus / Issaugoti ir uzdaryti) ir ivardytais laukais.
+
+**Patikra realiais veiksmais (uxs9):**
+
+| Veiksmas | Rezultatas |
+|---|---|
+| 1.51 → 7.77 | juosta „Neirašyta: 1 · Kaina su PVM", laukas geltonas |
+| Esc | klausimas pasirode (anksciau — tyliai uzdarydavo) |
+| „Grizti i kortele" | kortele atvira, 7.77 vietoje |
+| Kita preke sarase | klausimas pasirode (anksciau — tyliai persikraudavo) |
+| „Uzdaryti neissaugojus" | 1.51 atstatyta, juosta dingo |
+| „Irašyti" per juosta | 8.88 irasyta |
+| Atstatymas | 1.51 · dev svarus |
+
+---
+
+### Technines pamokos
+
+1. **`height:auto` naikina `bottom`.** Su `position:fixed` ir abiem
+   `top`/`bottom` nustatytais — aukstis skaiciuojamas pagal turini, o
+   `bottom` ignoruojamas. Aukstis nurodomas konkreciai: `calc(100vh - 32px)`.
+
+2. **PHP vienguba kabute JS eiluteje.** Nutraukia PHP string'a. Sioje
+   sesijoje sudege TRIS kartus: `feed'ai`, `Esc'u`, ir CSS selektorius
+   `'.pskat-t tbody tr[data-id="'+id+'"]'`. Privaloma `php -l` pries kiekviena
+   siuntima.
+
+3. **Du atskiri IIFE nesimato vienas kito.** `skriptas()` ir `skriptas_v35()`
+   — `atidaryk`/`dabartinis` neprieinami antrame. Tiltas per
+   `window.psKatAtidaryk`.
+
+4. **Playwright: plati `fixed` kortele dengia sarasa.** `elementHandle.click()`
+   nutruksta po 30 s („subtree intercepts pointer events"). Sprendimas —
+   `page.evaluate(()=>el.click())`.
+
+5. **Meta reiksmes tikrinti, ne speti.** `belcor_tofu`, ne `belacor`.
+
+6. **Ivykiu zurnale privalo buti `buvo`, ne tik `tapo`.** Be to negalima
+   atsekti nei kas pasikeite, nei atstatyti.
+
+### Aukščiausias sprendimo Nr.: S753.
+
+### ATVIRA po šios sesijos
+- savikainos kilmes zyma korteleje (is partiju / tiekejo / ranka + kada)
+- atributu kilmes zyma (parseris vs ranka, is parserio zurnalo)
+- WP branduolio `tinymce/skins/wordpress/images/style.svg` → HTTP2 klaida
+  (ne musu kodas, vizualiai netrukdo)
+- katalogas: masiniai veiksmai, issaugoti vaizdai, Excel, skirtukai „Kaina"
+  ir „Likuciai", savikainu istorija
+- atributu parseris: savininko sprendimas del kukuruzu krakmolo
+- 1 222 prekes be savikainos
+
+---
+
+## 2026-08-10 (popietė) — KORTELE TAMPA DARBO VIETA [S742-S746]
+
+Rytas baigesi atributu apply. Popiete — keturios katalogo versijos, visos
+gimusios is savininko pastabu. Kiekviena pastaba parode ta pacia schema:
+sistema turejo teisinga atsakyma, bet vienoje vietoje jo neklause.
+
+### IDIEGTA
+
+| Versija | Ka issprende |
+|---|---|
+| v3.7 (S742) | zaislui rodytas maisto antrasciu sarasas · tekstas per pilkas · EAN netilpo |
+| v3.8 (S743) | serimo lentele tualetui · atributai ne pagal kategorija · nebuvo „tik kurjeriu" |
+| v3.9 (S744) | kortele tik konstatavo problemas, mygtuko pataisyti nebuvo |
+| v4.0 (S745) | tiekeju HTML sankla — iki 62 % teksto |
+| v4.1 (S746) | WordPress rengykle vietoj HTML lauko |
+
+Atsargines kopijos DB: `ps_katalogas_v36_bak` ... `ps_katalogas_v40_bak`.
+
+---
+
+### S742 — TRYS PASTABOS (v3.7)
+
+**LOGINE KLAIDA.** Zaislui rodyta: „Antraštės, kurių ieško sistema: Sudėtis,
+Analitinės sudedamosios, Priedai, Šėrimo instrukcija" — o blokas zemiau tuo
+paciu metu teisingai sake „vertinama kaip aksesuarai". Du priestaraujantys
+atsakymai viename lange.
+
+Priezastis: `sekciju_lukesciai()` JAU mokejo atskirti kategorijas, bet
+antrasciu sarasas buvo hardcoded, tas pats visiems. Dabar imamas is jos.
+Patikra: Kamuoliukas → „Aprašymas"; JosiDog → penkios sekcijos.
+
+**TEKSTAS.** `#6b7580` ant pilksvo fono susilieja. Pakelta iki `#3d4650`
+(etiketes) ir `#2a3530` (antrastes). Savininkas apie tai prase du kartus —
+pirma karta pataisiau tik maketuose, ne kode.
+
+**EAN.** 13 skaitmenu i 172 px netilpo → 196 px + mono srifto klase.
+
+Plius: partijos perkeltos i kaire kolona (buvo virs viso tinklelio ir
+atstumdavo „Kaina ir marza" zemyn).
+
+---
+
+### S743 — APRASYMU LANGAI PAGAL KATEGORIJA (v3.8)
+
+Savininkas: „tualetas??? Cia juk zaislas, jam nereikia tokiu aprasyku kaip
+maistui ar skanestams."
+
+Rasti DU serimo lenteles blokai, ir antrasis (Aprasymuose) rodesi VISIEMS —
+be jokios kategorijos patikros. Todel tualetas gaudavo „Šėrimo lentelė — nėra".
+Reikalavimas, kurio niekada nebus ivykdyta, nera informacija — tai triuksmas.
+
+Padaryta: abu blokai tik maistui; filtru atributu sarasas pagal kategorija
+(aksesuarui nerodomas „Baltymų šaltinis" ir „Amžius").
+
+**„TIK KURJERIU" VARNELE.** Recon rado, kad `_ps_tik_kurjeriu` ir
+`_petshop_courier_only` postmeta lenteleje NEEGZISTUOJA — kortelės kodas
+tikrino tai, ko nera, todel visada rode „paštomatas galimas".
+
+Realiai `courier_only` ateina is `Petshop_Fulfillment` bazes. Tualetui jis
+grazina `false`, nors preke yra 56×39×38,5 cm — nes **jos svoris ir matmenys
+sistemoje 0.0000**, ir automatika neturi is ko sprесti.
+
+Varnele iraso `_ps_tik_kurjeriu`. Testas narsykleje: false → pazymeta →
+„irasyta" → true.
+
+**ATVIRAS PUNKTAS:** ar pristatymo metodai realiai uzsidarys checkout'e —
+NEPATIKRINTA. Fulfillment sio lauko neskaito. Reikia arba ijungti i resolverio
+grandine, arba prideti filtra, slepianti pastomato metodus. Tai liecia
+checkout, todel nedaryta tuo paciu ypu.
+
+---
+
+### S744 — APRASYMAS REDAGUOJAMAS (v3.9)
+
+Savininkas: „ir ka man dabar daryti, jei tik informacijai — tai bevertis
+reikalas?"
+
+Teisinga pastaba visai kortelei: rodziau diagnostika, o veiksmo nebuvo.
+„Tekste nėra antraščių" be mygtuko yra priekaistas, ne irankis.
+
+Padaryta: teksto laukas · „Įrašyti" · „Įterpti antraščių karkasą" (prideda
+butent tos kategorijos sekcijas, esamas tekstas lieka po pirmaja) ·
+„Grąžinti ankstesnę" (5 versijos).
+
+Rasoma per `wp_update_post`, NE per `wc/v3` — pastarasis aprasymus korumpuoja.
+Irasius uzdedamas `_ps_aprasymas_uzrakintas`.
+
+Testas narsykleje: karkasas („pridėta: Aprašymas") · irasymas (63 simb.) ·
+atsaukimas — visi trys.
+
+---
+
+### S745 — HTML VALYMAS (v4.0)
+
+Savininkas atsiunte realu aprasymo HTML: „tu manai, kad cia imanoma kazka
+koreguoti?" Ten `style="color:black !important"` prie kiekvieno elemento,
+pasikartojantys `<style>` blokai, `b2b-black` apvalkalai, `<meta charset>`
+viduryje turinio.
+
+Matavimas: **62 %** to teksto buvo sankla. Farmina N&D: 4 961 → 3 565 simb.
+(28 %), style atributu 23 → 0, `<style>` bloku 1 → 0.
+
+**KRITINIS SKAICIUS:** grynas tekstas 3 114 → 3 114. Ne viena raide neprarasta.
+Lenteles 1 → 1.
+
+Dvi apsaugos: jei po valymo neliktu teksto — sustojama; jei sumazetu lenteliu
+skaicius — sustojama.
+
+**Preku su sankla: 1 545** (~40 % katalogo).
+
+**MANO KLAIDA:** padariau mygtuka, kuri reiktu spausti 1 545 kartus.
+Savininkas: „kam as turiu valyti sias siuksles? Tu gali viska sutvarkyti."
+Teisus — tai fonine operacija, ne vartotojo darbas.
+
+---
+
+### S746 — WORDPRESS RENGYKLE (v4.1)
+
+Savininkas po valymo: „as nepastebejau, kad kas pasikeistu."
+
+Ir tai atskleide, kad valymas isspende ne ta problema. Narsykle tuos
+perteklinius stilius ir taip ignoruodavo — pirkejas mate ta pati. O laukas ir
+po valymo rode HTML, todel gramatines klaidos taisymas tarp `<td>` zymu buvo
+toks pat neimanomas.
+
+Reikejo ne trumpesnio HTML, o **normalaus teksto redaktoriaus**.
+
+Idiegta TinyMCE: paryskinimai, sarasai, antrastes, LENTELES kaip lenteles;
+„Tekstas / HTML kodas" perjungimas; iklijuojant is narsykles stiliai
+numetami automatiskai (`paste_preprocess`).
+
+Techninis niuansas: kortele ikraunama AJAX metodu, todel `wp_editor()` cia
+neveiktu — rengykle paleidziama JS'u per `MutationObserver`, kai textarea
+atsiranda DOM'e.
+
+Patikra su Farmina N&D Tropical: textarea 5 030 simb. → rengykle paleista →
+turinys tekstu 3 147 simb. → lentele 1 → iframe rodo skaitoma teksta,
+0 JS klaidu.
+
+---
+
+### SAVININKO PASTABOS, DAR NEIVYKDYTOS
+
+```
+1  TUSCIOS ZYMES TEKSTE
+   valymas palieka <div> be atributu, kurie rengykleje nematomi, bet HTML
+   rezime kliuva. <h4> PALIKTI — jos yra sekciju antrastes, per kurias
+   akordeonas skaido teksta prekes puslapyje.
+
+2  NUOTRAUKOS IKELIMAS
+   rengykleje `mediaButtons` isjungtas — ijungti.
+   Plius nuotrauku skirtukas: ikelimas, tvarkos keitimas, pagrindines
+   nustatymas. Dabar jis TIK rodo skaiciu — ta pati „bevertis reikalas"
+   problema, kaip buvo su aprasymais.
+```
+
+### LIKO IS ANKSTESNIU DIENU
+
+```
+masinis HTML valymas    1 545 prekiu · su zurnalu ir atsaukimu
+automatika naujoms      importas atveza → HTML isvalomas is karto
+brendai                 137 ZB + 194 AV be zenklo, nors `_zb_brand` turi 1 059
+143 prekes              atributas registruotas `_product_attributes`, be termino
+68 nesutapimai          parserio siulymas skiriasi nuo esamos zymes
+courier_only            varnele rasoma, bet Fulfillment jos neskaito
+naujos prekes langas    maketas patvirtintas, kodo nera
+Import #2               patikra, ar `_ps_sandelis` isgyveno
+```
+
+---
+
+### PAMOKA
+
+Keturios is penkiu siandienos popietes klaidu turejo ta pacia forma:
+**sistema jau turejo teisinga atsakyma, bet vienoje vietoje jo neklause.**
+
+```
+sekciju_lukesciai()  mokejo skirti zaisla nuo maisto — antrasciu sarasas neklause
+Petshop_Pilnumas     mokejo, kad aksesuarui serimo nereikia — blokas neklause
+sekcijos             buvo skaidomos teisingai — bet rodomos kaip kodas
+```
+
+Todel prie kiekvieno naujo bloko verta klausti ne „ar veikia", o „ar jis
+klausia to paties saltinio, kaip visi kiti".
+
+Auksciausias decision Nr.: **S746**.
+
+---
+
+## 2026-08-10 — PARTIJOS, GAVIMAS, ATRIBUTAI [S733-S741]
+
+Diena prasidejo nuo terminologijos pastabos, o baigesi partiju sistema ir
+uzdarytu TZ punktu 1. Tarp ju — trys mano klaidos, kurias sugavo Raimis ir
+dry-run'ai.
+
+### IDIEGTA
+
+| Failas | Versija | Ka daro |
+|---|---|---|
+| `petshop-partijos.php` | 1.1 | AV partijos su savikaina · FEFO · GPAIS pakuotes |
+| `petshop-gavimas.php` | 1.0 | prekiu gavimo langas (Petshop prekės → Gavimas) |
+| `petshop-parseris.php` | 1.3 | atributai is teksto · zurnalas · atsaukimas |
+| `petshop-katalogas.php` | 3.6 | partijos kortelėje · pardavimu ir pakuotes skirtukai |
+
+WPAI Import #1: `is_update_categories` ir `is_update_attributes` → 0,
+`update_all_data` → no. Atsargine kopija `ps_wpai1_bak_20260810`.
+
+---
+
+### S733 — IMPORT #1 CIAUPAS (prevenciskai)
+
+Raimis: „ir isztrinti prekiu zenklai ir visos problemos su ZB prekes,
+skanuok ieskok problemos, manau cia tikrai degantis reikalas".
+
+Skenas rado, kad **Import #1 (goods_clean.xml) turejo `update_all_data=yes`,
+`is_update_categories=1/full_update` ir `is_update_attributes=1/full_update`**,
+o jo sablone yra tik `product_brand`, `product_cat`, `product_tag`. Visi `pa_*`
+i sablona neieina, todel butu trinami. Tai TA PATI schema, kaip vakarykstis
+`_ps_sandelis` trynimas (S718), tik taksonomiju puseje.
+
+Kiti profiliai (#2, #3, #5, #7) taksonomiju neliecia.
+
+**HIPOTEZE NEPASITVIRTINO:** Import #1 istorijoje neatsiranda — jis kol kas
+nieko netrina. Taciau tai buvo uztaisytas ginklas, todel ciaupas uzsuktas
+prevenciskai. Kontrole: raktu 469 → 469, `is_update_custom_fields` liko
+`only` (vakarykste pataisa vietoje).
+
+**Kas paaiskejo apie brendus:** AV be zenklo 194, ZB 137, VF 7. Bet `_zb_brand`
+meta turi VISOS 1 059 ZB prekes — duomenys yra, tik neperkelti i taksonomija.
+Vieno priskyrimo darbas, NEPRADETA.
+
+**Kas paaiskejo apie atributus:** 143 is 400 tikrintu prekiu turi
+`pa_be_grudu` irasyta `_product_attributes` meta, bet TERMINO nepriskirto.
+Kortelėje laukas matomas, o filtrui preke nematoma.
+
+---
+
+### S734 — PARTIJOS (`petshop-partijos.php`)
+
+Priezastis (Raimio situacijos): (1) perku i AV, kiekviena partija gali tureti
+kita savikaina, ypac is Lenkijos su kintanciu zloto kursu; (2) ZB/VF paleidzia
+akcija, nusiperku pigiau, o kita menesi akcijos nebera — sistema to nemato.
+
+`_cost_price` buvo VIENAS skaicius prekei: antrasis irasymas uztrindavo
+pirmaji, ir marza rodoma nuo paskutines, nors lentynoje guli pigiosios.
+
+**MODELIS:**
+
+```
+ps_partijos    product_id · gauta · kiekis_gautas · kiekis_liko
+               savikaina_eur · savikaina_orig · valiuta · kursas
+               geriausia_iki · tiekejas · importuota · atsaukta
+ps_pakuotes    tipas · medziaga · svoris_g · vienetu_pakuoteje · tiekiama_su_preke
+```
+
+VALIUTA: kursas fiksuojamas pirkimo diena ir NIEKADA neperskaiciuojamas —
+tai jau ivykusi operacija.
+
+SAVIKAINA = svertinis vidurkis is partiju su likuciu. Rasomas i `_cost_price`
+kaip greitoji kopija (katalogo sarasas skaito ja, ne agregacija).
+
+NURASYMAS — FEFO: pirma ta partija, kurios galiojimas arciausiai.
+
+Testai 10/10: EUR partija · PLN 142/4,31=32,9466 € · svertinis vidurkis
+tiksliai · likutis 0→54 · FEFO paeme anksciausiai galiojancia · nurasymas ·
+„trūksta 955 vnt." ispejimas · pakuotes 60 vnt.=5,14 kg · GPAIS tik is
+importuotos partijos · ivykiu juosta.
+
+**v1.1 (S737) — UZSAKYMU KELIAS.** Recon rado, kad AV likuti jau mazina
+`Petshop_AV_Reduce::mazinti` (prioritetas 15). Todel partijos kabinamos prie
+TU PACIU hook'u prioritetu 25 ir rasoma TIK i `kiekis_liko` — jokio `_stock`,
+jokio `_own_stock_qty`. Antras rasytojas tame paciame lauke butu tiksliai ta
+schema, kuri sukele S468/S478/S499/S503.
+
+Testas su tikru uzsakymu: partijose 51→48, FEFO paeme #2 (2027-06-30),
+AV likutis 61→58 (mazino av-reduce), idempotentiskumas veikia, uzsakyme dvi
+pastabos greta — musu ir av-reduce.
+
+**MANO KLAIDA:** `wp_delete_post()` HPOS uzsakymu netrina — jie gyvena
+`wc_orders`, ne `wp_posts`. Reikia `$order->delete(true)`. Testinis uzsakymas
+liko sistemoje; istrintas atskirai. Ta pati klaidos rusis, kaip `method_exists()`
+ant WC data store: funkcija tyliai nieko nedaro, o atrodo, kad suveike.
+
+---
+
+### S736 — GAVIMO LANGAS (`petshop-gavimas.php`)
+
+Raimio praktika: saskaita su 15-20 poziciju naturaliu skanestu, prekes
+sistemoje jau yra, reikia tik kiekiu, savikainu ir galiojimo datu.
+
+Excel atmestas kaip letesnis (eksportas → pildymas → importas → klaidu
+taisymas, ir nematai, ar pataikei i ta preke). Lieka atsarginiu keliu.
+
+EIGA: paieska → Enter → kiekis → Enter → savikaina → Enter → galiojimas →
+Enter grazina i paieska. Skeneris veikia be atskiro rezimo, nes USB skeneris
+kompiuteriui atrodo kaip klaviatura.
+
+GREITINTUVAI: „Kartoti praeita gavima", „Galiojimas visoms", saskaitos sumos
+kontrole PRIES irasant, savikaina uzsipildo is praeitos partijos.
+
+Testas narsykleje: paieska rado · savikaina 32,95 € uzsipilde · klaviatura
+7→25.00→2028-01-31 · suma 175,00 € · „sutampa"/„skirtumas 25,00 €" ·
+partija #3 sukurta · likutis 61 · „Kartoti" uzkrove 3 pozicijas · 0 JS klaidu.
+
+---
+
+### S738-S741 — ATRIBUTU PARSERIS
+
+**KODEL TAISYKLES, NE AI** (Raimio klausimas): domenas siauras — baltymu
+saltiniu ~30, grudu kulturu ~8. Ten, kur sarasas baigtinis, taisykle
+pranasesne: deterministiska, auditojama, nemokama, be isorines priklausomybes.
+Raimio pasiulymas versti uzsienietiskus tekstus atskirai pasalino vienintele
+vieta, kur taisykles butu pralaimejusios.
+
+**NEIGIMO ATPAZINIMAS** — svarbiausia vieta. Tekste „Be grūdų — nenaudojame
+kviečių, kukurūzų" paprasta paieska randa „kviečių" ir nusprendzia, kad preke
+su grudais. Testai 7/8.
+
+**DRY-RUN PAMOKA 1 (v1.1):** „Šlapimo takams" gavo 240 prekiu — zodis „inkst"
+gaudo ir „gerina inkstu veikla", ir inkstus SUDETYJE (subproduktai
+konservuose). Isimta.
+
+**DRY-RUN PAMOKA 2 (v1.1):** dziovintos antienos kulseles gavo „Su grūdais" —
+grudai buvo paminėti bendrame aprasymo tekste. SPRENDIMAS: grudai, baltymo
+saltinis ir monoprotein ieskomi TIK sudeties sekcijoje (+ pavadinime). Nera
+sudeties — laukas lieka tuscias, o ne spejamas.
+
+**MANO KLAIDA, kuria istaise faktai:** paskelbiau, kad parseris klysta
+antienos kulselems. Patikrinus sudeti paaiskejo, kad ten „vištiena 92 %,
+KUKURŪZŲ KRAKMOLAS" — parseris teisus, o esama zyme „Be grūdų" klaidinga.
+As skaiciau pavadinima, parseris — sudeti.
+
+Raimio sprendimas: kukuruzu krakmolas = su grudais.
+
+**APPLY:** 3 710 reiksmiu, 3 774 prekes, 3,7 min, viena operacija
+`PARS26081011111122`, zurnalas su atsaukimu.
+
+**MANO TRECIA KLAIDA — MONOPROTEIN.** Priskyriau 1 242 (buvo 496).
+Raimis: „situ skaiciumi as netikiu". Patikrinus:
+
+```
+Monge BWild (šerniena)   sudetyje ir sherniena, ir SVIEZIA VISTIENA
+                         „šerniena" nebuvo baltymu sarase → rado viena → „Taip"
+Family Dog               „mėsa ir mėsos perdirbimo produktai (16 % jautienos)"
+                         misrus baltymai, aprasyti bendrai → „Taip"
+62 is 401 „Taip"         dar ir su glitimo grudais
+```
+
+Ir svarbiausia: 2026-06-15 (TZ v1.18) buvo uzfiksuota savininko taisykle —
+**monoprotein = vienas baltymas IR be glitimo**; parseris v10 tada klydo
+lygiai taip pat (476 preke, 233 su grudais). As tos taisykles nepaisiau.
+
+**IŠVADA:** monoprotein is sudeties isvesti neimanoma patikimai. Nepilnas
+baltymu sarasas visada duos klaidinga „Taip". Nuo v1.3 — TIK aiskus gamintojo
+pareiskimas, ir net jis tikrinamas glitimu.
+
+Atsaukta 1 163 · praleista 0 · po atsaukimo 496 (tiek, kiek buvo) ·
+is naujo priskirta 15 · galutinis 499.
+
+---
+
+### REZULTATAS
+
+```
+                     buvo    dabar
+pa_be_grudu           412    1 015
+pa_baltymu_saltinis  1 023   1 233
+pa_amzius             509    1 054
+pa_speciali_mityba    165      649
+pa_monoprotein        496      499   ← teisingai, beveik nepakito
+pa_gyvuno_rusis      2 638    2 689
+ZB su „be grūdų"        2      339
+```
+
+Pagal sandeli: AV 601 · VF 351 · ZB 339 su „be grūdų".
+
+**ATSAUKIMAS, jei prireiktu:** `Petshop_Parseris::atsaukti('PARS26081011111122', false)`
+— nuima tik parserio priskirtus terminus ir tik jei jie vis dar ten.
+
+---
+
+### MAKETAI (S735)
+
+Trys interaktyvus maketai, patikslinti pagal Raimio pastabas:
+`prekes_kortele_maketas_v1.html`, `prekiu_gavimas_maketas_v1.html`,
+`nauja_preke_maketas_v1.html`.
+
+Raimio pastabos, kurios buvo idetos: „Tiekimas" → „Gavimas"; sriftas juodas,
+ne pilkas; du svorio laukai → vienas (prekes svoris bruto), pakuotes dydis
+lieka atributuose; serimo lentele perkelta i Aprasymus; GPAIS — atskiras
+skirtukas po Istorijos su issiskleidziancia dalimi.
+
+---
+
+### NEPRADETA / LIKO
+
+```
+brendai            137 ZB + 194 AV be zenklo, nors _zb_brand turi visas 1 059
+143 prekes         atributas registruotas _product_attributes, bet be termino
+68 nesutapimai     kur parserio siulymas skiriasi nuo esamos zymes
+                   (pvz. „Minkšti vištienos žiedai" = „Be grūdų", o sudetyje
+                   kukuruzu krakmolas) — esamu NEPERRASINEJU principingai
+aprasymu redaktorius       9 sekcijos su uzraktais
+naujos prekes langas       maketas yra, kodo nera
+Import #2 patikra          ar `_ps_sandelis` isgyveno po WPAI pataisos
+```
+
+---
+
+### PAMOKOS
+
+1. **Dry-run skaiciai turi buti lyginami su tuo, ko protingai galima tiketis**,
+   ne tik su tuo, ar kodas suveike. 1 242 monoprotein is 2 734 turejo iskart
+   kelti klausima — tai siaura kategorija, ne puse katalogo. Raimis tai
+   pastebejo per sekunde, as ne.
+2. **Isvedimas is nepilno saraso visada meluos ta pacia kryptimi.** Jei
+   sarasas nepilnas, „radau viena" reiskia „radau viena is tu, kuriuos zinau".
+3. **HPOS uzsakymai netrinami per `wp_delete_post()`** — reikia `$order->delete(true)`.
+4. **Zurnalas pries masini veiksma, ne po jo.** `Petshop_Ivykiai` stebi tik
+   meta laukus; taksonomijoms reikejo atskiro zurnalo, ir be jo 3 710
+   priskyrimu butu buve neatsaukiami.
+5. **Senos taisykles galioja.** 2026-06-15 monoprotein taisykle buvo
+   uzfiksuota TZ, ir jos nepaisymas kainavo viena atsaukima.
+
+Auksciausias decision Nr.: **S741**.
+
+---
+
+## 2026-08-09 (diena) — VARIKLIAI, KATALOGAS v3.5, MAKETAI [S721-S732]
+
+Tesinys po S718-S720 (`_ps_sandelis` uzdarymas). Sesija apeme keturis naujus
+variklius, katalogo lango perdaryma nuo v2.8 iki v3.5 ir du interaktyvius
+maketus. Visi diegimai su md5 patikra ir atsarginemis kopijomis.
+
+### IDIEGTA
+
+| Failas | Versija | Dydis | Ka daro |
+|---|---|---|---|
+| `petshop-ivykiai.php` | 1.2 | 20 773 B | vieninga preses laiko juosta |
+| `petshop-pardavimai.php` | 1.0 | 14 549 B | pardavimu greitis, ABC, dienu atsargai |
+| `petshop-pilnumas.php` | 1.1 | 18 003 B | duomenu pilnumo balas pagal tipa |
+| `petshop-rysiai.php` | 1.2 | 16 535 B | dalyvavimas, broliai €/kg, matomumas |
+| `petshop-katalogas.php` | 3.5 | 181 532 B | sarasas + kortele kaip darbo vieta |
+
+Naujos lenteles: `ps_ivykiai`. Nauji cron'ai: 04:40 ivykiu valymas ·
+04:50 pardavimai · 05:00 pilnumas.
+
+Atsargines kopijos DB: `ps_katalogas_v28_bak`, `_v29_bak`, `_v32_bak`, `_v33_bak`,
+`_v34_bak`.
+
+---
+
+### S721 — VIENINGA LAIKO JUOSTA (`petshop-ivykiai.php`)
+
+Priezastis: istorija gyveno trijose vietose (AV zurnalas, kainu zurnalas,
+"visi pakeitimai"), o importo pakeitimai nebuvo fiksuojami niekur. Butent del
+tos aklos zonos `_ps_sandelis` dingimo istorija (S718) uztruko keturis
+diagnostikos praejimus.
+
+ARCHITEKTURINIS SPRENDIMAS: kabinama ant `updated_post_meta`, NE ant musu
+mygtuku. Todel juosta mato VISUS kelius — kataloga, WC redagavimo puslapi,
+importa, cron'a. Kabinant tik prie savo veiksmu gautume ta pacia akla zona,
+del kurios modulis ir kuriamas.
+
+Apsaugos: stebimi tik baltajame sarase esantys 18 raktu; rasoma tik kai
+reiksme REALIAI pasikeite; riba 40 irasu prekei per uzklausa; tylus
+praleidimas, jei lenteles nera (istorija neverta sulauzyto importo).
+
+**KLAIDA, kuria sugavo testas T9.** v1.0 skaite sena reiksme is kesavimo
+`updated_post_meta` metu — o ten kesas jau turi NAUJA. Rezultatas: visa juosta
+butu rodziusi "→ 17,99" be "16,49 →", ir tai butu atrode kaip veikianti
+sistema. Taisyta per `update_post_metadata` filtra (fires PRIES irasyma).
+Filtre kritiska grazinti `$check` nepakeista — grazinus ne-null, WordPress
+laikytu irasyma jau atliktu ir realus update neivyktu (tylus duomenu
+praradimas, blogesnis uz pacia klaida).
+
+Testai 11/11: meta hook · be pokycio nerasoma · nestebimas ignoruojamas ·
+op_nr · op_nr isvalymas · statusas · WC CRUD · filtrai · sena reiksme ·
+`_stock` per CRUD · svetimu preku 0.
+
+Backfill: 13 irasu is `ps_av_zurnalas` (14 praleista — atsauktos operacijos).
+
+**v1.2 pataisa (Raimio pastebejimas):** `_weight` etikete "Siuntos svoris" →
+"Prekes svoris". Siunta yra keliu prekiu suma su pakuote — isvestinis dydis,
+neegzistuojantis kaip prekes laukas. Klaidingas pavadinimas anksciau ar
+veliau paskatintu i ji irasyti visos siuntos svori. **Makete v18 ta pati
+klaida yra 10 vietu — taisyti pries E2 kodavima.**
+
+---
+
+### S722 — PARDAVIMU GREITIS (`petshop-pardavimai.php`)
+
+Didziausia spraga pries Inventory Planner / Cin7 klase: katalogas nemate
+pardavimu, todel sprendimai "kelti kaina", "uzsakyti daugiau", "isimti"
+buvo priimami nezinant, ar preke apskritai perkama.
+
+Skaiciuoja is `wc_order_product_lookup` + `wc_order_stats` (HPOS):
+365/90/30 d. vienetai, pajamos, uzsakymai; ABC (80/15/5 pagal metines
+pajamas); dienu atsargai; negyvos atsargos.
+
+MARZOS ATSARGA irasyta i koda: marza = DABARTINE savikaina × parduotas
+kiekis. Tai apytiksliai — jei tiekejas kele kaina, istorine marza buvo kitokia.
+Tikslus skaiciavimas reikalautu savikainos fiksavimo uzsakymo eiluteje
+pardavimo momentu. Laukas vadinasi `marza_apytiksle` ir niekur nerodomas
+kaip buhalterinis skaicius.
+
+Testai 9/9, tarp ju T1 — nepriklausomas kontrolinis SQL, sutapo vienas prie
+vieno penkioms prekems.
+
+RADINYS: `lookup` lenteleje yra NEIGIAMU `product_qty` eiluciu — daliniai
+grazinimai. Reiskia skaiciavimas duoda GRYNAJI pardavima (parduota minus
+grazinta), ir tai teisinga. Apsaugos: neigiamas greitis → `dienu atsargai`
+= null; neigiamos pajamos → preke krenta i "be pardavimu", ne i ABC.
+
+Perskaiciuota visam katalogui: 3 774 prekes, 74 s.
+
+---
+
+### S723 — DUOMENU PILNUMO BALAS (`petshop-pilnumas.php`)
+
+PAGRINDINIS PRINCIPAS (Raimio sprendimas): balas matuoja TIK tai, ka realiai
+imanoma uzpildyti. Laukas, kurio uzpildymas reikalauja fizinio matavimo ar
+isoriniu duomenu, i bala NEIEINA — kitaip preke, turinti viska, ka gali
+tureti, niekada nerodytu 100 %, ir balas mirtu kaip irankis.
+
+Padengimo matavimas pries taisykliu nustatyma:
+
+```
+                  MAISTAS(1639)  AKSESUARAI(2028)
+pakuotes dydis    95 %           11 %   ← nasta
+matmenys          34 %           20 %   ← nasta abiem
+EAN               34 %           42 %
+galerija          45 %           57 %
+gyvuno rusis      97 %           92 %
+```
+
+ISIMTA del nastos: matmenys, prekes svoris aksesuaruose, galerija kaip
+reikalavimas.
+
+EAN — SAMONINGA ISIMTIS (Raimio sprendimas): padengimas zemas, bet paliktas,
+nes prekiu vedimas skeneriu yra planuojama darbo forma — rodiklis turi
+SPAUSTI link jos, ne tik konstatuoti dabarti. Kad tai nebutu bausme uz
+neimanoma, veikia zyme `_ps_ean_netaikomas`: sveriamos ir naturalios prekes
+EAN neturi ir netures, todel jom taskai iskrenta IS VARDIKLIO.
+
+BALAS = surinkta / GALIMA × 100 (ne is fiksuoto 100). Todel visada pasiekiamas.
+
+Taisykles (kiekvieno tipo suma = 100): maistas 10 lauku · skanestai 8 ·
+papildai 9 · rinkinys 3 · aksesuarai 5.
+
+APRASYMU SEKCIJOS skaidomos per `psdp_split()` — TA PACIA funkcija, kuria
+naudoja prekes puslapis (snippetas 512). Antra sava skaidymo logika reikstu,
+kad katalogas rodo viena, o pirkejas mato kita.
+
+**v1.1 pataisa po pirmo pilno paleidimo:** Mix&Match rinkiniai gavo 0 % ir
+uzkiso eiles virsu. Rinkinys yra KONTEINERIS — savikaina isvestine is
+komponentu, savos sudeties neturi, EAN netures niekada. Prideti tipas
+`rinkinys` ir grupe `nevertinama` (DP skelbimai, testines prekes — 10 vnt.).
+
+Rezultatas: 3 764 prekes, vidurkis 73,7 %, pilnu 822.
+**620 prekiu yra 90–99 % grupeje, ir is 200 tikrintu VISOMS truksta TIK EAN** —
+tiksliai tas spaudimas, del kurio EAN ir paliktas.
+
+---
+
+### S724 · S726 — KATALOGAS v2.9 ir v3.0
+
+v2.9: prijungti trys varikliai. Nauji stulpeliai (Pardavimai · Uzteks ·
+Pilnumas), naujos eiles (Baigiasi greiciau nei tiekiama · Negyvos atsargos AV ·
+Duomenu skolos), kortelėje "Kaip sekasi" virsuje ir vieninga juosta vietoj
+tik-katalogo istorijos.
+
+Senasis `pilnumas()` metodas su savo 8 lauku logika perjungtas i Varikli 3 —
+dvi pilnumo sistemos viename lange rodytu skirtingus skaicius tam paciam
+dalykui, o tai blogiau nei ne vienos. Senoji logika lieka ATSARGINE saka.
+
+NEGYVOS ATSARGOS — tik AV. Dropship prekes guli pas tiekeja, pinigu nesaisto,
+todel i sia eile joms vietos nera. (Sprendimas priimtas is principo, ne is
+dev duomenu.)
+
+Verifikacija: eiles = filtrai vienas prie vieno (1=1, 746=746, 1971=1971) —
+skaitiklis ir sarasas negali issiskirti.
+
+v3.0: kortelėje trys blokai is `Petshop_Rysiai`.
+
+---
+
+### S725 — RYSIAI (`petshop-rysiai.php`)
+
+Keisti kaina ar isimti is prekybos nematant "ji yra trijuose rinkiniuose" —
+avarija, laukianti savo dienos.
+
+**Du realus radiniai per testavima:**
+
+1. Broliu heuristika per laisva (72 %): surisо "Eukanuba Golden Retriever
+   Adult" su "Eukanuba German Shephed Adult" (78 %) — pasalinus dydi jie
+   skiriasi tik veisles vardu. Riba pakelta iki 88 % + reikalavimas, kad
+   pakuotes dydis SKIRTUSI.
+2. Slapias ir sausas maistas buvo suristi kaip broliai. €/kg palyginimas tarp
+   konservu ir sauso maisto klaidina (konservuose ~80 % vandens) ir gali
+   privesti prie blogo kainodaros sprendimo. Atskirta.
+
+MNM VAIKAI: `_mnm_*` meta raktu nera NE VIENO, o `wc_mnm_child_items`
+lenteleje 362 irasai. Stulpeliai: `container_id` = TEVAS, `product_id` = VAIKAS.
+v1.1 abiem naudojo `product_id`, todel tevas ir vaikas sutapo ir kelias
+TYLIAI praleido visus rysius. Istaisyta v1.2.
+
+Patvirtinimas: Animonda GranCarno 400 g dalyvauja 5 rinkiniuose.
+
+---
+
+### S727 · S728 — NEAISKIOS KILMES VERSIJOS (atviras klausimas)
+
+Po v3.0 diegimo (17:15) failas serveryje buvo perrasytas 17:44 i v3.2, kurios
+AS NEDIEGIAU. Raimis patvirtino, kad jis irgi nieko nedare. Aktyviu rasanciu
+snippetu nera, likusiu `_b64` opciju nera — kanalas neaiskus.
+
+Failo antraste aprasо v3.1 ir v3.2 kaip atsaka i SCREENSHOT'O isvadas
+(Pilnumo stulpelis netilpo ir dubliavo bukles taska; kortelėje buvo DU
+pilnumo blokai). Sprendimai teisingi ir nuoseklus su musu darbu, todel v3.2
+priimta kaip pagrindine baze.
+
+**MANO KLAIDA prie sio radinio:** paskelbiau "struktūrinę klaidą 14 `<th>`
+pries 13 `<td>`". Tai buvo skaiciavimo artefaktas — `substr_count($html,'<th')`
+gaudo ir `<thead>`. Realiai 13 pries 13.
+
+RIZIKA: jei tikrai yra antras procesas, rasantis ta pati faila, kitas deploy
+jo darba istrins. Nuo v3.3 kiekvienas katalogo diegimas tikrina md5 pries
+rasyma ir sustoja, jei failas ne tas, is kurio dirbta.
+
+---
+
+### S729 — DIZAINAS PAGAL MAKETA v18 (v3.3)
+
+Raimis: "katalogo ir prekes dizainas man nepatinka, skiriasi nuo maketo".
+
+Palyginus maketo ir realaus lango screenshot'us paaiskejo esmine priezastis:
+**maketas dirba per visa ekrana, o realus langas atiduoda ~230 px WordPress
+meniui.** Butent del to lentele netilpo ir v3.1/v3.2 teko salinti stulpelius —
+taisyta ne ten, kur problema.
+
+Padaryta: pilno ekrano rezimas (WP meniu paslepiamas TIK siame puslapyje),
+tipografija ir tarpai pagal maketa, kategorijos kodas po nuotrauka
+(nuotraukos LIEKA — Raimio sprendimas: "jis labai reikalingas"),
+suvestine nusileido PO lentele.
+
+Rezultatas: lentele 1394 px vietoj ~1150.
+
+---
+
+### S730 · S731 — KORTELE KAIP DARBO VIETA (v3.4, v3.5)
+
+Raimis: "kortele ziauriai nepatogi, pats pasiziurek".
+
+Diagnoze: kiekvienas blokas rodomas visada, net kai tuscias. Atidarai preke ir
+matai "Kaip sekasi 0 vnt / 0 vnt", tada "Kur dalyvauja: 0" su pastraipa
+paaiskinimo, tada keturias eilutes "taip/taip/taip/taip". Trys ekranai nieko.
+O "Kaina ir marza", su kuria dirbama kasdien — patame apacioje.
+
+v3.4: isdestymas pagal pramones standarta (Shopify produkto puslapio logika):
+KAIRE = tai, su kuo dirbama · DESINE = kontekstas. Kortele isplesta nuo 300 px
+juostos iki 1181 px. TUSTI BLOKAI NERODOMI — blokas atsiranda tik kai turi ka
+pasakyti.
+
+v3.5: REDAGAVIMAS. Kaina, akcijine, savikaina, SKU, EAN, svoris — Enter
+iraso, Esc atstato. Kiekvienas irasymas i zurnala su operacijos numeriu.
+Marza persiskaiciuoja vietoje.
+
+SAVIKAINA redaguojama TIK kai jos nevaldo tiekejas: VF/ZB prekems ji ateina is
+`_vf_cost`/`_zb_cost`, ir irasymas i `_cost_price` nieko nepakeistu —
+resolveris jo net nepamatytu. Tyliai priimti tokia ivesti reikstu meluoti,
+kad issaugota.
+
+SKU ir EAN tikrinami unikalumui — dublikatas sulauzytu susiejima su tiekejo XML.
+
+Testas narsykleje su PS-TEST-001: savikaina 7.77 → Enter → "irasyta", 0 JS klaidu.
+
+Prideti maketo v18 blokai: filtravimo atributai, rysys su tiekeju, serimo
+lentele, siuntimas.
+
+---
+
+### S732 — INTERAKTYVUS MAKETAI
+
+Raimis: "sunku pasakyti, kai matai tik nuotrauka... padaryk interaktyvia
+kortele, as ja pratestuosiu, tai turbut visiskai paprasciau nei visa koda
+rasyti". Teisinga: maketa paspaudineti pigiau nei koda perdarineti.
+
+`prekes_kortele_maketas_v1.html` (43 KB) — 5 skirtukai, redagavimas su
+gyva marzos perskaiciavimu, AV korekcijos dialogas, aprasymu sekcijos su
+uzraktais, pardavimu grafikas, istorijos filtrai.
+
+`prekiu_priemimas_maketas_v1.html` (19 KB) — greitas suvedimas klaviatura
+be Excel'io: paieska (pavadinimas/SKU/EAN) → Enter → kiekis → Tab →
+savikaina → Tab → galiojimas → Enter grazina i paieska.
+"Kartoti praeita tiekima", "galiojimas visoms", PLN kursas, saskaitos
+sumos tikrinimas pries irasant.
+
+**KLAIDA, kuria sugavo testas:** paieska "plauciai" NERADO prekes
+"jautienos plauciai" — nenormalizavo diakritiku. Realiame darbe rasoma be
+lietuvisku raidziu, ir preke butu "dingusi", nors sarase YRA. Istaisyta.
+
+---
+
+### RAIMIO SPRENDIMAI (uzfiksuoti)
+
+| Klausimas | Sprendimas |
+|---|---|
+| Nuotraukos kataloge | LIEKA — "jis labai reikalingas" |
+| EAN pilnumo bale | LIEKA, nors padengimas zemas — spaus link skenerio |
+| Savikaina | aktualu TIK AV prekems; dropship — saskaitos pagal fakta |
+| Buhalterija | sumine apskaita; i Pragma tik pardavimai; savikainas veda buhaltere |
+| Saskaitos Nr. partijoje | NEREIKIA — apskaitos cia nevedam |
+| Konservu 6-pack | ispakuojama, parduodama po 1 vnt.; abi pakuotes i GPAIS apskaita |
+| GPAIS apimtis | registruotas, iki 5 t "labai toli" → sumine apskaita |
+| Excel priemimui | nereikia, jei veikia greitas suvedimas |
+| Launch | rugsejo pabaiga realu; "geriau savaite veliau nei taisyti veikianti" |
+
+---
+
+### MANO KLAIDOS SIOJE SESIJOJE
+
+1. Tris bridge run'us sudeginau bandydamas modifikuoti runner'i per `sed`/regex
+   vietoj rasymo is naujo. Kodo nepaliete, laiko kainavo.
+2. Paskelbiau nesama "struktūrinę klaidą" (`substr_count` artefaktas).
+3. v3.4 pradzioje dirbau su pasenusia baze (v3.2 vietoj v3.3).
+4. Padengimo lentele skanestams rode 3 vietoj ~38 — naudojau `iconv` translit
+   vietoj tikslaus `be_diakritiku`.
+5. Kortelėje rodziau "Pakuotes dydi" DUKART (Raimio pastebejimas).
+6. Pirmame darbo plane komentavau dev duomenis ("300 negyvu atsargu") taip,
+   lyg tai butu radinys — dev yra testine aplinka, taisykle zinoma.
+
+---
+
+Auksciausias decision Nr.: **S732**.
+
+---
+
+## 2026-08-09 — `_ps_sandelis` NASLAITIS LAUKAS: DIAGNOZE + UZDARYMAS [S718-S720]
+
+Vakar (S716) rastos 262 ZB prekes be `_ps_sandelis` lauko, klausimas atidetas rytui.
+Siandien: priezastis rasta, ciaupas uzsuktas, 362 prekes uzpildytos, ideta automatika.
+Visi diagnostikos run'ai read-only, TEMP snippetai deaktyvuoti po kiekvieno.
+
+### IDIEGTA
+
+| Snippetas | Kas |
+|---|---|
+| 2515 | **Petshop Sources v2.2** — registras + palaikymas + sandelio pildymas |
+| ~~2404~~ | Sources v2.1 — deaktyvuotas, kodas issaugotas (rollback) |
+
+```
+uzpildyta          362 prekes · visos zb · liko kandidatu 0
+liko be lauko        0  (buvo 362)
+zurnale            362  irasai undo'ui
+WPAI #1, #2        full_update → only (_zb_* sarasas)
+```
+
+---
+
+### S718 — DIAGNOZE: lauka niekas neraso, o ZB importas ji trina
+
+Metodas: 4 read-only bridge run'ai (ZBDIAG v1–v4), snippetu ir mu-plugin'u kodo skanas,
+WPAI profiliu `options` analize, `pmxi_posts` / `pmxi_history` koreliacija.
+
+**1. Laukas neturejo NE VIENO rasytojo.** Visos panaudos kode — skaitymas:
+snippet 2403 (1 vieta), snippet 2404 (7), `petshop-katalogas.php` (7).
+Vienintelis rasytojas per visa istorija — vienkartinis TEMP S595 mass-write 08-06.
+Nei ZB, nei VF importas lauko nekuria nei naujoms, nei atnaujinamoms prekems.
+
+**2. ZB profiliai lauka AKTYVIAI TRYNE.** Buksena pries taisyma:
+
+```
+#1 goods_clean.xml   is_upd_cf=1  logic=full_update   ← trynejas
+#2 products.php      is_upd_cf=1  logic=full_update   ← trynejas
+#3 stocks.php        is_upd_cf=0                      saugus
+#5 vf-fetcher        is_upd_cf=1  logic=only          teisingai
+#7 vf-fetcher qty    is_upd_cf=1  logic=only          teisingai
+```
+
+`full_update` = update metu istrinami VISI custom fields, kuriu nera sablone.
+ZB sablone tik `_zb_*` → `_ps_sandelis` istrinamas kas update.
+
+**3. Laiko koreliacija patvirtina mechanizma.** TEMP S595 mass-write 08-06 ~13:00 →
+Import #2 run'as 08-06 15:01, summary „0 created **362 updated** 2 218 skipped".
+Preku be lauko siandien — **lygiai 362**. Likusioms laukas isliko, nes buvo „skipped".
+
+**4. VF puse sveika del teisingos konfiguracijos** (`only`, ne `full_update`) —
+visos 1 161 VF prekes lauka turi. Tai ir buvo B sprendimo etalonas.
+
+**5. Pacios 362 prekes SVEIKOS** — duomenu praradimo NEBUVO:
+
+```
+308 publish + 54 draft
+registro irasas (zb, is_active=1)   362/362
+_zb_cost · _zb_qty · _zb_last_sync  362/362
+kategorijos · _tax_status           362/362
+atributai 329 · nuotraukos 326 · kainos 324
+_manual_price_override                0   ← rankinis darbas nepaliestas
+resolve()                           zb/venipak („ZB meta laukai" fallback)
+```
+
+Parduotuve, likuciai ir kainos veike korektiskai visa laika. Rizika buvo tik ten, kur
+laukas tikrinamas TIESIOGIAI: katalogo sandelio filtras, Venipak manifestu sandelio kodai.
+
+**NEUZDARYTAS GALAS.** Vakar 21:24 matavimas rode 262, siandien ryte — 362, nors uzklausa
+identiska, registras nekito, #2 nakti nebego. Tikslus +100 kanalas nesugautas per 3
+bandymus → pagal anti-rabbit-hole taisykle sustota. Saknies tai nekeicia: laukas
+strukturiskai nepalaikomas, todel skaicius bet kuriuo atveju plauke.
+
+---
+
+### S719 — B + A: ciaupas ir automatinis palaikymas
+
+**B — WPAI profiliu pataisa (priezastis).** Keisti tik trys raktai #1 ir #2; sarasas imtas
+ne is galvos, o is paciu profiliu `custom_name`:
+
+```
+#1  full_update → only   10 _zb_* lauku
+#2  full_update → only   12 _zb_* lauku
+```
+
+Saugikliai: `unserialize` patikra pries; po serializavimo pakartotinis `unserialize`
+(neatsistato → keitimas praleidziamas); po irasymo perskaitymas is DB.
+Rezultatas: abu `db_upd=1`, `po_unserialize=TAIP`, `is_upd_cf=1` isliko.
+
+**A — Sources v2.2 (pasekmes + ateitis).** Sukurta is v2.1 penkiais taskiniais patch'ais,
+sintakse patikrinta lokaliai `php -l` PRIES deploy.
+
+`uzpildyti_sandeli($pid)` — griezos taisykles:
+
+```
+pildo TIK tuscia lauka · netuscio NIEKADA neperraso
+raso TIK kai registre LYGIAI VIENAS aktyvus saltinis (dviprasmybe → praleidzia)
+reiksme privalo buti leistinu 7 sarase
+statinis rekursijos sargas
+kiekvienas irasas → zurnalas ps_sandelio_uzpildymai (riba 5 000)
+```
+
+Ikabinta i `sinchronizuoti()` pradzia → gydo per esamus hook'us
+(`woocommerce_update_product`, `woocommerce_new_product`, `_ps_sandelis` meta pakeitimas)
+ir per naktini cron 04:20. **Nauja preke lauka gaus savaime** — tai ir buvo A esme.
+
+Endpoint'ai (token `k=ps2026`, apply/undo dar ir `patvirtinu=taip`):
+
+```
+?ps_src=sandelisdry     kandidatai, nieko neraso
+?ps_src=sandelisapply   pildymas
+?ps_src=sandelisundo    atstatymas is zurnalo (tik kur reiksme nepakitusi)
+```
+
+DRY: kandidatu 362, visi `zb`, zurnale 0 — grupe vienareiksme.
+
+**BACKUP pries visus keitimus:** `analize/s718_backup.json` bridge repo —
+WPAI #1 options (25 693 B) + #2 options (26 208 B) + Sources v2.1 kodas (30 123 B).
+
+---
+
+### S720 — APPLY + verifikacija
+
+```
+irasyta        362   visos zb          liko kandidatu   0
+liko be lauko    0   (buvo 362)        dublikatu meta   0
+zurnale        362   undo paruostas
+```
+
+Sandelio pjuvis po apply (publish+draft):
+
+```
+av 1388 · vf 1161 · zb 1059 · quattro 65 · prins 43 · belcor_tofu 42 · ambrosia 15
+```
+
+ZB: 697 → 1 059, tiksliai atitinka registro `zb=1059`. Visi 7 sandeliai sutampa su
+registru vienas prie vieno.
+
+**KONTROLE — kas NEPAJUDEJO:**
+
+```
+registro is_active      identiski skaiciai pries/po visiems 7 saltiniams
+preku busenos           2 734 publish · 1 039 draft · 32 trash — kaip ryte
+pavyzdziai 14062/14064/14072   kainos, _stock, _zb_qty, _tax_status nepakite
+resolve()               zb / venipak / courier_only=false
+svetaine                HTTP 200 po snippetu perjungimo
+aktyvus TEMP            0  · lieka tik #2403 Stock Service v1.3 ir #2515 Sources v2.2
+```
+
+**ROLLBACK (visi keliai patikrinti, kad egzistuoja):**
+
+```
+meta undo   ?ps_src=sandelisundo&patvirtinu=taip&k=ps2026
+kodo undo   aktyvuoti #2404, deaktyvuoti #2515
+WPAI undo   analize/s718_backup.json → options_b64 atgal i pmxi_imports
+```
+
+---
+
+### ATVIRAS PUNKTAS — B dar NEIRODYTAS
+
+B pritaikytas, bet nepatikrintas realiu importu. Kritine detale: trynejas buvo
+**Import #2**, kuris bega RETAI (paskutiniai 08-04 03:01, 08-06 15:01), o ne kas valanda.
+Import #3 (kas valanda) lauko niekada netryne (`is_upd_cf=0`) — jo praejimas NIEKO neirodo.
+
+```
+patikros salyga   po pirmo Import #2 run'o po 2026-08-09 12:15:
+                  ar _ps_sandelis tebera 1 059
+                  IR ar _zb_qty / _zb_last_sync atsinaujino
+                  (t. y. `only` nesulauze paciu ZB lauku atnaujinimo)
+statusas          „pritaikyta, neirodyta" iki tol
+```
+
+Raimis nurode, kad tas importas siandien nebus.
+
+### BACKLOG RADINYS — 74 ZB draft'ai be `_zb_draft_reason`
+
+Is ju 42 su likuciu >0. Daugiausia Real Dog KOMP rinkiniai ir Beaphar „pak6" pakuotes.
+NEPRADETA, laukia Raimio. Atskiras klausimas nuo sio.
+
+Auksciausias decision Nr.: **S720**.
+
+---
+
+## ZURNALO SPRAGA — S633-S717 NEUZFIKSUOTI
+
+Sis irasas soka nuo S632 (2026-08-07 popiete) prie S718. Tarp ju liko neuzfiksuotos
+2026-08-07/08 sesijos: E1 katalogo langas (`petshop-katalogas.php` v1 → v2.8),
+Sources v2.0/v2.1 + Stock Service v1.3, PVM taisymas 5 WPAI profiliuose ir 988 prekese,
+WC sync sargybinis (`petshop-wc-sync.php` per Reflection), 32 legacy bundle'u salinimas,
+masiniai veiksmai su perziura, 123 klaidingu `_ps_be_saltinio` zymiu nuemimas [S716].
+Sprendimai gyvi, bet aprasyti tik pokalbiu istorijoje. Uzpildymas — atskiras darbas.
+
+---
+
+## 2026-08-07 (popietė) — E0: ps_sources + Stock_Service [S619-S632]
+
+### IDIEGTA
+
+| Snippetas | Kas |
+|---|---|
+| 2384 | **Petshop Sources v1.1** — `ps_sources` lentele + migracija |
+| 2387 | **Petshop Stock Service v1.2** — parduodamo kiekio skaiciavimas |
+
+```
+ps_sources    3 805 irasai · 3 804 prekes · 0 dublikatu · 0 prekiu be iraso
+kryzmine      2 776 publish · naujas modelis = veikiantis resolve() · 0 nesutapimu
+```
+
+Parduotuveje NIEKAS nepasikeite — tas pats rezultatas, tik paimtas is struktūros.
+
+### SPRENDIMAI
+
+**Saugos rezervas — ATMESTAS.** Siuliau atimti 1 vnt. nuo tiekejo likucio.
+Raimis: „Preke arba yra, arba jos nera. Retai perkamu prekiu tiekejai laiko po kelias."
+Dirbtinis nurasymas paslėptu parduodama preke. `saugos_rezervas = 0`.
+
+**Sviezumo taisykle tik sinchronizuojamiems.** Mano pirmoji versija „nera sync datos →
+neiskaitoma" butu padariusi **142 prekes neparduodamas**: Quattro 63, Belacor 41,
+Prins 23, Ambrosia 15 — ju likutis vedamas RANKA, datos nera ir nebus.
+
+```
+sinchronizuojami   vf · zb          tikrinamas 24 val. sviezumas
+rankiniai          quattro · prins · belcor_tofu · ambrosia   data nereikalinga
+```
+
+### ★★★ DUOMENU RADINIAI ★★★
+
+**4 neigiami likuciai.** Visos keturios: parduota 0 vnt., 0 uzsakymo eiluciu,
+backorders isjungti → skaicius irasytas TIESIOGIAI, ne per pardavimus.
+
+```
+#16317  Ruda avies koja                 −411 → 0
+#17443  Guminė pirštinė kairiarankiams   −10 → 0
+#18623  Exclusion Hepatic                 −8 → 0
+#17710  Purrfect kraikas 6 l              −1 → 0
+```
+
+**JOSERA #17978 — DAUGIASALTINIS ATVEJIS BUVO ARTEFAKTAS.**
+
+Preke turejo `_own_stock_qty = 2` ir `_stock = 2`, nors `_vf_qty = 782`.
+Visoms kitoms 1 161 VF prekei `_stock` sutampa su `_vf_qty` — si buvo VIENINTELE isimtis.
+
+**Raimio izvalga:** senoje sistemoje VF likuciai vedami ranka, todel migruojant galejo
+likti rankinis skaicius, o ne reali AV lentyna. Pasitvirtino.
+
+Istaisyta: `_own_stock_qty` istrintas, `_stock` atstatytas is `_vf_qty`.
+Patikrinta po valandos — sinchronizacija vel ja valdo (780 = 780).
+
+**IZVADA MODELIUI:** realiu daugiasaltiniu prekiu kataloge NERA NE VIENOS.
+`sources[]` lieka teisingas, bet dabar atspindi tikrove: viena preke — vienas saltinis.
+Vykdymo taisykle AV → tiekejas dar neturi realiu duomenu patikrinimui.
+
+**Dublikatu paieska** visoje 3 804 prekiu bazeje: 50 grupiu vienodais pavadinimais
+(daugiausia pakuociu dydziai tame paciame sandelyje), **1** grupe su skirtingais
+sandeliais (Farmina N&D Prime Cat: #14595 av draft · #27564 zb publish),
+1 dublikatas pagal EAN, **0** AV prekiu su VF pozymiais.
+Masines AV/VF dubliavimo problemos NERA.
+
+Josera Sensiplus trejetas (#17978 · #19920 · #19921) — **NE dublikatai**,
+trys skirtingos pakuotes (12,5 / 3 / 0,9 kg). Netrinta.
+
+### ★ VF SAVIKAINA — MANO ANKSTESNIS TEIGINYS BUVO KLAIDINGAS ★
+
+TZ 38.3 irasyta, kad savikaina imama is XML bazines kainos ir VF marza rodoma
+neteisinga. **TAI NETIESA.** Klaida buvo mano recon'e — lyginau ne ta lauka.
+
+```
+_vf_cost_xml            16,89   tiekejo bazine kaina
+_vf_supplier_discount    0,15   BRAND:Exclusion +DISC:15%
+_vf_cost              14,3565   FAKTINE savikaina — ja naudoja Cost_Resolver
+saskaitoje             14,36    sutampa iki cento
+```
+
+Tikroji VF maisto marza **17 %**. Nuolaidos: 271 preke 20 %, 80 prekiu 15 %, 810 be.
+TZ v1.65 39.6 skyriuje irasytas pataisymas.
+
+### ★★★ SNIPPETU SIUKSLYNAS ★★★
+
+Inventorizacija parode masta:
+
+```
+TEMP S445–S632                   162
+„(temp)" / „tmp"                ~450
+„UI Localization Runtime Audit" ~100 (vienas pavadinimas, kartotas)
+
+AKTYVUS laikini (RIZIKA):  736 · 738 · 797 · 798–805 · 1410 · 1647
+```
+
+**KRITINIS RADINYS:** Code Snippets REST DELETE grazina **204 „pavyko", bet NETRINA.**
+Todel ankstesniu sesiju zurnaluose irasai apie istrintus snippetus yra NETIKSLUS —
+jie tik isjungti. Trynimas imanomas tik per WP admin arba tiesiogiai DB lenteleje.
+
+Valymo planas (kitam langui):
+```
+1  perskaityti 13 aktyviu laikinu — kurie realiai veikia sistema
+2  nereikalingus isjungti su patvirtinimu
+3  masinis trynimas per DB su atsargine kopija
+   kriterijus: TEMP* arba (temp)/tmp IR neaktyvus
+```
+
+### LIKO ATVIRA
+
+```
+_own_stock_qty naslaitis   meta_id 1020059, post_id 48375, reiksme 0,
+                           prekes NEBERA — i skaiciavimus nepatenka
+925 prekes su _stock=0     Raimis: „prie prekiu nelysk, cia mano darbas" —
+                           jos guli draft, viskas ok
+```
+
+### KAS TOLIAU
+
+```
+E0 liko   resolve() perjungti skaityti is ps_sources
+          Stock_Service prijungti prie WooCommerce
+          nauja preke be saltinio → Klausimai
+E1        Katalogo langas
+Atskirai  snippetu valymas (naujame lange — reikia vietos)
+```
+
+Auksciausias decision Nr.: **S632**.
+
+---
+
+
+
+### MAKETO VERSIJOS — KAS PASIKEITE
+
+| v | Kas atsirado / kas buvo blogai |
+|---|---|
+| v1 | pirmas variantas, sviesus fonas |
+| v2 | tamsus fonas, konsultanto 6 korekcijos, worklist, dry-run/revert, istorija, CSV, skeneris |
+| v3 | akcijos TIK Akciju lange; rinkiniai != FBT; viena issaugojimo juosta |
+| v4 | **emoji ismesti** (Raimis: „darbinis langas, ne vaiku darzelis"); pilnas filtravimas (kategorija, brendas); prekes isemimas su 301; zargonas is ekrano islindo i ⓘ |
+| v5 | nauja preke (EAN-first), masinis ikelimas, marza % IR €, PVM etiketes, trys kainu keliai, rikiavimas, puslapiavimas, variantai |
+| v6 | savikainos pokyciu eiles, marzos grindys, kairysis stulpelis pertvarkytas pagal darbo tvarka |
+| v7 | konsultanto P0: finansine suvestine, parduodama ne suma, akcijos/savikainos atskyrimas, AV tik ± korekcija |
+| v8 | EAN kontrolinis skaitmuo, aprasymu sablonai pagal kategorija, XML savikainos override, Excel round-trip |
+| v9 | tikras save/discard, aprasymu busena, saziningas AV zurnalas, filtrai per Stock_Service |
+| v10 | kopijos ciklas per prekes, tiekejo rysys issaugomas, serimo lentele → kanoninis kelias, saraso pertvarkymas |
+| v11 | **prekes kopijavimas** su dviem paruostais variantais |
+
+Galutinis: `prekiu_katalogas_maketas_v11.html`.
+
+---
+
+### ★★★ KLAIDOS, RASTOS SAVO PACIO AUDITU ★★★
+
+Kiekviena versija tikrinta atskirai paleidziant skaiciavimus Node'u su realiais
+duomenimis, ne skaitant koda.
+
+**1. Finansine suvestine MELAVO (v6→v7).** „Sandelio verte = kaina × parduodama"
+su testiniais duomenimis rode **42 162 €**, o tikroji AV atsargu savikaina —
+**292 €**. I skaiciu pateko tiekeju likuciai, kuriu imone neturi, ir pardavimo
+kaina vietoj savikainos. Skirtumas 144 kartai.
+
+**2. Marzos apvalinimas iskreipdavo pigias prekes (v6).** Siuloma kaina visada
+apvalinta i .X9. Animonda konservui 0,99 € tai reiske 1,19 € vietoj 1,12 € —
+atstatydavo 38 % marza vietoj buvusiu 34 %. Pataisyta: .X9 tik nuo 5 €, zemiau —
+centais. Perleista 7 prekiu testu, visos atstato 1 % tikslumu.
+
+**3. Excel maketo eksportas ignoravo pasirinkta apimti (v8).** Visada
+`P.filter(pass)`, nepaisant radio mygtuko.
+
+**4. Naujos prekes EAN patikra veike tik su Enter (v7).** Skeneris Enter siuncia
+pats, todel testuojant skeneriu klaida nesimate; ivedant ranka forma neatsirasdavo.
+
+**5. Kopijuojant buvo perimamas siuntos svoris (v11).** 10 kg → 1 kg pakuote
+sveria kitaip; perimtas svoris duotu ne ta pastomato dydi.
+
+### KLAIDOS, KURIAS RADO KONSULTANTAS (per Raimi)
+
+Visos patikrintos KODE pries taisant — visos buvo tikros.
+
+| # | Klaida |
+|---|---|
+| P0-1 | `openCard()` valydavo `state.dirty` → „Atmesti" nieko neatmesdavo; kopija neatnaujinama po issaugojimo; uzdarant duomenys negrazinami |
+| P0-2 | Aprasymo tekstas issaugomas, bet `p.desc[i]='hand'` nenustatomas → preke toliau rodoma kaip be aprasymo |
+| P0-3 | Tiekejo radinys buvo TIK TEKSTAS EKRANE — sukurta preke nuo tiekejo atsijungdavo (be ssku, likucio, sync datos) |
+| P0-5 | AV korekcija: turint 1 vnt. ir nurasant 10, zurnale rasydavo „−10" |
+| P1-6 | senasis „Ikelti sarasa" kelias apeidavo sauguji Excel rezima |
+| P1-7 | filtras „tik tiekejas" naudojo `p.tiek>0`, o „parduodama" rode 0 — du ekrano taskai sake priesingus dalykus |
+| P1-8 | mazmenine verte skaiciuota tik prekems su savikaina → rode 392 € vietoj 1 464 € |
+
+**PAMOKA (kartotine): v7 atsakyme isvardinau kaip padaryta tai, ko makete
+nebuvo.** Tai tiksliai ta pati klaida, del kurios egzistuoja taisykle „netikrink
+pagal ketinima, tikrink pagal rezultata". Nuo v8 kiekviena versija tikrinta
+paleidziant koda: sintakse, visi 132 DOM ID, ir atskiri skaiciavimu testai.
+
+---
+
+### RAIMIO SPRENDIMAI (uzrakinti)
+
+```
+marzos grindys      sausas maistas 10 % · konservai 15 % · skanestai 20 % · kita 20 %
+pokycio riba        3 %
+uzsakymo riba       5 vnt. (bendra), atskirai prekei — kortelėje
+darbuotoju teises   NEREIKIA kol kas
+fonas               ne baltas, ne juodas — pilkas darbo plotas, balti pavirsiai
+emoji               ismesti
+sarasas             Prekyboje pirma, tada Juodrasciai, Kita — issiskleidzia
+serimo lentele      paveldima kopijuojant, bet „paveldeta — patikrinti"
+nuotraukos          pasirinkimas kiekviena karta, numatyti negalima
+```
+
+### DAUGIASALTINIS MODELIS — PRIIMTAS
+
+`sources[]` DABAR (ne po launch). Priezastis: AV+VF Josera jau egzistuoja,
+tas pats produktas skirtinguose tiekeju kataloguose, galimas VF+ZB.
+Paliekant viena `sand` teks perrasyti importus, resolveri, likuciu skaiciavima.
+
+V1 vykdymo taisykle SAMONINGAI paprasta: AV → vienas pagrindinis tiekejas.
+Kiti saltiniai saugomi, bet automatiskai nenaudojami. `_ps_sandelis` lieka
+suderinamumo lauku, NE vieninteliu tiesos saltiniu.
+
+### KITAS ETAPAS
+
+```
+E0  resolveris skaito duomenis · sources[] · preke be saltinio → Klausimai
+E1  Katalogas
+E2  Prekes kortele
+E3  Sandelis
+E4  Akcijos + Rinkiniai
+```
+
+Kitu langu maketai — PO to, kai Katalogas veiks su tikrais duomenimis.
+
+Auksciausias decision Nr.: **S610**.
+
+---
+
+
+## 2026-08-05/06 — UZSAKYMU DARBALAUKIS, VENIPAK MANIFESTAI, TIEKIMAS [S509-S595]
+
+### KODEL
+WooCommerce uzsakymu sarasas buvo numatytasis ekranas, i kuri penki pluginai
+sudejo mygtukus be uzrasu. Raimis: „turi buti malonu i darbalauki uzeiti, o ne
+i chaosa". Papildomas reikalavimas — architektura, tinkanti ateities AI, ne tik
+siandienos rankiniam darbui.
+
+---
+
+### DIEGIMU SEKA
+
+| S | Failas | B | SHA-256 (16) | Ka pakeite |
+|---|---|---|---|---|
+| S511 | petshop-desk.php | 49 192 | a7feaf77acac301f | v2.0 eiles, filtrai, skydelis |
+| S514 | petshop-desk.php | 50 041 | 3064217ee337ca7d | v2.1 resolve() masyvo klaida |
+| S516 | petshop-desk.php | 51 314 | cdc7a5f042063aab | v2.2 pilnas pavadinimas, kliento pastaba, sriftas +1 |
+| S519 | — | — | — | **ATMESTA** sintakses sargo (lietuviska kabute eil. 116) |
+| S520 | petshop-desk.php | 56 180 | 386ee6886d73ae82 | v2.3 veiksmu sluoksnis + „Pazymeti apmoketu" |
+| S522 | petshop-desk.php | 62 258 | 51a07f065fa6b689 | v2.4 dialogas su varnelemis + atsaukimas |
+| S525 | petshop-desk.php | 63 713 | bc195b2c07e429b2 | v2.5 lapai + perdavimas pajungti |
+| S527 | petshop-desk.php | 65 013 | f5b3ccf72d2ee693 | v2.6 tikri lipduku veiksmu vardai |
+| S528 | petshop-desk.php | 80 449 | 2529d2776e78c686 | v3.0 rytine eiga (6 zingsniai) |
+| S532 | petshop-av-sheets.php | 10 347 | 7a18784eba559e20 | bendras SURINKTI blokas pasalintas |
+| S535 | sheets + dropship | 10 335 / 18 048 | 37f514a5e10d221a / 5dfdbaddd0880866 | „Atgal i darbalauki" |
+| S539 | petshop-desk.php | 83 222 | 07b8a631df2cfacc | v3.1 siuntu bukles patikra |
+| S550 | petshop-desk.php | 92 605 | 1262a498006b0c4b | v3.2 Venipak manifestai + statuso keitimas OFF |
+| S552 | petshop-desk.php | 95 127 | 6d94f51d9c2f56d4 | v3.3 sandeliu ribos |
+| S556 | petshop-desk.php | 95 828 | 7675a8b4d0216878 | v3.4 AV riba 11:00 |
+| S558 | petshop-desk.php | 96 323 | cd8f0694923a7f7f | v3.5 ribos plytele (iskaitomumas) |
+| S562 | petshop-av-tiekimas.php | 26 203 | 313305f35f3d7930 | v1.0 tiekimo modulis + 2 DB lenteles |
+| S565 | desk + tiekimas | 98 420 / 28 473 | 5097e128bb693d72 / 02d51758dfa8e59a | pusiau automatinis kaupimas |
+| S567 | desk + tiekimas | 99 351 / 36 158 | f6c54daa19b0b3f8 / 036920a0cbbb6109 | likuciu atnaujinimas + eile „Laukia prekiu" |
+| S572 | petshop-desk.php | 105 755 | c1b3275686a8ed7f | v3.8 pakuociu skaicius, LP dydis ir kurjeris |
+| S574 | petshop-desk.php | 113 261 | e834e3993a57cf0b | v3.9 klausimu sprendimo korteles |
+| S576 | petshop-desk.php | 113 451 | a5fcc9570cc5b6f5 | v3.10 klausimo salyga |
+| S582 | petshop-desk.php | 113 414 | dcea6d4e78228d61 | v3.11 **klaidinga** pataisa (zr. incidenta) |
+| S584 | desk + tiekimas | 113 908 / 36 165 | 5be7a0bda081b5a8 / 971d5988acb59ddb | „Petshop uzsakymai", WC slepimas |
+| S586 | petshop-desk.php | 114 027 | 553a4ec38c3b23a5 | v3.13 WC slepimas CSS'u (403 regresija) |
+| S590 | petshop-desk.php | 114 420 | b0136cb48a598646 | v3.14 teisingas AV likucio saltinis |
+| S595 | — (duomenys) | — | — | `_ps_sandelis` irasytas 3 805 prekems |
+
+Backup: `wp-content/uploads/ps-backup/{failas}.bak_sNNN`
+
+---
+
+### DARBALAUKIS (petshop-desk.php, `page=ps-desk`)
+
+Meniu punktas „Petshop uzsakymai", pirmas. WooCommerce → Uzsakymai PASLEPTAS
+CSS'u — puslapis PRIVALO likti veikiantis (per ji vykdomi vezeju lipdukai,
+manifestai, saskaitos).
+
+**Eiles (kaireje tik tai, kur reikia veiksmo):**
+```
+Nauji · Neapmoketi · Laukia prekiu · Paruosta siusti · Klausimai
+Atsaukti · Visi uzsakymai        <- paieska, ne darbas
+```
+„Kelyje" ir „Ivykdyti" NERA eiles — filtrai skiltyje „Visi".
+
+**Filtrai — DVI ASYS, niekada nemaisomos vienoje eiluteje:**
+```
+Vykdymas     Sava (AV) · Dropship · Misrus · pagal tiekeja
+Pristatymas  Venipak kurjeris · Venipak pastomatas · LP Express
+Data         Siandien · Vakar · Savaite · Menuo · Praejes · Intervalas
+```
+
+Viena eilute = vienas uzsakymas, VIENAS pagrindinis veiksmas, kurio uzrasas
+keiciasi pagal eile. Kliento pastaba rodoma PILNA, nekarpoma.
+Klaviatura: j/k, Enter, x, /, Esc.
+
+---
+
+### VEIKSMU SLUOKSNIS (AI paruosimas)
+
+VISI veiksmai eina per viena vieta: `admin_post_ps_desk_veiksmas` → nonce →
+teisiu patikra → vykdymas → irasas i uzsakymo istorija → grizimas.
+Kai atsiras automatiniai siulymai, jie kvies TA PATI vykdyma — tik su zmogaus
+patvirtinimu. Kaireje paruostas „Siulymai" lizdas.
+
+```
+apmoketa       payment_complete() + AV nurasymas + laiskas (varnele „nesiusti")
+atsaukti       cancelled + prekes grizta; laiskas NESIUNCIAMAS pagal nutylejima
+lapai          transient → ps-lapai
+perduoti       transient → ps-dropship
+vp_reg         Venipak registracija grupei su savo manifestu
+vp_manifestas  manifesto PDF is Venipak
+pakuotes       deziu skaicius siuntai
+klaus          klausimo sprendimai
+```
+
+Dialogas su varnelemis vietoj `confirm()` — nes reikejo pasirinkimo
+„nesiusti laisko" / „pranesti klientui".
+
+---
+
+### RYTINE EIGA (`page=ps-desk&view=rytas`)
+
+```
+1 Perziura          partija UZRAKINAMA 3 val.
+2 Surinkimo lapai   AV prekes
+3 Venipak           pagal sandelius, kiekvienam savas manifestas
+4 LP Express        riba 13:00
+5 Tiekejams         perdavimo ekranas
+6 Baigta            suvestine
+```
+Zingsniai SPAUDZIAMI (Belacor kurjeris 10:00 — sokti tiesiai i 5).
+Darbo mygtukai atidaro NAUJA kortele. Jau perduoti uzsakymai neitraukiami.
+
+---
+
+### VENIPAK
+
+**Manifestai pagal sandeli.** Manifesto pavadinimas = kliento_ID + data + kodas.
+Kodas imamas is plugino nustatymu ir SAVAIME NESIKEICIA — be isikisimo visos
+dienos siuntos suguldavo i VIENA manifesta (AV, VF, Quattro kartu).
+
+Sprendimas: pries kiekvienos grupes registracija per Reflection laikinai
+nustatomas grupes kodas, po to grazinamas.
+```
+AV 001 · VF 002 · ZB 003 · Quattro 004 · Prins 005 · Ambrosia 006 · Belacor 007
+```
+Vienas manifestas = vienas kurjerio paemimas is vieno adreso.
+SIUNTEJAS VISOSE SIUNTOSE — UAB Avesa, nesvarbu is kurio sandelio prekе isvaziuoja.
+Grupe siunciama VIENU XML, ne po viena, kaip daro pats pluginas.
+
+**Statuso keitimas isjungtas:** `isstatuschangedisabled = 'on'`. Anksciau
+registracija iskart darydavo „Ivykdytas" ir siusdavo klientui laiska.
+
+**Manifesto PDF:** `go.venipak.lt/ws/print_list`, laukas `code` = MANIFESTO
+numeris (ne siuntos). Grazina application/pdf. Patikrinta gyvai.
+
+**Misrus uzsakymai automatiskai NEREGISTRUOJAMI** — pluginas vienam uzsakymui
+moka tik viena siunta, o misrus fiziskai iskeliauja is dvieju vietu.
+
+Patikrinta gyvai: `<answer type="ok">` pack V07267E1000002, manifestas
+07267260805001; PDF 66 510 B. Testines siuntos Raimio istrintos.
+
+---
+
+### LP EXPRESS
+
+```
+pastomatas   dydi parenka PATS pagal bendra svori (size-service)
+kurjeris     deziu skaicius per lauka lp_part_count → API partCount
+riba         13:00
+```
+`_woo_lithuaniapost_lpexpress_courier_called_date` → rodoma „kurjeris jau
+iskviestas", kad nebutu kviečiama dukart.
+
+**ISPEJIMAS: lipduko formavimas LP sistemoje IKART ISSIKVIECIA KURJERI** —
+todel LP kelio testuoti negalima. Kodas parasytas is plugino kodo skaitymo.
+NEPATIKRINTA su realia siunta: ar partCount realiai nueina.
+
+---
+
+### PAKUOCIU SKAICIUS
+```
+Venipak kurjeris     packs[] masyvas su padalintu svoriu
+LP kurjeris          partCount
+pastomatai           nereikia — visada viena
+```
+Saugoma `_ps_pakuociu`; laukelis rodomas tik kurjerio siuntoms.
+
+---
+
+### SANDELIU RIBOS
+```
+AV 11:00 · VF 13:00 · ZB 09:00 · Prins 09:00
+Belacor 09:00 · Quattro 09:00 · Ambrosia 10:00 · LP 13:00
+```
+Rodoma: virsutineje juostoje (artimiausia), prie uzsakymo sarase, Venipak grupiu
+antrastese. Skaiciuojama realiu laiku; praejus — „keliaus rytoj".
+5 zingsnyje tiekejai rikiuojami pagal skubuma.
+
+---
+
+### TIEKIMAS (petshop-av-tiekimas.php, `page=ps-tiekimas`)
+
+Naujos lenteles:
+```sql
+gaj6_ps_tiekimas      id, tiekejas, busena, sukurta, uzsakyta, gauta,
+                      siuntos_kodas, pastaba      (kaupiama→uzsakyta→gauta)
+gaj6_ps_tiekimas_eil  id, partija_id, product_id, order_id, qty,
+                      qty_gauta, galiojimas, pastaba
+```
+
+**DU KELIAI:**
+```
+A. AS UZSAKAU LAISKU
+   eilute → „I tiekimo lentele" → kaupiasi → „Uzsakyti" → laiskas
+   → priemimas (FAKTINIAI kiekiai) → AV likutis + uzsakymai atsilaisvina
+
+B. TIEKEJAS ATVEZA PATS
+   suvedu saskaita → „Atnaujinti likucius" → susieja su lauk. uzsakymais
+```
+
+**PUSIAU AUTOMATINIS KAUPIMAS.** Sistema uz Raimi NESPRENDZIA: misrus uzsakymas
+guli „Naujuose" kaip visi, o prie kiekvienos tiekejo eilutes skydelyje yra
+mygtukas „I tiekimo lentele". Nepaspaudei — eilute lieka dropshipu.
+Sprendimas EILUTES lygmens, todel „VF siuncia pats, ZB parsivezam" gaunasi
+savaime. Uzdaro visus derinius: AV+VF, VF+ZB, VF+ZB+AV, Quattro+Prins.
+
+**Priemimas:** numatyta tai, kas uzsakyta — keiti tik kur nesutampa. Galiojimas —
+isskleidziamas laukelis; prekems, kurioms data jau kada iravesta, atsidaro pats
+ir rodo esama. Trukumas automatiskai keliauja i nauja to paties tiekejo partija.
+
+**Likuciu atnaujinimas — TAISYKLE: kas laukia ILGIAU, tas gauna pirmas.**
+Kitaip vienas gautu dali, kitas dali, ir ne vienas neisvaziuotu.
+Pries vykdant rodoma perziura.
+
+**ZB isimtis:** ZB uzsakymai vedami i ju sistema, ne laisku. El. pasto sistemoje
+nera — partija uzsidarys, bet laiskas neiseis su geltonu ispejimu.
+NEUZDARYTA: ZB kopijuojama lentele vietoj laisko.
+
+---
+
+### KLAUSIMAI
+
+Uzsakymai, kuriu sistema apdoroti negali. Neguli tarp „Nauju" ir nepatenka i
+rytine eiga, kad neuzstrigtu partija.
+```
+Truksta sandelyje · Mokejimas nepavyko · Siuntos sukurti nepavyko
+Klientas atsisako (_ps_withdrawal — ES mygtukas dar nepastatytas)
+```
+Rodomi kortelemis su mygtukais: Siusti is {tiekejas} · Parsivezti i AV ·
+Laukti · Atsaukti uzsakyma.
+
+**„Laukti" — JOKIOS AUTOMATIKOS.** Tik pazymi; priminimu nera (Raimio sprendimas).
+**Pinigu grazinimas RANKINIS.** Paysera automatinio grazinimo NEPALAIKO
+(`refund: ne`). Sistema fiksuoja ir ruosia dokumentus, bet pinigu negrazina.
+
+---
+
+### SANDELIU MODELIS (Raimio sprendimas 2026-08-06)
+
+**SEPTYNI sandeliai:** AV · Ambrosia · Prins · Belacor · Quattro · VF · ZB
+**Legacy NERA sandelis** — laikinas maisas, turintis istustеti.
+
+**Kilme ir turejimas — DU SKIRTINGI KLAUSIMAI:**
+```
+kilme         is kur gaunu — vienas is 7 sandeliu
+AV likutis    ar turiu pas save DABAR — VIENAS stulpelis VISOMS prekems
+```
+AV likutis NERA atskiras sandelis. Bet kurios kilmes preke gali guleti Raimio
+lentynoje: parsivezei ZB skanestu — AV likutis 3, kilme lieka ZB.
+
+**Uzsakymo sprendimas — VIENA taisykle visoms prekems:**
+```
+turiu AV likutyje?   TAIP → siunciu pats
+                     NE   → perduodu kilmes sandeliui
+```
+
+**Rusiavimo taisykle (legacy prekems):** zenklas Quattro → Quattro,
+Prins → Prins, Belacor tofu ir Wonder kraikai → Belacor, VISOS KITOS → AV.
+Sausas bandymas: Quattro/Prins/Belacor legacy maise NERA — jau priskirtos.
+Vadinasi visos 959 legacy publish prekes → AV.
+
+**`_ps_sandelis` irasytas (S595):**
+```
+av 1401 · vf 1161 · zb 1059 · quattro 64 · belcor_tofu 62 · prins 43
+ambrosia 15                                          viso 3 805
+```
+Sandelis dabar DUOMUO, ne kaskart perskaiciuojamas speijimas — todel ji galima
+keisti ranka inventorizacijos metu.
+
+---
+
+### NAUJI META LAUKAI
+```
+_ps_sandelis          preke      av/vf/zb/quattro/prins/belcor_tofu/ambrosia
+_ps_pakuociu          uzsakymas  deziu skaicius kurjerio siuntai
+_ps_tiekimas_laukia   uzsakymas  1 = laukia prekiu atvezimo
+_ps_klaus_laukti      uzsakymas  data, kada pazymeta „laukti"
+```
+
+---
+
+### ★★★ INCIDENTAS S582 → S590 — DU LAUKAI, DU MODELIAI ★★★
+
+**Kas nutiko.** S580 patikra parode `Stock::qty() = 0`, o tuo paciu metu
+`resolve()['av_qty'] = 3`. Palaikiau tai `resolve()` kesо klaida ir S582
+perjungiau trukumo tikrinima i `Stock::qty()`.
+
+**Pasekme.** `Stock::qty()` skaito `_own_stock_qty`, kuri turi vos 3 prekes.
+Visoms legacy prekems (959 publish) jis grazina `null` → 0 → KIEKVIENA LEGACY
+PREKE ATRODE TRUKSTAMA. Klausimu eile prisipilde melagingu irasu.
+
+**Tikroji priezastis** (parasyta paciame `AV_Source::resolve()` kode):
+```
+legacy preke = AV sandelis, likutis WooCommerce `_stock` lauke
+`_own_stock_qty` reikalingas TIK prekems, kurios turi IR tiekeja (ju 3)
+```
+
+**Istaisyta S590:** trukumo tikrinimas grazintas i `resolve()['av_qty']` su
+salyga `source === 'av'`.
+
+**PAMOKA: pries keiciant logika del skaiciu nesutapimo — PERSKAITYTI KODA.
+Nesutapimas dazniau reiskia du skirtingus laukus, ne keso klaida.**
+
+---
+
+### ★★★ INCIDENTAS S584 → S586 — remove_submenu_page UZDARO PUSLAPI ★★★
+
+`remove_submenu_page('woocommerce','wc-orders')` punkta paslepe, bet PUSLAPI
+UZDARE — `wc-orders` eme grazinti **403**. Per ta puslapi vykdomi VISI vezeju ir
+saskaitu masiniai veiksmai, tad lipdukai butu nustoje veikti be jokio matomo
+rysio su priezastimi.
+
+Istaisyta CSS slepimu:
+```css
+#adminmenu a[href*="page=wc-orders"]{display:none!important}
+```
+Puslapis grazina 200, punktas nematomas.
+
+---
+
+### SVETIMU PLUGINU TRUKUMAI (rasti sioje sesijoje)
+
+| Pluginas | Trukumas |
+|---|---|
+| Venipak | apie nesekme NEPRANESA; klaida iraso i meta, bet nerodo |
+| Venipak | manifesto kodas fiksuotas — visa diena i viena manifesta |
+| Venipak | registracija keitе statusa i completed (isjungta nustatymu) |
+| LP Express | `Undefined array key "id"` ispejimas kiekvieno masinio veiksmo metu |
+| LP Express | lipduko formavimas iskart issikviecia kurjeri — testuoti negalima |
+| Paysera | automatinio grazinimo nepalaiko (`refund: ne`) |
+
+---
+
+### TECHNINES PAMOKOS (PRINCIPAI)
+
+- **Sintakses sargas pries rasant failа:** `token_get_all($code, TOKEN_PARSE)`
+  gaudo `ParseError` — failas NEIRASOMAS, jei blogas. Suveike S518.
+- **`remove_submenu_page()` uzdaro puslapi** (403) — slepti tik CSS.
+- **Nespek plugino veiksmu vardu.** Visi trys speti buvo klaidingi. Tikrieji
+  nuskaityti is WC saraso: `shopup_venipak_shipping_labels`,
+  `woo_lp_print_label`, `wcdn_print_invoice`, `wcdn_print_creditnote`.
+- **Vezeju pluginai tyli** — darbalaukis privalo PATS pasitikrinti rezultata
+  (ar atsirado siuntos kodas), o ne pasitiketi, kad veiksmas pavyko.
+- **SKU nera prekes ID.** S578 nunulinau ne ta preke, nes 48375 buvo SKU.
+
+---
+
+### NEUZDARYTA (kritine tvarka)
+
+```
+1. Resolveris dar NESKAITO _ps_sandelis — laukas irasytas, elgsena sena
+2. AV_Source nesupranta „av" vietoj „legacy"
+3. Preke be sandelio → Klausimai (nepadaryta)
+4. AV likutis dviejuose laukuose: _own_stock_qty (3 prekes) ir _stock (legacy)
+5. Tiekimo priemimas raso i _own_stock_qty — legacy prekems NEVEIKS
+6. Lipduko prisegimas prie tiekimo laisko (dukart klausti)
+7. ZB kopijuojama lentele vietoj laisko
+8. ES „Atsisakyti sutarties" mygtukas + KR-AVPN kreditine
+9. LP partCount nepatikrintas su realia siunta — RAIMIS
+10. Prekiu svoriu auditas (LP dydziui) — RAIMIS
+11. Inventorizacija: kurios Belacor/Quattro prekes guli AV — RAIMIS
+12. Zodis „legacy" pasalinamas, kai liks 0 prekiu
+```
+
+Auksciausias decision Nr.: **S595**.
+
+---
+
