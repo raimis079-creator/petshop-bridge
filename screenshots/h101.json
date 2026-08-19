@@ -1,0 +1,104 @@
+{
+ "versija": "H101",
+ "D": {
+  "v": "H101",
+  "feed": {
+   "google.xml": {
+    "cdata_su_esybemis": [],
+    "dvigubas_kodavimas": [],
+    "pavyzdziai": []
+   },
+   "kaina24.xml": {
+    "cdata_su_esybemis": [],
+    "dvigubas_kodavimas": [],
+    "pavyzdziai": []
+   },
+   "kainos.xml": {
+    "cdata_su_esybemis": [],
+    "dvigubas_kodavimas": [],
+    "pavyzdziai": []
+   }
+  },
+  "kitur": {
+   "preke_excerpt": 888,
+   "preke_content_dvig": 17,
+   "terminu_vardai": 4,
+   "terminu_aprasymai": 0,
+   "rankmath_desc": 0,
+   "irasu_pavadinimai": 0,
+   "prekiu_pavadinimai": 0
+  },
+  "excerpt_pvz": [
+   "&lt;p&gt;Sausas visavertis pašaras su jautiena ir paukštiena skirtas visų veislių suaugusiems šunims.&lt;/p&gt;",
+   "&lt;p&gt;Sausas visavertis pašaras su ėriena ir ryžiais skirtas vidutinio dydžio veislių suaugusiems šunims.&lt;/p&gt;",
+   "&lt;p&gt;Visavertis sausas pašaras su antiena skirtas visų veislių suaugusiems šunims.&lt;/p&gt;",
+   "&lt;p&gt;Visavertis sausas pašaras su triušiena skirtas visų veislių suaugusiems šunims.&lt;/p&gt;",
+   "&lt;p&gt;Sausas visavertis pašaras praurtintas vištiena skirtas vidutinių veislių suaugusiems šunims.&lt;/p&gt;"
+  ],
+  "terminu_pvz": [
+   "Hau&amp;Miau",
+   "Hagen GmbH&amp;Co. KG",
+   "Monge &amp; C. S.p.a.",
+   "Finnern GmbH&amp;Co"
+  ],
+  "importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "type": "file"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "type": "url"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "type": "url"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "type": "url"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "type": "url"
+   }
+  ],
+  "profilis": {
+   "2": {
+    "title": "{name[1]}",
+    "is_leave_html": "0",
+    "is_keep_linebreaks": "1",
+    "fix_characters": "0",
+    "encoding": "UTF-8",
+    "is_update_title": "0",
+    "update_all_data": "no",
+    "is_delete_source": "0"
+   },
+   "3": {
+    "title": "",
+    "is_leave_html": "0",
+    "is_keep_linebreaks": "1",
+    "fix_characters": "0",
+    "encoding": "UTF-8",
+    "is_update_title": "0",
+    "update_all_data": "no",
+    "is_delete_source": "0"
+   },
+   "5": {
+    "title": "{product_name[1]}",
+    "is_leave_html": "0",
+    "is_keep_linebreaks": "1",
+    "fix_characters": "0",
+    "encoding": "UTF-8",
+    "is_update_title": "0",
+    "update_all_data": "no",
+    "is_delete_source": "0"
+   }
+  }
+ }
+}
