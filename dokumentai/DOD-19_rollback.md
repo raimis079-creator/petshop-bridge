@@ -1,7 +1,7 @@
 # DOD-19 — ATSITRAUKIMO PLANAS (rollback)
 
-**Versija:** 2.1 · 2026-08-19
-**Būsena:** ✅ PATVIRTINTAS. §7 klausimai atsakyti, §0 neaiškumas išspręstas.
+**Versija:** 2.2 · 2026-08-19 (naktis)
+**Būsena:** ✅ PATVIRTINTAS. §8 abu raudoni punktai UŽDARYTI.
 **Priklausomybė:** DOD-18 parašytas (`dokumentai/DOD-18_perjungimas.md`).
 **Perjungimo data:** 2026-09-01/02, naktį, vidury savaitės.
 
@@ -144,7 +144,7 @@ atstatymas    testuotas 2026-08-04: 174/174 lentelės, 0 skirtumų, 92,3 s
 
 **Eiga:**
 ```
-1. Parduotuvę į priežiūros režimą (klientai nepirktų į atstatomą bazę)
+1. Parduotuvę į priežiūros režimą (žr. §7d) — klientai nepirktų į atstatomą bazę
 2. Parsisiųsti kopiją iš B2, patikrinti SHA-1 ir HMAC
 3. Dešifruoti, atstatyti
 4. Palyginti su manifestu (lentelių ir eilučių skaičiai)
@@ -155,11 +155,14 @@ atstatymas    testuotas 2026-08-04: 174/174 lentelės, 0 skirtumų, 92,3 s
 **DU APRIBOJIMAI, KURIUOS BŪTINA ŽINOTI IŠ ANKSTO:**
 
 1. **Atstatymas testuotas į TĄ PAČIĄ bazę su `rtst_` prefiksu, ne į švarią.**
-   WP vartotojas neturi teisės kurti naujų DB. Realaus gedimo metu
-   atstatoma bus į gyvą bazę — o tai reiškia, kad ESAMI duomenys
-   perrašomi. Grįžti atgal po to nebeįmanoma.
-2. **Nepatikrinta**, ar dump'as sukuria bazę nuo nulio teisinga koduote
-   (bazės numatytoji `latin1`, nors lentelės utf8mb4).
+   ✅ **IŠMATUOTA 2026-08-19 (§7e):** WP vartotojas tikrai negali kurti DB —
+   `Access denied to database`. Teisės: `GRANT ALL ON gyvunai2_nbpe1.*`,
+   daugiau nieko. Be iš anksto paruoštos švarios bazės realaus gedimo metu
+   atstatoma būtų į gyvą — ESAMI duomenys perrašomi, grįžti nebeįmanoma.
+2. ✅ **PATIKRINTA 2026-08-19:** bazės numatytoji koduotė yra
+   **`latin1` / `latin1_swedish_ci`**, lentelės utf8mb4. Vadinasi švari bazė
+   PRIVALO būti sukurta `utf8mb4 / utf8mb4_unicode_ci` — kitaip dump'as ją
+   atkurtų latin1 koduote ir lietuviškos raidės nukentėtų.
 
 > **Todėl prieš bet kokį atstatymą — PIRMA padaryti esamos būklės kopiją**,
 > net jei ji atrodo sugadinta. Be jos nebus kur grįžti, jei atstatymas
@@ -327,14 +330,133 @@ domeną DirectAdmin'e bei nurodyti dokumentų šaknį. Registre (§8b) matyti
 
 ---
 
+## 7d. PRIEŽIŪROS REŽIMAS — ĮDIEGTA IR PATIKRINTA (2026-08-19)
+
+v1.0 ir v2.1 čia turėjo raudoną punktą: *„priežiūros režimo jungiklis
+NEEGZISTUOJA"*. **Uždaryta.**
+
+```
+mu-plugins/petshop-prieziura.php   v1.0.1   6 235 B
+md5  726867acabaa1067ad8d6ae19e0c9983
+kopija: deploy/petshop-prieziura.php
+```
+
+### Naudojimas
+
+```
+ĮJUNGTI    sukurti  wp-content/uploads/ps-prieziura.flag
+IŠJUNGTI   ištrinti tą patį failą
+```
+
+Abu veiksmai — **per DirectAdmin failų tvarkyklę**. Be WP admin, be SSH, be
+tilto. Failo turinys neprivalomas: 1-oji eilutė = tekstas lankytojui,
+2-oji eilutė = `Retry-After` sekundėmis (numatyta 1 800).
+
+### Kodėl vėliava FAILU, o ne nustatymu duomenų bazėje
+
+Šio dokumento §3.3 numato režimą įjungti **prieš DB atstatymą**. Jungiklis,
+gyvenantis duomenų bazėje, tuo metu būtų nepasiekiamas — tiksliai tada, kai
+jo vienintelio ir reikia.
+
+### Ką praleidžia (patikrinta gyvai)
+
+| Kelias | Su vėliava | Kodėl |
+|---|---|---|
+| Vitrina, prekė, kategorija | **503 + `Retry-After: 1800`** | tikslas |
+| `?wc-api=paysera_callback` | **400** (WooCommerce apdorojo) | mokėjimų callback'ai NIEKADA neblokuojami |
+| `/wp-admin/` | 302 | savininkas dirba |
+| `/wp-login.php` | 200 | prisijungimas |
+| **REST code-snippets** | **200, 1 747 įrašai** | **tiltas veikia priežiūros metu** |
+
+> **503, ne 200 ir ne 302.** Google 503 neindeksuoja, bet ir **iš indekso
+> neišmeta**. Po viso SEO sluoksnio tai ne smulkmena.
+
+### Peržiūra be prisijungimo
+
+`https://petshop.lt/?ps_prieziura=<raktas>` — nustato slapuką 12 val.
+Raktas rodomas WP admin pranešime, kai režimas įjungtas.
+
+### 🔒 Pamoka, kurios kaina buvo 4 minutės
+
+Pirmoji versija kabėjo ant `init`. `init` vyksta **ir REST užklausoms** →
+įjungus režimą užsidarė Code Snippets API, ir valymo kelias pats save
+užblokavo. Išsikapstyta per `?wc-api=` praėjimą — tą patį saugiklį, kuris
+buvo įdėtas mokėjimams saugoti.
+
+> **Kodas, kuris blokuoja užklausas, privalo būti patikrintas ir iš savo
+> paties IŠJUNGIMO kelio pusės.** Neužtenka įrodyti, kad blokavimas veikia.
+
+Taisymas struktūrinis: `template_redirect` vietoj `init` — jis iš viso
+nevyksta REST, admin-ajax, wc-api ir wp-cron kelyje.
+
+---
+
+## 7e. ŠVARI TESTINĖ BAZĖ — VIENAS SAVININKO VEIKSMAS
+
+Išmatuota 2026-08-19:
+
+```
+DB              gyvunai2_nbpe1 · MariaDB 10.6.17 · 194 lentelės
+teisės          GRANT USAGE ON *.*
+                GRANT ALL PRIVILEGES ON `gyvunai2_nbpe1`.*
+matomos DB      gyvunai2_nbpe1, information_schema  (VISKAS)
+lentelę kurti   TAIP
+BAZĘ kurti      NE — „Access denied to database 'gyvunai2_rtst_h084'"
+koduotė         latin1 / latin1_swedish_ci   (lentelės utf8mb4)
+```
+
+**DirectAdmin, ~2 min:**
+
+```
+1. sukurti bazę   gyvunai2_rtst
+   koduotė        utf8mb4 / utf8mb4_unicode_ci     ← BŪTINAI, ne latin1
+2. priskirti prie jos ESAMĄ vartotoją gyvunai2_nbpe1 su visomis teisėmis
+```
+
+Naujo vartotojo **nereikia** — kitaip reikėtų ir naujo slaptažodžio
+`wp-config.php`. Po to atstatymo testas į švarią bazę vykdomas per tiltą, ir
+§8 antras punktas užsidaro galutinai.
+
+---
+
+## 7f. AKLA ZONA PO FAILŲ PERKĖLIMO — NAUJA RIZIKA
+
+v1.0–v2.1 šito nebuvo. Išmatuota 2026-08-19:
+
+```
+dabar            dev.avesa.lt  →  parduotuvė        tiltas mato
+po perkėlimo     dev.avesa.lt  →  tuščia            TILTAS AKLAS
+                 petshop.lt    →  dar eShoprent
+po DNS + SSL     petshop.lt    →  parduotuvė        tiltas vėl mato
+```
+
+Tarp failų perkėlimo ir DNS įsigaliojimo **nė vienas adresas nepasiekia
+svetainės iš išorės.** Tuo metu neįmanoma nei patikrinti, ar perkėlimas
+pavyko, nei nieko pataisyti — o būtent tada to labiausiai reikia.
+
+**Siūlomas sprendimas — vienas prašymas SSH žmogui:**
+
+```
+sukurti subdomeną (pvz. naujas.avesa.lt), rodantį į NAUJĄ dokumentų šaknį
+```
+
+Tada tiltas mato svetainę ir prieš DNS, ir po jo, ir akla zona dingsta.
+Jiems tai kelių minučių darbas.
+
+**Paruošta iš mūsų pusės:** workflow'e pridėtas `WP_URL: ${{ secrets.WP_URL }}`.
+Adresas keičiamas **vienu GitHub secret'u**, ne kodu — perjungimo naktį
+nereikės nieko deploy'inti.
+
+---
+
 ## 8. KO ŠIAME PLANE DAR NĖRA
 
 Sąžiningai — kad nebūtų laikoma baigtu.
 
 ```
-🔴 priežiūros režimo jungiklis NEEGZISTUOJA (§6 T-0) — reikia pasidaryti
-🔴 atstatymas į ŠVARIĄ bazę nepatikrintas — reikia testinės DB DirectAdmin'e
-🟡 ar petshop.lt yra hostingo paskyroje kaip domenas (§7c) — NEPATIKRINTA
+🟡 švari testinė bazė — laukia VIENO savininko veiksmo DirectAdmin'e (§7e)
+🟡 AKLA ZONA po failų perkėlimo — nei dev.avesa.lt, nei petshop.lt
+   nepasiekia svetainės iš išorės; siūlomas subdomenas (§7f)
 🟡 Q-PSR3: kas realiai įrašyta projekto 29276 accepturl/cancelurl/callbackurl
 ```
 
@@ -349,6 +471,9 @@ Sąžiningai — kad nebūtų laikoma baigtu.
 ✅ SSL išmatuotas ir tiekėjo eiga patvirtinta (§7c) — nemokamas, po DNS
 ✅ DNS zonos savininkas patikslintas: serveriai.lt = iv.lt, viena paskyra
 ✅ www yra CNAME → keisti tik DU A įrašus
+✅ petshop.lt YRA hostingo paskyroje (S1090)
+✅ **PRIEŽIŪROS REŽIMO JUNGIKLIS ĮDIEGTAS ir patikrintas** (§7d)
+✅ **atstatymo apribojimai IŠMATUOTI** — DB teisės ir koduotė (§3.3, §7e)
 ```
 
 ---
@@ -368,6 +493,9 @@ T-0  1.  DNS: ABU A įrašai → 79.98.29.24   (www CNAME seka pats)
      5.  ⚠️ 2,21 € PIRKIMAS — mokėjimo grandinės patikra
      6.  jei OK → blog_public = 1 (DOD-22), og:image → petshop.lt
      7.  skelbti
+
+PRIEŽIŪRA       įjungti:  sukurti  wp-content/uploads/ps-prieziura.flag
+                išjungti: ištrinti tą patį failą (DirectAdmin)
 
 GRĮŽIMAS        ABU A įrašai → 213.226.161.16 ir .15
                 + Paysera adresai, jei buvo keisti
