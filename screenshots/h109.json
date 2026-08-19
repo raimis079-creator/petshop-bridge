@@ -1,0 +1,30 @@
+{
+ "versija": "H109",
+ "snip": {
+  "id": 609,
+  "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)",
+  "active": true,
+  "scope": "front-end",
+  "ilgis": 1740
+ },
+ "eilutes_su_adresais": [
+  "9: *   - WooCommerce sisteminiu puslapiu (shop/cart/checkout/my-account)"
+ ],
+ "kodo_pradzia": [
+  "1: /**",
+  "2: * SEO Auto H1 v1 (page fallback + _petshop_h1)",
+  "3: *",
+  "4: * Prideda <h1> tik tiems `page` tipo puslapiams, kuriuose turinyje H1 nera.",
+  "5: * Matoma H1 galima perrasyti custom lauku `_petshop_h1` NEKEICIANT SEO <title>.",
+  "6: *",
+  "7: * Neliecia:",
+  "8: *   - postu (blog) - jie jau turi h1.entry-title is theme",
+  "9: *   - WooCommerce sisteminiu puslapiu (shop/cart/checkout/my-account)",
+  "10: *   - puslapiu, kurie jau turi <h1> turinyje (dvigubo H1 apsauga)",
+  "11: */",
+  "12: add_filter('the_content', function ($content) {",
+  "13: ",
+  "14: if (is_admin() || !is_singular('page') || !in_the_loop() || !is_main_query()) {"
+ ],
+ "ar_naudoja_ID": "TAIP (atsparu slug keitimui)"
+}
