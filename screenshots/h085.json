@@ -1,0 +1,141 @@
+{
+ "versija": "H085",
+ "wp": "https://dev.avesa.lt",
+ "SAUGA_ISORE": {
+  "xmlrpc": {
+   "klaida": "TypeError: fetch failed"
+  },
+  "author_1": {
+   "http": 301,
+   "ilgis": 0,
+   "antrastes": {
+    "server": "Apache",
+    "location": "https://dev.avesa.lt/author/admin/"
+   },
+   "pradzia": ""
+  },
+  "rest_users": {
+   "http": 403,
+   "ilgis": 401,
+   "antrastes": {
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>403 Forbidden</title><meta name=\"viewport\" c"
+  },
+  "uploads_listing": {
+   "http": 403,
+   "ilgis": 401,
+   "antrastes": {
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>403 Forbidden</title><meta name=\"viewport\" c"
+  },
+  "debug_log": {
+   "http": 404,
+   "ilgis": 170749,
+   "antrastes": {
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html> <html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\"> <head> <meta c"
+  },
+  "readme": {
+   "http": 200,
+   "ilgis": 7425,
+   "antrastes": {
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta name=\"viewport\" content=\"width=device-width\" /> <meta http-equ"
+  },
+  "wp_config_bak": {
+   "http": 403,
+   "ilgis": 401,
+   "antrastes": {
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>403 Forbidden</title><meta name=\"viewport\" c"
+  },
+  "env": {
+   "http": 404,
+   "ilgis": 170733,
+   "antrastes": {
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html> <html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\"> <head> <meta c"
+  },
+  "wp_login": {
+   "http": 200,
+   "ilgis": 10028,
+   "antrastes": {
+    "x-frame-options": "SAMEORIGIN",
+    "content-security-policy": "frame-ancestors 'self';",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html> <html lang=\"lt-LT\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-"
+  },
+  "frontas": {
+   "http": 200,
+   "ilgis": 235625,
+   "antrastes": {
+    "server": "Apache"
+   },
+   "pradzia": "<!DOCTYPE html> <html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\"> <head> <meta c"
+  }
+ },
+ "ROBOTS": {
+  "http": 200,
+  "turinys": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://dev.avesa.lt/sitemap_index.xml\n"
+ },
+ "SCHEMA": {
+  "blokai": 1,
+  "tipai": [
+   "Organization",
+   "WebSite",
+   "ImageObject",
+   "WebPage",
+   "Person",
+   "Article"
+  ],
+  "generator": "<meta name=\"generator\" content=\"WordPress 6.9.4\" />",
+  "canonical": "nera",
+  "robots_meta": "<meta name=\"robots\" content=\"noindex, nofollow\"/>",
+  "produktas_Product": "nerasta (arba puslapis ne prekes)"
+ },
+ "PSI_mobile": {
+  "klaida": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.",
+  "http": 429
+ },
+ "PSI_desktop": {
+  "klaida": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.",
+  "http": 429
+ },
+ "snip": 3539,
+ "SERVERIS": {
+  "v": "H085",
+  "konstantos": {
+   "DISALLOW_FILE_EDIT": "NENUSTATYTA",
+   "DISALLOW_FILE_MODS": "NENUSTATYTA",
+   "FORCE_SSL_ADMIN": "true",
+   "WP_DEBUG": "false",
+   "WP_DEBUG_DISPLAY": "true",
+   "WP_DEBUG_LOG": "false",
+   "AUTOMATIC_UPDATER_DISABLED": "NENUSTATYTA"
+  },
+  "adminu_kiek": 1,
+  "adminai": [
+   {
+    "id": "1",
+    "login": "bdz487",
+    "login_lygus_display": "ne"
+   }
+  ],
+  "vartotoju_viso": 36,
+  "admin_vardu_admin": 0,
+  "vartotoju_su_app_slaptazodziais": 1,
+  "saugumo_pluginai": "NE VIENO",
+  "wp_config_teises": "0600",
+  "debug_log_yra": "nera",
+  "blog_public": "0",
+  "rankmath_schema": "sitemap,rich-snippet,woocommerce"
+ }
+}
