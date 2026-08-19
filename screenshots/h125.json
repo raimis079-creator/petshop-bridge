@@ -1,0 +1,114 @@
+{
+ "versija": "H125",
+ "D": {
+  "v": "H125",
+  "rezimas": "TIK SKAITYMAS",
+  "perziureta_failu": 16676,
+  "rasta_failuose": {
+   "wp-content/themes/flatsome-child/woocommerce-pip/invoice.php": {
+    "sritis": "temos",
+    "zodziai": [
+     "LT127300010124940593",
+     "Swedbank"
+    ],
+    "eilutes": [
+     "20: 'iban'    => 'LT127300010124940593',",
+     "19: 'bank'    => 'AB Swedbank',"
+    ]
+   },
+   "wp-content/themes/flatsome-child/woocommerce-delivery-notes/base.php": {
+    "sritis": "temos",
+    "zodziai": [
+     "LT127300010124940593",
+     "Swedbank",
+     "Mokėjimo paskirtis"
+    ],
+    "eilutes": [
+     "271: Banko sąskaita: LT127300010124940593<br>",
+     "441: <strong>Gavėjas:</strong> UAB Avesa&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Sąskaita:</strong> LT127300010124940593 (AB Swedbank)<br>",
+     "270: Bankas: AB Swedbank<br>",
+     "441: <strong>Gavėjas:</strong> UAB Avesa&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Sąskaita:</strong> LT127300010124940593 (AB Swedbank)<br>",
+     "440: <strong>Mokėjimo paskirtis:</strong> Išankstinės sąskaitos Nr. <?php echo esc_html( $invoice_number ); ?><br>"
+    ]
+   },
+   "wp-content/themes/flatsome-child/functions.php": {
+    "sritis": "temos",
+    "zodziai": [
+     "Mokėjimo rekvizitai",
+     "Gavę apmokėjimą",
+     "Šąskaita",
+     "Užsakymas gautas",
+     "LT127300010124940593",
+     "Swedbank",
+     "Mokėjimo paskirtis"
+    ],
+    "eilutes": [
+     "416: . '<p style=\"font-weight:bold;margin-bottom:8px;\">Mokėjimo rekvizitai:</p>'",
+     "444: ? 'Gavę apmokėjimą, pradėsime vykdyti užsakymą ir informuosime Jus atskiru pranešimu.'",
+     "420: . '<tr><td style=\"padding:3px 0;color:#666;\">Šąskaita:</td><td><strong>LT127300010124940593</strong></td></tr>'",
+     "442: $heading = 'Užsakymas gautas, ačiū!';",
+     "420: . '<tr><td style=\"padding:3px 0;color:#666;\">Šąskaita:</td><td><strong>LT127300010124940593</strong></td></tr>'",
+     "419: . '<tr><td style=\"padding:3px 0;color:#666;\">Bankas:</td><td>AB Swedbank</td></tr>'"
+    ]
+   }
+  },
+  "rasta_snippetuose": [
+   {
+    "id": "3576",
+    "name": "TEMP H125 laisko paieska",
+    "active": "1",
+    "scope": "global"
+   },
+   {
+    "id": "163",
+    "name": "VF Raw XML Sample",
+    "active": "0",
+    "scope": "global"
+   },
+   {
+    "id": "637",
+    "name": "Petshop Saskaitos Recon LIGHT v2",
+    "active": "0",
+    "scope": "front-end"
+   },
+   {
+    "id": "651",
+    "name": "Petshop Deploy Functions v1",
+    "active": "0",
+    "scope": "front-end"
+   },
+   {
+    "id": "653",
+    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+    "active": "1",
+    "scope": "global"
+   }
+  ],
+  "rasta_DB": {
+   "options": {
+    "woocommerce_bacs_settings": "Šąskaita ",
+    "wcdn_settings": "Šąskaita ",
+    "ps_last_completed_attach": "Šąskaita ",
+    "wpo_wcpdf_settings_general": "LT127300010124940593 Swedbank "
+   }
+  },
+  "uzsakymas_34886": {
+   "busena": "completed",
+   "budas": "bacs",
+   "pavadinimas": "Bankinis pavedimas",
+   "sukurta": "2026-08-05T22:47:43+03:00",
+   "created_via": "checkout"
+  },
+  "uzsakymo_pastabos": [
+   "Užsakymas išsiųstas į VENIPAK Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "Email \"Įvykdytas užsakymas\" sent.",
+   "Payment complete.",
+   "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Rai. Laiškas klientui: NE",
+   "Email \"Naujas užsakymas\" sent.",
+   "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+   "Likutis sumažintas: Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg (7",
+   "Vykdymas: DS — VF 5 vnt (1 siunta(-os))",
+   "Stock hold of 60 minutes applied to: <br>- Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms ka"
+  ]
+ }
+}
