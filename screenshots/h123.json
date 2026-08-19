@@ -1,0 +1,249 @@
+{
+ "versija": "H123",
+ "D": {
+  "v": "H123",
+  "rezimas": "TIK SKAITYMAS",
+  "laiskai": {
+   "customer_processing_order": {
+    "enabled": "yes",
+    "subject": "Jūsų užsakymas Nr. {order_number} — apmokėjimas gautas",
+    "heading": "Apmokėjimas gautas, pradedame vykdyti!"
+   },
+   "customer_completed_order": {
+    "enabled": "yes",
+    "subject": "Jūsų užsakymas №{order_number} išsiųstas!",
+    "heading": "Užsakymas išsiųstas!"
+   },
+   "customer_on_hold_order": {
+    "enabled": "no",
+    "subject": "",
+    "heading": ""
+   },
+   "customer_refunded_order": "NUSTATYMU NERA (naudoja numatytuosius)",
+   "customer_invoice": "NUSTATYMU NERA (naudoja numatytuosius)",
+   "customer_new_account": "NUSTATYMU NERA (naudoja numatytuosius)",
+   "customer_reset_password": "NUSTATYMU NERA (naudoja numatytuosius)",
+   "customer_note": "NUSTATYMU NERA (naudoja numatytuosius)",
+   "customer_partially_refunded_order": "NUSTATYMU NERA (naudoja numatytuosius)",
+   "customer_failed_order": {
+    "enabled": "no",
+    "subject": "",
+    "heading": ""
+   }
+  },
+  "laiskai_gyvai": {
+   "new_order": {
+    "enabled": "TAIP",
+    "gavejas": "admin"
+   },
+   "cancelled_order": {
+    "enabled": "TAIP",
+    "gavejas": "admin"
+   },
+   "customer_cancelled_order": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   },
+   "failed_order": {
+    "enabled": "TAIP",
+    "gavejas": "admin"
+   },
+   "customer_failed_order": {
+    "enabled": "NE",
+    "gavejas": "klientas"
+   },
+   "customer_on_hold_order": {
+    "enabled": "NE",
+    "gavejas": "klientas"
+   },
+   "customer_processing_order": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   },
+   "customer_completed_order": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   },
+   "customer_refunded_order": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   },
+   "customer_invoice": {
+    "enabled": "NE",
+    "gavejas": "klientas"
+   },
+   "customer_note": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   },
+   "customer_reset_password": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   },
+   "customer_new_account": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   },
+   "admin_payment_gateway_enabled": {
+    "enabled": "NE",
+    "gavejas": "admin"
+   },
+   "customer_pos_completed_order": {
+    "enabled": "NE",
+    "gavejas": "klientas"
+   },
+   "customer_pos_refunded_order": {
+    "enabled": "NE",
+    "gavejas": "klientas"
+   },
+   "customer_verify_email": {
+    "enabled": "TAIP",
+    "gavejas": "klientas"
+   }
+  },
+  "meniu": {
+   "Main": {
+    "punktu": 1,
+    "BLOGU": 0,
+    "sarasas": []
+   },
+   "Pagrindinis meniu": {
+    "punktu": 79,
+    "BLOGU": 12,
+    "sarasas": [
+     {
+      "punktas": "MAISTAS ŠUNIMS",
+      "tipas": "custom",
+      "obj": "3152",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "SKANĖSTAI IR PAPILDAI",
+      "tipas": "custom",
+      "obj": "3155",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "PRIEŽIŪRA IR SVEIKATA",
+      "tipas": "custom",
+      "obj": "3158",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "AKSESUARAI",
+      "tipas": "custom",
+      "obj": "3163",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "MAISTAS KATĖMS",
+      "tipas": "custom",
+      "obj": "3170",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "SKANĖSTAI IR PAPILDAI",
+      "tipas": "custom",
+      "obj": "3173",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "KRAIKAI IR TUALETAI",
+      "tipas": "custom",
+      "obj": "3176",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "PRIEŽIŪRA IR AKSESUARAI",
+      "tipas": "custom",
+      "obj": "3179",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "MAISTAS IR SKANĖSTAI",
+      "tipas": "custom",
+      "obj": "3188",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "MAISTAS IR SKANĖSTAI",
+      "tipas": "custom",
+      "obj": "3185",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "MAISTAS",
+      "tipas": "custom",
+      "obj": "3191",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     },
+     {
+      "punktas": "Susidėk savo rinkinį",
+      "tipas": "custom",
+      "obj": "34247",
+      "bėda": "tuscia/placeholder: #",
+      "url": "#"
+     }
+    ]
+   }
+  },
+  "as_pagal_busena": [
+   {
+    "status": "complete",
+    "kiek": "37174"
+   },
+   {
+    "status": "pending",
+    "kiek": "24"
+   },
+   {
+    "status": "failed",
+    "kiek": "6"
+   },
+   {
+    "status": "canceled",
+    "kiek": "1"
+   }
+  ],
+  "as_nepavyko": [
+   {
+    "hook": "wpo_ips_semaphore_lock_cleanup",
+    "kiek": "5",
+    "paskutinis": "2026-06-25 15:18:15"
+   },
+   {
+    "hook": "wpo_wcpdf_schedule_extensions_license_cache_clearing",
+    "kiek": "1",
+    "paskutinis": "2026-05-28 17:34:26"
+   }
+  ],
+  "as_laukia_seniai": [],
+  "kuponai_aktyvus": 0,
+  "kuponai": [],
+  "roles": [
+   {
+    "meta_value": "a:1:{s:8:\"customer\";b:1;}",
+    "kiek": "34"
+   },
+   {
+    "meta_value": "a:1:{s:13:\"administrator\";b:1;}",
+    "kiek": "1"
+   },
+   {
+    "meta_value": "a:1:{s:14:\"ps_darbuotojas\";b:1;}",
+    "kiek": "1"
+   }
+  ]
+ }
+}
