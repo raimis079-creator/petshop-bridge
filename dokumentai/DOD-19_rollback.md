@@ -1,6 +1,6 @@
 # DOD-19 — ATSITRAUKIMO PLANAS (rollback)
 
-**Versija:** 2.0 · 2026-08-19
+**Versija:** 2.1 · 2026-08-19
 **Būsena:** ✅ PATVIRTINTAS. §7 klausimai atsakyti, §0 neaiškumas išspręstas.
 **Priklausomybė:** DOD-18 parašytas (`dokumentai/DOD-18_perjungimas.md`).
 **Perjungimo data:** 2026-09-01/02, naktį, vidury savaitės.
@@ -24,12 +24,28 @@ eShoprent: HTTP 200, nginx/1.22.1 — gyva
 serverius, ne į šį. Vadinasi §3.1 trukmė priklauso nuo TTL, ir T-2 TTL
 mažinimas yra **privalomas**, ne rekomendacija.
 
-**Du radiniai, kurių v1.0 neturėjo:**
+**Trys radiniai (patikslinta 2026-08-19):**
 
-1. **Zoną valdo serveriai.lt, ne iv.lt.** A įrašą keiti pats, tarpininko nėra.
+1. **`serveriai.lt` ir `iv.lt` yra TA PATI įmonė** — UAB „Interneto vizija".
+   v1.0 teiginys „zoną valdo serveriai.lt, ne iv.lt" buvo netikslus.
+   ```
+   petshop.lt NS   ns1–ns4.serveriai.lt
+   SOA hostmaster  hostmaster.iv.lt        ← iv.lt adresas serveriai.lt zonoje
+   iv.lt NS        ns1–ns4.serveriai.lt    ← ir pats iv.lt ten pat
+   ```
+   Zoną valdai per **tą pačią iv.lt paskyrą** (UAB „Avesa").
+
 2. **A įrašų DU.** Pakeitus vieną, dalis srauto liktų sename serveryje, ir
    užsakymai pasiskirstytų per dvi sistemas. **Keisti BŪTINA abu**, ir tai
    galioja tiek perjungimui, tiek grįžimui.
+
+3. **`www` yra CNAME, ne A įrašas** → seka automatiškai.
+   ```
+   petshop.lt      A      213.226.161.16 · .15   TTL 3600
+   www.petshop.lt  CNAME  → petshop.lt           TTL 3600
+   avesa.lt        A      79.98.29.24            ← jau naujajame serveryje
+   ```
+   **Keisti reikia DVIEJŲ įrašų, ne keturių.**
 
 ---
 
@@ -267,6 +283,50 @@ Iš išorės atrodo gerai.
 
 ---
 
+## 7c. SSL SERTIFIKATAS — PATVIRTINTA TIEKĖJO (2026-08-19)
+
+**Išmatuota:** naujajame serveryje `petshop.lt` sertifikatas YRA, bet
+**pasibaigęs prieš ketverius metus**:
+
+```
+CN        petshop.lt          SAN  petshop.lt, www.petshop.lt
+išdavė    Let's Encrypt
+galiojo   2022-10-02 → 2022-12-31      būklė: CERT_HAS_EXPIRED
+
+palyginimui, dabartinė gyvoji (eShoprent):
+galioja   2026-08-10 → 2026-11-08      patikima: taip
+```
+
+Jis užstrigo 2022-aisiais, kai domenas išėjo į eShoprent — Let's Encrypt
+atnaujinimas nebepasiekė patikros.
+
+**Perjungus DNS be sertifikato:** kiekvienas lankytojas gautų raudoną
+„Jūsų ryšys nėra privatus". Nei Google, nei Paysera nesijungtų.
+
+### Tiekėjo atsakymas (serveriai.lt / iv.lt, 2026-08-19)
+
+```
+✅ SSL NEMOKAMAS — svetainė talpinama jų serveryje (79.98.29.24)
+   Mokamų sertifikatų (26–350 €/mėn.) PIRKTI NEREIKIA.
+
+❌ Prieš DNS pakeitimą išduoti NEGALIMA — reikia, kad domenas ir www
+   jau rodytų į jų serverio IP.
+
+✅ TTL 3600 → 300 galima ir rekomenduojama.
+   Įsigaliojimas: tarp TTL ir dvigubo TTL → prie 300 s tai 5–10 min.
+
+Eiga: DNS → palaukti 5–10 min. → užklausti Let's Encrypt per klientų sistemą.
+```
+
+### ⚠️ Neuždarytas klausimas
+
+**Ar `petshop.lt` yra hostingo paskyroje kaip domenas?** Jei nėra —
+sertifikato nebus kam išduoti, ir perjungimo naktį pirma reikės pridėti
+domeną DirectAdmin'e bei nurodyti dokumentų šaknį. Registre (§8b) matyti
+`domains/petshop.lt 17 MB` — katalogas yra, bet beveik tuščias.
+
+---
+
 ## 8. KO ŠIAME PLANE DAR NĖRA
 
 Sąžiningai — kad nebūtų laikoma baigtu.
@@ -274,7 +334,7 @@ Sąžiningai — kad nebūtų laikoma baigtu.
 ```
 🔴 priežiūros režimo jungiklis NEEGZISTUOJA (§6 T-0) — reikia pasidaryti
 🔴 atstatymas į ŠVARIĄ bazę nepatikrintas — reikia testinės DB DirectAdmin'e
-🟡 SSL sertifikatas petshop.lt vardui naujame serveryje — NEPATIKRINTA
+🟡 ar petshop.lt yra hostingo paskyroje kaip domenas (§7c) — NEPATIKRINTA
 🟡 Q-PSR3: kas realiai įrašyta projekto 29276 accepturl/cancelurl/callbackurl
 ```
 
@@ -286,6 +346,9 @@ Sąžiningai — kad nebūtų laikoma baigtu.
 ✅ petshop-sargas.php v1.2 įdiegtas ir veikia (§8u)
 ✅ §7 klausimai atsakyti
 ✅ Paysera rizika išmatuota ir procedūra užrakinta (§7b)
+✅ SSL išmatuotas ir tiekėjo eiga patvirtinta (§7c) — nemokamas, po DNS
+✅ DNS zonos savininkas patikslintas: serveriai.lt = iv.lt, viena paskyra
+✅ www yra CNAME → keisti tik DU A įrašus
 ```
 
 ---
@@ -295,13 +358,16 @@ Sąžiningai — kad nebūtų laikoma baigtu.
 ```
 PRIEŠ (T-2)     TTL 3600 → 300 · abiem A įrašams
 PRIEŠ (T-1)     rankinė pilna kopija · užsirašyti prekių/užsakymų skaičius
-PRIEŠ (T-1)     patikrinti SSL petshop.lt · patikrinti test_mode = no
+PRIEŠ (T-1)     patikrinti test_mode = no (grįžo į yes kartą — tikrinti 2×)
+PRIEŠ (T-1)     įsitikinti, kad petshop.lt yra hostingo paskyroje (§7c)
 
-T-0  1.  DNS: ABU A įrašai → 79.98.29.24
-     2.  palaukti, kol atsidaro petshop.lt
-     3.  ⚠️ 2,21 € PIRKIMAS — mokėjimo grandinės patikra
-     4.  jei OK → blog_public = 1 (DOD-22), og:image → petshop.lt
-     5.  skelbti
+T-0  1.  DNS: ABU A įrašai → 79.98.29.24   (www CNAME seka pats)
+     2.  palaukti 5–10 min. (TTL 300 → dvigubas TTL)
+     3.  užklausti Let's Encrypt per iv.lt klientų sistemą
+     4.  patikrinti: https://petshop.lt atsidaro BE įspėjimo
+     5.  ⚠️ 2,21 € PIRKIMAS — mokėjimo grandinės patikra
+     6.  jei OK → blog_public = 1 (DOD-22), og:image → petshop.lt
+     7.  skelbti
 
 GRĮŽIMAS        ABU A įrašai → 213.226.161.16 ir .15
                 + Paysera adresai, jei buvo keisti
