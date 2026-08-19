@@ -2,8 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfaDEwMiddKSA/ICRfR0VUWydwc19oMTAyJ10gOiAnJykgIT09ICdHTycpIHJldHVybjsKIEBzZXRfdGltZV9saW1pdCgxMjApOwogZ2xvYmFsICR3cGRiOyAkUD0kd3BkYi0+cHJlZml4OwogJG8gPSBhcnJheSgndic9PidIMTAyJyk7CiAkciA9ICR3cGRiLT5nZXRfcm93KCJTRUxFQ1QgSUQsIHBvc3RfdGl0bGUsIHBvc3RfZXhjZXJwdCBGUk9NIHskUH1wb3N0cwogICBXSEVSRSBwb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwb3N0X3N0YXR1cz0ncHVibGlzaCcKICAgICBBTkQgcG9zdF9leGNlcnB0IExJS0UgJyUmbHQ7cCZndDslJyBPUkRFUiBCWSBJRCBMSU1JVCAxIiwgQVJSQVlfQSk7CiBpZigkcil7CiAgICRvWydpZCddID0gKGludCkkclsnSUQnXTsKICAgJG9bJ3VybCddID0gZ2V0X3Blcm1hbGluaygkclsnSUQnXSk7CiAgICRvWydleGNlcnB0X0RCJ10gPSBtYl9zdWJzdHIoJHJbJ3Bvc3RfZXhjZXJwdCddLDAsMTgwKTsKICAgJG9bJ3BvX2ZpbHRybyddID0gbWJfc3Vic3RyKGFwcGx5X2ZpbHRlcnMoJ3dvb2NvbW1lcmNlX3Nob3J0X2Rlc2NyaXB0aW9uJywgJHJbJ3Bvc3RfZXhjZXJwdCddKSwwLDIyMCk7CiB9CiAkb1sna2lla19zdV9sdF9wJ10gICA9IChpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskUH1wb3N0cyBXSEVSRSBwb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwb3N0X3N0YXR1cz0ncHVibGlzaCcgQU5EIHBvc3RfZXhjZXJwdCBMSUtFICclJmx0OyUnIik7CiAkb1sna2lla19zdV90aWtydV9wJ109IChpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskUH1wb3N0cyBXSEVSRSBwb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwb3N0X3N0YXR1cz0ncHVibGlzaCcgQU5EIHBvc3RfZXhjZXJwdCBMSUtFICclPHA+JSciKTsKICRvWydraWVrX2JlX2h0bWwnXSAgID0gKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRQfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSdwdWJsaXNoJyBBTkQgcG9zdF9leGNlcnB0PD4nJyBBTkQgcG9zdF9leGNlcnB0IE5PVCBMSUtFICclPCUnIEFORCBwb3N0X2V4Y2VycHQgTk9UIExJS0UgJyUmbHQ7JSciKTsKICRvWydleGNlcnB0X3Zpc28nXSAgID0gKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRQfXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvc3Rfc3RhdHVzPSdwdWJsaXNoJyBBTkQgcG9zdF9leGNlcnB0PD4nJyIpOwogJHdwZGItPnF1ZXJ5KCJVUERBVEUgeyRQfXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8gd3BfanNvbl9lbmNvZGUoJG8pOyBleGl0Owp9LCAxMzEpOwo=';
-const out={versija:'H102'};
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfaDEwMyddKSA/ICRfR0VUWydwc19oMTAzJ10gOiAnJykgIT09ICdBUFBMWScpIHJldHVybjsKIEBzZXRfdGltZV9saW1pdCgxODApOwogZ2xvYmFsICR3cGRiOyAkUD0kd3BkYi0+cHJlZml4OwogJG8gPSBhcnJheSgndic9PidIMTAzJyk7CiAkdXAgPSB3cF91cGxvYWRfZGlyKCk7ICRiayA9IHRyYWlsaW5nc2xhc2hpdCgkdXBbJ2Jhc2VkaXInXSkuJ3BzLWJhY2t1cHMnOwogaWYoIWlzX2RpcigkYmspKSBAbWtkaXIoJGJrLCAwNzU1LCB0cnVlKTsKCiAvKiByYXN0aSBWSVNVUyB0ZXJtaW51cyBzdSBlc3liZW1pcywgbmUgdGlrIHplbmtsdXMgKi8KICRlaWwgPSAkd3BkYi0+Z2V0X3Jlc3VsdHMoCiAgIlNFTEVDVCB0LnRlcm1faWQsIHQubmFtZSwgdC5zbHVnLCB0dC50YXhvbm9teSwgdHQuY291bnQKICAgRlJPTSB7JFB9dGVybXMgdCBKT0lOIHskUH10ZXJtX3RheG9ub215IHR0IE9OIHQudGVybV9pZD10dC50ZXJtX2lkCiAgIFdIRVJFIHQubmFtZSBSRUdFWFAgJyZbYS16QS1aXSs7fCYjWzAtOV0rOycgT1JERVIgQlkgdC50ZXJtX2lkIiwgQVJSQVlfQSk7CiAkb1sncmFzdGEnXSA9IGNvdW50KCRlaWwpOwoKIC8qIEtPUElKQSAqLwogJGtmID0gJGJrLicvdGVybXNfaDEwMy5qc29uJzsKIEBmaWxlX3B1dF9jb250ZW50cygka2YsIHdwX2pzb25fZW5jb2RlKCRlaWwsIEpTT05fVU5FU0NBUEVEX1VOSUNPREUpKTsKICRvWydrb3BpamEnXSA9IGZpbGVfZXhpc3RzKCRrZikgPyBmaWxlc2l6ZSgka2YpIDogJ05FUEFWWUtPJzsKIGlmKCFmaWxlX2V4aXN0cygka2YpKXsKICAgJG9bJ05VVFJBVUtUQSddPSdrb3BpamEgbmVzdWt1cnRhJzsKICAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsgZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7CiB9CgogJG9rPTA7ICRrbD0wOyAkc2FyPWFycmF5KCk7CiBmb3JlYWNoKCRlaWwgYXMgJHIpewogICAkcHJpZXMgPSAkclsnbmFtZSddOyAkcG8gPSAkcHJpZXM7CiAgIGZvcigkaT0wOyRpPDQ7JGkrKyl7ICRuID0gaHRtbF9lbnRpdHlfZGVjb2RlKCRwbywgRU5UX1FVT1RFU3xFTlRfSFRNTDUsICdVVEYtOCcpOyBpZigkbj09PSRwbykgYnJlYWs7ICRwbz0kbjsgfQogICBpZigkcG8gPT09ICRwcmllcykgY29udGludWU7CiAgIC8qIFNMVUcgTkVMSUVDSUFNQVMg4oCUIHRpayB2YXJkYXMgKi8KICAgJHJlcyA9ICR3cGRiLT51cGRhdGUoJHdwZGItPnRlcm1zLCBhcnJheSgnbmFtZSc9PiRwbyksIGFycmF5KCd0ZXJtX2lkJz0+KGludCkkclsndGVybV9pZCddKSwgYXJyYXkoJyVzJyksIGFycmF5KCclZCcpKTsKICAgaWYoJHJlcyA9PT0gZmFsc2UpeyAka2wrKzsgfQogICBlbHNlIHsgJG9rKys7IGNsZWFuX3Rlcm1fY2FjaGUoKGludCkkclsndGVybV9pZCddLCAkclsndGF4b25vbXknXSk7CiAgICAgICAgICAkc2FyW10gPSBhcnJheSgnaWQnPT4oaW50KSRyWyd0ZXJtX2lkJ10sJ3RheCc9PiRyWyd0YXhvbm9teSddLCdwcmVraXUnPT4oaW50KSRyWydjb3VudCddLCdwcmllcyc9PiRwcmllcywncG8nPT4kcG8sJ3NsdWcnPT4kclsnc2x1ZyddKTsgfQogfQogJG9bJ3BhdGFpc3l0YSddPSRvazsgJG9bJ2tsYWlkdSddPSRrbDsgJG9bJ2VpbHV0ZXMnXT0kc2FyOwogJG9bJ2xpa28nXSA9IChpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskUH10ZXJtcyBXSEVSRSBuYW1lIFJFR0VYUCAnJlthLXpBLVpdKzt8JiNbMC05XSs7JyIpOwoKIHdwX2NhY2hlX2ZsdXNoKCk7CiBpZihmdW5jdGlvbl9leGlzdHMoJ3djX2RlbGV0ZV9wcm9kdWN0X3RyYW5zaWVudHMnKSkgd2NfZGVsZXRlX3Byb2R1Y3RfdHJhbnNpZW50cygpOwoKICR3cGRiLT5xdWVyeSgiVVBEQVRFIHskUH1zbmlwcGV0cyBTRVQgYWN0aXZlPTAgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMxKTsK';
+const out={versija:'H103'};
 const miegok=(ms)=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   let sha=null;
@@ -16,19 +16,19 @@ try{
   const ls=await api('/wp-json/code-snippets/v1/snippets');
   let sar=[]; try{sar=JSON.parse(ls.t);}catch(e){}
   for(const s of (Array.isArray(sar)?sar:[])){ if(String(s.name||'').startsWith('TEMP') && s.active){ await api('/wp-json/code-snippets/v1/snippets/'+s.id,{method:'POST',body:JSON.stringify({id:s.id,active:false})}); } }
-  const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP H102 excerpt vaizdas',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  const cr=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP H103 terminu APPLY',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
   let j=null; try{j=JSON.parse(cr.t);}catch(e){}
   await miegok(9000);
-  const rr=await fetch(WP+'/?ps_h102=GO'); const tt=await rr.text();
-  try{ out.D=JSON.parse(tt); }catch(e){ out.D={ZALIAS:tt.slice(0,500)}; }
+  const rr=await fetch(WP+'/?ps_h103=APPLY'); const tt=await rr.text();
+  try{ out.D=JSON.parse(tt); }catch(e){ out.D={ZALIAS:tt.slice(0,600)}; }
   if(j&&j.id) await api('/wp-json/code-snippets/v1/snippets/'+j.id,{method:'POST',body:JSON.stringify({id:j.id,active:false})});
-  if(out.D && out.D.url){
-    const r=await fetch(out.D.url); const h=await r.text();
-    const m=h.match(/<div[^>]*class="[^"]*product-short-description[^"]*"[^>]*>([\s\S]{0,500}?)<\/div>/i)
-         || h.match(/<div[^>]*woocommerce-product-details__short-description[^>]*>([\s\S]{0,500}?)<\/div>/i);
-    out.HTML_blokas = m ? m[1].replace(/\s+/g,' ').slice(0,330) : 'bloko nerasta';
-    out.ar_matosi_zyme = /&lt;p&gt;|&amp;lt;/.test(h) ? 'TAIP — lankytojas mato zymas' : 'ne';
-    out.http=r.status;
+  await miegok(1500);
+  out.frontas=(await fetch(WP+'/',{redirect:'manual'})).status;
+  if(out.D && Array.isArray(out.D.eilutes)){
+    for(const e of out.D.eilutes.slice(0,2)){
+      try{ const u=WP+'/gamintojas/'+e.slug+'/'; const r=await fetch(u);
+        out['ZENKLAS_'+e.slug]={http:r.status}; }catch(x){}
+    }
   }
 }catch(e){ out.klaida=String(e).slice(0,400); }
-await put('screenshots/h102.json', Buffer.from(JSON.stringify(out,null,1)), 'h102 excerpt vaizdas');
+await put('screenshots/h103.json', Buffer.from(JSON.stringify(out,null,1)), 'h103 terminu esybiu APPLY');
