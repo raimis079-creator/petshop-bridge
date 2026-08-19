@@ -1,0 +1,197 @@
+{
+ "versija": "H107",
+ "URL/krepselis/": {
+  "http": 404,
+  "loc": null
+ },
+ "URL/cart/": {
+  "http": 200,
+  "loc": null
+ },
+ "URL/kasa/": {
+  "http": 404,
+  "loc": null
+ },
+ "URL/checkout/": {
+  "http": 302,
+  "loc": "https://dev.avesa.lt/cart/"
+ },
+ "URL/paskyra/": {
+  "http": 200,
+  "loc": null
+ },
+ "D": {
+  "v": "H107",
+  "wc_puslapiai": {
+   "cart": {
+    "id": 12,
+    "url": "https://dev.avesa.lt/cart/",
+    "slug": "cart",
+    "busena": "publish"
+   },
+   "checkout": {
+    "id": 13,
+    "url": "https://dev.avesa.lt/checkout/",
+    "slug": "checkout",
+    "busena": "publish"
+   },
+   "myaccount": {
+    "id": 14,
+    "url": "https://dev.avesa.lt/paskyra/",
+    "slug": "paskyra",
+    "busena": "publish"
+   },
+   "terms": "NENUSTATYTA",
+   "shop": {
+    "id": 11,
+    "url": "https://dev.avesa.lt/parduotuve/",
+    "slug": "parduotuve",
+    "busena": "publish"
+   }
+  },
+  "slug_krepselis": {
+   "ID": "12",
+   "post_name": "cart",
+   "post_status": "publish",
+   "post_type": "page"
+  },
+  "nf21": {
+   "import_1": {
+    "friendly_name": ""
+   },
+   "import_2": {
+    "friendly_name": ""
+   },
+   "import_3": {
+    "friendly_name": ""
+   },
+   "import_5": {
+    "friendly_name": ""
+   },
+   "import_7": {
+    "friendly_name": ""
+   },
+   "sargas_lentele": "yra",
+   "sargas_irasu": 23
+  },
+  "sargas_stulpeliai": [
+   "id",
+   "laikas",
+   "lygis",
+   "parasas",
+   "zinute",
+   "failas",
+   "eilute",
+   "url",
+   "kiek"
+  ],
+  "klaidu_top": [
+   {
+    "id": "24",
+    "laikas": "2026-08-19 20:27:59",
+    "lygis": "warning",
+    "parasas": "a14fb8dacaa82929648c122cea888253",
+    "zinute": "preg_match_all(): Unknown modifier ']'",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "30",
+    "url": "/?ps_h100=GO",
+    "kiek": "3"
+   },
+   {
+    "id": "23",
+    "laikas": "2026-08-19 20:27:59",
+    "lygis": "warning",
+    "parasas": "fdc65426f1a848f606aeed7bd188c33c",
+    "zinute": "preg_match_all(): Unknown modifier '['",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "25",
+    "url": "/?ps_h100=GO",
+    "kiek": "3"
+   },
+   {
+    "id": "22",
+    "laikas": "2026-08-19 19:48:27",
+    "lygis": "warning",
+    "parasas": "0f78a8a416b5ce8347ded1b90bb6aad9",
+    "zinute": "Undefined array key 0",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "11",
+    "url": "/?ps_h091=BC",
+    "kiek": "1"
+   },
+   {
+    "id": "21",
+    "laikas": "2026-08-19 19:14:04",
+    "lygis": "fatal",
+    "parasas": "c6e2313c0391bee1082d9e7b533e77d8",
+    "zinute": "Uncaught TypeError: round(): Argument #1 ($num) must be of type int|float, string given in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:14\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(14): round()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\n#3 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/plugin.php(522): WP_Hook->do_action()\n#4 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-settings.php(764): do_action()\n#5 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-config.php(117): require_once('...')\n#6 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-load.php(50): require_once('...')\n#7 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-blo",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "14",
+    "url": "/?ps_h087=PERF",
+    "kiek": "1"
+   },
+   {
+    "id": "20",
+    "laikas": "2026-08-19 15:08:51",
+    "lygis": "deprecated",
+    "parasas": "2743a64769a68ae53176f66a06f498fc",
+    "zinute": "preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/kses.php",
+    "eilute": "2018",
+    "url": "/product/ps-testas-1-eur/",
+    "kiek": "3"
+   },
+   {
+    "id": "19",
+    "laikas": "2026-08-19 12:46:53",
+    "lygis": "deprecated",
+    "parasas": "0f7ec6d1cf6c9d593993d2d1710fc0a4",
+    "zinute": "trim(): Passing null to parameter #1 ($string) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "27",
+    "url": "/?ps_h061=H061",
+    "kiek": "2"
+   },
+   {
+    "id": "18",
+    "laikas": "2026-08-19 12:37:10",
+    "lygis": "deprecated",
+    "parasas": "438dabc4c8ce4557f798f6df4a063440",
+    "zinute": "trim(): Passing null to parameter #1 ($string) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "16",
+    "url": "/?ps_h059=H059",
+    "kiek": "1"
+   },
+   {
+    "id": "17",
+    "laikas": "2026-08-19 12:03:24",
+    "lygis": "deprecated",
+    "parasas": "f017455f89edbdf2e1c18c8d42006ef1",
+    "zinute": "preg_match_all(): Passing null to parameter #2 ($subject) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "18",
+    "url": "/?ps_h055=H055",
+    "kiek": "2"
+   }
+  ],
+  "ivykiu_lentele": "yra",
+  "ivykiu_tipai": [],
+  "sablonai": [
+   "cart-abandoned-1.php",
+   "cart-abandoned-1.php.bak_S322",
+   "cart-abandoned-2.php",
+   "cart-abandoned-2.php.bak_S324",
+   "consent-changed.php",
+   "dunning-1.php",
+   "founding.php",
+   "order-paid.php",
+   "order-paid.php.bak_S329",
+   "post-purchase-2d.php",
+   "refill.php",
+   "refill.php.bak_S311",
+   "refill.php.bak_S323",
+   "refill.php.bak_S325"
+  ]
+ }
+}
