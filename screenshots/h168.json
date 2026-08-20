@@ -1,0 +1,27 @@
+{
+ "versija": "H168",
+ "A": {
+  "v": "H168",
+  "laikas": "2026-08-20 23:56:50",
+  "REZIMAS": "DIAGNOSTIKA",
+  "metodai": [
+   "filtruoti(2)",
+   "filtrai(5)"
+  ],
+  "f_paieska": [
+   "1806: $f = array(",
+   "4996: $q = isset( $f['q'] ) ? trim( (string) $f['q'] ) : '';",
+   "5093: $f = array(",
+   "5102: 'q'       => isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '',",
+   "5225: <input type=\"search\" name=\"q\" value=\"' . esc_attr( $f['q'] ) . '\" autocomplete=\"off\" placeholder=\"Ieškoti: pavadinimas, SKU, E",
+   "5226: . ( $f['q'] !== '' ? '<a class=\"isvalyti\" href=\"' . self::url( array( 'q' => null, 'psl' => null ) ) . '\" title=\"Išvalyti paie",
+   "5248: echo '<a class=\"pskat-view' . $on . '\" href=\"' . self::url( array( 'view' => $view, 'psl' => null ) ) . '\">'",
+   "5380: if ( ! empty( $f['q'] ) ) { $akt[] = 'paieška: ' . $f['q']; }",
+   "5392: echo '<a class=\"clear\" href=\"' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'",
+   "5405: echo '<a class=\"clear\" href=\"' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=",
+   "5502: if ( $f['q'] !== '' ) { $baz['q'] = $f['q']; }",
+   "5553: $baz = array( 'page' => 'ps-katalogas', 'kruva' => $f['kruva'], 'view' => $f['view'] );",
+   "5554: if ( $f['q'] !== '' ) { $baz['q'] = $f['q']; }"
+  ]
+ }
+}
