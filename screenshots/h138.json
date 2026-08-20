@@ -1,0 +1,144 @@
+{
+ "versija": "H138",
+ "D": {
+  "v": "H138",
+  "laikas": "2026-08-20 18:50:02",
+  "importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "path": "/wpallimport/files/goods_clean.xml",
+    "type": "file"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+    "type": "url"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "path": "https://zaliojibanga.lt/integrations/services/stocks.php?key=bAF0OY6Sz9H3AgAF",
+    "type": "url"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "path": "http://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+    "type": "url"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "path": "http://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+    "type": "url"
+   }
+  ],
+  "imp2": {
+   "unique_key": "{code[1]}",
+   "duplicate_indicator": "custom field",
+   "custom_duplicate_name": "_sku",
+   "custom_duplicate_value": "{code[1]}",
+   "is_update_title": "0",
+   "is_update_status": "0",
+   "is_update_images": "0",
+   "create_new_records": "1"
+  },
+  "monge": {
+   "viso": 279,
+   "statusai": {
+    "draft": 160,
+    "publish": 119
+   },
+   "saltiniai": {
+    "zb": 262,
+    "nezinomas": 3,
+    "legacy/AV": 14
+   },
+   "draft_priezastys": {
+    "konservas_below_minimum": 152,
+    "(be zymes)": 3,
+    "qty_zero_on_new": 5
+   },
+   "konservai": {
+    "konservas": 162,
+    "ne": 117
+   },
+   "zb_savikaina": {
+    ">=8": 110,
+    "6-8": 0,
+    "4-6": 4,
+    "<4": 148,
+    "nera": 17
+   },
+   "pavyzdziai": [
+    "27955 [draft/zb/KONS] 1.71EUR Monge VetSolution Dog Wet HYPO MONO Pork 400g",
+    "27957 [draft/zb/KONS] 1.71EUR Monge VetSolution Dog Wet HYPO MONO Tuna 400g",
+    "27959 [draft/zb/KONS] 1.71EUR Monge VetSolution Dog Wet HYPO MONO Duck 400g",
+    "27961 [draft/zb/KONS] 1.71EUR Monge VetSolution Dog Wet HYPO MONO Lamb 400g",
+    "32463 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with spinach and b",
+    "32465 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with seabass and p",
+    "32467 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with mussels and o",
+    "32469 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with broccoli and ",
+    "32471 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with quinoa and se",
+    "32473 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with sole and gree",
+    "32475 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with mullet and gr",
+    "32477 [draft/zb/KONS] 1.22EUR Monge SUPREME - Cat Wet Pouches Tuna with quinoa and gr"
+   ]
+  },
+  "bioveterinary": {
+   "viso": 13,
+   "statusai": {
+    "draft": 7,
+    "publish": 6
+   },
+   "saltiniai": {
+    "legacy/AV": 13
+   },
+   "draft_priezastys": {
+    "(be zymes)": 7
+   },
+   "konservai": {
+    "konservas": 0,
+    "ne": 13
+   },
+   "zb_savikaina": {
+    ">=8": 0,
+    "6-8": 0,
+    "4-6": 0,
+    "<4": 0,
+    "nera": 13
+   },
+   "pavyzdziai": [
+    "13015 [draft/legacy/AV] Bioveterinary Oda & Kailis maisto papildas augintiniams",
+    "13016 [draft/legacy/AV] Bioveterinary Sąnariai & Kaulai maisto papildas auginti",
+    "13017 [draft/legacy/AV] Bioveterinary Multimineral & Širdis maisto papildas aug",
+    "13018 [draft/legacy/AV] Bioveterinary Extra Strong maisto papildas augintiniams",
+    "13025 [draft/legacy/AV] Bioveterinary Hepamax 1000 maisto papildas augintiniams",
+    "13870 [draft/legacy/AV] Bioveterinary Stress Control maisto papildas augintinia",
+    "19110 [draft/legacy/AV] BIOVETERINARY HEPAMAX 1000 – kepenis saugantis pašaro p",
+    "16950 [publish/legacy/AV] Papildas gyvūnams Bioveterinary Sąnariai&kaulai, Joints",
+    "16953 [publish/legacy/AV] Papildas gyvūnams Bioveterinary Oda ir kailis, 28 pok.",
+    "16956 [publish/legacy/AV] Papildas gyvūnams Bioveterinary Multimineralai ir širdi",
+    "16959 [publish/legacy/AV] Papildas gyvūnams Bioveterinary Extra Strong, 28 pok.",
+    "16962 [publish/legacy/AV] Papildas gyvūnams BIOVETERINARY Omega-3, 28 pok."
+   ]
+  },
+  "visi_draft": 1142,
+  "draft_priezastys_visos": [
+   {
+    "priezastis": "(be zymes)",
+    "kiek": "809"
+   },
+   {
+    "priezastis": "konservas_below_minimum",
+    "kiek": "313"
+   },
+   {
+    "priezastis": "qty_zero_on_new",
+    "kiek": "20"
+   }
+  ]
+ }
+}
