@@ -1,0 +1,77 @@
+{
+ "versija": "H150",
+ "A": {
+  "v": "H150",
+  "laikas": "2026-08-20 20:11:13",
+  "REZIMAS": "DIAGNOSTIKA",
+  "woocommerce_product_get_stock_quantity": [
+   {
+    "pr": -1000,
+    "fn": "WC_Deprecated_Filter_Hooks::maybe_handle_deprecated_hook",
+    "kur": "/plugins/woocommerce/includes/abstracts/abstract-wc-deprecated-hooks.php:68"
+   },
+   {
+    "pr": 20,
+    "fn": "Petshop_AV_Limit::stock_qty",
+    "kur": "/mu-plugins/petshop-av-limit.php:52"
+   }
+  ],
+  "woocommerce_product_variation_get_stock_quantity": [
+   {
+    "pr": 20,
+    "fn": "Petshop_AV_Limit::stock_qty",
+    "kur": "/mu-plugins/petshop-av-limit.php:52"
+   }
+  ],
+  "woocommerce_product_get_stock_status": [
+   {
+    "pr": 20,
+    "fn": "Petshop_AV_Limit::stock_status",
+    "kur": "/mu-plugins/petshop-av-limit.php:62"
+   },
+   {
+    "pr": 30,
+    "fn": "Petshop_Rinkiniu_Likuciai::busena",
+    "kur": "/mu-plugins/petshop-rinkiniu-likuciai.php:132"
+   }
+  ],
+  "woocommerce_get_stock_html": [
+   {
+    "pr": 10,
+    "fn": "Closure",
+    "kur": "/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:27"
+   },
+   {
+    "pr": 20,
+    "fn": "Petshop_AV_Limit::stock_html",
+    "kur": "/mu-plugins/petshop-av-limit.php:81"
+   },
+   {
+    "pr": 20,
+    "fn": "Petshop_Rinkiniu_Likuciai::html",
+    "kur": "/mu-plugins/petshop-rinkiniu-likuciai.php:139"
+   }
+  ],
+  "woocommerce_product_is_in_stock": [
+   {
+    "pr": 10,
+    "fn": "Closure",
+    "kur": "/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:15"
+   },
+   {
+    "pr": 20,
+    "fn": "Petshop_Rinkiniu_Likuciai::ar_yra",
+    "kur": "/mu-plugins/petshop-rinkiniu-likuciai.php:125"
+   }
+  ],
+  "su_filtru": 283,
+  "raw_meta": "265.000000",
+  "ps_sources_av": 18,
+  "ps_sources_visi": [
+   {
+    "source": "av",
+    "stock_qty": "18"
+   }
+  ]
+ }
+}
