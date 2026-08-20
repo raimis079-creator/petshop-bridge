@@ -1,0 +1,110 @@
+{
+ "versija": "H156",
+ "A": {
+  "v": "H156",
+  "laikas": "2026-08-20 20:54:58",
+  "REZIMAS": "APPLY: ps_sources zb eilutes",
+  "irasai": [
+   {
+    "AV": 17394,
+    "veiksmas": "IDETA",
+    "sku": "01M210202",
+    "ean": "8009470014229",
+    "qty": 247,
+    "cost": "1.836"
+   },
+   {
+    "AV": 17400,
+    "veiksmas": "IDETA",
+    "sku": "01M210203",
+    "ean": "8009470014236",
+    "qty": 356,
+    "cost": "1.836"
+   },
+   {
+    "AV": 17397,
+    "veiksmas": "IDETA",
+    "sku": "01M210205",
+    "ean": "8009470014434",
+    "qty": 296,
+    "cost": "1.836"
+   },
+   {
+    "AV": 17406,
+    "veiksmas": "IDETA",
+    "sku": "01M210630",
+    "ean": "8009470014458",
+    "qty": 357,
+    "cost": "1.044"
+   },
+   {
+    "AV": 17415,
+    "veiksmas": "IDETA",
+    "sku": "01M230101",
+    "ean": "8009470012614",
+    "qty": 137,
+    "cost": "1.053"
+   },
+   {
+    "AV": 17412,
+    "veiksmas": "IDETA",
+    "sku": "01M230102",
+    "ean": "8009470012607",
+    "qty": 77,
+    "cost": "1.053"
+   },
+   {
+    "AV": 17421,
+    "veiksmas": "IDETA",
+    "sku": "01M230103",
+    "ean": "8009470012638",
+    "qty": 624,
+    "cost": "1.053"
+   },
+   {
+    "AV": 17418,
+    "veiksmas": "IDETA",
+    "sku": "01M230105",
+    "ean": "8009470012621",
+    "qty": 90,
+    "cost": "1.053"
+   },
+   {
+    "AV": 17403,
+    "veiksmas": "IDETA",
+    "sku": "01M210629",
+    "ean": "8009470014441",
+    "qty": 276,
+    "cost": "1.044"
+   },
+   {
+    "AV": 17409,
+    "veiksmas": "IDETA",
+    "sku": "01M210632",
+    "ean": "8009470014472",
+    "qty": 320,
+    "cost": "1.044"
+   }
+  ],
+  "parasas_meta": "/** Meta laukai VIENU SELECT — tik tie, kurių reikia ekranui. */\nMethod [ <user> static private method meta_masinis ] {\n  @@ /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins/petshop-katalogas.php 4244 - 4275\n\n  - Parameters [1] {\n    Parameter #0 [ <required> $ids ]\n  }\n}\n",
+  "parasas_registras": "/** Visų prekių registro eilutės VIENU SELECT. */\nMethod [ <user> static private method registras_masinis ] {\n  @@ /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins/petshop-katalogas.php 4278 - 4289\n\n  - Parameters [1] {\n    Parameter #0 [ <required> $ids ]\n  }\n}\n",
+  "parasas_saltiniai": "/**\n\t * Vienos prekės šaltiniai: registras (jau paimtas) + gyvi skaičiai iš meta.\n\t * Nėra įrašo registre → tas pats atsarginis kelias kaip Petshop_Sources.\n\t */\nMethod [ <user> static private method saltiniai_prekei ] {\n  @@ /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins/petshop-katalogas.php 4295 - 4313\n\n  - Parameters [3] {\n    Parameter #0 [ <required> $pid ]\n    Parameter #1 [ <required> $reg ]\n    Parameter #2 [ <required> $m ]\n  }\n}\n",
+  "UI_simuliacija": [
+   {
+    "pid": 17394,
+    "UI_saltiniai": "av=18 cost=NULL | zb=247 cost=1.836",
+    "UI_suma": 265
+   },
+   {
+    "pid": 17400,
+    "UI_saltiniai": "av=0 cost=NULL | zb=356 cost=1.836",
+    "UI_suma": 356
+   },
+   {
+    "pid": 17409,
+    "UI_saltiniai": "av=14 cost=NULL | zb=320 cost=1.044",
+    "UI_suma": 334
+   }
+  ]
+ }
+}
