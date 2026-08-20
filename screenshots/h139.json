@@ -1,0 +1,139 @@
+{
+ "versija": "H139",
+ "D": {
+  "v": "H139",
+  "laikas": "2026-08-20 19:08:43",
+  "REZIMAS": "RECON-ONLY",
+  "ps_sources_yra": true,
+  "ps_sources_stulpeliai": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "ps_sources_viso": 3831,
+  "ps_sources_pagal_saltini": [],
+  "ps_sources_pvz": [
+   {
+    "id": "1",
+    "product_id": "6349",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-08-07 12:02:46",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-20 07:20:05"
+   },
+   {
+    "id": "2",
+    "product_id": "6350",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:09",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-20 07:20:05"
+   },
+   {
+    "id": "3",
+    "product_id": "6351",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:09",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-20 07:20:05"
+   },
+   {
+    "id": "4",
+    "product_id": "6379",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:10",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-20 07:20:05"
+   },
+   {
+    "id": "5",
+    "product_id": "6382",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:10",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-20 07:20:05"
+   }
+  ],
+  "meta_padengimas": {
+   "_gtin": 0,
+   "_ean": 1733,
+   "_zb_ean": 1062,
+   "_vf_ean": 0,
+   "_barcode": 0,
+   "_sku": 3792,
+   "_legacy_ean": 0,
+   "_legacy_manufacturer": 1519,
+   "_zb_code": 0,
+   "_zb_id": 0,
+   "_av_qty": 0,
+   "_zb_qty": 1063,
+   "_vf_qty": 1173,
+   "_legacy_source": 1603,
+   "_zb_draft_reason": 333,
+   "_zb_cost": 1057
+  },
+  "av_kandidatai": {
+   "turi_legacy_manufacturer": 1519,
+   "ps_sources_av": 1420,
+   "ps_sources_av_su_likuciu": 0
+  },
+  "zb_draft_konservai": 313,
+  "zb_draft_kodai": {
+   "_gtin": 0,
+   "_sku": 313,
+   "nera_jokio": 0
+  },
+  "av_viso": 1519,
+  "av_kodai": {
+   "_gtin": 0,
+   "nera": 1519
+  },
+  "SUTAPIMU_GTIN": 0,
+  "sutapimu_pvz": []
+ }
+}
