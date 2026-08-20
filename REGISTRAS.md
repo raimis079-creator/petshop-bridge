@@ -3904,7 +3904,7 @@ Neišmatuota visame kataloge. → **Q-ZB-APRAS**
 | **Q-D7D8** | 🔴 **TŽ §14 D7 (klientų bazė) + D8 (užsakymų istorija) — MVP prioriteto, NEPADARYTA, registre nefiksuota.** Sena platforma dingsta 2026-10-15 | duomenys | **prieš 10-15** |
 | **Q-SVARI-DB** | 🟡 DirectAdmin: sukurti `gyvunai2_rtst` (utf8mb4) + priskirti esamą vartotoją `gyvunai2_nbpe1`. Uždaro DOD-19 §8 (§8y) | DOD-19 | — |
 | **Q-SUBDOM** | 🟡 Akla zona po perkėlimo — prašyti SSH žmogaus subdomeno į naują dokumentų šaknį (§8y) | perjungimas | prieš T-0 |
-| **Q-PAT** | **GitHub PAT baigia galioti 2026-08-26** — be jo tiltas nustoja veikti | visi darbai | **skubu** |
+| Q-PAT | GitHub PAT galioja iki **2026-08-26**. ✅ **SAVININKO SPRENDIMAS 2026-08-20: nera problemos, pratęs likus dienai.** Nebėra atviras klausimas — nekartoti kiekvienoje sesijoje | — | savininkas |
  | — |
 | ~~Q-KAT-FORMATAS~~ | ✅ **UŽDARYTA 2026-08-18:** B hub'uose + A lapinėse (§8o) | — | — |
 | ~~Q-KAT-TEKSTAI~~ | ✅ **UŽDARYTA 2026-08-18:** 56 tekstai + 56 meta gyvi (§8p) | — | — |
