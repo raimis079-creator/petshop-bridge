@@ -9,6 +9,32 @@
 
 ---
 
+## 2026-08-21 (naktis) — KATALOGO FILTRAS + INCIDENTAS [S1181-S1186]
+
+**Raimio problema:** paieskos laukelyje x / Del nenaikina filtro (q= lieka URL'e).
+
+**v8.7.2** (S1181): `q` ir `view` i aktyviu filtru sarasa; „Isvalyti" nuima ir
+eile; `view_zodziais()` zodynas 21 eilei. Saugiklis: 4 str_replace, kiekvienas
+privalo sutapti lygiai 1 karta, kitaip nerasoma (vienoje iteracijoje suveike —
+inkaras rastas 2 kartus, irasymas atmestas).
+
+**v8.7.3** (S1183): paieskos laukelis = kaip kiti filtrai. `search` ivykis
+(narsykles x + Enter), `input` (Backspace iki tuscio, 400 ms), Esc. JS be
+apostrofu, skliaustu balansas 273/273 ir 922/922 patikrintas.
+
+**INCIDENTAS** (S1185, 00:35-00:50): v8.7.4 bandymas (delegavimas) taise
+neegzistuojancia problema — „neveikia" buvo kesas — ir irase faila su PHP
+sintakses klaida BE token_get_all pries rasant. Dev 500, tiltas negyvas,
+ps_dep902 negyvas. Raimis pervadino faila per hostingo tvarkykle; atstatyta
+is ps-backups v873 su sintakses patikra PRIES rasant. Galutinis md5 49d5fa0a,
+.off istrintas, svetaine 200, klase uzsikrove, be Parse error.
+
+**Patvirtinimas (Raimis, 00:57):** „viskas veikia, klaida filtre panaikinta".
+
+Backup'ai: petshop-katalogas-v871/v872/v873-BACKUP. Pamokos — REGISTRAS §8ff.
+
+---
+
 ## 2026-08-20 (vakaras) — AV+ZB DVIGUBO SANDELIO SUJUNGIMAS [S1164-S1180]
 
 **Konteksto pradzia:** Raimis paklause, kokias ZB prekes blokuojam. Recon atskleide
