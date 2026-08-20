@@ -3971,6 +3971,7 @@ kaip normalios prekės. Šaknis: `av_laukas()`/`tiekejo_laukas()` remiasi
 4. SPRENDIMAS: petshop-nepamoketi.php — šalinti ar palikti (Q-NEPAM-MOD)
 5. SPRENDIMAS: žymė „3+ paros" prie eilės „Neapmokėti" (Q-ONHOLD)
 6. SPRENDIMAS: Hepamax 1000 — publikuoti AV juodraštį 19110 ir suporuoti?
+7. Q-MARZA-BAZE — kortelėje „Kaina ir marža": trys eilutės su bazėmis
 ```
 
 ### RAIMIO SPRENDIMAI (užrakinta 2026-08-20)
@@ -3982,6 +3983,7 @@ kaip normalios prekės. Šaknis: `av_laukas()`/`tiekejo_laukas()` remiasi
 | Pardavimo kaina | **lieka AV** — nekeičiama |
 | Poravimas | **tik pagal EAN**; pavadinimų panašumas duoda 0 naudingų porų |
 | GitHub PAT | Raimis pratęsia **pats 08-25**; anksčiau nekelti |
+| Maržos rodymas | Kortelėje **trys eilutės**: Pelnas € · Antkainis % (nuo savikainos) · Marža % (nuo kainos). Kiekviena su baze žodžiu |
 
 ### ATVIRI KLAUSIMAI (papildo §9)
 
@@ -3991,7 +3993,45 @@ kaip normalios prekės. Šaknis: `av_laukas()`/`tiekejo_laukas()` remiasi
 | **Q-HEPA** | 🟡 Hepamax: publikuoti 19110 ir suporuoti su 13025? | Raimio |
 | **Q-MARZA-BV** | 🟡 Bioveterinary maržos su ZB savikaina 24–27 % (ZB RRP 15,29–20,99 €) | Raimio |
 | **Q-KARTELE** | 🟡 146 Monge + ~150 kitų ZB juodraščių be AV poros — €8 kartelės klausimas | po launch? |
+| **Q-MARZA-BAZE** | 🔴 Kortelė maišo bazes: „Marža" nuo KAINOS, „Pagal jūsų taisykles" nuo SAVIKAINOS; „Kategorijos riba 10 %" bazė NEPATIKRINTA | rytoj |
 | ~~Q-KREPS~~ | ✅ **UŽDARYTA 2026-08-20** — ne radinys | — |
+
+### Q-MARZA-BAZE — KORTELĖ MAIŠO DVI BAZES
+
+**Savininko pastaba (2026-08-20):** *„senai prekiauju, matematiką mokiausi, bet
+taip skaičiuoti maržų nemoku — galai nesueina."*
+
+**Pastaba teisinga.** Aritmetika kortelėje gera, bet gretimos eilutės skaičiuojamos
+nuo SKIRTINGŲ bazių, ir niekur to nepasakyta:
+
+```
+Marža                = pelnas ÷ PARDAVIMO KAINA      #12560: 21,08 / 63,21 = 33,4 %
+Pagal jūsų taisykles = savikaina × ANTKAINIS         #12560: 42,13 × 1,25 × 1,21
+Kategorijos riba 10 %= bazė NEPATIKRINTA             ← būtina žiūrėti kode
+```
+
+Todėl tas pats 25 % antkainis ekrane visada rodomas kaip 20 % marža, o savininko
+įprastas 50 % antkainis — kaip 33,4 %.
+
+```
+antkainis 25 % → marža 20,0 %      antkainis  50 % → marža 33,3 %
+antkainis 35 % → marža 25,9 %      antkainis 100 % → marža 50,0 %
+```
+
+**TAISYKLĖ (užrakinta):** kiekvienas procentas ekrane privalo turėti bazę šalia.
+Kortelėje vietoj vienos eilutės — trys:
+
+```
+Pelnas       21,09 €
+Antkainis    50,0 %   (nuo savikainos)
+Marža        33,4 %   (nuo kainos)
+```
+
+Tas pats galioja „Kategorijos ribai" ir perkainavimo taisyklėms.
+
+**PRIEŠ TAISANT:** patikrinti, nuo ko skaičiuojama kategorijos riba. Jei nuo
+savikainos, o marža lyginama nuo kainos — palyginimas neteisingas ir riba
+suveikia ne ten, kur turėtų. Nespėti — skaityti kodą (šios dienos pamoka Nr. 1).
 
 ### PAMOKOS (privalomos)
 
