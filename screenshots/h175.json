@@ -1,0 +1,28 @@
+{
+ "versija": "H175",
+ "A": {
+  "v": "H175",
+  "laikas": "2026-08-21 00:30:09",
+  "REZIMAS": "JS PATIKRA",
+  "script_bloku": 2,
+  "blokai": [
+   {
+    "nr": 0,
+    "ilgis": 36166,
+    "figuriniai": "273/273",
+    "skliaustai": "922/922",
+    "ok": "TAIP",
+    "turi_musu": "TAIP"
+   },
+   {
+    "nr": 1,
+    "ilgis": 55222,
+    "figuriniai": "372/372",
+    "skliaustai": "1301/1301",
+    "ok": "TAIP",
+    "turi_musu": "-"
+   }
+  ],
+  "iskarpa": "php' ) );\n\t\t$nonce = esc_js( wp_create_nonce( 'ps_kat' ) );\n\t\techo '<script>\n\t\t(function(){\n\t\t\tvar AJAX=\"' . $ajax . '\", NONCE=\"' . $nonce . '\";\n\t\t\tvar laukai=[\"kruva\",\"view\",\"sand\",\"kat\",\"brand\",\"likutis\",\"marza\",\"tipas\",\"q\",\"sal\",\"sort\",\"kryp\",\"per\"];\n\t\t\t/* v8.7.3: PAIESKOS LAUKELIS ELGIASI KAIP VISI KITI FILTRAI.\n\t\t\t   Savininko pastaba 2026-08-21: „spaudziu x arba del, bet filtras\n\t\t\t   nepasinaikina\". Teisinga. Visi kiti filtrai yra `data-f` laukai —\n\t\t\t   pakeitus juos `eiti()` iskart perkrauna puslapi. Paieska VIENINTELE\n\t\t\t   buvo formos laukas: narsykles x isvalo TIK teksta, jokio ivykio\n\t\t\t   nekelia, todel `q=` likdavo URL e ir sarasas likdavo filtruotas.\n\t\t\t   Valdiklis, kuris apsimeta suveikes, blogesnis uz ta, kurio nera.\n\t\t\t   `search` ivykis suveikia IR paspaudus narsykles x, IR Enter. */\n\t\t\t(function(){\n\t\t\t\tvar pl = document.querySelector(\"input[type=search][name=q]\");\n\t\t\t\tif(!pl) return;\n\t\t\t\tvar dirba = false, laikm = null;\n\t\t\t\tfunction eikP(){\n\t\t\t\t\tif(dirba) return; dirba = true;\n\t\t\t\t\tvar u = new URLSearchParams(window.location.search);\n\t\t\t\t\tu.set(\"page\",\"ps-katalogas\"); u.delete(\"psl\");\n\t\t\t\t\tvar v = (pl.value || \"\").trim();\n\t\t\t\t\tif(v === \"\"){ u.delete(\"q\"); } else { u.set(\"q\", v); }\n\t\t\t\t\twindow.location.href = window.location.pathname + \"?\" + u.toString();\n\t\t\t\t}\n\t\t\t\tpl.addEventListener(\"search\", eikP);\n\t\t\t\tpl.addEventListener(\"keydown\", function(e){\n\t\t\t\t\tif(e.key === \"Escape\"){ e.preventDefault(); pl.value = \"\"; eikP(); }\n\t\t\t\t});\n\t\t\t\tpl.addEventListener(\"input\", function(){\n\t\t\t\t\tif((pl.value || \"\").trim() !== \"\") return;\n\t\t\t\t\tvar u = new URLSearchParams(window.location.search);\n\t\t\t\t\tif(!u.get(\"q\")) return;\n\t\t\t\t\tclearTimeout(laikm); laikm = setTimeout(eikP, 400);\n\t\t\t\t});\n\t\t\t})();\n\t\t\tfunction eiti(){\n\t\t\t\tvar u=new URLSearchParams(window.location.search);\n\t\t\t\tu.set(\"page\",\"ps-katalogas\"); u.delete(\"psl\");\n\t\t\t\tdocument.querySelectorAll(\"[data-f]\")."
+ }
+}
