@@ -181,7 +181,31 @@ WooCommerce vaizdas: viena suma, du pjuviai. Nebekelti.
 5. **Klasifikacija pagal `_legacy_manufacturer` nepatikima** — ji buvo uzdeta ir ant
    ZB kilmes prekiu, ir butent ji jas saldė.
 
-### 11. GITHUB PAT
+### 11. Q-MARZA-BAZE — SAVININKO PASTABA (naujas, neistirtas)
+
+Savininkas: „taip skaiciuoti marzu nemoku, galai nesueina."
+
+Aritmetika kortelėje TEISINGA (patikrinta abiem pavyzdziais), bet gretimos eilutes
+skaiciuojamos nuo skirtingu baziu ir tai niekur nepasakyta:
+
+```
+#12560  76,49 / 1,21 = 63,21   63,21 - 42,13 = 21,08   21,08 / 63,21 = 33,4 %  (marza, nuo KAINOS)
+        42,13 x 1,25 x 1,21 = 63,72 -> „Pagal jusu taisykles" 63,79  (antkainis, nuo SAVIKAINOS)
+#18623  73,90 / 1,21 = 61,07   61,07 - 49,65 = 11,42   11,42 / 61,07 = 18,7 %
+        49,65 x 1,25 x 1,21 = 75,10 -> 75,19
+```
+
+Pasekme: 25 % antkainis ekrane visada rodomas kaip 20 % marza; iprastas 50 %
+antkainis — kaip 33,4 %.
+
+**NEPATIKRINTA:** nuo ko skaiciuojama „Kategorijos riba 10 %". Jei nuo savikainos,
+o marza lyginama nuo kainos — palyginimas neteisingas. NESPETI, skaityti koda.
+
+**Sprendimas (Raimis pritare):** kortelėje trys eilutes su bazemis —
+Pelnas EUR · Antkainis % (nuo savikainos) · Marza % (nuo kainos).
+Tas pats „Kategorijos ribai" ir perkainavimo taisyklems.
+
+### 12. GITHUB PAT
 
 Galioja iki **2026-08-26 07:15 UTC**. Raimis pratesia PATS 2026-08-25.
 Priminti TIK ta diena, anksciau klausimo nekelti.
