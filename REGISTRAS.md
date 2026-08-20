@@ -3972,6 +3972,7 @@ kaip normalios prekės. Šaknis: `av_laukas()`/`tiekejo_laukas()` remiasi
 5. SPRENDIMAS: žymė „3+ paros" prie eilės „Neapmokėti" (Q-ONHOLD)
 6. SPRENDIMAS: Hepamax 1000 — publikuoti AV juodraštį 19110 ir suporuoti?
 7. Q-MARZA-BAZE — kortelėje „Kaina ir marža": trys eilutės su bazėmis
+8. Katalogo v8.8 dvigubų prekių rodymui — TIK gavus Raimio leidimą liesti katalogą
 ```
 
 ### RAIMIO SPRENDIMAI (užrakinta 2026-08-20)
@@ -4032,6 +4033,34 @@ Tas pats galioja „Kategorijos ribai" ir perkainavimo taisyklėms.
 **PRIEŠ TAISANT:** patikrinti, nuo ko skaičiuojama kategorijos riba. Jei nuo
 savikainos, o marža lyginama nuo kainos — palyginimas neteisingas ir riba
 suveikia ne ten, kur turėtų. Nespėti — skaityti kodą (šios dienos pamoka Nr. 1).
+
+### §8ff. 2026-08-21 NAKTIS — KATALOGO FILTRAS IR SVETAINĖS SULAUŽYMAS [S1181–S1186]
+
+**Problema (Raimio, tiksli nuo pirmos žinutės):** katalogo paieškos laukelyje
+paspaudus × arba ištrynus žodį filtras nenusiima — tekstas dingsta, `q=` lieka URL'e.
+
+**Kas padaryta:**
+- **v8.7.2** — `q` ir `view` įtraukti į aktyvių filtrų sąrašą; „Išvalyti" nuima
+  ir eilę; `view_zodziais()` žodynas. VEIKIA (Raimio ekranas 00:19).
+- **v8.7.3** — paieškos laukelis elgiasi kaip kiti filtrai: naršyklės ×,
+  Backspace iki tuščio, Esc, Enter. VEIKIA (Raimio patvirtinimas 00:57).
+
+**INCIDENTAS 00:35–00:50:** penktas bandymas (v8.7.4) taisė NEEGZISTUOJANČIĄ
+problemą — „neveikia" buvo kešas, ne kodas — ir įrašė failą su PHP sintaksės
+klaida BE patikros prieš rašant. Visa dev svetainė 500, tiltas negyvas
+(mu-plugin lūžta prieš Code Snippets), avarinis ps_dep902 kanalas negyvas.
+Vienintelis kelias — Raimio rankos: failas pervadintas per hostingo tvarkyklę,
+tada atstatymas per tiltą iš ps-backups v873 su token_get_all PRIEŠ rašant.
+Svetainė atgaivinta 00:50, .off ištrintas, md5 49d5fa0a.
+
+**PAMOKOS (kraujo kaina):**
+1. token_get_all(kodas, TOKEN_PARSE) PRIEŠ file_put_contents — VISADA. mu-plugin
+   sintaksės klaida užmuša ir svetainę, ir patį tiltą — durys užsitrenkia sau.
+2. „Neveikia" po diegimo NE(iškart)= kodas blogas. Pirma: opcache + Ctrl+F5 +
+   ĮRODYMAS iš naršyklės. Šįvakar 3 iš 5 bandymų taisė ne tą problemą.
+3. Viena Console eilutė iš savininko pigesnė už penkis aklus taisymus.
+4. Playwright be prisijungimo admin nemato; jei reikės — Raimis prideda WP_PASS
+   į repo Secrets (pasiūlyta, sprendimas jo).
 
 ### PAMOKOS (privalomos)
 
