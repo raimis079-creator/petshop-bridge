@@ -1,0 +1,101 @@
+{
+ "versija": "H153",
+ "A": {
+  "v": "H153",
+  "laikas": "2026-08-20 20:37:47",
+  "REZIMAS": "RECON-ONLY",
+  "failas": "/mu-plugins/petshop-av-stock.php",
+  "turinys": "<?php\n/**\n * Petshop AV Stock v1.2 (S477) — AV (Avesa) sandėlio likutis.\n *\n * PIRMAS SLUOKSNIS iš septynių (REGISTRAS §17.7, §18.9).\n *\n * KODĖL ATSKIRAS LAUKAS, o ne WooCommerce `_stock`:\n *   VF/ZB sinchronizacija `_stock` PERRAŠO kas valandą (Import #6, VF cron).\n *   `_own_stock_qty` su sync nesikerta.\n *\n * KODĖL ATSKIRAS mu-plugin, o ne class-product-cost-metabox.php papildymas:\n *   tas failas 26 504 B, veikiantis, su savikainos/maržos/lock logika.\n *   Likutis priklauso Atsargų kortelei, ne kainodaros blokui.\n *\n * KĄ DARO:\n *   - laukas „AV sandėlio likutis\" WooCommerce → Prekė → Atsargos\n *   - stulpelis prekių sąraše (tik kai reikšmė > 0)\n *   - greitas redagavimas (Quick Edit) sąraše + reikšmė atsinaujina be perkrovimo\n *   - rikiavimas pagal AV\n *   - filtras: AV turi / AV pasibaigė / AV neturi\n *   - API kitiems sluoksniams: Petshop_AV_Stock::qty() / has() / decrease()\n *\n * KO DAR NEDARO (kiti sluoksniai):\n *   - NEKEIČIA resolve() — AV šaltinio parinkimas bus 2 sluoksnyje\n *   - NEMAŽINA likučio automatiškai — bus 5 sluoksnyje\n *   - NELIEČIA pardavimo ribos — bus 3 sluoksnyje\n *\n * SVARBU: tuščias laukas ≠ 0. Tuščias = „AV šios prekės neturi\".\n * Resolverio `legacy` reiškia „neatpažinta tiekėjui\", NE „guli AV sandėlyje\" —\n * AV priklausymą lemia TIK ši reikšmė.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_AV_Stock {\n\n\tconst META = '_own_stock_qty';\n\n\tpublic static function init() {\n\t\tadd_action( 'woocommerce_product_options_inventory_product_data', [ __CLASS__, 'field' ] );\n\t\tadd_action( 'woocommerce_process_product_meta', [ __CLASS__, 'save' ] );\n\t\tadd_filter( 'manage_edit-product_columns', [ __CLASS__, 'column' ], 20 );\n\t\tadd_action( 'manage_product_posts_custom_column', [ __CLASS__, 'column_value' ], 20, 2 );\n\t\tadd_action( 'quick_edit_custom_box', [ __CLASS__, 'quick_edit' ], 10, 2 );\n\t\tadd_action( 'admin_footer-edit.php', [ __CLASS__, 'quick_edit_js' ] );\n\t\tadd_action( 'save_post_product', [ __CLASS__, 'quick_edit_save' ], 20, 2 );\n\t\tadd_filter( 'manage_edit-product_sortable_columns', [ __CLASS__, 'sortable' ] );\n\t\tadd_action( 'pre_get_posts', [ __CLASS__, 'sort_query' ] );\n\t\tadd_action( 'restrict_manage_posts', [ __CLASS__, 'filter_dropdown' ] );\n\t\tadd_filter( 'parse_query', [ __CLASS__, 'filter_query' ] );\n\t}\n\n\t/** Rikiavimas pagal AV stulpelį. */\n\tpublic static function sortable( $cols ) {\n\t\t$cols['ps_av'] = 'ps_av';\n\t\treturn $cols;\n\t}\n\n\tpublic static function sort_query( $q ) {\n\t\tif ( ! is_admin() || ! $q->is_main_query() ) { return; }\n\t\tif ( 'ps_av' !== $q->get( 'orderby' ) ) { return; }\n\t\t$q->set( 'meta_key', self::META );\n\t\t$q->set( 'orderby', 'meta_value_num' );\n\t}\n\n\t/** Filtras „tik AV prekės\" prekių sąraše. */\n\tpublic static function filter_dropdown() {\n\t\t$s = get_current_screen();\n\t\tif ( ! $s || 'edit-product' !== $s->id ) { return; }\n\t\t$dabar = isset( $_GET['ps_av_filter'] ) ? sanitize_key( $_GET['ps_av_filter'] ) : '';\n\t\techo '<select name=\"ps_av_filter\">';\n\t\techo '<option value=\"\">AV sandėlis — visos</option>';\n\t\techo '<option value=\"turi\"' . selected( $dabar, 'turi', false ) . '>AV turi (&gt;0)</option>';\n\t\techo '<option value=\"nulis\"' . selected( $dabar, 'nulis', false ) . '>AV pasibaigė (0)</option>';\n\t\techo '<option value=\"nera\"' . selected( $dabar, 'nera', false ) . '>AV neturi (tuščia)</option>';\n\t\techo '</select>';\n\t}\n\n\tpublic static function filter_query( $q ) {\n\t\tglobal $pagenow;\n\t\tif ( ! is_admin() || 'edit.php' !== $pagenow ) { return; }\n\t\tif ( ( $q->get( 'post_type' ) ?: '' ) !== 'product' ) { return; }\n\t\t$f = isset( $_GET['ps_av_filter'] ) ? sanitize_key( $_GET['ps_av_filter'] ) : '';\n\t\tif ( '' === $f ) { return; }\n\t\t$mq = (array) $q->get( 'meta_query' );\n\t\tif ( 'turi' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ];\n\t\t} elseif ( 'nulis' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => 0, 'compare' => '=', 'type' => 'NUMERIC' ];\n\t\t} elseif ( 'nera' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'compare' => 'NOT EXISTS' ];\n\t\t}\n\t\t$q->set( 'meta_query', $mq );\n\t}\n\n\t/** AV likutis. NULL = AV šios prekės neturi (laukas tuščias). */\n\tpublic static function qty( $product_id ) {\n\t\t$v = get_post_meta( (int) $product_id, self::META, true );\n\t\tif ( '' === $v || null === $v ) { return null; }\n\t\treturn max( 0, (int) $v );\n\t}\n\n\t/** Ar AV turi bent nurodytą kiekį. */\n\tpublic static function has( $product_id, $need = 1 ) {\n\t\t$q = self::qty( $product_id );\n\t\treturn ( null !== $q && $q >= (int) $need );\n\t}\n\n\t/** Sumažina AV likutį. Grąžina naują reikšmę arba WP_Error. */\n\tpublic static function decrease( $product_id, $by, $priezastis = '' ) {\n\t\t$by = (int) $by;\n\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }\n\t\t$q = self::qty( $product_id );\n\t\tif ( null === $q ) { return new WP_Error( 'nera_av', 'Prekė neturi AV likučio' ); }\n\t\tif ( $q < $by ) { return new WP_Error( 'nepakanka', \"AV turi $q, prašoma $by\" ); }\n\t\t$naujas = $q - $by;\n\t\tself::apsaugotas_rasymas( $product_id, $naujas );\n\t\tself::log( $product_id, $q, $naujas, $priezastis );\n\t\treturn $naujas;\n\t}\n\n\t/** Padidina AV likutį (papildymas). */\n\tpublic static function increase( $product_id, $by, $priezastis = '' ) {\n\t\t$by = (int) $by;\n\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }\n\t\t$q = self::qty( $product_id );\n\t\t$naujas = ( null === $q ? 0 : $q ) + $by;\n\t\tself::apsaugotas_rasymas( $product_id, $naujas );\n\t\tself::log( $product_id, $q, $naujas, $priezastis );\n\t\treturn $naujas;\n\t}\n\n\t/**\n\t * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.\n\t *\n\t * PRIEŽASTIS: S468 testo metu Josera `_stock` iš 653 tapo 2 — lygiai tiek, kiek\n\t * buvo įrašyta į AV. WooCommerce kabliukai gali sureaguoti į meta pakeitimą ir\n\t * perrašyti `_stock`. Tikroji reikšmė ateina iš VF sync (`_vf_qty`).\n\t *\n\t * Prieš rašydami įsimenam `_stock`; po rašymo — jei pasikeitė, grąžinam.\n\t */\n\tprotected static function apsaugotas_rasymas( $product_id, $reiksme ) {\n\t\t$product_id = (int) $product_id;\n\t\t$stock_pries = get_post_meta( $product_id, '_stock', true );\n\n\t\tif ( null === $reiksme ) { delete_post_meta( $product_id, self::META ); }\n\t\telse { update_post_meta( $product_id, self::META, (int) $reiksme ); }\n\n\t\t$stock_po = get_post_meta( $product_id, '_stock', true );\n\t\tif ( (string) $stock_pries !== (string) $stock_po ) {\n\t\t\tupdate_post_meta( $product_id, '_stock', $stock_pries );\n\t\t\tif ( function_exists( 'wc_update_product_stock_status' ) ) {\n\t\t\t\twc_delete_product_transients( $product_id );\n\t\t\t}\n\t\t\terror_log( \"[Petshop_AV_Stock] SAUGIKLIS: _stock $product_id buvo pakeistas \"\n\t\t\t         . \"$stock_pries → $stock_po, grąžinta\" );\n\t\t}\n\t}\n\n\t/** Pokyčių žurnalas — kad būtų matyti, kas ir kada keitė. */\n\tprotected static function log( $product_id, $buvo, $tapo, $priezastis ) {\n\t\t$log = get_post_meta( (int) $product_id, '_own_stock_log', true );\n\t\tif ( ! is_array( $log ) ) { $log = []; }\n\t\t$u = wp_get_current_user();\n\t\t$log[] = [\n\t\t\t'kada'      => current_time( 'mysql' ),\n\t\t\t'buvo'      => $buvo,\n\t\t\t'tapo'      => $tapo,\n\t\t\t'kas'       => ( $u && $u->ID ) ? $u->user_login : 'sistema',\n\t\t\t'priezastis'=> substr( (string) $priezastis, 0, 120 ),\n\t\t];\n\t\tif ( count( $log ) > 50 ) { $log = array_slice( $log, -50 ); }\n\t\tupdate_post_meta( (int) $product_id, '_own_stock_log', $log );\n\t}\n\n\t// ─────────────── PREKĖS LANGAS ───────────────\n\n\tpublic static function field() {\n\t\tglobal $post;\n\t\t$v = get_post_meta( $post->ID, self::META, true );\n\t\techo '<div class=\"options_group\">';\n\t\twoocommerce_wp_text_input( [\n\t\t\t'id'          => 'ps_own_stock_qty',\n\t\t\t'value'       => $v,\n\t\t\t'label'       => 'AV sandėlio likutis',\n\t\t\t'placeholder' => 'tuščia = AV neturi',\n\t\t\t'desc_tip'    => true,\n\t\t\t'description' => 'Kiek vienetų šios prekės realiai guli AV (Avesa) sandėlyje. '\n\t\t\t               . 'Tuščias laukas reiškia, kad AV šios prekės neturi. '\n\t\t\t               . 'Nemaišyti su tiekėjo likučiu — tas atkeliauja automatiškai.',\n\t\t\t'type'        => 'number',\n\t\t\t'custom_attributes' => [ 'step' => '1', 'min' => '0' ],\n\t\t] );\n\t\tif ( '' !== $v ) {\n\t\t\t$src = class_exists( 'Petshop_Fulfillment_Source' )\n\t\t\t\t? Petshop_Fulfillment_Source::resolve( $post->ID ) : null;\n\t\t\techo '<p class=\"form-field\" style=\"color:#4A554C;font-size:12px;\">'\n\t\t\t   . 'Tiekėjo šaltinis: <strong>' . esc_html( $src['source'] ?? '—' ) . '</strong>'\n\t\t\t   . ' · WooCommerce likutis: <strong>' . esc_html( (string) get_post_meta( $post->ID, '_stock', true ) ) . '</strong>'\n\t\t\t   . '</p>';\n\t\t}\n\t\techo '</div>';\n\t}\n\n\tpublic static function save( $post_id ) {\n\t\tif ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }\n\t\t$raw = trim( (string) wp_unslash( $_POST['ps_own_stock_qty'] ) );\n\t\t$buvo = get_post_meta( $post_id, self::META, true );\n\t\tif ( '' === $raw ) {\n\t\t\tself::apsaugotas_rasymas( $post_id, null );\n\t\t\tif ( '' !== $buvo ) { self::log( $post_id, $buvo, null, 'laukas ištuštintas' ); }\n\t\t\treturn;\n\t\t}\n\t\t$naujas = max( 0, (int) $raw );\n\t\tif ( (string) $buvo !== (string) $naujas ) {\n\t\t\tself::apsaugotas_rasymas( $post_id, $naujas );\n\t\t\tself::log( $post_id, ( '' === $buvo ? null : (int) $buvo ), $naujas, 'rankinis' );\n\t\t}\n\t}\n\n\t// ─────────────── PREKIŲ SĄRAŠAS ───────────────\n\n\tpublic static function column( $cols ) {\n\t\t$nauji = [];\n\t\tforeach ( $cols as $k => $v ) {\n\t\t\t$nauji[ $k ] = $v;\n\t\t\tif ( 'is_in_stock' === $k ) { $nauji['ps_av'] = 'AV'; }\n\t\t}\n\t\tif ( ! isset( $nauji['ps_av'] ) ) { $nauji['ps_av'] = 'AV'; }\n\t\treturn $nauji;\n\t}\n\n\tpublic static function column_value( $col, $post_id ) {\n\t\tif ( 'ps_av' !== $col ) { return; }\n\t\t$q = self::qty( $post_id );\n\t\tif ( null === $q ) { echo '<span style=\"color:#c9c9c9;\">—</span>'; return; }\n\t\t$spalva = $q > 0 ? '#2d6a35' : '#c33';\n\t\techo '<span id=\"ps_av_' . (int) $post_id . '\" style=\"font-weight:600;color:' . $spalva . ';\">'\n\t\t   . (int) $q . '</span>';\n\t}\n\n\t// ─────────────── GREITAS REDAGAVIMAS ───────────────\n\n\tpublic static function quick_edit( $col, $post_type ) {\n\t\tif ( 'ps_av' !== $col || 'product' !== $post_type ) { return; }\n\t\t?>\n\t\t<fieldset class=\"inline-edit-col-right\">\n\t\t\t<div class=\"inline-edit-col\">\n\t\t\t\t<label class=\"alignleft\">\n\t\t\t\t\t<span class=\"title\">AV likutis</span>\n\t\t\t\t\t<span class=\"input-text-wrap\">\n\t\t\t\t\t\t<input type=\"number\" name=\"ps_own_stock_qty\" class=\"ps-av-qty\"\n\t\t\t\t\t\t       min=\"0\" step=\"1\" placeholder=\"tuščia = neturi\">\n\t\t\t\t\t</span>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t</fieldset>\n\t\t<?php\n\t}\n\n\tpublic static function quick_edit_js() {\n\t\t$s = get_current_screen();\n\t\tif ( ! $s || 'edit-product' !== $s->id ) { return; }\n\t\t?>\n\t\t<style>\n\t\t\t.wp-list-table th.column-ps_av,\n\t\t\t.wp-list-table td.column-ps_av { width: 62px; text-align: center; white-space: nowrap; }\n\t\t</style>\n\t\t<script>\n\t\t(function($){\n\t\t\tif (typeof inlineEditPost === 'undefined') { return; }\n\t\t\tvar senas = inlineEditPost.edit;\n\t\t\tinlineEditPost.edit = function(id){\n\t\t\t\tsenas.apply(this, arguments);\n\t\t\t\tvar pid = (typeof id === 'object') ? parseInt(this.getId(id), 10) : id;\n\t\t\t\tif (!pid) { return; }\n\t\t\t\tvar t = $('#ps_av_' + pid).text().trim();\n\t\t\t\t$('#edit-' + pid).find('input.ps-av-qty').val(t === '—' ? '' : t);\n\t\t\t};\n\t\t\t// Po AJAX issaugojimo WP perpiesia eilute, bet MUSU stulpelio reiksme\n\t\t\t// lieka sena — atnaujinam is to, ka vartotojas ivede.\n\t\t\t$(document).on('ajaxSuccess', function(e, xhr, opts){\n\t\t\t\tif (!opts || !opts.data || opts.data.indexOf('action=inline-save') === -1) { return; }\n\t\t\t\tvar p = new URLSearchParams(opts.data);\n\t\t\t\tvar pid = parseInt(p.get('post_ID'), 10);\n\t\t\t\tif (!pid) { return; }\n\t\t\t\tvar v = (p.get('ps_own_stock_qty') || '').trim();\n\t\t\t\tvar el = $('#ps_av_' + pid);\n\t\t\t\tif (!el.length) { return; }\n\t\t\t\tif (v === '') { el.text('—').css({color:'#c9c9c9','font-weight':'400'}); }\n\t\t\t\telse { el.text(v).css({color: (parseInt(v,10) > 0 ? '#2d6a35' : '#c33'), 'font-weight':'600'}); }\n\t\t\t});\n\t\t})(jQuery);\n\t\t</script>\n\t\t<?php\n\t}\n\n\tpublic static function quick_edit_save( $post_id, $post ) {\n\t\tif ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }\n\t\tif ( ! current_user_can( 'edit_product', $post_id ) ) { return; }\n\t\tif ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }\n\t\tif ( ! isset( $_POST['_inline_edit'] ) ) { return; }   // TIK quick edit\n\t\tself::save( $post_id );\n\t}\n}\nPetshop_AV_Stock::init();\n",
+  "naudotojai": {
+   "petshop-av-limit.php": [
+    "23: * SAUGIKLIS: veikia TIK toms prekėms, kurios turi `_own_stock_qty` IR tiekėjo",
+    "43: if ( ! class_exists( 'Petshop_AV_Stock' ) ) { return false; }",
+    "44: $av = Petshop_AV_Stock::qty( $product_id );",
+    "56: $av = (int) Petshop_AV_Stock::qty( $pid );",
+    "66: $av = (int) Petshop_AV_Stock::qty( $pid );"
+   ],
+   "petshop-av-reduce.php": [
+    "9: * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus.",
+    "12: *   _ps_source = av   → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM",
+    "57: if ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }",
+    "65: // GRYNAI AV prekės likutis gyvena `_stock`, ne `_own_stock_qty` —",
+    "68: $av = Petshop_AV_Stock::qty( $pid );",
+    "86: $rez = Petshop_AV_Stock::decrease( $pid, $qty, 'užsakymas #' . $order->get_order_number() );",
+    "111: if ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }",
+    "119: if ( null === Petshop_AV_Stock::qty( $pid ) ) {",
+    "130: $rez = Petshop_AV_Stock::increase( $pid, $qty, 'grąžinta #' . $order->get_order_number() );"
+   ],
+   "petshop-av-source.php": [
+    "24: *      Resolveris grąžina `legacy`; mes verčiam į `av`. `_own_stock_qty` NEREIKIA.",
+    "26: *      Likutis `_own_stock_qty`; `_stock` perrašo sync.",
+    "59: // Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.",
+    "72: $av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;"
+   ],
+   "petshop-av-stock.php": [
+    "9: *   `_own_stock_qty` su sync nesikerta.",
+    "21: *   - API kitiems sluoksniams: Petshop_AV_Stock::qty() / has() / decrease()",
+    "34: class Petshop_AV_Stock {",
+    "36: const META = '_own_stock_qty';",
+    "133: * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.",
+    "154: error_log( \"[Petshop_AV_Stock] SAUGIKLIS: _stock $product_id buvo pakeistas \"",
+    "182: 'id'          => 'ps_own_stock_qty',",
+    "205: if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }",
+    "206: $raw = trim( (string) wp_unslash( $_POST['ps_own_stock_qty'] ) );",
+    "251: <input type=\"number\" name=\"ps_own_stock_qty\" class=\"ps-av-qty\"",
+    "286: var v = (p.get('ps_own_stock_qty') || '').trim();",
+    "298: if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }",
+    "305: Petshop_AV_Stock::init();"
+   ],
+   "petshop-av-tiekimas.php": [
+    "623: if ( $g > 0 && class_exists( 'Petshop_AV_Stock' ) ) {",
+    "624: Petshop_AV_Stock::increase( $e->product_id, $g,",
+    "728: $turi = class_exists( 'Petshop_AV_Stock' ) ? (int) Petshop_AV_Stock::qty( $pid ) : 0;",
+    "769: if ( class_exists( 'Petshop_AV_Stock' ) ) {",
+    "770: Petshop_AV_Stock::decrease( $p['pid'], $p['reikia'],"
+   ],
+   "petshop-desk.php": [
+    "665: *   `_own_stock_qty` reikalingas TIK toms prekėms, kurios turi ir",
+    "1498: $n = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$wpdb->prefix}postmeta WHERE meta_key='_own_stock_qty' AND meta_value>0\" );"
+   ],
+   "petshop-ivykiai.php": [
+    "136: '_own_stock_qty'         => array( 'likutis',  'AV likutis' ),",
+    "452: 'laukas'   => isset( $e['laukas'] ) ? $e['laukas'] : '_own_stock_qty',"
+   ],
+   "petshop-katalogas.php": [
+    "102: *   AV likutis       (`_own_stock_qty`)  kiek TU parsiveze i Avesos sandeli.",
+    "252: * butu nugules i `_own_stock_qty`, kurio parduotuve neskaito. Skaicius butu",
+    "256: * `_own_stock_qty` visoje bazeje yra vos 1 irasas.",
+    "264: * ISIMTIS: `_own_stock_qty` lieka tiems atvejams, kai TA PACIA preke turim ir",
+    "747: * `_own_stock_qty`. Ta pati taisyklė, kurią skaitant naudoja gyvi_is_meta().",
+    "782: * Išimtis: `_own_stock_qty` — tai MŪSŲ laukas, CRUD jo nepažįsta.",
+    "919: * Prekė be tiekėjo laiko likutį `_stock`; prekė su tiekėju — `_own_stock_qty`,",
+    "947: * Avesos lentynos kiekis gyvena `_own_stock_qty` (S590).",
+    "953: return '_own_stock_qty';",
+    "1093: /* _own_stock_qty — mūsų laukas, WooCommerce jo nepažįsta */",
+    "3870: $vardai = array( '_stock' => 'Likutis', '_own_stock_qty' => 'AV likutis',",
+    "4248: '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
+    "4324: $own   = $v( '_own_stock_qty' );"
+   ],
+   "petshop-partijos.php": [
+    "52: *   Likucio (`_stock`, `_own_stock_qty`) sis modulis NELIECIA — ten jau yra",
+    "254: * S590 taisykle: preke be tiekejo -> `_stock`; su tiekeju -> `_own_stock_qty`.",
+    "259: if ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }",
+    "571: * TIK i `ps_partijos.kiekis_liko`. Jokio `_stock`, jokio `_own_stock_qty` —"
+   ],
+   "petshop-rinkiniai.php": [
+    "615: if ( $meta_key !== '_stock' && $meta_key !== '_own_stock_qty' && $meta_key !== '_manage_stock' ) { return $check; }"
+   ],
+   "class-admin-ui.php": [
+    "92: $own    = get_post_meta($pid,'_own_stock_qty',true);",
+    "316: $val = get_post_meta( $post->ID, '_own_stock_qty', true );",
+    "318: 'id'          => '_own_stock_qty',",
+    "332: $qty = isset($_POST['_own_stock_qty']) ? (int)$_POST['_own_stock_qty'] : 0;"
+   ],
+   "class-fulfillment.php": [
+    "23: *   - Jei prekės yra fiziniame sandėlyje (_own_stock_qty > 0) → siunčiam iš savo",
+    "29: 'own_stock'   => '_own_stock_qty',",
+    "96: update_post_meta( $post_id, '_own_stock_qty', $qty );"
+   ]
+  }
+ }
+}
