@@ -1,0 +1,129 @@
+{
+ "versija": "H148",
+ "A": {
+  "v": "H148",
+  "laikas": "2026-08-20 20:06:37",
+  "REZIMAS": "DIAGNOSTIKA",
+  "busena": [
+   {
+    "AV": 17394,
+    "_own_stock_qty": "18",
+    "_zb_qty": "247",
+    "_vf_qty": "",
+    "_stock": "265.000000",
+    "wc": 283,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17400,
+    "_own_stock_qty": "0",
+    "_zb_qty": "356",
+    "_vf_qty": "",
+    "_stock": "356.000000",
+    "wc": 356,
+    "src": "zb_dropship"
+   },
+   {
+    "AV": 17397,
+    "_own_stock_qty": "13",
+    "_zb_qty": "296",
+    "_vf_qty": "",
+    "_stock": "309.000000",
+    "wc": 322,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17406,
+    "_own_stock_qty": "14",
+    "_zb_qty": "357",
+    "_vf_qty": "",
+    "_stock": "371.000000",
+    "wc": 385,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17415,
+    "_own_stock_qty": "25",
+    "_zb_qty": "137",
+    "_vf_qty": "",
+    "_stock": "162.000000",
+    "wc": 187,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17412,
+    "_own_stock_qty": "7",
+    "_zb_qty": "77",
+    "_vf_qty": "",
+    "_stock": "84.000000",
+    "wc": 91,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17421,
+    "_own_stock_qty": "19",
+    "_zb_qty": "624",
+    "_vf_qty": "",
+    "_stock": "643.000000",
+    "wc": 662,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17418,
+    "_own_stock_qty": "23",
+    "_zb_qty": "90",
+    "_vf_qty": "",
+    "_stock": "113.000000",
+    "wc": 136,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17403,
+    "_own_stock_qty": "9",
+    "_zb_qty": "276",
+    "_vf_qty": "",
+    "_stock": "285.000000",
+    "wc": 294,
+    "src": "own_stock"
+   },
+   {
+    "AV": 17409,
+    "_own_stock_qty": "14",
+    "_zb_qty": "320",
+    "_vf_qty": "",
+    "_stock": "334.000000",
+    "wc": 348,
+    "src": "own_stock"
+   }
+  ],
+  "kabliukai_woocommerce_update_product": [
+   "10 Closure",
+   "10 Automattic\\WooCommerce\\Admin\\ReportsSync::clear_stock_count_cache",
+   "10 WC_Brands::invalidate_wc_layered_nav_counts_cache",
+   "20 psac_apply_categories",
+   "20 ps_sources_sync_saugiai",
+   "99 Petshop_Katalogas::kesas_lauk"
+  ],
+  "kabliukai_woocommerce_product_set_stock": [
+   "10 Automattic\\WooCommerce\\Internal\\PushNotifications\\Triggers\\StockNotificationRecoveryHandler::on_stock_change"
+  ],
+  "kabliukai_updated_post_meta": [
+   "10 wp_cache_set_posts_last_changed",
+   "10 Petshop_Ivykiai::meta_pakeista",
+   "10 wc_maybe_schedule_sale_events_on_meta_change",
+   "10 WC_Post_Data::flush_object_meta_cache",
+   "20 Closure",
+   "999 Petshop_WC_Sync::meta_pakeista"
+  ],
+  "kabliukai_woocommerce_updated_product_stock": [],
+  "testas_pries": {
+   "own_stock": 18,
+   "zb_dropship": 247,
+   "vf_dropship": 0
+  },
+  "testas_total_metodas": 265,
+  "testas_src": "own_stock",
+  "testas_po_wc": 283,
+  "testas_po_meta": "265.000000"
+ }
+}
