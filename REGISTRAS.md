@@ -3904,7 +3904,7 @@ Neišmatuota visame kataloge. → **Q-ZB-APRAS**
 | **Q-D7D8** | 🔴 **TŽ §14 D7 (klientų bazė) + D8 (užsakymų istorija) — MVP prioriteto, NEPADARYTA, registre nefiksuota.** Sena platforma dingsta 2026-10-15 | duomenys | **prieš 10-15** |
 | **Q-SVARI-DB** | 🟡 DirectAdmin: sukurti `gyvunai2_rtst` (utf8mb4) + priskirti esamą vartotoją `gyvunai2_nbpe1`. Uždaro DOD-19 §8 (§8y) | DOD-19 | — |
 | **Q-SUBDOM** | 🟡 Akla zona po perkėlimo — prašyti SSH žmogaus subdomeno į naują dokumentų šaknį (§8y) | perjungimas | prieš T-0 |
-| Q-PAT | GitHub PAT galioja iki **2026-08-26**. ✅ **SAVININKO SPRENDIMAS 2026-08-20: nera problemos, pratęs likus dienai.** Nebėra atviras klausimas — nekartoti kiekvienoje sesijoje | — | savininkas |
+| **Q-PAT** | **GitHub PAT baigia galioti 2026-08-26** — be jo tiltas nustoja veikti | visi darbai | **skubu** |
  | — |
 | ~~Q-KAT-FORMATAS~~ | ✅ **UŽDARYTA 2026-08-18:** B hub'uose + A lapinėse (§8o) | — | — |
 | ~~Q-KAT-TEKSTAI~~ | ✅ **UŽDARYTA 2026-08-18:** 56 tekstai + 56 meta gyvi (§8p) | — | — |
@@ -3916,6 +3916,94 @@ Neišmatuota visame kataloge. → **Q-ZB-APRAS**
 | Q-PSR | Paysera Recurring atsakymas (nefiksuotas) | F19 | — |
 | Q-EM | El. paštas „Apie mus" / „Privatumo politika" psl. | — | — |
 | Q-ATA | 2 testiniai užsakymai kanibalizacijos verdiktams patikrinti | §20 | — |
+
+---
+
+## §8ee. 2026-08-20 (VAKARAS) — AV+ZB DVIGUBAS SANDĖLIS [S1164–S1180]
+
+> **Šis skyrius yra DABARTINĖ BŪKLĖ.** Ankstesni „Papildyta" blokai apie
+> Monge/Bioveterinary — istorija.
+
+### KAS PADARYTA
+
+**1. ZB blokavimo žemėlapis užfiksuotas** (4 sluoksniai): ženklo vartai →
+konservų išimtis → `qty<=0` → `price < 8,00 €`. Plius update vartai (#2/#3)
+ir `block_legacy_update` (prioritetas 9), einantis PIRMA.
+
+**2. 15 porų sujungta** — viena prekė, du sandėliai:
+
+```
+Monge          10 porų    likutis 142 → 2 922 (+2 780)
+Bioveterinary   5 poros   likutis  25 →   338
+```
+
+Modelis: `_stock` = tiekėjo kiekis · `_own_stock_qty` = AV lentyna ·
+`Petshop_AV_Limit` juos sudeda rodymui · ZB juodraštis lieka **šešėliu**
+(`draft` + `hidden` + `_ps_shadow_of`), nes Import #2 jį atkurtų.
+
+**3. `Petshop_Fulfillment` v1.6.1** — `own_stock` išimtas iš `_stock` šaltinių.
+Sprogimo spindulys prieš diegimą išmatuotas: prekių su 2+ šaltiniais = **0**.
+
+**4. `petshop-seseliai.php` v1.0** — naktinis sinchronas po Import #2/#3 +
+valandinis cron. Be jo šešėlių likučiai pasentų per parą.
+
+**5. Bioveterinary šaknis:** juodraščiai buvo **užšaldyti** `_legacy_manufacturer`
+žyme — ZB importas jų neatnaujino nuo sukūrimo. Žymė nuimta.
+
+**6. Q-KREPS uždaryta kaip NE RADINYS** — „mokestis du kartus" buvo verdiktas,
+ne matavimas (1,21 su PVM / 1,00 be PVM = standartinis WooCommerce vaizdas).
+
+### 🔴 NEUŽBAIGTA — RYTOJ
+
+**Katalogo UI (`petshop-katalogas.php` v8.8).** Duomenys teisingi, meluoja rodymas:
+PARDUODAMA rodo tik AV dalį (2 vietoj 60), ženkliukai apsivertę, šešėliai atrodo
+kaip normalios prekės. Šaknis: `av_laukas()`/`tiekejo_laukas()` remiasi
+`_ps_sandelis` — VIENA reikšme. `saltiniai_prekei()` skaičiuoja teisingai (H156).
+
+**Iki v8.8 kataloge šių 15 prekių skaičiais NESIVADOVAUTI — parduotuvė yra tiesa.**
+
+### RYTOJAUS SĄRAŠAS (2026-08-21)
+
+```
+1. Import #3 patikra: ar ps_seseliai_paskutinis rodo kas=import#3, atnaujinta>0
+2. petshop-katalogas.php v8.8 — dviguba prekė: AV | ZB | suma; šešėlio žymė
+3. DOD-20 stabilumo serija (užsidaro 08-24)
+4. SPRENDIMAS: petshop-nepamoketi.php — šalinti ar palikti (Q-NEPAM-MOD)
+5. SPRENDIMAS: žymė „3+ paros" prie eilės „Neapmokėti" (Q-ONHOLD)
+6. SPRENDIMAS: Hepamax 1000 — publikuoti AV juodraštį 19110 ir suporuoti?
+```
+
+### RAIMIO SPRENDIMAI (užrakinta 2026-08-20)
+
+| Sprendimas | Reikšmė |
+|---|---|
+| Savikaina dvigubai prekei | **iš ZB** (iš jų pirkta) |
+| Likutis | **AV + ZB suma** |
+| Pardavimo kaina | **lieka AV** — nekeičiama |
+| Poravimas | **tik pagal EAN**; pavadinimų panašumas duoda 0 naudingų porų |
+| GitHub PAT | Raimis pratęsia **pats 08-25**; anksčiau nekelti |
+
+### ATVIRI KLAUSIMAI (papildo §9)
+
+| Kodas | Klausimas | Terminas |
+|---|---|---|
+| **Q-KAT88** | 🔴 Katalogo UI dvigubų prekių rodymas | rytoj |
+| **Q-HEPA** | 🟡 Hepamax: publikuoti 19110 ir suporuoti su 13025? | Raimio |
+| **Q-MARZA-BV** | 🟡 Bioveterinary maržos su ZB savikaina 24–27 % (ZB RRP 15,29–20,99 €) | Raimio |
+| **Q-KARTELE** | 🟡 146 Monge + ~150 kitų ZB juodraščių be AV poros — €8 kartelės klausimas | po launch? |
+| ~~Q-KREPS~~ | ✅ **UŽDARYTA 2026-08-20** — ne radinys | — |
+
+### PAMOKOS (privalomos)
+
+1. **Prieš statant naują sluoksnį — išvardinti esamus.** `Fulfillment` v1.6.0 buvo
+   nereikalingas: sumavimą jau darė `AV_Limit` (§17.7, §19). Atšaukta tą pačią dieną.
+2. **Skaityti VISĄ registrą, ne tik naujausius skyrius.** Atsakymas gulėjo §17.
+3. **Neaktyvus konfliktas nėra nesamas konfliktas.** Du sluoksniai pretendavo į tą
+   patį lauką; nesusidūrė, nes prekių su 2 šaltiniais buvo 0.
+4. **Įtariai švarus rezultatas — pirma tikrinti matavimą.** 0 sutapimų atsirado dėl
+   `_gtin` (neegzistuoja) vietoj `_ean` ir `qty` vietoj `stock_qty`.
+5. **`_legacy_manufacturer` nepatikimas kilmės rodiklis** — buvo uždėtas ir ant ZB
+   prekių, ir būtent jis jas šaldė.
 
 ---
 
