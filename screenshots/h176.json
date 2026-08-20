@@ -1,0 +1,24 @@
+{
+ "versija": "H176",
+ "A": {
+  "v": "H176",
+  "faze": "A",
+  "laikas": "2026-08-21 00:35:01",
+  "search_laukeliai": [
+   "2726: . '<input type=\"search\" class=\"kort-kat-q\" placeholder=\"rašyk: skanėstai, sausas maistas…\" autocomplete=\"off\">'",
+   "5225: <input type=\"search\" name=\"q\" value=\"' . esc_attr( $f['q'] ) . '\" autocomplete=\"off\" placeholder=\"Ieškoti: pavadinimas, SKU, EAN, tiekėjo kodas…\">'"
+  ],
+  "metodas_laukelio": "virsus (5215-5230)",
+  "metodas_skripto": "skriptas (5894-6710)",
+  "md5_pries": "49d5fa0a7e5983bb4355ea8e7841c4b7",
+  "sutapimu": 1,
+  "sutapimu2": 1,
+  "irasyta": 448110,
+  "md5_po": "fa673daaea2a7228fb8de416c3c66d0e",
+  "php": "KLAIDA: syntax error, unexpected identifier \"e\", expecting \",\" or \";\"",
+  "loopback": 500
+ },
+ "B": {
+  "ZALIAS": "<br />\n<b>Parse error</b>:  syntax error, unexpected identifier &quot;e&quot;, expecting &quot;,&quot; or &quot;;&quot; in <b>/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/mu-plugins/petshop-katalogas.php</b> on line <b>5913</b><br />\n<!DOCTYPE html>\n<html lang=\"lt-LT\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='noindex, nofollow' />\n\t<title>WordPress &rsaquo; Klaida</title>\n\t<style type=\"text/css\">\n\t\thtml {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\t\tbody {\n\t\t\tbackground: #fff;\n\t\t\tborder: 1px solid #ccd0d4;\n\t\t\tcolor: #444;\n\t\t\tfont-family: -apple-system, Bl"
+ }
+}
