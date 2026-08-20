@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-19 naktis V (krepšelio atšaukimas ĮRODYTAS · bacs rekvizitai veikia · 7 klaidingi verdiktai ištaisyti) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-20 (naktis švari · Array-to-string šaknis nustatyta · poveikis nulinis · stebėtojas pašalintas) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -210,7 +210,7 @@ Po taisymų senų adresų srauto danga **78 % → 95 %**.
 | OPS-15 | **27 aktyvūs pluginai** vs TŽ §11.4 riba ≤25 — peržiūrėti | 🔴 |
 | OPS-18 | `force_ssl_checkout` → `yes` po perjungimo (§8bb) | 🔴 T-0 |
 | OPS-19 | `/product/ps-testas-1-eur/` — Paysera testinė prekė pašalinti (§8bb) | 🔴 |
-| OPS-20 | `petshop-tipu-zurnalas.php` PAŠALINTI, kai Array-to-string priežastis nustatyta | 🟡 |
+| ~~OPS-20~~ | ✅ **UžDARYTA 2026-08-20:** priežastis nustatyta (tušti XML elementai), stebėtojas pašalintas, žurnalas archyvuotas (§8dd) |
 | OPS-16 | **robots.txt po perjungimo** — virtualus, keisis savaime (§8z). Po T-0 patikrinti 1 min. | 🟡 patikra |
 | OPS-17 | **NF1–NF4 greičio matavimas** — įmanomas TIK po perjungimo (dev sertifikatas negalioja, §8z) | ⏸ po T-0 |
 | OPS-12 | `gaj6_umbrella_redirects` — kilmė patvirtinta, IŠTRINTA 2026-08-04 (§13). Lentelių 174→173 | ✅ |
@@ -3724,6 +3724,140 @@ vartotojai            34 klientai · 1 administratorius · 1 darbuotojas
 
 ---
 
+## 8dd. NAKTIES PATIKRA IR ARRAY-TO-STRING ŠAKNIS — 2026-08-20 [S1156–S1163]
+
+### ✅ Naktis praėjo švariai — `&amp;` NEGRĮŽO
+
+```
+prekių pavadinimų su esybėmis   0
+terminų                          0
+feed'ai (pergeneruoti 01:30)     cdata_amp 0 / 0 / 0
+prekių publish                   2 609 → 2 617  (8 naujos iš ZB)
+Action Scheduler                 nepavykusių 0 · cancel_unpaid 10 ciklų
+frontas · /krepselis/ · /kasa/ · /privatumo-politika/ · /feed/google/  visi 200
+```
+
+Patvirtina, ką rodė importo profilis: `is_update_title = 0`, esamų pavadinimų
+importas neliečia. **Q-ZB-SAKNIS: 🔴 → 🟡.**
+
+---
+
+### ★ ARRAY-TO-STRING ŠAKNIS: TUŠTI XML ELEMENTAI
+
+Stebėtojas `petshop-tipu-zurnalas.php` per ZB importą (06:01:03–06:01:38)
+surinko 150 įrašų. Rezultatas:
+
+```
+images (kiek=1)        150   ← įdėtinis <image>, NORMALU
+description (kiek=0)    12   ← TUŠTI elementai
+summary (kiek=0)         6
+brand · category · otherName · length · width · height · weight_brutto  po 1
+```
+
+**`kiek=0` = tuščias masyvas.** ZB siunčia `<brand/>` arba `<brand></brand>` be
+reikšmės; PHP tokį paverčia tuščiu masyvu, o `(string) []` duoda žodį
+**`"Array"`** plius įspėjimą.
+
+### 🔒 Kodėl vakarykštis matavimas (H115) rodė nulį
+
+Turėjo dvi patikras: „ar laukas pasitaiko daugiau nei kartą" ir „ar lauko nėra
+visai". **Tuščias, bet ESANTIS elementas iškrito tarp jų** — pasitaiko lygiai
+vieną kartą.
+
+> **Dvi patikros nėra visuma. Tarp „per daug" ir „visai nėra" telpa „yra, bet
+> tuščias".**
+
+### 🔒 Antra matavimo klaida: CDATA
+
+Pirmas dry-run (H133) rodė 2 622 iš 2 622 — tarsi visos prekės be pavadinimo.
+Priežastis: ZB XML naudoja `<![CDATA[...]]>`, o `simplexml_load_string` be
+**`LIBXML_NOCDATA`** tokį turinį grąžina kaip tuščią objektą.
+
+---
+
+### ✅ DRY-RUN VISAM KATALOGUI: POVEIKIS NULINIS
+
+```
+įrašų viso                2 622
+su tuščiu brand/category    177   (6,7 %)
+SPRENDIMAS KEISTŲSI           0
+```
+
+**Nė vienai prekei blokavimo sprendimas nepasikeistų.** Priežastis:
+
+| Vieta | Kodėl nesikeičia |
+|---|---|
+| `if ($name==='' && $category==='')` (349) | `$name` VISADA užpildytas → antra sąlyga netenkinama nei dabar, nei po taisymo |
+| `$brand_check = $brand!=='' ? $brand : $name` (367) | dabar tikrinamas „Array", po taisymo — pavadinimas; **nė vienoje iš 177 pavadinime nėra išbraukto ženklo** |
+
+### 🔒 Vakar riziką PERVERTINAU
+
+Buvau parašęs: *„28 prekės tikrinamos klaidingai"*, *„prekė gali būti įleista
+arba blokuota neteisingai"*. Formaliai tiesa — tikrinamas „Array" vietoj
+pavadinimo — bet **praktinio poveikio nulis**, ir tai dabar išmatuota visame
+kataloge, ne spėta.
+
+### SPRENDIMAS: NETAISYTI
+
+```
++ 41 įspėjimas per parą dingtų iš žurnalo
++ DOD-03 warning parašai 4 → 0
++ fallback ties 367 pradėtų veikti taip, kaip parašyta
+− liečiam petshop-xml.php, pažymėtą „NELIESTI", likus 12 d. iki perjungimo
+```
+
+**Nauda tik švaresnis žurnalas. Neverta.**
+
+> ⚠️ **UŽRAŠYTA ATEIČIAI:** `brand` ir `category` gali ateiti tuščiu masyvu.
+> Fallback ties `petshop-xml.php:367` (`$brand !== '' ? $brand : $name`)
+> realiai NEVEIKIA — sąlyga visada teisinga, nes „Array" yra netuščia eilutė.
+> Jei kada nors bus liečiamas tas failas, taisyti kartu:
+> ```php
+> function petshop_xml_tekstas( $v ) {
+>     if ( is_array( $v ) )  { $v = $v ? reset( $v ) : ''; }
+>     if ( is_object( $v ) ) { $v = (string) $v; }
+>     return is_scalar( $v ) ? (string) $v : '';
+> }
+> ```
+
+---
+
+### ✅ Stebėtojas pašalintas (OPS-20 uždarytas)
+
+```
+žurnalas archyvuotas  ps-backups/tipu-zurnalas-ARCHYVAS-2026-08-20.json (113,4 KB)
+modulis               pašalintas · loopback 200
+mu-moduliai           60 → 59
+kopija                deploy/petshop-tipu-zurnalas.php (grąžinama per 2 min)
+```
+
+**Šalinimo priežastis ne tik higiena.** Modulyje buvo trūkumas: ribos patikra
+(`count($sar) >= RIBA`) stovėjo PO failo skaitymo. Riba pasiekta, rašymo nebėra,
+bet 113 KB failas vis tiek buvo skaitomas ir `json_decode`'inamas **kiekvienai
+importo eilutei** (nes `images` yra masyvas visose prekėse) — apie 300 MB
+bereikalingo darbo per ZB importą ir tas pats per kiekvieną VF ciklą.
+
+---
+
+### 🟡 Šalutinis: ZB aprašymų kokybė
+
+```
+description tuščias   12 iš 150  (~8 % → ~200 prekių kataloge)
+summary tuščias        6 iš 150
+```
+
+Vakar rasta 423 prekės su užkoduotu `&lt;p&gt;` aprašyme; dabar matyti, kad
+dalis ZB prekių aprašymo **neturi iš viso**. Pirmasis įrašas rodo ir šaltinį:
+
+```
+"summary": "&lt;p&gt;Sausas pašaras su šviežia vištiena…"
+```
+
+**Aprašymai iš ZB ateina JAU užkoduoti** — šaltinis tiekėjo XML, ne mūsų kodas.
+Neišmatuota visame kataloge. → **Q-ZB-APRAS**
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -3758,6 +3892,7 @@ vartotojai            34 klientai · 1 administratorius · 1 darbuotojas
 | **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
 | ~~Q-KREPS404~~ | ✅ **UŽDARYTA 2026-08-19:** buvo MANO klaida — `/cart/` ir buvo tikrasis adresas. Dabar sulietuvinta į `/krepselis/` ir `/kasa/` (§8bb) | — | — |
 | **Q-A11Y** | 🟡 Naujienlaiškio varnelė `psnl-check` be prieinamo vardo; `h1→h4` prekės psl.; 12 nuorodų be teksto kategorijoje (§8aa) | NF19 | — |
+| **Q-ZB-APRAS** | 🟡 ZB siunčia ~8 % prekių be aprašymo, o esami ateina JAU užkoduoti (`&lt;p&gt;`). Šaltinis — tiekėjo XML (§8dd). Neišmatuota visame kataloge | turinys | — |
 | **Q-ONHOLD** | 🔴 **`on-hold` (bacs) užsakymai NIEKADA neatšaukiami** — WooCommerce atrenka tik `pending` (§8cc). Sprendimas: žymė „3+ paros“ eilėje „Neapmokėti“ + priminimas per 48 val. (`dunning-1` paruoštas) | operacijos | — |
 | **Q-NEPAM-MOD** | 🟡 `petshop-nepamoketi.php` — filtras jo niekada nepasieks (§8cc). Šalinti ar palikti? | higiena | — |
 | **Q-MENIU** | 🟡 Meniu punktas „Susidėk savo rinkinį“ turi `#` adresą — ar turi kur nors vesti? (§8cc) | UX | — |
