@@ -1,0 +1,30 @@
+{
+ "versija": "R185",
+ "snippet_id": "KLAIDA 403 Host not in allowlist: dev.avesa.lt. Add this host to your network egress settings to allow access.",
+ "RECON": {
+  "ZALIAS": "Host not in allowlist: dev.avesa.lt. Add this host to your network egress settings to allow access."
+ },
+ "VHOST": {
+  "markeris": {
+   "statusas": 403,
+   "sert_kam": "{\"CN\":\"petshop.lt\"}",
+   "sert_iki": "Sep 20 12:29:40 2026 GMT",
+   "kunas": "Host not in allowlist: petshop.lt. Add this host to your network egress settings to allow access."
+  },
+  "saknis": {
+   "statusas": 403,
+   "sert_kam": "{\"CN\":\"petshop.lt\"}",
+   "sert_iki": "Sep 20 12:29:40 2026 GMT",
+   "kunas": "Host not in allowlist: petshop.lt. Add this host to your network egress settings to allow access."
+  },
+  "www_marker": {
+   "statusas": 403,
+   "sert_kam": "{\"CN\":\"*.petshop.lt\"}",
+   "sert_iki": "Sep 20 12:29:40 2026 GMT",
+   "kunas": "Host not in allowlist: www.petshop.lt. Add this host to your network egress settings to allow access."
+  }
+ },
+ "CLEAN": {
+  "ZALIAS": "Host not in allowlist: dev.avesa.lt. Add this host to your network egress settings to allow access."
+ }
+}
