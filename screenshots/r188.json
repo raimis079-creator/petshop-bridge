@@ -1,0 +1,77 @@
+{
+ "versija": "RUN2-R188",
+ "MOVER_PERKELTAS": {
+  "v": "R188a",
+  "irasyta": "OK",
+  "md5_sutampa": "TAIP",
+  "avesa_kopija_istrinta": "TAIP"
+ },
+ "PRIES": {
+  "v": "R186",
+  "laikas": "2026-08-21 15:42:28",
+  "src_yra_wp": "TAIP",
+  "dst_yra": "TAIP",
+  "dst_yra_wp": "NE",
+  "old_yra": "NE"
+ },
+ "PERKELIMAS": {
+  "z1_sena_i_sona": "OK",
+  "z2_dev_i_dst": "OK",
+  "stub_wp-load.php": "OK",
+  "stub_backup-run.php": "OK",
+  "stub_watch-run.php": "OK",
+  "stub_index.php": "OK",
+  "stub_.htaccess": "OK",
+  "patikra_dst_wpconfig": "TAIP",
+  "patikra_dst_wpcontent": "TAIP",
+  "patikra_src_stub": "TAIP"
+ },
+ "PO_PERKELIMO": {
+  "titulinis": {
+   "s": 301,
+   "loc": "https://dev.avesa.lt/",
+   "t": ""
+  },
+  "wplogin": {
+   "s": 200,
+   "loc": null,
+   "t": "<!DOCTYPE html>\n\t<html lang=\"lt-LT\">\n\t<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<ti"
+  }
+ },
+ "SNIPPET_B": "KLAIDA 411 <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html><head>\n<title>411 Length Required</title>\n</head><body>\n<h1>Length Required</h1>\n<p>A request of the re",
+ "SITEURL": {
+  "ZALIAS": "",
+  "s": 301,
+  "loc": "https://dev.avesa.lt/?ps_r188b=GO"
+ },
+ "GALUTINES": {
+  "titulinis": {
+   "s": 301,
+   "loc": "https://dev.avesa.lt/",
+   "title": "",
+   "turi_petshop_nuorodas": "ne"
+  },
+  "www": {
+   "s": 301,
+   "loc": "https://dev.avesa.lt/"
+  },
+  "wplogin": {
+   "s": 200
+  },
+  "rest_snippetai": {
+   "s": 200,
+   "kiek": 0
+  },
+  "parduotuve": {
+   "s": 200,
+   "loc": null
+  },
+  "dev_wp_load_stub": {
+   "s": 200
+  },
+  "dev_titulinis": {
+   "s": 200,
+   "loc": null
+  }
+ }
+}
