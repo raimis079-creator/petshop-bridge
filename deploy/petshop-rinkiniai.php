@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.30';   /* v1.30: surenkami rinkiniai i si langa nebepatenka */
+	const VERSIJA = '1.31';   /* v1.31: siuksline — ketvirta busena toje pacioje lenteleje */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -1763,11 +1763,26 @@ class Petshop_Rinkiniai {
 			);
 		}
 
+		/* v1.31: siuksline — ta pati lentele, ketvirta busena. Atskiro bloko
+		   nebera: prie 50 rinkiniu jis butu uzemes geriausia ekrano vieta ir
+		   dubliaves tai, ka lentele jau moka (rikiavimas, paieska, nuotraukos). */
+		foreach ( self::siuksliadezeje() as $t ) {
+			$duomenys[] = array(
+				'id' => (int) $t['id'], 'pav' => $t['pav'], 'sku' => $t['sku'],
+				'st' => 'trash', 'tipas' => $t['tipas'],
+				'kaina' => (float) $t['kaina'], 'sav' => null, 'suma' => 0.0,
+				'marza' => null, 'pct' => null, 'vnt' => 0, 'poz' => 0, 'miss' => 0,
+				'lubos' => null, 'sand' => array(), 'rusis' => null,
+				'kat' => array_values( (array) $t['kat'] ), 'foto' => $t['foto'],
+				'komp' => array(), 'keista' => $t['keista'], 'dienos' => (int) $t['dienos'],
+				'nuoroda' => '', 'perziura' => '',
+			);
+		}
+
 		echo '<h1 class="wp-heading-inline">Rinkiniai</h1> ';
 		echo '<a href="' . esc_url( $nauja ) . '" class="page-title-action">➕ Sukurti rinkinį</a>';
 		echo '<p class="description">Bet kokių prekių derinys su fiksuota kaina. Klientas gauna tai, ką sudėjome.</p>';
 
-		self::siuksline_blokas();
 		echo '<div id="psr-eiles" class="psr-eiles"></div>';
 		echo '<div id="psr-eile-paaisk" class="psr-eile-paaisk"></div>';
 		echo '<div id="psr-filtrai" class="psr-filtrai-blk"></div>';
@@ -1842,12 +1857,13 @@ class Petshop_Rinkiniai {
 
 			/* Eiles = darbo krepseliai: kiekviena atsako „ka dabar daryti". */
 			var EILES=[
-			 ['','Visi rinkiniai','',function(){return true;},'Viskas, kas sukurta — ir prekyboje, ir juodraščiai.'],
+			 ['','Visi rinkiniai','',function(x){return x.st!=='trash';},'Viskas, kas sukurta — ir prekyboje, ir juodraščiai. Šiukšlinė neįskaičiuota.'],
 			 ['prekyboje','Prekyboje','g',function(x){return x.st==='publish'&&x.lubos!==0;},'Publikuoti ir klientas gali nusipirkti.'],
 			 ['neparduoda','Klientas negali nusipirkti','r',function(x){return x.st==='publish'&&x.lubos===0;},'Rinkinys publikuotas, bet trūksta prekių — parduotuvėje rodomas kaip „Neturime“. Papildyk likutį arba nuimk iš prekybos.'],
-			 ['likutis','Likutis baigiasi','y',function(x){return x.lubos!==null&&x.lubos>0&&x.lubos<5;},'Liko mažiau nei 5 rinkiniai. Verta užsakyti prekių.'],
-			 ['nocost','Be savikainos','y',function(x){return x.miss>0;},'Bent vienos prekės savikaina neįrašyta — maržos apskaičiuoti negalima.'],
-			 ['juod','Juodraščiai','b',function(x){return x.st!=='publish';},'Sukurti, bet dar nepublikuoti. Klientas jų nemato.']
+			 ['likutis','Likutis baigiasi','y',function(x){return x.st!=='trash'&&x.lubos!==null&&x.lubos>0&&x.lubos<5;},'Liko mažiau nei 5 rinkiniai. Verta užsakyti prekių.'],
+			 ['nocost','Be savikainos','y',function(x){return x.st!=='trash'&&x.miss>0;},'Bent vienos prekės savikaina neįrašyta — maržos apskaičiuoti negalima.'],
+			 ['juod','Juodraščiai','b',function(x){return x.st!=='publish'&&x.st!=='trash';},'Sukurti, bet dar nepublikuoti. Klientas jų nemato.'],
+			 ['siuk','Šiukšlinėje','r',function(x){return x.st==='trash';},'Ištrinti, bet dar atstatomi. Grąžinami arba trinami visam čia pat, eilutėje.']
 			];
 
 			function filtruoti(){
@@ -1855,7 +1871,11 @@ class Petshop_Rinkiniai {
 				var out=R.filter(e[3]);
 				if(f.tipas) out=out.filter(function(x){return x.tipas===f.tipas;});
 				if(f.rusis) out=out.filter(function(x){return String(x.rusis)===String(f.rusis);});
-				if(f.bus)   out=out.filter(function(x){return f.bus==='publish'?x.st==='publish':x.st!=='publish';});
+				if(f.bus)   out=out.filter(function(x){
+					if(f.bus==='trash')   return x.st==='trash';
+					if(f.bus==='publish') return x.st==='publish';
+					return x.st!=='publish'&&x.st!=='trash';
+				});
 				if(f.sand)  out=out.filter(function(x){return x.sand.indexOf(f.sand)>=0;});
 				if(f.kat)   out=out.filter(function(x){return x.kat.indexOf(f.kat)>=0;});
 				if(f.marza) out=out.filter(function(x){
@@ -1915,7 +1935,7 @@ class Petshop_Rinkiniai {
 					rr.push([String(g.id),v,n,n?n+' rinkiniai':'kol kas nėra, bet galima kurti']);
 				});
 				h+='<span class="psr-f"><label>Gyvūnas</label>'+grupe('rusis',rr)+'</span>';
-				h+='<span class="psr-f"><label>Būsena</label>'+grupe('bus',[['','Visos'],['publish','Prekyboje'],['draft','Juodraščiai']])+'</span>';
+				h+='<span class="psr-f"><label>Būsena</label>'+grupe('bus',[['','Visos'],['publish','Prekyboje'],['draft','Juodraščiai'],['trash','Šiukšlinėje']])+'</span>';
 				h+='</div><div class="psr-frow">';
 				h+='<span class="psr-f"><label>Kategorija</label><select data-l="kat"><option value="">— visos —</option>'
 					+KAT.map(function(k){return '<option value="'+esc(k)+'"'+(f.kat===k?' selected':'')+'>'+esc(k)+' ('+(ksk[k]||0)+')</option>';}).join('')
@@ -1930,7 +1950,7 @@ class Petshop_Rinkiniai {
 				var akt=[];
 				if(f.tipas) akt.push(['Tipas: '+(f.tipas==='dp'?'Daugiau=pigiau':'Rinkinys'),'tipas']);
 				if(f.rusis){ var g=RUSYS.filter(function(x){return String(x.id)===String(f.rusis);})[0]; akt.push(['Gyvūnas: '+(g?g.v:f.rusis),'rusis']); }
-				if(f.bus) akt.push(['Būsena: '+(f.bus==='publish'?'Prekyboje':'Juodraščiai'),'bus']);
+				if(f.bus) akt.push(['Būsena: '+(f.bus==='publish'?'Prekyboje':(f.bus==='trash'?'Šiukšlinėje':'Juodraščiai')),'bus']);
 				if(f.kat) akt.push(['Kategorija: '+f.kat,'kat']);
 				if(f.marza) akt.push(['Marža: '+f.marza,'marza']);
 				if(f.sand) akt.push(['Sandėlis: '+f.sand.toUpperCase(),'sand']);
@@ -1990,10 +2010,7 @@ class Petshop_Rinkiniai {
 						+'<td><div class="psr-pav"><a href="'+x.nuoroda+'">'+esc(x.pav)+'</a></div>'
 						+'<div class="psr-mut">#'+x.id+(x.sku?' · '+esc(x.sku):'')+' · '+x.poz+' pozicijos · keista '+x.keista+'</div>'
 						+komponentai(x)
-						+'<div class="row-actions"><span><a href="'+x.nuoroda+'">Redaguoti</a> | </span>'
-						+'<span><a href="'+x.nuoroda+'&kopija='+x.id+'">Kopijuoti</a> | </span>'
-						+'<span><a href="'+x.perziura+'" target="_blank">Peržiūrėti</a> | </span>'
-						+'<span class="trash"><a class="psr-trinti" data-id="'+x.id+'" data-pav="'+esc(x.pav)+'">Ištrinti</a></span></div></td>'
+						+veiksmai(x)+'</td>'
 						+'<td>'+(x.tipas==='dp'?'<span class="psr-z b">Daugiau=pigiau</span>':'<span class="psr-z gr">Rinkinys</span>')
 						+'<div class="psr-mut">'+esc((x.kat[0]||'—')).slice(0,22)+'</div></td>'
 						+'<td class="r"><b>'+x.vnt+'</b></td>'
@@ -2004,7 +2021,9 @@ class Petshop_Rinkiniai {
 							:(x.marza<0?'<b class="psr-bad">'+eur(x.marza)+' ('+x.pct+'%)</b>':'<b class="psr-ok">'+eur(x.marza)+' ('+x.pct+'%)</b>'))+'</td>'
 						+'<td class="r">'+(x.lubos===null?'<span class="psr-mut">—</span>'
 							:'<b class="'+(x.lubos===0?'psr-bad':(x.lubos<5?'psr-warn':'psr-ok'))+'">'+x.lubos+' vnt.</b>')+'</td>'
-						+'<td>'+zenklai(x)+'</td></tr>';
+						+'<td>'+(x.st==='trash'
+							? '<span class="psr-z r">šiukšlinėje '+(x.dienos||0)+' d.</span>'
+							: zenklai(x))+'</td></tr>';
 				});
 				return h+'</tbody></table>';
 			}
@@ -2057,6 +2076,18 @@ class Petshop_Rinkiniai {
 				a.click();
 			}
 
+			function veiksmai(x){
+				if(x.st==='trash'){
+					return '<div class="row-actions">'
+						+'<span><a class="psr-siuk" data-v="grazinti" data-id="'+x.id+'" data-pav="'+esc(x.pav)+'">Grąžinti</a> | </span>'
+						+'<span class="trash"><a class="psr-siuk" data-v="trinti" data-id="'+x.id+'" data-pav="'+esc(x.pav)+'">Ištrinti visam</a></span></div>';
+				}
+				return '<div class="row-actions"><span><a href="'+x.nuoroda+'">Redaguoti</a> | </span>'
+					+'<span><a href="'+x.nuoroda+'&kopija='+x.id+'">Kopijuoti</a> | </span>'
+					+'<span><a href="'+x.perziura+'" target="_blank">Peržiūrėti</a> | </span>'
+					+'<span class="trash"><a class="psr-trinti" data-id="'+x.id+'" data-pav="'+esc(x.pav)+'">Ištrinti</a></span></div>';
+			}
+
 			function pieszti(){
 				pieštiFiltrus();
 				var sar=filtruoti();
@@ -2082,6 +2113,7 @@ class Petshop_Rinkiniai {
 						pieszti();
 					};
 				});
+				siukslinesMygtukai();
 				document.querySelectorAll('.psr-trinti').forEach(function(a){
 					a.onclick=function(e){
 						e.preventDefault();
@@ -2096,8 +2128,10 @@ class Petshop_Rinkiniai {
 					};
 				});
 			}
+			function siukslinesMygtukai(){
 			document.querySelectorAll('.psr-siuk').forEach(function(b){
-				b.onclick=function(){
+				b.onclick=function(e){
+					if(e&&e.preventDefault) e.preventDefault();
 					var v=this.dataset.v, pav=this.dataset.pav;
 					if(v==='trinti' && !confirm('Ištrinti „'+pav+'" NEGRĮŽTAMAI?\n\nPrekės kortelė dings visam laikui. Prekės, iš kurių rinkinys sudėtas, lieka.')) return;
 					var fd=new FormData(); fd.append('action','ps_rink_siuksline'); fd.append('nonce',N);
@@ -2108,6 +2142,7 @@ class Petshop_Rinkiniai {
 					});
 				};
 			});
+			}
 			document.getElementById('psr-sort').onchange=pieszti;
 			pieštiEiles(); pieszti();
 		})();
@@ -3233,33 +3268,22 @@ class Petshop_Rinkiniai {
 			$post = get_post( $pid );
 			if ( ! $post ) { continue; }
 			$dienos = (int) floor( ( time() - strtotime( $post->post_modified_gmt . ' UTC' ) ) / DAY_IN_SECONDS );
+			$prod = wc_get_product( $pid );
 			$out[] = array(
 				'id' => $pid, 'pav' => $post->post_title,
-				'tipas' => get_post_meta( $pid, '_dp_base_product_id', true ) ? 'DP pakas' : 'Rinkinys',
+				'tipas' => get_post_meta( $pid, '_dp_base_product_id', true ) ? 'dp' : 'mnm',
 				'dienos' => $dienos,
+				'sku' => (string) get_post_meta( $pid, '_sku', true ),
+				'kaina' => (float) get_post_meta( $pid, '_price', true ),
+				'kat' => wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) ),
+				'foto' => ( $prod && $prod->get_image_id() ) ? wp_get_attachment_image_url( $prod->get_image_id(), 'thumbnail' ) : '',
+				'keista' => mb_substr( $post->post_modified, 0, 10 ),
 			);
 		}
 		usort( $out, function( $a, $b ) { return $b['dienos'] <=> $a['dienos']; } );
 		return $out;
 	}
 
-	/** Siukslines blokas saraso virsuje — rodomas tik kai joje kas nors yra. */
-	private static function siuksline_blokas() {
-		$sar = self::siuksliadezeje();
-		if ( ! $sar ) { return; }
-		echo '<style>.psr-siuksline{margin:14px 0 18px;padding:10px 14px;border:1px solid #dcdcde;border-left:4px solid #b32d2e;background:#fff;border-radius:3px}.psr-siuksline h3{margin:2px 0 8px;font-size:14px}</style>';
-		echo '<div class="psr-siuksline"><h3>Šiukšlinėje <span class="psr-mut">' . count( $sar )
-			. ' — klientas jų nemato; grąžinami arba trinami čia pat</span></h3><table class="widefat striped"><tbody>';
-		foreach ( $sar as $r ) {
-			echo '<tr><td><b>' . esc_html( $r['pav'] ) . '</b> <span class="psr-mut">#' . (int) $r['id']
-				. ' · ' . esc_html( $r['tipas'] ) . ' · ' . (int) $r['dienos'] . ' d.</span></td>'
-				. '<td style="width:260px;text-align:right">'
-				. '<button class="button button-small psr-siuk" data-id="' . (int) $r['id'] . '" data-v="grazinti" data-pav="' . esc_attr( $r['pav'] ) . '">Grąžinti</button> '
-				. '<button class="button button-small psr-siuk" data-id="' . (int) $r['id'] . '" data-v="trinti" data-pav="' . esc_attr( $r['pav'] ) . '">Ištrinti visam</button>'
-				. '</td></tr>';
-		}
-		echo '</tbody></table></div>';
-	}
 
 	/** Ar rinkinys yra neivykdytuose uzsakymuose. HPOS ir senas budas. */
 	private static function uzsakymuose( $pid ) {
