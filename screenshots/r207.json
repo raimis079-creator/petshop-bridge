@@ -1,0 +1,136 @@
+{
+ "versija": "R207",
+ "sukurta": 3650,
+ "DRY": {
+  "v": "R207",
+  "rezimas": "DRY",
+  "publikavimas": [
+   {
+    "id": 34937,
+    "pav": "Skanėstų dėžė šuniui",
+    "buvo": "draft",
+    "prekiu": 9,
+    "saugiklis": "OK"
+   },
+   {
+    "id": 34936,
+    "pav": "Skanėstų dėžutė katei",
+    "buvo": "draft",
+    "prekiu": 6,
+    "saugiklis": "OK"
+   },
+   {
+    "id": 34933,
+    "pav": "Kramtalų dėžė šuniui — hipoalerginė",
+    "buvo": "draft",
+    "prekiu": 9,
+    "saugiklis": "OK"
+   },
+   {
+    "id": 34934,
+    "pav": "Kramtalų dėžė šuniui — jautriam virškinimui",
+    "buvo": "draft",
+    "prekiu": 9,
+    "saugiklis": "OK"
+   }
+  ],
+  "iejimai": [
+   {
+    "grupe": "sunys",
+    "iejimas": 34937,
+    "pav": "Skanėstų dėžė šuniui",
+    "buvo": "yes"
+   },
+   {
+    "grupe": "kates",
+    "iejimas": 34936,
+    "pav": "Skanėstų dėžutė katei",
+    "buvo": "-"
+   },
+   {
+    "grupe": "kramtalai",
+    "iejimas": 34933,
+    "pav": "Kramtalų dėžė šuniui — hipoalerginė",
+    "buvo": "-"
+   },
+   {
+    "grupe": "kons_sunims",
+    "iejimas": 34944,
+    "pav": "Konservu deze 400 Be vistienos",
+    "buvo": "-"
+   },
+   {
+    "grupe": "kons_kates",
+    "iejimas": 34948,
+    "pav": "TEST Konservu deze katei Be vistienos",
+    "buvo": "-"
+   }
+  ],
+  "meniu": [
+   {
+    "meniu_id": 34250,
+    "meniu_pav": "Susidėk skanėstų rinkinį šunims",
+    "taikinys": 34937,
+    "taikinio_busena": "draft",
+    "sena": "https://dev.avesa.lt/product/susidek-skanestu-rinkini-jautresniam-suniui-testas/",
+    "nauja": "https://dev.avesa.lt/?post_type=product&p=34937",
+    "saugiklis": "STOP"
+   },
+   {
+    "meniu_id": 34251,
+    "meniu_pav": "Susidėk skanėstų rinkinį katėms",
+    "taikinys": 34936,
+    "taikinio_busena": "draft",
+    "sena": "https://dev.avesa.lt/product/susidek-skanestu-rinkini-katei-testas/",
+    "nauja": "https://dev.avesa.lt/?post_type=product&p=34936",
+    "saugiklis": "STOP"
+   },
+   {
+    "meniu_id": 34252,
+    "meniu_pav": "Susidėk kramtalų rinkinį šunims",
+    "taikinys": 34933,
+    "taikinio_busena": "draft",
+    "sena": "https://dev.avesa.lt/product/susidek-kramtalu-rinkini-suniui-testas/",
+    "nauja": "https://dev.avesa.lt/?post_type=product&p=34933",
+    "saugiklis": "STOP"
+   }
+  ],
+  "kategorijos": [
+   {
+    "id": 34948,
+    "buvo": [
+     "Kita"
+    ],
+    "nauji_id": [
+     79,
+     682,
+     679
+    ],
+    "saugiklis": "OK"
+   },
+   {
+    "id": 34937,
+    "pav": "Skanėstų dėžė šuniui",
+    "buvo": [
+     "Kramtalų rinkiniai",
+     "RINKINIAI",
+     "Skanėstai šunims"
+    ],
+    "saugiklis": "OK"
+   },
+   {
+    "id": 34935,
+    "pav": "Skanėstų dėžė šuniui — monoproteinas",
+    "buvo": [
+     "Kramtalų rinkiniai",
+     "RINKINIAI",
+     "Skanėstai šunims",
+     "Skanėstų rinkiniai"
+    ],
+    "saugiklis": "OK"
+   }
+  ]
+ },
+ "visi_ok": false,
+ "deaktyvuota": 3650
+}
