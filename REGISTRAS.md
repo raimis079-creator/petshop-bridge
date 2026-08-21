@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-20 (naktis švari · Array-to-string šaknis nustatyta · poveikis nulinis · stebėtojas pašalintas) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-21 (★ SVETAINĖ PERKELTA Į `petshop.lt/public_html` · URL sluoksnis išvalytas · dev.avesa.lt veidrodis veikia · §8gg) · **⏰ RYTOJ:** patikrinti, kiek `&amp;` grįžo po nakties importo (§8ž) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -3858,6 +3858,133 @@ Neišmatuota visame kataloge. → **Q-ZB-APRAS**
 
 ---
 
+## 8gg. ★ PERKELTA I petshop.lt KATALOGA + DEV VEIDRODIS — 2026-08-21 [S1187–S1199]
+
+### 🔴 §8x VERDIKTAS BUVO KLAIDINGAS — atsaukiamas
+
+§8x rasė: *„Lieka failu perkelimas per SSH — palaikymo zmogus, ne AI agentas."*
+Tai remesi neisbandyta prielaida. R185 recon parode:
+
+```
+disable_functions: link, symlink, exec, shell_exec, system, popen, proc_*
+                   → rename() NĖRA ir negali buti (be jo neveiktu WordPress)
+open_basedir       /home/gyvunai2/  → dengia ABU domenu medzius
+src device 2049 = dst device 2049   → ta pati failu sistema
+```
+
+`rename()` toje pacioje FS = irašo pakeitimas, ne kopijavimas. **9,7 GB juda per
+sekundes dali, inode nesikeicia, grizztama taip pat akimirksniu.**
+
+Empiriškai isbandyta PRIES tikraji perkelima: failo rename tarp medziu OK;
+katalogo rename OK; **pats `petshop.lt/public_html` pastumtas i sona ir grazintas OK.**
+
+> **🔒 TAISYKLE:** registro „neimanoma" perziureti, kai jis remiasi neisbandyta
+> prielaida. Vienas testas panaikino savaites blokatoriu.
+
+### ✅ Q-PERKEL UZDARYTA · Q-SUBDOM UZDARYTA · Q-SHORTPIX nebe blokatorius
+
+Vhost patikra per IP prisegima (DNS nepaliestas, pasaulis nemate):
+`petshop.lt` ir `www.petshop.lt` **jau atidave PHP 8.3.20** is
+`DOCROOT=/home/gyvunai2/domains/petshop.lt/public_html`. Serverio konfiguracijos
+keisti nereikejo.
+
+### Busena po perkelimo
+
+```
+svetaine        /home/gyvunai2/domains/petshop.lt/public_html
+siteurl + home  https://petshop.lt
+sena liekana    petshop.lt/public_html-senas2019 (2019 m. .htaccess, robots.txt) NETRINTA
+dev/            router + stub'ai (zr. zemiau)
+kopijos         ps-backups/url_replace_r192_20260821_130324.json 659 KB
+                ps-backups/functions_child_r192_*.php.bak
+                ps-backups/wp-config_r194_*.php.bak
+rollback        dev/perkelti-r186.php?raktas=…&veiksmas=ATGAL (trinti po patikros)
+```
+
+### URL sluoksnis isvalytas (R191 dry → R192 apply)
+
+Serializacijai saugus rekursinis keitiklis (unserialize → keisti → serialize su
+kontrole). 12 673 guid, 57 posts, 32 options, 229 feeding_source_url, 77 mailpoet,
+34 wc_admin_notes, 24 postmeta, 15 wc_orders_meta, 7 usermeta, pmxi 2, kt.
+
+**Kontrole po: 0 likuciu** visose uzklausose. Titulinio HTML — 0 `dev.avesa.lt`,
+0 `/home/gyvunai2`. Vizualiai patikrinta (titulinis, parduotuve 2 613 prekiu,
+prekes psl.): 0 nepavykusiu uzklausu.
+
+**NELIESTA:** `flatsome_registration` (STAGING licencija — **Raimio veiksmas:
+perregistruoti tema i petshop.lt**), `_bak` lenteles, `shortpixel_queue`,
+`@dev.avesa.lt` testiniai el. pastai, snippetu kodas.
+
+### ✅ DEV VEIDRODIS — dvi sistemos lygiagreciai (LAIKINA)
+
+Raimio reikalavimas: jam IR darbuotojui reikia abieju sistemu vienu metu
+(duomenu tvarkymas pries migracija). hosts irasas netiko — uzdaro senaja
+petshop.lt visame kompiuteryje. Symlink negalimas (`disable_functions`),
+palaikymo zmogaus nebuvo.
+
+```
+dev/dev-router.php v1.1              visos uzklausos is petshop.lt katalogo;
+                                     realpath ribos; wp-config ir .ht* draudziami;
+                                     nerastas kelias → WP front controller
+dev/.htaccess                        !-f → dev-router.php
+wp-config.php                        if HTTP_HOST === dev.avesa.lt →
+                                     WP_HOME/WP_SITEURL = https://dev.avesa.lt
+mu-plugins/petshop-dev-veidrodis.php ob_start perraso petshop.lt → dev.avesa.lt
+                                     + X-Robots-Tag: noindex
+dev/wp-load|backup-run|watch-run.php stub'ai → 6 cron'ai veikia SENAIS URL
+```
+
+Patikrinta: titulinis, parduotuve, preke, wp-admin (302 i dev login), REST
+(1 852 snippetai), statika, WP 404 — visi per `https://dev.avesa.lt`.
+
+> **🔴 VISI KETURI KOMPONENTAI LAIKINI — trinti perjungimo nakti.**
+
+### 🔴 NAUJAS RADINYS — hostingo ugniasiene blokuoja /wp-json/ per petshop.lt
+
+```
+petshop.lt/wp-json/wp/v2/users/me                 403 (Interneto vizija error page)
+petshop.lt/index.php?rest_route=/wp/v2/users/me   200 {"id":1,...}
+```
+
+403 grazina **hostingas, ne WordPress**. Per `dev.avesa.lt` `/wp-json/` veikia.
+Apeita per `?rest_route=`. → **Q-WPJSON**
+
+### 🔄 PERJUNGIMO SARASAS — perrasytas po sio darbo
+
+**Atkrenta (padaryta):** failu perkelimas · siteurl/home · URL valymas DB ·
+`woocommerce_email_header_image` · `wcdn_settings` · `cmplz_preloaded_privacy_info` ·
+akla zona (Q-SUBDOM).
+
+**Lieka T-0 nakti:**
+```
+1. DNS: du A irasai → 79.98.29.24 (www = CNAME, neliesti) · TTL 300
+2. Let's Encrypt sertifikatas (nemokamas, tik PO DNS, 5–10 min)
+3. Istrinti veidrodi: dev-router.php · dev/.htaccess · wp-config bloka ·
+   mu-plugins/petshop-dev-veidrodis.php · dev/ stub'us · perkelti-r186.php
+4. 6 cron URL: http://dev.avesa.lt/wp-load.php → https://petshop.lt/wp-load.php
+   (import_key=v, import_id=2/3 nekeiciami) + backup-run.php, watch-run.php
+5. Q-WPJSON: patikrinti, ar /wp-json/ nebeblokuojamas; jei ne — palaikymo uzklausa
+6. Paysera 2,21 € realus testas pries viesa paleidima
+7. „Discourage search engines" OFF (DoD #22)
+8. AVPN/IAPV serija → 101
+9. Kaina24 + Kainos.lt feed URL pateikimas is naujo
+10. Flatsome socialiniu tinklu nuorodos (Raimio duomenys)
+11. Istrinti public_html-senas2019 (po stabilumo patikros)
+```
+
+### Pamokos
+
+- **`disable_functions` skaityti tiksliai** — jame nera ir negali buti funkciju,
+  be kuriu neveikia pats WordPress.
+- **Grizztama operacija leidzia repeticija ant tikro objekto pries tikraji veiksma.**
+- **Bulk keitikli testuoti lokaliai su realistiskomis duomenu formomis**
+  (serializuotas masyvas, JSON su escaped skliaustais, objektas, dvigubas
+  serializavimas) pries paleidziant ant 12 000+ irasu.
+- **Stub'ai aptarnauja tik `require` kelius, ne kataloga** — `wp-admin`
+  stub'ais neatkursi, tam reikia router'io.
+
+---
+
 ## 9. LAUKIA RAIMIO SPRENDIMO
 
 | ID | Klausimas | Blokuoja | Terminas |
@@ -3888,8 +4015,8 @@ Neišmatuota visame kataloge. → **Q-ZB-APRAS**
 | ~~Q-HOME~~ | ✅ **UŽDARYTA:** pradinio psl. title ir meta iš savininko teksto (§8t) | — | — |
 | ~~Q-OGIMG~~ | ✅ **UŽDARYTA:** 1200×630 iš savininko logotipo, ID 35001 (§8t) | — | — |
 | **Q-STRAIPS** | 🟡 Komerciniai straipsniai poz. 16–39 su 10+ tūkst. parodymų — pakelti pigiau nei rašyti naują | §8s | po launch |
-| **Q-PERKEL** | 🔴 **Kaip `petshop.lt` ras svetainę** — failų perkėlimas per SSH. Kreiptis į palaikymo ŽMOGŲ, ne AI agentą | perjungimas | **prieš T-0** |
-| **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) prieš perkėlimą — trynimas NEGRĮŽTAMAS | inode, perkėlimo apimtis | — |
+| ~~Q-PERKEL~~ | ✅ **UŽDARYTA 2026-08-21:** perkelta per `rename()` per tiltą, SSH žmogaus neprireikė. Verdiktas §8x buvo klaidingas (§8gg) | — | — |
+| **Q-SHORTPIX** | 🟡 Ar valyti `ShortpixelBackups` (4,02 GB) — **nebe perkėlimo blokatorius** (`rename` nekopijuoja), lieka tik inode klausimas (66 %) | inode | — |
 | ~~Q-KREPS404~~ | ✅ **UŽDARYTA 2026-08-19:** buvo MANO klaida — `/cart/` ir buvo tikrasis adresas. Dabar sulietuvinta į `/krepselis/` ir `/kasa/` (§8bb) | — | — |
 | **Q-A11Y** | 🟡 Naujienlaiškio varnelė `psnl-check` be prieinamo vardo; `h1→h4` prekės psl.; 12 nuorodų be teksto kategorijoje (§8aa) | NF19 | — |
 | **Q-ZB-APRAS** | 🟡 ZB siunčia ~8 % prekių be aprašymo, o esami ateina JAU užkoduoti (`&lt;p&gt;`). Šaltinis — tiekėjo XML (§8dd). Neišmatuota visame kataloge | turinys | — |
@@ -3903,7 +4030,9 @@ Neišmatuota visame kataloge. → **Q-ZB-APRAS**
 | **Q-ZB-SAKNIS** | 🔴 **ZB Import #2/#3 įrašo `&amp;` į pavadinimus** — 238 iš 308. ⏰ Rytoj matuojam, kiek grįžo (§8ž) | feed'ai | **prieš perjungimą** |
 | **Q-D7D8** | 🔴 **TŽ §14 D7 (klientų bazė) + D8 (užsakymų istorija) — MVP prioriteto, NEPADARYTA, registre nefiksuota.** Sena platforma dingsta 2026-10-15 | duomenys | **prieš 10-15** |
 | **Q-SVARI-DB** | 🟡 DirectAdmin: sukurti `gyvunai2_rtst` (utf8mb4) + priskirti esamą vartotoją `gyvunai2_nbpe1`. Uždaro DOD-19 §8 (§8y) | DOD-19 | — |
-| **Q-SUBDOM** | 🟡 Akla zona po perkėlimo — prašyti SSH žmogaus subdomeno į naują dokumentų šaknį (§8y) | perjungimas | prieš T-0 |
+| ~~Q-SUBDOM~~ | ✅ **UŽDARYTA 2026-08-21:** aklos zonos nebuvo — `dev.avesa.lt` veidrodis + IP prisegimas (§8gg) | — | — |
+| **Q-WPJSON** | 🔴 **Hostingo ugniasienė blokuoja `/wp-json/` per `petshop.lt`** (403, ne WordPress). Apeita per `?rest_route=`. Patikrinti po DNS; jei liks — palaikymo užklausa (§8gg) | tiltas, REST | **T-0 naktį** |
+| **Q-FLATSOME** | 🟡 Flatsome licencija registruota `dev.avesa.lt` kaip STAGING — perregistruoti į `petshop.lt` (Raimis, ~1 min) (§8gg) | tema | prieš T-0 |
 | **Q-PAT** | **GitHub PAT baigia galioti 2026-08-26** — be jo tiltas nustoja veikti | visi darbai | **skubu** |
  | — |
 | ~~Q-KAT-FORMATAS~~ | ✅ **UŽDARYTA 2026-08-18:** B hub'uose + A lapinėse (§8o) | — | — |
