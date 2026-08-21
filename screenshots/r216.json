@@ -1,0 +1,46 @@
+{
+ "versija": "R216",
+ "sukurta": 3660,
+ "DUOM": {
+  "v": "R216",
+  "yra": true,
+  "info": {
+   "Name": "Post codes by postit.lt",
+   "Version": "1.1.1",
+   "Author": "UAB Euro Info",
+   "PluginURI": "https://postit.lt",
+   "Description": "Postit.lt API plugin"
+  },
+  "idiegtas": "2026-05-26 08:33",
+  "failu": 16,
+  "dydis_kb": 19,
+  "lenteles": [],
+  "opcijos": [
+   {
+    "option_name": "postit_api_key",
+    "ilgis": "0"
+   },
+   {
+    "option_name": "postit_options",
+    "ilgis": "400"
+   }
+  ],
+  "irasu_tipai": [],
+  "shortcode": {
+   "postit": 0,
+   "post_it": 0,
+   "post-it": 0,
+   "sticky_note": 0
+  },
+  "registruoti_sc": [],
+  "widgetai": [],
+  "postmeta": 0,
+  "kabliukai": []
+ },
+ "pradzia": {
+  "postit_html": 0
+ },
+ "preke": {
+  "postit_html": 0
+ }
+}
