@@ -1,0 +1,64 @@
+{
+ "versija": "RUN8-R194",
+ "snippet_id": 3641,
+ "DEPLOY": {
+  "v": "R194",
+  "wpconfig": {
+   "pries_md5": "595b4ed9c75be4178aa43e2b1905647c",
+   "irasyta": "OK",
+   "po_dydis": 4208
+  },
+  "failai": {
+   "dev-router.php": "OK 2207 B",
+   "petshop-dev-veidrodis.php": "OK 878 B",
+   ".htaccess": "OK 163 B"
+  },
+  "dev_turinys": [
+   ".htaccess",
+   "backup-run.php",
+   "dev-router.php",
+   "index.php",
+   "watch-run.php",
+   "wp-load.php"
+  ]
+ },
+ "DEV": {
+  "titulinis": {
+   "s": 200,
+   "loc": null,
+   "dev_nuorodu": 366,
+   "petshop_liko": 1,
+   "title": "<title>Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt"
+  },
+  "wplogin": {
+   "s": 200,
+   "forma_i_dev": "TAIP"
+  },
+  "wpadmin": {
+   "s": 302,
+   "loc": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2F&reauth=1"
+  },
+  "statika_png": {
+   "s": 200,
+   "tipas": "image/png",
+   "dydis": "5799"
+  },
+  "rest": {
+   "s": 404,
+   "kiek": 0
+  },
+  "parduotuve": {
+   "s": 404,
+   "dev_nuorodu": 0
+  }
+ },
+ "PETSHOP_IP": {
+  "s": 200,
+  "petshop_nuorodu": 348,
+  "dev_liko": 2
+ },
+ "VIZ": {
+  "nepavykusios": [],
+  "uzklausos_i_petshop": []
+ }
+}
