@@ -1,0 +1,20 @@
+{
+ "versija": "RUN7-R193",
+ "snippet_2024": {
+  "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+  "active": true,
+  "code": "/**\n * Petshop Anketa→Augintinio profilis 301 v1 (LIVE)\n *\n * /anketa-testas/ (testinis, ID 34676) → /augintinio-profilis/ (ID 34789).\n *\n * KODEL SNIPPET'AS, NE CHILD THEME: visi aktyvus 301 (613 Shop→Parduotuve,\n * 632 Slapuku Politika ES, 634 Brand Slug) gyvena Code Snippets. Iskelus VIENA\n * i child theme, redirectai atsidurtu dviejose sistemose ir migruojant i\n * petshop.lt viena butu lengva pamirsti.\n *\n * home_url() — NE hardcode dev.avesa.lt: po domeno perjungimo veiks be pataisu.\n * Nesiremiam is_page(34676) — veiks ir tada, kai senas puslapis bus istrintas.\n * Prioritetas 1 ant template_redirect — pries bet kokia kita logika.\n * Tikslus kelio sutapimas — subkeliai ir panasus URL NELIECAMI.\n */\nadd_action(\n\t'template_redirect',\n\tstatic function (): void {\n\t\t$request_path = wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH );\n\t\t$old_path     = wp_parse_url( home_url( '/anketa-testas/' ), PHP_URL_PATH );\n\n\t\tif ( untrailingslashit( (string) $request_path ) !== untrailingslashit( (string) $old_path ) ) {\n\t\t\treturn;\n\t\t}\n\n\t\twp_safe_redirect( home_url( '/augintinio-profilis/' ), 301, 'Petshop Legacy Redirect' );\n\t\texit;\n\t},\n\t1\n);\n"
+ },
+ "titulinis": {
+  "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt"
+ },
+ "parduotuve": {
+  "title": "Parduotuvė - Petshop.lt",
+  "korteliu": 48
+ },
+ "preke": {
+  "title": "\"DuvoPlius\" žaislas šuniui - pliušinis mėlynasis banginis, 27x8x7cm - Petshop.lt"
+ },
+ "nepavykusios": [],
+ "uzklausos_i_dev": []
+}
