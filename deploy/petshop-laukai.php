@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Laukai {
 
-	const VERSIJA = '1.42';   /* v1.42: kataloge matomas TIK iejimas, kitos grupes dezes slepiamos */
+	const VERSIJA = '1.43';   /* v1.43: grupes nuotrauka veikia parduotuveje ir admin korteleje */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -76,6 +76,13 @@ class Petshop_Laukai {
 
 		/* Kiekio laukelis: leidziam kelis to paties vienetus. */
 		add_filter( 'wc_mnm_child_item_quantity_input_args', array( __CLASS__, 'kiekio_laukelis' ), 10, 3 );
+
+		/* Nuotrauka parduotuveje. Iki v1.43 `foto_id()` gyveno TIK admin lange,
+		   todel rinkinys be savos nuotraukos kataloge rode WooCommerce vietos
+		   uzpilda, nors grupes nuotrauka buvo nustatyta. Kabinames ant WC CRUD
+		   getterio — per ji eina ir katalogo tinklelis, ir prekes puslapis, ir
+		   krepselis, todel uztenka vienos vietos. */
+		add_filter( 'woocommerce_product_get_image_id', array( __CLASS__, 'foto_atsargine' ), 10, 2 );
 
 		/* Vitrina: savas sablonas vietoj MnM saraso. */
 		add_action( 'wp', array( __CLASS__, 'vitrina_init' ), 20 );
@@ -1811,8 +1818,17 @@ class Petshop_Laukai {
 		return strtr( $t, array( 'ą'=>'a','č'=>'c','ę'=>'e','ė'=>'e','į'=>'i','š'=>'s','ų'=>'u','ū'=>'u','ž'=>'z' ) );
 	}
 
-	/** Pirmos krepsio prekes nuotrauka — kortelei sarase. */
+	/**
+	 * Kortelės nuotrauka sarase (v1.43): sava → grupes → pirmos krepsio prekes.
+	 * Anksciau rode vien pirma krepsio preke, todel savininkas sarase nematydavo
+	 * tos nuotraukos, kuria ka tik priskyre grupei.
+	 */
 	private static function grupes_foto( $lid ) {
+		$fid = self::foto_id( $lid );
+		if ( $fid ) {
+			$u = wp_get_attachment_image_url( $fid, 'thumbnail' );
+			if ( $u ) { return $u; }
+		}
 		foreach ( self::krepsys( $lid ) as $cid ) {
 			$p = wc_get_product( $cid );
 			if ( ! $p ) { continue; }
@@ -3085,6 +3101,22 @@ class Petshop_Laukai {
 		$g = self::grupiu_foto();
 		$grupe = self::grupe( $lid );
 		return isset( $g[ $grupe ] ) ? (int) $g[ $grupe ] : 0;
+	}
+
+	/**
+	 * Atsargine nuotrauka parduotuveje (v1.43).
+	 * Liecia TIK laukus ir TIK tada, kai savos nuotraukos nera — kitos prekes
+	 * pro sita filtra praeina nepaliestos.
+	 */
+	public static function foto_atsargine( $id, $product ) {
+		if ( $id ) { return $id; }
+		if ( ! is_object( $product ) || ! method_exists( $product, 'get_id' ) ) { return $id; }
+		$pid = (int) $product->get_id();
+		if ( ! $pid || ! self::yra_laukas( $pid ) ) { return $id; }
+		$g = self::grupiu_foto();
+		if ( ! $g ) { return $id; }
+		$grupe = self::grupe( $pid );
+		return isset( $g[ $grupe ] ) ? (int) $g[ $grupe ] : $id;
 	}
 
 	public static function ajax_foto() {
