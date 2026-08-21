@@ -1,0 +1,44 @@
+{
+ "versija": "RUN10-R195b",
+ "users_me": {
+  "s": 403,
+  "t": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>403 Forbidden</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link href=\"/iv-error-p"
+ },
+ "users_me_rr": {
+  "s": 200,
+  "t": "{\"id\":1,\"name\":\"Rai\",\"url\":\"https:\\/\\/petshop.lt\",\"description\":\"\",\"link\":\"https:\\/\\/petshop.lt\\/author\\/admin\\/\",\"slug\":\"admin\",\"avatar_urls\":{\"24\":\"https:\\/\\/secure.gravatar.com\\"
+ },
+ "post_a": {
+  "s": 200,
+  "t": "{\"id\":3642,\"name\":\"TEMP R195 Router v1.1\",\"desc\":\"\",\"code\":\"\\nadd_action('wp_loaded', function(){\\n if((isset($_GET['ps_r195']) ? $_GET['ps_r195'] : '') !== 'GO') return;\\n $o = ar"
+ },
+ "snippet_id": 3642,
+ "DEPLOY": {
+  "v": "R195",
+  "irasyta": "OK 2407 B",
+  "md5": "SUTAMPA"
+ },
+ "dev_rest": {
+  "s": 200,
+  "kiek": 1852
+ },
+ "deaktyvuota": [
+  3641,
+  3642
+ ],
+ "parduotuve": {
+  "s": 200,
+  "dev_nuorodu": 627
+ },
+ "preke": {
+  "s": 200,
+  "title": "<title>&quot;DuvoPlius&quot; žaislas šuniui - pliušinis mėlynasis banginis, 27x8x7cm - "
+ },
+ "wp_v2": {
+  "s": 200
+ },
+ "wp404": {
+  "s": 404,
+  "wp_puslapis": "TAIP"
+ }
+}
