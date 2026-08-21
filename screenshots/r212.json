@@ -1,0 +1,23 @@
+{
+ "versija": "R212",
+ "sukurta": 3656,
+ "DEPLOY": {
+  "v": "R212",
+  "md5_ok": true,
+  "sintakse": "OK",
+  "bak": "OK",
+  "irasyta": "OK",
+  "sutampa": true
+ },
+ "PATIKRA": {
+  "versija": "1.31",
+  "siuksleje": 8,
+  "sarase": 13
+ },
+ "puslapis": {
+  "s": 200,
+  "title": "Prisijungti ‹ Petshop.lt — WordPress"
+ },
+ "eile_siuk": 0,
+ "paspausta": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator('#psr-eiles').getByText('Šiukšli"
+}
