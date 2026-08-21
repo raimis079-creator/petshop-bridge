@@ -1,0 +1,195 @@
+{
+ "versija": "R215",
+ "sukurta": 3659,
+ "DUOM": {
+  "v": "R215",
+  "amp": {
+   "pavadinimuose": 0,
+   "publish": 0,
+   "excerpt": 73,
+   "content": 543,
+   "dvigubi": 0
+  },
+  "amp_pavyzdziai": [],
+  "amp_keista": [],
+  "sargas_stulpeliai": [
+   "id",
+   "laikas",
+   "lygis",
+   "parasas",
+   "zinute",
+   "failas",
+   "eilute",
+   "url",
+   "kiek"
+  ],
+  "sargas_viso": 44,
+  "sargas_naujausi": [
+   {
+    "id": "45",
+    "laikas": "2026-08-21 18:01:59",
+    "lygis": "warning",
+    "parasas": "4bf0b8330b323cfc60e2cf6875da86ef",
+    "zinute": "Array to string conversion",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php",
+    "eilute": "344",
+    "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "44",
+    "laikas": "2026-08-21 18:01:59",
+    "lygis": "warning",
+    "parasas": "257a292a950a6402be8c487ae3aea802",
+    "zinute": "Array to string conversion",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php",
+    "eilute": "343",
+    "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "43",
+    "laikas": "2026-08-21 22:11:54",
+    "lygis": "deprecated",
+    "parasas": "b8134211401a082b2ab03cd682e13e5b",
+    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "2196",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kiek": "142"
+   },
+   {
+    "id": "42",
+    "laikas": "2026-08-21 22:11:54",
+    "lygis": "deprecated",
+    "parasas": "1a73efb667af0a27ef119e7873f3ea58",
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "7374",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kiek": "142"
+   },
+   {
+    "id": "41",
+    "laikas": "2026-08-21 17:03:02",
+    "lygis": "warning",
+    "parasas": "7f3fd42789e66779e223193b56a479cd",
+    "zinute": "mkdir(): File exists",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "8",
+    "url": "/?ps_r194=GO",
+    "kiek": "1"
+   },
+   {
+    "id": "40",
+    "laikas": "2026-08-21 16:03:24",
+    "lygis": "warning",
+    "parasas": "38e8d9c75dc42cb43a9147dfc7a0bfe0",
+    "zinute": "mkdir(): File exists",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "127",
+    "url": "/?ps_r192=GO",
+    "kiek": "1"
+   },
+   {
+    "id": "39",
+    "laikas": "2026-08-21 16:03:24",
+    "lygis": "warning",
+    "parasas": "b1c45ef83666e5e443a6261af4633d1b",
+    "zinute": "mkdir(): File exists",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "114",
+    "url": "/?ps_r192=GO",
+    "kiek": "1"
+   },
+   {
+    "id": "38",
+    "laikas": "2026-08-21 16:03:24",
+    "lygis": "warning",
+    "parasas": "4bcbe6c1877692b856036f15380b297e",
+    "zinute": "unserialize(): Error at offset 0 of 94 bytes",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "21",
+    "url": "/?ps_r192=GO",
+    "kiek": "964"
+   },
+   {
+    "id": "37",
+    "laikas": "2026-08-21 22:29:56",
+    "lygis": "deprecated",
+    "parasas": "f304a0d1c1f2c436a311eed23281b9f3",
+    "zinute": "Creation of dynamic property postitAdmin::$plugin_dir_url is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/postit/includes/postit-base.php",
+    "eilute": "24",
+    "url": "/wp-admin/admin-ajax.php",
+    "kiek": "405"
+   },
+   {
+    "id": "36",
+    "laikas": "2026-08-21 22:31:31",
+    "lygis": "deprecated",
+    "parasas": "88b7a2bacdb8a33c397112746f236167",
+    "zinute": "Creation of dynamic property postitPublic::$plugin_dir_url is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/postit/includes/postit-base.php",
+    "eilute": "24",
+    "url": "/",
+    "kiek": "733"
+   },
+   {
+    "id": "35",
+    "laikas": "2026-08-21 15:31:18",
+    "lygis": "warning",
+    "parasas": "94755bd63f20f7162aab1606c62bf4b6",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/ps-recon-dir): No such file or directory",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "107",
+    "url": "/?ps_r185=GO",
+    "kiek": "2"
+   },
+   {
+    "id": "34",
+    "laikas": "2026-08-21 15:31:18",
+    "lygis": "warning",
+    "parasas": "c6313a716b9eda21f3ce5267b6828832",
+    "zinute": "unlink(/home/gyvunai2/domains/petshop.lt/public_html/ps-recon-dir/vidus.txt): No such file or directory",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "107",
+    "url": "/?ps_r185=GO",
+    "kiek": "2"
+   }
+  ],
+  "pluginu": 27,
+  "postit": [
+   "postit/postit.php"
+  ],
+  "pluginai": [
+   "code-snippets/code-snippets.php",
+   "complianz-gdpr/complianz-gpdr.php",
+   "loco-translate/loco.php",
+   "petshop-attributes/petshop-attributes.php",
+   "petshop-core/petshop-core.php",
+   "petshop-esp/petshop-esp.php",
+   "petshop-fbt/petshop-fbt.php",
+   "petshop-feeds/petshop-feeds.php",
+   "petshop-fonts/petshop-fonts.php",
+   "petshop-pragma/petshop-pragma.php",
+   "petshop-promotions/petshop-promotions.php",
+   "petshop-xml/petshop-xml.php",
+   "postit/postit.php",
+   "seo-by-rank-math/rank-math.php",
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php",
+   "woo-payment-gateway-paysera/paysera.php",
+   "woo-update-manager/woo-update-manager.php",
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+   "woocommerce-xml-csv-product-import/plugin.php",
+   "woocommerce/woocommerce.php",
+   "wordpress-importer/wordpress-importer.php",
+   "wp-all-import-pro/wp-all-import-pro.php",
+   "wp-mail-smtp/wp_mail_smtp.php",
+   "wpforms-lite/wpforms.php",
+   "yith-woocommerce-ajax-navigation/init.php"
+  ]
+ }
+}
