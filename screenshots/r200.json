@@ -1,0 +1,881 @@
+{
+ "versija": "R200",
+ "snippetu_kiek": 1852,
+ "sukurta": 3643,
+ "DUOM": {
+  "v": "R200",
+  "mu": {
+   "automation-by-installatron.php": [
+    983,
+    "",
+    "ac2f4186c9"
+   ],
+   "petshop-akcijos.php": [
+    96257,
+    "",
+    "51d8fc86c0"
+   ],
+   "petshop-anketa-ivykiai.php": [
+    16602,
+    "1.2",
+    "e9bb64cebd"
+   ],
+   "petshop-anketos-ataskaita.php": [
+    36615,
+    "2.3",
+    "22c9d08a16"
+   ],
+   "petshop-ataskaitos-ui.php": [
+    25921,
+    "1.0",
+    "30a192b7d9"
+   ],
+   "petshop-ataskaitu-agregavimas.php": [
+    20854,
+    "1.0",
+    "3f12c408ca"
+   ],
+   "petshop-ataskaitu-eksportas.php": [
+    37431,
+    "1.0",
+    "8a269aace5"
+   ],
+   "petshop-av-admin.php": [
+    7510,
+    "",
+    "2dfffb3fa7"
+   ],
+   "petshop-av-dropship.php": [
+    18048,
+    "",
+    "dacf2ec4e6"
+   ],
+   "petshop-av-expiry.php": [
+    8633,
+    "",
+    "a9a2b80dbd"
+   ],
+   "petshop-av-limit.php": [
+    3720,
+    "",
+    "e2860d11df"
+   ],
+   "petshop-av-order.php": [
+    4923,
+    "",
+    "97f8ddd65d"
+   ],
+   "petshop-av-reduce.php": [
+    5742,
+    "",
+    "becc48441f"
+   ],
+   "petshop-av-sheets.php": [
+    10335,
+    "",
+    "13c793bd57"
+   ],
+   "petshop-av-source.php": [
+    5762,
+    "",
+    "11750e14be"
+   ],
+   "petshop-av-stock.php": [
+    12575,
+    "",
+    "3a1585edd7"
+   ],
+   "petshop-av-tiekimas.php": [
+    36165,
+    "",
+    "4d02db6190"
+   ],
+   "petshop-code-search.php": [
+    5447,
+    "",
+    "ced828b2be"
+   ],
+   "petshop-desk.php": [
+    114420,
+    "",
+    "be69c41fc8"
+   ],
+   "petshop-dev-veidrodis.php": [
+    878,
+    "",
+    "e1396f4a0d"
+   ],
+   "petshop-feeding-calc-rest.php": [
+    19012,
+    "",
+    "85f45a8c1d"
+   ],
+   "petshop-gavimas.php": [
+    97658,
+    "",
+    "18dcaad466"
+   ],
+   "petshop-higiena.php": [
+    682,
+    "1.0.0",
+    "b1226cc0ed"
+   ],
+   "petshop-import-log.php": [
+    2826,
+    "",
+    "29148f6f19"
+   ],
+   "petshop-innodb.php": [
+    2126,
+    "",
+    "3498f9c73f"
+   ],
+   "petshop-ivykiai.php": [
+    20773,
+    "",
+    "0ced1579bc"
+   ],
+   "petshop-kalendorius.php": [
+    7970,
+    "",
+    "504cffaa5e"
+   ],
+   "petshop-katalogas.php": [
+    447325,
+    "",
+    "49d5fa0a7e"
+   ],
+   "petshop-kategorijos-aprasymas.php": [
+    4950,
+    "1.1.0",
+    "840d920760"
+   ],
+   "petshop-laukai.php": [
+    183199,
+    "1.00",
+    "82faaa8bfd"
+   ],
+   "petshop-legacy-301.php": [
+    2881,
+    "",
+    "1516e611f0"
+   ],
+   "petshop-login-sargas.php": [
+    5473,
+    "1.0.0",
+    "8624aee11a"
+   ],
+   "petshop-m8-food.php": [
+    35513,
+    "",
+    "ebc5701dc5"
+   ],
+   "petshop-nepamoketi.php": [
+    2708,
+    "1.0.0",
+    "c4c954927f"
+   ],
+   "petshop-pardavimai.php": [
+    14549,
+    "",
+    "5159642511"
+   ],
+   "petshop-parseris.php": [
+    25728,
+    "",
+    "d088023606"
+   ],
+   "petshop-partijos.php": [
+    27850,
+    "",
+    "d9ca8db2c3"
+   ],
+   "petshop-paruostu-ataskaita.php": [
+    29816,
+    "1.0",
+    "5077deb42a"
+   ],
+   "petshop-payment-failed.php": [
+    3704,
+    "",
+    "0d52751905"
+   ],
+   "petshop-pet-claim.php": [
+    7126,
+    "",
+    "e37aa5f273"
+   ],
+   "petshop-pet-kontraktas.php": [
+    23204,
+    "1.2",
+    "af47f8fd81"
+   ],
+   "petshop-pilnumas.php": [
+    19869,
+    "",
+    "bfea70c3d8"
+   ],
+   "petshop-prieziura.php": [
+    6235,
+    "1.0.1",
+    "726867acab"
+   ],
+   "petshop-ps-pets-migration-freeze.php": [
+    7018,
+    "1.4.2",
+    "bcdbb49173"
+   ],
+   "petshop-rankos.php": [
+    6887,
+    "",
+    "390e94480b"
+   ],
+   "petshop-rec-log.php": [
+    7374,
+    "1.2",
+    "5331ebd74f"
+   ],
+   "petshop-rec-ui.php": [
+    4884,
+    "1.0",
+    "488c471b4c"
+   ],
+   "petshop-rec-variklis.php": [
+    11848,
+    "1.1",
+    "65e56a4fc7"
+   ],
+   "petshop-refill-ivykiai.php": [
+    7554,
+    "1.2",
+    "e9fc492f92"
+   ],
+   "petshop-rinkiniai.php": [
+    176491,
+    "",
+    "89017927b5"
+   ],
+   "petshop-rinkiniu-ataskaita.php": [
+    41305,
+    "2.0",
+    "c9e710bfbe"
+   ],
+   "petshop-rinkiniu-likuciai.php": [
+    8750,
+    "",
+    "3a97e2a5f3"
+   ],
+   "petshop-rysiai.php": [
+    16535,
+    "",
+    "87645fe9fb"
+   ],
+   "petshop-sargas.php": [
+    15389,
+    "",
+    "cc82a77f1d"
+   ],
+   "petshop-schema.php": [
+    3870,
+    "1.0.2",
+    "78879f3c21"
+   ],
+   "petshop-seo-aprasymas.php": [
+    1838,
+    "1.0.0",
+    "dfebb0c01e"
+   ],
+   "petshop-seseliai.php": [
+    3750,
+    "",
+    "4c63fc676d"
+   ],
+   "petshop-statistika-vitrina.php": [
+    12755,
+    "1.0",
+    "8459d0c128"
+   ],
+   "petshop-statistika.php": [
+    22413,
+    "2.2",
+    "5b20a10440"
+   ],
+   "petshop-teises.php": [
+    11705,
+    "",
+    "5aea88f8b0"
+   ],
+   "petshop-vartai.php": [
+    6748,
+    "",
+    "591c8893c0"
+   ],
+   "petshop-wc-sync.php": [
+    10361,
+    "",
+    "c2df419f20"
+   ]
+  },
+  "rado": {
+   "Surenkami rinkiniai": [
+    "petshop-ataskaitu-eksportas.php",
+    "petshop-laukai.php",
+    "petshop-paruostu-ataskaita.php",
+    "petshop-rinkiniai.php",
+    "petshop-rinkiniu-ataskaita.php"
+   ],
+   "ps-rinkiniai": [
+    "petshop-katalogas.php",
+    "petshop-laukai.php",
+    "petshop-rinkiniai.php"
+   ],
+   "Grupi": [
+    "petshop-katalogas.php",
+    "petshop-laukai.php",
+    "petshop-partijos.php"
+   ],
+   "ps-laukai": [
+    "petshop-laukai.php",
+    "petshop-rinkiniai.php"
+   ],
+   "Grupių nuotraukos": [
+    "petshop-laukai.php"
+   ],
+   "Sukurti rinkin": [
+    "petshop-laukai.php",
+    "petshop-rinkiniai.php"
+   ],
+   "vietos dar": [
+    "petshop-laukai.php"
+   ],
+   "klientas nemato": [
+    "petshop-laukai.php",
+    "petshop-rinkiniai.php"
+   ]
+  },
+  "taikiniai": [
+   "petshop-laukai.php",
+   "petshop-rinkiniai.php"
+  ],
+  "opcijos_kode": [
+   "ps_laukai_grupiu_foto"
+  ],
+  "meta_kode": [
+   "_ps_laukas",
+   "_ps_laukas_pakopos",
+   "_ps_laukas_zodis",
+   "_ps_laukas_sandelis",
+   "_ps_laukas_seima",
+   "_ps_laukas_dovanos",
+   "_ps_laukas_dovanos_riba",
+   "_ps_laukas_dydis",
+   "_ps_laukas_iejimas",
+   "_cost_price",
+   "_vf_cost",
+   "_zb_cost",
+   "_ps_laukas_nuolaida",
+   "_ps_laukas_pradine",
+   "_ps_dovana",
+   "_ps_sandelis",
+   "_mnm_weight_cumulative",
+   "_ps_laukas_trumpas",
+   "_ps_laukas_grupe",
+   "_blank",
+   "_petshop_component_quantities",
+   "_dp_base_product_id",
+   "_stock",
+   "_own_stock_qty",
+   "_manage_stock",
+   "_ps_svoris_ranka",
+   "_vf_enabled",
+   "_zb_enabled",
+   "_dp_pack_qty",
+   "_price",
+   "_sku",
+   "_petshop_choice_parent",
+   "_mnm_min_container_size",
+   "_petshop_is_choice_bundle",
+   "_petshop_choice_config",
+   "_mnm_content_source",
+   "_mnm_per_product_pricing",
+   "_ps_rink_komp_hash"
+  ],
+  "ajax": [
+   "ps_laukai_naujas",
+   "ps_laukai_nustatymai",
+   "ps_laukai_pakopos",
+   "ps_laukai_krepsys",
+   "ps_laukai_paieska",
+   "ps_laukai_prekes",
+   "ps_laukai_prideti_kelias",
+   "ps_laukai_foto",
+   "ps_laukai_dovanos",
+   "ps_laukai_dov_paieska",
+   "ps_laukai_trinti",
+   "ps_laukai_busena",
+   "ps_rink_paieska",
+   "ps_rink_issaugoti",
+   "ps_rink_trinti",
+   "ps_rink_seimos_kaina",
+   "ps_rink_seimos_krepsys"
+  ],
+  "options": [
+   {
+    "option_name": "ps_akcijos_bak_20260810_184840",
+    "ilgis": "3680"
+   },
+   {
+    "option_name": "ps_akciju_zurnalas",
+    "ilgis": "801"
+   },
+   {
+    "option_name": "ps_aprasymu_zurnalas",
+    "ilgis": "196"
+   },
+   {
+    "option_name": "ps_ata_paskutinis_agregavimas",
+    "ilgis": "19"
+   },
+   {
+    "option_name": "ps_ata_siandien_laikas",
+    "ilgis": "19"
+   },
+   {
+    "option_name": "ps_bak_mobile_sidebar_20260801",
+    "ilgis": "134"
+   },
+   {
+    "option_name": "ps_cs_dublikatai",
+    "ilgis": "106"
+   },
+   {
+    "option_name": "ps_d701_zyme",
+    "ilgis": "34"
+   },
+   {
+    "option_name": "ps_feeds_paskutinis",
+    "ilgis": "11761"
+   },
+   {
+    "option_name": "ps_feeds_raktas",
+    "ilgis": "24"
+   },
+   {
+    "option_name": "ps_footer_widget5_bak_20260801",
+    "ilgis": "377"
+   },
+   {
+    "option_name": "ps_gdpr_rezimas",
+    "ilgis": "12"
+   },
+   {
+    "option_name": "ps_gtin_backup_failas",
+    "ilgis": "108"
+   },
+   {
+    "option_name": "ps_gtin_zurnalas",
+    "ilgis": "461"
+   },
+   {
+    "option_name": "ps_h058_zemelapis",
+    "ilgis": "5972"
+   },
+   {
+    "option_name": "ps_home_content_backup_34543",
+    "ilgis": "16369"
+   },
+   {
+    "option_name": "ps_home_cta_bak_20260801",
+    "ilgis": "16547"
+   },
+   {
+    "option_name": "ps_ivykiai_av_perkelta",
+    "ilgis": "19"
+   },
+   {
+    "option_name": "ps_ivykiai_schema",
+    "ilgis": "1"
+   },
+   {
+    "option_name": "ps_juodr_bak_20260811_084157",
+    "ilgis": "517"
+   },
+   {
+    "option_name": "ps_katalogas_v28_bak",
+    "ilgis": "187692"
+   },
+   {
+    "option_name": "ps_katalogas_v29_bak",
+    "ilgis": "221504"
+   },
+   {
+    "option_name": "ps_katalogas_v30_bak",
+    "ilgis": "213652"
+   },
+   {
+    "option_name": "ps_katalogas_v31_bak",
+    "ilgis": "214108"
+   },
+   {
+    "option_name": "ps_katalogas_v32_bak",
+    "ilgis": "214572"
+   },
+   {
+    "option_name": "ps_katalogas_v33_bak",
+    "ilgis": "219188"
+   },
+   {
+    "option_name": "ps_katalogas_v34_bak",
+    "ilgis": "223568"
+   },
+   {
+    "option_name": "ps_katalogas_v35_bak",
+    "ilgis": "242044"
+   },
+   {
+    "option_name": "ps_katalogas_v36_bak",
+    "ilgis": "255128"
+   },
+   {
+    "option_name": "ps_katalogas_v37_bak",
+    "ilgis": "259552"
+   },
+   {
+    "option_name": "ps_katalogas_v38_bak",
+    "ilgis": "264888"
+   },
+   {
+    "option_name": "ps_katalogas_v39_bak",
+    "ilgis": "278388"
+   },
+   {
+    "option_name": "ps_katalogas_v40_bak",
+    "ilgis": "286148"
+   },
+   {
+    "option_name": "ps_last_completed_attach",
+    "ilgis": "128"
+   },
+   {
+    "option_name": "ps_laukai_grupiu_foto",
+    "ilgis": "123"
+   },
+   {
+    "option_name": "ps_laukai_nauji",
+    "ilgis": "50"
+   },
+   {
+    "option_name": "ps_laukai_testai",
+    "ilgis": "66"
+   },
+   {
+    "option_name": "ps_laukas_testas",
+    "ilgis": "5"
+   },
+   {
+    "option_name": "ps_paleidimo_data",
+    "ilgis": "10"
+   },
+   {
+    "option_name": "ps_pardavimai_naktinis_rez",
+    "ilgis": "68"
+   },
+   {
+    "option_name": "ps_parserio_zurnalas",
+    "ilgis": "486928"
+   },
+   {
+    "option_name": "ps_partijos_schema",
+    "ilgis": "1"
+   },
+   {
+    "option_name": "ps_pet_kontraktas_schema",
+    "ilgis": "1"
+   },
+   {
+    "option_name": "ps_pilnumas_naktinis_rez",
+    "ilgis": "68"
+   },
+   {
+    "option_name": "ps_publikuota_backfill",
+    "ilgis": "2"
+   },
+   {
+    "option_name": "ps_quattro_savikainu_bak_20260817",
+    "ilgis": "1409"
+   },
+   {
+    "option_name": "ps_r5_backup_s364",
+    "ilgis": "801"
+   },
+   {
+    "option_name": "ps_refill_iv_diag",
+    "ilgis": "88"
+   },
+   {
+    "option_name": "ps_refill_iv_event_id",
+    "ilgis": "3"
+   },
+   {
+    "option_name": "ps_refill_iv_job_id",
+    "ilgis": "1"
+   },
+   {
+    "option_name": "ps_rink_cumulative_bak_0814",
+    "ilgis": "619"
+   },
+   {
+    "option_name": "ps_s502_ids",
+    "ilgis": "54"
+   },
+   {
+    "option_name": "ps_s507_ids",
+    "ilgis": "66"
+   },
+   {
+    "option_name": "ps_s893_backup",
+    "ilgis": "1409665"
+   },
+   {
+    "option_name": "ps_s893_fix_done",
+    "ilgis": "1"
+   },
+   {
+    "option_name": "ps_s893_planas",
+    "ilgis": "163265"
+   },
+   {
+    "option_name": "ps_s894_backup",
+    "ilgis": "10585"
+   },
+   {
+    "option_name": "ps_s894_done",
+    "ilgis": "1"
+   },
+   {
+    "option_name": "ps_s894_planas",
+    "ilgis": "715"
+   },
+   {
+    "option_name": "ps_s895_backup",
+    "ilgis": "9973"
+   },
+   {
+    "option_name": "ps_s895_planas",
+    "ilgis": "6553"
+   },
+   {
+    "option_name": "ps_sandelio_norm_bak_20260817",
+    "ilgis": "806"
+   },
+   {
+    "option_name": "ps_sandelio_uzpildymai",
+    "ilgis": "33926"
+   },
+   {
+    "option_name": "ps_sargas_cron_laukiam",
+    "ilgis": "2695"
+   },
+   {
+    "option_name": "ps_sargas_cron_zinios",
+    "ilgis": "2576"
+   },
+   {
+    "option_name": "ps_sargas_pastas",
+    "ilgis": "16"
+   },
+   {
+    "option_name": "ps_sargas_siusta",
+    "ilgis": "198"
+   },
+   {
+    "option_name": "ps_sargas_start",
+    "ilgis": "10"
+   },
+   {
+    "option_name": "ps_savikainos_bak_20260817",
+    "ilgis": "4472"
+   },
+   {
+    "option_name": "ps_sender_webhook_log",
+    "ilgis": "6"
+   },
+   {
+    "option_name": "ps_seni_pasirenkami_kopija_20260814",
+    "ilgis": "148404"
+   },
+   {
+    "option_name": "ps_seseliai_paskutinis",
+    "ilgis": "144"
+   },
+   {
+    "option_name": "ps_shop_sidebar_backup",
+    "ilgis": "232"
+   },
+   {
+    "option_name": "ps_sidebars_widgets_backup",
+    "ilgis": "3249"
+   },
+   {
+    "option_name": "ps_sources_naktinis_rez",
+    "ilgis": "154"
+   },
+   {
+    "option_name": "ps_stat_schema",
+    "ilgis": "1"
+   },
+   {
+    "option_name": "ps_svoriu_zurnalas",
+    "ilgis": "197"
+   },
+   {
+    "option_name": "ps_teises_versija",
+    "ilgis": "3"
+   },
+   {
+    "option_name": "ps_test_product_id",
+    "ilgis": "5"
+   },
+   {
+    "option_name": "ps_tiekeju_pastai",
+    "ilgis": "265"
+   },
+   {
+    "option_name": "ps_tiekimas_db",
+    "ilgis": "3"
+   },
+   {
+    "option_name": "ps_vartai_paskutinis",
+    "ilgis": "24"
+   },
+   {
+    "option_name": "ps_vetdiet_candidates",
+    "ilgis": "33332"
+   },
+   {
+    "option_name": "ps_vetdiet_revert_log",
+    "ilgis": "5170"
+   },
+   {
+    "option_name": "ps_vetdiet_verified",
+    "ilgis": "52028"
+   },
+   {
+    "option_name": "ps_wpai1_bak_20260810",
+    "ilgis": "34536"
+   },
+   {
+    "option_name": "ps_wpforms_settings_bak_20260801",
+    "ilgis": "105"
+   },
+   {
+    "option_name": "ps331_log",
+    "ilgis": "4326"
+   },
+   {
+    "option_name": "ps332_log",
+    "ilgis": "8185"
+   },
+   {
+    "option_name": "psc_attr_result",
+    "ilgis": "56"
+   },
+   {
+    "option_name": "psc_av_result",
+    "ilgis": "1175"
+   },
+   {
+    "option_name": "psc_av2_result",
+    "ilgis": "189"
+   },
+   {
+    "option_name": "psc_grouptest_result",
+    "ilgis": "389"
+   },
+   {
+    "option_name": "psc_mk2_result",
+    "ilgis": "169"
+   },
+   {
+    "option_name": "psc_probe_result",
+    "ilgis": "74"
+   },
+   {
+    "option_name": "psc_sand_result",
+    "ilgis": "1019"
+   }
+  ],
+  "preke": {
+   "ID": 34944,
+   "title": "Konservu deze 400 Be vistienos",
+   "status": "publish",
+   "type": "product",
+   "thumb": 0,
+   "kategorijos": [
+    "konservai-sunims",
+    "konservu-rinkiniai",
+    "rinkiniai"
+   ],
+   "meta": {
+    "_ps_publikuota": "2026-08-15 16:48:59",
+    "total_sales": "0",
+    "_tax_status": "taxable",
+    "_tax_class": "",
+    "_manage_stock": "no",
+    "_backorders": "no",
+    "_sold_individually": "no",
+    "_virtual": "no",
+    "_downloadable": "no",
+    "_download_limit": "-1",
+    "_download_expiry": "-1",
+    "_stock": "",
+    "_stock_status": "instock",
+    "_wc_average_rating": "0",
+    "_wc_review_count": "0",
+    "_mnm_max_price": "0",
+    "_mnm_max_regular_price": "0",
+    "_mnm_base_regular_price": "",
+    "_mnm_base_sale_price": "",
+    "_mnm_layout_override": "no",
+    "_mnm_layout_style": "tabular",
+    "_mnm_add_to_cart_form_location": "default",
+    "_mnm_min_container_size": "6",
+    "_mnm_max_container_size": "0",
+    "_mnm_per_product_pricing": "yes",
+    "_mnm_per_product_discount": "",
+    "_mnm_packing_mode": "together",
+    "_mnm_weight_cumulative": "yes",
+    "_mnm_content_source": "products",
+    "_mnm_child_category_ids": "a:0:{}",
+    "_product_version": "11.0.1",
+    "_mnm_base_price": "",
+    "_ps_laukas": "yes",
+    "_ps_laukas_zodis": "deze",
+    "_ps_laukas_sandelis": "AV",
+    "_ps_laukas_seima": "Konservai šunims",
+    "_ps_sandelis": "av",
+    "_ps_laukas_pakopos": "[]",
+    "_ps_laukas_dydis": "400 g",
+    "_ps_laukas_dovanos_riba": "38",
+    "_ps_laukas_dovanos": "[16305,19092,18465]",
+    "_ps_laukas_grupe": "kons_sunims",
+    "_ps_laukas_trumpas": "Be vištienos",
+    "_price": "13.2",
+    "_regular_price": "13.2",
+    "_sale_price": "",
+    "_ps_sales_30d": "0",
+    "_ps_sales_90d": "0",
+    "_ps_sales_365d": "0",
+    "_ps_revenue_365d": "0",
+    "_ps_orders_365d": "0",
+    "_ps_last_sale": "",
+    "_ps_sales_updated": "2026-08-21 07:50:42",
+    "_ps_pilnumas": "45",
+    "_ps_pilnumas_truksta": "nuotrauka, gyvūno rūšis",
+    "_ps_pilnumas_kodai": "|nuotrauka|gyvuno_rusis|",
+    "_ps_pilnumas_updated": "2026-08-21 08:01:17"
+   }
+  }
+ },
+ "deaktyvuota": 3643
+}
