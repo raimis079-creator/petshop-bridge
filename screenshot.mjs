@@ -2,8 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjIwMyddKSA/ICRfR0VUWydwc19yMjAzJ10gOiAnJykgIT09ICdHTycpIHJldHVybjsKIGdsb2JhbCAkd3BkYjsKICRvID0gYXJyYXkoJ3YnPT4nUjIwMycpOwogJG9bJ3ZlcnNpamEnXSA9IGNsYXNzX2V4aXN0cygnUGV0c2hvcF9MYXVrYWknKSA/IFBldHNob3BfTGF1a2FpOjpWRVJTSUpBIDogJ25lcmEnOwogJG9bJ2ZpbHRyYXMnXSA9IGhhc19maWx0ZXIoJ3dvb2NvbW1lcmNlX3Byb2R1Y3RfZ2V0X2ltYWdlX2lkJykgPyAneXJhJyA6ICdORVJBJzsKCiAkaWRzID0gJHdwZGItPmdldF9jb2woIlNFTEVDVCBwb3N0X2lkIEZST00geyR3cGRiLT5wb3N0bWV0YX0gV0hFUkUgbWV0YV9rZXk9J19wc19sYXVrYXMnIEFORCBtZXRhX3ZhbHVlPSd5ZXMnIik7CiAkciA9IGFycmF5KCk7CiBmb3JlYWNoKCRpZHMgYXMgJGlkKXsKICAgJHAgPSB3Y19nZXRfcHJvZHVjdCgkaWQpOwogICAkcltdID0gYXJyYXkoCiAgICAgJ0lEJz0+KGludCkkaWQsCiAgICAgJ3Bhdic9PmdldF90aGVfdGl0bGUoJGlkKSwKICAgICAnc3QnPT5nZXRfcG9zdF9zdGF0dXMoJGlkKSwKICAgICAnc2F2YSc9PihpbnQpZ2V0X3Bvc3RfdGh1bWJuYWlsX2lkKCRpZCksCiAgICAgJ2ZvdG9faWQnPT5jbGFzc19leGlzdHMoJ1BldHNob3BfTGF1a2FpJykgPyAoaW50KVBldHNob3BfTGF1a2FpOjpmb3RvX2lkKCRpZCkgOiAwLAogICAgICdnZXRfaW1hZ2VfaWQnPT4kcCA/IChpbnQpJHAtPmdldF9pbWFnZV9pZCgpIDogLTEsCiAgICAgJ3VybCc9PiRwID8gd3BfZ2V0X2F0dGFjaG1lbnRfaW1hZ2VfdXJsKCRwLT5nZXRfaW1hZ2VfaWQoKSwnd29vY29tbWVyY2VfdGh1bWJuYWlsJykgOiAnJywKICAgICAna2F0YWxvZ29fbWF0b211bWFzJz0+JHAgPyAkcC0+Z2V0X2NhdGFsb2dfdmlzaWJpbGl0eSgpIDogJycsCiAgICk7CiB9CiAkb1snbGF1a2FpJ10gPSAkcjsKCiAvKiB0cnVtcGFsYWlraXMgcHJpc2lqdW5naW1vIHNhdXNhaW5pcyBhZG1pbiBla3JhbnVpICovCiAkb1snY29va2llaGFzaCddID0gZGVmaW5lZCgnQ09PS0lFSEFTSCcpID8gQ09PS0lFSEFTSCA6ICcnOwogJG9bJ2Nvb2tpZSddID0gd3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoMSwgdGltZSgpKzMwMCwgJ2xvZ2dlZF9pbicpOwoKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIHdwX2pzb25fZW5jb2RlKCRvLCBKU09OX1VORVNDQVBFRF9VTklDT0RFfEpTT05fVU5FU0NBUEVEX1NMQVNIRVMpOwogZXhpdDsKfSwgMTMxKTsK';
-const out={versija:'R203'};
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjIwNCddKSA/ICRfR0VUWydwc19yMjA0J10gOiAnJykgIT09ICdHTycpIHJldHVybjsKIGdsb2JhbCAkd3BkYjsKICRvID0gYXJyYXkoJ3YnPT4nUjIwNCcpOwoKIC8qIDEuIFZpc2kgbWVuaXUgaXIganUgcHVua3RhaSwga3VyaXVvc2UgbWluaW1hcyDigJ5TdXNpZGVrIiBhcmJhIOKAnnJpbmtpbiIgKi8KICRtZW5pdSA9IHdwX2dldF9uYXZfbWVudXMoKTsKICRzYXIgPSBhcnJheSgpOwogZm9yZWFjaCgkbWVuaXUgYXMgJG0pewogICAkaXRlbXMgPSB3cF9nZXRfbmF2X21lbnVfaXRlbXMoJG0tPnRlcm1faWQpOwogICBpZighJGl0ZW1zKSBjb250aW51ZTsKICAgZm9yZWFjaCgkaXRlbXMgYXMgJGl0KXsKICAgICBpZihzdHJpcG9zKCRpdC0+dGl0bGUsJ3VzaWQnKSA9PT0gZmFsc2UgJiYgc3RyaXBvcygkaXQtPnRpdGxlLCdpbmtpbicpID09PSBmYWxzZSkgY29udGludWU7CiAgICAgJHNhcltdID0gYXJyYXkoCiAgICAgICAnbWVuaXUnPT4kbS0+bmFtZSwKICAgICAgICdkYl9pZCc9PihpbnQpJGl0LT5kYl9pZCwKICAgICAgICd0ZXZhcyc9PihpbnQpJGl0LT5tZW51X2l0ZW1fcGFyZW50LAogICAgICAgJ3RpdGxlJz0+JGl0LT50aXRsZSwKICAgICAgICd0eXBlJz0+JGl0LT50eXBlLAogICAgICAgJ29iamVjdCc9PiRpdC0+b2JqZWN0LAogICAgICAgJ29iamVjdF9pZCc9PihpbnQpJGl0LT5vYmplY3RfaWQsCiAgICAgICAndXJsJz0+JGl0LT51cmwsCiAgICAgICAndGFpa2luaW9fYnVzZW5hJz0+KCRpdC0+b2JqZWN0X2lkICYmIGdldF9wb3N0KCRpdC0+b2JqZWN0X2lkKSkgPyBnZXRfcG9zdF9zdGF0dXMoJGl0LT5vYmplY3RfaWQpIDogJ05FUkEgSVJBU08nLAogICAgICAgJ3RhaWtpbmlvX251b3JvZGEnPT4oJGl0LT5vYmplY3RfaWQgJiYgZ2V0X3Bvc3QoJGl0LT5vYmplY3RfaWQpKSA/IGdldF9wZXJtYWxpbmsoJGl0LT5vYmplY3RfaWQpIDogJycsCiAgICAgKTsKICAgfQogfQogJG9bJ21lbml1X3B1bmt0YWknXSA9ICRzYXI7CgogLyogMi4gTGF1a2FpOiBpZWppbWFpLCBtYXRvbXVtYXMsIG51b3JvZG9zICovCiAkaWRzID0gJHdwZGItPmdldF9jb2woIlNFTEVDVCBwb3N0X2lkIEZST00geyR3cGRiLT5wb3N0bWV0YX0gV0hFUkUgbWV0YV9rZXk9J19wc19sYXVrYXMnIEFORCBtZXRhX3ZhbHVlPSd5ZXMnIik7CiAkciA9IGFycmF5KCk7CiBmb3JlYWNoKCRpZHMgYXMgJGlkKXsKICAgJHAgPSB3Y19nZXRfcHJvZHVjdCgkaWQpOwogICAkcltdID0gYXJyYXkoCiAgICAgJ0lEJz0+KGludCkkaWQsCiAgICAgJ3Bhdic9PmdldF90aGVfdGl0bGUoJGlkKSwKICAgICAnc3QnPT5nZXRfcG9zdF9zdGF0dXMoJGlkKSwKICAgICAnZ3J1cGUnPT5jbGFzc19leGlzdHMoJ1BldHNob3BfTGF1a2FpJykgPyBQZXRzaG9wX0xhdWthaTo6Z3J1cGUoJGlkKSA6ICcnLAogICAgICdpZWppbWFzJz0+Z2V0X3Bvc3RfbWV0YSgkaWQsJ19wc19sYXVrYXNfaWVqaW1hcycsdHJ1ZSksCiAgICAgJ21hdG9tdW1hcyc9PiRwID8gJHAtPmdldF9jYXRhbG9nX3Zpc2liaWxpdHkoKSA6ICcnLAogICAgICdudW9yb2RhJz0+Z2V0X3Blcm1hbGluaygkaWQpLAogICAgICdzbHVnJz0+Z2V0X3Bvc3RfZmllbGQoJ3Bvc3RfbmFtZScsJGlkKSwKICAgKTsKIH0KICRvWydsYXVrYWknXSA9ICRyOwoKIC8qIDMuIEFyIGVnemlzdHVvamEgcHVzbGFwaWFpL2thdGVnb3Jpam9zIHRva2lhaXMgc2x1ZydhaXMgKi8KICR0aWtyaW50aSA9IGFycmF5KCdzdXNpZGVrLWtvbnNlcnZ1LXJpbmtpbmktc3VuaW1zJywnc3VzaWRlay1rb25zZXJ2dS1yaW5raW5pLWthdGVtcycsCiAgICdzdXNpZGVrLXNrYW5lc3R1LXJpbmtpbmktc3VuaW1zJywnc3VzaWRlay1za2FuZXN0dS1yaW5raW5pLWthdGVtcycsJ3N1c2lkZWsta3JhbXRhbHUtcmlua2luaS1zdW5pbXMnKTsKICR0ID0gYXJyYXkoKTsKIGZvcmVhY2goJHRpa3JpbnRpIGFzICRzKXsKICAgJHBnID0gZ2V0X3BhZ2VfYnlfcGF0aCgkcywgT0JKRUNULCBhcnJheSgncGFnZScsJ3Byb2R1Y3QnKSk7CiAgICR0cm0gPSBnZXRfdGVybV9ieSgnc2x1ZycsJHMsJ3Byb2R1Y3RfY2F0Jyk7CiAgICR0WyRzXSA9IGFycmF5KCdpcmFzYXMnPT4kcGc/KCRwZy0+cG9zdF90eXBlLicjJy4kcGctPklELicgJy4kcGctPnBvc3Rfc3RhdHVzKTonbmUnLCAna2F0ZWdvcmlqYSc9PiR0cm0/KCd0ZXJtIycuJHRybS0+dGVybV9pZCk6J25lJyk7CiB9CiAkb1snc2x1Z19wYXRpa3JhJ10gPSAkdDsKCiBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogZWNobyB3cF9qc29uX2VuY29kZSgkbywgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsKIGV4aXQ7Cn0sIDEzMSk7Cg==';
+const out={versija:'R204'};
 const miegok=(ms)=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   let sha=null;
@@ -14,37 +14,25 @@ async function put(path,buf,msg){
 const A={Authorization:AUTH,'Content-Type':'application/json'};
 const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
 try{
-  const kunas=JSON.stringify({name:'TEMP R203 Laukai patikra',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5});
+  const kunas=JSON.stringify({name:'TEMP R204 Meniu recon',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5});
   const c=await fetch(SNIP,{method:'POST',headers:A,body:kunas});
   let j=null; const ct=await c.text(); try{j=JSON.parse(ct);}catch(e){}
   out.sukurta=j&&j.id?j.id:{s:c.status,t:ct.slice(0,200)};
   if(j&&j.id){
     await miegok(6000);
-    const rr=await fetch(WP+'/?ps_r203=GO'); const tt=await rr.text();
-    let D=null; try{D=JSON.parse(tt);}catch(e){ out.zalias=tt.slice(0,400); }
-    if(D){
-      out.DUOM={versija:D.versija, filtras:D.filtras, laukai:D.laukai};
-      const {chromium}=await import('playwright');
-      const b=await chromium.launch();
-      const ctx=await b.newContext({viewport:{width:1400,height:1100}, ignoreHTTPSErrors:true});
-      if(D.cookie&&D.cookiehash){
-        await ctx.addCookies([{name:'wordpress_logged_in_'+D.cookiehash, value:D.cookie, domain:'dev.avesa.lt', path:'/', httpOnly:true, secure:true}]);
+    const rr=await fetch(WP+'/?ps_r204=GO'); const tt=await rr.text();
+    try{ out.DUOM=JSON.parse(tt); }catch(e){ out.zalias=tt.slice(0,500); }
+    /* HTTP statusai kiekvienam meniu URL */
+    if(out.DUOM && out.DUOM.meniu_punktai){
+      out.statusai=[];
+      for(const it of out.DUOM.meniu_punktai){
+        if(!it.url || it.url.indexOf('http')!==0) continue;
+        try{ const q=await fetch(it.url,{redirect:'manual'}); out.statusai.push({t:it.title, url:it.url, s:q.status, loc:q.headers.get('location')||''}); }
+        catch(e){ out.statusai.push({t:it.title, url:it.url, klaida:String(e).slice(0,80)}); }
       }
-      const p=await ctx.newPage();
-      const kelios=[['kategorija','/kategorija/rinkiniai/'],['preke','/product/test-konservu-deze-400-be-vistienos/'],['adminas','/wp-admin/admin.php?page=ps-laukai']];
-      for(const [vardas,kelias] of kelios){
-        try{
-          const resp=await p.goto(WP+kelias,{waitUntil:'domcontentloaded',timeout:60000});
-          await p.waitForTimeout(4500);
-          const png=await p.screenshot({fullPage:false});
-          await put('screenshots/r203_'+vardas+'.png', png, 'r203 '+vardas);
-          out[vardas]={s:resp?resp.status():0, title:await p.title()};
-        }catch(e){ out[vardas]={klaida:String(e).slice(0,200)}; }
-      }
-      await b.close();
     }
     await fetch(SNIP+'/'+j.id,{method:'POST',headers:A,body:JSON.stringify({id:j.id,active:false})});
     out.deaktyvuota=j.id;
   }
 }catch(e){ out.klaida=String(e).slice(0,500); }
-await put('screenshots/r203.json', Buffer.from(JSON.stringify(out,null,1)), 'r203 patikra');
+await put('screenshots/r204.json', Buffer.from(JSON.stringify(out,null,1)), 'r204 meniu recon');
