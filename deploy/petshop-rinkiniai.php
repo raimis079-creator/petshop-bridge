@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Rinkiniai {
 
-	const VERSIJA = '1.29';   /* v1.29: negriztamas trynimas ir siuksline pacio lango viduje */
+	const VERSIJA = '1.30';   /* v1.30: surenkami rinkiniai i si langa nebepatenka */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
 
@@ -899,6 +899,7 @@ class Petshop_Rinkiniai {
 			$pid  = (int) $pid;
 			$post = get_post( $pid );
 			if ( ! $post || $post->post_status === 'trash' ) { continue; }
+			if ( get_post_meta( $pid, '_ps_laukas', true ) === 'yes' ) { continue; }
 			$bid  = (int) get_post_meta( $pid, '_dp_base_product_id', true );
 			$qty  = (int) get_post_meta( $pid, '_dp_pack_qty', true );
 			$baze = wc_get_product( $bid );
@@ -952,6 +953,12 @@ class Petshop_Rinkiniai {
 		foreach ( $ids as $pid ) {
 			$pid = (int) $pid;
 			if ( get_post_meta( $pid, '_petshop_choice_parent', true ) ) { continue; }
+
+			/* v1.30: SURENKAMI rinkiniai (petshop-laukai.php) technikai irgi yra MnM
+			   konteineriai, todel i si sarasa kris savaime. Bet tai KITAS modelis ir
+			   KITAS langas — cia jie tik maiso du dalykus i viena. Filtro nebuvo nuo
+			   pat pradziu; matesi ne is karto, nes juodrasciai gulejo saraso apacioje. */
+			if ( get_post_meta( $pid, '_ps_laukas', true ) === 'yes' ) { continue; }
 
 			$post = get_post( $pid );
 			$kiekiai = json_decode( (string) get_post_meta( $pid, self::META_KIEKIAI, true ), true );
