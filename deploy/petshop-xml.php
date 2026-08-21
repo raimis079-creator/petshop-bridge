@@ -326,35 +326,6 @@ function petshop_xml_is_konservas( int $post_id ): bool {
  * Fail-safe = LEISTI. Tik gryna logika (jokiu DB uzklausu) -> nestabdo importo.
  * ESME: aksesuarai NET NESUKURIAMI -> nuotrauka neparsisiunciama -> 0 trash.
  */
-/**
- * v1.5.18: SAUGUS TEKSTAS IS $data.
- *
- * WP All Import kai kuriuos laukus paduoda MASYVU (kelios kategorijos, keli
- * zenklai viename mazge). Iki v1.5.18 cia stovejo `(string) ( $data[...] )`,
- * o masyvo cast'as i eilute PHP 8.3 duoda warning'a „Array to string
- * conversion" IR reiksme „Array".
- *
- * Tai buvo ne tik triuksmas zurnale: „Array" keliaudavo i
- * `is_excluded_brand()` ir `petshop_xml_text_is_konservas()`, todel vartai
- * TYLIAI praleisdavo preke, kuria turejo sustabdyti — butent ta, del kurios
- * v1.5.17 ir buvo statyti.
- *
- * Skaliarams elgesys NEPAKITES — grazinama ta pati eilute kaip anksciau.
- */
-function petshop_xml_tekstas( $reiksme ) {
-    if ( is_array( $reiksme ) ) {
-        $plokscias = array();
-        array_walk_recursive( $reiksme, function( $v ) use ( &$plokscias ) {
-            if ( is_scalar( $v ) ) {
-                $v = trim( (string) $v );
-                if ( $v !== '' ) { $plokscias[] = $v; }
-            }
-        } );
-        return implode( ' ', array_unique( $plokscias ) );
-    }
-    return is_scalar( $reiksme ) ? (string) $reiksme : '';
-}
-
 add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_zb_create', 10, 3 );
 
 function petshop_xml_block_zb_create( $continue_import, $data, $import_id ) {
@@ -368,9 +339,9 @@ function petshop_xml_block_zb_create( $continue_import, $data, $import_id ) {
         return $continue_import;
     }
 
-    $name     = petshop_xml_tekstas( $data['name'] ?? '' );
-    $category = petshop_xml_tekstas( $data['category'] ?? '' );
-    $brand    = petshop_xml_tekstas( $data['brand'] ?? '' );
+    $name     = (string) ( $data['name'] ?? '' );
+    $category = (string) ( $data['category'] ?? '' );
+    $brand    = (string) ( $data['brand'] ?? '' );
     $price    = isset( $data['price'] ) ? (float) str_replace( ',', '.', (string) $data['price'] ) : 0.0;
     $qty      = isset( $data['qty'] )   ? (int) $data['qty'] : 0;
 
@@ -538,11 +509,11 @@ function petshop_xml_block_vf_create( $continue_import, $data, $import_id ) {
         return $continue_import;
     }
 
-    $sku         = petshop_xml_tekstas( $data['sku_id'] ?? '' );
-    $brand       = petshop_xml_tekstas( $data['brand'] ?? '' );
-    $category    = petshop_xml_tekstas( $data['category'] ?? '' );
-    $name        = petshop_xml_tekstas( $data['product_name'] ?? '' );
-    $description = petshop_xml_tekstas( $data['description'] ?? '' );
+    $sku         = (string) ( $data['sku_id'] ?? '' );
+    $brand       = (string) ( $data['brand'] ?? '' );
+    $category    = (string) ( $data['category'] ?? '' );
+    $name        = (string) ( $data['product_name'] ?? '' );
+    $description = (string) ( $data['description'] ?? '' );
     $base_price  = (float)  ( $data['base_price'] ?? 0 );
     $personal    = (float)  ( $data['personal_price'] ?? 0 );
 
