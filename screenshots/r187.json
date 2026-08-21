@@ -1,0 +1,28 @@
+{
+ "versija": "RUN1-R187",
+ "snippet_id": 3636,
+ "BUKLE": {
+  "v": "R187",
+  "laikas": "2026-08-21 15:38:41",
+  "siteurl": "https://dev.avesa.lt",
+  "home": "https://dev.avesa.lt",
+  "prekes_publish": 2618,
+  "aktyvus_pluginai": 27,
+  "mu_pluginu": 61,
+  "snippetu_aktyviu": 73,
+  "htaccess": "# BEGIN Petshop Cache (H089, 2026-08-19)\n<IfModule mod_expires.c>\n  ExpiresActive On\n  ExpiresByType text/css \"access plus 1 year\"\n  ExpiresByType application/javascript \"access plus 1 year\"\n  ExpiresByType text/javascript \"access plus 1 year\"\n  ExpiresByType image/jpeg \"access plus 1 year\"\n  ExpiresByType image/png \"access plus 1 year\"\n  ExpiresByType image/gif \"access plus 1 year\"\n  ExpiresByType image/webp \"access plus 1 year\"\n  ExpiresByType image/svg+xml \"access plus 1 year\"\n  ExpiresByType font/woff2 \"access plus 1 year\"\n</IfModule>\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">\n    Header set Cache-Control \"public, max-age=31536000\"\n  </FilesMatch>\n</IfModule>\n# END Petshop Cache\n\n# Block the include-only files.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^wp-admin/includes/ - [F,L]\nRewriteRule !^wp-includes/ - [S=3]\nRewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\nRewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\nRewriteRule ^wp-includes/theme-compat/ - [F,L]\n</IfModule>\n<Files wp-config.php>\n<IfModule !mod_authz_core.c>\norder allow,deny\ndeny from all\n</IfModule>\n<IfModule mod_authz_core.c>\nrequire all denied\n</IfModule>\n</Files>\n\n# BEGIN WordPress\n# Instrukcijos (eilutės) tarp \"BEGIN WordPress\" ir \"END WordPress\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\nRewriteBase /\nRewriteRule ^index\\.php$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule . /index.php [L]\n</IfModule>\n\n# END WordPress\n# BEGIN ShortPixelWebp\n# Instrukcijos (eilutės) tarp \"BEGIN ShortPixelWebp\" ir \"END ShortPixelWebp\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n\n# END ShortPixelWebp",
+  "wp_config_md5": "595b4ed9c75be4178aa43e2b1905647c",
+  "permalink_structure": "/%postname%/",
+  "MOVER": "IRASYTA 3801 B",
+  "MOVER_md5": "1d760141e92b7c4bd78f2c3c3adb2ce8",
+  "MOVER_laukiama_md5": "1d760141e92b7c4bd78f2c3c3adb2ce8"
+ },
+ "MOVER_BUKLE": {
+  "statusas": 302,
+  "kunas": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html><head>\n<title>302 Found</title>\n</head><body>\n<h1>Found</h1>\n<p>The document has moved <a href=\"http://www.petshop.ltperkelti-r186.php?raktas=82e6f068b8e8b3fbbbecbaa230a2be67&amp;veiksmas=BUKLE\">here</a>.</p>\n</body></html>\n"
+ },
+ "MOVER_be_rakto": {
+  "statusas": 302,
+  "kunas": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html><head>\n<title>302 Found</title>\n</head><body>\n<h1>Found</h1>\n<p>The document has moved <a href=\"http://www.petshop.ltperkelti-r186.php\">here</a>.</p>\n</body></html>\n"
+ }
+}
