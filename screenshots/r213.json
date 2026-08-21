@@ -1,0 +1,223 @@
+{
+ "versija": "R213",
+ "sukurta": 3657,
+ "DUOM": {
+  "v": "R213",
+  "ops01": {
+   "siteurl": "https://dev.avesa.lt",
+   "home": "https://dev.avesa.lt",
+   "force_ssl_checkout": "no"
+  },
+  "ops07_blog_public": "0",
+  "ops03": {
+   "optionu": 5,
+   "vardai": [
+    "flatsome_registration",
+    "_transient_woocommerce_blocks_asset_api_script_data",
+    "_transient_woocommerce_blocks_asset_api_script_data_ssl",
+    "cmplz_transients",
+    "_site_transient_update_themes"
+   ]
+  },
+  "ops03_postmeta": 5,
+  "ops03_posts": 0,
+  "ops04": {
+   "wpo_wcpdf_documents_settings_invoice": "a:10:{s:7:\"enabled\";s:1:\"1\";s:19:\"attach_to_email_ids\";a:3:{s:9:\"new_order\";s:1:\"1\";s:24:\"customer_completed_order\";s:1:",
+   "wcdn_version": "7.3.0",
+   "wcdn_legacy_backup": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewr",
+   "wcdn_legacy_backup_autoload": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rule",
+   "wcdn_settings": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:87:\"https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo",
+   "wcdn_template_settings": "a:4:{s:7:\"invoice\";a:152:{s:7:\"enabled\";b:1;s:10:\"dateFormat\";s:5:\"Y-m-d\";s:17:\"orderMetaPosition\";s:5:\"below\";s:11:\"pdf",
+   "wcdn_migration_7_completed": "1",
+   "wcdn_migration_7_0_2_completed": "1",
+   "wcdn_migration_7_1_0_completed": "1",
+   "wcdn_migration_7_1_2_completed": "1",
+   "wcdn_db_version": "7.3.0",
+   "wcdn_invoice_number_counter": "263",
+   "wcdn_invoice_number_counter_year": "a:1:{i:2026;i:1;}",
+   "wcdn_allow_tracking": "dismissed",
+   "petshop_avpn_counter": "238",
+   "petshop_iapv_counter": "145"
+  },
+  "ops05": {
+   "hpos_lentele": "yra",
+   "uzsakymu": 11,
+   "pagal_busena": [
+    {
+     "status": "wc-cancelled",
+     "k": "3"
+    },
+    {
+     "status": "wc-completed",
+     "k": "3"
+    },
+    {
+     "status": "wc-on-hold",
+     "k": "1"
+    },
+    {
+     "status": "wc-processing",
+     "k": "4"
+    }
+   ]
+  },
+  "ops11": {
+   "viso": 1867,
+   "aktyvus": 73,
+   "temp_viso": 498,
+   "temp_aktyvus": 1,
+   "aktyvus_vardai": [
+    "239 · Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)",
+    "329 · Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+    "332 · Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+    "375 · Baltymu Saltinis Dry-Run Konservai v2",
+    "461 · Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+    "463 · Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+    "464 · Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+    "465 ·  Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+    "469 · Petshop Dev App Passwords v1",
+    "472 · Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+    "492 · Petshop Filtru Atidarymas v2 (CSS+JS)",
+    "494 · Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+    "502 · Higienos Modulis v1.0",
+    "503 · Grauziko Rusis Modulis v1.2",
+    "507 · Paukscio Rusis Modulis v1.3",
+    "509 · Zuvies Rusis Modulis v1.0",
+    "510 · Pasaro Forma Modulis v1.1",
+    "512 · Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+    "513 · Petshop Katalogo Auditas v1 (read-only)",
+    "514 · Petshop Import-Risk Recon v1 (read-only)",
+    "518 · Petshop Slėpti svorį ir dimensijas v1 (display only)",
+    "520 · Petshop Meniu Grupavimas v1 (komerciniai 3)",
+    "524 · Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)",
+    "525 · Petshop UI: kortelės + mobile sticky ATC",
+    "532 · Petshop MnM Fiksuoti komponentų kiekiai v2",
+    "535 · Petshop MnM Sutaupymo žymeklis v7 (be badge)",
+    "539 · Petshop Rinkinių Kūrimo Forma v2",
+    "547 · Petshop Susidėjimo Rinkinio Vitrina v19",
+    "550 · Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+    "558 · Petshop Choice Krepšelio Elgsena",
+    "560 · Petshop Rinkinio CTA Banneris kategorijose v9",
+    "561 · Petshop Rinkinių Gyvūno Filtras v1",
+    "562 · Petshop Sprendimai Shortcode Variklis v9",
+    "563 · Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)",
+    "565 · Petshop VF Sync v1.1 (reprice+stock+publish)",
+    "566 · Petshop Akcijos Shortcode v1.3",
+    "567 · Petshop Daugiau=Pigiau Stock Sync v1.2",
+    "568 · Petshop Daugiau=Pigiau Display v1.2",
+    "569 · Petshop Pack/Rinkinys Auto-Categories v1.3",
+    "570 · Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+    "572 · Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+    "573 · Petshop DP Kortelės Ženkliukas v4",
+    "582 · Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "587 · Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+    "594 · Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+    "609 · SEO Auto H1 v1 (page fallback + _petshop_h1)",
+    "610 · Petshop Topbar v2",
+    "613 · Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+    "614 · Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "615 · Petshop GTM Snippet v1.0 (GTM-MF3GZGT)",
+    "619 · Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+    "628 · Petshop Complianz X = Atmesti v1",
+    "632 · Petshop Slapuku Politika ES 301 v1 (LIVE)",
+    "648 · Petshop Invoice Doc Type Fix v2 (LIVE)",
+    "653 · Petshop Invoice Completed Attach Fix v3 (LIVE)",
+    "685 · Atrinktos Prekės Modulis v1 (rotacija)",
+    "688 · Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)",
+    "692 · Petshop Maisto Tipo Mygtukai v1",
+    "693 · Petshop Mobile Filtru Dublio Fix v1",
+    "705 · Petshop Produktu Nuotrauku Vienodinimas v1"
+   ]
+  },
+  "ops15": {
+   "kiek": 27,
+   "sarasas": [
+    "code-snippets/code-snippets.php",
+    "complianz-gdpr/complianz-gpdr.php",
+    "loco-translate/loco.php",
+    "petshop-attributes/petshop-attributes.php",
+    "petshop-core/petshop-core.php",
+    "petshop-esp/petshop-esp.php",
+    "petshop-fbt/petshop-fbt.php",
+    "petshop-feeds/petshop-feeds.php",
+    "petshop-fonts/petshop-fonts.php",
+    "petshop-pragma/petshop-pragma.php",
+    "petshop-promotions/petshop-promotions.php",
+    "petshop-xml/petshop-xml.php",
+    "postit/postit.php",
+    "seo-by-rank-math/rank-math.php",
+    "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+    "woo-lithuaniapost-main/woo-lithuaniapost.php",
+    "woo-payment-gateway-paysera/paysera.php",
+    "woo-update-manager/woo-update-manager.php",
+    "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+    "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+    "woocommerce-xml-csv-product-import/plugin.php",
+    "woocommerce/woocommerce.php",
+    "wordpress-importer/wordpress-importer.php",
+    "wp-all-import-pro/wp-all-import-pro.php",
+    "wp-mail-smtp/wp_mail_smtp.php",
+    "wpforms-lite/wpforms.php",
+    "yith-woocommerce-ajax-navigation/init.php"
+   ]
+  },
+  "ops19": "nerasta",
+  "ops10": {
+   "follow_facebook": "",
+   "follow_instagram": "",
+   "follow_twitter": "",
+   "follow_youtube": "(nenustatyta)",
+   "follow_tiktok": "(nenustatyta)"
+  },
+  "ops06": {
+   "kaina24": {
+    "dydis": 6089913,
+    "keista": "2026-08-21 01:30"
+   },
+   "kainos": {
+    "dydis": 5583551,
+    "keista": "2026-08-21 01:30"
+   },
+   "google": {
+    "dydis": 5048599,
+    "keista": "2026-08-21 01:30"
+   }
+  },
+  "ops02_wp_cron": {
+   "ps_cart_abandon_check": "2026-08-21 19:19",
+   "ps_esp_cron_process_pending": "2026-08-21 19:22",
+   "ps_email_dispatch_cron": "2026-08-21 19:23",
+   "ps_post_purchase_check": "2026-08-21 19:39",
+   "petshop_vf_sync_stock_hourly": "2026-08-21 19:59",
+   "ps_refill_iv_veidrodis": "2026-08-21 20:06",
+   "ps_akcijos_valanda": "2026-08-21 20:08",
+   "ps_vartai_valanda": "2026-08-21 20:13",
+   "ps_seseliai_valandinis": "2026-08-21 20:13",
+   "ps_stat_valymas": "2026-08-21 21:41",
+   "petshop_attr_engine_run": "2026-08-21 22:57",
+   "ps_ataskaitu_agregavimas": "2026-08-22 00:15",
+   "ps_feeds_naktinis": "2026-08-22 01:30",
+   "ps_pet_drafts_cleanup_daily": "2026-08-22 02:40",
+   "petshop_vf_sync_reprice_daily": "2026-08-22 03:00",
+   "petshop_vf_sync_publish_daily": "2026-08-22 04:00",
+   "ps_sargas_kasdien": "2026-08-22 04:00",
+   "ps_sources_naktinis": "2026-08-22 04:20",
+   "ps_ivykiai_valymas": "2026-08-22 04:40",
+   "ps_pardavimai_naktinis": "2026-08-22 04:50",
+   "ps_pilnumas_naktinis": "2026-08-22 05:00",
+   "ps_suppression_daily_reconcile": "2026-08-22 05:30",
+   "ps_refill_daily_check": "2026-08-22 08:00",
+   "ps_reminders_daily_check": "2026-08-22 09:00",
+   "ps_sargas_savaitinis": "2026-08-25 05:00",
+   "petshop_pragma_monthly_export": "2026-09-05 08:00"
+  }
+ },
+ "https://petshop.lt/": {
+  "s": 200,
+  "loc": ""
+ },
+ "https://www.petshop.lt/": {
+  "s": 301,
+  "loc": "https://petshop.lt/"
+ }
+}
