@@ -16,8 +16,8 @@ async function api(p,o={}){ try{const r=await fetch(WP+p,{...o,headers:{Authoriz
 function ipFetch(ip, host, path){
   return new Promise((resolve)=>{
     const req=https.request({host:ip, port:443, path, method:'GET', servername:host, rejectUnauthorized:false, headers:{Host:host,'User-Agent':'ps-recon'}}, (res)=>{
+      const cert=(res.socket&&res.socket.getPeerCertificate)?res.socket.getPeerCertificate():null;
       let d=''; res.on('data',c=>{ if(d.length<3000) d+=c; }); res.on('end',()=>{
-        const cert=res.socket.getPeerCertificate ? res.socket.getPeerCertificate() : null;
         resolve({statusas:res.statusCode, sert_kam:(cert&&cert.subject)?JSON.stringify(cert.subject):null, sert_iki:(cert&&cert.valid_to)?cert.valid_to:null, kunas:d.slice(0,600)});
       });
     });
