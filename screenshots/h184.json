@@ -1,0 +1,108 @@
+{
+ "versija": "H184",
+ "A": {
+  "v": "H184",
+  "laikas": "2026-08-21 09:37:24",
+  "REZIMAS": "RECON-ONLY",
+  "hold_stock_minutes": "90",
+  "manage_stock": "yes",
+  "desk_445_485": "445: \t\t\t\tif ( $tylus ) { self::laiskai_on(); }\n446: \t\t\t\t$zinute = $tylus ? 'apmoketa_tyliai' : 'apmoketa';\n447: \t\t\t}\n448: \t\t}\n449: \n450: \t\tif ( 'atsaukti' === $v ) {\n451: \t\t\tif ( in_array( $o->get_status(), array( 'cancelled', 'lp-cancelled', 'refunded' ), true ) ) {\n452: \t\t\t\t$zinute = 'jau_atsaukta';\n453: \t\t\t} else {\n454: \t\t\t\t$su_laisku = ! empty( $_GET['su_laisku'] );\n455: \t\t\t\t$o->add_order_note(\n456: \t\t\t\t\tsprintf( 'Atšaukta darbalaukyje. Vartotojas: %s. Laiškas klientui: %s.',\n457: \t\t\t\t\t\t$naudotojas, $su_laisku ? 'išsiųstas' : 'NESIŲSTAS' ),\n458: \t\t\t\t\tfalse, true );\n459: \t\t\t\tif ( ! $su_laisku ) { self::laiskai_off(); }\n460: \t\t\t\t$o->update_status( 'cancelled', '' );\n461: \t\t\t\tif ( ! $su_laisku ) { self::laiskai_on(); }\n462: \t\t\t\t$zinute = $su_laisku ? 'atsaukta_laiskas' : 'atsaukta';\n463: \t\t\t}\n464: \t\t}\n465: \n466: \t\twp_safe_redirect( add_query_arg( array(\n467: \t\t\t'pd_ok' => $zinute,\n468: \t\t\t'pd_nr' => rawurlencode( $o ? $o->get_order_number() : '' ),\n469: \t\t), $atgal ) );\n470: \t\texit;\n471: \t}\n472: \n473: \tpublic static function meniu() {\n474: \t\tadd_menu_page( 'Petshop užsakymai', 'Petshop užsakymai', 'edit_shop_orders',\n475: \t\t\tself::SLUG, array( __CLASS__, 'puslapis' ), 'dashicons-clipboard', 2 );\n476: \t}\n477: \n478: \t/**\n479: \t * WooCommerce užsakymų sąrašas nuimamas nuo akių, BET puslapis privalo\n480: \t * likti veikiantis: per jį vykdomi vežėjų lipdukai ir sąskaitos (s526).\n481: \t *\n482: \t * s585: remove_submenu_page() puslapį uždaro visiškai — po jo wc-orders\n483: \t * grąžino 403 ir lipdukai būtų nustoję veikti. Todėl slepiam CSS'u.\n484: \t */\n485: \tpublic static function slepti_wc() {",
+  "kabliukai_woocommerce_order_status_cancelled": [
+   "10 wc_update_coupon_usage_counts",
+   "10 wc_maybe_increase_stock_levels",
+   "11 wc_release_stock_for_order",
+   "15 Petshop_AV_Reduce::grazinti"
+  ],
+  "kabliukai_woocommerce_order_status_changed": [
+   "1 Closure",
+   "10 Woo_Lithuaniapost_Admin_Order_Service::on_status_changed",
+   "10 Automattic\\WooCommerce\\Caches\\OrderCountCacheService::update_on_order_status_changed",
+   "10 Automattic\\WooCommerce\\Internal\\PushNotifications\\Triggers\\NewOrderNotificationTrigger::on_order_status_changed"
+  ],
+  "atsauktu_pastabos": [
+   {
+    "nr": "35003",
+    "likucio_pastabos": "NERASTA"
+   },
+   {
+    "nr": "34885",
+    "likucio_pastabos": "NERASTA"
+   },
+   {
+    "nr": "34645",
+    "likucio_pastabos": "NERASTA"
+   }
+  ],
+  "wc_emails": [
+   "WC_Email_New_Order",
+   "WC_Email_Cancelled_Order",
+   "WC_Email_Customer_Cancelled_Order",
+   "WC_Email_Failed_Order",
+   "WC_Email_Customer_Failed_Order",
+   "WC_Email_Customer_On_Hold_Order",
+   "WC_Email_Customer_Processing_Order",
+   "WC_Email_Customer_Completed_Order",
+   "WC_Email_Customer_Refunded_Order",
+   "WC_Email_Customer_Invoice",
+   "WC_Email_Customer_Note",
+   "WC_Email_Customer_Reset_Password",
+   "WC_Email_Customer_New_Account",
+   "WC_Email_Admin_Payment_Gateway_Enabled",
+   "WC_Email_Customer_POS_Completed_Order",
+   "WC_Email_Customer_POS_Refunded_Order",
+   "WC_Email_Customer_Verify_Email"
+  ],
+  "ps_laisku_lenteles": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_akcijos",
+   "gaj6_ps_akciju_prekes",
+   "gaj6_ps_ataskaitu_dienos",
+   "gaj6_ps_av_zurnalas",
+   "gaj6_ps_brand_alias",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_istrintos_prekes_s668",
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_pakuotes",
+   "gaj6_ps_partijos",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_sargas_klaidos",
+   "gaj6_ps_shipments",
+   "gaj6_ps_sources",
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil",
+   "gaj6_ps_webhook_log"
+  ]
+ }
+}
