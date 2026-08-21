@@ -1,0 +1,80 @@
+{
+ "versija": "H183",
+ "A": {
+  "v": "H183",
+  "laikas": "2026-08-21 09:28:09",
+  "REZIMAS": "RECON-ONLY",
+  "failas_yra": true,
+  "dydis": 114420,
+  "md5": "be69c41fc8462c9c585e4eabbcd67239",
+  "eiluciu": 2501,
+  "neapmoketi": [
+   "9: *   Nauji · Neapmokėti · Paruošta siųsti · Klausimai · Atšaukti · Visi",
+   "97: 'neapmoketi' => array( 'Neapmokėti',      'laukia kliento pinigų — tik stebėti',     '#D9A62B' ),",
+   "107: 'neapmoketi' => array( 'pending', 'failed', 'on-hold', 'lp-parcel-await' ),",
+   "625: foreach ( array( 'neapmoketi', 'paruosta', 'atsaukti' ) as $e ) {",
+   "790: } elseif ( 'neapmoketi' === $eile ) {",
+   "791: $args['status'] = self::STATUSAI['neapmoketi'];",
+   "846: $c = array( 'nauji' => 0, 'neapmoketi' => 0, 'laukia' => 0, 'paruosta' => 0,",
+   "1508: foreach ( array( 'nauji', 'neapmoketi', 'laukia', 'paruosta', 'klausimai' ) as $k ) {"
+  ],
+  "zymes": [
+   "883: protected static function zyme( $s ) {",
+   "1128: foreach ( $e['ds'] as $t ) { $ts[] = self::zyme( $t ); }",
+   "1216: self::ribos_zyme( $k ),",
+   "1256: foreach ( self::saltiniai( $o ) as $x ) { $z .= self::zyme( $x ); }",
+   "1286: protected static function ribos_zyme( $sandelis ) {",
+   "1332: wp_kses_post( self::ribos_zyme( 'lp' ) ) );",
+   "1389: self::ribos_zyme( $k ) );",
+   "1728: foreach ( $sal as $s ) { echo self::zyme( $s ); }",
+   "1759: printf( '<td><span class=\"pd-pill\" style=\"background:%s;color:%s\">%s</span></td>',",
+   "1937: <div class=\"pd-peek-r1\"><h2 id=\"pkNr\"></h2><span class=\"pd-pill\" id=\"pkSt\"></span>",
+   "2099: .pd-pill{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:99px;",
+   "2339: var sp=r.querySelector('.pd-pill');",
+   "2450: function pazymeti(){ return Array.from(sel).join(','); }",
+   "2454: window.location.href=b.getAttribute('data-ba')+'&ids='+pazymeti();"
+  ],
+  "atsaukti": [
+   "48: 'cancelled'         => array( '#FAECEC', '#98262A' ),",
+   "49: 'lp-cancelled'      => array( '#FAECEC', '#98262A' ),",
+   "101: 'atsaukti'   => array( 'Atšaukti',        'atšaukti ir grąžinti užsakymai',          '#9AA39C' ),",
+   "109: 'atsaukti'   => array( 'cancelled', 'lp-cancelled', 'refunded' ),",
+   "130: 'customer_invoice', 'customer_refunded_order', 'customer_cancelled_order',",
+   "131: 'cancelled_order', 'customer_partially_refunded_order',",
+   "160: $uzdaryti = array( 'cancelled', 'lp-cancelled', 'refunded' );",
+   "215: 'id'  => 'atsaukti',",
+   "217: 'url' => self::veiksmo_url( 'atsaukti', $id ),",
+   "450: if ( 'atsaukti' === $v ) {",
+   "451: if ( in_array( $o->get_status(), array( 'cancelled', 'lp-cancelled', 'refunded' ), true ) ) {",
+   "460: $o->update_status( 'cancelled', '' );",
+   "625: foreach ( array( 'neapmoketi', 'paruosta', 'atsaukti' ) as $e ) {",
+   "644: if ( in_array( $st, array( 'completed', 'lp-delivered', 'cancelled', 'lp-cancelled', 'refunded', 'checkout-draft' ), true ) ) {",
+   "788: } elseif ( 'atsaukti' === $eile ) {",
+   "789: $args['status'] = self::STATUSAI['atsaukti'];",
+   "814: if ( $kl && 'klausimai' !== $eile && 'atsaukti' !== $eile ) { continue; }",
+   "847: 'klausimai' => 0, 'atsaukti' => 0, 'visi' => 0 );",
+   "862: $c['atsaukti'] = (int) $wpdb->get_var(",
+   "864: AND status IN ('wc-cancelled','wc-lp-cancelled','wc-refunded')\" );",
+   "1512: foreach ( array( 'atsaukti', 'visi' ) as $k ) {",
+   "1583: 'atsaukti' => 'Atšaukti',",
+   "1666: if ( 'atsaukti' !== $x['id'] ) { continue; }"
+  ],
+  "bacs": [
+   "440: $o->get_payment_method_title() ? $o->get_payment_method_title() : '—',",
+   "1903: 'mok'     => $o->get_payment_method_title(),"
+  ],
+  "dunning": [],
+  "dunning_failai": [],
+  "dunning_option": "option nera",
+  "onhold": [
+   {
+    "id": "34952",
+    "payment_method": "bacs",
+    "status": "wc-on-hold",
+    "date_created_gmt": "2026-08-15 20:57:56",
+    "val": "129"
+   }
+  ],
+  "bacs_viso": 5
+ }
+}
