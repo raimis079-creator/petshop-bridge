@@ -1,0 +1,313 @@
+{
+ "versija": "RUN5-R191",
+ "snippet_id": 3639,
+ "DRY": {
+  "v": "R191",
+  "laikas": "2026-08-21 15:54:16",
+  "REZIMAS": "DRY-RUN",
+  "radiniai": {
+   "gaj6_ps_sargas_klaidos.zinute [fs_kelias]": 5,
+   "gaj6_ps_sargas_klaidos.failas [fs_kelias]": 34,
+   "gaj6_wc_admin_note_actions.query [domenas]": 34,
+   "gaj6_ps_action_tokens.subject_email [domenas]": 29,
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1.source_url [domenas]": 163,
+   "gaj6_shortpixel_queue.value [domenas]": 7913,
+   "gaj6_ps_feeding_tables.source_url [domenas]": 229,
+   "gaj6_pmxi_imports_bak_s655.path [domenas]": 2,
+   "gaj6_wc_orders_meta.meta_value [domenas]": 7,
+   "gaj6_wc_orders_meta.meta_value [fs_kelias]": 8,
+   "gaj6_ps_istrintos_prekes_s668.duomenys [domenas]": 32,
+   "gaj6_woocommerce_sessions.session_value [domenas]": 1,
+   "gaj6_wc_customer_lookup.email [domenas]": 4,
+   "gaj6_jetpack_sync_queue.event_payload [domenas]": 1,
+   "gaj6_snippets_bak_s636.code [domenas]": 52,
+   "gaj6_snippets_bak_s636.code [fs_kelias]": 2,
+   "gaj6_mailpoet_newsletter_templates.body [domenas]": 77,
+   "gaj6_usermeta.meta_value [domenas]": 7,
+   "gaj6_postmeta.meta_value [domenas]": 16,
+   "gaj6_postmeta.meta_value [fs_kelias]": 8,
+   "gaj6_pmxi_imports.path [domenas]": 2,
+   "gaj6_posts.post_content [domenas]": 57,
+   "gaj6_posts.guid [domenas]": 12673,
+   "gaj6_users.user_email [domenas]": 5,
+   "gaj6_users.user_url [domenas]": 1,
+   "gaj6_options.option_name [fs_kelias]": 1,
+   "gaj6_options.option_value [domenas]": 28,
+   "gaj6_options.option_value [fs_kelias]": 11,
+   "gaj6_ps_event_log.email [domenas]": 32,
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f.source_url [domenas]": 163,
+   "gaj6_ps_email_jobs.payload [domenas]": 8,
+   "gaj6_wc_product_download_directories.url [domenas]": 1,
+   "gaj6_wc_product_download_directories.url [fs_kelias]": 1,
+   "gaj6_snippets.code [domenas]": 54,
+   "gaj6_snippets.code [fs_kelias]": 5,
+   "gaj6_comments.comment_author_email [domenas]": 56
+  },
+  "pvz_options": [
+   {
+    "option_name": "flatsome_registration",
+    "v": "a:8:{s:2:\"id\";s:25:\"cmosvehlm0019iu855bke7ymu\";s:4:\"type\";s:7:\"STAGING\";s:6:\"domain\";s:12:\"dev.avesa.lt\";s:12:\"registere"
+   },
+   {
+    "option_name": "woocommerce_email_header_image",
+    "v": "http://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg"
+   },
+   {
+    "option_name": "jetpack_plugin_api_action_links",
+    "v": "a:2:{s:27:\"woocommerce/woocommerce.php\";a:1:{s:10:\"Nustatymai\";s:55:\"http://dev.avesa.lt/wp-admin/admin.php?page=wc-sett"
+   },
+   {
+    "option_name": "jpsq_sync-1778001640.186839-11669-5",
+    "v": "a:6:{i:0;s:14:\"updated_option\";i:1;a:3:{i:0;s:48:\"jetpack_sync_settings_custom_queue_table_enabled\";i:1;s:1:\"0\";i:2;i:1;"
+   },
+   {
+    "option_name": "jpsq_sync-1778001644.995578-556703-1",
+    "v": "a:6:{i:0;s:29:\"jetpack_update_plugins_change\";i:1;a:1:{i:0;O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1778001644;s:8:\"respo"
+   },
+   {
+    "option_name": "wcdn_settings",
+    "v": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:88:\"http://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotip"
+   },
+   {
+    "option_name": "spio_settings",
+    "v": "a:75:{s:14:\"currentVersion\";s:5:\"6.5.2\";s:18:\"redirectedSettings\";i:3;s:20:\"mediaLibraryViewMode\";i:1;s:14:\"activationDa"
+   },
+   {
+    "option_name": "ShortPixel-notices",
+    "v": "a:1:{i:0;O:30:\"ShortPixel\\Notices\\NoticeModel\":15:{s:7:\"message\";s:834:\"<p>ShortPixel has found thumbnails that are not "
+   },
+   {
+    "option_name": "woocommerce_helper_data",
+    "v": "a:2:{s:4:\"auth\";a:6:{s:12:\"access_token\";s:40:\"9e230579fe694d7e86a4690a9a6f2ed852de43a6\";s:19:\"access_token_secret\";s:40"
+   },
+   {
+    "option_name": "jetpack_connection_xmlrpc_errors",
+    "v": "a:1:{s:15:\"malformed_token\";a:1:{s:7:\"invalid\";a:7:{s:10:\"error_code\";s:15:\"malformed_token\";s:7:\"user_id\";s:7:\"invalid\""
+   },
+   {
+    "option_name": "gd_probe_result",
+    "v": "{\"gd_loaded\":true,\"gd_version\":\"bundled (2.1.0 compatible)\",\"jpeg\":true,\"png\":true,\"webp\":true,\"freetype\":true,\"function"
+   },
+   {
+    "option_name": "choice_probe_result",
+    "v": "{\"pool\":[19598,19590,19582,19570,19562,19553,19545],\"pool_details\":[{\"id\":19598,\"name\":\"Animonda GranCarno Adult Beef + "
+   },
+   {
+    "option_name": "switch_probe_result",
+    "v": "{\"hidden_6\":34180,\"hidden_12\":34181,\"parent_id\":34182,\"config\":{\"800\":{\"6\":{\"product_id\":34180,\"price\":23.99},\"12\":{\"pro"
+   },
+   {
+    "option_name": "build_choice_result",
+    "v": "{\"pool_400_count\":30,\"pool_800_count\":28,\"config\":{\"400\":{\"6\":{\"product_id\":34183,\"price\":17.99},\"12\":{\"product_id\":3418"
+   },
+   {
+    "option_name": "mnm_render_result",
+    "v": "{\"func_woocommerce_mnm_add_to_cart\":false,\"func_wc_mnm_template_add_to_cart\":true,\"func_wc_mnm_content_loop\":true,\"hook_"
+   },
+   {
+    "option_name": "psc_grouptest_result",
+    "v": "{\"parent_id\":34197,\"hidden_count\":4,\"group_count\":2,\"config\":{\"mix\":{\"label\":\"Mix\",\"gramaturos\":{\"400\":{\"6\":{\"product_id"
+   },
+   {
+    "option_name": "psc_mk2_result",
+    "v": "{\"parent_id\":34202,\"slug\":\"testas-grupiu-vitrina\",\"hidden\":4,\"view_url\":\"https:\\/\\/dev.avesa.lt\\/product\\/testas-grupiu-"
+   },
+   {
+    "option_name": "_site_transient_update_themes",
+    "v": "O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1787291046;s:7:\"checked\";a:3:{s:14:\"flatsome-child\";s:3:\"3.0\";s:8:\"flatsome\";s:6"
+   },
+   {
+    "option_name": "cmplz_preloaded_privacy_info",
+    "v": "a:3:{i:0;a:3:{s:11:\"plugin_name\";s:9:\"WordPress\";s:11:\"policy_text\";s:5124:\"<h2 class=\"wp-block-heading\">Kas mes esame</"
+   },
+   {
+    "option_name": "cmplz_wsc_consent_consentdata",
+    "v": "{\"timestamp\":\"2026-07-10T08:21:41+00:00\",\"subject\":{\"id\":\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\",\""
+   },
+   {
+    "option_name": "cmplz_newsletter_consent_consentdata",
+    "v": "{\"timestamp\":\"2026-07-10T08:21:55+00:00\",\"subject\":{\"id\":\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\",\""
+   },
+   {
+    "option_name": "ps_home_content_backup_34543",
+    "v": "<!-- wp:html --><style>.ph-hero{position:relative;border-radius:12px;margin:0 0 40px;min-height:420px;display:flex;align"
+   },
+   {
+    "option_name": "ps_home_cta_bak_20260801",
+    "v": "<!-- wp:html --><style>.ph-hero{position:relative;border-radius:12px;margin:0 0 40px;min-height:420px;display:flex;align"
+   },
+   {
+    "option_name": "ps_feeds_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-08-21 04:30:19\";s:10:\"statistika\";a:8:{s:7:\"versija\";s:5:\"2.2.0\";s:3:\"dry\";i:0;s:9:\"kandidatu"
+   },
+   {
+    "option_name": "rank-math-options-general",
+    "v": "a:47:{s:19:\"strip_category_base\";s:3:\"off\";s:24:\"attachment_redirect_urls\";s:2:\"on\";s:27:\"attachment_redirect_default\";s"
+   }
+  ],
+  "pvz_options_fs": [
+   {
+    "option_name": "recently_edited",
+    "v": "a:3:{i:0;s:94:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/petshop-xml/petshop-xml.php\";i:2;s:98:\"/home/gyvunai2/domains/avesa.lt/public_"
+   },
+   {
+    "option_name": "kirki_downloaded_font_files",
+    "v": "a:7:{s:63:\"https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjxAwXjeu.woff2\";s:96:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/fonts/lato/S6uyw4BM"
+   },
+   {
+    "option_name": "_transient_dirsize_cache",
+    "v": "a:1653:{s:77:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-admin/css/colors/ectoplasm\";i:85004;s:73:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-ad"
+   },
+   {
+    "option_name": "wpo_wcpdf_installed_template_paths",
+    "v": "a:1:{s:122:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/templates/Simple\";s:14:\"default/Simple\";}"
+   },
+   {
+    "option_name": "vf_last_download",
+    "v": "a:6:{s:8:\"filename\";s:38:\"vetfarmas_response_20260602_142756.xml\";s:8:\"filepath\";s:105:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/vetfa"
+   },
+   {
+    "option_name": "_transient_pmxi_uploads_path",
+    "v": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/wpallimport/uploads/526d0682550982601b19a3998cfc73c9"
+   },
+   {
+    "option_name": "wccom-product-installation-state-18734003407318",
+    "v": "a:13:{s:10:\"product_id\";i:18734003407318;s:15:\"idempotency_key\";s:12:\"G7Q893Oa8ynq\";s:14:\"last_step_name\";s:16:\"activate_product\";s:16:\"last_step_status\";s:9:\"c"
+   },
+   {
+    "option_name": "ps_gtin_backup_failas",
+    "v": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/ps-backups/gtin_backup_20260817_204552.json"
+   },
+   {
+    "option_name": "ps_gtin_zurnalas",
+    "v": "a:3:{s:4:\"kada\";s:19:\"2026-08-17 23:45:56\";s:10:\"statistika\";a:10:{s:4:\"viso\";i:2609;s:6:\"keisim\";i:1963;s:23:\"praleista_konfliktas_vf\";i:41;s:23:\"praleista_kon"
+   },
+   {
+    "option_name": "ps_aprasymu_zurnalas",
+    "v": "a:3:{s:4:\"kada\";s:19:\"2026-08-18 12:51:04\";s:5:\"irase\";i:44;s:6:\"kopija\";s:115:\"/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/uploads/ps-backups/ap"
+   }
+  ],
+  "pvz_postmeta": [
+   {
+    "meta_key": "_menu_item_url",
+    "kiek": "8"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_entry",
+    "kiek": "5"
+   },
+   {
+    "meta_key": "_wc_order_attribution_referrer",
+    "kiek": "2"
+   },
+   {
+    "meta_key": "_wp_suggested_privacy_policy_content",
+    "kiek": "1"
+   }
+  ],
+  "pvz_posts": [
+   {
+    "post_type": "page",
+    "kiek": "12"
+   },
+   {
+    "post_type": "post",
+    "kiek": "2"
+   },
+   {
+    "post_type": "product",
+    "kiek": "3"
+   },
+   {
+    "post_type": "revision",
+    "kiek": "40"
+   }
+  ],
+  "pvz_guid": 12673,
+  "pvz_snippets": [
+   {
+    "id": "155",
+    "name": "petshop_brand_apply v7"
+   },
+   {
+    "id": "158",
+    "name": " WC Categories — pre-VF-mapping cleanup"
+   },
+   {
+    "id": "167",
+    "name": "Account Wide Inode Scan v1"
+   },
+   {
+    "id": "193",
+    "name": "Petshop SKU Supplier Info Lookup v1 (prekiu savikainai ieskoti)"
+   },
+   {
+    "id": "197",
+    "name": "Petshop Find Crosssell v1 (diagnostika)"
+   },
+   {
+    "id": "198",
+    "name": "Petshop Find Pricing Caller v1 (diagnostika)"
+   },
+   {
+    "id": "462",
+    "name": "Petshop Atributu Auditas v1.0 (read-only, ko truksta)"
+   },
+   {
+    "id": "463",
+    "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)"
+   },
+   {
+    "id": "611",
+    "name": "Petshop Frontpage Setter v1 (TEMP)"
+   },
+   {
+    "id": "761",
+    "name": "Img Check tmp"
+   },
+   {
+    "id": "762",
+    "name": "DevURL Scan tmp"
+   },
+   {
+    "id": "1186",
+    "name": "M-CALC Serimo Skaiciuokle v1.0 (HYHS02 MVP)"
+   },
+   {
+    "id": "1187",
+    "name": "M-CALC Serimo Skaiciuokle v1.0 (HYHS02 MVP)"
+   },
+   {
+    "id": "1218",
+    "name": "F1 Final UI Deploy (read-only)"
+   },
+   {
+    "id": "1219",
+    "name": "F1 Final UI Deploy (read-only)"
+   },
+   {
+    "id": "1220",
+    "name": "F1 Deploy v3 (read-only)"
+   },
+   {
+    "id": "1235",
+    "name": "F2 Path Recon (read-only)"
+   },
+   {
+    "id": "1352",
+    "name": "FETCH (temp)"
+   },
+   {
+    "id": "1355",
+    "name": "DEPLOY (temp)"
+   },
+   {
+    "id": "1577",
+    "name": "AL7 (temp)"
+   }
+  ],
+  "failuose": {
+   "wp-content/themes/flatsome-child/functions.php": "domenas"
+  }
+ }
+}
