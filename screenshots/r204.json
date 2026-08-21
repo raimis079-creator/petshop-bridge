@@ -1,0 +1,368 @@
+{
+ "versija": "R204",
+ "sukurta": 3647,
+ "DUOM": {
+  "v": "R204",
+  "meniu_punktai": [
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34129,
+    "tevas": 34246,
+    "title": "Konservų rinkiniai",
+    "type": "taxonomy",
+    "object": "product_cat",
+    "object_id": 682,
+    "url": "https://dev.avesa.lt/kategorija/rinkiniai/konservu-rinkiniai/",
+    "taikinio_busena": "NERA IRASO",
+    "taikinio_nuoroda": ""
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34130,
+    "tevas": 34246,
+    "title": "Skanėstų rinkiniai",
+    "type": "taxonomy",
+    "object": "product_cat",
+    "object_id": 683,
+    "url": "https://dev.avesa.lt/kategorija/rinkiniai/skanestu-rinkiniai/",
+    "taikinio_busena": "NERA IRASO",
+    "taikinio_nuoroda": ""
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34131,
+    "tevas": 34246,
+    "title": "Kramtalų rinkiniai",
+    "type": "taxonomy",
+    "object": "product_cat",
+    "object_id": 684,
+    "url": "https://dev.avesa.lt/kategorija/rinkiniai/kramtalu-rinkiniai/",
+    "taikinio_busena": "NERA IRASO",
+    "taikinio_nuoroda": ""
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34126,
+    "tevas": 0,
+    "title": "RINKINIAI",
+    "type": "taxonomy",
+    "object": "product_cat",
+    "object_id": 679,
+    "url": "https://dev.avesa.lt/kategorija/rinkiniai/",
+    "taikinio_busena": "NERA IRASO",
+    "taikinio_nuoroda": ""
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34246,
+    "tevas": 34126,
+    "title": "Paruošti rinkiniai",
+    "type": "custom",
+    "object": "custom",
+    "object_id": 34246,
+    "url": "https://dev.avesa.lt/kategorija/rinkiniai/",
+    "taikinio_busena": "publish",
+    "taikinio_nuoroda": "https://dev.avesa.lt/paruosti-rinkiniai/"
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34247,
+    "tevas": 34126,
+    "title": "Susidėk savo rinkinį",
+    "type": "custom",
+    "object": "custom",
+    "object_id": 34247,
+    "url": "#",
+    "taikinio_busena": "publish",
+    "taikinio_nuoroda": "https://dev.avesa.lt/susidek-savo-rinkini/"
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34248,
+    "tevas": 34247,
+    "title": "Susidėk konservų rinkinį šunims",
+    "type": "custom",
+    "object": "custom",
+    "object_id": 34248,
+    "url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-sunims/",
+    "taikinio_busena": "publish",
+    "taikinio_nuoroda": "https://dev.avesa.lt/konservu-rinkinys-sunims/"
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34249,
+    "tevas": 34247,
+    "title": "Susidėk konservų rinkinį katėms",
+    "type": "custom",
+    "object": "custom",
+    "object_id": 34249,
+    "url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-katems/",
+    "taikinio_busena": "publish",
+    "taikinio_nuoroda": "https://dev.avesa.lt/konservu-rinkinys-katems/"
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34250,
+    "tevas": 34247,
+    "title": "Susidėk skanėstų rinkinį šunims",
+    "type": "custom",
+    "object": "custom",
+    "object_id": 34250,
+    "url": "https://dev.avesa.lt/product/susidek-skanestu-rinkini-jautresniam-suniui-testas/",
+    "taikinio_busena": "publish",
+    "taikinio_nuoroda": "https://dev.avesa.lt/skanestu-rinkinys-sunims/"
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34251,
+    "tevas": 34247,
+    "title": "Susidėk skanėstų rinkinį katėms",
+    "type": "custom",
+    "object": "custom",
+    "object_id": 34251,
+    "url": "https://dev.avesa.lt/product/susidek-skanestu-rinkini-katei-testas/",
+    "taikinio_busena": "publish",
+    "taikinio_nuoroda": "https://dev.avesa.lt/skanestu-rinkinys-katei/"
+   },
+   {
+    "meniu": "Pagrindinis meniu",
+    "db_id": 34252,
+    "tevas": 34247,
+    "title": "Susidėk kramtalų rinkinį šunims",
+    "type": "custom",
+    "object": "custom",
+    "object_id": 34252,
+    "url": "https://dev.avesa.lt/product/susidek-kramtalu-rinkini-suniui-testas/",
+    "taikinio_busena": "publish",
+    "taikinio_nuoroda": "https://dev.avesa.lt/kramtalu-rinkinys-sunims/"
+   }
+  ],
+  "laukai": [
+   {
+    "ID": 34932,
+    "pav": "Skanėstų dėžė šuniui — be vištienos",
+    "st": "draft",
+    "grupe": "sunys",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/?post_type=product&p=34932",
+    "slug": "skanestu-deze-suniui-be-vistienos"
+   },
+   {
+    "ID": 34933,
+    "pav": "Skanėstų dėžė šuniui — hipoalerginė",
+    "st": "draft",
+    "grupe": "kramtalai",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/?post_type=product&p=34933",
+    "slug": "skanestu-deze-suniui-hipoalergine"
+   },
+   {
+    "ID": 34934,
+    "pav": "Skanėstų dėžė šuniui — jautriam virškinimui",
+    "st": "draft",
+    "grupe": "kramtalai",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/?post_type=product&p=34934",
+    "slug": "skanestu-deze-suniui-jautriam-virskinimui"
+   },
+   {
+    "ID": 34935,
+    "pav": "Skanėstų dėžė šuniui — monoproteinas",
+    "st": "draft",
+    "grupe": "sunys",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/?post_type=product&p=34935",
+    "slug": "skanestu-deze-suniui-monoproteinas"
+   },
+   {
+    "ID": 34936,
+    "pav": "Skanėstų dėžutė katei",
+    "st": "draft",
+    "grupe": "kates",
+    "iejimas": "",
+    "matomumas": "visible",
+    "nuoroda": "https://dev.avesa.lt/?post_type=product&p=34936",
+    "slug": "skanestu-dezute-katei"
+   },
+   {
+    "ID": 34937,
+    "pav": "Skanėstų dėžė šuniui",
+    "st": "draft",
+    "grupe": "sunys",
+    "iejimas": "yes",
+    "matomumas": "visible",
+    "nuoroda": "https://dev.avesa.lt/?post_type=product&p=34937",
+    "slug": "kramtalu-deze-suniui"
+   },
+   {
+    "ID": 34938,
+    "pav": "Skanestai katems2",
+    "st": "draft",
+    "grupe": "kates",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/?post_type=product&p=34938",
+    "slug": "skanestai-katems2"
+   },
+   {
+    "ID": 34942,
+    "pav": "TEST Konservu deze 800 Be vistienos",
+    "st": "publish",
+    "grupe": "kons_sunims",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-800-be-vistienos/",
+    "slug": "test-konservu-deze-800-be-vistienos"
+   },
+   {
+    "ID": 34943,
+    "pav": "TEST Konservu deze 800 Visi skoniai",
+    "st": "publish",
+    "grupe": "kons_sunims",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-800-visi-skoniai/",
+    "slug": "test-konservu-deze-800-visi-skoniai"
+   },
+   {
+    "ID": 34944,
+    "pav": "Konservu deze 400 Be vistienos",
+    "st": "publish",
+    "grupe": "kons_sunims",
+    "iejimas": "",
+    "matomumas": "visible",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+    "slug": "test-konservu-deze-400-be-vistienos"
+   },
+   {
+    "ID": 34945,
+    "pav": "TEST Konservu deze 400 Monoproteinas",
+    "st": "publish",
+    "grupe": "kons_sunims",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-400-monoproteinas/",
+    "slug": "test-konservu-deze-400-monoproteinas"
+   },
+   {
+    "ID": 34946,
+    "pav": "TEST Konservu deze 400 Visi skoniai",
+    "st": "publish",
+    "grupe": "kons_sunims",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-400-visi-skoniai/",
+    "slug": "test-konservu-deze-400-visi-skoniai"
+   },
+   {
+    "ID": 34947,
+    "pav": "TEST Konservu deze katei Isrankioms",
+    "st": "publish",
+    "grupe": "kons_kates",
+    "iejimas": "",
+    "matomumas": "hidden",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-katei-isrankioms/",
+    "slug": "test-konservu-deze-katei-isrankioms"
+   },
+   {
+    "ID": 34948,
+    "pav": "TEST Konservu deze katei Be vistienos",
+    "st": "publish",
+    "grupe": "kons_kates",
+    "iejimas": "",
+    "matomumas": "visible",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/",
+    "slug": "test-konservu-deze-katei-be-vistienos"
+   }
+  ],
+  "slug_patikra": {
+   "susidek-konservu-rinkini-sunims": {
+    "irasas": "ne",
+    "kategorija": "ne"
+   },
+   "susidek-konservu-rinkini-katems": {
+    "irasas": "ne",
+    "kategorija": "ne"
+   },
+   "susidek-skanestu-rinkini-sunims": {
+    "irasas": "ne",
+    "kategorija": "ne"
+   },
+   "susidek-skanestu-rinkini-katems": {
+    "irasas": "ne",
+    "kategorija": "ne"
+   },
+   "susidek-kramtalu-rinkini-sunims": {
+    "irasas": "ne",
+    "kategorija": "ne"
+   }
+  }
+ },
+ "statusai": [
+  {
+   "t": "Konservų rinkiniai",
+   "url": "https://dev.avesa.lt/kategorija/rinkiniai/konservu-rinkiniai/",
+   "s": 200,
+   "loc": ""
+  },
+  {
+   "t": "Skanėstų rinkiniai",
+   "url": "https://dev.avesa.lt/kategorija/rinkiniai/skanestu-rinkiniai/",
+   "s": 200,
+   "loc": ""
+  },
+  {
+   "t": "Kramtalų rinkiniai",
+   "url": "https://dev.avesa.lt/kategorija/rinkiniai/kramtalu-rinkiniai/",
+   "s": 200,
+   "loc": ""
+  },
+  {
+   "t": "RINKINIAI",
+   "url": "https://dev.avesa.lt/kategorija/rinkiniai/",
+   "s": 200,
+   "loc": ""
+  },
+  {
+   "t": "Paruošti rinkiniai",
+   "url": "https://dev.avesa.lt/kategorija/rinkiniai/",
+   "s": 200,
+   "loc": ""
+  },
+  {
+   "t": "Susidėk konservų rinkinį šunims",
+   "url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-sunims/",
+   "s": 404,
+   "loc": ""
+  },
+  {
+   "t": "Susidėk konservų rinkinį katėms",
+   "url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-katems/",
+   "s": 404,
+   "loc": ""
+  },
+  {
+   "t": "Susidėk skanėstų rinkinį šunims",
+   "url": "https://dev.avesa.lt/product/susidek-skanestu-rinkini-jautresniam-suniui-testas/",
+   "s": 404,
+   "loc": ""
+  },
+  {
+   "t": "Susidėk skanėstų rinkinį katėms",
+   "url": "https://dev.avesa.lt/product/susidek-skanestu-rinkini-katei-testas/",
+   "s": 404,
+   "loc": ""
+  },
+  {
+   "t": "Susidėk kramtalų rinkinį šunims",
+   "url": "https://dev.avesa.lt/product/susidek-kramtalu-rinkini-suniui-testas/",
+   "s": 404,
+   "loc": ""
+  }
+ ],
+ "deaktyvuota": 3647
+}
