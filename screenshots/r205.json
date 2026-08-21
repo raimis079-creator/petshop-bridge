@@ -1,0 +1,88 @@
+{
+ "versija": "R205",
+ "sukurta": 3648,
+ "DRY": {
+  "v": "R205",
+  "rezimas": "DRY",
+  "eilutes": [
+   {
+    "meniu_id": 34248,
+    "meniu_pav": "Susidėk konservų rinkinį šunims",
+    "lauko_id": 34944,
+    "lauko_pav": "Konservu deze 400 Be vistienos",
+    "lauko_busena": "publish",
+    "sena_url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-sunims/",
+    "nauja_url": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+    "saugiklis": "OK"
+   },
+   {
+    "meniu_id": 34249,
+    "meniu_pav": "Susidėk konservų rinkinį katėms",
+    "lauko_id": 34948,
+    "lauko_pav": "TEST Konservu deze katei Be vistienos",
+    "lauko_busena": "publish",
+    "sena_url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-katems/",
+    "nauja_url": "https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/",
+    "saugiklis": "OK"
+   }
+  ]
+ },
+ "visi_ok": true,
+ "APPLY": {
+  "v": "R205",
+  "rezimas": "APPLY",
+  "eilutes": [
+   {
+    "meniu_id": 34248,
+    "meniu_pav": "Susidėk konservų rinkinį šunims",
+    "lauko_id": 34944,
+    "lauko_pav": "Konservu deze 400 Be vistienos",
+    "lauko_busena": "publish",
+    "sena_url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-sunims/",
+    "nauja_url": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+    "saugiklis": "OK",
+    "irasyta": "OK",
+    "po": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/"
+   },
+   {
+    "meniu_id": 34249,
+    "meniu_pav": "Susidėk konservų rinkinį katėms",
+    "lauko_id": 34948,
+    "lauko_pav": "TEST Konservu deze katei Be vistienos",
+    "lauko_busena": "publish",
+    "sena_url": "https://dev.avesa.lt/product/susidek-konservu-rinkini-katems/",
+    "nauja_url": "https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/",
+    "saugiklis": "OK",
+    "irasyta": "OK",
+    "po": "https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/"
+   }
+  ]
+ },
+ "meniu_html": [
+  "<a href=\"#\">Susidėk savo rinkinį</a>",
+  "<a href=\"https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/\">Susidėk konservų rinkinį šunims</a>",
+  "<a href=\"https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/\">Susidėk konservų rinkinį katėms</a>",
+  "<a href=\"https://dev.avesa.lt/product/susidek-skanestu-rinkini-jautresniam-suniui-testas/\">Susidėk skanėstų rinkinį šunims</a>",
+  "<a href=\"https://dev.avesa.lt/product/susidek-skanestu-rinkini-katei-testas/\">Susidėk skanėstų rinkinį katėms</a>",
+  "<a href=\"https://dev.avesa.lt/product/susidek-kramtalu-rinkini-suniui-testas/\">Susidėk kramtalų rinkinį šunims</a>",
+  "<a href=\"#\">Susidėk savo rinkinį</a>",
+  "<a href=\"https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/\">Susidėk konservų rinkinį šunims</a>",
+  "<a href=\"https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/\">Susidėk konservų rinkinį katėms</a>",
+  "<a href=\"https://dev.avesa.lt/product/susidek-skanestu-rinkini-jautresniam-suniui-testas/\">Susidėk skanėstų rinkinį šunims</a>",
+  "<a href=\"https://dev.avesa.lt/product/susidek-skanestu-rinkini-katei-testas/\">Susidėk skanėstų rinkinį katėms</a>",
+  "<a href=\"https://dev.avesa.lt/product/susidek-kramtalu-rinkini-suniui-testas/\">Susidėk kramtalų rinkinį šunims</a>"
+ ],
+ "statusai": [
+  {
+   "t": "Susidėk konservų rinkinį šunims",
+   "url": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+   "s": 200
+  },
+  {
+   "t": "Susidėk konservų rinkinį katėms",
+   "url": "https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/",
+   "s": 200
+  }
+ ],
+ "deaktyvuota": 3648
+}
