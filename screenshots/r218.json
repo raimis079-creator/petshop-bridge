@@ -1,0 +1,98 @@
+{
+ "versija": "R218",
+ "sukurta": 3662,
+ "DUOM": {
+  "v": "R218",
+  "fee_kabliukai": {
+   "woocommerce_cart_calculate_fees": [
+    "closure @ functions.php:35 (pr 10)"
+   ]
+  },
+  "wc_fee_opcijos": [
+   {
+    "option_name": "widget_null-instagram-feed",
+    "v": "a:4:{i:3;a:0:{}i:4;a:6:{s:5:\"title\";s:9:\"Instagram\";s:8:\"username\";s:21:\"beautifuldestinations\";s:6:\"number\";s:2:\"10\";s:"
+   },
+   {
+    "option_name": "snapchat_product_feed_id",
+    "v": ""
+   },
+   {
+    "option_name": "snapchat_feed_status",
+    "v": "empty"
+   },
+   {
+    "option_name": "reddit_product_feed_id",
+    "v": ""
+   },
+   {
+    "option_name": "reddit_feed_status",
+    "v": "empty"
+   },
+   {
+    "option_name": "wcpay_has_affected_auth_fee_orders",
+    "v": "no_affected_orders"
+   },
+   {
+    "option_name": "petshop_feeding_calc_enabled",
+    "v": "1"
+   },
+   {
+    "option_name": "petshop_feeding_calc_kill",
+    "v": "0"
+   },
+   {
+    "option_name": "ps_feeds_raktas",
+    "v": "UBRp7FXGgIp5eeKqp07uOzuK"
+   },
+   {
+    "option_name": "ps_feeds_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-08-21 04:30:19\";s:10:\"statistika\";a:8:{s:7:\"versija\";s:5:\"2.2.0\";s:3:\"dry\";i:0;s:9:\"kandidatu"
+   }
+  ],
+  "mokescio_saltiniai": {
+   "SNIP 1655 AKTYVUS": "FTA (temp)",
+   "SNIP 1656 AKTYVUS": "FTA (temp)",
+   "SNIP 3662 AKTYVUS": "ZZ R218 Krepselio mokestis"
+  },
+  "shipping_zonos": [
+   "Neringos savivaldybe · VENIPAK paštomatai/atsiėmimo punktai · shopup_venipak_shipping_pickup_method · on",
+   "Neringos savivaldybe · VENIPAK Kurjeris · shopup_venipak_shipping_courier_method · on",
+   "Neringos savivaldybe · LP Express · woo_lithuaniapost_lpexpress_terminal · on",
+   "Lietuva · Nemokamas pristatymas · free_shipping · off",
+   "Lietuva · VENIPAK Kurjeris · shopup_venipak_shipping_courier_method · on",
+   "Lietuva · VENIPAK paštomatai/atsiėmimo punktai · shopup_venipak_shipping_pickup_method · on",
+   "Lietuva · VENIPAK Kurjeris · shopup_venipak_shipping_courier_method · on",
+   "Lietuva · VENIPAK Kurjeris · shopup_venipak_shipping_courier_method · on",
+   "Lietuva · VENIPAK Kurjeris · shopup_venipak_shipping_courier_method · on",
+   "Lietuva · LP Express · woo_lithuaniapost_lpexpress_terminal · on",
+   "Lietuva · LP Express kurjeris · woo_lithuaniapost_lpexpress_terminal · on",
+   "Baltijos šalys, be LIetuvos · VENIPAK paštomatai/atsiėmimo punktai · shopup_venipak_shipping_pickup_method · on"
+  ]
+ },
+ "a11y": {
+  "kategorija": {
+   "tuscios_nuorodos": 0,
+   "antrastes": {
+    "h1": 0,
+    "h2": 1,
+    "h3": 1,
+    "h4": 2,
+    "h5": 0,
+    "h6": 0
+   }
+  },
+  "preke": {
+   "tuscios_nuorodos": 0,
+   "antrastes": {
+    "h1": 1,
+    "h2": 1,
+    "h3": 4,
+    "h4": 0,
+    "h5": 0,
+    "h6": 0
+   }
+  },
+  "psnl_check": 1
+ }
+}
