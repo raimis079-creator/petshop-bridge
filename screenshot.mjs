@@ -2,8 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjIwMSddKSA/ICRfR0VUWydwc19yMjAxJ10gOiAnJykgIT09ICdHTycpIHJldHVybjsKIGdsb2JhbCAkd3BkYjsKICRvID0gYXJyYXkoJ3YnPT4nUjIwMScpOwoKICRvWydncnVwaXVfZm90byddID0gZ2V0X29wdGlvbigncHNfbGF1a2FpX2dydXBpdV9mb3RvJyk7CiAkb1snbmF1amknXSAgICAgICA9IGdldF9vcHRpb24oJ3BzX2xhdWthaV9uYXVqaScpOwogJG9bJ3Rlc3RhaSddICAgICAgPSBnZXRfb3B0aW9uKCdwc19sYXVrYWlfdGVzdGFpJyk7CgogJGlkcyA9ICR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgcG9zdF9pZCBGUk9NIHskd3BkYi0+cG9zdG1ldGF9IFdIRVJFIG1ldGFfa2V5PSdfcHNfbGF1a2FzJyBBTkQgbWV0YV92YWx1ZT0neWVzJyIpOwogJHNhciA9IGFycmF5KCk7CiBmb3JlYWNoKCRpZHMgYXMgJGlkKXsKICAgJHAgPSBnZXRfcG9zdCgkaWQpOwogICBpZighJHApIGNvbnRpbnVlOwogICAkcHJla2VzID0gZ2V0X3Bvc3RfbWV0YSgkaWQsICdfcHNfbGF1a2FzX3ByZWtlcycsIHRydWUpOwogICAkc2FyW10gPSBhcnJheSgKICAgICAnSUQnPT4oaW50KSRpZCwKICAgICAndGl0bGUnPT4kcC0+cG9zdF90aXRsZSwKICAgICAnc3RhdHVzJz0+JHAtPnBvc3Rfc3RhdHVzLAogICAgICd0aHVtYic9PihpbnQpZ2V0X3Bvc3RfdGh1bWJuYWlsX2lkKCRpZCksCiAgICAgJ2dydXBlJz0+Z2V0X3Bvc3RfbWV0YSgkaWQsJ19wc19sYXVrYXNfZ3J1cGUnLHRydWUpLAogICAgICdzZWltYSc9PmdldF9wb3N0X21ldGEoJGlkLCdfcHNfbGF1a2FzX3NlaW1hJyx0cnVlKSwKICAgICAnem9kaXMnPT5nZXRfcG9zdF9tZXRhKCRpZCwnX3BzX2xhdWthc196b2RpcycsdHJ1ZSksCiAgICAgJ2R5ZGlzJz0+Z2V0X3Bvc3RfbWV0YSgkaWQsJ19wc19sYXVrYXNfZHlkaXMnLHRydWUpLAogICAgICd0cnVtcGFzJz0+Z2V0X3Bvc3RfbWV0YSgkaWQsJ19wc19sYXVrYXNfdHJ1bXBhcycsdHJ1ZSksCiAgICAgJ3Bha29wb3MnPT5nZXRfcG9zdF9tZXRhKCRpZCwnX3BzX2xhdWthc19wYWtvcG9zJyx0cnVlKSwKICAgICAnc2FuZGVsaXMnPT5nZXRfcG9zdF9tZXRhKCRpZCwnX3BzX2xhdWthc19zYW5kZWxpcycsdHJ1ZSksCiAgICAgJ2llamltYXMnPT5nZXRfcG9zdF9tZXRhKCRpZCwnX3BzX2xhdWthc19pZWppbWFzJyx0cnVlKSwKICAgKTsKIH0KICRvWydsYXVrYWknXSA9ICRzYXI7CgogJGYgPSAoZGVmaW5lZCgnV1BNVV9QTFVHSU5fRElSJyk/V1BNVV9QTFVHSU5fRElSOldQX0NPTlRFTlRfRElSLicvbXUtcGx1Z2lucycpLicvcGV0c2hvcC1sYXVrYWkucGhwJzsKICRvWydmYWlsYXMnXSA9IGFycmF5KCd5cmEnPT5maWxlX2V4aXN0cygkZiksICdkeWRpcyc9PkBmaWxlc2l6ZSgkZiksICdtZDUnPT5AbWQ1X2ZpbGUoJGYpKTsKICRvWydiNjQnXSA9IGJhc2U2NF9lbmNvZGUoKHN0cmluZylAZmlsZV9nZXRfY29udGVudHMoJGYpKTsKCiBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogZWNobyB3cF9qc29uX2VuY29kZSgkbywgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsKIGV4aXQ7Cn0sIDEzMSk7Cg==';
-const out={versija:'R201'};
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjIwMiddKSA/ICRfR0VUWydwc19yMjAyJ10gOiAnJykgIT09ICdHTycpIHJldHVybjsKICRvID0gYXJyYXkoJ3YnPT4nUjIwMicpOwogJGxhdWtpYW1hc19tZDUgPSAnZDFiZWI4ZjllYzQ3ZDQzMjllNTU4ZWU4NjlmM2IyZjInOwogJHVybCA9ICdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcmFpbWlzMDc5LWNyZWF0b3IvcGV0c2hvcC1icmlkZ2UvNzk2ZWU3YWE2YjcwNmIwZjU0ZWQ1NWM3NTFlZjY4ODJlN2QxMDNlNC9kZXBsb3kvcGV0c2hvcC1sYXVrYWkucGhwJzsKCiAkciA9IHdwX3JlbW90ZV9nZXQoJHVybCwgYXJyYXkoJ3RpbWVvdXQnPT42MCkpOwogaWYoaXNfd3BfZXJyb3IoJHIpKXsgJG9bJ2tsYWlkYSddID0gJHItPmdldF9lcnJvcl9tZXNzYWdlKCk7IH0KIGVsc2UgewogICAka29kYXMgPSB3cF9yZW1vdGVfcmV0cmlldmVfYm9keSgkcik7CiAgICRvWydnYXV0YSddID0gc3RybGVuKCRrb2Rhcyk7CiAgICRvWydtZDUnXSA9IG1kNSgka29kYXMpOwogICAkb1snbWQ1X29rJ10gPSAobWQ1KCRrb2RhcykgPT09ICRsYXVraWFtYXNfbWQ1KTsKICAgaWYoJG9bJ21kNV9vayddKXsKICAgICAkdCA9IEB0b2tlbl9nZXRfYWxsKCRrb2RhcywgVE9LRU5fUEFSU0UpOwogICAgICRvWydzaW50YWtzZSddID0gaXNfYXJyYXkoJHQpID8gJ09LICgnLmNvdW50KCR0KS4nIHpldG9udSknIDogJ0tMQUlEQSc7CiAgICAgaWYoaXNfYXJyYXkoJHQpKXsKICAgICAgICR0aWtzbGFzID0gKGRlZmluZWQoJ1dQTVVfUExVR0lOX0RJUicpP1dQTVVfUExVR0lOX0RJUjpXUF9DT05URU5UX0RJUi4nL211LXBsdWdpbnMnKS4nL3BldHNob3AtbGF1a2FpLnBocCc7CiAgICAgICAkb1snc2VuYXNfbWQ1J10gPSBtZDVfZmlsZSgkdGlrc2xhcyk7CiAgICAgICAkYmRpciA9IFdQX0NPTlRFTlRfRElSLicvdXBsb2Fkcy9wcy1iYWNrdXBzJzsKICAgICAgIGlmKCFpc19kaXIoJGJkaXIpKSBAd3BfbWtkaXJfcCgkYmRpcik7CiAgICAgICAkYmFrID0gJGJkaXIuJy9wZXRzaG9wLWxhdWthaS4nLmdtZGF0ZSgnWW1kLUhpcycpLicuYmFrLnBocCc7CiAgICAgICAkb1snYmFrJ10gPSBAY29weSgkdGlrc2xhcywkYmFrKSA/IGJhc2VuYW1lKCRiYWspIDogJ05FUEFWWUtPJzsKICAgICAgIGlmKCRvWydiYWsnXSAhPT0gJ05FUEFWWUtPJyl7CiAgICAgICAgICRvWydpcmFzeXRhJ10gPSBmaWxlX3B1dF9jb250ZW50cygkdGlrc2xhcywka29kYXMpICE9PSBmYWxzZSA/ICdPSycgOiAnTkVQQVZZS08nOwogICAgICAgICBjbGVhcnN0YXRjYWNoZSgpOwogICAgICAgICAkb1snbmF1amFzX21kNSddID0gbWQ1X2ZpbGUoJHRpa3NsYXMpOwogICAgICAgICAkb1snc3V0YW1wYSddID0gKCRvWyduYXVqYXNfbWQ1J10gPT09ICRsYXVraWFtYXNfbWQ1KTsKICAgICAgIH0KICAgICB9CiAgIH0KIH0KCiAvKiBQYWdhbGJpbmlhaSBkdW9tZW55cyB2ZXJpZmlrYWNpamFpICovCiAkb1snYXR0XzM1MDMwJ10gPSB3cF9nZXRfYXR0YWNobWVudF9pbWFnZV91cmwoMzUwMzAsJ3dvb2NvbW1lcmNlX3RodW1ibmFpbCcpOwogJG9bJ2F0dF8zNTAwNCddID0gd3BfZ2V0X2F0dGFjaG1lbnRfaW1hZ2VfdXJsKDM1MDA0LCd3b29jb21tZXJjZV90aHVtYm5haWwnKTsKICRvWydrbGFzZV92ZXJzaWphJ10gPSBjbGFzc19leGlzdHMoJ1BldHNob3BfTGF1a2FpJykgPyBQZXRzaG9wX0xhdWthaTo6VkVSU0lKQSA6ICduZXJhJzsKCiBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogZWNobyB3cF9qc29uX2VuY29kZSgkbywgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsKIGV4aXQ7Cn0sIDEzMSk7Cg==';
+const out={versija:'R202'};
 const miegok=(ms)=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   let sha=null;
@@ -19,17 +19,26 @@ try{
   out.snippetu_kiek=Array.isArray(visi)?visi.length:'?';
   if(Array.isArray(visi)){ for(const s of visi){ if(String(s.name||'').startsWith('TEMP')&&s.active){ await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); out.isjungta=(out.isjungta||[]).concat(s.id); } } }
   /* 1. kuriam snippeta */
-  const kunas=JSON.stringify({name:'TEMP R201 Laukai failas v1',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5});
+  const kunas=JSON.stringify({name:'TEMP R202 Laukai v1.43 deploy',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5});
   const c=await fetch(SNIP,{method:'POST',headers:A,body:kunas});
   let j=null; const ct=await c.text(); try{j=JSON.parse(ct);}catch(e){}
   out.sukurta = j&&j.id ? j.id : {s:c.status,t:ct.slice(0,300)};
   if(j&&j.id){
     await miegok(6000);
-    const r=await fetch(WP+'/?ps_r201=GO'); const t=await r.text();
+    const r=await fetch(WP+'/?ps_r202=GO'); const t=await r.text();
     try{ out.DUOM=JSON.parse(t); }catch(e){ out.DUOM={s:r.status, zalias:t.slice(0,600)}; }
-    await miegok(1500);
+    await miegok(3000);
+    /* verifikacija: ar rinkinys kataloge jau turi nuotrauka */
+    for(const [vardas,kelias] of [['preke','/product/test-konservu-deze-400-be-vistienos/'],['kategorija','/kategorija/rinkiniai/']]){
+      const rr=await fetch(WP+kelias); const hh=await rr.text();
+      out[vardas]={s:rr.status,
+        placeholder:(hh.match(/woocommerce-placeholder/g)||[]).length,
+        foto35030:(hh.match(/rinkinys-konservai-sunims|35030/g)||[]).length,
+        deze400:hh.includes('Konservu deze 400')};
+      out[vardas].img_srcs=(hh.match(/<img[^>]+class="[^"]*attachment-woocommerce_thumbnail[^"]*"[^>]*src="([^"]+)"/g)||[]).slice(0,8).map(s=>(s.match(/src="([^"]+)"/)||[])[1]);
+    }
     await fetch(SNIP+'/'+j.id,{method:'POST',headers:A,body:JSON.stringify({id:j.id,active:false})});
     out.deaktyvuota=j.id;
   }
 }catch(e){ out.klaida=String(e).slice(0,400); }
-await put('screenshots/r201.json', Buffer.from(JSON.stringify(out,null,1)), 'r201 laukai recon');
+await put('screenshots/r202.json', Buffer.from(JSON.stringify(out,null,1)), 'r202 laukai recon');
