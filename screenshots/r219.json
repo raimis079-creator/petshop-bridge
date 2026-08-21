@@ -1,0 +1,39 @@
+{
+ "versija": "R219",
+ "sukurta": 3663,
+ "DUOM": {
+  "v": "R219",
+  "uzdarinys": {
+   "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php",
+   "eilutes": "35-43",
+   "kodas": "// Mazo krepselio mokestis + pranesimai\n// ===============================================================\nadd_action( 'woocommerce_cart_calculate_fees', function() {\n    if ( is_admin() && ! defined( 'DOING_AJAX' ) ) return;\n    $threshold     = 9.00;\n    $fee           = 1.00;\n    $subtotal_incl = WC()->cart->get_subtotal() + WC()->cart->get_subtotal_tax();\n    if ( $subtotal_incl <= $threshold ) {\n        WC()->cart->add_fee( 'Mažo krepšelio mokestis', $fee, true );\n    }\n} );\n\n// Pranešimas krepšelio suvestinėje (dešinėje) po mokesčio eilute\nadd_action('woocommerce_cart_totals_after_order_total', function() {\n"
+  },
+  "fta": [
+   {
+    "id": "1655",
+    "name": "FTA (temp)",
+    "active": "-1",
+    "scope": "front-end",
+    "priority": "5",
+    "ilgis": 4310,
+    "kodas": "\nadd_action('wp_loaded', function(){\n  if(!isset($_GET['ps_fta']) || $_GET['ps_fta']!=='APPLY_FT26') return;\n  global $wpdb; $t=$wpdb->prefix.'ps_pets'; $b=$wpdb->prefix.'ps_pets_bak_20260726_ft';\n  $o=array('zingsniai'=>array());\n  $d=WP_PLUGIN_DIR.'/petshop-core/';\n  // SHA PRIES (Feeding_Service turi likti nepakites)\n  $sha_pries=array(\n    'service'=>substr(hash_file('sha256',$d.'includes/class-feeding-service.php'),0,16),\n    'calculator'=>substr(hash_file('sha256',$d.'includes/class-feeding-calculator.php'),0,16),\n    'calc_rest'=>substr(hash_file('sha256',WPMU_PLUGIN_DIR.'/petshop-feeding-calc-rest.php'),0,16),\n  );\n\n  // 1. BACKUP\n  $orig=(int)$wpdb->get_var(\"SELECT COUNT(*) FROM $t\");\n  if(!$wpdb->get_var(\"SHOW TABLES LIKE '$b'\")){\n    $wpdb->query(\"CREATE TABLE $b LIKE $t\");\n    $wpdb->query(\"INSERT INTO $b SELECT * FROM $t\");\n    $o['zingsniai'][]='backup sukurtas';\n  } else { $o['zingsniai'][]='backup JAU BUVO'; }\n  $bak=(int)$wpdb->get_var(\"SELECT COUNT(*) FROM $b\");\n  if($bak !== $orig){ $o['NUTRAUKTA']=\"backup $bak != originalas $orig\"; header('Content-Type: application/json'); echo json_encode($o); exit; }\n  $o['zingsniai'][]=\"backup patikrintas: $bak = $orig\";\n\n  // 2. STULPELIAI\n  $cols=$wpdb->get_col(\"SHOW COLUMNS FROM $t\");\n  if(!in_array('feeding_type_other',$cols)){ $wpdb->query(\"ALTER TABLE $t ADD feeding_type_other VARCHAR(150) NULL AFTER feeding_type\");"
+   },
+   {
+    "id": "1656",
+    "name": "FTA (temp)",
+    "active": "-1",
+    "scope": "front-end",
+    "priority": "5",
+    "ilgis": 4310,
+    "kodas": "\nadd_action('wp_loaded', function(){\n  if(!isset($_GET['ps_fta']) || $_GET['ps_fta']!=='APPLY_FT26') return;\n  global $wpdb; $t=$wpdb->prefix.'ps_pets'; $b=$wpdb->prefix.'ps_pets_bak_20260726_ft';\n  $o=array('zingsniai'=>array());\n  $d=WP_PLUGIN_DIR.'/petshop-core/';\n  // SHA PRIES (Feeding_Service turi likti nepakites)\n  $sha_pries=array(\n    'service'=>substr(hash_file('sha256',$d.'includes/class-feeding-service.php'),0,16),\n    'calculator'=>substr(hash_file('sha256',$d.'includes/class-feeding-calculator.php'),0,16),\n    'calc_rest'=>substr(hash_file('sha256',WPMU_PLUGIN_DIR.'/petshop-feeding-calc-rest.php'),0,16),\n  );\n\n  // 1. BACKUP\n  $orig=(int)$wpdb->get_var(\"SELECT COUNT(*) FROM $t\");\n  if(!$wpdb->get_var(\"SHOW TABLES LIKE '$b'\")){\n    $wpdb->query(\"CREATE TABLE $b LIKE $t\");\n    $wpdb->query(\"INSERT INTO $b SELECT * FROM $t\");\n    $o['zingsniai'][]='backup sukurtas';\n  } else { $o['zingsniai'][]='backup JAU BUVO'; }\n  $bak=(int)$wpdb->get_var(\"SELECT COUNT(*) FROM $b\");\n  if($bak !== $orig){ $o['NUTRAUKTA']=\"backup $bak != originalas $orig\"; header('Content-Type: application/json'); echo json_encode($o); exit; }\n  $o['zingsniai'][]=\"backup patikrintas: $bak = $orig\";\n\n  // 2. STULPELIAI\n  $cols=$wpdb->get_col(\"SHOW COLUMNS FROM $t\");\n  if(!in_array('feeding_type_other',$cols)){ $wpdb->query(\"ALTER TABLE $t ADD feeding_type_other VARCHAR(150) NULL AFTER feeding_type\");"
+   }
+  ],
+  "temp_aktyvus": [
+   "512 · Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+   "2515 · Petshop Sources v2.2 (registras + palaikymas + sandelio pildymas)"
+  ],
+  "varnele": {
+   "SNIP 3663 AKTYVUS": "ZZ R219 Mokescio kodas"
+  }
+ }
+}
