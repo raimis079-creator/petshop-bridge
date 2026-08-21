@@ -1,30 +1,114 @@
 {
  "versija": "R185",
- "snippet_id": "KLAIDA 403 Host not in allowlist: dev.avesa.lt. Add this host to your network egress settings to allow access.",
+ "snippet_id": 3635,
  "RECON": {
-  "ZALIAS": "Host not in allowlist: dev.avesa.lt. Add this host to your network egress settings to allow access."
+  "v": "R185",
+  "laikas": "2026-08-21 15:31:18",
+  "REZIMAS": "RECON-ONLY",
+  "php": {
+   "versija": "8.3.20",
+   "open_basedir": "/home/gyvunai2/:/tmp:/usr/share/pear",
+   "disable_functions": "link, symlink, exec, passthru, proc_close, proc_get_status, proc_open, shell_exec, system, popen, pclose",
+   "ABSPATH": "/home/gyvunai2/domains/avesa.lt/public_html/dev/",
+   "rename_egzistuoja": "TAIP"
+  },
+  "keliai": {
+   "src": "/home/gyvunai2/domains/avesa.lt/public_html/dev",
+   "src_yra": "TAIP",
+   "src_realpath": "/home/gyvunai2/domains/avesa.lt/public_html/dev",
+   "dst": "/home/gyvunai2/domains/petshop.lt/public_html",
+   "dst_yra": "TAIP",
+   "dst_is_link": "ne",
+   "dst_realpath": "/home/gyvunai2/domains/petshop.lt/public_html",
+   "dst_rasomas": "TAIP",
+   "dst_tevas_rasomas": "TAIP",
+   "src_tevas_rasomas": "TAIP",
+   "src_device": 2049,
+   "dst_device": 2049,
+   "ta_pati_fs": "TAIP"
+  },
+  "petshop_lt_domeno_katalogas": {
+   ".htpasswd": "katalogas",
+   "backups": "katalogas",
+   "logs": "katalogas",
+   "private_html": "katalogas",
+   "public_ftp": "katalogas",
+   "public_html": "katalogas",
+   "stats": "katalogas",
+   "tmp": "katalogas"
+  },
+  "dst_turinys": {
+   ".htaccess": "3193 B, 2019-10-14",
+   ".well-known": "katalogas, 2 iraszu, 2019-12-09",
+   "psvhost185.php": "187 B, 2026-08-21",
+   "robots.txt": "3461 B, 2019-10-14"
+  },
+  "src_virsus": [
+   ".htaccess",
+   "backup-run.php",
+   "index.html.backup.5a6defd0b6c8b4cd418a970086e2c0b4",
+   "index.php",
+   "watch-run.php",
+   "wp-activate.php",
+   "wp-admin/",
+   "wp-blog-header.php",
+   "wp-comments-post.php",
+   "wp-config-sample.php",
+   "wp-config.php",
+   "wp-content/",
+   "wp-cron.php",
+   "wp-includes/",
+   "wp-links-opml.php",
+   "wp-load.php",
+   "wp-login.php",
+   "wp-mail.php",
+   "wp-settings.php",
+   "wp-signup.php",
+   "wp-trackback.php",
+   "xmlrpc.php"
+  ],
+  "testas_failo_rename": {
+   "pirmyn": "OK",
+   "turinys_ok": "TAIP",
+   "atgal": "OK"
+  },
+  "testas_katalogo_rename": {
+   "pirmyn": "OK",
+   "vidus_ok": "TAIP",
+   "atgal": "OK"
+  },
+  "testas_public_html_rename": {
+   "i_sona": "OK",
+   "atgal": "OK"
+  },
+  "vhost_markeris": "SUKURTAS /home/gyvunai2/domains/petshop.lt/public_html/psvhost185.php"
  },
  "VHOST": {
   "markeris": {
-   "statusas": 403,
+   "statusas": 200,
    "sert_kam": "{\"CN\":\"petshop.lt\"}",
-   "sert_iki": "Sep 20 12:29:40 2026 GMT",
-   "kunas": "Host not in allowlist: petshop.lt. Add this host to your network egress settings to allow access."
+   "sert_iki": "Dec 31 03:03:15 2022 GMT",
+   "kunas": "PSVHOST185-OK PHP=8.3.20 HOST=petshop.lt DOCROOT=/home/gyvunai2/domains/petshop.lt/public_html"
   },
   "saknis": {
    "statusas": 403,
    "sert_kam": "{\"CN\":\"petshop.lt\"}",
-   "sert_iki": "Sep 20 12:29:40 2026 GMT",
-   "kunas": "Host not in allowlist: petshop.lt. Add this host to your network egress settings to allow access."
+   "sert_iki": "Dec 31 03:03:15 2022 GMT",
+   "kunas": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>403 Forbidden</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link href=\"/iv-error-pages/error.css\" rel=\"stylesheet\"></head><body><main><h1>403</h1><p>You don’t have permission to view this resource.</p><p><a href=\"/\">Return to Home</a></p></main><footer>Hosted at Interneto vizija</footer></body></html>\n"
   },
   "www_marker": {
-   "statusas": 403,
-   "sert_kam": "{\"CN\":\"*.petshop.lt\"}",
-   "sert_iki": "Sep 20 12:29:40 2026 GMT",
-   "kunas": "Host not in allowlist: www.petshop.lt. Add this host to your network egress settings to allow access."
+   "statusas": 200,
+   "sert_kam": "{\"CN\":\"petshop.lt\"}",
+   "sert_iki": "Dec 31 03:03:15 2022 GMT",
+   "kunas": "PSVHOST185-OK PHP=8.3.20 HOST=www.petshop.lt DOCROOT=/home/gyvunai2/domains/petshop.lt/public_html"
   }
  },
  "CLEAN": {
-  "ZALIAS": "Host not in allowlist: dev.avesa.lt. Add this host to your network egress settings to allow access."
+  "v": "R185",
+  "laikas": "2026-08-21 15:31:21",
+  "REZIMAS": "RECON-ONLY",
+  "clean": {
+   "/home/gyvunai2/domains/petshop.lt/public_html/psvhost185.php": "ISTRINTA"
+  }
  }
 }
