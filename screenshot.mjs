@@ -3,9 +3,8 @@ import https from 'node:https';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const A64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjE4OGEnXSkgPyAkX0dFVFsncHNfcjE4OGEnXSA6ICcnKSAhPT0gJ0dPJykgcmV0dXJuOwogJG8gPSBhcnJheSgndic9PidSMTg4YScpOwogJGlzID0gJy9ob21lL2d5dnVuYWkyL2RvbWFpbnMvYXZlc2EubHQvcHVibGljX2h0bWwvcGVya2VsdGktcjE4Ni5waHAnOwogJGkgID0gcnRyaW0oQUJTUEFUSCwnLycpLicvcGVya2VsdGktcjE4Ni5waHAnOwogJGtvZGFzID0gQGZpbGVfZ2V0X2NvbnRlbnRzKCRpcyk7CiBpZigka29kYXMgPT09IGZhbHNlKXsgJG9bJ1NUT1AnXT0nbW92ZXIgbmVyYXN0YXMgYXZlc2EubHQgc2FrbnlqZSc7IH0KIGVsc2UgewogICAkdCA9IEB0b2tlbl9nZXRfYWxsKCRrb2RhcywgVE9LRU5fUEFSU0UpOwogICBpZighaXNfYXJyYXkoJHQpKXsgJG9bJ1NUT1AnXT0nc2ludGFrc2VzIGtsYWlkYSc7IH0KICAgZWxzZSB7CiAgICAgJG9bJ2lyYXN5dGEnXSA9IEBmaWxlX3B1dF9jb250ZW50cygkaSwka29kYXMpICE9PSBmYWxzZSA/ICdPSycgOiAnTkUnOwogICAgICRvWydtZDVfc3V0YW1wYSddID0gKG1kNV9maWxlKCRpKSA9PT0gbWQ1KCRrb2RhcykpID8gJ1RBSVAnIDogJ05FJzsKICAgICAkb1snYXZlc2Ffa29waWphX2lzdHJpbnRhJ10gPSBAdW5saW5rKCRpcykgPyAnVEFJUCcgOiAnTkUnOwogICB9CiB9CiBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogZWNobyB3cF9qc29uX2VuY29kZSgkbyk7IGV4aXQ7Cn0sIDEzMSk7Cg=='; const B64B='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjE4OGInXSkgPyAkX0dFVFsncHNfcjE4OGInXSA6ICcnKSAhPT0gJ0dPJykgcmV0dXJuOwogJG8gPSBhcnJheSgndic9PidSMTg4YicpOwogJG9bJ3NpdGV1cmxfcHJpZXMnXSA9IGdldF9vcHRpb24oJ3NpdGV1cmwnKTsKICRvWydob21lX3ByaWVzJ10gICAgPSBnZXRfb3B0aW9uKCdob21lJyk7CiB1cGRhdGVfb3B0aW9uKCdzaXRldXJsJywnaHR0cHM6Ly9wZXRzaG9wLmx0Jyk7CiB1cGRhdGVfb3B0aW9uKCdob21lJywnaHR0cHM6Ly9wZXRzaG9wLmx0Jyk7CiB3cF9jYWNoZV9mbHVzaCgpOwogJG9bJ3NpdGV1cmxfcG8nXSA9IGdldF9vcHRpb24oJ3NpdGV1cmwnKTsKICRvWydob21lX3BvJ10gICAgPSBnZXRfb3B0aW9uKCdob21lJyk7CiAkb1snQUJTUEFUSCddICAgID0gQUJTUEFUSDsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMxKTsK';
-const RAKTAS='82e6f068b8e8b3fbbbecbaa230a2be67'; const IP='79.98.29.24';
-const out={versija:'RUN2-R188'};
+const B64B='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjE4OGInXSkgPyAkX0dFVFsncHNfcjE4OGInXSA6ICcnKSAhPT0gJ0dPJykgcmV0dXJuOwogJG8gPSBhcnJheSgndic9PidSMTg4YicpOwogJG9bJ3NpdGV1cmxfcHJpZXMnXSA9IGdldF9vcHRpb24oJ3NpdGV1cmwnKTsKICRvWydob21lX3ByaWVzJ10gICAgPSBnZXRfb3B0aW9uKCdob21lJyk7CiB1cGRhdGVfb3B0aW9uKCdzaXRldXJsJywnaHR0cHM6Ly9wZXRzaG9wLmx0Jyk7CiB1cGRhdGVfb3B0aW9uKCdob21lJywnaHR0cHM6Ly9wZXRzaG9wLmx0Jyk7CiB3cF9jYWNoZV9mbHVzaCgpOwogJG9bJ3NpdGV1cmxfcG8nXSA9IGdldF9vcHRpb24oJ3NpdGV1cmwnKTsKICRvWydob21lX3BvJ10gICAgPSBnZXRfb3B0aW9uKCdob21lJyk7CiAkb1snQUJTUEFUSCddICAgID0gQUJTUEFUSDsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIHdwX2pzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSwgMTMxKTsK'; const IP='79.98.29.24';
+const out={versija:'RUN3-R189'};
 const miegok=(ms)=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   let sha=null;
@@ -16,73 +15,55 @@ async function put(path,buf,msg){
 async function api(p,o={}){ try{const r=await fetch(WP+p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); return {s:r.status,t:await r.text()};}catch(e){return {s:0,t:String(e).slice(0,200)};} }
 function ipReq(host, path, opt={}){
   return new Promise((resolve)=>{
-    const req=https.request({host:IP, port:443, path, method:opt.method||'GET', servername:host, rejectUnauthorized:false,
-      headers:{Host:host,'User-Agent':'ps-run2',...(opt.headers||{})}}, (res)=>{
-      let d=''; res.on('data',c=>{ if(d.length<6000) d+=c; }); res.on('end',()=>resolve({s:res.statusCode, loc:res.headers.location||null, t:d}));
+    const body = opt.body || null;
+    const hdr = {Host:host,'User-Agent':'ps-run3',...(opt.headers||{})};
+    if(body) hdr['Content-Length'] = Buffer.byteLength(body);
+    const req=https.request({host:IP, port:443, path, method:opt.method||'GET', servername:host, rejectUnauthorized:false, headers:hdr}, (res)=>{
+      let d=''; res.on('data',c=>{ if(d.length<8000) d+=c; }); res.on('end',()=>resolve({s:res.statusCode, loc:res.headers.location||null, t:d}));
     });
     req.on('error',(e)=>resolve({s:0,t:String(e).slice(0,200)}));
     req.setTimeout(30000,()=>{req.destroy(); resolve({s:0,t:'timeout'});});
-    if(opt.body) req.write(opt.body);
+    if(body) req.write(body);
     req.end();
   });
 }
 async function ipApi(host,p,o={}){ return ipReq(host,p,{...o,headers:{Authorization:AUTH,'Content-Type':'application/json',...(o.headers||{})}}); }
 try{
-  /* 0. TEMP isjungimas + mover perkelimas i dev sakni */
+  /* 1. R188b per dev tilta (stubu grandine) */
   const ls=await api('/wp-json/code-snippets/v1/snippets');
   let sar=[]; try{sar=JSON.parse(ls.t);}catch(e){}
+  out.dev_rest = {s:ls.s, kiek:Array.isArray(sar)?sar.length:'?'};
   for(const s of (Array.isArray(sar)?sar:[])){ if(String(s.name||'').startsWith('TEMP') && s.active){ await api('/wp-json/code-snippets/v1/snippets/'+s.id,{method:'POST',body:JSON.stringify({id:s.id,active:false})}); } }
-  const cA=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP R188a Mover i dev sakni',code:Buffer.from(A64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
-  let jA=null; try{jA=JSON.parse(cA.t);}catch(e){}
-  await miegok(8000);
-  const r0=await fetch(WP+'/?ps_r188a=GO'); try{ out.MOVER_PERKELTAS=JSON.parse(await r0.text()); }catch(e){ out.MOVER_PERKELTAS={ZALIAS:'?'}; }
-  if(jA&&jA.id) await api('/wp-json/code-snippets/v1/snippets/'+jA.id,{method:'POST',body:JSON.stringify({id:jA.id,active:false})});
-  if(!out.MOVER_PERKELTAS || out.MOVER_PERKELTAS.md5_sutampa!=='TAIP'){ out.STOP='mover neperkeltas — perkelimas NEDAROMAS'; throw new Error('stop'); }
-
-  /* 1. BUKLE per dev */
-  const rb=await fetch(WP+'/perkelti-r186.php?raktas='+RAKTAS+'&veiksmas=BUKLE');
-  try{ out.PRIES=JSON.parse(await rb.text()); }catch(e){ out.PRIES={ZALIAS:'?'}; }
-  if(!out.PRIES || out.PRIES.src_yra_wp!=='TAIP' || out.PRIES.dst_yra_wp!=='NE' || out.PRIES.old_yra!=='TAIP'&&out.PRIES.old_yra!=='NE'){ }
-  if(out.PRIES.src_yra_wp!=='TAIP' || out.PRIES.dst_yra_wp==='TAIP' || out.PRIES.old_yra==='TAIP'){ out.STOP='BUKLE saugikliai nepraeina'; throw new Error('stop'); }
-
-  /* 2. PIRMYN — pats perkelimas */
-  const rp=await fetch(WP+'/perkelti-r186.php?raktas='+RAKTAS+'&veiksmas=PIRMYN');
-  try{ out.PERKELIMAS=JSON.parse(await rp.text()); }catch(e){ out.PERKELIMAS={ZALIAS:'nepavyko perskaityti'}; }
-  if(!out.PERKELIMAS || out.PERKELIMAS.patikra_dst_wpconfig!=='TAIP'){ out.STOP='PIRMYN nepatvirtintas'; throw new Error('stop'); }
-  await miegok(4000);
-
-  /* 3. Patikra: WP gyvas naujoje vietoje (dar senas siteurl — laukiam redirect arba 200) */
-  out.PO_PERKELIMO = {};
-  out.PO_PERKELIMO.titulinis = await ipReq('petshop.lt','/');
-  out.PO_PERKELIMO.titulinis.t = (out.PO_PERKELIMO.titulinis.t||'').slice(0,300);
-  out.PO_PERKELIMO.wplogin = await ipReq('petshop.lt','/wp-login.php');
-  out.PO_PERKELIMO.wplogin.t = (out.PO_PERKELIMO.wplogin.t||'').slice(0,120);
-
-  /* 4. siteurl -> https://petshop.lt per IP prisegta REST */
-  const cB=await ipApi('petshop.lt','/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP R188b Site URL i petshop.lt',code:Buffer.from(B64B,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  const cB=await api('/wp-json/code-snippets/v1/snippets',{method:'POST',body:JSON.stringify({name:'TEMP R188b Site URL i petshop.lt',code:Buffer.from(B64B,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
   let jB=null; try{jB=JSON.parse(cB.t);}catch(e){}
-  out.SNIPPET_B = jB&&jB.id ? jB.id : ('KLAIDA '+cB.s+' '+String(cB.t).slice(0,200));
+  out.snippet_id = jB&&jB.id ? jB.id : ('KLAIDA '+cB.s+' '+String(cB.t).slice(0,150));
+  if(!(jB&&jB.id)) throw new Error('stop');
   await miegok(8000);
-  const ru=await ipReq('petshop.lt','/?ps_r188b=GO');
-  try{ out.SITEURL=JSON.parse(ru.t); }catch(e){ out.SITEURL={ZALIAS:String(ru.t).slice(0,300), s:ru.s, loc:ru.loc}; }
-  if(jB&&jB.id) await ipApi('petshop.lt','/wp-json/code-snippets/v1/snippets/'+jB.id,{method:'POST',body:JSON.stringify({id:jB.id,active:false})});
-
-  /* 5. Galutines patikros */
+  const ru=await fetch(WP+'/?ps_r188b=GO');
+  try{ out.SITEURL=JSON.parse(await ru.text()); }catch(e){ out.SITEURL={s:ru.status}; }
+  await api('/wp-json/code-snippets/v1/snippets/'+jB.id,{method:'POST',body:JSON.stringify({id:jB.id,active:false})});
   await miegok(3000);
-  out.GALUTINES = {};
-  const t1 = await ipReq('petshop.lt','/');
-  out.GALUTINES.titulinis = {s:t1.s, loc:t1.loc, title:(String(t1.t).match(/<title>[^<]*/)||[''])[0], turi_petshop_nuorodas: String(t1.t).includes('https://petshop.lt')?'TAIP':'ne'};
-  const t2 = await ipReq('www.petshop.lt','/');
-  out.GALUTINES.www = {s:t2.s, loc:t2.loc};
-  const t3 = await ipReq('petshop.lt','/wp-login.php');
-  out.GALUTINES.wplogin = {s:t3.s};
-  const t4 = await ipApi('petshop.lt','/wp-json/code-snippets/v1/snippets');
+
+  /* 2. Galutines patikros per IP prisegta petshop.lt */
+  out.PATIKROS={};
+  const t1=await ipReq('petshop.lt','/');
+  out.PATIKROS.titulinis={s:t1.s, loc:t1.loc, title:(String(t1.t).match(/<title>[^<]{0,90}/)||[''])[0], petshop_asset:String(t1.t).includes('https://petshop.lt/wp-content')?'TAIP':'ne', dev_liekanu:String(t1.t).includes('dev.avesa.lt')?'YRA':'nera'};
+  const t2=await ipReq('www.petshop.lt','/');
+  out.PATIKROS.www={s:t2.s, loc:t2.loc};
+  const t3=await ipReq('petshop.lt','/wp-login.php');
+  out.PATIKROS.wplogin={s:t3.s};
+  const t4=await ipApi('petshop.lt','/wp-json/code-snippets/v1/snippets');
   let s4=[]; try{s4=JSON.parse(t4.t);}catch(e){}
-  out.GALUTINES.rest_snippetai = {s:t4.s, kiek:Array.isArray(s4)?s4.length:('?'+String(t4.t).slice(0,120))};
-  const t5 = await ipReq('petshop.lt','/parduotuve/');
-  out.GALUTINES.parduotuve = {s:t5.s, loc:t5.loc};
-  /* dev stubai */
-  const d1 = await fetch(WP+'/wp-load.php'); out.GALUTINES.dev_wp_load_stub = {s:d1.status};
-  const d2 = await fetch(WP+'/', {redirect:'manual'}); out.GALUTINES.dev_titulinis = {s:d2.status, loc:d2.headers.get('location')};
+  out.PATIKROS.rest_ip={s:t4.s, kiek:Array.isArray(s4)?s4.length:String(t4.t).slice(0,100)};
+  const t5=await ipReq('petshop.lt','/parduotuve/');
+  out.PATIKROS.parduotuve={s:t5.s, turi_prekiu:String(t5.t).includes('product')?'TAIP':'ne'};
+  const t6=await ipReq('petshop.lt','/wp-json/wp/v2/product?per_page=1');
+  out.PATIKROS.wp_v2={s:t6.s, ok:String(t6.t).startsWith('[')?'TAIP':'ne'};
+  /* dev stubai po siteurl pakeitimo */
+  const d1=await fetch(WP+'/', {redirect:'manual'}); out.PATIKROS.dev_titulinis={s:d1.status, loc:d1.headers.get('location')};
+  const d2=await fetch(WP+'/wp-load.php'); out.PATIKROS.dev_wp_load_stub={s:d2.status};
+  const d3=await fetch(WP+'/wp-json/code-snippets/v1/snippets',{headers:{Authorization:AUTH}});
+  let s3=[]; try{s3=JSON.parse(await d3.text());}catch(e){}
+  out.PATIKROS.dev_rest_po={s:d3.status, kiek:Array.isArray(s3)?s3.length:'?'};
 }catch(e){ if(String(e).indexOf('stop')<0) out.klaida=String(e).slice(0,400); }
-await put('screenshots/r188.json', Buffer.from(JSON.stringify(out,null,1)), 'r188 PERKELIMAS');
+await put('screenshots/r189.json', Buffer.from(JSON.stringify(out,null,1)), 'r189 siteurl + galutines patikros');
