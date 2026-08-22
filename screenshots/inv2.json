@@ -1,91 +1,23 @@
 {
- "marker": "INVENTORIUS 2",
- "ts": "2026-08-12T14:17:30.298Z",
- "snip": 2816,
- "recon": {
-  "marker": "INV2",
-  "pid": 34907,
-  "pav": "Baltos triušio ausys, 250 g",
-  "skirtukai": {
-   "apz": {
-    "blokai": [
-     "Kaina ir marža",
-     "Šaltiniaiiš registro",
-     "Kodai ir siuntimas",
-     "Filtravimo atributai",
-     "Duomenys",
-     "Kaip sekasi",
-     "Duomenų pilnumas55 %",
-     "Kur prekė matoma"
-    ],
-    "mygtukai": [
-     "📋 [kort-kopij]",
-     "atrakinti [kort-atrakinti]"
-    ],
-    "laukai": [
-     "_sale_price",
-     "_cost_price",
-     "_sku",
-     "_ean",
-     "_weight",
-     "_ps_tik_kurjeriu"
-    ],
-    "select": []
-   },
-   "apr": {
-    "blokai": [
-     "Trumpas aprašymas169 simb.",
-     "Aprašymo tekstas🔒 užrakinta1 ankst. vers",
-     "Kaip mato pirkėjas2 sekcijos",
-     "Struktūros pilnumas1 / 3",
-     "Pagrindinė nuotrauka",
-     "Galerija0"
-    ],
-    "mygtukai": [
-     "Tekstas [kt-rez kt-rez-tekstas on]",
-     "HTML kodas [kt-rez kt-rez-kodas]",
-     "Įrašyti [kt-irasyti]",
-     "Tekstas [ka-rez ka-rez-tekstas on]",
-     "HTML kodas [ka-rez ka-rez-kodas]",
-     "Įrašyti [ka-irasyti]",
-     "Įterpti antraščių karkasą [ka-karkasas]",
-     "Grąžinti ankstesnę [ka-atsaukti]",
-     "Įkelti naują… [kn-ikelti]",
-     "Pasirinkti iš medijos… [kn-pagrindine]",
-     "Pašalinti [kn-pagrindine-salinti pav]",
-     "Įkelti į galeriją… [kn-galerija-ikelti]",
-     "Pasirinkti iš medijos… [kn-galerija]"
-    ],
-    "laukai": [],
-    "select": []
-   },
-   "prd": {
-    "blokai": [
-     "Santrauka"
-    ],
-    "laukai": [],
-    "select": []
-   },
-   "ist": {
-    "blokai": [
-     "Viskas, kas vyko su preke11"
-    ],
-    "laukai": [],
-    "select": []
-   },
-   "pak": {
-    "blokai": [
-     "GPAIS pakuotės sudėtis",
-     "Įnašas į deklaraciją"
-    ],
-    "mygtukai": [
-     "➕ Pridėti pakuotės eilutę [kpak-nauja]",
-     "Atmesti [ks-atmesti]",
-     "Įrašyti [ks-irasyti]"
-    ],
-    "laukai": [],
-    "select": []
-   }
-  }
- }
+ "v": "INV2",
+ "sukurta": 3713,
+ "R": {
+  "v": "INV2",
+  "yra": true,
+  "md5": "89b9bd4e6dcf28001bfab40ea2ec5a9b",
+  "baitai": 21549,
+  "dompdf_klase": true,
+  "logo": {
+   "url": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+   "kelias": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+   "yra": true,
+   "dydis": 23740,
+   "mime": "image/jpeg"
+  },
+  "url_sslverify_true": "cURL error 60: SSL certificate problem: unable to get local issuer certificate",
+  "url_sslverify_false": 200,
+  "file_get_contents_url": "FALSE",
+  "allow_url_fopen": "1"
+ },
+ "isjungta": 3713
 }
