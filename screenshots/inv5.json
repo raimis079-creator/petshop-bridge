@@ -1,0 +1,19 @@
+{
+ "v": "INV5",
+ "sukurta": 3716,
+ "R": {
+  "v": "INV5",
+  "kontekstas": [
+   "\t * @return void\n\t * @since 7.0\n\t */\n\tprotected function output_with_controls( $documents, $template ) {\n\n\t\t$order_ids = wp_list_pluck( $documents, 'order_id' );\n\n\t\t// PDF is generated synchronously on load for single orders only.\n\t\t// For multiple orders, dompdf processing a combined N-page document blocks\n\t\t// the entire HTTP response and causes timeouts beyond ~50 orders.\n\t\t$pdf_url = '';\n\n\t\tif ( 1 === count( $order_ids ) ) {\n\n\t\t\t$pdf_file = Service::pdf()->generate(\n\t\t\t\t$order_ids[0],\n\t\t\t\t$template,\n\t\t\t\t$documents[0]['data']\n\t\t\t);\n\n\t\t\tif ( $pdf_file ) {\n\n\t\t\t\t$upload_dir = wp_upload_dir();\n\n\t\t\t\t$pdf_url = trailingslashit( $upload_dir['baseurl'] )\n\t\t\t\t\t. 'wcdn/'",
+   "\t\t\t\t'data'     => array(\n\t\t\t\t\t'order'    => Templates_Api::format_order_data( $order, false, $template ),\n\t\t\t\t\t'shop'     => Templates_Api::get_store_data(),\n\t\t\t\t\t'document' => Templates_Api::get_document_data(),\n\t\t\t\t\t'settings' => Templates::template( $template ),\n\t\t\t\t\t'template' => $template,\n\t\t\t\t),\n\t\t\t);\n\t\t}\n\n\t\tif ( empty( $documents ) ) {\n\t\t\twp_send_json_error( array( 'message' => __( 'No valid orders found.', 'woocommerce-delivery-notes' ) ) );\n\t\t}\n\n\t\t$pdf_file = Service::pdf()->generate( $order_ids, $template, $documents );\n\n\t\tif ( ! $pdf_file ) {\n\t\t\twp_send_json_error( array( 'message' => __( 'PDF generation failed. Please try with fewer orders or check your server memory limit.', 'woocommerce-delivery-notes' ) ) );\n\t\t}\n\n\t\t$upload_dir = wp_upload_dir();\n\t\t$pdf_url    = trailingslashit( $upload_dir['baseurl'] ) . 'wcdn/' . $template . '/' . basename( $pdf_file );\n\n\t\twp_send_json_success( array( 'url' => $pdf_url ) );\n\t}\n"
+  ],
+  "generate_params": [
+   "order_id",
+   "template",
+   "data=opt",
+   "force=opt"
+  ],
+  "service_klase": true
+ },
+ "isjungta": 3716
+}
