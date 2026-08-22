@@ -1,11 +1,20 @@
 {
  "v": "H226",
- "sukurta": 3704,
- "DIEGIMAS": "klaida",
- "TESTAI": "ne-json: <!DOCTYPE html>\n<html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\">\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n\t<link rel=\"pingback\" href=\"https://dev.avesa.lt/xmlrpc.php\" />\n\n\t\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments)",
+ "sukurta": 3705,
+ "DIEGIMAS": {
+  "v": "H226",
+  "sintakse": "OK",
+  "md5": "ec960f4b74d78ee8b58ba35a7b482b3a"
+ },
+ "TESTAI": {
+  "v": "H226-TEST",
+  "intervalas": true,
+  "saugikliai": true,
+  "be_ryto": true
+ },
  "pradzia": {
   "s": 200,
   "fatal": "ne"
  },
- "isjungta": 3704
+ "isjungta": 3705
 }
