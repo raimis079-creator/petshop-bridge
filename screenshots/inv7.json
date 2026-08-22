@@ -1,0 +1,22 @@
+{
+ "v": "INV7",
+ "sukurta": 3718,
+ "R": {
+  "v": "INV7",
+  "paskutiniai_uzsakymai": [],
+  "naudojamas": 0,
+  "use": [
+   "use Tyche\\WCDN\\Helpers\\Templates;",
+   "use Tyche\\WCDN\\Helpers\\Settings;",
+   "use Tyche\\WCDN\\Services\\Template_Engine;",
+   "use Tyche\\WCDN\\Api\\Templates as Templates_Api;",
+   "use Tyche\\WCDN\\Services\\Template_Renderer;",
+   "use Tyche\\WCDN\\Service;",
+   "use Tyche\\WCDN\\Helpers\\Utils;"
+  ],
+  "Templates_Api": "Tyche\\WCDN\\Api\\Templates",
+  "Templates": "Tyche\\WCDN\\Helpers\\Templates",
+  "klaida": "uzsakymas nerastas: 0"
+ },
+ "isjungta": 3718
+}
