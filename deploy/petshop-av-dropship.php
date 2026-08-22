@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop AV Dropship v1.3 (H224) — laiško PERŽIŪRA prieš siuntimą (v1.2: ZB kelias).
+ * Petshop AV Dropship v1.4 (H225) — kiekiai su „vnt.", kad nesimaišytų su pakuotėmis (v1.3: laiško peržiūra).
  *
  * v1.2: ZB kelias užbaigtas (§19.12 uodega). ZB kortelėje: ZB kodas iš
  * ps_sources (fallback SKU), mygtukas „Kopijuoti" (kodas TAB kiekis — įklijavimui
@@ -225,7 +225,7 @@ class Petshop_AV_Dropship {
 								<?php elseif ( $e['sku'] ) : ?><span class="ps-kodas"><?php echo esc_html( $e['sku'] ); ?></span><?php endif; ?>
 								<?php if ( $rodyti_ean && $e['ean'] ) : ?><span class="ps-kodas">EAN <?php echo esc_html( $e['ean'] ); ?></span><?php endif; ?>
 							</td>
-							<td class="ps-c"><?php echo (int) $e['qty']; ?></td>
+							<td class="ps-c"><?php echo (int) $e['qty']; ?> vnt.</td>
 						</tr>
 						<?php $pirma = false; endforeach;
 						if ( $u['pakuociu'] > 1 ) : ?>
@@ -420,7 +420,7 @@ class Petshop_AV_Dropship {
 				$h .= '<td>' . esc_html( $e['pav'] );
 				if ( $e['sku'] ) { $h .= ' <span style="color:#666">' . esc_html( $e['sku'] ) . '</span>'; }
 				if ( $rodyti_ean && $e['ean'] ) { $h .= '<br><span style="color:#666;font-size:11px">EAN ' . esc_html( $e['ean'] ) . '</span>'; }
-				$h .= '</td><td align="center">' . (int) $e['qty'] . '</td></tr>';
+				$h .= '</td><td align="center" style="white-space:nowrap">' . (int) $e['qty'] . ' vnt.</td></tr>';
 				$pirma = false;
 			}
 			if ( $u['pakuociu'] > 1 ) {
