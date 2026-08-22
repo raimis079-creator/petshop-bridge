@@ -1,0 +1,40 @@
+{
+ "v": "H208",
+ "sukurta": 3685,
+ "DIEGIMAS": {
+  "v": "H208",
+  "md5": "866c64042fea06ea578f6fd5647add92",
+  "sintakse": "OK",
+  "md5_diske": "866c64042fea06ea578f6fd5647add92"
+ },
+ "TESTAI": {
+  "v": "H208-TEST",
+  "ps_sources_stulpeliai": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "zb_kodas_17394_monge": "FALLBACK",
+  "zb_gryna_preke": "6349 sku=01KOM053 -> 01KOM053",
+  "lipdukas_hook": true,
+  "zb_done_hook": true,
+  "zyme_uzdeta": true,
+  "zyme_atstatyta": "TAIP",
+  "lipdukas_34886": "NEPAVYKO"
+ },
+ "pradzia": {
+  "s": 200,
+  "fatal": "ne"
+ },
+ "isjungta": 3685
+}
