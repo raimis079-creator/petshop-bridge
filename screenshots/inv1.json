@@ -1,0 +1,179 @@
+{
+ "v": "INV1",
+ "sukurta": 3712,
+ "R": {
+  "v": "INV1",
+  "wcdn_settings": {
+   "storeName": "UAB Avesa",
+   "storeLogo": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+   "storeAddress": "Liucionių g. 46, Liucionių k.<br />Nemenčinės sen., Vilniaus r., 15166<br />Lietuva",
+   "email": "terra@petshop.lt",
+   "phone": "+370 681 87787",
+   "footerText": "",
+   "complimentaryClose": "",
+   "policies": "",
+   "printEndpoint": "print-order",
+   "defaultDocumentLabel": "Document",
+   "textDirection": "ltr",
+   "enablePDF": true,
+   "pdfPaperSize": "A4",
+   "pdfUseCurrencyCode": true,
+   "showCustomerEmailLink": true,
+   "customerEmailText": "Peržiūrėti ir spausdinti",
+   "showAdminEmailLink": true,
+   "adminEmailText": "Print order",
+   "showViewOrderButton": true,
+   "showPrintButtonMyAccountPage": true,
+   "autoPrintDialog": false,
+   "viewOrderButtonLabel": "Spausdinti",
+   "invoiceButtonLabel": "Spausdinti sąskaitą",
+   "deliveryNoteButtonLabel": "Spausdinti važtaraštį",
+   "receiptButtonLabel": "Spausdinti kvitą",
+   "creditNoteButtonLabel": "Spausdinti kreditinę sąskaitą",
+   "packingSlipButtonLabel": "Spausdinti važtaraštį",
+   "processingTemplate": "invoice",
+   "processingAuto": false,
+   "processingAttach": false,
+   "completedTemplate": "invoice",
+   "completedAuto": true,
+   "completedAttach": false,
+   "refundedTemplate": "invoice",
+   "refundedAuto": false,
+   "refundedAttach": false,
+   "enablePayNow": true,
+   "enablePDFStorage": false,
+   "invoiceNumberFormat": "AVPN{order_number}",
+   "numberDaysPdfExpiration": 7,
+   "myAccountPageButtonLabel": "Spausdinti",
+   "resetInvoiceNumberYearly": false
+  },
+  "engines": {
+   "dompdf": true,
+   "mpdf": false,
+   "tcpdf": false,
+   "html2pdf": false
+  },
+  "plugins": [
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php"
+  ],
+  "failai_su_IAPV": [
+   {
+    "f": "wp-content/themes/flatsome-child/woocommerce-delivery-notes/base.php",
+    "kb": 21
+   },
+   {
+    "f": "wp-content/themes/flatsome-child/functions.php",
+    "kb": 79
+   }
+  ],
+  "logo_eilutes": {
+   "wp-content/themes/flatsome-child/woocommerce-pip/invoice.php": [
+    "// Logo URL",
+    "$logo_id  = get_theme_mod( 'custom_logo' );",
+    "$logo_url = $logo_id ? wp_get_attachment_image_url( $logo_id, 'full' ) : '';",
+    ".hdr-logo  { display: table-cell; width: 22%; vertical-align: middle; }",
+    ".hdr-logo img { max-height: 55px; max-width: 140px; }",
+    "    <div class=\"hdr-logo\">",
+    "        <?php if ( $logo_url ) : ?>",
+    "            <img src=\"<?php echo esc_url( $logo_url ); ?>\" alt=\"<?php echo esc_attr( $seller['name'] ); ?>\">"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/views/extensions.php": [
+    "\t\t\t\t\t\t<td><img src=\"<?php echo esc_url( WPO_WCPDF()->plugin_url() . '/assets/images/cloud-print.png' ); ?>\" class=\"cloud-logo\"></td>"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/views/setup-wizard/logo.php": [
+    "\t<h2><?php esc_html_e( 'Your logo', 'woocommerce-pdf-invoices-packing-slips' ); ?></h2>",
+    "\t\t\t'setting_name'         => 'wcpdf_settings[wpo_wcpdf_settings_general][header_logo]',",
+    "\t\t\t'id'                   => 'header_logo',",
+    "\t\t\t'uploader_title'       => __( 'Select or upload your invoice header/logo', 'woocommerce-pdf-invoices-packing-slips' ),"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/templates/Simple/invoice.php": [
+    "\t\t\t<?php if ( $this->has_header_logo() ) : ?>",
+    "\t\t\t\t<?php do_action( 'wpo_wcpdf_before_shop_logo', $this->get_type(), $this->order ); ?>",
+    "\t\t\t\t<?php $this->header_logo(); ?>",
+    "\t\t\t\t<?php do_action( 'wpo_wcpdf_after_shop_logo', $this->get_type(), $this->order ); ?>",
+    "<?php if ( $this->has_header_logo() ) : ?>"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/templates/Simple/packing-slip.php": [
+    "\t\t\t<?php if ( $this->has_header_logo() ) : ?>",
+    "\t\t\t\t<?php do_action( 'wpo_wcpdf_before_shop_logo', $this->get_type(), $this->order ); ?>",
+    "\t\t\t\t<?php $this->header_logo(); ?>",
+    "\t\t\t\t<?php do_action( 'wpo_wcpdf_after_shop_logo', $this->get_type(), $this->order ); ?>",
+    "<?php if ( $this->has_header_logo() ) : ?>"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/Settings.php": [
+    "\t\t// AJAX get header logo setting HTML",
+    "\t\t\t'header_logo'             => $this->general_settings['header_logo'] ?? '',",
+    "\t\t\t'header_logo_height'      => $this->general_settings['header_logo_height'] ?? '',"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/Documents/OrderDocument.php": [
+    "\tpublic function has_header_logo() {",
+    "\t\treturn ! empty( $this->settings['header_logo'] );",
+    "\t * Return logo id",
+    "\tpublic function get_header_logo_id(): int {",
+    "\t\t$header_logo_id = ! empty( $this->settings['header_logo'] ) ? $this->get_settings_text( 'header_logo', 0, false ) : 0;",
+    "\t\t$header_logo_id = apply_filters( 'wpo_wcpdf_header_logo_id', $header_logo_id, $this );",
+    "\t\treturn $header_logo_id && is_numeric( $header_logo_id ) ? absint( $header_logo_id ) : 0;",
+    "\t * Return logo height",
+    "\tpublic function get_header_logo_height() {",
+    "\t\tif ( ! empty( $this->settings['header_logo_height'] ) ) {",
+    "\t\t\treturn apply_filters( 'wpo_wcpdf_header_logo_height', str_replace( ' ', '', $this->settings['header_logo_height'] ), $this );",
+    "\t * Show logo HTML"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/Makers/PDFMaker.php": [
+    "\t\t\t'logOutputFile'           => WPO_WCPDF()->main->get_tmp_path( 'dompdf' ) . \"/log.htm\","
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/Settings/SettingsCallbacks.php": [
+    "\t\t\t$header_logo_height = ! empty( $general_settings['header_logo_height'] ) ? $general_settings['header_logo_height'] : '3cm';",
+    "\t\t\tif ( false !== stripos( $header_logo_height, 'mm' ) ) {",
+    "\t\t\t\t$in_height = floatval( $header_logo_height ) / 25.4;",
+    "\t\t\t} elseif ( false !== stripos( $header_logo_height, 'cm' ) ) {",
+    "\t\t\t\t$in_height = floatval( $header_logo_height ) / 2.54;",
+    "\t\t\t} elseif ( false !== stripos( $header_logo_height, 'in' ) ) {",
+    "\t\t\t\t$in_height = floatval( $header_logo_height );"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/Settings/SettingsGeneral.php": [
+    "\t\t\t\t'id'       => 'header_logo',",
+    "\t\t\t\t'title'    => __( 'Shop header/logo', 'woocommerce-pdf-invoices-packing-slips' ),",
+    "\t\t\t\t\t'id'                   => 'header_logo',",
+    "\t\t\t\t\t'uploader_title'       => __( 'Select or upload your invoice header/logo', 'woocommerce-pdf-invoices-packing-slips' ),",
+    "\t\t\t\t'id'       => 'header_logo_height',",
+    "\t\t\t\t'title'    => __( 'Logo height', 'woocommerce-pdf-invoices-packing-slips' ),",
+    "\t\t\t\t\t'id'          => 'header_logo_height',",
+    "\t\t\t\t\t'description' => __( 'Enter the total height of the logo in mm, cm or in and use a dot for decimals.<br/>For example: 1.15in or 40mm', 'woocommerce-pdf-invoices-packing-slips' ),",
+    "\t\t\t\t\t'header_logo',",
+    "\t\t\t\t\t'header_logo_height',"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/SetupWizard.php": [
+    "\t\t\t'logo' => array(",
+    "\t\t\t\t'name'\t=> __( 'Your logo', 'woocommerce-pdf-invoices-packing-slips' ),",
+    "\t\t\t\t'view'\t=> WPO_WCPDF()->plugin_path() . '/views/setup-wizard/logo.php',"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/Install.php": [
+    "\t\t\t\t// 'header_logo'\t\t\t\t=> '',",
+    "\t\t\t\t\t'header_logo'      => array( 'wpo_wcpdf_template_settings' => 'header_logo' ),"
+   ],
+   "wp-content/plugins/woocommerce-pdf-invoices-packing-slips/includes/Main.php": [
+    "\t\t// apply header logo height",
+    "\t\tadd_action( 'wpo_wcpdf_custom_styles', array( $this, 'set_header_logo_height' ), 9, 2 );",
+    "\t\t\t'logOutputFile'           => $this->get_tmp_path( 'dompdf' ) . \"/log.htm\",",
+    "\t * Apply header logo height from settings",
+    "\tpublic function set_header_logo_height( $document_type, $document = null ) {",
+    "\t\tif ( !empty($document) && $header_logo_height = $document->get_header_logo_height() ) {",
+    "\t\t\t\tmax-height: <?php echo esc_html( $header_logo_height ); ?>;"
+   ]
+  },
+  "skenuota_php": 4001,
+  "wcdn_dir": {
+   "kelias": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn",
+   "yra": true,
+   "paskutiniai": [
+    "Isankstine-saskaita-IAPV000149.pdf",
+    "Isankstine-saskaita-IAPV000150.pdf",
+    "Isankstine-saskaita-IAPV000151.pdf",
+    "PVM-saskaita-AVPN000237.pdf",
+    "index.html"
+   ]
+  }
+ },
+ "isjungta": 3712
+}
