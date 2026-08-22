@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop AV Dropship v1.5 (H230) — laisvas tekstas laiške (redaguojamas prierašas, matomas peržiūroje) (v1.4: kiekiai su vnt.).
+ * Petshop AV Dropship v1.6 (H231) — gyvas prierašas peržiūroje rodomas TIKROJE vietoje (prieš linkėjimus), ne apačioje (v1.5: prierašas).
  *
  * v1.2: ZB kelias užbaigtas (§19.12 uodega). ZB kortelėje: ZB kodas iš
  * ps_sources (fallback SKU), mygtukas „Kopijuoti" (kodas TAB kiekis — įklijavimui
@@ -257,9 +257,14 @@ class Petshop_AV_Dropship {
 						<div style="margin-top:10px;border:1px dashed #98262A;background:#fff;padding:14px 16px">
 							<p style="margin:0 0 8px;font-size:11px;color:#98262A;text-transform:uppercase;letter-spacing:.06em">
 								Laiško peržiūra — tema: „užsakymas <?php echo esc_html( date_i18n( 'Y-m-d' ) ); ?>" · gavėjas: <?php echo esc_html( $pastas ?: '—' ); ?></p>
-							<?php echo wp_kses_post( self::laisko_html( $src, $uzsakymai ) ); ?>
-							<p class="ps-gyva" data-src="<?php echo esc_attr( $src ); ?>"
-								style="display:none;margin:14px 0;padding:8px 10px;background:#FBF2DE;border-left:3px solid #96660C"></p>
+							<?php
+							$zyme = 'PS-GYVA-VIETA';
+							$html = self::laisko_html( $src, $uzsakymai, $zyme );
+							$gyvas = '<p class="ps-gyva" data-src="' . esc_attr( $src ) . '"'
+								. ' style="display:none;margin:14px 0;padding:8px 10px;background:#FBF2DE;border-left:3px solid #96660C"></p>';
+							$html = str_replace( '<p style="margin:14px 0">' . $zyme . '</p>', $gyvas, $html );
+							echo wp_kses_post( $html );
+							?>
 						</div>
 					<?php endif; ?>
 				<?php endif; ?>
