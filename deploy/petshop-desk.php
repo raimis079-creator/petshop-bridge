@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.19 (H214) — UI perdarymas darbui: tankios eilutės, pilni prekių pavadinimai su miniatiūromis, amžiaus indikatorius, ribos tik šviežiems, LP+dropship konfliktas → Klausimai (v3.18: filtrai/sąskaitos).
+ * Petshop Desk v3.20 (H215) — atskiri filtrų laukai (Nr./klientas/telefonas/adresas), Būsena visose eilėse, „Amžius"→„Kabo" (v3.19: UI tankumas, miniatiūros, LP konfliktas).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -763,6 +763,28 @@ class Petshop_Desk {
 		return array_slice( array_unique( array_merge( $ids, $pagal_preke, $pagal_siunta ) ), 0, 150 );
 	}
 
+	/** Tikslinė paieška atskirais laukais (Raimio filtrai). AND semantika. */
+	protected static function lauku_paieska( $f ) {
+		if ( '' === $f['nr'] && '' === $f['klientas'] && '' === $f['tel'] && '' === $f['adresas'] ) { return null; }
+		global $wpdb; $pf = $wpdb->prefix;
+		$kur = array( "o.type='shop_order'", "o.status<>'wc-checkout-draft'" );
+		$par = array();
+		if ( '' !== $f['nr'] ) { $kur[] = 'o.id LIKE %s'; $par[] = '%' . $wpdb->esc_like( $f['nr'] ) . '%'; }
+		if ( '' !== $f['klientas'] ) {
+			$kur[] = "(CONCAT(a.first_name,' ',a.last_name) LIKE %s OR o.billing_email LIKE %s OR a.company LIKE %s)";
+			$l = '%' . $wpdb->esc_like( $f['klientas'] ) . '%'; $par[] = $l; $par[] = $l; $par[] = $l;
+		}
+		if ( '' !== $f['tel'] ) { $kur[] = 'a.phone LIKE %s'; $par[] = '%' . $wpdb->esc_like( $f['tel'] ) . '%'; }
+		if ( '' !== $f['adresas'] ) {
+			$kur[] = '(a.address_1 LIKE %s OR a.city LIKE %s OR a.postcode LIKE %s)';
+			$l = '%' . $wpdb->esc_like( $f['adresas'] ) . '%'; $par[] = $l; $par[] = $l; $par[] = $l;
+		}
+		return $wpdb->get_col( $wpdb->prepare(
+			"SELECT DISTINCT o.id FROM {$pf}wc_orders o
+			 LEFT JOIN {$pf}wc_order_addresses a ON a.order_id=o.id
+			 WHERE " . implode( ' AND ', $kur ) . ' ORDER BY o.id DESC LIMIT 150', $par ) );
+	}
+
 	protected static function datos_riba( $kodas, $nuo, $iki ) {
 		$tz = wp_timezone();
 		$d  = new DateTime( 'now', $tz );
@@ -805,6 +827,16 @@ class Petshop_Desk {
 			$args['limit']    = 150;
 		}
 
+		$lids = self::lauku_paieska( $f );
+		if ( null !== $lids ) {
+			if ( ! $lids ) { return array(); }
+			$lids = isset( $args['include'] ) ? array_values( array_intersect( $args['include'], $lids ) ) : $lids;
+			if ( ! $lids ) { return array(); }
+			$args['post__in'] = $lids;
+			$args['include']  = $lids;
+			$args['limit']    = 150;
+		}
+
 		$riba = self::datos_riba( $f['data'], $f['nuo'], $f['iki'] );
 		if ( $riba ) { $args['date_created'] = $riba[0] . '...' . $riba[1]; }
 
@@ -839,7 +871,7 @@ class Petshop_Desk {
 				if ( $kl && 'klausimai' !== $eile && 'atsaukti' !== $eile ) { continue; }
 			}
 
-			if ( 'visi' === $eile && ! empty( $f['busena'] ) ) {
+			if ( ! empty( $f['busena'] ) ) {
 				$leidz = self::STATUSAI[ $f['busena'] ] ?? array();
 				if ( 'nauji' === $f['busena'] ) {
 					if ( 'nauji' !== $e ) { continue; }
@@ -949,6 +981,10 @@ class Petshop_Desk {
 			'busena'   => isset( $_GET['busena'] ) ? sanitize_key( $_GET['busena'] ) : '',
 			'mokejimas'=> isset( $_GET['mokejimas'] ) ? sanitize_key( $_GET['mokejimas'] ) : '',
 			'amzius'   => isset( $_GET['amzius'] ) ? sanitize_key( $_GET['amzius'] ) : '',
+			'nr'       => isset( $_GET['nr'] ) ? sanitize_text_field( wp_unslash( $_GET['nr'] ) ) : '',
+			'klientas' => isset( $_GET['klientas'] ) ? sanitize_text_field( wp_unslash( $_GET['klientas'] ) ) : '',
+			'tel'      => isset( $_GET['tel'] ) ? sanitize_text_field( wp_unslash( $_GET['tel'] ) ) : '',
+			'adresas'  => isset( $_GET['adresas'] ) ? sanitize_text_field( wp_unslash( $_GET['adresas'] ) ) : '',
 		);
 
 		$eilutes = self::gauti( $eile, $f );
@@ -1620,16 +1656,14 @@ class Petshop_Desk {
 				<button class="pd-btn">Rodyti</button></form>';
 		}
 
-		if ( 'visi' === $eile ) {
-			self::select( 'busena', array(
-				''         => 'Būsena: visos',
-				'nauji'    => 'Nauji',
-				'paruosta' => 'Paruošta siųsti',
-				'kelyje'   => 'Kelyje',
-				'ivykdyti' => 'Įvykdyti',
-				'atsaukti' => 'Atšaukti',
-			), $f['busena'] );
-		}
+		self::select( 'busena', array(
+			''         => 'Būsena: visos',
+			'nauji'    => 'Nauji',
+			'paruosta' => 'Paruošta siųsti',
+			'kelyje'   => 'Kelyje',
+			'ivykdyti' => 'Įvykdyti',
+			'atsaukti' => 'Atšaukti',
+		), $f['busena'] );
 
 		// Mokėjimas
 		self::select( 'mokejimas', array(
@@ -1640,18 +1674,31 @@ class Petshop_Desk {
 			'bacs'       => 'Pavedimas',
 		), $f['mokejimas'] );
 
-		// Amžius
+		// Užsigulėję
 		self::select( 'amzius', array(
-			''   => 'Amžius: visi',
+			''   => 'Kabo: visi',
 			'd2' => 'Kabo 2+ d.',
 			'd5' => 'Kabo 5+ d.',
 		), $f['amzius'] );
 
-		$aktyvus = array_filter( array( $f['vykdymas'], $f['vezejas'], $f['data'], $f['busena'], $f['q'], $f['mokejimas'], $f['amzius'] ) );
+		$aktyvus = array_filter( array( $f['vykdymas'], $f['vezejas'], $f['data'], $f['busena'], $f['q'], $f['mokejimas'], $f['amzius'], $f['nr'], $f['klientas'], $f['tel'], $f['adresas'] ) );
 		if ( $aktyvus ) {
 			echo '<a class="pd-clear" href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=' . $eile ) ) . '">Išvalyti filtrus</a>';
 		}
 		echo '</div>';
+
+		/* ANTRA EILUTĖ — atskiri paieškos laukai (Raimio filtrai). */
+		echo '<form method="get" class="pd-fields">';
+		printf( '<input type="hidden" name="page" value="%s"><input type="hidden" name="eile" value="%s">',
+			esc_attr( self::SLUG ), esc_attr( $eile ) );
+		foreach ( array( 'vykdymas', 'vezejas', 'data', 'nuo', 'iki', 'busena', 'mokejimas', 'amzius' ) as $k ) {
+			if ( '' !== $f[ $k ] ) { printf( '<input type="hidden" name="%s" value="%s">', esc_attr( $k ), esc_attr( $f[ $k ] ) ); }
+		}
+		printf( '<input type="text" name="nr" value="%s" placeholder="Užsak. Nr." size="9">', esc_attr( $f['nr'] ) );
+		printf( '<input type="text" name="klientas" value="%s" placeholder="Klientas / el. paštas / įmonė" size="24">', esc_attr( $f['klientas'] ) );
+		printf( '<input type="text" name="tel" value="%s" placeholder="Telefonas" size="12">', esc_attr( $f['tel'] ) );
+		printf( '<input type="text" name="adresas" value="%s" placeholder="Adresas / miestas / pašto kodas" size="24">', esc_attr( $f['adresas'] ) );
+		echo '<button class="pd-btn">Filtruoti</button></form>';
 
 		if ( 'laukia' === $eile && class_exists( 'Petshop_AV_Tiekimas' ) ) {
 			$sk = Petshop_AV_Tiekimas::laukianciu_skaiciai();
@@ -2153,6 +2200,8 @@ class Petshop_Desk {
 .pd-btn-p:hover{background:var(--greend);border-color:var(--greend);color:#fff}
 .pd-btn-s{height:25px;padding:0 9px;font-size:12px}
 
+.pd-fields{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:6px 18px 8px;border-bottom:1px solid var(--line2)}
+.pd-fields input[type=text]{height:26px;padding:0 8px;border:1px solid var(--line);border-radius:var(--r);font-size:12.5px;background:var(--card)}
 .pd-wrap{flex:1;overflow:auto;padding-bottom:80px}
 .pd-tbl{width:100%;border-collapse:collapse}
 .pd-tbl thead th{position:sticky;top:0;z-index:2;background:var(--paper);text-align:left;
