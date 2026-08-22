@@ -1,0 +1,158 @@
+{
+ "versija": "R228",
+ "sukurta": 3672,
+ "DUOM": {
+  "v": "R228",
+  "irasai": [
+   {
+    "id": "42",
+    "laikas": "2026-08-22 11:03:11",
+    "lygis": "deprecated",
+    "parasas": "1a73efb667af0a27ef119e7873f3ea58",
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "7374",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kiek": "144"
+   },
+   {
+    "id": "43",
+    "laikas": "2026-08-22 11:03:11",
+    "lygis": "deprecated",
+    "parasas": "b8134211401a082b2ab03cd682e13e5b",
+    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "2196",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kiek": "144"
+   },
+   {
+    "id": "6",
+    "laikas": "2026-08-21 14:58:57",
+    "lygis": "deprecated",
+    "parasas": "e41e8f1b4782a5335cff2ad7f8d8f91c",
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/functions.php",
+    "eilute": "7374",
+    "url": "/wp-admin/post.php?post=17978&action=edit",
+    "kiek": "554"
+   },
+   {
+    "id": "7",
+    "laikas": "2026-08-21 14:58:57",
+    "lygis": "deprecated",
+    "parasas": "4ffe4b14a49ea6f663f1f22481a1a128",
+    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/functions.php",
+    "eilute": "2196",
+    "url": "/wp-admin/post.php?post=17978&action=edit",
+    "kiek": "554"
+   },
+   {
+    "id": "25",
+    "laikas": "2026-08-20 21:08:19",
+    "lygis": "deprecated",
+    "parasas": "0ed3a0f948d040b3f81d9b114074a17b",
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-meta-box.php",
+    "eilute": "119",
+    "url": "/wp-admin/post.php?post=12&action=edit",
+    "kiek": "5"
+   },
+   {
+    "id": "20",
+    "laikas": "2026-08-19 15:08:51",
+    "lygis": "deprecated",
+    "parasas": "2743a64769a68ae53176f66a06f498fc",
+    "zinute": "preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/kses.php",
+    "eilute": "2018",
+    "url": "/product/ps-testas-1-eur/",
+    "kiek": "3"
+   }
+  ],
+  "branduolys": {
+   "2196": "2182:  *\n2183:  * @param string $path Path to normalize.\n2184:  * @return string Normalized path.\n2185:  */\n2186: function wp_normalize_path( $path ) {\n2187: \t$wrapper = '';\n2188: \n2189: \tif ( wp_is_stream( $path ) ) {\n2190: \t\tlist( $wrapper, $path ) = explode( '://', $path, 2 );\n2191: \n2192: \t\t$wrapper .= '://';\n2193: \t}\n2194: \n2195: \t// Standardize all paths to use '/'.\n2196: \t$path = str_replace( '\\\\', '/', $path );\n2197: \n2198: \t// Replace multiple slashes down to a singular, allowing for network shares having two slashes.\n2199: \t$path = preg_replace( '|(?<=.)/+|', '/', $path );\n",
+   "7374": "7360: \t}\n7361: \n7362: \treturn true;\n7363: }\n7364: \n7365: /**\n7366:  * Tests if a given path is a stream URL\n7367:  *\n7368:  * @since 3.5.0\n7369:  *\n7370:  * @param string $path The resource path or URL.\n7371:  * @return bool True if the path is a stream URL.\n7372:  */\n7373: function wp_is_stream( $path ) {\n7374: \t$scheme_separator = strpos( $path, '://' );\n7375: \n7376: \tif ( false === $scheme_separator ) {\n7377: \t\t// $path isn't a stream.\n"
+  },
+  "stulpeliai": [
+   "id",
+   "laikas",
+   "lygis",
+   "parasas",
+   "zinute",
+   "failas",
+   "eilute",
+   "url",
+   "kiek"
+  ],
+  "url": [
+   {
+    "url": "/wp-admin/post.php?post=17978&action=edit",
+    "k": "3",
+    "viso": "1113"
+   },
+   {
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "k": "2",
+    "viso": "288"
+   },
+   {
+    "url": "/wp-admin/post.php?post=12&action=edit",
+    "k": "1",
+    "viso": "5"
+   },
+   {
+    "url": "/?ps_h055=H055",
+    "k": "3",
+    "viso": "4"
+   },
+   {
+    "url": "/product/ps-testas-1-eur/",
+    "k": "1",
+    "viso": "3"
+   },
+   {
+    "url": "/?ps_h061=H061",
+    "k": "1",
+    "viso": "2"
+   },
+   {
+    "url": "/?ps_h059=H059",
+    "k": "1",
+    "viso": "1"
+   }
+  ],
+  "istorija": [
+   {
+    "d": "2026-08-22",
+    "k": "2",
+    "viso": "288"
+   },
+   {
+    "d": "2026-08-21",
+    "k": "2",
+    "viso": "1108"
+   },
+   {
+    "d": "2026-08-20",
+    "k": "1",
+    "viso": "5"
+   },
+   {
+    "d": "2026-08-19",
+    "k": "6",
+    "viso": "10"
+   },
+   {
+    "d": "2026-08-18",
+    "k": "1",
+    "viso": "5"
+   }
+  ],
+  "laikas": {
+   "dabar": "2026-08-22 11:09:40",
+   "utc": "2026-08-22 08:09:40"
+  }
+ }
+}
