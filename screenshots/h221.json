@@ -1,0 +1,73 @@
+{
+ "v": "H221",
+ "sukurta": 3699,
+ "DIEGIMAS": {
+  "v": "H221",
+  "uzs": {
+   "34881": {
+    "status": "processing",
+    "apmoketa": true,
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "pastomatas": "",
+    "vp_data": "{\"status\":\"sent\",\"error_message\":\"\"}",
+    "pastabos": [
+     "Venipak registracija darbalaukyje (AV, manifestas 001): KLAIDA — Venipak negrąžino atsakymo",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "AV nurašymas: #17236 grynai AV 4 -> 3"
+    ]
+   },
+   "35035": {
+    "status": "processing",
+    "apmoketa": true,
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "pastomatas": "3648",
+    "vp_data": "",
+    "pastabos": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Payment complete.",
+     "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Rai. Laiškas klientui: išsiųstas.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas."
+    ]
+   },
+   "35036": {
+    "status": "processing",
+    "apmoketa": true,
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "pastomatas": "3648",
+    "vp_data": "{\"manifest\":\"07267260822001\",\"pack_numbers\":[\"V07267E1000005\"],\"weight\":1.8000000000000003,\"products_count\":6,\"status\":\"sent\",\"error_message\":\"\"}",
+    "pastabos": [
+     "Venipak registracija darbalaukyje (AV, manifestas 001): KLAIDA — Venipak negrąžino atsakymo",
+     "Siuntos numeriai išsaugoti (AV): V07267E1000005",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos) · #19692 −0 vnt. (0 partijos) · #19613 −0 vnt. (0 partijos) · #19620 −0 vnt. (0 partijos) · #19440 −0 vnt. (0 pa",
+     "AV nurašymas: #19708 grynai AV 42 -> 41 · #19692 grynai AV 44 -> 43 · #19613 grynai AV 53 -> 52 · #19620 grynai AV 38 -> 37 · #19440 grynai AV 93 -> 92 · #19417"
+    ]
+   },
+   "35037": {
+    "status": "processing",
+    "apmoketa": true,
+    "metodas": "VENIPAK Kurjeris",
+    "pastomatas": "",
+    "vp_data": "{\"manifest\":\"07267260822001\",\"pack_numbers\":[\"V07267E1000004\"],\"weight\":1.8000000000000003,\"products_count\":6,\"status\":\"sent\",\"error_message\":\"\"}",
+    "pastabos": [
+     "Venipak registracija darbalaukyje (AV, manifestas 001): KLAIDA — Venipak negrąžino atsakymo",
+     "Siuntos numeriai išsaugoti (AV): V07267E1000004",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos) · #19692 −0 vnt. (0 partijos) · #19613 −0 vnt. (0 partijos) · #19620 −0 vnt. (0 partijos) · #19440 −0 vnt. (0 pa",
+     "AV nurašymas: #19708 grynai AV 43 -> 42 · #19692 grynai AV 45 -> 44 · #19613 grynai AV 54 -> 53 · #19620 grynai AV 39 -> 38 · #19440 grynai AV 94 -> 93 · #19417"
+    ]
+   }
+  },
+  "vp_user": "YRA",
+  "vp_pass": "YRA"
+ },
+ "TESTAI": "ne-json: <!DOCTYPE html>\n<html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\">\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n\t<link rel=\"pingback\" href=\"https://dev.avesa.lt/xmlrpc.php\" />\n\n\t\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments)",
+ "pradzia": {
+  "s": 200,
+  "fatal": "ne"
+ },
+ "isjungta": 3699
+}
