@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.20 (H215) — atskiri filtrų laukai (Nr./klientas/telefonas/adresas), Būsena visose eilėse, „Amžius"→„Kabo" (v3.19: UI tankumas, miniatiūros, LP konfliktas).
+ * Petshop Desk v3.21 (H216) — „Laukiantys" filtras, įskaitomi select meniu (v3.20: atskiri filtrų laukai; v3.19: UI tankumas).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -1674,11 +1674,11 @@ class Petshop_Desk {
 			'bacs'       => 'Pavedimas',
 		), $f['mokejimas'] );
 
-		// Užsigulėję
+		// Laukiantys
 		self::select( 'amzius', array(
-			''   => 'Kabo: visi',
-			'd2' => 'Kabo 2+ d.',
-			'd5' => 'Kabo 5+ d.',
+			''   => 'Laukiantys: visi',
+			'd2' => 'Laukia 2+ d.',
+			'd5' => 'Laukia 5+ d.',
 		), $f['amzius'] );
 
 		$aktyvus = array_filter( array( $f['vykdymas'], $f['vezejas'], $f['data'], $f['busena'], $f['q'], $f['mokejimas'], $f['amzius'], $f['nr'], $f['klientas'], $f['tel'], $f['adresas'] ) );
@@ -1886,7 +1886,7 @@ class Petshop_Desk {
 				$dienu = (int) floor( ( time() - $skd->getTimestamp() ) / DAY_IN_SECONDS );
 				if ( 1 === $dienu ) { $amz = '<span class="pd-age">nuo vakar</span>'; }
 				elseif ( $dienu >= 2 ) {
-					$amz = '<span class="pd-age ' . ( $dienu >= 5 ? 'pd-age-r' : 'pd-age-w' ) . '">kabo ' . $dienu . ' d.</span>';
+					$amz = '<span class="pd-age ' . ( $dienu >= 5 ? 'pd-age-r' : 'pd-age-w' ) . '">laukia ' . $dienu . ' d.</span>';
 				}
 			}
 			printf( '<td><span class="pd-pill" style="background:%s;color:%s">%s</span>%s</td>',
@@ -2187,6 +2187,7 @@ class Petshop_Desk {
 .pd-sel{height:28px;border:1px solid var(--line);background:var(--card);border-radius:var(--r);
  font-size:12.5px;color:var(--ink2);padding:0 6px;cursor:pointer;max-width:210px}
 .pd-sel[data-on="1"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.pd-sel option{background:#fff;color:#1C201D}
 .pd-range{display:flex;gap:5px;align-items:center;font-size:12px;color:var(--ink3)}
 .pd-range input{height:28px;border:1px solid var(--line);border-radius:var(--r);padding:0 7px;font-size:12.5px}
 .pd-clear{font-size:12px;color:var(--ink3);text-decoration:underline}
