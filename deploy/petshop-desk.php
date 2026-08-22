@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.17 (H212) — atsisakymo kortelėje data/priežastis/tvarka (v3.16: SLA klausimas; v3.15: _ps_siuntos) — darbinis užsakymų langas.
+ * Petshop Desk v3.18 (H213) — paieška pagal adresą, filtrai Mokėjimas/Amžius, sąskaita ir kreditinė be WC lango (v3.17: atsisakymas; v3.16: SLA; v3.15: _ps_siuntos).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -207,6 +207,10 @@ class Petshop_Desk {
 
 		if ( 'lapai' !== $out[0]['id'] ) {
 			$out[] = array( 'id' => 'lapai', 't' => 'Pakavimo lapas', 'url' => self::veiksmo_url( 'lapai', $id ), 'd' => null );
+		}
+
+		if ( $o->is_paid() ) {
+			$out[] = array( 'id' => 'saskaita', 't' => 'Sąskaita', 'url' => '', 'd' => null, 'wc' => 'wcdn_print_invoice' );
 		}
 
 		if ( class_exists( 'Petshop_Siuntos' ) && Petshop_Siuntos::turi( $id ) ) {
@@ -733,9 +737,11 @@ class Petshop_Desk {
 			 WHERE o.type = 'shop_order' AND o.status <> 'wc-checkout-draft' AND (
 			   o.id LIKE %s OR o.billing_email LIKE %s OR a.first_name LIKE %s
 			   OR a.last_name LIKE %s OR a.phone LIKE %s
-			   OR CONCAT(a.first_name,' ',a.last_name) LIKE %s )
+			   OR CONCAT(a.first_name,' ',a.last_name) LIKE %s
+			   OR a.address_1 LIKE %s OR a.city LIKE %s OR a.postcode LIKE %s
+			   OR a.company LIKE %s )
 			 ORDER BY o.id DESC LIMIT 120",
-			$like, $like, $like, $like, $like, $like ) );
+			$like, $like, $like, $like, $like, $like, $like, $like, $like, $like ) );
 
 		$pagal_preke = $wpdb->get_col( $wpdb->prepare(
 			"SELECT DISTINCT order_id FROM {$pf}woocommerce_order_items
@@ -846,6 +852,24 @@ class Petshop_Desk {
 			// pristatymo filtras
 			if ( ! empty( $f['vezejas'] ) && self::vezejas( $o ) !== $f['vezejas'] ) { continue; }
 
+			// mokėjimo filtras
+			if ( ! empty( $f['mokejimas'] ) ) {
+				$m = $f['mokejimas'];
+				if ( 'apmoketa' === $m && ! $o->is_paid() ) { continue; }
+				if ( 'neapmoketa' === $m && $o->is_paid() ) { continue; }
+				if ( 'paysera' === $m && false === strpos( (string) $o->get_payment_method(), 'paysera' ) ) { continue; }
+				if ( 'bacs' === $m && 'bacs' !== $o->get_payment_method() ) { continue; }
+			}
+
+			// amžiaus filtras — užstrigusiems gaudyti
+			if ( ! empty( $f['amzius'] ) ) {
+				$sk = $o->get_date_created();
+				if ( ! $sk ) { continue; }
+				$dienu = ( time() - $sk->getTimestamp() ) / DAY_IN_SECONDS;
+				if ( 'd2' === $f['amzius'] && $dienu < 2 ) { continue; }
+				if ( 'd5' === $f['amzius'] && $dienu < 5 ) { continue; }
+			}
+
 			$out[] = array( 'o' => $o, 'eile' => $e, 'klausimas' => $kl );
 		}
 		return $out;
@@ -914,6 +938,8 @@ class Petshop_Desk {
 			'vykdymas' => isset( $_GET['vykdymas'] ) ? sanitize_key( $_GET['vykdymas'] ) : '',
 			'vezejas'  => isset( $_GET['vezejas'] ) ? sanitize_key( $_GET['vezejas'] ) : '',
 			'busena'   => isset( $_GET['busena'] ) ? sanitize_key( $_GET['busena'] ) : '',
+			'mokejimas'=> isset( $_GET['mokejimas'] ) ? sanitize_key( $_GET['mokejimas'] ) : '',
+			'amzius'   => isset( $_GET['amzius'] ) ? sanitize_key( $_GET['amzius'] ) : '',
 		);
 
 		$eilutes = self::gauti( $eile, $f );
@@ -1594,7 +1620,23 @@ class Petshop_Desk {
 			), $f['busena'] );
 		}
 
-		$aktyvus = array_filter( array( $f['vykdymas'], $f['vezejas'], $f['data'], $f['busena'], $f['q'] ) );
+		// Mokėjimas
+		self::select( 'mokejimas', array(
+			''           => 'Mokėjimas: visi',
+			'apmoketa'   => 'Apmokėta',
+			'neapmoketa' => 'Neapmokėta',
+			'paysera'    => 'Paysera',
+			'bacs'       => 'Pavedimas',
+		), $f['mokejimas'] );
+
+		// Amžius
+		self::select( 'amzius', array(
+			''   => 'Amžius: visi',
+			'd2' => 'Kabo 2+ d.',
+			'd5' => 'Kabo 5+ d.',
+		), $f['amzius'] );
+
+		$aktyvus = array_filter( array( $f['vykdymas'], $f['vezejas'], $f['data'], $f['busena'], $f['q'], $f['mokejimas'], $f['amzius'] ) );
 		if ( $aktyvus ) {
 			echo '<a class="pd-clear" href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=' . $eile ) ) . '">Išvalyti filtrus</a>';
 		}
@@ -1648,9 +1690,10 @@ class Petshop_Desk {
 			printf( '<div class="pd-kwhy">▲ %s</div>', esc_html( $row['klausimas'] ) );
 
 			if ( 0 === strpos( $row['klausimas'], 'Klientas atsisako' ) ) {
-				printf( '<div class="pd-kline"><div class="pd-kprek"><b>Gauta %s</b><span>%s</span></div><div class="pd-kbtns"><span class="pd-knone">pinigai — rankinis grąžinimas (Paysera) · kreditinė — „Spausdinti kreditinę sąskaitą" užsakymo lange</span></div></div>',
+				printf( '<div class="pd-kline"><div class="pd-kprek"><b>Gauta %s</b><span>%s</span></div><div class="pd-kbtns"><button type="button" class="pd-btn pd-btn-s" data-wc1="wcdn_print_creditnote" data-oid="%d">Kreditinė</button><span class="pd-knone">pinigai — rankinis grąžinimas (Paysera)</span></div></div>',
 					esc_html( mysql2date( 'Y-m-d H:i', $o->get_meta( '_ps_withdrawal' ) ) ),
-					esc_html( $o->get_meta( '_ps_withdrawal_reason' ) ?: 'priežastis nenurodyta' ) );
+					esc_html( $o->get_meta( '_ps_withdrawal_reason' ) ?: 'priežastis nenurodyta' ),
+					(int) $o->get_id() );
 			}
 
 			if ( $prob ) {
@@ -2463,6 +2506,11 @@ small.pd-riba-praejo{color:var(--ink3)}
   document.getElementById('pdWcAction').value=veiksmas;
   document.getElementById('pdWcForm').submit();
  }
+ document.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-wc1]');
+  if(!b) return;
+  wcVienam(b.getAttribute('data-wc1'), b.getAttribute('data-oid'));
+ });
  function pazymeti(){ return Array.from(sel).join(','); }
  [].forEach.call(bulk.querySelectorAll('[data-ba]'),function(b){
   b.addEventListener('click',function(e){
