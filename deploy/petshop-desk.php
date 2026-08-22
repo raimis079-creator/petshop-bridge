@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.18 (H213) — paieška pagal adresą, filtrai Mokėjimas/Amžius, sąskaita ir kreditinė be WC lango (v3.17: atsisakymas; v3.16: SLA; v3.15: _ps_siuntos).
+ * Petshop Desk v3.19 (H214) — UI perdarymas darbui: tankios eilutės, pilni prekių pavadinimai su miniatiūromis, amžiaus indikatorius, ribos tik šviežiems, LP+dropship konfliktas → Klausimai (v3.18: filtrai/sąskaitos).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -664,6 +664,15 @@ class Petshop_Desk {
 		if ( $order->get_meta( '_ps_sla_velavimas' ) ) { return 'Tiekėjas vėluoja — perduota prieš 24+ val.'; }
 
 		if ( ! $order->is_paid() ) { return ''; }
+
+		// LP Express galimas TIK iš AV — dropship eilutė su LP pristatymu yra
+		// fiziškai neįmanomas derinys, kuris kitaip išlįstų tik prie lipduko.
+		if ( 'lp' === self::vezejas( $order ) ) {
+			foreach ( $order->get_items() as $it ) {
+				$ls = self::eilutes_saltinis( $it );
+				if ( $ls && 'av' !== $ls ) { return 'LP negalimas — siuntoje ne-AV prekių'; }
+			}
+		}
 
 		foreach ( $order->get_items() as $it ) {
 			if ( 'av' !== self::eilutes_saltinis( $it ) ) { continue; }
@@ -1508,7 +1517,7 @@ class Petshop_Desk {
 				<input type="hidden" name="eile" value="visi">
 				<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>
 				<input type="search" name="q" id="pdQ" value="<?php echo esc_attr( $f['q'] ); ?>"
-					placeholder="Užsakymas, klientas, telefonas, prekė, siuntos kodas" autocomplete="off">
+					placeholder="Užsakymas, klientas, telefonas, adresas, prekė, siuntos kodas" autocomplete="off">
 				<kbd>/</kbd>
 			</form>
 			<div class="pd-top-r">
@@ -1527,6 +1536,8 @@ class Petshop_Desk {
 						esc_attr( $artimiausia[2][0] ),
 						esc_html( self::SALTINIAI[ $artimiausia[0] ][1] ?? $artimiausia[0] ),
 						esc_html( str_replace( ' · ', ' ', $artimiausia[2][1] ) ) );
+				} else {
+					echo '<span class="pd-tr pd-tr-praejo">ribos šiandien praėjo · nauji keliaus rytoj</span>';
 				}
 				?>
 				<span class="pd-av"><?php
@@ -1757,10 +1768,6 @@ class Petshop_Desk {
 			list( $kodas, $pak )  = self::siuntos_kodas( $o );
 			$sal = self::saltiniai( $o );
 
-			$prekes = array();
-			foreach ( $o->get_items() as $it ) {
-				$prekes[] = $it->get_quantity() . '× ' . $it->get_name();
-			}
 			$pastaba = '';
 			foreach ( $o->get_customer_note() ? array( $o->get_customer_note() ) : array() as $n ) { $pastaba = $n; }
 
@@ -1782,10 +1789,19 @@ class Petshop_Desk {
 				esc_html( $vardas ),
 				esc_html( $o->get_billing_city() ? $o->get_billing_city() : '—' ) );
 
-			$pilnas = implode( "\n", $prekes );
-			echo '<td><div class="pd-items" title="' . esc_attr( $pilnas ) . '">';
-			foreach ( $sal as $s ) { echo self::zyme( $s ); }
-			echo esc_html( implode( ' · ', $prekes ) ) . '</div>';
+			echo '<td><div class="pd-items">';
+			// PREKĖS — PILNAIS pavadinimais su miniatiūromis. Pakuotojui tai darbo
+			// objektas: „Gemon mini adult 3 kg" ir „…15 kg" turi skirtis iš pirmo žvilgsnio.
+			foreach ( $o->get_items() as $it ) {
+				$p   = $it->get_product();
+				$img = $p ? get_the_post_thumbnail_url( $p->get_id(), 'thumbnail' ) : '';
+				$ls  = self::eilutes_saltinis( $it );
+				echo '<div class="pd-item">'
+					. ( $img ? '<img class="pd-thumb" loading="lazy" src="' . esc_url( $img ) . '" alt="">' : '<span class="pd-thumb pd-thumb-e"></span>' )
+					. ( $ls ? self::zyme( $ls ) : '' )
+					. '<span>' . esc_html( $it->get_quantity() . '× ' . $it->get_name() ) . '</span></div>';
+			}
+			echo '</div>';
 			if ( $row['klausimas'] ) { echo '<div class="pd-note pd-red">▲ ' . esc_html( $row['klausimas'] ) . '</div>'; }
 			// KLIENTO PASTABA — PILNA, nekarpoma. Raimis: „kartais labai svarbu".
 			if ( $pastaba ) { echo '<div class="pd-note pd-cnote">✎ ' . esc_html( $pastaba ) . '</div>'; }
@@ -1794,7 +1810,9 @@ class Petshop_Desk {
 			echo '<td><div class="pd-exec">' . esc_html( $vyk ? $vyk : '—' );
 			if ( 'MIŠRUS' === $vyk ) { echo '<small>' . esc_html( $siuntu ) . ' siuntos</small>'; }
 			// riba rodoma tik ten, kur darbas dar nepadarytas
-			if ( 'nauji' === $row['eile'] ) {
+			// riba prasminga tik ŠIANDIENOS užsakymui — senam „keliaus rytoj" jau 17-a diena būtų melas
+			if ( 'nauji' === $row['eile'] && $o->get_date_created()
+				&& wp_date( 'Y-m-d', $o->get_date_created()->getTimestamp() ) === wp_date( 'Y-m-d' ) ) {
 				foreach ( $sal as $ts ) {
 					if ( 'av' !== $ts && $o->get_meta( '_ps_dropship_sent' ) ) { continue; }
 					$rz = self::riba( $ts );
@@ -1815,9 +1833,18 @@ class Petshop_Desk {
 			}
 			echo '</td>';
 
-			printf( '<td><span class="pd-pill" style="background:%s;color:%s">%s</span></td>',
+			$amz = '';
+			$skd = $o->get_date_created();
+			if ( $skd && ( in_array( $row['eile'], array( 'nauji', 'neapmoketi', 'laukia' ), true ) || $row['klausimas'] ) ) {
+				$dienu = (int) floor( ( time() - $skd->getTimestamp() ) / DAY_IN_SECONDS );
+				if ( 1 === $dienu ) { $amz = '<span class="pd-age">nuo vakar</span>'; }
+				elseif ( $dienu >= 2 ) {
+					$amz = '<span class="pd-age ' . ( $dienu >= 5 ? 'pd-age-r' : 'pd-age-w' ) . '">kabo ' . $dienu . ' d.</span>';
+				}
+			}
+			printf( '<td><span class="pd-pill" style="background:%s;color:%s">%s</span>%s</td>',
 				esc_attr( $sp[0] ), esc_attr( $sp[1] ),
-				esc_html( $statusai[ 'wc-' . $st ] ?? $st ) );
+				esc_html( $statusai[ 'wc-' . $st ] ?? $st ), $amz );
 
 			echo '<td class="pd-act">';
 			self::veiksmas( $o, $row );
@@ -2061,7 +2088,7 @@ class Petshop_Desk {
 <style>
 .pd{--paper:#FAFAF8;--card:#fff;--rail:#1C2320;--rail2:#28312C;--rink:#C8D0C9;--rdim:#7E8A82;
  --ink:#1A1D1B;--ink2:#5E6661;--ink3:#8A918C;--line:#E4E4DE;--line2:#EFEFEA;
- --green:#2D5F3F;--greend:#234B32;--greent:#E9F1EA;--red:#98262A;--r:6px;--row:50px;
+ --green:#2D5F3F;--greend:#234B32;--greent:#E9F1EA;--red:#98262A;--r:6px;--row:38px;
  position:fixed;top:32px;left:0;right:0;bottom:0;display:flex;flex-direction:column;
  background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
  font-size:14.5px;line-height:1.45;-webkit-font-smoothing:antialiased}
@@ -2132,24 +2159,30 @@ class Petshop_Desk {
  font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);font-weight:500;
  padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
 .pd-tbl th.pd-r,.pd-tbl td.pd-r{text-align:right}
-.pd-tbl tbody tr{border-bottom:1px solid var(--line2);height:var(--row);min-height:var(--row);cursor:pointer}
+.pd-tbl tbody tr{border-bottom:1px solid var(--line2);min-height:var(--row);cursor:pointer}
 .pd-tbl tbody tr:hover{background:#F4F4F0}
 .pd-tbl tbody tr.sel{background:var(--greent)}
 .pd-tbl tbody tr.cur{box-shadow:inset 2px 0 0 var(--ink),inset -2px 0 0 var(--ink)}
-.pd-tbl td{padding:6px 10px;vertical-align:middle}
+.pd-tbl td{padding:4px 8px;vertical-align:middle}
 td.pd-stripe,th.pd-stripe{width:3px;padding:0;height:inherit}
 td.pd-stripe div{width:3px;height:100%;min-height:var(--row)}
 td.pd-cb,th.pd-cb{width:30px;padding-left:8px}
 .pd input[type=checkbox]{width:14px;height:14px;accent-color:var(--green);cursor:pointer;margin:0}
-.pd-nr{font-size:14px;font-weight:600;font-family:"IBM Plex Mono",monospace}
-.pd-sub{font-size:12.5px;color:var(--ink3);margin-top:1px}
+.pd-nr{font-size:13px;font-weight:600;font-family:"IBM Plex Mono",monospace}
+.pd-sub{font-size:11.5px;color:var(--ink3);margin-top:1px}
 .pd-cust{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}
-.pd-items{font-size:13.5px;color:var(--ink2);max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pd-items{font-size:12.5px;color:var(--ink2);max-width:420px;white-space:normal}
+.pd-item{display:flex;align-items:center;gap:6px;padding:1px 0;line-height:1.3}
+.pd-thumb{width:26px;height:26px;object-fit:cover;border-radius:4px;flex:none;border:1px solid var(--line2);background:#fff}
+.pd-thumb-e{display:inline-block}
+.pd-age{display:block;font-size:11px;margin-top:2px;color:var(--ink3)}
+.pd-age-w{color:#96660C;font-weight:600}
+.pd-age-r{color:var(--red);font-weight:600}
 .pd-src{display:inline-flex;align-items:center;height:16px;padding:0 5px;border-radius:3px;
  font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;margin-right:3px}
 .pd-exec{font-size:12.5px;font-weight:600}
 .pd-exec small{display:block;font-weight:400;color:var(--ink3)}
-.pd-sum{font-size:14.5px;font-weight:600;white-space:nowrap;font-family:"IBM Plex Mono",monospace}
+.pd-sum{font-size:13.5px;font-weight:600;white-space:nowrap;font-family:"IBM Plex Mono",monospace}
 .pd-pay{display:block;font-size:11px;font-weight:400;margin-top:1px;font-family:"IBM Plex Sans",sans-serif}
 .pd-pay.ok{color:var(--green)}.pd-pay.no{color:#96660C}
 .pd-ship{font-size:13px;color:var(--ink2);white-space:nowrap}
