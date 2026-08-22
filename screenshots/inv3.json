@@ -1,0 +1,88 @@
+{
+ "v": "INV3",
+ "sukurta": 3714,
+ "R": {
+  "v": "INV3",
+  "sintakse": "OK",
+  "sena_md5": "89b9bd4e6dcf28001bfab40ea2ec5a9b",
+  "backup": "base.php.bak-20260822-195517",
+  "irasyta": 23052,
+  "nauja_md5": "79b9da255e84b1356f36505da69b5d66",
+  "laukiamas_md5": "79b9da255e84b1356f36505da69b5d66",
+  "sutampa": true,
+  "pdf_taskai": {
+   "wp-content/plugins/woocommerce-delivery-notes/templates/base.php": [
+    " * @var string $type                Render context: 'html' (print preview) or 'pdf' (Dompdf).\r",
+    "\t * so Dompdf can read the file directly.\r",
+    "\t\t\t\t\t\t * Dompdf can load the image from disk.\r",
+    "\t\t\t\t\t\t * and text side by side. This avoids float/flex which Dompdf does not\r",
+    "\t\t\t * columns above. Dompdf requires explicit width declarations on each cell.\r"
+   ],
+   "wp-content/plugins/woocommerce-delivery-notes/includes/frontend/class-frontend.php": [
+    "\t\t\t\t'print-order-type',\r",
+    "\t\t$type      = ! empty( $wp->query_vars['print-order-type'] ) ? $wp->query_vars['print-order-type'] : null;\r",
+    "\t\t$type      = ! empty( $_REQUEST['print-order-type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['print-order-type'] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- frontend print page, no nonce applicable\r",
+    "\t\t// For multiple orders, dompdf processing a combined N-page document blocks\r",
+    "\t\t$pdf_url = '';\r",
+    "\t\t\t\t$pdf_url = trailingslashit( $upload_dir['baseurl'] )\r",
+    "\t\t\t<?php if ( ! empty( $pdf_url ) ) : ?>\r",
+    "\t\t\t<a href=\"<?php echo esc_url( $pdf_url ); ?>\" target=\"_blank\" class=\"wcdn-btn wcdn-btn-primary\">\r",
+    "\t\t$pdf_url    = trailingslashit( $upload_dir['baseurl'] ) . 'wcdn/' . $template . '/' . basename( $pdf_file );\r",
+    "\t\twp_send_json_success( array( 'url' => $pdf_url ) );\r"
+   ],
+   "wp-content/plugins/woocommerce-delivery-notes/includes/core/class-files.php": [
+    "\t\tif ( ! class_exists( \\Dompdf\\Dompdf::class ) && file_exists( $autoload ) ) {\r"
+   ],
+   "wp-content/plugins/woocommerce-delivery-notes/includes/helpers/class-utils.php": [
+    "\t\t$args = array( 'print-order-type' => $template_type );\r"
+   ],
+   "wp-content/plugins/woocommerce-delivery-notes/includes/api/class-templates.php": [
+    "\t\t\t// a file path so dompdf can embed the image in PDFs.\r"
+   ],
+   "wp-content/plugins/woocommerce-delivery-notes/includes/api/class-dashboard.php": [
+    "\t\t\t\t'print-order-type' => $template,\r"
+   ],
+   "wp-content/plugins/woocommerce-delivery-notes/includes/services/class-pdf.php": [
+    "use Dompdf\\Dompdf;\r",
+    "use Dompdf\\Options;\r",
+    "\t\t * dompdf can read locale font files registered via FontMetrics::registerFont().\r",
+    "\t\t * dompdf's own rootDir is kept so it can access its bundled DejaVu fonts.\r",
+    "\t\t$dompdf = new Dompdf( $options );\r",
+    "\t\t// Base64-embedding 4 font weights inflates the HTML to 2+ MB which causes dompdf's\r",
+    "\t\t\t\t$dompdf->getFontMetrics()->registerFont(\r",
+    "\t\tTemplate_Renderer::register_locale_font( $dompdf );\r",
+    "\t\t$dompdf->loadHtml( $html, 'UTF-8' );\r",
+    "\t\t$dompdf->setPaper( $paper_size, $orientation );\r"
+   ],
+   "wp-content/plugins/woocommerce-delivery-notes/includes/services/template/class-template-renderer.php": [
+    "\t\t\t// Inter and locale fonts are registered with dompdf via registerFont() in\r",
+    "\t\t\t// data URIs bloats the HTML to 2+ MB and causes dompdf's CSS/regex parser to\r",
+    "\t\t// Context stylesheet loaded last; corrects px → pt for PDF via dompdf.\r",
+    "\t\t * imported stylesheets directly. CSS cascade overrides fail inside dompdf\r",
+    "\t\t * table cells because dompdf does not reliably apply class+element selectors\r",
+    "\t\t * dompdf picks the first available font for an entire element — no per-glyph\r",
+    "\t\t *    The font is registered with dompdf via FontMetrics::registerFont() using the\r",
+    "\t * Register the locale font with dompdf's FontMetrics engine.\r",
+    "\t * Must be called after new Dompdf() and before Dompdf::loadHtml().\r",
+    "\t * dompdf never falls back to a built-in font (e.g. for bold <th> elements)\r"
+   ]
+  },
+  "pdf_failai": [
+   "Isankstine-saskaita-IAPV000144.pdf",
+   "Isankstine-saskaita-IAPV000145.pdf",
+   "Isankstine-saskaita-IAPV000146.pdf",
+   "Isankstine-saskaita-IAPV000147.pdf",
+   "Isankstine-saskaita-IAPV000148.pdf",
+   "Isankstine-saskaita-IAPV000149.pdf",
+   "Isankstine-saskaita-IAPV000150.pdf",
+   "Isankstine-saskaita-IAPV000151.pdf",
+   "PVM-saskaita-AVPN000237.pdf",
+   "index.html"
+  ]
+ },
+ "pradzia": {
+  "s": 200,
+  "fatal": "ne"
+ },
+ "isjungta": 3714
+}
