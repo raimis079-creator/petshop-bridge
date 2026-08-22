@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.25 (H221) — Venipak registracija ima TIK neregistruotus ir be trūkumų; mygtukas rodo tikrą skaičių (v3.24: apmokėjimo pranešimas).
+ * Petshop Desk v3.26 (H222) — 🔴 pataisyta: Venipak meta yra JSON, ne serialize — desk anksčiau NEMATĖ siuntų kodų (v3.25: registracijos saugiklis).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -632,7 +632,11 @@ class Petshop_Desk {
 	/** Siuntos kodai iš Venipak / LP. */
 	public static function siuntos_kodas( $o ) {
 		$d = $o->get_meta( 'venipak_shipping_order_data' );
-		if ( is_string( $d ) && $d ) { $d = maybe_unserialize( $d ); }
+		// Pluginas raktą saugo JSON eilute (H202/H222) — maybe_unserialize jo NEatkoduoja.
+		if ( is_string( $d ) && $d ) {
+			$j = json_decode( $d, true );
+			$d = null !== $j ? $j : maybe_unserialize( $d );
+		}
 		if ( is_array( $d ) && ! empty( $d['pack_numbers'] ) ) {
 			$p = (array) $d['pack_numbers'];
 			return array( implode( ', ', $p ), count( $p ) );
