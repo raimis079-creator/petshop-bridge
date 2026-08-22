@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.21 (H216) — „Laukiantys" filtras, įskaitomi select meniu (v3.20: atskiri filtrų laukai; v3.19: UI tankumas).
+ * Petshop Desk v3.22 (H217) — „Laukia 3+ d." filtro pakopa (v3.21: Laukiantys, įskaitomi select; v3.20: filtrų laukai).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -908,6 +908,7 @@ class Petshop_Desk {
 				if ( ! $sk ) { continue; }
 				$dienu = ( time() - $sk->getTimestamp() ) / DAY_IN_SECONDS;
 				if ( 'd2' === $f['amzius'] && $dienu < 2 ) { continue; }
+				if ( 'd3' === $f['amzius'] && $dienu < 3 ) { continue; }
 				if ( 'd5' === $f['amzius'] && $dienu < 5 ) { continue; }
 			}
 
@@ -1678,6 +1679,7 @@ class Petshop_Desk {
 		self::select( 'amzius', array(
 			''   => 'Laukiantys: visi',
 			'd2' => 'Laukia 2+ d.',
+			'd3' => 'Laukia 3+ d.',
 			'd5' => 'Laukia 5+ d.',
 		), $f['amzius'] );
 
