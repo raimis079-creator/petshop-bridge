@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.22 (H217) — „Laukia 3+ d." filtro pakopa (v3.21: Laukiantys, įskaitomi select; v3.20: filtrų laukai).
+ * Petshop Desk v3.23 (H218) — nauja eilė „Išsiųsti" (kelyje + įvykdyti) apatinėje juostoje (v3.22: Laukia 3+ d.; v3.21: Laukiantys).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -98,6 +98,7 @@ class Petshop_Desk {
 		'paruosta'   => array( 'Paruošta siųsti', 'supakuota su lipduku, laukia kurjerio',   '#5E96C9' ),
 		'laukia'     => array( 'Laukia prekių',   'tiekėjo prekės dar neatvyko į AV',        '#8E6FD0' ),
 		'klausimai'  => array( 'Klausimai',       'reikia tavo sprendimo',                   '#C4595C' ),
+		'issiusti'   => array( 'Išsiųsti',        'kelyje ir įvykdyti užsakymai',            '#9AA39C' ),
 		'atsaukti'   => array( 'Atšaukti',        'atšaukti ir grąžinti užsakymai',          '#9AA39C' ),
 		'visi'       => array( 'Visi užsakymai',  '',                                        '#9AA39C' ),
 	);
@@ -844,6 +845,8 @@ class Petshop_Desk {
 			$args['status'] = array( 'processing', 'on-hold' );
 		} elseif ( 'atsaukti' === $eile ) {
 			$args['status'] = self::STATUSAI['atsaukti'];
+		} elseif ( 'issiusti' === $eile ) {
+			$args['status'] = array_merge( self::STATUSAI['kelyje'], self::STATUSAI['ivykdyti'] );
 		} elseif ( 'neapmoketi' === $eile ) {
 			$args['status'] = self::STATUSAI['neapmoketi'];
 		} elseif ( 'visi' === $eile || 'klausimai' === $eile ) {
@@ -866,6 +869,8 @@ class Petshop_Desk {
 
 			if ( 'klausimai' === $eile ) {
 				if ( ! $kl ) { continue; }
+			} elseif ( 'issiusti' === $eile ) {
+				if ( ! in_array( $e, array( 'kelyje', 'ivykdyti' ), true ) ) { continue; }
 			} elseif ( 'visi' !== $eile ) {
 				if ( $e !== $eile ) { continue; }
 				if ( $kl && 'klausimai' !== $eile && 'atsaukti' !== $eile ) { continue; }
@@ -938,6 +943,9 @@ class Petshop_Desk {
 		$c['atsaukti'] = (int) $wpdb->get_var(
 			"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order'
 			 AND status IN ('wc-cancelled','wc-lp-cancelled','wc-refunded')" );
+		$c['issiusti'] = (int) $wpdb->get_var(
+			"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order'
+			 AND status IN ('wc-lp-on-the-way','wc-completed','wc-lp-delivered')" );
 		$c['visi'] = (int) $wpdb->get_var(
 			"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft'" );
 		return $c;
@@ -1593,7 +1601,7 @@ class Petshop_Desk {
 			self::rail_punktas( $k, $eile, $c[ $k ] ?? 0, false );
 		}
 		echo '<div class="pd-sep"></div>';
-		foreach ( array( 'atsaukti', 'visi' ) as $k ) {
+		foreach ( array( 'issiusti', 'atsaukti', 'visi' ) as $k ) {
 			self::rail_punktas( $k, $eile, $c[ $k ] ?? 0, true );
 		}
 		echo '<div class="pd-ai"><div class="pd-ai-h"><span class="pd-dot"></span>Siūlymai</div>
