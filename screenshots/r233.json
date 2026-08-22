@@ -1,0 +1,86 @@
+{
+ "versija": "R233",
+ "DUOM": {
+  "v": "R232",
+  "pagauta": {
+   "9b473d7dc98cd3bd08cc53ef942c4c3b": {
+    "kiek": 1,
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kelias": [
+     "{closure} @ ?:?",
+     "strpos @ functions.php:7374",
+     "wp_is_stream @ functions.php:2189",
+     "wp_normalize_path @ plugin.php:779",
+     "plugin_basename @ plugin.php:1491",
+     "add_submenu_page @ petshop-av-dropship.php:71",
+     "Petshop_AV_Dropship::meniu @ class-wp-hook.php:341",
+     "WP_Hook::apply_filters @ class-wp-hook.php:365",
+     "WP_Hook::do_action @ plugin.php:522",
+     "do_action @ menu.php:161",
+     "require_once @ menu.php:437",
+     "require @ admin.php:163",
+     "require @ dev-router.php:33"
+    ]
+   },
+   "9aebd45ed0db69eaf4c9e47c8292c4a3": {
+    "kiek": 1,
+    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kelias": [
+     "{closure} @ ?:?",
+     "str_replace @ functions.php:2196",
+     "wp_normalize_path @ plugin.php:779",
+     "plugin_basename @ plugin.php:1491",
+     "add_submenu_page @ petshop-av-dropship.php:71",
+     "Petshop_AV_Dropship::meniu @ class-wp-hook.php:341",
+     "WP_Hook::apply_filters @ class-wp-hook.php:365",
+     "WP_Hook::do_action @ plugin.php:522",
+     "do_action @ menu.php:161",
+     "require_once @ menu.php:437",
+     "require @ admin.php:163",
+     "require @ dev-router.php:33"
+    ]
+   },
+   "209f55150b549983e97d04d7ec6ada97": {
+    "kiek": 1,
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kelias": [
+     "{closure} @ ?:?",
+     "strpos @ functions.php:7374",
+     "wp_is_stream @ functions.php:2189",
+     "wp_normalize_path @ plugin.php:779",
+     "plugin_basename @ plugin.php:1491",
+     "add_submenu_page @ petshop-av-sheets.php:64",
+     "Petshop_AV_Sheets::meniu @ class-wp-hook.php:341",
+     "WP_Hook::apply_filters @ class-wp-hook.php:365",
+     "WP_Hook::do_action @ plugin.php:522",
+     "do_action @ menu.php:161",
+     "require_once @ menu.php:437",
+     "require @ admin.php:163",
+     "require @ dev-router.php:33"
+    ]
+   },
+   "e1de095785fac779c6acb2dee82e6355": {
+    "kiek": 1,
+    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "url": "/wp-admin/admin.php?page=ps-katalogas",
+    "kelias": [
+     "{closure} @ ?:?",
+     "str_replace @ functions.php:2196",
+     "wp_normalize_path @ plugin.php:779",
+     "plugin_basename @ plugin.php:1491",
+     "add_submenu_page @ petshop-av-sheets.php:64",
+     "Petshop_AV_Sheets::meniu @ class-wp-hook.php:341",
+     "WP_Hook::apply_filters @ class-wp-hook.php:365",
+     "WP_Hook::do_action @ plugin.php:522",
+     "do_action @ menu.php:161",
+     "require_once @ menu.php:437",
+     "require @ admin.php:163",
+     "require @ dev-router.php:33"
+    ]
+   }
+  }
+ }
+}
