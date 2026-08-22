@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.26 (H222) — 🔴 pataisyta: Venipak meta yra JSON, ne serialize — desk anksčiau NEMATĖ siuntų kodų (v3.25: registracijos saugiklis).
+ * Petshop Desk v3.27 (H224) — pakuočių skaičius ir Venipak paštomatui; kelių dėžių užsakymai grupėje registruojami atskirai su packs[]; pakuočių laukelis rytinėje eigoje (v3.26: JSON fix).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -383,8 +383,24 @@ class Petshop_Desk {
 				), $atgal ) );
 				exit;
 			}
-			$rez      = self::venipak_registruoti( $ids, $kodas );
-			$ok       = ( isset( $rez['status'] ) && 'ok' === $rez['status'] );
+			// Kelių dėžių užsakymus registruojam PO VIENĄ — tik taip pluginas
+			// gauna jų packs[]; grupinė registracija dėžių skaičiaus nemoka.
+			$daugiadezes = array(); $paprasti = array();
+			foreach ( $ids as $oid ) {
+				$oo = wc_get_order( $oid );
+				if ( $oo && self::reikia_pakuociu( $oo ) && self::pakuociu( $oo ) > 1 ) { $daugiadezes[] = $oid; }
+				else { $paprasti[] = $oid; }
+			}
+			$ok = true; $klaidos = array();
+			if ( $paprasti ) {
+				$rez = self::venipak_registruoti( $paprasti, $kodas );
+				if ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $ok = false; $klaidos[] = $rez['data'] ?? '?'; }
+			}
+			foreach ( $daugiadezes as $oid ) {
+				$rez = self::venipak_registruoti( array( $oid ), $kodas );
+				if ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $ok = false; $klaidos[] = '#' . $oid . ': ' . ( $rez['data'] ?? '?' ); }
+			}
+			$rez = $ok ? array( 'status' => 'ok' ) : array( 'status' => 'error', 'data' => implode( ' · ', $klaidos ) );
 			foreach ( $ids as $oid ) {
 				$oo = wc_get_order( $oid );
 				if ( $oo ) {
@@ -607,7 +623,9 @@ class Petshop_Desk {
 
 	protected static function reikia_pakuociu( $o ) {
 		$v = self::vezejas( $o );
-		return in_array( $v, array( 'venipak_kurjeris', 'lp' ), true )
+		// Venipak: ir kurjeriui, ir paštomatui — į paštomatą kiekviena dėžė
+		// keliauja kaip atskira siunta (§19.11), todėl klausiama abiem.
+		return in_array( $v, array( 'venipak_kurjeris', 'venipak_pastomatas', 'lp' ), true )
 			&& ( 'lp' !== $v || ! $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal_id' ) );
 	}
 
@@ -1316,6 +1334,11 @@ class Petshop_Desk {
 
 	protected static function ryt3( $p ) {
 		echo '<h2 class="pd-rh2">Venipak</h2>';
+		echo '<script>document.addEventListener("change",function(ev){
+			var i=ev.target.closest("[data-pk]"); if(!i) return;
+			var n=Math.max(1,Math.min(20,parseInt(i.value||"1",10)));
+			window.location.href = i.getAttribute("data-pk") + "&n=" + n;
+		});</script>';
 		if ( ! $p['vp'] ) { echo '<p class="pd-rnote">Venipak siuntų šioje partijoje nėra.</p>'; return; }
 
 		echo '<p class="pd-rnote">Kiekvienas sandėlis registruojamas <b>atskirai</b> — taip gaunamas savas manifestas
@@ -1362,8 +1385,18 @@ class Petshop_Desk {
 
 			echo '<table class="pd-tbl pd-rtbl"><tbody>';
 			foreach ( $eil as $e ) {
-				printf( '<tr><td class="pd-nr">#%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
-					esc_html( $e['nr'] ), esc_html( $e['kl'] ), esc_html( $e['vez'] ),
+				$pk = '';
+				if ( ! $e['kodas'] ) {
+					$oid_p = 0;
+					foreach ( $grupe as $gid ) { $go = wc_get_order( $gid ); if ( $go && $go->get_order_number() == $e['nr'] ) { $oid_p = $gid; break; } }
+					if ( $oid_p ) {
+						$bazine = self::veiksmo_url( 'pakuotes', $oid_p );
+						$pk = sprintf( ' <span class="pd-pk">dėžių <input type="number" min="1" max="20" value="%d" data-pk="%s" style="width:46px"></span>',
+							(int) self::pakuociu( wc_get_order( $oid_p ) ), esc_attr( $bazine ) );
+					}
+				}
+				printf( '<tr><td class="pd-nr">#%s</td><td>%s</td><td>%s%s</td><td>%s</td></tr>',
+					esc_html( $e['nr'] ), esc_html( $e['kl'] ), esc_html( $e['vez'] ), $pk,
 					$e['kodas'] ? '<span class="pd-rok">✓ ' . esc_html( $e['kodas'] ) . '</span>'
 						: '<span class="pd-rbad">' . esc_html( self::siuntos_klaida( $e['nr'], $grupe ) ) . '</span>' );
 			}
