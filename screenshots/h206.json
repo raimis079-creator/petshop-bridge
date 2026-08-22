@@ -1,0 +1,30 @@
+{
+ "v": "H206",
+ "sukurta": 3683,
+ "DIEGIMAS": {
+  "v": "H206",
+  "md5": "07724b10d8aee5fb5b7bdd564f6926d3",
+  "sintakse": "OK",
+  "md5_diske": "07724b10d8aee5fb5b7bdd564f6926d3",
+  "pastaba": "testai per antra uzklausa ps_h206=TEST"
+ },
+ "TESTAI": {
+  "v": "H206-TEST",
+  "sargas_registruotas": true,
+  "34882_status": "processing",
+  "34882_shipments": 2,
+  "U1_po_sargo": "processing",
+  "U2_po_sargo": "completed",
+  "U3_po_sargo": "completed",
+  "U4_shipments": 1,
+  "U4_po_sargo": "completed (buvo completed)",
+  "U5_db_status": "wc-processing",
+  "U5_objektas": "processing",
+  "U5_stock_pokyciai": "NEPAKITO"
+ },
+ "pradzia": {
+  "s": 200,
+  "fatal": "ne"
+ },
+ "isjungta": 3683
+}
