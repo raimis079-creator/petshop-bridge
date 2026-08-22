@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Siuntu Laiskai v1.0 (H204) — kaupiamasis siuntų registras ir sekimo laiškas.
+ * Petshop Siuntu Laiskai v1.1 (H204/H206) — kaupiamasis siuntų registras ir sekimo laiškas.
  *
  * KODĖL: Venipak pluginas visą registraciją laiko VIENAME rakte
  * `venipak_shipping_order_data` — mišriam užsakymui antra grupės registracija
@@ -12,6 +12,11 @@
  *
  * Papildomai: MIXED užsakymo apmokėjimo laiške — pastaba apie kelias siuntas.
  * Laiškas klientui siunčiamas TIK mygtuku (sistema paruošia — žmogus tvirtina).
+ *
+ * v1.1 (H206) — §18.3 užbaigimo sargas: užsakymas su keliomis siuntomis NEGALI
+ * tapti „completed", kol registruotos ne visos siuntos. Sargas gali tik
+ * SUSTABDYTI užbaigimą, niekada jo sukelti. Apėjimas ypatingam atvejui:
+ * užsakymo meta `_ps_uzbaigti_be_siuntu` = 1.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -26,6 +31,7 @@ class Petshop_Siuntos {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ) );
 		add_action( 'admin_post_ps_siuntu_siusti', array( __CLASS__, 'siusti' ) );
 		add_action( 'woocommerce_email_order_details', array( __CLASS__, 'mixed_pastaba' ), 5, 4 );
+		add_action( 'woocommerce_before_order_object_save', array( __CLASS__, 'uzbaigimo_sargas' ), 10, 1 );
 	}
 
 	/* ------------------------------------------------------------------ */
@@ -92,6 +98,45 @@ class Petshop_Siuntos {
 	/** Ar užsakymas turi bent vieną siuntos numerį (darbalaukio mygtukui). */
 	public static function turi( $order_id ) {
 		return (bool) self::sarasas( $order_id );
+	}
+
+	/** Kiek siuntų GRUPIŲ jau registruota (kaupiamajame sąraše). */
+	public static function registruota_grupiu( $o ) {
+		return count( self::zalias( $o ) );
+	}
+
+	/* ------------------------------------------------------------------ */
+	/* §18.3 UŽBAIGIMO SARGAS                                             */
+	/* ------------------------------------------------------------------ */
+
+	/**
+	 * Blokuoja perėjimą į „completed", kol registruotos ne visos siuntos.
+	 * Veikia tik užsakymams su `_ps_shipments` > 1. Statusas grąžinamas į
+	 * buvusį DB (be laiškų — from==to perėjimo kabliukai nešaunа).
+	 * SAUGUMO RIBA: sargas gali tik sustabdyti užbaigimą, nieko daugiau.
+	 */
+	public static function uzbaigimo_sargas( $order ) {
+		if ( ! $order instanceof WC_Order || ! $order->get_id() ) { return; }
+		$ch = $order->get_changes();
+		if ( empty( $ch['status'] ) || 'completed' !== $ch['status'] ) { return; }
+		if ( $order->get_meta( '_ps_uzbaigti_be_siuntu' ) ) { return; }
+
+		$tiketasi = (int) $order->get_meta( '_ps_shipments' );
+		if ( $tiketasi <= 1 ) { return; }
+
+		$turima = self::registruota_grupiu( $order );
+		if ( $turima >= $tiketasi ) { return; }
+
+		global $wpdb;
+		$db_status = (string) $wpdb->get_var( $wpdb->prepare(
+			"SELECT status FROM {$wpdb->prefix}wc_orders WHERE id=%d", $order->get_id() ) );
+		$orig = $db_status ? preg_replace( '/^wc-/', '', $db_status ) : 'processing';
+		if ( 'completed' === $orig ) { return; }
+
+		$order->set_status( $orig, '', false );
+		$order->add_order_note( sprintf(
+			'Užbaigimas sustabdytas: registruotos %d iš %d siuntų. Užbaigti galima, kai visos siuntos registruotos (apėjimas ypatingam atvejui: meta _ps_uzbaigti_be_siuntu = 1).',
+			$turima, $tiketasi ), false, true );
 	}
 
 	/* ------------------------------------------------------------------ */
