@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop AV Dropship v1.2 (H207) — užsakymų perdavimas tiekėjams.
+ * Petshop AV Dropship v1.3 (H224) — laiško PERŽIŪRA prieš siuntimą (v1.2: ZB kelias).
  *
  * v1.2: ZB kelias užbaigtas (§19.12 uodega). ZB kortelėje: ZB kodas iš
  * ps_sources (fallback SKU), mygtukas „Kopijuoti" (kodas TAB kiekis — įklijavimui
@@ -246,6 +246,21 @@ class Petshop_AV_Dropship {
 				</form>
 				<?php endif; ?>
 
+				<?php if ( 'zb' !== $src ) :
+					$perziura = isset( $_GET['perziura'] ) && $_GET['perziura'] === $src; ?>
+					<p style="margin:10px 0 0">
+						<a class="button" href="<?php echo esc_url( add_query_arg( array( 'page' => 'ps-dropship', 'perziura' => $perziura ? null : $src ) , admin_url( 'admin.php' ) ) ); ?>">
+							<?php echo $perziura ? 'Slėpti laiško peržiūrą' : 'Peržiūrėti laišką'; ?></a>
+					</p>
+					<?php if ( $perziura ) : ?>
+						<div style="margin-top:10px;border:1px dashed #98262A;background:#fff;padding:14px 16px">
+							<p style="margin:0 0 8px;font-size:11px;color:#98262A;text-transform:uppercase;letter-spacing:.06em">
+								Laiško peržiūra — tema: „užsakymas <?php echo esc_html( date_i18n( 'Y-m-d' ) ); ?>" · gavėjas: <?php echo esc_html( $pastas ?: '—' ); ?></p>
+							<?php echo wp_kses_post( self::laisko_html( $src, $uzsakymai ) ); ?>
+						</div>
+					<?php endif; ?>
+				<?php endif; ?>
+
 				<?php if ( 'zb' !== $src && $pastas ) : ?>
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="ps-siusti">
 					<?php wp_nonce_field( 'ps_dropship_send' ); ?>
@@ -385,26 +400,10 @@ class Petshop_AV_Dropship {
 	}
 
 	/** Išsiunčia laišką vienam tiekėjui. */
-	public static function siusti() {
-		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
-		check_admin_referer( 'ps_dropship_send' );
-
-		$src = sanitize_key( $_POST['tiekejas'] ?? '' );
-		$ids = array_filter( array_map( 'intval', explode( ',', (string) ( $_POST['uzsakymai'] ?? '' ) ) ) );
-		if ( ! $src || ! $ids ) { wp_safe_redirect( admin_url( 'admin.php?page=ps-dropship' ) ); exit; }
-
-		$t      = self::tiekejai();
-		$vardas = $t[ $src ][0] ?? strtoupper( $src );
-		$pastai = (array) get_option( self::OPT_EMAIL, [] );
-		$pastas = $pastai[ $src ] ?? '';
-		if ( ! $pastas ) { wp_die( 'Nenurodytas tiekėjo el. paštas' ); }
-
-		$g = self::grupuoti( $ids );
-		$uzsakymai = $g[ $src ] ?? [];
-		if ( ! $uzsakymai ) { wp_die( 'Nėra ką siųsti' ); }
-
+	/** Laiško tiekėjui HTML — VIENA tiesos vieta siuntimui ir peržiūrai. */
+	public static function laisko_html( $src, $uzsakymai ) {
+		$t = self::tiekejai();
 		$rodyti_ean = ( ( $t[ $src ][1] ?? 'sku' ) === 'sku_ean' );
-		$data = date_i18n( 'Y-m-d' );
 
 		// LENTELĖ — tokia pat struktūra kaip Raimio rankiniuose laiškuose
 		$h  = '<p>Laba diena,</p><p>šiandienai</p>';
@@ -430,6 +429,29 @@ class Petshop_AV_Dropship {
 		}
 		$h .= '</table>';
 		$h .= '<p>Linkėjimai,<br>UAB Avesa<br>terra@petshop.lt</p>';
+		return $h;
+	}
+
+	public static function siusti() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		check_admin_referer( 'ps_dropship_send' );
+
+		$src = sanitize_key( $_POST['tiekejas'] ?? '' );
+		$ids = array_filter( array_map( 'intval', explode( ',', (string) ( $_POST['uzsakymai'] ?? '' ) ) ) );
+		if ( ! $src || ! $ids ) { wp_safe_redirect( admin_url( 'admin.php?page=ps-dropship' ) ); exit; }
+
+		$t      = self::tiekejai();
+		$vardas = $t[ $src ][0] ?? strtoupper( $src );
+		$pastai = (array) get_option( self::OPT_EMAIL, [] );
+		$pastas = $pastai[ $src ] ?? '';
+		if ( ! $pastas ) { wp_die( 'Nenurodytas tiekėjo el. paštas' ); }
+
+		$g = self::grupuoti( $ids );
+		$uzsakymai = $g[ $src ] ?? [];
+		if ( ! $uzsakymai ) { wp_die( 'Nėra ką siųsti' ); }
+
+		$h = self::laisko_html( $src, $uzsakymai );
+		$data = date_i18n( 'Y-m-d' );
 
 		// PRIEDAI
 		$priedai = [];
