@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.16 (H210) — +„Tiekėjas vėluoja" klausimas iš dropship sargo žymės (v3.15: _ps_siuntos kaupimas) — darbinis užsakymų langas.
+ * Petshop Desk v3.17 (H212) — atsisakymo kortelėje data/priežastis/tvarka (v3.16: SLA klausimas; v3.15: _ps_siuntos) — darbinis užsakymų langas.
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -1646,6 +1646,12 @@ class Petshop_Desk {
 				$laukia ? '<span class="pd-kwait">laukiama nuo ' . esc_html( mysql2date( 'm-d', $laukia ) ) . '</span>' : '' );
 
 			printf( '<div class="pd-kwhy">▲ %s</div>', esc_html( $row['klausimas'] ) );
+
+			if ( 0 === strpos( $row['klausimas'], 'Klientas atsisako' ) ) {
+				printf( '<div class="pd-kline"><div class="pd-kprek"><b>Gauta %s</b><span>%s</span></div><div class="pd-kbtns"><span class="pd-knone">pinigai — rankinis grąžinimas (Paysera) · kreditinė — „Spausdinti kreditinę sąskaitą" užsakymo lange</span></div></div>',
+					esc_html( mysql2date( 'Y-m-d H:i', $o->get_meta( '_ps_withdrawal' ) ) ),
+					esc_html( $o->get_meta( '_ps_withdrawal_reason' ) ?: 'priežastis nenurodyta' ) );
+			}
 
 			if ( $prob ) {
 				foreach ( $prob as $p ) {
