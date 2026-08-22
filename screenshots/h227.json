@@ -1,0 +1,96 @@
+{
+ "v": "H227",
+ "sukurta": 3706,
+ "DIEGIMAS": {
+  "v": "H227",
+  "uzs": {
+   "35035": {
+    "manifest": "",
+    "packs": [],
+    "saltiniai": [
+     "vf"
+    ],
+    "registras": "",
+    "pastabos": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Payment complete.",
+     "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Rai. Laiškas klientui: iš",
+     "Email \"Naujas užsakymas\" sent."
+    ]
+   },
+   "35036": {
+    "manifest": "07267260822001",
+    "packs": [
+     "V07267E1000005"
+    ],
+    "saltiniai": [
+     "av"
+    ],
+    "registras": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260822001\",\"numeriai\":[\"V07267E1000005\"],\"data\":\"2026-08-22 19:20:54\"}}",
+    "pastabos": [
+     "Venipak registracija darbalaukyje (AV, manifestas 001): KLAIDA — Venipak negrąžino atsakymo",
+     "Siuntos numeriai išsaugoti (AV): V07267E1000005",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos) · #19692 −0 vnt. (0 partijos) · #19613 −0 vnt. (0 partijos) · "
+    ]
+   },
+   "35037": {
+    "manifest": "07267260822001",
+    "packs": [
+     "V07267E1000004"
+    ],
+    "saltiniai": [
+     "av"
+    ],
+    "registras": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260822001\",\"numeriai\":[\"V07267E1000004\"],\"data\":\"2026-08-22 19:20:54\"}}",
+    "pastabos": [
+     "Venipak registracija darbalaukyje (AV, manifestas 001): KLAIDA — Venipak negrąžino atsakymo",
+     "Siuntos numeriai išsaugoti (AV): V07267E1000004",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos) · #19692 −0 vnt. (0 partijos) · #19613 −0 vnt. (0 partijos) · "
+    ]
+   },
+   "35038": {
+    "manifest": "07267260822001",
+    "packs": [
+     "V07267E1000006"
+    ],
+    "saltiniai": [
+     "belcor_tofu",
+     "vf",
+     "av"
+    ],
+    "registras": "",
+    "pastabos": [
+     "Partijos nurašytos: #17657 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #17657: Partijose trūksta 1 vnt. — likutis ir parti",
+     "AV nurašymas: #17657 grynai AV 5 -> 4",
+     "Payment complete.",
+     "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Rai. Laiškas klientui: NE"
+    ]
+   },
+   "35041": {
+    "manifest": "07267260822001",
+    "packs": [
+     "V07267E1000007"
+    ],
+    "saltiniai": [
+     "zb"
+    ],
+    "registras": "",
+    "pastabos": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Payment complete.",
+     "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Rai. Laiškas klientui: iš",
+     "Email \"Naujas užsakymas\" sent."
+    ]
+   }
+  },
+  "plugino_manifestas": "001"
+ },
+ "TESTAI": "ne-json: <!DOCTYPE html>\n<html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\">\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n\t<link rel=\"pingback\" href=\"https://dev.avesa.lt/xmlrpc.php\" />\n\n\t\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments)",
+ "pradzia": {
+  "s": 200,
+  "fatal": "ne"
+ },
+ "isjungta": 3706
+}
