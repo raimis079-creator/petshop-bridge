@@ -1,0 +1,98 @@
+{
+ "v": "H201",
+ "sukurta": 3678,
+ "REZ": {
+  "v": "H201",
+  "ribojimo_snippetai": [
+   {
+    "id": "194",
+    "name": "Venipak Shipping Lock v3",
+    "active": "0",
+    "istrauka": "KA -> grazinam originalus rate'us.\n *\n * Venipak shipping method ID's:\n *   shopup_venipak_shipping_courier_method  (kurjeris)\n *   shopup_venipak_shipping_pickup_method   (pastomatas)\n *\n * Read-only checkout filtras. Jokiu DB pakeitimu.\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nadd_filter( 'woocommerce_package_rates', function( $rates, $package ) {\n\n\tif ( empty( $package['contents'] ) || ! is_array( $package['contents'] ) ) {\n\t\treturn $rates;\n\t}\n\n\t// Saugiklis: jei resolver klase neikrauta (plugin off) -> jokio ribojimo\n\tif ( ! class_exists( 'Petshop_Fulfillment_Source' ) ) {\n\t\treturn $rates;\n\t}\n\n\t$venipak_courier = 'shopup_venipak_shipping_courier_method';\n\t$venipak_pickup  = 'shopup_venipak_shipping_pickup_method';\n\n\t// 1) Klausiam resolver'io kiekvienai prekei\n\t$has_venipak_only = false;\n\t$has_oversize     = false;\n\n\tforeach ( $package['contents'] as $item ) {\n\n\t\t$pid = isset( $item['prod"
+   },
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "active": "1",
+    "istrauka": "add_filter('woocommerce_package_rates', function($rates, $package){\n  $limit = 29.90; $weight = 0;\n  if (!empty($package['contents'])) {\n    foreach ($package['contents'] as $item) {\n      if (!empty($item['data']) && is_object($item['data'])) {\n        $weight += ((float) $item['data']->get_weight()) * ((int) $item['quantity']);\n      }\n    }\n  }\n  if ($weight <= $limit) { return $rates; }\n  foreach ($rates as $rid => $rate) {\n    if (strpos($rate->get_method_id(), 'lpexpress_terminal') !== false) {\n      $s = get_option('woocommerce_' . $rate->get_method_id() . '_' . $rate->get_instance_id() . '_settings');\n      if (is_array($s) && isset($s['plan']) && $s['plan'] === 'TERMINAL') { unset($rates[$rid]); }\n    }\n  }\n  return $rates;\n}, 20, 2);"
+   },
+   {
+    "id": "635",
+    "name": "Petshop Recon Pries Testini Uzsakyma v1",
+    "active": "0",
+    "istrauka": "/**\n * Petshop Recon Prieš Testinį Užsakymą v1 (token, read-only)\n * RUN: /?ps_precheck=1&token=cmplz_6680aa2a42151d54fa8d64ec\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\n\nadd_action( 'wp_loaded', function () {\n\tif ( ! isset( $_GET['ps_precheck'] ) ) { return; }\n\t$token = isset( $_GET['token'] ) ? sanitize_text_field( wp_unslash( $_GET['token'] ) ) : '';\n\tif ( $token !== 'cmplz_6680aa2a42151"
+   },
+   {
+    "id": "1678",
+    "name": "FF (temp)",
+    "active": "-1",
+    "istrauka": "2. Ar krepselis jau ispeja / riboja pristatyma\n  $found=array();\n  foreach(array_merge(glob(WP_PLUGIN_DIR.'/petshop-core/includes/*.php'), glob(WPMU_PLUGIN_DIR.'/*.php'), glob(WP_PLUGIN_DIR.'/petshop-core/*.php')) as $f){\n    $c=file_get_contents($f);\n    $hit=array();\n    if(strpos($c,'woocommerce_package_rates')!==false) $hit[]='package_rates (pristatymo ribojimas)';\n    if(strpos($c,'woocommerce_cart_totals')!==false || strpos($c,'woocommerce_before_cart')!==false || strpos($c,'woocommerce_after_cart')!==false) $hit[]='cart hook';\n    if(preg_match('/siunt|shipment|atskira siunta|dvi siuntos/iu',$c)) $hit[]='TEKSTAS apie siuntas';\n    if(strpos($c,'Fulfillment_Source')!==false) $hit[]='naudoja Fulfillment_Source';\n    if($hit) $found[basename($f)]=$hit;\n  }\n  $o['kur_naudojama']=$found;\n  // 3. Ar yra hook'as ribojantis pristatymo budus\n  global $wp_filter;\n  $o['package_rates_hooks']"
+   },
+   {
+    "id": "1679",
+    "name": "SH (temp)",
+    "active": "-1",
+    "istrauka": "\nadd_action('wp_loaded', function(){\n  if(!isset($_GET['ps_sh']) || $_GET['ps_sh']!=='Shx') return;\n  global $wp_filter; $o=array();\n  // 1. Kas kabinasi ant package_rates\n  $cbs=array();\n  if(isset($wp_filter['woocommerce_package_rates'])){\n    foreach($wp_filter['woocommerce_package_rates']->callbacks as $prio=>$grp){\n      foreach($grp as $key=>$cb){\n        $f=$cb['function']; $desc='';\n        try{\n          if(is_array($f)){ $rc=new ReflectionMethod(is_object($f[0])?get_class($f[0]):$f[0], $f[1]); $desc=(is_object($f[0])?get_class($f[0]):$f[0]).'::'.$f[1]; }\n          elseif($f instanceof Closure){ $rc=new ReflectionFunction($f); $desc='Closure'; }\n          else { $rc=new ReflectionFunction($f); $desc=(string)$f; }\n          $cbs[]=array('prio'=>$prio,'kas'=>$desc,'failas'=>basename($rc->getFileName()),'eil'=>$rc->getStartLine());\n        }catch(Exception $e){ $cbs[]=array('prio'="
+   },
+   {
+    "id": "2076",
+    "name": "UI Localization Runtime Audit",
+    "active": "0",
+    "istrauka": "/**\n * S332 TZ AUDITAS — F1-F30b + DoD masiniskai tikrinami punktai. TIK SKAITYMAS.\n */\nadd_action('wp_loaded', function(){\n    if ( ! isset($_GET['ps_au5']) || $_GET['ps_au5'] !== 'Au5g1' ) return;\n    nocache_headers(); header('Content-Type: application/json; charset=utf-8');\n    global $wpdb; $r = array('VERSIJA'=>'tz-audit-v1', 'laikas'=>current_time('mysql'));\n\n    // ===== F1 =====\n    $r["
+   },
+   {
+    "id": "3677",
+    "name": "QQ H200 septyni sandeliai",
+    "active": "0",
+    "istrauka": "() as $p){$ps[]='$'.$p->getName();}\n     $ms[]=$m->getName().'('.implode(',',$ps).')';\n   }\n   $o['av_source_metodai']=$ms;\n }\n /* kur ribojami pristatymo metodai (LP tik is AV) */\n $rib=array();\n foreach(glob(WP_CONTENT_DIR.'/mu-plugins/*.php') as $f){\n   $c=file_get_contents($f);\n   if(strpos($c,'package_rates')!==false || strpos($c,'shipping_methods')!==false){\n     $rib[]=basename($f);\n   }\n }\n $o['pristatymo_ribojimo_failai']=$rib;\n /* ar desk mato misru: paskutinis realus uzsakymas su _ps_order_type */\n $o['pvz_uzsakymai']=$wpdb->get_results(\n   \"SELECT o.id, om.meta_value tipas FROM {$wpdb->prefix}wc_orders o\n    JOIN {$wpdb->prefix}wc_orders_meta om ON om.order_id=o.id AND om.meta_key='_ps_order_type'\n    ORDER BY o.id DESC LIMIT 3\", ARRAY_A);\n header('Content-Type: application/json; charset=utf-8');\n echo json_encode($o, JSON_UNESCAPED_UNICODE);\n exit;\n});\n"
+   },
+   {
+    "id": "3678",
+    "name": "QQ H201 kasa ir siuntos",
+    "active": "1",
+    "istrauka": "oaded', function(){\n if(!isset($_GET['ps_h201']) || $_GET['ps_h201']!=='RUN') return;\n global $wpdb;\n $o = array('v'=>'H201');\n\n /* B1: kur gyvena pristatymo ribojimas — DB snippetai */\n $t = $wpdb->prefix.'snippets';\n $sn = $wpdb->get_results(\"SELECT id,name,active,code FROM $t WHERE code LIKE '%package_rates%' OR code LIKE '%shipping_method%'\", ARRAY_A);\n $o['ribojimo_snippetai']=array();\n foreach($sn as $s){\n   $poz = strpos($s['code'],'package_rates');\n   $istr = $poz!==false ? substr($s['code'], max(0,$poz-300), 900) : substr($s['code'],0,400);\n   $o['ribojimo_snippetai'][] = array('id'=>$s['id'],'name'=>$s['name'],'active'=>$s['active'],'istrauka'=>$istr);\n }\n\n /* B2: gyvas krepselio testas — misrus vs tik AV */\n $o['kasos_testas']=array();\n try{\n   if(function_exists('wc_load_cart')) wc_load_cart();\n   if(WC()->cart){\n     WC()->customer->set_shipping_country('LT');\n     WC()-"
+   }
+  ],
+  "kasos_testas": {
+   "misrus_AV_VF": [
+    "shopup_venipak_shipping_courier_method:2 | VENIPAK Kurjeris",
+    "shopup_venipak_shipping_pickup_method:3 | VENIPAK paštomatai/atsiėmimo punktai"
+   ],
+   "tik_AV": [
+    "shopup_venipak_shipping_courier_method:2 | VENIPAK Kurjeris",
+    "shopup_venipak_shipping_pickup_method:3 | VENIPAK paštomatai/atsiėmimo punktai",
+    "woo_lithuaniapost_lpexpress_terminal:12 | LP Express",
+    "woo_lithuaniapost_lpexpress_terminal:15 | LP Express kurjeris"
+   ]
+  },
+  "multi_siuntu_komunikacija": {
+   "failuose": [
+    "petshop-av-admin.php : kelios siuntos",
+    "petshop-desk.php : siuntomis",
+    "petshop-rinkiniai.php : kelios siuntos"
+   ],
+   "snippetuose": [
+    "3678 · QQ H201 kasa ir siuntos"
+   ]
+  },
+  "_ps_shipments_vartotojai": [
+   "petshop-av-admin.php",
+   "petshop-av-order.php",
+   "petshop-av-sheets.php"
+  ],
+  "completed_sargas": [
+   "petshop-desk.php"
+  ],
+  "siuntu_bukles_meta": [
+   {
+    "meta_key": "_ps_shipments",
+    "k": "6"
+   },
+   {
+    "meta_key": "_ps_refill_tracked",
+    "k": "3"
+   }
+  ]
+ },
+ "isjungta": 3678
+}
