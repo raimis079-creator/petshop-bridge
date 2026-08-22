@@ -1,0 +1,63 @@
+{
+ "v": "H202",
+ "sukurta": 3679,
+ "REZ": {
+  "v": "H202",
+  "venipak_meta_raktai": [
+   {
+    "meta_key": "venipak_pickup_point",
+    "k": "3"
+   },
+   {
+    "meta_key": "venipak_shipping_order_data",
+    "k": "2"
+   }
+  ],
+  "pvz_uzsakymas": "34886",
+  "pvz_meta": [
+   {
+    "meta_key": "_ps_completed_at",
+    "v": "2026-08-05 20:12:40"
+   },
+   {
+    "meta_key": "_ps_decided_at",
+    "v": "2026-08-05 22:47:47"
+   },
+   {
+    "meta_key": "_ps_groups",
+    "v": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":2,\"vienetai\":5}}"
+   },
+   {
+    "meta_key": "_ps_order_shipped_emitted",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_ps_order_type",
+    "v": "DS"
+   },
+   {
+    "meta_key": "_ps_refill_tracked",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_ps_shipments",
+    "v": "1"
+   },
+   {
+    "meta_key": "venipak_pickup_point",
+    "v": "3648"
+   },
+   {
+    "meta_key": "venipak_shipping_order_data",
+    "v": "{\"manifest\":\"07267260806001\",\"pack_numbers\":[\"V07267E1000003\"],\"weight\":4.5,\"products_count\":5,\"status\":\"sent\",\"error_message\":\"\"}"
+   }
+  ],
+  "plugino_meta_rasymai": [],
+  "desk_vp_reg": "sinis ) { wp_die( 'Užsakymas nerastas' ); }\n\n\t\t$atgal = isset( $_GET['g'] ) ? wp_unslash( $_GET['g'] ) : '';\n\t\t$atgal = wp_validate_redirect( $atgal, admin_url( 'admin.php?page=' . self::SLUG ) );\n\n\t\t$zinute = 'nezinomas';\n\n\t\t$naudotojas = wp_get_current_user()->display_name;\n\n\t\t/* --- DARBO ĮRANKIAI. s524: abu priima užsakymus per transient. --- */\n\t\t$ids = array();\n\t\tif ( isset( $_GET['ids'] ) ) {\n\t\t\t$ids = array_filter( array_map( 'absint', explode( ',', sanitize_text_field( wp_unslash( $_GET['ids'] ) ) ) ) );\n\t\t}\n\t\tif ( ! $ids && $id ) { $ids = array( $id ); }\n\n\t\tif ( 'lapai' === $v && $ids ) {\n\t\t\tset_transient( 'ps_sheets_' . get_current_user_id(), $ids, 900 );\n\t\t\twp_safe_redirect( admin_url( 'admin.php?page=ps-lapai&ps_ready=1' ) );\n\t\t\texit;\n\t\t}\n\n\t\tif ( 'vp_reg' === $v && $ids ) {\n\t\t\t$sandelis = isset( $_GET['sandelis'] ) ? sanitize_key( wp_unslash( $_GET['sandelis'] ) ) : 'av';\n\t\t\t$kodas    = isset( self::MANIFESTAI[ $sandelis ] ) ? self::MANIFESTAI[ $sandelis ] : '001';\n\t\t\t$rez      = self::venipak_registruoti( $ids, $kodas );\n\t\t\t$ok       = ( isset( $rez['status'] ) && 'ok' === $rez['status'] );\n\t\t\tforeach ( $ids as $oid ) {\n\t\t\t\t$oo = wc_get_order( $oid );\n\t\t\t\tif ( $oo ) {\n\t\t\t\t\t$oo->add_order_note( sprintf( 'Venipak registracija darbalaukyje (%s, manifestas %s): %s',\n\t\t\t\t\t\tmb_strtoupper( $sandelis ), $kodas, $ok ? 'sėkminga' : ( 'KLAIDA — ' . ( $rez['data'] ?? '?' ) ) ), false, true );\n\t\t\t\t}\n\t\t\t}\n\t\t\twp_safe_redirect( add_query_arg( array(\n\t\t\t\t'pd_ok'  => $ok ? 'vp_ok' : 'vp_klaida',\n\t\t\t\t'pd_nr'  => rawurlencode( $ok ? count( $ids ) . ' · ' . mb_strtoupper( $sandeli",
+  "desk_pack_skaitymas": [
+   "get_meta( 'venipak_shipping_order_data' )",
+   "get_meta( 'venipak_pickup_point' )"
+  ]
+ },
+ "isjungta": 3679
+}
