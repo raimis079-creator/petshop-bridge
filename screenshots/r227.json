@@ -1,0 +1,150 @@
+{
+ "versija": "R227",
+ "sukurta": 3671,
+ "DUOM": {
+  "v": "R227",
+  "dabar": "2026-08-22 11:04:48",
+  "utc": "2026-08-22 08:04:48",
+  "moduliai": {
+   "petshop-xml.php": {
+    "md5": "426498e4599dc605cb5a3931ffbee2ae",
+    "laukta": "426498e4599dc605cb5a3931ffbee2ae",
+    "sutampa": "TAIP"
+   },
+   "petshop-laukai.php": {
+    "versija": "1.43"
+   },
+   "petshop-rinkiniai.php": {
+    "versija": "1.31"
+   }
+  },
+  "sargas": [
+   {
+    "laikas": "2026-08-21 22:46:45",
+    "lygis": "deprecated",
+    "kiek": "762",
+    "zinute": "Creation of dynamic property postitPublic::$plugin_dir_url is deprecated",
+    "failas": "/plugins/postit/includes/postit-base.php",
+    "eilute": "24"
+   },
+   {
+    "laikas": "2026-08-21 22:38:01",
+    "lygis": "deprecated",
+    "kiek": "409",
+    "zinute": "Creation of dynamic property postitAdmin::$plugin_dir_url is deprecated",
+    "failas": "/plugins/postit/includes/postit-base.php",
+    "eilute": "24"
+   },
+   {
+    "laikas": "2026-08-22 11:03:11",
+    "lygis": "deprecated",
+    "kiek": "144",
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "failas": "lt/public_html/wp-includes/functions.php",
+    "eilute": "7374"
+   },
+   {
+    "laikas": "2026-08-22 11:03:11",
+    "lygis": "deprecated",
+    "kiek": "144",
+    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "failas": "lt/public_html/wp-includes/functions.php",
+    "eilute": "2196"
+   },
+   {
+    "laikas": "2026-08-22 06:01:20",
+    "lygis": "warning",
+    "kiek": "34",
+    "zinute": "Array to string conversion",
+    "failas": "tent/plugins/petshop-xml/petshop-xml.php",
+    "eilute": "343"
+   },
+   {
+    "laikas": "2026-08-22 06:01:20",
+    "lygis": "warning",
+    "kiek": "34",
+    "zinute": "Array to string conversion",
+    "failas": "tent/plugins/petshop-xml/petshop-xml.php",
+    "eilute": "344"
+   },
+   {
+    "laikas": "2026-08-21 23:23:07",
+    "lygis": "deprecated",
+    "kiek": "1",
+    "zinute": "Return type of NAWebCo\\BoxPacker\\GenericPackable::jsonSerialize() should either be compatible with JsonSeriali",
+    "failas": "webco/box-packer/src/GenericPackable.php",
+    "eilute": "49"
+   },
+   {
+    "laikas": "2026-08-21 23:23:07",
+    "lygis": "deprecated",
+    "kiek": "1",
+    "zinute": "Return type of NAWebCo\\BoxPacker\\Container::jsonSerialize() should either be compatible with JsonSerializable:",
+    "failas": "dor/nawebco/box-packer/src/Container.php",
+    "eilute": "259"
+   },
+   {
+    "laikas": "2026-08-21 23:23:07",
+    "lygis": "deprecated",
+    "kiek": "1",
+    "zinute": "Return type of NAWebCo\\BoxPacker\\Solid::jsonSerialize() should either be compatible with JsonSerializable::jso",
+    "failas": "/vendor/nawebco/box-packer/src/Solid.php",
+    "eilute": "53"
+   }
+  ],
+  "sargas_viso": 47,
+  "prekes": {
+   "viso_publish": 2618,
+   "viso_draft": 1143,
+   "keista_12h": 2212,
+   "nauji_12h": 0
+  },
+  "nauji_sarasas": [],
+  "amp": 0,
+  "feedai": {
+   "kaina24": "2026-08-22 01:30 UTC · 5.8 MB",
+   "kainos": "2026-08-22 01:30 UTC · 5.3 MB",
+   "google": "2026-08-22 01:30 UTC · 4.8 MB"
+  },
+  "cron": [
+   "08-22 08:06 UTC · ps_refill_iv_veidrodis",
+   "08-22 08:07 UTC · ps_esp_cron_process_pending",
+   "08-22 08:08 UTC · ps_akcijos_valanda",
+   "08-22 08:08 UTC · ps_email_dispatch_cron",
+   "08-22 08:09 UTC · ps_cart_abandon_check",
+   "08-22 08:13 UTC · ps_seseliai_valandinis",
+   "08-22 08:13 UTC · ps_vartai_valanda",
+   "08-22 08:39 UTC · ps_post_purchase_check",
+   "08-22 08:59 UTC · petshop_vf_sync_stock_hourly",
+   "08-22 09:00 UTC · ps_reminders_daily_check",
+   "08-22 10:57 UTC · petshop_attr_engine_run",
+   "08-22 21:41 UTC · ps_stat_valymas"
+  ],
+  "snippetai": {
+   "viso": 1383,
+   "aktyvus": 73,
+   "temp": 0,
+   "zz": 15
+  },
+  "siuksleje": 8,
+  "uzsakymai_12h": 0
+ },
+ "pradzia": {
+  "s": 200,
+  "ms": 2253,
+  "fatal": "ne",
+  "ilgis": 235402
+ },
+ "parduotuve": {
+  "s": 200,
+  "ms": 1961,
+  "fatal": "ne",
+  "ilgis": 306311
+ },
+ "rinkiniai": {
+  "s": 200,
+  "ms": 2295,
+  "fatal": "ne",
+  "ilgis": 210725
+ }
+}
