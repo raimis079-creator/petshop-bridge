@@ -1,0 +1,129 @@
+{
+ "v": "H200",
+ "sukurta": 3677,
+ "REZ": {
+  "v": "H200",
+  "eilutes": {
+   "av": {
+    "id": 14929,
+    "pav": "Žirklės nagams (giljotina), 11 cm",
+    "stock": "5",
+    "own": "",
+    "resolve": {
+     "source": "av",
+     "carrier": "any",
+     "av_qty": 5,
+     "reason": "grynai AV prekė (be tiekėjo)"
+    }
+   },
+   "vf": {
+    "id": 17947,
+    "pav": "Josidog adult Sensitive 15 kg sausas m",
+    "stock": "305.000000",
+    "own": "",
+    "resolve": {
+     "source": "vf",
+     "carrier": "venipak",
+     "av_qty": null,
+     "reason": "AV šios prekės neturi"
+    }
+   },
+   "zb": {
+    "id": 12452,
+    "pav": "Eukanuba Active Small Adult (vištiena)",
+    "stock": "8.000000",
+    "own": "",
+    "resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "av_qty": null,
+     "reason": "AV šios prekės neturi"
+    }
+   },
+   "quattro": {
+    "id": 16537,
+    "pav": "Quattro SB su ėriena sausas suaugusių ",
+    "stock": "27",
+    "own": "",
+    "resolve": {
+     "source": "quattro",
+     "carrier": "venipak",
+     "av_qty": null,
+     "reason": "AV šios prekės neturi"
+    }
+   },
+   "prins": {
+    "id": 16745,
+    "pav": "Prins ProCare lamb&#038;rice senior sa",
+    "stock": "20",
+    "own": "",
+    "resolve": {
+     "source": "prins",
+     "carrier": "venipak",
+     "av_qty": null,
+     "reason": "AV šios prekės neturi"
+    }
+   },
+   "belcor_tofu": {
+    "id": 15838,
+    "pav": "Vienkartinės palutės / paklotai, 60*90",
+    "stock": "14",
+    "own": "",
+    "resolve": {
+     "source": "belcor_tofu",
+     "carrier": "venipak",
+     "av_qty": null,
+     "reason": "AV šios prekės neturi"
+    }
+   },
+   "ambrosia": {
+    "id": 19715,
+    "pav": "Ambrosia begrūdis su šviežia kalakutie",
+    "stock": "8",
+    "own": "",
+    "resolve": {
+     "source": "ambrosia",
+     "carrier": "venipak",
+     "av_qty": null,
+     "reason": "AV šios prekės neturi"
+    }
+   }
+  },
+  "grupes": [
+   "av",
+   "vf",
+   "zb",
+   "quattro",
+   "prins",
+   "belcor_tofu",
+   "ambrosia"
+  ],
+  "siuntu": 7,
+  "tipas": "MIXED",
+  "av_source_metodai": [
+   "resolve($product_id,$qty)",
+   "is_av($product_id,$qty)",
+   "group($eilutes)",
+   "order_type($grupes)",
+   "group_order($order)"
+  ],
+  "pristatymo_ribojimo_failai": [
+   "petshop-rinkiniai.php"
+  ],
+  "pvz_uzsakymai": [
+   {
+    "id": "34952",
+    "tipas": "MAIN"
+   },
+   {
+    "id": "34887",
+    "tipas": "MAIN"
+   },
+   {
+    "id": "34886",
+    "tipas": "DS"
+   }
+  ]
+ },
+ "isjungta": 3677
+}
