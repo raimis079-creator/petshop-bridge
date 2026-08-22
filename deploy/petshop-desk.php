@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.27 (H224) — pakuočių skaičius ir Venipak paštomatui; kelių dėžių užsakymai grupėje registruojami atskirai su packs[]; pakuočių laukelis rytinėje eigoje (v3.26: JSON fix).
+ * Petshop Desk v3.28 (H226) — automatinis sąrašo atsinaujinimas kas 60 s, kai netrukdo darbui (v3.27: pakuotės paštomatui, laiško peržiūra dropship pusėje).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -2521,6 +2521,25 @@ small.pd-riba-praejo{color:var(--ink3)}
 		?>
 <script>
 (function(){
+ /* AUTOMATINIS ATSINAUJINIMAS (H226): kas 60 s, bet TIK kai netrukdo —
+    skirtukas matomas, nieko nepažymėta, neatidarytas skydelis/dialogas,
+    žymeklis ne įvesties lauke. Rytinėje eigoje neveikia. */
+ if (location.search.indexOf('view=rytas') === -1) {
+  setInterval(function(){
+   try{
+    if (document.visibilityState !== 'visible') return;
+    if (typeof sel !== 'undefined' && sel.size > 0) return;
+    var pk=document.getElementById('pdPeek');
+    if (pk && pk.classList.contains('on')) return;
+    var ds=document.getElementById('pdDScrim');
+    if (ds && ds.classList.contains('on')) return;
+    var a=document.activeElement;
+    if (a && (a.tagName==='INPUT' || a.tagName==='SELECT' || a.tagName==='TEXTAREA')) return;
+    window.location.reload();
+   }catch(e){}
+  }, 60000);
+ }
+
  var T=document.querySelector('.pd-tbl'), peek=document.getElementById('pdPeek'),
      bulk=document.getElementById('pdBulk'), cur=0, sel=new Set();
  var rows=T?[].slice.call(T.querySelectorAll('tbody tr')):[];
