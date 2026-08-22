@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.15 (H204) — siuntų numerių kaupimas į _ps_siuntos po Venipak registracijos — darbinis užsakymų langas.
+ * Petshop Desk v3.16 (H210) — +„Tiekėjas vėluoja" klausimas iš dropship sargo žymės (v3.15: _ps_siuntos kaupimas) — darbinis užsakymų langas.
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -656,6 +656,8 @@ class Petshop_Desk {
 		if ( 'lp-parcel-failed' === $st ) { return 'Siuntos sukurti nepavyko'; }
 
 		if ( $order->get_meta( '_ps_withdrawal' ) ) { return 'Klientas atsisako sutarties'; }
+
+		if ( $order->get_meta( '_ps_sla_velavimas' ) ) { return 'Tiekėjas vėluoja — perduota prieš 24+ val.'; }
 
 		if ( ! $order->is_paid() ) { return ''; }
 
