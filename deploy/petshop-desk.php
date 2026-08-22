@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.24 (H219) — teisingas pranešimas po „Pažymėti apmokėtu", kai užsakymas iškrenta į Klausimus (v3.23: Išsiųsti eilė).
+ * Petshop Desk v3.25 (H221) — Venipak registracija ima TIK neregistruotus ir be trūkumų; mygtukas rodo tikrą skaičių (v3.24: apmokėjimo pranešimas).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -362,6 +362,27 @@ class Petshop_Desk {
 		if ( 'vp_reg' === $v && $ids ) {
 			$sandelis = isset( $_GET['sandelis'] ) ? sanitize_key( wp_unslash( $_GET['sandelis'] ) ) : 'av';
 			$kodas    = isset( self::MANIFESTAI[ $sandelis ] ) ? self::MANIFESTAI[ $sandelis ] : '001';
+
+			// SAUGIKLIS (H221): registruojam TIK tuos, kurie dar neturi siuntos kodo
+			// ir kuriems netrūksta paštomato — kitaip pakartotinis paspaudimas
+			// siunčia dublikatus ir visas grupinis XML lūžta „be atsakymo".
+			$praleisti = array();
+			$ids = array_values( array_filter( $ids, function ( $oid ) use ( &$praleisti ) {
+				$oo = wc_get_order( $oid );
+				if ( ! $oo ) { return false; }
+				if ( self::turi_siunta( $oo ) ) { $praleisti[] = '#' . $oo->get_order_number() . ' jau registruotas'; return false; }
+				if ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {
+					$praleisti[] = '#' . $oo->get_order_number() . ' be paštomato'; return false;
+				}
+				return true;
+			} ) );
+			if ( ! $ids ) {
+				wp_safe_redirect( add_query_arg( array(
+					'pd_ok' => 'vp_nieko',
+					'pd_nr' => rawurlencode( implode( ', ', $praleisti ) ),
+				), $atgal ) );
+				exit;
+			}
 			$rez      = self::venipak_registruoti( $ids, $kodas );
 			$ok       = ( isset( $rez['status'] ) && 'ok' === $rez['status'] );
 			foreach ( $ids as $oid ) {
@@ -376,7 +397,8 @@ class Petshop_Desk {
 			}
 			wp_safe_redirect( add_query_arg( array(
 				'pd_ok'  => $ok ? 'vp_ok' : 'vp_klaida',
-				'pd_nr'  => rawurlencode( $ok ? count( $ids ) . ' · ' . mb_strtoupper( $sandelis ) : ( $rez['data'] ?? '' ) ),
+				'pd_nr'  => rawurlencode( ( $ok ? count( $ids ) . ' · ' . mb_strtoupper( $sandelis ) : ( $rez['data'] ?? '' ) )
+					. ( $praleisti ? ' · praleista: ' . implode( ', ', $praleisti ) : '' ) ),
 			), $atgal ) );
 			exit;
 		}
@@ -1315,9 +1337,14 @@ class Petshop_Desk {
 					esc_html( sprintf( 'registruota %d iš %d', $ok, $viso ) ) ) );
 
 			echo '<div class="pd-vgrp-b">';
-			printf( '<a class="pd-btn pd-btn-p" href="%s">Registruoti %d %s</a>',
-				esc_url( self::veiksmo_url( 'vp_reg', 0 ) . '&sandelis=' . rawurlencode( $k ) . '&ids=' . implode( ',', $grupe ) ),
-				count( $grupe ), esc_html( self::linksnis( count( $grupe ), 'siuntą', 'siuntas', 'siuntų' ) ) );
+			$liko = $viso - $ok;
+			if ( $liko > 0 ) {
+				printf( '<a class="pd-btn pd-btn-p" href="%s">Registruoti %d %s</a>',
+					esc_url( self::veiksmo_url( 'vp_reg', 0 ) . '&sandelis=' . rawurlencode( $k ) . '&ids=' . implode( ',', $grupe ) ),
+					$liko, esc_html( self::linksnis( $liko, 'siuntą', 'siuntas', 'siuntų' ) ) );
+			} else {
+				echo '<span class="pd-rok">✓ visos registruotos</span> ';
+			}
 
 			printf( '<button class="pd-btn" data-wcnew="shopup_venipak_shipping_labels" data-ids="%s">Lipdukai 10×15</button>',
 				esc_attr( implode( ',', $grupe ) ) );
@@ -1549,6 +1576,7 @@ class Petshop_Desk {
 			'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),
 			'vp_ok'           => array( 'ok', 'Venipak: siuntos užregistruotos (%s). Manifestas paruoštas.' ),
 			'vp_klaida'       => array( 'klaida', 'Venipak nepriėmė: %s' ),
+			'vp_nieko'        => array( 'info', 'Registruoti nėra ko: %s.' ),
 			'eilute_ideta'    => array( 'ok', 'Prekė įtraukta į tiekimo lentelę — parsivešim į AV. %s' ),
 			'eilute_isimta'   => array( 'ok', 'Prekė išimta iš tiekimo lentelės — keliaus dropshipu. %s' ),
 			'pakuotes'        => array( 'ok', 'Pakuočių skaičius išsaugotas: %s.' ),
