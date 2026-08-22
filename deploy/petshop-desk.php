@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.23 (H218) — nauja eilė „Išsiųsti" (kelyje + įvykdyti) apatinėje juostoje (v3.22: Laukia 3+ d.; v3.21: Laukiantys).
+ * Petshop Desk v3.24 (H219) — teisingas pranešimas po „Pažymėti apmokėtu", kai užsakymas iškrenta į Klausimus (v3.23: Išsiųsti eilė).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -169,7 +169,7 @@ class Petshop_Desk {
 				'url' => self::veiksmo_url( 'apmoketa', $id ),
 				'd'   => array(
 					'antraste' => $antraste,
-					'tekstas'  => 'Pažymėti kaip apmokėtą? Prekės bus nurašytos iš likučio ir užsakymas keliaus į „Nauji“.',
+					'tekstas'  => 'Pažymėti kaip apmokėtą? Prekės bus nurašytos iš likučio; užsakymas keliaus į „Nauji“ (arba į „Klausimus“, jei sandėlyje trūksta).',
 					'ok'       => 'Pažymėti apmokėtu',
 					'opt'      => array(
 						'vardas' => 'be_laisko',
@@ -457,6 +457,12 @@ class Petshop_Desk {
 				$o->payment_complete();
 				if ( $tylus ) { self::laiskai_on(); }
 				$zinute = $tylus ? 'apmoketa_tyliai' : 'apmoketa';
+
+				// Sakyti TIESĄ: apmokėjus galėjo suveikti sandėlio/LP patikra —
+				// tada užsakymas guli ne „Naujuose", o „Klausimuose".
+				$sviezes = wc_get_order( $o->get_id() );
+				$kl = $sviezes ? self::klausimas( $sviezes ) : '';
+				if ( $kl ) { $zinute = 'apmoketa_klausimas'; $nr_priedas = $kl; }
 			}
 		}
 
@@ -478,7 +484,7 @@ class Petshop_Desk {
 
 		wp_safe_redirect( add_query_arg( array(
 			'pd_ok' => $zinute,
-			'pd_nr' => rawurlencode( $o ? $o->get_order_number() : '' ),
+			'pd_nr' => rawurlencode( ( $o ? $o->get_order_number() : '' ) . ( isset( $nr_priedas ) ? '|' . $nr_priedas : '' ) ),
 		), $atgal ) );
 		exit;
 	}
@@ -1537,6 +1543,7 @@ class Petshop_Desk {
 			'apmoketa'        => array( 'ok', 'Užsakymas #%s pažymėtas apmokėtu. Prekės nurašytos, klientui išsiųstas patvirtinimas.' ),
 			'apmoketa_tyliai' => array( 'ok', 'Užsakymas #%s pažymėtas apmokėtu. Prekės nurašytos. Laiškas klientui NEIŠSIŲSTAS.' ),
 			'jau_apmoketa'    => array( 'info', 'Užsakymas #%s jau buvo apmokėtas — niekas nepakeista.' ),
+			'apmoketa_klausimas' => array( 'info', 'Užsakymas #%s apmokėtas, bet perkeltas į KLAUSIMUS: %s. Spręsk kortelėje.' ),
 			'atsaukta'        => array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ),
 			'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas.' ),
 			'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),
@@ -1549,8 +1556,18 @@ class Petshop_Desk {
 			'kl_laukti'       => array( 'info', 'Užsakymas #%s pažymėtas laukti. Priminimų nebus — grįši pats.' ),
 		);
 		if ( ! isset( $t[ $k ] ) ) { return; }
+		$dalys = explode( '|', $nr, 2 );
+		$tekstas = ( 'apmoketa_klausimas' === $k )
+			? sprintf( $t[ $k ][1], $dalys[0], $dalys[1] ?? '' )
+			: sprintf( $t[ $k ][1], $nr );
+		if ( 'apmoketa_klausimas' === $k ) {
+			$tekstas .= ' <a href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=klausimai' ) ) . '">Atidaryti Klausimus</a>';
+			printf( '<div class="pd-msg pd-msg-%s">%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>',
+				esc_attr( $t[ $k ][0] ), wp_kses( $tekstas, array( 'a' => array( 'href' => true ) ) ) );
+			return;
+		}
 		printf( '<div class="pd-msg pd-msg-%s">%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>',
-			esc_attr( $t[ $k ][0] ), esc_html( sprintf( $t[ $k ][1], $nr ) ) );
+			esc_attr( $t[ $k ][0] ), esc_html( $tekstas ) );
 	}
 
 	protected static function virsus( $f ) {
