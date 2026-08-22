@@ -1,16 +1,27 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
-const out={versija:'R233'};
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKChpc3NldCgkX0dFVFsncHNfcjIzNCddKSA/ICRfR0VUWydwc19yMjM0J10gOiAnJykgIT09ICdHTycpIHJldHVybjsKICRvID0gYXJyYXkoJ3YnPT4nUjIzNCcpOwoKIC8qIDEuIFJlZ2lzdHJhY2lqYSDigJQgYmUgdmlzbyBrb2RvICovCiAkcmVnID0gZ2V0X29wdGlvbignZmxhdHNvbWVfcmVnaXN0cmF0aW9uJyk7CiBpZihpc19hcnJheSgkcmVnKSl7CiAgICRzYXVnYSA9IGFycmF5KCk7CiAgIGZvcmVhY2goJHJlZyBhcyAkaz0+JHYpewogICAgIGlmKCFpc19zY2FsYXIoJHYpKSB7ICRzYXVnYVska10gPSBnZXR0eXBlKCR2KTsgY29udGludWU7IH0KICAgICAkdiA9IChzdHJpbmcpJHY7CiAgICAgaWYoc3RyaXBvcygkaywnY29kZScpIT09ZmFsc2UgfHwgc3RyaXBvcygkaywna2V5JykhPT1mYWxzZSB8fCBzdHJpcG9zKCRrLCd0b2tlbicpIT09ZmFsc2UpewogICAgICAgJHNhdWdhWyRrXSA9ICfigKYnLnN1YnN0cigkdiwgLTYpLicgKCcuc3RybGVuKCR2KS4nIHNpbWIuKSc7CiAgICAgfSBlbHNlICRzYXVnYVska10gPSBtYl9zdWJzdHIoJHYsMCw5MCk7CiAgIH0KICAgJG9bJ3JlZ2lzdHJhY2lqYSddID0gJHNhdWdhOwogfSBlbHNlIHsKICAgJG9bJ3JlZ2lzdHJhY2lqYSddID0gaXNfc3RyaW5nKCRyZWcpID8gJ+KApicuc3Vic3RyKCRyZWcsLTYpLicgKGVpbHV0ZSwgJy5zdHJsZW4oJHJlZykuJyBzaW1iLiknIDogJHJlZzsKIH0KIGZvcmVhY2goYXJyYXkoJ2ZsYXRzb21lX3JlZ2lzdGVyZWQnLCdmbGF0c29tZV9wdXJjaGFzZV9jb2RlJywnZmxhdHNvbWVfbGljZW5zZScsJ2VudmF0b19wdXJjaGFzZV9jb2RlJywnZmxhdHNvbWVfcmVnaXN0cmF0aW9uX2RvbWFpbicpIGFzICRrKXsKICAgJHYgPSBnZXRfb3B0aW9uKCRrKTsKICAgaWYoJHYgIT09IGZhbHNlKSAkb1sna2l0b3Nfb3BjaWpvcyddWyRrXSA9IGlzX3NjYWxhcigkdikgPyBtYl9zdWJzdHIoKHN0cmluZykkdiwwLDYwKSA6IGdldHR5cGUoJHYpOwogfQoKIC8qIDIuIEFkcmVzYWksIHN1IGt1cmlhaXMgbHlnaW5hICovCiAkb1snYWRyZXNhaSddID0gYXJyYXkoJ3NpdGV1cmwnPT5nZXRfb3B0aW9uKCdzaXRldXJsJyksICdob21lJz0+Z2V0X29wdGlvbignaG9tZScpLAogICAnSFRUUF9IT1NUJz0+aXNzZXQoJF9TRVJWRVJbJ0hUVFBfSE9TVCddKT8kX1NFUlZFUlsnSFRUUF9IT1NUJ106Jy0nLAogICAnQUJTUEFUSCc9PkFCU1BBVEgpOwoKIC8qIDMuIFRlbW9zIHZlcnNpam9zICovCiAkdmFpa2FzID0gd3BfZ2V0X3RoZW1lKCk7CiAkdGV2YXMgID0gJHZhaWthcy0+cGFyZW50KCk7CiAkb1sndGVtYSddID0gYXJyYXkoCiAgICd2YWlrYXMnPT4kdmFpa2FzLT5nZXQoJ05hbWUnKS4nICcuJHZhaWthcy0+Z2V0KCdWZXJzaW9uJyksCiAgICd0ZXZhcyc9PiR0ZXZhcyA/ICR0ZXZhcy0+Z2V0KCdOYW1lJykuJyAnLiR0ZXZhcy0+Z2V0KCdWZXJzaW9uJykgOiAnbmVyYScsCiAgICdrYXRhbG9nYXMnPT4kdmFpa2FzLT5nZXRfc3R5bGVzaGVldCgpLAogKTsKICR1cGQgPSBnZXRfc2l0ZV90cmFuc2llbnQoJ3VwZGF0ZV90aGVtZXMnKTsKICRvWyduYXVqaW5pbWFpJ10gPSBhcnJheSgKICAgJ3Rpa3JpbnRhJyA9PiBpc3NldCgkdXBkLT5sYXN0X2NoZWNrZWQpID8gZ21kYXRlKCdZLW0tZCBIOmknLCAkdXBkLT5sYXN0X2NoZWNrZWQpLicgVVRDJyA6ICctJywKICAgJ2ZsYXRzb21lX25hdWppbmltYXMnID0+IGlzc2V0KCR1cGQtPnJlc3BvbnNlWydmbGF0c29tZSddKSA/ICR1cGQtPnJlc3BvbnNlWydmbGF0c29tZSddIDogJ25lcmEgaXJhxaFvJywKICAgJ25lcGF0aWtyaW50aScgPT4gaXNzZXQoJHVwZC0+Y2hlY2tlZFsnZmxhdHNvbWUnXSkgPyAkdXBkLT5jaGVja2VkWydmbGF0c29tZSddIDogJy0nLAogKTsKCiAvKiA0LiBQYXNlbsSZIHNhYmxvbmFpIHZhaWtpbsSXamUgdGVtb2plICovCiAkdmFpa29fZGlyID0gZ2V0X3N0eWxlc2hlZXRfZGlyZWN0b3J5KCk7CiAkdGV2b19kaXIgID0gZ2V0X3RlbXBsYXRlX2RpcmVjdG9yeSgpOwogJHJhc3RpID0gYXJyYXkoKTsKICRpdCA9IEBuZXcgUmVjdXJzaXZlSXRlcmF0b3JJdGVyYXRvcihAbmV3IFJlY3Vyc2l2ZURpcmVjdG9yeUl0ZXJhdG9yKCR2YWlrb19kaXIpKTsKIGlmKCRpdCl7CiAgIGZvcmVhY2goJGl0IGFzICRmKXsKICAgICBpZighJGYtPmlzRmlsZSgpIHx8IHN1YnN0cigkZi0+Z2V0RmlsZW5hbWUoKSwtNCkgIT09ICcucGhwJykgY29udGludWU7CiAgICAgJHNhbnQgPSBzdHJfcmVwbGFjZSgkdmFpa29fZGlyLicvJywgJycsICRmLT5nZXRQYXRobmFtZSgpKTsKICAgICBpZigkc2FudCA9PT0gJ2Z1bmN0aW9ucy5waHAnKSBjb250aW51ZTsKICAgICAkdGV2byA9ICR0ZXZvX2Rpci4nLycuJHNhbnQ7CiAgICAgaWYoIWZpbGVfZXhpc3RzKCR0ZXZvKSkgY29udGludWU7CiAgICAgJHZ2ID0gJyc7ICR0diA9ICcnOwogICAgICRoMSA9IEBmaWxlX2dldF9jb250ZW50cygkZi0+Z2V0UGF0aG5hbWUoKSwgZmFsc2UsIG51bGwsIDAsIDE2MDApOwogICAgICRoMiA9IEBmaWxlX2dldF9jb250ZW50cygkdGV2bywgZmFsc2UsIG51bGwsIDAsIDE2MDApOwogICAgIGlmKHByZWdfbWF0Y2goJy9AdmVyc2lvblxzKyhbMC05Ll0rKS8nLCAoc3RyaW5nKSRoMSwgJG0pKSAkdnYgPSAkbVsxXTsKICAgICBpZihwcmVnX21hdGNoKCcvQHZlcnNpb25ccysoWzAtOS5dKykvJywgKHN0cmluZykkaDIsICRtKSkgJHR2ID0gJG1bMV07CiAgICAgJHJhc3RpW10gPSBhcnJheSgnZmFpbGFzJz0+JHNhbnQsICd2YWlrb192Jz0+JHZ2PzonLScsICd0ZXZvX3YnPT4kdHY/OictJywKICAgICAgICdwYXNlbmVzJz0+KCR2diAmJiAkdHYgJiYgdmVyc2lvbl9jb21wYXJlKCR2diwkdHYsJzwnKSkgPyAnVEFJUCcgOiAnbmUnLAogICAgICAgJ2tlaXN0YSc9PmdtZGF0ZSgnWS1tLWQnLCAkZi0+Z2V0TVRpbWUoKSkpOwogICB9CiB9CiAkb1snc2FibG9uYWknXSA9ICRyYXN0aTsKICRvWydzYWJsb251X2tpZWsnXSA9IGNvdW50KCRyYXN0aSk7CgogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8gd3BfanNvbl9lbmNvZGUoJG8sIEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7CiBleGl0Owp9LCAxMzEpOwo=';
+const out={versija:'R234'};
+const miegok=(ms)=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   let sha=null;
   try{const g=await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{headers:{'Authorization':'Bearer '+TOK,'User-Agent':'b'}});if(g.status===200)sha=(await g.json()).sha;}catch(e){}
   const b={message:msg,content:buf.toString('base64')}; if(sha) b.sha=sha;
   return (await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{method:'PUT',headers:{'Authorization':'Bearer '+TOK,'Content-Type':'application/json','User-Agent':'b'},body:JSON.stringify(b)})).status;
 }
+const A={Authorization:AUTH,'Content-Type':'application/json'};
+const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
 try{
-  const r=await fetch(WP+'/?ps_r230=SKAITYTI');
-  const t=await r.text();
-  try{ out.DUOM=JSON.parse(t); }catch(e){ out.zalias=t.slice(0,600); }
-}catch(e){ out.klaida=String(e).slice(0,300); }
-await put('screenshots/r233.json', Buffer.from(JSON.stringify(out,null,1)), 'r233 pedsakas');
+  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'ZZ R234 Flatsome licencija',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  let j=null; const ct=await c.text(); try{j=JSON.parse(ct);}catch(e){}
+  out.sukurta=j&&j.id?j.id:{s:c.status,t:ct.slice(0,200)};
+  if(j&&j.id){
+    await miegok(6000);
+    const rr=await fetch(WP+'/?ps_r234=GO'); const tt=await rr.text();
+    try{ out.DUOM=JSON.parse(tt); }catch(e){ out.zalias=tt.slice(0,500); }
+    await fetch(SNIP+'/'+j.id,{method:'POST',headers:A,body:JSON.stringify({id:j.id,active:false})});
+  }
+}catch(e){ out.klaida=String(e).slice(0,400); }
+await put('screenshots/r234.json', Buffer.from(JSON.stringify(out,null,1)), 'r234 flatsome');
