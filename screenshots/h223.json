@@ -1,0 +1,50 @@
+{
+ "v": "H223",
+ "sukurta": 3701,
+ "DIEGIMAS": {
+  "v": "H223",
+  "sintakse": "OK",
+  "md5_diske": "92dbde1dc1f8e90d91d720492ce7219e"
+ },
+ "TESTAI": {
+  "34881": {
+   "kodas": "",
+   "turi": false,
+   "eile": "nauji"
+  },
+  "34886": {
+   "kodas": "V07267E1000003",
+   "turi": true,
+   "eile": "ivykdyti"
+  },
+  "35035": {
+   "kodas": "",
+   "turi": false,
+   "eile": "nauji"
+  },
+  "35036": {
+   "kodas": "V07267E1000005",
+   "turi": true,
+   "eile": "paruosta"
+  },
+  "35037": {
+   "kodas": "V07267E1000004",
+   "turi": true,
+   "eile": "paruosta"
+  },
+  "v": "H223-TEST",
+  "imami": [
+   35035
+  ],
+  "praleisti": [
+   "35037 jau",
+   "35036 jau",
+   "34881 be pastomato"
+  ]
+ },
+ "pradzia": {
+  "s": 200,
+  "fatal": "ne"
+ },
+ "isjungta": 3701
+}
