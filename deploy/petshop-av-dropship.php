@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop AV Dropship v1.4 (H225) — kiekiai su „vnt.", kad nesimaišytų su pakuotėmis (v1.3: laiško peržiūra).
+ * Petshop AV Dropship v1.5 (H230) — laisvas tekstas laiške (redaguojamas prierašas, matomas peržiūroje) (v1.4: kiekiai su vnt.).
  *
  * v1.2: ZB kelias užbaigtas (§19.12 uodega). ZB kortelėje: ZB kodas iš
  * ps_sources (fallback SKU), mygtukas „Kopijuoti" (kodas TAB kiekis — įklijavimui
@@ -55,6 +55,7 @@ class Petshop_AV_Dropship {
 		add_filter( 'handle_bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'vykdyti' ], 10, 3 );
 		add_filter( 'handle_bulk_actions-edit-shop_order', [ __CLASS__, 'vykdyti' ], 10, 3 );
 		add_action( 'admin_menu', [ __CLASS__, 'meniu' ] );
+		add_action( 'admin_footer', [ __CLASS__, 'skriptas' ] );
 		add_action( 'admin_post_ps_dropship_send', [ __CLASS__, 'siusti' ] );
 		add_action( 'admin_post_ps_dropship_nust', [ __CLASS__, 'saugoti_nustatymus' ] );
 		add_action( 'admin_post_ps_dropship_lipdukas', [ __CLASS__, 'lipdukas_atsisiusti' ] );
@@ -257,6 +258,8 @@ class Petshop_AV_Dropship {
 							<p style="margin:0 0 8px;font-size:11px;color:#98262A;text-transform:uppercase;letter-spacing:.06em">
 								Laiško peržiūra — tema: „užsakymas <?php echo esc_html( date_i18n( 'Y-m-d' ) ); ?>" · gavėjas: <?php echo esc_html( $pastas ?: '—' ); ?></p>
 							<?php echo wp_kses_post( self::laisko_html( $src, $uzsakymai ) ); ?>
+							<p class="ps-gyva" data-src="<?php echo esc_attr( $src ); ?>"
+								style="display:none;margin:14px 0;padding:8px 10px;background:#FBF2DE;border-left:3px solid #96660C"></p>
 						</div>
 					<?php endif; ?>
 				<?php endif; ?>
@@ -267,6 +270,12 @@ class Petshop_AV_Dropship {
 					<input type="hidden" name="action" value="ps_dropship_send">
 					<input type="hidden" name="tiekejas" value="<?php echo esc_attr( $src ); ?>">
 					<input type="hidden" name="uzsakymai" value="<?php echo esc_attr( implode( ',', array_keys( $uzsakymai ) ) ); ?>">
+					<p style="margin:0 0 8px">
+						<label style="display:block;font-weight:600;margin-bottom:3px">Prierašas laiške (nebūtina)</label>
+						<textarea name="pastaba" rows="3" style="width:100%;max-width:620px"
+							data-src="<?php echo esc_attr( $src ); ?>"
+							placeholder="Pvz.: prašome pristatyti iki penktadienio; prie 35048 pridėkite dovanėlę…"></textarea>
+					</p>
 					<button class="button button-primary">Siųsti <?php echo esc_html( $vardas ); ?> (<?php echo esc_html( $pastas ); ?>)</button>
 					<label><input type="checkbox" name="su_lipdukais" value="1" checked> pridėti lipdukus</label>
 					<label><input type="checkbox" name="su_manifestu" value="1" checked> pridėti manifestą</label>
@@ -400,8 +409,25 @@ class Petshop_AV_Dropship {
 	}
 
 	/** Išsiunčia laišką vienam tiekėjui. */
+	/** Gyvas prierašo atspindys peržiūroje. */
+	public static function skriptas() {
+		if ( ! isset( $_GET['page'] ) || 'ps-dropship' !== $_GET['page'] ) { return; }
+		?>
+		<script>
+		document.addEventListener('input', function (ev) {
+			var t = ev.target;
+			if (t.tagName !== 'TEXTAREA' || !t.name || t.name !== 'pastaba') { return; }
+			var p = document.querySelector('.ps-gyva[data-src="' + t.dataset.src + '"]');
+			if (!p) { return; }
+			p.textContent = t.value;
+			p.style.display = t.value.trim() ? 'block' : 'none';
+		});
+		</script>
+		<?php
+	}
+
 	/** Laiško tiekėjui HTML — VIENA tiesos vieta siuntimui ir peržiūrai. */
-	public static function laisko_html( $src, $uzsakymai ) {
+	public static function laisko_html( $src, $uzsakymai, $pastaba = '' ) {
 		$t = self::tiekejai();
 		$rodyti_ean = ( ( $t[ $src ][1] ?? 'sku' ) === 'sku_ean' );
 
@@ -428,6 +454,10 @@ class Petshop_AV_Dropship {
 			}
 		}
 		$h .= '</table>';
+		$pastaba = trim( (string) $pastaba );
+		if ( '' !== $pastaba ) {
+			$h .= '<p style="margin:14px 0">' . nl2br( esc_html( $pastaba ) ) . '</p>';
+		}
 		$h .= '<p>Linkėjimai,<br>UAB Avesa<br>terra@petshop.lt</p>';
 		return $h;
 	}
@@ -450,7 +480,8 @@ class Petshop_AV_Dropship {
 		$uzsakymai = $g[ $src ] ?? [];
 		if ( ! $uzsakymai ) { wp_die( 'Nėra ką siųsti' ); }
 
-		$h = self::laisko_html( $src, $uzsakymai );
+		$pastaba = isset( $_POST['pastaba'] ) ? sanitize_textarea_field( wp_unslash( $_POST['pastaba'] ) ) : '';
+		$h = self::laisko_html( $src, $uzsakymai, $pastaba );
 		$data = date_i18n( 'Y-m-d' );
 
 		// PRIEDAI
