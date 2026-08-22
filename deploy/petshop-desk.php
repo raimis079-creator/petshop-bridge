@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Desk v3.28 (H226) — automatinis sąrašo atsinaujinimas kas 60 s, kai netrukdo darbui (v3.27: pakuotės paštomatui, laiško peržiūra dropship pusėje).
+ * Petshop Desk v3.29 (H227) — 🔴 masinis „Venipak registruoti" dabar SANDĖLIŲ atžvilgiu: grupuoja pagal šaltinį, kiekvienai grupei savas manifestas; mišrūs praleidžiami. Iki šiol mygtukas viską pylė į vieną manifestą 001 (v3.28: auto refresh).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -335,7 +335,7 @@ class Petshop_Desk {
 		$id = isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0;
 		check_admin_referer( 'ps_desk_' . $v . '_' . $id );
 
-		$masinis = in_array( $v, array( 'lapai', 'perduoti', 'vp_reg', 'vp_manifestas' ), true );
+		$masinis = in_array( $v, array( 'lapai', 'perduoti', 'vp_reg', 'vp_bulk', 'vp_manifestas' ), true );
 		$o = $id ? wc_get_order( $id ) : false;
 		if ( ! $o && ! $masinis ) { wp_die( 'Užsakymas nerastas' ); }
 
@@ -356,6 +356,70 @@ class Petshop_Desk {
 		if ( 'lapai' === $v && $ids ) {
 			set_transient( 'ps_sheets_' . get_current_user_id(), $ids, 900 );
 			wp_safe_redirect( admin_url( 'admin.php?page=ps-lapai&ps_ready=1' ) );
+			exit;
+		}
+
+		/* MASINIS Venipak (H227): pažymėtus grupuojam pagal SANDĖLĮ ir kiekvieną
+		   grupę registruojam su jos manifestu — kitaip viskas krenta į 001 krūvą.
+		   Mišrūs praleidžiami (§18): pluginas užsakymui temoka vieną siuntą. */
+		if ( 'vp_bulk' === $v && $ids ) {
+			$grupes = array(); $praleisti = array();
+			foreach ( $ids as $oid ) {
+				$oo = wc_get_order( $oid );
+				if ( ! $oo ) { continue; }
+				if ( self::turi_siunta( $oo ) ) { $praleisti[] = '#' . $oo->get_order_number() . ' jau registruotas'; continue; }
+				if ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {
+					$praleisti[] = '#' . $oo->get_order_number() . ' be paštomato'; continue;
+				}
+				$sal = self::saltiniai( $oo );
+				if ( count( $sal ) > 1 ) { $praleisti[] = '#' . $oo->get_order_number() . ' mišrus — per rytinę eigą'; continue; }
+				$s = $sal ? reset( $sal ) : 'av';
+				if ( ! isset( self::MANIFESTAI[ $s ] ) ) { $s = 'av'; }
+				$grupes[ $s ][] = $oid;
+			}
+			if ( ! $grupes ) {
+				wp_safe_redirect( add_query_arg( array(
+					'pd_ok' => 'vp_nieko',
+					'pd_nr' => rawurlencode( $praleisti ? implode( ', ', $praleisti ) : 'nepažymėta tinkamų' ),
+				), $atgal ) );
+				exit;
+			}
+			$ok = true; $klaidos = array(); $suvestine = array();
+			foreach ( $grupes as $s => $gids ) {
+				$kodas = self::MANIFESTAI[ $s ];
+				$daugiadezes = array(); $paprasti = array();
+				foreach ( $gids as $oid ) {
+					$oo = wc_get_order( $oid );
+					if ( $oo && self::reikia_pakuociu( $oo ) && self::pakuociu( $oo ) > 1 ) { $daugiadezes[] = $oid; }
+					else { $paprasti[] = $oid; }
+				}
+				$g_ok = true;
+				if ( $paprasti ) {
+					$rez = self::venipak_registruoti( $paprasti, $kodas );
+					if ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $g_ok = false; $klaidos[] = mb_strtoupper( $s ) . ': ' . ( $rez['data'] ?? '?' ); }
+				}
+				foreach ( $daugiadezes as $oid ) {
+					$rez = self::venipak_registruoti( array( $oid ), $kodas );
+					if ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $g_ok = false; $klaidos[] = '#' . $oid . ': ' . ( $rez['data'] ?? '?' ); }
+				}
+				foreach ( $gids as $oid ) {
+					$oo = wc_get_order( $oid );
+					if ( ! $oo ) { continue; }
+					$oo->add_order_note( sprintf( 'Venipak registracija darbalaukyje (%s, manifestas %s): %s',
+						mb_strtoupper( $s ), $kodas, $g_ok ? 'sėkminga' : 'KLAIDA' ), false, true );
+					if ( $g_ok && class_exists( 'Petshop_Siuntos' ) ) {
+						Petshop_Siuntos::prideti_is_plugino( $oid, $s, $kodas );
+					}
+				}
+				if ( $g_ok ) { $suvestine[] = mb_strtoupper( $s ) . ' ' . count( $gids ); }
+				else { $ok = false; }
+			}
+			wp_safe_redirect( add_query_arg( array(
+				'pd_ok'  => $ok ? 'vp_ok' : 'vp_klaida',
+				'pd_nr'  => rawurlencode( ( $suvestine ? implode( ', ', $suvestine ) : implode( ' · ', $klaidos ) )
+					. ( $klaidos && $ok === false && $suvestine ? ' · klaidos: ' . implode( ' · ', $klaidos ) : '' )
+					. ( $praleisti ? ' · praleista: ' . implode( ', ', $praleisti ) : '' ) ),
+			), $atgal ) );
 			exit;
 		}
 
@@ -2194,7 +2258,7 @@ class Petshop_Desk {
 			<button class="pd-btn" data-ba="<?php echo esc_attr( self::veiksmo_url( 'lapai', 0 ) ); ?>">Surinkimo lapai</button>
 			<button class="pd-btn" data-ba="<?php echo esc_attr( self::veiksmo_url( 'perduoti', 0 ) ); ?>">Perduoti tiekėjams</button>
 			<span class="pd-bsep"></span>
-			<button class="pd-btn" data-wc="shopup_venipak_shipping_dispatch">Venipak registruoti</button>
+			<button class="pd-btn" data-ba="<?php echo esc_attr( self::veiksmo_url( 'vp_bulk', 0 ) ); ?>">Venipak registruoti</button>
 			<button class="pd-btn" data-wc="shopup_venipak_shipping_labels">Venipak lipdukai</button>
 			<span class="pd-bsep"></span>
 			<button class="pd-btn" data-wc="woo_lp_print_label">LP lipdukai</button>
