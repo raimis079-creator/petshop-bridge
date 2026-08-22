@@ -1,0 +1,81 @@
+{
+ "v": "H211",
+ "sukurta": 3688,
+ "DIEGIMAS": {
+  "v": "H211",
+  "wcdn_aktyvus": true,
+  "wcdn_raktai": [
+   "storeName",
+   "storeLogo",
+   "storeAddress",
+   "email",
+   "phone",
+   "footerText",
+   "complimentaryClose",
+   "policies",
+   "printEndpoint",
+   "defaultDocumentLabel",
+   "textDirection",
+   "enablePDF",
+   "pdfPaperSize",
+   "pdfUseCurrencyCode",
+   "showCustomerEmailLink",
+   "customerEmailText",
+   "showAdminEmailLink",
+   "adminEmailText",
+   "showViewOrderButton",
+   "showPrintButtonMyAccountPage",
+   "autoPrintDialog",
+   "viewOrderButtonLabel",
+   "invoiceButtonLabel",
+   "deliveryNoteButtonLabel",
+   "receiptButtonLabel",
+   "creditNoteButtonLabel",
+   "packingSlipButtonLabel",
+   "processingTemplate",
+   "processingAuto",
+   "processingAttach",
+   "completedTemplate",
+   "completedAuto",
+   "completedAttach",
+   "refundedTemplate",
+   "refundedAuto",
+   "refundedAttach",
+   "enablePayNow",
+   "enablePDFStorage",
+   "invoiceNumberFormat",
+   "numberDaysPdfExpiration"
+  ],
+  "wcdn_pvz": {
+   "invoiceButtonLabel": "Spausdinti sąskaitą",
+   "creditNoteButtonLabel": "Spausdinti kreditinę sąskaitą",
+   "invoiceNumberFormat": "AVPN{order_number}",
+   "numberDaysPdfExpiration": 7,
+   "resetInvoiceNumberYearly": false
+  },
+  "avpn_failai": {
+   "petshop-desk.php": []
+  },
+  "avpn_opcijos": [
+   {
+    "option_name": "petshop_avpn_counter",
+    "v": "238"
+   },
+   {
+    "option_name": "petshop_iapv_counter",
+    "v": "145"
+   }
+  ],
+  "wc_masiniai": [],
+  "withdrawal_vartotojai": [
+   "petshop-desk.php"
+  ],
+  "myaccount_page": "https://dev.avesa.lt/paskyra/"
+ },
+ "TESTAI": "ne-json: <!DOCTYPE html>\n<html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\">\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n\t<link rel=\"pingback\" href=\"https://dev.avesa.lt/xmlrpc.php\" />\n\n\t\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments)",
+ "pradzia": {
+  "s": 200,
+  "fatal": "ne"
+ },
+ "isjungta": 3688
+}
