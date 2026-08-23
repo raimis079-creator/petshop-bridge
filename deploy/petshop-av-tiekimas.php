@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.5 (H246) — RANKINIS UŽSAKYMO KANALAS (ŽB) + KOPIJUOJAMAS SĄRAŠAS.
+ *
+ * KODĖL (Raimis, H246): „ZB iš vis aš rankiniu būdu turiu suvesti prekes į jų
+ * sistemą" — laiškas ŽB nereikalingas ir klaidina. DABAR: ŽB partijos mygtukas
+ * „Uždaryti partiją — suvesiu ŽB sistemoje" laiško NESIUNČIA, tik uždaro partiją.
+ * Prie kiekvienos užsakytos partijos („Užsakyta · laukiam") — kopijuojamas
+ * sąrašas SKU + kiekis, kad suvedimas į tiekėjo B2B būtų copy-paste.
+ *
  * Petshop AV Tiekimas v1.4 (H238) — PARTIJOS PRISTATYMO BŪDAS ir SVORIS.
  *
  * KODĖL (Raimis H237–H238): kaip prekės atkeliauja iš tiekėjo į AV, sprendžiama
@@ -54,6 +62,13 @@ class Petshop_AV_Tiekimas {
 	const DB_VER    = '1.1';
 	const OPT_DB    = 'ps_tiekimas_db';
 	const META_LAUK = '_ps_tiekimas_laukia';
+
+	/** Tiekėjai, kuriems užsakymas suvedamas rankiniu būdu į jų sistemą — laiško nesiunčiam (H246). */
+	const RANKINIAI = array( 'zb' );
+
+	public static function rankinis( $tiekejas ) {
+		return in_array( (string) $tiekejas, self::RANKINIAI, true );
+	}
 
 	/** Kur prekės keliauja, kai parsivežam į AV. Gavėjas visada UAB Avesa. */
 	const AV_ADRESAS   = 'UAB Avesa, Liucionių g. 46, Liucionys, Nemenčinės sen., Vilniaus r., LT-15166';
@@ -476,7 +491,11 @@ class Petshop_AV_Tiekimas {
 
 				<div class="ps-tk-f">
 					<button class="button" name="ka" value="issaugoti">Išsaugoti kiekius</button>
-					<?php if ( $eil ) : ?>
+					<?php if ( $eil && self::rankinis( $part->tiekejas ) ) : ?>
+						<button class="button button-primary" name="ka" value="uzsakyti"
+							onclick="return confirm('Uždaryti <?php echo esc_js( self::tiekejo_vardas( $part->tiekejas ) ); ?> partiją?\n\nLaiškas NEBUS siunčiamas — prekes suvesi tiekėjo sistemoje pats.\nPartija persikels į „Užsakyta · laukiam“, ten rasi kopijuojamą sąrašą.');">
+							Uždaryti partiją — suvesiu <?php echo esc_html( self::tiekejo_vardas( $part->tiekejas ) ); ?> sistemoje</button>
+					<?php elseif ( $eil ) : ?>
 						<button class="button button-primary" name="ka" value="uzsakyti"
 							onclick="return confirm('Išsiųsti užsakymą tiekėjui <?php echo esc_js( self::tiekejo_vardas( $part->tiekejas ) ); ?>?\n\nLaiškas keliaus el. paštu, partija bus uždaryta ir atsidarys nauja.');">
 							Užsakyti iš tiekėjo →</button>
@@ -558,6 +577,25 @@ class Petshop_AV_Tiekimas {
 				<input type="hidden" name="action" value="ps_tiekimas">
 				<input type="hidden" name="partija" value="<?php echo (int) $part->id; ?>">
 				<?php wp_nonce_field( 'ps_tiekimas_' . $part->id ); ?>
+
+				<?php
+				// Kopijuojamas sąrašas suvedimui į tiekėjo sistemą (H246): SKU [TAB] kiekis [TAB] prekė.
+				$kopija = '';
+				foreach ( $eil as $e ) {
+					$pr2     = wc_get_product( $e->product_id );
+					$kopija .= ( $pr2 ? $pr2->get_sku() : '#' . $e->product_id ) . "\t" . (int) $e->qty
+						. "\t" . ( $pr2 ? $pr2->get_name() : '' ) . "\n";
+				}
+				?>
+				<details class="ps-tk-kopija" <?php echo self::rankinis( $part->tiekejas ) ? 'open' : ''; ?>>
+					<summary>Sąrašas suvedimui į tiekėjo sistemą (SKU · kiekis)</summary>
+					<textarea readonly rows="<?php echo max( 3, count( $eil ) + 1 ); ?>"
+						id="ps-kop-<?php echo (int) $part->id; ?>"><?php echo esc_textarea( $kopija ); ?></textarea>
+					<button type="button" class="button"
+						onclick="var t=document.getElementById('ps-kop-<?php echo (int) $part->id; ?>');t.select();
+							if(navigator.clipboard){navigator.clipboard.writeText(t.value);}else{document.execCommand('copy');}
+							this.textContent='Nukopijuota ✓';">Kopijuoti sąrašą</button>
+				</details>
 
 				<p class="ps-tk-pad">Suvesk <b>faktinius</b> kiekius. Numatyta tai, kas užsakyta — kur sutampa, nieko keisti nereikia.</p>
 
@@ -750,7 +788,10 @@ class Petshop_AV_Tiekimas {
 			<p>Ačiū,<br>UAB Avesa · petshop.lt<br>terra@petshop.lt</p>';
 
 		$ok = false;
-		if ( $adr ) {
+		if ( self::rankinis( $part->tiekejas ) ) {
+			// ŽB ir pan.: užsakymą Raimis suveda tiesiai į tiekėjo sistemą — laiško nesiunčiam (H246).
+			$ok = null;
+		} elseif ( $adr ) {
 			$ok = wp_mail( array_map( 'trim', explode( ',', $adr ) ), $tema, $body, array(
 				'Content-Type: text/html; charset=UTF-8',
 				'From: UAB Avesa <terra@petshop.lt>',
@@ -765,12 +806,15 @@ class Petshop_AV_Tiekimas {
 			if ( ! $e->order_id ) { continue; }
 			$oo = wc_get_order( $e->order_id );
 			if ( $oo ) {
-				$oo->add_order_note( sprintf( 'Tiekimas: prekės užsakytos iš %s (partija #%d). Kelias į AV: %s. Laukiam.',
+				$oo->add_order_note( sprintf( self::rankinis( $part->tiekejas )
+					? 'Tiekimas: partija #%2$d uždaryta — užsakymas suvedamas rankiniu būdu į %1$s sistemą. Kelias į AV: %3$s. Laukiam.'
+					: 'Tiekimas: prekės užsakytos iš %s (partija #%d). Kelias į AV: %s. Laukiam.',
 					self::tiekejo_vardas( $part->tiekejas ), $pid,
 					self::PRISTATYMAI[ $part->pristatymas ] ?? 'nenurodyta' ), false, true );
 			}
 		}
 
+		if ( null === $ok ) { return 'uzsakyta_rankinis'; }
 		return $ok ? 'uzsakyta' : ( $adr ? 'laiskas_nepavyko' : 'nera_pasto' );
 	}
 
@@ -982,6 +1026,7 @@ class Petshop_AV_Tiekimas {
 			'prideta'          => array( 'success', 'Prekė pridėta į partiją.' ),
 			'nerasta'          => array( 'warning', 'Tokios prekės nerasta — patikrink SKU arba ID.' ),
 			'uzsakyta'         => array( 'success', 'Užsakymas išsiųstas tiekėjui. Partija uždaryta, atsidarė nauja.' ),
+			'uzsakyta_rankinis'=> array( 'success', 'Partija uždaryta, laiškas NESIŲSTAS. Suvesk prekes į tiekėjo sistemą — kopijuojamas sąrašas skirtuke „Užsakyta · laukiam“.' ),
 			'laiskas_nepavyko' => array( 'error', 'Partija uždaryta, BET laiško išsiųsti nepavyko — užsakyk rankomis.' ),
 			'nera_pasto'       => array( 'warning', 'Partija uždaryta, bet tiekėjo el. pašto nėra — užsakyk rankomis.' ),
 			'priimta'          => array( 'success', 'Partija priimta. Kiekiai pridėti prie AV likučių.' ),
@@ -1030,7 +1075,10 @@ class Petshop_AV_Tiekimas {
 .ps-tk-prist-i{font-size:12.5px;color:#5E6661;margin-top:8px;line-height:1.5}
 .ps-tk-blogai{color:#98262A;font-weight:600;margin-left:6px}
 .ps-tk-f{display:flex;gap:8px;padding:12px 14px;border-top:1px solid #eee}
-.ps-tk-pad{margin:12px 14px 0;color:#5e6661}
+.ps-tk-kopija{margin:10px 14px}
+		.ps-tk-kopija summary{cursor:pointer;color:#2271b1}
+		.ps-tk-kopija textarea{width:100%;font-family:monospace;font-size:12px;margin:6px 0}
+		.ps-tk-pad{margin:12px 14px 0;color:#5e6661}
 .ps-tk-tuscia{background:#fff;border:1px solid #dcdcd6;border-radius:8px;padding:40px;text-align:center;color:#8a918c;margin-top:16px}
 .ps-tk-tuscia2{text-align:center;color:#8a918c;padding:18px}
 .ps-tk-mazai{color:#98262A;font-weight:700}
