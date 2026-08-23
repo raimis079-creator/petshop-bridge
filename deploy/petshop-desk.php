@@ -1,5 +1,14 @@
 <?php
 /**
+ * Petshop Desk v3.41 (H249) — „KURIOJE EILĖJE?" MATOMA SĄRAŠE IR PAIEŠKOJE.
+ *
+ * KODĖL (Raimis, H249): „kur, kokioje eilėje visi šie užsakymai yra, jei noriu
+ * pasižiūrėti?" — atidarius „Visi užsakymai" arba paiešką, iš eilutės nebuvo
+ * matyti, kurioje darbo eilėje kiekvienas užsakymas kabo. DABAR po užsakymo
+ * numeriu — spalvotas eilės ženklas („Nauji", „Mišrūs", „Laukia prekių"...),
+ * kuris veikia kaip nuoroda į tą eilę. Rodomas „Visi užsakymai" ir paieškos
+ * rezultatuose; atskirose eilėse nerodomas — ten ir taip aišku.
+ *
  * Petshop Desk v3.40 (H245) — GEOGRAFIJOS PATAISOS PO RAIMIO TESTO.
  *
  * KODĖL (Raimis, H245): „paspaudžiau mišrų į AV ir viskas dingo; Tiekimas ir
@@ -2602,9 +2611,22 @@ class Petshop_Desk {
 			echo '<td class="pd-stripe"><div style="background:' . esc_attr( $juosta ) . '"></div></td>';
 			echo '<td class="pd-cb"><input type="checkbox" class="pd-row-cb" value="' . esc_attr( $id ) . '"></td>';
 
-			printf( '<td><div class="pd-nr">#%s</div><div class="pd-sub">%s</div></td>',
+			// Eilės ženklas (H249): „Visi užsakymai" ir paieškoje — kad matytum, kur kabo.
+			$ez = '';
+			if ( 'visi' === $eile || ! empty( $f['nr'] ) || ! empty( $f['klientas'] )
+				|| ! empty( $f['telefonas'] ) || ! empty( $f['adresas'] ) ) {
+				$ek = $row['klausimas'] ? 'klausimai' : $row['eile'];
+				if ( isset( self::EILES[ $ek ] ) ) {
+					$ez = sprintf( '<a class="pd-ez" style="--ez:%s" href="%s">%s</a>',
+						esc_attr( self::EILES[ $ek ][2] ),
+						esc_url( self::url( array( 'eile' => $ek ) ) ),
+						esc_html( self::EILES[ $ek ][0] ) );
+				}
+			}
+			printf( '<td><div class="pd-nr">#%s</div><div class="pd-sub">%s</div>%s</td>',
 				esc_html( $o->get_order_number() ),
-				esc_html( self::laikas( $o->get_date_created() ) ) );
+				esc_html( self::laikas( $o->get_date_created() ) ),
+				$ez ); // phpcs:ignore WordPress.Security.EscapeOutput
 
 			printf( '<td><div class="pd-cust" title="%s">%s</div><div class="pd-sub">%s</div></td>',
 				esc_attr( $vardas . ( $o->get_billing_email() ? ' · ' . $o->get_billing_email() : '' ) ),
@@ -3198,6 +3220,8 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-mbukle{font-size:12.5px;white-space:nowrap}
 .pd-mok{color:#1B7A3D}
 .pd-mng{color:#B3261E}
+.pd-ez{display:inline-block;margin-top:3px;font-size:11px;line-height:1.7;padding:0 8px;border-radius:999px;text-decoration:none;color:#fff;background:var(--ez);opacity:.9}
+.pd-ez:hover{opacity:1;color:#fff}
 .pd-planas{display:block;font-size:11.5px;color:#96660C}
 .pd-vkg{font-size:12px;color:var(--ink2);margin-left:12px;font-variant-numeric:tabular-nums}
 .pd-ryt-f{border-top:1px solid var(--line);padding:12px 32px;display:flex;gap:10px;align-items:center;background:var(--card)}
