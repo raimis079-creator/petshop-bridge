@@ -1,1 +1,104 @@
-{"snip_status":200,"snip_id":2973,"http":200,"rez":{"marker":"MNM FORMOS LAUKELIAI","child_item":["355: public function get_quantity( $type = 'value' ) {","483: wc_deprecated_hook( 'woocommerce_mnm_availability_html', '2.0.0', 'wc_mnm_child_item_quantity_name_prefix: note that the 2nd parameter will be a WC_MNM_Child_Item instance.' );","894: if ( has_filter( 'wc_mnm_child_item_quantity_name_prefix' ) ) {","895: wc_doing_it_wrong( 'wc_mnm_child_item_quantity_name_prefix', 'The \"wc_mnm_child_item_quantity_name_prefix\" filter is deprecated since version 2.8.0. Please use \"wc_mnm_quantity_name_prefix\" instead.', '2.8.0' );","905: $prefix = apply_filters( 'wc_mnm_child_item_quantity_name_prefix', '', $this );","910: if ( has_filter( 'wc_mnm_quantity_name_prefix' ) ) {","911: wc_doing_it_wrong( 'wc_mnm_quantity_name_prefix', 'The \"wc_mnm_quantity_name_prefix\" filter is deprecated since version 2.8.0. Please use \"wc_mnm_quantity_name_prefix\" instead.', '2.8.0' );","921: $name = apply_filters( 'wc_mnm_quantity_name_prefix', $name, $this->get_container_id() );"],"validacija":["392: * Choose between $_POST or $_GET for grabbing data.","393: * We will not rely on $_REQUEST because checkbox names may not exist in $_POST but they may well exist in $_GET, for instance when editi","395: $posted_data = $_POST;","398: if ( empty( $_POST['add-to-cart'] ) && ! empty( $_GET['add-to-cart'] ) ) {","406: // One more check for inputs that are not arrays. Ajax add to cart will frequently not handle array inputs well (esp in themes) so as a","462: return (array) apply_filters( 'wc_mnm_get_posted_container_configuration', $posted_config, $this );"],"sablonai":["mnm-add-to-cart-button.php","mnm-add-to-cart-wrap.php","mnm.php"],"mnm_php":"<?php\n/**\n * Mix and Match Product Add to Cart\n *\n * This template can be overridden by copying it to yourtheme/woocommerce/single-product/add-to-cart/mnm.php.\n *\n * HOWEVER, on occasion WooCommerce Mix and Match will need to update template files and you\n * (the theme developer) will need to copy the new files to your theme to\n * maintain compatibility. We try to do this as little as possible, but it does\n * happen. When this occurs the version of the template file will be bumped and\n * the readme will list any important changes.\n *\n * @see     https://woocommerce.com/document/template-structure/\n * @package WooCommerce Mix and Match/Templates\n * @since   1.0.0\n * @version 2.3.0\n */\n\n// Exit if accessed directly.\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nglobal $product;\n\n/**\n * Hook: `woocommerce_before_add_to_cart_form`\n */\ndo_action( 'woocommerce_before_add_to_cart_form' );\n?>\n\n<form\n\tclass=\"<?php echo esc_attr( implode( ' ', $classes ) ); ?>\"\n\taction=\"<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>\"\n\tmethod=\"post\"\n\tenctype=\"multipart/form-data\"\n\t<?php echo wc_implode_html_attributes( $product->get_data_attributes() ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>\n\n\t<?php\n\n\t/**\n\t * 'wc_mnm_content_loop' action.\n\t *\n\t * @param  WC_Mix_and_Match  $product\n\t * @since  1.8.0\n\t *\n\t * @hooked wc_mnm_content_loop - 10\n\t * @hooked wc_mnm_template_reset_link         - 20\n\t * @hooked wc_mnm_template_container_status   - 30\n\t * @hooked wc_mnm_template_add_to_cart_button - 40\n\t */\n\tdo_action( 'wc_mnm_content_loop', $product );\n\n\t/**\n\t * 'wc_mnm_add_to_cart_wrap' action.\n\t *\n\t * @param  WC_Mix_and_Match  $product\n\t * @since  1.3.0\n\t * @deprecated 2.2.0\n\t */\n\tdo_action( 'wc_mnm_add_to_cart_wrap', $product );\n\n\t?>\n\n</form>\n\n<?php\n/**\n * Hook: `woocommerce_after_add_to_cart_form`\n */\ndo_action( 'woocommerce_after_add_to_cart_form' );\n?>\n","temos_override":"nera"}}
+{
+ "v": "REC5",
+ "sukurta": 3726,
+ "R": {
+  "v": "REC5",
+  "nustatymai": {
+   "shopup_venipak_shipping_pickup_method_3": {
+    "title": "VENIPAK paštomatai/atsiėmimo punktai",
+    "description": "Pristatymas per 1-2 darbo dienas",
+    "fee": "1.78",
+    "minimum_weight": "",
+    "maximum_weight": "24.90",
+    "min_amount_for_free_shipping": "30",
+    "ignore_shipping_classes": ""
+   },
+   "shopup_venipak_shipping_courier_method_2": {
+    "title": "VENIPAK Kurjeris",
+    "description": "Pristatymas per 1-2 darbo dienas",
+    "fee": "3.30",
+    "minimum_weight": "",
+    "maximum_weight": "50",
+    "min_amount_for_free_shipping": "",
+    "ignore_shipping_classes": [
+     "235",
+     "236",
+     "237"
+    ]
+   },
+   "woo_lithuaniapost_lpexpress_terminal_12": {
+    "title": "LP Express",
+    "plan": "TERMINAL",
+    "parcel_type": "H2T",
+    "delivery_time": "",
+    "cost": "flat",
+    "fixed_cost": "1,78",
+    "weight_cost": "",
+    "size_cost": "",
+    "free_shipping_cost": "30",
+    "apply_free_shipping_before_discount": "no",
+    "order_return_service": "no",
+    "tax_status": "taxable",
+    "class_costs": "",
+    "class_cost_237": "",
+    "class_cost_235": "",
+    "class_cost_236": "",
+    "class_cost_234": "",
+    "no_class_cost": "",
+    "type": "class"
+   }
+  },
+  "wc_tax": {
+   "calc": "yes",
+   "incl": "yes",
+   "ship_tax": "inherit"
+  },
+  "lent": {
+   "lpexpress_terminals": {
+    "cols": [
+     "id",
+     "terminal_id",
+     "name",
+     "address",
+     "city"
+    ],
+    "kiek": "0",
+    "pvz": []
+   },
+   "unisend_terminals": {
+    "cols": [
+     "id",
+     "terminal_id",
+     "name",
+     "address",
+     "city",
+     "country_code"
+    ],
+    "kiek": "1390",
+    "pvz": [
+     {
+      "id": "1",
+      "terminal_id": "8003",
+      "name": "Aibė",
+      "address": "Buļļu iela 35",
+      "city": "Rīga",
+      "country_code": "LV"
+     },
+     {
+      "id": "2",
+      "terminal_id": "8004",
+      "name": "Ditton Nams",
+      "address": "Cietokšņa iela 60",
+      "city": "Daugavpils",
+      "country_code": "LV"
+     }
+    ]
+   }
+  },
+  "sask": {
+   "avpn": "270",
+   "iapv": "154"
+  }
+ },
+ "isjungta": 3726
+}
