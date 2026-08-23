@@ -1,5 +1,16 @@
 <?php
 /**
+ * Petshop Desk v3.38 (H243) — PIPELINE JUOSTA + BŪSENOS CHIP'AI.
+ *
+ * KODĖL (Raimis, H243): „kaip greitai pasižiūrėti, kur sudėti užsakymai tiekėjams,
+ * kur užsakymai paruošti išsiųsti" — iki šiol reikėjo vaikščioti po eiles ir
+ * atidarinėti korteles. Dabar viršuje viena juosta su skaičiais (kiekvienas —
+ * nuoroda į filtruotą sąrašą): Laukia sprendimo · Nepaleisti planai · Neperduota
+ * tiekėjams · Laukia prekių · Paruošta siųsti · Išsiųsta šiandien. O kiekvienoje
+ * sąrašo eilutėje — spalvoti chip'ai pagal sandėlį: žalias „VF ✓ 11:04" (perduota),
+ * gintarinis „PRI ⏳" (neperduota), pilkas „ZB→AV" (planuota per AV). Duomenys
+ * jau buvo (_ps_dropship_sent_src) — tik niekur nesimatė vienu žvilgsniu.
+ *
  * Petshop Desk v3.37 (H242) — MIŠRUS SU NEPALEISTU PLANU LIEKA MIŠRIUOSE.
  *
  * KODĖL (Raimis, H242): patvirtinus planą užsakymas dingdavo iš Mišrių į „Nauji",
@@ -1283,6 +1294,11 @@ class Petshop_Desk {
 				if ( 'd5' === $f['amzius'] && $dienu < 5 ) { continue; }
 			}
 
+			// Pipeline žvilgsnis (H243): „Neperduota tiekėjams" — tik su neperduotom grupėm.
+			if ( 'neperduota' === ( $f['zvilgsnis'] ?? '' ) ) {
+				if ( ! class_exists( 'Petshop_AV_Dropship' ) || ! Petshop_AV_Dropship::neperduotos( $o ) ) { continue; }
+			}
+
 			$out[] = array( 'o' => $o, 'eile' => $e, 'klausimas' => $kl );
 		}
 		return $out;
@@ -1298,11 +1314,19 @@ class Petshop_Desk {
 			'type'   => 'shop_order',
 			'status' => array_merge( array( 'processing', 'on-hold', 'pending', 'failed', 'lp-parcel-await', 'lp-parcel-failed' ), self::STATUSAI['paruosta'] ),
 		) );
+		$c['pipe_spresti'] = 0; $c['pipe_nepaleisti'] = 0; $c['pipe_neperduota'] = 0;
 		foreach ( (array) $atviri as $o ) {
 			if ( ! is_a( $o, 'WC_Order' ) ) { continue; }
 			if ( self::klausimas( $o ) ) { $c['klausimai']++; continue; }
 			$e = self::eile( $o );
 			if ( isset( $c[ $e ] ) ) { $c[ $e ]++; }
+			// Pipeline (H243): mišrių skilimas + neperduoti tiekėjams tarp „Naujų".
+			if ( 'misrus' === $e ) {
+				self::misrus_sprendimas( $o ) ? $c['pipe_nepaleisti']++ : $c['pipe_spresti']++;
+			} elseif ( 'nauji' === $e && class_exists( 'Petshop_AV_Dropship' )
+				&& Petshop_AV_Dropship::neperduotos( $o ) ) {
+				$c['pipe_neperduota']++;
+			}
 		}
 
 		global $wpdb; $pf = $wpdb->prefix;
@@ -1314,6 +1338,11 @@ class Petshop_Desk {
 			 AND status IN ('wc-lp-on-the-way','wc-completed','wc-lp-delivered')" );
 		$c['visi'] = (int) $wpdb->get_var(
 			"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft'" );
+		// „Išsiųsta šiandien" — statusas kelyje/įvykdytas, atnaujintas nuo vietinės vidurnakties (H243).
+		$c['pipe_issiusta'] = (int) $wpdb->get_var( $wpdb->prepare(
+			"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order'
+			 AND status IN ('wc-lp-on-the-way','wc-completed','wc-lp-delivered')
+			 AND date_updated_gmt >= %s", get_gmt_from_date( wp_date( 'Y-m-d' ) . ' 00:00:00' ) ) );
 		return $c;
 	}
 
@@ -1360,6 +1389,7 @@ class Petshop_Desk {
 			'klientas' => isset( $_GET['klientas'] ) ? sanitize_text_field( wp_unslash( $_GET['klientas'] ) ) : '',
 			'tel'      => isset( $_GET['tel'] ) ? sanitize_text_field( wp_unslash( $_GET['tel'] ) ) : '',
 			'adresas'  => isset( $_GET['adresas'] ) ? sanitize_text_field( wp_unslash( $_GET['adresas'] ) ) : '',
+			'zvilgsnis'=> isset( $_GET['zvilgsnis'] ) ? sanitize_key( $_GET['zvilgsnis'] ) : '',
 		);
 
 		$eilutes = self::gauti( $eile, $f );
@@ -1374,6 +1404,7 @@ class Petshop_Desk {
 		echo '<div class="pd-body">';
 		self::rail( $eile, $c );
 		echo '<main class="pd-main">';
+		self::pipe( $c );
 		self::juosta( $eile, $f, count( $eilutes ) );
 		if ( 'klausimai' === $eile && $eilutes ) {
 			echo '<div class="pd-wrap">';
@@ -2041,6 +2072,25 @@ class Petshop_Desk {
 		<?php
 	}
 
+	/** Pipeline juosta (H243): visa dienos būklė vienu žvilgsniu, kiekvienas skaičius — nuoroda. */
+	protected static function pipe( $c ) {
+		$langai = array(
+			array( 'Laukia sprendimo',      (int) ( $c['pipe_spresti'] ?? 0 ),    self::url( array( 'eile' => 'misrus', 'zvilgsnis' => null ) ) ),
+			array( 'Nepaleisti planai',     (int) ( $c['pipe_nepaleisti'] ?? 0 ), self::url( array( 'eile' => 'misrus', 'zvilgsnis' => null ) ) ),
+			array( 'Neperduota tiekėjams',  (int) ( $c['pipe_neperduota'] ?? 0 ), self::url( array( 'eile' => 'nauji', 'zvilgsnis' => 'neperduota' ) ) ),
+			array( 'Laukia prekių',         (int) ( $c['laukia'] ?? 0 ),          self::url( array( 'eile' => 'laukia', 'zvilgsnis' => null ) ) ),
+			array( 'Paruošta siųsti',       (int) ( $c['paruosta'] ?? 0 ),        self::url( array( 'eile' => 'paruosta', 'zvilgsnis' => null ) ) ),
+			array( 'Išsiųsta šiandien',     (int) ( $c['pipe_issiusta'] ?? 0 ),   self::url( array( 'eile' => 'issiusti', 'zvilgsnis' => null ) ) ),
+		);
+		echo '<div class="pd-pipe">';
+		foreach ( $langai as $i => $l ) {
+			if ( $i ) { echo '<span class="pd-pipe-s">›</span>'; }
+			printf( '<a class="pd-pipe-i%s" href="%s">%s <b>%d</b></a>',
+				$l[1] ? '' : ' pd-pipe-0', esc_url( $l[2] ), esc_html( $l[0] ), $l[1] );
+		}
+		echo '</div>';
+	}
+
 	protected static function rail( $eile, $c ) {
 		echo '<nav class="pd-rail"><div class="pd-rh">Užsakymai</div>';
 		foreach ( array( 'nauji', 'misrus', 'neapmoketi', 'laukia', 'paruosta', 'klausimai' ) as $k ) {
@@ -2377,7 +2427,7 @@ class Petshop_Desk {
 							? '<span class="pd-mok">perduota ' . esc_html( mysql2date( 'm-d H:i', $perd[ $src ] ) ) . '</span>'
 							: '<b class="pd-mng">neperduota</b>' );
 					}
-					echo '<div class="pd-mopt pd-mbukle">' . wp_kses_post( $bukle ) . '</div></div>';
+					echo '<div class="pd-mriba"></div><div class="pd-mopt pd-mbukle">' . wp_kses_post( $bukle ) . '</div></div>';
 				}
 
 				echo '<div class="pd-mf">';
@@ -2532,13 +2582,28 @@ class Petshop_Desk {
 				foreach ( $spr_z as $t => $k ) {
 					$dal[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . '→' . ( 'av' === $k ? 'AV' : 'klientui' );
 				}
-				$perd = class_exists( 'Petshop_AV_Dropship' ) ? array_keys( Petshop_AV_Dropship::perduotos( $o ) ) : array();
-				$pz   = array();
-				foreach ( $perd as $t ) { $pz[] = self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ); }
-				printf( '<small class="pd-planas">planas: %s%s%s</small>',
+				printf( '<small class="pd-planas">planas: %s%s</small>',
 					esc_html( implode( ' · ', $dal ) ),
-					self::kons_laukia( $o ) ? ' <b>· nepaleista</b>' : '',
-					$pz ? ' · perduota ' . esc_html( implode( ', ', $pz ) ) : '' );
+					self::kons_laukia( $o ) ? ' <b>· nepaleista</b>' : '' );
+			}
+			// BŪSENOS CHIP'AI (H243): perdavimo būklė pagal sandėlį — matoma be atidarymo.
+			$sal_ds = array_diff( $sal, array( 'av' ) );
+			if ( $sal_ds && in_array( $row['eile'], array( 'nauji', 'misrus', 'laukia' ), true ) ) {
+				$perd2 = class_exists( 'Petshop_AV_Dropship' ) ? Petshop_AV_Dropship::perduotos( $o ) : array();
+				$spr2  = self::misrus_sprendimas( $o );
+				echo '<span class="pd-chips">';
+				foreach ( $sal_ds as $ts2 ) {
+					$v2 = self::SALTINIAI[ $ts2 ][1] ?? mb_strtoupper( $ts2 );
+					if ( isset( $perd2[ $ts2 ] ) ) {
+						printf( '<span class="pd-chip pd-chip-ok">%s ✓ %s</span>',
+							esc_html( $v2 ), esc_html( mysql2date( 'H:i', $perd2[ $ts2 ] ) ) );
+					} elseif ( 'av' === ( $spr2[ $ts2 ] ?? '' ) ) {
+						printf( '<span class="pd-chip pd-chip-av">%s→AV</span>', esc_html( $v2 ) );
+					} else {
+						printf( '<span class="pd-chip pd-chip-w">%s ⏳</span>', esc_html( $v2 ) );
+					}
+				}
+				echo '</span>';
 			}
 			// riba rodoma tik ten, kur darbas dar nepadarytas
 			// riba prasminga tik ŠIANDIENOS užsakymui — senam „keliaus rytoj" jau 17-a diena būtų melas
@@ -3054,6 +3119,17 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-mf.pd-mwarn{background:#FBF2DE;color:#96660C}
 .pd-msum-t{font-weight:600}
 .pd-mpay{margin-left:auto;color:var(--ink2);font-size:12.5px}
+.pd-pipe{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:0 0 12px;font-size:12.5px}
+.pd-pipe-i{display:inline-flex;gap:6px;align-items:baseline;padding:5px 11px;border:1px solid #E4E1DA;border-radius:999px;text-decoration:none;color:#3c3c3c;background:#fff}
+.pd-pipe-i:hover{border-color:#B5762A}
+.pd-pipe-i b{font-size:13px}
+.pd-pipe-0{opacity:.45}
+.pd-pipe-s{color:#B7B2A7}
+.pd-chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px}
+.pd-chip{font-size:11px;line-height:1.7;padding:0 7px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.pd-chip-ok{background:#E7F4EA;color:#1B7A3D;border-color:#BFE3C8}
+.pd-chip-w{background:#FDF3E1;color:#96660C;border-color:#F1DDB2}
+.pd-chip-av{background:#EFEFEF;color:#555;border-color:#DDD}
 .pd-msec{font-size:14px;margin:18px 0 8px;color:#3c3c3c}
 .pd-mbukle{font-size:12.5px;white-space:nowrap}
 .pd-mok{color:#1B7A3D}
