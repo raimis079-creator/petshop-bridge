@@ -1,17 +1,17 @@
 {
  "v": "VER6",
- "sukurta": 3743,
+ "sukurta": 3744,
  "R": {
   "v": "VER6",
+  "kaip": "bdz487",
   "A_pries": [
    "vf",
    "prins"
   ],
   "A_po": [
-   "vf",
-   "prins"
+   "vf"
   ],
-  "A_prins_dingo": false,
+  "A_prins_dingo": true,
   "A_atstatyta": [
    "vf",
    "prins"
@@ -19,15 +19,19 @@
   "A_konsoliduota_metodas": true,
   "B_pries": [
    "atidaryti",
-   "lapai"
+   "lapai",
+   "istrinti"
   ],
   "B_atsaukus": [
    "atidaryti",
-   "lapai"
+   "lapai",
+   "istrinti"
   ],
-  "B_teise": false,
+  "B_dialogas": "Ištrinti negrįžtamai | Ištrinti šį užsakymą NEGRĮŽTAMAI? Dings pats užsakymas, jo eilutės ir istorija. Apskaitai ",
+  "B_teise": true,
   "B_busena": "cancelled",
-  "B_eile": "atsaukti"
+  "B_eile": "atsaukti",
+  "B_grazinta": "on-hold"
  },
- "isjungta": 3743
+ "isjungta": 3744
 }
