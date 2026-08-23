@@ -1,0 +1,45 @@
+{
+ "v": "H244A",
+ "sukurta": 3776,
+ "deploy": {
+  "v": "H242A",
+  "gauta": 168871,
+  "sintakse": "ok",
+  "md5": "8b5ad705e80cbe3ffc5863c2876fa5a4"
+ },
+ "nauji": {
+  "http": 200,
+  "pipe": [
+   "Laukia sprendimo 1",
+   "Nepaleisti planai 3",
+   "Neperduota tiekėjams 6",
+   "Partijose 3",
+   "Laukia prekių 0",
+   "Paruošta siųsti 0",
+   "Išsiųsta šiandien 0"
+  ],
+  "chips": [
+   "BEL ⏳",
+   "AMB ⏳",
+   "QUA ⏳",
+   "VF ⏳",
+   "ZB ⏳",
+   "ZB ⏳"
+  ],
+  "put": 201
+ },
+ "irankiai": [
+  "Tiekimas3",
+  "Perdavimas tiekėjams6"
+ ],
+ "tiekimas": {
+  "http": 200,
+  "h1": "Tiekimas",
+  "put": 201
+ },
+ "tuscia": {
+  "http": 200,
+  "zemelapis": "Užsakymo kelias: Nauji → Mišrūs (jei keli sandėliai) → Laukia prekių (kai dalis "
+ },
+ "js": []
+}
