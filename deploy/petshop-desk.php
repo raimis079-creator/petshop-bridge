@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Desk v3.42 (H250) — Įrankiuose nuoroda „Išsiųsti laiškai" (archyvas).
+ *
  * Petshop Desk v3.41 (H249) — „KURIOJE EILĖJE?" MATOMA SĄRAŠE IR PAIEŠKOJE.
  *
  * KODĖL (Raimis, H249): „kur, kokioje eilėje visi šie užsakymai yra, jei noriu
@@ -2158,6 +2160,8 @@ class Petshop_Desk {
 			esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ),
 			! empty( $c['tiek_kaupiama'] ) ? '<b class="pd-rb pd-rb-k" title="kaupiamos partijos">' . (int) $c['tiek_kaupiama'] . '</b>' : '',
 			! empty( $c['tiek_uzsakyta'] ) ? '<b class="pd-rb pd-rb-u" title="užsakyta pas tiekėją — laukiam prekių">' . (int) $c['tiek_uzsakyta'] . '</b>' : '' );
+		printf( '<a class="pd-ri" href="%s"><span>Išsiųsti laiškai</span></a>',
+			esc_url( admin_url( 'admin.php?page=ps-laiskai' ) ) );
 		printf( '<a class="pd-ri" href="%s"><span>Perdavimas tiekėjams</span>%s</a>',
 			esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=nauji&zvilgsnis=neperduota' ) ),
 			! empty( $c['pipe_neperduota'] ) ? '<b class="pd-rb pd-rb-k">' . (int) $c['pipe_neperduota'] . '</b>' : '' );
