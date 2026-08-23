@@ -2457,6 +2457,7 @@ class Petshop_Desk {
 				$perd   = class_exists( 'Petshop_AV_Dropship' ) ? Petshop_AV_Dropship::perduotos( $o ) : array();
 
 				printf( '<div class="pd-mcard" id="pd-m%d"><div class="pd-mh"><b>#%s</b><span class="pd-mkl">%s</span>%s<span class="pd-msuma">%s</span><span class="pd-mvez">%s</span></div>',
+					$id,
 					esc_html( $o->get_order_number() ),
 					esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ),
 					$o->is_paid() ? '<span class="pd-kpaid">apmokėta</span>' : '<span class="pd-kunpaid">neapmokėta</span>',
