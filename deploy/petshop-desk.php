@@ -1,6 +1,10 @@
 <?php
 /**
- * Petshop Desk v3.29 (H227) — 🔴 masinis „Venipak registruoti" dabar SANDĖLIŲ atžvilgiu: grupuoja pagal šaltinį, kiekvienai grupei savas manifestas; mišrūs praleidžiami. Iki šiol mygtukas viską pylė į vieną manifestą 001 (v3.28: auto refresh).
+ * Petshop Desk v3.30 (H233) — TRYNIMAS DARBALAUKYJE: uždarytiems (atšauktas /
+ * grąžintas) užsakymams atsirado „Ištrinti užsakymą“ su negrįžtamumo patvirtinimu.
+ * Iki šiol trynimas buvo įmanomas TIK per WooCommerce sąrašą. HPOS: delete( true ).
+ *
+ * v3.29 (H227): 🔴 masinis „Venipak registruoti“ dabar SANDĖLIŲ atžvilgiu: grupuoja pagal šaltinį, kiekvienai grupei savas manifestas; mišrūs praleidžiami. Iki šiol mygtukas viską pylė į vieną manifestą 001 (v3.28: auto refresh).
  *
  * KODĖL: WooCommerce sąrašas — numatytasis ekranas, į kurį penki pluginai sudėjo
  * mygtukus be užrašų. Raimis: „turi būti malonu į darbalaukį užeiti, o ne į chaosą".
@@ -237,6 +241,21 @@ class Petshop_Desk {
 						'tekstas'=> 'Pranešti klientui laišku',
 						'def'    => 0,
 					),
+				),
+			);
+		} elseif ( current_user_can( 'delete_shop_orders' ) ) {
+			// Uždarytas užsakymas — vienintelė vieta, kur trynimas apskritai galimas.
+			// Iki šiol tam reikėjo eiti į WooCommerce sąrašą (H233).
+			$out[] = array(
+				'id'  => 'istrinti',
+				't'   => 'Ištrinti užsakymą',
+				'url' => self::veiksmo_url( 'istrinti', $id ),
+				'pav' => 'pavojus',
+				'd'   => array(
+					'antraste' => $antraste,
+					'tekstas'  => 'Ištrinti šį užsakymą NEGRĮŽTAMAI? Dings pats užsakymas, jo eilutės ir istorija. '
+						. 'Apskaitai ir sąskaitoms atšauktas užsakymas paprastai turi likti — trink tik testinius arba akivaizdų šlamštą.',
+					'ok'       => 'Ištrinti negrįžtamai',
 				),
 			);
 		}
@@ -581,6 +600,26 @@ class Petshop_Desk {
 				$o->update_status( 'cancelled', '' );
 				if ( ! $su_laisku ) { self::laiskai_on(); }
 				$zinute = $su_laisku ? 'atsaukta_laiskas' : 'atsaukta';
+			}
+		}
+
+		/**
+		 * Trynimas. Tik uždarytiems (atšauktas / grąžintas) ir tik su teise
+		 * `delete_shop_orders`. HPOS: BŪTINA $order->delete( true ) — wp_delete_post()
+		 * HPOS lentelių nepaliečia ir paliktų užsakymą pusiau gyvą.
+		 */
+		if ( 'istrinti' === $v ) {
+			if ( ! current_user_can( 'delete_shop_orders' ) ) { wp_die( 'Nepakanka teisių trinti užsakymus' ); }
+			if ( ! in_array( $o->get_status(), array( 'cancelled', 'lp-cancelled', 'refunded' ), true ) ) {
+				$zinute = 'trinti_negalima';
+			} else {
+				$nr = $o->get_order_number();
+				$o->delete( true );
+				wp_safe_redirect( add_query_arg( array(
+					'pd_ok' => 'istrinta',
+					'pd_nr' => rawurlencode( $nr ),
+				), $atgal ) );
+				exit;
 			}
 		}
 
@@ -1675,6 +1714,8 @@ class Petshop_Desk {
 			'atsaukta'        => array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ),
 			'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas.' ),
 			'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),
+			'istrinta'        => array( 'ok', 'Užsakymas #%s ištrintas negrįžtamai.' ),
+			'trinti_negalima' => array( 'klaida', 'Užsakymo #%s ištrinti negalima — pirma jį atšauk.' ),
 			'vp_ok'           => array( 'ok', 'Venipak: siuntos užregistruotos (%s). Manifestas paruoštas.' ),
 			'vp_klaida'       => array( 'klaida', 'Venipak nepriėmė: %s' ),
 			'vp_nieko'        => array( 'info', 'Registruoti nėra ko: %s.' ),
