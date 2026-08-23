@@ -1,6 +1,11 @@
 <?php
 /**
- * Petshop Desk v3.30 (H233) — TRYNIMAS DARBALAUKYJE: uždarytiems (atšauktas /
+ * Petshop Desk v3.31 (H234) — perdavimo būklė skaitoma PAGAL SANDĖLĮ
+ * (Petshop_AV_Dropship::perduotos/neperduotos). Iki šiol viena viso užsakymo
+ * žymė reiškė „viskas perduota“, todėl mišrus su dviem tiekėjais po pirmo
+ * perdavimo dingdavo iš tiekėjų sąrašo su antruoju kartu (H234).
+ *
+ * v3.30 (H233) — TRYNIMAS DARBALAUKYJE: uždarytiems (atšauktas /
  * grąžintas) užsakymams atsirado „Ištrinti užsakymą“ su negrįžtamumo patvirtinimu.
  * Iki šiol trynimas buvo įmanomas TIK per WooCommerce sąrašą. HPOS: delete( true ).
  *
@@ -1230,7 +1235,15 @@ class Petshop_Desk {
 			$sal = self::saltiniai( $o );
 			$av  = in_array( 'av', $sal, true );
 			$ds  = array_values( array_diff( $sal, array( 'av' ) ) );
-			$jau_perduota = (bool) $o->get_meta( '_ps_dropship_sent' );
+			// Perdavimas skaitomas PAGAL SANDĖLĮ: mišrus su VF ir PRINS po VF perdavimo
+			// dar laukia PRINS laiško (H234).
+			$liko_ds = class_exists( 'Petshop_AV_Dropship' )
+				? Petshop_AV_Dropship::neperduotos( $o )
+				: $ds;
+			$perduoti = class_exists( 'Petshop_AV_Dropship' )
+				? array_keys( Petshop_AV_Dropship::perduotos( $o ) )
+				: array();
+			$jau_perduota = ( $ds && ! $liko_ds );
 
 			$p['visi'][] = $id;
 			$p['eil'][]  = array(
@@ -1240,7 +1253,9 @@ class Petshop_Desk {
 				'vyk' => self::vykdymas( $o )[0],
 				'vez' => self::vezejo_vardas( $o ),
 				'ds'  => $ds,
-				'perduota' => $jau_perduota,
+				'perduota'  => $jau_perduota,
+				'perduoti'  => $perduoti,
+				'liko'      => $liko_ds,
 			);
 
 			if ( $av ) { $p['av'][] = $id; }
@@ -1259,9 +1274,9 @@ class Petshop_Desk {
 					$p['vp_grupes'][ $k ][] = $id;
 				}
 			}
-			if ( $ds && ! $jau_perduota ) {
+			if ( $liko_ds ) {
 				$p['ds'][] = $id;
-				foreach ( $ds as $t ) {
+				foreach ( $liko_ds as $t ) {
 					if ( ! isset( $p['tiekejai'][ $t ] ) ) { $p['tiekejai'][ $t ] = 0; }
 					$p['tiekejai'][ $t ]++;
 				}
@@ -1372,7 +1387,7 @@ class Petshop_Desk {
 			printf( '<tr><td class="pd-nr">#%s</td><td>%s</td><td><span class="pd-exec">%s</span></td><td>%s</td><td>%s%s</td></tr>',
 				esc_html( $e['nr'] ), esc_html( $e['kl'] ), esc_html( $e['vyk'] ), esc_html( $e['vez'] ),
 				implode( '', $ts ) ? implode( '', $ts ) : '—',
-				$e['perduota'] ? ' <span class="pd-sent">jau perduota</span>' : '' );
+				self::perdavimo_zenklas( $e ) );
 		}
 		echo '</tbody></table>';
 		printf( '<p class="pd-rnote">Partija sudaryta %s. <a href="%s">Perskaičiuoti iš naujo</a></p>',
@@ -1413,6 +1428,24 @@ class Petshop_Desk {
 			);
 		}
 		return array( $eil, $ok, count( (array) $ids ) );
+	}
+
+	/**
+	 * Perdavimo ženklas rytinės eigos lentelėje. Mišriam būtina matyti DALINĮ
+	 * perdavimą — „perduota VF · liko PRI“ — kitaip antras tiekėjas pasimeta (H234).
+	 */
+	protected static function perdavimo_zenklas( $e ) {
+		if ( empty( $e['ds'] ) ) { return ''; }
+		if ( ! empty( $e['perduota'] ) ) { return ' <span class="pd-sent">jau perduota</span>'; }
+		if ( empty( $e['perduoti'] ) ) { return ''; }
+
+		$p = array();
+		foreach ( (array) $e['perduoti'] as $t ) { $p[] = self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ); }
+		$l = array();
+		foreach ( (array) $e['liko'] as $t ) { $l[] = self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ); }
+
+		return sprintf( ' <span class="pd-sent">perduota %s</span><span class="pd-liko">liko %s</span>',
+			esc_html( implode( ', ', $p ) ), esc_html( implode( ', ', $l ) ) );
 	}
 
 	protected static function siuntu_lentele( $ids, $pastomatu_tikrinti = true ) {
@@ -2058,7 +2091,8 @@ class Petshop_Desk {
 			if ( 'nauji' === $row['eile'] && $o->get_date_created()
 				&& wp_date( 'Y-m-d', $o->get_date_created()->getTimestamp() ) === wp_date( 'Y-m-d' ) ) {
 				foreach ( $sal as $ts ) {
-					if ( 'av' !== $ts && $o->get_meta( '_ps_dropship_sent' ) ) { continue; }
+					if ( 'av' !== $ts && class_exists( 'Petshop_AV_Dropship' )
+						&& Petshop_AV_Dropship::perduota( $o, $ts ) ) { continue; }
 					$rz = self::riba( $ts );
 					if ( $rz ) { printf( '<small class="pd-riba-%s">%s %s</small>',
 						esc_attr( $rz[0] ), esc_html( self::SALTINIAI[ $ts ][1] ?? $ts ), esc_html( $rz[1] ) ); }
@@ -2539,6 +2573,7 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-rbig{height:42px;padding:0 20px;font-size:14.5px;margin-right:10px}
 .pd-done{opacity:.55}
 .pd-sent{font-size:11.5px;color:var(--green);background:var(--greent);padding:1px 7px;border-radius:99px}
+.pd-liko{display:inline-block;margin-left:6px;font-size:11.5px;color:#96660C;background:#FBF2DE;border-radius:3px;padding:1px 6px}
 .pd-ryt-f{border-top:1px solid var(--line);padding:12px 32px;display:flex;gap:10px;align-items:center;background:var(--card)}
 .pd-ryt-hint{font-size:12.5px;color:var(--ink3);flex:1;text-align:center}
 .pd-rdone{text-align:center;padding:26px 0 22px}
