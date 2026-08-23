@@ -1,4 +1,11 @@
 {
- "v": "H242A",
- "klaida": "TypeError: fetch failed"
+ "v": "H242B",
+ "sukurta": 3772,
+ "deploy": {
+  "v": "H242A",
+  "gauta": 160706,
+  "sintakse": "ok",
+  "md5": "c20113981ec2e032920c1b80303f2294"
+ },
+ "klaida": "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs"
 }
