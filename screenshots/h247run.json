@@ -1,4 +1,48 @@
 {
- "v": "H247B",
- "klaida": "Error: fx:snip"
+ "v": "H247C",
+ "sukurta": 3785,
+ "deploy": {
+  "v": "H247B",
+  "gauta": 62078,
+  "sintakse": "ok",
+  "md5": "02c7d078ee497e04baba8b3788f1d989",
+  "stulpeliai": [
+   "id",
+   "tiekejas",
+   "busena",
+   "sukurta",
+   "uzsakyta",
+   "gauta",
+   "siuntos_kodas",
+   "pastaba",
+   "pristatymas",
+   "svoris",
+   "venipak_pack",
+   "venipak_manifest"
+  ]
+ },
+ "kaupiama": {
+  "http": 200,
+  "fatal": false,
+  "mygtukai": [
+   "Užsakyti iš tiekėjo →",
+   "Užsakyti iš tiekėjo →",
+   "Uždaryti partiją — suvesiu Žalioji Banga sistemoje"
+  ],
+  "put": 201
+ },
+ "adresai": {
+  "http": 200,
+  "fatal": false,
+  "tiekejai": [
+   "Vetfarmas",
+   "Quattro / Kauno grūdai",
+   "Prins / Faunas",
+   "Ambrosia",
+   "Belacor"
+  ],
+  "laukai": 30,
+  "put": 201
+ },
+ "js": []
 }
