@@ -1,5 +1,17 @@
 <?php
 /**
+ * Petshop Desk v3.40 (H245) — GEOGRAFIJOS PATAISOS PO RAIMIO TESTO.
+ *
+ * KODĖL (Raimis, H245): „paspaudžiau mišrų į AV ir viskas dingo; Tiekimas ir
+ * Perdavimas tiekėjams neveikia". Faktai: (1) niekas nedingo — planai įrašyti,
+ * kortelės nusileido į apatinę sekciją, bet tai nepakankamai akivaizdu;
+ * (2) „Partijose" skaitliukas skaičiavo ir TUŠČIAS kaupiamas partijas (vakar
+ * testų liekanos), todėl Tiekimo puslapis rodė tuščias lenteles; (3) rail
+ * nuoroda „Perdavimas tiekėjams" vedė į ps-dropship, kuris be transient'o
+ * atsidaro tuščias. DABAR: skaitliukas skaičiuoja tik partijas SU eilutėmis;
+ * rail nuoroda veda į „Nauji" su neperduotų filtru (ten Perduoti mygtukai);
+ * po „Patvirtinti planą" grįžtama su #inkaru tiesiai prie nuleistos kortelės.
+ *
  * Petshop Desk v3.39 (H244) — SISTEMOS GEOGRAFIJA: ĮRANKIAI, KELIO ŽEMĖLAPIS, NUORODOS.
  *
  * KODĖL (Raimis, H244): „praktiškai niekas neaišku koks Tiekimas, kur nuorodos,
@@ -1353,8 +1365,10 @@ class Petshop_Desk {
 		$c['tiek_kaupiama'] = 0; $c['tiek_uzsakyta'] = 0;
 		if ( class_exists( 'Petshop_AV_Tiekimas' ) ) {
 			foreach ( (array) $wpdb->get_results(
-				"SELECT busena, COUNT(*) n FROM {$pf}ps_tiekimas
-				 WHERE busena IN ('kaupiama','uzsakyta') GROUP BY busena" ) as $r ) {
+				"SELECT p.busena, COUNT(DISTINCT p.id) n
+				 FROM {$pf}ps_tiekimas p
+				 JOIN {$pf}ps_tiekimas_eil e ON e.partija_id=p.id
+				 WHERE p.busena IN ('kaupiama','uzsakyta') GROUP BY p.busena" ) as $r ) {
 				if ( 'kaupiama' === $r->busena ) { $c['tiek_kaupiama'] = (int) $r->n; }
 				if ( 'uzsakyta' === $r->busena ) { $c['tiek_uzsakyta'] = (int) $r->n; }
 			}
@@ -2136,7 +2150,7 @@ class Petshop_Desk {
 			! empty( $c['tiek_kaupiama'] ) ? '<b class="pd-rb pd-rb-k" title="kaupiamos partijos">' . (int) $c['tiek_kaupiama'] . '</b>' : '',
 			! empty( $c['tiek_uzsakyta'] ) ? '<b class="pd-rb pd-rb-u" title="užsakyta pas tiekėją — laukiam prekių">' . (int) $c['tiek_uzsakyta'] . '</b>' : '' );
 		printf( '<a class="pd-ri" href="%s"><span>Perdavimas tiekėjams</span>%s</a>',
-			esc_url( admin_url( 'admin.php?page=ps-dropship' ) ),
+			esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=nauji&zvilgsnis=neperduota' ) ),
 			! empty( $c['pipe_neperduota'] ) ? '<b class="pd-rb pd-rb-k">' . (int) $c['pipe_neperduota'] . '</b>' : '' );
 		echo '<div class="pd-ai"><div class="pd-ai-h"><span class="pd-dot"></span>Siūlymai</div>
 			<div class="pd-ai-t">Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.</div></div>';
@@ -2372,7 +2386,8 @@ class Petshop_Desk {
 			$sh = 0;
 			foreach ( $o->get_items( 'shipping' ) as $x ) { $sh += (float) $x->get_total() + (float) $x->get_total_tax(); }
 
-			printf( '<div class="pd-mcard"><div class="pd-mh"><b>#%s</b><span class="pd-mkl">%s</span>%s<span class="pd-msuma">%s</span><span class="pd-mvez">%s</span></div>',
+			printf( '<div class="pd-mcard" id="pd-m%d"><div class="pd-mh"><b>#%s</b><span class="pd-mkl">%s</span>%s<span class="pd-msuma">%s</span><span class="pd-mvez">%s</span></div>',
+				$id,
 				esc_html( $o->get_order_number() ),
 				esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ),
 				$o->is_paid() ? '<span class="pd-kpaid">apmokėta</span>' : '<span class="pd-kunpaid">neapmokėta</span>',
@@ -2384,7 +2399,7 @@ class Petshop_Desk {
 			printf( '<input type="hidden" name="id" value="%d"><input type="hidden" name="_wpnonce" value="%s">',
 				$id, esc_attr( wp_create_nonce( 'ps_desk_misrus_' . $id ) ) );
 			printf( '<input type="hidden" name="g" value="%s">',
-				esc_attr( admin_url( 'admin.php?page=' . self::SLUG . '&eile=misrus' ) ) );
+				esc_attr( admin_url( 'admin.php?page=' . self::SLUG . '&eile=misrus' ) . '#pd-m' . $id ) );
 
 			foreach ( $g as $src => $d ) {
 				$vardas = self::SALTINIAI[ $src ][1] ?? mb_strtoupper( $src );
@@ -2441,7 +2456,7 @@ class Petshop_Desk {
 				$laukia = self::kons_laukia( $o );
 				$perd   = class_exists( 'Petshop_AV_Dropship' ) ? Petshop_AV_Dropship::perduotos( $o ) : array();
 
-				printf( '<div class="pd-mcard"><div class="pd-mh"><b>#%s</b><span class="pd-mkl">%s</span>%s<span class="pd-msuma">%s</span><span class="pd-mvez">%s</span></div>',
+				printf( '<div class="pd-mcard" id="pd-m%d"><div class="pd-mh"><b>#%s</b><span class="pd-mkl">%s</span>%s<span class="pd-msuma">%s</span><span class="pd-mvez">%s</span></div>',
 					esc_html( $o->get_order_number() ),
 					esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ),
 					$o->is_paid() ? '<span class="pd-kpaid">apmokėta</span>' : '<span class="pd-kunpaid">neapmokėta</span>',
@@ -3177,6 +3192,7 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-rb-k{background:#B5762A;color:#fff}
 .pd-rb-u{background:#3E6B4A;color:#fff}
 .pd-empty-map{display:block;margin-top:10px;font-size:12px;color:#8b877e;max-width:560px}
+.pd-mcard:target{outline:2px solid #B5762A;outline-offset:2px}
 .pd-msec{font-size:14px;margin:18px 0 8px;color:#3c3c3c}
 .pd-mbukle{font-size:12.5px;white-space:nowrap}
 .pd-mok{color:#1B7A3D}
