@@ -1,0 +1,35 @@
+{
+ "v": "H245B",
+ "sukurta": 3778,
+ "deploy": {
+  "v": "H245B",
+  "gauta": 169916,
+  "sintakse": "ok",
+  "md5": "78d6a9c2df5ac3bd5f2223e6c99528bc",
+  "istrinta_tusciu": 2
+ },
+ "misrus": {
+  "http": 200,
+  "pipe": [
+   "Laukia sprendimo 0",
+   "Nepaleisti planai 4",
+   "Neperduota tiekėjams 6",
+   "Partijose 1",
+   "Laukia prekių 0",
+   "Paruošta siųsti 0",
+   "Išsiųsta šiandien 0"
+  ],
+  "sekcijos": [
+   "Planas įrašytas — nepaleista (4)"
+  ],
+  "korteles": [],
+  "irankiai": [
+   "Tiekimas1 -> page=ps-tiekimas",
+   "Perdavimas tiekėjams6 -> page=ps-desk&eile=nauji&zvilgsnis=neperduota"
+  ],
+  "put": 201
+ },
+ "js": [
+  "TypeError: Cannot read properties of undefined (reading 'dismiss')"
+ ]
+}
