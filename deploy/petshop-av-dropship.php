@@ -1,6 +1,9 @@
 <?php
 /**
- * Petshop AV Dropship v1.9 (H239) — laiškai gerbia MIŠRAUS SPRENDIMO PLANĄ.
+ * Petshop AV Dropship v1.10 (H240) — perdavimo ekranas priima `src` filtrą:
+ * galima paleisti VIENĄ sandėlį, o kitą pasilikti, kol siuntos keliaus kartu.
+ *
+ * v1.9 (H239) — laiškai gerbia MIŠRAUS SPRENDIMO PLANĄ.
  *
  * Nuo H239 sprendimas kortelėje tik UŽRAŠOMAS, o vykdo Raimis atskiru mygtuku.
  * Tarp tų dviejų momentų eilutė dar nėra tiekimo lentelėje, bet jau žinoma, kad
@@ -281,6 +284,11 @@ class Petshop_AV_Dropship {
 			return;
 		}
 		$g = self::grupuoti( (array) $ids );
+
+		// Vieno sandėlio perdavimas: mišriam užsakymui leidžia paleisti tik VF,
+		// o ZB pasilikti rankoje, kol siuntos iškeliaus kartu (H240).
+		$tik = isset( $_GET['src'] ) ? sanitize_key( wp_unslash( $_GET['src'] ) ) : '';
+		if ( $tik ) { $g = isset( $g[ $tik ] ) ? array( $tik => $g[ $tik ] ) : array(); }
 		$t = self::tiekejai();
 		$pastai = (array) get_option( self::OPT_EMAIL, [] );
 		?>
