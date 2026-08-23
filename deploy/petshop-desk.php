@@ -1,5 +1,16 @@
 <?php
 /**
+ * Petshop Desk v3.37 (H242) — MIŠRUS SU NEPALEISTU PLANU LIEKA MIŠRIUOSE.
+ *
+ * KODĖL (Raimis, H242): patvirtinus planą užsakymas dingdavo iš Mišrių į „Nauji",
+ * o žalia juosta liepdavo „paleisk mygtukais" — kurių tame lange nebėra. Darbuotojas
+ * turėjo eiti ieškoti užsakymo kitoje eilėje. Sprendimas ir paleidimas — dabar
+ * vienoje vietoje: Mišrių eilė turi dvi sekcijas — „Reikia sprendimo" ir
+ * „Planas įrašytas — nepaleista" (su mygtukais „Į tiekimo partiją" / „Perduoti X" /
+ * „Keisti planą"). Užsakymas iš Mišrių išeina tik kai „į AV" dalys sudėtos į partiją.
+ * Jei plane viskas „tiesiai klientui" — grįžta į „Nauji" (ten įprastas „Perduoti"),
+ * ir pranešimas dabar sako, KUR jis nuėjo.
+ *
  * Petshop Desk v3.36 (H240) — PERDAVIMAS PAGAL SANDĖLĮ (išsiuntimo laikas — žmogaus).
  *
  * KODĖL (Raimis H237, H239): „mišriuose užsakymuose rankiniu būdu sprendžiama,
@@ -748,7 +759,7 @@ class Petshop_Desk {
 				. '. Dar neįvykdyta — laukia paleidimo. Vartotojas: ' . $naudotojas . '.', false, true );
 			$o->save();
 
-			$zinute     = 'misrus_ok';
+			$zinute     = self::kons_laukia( $o ) ? 'misrus_cia' : 'misrus_ok';
 			$nr_priedas = implode( ' · ', $aprasas );
 		}
 
@@ -990,8 +1001,12 @@ class Petshop_Desk {
 		if ( 'processing' === $st || 'on-hold' === $st ) {
 			if ( self::turi_siunta( $order ) ) { return 'paruosta'; }
 			// Mišrus be sprendimo — atskira eilė. Į rytinę partiją nepatenka (H236).
-			if ( 'processing' === $st && count( self::saltiniai( $order ) ) > 1
-				&& ! $order->get_meta( '_ps_misrus_sprendimas' ) ) { return 'misrus'; }
+			// Planas įrašytas, bet „į AV" dalys dar nesudėtos į partiją — irgi liekam
+			// Mišriuose, kad sprendimas ir paleidimas būtų vienoje vietoje (H242).
+			if ( 'processing' === $st && count( self::saltiniai( $order ) ) > 1 ) {
+				if ( ! $order->get_meta( '_ps_misrus_sprendimas' ) ) { return 'misrus'; }
+				if ( self::kons_laukia( $order ) ) { return 'misrus'; }
+			}
 			if ( $order->get_meta( '_ps_tiekimas_laukia' ) ) { return 'laukia'; }
 			return 'processing' === $st ? 'nauji' : 'kita';
 		}
@@ -1954,7 +1969,8 @@ class Petshop_Desk {
 			'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas.' ),
 			'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),
 			'istrinta'        => array( 'ok', 'Užsakymas #%s ištrintas negrįžtamai.' ),
-			'misrus_ok'       => array( 'ok', 'Užsakymo #%s planas įrašytas: %s. Nieko dar neišsiųsta — paleisk mygtukais.' ),
+			'misrus_ok'       => array( 'ok', 'Užsakymo #%s planas įrašytas: %s. Viskas tiesiai klientui — užsakymas grįžo į „Nauji", perdavimą paleisi ten.' ),
+			'misrus_cia'      => array( 'ok', 'Užsakymo #%s planas įrašytas: %s. Užsakymas liko čia — paleisk mygtukais kortelėje apačioje.' ),
 			'kons_ok'         => array( 'ok', 'Užsakymas #%s: %s eilutė(-ės) įdėtos į tiekimo partijas — laukiam prekių į AV.' ),
 			'kons_nieko'      => array( 'info', 'Užsakyme #%s nėra ko dėti į tiekimo partijas.' ),
 			'misrus_atsaukta' => array( 'ok', 'Užsakymo #%s planas atšauktas — grįžo į Mišrius.' ),
@@ -1970,7 +1986,7 @@ class Petshop_Desk {
 		);
 		if ( ! isset( $t[ $k ] ) ) { return; }
 		$dalys = explode( '|', $nr, 2 );
-		$tekstas = in_array( $k, array( 'apmoketa_klausimas', 'misrus_ok', 'kons_ok' ), true )
+		$tekstas = in_array( $k, array( 'apmoketa_klausimas', 'misrus_ok', 'misrus_cia', 'kons_ok' ), true )
 			? sprintf( $t[ $k ][1], $dalys[0], $dalys[1] ?? '' )
 			: sprintf( $t[ $k ][1], $nr );
 		if ( 'apmoketa_klausimas' === $k ) {
@@ -2251,8 +2267,15 @@ class Petshop_Desk {
 	}
 
 	protected static function misriu_korteles( $eilutes ) {
-		echo '<div class="pd-mlist">';
+		/* Dvi sekcijos (H242): be sprendimo — sprendimo kortelė su radio;
+		   su planu, bet nepaleista — paleidimo kortelė su mygtukais. */
+		$spresti = array(); $paleisti = array();
 		foreach ( $eilutes as $row ) {
+			if ( self::misrus_sprendimas( $row['o'] ) ) { $paleisti[] = $row; } else { $spresti[] = $row; }
+		}
+		if ( $spresti ) { printf( '<h2 class="pd-msec">Reikia sprendimo (%d)</h2>', count( $spresti ) ); }
+		echo '<div class="pd-mlist">';
+		foreach ( $spresti as $row ) {
 			$o   = $row['o'];
 			$id  = $o->get_id();
 			$g   = self::misrus_grupes( $o );
@@ -2312,10 +2335,69 @@ class Petshop_Desk {
 			echo '</form></div>';
 		}
 		echo '</div>';
-		echo '<div class="pd-khint"><b>Planas nieko nepradeda.</b> Patvirtinus užsakymas grįžta į „Nauji“ su žyme, ką nusprendei.
-			Vykdymą pradedi tu: „Į tiekimo partiją“ sudeda „į AV“ eilutes (tik tada užsakymas eina laukti prekių),
-			„Perduoti tiekėjui“ — dalims, kurios keliauja tiesiai. Kol nepaleista, planą gali perrašyti „Keisti planą“.
-			Kaip prekės atkeliaus į AV (paštomatu, kurjeriu ar tiekėjas atveš) — sprendžiama partijos lygmenyje.</div>';
+		if ( $spresti ) {
+			echo '<div class="pd-khint"><b>Planas nieko nepradeda.</b> Jei plane yra „į AV“ dalių — užsakymas lieka čia,
+				skiltyje „Planas įrašytas“, kol paspausi „Į tiekimo partiją“. Jei viskas tiesiai klientui — grįžta į „Nauji“,
+				perdavimą paleisi ten. Kol nepaleista, planą gali perrašyti „Keisti planą“.
+				Kaip prekės atkeliaus į AV (paštomatu, kurjeriu ar tiekėjas atveš) — sprendžiama partijos lygmenyje.</div>';
+		}
+
+		if ( $paleisti ) {
+			printf( '<h2 class="pd-msec">Planas įrašytas — nepaleista (%d)</h2>', count( $paleisti ) );
+			echo '<div class="pd-mlist">';
+			foreach ( $paleisti as $row ) {
+				$o      = $row['o'];
+				$id     = $o->get_id();
+				$g      = self::misrus_grupes( $o );
+				$spr    = self::misrus_sprendimas( $o );
+				$laukia = self::kons_laukia( $o );
+				$perd   = class_exists( 'Petshop_AV_Dropship' ) ? Petshop_AV_Dropship::perduotos( $o ) : array();
+
+				printf( '<div class="pd-mcard"><div class="pd-mh"><b>#%s</b><span class="pd-mkl">%s</span>%s<span class="pd-msuma">%s</span><span class="pd-mvez">%s</span></div>',
+					esc_html( $o->get_order_number() ),
+					esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ),
+					$o->is_paid() ? '<span class="pd-kpaid">apmokėta</span>' : '<span class="pd-kunpaid">neapmokėta</span>',
+					wp_kses_post( $o->get_formatted_order_total() ),
+					esc_html( self::vezejo_vardas( $o ) ) );
+
+				foreach ( $g as $src => $d ) {
+					$vardas = self::SALTINIAI[ $src ][1] ?? mb_strtoupper( $src );
+					echo '<div class="pd-mrow">';
+					printf( '<div class="pd-mleft">%s<b>%s</b></div>', self::zyme( $src ), esc_html( $vardas ) );
+					printf( '<div class="pd-mprek">%s</div>', esc_html( implode( ' · ', $d['pav'] ) ) );
+					printf( '<div class="pd-mkg">%s</div>', esc_html( self::kg( $d['svoris'] ) ) );
+
+					if ( 'av' === $src ) {
+						$bukle = '<span class="pd-mfix">savas sandėlis</span>';
+					} elseif ( 'av' === ( $spr[ $src ] ?? '' ) ) {
+						$liko  = (bool) array_intersect( $d['iid'], $laukia );
+						$bukle = 'į AV · ' . ( $liko ? '<b class="pd-mng">nepaleista</b>' : '<span class="pd-mok">partijoje</span>' );
+					} else {
+						$bukle = 'tiesiai klientui · ' . ( isset( $perd[ $src ] )
+							? '<span class="pd-mok">perduota ' . esc_html( mysql2date( 'm-d H:i', $perd[ $src ] ) ) . '</span>'
+							: '<b class="pd-mng">neperduota</b>' );
+					}
+					echo '<div class="pd-mopt pd-mbukle">' . wp_kses_post( $bukle ) . '</div></div>';
+				}
+
+				echo '<div class="pd-mf">';
+				if ( $laukia ) {
+					printf( '<a class="pd-btn pd-btn-p" href="%s">Į tiekimo partiją (%d)</a>',
+						esc_url( self::veiksmo_url( 'kons', $id ) ), count( $laukia ) );
+				}
+				foreach ( $g as $src => $d ) {
+					if ( 'av' === $src || 'av' === ( $spr[ $src ] ?? '' ) || isset( $perd[ $src ] ) ) { continue; }
+					printf( '<a class="pd-btn" href="%s">Perduoti %s</a>',
+						esc_url( self::veiksmo_url( 'perduoti', $id ) . '&src=' . rawurlencode( $src ) ),
+						esc_html( self::SALTINIAI[ $src ][1] ?? mb_strtoupper( $src ) ) );
+				}
+				printf( '<a class="pd-btn pd-btn-s" href="%s">Keisti planą</a>', esc_url( self::veiksmo_url( 'misrus_keisti', $id ) ) );
+				echo '</div></div>';
+			}
+			echo '</div>';
+			echo '<div class="pd-khint">Užsakymas iš Mišrių išeis, kai „į AV“ dalys bus sudėtos į tiekimo partiją.
+				„Perduoti X“ gali paleisti dabar arba palikti vėlesniam laikui — kad visos siuntos klientą pasiektų kartu.</div>';
+		}
 	}
 
 	protected static function klausimu_korteles( $eilutes ) {
@@ -2972,6 +3054,10 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-mf.pd-mwarn{background:#FBF2DE;color:#96660C}
 .pd-msum-t{font-weight:600}
 .pd-mpay{margin-left:auto;color:var(--ink2);font-size:12.5px}
+.pd-msec{font-size:14px;margin:18px 0 8px;color:#3c3c3c}
+.pd-mbukle{font-size:12.5px;white-space:nowrap}
+.pd-mok{color:#1B7A3D}
+.pd-mng{color:#B3261E}
 .pd-planas{display:block;font-size:11.5px;color:#96660C}
 .pd-vkg{font-size:12px;color:var(--ink2);margin-left:12px;font-variant-numeric:tabular-nums}
 .pd-ryt-f{border-top:1px solid var(--line);padding:12px 32px;display:flex;gap:10px;align-items:center;background:var(--card)}
@@ -3080,8 +3166,8 @@ small.pd-riba-praejo{color:var(--ink3)}
   if (!t) return;
   var kg=function(x){ return x>0 ? (Math.round(x*10)/10).toString().replace('.',',')+' kg' : '—'; };
   t.textContent = 'Klientui ' + siuntos + (siuntos===1?' siunta':(siuntos<10?' siuntos':' siuntų'))
-   + (iAv||savo ? ' · per AV ' + kg(kgAv) : '')
-   + (tiesiai ? ' · tiesiai ' + kg(kgTiesiai) : '');
+   + (iAv||savo ? ' · per AV' + (kgAv>0 ? ' ' + kg(kgAv) : '') : '')
+   + (tiesiai ? ' · tiesiai' + (kgTiesiai>0 ? ' ' + kg(kgTiesiai) : '') : '');
   if (box) box.classList.toggle('pd-mwarn', siuntos>2);
  }
  document.querySelectorAll('.pd-mform').forEach(function(f){
