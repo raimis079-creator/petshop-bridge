@@ -1,0 +1,46 @@
+{
+ "v": "VER14",
+ "sukurta": 3766,
+ "R": {
+  "v": "VER14",
+  "1_abu_tiesiai": {
+   "eile": "nauji",
+   "mygtukai": [
+    "Surinkti",
+    "Perduoti VF",
+    "Perduoti PRI",
+    "Keisti planą",
+    "Sąskaita",
+    "Atšaukti užsakymą"
+   ]
+  },
+  "2_po_VF": {
+   "mygtukai": [
+    "Surinkti",
+    "Perduoti tiekėjui",
+    "Keisti planą",
+    "Sąskaita",
+    "Atšaukti užsakymą"
+   ],
+   "laiskai": [
+    "prins"
+   ],
+   "neperduotos": [
+    "prins"
+   ]
+  },
+  "3_laiskas": {
+   "shipments": 3,
+   "registruota_grupiu": 0,
+   "turinys_su_prierasu": false
+  },
+  "4_atstatyta": {
+   "eile": "misrus",
+   "laiskai": [
+    "vf",
+    "prins"
+   ]
+  }
+ },
+ "klaida": "Error: page.$eval: Failed to find element matching selector \"#psPerziura\""
+}
