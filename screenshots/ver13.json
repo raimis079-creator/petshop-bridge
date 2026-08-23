@@ -1,0 +1,64 @@
+{
+ "v": "VER13",
+ "sukurta": 3763,
+ "R": {
+  "v": "VER13",
+  "1_atstatyta": {
+   "eile": "misrus",
+   "partijose": 0,
+   "laiskai": [
+    "vf",
+    "prins"
+   ]
+  },
+  "2_po_plano": {
+   "eile": "nauji",
+   "partijose": 0,
+   "laiskai": [
+    "prins"
+   ],
+   "veiksmai": [
+    "lapai",
+    "perduoti",
+    "kons",
+    "misrus_keisti",
+    "saskaita",
+    "atsaukti"
+   ]
+  },
+  "3_po_vykdymo": {
+   "ideta": 1,
+   "eile": "laukia",
+   "partijose": 1,
+   "laiskai": [
+    "prins"
+   ],
+   "veiksmai": [
+    "tiekimas",
+    "lapai",
+    "saskaita",
+    "atsaukti"
+   ]
+  },
+  "4_galutine": {
+   "eile": "misrus",
+   "partijose": 0,
+   "laiskai": [
+    "vf",
+    "prins"
+   ]
+  }
+ },
+ "ekranas": {
+  "http": 200,
+  "put": 201,
+  "mygtukai": [
+   "Patvirtinti planą",
+   "Patvirtinti planą",
+   "Patvirtinti planą",
+   "Patvirtinti"
+  ]
+ },
+ "js": [],
+ "isjungta": 3763
+}
