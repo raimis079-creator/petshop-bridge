@@ -1,11 +1,38 @@
 {
- "v": "H242B",
- "sukurta": 3772,
+ "v": "H242C",
+ "sukurta": 3773,
  "deploy": {
-  "v": "H242A",
-  "gauta": 160706,
-  "sintakse": "ok",
-  "md5": "c20113981ec2e032920c1b80303f2294"
+  "v": "H242A"
  },
- "klaida": "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs"
+ "misrus": {
+  "http": 200,
+  "sekcijos": [
+   "Reikia sprendimo (2)",
+   "Planas įrašytas — nepaleista (2)"
+  ],
+  "rail_misrus": "Mišrūs4",
+  "korteles": [
+   "#35066",
+   "#35065",
+   "#35068",
+   "#35067"
+  ],
+  "mygtukai": [
+   "Patvirtinti planą",
+   "Patvirtinti planą",
+   "Į tiekimo partiją (2)",
+   "Keisti planą",
+   "Į tiekimo partiją (1)",
+   "Perduoti VF",
+   "Keisti planą"
+  ],
+  "bukles": [
+   "į AV · nepaleista",
+   "į AV · nepaleista",
+   "į AV · nepaleista",
+   "tiesiai klientui · neperduota"
+  ],
+  "put": 201
+ },
+ "js": []
 }
