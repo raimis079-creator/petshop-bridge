@@ -1,22 +1,28 @@
 {
- "v": "H248B",
- "sukurta": 3788,
+ "v": "H248C",
+ "sukurta": 3789,
  "deploy": {
   "v": "H248B",
-  "gauta": 59430,
+  "gauta": 62721,
   "sintakse": "ok",
-  "md5": "c8b98b0e4eea42dd6295dfe0f7503a05"
+  "md5": "d3ef06d9cc0993fe147edb5858c5db97"
  },
  "kaupiama": {
   "http": 200,
   "fatal": false,
-  "adresu_nuoroda": false,
+  "varneles": [
+   "Siųsti laišką tiekėjui=OFF",
+   "Siųsti man (terra@petshop.lt)=ON",
+   "Siųsti laišką tiekėjui=OFF",
+   "Siųsti man (terra@petshop.lt)=ON"
+  ],
+  "varneliu_blokai": 2,
   "mygtukai": [
    "Užsakyti iš tiekėjo →",
    "Užsakyti iš tiekėjo →",
    "Uždaryti partiją — suvesiu Žalioji Banga sistemoje"
   ],
-  "put": 201
+  "put": 200
  },
  "uzsakyta": {
   "http": 200,
