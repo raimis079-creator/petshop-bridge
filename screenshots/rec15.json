@@ -1,0 +1,60 @@
+{
+ "v": "REC15",
+ "sukurta": 3760,
+ "R": {
+  "35066": {
+   "busena": "processing",
+   "saltiniai": [
+    "av",
+    "vf",
+    "prins"
+   ],
+   "eile": "laukia",
+   "sprendimas": "{\"vf\":\"av\",\"prins\":\"av\"}",
+   "laukia": "1",
+   "siunta": "nera"
+  },
+  "v": "REC15",
+  "tiekimo_eilutes": [
+   {
+    "id": "6",
+    "partija_id": "4",
+    "product_id": "17950",
+    "order_id": "35066",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null,
+    "pastaba": "eilutė 699",
+    "busena": "kaupiama",
+    "tiekejas": "vf"
+   },
+   {
+    "id": "7",
+    "partija_id": "3",
+    "product_id": "16776",
+    "order_id": "35066",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null,
+    "pastaba": "eilutė 700",
+    "busena": "kaupiama",
+    "tiekejas": "prins"
+   }
+  ],
+  "eilutes": {
+   "698": {
+    "src": "av",
+    "kons": ""
+   },
+   "699": {
+    "src": "vf",
+    "kons": "1"
+   },
+   "700": {
+    "src": "prins",
+    "kons": "1"
+   }
+  }
+ },
+ "isjungta": 3760
+}
