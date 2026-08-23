@@ -1,6 +1,16 @@
 <?php
 /**
- * Petshop Desk v3.31 (H234) — perdavimo būklė skaitoma PAGAL SANDĖLĮ
+ * Petshop Desk v3.32 (H235) — VIENA MIŠRUMO TAISYKLĖ: mišrus = sandėlių > 1,
+ * nesvarbu, ar tarp jų yra AV. Iki šiol ZB+VF+PRINS užsakymas vadinosi
+ * „DROPSHIP“, o filtras „Mišrūs“ jo apskritai nerasdavo — nors rytinė eiga tą
+ * patį užsakymą jau skaičiavo kaip mišrų (count($sal) > 1). Dvi taisyklės tame
+ * pačiame modulyje = prieštaringi atsakymai darbuotojui.
+ *
+ * Kartu: veiksmų mygtukai nebeišvedami iš etiketės. „Surinkti“ rodoma, kai yra
+ * AV eilučių, „Perduoti“ — kai yra tiekėjo eilučių. Mišrus be AV (ZB+VF) gauna
+ * TIK „Perduoti“; anksčiau jam būtų pasiūlyta surinkti tai, ko sandėlyje nėra.
+ *
+ * v3.31 (H234) — perdavimo būklė skaitoma PAGAL SANDĖLĮ
  * (Petshop_AV_Dropship::perduotos/neperduotos). Iki šiol viena viso užsakymo
  * žymė reiškė „viskas perduota“, todėl mišrus su dviem tiekėjais po pirmo
  * perdavimo dingdavo iš tiekėjų sąrašo su antruoju kartu (H234).
@@ -192,13 +202,22 @@ class Petshop_Desk {
 		if ( ! empty( $row['klausimas'] ) ) {
 			$out[] = array( 'id' => 'sprendimas', 't' => 'Spręsti', 'url' => '', 'k' => '' );
 		} elseif ( 'nauji' === $row['eile'] ) {
-			$ds = 'DROPSHIP' === self::vykdymas( $o )[0];
-			$out[] = $ds
-				? array( 'id' => 'perduoti', 't' => 'Perduoti', 'url' => self::veiksmo_url( 'perduoti', $id ), 'd' => null )
-				: array( 'id' => 'lapai',    't' => 'Surinkti', 'url' => self::veiksmo_url( 'lapai', $id ),    'd' => null );
-			// mišriam reikia abiejų kelių
-			if ( 'MIŠRUS' === self::vykdymas( $o )[0] ) {
-				$out[] = array( 'id' => 'perduoti', 't' => 'Perduoti tiekėjui', 'url' => self::veiksmo_url( 'perduoti', $id ), 'd' => null );
+			// Mygtukai — pagal tai, KOKIŲ EILUČIŲ užsakyme yra, o ne pagal etiketę.
+			// ZB+VF (mišrus be AV) neturi ko surinkti sandėlyje — jam tik „Perduoti“.
+			$sal = self::saltiniai( $o );
+			$turi_av = in_array( 'av', $sal, true );
+			$turi_ds = count( array_diff( $sal, array( 'av' ) ) ) > 0;
+
+			if ( $turi_av ) {
+				$out[] = array( 'id' => 'lapai', 't' => 'Surinkti', 'url' => self::veiksmo_url( 'lapai', $id ), 'd' => null );
+			}
+			if ( $turi_ds ) {
+				$out[] = array(
+					'id'  => 'perduoti',
+					't'   => $turi_av ? 'Perduoti tiekėjui' : 'Perduoti',
+					'url' => self::veiksmo_url( 'perduoti', $id ),
+					'd'   => null,
+				);
 			}
 		} elseif ( 'laukia' === $row['eile'] ) {
 			$out[] = array( 'id' => 'tiekimas', 't' => 'Tiekimas',
@@ -707,14 +726,18 @@ class Petshop_Desk {
 		return $out;
 	}
 
-	/** SAVA / DROPSHIP / MIŠRUS / — */
+	/**
+	 * SAVA / DROPSHIP / MIŠRUS / —  (+ kiek siuntų klientui)
+	 *
+	 * MIŠRUS = sandėlių daugiau nei vienas. AV buvimas nieko nelemia: ZB+VF
+	 * elgiasi lygiai kaip AV+ZB — dvi vietos, dvi siuntos, vienas pristatymo
+	 * mokestis. Ta pati taisyklė galioja sąraše, filtre ir rytinėje eigoje (H235).
+	 */
 	protected static function vykdymas( $order ) {
 		$s = self::saltiniai( $order );
 		if ( ! $s ) { return array( '', 0 ); }
-		$av = in_array( 'av', $s, true );
-		$ds = count( array_diff( $s, array( 'av' ) ) ) > 0;
-		if ( $av && $ds ) { return array( 'MIŠRUS', count( $s ) > 2 ? count( $s ) : 2 ); }
-		return array( $av ? 'SAVA' : 'DROPSHIP', $ds ? count( array_diff( $s, array( 'av' ) ) ) : 1 );
+		if ( count( $s ) > 1 ) { return array( 'MIŠRUS', count( $s ) ); }
+		return array( in_array( 'av', $s, true ) ? 'SAVA' : 'DROPSHIP', 1 );
 	}
 
 	const META_PAK = '_ps_pakuociu';
@@ -1047,9 +1070,10 @@ class Petshop_Desk {
 				$v   = $f['vykdymas'];
 				$av  = in_array( 'av', $s, true );
 				$ds  = count( array_diff( $s, array( 'av' ) ) ) > 0;
-				if ( 'sava' === $v && ( ! $av || $ds ) ) { continue; }
-				if ( 'dropship' === $v && ( $av || ! $ds ) ) { continue; }
-				if ( 'misrus' === $v && ! ( $av && $ds ) ) { continue; }
+				// H235: mišrus = sandėlių > 1. SAVA/DROPSHIP — tik vieno sandėlio užsakymai.
+				if ( 'sava' === $v && ( count( $s ) > 1 || ! $av ) ) { continue; }
+				if ( 'dropship' === $v && ( count( $s ) > 1 || $av || ! $ds ) ) { continue; }
+				if ( 'misrus' === $v && count( $s ) < 2 ) { continue; }
 				if ( isset( self::SALTINIAI[ $v ] ) && ! in_array( $v, $s, true ) ) { continue; }
 			}
 
