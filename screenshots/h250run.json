@@ -1,6 +1,6 @@
 {
- "v": "H250C",
- "sukurta": 3794,
+ "v": "H251A",
+ "sukurta": 3795,
  "deploy": {
   "v": "H250A",
   "failai": {
@@ -10,9 +10,9 @@
     "md5": "4034d65f7033c464a2c796075e41f122"
    },
    "petshop-av-dropship.php": {
-    "gauta": 36911,
+    "gauta": 41490,
     "sintakse": "ok",
-    "md5": "5390e6f07f82c3141ca6e0b5550f0c80"
+    "md5": "dd66608b0e9c57ced81c681863d9c897"
    },
    "petshop-av-tiekimas.php": {
     "gauta": 63100,
@@ -33,8 +33,35 @@
  "laiskai": {
   "http": 200,
   "fatal": false,
-  "h1": "Išsiųsti laiškai",
-  "eiluciu": 0,
+  "h1": "Laiškai",
+  "skirtukai": [
+   "Laukia išsiuntimo (6)",
+   "Išsiųsti (0)"
+  ],
+  "blokai": [
+   "Vetfarmas",
+   "Prins Petfoods",
+   "Belacor",
+   "Ambrosia",
+   "Quattro / Kauno grūdai",
+   "Žalioji Banga",
+   "Prekės į AV sandėlį"
+  ],
+  "mygtukai": [
+   "Peržiūrėti laišką",
+   "Eiti perduoti Vetfarmas →",
+   "Peržiūrėti laišką",
+   "Eiti perduoti Prins Petfoods →",
+   "Peržiūrėti laišką",
+   "Eiti perduoti Belacor →",
+   "Peržiūrėti laišką",
+   "Eiti perduoti Ambrosia →",
+   "Peržiūrėti laišką",
+   "Eiti perduoti Quattro / Kauno grūdai →",
+   "Peržiūrėti laišką",
+   "Eiti perduoti Žalioji Banga →"
+  ],
+  "eiluciu": 11,
   "put": 200
  },
  "dropship": {
