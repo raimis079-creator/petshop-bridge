@@ -1,6 +1,17 @@
 <?php
 /**
- * Petshop Desk v3.35 (H239) — 🔴 SPRENDIMAS ATSKIRTAS NUO VYKDYMO.
+ * Petshop Desk v3.36 (H240) — PERDAVIMAS PAGAL SANDĖLĮ (išsiuntimo laikas — žmogaus).
+ *
+ * KODĖL (Raimis H237, H239): „mišriuose užsakymuose rankiniu būdu sprendžiama,
+ * kada bus siuntos siunčiamos klientui — kad visos siuntos klientą pasiektų kartu“.
+ * Iki šiol „Perduoti tiekėjui“ buvo vienas mygtukas visam užsakymui: paspaudei —
+ * iškeliavo VISI tiekėjai iš karto, ir laiko suvaldyti buvo neįmanoma.
+ *
+ * DABAR kiekvienas neperduotas sandėlis turi savo mygtuką („Perduoti VF“,
+ * „Perduoti ZB“). Vieną gali paleisti šiandien, kitą pasilikti rankoje, kol
+ * pirmoji dalis atkeliaus — kad klientui abi siuntos pasiektų maždaug kartu.
+ *
+ * v3.35 (H239) — 🔴 SPRENDIMAS ATSKIRTAS NUO VYKDYMO.
  *
  * KODĖL (Raimis, H239): „užsakymas iškarto nukrito į vykdymą, nors aš nenorėjau...
  * aš noriu nuspręsti ką daryti, o ne sistema“. Mygtukas „Patvirtinti“ darė du
@@ -255,13 +266,31 @@ class Petshop_Desk {
 			if ( $turi_av ) {
 				$out[] = array( 'id' => 'lapai', 't' => 'Surinkti', 'url' => self::veiksmo_url( 'lapai', $id ), 'd' => null );
 			}
-			if ( $turi_ds ) {
+			/**
+			 * Perdavimas PAGAL SANDĖLĮ. Kai tiekėjas vienas — vienas mygtukas kaip
+			 * anksčiau. Kai keli — po mygtuką kiekvienam, kad išsiuntimo laiką
+			 * valdytum tu, o ne sistema (H240).
+			 */
+			$ds_liko = ( $turi_ds && class_exists( 'Petshop_AV_Dropship' ) )
+				? Petshop_AV_Dropship::neperduotos( $o )
+				: array_values( array_diff( $sal, array( 'av' ) ) );
+
+			if ( 1 === count( $ds_liko ) ) {
 				$out[] = array(
 					'id'  => 'perduoti',
 					't'   => $turi_av ? 'Perduoti tiekėjui' : 'Perduoti',
-					'url' => self::veiksmo_url( 'perduoti', $id ),
+					'url' => self::veiksmo_url( 'perduoti', $id ) . '&src=' . rawurlencode( $ds_liko[0] ),
 					'd'   => null,
 				);
+			} else {
+				foreach ( $ds_liko as $src ) {
+					$out[] = array(
+						'id'  => 'perduoti_' . $src,
+						't'   => 'Perduoti ' . ( self::SALTINIAI[ $src ][1] ?? mb_strtoupper( $src ) ),
+						'url' => self::veiksmo_url( 'perduoti', $id ) . '&src=' . rawurlencode( $src ),
+						'd'   => null,
+					);
+				}
 			}
 
 			// Planas yra, bet „į AV“ dalys dar nesudėtos — paleidžia ŽMOGUS (H239).
@@ -647,7 +676,8 @@ class Petshop_Desk {
 
 		if ( 'perduoti' === $v && $ids ) {
 			set_transient( 'ps_dropship_' . get_current_user_id(), $ids, 1800 );
-			wp_safe_redirect( admin_url( 'admin.php?page=ps-dropship' ) );
+			$src = isset( $_GET['src'] ) ? sanitize_key( wp_unslash( $_GET['src'] ) ) : '';
+			wp_safe_redirect( admin_url( 'admin.php?page=ps-dropship' ) . ( $src ? '&src=' . rawurlencode( $src ) : '' ) );
 			exit;
 		}
 
@@ -2420,9 +2450,13 @@ class Petshop_Desk {
 				foreach ( $spr_z as $t => $k ) {
 					$dal[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . '→' . ( 'av' === $k ? 'AV' : 'klientui' );
 				}
-				printf( '<small class="pd-planas">planas: %s%s</small>',
+				$perd = class_exists( 'Petshop_AV_Dropship' ) ? array_keys( Petshop_AV_Dropship::perduotos( $o ) ) : array();
+				$pz   = array();
+				foreach ( $perd as $t ) { $pz[] = self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ); }
+				printf( '<small class="pd-planas">planas: %s%s%s</small>',
 					esc_html( implode( ' · ', $dal ) ),
-					self::kons_laukia( $o ) ? ' <b>· nepaleista</b>' : '' );
+					self::kons_laukia( $o ) ? ' <b>· nepaleista</b>' : '',
+					$pz ? ' · perduota ' . esc_html( implode( ', ', $pz ) ) : '' );
 			}
 			// riba rodoma tik ten, kur darbas dar nepadarytas
 			// riba prasminga tik ŠIANDIENOS užsakymui — senam „keliaus rytoj" jau 17-a diena būtų melas
