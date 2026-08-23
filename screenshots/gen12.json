@@ -1,0 +1,206 @@
+{
+ "v": "GEN12",
+ "sukurta": 3725,
+ "R": {
+  "v": "GEN12",
+  "esami_testiniai": 0,
+  "lp_lenteles": [
+   "gaj6_woo_lithuaniapost_api_token",
+   "gaj6_woo_lithuaniapost_country_rates",
+   "gaj6_woo_lithuaniapost_country_weight_rates",
+   "gaj6_woo_lithuaniapost_lpexpress_terminals",
+   "gaj6_woo_lithuaniapost_shipping_request",
+   "gaj6_woo_lithuaniapost_table_rates",
+   "gaj6_woo_lithuaniapost_tracking_status",
+   "gaj6_woo_lithuaniapost_unisend_terminals"
+  ],
+  "lp": {
+   "lentele": "gaj6_woo_lithuaniapost_unisend_terminals",
+   "id": "0001",
+   "name": "Saurida degalinė",
+   "address": "Buivydiškių g. 1A, Zujūnai",
+   "city": "Vilnius"
+  },
+  "uzsakymai": {
+   "1": {
+    "id": 35055,
+    "nr": "35055",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "suma": "14.19",
+    "svoris": 0,
+    "pastomatas": "3990 · Venipak locker, Vilniaus Udrop  K29 VC paštomatas (live)",
+    "lp_term": "—",
+    "saltiniai": [
+     "14929×1→av",
+     "14932×1→av"
+    ]
+   },
+   "2": {
+    "id": 35056,
+    "nr": "35056",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK Kurjeris",
+    "suma": "24.66",
+    "svoris": 0,
+    "pastomatas": "—",
+    "lp_term": "—",
+    "saltiniai": [
+     "14937×2→av",
+     "14941×1→av"
+    ]
+   },
+   "3": {
+    "id": 35057,
+    "nr": "35057",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "LP Express",
+    "suma": "15.07",
+    "svoris": 0,
+    "pastomatas": "—",
+    "lp_term": "Saurida degalinė - Buivydiškių g. 1A, Zujūnai, Vilnius",
+    "saltiniai": [
+     "14945×3→av"
+    ]
+   },
+   "4": {
+    "id": 35058,
+    "nr": "35058",
+    "busena": "on-hold",
+    "apmoketa": 0,
+    "vezejas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "suma": "14.19",
+    "svoris": 0,
+    "pastomatas": "4170 · Venipak locker, Kauno Udrop Draugystės g. 6A  paštomatas (live)",
+    "lp_term": "—",
+    "saltiniai": [
+     "14935×1→av",
+     "14929×1→av"
+    ]
+   },
+   "5": {
+    "id": 35059,
+    "nr": "35059",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "suma": "34.19",
+    "svoris": 5.5,
+    "pastomatas": "4004 · Venipak locker, Klaipėdos Udrop AIBĖ Plieno g. paštomatas (live)",
+    "lp_term": "—",
+    "saltiniai": [
+     "12452×1→zb",
+     "12454×1→zb"
+    ]
+   },
+   "6": {
+    "id": 35060,
+    "nr": "35060",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK Kurjeris",
+    "suma": "121.20",
+    "svoris": 24.44,
+    "pastomatas": "—",
+    "lp_term": "—",
+    "saltiniai": [
+     "12455×2→zb"
+    ]
+   },
+   "7": {
+    "id": 35061,
+    "nr": "35061",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "suma": "35.90",
+    "svoris": 15,
+    "pastomatas": "4139 · Venipak locker, Šiaulių Udrop KUBAS Aido g. paštomatas (live)",
+    "lp_term": "—",
+    "saltiniai": [
+     "17947×1→vf"
+    ]
+   },
+   "8": {
+    "id": 35062,
+    "nr": "35062",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "suma": "39.01",
+    "svoris": 4.5,
+    "pastomatas": "3901 · Venipak locker, Panevėžio Udrop KUBAS Kniaudiškių g. paštom. (live)",
+    "lp_term": "—",
+    "saltiniai": [
+     "16537×2→quattro",
+     "16543×1→quattro"
+    ]
+   },
+   "9": {
+    "id": 35063,
+    "nr": "35063",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK Kurjeris",
+    "suma": "63.21",
+    "svoris": 12,
+    "pastomatas": "—",
+    "lp_term": "—",
+    "saltiniai": [
+     "19720×1→ambrosia"
+    ]
+   },
+   "10": {
+    "id": 35064,
+    "nr": "35064",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "suma": "26.55",
+    "svoris": 1,
+    "pastomatas": "2778 · Venipak locker, IKI Alytus Venipak paštomatas (live)",
+    "lp_term": "—",
+    "saltiniai": [
+     "15964×1→belcor_tofu",
+     "15967×1→belcor_tofu"
+    ]
+   },
+   "11": {
+    "id": 35065,
+    "nr": "35065",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "suma": "24.59",
+    "svoris": 3,
+    "pastomatas": "4198 · Venipak locker, Vilniaus Udrop DUETTO paštomatas (live)",
+    "lp_term": "—",
+    "saltiniai": [
+     "14929×1→av",
+     "12453×1→zb"
+    ]
+   },
+   "12": {
+    "id": 35066,
+    "nr": "35066",
+    "busena": "processing",
+    "apmoketa": 1,
+    "vezejas": "VENIPAK Kurjeris",
+    "suma": "63.57",
+    "svoris": 18,
+    "pastomatas": "—",
+    "lp_term": "—",
+    "saltiniai": [
+     "14932×1→av",
+     "17950×1→vf",
+     "16776×1→prins"
+    ]
+   }
+  },
+  "viso": "12"
+ },
+ "isjungta": 3725
+}
