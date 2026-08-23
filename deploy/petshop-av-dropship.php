@@ -1,5 +1,15 @@
 <?php
 /**
+ * Petshop AV Dropship v1.11 (H250) — LAIŠKO ADRESATAI IR IŠSIŲSTŲ LAIŠKŲ ARCHYVAS.
+ *
+ * KODĖL (Raimis, H250): „kur visi šitie laiškai yra? sakei padarei, kad laiškas
+ * ateina į terra@petshop.lt — kur?" — varnelė buvo padaryta TIK tiekimo partijų
+ * lange (petshop-av-tiekimas), o šitas ekranas siuntė tiesiai tiekėjui, be
+ * kopijos. DABAR čia tos pačios dvi varnelės („siųsti tiekėjui" / „kopija man"),
+ * bendras nustatymas su Tiekimu (`ps_tiek_laiskai`), o kiekvienas išsiųstas
+ * laiškas įrašomas į archyvą (`ps_laisku_archyvas`, 200 paskutinių) — matomas
+ * skiltyje Įrankiai → „Išsiųsti laiškai" su gavėju, laiku ir pilnu tekstu.
+ *
  * Petshop AV Dropship v1.10 (H240) — perdavimo ekranas priima `src` filtrą:
  * galima paleisti VIENĄ sandėlį, o kitą pasilikti, kol siuntos keliaus kartu.
  *
@@ -114,6 +124,8 @@ class Petshop_AV_Dropship {
 	public static function meniu() {
 		add_submenu_page( null, 'Perduoti tiekėjams', 'Perduoti tiekėjams',
 			'edit_shop_orders', 'ps-dropship', [ __CLASS__, 'puslapis' ] );
+		add_submenu_page( 'ps-desk', 'Išsiųsti laiškai', 'Išsiųsti laiškai', 'edit_shop_orders',
+			'ps-laiskai', [ __CLASS__, 'archyvo_puslapis' ] );
 		add_submenu_page( 'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai',
 			'manage_woocommerce', 'ps-dropship-nustatymai', [ __CLASS__, 'nustatymai' ] );
 	}
@@ -239,6 +251,70 @@ class Petshop_AV_Dropship {
 			if ( $b ) { return true; }
 		}
 		return false;
+	}
+
+	/** Laiško adresatai — bendras nustatymas su Tiekimo moduliu (H250). */
+	public static function laisko_nust() {
+		$v = (array) get_option( 'ps_tiek_laiskai', [] );
+		return [
+			'tiekejui' => ! empty( $v['tiekejui'] ),
+			'man'      => isset( $v['man'] ) ? ! empty( $v['man'] ) : true,
+		];
+	}
+
+	/** Įrašo išsiųstą laišką į archyvą (200 paskutinių). */
+	public static function archyvuoti( $gavejai, $tema, $html, $priedai = [], $kontekstas = '' ) {
+		$a = (array) get_option( 'ps_laisku_archyvas', [] );
+		array_unshift( $a, [
+			'laikas'  => current_time( 'mysql' ),
+			'kam'     => implode( ', ', (array) $gavejai ),
+			'tema'    => $tema,
+			'kont'    => $kontekstas,
+			'priedai' => array_map( 'basename', (array) $priedai ),
+			'html'    => $html,
+		] );
+		update_option( 'ps_laisku_archyvas', array_slice( $a, 0, 200 ), false );
+	}
+
+	/** Išsiųstų laiškų archyvas — vienoje vietoje matai, kas kam išėjo (H250). */
+	public static function archyvo_puslapis() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		$a = (array) get_option( 'ps_laisku_archyvas', [] );
+		$z = isset( $_GET['z'] ) ? absint( $_GET['z'] ) : -1;
+		echo '<div class="wrap"><h1>Išsiųsti laiškai</h1>';
+		printf( '<p><a class="button" href="%s">← Petshop užsakymai</a></p>',
+			esc_url( admin_url( 'admin.php?page=ps-desk' ) ) );
+
+		if ( ! $a ) {
+			echo '<p>Kol kas nieko neišsiųsta. Čia kaupsis visi laiškai tiekėjams — kam, kada, su kokiais priedais.</p></div>';
+			return;
+		}
+		if ( isset( $a[ $z ] ) ) {
+			$l = $a[ $z ];
+			printf( '<h2>%s</h2><p><b>Kam:</b> %s<br><b>Kada:</b> %s<br><b>Priedai:</b> %s</p>',
+				esc_html( $l['tema'] ), esc_html( $l['kam'] ),
+				esc_html( mysql2date( 'Y-m-d H:i', $l['laikas'] ) ),
+				$l['priedai'] ? esc_html( implode( ', ', $l['priedai'] ) ) : '—' );
+			printf( '<p><a class="button" href="%s">← Visi laiškai</a></p>',
+				esc_url( admin_url( 'admin.php?page=ps-laiskai' ) ) );
+			echo '<div style="background:#fff;border:1px solid #ddd;padding:16px;max-width:900px">'
+				. wp_kses_post( $l['html'] ) . '</div></div>';
+			return;
+		}
+
+		echo '<table class="widefat striped"><thead><tr><th style="width:140px">Kada</th><th>Kam</th>
+			<th>Tema</th><th>Priedai</th><th></th></tr></thead><tbody>';
+		foreach ( $a as $i => $l ) {
+			printf( '<tr><td>%s</td><td>%s</td><td>%s<div style="color:#666;font-size:12px">%s</div></td>
+				<td>%s</td><td><a class="button button-small" href="%s">Peržiūrėti</a></td></tr>',
+				esc_html( mysql2date( 'm-d H:i', $l['laikas'] ) ),
+				esc_html( $l['kam'] ),
+				esc_html( $l['tema'] ),
+				esc_html( $l['kont'] ?? '' ),
+				$l['priedai'] ? count( $l['priedai'] ) . ' vnt.' : '—',
+				esc_url( admin_url( 'admin.php?page=ps-laiskai&z=' . (int) $i ) ) );
+		}
+		echo '</tbody></table></div>';
 	}
 
 	/** Kiek lipdukų šiam užsakymui (pack_numbers ilgis). */
@@ -412,6 +488,12 @@ class Petshop_AV_Dropship {
 					<button class="button button-primary">Siųsti <?php echo esc_html( $vardas ); ?> (<?php echo esc_html( $pastas ); ?>)</button>
 					<label><input type="checkbox" name="su_lipdukais" value="1" checked> pridėti lipdukus</label>
 					<label><input type="checkbox" name="su_manifestu" value="1" checked> pridėti manifestą</label>
+					<?php $ln = self::laisko_nust(); ?>
+					<input type="hidden" name="laisk_zyme" value="1">
+					<label><input type="checkbox" name="laisk_tiekejui" value="1" <?php checked( $ln['tiekejui'] ); ?>>
+						siųsti tiekėjui</label>
+					<label><input type="checkbox" name="laisk_man" value="1" <?php checked( $ln['man'] ); ?>>
+						kopija man (terra@petshop.lt)</label>
 				</form>
 				<?php endif; ?>
 			</div>
@@ -635,7 +717,25 @@ class Petshop_AV_Dropship {
 			'From: UAB Avesa <terra@petshop.lt>',
 			'Reply-To: terra@petshop.lt',
 		];
-		$ok = wp_mail( $pastas, 'užsakymas ' . $data, $h, $antraste, $priedai );
+		// Adresatai pagal varneles (H250).
+		if ( isset( $_POST['laisk_zyme'] ) ) {
+			update_option( 'ps_tiek_laiskai', [
+				'tiekejui' => ! empty( $_POST['laisk_tiekejui'] ),
+				'man'      => ! empty( $_POST['laisk_man'] ),
+			] );
+		}
+		$ln  = self::laisko_nust();
+		$gav = [];
+		if ( $ln['tiekejui'] ) { $gav[] = $pastas; }
+		if ( $ln['man'] ) { $gav[] = 'terra@petshop.lt'; }
+		$gav = array_values( array_unique( array_filter( $gav ) ) );
+		if ( ! $gav ) { wp_die( 'Nepažymėta, kam siųsti — uždėk bent vieną varnelę.' ); }
+
+		$tema = $ln['tiekejui'] ? 'užsakymas ' . $data : '[PERSIŲSTI ' . $vardas . '] užsakymas ' . $data;
+		$ok   = wp_mail( $gav, $tema, $h, $antraste, $priedai );
+
+		self::archyvuoti( $gav, $tema, $h, $priedai,
+			'Perdavimas tiekėjui: ' . $vardas . ' · ' . count( $uzsakymai ) . ' užsak.' );
 
 		if ( $ok ) {
 			foreach ( array_keys( $uzsakymai ) as $oid ) {
@@ -643,7 +743,7 @@ class Petshop_AV_Dropship {
 				if ( ! $o ) { continue; }
 				self::zymeti_perduota( $o, $src );
 				$o->save();
-				$o->add_order_note( 'Perduota tiekėjui ' . $vardas . ' (' . $pastas . ')' );
+				$o->add_order_note( 'Perduota tiekėjui ' . $vardas . ' — laiškas: ' . implode( ', ', $gav ) );
 			}
 		}
 		foreach ( $priedai as $f ) { @unlink( $f ); }
