@@ -1,6 +1,6 @@
 {
- "v": "H250A",
- "sukurta": 3792,
+ "v": "H250B",
+ "sukurta": 3793,
  "deploy": {
   "v": "H250A",
   "failai": {
@@ -10,9 +10,9 @@
     "md5": "4034d65f7033c464a2c796075e41f122"
    },
    "petshop-av-dropship.php": {
-    "gauta": 36907,
+    "gauta": 36911,
     "sintakse": "ok",
-    "md5": "383b608a03991b2492695378a9548380"
+    "md5": "5390e6f07f82c3141ca6e0b5550f0c80"
    },
    "petshop-av-tiekimas.php": {
     "gauta": 63100,
@@ -30,24 +30,5 @@
    "Perdavimas tiekėjams6"
   ]
  },
- "laiskai": {
-  "http": 403,
-  "fatal": false,
-  "h1": "?",
-  "eiluciu": 0,
-  "put": 201
- },
- "dropship": {
-  "http": 200,
-  "fatal": false,
-  "varneles": [
-   "Prierašas laiške (nebūtina)=OFF",
-   "pridėti lipdukus=ON",
-   "pridėti manifestą=ON",
-   "siųsti tiekėjui=OFF",
-   "kopija man (terra@petshop.lt)=ON"
-  ],
-  "put": 201
- },
- "js": []
+ "klaida": "Error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://dev.avesa.lt/wp-admin/admin.php?page=ps-laiskai\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-laiskai\", waiting until \"networkidle\"\n"
 }
