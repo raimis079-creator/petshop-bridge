@@ -1460,7 +1460,7 @@ class Petshop_Desk {
 			self::misriu_korteles( $eilutes );
 			echo '</div>';
 		} else {
-			self::lentele( $eilutes, $statusai );
+			self::lentele( $eilutes, $statusai, $eile, $f );
 		}
 		echo '</main></div>';
 		self::skydelis();
@@ -2575,7 +2575,7 @@ class Petshop_Desk {
 			ir grąžina užsakymą į darbo eilę. „Laukti“ nieko neprimena — pažymi ir tiek.</div>';
 	}
 
-	protected static function lentele( $eilutes, $statusai ) {
+	protected static function lentele( $eilutes, $statusai, $eile = '', $f = array() ) {
 		if ( ! $eilutes ) {
 			echo '<div class="pd-empty"><b>Nieko nėra</b><span>Šioje eilėje tuščia — arba viskas padaryta, arba filtrai per siauri.</span>
 				<span class="pd-empty-map">Užsakymo kelias: <b>Nauji</b> → <b>Mišrūs</b> (jei keli sandėliai) → <b>Laukia prekių</b> (kai dalis eina per AV)
