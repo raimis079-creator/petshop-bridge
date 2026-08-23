@@ -1,0 +1,71 @@
+{
+ "v": "REC8",
+ "sukurta": 3737,
+ "R": {
+  "v": "REC8",
+  "meta": {
+   "_ps_av_reduced": "2026-08-23 10:26:50",
+   "_ps_decided_at": "2026-08-23 10:26:50",
+   "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+   "_ps_order_type": "MIXED",
+   "_ps_partijos_nurasyta": "2026-08-23 10:26:50",
+   "_ps_shipments": "3",
+   "_ps_testinis": "2026-08-23",
+   "_ps_tiekimas_laukia": "1"
+  },
+  "pastabos": [
+   "11:03 Tiekimas: „Prins ProCare Puppy & Junior Perfect Start, presuotas sausas pašaras jauniems šuniukams nuo 4 sav, su paukštiena, 3 kg“ (1 vnt) į",
+   "10:26 Email \"Užsakymas vykdomas\" failed to send.",
+   "10:26 Email \"Naujas užsakymas\" failed to send.",
+   "10:26 Testinis uzsakymas (apmoketas). Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "10:26 Partijos nurašytos: #14932 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #14932: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+   "10:26 AV nurašymas: #14932 grynai AV 4 -> 3",
+   "10:26 Likutis sumažintas: Žirklės gyvūno kailiui, 16 cm (4&rarr;4), Josidog Regular 15 kg - sausas maistas šunims (351&rarr;350), Prins ProCare Pu",
+   "10:26 Vykdymas: MIXED — AV 1 vnt · VF 1 vnt · PRINS 1 vnt (3 siunta(-os))"
+  ],
+  "tiekimas_klase": 1,
+  "eilutes": {
+   "698": {
+    "pid": 14932,
+    "src": "av",
+    "bukle": null,
+    "partija": null
+   },
+   "699": {
+    "pid": 17950,
+    "src": "vf",
+    "bukle": null,
+    "partija": null
+   },
+   "700": {
+    "pid": 16776,
+    "src": "prins",
+    "bukle": "kaupiama",
+    "partija": "3"
+   }
+  },
+  "ps_tiekimas_eil": [
+   {
+    "id": "3",
+    "partija_id": "3",
+    "product_id": "16776",
+    "order_id": "35066",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null,
+    "pastaba": "eilutė 700"
+   },
+   {
+    "id": "2",
+    "partija_id": "2",
+    "product_id": "12636",
+    "order_id": "34882",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null,
+    "pastaba": "eilutė 514"
+   }
+  ]
+ },
+ "isjungta": 3737
+}
