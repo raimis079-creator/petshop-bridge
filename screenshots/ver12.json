@@ -1,0 +1,60 @@
+{
+ "v": "VER12",
+ "sukurta": 3758,
+ "R": {
+  "v": "VER12",
+  "stulpeliai": [
+   "id",
+   "tiekejas",
+   "busena",
+   "sukurta",
+   "uzsakyta",
+   "gauta",
+   "siuntos_kodas",
+   "pastaba",
+   "pristatymas",
+   "svoris"
+  ],
+  "iid": 699,
+  "partija": 4,
+  "svoris_auto": 15,
+  "be_svorio": 0,
+  "pastomatas": {
+   "id": 3648,
+   "vardas": "Nemenčinės AIBĖ Venipak paštomatas",
+   "adresas": "Švenčionių g. 72, Nemenčinė, LT-15168",
+   "riba_kg": 25
+  }
+ },
+ "p1": {
+  "http": 200,
+  "put": 201,
+  "radio": [
+   "Venipak paštomatas (Nemenčinė)",
+   "Venipak kurjeris į AV",
+   "Tiekėjas atveža pats",
+   "Venipak paštomatas (Nemenčinė)",
+   "Venipak kurjeris į AV",
+   "Tiekėjas atveža pats",
+   "Venipak paštomatas (Nemenčinė)",
+   "Venipak kurjeris į AV",
+   "Tiekėjas atveža pats"
+  ],
+  "info": [
+   "Nepasirinkta. Laiške tiekėjui bus parašyta tik tai, ką pasirinksi čia.",
+   "Nepasirinkta. Laiške tiekėjui bus parašyta tik tai, ką pasirinksi čia.",
+   "Nepasirinkta. Laiške tiekėjui bus parašyta tik tai, ką pasirinksi čia."
+  ]
+ },
+ "p2": {
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-tiekimas&b=kaupiama&tk=issaugota",
+  "info": [
+   "Gavėjas: Nemenčinės AIBĖ Venipak paštomatas ·\n\t\t\t\t\t\t\tŠvenčionių g. 72, Nemenčinė, LT-15168 · ID 3648.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPaštomato riba 25 kg —\n\t\t\t\t\t\t\t\t\t30 kg netilps, rinkis kurjerį.",
+   "Nepasirinkta. Laiške tiekėjui bus parašyta tik tai, ką pasirinksi čia.",
+   "Nepasirinkta. Laiške tiekėjui bus parašyta tik tai, ką pasirinksi čia."
+  ],
+  "put": 201
+ },
+ "js_klaidos": [],
+ "isjungta": 3758
+}
