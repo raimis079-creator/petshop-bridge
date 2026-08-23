@@ -1,5 +1,16 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.7 (H248) — LAIŠKO ADRESATAS PASIRENKAMAS VARNELĖMIS.
+ *
+ * KODĖL (Raimis, H248): „laiškus aš pats išsiunčiu tiekėjams, ne sistema;
+ * pradžioje bus niuansų, todėl reikia kad kopija eitų į terra@petshop.lt".
+ * DABAR prie kiekvienos partijos dvi varnelės (pasirinkimas įsimenamas):
+ *   [ ] Siųsti laišką tiekėjui        — numatyta IŠJUNGTA (siunti pats)
+ *   [x] Siųsti man (terra@petshop.lt) — numatyta ĮJUNGTA, laiškas su lipduku
+ *       ateina tau, persiunti tiekėjui pats.
+ * Nuėmus abi — partija tik uždaroma, joks laiškas neišeina (lipduką visada
+ * gali paimti iš „Užsakyta · laukiam" kortelės).
+ *
  * Petshop AV Tiekimas v1.6 (H247) — VENIPAK SIUNTOS REGISTRACIJA IŠ PARTIJOS + LIPDUKAS.
  *
  * KODĖL (Raimis, H247): laiške tiekėjui rašėm „prekes paims Venipak kurjeris",
@@ -83,6 +94,15 @@ class Petshop_AV_Tiekimas {
 
 	/** Tiekėjai, kuriems užsakymas suvedamas rankiniu būdu į jų sistemą — laiško nesiunčiam (H246). */
 	const RANKINIAI = array( 'zb' );
+
+	/** Laiško adresatų pasirinkimas — įsimenamas tarp partijų (H248). */
+	public static function laisko_nust() {
+		$v = (array) get_option( 'ps_tiek_laiskai', array() );
+		return array(
+			'tiekejui' => ! empty( $v['tiekejui'] ),
+			'man'      => isset( $v['man'] ) ? ! empty( $v['man'] ) : true,
+		);
+	}
 
 	public static function rankinis( $tiekejas ) {
 		return in_array( (string) $tiekejas, self::RANKINIAI, true );
@@ -510,6 +530,19 @@ class Petshop_AV_Tiekimas {
 					</div>
 				</div>
 
+				<?php $ln = self::laisko_nust(); ?>
+				<?php if ( ! self::rankinis( $part->tiekejas ) ) : ?>
+					<div class="ps-tk-laiskai">
+						<input type="hidden" name="laisk_zyme" value="1">
+						<b>Kam siųsti laišką užsakant:</b>
+						<label><input type="checkbox" name="laisk_tiekejui" value="1"
+							<?php checked( $ln['tiekejui'] ); ?>> Siųsti laišką tiekėjui</label>
+						<label><input type="checkbox" name="laisk_man" value="1"
+							<?php checked( $ln['man'] ); ?>> Siųsti man (terra@petshop.lt)</label>
+						<span class="ps-tk-sub2">Pasirinkimas įsimenamas. Nuėmus abi — laiškas neišeis niekam.</span>
+					</div>
+				<?php endif; ?>
+
 				<div class="ps-tk-f">
 					<button class="button" name="ka" value="issaugoti">Išsaugoti kiekius</button>
 					<?php if ( $eil && self::rankinis( $part->tiekejas ) ) : ?>
@@ -742,6 +775,14 @@ class Petshop_AV_Tiekimas {
 				$pr_upd['svoris'] = $w > 0 ? round( $w, 2 ) : null;
 			}
 			if ( $pr_upd ) { $wpdb->update( self::t_partijos(), $pr_upd, array( 'id' => $pid ) ); }
+
+			// Laiško adresatų varnelės (H248) — įsimenam prieš siunčiant.
+			if ( isset( $_POST['laisk_zyme'] ) || isset( $_POST['laisk_tiekejui'] ) || isset( $_POST['laisk_man'] ) ) {
+				update_option( 'ps_tiek_laiskai', array(
+					'tiekejui' => ! empty( $_POST['laisk_tiekejui'] ),
+					'man'      => ! empty( $_POST['laisk_man'] ),
+				) );
+			}
 
 			$zinute = 'issaugota';
 		}
@@ -1000,22 +1041,37 @@ class Petshop_AV_Tiekimas {
 		if ( self::rankinis( $part->tiekejas ) ) {
 			// ŽB ir pan.: užsakymą Raimis suveda tiesiai į tiekėjo sistemą — laiško nesiunčiam (H246).
 			$ok = null;
-		} elseif ( $adr ) {
-			$priedai = array();
-			if ( ! empty( $vp['pack'] ) ) {
-				$pdf = self::venipak_lipdukas( $vp['pack'] );
-				if ( $pdf ) {
-					$up   = wp_upload_dir();
-					$kel  = trailingslashit( $up['basedir'] ) . 'ps-lipdukai';
-					wp_mkdir_p( $kel );
-					$fail = $kel . '/lipdukas-' . $vp['pack'] . '.pdf';
-					if ( file_put_contents( $fail, $pdf ) ) { $priedai[] = $fail; }
+		} else {
+			// Adresatai pagal varneles (H248). Nuėmus abi — laiškas neišeina.
+			$ln    = self::laisko_nust();
+			$gav   = array();
+			if ( $ln['tiekejui'] && $adr ) { $gav = array_map( 'trim', explode( ',', $adr ) ); }
+			if ( $ln['man'] ) { $gav[] = 'terra@petshop.lt'; }
+			$gav = array_values( array_unique( array_filter( $gav ) ) );
+
+			if ( $gav ) {
+				$priedai = array();
+				if ( ! empty( $vp['pack'] ) ) {
+					$pdf = self::venipak_lipdukas( $vp['pack'] );
+					if ( $pdf ) {
+						$up   = wp_upload_dir();
+						$kel  = trailingslashit( $up['basedir'] ) . 'ps-lipdukai';
+						wp_mkdir_p( $kel );
+						$fail = $kel . '/lipdukas-' . $vp['pack'] . '.pdf';
+						if ( file_put_contents( $fail, $pdf ) ) { $priedai[] = $fail; }
+					}
 				}
+				// Kai siunčiam tik sau — antraštėje pažymim, kad laiškas persiuntimui.
+				$t2 = ( ! $ln['tiekejui'] )
+					? sprintf( '[PERSIŲSTI %s] %s', self::tiekejo_vardas( $part->tiekejas ), $tema )
+					: $tema;
+				$ok = wp_mail( $gav, $t2, $body, array(
+					'Content-Type: text/html; charset=UTF-8',
+					'From: UAB Avesa <terra@petshop.lt>',
+				), $priedai );
+			} else {
+				$ok = null; // niekam nesiunčiam
 			}
-			$ok = wp_mail( array_map( 'trim', explode( ',', $adr ) ), $tema, $body, array(
-				'Content-Type: text/html; charset=UTF-8',
-				'From: UAB Avesa <terra@petshop.lt>',
-			), $priedai );
 		}
 
 		$wpdb->update( self::t_partijos(),
@@ -1034,9 +1090,12 @@ class Petshop_AV_Tiekimas {
 			}
 		}
 
-		if ( null === $ok ) { return 'uzsakyta_rankinis'; }
-		if ( $ok && ! empty( $vp['pack'] ) ) { return 'uzsakyta_vp'; }
-		return $ok ? 'uzsakyta' : ( $adr ? 'laiskas_nepavyko' : 'nera_pasto' );
+		if ( self::rankinis( $part->tiekejas ) ) { return 'uzsakyta_rankinis'; }
+		$ln = self::laisko_nust();
+		if ( null === $ok ) { return 'uzsakyta_be_laisko'; }
+		if ( ! $ok ) { return 'laiskas_nepavyko'; }
+		if ( ! $ln['tiekejui'] ) { return 'uzsakyta_man'; }
+		return $vp['pack'] ? 'uzsakyta_vp' : 'uzsakyta';
 	}
 
 	/**
@@ -1248,6 +1307,8 @@ class Petshop_AV_Tiekimas {
 			'nerasta'          => array( 'warning', 'Tokios prekės nerasta — patikrink SKU arba ID.' ),
 			'uzsakyta'         => array( 'success', 'Užsakymas išsiųstas tiekėjui. Partija uždaryta, atsidarė nauja.' ),
 			'uzsakyta_vp'      => array( 'success', 'Užsakymas išsiųstas tiekėjui, siunta užregistruota Venipak, lipdukas prisegtas prie laiško. Partija uždaryta.' ),
+			'uzsakyta_man'     => array( 'success', 'Partija uždaryta. Laiškas su lipduku išsiųstas TAU (terra@petshop.lt) — persiųsk tiekėjui. Tiekėjui sistema nieko nesiuntė.' ),
+			'uzsakyta_be_laisko'=> array( 'warning', 'Partija uždaryta, JOKS laiškas neišsiųstas (abi varnelės nuimtos). Lipduką rasi kortelėje.' ),
 			'vp_klaida'        => array( 'error', 'Siuntos užregistruoti nepavyko — partija NEUŽDARYTA, laiškas neišsiųstas.' ),
 			'uzsakyta_rankinis'=> array( 'success', 'Partija uždaryta, laiškas NESIŲSTAS. Suvesk prekes į tiekėjo sistemą — kopijuojamas sąrašas skirtuke „Užsakyta · laukiam“.' ),
 			'laiskas_nepavyko' => array( 'error', 'Partija uždaryta, BET laiško išsiųsti nepavyko — užsakyk rankomis.' ),
@@ -1306,7 +1367,10 @@ class Petshop_AV_Tiekimas {
 .ps-tk-prist-i{font-size:12.5px;color:#5E6661;margin-top:8px;line-height:1.5}
 .ps-tk-blogai{color:#98262A;font-weight:600;margin-left:6px}
 .ps-tk-f{display:flex;gap:8px;padding:12px 14px;border-top:1px solid #eee}
-.ps-tk-vp{margin-left:10px;font-size:12px;color:#1B7A3D}
+.ps-tk-laiskai{margin:10px 14px;padding:8px 12px;background:#f6f7f7;border:1px solid #e0e0e0;border-radius:4px;font-size:13px}
+		.ps-tk-laiskai label{margin-left:14px;cursor:pointer}
+		.ps-tk-sub2{display:block;margin-top:4px;color:#666;font-size:12px}
+		.ps-tk-vp{margin-left:10px;font-size:12px;color:#1B7A3D}
 		.ps-tk-vp a{margin-left:6px}
 		.ps-tk-kopija{margin:10px 14px}
 		.ps-tk-kopija summary{cursor:pointer;color:#2271b1}
