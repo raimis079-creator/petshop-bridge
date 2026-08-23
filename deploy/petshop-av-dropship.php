@@ -1,6 +1,13 @@
 <?php
 /**
- * Petshop AV Dropship v1.8 (H234) — 🔴 PERDAVIMO ŽYMĖ PAGAL SANDĖLĮ.
+ * Petshop AV Dropship v1.9 (H239) — laiškai gerbia MIŠRAUS SPRENDIMO PLANĄ.
+ *
+ * Nuo H239 sprendimas kortelėje tik UŽRAŠOMAS, o vykdo Raimis atskiru mygtuku.
+ * Tarp tų dviejų momentų eilutė dar nėra tiekimo lentelėje, bet jau žinoma, kad
+ * ji keliaus per AV — todėl į tiekėjo laišką ji NEPATENKA. Kitaip netyčia
+ * paspaudus „Perduoti tiekėjams“ prekė būtų užsakyta du kartus.
+ *
+ * v1.8 (H234) — 🔴 PERDAVIMO ŽYMĖ PAGAL SANDĖLĮ.
  *
  * KODĖL (H234, išmatuota su #35066 VF+PRINS): `_ps_dropship_sent` buvo VISO
  * užsakymo žymė. Perdavus VF, `grupuoti()` visą užsakymą praleisdavo — ir
@@ -217,6 +224,12 @@ class Petshop_AV_Dropship {
 	 */
 	protected static function konsoliduota( $order, $item_id, $item ) {
 		if ( $item->get_meta( '_ps_konsolidacija' ) ) { return true; }
+
+		// Sprendimas jau priimtas, bet dar neįvykdytas — laiško vis tiek nerašom (H239).
+		$m = $order->get_meta( '_ps_misrus_sprendimas' );
+		$j = is_array( $m ) ? $m : json_decode( (string) $m, true );
+		$src = $item->get_meta( '_ps_source' );
+		if ( is_array( $j ) && $src && isset( $j[ $src ] ) && 'av' === $j[ $src ] ) { return true; }
 
 		if ( class_exists( 'Petshop_AV_Tiekimas' ) ) {
 			$b = Petshop_AV_Tiekimas::eilutes_bukle( $order->get_id(), (int) $item_id );
