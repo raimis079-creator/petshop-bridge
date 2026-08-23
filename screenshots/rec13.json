@@ -1,46 +1,58 @@
 {
- "deactivated": [],
- "sid": 1920,
- "dry": {
-  "file_hits": {
-   "wp-content/themes/flatsome-child/functions.php": [
-    "venipak.com/lt/siuntos-sekimas",
-    "post.lt/siuntu-sekimas",
-    "Siuntos sekimas"
-   ]
-  },
-  "snippets": [
+ "v": "REC13",
+ "sukurta": 3754,
+ "R": {
+  "v": "REC13",
+  "nemencine": [
    {
-    "id": "1920",
-    "name": "TEMP S313 Recon Dump v1",
-    "active": "1"
+    "id": 3648,
+    "code": "300906055",
+    "name": "Venipak locker, AIBĖ Venipak paštomatas",
+    "display": "Nemenčinės AIBĖ Venipak paštomatas",
+    "city": "Nemenčinė",
+    "address": "Švenčionių g. 72",
+    "zip": "15168",
+    "type": 3,
+    "size": 25,
+    "max": [
+     0.61,
+     0.395,
+     0.41
+    ]
+   },
+   {
+    "id": 3484,
+    "code": "300906055",
+    "name": "Venipak locker, NORFA Venipak paštomatas",
+    "display": "Nemenčinės NORFA Venipak paštomatas",
+    "city": "Nemenčinė",
+    "address": "Vilijos g. 2",
+    "zip": "15174",
+    "type": 3,
+    "size": 25,
+    "max": [
+     0.61,
+     0.395,
+     0.41
+    ]
    }
   ],
-  "theme_emails": "nera",
-  "header_image": "http://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
-  "attachment_id": 3257,
-  "attachment_url_now": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg"
+  "siuntos_klase": true,
+  "siuntos_failas": "petshop-siuntu-laiskai.php",
+  "siuntos_metodai": [
+   "init/0",
+   "prideti_is_plugino/3",
+   "zalias/1",
+   "sarasas/1",
+   "turi/1",
+   "registruota_grupiu/1",
+   "uzbaigimo_sargas/1",
+   "laisko_turinys/1",
+   "siusti/0",
+   "meniu/0",
+   "puslapis/0",
+   "mixed_pastaba/4"
+  ]
  },
- "apply": {
-  "file_hits": {
-   "wp-content/themes/flatsome-child/functions.php": [
-    "venipak.com/lt/siuntos-sekimas",
-    "post.lt/siuntu-sekimas",
-    "Siuntos sekimas"
-   ]
-  },
-  "snippets": [
-   {
-    "id": "1920",
-    "name": "TEMP S313 Recon Dump v1",
-    "active": "1"
-   }
-  ],
-  "theme_emails": "nera",
-  "header_image": "http://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
-  "attachment_id": 3257,
-  "attachment_url_now": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg"
- },
- "site_code": "200",
- "account_code": "200"
+ "isjungta": 3754
 }
