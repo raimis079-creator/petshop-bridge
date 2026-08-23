@@ -1,0 +1,148 @@
+{
+ "v": "FIX1",
+ "sukurta": 3727,
+ "R": {
+  "v": "FIX1",
+  "lp_kodas": [
+   "489 // Prevents stale session data from being saved when user switched to a non-terminal method.",
+   "490 $order_instance_id = null;",
+   "491 foreach ($order->get_shipping_methods() as $item) {",
+   "492 if ($item->get_method_id() === 'woo_lithuaniapost_lpexpress_terminal') {",
+   "493 $order_instance_id = $item->get_instance_id();",
+   "494 break;",
+   "495 }",
+   "496 }",
+   "497 $order_plan = $order_instance_id ? $this->get_method_settings_value($order_instance_id, 'plan') : null;",
+   "498 ",
+   "499 $saved_terminal_id = $this->get_selected_terminal_id();",
+   "500 // Save terminal id",
+   "501 if ($order_plan === 'TERMINAL' && isset ($saved_terminal_id)) {",
+   "502 ",
+   "503 $terminal_id = sanitize_text_field($saved_terminal_id);",
+   "504 ",
+   "505 $terminal = apply_filters('woo_lithuaniapost_terminal_service_get_terminal_by_id', $terminal_id);",
+   "506 ",
+   "507 if ($terminal) {",
+   "508 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);",
+   "509 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->addre",
+   "510 }",
+   "511 }",
+   "512 $order->save();",
+   "513 }",
+   "514 ",
+   "515 /**"
+  ],
+  "rasta": 12,
+  "uzsakymai": [
+   {
+    "id": "35055",
+    "nr": "35055",
+    "prekes_su_pvm": 11.18,
+    "siunta": 1.78,
+    "viso": "12.96",
+    "pvm": "2.25",
+    "busena": "processing"
+   },
+   {
+    "id": "35056",
+    "nr": "35056",
+    "prekes_su_pvm": 20.44,
+    "siunta": 3.3,
+    "viso": "23.74",
+    "pvm": "4.12",
+    "busena": "processing"
+   },
+   {
+    "id": "35057",
+    "nr": "35057",
+    "prekes_su_pvm": 12.3,
+    "siunta": 1.78,
+    "viso": "14.08",
+    "pvm": "2.44",
+    "busena": "processing"
+   },
+   {
+    "id": "35058",
+    "nr": "35058",
+    "prekes_su_pvm": 11.18,
+    "siunta": 1.78,
+    "viso": "12.96",
+    "pvm": "2.25",
+    "busena": "on-hold"
+   },
+   {
+    "id": "35059",
+    "nr": "35059",
+    "prekes_su_pvm": 31.18,
+    "siunta": 0,
+    "viso": "31.18",
+    "pvm": "5.41",
+    "busena": "processing"
+   },
+   {
+    "id": "35060",
+    "nr": "35060",
+    "prekes_su_pvm": 116.98,
+    "siunta": 3.3,
+    "viso": "120.28",
+    "pvm": "20.87",
+    "busena": "processing"
+   },
+   {
+    "id": "35061",
+    "nr": "35061",
+    "prekes_su_pvm": 32.89,
+    "siunta": 0,
+    "viso": "32.89",
+    "pvm": "5.71",
+    "busena": "processing"
+   },
+   {
+    "id": "35062",
+    "nr": "35062",
+    "prekes_su_pvm": 36,
+    "siunta": 0,
+    "viso": "36.00",
+    "pvm": "6.25",
+    "busena": "processing"
+   },
+   {
+    "id": "35063",
+    "nr": "35063",
+    "prekes_su_pvm": 58.99,
+    "siunta": 3.3,
+    "viso": "62.29",
+    "pvm": "10.81",
+    "busena": "processing"
+   },
+   {
+    "id": "35064",
+    "nr": "35064",
+    "prekes_su_pvm": 23.54,
+    "siunta": 1.78,
+    "viso": "25.32",
+    "pvm": "4.4",
+    "busena": "processing"
+   },
+   {
+    "id": "35065",
+    "nr": "35065",
+    "prekes_su_pvm": 21.58,
+    "siunta": 1.78,
+    "viso": "23.36",
+    "pvm": "4.06",
+    "busena": "processing"
+   },
+   {
+    "id": "35066",
+    "nr": "35066",
+    "prekes_su_pvm": 59.35,
+    "siunta": 3.3,
+    "viso": "62.65",
+    "pvm": "10.87",
+    "busena": "processing"
+   }
+  ]
+ },
+ "isjungta": 3727
+}
