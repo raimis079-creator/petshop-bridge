@@ -20,10 +20,10 @@ try{
   let j=null; const ct=await c.text(); try{j=JSON.parse(ct);}catch(e){}
   out.sukurta=j&&j.id?j.id:{s:c.status,t:ct.slice(0,300)};
   if(j&&j.id){
-    sid=j.id; await miegok(6000);
+    sid=j.id; await miegok(12000);
     const d=await fetch(WP+'/?ps_ver15=RUN20260823');
     const raw=d.headers.getSetCookie?d.headers.getSetCookie():[];
-    try{ out.R=JSON.parse(await d.text()); }catch(e){ out.R='ne-json'; }
+    const tx=await d.text(); try{ out.R=JSON.parse(tx); }catch(e){ out.R='ne-json: '+tx.slice(0,200); }
     const cookies=[];
     for(const s of raw){ const p=s.split(';')[0]; const i=p.indexOf('='); const n=p.slice(0,i), v=p.slice(i+1); if(n) cookies.push({name:n,value:v,domain:'dev.avesa.lt',path:'/',secure:true,httpOnly:false}); }
     if(cookies.length){
