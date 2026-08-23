@@ -1,6 +1,14 @@
 <?php
 /**
- * Petshop AV Dropship v1.6 (H231) — gyvas prierašas peržiūroje rodomas TIKROJE vietoje (prieš linkėjimus), ne apačioje (v1.5: prierašas).
+ * Petshop AV Dropship v1.7 (H233) — KONSOLIDACIJA: eilutės, paimtos į AV (tiekimo
+ * lentelė arba _ps_konsolidacija), į tiekėjų laiškus NEBEPATENKA.
+ *
+ * KODĖL (H233, rasta gyvai su testiniu #35066): eilutė jau gulėjo tiekimo
+ * partijoje, o `grupuoti()` ją vis tiek grąžindavo į laišką. Paspaudus
+ * „Perduoti tiekėjams" ta pati prekė būtų užsakyta DU kartus: tiekėjas siųstų
+ * klientui, ir ta pati prekė jau keliautų į AV. Niekas eilutės nepažymėdavo.
+ *
+ * v1.6 (H231): gyvas prierašas peržiūroje rodomas TIKROJE vietoje (prieš linkėjimus), ne apačioje (v1.5: prierašas).
  *
  * v1.2: ZB kelias užbaigtas (§19.12 uodega). ZB kortelėje: ZB kodas iš
  * ps_sources (fallback SKU), mygtukas „Kopijuoti" (kodas TAB kiekis — įklijavimui
@@ -90,9 +98,10 @@ class Petshop_AV_Dropship {
 			if ( ! $o ) { continue; }
 			if ( $o->get_meta( '_ps_dropship_sent' ) ) { continue; }   // jau perduota
 
-			foreach ( $o->get_items() as $item ) {
+			foreach ( $o->get_items() as $iid => $item ) {
 				$src = $item->get_meta( '_ps_source' );
 				if ( ! $src || 'av' === $src ) { continue; }             // AV renkam patys
+				if ( self::konsoliduota( $o, $iid, $item ) ) { continue; } // parsivežam į AV — tiekėjui nerašom
 				$pid = (int) $item->get_product_id();
 				$p   = $item->get_product();
 
@@ -116,6 +125,27 @@ class Petshop_AV_Dropship {
 			}
 		}
 		return $g;
+	}
+
+	/**
+	 * Ar ši eilutė paimta į AV (konsoliduojama), o ne siunčiama tiekėjo tiesiai klientui?
+	 *
+	 * Du požymiai, abu tinka:
+	 *   1. `_ps_konsolidacija` ant eilutės — mišraus užsakymo sprendimas;
+	 *   2. eilutė guli tiekimo lentelėje (Petshop_AV_Tiekimas) — senesnis kelias
+	 *      per „Į tiekimo lentelę“ / „Parsivežti į AV“ Klausimuose.
+	 *
+	 * Bet kuriuo atveju prekę užsakome į AV patys — tiekėjui apie ją nerašom,
+	 * kitaip ta pati prekė būtų užsakyta du kartus (H233).
+	 */
+	protected static function konsoliduota( $order, $item_id, $item ) {
+		if ( $item->get_meta( '_ps_konsolidacija' ) ) { return true; }
+
+		if ( class_exists( 'Petshop_AV_Tiekimas' ) ) {
+			$b = Petshop_AV_Tiekimas::eilutes_bukle( $order->get_id(), (int) $item_id );
+			if ( $b ) { return true; }
+		}
+		return false;
 	}
 
 	/** Kiek lipdukų šiam užsakymui (pack_numbers ilgis). */
