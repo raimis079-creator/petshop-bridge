@@ -100,7 +100,7 @@ class Petshop_AV_Dropship {
 		add_filter( 'bulk_actions-edit-shop_order', [ __CLASS__, 'veiksmas' ], 31 );
 		add_filter( 'handle_bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'vykdyti' ], 10, 3 );
 		add_filter( 'handle_bulk_actions-edit-shop_order', [ __CLASS__, 'vykdyti' ], 10, 3 );
-		add_action( 'admin_menu', [ __CLASS__, 'meniu' ] );
+		add_action( 'admin_menu', [ __CLASS__, 'meniu' ], 20 );
 		add_action( 'admin_footer', [ __CLASS__, 'skriptas' ] );
 		add_action( 'admin_post_ps_dropship_send', [ __CLASS__, 'siusti' ] );
 		add_action( 'admin_post_ps_dropship_nust', [ __CLASS__, 'saugoti_nustatymus' ] );
