@@ -1,5 +1,8 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.7.1 (H250) — laiškai rašomi į bendrą archyvą
+ * (Įrankiai → „Išsiųsti laiškai", petshop-av-dropship::archyvuoti).
+ *
  * Petshop AV Tiekimas v1.7 (H248) — LAIŠKO ADRESATAS PASIRENKAMAS VARNELĖMIS.
  *
  * KODĖL (Raimis, H248): „laiškus aš pats išsiunčiu tiekėjams, ne sistema;
@@ -1069,6 +1072,10 @@ class Petshop_AV_Tiekimas {
 					'Content-Type: text/html; charset=UTF-8',
 					'From: UAB Avesa <terra@petshop.lt>',
 				), $priedai );
+				if ( class_exists( 'Petshop_AV_Dropship' ) ) {
+					Petshop_AV_Dropship::archyvuoti( $gav, $t2, $body, $priedai,
+						'Tiekimo partija #' . (int) $part->id . ' · ' . self::tiekejo_vardas( $part->tiekejas ) );
+				}
 			} else {
 				$ok = null; // niekam nesiunčiam
 			}
