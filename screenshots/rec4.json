@@ -1,1 +1,571 @@
-{"snip_status":200,"snip_id":2965,"http":200,"rez":{"marker":"MNM CART FORMATAS","cart_60_140":"\t\t// Filter cart weight.\n\t\tadd_filter( 'woocommerce_cart_contents_weight', array( $this, 'cart_contents_weight' ) );\n\n\t\t// Remove/restore children cart items when parent is removed/restored.\n\t\tadd_action( 'woocommerce_cart_item_removed', array( $this, 'cart_item_removed' ), 10, 2 );\n\t\tadd_action( 'woocommerce_cart_item_restored', array( $this, 'cart_item_restored' ), 10, 2 );\n\n\t\t// Shipping fix - ensure that non-virtual containers/children, which are shipped, have a valid price that can be used for insurance calculations.\n\t\t// Additionally, allow child item weights to be added to the container weight.\n\t\tadd_filter( 'woocommerce_cart_shipping_packages', array( $this, 'cart_shipping_packages' ), 5 );\n\t}\n\n\t/**\n\t * Session data loaded?\n\t *\n\t * @since  1.4.0\n\t *\n\t * @param  string  $context\n\t * @return string\n\t */\n\tpublic function is_cart_session_loaded() {\n\t\treturn did_action( 'woocommerce_cart_loaded_from_session' );\n\t}\n\n\t/**\n\t * Adds mnm contents to the cart.\n\t *\n\t * @param  string   $container_cart_key\n\t * @param  int      $product_id\n\t * @param  int      $quantity\n\t * @param  int      $variation_id\n\t * @param  array    $variation\n\t * @param  array    $cart_item_data\n\t */\n\tpublic function add_mnm_items_to_cart( $container_cart_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data ) {\n\n\t\tif ( wc_mnm_is_container_cart_item( $cart_item_data ) ) {\n\n\t\t\t$mnm_cart_item_data = array(\n\t\t\t\t'mnm_container' => $container_cart_key,\n\t\t\t\t'mnm_child_id'  => $variation_id > 0 ? $variation_id : $product_id,\n\t\t\t);\n\n\t\t\t// Now add all items - yay!\n\t\t\tforeach ( $cart_item_data['mnm_config'] as $item_id => $mnm_item_data ) {\n\n\t\t\t\t$mnm_product_id   = $mnm_item_data['product_id'];\n\t\t\t\t$mnm_variation_id = isset( $mnm_item_data['variation_id'] ) ? $mnm_item_data['variation_id'] : 0;\n\t\t\t\t$mnm_variations   = isset( $mnm_item_data['variation'] ) ? $mnm_item_data['variation'] : array();\n\n\t\t\t\t$item_quantity = $mnm_item_data['quantity'];\n\t\t\t\t$mnm_quantity  = $item_quantity * $quantity;\n\n\t\t\t\t// Add the child item ID.\n\t\t\t\t$mnm_cart_item_data['child_item_id'] = isset( $mnm_item_data['child_item_id'] ) ? $mnm_item_data['child_item_id'] : 0;\n\n\t\t\t\t/**\n\t\t\t\t * Allow filtering child cart item data.\n\t\t\t\t * \n\t\t\t\t * @since 1.0.0\n\t\t\t\t * @renamed 2.0.0\n\t\t\t\t *\n\t\t\t\t * Example: If the parent cart item data array already contains extension-specific configuration info.\n\t\t\t\t *\n\t\t\t\t * @param array $mnm_cart_item_data Configuration of each Mix and Match child item.\n\t\t\t\t * @param array $cart_item_data Container product data.\n\t\t\t\t * @param int $item_id The child item product or variation ID.\n\t\t\t\t * @param int $product_id The Mix and Match container product ID.\n\t\t\t\t */\n\t\t\t\t$mnm_cart_item_data = (array) apply_filters( 'wc_mnm_child_cart_item_data', $mnm_cart_item_data, $cart_item_data, $item_id, $product_id );\n\n\t\t\t\t/**\n\t\t\t\t * Before child item is added to cart.\n\t\t\t\t * \n\t\t\t\t * @since 1.0.0\n\t\t\t\t * @renamed 2.0.0\n\t\t\t\t *\n\t\t\t\t * @param int $mnm_product_id The child item product ID.\n\t\t\t\t * @param int $mnm_quantity The quantity of the child item in the container.\n\t\t\t\t * @param int $mnm_variation_id The child item variation ID.\n\t\t\t\t * @param array $mnm_variations Attributes of specific variation being added to cart.\n\t\t\t\t * @param array $mnm_cart_item_data Child item product data.\n\t\t\t\t */\n\t\t\t\tdo_action( 'wc_mnm_before_mnm_add_to_cart', $mnm_product_id, $mnm_quantity, $mnm_variation_id, $mnm_variations, $mnm_cart_item_data );\n\n","config_funkcijos":[]}}
+{
+ "v": "REC4",
+ "sukurta": 3724,
+ "R": {
+  "v": "REC4",
+  "pickup_viso": 567,
+  "pickup_raktai": [
+   "id",
+   "name",
+   "code",
+   "address",
+   "city",
+   "zip",
+   "country",
+   "terminal",
+   "display_name",
+   "description",
+   "working_hours",
+   "contact_t",
+   "lat",
+   "lng",
+   "pick_up_enabled",
+   "cod_enabled",
+   "ldg_enabled",
+   "size_limit",
+   "type",
+   "max_height",
+   "max_width",
+   "max_length"
+  ],
+  "pickup": [
+   {
+    "id": 3990,
+    "code": "300561011",
+    "name": "Venipak locker, Vilniaus Udrop  K29 VC paštomatas",
+    "display": "Vilniaus Udrop  K29 VC paštomatas",
+    "city": "Vilnius",
+    "address": "Konstitucijos pr. 29",
+    "zip": "08105",
+    "cod": 1
+   },
+   {
+    "id": 4141,
+    "code": "300561011",
+    "name": "Venipak locker, Vilniaus Udrop AIBĖ Erfurto g. paštomatas",
+    "display": "Vilniaus Udrop AIBĖ Erfurto g. paštomatas",
+    "city": "Vilnius",
+    "address": "Erfurto g. 1",
+    "zip": "04220",
+    "cod": 1
+   },
+   {
+    "id": 4198,
+    "code": "300561011",
+    "name": "Venipak locker, Vilniaus Udrop DUETTO paštomatas",
+    "display": "Vilniaus Udrop DUETTO paštomatas",
+    "city": "Vilnius",
+    "address": "Spaudos g. 8",
+    "zip": "05132",
+    "cod": 1
+   },
+   {
+    "id": 4170,
+    "code": "300561011",
+    "name": "Venipak locker, Kauno Udrop Draugystės g. 6A  paštomatas",
+    "display": "Kauno Udrop Draugystės g. 6A  paštomatas",
+    "city": "Kaunas",
+    "address": "Draugystės g. 6A",
+    "zip": "51286",
+    "cod": 1
+   },
+   {
+    "id": 4128,
+    "code": "300561011",
+    "name": "Venipak locker, Kauno Udrop JOZITA Kuršių g. paštomatas",
+    "display": "Kauno Udrop JOZITA Kuršių g. paštomatas",
+    "city": "Kaunas",
+    "address": "Kuršių g. 13A",
+    "zip": "48109",
+    "cod": 1
+   },
+   {
+    "id": 3998,
+    "code": "300561011",
+    "name": "Venipak locker, Kauno Udrop MOKI-VEŽI Raudondvario pl. pašt.",
+    "display": "Kauno Udrop MOKI-VEŽI Raudondvario pl. paštomatas",
+    "city": "Kaunas",
+    "address": "Raudondvario pl. 205",
+    "zip": "47153",
+    "cod": 1
+   },
+   {
+    "id": 4004,
+    "code": "300561011",
+    "name": "Venipak locker, Klaipėdos Udrop AIBĖ Plieno g. paštomatas",
+    "display": "Klaipėdos Udrop AIBĖ Plieno g. paštomatas",
+    "city": "Klaipėda",
+    "address": "Plieno g. 1",
+    "zip": "95112",
+    "cod": 1
+   },
+   {
+    "id": 4114,
+    "code": "300561011",
+    "name": "Venipak locker, Klaipėdos Udrop AIBĖ Taikos pr. paštomatas",
+    "display": "Klaipėdos Udrop AIBĖ Taikos pr. paštomatas",
+    "city": "Klaipėda",
+    "address": "Taikos pr. 100",
+    "zip": "93155",
+    "cod": 1
+   },
+   {
+    "id": 3970,
+    "code": "300561011",
+    "name": "Venipak locker, Klaipėdos Udrop AIBĖ Žardininkų g. paštomat.",
+    "display": "Klaipėdos Udrop AIBĖ Žardininkų g. paštomatas",
+    "city": "Klaipėda",
+    "address": "Žardininkų g. 27A",
+    "zip": "94233",
+    "cod": 1
+   },
+   {
+    "id": 4139,
+    "code": "300561011",
+    "name": "Venipak locker, Šiaulių Udrop KUBAS Aido g. paštomatas",
+    "display": "Šiaulių Udrop KUBAS Aido g. paštomatas",
+    "city": "Šiauliai",
+    "address": "Aido g. 12",
+    "zip": "78258",
+    "cod": 1
+   },
+   {
+    "id": 4086,
+    "code": "300561011",
+    "name": "Venipak locker, Šiaulių Udrop KUBAS Draugystės g. paštomatas",
+    "display": "Šiaulių Udrop KUBAS Draugystės g. paštomatas",
+    "city": "Šiauliai",
+    "address": "Draugystės g. 14",
+    "zip": "77149",
+    "cod": 1
+   },
+   {
+    "id": 4019,
+    "code": "300561011",
+    "name": "Venipak locker, Šiaulių Udrop KUBAS Vytauto g. paštomatas",
+    "display": "Šiaulių Udrop KUBAS Vytauto g. paštomatas",
+    "city": "Šiauliai",
+    "address": "Vytauto g. 122",
+    "zip": "76341",
+    "cod": 1
+   },
+   {
+    "id": 3901,
+    "code": "300561011",
+    "name": "Venipak locker, Panevėžio Udrop KUBAS Kniaudiškių g. paštom.",
+    "display": "Panevėžio Udrop KUBAS Kniaudiškių g. paštomatas",
+    "city": "Panevėžys",
+    "address": "Kniaudiškių g. 42",
+    "zip": "37119",
+    "cod": 1
+   },
+   {
+    "id": 4016,
+    "code": "300561011",
+    "name": "Venipak locker, Panevėžio Udrop SENUKAI paštomatas",
+    "display": "Panevėžio Udrop SENUKAI paštomatas",
+    "city": "Panevėžys",
+    "address": "Darbo a. 7",
+    "zip": "35217",
+    "cod": 1
+   },
+   {
+    "id": 3559,
+    "code": "300906055",
+    "name": "Venipak locker, IKI Nemunas Venipak paštomatas",
+    "display": "Panevėžio IKI Nemunas Venipak paštomatas",
+    "city": "Panevėžys",
+    "address": "Nemuno g. 70",
+    "zip": "35190",
+    "cod": 1
+   },
+   {
+    "id": 4163,
+    "code": "300561011",
+    "name": "Venipak locker, Alytaus Udrop SENUKAI paštomatas",
+    "display": "Alytaus Udrop SENUKAI paštomatas",
+    "city": "Alytus",
+    "address": "Statybininkų g. 71A",
+    "zip": "63403",
+    "cod": 1
+   },
+   {
+    "id": 2778,
+    "code": "300906055",
+    "name": "Venipak locker, IKI Alytus Venipak paštomatas",
+    "display": "Alytaus IKI Alytus Venipak paštomatas",
+    "city": "Alytus",
+    "address": "Naujoji g. 2c",
+    "zip": "62116",
+    "cod": 1
+   },
+   {
+    "id": 3603,
+    "code": "300906055",
+    "name": "Venipak locker, IKI Vidzgiris Venipak paštomatas",
+    "display": "Alytaus IKI Vidzgiris Venipak paštomatas",
+    "city": "Alytus",
+    "address": "Jaunimo g. 24",
+    "zip": "63351",
+    "cod": 1
+   }
+  ],
+  "lp_pluginai": [
+   "woo-lithuaniapost-main"
+  ],
+  "lp_meta": [
+   "class-woo-lithuaniapost-admin-order-service.php:839 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);",
+   "class-woo-lithuaniapost-admin-order-service.php:840 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal",
+   "class-woo-lithuaniapost-admin-order-service.php:1115 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);",
+   "class-woo-lithuaniapost-admin-order-service.php:1116 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal",
+   "class-woo-lithuaniapost-admin.php:413 update_post_meta ( $post_id, 'woo_lithuaniapost_allowed_terminal', $_terminal_option );",
+   "class-woo-lithuaniapost-admin.php:415 update_post_meta ( $post_id, 'woo_lithuaniapost_allowed_terminal_parcel_locker', $_parcel_locker_terminal_option );",
+   "class-woo-lithuaniapost-public.php:508 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);",
+   "class-woo-lithuaniapost-public.php:509 $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $termi"
+  ],
+  "prekes": {
+   "av": [
+    {
+     "id": 14929,
+     "sku": "2370",
+     "pav": "Žirklės nagams (giljotina), 11 cm",
+     "kaina": "5.69",
+     "svoris": ""
+    },
+    {
+     "id": 14932,
+     "sku": "57449",
+     "pav": "Žirklės gyvūno kailiui, 16 cm",
+     "kaina": "5.49",
+     "svoris": ""
+    },
+    {
+     "id": 14935,
+     "sku": "57450",
+     "pav": "Žirklės gyvūno kailiui filiruoti, 16 cm",
+     "kaina": "5.49",
+     "svoris": ""
+    },
+    {
+     "id": 14937,
+     "sku": "550018",
+     "pav": "Žirklutės gyvūno nagams kirpti, vidutinės, M, Zolux",
+     "kaina": "7.58",
+     "svoris": ""
+    },
+    {
+     "id": 14941,
+     "sku": "550017",
+     "pav": "Žirklutės gyvūno nagams kirpti, mažos, S, Zolux",
+     "kaina": "5.28",
+     "svoris": ""
+    },
+    {
+     "id": 14945,
+     "sku": "trixie2373",
+     "pav": "Žirklutės gyvūno nagams kirpti, mažos, 8 cm",
+     "kaina": "4.1",
+     "svoris": ""
+    }
+   ],
+   "zb": [
+    {
+     "id": 12452,
+     "sku": "01A1B01030",
+     "pav": "Eukanuba Active Small Adult (vištiena) 3kg",
+     "kaina": "15.89",
+     "svoris": "3"
+    },
+    {
+     "id": 12453,
+     "sku": "01A1B02031",
+     "pav": "Eukanuba Medium Adult visavertis pašaras su vištiena 3kg",
+     "kaina": "15.89",
+     "svoris": "3.0000"
+    },
+    {
+     "id": 12454,
+     "sku": "01A1B09032",
+     "pav": "Eukanuba Mini & Medium Adult (ėriena ir ryžiai) 2,5kg",
+     "kaina": "15.29",
+     "svoris": "2.5000"
+    },
+    {
+     "id": 12455,
+     "sku": "01A1C04030",
+     "pav": "Eukanuba Daily Care Sensitive Skin Adult (žuvis) 12kg",
+     "kaina": "58.49",
+     "svoris": "12.2200"
+    },
+    {
+     "id": 12456,
+     "sku": "01A1E04030",
+     "pav": "Eukanuba Golden Retriever Adult (vištiena) 12kg",
+     "kaina": "58.49",
+     "svoris": "12.2200"
+    },
+    {
+     "id": 12457,
+     "sku": "01A1E05030",
+     "pav": "Eukanuba German Shephed Adult (vištiena) 12kg",
+     "kaina": "58.49",
+     "svoris": "12.2200"
+    }
+   ],
+   "vf": [
+    {
+     "id": 17947,
+     "sku": "JOS0617",
+     "pav": "Josidog adult Sensitive 15 kg sausas maistas jautriems šunim",
+     "kaina": "32.89",
+     "svoris": "15"
+    },
+    {
+     "id": 17950,
+     "sku": "JOS0622",
+     "pav": "Josidog Regular 15 kg - sausas maistas šunims",
+     "kaina": "32.49",
+     "svoris": "15"
+    },
+    {
+     "id": 17953,
+     "sku": "JOS0849",
+     "pav": "Josidog Junior 15 kg - sausas maistas šuniukams",
+     "kaina": "34.99",
+     "svoris": "15"
+    },
+    {
+     "id": 17956,
+     "sku": "JOS0003",
+     "pav": "Josidog Family 15 kg sausas maistas kalėms ir šuniukams",
+     "kaina": "41.09",
+     "svoris": "15"
+    },
+    {
+     "id": 17959,
+     "sku": "JOS0799",
+     "pav": "Josidog Economy 15 kg sausas maistas šunims",
+     "kaina": "23.09",
+     "svoris": "15"
+    },
+    {
+     "id": 17962,
+     "sku": "JOS0836",
+     "pav": "Josidog Active 15 kg - sausas maistas aktyviems šunims",
+     "kaina": "33.49",
+     "svoris": "15"
+    }
+   ],
+   "quattro": [
+    {
+     "id": 16537,
+     "sku": "2.008119",
+     "pav": "Quattro SB su ėriena sausas suaugusių mažų veislių šunų paša",
+     "kaina": "12",
+     "svoris": "1.5"
+    },
+    {
+     "id": 16540,
+     "sku": "2.008117",
+     "pav": "Quattro SB su lašiša ir kriliu sausas suaugusių mažų veislių",
+     "kaina": "13",
+     "svoris": "1.5"
+    },
+    {
+     "id": 16543,
+     "sku": "2.008122",
+     "pav": "Quattro SB su balta žuvimi ir kriliu sausas seniems/dietinis",
+     "kaina": "12",
+     "svoris": "1.5"
+    },
+    {
+     "id": 16546,
+     "sku": "2.008118",
+     "pav": "Quattro SB su antiena sausas suaugusių mažų veislių šunų paš",
+     "kaina": "12",
+     "svoris": "1.5"
+    },
+    {
+     "id": 16549,
+     "sku": "2.008124",
+     "pav": "Quattro SB su antiena sausas pašaras mažų veislių šuniukams/",
+     "kaina": "13",
+     "svoris": "1.5"
+    },
+    {
+     "id": 16552,
+     "sku": "2.008121",
+     "pav": "Quattro SB su antiena sausas jaunų mažų veislių šunų pašaras",
+     "kaina": "13",
+     "svoris": "1.5"
+    }
+   ],
+   "prins": [
+    {
+     "id": 16745,
+     "sku": "15045",
+     "pav": "Prins ProCare lamb&rice senior sausas maistas vyresnio amžia",
+     "kaina": "89.7",
+     "svoris": "15"
+    },
+    {
+     "id": 16751,
+     "sku": "03020",
+     "pav": "Prins ProCare Super Active sausas maistas augantiems ir akty",
+     "kaina": "94.8",
+     "svoris": "20"
+    },
+    {
+     "id": 16763,
+     "sku": "01020",
+     "pav": "Prins ProCare Standard Fit sausas pašaras suaugusiems šunims",
+     "kaina": "89.7",
+     "svoris": "20"
+    },
+    {
+     "id": 16772,
+     "sku": "04020",
+     "pav": "Prins ProCare Puppy Junior Perfect Start sausas pašaras šuni",
+     "kaina": "89.8",
+     "svoris": "20"
+    },
+    {
+     "id": 16776,
+     "sku": "04046",
+     "pav": "Prins ProCare Puppy & Junior Perfect Start, presuotas sausas",
+     "kaina": "21.37",
+     "svoris": "3"
+    },
+    {
+     "id": 16779,
+     "sku": "19246",
+     "pav": "Prins ProCare Protection Super Active sausas maistas aktyvie",
+     "kaina": "28.2",
+     "svoris": "3"
+    }
+   ],
+   "ambrosia": [
+    {
+     "id": 19715,
+     "sku": "AMTD02",
+     "pav": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas m",
+     "kaina": "14.29",
+     "svoris": "2"
+    },
+    {
+     "id": 19720,
+     "sku": "AMTD12",
+     "pav": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas m",
+     "kaina": "58.99",
+     "svoris": "12"
+    },
+    {
+     "id": 19725,
+     "sku": "AMTR02",
+     "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausa",
+     "kaina": "13.49",
+     "svoris": "2"
+    },
+    {
+     "id": 19730,
+     "sku": "AMTR12",
+     "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausa",
+     "kaina": "58.99",
+     "svoris": "12"
+    },
+    {
+     "id": 19735,
+     "sku": "AMTS02",
+     "pav": "Ambrosia Senior begrūdis su kalakutiena ir šviežia lašiša sa",
+     "kaina": "13.49",
+     "svoris": "2"
+    },
+    {
+     "id": 19740,
+     "sku": "AMTS12",
+     "pav": "Ambrosia Senior begrūdis su kalakutiena ir šviežia lašiša sa",
+     "kaina": "58.99",
+     "svoris": "12"
+    }
+   ],
+   "belcor_tofu": [
+    {
+     "id": 15835,
+     "sku": "622053",
+     "pav": "Vienkartinės palutės / paklotai, 80*120 cm, XXL universal, 1",
+     "kaina": "6.95",
+     "svoris": ""
+    },
+    {
+     "id": 15838,
+     "sku": "711207",
+     "pav": "Vienkartinės palutės / paklotai, 60*90 cm, XL universal, 10 ",
+     "kaina": "3.49",
+     "svoris": ""
+    },
+    {
+     "id": 15841,
+     "sku": "711214",
+     "pav": "Vienkartinės palutės / paklotai, 45*60 cm, M universal, 10 v",
+     "kaina": "2.29",
+     "svoris": ""
+    },
+    {
+     "id": 15964,
+     "sku": "H-138-402086",
+     "pav": "Triušio ausys su antiena 500 g, natūralūs skanėstai šunims",
+     "kaina": "10.95",
+     "svoris": "0.5"
+    },
+    {
+     "id": 15967,
+     "sku": "MP-4011",
+     "pav": "Triušienos lazdelės, 500 g, natūralūs skanėstai šunims",
+     "kaina": "12.59",
+     "svoris": "0.5"
+    },
+    {
+     "id": 15973,
+     "sku": "H-138-402088",
+     "pav": "Triušienos ir menkės kubeliai, 500 g, natūralūs skanėstai šu",
+     "kaina": "8.2",
+     "svoris": "0.5"
+    }
+   ]
+  },
+  "resolve_sig": [
+   "product_id",
+   "qty?"
+  ],
+  "resolve": {
+   "av": {
+    "source": "av",
+    "carrier": "any",
+    "courier_only": false,
+    "av_qty": 5,
+    "av_uztenka": true,
+    "tiekejas": "av",
+    "reason": "grynai AV prekė (be tiekėjo)"
+   },
+   "zb": {
+    "source": "zb",
+    "carrier": "venipak",
+    "courier_only": false,
+    "av_qty": null,
+    "av_uztenka": false,
+    "tiekejas": "zb",
+    "reason": "AV šios prekės neturi"
+   },
+   "vf": {
+    "source": "vf",
+    "carrier": "venipak",
+    "courier_only": false,
+    "av_qty": null,
+    "av_uztenka": false,
+    "tiekejas": "vf",
+    "reason": "AV šios prekės neturi"
+   }
+  }
+ },
+ "isjungta": 3724
+}
