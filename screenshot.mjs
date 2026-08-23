@@ -1,9 +1,10 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+import fs from 'fs';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfcmVjMTYnXSkgfHwgJF9HRVRbJ3BzX3JlYzE2J10hPT0nUlVOJykgcmV0dXJuOwogJFQ9YXJyYXkoJ3YnPT4nUkVDMTYnKTsKICRyYz1uZXcgUmVmbGVjdGlvbkNsYXNzKCdQZXRzaG9wX1NpdW50b3MnKTsKICRmPSRyYy0+Z2V0RmlsZU5hbWUoKTsgJFRbJ2ZhaWxhcyddPSRmOyAkVFsnZHlkaXMnXT1maWxlc2l6ZSgkZik7CiAkVFsnc3JjJ109YmFzZTY0X2VuY29kZShmaWxlX2dldF9jb250ZW50cygkZikpOwogJHJkPW5ldyBSZWZsZWN0aW9uQ2xhc3MoJ1BldHNob3BfQVZfRHJvcHNoaXAnKTsKICRUWydkcm9wX21ldG9kYWknXT1hcnJheSgpOwogZm9yZWFjaCgkcmQtPmdldE1ldGhvZHMoKSBhcyAkbSl7IGlmKCRtLT5jbGFzcz09PSRyZC0+Z2V0TmFtZSgpKSAkVFsnZHJvcF9tZXRvZGFpJ11bXT0kbS0+Z2V0TmFtZSgpOyB9CiBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogZWNobyBqc29uX2VuY29kZSgkVCwgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7IGV4aXQ7Cn0sNSk7Cg==';
-const out={v:'REC16'};
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfZGVwMjQwJ10pIHx8ICRfR0VUWydwc19kZXAyNDAnXSE9PSdSVU4yMDI2MDgyMycpIHJldHVybjsKIGdsb2JhbCAkd3BkYjsgJFQ9YXJyYXkoJ3YnPT4nREVQMjQwJyk7CiAkZD1XUE1VX1BMVUdJTl9ESVI7ICRiYWs9JGQuJy9wcy1iYWNrdXAnOwogaWYoIWlzX2RpcigkYmFrKSl7IEBta2RpcigkYmFrLDA3NTUsdHJ1ZSk7IH0KICRmYWlsYWk9YXJyYXkoJ3BldHNob3AtZGVzay5waHAnPT4nQEBERVNLQEAnLCdwZXRzaG9wLWF2LWRyb3BzaGlwLnBocCc9PidAQERST1BAQCcsJ3BldHNob3Atc2l1bnR1LWxhaXNrYWkucGhwJz0+J0BATEFJQEAnKTsKIGZvcmVhY2goJGZhaWxhaSBhcyAkZj0+JGI2NCl7CiAgICRrb2Rhcz1iYXNlNjRfZGVjb2RlKCRiNjQpOwogICAkcj1hcnJheSgnZ2F1dGFfbWQ1Jz0+bWQ1KCRrb2RhcyksJ2JhaXRhaSc9PnN0cmxlbigka29kYXMpKTsKICAgdHJ5eyB0b2tlbl9nZXRfYWxsKCRrb2RhcywgVE9LRU5fUEFSU0UpOyAkclsnc2ludGFrc2UnXT0nb2snOyB9CiAgIGNhdGNoKFxQYXJzZUVycm9yICRlKXsgJHJbJ3NpbnRha3NlJ109J0tMQUlEQTogJy4kZS0+Z2V0TWVzc2FnZSgpOyAkVFskZl09JHI7IGNvbnRpbnVlOyB9CiAgICRwPSRkLicvJy4kZjsKICAgJHJbJ3NlbmFfbWQ1J109bWQ1X2ZpbGUoJHApOwogICAkclsnYmFja3VwJ109Y29weSgkcCwkYmFrLicvJy4kZi4nLmJha19oMjQwJyk7CiAgICRyWydpcmFzeXRhJ109KGJvb2wpZmlsZV9wdXRfY29udGVudHMoJHAsJGtvZGFzKTsKICAgY2xlYXJzdGF0Y2FjaGUodHJ1ZSwkcCk7CiAgICRyWyduYXVqYV9tZDUnXT1tZDVfZmlsZSgkcCk7CiAgICRyWydvayddPSgkclsnbmF1amFfbWQ1J109PT0kclsnZ2F1dGFfbWQ1J10pOwogICAkVFskZl09JHI7CiB9CiAkd3BkYi0+cXVlcnkoIkRFTEVURSBGUk9NIHskd3BkYi0+b3B0aW9uc30gV0hFUkUgb3B0aW9uX25hbWUgTElLRSAnJXRyYW5zaWVudCVwc19yeXRhcyUnIik7CiBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogZWNobyBqc29uX2VuY29kZSgkVCwgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7IGV4aXQ7Cn0sNSk7Cg==';
+const out={v:'DEP240'};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   const u='https://api.github.com/repos/'+REPO+'/contents/'+path;
@@ -16,17 +17,21 @@ const A={Authorization:AUTH,'Content-Type':'application/json'};
 const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
 let sid=null;
 try{
-  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP Recon H240 v1 (siuntu laiskai)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  const desk=fs.readFileSync('deploy/petshop-desk.php.b64','utf8').trim();
+  const drop=fs.readFileSync('deploy/petshop-av-dropship.php.b64','utf8').trim();
+  const lai=fs.readFileSync('deploy/petshop-siuntu-laiskai.php.b64','utf8').trim();
+  let kodas=Buffer.from(B64,'base64').toString('utf8').replace('@@DESK@@',desk).replace('@@DROP@@',drop).replace('@@LAI@@',lai);
+  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP Deploy H240 v1 (desk 3.36 + drop 1.10 + laiskai 1.2)',code:kodas,scope:'global',active:true,priority:5})});
   let j=null; const ct=await c.text(); try{j=JSON.parse(ct);}catch(e){}
   out.sukurta=j&&j.id?j.id:{s:c.status,t:ct.slice(0,300)};
   if(j&&j.id){
-    sid=j.id; await miegok(6000);
-    const d=await fetch(WP+'/?ps_rec16=RUN');
+    sid=j.id; await miegok(8000);
+    const d=await fetch(WP+'/?ps_dep240=RUN20260823');
     const t=await d.text();
-    let R=null; try{ R=JSON.parse(t); }catch(e){ out.R='ne-json: '+t.slice(0,300); }
-    if(R){ if(R.src){ out.put=await put('deploy/petshop-siuntu-laiskai.php.b64', Buffer.from(R.src), 'laiskai src'); delete R.src; } out.R=R; }
+    try{ out.R=JSON.parse(t); }catch(e){ out.R='ne-json: '+t.slice(0,400); }
     await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
     out.isjungta=sid;
   }
-}catch(e){ out.klaida=String(e).slice(0,600); }
-await put('screenshots/rec16.json', Buffer.from(JSON.stringify(out,null,1)), 'REC16');
+}catch(e){ out.klaida=String(e).slice(0,600);
+  if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
+await put('screenshots/dep240.json', Buffer.from(JSON.stringify(out,null,1)), 'DEP240');
