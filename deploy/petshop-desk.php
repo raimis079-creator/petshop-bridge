@@ -1,5 +1,16 @@
 <?php
 /**
+ * Petshop Desk v3.39 (H244) — SISTEMOS GEOGRAFIJA: ĮRANKIAI, KELIO ŽEMĖLAPIS, NUORODOS.
+ *
+ * KODĖL (Raimis, H244): „praktiškai niekas neaišku koks Tiekimas, kur nuorodos,
+ * kaip pažiūrėti — visiškas chaosas". Tiekimo partijos, perdavimo ekranas gyveno
+ * atskiruose puslapiuose be jokios matomos navigacijos — paspaudei „Į tiekimo
+ * partiją" ir eilutės „kažkur išskrido". DABAR: (1) kairėje juostoje skiltis
+ * ĮRANKIAI — Tiekimas (su kaupiamų/užsakytų partijų skaitliukais) ir Perdavimas
+ * tiekėjams; (2) pipeline juostoje grandis „Partijose" → ps-tiekimas;
+ * (3) kons_ok pranešime nuoroda „Atidaryti Tiekimą"; (4) tuščias langas rodo
+ * užsakymo kelio žemėlapį, o ne mįslę „arba viskas padaryta, arba filtrai".
+ *
  * Petshop Desk v3.38 (H243) — PIPELINE JUOSTA + BŪSENOS CHIP'AI.
  *
  * KODĖL (Raimis, H243): „kaip greitai pasižiūrėti, kur sudėti užsakymai tiekėjams,
@@ -1338,6 +1349,17 @@ class Petshop_Desk {
 			 AND status IN ('wc-lp-on-the-way','wc-completed','wc-lp-delivered')" );
 		$c['visi'] = (int) $wpdb->get_var(
 			"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft'" );
+		// Tiekimo partijos navigacijai (H244): kiek kaupiama, kiek užsakyta pas tiekėją.
+		$c['tiek_kaupiama'] = 0; $c['tiek_uzsakyta'] = 0;
+		if ( class_exists( 'Petshop_AV_Tiekimas' ) ) {
+			foreach ( (array) $wpdb->get_results(
+				"SELECT busena, COUNT(*) n FROM {$pf}ps_tiekimas
+				 WHERE busena IN ('kaupiama','uzsakyta') GROUP BY busena" ) as $r ) {
+				if ( 'kaupiama' === $r->busena ) { $c['tiek_kaupiama'] = (int) $r->n; }
+				if ( 'uzsakyta' === $r->busena ) { $c['tiek_uzsakyta'] = (int) $r->n; }
+			}
+		}
+
 		// „Išsiųsta šiandien" — statusas kelyje/įvykdytas, atnaujintas nuo vietinės vidurnakties (H243).
 		$c['pipe_issiusta'] = (int) $wpdb->get_var( $wpdb->prepare(
 			"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order'
@@ -2020,6 +2042,12 @@ class Petshop_Desk {
 		$tekstas = in_array( $k, array( 'apmoketa_klausimas', 'misrus_ok', 'misrus_cia', 'kons_ok' ), true )
 			? sprintf( $t[ $k ][1], $dalys[0], $dalys[1] ?? '' )
 			: sprintf( $t[ $k ][1], $nr );
+		if ( 'kons_ok' === $k ) {
+			$tekstas .= ' <a href="' . esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ) . '">Atidaryti Tiekimą</a>';
+			printf( '<div class="pd-msg pd-msg-%s">%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>',
+				esc_attr( $t[ $k ][0] ), wp_kses( $tekstas, array( 'a' => array( 'href' => true ) ) ) );
+			return;
+		}
 		if ( 'apmoketa_klausimas' === $k ) {
 			$tekstas .= ' <a href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=klausimai' ) ) . '">Atidaryti Klausimus</a>';
 			printf( '<div class="pd-msg pd-msg-%s">%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>',
@@ -2078,6 +2106,7 @@ class Petshop_Desk {
 			array( 'Laukia sprendimo',      (int) ( $c['pipe_spresti'] ?? 0 ),    self::url( array( 'eile' => 'misrus', 'zvilgsnis' => null ) ) ),
 			array( 'Nepaleisti planai',     (int) ( $c['pipe_nepaleisti'] ?? 0 ), self::url( array( 'eile' => 'misrus', 'zvilgsnis' => null ) ) ),
 			array( 'Neperduota tiekėjams',  (int) ( $c['pipe_neperduota'] ?? 0 ), self::url( array( 'eile' => 'nauji', 'zvilgsnis' => 'neperduota' ) ) ),
+			array( 'Partijose',             (int) ( $c['tiek_kaupiama'] ?? 0 ),   admin_url( 'admin.php?page=ps-tiekimas' ) ),
 			array( 'Laukia prekių',         (int) ( $c['laukia'] ?? 0 ),          self::url( array( 'eile' => 'laukia', 'zvilgsnis' => null ) ) ),
 			array( 'Paruošta siųsti',       (int) ( $c['paruosta'] ?? 0 ),        self::url( array( 'eile' => 'paruosta', 'zvilgsnis' => null ) ) ),
 			array( 'Išsiųsta šiandien',     (int) ( $c['pipe_issiusta'] ?? 0 ),   self::url( array( 'eile' => 'issiusti', 'zvilgsnis' => null ) ) ),
@@ -2100,6 +2129,15 @@ class Petshop_Desk {
 		foreach ( array( 'issiusti', 'atsaukti', 'visi' ) as $k ) {
 			self::rail_punktas( $k, $eile, $c[ $k ] ?? 0, true );
 		}
+		// ĮRANKIAI (H244): sistemos geografija matoma visada, ne tik per veiksmus.
+		echo '<div class="pd-sep"></div><div class="pd-rh">Įrankiai</div>';
+		printf( '<a class="pd-ri" href="%s"><span>Tiekimas</span>%s%s</a>',
+			esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ),
+			! empty( $c['tiek_kaupiama'] ) ? '<b class="pd-rb pd-rb-k" title="kaupiamos partijos">' . (int) $c['tiek_kaupiama'] . '</b>' : '',
+			! empty( $c['tiek_uzsakyta'] ) ? '<b class="pd-rb pd-rb-u" title="užsakyta pas tiekėją — laukiam prekių">' . (int) $c['tiek_uzsakyta'] . '</b>' : '' );
+		printf( '<a class="pd-ri" href="%s"><span>Perdavimas tiekėjams</span>%s</a>',
+			esc_url( admin_url( 'admin.php?page=ps-dropship' ) ),
+			! empty( $c['pipe_neperduota'] ) ? '<b class="pd-rb pd-rb-k">' . (int) $c['pipe_neperduota'] . '</b>' : '' );
 		echo '<div class="pd-ai"><div class="pd-ai-h"><span class="pd-dot"></span>Siūlymai</div>
 			<div class="pd-ai-t">Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.</div></div>';
 		echo '</nav>';
@@ -2514,7 +2552,9 @@ class Petshop_Desk {
 
 	protected static function lentele( $eilutes, $statusai ) {
 		if ( ! $eilutes ) {
-			echo '<div class="pd-empty"><b>Nieko nėra</b><span>Čia tuščia — arba viskas padaryta, arba filtrai per siauri.</span></div>';
+			echo '<div class="pd-empty"><b>Nieko nėra</b><span>Šioje eilėje tuščia — arba viskas padaryta, arba filtrai per siauri.</span>
+				<span class="pd-empty-map">Užsakymo kelias: <b>Nauji</b> → <b>Mišrūs</b> (jei keli sandėliai) → <b>Laukia prekių</b> (kai dalis eina per AV)
+				→ <b>Paruošta siųsti</b> → <b>Išsiųsti</b>. Tiekėjų partijos, laiškai ir priėmimas — skiltyje <b>Tiekimas</b> kairėje apačioje.</span></div>';
 			return;
 		}
 		echo '<div class="pd-wrap"><table class="pd-tbl"><thead><tr>
@@ -3130,6 +3170,13 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-chip-ok{background:#E7F4EA;color:#1B7A3D;border-color:#BFE3C8}
 .pd-chip-w{background:#FDF3E1;color:#96660C;border-color:#F1DDB2}
 .pd-chip-av{background:#EFEFEF;color:#555;border-color:#DDD}
+.pd-ri{display:flex;align-items:center;gap:6px;padding:7px 14px;color:#C9C5BC;text-decoration:none;font-size:13px}
+.pd-ri:hover{color:#fff;background:rgba(255,255,255,.05)}
+.pd-ri span{flex:1}
+.pd-rb{font-size:11px;line-height:1.6;min-width:18px;text-align:center;border-radius:999px;padding:0 5px;font-weight:600}
+.pd-rb-k{background:#B5762A;color:#fff}
+.pd-rb-u{background:#3E6B4A;color:#fff}
+.pd-empty-map{display:block;margin-top:10px;font-size:12px;color:#8b877e;max-width:560px}
 .pd-msec{font-size:14px;margin:18px 0 8px;color:#3c3c3c}
 .pd-mbukle{font-size:12.5px;white-space:nowrap}
 .pd-mok{color:#1B7A3D}
