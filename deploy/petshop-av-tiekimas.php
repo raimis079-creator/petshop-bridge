@@ -1,5 +1,20 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.6 (H247) — VENIPAK SIUNTOS REGISTRACIJA IŠ PARTIJOS + LIPDUKAS.
+ *
+ * KODĖL (Raimis, H247): laiške tiekėjui rašėm „prekes paims Venipak kurjeris",
+ * bet kurjeris niekur nebuvo užsakytas, o tiekėjas neturėjo lipduko. Srautas
+ * buvo nebaigtas. DABAR paspaudus „Užsakyti iš tiekėjo":
+ *   1. siunta registruojama Venipak import/send.php TAVO sutartimi
+ *      (siuntėjas = tiekėjo sandėlis, gavėjas = AV arba Nemenčinės paštomatas);
+ *   2. pack_no rezervuojamas per patį pluginą (reserve_pack_numbers) — numeriai
+ *      nesikerta su užsakymų siuntomis;
+ *   3. lipdukas (print_label PDF) PRISEGAMAS prie laiško tiekėjui;
+ *   4. numeris ir manifestas saugomi partijos meta, matomi „Užsakyta · laukiam"
+ *      skiltyje su nuoroda „Lipdukas PDF" ir sekimo numeriu.
+ * „Tiekėjas atveža pats" ir rankiniai tiekėjai (ŽB) siuntos NEREGISTRUOJA.
+ * Tiekėjų sandėlių adresai — Tiekėjų nustatymuose (ps-tiekeju-adresai).
+ *
  * Petshop AV Tiekimas v1.5 (H246) — RANKINIS UŽSAKYMO KANALAS (ŽB) + KOPIJUOJAMAS SĄRAŠAS.
  *
  * KODĖL (Raimis, H246): „ZB iš vis aš rankiniu būdu turiu suvesti prekes į jų
@@ -91,6 +106,8 @@ class Petshop_AV_Tiekimas {
 		add_action( 'admin_post_ps_tiekimas', array( __CLASS__, 'veiksmas' ) );
 
 		add_action( 'admin_post_ps_tiekimas_eilute', array( __CLASS__, 'eilutes_veiksmas' ) );
+		add_action( 'admin_post_ps_tiekimas_lipdukas', array( __CLASS__, 'lipduko_atsisiuntimas' ) );
+		add_action( 'admin_menu', array( __CLASS__, 'adresu_meniu' ), 60 );
 	}
 
 	/* ============================ LENTELĖS ============================ */
@@ -108,6 +125,8 @@ class Petshop_AV_Tiekimas {
 			id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
 			tiekejas VARCHAR(32) NOT NULL,
 			busena VARCHAR(16) NOT NULL DEFAULT 'kaupiama',
+			venipak_pack VARCHAR(32) DEFAULT NULL,
+			venipak_manifest VARCHAR(64) DEFAULT NULL,
 			sukurta DATETIME NOT NULL,
 			uzsakyta DATETIME NULL,
 			gauta DATETIME NULL,
@@ -324,7 +343,7 @@ class Petshop_AV_Tiekimas {
 			self::SLUG, array( __CLASS__, 'puslapis' ) );
 	}
 
-	protected static function tiekejo_vardas( $k ) {
+	public static function tiekejo_vardas( $k ) {
 		$v = array(
 			'vf' => 'Vetfarmas', 'zb' => 'Žalioji Banga', 'quattro' => 'Quattro / Kauno grūdai',
 			'prins' => 'Prins / Faunas', 'ambrosia' => 'Ambrosia', 'belcor_tofu' => 'Belacor',
@@ -353,8 +372,10 @@ class Petshop_AV_Tiekimas {
 		echo '<div class="wrap ps-tk"><h1>Tiekimas</h1>';
 		self::pranesimas();
 
-		printf( '<p><a class="button" href="%s">← Petshop užsakymai</a></p>',
-			esc_url( admin_url( 'admin.php?page=ps-desk' ) ) );
+		printf( '<p><a class="button" href="%s">← Petshop užsakymai</a>
+			<a class="button" style="margin-left:6px" href="%s">Tiekėjų sandėlių adresai</a></p>',
+			esc_url( admin_url( 'admin.php?page=ps-desk' ) ),
+			esc_url( admin_url( 'admin.php?page=ps-tiekeju-adresai' ) ) );
 
 		echo '<h2 class="nav-tab-wrapper">';
 		$sk = self::laukianciu_skaiciai();
@@ -572,6 +593,12 @@ class Petshop_AV_Tiekimas {
 				<b><?php echo esc_html( self::tiekejo_vardas( $part->tiekejas ) ); ?></b>
 				<span class="ps-tk-sub">partija #<?php echo (int) $part->id; ?> · užsakyta
 					<?php echo esc_html( mysql2date( 'm-d H:i', $part->uzsakyta ) ); ?></span>
+				<?php if ( ! empty( $part->venipak_pack ) ) : ?>
+					<span class="ps-tk-vp">siunta <b><?php echo esc_html( $part->venipak_pack ); ?></b>
+						<a target="_blank" href="<?php echo esc_url( admin_url(
+							'admin-post.php?action=ps_tiekimas_lipdukas&partija=' . (int) $part->id
+							. '&_wpnonce=' . wp_create_nonce( 'ps_tiek_lip_' . $part->id ) ) ); ?>">Lipdukas PDF</a></span>
+				<?php endif; ?>
 			</div>
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 				<input type="hidden" name="action" value="ps_tiekimas">
@@ -667,6 +694,78 @@ class Petshop_AV_Tiekimas {
 
 	/* ============================ VEIKSMAI ============================ */
 
+	/** Lipduko PDF atsisiuntimas iš partijos kortelės (H247). */
+	/* ============ TIEKĖJŲ SANDĖLIŲ ADRESAI (siuntėjas Venipak siuntoje, H247) ============ */
+
+	public static function adresu_meniu() {
+		add_submenu_page( 'ps-desk', 'Tiekėjų sandėlių adresai', 'Tiekėjų adresai', 'edit_shop_orders',
+			'ps-tiekeju-adresai', array( __CLASS__, 'adresu_puslapis' ) );
+	}
+
+	public static function adresu_puslapis() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		$laukai = array(
+			'adresas'   => 'Gatvė, namo nr.',
+			'miestas'   => 'Miestas',
+			'pastas'    => 'Pašto kodas',
+			'asmuo'     => 'Kontaktinis asmuo',
+			'tel'       => 'Telefonas',
+			'pastas_el' => 'El. paštas',
+		);
+		if ( isset( $_POST['ps_adr_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['ps_adr_nonce'] ), 'ps_adr' ) ) {
+			$nauji = array();
+			foreach ( (array) ( $_POST['adr'] ?? array() ) as $src => $r ) {
+				$src = sanitize_key( $src );
+				foreach ( $laukai as $k => $v ) {
+					$nauji[ $src ][ $k ] = sanitize_text_field( wp_unslash( $r[ $k ] ?? '' ) );
+				}
+				$nauji[ $src ]['salis'] = 'LT';
+			}
+			update_option( 'ps_tiekeju_adresai', $nauji );
+			echo '<div class="notice notice-success is-dismissible"><p>Adresai išsaugoti.</p></div>';
+		}
+		$dabar = (array) get_option( 'ps_tiekeju_adresai', array() );
+		self::stilius();
+		echo '<div class="wrap ps-tk"><h1>Tiekėjų sandėlių adresai</h1>';
+		printf( '<p><a class="button" href="%s">← Tiekimas</a></p>',
+			esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ) );
+		echo '<p>Iš šių adresų Venipak kurjeris paims prekes, kai užsakysi partiją.
+			Rankiniams tiekėjams (ŽB) ir „tiekėjas atveža pats" atvejais adreso nereikia.</p>';
+		echo '<form method="post">';
+		wp_nonce_field( 'ps_adr', 'ps_adr_nonce' );
+		$tiekejai = array( 'vf' => 'Vetfarmas', 'zb' => 'Žalioji Banga', 'quattro' => 'Quattro / Kauno grūdai',
+			'prins' => 'Prins / Faunas', 'ambrosia' => 'Ambrosia', 'belcor_tofu' => 'Belacor' );
+		foreach ( $tiekejai as $src => $vardas ) {
+			if ( self::rankinis( $src ) ) { continue; }
+			$r = (array) ( $dabar[ $src ] ?? array() );
+			printf( '<div class="ps-tk-k"><div class="ps-tk-h"><b>%s</b></div><table class="form-table">', esc_html( $vardas ) );
+			foreach ( $laukai as $k => $v ) {
+				printf( '<tr><th style="width:200px">%s</th><td><input type="text" style="width:420px"
+					name="adr[%s][%s]" value="%s"></td></tr>',
+					esc_html( $v ), esc_attr( $src ), esc_attr( $k ), esc_attr( $r[ $k ] ?? '' ) );
+			}
+			echo '</table></div>';
+		}
+		submit_button( 'Išsaugoti adresus' );
+		echo '</form></div>';
+	}
+
+	public static function lipduko_atsisiuntimas() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		$pid = isset( $_GET['partija'] ) ? absint( $_GET['partija'] ) : 0;
+		check_admin_referer( 'ps_tiek_lip_' . $pid );
+		global $wpdb;
+		$pack = $wpdb->get_var( $wpdb->prepare(
+			'SELECT venipak_pack FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );
+		if ( ! $pack ) { wp_die( 'Šiai partijai siunta neužregistruota.' ); }
+		$pdf = self::venipak_lipdukas( $pack );
+		if ( ! $pdf ) { wp_die( 'Lipduko gauti nepavyko — patikrink Venipak prisijungimą.' ); }
+		header( 'Content-Type: application/pdf' );
+		header( 'Content-Disposition: inline; filename="lipdukas-' . $pack . '.pdf"' );
+		echo $pdf; // phpcs:ignore
+		exit;
+	}
+
 	public static function veiksmas() {
 		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
 		$pid = isset( $_POST['partija'] ) ? absint( $_POST['partija'] ) : 0;
@@ -729,10 +828,150 @@ class Petshop_AV_Tiekimas {
 
 		wp_safe_redirect( add_query_arg( array(
 			'page' => self::SLUG,
-			'b'    => ( 'uzsakyti' === $ka ) ? 'uzsakyta' : ( ( 'priimti' === $ka ) ? 'gauta' : 'kaupiama' ),
+			'p'    => $pid,
+			'b'    => ( 'uzsakyti' === $ka && 'vp_klaida' !== $zinute ) ? 'uzsakyta' : ( ( 'priimti' === $ka ) ? 'gauta' : 'kaupiama' ),
 			'tk'   => $zinute,
 		), admin_url( 'admin.php' ) ) );
 		exit;
+	}
+
+	/* ==================== VENIPAK: SIUNTA IŠ TIEKĖJO SANDĖLIO (H247) ==================== */
+
+	/** Tiekėjų sandėlių adresai (siuntėjas). Redaguojama ps-tiekeju-adresai puslapyje. */
+	public static function tiekejo_adresas( $src ) {
+		$v = (array) get_option( 'ps_tiekeju_adresai', array() );
+		return isset( $v[ $src ] ) ? (array) $v[ $src ] : array();
+	}
+
+	protected static function venipak_nust() {
+		$n = (array) get_option( 'shopup_venipak_shipping_settings', array() );
+		return array(
+			'user'   => $n['shopup_venipak_shipping_field_username'] ?? '',
+			'pass'   => $n['shopup_venipak_shipping_field_password'] ?? '',
+			'userid' => $n['shopup_venipak_shipping_field_userid'] ?? '',
+			'manif'  => $n['shopup_venipak_shipping_field_manifest'] ?? '',
+			'format' => $n['shopup_venipak_shipping_field_labelformat'] ?? 'sticker',
+		);
+	}
+
+	/** Pack numerį rezervuojam per patį pluginą — kad nesikirstų su užsakymų siuntomis. */
+	protected static function pack_numeris() {
+		$n = self::venipak_nust();
+		global $wpdb;
+		$wpdb->query( "UPDATE {$wpdb->options} SET option_value = option_value + 1 WHERE option_name = 'venipak_pack_number'" );
+		wp_cache_delete( 'venipak_pack_number', 'options' );
+		wp_cache_delete( 'alloptions', 'options' );
+		$nr = (int) $wpdb->get_var( "SELECT option_value FROM {$wpdb->options} WHERE option_name = 'venipak_pack_number'" );
+		if ( ! $nr ) { $nr = 1000001; update_option( 'venipak_pack_number', $nr ); }
+		return 'V' . $n['userid'] . 'E' . str_pad( (string) $nr, 7, '0', STR_PAD_LEFT );
+	}
+
+	/**
+	 * Registruoja siuntą: iš tiekėjo sandėlio → AV (kurjeris) arba → Nemenčinės paštomatas.
+	 * Grąžina array( 'ok'=>bool, 'pack'=>string, 'manifest'=>string, 'klaida'=>string ).
+	 */
+	public static function venipak_registruoti( $part ) {
+		$n   = self::venipak_nust();
+		$adr = self::tiekejo_adresas( $part->tiekejas );
+		if ( empty( $n['user'] ) || empty( $n['pass'] ) ) {
+			return array( 'ok' => false, 'klaida' => 'Venipak prisijungimo duomenų nėra plugino nustatymuose.' );
+		}
+		if ( empty( $adr['adresas'] ) || empty( $adr['miestas'] ) || empty( $adr['pastas'] ) ) {
+			return array( 'ok' => false, 'klaida' => sprintf(
+				'%s sandėlio adreso nėra — užpildyk „Tiekėjų sandėlių adresai" ir bandyk vėl.',
+				self::tiekejo_vardas( $part->tiekejas ) ) );
+		}
+
+		$kg   = max( 0.1, (float) self::svoris( $part ) );
+		$pack = self::pack_numeris();
+		$man  = $n['userid'] . wp_date( 'ymd' ) . $n['manif'];
+
+		$d = new DOMDocument( '1.0', 'utf-8' );
+		$desc = $d->createElement( 'description' );
+		$desc->setAttribute( 'type', '1' );
+		$d->appendChild( $desc );
+		$mf = $d->createElement( 'manifest' );
+		$mf->setAttribute( 'title', $man );
+		$desc->appendChild( $mf );
+
+		$sh = $d->createElement( 'shipment' );
+		$mf->appendChild( $sh );
+
+		// SIUNTĖJAS — tiekėjo sandėlis (iš ten paims kurjeris).
+		$se = $d->createElement( 'sender' );
+		$sh->appendChild( $se );
+		$se->appendChild( $d->createElement( 'name', self::tiekejo_vardas( $part->tiekejas ) ) );
+		$se->appendChild( $d->createElement( 'country', $adr['salis'] ?? 'LT' ) );
+		$se->appendChild( $d->createElement( 'city', $adr['miestas'] ) );
+		$se->appendChild( $d->createElement( 'address', $adr['adresas'] ) );
+		$se->appendChild( $d->createElement( 'post_code', preg_replace( '/\D/', '', $adr['pastas'] ) ) );
+		$se->appendChild( $d->createElement( 'contact_person', $adr['asmuo'] ?? '' ) );
+		$se->appendChild( $d->createElement( 'contact_tel', $adr['tel'] ?? '' ) );
+		$se->appendChild( $d->createElement( 'contact_email', $adr['pastas_el'] ?? '' ) );
+
+		// GAVĖJAS — AV sandėlis arba mūsų paštomatas.
+		$co  = $d->createElement( 'consignee' );
+		$sh->appendChild( $co );
+		$pst = self::AV_PASTOMATAS;
+		if ( 'pastomatas' === $part->pristatymas ) {
+			$co->appendChild( $d->createElement( 'name', $pst['vardas'] ) );
+			$co->appendChild( $d->createElement( 'company_code', (string) $pst['id'] ) );
+			$co->appendChild( $d->createElement( 'country', 'LT' ) );
+			$co->appendChild( $d->createElement( 'city', 'Nemenčinė' ) );
+			$co->appendChild( $d->createElement( 'address', 'Švenčionių g. 72' ) );
+			$co->appendChild( $d->createElement( 'post_code', '15168' ) );
+		} else {
+			$co->appendChild( $d->createElement( 'name', 'UAB Avesa' ) );
+			$co->appendChild( $d->createElement( 'country', 'LT' ) );
+			$co->appendChild( $d->createElement( 'city', 'Liucionys, Nemenčinės sen., Vilniaus r.' ) );
+			$co->appendChild( $d->createElement( 'address', 'Liucionių g. 46' ) );
+			$co->appendChild( $d->createElement( 'post_code', '15166' ) );
+		}
+		$co->appendChild( $d->createElement( 'contact_person', 'Raimondas' ) );
+		$co->appendChild( $d->createElement( 'contact_tel', (string) get_option( 'ps_av_tel', '' ) ) );
+		$co->appendChild( $d->createElement( 'contact_email', 'terra@petshop.lt' ) );
+
+		$at = $d->createElement( 'attribute' );
+		$sh->appendChild( $at );
+		$at->appendChild( $d->createElement( 'shipment_code', 'TIEK-' . (int) $part->id ) );
+		$at->appendChild( $d->createElement( 'doc_no', 'TIEK-' . (int) $part->id ) );
+		if ( 'pastomatas' !== $part->pristatymas ) {
+			$at->appendChild( $d->createElement( 'comment_call', '1' ) );
+		}
+		$at->appendChild( $d->createElement( 'comment_text',
+			'Prekiu uzsakymas is tiekejo sandelio (partija #' . (int) $part->id . ')' ) );
+
+		$pk = $d->createElement( 'pack' );
+		$sh->appendChild( $pk );
+		$pk->appendChild( $d->createElement( 'pack_no', $pack ) );
+		$pk->appendChild( $d->createElement( 'weight', (string) $kg ) );
+
+		$r = wp_remote_post( 'https://go.venipak.lt/import/send.php', array(
+			'timeout' => 45,
+			'body'    => array( 'user' => $n['user'], 'pass' => $n['pass'], 'xml_text' => $d->saveXML() ),
+			'headers' => array( 'Referer' => 'https://woocommerce.com/' ),
+		) );
+		if ( is_wp_error( $r ) ) { return array( 'ok' => false, 'klaida' => $r->get_error_message() ); }
+		$body = (string) wp_remote_retrieve_body( $r );
+		if ( '' === $body ) {
+			return array( 'ok' => false, 'klaida' => 'Venipak grąžino tuščią atsakymą — siunta NEUŽREGISTRUOTA.' );
+		}
+		if ( false === strpos( $body, 'type="ok"' ) ) {
+			return array( 'ok' => false, 'klaida' => trim( wp_strip_all_tags( $body ) ) );
+		}
+		return array( 'ok' => true, 'pack' => $pack, 'manifest' => $man, 'klaida' => '' );
+	}
+
+	/** Lipduko PDF baitai iš Venipak (print_label). */
+	public static function venipak_lipdukas( $pack ) {
+		$n = self::venipak_nust();
+		$r = wp_remote_post( 'https://go.venipak.lt/ws/print_label', array(
+			'timeout' => 45,
+			'body'    => array( 'user' => $n['user'], 'pass' => $n['pass'], 'pack_no' => $pack, 'format' => $n['format'] ),
+		) );
+		if ( is_wp_error( $r ) ) { return null; }
+		$b = wp_remote_retrieve_body( $r );
+		return ( $b && 0 === strpos( $b, '%PDF' ) ) ? $b : null;
 	}
 
 	/** Laiškas tiekėjui + partija uždaroma. */
@@ -761,12 +1000,33 @@ class Petshop_AV_Tiekimas {
 		$kg  = self::svoris( $part );
 		$pst = self::AV_PASTOMATAS;
 
+		// SIUNTOS REGISTRACIJA (H247): tik kai prekes veža Venipak. „Tiekėjas atveža pats"
+		// ir rankiniai tiekėjai (ŽB) — be registracijos.
+		$vp = array( 'ok' => false, 'pack' => '', 'klaida' => '' );
+		$reikia_vp = in_array( $part->pristatymas, array( 'kurjeris', 'pastomatas' ), true )
+			&& ! self::rankinis( $part->tiekejas );
+		if ( $reikia_vp ) {
+			$vp = self::venipak_registruoti( $part );
+			if ( ! $vp['ok'] ) {
+				// Neregistruota — partijos NEUŽDAROM, kad nedingtų be pėdsako.
+				set_transient( 'ps_tiek_vp_klaida_' . $pid, $vp['klaida'], 300 );
+				return 'vp_klaida';
+			}
+			$wpdb->update( self::t_partijos(),
+				array( 'venipak_pack' => $vp['pack'], 'venipak_manifest' => $vp['manifest'] ),
+				array( 'id' => $pid ) );
+			$part->venipak_pack = $vp['pack'];
+		}
+
 		// Ką rašom tiekėjui, priklauso nuo pasirinkto būdo (H238).
 		switch ( $part->pristatymas ) {
 			case 'pastomatas':
 				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio. Siunta keliauja į %s (%s).%s</p>',
 					esc_html( $pst['vardas'] ), esc_html( $pst['adresas'] ),
 					$kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
+				break;
+			case 'nenaudojama':
+				$kelias = '';
 				break;
 			case 'tiekejas':
 				$kelias = '<p>Prekes atvešite patys į mūsų sandėlį (' . esc_html( self::AV_ADRESAS ) . ').</p>';
@@ -776,6 +1036,15 @@ class Petshop_AV_Tiekimas {
 				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio ir pristatys į mūsų sandėlį (%s).%s</p>',
 					esc_html( self::AV_ADRESAS ),
 					$kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
+		}
+
+		// Siuntos numeris ir lipdukas — laiške (H247).
+		if ( ! empty( $vp['pack'] ) ) {
+			$kelias .= sprintf(
+				'<p><b>Siunta jau užregistruota mūsų Venipak sutartimi.</b><br>
+				 Siuntos numeris: <b>%s</b>. Kurjerį kviesti nereikia — atvyks pagal mūsų užsakymą.<br>
+				 <b>Lipduką rasite laiško priede</b> — atspausdinkite ir užklijuokite ant siuntos.</p>',
+				esc_html( $vp['pack'] ) );
 		}
 
 		$tema = sprintf( 'UAB Avesa · prekių užsakymas %s', wp_date( 'Y-m-d' ) );
@@ -792,10 +1061,21 @@ class Petshop_AV_Tiekimas {
 			// ŽB ir pan.: užsakymą Raimis suveda tiesiai į tiekėjo sistemą — laiško nesiunčiam (H246).
 			$ok = null;
 		} elseif ( $adr ) {
+			$priedai = array();
+			if ( ! empty( $vp['pack'] ) ) {
+				$pdf = self::venipak_lipdukas( $vp['pack'] );
+				if ( $pdf ) {
+					$up   = wp_upload_dir();
+					$kel  = trailingslashit( $up['basedir'] ) . 'ps-lipdukai';
+					wp_mkdir_p( $kel );
+					$fail = $kel . '/lipdukas-' . $vp['pack'] . '.pdf';
+					if ( file_put_contents( $fail, $pdf ) ) { $priedai[] = $fail; }
+				}
+			}
 			$ok = wp_mail( array_map( 'trim', explode( ',', $adr ) ), $tema, $body, array(
 				'Content-Type: text/html; charset=UTF-8',
 				'From: UAB Avesa <terra@petshop.lt>',
-			) );
+			), $priedai );
 		}
 
 		$wpdb->update( self::t_partijos(),
@@ -815,6 +1095,7 @@ class Petshop_AV_Tiekimas {
 		}
 
 		if ( null === $ok ) { return 'uzsakyta_rankinis'; }
+		if ( $ok && ! empty( $vp['pack'] ) ) { return 'uzsakyta_vp'; }
 		return $ok ? 'uzsakyta' : ( $adr ? 'laiskas_nepavyko' : 'nera_pasto' );
 	}
 
@@ -1026,6 +1307,8 @@ class Petshop_AV_Tiekimas {
 			'prideta'          => array( 'success', 'Prekė pridėta į partiją.' ),
 			'nerasta'          => array( 'warning', 'Tokios prekės nerasta — patikrink SKU arba ID.' ),
 			'uzsakyta'         => array( 'success', 'Užsakymas išsiųstas tiekėjui. Partija uždaryta, atsidarė nauja.' ),
+			'uzsakyta_vp'      => array( 'success', 'Užsakymas išsiųstas tiekėjui, siunta užregistruota Venipak, lipdukas prisegtas prie laiško. Partija uždaryta.' ),
+			'vp_klaida'        => array( 'error', 'Siuntos užregistruoti nepavyko — partija NEUŽDARYTA, laiškas neišsiųstas.' ),
 			'uzsakyta_rankinis'=> array( 'success', 'Partija uždaryta, laiškas NESIŲSTAS. Suvesk prekes į tiekėjo sistemą — kopijuojamas sąrašas skirtuke „Užsakyta · laukiam“.' ),
 			'laiskas_nepavyko' => array( 'error', 'Partija uždaryta, BET laiško išsiųsti nepavyko — užsakyk rankomis.' ),
 			'nera_pasto'       => array( 'warning', 'Partija uždaryta, bet tiekėjo el. pašto nėra — užsakyk rankomis.' ),
@@ -1037,6 +1320,14 @@ class Petshop_AV_Tiekimas {
 			'klaida'           => array( 'error', 'Veiksmas neįvykdytas — partijos būsena netinkama.' ),
 		);
 		if ( ! isset( $t[ $k ] ) ) { return; }
+		if ( 'vp_klaida' === $k ) {
+			$pid2 = isset( $_GET['p'] ) ? absint( $_GET['p'] ) : 0;
+			$det  = $pid2 ? get_transient( 'ps_tiek_vp_klaida_' . $pid2 ) : '';
+			printf( '<div class="notice notice-error"><p>%s</p>%s</div>',
+				esc_html( $t[ $k ][1] ),
+				$det ? '<p><b>Venipak atsakė:</b> ' . esc_html( $det ) . '</p>' : '' );
+			return;
+		}
 		printf( '<div class="notice notice-%s is-dismissible"><p>%s</p></div>',
 			esc_attr( $t[ $k ][0] ), esc_html( $t[ $k ][1] ) );
 	}
@@ -1075,7 +1366,9 @@ class Petshop_AV_Tiekimas {
 .ps-tk-prist-i{font-size:12.5px;color:#5E6661;margin-top:8px;line-height:1.5}
 .ps-tk-blogai{color:#98262A;font-weight:600;margin-left:6px}
 .ps-tk-f{display:flex;gap:8px;padding:12px 14px;border-top:1px solid #eee}
-.ps-tk-kopija{margin:10px 14px}
+.ps-tk-vp{margin-left:10px;font-size:12px;color:#1B7A3D}
+		.ps-tk-vp a{margin-left:6px}
+		.ps-tk-kopija{margin:10px 14px}
 		.ps-tk-kopija summary{cursor:pointer;color:#2271b1}
 		.ps-tk-kopija textarea{width:100%;font-family:monospace;font-size:12px;margin:6px 0}
 		.ps-tk-pad{margin:12px 14px 0;color:#5e6661}
