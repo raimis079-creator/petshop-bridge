@@ -1,6 +1,20 @@
 <?php
 /**
- * Petshop Desk v3.32 (H235) — VIENA MIŠRUMO TAISYKLĖ: mišrus = sandėlių > 1,
+ * Petshop Desk v3.33 (H236) — EILĖ „MIŠRŪS“ + SPRENDIMO KORTELĖ.
+ *
+ * KODĖL (Raimis, H235–H236): „darbuotojui bus painu... turi visur būti labai
+ * aiškūs mechanizmai“. Mišrus užsakymas gulėjo bendroje krūvoje su dviem
+ * mygtukais, o pasirinkimas „siųsti atskirai ar parsivežti į AV“ buvo paslėptas
+ * mygtuku prie eilutės skydelyje. Sprendimas neiškildavo pats.
+ *
+ * DABAR: apmokėtas mišrus be sprendimo krenta į atskirą eilę ir į rytinę partiją
+ * NEPATENKA. Kortelė rodo kiekvieną sandėlį atskirai — darbuotojas kiekvienam
+ * nurodo kelią (tiesiai klientui / į AV). Skaidymas PAGAL SANDĖLĮ (Raimio
+ * sprendimas): ZB dalis keliauja kartu, VF gali keliauti kitaip.
+ * Priėmus sprendimą užsakymas iš eilės dingsta — tuščia eilė reiškia, kad
+ * viskas nuspręsta.
+ *
+ * v3.32 (H235) — VIENA MIŠRUMO TAISYKLĖ: mišrus = sandėlių > 1,
  * nesvarbu, ar tarp jų yra AV. Iki šiol ZB+VF+PRINS užsakymas vadinosi
  * „DROPSHIP“, o filtras „Mišrūs“ jo apskritai nerasdavo — nors rytinė eiga tą
  * patį užsakymą jau skaičiavo kaip mišrų (count($sal) > 1). Dvi taisyklės tame
@@ -113,6 +127,7 @@ class Petshop_Desk {
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
 	const EILES = array(
 		'nauji'      => array( 'Nauji',           'apmokėti, laukia surinkimo ar perdavimo', '#5FA97A' ),
+		'misrus'     => array( 'Mišrūs',          'kelių sandėlių užsakymai — reikia sprendimo', '#B5762A' ),
 		'neapmoketi' => array( 'Neapmokėti',      'laukia kliento pinigų — tik stebėti',     '#D9A62B' ),
 		'paruosta'   => array( 'Paruošta siųsti', 'supakuota su lipduku, laukia kurjerio',   '#5E96C9' ),
 		'laukia'     => array( 'Laukia prekių',   'tiekėjo prekės dar neatvyko į AV',        '#8E6FD0' ),
@@ -628,6 +643,53 @@ class Petshop_Desk {
 		}
 
 		/**
+		 * Mišraus užsakymo sprendimas: kiekvienam sandėliui — kelias.
+		 * „į AV“ eilutės keliauja į tiekimo lentelę (Petshop_AV_Tiekimas) ir
+		 * pažymimos `_ps_konsolidacija`, todėl tiekėjo laiške jų nebelieka (H233).
+		 * „tiesiai“ — atvirkščias veiksmas, kol partija dar kaupiama.
+		 */
+		if ( 'misrus' === $v ) {
+			$pasirinkta = isset( $_GET['s'] ) ? (array) wp_unslash( $_GET['s'] ) : array();
+			$spr  = array();
+			$ideta = 0;
+			$isimta = 0;
+
+			foreach ( $o->get_items() as $iid => $it ) {
+				$src = self::eilutes_saltinis( $it );
+				if ( ! $src || 'av' === $src ) { continue; }
+
+				$kelias = ( isset( $pasirinkta[ $src ] ) && 'av' === sanitize_key( $pasirinkta[ $src ] ) ) ? 'av' : 'tiesiai';
+				$spr[ $src ] = $kelias;
+
+				if ( 'av' === $kelias ) {
+					$it->update_meta_data( '_ps_konsolidacija', 1 );
+					$it->save();
+					if ( class_exists( 'Petshop_AV_Tiekimas' )
+						&& Petshop_AV_Tiekimas::ideti_eilute( $o, (int) $iid, $src ) ) { $ideta++; }
+				} else {
+					$it->delete_meta_data( '_ps_konsolidacija' );
+					$it->save();
+					if ( class_exists( 'Petshop_AV_Tiekimas' ) ) {
+						$isimta += (int) Petshop_AV_Tiekimas::isimti_eilute( $o, (int) $iid );
+					}
+				}
+			}
+
+			$o = wc_get_order( $id );
+			$aprasas = array();
+			foreach ( $spr as $t => $k ) {
+				$aprasas[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . ' — ' . ( 'av' === $k ? 'į AV' : 'tiesiai klientui' );
+			}
+			$o->update_meta_data( '_ps_misrus_sprendimas', wp_json_encode( $spr ) );
+			$o->update_meta_data( '_ps_misrus_sprestas', current_time( 'mysql' ) . ' | ' . $naudotojas );
+			$o->add_order_note( 'Mišraus užsakymo sprendimas: ' . implode( ' · ', $aprasas ) . '. Vartotojas: ' . $naudotojas . '.', false, true );
+			$o->save();
+
+			$zinute    = 'misrus_ok';
+			$nr_priedas = implode( ' · ', $aprasas );
+		}
+
+		/**
 		 * Trynimas. Tik uždarytiems (atšauktas / grąžintas) ir tik su teise
 		 * `delete_shop_orders`. HPOS: BŪTINA $order->delete( true ) — wp_delete_post()
 		 * HPOS lentelių nepaliečia ir paliktų užsakymą pusiau gyvą.
@@ -823,6 +885,9 @@ class Petshop_Desk {
 		if ( in_array( $st, self::STATUSAI['ivykdyti'], true ) ) { return 'ivykdyti'; }
 		if ( 'processing' === $st || 'on-hold' === $st ) {
 			if ( self::turi_siunta( $order ) ) { return 'paruosta'; }
+			// Mišrus be sprendimo — atskira eilė. Į rytinę partiją nepatenka (H236).
+			if ( 'processing' === $st && count( self::saltiniai( $order ) ) > 1
+				&& ! $order->get_meta( '_ps_misrus_sprendimas' ) ) { return 'misrus'; }
 			if ( $order->get_meta( '_ps_tiekimas_laukia' ) ) { return 'laukia'; }
 			return 'processing' === $st ? 'nauji' : 'kita';
 		}
@@ -1106,7 +1171,7 @@ class Petshop_Desk {
 
 	/** Eilių skaitikliai — viena praeiga per atvirus užsakymus. */
 	protected static function skaiciai() {
-		$c = array( 'nauji' => 0, 'neapmoketi' => 0, 'laukia' => 0, 'paruosta' => 0,
+		$c = array( 'nauji' => 0, 'misrus' => 0, 'neapmoketi' => 0, 'laukia' => 0, 'paruosta' => 0,
 			'klausimai' => 0, 'atsaukti' => 0, 'visi' => 0 );
 
 		$atviri = wc_get_orders( array(
@@ -1179,7 +1244,7 @@ class Petshop_Desk {
 		);
 
 		$eilutes = self::gauti( $eile, $f );
-		if ( 'klausimai' === $eile ) { $f['korteles'] = 1; }
+		if ( 'klausimai' === $eile || 'misrus' === $eile ) { $f['korteles'] = 1; }
 		$c       = self::skaiciai();
 		$statusai = wc_get_order_statuses();
 
@@ -1194,6 +1259,10 @@ class Petshop_Desk {
 		if ( 'klausimai' === $eile && $eilutes ) {
 			echo '<div class="pd-wrap">';
 			self::klausimu_korteles( $eilutes );
+			echo '</div>';
+		} elseif ( 'misrus' === $eile && $eilutes ) {
+			echo '<div class="pd-wrap">';
+			self::misriu_korteles( $eilutes );
 			echo '</div>';
 		} else {
 			self::lentele( $eilutes, $statusai );
@@ -1772,6 +1841,7 @@ class Petshop_Desk {
 			'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas.' ),
 			'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),
 			'istrinta'        => array( 'ok', 'Užsakymas #%s ištrintas negrįžtamai.' ),
+			'misrus_ok'       => array( 'ok', 'Užsakymo #%s sprendimas įrašytas: %s' ),
 			'trinti_negalima' => array( 'klaida', 'Užsakymo #%s ištrinti negalima — pirma jį atšauk.' ),
 			'vp_ok'           => array( 'ok', 'Venipak: siuntos užregistruotos (%s). Manifestas paruoštas.' ),
 			'vp_klaida'       => array( 'klaida', 'Venipak nepriėmė: %s' ),
@@ -1784,7 +1854,7 @@ class Petshop_Desk {
 		);
 		if ( ! isset( $t[ $k ] ) ) { return; }
 		$dalys = explode( '|', $nr, 2 );
-		$tekstas = ( 'apmoketa_klausimas' === $k )
+		$tekstas = in_array( $k, array( 'apmoketa_klausimas', 'misrus_ok' ), true )
 			? sprintf( $t[ $k ][1], $dalys[0], $dalys[1] ?? '' )
 			: sprintf( $t[ $k ][1], $nr );
 		if ( 'apmoketa_klausimas' === $k ) {
@@ -1841,7 +1911,7 @@ class Petshop_Desk {
 
 	protected static function rail( $eile, $c ) {
 		echo '<nav class="pd-rail"><div class="pd-rh">Užsakymai</div>';
-		foreach ( array( 'nauji', 'neapmoketi', 'laukia', 'paruosta', 'klausimai' ) as $k ) {
+		foreach ( array( 'nauji', 'misrus', 'neapmoketi', 'laukia', 'paruosta', 'klausimai' ) as $k ) {
 			self::rail_punktas( $k, $eile, $c[ $k ] ?? 0, false );
 		}
 		echo '<div class="pd-sep"></div>';
@@ -1985,6 +2055,111 @@ class Petshop_Desk {
 	}
 
 	/** Klausimai rodomi kortelėmis su sprendimo mygtukais, ne eilute sąraše. */
+	/**
+	 * Mišraus užsakymo sprendimas: kiekvienam sandėliui — kelias.
+	 * Skaidymas PAGAL SANDĖLĮ (Raimio sprendimas H236): visa ZB dalis keliauja
+	 * kartu. Jei kada prireiks eilutės tikslumo — struktūra tam pasiruošusi,
+	 * nes žymė guli ant EILUTĖS (`_ps_konsolidacija`), ne ant užsakymo.
+	 */
+	protected static function misrus_grupes( $o ) {
+		$g = array();
+		foreach ( $o->get_items() as $iid => $it ) {
+			$src = self::eilutes_saltinis( $it );
+			if ( ! $src ) { continue; }
+			$p = $it->get_product();
+			if ( ! isset( $g[ $src ] ) ) {
+				$g[ $src ] = array( 'eilutes' => 0, 'vnt' => 0, 'svoris' => 0.0, 'pav' => array(), 'iid' => array() );
+			}
+			$g[ $src ]['eilutes']++;
+			$g[ $src ]['vnt']   += (int) $it->get_quantity();
+			$g[ $src ]['svoris'] += $p ? ( (float) $p->get_weight() * (int) $it->get_quantity() ) : 0;
+			$g[ $src ]['pav'][]  = $it->get_quantity() . '× ' . $it->get_name();
+			$g[ $src ]['iid'][]  = (int) $iid;
+		}
+		return $g;
+	}
+
+	/** Įrašytas sprendimas: sandėlis => tiesiai|av. */
+	protected static function misrus_sprendimas( $o ) {
+		$m = $o->get_meta( '_ps_misrus_sprendimas' );
+		$j = is_array( $m ) ? $m : json_decode( (string) $m, true );
+		return is_array( $j ) ? $j : array();
+	}
+
+	protected static function misriu_korteles( $eilutes ) {
+		foreach ( $eilutes as $row ) {
+			$o    = $row['o'];
+			$id   = $o->get_id();
+			$g    = self::misrus_grupes( $o );
+			$spr  = self::misrus_sprendimas( $o );
+			$vez  = self::vezejas( $o );
+			$tarifas = ( 'venipak_kurjeris' === $vez ) ? 3.30 : 1.78;
+
+			$sh = 0;
+			foreach ( $o->get_items( 'shipping' ) as $x ) { $sh += (float) $x->get_total() + (float) $x->get_total_tax(); }
+
+			printf( '<div class="pd-mcard"><div class="pd-kh"><b>#%s</b><span>%s · %s</span>%s<span class="pd-mtag">%s</span></div>',
+				esc_html( $o->get_order_number() ),
+				esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ),
+				wp_kses_post( $o->get_formatted_order_total() ),
+				$o->is_paid() ? '<span class="pd-kpaid">apmokėta</span>' : '<span class="pd-kunpaid">neapmokėta</span>',
+				esc_html( self::vezejo_vardas( $o ) ) );
+
+			printf( '<form method="get" action="%s" class="pd-mform" data-tarifas="%s" data-siunta="%s">',
+				esc_url( admin_url( 'admin-post.php' ) ),
+				esc_attr( number_format( $tarifas, 2, '.', '' ) ),
+				esc_attr( number_format( $sh, 2, '.', '' ) ) );
+			printf( '<input type="hidden" name="action" value="ps_desk_veiksmas"><input type="hidden" name="v" value="misrus">' );
+			printf( '<input type="hidden" name="id" value="%d"><input type="hidden" name="_wpnonce" value="%s">',
+				$id, esc_attr( wp_create_nonce( 'ps_desk_misrus_' . $id ) ) );
+			printf( '<input type="hidden" name="g" value="%s">',
+				esc_attr( admin_url( 'admin.php?page=' . self::SLUG . '&eile=misrus' ) ) );
+
+			echo '<div class="pd-mrows">';
+			foreach ( $g as $src => $d ) {
+				$vardas = self::SALTINIAI[ $src ][2] ?? mb_strtoupper( $src );
+				$rz     = self::riba( $src );
+				$info   = sprintf( '%d %s · %s vnt.%s',
+					$d['eilutes'], self::linksnis( $d['eilutes'], 'prekė', 'prekės', 'prekių' ),
+					$d['vnt'],
+					$d['svoris'] > 0 ? ' · ' . rtrim( rtrim( number_format( $d['svoris'], 1, ',', ' ' ), '0' ), ',' ) . ' kg' : '' );
+
+				echo '<div class="pd-mrow">';
+				printf( '<div class="pd-mleft">%s<b>%s</b><span>%s</span>%s</div>',
+					self::zyme( $src ), esc_html( $vardas ), esc_html( $info ),
+					$rz ? sprintf( '<small class="pd-riba-%s">%s</small>', esc_attr( $rz[0] ), esc_html( $rz[1] ) ) : '' );
+
+				printf( '<div class="pd-mprek">%s</div>', esc_html( implode( ' · ', $d['pav'] ) ) );
+
+				if ( 'av' === $src ) {
+					echo '<div class="pd-mopt"><span class="pd-mfix">iš savo sandėlio</span></div>';
+				} else {
+					$dabar = $spr[ $src ] ?? 'tiesiai';
+					printf( '<div class="pd-mopt">
+							<label class="pd-mchk"><input type="radio" name="s[%1$s]" value="tiesiai"%2$s> tiesiai klientui</label>
+							<label class="pd-mchk"><input type="radio" name="s[%1$s]" value="av"%3$s> į AV</label>
+						</div>',
+						esc_attr( $src ),
+						'av' === $dabar ? '' : ' checked',
+						'av' === $dabar ? ' checked' : '' );
+				}
+				echo '</div>';
+			}
+			echo '</div>';
+
+			printf( '<div class="pd-msum"><span class="pd-msum-t"></span><span class="pd-msum-p">iš kliento paimta %s</span></div>',
+				esc_html( number_format( $sh, 2, ',', ' ' ) . ' €' ) );
+
+			echo '<div class="pd-kf">';
+			echo '<button type="submit" class="pd-btn pd-btn-p">Patvirtinti sprendimą</button>';
+			printf( '<a class="pd-btn pd-btn-s" href="%s">Pakavimo lapas</a>',
+				esc_url( self::veiksmo_url( 'lapai', $id ) ) );
+			echo '</div></form></div>';
+		}
+		echo '<div class="pd-khint">Sprendimas nieko neišsiunčia. „Į AV“ eilutės patenka į tiekimo lentelę ir tiekėjo
+			laiške NEBERODOMOS; „tiesiai klientui“ dalys lieka įprastame darbe. Perdaryti galima, kol dalis neperduota.</div>';
+	}
+
 	protected static function klausimu_korteles( $eilutes ) {
 		foreach ( $eilutes as $row ) {
 			$o      = $row['o'];
@@ -2598,6 +2773,25 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-done{opacity:.55}
 .pd-sent{font-size:11.5px;color:var(--green);background:var(--greent);padding:1px 7px;border-radius:99px}
 .pd-liko{display:inline-block;margin-left:6px;font-size:11.5px;color:#96660C;background:#FBF2DE;border-radius:3px;padding:1px 6px}
+.pd-mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin:0 0 14px;overflow:hidden}
+.pd-mcard .pd-kh{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--line2)}
+.pd-mtag{margin-left:auto;font-size:12px;color:var(--ink2)}
+.pd-mrows{padding:4px 0}
+.pd-mrow{display:grid;grid-template-columns:230px 1fr 250px;gap:12px;align-items:center;
+ padding:10px 16px;border-bottom:1px solid var(--line2)}
+.pd-mrow:last-child{border-bottom:0}
+.pd-mleft{display:flex;flex-direction:column;gap:2px}
+.pd-mleft b{font-size:13.5px}
+.pd-mleft span{font-size:12px;color:var(--ink2)}
+.pd-mprek{font-size:12.5px;color:var(--ink2);line-height:1.5}
+.pd-mopt{display:flex;gap:14px;justify-content:flex-end}
+.pd-mchk{font-size:13px;display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap}
+.pd-mfix{font-size:12.5px;color:var(--ink3)}
+.pd-msum{display:flex;gap:16px;align-items:center;padding:10px 16px;background:var(--greent);
+ font-size:13px;color:var(--ink)}
+.pd-msum-t{font-weight:600}
+.pd-msum-p{margin-left:auto;color:var(--ink2)}
+.pd-msum.pd-mwarn{background:#FBF2DE;color:#96660C}
 .pd-ryt-f{border-top:1px solid var(--line);padding:12px 32px;display:flex;gap:10px;align-items:center;background:var(--card)}
 .pd-ryt-hint{font-size:12.5px;color:var(--ink3);flex:1;text-align:center}
 .pd-rdone{text-align:center;padding:26px 0 22px}
@@ -2685,6 +2879,33 @@ small.pd-riba-praejo{color:var(--ink3)}
 		?>
 <script>
 (function(){
+ /* MIŠRIŲ KORTELĖ: gyva suvestinė. Kiek siuntų gaus klientas ir kiek tai
+    kainuos mums — perskaičiuojama kiekvieną kartą pajudinus jungiklį (H236). */
+ function misrusSuma(f){
+  var tar=parseFloat(f.dataset.tarifas||'3.30');
+  var eil=f.querySelectorAll('.pd-mrow');
+  var tiesiai=0, iAv=0, savo=0;
+  eil.forEach(function(r){
+   if (r.querySelector('.pd-mfix')) { savo=1; return; }
+   var v=r.querySelector('input[type=radio]:checked');
+   if (!v) return;
+   if (v.value==='av') iAv++; else tiesiai++;
+  });
+  var siuntos = tiesiai + ((savo || iAv) ? 1 : 0);
+  var t=f.querySelector('.pd-msum-t');
+  var box=f.querySelector('.pd-msum');
+  if (!t) return;
+  var kaina=(siuntos*tar).toFixed(2).replace('.',',');
+  t.textContent = 'Klientui ' + siuntos + (siuntos===1?' siunta':(siuntos<10?' siuntos':' siuntų'))
+   + ' · vežėjui ~' + kaina + ' \u20AC'
+   + (iAv ? ' · ' + iAv + ' dalis keliauja per AV' : '');
+  if (box) box.classList.toggle('pd-mwarn', siuntos>2);
+ }
+ document.querySelectorAll('.pd-mform').forEach(function(f){
+  misrusSuma(f);
+  f.addEventListener('change', function(){ misrusSuma(f); });
+ });
+
  /* AUTOMATINIS ATSINAUJINIMAS (H226): kas 60 s, bet TIK kai netrukdo —
     skirtukas matomas, nieko nepažymėta, neatidarytas skydelis/dialogas,
     žymeklis ne įvesties lauke. Rytinėje eigoje neveikia. */
