@@ -1,12 +1,12 @@
 {
- "v": "H245B",
- "sukurta": 3778,
+ "v": "H245C",
+ "sukurta": 3779,
  "deploy": {
   "v": "H245B",
-  "gauta": 169916,
+  "gauta": 169926,
   "sintakse": "ok",
-  "md5": "78d6a9c2df5ac3bd5f2223e6c99528bc",
-  "istrinta_tusciu": 2
+  "md5": "382498de4711f6a127eeee4f7f613e4b",
+  "istrinta_tusciu": 0
  },
  "misrus": {
   "http": 200,
@@ -22,14 +22,17 @@
   "sekcijos": [
    "Planas įrašytas — nepaleista (4)"
   ],
-  "korteles": [],
+  "korteles": [
+   "pd-m35068",
+   "pd-m35067",
+   "pd-m35066",
+   "pd-m35065"
+  ],
   "irankiai": [
    "Tiekimas1 -> page=ps-tiekimas",
    "Perdavimas tiekėjams6 -> page=ps-desk&eile=nauji&zvilgsnis=neperduota"
   ],
-  "put": 201
+  "put": 200
  },
- "js": [
-  "TypeError: Cannot read properties of undefined (reading 'dismiss')"
- ]
+ "js": []
 }
