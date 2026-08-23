@@ -1,0 +1,53 @@
+{
+ "v": "H250A",
+ "sukurta": 3792,
+ "deploy": {
+  "v": "H250A",
+  "failai": {
+   "petshop-desk.php": {
+    "gauta": 171616,
+    "sintakse": "ok",
+    "md5": "4034d65f7033c464a2c796075e41f122"
+   },
+   "petshop-av-dropship.php": {
+    "gauta": 36907,
+    "sintakse": "ok",
+    "md5": "383b608a03991b2492695378a9548380"
+   },
+   "petshop-av-tiekimas.php": {
+    "gauta": 63100,
+    "sintakse": "ok",
+    "md5": "03aa64ebbf1293a00db0600c738ba426"
+   }
+  }
+ },
+ "md5_ok": true,
+ "desk": {
+  "http": 200,
+  "irankiai": [
+   "Tiekimas3",
+   "Išsiųsti laiškai",
+   "Perdavimas tiekėjams6"
+  ]
+ },
+ "laiskai": {
+  "http": 403,
+  "fatal": false,
+  "h1": "?",
+  "eiluciu": 0,
+  "put": 201
+ },
+ "dropship": {
+  "http": 200,
+  "fatal": false,
+  "varneles": [
+   "Prierašas laiške (nebūtina)=OFF",
+   "pridėti lipdukus=ON",
+   "pridėti manifestą=ON",
+   "siųsti tiekėjui=OFF",
+   "kopija man (terra@petshop.lt)=ON"
+  ],
+  "put": 201
+ },
+ "js": []
+}
