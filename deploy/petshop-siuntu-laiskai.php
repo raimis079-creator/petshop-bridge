@@ -80,7 +80,11 @@ class Petshop_Siuntos {
 
 	/** Žalias kaupiamasis masyvas (raktai — sandėliai). */
 	protected static function zalias( $o ) {
-		$s = json_decode( (string) $o->get_meta( self::META ), true );
+		// Meta gali grįžti ir masyvu (WC kartais deserializuoja pati) — tada
+		// (string) cast'as kėlė „Array to string conversion" (H240).
+		$m = $o->get_meta( self::META );
+		if ( is_array( $m ) ) { return $m; }
+		$s = json_decode( (string) $m, true );
 		return is_array( $s ) ? $s : array();
 	}
 
