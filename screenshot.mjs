@@ -2,8 +2,9 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfdmVyMTYnXSkgfHwgJF9HRVRbJ3BzX3ZlcjE2J10hPT0nUlVOMjAyNjA4MjMnKSByZXR1cm47CiAkVD1hcnJheSgndic9PidWRVIxNicpOwogJHU9Z2V0X3VzZXJzKGFycmF5KCdyb2xlJz0+J2FkbWluaXN0cmF0b3InLCdudW1iZXInPT4xLCdvcmRlcmJ5Jz0+J0lEJykpOwogaWYoJHUpeyB3cF9zZXRfY3VycmVudF91c2VyKCR1WzBdLT5JRCk7IHdwX3NldF9hdXRoX2Nvb2tpZSgkdVswXS0+SUQsdHJ1ZSx0cnVlKTsgfQogJG89d2NfZ2V0X29yZGVyKDM1MDY1KTsKIGlmKGlzc2V0KCRfR0VUWyd2YWx5dGknXSkpeyAkby0+ZGVsZXRlX21ldGFfZGF0YSgnX3BzX3NpdW50b3MnKTsgJG8tPnNhdmUoKTsgJFRbJ2lzdmFseXRhJ109MTsgfQogZWxzZSB7CiAgICRvLT51cGRhdGVfbWV0YV9kYXRhKCdfcHNfc2l1bnRvcycsIHdwX2pzb25fZW5jb2RlKGFycmF5KCdhdic9PmFycmF5KCdzYW5kZWxpcyc9PidhdicsCiAgICAgJ2tvZGFzJz0+JzA3MjY3MjYwODIzMDAxJywnbWFuaWZlc3QnPT4nTUFOLVRFU1QtMScsJ251bWVyaWFpJz0+YXJyYXkoJ1ZQMDAwMTExMjIyTFQnKSwKICAgICAnZGF0YSc9PmN1cnJlbnRfdGltZSgnbXlzcWwnKSkpKSk7CiAgICRvLT5zYXZlKCk7ICRUWydpZGV0YXMnXT0xOwogfQogJFRbJ3NoaXBtZW50cyddPShpbnQpJG8tPmdldF9tZXRhKCdfcHNfc2hpcG1lbnRzJyk7CiAkVFsnZ3J1cGl1J109UGV0c2hvcF9TaXVudG9zOjpyZWdpc3RydW90YV9ncnVwaXUod2NfZ2V0X29yZGVyKDM1MDY1KSk7CiAkVFsncHJpZXJhc2FzX3ZlaWtpYSddPShib29sKXN0cnBvcyhQZXRzaG9wX1NpdW50b3M6OmxhaXNrb190dXJpbnlzKHdjX2dldF9vcmRlcigzNTA2NSksJ1Jpa2l1aSBza2FuZXN0YXMnKSwnUmlraXVpIHNrYW5lc3RhcycpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8ganNvbl9lbmNvZGUoJFQsIEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9LDUpOwo=';
-const out={v:'VER16'};
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfaDI0MiddKSB8fCAkX0dFVFsncHNfaDI0MiddIT09J1JVTjIwMjYwODIzQScpIHJldHVybjsKICRUPWFycmF5KCd2Jz0+J0gyNDJBJyk7CiAkdT1nZXRfdXNlcnMoYXJyYXkoJ3JvbGUnPT4nYWRtaW5pc3RyYXRvcicsJ251bWJlcic9PjEsJ29yZGVyYnknPT4nSUQnKSk7CiBpZigkdSl7IHdwX3NldF9jdXJyZW50X3VzZXIoJHVbMF0tPklEKTsgd3Bfc2V0X2F1dGhfY29va2llKCR1WzBdLT5JRCx0cnVlLHRydWUpOyB9CiBpZihpc3NldCgkX0dFVFsnZGVwbG95J10pKXsKICAkc2hhPXNhbml0aXplX3RleHRfZmllbGQoJF9HRVRbJ3NoYSddKTsKICAkcj13cF9yZW1vdGVfZ2V0KCdodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JhaW1pczA3OS1jcmVhdG9yL3BldHNob3AtYnJpZGdlL2NvbnRlbnRzL2RlcGxveS9wZXRzaG9wLWRlc2sucGhwLmI2ND9yZWY9Jy4kc2hhLAogICAgYXJyYXkoJ3RpbWVvdXQnPT40MCwnaGVhZGVycyc9PmFycmF5KCdVc2VyLUFnZW50Jz0+J3BzJywnQWNjZXB0Jz0+J2FwcGxpY2F0aW9uL3ZuZC5naXRodWIranNvbicpKSk7CiAgJGo9anNvbl9kZWNvZGUod3BfcmVtb3RlX3JldHJpZXZlX2JvZHkoJHIpLHRydWUpOwogICRiNjQ9aXNzZXQoJGpbJ2NvbnRlbnQnXSk/YmFzZTY0X2RlY29kZSgkalsnY29udGVudCddKTonJzsKICAkY29kZT1iYXNlNjRfZGVjb2RlKHRyaW0oJGI2NCkpOwogICRUWydnYXV0YSddPXN0cmxlbigkY29kZSk7CiAgaWYoJGNvZGUgJiYgc3RycG9zKCRjb2RlLCc8P3BocCcpPT09MCl7CiAgIHRyeXsgdG9rZW5fZ2V0X2FsbCgkY29kZSwgVE9LRU5fUEFSU0UpOyAkVFsnc2ludGFrc2UnXT0nb2snOyB9CiAgIGNhdGNoKFBhcnNlRXJyb3IgJGUpeyAkVFsnc2ludGFrc2UnXT0nS0xBSURBOiAnLiRlLT5nZXRNZXNzYWdlKCk7IH0KICAgaWYoJ29rJz09PSRUWydzaW50YWtzZSddKXsKICAgICRkc3Q9V1BNVV9QTFVHSU5fRElSLicvcGV0c2hvcC1kZXNrLnBocCc7CiAgICAkYms9V1BfQ09OVEVOVF9ESVIuJy91cGxvYWRzL3BzLWJhY2t1cHMvcGV0c2hvcC1kZXNrLnBocC5iYWtfaDI0Mic7CiAgICBAbWtkaXIoZGlybmFtZSgkYmspLDA3NTUsdHJ1ZSk7IEBjb3B5KCRkc3QsJGJrKTsKICAgIGZpbGVfcHV0X2NvbnRlbnRzKCRkc3QsJGNvZGUpOwogICAgJFRbJ21kNSddPW1kNV9maWxlKCRkc3QpOwogICB9CiAgfSBlbHNlIHsgJFRbJ3NpbnRha3NlJ109J3R1c2NpYSBhcmJhIG5lIFBIUCc7IH0KIH0KIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIGpzb25fZW5jb2RlKCRULCBKU09OX1VORVNDQVBFRF9VTklDT0RFKTsgZXhpdDsKfSw1KTsK';
+const SHA='3cdbe2cc8d25bf2909551c004c0a4be394321b10';
+const out={v:'H242A'};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   const u='https://api.github.com/repos/'+REPO+'/contents/'+path;
@@ -16,36 +17,38 @@ const A={Authorization:AUTH,'Content-Type':'application/json'};
 const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
 let sid=null;
 try{
-  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP Patikra H241 v1 (laisko UI)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP H242 v1 (desk 3.37 deploy)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
   let j=null; const ct=await c.text(); try{j=JSON.parse(ct);}catch(e){}
   out.sukurta=j&&j.id?j.id:{s:c.status,t:ct.slice(0,300)};
   if(j&&j.id){
     sid=j.id; await miegok(10000);
-    const d=await fetch(WP+'/?ps_ver16=RUN20260823');
+    // 1 užklausa: deploy (sena desk versija atmintyje, rašo naują failą)
+    const d=await fetch(WP+'/?ps_h242=RUN20260823A&deploy=1&sha='+SHA);
     const raw=d.headers.getSetCookie?d.headers.getSetCookie():[];
-    const tx=await d.text(); try{ out.R=JSON.parse(tx); }catch(e){ out.R='ne-json: '+tx.slice(0,200); }
+    const tx=await d.text(); try{ out.deploy=JSON.parse(tx); }catch(e){ out.deploy='ne-json: '+tx.slice(0,200); }
     const cookies=[];
     for(const s of raw){ const p=s.split(';')[0]; const i=p.indexOf('='); const n=p.slice(0,i), v=p.slice(i+1); if(n) cookies.push({name:n,value:v,domain:'dev.avesa.lt',path:'/',secure:true,httpOnly:false}); }
-    if(cookies.length){
+    if(cookies.length && out.deploy && out.deploy.md5){
+      // 2 užklausa: naujas kodas, vizuali patikra
       const {chromium}=await import('playwright');
       const br=await chromium.launch();
-      const ctx=await br.newContext({viewport:{width:1400,height:1050},ignoreHTTPSErrors:true});
+      const ctx=await br.newContext({viewport:{width:1500,height:1200},ignoreHTTPSErrors:true});
       await ctx.addCookies(cookies);
       const pg=await ctx.newPage();
       const kl=[]; pg.on('pageerror',e=>kl.push(String(e).slice(0,150)));
-      const r=await pg.goto(WP+'/wp-admin/admin.php?page=ps-siuntos-laiskas&id=35065',{waitUntil:'networkidle',timeout:60000});
+      const r=await pg.goto(WP+'/wp-admin/admin.php?page=ps-desk&eile=misrus',{waitUntil:'networkidle',timeout:60000});
       await miegok(1200);
-      const ta=await pg.$('#psPrierasas');
-      if(ta){ await ta.fill('Įdėjome skanėstą Rikiui — nuo mūsų komandos.'); await pg.dispatchEvent('#psPrierasas','input'); await miegok(700); }
-      out.laiskas={http:r.status(),
-        perziura:await pg.$eval('#psPerziura',n=>n.innerText.slice(0,500)).catch(()=>'NERA'),
-        mygtukai:await pg.$$eval('button',ns=>ns.map(n=>n.textContent.trim()+(n.disabled?' [PILKAS]':''))),
-        put:await put('screenshots/h241_laiskas.png',await pg.screenshot({fullPage:true}),'VER16')};
+      out.misrus={http:r.status(),
+        sekcijos:await pg.$$eval('.pd-msec',ns=>ns.map(n=>n.textContent.trim())),
+        rail_misrus:await pg.$eval('a[href*="eile=misrus"] .pd-cnt, a[href*="eile=misrus"]',n=>n.textContent.trim().slice(0,40)).catch(()=>'?'),
+        korteles:await pg.$$eval('.pd-mcard .pd-mh b',ns=>ns.map(n=>n.textContent.trim())),
+        mygtukai:await pg.$$eval('.pd-mf .pd-btn',ns=>ns.map(n=>n.textContent.trim())),
+        bukles:await pg.$$eval('.pd-mbukle',ns=>ns.map(n=>n.textContent.trim())),
+        put:await put('screenshots/h242_misrus.png',await pg.screenshot({fullPage:true}),'H242A')};
       out.js=kl; await br.close();
     }
-    await fetch(WP+'/?ps_ver16=RUN20260823&valyti=1');
     await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
   }
 }catch(e){ out.klaida=String(e).slice(0,500);
   if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
-await put('screenshots/ver16.json', Buffer.from(JSON.stringify(out,null,1)), 'VER16');
+await put('screenshots/h242.json', Buffer.from(JSON.stringify(out,null,1)), 'H242A');
