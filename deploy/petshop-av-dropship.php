@@ -1,5 +1,14 @@
 <?php
 /**
+ * Petshop AV Dropship v1.12 (H251) — LAIŠKŲ LANGAS: „LAUKIA IŠSIUNTIMO" + „IŠSIŲSTI".
+ *
+ * KODĖL (Raimis, H251): „reikia lauko, kur dar neišsiųsti laiškai, jei noriu ko
+ * nors pasižiūrėti". DABAR Įrankiai → „Laiškai" turi du skirtukus:
+ *   • Laukia išsiuntimo — pagal tiekėją sugrupuoti NEPERDUOTI užsakymai su
+ *     laiško peržiūra (tiksliai tas tekstas, kuris išeis) ir mygtuku „Perduoti";
+ *     čia pat ir kaupiamos tiekimo partijos (prekės į AV).
+ *   • Išsiųsti — archyvas (200 paskutinių) su pilnu tekstu.
+ *
  * Petshop AV Dropship v1.11 (H250) — LAIŠKO ADRESATAI IR IŠSIŲSTŲ LAIŠKŲ ARCHYVAS.
  *
  * KODĖL (Raimis, H250): „kur visi šitie laiškai yra? sakei padarei, kad laiškas
@@ -124,7 +133,7 @@ class Petshop_AV_Dropship {
 	public static function meniu() {
 		add_submenu_page( null, 'Perduoti tiekėjams', 'Perduoti tiekėjams',
 			'edit_shop_orders', 'ps-dropship', [ __CLASS__, 'puslapis' ] );
-		add_submenu_page( 'ps-desk', 'Išsiųsti laiškai', 'Išsiųsti laiškai', 'edit_shop_orders',
+		add_submenu_page( 'ps-desk', 'Laiškai', 'Laiškai', 'edit_shop_orders',
 			'ps-laiskai', [ __CLASS__, 'archyvo_puslapis' ] );
 		add_submenu_page( 'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai',
 			'manage_woocommerce', 'ps-dropship-nustatymai', [ __CLASS__, 'nustatymai' ] );
@@ -277,13 +286,47 @@ class Petshop_AV_Dropship {
 	}
 
 	/** Išsiųstų laiškų archyvas — vienoje vietoje matai, kas kam išėjo (H250). */
+	/** Visi neperduoti užsakymai (ne tik pažymėti) — sugrupuoti pagal tiekėją. */
+	protected static function laukiantys_perdavimo() {
+		$ids = wc_get_orders( array(
+			'limit'  => 200,
+			'type'   => 'shop_order',
+			'status' => array( 'processing' ),
+			'return' => 'ids',
+		) );
+		$tinka = array();
+		foreach ( (array) $ids as $oid ) {
+			$o = wc_get_order( $oid );
+			if ( $o && self::neperduotos( $o ) ) { $tinka[] = $oid; }
+		}
+		return $tinka ? self::grupuoti( $tinka ) : array();
+	}
+
 	public static function archyvo_puslapis() {
 		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
-		$a = (array) get_option( 'ps_laisku_archyvas', [] );
-		$z = isset( $_GET['z'] ) ? absint( $_GET['z'] ) : -1;
-		echo '<div class="wrap"><h1>Išsiųsti laiškai</h1>';
+		$a   = (array) get_option( 'ps_laisku_archyvas', [] );
+		$z   = isset( $_GET['z'] ) ? absint( $_GET['z'] ) : -1;
+		$sk  = isset( $_GET['b'] ) ? sanitize_key( $_GET['b'] ) : 'laukia';
+		echo '<div class="wrap"><h1>Laiškai</h1>';
 		printf( '<p><a class="button" href="%s">← Petshop užsakymai</a></p>',
 			esc_url( admin_url( 'admin.php?page=ps-desk' ) ) );
+
+		$g = ( 'laukia' === $sk && $z < 0 ) ? self::laukiantys_perdavimo() : array();
+		echo '<h2 class="nav-tab-wrapper">';
+		printf( '<a class="nav-tab %s" href="%s">Laukia išsiuntimo%s</a>',
+			'laukia' === $sk ? 'nav-tab-active' : '',
+			esc_url( admin_url( 'admin.php?page=ps-laiskai&b=laukia' ) ),
+			$g ? ' (' . count( $g ) . ')' : '' );
+		printf( '<a class="nav-tab %s" href="%s">Išsiųsti (%d)</a>',
+			'issiusti' === $sk ? 'nav-tab-active' : '',
+			esc_url( admin_url( 'admin.php?page=ps-laiskai&b=issiusti' ) ), count( $a ) );
+		echo '</h2>';
+
+		if ( 'laukia' === $sk && $z < 0 ) {
+			self::laukianciu_sarasas( $g );
+			echo '</div>';
+			return;
+		}
 
 		if ( ! $a ) {
 			echo '<p>Kol kas nieko neišsiųsta. Čia kaupsis visi laiškai tiekėjams — kam, kada, su kokiais priedais.</p></div>';
@@ -315,6 +358,63 @@ class Petshop_AV_Dropship {
 				esc_url( admin_url( 'admin.php?page=ps-laiskai&z=' . (int) $i ) ) );
 		}
 		echo '</tbody></table></div>';
+	}
+
+	/** „Laukia išsiuntimo": ką sistema paruošė, bet dar neišsiuntė. */
+	protected static function laukianciu_sarasas( $g ) {
+		global $wpdb;
+		$t      = self::tiekejai();
+		$pastai = (array) get_option( self::OPT_EMAIL, [] );
+		$perz   = isset( $_GET['perziura'] ) ? sanitize_key( $_GET['perziura'] ) : '';
+
+		if ( ! $g ) {
+			echo '<p>Nė vienam tiekėjui laiško nelaukia — viskas perduota.</p>';
+		}
+		foreach ( $g as $src => $uzsakymai ) {
+			$vardas = $t[ $src ][0] ?? strtoupper( $src );
+			$vnt    = 0;
+			foreach ( $uzsakymai as $u ) { foreach ( $u['eilutes'] as $e ) { $vnt += $e['qty']; } }
+			printf( '<div class="ps-tiek"><div class="ps-tiek-h"><h2>%s</h2><span>%d užsak. · %d vnt. · %s</span></div>',
+				esc_html( $vardas ), count( $uzsakymai ), (int) $vnt,
+				'zb' === $src ? 'suvedama ranka ZB sistemoje'
+					: esc_html( $pastai[ $src ] ?? 'el. pašto nėra' ) );
+			echo '<table class="widefat striped"><tbody>';
+			foreach ( $uzsakymai as $oid => $u ) {
+				printf( '<tr><td style="width:110px"><b>#%s</b></td><td>%s</td><td style="width:90px" class="ps-r">%d vnt.</td></tr>',
+					esc_html( $u['nr'] ?? $oid ),
+					esc_html( $u['klientas'] ?? '' ),
+					array_sum( wp_list_pluck( $u['eilutes'], 'qty' ) ) );
+			}
+			echo '</tbody></table><p>';
+			printf( '<a class="button" href="%s">%s</a> ',
+				esc_url( admin_url( 'admin.php?page=ps-laiskai&b=laukia&perziura=' . ( $perz === $src ? '' : $src ) ) ),
+				$perz === $src ? 'Slėpti laiško peržiūrą' : 'Peržiūrėti laišką' );
+			printf( '<a class="button button-primary" href="%s">Eiti perduoti %s →</a></p>',
+				esc_url( admin_url( 'admin.php?page=ps-desk&eile=nauji&zvilgsnis=neperduota' ) ),
+				esc_html( $vardas ) );
+			if ( $perz === $src ) {
+				echo '<div style="background:#fff;border:1px solid #ddd;padding:16px;max-width:900px">'
+					. wp_kses_post( self::laisko_html( $src, $uzsakymai, '' ) ) . '</div>';
+			}
+			echo '</div>';
+		}
+
+		// Kaupiamos tiekimo partijos — laiškas dar nesuformuotas.
+		$p = $wpdb->get_results( "SELECT id, tiekejas FROM {$wpdb->prefix}ps_tiekimas p
+			WHERE busena='kaupiama' AND EXISTS
+			(SELECT 1 FROM {$wpdb->prefix}ps_tiekimas_eil e WHERE e.partija_id=p.id)" );
+		if ( $p ) {
+			echo '<div class="ps-tiek"><div class="ps-tiek-h"><h2>Prekės į AV sandėlį</h2>
+				<span>kaupiamos partijos — laiškas išeis paspaudus „Užsakyti iš tiekėjo"</span></div>
+				<table class="widefat striped"><tbody>';
+			foreach ( $p as $r ) {
+				printf( '<tr><td>%s</td><td>partija #%d</td><td class="ps-r"><a href="%s">Atidaryti Tiekimą →</a></td></tr>',
+					esc_html( self::tiekejai()[ $r->tiekejas ][0] ?? strtoupper( $r->tiekejas ) ),
+					(int) $r->id,
+					esc_url( admin_url( 'admin.php?page=ps-tiekimas&b=kaupiama' ) ) );
+			}
+			echo '</tbody></table></div>';
+		}
 	}
 
 	/** Kiek lipdukų šiam užsakymui (pack_numbers ilgis). */
