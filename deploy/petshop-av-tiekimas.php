@@ -9,7 +9,9 @@
  *      (siuntėjas = tiekėjo sandėlis, gavėjas = AV arba Nemenčinės paštomatas);
  *   2. pack_no rezervuojamas per patį pluginą (reserve_pack_numbers) — numeriai
  *      nesikerta su užsakymų siuntomis;
- *   3. lipdukas (print_label PDF) PRISEGAMAS prie laiško tiekėjui;
+ *   3. lipdukas (print_label PDF) PRISEGAMAS prie laiško tiekėjui — kaip ir bet
+ *      kurioje kitoje siuntoje; laiške tik siuntos nr., jokių papildomų aiškinimų
+ *      (H247.1, Raimis: „procedūra jau suderinta, tik į AV sandėlį");
  *   4. numeris ir manifestas saugomi partijos meta, matomi „Užsakyta · laukiam"
  *      skiltyje su nuoroda „Lipdukas PDF" ir sekimo numeriu.
  * „Tiekėjas atveža pats" ir rankiniai tiekėjai (ŽB) siuntos NEREGISTRUOJA.
@@ -1025,9 +1027,6 @@ class Petshop_AV_Tiekimas {
 					esc_html( $pst['vardas'] ), esc_html( $pst['adresas'] ),
 					$kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
 				break;
-			case 'nenaudojama':
-				$kelias = '';
-				break;
 			case 'tiekejas':
 				$kelias = '<p>Prekes atvešite patys į mūsų sandėlį (' . esc_html( self::AV_ADRESAS ) . ').</p>';
 				break;
@@ -1038,12 +1037,9 @@ class Petshop_AV_Tiekimas {
 					$kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
 		}
 
-		// Siuntos numeris ir lipdukas — laiške (H247).
+		// Lipdukas — kaip visose siuntose (H247.1).
 		if ( ! empty( $vp['pack'] ) ) {
-			$kelias .= sprintf(
-				'<p><b>Siunta jau užregistruota mūsų Venipak sutartimi.</b><br>
-				 Siuntos numeris: <b>%s</b>. Kurjerį kviesti nereikia — atvyks pagal mūsų užsakymą.<br>
-				 <b>Lipduką rasite laiško priede</b> — atspausdinkite ir užklijuokite ant siuntos.</p>',
+			$kelias .= sprintf( '<p>Siuntos lipdukas — laiško priede. Siuntos nr. <b>%s</b>.</p>',
 				esc_html( $vp['pack'] ) );
 		}
 
