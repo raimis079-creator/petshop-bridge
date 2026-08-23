@@ -1,6 +1,20 @@
 <?php
 /**
- * Petshop Desk v3.34 (H237) — mišrių kortelė perdaryta pagal Raimio pastabas;
+ * Petshop Desk v3.35 (H239) — 🔴 SPRENDIMAS ATSKIRTAS NUO VYKDYMO.
+ *
+ * KODĖL (Raimis, H239): „užsakymas iškarto nukrito į vykdymą, nors aš nenorėjau...
+ * aš noriu nuspręsti ką daryti, o ne sistema“. Mygtukas „Patvirtinti“ darė du
+ * dalykus vienu paspaudimu — įrašydavo planą IR iškart sudėdavo eilutes į tiekimo
+ * partijas, todėl užsakymas savaime iškrisdavo iš Mišrių į „Laukia prekių“.
+ *
+ * DABAR: „Patvirtinti planą“ tik UŽRAŠO (`_ps_misrus_sprendimas`). Nieko neperkelia,
+ * niekam nerašo. Vykdymą pradeda Raimis atskirais mygtukais:
+ *   „Į tiekimo partiją“ — sudeda „į AV“ eilutes ir tik tada užsakymas eina laukti;
+ *   „Perduoti tiekėjui“ — „tiesiai klientui“ dalims, kaip visada;
+ *   „Keisti planą“      — kol niekas neperduota ir partijos kaupiamos.
+ * Sistema neturi nė vieno savarankiško žingsnio: ji atsimena ir primena, ne veikia.
+ *
+ * v3.34 (H237) — mišrių kortelė perdaryta pagal Raimio pastabas;
  * SVORIS PAGAL SANDĖLĮ rytinėje eigoje.
  *
  * Raimis: „viskas vienoje spalvoje, neaišku kur koks užsakymas... įsivaizduok
@@ -246,6 +260,25 @@ class Petshop_Desk {
 					'id'  => 'perduoti',
 					't'   => $turi_av ? 'Perduoti tiekėjui' : 'Perduoti',
 					'url' => self::veiksmo_url( 'perduoti', $id ),
+					'd'   => null,
+				);
+			}
+
+			// Planas yra, bet „į AV“ dalys dar nesudėtos — paleidžia ŽMOGUS (H239).
+			$laukia_kons = self::kons_laukia( $o );
+			if ( $laukia_kons ) {
+				$out[] = array(
+					'id'  => 'kons',
+					't'   => sprintf( 'Į tiekimo partiją (%d)', count( $laukia_kons ) ),
+					'url' => self::veiksmo_url( 'kons', $id ),
+					'd'   => null,
+				);
+			}
+			if ( self::misrus_sprendimas( $o ) ) {
+				$out[] = array(
+					'id'  => 'misrus_keisti',
+					't'   => 'Keisti planą',
+					'url' => self::veiksmo_url( 'misrus_keisti', $id ),
 					'd'   => null,
 				);
 			}
@@ -663,45 +696,71 @@ class Petshop_Desk {
 		 * pažymimos `_ps_konsolidacija`, todėl tiekėjo laiške jų nebelieka (H233).
 		 * „tiesiai“ — atvirkščias veiksmas, kol partija dar kaupiama.
 		 */
+		/**
+		 * Mišraus užsakymo PLANAS. Tik įrašomas — jokių perkėlimų, jokių laiškų.
+		 * Vykdymą pradeda žmogus atskiru mygtuku (H239).
+		 */
 		if ( 'misrus' === $v ) {
 			$pasirinkta = isset( $_GET['s'] ) ? (array) wp_unslash( $_GET['s'] ) : array();
-			$spr  = array();
-			$ideta = 0;
-			$isimta = 0;
-
-			foreach ( $o->get_items() as $iid => $it ) {
-				$src = self::eilutes_saltinis( $it );
-				if ( ! $src || 'av' === $src ) { continue; }
-
-				$kelias = ( isset( $pasirinkta[ $src ] ) && 'av' === sanitize_key( $pasirinkta[ $src ] ) ) ? 'av' : 'tiesiai';
-				$spr[ $src ] = $kelias;
-
-				if ( 'av' === $kelias ) {
-					$it->update_meta_data( '_ps_konsolidacija', 1 );
-					$it->save();
-					if ( class_exists( 'Petshop_AV_Tiekimas' )
-						&& Petshop_AV_Tiekimas::ideti_eilute( $o, (int) $iid, $src ) ) { $ideta++; }
-				} else {
-					$it->delete_meta_data( '_ps_konsolidacija' );
-					$it->save();
-					if ( class_exists( 'Petshop_AV_Tiekimas' ) ) {
-						$isimta += (int) Petshop_AV_Tiekimas::isimti_eilute( $o, (int) $iid );
-					}
-				}
+			$spr = array();
+			foreach ( self::saltiniai( $o ) as $src ) {
+				if ( 'av' === $src ) { continue; }
+				$spr[ $src ] = ( isset( $pasirinkta[ $src ] ) && 'av' === sanitize_key( $pasirinkta[ $src ] ) ) ? 'av' : 'tiesiai';
 			}
 
-			$o = wc_get_order( $id );
 			$aprasas = array();
 			foreach ( $spr as $t => $k ) {
-				$aprasas[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . ' — ' . ( 'av' === $k ? 'į AV' : 'tiesiai klientui' );
+				$aprasas[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . ' — ' . ( 'av' === $k ? 'į AV' : 'tiesiai' );
 			}
 			$o->update_meta_data( '_ps_misrus_sprendimas', wp_json_encode( $spr ) );
 			$o->update_meta_data( '_ps_misrus_sprestas', current_time( 'mysql' ) . ' | ' . $naudotojas );
-			$o->add_order_note( 'Mišraus užsakymo sprendimas: ' . implode( ' · ', $aprasas ) . '. Vartotojas: ' . $naudotojas . '.', false, true );
+			$o->add_order_note( 'Mišraus užsakymo PLANAS: ' . implode( ' · ', $aprasas )
+				. '. Dar neįvykdyta — laukia paleidimo. Vartotojas: ' . $naudotojas . '.', false, true );
 			$o->save();
 
-			$zinute    = 'misrus_ok';
+			$zinute     = 'misrus_ok';
 			$nr_priedas = implode( ' · ', $aprasas );
+		}
+
+		/**
+		 * Plano VYKDYMAS: „į AV“ eilutės sudedamos į tiekimo partijas.
+		 * Tik nuo šio paspaudimo užsakymas keliauja į „Laukia prekių“.
+		 */
+		if ( 'kons' === $v ) {
+			$spr = self::misrus_sprendimas( $o );
+			$n = 0;
+			foreach ( $o->get_items() as $iid => $it ) {
+				$src = self::eilutes_saltinis( $it );
+				if ( ! $src || 'av' === $src || 'av' !== ( $spr[ $src ] ?? '' ) ) { continue; }
+				if ( ! class_exists( 'Petshop_AV_Tiekimas' ) ) { continue; }
+				if ( Petshop_AV_Tiekimas::ideti_eilute( $o, (int) $iid, $src ) ) {
+					$it->update_meta_data( '_ps_konsolidacija', 1 );
+					$it->save();
+					$n++;
+				}
+			}
+			$o = wc_get_order( $id );
+			$zinute     = $n ? 'kons_ok' : 'kons_nieko';
+			$nr_priedas = (string) $n;
+		}
+
+		/** Plano atšaukimas — kol partijos dar kaupiamos. */
+		if ( 'misrus_keisti' === $v ) {
+			foreach ( $o->get_items() as $iid => $it ) {
+				if ( class_exists( 'Petshop_AV_Tiekimas' ) ) {
+					Petshop_AV_Tiekimas::isimti_eilute( $o, (int) $iid );
+				}
+				if ( $it->get_meta( '_ps_konsolidacija' ) ) {
+					$it->delete_meta_data( '_ps_konsolidacija' );
+					$it->save();
+				}
+			}
+			$o = wc_get_order( $id );
+			$o->delete_meta_data( '_ps_misrus_sprendimas' );
+			$o->delete_meta_data( '_ps_misrus_sprestas' );
+			$o->add_order_note( 'Mišraus užsakymo planas atšauktas — grįžta į Mišrius. Vartotojas: ' . $naudotojas . '.', false, true );
+			$o->save();
+			$zinute = 'misrus_atsaukta';
 		}
 
 		/**
@@ -1865,7 +1924,10 @@ class Petshop_Desk {
 			'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas.' ),
 			'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),
 			'istrinta'        => array( 'ok', 'Užsakymas #%s ištrintas negrįžtamai.' ),
-			'misrus_ok'       => array( 'ok', 'Užsakymo #%s sprendimas įrašytas: %s' ),
+			'misrus_ok'       => array( 'ok', 'Užsakymo #%s planas įrašytas: %s. Nieko dar neišsiųsta — paleisk mygtukais.' ),
+			'kons_ok'         => array( 'ok', 'Užsakymas #%s: %s eilutė(-ės) įdėtos į tiekimo partijas — laukiam prekių į AV.' ),
+			'kons_nieko'      => array( 'info', 'Užsakyme #%s nėra ko dėti į tiekimo partijas.' ),
+			'misrus_atsaukta' => array( 'ok', 'Užsakymo #%s planas atšauktas — grįžo į Mišrius.' ),
 			'trinti_negalima' => array( 'klaida', 'Užsakymo #%s ištrinti negalima — pirma jį atšauk.' ),
 			'vp_ok'           => array( 'ok', 'Venipak: siuntos užregistruotos (%s). Manifestas paruoštas.' ),
 			'vp_klaida'       => array( 'klaida', 'Venipak nepriėmė: %s' ),
@@ -1878,7 +1940,7 @@ class Petshop_Desk {
 		);
 		if ( ! isset( $t[ $k ] ) ) { return; }
 		$dalys = explode( '|', $nr, 2 );
-		$tekstas = in_array( $k, array( 'apmoketa_klausimas', 'misrus_ok' ), true )
+		$tekstas = in_array( $k, array( 'apmoketa_klausimas', 'misrus_ok', 'kons_ok' ), true )
 			? sprintf( $t[ $k ][1], $dalys[0], $dalys[1] ?? '' )
 			: sprintf( $t[ $k ][1], $nr );
 		if ( 'apmoketa_klausimas' === $k ) {
@@ -2133,6 +2195,24 @@ class Petshop_Desk {
 		return $g;
 	}
 
+	/**
+	 * Kurios „į AV“ eilutės pagal planą dar NĖRA tiekimo lentelėje.
+	 * Tuščias masyvas = planas įvykdytas (arba jo nėra).
+	 */
+	protected static function kons_laukia( $o ) {
+		$spr = self::misrus_sprendimas( $o );
+		if ( ! $spr ) { return array(); }
+		$liko = array();
+		foreach ( $o->get_items() as $iid => $it ) {
+			$src = self::eilutes_saltinis( $it );
+			if ( ! $src || 'av' === $src || 'av' !== ( $spr[ $src ] ?? '' ) ) { continue; }
+			if ( class_exists( 'Petshop_AV_Tiekimas' )
+				&& Petshop_AV_Tiekimas::eilutes_bukle( $o->get_id(), (int) $iid ) ) { continue; }
+			$liko[] = (int) $iid;
+		}
+		return $liko;
+	}
+
 	/** Įrašytas sprendimas: sandėlis => tiesiai|av. */
 	protected static function misrus_sprendimas( $o ) {
 		$m = $o->get_meta( '_ps_misrus_sprendimas' );
@@ -2196,15 +2276,16 @@ class Petshop_Desk {
 
 			/* Suvestinėje TIK tai, kas žinoma: siuntų skaičius, svoris, kliento sumokėtas
 			   pristatymas. Vežėjo kaštai — kai bus tarifų lentelė (H237). */
-			printf( '<div class="pd-mf"><span class="pd-msum-t"></span><span class="pd-mpay">klientas už pristatymą sumokėjo %s</span><button type="submit" class="pd-btn pd-btn-p">Patvirtinti</button></div>',
+			printf( '<div class="pd-mf"><span class="pd-msum-t"></span><span class="pd-mpay">klientas už pristatymą sumokėjo %s</span><button type="submit" class="pd-btn pd-btn-p">Patvirtinti planą</button></div>',
 				esc_html( number_format( $sh, 2, ',', ' ' ) . ' €' ) );
 
 			echo '</form></div>';
 		}
 		echo '</div>';
-		echo '<div class="pd-khint">Sprendimas nieko neišsiunčia. „Į AV“ dalys patenka į tiekimo lentelę ir tiekėjo laiške
-			neberodomos; kaip jos atkeliaus (paštomatu, kurjeriu ar tiekėjas atveš) — sprendžiama partijos lygmenyje,
-			kai matai visą dienos krūvą. „Tiesiai klientui“ dalys lieka įprastame darbe.</div>';
+		echo '<div class="pd-khint"><b>Planas nieko nepradeda.</b> Patvirtinus užsakymas grįžta į „Nauji“ su žyme, ką nusprendei.
+			Vykdymą pradedi tu: „Į tiekimo partiją“ sudeda „į AV“ eilutes (tik tada užsakymas eina laukti prekių),
+			„Perduoti tiekėjui“ — dalims, kurios keliauja tiesiai. Kol nepaleista, planą gali perrašyti „Keisti planą“.
+			Kaip prekės atkeliaus į AV (paštomatu, kurjeriu ar tiekėjas atveš) — sprendžiama partijos lygmenyje.</div>';
 	}
 
 	protected static function klausimu_korteles( $eilutes ) {
@@ -2332,6 +2413,17 @@ class Petshop_Desk {
 
 			echo '<td><div class="pd-exec">' . esc_html( $vyk ? $vyk : '—' );
 			if ( 'MIŠRUS' === $vyk ) { echo '<small>' . esc_html( $siuntu ) . ' siuntos</small>'; }
+			// Planas matomas sąraše, kad nereikėtų atidarinėti (H239).
+			$spr_z = self::misrus_sprendimas( $o );
+			if ( $spr_z ) {
+				$dal = array();
+				foreach ( $spr_z as $t => $k ) {
+					$dal[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . '→' . ( 'av' === $k ? 'AV' : 'klientui' );
+				}
+				printf( '<small class="pd-planas">planas: %s%s</small>',
+					esc_html( implode( ' · ', $dal ) ),
+					self::kons_laukia( $o ) ? ' <b>· nepaleista</b>' : '' );
+			}
 			// riba rodoma tik ten, kur darbas dar nepadarytas
 			// riba prasminga tik ŠIANDIENOS užsakymui — senam „keliaus rytoj" jau 17-a diena būtų melas
 			if ( 'nauji' === $row['eile'] && $o->get_date_created()
@@ -2846,6 +2938,7 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-mf.pd-mwarn{background:#FBF2DE;color:#96660C}
 .pd-msum-t{font-weight:600}
 .pd-mpay{margin-left:auto;color:var(--ink2);font-size:12.5px}
+.pd-planas{display:block;font-size:11.5px;color:#96660C}
 .pd-vkg{font-size:12px;color:var(--ink2);margin-left:12px;font-variant-numeric:tabular-nums}
 .pd-ryt-f{border-top:1px solid var(--line);padding:12px 32px;display:flex;gap:10px;align-items:center;background:var(--card)}
 .pd-ryt-hint{font-size:12.5px;color:var(--ink3);flex:1;text-align:center}
