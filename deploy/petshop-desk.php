@@ -1,6 +1,21 @@
 <?php
 /**
- * Petshop Desk v3.33 (H236) — EILĖ „MIŠRŪS“ + SPRENDIMO KORTELĖ.
+ * Petshop Desk v3.34 (H237) — mišrių kortelė perdaryta pagal Raimio pastabas;
+ * SVORIS PAGAL SANDĖLĮ rytinėje eigoje.
+ *
+ * Raimis: „viskas vienoje spalvoje, neaišku kur koks užsakymas... įsivaizduok
+ * jei tokių 10“. Kortelė susiaurinta, užsakymai atskirti, eilutės kompaktiškos.
+ *
+ * IŠIMTA IŠGALVOTA KAINA: rodžiau „vežėjui ~3,56 €“, dauginęs užsakymo dabartinį
+ * tarifą iš siuntų skaičiaus. Tai netiesa — nežinia, kuo bus siunčiama kiekviena
+ * dalis, ir visai nežinia, kiek kainuos parsivežimas į AV. Be tarifų lentelės
+ * kaštai NERODOMI. Klientas sumokėjo — rodoma, nes tai faktas užsakyme.
+ *
+ * SVORIS: kviečiant kurjerį į bet kurį sandėlį reikia pasakyti BENDRĄ svorį,
+ * nesvarbu, ar siuntos į paštomatą, ar kurjeriu (Raimis H237). Todėl rytinės
+ * eigos Venipak ir LP žingsniuose kiekviena sandėlio grupė turi savo sumą.
+ *
+ * v3.33 (H236) — EILĖ „MIŠRŪS“ + SPRENDIMO KORTELĖ.
  *
  * KODĖL (Raimis, H235–H236): „darbuotojui bus painu... turi visur būti labai
  * aiškūs mechanizmai“. Mišrus užsakymas gulėjo bendroje krūvoje su dviem
@@ -1583,11 +1598,18 @@ class Petshop_Desk {
 			$grupe = $p['vp_grupes'][ $k ];
 			list( $eil, $ok, $viso ) = self::siuntu_bukle( $grupe );
 
+			list( $kg, $be_svorio ) = self::grupes_svoris( $grupe );
+
 			echo '<div class="pd-vgrp">';
-			printf( '<div class="pd-vgrp-h"><b>%s</b><span class="pd-vman">manifestas %s</span>%s%s</div>',
+			printf( '<div class="pd-vgrp-h"><b>%s</b><span class="pd-vman">manifestas %s</span>%s%s%s</div>',
 				esc_html( $pav[ $k ] ?? mb_strtoupper( $k ) ),
 				esc_html( self::manifesto_numeris( $mkod ) ),
 				self::ribos_zyme( $k ),
+				// Kurjeriui iškviesti reikia BENDRO svorio iš to sandėlio (H237).
+				sprintf( '<span class="pd-vkg" title="Bendras svoris kurjerio iškvietimui">%d %s · viso %s%s</span>',
+					$viso, esc_html( self::linksnis( $viso, 'siunta', 'siuntos', 'siuntų' ) ),
+					esc_html( self::kg( $kg ) ),
+					$be_svorio ? esc_html( sprintf( ' · %d be svorio', $be_svorio ) ) : '' ),
 				sprintf( '<span class="pd-rstat %s">%s</span>',
 					$ok === $viso ? 'ok' : ( $ok ? 'dalis' : 'nulis' ),
 					esc_html( sprintf( 'registruota %d iš %d', $ok, $viso ) ) ) );
@@ -1715,9 +1737,11 @@ class Petshop_Desk {
 		echo '<h2 class="pd-rh2">LP Express</h2>';
 		if ( ! $p['lp'] ) { echo '<p class="pd-rnote">LP Express siuntų šioje partijoje nėra.</p>'; return; }
 
-		printf( '<p class="pd-rnote">%d %s. Dydį LP parenka pats pagal svorį — rinktis nereikia.
+		list( $lp_kg ) = self::grupes_svoris( $p['lp'] );
+		printf( '<p class="pd-rnote">%d %s · <b>viso %s</b> (kurjerio iškvietimui). Dydį LP parenka pats pagal svorį — rinktis nereikia.
 			Kurjeris atvažiuoja <b>13:00</b>. %s</p>',
 			count( $p['lp'] ), esc_html( self::linksnis( count( $p['lp'] ), 'siunta', 'siuntos', 'siuntų' ) ),
+			esc_html( self::kg( $lp_kg ) ),
 			wp_kses_post( self::ribos_zyme( 'lp' ) ) );
 
 		echo '<div class="pd-rwarn" style="margin:0 0 16px">Lipduko formavimas LP sistemoje <b>iškart išsikviečia
@@ -2061,6 +2085,36 @@ class Petshop_Desk {
 	 * kartu. Jei kada prireiks eilutės tikslumo — struktūra tam pasiruošusi,
 	 * nes žymė guli ant EILUTĖS (`_ps_konsolidacija`), ne ant užsakymo.
 	 */
+	/** Užsakymo svoris kilogramais (prekės × kiekis). */
+	protected static function uzsakymo_svoris( $o ) {
+		$kg = 0.0;
+		foreach ( $o->get_items() as $it ) {
+			$p = $it->get_product();
+			if ( $p ) { $kg += (float) $p->get_weight() * (int) $it->get_quantity(); }
+		}
+		return $kg;
+	}
+
+	/** Grupės (sandėlio) bendras svoris — kurjerio iškvietimui (H237). */
+	protected static function grupes_svoris( $ids ) {
+		$kg = 0.0;
+		$be = 0;
+		foreach ( (array) $ids as $id ) {
+			$o = wc_get_order( $id );
+			if ( ! $o ) { continue; }
+			$s = self::uzsakymo_svoris( $o );
+			if ( $s <= 0 ) { $be++; }
+			$kg += $s;
+		}
+		return array( $kg, $be );
+	}
+
+	/** „12,4 kg“ arba „—“. */
+	protected static function kg( $kg ) {
+		if ( $kg <= 0 ) { return '—'; }
+		return rtrim( rtrim( number_format( $kg, 1, ',', ' ' ), '0' ), ',' ) . ' kg';
+	}
+
 	protected static function misrus_grupes( $o ) {
 		$g = array();
 		foreach ( $o->get_items() as $iid => $it ) {
@@ -2087,57 +2141,51 @@ class Petshop_Desk {
 	}
 
 	protected static function misriu_korteles( $eilutes ) {
+		echo '<div class="pd-mlist">';
 		foreach ( $eilutes as $row ) {
-			$o    = $row['o'];
-			$id   = $o->get_id();
-			$g    = self::misrus_grupes( $o );
-			$spr  = self::misrus_sprendimas( $o );
-			$vez  = self::vezejas( $o );
-			$tarifas = ( 'venipak_kurjeris' === $vez ) ? 3.30 : 1.78;
+			$o   = $row['o'];
+			$id  = $o->get_id();
+			$g   = self::misrus_grupes( $o );
+			$spr = self::misrus_sprendimas( $o );
 
 			$sh = 0;
 			foreach ( $o->get_items( 'shipping' ) as $x ) { $sh += (float) $x->get_total() + (float) $x->get_total_tax(); }
 
-			printf( '<div class="pd-mcard"><div class="pd-kh"><b>#%s</b><span>%s · %s</span>%s<span class="pd-mtag">%s</span></div>',
+			printf( '<div class="pd-mcard"><div class="pd-mh"><b>#%s</b><span class="pd-mkl">%s</span>%s<span class="pd-msuma">%s</span><span class="pd-mvez">%s</span></div>',
 				esc_html( $o->get_order_number() ),
 				esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ),
-				wp_kses_post( $o->get_formatted_order_total() ),
 				$o->is_paid() ? '<span class="pd-kpaid">apmokėta</span>' : '<span class="pd-kunpaid">neapmokėta</span>',
+				wp_kses_post( $o->get_formatted_order_total() ),
 				esc_html( self::vezejo_vardas( $o ) ) );
 
-			printf( '<form method="get" action="%s" class="pd-mform" data-tarifas="%s" data-siunta="%s">',
-				esc_url( admin_url( 'admin-post.php' ) ),
-				esc_attr( number_format( $tarifas, 2, '.', '' ) ),
-				esc_attr( number_format( $sh, 2, '.', '' ) ) );
-			printf( '<input type="hidden" name="action" value="ps_desk_veiksmas"><input type="hidden" name="v" value="misrus">' );
+			printf( '<form method="get" action="%s" class="pd-mform">', esc_url( admin_url( 'admin-post.php' ) ) );
+			echo '<input type="hidden" name="action" value="ps_desk_veiksmas"><input type="hidden" name="v" value="misrus">';
 			printf( '<input type="hidden" name="id" value="%d"><input type="hidden" name="_wpnonce" value="%s">',
 				$id, esc_attr( wp_create_nonce( 'ps_desk_misrus_' . $id ) ) );
 			printf( '<input type="hidden" name="g" value="%s">',
 				esc_attr( admin_url( 'admin.php?page=' . self::SLUG . '&eile=misrus' ) ) );
 
-			echo '<div class="pd-mrows">';
 			foreach ( $g as $src => $d ) {
-				$vardas = self::SALTINIAI[ $src ][2] ?? mb_strtoupper( $src );
+				$vardas = self::SALTINIAI[ $src ][1] ?? mb_strtoupper( $src );
 				$rz     = self::riba( $src );
-				$info   = sprintf( '%d %s · %s vnt.%s',
-					$d['eilutes'], self::linksnis( $d['eilutes'], 'prekė', 'prekės', 'prekių' ),
-					$d['vnt'],
-					$d['svoris'] > 0 ? ' · ' . rtrim( rtrim( number_format( $d['svoris'], 1, ',', ' ' ), '0' ), ',' ) . ' kg' : '' );
 
 				echo '<div class="pd-mrow">';
-				printf( '<div class="pd-mleft">%s<b>%s</b><span>%s</span>%s</div>',
-					self::zyme( $src ), esc_html( $vardas ), esc_html( $info ),
-					$rz ? sprintf( '<small class="pd-riba-%s">%s</small>', esc_attr( $rz[0] ), esc_html( $rz[1] ) ) : '' );
+				printf( '<div class="pd-mleft">%s<b>%s</b></div>', self::zyme( $src ), esc_html( $vardas ) );
 
 				printf( '<div class="pd-mprek">%s</div>', esc_html( implode( ' · ', $d['pav'] ) ) );
 
+				printf( '<div class="pd-mkg">%s</div>', esc_html( self::kg( $d['svoris'] ) ) );
+
+				printf( '<div class="pd-mriba">%s</div>',
+					$rz ? sprintf( '<small class="pd-riba-%s">%s</small>', esc_attr( $rz[0] ), esc_html( $rz[1] ) ) : '' );
+
 				if ( 'av' === $src ) {
-					echo '<div class="pd-mopt"><span class="pd-mfix">iš savo sandėlio</span></div>';
+					echo '<div class="pd-mopt"><span class="pd-mfix">savas sandėlis</span></div>';
 				} else {
 					$dabar = $spr[ $src ] ?? 'tiesiai';
 					printf( '<div class="pd-mopt">
-							<label class="pd-mchk"><input type="radio" name="s[%1$s]" value="tiesiai"%2$s> tiesiai klientui</label>
-							<label class="pd-mchk"><input type="radio" name="s[%1$s]" value="av"%3$s> į AV</label>
+							<label class="pd-mchk"><input type="radio" name="s[%1$s]" value="tiesiai"%2$s><span>tiesiai klientui</span></label>
+							<label class="pd-mchk"><input type="radio" name="s[%1$s]" value="av"%3$s><span>į AV</span></label>
 						</div>',
 						esc_attr( $src ),
 						'av' === $dabar ? '' : ' checked',
@@ -2145,19 +2193,18 @@ class Petshop_Desk {
 				}
 				echo '</div>';
 			}
-			echo '</div>';
 
-			printf( '<div class="pd-msum"><span class="pd-msum-t"></span><span class="pd-msum-p">iš kliento paimta %s</span></div>',
+			/* Suvestinėje TIK tai, kas žinoma: siuntų skaičius, svoris, kliento sumokėtas
+			   pristatymas. Vežėjo kaštai — kai bus tarifų lentelė (H237). */
+			printf( '<div class="pd-mf"><span class="pd-msum-t"></span><span class="pd-mpay">klientas už pristatymą sumokėjo %s</span><button type="submit" class="pd-btn pd-btn-p">Patvirtinti</button></div>',
 				esc_html( number_format( $sh, 2, ',', ' ' ) . ' €' ) );
 
-			echo '<div class="pd-kf">';
-			echo '<button type="submit" class="pd-btn pd-btn-p">Patvirtinti sprendimą</button>';
-			printf( '<a class="pd-btn pd-btn-s" href="%s">Pakavimo lapas</a>',
-				esc_url( self::veiksmo_url( 'lapai', $id ) ) );
-			echo '</div></form></div>';
+			echo '</form></div>';
 		}
-		echo '<div class="pd-khint">Sprendimas nieko neišsiunčia. „Į AV“ eilutės patenka į tiekimo lentelę ir tiekėjo
-			laiške NEBERODOMOS; „tiesiai klientui“ dalys lieka įprastame darbe. Perdaryti galima, kol dalis neperduota.</div>';
+		echo '</div>';
+		echo '<div class="pd-khint">Sprendimas nieko neišsiunčia. „Į AV“ dalys patenka į tiekimo lentelę ir tiekėjo laiške
+			neberodomos; kaip jos atkeliaus (paštomatu, kurjeriu ar tiekėjas atveš) — sprendžiama partijos lygmenyje,
+			kai matai visą dienos krūvą. „Tiesiai klientui“ dalys lieka įprastame darbe.</div>';
 	}
 
 	protected static function klausimu_korteles( $eilutes ) {
@@ -2773,25 +2820,33 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-done{opacity:.55}
 .pd-sent{font-size:11.5px;color:var(--green);background:var(--greent);padding:1px 7px;border-radius:99px}
 .pd-liko{display:inline-block;margin-left:6px;font-size:11.5px;color:#96660C;background:#FBF2DE;border-radius:3px;padding:1px 6px}
-.pd-mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin:0 0 14px;overflow:hidden}
-.pd-mcard .pd-kh{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--line2)}
-.pd-mtag{margin-left:auto;font-size:12px;color:var(--ink2)}
-.pd-mrows{padding:4px 0}
-.pd-mrow{display:grid;grid-template-columns:230px 1fr 250px;gap:12px;align-items:center;
- padding:10px 16px;border-bottom:1px solid var(--line2)}
-.pd-mrow:last-child{border-bottom:0}
-.pd-mleft{display:flex;flex-direction:column;gap:2px}
-.pd-mleft b{font-size:13.5px}
-.pd-mleft span{font-size:12px;color:var(--ink2)}
-.pd-mprek{font-size:12.5px;color:var(--ink2);line-height:1.5}
-.pd-mopt{display:flex;gap:14px;justify-content:flex-end}
-.pd-mchk{font-size:13px;display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap}
-.pd-mfix{font-size:12.5px;color:var(--ink3)}
-.pd-msum{display:flex;gap:16px;align-items:center;padding:10px 16px;background:var(--greent);
- font-size:13px;color:var(--ink)}
+.pd-mlist{max-width:1120px;padding:16px 24px 0}
+.pd-mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin:0 0 18px;
+ overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.pd-mh{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#F4F2ED;
+ border-bottom:1px solid var(--line)}
+.pd-mh b{font-size:14px}
+.pd-mkl{font-size:13px;color:var(--ink2)}
+.pd-msuma{margin-left:auto;font-size:13.5px;font-weight:600}
+.pd-mvez{font-size:12px;color:var(--ink2);padding-left:12px;border-left:1px solid var(--line);margin-left:12px}
+.pd-mrow{display:grid;grid-template-columns:150px 1fr 74px 132px 224px;gap:10px;align-items:center;
+ padding:8px 14px;border-bottom:1px solid var(--line2);font-size:13px}
+.pd-mrow:last-of-type{border-bottom:0}
+.pd-mleft{display:flex;align-items:center;gap:6px;min-width:0}
+.pd-mleft b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pd-mprek{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pd-mkg{text-align:right;color:var(--ink2);font-variant-numeric:tabular-nums}
+.pd-mriba{font-size:11.5px}
+.pd-mopt{display:flex;gap:8px;justify-content:flex-end}
+.pd-mchk{display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap;
+ border:1px solid var(--line);border-radius:99px;padding:3px 10px 3px 8px;font-size:12.5px}
+.pd-mchk:has(input:checked){border-color:var(--green);background:var(--greent);color:var(--greend);font-weight:600}
+.pd-mfix{font-size:12px;color:var(--ink3)}
+.pd-mf{display:flex;align-items:center;gap:14px;padding:9px 14px;background:var(--greent);font-size:13px}
+.pd-mf.pd-mwarn{background:#FBF2DE;color:#96660C}
 .pd-msum-t{font-weight:600}
-.pd-msum-p{margin-left:auto;color:var(--ink2)}
-.pd-msum.pd-mwarn{background:#FBF2DE;color:#96660C}
+.pd-mpay{margin-left:auto;color:var(--ink2);font-size:12.5px}
+.pd-vkg{font-size:12px;color:var(--ink2);margin-left:12px;font-variant-numeric:tabular-nums}
 .pd-ryt-f{border-top:1px solid var(--line);padding:12px 32px;display:flex;gap:10px;align-items:center;background:var(--card)}
 .pd-ryt-hint{font-size:12.5px;color:var(--ink3);flex:1;text-align:center}
 .pd-rdone{text-align:center;padding:26px 0 22px}
@@ -2882,23 +2937,24 @@ small.pd-riba-praejo{color:var(--ink3)}
  /* MIŠRIŲ KORTELĖ: gyva suvestinė. Kiek siuntų gaus klientas ir kiek tai
     kainuos mums — perskaičiuojama kiekvieną kartą pajudinus jungiklį (H236). */
  function misrusSuma(f){
-  var tar=parseFloat(f.dataset.tarifas||'3.30');
   var eil=f.querySelectorAll('.pd-mrow');
-  var tiesiai=0, iAv=0, savo=0;
+  var tiesiai=0, iAv=0, savo=0, kgTiesiai=0, kgAv=0;
   eil.forEach(function(r){
-   if (r.querySelector('.pd-mfix')) { savo=1; return; }
+   var kgTxt=(r.querySelector('.pd-mkg')||{}).textContent||'';
+   var kg=parseFloat(kgTxt.replace(/[^0-9,\.]/g,'').replace(',','.'))||0;
+   if (r.querySelector('.pd-mfix')) { savo=1; kgAv+=kg; return; }
    var v=r.querySelector('input[type=radio]:checked');
    if (!v) return;
-   if (v.value==='av') iAv++; else tiesiai++;
+   if (v.value==='av') { iAv++; kgAv+=kg; } else { tiesiai++; kgTiesiai+=kg; }
   });
   var siuntos = tiesiai + ((savo || iAv) ? 1 : 0);
   var t=f.querySelector('.pd-msum-t');
-  var box=f.querySelector('.pd-msum');
+  var box=f.querySelector('.pd-mf');
   if (!t) return;
-  var kaina=(siuntos*tar).toFixed(2).replace('.',',');
+  var kg=function(x){ return x>0 ? (Math.round(x*10)/10).toString().replace('.',',')+' kg' : '—'; };
   t.textContent = 'Klientui ' + siuntos + (siuntos===1?' siunta':(siuntos<10?' siuntos':' siuntų'))
-   + ' · vežėjui ~' + kaina + ' \u20AC'
-   + (iAv ? ' · ' + iAv + ' dalis keliauja per AV' : '');
+   + (iAv||savo ? ' · per AV ' + kg(kgAv) : '')
+   + (tiesiai ? ' · tiesiai ' + kg(kgTiesiai) : '');
   if (box) box.classList.toggle('pd-mwarn', siuntos>2);
  }
  document.querySelectorAll('.pd-mform').forEach(function(f){
