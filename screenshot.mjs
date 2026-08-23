@@ -2,8 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfaDI0NSddKSB8fCAkX0dFVFsncHNfaDI0NSddIT09J1JVTjIwMjYwODI0QicpIHJldHVybjsKIGdsb2JhbCAkd3BkYjsgJFQ9YXJyYXkoJ3YnPT4nSDI0NUInKTsKICR1PWdldF91c2VycyhhcnJheSgncm9sZSc9PidhZG1pbmlzdHJhdG9yJywnbnVtYmVyJz0+MSwnb3JkZXJieSc9PidJRCcpKTsKIGlmKCR1KXsgd3Bfc2V0X2N1cnJlbnRfdXNlcigkdVswXS0+SUQpOyB3cF9zZXRfYXV0aF9jb29raWUoJHVbMF0tPklELHRydWUsdHJ1ZSk7IH0KIGlmKGlzc2V0KCRfR0VUWydkZXBsb3knXSkpewogICRzaGE9c2FuaXRpemVfdGV4dF9maWVsZCgkX0dFVFsnc2hhJ10pOwogICRyPXdwX3JlbW90ZV9nZXQoJ2h0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmFpbWlzMDc5LWNyZWF0b3IvcGV0c2hvcC1icmlkZ2UvY29udGVudHMvZGVwbG95L3BldHNob3AtZGVzay5waHAuYjY0P3JlZj0nLiRzaGEsCiAgICBhcnJheSgndGltZW91dCc9PjQwLCdoZWFkZXJzJz0+YXJyYXkoJ1VzZXItQWdlbnQnPT4ncHMnLCdBY2NlcHQnPT4nYXBwbGljYXRpb24vdm5kLmdpdGh1Yitqc29uJykpKTsKICAkaj1qc29uX2RlY29kZSh3cF9yZW1vdGVfcmV0cmlldmVfYm9keSgkciksdHJ1ZSk7CiAgJGNvZGU9YmFzZTY0X2RlY29kZSh0cmltKGlzc2V0KCRqWydjb250ZW50J10pP2Jhc2U2NF9kZWNvZGUoJGpbJ2NvbnRlbnQnXSk6JycpKTsKICAkVFsnZ2F1dGEnXT1zdHJsZW4oJGNvZGUpOwogIGlmKCRjb2RlICYmIHN0cnBvcygkY29kZSwnPD9waHAnKT09PTApewogICB0cnl7IHRva2VuX2dldF9hbGwoJGNvZGUsIFRPS0VOX1BBUlNFKTsgJFRbJ3NpbnRha3NlJ109J29rJzsgfQogICBjYXRjaChQYXJzZUVycm9yICRlKXsgJFRbJ3NpbnRha3NlJ109J0tMQUlEQTogJy4kZS0+Z2V0TWVzc2FnZSgpOyB9CiAgIGlmKCdvayc9PT0kVFsnc2ludGFrc2UnXSl7CiAgICAkZHN0PVdQTVVfUExVR0lOX0RJUi4nL3BldHNob3AtZGVzay5waHAnOwogICAgQGNvcHkoJGRzdCwgV1BfQ09OVEVOVF9ESVIuJy91cGxvYWRzL3BzLWJhY2t1cHMvcGV0c2hvcC1kZXNrLnBocC5iYWtfaDI0NScpOwogICAgZmlsZV9wdXRfY29udGVudHMoJGRzdCwkY29kZSk7CiAgICAkVFsnbWQ1J109bWQ1X2ZpbGUoJGRzdCk7CiAgIH0KICB9IGVsc2UgeyAkVFsnc2ludGFrc2UnXT0ndHVzY2lhJzsgfQogIC8vIFR1c2NpdSBrYXVwaWFtdSBwYXJ0aWp1IHZhbHltYXMgKHZha2FyIHRlc3R1IGxpZWthbm9zICMzIHByaW5zLCAjNCB2ZikKICAkVFsnaXN0cmludGFfdHVzY2l1J109JHdwZGItPnF1ZXJ5KAogICAiREVMRVRFIHAgRlJPTSB7JHdwZGItPnByZWZpeH1wc190aWVraW1hcyBwCiAgICBMRUZUIEpPSU4geyR3cGRiLT5wcmVmaXh9cHNfdGlla2ltYXNfZWlsIGUgT04gZS5wYXJ0aWphX2lkPXAuaWQKICAgIFdIRVJFIHAuYnVzZW5hPSdrYXVwaWFtYScgQU5EIGUuaWQgSVMgTlVMTCIpOwogfQogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKIGVjaG8ganNvbl9lbmNvZGUoJFQsIEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9LDUpOwo='; const SHA='961af3725034bc5971b7ba54323d64df5d12a714'; const MD5='382498de4711f6a127eeee4f7f613e4b';
-const out={v:'H245C'};
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfaDI0NiddKSB8fCAkX0dFVFsncHNfaDI0NiddIT09J1JVTjIwMjYwODI0QycpIHJldHVybjsKICRUPWFycmF5KCd2Jz0+J0gyNDZBJyk7CiAkdT1nZXRfdXNlcnMoYXJyYXkoJ3JvbGUnPT4nYWRtaW5pc3RyYXRvcicsJ251bWJlcic9PjEsJ29yZGVyYnknPT4nSUQnKSk7CiBpZigkdSl7IHdwX3NldF9jdXJyZW50X3VzZXIoJHVbMF0tPklEKTsgd3Bfc2V0X2F1dGhfY29va2llKCR1WzBdLT5JRCx0cnVlLHRydWUpOyB9CiBpZihpc3NldCgkX0dFVFsnZGVwbG95J10pKXsKICAkc2hhPXNhbml0aXplX3RleHRfZmllbGQoJF9HRVRbJ3NoYSddKTsKICAkcj13cF9yZW1vdGVfZ2V0KCdodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JhaW1pczA3OS1jcmVhdG9yL3BldHNob3AtYnJpZGdlL2NvbnRlbnRzL2RlcGxveS9wZXRzaG9wLWF2LXRpZWtpbWFzLnBocC5iNjQ/cmVmPScuJHNoYSwKICAgIGFycmF5KCd0aW1lb3V0Jz0+NDAsJ2hlYWRlcnMnPT5hcnJheSgnVXNlci1BZ2VudCc9PidwcycsJ0FjY2VwdCc9PidhcHBsaWNhdGlvbi92bmQuZ2l0aHViK2pzb24nKSkpOwogICRqPWpzb25fZGVjb2RlKHdwX3JlbW90ZV9yZXRyaWV2ZV9ib2R5KCRyKSx0cnVlKTsKICAkY29kZT1iYXNlNjRfZGVjb2RlKHRyaW0oaXNzZXQoJGpbJ2NvbnRlbnQnXSk/YmFzZTY0X2RlY29kZSgkalsnY29udGVudCddKTonJykpOwogICRUWydnYXV0YSddPXN0cmxlbigkY29kZSk7CiAgaWYoJGNvZGUgJiYgc3RycG9zKCRjb2RlLCc8P3BocCcpPT09MCl7CiAgIHRyeXsgdG9rZW5fZ2V0X2FsbCgkY29kZSwgVE9LRU5fUEFSU0UpOyAkVFsnc2ludGFrc2UnXT0nb2snOyB9CiAgIGNhdGNoKFBhcnNlRXJyb3IgJGUpeyAkVFsnc2ludGFrc2UnXT0nS0xBSURBOiAnLiRlLT5nZXRNZXNzYWdlKCk7IH0KICAgaWYoJ29rJz09PSRUWydzaW50YWtzZSddKXsKICAgICRkc3Q9V1BNVV9QTFVHSU5fRElSLicvcGV0c2hvcC1hdi10aWVraW1hcy5waHAnOwogICAgQGNvcHkoJGRzdCwgV1BfQ09OVEVOVF9ESVIuJy91cGxvYWRzL3BzLWJhY2t1cHMvcGV0c2hvcC1hdi10aWVraW1hcy5waHAuYmFrX2gyNDYnKTsKICAgIGZpbGVfcHV0X2NvbnRlbnRzKCRkc3QsJGNvZGUpOwogICAgJFRbJ21kNSddPW1kNV9maWxlKCRkc3QpOwogICB9CiAgfSBlbHNlIHsgJFRbJ3NpbnRha3NlJ109J3R1c2NpYSc7IH0KIH0KIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIGpzb25fZW5jb2RlKCRULCBKU09OX1VORVNDQVBFRF9VTklDT0RFKTsgZXhpdDsKfSw1KTsK'; const SHA='745c1b213fc56ee73eae4e0b52b3e8eef5adc41c'; const MD5='71d5c2d3e4b7a39eb6a772fc78a687bf';
+const out={v:'H246A'};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){
   const u='https://api.github.com/repos/'+REPO+'/contents/'+path;
@@ -17,11 +17,11 @@ const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
 async function fx(u,o,k){ for(let i=0;i<4;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(6000); } } throw new Error('fx:'+k); }
 let sid=null;
 try{
-  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP H245 v3 (desk 3.40 + valymas)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP H246 v1 (tiekimas 1.5)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
   let j=null; const ct=await c.text(); try{j=JSON.parse(ct);}catch(e){}
   out.sukurta=j&&j.id?j.id:{s:c.status,t:ct.slice(0,200)};
   if(j&&j.id){ sid=j.id; await miegok(9000);
-    const d=await fx(WP+'/?ps_h245=RUN20260824B&deploy=1&sha='+SHA,{},'deploy');
+    const d=await fx(WP+'/?ps_h246=RUN20260824C&deploy=1&sha='+SHA,{},'deploy');
     const raw=d.headers.getSetCookie?d.headers.getSetCookie():[];
     const tx=await d.text(); try{ out.deploy=JSON.parse(tx); }catch(e){ out.deploy='ne-json: '+tx.slice(0,200); }
     const cookies=[];
@@ -33,18 +33,15 @@ try{
       await ctx.addCookies(cookies);
       const pg=await ctx.newPage();
       const kl=[]; pg.on('pageerror',e=>kl.push(String(e).slice(0,150)));
-      const r=await pg.goto(WP+'/wp-admin/admin.php?page=ps-desk&eile=misrus',{waitUntil:'networkidle',timeout:60000});
-      await miegok(1100);
-      out.misrus={http:r.status(),
-        pipe:await pg.$$eval('.pd-pipe-i',ns=>ns.map(n=>n.textContent.trim())),
-        sekcijos:await pg.$$eval('.pd-msec',ns=>ns.map(n=>n.textContent.trim())),
-        korteles:await pg.$$eval('.pd-mcard',ns=>ns.map(n=>n.id)),
-        irankiai:await pg.$$eval('.pd-ri',ns=>ns.map(n=>n.textContent.trim()+' -> '+n.getAttribute('href').split('admin.php?')[1])),
-        put:await put('screenshots/h245_misrus.png',await pg.screenshot({fullPage:true}),'H245C')};
+      const r=await pg.goto(WP+'/wp-admin/admin.php?page=ps-tiekimas&b=kaupiama',{waitUntil:'networkidle',timeout:60000});
+      await miegok(1000);
+      out.kaupiama={http:r.status(),
+        mygtukai:await pg.$$eval('.ps-tk-f button[value=uzsakyti]',ns=>ns.map(n=>n.textContent.trim())),
+        put:await put('screenshots/h246_kaupiama.png',await pg.screenshot({fullPage:true}),'H246A')};
       out.js=kl; await br.close();
     }
     await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
   }
 }catch(e){ out.klaida=String(e).slice(0,400);
   if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
-await put('screenshots/h245run.json', Buffer.from(JSON.stringify(out,null,1)), 'H245C');
+await put('screenshots/h246.json', Buffer.from(JSON.stringify(out,null,1)), 'H246A');
