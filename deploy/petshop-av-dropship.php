@@ -1,6 +1,19 @@
 <?php
 /**
- * Petshop AV Dropship v1.7 (H233) — KONSOLIDACIJA: eilutės, paimtos į AV (tiekimo
+ * Petshop AV Dropship v1.8 (H234) — 🔴 PERDAVIMO ŽYMĖ PAGAL SANDĖLĮ.
+ *
+ * KODĖL (H234, išmatuota su #35066 VF+PRINS): `_ps_dropship_sent` buvo VISO
+ * užsakymo žymė. Perdavus VF, `grupuoti()` visą užsakymą praleisdavo — ir
+ * PRINS laiško NIEKADA nebūtų gavęs (matavimas: [vf,prins] -> []). Mišrus
+ * užsakymas su dviem tiekėjais prarasdavo antrąjį tyliai.
+ *
+ * DABAR: `_ps_dropship_sent_src` = {"vf":"2026-08-23 11:04"} — kiekvienam
+ * sandėliui sava žymė. Senas raktas RAŠOMAS toliau (kiti moduliai jį skaito) ir
+ * SKAITOMAS kaip atsarga: jei yra tik jis, žiūrima į `_ps_dropship_to`, o jei ir
+ * to nėra — laikoma, kad perduota viskas (saugi pusė: geriau neišsiųsti antro
+ * laiško, nei užsakyti prekę du kartus).
+ *
+ * v1.7 (H233) — KONSOLIDACIJA: eilutės, paimtos į AV (tiekimo
  * lentelė arba _ps_konsolidacija), į tiekėjų laiškus NEBEPATENKA.
  *
  * KODĖL (H233, rasta gyvai su testiniu #35066): eilutė jau gulėjo tiekimo
@@ -44,6 +57,11 @@ class Petshop_AV_Dropship {
 
 	const VEIKSMAS = 'ps_dropship';
 	const OPT_EMAIL = 'ps_tiekeju_pastai';
+
+	/** Perdavimo žymės. SENA — viso užsakymo (paliekama), NAUJA — pagal sandėlį. */
+	const META_SENT     = '_ps_dropship_sent';
+	const META_SENT_TO  = '_ps_dropship_to';
+	const META_SENT_SRC = '_ps_dropship_sent_src';
 
 	/** Tiekėjai. El. paštai suvedami nustatymuose (Raimis atsiųs). */
 	public static function tiekejai() {
@@ -96,12 +114,12 @@ class Petshop_AV_Dropship {
 		foreach ( $ids as $id ) {
 			$o = wc_get_order( $id );
 			if ( ! $o ) { continue; }
-			if ( $o->get_meta( '_ps_dropship_sent' ) ) { continue; }   // jau perduota
 
 			foreach ( $o->get_items() as $iid => $item ) {
 				$src = $item->get_meta( '_ps_source' );
 				if ( ! $src || 'av' === $src ) { continue; }             // AV renkam patys
 				if ( self::konsoliduota( $o, $iid, $item ) ) { continue; } // parsivežam į AV — tiekėjui nerašom
+				if ( self::perduota( $o, $src ) ) { continue; }            // šiam sandėliui jau išsiųsta (H234)
 				$pid = (int) $item->get_product_id();
 				$p   = $item->get_product();
 
@@ -125,6 +143,65 @@ class Petshop_AV_Dropship {
 			}
 		}
 		return $g;
+	}
+
+	/**
+	 * Kuriems sandėliams šis užsakymas jau perduotas.
+	 *
+	 * Grąžina masyvą sandėlis => laikas. Senus užsakymus (tik `_ps_dropship_sent`)
+	 * išplečia: jei žinomas `_ps_dropship_to` — tik tam sandėliui, jei ne —
+	 * visiems užsakymo tiekėjams (saugi pusė, žr. antraštę).
+	 */
+	public static function perduotos( $order ) {
+		$m = $order->get_meta( self::META_SENT_SRC );
+		$j = is_array( $m ) ? $m : json_decode( (string) $m, true );
+		if ( is_array( $j ) && $j ) { return $j; }
+
+		$sena = $order->get_meta( self::META_SENT );
+		if ( ! $sena ) { return array(); }
+
+		$kam = $order->get_meta( self::META_SENT_TO );
+		if ( $kam ) { return array( $kam => $sena ); }
+
+		$visi = array();
+		foreach ( $order->get_items() as $item ) {
+			$s = $item->get_meta( '_ps_source' );
+			if ( $s && 'av' !== $s ) { $visi[ $s ] = $sena; }
+		}
+		return $visi;
+	}
+
+	/** Ar perduota konkrečiam sandėliui (arba bent vienam, jei $src tuščias). */
+	public static function perduota( $order, $src = '' ) {
+		$j = self::perduotos( $order );
+		return '' === $src ? ! empty( $j ) : ! empty( $j[ $src ] );
+	}
+
+	/** Kurie užsakymo tiekėjai DAR neperduoti. */
+	public static function neperduotos( $order ) {
+		$j = self::perduotos( $order );
+		$liko = array();
+		foreach ( $order->get_items() as $iid => $item ) {
+			$s = $item->get_meta( '_ps_source' );
+			if ( ! $s || 'av' === $s ) { continue; }
+			if ( self::konsoliduota( $order, $iid, $item ) ) { continue; }
+			if ( empty( $j[ $s ] ) ) { $liko[ $s ] = 1; }
+		}
+		return array_keys( $liko );
+	}
+
+	/**
+	 * Pažymi, kad ŠIS sandėlis perduotas. Užsakymo neišsaugo — kviečiantysis.
+	 * Rašo ir seną raktą: jį skaito desk ir SLA sluoksnis.
+	 */
+	public static function zymeti_perduota( $order, $src ) {
+		$dabar = current_time( 'mysql' );
+		$j = self::perduotos( $order );
+		$j[ $src ] = $dabar;
+		$order->update_meta_data( self::META_SENT_SRC, wp_json_encode( $j ) );
+		$order->update_meta_data( self::META_SENT, $dabar );
+		$order->update_meta_data( self::META_SENT_TO, $src );
+		return $j;
 	}
 
 	/**
@@ -380,8 +457,8 @@ class Petshop_AV_Dropship {
 		$k = 0;
 		foreach ( $ids as $oid ) {
 			$o = wc_get_order( $oid );
-			if ( ! $o || $o->get_meta( '_ps_dropship_sent' ) ) { continue; }
-			$o->update_meta_data( '_ps_dropship_sent', current_time( 'mysql' ) );
+			if ( ! $o || self::perduota( $o, 'zb' ) ) { continue; }
+			self::zymeti_perduota( $o, 'zb' );
 			$o->add_order_note( 'Perduota ZB — suvesta į jų sistemą ranka, lipdukas prikabintas (darbalaukio žymė).', false, true );
 			$o->save();
 			$k++;
@@ -543,8 +620,7 @@ class Petshop_AV_Dropship {
 			foreach ( array_keys( $uzsakymai ) as $oid ) {
 				$o = wc_get_order( $oid );
 				if ( ! $o ) { continue; }
-				$o->update_meta_data( '_ps_dropship_sent', current_time( 'mysql' ) );
-				$o->update_meta_data( '_ps_dropship_to', $src );
+				self::zymeti_perduota( $o, $src );
 				$o->save();
 				$o->add_order_note( 'Perduota tiekėjui ' . $vardas . ' (' . $pastas . ')' );
 			}
