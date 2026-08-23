@@ -1,6 +1,19 @@
 <?php
 /**
- * Petshop Siuntu Laiskai v1.1 (H204/H206) — kaupiamasis siuntų registras ir sekimo laiškas.
+ * Petshop Siuntu Laiskai v1.2 (H240) — ASMENINIS PRIERAŠAS + pilnumo vartai.
+ *
+ * KODĖL (Raimis H237, H239): „klientas gauna vieną laišką su sekimo nuorodomis...
+ * kitą kartą reikia kažką asmeniškai klientui prirašyti“. Laiške atsirado laisvo
+ * teksto laukas — tas pats principas kaip tiekėjo laiške (dropship v1.5).
+ *
+ * PILNUMO VARTAI: mišriam užsakymui pagrindinis mygtukas neaktyvus, kol
+ * registruotos ne visos siuntos — kad klientas gautų VIENĄ laišką su VISAIS
+ * numeriais, o ne kelis gabalais. Šalia lieka „Siųsti vis tiek“ išimtims
+ * (kai viena dalis stringa ir geriau pranešti dabar, nei tylėti).
+ *
+ * Prierašas rodomas peržiūroje TOJE PAČIOJE vietoje, kur atsidurs laiške.
+ *
+ * v1.1 (H204/H206) — kaupiamasis siuntų registras ir sekimo laiškas.
  *
  * KODĖL: Venipak pluginas visą registraciją laiko VIENAME rakte
  * `venipak_shipping_order_data` — mišriam užsakymui antra grupės registracija
@@ -144,7 +157,7 @@ class Petshop_Siuntos {
 	/* ------------------------------------------------------------------ */
 
 	/** Laiško HTML turinys (be WC apvalkalo). */
-	public static function laisko_turinys( $o ) {
+	public static function laisko_turinys( $o, $prierasas = '' ) {
 		$siuntos = self::sarasas( $o->get_id() );
 		if ( ! $siuntos ) { return ''; }
 
@@ -165,6 +178,13 @@ class Petshop_Siuntos {
 			$h .= '<p>' . esc_html( 'Siuntos gali būti pristatytos skirtingu metu.' ) . '</p>';
 		}
 		$h .= '<p>' . esc_html( 'Siuntas pristato Venipak — būseną galite sekti venipak.lt pagal siuntos numerį.' ) . '</p>';
+
+		// Asmeninis prierašas — prieš atsisveikinimą, kaip tiekėjo laiške (H240).
+		$prierasas = trim( (string) $prierasas );
+		if ( '' !== $prierasas ) {
+			$h .= '<p>' . nl2br( esc_html( $prierasas ) ) . '</p>';
+		}
+		$h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'petshop.lt' ) . '</p>';
 		return $h;
 	}
 
@@ -183,12 +203,14 @@ class Petshop_Siuntos {
 		$mailer  = WC()->mailer();
 		$antr    = 'Siuntų sekimo numeriai';
 		$tema    = sprintf( 'Jūsų užsakymo Nr. %s siuntų sekimo numeriai', $o->get_order_number() );
-		$turinys = $mailer->wrap_message( $antr, self::laisko_turinys( $o ) );
+		$prierasas = isset( $_POST['prierasas'] ) ? sanitize_textarea_field( wp_unslash( $_POST['prierasas'] ) ) : '';
+		$turinys = $mailer->wrap_message( $antr, self::laisko_turinys( $o, $prierasas ) );
 		$issiusta = $mailer->send( $o->get_billing_email(), $tema, $turinys );
 
 		if ( $issiusta ) {
 			$o->update_meta_data( self::SIUSTA, current_time( 'mysql' ) );
-			$o->add_order_note( 'Sekimo numerių laiškas išsiųstas klientui: ' . $o->get_billing_email(), false, true );
+			$o->add_order_note( 'Sekimo numerių laiškas išsiųstas klientui: ' . $o->get_billing_email()
+				. ( $prierasas ? "\nPrierašas: " . $prierasas : '' ), false, true );
 			$o->save();
 		}
 		wp_safe_redirect( add_query_arg( 'ps_ok', $issiusta ? 'issiusta' : 'klaida', $atgal ) );
@@ -251,18 +273,62 @@ class Petshop_Siuntos {
 		}
 		echo '</tbody></table>';
 
-		echo '<h2 style="margin-top:1.2em">Laiško peržiūra</h2>';
-		echo '<div style="max-width:640px;background:#fff;border:1px solid #ccd0d4;padding:12px 16px">'
-			. wp_kses_post( self::laisko_turinys( $o ) ) . '</div>';
+		$pilna = ! $tiketasi || count( $siuntos ) >= $tiketasi;
+		$prierasas = isset( $_GET['pr'] ) ? sanitize_textarea_field( wp_unslash( $_GET['pr'] ) ) : '';
 
-		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="margin-top:1em">';
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="margin-top:1.2em">';
 		wp_nonce_field( 'ps_siuntu_siusti' );
 		printf( '<input type="hidden" name="action" value="ps_siuntu_siusti"><input type="hidden" name="order_id" value="%d">', $id );
-		printf( '<button class="button button-primary">%s</button> ',
-			$siusta ? 'Siųsti dar kartą' : 'Siųsti klientui' );
+
+		echo '<h2>Asmeninis prierašas <span style="font-weight:400;color:#666;font-size:13px">(nebūtina)</span></h2>';
+		printf( '<textarea name="prierasas" id="psPrierasas" rows="3" style="max-width:640px;width:100%%"
+			placeholder="Pvz.: Skanėstą įdėjome dovanų — Rikiui nuo mūsų.">%s</textarea>',
+			esc_textarea( $prierasas ) );
+		echo '<p class="description" style="max-width:640px">Tekstas pateks į laišką prieš atsisveikinimą — peržiūroje matai tiksliai toje vietoje, kur klientas jį pamatys.</p>';
+
+		echo '<h2 style="margin-top:1.2em">Laiško peržiūra</h2>';
+		echo '<div id="psPerziura" style="max-width:640px;background:#fff;border:1px solid #ccd0d4;padding:12px 16px">'
+			. wp_kses_post( self::laisko_turinys( $o, $prierasas ) ) . '</div>';
+
+		/* Pilnumo vartai: vienas laiškas su VISAIS numeriais (H240). */
+		if ( ! $pilna ) {
+			printf( '<div class="notice notice-warning inline" style="max-width:640px;margin:1em 0"><p>
+				<b>Registruota %d iš %d siuntų.</b> Kad klientas gautų vieną laišką su visais numeriais,
+				palauk, kol bus registruotos visos. Jei viena dalis stringa ir geriau pranešti dabar —
+				siųsk vis tiek.</p></div>', count( $siuntos ), $tiketasi );
+		}
+
+		echo '<p style="margin-top:1em">';
+		if ( $pilna ) {
+			printf( '<button class="button button-primary">%s</button> ', $siusta ? 'Siųsti dar kartą' : 'Siųsti klientui' );
+		} else {
+			echo '<button class="button button-primary" disabled title="Laukiam visų siuntų numerių">Siųsti klientui</button> ';
+			echo '<button class="button" name="vis_tiek" value="1">Siųsti vis tiek</button> ';
+		}
 		printf( '<a class="button" href="%s">Atgal į darbalaukį</a>',
 			esc_url( admin_url( 'admin.php?page=ps-desk' ) ) );
-		echo '</form></div>';
+		echo '</p></form>';
+
+		/* Gyva peržiūra: prierašas atsiranda ten, kur bus laiške. */
+		echo '<script>
+		(function(){
+			var t=document.getElementById("psPrierasas"), p=document.getElementById("psPerziura");
+			if(!t||!p) return;
+			function pieskim(){
+				var senas=p.querySelector("[data-pr]");
+				if(senas) senas.remove();
+				var v=t.value.trim();
+				if(!v) return;
+				var pas=p.querySelectorAll("p");
+				var d=document.createElement("p");
+				d.setAttribute("data-pr","1");
+				d.style.background="#FFF8E5"; d.style.padding="2px 6px";
+				d.textContent=v;
+				if(pas.length) p.insertBefore(d, pas[pas.length-1]); else p.appendChild(d);
+			}
+			t.addEventListener("input",pieskim);
+		})();
+		</script></div>';
 	}
 
 	/* ------------------------------------------------------------------ */
