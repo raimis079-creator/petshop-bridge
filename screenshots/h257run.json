@@ -1,8 +1,8 @@
 {
- "v": "H257A",
- "sukurta": 3801,
+ "v": "H257B",
+ "sukurta": 3802,
  "deploy": {
-  "v": "H257A",
+  "v": "H257B",
   "failai": {
    "petshop-desk.php": {
     "gauta": 175766,
@@ -10,9 +10,9 @@
     "md5": "65e2311ee38b3591e44253f69dcf8ff5"
    },
    "petshop-av-dropship.php": {
-    "gauta": 47527,
+    "gauta": 47660,
     "sintakse": "ok",
-    "md5": "e76bf173f83d235a548b69c4da070448"
+    "md5": "5720c3aae1b7db345cf0cd1346f95447"
    }
   }
  },
@@ -22,20 +22,20 @@
   "h1": "?",
   "fatal": false,
   "notices": [],
-  "put": 201,
+  "put": 200,
   "rail": [
-   "Nauji6",
+   "Nauji5",
    "Mišrūs0",
    "Neapmokėti1",
    "Laukia prekių4",
-   "Paruošta siųsti2",
+   "Paruošta siųsti3",
    "Klausimai0",
    "Išsiųsti1",
    "Atšaukti0",
    "Visi užsakymai14",
    "Tiekimas21",
-   "Laiškai tiekėjams5",
-   "Perdavimas tiekėjams5"
+   "Laiškai tiekėjams4",
+   "Perdavimas tiekėjams4"
   ]
  },
  "laukia": {
@@ -43,12 +43,11 @@
   "h1": "Laiškai tiekėjams",
   "fatal": false,
   "notices": [],
-  "put": 201,
+  "put": 200,
   "tiekejai": [
    "Vetfarmas2 užsak. · 2 vnt. · ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite",
    "Prins Petfoods1 užsak. · 1 vnt. · irute@faunas.lt",
    "Ambrosia1 užsak. · 1 vnt. · info@alphazoo.lt",
-   "Quattro / Kauno grūdai1 užsak. · 3 vnt. · e.panaviene@kaunogrudai.lt",
    "Žalioji Banga2 užsak. · 4 vnt. · suvedama ranka ZB sistemoje",
    "Prekės į AV sandėlį kaupiamos partijos — laiškas išeis paspaudus „Užsakyti iš ti"
   ],
@@ -56,33 +55,34 @@
    "Perduoti Vetfarmas — 2 užsak. vienu laišku →",
    "Perduoti Prins Petfoods — 1 užsak. vienu laišku →",
    "Perduoti Ambrosia — 1 užsak. vienu laišku →",
-   "Perduoti Quattro / Kauno grūdai — 1 užsak. vienu laišku →",
    "Atidaryti Žalioji Banga — 2 užsak. (suvesti ZB sistemoje) →"
   ]
  },
  "perduoti": {
-  "url": "/wp-admin/admin.php?page=ps-dropship&src=quattro",
+  "url": "/wp-admin/admin.php?page=ps-dropship&src=ambrosia",
   "h1": "Perduoti tiekėjams",
   "fatal": false,
   "notices": [],
-  "put": 201,
-  "uzsakymai": "35062",
+  "put": 200,
+  "uzsakymai": "35063",
   "vartai": [
    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
   ],
-  "mygtukas": "Siųsti Quattro / Kauno grūdai (e.panaviene@kaunogrudai.lt)"
+  "mygtukas": "Siųsti Ambrosia (info@alphazoo.lt)"
  },
  "po": {
-  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&ps_sent=1&ps_src=quattro&ps_n=1&ps_kam=terra%40petshop.lt&ps_err",
-  "h1": "?",
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&psl_sent=1&psl_src=ambrosia&psl_n=1&psl_kam=terra%40petshop.lt&psl_err",
+  "h1": "Laiškai tiekėjams",
   "fatal": false,
-  "notices": [],
-  "put": 201,
+  "notices": [
+   "Išsiųsta: Ambrosia — 1 užsak. vienu laišku, gavėjai: terra@petshop.lt. Užsakymai pažymėti perduotais."
+  ],
+  "put": 200,
   "tiekejai": []
  },
  "js": [],
  "serveris": {
-  "v": "H257A",
+  "v": "H257B",
   "uzs": {
    "35062": {
     "st": "processing",
@@ -94,10 +94,10 @@
    },
    "35063": {
     "st": "processing",
-    "sent_src": "",
+    "sent_src": "{\"ambrosia\":\"2026-08-24 20:43:18\"}",
     "pastabos": [
-     "Siuntos numeriai išsaugoti (AMBROSIA): V07267E1000014",
-     "Venipak registracija darbalaukyje (AMBROSIA, manifestas 006): sėkminga"
+     "Perduota tiekėjui Ambrosia — laiškas: terra@petshop.lt",
+     "Siuntos numeriai išsaugoti (AMBROSIA): V07267E1000014"
     ]
    },
    "35064": {
@@ -111,16 +111,16 @@
   },
   "arch": [
    {
+    "laikas": "2026-08-24 20:43:18",
+    "kam": "terra@petshop.lt",
+    "tema": "[PERSIŲSTI Ambrosia] užsakymas 2026-08-24",
+    "kont": "Perdavimas tiekėjui: Ambrosia · 1 užsak."
+   },
+   {
     "laikas": "2026-08-24 20:38:02",
     "kam": "terra@petshop.lt",
     "tema": "[PERSIŲSTI Quattro / Kauno grūdai] užsakymas 2026-08-24",
     "kont": "Perdavimas tiekėjui: Quattro / Kauno grūdai · 1 užsak."
-   },
-   {
-    "laikas": "2026-08-24 19:55:51",
-    "kam": "terra@petshop.lt",
-    "tema": "[PERSIŲSTI Ambrosia] UAB Avesa · prekių užsakymas 2026-08-24",
-    "kont": "Tiekimo partija #6 · Ambrosia"
    }
   ],
   "transient": false
