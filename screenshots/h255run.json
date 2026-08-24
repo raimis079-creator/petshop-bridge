@@ -1,0 +1,205 @@
+{
+ "v": "H255A",
+ "sukurta": 3799,
+ "deploy": {
+  "v": "H255A",
+  "failai": {
+   "petshop-desk.php": {
+    "gauta": 175400,
+    "sintakse": "ok",
+    "md5": "f25901270f25965a616e87c10257c256"
+   },
+   "petshop-av-dropship.php": {
+    "gauta": 43541,
+    "sintakse": "ok",
+    "md5": "77a5ac81000d89a1571cedf63f078341"
+   }
+  }
+ },
+ "md5_ok": true,
+ "desk1": {
+  "url": "/wp-admin/admin.php?page=ps-desk&eile=nauji",
+  "h1": "?",
+  "fatal": false,
+  "notices": [],
+  "put": 201,
+  "pipeline": [
+   "Laukia sprendimo 0",
+   "Nepaleisti planai 0",
+   "Neperduota tiekėjams 6",
+   "Partijose 3",
+   "Laukia prekių 4",
+   "Paruošta siųsti 2",
+   "Išsiųsta šiandien 0"
+  ],
+  "mygtukai": [
+   "Perduoti",
+   "Perduoti",
+   "Perduoti",
+   "Perduoti",
+   "Perduoti",
+   "Perduoti",
+   "Surinkti"
+  ],
+  "rail": [
+   "Nauji7",
+   "Mišrūs0",
+   "Neapmokėti1",
+   "Laukia prekių4",
+   "Paruošta siųsti2",
+   "Klausimai0",
+   "Išsiųsti0",
+   "Atšaukti0",
+   "Visi užsakymai14",
+   "Tiekimas3",
+   "Išsiųsti laiškai",
+   "Perdavimas tiekėjams6"
+  ]
+ },
+ "perduoti": {
+  "url": "/wp-admin/admin.php?page=ps-dropship&src=belcor_tofu",
+  "h1": "Perduoti tiekėjams",
+  "fatal": false,
+  "notices": [],
+  "put": 201,
+  "vartai": [],
+  "mygtukas": "Siųsti Belacor (lina.sirvele@belacorinvest.lt)"
+ },
+ "perduoti_po": {
+  "url": "/wp-admin/admin.php?page=ps-dropship&ps_sent=1",
+  "h1": "Perduoti tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Pažymėtuose užsakymuose dropship prekių nėra (arba jie jau perduoti)."
+  ],
+  "put": 201
+ },
+ "paruosta": {
+  "url": "/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+  "h1": "?",
+  "fatal": false,
+  "notices": [],
+  "put": 201,
+  "eilutes": [
+   "#35064vakar 10:26Justas TestauskasAlytusBEL1× Triušio ausys su antiena 500 g, natūralūs sk",
+   "#35056vakar 10:26Barbora TestauskasVilniusAV2× Ruda jaučio ausis, 1 vnt.AV1× Ruda kiaulės ",
+   "#35055vakar 10:26Ana TestauskasVilniusAV1× Žirklės nagams (giljotina), 11 cmAV1× Žirklės g"
+  ],
+  "mygtukai": [
+   "Išsiųsta"
+  ]
+ },
+ "issiusta_href": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=issiusta&id=35064&g=https%3A%2F%2Fdev.avesa.lt%2F",
+ "issiusta": {
+  "url": "/wp-admin/admin.php?page=ps-desk&eile=paruosta&pd_ok=issiusta&pd_nr=35064",
+  "h1": "?",
+  "fatal": false,
+  "notices": [
+   "Užsakymas #35064 pažymėtas išsiųstu — eilė „Išsiųsti“. WC laiškas klientui NEIŠSIŲSTAS.✕"
+  ],
+  "put": 201
+ },
+ "tiek_forma": "partija=6",
+ "dialogai": [
+  "Išsiųsti užsakymą tiekėjui Ambrosia?\n\nLaiškas keliaus el. paštu, partija bus uždaryta ir atsidarys n"
+ ],
+ "tiek_po": {
+  "url": "/wp-admin/admin.php?page=ps-tiekimas&p=6&b=uzsakyta&tk=uzsakyta_man",
+  "h1": "Tiekimas",
+  "fatal": false,
+  "notices": [
+   "Partija uždaryta. Laiškas su lipduku išsiųstas TAU (terra@petshop.lt) — persiųsk tiekėjui. Tiekėjui sistema nieko nesiuntė."
+  ],
+  "put": 201
+ },
+ "js": [],
+ "serveris": {
+  "v": "H255A",
+  "uzs": {
+   "35056": {
+    "st": "processing",
+    "sent_src": "",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (AV): V07267E1000008",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga"
+    ]
+   },
+   "35057": {
+    "st": "processing",
+    "sent_src": "",
+    "pastabos": [
+     "Email \"Užsakymas vykdomas\" failed to send.",
+     "Email \"Naujas užsakymas\" failed to send."
+    ]
+   },
+   "35061": {
+    "st": "processing",
+    "sent_src": "",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (VF): V07267E1000010",
+     "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+    ]
+   },
+   "35063": {
+    "st": "processing",
+    "sent_src": "",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (AMBROSIA): V07267E1000014",
+     "Venipak registracija darbalaukyje (AMBROSIA, manifestas 006): sėkminga"
+    ]
+   },
+   "35064": {
+    "st": "completed",
+    "sent_src": "{\"belcor_tofu\":\"2026-08-24 19:55:28\"}",
+    "pastabos": [
+     "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+     "Pažymėta išsiųsta darbalaukyje. Vartotojas: Rai. WC laiškas klientui: NESIŲSTAS."
+    ]
+   }
+  },
+  "arch": [
+   {
+    "laikas": "2026-08-24 19:55:51",
+    "kam": "terra@petshop.lt",
+    "tema": "[PERSIŲSTI Ambrosia] UAB Avesa · prekių užsakymas 2026-08-24",
+    "kont": "Tiekimo partija #6 · Ambrosia",
+    "priedai": []
+   },
+   {
+    "laikas": "2026-08-24 19:55:28",
+    "kam": "terra@petshop.lt",
+    "tema": "[PERSIŲSTI Belacor] užsakymas 2026-08-24",
+    "kont": "Perdavimas tiekėjui: Belacor · 1 užsak.",
+    "priedai": [
+     "35064 Justas Testauskas.pdf"
+    ]
+   }
+  ],
+  "tiek": [
+   {
+    "id": "6",
+    "tiekejas": "ambrosia",
+    "busena": "uzsakyta",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": "2026-08-24 19:55:51"
+   },
+   {
+    "id": "5",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": null
+   },
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": null
+   }
+  ]
+ }
+}
