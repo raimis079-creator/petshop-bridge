@@ -1,0 +1,132 @@
+{
+ "v": "H260A",
+ "sukurta": 3810,
+ "deploy": {
+  "v": "H260A",
+  "failai": {
+   "petshop-av-tiekimas.php": {
+    "gauta": 69905,
+    "sintakse": "ok",
+    "md5": "c8b7bf68aefd495549c5fe1e58185af4"
+   },
+   "petshop-av-dropship.php": {
+    "gauta": 58757,
+    "sintakse": "ok",
+    "md5": "263e2c2b5a0e6a6057633d638ed9604a"
+   }
+  },
+  "partijos": [
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "pristatymas": "pastomatas",
+    "venipak_pack": null
+   },
+   {
+    "id": "5",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "pristatymas": "kurjeris",
+    "venipak_pack": null
+   }
+  ]
+ },
+ "md5_ok": true,
+ "laukia": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Siunta neregistruota: #35067. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 002",
+   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201,
+  "av": [
+   "ps-av-blokas  | Į AV sandėlį — partija #5 2 poz. · 2 vnt. · 27,5 kg Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema JOS0914 1 vnt. Josidog Regular 15 kg - sausas maistas šunims JOS0622 1 vnt. Pristatymas: Venipak kurjeris į AV · Venipak siunta b"
+  ],
+  "su_partija": [
+   "5:true"
+  ],
+  "eiga4": [
+   "4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams + partija į AV → jie pereis į „Paruošta siųsti\"; kai tiekėjas iš",
+   "4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams → jie pereis į „Paruošta siųsti\"; kai tiekėjas išsiųs — ten spau",
+   "4 · Pažymėti perduotaisužsakymai pereis į „Paruošta siųsti\"; kai ZB išsiųs — ten spausk „Išsiųsta\""
+  ]
+ },
+ "perziura": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&perziura=vf",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Siunta neregistruota: #35067. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 002",
+   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201,
+  "av_dalis": [
+   "Prekės į mūsų sandėlį (UAB Avesa)"
+  ]
+ },
+ "mygtukas": "Siųsti be lipdukų (išimtis)",
+ "dialogai": [
+  "Siųsti BE lipdukų? Tiekėjas negalės išsiųsti, kol neatsiųsi lipdukų atskirai."
+ ],
+ "po": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&psl_sent=1&psl_src=vf&psl_n=2&psl_p=5&psl_kam=terra%40petshop.lt&psl_err",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Išsiųsta: Vetfarmas — 2 užsak. vienu laišku + partija #5 į AV (uždaryta, laukiam prekių), gavėjai: terra@petshop.lt. Užsakymai pažymėti perduotais.",
+   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201
+ },
+ "js": [],
+ "serveris": {
+  "v": "H260A",
+  "partijos": [
+   {
+    "id": "6",
+    "tiekejas": "ambrosia",
+    "busena": "uzsakyta",
+    "pristatymas": null,
+    "venipak_pack": null,
+    "uzsakyta": "2026-08-24 19:55:51"
+   },
+   {
+    "id": "5",
+    "tiekejas": "vf",
+    "busena": "uzsakyta",
+    "pristatymas": "kurjeris",
+    "venipak_pack": "V07267E1000022",
+    "uzsakyta": "2026-08-24 22:16:43"
+   },
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "pristatymas": "pastomatas",
+    "venipak_pack": null,
+    "uzsakyta": null
+   }
+  ],
+  "arch": {
+   "laikas": "2026-08-24 22:16:43",
+   "kam": "terra@petshop.lt",
+   "tema": "[PERSIŲSTI Vetfarmas] užsakymas 2026-08-24",
+   "kont": "Perdavimas tiekėjui: Vetfarmas · 2 užsak. + partija #5 į AV",
+   "priedai": [
+    "lipdukas-V07267E1000022.pdf"
+   ],
+   "av_dalis": true,
+   "html_ilgis": 2258
+  },
+  "uzs": {
+   "35061": "{\"vf\":\"2026-08-24 22:16:44\"}",
+   "35067": "{\"vf\":\"2026-08-24 22:16:43\"}"
+  }
+ }
+}
