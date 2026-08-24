@@ -609,6 +609,9 @@ class Petshop_AV_Dropship {
 						$perreg_laukai = array( 'action' => 'ps_desk_veiksmas', 'v' => 'vp_reg', 'id' => 0, 'perreg' => 1,
 							'sandelis' => $src, 'ids' => (int) $oid_r, 'g' => $bazine, '_wpnonce' => wp_create_nonce( 'ps_desk_vp_reg_0' ) ); ?>
 						<tr class="ps-dez"><td></td><td colspan="2">
+							<?php if ( $oo_d && $oo_d->get_meta( 'venipak_pickup_point' ) ) : // paštomatas: Venipak leidžia 1 dėžę siuntai ?>
+							<span class="ps-lip"><?php echo (int) $u['pakuociu']; ?> lipduk<?php echo 1 === (int) $u['pakuociu'] ? 'as' : 'ai'; ?> · paštomatas — 1 dėžė siuntai (Venipak riba); kelioms dėžėms reikia atskirų siuntų</span>
+							<?php else : ?>
 							<form method="get" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="ps-dez-f"
 								onsubmit="return confirm('Perregistruoti siuntą #<?php echo esc_js( $u['nr'] ); ?> Venipak su ' + this.n.value + ' dėž.? Sena siunta lieka Venipak sistemoje nenaudojama.');">
 								<?php foreach ( $perreg_laukai as $pk => $pv ) :
@@ -618,6 +621,7 @@ class Petshop_AV_Dropship {
 								<label>dėžių <input type="number" name="n" min="1" max="20" value="<?php echo (int) $dez; ?>" style="width:56px"></label>
 								<button class="button button-small"><?php echo $u['pakuociu'] > 0 ? 'Perregistruoti Venipak' : 'Registruoti Venipak'; ?></button>
 							</form>
+							<?php endif; ?>
 						</td><td></td></tr>
 						<?php
 					endforeach; ?>
