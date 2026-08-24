@@ -1,0 +1,41 @@
+{
+ "v": "H264A",
+ "sukurta": 3819,
+ "deploy": {
+  "v": "H264A",
+  "failai": {
+   "petshop-av-tiekimas.php": {
+    "gauta": 71429,
+    "sintakse": "ok",
+    "md5": "08a79af067de2718fd15389122cbd2f1"
+   }
+  },
+  "partijos": [
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null
+   },
+   {
+    "id": "8",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "pristatymas": null,
+    "dezes": "1",
+    "venipak_pack": null
+   }
+  ]
+ },
+ "md5_ok": true,
+ "tiek": {
+  "url": "/wp-admin/admin.php?page=ps-tiekimas",
+  "h1": "Tiekimas",
+  "fatal": false,
+  "notices": [],
+  "put": 201
+ },
+ "js": []
+}
