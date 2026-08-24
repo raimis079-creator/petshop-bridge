@@ -1,0 +1,48 @@
+{
+ "v": "H265A",
+ "sukurta": 3820,
+ "deploy": {
+  "v": "H265A",
+  "failai": {
+   "petshop-desk.php": {
+    "gauta": 181154,
+    "sintakse": "ok",
+    "md5": "b16a01b1258e5f023384caa996d581b6"
+   }
+  },
+  "partijos": [
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null
+   },
+   {
+    "id": "8",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "pristatymas": null,
+    "dezes": "1",
+    "venipak_pack": null
+   }
+  ]
+ },
+ "md5_ok": true,
+ "desk": {
+  "url": "/wp-admin/admin.php?page=ps-desk&eile=nauji",
+  "h1": "?",
+  "fatal": false,
+  "notices": [],
+  "put": 201
+ },
+ "kat": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas",
+ "katalogas": {
+  "url": "/wp-admin/admin.php?page=ps-katalogas",
+  "h1": "Įterpti/redaguoti nuorodą",
+  "fatal": false,
+  "notices": []
+ },
+ "js": []
+}
