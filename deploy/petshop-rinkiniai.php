@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.26 (H266) — 🔴 PARDAVIMO KAINA „NEIŠSISAUGO“ (darbuotojo pastaba).
+ *
+ * FAKTAI: kaina išsaugoma (_regular_price, _mnm_base_price = 11.99, get_price() = 11.99),
+ * bet MNM juodraščiui NEĮRAŠO `_price` meta → sąrašas, skaitęs get_post_meta('_price'),
+ * rodė 0,00 € ir maržą „—“. DABAR: sąrašas ima kainą iš get_price() (jei _price tuščias),
+ * o po išsaugojimo `_price` įrašomas tiesiogiai (abu keliai: rinkinys ir DP pakas) —
+ * kad ir feed'ai/rūšiavimas/WC lookup matytų tą pačią kainą.
+ *
  * Petshop Rinkiniai v1.3 (E4) — PARUOSTU RINKINIU VALDYMAS
  *
  * KAM: iki siol rinkinius buvo galima tik SUKURTI (snippet 539). Sarašo nebuvo,
@@ -904,6 +912,7 @@ class Petshop_Rinkiniai {
 			$qty  = (int) get_post_meta( $pid, '_dp_pack_qty', true );
 			$baze = wc_get_product( $bid );
 			$kaina = (float) get_post_meta( $pid, '_price', true );
+			if ( $kaina <= 0 ) { $pp_k = wc_get_product( $pid ); $kaina = $pp_k ? (float) $pp_k->get_price() : 0; } // H266: MNM juodraštis be _price
 			$sav   = $baze ? self::savikaina( $bid ) : null;
 			$suma  = $baze ? (float) $baze->get_price() * $qty : 0;
 			$lik   = $baze ? $baze->get_stock_quantity() : null;
@@ -994,6 +1003,7 @@ class Petshop_Rinkiniai {
 			}
 
 			$kaina = (float) get_post_meta( $pid, '_price', true );
+			if ( $kaina <= 0 ) { $pp_k = wc_get_product( $pid ); $kaina = $pp_k ? (float) $pp_k->get_price() : 0; } // H266: MNM juodraštis be _price
 			$fiksuota = ! empty( $kiekiai );
 			$marza = ( $fiksuota && ! $truksta && $kaina > 0 ) ? $kaina - $sav : null;
 
@@ -2974,6 +2984,7 @@ class Petshop_Rinkiniai {
 			$prod->update_meta_data( '_mnm_weight_cumulative', 'no' );   /* svoris jau irasytas i preke */
 			$prod->set_category_ids( self::kategorijos( array_keys( $kiekiai ), $kat ) );
 			$prod->save();
+			update_post_meta( $prod->get_id(), '_price', wc_format_decimal( $kaina ) ); // H266: MNM _price neįrašo juodraščiui
 			$pid = $prod->get_id();
 			if ( ! $pid ) { wp_send_json_error( 'Nepavyko išsaugoti prekės.' ); }
 
@@ -3127,6 +3138,7 @@ class Petshop_Rinkiniai {
 			$brand = wp_get_post_terms( $bid, 'product_brand', array( 'fields' => 'ids' ) );
 
 			$prod->save();
+			update_post_meta( $prod->get_id(), '_price', wc_format_decimal( $kaina ) ); // H266: MNM _price neįrašo juodraščiui
 
 			/* Taksonominiai atributai neislieka be `_product_attributes` — todel
 			   set_attributes() PRIES save(), o terminai priskiriami PO jo. */
