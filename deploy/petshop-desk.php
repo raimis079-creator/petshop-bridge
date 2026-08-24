@@ -725,6 +725,13 @@ class Petshop_Desk {
 			foreach ( $ids as $oid ) {
 				$oo = wc_get_order( $oid );
 				if ( $oo ) {
+					// H258: perregistravimas nepavyko → grąžinam seną siuntą (pluginas jau būna įrašęs naujus, neregistruotus pack nr.).
+					if ( ! $ok && $perreg && $oo->get_meta( '_ps_venipak_sena' ) ) {
+						$oo->update_meta_data( 'venipak_shipping_order_data', $oo->get_meta( '_ps_venipak_sena' ) );
+						$oo->delete_meta_data( '_ps_venipak_sena' );
+						$oo->add_order_note( 'Darbalaukis: perregistravimas nepavyko — sena siunta grąžinta, galioja kaip buvo.', false, true );
+						$oo->save();
+					}
 					$oo->add_order_note( sprintf( 'Venipak registracija darbalaukyje (%s, manifestas %s): %s',
 						mb_strtoupper( $sandelis ), $kodas, $ok ? 'sėkminga' : ( 'KLAIDA — ' . ( $rez['data'] ?? '?' ) ) ), false, true );
 					if ( $ok && class_exists( 'Petshop_Siuntos' ) ) {
