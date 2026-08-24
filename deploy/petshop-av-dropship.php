@@ -409,41 +409,15 @@ class Petshop_AV_Dropship {
 		global $wpdb;
 		$t      = self::tiekejai();
 		$pastai = (array) get_option( self::OPT_EMAIL, [] );
-		$perz   = isset( $_GET['perziura'] ) ? sanitize_key( $_GET['perziura'] ) : '';
-
 		if ( ! $g ) {
 			echo '<p>Nė vienam tiekėjui laiško nelaukia — viskas perduota.</p>';
 		}
+		// H258: ta pati pilna kortelė kaip „Perduoti tiekėjams" — prierašas, varnelės, siuntimas čia pat.
+		echo '<p class="description">Siunčiama iš <code>terra@petshop.lt</code>. AV prekės į laiškus nepatenka. Vienas laiškas — visi tiekėjo užsakymai.</p>';
 		foreach ( $g as $src => $uzsakymai ) {
-			$vardas = $t[ $src ][0] ?? strtoupper( $src );
-			$vnt    = 0;
-			foreach ( $uzsakymai as $u ) { foreach ( $u['eilutes'] as $e ) { $vnt += $e['qty']; } }
-			printf( '<div class="ps-tiek"><div class="ps-tiek-h"><h2>%s</h2><span>%d užsak. · %d vnt. · %s</span></div>',
-				esc_html( $vardas ), count( $uzsakymai ), (int) $vnt,
-				'zb' === $src ? 'suvedama ranka ZB sistemoje'
-					: esc_html( $pastai[ $src ] ?? 'el. pašto nėra' ) );
-			echo '<table class="widefat striped"><tbody>';
-			foreach ( $uzsakymai as $oid => $u ) {
-				printf( '<tr><td style="width:110px"><b>#%s</b></td><td>%s</td><td style="width:90px" class="ps-r">%d vnt.</td></tr>',
-					esc_html( $u['nr'] ?? $oid ),
-					esc_html( $u['klientas'] ?? '' ),
-					array_sum( wp_list_pluck( $u['eilutes'], 'qty' ) ) );
-			}
-			echo '</tbody></table><p>';
-			printf( '<a class="button" href="%s">%s</a> ',
-				esc_url( admin_url( 'admin.php?page=ps-laiskai&b=laukia&perziura=' . ( $perz === $src ? '' : $src ) ) ),
-				$perz === $src ? 'Slėpti laiško peržiūrą' : 'Peržiūrėti laišką' );
-			// H257: visi šio tiekėjo neperduoti užsakymai → perdavimo ekranas → VIENAS laiškas.
-			printf( '<a class="button button-primary" href="%s">%s %s — %d užsak. %s →</a></p>',
-				esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ps_dropship_visi&src=' . rawurlencode( $src ) ), 'ps_dropship_visi_' . $src ) ),
-				'zb' === $src ? 'Atidaryti' : 'Perduoti', esc_html( $vardas ), count( $uzsakymai ),
-				'zb' === $src ? '(suvesti ZB sistemoje)' : 'vienu laišku' );
-			if ( $perz === $src ) {
-				echo '<div style="background:#fff;border:1px solid #ddd;padding:16px;max-width:900px">'
-					. wp_kses_post( self::laisko_html( $src, $uzsakymai, '' ) ) . '</div>';
-			}
-			echo '</div>';
+			self::kortele( $src, $uzsakymai, admin_url( 'admin.php?page=ps-laiskai&b=laukia' ) );
 		}
+		self::kortelės_stilius();
 
 		// Kaupiamos tiekimo partijos — laiškas dar nesuformuotas.
 		$p = $wpdb->get_results( "SELECT id, tiekejas FROM {$wpdb->prefix}ps_tiekimas p
@@ -525,13 +499,63 @@ class Petshop_AV_Dropship {
 				(arba jie jau perduoti).</p></div>
 			<?php endif; ?>
 
-			<?php foreach ( $g as $src => $uzsakymai ) :
-				$vardas = $t[ $src ][0] ?? strtoupper( $src );
-				$rodyti_ean = ( ( $t[ $src ][1] ?? 'sku' ) === 'sku_ean' );
-				$pastas = $pastai[ $src ] ?? '';
-				$vnt = 0; $lip = 0;
-				foreach ( $uzsakymai as $u ) { $lip += $u['pakuociu']; foreach ( $u['eilutes'] as $e ) { $vnt += $e['qty']; } }
-			?>
+			<?php foreach ( $g as $src => $uzsakymai ) { self::kortele( $src, $uzsakymai, admin_url( 'admin.php?page=ps-dropship' . ( $tik ? '&src=' . $tik : '' ) ) ); } ?>
+		</div>
+		<?php self::kortelės_stilius();
+	}
+
+	/** Kortelės JS + CSS — abiem langams (H258). */
+	protected static function kortelės_stilius() {
+		?>
+		<script>
+		document.addEventListener('click', function(ev){
+			var b = ev.target.closest('.ps-kopijuoti');
+			if (!b) { return; }
+			var t = b.getAttribute('data-tsv') || '';
+			function ok(){ b.textContent = 'Nukopijuota'; setTimeout(function(){ b.textContent='Kopijuoti'; }, 1500); }
+			if (navigator.clipboard && window.isSecureContext) {
+				navigator.clipboard.writeText(t).then(ok, function(){ senas(); });
+			} else { senas(); }
+			function senas(){
+				var ta = document.createElement('textarea');
+				ta.value = t; document.body.appendChild(ta); ta.select();
+				try { document.execCommand('copy'); ok(); } catch(e) {}
+				document.body.removeChild(ta);
+			}
+		});
+		</script>
+		<style>
+		.ps-tiek { background:#fff; border:1px solid #dcdcdc; padding:16px 20px; margin:0 0 18px; }
+		.ps-tiek-h { display:flex; justify-content:space-between; align-items:baseline;
+			border-bottom:2px solid #222; padding-bottom:6px; margin-bottom:12px; }
+		.ps-tiek-h h2 { margin:0; font-size:16px; }
+		.ps-tiek-h span { font-size:12px; color:#555; }
+		.ps-tbl td, .ps-tbl th { font-size:13px; }
+		.ps-c { width:60px; text-align:center; }
+		.ps-kodas { color:#888; font-size:11px; margin-left:8px; }
+		.ps-lip { color:#a05a00; font-size:12px; font-style:italic; }
+		.ps-siusti { margin-top:12px; }
+		.ps-dez td { border-top:none !important; padding-top:0; }
+		.ps-dez-f { display:inline-flex; gap:8px; align-items:center; font-size:12px; }
+		.ps-siusti label { margin-left:14px; font-size:12px; }
+		.notice.inline { margin:8px 0; }
+		</style>
+		<?php
+	}
+
+	/**
+	 * VIENA tiekėjo kortelė (H258) — naudojama ir „Laukia išsiuntimo", ir „Perduoti tiekėjams".
+	 * $bazine — URL, į kurį grįžtama po peržiūros perjungimo / perregistravimo.
+	 */
+	protected static function kortele( $src, $uzsakymai, $bazine ) {
+		$t      = self::tiekejai();
+		$pastai = (array) get_option( self::OPT_EMAIL, [] );
+		$vardas = $t[ $src ][0] ?? strtoupper( $src );
+		$rodyti_ean = ( ( $t[ $src ][1] ?? 'sku' ) === 'sku_ean' );
+		$pastas = $pastai[ $src ] ?? '';
+		$vnt = 0; $lip = 0;
+		foreach ( $uzsakymai as $u ) { $lip += $u['pakuociu']; foreach ( $u['eilutes'] as $e ) { $vnt += $e['qty']; } }
+		?>
 			<div class="ps-tiek">
 				<div class="ps-tiek-h">
 					<h2><?php echo esc_html( $vardas ); ?></h2>
@@ -579,9 +603,23 @@ class Petshop_AV_Dropship {
 							<td class="ps-c"><?php echo (int) $e['qty']; ?> vnt.</td>
 						</tr>
 						<?php $pirma = false; endforeach;
-						if ( $u['pakuociu'] > 1 ) : ?>
-						<tr><td></td><td></td><td class="ps-lip"><?php echo (int) $u['pakuociu']; ?> lipdukai</td><td></td></tr>
-						<?php endif;
+						// H258: dėžių skaičius keičiamas čia pat — daugiau dėžių = daugiau lipdukų.
+						$oo_d = wc_get_order( $oid_r );
+						$dez  = $oo_d ? (int) $oo_d->get_meta( '_ps_pakuociu' ) : 0; if ( $dez < 1 ) { $dez = 1; }
+						$perreg_laukai = array( 'action' => 'ps_desk_veiksmas', 'v' => 'vp_reg', 'id' => 0, 'perreg' => 1,
+							'sandelis' => $src, 'ids' => (int) $oid_r, 'g' => $bazine, '_wpnonce' => wp_create_nonce( 'ps_desk_vp_reg_0' ) ); ?>
+						<tr class="ps-dez"><td></td><td colspan="2">
+							<form method="get" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="ps-dez-f"
+								onsubmit="return confirm('Perregistruoti siuntą #<?php echo esc_js( $u['nr'] ); ?> Venipak su ' + this.n.value + ' dėž.? Sena siunta lieka Venipak sistemoje nenaudojama.');">
+								<?php foreach ( $perreg_laukai as $pk => $pv ) :
+									printf( '<input type="hidden" name="%s" value="%s">', esc_attr( $pk ), esc_attr( $pv ) );
+								endforeach; ?>
+								<span class="ps-lip"><?php echo (int) $u['pakuociu']; ?> lipduk<?php echo 1 === (int) $u['pakuociu'] ? 'as' : 'ai'; ?> ·</span>
+								<label>dėžių <input type="number" name="n" min="1" max="20" value="<?php echo (int) $dez; ?>" style="width:56px"></label>
+								<button class="button button-small"><?php echo $u['pakuociu'] > 0 ? 'Perregistruoti Venipak' : 'Registruoti Venipak'; ?></button>
+							</form>
+						</td><td></td></tr>
+						<?php
 					endforeach; ?>
 					</tbody>
 				</table>
@@ -600,7 +638,7 @@ class Petshop_AV_Dropship {
 				<?php if ( 'zb' !== $src ) :
 					$perziura = isset( $_GET['perziura'] ) && $_GET['perziura'] === $src; ?>
 					<p style="margin:10px 0 0">
-						<a class="button" href="<?php echo esc_url( add_query_arg( array( 'page' => 'ps-dropship', 'perziura' => $perziura ? null : $src ) , admin_url( 'admin.php' ) ) ); ?>">
+						<a class="button" href="<?php echo esc_url( add_query_arg( array( 'perziura' => $perziura ? null : $src ), $bazine ) ); ?>">
 							<?php echo $perziura ? 'Slėpti laiško peržiūrą' : 'Peržiūrėti laišką'; ?></a>
 					</p>
 					<?php if ( $perziura ) : ?>
@@ -628,7 +666,7 @@ class Petshop_AV_Dropship {
 						$reg_url = wp_nonce_url(
 							admin_url( 'admin-post.php?action=ps_desk_veiksmas&v=vp_reg&id=0&sandelis=' . rawurlencode( $src )
 								. '&ids=' . implode( ',', $be_siuntos )
-								. '&g=' . rawurlencode( admin_url( 'admin.php?page=ps-dropship&src=' . $src ) ) ),
+								. '&g=' . rawurlencode( $bazine ) ),
 							'ps_desk_vp_reg_0' );
 					}
 					if ( $be_siuntos ) : ?>
@@ -666,39 +704,6 @@ class Petshop_AV_Dropship {
 				</form>
 				<?php endif; ?>
 			</div>
-			<?php endforeach; ?>
-		</div>
-		<script>
-		document.addEventListener('click', function(ev){
-			var b = ev.target.closest('.ps-kopijuoti');
-			if (!b) { return; }
-			var t = b.getAttribute('data-tsv') || '';
-			function ok(){ b.textContent = 'Nukopijuota'; setTimeout(function(){ b.textContent='Kopijuoti'; }, 1500); }
-			if (navigator.clipboard && window.isSecureContext) {
-				navigator.clipboard.writeText(t).then(ok, function(){ senas(); });
-			} else { senas(); }
-			function senas(){
-				var ta = document.createElement('textarea');
-				ta.value = t; document.body.appendChild(ta); ta.select();
-				try { document.execCommand('copy'); ok(); } catch(e) {}
-				document.body.removeChild(ta);
-			}
-		});
-		</script>
-		<style>
-		.ps-tiek { background:#fff; border:1px solid #dcdcdc; padding:16px 20px; margin:0 0 18px; }
-		.ps-tiek-h { display:flex; justify-content:space-between; align-items:baseline;
-			border-bottom:2px solid #222; padding-bottom:6px; margin-bottom:12px; }
-		.ps-tiek-h h2 { margin:0; font-size:16px; }
-		.ps-tiek-h span { font-size:12px; color:#555; }
-		.ps-tbl td, .ps-tbl th { font-size:13px; }
-		.ps-c { width:60px; text-align:center; }
-		.ps-kodas { color:#888; font-size:11px; margin-left:8px; }
-		.ps-lip { color:#a05a00; font-size:12px; font-style:italic; }
-		.ps-siusti { margin-top:12px; }
-		.ps-siusti label { margin-left:14px; font-size:12px; }
-		.notice.inline { margin:8px 0; }
-		</style>
 		<?php
 	}
 
@@ -795,7 +800,7 @@ class Petshop_AV_Dropship {
 	/** Išsiunčia laišką vienam tiekėjui. */
 	/** Gyvas prierašo atspindys peržiūroje. */
 	public static function skriptas() {
-		if ( ! isset( $_GET['page'] ) || 'ps-dropship' !== $_GET['page'] ) { return; }
+		if ( ! isset( $_GET['page'] ) || ! in_array( $_GET['page'], array( 'ps-dropship', 'ps-laiskai' ), true ) ) { return; }
 		?>
 		<script>
 		document.addEventListener('input', function (ev) {
