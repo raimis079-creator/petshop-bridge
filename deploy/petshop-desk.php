@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Desk v3.47 (H265) — Įrankiuose nuoroda „Prekių katalogas“ (ps-katalogas) + paieškos laukelyje SKU/prekės paieška katalogui.
+ *
  * Petshop Desk v3.46 (H259) — PAŠTOMATAS: KELIOS DĖŽĖS = KELIOS SIUNTOS TAM PAČIAM KLIENTUI.
  *
  * KODĖL (Raimis, H259): „jei į paštomatą — formuojamos kelios siuntos tam pačiam
@@ -2311,6 +2313,9 @@ class Petshop_Desk {
 		printf( '<a class="pd-ri" href="%s"><span>Perdavimas tiekėjams</span>%s</a>',
 			esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=nauji&zvilgsnis=neperduota' ) ),
 			! empty( $c['pipe_neperduota'] ) ? '<b class="pd-rb pd-rb-k">' . (int) $c['pipe_neperduota'] . '</b>' : '' );
+		// H265: tiesiai į prekių katalogą (petshop-katalogas.php, page=ps-katalogas).
+		printf( '<a class="pd-ri pd-ri-kat" href="%s" title="Prekių katalogas — kainos, likučiai, tiekėjai"><span>Prekių katalogas ↗</span></a>',
+			esc_url( admin_url( 'admin.php?page=ps-katalogas' ) ) );
 		echo '<div class="pd-ai"><div class="pd-ai-h"><span class="pd-dot"></span>Siūlymai</div>
 			<div class="pd-ai-t">Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.</div></div>';
 		echo '</nav>';
@@ -3359,6 +3364,7 @@ td.pd-act{text-align:right;white-space:nowrap;width:1%}
 .pd-chip-w{background:#FDF3E1;color:#96660C;border-color:#F1DDB2}
 .pd-chip-av{background:#EFEFEF;color:#555;border-color:#DDD}
 .pd-ri{display:flex;align-items:center;gap:6px;padding:7px 14px;color:#C9C5BC;text-decoration:none;font-size:13px}
+.pd-ri-kat{margin-top:6px;border-top:1px solid rgba(255,255,255,.12);padding-top:10px;color:#fff;font-weight:600}
 .pd-ri:hover{color:#fff;background:rgba(255,255,255,.05)}
 .pd-ri span{flex:1}
 .pd-rb{font-size:11px;line-height:1.6;min-width:18px;text-align:center;border-radius:999px;padding:0 5px;font-weight:600}
