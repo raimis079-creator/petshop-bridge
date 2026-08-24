@@ -1,5 +1,27 @@
 <?php
 /**
+ * Petshop AV Dropship v1.14 (H257) — VIENAS LAIŠKAS TIEKĖJUI SU VISAIS UŽSAKYMAIS + TIESA PO SIUNTIMO.
+ *
+ * KODĖL (Raimis, H257): „kam siųsti tiekėjui po 1 laišką? kur langas paruošti
+ * siųsti laiškai? sistema neišdirbta". Faktai: (1) „Laukia išsiuntimo" mygtukas
+ * „Eiti perduoti X" grąžindavo į Naujų sąrašą, kur kiekviena eilutė turi savo
+ * „Perduoti" — po laišką užsakymui; vieną laišką visiems reikėjo susirinkti
+ * varnelėmis pačiam; (2) po sėkmingo išsiuntimo ekranas rodė „dropship prekių
+ * nėra" — atrodė, kad nieko neįvyko. DABAR: „Laukia išsiuntimo" prie tiekėjo —
+ * mygtukas „Perduoti X — n užsak. vienu laišku" (visi to tiekėjo neperduoti
+ * užsakymai iškart perdavimo ekrane, vienas laiškas); po siuntimo grįžtama į
+ * „Laukia išsiuntimo" su aiškia žinute (išsiųsta/nepavyko + wp_mail klaidos
+ * tekstas); pasirinkimas išvalomas.
+ *
+ * Petshop AV Dropship v1.13 (H255) — SIUNTOS VARTAI PRIEŠ LAIŠKĄ.
+ *
+ * KODĖL (H253 E2E): „Perduoti“ kelias Venipak neregistruoja, o laiškas su
+ * varnele „pridėti lipdukus“ išeidavo BE lipdukų ir be jokio įspėjimo, jei
+ * siunta dar neregistruota — tiekėjas gauna užsakymą, kurio negali išsiųsti.
+ * DABAR: kortelėje prie tiekėjo — kiek užsakymų be registruotos siuntos; jei
+ * yra, siuntimo mygtukas išjungtas, šalia „Registruoti Venipak (n)“ (desk vp_reg
+ * su šio sandėlio manifestu) ir „Siųsti be lipdukų“ išimtims (sąmoningai).
+ *
  * Petshop AV Dropship v1.12 (H251) — LAIŠKŲ LANGAS: „LAUKIA IŠSIUNTIMO" + „IŠSIŲSTI".
  *
  * KODĖL (Raimis, H251): „reikia lauko, kur dar neišsiųsti laiškai, jei noriu ko
@@ -86,6 +108,8 @@ class Petshop_AV_Dropship {
 
 	const VEIKSMAS = 'ps_dropship';
 	const OPT_EMAIL = 'ps_tiekeju_pastai';
+	/** Paskutinė wp_mail klaida (H257) — kad po nepavykusio siuntimo būtų matomas tekstas, ne tyla. */
+	public static $pasto_klaida = '';
 
 	/** Perdavimo žymės. SENA — viso užsakymo (paliekama), NAUJA — pagal sandėlį. */
 	const META_SENT     = '_ps_dropship_sent';
@@ -112,6 +136,8 @@ class Petshop_AV_Dropship {
 		add_action( 'admin_menu', [ __CLASS__, 'meniu' ], 20 );
 		add_action( 'admin_footer', [ __CLASS__, 'skriptas' ] );
 		add_action( 'admin_post_ps_dropship_send', [ __CLASS__, 'siusti' ] );
+		add_action( 'admin_post_ps_dropship_visi', [ __CLASS__, 'perduoti_visus' ] );
+		add_action( 'wp_mail_failed', function ( $e ) { self::$pasto_klaida = is_wp_error( $e ) ? $e->get_error_message() : 'wp_mail klaida'; } );
 		add_action( 'admin_post_ps_dropship_nust', [ __CLASS__, 'saugoti_nustatymus' ] );
 		add_action( 'admin_post_ps_dropship_lipdukas', [ __CLASS__, 'lipdukas_atsisiusti' ] );
 		add_action( 'admin_post_ps_dropship_zb_done', [ __CLASS__, 'zb_pazymeti' ] );
@@ -287,7 +313,7 @@ class Petshop_AV_Dropship {
 
 	/** Išsiųstų laiškų archyvas — vienoje vietoje matai, kas kam išėjo (H250). */
 	/** Visi neperduoti užsakymai (ne tik pažymėti) — sugrupuoti pagal tiekėją. */
-	protected static function laukiantys_perdavimo() {
+	public static function laukiantys_perdavimo() {
 		$ids = wc_get_orders( array(
 			'limit'  => 200,
 			'type'   => 'shop_order',
@@ -307,7 +333,24 @@ class Petshop_AV_Dropship {
 		$a   = (array) get_option( 'ps_laisku_archyvas', [] );
 		$z   = isset( $_GET['z'] ) ? absint( $_GET['z'] ) : -1;
 		$sk  = isset( $_GET['b'] ) ? sanitize_key( $_GET['b'] ) : 'laukia';
-		echo '<div class="wrap"><h1>Laiškai</h1>';
+		echo '<div class="wrap"><h1>Laiškai tiekėjams</h1>';
+		if ( isset( $_GET['ps_sent'] ) ) { // H257: kas įvyko po siuntimo — be spėlionių.
+			$t2  = self::tiekejai();
+			$ss  = sanitize_key( $_GET['ps_src'] ?? '' );
+			$sv  = $t2[ $ss ][0] ?? strtoupper( $ss );
+			$sn  = absint( $_GET['ps_n'] ?? 0 );
+			$sk  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['ps_kam'] ?? '' ) ) );
+			$se  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['ps_err'] ?? '' ) ) );
+			if ( '1' === (string) $_GET['ps_sent'] ) {
+				printf( '<div class="notice notice-success"><p><b>Išsiųsta:</b> %s — %d užsak. vienu laišku, gavėjai: %s. Užsakymai pažymėti perduotais.</p></div>',
+					esc_html( $sv ), $sn, esc_html( $sk ) );
+			} elseif ( '2' === (string) $_GET['ps_sent'] ) {
+				printf( '<div class="notice notice-warning"><p>%s neturi neperduotų užsakymų — nieko nesiųsta.</p></div>', esc_html( $sv ) );
+			} else {
+				printf( '<div class="notice notice-error"><p><b>NEIŠSIŲSTA:</b> %s — %d užsak. Laiškas nepasiekė pašto serverio%s. Užsakymai LIKO neperduoti — bandyk dar kartą arba tikrink SMTP.</p></div>',
+					esc_html( $sv ), $sn, $se ? ' (' . esc_html( $se ) . ')' : '' );
+			}
+		}
 		printf( '<p><a class="button" href="%s">← Petshop užsakymai</a></p>',
 			esc_url( admin_url( 'admin.php?page=ps-desk' ) ) );
 
@@ -389,9 +432,11 @@ class Petshop_AV_Dropship {
 			printf( '<a class="button" href="%s">%s</a> ',
 				esc_url( admin_url( 'admin.php?page=ps-laiskai&b=laukia&perziura=' . ( $perz === $src ? '' : $src ) ) ),
 				$perz === $src ? 'Slėpti laiško peržiūrą' : 'Peržiūrėti laišką' );
-			printf( '<a class="button button-primary" href="%s">Eiti perduoti %s →</a></p>',
-				esc_url( admin_url( 'admin.php?page=ps-desk&eile=nauji&zvilgsnis=neperduota' ) ),
-				esc_html( $vardas ) );
+			// H257: visi šio tiekėjo neperduoti užsakymai → perdavimo ekranas → VIENAS laiškas.
+			printf( '<a class="button button-primary" href="%s">%s %s — %d užsak. %s →</a></p>',
+				esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ps_dropship_visi&src=' . rawurlencode( $src ) ), 'ps_dropship_visi_' . $src ) ),
+				'zb' === $src ? 'Atidaryti' : 'Perduoti', esc_html( $vardas ), count( $uzsakymai ),
+				'zb' === $src ? '(suvesti ZB sistemoje)' : 'vienu laišku' );
 			if ( $perz === $src ) {
 				echo '<div style="background:#fff;border:1px solid #ddd;padding:16px;max-width:900px">'
 					. wp_kses_post( self::laisko_html( $src, $uzsakymai, '' ) ) . '</div>';
@@ -573,7 +618,25 @@ class Petshop_AV_Dropship {
 					<?php endif; ?>
 				<?php endif; ?>
 
-				<?php if ( 'zb' !== $src && $pastas ) : ?>
+				<?php if ( 'zb' !== $src && $pastas ) :
+					// H255: siuntos vartai — be registruotos siuntos lipdukų laiške nebus.
+					$be_siuntos = array();
+					foreach ( $uzsakymai as $oid_v => $u ) { if ( (int) $u['pakuociu'] < 1 ) { $be_siuntos[] = (int) $oid_v; } }
+					$reg_url = '';
+					if ( $be_siuntos ) {
+						$reg_url = wp_nonce_url(
+							admin_url( 'admin-post.php?action=ps_desk_veiksmas&v=vp_reg&id=0&sandelis=' . rawurlencode( $src )
+								. '&ids=' . implode( ',', $be_siuntos )
+								. '&g=' . rawurlencode( admin_url( 'admin.php?page=ps-dropship&src=' . $src ) ) ),
+							'ps_desk_vp_reg_0' );
+					}
+					if ( $be_siuntos ) : ?>
+					<div class="notice notice-error inline" style="margin:10px 0"><p>
+						<b>Siunta neregistruota: <?php echo esc_html( implode( ', ', array_map( function ( $x ) { return '#' . $x; }, $be_siuntos ) ) ); ?>.</b>
+						Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti.
+						<a class="button button-primary" href="<?php echo esc_url( $reg_url ); ?>">Registruoti Venipak (<?php echo count( $be_siuntos ); ?>) → manifestas <?php echo esc_html( Petshop_Desk::MANIFESTAI[ $src ] ?? '?' ); ?></a>
+					</p></div>
+					<?php endif; ?>
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="ps-siusti">
 					<?php wp_nonce_field( 'ps_dropship_send' ); ?>
 					<input type="hidden" name="action" value="ps_dropship_send">
@@ -585,7 +648,12 @@ class Petshop_AV_Dropship {
 							data-src="<?php echo esc_attr( $src ); ?>"
 							placeholder="Pvz.: prašome pristatyti iki penktadienio; prie 35048 pridėkite dovanėlę…"></textarea>
 					</p>
-					<button class="button button-primary">Siųsti <?php echo esc_html( $vardas ); ?> (<?php echo esc_html( $pastas ); ?>)</button>
+					<?php if ( $be_siuntos ) : ?>
+						<button class="button" type="submit" name="be_lipduku" value="1"
+							onclick="return confirm('Siųsti BE lipdukų? Tiekėjas negalės išsiųsti, kol neatsiųsi lipdukų atskirai.');">Siųsti be lipdukų (išimtis)</button>
+					<?php else : ?>
+						<button class="button button-primary">Siųsti <?php echo esc_html( $vardas ); ?> (<?php echo esc_html( $pastas ); ?>)</button>
+					<?php endif; ?>
 					<label><input type="checkbox" name="su_lipdukais" value="1" checked> pridėti lipdukus</label>
 					<label><input type="checkbox" name="su_manifestu" value="1" checked> pridėti manifestą</label>
 					<?php $ln = self::laisko_nust(); ?>
@@ -777,6 +845,22 @@ class Petshop_AV_Dropship {
 		return $h;
 	}
 
+	/** „Laukia išsiuntimo" → visi tiekėjo neperduoti užsakymai į perdavimo ekraną (H257). */
+	public static function perduoti_visus() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		$src = isset( $_GET['src'] ) ? sanitize_key( wp_unslash( $_GET['src'] ) ) : '';
+		check_admin_referer( 'ps_dropship_visi_' . $src );
+		$g   = self::laukiantys_perdavimo();
+		$ids = isset( $g[ $src ] ) ? array_map( 'intval', array_keys( $g[ $src ] ) ) : array();
+		if ( ! $src || ! $ids ) {
+			wp_safe_redirect( admin_url( 'admin.php?page=ps-laiskai&b=laukia&ps_sent=2&ps_src=' . rawurlencode( $src ) ) );
+			exit;
+		}
+		set_transient( 'ps_dropship_' . get_current_user_id(), $ids, 1800 );
+		wp_safe_redirect( add_query_arg( [ 'page' => 'ps-dropship', 'src' => $src ], admin_url( 'admin.php' ) ) );
+		exit;
+	}
+
 	public static function siusti() {
 		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
 		check_admin_referer( 'ps_dropship_send' );
@@ -848,7 +932,17 @@ class Petshop_AV_Dropship {
 		}
 		foreach ( $priedai as $f ) { @unlink( $f ); }
 
-		wp_safe_redirect( add_query_arg( [ 'page' => 'ps-dropship', 'ps_sent' => $ok ? 1 : 0 ], admin_url( 'admin.php' ) ) );
+		// H257: pasirinkimas išvalomas; grįžtama į „Laukia išsiuntimo" su aiškia žinute.
+		delete_transient( 'ps_dropship_' . get_current_user_id() );
+		wp_safe_redirect( add_query_arg( [
+			'page'    => 'ps-laiskai',
+			'b'       => 'laukia',
+			'ps_sent' => $ok ? 1 : 0,
+			'ps_src'  => $src,
+			'ps_n'    => count( $uzsakymai ),
+			'ps_kam'  => rawurlencode( implode( ', ', $gav ) ),
+			'ps_err'  => $ok ? '' : rawurlencode( mb_substr( self::$pasto_klaida, 0, 200 ) ),
+		], admin_url( 'admin.php' ) ) );
 		exit;
 	}
 
