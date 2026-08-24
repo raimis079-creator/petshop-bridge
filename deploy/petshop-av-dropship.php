@@ -1,5 +1,14 @@
 <?php
 /**
+ * Petshop AV Dropship v1.19 (H262) — 🔴 MANIFESTAS NIEKADA NEBUVO PRIKABINAMAS + KELIŲ LIPDUKŲ PDF.
+ *
+ * RADINYS (H262 recon): `ws/print_manifest` — 404 (endpoint neegzistuoja), todėl
+ * varnelė „pridėti manifestą" nuo pat pradžių nieko nedėjo (archyve nė vieno
+ * manifesto). Ir print_label su keliais pack'ais per kablelį grąžina TUŠČIĄ —
+ * kelių dėžių užsakymai keliavo be lipdukų. DABAR: manifestas per
+ * `ws/print_list` su manifesto kodu iš užsakymo Venipak įrašo (+ partijos),
+ * po PDF kiekvienam skirtingam manifestui; lipdukai — pack_no[] masyvu.
+ *
  * Petshop AV Dropship v1.18 (H261) — AV BLOKAS: LIPDUKŲ SKAIČIUS, BE SVORIO, BENDRAS MANIFESTAS.
  *
  * KODĖL (Raimis, H261): laiške AV daliai nereikia adreso ir svorio, manifestas
@@ -1015,7 +1024,7 @@ class Petshop_AV_Dropship {
 
 		// H260: Tiekimo partija tame pačiame laiške — paruošiam (Venipak, lipdukas), uždarom tik po sėkmės.
 		$pid = isset( $_POST['su_partija'] ) ? absint( $_POST['su_partija'] ) : 0;
-		$partija_html = ''; $partija_priedas = ''; $partija_packs = array();
+		$partija_html = ''; $partija_priedas = ''; $partija_manif = array();
 		if ( $pid && class_exists( 'Petshop_AV_Tiekimas' ) ) {
 			$pr = Petshop_AV_Tiekimas::paruosti( $pid, isset( $_POST['partija_dezes'] ) ? absint( $_POST['partija_dezes'] ) : 0 );
 			if ( empty( $pr['ok'] ) ) {
@@ -1024,7 +1033,7 @@ class Petshop_AV_Dropship {
 				exit;
 			}
 			$partija_html = $pr['html']; $partija_priedas = $pr['priedas'];
-			$partija_packs = array_filter( explode( ',', (string) $pr['pack'] ) );
+			$partija_manif = ! empty( $pr['part']->venipak_manifest ) ? array( (string) $pr['part']->venipak_manifest ) : array();
 		}
 		$h = self::laisko_html( $src, $uzsakymai, $pastaba, $partija_html );
 		$data = date_i18n( 'Y-m-d' );
@@ -1038,8 +1047,7 @@ class Petshop_AV_Dropship {
 			}
 		}
 		if ( ! empty( $_POST['su_manifestu'] ) ) {
-			$m = self::manifestas( array_keys( $uzsakymai ), $partija_packs ); // H261: partijos pack'ai tame pačiame manifeste
-			if ( $m ) { $priedai[] = $m; }
+			foreach ( self::manifestas( array_keys( $uzsakymai ), $partija_manif ) as $m ) { $priedai[] = $m; } // H262: print_list pagal kodą
 		}
 		if ( $partija_priedas ) { $priedai[] = $partija_priedas; }
 
@@ -1112,7 +1120,7 @@ class Petshop_AV_Dropship {
 
 		$atsakymas = wp_remote_post( 'https://go.venipak.lt/ws/print_label', [
 			'timeout' => 45,
-			'body'    => [ 'user' => $u, 'pass' => $p, 'pack_no' => implode( ',', (array) $d['pack_numbers'] ), 'format' => $f ],
+			'body'    => [ 'user' => $u, 'pass' => $p, 'pack_no' => array_values( (array) $d['pack_numbers'] ), 'format' => $f ], // H262: masyvu
 		] );
 		if ( is_wp_error( $atsakymas ) ) { return null; }
 		$turinys = wp_remote_retrieve_body( $atsakymas );
@@ -1126,32 +1134,42 @@ class Petshop_AV_Dropship {
 	}
 
 	/** Manifestas partijai. */
-	protected static function manifestas( array $order_ids, array $papildomi = array() ) {
-		$packs = array_values( $papildomi );
+	/**
+	 * Manifesto PDF (H262): `ws/print_list` pagal manifesto kodą (kaip desk::venipak_manifesto_pdf).
+	 * Kodai — iš užsakymų Venipak įrašų + partijos. Grąžina failų kelius (dažniausiai vienas).
+	 */
+	protected static function manifestas( array $order_ids, array $papildomi_kodai = array() ) {
+		$kodai = array();
 		foreach ( $order_ids as $id ) {
 			$o = wc_get_order( $id );
 			if ( ! $o ) { continue; }
 			$d = json_decode( (string) $o->get_meta( 'venipak_shipping_order_data' ), true );
-			if ( ! empty( $d['pack_numbers'] ) ) { $packs = array_merge( $packs, (array) $d['pack_numbers'] ); }
+			if ( ! empty( $d['manifest'] ) && ! empty( $d['pack_numbers'] ) ) { $kodai[] = (string) $d['manifest']; }
 		}
-		if ( ! $packs ) { return null; }
+		foreach ( $papildomi_kodai as $k ) { if ( $k ) { $kodai[] = (string) $k; } }
+		$kodai = array_values( array_unique( array_filter( $kodai ) ) );
+		if ( ! $kodai ) { return array(); }
 		$n = get_option( 'shopup_venipak_shipping_settings', [] );
 		$u = $n['shopup_venipak_shipping_field_username'] ?? '';
 		$p = $n['shopup_venipak_shipping_field_password'] ?? '';
-		if ( ! $u ) { return null; }
-
-		$a = wp_remote_post( 'https://go.venipak.lt/ws/print_manifest', [
-			'timeout' => 45,
-			'body'    => [ 'user' => $u, 'pass' => $p, 'pack_no' => implode( ',', $packs ) ],
-		] );
-		if ( is_wp_error( $a ) ) { return null; }
-		$c = wp_remote_retrieve_body( $a );
-		if ( strlen( $c ) < 500 || 0 !== strpos( $c, '%PDF' ) ) { return null; }
+		if ( ! $u ) { return array(); }
 		$dir = get_temp_dir() . 'ps-dropship/';
 		if ( ! is_dir( $dir ) ) { wp_mkdir_p( $dir ); }
-		$kelias = $dir . 'manifestas-' . date_i18n( 'Y-m-d' ) . '.pdf';
-		file_put_contents( $kelias, $c );
-		return $kelias;
+		$failai = array();
+		foreach ( $kodai as $kodas ) {
+			$a = wp_remote_post( 'https://go.venipak.lt/ws/print_list', [
+				'timeout' => 45,
+				'headers' => [ 'Referer' => 'https://woocommerce.com/' ],
+				'body'    => [ 'user' => $u, 'pass' => $p, 'code' => $kodas ],
+			] );
+			if ( is_wp_error( $a ) ) { continue; }
+			$c = wp_remote_retrieve_body( $a );
+			if ( strlen( $c ) < 500 || 0 !== strpos( $c, '%PDF' ) ) { continue; }
+			$kelias = $dir . 'manifestas-' . preg_replace( '/\W/', '', $kodas ) . '.pdf';
+			file_put_contents( $kelias, $c );
+			$failai[] = $kelias;
+		}
+		return $failai;
 	}
 }
 Petshop_AV_Dropship::init();
