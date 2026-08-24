@@ -11,7 +11,8 @@
  * mygtukas „Perduoti X — n užsak. vienu laišku" (visi to tiekėjo neperduoti
  * užsakymai iškart perdavimo ekrane, vienas laiškas); po siuntimo grįžtama į
  * „Laukia išsiuntimo" su aiškia žinute (išsiųsta/nepavyko + wp_mail klaidos
- * tekstas); pasirinkimas išvalomas.
+ * tekstas); pasirinkimas išvalomas. Parametrai psl_* — `ps_src` perima senas
+ * snippetas „sources-2.2" (JSON „Nezinomas veiksmas"), todėl ne ps_*.
  *
  * Petshop AV Dropship v1.13 (H255) — SIUNTOS VARTAI PRIEŠ LAIŠKĄ.
  *
@@ -334,17 +335,17 @@ class Petshop_AV_Dropship {
 		$z   = isset( $_GET['z'] ) ? absint( $_GET['z'] ) : -1;
 		$sk  = isset( $_GET['b'] ) ? sanitize_key( $_GET['b'] ) : 'laukia';
 		echo '<div class="wrap"><h1>Laiškai tiekėjams</h1>';
-		if ( isset( $_GET['ps_sent'] ) ) { // H257: kas įvyko po siuntimo — be spėlionių.
+		if ( isset( $_GET['psl_sent'] ) ) { // H257: kas įvyko po siuntimo — be spėlionių.
 			$t2  = self::tiekejai();
-			$ss  = sanitize_key( $_GET['ps_src'] ?? '' );
+			$ss  = sanitize_key( $_GET['psl_src'] ?? '' );
 			$sv  = $t2[ $ss ][0] ?? strtoupper( $ss );
-			$sn  = absint( $_GET['ps_n'] ?? 0 );
-			$sk  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['ps_kam'] ?? '' ) ) );
-			$se  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['ps_err'] ?? '' ) ) );
-			if ( '1' === (string) $_GET['ps_sent'] ) {
+			$sn  = absint( $_GET['psl_n'] ?? 0 );
+			$sk  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['psl_kam'] ?? '' ) ) );
+			$se  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['psl_err'] ?? '' ) ) );
+			if ( '1' === (string) $_GET['psl_sent'] ) {
 				printf( '<div class="notice notice-success"><p><b>Išsiųsta:</b> %s — %d užsak. vienu laišku, gavėjai: %s. Užsakymai pažymėti perduotais.</p></div>',
 					esc_html( $sv ), $sn, esc_html( $sk ) );
-			} elseif ( '2' === (string) $_GET['ps_sent'] ) {
+			} elseif ( '2' === (string) $_GET['psl_sent'] ) {
 				printf( '<div class="notice notice-warning"><p>%s neturi neperduotų užsakymų — nieko nesiųsta.</p></div>', esc_html( $sv ) );
 			} else {
 				printf( '<div class="notice notice-error"><p><b>NEIŠSIŲSTA:</b> %s — %d užsak. Laiškas nepasiekė pašto serverio%s. Užsakymai LIKO neperduoti — bandyk dar kartą arba tikrink SMTP.</p></div>',
@@ -853,7 +854,7 @@ class Petshop_AV_Dropship {
 		$g   = self::laukiantys_perdavimo();
 		$ids = isset( $g[ $src ] ) ? array_map( 'intval', array_keys( $g[ $src ] ) ) : array();
 		if ( ! $src || ! $ids ) {
-			wp_safe_redirect( admin_url( 'admin.php?page=ps-laiskai&b=laukia&ps_sent=2&ps_src=' . rawurlencode( $src ) ) );
+			wp_safe_redirect( admin_url( 'admin.php?page=ps-laiskai&b=laukia&psl_sent=2&psl_src=' . rawurlencode( $src ) ) );
 			exit;
 		}
 		set_transient( 'ps_dropship_' . get_current_user_id(), $ids, 1800 );
@@ -937,11 +938,11 @@ class Petshop_AV_Dropship {
 		wp_safe_redirect( add_query_arg( [
 			'page'    => 'ps-laiskai',
 			'b'       => 'laukia',
-			'ps_sent' => $ok ? 1 : 0,
-			'ps_src'  => $src,
-			'ps_n'    => count( $uzsakymai ),
-			'ps_kam'  => rawurlencode( implode( ', ', $gav ) ),
-			'ps_err'  => $ok ? '' : rawurlencode( mb_substr( self::$pasto_klaida, 0, 200 ) ),
+			'psl_sent' => $ok ? 1 : 0,
+			'psl_src'  => $src,
+			'psl_n'    => count( $uzsakymai ),
+			'psl_kam'  => rawurlencode( implode( ', ', $gav ) ),
+			'psl_err'  => $ok ? '' : rawurlencode( mb_substr( self::$pasto_klaida, 0, 200 ) ),
 		], admin_url( 'admin.php' ) ) );
 		exit;
 	}
