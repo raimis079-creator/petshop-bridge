@@ -1,8 +1,8 @@
 {
- "v": "H259B",
- "sukurta": 3808,
+ "v": "H259C",
+ "sukurta": 3809,
  "deploy": {
-  "v": "H259B",
+  "v": "H259C",
   "failai": {
    "petshop-desk.php": {
     "gauta": 180599,
@@ -26,44 +26,40 @@
    "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
    "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
   ],
-  "put": 201,
+  "put": 200,
   "eiga": 3,
   "eiga1": [
    "1 · Siunta Venipak1 be siuntos — registruok žemiau (kitaip laiške nebus lipdukų)2 · Laiškas„Peržiūrėti laišką\" — tiksliai tas tekstas; prierašas nebūtinas3 · KamTIK man (tiekėjui NEIŠEIS — persiųsi pats)4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams → jie pereis į „Paruošta siųsti\"; kai tie"
   ],
   "dez": [
    "35067:1",
-   "35061:1",
+   "35061:2",
    "35066:1",
    "35060:2",
    "35059:1"
   ]
  },
- "dialogai": [
-  "Perregistruoti siuntą #35061 Venipak su 2 dėž.? Sena siunta lieka Venipak sistemoje nenaudojama."
- ],
- "perreg": {
-  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&pd_ok=vp_ok&pd_nr=1+%C2%B7+VF",
-  "h1": "Laiškai tiekėjams",
+ "dropship": {
+  "url": "/wp-admin/admin.php?page=ps-dropship&src=vf",
+  "h1": "Perduoti tiekėjams",
   "fatal": false,
   "notices": [
-   "Siunta neregistruota: #35067. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 002",
-   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
-   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+   "Šio tiekėjo dar laukia 1 kitas užsakymas (#35067). Sudėti visus į vieną laišką"
   ],
   "put": 201,
-  "dez": [
-   "0 lipdukai · dėžių Registruoti Venipak paštomatas: kiekviena dėžė — atskira siunta tam pač",
-   "2 lipdukai · dėžių Perregistruoti Venipak paštomatas: kiekviena dėžė — atskira siunta tam ",
-   "0 lipdukai · dėžių Registruoti Venipak",
-   "2 lipdukai · dėžių Perregistruoti Venipak",
-   "1 lipdukas · dėžių Perregistruoti Venipak paštomatas: kiekviena dėžė — atskira siunta tam "
+  "eiga": [
+   "ps-eiga-ok 1 · Siunta Venipakregistruota, lipdukai keliaus laiške",
+   "ps-eiga-ok 2 · Laiškas„Peržiūrėti laišką\" — tiksliai tas tekstas; prierašas nebūtinas",
+   "ps-eiga-ok 3 · KamTIK man (tiekėjui NEIŠEIS — persiųsi pats)",
+   "ps-eiga-ne 4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams → jie pereis į „Paruošta siųsti\"; kai tiekėjas išsiųs — ten spau"
+  ],
+  "kiti": [
+   "Šio tiekėjo dar laukia 1 kitas užsakymas (#35067). Sudėti visus į vieną laišką"
   ]
  },
- "dropship": "mygtuko nera",
  "js": [],
  "serveris": {
-  "v": "H259B",
+  "v": "H259C",
   "uzs": {
    "35061": {
     "pak_meta": "2",
