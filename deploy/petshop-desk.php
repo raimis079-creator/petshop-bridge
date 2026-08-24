@@ -1,5 +1,14 @@
 <?php
 /**
+ * Petshop Desk v3.46 (H259) — PAŠTOMATAS: KELIOS DĖŽĖS = KELIOS SIUNTOS TAM PAČIAM KLIENTUI.
+ *
+ * KODĖL (Raimis, H259): „jei į paštomatą — formuojamos kelios siuntos tam pačiam
+ * klientui". Venipak paštomatui priima tik 1 dėžę siuntai (API: „One package
+ * per shipment allowed if sending to/from locker"), packs[] atmetamas. DABAR
+ * venipak_registruoti(): paštomato užsakymui su n dėžių registruojama n kartų
+ * po 1 dėžę (svoris dalinamas), visi siuntų nr. sudedami į vieną
+ * venipak_shipping_order_data → n lipdukų viename PDF, vienas manifestas.
+ *
  * Petshop Desk v3.45 (H258) — VENIPAK PERREGISTRAVIMAS SU KITU DĖŽIŲ SKAIČIUMI.
  *
  * KODĖL (Raimis, H258): „o jei man reikia ne vieno lipduko tam pačiam klientui?"
@@ -531,6 +540,40 @@ class Petshop_Desk {
 						'length' => 0, 'description' => '' );
 				}
 			}
+		}
+
+		// H259: paštomatas + kelios dėžės → n atskirų siuntų po 1 dėžę (Venipak locker riba).
+		if ( $packs && $viena && $viena->get_meta( 'venipak_pickup_point' ) ) {
+			$visi = array(); $rez = array( 'status' => 'ok' ); $oid = $viena->get_id();
+			foreach ( $packs as $i => $pk ) {
+				$oo = wc_get_order( $oid );
+				$vd = json_decode( (string) $oo->get_meta( 'venipak_shipping_order_data' ), true );
+				if ( ! is_array( $vd ) ) { $vd = array(); }
+				$vd['status'] = ''; $vd['pack_numbers'] = array();
+				$oo->update_meta_data( 'venipak_shipping_order_data', wp_json_encode( $vd ) ); $oo->save();
+				ob_start();
+				try { $r1 = $obj->venipak_shipping_dispatch_order( array( (int) $oid ), array( $pk ), false ); }
+				catch ( Throwable $e ) { $r1 = array( 'status' => 'error', 'data' => $e->getMessage() ); }
+				ob_end_clean();
+				if ( ! is_array( $r1 ) || 'ok' !== ( $r1['status'] ?? '' ) ) {
+					$rez = array( 'status' => 'error', 'data' => sprintf( '%d dėžė iš %d: %s', $i + 1, count( $packs ),
+						is_array( $r1 ) ? ( $r1['data'] ?? '?' ) : 'Venipak negrąžino atsakymo' ) );
+					break;
+				}
+				$oo = wc_get_order( $oid );
+				$vd = json_decode( (string) $oo->get_meta( 'venipak_shipping_order_data' ), true );
+				foreach ( (array) ( $vd['pack_numbers'] ?? array() ) as $pn ) { $visi[] = $pn; }
+			}
+			if ( $visi ) { // sudedam visus nr. į vieną įrašą — lipdukai, manifestas, sekimas mato visas siuntas
+				$oo = wc_get_order( $oid );
+				$vd = json_decode( (string) $oo->get_meta( 'venipak_shipping_order_data' ), true );
+				$vd['pack_numbers'] = array_values( array_unique( $visi ) );
+				if ( 'ok' === $rez['status'] ) { $vd['status'] = 'sent'; $vd['error_message'] = ''; }
+				$oo->update_meta_data( 'venipak_shipping_order_data', wp_json_encode( $vd ) ); $oo->save();
+				$oo->add_order_note( sprintf( 'Paštomatas: %d dėžės = %d siuntos: %s', count( $packs ), count( $visi ), implode( ', ', $visi ) ), false, true );
+			}
+			$rp->setValue( $obj, $sena );
+			return $rez;
 		}
 
 		ob_start();
