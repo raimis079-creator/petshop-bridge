@@ -1,47 +1,137 @@
 {
- "v": "H262C",
- "sukurta": 3815,
- "r": {
-  "v": "H262C",
-  "label_arr": {
-   "len": 108873,
-   "pdf": true,
-   "txt": ""
-  },
-  "manifest": {
-   "arr": {
-    "len": 196,
-    "pdf": false,
-    "txt": "404 Not Found\n\nNot Found\nThe requested URL was not found on this server."
+ "v": "H262D",
+ "sukurta": 3816,
+ "deploy": {
+  "v": "H262D",
+  "failai": {
+   "petshop-av-tiekimas.php": {
+    "gauta": 70283,
+    "sintakse": "ok",
+    "md5": "2e4c94fa158f4a7139adbf691c1f5118"
    },
-   "one": {
-    "len": 196,
-    "pdf": false,
-    "txt": "404 Not Found\n\nNot Found\nThe requested URL was not found on this server."
-   },
-   "vf": {
-    "len": 196,
-    "pdf": false,
-    "txt": "404 Not Found\n\nNot Found\nThe requested URL was not found on this server."
-   },
-   "c2": {
-    "len": 196,
-    "pdf": false,
-    "txt": "404 Not Found\n\nNot Found\nThe requested URL was not found on this server."
+   "petshop-av-dropship.php": {
+    "gauta": 60432,
+    "sintakse": "ok",
+    "md5": "609d2b1e3056c744ad8fb93222a9b542"
    }
   },
-  "print_list_005": {
-   "len": 66423,
-   "pdf": true,
-   "txt": ""
-  },
-  "arch": [
-   "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #7 į AV | []",
-   "Perdavimas tiekėjui: Vetfarmas · 2 užsak. + partija #5 į AV | [\"lipdukas-V07267E1000022.pdf\"]",
-   "Perdavimas tiekėjui: Ambrosia · 1 užsak. | [\"35063 Ieva Testauskas.pdf\"]",
-   "Perdavimas tiekėjui: Quattro / Kauno grūdai · 1 užsak. | [\"35062 Herkus Testauskas.pdf\"]",
-   "Tiekimo partija #6 · Ambrosia | []",
-   "Perdavimas tiekėjui: Belacor · 1 užsak. | [\"35064 Justas Testauskas.pdf\"]"
+  "test_pid": 9,
+  "cols": [
+   "id",
+   "tiekejas",
+   "busena",
+   "sukurta",
+   "uzsakyta",
+   "gauta",
+   "siuntos_kodas",
+   "pastaba",
+   "pristatymas",
+   "svoris",
+   "venipak_pack",
+   "venipak_manifest",
+   "dezes"
+  ],
+  "db_ver": "1.2",
+  "partijos": [
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null
+   },
+   {
+    "id": "8",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "pristatymas": null,
+    "dezes": "1",
+    "venipak_pack": null
+   },
+   {
+    "id": "9",
+    "tiekejas": "prins",
+    "busena": "kaupiama",
+    "pristatymas": "kurjeris",
+    "dezes": "2",
+    "venipak_pack": null
+   }
   ]
+ },
+ "md5_ok": true,
+ "laukia": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201,
+  "av": [],
+  "su_partija": [],
+  "eiga4": [
+   "4 · Pažymėti perduotaisužsakymai pereis į „Paruošta siųsti\"; kai ZB išsiųs — ten spausk „Išsiųsta\""
+  ]
+ },
+ "perziura": "VF korteles nera",
+ "js": [],
+ "serveris": {
+  "v": "H262D",
+  "partijos": [
+   {
+    "id": "9",
+    "tiekejas": "prins",
+    "busena": "kaupiama",
+    "pristatymas": "kurjeris",
+    "dezes": "2",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": null
+   },
+   {
+    "id": "8",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "pristatymas": null,
+    "dezes": "1",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": null
+   },
+   {
+    "id": "7",
+    "tiekejas": "prins",
+    "busena": "uzsakyta",
+    "pristatymas": "kurjeris",
+    "dezes": "3",
+    "venipak_pack": "V07267E1000023,V07267E1000024,V07267E1000025",
+    "venipak_manifest": "07267260824005",
+    "uzsakyta": "2026-08-24 22:39:14"
+   },
+   {
+    "id": "6",
+    "tiekejas": "ambrosia",
+    "busena": "uzsakyta",
+    "pristatymas": null,
+    "dezes": "1",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": "2026-08-24 19:55:51"
+   }
+  ],
+  "pirmas": "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #7 į AV",
+  "arch": {
+   "laikas": "2026-08-24 22:39:14",
+   "kam": "terra@petshop.lt",
+   "tema": "[PERSIŲSTI Prins Petfoods] užsakymas 2026-08-24",
+   "kont": "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #7 į AV",
+   "priedai": [],
+   "av_dalis": true,
+   "html_ilgis": 1006
+  },
+  "uzs": {
+   "35066": ""
+  }
  }
 }
