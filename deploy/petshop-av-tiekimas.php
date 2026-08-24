@@ -1,5 +1,16 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.9 (H261) — LAIŠKO DALIS KAIP KLIENTŲ LENTELĖ, DĖŽIŲ SKAIČIUS, BENDRAS MANIFESTAS.
+ *
+ * KODĖL (Raimis, H261, gavęs laišką): „tiekėjai ir taip žino mus, adresas
+ * lipdukuose; svorio, manifesto Avesai nereikia — eina vienas manifestas kartu
+ * su klientais; tik nurodyti, kiek reikės lipdukų iš Venipak; prekės kaip ir
+ * klientams lentelėje". DABAR: laiško dalis = antraštė „UAB Avesa, Liucionių
+ * g. 46" + lentelė tokia pat kaip klientų + viena eilutė apie lipdukus (arba
+ * „atvešite patys"). Partija turi `dezes` (kiek lipdukų): kurjeriui — viena
+ * siunta su n pack'ų, paštomatui — n siuntų po 1. Registruojama į TĄ PATĮ
+ * tiekėjo manifestą (Petshop_Desk::MANIFESTAI kodas), ne atskirą.
+ *
  * Petshop AV Tiekimas v1.8 (H260) — PARTIJA KELIAUJA TIEKĖJO LAIŠKE KARTU SU UŽSAKYMAIS.
  *
  * KODĖL (Raimis, H260): „užsakymą į AV sandėlį aš siųsiu tiekėjui kartu vienu
@@ -101,7 +112,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 class Petshop_AV_Tiekimas {
 
 	const SLUG      = 'ps-tiekimas';
-	const DB_VER    = '1.1';
+	const DB_VER    = '1.2';
 	const OPT_DB    = 'ps_tiekimas_db';
 	const META_LAUK = '_ps_tiekimas_laukia';
 
@@ -160,7 +171,7 @@ class Petshop_AV_Tiekimas {
 			id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
 			tiekejas VARCHAR(32) NOT NULL,
 			busena VARCHAR(16) NOT NULL DEFAULT 'kaupiama',
-			venipak_pack VARCHAR(32) DEFAULT NULL,
+			venipak_pack VARCHAR(255) DEFAULT NULL,
 			venipak_manifest VARCHAR(64) DEFAULT NULL,
 			sukurta DATETIME NOT NULL,
 			uzsakyta DATETIME NULL,
@@ -169,6 +180,7 @@ class Petshop_AV_Tiekimas {
 			pristatymas VARCHAR(16) NULL,
 			svoris DECIMAL(8,2) NULL,
 			pastaba TEXT NULL,
+			dezes INT NOT NULL DEFAULT 1,
 			PRIMARY KEY (id),
 			KEY tiekejas_busena (tiekejas, busena)
 		) $c;" );
@@ -529,6 +541,9 @@ class Petshop_AV_Tiekimas {
 							<input type="number" step="0.1" min="0" name="svoris" value="<?php echo esc_attr( $kg > 0 ? $kg : '' ); ?>"
 								placeholder="<?php echo esc_attr( $auto_kg > 0 ? $auto_kg : '' ); ?>"> kg
 						</label>
+						<label class="ps-tk-kg">Dėžių / lipdukų
+							<input type="number" step="1" min="1" max="20" name="dezes" value="<?php echo (int) max( 1, (int) ( $part->dezes ?? 1 ) ); ?>">
+						</label>
 					</div>
 
 					<div class="ps-tk-prist-i">
@@ -798,6 +813,7 @@ class Petshop_AV_Tiekimas {
 				$w = (float) str_replace( ',', '.', wp_unslash( $_POST['svoris'] ) );
 				$pr_upd['svoris'] = $w > 0 ? round( $w, 2 ) : null;
 			}
+			if ( isset( $_POST['dezes'] ) ) { $pr_upd['dezes'] = max( 1, min( 20, absint( $_POST['dezes'] ) ) ); }
 			if ( $pr_upd ) { $wpdb->update( self::t_partijos(), $pr_upd, array( 'id' => $pid ) ); }
 
 			// Laiško adresatų varnelės (H248) — įsimenam prieš siunčiant.
@@ -891,9 +907,16 @@ class Petshop_AV_Tiekimas {
 			return array( 'ok' => false, 'klaida' => 'Venipak prisijungimo duomenų nėra plugino nustatymuose.' );
 		}
 
-		$kg   = max( 0.1, (float) self::svoris( $part ) );
-		$pack = self::pack_numeris();
-		$man  = $n['userid'] . wp_date( 'ymd' ) . $n['manif'];
+		$kg    = max( 0.1, (float) self::svoris( $part ) );
+		$dezes = max( 1, (int) ( $part->dezes ?? 1 ) );
+		// H261: į TĄ PATĮ tiekėjo manifestą kaip klientų siuntos (vienas kurjerio paėmimas).
+		$kodas = ( class_exists( 'Petshop_Desk' ) && isset( Petshop_Desk::MANIFESTAI[ $part->tiekejas ] ) )
+			? Petshop_Desk::MANIFESTAI[ $part->tiekejas ] : $n['manif'];
+		$man   = $n['userid'] . wp_date( 'ymd' ) . $kodas;
+		$packs = array(); for ( $i = 0; $i < $dezes; $i++ ) { $packs[] = self::pack_numeris(); }
+		$kg1   = round( $kg / $dezes, 2 ); if ( $kg1 < 0.1 ) { $kg1 = 0.1; }
+		// Paštomatas: Venipak leidžia 1 dėžę siuntai → n siuntų tame pačiame manifeste. Kurjeris: 1 siunta, n pack'ų.
+		$siuntu = ( 'pastomatas' === $part->pristatymas ) ? $dezes : 1;
 
 		$d = new DOMDocument( '1.0', 'utf-8' );
 		$desc = $d->createElement( 'description' );
@@ -903,6 +926,7 @@ class Petshop_AV_Tiekimas {
 		$mf->setAttribute( 'title', $man );
 		$desc->appendChild( $mf );
 
+		for ( $s = 0; $s < $siuntu; $s++ ) {
 		$sh = $d->createElement( 'shipment' );
 		$mf->appendChild( $sh );
 
@@ -944,18 +968,24 @@ class Petshop_AV_Tiekimas {
 
 		$at = $d->createElement( 'attribute' );
 		$sh->appendChild( $at );
-		$at->appendChild( $d->createElement( 'shipment_code', 'TIEK-' . (int) $part->id ) );
-		$at->appendChild( $d->createElement( 'doc_no', 'TIEK-' . (int) $part->id ) );
+		$sc = 'TIEK-' . (int) $part->id . ( $siuntu > 1 ? '-' . ( $s + 1 ) : '' );
+		$at->appendChild( $d->createElement( 'shipment_code', $sc ) );
+		$at->appendChild( $d->createElement( 'doc_no', $sc ) );
 		if ( 'pastomatas' !== $part->pristatymas ) {
 			$at->appendChild( $d->createElement( 'comment_call', '1' ) );
 		}
 		$at->appendChild( $d->createElement( 'comment_text',
 			'Prekiu uzsakymas is tiekejo sandelio (partija #' . (int) $part->id . ')' ) );
 
-		$pk = $d->createElement( 'pack' );
-		$sh->appendChild( $pk );
-		$pk->appendChild( $d->createElement( 'pack_no', $pack ) );
-		$pk->appendChild( $d->createElement( 'weight', (string) $kg ) );
+		$sios = ( $siuntu > 1 ) ? array( $packs[ $s ] ) : $packs;
+		foreach ( $sios as $pn ) {
+			$pk = $d->createElement( 'pack' );
+			$sh->appendChild( $pk );
+			$pk->appendChild( $d->createElement( 'pack_no', $pn ) );
+			$pk->appendChild( $d->createElement( 'weight', (string) $kg1 ) );
+		}
+		} // shipment
+		$pack = implode( ',', $packs );
 
 		$r = wp_remote_post( 'https://go.venipak.lt/import/send.php', array(
 			'timeout' => 45,
@@ -1005,26 +1035,16 @@ class Petshop_AV_Tiekimas {
 	 * laiško dalis (kelias + lentelė), lipduko failas. Partija NEUŽDAROMA.
 	 * Grąžina array( ok, klaida, html, priedas, pack, part, eilutes ).
 	 */
-	public static function paruosti( $pid ) {
+	public static function paruosti( $pid, $dezes = 0 ) {
 		global $wpdb;
 		$part = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );
 		if ( ! $part || 'kaupiama' !== $part->busena ) { return array( 'ok' => false, 'klaida' => 'partija neatvira' ); }
 		$eil = self::partijos_eilutes( $pid );
 		if ( ! $eil ) { return array( 'ok' => false, 'klaida' => 'partija tuščia' ); }
-
-		$eil_html = '';
-		foreach ( $eil as $e ) {
-			$pr = wc_get_product( $e->product_id );
-			$eil_html .= sprintf(
-				'<tr><td style="padding:6px 10px;border-bottom:1px solid #eee">%s</td>
-				 <td style="padding:6px 10px;border-bottom:1px solid #eee;font-family:monospace">%s</td>
-				 <td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:right"><b>%d</b></td></tr>',
-				esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ),
-				esc_html( $pr ? $pr->get_sku() : '' ),
-				(int) $e->qty );
+		if ( $dezes > 0 && empty( $part->venipak_pack ) ) { // dėžių skaičius iš kortelės — kol siunta neregistruota
+			$wpdb->update( self::t_partijos(), array( 'dezes' => max( 1, min( 20, (int) $dezes ) ) ), array( 'id' => $pid ) );
+			$part->dezes = max( 1, min( 20, (int) $dezes ) );
 		}
-		$kg  = self::svoris( $part );
-		$pst = self::AV_PASTOMATAS;
 
 		$pack = (string) $part->venipak_pack; // jau registruota anksčiau (pvz. nepavykęs laiškas) — nekartojam
 		$reikia_vp = in_array( $part->pristatymas, array( 'kurjeris', 'pastomatas' ), true ) && ! self::rankinis( $part->tiekejas );
@@ -1035,37 +1055,44 @@ class Petshop_AV_Tiekimas {
 			$pack = $vp['pack']; $part->venipak_pack = $pack;
 		}
 
-		switch ( $part->pristatymas ) {
-			case 'pastomatas':
-				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio. Siunta keliauja į %s (%s).%s</p>',
-					esc_html( $pst['vardas'] ), esc_html( $pst['adresas'] ), $kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
-				break;
-			case 'tiekejas':
-				$kelias = '<p>Prekes atvešite patys į mūsų sandėlį (' . esc_html( self::AV_ADRESAS ) . ').</p>';
-				break;
-			case 'kurjeris':
-			default:
-				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio ir pristatys į mūsų sandėlį (%s).%s</p>',
-					esc_html( self::AV_ADRESAS ), $kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
-		}
-		if ( $pack ) { $kelias .= sprintf( '<p>Siuntos lipdukas — laiško priede. Siuntos nr. <b>%s</b>.</p>', esc_html( $pack ) ); }
-
-		$html = $kelias . '<table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">
-			<thead><tr><th style="text-align:left;padding:6px 10px;border-bottom:2px solid #333">Prekė</th>
-			<th style="text-align:left;padding:6px 10px;border-bottom:2px solid #333">SKU</th>
-			<th style="text-align:right;padding:6px 10px;border-bottom:2px solid #333">Kiekis</th></tr></thead>
-			<tbody>' . $eil_html . '</tbody></table>';
+		$html = self::laisko_dalis( $part, $eil, $pack );
 
 		$priedas = '';
 		if ( $pack ) {
 			$pdf = self::venipak_lipdukas( $pack );
 			if ( $pdf ) {
 				$up = wp_upload_dir(); $kel = trailingslashit( $up['basedir'] ) . 'ps-lipdukai'; wp_mkdir_p( $kel );
-				$fail = $kel . '/lipdukas-' . $pack . '.pdf';
+				$fail = $kel . '/lipdukas-' . str_replace( ',', '_', $pack ) . '.pdf';
 				if ( file_put_contents( $fail, $pdf ) ) { $priedas = $fail; }
 			}
 		}
 		return array( 'ok' => true, 'klaida' => '', 'html' => $html, 'priedas' => $priedas, 'pack' => $pack, 'part' => $part, 'eilutes' => $eil );
+	}
+
+	/**
+	 * Laiško dalis „UAB Avesa" (H261) — antraštė + lentelė kaip klientų + lipdukų eilutė.
+	 * Naudoja ir dropship laiškas, ir savas Tiekimo laiškas — VIENA tiesos vieta.
+	 */
+	public static function laisko_dalis( $part, $eil, $pack = '' ) {
+		$h = '<p style="margin:16px 0 6px"><b>UAB Avesa, Liucionių g. 46</b></p>';
+		$h .= '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:Arial;font-size:13px;">';
+		foreach ( $eil as $e ) {
+			$pr = wc_get_product( $e->product_id );
+			$h .= '<tr><td>' . esc_html( $pr ? $pr->get_name() : '#' . $e->product_id )
+				. ( $pr && $pr->get_sku() ? ' <span style="color:#666">' . esc_html( $pr->get_sku() ) . '</span>' : '' )
+				. '</td><td align="center" style="white-space:nowrap">' . (int) $e->qty . ' vnt.</td></tr>';
+		}
+		$h .= '</table>';
+		$dezes = max( 1, (int) ( $part->dezes ?? 1 ) );
+		if ( 'tiekejas' === $part->pristatymas ) {
+			$h .= '<p style="font-size:12px;color:#444">Šias prekes atsiimsime patys / atvešite Jūs — lipdukų nereikia.</p>';
+		} elseif ( $pack ) {
+			$n = count( array_filter( explode( ',', $pack ) ) );
+			$h .= '<p style="font-size:12px;color:#444">' . ( 'pastomatas' === $part->pristatymas ? 'Į paštomatą' : 'Kurjeriui' ) . ' — ' . $n . ' lipduk' . ( 1 === $n ? 'as' : 'ai' ) . ' priede (' . esc_html( str_replace( ',', ', ', $pack ) ) . ').</p>';
+		} else {
+			$h .= '<p style="font-size:12px;color:#444">' . $dezes . ' dėž' . ( 1 === $dezes ? 'ė' : 'ės' ) . ' — lipdukai bus priede.</p>';
+		}
+		return $h;
 	}
 
 	/** UŽDARYMAS po išsiųsto laiško (H260) — būsena, pastabos užsakymuose. $kontekstas — kas siuntė. */
@@ -1096,18 +1123,6 @@ class Petshop_AV_Tiekimas {
 		$pastai = (array) get_option( 'ps_tiekeju_pastai', array() );
 		$adr    = isset( $pastai[ $part->tiekejas ] ) ? $pastai[ $part->tiekejas ] : '';
 
-		$eil_html = '';
-		foreach ( $eil as $e ) {
-			$pr = wc_get_product( $e->product_id );
-			$eil_html .= sprintf(
-				'<tr><td style="padding:6px 10px;border-bottom:1px solid #eee">%s</td>
-				 <td style="padding:6px 10px;border-bottom:1px solid #eee;font-family:monospace">%s</td>
-				 <td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:right"><b>%d</b></td></tr>',
-				esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ),
-				esc_html( $pr ? $pr->get_sku() : '' ),
-				(int) $e->qty );
-		}
-
 		$kg  = self::svoris( $part );
 		$pst = self::AV_PASTOMATAS;
 
@@ -1129,37 +1144,9 @@ class Petshop_AV_Tiekimas {
 			$part->venipak_pack = $vp['pack'];
 		}
 
-		// Ką rašom tiekėjui, priklauso nuo pasirinkto būdo (H238).
-		switch ( $part->pristatymas ) {
-			case 'pastomatas':
-				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio. Siunta keliauja į %s (%s).%s</p>',
-					esc_html( $pst['vardas'] ), esc_html( $pst['adresas'] ),
-					$kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
-				break;
-			case 'tiekejas':
-				$kelias = '<p>Prekes atvešite patys į mūsų sandėlį (' . esc_html( self::AV_ADRESAS ) . ').</p>';
-				break;
-			case 'kurjeris':
-			default:
-				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio ir pristatys į mūsų sandėlį (%s).%s</p>',
-					esc_html( self::AV_ADRESAS ),
-					$kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
-		}
-
-		// Lipdukas — kaip visose siuntose (H247.1).
-		if ( ! empty( $vp['pack'] ) ) {
-			$kelias .= sprintf( '<p>Siuntos lipdukas — laiško priede. Siuntos nr. <b>%s</b>.</p>',
-				esc_html( $vp['pack'] ) );
-		}
-
 		$tema = sprintf( 'UAB Avesa · prekių užsakymas %s', wp_date( 'Y-m-d' ) );
-		$body = '<p>Laba diena,</p><p>prašome paruošti šias prekes.</p>' . $kelias . '
-			<table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">
-			<thead><tr><th style="text-align:left;padding:6px 10px;border-bottom:2px solid #333">Prekė</th>
-			<th style="text-align:left;padding:6px 10px;border-bottom:2px solid #333">SKU</th>
-			<th style="text-align:right;padding:6px 10px;border-bottom:2px solid #333">Kiekis</th></tr></thead>
-			<tbody>' . $eil_html . '</tbody></table>
-			<p>Ačiū,<br>UAB Avesa · petshop.lt<br>terra@petshop.lt</p>';
+		$body = '<p>Laba diena,</p><p>prašome paruošti šias prekes.</p>' . self::laisko_dalis( $part, $eil, $vp['pack'] )
+			. '<p>Ačiū,<br>UAB Avesa · petshop.lt<br>terra@petshop.lt</p>';
 
 		$ok = false;
 		if ( self::rankinis( $part->tiekejas ) ) {
@@ -1181,7 +1168,7 @@ class Petshop_AV_Tiekimas {
 						$up   = wp_upload_dir();
 						$kel  = trailingslashit( $up['basedir'] ) . 'ps-lipdukai';
 						wp_mkdir_p( $kel );
-						$fail = $kel . '/lipdukas-' . $vp['pack'] . '.pdf';
+						$fail = $kel . '/lipdukas-' . str_replace( ',', '_', $vp['pack'] ) . '.pdf';
 						if ( file_put_contents( $fail, $pdf ) ) { $priedai[] = $fail; }
 					}
 				}
