@@ -1,13 +1,13 @@
 {
- "v": "H258A",
- "sukurta": 3804,
+ "v": "H258B",
+ "sukurta": 3806,
  "deploy": {
-  "v": "H258A",
+  "v": "H258B",
   "failai": {
    "petshop-desk.php": {
-    "gauta": 176938,
+    "gauta": 177470,
     "sintakse": "ok",
-    "md5": "1ea03fc40ea502aa71ea8b4eedc76d5b"
+    "md5": "7c9ba70fc134f4bf3d934b582fa0cf24"
    },
    "petshop-av-dropship.php": {
     "gauta": 48163,
@@ -26,7 +26,7 @@
    "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
    "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
   ],
-  "put": 201,
+  "put": 200,
   "aktyvus": "Laukia išsiuntimo (3)",
   "tiekejai": [
    "Vetfarmas 2 užsak. · 2 vnt. · 1 lipdukų",
@@ -46,31 +46,17 @@
   ],
   "dez": [
    "35067:1:Registruoti Venipak",
-   "35061:1:Perregistruoti Venipak",
+   "35061:2:Perregistruoti Venipak",
    "35066:1:Registruoti Venipak",
    "35060:1:Perregistruoti Venipak",
    "35059:1:Perregistruoti Venipak"
   ]
  },
- "gyva": [
-  "block|TEST prierašas H258"
- ],
- "perziura": {
-  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&perziura=vf",
-  "h1": "Laiškai tiekėjams",
-  "fatal": false,
-  "notices": [
-   "Siunta neregistruota: #35067. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 002",
-   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
-   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
-  ],
-  "put": 201
- },
  "dialogai": [
   "Perregistruoti siuntą #35061 Venipak su 2 dėž.? Sena siunta lieka Venipak sistemoje nenaudojama."
  ],
  "perreg": {
-  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&pd_ok=vp_klaida&pd_nr=%2335061%3A+Venipak+negr%C4%85%C5%BEino+atsakymo",
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&pd_ok=vp_klaida&pd_nr=%2335061%3A+One+package+per+shipment+allowed+if+sending+to%2Ffrom+locker",
   "h1": "Laiškai tiekėjams",
   "fatal": false,
   "notices": [
@@ -78,10 +64,10 @@
    "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
    "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
   ],
-  "put": 201,
+  "put": 200,
   "dez": [
    "35067:0 lipdukai ·",
-   "35061:1 lipdukas ·",
+   "35061:2 lipdukai ·",
    "35066:0 lipdukai ·",
    "35060:1 lipdukas ·",
    "35059:1 lipdukas ·"
@@ -90,18 +76,19 @@
  "dropship": "mygtuko nera",
  "js": [],
  "serveris": {
-  "v": "H258A",
+  "v": "H258B",
   "uzs": {
    "35061": {
     "st": "processing",
     "pak_meta": "2",
     "pack_numbers": [
-     "V07267E1000010"
+     "V07267E1000016",
+     "V07267E1000017"
     ],
     "pastabos": [
-     "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — #35061: Venipak negrąžino atsakymo",
+     "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — #35061: One package per shipment allowed if sending to/from locker\n",
      "Darbalaukis: siunta perregistruojama su 2 dėž. (sena siunta V07267E1000010 — nebenaudojama).",
-     "Siuntos numeriai išsaugoti (VF): V07267E1000010"
+     "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — #35061: Venipak negrąžino atsakymo"
     ]
    }
   }
