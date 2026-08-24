@@ -1,5 +1,24 @@
 <?php
 /**
+ * Petshop AV Dropship v1.16 (H259) — EIGA KORTELĖJE: KAS ČIA DAROMA IR KAS BUS PO TO.
+ *
+ * KODĖL (Raimis, H259): „spaudi Perduoti, atsidaro langas — nu ir ką? balaganas".
+ * Langas rodė lentelę ir mygtukus, bet ne KELIĄ. DABAR kiekvienos kortelės
+ * viršuje — eigos juosta su būkle: 1 siunta Venipak (registruota / NE) →
+ * 2 laiškas (peržiūra, prierašas) → 3 gavėjai → 4 Siųsti, ir kas įvyks po to.
+ * Atėjus su vienu užsakymu, kai to paties tiekėjo laukia daugiau — pasiūlymas
+ * „sudėti visus į vieną laišką". Paštomatas: dėžių laukelis grąžintas —
+ * kelios dėžės = kelios siuntos tam pačiam paštomatui (desk v3.46).
+ *
+ * Petshop AV Dropship v1.15 (H258) — VIENA KORTELĖ ABIEM LANGAMS + DĖŽIŲ SKAIČIUS.
+ *
+ * KODĖL (Raimis, H258): „panaikinai laiško redagavimą; kur kopija sau; o jei
+ * reikia ne vieno lipduko; vienur darai, kitur naikini". „Laukia išsiuntimo"
+ * rodė tik skaitomą peržiūrą; prierašas, varnelės, siuntimas gyveno tik
+ * ps-dropship ekrane. DABAR kortelė viena — `kortele()` — abiem langams.
+ * Prie kiekvieno užsakymo — dėžių skaičius su „Perregistruoti" (desk vp_reg
+ * perreg=1): daugiau dėžių → daugiau lipdukų.
+ *
  * Petshop AV Dropship v1.14 (H257) — VIENAS LAIŠKAS TIEKĖJUI SU VISAIS UŽSAKYMAIS + TIESA PO SIUNTIMO.
  *
  * KODĖL (Raimis, H257): „kam siųsti tiekėjui po 1 laišką? kur langas paruošti
@@ -491,8 +510,9 @@ class Petshop_AV_Dropship {
 		<div class="wrap">
 			<h1>Perduoti tiekėjams</h1>
 			<p><a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=ps-desk' ) ); ?>">Atgal į darbalaukį</a></p>
-			<p class="description">Sistema paruošė laiškus. Peržiūrėkite ir siųskite.
-			Siunčiama iš <code>terra@petshop.lt</code>. AV prekės į laiškus nepatenka.</p>
+			<p class="description">Čia užsakymas išeina tiekėjui: <b>vienas tiekėjas = viena kortelė = vienas laiškas</b>
+			su lipdukais ir manifestu. Eiga kortelės viršuje. Siunčiama iš <code>terra@petshop.lt</code>; AV prekės į laiškus nepatenka.
+			Visus laukiančius pagal tiekėją matai <a href="<?php echo esc_url( admin_url( 'admin.php?page=ps-laiskai&b=laukia' ) ); ?>">Laiškai tiekėjams → Laukia išsiuntimo</a>.</p>
 
 			<?php if ( ! $g ) : ?>
 				<div class="notice notice-info"><p>Pažymėtuose užsakymuose dropship prekių nėra
@@ -535,6 +555,11 @@ class Petshop_AV_Dropship {
 		.ps-kodas { color:#888; font-size:11px; margin-left:8px; }
 		.ps-lip { color:#a05a00; font-size:12px; font-style:italic; }
 		.ps-siusti { margin-top:12px; }
+		.ps-eiga { display:flex; gap:10px; margin:0 0 12px; flex-wrap:wrap; }
+		.ps-eiga-z { flex:1 1 200px; padding:8px 10px; border-left:3px solid #ccc; background:#f6f6f6; font-size:12px; line-height:1.35; }
+		.ps-eiga-z b { display:block; margin-bottom:2px; }
+		.ps-eiga-ok { border-color:#2a7a2a; background:#eef7ee; }
+		.ps-eiga-ne { border-color:#c46a00; background:#fbf3e6; }
 		.ps-dez td { border-top:none !important; padding-top:0; }
 		.ps-dez-f { display:inline-flex; gap:8px; align-items:center; font-size:12px; }
 		.ps-siusti label { margin-left:14px; font-size:12px; }
@@ -562,6 +587,39 @@ class Petshop_AV_Dropship {
 					<span><?php echo count( $uzsakymai ); ?> užsak. · <?php echo (int) $vnt; ?> vnt.
 						<?php if ( $lip ) : ?> · <?php echo (int) $lip; ?> lipdukų<?php endif; ?></span>
 				</div>
+				<?php // H259: eigos juosta — kas čia daroma ir kas bus po to.
+				$be_reg = 0; foreach ( $uzsakymai as $u ) { if ( (int) $u['pakuociu'] < 1 ) { $be_reg++; } }
+				$ln0 = self::laisko_nust();
+				if ( 'zb' === $src ) {
+					$zingsniai = array(
+						array( $be_reg ? 'ne' : 'ok', '1 · Siunta Venipak', $be_reg ? $be_reg . ' be siuntos — registruok žemiau' : 'registruota, lipdukai yra' ),
+						array( 'ne', '2 · Suvesk į ZB', '„Kopijuoti" prie kiekvieno užsakymo → įklijuok į ZB sistemą' ),
+						array( 'ne', '3 · Lipdukas', '„Lipdukas" → prikabink ZB užsakyme' ),
+						array( 'ne', '4 · Pažymėti perduotais', 'užsakymai pereis į „Paruošta siųsti"; kai ZB išsiųs — ten spausk „Išsiųsta"' ),
+					);
+				} else {
+					$zingsniai = array(
+						array( $be_reg ? 'ne' : 'ok', '1 · Siunta Venipak', $be_reg ? $be_reg . ' be siuntos — registruok žemiau (kitaip laiške nebus lipdukų)' : 'registruota, lipdukai keliaus laiške' ),
+						array( 'ok', '2 · Laiškas', '„Peržiūrėti laišką" — tiksliai tas tekstas; prierašas nebūtinas' ),
+						array( ( $ln0['tiekejui'] || $ln0['man'] ) ? 'ok' : 'ne', '3 · Kam', $ln0['tiekejui'] ? ( 'tiekėjui' . ( $ln0['man'] ? ' + kopija man' : '' ) ) : ( $ln0['man'] ? 'TIK man (tiekėjui NEIŠEIS — persiųsi pats)' : 'nepažymėta' ) ),
+						array( 'ne', '4 · Siųsti', 'vienas laiškas visiems šio tiekėjo užsakymams → jie pereis į „Paruošta siųsti"; kai tiekėjas išsiųs — ten spausk „Išsiųsta"' ),
+					);
+				}
+				echo '<div class="ps-eiga">';
+				foreach ( $zingsniai as $z ) {
+					printf( '<div class="ps-eiga-z ps-eiga-%s"><b>%s</b><span>%s</span></div>', esc_attr( $z[0] ), esc_html( $z[1] ), esc_html( $z[2] ) );
+				}
+				echo '</div>';
+				if ( 'zb' !== $src && strpos( $bazine, 'ps-dropship' ) !== false ) {
+					$visi_g = self::laukiantys_perdavimo();
+					$kiti   = isset( $visi_g[ $src ] ) ? array_diff( array_keys( $visi_g[ $src ] ), array_keys( $uzsakymai ) ) : array();
+					if ( $kiti ) {
+						printf( '<div class="notice notice-info inline"><p>Šio tiekėjo dar laukia <b>%d</b> kit%s užsakym%s (#%s). <a class="button" href="%s">Sudėti visus į vieną laišką</a></p></div>',
+							count( $kiti ), 1 === count( $kiti ) ? 'as' : 'i', 1 === count( $kiti ) ? 'as' : 'ai', esc_html( implode( ', #', $kiti ) ),
+							esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ps_dropship_visi&src=' . rawurlencode( $src ) ), 'ps_dropship_visi_' . $src ) ) );
+					}
+				}
+				?>
 
 				<?php if ( 'zb' === $src ) : ?>
 					<div class="notice notice-warning inline"><p><b>ZB — laiškas nesiunčiamas.</b>
@@ -609,9 +667,7 @@ class Petshop_AV_Dropship {
 						$perreg_laukai = array( 'action' => 'ps_desk_veiksmas', 'v' => 'vp_reg', 'id' => 0, 'perreg' => 1,
 							'sandelis' => $src, 'ids' => (int) $oid_r, 'g' => $bazine, '_wpnonce' => wp_create_nonce( 'ps_desk_vp_reg_0' ) ); ?>
 						<tr class="ps-dez"><td></td><td colspan="2">
-							<?php if ( $oo_d && $oo_d->get_meta( 'venipak_pickup_point' ) ) : // paštomatas: Venipak leidžia 1 dėžę siuntai ?>
-							<span class="ps-lip"><?php echo (int) $u['pakuociu']; ?> lipduk<?php echo 1 === (int) $u['pakuociu'] ? 'as' : 'ai'; ?> · paštomatas — 1 dėžė siuntai (Venipak riba); kelioms dėžėms reikia atskirų siuntų</span>
-							<?php else : ?>
+							<?php $pastomatas = $oo_d && $oo_d->get_meta( 'venipak_pickup_point' ); ?>
 							<form method="get" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="ps-dez-f"
 								onsubmit="return confirm('Perregistruoti siuntą #<?php echo esc_js( $u['nr'] ); ?> Venipak su ' + this.n.value + ' dėž.? Sena siunta lieka Venipak sistemoje nenaudojama.');">
 								<?php foreach ( $perreg_laukai as $pk => $pv ) :
@@ -620,8 +676,8 @@ class Petshop_AV_Dropship {
 								<span class="ps-lip"><?php echo (int) $u['pakuociu']; ?> lipduk<?php echo 1 === (int) $u['pakuociu'] ? 'as' : 'ai'; ?> ·</span>
 								<label>dėžių <input type="number" name="n" min="1" max="20" value="<?php echo (int) $dez; ?>" style="width:56px"></label>
 								<button class="button button-small"><?php echo $u['pakuociu'] > 0 ? 'Perregistruoti Venipak' : 'Registruoti Venipak'; ?></button>
+								<?php if ( $pastomatas ) : ?><span class="ps-lip">paštomatas: kiekviena dėžė — atskira siunta tam pačiam paštomatui</span><?php endif; ?>
 							</form>
-							<?php endif; ?>
 						</td><td></td></tr>
 						<?php
 					endforeach; ?>
