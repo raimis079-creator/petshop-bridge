@@ -1,8 +1,8 @@
 {
- "v": "H261A",
- "sukurta": 3811,
+ "v": "H261B",
+ "sukurta": 3812,
  "deploy": {
-  "v": "H261A",
+  "v": "H261B",
   "failai": {
    "petshop-av-tiekimas.php": {
     "gauta": 70008,
@@ -28,10 +28,28 @@
    "pristatymas",
    "svoris",
    "venipak_pack",
-   "venipak_manifest"
+   "venipak_manifest",
+   "dezes"
   ],
-  "db_ver": "1.1",
-  "partijos": []
+  "db_ver": "1.2",
+  "partijos": [
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "pristatymas": "pastomatas",
+    "dezes": "1",
+    "venipak_pack": null
+   },
+   {
+    "id": "7",
+    "tiekejas": "prins",
+    "busena": "kaupiama",
+    "pristatymas": "kurjeris",
+    "dezes": "2",
+    "venipak_pack": null
+   }
+  ]
  },
  "md5_ok": true,
  "laukia": {
@@ -39,15 +57,16 @@
   "h1": "Laiškai tiekėjams",
   "fatal": false,
   "notices": [
-   "Nepasirinktas pristatymo būdas — į laišką neįtraukiama. Pasirink Tiekime (paštomatas / kurjeris / tiekėjas atveža) ir grįžk.",
    "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
    "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
   ],
-  "put": 201,
+  "put": 200,
   "av": [
-   "ps-av-blokas ps-av-ne | Į AV sandėlį — partija #7 1 poz. · 2 vnt. Žirklės gyvūno kailiui, 16 cm 57449 2 vnt. Nepasirinktas pristatymo būdas — į laišką neįtraukiama. Pasirink Tiekime (paštomatas / kurjeris / tiekėjas atveža) ir grįžk."
+   "ps-av-blokas  | Į AV sandėlį — partija #7 1 poz. · 2 vnt. Žirklės gyvūno kailiui, 16 cm 57449 2 vnt. Pristatymas: Venipak kurjeris į AV · siuntą registruos siunčiant laišką, į tą patį manifestą kaip klientų siuntos; lipdukų skaičių nurodyk prie mygtuko „Siųsti\" · keisti Tieki"
   ],
-  "su_partija": [],
+  "su_partija": [
+   "7:true"
+  ],
   "eiga4": [
    "4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams + partija į AV → jie pereis į „Paruošta siųsti\"; kai tiekėjas iš",
    "4 · Pažymėti perduotaisužsakymai pereis į „Paruošta siųsti\"; kai ZB išsiųs — ten spausk „Išsiųsta\""
@@ -58,28 +77,43 @@
   "h1": "Laiškai tiekėjams",
   "fatal": false,
   "notices": [
-   "Nepasirinktas pristatymo būdas — į laišką neįtraukiama. Pasirink Tiekime (paštomatas / kurjeris / tiekėjas atveža) ir grįžk.",
    "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
    "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
   ],
-  "put": 201,
-  "av_dalis": [],
-  "blokas": "Į AV sandėlį — partija #7 1 poz. · 2 vnt. Žirklės gyvūno kailiui, 16 cm 57449 2 vnt. Nepasirinktas pristatymo būdas — į laišką neįtraukiama. Pasirink Tiekime (paštomatas / kurjeris / tiekėjas atveža) ir grįžk."
+  "put": 200,
+  "av_dalis": [
+   "UAB Avesa, Liucionių g. 46"
+  ],
+  "blokas": "Į AV sandėlį — partija #7 1 poz. · 2 vnt. Žirklės gyvūno kailiui, 16 cm 57449 2 vnt. Pristatymas: Venipak kurjeris į AV · siuntą registruos siunčiant laišką, į tą patį manifestą kaip klientų siuntos; lipdukų skaičių nurodyk prie mygtuko „Siųsti\" · keisti Tiekime"
  },
- "po": "su_partija nera (pristatymas nepasirinktas?)",
+ "dezes_pries": "2",
+ "mygtukas": "Siųsti be lipdukų (išimtis)",
+ "dialogai": [
+  "Siųsti BE lipdukų? Tiekėjas negalės išsiųsti, kol neatsiųsi lipdukų atskirai."
+ ],
+ "po": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&psl_sent=1&psl_src=prins&psl_n=1&psl_p=7&psl_kam=terra%40petshop.lt&psl_err",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Išsiųsta: Prins Petfoods — 1 užsak. vienu laišku + partija #7 į AV (uždaryta, laukiam prekių), gavėjai: terra@petshop.lt. Užsakymai pažymėti perduotais.",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201
+ },
  "js": [],
  "serveris": {
-  "v": "H261A",
+  "v": "H261B",
   "partijos": [
    {
     "id": "7",
     "tiekejas": "prins",
-    "busena": "kaupiama",
-    "pristatymas": null,
-    "dezes": "1",
-    "venipak_pack": null,
-    "venipak_manifest": null,
-    "uzsakyta": null
+    "busena": "uzsakyta",
+    "pristatymas": "kurjeris",
+    "dezes": "3",
+    "venipak_pack": "V07267E1000023,V07267E1000024,V07267E1000025",
+    "venipak_manifest": "07267260824005",
+    "uzsakyta": "2026-08-24 22:39:14"
    },
    {
     "id": "6",
@@ -113,18 +147,16 @@
    }
   ],
   "arch": {
-   "laikas": "2026-08-24 22:16:43",
+   "laikas": "2026-08-24 22:39:14",
    "kam": "terra@petshop.lt",
-   "tema": "[PERSIŲSTI Vetfarmas] užsakymas 2026-08-24",
-   "kont": "Perdavimas tiekėjui: Vetfarmas · 2 užsak. + partija #5 į AV",
-   "priedai": [
-    "lipdukas-V07267E1000022.pdf"
-   ],
-   "av_dalis": true,
-   "html_ilgis": 2258
+   "tema": "[PERSIŲSTI Prins Petfoods] užsakymas 2026-08-24",
+   "kont": "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #7 į AV",
+   "priedai": [],
+   "av_dalis": false,
+   "html_ilgis": 1006
   },
   "uzs": {
-   "35066": ""
+   "35066": "{\"prins\":\"2026-08-24 22:39:14\"}"
   }
  }
 }
