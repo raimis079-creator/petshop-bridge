@@ -1,5 +1,15 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.8 (H260) — PARTIJA KELIAUJA TIEKĖJO LAIŠKE KARTU SU UŽSAKYMAIS.
+ *
+ * KODĖL (Raimis, H260): „užsakymą į AV sandėlį aš siųsiu tiekėjui kartu vienu
+ * laišku su kitais užsakymais". Iki šiol partija turėjo SAVO laišką — tiekėjas
+ * gaudavo du. DABAR uzsakyti() perskeltas: paruosti() (Venipak registracija,
+ * laiško dalis, lipdukas) ir uzdaryti_po_laisko() (būsena uzsakyta, pastabos).
+ * Dropship kortelė (petshop-av-dropship::kortele) rodo bloką „Į AV sandėlį —
+ * partija #n" ir, pažymėjus varnelę, įdeda jį į TĄ PATĮ laišką; po sėkmingo
+ * siuntimo partija uždaroma čia. Savas mygtukas Tiekime lieka išimtims.
+ *
  * Petshop AV Tiekimas v1.7.1 (H250) — laiškai rašomi į bendrą archyvą
  * (Įrankiai → „Išsiųsti laiškai", petshop-av-dropship::archyvuoti).
  *
@@ -449,6 +459,17 @@ class Petshop_AV_Tiekimas {
 					<?php echo esc_html( mysql2date( 'm-d H:i', $part->sukurta ) ); ?></span>
 				<?php if ( $riba ) : ?><span class="ps-tk-riba">užsakyti iki <?php echo esc_html( $riba ); ?></span><?php endif; ?>
 			</div>
+			<?php // H260: jei to paties tiekėjo laukia neperduoti užsakymai — vienas laiškas iš dropship kortelės.
+			if ( $eil && ! self::rankinis( $part->tiekejas ) && class_exists( 'Petshop_AV_Dropship' ) ) {
+				$lg = Petshop_AV_Dropship::laukiantys_perdavimo();
+				if ( ! empty( $lg[ $part->tiekejas ] ) ) {
+					printf( '<div class="notice notice-info inline" style="margin:8px 0"><p>%s laukia <b>%d</b> neperduot%s užsakym%s — partiją galima įdėti į <b>tą patį laišką</b>: <a class="button" href="%s">Laiškai tiekėjams → %s</a></p></div>',
+						esc_html( self::tiekejo_vardas( $part->tiekejas ) ), count( $lg[ $part->tiekejas ] ),
+						1 === count( $lg[ $part->tiekejas ] ) ? 'as' : 'i', 1 === count( $lg[ $part->tiekejas ] ) ? 'as' : 'ai',
+						esc_url( admin_url( 'admin.php?page=ps-laiskai&b=laukia' ) ), esc_html( self::tiekejo_vardas( $part->tiekejas ) ) );
+				}
+			}
+			?>
 
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 				<input type="hidden" name="action" value="ps_tiekimas">
@@ -965,6 +986,106 @@ class Petshop_AV_Tiekimas {
 	}
 
 	/** Laiškas tiekėjui + partija uždaroma. */
+	/**
+	 * Atvira tiekėjo partija su eilutėmis — dropship kortelei (H260).
+	 * Grąžina array(part, eilutes, svoris) arba null, jei nėra ko dėti.
+	 */
+	public static function atvira_su_eilutemis( $tiekejas ) {
+		global $wpdb;
+		$part = $wpdb->get_row( $wpdb->prepare(
+			'SELECT * FROM ' . self::t_partijos() . " WHERE tiekejas=%s AND busena='kaupiama' ORDER BY id DESC LIMIT 1", $tiekejas ) );
+		if ( ! $part ) { return null; }
+		$eil = self::partijos_eilutes( (int) $part->id );
+		if ( ! $eil ) { return null; }
+		return array( 'part' => $part, 'eilutes' => $eil, 'svoris' => self::svoris( $part ) );
+	}
+
+	/**
+	 * PARUOŠIMAS BE LAIŠKO (H260): Venipak registracija (jei reikia ir dar nėra),
+	 * laiško dalis (kelias + lentelė), lipduko failas. Partija NEUŽDAROMA.
+	 * Grąžina array( ok, klaida, html, priedas, pack, part, eilutes ).
+	 */
+	public static function paruosti( $pid ) {
+		global $wpdb;
+		$part = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );
+		if ( ! $part || 'kaupiama' !== $part->busena ) { return array( 'ok' => false, 'klaida' => 'partija neatvira' ); }
+		$eil = self::partijos_eilutes( $pid );
+		if ( ! $eil ) { return array( 'ok' => false, 'klaida' => 'partija tuščia' ); }
+
+		$eil_html = '';
+		foreach ( $eil as $e ) {
+			$pr = wc_get_product( $e->product_id );
+			$eil_html .= sprintf(
+				'<tr><td style="padding:6px 10px;border-bottom:1px solid #eee">%s</td>
+				 <td style="padding:6px 10px;border-bottom:1px solid #eee;font-family:monospace">%s</td>
+				 <td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:right"><b>%d</b></td></tr>',
+				esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ),
+				esc_html( $pr ? $pr->get_sku() : '' ),
+				(int) $e->qty );
+		}
+		$kg  = self::svoris( $part );
+		$pst = self::AV_PASTOMATAS;
+
+		$pack = (string) $part->venipak_pack; // jau registruota anksčiau (pvz. nepavykęs laiškas) — nekartojam
+		$reikia_vp = in_array( $part->pristatymas, array( 'kurjeris', 'pastomatas' ), true ) && ! self::rankinis( $part->tiekejas );
+		if ( $reikia_vp && ! $pack ) {
+			$vp = self::venipak_registruoti( $part );
+			if ( ! $vp['ok'] ) { return array( 'ok' => false, 'klaida' => 'Venipak: ' . $vp['klaida'] ); }
+			$wpdb->update( self::t_partijos(), array( 'venipak_pack' => $vp['pack'], 'venipak_manifest' => $vp['manifest'] ), array( 'id' => $pid ) );
+			$pack = $vp['pack']; $part->venipak_pack = $pack;
+		}
+
+		switch ( $part->pristatymas ) {
+			case 'pastomatas':
+				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio. Siunta keliauja į %s (%s).%s</p>',
+					esc_html( $pst['vardas'] ), esc_html( $pst['adresas'] ), $kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
+				break;
+			case 'tiekejas':
+				$kelias = '<p>Prekes atvešite patys į mūsų sandėlį (' . esc_html( self::AV_ADRESAS ) . ').</p>';
+				break;
+			case 'kurjeris':
+			default:
+				$kelias = sprintf( '<p>Prekes paims <b>Venipak kurjeris</b> iš Jūsų sandėlio ir pristatys į mūsų sandėlį (%s).%s</p>',
+					esc_html( self::AV_ADRESAS ), $kg > 0 ? ' Bendras svoris — ' . esc_html( self::kg( $kg ) ) . '.' : '' );
+		}
+		if ( $pack ) { $kelias .= sprintf( '<p>Siuntos lipdukas — laiško priede. Siuntos nr. <b>%s</b>.</p>', esc_html( $pack ) ); }
+
+		$html = $kelias . '<table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">
+			<thead><tr><th style="text-align:left;padding:6px 10px;border-bottom:2px solid #333">Prekė</th>
+			<th style="text-align:left;padding:6px 10px;border-bottom:2px solid #333">SKU</th>
+			<th style="text-align:right;padding:6px 10px;border-bottom:2px solid #333">Kiekis</th></tr></thead>
+			<tbody>' . $eil_html . '</tbody></table>';
+
+		$priedas = '';
+		if ( $pack ) {
+			$pdf = self::venipak_lipdukas( $pack );
+			if ( $pdf ) {
+				$up = wp_upload_dir(); $kel = trailingslashit( $up['basedir'] ) . 'ps-lipdukai'; wp_mkdir_p( $kel );
+				$fail = $kel . '/lipdukas-' . $pack . '.pdf';
+				if ( file_put_contents( $fail, $pdf ) ) { $priedas = $fail; }
+			}
+		}
+		return array( 'ok' => true, 'klaida' => '', 'html' => $html, 'priedas' => $priedas, 'pack' => $pack, 'part' => $part, 'eilutes' => $eil );
+	}
+
+	/** UŽDARYMAS po išsiųsto laiško (H260) — būsena, pastabos užsakymuose. $kontekstas — kas siuntė. */
+	public static function uzdaryti_po_laisko( $pid, $kontekstas = '' ) {
+		global $wpdb;
+		$part = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );
+		if ( ! $part || 'kaupiama' !== $part->busena ) { return false; }
+		$wpdb->update( self::t_partijos(), array( 'busena' => 'uzsakyta', 'uzsakyta' => current_time( 'mysql' ) ), array( 'id' => $pid ) );
+		foreach ( self::partijos_eilutes( $pid ) as $e ) {
+			if ( ! $e->order_id ) { continue; }
+			$oo = wc_get_order( $e->order_id );
+			if ( $oo ) {
+				$oo->add_order_note( sprintf( 'Tiekimas: prekės užsakytos iš %s (partija #%d%s). Kelias į AV: %s. Laukiam.',
+					self::tiekejo_vardas( $part->tiekejas ), $pid, $kontekstas ? ', ' . $kontekstas : '',
+					self::PRISTATYMAI[ $part->pristatymas ] ?? 'nenurodyta' ), false, true );
+			}
+		}
+		return true;
+	}
+
 	protected static function uzsakyti( $pid ) {
 		global $wpdb;
 		$part = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );
