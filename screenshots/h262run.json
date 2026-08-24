@@ -1,8 +1,8 @@
 {
- "v": "H262D",
- "sukurta": 3816,
+ "v": "H262E",
+ "sukurta": 3817,
  "deploy": {
-  "v": "H262D",
+  "v": "H262E",
   "failai": {
    "petshop-av-tiekimas.php": {
     "gauta": 70283,
@@ -15,6 +15,9 @@
     "md5": "609d2b1e3056c744ad8fb93222a9b542"
    }
   },
+  "neperduotos_35066": [
+   "prins"
+  ],
   "test_pid": 9,
   "cols": [
    "id",
@@ -65,29 +68,69 @@
   "h1": "Laiškai tiekėjams",
   "fatal": false,
   "notices": [
+   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
    "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
   ],
-  "put": 201,
-  "av": [],
-  "su_partija": [],
+  "put": 200,
+  "av": [
+   "ps-av-blokas  | Į AV sandėlį — partija #9 1 poz. · 2 vnt. Žirklės gyvūno kailiui, 16 cm 57449 2 vnt. Pristatymas: Venipak kurjeris į AV · siuntą registruos siunčiant laišką, į tą patį manifestą kaip klientų siuntos; lipdukų skaičių nurodyk prie mygtuko „Siųsti\" · keisti Tieki"
+  ],
+  "su_partija": [
+   "9:true"
+  ],
   "eiga4": [
+   "4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams + partija į AV → jie pereis į „Paruošta siųsti\"; kai tiekėjas iš",
    "4 · Pažymėti perduotaisužsakymai pereis į „Paruošta siųsti\"; kai ZB išsiųs — ten spausk „Išsiųsta\""
   ]
  },
- "perziura": "VF korteles nera",
+ "perziura": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&perziura=prins",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201,
+  "av_dalis": [
+   "UAB Avesa, Liucionių g. 46"
+  ],
+  "blokas": "Į AV sandėlį — partija #9 1 poz. · 2 vnt. Žirklės gyvūno kailiui, 16 cm 57449 2 vnt. Pristatymas: Venipak kurjeris į AV · siuntą registruos siunčiant laišką, į tą patį manifestą kaip klientų siuntos; lipdukų skaičių nurodyk prie mygtuko „Siųsti\" · keisti Tiekime"
+ },
+ "vp_reg": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&pd_ok=vp_ok&pd_nr=1+%C2%B7+PRINS",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201
+ },
+ "dezes_pries": "2",
+ "mygtukas": "Siųsti Prins Petfoods (irute@faunas.lt)",
+ "po": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&psl_sent=1&psl_src=prins&psl_n=1&psl_p=9&psl_kam=terra%40petshop.lt&psl_err",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Išsiųsta: Prins Petfoods — 1 užsak. vienu laišku + partija #9 į AV (uždaryta, laukiam prekių), gavėjai: terra@petshop.lt. Užsakymai pažymėti perduotais.",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201
+ },
  "js": [],
  "serveris": {
-  "v": "H262D",
+  "v": "H262E",
   "partijos": [
    {
     "id": "9",
     "tiekejas": "prins",
-    "busena": "kaupiama",
+    "busena": "uzsakyta",
     "pristatymas": "kurjeris",
-    "dezes": "2",
-    "venipak_pack": null,
-    "venipak_manifest": null,
-    "uzsakyta": null
+    "dezes": "3",
+    "venipak_pack": "V07267E1000027,V07267E1000028,V07267E1000029",
+    "venipak_manifest": "07267260824005",
+    "uzsakyta": "2026-08-24 22:53:31"
    },
    {
     "id": "8",
@@ -120,18 +163,22 @@
     "uzsakyta": "2026-08-24 19:55:51"
    }
   ],
-  "pirmas": "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #7 į AV",
+  "pirmas": "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #9 į AV",
   "arch": {
-   "laikas": "2026-08-24 22:39:14",
+   "laikas": "2026-08-24 22:53:31",
    "kam": "terra@petshop.lt",
    "tema": "[PERSIŲSTI Prins Petfoods] užsakymas 2026-08-24",
-   "kont": "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #7 į AV",
-   "priedai": [],
+   "kont": "Perdavimas tiekėjui: Prins Petfoods · 1 užsak. + partija #9 į AV",
+   "priedai": [
+    "35066 Linas Testauskas.pdf",
+    "manifestas-07267260824005.pdf",
+    "lipdukas-V07267E1000027_V07267E1000028_V07267E1000029.pdf"
+   ],
    "av_dalis": true,
    "html_ilgis": 1006
   },
   "uzs": {
-   "35066": ""
+   "35066": "{\"prins\":\"2026-08-24 22:53:31\"}"
   }
  }
 }
