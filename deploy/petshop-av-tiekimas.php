@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.9.1 (H262) — lipdukas keliems pack'ams: pack_no[] masyvu (kableliais Venipak tyli).
+ *
  * Petshop AV Tiekimas v1.9 (H261) — LAIŠKO DALIS KAIP KLIENTŲ LENTELĖ, DĖŽIŲ SKAIČIUS, BENDRAS MANIFESTAS.
  *
  * KODĖL (Raimis, H261, gavęs laišką): „tiekėjai ir taip žino mus, adresas
@@ -1008,7 +1010,8 @@ class Petshop_AV_Tiekimas {
 		$n = self::venipak_nust();
 		$r = wp_remote_post( 'https://go.venipak.lt/ws/print_label', array(
 			'timeout' => 45,
-			'body'    => array( 'user' => $n['user'], 'pass' => $n['pass'], 'pack_no' => $pack, 'format' => $n['format'] ),
+			// H262: keli pack'ai — TIK masyvu (pack_no[]); kableliais Venipak grąžina tuščią atsakymą.
+			'body'    => array( 'user' => $n['user'], 'pass' => $n['pass'], 'pack_no' => array_values( array_filter( explode( ',', (string) $pack ) ) ), 'format' => $n['format'] ),
 		) );
 		if ( is_wp_error( $r ) ) { return null; }
 		$b = wp_remote_retrieve_body( $r );
