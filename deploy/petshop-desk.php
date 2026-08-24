@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop Desk v3.45 (H258) — VENIPAK PERREGISTRAVIMAS SU KITU DĖŽIŲ SKAIČIUMI.
+ *
+ * KODĖL (Raimis, H258): „o jei man reikia ne vieno lipduko tam pačiam klientui?"
+ * — dėžių skaičius nustatomas kortelėje PRIEŠ registraciją; jei siunta jau
+ * registruota su 1 dėže, vp_reg ją praleisdavo („jau registruotas") ir kelio
+ * atgal nebuvo. DABAR vp_reg su `perreg=1&n=N` (tik su aiškiais ids): įrašo
+ * dėžių skaičių ir registruoja iš naujo; senas siuntos nr. lieka pastaboje.
+ *
  * Petshop Desk v3.44 (H257) — Įrankių nuoroda „Išsiųsti laiškai" → „Laiškai tiekėjams"
  * (langas turi ir „Laukia išsiuntimo", ir archyvą; senas vardas slėpė pirmąjį).
  *
@@ -661,9 +669,20 @@ class Petshop_Desk {
 			// ir kuriems netrūksta paštomato — kitaip pakartotinis paspaudimas
 			// siunčia dublikatus ir visas grupinis XML lūžta „be atsakymo".
 			$praleisti = array();
-			$ids = array_values( array_filter( $ids, function ( $oid ) use ( &$praleisti ) {
+			// H258: perregistravimas su kitu dėžių skaičiumi (tik aiškiems ids, iš perdavimo lango).
+			$perreg = ! empty( $_GET['perreg'] ) && ! empty( $_GET['ids'] );
+			$perreg_n = isset( $_GET['n'] ) ? max( 1, min( 20, absint( $_GET['n'] ) ) ) : 0;
+			$ids = array_values( array_filter( $ids, function ( $oid ) use ( &$praleisti, $perreg, $perreg_n ) {
 				$oo = wc_get_order( $oid );
 				if ( ! $oo ) { return false; }
+				if ( $perreg ) {
+					list( $senas ) = self::siuntos_kodas( $oo );
+					if ( $perreg_n ) { $oo->update_meta_data( self::META_PAK, $perreg_n ); }
+					$oo->add_order_note( sprintf( 'Darbalaukis: siunta perregistruojama su %d dėž. (sena siunta %s — nebenaudojama).',
+						$perreg_n ?: self::pakuociu( $oo ), $senas ?: '—' ), false, true );
+					$oo->save();
+					return true;
+				}
 				if ( self::turi_siunta( $oo ) ) { $praleisti[] = '#' . $oo->get_order_number() . ' jau registruotas'; return false; }
 				if ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {
 					$praleisti[] = '#' . $oo->get_order_number() . ' be paštomato'; return false;
