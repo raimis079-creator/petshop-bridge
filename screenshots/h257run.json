@@ -1,8 +1,8 @@
 {
- "v": "H257B",
- "sukurta": 3802,
+ "v": "H257C",
+ "sukurta": 3803,
  "deploy": {
-  "v": "H257B",
+  "v": "H257C",
   "failai": {
    "petshop-desk.php": {
     "gauta": 175766,
@@ -10,9 +10,9 @@
     "md5": "65e2311ee38b3591e44253f69dcf8ff5"
    },
    "petshop-av-dropship.php": {
-    "gauta": 47660,
+    "gauta": 47663,
     "sintakse": "ok",
-    "md5": "5720c3aae1b7db345cf0cd1346f95447"
+    "md5": "12998591350395756e4cbef6f7521f5f"
    }
   }
  },
@@ -21,68 +21,50 @@
   "url": "/wp-admin/admin.php?page=ps-desk&eile=nauji",
   "h1": "?",
   "fatal": false,
-  "notices": [],
+  "notices": [
+   "Flatsome issues Flatsome was unable to get the latest version. Your site might have changed domain after you registered it. Manage registration Manage your licenses jQuery(function($){ $('#flatsome-notice').on('click', '.notice-dismiss', function(){ $.post('ht"
+  ],
   "put": 200,
   "rail": [
-   "Nauji5",
+   "Nauji4",
    "Mišrūs0",
    "Neapmokėti1",
    "Laukia prekių4",
-   "Paruošta siųsti3",
+   "Paruošta siųsti4",
    "Klausimai0",
    "Išsiųsti1",
    "Atšaukti0",
    "Visi užsakymai14",
    "Tiekimas21",
-   "Laiškai tiekėjams4",
-   "Perdavimas tiekėjams4"
+   "Laiškai tiekėjams3",
+   "Perdavimas tiekėjams3"
   ]
  },
  "laukia": {
-  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia",
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&psl_sent=1&psl_src=ambrosia&psl_n=1&psl_kam=terra%40petshop.lt",
   "h1": "Laiškai tiekėjams",
   "fatal": false,
-  "notices": [],
+  "notices": [
+   "Flatsome issues Flatsome was unable to get the latest version. Your site might have changed domain after you registered it. Manage registration Manage your licenses jQuery(function($){ $('#flatsome-notice').on('click', '.notice-dismiss', function(){ $.post('ht",
+   "Išsiųsta: Ambrosia — 1 užsak. vienu laišku, gavėjai: terra@petshop.lt. Užsakymai pažymėti perduotais."
+  ],
   "put": 200,
+  "aktyvus": "Laukia išsiuntimo (3)",
   "tiekejai": [
-   "Vetfarmas2 užsak. · 2 vnt. · ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite",
+   "Vetfarmas2 užsak. · 2 vnt. · ieva.lastovskyte@vetfarmas.lt,k",
    "Prins Petfoods1 užsak. · 1 vnt. · irute@faunas.lt",
-   "Ambrosia1 užsak. · 1 vnt. · info@alphazoo.lt",
    "Žalioji Banga2 užsak. · 4 vnt. · suvedama ranka ZB sistemoje",
-   "Prekės į AV sandėlį kaupiamos partijos — laiškas išeis paspaudus „Užsakyti iš ti"
+   "Prekės į AV sandėlį kaupiamos partijos — laiškas išeis paspa"
   ],
   "mygtukai": [
    "Perduoti Vetfarmas — 2 užsak. vienu laišku →",
    "Perduoti Prins Petfoods — 1 užsak. vienu laišku →",
-   "Perduoti Ambrosia — 1 užsak. vienu laišku →",
    "Atidaryti Žalioji Banga — 2 užsak. (suvesti ZB sistemoje) →"
   ]
  },
- "perduoti": {
-  "url": "/wp-admin/admin.php?page=ps-dropship&src=ambrosia",
-  "h1": "Perduoti tiekėjams",
-  "fatal": false,
-  "notices": [],
-  "put": 200,
-  "uzsakymai": "35063",
-  "vartai": [
-   "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
-  ],
-  "mygtukas": "Siųsti Ambrosia (info@alphazoo.lt)"
- },
- "po": {
-  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&psl_sent=1&psl_src=ambrosia&psl_n=1&psl_kam=terra%40petshop.lt&psl_err",
-  "h1": "Laiškai tiekėjams",
-  "fatal": false,
-  "notices": [
-   "Išsiųsta: Ambrosia — 1 užsak. vienu laišku, gavėjai: terra@petshop.lt. Užsakymai pažymėti perduotais."
-  ],
-  "put": 200,
-  "tiekejai": []
- },
  "js": [],
  "serveris": {
-  "v": "H257B",
+  "v": "H257C",
   "uzs": {
    "35062": {
     "st": "processing",
