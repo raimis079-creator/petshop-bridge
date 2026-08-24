@@ -1,18 +1,21 @@
 {
- "v": "H258B",
- "sukurta": 3806,
+ "v": "H258C",
+ "sukurta": 3807,
  "deploy": {
-  "v": "H258B",
+  "v": "H258C",
+  "atstatyta_35061": [
+   "V07267E1000010"
+  ],
   "failai": {
    "petshop-desk.php": {
-    "gauta": 177470,
+    "gauta": 177980,
     "sintakse": "ok",
-    "md5": "7c9ba70fc134f4bf3d934b582fa0cf24"
+    "md5": "6f8c0b24c99562f1bb5812d1a2ccf03c"
    },
    "petshop-av-dropship.php": {
-    "gauta": 48163,
+    "gauta": 48564,
     "sintakse": "ok",
-    "md5": "ee77f0d0559b6981a7b15a388c67ba47"
+    "md5": "be4db6a888d81f71b1a3401001441782"
    }
   }
  },
@@ -45,18 +48,15 @@
    "Pažymėti ZB perduotais (2)"
   ],
   "dez": [
-   "35067:1:Registruoti Venipak",
-   "35061:2:Perregistruoti Venipak",
    "35066:1:Registruoti Venipak",
-   "35060:1:Perregistruoti Venipak",
-   "35059:1:Perregistruoti Venipak"
+   "35060:1:Perregistruoti Venipak"
   ]
  },
  "dialogai": [
-  "Perregistruoti siuntą #35061 Venipak su 2 dėž.? Sena siunta lieka Venipak sistemoje nenaudojama."
+  "Perregistruoti siuntą #35060 Venipak su 2 dėž.? Sena siunta lieka Venipak sistemoje nenaudojama."
  ],
  "perreg": {
-  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&pd_ok=vp_klaida&pd_nr=%2335061%3A+One+package+per+shipment+allowed+if+sending+to%2Ffrom+locker",
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&pd_ok=vp_ok&pd_nr=1+%C2%B7+ZB",
   "h1": "Laiškai tiekėjams",
   "fatal": false,
   "notices": [
@@ -66,29 +66,38 @@
   ],
   "put": 200,
   "dez": [
-   "35067:0 lipdukai ·",
-   "35061:2 lipdukai ·",
    "35066:0 lipdukai ·",
-   "35060:1 lipdukas ·",
-   "35059:1 lipdukas ·"
+   "35060:2 lipdukai ·"
   ]
  },
  "dropship": "mygtuko nera",
  "js": [],
  "serveris": {
-  "v": "H258B",
+  "v": "H258C",
   "uzs": {
-   "35061": {
-    "st": "processing",
+   "35060": {
     "pak_meta": "2",
     "pack_numbers": [
-     "V07267E1000016",
-     "V07267E1000017"
+     "V07267E1000018",
+     "V07267E1000019"
     ],
+    "status": "sent",
+    "sena": true,
     "pastabos": [
-     "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — #35061: One package per shipment allowed if sending to/from locker\n",
-     "Darbalaukis: siunta perregistruojama su 2 dėž. (sena siunta V07267E1000010 — nebenaudojama).",
-     "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — #35061: Venipak negrąžino atsakymo"
+     "Siuntos numeriai išsaugoti (ZB): V07267E1000018, V07267E1000019",
+     "Venipak registracija darbalaukyje (ZB, manifestas 003): sėkminga"
+    ]
+   },
+   "35061": {
+    "pak_meta": "1",
+    "pack_numbers": [
+     "V07267E1000010"
+    ],
+    "status": "sent",
+    "sena": false,
+    "pastabos": [
+     "H258C: sena siunta V07267E1000010 grąžinta po nepavykusio perregistravimo (paštomatas).",
+     "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — #35061: One package per shipment allowed if sending to/"
     ]
    }
   }
