@@ -1,0 +1,242 @@
+{
+ "v": "H253A",
+ "sukurta": 3797,
+ "vp_pries": {
+  "url": "/wp-admin/admin.php?page=ps-desk&view=rytas&z=3",
+  "h1": "?",
+  "fatal": false,
+  "notices": [],
+  "put": 201,
+  "grupes": [
+   "Savas sandėlismanifestas 0726726082400111:00 · praėjo, keliaus rytoj2 siuntos · viso 0,3 kg · 1 be svorioregistruota 0 i",
+   "Vetfarmasmanifestas 0726726082400213:00 · praėjo, keliaus rytoj1 siunta · viso 15 kgregistruota 0 iš 1",
+   "Žalioji Bangamanifestas 0726726082400309:00 · praėjo, keliaus rytoj2 siuntos · viso 29,9 kgregistruota 0 iš 2",
+   "Quattromanifestas 0726726082400409:00 · praėjo, keliaus rytoj1 siunta · viso 4,5 kgregistruota 0 iš 1",
+   "Ambrosiamanifestas 0726726082400610:00 · praėjo, keliaus rytoj1 siunta · viso 12 kgregistruota 0 iš 1",
+   "Belacormanifestas 0726726082400709:00 · praėjo, keliaus rytoj1 siunta · viso 1 kgregistruota 0 iš 1"
+  ]
+ },
+ "vp_reg": [
+  {
+   "mygtukas": "Registruoti 2 siuntas",
+   "url": "/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=2+%C2%B7+AV",
+   "notices": [
+    "Venipak: siuntos užregistruotos (2 · AV). Manifestas paruoštas.✕"
+   ],
+   "fatal": false
+  },
+  {
+   "mygtukas": "Registruoti 1 siuntą",
+   "url": "/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=1+%C2%B7+VF",
+   "notices": [
+    "Venipak: siuntos užregistruotos (1 · VF). Manifestas paruoštas.✕"
+   ],
+   "fatal": false
+  },
+  {
+   "mygtukas": "Registruoti 2 siuntas",
+   "url": "/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=2+%C2%B7+ZB",
+   "notices": [
+    "Venipak: siuntos užregistruotos (2 · ZB). Manifestas paruoštas.✕"
+   ],
+   "fatal": false
+  },
+  {
+   "mygtukas": "Registruoti 1 siuntą",
+   "url": "/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=1+%C2%B7+QUATTRO",
+   "notices": [
+    "Venipak: siuntos užregistruotos (1 · QUATTRO). Manifestas paruoštas.✕"
+   ],
+   "fatal": false
+  },
+  {
+   "mygtukas": "Registruoti 1 siuntą",
+   "url": "/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=1+%C2%B7+AMBROSIA",
+   "notices": [
+    "Venipak: siuntos užregistruotos (1 · AMBROSIA). Manifestas paruoštas.✕"
+   ],
+   "fatal": false
+  },
+  {
+   "mygtukas": "Registruoti 1 siuntą",
+   "url": "/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=1+%C2%B7+BELCOR_TOFU",
+   "notices": [
+    "Venipak: siuntos užregistruotos (1 · BELCOR_TOFU). Manifestas paruoštas.✕"
+   ],
+   "fatal": false
+  }
+ ],
+ "vp_po": {
+  "url": "/wp-admin/admin.php?page=ps-desk&view=rytas&z=3",
+  "h1": "?",
+  "fatal": false,
+  "notices": [],
+  "put": 201,
+  "grupes": [
+   "Savas sandėlismanifestas 0726726082400111:00 · praėjo, keliaus rytoj2 siuntos · viso 0,3 kg · 1 be svorioregistruota 2 i",
+   "Vetfarmasmanifestas 0726726082400213:00 · praėjo, keliaus rytoj1 siunta · viso 15 kgregistruota 1 iš 1",
+   "Žalioji Bangamanifestas 0726726082400309:00 · praėjo, keliaus rytoj2 siuntos · viso 29,9 kgregistruota 2 iš 2",
+   "Quattromanifestas 0726726082400409:00 · praėjo, keliaus rytoj1 siunta · viso 4,5 kgregistruota 1 iš 1",
+   "Ambrosiamanifestas 0726726082400610:00 · praėjo, keliaus rytoj1 siunta · viso 12 kgregistruota 1 iš 1",
+   "Belacormanifestas 0726726082400709:00 · praėjo, keliaus rytoj1 siunta · viso 1 kgregistruota 1 iš 1"
+  ]
+ },
+ "perduoti": "mygtuko nera",
+ "tiek_formos": 3,
+ "tiek_uzsakyti": "VF forma nerasta",
+ "desk_po": {
+  "url": "/wp-admin/admin.php?page=ps-desk&eile=nauji",
+  "h1": "?",
+  "fatal": false,
+  "notices": [],
+  "put": 201,
+  "pipeline": [
+   "Laukia sprendimo 0",
+   "Nepaleisti planai 0",
+   "Neperduota tiekėjams 0",
+   "Partijose 3",
+   "Laukia prekių 4",
+   "Paruošta siųsti 8",
+   "Išsiųsta šiandien 0"
+  ]
+ },
+ "js": [],
+ "serveris": {
+  "v": "H253A",
+  "uzs": {
+   "35056": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": [
+     "V07267E1000008"
+    ],
+    "man": "07267260824001",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (AV): V07267E1000008",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "Email \"Užsakymas vykdomas\" failed to send."
+    ]
+   },
+   "35057": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": null,
+    "man": null,
+    "pastabos": [
+     "Email \"Užsakymas vykdomas\" failed to send.",
+     "Email \"Naujas užsakymas\" failed to send.",
+     "Testinis uzsakymas (apmoketas). Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas."
+    ]
+   },
+   "35059": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": [
+     "V07267E1000012"
+    ],
+    "man": "07267260824003",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (ZB): V07267E1000012",
+     "Venipak registracija darbalaukyje (ZB, manifestas 003): sėkminga",
+     "Email \"Užsakymas vykdomas\" failed to send."
+    ]
+   },
+   "35060": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": [
+     "V07267E1000011"
+    ],
+    "man": "07267260824003",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (ZB): V07267E1000011",
+     "Venipak registracija darbalaukyje (ZB, manifestas 003): sėkminga",
+     "Email \"Užsakymas vykdomas\" failed to send."
+    ]
+   },
+   "35061": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": [
+     "V07267E1000010"
+    ],
+    "man": "07267260824002",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (VF): V07267E1000010",
+     "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "Email \"Užsakymas vykdomas\" failed to send."
+    ]
+   },
+   "35062": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": [
+     "V07267E1000013"
+    ],
+    "man": "07267260824004",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (QUATTRO): V07267E1000013",
+     "Venipak registracija darbalaukyje (QUATTRO, manifestas 004): sėkminga",
+     "Email \"Užsakymas vykdomas\" failed to send."
+    ]
+   },
+   "35063": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": [
+     "V07267E1000014"
+    ],
+    "man": "07267260824006",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (AMBROSIA): V07267E1000014",
+     "Venipak registracija darbalaukyje (AMBROSIA, manifestas 006): sėkminga",
+     "Email \"Užsakymas vykdomas\" failed to send."
+    ]
+   },
+   "35064": {
+    "st": "processing",
+    "sent_src": "",
+    "packs": [
+     "V07267E1000015"
+    ],
+    "man": "07267260824007",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (BELCOR_TOFU): V07267E1000015",
+     "Venipak registracija darbalaukyje (BELCOR_TOFU, manifestas 007): sėkminga",
+     "Email \"Užsakymas vykdomas\" failed to send."
+    ]
+   }
+  },
+  "tiek": [
+   {
+    "id": "6",
+    "tiekejas": "ambrosia",
+    "busena": "kaupiama",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": null,
+    "pristatymas": null
+   },
+   {
+    "id": "5",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": null,
+    "pristatymas": "kurjeris"
+   },
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "kaupiama",
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "uzsakyta": null,
+    "pristatymas": "pastomatas"
+   }
+  ],
+  "vp_user": "yra",
+  "ln": false
+ }
+}
