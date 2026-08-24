@@ -1,5 +1,8 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.9.2 (H264) — vizualinis atskyrimas: kortelė su šešėliu, pristatymo
+ * ir laiškų blokai ant tonuoto fono, žingsnių numeriai, spalvota tiekėjo juosta (Raimis: „viskas susilieja").
+ *
  * Petshop AV Tiekimas v1.9.1 (H262) — lipdukas keliems pack'ams: pack_no[] masyvu (kableliais Venipak tyli).
  *
  * Petshop AV Tiekimas v1.9 (H261) — LAIŠKO DALIS KAIP KLIENTŲ LENTELĖ, DĖŽIŲ SKAIČIUS, BENDRAS MANIFESTAS.
@@ -1455,13 +1458,15 @@ class Petshop_AV_Tiekimas {
 		?>
 <style>
 .ps-tk h1{margin-bottom:6px}
-.ps-tk-k{background:#fff;border:1px solid #dcdcd6;border-radius:8px;margin:16px 0;overflow:hidden}
-.ps-tk-h{display:flex;align-items:center;gap:12px;padding:11px 14px;background:#f5f5f1;border-bottom:1px solid #dcdcd6}
-.ps-tk-h b{font-size:15px}
+.ps-tk-k{background:#fff;border:1px solid #cfd3cc;border-radius:10px;margin:22px 0;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.ps-tk-h{display:flex;align-items:center;gap:12px;padding:13px 16px;background:#e9f1ea;border-bottom:2px solid #2d5f3f;border-left:6px solid #2d5f3f}
+.ps-tk-h b{font-size:17px;color:#234b32}
 .ps-tk-sub{color:#787c78;font-size:12.5px}
 .ps-tk-riba{margin-left:auto;background:#FBF2DE;color:#96660C;padding:3px 10px;border-radius:99px;font-size:12.5px;font-weight:600}
 .ps-tk-t{border:0;border-radius:0}
-.ps-tk-t th,.ps-tk-t td{padding:8px 12px}
+.ps-tk-t th{background:#f5f5f1;text-transform:uppercase;font-size:11.5px;letter-spacing:.04em;color:#5e6661}
+.ps-tk-t th,.ps-tk-t td{padding:9px 14px}
+.ps-tk-t tbody tr:nth-child(even) td{background:#fafaf8}
 .ps-tk-t .r{text-align:right}
 .ps-tk-t .mono,.ps-tk .mono{font-family:Menlo,Consolas,monospace;font-size:12.5px}
 .ps-tk-q{width:74px;text-align:right}
@@ -1471,21 +1476,26 @@ class Petshop_AV_Tiekimas {
 .ps-tk-sku2{font-family:Menlo,monospace;font-size:11.5px;color:#8a918c}
 .ps-tk-atsargai{color:#787c78;font-style:italic}
 .ps-tk-del{font-size:12px;color:#98262A}
-.ps-tk-pridek{display:flex;gap:8px;align-items:center;padding:12px 14px;border-top:1px solid #eee;background:#fafaf8}
+.ps-tk-pridek{display:flex;gap:8px;align-items:center;padding:12px 16px;border-top:1px dashed #cfd3cc;background:#fff}
 .ps-tk-pridek label{font-size:13px;color:#5e6661}
 .ps-tk-sku{width:190px}
-.ps-tk-prist{border-top:1px solid #E4E4DE;margin-top:10px;padding:10px 0 4px}
-.ps-tk-prist-h{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#5E6661;margin-bottom:7px}
+.ps-tk-prist{margin:14px 16px 0;padding:12px 14px;background:#f3f6f9;border:1px solid #cdd8e3;border-left:5px solid #2b5c8a;border-radius:6px}
+.ps-tk-prist-h{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:#2b5c8a;font-weight:700;margin-bottom:9px}
+.ps-tk-prist-h:before{content:'2 · ';}
+.ps-tk-pridek:before{content:'1';display:inline-flex;width:20px;height:20px;border-radius:50%;background:#2d5f3f;color:#fff;font-size:12px;font-weight:700;align-items:center;justify-content:center;margin-right:2px}
 .ps-tk-prist-r{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.ps-tk-rad{display:flex;align-items:center;gap:6px;border:1px solid #E4E4DE;border-radius:99px;
- padding:4px 12px 4px 9px;font-size:13px;cursor:pointer;background:#fff}
+.ps-tk-rad{display:flex;align-items:center;gap:6px;border:1.5px solid #b9c4cf;border-radius:99px;
+ padding:5px 14px 5px 10px;font-size:13px;cursor:pointer;background:#fff}
 .ps-tk-rad.on{border-color:#2D5F3F;background:#E9F1EA;color:#234B32;font-weight:600}
 .ps-tk-kg{margin-left:auto;font-size:13px;color:#5E6661;display:flex;align-items:center;gap:6px}
 .ps-tk-kg input{width:88px}
 .ps-tk-prist-i{font-size:12.5px;color:#5E6661;margin-top:8px;line-height:1.5}
 .ps-tk-blogai{color:#98262A;font-weight:600;margin-left:6px}
-.ps-tk-f{display:flex;gap:8px;padding:12px 14px;border-top:1px solid #eee}
-.ps-tk-laiskai{margin:10px 14px;padding:8px 12px;background:#f6f7f7;border:1px solid #e0e0e0;border-radius:4px;font-size:13px}
+.ps-tk-f{display:flex;gap:10px;align-items:center;padding:14px 16px;border-top:2px solid #e4e4de;background:#f5f5f1}
+.ps-tk-f:before{content:'4 · Užsakymas';font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:#5e6661;font-weight:700;margin-right:8px}
+.ps-tk-f .button-primary{font-weight:600}
+.ps-tk-laiskai{margin:12px 16px;padding:10px 14px;background:#fbf6ec;border:1px solid #e6d5b0;border-left:5px solid #96660c;border-radius:6px;font-size:13px}
+.ps-tk-laiskai b:first-child:before{content:'3 · ';color:#96660c}
 		.ps-tk-laiskai label{margin-left:14px;cursor:pointer}
 		.ps-tk-sub2{display:block;margin-top:4px;color:#666;font-size:12px}
 		.ps-tk-vp{margin-left:10px;font-size:12px;color:#1B7A3D}
