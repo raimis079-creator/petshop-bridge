@@ -1,5 +1,15 @@
 <?php
 /**
+ * Petshop AV Dropship v1.17 (H260) — PARTIJA Į AV TAME PAČIAME LAIŠKE.
+ *
+ * KODĖL (Raimis, H260): „užsakymą į AV sandėlį siųsiu tiekėjui kartu vienu
+ * laišku su kitais užsakymais". DABAR kortelėje blokas „Į AV sandėlį — partija
+ * #n" (Tiekimo kaupiama partija su eilutėmis): pristatymo būdas, svoris,
+ * varnelė „įtraukti į šį laišką" (įjungta). Siunčiant: Tiekimas::paruosti()
+ * (Venipak registracija, lipdukas), laiške antra dalis „Prekės į mūsų sandėlį",
+ * po sėkmingo wp_mail — Tiekimas::uzdaryti_po_laisko(). Nepavykus — partija
+ * lieka atvira. Be pristatymo būdo — neįtraukiama, nuoroda į Tiekimą.
+ *
  * Petshop AV Dropship v1.16 (H259) — EIGA KORTELĖJE: KAS ČIA DAROMA IR KAS BUS PO TO.
  *
  * KODĖL (Raimis, H259): „spaudi Perduoti, atsidaro langas — nu ir ką? balaganas".
@@ -361,9 +371,13 @@ class Petshop_AV_Dropship {
 			$sn  = absint( $_GET['psl_n'] ?? 0 );
 			$skam = sanitize_text_field( rawurldecode( wp_unslash( $_GET['psl_kam'] ?? '' ) ) );
 			$se  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['psl_err'] ?? '' ) ) );
+			$sp  = absint( $_GET['psl_p'] ?? 0 );
 			if ( '1' === (string) $_GET['psl_sent'] ) {
-				printf( '<div class="notice notice-success"><p><b>Išsiųsta:</b> %s — %d užsak. vienu laišku, gavėjai: %s. Užsakymai pažymėti perduotais.</p></div>',
-					esc_html( $sv ), $sn, esc_html( $skam ) );
+				printf( '<div class="notice notice-success"><p><b>Išsiųsta:</b> %s — %d užsak. vienu laišku%s, gavėjai: %s. Užsakymai pažymėti perduotais.</p></div>',
+					esc_html( $sv ), $sn, $sp ? ' + partija #' . $sp . ' į AV (uždaryta, laukiam prekių)' : '', esc_html( $skam ) );
+			} elseif ( '3' === (string) $_GET['psl_sent'] ) {
+				printf( '<div class="notice notice-error"><p><b>NEIŠSIŲSTA:</b> %s — partijos #%d paruošti nepavyko (%s). Laiškas neišėjo, užsakymai liko neperduoti, partija atvira.</p></div>',
+					esc_html( $sv ), $sn, esc_html( $se ) );
 			} elseif ( '2' === (string) $_GET['psl_sent'] ) {
 				printf( '<div class="notice notice-warning"><p>%s neturi neperduotų užsakymų — nieko nesiųsta.</p></div>', esc_html( $sv ) );
 			} else {
@@ -555,6 +569,11 @@ class Petshop_AV_Dropship {
 		.ps-kodas { color:#888; font-size:11px; margin-left:8px; }
 		.ps-lip { color:#a05a00; font-size:12px; font-style:italic; }
 		.ps-siusti { margin-top:12px; }
+		.ps-av-blokas { margin:12px 0; padding:10px 12px; border:1px dashed #2a5a8a; background:#f3f8fc; }
+		.ps-av-blokas.ps-av-ne { border-color:#c46a00; background:#fbf3e6; }
+		.ps-av-h { display:flex; justify-content:space-between; margin-bottom:6px; font-size:13px; }
+		.ps-av-h span { color:#555; font-size:12px; }
+		.ps-av-p { margin:8px 0 0; font-size:12px; color:#333; }
 		.ps-eiga { display:flex; gap:10px; margin:0 0 12px; flex-wrap:wrap; }
 		.ps-eiga-z { flex:1 1 200px; padding:8px 10px; border-left:3px solid #ccc; background:#f6f6f6; font-size:12px; line-height:1.35; }
 		.ps-eiga-z b { display:block; margin-bottom:2px; }
@@ -602,7 +621,7 @@ class Petshop_AV_Dropship {
 						array( $be_reg ? 'ne' : 'ok', '1 · Siunta Venipak', $be_reg ? $be_reg . ' be siuntos — registruok žemiau (kitaip laiške nebus lipdukų)' : 'registruota, lipdukai keliaus laiške' ),
 						array( 'ok', '2 · Laiškas', '„Peržiūrėti laišką" — tiksliai tas tekstas; prierašas nebūtinas' ),
 						array( ( $ln0['tiekejui'] || $ln0['man'] ) ? 'ok' : 'ne', '3 · Kam', $ln0['tiekejui'] ? ( 'tiekėjui' . ( $ln0['man'] ? ' + kopija man' : '' ) ) : ( $ln0['man'] ? 'TIK man (tiekėjui NEIŠEIS — persiųsi pats)' : 'nepažymėta' ) ),
-						array( 'ne', '4 · Siųsti', 'vienas laiškas visiems šio tiekėjo užsakymams → jie pereis į „Paruošta siųsti"; kai tiekėjas išsiųs — ten spausk „Išsiųsta"' ),
+						array( 'ne', '4 · Siųsti', 'vienas laiškas visiems šio tiekėjo užsakymams' . ( class_exists( 'Petshop_AV_Tiekimas' ) && Petshop_AV_Tiekimas::atvira_su_eilutemis( $src ) ? ' + partija į AV' : '' ) . ' → jie pereis į „Paruošta siųsti"; kai tiekėjas išsiųs — ten spausk „Išsiųsta"' ),
 					);
 				}
 				echo '<div class="ps-eiga">';
@@ -695,6 +714,39 @@ class Petshop_AV_Dropship {
 				</form>
 				<?php endif; ?>
 
+				<?php // H260: Tiekimo kaupiama partija — į tą patį laišką.
+				$partija = ( 'zb' !== $src && class_exists( 'Petshop_AV_Tiekimas' ) ) ? Petshop_AV_Tiekimas::atvira_su_eilutemis( $src ) : null;
+				$partija_html = ''; $gali = false; $pp = null;
+				if ( $partija ) :
+					$pp = $partija['part']; $gali = ! empty( $pp->pristatymas );
+					$pv = Petshop_AV_Tiekimas::PRISTATYMAI[ $pp->pristatymas ] ?? '';
+					if ( $gali ) {
+						$partija_html = '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:Arial;font-size:13px">';
+						foreach ( $partija['eilutes'] as $e ) { $pr = wc_get_product( $e->product_id );
+							$partija_html .= '<tr><td>' . esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ) . ' <span style="color:#666">' . esc_html( $pr ? $pr->get_sku() : '' ) . '</span></td><td align="center">' . (int) $e->qty . ' vnt.</td></tr>'; }
+						$partija_html .= '</table><p style="font-size:12px;color:#555">Pristatymas: ' . esc_html( $pv ) . ( $partija['svoris'] > 0 ? ' · ' . esc_html( Petshop_AV_Tiekimas::kg( $partija['svoris'] ) ) : '' ) . ( $pp->venipak_pack ? ' · siunta ' . esc_html( $pp->venipak_pack ) : ' · siunta bus registruota siunčiant' ) . '</p>';
+					}
+				?>
+				<div class="ps-av-blokas <?php echo $gali ? '' : 'ps-av-ne'; ?>">
+					<div class="ps-av-h"><b>Į AV sandėlį — partija #<?php echo (int) $pp->id; ?></b>
+						<span><?php echo count( $partija['eilutes'] ); ?> poz. · <?php echo (int) array_sum( wp_list_pluck( $partija['eilutes'], 'qty' ) ); ?> vnt.<?php if ( $partija['svoris'] > 0 ) : ?> · <?php echo esc_html( Petshop_AV_Tiekimas::kg( $partija['svoris'] ) ); ?><?php endif; ?></span></div>
+					<table class="widefat striped ps-tbl"><tbody>
+					<?php foreach ( $partija['eilutes'] as $e ) : $pr = wc_get_product( $e->product_id ); ?>
+						<tr><td><?php echo esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ); ?> <span class="ps-kodas"><?php echo esc_html( $pr ? $pr->get_sku() : '' ); ?></span></td>
+						<td class="ps-c"><?php echo (int) $e->qty; ?> vnt.</td></tr>
+					<?php endforeach; ?>
+					</tbody></table>
+					<?php if ( $gali ) : ?>
+						<p class="ps-av-p">Pristatymas: <b><?php echo esc_html( $pv ); ?></b>
+							<?php echo $pp->venipak_pack ? '· siunta ' . esc_html( $pp->venipak_pack ) : '· Venipak siunta bus registruota siunčiant laišką'; ?>
+							· <a href="<?php echo esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ); ?>">keisti Tiekime</a></p>
+					<?php else : ?>
+						<div class="notice notice-warning inline"><p><b>Nepasirinktas pristatymo būdas</b> — į laišką neįtraukiama.
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ); ?>">Pasirink Tiekime</a> (paštomatas / kurjeris / tiekėjas atveža) ir grįžk.</p></div>
+					<?php endif; ?>
+				</div>
+				<?php endif; ?>
+
 				<?php if ( 'zb' !== $src ) :
 					$perziura = isset( $_GET['perziura'] ) && $_GET['perziura'] === $src; ?>
 					<p style="margin:10px 0 0">
@@ -707,7 +759,7 @@ class Petshop_AV_Dropship {
 								Laiško peržiūra — tema: „užsakymas <?php echo esc_html( date_i18n( 'Y-m-d' ) ); ?>" · gavėjas: <?php echo esc_html( $pastas ?: '—' ); ?></p>
 							<?php
 							$zyme = 'PS-GYVA-VIETA';
-							$html = self::laisko_html( $src, $uzsakymai, $zyme );
+							$html = self::laisko_html( $src, $uzsakymai, $zyme, $partija_html );
 							$gyvas = '<p class="ps-gyva" data-src="' . esc_attr( $src ) . '"'
 								. ' style="display:none;margin:14px 0;padding:8px 10px;background:#FBF2DE;border-left:3px solid #96660C"></p>';
 							$html = str_replace( '<p style="margin:14px 0">' . $zyme . '</p>', $gyvas, $html );
@@ -752,6 +804,9 @@ class Petshop_AV_Dropship {
 							onclick="return confirm('Siųsti BE lipdukų? Tiekėjas negalės išsiųsti, kol neatsiųsi lipdukų atskirai.');">Siųsti be lipdukų (išimtis)</button>
 					<?php else : ?>
 						<button class="button button-primary">Siųsti <?php echo esc_html( $vardas ); ?> (<?php echo esc_html( $pastas ); ?>)</button>
+					<?php endif; ?>
+					<?php if ( $partija && $gali ) : ?>
+					<label><input type="checkbox" name="su_partija" value="<?php echo (int) $pp->id; ?>" checked> <b>+ partija #<?php echo (int) $pp->id; ?> į AV</b> (užsidarys išsiuntus)</label>
 					<?php endif; ?>
 					<label><input type="checkbox" name="su_lipdukais" value="1" checked> pridėti lipdukus</label>
 					<label><input type="checkbox" name="su_manifestu" value="1" checked> pridėti manifestą</label>
@@ -876,7 +931,7 @@ class Petshop_AV_Dropship {
 	}
 
 	/** Laiško tiekėjui HTML — VIENA tiesos vieta siuntimui ir peržiūrai. */
-	public static function laisko_html( $src, $uzsakymai, $pastaba = '' ) {
+	public static function laisko_html( $src, $uzsakymai, $pastaba = '', $partija_html = '' ) {
 		$t = self::tiekejai();
 		$rodyti_ean = ( ( $t[ $src ][1] ?? 'sku' ) === 'sku_ean' );
 
@@ -906,6 +961,9 @@ class Petshop_AV_Dropship {
 		$pastaba = trim( (string) $pastaba );
 		if ( '' !== $pastaba ) {
 			$h .= '<p style="margin:14px 0">' . nl2br( esc_html( $pastaba ) ) . '</p>';
+		}
+		if ( '' !== $partija_html ) { // H260: prekės į AV sandėlį — tame pačiame laiške
+			$h .= '<h3 style="margin:18px 0 6px;font-family:Arial;font-size:14px">Prekės į mūsų sandėlį (UAB Avesa)</h3>' . $partija_html;
 		}
 		$h .= '<p>Linkėjimai,<br>UAB Avesa<br>terra@petshop.lt</p>';
 		return $h;
@@ -946,7 +1004,20 @@ class Petshop_AV_Dropship {
 		if ( ! $uzsakymai ) { wp_die( 'Nėra ką siųsti' ); }
 
 		$pastaba = isset( $_POST['pastaba'] ) ? sanitize_textarea_field( wp_unslash( $_POST['pastaba'] ) ) : '';
-		$h = self::laisko_html( $src, $uzsakymai, $pastaba );
+
+		// H260: Tiekimo partija tame pačiame laiške — paruošiam (Venipak, lipdukas), uždarom tik po sėkmės.
+		$pid = isset( $_POST['su_partija'] ) ? absint( $_POST['su_partija'] ) : 0;
+		$partija_html = ''; $partija_priedas = '';
+		if ( $pid && class_exists( 'Petshop_AV_Tiekimas' ) ) {
+			$pr = Petshop_AV_Tiekimas::paruosti( $pid );
+			if ( empty( $pr['ok'] ) ) {
+				wp_safe_redirect( add_query_arg( [ 'page' => 'ps-laiskai', 'b' => 'laukia', 'psl_sent' => 3, 'psl_src' => $src, 'psl_n' => $pid,
+					'psl_err' => rawurlencode( mb_substr( (string) $pr['klaida'], 0, 200 ) ) ], admin_url( 'admin.php' ) ) );
+				exit;
+			}
+			$partija_html = $pr['html']; $partija_priedas = $pr['priedas'];
+		}
+		$h = self::laisko_html( $src, $uzsakymai, $pastaba, $partija_html );
 		$data = date_i18n( 'Y-m-d' );
 
 		// PRIEDAI
@@ -961,6 +1032,7 @@ class Petshop_AV_Dropship {
 			$m = self::manifestas( array_keys( $uzsakymai ) );
 			if ( $m ) { $priedai[] = $m; }
 		}
+		if ( $partija_priedas ) { $priedai[] = $partija_priedas; }
 
 		$antraste = [
 			'Content-Type: text/html; charset=UTF-8',
@@ -985,7 +1057,10 @@ class Petshop_AV_Dropship {
 		$ok   = wp_mail( $gav, $tema, $h, $antraste, $priedai );
 
 		self::archyvuoti( $gav, $tema, $h, $priedai,
-			'Perdavimas tiekėjui: ' . $vardas . ' · ' . count( $uzsakymai ) . ' užsak.' );
+			'Perdavimas tiekėjui: ' . $vardas . ' · ' . count( $uzsakymai ) . ' užsak.' . ( $pid ? ' + partija #' . $pid . ' į AV' : '' ) );
+		if ( $ok && $pid && class_exists( 'Petshop_AV_Tiekimas' ) ) {
+			Petshop_AV_Tiekimas::uzdaryti_po_laisko( $pid, 'laiške kartu su užsakymais' );
+		}
 
 		if ( $ok ) {
 			foreach ( array_keys( $uzsakymai ) as $oid ) {
@@ -1006,6 +1081,7 @@ class Petshop_AV_Dropship {
 			'psl_sent' => $ok ? 1 : 0,
 			'psl_src'  => $src,
 			'psl_n'    => count( $uzsakymai ),
+			'psl_p'    => $pid,
 			'psl_kam'  => rawurlencode( implode( ', ', $gav ) ),
 			'psl_err'  => $ok ? '' : rawurlencode( mb_substr( self::$pasto_klaida, 0, 200 ) ),
 		], admin_url( 'admin.php' ) ) );
