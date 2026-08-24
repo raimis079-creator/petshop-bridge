@@ -678,6 +678,14 @@ class Petshop_Desk {
 				if ( $perreg ) {
 					list( $senas ) = self::siuntos_kodas( $oo );
 					if ( $perreg_n ) { $oo->update_meta_data( self::META_PAK, $perreg_n ); }
+					// Venipak pluginas užsakymą su status=sent XML'e praleidžia (dispatch.php:467) —
+					// atlaisvinam kaip jo paties „resend" (dispatch.php:221–225), seną įrašą pasidedam.
+					$vd = json_decode( (string) $oo->get_meta( 'venipak_shipping_order_data' ), true );
+					if ( is_array( $vd ) ) {
+						$oo->update_meta_data( '_ps_venipak_sena', wp_json_encode( $vd ) );
+						$vd['status'] = ''; $vd['pack_numbers'] = array();
+						$oo->update_meta_data( 'venipak_shipping_order_data', wp_json_encode( $vd ) );
+					}
 					$oo->add_order_note( sprintf( 'Darbalaukis: siunta perregistruojama su %d dėž. (sena siunta %s — nebenaudojama).',
 						$perreg_n ?: self::pakuociu( $oo ), $senas ?: '—' ), false, true );
 					$oo->save();
