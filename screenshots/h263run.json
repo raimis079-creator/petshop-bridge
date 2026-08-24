@@ -1,0 +1,45 @@
+{
+ "v": "H263A",
+ "sukurta": 3818,
+ "r": {
+  "v": "H263A",
+  "uzs": {
+   "35061": {
+    "manifest": "07267260824002",
+    "pack_numbers": [
+     "V07267E1000020",
+     "V07267E1000021"
+    ],
+    "weight": 7.5,
+    "products_count": 1,
+    "status": "sent",
+    "error_message": ""
+   },
+   "35062": {
+    "manifest": "07267260824004",
+    "pack_numbers": [
+     "V07267E1000013"
+    ],
+    "weight": 4.5,
+    "products_count": 3,
+    "status": "sent",
+    "error_message": ""
+   },
+   "35066": {
+    "manifest": "07267260824005",
+    "pack_numbers": [
+     "V07267E1000026"
+    ],
+    "weight": 18,
+    "products_count": 3,
+    "status": "sent",
+    "error_message": ""
+   }
+  },
+  "track": {
+   "V07267E1000026": "Error: Wrong pack number",
+   "V07267E1000027": "Error: Wrong pack number"
+  }
+ },
+ "pdf_put": 201
+}
