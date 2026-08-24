@@ -1,94 +1,93 @@
 {
- "v": "H259A",
- "sukurta": 3805,
- "r": {
-  "v": "H259A",
-  "hits": [
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:221: $order_data = $order->get_meta('venipak_shipping_order_data', true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:222: $venipak_shipping_order_data = json_decode($order_data, true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:223: $venipak_shipping_order_data['status'] = '';",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:224: $venipak_shipping_order_data['pack_numbers'] = [];",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:225: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:248: $pack_numbers = $result['data']['pack_numbers'];",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:249: $pack_numbers_string = implode(', ', $pack_numbers);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:250: $content = '<div class=\"venipak-shipping-pack\" style=\"display: flex; gap: 5px;\"><a style=\"font-size: 20px; display: flex; align-items: center; gap: 5px;\" clas",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:286: $venipak_shipping_order_data = json_decode( $order->get_meta( 'venipak_shipping_order_data' ), true );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:287: if ( ! $venipak_shipping_order_data ) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:288: $venipak_shipping_order_data = array();",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:291: // Already dispatched: the XML builder skips it anyway, and its pickup point",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:293: if ( isset( $venipak_shipping_order_data['status'] ) && $venipak_shipping_order_data['status'] === 'sent' ) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:308: $venipak_shipping_order_data = array_merge( array(",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:309: 'pack_numbers' => array(),",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:312: ), $venipak_shipping_order_data );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:314: $venipak_shipping_order_data['status'] = 'error';",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:315: $venipak_shipping_order_data['error_message'] = $this->missing_pickup_point_message();",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:316: $order->update_meta_data( 'venipak_shipping_order_data', json_encode( $venipak_shipping_order_data ) );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:348: $this->settings->reserve_pack_numbers( $offset );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:397: if ( stripos( $result_xml_string, 'is already in use' ) === false ) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:409: $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:410: $venipak_shipping_order_data['status'] = 'sent';",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:411: $venipak_shipping_order_data['error_message'] = '';",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:412: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:415: return array('status' => 'ok', 'data' => $venipak_shipping_order_data);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:418: $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data', true), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:419: $venipak_shipping_order_data['status'] = 'error';",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:420: $venipak_shipping_order_data['error_message'] = $transport_error ? $transport_error : strip_tags($result_xml_string);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:421: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:426: return array('status' => 'error', 'data' => $venipak_shipping_order_data['error_message']);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:462: $venipak_shipping_order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:464: if (!$venipak_shipping_order_data) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:465: $venipak_shipping_order_data = [];",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:467: if ($venipak_shipping_order_data['status'] === 'sent') { continue; };",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:647: $reserved_start = $this->settings->reserve_pack_numbers($needed_packs);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:651: $pack_numbers = [];",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:661: $packs[$i]['weight'] = max($packs[$i]['weight'], 0.1);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:664: $width = $document->createElement('width', $packs[$i]['width']);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:666: $height = $document->createElement('height', $packs[$i]['height']);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:668: $length = $document->createElement('length', $packs[$i]['length']);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:672: if ($packs[$i]['width'] > 0 && $packs[$i]['height'] > 0 && $packs[$i]['length'] > 0) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:673: $volume = $document->createElement('volume', (float)$packs[$i]['width'] * (float)$packs[$i]['length'] * (float)$packs[$i]['height']);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:677: if ($is_global || $packs[$i]['weight'] > 0) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:678: $weight = $document->createElement('weight', $packs[$i]['weight']);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:682: if ($is_global || $packs[$i]['description'] != '') {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:683: $description = $document->createElement('description', htmlspecialchars($packs[$i]['description']));",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:687: $pack_numbers[] = $pack_nr;",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:688: $total_weight += $packs[$i]['weight'];",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:708: $pack_numbers[] = $pack_nr;",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:741: $pack_numbers[] = $pack_nr;",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:746: // Update venipak_shipping_order_data",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:747: $venipak_shipping_order_data['manifest'] = $manifest_value;",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:748: $venipak_shipping_order_data['pack_numbers'] = $pack_numbers;",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:749: $venipak_shipping_order_data['weight'] = $total_weight;",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:750: $venipak_shipping_order_data['products_count'] = sizeof($order_products);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:751: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:102: foreach ( $this->get_order_pack_numbers( $post_id ) as $pack_number ) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:137: $pack_numbers = $this->get_order_pack_numbers( $order_id );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:138: if ( ! $pack_numbers ) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:147: 'pack_no' => $pack_numbers,",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:168: $venipak_shipping_order_data = json_decode( $order->get_meta( 'venipak_shipping_order_data', true ), true );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:169: $manifest = is_array( $venipak_shipping_order_data ) && ! empty( $venipak_shipping_order_data['manifest'] )",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:170: ? $venipak_shipping_order_data['manifest']",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:193: private function get_order_pack_numbers( $order_id ) {",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:199: $venipak_shipping_order_data = json_decode( $order->get_meta( 'venipak_shipping_order_data', true ), true );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:200: if ( ! is_array( $venipak_shipping_order_data ) || empty( $venipak_shipping_order_data['pack_numbers'] ) || ! is_array( $venipak_shipping_order_data['pack_numbers'] ) )",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:204: return $venipak_shipping_order_data['pack_numbers'];",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:250: $this->fail_with_message( __( 'Another plugin has already sent output, so the PDF cannot be delivered.', 'woocommerce-shopup-venipak-shipping' ) );",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:129: $get_venipak_shipping_order_data = $this->get_venipak_shipping_order_data($order);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:156: foreach($get_venipak_shipping_order_data['pack_status_text'] as $key => $pack_status_text)",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:159: <span><?php echo isset($get_venipak_shipping_order_data['date'][$key]) ? $get_venipak_shipping_order_data['date'][$key] : '';?><br><strong><?php echo isset($pack_sta",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:277: $order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:285: $order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:287: return $order_data['pack_numbers'] ? implode('<br/>', $order_data['pack_numbers']) : '';",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:293: $order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:301: $order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:309: $order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:356: $order_meta = json_decode($order->get_meta('venipak_shipping_order_data'), true);",
-   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:358: if (is_array($order_meta) && isset($order_meta['pack_numbers']) && is_array($order_meta['pack_numbers'])) {"
+ "v": "H259B",
+ "sukurta": 3808,
+ "deploy": {
+  "v": "H259B",
+  "failai": {
+   "petshop-desk.php": {
+    "gauta": 180599,
+    "sintakse": "ok",
+    "md5": "2305046b2228a7c2925829f3c51ef5f8"
+   },
+   "petshop-av-dropship.php": {
+    "gauta": 52804,
+    "sintakse": "ok",
+    "md5": "b2647c2819d1da13e4bd79060cf5eaa7"
+   }
+  }
+ },
+ "md5_ok": true,
+ "laukia": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Siunta neregistruota: #35067. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 002",
+   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
   ],
-  "meta": {
-   "venipak_pickup_point": "4139",
-   "venipak_pickup_point_data": "{\"id\":4139,\"code\":\"300561011\",\"name\":\"Venipak locker, \\u0160iauli\\u0173 Udrop KUBAS Aido g. pa\\u0161tomatas\",\"display_name\":\"\\u0160iauli\\u0173 Udrop KUBAS Aido g. pa\\u0161tomatas\",\"country\":\"LT\",\"city",
-   "venipak_shipping_order_data": "{\"manifest\":\"07267260824002\",\"pack_numbers\":[\"V07267E1000010\"],\"weight\":15,\"products_count\":1,\"status\":\"sent\",\"error_message\":\"\"}"
+  "put": 201,
+  "eiga": 3,
+  "eiga1": [
+   "1 · Siunta Venipak1 be siuntos — registruok žemiau (kitaip laiške nebus lipdukų)2 · Laiškas„Peržiūrėti laišką\" — tiksliai tas tekstas; prierašas nebūtinas3 · KamTIK man (tiekėjui NEIŠEIS — persiųsi pats)4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams → jie pereis į „Paruošta siųsti\"; kai tie"
+  ],
+  "dez": [
+   "35067:1",
+   "35061:1",
+   "35066:1",
+   "35060:2",
+   "35059:1"
+  ]
+ },
+ "dialogai": [
+  "Perregistruoti siuntą #35061 Venipak su 2 dėž.? Sena siunta lieka Venipak sistemoje nenaudojama."
+ ],
+ "perreg": {
+  "url": "/wp-admin/admin.php?page=ps-laiskai&b=laukia&pd_ok=vp_ok&pd_nr=1+%C2%B7+VF",
+  "h1": "Laiškai tiekėjams",
+  "fatal": false,
+  "notices": [
+   "Siunta neregistruota: #35067. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 002",
+   "Siunta neregistruota: #35066. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registruoti Venipak (1) → manifestas 005",
+   "ZB — laiškas nesiunčiamas. Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis), lipduką prikabinkite iš mygtuko „Lipdukas\". Pabaigoje — „Pažymėti ZB perduotais\"."
+  ],
+  "put": 201,
+  "dez": [
+   "0 lipdukai · dėžių Registruoti Venipak paštomatas: kiekviena dėžė — atskira siunta tam pač",
+   "2 lipdukai · dėžių Perregistruoti Venipak paštomatas: kiekviena dėžė — atskira siunta tam ",
+   "0 lipdukai · dėžių Registruoti Venipak",
+   "2 lipdukai · dėžių Perregistruoti Venipak",
+   "1 lipdukas · dėžių Perregistruoti Venipak paštomatas: kiekviena dėžė — atskira siunta tam "
+  ]
+ },
+ "dropship": "mygtuko nera",
+ "js": [],
+ "serveris": {
+  "v": "H259B",
+  "uzs": {
+   "35061": {
+    "pak_meta": "2",
+    "pack_numbers": [
+     "V07267E1000020",
+     "V07267E1000021"
+    ],
+    "status": "sent",
+    "sena": true,
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (VF): V07267E1000020, V07267E1000021",
+     "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+    ]
+   },
+   "35067": {
+    "pak_meta": "",
+    "pack_numbers": null,
+    "status": null,
+    "sena": false,
+    "pastabos": [
+     "Tiekimas: „Eukanuba Active Small Adult (vištiena) 3kg“ (1 vnt) įtraukta į Žalioji Banga partiją #2 — parsivežam į AV.",
+     "Mišraus užsakymo PLANAS: ZB — į AV · VF — tiesiai. Dar neįvykdyta — laukia paleidimo. Vartotojas: Rai."
+    ]
+   }
   }
  }
 }
