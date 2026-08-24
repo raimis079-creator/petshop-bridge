@@ -1,5 +1,24 @@
 <?php
 /**
+ * Petshop Desk v3.44 (H257) — Įrankių nuoroda „Išsiųsti laiškai" → „Laiškai tiekėjams"
+ * (langas turi ir „Laukia išsiuntimo", ir archyvą; senas vardas slėpė pirmąjį).
+ *
+ * Petshop Desk v3.43 (H255) — 🔴 DROPSHIP NEBEDINGSTA PO VENIPAK + IŠĖJIMAS IŠ „PARUOŠTA SIŲSTI“.
+ *
+ * KODĖL (H253 E2E testas, Raimis: „sistema neveikia“): užregistravus Venipak
+ * siuntas, VISI dropship užsakymai peršokdavo į „Paruošta siųsti“, mygtukas
+ * „Perduoti“ dingdavo, pipeline rodė „Neperduota tiekėjams 0“ — nors tiekėjui
+ * niekas neperduota. eile() tikrino „turi siuntą“ ANKSČIAU nei „liko neperduotų
+ * sandėlių“. DABAR: kol Petshop_AV_Dropship::neperduotos() netuščia — užsakymas
+ * lieka „Nauji“ su „Perduoti“, nesvarbu ar lipdukai jau registruoti.
+ *
+ * ANTRA SPRAGA: iš „Paruošta siųsti“ Venipak užsakymas NIEKADA neišeidavo —
+ * nebuvo jokio veiksmo (statuso keitimą į „Įvykdytas“ plugine išjungėm). DABAR
+ * eilėje „Paruošta siųsti“ — mygtukas „Išsiųsta“ (dialogas, be WC laiško pagal
+ * nutylėjimą; sekimo laiškas — atskiras) → statusas completed → eilė „Išsiųsti“.
+ * Grynas dropship po perdavimo: pirmas mygtukas „Išsiųsta“, lipduko nespausdinam.
+ * Sargas (siuntu-laiskai §18.3) gali užblokuoti — tada sakom tiesą: 'issiusta_blokas'.
+ *
  * Petshop Desk v3.42 (H250) — Įrankiuose nuoroda „Išsiųsti laiškai" (archyvas).
  *
  * Petshop Desk v3.41 (H249) — „KURIOJE EILĖJE?" MATOMA SĄRAŠE IR PAIEŠKOJE.
@@ -372,9 +391,29 @@ class Petshop_Desk {
 				'url' => admin_url( 'admin.php?page=ps-tiekimas&b=laukia' ), 'd' => null );
 		} elseif ( 'paruosta' === $row['eile'] ) {
 			$lp = 'lp' === self::vezejas( $o );
+			// Lipduką spausdinam tik kai siunčiam patys (yra AV eilučių).
+			// Grynas dropship čia jau PERDUOTAS tiekėjui — lipdukas išėjo laiške.
+			if ( in_array( 'av', self::saltiniai( $o ), true ) ) {
+				$out[] = array(
+					'id' => 'spausdinti', 't' => 'Spausdinti lipduką', 'url' => '', 'd' => null,
+					'wc' => $lp ? 'woo_lp_print_label' : 'shopup_venipak_shipping_labels',
+				);
+			}
+			// H255: išėjimas iš eilės — žmogus patvirtina, kad siunta išėjo.
 			$out[] = array(
-				'id' => 'spausdinti', 't' => 'Spausdinti lipduką', 'url' => '', 'd' => null,
-				'wc' => $lp ? 'woo_lp_print_label' : 'shopup_venipak_shipping_labels',
+				'id'  => 'issiusta',
+				't'   => 'Išsiųsta',
+				'url' => self::veiksmo_url( 'issiusta', $id ),
+				'd'   => array(
+					'antraste' => $antraste,
+					'tekstas'  => 'Pažymėti kaip išsiųstą? Užsakymas keliaus į „Išsiųsti“ (statusas „Įvykdytas“). Sekimo laiškas klientui — atskiras mygtukas, jis nesikeičia.',
+					'ok'       => 'Išsiųsta',
+					'opt'      => array(
+						'vardas' => 'su_laisku',
+						'tekstas'=> 'Siųsti WooCommerce laišką „Užsakymas įvykdytas“',
+						'def'    => 0,
+					),
+				),
 			);
 		}
 
@@ -776,6 +815,27 @@ class Petshop_Desk {
 			}
 		}
 
+		if ( 'issiusta' === $v ) {
+			if ( in_array( $o->get_status(), array( 'completed', 'lp-delivered', 'lp-on-the-way' ), true ) ) {
+				$zinute = 'jau_issiusta';
+			} else {
+				$su_laisku = ! empty( $_GET['su_laisku'] );
+				$o->add_order_note(
+					sprintf( 'Pažymėta išsiųsta darbalaukyje. Vartotojas: %s. WC laiškas klientui: %s.',
+						$naudotojas, $su_laisku ? 'išsiųstas' : 'NESIŲSTAS' ),
+					false, true );
+				if ( ! $su_laisku ) { self::laiskai_off(); }
+				$o->update_status( 'completed', '' );
+				if ( ! $su_laisku ) { self::laiskai_on(); }
+				$sviezes = wc_get_order( $o->get_id() );
+				if ( $sviezes && 'completed' !== $sviezes->get_status() ) {
+					$zinute = 'issiusta_blokas'; // sargas neleido — ne visos siuntos registruotos
+				} else {
+					$zinute = $su_laisku ? 'issiusta_laiskas' : 'issiusta';
+				}
+			}
+		}
+
 		/**
 		 * Mišraus užsakymo sprendimas: kiekvienam sandėliui — kelias.
 		 * „į AV“ eilutės keliauja į tiekimo lentelę (Petshop_AV_Tiekimas) ir
@@ -1044,7 +1104,11 @@ class Petshop_Desk {
 		if ( in_array( $st, self::STATUSAI['kelyje'], true ) )   { return 'kelyje'; }
 		if ( in_array( $st, self::STATUSAI['ivykdyti'], true ) ) { return 'ivykdyti'; }
 		if ( 'processing' === $st || 'on-hold' === $st ) {
-			if ( self::turi_siunta( $order ) ) { return 'paruosta'; }
+			// H255: registruota siunta NEREIŠKIA paruošta — dropship dalys, dar
+			// neperduotos tiekėjui, laiko užsakymą „Nauji“ su mygtuku „Perduoti“.
+			$ds_liko = ( 'processing' === $st && class_exists( 'Petshop_AV_Dropship' ) )
+				? Petshop_AV_Dropship::neperduotos( $order ) : array();
+			if ( self::turi_siunta( $order ) && ! $ds_liko ) { return 'paruosta'; }
 			// Mišrus be sprendimo — atskira eilė. Į rytinę partiją nepatenka (H236).
 			// Planas įrašytas, bet „į AV" dalys dar nesudėtos į partiją — irgi liekam
 			// Mišriuose, kad sprendimas ir paleidimas būtų vienoje vietoje (H242).
@@ -2046,6 +2110,10 @@ class Petshop_Desk {
 			'atsaukta'        => array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ),
 			'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas.' ),
 			'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),
+			'issiusta'        => array( 'ok', 'Užsakymas #%s pažymėtas išsiųstu — eilė „Išsiųsti“. WC laiškas klientui NEIŠSIŲSTAS.' ),
+			'issiusta_laiskas'=> array( 'ok', 'Užsakymas #%s pažymėtas išsiųstu — eilė „Išsiųsti“. Klientui išsiųstas WC laiškas „Įvykdytas“.' ),
+			'jau_issiusta'    => array( 'info', 'Užsakymas #%s jau buvo išsiųstas — niekas nepakeista.' ),
+			'issiusta_blokas' => array( 'klaida', 'Užsakymo #%s užbaigti neleido sargas — registruotos ne visos siuntos. Registruok trūkstamas ir bandyk vėl.' ),
 			'istrinta'        => array( 'ok', 'Užsakymas #%s ištrintas negrįžtamai.' ),
 			'misrus_ok'       => array( 'ok', 'Užsakymo #%s planas įrašytas: %s. Viskas tiesiai klientui — užsakymas grįžo į „Nauji", perdavimą paleisi ten.' ),
 			'misrus_cia'      => array( 'ok', 'Užsakymo #%s planas įrašytas: %s. Užsakymas liko čia — paleisk mygtukais kortelėje apačioje.' ),
@@ -2160,8 +2228,9 @@ class Petshop_Desk {
 			esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ),
 			! empty( $c['tiek_kaupiama'] ) ? '<b class="pd-rb pd-rb-k" title="kaupiamos partijos">' . (int) $c['tiek_kaupiama'] . '</b>' : '',
 			! empty( $c['tiek_uzsakyta'] ) ? '<b class="pd-rb pd-rb-u" title="užsakyta pas tiekėją — laukiam prekių">' . (int) $c['tiek_uzsakyta'] . '</b>' : '' );
-		printf( '<a class="pd-ri" href="%s"><span>Išsiųsti laiškai</span></a>',
-			esc_url( admin_url( 'admin.php?page=ps-laiskai' ) ) );
+		printf( '<a class="pd-ri" href="%s"><span>Laiškai tiekėjams</span>%s</a>',
+			esc_url( admin_url( 'admin.php?page=ps-laiskai&b=laukia' ) ),
+			! empty( $c['pipe_neperduota'] ) ? '<b class="pd-rb pd-rb-k" title="užsakymai, laukiantys laiško tiekėjui">' . (int) $c['pipe_neperduota'] . '</b>' : '' );
 		printf( '<a class="pd-ri" href="%s"><span>Perdavimas tiekėjams</span>%s</a>',
 			esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&eile=nauji&zvilgsnis=neperduota' ) ),
 			! empty( $c['pipe_neperduota'] ) ? '<b class="pd-rb pd-rb-k">' . (int) $c['pipe_neperduota'] . '</b>' : '' );
