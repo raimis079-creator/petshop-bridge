@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop AV Dropship v1.18 (H261) — AV BLOKAS: LIPDUKŲ SKAIČIUS, BE SVORIO, BENDRAS MANIFESTAS.
+ *
+ * KODĖL (Raimis, H261): laiške AV daliai nereikia adreso ir svorio, manifestas
+ * vienas su klientais, tik nurodyti kiek lipdukų. DABAR: blokas „Į AV sandėlį"
+ * be svorio/adreso; formoje „lipdukų [n]" (partijos dėžės) → Tiekimas::paruosti
+ * (registruoja n pack'ų į tiekėjo manifestą); partijos pack'ai dedami į tą patį
+ * manifesto PDF; laiško dalis — Tiekimas::laisko_dalis() (viena tiesos vieta).
+ *
  * Petshop AV Dropship v1.17 (H260) — PARTIJA Į AV TAME PAČIAME LAIŠKE.
  *
  * KODĖL (Raimis, H260): „užsakymą į AV sandėlį siųsiu tiekėjui kartu vienu
@@ -720,16 +728,12 @@ class Petshop_AV_Dropship {
 				if ( $partija ) :
 					$pp = $partija['part']; $gali = ! empty( $pp->pristatymas );
 					$pv = Petshop_AV_Tiekimas::PRISTATYMAI[ $pp->pristatymas ] ?? '';
-					if ( $gali ) {
-						$partija_html = '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:Arial;font-size:13px">';
-						foreach ( $partija['eilutes'] as $e ) { $pr = wc_get_product( $e->product_id );
-							$partija_html .= '<tr><td>' . esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ) . ' <span style="color:#666">' . esc_html( $pr ? $pr->get_sku() : '' ) . '</span></td><td align="center">' . (int) $e->qty . ' vnt.</td></tr>'; }
-						$partija_html .= '</table><p style="font-size:12px;color:#555">Pristatymas: ' . esc_html( $pv ) . ( $partija['svoris'] > 0 ? ' · ' . esc_html( Petshop_AV_Tiekimas::kg( $partija['svoris'] ) ) : '' ) . ( $pp->venipak_pack ? ' · siunta ' . esc_html( $pp->venipak_pack ) : ' · siunta bus registruota siunčiant' ) . '</p>';
-					}
+					if ( $gali ) { $partija_html = Petshop_AV_Tiekimas::laisko_dalis( $pp, $partija['eilutes'], (string) $pp->venipak_pack ); }
+					$pp_dezes = max( 1, (int) ( $pp->dezes ?? 1 ) );
 				?>
 				<div class="ps-av-blokas <?php echo $gali ? '' : 'ps-av-ne'; ?>">
 					<div class="ps-av-h"><b>Į AV sandėlį — partija #<?php echo (int) $pp->id; ?></b>
-						<span><?php echo count( $partija['eilutes'] ); ?> poz. · <?php echo (int) array_sum( wp_list_pluck( $partija['eilutes'], 'qty' ) ); ?> vnt.<?php if ( $partija['svoris'] > 0 ) : ?> · <?php echo esc_html( Petshop_AV_Tiekimas::kg( $partija['svoris'] ) ); ?><?php endif; ?></span></div>
+						<span><?php echo count( $partija['eilutes'] ); ?> poz. · <?php echo (int) array_sum( wp_list_pluck( $partija['eilutes'], 'qty' ) ); ?> vnt.</span></div>
 					<table class="widefat striped ps-tbl"><tbody>
 					<?php foreach ( $partija['eilutes'] as $e ) : $pr = wc_get_product( $e->product_id ); ?>
 						<tr><td><?php echo esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ); ?> <span class="ps-kodas"><?php echo esc_html( $pr ? $pr->get_sku() : '' ); ?></span></td>
@@ -738,7 +742,9 @@ class Petshop_AV_Dropship {
 					</tbody></table>
 					<?php if ( $gali ) : ?>
 						<p class="ps-av-p">Pristatymas: <b><?php echo esc_html( $pv ); ?></b>
-							<?php echo $pp->venipak_pack ? '· siunta ' . esc_html( $pp->venipak_pack ) : '· Venipak siunta bus registruota siunčiant laišką'; ?>
+							<?php if ( 'tiekejas' === $pp->pristatymas ) : ?>· lipdukų nereikia
+							<?php elseif ( $pp->venipak_pack ) : ?>· siunta registruota: <?php echo esc_html( str_replace( ',', ', ', $pp->venipak_pack ) ); ?> (<?php echo (int) $pp_dezes; ?> lipduk<?php echo 1 === $pp_dezes ? 'as' : 'ai'; ?>, tame pačiame manifeste)
+							<?php else : ?>· siuntą registruos siunčiant laišką, į tą patį manifestą kaip klientų siuntos; lipdukų skaičių nurodyk prie mygtuko „Siųsti"<?php endif; ?>
 							· <a href="<?php echo esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ); ?>">keisti Tiekime</a></p>
 					<?php else : ?>
 						<div class="notice notice-warning inline"><p><b>Nepasirinktas pristatymo būdas</b> — į laišką neįtraukiama.
@@ -806,7 +812,9 @@ class Petshop_AV_Dropship {
 						<button class="button button-primary">Siųsti <?php echo esc_html( $vardas ); ?> (<?php echo esc_html( $pastas ); ?>)</button>
 					<?php endif; ?>
 					<?php if ( $partija && $gali ) : ?>
-					<label><input type="checkbox" name="su_partija" value="<?php echo (int) $pp->id; ?>" checked> <b>+ partija #<?php echo (int) $pp->id; ?> į AV</b> (užsidarys išsiuntus)</label>
+					<label><input type="checkbox" name="su_partija" value="<?php echo (int) $pp->id; ?>" checked> <b>+ partija #<?php echo (int) $pp->id; ?> į AV</b>
+						<?php if ( 'tiekejas' !== $pp->pristatymas && ! $pp->venipak_pack ) : ?>· lipdukų <input type="number" name="partija_dezes" min="1" max="20" value="<?php echo (int) $pp_dezes; ?>" style="width:52px"><?php endif; ?>
+						(užsidarys išsiuntus)</label>
 					<?php endif; ?>
 					<label><input type="checkbox" name="su_lipdukais" value="1" checked> pridėti lipdukus</label>
 					<label><input type="checkbox" name="su_manifestu" value="1" checked> pridėti manifestą</label>
@@ -963,7 +971,7 @@ class Petshop_AV_Dropship {
 			$h .= '<p style="margin:14px 0">' . nl2br( esc_html( $pastaba ) ) . '</p>';
 		}
 		if ( '' !== $partija_html ) { // H260: prekės į AV sandėlį — tame pačiame laiške
-			$h .= '<h3 style="margin:18px 0 6px;font-family:Arial;font-size:14px">Prekės į mūsų sandėlį (UAB Avesa)</h3>' . $partija_html;
+			$h .= $partija_html;
 		}
 		$h .= '<p>Linkėjimai,<br>UAB Avesa<br>terra@petshop.lt</p>';
 		return $h;
@@ -1007,15 +1015,16 @@ class Petshop_AV_Dropship {
 
 		// H260: Tiekimo partija tame pačiame laiške — paruošiam (Venipak, lipdukas), uždarom tik po sėkmės.
 		$pid = isset( $_POST['su_partija'] ) ? absint( $_POST['su_partija'] ) : 0;
-		$partija_html = ''; $partija_priedas = '';
+		$partija_html = ''; $partija_priedas = ''; $partija_packs = array();
 		if ( $pid && class_exists( 'Petshop_AV_Tiekimas' ) ) {
-			$pr = Petshop_AV_Tiekimas::paruosti( $pid );
+			$pr = Petshop_AV_Tiekimas::paruosti( $pid, isset( $_POST['partija_dezes'] ) ? absint( $_POST['partija_dezes'] ) : 0 );
 			if ( empty( $pr['ok'] ) ) {
 				wp_safe_redirect( add_query_arg( [ 'page' => 'ps-laiskai', 'b' => 'laukia', 'psl_sent' => 3, 'psl_src' => $src, 'psl_n' => $pid,
 					'psl_err' => rawurlencode( mb_substr( (string) $pr['klaida'], 0, 200 ) ) ], admin_url( 'admin.php' ) ) );
 				exit;
 			}
 			$partija_html = $pr['html']; $partija_priedas = $pr['priedas'];
+			$partija_packs = array_filter( explode( ',', (string) $pr['pack'] ) );
 		}
 		$h = self::laisko_html( $src, $uzsakymai, $pastaba, $partija_html );
 		$data = date_i18n( 'Y-m-d' );
@@ -1029,7 +1038,7 @@ class Petshop_AV_Dropship {
 			}
 		}
 		if ( ! empty( $_POST['su_manifestu'] ) ) {
-			$m = self::manifestas( array_keys( $uzsakymai ) );
+			$m = self::manifestas( array_keys( $uzsakymai ), $partija_packs ); // H261: partijos pack'ai tame pačiame manifeste
 			if ( $m ) { $priedai[] = $m; }
 		}
 		if ( $partija_priedas ) { $priedai[] = $partija_priedas; }
@@ -1117,8 +1126,8 @@ class Petshop_AV_Dropship {
 	}
 
 	/** Manifestas partijai. */
-	protected static function manifestas( array $order_ids ) {
-		$packs = [];
+	protected static function manifestas( array $order_ids, array $papildomi = array() ) {
+		$packs = array_values( $papildomi );
 		foreach ( $order_ids as $id ) {
 			$o = wc_get_order( $id );
 			if ( ! $o ) { continue; }
