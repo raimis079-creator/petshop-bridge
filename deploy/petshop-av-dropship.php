@@ -340,11 +340,11 @@ class Petshop_AV_Dropship {
 			$ss  = sanitize_key( $_GET['psl_src'] ?? '' );
 			$sv  = $t2[ $ss ][0] ?? strtoupper( $ss );
 			$sn  = absint( $_GET['psl_n'] ?? 0 );
-			$sk  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['psl_kam'] ?? '' ) ) );
+			$skam = sanitize_text_field( rawurldecode( wp_unslash( $_GET['psl_kam'] ?? '' ) ) );
 			$se  = sanitize_text_field( rawurldecode( wp_unslash( $_GET['psl_err'] ?? '' ) ) );
 			if ( '1' === (string) $_GET['psl_sent'] ) {
 				printf( '<div class="notice notice-success"><p><b>Išsiųsta:</b> %s — %d užsak. vienu laišku, gavėjai: %s. Užsakymai pažymėti perduotais.</p></div>',
-					esc_html( $sv ), $sn, esc_html( $sk ) );
+					esc_html( $sv ), $sn, esc_html( $skam ) );
 			} elseif ( '2' === (string) $_GET['psl_sent'] ) {
 				printf( '<div class="notice notice-warning"><p>%s neturi neperduotų užsakymų — nieko nesiųsta.</p></div>', esc_html( $sv ) );
 			} else {
