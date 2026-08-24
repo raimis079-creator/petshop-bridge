@@ -1,0 +1,112 @@
+{
+ "v": "H256A",
+ "sukurta": 3800,
+ "recon": {
+  "v": "H256A",
+  "failai": {
+   "/home/gyvunai2/backups/ps-backup.php": {
+    "yra": true,
+    "dydis": 19239,
+    "md5_pries": "40d9a959e3434314a95500b9570e9775",
+    "old_n": 1,
+    "eilutes_domains": [
+     "47: const PS_WPROOT  = '/home/gyvunai2/domains/avesa.lt/public_html/dev';"
+    ]
+   },
+   "/home/gyvunai2/backups/ps-backup-watch.php": {
+    "yra": true,
+    "dydis": 4426,
+    "md5_pries": "5bba1fc9a16045e17b689a0d381bda5b",
+    "old_n": 0,
+    "eilutes_domains": []
+   }
+  },
+  "bukle": {
+   "/home/gyvunai2/backups/.ps-backup-state.json": {
+    "last_result": "FAIL",
+    "last_run": "2026-08-24T01:00:01+00:00",
+    "error": "nerastas wp-config.php: /home/gyvunai2/domains/avesa.lt/public_html/dev"
+   },
+   "/home/gyvunai2/backups/.ps-watch-state.json": {
+    "last_check": "2026-08-24T07:00:01+00:00",
+    "verdict": "PROBLEMA",
+    "problems": [
+     "Paskutinis bandymas: FAIL — nerastas wp-config.php: /home/gyvunai2/domains/avesa.lt/public_html/dev"
+    ],
+    "backup": {
+     "last_run": "2026-08-24T01:00:01+00:00",
+     "result": "FAIL",
+     "age_h": 6
+    }
+   }
+  },
+  "stub": {
+   "/home/gyvunai2/domains/avesa.lt/public_html/dev/backup-run.php": "<?php require '/home/gyvunai2/domains/petshop.lt/public_html/backup-run.php';\n",
+   "/home/gyvunai2/domains/avesa.lt/public_html/dev/watch-run.php": "<?php require '/home/gyvunai2/domains/petshop.lt/public_html/watch-run.php';\n",
+   "/home/gyvunai2/domains/petshop.lt/public_html/backup-run.php": "<?php\n/**\n * backup-run.php — paleidiklis DirectAdmin cron'ui (per URL).\n * Jokios logikos: tik perduoda vykdymą skriptui už public_html ribų.\n */\nrequire '/home/gyvunai2/backups/ps-backup.php';\n",
+   "/home/gyvunai2/domains/petshop.lt/public_html/watch-run.php": "<?php\n/**\n * watch-run.php — paleidiklis backup sargui (DirectAdmin cron per URL).\n */\nrequire '/home/gyvunai2/backups/ps-backup-watch.php';\n",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-config.php": "<?php\n/* R194 dev veidrodis — laikinas iki DNS perjungimo, po jo istrinti */\nif ( isset( $_SERVER['HTTP_HOST'] ) && strtolower( $_SERVER['HTTP_HOST'] ) === 'dev.avesa.lt' ) {\n\tdefine( 'WP_HOME', 'ht"
+  },
+  "backups_dir": [
+   "ps-backup-watch.php 0MB 08-04 08:08",
+   "ps-backup.php 0MB 08-04 06:46",
+   "ps-backup.php.bak_20260804-064640 0MB 08-04 06:46"
+  ]
+ },
+ "apply": {
+  "v": "H256A",
+  "failai": {
+   "/home/gyvunai2/backups/ps-backup.php": {
+    "yra": true,
+    "dydis": 19239,
+    "md5_pries": "40d9a959e3434314a95500b9570e9775",
+    "old_n": 1,
+    "eilutes_domains": [
+     "47: const PS_WPROOT  = '/home/gyvunai2/domains/avesa.lt/public_html/dev';"
+    ],
+    "sintakse": "ok",
+    "md5_po": "fc3df6f26be800054c43cf6242ff7fc4",
+    "old_n_po": 0
+   },
+   "/home/gyvunai2/backups/ps-backup-watch.php": {
+    "yra": true,
+    "dydis": 4426,
+    "md5_pries": "5bba1fc9a16045e17b689a0d381bda5b",
+    "old_n": 0,
+    "eilutes_domains": []
+   }
+  },
+  "bukle": {
+   "/home/gyvunai2/backups/.ps-backup-state.json": {
+    "last_result": "FAIL",
+    "last_run": "2026-08-24T01:00:01+00:00",
+    "error": "nerastas wp-config.php: /home/gyvunai2/domains/avesa.lt/public_html/dev"
+   },
+   "/home/gyvunai2/backups/.ps-watch-state.json": {
+    "last_check": "2026-08-24T07:00:01+00:00",
+    "verdict": "PROBLEMA",
+    "problems": [
+     "Paskutinis bandymas: FAIL — nerastas wp-config.php: /home/gyvunai2/domains/avesa.lt/public_html/dev"
+    ],
+    "backup": {
+     "last_run": "2026-08-24T01:00:01+00:00",
+     "result": "FAIL",
+     "age_h": 6
+    }
+   }
+  },
+  "stub": {
+   "/home/gyvunai2/domains/avesa.lt/public_html/dev/backup-run.php": "<?php require '/home/gyvunai2/domains/petshop.lt/public_html/backup-run.php';\n",
+   "/home/gyvunai2/domains/avesa.lt/public_html/dev/watch-run.php": "<?php require '/home/gyvunai2/domains/petshop.lt/public_html/watch-run.php';\n",
+   "/home/gyvunai2/domains/petshop.lt/public_html/backup-run.php": "<?php\n/**\n * backup-run.php — paleidiklis DirectAdmin cron'ui (per URL).\n * Jokios logikos: tik perduoda vykdymą skriptui už public_html ribų.\n */\nrequire '/home/gyvunai2/backups/ps-backup.php';\n",
+   "/home/gyvunai2/domains/petshop.lt/public_html/watch-run.php": "<?php\n/**\n * watch-run.php — paleidiklis backup sargui (DirectAdmin cron per URL).\n */\nrequire '/home/gyvunai2/backups/ps-backup-watch.php';\n",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-config.php": "<?php\n/* R194 dev veidrodis — laikinas iki DNS perjungimo, po jo istrinti */\nif ( isset( $_SERVER['HTTP_HOST'] ) && strtolower( $_SERVER['HTTP_HOST'] ) === 'dev.avesa.lt' ) {\n\tdefine( 'WP_HOME', 'ht"
+  },
+  "backups_dir": [
+   "ps-backup-watch.php 0MB 08-04 08:08",
+   "ps-backup.php 0MB 08-24 17:27",
+   "ps-backup.php.bak_20260804-064640 0MB 08-04 06:46",
+   "ps-backup.php.bak_h256 0MB 08-24 17:27"
+  ]
+ }
+}
