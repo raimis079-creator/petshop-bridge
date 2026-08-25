@@ -1,0 +1,905 @@
+{
+ "v": "R013D",
+ "ts": "2026-08-25T21:20:05+00:00",
+ "core": {
+  "petshop-core.php": {
+   "eil": 371,
+   "v": "0.15.0",
+   "in": [
+    "cron_schedules",
+    "plugins_loaded",
+    "woocommerce_init"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/refill.php": {
+   "eil": 65,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/cart-abandoned-2.php": {
+   "eil": 67,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/order-paid.php": {
+   "eil": 40,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/cart-abandoned-1.php": {
+   "eil": 95,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/post-purchase-2d.php": {
+   "eil": 97,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/consent-changed.php": {
+   "eil": 67,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/dunning-1.php": {
+   "eil": 55,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "templates/emails/founding.php": {
+   "eil": 56,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/tpl-myaccount-my-address.php": {
+   "eil": 90,
+   "v": "",
+   "in": [],
+   "out": [
+    "woocommerce_my_account_get_addresses",
+    "woocommerce_my_account_my_address_description"
+   ],
+   "lent": []
+  },
+  "includes/class-feeding-service.php": {
+   "eil": 720,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-welcome-modal.php": {
+   "eil": 128,
+   "v": "1.1",
+   "in": [
+    "wp_footer"
+   ],
+   "out": [
+    "petshop_welcome_modal_show"
+   ],
+   "lent": []
+  },
+  "includes/class-cart-recovery.php": {
+   "eil": 334,
+   "v": "",
+   "in": [
+    "init",
+    "template_redirect",
+    "petshop_email_prepare_context"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-consent-sync.php": {
+   "eil": 240,
+   "v": "1.58",
+   "in": [
+    "woocommerce_checkout_update_customer",
+    "petshop_consent_changed"
+   ],
+   "out": [
+    "petshop_contact_update",
+    "petshop_consent_changed"
+   ],
+   "lent": []
+  },
+  "includes/class-email-dispatch.php": {
+   "eil": 544,
+   "v": "",
+   "in": [
+    "ps_email_dispatch_cron"
+   ],
+   "out": [
+    "petshop_email_flows",
+    "petshop_email_eligibility",
+    "petshop_email_is_suppressed",
+    "petshop_email_transactional_only",
+    "petshop_email_prepare_context",
+    "petshop_email_provider",
+    "petshop_contact_used",
+    "petshop_email_template_path"
+   ],
+   "lent": [
+    "ps_email_jobs"
+   ]
+  },
+  "includes/class-pet-notes.php": {
+   "eil": 280,
+   "v": "",
+   "in": [
+    "rest_api_init"
+   ],
+   "out": [],
+   "lent": [
+    "ps_pet_notes"
+   ]
+  },
+  "includes/class-account-company.php": {
+   "eil": 173,
+   "v": "",
+   "in": [
+    "woocommerce_billing_fields",
+    "woocommerce_after_save_address_validation",
+    "woocommerce_before_edit_account_address_form",
+    "woocommerce_customer_save_address"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-feeding-calculator.php": {
+   "eil": 281,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-newsletter-footer.php": {
+   "eil": 59,
+   "v": "1.0",
+   "in": [
+    "flatsome_before_footer"
+   ],
+   "out": [
+    "petshop_newsletter_footer_show"
+   ],
+   "lent": []
+  },
+  "includes/class-consent-log.php": {
+   "eil": 154,
+   "v": "1.58",
+   "in": [],
+   "out": [],
+   "lent": [
+    "ps_consent_log"
+   ]
+  },
+  "includes/class-email-suppression.php": {
+   "eil": 351,
+   "v": "",
+   "in": [
+    "ps_suppression_daily_reconcile"
+   ],
+   "out": [],
+   "lent": [
+    "ps_email_suppression",
+    "ps_webhook_log"
+   ]
+  },
+  "includes/class-feeding-ui.php": {
+   "eil": 181,
+   "v": "",
+   "in": [
+    "rest_api_init",
+    "woocommerce_account_augintinis_endpoint"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-pet-ui.php": {
+   "eil": 191,
+   "v": "",
+   "in": [
+    "init",
+    "woocommerce_account_menu_items",
+    "body_class",
+    "woocommerce_account_",
+    "wp_enqueue_scripts"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-condition-mapper.php": {
+   "eil": 100,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-weight-filter.php": {
+   "eil": 224,
+   "v": "",
+   "in": [
+    "pre_get_posts",
+    "woocommerce_before_shop_loop",
+    "woocommerce_after_shop_loop_item_title"
+   ],
+   "out": [],
+   "lent": [
+    "ps_feeding_map",
+    "ps_feeding_tables",
+    "ps_feeding_rows"
+   ]
+  },
+  "includes/class-pet-dashboard.php": {
+   "eil": 577,
+   "v": "1.1",
+   "in": [
+    "rest_api_init"
+   ],
+   "out": [],
+   "lent": [
+    "ps_refill_tracking",
+    "ps_reminders",
+    "ps_pet_products"
+   ]
+  },
+  "includes/class-cart-abandonment.php": {
+   "eil": 434,
+   "v": "",
+   "in": [
+    "woocommerce_checkout_order_processed",
+    "woocommerce_store_api_checkout_order_processed",
+    "ps_cart_abandon_check"
+   ],
+   "out": [],
+   "lent": [
+    "ps_email_jobs"
+   ]
+  },
+  "includes/class-magic-login.php": {
+   "eil": 626,
+   "v": "",
+   "in": [
+    "rest_api_init",
+    "init"
+   ],
+   "out": [
+    "wp_login"
+   ],
+   "lent": []
+  },
+  "includes/class-action-tokens.php": {
+   "eil": 372,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": [
+    "ps_action_tokens"
+   ]
+  },
+  "includes/class-account-dashboard.php": {
+   "eil": 252,
+   "v": "3.3",
+   "in": [
+    "woocommerce_locate_template",
+    "woocommerce_account_dashboard",
+    "woocommerce_account_menu_items",
+    "woocommerce_my_account_my_orders_actions",
+    "woocommerce_get_endpoint_url",
+    "template_redirect",
+    "wp_head"
+   ],
+   "out": [
+    "woocommerce_valid_order_statuses_for_order_again"
+   ],
+   "lent": [
+    "ps_pets"
+   ]
+  },
+  "includes/class-event-registry.php": {
+   "eil": 165,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-product-calc.php": {
+   "eil": 269,
+   "v": "",
+   "in": [
+    "woocommerce_single_product_summary",
+    "wp_enqueue_scripts"
+   ],
+   "out": [],
+   "lent": [
+    "ps_feeding_map",
+    "ps_pets"
+   ]
+  },
+  "includes/class-pet-drafts.php": {
+   "eil": 628,
+   "v": "",
+   "in": [
+    "rest_api_init"
+   ],
+   "out": [],
+   "lent": [
+    "ps_pet_profile_drafts",
+    "ps_pets"
+   ]
+  },
+  "includes/class-pet-content.php": {
+   "eil": 265,
+   "v": "",
+   "in": [
+    "rest_api_init"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-unsubscribe.php": {
+   "eil": 140,
+   "v": "",
+   "in": [
+    "init",
+    "template_redirect"
+   ],
+   "out": [
+    "petshop_consent_changed"
+   ],
+   "lent": []
+  },
+  "includes/class-pet-profile.php": {
+   "eil": 1176,
+   "v": "",
+   "in": [
+    "rest_api_init",
+    "posts_where"
+   ],
+   "out": [],
+   "lent": [
+    "ps_pets",
+    "ps_reminders",
+    "ps_feeding_map",
+    "ps_feeding_rows"
+   ]
+  },
+  "includes/class-feeding-package-provider.php": {
+   "eil": 16,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-email-layout.php": {
+   "eil": 158,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/interface-message-provider.php": {
+   "eil": 105,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-event-emitters.php": {
+   "eil": 318,
+   "v": "",
+   "in": [
+    "woocommerce_payment_complete",
+    "woocommerce_order_status_processing",
+    "woocommerce_order_status_completed",
+    "woocommerce_update_order"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-reminders.php": {
+   "eil": 291,
+   "v": "",
+   "in": [
+    "rest_api_init",
+    "ps_reminders_daily_check"
+   ],
+   "out": [],
+   "lent": [
+    "ps_reminders"
+   ]
+  },
+  "includes/class-feeding-repository.php": {
+   "eil": 183,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-event-log.php": {
+   "eil": 291,
+   "v": "0.2.0",
+   "in": [],
+   "out": [],
+   "lent": [
+    "ps_event_log"
+   ]
+  },
+  "includes/class-pet-photo.php": {
+   "eil": 277,
+   "v": "",
+   "in": [
+    "rest_api_init",
+    "init"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-post-purchase.php": {
+   "eil": 183,
+   "v": "",
+   "in": [
+    "woocommerce_order_status_completed",
+    "ps_post_purchase_check"
+   ],
+   "out": [],
+   "lent": [
+    "ps_email_jobs",
+    "wc_orders_meta"
+   ]
+  },
+  "includes/class-plan-attribution.php": {
+   "eil": 173,
+   "v": "",
+   "in": [
+    "init",
+    "woocommerce_add_cart_item_data",
+    "woocommerce_checkout_create_order_line_item",
+    "woocommerce_checkout_order_processed",
+    "woocommerce_store_api_checkout_order_processed"
+   ],
+   "out": [],
+   "lent": [
+    "ps_plan_events"
+   ]
+  },
+  "includes/class-contact-policy.php": {
+   "eil": 207,
+   "v": "",
+   "in": [
+    "petshop_consent_changed",
+    "petshop_contact_used"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-mixed-feeding-estimator.php": {
+   "eil": 148,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-refill-feedback.php": {
+   "eil": 333,
+   "v": "",
+   "in": [
+    "init",
+    "template_redirect",
+    "petshop_email_prepare_context"
+   ],
+   "out": [],
+   "lent": [
+    "ps_refill_tracking"
+   ]
+  },
+  "includes/tpl-myaccount-dashboard.php": {
+   "eil": 22,
+   "v": "",
+   "in": [],
+   "out": [
+    "woocommerce_account_dashboard"
+   ],
+   "lent": []
+  },
+  "includes/class-feeding-package-resolver.php": {
+   "eil": 50,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-admin-reports.php": {
+   "eil": 110,
+   "v": "",
+   "in": [
+    "admin_menu"
+   ],
+   "out": [],
+   "lent": []
+  },
+  "includes/class-retry-queue.php": {
+   "eil": 257,
+   "v": "",
+   "in": [],
+   "out": [
+    "petshop_get_message_provider"
+   ],
+   "lent": []
+  },
+  "includes/class-newsletter.php": {
+   "eil": 203,
+   "v": "1.1",
+   "in": [
+    "rest_api_init",
+    "wp_enqueue_scripts"
+   ],
+   "out": [
+    "petshop_newsletter_force_assets",
+    "petshop_newsletter_subscribed"
+   ],
+   "lent": []
+  },
+  "includes/class-shipments.php": {
+   "eil": 208,
+   "v": "",
+   "in": [],
+   "out": [],
+   "lent": [
+    "ps_shipments"
+   ]
+  },
+  "includes/class-account-avatar.php": {
+   "eil": 93,
+   "v": "",
+   "in": [
+    "get_avatar"
+   ],
+   "out": [],
+   "lent": [
+    "ps_pets"
+   ]
+  },
+  "includes/class-refill-engine.php": {
+   "eil": 494,
+   "v": "",
+   "in": [
+    "woocommerce_payment_complete",
+    "woocommerce_order_status_processing",
+    "woocommerce_order_status_completed",
+    "ps_refill_daily_check",
+    "petshop_email_eligibility"
+   ],
+   "out": [],
+   "lent": [
+    "ps_refill_tracking"
+   ]
+  },
+  "includes/class-cart-tracker.php": {
+   "eil": 317,
+   "v": "",
+   "in": [
+    "woocommerce_add_to_cart",
+    "woocommerce_cart_item_removed",
+    "woocommerce_cart_item_restored",
+    "woocommerce_after_cart_item_quantity_update",
+    "woocommerce_cart_emptied",
+    "woocommerce_checkout_update_order_review"
+   ],
+   "out": [],
+   "lent": [
+    "ps_carts"
+   ]
+  },
+  "includes/class-pet-products.php": {
+   "eil": 268,
+   "v": "",
+   "in": [
+    "rest_api_init"
+   ],
+   "out": [],
+   "lent": [
+    "ps_pet_products"
+   ]
+  }
+ },
+ "istraukos": {
+  "desk 660-800": [
+   "660: \t\t\t\tif ( ! isset( self::MANIFESTAI[ $s ] ) ) { $s = 'av'; }",
+   "661: \t\t\t\t$grupes[ $s ][] = $oid;",
+   "662: \t\t\t}",
+   "663: \t\t\tif ( ! $grupes ) {",
+   "664: \t\t\t\twp_safe_redirect( add_query_arg( array(",
+   "665: \t\t\t\t\t'pd_ok' => 'vp_nieko',",
+   "666: \t\t\t\t\t'pd_nr' => rawurlencode( $praleisti ? implode( ', ', $praleisti ) : 'nepažymėta tinkamų' ),",
+   "667: \t\t\t\t), $atgal ) );",
+   "668: \t\t\t\texit;",
+   "669: \t\t\t}",
+   "670: \t\t\t$ok = true; $klaidos = array(); $suvestine = array();",
+   "671: \t\t\tforeach ( $grupes as $s => $gids ) {",
+   "672: \t\t\t\t$kodas = self::MANIFESTAI[ $s ];",
+   "673: \t\t\t\t$daugiadezes = array(); $paprasti = array();",
+   "674: \t\t\t\tforeach ( $gids as $oid ) {",
+   "675: \t\t\t\t\t$oo = wc_get_order( $oid );",
+   "676: \t\t\t\t\tif ( $oo && self::reikia_pakuociu( $oo ) && self::pakuociu( $oo ) > 1 ) { $daugiadezes[] = $oid; }",
+   "677: \t\t\t\t\telse { $paprasti[] = $oid; }",
+   "678: \t\t\t\t}",
+   "679: \t\t\t\t$g_ok = true;",
+   "680: \t\t\t\tif ( $paprasti ) {",
+   "681: \t\t\t\t\t$rez = self::venipak_registruoti( $paprasti, $kodas );",
+   "682: \t\t\t\t\tif ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $g_ok = false; $klaidos[] = mb_strtoupper( $s ) . ': ' . ( $rez['data'] ?? '?' ); }",
+   "683: \t\t\t\t}",
+   "684: \t\t\t\tforeach ( $daugiadezes as $oid ) {",
+   "685: \t\t\t\t\t$rez = self::venipak_registruoti( array( $oid ), $kodas );",
+   "686: \t\t\t\t\tif ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $g_ok = false; $klaidos[] = '#' . $oid . ': ' . ( $rez['data'] ?? '?' ); }",
+   "687: \t\t\t\t}",
+   "688: \t\t\t\tforeach ( $gids as $oid ) {",
+   "689: \t\t\t\t\t$oo = wc_get_order( $oid );",
+   "690: \t\t\t\t\tif ( ! $oo ) { continue; }",
+   "691: \t\t\t\t\t$oo->add_order_note( sprintf( 'Venipak registracija darbalaukyje (%s, manifestas %s): %s',",
+   "692: \t\t\t\t\t\tmb_strtoupper( $s ), $kodas, $g_ok ? 'sėkminga' : 'KLAIDA' ), false, true );",
+   "693: \t\t\t\t\tif ( $g_ok && class_exists( 'Petshop_Siuntos' ) ) {",
+   "694: \t\t\t\t\t\tPetshop_Siuntos::prideti_is_plugino( $oid, $s, $kodas );",
+   "695: \t\t\t\t\t}",
+   "696: \t\t\t\t}",
+   "697: \t\t\t\tif ( $g_ok ) { $suvestine[] = mb_strtoupper( $s ) . ' ' . count( $gids ); }",
+   "698: \t\t\t\telse { $ok = false; }",
+   "699: \t\t\t}",
+   "700: \t\t\twp_safe_redirect( add_query_arg( array(",
+   "701: \t\t\t\t'pd_ok'  => $ok ? 'vp_ok' : 'vp_klaida',",
+   "702: \t\t\t\t'pd_nr'  => rawurlencode( ( $suvestine ? implode( ', ', $suvestine ) : implode( ' · ', $klaidos ) )",
+   "703: \t\t\t\t\t. ( $klaidos && $ok === false && $suvestine ? ' · klaidos: ' . implode( ' · ', $klaidos ) : '' )",
+   "704: \t\t\t\t\t. ( $praleisti ? ' · praleista: ' . implode( ', ', $praleisti ) : '' ) ),",
+   "705: \t\t\t), $atgal ) );",
+   "706: \t\t\texit;",
+   "707: \t\t}",
+   "708: ",
+   "709: \t\tif ( 'vp_reg' === $v && $ids ) {",
+   "710: \t\t\t$sandelis = isset( $_GET['sandelis'] ) ? sanitize_key( wp_unslash( $_GET['sandelis'] ) ) : 'av';",
+   "711: \t\t\t$kodas    = isset( self::MANIFESTAI[ $sandelis ] ) ? self::MANIFESTAI[ $sandelis ] : '001';",
+   "712: ",
+   "713: \t\t\t// SAUGIKLIS (H221): registruojam TIK tuos, kurie dar neturi siuntos kodo",
+   "714: \t\t\t// ir kuriems netrūksta paštomato — kitaip pakartotinis paspaudimas",
+   "715: \t\t\t// siunčia dublikatus ir visas grupinis XML lūžta „be atsakymo\".",
+   "716: \t\t\t$praleisti = array();",
+   "717: \t\t\t// H258: perregistravimas su kitu dėžių skaičiumi (tik aiškiems ids, iš perdavimo lango).",
+   "718: \t\t\t$perreg = ! empty( $_GET['perreg'] ) && ! empty( $_GET['ids'] );",
+   "719: \t\t\t$perreg_n = isset( $_GET['n'] ) ? max( 1, min( 20, absint( $_GET['n'] ) ) ) : 0;",
+   "720: \t\t\t$ids = array_values( array_filter( $ids, function ( $oid ) use ( &$praleisti, $perreg, $perreg_n ) {",
+   "721: \t\t\t\t$oo = wc_get_order( $oid );",
+   "722: \t\t\t\tif ( ! $oo ) { return false; }",
+   "723: \t\t\t\tif ( $perreg ) {",
+   "724: \t\t\t\t\tlist( $senas ) = self::siuntos_kodas( $oo );",
+   "725: \t\t\t\t\tif ( $perreg_n ) { $oo->update_meta_data( self::META_PAK, $perreg_n ); }",
+   "726: \t\t\t\t\t// Venipak pluginas užsakymą su status=sent XML'e praleidžia (dispatch.php:467) —",
+   "727: \t\t\t\t\t// atlaisvinam kaip jo paties „resend\" (dispatch.php:221–225), seną įrašą pasidedam.",
+   "728: \t\t\t\t\t$vd = json_decode( (string) $oo->get_meta( 'venipak_shipping_order_data' ), true );",
+   "729: \t\t\t\t\tif ( is_array( $vd ) ) {",
+   "730: \t\t\t\t\t\t$oo->update_meta_data( '_ps_venipak_sena', wp_json_encode( $vd ) );",
+   "731: \t\t\t\t\t\t$vd['status'] = ''; $vd['pack_numbers'] = array();",
+   "732: \t\t\t\t\t\t$oo->update_meta_data( 'venipak_shipping_order_data', wp_json_encode( $vd ) );",
+   "733: \t\t\t\t\t}",
+   "734: \t\t\t\t\t$oo->add_order_note( sprintf( 'Darbalaukis: siunta perregistruojama su %d dėž. (sena siunta %s — nebenaudojama).',",
+   "735: \t\t\t\t\t\t$perreg_n ?: self::pakuociu( $oo ), $senas ?: '—' ), false, true );",
+   "736: \t\t\t\t\t$oo->save();",
+   "737: \t\t\t\t\treturn true;",
+   "738: \t\t\t\t}",
+   "739: \t\t\t\tif ( self::turi_siunta( $oo ) ) { $praleisti[] = '#' . $oo->get_order_number() . ' jau registruotas'; return false; }",
+   "740: \t\t\t\tif ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {",
+   "741: \t\t\t\t\t$praleisti[] = '#' . $oo->get_order_number() . ' be paštomato'; return false;",
+   "742: \t\t\t\t}",
+   "743: \t\t\t\treturn true;",
+   "744: \t\t\t} ) );",
+   "745: \t\t\tif ( ! $ids ) {",
+   "746: \t\t\t\twp_safe_redirect( add_query_arg( array(",
+   "747: \t\t\t\t\t'pd_ok' => 'vp_nieko',",
+   "748: \t\t\t\t\t'pd_nr' => rawurlencode( implode( ', ', $praleisti ) ),",
+   "749: \t\t\t\t), $atgal ) );",
+   "750: \t\t\t\texit;",
+   "751: \t\t\t}",
+   "752: \t\t\t// Kelių dėžių užsakymus registruojam PO VIENĄ — tik taip pluginas",
+   "753: \t\t\t// gauna jų packs[]; grupinė registracija dėžių skaičiaus nemoka.",
+   "754: \t\t\t$daugiadezes = array(); $paprasti = array();",
+   "755: \t\t\tforeach ( $ids as $oid ) {",
+   "756: \t\t\t\t$oo = wc_get_order( $oid );",
+   "757: \t\t\t\tif ( $oo && self::reikia_pakuociu( $oo ) && self::pakuociu( $oo ) > 1 ) { $daugiadezes[] = $oid; }",
+   "758: \t\t\t\telse { $paprasti[] = $oid; }",
+   "759: \t\t\t}",
+   "760: \t\t\t$ok = true; $klaidos = array();",
+   "761: \t\t\tif ( $paprasti ) {",
+   "762: \t\t\t\t$rez = self::venipak_registruoti( $paprasti, $kodas );",
+   "763: \t\t\t\tif ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $ok = false; $klaidos[] = $rez['data'] ?? '?'; }",
+   "764: \t\t\t}",
+   "765: \t\t\tforeach ( $daugiadezes as $oid ) {",
+   "766: \t\t\t\t$rez = self::venipak_registruoti( array( $oid ), $kodas );",
+   "767: \t\t\t\tif ( ! isset( $rez['status'] ) || 'ok' !== $rez['status'] ) { $ok = false; $klaidos[] = '#' . $oid . ': ' . ( $rez['data'] ?? '?' ); }",
+   "768: \t\t\t}",
+   "769: \t\t\t$rez = $ok ? array( 'status' => 'ok' ) : array( 'status' => 'error', 'data' => implode( ' · ', $klaidos ) );",
+   "770: \t\t\tforeach ( $ids as $oid ) {",
+   "771: \t\t\t\t$oo = wc_get_order( $oid );",
+   "772: \t\t\t\tif ( $oo ) {",
+   "773: \t\t\t\t\t// H258: perregistravimas nepavyko → grąžinam seną siuntą (pluginas jau būna įrašęs naujus, neregistruotus pack nr.).",
+   "774: \t\t\t\t\tif ( ! $ok && $perreg && $oo->get_meta( '_ps_venipak_sena' ) ) {",
+   "775: \t\t\t\t\t\t$oo->update_meta_data( 'venipak_shipping_order_data', $oo->get_meta( '_ps_venipak_sena' ) );",
+   "776: \t\t\t\t\t\t$oo->delete_meta_data( '_ps_venipak_sena' );",
+   "777: \t\t\t\t\t\t$oo->add_order_note( 'Darbalaukis: perregistravimas nepavyko — sena siunta grąžinta, galioja kaip buvo.', false, true );",
+   "778: \t\t\t\t\t\t$oo->save();",
+   "779: \t\t\t\t\t}",
+   "780: \t\t\t\t\t$oo->add_order_note( sprintf( 'Venipak registracija darbalaukyje (%s, manifestas %s): %s',",
+   "781: \t\t\t\t\t\tmb_strtoupper( $sandelis ), $kodas, $ok ? 'sėkminga' : ( 'KLAIDA — ' . ( $rez['data'] ?? '?' ) ) ), false, true );",
+   "782: \t\t\t\t\tif ( $ok && class_exists( 'Petshop_Siuntos' ) ) {",
+   "783: \t\t\t\t\t\tPetshop_Siuntos::prideti_is_plugino( $oid, $sandelis, $kodas );",
+   "784: \t\t\t\t\t}",
+   "785: \t\t\t\t}",
+   "786: \t\t\t}",
+   "787: \t\t\twp_safe_redirect( add_query_arg( array(",
+   "788: \t\t\t\t'pd_ok'  => $ok ? 'vp_ok' : 'vp_klaida',",
+   "789: \t\t\t\t'pd_nr'  => rawurlencode( ( $ok ? count( $ids ) . ' · ' . mb_strtoupper( $sandelis ) : ( $rez['data'] ?? '' ) )",
+   "790: \t\t\t\t\t. ( $praleisti ? ' · praleista: ' . implode( ', ', $praleisti ) : '' ) ),",
+   "791: \t\t\t), $atgal ) );",
+   "792: \t\t\texit;",
+   "793: \t\t}",
+   "794: ",
+   "795: \t\tif ( 'klaus' === $v && $o ) {",
+   "796: \t\t\t$t   = isset( $_GET['t'] ) ? sanitize_key( wp_unslash( $_GET['t'] ) ) : '';",
+   "797: \t\t\t$iid = isset( $_GET['iid'] ) ? absint( $_GET['iid'] ) : 0;",
+   "798: \t\t\t$src = isset( $_GET['src'] ) ? sanitize_key( wp_unslash( $_GET['src'] ) ) : '';",
+   "799: \t\t\t$item = $iid ? $o->get_item( $iid ) : false;",
+   "800: "
+  ],
+  "core/shipments 1-90": "NERA: /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/class-shipments.php",
+  "core/cart-tracker 1-70": "NERA: /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/class-cart-tracker.php",
+  "akcijos 60-135": [
+   "60:  * auksciausias prioritetas), pilna atsargine kopija pries kiekviena taikyma.",
+   "61:  *",
+   "62:  * @package Petshop",
+   "63:  */",
+   "64: ",
+   "65: if ( ! defined( 'ABSPATH' ) ) { exit; }",
+   "66: ",
+   "67: class Petshop_Akcijos {",
+   "68: ",
+   "69: \tconst VERSIJA = '1.8';",
+   "70: \tconst PVM     = 0.21;",
+   "71: \tconst CRON    = 'ps_akcijos_valanda';",
+   "72: ",
+   "73: \t/** Busenos. Archyvas — istorijai, nebetaikoma niekada. */",
+   "74: \tpublic static function busenos() {",
+   "75: \t\treturn array(",
+   "76: \t\t\t'juodrastis'  => 'Juodraštis',",
+   "77: \t\t\t'suplanuota'  => 'Suplanuota',",
+   "78: \t\t\t'aktyvi'      => 'Aktyvi',",
+   "79: \t\t\t'pasibaigusi' => 'Pasibaigusi',",
+   "80: \t\t\t'archyvas'    => 'Archyvas',",
+   "81: \t\t);",
+   "82: \t}",
+   "83: ",
+   "84: \tpublic static function metodai() {",
+   "85: \t\treturn array(",
+   "86: \t\t\t'proc'     => 'Nuolaida %',",
+   "87: \t\t\t'eur'      => 'Nuolaida €',",
+   "88: \t\t\t'fiksuota' => 'Fiksuota kaina €',",
+   "89: \t\t);",
+   "90: \t}",
+   "91: ",
+   "92: \tpublic static function init() {",
+   "93: \t\tadd_action( 'admin_menu', array( __CLASS__, 'meniu' ), 11 );",
+   "94: \t\tadd_action( 'wp_ajax_ps_akc_perziura', array( __CLASS__, 'ajax_perziura' ) );",
+   "95: \t\tadd_action( 'wp_ajax_ps_akc_saugoti', array( __CLASS__, 'ajax_saugoti' ) );",
+   "96: \t\tadd_action( 'wp_ajax_ps_akc_taikyti', array( __CLASS__, 'ajax_taikyti' ) );",
+   "97: \t\tadd_action( 'wp_ajax_ps_akc_nuimti', array( __CLASS__, 'ajax_nuimti' ) );",
+   "98: \t\tadd_action( 'wp_ajax_ps_akc_trinti', array( __CLASS__, 'ajax_trinti' ) );",
+   "99: \t\tadd_action( 'wp_ajax_ps_akc_nuvalyti', array( __CLASS__, 'ajax_nuvalyti' ) );",
+   "100: \t\tadd_action( 'wp_ajax_ps_akc_eilute', array( __CLASS__, 'ajax_eilute' ) );",
+   "101: \t\tadd_action( 'wp_ajax_ps_akc_paieska', array( __CLASS__, 'ajax_paieska' ) );",
+   "102: ",
+   "103: \t\tadd_action( self::CRON, array( __CLASS__, 'cron' ) );",
+   "104: \t\tif ( ! wp_next_scheduled( self::CRON ) ) {",
+   "105: \t\t\twp_schedule_event( time() + 300, 'hourly', self::CRON );",
+   "106: \t\t}",
+   "107: \t\tadd_filter( 'admin_body_class', array( __CLASS__, 'body_klase' ) );",
+   "108: \t}",
+   "109: ",
+   "110: \tpublic static function body_klase( $klases ) {",
+   "111: \t\tif ( isset( $_GET['page'] ) && $_GET['page'] === 'ps-akcijos' ) { $klases .= ' petshop-akcijos'; }",
+   "112: \t\treturn $klases;",
+   "113: \t}",
+   "114: ",
+   "115: \tpublic static function meniu() {",
+   "116: \t\tadd_submenu_page(",
+   "117: \t\t\t'ps-katalogas', 'Akcijos', 'Akcijos', 'manage_woocommerce',",
+   "118: \t\t\t'ps-akcijos', array( __CLASS__, 'puslapis' )",
+   "119: \t\t);",
+   "120: \t}",
+   "121: ",
+   "122: \t/* ==================== DUOMENU BAZE ==================== */",
+   "123: ",
+   "124: \tpublic static function lentele()        { global $wpdb; return $wpdb->prefix . 'ps_akcijos'; }",
+   "125: \tpublic static function lentele_prekes() { global $wpdb; return $wpdb->prefix . 'ps_akciju_prekes'; }",
+   "126: ",
+   "127: \t/**",
+   "128: \t * Lenteles kuriamos tingiai (pirmo panaudojimo metu), kaip ir kituose",
+   "129: \t * moduliuose — mu-plugin neturi aktyvavimo kabliuko.",
+   "130: \t */",
+   "131: \tpublic static function uztikrinti_lenteles() {",
+   "132: \t\tglobal $wpdb;",
+   "133: \t\t$t  = self::lentele();",
+   "134: \t\t$tp = self::lentele_prekes();",
+   "135: \t\t$c  = $wpdb->get_charset_collate();"
+  ]
+ },
+ "wc_nust": {
+  "valiuta": "EUR",
+  "kainos_su_pvm": "yes",
+  "pvm_ijungtas": "yes",
+  "ps_stat_pvm": false,
+  "ps_stat_pradzia": false,
+  "ps_paleidimo_data": "2026-10-01",
+  "statusai": [
+   "wc-pending",
+   "wc-processing",
+   "wc-on-hold",
+   "wc-completed",
+   "wc-cancelled",
+   "wc-refunded",
+   "wc-failed",
+   "wc-lp-courier-await",
+   "wc-lp-parcel-created",
+   "wc-lp-parcel-failed",
+   "wc-lp-label-created",
+   "wc-lp-courier-called",
+   "wc-lp-on-the-way",
+   "wc-lp-delivered",
+   "wc-lp-cancelled",
+   "wc-lp-parcel-await",
+   "wc-checkout-draft"
+  ]
+ },
+ "cron": {
+  "ps_esp_cron_process_pending": "2026-08-25 21:22",
+  "ps_email_dispatch_cron": "2026-08-25 21:23",
+  "ps_cart_abandon_check": "2026-08-25 21:24",
+  "ps_post_purchase_check": "2026-08-25 21:39",
+  "ps_stat_valymas": "2026-08-25 21:41",
+  "petshop_vf_sync_stock_hourly": "2026-08-25 21:59",
+  "ps_refill_iv_veidrodis": "2026-08-25 22:06",
+  "ps_akcijos_valanda": "2026-08-25 22:08",
+  "ps_vartai_valanda": "2026-08-25 22:13",
+  "ps_seseliai_valandinis": "2026-08-25 22:13",
+  "ps_dropship_sargas": "2026-08-25 22:13",
+  "petshop_attr_engine_run": "2026-08-25 22:57",
+  "ps_ataskaitu_agregavimas": "2026-08-26 00:15",
+  "ps_feeds_naktinis": "2026-08-26 01:30",
+  "ps_pet_drafts_cleanup_daily": "2026-08-26 02:40",
+  "petshop_vf_sync_reprice_daily": "2026-08-26 03:00",
+  "petshop_vf_sync_publish_daily": "2026-08-26 04:00",
+  "ps_sargas_kasdien": "2026-08-26 04:00",
+  "ps_sources_naktinis": "2026-08-26 04:20",
+  "ps_ivykiai_valymas": "2026-08-26 04:40",
+  "ps_pardavimai_naktinis": "2026-08-26 04:50",
+  "ps_pilnumas_naktinis": "2026-08-26 05:00",
+  "ps_suppression_daily_reconcile": "2026-08-26 05:30",
+  "ps_refill_daily_check": "2026-08-26 08:00",
+  "ps_reminders_daily_check": "2026-08-26 09:00",
+  "ps_sargas_savaitinis": "2026-09-01 05:00",
+  "petshop_pragma_monthly_export": "2026-09-05 08:00"
+ }
+}
