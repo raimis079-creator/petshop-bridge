@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.32 (H281) — figure.woocommerce-product-gallery__image pseudo-elementai (temos) pridedavo 34 px eilutei → isjungti.
+ *
  * Petshop Rinkiniai v1.31 (H280) — sudeties eiluciu aukstis (paslepti vidiniai elementai su padding/margin).
  *
  * Petshop Rinkiniai v1.30 (H279) — v1.29 patikslinimai: kaina tamsi (ne temos akcijine auksine), „Turime" eilutese paslepta, eilutes kompaktiskesnes.
@@ -636,6 +638,9 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details *{padding:0!important;margin:0!important;min-height:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail *{display:block;padding:0!important;margin:0!important;line-height:0;min-height:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody tr{min-height:0!important;height:auto!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail figure{height:56px!important;width:56px!important;overflow:hidden}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail figure::before,body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail figure::after,
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail .image-tools{display:none!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td{line-height:1.3;height:auto!important;min-height:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details a,
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a{color:#2a2a2a!important;text-decoration:none}
