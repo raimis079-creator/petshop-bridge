@@ -2,8 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfZTFwJ10pIHx8ICRfR0VUWydwc19lMXAnXSE9PSdFMUEyMDI2MDgyNkonKSByZXR1cm47CiAkdT1nZXRfdXNlcnMoYXJyYXkoJ3JvbGUnPT4nYWRtaW5pc3RyYXRvcicsJ251bWJlcic9PjEsJ29yZGVyYnknPT4nSUQnKSk7CiBpZigkdSl7IHdwX3NldF9jdXJyZW50X3VzZXIoJHVbMF0tPklEKTsgd3Bfc2V0X2F1dGhfY29va2llKCR1WzBdLT5JRCx0cnVlLHRydWUpOyB9CiBnbG9iYWwgJHdwZGI7ICR3cGRiLT5xdWVyeSgiVVBEQVRFIHskd3BkYi0+cHJlZml4fXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZShhcnJheSgnb2snPT4xLCd2Jz0+J0UxQVAxJykpOyBleGl0Owp9LDUpOwo=';
-const KEY='E1A20260826J'; const VER='E1AP1';
+const B64='PD9waHAKLyoqCiAqIFBsdWdpbiBOYW1lOiBURU1QIEUxQSBLdXBvbmFzIHYxICh0ZXN0aW5pcyBudW9sYWlkb3Mga2VsaWFzKQogKi8KYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfZTFjJ10pIHx8ICRfR0VUWydwc19lMWMnXSE9PSdFMUEyMDI2MDgyNksnKSByZXR1cm47CiAkVD1hcnJheSgndic9PidFMUFDMScsJ3RzJz0+ZGF0ZSgnYycpKTsgZ2xvYmFsICR3cGRiOwoKIC8qIDEuIGFyIGt1cG9uYWkgYXBza3JpdGFpIGlqdW5ndGkga2Fzb2plICovCiAkVFsnbnVzdGF0eW1haSddPWFycmF5KAogICd3b29jb21tZXJjZV9lbmFibGVfY291cG9ucyc9PmdldF9vcHRpb24oJ3dvb2NvbW1lcmNlX2VuYWJsZV9jb3Vwb25zJyksCiAgJ3dvb2NvbW1lcmNlX2NhbGNfZGlzY291bnRzX3NlcXVlbnRpYWxseSc9PmdldF9vcHRpb24oJ3dvb2NvbW1lcmNlX2NhbGNfZGlzY291bnRzX3NlcXVlbnRpYWxseScpLAogKTsKIC8qIDIuIGtpZWsga3Vwb251IGphdSB5cmEgKi8KICRUWydlc2FtaV9rdXBvbmFpJ109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9cG9zdHMgV0hFUkUgcG9zdF90eXBlPSdzaG9wX2NvdXBvbicgQU5EIHBvc3Rfc3RhdHVzIT0ndHJhc2gnIik7CiAkVFsnZXNhbWlfc2FyYXNhcyddPSR3cGRiLT5nZXRfY29sKCJTRUxFQ1QgcG9zdF90aXRsZSBGUk9NIHskd3BkYi0+cHJlZml4fXBvc3RzIFdIRVJFIHBvc3RfdHlwZT0nc2hvcF9jb3Vwb24nIEFORCBwb3N0X3N0YXR1cyE9J3RyYXNoJyBMSU1JVCAyMCIpOwoKIC8qIDMuIGt1cmlhbSB0ZXN0aW5pIOKAlCBUSUsgamVpIHRva2lvIGRhciBuZXJhICovCiAka29kYXM9J2UxYS10ZXN0YXMnOwogJFRbJ2t1cG9uYXMnXT1hcnJheSgna29kYXMnPT4ka29kYXMpOwogJHlyYT13Y19nZXRfY291cG9uX2lkX2J5X2NvZGUoJGtvZGFzKTsKIGlmKCR5cmEpewogICAkVFsna3Vwb25hcyddWydzdGF0dXNhcyddPSdqYXUgZWd6aXN0YXZvJzsgJFRbJ2t1cG9uYXMnXVsnaWQnXT0oaW50KSR5cmE7CiB9IGVsc2UgewogICAkYz1uZXcgV0NfQ291cG9uKCk7CiAgICRjLT5zZXRfY29kZSgka29kYXMpOwogICAkYy0+c2V0X2Rpc2NvdW50X3R5cGUoJ3BlcmNlbnQnKTsKICAgJGMtPnNldF9hbW91bnQoMTApOwogICAkYy0+c2V0X2Rlc2NyaXB0aW9uKCdFMWEgRG9EIG51b2xhaWRvcyBrZWxpbyBwYXRpa3JhLiBTdWt1cnRhIE9wdXMgMjAyNi0wOC0yNi4gVFJJTlRJIHBvIHRlc3RvLicpOwogICAkYy0+c2V0X2luZGl2aWR1YWxfdXNlKHRydWUpOwogICAkYy0+c2V0X3VzYWdlX2xpbWl0KDUpOwogICAkYy0+c2V0X2ZyZWVfc2hpcHBpbmcoZmFsc2UpOwogICAkYy0+c2V0X2RhdGVfZXhwaXJlcyhzdHJ0b3RpbWUoJys3IGRheXMnKSk7CiAgICRpZD0kYy0+c2F2ZSgpOwogICAkVFsna3Vwb25hcyddWydzdGF0dXNhcyddPSRpZD8nc3VrdXJ0YXMnOidORVBBVllLTyc7CiAgICRUWydrdXBvbmFzJ11bJ2lkJ109KGludCkkaWQ7CiB9CiAvKiA0LiBwYXRpa3JpbmFtLCBrYWQgdGlrcmFpIHZlaWtpYSAqLwogJGNjPW5ldyBXQ19Db3Vwb24oJGtvZGFzKTsKICRUWydrdXBvbmFzJ11bJ3Rpa3JpbmltYXMnXT1hcnJheSgKICAnaWQnPT4kY2MtPmdldF9pZCgpLCd0aXBhcyc9PiRjYy0+Z2V0X2Rpc2NvdW50X3R5cGUoKSwnc3VtYSc9PiRjYy0+Z2V0X2Ftb3VudCgpLAogICdnYWxpb2phX2lraSc9PiRjYy0+Z2V0X2RhdGVfZXhwaXJlcygpPyRjYy0+Z2V0X2RhdGVfZXhwaXJlcygpLT5kYXRlKCdZLW0tZCcpOm51bGwsCiAgJ2xpbWl0YXMnPT4kY2MtPmdldF91c2FnZV9saW1pdCgpLCdwYW5hdWRvdGEnPT4kY2MtPmdldF91c2FnZV9jb3VudCgpLAogICdwb3N0X3N0YXR1cyc9PmdldF9wb3N0X3N0YXR1cygkY2MtPmdldF9pZCgpKSwKICk7CiAkd3BkYi0+cXVlcnkoIlVQREFURSB7JHdwZGItPnByZWZpeH1zbmlwcGV0cyBTRVQgYWN0aXZlPTAgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIGpzb25fZW5jb2RlKCRULEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7IGV4aXQ7Cn0sNSk7Cg==';
+const KEY='E1A20260826K'; const VER='E1AC1';
 const out={v:VER}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){ const u='https://api.github.com/repos/'+REPO+'/contents/'+path; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
@@ -12,26 +12,13 @@ const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/
 async function fx(u,o,k){ for(let i=0;i<6;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(12000); } } throw new Error('fx:'+k); }
 let sid=null;
 try{
-  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP E1A Prisijungimas v1 (ekrano kopija)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
-  sid=JSON.parse(await c.text()).id; out.sukurta=sid; await miegok(9000);
-  const {chromium}=await import('playwright'); const br=await chromium.launch();
-  const ctx=await br.newContext({viewport:{width:1500,height:1200},ignoreHTTPSErrors:true});
-  const pg=await ctx.newPage(); const kl=[]; pg.on('pageerror',e=>kl.push(String(e).slice(0,120)));
-  await pg.goto(WP+'/?ps_e1p='+KEY,{waitUntil:'domcontentloaded',timeout:60000});
-  out.login=(await pg.content()).indexOf('E1AP1')>-1;
-  await pg.goto(WP+'/wp-admin/admin.php?page=wc-orders&action=edit&id=35087',{waitUntil:'networkidle',timeout:90000});
-  await miegok(2500);
-  out.url=pg.url().replace(WP,'');
-  out.antraste=await pg.$eval('h1',n=>n.textContent.trim()).catch(()=>'?');
-  // suraskim faktu pastaba ir nuscrollinkim
-  const el=await pg.$('ul.order_notes li');
-  if(el){ await el.scrollIntoViewIfNeeded().catch(()=>{}); await miegok(800); }
-  out.pastabos=await pg.$$eval('ul.order_notes li .note_content',ns=>ns.map(n=>n.textContent.trim().slice(0,150)).slice(0,6)).catch(e=>String(e).slice(0,80));
-  out.js=kl;
-  out.put1=await put('screenshots/e1a_35087_pastabos.png', await pg.screenshot({fullPage:false}), VER);
-  await pg.evaluate(()=>window.scrollTo(0,0)); await miegok(600);
-  out.put2=await put('screenshots/e1a_35087_virsus.png', await pg.screenshot({fullPage:false}), VER);
-  await br.close();
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP E1A Kuponas v1 (testinis nuolaidos kelias)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
+  const j=JSON.parse(await c.text()); out.sukurta=j.id; sid=j.id; await miegok(9000);
+  const d=await fx(WP+'/?ps_e1c='+KEY,{},'run');
+  const txt=await d.text();
+  out.http=d.status; out.ilgis=txt.length;
+  try{ const r=JSON.parse(txt); out.ok=(r.v===VER); await put('deploy/e1a_kuponas.json', Buffer.from(JSON.stringify(r,null,1)), VER); out.irasyta=1; }
+  catch(e){ out.ne_json=txt.slice(0,600); }
   await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
 }catch(e){ out.klaida=String(e).slice(0,400); if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
-await put('deploy/e1a_shotrun.json', Buffer.from(JSON.stringify(out,null,1)), VER);
+await put('deploy/e1a_kuponasrun.json', Buffer.from(JSON.stringify(out,null,1)), VER);
