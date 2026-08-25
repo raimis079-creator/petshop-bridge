@@ -1,0 +1,57 @@
+{
+ "v": "E1AD1",
+ "ts": "2026-08-25T22:09:15+00:00",
+ "innodb": [
+  "29: ",
+  "30: if ( ! defined( 'ABSPATH' ) ) { exit; }",
+  "31: ",
+  "32: add_filter( 'query', function ( $q ) {",
+  "33: ",
+  "34: \t/* Pigiausia imanoma atmetimo salyga - pirmas simbolis.",
+  "35: \t   99,9 % uzklausu (SELECT, INSERT, UPDATE) issikrenta cia. */",
+  "36: \tif ( ! isset( $q[0] ) || ( $q[0] !== 'C' && $q[0] !== 'c' ) ) {",
+  "37: \t\treturn $q;",
+  "38: \t}",
+  "39: ",
+  "40: \tif ( 0 !== stripos( $q, 'CREATE TABLE' ) ) {",
+  "41: \t\treturn $q;",
+  "42: \t}",
+  "43: ",
+  "44: \t/* Autorius jau nurode varikli - neliecziam. */",
+  "45: \tif ( false !== stripos( $q, 'ENGINE=' ) || false !== stripos( $q, 'ENGINE ' ) ) {",
+  "46: \t\treturn $q;",
+  "47: \t}",
+  "48: ",
+  "49: \t/* CREATE TABLE ... LIKE ... - variklis paveldimas, priedas = klaida. */",
+  "50: \tif ( preg_match( '/\\bLIKE\\b/i', $q ) && ! preg_match( '/\\(/', $q ) ) {",
+  "51: \t\treturn $q;",
+  "52: \t}",
+  "53: ",
+  "54: \t/* Lenteles parametrai po uzdarancio skliausto gali eiti bet kokia tvarka,",
+  "55: \t   todel uztenka pridurti gale. Kabliataskis, jei buvo, nuimamas. */",
+  "56: \t$sw = rtrim( $q );",
+  "57: \t$sw = rtrim( $sw, ';' );",
+  "58: ",
+  "59: \treturn $sw . ' ENGINE=InnoDB';",
+  "60: ",
+  "61: }, 1 );"
+ ],
+ "failai": {
+  "petshop-faktai.php": {
+   "gauta": 30359,
+   "md5_gauto": "76b988ce0e5b78c6d7acaa3f1c7f2045",
+   "sintakse": "ok",
+   "buvo": "(naujas)",
+   "md5_diske": "76b988ce0e5b78c6d7acaa3f1c7f2045",
+   "ok": true
+  },
+  "petshop-kanalai.php": {
+   "gauta": 9769,
+   "md5_gauto": "e985e3a9b73958802708d5f670b4270c",
+   "sintakse": "ok",
+   "buvo": "(naujas)",
+   "md5_diske": "e985e3a9b73958802708d5f670b4270c",
+   "ok": true
+  }
+ }
+}
