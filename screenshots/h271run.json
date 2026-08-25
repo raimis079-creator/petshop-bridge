@@ -1,0 +1,126 @@
+{
+ "v": "H271A",
+ "sukurta": 3828,
+ "r": {
+  "v": "H271A",
+  "rasta": [
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-akcijos.php",
+    "dydis": 96257,
+    "saltiniai": [
+     "104: if ( ! wp_next_scheduled( self::CRON ) ) {",
+     "105: wp_schedule_event( time() + 300, 'hourly', self::CRON );"
+    ]
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-ataskaitos-ui.php",
+    "dydis": 25921,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-ataskaitu-agregavimas.php",
+    "dydis": 20854,
+    "saltiniai": [
+     "34: if ( ! wp_next_scheduled( self::CRON ) ) {",
+     "39: wp_schedule_event( $kada - ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ), 'daily', self::CRON );"
+    ]
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-ataskaitu-eksportas.php",
+    "dydis": 37431,
+    "saltiniai": [
+     "246: $turinys = file_get_contents( $kelias );"
+    ]
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-desk.php",
+    "dydis": 180955,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-gavimas.php",
+    "dydis": 97658,
+    "saltiniai": [
+     "1266: .psgav-bar .logo{font-weight:700;letter-spacing:.04em;font-size:13px}"
+    ]
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-import-log.php",
+    "dydis": 2826,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-katalogas.php",
+    "dydis": 447325,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php",
+    "dydis": 184541,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-paruostu-ataskaita.php",
+    "dydis": 29816,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-rinkiniai.php",
+    "dydis": 185725,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-rinkiniu-ataskaita.php",
+    "dydis": 41305,
+    "saltiniai": []
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-sargas.php",
+    "dydis": 15389,
+    "saltiniai": [
+     "13: *   2. ar viduje neluzta     -> sis modulis: fatal + klaidu kaupimas",
+     "28: * `_get_cron_array()` ir isimena kaip lauktinus. Taip sargas nesugrius,",
+     "45: *   ps_sargas_cron_valandos po kiek valandu cron laikomas neatsiskaiciusiu (24)",
+     "53: const CRON_ZINIOS  = 'ps_sargas_cron_zinios';   // option: hook => paskutinis laikas",
+     "54: const CRON_LAUKIAM = 'ps_sargas_cron_laukiam';  // option: hook => schedule",
+     "126: self::rasyti( 'fatal', $e['message'], $e['file'], $e['line'] );",
+     "127: self::pranesti_fatal( $e );",
+     "133: return 'fatal';",
+     "136: case E_DEPRECATED: case E_USER_DEPRECATED:",
+     "137: return 'deprecated';",
+     "176: if ( ! function_exists( '_get_cron_array' ) ) { return; }",
+     "179: foreach ( (array) _get_cron_array() as $x ) {",
+     "183: if ( ! empty( $k['schedule'] ) ) { $rasti[ $hook ] = $k['schedule']; }",
+     "251: private static function pranesti_fatal( $e ) {",
+     "252: $parasas = 'fatal:' . md5( $e['file'] . $e['line'] );",
+     "255: 'Fatal error',",
+     "256: \"Fatal error svetaineje.\\n\\n\"",
+     "281: *      kad realiai veikia) arba yra MUSU (ps_ / petshop_ / actionscheduler);",
+     "290: $val    = (int) get_option( 'ps_sargas_cron_valandos', 24 );",
+     "301: $musu = ( 0 === strpos( $hook, 'ps_' ) || 0 === strpos( $hook, 'petshop' ) || 0 === strpos( $hook, 'action_scheduler' ) );",
+     "320: . \"Patikrinti: serveriai.lt cron nustatymai ir WP Tools -> Scheduled Actions.\\n\"",
+     "337: WHERE laikas > %s AND lygis IN('fatal','warning') ORDER BY kiek DESC LIMIT 5\", $nuo",
+     "388: if ( ! wp_next_scheduled( 'ps_sargas_kasdien' ) ) {",
+     "390: wp_schedule_event( self::rytoj( 7 ), 'daily', 'ps_sargas_kasdien' );",
+     "392: if ( ! wp_next_scheduled( 'ps_sargas_savaitinis' ) ) {"
+    ]
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-statistika.php",
+    "dydis": 22413,
+    "saltiniai": [
+     "104: if ( ! wp_next_scheduled( 'ps_stat_valymas' ) ) {",
+     "105: wp_schedule_event( time() + 3600, 'daily', 'ps_stat_valymas' );"
+    ]
+   },
+   {
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-vartai.php",
+    "dydis": 6748,
+    "saltiniai": [
+     "58: if ( ! wp_next_scheduled( self::CRON ) ) {",
+     "59: wp_schedule_event( time() + 600, 'hourly', self::CRON );"
+    ]
+   }
+  ]
+ }
+}
