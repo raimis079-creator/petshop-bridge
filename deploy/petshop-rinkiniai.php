@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.36 (H290) — DU SAVININKO NURODYMAI (2026-08-25).
+ *
+ * (1) Nauda po 3 % nerodoma: „Sutaupote 0,28 € (1%)" atrodo juokingai ir
+ *     mazina pasitikejima. Slepiama IR lentele, IR perbraukta senoji kaina.
+ * (2) Automatines vietos zymos dabar nuimamos (✕) — anksciau ju nebuvo
+ *     imanoma panaikinti. Nuimtos irasomos i _ps_rink_kat_off ir islieka
+ *     tarp seansu; grazinti galima ta pacia „pridėti vietą ranka" eilute.
+ *
  * Petshop Rinkiniai v1.35 (H284) — komponento pavadinimas be nuorodos i preke (savininko nurodymas).
  *
  * Petshop Rinkiniai v1.34 (H283) — savas lightbox (Magnific siame puslapyje nepasiekiamas).
@@ -109,6 +117,8 @@ class Petshop_Rinkiniai {
 	const VERSIJA = '1.31';   /* v1.31: siuksline — ketvirta busena toje pacioje lenteleje */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
+	const META_KAT_OFF = '_ps_rink_kat_off';   /* v1.36: rankomis nuimtos automatines vietos */
+	const NAUDA_MIN_PROC = 3;                  /* v1.36: mazesne nauda nerodoma */
 
 	/** Virs sio svorio siunta i pastomata nebetelpa (savininko sprendimas 2026-08-13). */
 	const PASTOMATO_RIBA = 25.0;
@@ -497,6 +507,8 @@ class Petshop_Rinkiniai {
 
 		$skirtumas = $atskirai - $rinkinio;
 		$proc = round( $skirtumas / $atskirai * 100 );
+		/* v1.36: po 3 % nauda nerodoma — „Sutaupote 0,28 € (1%)" kenkia labiau nei padeda. */
+		if ( $proc < self::NAUDA_MIN_PROC ) { return; }
 		?>
 		<div class="ps-rink-nauda">
 			<table>
@@ -515,9 +527,29 @@ class Petshop_Rinkiniai {
 			global $post;
 			if ( $post && get_post_meta( $post->ID, self::META_KIEKIAI, true ) ) {
 				$klases[] = 'ps-fiksuotas-rinkinys';
+				if ( ! self::nauda_verta( (int) $post->ID ) ) { $klases[] = 'ps-rink-be-naudos'; }
 			}
 		}
 		return $klases;
+	}
+
+	/** v1.36: ar nauda verta rodyti (>= 3 %). Ta pati riba naudojama ir CSS klasei. */
+	public static function nauda_verta( $pid ) {
+		$kiekiai = json_decode( (string) get_post_meta( $pid, self::META_KIEKIAI, true ), true );
+		if ( ! is_array( $kiekiai ) || ! $kiekiai ) { return false; }
+		$p = wc_get_product( $pid );
+		if ( ! $p ) { return false; }
+		$atskirai = 0;
+		foreach ( $kiekiai as $cid => $kiek ) {
+			$c = wc_get_product( (int) $cid );
+			if ( ! $c ) { return false; }
+			$k = (float) $c->get_price();
+			if ( $k <= 0 ) { return false; }
+			$atskirai += $k * max( 1, (int) $kiek );
+		}
+		$kaina = (float) $p->get_price();
+		if ( $kaina <= 0 || $atskirai <= $kaina ) { return false; }
+		return round( ( $atskirai - $kaina ) / $atskirai * 100 ) >= self::NAUDA_MIN_PROC;
 	}
 
 	/** Zenklo tekstas paduodamas per inline stiliu (patikimiau nei HTML perrasymas). */
@@ -625,6 +657,7 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys .product-info .price del,body.ps-fiksuotas-rinkinys .product-info .price del .amount{color:#999!important;font-weight:400;font-size:.8em;margin-right:6px}
 		body.ps-fiksuotas-rinkinys .product-info .price ins{text-decoration:none}
 		body.ps-fiksuotas-rinkinys .petshop-savings{display:none!important}
+		body.ps-rink-be-naudos .product-info .price del,body.ps-rink-be-naudos .ps-rink-nauda{display:none!important}
 		body.ps-fiksuotas-rinkinys .ps-rink-nauda{background:#f3f7f3;border-color:#d6e3d3;margin:0 0 16px}
 		body.ps-fiksuotas-rinkinys .ps-rink-nauda .ps-taupo td{color:#365a51;border-top-color:#d6e3d3}
 		body.ps-fiksuotas-rinkinys form.cart .mnm_child_products,
@@ -937,8 +970,11 @@ class Petshop_Rinkiniai {
 	 * rinkinys parduodamas, priima zmogus, ne balsavimo algoritmas — cia
 	 * rinkodara, ne duomenu apdorojimas.
 	 */
-	private static function kategorijos( $komponentu_ids, $rankiniu = array() ) {
-		$out = array_merge( array( 679 ), self::auto_vieta( $komponentu_ids ) );
+	private static function kategorijos( $komponentu_ids, $rankiniu = array(), $isjungti = array() ) {
+		$auto = array_merge( array( 679 ), self::auto_vieta( $komponentu_ids ) );
+		$isj  = array_map( 'intval', (array) $isjungti );
+		$auto = array_diff( array_map( 'intval', $auto ), $isj );
+		$out  = $auto;
 		if ( $rankiniu ) { $out = array_merge( $out, array_map( 'intval', $rankiniu ) ); }
 		return array_values( array_unique( array_filter( array_map( 'intval', $out ) ) ) );
 	}
@@ -2315,7 +2351,7 @@ class Petshop_Rinkiniai {
 
 		$d = array(
 			'pav' => '', 'sku' => '', 'kaina' => '', 'aprasymas' => '',
-			'komp' => array(), 'publikuoti' => 0, 'kat_rankiniu' => array(), 'tikslas' => 35,
+			'komp' => array(), 'publikuoti' => 0, 'kat_rankiniu' => array(), 'kat_off' => array(), 'tikslas' => 35,
 		);
 		if ( $saltinis ) {
 			$post = get_post( $saltinis );
@@ -2344,6 +2380,8 @@ class Petshop_Rinkiniai {
 				/* v1.27: rankines vietos = prekes kategorijos be automatiniu */
 				$komp_ids = array_map( function ( $c ) { return (int) $c['id']; }, $d['komp'] );
 				$auto = array_merge( array( 679 ), self::auto_vieta( $komp_ids ) );
+				$off  = json_decode( (string) get_post_meta( $saltinis, self::META_KAT_OFF, true ), true );
+				$d['kat_off'] = is_array( $off ) ? array_map( 'intval', $off ) : array();
 				foreach ( array_map( 'intval', wc_get_product_term_ids( $saltinis, 'product_cat' ) ) as $kid ) {
 					if ( ! in_array( $kid, $auto, true ) ) { $d['kat_rankiniu'][] = $kid; }
 				}
@@ -2468,6 +2506,7 @@ class Petshop_Rinkiniai {
 			var VARDAI = <?php echo wp_json_encode( $medis['vardai'] ); ?>;
 			var K   = <?php echo wp_json_encode( $pradiniai ); ?>;   /* sudetis */
 			var KAT_RANK = <?php echo wp_json_encode( array_values( array_map( 'intval', $d['kat_rankiniu'] ) ) ); ?>; /* rankiniu budu pridetos vietos */
+			var KAT_OFF  = <?php echo wp_json_encode( array_values( array_map( 'intval', $d['kat_off'] ) ) ); ?>;      /* v1.36: nuimtos automatines vietos */
 			/* v1.28: pradinis sandelis paveldimas is jau esanciu komponentu */
 			var PRAD_SAND=(function(){ var u={}; K.forEach(function(c){ u[(c.sandelis||'av')]=1; });
 				var l=Object.keys(u); return l.length===1?l[0]:''; })();
@@ -2548,10 +2587,14 @@ class Petshop_Rinkiniai {
 			}
 			function pieštiVieta(){
 				var dp=(tipas()==='dp'), h='<div class="psr-chips">';
-				h+='<span class="psr-chip auto">'+(dp?'DAUGIAU=PIGIAU':'RINKINIAI')+'</span>';
 				var a=(!dp&&K.length)?autoVieta():{tipas:null,porusis:null,nezinomas:false};
-				if(a.tipas!==null) h+='<span class="psr-chip auto">'+esc(VARDAI[a.tipas]||a.tipas)+'</span>';
-				if(a.porusis!==null) h+='<span class="psr-chip auto">'+esc(VARDAI[a.porusis]||a.porusis)+'</span>';
+				/* v1.36: automatines zymos irgi nuimamos — anksciau ju panaikinti nebuvo kaip */
+				var autoIds=[dp?91:679]; if(a.tipas!==null)autoIds.push(a.tipas); if(a.porusis!==null)autoIds.push(a.porusis);
+				autoIds.forEach(function(id){
+					if(KAT_OFF.indexOf(id)>=0) return;
+					var v=(id===679&&!dp)?'RINKINIAI':(id===91?'DAUGIAU=PIGIAU':esc(VARDAI[id]||id));
+					h+='<span class="psr-chip auto">'+v+'<button type="button" data-off="'+id+'">✕</button></span>';
+				});
 				KAT_RANK.forEach(function(id,i){
 					h+='<span class="psr-chip">'+esc(VARDAI[id]||id)+'<button type="button" data-i="'+i+'">✕</button></span>';
 				});
@@ -2561,7 +2604,11 @@ class Petshop_Rinkiniai {
 				else if(a.nezinomas||a.porusis===null) h+='<div class="psr-perspejimas y">Porūšio nustatyti nepavyko (mišrus rinkinys) — kataloge atsiras tik po RINKINIAI. Pridėk vietą ranka, jei nori kitur.</div>';
 				$('#psr-vieta').innerHTML=h;
 				$('#psr-vieta').querySelectorAll('button').forEach(function(b){
-					b.onclick=function(){ KAT_RANK.splice(parseInt(this.dataset.i),1); pieštiVieta(); };
+					b.onclick=function(){
+						if(this.dataset.off!==undefined){ var id=parseInt(this.dataset.off); if(KAT_OFF.indexOf(id)<0) KAT_OFF.push(id); }
+						else { KAT_RANK.splice(parseInt(this.dataset.i),1); }
+						pieštiVieta();
+					};
 				});
 			}
 
@@ -2838,7 +2885,10 @@ class Petshop_Rinkiniai {
 			};
 			$('#psr-kat-rank').onchange=function(){
 				var v=parseInt(this.value); this.value='';
-				if(v && KAT_RANK.indexOf(v)<0){ KAT_RANK.push(v); pieštiVieta(); }
+				if(!v) return;
+				var oi=KAT_OFF.indexOf(v);
+				if(oi>=0){ KAT_OFF.splice(oi,1); pieštiVieta(); return; }   /* v1.36: grazinam automatine */
+				if(KAT_RANK.indexOf(v)<0){ KAT_RANK.push(v); pieštiVieta(); }
 			};
 			$('#psr-pav').oninput=function(){ tikrinti(); pieštiPerziura(); };
 			$('#psr-sku').oninput=function(){ tikrinti(); };
@@ -2861,6 +2911,7 @@ class Petshop_Rinkiniai {
 					tipas:tipas(),
 					pergeneruoti:(document.getElementById('psr-regen')&&document.getElementById('psr-regen').checked)?1:0,
 					kat:KAT_RANK,
+					kat_off:KAT_OFF,
 					komponentai:K.map(function(c){return {id:c.id,kiekis:c.kiekis};})
 				}));
 				fetch(ajaxurl,{method:'POST',body:fd}).then(function(r){return r.json()}).then(function(j){
@@ -3035,6 +3086,7 @@ class Petshop_Rinkiniai {
 		$apr   = sanitize_textarea_field( $d['aprasymas'] ?? '' );
 		$publ  = ! empty( $d['publikuoti'] );
 		$kat   = array_map( 'intval', (array) ( $d['kat'] ?? array() ) );
+		$kat_off = array_map( 'intval', (array) ( $d['kat_off'] ?? array() ) );
 		$komp  = (array) ( $d['komponentai'] ?? array() );
 		/* v1.25: neprivalomas rankinis svoris (kurjeriui). null = formoje lauko nebuvo. */
 		$svoris_iv = array_key_exists( 'svoris', $d ) ? trim( (string) $d['svoris'] ) : null;
@@ -3096,7 +3148,7 @@ class Petshop_Rinkiniai {
 		   o MnM klientui parodytu pasirinkimo forma, kurios cia nereikia. */
 		$tipas = ( ( $d['tipas'] ?? '' ) === 'dp' || ( count( $kiekiai ) === 1 && $viso >= 2 ) ) ? 'dp' : 'mnm';
 		if ( $tipas === 'dp' ) {
-			return self::issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv );
+			return self::issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv, $kat_off );
 		}
 
 		try {
@@ -3143,7 +3195,9 @@ class Petshop_Rinkiniai {
 			if ( $sav_truksta === 0 && $sav_suma > 0 ) { $prod->update_meta_data( '_cost_price', round( $sav_suma, 4 ) ); }
 			else { $prod->delete_meta_data( '_cost_price' ); }
 			$prod->update_meta_data( '_mnm_weight_cumulative', 'no' );   /* svoris jau irasytas i preke */
-			$prod->set_category_ids( self::kategorijos( array_keys( $kiekiai ), $kat ) );
+			$prod->set_category_ids( self::kategorijos( array_keys( $kiekiai ), $kat, $kat_off ) );
+			if ( $kat_off ) { $prod->update_meta_data( self::META_KAT_OFF, wp_json_encode( array_values( $kat_off ) ) ); }
+			else { $prod->delete_meta_data( self::META_KAT_OFF ); }
 			$prod->save();
 			update_post_meta( $prod->get_id(), '_price', wc_format_decimal( $kaina ) ); // H266: MNM _price neįrašo juodraščiui
 			$pid = $prod->get_id();
@@ -3190,7 +3244,7 @@ class Petshop_Rinkiniai {
 	 * ir nurasomas is bazines prekes (snippet 567), todel `manage_stock=no`.
 	 * Nuotrauka — bazines prekes; kompozicija cia netinka (ta pati preke kartojasi).
 	 */
-	private static function issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv = null ) {
+	private static function issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv = null, $kat_off = array() ) {
 		$bid  = (int) array_key_first( $kiekiai );
 		$qty  = (int) reset( $kiekiai );
 		$baze = wc_get_product( $bid );
@@ -3259,7 +3313,10 @@ class Petshop_Rinkiniai {
 			$kategorijos = wc_get_product_term_ids( $bid, 'product_cat' );
 			$kategorijos[] = 91;
 			if ( $kat ) { $kategorijos = array_merge( $kategorijos, $kat ); }
-			$prod->set_category_ids( array_values( array_unique( array_map( 'intval', $kategorijos ) ) ) );
+			$kategorijos = array_diff( array_map( 'intval', (array) $kategorijos ), array_map( 'intval', (array) $kat_off ) );
+			$prod->set_category_ids( array_values( array_unique( $kategorijos ) ) );
+			if ( $kat_off ) { $prod->update_meta_data( self::META_KAT_OFF, wp_json_encode( array_values( array_map( 'intval', $kat_off ) ) ) ); }
+			else { $prod->delete_meta_data( self::META_KAT_OFF ); }
 
 			/*
 			 * ATRIBUTAI. Be ju pakas iskrenta is parduotuves filtru — klientas,
