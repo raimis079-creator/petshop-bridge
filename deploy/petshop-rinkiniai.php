@@ -1,5 +1,12 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.39 (H295) — nuorodu nuemimas nebepriklauso nuo nuotrauku.
+ *
+ * v1.35 pavadinimu nuorodos buvo salinamos lightbox funkcijoje; ji nutraukia
+ * darba, kai eilutese nera nuotraukos nuorodos (Animonda #35079) — todel
+ * pavadinimai likdavo melyni ir vede i preke. Dabar salinama kartu su eiluciu
+ * apdorojimu, o nuotrauku dalis atskira.
+ *
  * Petshop Rinkiniai v1.38 (H294) — VITRINA VEIKIA IR SENIEMS RINKINIAMS.
  *
  * Animonda #35079 buvo be `_petshop_component_quantities` meta (sukurtas ne
@@ -716,7 +723,8 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail .image-tools{display:none!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td{line-height:1.3;height:auto!important;min-height:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details a,
-		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a{color:#2a2a2a!important;text-decoration:none;pointer-events:none;cursor:default}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a,
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details a{color:#2a2a2a!important;text-decoration:none;pointer-events:none;cursor:default}
 		body.ps-fiksuotas-rinkinys form.cart tbody td .stock,body.ps-fiksuotas-rinkinys form.cart tbody td p.stock,
 		body.ps-fiksuotas-rinkinys form.cart tbody td [class*="stock"],body.ps-fiksuotas-rinkinys form.cart tbody td [class*="availab"],
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details p,body.ps-fiksuotas-rinkinys form.cart tbody td.product-details br,
@@ -740,7 +748,8 @@ class Petshop_Rinkiniai {
 		(function(){var Q=<?php echo wp_json_encode( array_map( 'intval', $kiekiai ) ); ?>;
 		var LT={'product':'Prekė','quantity':'Kiekis','price':'Kaina','details':'Prekė','total':'Viso'};
 		function th(){document.querySelectorAll('form.cart th').forEach(function(h){var k=h.textContent.trim().toLowerCase();if(LT[k])h.textContent=LT[k];});}
-		function f(){th();var r=document.querySelectorAll('form.cart tr.mnm_item,form.cart tr[data-mnm_item_id]');if(!r.length)return false;
+		function nuorodos(){document.querySelectorAll('form.cart td.product-details a,form.cart td.product-name a').forEach(function(l){var t=document.createElement('span');t.textContent=l.textContent;l.replaceWith(t);});}
+		function f(){th();nuorodos();var r=document.querySelectorAll('form.cart tr.mnm_item,form.cart tr[data-mnm_item_id]');if(!r.length)return false;
 		 r.forEach(function(row){var pid=row.getAttribute('data-mnm_item_id')||row.getAttribute('data-child_id');if(!pid)return;var n=Q[pid]||1;row.setAttribute('data-kiekis-rodyti',n);
 		  var i=row.querySelector('input.qty,input[type=number],input[name^=mnm_quantity]');if(i&&String(i.value)!==String(n)){i.value=n;try{i.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}if(window.jQuery){jQuery(i).trigger('change');}}});return true;}
 		var t=0,iv=setInterval(function(){if(f()||++t>25)clearInterval(iv);},200);window.addEventListener('load',function(){setTimeout(f,300);setTimeout(f,1500);});
@@ -749,7 +758,6 @@ class Petshop_Rinkiniai {
 		 function close(){w.remove();document.removeEventListener('keydown',esc);} function esc(e){if(e.key==='Escape')close();}
 		 w.addEventListener('click',close);document.addEventListener('keydown',esc);document.body.appendChild(w);}
 		function lb(){var a=document.querySelectorAll('form.cart td.product-thumbnail a:not([data-ps-lb])');if(!a.length)return false;
-		 document.querySelectorAll('form.cart td.product-details a,form.cart td.product-name a').forEach(function(l){var t=document.createElement('span');t.textContent=l.textContent;l.replaceWith(t);});
 		 a.forEach(function(x){x.setAttribute('data-ps-lb','1');x.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var img=this.querySelector('img');
 		  lbOpen(this.getAttribute('data-large_image')||(img&&img.getAttribute('data-large_image'))||this.getAttribute('href')||(img&&img.src),this.getAttribute('title'));},true);});return true;}
 		var t2=0,iv2=setInterval(function(){if(lb()||++t2>25)clearInterval(iv2);},250);})();
