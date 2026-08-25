@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.35 (H284) — komponento pavadinimas be nuorodos i preke (savininko nurodymas).
+ *
  * Petshop Rinkiniai v1.34 (H283) — savas lightbox (Magnific siame puslapyje nepasiekiamas).
  *
  * Petshop Rinkiniai v1.33 (H282) — komponento nuotrauka atidaroma lightbox'e (Magnific), ne nuvedama i faila/preke.
@@ -647,7 +649,7 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail .image-tools{display:none!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td{line-height:1.3;height:auto!important;min-height:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details a,
-		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a{color:#2a2a2a!important;text-decoration:none}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a{color:#2a2a2a!important;text-decoration:none;pointer-events:none;cursor:default}
 		body.ps-fiksuotas-rinkinys form.cart tbody td .stock,body.ps-fiksuotas-rinkinys form.cart tbody td p.stock,
 		body.ps-fiksuotas-rinkinys form.cart tbody td [class*="stock"],body.ps-fiksuotas-rinkinys form.cart tbody td [class*="availab"],
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details p,body.ps-fiksuotas-rinkinys form.cart tbody td.product-details br,
@@ -678,6 +680,7 @@ class Petshop_Rinkiniai {
 		 function close(){w.remove();document.removeEventListener('keydown',esc);} function esc(e){if(e.key==='Escape')close();}
 		 w.addEventListener('click',close);document.addEventListener('keydown',esc);document.body.appendChild(w);}
 		function lb(){var a=document.querySelectorAll('form.cart td.product-thumbnail a:not([data-ps-lb])');if(!a.length)return false;
+		 document.querySelectorAll('form.cart td.product-details a,form.cart td.product-name a').forEach(function(l){var t=document.createElement('span');t.textContent=l.textContent;l.replaceWith(t);});
 		 a.forEach(function(x){x.setAttribute('data-ps-lb','1');x.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var img=this.querySelector('img');
 		  lbOpen(this.getAttribute('data-large_image')||(img&&img.getAttribute('data-large_image'))||this.getAttribute('href')||(img&&img.src),this.getAttribute('title'));},true);});return true;}
 		var t2=0,iv2=setInterval(function(){if(lb()||++t2>25)clearInterval(iv2);},250);})();
