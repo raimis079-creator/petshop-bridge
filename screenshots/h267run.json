@@ -1,0 +1,684 @@
+{
+ "v": "H267A",
+ "sukurta": 3824,
+ "r": {
+  "v": "H267A",
+  "logas": {
+   "kelias": "",
+   "yra": false,
+   "dydis": 0
+  },
+  "aktyvus": [
+   {
+    "id": "239",
+    "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)",
+    "len": "1232",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "329",
+    "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+    "len": "21827",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "332",
+    "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+    "len": "7855",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "375",
+    "name": "Baltymu Saltinis Dry-Run Konservai v2",
+    "len": "6572",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "461",
+    "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+    "len": "1745",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "463",
+    "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+    "len": "7585",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "464",
+    "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+    "len": "8137",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "465",
+    "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+    "len": "6656",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "469",
+    "name": "Petshop Dev App Passwords v1",
+    "len": "385",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "472",
+    "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+    "len": "10744",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "492",
+    "name": "Petshop Filtru Atidarymas v2 (CSS+JS)",
+    "len": "1619",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "494",
+    "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+    "len": "7696",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "502",
+    "name": "Higienos Modulis v1.0",
+    "len": "7560",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "503",
+    "name": "Grauziko Rusis Modulis v1.2",
+    "len": "5793",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "507",
+    "name": "Paukscio Rusis Modulis v1.3",
+    "len": "4948",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "509",
+    "name": "Zuvies Rusis Modulis v1.0",
+    "len": "5998",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "510",
+    "name": "Pasaro Forma Modulis v1.1",
+    "len": "4984",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "512",
+    "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+    "len": "9895",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "513",
+    "name": "Petshop Katalogo Auditas v1 (read-only)",
+    "len": "13522",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "514",
+    "name": "Petshop Import-Risk Recon v1 (read-only)",
+    "len": "3835",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "518",
+    "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)",
+    "len": "473",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "520",
+    "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)",
+    "len": "439",
+    "scope": "front-end",
+    "priority": "99"
+   },
+   {
+    "id": "524",
+    "name": "Petshop MnM Rinkinio Vitrina v8 (kiekiai iš meta)",
+    "len": "13577",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "525",
+    "name": "Petshop UI: kortelės + mobile sticky ATC",
+    "len": "4378",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "532",
+    "name": "Petshop MnM Fiksuoti komponentų kiekiai v2",
+    "len": "2057",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "535",
+    "name": "Petshop MnM Sutaupymo žymeklis v7 (be badge)",
+    "len": "3846",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "539",
+    "name": "Petshop Rinkinių Kūrimo Forma v2",
+    "len": "40375",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "547",
+    "name": "Petshop Susidėjimo Rinkinio Vitrina v19",
+    "len": "33237",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "550",
+    "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+    "len": "52764",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "558",
+    "name": "Petshop Choice Krepšelio Elgsena",
+    "len": "3632",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "560",
+    "name": "Petshop Rinkinio CTA Banneris kategorijose v9",
+    "len": "5582",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "561",
+    "name": "Petshop Rinkinių Gyvūno Filtras v1",
+    "len": "3399",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "562",
+    "name": "Petshop Sprendimai Shortcode Variklis v9",
+    "len": "20479",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "563",
+    "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)",
+    "len": "4634",
+    "scope": "front-end",
+    "priority": "20"
+   },
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.1 (reprice+stock+publish)",
+    "len": "22047",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "566",
+    "name": "Petshop Akcijos Shortcode v1.3",
+    "len": "5910",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.2",
+    "len": "4558",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "568",
+    "name": "Petshop Daugiau=Pigiau Display v1.2",
+    "len": "3248",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "569",
+    "name": "Petshop Pack/Rinkinys Auto-Categories v1.3",
+    "len": "5666",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "570",
+    "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+    "len": "4757",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "572",
+    "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+    "len": "42694",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "573",
+    "name": "Petshop DP Kortelės Ženkliukas v4",
+    "len": "3906",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "len": "753",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "587",
+    "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+    "len": "467",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "594",
+    "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+    "len": "890",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "609",
+    "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)",
+    "len": "1740",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "610",
+    "name": "Petshop Topbar v2",
+    "len": "752",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "613",
+    "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+    "len": "494",
+    "scope": "front-end",
+    "priority": "5"
+   },
+   {
+    "id": "614",
+    "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "len": "15512",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "615",
+    "name": "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)",
+    "len": "1707",
+    "scope": "front-end",
+    "priority": "5"
+   },
+   {
+    "id": "619",
+    "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+    "len": "4712",
+    "scope": "front-end",
+    "priority": "1"
+   },
+   {
+    "id": "628",
+    "name": "Petshop Complianz X = Atmesti v1",
+    "len": "719",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "632",
+    "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)",
+    "len": "575",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "648",
+    "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+    "len": "741",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "653",
+    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+    "len": "1974",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "685",
+    "name": "Atrinktos Prekės Modulis v1 (rotacija)",
+    "len": "9102",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "688",
+    "name": "Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)",
+    "len": "12849",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "692",
+    "name": "Petshop Maisto Tipo Mygtukai v1",
+    "len": "2261",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "693",
+    "name": "Petshop Mobile Filtru Dublio Fix v1",
+    "len": "910",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "705",
+    "name": "Petshop Produktu Nuotrauku Vienodinimas v1",
+    "len": "1537",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "707",
+    "name": "Petshop UI Lokalizacija v1",
+    "len": "1601",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "709",
+    "name": "Petshop Build-a-box UI Valymas v1",
+    "len": "1009",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "1357",
+    "name": "Feeding Calc REST v1",
+    "len": "1709",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2024",
+    "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+    "len": "1172",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2029",
+    "name": "Petshop MyAccount LT Slug 301 v1 (LIVE)",
+    "len": "1764",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2037",
+    "name": "Petshop Paskyros Sablonas v1 (LIVE)",
+    "len": "1157",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2051",
+    "name": "Petshop UI Lokalizacija v1 (LIVE)",
+    "len": "3921",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2403",
+    "name": "Petshop Stock Service v1.3 (per registra)",
+    "len": "9763",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2515",
+    "name": "Petshop Sources v2.2 (registras + palaikymas + sandelio pildymas)",
+    "len": "35954",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2868",
+    "name": "PS Masinis Sudeliojimas v6 (tik prekyboje)",
+    "len": "4931",
+    "scope": "global",
+    "priority": "5"
+   },
+   {
+    "id": "2871",
+    "name": "Petshop Vitrina Dalinimasis v1.0 (isjungti social mygtukai)",
+    "len": "1139",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "2880",
+    "name": "Petshop Admin Juosta v1.0 (parduotuve naujame lange)",
+    "len": "1170",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "3824",
+    "name": "TEMP H267 v1 (log+snippet recon)",
+    "len": "2402",
+    "scope": "global",
+    "priority": "5"
+   }
+  ],
+  "kandidatai": [
+   {
+    "id": "514",
+    "name": "Petshop Import-Risk Recon v1 (read-only)",
+    "eil": {
+     "45": "$in = implode(',', $ids);"
+    }
+   },
+   {
+    "id": "573",
+    "name": "Petshop DP Kortelės Ženkliukas v4",
+    "eil": {
+     "45": "return $badge ? ($html . $badge) : $html;"
+    }
+   }
+  ],
+  "temp": [
+   {
+    "id": "3824",
+    "name": "TEMP H267 v1 (log+snippet recon)",
+    "active": "1"
+   },
+   {
+    "id": "3823",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3822",
+    "name": "TEMP H266 v1 (rinkinio kaina recon)",
+    "active": "0"
+   },
+   {
+    "id": "3821",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3820",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3819",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3818",
+    "name": "TEMP H263 v1 (manifest recon)",
+    "active": "0"
+   },
+   {
+    "id": "3817",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3816",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3815",
+    "name": "TEMP H262 v1 (venipak label recon)",
+    "active": "0"
+   },
+   {
+    "id": "3814",
+    "name": "TEMP H262 v1 (venipak label recon)",
+    "active": "0"
+   },
+   {
+    "id": "3813",
+    "name": "TEMP H262 v1 (venipak label recon)",
+    "active": "0"
+   },
+   {
+    "id": "3812",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3811",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3810",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3809",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3808",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3807",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3806",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3805",
+    "name": "TEMP H259 v1 (venipak plugin recon)",
+    "active": "0"
+   },
+   {
+    "id": "3804",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3803",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3802",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3801",
+    "name": "TEMP H257 v1 (deploy+E2E laiskai)",
+    "active": "0"
+   },
+   {
+    "id": "3800",
+    "name": "TEMP H256 v1 (backup kelias)",
+    "active": "0"
+   }
+  ],
+  "cron": {
+   "wcdn_ts_tracker_send_event": {
+    "hook": "wcdn_ts_tracker_send_event",
+    "timestamp": 1787883830,
+    "schedule": "once_in_week",
+    "args": [],
+    "interval": 604800
+   },
+   "cmplz_every_week_hook": {
+    "hook": "cmplz_every_week_hook",
+    "timestamp": 1787904777,
+    "schedule": "cmplz_weekly",
+    "args": [],
+    "interval": 604800
+   }
+  }
+ }
+}
