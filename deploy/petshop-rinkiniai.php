@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.30 (H279) — v1.29 patikslinimai: kaina tamsi (ne temos akcijine auksine), „Turime" eilutese paslepta, eilutes kompaktiskesnes.
+ *
  * Petshop Rinkiniai v1.29 (H278) — PREKES PUSLAPIO VITRINA PAGAL TEMOS STILIU.
  *
  * Savininkas: rinkinio puslapis „ne petshop spalvu, istemptas". Priezastis —
@@ -606,9 +608,12 @@ class Petshop_Rinkiniai {
 		@media(max-width:600px){.ps-rink-img{width:56px}.ps-rink-img img{width:56px;height:56px}}
 		/* ===== v1.29: vitrina temos stiliumi (perima #524) ===== */
 		body.ps-fiksuotas-rinkinys .woocommerce-product-gallery::before{background:#365a51}
-		body.ps-fiksuotas-rinkinys .product-info .price{font-size:1.5em;font-weight:700;color:#2a2a2a;margin-bottom:.6em}
-		body.ps-fiksuotas-rinkinys .product-info .price del{color:#999;font-weight:400;font-size:.75em;margin-right:6px}
-		body.ps-fiksuotas-rinkinys .product-info .price ins{text-decoration:none;color:#2a2a2a}
+		body.ps-fiksuotas-rinkinys .product-info .price,body.ps-fiksuotas-rinkinys .price-wrapper .price,
+		body.ps-fiksuotas-rinkinys .product-info .price ins,body.ps-fiksuotas-rinkinys .product-info .price ins .amount,
+		body.ps-fiksuotas-rinkinys .product-info .price .amount{color:#2a2a2a!important;font-weight:700}
+		body.ps-fiksuotas-rinkinys .product-info .price{font-size:1.5em;margin-bottom:.6em}
+		body.ps-fiksuotas-rinkinys .product-info .price del,body.ps-fiksuotas-rinkinys .product-info .price del .amount{color:#999!important;font-weight:400;font-size:.8em;margin-right:6px}
+		body.ps-fiksuotas-rinkinys .product-info .price ins{text-decoration:none}
 		body.ps-fiksuotas-rinkinys .petshop-savings{display:none!important}
 		body.ps-fiksuotas-rinkinys .ps-rink-nauda{background:#f3f7f3;border-color:#d6e3d3;margin:0 0 16px}
 		body.ps-fiksuotas-rinkinys .ps-rink-nauda .ps-taupo td{color:#365a51;border-top-color:#d6e3d3}
@@ -617,17 +622,20 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys form.cart .mnm_child_products::before{content:"Rinkinio sudėtis";display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#365a51;padding:11px 0 7px;border-bottom:1px solid #e9e9e9}
 		body.ps-fiksuotas-rinkinys form.cart thead,body.ps-fiksuotas-rinkinys form.cart th{display:none!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody{display:block!important;border:0!important;background:transparent!important}
-		body.ps-fiksuotas-rinkinys form.cart tbody tr{display:flex!important;align-items:center;gap:12px;padding:9px 0;border:0!important;border-bottom:1px solid #f0f0f0!important;background:transparent!important;margin:0!important;border-radius:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody tr{display:flex!important;align-items:center;gap:12px;padding:7px 0;line-height:1.3;border:0!important;border-bottom:1px solid #f0f0f0!important;background:transparent!important;margin:0!important;border-radius:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody tr:last-child{border-bottom:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td{display:block!important;padding:0!important;border:0!important;width:auto!important;text-align:left!important;background:transparent!important;font-size:13.5px}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail,
 		body.ps-fiksuotas-rinkinys form.cart tbody td:first-child{flex:none;width:56px!important;margin:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td img{width:56px!important;height:56px!important;max-width:none!important;object-fit:contain;background:#fff!important;border:1px solid #eee;border-radius:4px;display:block;margin:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details,
-		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name{flex:1 1 auto;font-weight:600;line-height:1.35;color:#2a2a2a!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name{flex:1 1 auto;font-weight:600;line-height:1.35;color:#2a2a2a!important;margin:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details>*{margin:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details a,
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a{color:#2a2a2a!important;text-decoration:none}
 		body.ps-fiksuotas-rinkinys form.cart tbody td .stock,body.ps-fiksuotas-rinkinys form.cart tbody td p.stock,
+		body.ps-fiksuotas-rinkinys form.cart tbody td [class*="stock"],body.ps-fiksuotas-rinkinys form.cart tbody td [class*="availab"],
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details p,body.ps-fiksuotas-rinkinys form.cart tbody td.product-details br,
 		body.ps-fiksuotas-rinkinys form.cart tbody td .mnm_child_product_short_description,
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-quantity,body.ps-fiksuotas-rinkinys form.cart tbody td.product-price,
 		body.ps-fiksuotas-rinkinys form.cart .mnm_child_products .quantity,body.ps-fiksuotas-rinkinys form.cart .mnm_child_products input.qty,
