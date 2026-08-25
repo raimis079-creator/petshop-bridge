@@ -1,5 +1,15 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.27 (H275) — „KUR BUS MATOMAS" TAISYMAS.
+ *
+ * (1) JS pieštiVieta() naudojo neapibrėžtą `a` → ReferenceError → žymos
+ *     nepiešiamos, tikrinti() nepasiekiamas, mygtukas „Išsaugoti" lieka
+ *     užrakintas. (2) Ranka pridėtos vietos redaguojant nebuvo užkraunamos
+ *     (KAT_RANK = []) → po išsaugojimo dingdavo. (3) Savininkas: vieta
+ *     parenkama AUTOMATIŠKAI pagal komponentus — auto_vieta() serveryje
+ *     (JS autoVieta atitikmuo): tipo kategorija (dauguma) + porūšis 682/683/684.
+ *     Rankinės vietos lieka priedu.
+ *
  * Petshop Rinkiniai v1.26 (H266) — 🔴 PARDAVIMO KAINA „NEIŠSISAUGO“ (darbuotojo pastaba).
  *
  * FAKTAI: kaina išsaugoma (_regular_price, _mnm_base_price = 11.99, get_price() = 11.99),
@@ -828,9 +838,45 @@ class Petshop_Rinkiniai {
 	 * rinkodara, ne duomenu apdorojimas.
 	 */
 	private static function kategorijos( $komponentu_ids, $rankiniu = array() ) {
-		$out = array( 679 );
+		$out = array_merge( array( 679 ), self::auto_vieta( $komponentu_ids ) );
 		if ( $rankiniu ) { $out = array_merge( $out, array_map( 'intval', $rankiniu ) ); }
 		return array_values( array_unique( array_filter( array_map( 'intval', $out ) ) ) );
+	}
+
+	/**
+	 * v1.27 — automatine vieta pagal komponentus (JS autoVieta() atitikmuo, tos
+	 * pacios taisykles). Grazina [tipo_kat, porusis] arba [].
+	 */
+	public static function auto_vieta( $komponentu_ids ) {
+		$sk = array(); $pav = array();
+		foreach ( (array) $komponentu_ids as $cid ) {
+			$pr = wc_get_product( (int) $cid );
+			if ( ! $pr ) { continue; }
+			$pav[] = mb_strtolower( $pr->get_name() );
+			foreach ( wc_get_product_term_ids( (int) $cid, 'product_cat' ) as $k ) {
+				$k = (int) $k;
+				if ( in_array( $k, array( 91, 679, 682, 683, 684 ), true ) ) { continue; }
+				$sk[ $k ] = ( $sk[ $k ] ?? 0 ) + 1;
+			}
+		}
+		if ( ! $sk ) { return array(); }
+		ksort( $sk, SORT_NUMERIC );
+		$best = null; $bn = 0;
+		foreach ( $sk as $k => $n ) { if ( $n > $bn ) { $bn = $n; $best = $k; } }
+		$out = array( $best );
+		$t  = get_term( $best, 'product_cat' );
+		$nm = ( $t && ! is_wp_error( $t ) ) ? mb_strtolower( $t->name ) : '';
+		if ( mb_strpos( $nm, 'konserv' ) !== false ) { $out[] = 682; }
+		elseif ( 96 === $best ) { $out[] = 683; }
+		elseif ( 95 === $best ) {
+			$j = implode( ' ', $pav ); $kramt = false;
+			foreach ( array( 'ausis', 'ausys', 'koja', 'kojos', 'trachėj', 'kaul', 'snukis', 'kanop', 'sausgysl', 'kramtal', 'ragas', 'uodeg', 'sparn' ) as $w ) {
+				if ( mb_strpos( $j, $w ) !== false ) { $kramt = true; break; }
+			}
+			$out[] = $kramt ? 684 : 683;
+		}
+		elseif ( mb_strpos( $nm, 'skanėst' ) !== false ) { $out[] = 683; }
+		return $out;
 	}
 
 	/**
@@ -2195,6 +2241,12 @@ class Petshop_Rinkiniai {
 				$d['kaina'] = (string) get_post_meta( $saltinis, '_price', true );
 				$d['aprasymas'] = $post->post_excerpt;
 				$d['publikuoti'] = ( ! $kopija && $post->post_status === 'publish' ) ? 1 : 0;
+				/* v1.27: rankines vietos = prekes kategorijos be automatiniu */
+				$komp_ids = array_map( function ( $c ) { return (int) $c['id']; }, $d['komp'] );
+				$auto = array_merge( array( 679 ), self::auto_vieta( $komp_ids ) );
+				foreach ( array_map( 'intval', wc_get_product_term_ids( $saltinis, 'product_cat' ) ) as $kid ) {
+					if ( ! in_array( $kid, $auto, true ) ) { $d['kat_rankiniu'][] = $kid; }
+				}
 			}
 		}
 
@@ -2315,7 +2367,7 @@ class Petshop_Rinkiniai {
 			var ID  = <?php echo (int) $id; ?>;
 			var VARDAI = <?php echo wp_json_encode( $medis['vardai'] ); ?>;
 			var K   = <?php echo wp_json_encode( $pradiniai ); ?>;   /* sudetis */
-			var KAT_RANK = [];                                        /* rankiniu budu pridetos vietos */
+			var KAT_RANK = <?php echo wp_json_encode( array_values( array_map( 'intval', $d['kat_rankiniu'] ) ) ); ?>; /* rankiniu budu pridetos vietos */
 			var f = { kat:'', svoris:'', sand:'', savik:'', q:'', browse:false };
 			var PRADINE_KAINA = '<?php echo esc_js( str_replace( '.', ',', (string) $d['kaina'] ) ); ?>';
 			var laikmatis = null, uzklausa = 0;
@@ -2394,6 +2446,9 @@ class Petshop_Rinkiniai {
 			function pieštiVieta(){
 				var dp=(tipas()==='dp'), h='<div class="psr-chips">';
 				h+='<span class="psr-chip auto">'+(dp?'DAUGIAU=PIGIAU':'RINKINIAI')+'</span>';
+				var a=(!dp&&K.length)?autoVieta():{tipas:null,porusis:null,nezinomas:false};
+				if(a.tipas!==null) h+='<span class="psr-chip auto">'+esc(VARDAI[a.tipas]||a.tipas)+'</span>';
+				if(a.porusis!==null) h+='<span class="psr-chip auto">'+esc(VARDAI[a.porusis]||a.porusis)+'</span>';
 				KAT_RANK.forEach(function(id,i){
 					h+='<span class="psr-chip">'+esc(VARDAI[id]||id)+'<button type="button" data-i="'+i+'">✕</button></span>';
 				});
