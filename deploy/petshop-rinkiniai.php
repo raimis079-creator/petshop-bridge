@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.31 (H280) — sudeties eiluciu aukstis (paslepti vidiniai elementai su padding/margin).
+ *
  * Petshop Rinkiniai v1.30 (H279) — v1.29 patikslinimai: kaina tamsi (ne temos akcijine auksine), „Turime" eilutese paslepta, eilutes kompaktiskesnes.
  *
  * Petshop Rinkiniai v1.29 (H278) — PREKES PUSLAPIO VITRINA PAGAL TEMOS STILIU.
@@ -631,6 +633,10 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details,
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name{flex:1 1 auto;font-weight:600;line-height:1.35;color:#2a2a2a!important;margin:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details>*{margin:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details *{padding:0!important;margin:0!important;min-height:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail *{display:block;padding:0!important;margin:0!important;line-height:0;min-height:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody tr{min-height:0!important;height:auto!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td{line-height:1.3;height:auto!important;min-height:0!important}
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details a,
 		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a{color:#2a2a2a!important;text-decoration:none}
 		body.ps-fiksuotas-rinkinys form.cart tbody td .stock,body.ps-fiksuotas-rinkinys form.cart tbody td p.stock,
