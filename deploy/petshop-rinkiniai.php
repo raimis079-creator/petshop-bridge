@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.40 (H298) — prekes puslapiai be narsykles keso.
+ *
+ * Serveris grazina teisinga HTML (tikrinta anonimiskai, be slapuku), bet
+ * savininko narsykle rode sena versija. Puslapiai neturejo jokio Cache-Control,
+ * todel narsykle galejo laikyti HTML euristiskai. Dabar prekes puslapiams
+ * siunciamas nocache_headers() — narsykle visada perklausia serverio.
+ * Statiniai failai (css/js/img) lieka kesuojami per .htaccess kaip buvo.
+ *
  * Petshop Rinkiniai v1.39 (H295) — nuorodu nuemimas nebepriklauso nuo nuotrauku.
  *
  * v1.35 pavadinimu nuorodos buvo salinamos lightbox funkcijoje; ji nutraukia
@@ -169,6 +177,7 @@ class Petshop_Rinkiniai {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );
 		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ), 100 ); /* v1.29: po #524 ir temos */
 		add_filter( 'body_class', array( __CLASS__, 'front_klase' ) );
+		add_action( 'send_headers', array( __CLASS__, 'be_keso' ) ); /* v1.40 */
 		add_filter( 'woocommerce_single_product_image_gallery_classes', array( __CLASS__, 'galerijos_klases' ) );
 		/* 200, nes aprasymu akordeonas (512) kabinasi prio 98 — su mazesniu
 		   prioritetu jis perrasytu musu skirtuka atgal i savo psdp_render. */
@@ -572,6 +581,12 @@ class Petshop_Rinkiniai {
 			}
 		}
 		return $klases;
+	}
+
+	/** v1.40: prekes puslapio HTML narsykle nekesuoja — visada perklausia serverio. */
+	public static function be_keso() {
+		if ( is_admin() || ! function_exists( 'is_product' ) ) { return; }
+		if ( is_product() ) { nocache_headers(); }
 	}
 
 	/** v1.36: ar nauda verta rodyti (>= 3 %). Ta pati riba naudojama ir CSS klasei. */
