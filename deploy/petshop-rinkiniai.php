@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.33 (H282) — komponento nuotrauka atidaroma lightbox'e (Magnific), ne nuvedama i faila/preke.
+ *
  * Petshop Rinkiniai v1.32 (H281) — figure.woocommerce-product-gallery__image pseudo-elementai (temos) pridedavo 34 px eilutei → isjungti.
  *
  * Petshop Rinkiniai v1.31 (H280) — sudeties eiluciu aukstis (paslepti vidiniai elementai su padding/margin).
@@ -664,7 +666,13 @@ class Petshop_Rinkiniai {
 		function f(){var r=document.querySelectorAll('form.cart tr.mnm_item,form.cart tr[data-mnm_item_id]');if(!r.length)return false;
 		 r.forEach(function(row){var pid=row.getAttribute('data-mnm_item_id')||row.getAttribute('data-child_id');if(!pid)return;var n=Q[pid]||1;row.setAttribute('data-kiekis-rodyti',n);
 		  var i=row.querySelector('input.qty,input[type=number],input[name^=mnm_quantity]');if(i&&String(i.value)!==String(n)){i.value=n;try{i.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}if(window.jQuery){jQuery(i).trigger('change');}}});return true;}
-		var t=0,iv=setInterval(function(){if(f()||++t>25)clearInterval(iv);},200);window.addEventListener('load',function(){setTimeout(f,300);setTimeout(f,1500);});})();
+		var t=0,iv=setInterval(function(){if(f()||++t>25)clearInterval(iv);},200);window.addEventListener('load',function(){setTimeout(f,300);setTimeout(f,1500);});
+		/* v1.33: nuotrauka — tik lightbox, jokio perejimo */
+		function lb(){var a=document.querySelectorAll('form.cart td.product-thumbnail a');if(!a.length)return false;
+		 if(window.jQuery&&jQuery.fn.magnificPopup){jQuery('form.cart td.product-thumbnail a').each(function(){var img=this.querySelector('img');this.setAttribute('href',this.getAttribute('data-large_image')||(img&&img.getAttribute('data-large_image'))||this.getAttribute('href'));}).magnificPopup({type:'image',gallery:{enabled:true},mainClass:'mfp-fade',closeOnContentClick:true,image:{titleSrc:'title'}});}
+		 else{a.forEach(function(x){x.addEventListener('click',function(e){e.preventDefault();});});}
+		 return true;}
+		var t2=0,iv2=setInterval(function(){if(lb()||++t2>25)clearInterval(iv2);},250);})();
 		</script>
 		<?php endif; ?>
 		<?php
