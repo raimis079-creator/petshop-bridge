@@ -1,0 +1,179 @@
+{
+ "v": "H274A",
+ "sukurta": 3831,
+ "r": {
+  "v": "H274A",
+  "partijos": [
+   {
+    "id": "2",
+    "tiekejas": "zb",
+    "busena": "uzsakyta",
+    "sukurta": "2026-08-06 12:26:58",
+    "uzsakyta": "2026-08-25 14:35:14",
+    "gauta": null
+   },
+   {
+    "id": "5",
+    "tiekejas": "vf",
+    "busena": "uzsakyta",
+    "sukurta": "2026-08-23 20:07:30",
+    "uzsakyta": "2026-08-24 22:16:43",
+    "gauta": null
+   },
+   {
+    "id": "6",
+    "tiekejas": "ambrosia",
+    "busena": "gauta",
+    "sukurta": "2026-08-23 20:07:30",
+    "uzsakyta": "2026-08-24 19:55:51",
+    "gauta": "2026-08-25 14:35:56"
+   },
+   {
+    "id": "7",
+    "tiekejas": "prins",
+    "busena": "uzsakyta",
+    "sukurta": "2026-08-24 22:36:07",
+    "uzsakyta": "2026-08-24 22:39:14",
+    "gauta": null
+   },
+   {
+    "id": "8",
+    "tiekejas": "vf",
+    "busena": "kaupiama",
+    "sukurta": "2026-08-24 22:47:19",
+    "uzsakyta": null,
+    "gauta": null
+   },
+   {
+    "id": "9",
+    "tiekejas": "prins",
+    "busena": "uzsakyta",
+    "sukurta": "2026-08-24 22:50:13",
+    "uzsakyta": "2026-08-24 22:53:31",
+    "gauta": null
+   }
+  ],
+  "eilutes": [
+   {
+    "id": "2",
+    "partija_id": "2",
+    "product_id": "12636",
+    "order_id": "34882",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null
+   },
+   {
+    "id": "9",
+    "partija_id": "5",
+    "product_id": "17978",
+    "order_id": "35068",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null
+   },
+   {
+    "id": "10",
+    "partija_id": "6",
+    "product_id": "19756",
+    "order_id": "35068",
+    "qty": "1",
+    "qty_gauta": "1",
+    "galiojimas": null
+   },
+   {
+    "id": "11",
+    "partija_id": "2",
+    "product_id": "12452",
+    "order_id": "35067",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null
+   },
+   {
+    "id": "12",
+    "partija_id": "5",
+    "product_id": "17950",
+    "order_id": "35066",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null
+   },
+   {
+    "id": "13",
+    "partija_id": "2",
+    "product_id": "12453",
+    "order_id": "35065",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null
+   },
+   {
+    "id": "14",
+    "partija_id": "7",
+    "product_id": "14932",
+    "order_id": "0",
+    "qty": "2",
+    "qty_gauta": null,
+    "galiojimas": null
+   },
+   {
+    "id": "15",
+    "partija_id": "8",
+    "product_id": "17947",
+    "order_id": "35067",
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null
+   },
+   {
+    "id": "16",
+    "partija_id": "9",
+    "product_id": "14932",
+    "order_id": "0",
+    "qty": "2",
+    "qty_gauta": null,
+    "galiojimas": null
+   }
+  ],
+  "av_stock_metodai": [
+   "init(0)",
+   "sortable(1)",
+   "sort_query(1)",
+   "filter_dropdown(0)",
+   "filter_query(1)",
+   "qty(1)",
+   "has(2)",
+   "decrease(3)",
+   "increase(3)",
+   "apsaugotas_rasymas(2)",
+   "log(4)",
+   "field(0)",
+   "save(1)",
+   "column(1)",
+   "column_value(2)",
+   "quick_edit(2)",
+   "quick_edit_js(0)",
+   "quick_edit_save(2)"
+  ],
+  "grazinta": [
+   {
+    "pid": 19756,
+    "gauta": 1,
+    "metodas": "decrease",
+    "pries": {
+     "stock": "20",
+     "own": "1"
+    },
+    "po": {
+     "stock": "20",
+     "own": "0"
+    }
+   }
+  ],
+  "liko": [
+   0,
+   0
+  ]
+ }
+}
