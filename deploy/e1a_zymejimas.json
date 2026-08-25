@@ -1,0 +1,53 @@
+{
+ "v": "E1AM1",
+ "ts": "2026-08-25T22:32:46+00:00",
+ "pries_35088": {
+  "statusas": "on-hold",
+  "email": "terra@gyvunai.lt",
+  "mokejimas": "bacs",
+  "subtotal": 14.37,
+  "discount": "0",
+  "shipping": "1.78",
+  "tax": "3.39",
+  "total": "19.54",
+  "kuponai": [],
+  "_ps_shipments": "1",
+  "_ps_kanalai": "{\"pirmas\":{\"utm_source\":\"test\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"e1a\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"landing_url\":\"https://dev.avesa.lt/?utm_source=test&utm_medium=cpc&utm_campaign=e1a\",\"laikas\":\"2026-08-26 01:24:09\",\"kanalas\":\"mokamas\"},\"paskutinis\":{\"utm_source\":\"test\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"e1a\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"landing_url\":\"https://dev.avesa.lt/?utm_source=test&utm_medium=cpc&utm_campaign=e1a\",\"laikas\":\"2026-08-26 01:24:09\",\"kanalas\":\"mokamas\"},\"sutikimas_statistika\":1,\"fiksuota_at\":\"2026-08-25 22:30:25\",\"modulis\":\"kanalai/1.1\"}",
+  "eilutes": [
+   {
+    "item_id": 731,
+    "pav": "Exclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg",
+    "pid": 18536,
+    "kiekis": 1,
+    "subtotal": "14.371901",
+    "total": "14.371901",
+    "total_tax": "3.02",
+    "sav_vnt": "11.9510",
+    "sav_slt": "pardavimai",
+    "mnm_key": "",
+    "mnm_cont": "",
+    "dovana": "",
+    "sandelis": "vf"
+   }
+  ],
+  "fees": []
+ },
+ "zymejimas": {
+  "35087": {
+   "buvo": "on-hold",
+   "tapo": "processing",
+   "apmoketa": "2026-08-26 01:32:46",
+   "faktas_meta": "2026-08-25 22:32:47",
+   "faktu_uzs": 1,
+   "faktu_eil": 15
+  },
+  "35088": {
+   "buvo": "on-hold",
+   "tapo": "processing",
+   "apmoketa": "2026-08-26 01:32:48",
+   "faktas_meta": "2026-08-25 22:32:48",
+   "faktu_uzs": 1,
+   "faktu_eil": 1
+  }
+ }
+}
