@@ -1,0 +1,711 @@
+{
+ "v": "E1AG2",
+ "ts": "2026-08-25T23:08:35+00:00",
+ "versija": "1.3",
+ "schema_ver": "2",
+ "stulpeliai": {
+  "ps_fakt_uzsakymai": {
+   "apmoketa_at": "datetime NULL def=NULL",
+   "diena": "date NULL def=NULL"
+  },
+  "ps_fakt_eilutes": {
+   "apmoketa_at": "datetime NULL def=NULL",
+   "kaina_reguliari_ct": "bigint(20) NULL def=NULL",
+   "diena": "date NULL def=NULL"
+  }
+ },
+ "stulpeliu_sk": {
+  "ps_fakt_uzsakymai": 55,
+  "ps_fakt_eilutes": 38
+ },
+ "dry": {
+  "dry": true,
+  "uzsakymai": [
+   {
+    "id": 35087,
+    "apmoketa_utc": "2026-08-25 22:32:46",
+    "buvo": "2026-08-26",
+    "tampa": "2026-08-26"
+   },
+   {
+    "id": 35088,
+    "apmoketa_utc": "2026-08-25 22:32:48",
+    "buvo": "2026-08-26",
+    "tampa": "2026-08-26"
+   },
+   {
+    "id": 35090,
+    "apmoketa_utc": "2026-08-25 22:55:56",
+    "buvo": "2026-08-26",
+    "tampa": "2026-08-26"
+   }
+  ],
+  "eilutes": [
+   {
+    "id": 3,
+    "uzs": 35087,
+    "preke": 34944,
+    "reg_buvo": "1320",
+    "reg_tampa": 1091,
+    "pries_kupona_isvestine": 0,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 4,
+    "uzs": 35087,
+    "preke": 19574,
+    "reg_buvo": "220",
+    "reg_tampa": 182,
+    "pries_kupona_isvestine": 182,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 5,
+    "uzs": 35087,
+    "preke": 19566,
+    "reg_buvo": "245",
+    "reg_tampa": 202,
+    "pries_kupona_isvestine": 203,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 6,
+    "uzs": 35087,
+    "preke": 19586,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 7,
+    "uzs": 35087,
+    "preke": 19594,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 8,
+    "uzs": 35087,
+    "preke": 19500,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 9,
+    "uzs": 35087,
+    "preke": 19508,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 10,
+    "uzs": 35087,
+    "preke": 19492,
+    "reg_buvo": "220",
+    "reg_tampa": 182,
+    "pries_kupona_isvestine": 182,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 11,
+    "uzs": 35087,
+    "preke": 19483,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 12,
+    "uzs": 35087,
+    "preke": 19534,
+    "reg_buvo": "269",
+    "reg_tampa": 222,
+    "pries_kupona_isvestine": 222,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 13,
+    "uzs": 35087,
+    "preke": 19530,
+    "reg_buvo": "269",
+    "reg_tampa": 222,
+    "pries_kupona_isvestine": 222,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 14,
+    "uzs": 35087,
+    "preke": 19542,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 15,
+    "uzs": 35087,
+    "preke": 19475,
+    "reg_buvo": "245",
+    "reg_tampa": 202,
+    "pries_kupona_isvestine": 202,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 16,
+    "uzs": 35087,
+    "preke": 16305,
+    "reg_buvo": "129",
+    "reg_tampa": 107,
+    "pries_kupona_isvestine": 0,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 17,
+    "uzs": 35087,
+    "preke": 12837,
+    "reg_buvo": "1809",
+    "reg_tampa": 1495,
+    "pries_kupona_isvestine": 1495,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 18,
+    "uzs": 35088,
+    "preke": 18536,
+    "reg_buvo": "1739",
+    "reg_tampa": 1437,
+    "pries_kupona_isvestine": 1437,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 19,
+    "uzs": 35090,
+    "preke": 19760,
+    "reg_buvo": "5999",
+    "reg_tampa": 4958,
+    "pries_kupona_isvestine": 4958,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 20,
+    "uzs": 35090,
+    "preke": 22912,
+    "reg_buvo": "1130",
+    "reg_tampa": 934,
+    "pries_kupona_isvestine": 934,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 21,
+    "uzs": 35090,
+    "preke": 18332,
+    "reg_buvo": "1180",
+    "reg_tampa": 975,
+    "pries_kupona_isvestine": 975,
+    "diena": "2026-08-26"
+   }
+  ],
+  "uzs_sk": 3,
+  "eil_sk": 19
+ },
+ "apply": {
+  "dry": false,
+  "uzsakymai": [
+   {
+    "id": 35087,
+    "apmoketa_utc": "2026-08-25 22:32:46",
+    "buvo": "2026-08-26",
+    "tampa": "2026-08-26"
+   },
+   {
+    "id": 35088,
+    "apmoketa_utc": "2026-08-25 22:32:48",
+    "buvo": "2026-08-26",
+    "tampa": "2026-08-26"
+   },
+   {
+    "id": 35090,
+    "apmoketa_utc": "2026-08-25 22:55:56",
+    "buvo": "2026-08-26",
+    "tampa": "2026-08-26"
+   }
+  ],
+  "eilutes": [
+   {
+    "id": 3,
+    "uzs": 35087,
+    "preke": 34944,
+    "reg_buvo": "1320",
+    "reg_tampa": 1091,
+    "pries_kupona_isvestine": 0,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 4,
+    "uzs": 35087,
+    "preke": 19574,
+    "reg_buvo": "220",
+    "reg_tampa": 182,
+    "pries_kupona_isvestine": 182,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 5,
+    "uzs": 35087,
+    "preke": 19566,
+    "reg_buvo": "245",
+    "reg_tampa": 202,
+    "pries_kupona_isvestine": 203,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 6,
+    "uzs": 35087,
+    "preke": 19586,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 7,
+    "uzs": 35087,
+    "preke": 19594,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 8,
+    "uzs": 35087,
+    "preke": 19500,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 9,
+    "uzs": 35087,
+    "preke": 19508,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 10,
+    "uzs": 35087,
+    "preke": 19492,
+    "reg_buvo": "220",
+    "reg_tampa": 182,
+    "pries_kupona_isvestine": 182,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 11,
+    "uzs": 35087,
+    "preke": 19483,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 12,
+    "uzs": 35087,
+    "preke": 19534,
+    "reg_buvo": "269",
+    "reg_tampa": 222,
+    "pries_kupona_isvestine": 222,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 13,
+    "uzs": 35087,
+    "preke": 19530,
+    "reg_buvo": "269",
+    "reg_tampa": 222,
+    "pries_kupona_isvestine": 222,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 14,
+    "uzs": 35087,
+    "preke": 19542,
+    "reg_buvo": "236",
+    "reg_tampa": 195,
+    "pries_kupona_isvestine": 195,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 15,
+    "uzs": 35087,
+    "preke": 19475,
+    "reg_buvo": "245",
+    "reg_tampa": 202,
+    "pries_kupona_isvestine": 202,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 16,
+    "uzs": 35087,
+    "preke": 16305,
+    "reg_buvo": "129",
+    "reg_tampa": 107,
+    "pries_kupona_isvestine": 0,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 17,
+    "uzs": 35087,
+    "preke": 12837,
+    "reg_buvo": "1809",
+    "reg_tampa": 1495,
+    "pries_kupona_isvestine": 1495,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 18,
+    "uzs": 35088,
+    "preke": 18536,
+    "reg_buvo": "1739",
+    "reg_tampa": 1437,
+    "pries_kupona_isvestine": 1437,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 19,
+    "uzs": 35090,
+    "preke": 19760,
+    "reg_buvo": "5999",
+    "reg_tampa": 4958,
+    "pries_kupona_isvestine": 4958,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 20,
+    "uzs": 35090,
+    "preke": 22912,
+    "reg_buvo": "1130",
+    "reg_tampa": 934,
+    "pries_kupona_isvestine": 934,
+    "diena": "2026-08-26"
+   },
+   {
+    "id": 21,
+    "uzs": 35090,
+    "preke": 18332,
+    "reg_buvo": "1180",
+    "reg_tampa": 975,
+    "pries_kupona_isvestine": 975,
+    "diena": "2026-08-26"
+   }
+  ],
+  "uzs_sk": 3,
+  "eil_sk": 19
+ },
+ "po_uzsakymai": [
+  {
+   "uzsakymas_id": "35087",
+   "apmoketa_at": "2026-08-25 22:32:46",
+   "diena": "2026-08-26",
+   "fakt_versija": "2"
+  },
+  {
+   "uzsakymas_id": "35088",
+   "apmoketa_at": "2026-08-25 22:32:48",
+   "diena": "2026-08-26",
+   "fakt_versija": "2"
+  },
+  {
+   "uzsakymas_id": "35090",
+   "apmoketa_at": "2026-08-25 22:55:56",
+   "diena": "2026-08-26",
+   "fakt_versija": "2"
+  }
+ ],
+ "po_eilutes": [
+  {
+   "id": "3",
+   "uzsakymas_id": "35087",
+   "preke_id": "34944",
+   "pav": "Konservu deze 400 Be vistienos",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "0",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "0",
+   "kaina_reguliari_ct": "1091",
+   "pries_kupona": "0"
+  },
+  {
+   "id": "4",
+   "uzsakymas_id": "35087",
+   "preke_id": "19574",
+   "pav": "Animonda GranCarno Adult Beef:",
+   "diena": "2026-08-26",
+   "kiekis": "5",
+   "kaina_ct": "909",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "182",
+   "kaina_reguliari_ct": "182",
+   "pries_kupona": "909"
+  },
+  {
+   "id": "5",
+   "uzsakymas_id": "35087",
+   "preke_id": "19566",
+   "pav": "Animonda GranCarno Adult Duck:",
+   "diena": "2026-08-26",
+   "kiekis": "2",
+   "kaina_ct": "405",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "203",
+   "kaina_reguliari_ct": "202",
+   "pries_kupona": "405"
+  },
+  {
+   "id": "6",
+   "uzsakymas_id": "35087",
+   "preke_id": "19586",
+   "pav": "Animonda GranCarno Adult Beef ",
+   "diena": "2026-08-26",
+   "kiekis": "2",
+   "kaina_ct": "390",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "195",
+   "kaina_reguliari_ct": "195",
+   "pries_kupona": "390"
+  },
+  {
+   "id": "7",
+   "uzsakymas_id": "35087",
+   "preke_id": "19594",
+   "pav": "Animonda GranCarno Adult Beef ",
+   "diena": "2026-08-26",
+   "kiekis": "2",
+   "kaina_ct": "390",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "195",
+   "kaina_reguliari_ct": "195",
+   "pries_kupona": "390"
+  },
+  {
+   "id": "8",
+   "uzsakymas_id": "35087",
+   "preke_id": "19500",
+   "pav": "Animonda GranCarno Adult: kons",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "195",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "195",
+   "kaina_reguliari_ct": "195",
+   "pries_kupona": "195"
+  },
+  {
+   "id": "9",
+   "uzsakymas_id": "35087",
+   "preke_id": "19508",
+   "pav": "Animonda GranCarno Adult: kons",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "195",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "195",
+   "kaina_reguliari_ct": "195",
+   "pries_kupona": "195"
+  },
+  {
+   "id": "10",
+   "uzsakymas_id": "35087",
+   "preke_id": "19492",
+   "pav": "Animonda GranCarno Adult: kons",
+   "diena": "2026-08-26",
+   "kiekis": "2",
+   "kaina_ct": "364",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "182",
+   "kaina_reguliari_ct": "182",
+   "pries_kupona": "364"
+  },
+  {
+   "id": "11",
+   "uzsakymas_id": "35087",
+   "preke_id": "19483",
+   "pav": "Animonda GranCarno Adult: kons",
+   "diena": "2026-08-26",
+   "kiekis": "2",
+   "kaina_ct": "390",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "195",
+   "kaina_reguliari_ct": "195",
+   "pries_kupona": "390"
+  },
+  {
+   "id": "12",
+   "uzsakymas_id": "35087",
+   "preke_id": "19534",
+   "pav": "Animonda GranCarno Adult Sensi",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "222",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "222",
+   "kaina_reguliari_ct": "222",
+   "pries_kupona": "222"
+  },
+  {
+   "id": "13",
+   "uzsakymas_id": "35087",
+   "preke_id": "19530",
+   "pav": "Animonda GranCarno Adult Sensi",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "222",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "222",
+   "kaina_reguliari_ct": "222",
+   "pries_kupona": "222"
+  },
+  {
+   "id": "14",
+   "uzsakymas_id": "35087",
+   "preke_id": "19542",
+   "pav": "Animonda GranCarno Adult Rumen",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "195",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "195",
+   "kaina_reguliari_ct": "195",
+   "pries_kupona": "195"
+  },
+  {
+   "id": "15",
+   "uzsakymas_id": "35087",
+   "preke_id": "19475",
+   "pav": "Animonda GranCarno Adult: kons",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "202",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "202",
+   "kaina_reguliari_ct": "202",
+   "pries_kupona": "202"
+  },
+  {
+   "id": "16",
+   "uzsakymas_id": "35087",
+   "preke_id": "16305",
+   "pav": "Ruda kiaulės ausis, 1 vnt.",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "0",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "0",
+   "kaina_reguliari_ct": "107",
+   "pries_kupona": "0"
+  },
+  {
+   "id": "17",
+   "uzsakymas_id": "35087",
+   "preke_id": "12837",
+   "pav": "Monge BWild Kitten visavertis ",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "1495",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "1495",
+   "kaina_reguliari_ct": "1495",
+   "pries_kupona": "1495"
+  },
+  {
+   "id": "18",
+   "uzsakymas_id": "35088",
+   "preke_id": "18536",
+   "pav": "Exclusion Mediterraneo Monopro",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "1437",
+   "nuolaida_ct": "0",
+   "kaina_vnt_ct": "1437",
+   "kaina_reguliari_ct": "1437",
+   "pries_kupona": "1437"
+  },
+  {
+   "id": "19",
+   "uzsakymas_id": "35090",
+   "preke_id": "19760",
+   "pav": "AMBROSIA begrūdis su ėriena ir",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "4462",
+   "nuolaida_ct": "496",
+   "kaina_vnt_ct": "4462",
+   "kaina_reguliari_ct": "4958",
+   "pries_kupona": "4958"
+  },
+  {
+   "id": "20",
+   "uzsakymas_id": "35090",
+   "preke_id": "22912",
+   "pav": "691756 FURminator deShedding š",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "840",
+   "nuolaida_ct": "94",
+   "kaina_vnt_ct": "840",
+   "kaina_reguliari_ct": "934",
+   "pries_kupona": "934"
+  },
+  {
+   "id": "21",
+   "uzsakymas_id": "35090",
+   "preke_id": "18332",
+   "pav": "Hikari  Cichlid Excel Mini, 25",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "kaina_ct": "878",
+   "nuolaida_ct": "97",
+   "kaina_vnt_ct": "878",
+   "kaina_reguliari_ct": "975",
+   "pries_kupona": "975"
+  }
+ ],
+ "null_reguliariu": 0,
+ "be_dienos": 0,
+ "pinigu_kontrole": [
+  {
+   "uzsakymas_id": "35087",
+   "kaina": "5574",
+   "nuol": "0",
+   "pvm": "1172",
+   "sav": "3773"
+  },
+  {
+   "uzsakymas_id": "35088",
+   "kaina": "1437",
+   "nuol": "0",
+   "pvm": "302",
+   "sav": "1195"
+  },
+  {
+   "uzsakymas_id": "35090",
+   "kaina": "6180",
+   "nuol": "687",
+   "pvm": "1298",
+   "sav": "4665"
+  }
+ ]
+}
