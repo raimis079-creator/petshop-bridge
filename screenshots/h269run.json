@@ -1,0 +1,19 @@
+{
+ "v": "H269A",
+ "sukurta": 3826,
+ "r": {
+  "v": "H269A",
+  "watch_dydis": 4426,
+  "watch": [
+   "32: if (!is_file(PSW_STATE)) {"
+  ],
+  "s514": {
+   "active": "1",
+   "len": 3835,
+   "rasytojai": [],
+   "pirmos": "/** Petshop Import-Risk Recon v1 (read-only, token-gated) */ | if (!defined('ABSPATH')) return; |  | add_action('wp_loaded', function(){ | if (empty($_GET['ps_imprisk']) || (isset($_GET['k']) ? $_GET['k'] : '') !== | global $wpdb; | @set_time_limit(120); |  | $out = array(); |  | /* ---- 1) WP All Import konfiguracijos ---- */ | $tbl = $wpdb->prefix.'pmxi_imports';"
+  }
+ },
+ "s514_off": 200,
+ "s514_active_po": false
+}
