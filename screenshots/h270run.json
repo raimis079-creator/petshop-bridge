@@ -1,0 +1,22 @@
+{
+ "v": "H270A",
+ "sukurta": 3827,
+ "r": {
+  "v": "H270A",
+  "ps-backup.php": [
+   "5: * Paleidimas (DirectAdmin cron per URL — CLI šiame hostinge neprieinamas):",
+   "26: //   2) HTTP su slaptu raktu — DirectAdmin cron per URL (dabartinis kelias)",
+   "28: const PS_CRON_KEY = 'bkY7mQ2vLx8nRt4pWz';",
+   "29: $ps_web_key_ok = isset($_GET['ps_backup_key']) && hash_equals(PS_CRON_KEY, (string)$_GET['ps_backup_key']);",
+   "39: @ignore_user_abort(true);   // cron gali nutraukti rysi — darbas privalo baigtis",
+   "43: // HTTP kelyje atsakymas turi buti matomas cron zurnale"
+  ],
+  "ps-backup.php_eil": 393,
+  "ps-backup-watch.php": [
+   "5: * Kviečiamas atskiru cron'u kasdien 10:00. Skaito .ps-backup-state.json ir",
+   "8: *   - last_run senesnis nei MAX_AMZIUS valandų  (cron nepasileido)",
+   "49: . \"CRON GREIČIAUSIAI NEBEPASILEIDŽIA.\";"
+  ],
+  "ps-backup-watch.php_eil": 95
+ }
+}
