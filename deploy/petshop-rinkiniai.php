@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.38 (H294) — VITRINA VEIKIA IR SENIEMS RINKINIAMS.
+ *
+ * Animonda #35079 buvo be `_petshop_component_quantities` meta (sukurtas ne
+ * siuo langu), todel body klase nebuvo dedama: klientas mate neapdorota MnM
+ * lentele su „PRODUCT / QUANTITY". Dabar sudetis imama per kiekiai(): meta,
+ * o jos nesant — is `wc_mnm_child_items` (po 1 vnt.). Rinkiniu pozymis dabar
+ * yra PREKES TIPAS (mix-and-match), ne meta buvimas.
+ *
  * Petshop Rinkiniai v1.37 (H293) — „PRODUCT/QUANTITY" verciami ir JS'u.
  *
  * Iki siol antrastes buvo tik PASLEPTOS CSS'u (::after su lietuvisku tekstu).
@@ -124,6 +132,24 @@ class Petshop_Rinkiniai {
 	const VERSIJA = '1.31';   /* v1.31: siuksline — ketvirta busena toje pacioje lenteleje */
 	const SLUG    = 'ps-rinkiniai';
 	const META_KIEKIAI = '_petshop_component_quantities';
+
+	/**
+	 * v1.38 — rinkinio sudetis [product_id => kiekis].
+	 *
+	 * Pirmiausia musu meta (ten irasyti TIKRI kiekiai). Jos nesant — MnM
+	 * lentele: seni rinkiniai kurti ne siuo langu, bet klientui atrodyti turi
+	 * vienodai. Ten kiekio nera, todel po 1 vnt.
+	 */
+	public static function kiekiai( $pid ) {
+		$k = json_decode( (string) get_post_meta( (int) $pid, self::META_KIEKIAI, true ), true );
+		if ( is_array( $k ) && $k ) { return array_map( 'intval', $k ); }
+		global $wpdb;
+		$t = $wpdb->prefix . 'wc_mnm_child_items';
+		$ids = $wpdb->get_col( $wpdb->prepare( "SELECT product_id FROM $t WHERE container_id = %d ORDER BY menu_order", (int) $pid ) );
+		$out = array();
+		foreach ( (array) $ids as $id ) { $out[ (int) $id ] = 1; }
+		return $out;
+	}
 	const META_KAT_OFF = '_ps_rink_kat_off';   /* v1.36: rankomis nuimtos automatines vietos */
 	const NAUDA_MIN_PROC = 3;                  /* v1.36: mazesne nauda nerodoma */
 
@@ -497,8 +523,8 @@ class Petshop_Rinkiniai {
 		$pid = $product->get_id();
 		if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return; }   /* DP tvarko 570 */
 
-		$kiekiai = json_decode( (string) get_post_meta( $pid, self::META_KIEKIAI, true ), true );
-		if ( ! is_array( $kiekiai ) || ! $kiekiai ) { return; }
+		$kiekiai = self::kiekiai( $pid );
+		if ( ! $kiekiai ) { return; }
 
 		$atskirai = 0; $vnt = 0;
 		foreach ( $kiekiai as $cid => $kiek ) {
@@ -532,7 +558,8 @@ class Petshop_Rinkiniai {
 	public static function front_klase( $klases ) {
 		if ( is_product() ) {
 			global $post;
-			if ( $post && get_post_meta( $post->ID, self::META_KIEKIAI, true ) ) {
+			$pr = $post ? wc_get_product( $post->ID ) : null;
+			if ( $pr && ( $pr->is_type( 'mix-and-match' ) || get_post_meta( $post->ID, self::META_KIEKIAI, true ) ) ) {
 				$klases[] = 'ps-fiksuotas-rinkinys';
 				if ( ! self::nauda_verta( (int) $post->ID ) ) { $klases[] = 'ps-rink-be-naudos'; }
 			}
@@ -542,8 +569,8 @@ class Petshop_Rinkiniai {
 
 	/** v1.36: ar nauda verta rodyti (>= 3 %). Ta pati riba naudojama ir CSS klasei. */
 	public static function nauda_verta( $pid ) {
-		$kiekiai = json_decode( (string) get_post_meta( $pid, self::META_KIEKIAI, true ), true );
-		if ( ! is_array( $kiekiai ) || ! $kiekiai ) { return false; }
+		$kiekiai = self::kiekiai( $pid );
+		if ( ! $kiekiai ) { return false; }
 		$p = wc_get_product( $pid );
 		if ( ! $p ) { return false; }
 		$atskirai = 0;
@@ -573,8 +600,8 @@ class Petshop_Rinkiniai {
 		$zenklas = '';
 		global $post;
 		if ( $post ) {
-			$kiekiai = json_decode( (string) get_post_meta( $post->ID, self::META_KIEKIAI, true ), true );
-			if ( is_array( $kiekiai ) && $kiekiai ) {
+			$kiekiai = self::kiekiai( $post->ID );
+			if ( $kiekiai ) {
 				$vnt = array_sum( array_map( 'intval', $kiekiai ) );
 				$zodis = ( $vnt === 1 ) ? 'PREKĖ' : ( ( $vnt % 10 >= 2 && $vnt % 10 <= 9 && ( $vnt % 100 < 10 || $vnt % 100 >= 20 ) ) ? 'PREKĖS' : 'PREKIŲ' );
 				$zenklas = $vnt . '\A' . $zodis;
@@ -708,7 +735,7 @@ class Petshop_Rinkiniai {
 		/* Quick view ant rinkiniu korteliu nereikalingas (perimta is #524) */
 		.product-small.product_cat-konservu-rinkiniai .quick-view,.product-small.product_cat-skanestu-rinkiniai .quick-view,.product-small.product_cat-kramtalu-rinkiniai .quick-view,.product-small.product_cat-rinkiniai .quick-view{display:none!important}
 		</style>
-		<?php if ( $post && is_array( $kiekiai ?? null ) && $kiekiai ) : ?>
+		<?php if ( $post && ! empty( $kiekiai ) ) : ?>
 		<script id="ps-rink-vitrina">
 		(function(){var Q=<?php echo wp_json_encode( array_map( 'intval', $kiekiai ) ); ?>;
 		var LT={'product':'Prekė','quantity':'Kiekis','price':'Kaina','details':'Prekė','total':'Viso'};
