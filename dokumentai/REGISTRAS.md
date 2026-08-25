@@ -7,7 +7,7 @@
 > Būklės iš STATE.md NEIMTI — ten sesijų naratyvas, kuris prieštarauja pats sau.
 > Jei registras ir STATE.md nesutampa — **galioja REGISTRAS**.
 
-**Atnaujinta:** 2026-08-26 (★ ATASKAITŲ SISTEMA §8ll E0 RECON S1260–S1269: 5 tilto runai, 137 failai, 0 spėjimų; **Q7 nereikalingas — Desk neliečiamas**; `ps_shipments` negali būti `ps_fakt_siuntos`; **T-0 valymo spraga**; UTM/refund/kainų-istorijos kabliukų 0; trys moduliai, kurių plane nėra) · ankstesnis: 2026-08-24 naktis (§8kk H233–H251) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
+**Atnaujinta:** 2026-08-26 vakaras (★ ATASKAITŲ SISTEMA §8mm **E1a UŽDARYTAS** S1270–S1281: 3 realūs užsakymai 35087/35088/35090, faktų lentelės pildomos; **trys klaidos rastos ir uždarytos** — #22 PVM vienetai agregatoriuje, dviguba nuolaida prieš deploy'ą, #23 reguliari kaina su PVM; laiko zona UTC + `diena` DATE; planas v1.4) · ankstesnis: 2026-08-26 (§8ll E0 recon) · **Launch:** vidinis 2026-10-01 · sutartinis buferis 2026-10-15
 
 ---
 
@@ -4687,12 +4687,12 @@ turi imti Desk `STATUSAI` žemėlapį (desk:275–281), ne WC septynetuką.
 
 | # | Klausimas |
 |---|---|
-| **Q-E0-1** | Ar `do_action('petshop_siunta_sukurta')` eina į `petshop-siuntu-laiskai.php:77`, o Desk lieka nepaliestas? |
-| **Q-E0-2** | Patvirtinti: `ps_fakt_siuntos` = atskira lentelė (recon atsakė iš esmės) |
-| **Q-E0-3** | `petshop-pardavimai.php` — palikti ir §5.4/§5.5 statyti ant jo meta, ar perkelti į faktus? |
-| **Q-E0-4** | Kur nuimam PVM: rašymo momentu ar ekrane? |
-| **Q-E0-5** | Email atributacija be paspaudimo laiko: `sent_at` bazė ar naujas laukas kontrakte? |
-| **Q-E0-7** | Ar T-0 sąrašą papildom: išvalyti `ps_shipments` + `ps_carts` + `ps_ataskaitu_dienos` testinius įrašus? |
+| ~~Q-E0-1~~ | ✅ **UŽDARYTA 2026-08-26:** `do_action` → `petshop-siuntu-laiskai.php:77`, Desk neliečiamas (§8ll, §8mm) | — | — |
+| ~~Q-E0-2~~ | ✅ **UŽDARYTA:** `ps_fakt_siuntos` — atskira lentelė su `shipment_id` nuoroda | — | — |
+| ~~Q-E0-3~~ | ✅ **UŽDARYTA:** `petshop-pardavimai.php` paliekamas; 5.4/5.5 iš faktų, jo meta — kontrolinis palyginimas | — | — |
+| ~~Q-E0-4~~ | ✅ **UŽDARYTA:** WC saugo `line_total` (be PVM) + `line_tax`; faktas kopijuoja abu. Neto iš bruto per tarifą niekada | — | — |
+| ~~Q-E0-5~~ | ✅ **UŽDARYTA:** email atributacija per UTM laiškų nuorodose. Sender pusėje UTM įjungia Raimis — **T-0 punktas** | — | prieš T-0 |
+| ~~Q-E0-7~~ | ✅ **UŽDARYTA:** T-0 valymo sąrašas (6 punktai, §4.9) + `perskaiciuoti($nuo,$iki)` į E1b | — | prieš T-0 |
 
 Q-E0-6 (papildomas recon runas) — **uždarytas** runu #4949.
 
@@ -4703,6 +4703,52 @@ Q-E0-6 (papildomas recon runas) — **uždarytas** runu #4949.
 - Neištirta, kas rašo `ps_ataskaitu_dienos` tipus `iseme_p1/p2/p3`, `kabliukas`,
   `uzdarytoja`, `parduota_sd`. Prireiks E3.
 - Sritys `anketa` ir `rec` — **0 eilučių**, nors §1 jas mini kaip veikiančias.
+
+---
+
+## 8mm. ★ ATASKAITŲ SISTEMA — E1a UŽDARYTAS (faktų minimumas) — 2026-08-26 [S1270–S1281]
+
+**Statusas:** ✅ E1a baigtas 3 realiais dev užsakymais. Planas **v1.4**.
+**Serveryje:** `petshop-faktai.php` **v1.3** (md5 `a0587d1f`) · `petshop-kanalai.php` **v1.1** (md5 `39c3fb61`)
+**Lentelės:** `ps_fakt_uzsakymai` (55 st., 3 eil.) · `ps_fakt_eilutes` (38 st., 19 eil.) — InnoDB/DYNAMIC/utf8mb4, `ps_fakt_schema=2`
+
+### DoD įrodymai
+
+| Užsakymas | Kas | Faktai |
+|---|---|---|
+| **35087** | mišrus (legacy+zb), MnM dėžė, dovana, utm | 15 eilučių · 5574 ct be PVM · marža 1867 · kontribucija 1721 |
+| **35088** | VF, antras tas pats el. paštas | 1 eilutė · `klientas_naujas=0`, `nr=2` |
+| **35090** | kuponas −10 % per 3 eilutes, 3 sandėliai | 3 eilutės · nuolaidų 687 · marža 1515 · `nr=3` |
+
+Kiekvienam — 8 automatinės patikros OK **iki cento** + rankinis perskaičiavimas (S817).
+`klientas_naujas` 1→0→0, `klientas_uzsakymo_nr` 1→2→3.
+Idempotencija: `processing→completed` — eilutės nesikeitė; PK dublio testas empiriškai (#4953).
+
+### 🔴 Trys klaidos, rastos ir uždarytos šioje sesijoje
+
+| # | Klaida | Kur rasta | Sprendimas |
+|---|---|---|---|
+| **#22** | `ps_ataskaitu_dienos` KPI „dalis apyvartoje" dalina be-PVM skaitiklį iš su-PVM+pristatymu vardiklio (agregavimas:291 vs :314) — nuvertinta ~21 %+ | tikrinant Q-E0-4 | istorijos nekeisti; §5.2 vardiklis iš §4.1 `prekiu_suma_ct`; §3 taisyklė 10 |
+| **S1273** | Dviguba nuolaida: `prekiu_suma_ct` = po nuolaidos, o formulė ją atima dar kartą | **prieš deploy'ą** | `prekiu_suma_ct` = BRUTO; neto = `prekiu_suma − nuolaidu` |
+| **#23** | `kaina_reguliari_ct` iš `_regular_price` — **su PVM**, o `kaina_ct` be PVM (santykis lygiai 1,21) | migracijos DRY | `wc_get_price_excluding_tax()` (mokesčių klasė, ne dalyba iš 1,21); §7 taisyklė 11 galioja ir stulpeliams |
+
+**Kupono testas nebuvo formalumas.** Su S1273 klaida marža 35090 būtų buvusi 828 vietoj 1515 — skirtumas lygiai 687 ct = visa nuolaida. Su nuline nuolaida (35087/35088) abi formulės būtų davusios tą patį atsakymą.
+
+### Užrakinti sprendimai
+
+| Kas | Sprendimas |
+|---|---|
+| Laiko zona | Faktai — **UTC**; ekranas — Vilnius. Priežastis: petshop-core (`ps_shipments`, `ps_carts`, `ps_email_jobs`) jau UTC, o §4.3 jungsis su `ps_shipments` |
+| `diena` DATE | Vilniaus **verslo diena** iš `apmoketa_at`, abiejose lentelėse. Patvirtinta realiai: visi 3 užsakymai UTC 2026-08-25, `diena` = **2026-08-26** |
+| `kaina_reguliari_ct` | Sprendimas **B**: `_regular_price` pardavimo momentu, **BE PVM**, tuščia → NULL. Prieš-kuponinė kaina — išvestinė |
+| Fee | Kontrakto nekeičiam. Peržiūrėti, kai bus **F22 lojalumas** (ar nuolaida nepatenka kaip neigiamas fee) |
+| Kabliuko prioritetas | **35** — po `partijos` (25), kad savikaina būtų galutinė. BACS fallback'ai `status_processing`/`status_completed` **būtini** (pavedimas `payment_complete` nekviečia) |
+
+### Kas lieka E1b
+
+- 35087 — `processing` su **2 neregistruotomis siuntomis** (realus mišrus atvejis siuntų faktams). **Netrinti.**
+- Kuponas `e1a-testas` (ID 35089) — paliktas grąžinimo testui ant 35090. Į T-0 valymo sąrašą įrašytas.
+- `do_action('petshop_siunta_sukurta', …)` → **`petshop-siuntu-laiskai.php:77`** (vienintelis leistas svetimo failo pakeitimas).
 
 ---
 
