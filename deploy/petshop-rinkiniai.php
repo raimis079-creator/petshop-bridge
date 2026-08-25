@@ -1,5 +1,16 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.29 (H278) — PREKES PUSLAPIO VITRINA PAGAL TEMOS STILIU.
+ *
+ * Savininkas: rinkinio puslapis „ne petshop spalvu, istemptas". Priezastis —
+ * senas snippetas #524 (auksine #b29051, dideles korteles 3 stulpeliais, 28 px
+ * kaina) uzdedamas ant mu-plugino stiliaus. DABAR vitrina PILNAI priklauso
+ * siam failui (front_stilius, wp_head prioritetas 100), #524 isjungiamas:
+ * temos spalvos (#365a51 / #a2bd9d), kompaktiskas sudeties sarasas (56 px
+ * nuotrauka · pavadinimas · ×N), mygtukas — temos numatytas (zalias), dvigubas
+ * „Sutaupote" (#535 eilute) paslepiamas. #535 lieka del perbrauktos kainos
+ * kortelese; #532 lieka — fiksuoja kiekius.
+ *
  * Petshop Rinkiniai v1.28 (H276) — SANDELIO FILTRAS PAVELDI RINKINIO SANDELI.
  *
  * Redaguojant filtras visada rodydavo „Visi" — savininkas: turi rodyti tai, kas
@@ -94,7 +105,7 @@ class Petshop_Rinkiniai {
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );
-		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ) );
+		add_action( 'wp_head', array( __CLASS__, 'front_stilius' ), 100 ); /* v1.29: po #524 ir temos */
 		add_filter( 'body_class', array( __CLASS__, 'front_klase' ) );
 		add_filter( 'woocommerce_single_product_image_gallery_classes', array( __CLASS__, 'galerijos_klases' ) );
 		/* 200, nes aprasymu akordeonas (512) kabinasi prio 98 — su mazesniu
@@ -593,7 +604,50 @@ class Petshop_Rinkiniai {
 		.ps-rink-pilnas table{width:100%;border-collapse:collapse;margin:6px 0}
 		.ps-rink-pilnas td,.ps-rink-pilnas th{padding:4px 8px;border-bottom:1px solid #e5e5e0;text-align:left}
 		@media(max-width:600px){.ps-rink-img{width:56px}.ps-rink-img img{width:56px;height:56px}}
+		/* ===== v1.29: vitrina temos stiliumi (perima #524) ===== */
+		body.ps-fiksuotas-rinkinys .woocommerce-product-gallery::before{background:#365a51}
+		body.ps-fiksuotas-rinkinys .product-info .price{font-size:1.5em;font-weight:700;color:#2a2a2a;margin-bottom:.6em}
+		body.ps-fiksuotas-rinkinys .product-info .price del{color:#999;font-weight:400;font-size:.75em;margin-right:6px}
+		body.ps-fiksuotas-rinkinys .product-info .price ins{text-decoration:none;color:#2a2a2a}
+		body.ps-fiksuotas-rinkinys .petshop-savings{display:none!important}
+		body.ps-fiksuotas-rinkinys .ps-rink-nauda{background:#f3f7f3;border-color:#d6e3d3;margin:0 0 16px}
+		body.ps-fiksuotas-rinkinys .ps-rink-nauda .ps-taupo td{color:#365a51;border-top-color:#d6e3d3}
+		body.ps-fiksuotas-rinkinys form.cart .mnm_child_products,
+		body.ps-fiksuotas-rinkinys form.cart>table{border:1px solid #e4e4e4!important;border-radius:4px;background:#fff;margin:0 0 18px!important;padding:0 14px 4px;width:100%}
+		body.ps-fiksuotas-rinkinys form.cart .mnm_child_products::before{content:"Rinkinio sudėtis";display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#365a51;padding:11px 0 7px;border-bottom:1px solid #e9e9e9}
+		body.ps-fiksuotas-rinkinys form.cart thead,body.ps-fiksuotas-rinkinys form.cart th{display:none!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody{display:block!important;border:0!important;background:transparent!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody tr{display:flex!important;align-items:center;gap:12px;padding:9px 0;border:0!important;border-bottom:1px solid #f0f0f0!important;background:transparent!important;margin:0!important;border-radius:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody tr:last-child{border-bottom:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td{display:block!important;padding:0!important;border:0!important;width:auto!important;text-align:left!important;background:transparent!important;font-size:13.5px}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-thumbnail,
+		body.ps-fiksuotas-rinkinys form.cart tbody td:first-child{flex:none;width:56px!important;margin:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td img{width:56px!important;height:56px!important;max-width:none!important;object-fit:contain;background:#fff!important;border:1px solid #eee;border-radius:4px;display:block;margin:0!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details,
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name{flex:1 1 auto;font-weight:600;line-height:1.35;color:#2a2a2a!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-details a,
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-name a{color:#2a2a2a!important;text-decoration:none}
+		body.ps-fiksuotas-rinkinys form.cart tbody td .stock,body.ps-fiksuotas-rinkinys form.cart tbody td p.stock,
+		body.ps-fiksuotas-rinkinys form.cart tbody td .mnm_child_product_short_description,
+		body.ps-fiksuotas-rinkinys form.cart tbody td.product-quantity,body.ps-fiksuotas-rinkinys form.cart tbody td.product-price,
+		body.ps-fiksuotas-rinkinys form.cart .mnm_child_products .quantity,body.ps-fiksuotas-rinkinys form.cart .mnm_child_products input.qty,
+		body.ps-fiksuotas-rinkinys form.cart .mnm_child_products .plus,body.ps-fiksuotas-rinkinys form.cart .mnm_child_products .minus{display:none!important}
+		body.ps-fiksuotas-rinkinys form.cart tbody tr::after{content:"× " attr(data-kiekis-rodyti);flex:none;margin-left:auto;background:#365a51;color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:12px;line-height:1}
+		body.ps-fiksuotas-rinkinys form.cart tbody tr:not([data-kiekis-rodyti])::after{content:"× 1"}
+		body.ps-fiksuotas-rinkinys form.cart>.quantity{display:inline-flex;margin-right:10px}
+		body.ps-fiksuotas-rinkinys .product-short-description{margin-bottom:14px}
+		/* Quick view ant rinkiniu korteliu nereikalingas (perimta is #524) */
+		.product-small.product_cat-konservu-rinkiniai .quick-view,.product-small.product_cat-skanestu-rinkiniai .quick-view,.product-small.product_cat-kramtalu-rinkiniai .quick-view,.product-small.product_cat-rinkiniai .quick-view{display:none!important}
 		</style>
+		<?php if ( $post && is_array( $kiekiai ?? null ) && $kiekiai ) : ?>
+		<script id="ps-rink-vitrina">
+		(function(){var Q=<?php echo wp_json_encode( array_map( 'intval', $kiekiai ) ); ?>;
+		function f(){var r=document.querySelectorAll('form.cart tr.mnm_item,form.cart tr[data-mnm_item_id]');if(!r.length)return false;
+		 r.forEach(function(row){var pid=row.getAttribute('data-mnm_item_id')||row.getAttribute('data-child_id');if(!pid)return;var n=Q[pid]||1;row.setAttribute('data-kiekis-rodyti',n);
+		  var i=row.querySelector('input.qty,input[type=number],input[name^=mnm_quantity]');if(i&&String(i.value)!==String(n)){i.value=n;try{i.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}if(window.jQuery){jQuery(i).trigger('change');}}});return true;}
+		var t=0,iv=setInterval(function(){if(f()||++t>25)clearInterval(iv);},200);window.addEventListener('load',function(){setTimeout(f,300);setTimeout(f,1500);});})();
+		</script>
+		<?php endif; ?>
 		<?php
 	}
 
