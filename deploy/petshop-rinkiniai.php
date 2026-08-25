@@ -1,5 +1,12 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.37 (H293) — „PRODUCT/QUANTITY" verciami ir JS'u.
+ *
+ * Iki siol antrastes buvo tik PASLEPTOS CSS'u (::after su lietuvisku tekstu).
+ * Jei stilius nespeja arba puslapis paimtas is narsykles kesо, klientas mato
+ * anglisku zodziu lentele. Dabar tekstas KEICIAMAS pacioje lenteleje — net ir
+ * be musu CSS eilute lieka lietuviska.
+ *
  * Petshop Rinkiniai v1.36 (H290) — DU SAVININKO NURODYMAI (2026-08-25).
  *
  * (1) Nauda po 3 % nerodoma: „Sutaupote 0,28 € (1%)" atrodo juokingai ir
@@ -704,7 +711,9 @@ class Petshop_Rinkiniai {
 		<?php if ( $post && is_array( $kiekiai ?? null ) && $kiekiai ) : ?>
 		<script id="ps-rink-vitrina">
 		(function(){var Q=<?php echo wp_json_encode( array_map( 'intval', $kiekiai ) ); ?>;
-		function f(){var r=document.querySelectorAll('form.cart tr.mnm_item,form.cart tr[data-mnm_item_id]');if(!r.length)return false;
+		var LT={'product':'Prekė','quantity':'Kiekis','price':'Kaina','details':'Prekė','total':'Viso'};
+		function th(){document.querySelectorAll('form.cart th').forEach(function(h){var k=h.textContent.trim().toLowerCase();if(LT[k])h.textContent=LT[k];});}
+		function f(){th();var r=document.querySelectorAll('form.cart tr.mnm_item,form.cart tr[data-mnm_item_id]');if(!r.length)return false;
 		 r.forEach(function(row){var pid=row.getAttribute('data-mnm_item_id')||row.getAttribute('data-child_id');if(!pid)return;var n=Q[pid]||1;row.setAttribute('data-kiekis-rodyti',n);
 		  var i=row.querySelector('input.qty,input[type=number],input[name^=mnm_quantity]');if(i&&String(i.value)!==String(n)){i.value=n;try{i.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}if(window.jQuery){jQuery(i).trigger('change');}}});return true;}
 		var t=0,iv=setInterval(function(){if(f()||++t>25)clearInterval(iv);},200);window.addEventListener('load',function(){setTimeout(f,300);setTimeout(f,1500);});
