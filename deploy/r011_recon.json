@@ -1,0 +1,2521 @@
+{
+ "v": "R011B",
+ "ts": "2026-08-25T21:14:09+00:00",
+ "failai": {
+  "petshop-statistika.php": {
+   "eil_viso": 526,
+   "md5": "5b20a10440e958adf4c9d6126666667f",
+   "baitai": 22413,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Statistika",
+    "4:  * Description: Elgsenos ivykiai (surenkamos dezes), savikaina ir uzsakymo atributai pardavimo momentu.",
+    "5:  * Version: 2.2",
+    "6:  *",
+    "7:  * Du sluoksniai, sąmoningai atskirti:",
+    "8:  *",
+    "9:  * 1) PARDAVIMAI. Savikaina irasoma i uzsakymo eilute PARDAVIMO MOMENTU",
+    "10:  *    (`_ps_savikaina_vnt`). Be to perskaiciavus tiekejo savikaina pasikeistu ir",
+    "11:  *    praejusio menesio marza — istorija taptu netikra (savininko sprendimas",
+    "12:  *    2026-08-15). Galioja VISOMS eilutems: surenkamoms, paruostoms, dovanoms.",
+    "13:  *",
+    "14:  * 2) ELGSENA. Kliento veiksmai vitrinoje — savo lentele `ps_laukai_ivykiai`.",
+    "15:  *    NEMAISYTI su `ps_ivykiai` (ten prekiu auditas: kas keite kaina/likuti).",
+    "16:  *",
+    "17:  * v2.0 (ataskaitu standartas v2, spec v1.1):",
+    "18:  *  - schema v2: + dydis, skirtukas, kiek_dezeje, irenginys;",
+    "19:  *  - NAUJA lentele `ps_ataskaitu_dienos` — dienos suvestine (pinigai CENTAIS);",
+    "20:  *  - DU SLUOKSNIAI: be sutikimo ivykiai rasomi ANONIMISKAI (sesija=''),"
+   ],
+   "apibrezimai": [
+    "54: class Petshop_Statistika",
+    "56: const VERSIJA         = '2.2';",
+    "57: const SCHEMOS_RAKTAS  = 'ps_stat_schema';",
+    "58: const SCHEMOS_VERSIJA = 3;",
+    "60: const META_SAVIKAINA    = '_ps_savikaina_vnt';",
+    "61: const META_SAV_SALTINIS = '_ps_savikaina_saltinis';",
+    "62: const META_KAINA_ATSK   = '_ps_kaina_atskirai_vnt';",
+    "63: const META_UZS_SESIJA   = '_ps_stat_sesija';",
+    "64: const META_UZS_IRENG    = '_ps_irenginys';",
+    "65: const META_EIL_DYDIS    = '_ps_dydis';",
+    "66: const OPT_PRADZIA       = 'ps_stat_pradzia';",
+    "69: const OPT_ZALIU_DIENOS   = 'ps_stat_zaliu_dienos';",
+    "70: const OPT_VALOMOS_SRITYS = 'ps_stat_valomos_sritys';",
+    "73: const ZALIU_DIENOS = 90;",
+    "76: const VALOMOS_SRITYS = array( 'laukai' );",
+    "84: const SAUGOMOS_SRITYS = array( 'anketa', 'rec', 'refill' );",
+    "86: public static function init() {",
+    "111: public static function lentele() {",
+    "116: public static function lentele_dienos() {",
+    "121: public static function uztikrinti_lentele() {",
+    "184: public static function dydis_normalus( $tekstas ) {",
+    "192: public static function dezes_dydis( $deze_id ) {",
+    "203: public static function dezes_skirtukas( $deze_id ) {",
+    "225: public static function skirtuko_vardas( $slug ) {",
+    "242: public static function savikaina_preke( $pid ) {",
+    "259: public static function kaina_atskirai( $pid ) {",
+    "271: private static function ar_konteineris( $item ) {",
+    "276: public static function savikaina_i_eilute( $item, $raktas, $reiksmes, $order ) {",
+    "286: public static function savikaina_naujam_item( $item_id, $item, $order_id ) {",
+    "314: private static function papildomi_eilutes_atributai( $item, $pid ) {",
+    "331: public static function irenginio_laukas() {",
+    "350: public static function uzsakymo_atributai( $order, $duomenys ) {",
+    "362: public static function aplinka() {",
+    "368: public static function sesija() {",
+    "374: public static function irasyti( $tipas, $args = array() ) {",
+    "422: public static function ajax_ivykis() {",
+    "450: public static function sutikimas() {",
+    "458: public static function pradzia() {",
+    "464: public static function zaliu_dienos() {",
+    "474: public static function valomos_sritys() {",
+    "495: public static function valyti() {"
+   ],
+   "hook_in": {
+    "init": [
+     87
+    ],
+    "woocommerce_checkout_create_order_line_item p20": [
+     90
+    ],
+    "woocommerce_new_order_item p20": [
+     92
+    ],
+    "woocommerce_checkout_create_order p20": [
+     95
+    ],
+    "wp_footer p20": [
+     96
+    ],
+    "wp_ajax_ps_stat_ivykis": [
+     99
+    ],
+    "wp_ajax_nopriv_ps_stat_ivykis": [
+     100
+    ],
+    "ps_stat_valymas": [
+     103
+    ]
+   },
+   "meta": {
+    "_ps_laukas_dydis": [
+     195
+    ],
+    "_ps_laukas_skirtukas": [
+     206
+    ],
+    "_dp_base_product_id": [
+     262
+    ]
+   },
+   "meta_obj": {
+    "_mnm_cart_key": [
+     272
+    ]
+   },
+   "meta_lit": {
+    "_ps_savikaina_vnt": [
+     60
+    ],
+    "_ps_savikaina_saltinis": [
+     61
+    ],
+    "_ps_kaina_atskirai_vnt": [
+     62
+    ],
+    "_ps_stat_sesija": [
+     63
+    ],
+    "_ps_irenginys": [
+     64
+    ],
+    "_ps_dydis": [
+     65
+    ],
+    "_ps_laukas_dydis": [
+     195
+    ],
+    "_ps_laukas_skirtukas": [
+     206
+    ],
+    "_ps_savikaina": [
+     247
+    ]
+   },
+   "lentele": {
+    "ps_laukai_ivykiai": [
+     113
+    ],
+    "ps_ataskaitu_dienos": [
+     118
+    ]
+   },
+   "cron": [
+    "104: if ( ! wp_next_scheduled( 'ps_stat_valymas' ) ) {",
+    "105: wp_schedule_event( time() + 3600, 'daily', 'ps_stat_valymas' );"
+   ],
+   "ddl": [
+    "129: dbDelta( \"CREATE TABLE $t (",
+    "129: dbDelta( \"CREATE TABLE $t (",
+    "151: dbDelta( \"CREATE TABLE $d (",
+    "151: dbDelta( \"CREATE TABLE $d (",
+    "172: $wpdb->query( \"ALTER TABLE $t ADD COLUMN IF NOT EXISTS user_id BIGINT UNSIGNED NOT NULL DEFAULT 0\" );",
+    "173: $wpdb->query( \"ALTER TABLE $t MODIFY verte VARCHAR(190) NOT NULL DEFAULT ''\" );"
+   ]
+  },
+  "petshop-ataskaitu-agregavimas.php": {
+   "eil_viso": 530,
+   "md5": "3f12c408ca16385d2e6adea913f2a4f9",
+   "baitai": 20854,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Ataskaitu Agregavimas",
+    "4:  * Description: Dienos suvestine (`ps_ataskaitu_dienos`) — naktinis cron + siandienos sluoksnis.",
+    "5:  * Version: 1.0",
+    "6:  *",
+    "7:  * KODEL SIS MODULIS. Ekranai NIEKADA neskaito visu uzsakymu uzklausos metu:",
+    "8:  * su tukstanciais uzsakymu tai lemtu leta puslapi ir atminties rizika (v1.1",
+    "9:  * ataskaita taip ir dare — `limit => -1`). Vietoj to naktis suskaiciuoja",
+    "10:  * diena, o ekranas sumuoja paruostas eilutes.",
+    "11:  *",
+    "12:  * Tvarka (spec v1.1 §5):",
+    "13:  *   03:15 -> agreguojam vakar (+ persukam paskutines 3 dienas del velyvu",
+    "14:  *   pakeitimu) -> tik po to statistikos valymas gali trinti zalius ivykius.",
+    "15:  *",
+    "16:  * Idempotencija: dienos eilutes pirma TRINAMOS, tada rasomos is naujo. Todel",
+    "17:  * ta pacia diena galima persukti kiek nori kartu — rezultatas nesidubliuoja.",
+    "18:  *",
+    "19:  * Pinigai — CENTAIS (INT), kad nebutu float paklaidu sumuojant.",
+    "20:  */"
+   ],
+   "apibrezimai": [
+    "24: class Petshop_Ataskaitu_Agregavimas",
+    "26: const VERSIJA   = '1.0';",
+    "27: const CRON      = 'ps_ataskaitu_agregavimas';",
+    "28: const PERSUKTI  = 3;    /* kiek paskutiniu dienu persukti kas nakti */",
+    "29: const TRANSIENT = 'ps_ata_siandien_';",
+    "30: const KESO_SEK  = 300;  /* siandienos sluoksnis — 5 min. */",
+    "32: public static function init() {",
+    "43: private static function lentele() {",
+    "47: private static function ivykiai() {",
+    "51: private static function aplinka() {",
+    "56: public static function ct( $eurai ) {",
+    "62: public static function nakties_darbas() {",
+    "75: public static function agreguoti_diena( $diena ) {",
+    "95: private static function pridek( &$eil, $sritis, $tipas, $dim, $kiekis = 0, $sesiju = 0, $suma_ct = 0, $sav_ct = 0 ) {",
+    "112: private static function irasyti( $diena, $eil ) {",
+    "134: private static function elgsena( $diena, &$eil ) {",
+    "172: private static function piltuvelis( $diena, &$eil ) {",
+    "196: private static function sekos_rodikliai( $diena, &$eil ) {",
+    "248: public static function komponentai() {",
+    "268: public static function uzsakymai_diena( $diena ) {",
+    "282: public static function pardavimai( $diena, &$eil ) {",
+    "405: private static function grazinimai( $diena, &$eil ) {",
+    "426: public static function siandien() {",
+    "445: public static function sviezumas() {",
+    "453: public static function agregavimo_laikas() {",
+    "463: public static function eilutes( $nuo, $iki, $sritys = array() ) {",
+    "499: public static function sumuoti( $eilutes, $tipas, $raktas_f ) {",
+    "515: public static function viso( $eilutes, $tipas ) {"
+   ],
+   "hook_in": {
+    "plugins_loaded": [
+     528
+    ]
+   },
+   "meta": {
+    "_ps_laukas": [
+     303
+    ],
+    "_dp_base_product_id": [
+     343
+    ],
+    "_dp_pack_qty": [
+     344
+    ]
+   },
+   "meta_obj": {
+    "_mnm_cart_key": [
+     296,
+     320
+    ],
+    "_ps_dovana": [
+     318
+    ],
+    "_mnm_container": [
+     319
+    ]
+   },
+   "meta_lit": {
+    "_ps_laukas": [
+     303
+    ],
+    "_ps_dovana": [
+     318
+    ]
+   },
+   "option": {
+    "gmt_offset": [
+     39
+    ],
+    "ps_ata_paskutinis_agregavimas": [
+     68,
+     454
+    ],
+    "ps_ata_siandien_laikas": [
+     440,
+     446
+    ]
+   },
+   "lentele": {
+    "wc_mnm_child_items": [
+     252
+    ]
+   },
+   "transient": {
+    "$raktas ": [
+     429
+    ],
+    "$raktas": [
+     439
+    ]
+   },
+   "cron": [
+    "34: if ( ! wp_next_scheduled( self::CRON ) ) {",
+    "39: wp_schedule_event( $kada - ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ), 'daily', self::CRON );"
+   ]
+  },
+  "petshop-ataskaitos-ui.php": {
+   "eil_viso": 493,
+   "md5": "30a192b7d93eb436486d77d59810921f",
+   "baitai": 25921,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Ataskaitu UI",
+    "4:  * Description: Bendras ataskaitu karkasas (standartas v2): laikotarpis, KPI, diagrama, lentele, veiksmai.",
+    "5:  * Version: 1.0",
+    "6:  *",
+    "7:  * KODEL BENDRAS KARKASAS. Kiekviena ataskaita atsako i tris klausimus ta pacia",
+    "8:  * tvarka — kiek uzdirbau ir ar auga -> kas tai lemia -> ka daryti. Jei kiekvienas",
+    "9:  * ekranas tai pieštu savaip, po metu turetume penkis skirtingus ir penkis kartus",
+    "10:  * taisomus. Cia tik atvaizdavimas: JOKIOS verslo logikos, duomenis paduoda ekranai.",
+    "11:  *",
+    "12:  * Diagramos — grynas SVG (jokiu bibliotekų): greita, veikia amzinai, nieko",
+    "13:  * neuzkrauna is isores.",
+    "14:  */",
+    "16: if ( ! defined( 'ABSPATH' ) ) { exit; }",
+    "18: class Petshop_Ataskaitu_UI {",
+    "20: \tconst VERSIJA = '1.0';"
+   ],
+   "apibrezimai": [
+    "18: class Petshop_Ataskaitu_UI",
+    "20: const VERSIJA = '1.0';",
+    "24: public static function pvm() {",
+    "29: public static function be_pvm( $suma ) {",
+    "33: public static function eur( $ct, $zenklas = true ) {",
+    "38: public static function proc( $v, $sk = 1 ) {",
+    "43: public static function dal( $a, $b ) {",
+    "47: public static function nustatymas( $raktas, $numatytoji ) {",
+    "58: public static function laikotarpis() {",
+    "94: public static function nuoroda( $slug, $args = array() ) {",
+    "107: public static function juosta( $slug, $lt, $filtrai = array() ) {",
+    "147: public static function kpi( $antraste, $reiksme, $delta = null, $pastaba = '', $tooltip = '', $spark = array() ) {",
+    "169: public static function spark( $reiksmes, $spalva = '#2271b1' ) {",
+    "182: public static function tt( $tekstas ) {",
+    "187: public static function spejimas( $html ) {",
+    "192: public static function maza_imtis( $tekstas, $imtis, $riba = null ) {",
+    "204: public static function diagrama( $pajamos, $pelnas, $pries = array(), $antraste = 'Pajamos ir pelnas pagal dieną' ) {",
+    "243: public static function lentele( $id, $stulpeliai, $eilutes, $opts = array() ) {",
+    "277: public static function veiksmai( $tipas, $antraste, $irasai, $tuscia = 'Kandidatų nėra.' ) {",
+    "289: public static function piltuvelis( $zingsniai ) {",
+    "321: public static function juostele( $tekstas, $dalis ) {",
+    "328: public static function antraste( $pavadinimas, $aprasas ) {",
+    "336: public static function pabaiga() {",
+    "342: public static function stilius() {",
+    "439: public static function js() {",
+    "446: function zyme(th,k){"
+   ],
+   "option": {
+    "ps_stat_pvm": [
+     25
+    ]
+   }
+  },
+  "petshop-ataskaitu-eksportas.php": {
+   "eil_viso": 742,
+   "md5": "8a269aace5105bd0689d353c32fe733e",
+   "baitai": 37431,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Ataskaitu Eksportas",
+    "4:  * Description: Ataskaitu atsisiuntimas i Excel (.xlsx) — keli lapai, tikri skaiciai, zali duomenys.",
+    "5:  * Version: 1.0",
+    "6:  *",
+    "7:  * KODEL SAVAS RASYTOJAS. Serveryje yra PhpSpreadsheet, bet jis atkeliaves su",
+    "8:  * kitu pluginu (importu) — jei tas plugin'as bus atnaujintas ar isjungtas,",
+    "9:  * eksportas nutruktu be jokio ispejimo. Cia rasomas minimalus XLSX per",
+    "10:  * `ZipArchive` (patikrinta: veikia): jokiu isoriniu priklausomybiu.",
+    "11:  *",
+    "12:  * KODEL NE CSV. Lenteles CSV eksportas ima tai, ka mato ekranas: „48,12 €\",",
+    "13:  * „13,2 %\", tarpai tukstanciuose. Excel'yje tai TEKSTAS — nei susumuosi, nei",
+    "14:  * pivot'a padarysi. Cia skaiciai rasomi kaip SKAICIAI, o formatavimas paliekamas",
+    "15:  * Excel'iui. Procentai — dalimis (0,132), kad veiktu vidurkiai.",
+    "16:  *",
+    "17:  * Lapas „Zali duomenys\" yra svarbiausias analizei: ten visa dienos suvestine",
+    "18:  * be jokio apdorojimo — is jos galima susisukti bet koki pjuvi pivot'u,",
+    "19:  * neprasant naujos ataskaitos.",
+    "20:  */"
+   ],
+   "apibrezimai": [
+    "24: class Petshop_Ataskaitu_Eksportas",
+    "26: const VERSIJA = '1.0';",
+    "27: const CAP     = 'manage_woocommerce';",
+    "28: const VEIKSMAS = 'ps_ata_xlsx';",
+    "30: public static function init() {",
+    "36: public static function mygtukas( $ekranas, $lt, $papildomi = array() ) {",
+    "50: private static function esc( $t ) {",
+    "55: private static function stulpelis( $n ) {",
+    "69: private static function langelis( $stulp, $eil, $reiksme, $tipas = 's' ) {",
+    "97: private static function lapas( $eilutes, $placiai = array() ) {",
+    "138: private static function stiliai() {",
+    "169: private static function lapo_vardas( $v ) {",
+    "175: public static function xlsx( $lapai, $failas ) {",
+    "260: private static function ct( $c ) { return round( ( (int) $c ) / 100, 2 ); }",
+    "262: public static function atsisiusti() {",
+    "283: private static function galva( $tekstas, $nuo, $iki ) {",
+    "298: private static function lapas_zodynas( $ekranas ) {",
+    "345: private static function lapai_surenkami( $nuo, $iki ) {",
+    "558: private static function ankstesnis( $nuo, $iki ) {",
+    "564: private static function lapai_paruosti( $nuo, $iki ) {"
+   ],
+   "hook_in": {
+    "plugins_loaded": [
+     740
+    ]
+   }
+  },
+  "petshop-akcijos.php": {
+   "eil_viso": 2029,
+   "md5": "51d8fc86c02f89215e7aca16b4487781",
+   "baitai": 96257,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop Akcijos v1.1 (E4, S754) — AKCIJU ADMINISTRAVIMO LANGAS.",
+    "4:  *",
+    "5:  * v1.8: atejus is katalogo su `?gi=N` taikinys, pavadinimas ir laikotarpis",
+    "6:  * uzpildomi is karto — zmogui nereikia atkurineti to paties saraso rankomis.",
+    "7:  *",
+    "8:  * v1.7: KETVIRTAS TAIKINYS — „GERIAUSIA IKI\". Trumpu datu ispardavimas iki",
+    "9:  * siol buvo neimanomas: ps_partijos zinojo datas, bet akcija ju nemate.",
+    "10:  * Dabar atranka pagal DATEDIFF is partiju su likuciu; pasibaigusios datos",
+    "11:  * NEITRAUKIAMOS (tokia preke nurasoma, ne pardavinejama); galimas",
+    "12:  * susiaurinimas kategorija. „Gyva\" akcija pati pasiima prekes, kuriu data ka",
+    "13:  * tik pateko i ribas.",
+    "14:  *",
+    "15:  * v1.3: sarase „Prekiu\" rode 0, nes irasai atsiranda tik ITAIKIUS akcija.",
+    "16:  * Juodrastis su 15 prekiu atrode tuscias. Dabar netaikomoms akcijoms skaicius",
+    "17:  * skaiciuojamas is atrankos realiu laiku, o pati perziura uzsikrauna",
+    "18:  * automatiskai atidarius akcija. Prie „uzdeta ne per si langa\" — sarasas su",
+    "19:  * mygtuku nuimti.",
+    "20:  *"
+   ],
+   "apibrezimai": [
+    "67: class Petshop_Akcijos",
+    "69: const VERSIJA = '1.8';",
+    "70: const PVM     = 0.21;",
+    "71: const CRON    = 'ps_akcijos_valanda';",
+    "74: public static function busenos() {",
+    "84: public static function metodai() {",
+    "92: public static function init() {",
+    "110: public static function body_klase( $klases ) {",
+    "115: public static function meniu() {",
+    "124: public static function lentele()        { global $wpdb; return $wpdb->prefix . 'ps_akcijos'; }",
+    "125: public static function lentele_prekes() { global $wpdb; return $wpdb->prefix . 'ps_akciju_prekes'; }",
+    "131: public static function uztikrinti_lenteles() {",
+    "186: public static function gauti( $id ) {",
+    "196: public static function visos() {",
+    "231: public static function brendo_taksonomija() {",
+    "251: public static function atrinkti( $akcija ) {",
+    "377: public static function grindys( $pid ) {",
+    "392: public static function savikaina( $pid ) {",
+    "404: public static function akcijos_kaina( $akcija, $reg ) {",
+    "426: public static function marza( $kaina_su_pvm, $savikaina_be_pvm ) {",
+    "441: public static function perziura( $akcija, $tik_taikomos = false ) {",
+    "518: public static function konfliktai( $akcija, $ids ) {",
+    "551: public static function taikyti( $id ) {",
+    "637: public static function nuimti( $id, $nauja_busena = 'pasibaigusi' ) {",
+    "676: private static function zurnalas( $id, $veiksmas, $detales ) {",
+    "699: public static function cron() {",
+    "739: private static function vartai() {",
+    "744: public static function ajax_saugoti() {",
+    "804: public static function ajax_perziura() {",
+    "841: public static function ajax_eilute() {",
+    "871: public static function ajax_taikyti() {",
+    "884: public static function ajax_nuimti() {",
+    "896: public static function ajax_nuvalyti() {",
+    "915: public static function ajax_trinti() {",
+    "932: public static function ajax_paieska() {",
+    "955: public static function puslapis() {",
+    "971: private static function virsus() {",
+    "985: private static function sarasas() {",
+    "1105: public static function taikinio_tekstas( $a ) {",
+    "1153: private static function forma( $id ) {",
+    "1361: private static function stilius() {",
+    "1570: private static function skriptas() {",
+    "1576: function post(veiksmas, laukai){",
+    "1582: function eur(v){ return (v===null||v===undefined||v===\"\")?\"—\":Number(v).toFixed(2).replace(\".\",\",\"); }",
+    "1583: function esc(s){ var d=document.createElement(\"div\"); d.textContent=s==null?\"\":s; return d.innerHTML; }",
+    "1666: function vntAtnaujinti(){ vnt.textContent = mSel.value===\"proc\" ? \"%\" : \"€\"; }",
+    "1681: function paieskosLaukas(inputSel, rezSel, sarSel){",
+    "1721: function p2(n){ return String(n).padStart(2,\"0\"); }",
+    "1722: function fmt(d){ return d.getFullYear()+\"-\"+p2(d.getMonth()+1)+\"-\"+p2(d.getDate())+\" \"+p2(d.getHours())+\":\"+p2(d.getMinutes()); }",
+    "1723: function parse(v){",
+    "1729: function kalKurti(){",
+    "1736: function kalPiesti(){",
+    "1769: function kalAtverti(inp){",
+    "1776: function kalUzverti(){ if(kal) kal.hidden=true; kalLaukas=null; }",
+    "1777: function kalIrasyti(d){",
+    "1838: function perzSkaiciai(){",
+    "1854: function surinkti(){",
+    "1896: function busena(t, kl){ stat.textContent=t||\"\"; stat.className=\"ak-stat\"+(kl?\" \"+kl:\"\"); }",
+    "1903: function perziuretiDabar(){",
+    "1925: function rodykPerziura(d){"
+   ],
+   "hook_in": {
+    "admin_menu p11": [
+     93
+    ],
+    "wp_ajax_ps_akc_perziura": [
+     94
+    ],
+    "wp_ajax_ps_akc_saugoti": [
+     95
+    ],
+    "wp_ajax_ps_akc_taikyti": [
+     96
+    ],
+    "wp_ajax_ps_akc_nuimti": [
+     97
+    ],
+    "wp_ajax_ps_akc_trinti": [
+     98
+    ],
+    "wp_ajax_ps_akc_nuvalyti": [
+     99
+    ],
+    "wp_ajax_ps_akc_eilute": [
+     100
+    ],
+    "wp_ajax_ps_akc_paieska": [
+     101
+    ],
+    "admin_body_class": [
+     107
+    ]
+   },
+   "meta": {
+    "_cost_price": [
+     399
+    ],
+    "_regular_price": [
+     459,
+     857,
+     948
+    ],
+    "_manual_price_override": [
+     473
+    ],
+    "_sku": [
+     485,
+     947
+    ],
+    "_sale_price": [
+     570
+    ],
+    "_sale_price_dates_from": [
+     571
+    ],
+    "_sale_price_dates_to": [
+     572
+    ],
+    "_petshop_sale_batch": [
+     573,
+     581,
+     658,
+     659,
+     909
+    ],
+    "_ps_akcija_id": [
+     582,
+     650,
+     660,
+     900
+    ],
+    "_petshop_sale_label": [
+     583,
+     661,
+     910
+    ],
+    "_petshop_sale_applied_at": [
+     584
+    ]
+   },
+   "meta_lit": {
+    "_petshop_sale_batch": [
+     573,
+     581,
+     658,
+     659,
+     909,
+     1014
+    ],
+    "_ps_akcija_id": [
+     582,
+     650,
+     660,
+     900,
+     1015
+    ],
+    "_petshop_sale_label": [
+     583,
+     661,
+     910
+    ],
+    "_petshop_sale_applied_at": [
+     584
+    ],
+    "_vf_barcode": [
+     940
+    ]
+   },
+   "option": {
+    "ps_akciju_zurnalas": [
+     677,
+     686
+    ]
+   },
+   "lentele": {
+    "ps_akcijos": [
+     124
+    ],
+    "ps_akciju_prekes": [
+     125
+    ],
+    "ps_partijos": [
+     272
+    ]
+   },
+   "cron": [
+    "104: if ( ! wp_next_scheduled( self::CRON ) ) {",
+    "105: wp_schedule_event( time() + 300, 'hourly', self::CRON );"
+   ],
+   "meniu": [
+    "116: add_submenu_page("
+   ],
+   "ddl": [
+    "139: dbDelta( \"CREATE TABLE {$t} (",
+    "139: dbDelta( \"CREATE TABLE {$t} (",
+    "165: dbDelta( \"CREATE TABLE {$tp} (",
+    "165: dbDelta( \"CREATE TABLE {$tp} ("
+   ]
+  },
+  "petshop-desk.php": {
+   "eil_viso": 3730,
+   "md5": "b606c244efdf7da10f69fbc1c50668c7",
+   "baitai": 180955,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop Desk v3.47 (H265) — viršutinėje juostoje mygtukas „Prekių katalogas“ (ps-katalogas), šalia „Rytinė eiga“ ir „Woo",
+    "4:  *",
+    "5:  * Petshop Desk v3.46 (H259) — PAŠTOMATAS: KELIOS DĖŽĖS = KELIOS SIUNTOS TAM PAČIAM KLIENTUI.",
+    "6:  *",
+    "7:  * KODĖL (Raimis, H259): „jei į paštomatą — formuojamos kelios siuntos tam pačiam",
+    "8:  * klientui\". Venipak paštomatui priima tik 1 dėžę siuntai (API: „One package",
+    "9:  * per shipment allowed if sending to/from locker\"), packs[] atmetamas. DABAR",
+    "10:  * venipak_registruoti(): paštomato užsakymui su n dėžių registruojama n kartų",
+    "11:  * po 1 dėžę (svoris dalinamas), visi siuntų nr. sudedami į vieną",
+    "12:  * venipak_shipping_order_data → n lipdukų viename PDF, vienas manifestas.",
+    "13:  *",
+    "14:  * Petshop Desk v3.45 (H258) — VENIPAK PERREGISTRAVIMAS SU KITU DĖŽIŲ SKAIČIUMI.",
+    "15:  *",
+    "16:  * KODĖL (Raimis, H258): „o jei man reikia ne vieno lipduko tam pačiam klientui?\"",
+    "17:  * — dėžių skaičius nustatomas kortelėje PRIEŠ registraciją; jei siunta jau",
+    "18:  * registruota su 1 dėže, vp_reg ją praleisdavo („jau registruotas\") ir kelio",
+    "19:  * atgal nebuvo. DABAR vp_reg su `perreg=1&n=N` (tik su aiškiais ids): įrašo",
+    "20:  * dėžių skaičių ir registruoja iš naujo; senas siuntos nr. lieka pastaboje."
+   ],
+   "apibrezimai": [
+    "196: class Petshop_Desk",
+    "198: const SLUG = 'ps-desk';",
+    "201: const SPALVOS = array(",
+    "221: const SALTINIAI = array(",
+    "236: const MANIFESTAI = array(",
+    "250: const RIBOS = array(",
+    "262: const EILES = array(",
+    "275: const STATUSAI = array(",
+    "283: public static function init() {",
+    "297: const LAISKAI = array(",
+    "303: protected static function laiskai_off() {",
+    "309: protected static function laiskai_on() {",
+    "315: protected static function veiksmo_url( $v, $id ) {",
+    "324: protected static function veiksmai( $o, $row ) {",
+    "501: protected static function venipak_registruoti( $ids, $manifesto_kodas ) {",
+    "594: protected static function venipak_manifesto_pdf( $kodas ) {",
+    "614: public static function vykdyti_veiksma() {",
+    "1018: public static function meniu() {",
+    "1030: public static function slepti_wc() {",
+    "1035: protected static function musu_puslapis() {",
+    "1040: public static function chrome() {",
+    "1058: protected static function sprendimas( $pid, $qty ) {",
+    "1072: protected static function eilutes_saltinis( $item ) {",
+    "1081: protected static function saltiniai( $order ) {",
+    "1097: protected static function vykdymas( $order ) {",
+    "1104: const META_PAK = '_ps_pakuociu';",
+    "1111: public static function pakuociu( $o ) {",
+    "1116: protected static function reikia_pakuociu( $o ) {",
+    "1129: public static function lp_svoris( $o ) {",
+    "1143: public static function siuntos_kodas( $o ) {",
+    "1162: protected static function vezejas( $order ) {",
+    "1172: protected static function turi_siunta( $order ) {",
+    "1178: protected static function eile( $order ) {",
+    "1208: protected static function klausimas( $order ) {",
+    "1260: protected static function klausimo_eilutes( $order ) {",
+    "1294: protected static function paieska_ids( $q ) {",
+    "1321: protected static function lauku_paieska( $f ) {",
+    "1342: protected static function datos_riba( $kodas, $nuo, $iki ) {",
+    "1367: protected static function gauti( $eile, $f ) {",
+    "1485: protected static function skaiciai() {",
+    "1541: protected static function url( $args = array() ) {",
+    "1552: protected static function zyme( $s ) {",
+    "1560: public static function puslapis() {",
+    "1630: const RYTO_ZINGSNIAI = array(",
+    "1640: protected static function ryto_partija( $naujai = false ) {",
+    "1723: protected static function ryto_url( $z, $extra = array() ) {",
+    "1728: protected static function rytas() {",
+    "1774: protected static function ryt_kojele( $z, $p ) {",
+    "1790: protected static function ryt_uzuomina( $z ) {",
+    "1802: protected static function ryt_kort( $sk, $etikete, $spalva ) {",
+    "1807: protected static function ryt1( $p ) {",
+    "1830: protected static function ryt2( $p ) {",
+    "1847: protected static function siuntu_bukle( $ids ) {",
+    "1870: protected static function perdavimo_zenklas( $e ) {",
+    "1884: protected static function siuntu_lentele( $ids, $pastomatu_tikrinti = true ) {",
+    "1904: protected static function ryt3( $p ) {",
+    "2006: protected static function riba( $sandelis ) {",
+    "2022: protected static function ribos_zyme( $sandelis ) {",
+    "2029: protected static function manifesto_numeris( $kodas ) {",
+    "2036: protected static function grupes_manifestas( $ids ) {",
+    "2047: protected static function siuntos_klaida( $nr, $ids ) {",
+    "2061: protected static function ryt4( $p ) {",
+    "2112: protected static function ryt5( $p ) {",
+    "2135: protected static function ryt6( $p ) {",
+    "2152: protected static function ryt_skriptas() {",
+    "2180: protected static function pranesimas() {",
+    "2233: protected static function virsus( $f ) {",
+    "2277: protected static function pipe( $c ) {",
+    "2296: protected static function rail( $eile, $c ) {",
+    "2322: protected static function rail_punktas( $k, $eile, $n, $blankus ) {",
+    "2334: protected static function juosta( $eile, $f, $kiek ) {",
+    "2438: protected static function linksnis( $n, $v, $d, $g ) {",
+    "2445: protected static function select( $vardas, $opcijos, $reiksme ) {",
+    "2461: protected static function uzsakymo_svoris( $o ) {",
+    "2471: protected static function grupes_svoris( $ids ) {",
+    "2485: protected static function kg( $kg ) {",
+    "2490: protected static function misrus_grupes( $o ) {",
+    "2512: protected static function kons_laukia( $o ) {",
+    "2527: protected static function misrus_sprendimas( $o ) {",
+    "2533: protected static function misriu_korteles( $eilutes ) {",
+    "2669: protected static function klausimu_korteles( $eilutes ) {",
+    "2731: protected static function lentele( $eilutes, $statusai, $eile = '', $f = array() ) {",
+    "2886: protected static function juostos_spalva( $row ) {",
+    "2893: protected static function vezejo_vardas( $o ) {",
+    "2904: protected static function veiksmas( $o, $row ) {",
+    "2923: protected static function laikas( $d ) {",
+    "2935: protected static function skydelio_duomenys( $o, $row ) {",
+    "3047: protected static function skydelis() {",
+    "3064: protected static function dialogas() {",
+    "3079: protected static function bulk() {",
+    "3100: protected static function wc_forma() {",
+    "3114: protected static function stilius() {",
+    "3463: protected static function skriptas() {",
+    "3469: function misrusSuma(f){",
+    "3518: function d(r){ try{ return JSON.parse(r.getAttribute('data-json')); }catch(e){ return null; } }",
+    "3519: function esc(s){ return String(s==null?'':s).replace(/[<>&\"]/g,function(c){",
+    "3523: function dlg(url,d){",
+    "3535: function dlgOff(){ DS.classList.remove('on'); DL.classList.remove('on'); }",
+    "3544: function mark(){",
+    "3559: function open(i){",
+    "3641: function close(){ peek.classList.remove('on'); peek.setAttribute('aria-hidden','true'); }",
+    "3661: function selAll(){ rows.forEach(function(r){ sel.add(r.dataset.id); }); mark(); }",
+    "3666: function wcVienam(veiksmas,id){",
+    "3679: function pazymeti(){ return Array.from(sel).join(','); }"
+   ],
+   "hook_in": {
+    "admin_menu": [
+     284
+    ],
+    "admin_head": [
+     285,
+     286
+    ],
+    "admin_post_ps_desk_veiksmas": [
+     287
+    ]
+   },
+   "meta_obj": {
+    "venipak_pickup_point": [
+     548,
+     654,
+     740,
+     1857,
+     2053,
+     3028
+    ],
+    "venipak_shipping_order_data": [
+     552,
+     555,
+     566,
+     571,
+     574,
+     728,
+     732,
+     775,
+     1144,
+     2040,
+     2051
+    ],
+    "_ps_venipak_sena": [
+     730,
+     774,
+     775,
+     776
+    ],
+    "_ps_klaus_laukti": [
+     802,
+     813,
+     2673
+    ],
+    "_ps_source": [
+     808,
+     1073
+    ],
+    "_ps_source_reason": [
+     809
+    ],
+    "_ps_source_at": [
+     810
+    ],
+    "_ps_misrus_sprendimas": [
+     940,
+     984,
+     1195,
+     2528
+    ],
+    "_ps_misrus_sprestas": [
+     941,
+     985
+    ],
+    "_ps_konsolidacija": [
+     962,
+     978,
+     979
+    ],
+    "_woo_lithuaniapost_lpexpress_terminal_id": [
+     1121,
+     2089
+    ],
+    "_ps_tiekimas_laukia": [
+     1198
+    ],
+    "_ps_withdrawal": [
+     1216,
+     2687
+    ],
+    "_ps_sla_velavimas": [
+     1218
+    ],
+    "_reduced_stock": [
+     1234,
+     1264
+    ],
+    "_ps_av_reduced": [
+     1234,
+     1264
+    ],
+    "_ps_source_qty": [
+     1237,
+     1267
+    ],
+    "_woo_lithuaniapost_lpexpress_courier_called_date": [
+     2090
+    ],
+    "_ps_withdrawal_reason": [
+     2688
+    ],
+    "_petshop_avpn_number": [
+     3019,
+     3019
+    ],
+    "_wcdn_invoice_number": [
+     3019
+    ]
+   },
+   "meta_lit": {
+    "_ps_venipak_sena": [
+     730,
+     774,
+     775,
+     776
+    ],
+    "_ps_klaus_laukti": [
+     802,
+     813,
+     2673
+    ],
+    "_ps_source": [
+     808,
+     1073
+    ],
+    "_ps_source_reason": [
+     809
+    ],
+    "_ps_source_at": [
+     810
+    ],
+    "_ps_misrus_sprendimas": [
+     940,
+     984,
+     1195,
+     2528
+    ],
+    "_ps_misrus_sprestas": [
+     941,
+     985
+    ],
+    "_ps_konsolidacija": [
+     962,
+     978,
+     979
+    ],
+    "_ps_pakuociu": [
+     1104
+    ],
+    "_ps_tiekimas_laukia": [
+     1198
+    ],
+    "_ps_withdrawal": [
+     1216,
+     2687
+    ],
+    "_ps_sla_velavimas": [
+     1218
+    ],
+    "_ps_av_reduced": [
+     1234,
+     1264
+    ],
+    "_ps_source_qty": [
+     1237,
+     1267
+    ],
+    "_own_stock_qty": [
+     2268
+    ],
+    "_ps_withdrawal_reason": [
+     2688
+    ],
+    "_petshop_avpn_number": [
+     3019,
+     3019
+    ]
+   },
+   "option": {
+    "shopup_venipak_shipping_settings": [
+     595,
+     2030
+    ],
+    "woocommerce_weight_unit": [
+     1137
+    ]
+   },
+   "lentele": {
+    "postmeta": [
+     2268
+    ],
+    "wc_orders": [
+     2999,
+     3004
+    ]
+   },
+   "transient": {
+    "ps_sheets_": [
+     640
+    ],
+    "ps_dropship_": [
+     852
+    ],
+    "$raktas ": [
+     1643
+    ],
+    "$raktas": [
+     1719
+    ]
+   },
+   "meniu": [
+    "1019: add_menu_page( 'Petshop užsakymai', 'Petshop užsakymai', 'edit_shop_orders',"
+   ]
+  },
+  "petshop-av-dropship.php": {
+   "eil_viso": 1175,
+   "md5": "609d2b1e3056c744ad8fb93222a9b542",
+   "baitai": 60432,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop AV Dropship v1.19 (H262) — 🔴 MANIFESTAS NIEKADA NEBUVO PRIKABINAMAS + KELIŲ LIPDUKŲ PDF.",
+    "4:  *",
+    "5:  * RADINYS (H262 recon): `ws/print_manifest` — 404 (endpoint neegzistuoja), todėl",
+    "6:  * varnelė „pridėti manifestą\" nuo pat pradžių nieko nedėjo (archyve nė vieno",
+    "7:  * manifesto). Ir print_label su keliais pack'ais per kablelį grąžina TUŠČIĄ —",
+    "8:  * kelių dėžių užsakymai keliavo be lipdukų. DABAR: manifestas per",
+    "9:  * `ws/print_list` su manifesto kodu iš užsakymo Venipak įrašo (+ partijos),",
+    "10:  * po PDF kiekvienam skirtingam manifestui; lipdukai — pack_no[] masyvu.",
+    "11:  *",
+    "12:  * Petshop AV Dropship v1.18 (H261) — AV BLOKAS: LIPDUKŲ SKAIČIUS, BE SVORIO, BENDRAS MANIFESTAS.",
+    "13:  *",
+    "14:  * KODĖL (Raimis, H261): laiške AV daliai nereikia adreso ir svorio, manifestas",
+    "15:  * vienas su klientais, tik nurodyti kiek lipdukų. DABAR: blokas „Į AV sandėlį\"",
+    "16:  * be svorio/adreso; formoje „lipdukų [n]\" (partijos dėžės) → Tiekimas::paruosti",
+    "17:  * (registruoja n pack'ų į tiekėjo manifestą); partijos pack'ai dedami į tą patį",
+    "18:  * manifesto PDF; laiško dalis — Tiekimas::laisko_dalis() (viena tiesos vieta).",
+    "19:  *",
+    "20:  * Petshop AV Dropship v1.17 (H260) — PARTIJA Į AV TAME PAČIAME LAIŠKE."
+   ],
+   "apibrezimai": [
+    "154: class Petshop_AV_Dropship",
+    "156: const VEIKSMAS = 'ps_dropship';",
+    "157: const OPT_EMAIL = 'ps_tiekeju_pastai';",
+    "162: const META_SENT     = '_ps_dropship_sent';",
+    "163: const META_SENT_TO  = '_ps_dropship_to';",
+    "164: const META_SENT_SRC = '_ps_dropship_sent_src';",
+    "167: public static function tiekejai() {",
+    "178: public static function init() {",
+    "193: public static function veiksmas( $v ) {",
+    "198: public static function vykdyti( $redirect, $veiksmas, $ids ) {",
+    "206: public static function meniu() {",
+    "216: protected static function grupuoti( array $ids ) {",
+    "259: public static function perduotos( $order ) {",
+    "279: public static function perduota( $order, $src = '' ) {",
+    "285: public static function neperduotos( $order ) {",
+    "301: public static function zymeti_perduota( $order, $src ) {",
+    "322: protected static function konsoliduota( $order, $item_id, $item ) {",
+    "339: public static function laisko_nust() {",
+    "348: public static function archyvuoti( $gavejai, $tema, $html, $priedai = [], $kontekstas = '' ) {",
+    "363: public static function laukiantys_perdavimo() {",
+    "378: public static function archyvo_puslapis() {",
+    "458: protected static function laukianciu_sarasas( $g ) {",
+    "491: protected static function pakuociu( $order ) {",
+    "498: protected static function zb_kodas( $product_id, $fallback_sku ) {",
+    "517: public static function lipduko_vardas( $order ) {",
+    "524: public static function puslapis() {",
+    "566: function ok(){ b.textContent = 'Nukopijuota'; setTimeout(function(){ b.textContent='Kopijuoti'; }, 1500); }",
+    "570: function senas(){",
+    "611: protected static function kortele( $src, $uzsakymai, $bazine ) {",
+    "843: public static function lipdukas_atsisiusti() {",
+    "862: public static function zb_pazymeti() {",
+    "880: public static function nustatymai() {",
+    "915: public static function saugoti_nustatymus() {",
+    "934: public static function skriptas() {",
+    "951: public static function laisko_html( $src, $uzsakymai, $pastaba = '', $partija_html = '' ) {",
+    "990: public static function perduoti_visus() {",
+    "1005: public static function siusti() {",
+    "1109: protected static function lipdukas( $order_id ) {",
+    "1141: protected static function manifestas( array $order_ids, array $papildomi_kodai = array() ) {"
+   ],
+   "hook_in": {
+    "bulk_actions-woocommerce_page_wc-orders p31": [
+     179
+    ],
+    "bulk_actions-edit-shop_order p31": [
+     180
+    ],
+    "handle_bulk_actions-woocommerce_page_wc-orders p10": [
+     181
+    ],
+    "handle_bulk_actions-edit-shop_order p10": [
+     182
+    ],
+    "admin_menu p20": [
+     183
+    ],
+    "admin_footer": [
+     184
+    ],
+    "admin_post_ps_dropship_send": [
+     185
+    ],
+    "admin_post_ps_dropship_visi": [
+     186
+    ],
+    "wp_mail_failed": [
+     187
+    ],
+    "admin_post_ps_dropship_nust": [
+     188
+    ],
+    "admin_post_ps_dropship_lipdukas": [
+     189
+    ],
+    "admin_post_ps_dropship_zb_done": [
+     190
+    ]
+   },
+   "meta_obj": {
+    "_ps_source": [
+     223,
+     272,
+     289,
+     328
+    ],
+    "_ean": [
+     244
+    ],
+    "_ps_konsolidacija": [
+     323
+    ],
+    "_ps_misrus_sprendimas": [
+     326
+    ],
+    "venipak_shipping_order_data": [
+     492,
+     1112,
+     1146
+    ],
+    "_ps_pakuociu": [
+     702
+    ],
+    "venipak_pickup_point": [
+     706
+    ]
+   },
+   "meta_lit": {
+    "_ps_dropship_sent": [
+     162
+    ],
+    "_ps_dropship_to": [
+     163
+    ],
+    "_ps_dropship_sent_src": [
+     164
+    ],
+    "_ps_source": [
+     223,
+     272,
+     289,
+     328
+    ],
+    "_ps_konsolidacija": [
+     323
+    ],
+    "_ps_misrus_sprendimas": [
+     326
+    ],
+    "_ps_pakuociu": [
+     702
+    ]
+   },
+   "option": {
+    "ps_tiek_laiskai": [
+     340,
+     1061
+    ],
+    "ps_laisku_archyvas": [
+     349,
+     358,
+     380
+    ],
+    "shopup_venipak_shipping_settings": [
+     1115,
+     1152
+    ]
+   },
+   "lentele": {
+    "ps_tiekimas": [
+     473
+    ],
+    "ps_tiekimas_eil": [
+     475
+    ],
+    "ps_sources": [
+     501
+    ]
+   },
+   "transient": {
+    "ps_dropship_": [
+     202,
+     526,
+     1000,
+     1094
+    ]
+   },
+   "meniu": [
+    "207: add_submenu_page( null, 'Perduoti tiekėjams', 'Perduoti tiekėjams',",
+    "209: add_submenu_page( 'ps-desk', 'Laiškai', 'Laiškai', 'edit_shop_orders',",
+    "211: add_submenu_page( 'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai',"
+   ]
+  },
+  "petshop-av-tiekimas.php": {
+   "eil_viso": 1529,
+   "md5": "08a79af067de2718fd15389122cbd2f1",
+   "baitai": 71429,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop AV Tiekimas v1.9.2 (H264) — vizualinis atskyrimas: kortelė su šešėliu, pristatymo",
+    "4:  * ir laiškų blokai ant tonuoto fono, žingsnių numeriai, spalvota tiekėjo juosta (Raimis: „viskas susilieja\").",
+    "5:  *",
+    "6:  * Petshop AV Tiekimas v1.9.1 (H262) — lipdukas keliems pack'ams: pack_no[] masyvu (kableliais Venipak tyli).",
+    "7:  *",
+    "8:  * Petshop AV Tiekimas v1.9 (H261) — LAIŠKO DALIS KAIP KLIENTŲ LENTELĖ, DĖŽIŲ SKAIČIUS, BENDRAS MANIFESTAS.",
+    "9:  *",
+    "10:  * KODĖL (Raimis, H261, gavęs laišką): „tiekėjai ir taip žino mus, adresas",
+    "11:  * lipdukuose; svorio, manifesto Avesai nereikia — eina vienas manifestas kartu",
+    "12:  * su klientais; tik nurodyti, kiek reikės lipdukų iš Venipak; prekės kaip ir",
+    "13:  * klientams lentelėje\". DABAR: laiško dalis = antraštė „UAB Avesa, Liucionių",
+    "14:  * g. 46\" + lentelė tokia pat kaip klientų + viena eilutė apie lipdukus (arba",
+    "15:  * „atvešite patys\"). Partija turi `dezes` (kiek lipdukų): kurjeriui — viena",
+    "16:  * siunta su n pack'ų, paštomatui — n siuntų po 1. Registruojama į TĄ PATĮ",
+    "17:  * tiekėjo manifestą (Petshop_Desk::MANIFESTAI kodas), ne atskirą.",
+    "18:  *",
+    "19:  * Petshop AV Tiekimas v1.8 (H260) — PARTIJA KELIAUJA TIEKĖJO LAIŠKE KARTU SU UŽSAKYMAIS.",
+    "20:  *"
+   ],
+   "apibrezimai": [
+    "117: class Petshop_AV_Tiekimas",
+    "119: const SLUG      = 'ps-tiekimas';",
+    "120: const DB_VER    = '1.2';",
+    "121: const OPT_DB    = 'ps_tiekimas_db';",
+    "122: const META_LAUK = '_ps_tiekimas_laukia';",
+    "125: const RANKINIAI = array( 'zb' );",
+    "128: public static function laisko_nust() {",
+    "136: public static function rankinis( $tiekejas ) {",
+    "141: const AV_ADRESAS   = 'UAB Avesa, Liucionių g. 46, Liucionys, Nemenčinės sen., Vilniaus r., LT-15166';",
+    "142: const AV_PASTOMATAS = array(",
+    "148: const PRISTATYMAI = array(",
+    "153: const META_PART = '_ps_tiekimas_partijos';",
+    "155: public static function init() {",
+    "166: public static function t_partijos() { global $wpdb; return $wpdb->prefix . 'ps_tiekimas'; }",
+    "167: public static function t_eilutes()  { global $wpdb; return $wpdb->prefix . 'ps_tiekimas_eil'; }",
+    "169: public static function lenteles() {",
+    "214: public static function atvira_partija( $tiekejas ) {",
+    "236: public static function eilutes_veiksmas() {",
+    "275: public static function ideti_eilute( $o, $iid, $src = '' ) {",
+    "315: public static function isimti_eilute( $o, $iid ) {",
+    "331: public static function kg( $kg ) {",
+    "337: public static function partijos_svoris( $pid ) {",
+    "349: public static function svoris( $part ) {",
+    "358: protected static function perziuret_laukima( $o ) {",
+    "372: public static function eilutes_bukle( $order_id, $item_id ) {",
+    "383: public static function eilutes_url( $order_id, $item_id, $ka = 'ideti', $grazinti = '' ) {",
+    "393: public static function meniu() {",
+    "398: public static function tiekejo_vardas( $k ) {",
+    "406: protected static function partijos( $busena ) {",
+    "412: public static function partijos_eilutes( $partija_id ) {",
+    "420: public static function puslapis() {",
+    "468: protected static function kortele_kaupiama( $part ) {",
+    "608: protected static function skiltis_laukia() {",
+    "665: protected static function kortele_priemimas( $part ) {",
+    "754: protected static function kortele_gauta( $part ) {",
+    "775: public static function lipduko_atsisiuntimas() {",
+    "791: public static function veiksmas() {",
+    "871: protected static function venipak_nust() {",
+    "894: protected static function pack_numeris() {",
+    "909: public static function venipak_registruoti( $part ) {",
+    "1012: public static function venipak_lipdukas( $pack ) {",
+    "1029: public static function atvira_su_eilutemis( $tiekejas ) {",
+    "1044: public static function paruosti( $pid, $dezes = 0 ) {",
+    "1082: public static function laisko_dalis( $part, $eil, $pack = '' ) {",
+    "1105: public static function uzdaryti_po_laisko( $pid, $kontekstas = '' ) {",
+    "1122: protected static function uzsakyti( $pid ) {",
+    "1226: protected static function priimti( $pid ) {",
+    "1309: public static function likuciu_perziura( $vykdyti = false ) {",
+    "1415: public static function laukianciu_skaiciai() {",
+    "1422: protected static function pranesimas() {",
+    "1457: protected static function stilius() {"
+   ],
+   "hook_in": {
+    "admin_menu p20": [
+     156
+    ],
+    "admin_init": [
+     157
+    ],
+    "admin_post_ps_tiekimas": [
+     158
+    ],
+    "admin_post_ps_tiekimas_eilute": [
+     160
+    ],
+    "admin_post_ps_tiekimas_lipdukas": [
+     161
+    ]
+   },
+   "meta_obj": {
+    "_ps_source": [
+     281,
+     1340
+    ]
+   },
+   "meta_lit": {
+    "_ps_tiekimas_laukia": [
+     122
+    ],
+    "_ps_tiekimas_partijos": [
+     153
+    ],
+    "_ps_source": [
+     281,
+     1340
+    ]
+   },
+   "option": {
+    "ps_tiek_laiskai": [
+     129,
+     826
+    ],
+    "shopup_venipak_shipping_settings": [
+     872
+    ],
+    "venipak_pack_number": [
+     901
+    ],
+    "ps_tiekeju_pastai": [
+     1129
+    ]
+   },
+   "lentele": {
+    "ps_tiekimas": [
+     166
+    ],
+    "ps_tiekimas_eil": [
+     167
+    ]
+   },
+   "transient": {
+    "ps_tiek_vp_klaida_": [
+     1144,
+     1447
+    ]
+   },
+   "meniu": [
+    "394: add_submenu_page( 'ps-desk', 'Tiekimas', 'Tiekimas', 'edit_shop_orders',"
+   ],
+   "ddl": [
+    "175: dbDelta( \"CREATE TABLE \" . self::t_partijos() . \" (",
+    "175: dbDelta( \"CREATE TABLE \" . self::t_partijos() . \" (",
+    "193: dbDelta( \"CREATE TABLE \" . self::t_eilutes() . \" (",
+    "193: dbDelta( \"CREATE TABLE \" . self::t_eilutes() . \" ("
+   ]
+  },
+  "petshop-siuntu-laiskai.php": {
+   "eil_viso": 355,
+   "md5": "eddc909eb0af219235a030ca42eebf3d",
+   "baitai": 16029,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop Siuntu Laiskai v1.2 (H240) — ASMENINIS PRIERAŠAS + pilnumo vartai.",
+    "4:  *",
+    "5:  * KODĖL (Raimis H237, H239): „klientas gauna vieną laišką su sekimo nuorodomis...",
+    "6:  * kitą kartą reikia kažką asmeniškai klientui prirašyti“. Laiške atsirado laisvo",
+    "7:  * teksto laukas — tas pats principas kaip tiekėjo laiške (dropship v1.5).",
+    "8:  *",
+    "9:  * PILNUMO VARTAI: mišriam užsakymui pagrindinis mygtukas neaktyvus, kol",
+    "10:  * registruotos ne visos siuntos — kad klientas gautų VIENĄ laišką su VISAIS",
+    "11:  * numeriais, o ne kelis gabalais. Šalia lieka „Siųsti vis tiek“ išimtims",
+    "12:  * (kai viena dalis stringa ir geriau pranešti dabar, nei tylėti).",
+    "13:  *",
+    "14:  * Prierašas rodomas peržiūroje TOJE PAČIOJE vietoje, kur atsidurs laiške.",
+    "15:  *",
+    "16:  * v1.1 (H204/H206) — kaupiamasis siuntų registras ir sekimo laiškas.",
+    "17:  *",
+    "18:  * KODĖL: Venipak pluginas visą registraciją laiko VIENAME rakte",
+    "19:  * `venipak_shipping_order_data` — mišriam užsakymui antra grupės registracija",
+    "20:  * PERRAŠO pirmos pack numerius (H202). Šis modulis po kiekvienos sėkmingos"
+   ],
+   "apibrezimai": [
+    "37: class Petshop_Siuntos",
+    "39: const META    = '_ps_siuntos';",
+    "40: const SIUSTA  = '_ps_sekimo_siusta';",
+    "41: const PUSLAPIS = 'ps-siuntos-laiskas';",
+    "43: public static function init() {",
+    "58: public static function prideti_is_plugino( $order_id, $sandelis, $manifesto_kodas ) {",
+    "82: protected static function zalias( $o ) {",
+    "95: public static function sarasas( $order_id ) {",
+    "116: public static function turi( $order_id ) {",
+    "121: public static function registruota_grupiu( $o ) {",
+    "135: public static function uzbaigimo_sargas( $order ) {",
+    "164: public static function laisko_turinys( $o, $prierasas = '' ) {",
+    "196: public static function siusti() {",
+    "228: public static function meniu() {",
+    "233: public static function puslapis() {",
+    "321: function pieskim(){",
+    "342: public static function mixed_pastaba( $order, $sent_to_admin = false, $plain = false, $email = null ) {"
+   ],
+   "hook_in": {
+    "admin_menu": [
+     44
+    ],
+    "admin_post_ps_siuntu_siusti": [
+     45
+    ],
+    "woocommerce_email_order_details p5": [
+     46
+    ],
+    "woocommerce_before_order_object_save p10": [
+     47
+    ]
+   },
+   "meta_obj": {
+    "venipak_shipping_order_data": [
+     62,
+     101
+    ],
+    "_ps_uzbaigti_be_siuntu": [
+     139
+    ],
+    "_ps_shipments": [
+     141,
+     240,
+     346
+    ],
+    "_ps_order_type": [
+     345
+    ]
+   },
+   "meta_lit": {
+    "_ps_siuntos": [
+     39
+    ],
+    "_ps_sekimo_siusta": [
+     40
+    ],
+    "_ps_uzbaigti_be_siuntu": [
+     139
+    ],
+    "_ps_shipments": [
+     141,
+     240,
+     346
+    ],
+    "_ps_order_type": [
+     345
+    ]
+   },
+   "lentele": {
+    "wc_orders": [
+     149
+    ]
+   },
+   "meniu": [
+    "229: add_submenu_page( '', 'Sekimo laiškas', 'Sekimo laiškas',"
+   ]
+  },
+  "petshop-partijos.php": {
+   "eil_viso": 699,
+   "md5": "d9ca8db2c3fab34112b21e15a2d4b47a",
+   "baitai": 27850,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop Partijos v1.2 (S697) — PAKUOCIU SARASAI IR TRYNIMAS.",
+    "4:  *   Savininkas: „nera jokio redagavimo, mes kazka dareme, bet nieko neliko.",
+    "5:  *   As net negaliu susivesti duomenu\".",
+    "6:  *   Buvo tiesa: `irasyti_pakuote()` egzistavo nuo pirmos dienos, bet jokia",
+    "7:  *   sasaja jo nekviete — duomenis buvo galima iraSyti tik kodu. Cia pridedama",
+    "8:  *   tai, ko truko sasajai: medziagu ir tipu sarasai VIENOJE vietoje (kad",
+    "9:  *   GPAIS deklaracijoje nesusidarytu „Plastikas\", „plastikas\" ir „PET\" kaip",
+    "10:  *   trys skirtingos medziagos) bei eilutes trynimas.",
+    "11:  *",
+    "12:  * Petshop Partijos v1.0 (S734) — AV PARTIJOS, SAVIKAINA, PAKUOTES",
+    "13:  *",
+    "14:  * KAM: `_cost_price` yra VIENAS skaicius prekei, o realybeje savikaina yra",
+    "15:  * PARTIJOS savybe. Gavai partija uz 30 €, po menesio kita uz 34 € — antrasis",
+    "16:  * irasymas uztrindavo pirmaji, ir marza buvo rodoma nuo paskutines, nors",
+    "17:  * lentynoje dar guli pigiosios. Akcines partijos atvejis (nusipirkai su ZB",
+    "18:  * akcija, o kita menesi akcijos nebera) sistemoje isvis nesimatydavo.",
+    "19:  *",
+    "20:  * APIMTIS — TIK AV (savininko sprendimas 2026-08-10): \"savikaina aktualu tik"
+   ],
+   "apibrezimai": [
+    "64: class Petshop_Partijos",
+    "66: const VERSIJA         = '1.2';",
+    "67: const SCHEMOS_RAKTAS  = 'ps_partijos_schema';",
+    "68: const SCHEMOS_VERSIJA = 1;",
+    "74: public static function lentele()          { global $wpdb; return $wpdb->prefix . 'ps_partijos'; }",
+    "75: public static function pakuociu_lentele() { global $wpdb; return $wpdb->prefix . 'ps_pakuotes'; }",
+    "77: public static function uztikrinti_lenteles() {",
+    "134: private static function lentele_yra( $t ) {",
+    "140: public static function av_preke( $pid ) {",
+    "165: public static function priimti( $pid, $a ) {",
+    "257: public static function av_laukas( $pid ) {",
+    "264: public static function av_likutis( $pid ) {",
+    "269: private static function rasyti_av_likuti( $pid, $kiekis ) {",
+    "292: public static function svertine_savikaina( $pid ) {",
+    "304: public static function paskutine_savikaina( $pid ) {",
+    "319: public static function perskaiciuoti_savikaina( $pid ) {",
+    "339: public static function nurasyti( $pid, $kiekis, $dry = false ) {",
+    "393: public static function partijos( $pid, $tik_su_likuciu = false ) {",
+    "404: public static function artimiausias_galiojimas( $pid ) {",
+    "413: public static function santrauka( $pid ) {",
+    "430: public static function pakuotes( $pid ) {",
+    "443: public static function medziagos() {",
+    "457: public static function tipai() {",
+    "466: public static function trinti_pakuote( $id, $pid ) {",
+    "477: public static function irasyti_pakuote( $pid, $a ) {",
+    "508: public static function pakuociu_svoris( $pid, $vienetu ) {",
+    "539: public static function gpais_pagal_metus( $pid ) {",
+    "580: public static function kabinti_uzsakymus() {",
+    "586: public static function uzsakymo_nurasymas( $order_id ) {",
+    "648: public static function grazinti_i_partija( $partijos_id, $kiekis ) {",
+    "665: public static function sutapimo_patikra( $pid ) {",
+    "681: public static function statistika() {"
+   ],
+   "hook_in": {
+    "woocommerce_payment_complete p25": [
+     581
+    ],
+    "woocommerce_order_status_processing p25": [
+     582
+    ],
+    "woocommerce_order_status_completed p25": [
+     583
+    ]
+   },
+   "meta": {
+    "_ps_sandelis": [
+     141
+    ],
+    "_cost_price": [
+     323
+    ]
+   },
+   "meta_obj": {
+    "_ps_partijos_nurasyta": [
+     593,
+     630
+    ]
+   },
+   "meta_lit": {
+    "_ps_sandelis": [
+     141
+    ],
+    "_vf_cost": [
+     145
+    ],
+    "_vf_qty": [
+     258
+    ],
+    "_own_stock_qty": [
+     259
+    ],
+    "_ps_partijos_nurasyta": [
+     593,
+     630
+    ]
+   },
+   "lentele": {
+    "ps_partijos": [
+     74
+    ],
+    "ps_pakuotes": [
+     75
+    ]
+   },
+   "ddl": [
+    "84: $sql1 = \"CREATE TABLE {$p} (",
+    "109: $sql2 = \"CREATE TABLE {$pk} (",
+    "125: dbDelta( $sql1 );",
+    "126: dbDelta( $sql2 );"
+   ]
+  },
+  "petshop-pardavimai.php": {
+   "eil_viso": 374,
+   "md5": "5159642511985a687b7e42ea48829020",
+   "baitai": 14549,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop Pardavimai v1.0 (D1, S722) — PARDAVIMU GREITIS",
+    "4:  *",
+    "5:  * KAM: katalogas ir prekes kortele iki siol nemate pardavimu. Del to",
+    "6:  * sprendimai \"kelti kaina\", \"uzsakyti daugiau\", \"isimti is prekybos\" buvo",
+    "7:  * priimami nezinant, ar preke apskritai perkama. Tai buvo didziausia spraga",
+    "8:  * pries Inventory Planner / Cin7 klases sistemas.",
+    "9:  *",
+    "10:  * KA SKAICIUOJA (365/90/30 d.):",
+    "11:  *   vienetai · pajamos (be PVM) · apytiksle marza · uzsakymu skaicius",
+    "12:  *   ABC klase (80/15/5 pagal 365 d. pajamas)",
+    "13:  *   dienu atsargai (likutis / vidutinis dienos pardavimas)",
+    "14:  *   negyvos atsargos (0 pardavimu per 90 d., bet likutis > 0)",
+    "15:  *",
+    "16:  * SALTINIS: `wc_order_product_lookup` + `wc_order_stats` (HPOS). Skaiciuojami",
+    "17:  * TIK realiai ivyke pardavimai — `completed` ir `processing`. Atsaukti,",
+    "18:  * grazinti ir nepavyke uzsakymai NESKAICIUOJAMI, kitaip \"pardavimu greitis\"",
+    "19:  * rodytu ketinimus, o ne pardavimus.",
+    "20:  *"
+   ],
+   "apibrezimai": [
+    "44: class Petshop_Pardavimai",
+    "46: const VERSIJA = '1.0';",
+    "49: const BUSENOS = \"'wc-completed','wc-processing'\";",
+    "52: const ABC_A = 0.80;",
+    "53: const ABC_B = 0.95;",
+    "56: const NEGYVOS_DIENOS = 90;",
+    "59: const DIENU_RIBA = 14;",
+    "65: public static function lookup() {",
+    "68: public static function stats() {",
+    "72: public static function saltinis_veikia() {",
+    "89: public static function greitis( $pid, $dienos = 30 ) {",
+    "123: public static function savikaina( $pid ) {",
+    "137: public static function dienu_atsargai( $pid, $vnt30 = null ) {",
+    "157: public static function perskaiciuoti( $pid ) {",
+    "200: public static function perskaiciuoti_abc( $dry = false ) {",
+    "245: public static function perskaiciuoti_visus( $args = array() ) {",
+    "278: public static function eile_baigiasi( $riba = null ) {",
+    "292: public static function eile_negyvos() {",
+    "311: public static function is_meta( $pid ) {",
+    "329: public static function gyvai( $pid ) {",
+    "339: public static function statistika() {"
+   ],
+   "hook_in": {
+    "init": [
+     355
+    ],
+    "ps_pardavimai_naktinis": [
+     361
+    ]
+   },
+   "meta": {
+    "_ps_sales_30d": [
+     168
+    ],
+    "_ps_sales_90d": [
+     169
+    ],
+    "_ps_sales_365d": [
+     170
+    ],
+    "_ps_revenue_365d": [
+     171
+    ],
+    "_ps_orders_365d": [
+     172
+    ],
+    "_ps_last_sale": [
+     173
+    ],
+    "_ps_margin_365d": [
+     176,
+     178
+    ],
+    "_ps_dienu_atsargai": [
+     183,
+     185
+    ],
+    "_ps_sales_updated": [
+     188
+    ],
+    "_ps_abc": [
+     232,
+     233
+    ]
+   },
+   "meta_lit": {
+    "_vf_cost": [
+     129
+    ],
+    "_petshop_cost": [
+     129
+    ],
+    "_ps_sales_30d": [
+     168,
+     285,
+     315
+    ],
+    "_ps_sales_90d": [
+     169,
+     298,
+     316
+    ],
+    "_ps_sales_365d": [
+     170,
+     317
+    ],
+    "_ps_revenue_365d": [
+     171,
+     207,
+     318
+    ],
+    "_ps_orders_365d": [
+     172,
+     320
+    ],
+    "_ps_last_sale": [
+     173,
+     299,
+     323
+    ],
+    "_ps_margin_365d": [
+     176,
+     178,
+     319,
+     319
+    ],
+    "_ps_dienu_atsargai": [
+     183,
+     185,
+     284,
+     322,
+     322
+    ],
+    "_ps_sales_updated": [
+     188,
+     324,
+     348
+    ],
+    "_ps_abc": [
+     232,
+     233,
+     321,
+     349
+    ]
+   },
+   "option": {
+    "ps_pardavimai_naktinis_rez": [
+     371
+    ]
+   },
+   "lentele": {
+    "wc_order_product_lookup": [
+     66
+    ],
+    "wc_order_stats": [
+     69
+    ]
+   },
+   "cron": [
+    "356: if ( ! wp_next_scheduled( 'ps_pardavimai_naktinis' ) ) {",
+    "357: wp_schedule_event( strtotime( 'tomorrow 04:50' ), 'daily', 'ps_pardavimai_naktinis' );"
+   ]
+  },
+  "petshop-innodb.php": {
+   "eil_viso": 61,
+   "md5": "3498f9c73fdd2feb2b9df8feb3d4f87c",
+   "baitai": 2126,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop InnoDB sargas v1.0 (S912)",
+    "4:  *",
+    "5:  * KAM: serverio `default_storage_engine` yra MyISAM. Vadinasi kiekviena NAUJA",
+    "6:  * lentele - musu, WP branduolio ar bet kurio plugino - gimtu MyISAM, ir",
+    "7:  * 2026-08-17 atlikta 177 lenteliu konversija po keliu menesiu vel issitryptu.",
+    "8:  *",
+    "9:  * KAIP: WordPress kiekviena SQL uzklausa leidzia per `query` filtra. Cia",
+    "10:  * pagaunam TIK `CREATE TABLE` ir pridedam `ENGINE=InnoDB`. Jokiu papildomu",
+    "11:  * DB uzklausu - todel pasirinktas sis kelias, o ne `SET SESSION",
+    "12:  * default_storage_engine`, kuris kainuotu po viena uzklausa KIEKVIENAM",
+    "13:  * puslapio atidarymui.",
+    "14:  *",
+    "15:  * KAINA: viena `$q[0]` raides patikra kiekvienai uzklausai. Sunkiausias",
+    "16:  * atvejis atmetamas pirmu simboliu, be jokiu funkciju kvietimo.",
+    "17:  *",
+    "18:  * KO NELIECIA (butinos isimtys):",
+    "19:  *   - `CREATE TABLE ... LIKE ...` - `LIKE x ENGINE=InnoDB` yra sintakses",
+    "20:  *     klaida; tokios lenteles paveldi originalo varikli, o originalai jau"
+   ],
+   "apibrezimai": [],
+   "hook_in": {
+    "query": [
+     32
+    ]
+   },
+   "ddl": [
+    "10: * pagaunam TIK `CREATE TABLE` ir pridedam `ENGINE=InnoDB`. Jokiu papildomu",
+    "19: *   - `CREATE TABLE ... LIKE ...` - `LIKE x ENGINE=InnoDB` yra sintakses",
+    "23: *   - viskas, kas nera CREATE TABLE.",
+    "40: if ( 0 !== stripos( $q, 'CREATE TABLE' ) ) {",
+    "49: /* CREATE TABLE ... LIKE ... - variklis paveldimas, priedas = klaida. */"
+   ]
+  },
+  "petshop-statistika-vitrina.php": {
+   "eil_viso": 330,
+   "md5": "8459d0c12872de02ad1749882b9b2fd5",
+   "baitai": 12755,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Statistika — Vitrina",
+    "4:  * Description: Elgsenos ivykiu siuntimas is surenkamos dezes puslapio (standartas v2, E2).",
+    "5:  * Version: 1.0",
+    "6:  *",
+    "7:  * KODEL ATSKIRAS MODULIS. `petshop-laukai.php` yra 183 KB veikiancio kodo ir",
+    "8:  * jokio JS ivykiu API neturi. Vietoj to, kad ji perrasyciau (rizika neproporcinga",
+    "9:  * naudai), sis modulis kabinasi ant TU PACIU DOM elementu per delegated",
+    "10:  * listener'ius. Laukai apie statistika nieko nezino ir neturi zinoti; jei",
+    "11:  * vitrina kada persidarys, suges tik matavimas, ne pardavimas.",
+    "12:  *",
+    "13:  * DOM sutartis (patikrinta narsykleje 2026-08-16, produktas 34942):",
+    "14:  *   .pslk-deti[data-cid]        — „I deze\" kortelėje ir greitoje perziuroje",
+    "15:  *   .pslk-stp button[data-cid][data-d]  — kiekio +/- (data-d = 1 arba -1)",
+    "16:  *   .pslk-el[data-cid]          — langelis dezeje (paspaudimas nuima VIENA)",
+    "17:  *   .pslk-dovk[data-gid]        — dovanos pasirinkimas",
+    "18:  *   #pslk-dov.atrakinta         — dovanos riba pasiekta",
+    "19:  *   #pslk-cta[disabled]         — „I krepseli\"; disabled nukritimas = minimumas",
+    "20:  *   #pslk-kiek                  — „N vnt.\" arba „tuscia\""
+   ],
+   "apibrezimai": [
+    "32: class Petshop_Statistika_Vitrina",
+    "34: const VERSIJA = '1.0';",
+    "36: public static function init() {",
+    "41: private static function deze_id() {",
+    "55: public static function cid_zemelapis( $deze ) {",
+    "65: public static function skriptas() {",
+    "86: function sutikimas(){",
+    "92: function sesija(){",
+    "108: function irenginys(){",
+    "115: function siusk(){",
+    "130: function pid(cid){",
+    "136: function ivykisPid(tipas, produktas, verte, kiek){",
+    "142: function ivykis(tipas, cid, verte, kiek){",
+    "153: function pirmaKarta(raktas){",
+    "169: function kiekDezeje(){",
+    "176: function poPiesimo(fn){",
+    "188: function pazymekRodyta(cid){",
+    "193: function kortelesCid(el){",
+    "299: function tikrinkBusena(){"
+   ],
+   "hook_in": {
+    "wp_footer p99": [
+     37
+    ],
+    "plugins_loaded": [
+     328
+    ]
+   },
+   "meta": {
+    "_ps_laukas": [
+     45
+    ],
+    "_ps_laukas_dovanos_riba": [
+     74
+    ]
+   },
+   "meta_lit": {
+    "_ps_laukas": [
+     45
+    ],
+    "_ps_laukas_dovanos_riba": [
+     74
+    ]
+   },
+   "lentele": {
+    "wc_mnm_child_items": [
+     57
+    ]
+   }
+  },
+  "petshop-rinkiniu-ataskaita.php": {
+   "eil_viso": 796,
+   "md5": "c9e710bfbe32ee988ac6bf23cbd51a07",
+   "baitai": 41305,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Statistika — Rinkiniai (ataskaita)",
+    "4:  * Description: „Petshop ataskaitos\" → „Surenkami rinkiniai\": pinigai, prekes, kelias dezeje, dovana, irenginiai.",
+    "5:  * Version: 2.0",
+    "6:  *",
+    "7:  * Perdaryta pagal „Petshop ataskaitu standarta v2\" (spec v1.1).",
+    "8:  * v1.1 buvo grazi prezentacijai, bet ne darbui: be laikotarpio, be palyginimo,",
+    "9:  * be rikiavimo, be veiksmu — ir skaite VISUS uzsakymus kiekvienu atidarymu.",
+    "10:  *",
+    "11:  * Kas pasikeite is esmes:",
+    "12:  *  - skaitom dienos suvestine (`ps_ataskaitu_dienos`), o ne zalius uzsakymus;",
+    "13:  *  - kiekvienas skaicius turi palyginima su ankstesniu tokiu paciu laikotarpiu;",
+    "14:  *  - „Ka daryti\" blokai: kandidatai isimti / lyderiai pagal NUSTATYMU ribas;",
+    "15:  *  - kelias dezeje (kabliukai, uzdarytojos), dovanos grazá, irenginiu pjuvis.",
+    "16:  *",
+    "17:  * Skaiciavimo taisykles (savininko sprendimai):",
+    "18:  *  - savikaina — IS UZSAKYMO EILUTES, fiksuota pardavimo momentu;",
+    "19:  *  - eilutes be savikainos i marza NEIRASOMOS ir rodomos atskirai;",
+    "20:  *  - marza be PVM; dovana: pajamos 0, savikaina reali — mazina pelna;"
+   ],
+   "apibrezimai": [
+    "27: class Petshop_Rinkiniu_Ataskaita",
+    "29: const VERSIJA = '2.0';",
+    "30: const CAP     = 'manage_woocommerce';",
+    "31: const PARENT  = 'petshop-reports';",
+    "32: const SLUG    = 'petshop-reports-rinkiniai';",
+    "34: public static function init() {",
+    "39: public static function menu() {",
+    "46: public static function saugoti_pradzia() {",
+    "58: public static function dezes() {",
+    "73: private static function duomenys( $nuo, $iki, $deze_id = 0 ) {",
+    "89: private static function pinigai( $eil ) {",
+    "132: private static function elgsena( $eil, $tipas, $laukas = 'kiekis', $pagal = 'preke_id' ) {",
+    "148: private static function sesiju( $eil, $tipas ) {",
+    "158: public static function render() {",
+    "201: private static function sekcija_kpi( $p, $pp, $eil, $lt ) {",
+    "237: private static function dienu_eilute( $eil, $ka = 'pajamos' ) {",
+    "255: private static function sekcija_tendencija( $eil, $pries, $lt ) {",
+    "279: private static function prekiu_metrikos( $eil ) {",
+    "333: private static function sekcija_veiksmai( $eil ) {",
+    "367: private static function sekcija_dydziai( $eil, $dezes ) {",
+    "460: private static function sekcija_prekes( $eil, $lt ) {",
+    "500: private static function sekcija_preke( $eil, $pid ) {",
+    "558: private static function sekcija_piltuvelis( $eil ) {",
+    "613: private static function sekcija_kelias( $eil ) {",
+    "659: private static function sekcija_dovana( $eil, $pries ) {",
+    "735: private static function sekcija_irenginiai( $eil ) {",
+    "780: private static function sekcija_nustatymai() {"
+   ],
+   "hook_in": {
+    "admin_menu p20": [
+     35
+    ],
+    "admin_post_ps_stat_pradzia": [
+     36
+    ],
+    "plugins_loaded": [
+     794
+    ]
+   },
+   "meta": {
+    "_ps_savikaina": [
+     516
+    ]
+   },
+   "meta_lit": {
+    "_ps_laukas": [
+     64
+    ],
+    "_ps_savikaina": [
+     516
+    ]
+   },
+   "option": {
+    "ps_stat_pradzia": [
+     50
+    ]
+   },
+   "meniu": [
+    "40: add_submenu_page("
+   ]
+  },
+  "petshop-paruostu-ataskaita.php": {
+   "eil_viso": 580,
+   "md5": "5077deb42af0843cce0a211b4f3b4167",
+   "baitai": 29816,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Statistika — Paruosti rinkiniai (ataskaita)",
+    "4:  * Description: „Petshop ataskaitos\" → „Rinkiniai\": paruosti MnM rinkiniai ir DP pakai, kanibalizacija, pakopos.",
+    "5:  * Version: 1.0",
+    "6:  *",
+    "7:  * Ekranas ant to paties standarto v2 karkaso kaip „Surenkami rinkiniai\", bet",
+    "8:  * atsako i kita klausima. Surenkamoms dezems svarbu, KA klientas renkasi;",
+    "9:  * paruostiems rinkiniams — ar rinkinys PRIDEDA pardavimu, ar tik perkelia juos",
+    "10:  * is katalogo su mazesne marza (kanibalizacija). Todel vietoj dezes piltuvelio",
+    "11:  * cia: kanibalizacija, „Sutaupote\" efektyvumas ir DP pakopos.",
+    "12:  *",
+    "13:  * Verdiktas (PRIDEDA / PERKELIA / PER MAZAI) — heuristika is palyginimo su",
+    "14:  * ankstesniu laikotarpiu, NE A/B irodymas. Todel jis kviecia perziureti, o ne",
+    "15:  * naikinti: tai savininko sprendimas, ne sistemos.",
+    "16:  */",
+    "18: if ( ! defined( 'ABSPATH' ) ) { exit; }",
+    "20: class Petshop_Paruostu_Ataskaita {"
+   ],
+   "apibrezimai": [
+    "20: class Petshop_Paruostu_Ataskaita",
+    "22: const VERSIJA = '1.0';",
+    "23: const CAP     = 'manage_woocommerce';",
+    "24: const PARENT  = 'petshop-reports';",
+    "25: const SLUG    = 'petshop-reports-paruosti';",
+    "27: public static function init() {",
+    "31: public static function menu() {",
+    "44: public static function rinkiniai() {",
+    "77: private static function komponentai_mnm( $id ) {",
+    "85: private static function gyvunas( $pid ) {",
+    "93: private static function duomenys( $nuo, $iki ) {",
+    "98: private static function metrikos( $eil, $rinkiniai ) {",
+    "134: private static function atskirai( $eil ) {",
+    "148: private static function rinkinyje( $eil, $rid ) {",
+    "164: public static function render() {",
+    "216: private static function pinigai( $m, $eil ) {",
+    "244: private static function sekcija_kpi( $p, $pp, $eil, $pries ) {",
+    "271: private static function sekcija_tendencija( $eil, $pries, $rinkiniai ) {",
+    "301: private static function verdiktai( $eil, $pries, $rinkiniai, $m ) {",
+    "354: private static function sekcija_veiksmai( $verdiktai, $rinkiniai ) {",
+    "375: private static function nuolaida( $eil, $rid ) {",
+    "392: private static function sekcija_lentele( $m, $rinkiniai, $verdiktai, $eil ) {",
+    "444: private static function sekcija_kanibalizacija( $eil, $pries, $r ) {",
+    "492: private static function sekcija_pakopos( $m, $rinkiniai ) {",
+    "524: private static function sekcija_nuolaidos( $m, $rinkiniai, $verdiktai, $eil ) {"
+   ],
+   "hook_in": {
+    "admin_menu p21": [
+     28
+    ],
+    "plugins_loaded": [
+     578
+    ]
+   },
+   "meta": {
+    "_ps_laukas": [
+     60
+    ],
+    "_dp_base_product_id": [
+     68
+    ],
+    "_dp_pack_qty": [
+     69
+    ]
+   },
+   "meta_lit": {
+    "_ps_laukas": [
+     60
+    ]
+   },
+   "lentele": {
+    "wc_mnm_child_items": [
+     79
+    ]
+   },
+   "meniu": [
+    "32: add_submenu_page("
+   ]
+  },
+  "petshop-anketos-ataskaita.php": {
+   "eil_viso": 753,
+   "md5": "22c9d08a16a7defbcb2cb70d8930e0d6",
+   "baitai": 36615,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Plugin Name: Petshop Anketos Ataskaita",
+    "4:  * Description: Kontrakto §6 P1 — sesios \"Augintinio anketa\" skiltys ant ataskaitu standarto v2 karkaso.",
+    "5:  * Version: 2.3",
+    "6:  *",
+    "7:  * SESIOS SKILTYS (kontraktas §6, eile fiksuota):",
+    "8:  *  1. Variklio sveikata / piltuvelis   — kur zmones iskrenta ir ar variklis atsako",
+    "9:  *  2. Rekomendaciju coverage + gedimai — reason_code pjuvis, kas neveikia SIANDIEN",
+    "10:  *  3. Paklausos / asortimento zemelapis — ko klientai serai ir ko mes neturim",
+    "11:  *  4. Duomenu kokybe                    — RECOMMENDABLE vs HIGH_CONFIDENCE tarpas",
+    "12:  *  5. Refill / gyvybingumas             — due -> priminimas -> pirkimas",
+    "13:  *  6. Pinigai / cohort                  — SAZININGAI \"duomenu dar nepakanka\" iki istorijos",
+    "14:  *",
+    "15:  * v2.3: perimta ir LIKUSI izvalgu ekrano dalis — rusiu ir maitinimo budo",
+    "16:  * pasiskirstymas su lietuviskomis etiketemis (LABELS, nukopijuota is originalo",
+    "17:  * class-admin-reports.php, kad ekrane nesikeistu zodziai). Po sito senajame",
+    "18:  * ekrane nebelieka NIEKO, ko cia nera, ir jis tampa pradzios ekranu.",
+    "19:  *",
+    "20:  * v2.2: Mitybos plano blokas buvo UZ ankstyvo return'o („duomenu nepakanka\"),"
+   ],
+   "apibrezimai": [
+    "58: class Petshop_Anketos_Ataskaita",
+    "60: const VERSIJA = '2.3';",
+    "61: const PARENT  = 'petshop-reports';",
+    "62: const SLUG    = 'petshop-reports-anketa';",
+    "63: const CAP     = 'manage_woocommerce';",
+    "66: const OPT_PINIGU_RIBA = 'ps_anketa_pinigu_riba';",
+    "68: const OPT_EIL_RIBA = 'ps_anketa_eil_riba';",
+    "69: const EIL_RIBA = 50;",
+    "71: const OPT_UZS_RIBA = 'ps_anketa_uzs_riba';",
+    "72: const UZS_RIBA = 500;",
+    "73: const META_SKILTIS = 'ps_anketa_skiltis';",
+    "75: public static function skiltys() {",
+    "86: public static function eil_riba() {",
+    "92: private static function riboti( $eilutes, $U ) {",
+    "100: public static function init() {",
+    "104: public static function meniu() {",
+    "111: private static function ui() { return class_exists( 'Petshop_Ataskaitu_UI' ); }",
+    "113: private static function t( $vardas ) { global $wpdb; return $wpdb->prefix . $vardas; }",
+    "116: const LABELS = array(",
+    "130: private static function lt( $grupe, $kodas ) {",
+    "136: private static function test_filtras( $alias = 'p' ) {",
+    "140: private static function lentele_yra( $t ) {",
+    "145: private static function ivykiai_intervale( $sritis, $nuo, $iki ) {",
+    "158: private static function sk( $m, $tipas ) { return isset( $m[ $tipas ] ) ? $m[ $tipas ]['n'] : 0; }",
+    "162: public static function render() {",
+    "210: private static function skiltis_1( $U, $lt ) {",
+    "289: private static function skiltis_2( $U, $lt ) {",
+    "362: private static function skiltis_3( $U, $lt ) {",
+    "532: private static function skiltis_4( $U, $lt ) {",
+    "618: private static function skiltis_5( $U, $lt ) {",
+    "644: private static function skiltis_6( $U, $lt ) {",
+    "716: private static function planas( $U, $lt ) {"
+   ],
+   "hook_in": {
+    "admin_menu p41": [
+     101
+    ]
+   },
+   "meniu": [
+    "105: add_submenu_page( self::PARENT, 'Augintinio anketa', 'Augintinio anketa',"
+   ]
+  },
+  "core/class-admin-reports.php": {
+   "eil_viso": 109,
+   "md5": "809fad298db64e0fe77cfbcf98d9fa72",
+   "baitai": 4442,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop_Admin_Reports — „Petshop ataskaitos\" MENIU TEVAS ir pradzios ekranas.",
+    "4:  *",
+    "5:  * ISTORIJA (2026-08-16): sis failas buvo ir meniu tevas, IR atskira ataskaita",
+    "6:  * „Augintiniu anketos izvalgos\". Del to admin'e buvo DU ekranai apie ta pati:",
+    "7:  * senasis cia ir naujasis „Augintinio anketa\" (kontrakto §6, sesios skiltys).",
+    "8:  *",
+    "9:  * Visi unikalus senojo ekrano blokai PERKELTI i „Augintinio anketa\":",
+    "10:  *   „Kita\" laisvi tekstai              -> Paklausa",
+    "11:  *   Dazniausiai priskirtas maistas     -> Paklausa",
+    "12:  *   Rusys / Kuo maitina / Sterilizuoti -> Paklausa",
+    "13:  *   Pirkimai is Mitybos plano          -> Pinigai",
+    "14:  *   Apimtis, jautrumai, poreikiai      -> Paklausa ir Duomenu kokybe",
+    "15:  *",
+    "16:  * Todel cia nebeliko ataskaitos — liko TIK meniu registracija ir pradzios",
+    "17:  * ekranas su nuorodomis. Failo NETRINAM: jis registruoja `add_menu_page`, be",
+    "18:  * jo dingtu visas „Petshop ataskaitos\" meniu su visomis ataskaitomis.",
+    "19:  *",
+    "20:  * PRINCIPAS: viena tema — vienas ekranas. Du langai apie ta pati reiskia, kad"
+   ],
+   "apibrezimai": [
+    "28: class Petshop_Admin_Reports",
+    "30: const CAP    = 'manage_woocommerce';",
+    "31: const PARENT = 'petshop-reports';",
+    "32: const SLUG   = 'petshop-reports';",
+    "34: public static function init() {",
+    "43: public static function menu() {",
+    "59: public static function render() {",
+    "100: private static function css() {"
+   ],
+   "hook_in": {
+    "admin_menu": [
+     35
+    ]
+   },
+   "meniu": [
+    "40: * cia kaip nauji add_submenu_page( self::PARENT, ... ), kad viskas butu",
+    "44: add_menu_page(",
+    "48: add_submenu_page("
+   ]
+  },
+  "core/class-event-registry.php": {
+   "eil_viso": 164,
+   "md5": "4106616c0d7c8c445378ffd1f265699b",
+   "baitai": 5884,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop_Event_Registry — kanoninių event'ų registras + JSON schema validacija.",
+    "4:  *",
+    "5:  * Užrakina kad event'ai atitiktų kanoninį 13 sąrašą (dokumentai/events/EVENTS.md).",
+    "6:  * Kiekvienas event turi schema_version. Schemos: petshop-core/schemas/events/*.schema.json.",
+    "7:  *",
+    "8:  * NAUDOJIMAS:",
+    "9:  *   Petshop_Event_Registry::emit('order_paid', 'klientas@x.lt', $payload);",
+    "10:  *   → validuoja pagal order_paid.schema.json → ps_emit_event() → event log → async provider.",
+    "11:  *",
+    "12:  * Jei event'as nezinomas arba payload neatitinka schemos → log WARNING + (pagal strict) blokuoja.",
+    "13:  *",
+    "14:  * KANONINIAI EVENT'AI (13, S185): legacy_contact_imported, pet_profile_created,",
+    "15:  * pet_profile_updated, cart_abandoned, order_paid, order_shipped, refill_due,",
+    "16:  * subscription_t5_notice, subscription_t2_sms_needed, payment_failed,",
+    "17:  * shipment_returned, pet_reminder_due, consent_changed.",
+    "18:  */",
+    "20: if ( ! defined( 'ABSPATH' ) ) {"
+   ],
+   "apibrezimai": [
+    "24: class Petshop_Event_Registry",
+    "29: const CANONICAL_EVENTS = array(",
+    "52: public static function is_canonical( $event_name ) {",
+    "59: private static function load_schema( $event_name ) {",
+    "79: public static function validate( $event_name, array $payload ) {",
+    "136: public static function emit( $event_name, $email, array $payload, array $opts = array() ) {",
+    "161: public static function active_events() {"
+   ]
+  },
+  "core/class-event-log.php": {
+   "eil_viso": 290,
+   "md5": "1c17a8a7fc059e2b4218c7a9280c887a",
+   "baitai": 9977,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop_Event_Log",
+    "4:  *",
+    "5:  * DB sluoksnis pries event log lentele (gaj6_ps_event_log).",
+    "6:  * Uztikrina idempotencija per UNIQUE(event_id, adapter_name).",
+    "7:  *",
+    "8:  * Naudojama:",
+    "9:  * - ps_emit_event() public API (main file)",
+    "10:  * - Petshop_ESP_Retry_Queue worker (v0.2.0)",
+    "11:  * - Health check dashboard (v0.3.0)",
+    "12:  * - Admin UI (v0.3.0)",
+    "13:  *",
+    "14:  * Schema:",
+    "15:  *   id              BIGINT PK",
+    "16:  *   event_id        VARCHAR(191)  UNIQUE per adapter",
+    "17:  *   event_name      VARCHAR(64)   snake_case (order_paid, refill_due, ...)",
+    "18:  *   email           VARCHAR(191)  recipient",
+    "19:  *   payload_json    LONGTEXT      JSON encoded",
+    "20:  *   emitted_at      DATETIME"
+   ],
+   "apibrezimai": [
+    "54: class Petshop_Event_Log",
+    "56: const DB_VERSION_OPTION = 'petshop_esp_event_log_db_version';",
+    "57: const CURRENT_DB_VERSION = '0.1.0';",
+    "62: public static function table_name() {",
+    "70: public static function install() {",
+    "107: public static function maybe_install() {",
+    "162: public static function insert( $event_id, $event_name, $email, array $payload, $adapter_name = 'sender' ) {",
+    "199: public static function get_by_event_id( $event_id, $adapter_name = 'sender' ) {",
+    "215: public static function get_pending( $limit = 50, $adapter_name = 'sender' ) {",
+    "237: public static function update( $id, array $updates ) {",
+    "254: public static function count_by_status( $adapter_name = 'sender', $since_hours = 24 ) {",
+    "274: public static function purge_old( $adapter_name = 'sender' ) {"
+   ],
+   "lentele": {
+    "ps_event_log": [
+     64
+    ]
+   },
+   "ddl": [
+    "40: *   → maybe_install() daro ALTER TABLE ADD COLUMN IF NOT EXISTS",
+    "68: * Sukurti lentele (aktyvavimo hook'as). Naudoja dbDelta.",
+    "75: $sql = \"CREATE TABLE `$table` (",
+    "96: dbDelta( $sql );",
+    "105: * pridedame ALTER TABLE be klaidos.",
+    "119: $wpdb->query( \"ALTER TABLE `$table` ADD COLUMN attempts TINYINT UNSIGNED NOT NULL DEFAULT 0\" );",
+    "123: $wpdb->query( \"ALTER TABLE `$table` ADD COLUMN next_retry_at DATETIME NULL\" );",
+    "127: $wpdb->query( \"ALTER TABLE `$table` ADD COLUMN last_error VARCHAR(255) NULL\" );",
+    "131: $wpdb->query( \"ALTER TABLE `$table` ADD COLUMN esp_response TEXT NULL\" );",
+    "134: // Indeksai — patikrinam (dbDelta indeksu ALTER'iais elgiasi kaprizingai, geriau SHOW INDEX)",
+    "138: $wpdb->query( \"ALTER TABLE `$table` ADD UNIQUE KEY uq_event_id_adapter (event_id, adapter_name)\" );",
+    "141: $wpdb->query( \"ALTER TABLE `$table` ADD KEY idx_status_retry (status, next_retry_at)\" );"
+   ]
+  },
+  "core/class-event-emitters.php": {
+   "eil_viso": 317,
+   "md5": "ddc3aefbc0a970241f613d64067f307b",
+   "baitai": 12724,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop_Event_Emitters — WC/consent hook'ai kurie fire'ina realius event'us.",
+    "4:  *",
+    "5:  * S188: tik event'ai su ŠVARIU šaltiniu:",
+    "6:  * - order_paid → WC 'woocommerce_payment_complete' (uzsakymas apmoketas)",
+    "7:  * - consent_changed → jau emit'inama Consent_Sync viduje (cia tik uztikrinam)",
+    "8:  *",
+    "9:  * order_shipped (M12, S192) — Venipak/LP neturi švaraus \"shipment created\" hook'o,",
+    "10:  * todel detektuojam per woocommerce_update_order (HPOS) — tikrinam ar atsirado",
+    "11:  * tracking kodas. Idempotencija per _ps_order_shipped_emitted meta zyma.",
+    "12:  *",
+    "13:  * Visi event'ai eina per Petshop_Event_Registry::emit() (schema validacija).",
+    "14:  *",
+    "15:  * S310 (2026-07-30): po registry emit'o papildomai kviecamas",
+    "16:  * Petshop_Email_Dispatch::enqueue() — eventas patenka i laisku outbox'a.",
+    "17:  * Idempotencija dviem lygiais: registry event_id + dispatch job_key.",
+    "18:  * Registry emit ir dispatch enqueue yra NEPRIKLAUSOMI — jei dispatch klases nera,",
+    "19:  * eventas vis tiek uzsiregistruoja.",
+    "20:  */"
+   ],
+   "apibrezimai": [
+    "26: class Petshop_Event_Emitters",
+    "28: public static function init() {",
+    "46: public static function on_payment_complete( $order_id ) {",
+    "53: public static function on_order_paid_status( $order_id ) {",
+    "69: private static function emit_order_paid( $order_id ) {",
+    "139: const SHIPPED_FLAG_META = '_ps_order_shipped_emitted';",
+    "144: public static function maybe_emit_order_shipped( $order_id ) {",
+    "224: public static function resolve_tracking( $order ) {",
+    "304: private static function guess_delivery_type( $order ) {"
+   ],
+   "hook_in": {
+    "woocommerce_payment_complete p20": [
+     30
+    ],
+    "woocommerce_order_status_processing p20": [
+     35
+    ],
+    "woocommerce_order_status_completed p20": [
+     36
+    ],
+    "woocommerce_update_order p20": [
+     40,
+     197
+    ]
+   },
+   "meta_obj": {
+    "_woo_lithuaniapost_barcode": [
+     250
+    ],
+    "venipak_shipping_order_data": [
+     272
+    ]
+   },
+   "meta_lit": {
+    "_ps_order_shipped_emitted": [
+     139
+    ]
+   }
+  },
+  "core/class-email-dispatch.php": {
+   "eil_viso": 543,
+   "md5": "4269c246e36e265d8224dece009b8fbe",
+   "baitai": 22467,
+   "antraste": [
+    "1: <?php",
+    "2: /**",
+    "3:  * Petshop Email Dispatch Layer",
+    "4:  *",
+    "5:  * Centrinis laisku siuntimo sluoksnis. Sender = TIK transportas.",
+    "6:  * Visa logika (kada, kam, ar galima, ka rodyti) gyvena CIA.",
+    "7:  *",
+    "8:  * Grandine:",
+    "9:  *   eventas -> enqueue() -> outbox (ps_email_jobs)",
+    "10:  *           -> cron -> eligibility gate -> render -> provider->send()",
+    "11:  *           -> status update + provider_message_id",
+    "12:  *",
+    "13:  * Principai (S180-B):",
+    "14:  *  - Verslo taisykles NE Sender viduje",
+    "15:  *  - Sablonu originalai musu repo",
+    "16:  *  - Idempotency per job_key (tas pats eventas nesiunciamas du kartus)",
+    "17:  *  - Srauto klasifikacija yra DUOMUO (FLOWS masyve), ne kodas",
+    "18:  *",
+    "19:  * @package petshop-core",
+    "20:  * @since 0.16.0 (S309, 2026-07-30)"
+   ],
+   "apibrezimai": [
+    "25: class Petshop_Email_Dispatch",
+    "27: const DB_VERSION = '1.2.0';",
+    "28: const OPT_DB_VER = 'petshop_email_dispatch_db';",
+    "31: const DEFER_RETRY_SECONDS = 86400; // +24 val.",
+    "32: const MAX_DEFER_DAYS      = 14;",
+    "47: public static function flows() {",
+    "90: public static function table() {",
+    "95: public static function install() {",
+    "139: public static function maybe_install() {",
+    "158: public static function enqueue( $flow, $email, $payload = array(), $args = array() ) {",
+    "215: public static function check_eligibility( $flow_class, $email, $flow = '', $context = array() ) {",
+    "278: public static function is_suppressed( $email ) {",
+    "286: public static function is_transactional_only( $email ) {",
+    "302: public static function suppress( $email, $channel, $reason = 'manual', $source = 'local' ) {",
+    "317: public static function process_pending( $limit = 20, $dry_run = false ) {",
+    "335: protected static function process_one( $row, $dry_run = false ) {",
+    "481: public static function render( $flow, $payload, $row = array() ) {",
+    "511: public static function stats() {",
+    "533: public static function init() {",
+    "540: public static function cron_run() {"
+   ],
+   "hook_in": {
+    "ps_email_dispatch_cron": [
+     534
+    ]
+   },
+   "hook_out": {
+    "petshop_email_flows": [
+     83
+    ],
+    "petshop_email_eligibility": [
+     271
+    ],
+    "petshop_email_is_suppressed": [
+     283
+    ],
+    "petshop_email_transactional_only": [
+     291
+    ],
+    "petshop_email_prepare_context": [
+     385
+    ],
+    "petshop_email_provider": [
+     420
+    ],
+    "petshop_contact_used": [
+     460
+    ],
+    "petshop_email_template_path": [
+     489
+    ]
+   },
+   "option": {
+    "petshop_email_suppression": [
+     279
+    ]
+   },
+   "lentele": {
+    "ps_email_jobs": [
+     92
+    ]
+   },
+   "cron": [
+    "535: if ( ! wp_next_scheduled( 'ps_email_dispatch_cron' ) ) {",
+    "536: wp_schedule_event( time() + 120, 'ps_esp_5min', 'ps_email_dispatch_cron' );"
+   ],
+   "ddl": [
+    "101: $sql = \"CREATE TABLE $t (",
+    "135: dbDelta( $sql );"
+   ]
+  },
+  "xml/class-fulfillment-source.php": {
+   "eil_viso": 208,
+   "md5": "b459793839d2182f782b60ea0e4eb3ef",
+   "baitai": 6711,
+   "antraste": [
+    "1: <?php",
+    "2: defined( 'ABSPATH' ) || exit;",
+    "4: /**",
+    "5:  * Petshop_Fulfillment_Source v1.0 (2026-06-08)",
+    "6:  *",
+    "7:  * Universalus prekes ISSIUNTIMO saltinio (sandelio) normalizatorius.",
+    "8:  * Vienas tiesos saltinis: kuris sandelis tiekia preke + koks carrier reikalingas.",
+    "9:  *",
+    "10:  * Naudotojai (dabar ir ateity):",
+    "11:  *   - Venipak shipping lock (checkout pristatymo ribojimas)",
+    "12:  *   - Savikainos meta box (source badge \"Sandelis: Quattro\")",
+    "13:  *   - Ateities: fulfillment plugin, order split, batch dispatch tiekejams",
+    "14:  *",
+    "15:  * Architektura: vietoj brand matching kiekvienoje vietoje atskirai, VISI",
+    "16:  * naudotojai kreipiasi i si resolver'i. Brand/manufacturer logika gyvena",
+    "17:  * VIENOJE vietoje. Pakeitus brand pavadinima — taisom cia, ne 5 failuose.",
+    "18:  *",
+    "19:  * Sandeliai:",
+    "20:  *   zb          -> ZB (Žalioji Banga)         carrier=venipak"
+   ],
+   "apibrezimai": [
+    "37: class Petshop_Fulfillment_Source",
+    "46: private static function dropship_map(): array {",
+    "82: public static function resolve( int $product_id ): array {",
+    "133: public static function is_venipak_only( int $product_id ): bool {",
+    "142: private static function is_zb( int $pid ): bool {",
+    "148: private static function is_vf( int $pid ): bool {",
+    "170: private static function detect_dropship( int $pid ): ?array {"
+   ],
+   "meta": {
+    "_fulfillment_courier_only": [
+     84
+    ],
+    "_zb_enabled": [
+     143
+    ],
+    "_zb_cost": [
+     144
+    ],
+    "_zb_supplier_sku": [
+     145
+    ],
+    "_vf_enabled": [
+     149
+    ],
+    "_vf_cost": [
+     150
+    ],
+    "_vf_supplier_sku": [
+     151
+    ],
+    "_legacy_manufacturer": [
+     172
+    ]
+   },
+   "meta_lit": {
+    "_vf_enabled": [
+     149
+    ],
+    "_vf_cost": [
+     150
+    ],
+    "_vf_supplier_sku": [
+     151
+    ],
+    "_legacy_manufacturer": [
+     172
+    ]
+   }
+  },
+  "xml/class-fulfillment.php": {
+   "eil_viso": 100,
+   "md5": "b0ce22e7739a0515ea1af0ebcf12a2c3",
+   "baitai": 3849,
+   "antraste": [
+    "1: <?php",
+    "2: defined( 'ABSPATH' ) || exit;",
+    "4: /**",
+    "5:  * Petshop_Fulfillment v1.6.1",
+    "6:  *",
+    "7:  * v1.6.1 (2026-08-20): `own_stock` PAŠALINTAS iš `_stock` šaltinių sąrašo.",
+    "8:  *",
+    "9:  *   PRIEŽASTIS: S590 architektūroje (petshop-katalogas.php:919, av-stock,",
+    "10:  *   av-limit, av-reduce) `_own_stock_qty` yra ATSKIRAS AV sandėlio kiekis,",
+    "11:  *   gyvenantis ŠALIA `_stock`:",
+    "12:  *     - `_stock`          = tiekėjo kiekis (ZB/VF sync jį perrašo)",
+    "13:  *     - `_own_stock_qty`  = AV lentynos kiekis (S477: jo rašymas neliečia _stock)",
+    "14:  *     - rodymui juos sudeda Petshop_AV_Limit (3 sluoksnis)",
+    "15:  *     - nusirašymą pagal _ps_source atskiria petshop-av-reduce",
+    "16:  *   Senoji v1.3–v1.5 logika `_own_stock_qty` laikė `_stock` šaltiniu su",
+    "17:  *   aukščiausia pirmenybe — dvigubai prekei tai arba perrašydavo tiekėjo",
+    "18:  *   kiekį savu, arba (kartu su AV_Limit) skaičiuodavo AV du kartus.",
+    "19:  *   Matavimas 2026-08-20: prekių su dviem šaltiniais buvo 0, todėl elgsenos",
+    "20:  *   pakeitimas esamam katalogui = 0 prekių."
+   ],
+   "apibrezimai": [
+    "28: class Petshop_Fulfillment",
+    "43: public function recalculate( int $post_id ): string {",
+    "58: public function get_all_quantities( int $post_id ): array {",
+    "70: private function set_wc_stock( int $post_id, int $qty, string $source ): void {",
+    "76: public function update_zb_qty( int $post_id, int $qty ): void {",
+    "81: public function update_vf_qty( int $post_id, int $qty ): void {",
+    "90: public function update_own_stock( int $post_id, int $qty ): void {",
+    "95: public function get_active_source( int $post_id ): string {",
+    "99: public function get_suppliers(): array { return $this->suppliers; }"
+   ],
+   "meta": {
+    "_manage_stock": [
+     71
+    ],
+    "_active_fulfillment_source": [
+     72,
+     96
+    ],
+    "_zb_qty": [
+     77
+    ],
+    "_vf_qty": [
+     82
+    ],
+    "_own_stock_qty": [
+     91
+    ]
+   },
+   "meta_lit": {
+    "_vf_qty": [
+     36,
+     82
+    ],
+    "_own_stock_qty": [
+     91
+    ]
+   }
+  }
+ }
+}
