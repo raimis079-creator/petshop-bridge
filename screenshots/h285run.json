@@ -1,0 +1,302 @@
+{
+ "v": "H285A",
+ "sukurta": 3842,
+ "r": {
+  "v": "H285A",
+  "konst": {
+   "META_LAUKAS": "_ps_laukas",
+   "META_PAKOPOS": "_ps_laukas_pakopos",
+   "META_ZODIS": "_ps_laukas_zodis",
+   "META_SANDELIS": "_ps_laukas_sandelis",
+   "META_SEIMA": "_ps_laukas_seima",
+   "META_DOVANOS": "_ps_laukas_dovanos",
+   "META_DOV_RIBA": "_ps_laukas_dovanos_riba",
+   "META_DYDIS": "_ps_laukas_dydis",
+   "META_IEJIMAS": "_ps_laukas_iejimas"
+  },
+  "iejimas": {
+   "konservai": {
+    "id": 0,
+    "st": null,
+    "pav": null
+   },
+   "skanestai": {
+    "id": 0,
+    "st": null,
+    "pav": null
+   },
+   "kramtalai": {
+    "id": 0,
+    "st": null,
+    "pav": null
+   }
+  },
+  "visos_dezes": [
+   {
+    "ID": "34932",
+    "post_title": "Skanėstų dėžė šuniui — be vištienos",
+    "post_status": "draft",
+    "grupe": "sunys"
+   },
+   {
+    "ID": "34933",
+    "post_title": "Kramtalų dėžė šuniui — hipoalerginė",
+    "post_status": "draft",
+    "grupe": "kramtalai"
+   },
+   {
+    "ID": "34934",
+    "post_title": "Kramtalų dėžė šuniui — jautriam virškinimui",
+    "post_status": "draft",
+    "grupe": "kramtalai"
+   },
+   {
+    "ID": "34935",
+    "post_title": "Skanėstų dėžė šuniui — monoproteinas",
+    "post_status": "draft",
+    "grupe": "sunys"
+   },
+   {
+    "ID": "34936",
+    "post_title": "Skanėstų dėžutė katei",
+    "post_status": "draft",
+    "grupe": "kates"
+   },
+   {
+    "ID": "34937",
+    "post_title": "Skanėstų dėžė šuniui",
+    "post_status": "draft",
+    "grupe": "sunys"
+   },
+   {
+    "ID": "34938",
+    "post_title": "Skanestai katems2",
+    "post_status": "draft",
+    "grupe": "kates"
+   },
+   {
+    "ID": "34942",
+    "post_title": "TEST Konservu deze 800 Be vistienos",
+    "post_status": "publish",
+    "grupe": "kons_sunims"
+   },
+   {
+    "ID": "34943",
+    "post_title": "TEST Konservu deze 800 Visi skoniai",
+    "post_status": "publish",
+    "grupe": "kons_sunims"
+   },
+   {
+    "ID": "34944",
+    "post_title": "Konservu deze 400 Be vistienos",
+    "post_status": "publish",
+    "grupe": "kons_sunims"
+   },
+   {
+    "ID": "34945",
+    "post_title": "TEST Konservu deze 400 Monoproteinas",
+    "post_status": "publish",
+    "grupe": "kons_sunims"
+   },
+   {
+    "ID": "34946",
+    "post_title": "TEST Konservu deze 400 Visi skoniai",
+    "post_status": "publish",
+    "grupe": "kons_sunims"
+   },
+   {
+    "ID": "34947",
+    "post_title": "TEST Konservu deze katei Isrankioms",
+    "post_status": "publish",
+    "grupe": "kons_kates"
+   },
+   {
+    "ID": "34948",
+    "post_title": "TEST Konservu deze katei Be vistienos",
+    "post_status": "publish",
+    "grupe": "kons_kates"
+   }
+  ],
+  "fed": [],
+  "snip_feed": [
+   {
+    "id": "1005",
+    "name": "Exclusion HY Feeding v1 (Vetfarmas OCR + PL HTML)",
+    "active": "0"
+   },
+   {
+    "id": "1008",
+    "name": "Exclusion NG Feeding v1 (Vetfarmas OCR + IT razioni)",
+    "active": "0"
+   },
+   {
+    "id": "1013",
+    "name": "Quattro Feeding v1 (kgshop+petirvet HTML)",
+    "active": "0"
+   },
+   {
+    "id": "1014",
+    "name": "Quattro Feeding Verify v1 (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "1018",
+    "name": "Josera Feeding v1 (josera.de HTML)",
+    "active": "0"
+   },
+   {
+    "id": "1019",
+    "name": "Josera Feeding Verify v1 (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "1025",
+    "name": "Ontario Feeding v1 (post_content parseris)",
+    "active": "0"
+   },
+   {
+    "id": "1026",
+    "name": "Ontario Feeding v2 (post_content parseris, bendras prefiksas)",
+    "active": "0"
+   },
+   {
+    "id": "1028",
+    "name": "Ontario Feeding v4 (wpdb->delete, reason<=60, tid sargas)",
+    "active": "0"
+   },
+   {
+    "id": "1031",
+    "name": "Exclusion post_content Feeding v1 (parseris)",
+    "active": "0"
+   },
+   {
+    "id": "1032",
+    "name": "Exclusion post_content Feeding v2 (visos lenteles)",
+    "active": "0"
+   },
+   {
+    "id": "1039",
+    "name": "Gemon Feeding v1 (monge.it PDF datasheet)",
+    "active": "0"
+   },
+   {
+    "id": "1042",
+    "name": "RC Feeding v1 (royalcanin.com/lt, tik sausas)",
+    "active": "0"
+   },
+   {
+    "id": "1044",
+    "name": "RC Feeding v2 (uk/pl - likusios linijos)",
+    "active": "0"
+   },
+   {
+    "id": "1047",
+    "name": "Ontario Cat Feeding v1 (ontario.pet Wayback)",
+    "active": "0"
+   },
+   {
+    "id": "1186",
+    "name": "M-CALC Serimo Skaiciuokle v1.0 (HYHS02 MVP)",
+    "active": "0"
+   },
+   {
+    "id": "1187",
+    "name": "M-CALC Serimo Skaiciuokle v1.0 (HYHS02 MVP)",
+    "active": "0"
+   },
+   {
+    "id": "1357",
+    "name": "Feeding Calc REST v1",
+    "active": "1"
+   },
+   {
+    "id": "1358",
+    "name": "Feeding Calc REST v1",
+    "active": "0"
+   },
+   {
+    "id": "3842",
+    "name": "TEMP H285 v1 (CTA + serimo recon)",
+    "active": "1"
+   }
+  ],
+  "files": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-code-search.php",
+   "petshop-desk.php",
+   "petshop-dev-veidrodis.php",
+   "petshop-dropship-sargas.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-gavimas.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-innodb.php",
+   "petshop-ivykiai.php",
+   "petshop-kalendorius.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rysiai.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-vartai.php",
+   "petshop-wc-sync.php"
+  ],
+  "plug": [
+   "petshop-attributes.php",
+   "petshop-core.php",
+   "petshop-esp.php",
+   "petshop-fbt.php",
+   "petshop-feeds.php",
+   "petshop-fonts.php",
+   "petshop-pragma.php",
+   "petshop-promotions.php",
+   "petshop-xml.php"
+  ]
+ }
+}
