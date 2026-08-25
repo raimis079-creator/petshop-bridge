@@ -1,5 +1,10 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.42 (H301) — greita perziura GRAZINTA (savininkas: neisjungti),
+ * modale rodoma ta pati vitrina: selektoriai per form.mnm_form (nepriklauso nuo
+ * body klases), kiekis imamas is #532 fiksuoto input max, antrastes verciamos,
+ * nuorodos i preke nuimamos.
+ *
  * Petshop Rinkiniai v1.41 (H300) — RADAU: savininkas ziurejo ne prekes puslapi,
  * o GREITA PERZIURA (Flatsome quick view) kategorijoje /kategorija/rinkiniai/.
  * Body klase ten yra `archive`, ne `single-product`, todel vitrinos stilius
@@ -629,30 +634,42 @@ class Petshop_Rinkiniai {
 
 	public static function front_stilius() {
 		if ( is_admin() ) { return; }
-		/* v1.41 — VISUOSE puslapiuose: rinkiniu korteles be greitos perziuros */
+		/* v1.42 — GREITA PERZIURA LIEKA (savininkas: neisjungti), bet modale ta pati
+		   vitrina kaip prekes puslapyje. Selektoriai per form.mnm_form — nepriklauso
+		   nuo body klases, todel veikia ir archyve, ir modale. */
 		?>
-		<style id="ps-rink-be-qv">
-		.product-small.product-type-mix-and-match .quick-view,.product-small.product-type-mix-and-match a.quick-view,
-		.product-small.product_cat-konservu-rinkiniai .quick-view,.product-small.product_cat-skanestu-rinkiniai .quick-view,
-		.product-small.product_cat-kramtalu-rinkiniai .quick-view,.product-small.product_cat-rinkiniai .quick-view{display:none!important}
-		/* jei modalas vis tiek atsidarytu — ta pati vitrina ir jame */
-		.mfp-content .product-type-mix-and-match form.cart thead,.mfp-content .product-type-mix-and-match form.cart th{display:none!important}
-		.mfp-content .product-type-mix-and-match form.cart tbody tr{display:flex!important;align-items:center;gap:12px;padding:7px 0;border:0!important;border-bottom:1px solid #f0f0f0!important}
-		.mfp-content .product-type-mix-and-match form.cart tbody td{display:block!important;padding:0!important;border:0!important;width:auto!important;font-size:13.5px}
-		.mfp-content .product-type-mix-and-match form.cart tbody td.product-thumbnail{flex:none;width:56px!important}
-		.mfp-content .product-type-mix-and-match form.cart tbody td img{width:56px!important;height:56px!important;object-fit:contain;border:1px solid #eee;border-radius:4px}
-		.mfp-content .product-type-mix-and-match form.cart tbody td.product-details{flex:1;font-weight:600;color:#2a2a2a!important}
-		.mfp-content .product-type-mix-and-match form.cart tbody td.product-details a{color:#2a2a2a!important;pointer-events:none;text-decoration:none}
-		.mfp-content .product-type-mix-and-match form.cart tbody td .stock,.mfp-content .product-type-mix-and-match form.cart tbody td.product-quantity{display:none!important}
-		.mfp-content .product-type-mix-and-match form.cart tbody tr::after{content:"× " attr(data-kiekis-rodyti);margin-left:auto;background:#365a51;color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:12px;line-height:1}
-		.mfp-content .product-type-mix-and-match form.cart tbody tr:not([data-kiekis-rodyti])::after{content:"× 1"}
+		<style id="ps-rink-qv">
+		.mfp-content .product-info .price,.mfp-content .product-info .price ins,.mfp-content .product-info .price .amount{color:#2a2a2a!important;font-weight:700}
+		.mfp-content .product-info .price del,.mfp-content .product-info .price del .amount{color:#999!important;font-weight:400;font-size:.8em;margin-right:6px}
+		.mfp-content .petshop-savings,.mfp-content form.mnm_form .mnm_reset,.mfp-content form.mnm_form .mnm_reset_link,.mfp-content form.mnm_form .mnm_message,
+		.mfp-content form.mnm_form .mnm_status,.mfp-content form.mnm_form .mnm-container-status,.mfp-content form.mnm_form .mnm_price_container{display:none!important}
+		.mfp-content form.mnm_form .mnm_child_products,.mfp-content form.mnm_form>table{border:1px solid #e4e4e4!important;border-radius:4px;background:#fff;margin:0 0 18px!important;padding:0 14px 4px;width:100%}
+		.mfp-content form.mnm_form .mnm_child_products::before{content:"Rinkinio sudėtis";display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#365a51;padding:11px 0 7px;border-bottom:1px solid #e9e9e9}
+		.mfp-content form.mnm_form thead,.mfp-content form.mnm_form th{display:none!important}
+		.mfp-content form.mnm_form tbody{display:block!important;border:0!important;background:transparent!important}
+		.mfp-content form.mnm_form tbody tr{display:flex!important;align-items:center;gap:12px;padding:7px 0;line-height:1.3;border:0!important;border-bottom:1px solid #f0f0f0!important;background:transparent!important;margin:0!important;min-height:0!important;height:auto!important}
+		.mfp-content form.mnm_form tbody tr:last-child{border-bottom:0!important}
+		.mfp-content form.mnm_form tbody td{display:block!important;padding:0!important;border:0!important;width:auto!important;text-align:left!important;background:transparent!important;font-size:13.5px;line-height:1.3;height:auto!important}
+		.mfp-content form.mnm_form tbody td.product-thumbnail,.mfp-content form.mnm_form tbody td:first-child{flex:none;width:56px!important;margin:0!important}
+		.mfp-content form.mnm_form tbody td.product-thumbnail *{display:block;padding:0!important;margin:0!important;line-height:0}
+		.mfp-content form.mnm_form tbody td.product-thumbnail figure{height:56px!important;width:56px!important;overflow:hidden}
+		.mfp-content form.mnm_form tbody td img{width:56px!important;height:56px!important;max-width:none!important;object-fit:contain;background:#fff!important;border:1px solid #eee;border-radius:4px}
+		.mfp-content form.mnm_form tbody td.product-details,.mfp-content form.mnm_form tbody td.product-name{flex:1 1 auto;font-weight:600;color:#2a2a2a!important;margin:0!important}
+		.mfp-content form.mnm_form tbody td.product-details *{padding:0!important;margin:0!important}
+		.mfp-content form.mnm_form tbody td.product-details a,.mfp-content form.mnm_form tbody td.product-name a{color:#2a2a2a!important;text-decoration:none;pointer-events:none;cursor:default}
+		.mfp-content form.mnm_form tbody td [class*="stock"],.mfp-content form.mnm_form tbody td [class*="availab"],.mfp-content form.mnm_form tbody td.product-details p,
+		.mfp-content form.mnm_form tbody td.product-quantity,.mfp-content form.mnm_form tbody td.product-price,.mfp-content form.mnm_form .mnm_child_products .quantity{display:none!important}
+		.mfp-content form.mnm_form tbody tr::after{content:"× " attr(data-kiekis-rodyti);flex:none;margin-left:auto;background:#365a51;color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:12px;line-height:1}
+		.mfp-content form.mnm_form tbody tr:not([data-kiekis-rodyti])::after{content:"× 1"}
+		.mfp-content form.mnm_form>.quantity{display:inline-flex;margin-right:10px}
 		</style>
-		<script id="ps-rink-be-qv-js">
-		(function(){function n(){document.querySelectorAll('.product-small.product-type-mix-and-match .quick-view,.product-small.product-type-mix-and-match [data-prod]').forEach(function(el){
-		 el.classList.remove('quick-view');el.removeAttribute('data-prod');
-		 var k=el.closest('.product-small');var t=k?k.querySelector('.product-title a,.woocommerce-loop-product__link,a[href*="/product/"]'):null;
-		 if(el.tagName==='A'&&t&&(!el.getAttribute('href')||el.getAttribute('href')==='#'))el.setAttribute('href',t.getAttribute('href'));});}
-		n();document.addEventListener('DOMContentLoaded',n);window.addEventListener('load',n);setInterval(n,1500);})();
+		<script id="ps-rink-qv-js">
+		(function(){var LT={'product':'Prekė','quantity':'Kiekis','price':'Kaina','details':'Prekė'};
+		function n(){var f=document.querySelectorAll('.mfp-content form.mnm_form');if(!f.length)return;
+		 f.forEach(function(form){form.querySelectorAll('th').forEach(function(h){var k=h.textContent.trim().toLowerCase();if(LT[k])h.textContent=LT[k];});
+		  form.querySelectorAll('td.product-details a,td.product-name a').forEach(function(l){var t=document.createElement('span');t.textContent=l.textContent;l.replaceWith(t);});
+		  form.querySelectorAll('tr.mnm_item,tr[data-mnm_item_id]').forEach(function(row){var i=row.querySelector('input.qty,input[type=number],input[name^=mnm_quantity]');var q=i?(parseInt(i.getAttribute('max')||i.value)||1):1;row.setAttribute('data-kiekis-rodyti',q);});});}
+		setInterval(n,400);})();
 		</script>
 		<?php
 		if ( ! is_product() ) { return; }
