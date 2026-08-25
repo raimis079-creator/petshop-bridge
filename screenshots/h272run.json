@@ -1,0 +1,117 @@
+{
+ "v": "H272A",
+ "sukurta": 3829,
+ "r": {
+  "v": "H272A",
+  "lentele": "gaj6_ps_sargas_klaidos",
+  "stulpeliai": [
+   "id",
+   "laikas",
+   "lygis",
+   "parasas",
+   "zinute",
+   "failas",
+   "eilute",
+   "url",
+   "kiek"
+  ],
+  "fatal": [
+   {
+    "id": "60",
+    "laikas": "2026-08-23 19:48:02",
+    "lygis": "fatal",
+    "parasas": "7c8ccbc5491e4a5d2133ca26eb4606dd",
+    "zinute": "Uncaught ArgumentCountError: 7 arguments are required, 6 given in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-desk.php:2459\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-desk.php(2459): printf()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-desk.php(1451): Petshop_Desk::misriu_korteles()\n#2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): Petshop_Desk::puslapis()\n#3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\n#4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(522): WP_Hook->do_action()\n#5 /home/gyvunai2/domains/petshop.lt/public_html/wp-admin/admin.php(264): do_action()\n#6 /home/gyvunai2/domains/avesa.lt/public_html/dev/dev-router.php(33): require('...')\n#7 {main}\n  thrown",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-desk.php",
+    "eilute": "2459",
+    "url": "/wp-admin/admin.php?page=ps-desk&eile=misrus",
+    "kiek": "1"
+   },
+   {
+    "id": "21",
+    "laikas": "2026-08-19 19:14:04",
+    "lygis": "fatal",
+    "parasas": "c6e2313c0391bee1082d9e7b533e77d8",
+    "zinute": "Uncaught TypeError: round(): Argument #1 ($num) must be of type int|float, string given in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:14\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(14): round()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\n#3 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/plugin.php(522): WP_Hook->do_action()\n#4 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-settings.php(764): do_action()\n#5 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-config.php(117): require_once('...')\n#6 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-load.php(50): require_once('...')\n#7 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-blo",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "14",
+    "url": "/?ps_h087=PERF",
+    "kiek": "1"
+   },
+   {
+    "id": "9",
+    "laikas": "2026-08-18 00:08:21",
+    "lygis": "fatal",
+    "parasas": "7fd2fe75ef700770388915b468b624e9",
+    "zinute": "Uncaught Error: Call to undefined function exec() in /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:27\nStack trace:\n#0 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\n#2 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/plugin.php(522): WP_Hook->do_action()\n#3 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-settings.php(764): do_action()\n#4 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-config.php(112): require_once('...')\n#5 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-load.php(50): require_once('...')\n#6 /home/gyvunai2/domains/avesa.lt/public_html/dev/wp-blog-header.php(13): require_once('...')\n#7 /home/gyvunai2/domains/avesa.lt/public_html/dev/index.php(17): require('...')\n#8 {main}\n  thrown",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "27",
+    "url": "/?ps_g826=G826",
+    "kiek": "1"
+   },
+   {
+    "id": "4",
+    "laikas": "2026-08-17 23:12:22",
+    "lygis": "fatal",
+    "parasas": "5b491df5e7ceacf396dff79c20a2ad41",
+    "zinute": "Allowed memory size of 268435456 bytes exhausted (tried to allocate 4096 bytes)",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-includes/meta.php",
+    "eilute": "1225",
+    "url": "/feed/kaina24/",
+    "kiek": "3"
+   }
+  ],
+  "top": [
+   {
+    "lygis": "warning",
+    "zinute": "Array to string conversion",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "45",
+    "kiek": "2622",
+    "laikas": "2026-08-20 09:25:30"
+   },
+   {
+    "lygis": "warning",
+    "zinute": "Array to string conversion",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "46",
+    "kiek": "2622",
+    "laikas": "2026-08-20 09:25:30"
+   },
+   {
+    "lygis": "warning",
+    "zinute": "Array to string conversion",
+    "failas": "/home/gyvunai2/domains/avesa.lt/public_html/dev/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "47",
+    "kiek": "2622",
+    "laikas": "2026-08-20 09:25:30"
+   },
+   {
+    "lygis": "warning",
+    "zinute": "unserialize(): Error at offset 0 of 94 bytes",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "21",
+    "kiek": "964",
+    "laikas": "2026-08-21 16:03:24"
+   },
+   {
+    "lygis": "warning",
+    "zinute": "Array to string conversion",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php",
+    "eilute": "343",
+    "kiek": "86",
+    "laikas": "2026-08-25 06:01:46"
+   },
+   {
+    "lygis": "warning",
+    "zinute": "Array to string conversion",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php",
+    "eilute": "344",
+    "kiek": "86",
+    "laikas": "2026-08-25 06:01:46"
+   }
+  ],
+  "viso": "63",
+  "cron_val": "nedef"
+ }
+}
