@@ -1,0 +1,116 @@
+{
+ "v": "E1AD2",
+ "ts": "2026-08-25T22:23:01+00:00",
+ "indeksai_uzsakymai": [
+  "PRIMARY (uzsakymas_id) unique=1",
+  "apmoketa (apmoketa_at) unique=0",
+  "klientas (klientas_email_hash) unique=0",
+  "kanalas (kanalas_paskutinis) unique=0",
+  "aplinka (saltinis_aplinka) unique=0",
+  "aplinka (testinis) unique=0"
+ ],
+ "indeksai_eilutes": [
+  "PRIMARY (id) unique=1",
+  "uzs_eil (uzsakymas_id) unique=1",
+  "uzs_eil (eilutes_id) unique=1",
+  "preke (preke_id) unique=0",
+  "apmoketa (apmoketa_at) unique=0",
+  "sandelis (sandelis) unique=0",
+  "aplinka (saltinis_aplinka) unique=0",
+  "aplinka (testinis) unique=0"
+ ],
+ "dublio_testas": {
+  "uzs_1_irasas": true,
+  "uzs_2_irasas": false,
+  "uzs_eiluciu_po_dviju": 1,
+  "uzs_klaida": "Duplicate entry '999000001' for key 'PRIMARY'",
+  "eil_1_irasas": true,
+  "eil_2_irasas": false,
+  "eil_eiluciu_po_dviju": 1,
+  "eil_klaida": "Duplicate entry '999000001-7' for key 'uzs_eil'",
+  "isvalyta": true
+ },
+ "sargo_kodas": [
+  "280: \tpublic static function rasyti( $order_id ) {",
+  "281: \t\t$order_id = (int) $order_id;",
+  "282: \t\tif ( ! $order_id ) { return; }",
+  "283: \t\t$order = wc_get_order( $order_id );",
+  "284: \t\tif ( ! $order || 'shop_order' !== $order->get_type() ) { return; }",
+  "285: ",
+  "286: \t\t/* Faktas rasomas VIENA KARTA (planas §3 taisykle 2). */",
+  "287: \t\tif ( $order->get_meta( self::META_IRASYTA ) ) { return; }",
+  "288: ",
+  "289: \t\tglobal $wpdb;",
+  "290: \t\t$jau = (int) $wpdb->get_var( $wpdb->prepare(",
+  "291: \t\t\t'SELECT COUNT(*) FROM ' . self::t_uzsakymai() . ' WHERE uzsakymas_id=%d', $order_id ) );",
+  "292: \t\tif ( $jau ) {",
+  "293: \t\t\t$order->update_meta_data( self::META_IRASYTA, current_time( 'mysql' ) );",
+  "294: \t\t\t$order->save();",
+  "295: \t\t\treturn;",
+  "296: \t\t}",
+  "297: ",
+  "298: \t\tself::uztikrinti_lenteles();",
+  "299: ",
+  "300: \t\t$aplinka  = self::aplinka();",
+  "301: \t\t$testinis = self::ar_testinis( $order );",
+  "302: \t\t$hash     = self::email_hash( $order );"
+ ],
+ "laikas": {
+  "wp_timezone_string": "Europe/Vilnius",
+  "gmt_offset": 3,
+  "php_default_tz": "UTC",
+  "current_time_mysql": "2026-08-26 01:23:01",
+  "current_time_gmt": "2026-08-25 22:23:01",
+  "gmdate": "2026-08-25 22:23:01",
+  "mysql_NOW": "2026-08-26 01:23:01",
+  "mysql_UTC": "2026-08-25 22:23:01",
+  "mysql_tz": "SYSTEM"
+ },
+ "konvencija": {
+  "ps_ivykiai": {
+   "max": "2026-08-25 21:10:03",
+   "arciau": "UTC",
+   "skirtumas_h": 1.2
+  },
+  "ps_laukai_ivykiai": {
+   "max": "2026-08-25 21:17:29",
+   "arciau": "UTC",
+   "skirtumas_h": 1.1
+  },
+  "ps_shipments": {
+   "max": "2026-08-24 19:53:14",
+   "arciau": "UTC",
+   "skirtumas_h": 26.5
+  },
+  "ps_email_jobs": {
+   "max": "2026-08-25 18:50:05",
+   "arciau": "UTC",
+   "skirtumas_h": 3.5
+  },
+  "ps_carts": {
+   "max": "2026-08-25 22:14:35",
+   "arciau": "UTC",
+   "skirtumas_h": 0.1
+  },
+  "ps_event_log": {
+   "max": "2026-08-25 18:50:05",
+   "arciau": "UTC",
+   "skirtumas_h": 3.5
+  },
+  "ps_av_zurnalas": {
+   "max": "2026-08-25 19:24:40",
+   "arciau": "UTC",
+   "skirtumas_h": 3
+  },
+  "ps_consent_log": {
+   "max": "2026-07-31 08:51:09",
+   "arciau": "UTC",
+   "skirtumas_h": 613.5
+  },
+  "ps_action_tokens": {
+   "max": "2026-08-24 08:15:09",
+   "arciau": "UTC",
+   "skirtumas_h": 38.1
+  }
+ }
+}
