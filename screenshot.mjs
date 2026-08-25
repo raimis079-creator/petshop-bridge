@@ -2,8 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfaDI5NyddKSB8fCAkX0dFVFsncHNfaDI5NyddIT09J1JVTjIwMjYwODI1QUcnKSByZXR1cm47CiAkVD1hcnJheSgndic9PidIMjk3QScpOyBnbG9iYWwgJHdwZGI7CiAkaD1maWxlX2dldF9jb250ZW50cyhBQlNQQVRILicuaHRhY2Nlc3MnKTsgJFRbJ2R5ZGlzJ109c3RybGVuKCRoKTsKIHByZWdfbWF0Y2hfYWxsKCcvXi4qKEV4cGlyZXN8Q2FjaGUtQ29udHJvbHx0ZXh0XC9odG1sfExpdGVTcGVlZHxtb2RfZXhwaXJlc3xtb2RfaGVhZGVycykuKiQvbWknLCRoLCRtKTsgJFRbJ2VpbCddPWFycmF5X3NsaWNlKCRtWzBdLDAsNDApOwogJHdwZGItPnF1ZXJ5KCJVUERBVEUgeyR3cGRiLT5wcmVmaXh9c25pcHBldHMgU0VUIGFjdGl2ZT0wIFdIRVJFIG5hbWUgTElLRSAnVEVNUCUnIik7CiBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyBlY2hvIGpzb25fZW5jb2RlKCRULEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7IGV4aXQ7Cn0sNSk7Cg==';
-const out={v:'H297A'}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
+const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfaDI5NyddKSB8fCAkX0dFVFsncHNfaDI5NyddIT09J1JVTjIwMjYwODI1QUcnKSByZXR1cm47CiAkVD1hcnJheSgndic9PidIMjk3QScpOyBnbG9iYWwgJHdwZGI7CiAkaD1maWxlX2dldF9jb250ZW50cyhBQlNQQVRILicuaHRhY2Nlc3MnKTsgJFRbJ2R5ZGlzJ109c3RybGVuKCRoKTsKICRpPXN0cnBvcygkaCwibW9kX2hlYWRlcnMiKTsgJFRbImN0eCJdPXN1YnN0cigkaCxtYXgoMCwkaS0zMDApLDkwMCk7CiAkd3BkYi0+cXVlcnkoIlVQREFURSB7JHdwZGItPnByZWZpeH1zbmlwcGV0cyBTRVQgYWN0aXZlPTAgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7IGVjaG8ganNvbl9lbmNvZGUoJFQsSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsgZXhpdDsKfSw1KTsK';
+const out={v:'H297B'}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){ const u='https://api.github.com/repos/'+REPO+'/contents/'+path; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:msg,content:buf.toString('base64')}; if(sha)b.sha=sha; return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
@@ -16,4 +16,4 @@ try{
   const d=await fx(WP+'/?ps_h297=RUN20260825AG',{},'run'); const tx=await d.text(); try{ out.r=JSON.parse(tx); }catch(e){ out.r='ne-json'; out.raw=tx.slice(0,600); }
   await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
 }catch(e){ out.klaida=String(e).slice(0,400); if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
-await put('screenshots/h297run.json', Buffer.from(JSON.stringify(out,null,1)), 'H297A');
+await put('screenshots/h297brun.json', Buffer.from(JSON.stringify(out,null,1)), 'H297B');
