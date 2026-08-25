@@ -1,5 +1,13 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.28 (H276) — SANDELIO FILTRAS PAVELDI RINKINIO SANDELI.
+ *
+ * Redaguojant filtras visada rodydavo „Visi" — savininkas: turi rodyti tai, kas
+ * pasirinkta kuriant. Rinkinys sandelio atskirai nesaugo (jis kyla is prekiu:
+ * viena grupe = vienas sandelis = viena siunta), todel filtras nustatomas pagal
+ * KOMPONENTUS: visi vienam sandelyje -> tas sandelis pazymimas ir paieska is
+ * karto rodo tik tinkamas prekes; misrus -> „Visi" ir ispejimas.
+ *
  * Petshop Rinkiniai v1.27 (H275) — „KUR BUS MATOMAS" TAISYMAS.
  *
  * (1) JS pieštiVieta() naudojo neapibrėžtą `a` → ReferenceError → žymos
@@ -2368,7 +2376,10 @@ class Petshop_Rinkiniai {
 			var VARDAI = <?php echo wp_json_encode( $medis['vardai'] ); ?>;
 			var K   = <?php echo wp_json_encode( $pradiniai ); ?>;   /* sudetis */
 			var KAT_RANK = <?php echo wp_json_encode( array_values( array_map( 'intval', $d['kat_rankiniu'] ) ) ); ?>; /* rankiniu budu pridetos vietos */
-			var f = { kat:'', svoris:'', sand:'', savik:'', q:'', browse:false };
+			/* v1.28: pradinis sandelis paveldimas is jau esanciu komponentu */
+			var PRAD_SAND=(function(){ var u={}; K.forEach(function(c){ u[(c.sandelis||'av')]=1; });
+				var l=Object.keys(u); return l.length===1?l[0]:''; })();
+			var f = { kat:'', svoris:'', sand:PRAD_SAND, savik:'', q:'', browse:false };
 			var PRADINE_KAINA = '<?php echo esc_js( str_replace( '.', ',', (string) $d['kaina'] ) ); ?>';
 			var laikmatis = null, uzklausa = 0;
 
@@ -2710,6 +2721,9 @@ class Petshop_Rinkiniai {
 			$('#psr-f-kat').onchange=function(){ f.kat=this.value; f.browse=true; ieskoti(); };
 			$('#psr-f-svoris').onchange=function(){ f.svoris=this.value; f.browse=true; ieskoti(); };
 			$('#psr-f-savik').onchange=function(){ f.savik=this.value; f.browse=true; ieskoti(); };
+			document.querySelectorAll('.psr-wh').forEach(function(x){
+				x.classList.toggle('button-primary',(x.dataset.wh||'')===f.sand);
+			});
 			document.querySelectorAll('.psr-wh').forEach(function(b){
 				b.onclick=function(){
 					f.sand=this.dataset.wh||''; f.browse=true;
@@ -2725,9 +2739,9 @@ class Petshop_Rinkiniai {
 			$('#psr-browse').onclick=function(){ f.browse=true; ieskoti(); };
 			$('#psr-isvalyti').onclick=function(e){
 				e.preventDefault();
-				f={kat:'',svoris:'',sand:'',savik:'',q:'',browse:false};
+				f={kat:'',svoris:'',sand:PRAD_SAND,savik:'',q:'',browse:false};
 				$('#psr-f-kat').value=''; $('#psr-f-svoris').value=''; $('#psr-f-savik').value=''; $('#psr-q').value='';
-				document.querySelectorAll('.psr-wh').forEach(function(x,i){ x.classList.toggle('button-primary', i===0); });
+				document.querySelectorAll('.psr-wh').forEach(function(x){ x.classList.toggle('button-primary',(x.dataset.wh||'')===f.sand); });
 				ieskoti();
 			};
 			$('#psr-kat-rank').onchange=function(){
