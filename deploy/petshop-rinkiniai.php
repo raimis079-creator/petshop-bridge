@@ -1,5 +1,17 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.41 (H300) — RADAU: savininkas ziurejo ne prekes puslapi,
+ * o GREITA PERZIURA (Flatsome quick view) kategorijoje /kategorija/rinkiniai/.
+ * Body klase ten yra `archive`, ne `single-product`, todel vitrinos stilius
+ * (is_product) nespausdinamas, o modale rodoma pliki MnM lentele.
+ *
+ * MANO REGRESIJA: #524 slepe quick view rinkiniu kortelems VISUOSE puslapiuose;
+ * v1.29 ta CSS perkeliau i front_stilius, kuris veikia TIK prekes puslapyje —
+ * kategorijose quick view atgijo. Dabar: (a) quick view visoms mix-and-match
+ * kortelems slepiamas visur (CSS + JS nuima Flatsome kabliuka, kad paveikslo
+ * paspaudimas vestu i preke), (b) vitrinos CSS papildomai galioja ir modalo
+ * viduje (.product-lightbox / .mfp-content), jei kada nors vis tiek atsidarytu.
+ *
  * Petshop Rinkiniai v1.40 (H298) — prekes puslapiai be narsykles keso.
  *
  * Serveris grazina teisinga HTML (tikrinta anonimiskai, be slapuku), bet
@@ -616,6 +628,33 @@ class Petshop_Rinkiniai {
 
 
 	public static function front_stilius() {
+		if ( is_admin() ) { return; }
+		/* v1.41 — VISUOSE puslapiuose: rinkiniu korteles be greitos perziuros */
+		?>
+		<style id="ps-rink-be-qv">
+		.product-small.product-type-mix-and-match .quick-view,.product-small.product-type-mix-and-match a.quick-view,
+		.product-small.product_cat-konservu-rinkiniai .quick-view,.product-small.product_cat-skanestu-rinkiniai .quick-view,
+		.product-small.product_cat-kramtalu-rinkiniai .quick-view,.product-small.product_cat-rinkiniai .quick-view{display:none!important}
+		/* jei modalas vis tiek atsidarytu — ta pati vitrina ir jame */
+		.mfp-content .product-type-mix-and-match form.cart thead,.mfp-content .product-type-mix-and-match form.cart th{display:none!important}
+		.mfp-content .product-type-mix-and-match form.cart tbody tr{display:flex!important;align-items:center;gap:12px;padding:7px 0;border:0!important;border-bottom:1px solid #f0f0f0!important}
+		.mfp-content .product-type-mix-and-match form.cart tbody td{display:block!important;padding:0!important;border:0!important;width:auto!important;font-size:13.5px}
+		.mfp-content .product-type-mix-and-match form.cart tbody td.product-thumbnail{flex:none;width:56px!important}
+		.mfp-content .product-type-mix-and-match form.cart tbody td img{width:56px!important;height:56px!important;object-fit:contain;border:1px solid #eee;border-radius:4px}
+		.mfp-content .product-type-mix-and-match form.cart tbody td.product-details{flex:1;font-weight:600;color:#2a2a2a!important}
+		.mfp-content .product-type-mix-and-match form.cart tbody td.product-details a{color:#2a2a2a!important;pointer-events:none;text-decoration:none}
+		.mfp-content .product-type-mix-and-match form.cart tbody td .stock,.mfp-content .product-type-mix-and-match form.cart tbody td.product-quantity{display:none!important}
+		.mfp-content .product-type-mix-and-match form.cart tbody tr::after{content:"× " attr(data-kiekis-rodyti);margin-left:auto;background:#365a51;color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:12px;line-height:1}
+		.mfp-content .product-type-mix-and-match form.cart tbody tr:not([data-kiekis-rodyti])::after{content:"× 1"}
+		</style>
+		<script id="ps-rink-be-qv-js">
+		(function(){function n(){document.querySelectorAll('.product-small.product-type-mix-and-match .quick-view,.product-small.product-type-mix-and-match [data-prod]').forEach(function(el){
+		 el.classList.remove('quick-view');el.removeAttribute('data-prod');
+		 var k=el.closest('.product-small');var t=k?k.querySelector('.product-title a,.woocommerce-loop-product__link,a[href*="/product/"]'):null;
+		 if(el.tagName==='A'&&t&&(!el.getAttribute('href')||el.getAttribute('href')==='#'))el.setAttribute('href',t.getAttribute('href'));});}
+		n();document.addEventListener('DOMContentLoaded',n);window.addEventListener('load',n);setInterval(n,1500);})();
+		</script>
+		<?php
 		if ( ! is_product() ) { return; }
 
 		/* Zenklo tekstas — i CSS kintamaji, kad nereiktu perrasyti galerijos HTML */
@@ -755,8 +794,6 @@ class Petshop_Rinkiniai {
 		.ps-lb img{max-width:min(92vw,900px);max-height:90vh;background:#fff;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.4)}
 		.ps-lb-x{position:absolute;top:14px;right:22px;color:#fff;font-size:40px;line-height:1;font-weight:300}
 		body.ps-fiksuotas-rinkinys .product-short-description{margin-bottom:14px}
-		/* Quick view ant rinkiniu korteliu nereikalingas (perimta is #524) */
-		.product-small.product_cat-konservu-rinkiniai .quick-view,.product-small.product_cat-skanestu-rinkiniai .quick-view,.product-small.product_cat-kramtalu-rinkiniai .quick-view,.product-small.product_cat-rinkiniai .quick-view{display:none!important}
 		</style>
 		<?php if ( $post && ! empty( $kiekiai ) ) : ?>
 		<script id="ps-rink-vitrina">
