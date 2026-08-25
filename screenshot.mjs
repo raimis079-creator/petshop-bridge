@@ -1,19 +1,18 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const WP=process.env.WP_URL||'https://dev.avesa.lt';
-const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKIGlmKCFpc3NldCgkX0dFVFsncHNfaDI5MiddKSB8fCAkX0dFVFsncHNfaDI5MiddIT09J1JVTjIwMjYwODI1QUInKSByZXR1cm47CiAkVD1hcnJheSgndic9PidIMjkyQScpOyBnbG9iYWwgJHdwZGI7CiAkZj1XUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLXJpbmtpbmlhaS5waHAnOwogJFRbJ21kNSddPW1kNV9maWxlKCRmKTsgJFRbJ2R5ZGlzJ109ZmlsZXNpemUoJGYpOwogJGM9ZmlsZV9nZXRfY29udGVudHMoJGYpOwogJFRbJ2tsYXNlX3lyYSddPWNsYXNzX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pYWknKTsKIGZvcmVhY2goYXJyYXkoJ2Zyb250X3N0aWxpdXMnLCdmcm9udF9rbGFzZScsJ3N1dGF1cG90ZScsJ25hdWRhX3ZlcnRhJywnYXV0b192aWV0YScpIGFzICRtKXsgJFRbJ21ldG9kYWknXVskbV09bWV0aG9kX2V4aXN0cygnUGV0c2hvcF9SaW5raW5pYWknLCRtKTsgfQogJFRbJ2hvb2thaSddPWFycmF5KCk7CiBnbG9iYWwgJHdwX2ZpbHRlcjsKIGZvcmVhY2goYXJyYXkoJ3dwX2hlYWQnLCdib2R5X2NsYXNzJywnd29vY29tbWVyY2Vfc2luZ2xlX3Byb2R1Y3Rfc3VtbWFyeScpIGFzICRoKXsKICAkcj1hcnJheSgpOyBpZihpc3NldCgkd3BfZmlsdGVyWyRoXSkpIGZvcmVhY2goJHdwX2ZpbHRlclskaF0tPmNhbGxiYWNrcyBhcyAkcHI9PiRjYnMpIGZvcmVhY2goJGNicyBhcyAkaz0+JGNiKXsgaWYoaXNfYXJyYXkoJGNiWydmdW5jdGlvbiddKSYmaXNfc3RyaW5nKCRjYlsnZnVuY3Rpb24nXVswXSkmJnN0cnBvcygkY2JbJ2Z1bmN0aW9uJ11bMF0sJ1JpbmtpbmlhaScpIT09ZmFsc2UpICRyW109JHByLic6Jy4kY2JbJ2Z1bmN0aW9uJ11bMV07IH0KICAkVFsnaG9va2FpJ11bJGhdPSRyOwogfQogJHBpZD13Y19nZXRfcHJvZHVjdF9pZF9ieV9za3UoJzM0MTg1MC1kcCcpOwogJFRbJ3BpZCddPSRwaWQ7ICRUWydtZXRhX2tpZWtpYWknXT1nZXRfcG9zdF9tZXRhKCRwaWQsJ19wZXRzaG9wX2NvbXBvbmVudF9xdWFudGl0aWVzJyx0cnVlKTsKIGlmKG1ldGhvZF9leGlzdHMoJ1BldHNob3BfUmlua2luaWFpJywnbmF1ZGFfdmVydGEnKSkgJFRbJ25hdWRhX3ZlcnRhJ109UGV0c2hvcF9SaW5raW5pYWk6Om5hdWRhX3ZlcnRhKCRwaWQpOwogJFRbJ2tsYWlkb3MnXT1hcnJheSgpOwogJGxvZz1XUF9DT05URU5UX0RJUi4nL2RlYnVnLmxvZyc7CiBpZihmaWxlX2V4aXN0cygkbG9nKSl7ICRUWydsb2cnXT1zdWJzdHIoZmlsZV9nZXRfY29udGVudHMoJGxvZyksLTE1MDApOyB9CiAkd3BkYi0+cXVlcnkoIlVQREFURSB7JHdwZGItPnByZWZpeH1zbmlwcGV0cyBTRVQgYWN0aXZlPTAgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7IGVjaG8ganNvbl9lbmNvZGUoJFQsSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1VORVNDQVBFRF9TTEFTSEVTKTsgZXhpdDsKfSw1KTsK';
-const out={v:'H292A'}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
-async function put(path,buf,msg){ const u='https://api.github.com/repos/'+REPO+'/contents/'+path; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
-  let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
-  const b={message:msg,content:buf.toString('base64')}; if(sha)b.sha=sha; return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
-const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
-async function fx(u,o,k){ for(let i=0;i<6;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(12000); } } throw new Error('fx:'+k); }
-let sid=null;
+const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge'; const WP=process.env.WP_URL||'https://dev.avesa.lt';
+const out={v:'H292B'}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
+async function put(path,buf,msg){ const u='https://api.github.com/repos/'+REPO+'/contents/'+path; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'}; let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){} const b={message:msg,content:buf.toString('base64')}; if(sha)b.sha=sha; return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
 try{
-  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP H292 v1 (rinkiniu vitrinos diag)',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
-  const j=JSON.parse(await c.text()); out.sukurta=j.id; sid=j.id; await miegok(9000);
-  const d=await fx(WP+'/?ps_h292=RUN20260825AB',{},'run'); const tx=await d.text(); try{ out.r=JSON.parse(tx); }catch(e){ out.r='ne-json'; out.raw=tx.slice(0,600); }
-  await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
-}catch(e){ out.klaida=String(e).slice(0,400); if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
-await put('screenshots/h292run.json', Buffer.from(JSON.stringify(out,null,1)), 'H292A');
+  const {chromium}=await import('playwright'); const br=await chromium.launch();
+  const ctx=await br.newContext({viewport:{width:1440,height:1100},ignoreHTTPSErrors:true,bypassCSP:true}); const pg=await ctx.newPage();
+  await pg.goto(WP+'/product/rinkinys-gurmanams-skanestai-sunims/?nocache='+Date.now(),{waitUntil:'networkidle',timeout:60000}); await miegok(1500);
+  out.body=await pg.$eval('body',n=>n.className);
+  out.stilius=await pg.$$eval('style',ns=>ns.filter(n=>n.textContent.includes('ps-fiksuotas-rinkinys')).length);
+  out.thead=await pg.$$eval('form.cart thead',ns=>ns.map(n=>getComputedStyle(n).display));
+  out.th_txt=await pg.$$eval('form.cart th',ns=>ns.map(n=>n.textContent.trim()+'|'+getComputedStyle(n).display));
+  out.nauda=await pg.$$eval('.ps-rink-nauda',ns=>ns.map(n=>getComputedStyle(n).display));
+  out.rowh=await pg.$$eval('form.cart tbody tr',ns=>ns.map(n=>Math.round(n.getBoundingClientRect().height)));
+  out.put=await put('screenshots/h292_gurm.png',await pg.screenshot({fullPage:false}),'H292B');
+  await br.close();
+}catch(e){ out.klaida=String(e).slice(0,300); }
+await put('screenshots/h292diag.json', Buffer.from(JSON.stringify(out,null,1)), 'H292B');
