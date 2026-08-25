@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Rinkiniai v1.34 (H283) — savas lightbox (Magnific siame puslapyje nepasiekiamas).
+ *
  * Petshop Rinkiniai v1.33 (H282) — komponento nuotrauka atidaroma lightbox'e (Magnific), ne nuvedama i faila/preke.
  *
  * Petshop Rinkiniai v1.32 (H281) — figure.woocommerce-product-gallery__image pseudo-elementai (temos) pridedavo 34 px eilutei → isjungti.
@@ -656,6 +658,10 @@ class Petshop_Rinkiniai {
 		body.ps-fiksuotas-rinkinys form.cart tbody tr::after{content:"× " attr(data-kiekis-rodyti);flex:none;margin-left:auto;background:#365a51;color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:12px;line-height:1}
 		body.ps-fiksuotas-rinkinys form.cart tbody tr:not([data-kiekis-rodyti])::after{content:"× 1"}
 		body.ps-fiksuotas-rinkinys form.cart>.quantity{display:inline-flex;margin-right:10px}
+		body.ps-fiksuotas-rinkinys form.cart td.product-thumbnail a{cursor:zoom-in}
+		.ps-lb{position:fixed;inset:0;z-index:99999;background:rgba(20,25,22,.88);display:flex;align-items:center;justify-content:center;cursor:zoom-out;padding:24px}
+		.ps-lb img{max-width:min(92vw,900px);max-height:90vh;background:#fff;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+		.ps-lb-x{position:absolute;top:14px;right:22px;color:#fff;font-size:40px;line-height:1;font-weight:300}
 		body.ps-fiksuotas-rinkinys .product-short-description{margin-bottom:14px}
 		/* Quick view ant rinkiniu korteliu nereikalingas (perimta is #524) */
 		.product-small.product_cat-konservu-rinkiniai .quick-view,.product-small.product_cat-skanestu-rinkiniai .quick-view,.product-small.product_cat-kramtalu-rinkiniai .quick-view,.product-small.product_cat-rinkiniai .quick-view{display:none!important}
@@ -667,11 +673,13 @@ class Petshop_Rinkiniai {
 		 r.forEach(function(row){var pid=row.getAttribute('data-mnm_item_id')||row.getAttribute('data-child_id');if(!pid)return;var n=Q[pid]||1;row.setAttribute('data-kiekis-rodyti',n);
 		  var i=row.querySelector('input.qty,input[type=number],input[name^=mnm_quantity]');if(i&&String(i.value)!==String(n)){i.value=n;try{i.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}if(window.jQuery){jQuery(i).trigger('change');}}});return true;}
 		var t=0,iv=setInterval(function(){if(f()||++t>25)clearInterval(iv);},200);window.addEventListener('load',function(){setTimeout(f,300);setTimeout(f,1500);});
-		/* v1.33: nuotrauka — tik lightbox, jokio perejimo */
-		function lb(){var a=document.querySelectorAll('form.cart td.product-thumbnail a');if(!a.length)return false;
-		 if(window.jQuery&&jQuery.fn.magnificPopup){jQuery('form.cart td.product-thumbnail a').each(function(){var img=this.querySelector('img');this.setAttribute('href',this.getAttribute('data-large_image')||(img&&img.getAttribute('data-large_image'))||this.getAttribute('href'));}).magnificPopup({type:'image',gallery:{enabled:true},mainClass:'mfp-fade',closeOnContentClick:true,image:{titleSrc:'title'}});}
-		 else{a.forEach(function(x){x.addEventListener('click',function(e){e.preventDefault();});});}
-		 return true;}
+		/* v1.33/1.34: nuotrauka — tik lightbox, jokio perejimo (savas, be priklausomybiu) */
+		function lbOpen(src,alt){var w=document.createElement('div');w.className='ps-lb';w.innerHTML='<img src="'+src+'" alt="'+(alt||'').replace(/"/g,'')+'"><span class="ps-lb-x">×</span>';
+		 function close(){w.remove();document.removeEventListener('keydown',esc);} function esc(e){if(e.key==='Escape')close();}
+		 w.addEventListener('click',close);document.addEventListener('keydown',esc);document.body.appendChild(w);}
+		function lb(){var a=document.querySelectorAll('form.cart td.product-thumbnail a:not([data-ps-lb])');if(!a.length)return false;
+		 a.forEach(function(x){x.setAttribute('data-ps-lb','1');x.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var img=this.querySelector('img');
+		  lbOpen(this.getAttribute('data-large_image')||(img&&img.getAttribute('data-large_image'))||this.getAttribute('href')||(img&&img.src),this.getAttribute('title'));},true);});return true;}
 		var t2=0,iv2=setInterval(function(){if(lb()||++t2>25)clearInterval(iv2);},250);})();
 		</script>
 		<?php endif; ?>
