@@ -1,6 +1,7 @@
-# ATASKAITŲ SISTEMA — E0 RECON v1.0
+# ATASKAITŲ SISTEMA — E0 RECON v1.1
 
-2026-08-26 · Vykdytojas: Opus · Metodas: tiltas (GitHub Actions runs #4945–#4948, `browser=0`) · Aplinka: `dev.avesa.lt`
+2026-08-26 · Vykdytojas: Opus · Metodas: tiltas (GitHub Actions runs #4945–**#4949**, `browser=0`) · Aplinka: `dev.avesa.lt`
+v1.1 — uždarytos v1.0 §16 spragos: `class-shipments.php` turinys, `ps_ataskaitu_dienos` pjūvis, `ps_shipments` duomenys.
 Šaltinis: `petshop_ataskaitu_sistema_master_planas_v1_2.md` §7 E0
 **Taisyklė: 0 spėjimų. Kiekvienas teiginys su failu ir eilute arba su lentelės DDL.**
 
@@ -16,6 +17,7 @@
 | #4946 R011B | 23 taikinio failai: hook'ai, meta raktai, options, lentelės, transientai, cron, apibrėžimai — visi su eilutėmis | `deploy/r011_recon.json` (87 255 B) |
 | #4947 R012C | globalus grep per **137 failus** (visi mu-plugins + petshop-core + petshop-xml), 26 raktažodžiai + 10 kodo ištraukų | `deploy/r012_recon.json` (71 576 B) |
 | #4948 R013D | `petshop-core` pilnas inventorius (59 failai), Desk Q7 taškai, WC nustatymai, gyvas cron sąrašas | `deploy/r013_recon.json` (25 920 B) |
+| **#4949 R014E** | `class-shipments.php` **pilnas kodas** (207 eil.), jo kvietėjai, `ps_ataskaitu_dienos` turinio pjūvis, `ps_shipments` + `ps_carts` duomenys | `deploy/r014_recon.json` (26 845 B) |
 
 Serverio faktai: `default_storage_engine=MyISAM`, HPOS `yes`, 2 616 publikuotų prekių, `wc_orders` **0 eilučių** (dev), viso 194 lentelės.
 
@@ -209,7 +211,35 @@ UNIQUE order_carrier_nr (order_id,carrier,tracking_number)
 KEY shipment_id, order_idx, notified
 ENGINE=InnoDB utf8mb4_unicode_520_ci ROW_FORMAT=DYNAMIC
 ```
-`core/class-shipments.php` (208 eil.) **neturi nė vieno `add_action`** — tai grynas duomenų sluoksnis; naudotojas — `core/class-event-emitters.php:225` („PAGRINDINIS šaltinis — ps_shipments").
+### 7.2a `Petshop_Shipments` — PILNAS turinys (207 eil., md5 `2c1af76b`, S319 / v0.20.0)
+
+`const DB_VERSION='1.0.0'` :29, `OPT_DB_VER='petshop_shipments_db'` :30.
+
+| Metodas | Eil. | Ką daro |
+|---|---|---|
+| `table()` | :36 | `gaj6_ps_shipments` |
+| `install()` / `maybe_install()` | :40 / :64 | `dbDelta` :45–60 |
+| `record($order_id,$carrier,$number,$url,$source)` | :76 | idempotentiška per UNIQUE; grąžina `added` / `exists` / `invalid` / `failed`. `shipment_id = 'shp_' . substr(md5(order\|carrier\|number),0,16)` :90. `created_at = current_time('mysql', TRUE)` → **UTC** :96 |
+| `get_for_order($order_id)` | :101 | |
+| `mark_notified($order_id)` | :107 | `notified_at` UTC :111 |
+| `sync_from_meta($order)` | :124 | žr. žemiau |
+| `resolve_all($order)` | :169 | 1) `sync_from_meta` :173, 2) skaito lentelę :176 |
+| `label($carrier)` | :193 | `venipak`→Venipak, `lp_express`→LP Express :194 |
+| `stats()` | :198 | `total`, `by_carrier`, `multi_orders` (order_id su >1 siunta) :201–204 |
+
+**`sync_from_meta()` šaltiniai:**
+- **Venipak:** order meta `venipak_shipping_order_data` → `pack_numbers[]` :129–133; `carrier='venipak'`, `source='venipak_plugin'`, url `https://venipak.lt/tracking/track/{nr}` :137.
+- **LP Express:** order meta **`_woo_lithuaniapost_barcode`** :144 (naujas faktas — v1.0 dokumente jo nebuvo); `carrier='lp_express'`, `source='lp_express_plugin'`, url `https://www.post.lt/siuntu-sekimas?parcels={nr}` :149.
+
+**Kvietėjai (visi, iš 137 failų grep):** `petshop-core.php:133` (`install`), `:172` (`maybe_install`), `class-event-emitters.php:150` (`sync_from_meta`, po `woocommerce_update_order`), `:228` (`resolve_all`). **Desk jos nekviečia.**
+
+**⛔ LEMIAMA §4.3 sprendimui — failo antraštė :14–16:**
+> „SĄMONINGAI NESAUGOM: sandėlio, konkrečių prekių ID. Jų patikimo šaltinio NETURIME (Venipak rašo `pack_numbers` visam užsakymui), o „inferred" reikšmės vėliau taptų melagingais duomenimis."
+
+**`ps_shipments` neturi ir principingai neturės `sandelis` lauko.** §4.3 reikalauja siuntos **per sandėlį** → **`ps_shipments` negali būti `ps_fakt_siuntos`.**
+Vienintelė vieta kode, kur sandėlis ir siuntos numeriai egzistuoja kartu, yra `Petshop_Siuntos::prideti_is_plugino()` (siuntu-laiskai:58–79) — ta pati vieta, kurią §7.3 siūlo kabliukui. Tai nepriklausomai patvirtina §15.1.
+
+**Duomenys dev'e (23 eil.):** visi `source='venipak_plugin'`, `carrier='venipak'`; `notified_at` — **visi NULL**; `order_id` 35059–35066, bet `wc_orders` = **0 eilučių** → siuntų įrašai **našlaičiai** (užsakymai ištrinti, `ps_shipments` neišvalyta; trynimo kaskados nėra).
 
 ### 7.3 **Q7 — Desk keisti NEREIKIA**
 Desk registruoja Venipak siuntas dviejuose keliuose:
@@ -418,7 +448,7 @@ Su ataskaitomis susiję gyvi cron (UTC): `ps_ataskaitu_agregavimas` 00:15 · `ps
 | # | Radinys | Siūlomas plano pakeitimas | Poveikis |
 |---|---|---|---|
 | **1** | Abu Desk Venipak keliai (desk:693–695, desk:782–784) eina per `Petshop_Siuntos::prideti_is_plugino()` (siuntu-laiskai:58) | **Q7 nereikalingas.** `do_action('petshop_siunta_sukurta', …)` dėti į `petshop-siuntu-laiskai.php:77`, ne į Desk | Desk lieka neliestas; §7 taisyklė 3 nepažeidžiama |
-| **2** | `ps_shipments` lentelė JAU yra (core/class-shipments.php:37) su `order_id, carrier, tracking_number, created_at, notified_at` | §4.3 `ps_fakt_siuntos` — nuspręsti: (a) plėsti esamą, (b) kurti atskirą faktų lentelę su nuoroda į `ps_shipments.id` | Dubliavimo rizika |
+| **2** | `ps_shipments` **sąmoningai nesaugo sandėlio** (class-shipments.php:14–16) | §4.3 `ps_fakt_siuntos` **turi būti atskira lentelė**, su nuoroda į `ps_shipments.shipment_id`. Sandėlis ateina iš §15.1 kabliuko | Sprendimą praktika priima už mus |
 | **3** | `ps_carts` (82 eil.) su `converted_order_id`, `status`, `snapshot_json` | §4A.3 krepšelio piltuvėlis — imti iš `ps_carts`, ne rinkti iš naujo | Sutaupo E2 apimtį |
 | **4** | `petshop-pardavimai.php` v1.0 jau skaičiuoja ABC, 30/90/365 d., maržą, dienas atsargai | §1 inventorių papildyti; §5.4/§5.5 — perrašyti kaip „ekranas ant esamų `_ps_*` meta", ne naujas variklis | Sutaupo E5 |
 | **5** | `petshop-innodb.php` priverstinai daro `ENGINE=InnoDB` (:32, :40); visos 53 `ps_*` lentelės jau InnoDB | §3 taisyklė 5 — informacinė, ne veiksmas | — |
@@ -431,6 +461,9 @@ Su ataskaitomis susiję gyvi cron (UTC): `ps_ataskaitu_agregavimas` 00:15 · `ps
 | **12** | `ps_akcijos` + `ps_akciju_prekes` turi `reg_kaina`/`akc_kaina`/`nuo`/`iki` | §5.6 promotion uplift — šaltinis yra, naujų faktų nereikia | — |
 | **13** | `ps_tiekimas.gauta` + `ps_tiekimas_eil.qty_gauta` | §5.7 sell-through per tiekėją — šaltinis yra | — |
 | **14** | Trys panašūs vardai: `_ps_shipments` (int), `_ps_siuntos` (JSON), `ps_shipments` (lentelė) | §4.3 įrašyti įspėjimą; **nevadinti** naujo lauko `_ps_siuntos*` | Painiavos rizika |
+| **19** | `ps_shipments` turi 23 našlaičius įrašus (order_id 35059–35066, o `wc_orders`=0); trynimo kaskados nėra | **T-0 papildymas:** ištrynus testinius užsakymus (§4.9 / Q8) papildomai išvalyti `ps_shipments`, `ps_carts`, `ps_ataskaitu_dienos` sritis `pardavimai` ir `parduotuve` | Kitaip §5.1 #9 ir §5.2 rodys testinius pinigus |
+| **20** | `agreguoti_diena()` persuka tik `PERSUKTI=3` paskutines dienas (agregavimas:28) | Testinių užsakymų trynimas **neišvalys** senesnių nei 3 d. agregatų. Dev'e `parduotuve/pajamos` = 781,51 € iš 21 neegzistuojančio užsakymo | T-0 rizika |
+| **21** | LP Express siuntos numeris = `_woo_lithuaniapost_barcode` (class-shipments.php:144) | §4.3 `vezejas` reikšmes užrakinti: `venipak` / `lp_express` (class-shipments.php:194) | — |
 | **15** | Versijos §1 lentelėje pasenusios (statistika 2.1→2.2) | Atnaujinti §1 pagal §1 šio dokumento | — |
 | **16** | `Petshop_Statistika::aplinka()` (:362–365) jau sprendžia dev/prod pagal hostą | §3 taisyklė 4 — `ps_fakt_*.saltinis_aplinka` naudoti **tą patį** metodą | Po DNS cutover veiks automatiškai |
 | **17** | `SAUGOMOS_SRITYS` (:84) — **sričių**, ne lentelių sąrašas | §3 taisyklė 9 formuluotė netiksli: valymas (`valyti()` :495) dirba `ps_laukai_ivykiai` viduje ir `ps_fakt_*` fiziškai neliestų. Patvirtinti kode vis tiek verta | — |
@@ -438,12 +471,30 @@ Su ataskaitomis susiję gyvi cron (UTC): `ps_ataskaitu_agregavimas` 00:15 · `ps
 
 ---
 
-## 16. KO NEPADARIAU (sąžiningai)
+## 16. `ps_ataskaitu_dienos` — REALUS TURINYS (269 eil., visos `aplinka='dev'`)
+
+| sritis | tipai (eilučių) | laikotarpis | pinigai |
+|---|---|---|---|
+| `laukai` | `rodyta` (135), `idejo` (18), `atidare` (17), `iseme` (12), `iseme_p1` (10), `dovana_rinko` (5), `iseme_p2` (5), `iseme_p3` (5), `dydis_perjunge` (4), `dovana_atrakinta` (2), `kabliukas` (2), `min_pasiekta` (2), `riba_pasieke` (2), `krepselis` (1), `riba_pasieke_krepselis` (1), `uzdarytoja` (1) | 08-16…08-23 | 0 |
+| `pardavimai` | `parduota` (12), `atskirai` (2), `be_sav_suma` (1), `be_savikainos` (1), `dovana` (1), `parduota_sd` (1) | 08-15…08-23 | `parduota`: 9 624 ct pajamų / 3 216 ct savikainos |
+| `parduotuve` | `pajamos` (4) | 08-05…08-23 | **78 151 ct (781,51 €), 21 užsakymas** |
+| `piltuvelis` | `atidare` (17), `idejo` (2), `krepselis` (1), `min_pasiekta` (2) | 08-16…08-23 | 0 |
+| `refill` | `refill_due` (2), `refill_reminder_sent` (1) | 08-20…08-24 | 0 |
+
+**Sritys `anketa` ir `rec` — 0 eilučių**, nors plano §1 jas mini kaip veikiančias.
+**Tipai, kurių nėra `petshop-statistika.php` komentare :406–413:** `iseme_p1/p2/p3`, `kabliukas`, `riba_pasieke`, `riba_pasieke_krepselis`, `uzdarytoja`, `atskirai`, `parduota_sd`. Rašytojai yra už `petshop-statistika.php` ribų (`petshop-laukai.php`, `agregavimas::pardavimai()` :359+) — neištirta.
+
+**`ps_carts` būsenos (82 eil.):** `expired` 46 · `abandoned` 31 · `converted` **4** (visi su `converted_order_id`) · `active` 1. → krepšelis→užsakymas konversija dev'e matoma ir veikia (§15.3 patvirtinta duomenimis).
+
+---
+
+## 16A. KO NEPADARIAU (sąžiningai)
 
 - **Neskaičiau viso `petshop-desk.php` (3 730 eil.) ir `petshop-katalogas.php` (8 810 eil.)** — tik ištraukas ir grep. Jei E1b reikės daugiau Desk vidaus, reikės atskiro skenavimo.
-- `core/class-shipments.php` **turinio** neperskaičiau (kelio klaida runo #4948 — bandžiau `petshop-core/class-shipments.php` vietoj `petshop-core/includes/class-shipments.php`). Turiu jos DDL, eilučių skaičių (208), lentelės savininko faktą ir „0 `add_action`". **Kas ir kada rašo į `ps_shipments` — neištirta.** Reikia prieš E1b.
-- `ps_ataskaitu_dienos` 269 eilučių **turinio pjūvio** (kokios sritys/tipai realiai užpildyti) neskaičiau.
+- Neišnagrinėjau, **kas rašo** `ps_ataskaitu_dienos` tipus `iseme_p1/p2/p3`, `kabliukas`, `uzdarytoja`, `parduota_sd`. Prireiks E3 metu (§5.0/§5.2).
 - Vizualaus patikrinimo (`browser=1`) nedariau — E0 yra skaitymo etapas, ekranų nekeičiau.
+
+**v1.0 §16 spragos — uždarytos:** `class-shipments.php` turinys (§7.2a), `ps_ataskaitu_dienos` pjūvis (§16), `ps_shipments` duomenys (§7.2a).
 
 ---
 
@@ -452,12 +503,13 @@ Su ataskaitomis susiję gyvi cron (UTC): `ps_ataskaitu_agregavimas` 00:15 · `ps
 | # | Klausimas |
 |---|---|
 | **Q-E0-1** | §15.1 — ar sutinki, kad `do_action('petshop_siunta_sukurta')` eitų į `petshop-siuntu-laiskai.php:77`, o `petshop-desk.php` liktų visiškai nepaliestas? |
-| **Q-E0-2** | §15.2 — `ps_fakt_siuntos` vs esama `ps_shipments`: plėsti ar kurti naują? |
+| **Q-E0-2** | §15.2 — **atsakyta recon'u:** `ps_shipments` sandėlio nesaugo principingai (class-shipments.php:14–16) → `ps_fakt_siuntos` turi būti atskira lentelė. Reikia tik tavo patvirtinimo. |
 | **Q-E0-3** | §15.4 — `petshop-pardavimai.php` palikti kaip yra ir §5.4/§5.5 statyti ant jo meta, ar perkelti į faktus? |
 | **Q-E0-4** | §15.6 — kur nuimam PVM: rašymo momentu ar ekrane? (kainos DB saugomos SU PVM) |
 | **Q-E0-5** | §15.11 — email atributacija be paspaudimo laiko: `sent_at` bazė ar naujas laukas kontrakte? |
-| **Q-E0-6** | Ar leidi vieną papildomą recon runą `core/class-shipments.php` turiniui (§16)? |
+| **Q-E0-6** | ~~papildomas recon runas~~ — **uždaryta** (#4949). |
+| **Q-E0-7** | §15.19/§15.20 — ar T-0 sąrašą papildom: išvalyti `ps_shipments` + `ps_carts` + `ps_ataskaitu_dienos` testinius įrašus? |
 
 ---
 
-**Statusas: E0 baigtas. Kodo nerašyta. Laukiu „toliau" arba „taisyti" prieš E1a.**
+**Statusas: E0 baigtas, spragų nėra. Kodo nerašyta. Laukiu „toliau“ arba „taisyti“ prieš E1a.**
