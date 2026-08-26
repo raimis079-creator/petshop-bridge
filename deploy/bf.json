@@ -1,0 +1,20 @@
+{
+ "v": "BF",
+ "taisymas": {
+  "v": "BF1",
+  "md5_pries": "2e9f6fead25da344e1835aee3cfe3754",
+  "parasai_pries": [
+   "190: public function calculate( float $cost_net, array $cat_slugs = [] ): float {",
+   "198: public function get_markup( array $cat_slugs, string $brand_slug = '' ): float {",
+   "263: public function preview_price( float $cost_net, array $cat_slugs = [] ): float {",
+   "290: public function calculate_final_price( float $cost_net, array $cat_slugs, string $brand_slug = '' ): array {"
+  ],
+  "keitimai": [],
+  "patikra_calculate": false,
+  "patikra_preview": false,
+  "patikra_final": true,
+  "patikra_getmarkup": true,
+  "klaida": "parasas vis dar be $brand_slug"
+ },
+ "t2": "<br />\n<b>Warning</b>:  Undefined variable $brand_slug in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/includes/class-pricing.php</b> on line <b>191</b><br />\n<br />\n<b>Warning</b>:  Undefined variable $brand_slug in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/includes/class-pricing.php</b> on line <b>191</b><br />\n<br />\n<b>Fatal error</b>:  Uncaught TypeError: Petshop_Pricing::get_markup(): Argument #2 ($brand_slug) must be of type string, null given, called in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plug"
+}
