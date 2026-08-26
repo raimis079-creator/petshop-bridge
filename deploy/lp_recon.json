@@ -1,0 +1,323 @@
+{
+ "v": "LPD1",
+ "ts": "2026-08-26T09:56:42+00:00",
+ "plugino_dirs": [
+  "woo-lithuaniapost-main"
+ ],
+ "failu": 164,
+ "grep": {
+  "width": [
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:32 * @param float $width",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:35 public function __construct($width, $length)",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:37 $this->width = (float)$width;",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:40 if( ($width * $length) <= 0 ){",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:41 throw new \\InvalidArgumentException( sprintf('Dimensions must both be greater than 0. %f, %f provided.', $width, $length ));",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:44 $this->spaces = [new Solid($width, $length)];",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:72 $this->spaces = [new Solid($this->width, $this->length)];",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:164 // If the solid's width (its longest edge) can fit against the area's length (its shortest edge),",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:170 $widthDiff = $area->getWidth() - $item->getWidth();",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:174 if ($widthDiff == 0 && $lengthDiff == 0) {",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:178 if( $widthDiff == 0 ){",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:183 return [new Solid($widthDiff, $item->getLength())];"
+  ],
+  "length": [
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:33 * @param float $length",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:35 public function __construct($width, $length)",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:38 $this->length = (float)$length;",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:40 if( ($width * $length) <= 0 ){",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:41 throw new \\InvalidArgumentException( sprintf('Dimensions must both be greater than 0. %f, %f provided.', $width, $length ));",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:44 $this->spaces = [new Solid($width, $length)];",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:72 $this->spaces = [new Solid($this->width, $this->length)];",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:164 // If the solid's width (its longest edge) can fit against the area's length (its shortest edge),",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:171 $lengthDiff = $area->getLength() - $item->getLength();",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:174 if ($widthDiff == 0 && $lengthDiff == 0) {",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:179 return [new Solid($lengthDiff, $item->getWidth())];",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ContainerLevel.php:182 if ( $lengthDiff == 0) {"
+  ],
+  "height": [
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/GenericPackable.php:18 * @param $height",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/GenericPackable.php:21 public function __construct($width = null, $length = null, $height = null, $description = null)",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/GenericPackable.php:25 ->setHeight($height)",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/GenericPackable.php:37 'height' => $this->getHeight(),",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/PackableInterface.php:16 public function setHeight($height): PackableInterface;",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Solid.php:15 * @param float $height",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Solid.php:18 public function __construct($width, $length, $height = 0.0, $description = null)",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Solid.php:21 $this->setDimensions( (float)$width, (float)$length, (float)$height);",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Solid.php:26 if ($this->height < 0) {",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Solid.php:30 if ($this->height == 0 && $this->length <= 0) {",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ExtensionTrait.php:13 protected $height;",
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/ExtensionTrait.php:33 'height' => $this->getHeight(),"
+  ],
+  "size": [
+   "/woo-lithuaniapost-main/vendor/nawebco/box-packer/tests/SolidTest.php:93 // Oversize",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:33 * Give only one of the size parameters (width, height) to calculate the other one automatically in view to the",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:43 * @return array The size",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:49 $size = $this->useImportedPage($tpl, $x, $y, $width, $height, $adjustPageSize);",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:53 return $size;",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:60 * Get the size of an imported page or template.",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:62 * Give only one of the size parameters (width, height) to calculate the other one automatically in view to the",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:72 $size = parent::getTemplateSize($tpl, $width, $height);",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:73 if ($size === false) {",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:77 return $size;",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:167 if (isset($this->PageInfo[$l[0]]['size'])) {",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:168 $h = $this->PageInfo[$l[0]]['size'][1];"
+  ],
+  "template": [
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:31 * Draws an imported page or a template onto the page or another template.",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:36 * @param mixed $tpl The template id",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:51 $this->templates[$this->currentTemplateId]['resources']['templates']['importedPages'][$tpl] = $tpl;",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:60 * Get the size of an imported page or template.",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php:65 * @param mixed $tpl The template id",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:52 * A counter for template ids.",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:56 protected $templateId = 0;",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:72 * Get the next template id.",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:78 return $this->templateId++;",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:82 * Draws an imported page onto the page or another template.",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:87 * @param mixed $tpl The template id",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:135 * @param mixed $tpl The template id"
+  ],
+  "SIZE": [
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/PdfParser/PdfParserException.php:48 const INVALID_DATA_SIZE = 0x0006;",
+   "/woo-lithuaniapost-main/vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php:79 PdfTypeException::INVALID_DATA_SIZE"
+  ],
+  "parcel": [
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-api-hooks.php:12 require_once plugin_dir_path(dirname(__FILE__)) . 'admin/api/class-woo-lithuaniapost-admin-parcel-api.php';",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-api-hooks.php:57 private $parcel_api;",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-api-hooks.php:71 $this->parcel_api = new Woo_Lithuaniapost_Admin_Parcel_Api($plugin_name, $version);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-api-hooks.php:187 public function handle_parcel_validation(array $parcel, callable $error_callback):bool {",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-api-hooks.php:188 $result = $this->parcel_api->validate_parcel($parcel, $error_callback);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-actions.php:119 $actions ['woo_lp_create_parcel'] = __('UNISEND Create Shipping Parcel', 'woo-lithuaniapost');",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-actions.php:142 public function process_create_parcel($order)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-actions.php:144 do_action(\"woo_lithuaniapost_order_action_create_parcel\", $order, false);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:4 require_once plugin_dir_path(dirname(__FILE__)) . 'admin/api/class-woo-lithuaniapost-admin-parcel-api.php';",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:96 LpOrderStatus::$PARCEL_CREATED = new LpOrderStatus(\"lp-parcel-created\", \"PARCEL_CREATED\");",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:97 LpOrderStatus::$PARCEL_FAILED = new LpOrderStatus(\"lp-parcel-failed\", \"PARCEL_FAILED\");",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:104 LpOrderStatus::$PARCEL_PENDING = new LpOrderStatus(\"lp-parcel-await\", \"PARCEL_PENDING\");"
+  ],
+  "_size": [
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:53 public function resolve_shipping_size($planCode, $package)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:85 $packages = self::package_size($packages, $planCode, $total_weight_in_g);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:89 public function resolve_order_size($order, $lp_shipping_method)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:114 $packages = $this->package_size($packages, $plan_code, $total_weight_in_g);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:118 private function get_available_sizes($plan_code, $total_weight)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:121 return $this->get_bp_sizes($total_weight);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:123 return $this->get_lp_sizes($total_weight);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:126 private function get_lp_sizes($weight)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:140 private function get_bp_sizes($weight)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:151 private function package_size($packages, $planCode, $total_weight_in_g)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:153 $sizes = $this->get_available_sizes($planCode, $total_weight_in_g);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:154 $possible_sizes = [];"
+  ],
+  "package_size": [
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:85 $packages = self::package_size($packages, $planCode, $total_weight_in_g);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:114 $packages = $this->package_size($packages, $plan_code, $total_weight_in_g);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:151 private function package_size($packages, $planCode, $total_weight_in_g)"
+  ],
+  "plan_code": [
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:99 $plan_code = $lp_shipping_method->plan;",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:114 $packages = $this->package_size($packages, $plan_code, $total_weight_in_g);",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:118 private function get_available_sizes($plan_code, $total_weight)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php:120 if ($plan_code === 'HANDS' || $plan_code === 'TERMINAL') {",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:640 public function get_plan_translation($plan_code)",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:642 switch ($plan_code) {",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:660 return $plan_code;",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:771 private function is_terminal_required($plan_code) {",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:772 return $plan_code == 'TERMINAL';",
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php:1011 $plan = $_POST['lp_plan_code'];",
+   "/woo-lithuaniapost-main/admin/partials/includes/html-shipment-editor-side.php:58 <label for=\"lp_plan_code\" class=\"admin__field-label\">",
+   "/woo-lithuaniapost-main/admin/partials/includes/html-shipment-editor-side.php:62 <select id=\"lp_plan_code\""
+  ],
+  "XS": [
+   "/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-meta-box.php:293 $sizes = ['XS', 'S', 'M', 'L', 'XL'];",
+   "/woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/includes/settings-plan-cost-size.php:22 $sizes = ['XS', 'S', 'M', 'L', 'XL'];",
+   "/woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/includes/settings-plan-cost-size.php:41 $sizes = ['XS', 'S', 'M', 'L', 'XL'];",
+   "/woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php:100 case 'XS':",
+   "/woo-lithuaniapost-main/includes/shipping/rates/includes/html-settings-cost.php:127 $sizes = ['XS', 'S', 'M', 'L', 'XL'];"
+  ]
+ },
+ "optionai": {
+  "lpsettings_woo_lithuaniapost_updated_version": "4.0.32",
+  "woo_lithuaniapost_module_active": "1",
+  "lpsettings_woo_lithuaniapost_address_pickup_id": "32742454",
+  "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings": "a:19:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:4:\"flat\";s:10:\"fixed_cost\";s:4:\"1,78\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:2:\"30\";s:35:\"apply_free_shipping_before_discount\";s:2:\"no\";s:20:\"order_return_service\";s:2:\"no\";s:10:\"tax_status\";s:7:\"taxable\";s:11:\"class_costs\";s:0:\"\"",
+  "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings": "a:19:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:4:\"flat\";s:10:\"fixed_cost\";s:4:\"1,78\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:2:\"30\";s:35:\"apply_free_shipping_before_discount\";s:2:\"no\";s:20:\"order_return_service\";s:2:\"no\";s:10:\"tax_status\";s:7:\"taxable\";s:11:\"class_costs\";s:0:\"\"",
+  "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings": "a:27:{s:5:\"title\";s:19:\"LP Express kurjeris\";s:4:\"plan\";s:5:\"HANDS\";s:11:\"parcel_type\";s:3:\"H2H\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:6:\"weight\";s:10:\"fixed_cost\";s:0:\"\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:0:\"\";s:35:\"apply_free_shipping_before_discount\";s:2:\"no\";s:20:\"order_return_service\";s:2:\"no\";s:10:\"tax_status\";s:7:\"taxable\";s:11:\"class_costs\";s:0:"
+ },
+ "zonu_nustatymai": {
+  "12": {
+   "title": "LP Express",
+   "plan": "TERMINAL",
+   "parcel_type": "H2T",
+   "delivery_time": "",
+   "cost": "flat",
+   "fixed_cost": "1,78",
+   "weight_cost": "",
+   "size_cost": "",
+   "free_shipping_cost": "30",
+   "apply_free_shipping_before_discount": "no",
+   "order_return_service": "no",
+   "tax_status": "taxable",
+   "class_costs": "",
+   "class_cost_237": "",
+   "class_cost_235": "",
+   "class_cost_236": "",
+   "class_cost_234": "",
+   "no_class_cost": "",
+   "type": "class"
+  },
+  "13": {
+   "title": "LP Express",
+   "plan": "TERMINAL",
+   "parcel_type": "H2T",
+   "delivery_time": "",
+   "cost": "flat",
+   "fixed_cost": "1,78",
+   "weight_cost": "",
+   "size_cost": "",
+   "free_shipping_cost": "30",
+   "apply_free_shipping_before_discount": "no",
+   "order_return_service": "no",
+   "tax_status": "taxable",
+   "class_costs": "",
+   "class_cost_237": "",
+   "class_cost_235": "",
+   "class_cost_236": "",
+   "class_cost_234": "",
+   "no_class_cost": "",
+   "type": "class"
+  },
+  "15": {
+   "title": "LP Express kurjeris",
+   "plan": "HANDS",
+   "parcel_type": "H2H",
+   "delivery_time": "",
+   "cost": "weight",
+   "fixed_cost": "",
+   "weight_cost": "",
+   "size_cost": "",
+   "free_shipping_cost": "",
+   "apply_free_shipping_before_discount": "no",
+   "order_return_service": "no",
+   "tax_status": "taxable",
+   "class_costs": "",
+   "class_cost_237": "",
+   "class_cost_235": "",
+   "class_cost_236": "",
+   "class_cost_234": "",
+   "no_class_cost": "",
+   "type": "class",
+   "weights_0": "50000",
+   "weights_1": "70000",
+   "weights_2": "100000",
+   "weights_3": "200000",
+   "weights_costs_0": "3,30",
+   "weights_costs_1": "6,60",
+   "weights_costs_2": "9,90",
+   "weights_costs_3": "20,65"
+  }
+ },
+ "lp_lenteles": [
+  "gaj6_woo_lithuaniapost_api_token",
+  "gaj6_woo_lithuaniapost_country_rates",
+  "gaj6_woo_lithuaniapost_country_weight_rates",
+  "gaj6_woo_lithuaniapost_lpexpress_terminals",
+  "gaj6_woo_lithuaniapost_shipping_request",
+  "gaj6_woo_lithuaniapost_table_rates",
+  "gaj6_woo_lithuaniapost_tracking_status",
+  "gaj6_woo_lithuaniapost_unisend_terminals"
+ ],
+ "lp_lenteles2": [
+  "gaj6_woo_lithuaniapost_lpexpress_terminals"
+ ],
+ "lp_meta_raktai": [],
+ "ps_tarifai": [
+  {
+   "Field": "id",
+   "Type": "bigint(20) unsigned",
+   "Null": "NO",
+   "Key": "PRI",
+   "Default": null,
+   "Extra": "auto_increment"
+  },
+  {
+   "Field": "vezejas",
+   "Type": "varchar(20)",
+   "Null": "NO",
+   "Key": "MUL",
+   "Default": "",
+   "Extra": ""
+  },
+  {
+   "Field": "tipas",
+   "Type": "varchar(20)",
+   "Null": "NO",
+   "Key": "",
+   "Default": "",
+   "Extra": ""
+  },
+  {
+   "Field": "svoris_nuo_g",
+   "Type": "int(10) unsigned",
+   "Null": "NO",
+   "Key": "MUL",
+   "Default": "0",
+   "Extra": ""
+  },
+  {
+   "Field": "svoris_iki_g",
+   "Type": "int(10) unsigned",
+   "Null": "YES",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  },
+  {
+   "Field": "kaina_ct",
+   "Type": "int(11)",
+   "Null": "NO",
+   "Key": "",
+   "Default": "0",
+   "Extra": ""
+  },
+  {
+   "Field": "kintamas_pct",
+   "Type": "decimal(6,3)",
+   "Null": "NO",
+   "Key": "",
+   "Default": "0.000",
+   "Extra": ""
+  },
+  {
+   "Field": "galioja_nuo",
+   "Type": "date",
+   "Null": "NO",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  },
+  {
+   "Field": "galioja_iki",
+   "Type": "date",
+   "Null": "YES",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  },
+  {
+   "Field": "pastaba",
+   "Type": "varchar(190)",
+   "Null": "YES",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  },
+  {
+   "Field": "sukurta_at",
+   "Type": "datetime",
+   "Null": "YES",
+   "Key": "",
+   "Default": null,
+   "Extra": ""
+  }
+ ]
+}
