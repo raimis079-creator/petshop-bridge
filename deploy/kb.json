@@ -1,0 +1,51 @@
+{
+ "v": "KB",
+ "sukurta": 3940,
+ "faze1": {
+  "v": "KB1",
+  "faze": "etiketes",
+  "md5_pries": "9b3d64faff69f90dfd96ae37568208a9",
+  "keitimai": [
+   "self::th( 'marza', 'Marža', $sort, $kryp,  x1",
+   "NERASTA: 'marza' => array( 'g' => 'Pinigai', 'v' =>",
+   "self::sel( 'marza', 'Marža', array( '' =>  x1",
+   "$akt[] = 'marža: ' . $f['marza']; x1",
+   "mm.textContent=\"marža \"+String(mp).replace x1",
+   "mm.textContent=\"marža \"+String(m.proc).rep x1"
+  ],
+  "sintakse": "OK",
+  "backup": "petshop-katalogas.php.bak_etiketes_20260826_175158",
+  "irasyta": 448127,
+  "md5_po": "cef363981e2c73fd751b79a82d4f5431",
+  "sutampa": true
+ },
+ "faze2": {
+  "v": "KB2",
+  "faze": "patikra",
+  "md5": "cef363981e2c73fd751b79a82d4f5431",
+  "patikra": {
+   "preke": 17978,
+   "pav": "Josera Sensiplus 12,5 kg – sausas maista",
+   "kaina_su_pvm": 37.49,
+   "savikaina": 20.6344,
+   "marza_funkcija": 50.2,
+   "marza_eur": 10.35,
+   "laukiamas_antkainis": 50.2,
+   "sena_marza": 33.4,
+   "TEISINGA": true
+  },
+  "josera": {
+   "id": 18112,
+   "kaina": 32.79,
+   "sav": 22.528,
+   "rodys": 20.3,
+   "eur": 4.57
+  },
+  "grindys": {
+   "sausas-maistas": 10,
+   "konservai": 15,
+   "skanestai": 20,
+   "numatyta": 20
+  }
+ }
+}
