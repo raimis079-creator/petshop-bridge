@@ -11,10 +11,14 @@ const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/
 async function fx(u,o,k){ for(let i=0;i<6;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(12000); } } throw new Error('fx:'+k); }
 let sid=null;
 try{
-  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP Pardavimu ekranas',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'s');
-  sid=JSON.parse(await c.text()).id; await miegok(9000);
-  const r2=await fx(WP+'/?ps_us=US20260826',{},'t'); const t2=await r2.text();
-  try{ out.recon=JSON.parse(t2); }catch(e){ out.t2=t2.slice(0,600); }
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP Pardavimu ekranas',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
+  sid=JSON.parse(await c.text()).id; out.sukurta=sid;
+  await miegok(9000);
+  const r1=await fx(WP+'/?ps_pd=D',{},'d'); const t1=await r1.text();
+  try{ out.deploy=JSON.parse(t1); }catch(e){ out.t1=t1.slice(0,400); }
+  await miegok(8000);
+  const r2=await fx(WP+'/?ps_pd=T',{},'t'); const t2=await r2.text();
+  try{ out.testas=JSON.parse(t2); }catch(e){ out.t2=t2.slice(0,600); }
   await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
 }catch(e){ out.klaida=String(e).slice(0,400); if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
 await put('deploy/pd.json', Buffer.from(JSON.stringify(out,null,1)), VER);
