@@ -1,0 +1,353 @@
+{
+ "v": "KM",
+ "ts": "2026-08-26T17:42:21+00:00",
+ "rasta": 43,
+ "eilutes": [
+  {
+   "f": "MU/petshop-partijos.php",
+   "eil": 225,
+   "kodas": "/* --- prekes savikaina perskaiciuojama --- */"
+  },
+  {
+   "f": "MU/petshop-rinkiniu-ataskaita.php",
+   "eil": 362,
+   "kodas": "echo '<p class=\"psru-pastaba\">Taisyklės: „išimti\" — įdėjimo dalis &lt; ' . esc_html( $r_dalis ) . ' % IR marža &lt; ' . esc_html( $r_marza ) . ' %, arba savikaina nežinom"
+  },
+  {
+   "f": "MU/petshop-akcijos.php",
+   "eil": 430,
+   "kodas": "return round( ( $be - (float) $savikaina_be_pvm ) / $be * 100, 1 );"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 1372,
+   "kodas": "/* --- savikaina: ar jos nevaldo tiekejas --- */"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 2641,
+   "kodas": "echo '<table class=\"kort-t\"><tr><th>Šaltinis</th><th>Kodas</th><th class=\"n\">Likutis</th><th class=\"n\">Savikaina</th><th>Duomenys</th></tr>';"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 2716,
+   "kodas": ". '<span class=\"kort-lik-uz\">Sukuriama partija — kiekis su savo galiojimu ir savikaina.</span>'"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 2831,
+   "kodas": "echo '<div class=\"kort-eil\"><span>Savikaina <b>sandėlyje</b></span><b>' . $eur( $sv_part )"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 2839,
+   "kodas": "echo '<div class=\"kort-eil\"><span>Savikaina be PVM</span><b>' . $eur( $cost )"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 3586,
+   "kodas": ". '\" data-buvo=\"' . number_format( (float) $b['savikaina_eur'], 2, '.', '' ) . '\"></span> €';"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 4042,
+   "kodas": "AV turi -> AV savikaina; AV tuscias -> tiekejo. */"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 4434,
+   "kodas": "return round( ( ( $be - $savikaina_be_pvm ) / $be ) * 100, 1 );"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 4440,
+   "kodas": "return round( ( $kaina_su_pvm / ( 1 + self::PVM ) ) - $savikaina_be_pvm, 2 );"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 5827,
+   "kodas": "echo '<span class=\"nezinoma bs\" data-p=\"Savikaina nesuvesta — be jos nematyti nei maržos, nei atsargų vertės\">—</span>';"
+  },
+  {
+   "f": "MU/petshop-katalogas.php",
+   "eil": 7264,
+   "kodas": "var be=kaina/(1+pvm), m=(be-cost)/be*100, me=be-cost;"
+  },
+  {
+   "f": "MU/petshop-statistika.php",
+   "eil": 89,
+   "kodas": "/* --- 1) savikaina ir eiluciu atributai --- */"
+  },
+  {
+   "f": "MU/petshop-pilnumas.php",
+   "eil": 240,
+   "kodas": "/* --- savikaina --- */"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 164,
+   "kodas": "/** Savikaina. Tie patys raktai kaip petshop-rinkiniuose — nekartojam logikos. */"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 209,
+   "kodas": "$marzos[] = ( $kaina_be - $sav ) / $sav;"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 2183,
+   "kodas": ". '<span class=\"pslka-sp\"></span><span class=\"pslka-mut\">savikaina rodoma renkant — pagal ją atrenkamos prekės</span></h3>';"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 2526,
+   "kodas": "var m = (d.sav && d.kaina) ? Math.round(((d.kaina/1.21)-d.sav)/(d.kaina/1.21)*100) : null;"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 2594,
+   "kodas": "+'<td>'+(p.savikaina!=null?eur(p.savikaina):'<span class=\"pslka-z y\">nėra</span>')+'</td>'"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 2714,
+   "kodas": "+'<td>'+(p.savikaina!=null?eur(p.savikaina):'<span class=\"pslka-bad\">nėra</span>')+'</td>'"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 3338,
+   "kodas": "echo '<span class=\"pslka-f\"><label>Savikaina</label><select id=\"r-savik\">'"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 3504,
+   "kodas": "+'<td>'+(p.savikaina!=null?eur(p.savikaina):'<span class=\"pslka-bad\">nėra</span>')+'</td>'"
+  },
+  {
+   "f": "MU/petshop-rec-variklis.php",
+   "eil": 203,
+   "kodas": "$marza = ( $kaina - $sav * 1.21 ) / ( $sav * 1.21 ) * 100;"
+  },
+  {
+   "f": "MU/petshop-gavimas.php",
+   "eil": 1211,
+   "kodas": ". '<th style=\"width:13%\" class=\"n\">Savikaina <span class=\"z\" id=\"val-z\">EUR</span></th>'"
+  },
+  {
+   "f": "MU/petshop-gavimas.php",
+   "eil": 1964,
+   "kodas": "$(\"g-rezultatas\").innerHTML=\"<div class=\\\"spej\\\"><b>Gavimas neįrašytas — nėra nė vienos eilutės su kiekiu ir savikaina.</b><br>\""
+  },
+  {
+   "f": "MU/petshop-faktai.php",
+   "eil": 430,
+   "kodas": "$kontr = $marza + $prist_ct - 0 /* pristatymo savikaina — E1b */"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 1624,
+   "kodas": "'marza' => ( $sav !== null && $kaina > 0 ) ? round( ( ( $kaina / 1.21 ) - $sav ) / ( $kaina / 1.21 ) * 100 ) : null,"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 1677,
+   "kodas": ". '<span class=\"psr-sp\"></span><span class=\"psr-mut\">savikaina rodoma renkant — pagal ją atrenkamos prekės</span></h3>';"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 1710,
+   "kodas": "echo '<span class=\"psr-f\"><label>Savikaina</label><select id=\"psr-f-savik\">'"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 1844,
+   "kodas": "+'<td>'+(p.savikaina!=null?Number(p.savikaina).toFixed(2).replace('.',',')+' €':'<span class=\"psr-bad\">nėra</span>')+'</td>'"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2304,
+   "kodas": "+'<th style=\"width:88px\" class=\"r psr-sort\" data-s=\"sav\">Savikaina</th>'"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2557,
+   "kodas": "echo '<span class=\"psr-f\"><label>Savikaina</label><select id=\"psr-f-savik\">'"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2748,
+   "kodas": "+'<td class=\"r\">'+(c.savikaina===null?'<span class=\"psr-warn\">nėra</span>':eur(c.savikaina))+'</td>'"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2792,
+   "kodas": "+'<tr><td>Savikaina</td><td class=\"r\">'+(s.truksta?'<span class=\"psr-warn\">'+s.truksta+' be savikainos</span>':'<b>'+eur(s.sav)+'</b>')+'</td></tr>'"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2795,
+   "kodas": "+'<tr class=\"psr-rek\"><td><b>Rekomenduojama kaina</b><div class=\"psr-mut\">pagal savikainą ir norimą maržą</div></td>'"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2818,
+   "kodas": "if(s.marza!==null&&s.marza<0) h+='<div class=\"psr-perspejimas r\">Marža minusinė — parduodi žemiau savikainos.</div>';"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2945,
+   "kodas": "+'<td class=\"r\">'+(p.savikaina===null?'<span class=\"psr-warn\">nėra</span>':eur(p.savikaina))+'</td>'"
+  },
+  {
+   "f": "PL/petshop-promotions/petshop-promotions.php",
+   "eil": 669,
+   "kodas": "$product->save(); // WC: _price, transients, lookup table"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-pricing-vf.php",
+   "eil": 450,
+   "kodas": "? ( $effective_price_ex_vat - $effective_cost_ex_vat ) / $effective_cost_ex_vat"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-product-cost-metabox.php",
+   "eil": 194,
+   "kodas": "self::render_row( 'Savikaina', '<em class=\"pcb-margin-na\">nėra duomenų</em>' );"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-product-cost-metabox.php",
+   "eil": 238,
+   "kodas": "echo '<label for=\"petshop_cost_price_input\" class=\"pcb-legacy-input-label\">Įrašyti Legacy savikainą (be PVM)</label>';"
+  }
+ ],
+ "katalogas_md5": "4c8d25c083c5a4235831505ce138a920",
+ "katalogas_dydis": 447236,
+ "katalogas_marza": [
+  "83: * marza, pardavimai — viskas ateina paruosta.",
+  "206: * vietoje (likutis, tiekejo likutis, parduodama, kaina, marza, savikaina,",
+  "583: * po „Kaina ir marža\" bloku.",
+  "605: * 3. Marža kortelėje perskaičiuojama GYVAI berašant kainą ar savikainą —",
+  "683: * marza\" reikedavo slinkti per tris ekranus.",
+  "742: * v1.3: nuotrauka, siūloma kaina, marža plokštele, prekės pilnumas, debesėliai.",
+  "772: * Langelyje iškart matyti, kokia tampa marža ir ar ji nekrenta žemiau ribos.",
+  "829: /** Maržos grindys pagal kategoriją (savininko sprendimas 2026-08-06). */",
+  "831: $n = get_option( 'ps_marzos_grindys' );",
+  "1236: /* Marža grąžinama iškart — kad eilutė persidažytų be perkrovimo. */",
+  "1238: $mz = ( $p['tapo'] === null ) ? null : self::marza( $kaina === '' ? null : (float) $kaina, $p['tapo'] );",
+  "1239: $ok[] = array( 'id' => $pid, 'buvo' => $p['buvo'], 'tapo' => $p['tapo'], 'marza' => $mz );",
+  "1451: /* savikaina pasikeite — grazinam nauja marza, kad kortele ja parodytu */",
+  "1455: $atsakas['marza'] = self::marza( (float) $kaina, (float) $tapo );",
+  "1456: $atsakas['marza_eur'] = self::marza_eur( (float) $kaina, (float) $tapo );",
+  "2085: 'sankla_proc' => self::sanklos_dalis( $senas ),",
+  "2185: /** Kiek procentu teksto sudaro sankla — kad matytusi, ar verta valyti. */",
+  "2514: $marza = self::marza( $kaina, $cost );",
+  "2789: echo '<div class=\"kort-blokas\"><div class=\"kort-antr\">Kaina ir marža</div>';",
+  "2847: nei maržos, nei atsargų vertės (~1 175 legacy prekių). */",
+  "2848: echo '<div class=\"persp\">Savikaina nesuvesta — nematyti nei maržos, nei atsargų vertės.</div>';",
+  "2851: /* v4.2: eilutė rodoma ir kai maržos dar nėra, jei savikaina įvedama",
+  "2852: ranka — kad įrašius skaičių marža užsipildytų GYVAI, be Enter.",
+  "2854: if ( $marza !== null || ( $sv_rankine && $kaina !== null ) ) {",
+  "2855: $kl = $marza === null ? '' : ( $marza < $grind ? 'bad' : ( $marza < $grind + 5 ? 'warn' : 'ok' ) );",
+  "2856: echo '<div class=\"kort-eil\"><span>Marža</span><b class=\"kort-marza' . ( $kl !== '' ? ' m_' . $kl : '' ) . '\"'",
+  "2859: . ( $marza === null ? '—'",
+  "2860: : number_format( $marza, 1, ',', ' ' ) . ' % · ' . $eur( self::marza_eur( $kaina, $cost ) ) )",
+  "3053: viso tinklelio ir atstumdavo „Kaina ir marza\" zemyn — o butent nuo",
+  "3643: if ( $m['marza365'] !== null ) {",
+  "3644: echo '<div class=\"kort-eil\"><span>Marža per metus</span><b>' . $eur( $m['marza365'] ) . ' €</b></div>';",
+  "3653: if ( $m['marza365'] !== null ) {",
+  "3654: echo '<div class=\"kort-info-m\">Marža apytikslė: dabartinė savikaina × parduotas kiekis. '",
+  "3831: $marza = $mg( '_ps_margin_365d' );",
+  "3850: if ( $marza !== '' ) {",
+  "3851: echo '<div><span>Marža per metus</span><b>' . $eur( $marza ) . ' €</b></div>';",
+  "3854: if ( $marza !== '' ) {",
+  "3855: echo '<div class=\"kort-info-m\">Marža apytikslė: dabartinė savikaina × parduotas kiekis. '",
+  "3866: $proc = isset( $p['proc'] ) ? (int) $p['proc'] : 0;",
+  "3868: . '<span class=\"kort-p ' . ( $proc >= 100 ? 'ok' : 'warn' ) . '\">' . $proc . ' %</span></div>';",
+  "3869: echo '<div class=\"kort-piln-juosta\"><i style=\"width:' . max( 0, min( 100, $proc ) ) . '%\"></i></div>';",
+  "4102: $marza = self::marza( $kaina, $cost );",
+  "4149: 'marza' => $marza,",
+  "4171: 'pmarza'=> ( isset( $m['_ps_margin_365d'] ) && $m['_ps_margin_365d'] !== '' ) ? (float) $m['_ps_margin_365d'] : null,",
+  "4269: 'proc' => (int) $r['pbalas'],",
+  "4295: 'proc' => $viso ? (int) round( $yra * 100 / $viso ) : 0,",
+  "4428: /** Marža procentais nuo kainos BE PVM. */",
+  "4429: public static function marza( $kaina_su_pvm, $savikaina_be_pvm ) {",
+  "4437: /** Marža eurais nuo vieneto. */",
+  "4438: public static function marza_eur( $kaina_su_pvm, $savikaina_be_pvm ) {",
+  "4778: array( 'v' => 'Pinigai', 'sal' => 'cost~netuscia;marza~<lauk~grind' ),",
+  "4851: 'marza' => array( 'g' => 'Pinigai', 'v' => 'Marža %', 't' => 'sk' ),",
+  "4852: 'pmarza' => array( 'g' => 'Pinigai', 'v' => 'Marža €', 't' => 'sk' ),",
+  "4853: 'grind' => array( 'g' => 'Pinigai', 'v' => 'Maržos riba', 't' => 'sk' ),",
+  "4912: /* palyginimas su KITU lauku — „marža žemiau savo kategorijos ribos\" */",
+  "4967: 'zemiau_ribos' => array( array( 'l' => 'marza', 'op' => 'netuscia' ),",
+  "4968: array( 'l' => 'marza', 'op' => '<lauk', 'r' => 'grind' ) ),",
+  "5023: if ( ! empty( $f['marza'] ) ) {",
+  "5024: switch ( $f['marza'] ) {",
+  "5025: case 'nera': $s[] = array( 'l' => 'marza', 'op' => 'tuscia' ); break;",
+  "5026: case 'zem': $s[] = array( 'l' => 'marza', 'op' => 'netuscia' );",
+  "5027: $s[] = array( 'l' => 'marza', 'op' => '<lauk', 'r' => 'grind' ); break;",
+  "5028: case 'lt10': $s[] = array( 'l' => 'marza', 'op' => '<', 'r' => 10 ); break;",
+  "5029: case 'lt20': $s[] = array( 'l' => 'marza', 'op' => '<', 'r' => 20 ); break;",
+  "5030: case 'lt30': $s[] = array( 'l' => 'marza', 'op' => '<', 'r' => 30 ); break;",
+  "5031: case 'gt40': $s[] = array( 'l' => 'marza', 'op' => '>', 'r' => 40 ); break;",
+  "5109: 'vnt' => 0, 'marza_svertine' => null, 'potenciali' => 0.0 );",
+  "5110: $sv_suma = 0.0; $sv_marza = 0.0;",
+  "5119: if ( $r['marza'] !== null ) {",
+  "5120: $sv_suma += $verte; $sv_marza += $verte * $r['marza'];",
+  "5121: $s['potenciali'] += $av * (float) self::marza_eur( $r['price'], $r['cost'] );",
+  "5131: $s['marza_svertine']= $sv_suma > 0 ? round( $sv_marza / $sv_suma, 1 ) : null;",
+  "5160: 'marza' => isset( $_GET['marza'] ) ? sanitize_key( $_GET['marza'] ) : '',",
+  "5241: foreach ( array( 'kruva','view','sand','kat','brand','likutis','marza','tipas','q','sal','vaizdas','sort','kryp','per','psl' ) as $k ) {",
+  "5316: $g( 'zemiau_ribos', 'Žemiau maržos ribos', $e['zemiau_ribos'], 'bad' );",
+  "5400: if ( ! empty( $f['marza'] ) ) { $akt[] = 'marža: ' . $f['marza']; }",
+  "5410: echo '<a class=\"clear\" href=\"' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'sal'=>null,'",
+  "5423: echo '<a class=\"clear\" href=\"' . self::url( array( 'sand'=>null,'kat'=>null,'brand'=>null,'likutis'=>null,'marza'=>null,'tipas'=>null,'q'=>null,'sal'=>null,'p",
+  "5428: self::sel( 'marza', 'Marža', array( '' => 'visos', 'zem' => 'žemiau kategorijos ribos', 'lt10' => 'žemiau 10 %',",
+  "5429: 'lt20' => 'žemiau 20 %', 'lt30' => 'žemiau 30 %', 'gt40' => 'virš 40 %', 'nera' => 'be savikainos' ), $f['marza'] );",
+  "5502: <div class=\"p\"><span class=\"l\">Svertinė marža<i title=\"Svertinė pagal atsargų vertę, ne procentų vidurkis.\">ⓘ</i></span><span class=\"v\">' . ( $s['mar",
+  "5504: <div class=\"p\"><span class=\"l\">Potenciali marža<i title=\"Kiek uždirbtumėte pardavę visas AV atsargas dabartinėmis kainomis. Tik prekės su žinoma savik",
+  "5668: self::th( 'marza', 'Marža', $sort, $kryp, 'num', '% · € vnt.' );",
+  "5676: dubliavo bukles taska kaireje, kuris JAU rodo ta pati procenta.",
+  "5701: if ( $r['marza'] !== null && $r['marza'] < $r['grind'] ) { $bkl = 'bad'; $kodel[] = 'marža ' . number_format( $r['marza'], 1, ',', ' ' ) . ' % žemiau ' . r",
+  "5716: /* v2.9: naujas balas jau yra procentai, senoji atsargine — laukai. */",
+  "5717: $p_proc = isset( $p['proc'] ) ? (int) $p['proc'] : 0;",
+  "5719: : 'viskas tvarkoje · duomenų pilnumas ' . $p_proc . ' %';",
+  "5723: /* Skaicius = duomenu pilnumas procentais; ✓ = 100 %. Spalva —",
+  "5727: . ( $p_proc >= 100 ? '✓' : $p_proc ) . '</span></td>';",
+  "5827: echo '<span class=\"nezinoma bs\" data-p=\"Savikaina nesuvesta — be jos nematyti nei maržos, nei atsargų vertės\">—</span>';",
+  "5835: if ( $r['marza'] === null ) { echo '<span class=\"nezinoma\">—</span>'; }",
+  "5837: $zem = $r['marza'] < $r['grind'];",
+  "5838: $kl = $zem ? 'bad' : ( ( $r['marza'] < $r['grind'] + 5 ) ? 'warn' : 'ok' );",
+  "5839: $meur = self::marza_eur( $r['price'], $r['cost'] );",
+  "5841: echo '<span class=\"marza m_' . $kl . '\" data-p=\"Kategorijos riba ' . esc_attr( $rib ) . ' %. Skaičiuojama nuo kainos be PVM.\">'",
+  "5842: . '<b>' . number_format( $r['marza'], 1, ',', ' ' ) . ' %</b>'",
+  "5855: if ( $r['pmarza'] !== null ) { $pp .= ' · marža ' . $eur( $r['pmarza'] ) . ' € (apytiksliai, pagal dabartinę savikainą)'; }",
+  "5919: var laukai=[\"kruva\",\"view\",\"sand\",\"kat\",\"brand\",\"likutis\",\"marza\",\"tipas\",\"q\",\"sal\",\"sort\",\"kryp\",\"per\"];",
+  "6329: function marzaSk(td,kaina){",
+  "6334: return {proc:Math.round((be-cost)/be*1000)/10, eur:Math.round((be-cost)*100)/100, cost:cost};",
+  "6360: maržą pastumtų. */",
+  "6381: /* v8.5: marža persiskaičiuoja iškart — vedant savikainas",
+  "6387: mm.textContent=\"marža \"+String(mp).replace(\".\",\",\")+\" %\";",
+  "6394: var m=marzaSk(td,tapo);",
+  "6398: mm.textContent=\"marža \"+String(m.proc).replace(\".\",\",\")+\" %\";",
+  "6401: else if(m.proc < grind){ mm.classList.add(\"warn\"); mm.textContent+=\" · žemiau ribos\"; td.classList.add(\"persp\"); }",
+  "6476: if(zemiau && !confirm(zemiau+\" kaina(-os) krenta žemiau maržos ribos arba savikainos. Tęsti?\")) return;",
+  "6780: paste_preprocess:function(pl,o){",
+  "7199: if(x.sankla_proc!==undefined){",
+  "7201: var z=\"Buvo \"+x.buvo_simb+\" simb., liks \"+x.tapo_simb+\" (\"+x.sankla_proc+\" % šiukšlių).\\n\"",
+  "7253: /* v4.2: GYVA MARZA — skaicius keiciasi berasant, ne tik po Enter.",
+  "7255: function marzaGyvai(){",
+  "7256: var b=document.querySelector(\".kort-marza\");",
+  "7266: b.className=\"kort-marza \"+kl;",
+  "7277: if(r.classList.contains(\"kort-kaina\") || r.dataset.laukas===\"_cost_price\"){ marzaGyvai(); }",
+  "7878: /* savikaina pasikeite → atnaujinam marza vietoje */",
+  "7879: if(data && data.marza !== undefined){",
+  "7880: var b=document.querySelector(\".kort-marza\");",
+  "7881: if(b) b.textContent = String(data.marza).replace(\".\",\",\")+\" %\";",
+  "8696: /* marža plokštele */",
+  "8697: .pskat-t .marza{display:inline-flex;flex-direction:column;align-items:flex-end;gap:0;",
+  "8699: .pskat-t .marza b{font-size:13px;font-weight:600}",
+  "8700: .pskat-t .marza i{font-style:normal;font-size:10px;opacity:.8}",
+  "8701: .pskat-t .marza.m_ok{background:#e4f2ea;color:#1f7a4d}",
+  "8702: .pskat-t .marza.m_warn{background:#fbf0d5;color:#8a5f00}",
+  "8703: .pskat-t .marza.m_bad{background:#fbe8e5;color:#ac3226}"
+ ]
+}
