@@ -1,4 +1,228 @@
 {
  "v": "PD",
- "t2": "<!DOCTYPE html>\n<html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\">\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n\t<link rel=\"pingback\" href=\"https://dev.avesa.lt/xmlrpc.php\" />\n\n\t\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments); }\n\n\t/* ---- 1. CONSENT MODE v2 DEFAULT (privalo buti pirmas) ---- */\n\tgtag('consent', 'default', {\n\t\t'ad_storage': 'denied',\n\t\t'ad_user_data': 'denied',\n\t\t'ad_personalization': 'denied',\n\t\t'analytic"
+ "sukurta": 3958,
+ "deploy": {
+  "v": "PD-D",
+  "buvo": null,
+  "sintakse": "OK",
+  "irasyta": 21724,
+  "md5_po": "e704eddb6565fc5361f53a28a0252524",
+  "sutampa": true
+ },
+ "testas": {
+  "v": "PD-T",
+  "klase": "1.0",
+  "kontrole": {
+   "versija": "1.0",
+   "nuo": "2026-08-01",
+   "iki": "2026-08-31",
+   "aplinka": "dev",
+   "testiniai_rodomi": true,
+   "suvestine": {
+    "uzsakymu": 4,
+    "pajamos_ct": 17130,
+    "nuolaidu_ct": 687,
+    "bruto_ct": 17817,
+    "savikaina_ct": 12251,
+    "antkainis_ct": 4879,
+    "kontribucija_ct": 4631,
+    "pvm_ct": 3636,
+    "viso_ct": 20944,
+    "pristatymas_ct": 178,
+    "mokejimas_ct": 0,
+    "nauju": 1,
+    "nuostolingu": 0,
+    "vienetu": 32,
+    "grazinimu": 3,
+    "grazinta_ct": 4790
+   },
+   "antkainis_proc": 39.8,
+   "marza_proc": 28.5,
+   "patikra_pajamos": [
+    17130,
+    17130,
+    true
+   ],
+   "patikra_antkainis": [
+    4879,
+    4879,
+    true
+   ],
+   "pjuviai": [
+    "sandelis",
+    "brendas",
+    "kategorija",
+    "preke",
+    "mokejimas",
+    "kanalas",
+    "irenginys",
+    "klientas"
+   ]
+  },
+  "pjuviai": {
+   "sandelis": 4,
+   "brendas": 10,
+   "kategorija": 6,
+   "preke": 23,
+   "mokejimas": 1,
+   "kanalas": 1,
+   "irenginys": 1,
+   "klientas": 2
+  },
+  "pjuvio_pvz": {
+   "sandelis": [
+    {
+     "dim": "legacy",
+     "uzsakymu": "3",
+     "vienetu": "25",
+     "pajamos_ct": "5934",
+     "savikaina_ct": "3857",
+     "nauju": "1"
+    },
+    {
+     "dim": "ambrosia",
+     "uzsakymu": "2",
+     "vienetu": "2",
+     "pajamos_ct": "5147",
+     "savikaina_ct": "4213",
+     "nauju": "0"
+    },
+    {
+     "dim": "vf",
+     "uzsakymu": "3",
+     "vienetu": "4",
+     "pajamos_ct": "3867",
+     "savikaina_ct": "3252",
+     "nauju": "0"
+    }
+   ],
+   "brendas": [
+    {
+     "dim": "ambrosia",
+     "uzsakymu": "2",
+     "vienetu": "2",
+     "pajamos_ct": "5147",
+     "savikaina_ct": "4213",
+     "nauju": "0"
+    },
+    {
+     "dim": "animonda",
+     "uzsakymu": "1",
+     "vienetu": "21",
+     "pajamos_ct": "4079",
+     "savikaina_ct": "2712",
+     "nauju": "1"
+    },
+    {
+     "dim": "exclusion",
+     "uzsakymu": "2",
+     "vienetu": "2",
+     "pajamos_ct": "2783",
+     "savikaina_ct": "2312",
+     "nauju": "0"
+    }
+   ],
+   "kategorija": [
+    {
+     "dim": "[\"sunims\",\"maistas-sunims\",\"sausas-maistas-sunims\"]",
+     "uzsakymu": "2",
+     "vienetu": "2",
+     "pajamos_ct": "5147",
+     "savikaina_ct": "4213",
+     "nauju": "0"
+    },
+    {
+     "dim": "[\"katems\",\"maistas-katems\",\"sausas-maistas-katems\"]",
+     "uzsakymu": "3",
+     "vienetu": "3",
+     "pajamos_ct": "4278",
+     "savikaina_ct": "3307",
+     "nauju": "1"
+    },
+    {
+     "dim": "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"]",
+     "uzsakymu": "1",
+     "vienetu": "22",
+     "pajamos_ct": "4079",
+     "savikaina_ct": "2712",
+     "nauju": "1"
+    }
+   ],
+   "preke": [
+    {
+     "dim": "19760",
+     "uzsakymu": "1",
+     "vienetu": "1",
+     "pajamos_ct": "3966",
+     "savikaina_ct": "3436",
+     "nauju": "0"
+    },
+    {
+     "dim": "12837",
+     "uzsakymu": "1",
+     "vienetu": "1",
+     "pajamos_ct": "1495",
+     "savikaina_ct": "995",
+     "nauju": "1"
+    },
+    {
+     "dim": "18536",
+     "uzsakymu": "1",
+     "vienetu": "1",
+     "pajamos_ct": "1437",
+     "savikaina_ct": "1195",
+     "nauju": "0"
+    }
+   ],
+   "mokejimas": [
+    {
+     "dim": "bacs",
+     "uzsakymu": "4",
+     "vienetu": "0",
+     "pajamos_ct": "17130",
+     "savikaina_ct": "12251",
+     "nauju": "1"
+    }
+   ],
+   "kanalas": [
+    {
+     "dim": "mokamas",
+     "uzsakymu": "4",
+     "vienetu": "0",
+     "pajamos_ct": "17130",
+     "savikaina_ct": "12251",
+     "nauju": "1"
+    }
+   ],
+   "irenginys": [
+    {
+     "dim": "desktop",
+     "uzsakymu": "4",
+     "vienetu": "0",
+     "pajamos_ct": "17130",
+     "savikaina_ct": "12251",
+     "nauju": "1"
+    }
+   ],
+   "klientas": [
+    {
+     "dim": "0",
+     "uzsakymu": "3",
+     "vienetu": "0",
+     "pajamos_ct": "11556",
+     "savikaina_ct": "8544",
+     "nauju": "0"
+    },
+    {
+     "dim": "1",
+     "uzsakymu": "1",
+     "vienetu": "0",
+     "pajamos_ct": "5574",
+     "savikaina_ct": "3707",
+     "nauju": "1"
+    }
+   ]
+  },
+  "nuostolingi": 0
+ }
 }
