@@ -25,27 +25,28 @@ try{
   pg.on('pageerror',e=>kl.push(String(e).slice(0,140)));
   const req=[]; pg.on('request',r=>{ if(r.url().indexOf('ps-web')>-1) req.push(r.method()+' '+r.url().slice(0,70)); });
 
+  async function eik(u,ms){ try{ await pg.goto(u,{waitUntil:'domcontentloaded',timeout:45000}); }catch(e){ out.goto_klaidos=(out.goto_klaidos||[]); out.goto_klaidos.push(u.slice(-40)+' '+String(e).slice(0,60)); } await miegok(ms||1200); }
   // 1) landing su UTM is isorinio saltinio
-  await pg.goto(WP+'/?utm_source=test&utm_medium=cpc&utm_campaign=e2test',{waitUntil:'networkidle',timeout:90000});
+  await eik(WP+'/?utm_source=test&utm_medium=cpc&utm_campaign=e2test',1500);
   out.beacon_yra=await pg.$('#ps-web-beacon')!==null;
   out.psWeb=await pg.evaluate(()=>typeof window.psWeb).catch(()=>'?');
-  await miegok(1800);
+  await miegok(1200);
 
   // 2) preke
-  await pg.goto(st.preke_url,{waitUntil:'networkidle',timeout:90000}); await miegok(1800);
+  await eik(st.preke_url,1200);
   // 3) i krepseli
-  await pg.goto(WP+'/?add-to-cart='+st.preke_id,{waitUntil:'networkidle',timeout:90000}); await miegok(1500);
+  await eik(WP+'/?add-to-cart='+st.preke_id,1500);
   // 4) krepselis
-  await pg.goto(WP+'/krepselis/',{waitUntil:'networkidle',timeout:90000}); await miegok(1800);
+  await eik(WP+'/krepselis/',1200);
   // 5) paieska be rezultatu
-  await pg.goto(WP+'/?s=zzzqqqxxx',{waitUntil:'networkidle',timeout:90000}); await miegok(1800);
+  await eik(WP+'/?s=zzzqqqxxx',1200);
   // 6) 404
-  await pg.goto(WP+'/nera-tokio-puslapio-e2/',{waitUntil:'networkidle',timeout:90000}); await miegok(1800);
+  await eik(WP+'/nera-tokio-puslapio-e2/',1200);
   // 7) bandom PATYS push'inti purchase — turi buti atmesta JS lygyje
   await pg.evaluate(()=>{ if(window.psWeb){ window.psWeb({tipas:'purchase',reiksme:12345}); window.psWeb({tipas:'pageview',pusl:'kita',url:'/js-testas/'}); } });
   await miegok(500);
   await pg.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
-  await miegok(2500);
+  await miegok(2000);
 
   out.js=kl; out.uzklausos=req.slice(0,12);
   out.put=await put('screenshots/e2_beacon.png', await pg.screenshot({fullPage:false}), VER);
