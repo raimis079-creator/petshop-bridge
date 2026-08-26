@@ -1,0 +1,144 @@
+{
+ "v": "A13",
+ "deploy": {
+  "v": "A13-D",
+  "md5_pries": "201c19d6499496f77ecd24d4343472b1",
+  "sintakse": "OK",
+  "irasyta": 16363,
+  "md5_po": "c393b8ec2fea783996ef0cd1f0b5775d",
+  "sutampa": true
+ },
+ "testas": {
+  "v": "A13-T",
+  "versija": "1.3",
+  "pavyzdziai": [
+   {
+    "preke": 12463,
+    "pav": "ZB Eukanuba",
+    "sandelis": "zb",
+    "_vf_qty": "",
+    "_zb_qty": "0",
+    "_own": "",
+    "_stock": "0.000000",
+    "turi_tiekeja": true,
+    "likutis_av": null,
+    "likutis_tiekejo": 0
+   },
+   {
+    "preke": 17394,
+    "pav": "AV Monge (su _zb_qty)",
+    "sandelis": "av",
+    "_vf_qty": "",
+    "_zb_qty": "247",
+    "_own": "18",
+    "_stock": "247",
+    "turi_tiekeja": true,
+    "likutis_av": 18,
+    "likutis_tiekejo": 247
+   },
+   {
+    "preke": 34942,
+    "pav": "AV be tiekejo",
+    "sandelis": "av",
+    "_vf_qty": "",
+    "_zb_qty": "",
+    "_own": "",
+    "_stock": "",
+    "turi_tiekeja": false,
+    "likutis_av": null,
+    "likutis_tiekejo": null
+   }
+  ],
+  "snapshot": {
+   "diena": "2026-08-26",
+   "dry": false,
+   "prekiu": 2621,
+   "irasyta": 2621,
+   "stockout": 389,
+   "verte_ct": 1928387,
+   "be_savikainos": 390
+  },
+  "pagal_sandeli": [
+   {
+    "sandelis": "vf",
+    "prekiu": "978",
+    "su_av": "1",
+    "su_tiek": "978",
+    "av_suma": "3",
+    "tiek_suma": "149195",
+    "verte": "7986",
+    "stockout": "160"
+   },
+   {
+    "sandelis": "av",
+    "prekiu": "904",
+    "su_av": "894",
+    "su_tiek": "15",
+    "av_suma": "10949",
+    "tiek_suma": "3093",
+    "verte": "1920401",
+    "stockout": "153"
+   },
+   {
+    "sandelis": "zb",
+    "prekiu": "576",
+    "su_av": "0",
+    "su_tiek": "576",
+    "av_suma": "0",
+    "tiek_suma": "14991",
+    "verte": "0",
+    "stockout": "43"
+   },
+   {
+    "sandelis": "quattro",
+    "prekiu": "64",
+    "su_av": "1",
+    "su_tiek": "64",
+    "av_suma": "0",
+    "tiek_suma": "2182",
+    "verte": "0",
+    "stockout": "2"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "prekiu": "42",
+    "su_av": "0",
+    "su_tiek": "42",
+    "av_suma": "0",
+    "tiek_suma": "267",
+    "verte": "0",
+    "stockout": "21"
+   },
+   {
+    "sandelis": "prins",
+    "prekiu": "23",
+    "su_av": "0",
+    "su_tiek": "23",
+    "av_suma": "0",
+    "tiek_suma": "337",
+    "verte": "0",
+    "stockout": "0"
+   },
+   {
+    "sandelis": null,
+    "prekiu": "19",
+    "su_av": "0",
+    "su_tiek": "9",
+    "av_suma": "0",
+    "tiek_suma": "124",
+    "verte": "0",
+    "stockout": "10"
+   },
+   {
+    "sandelis": "ambrosia",
+    "prekiu": "15",
+    "su_av": "1",
+    "su_tiek": "15",
+    "av_suma": "0",
+    "tiek_suma": "204",
+    "verte": "0",
+    "stockout": "0"
+   }
+  ]
+ }
+}
