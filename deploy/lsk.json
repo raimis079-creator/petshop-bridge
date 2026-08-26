@@ -1,0 +1,410 @@
+{
+ "35100": {
+  "statusas": "processing",
+  "total": "47.66",
+  "meta": {
+   "_ps_order_type": "MIXED",
+   "_ps_shipments": "3",
+   "_ps_siuntos": "",
+   "_ps_sandeliai": "",
+   "_ps_faktas_irasytas": "2026-08-26 13:21:56",
+   "_ps_kanalai": "{\"pirmas\":{\"utm_source\":\"testas\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"e2-dod\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"l"
+  }
+ },
+ "v": "LSK1",
+ "ts": "2026-08-26T13:53:39+00:00",
+ "grep": {
+  "mixed_pastaba": [
+   "MU/petshop-siuntu-laiskai.php:46 add_action( 'woocommerce_email_order_details', array( __CLASS__, 'mixed_pastaba' ), 5, 4 );",
+   "MU/petshop-siuntu-laiskai.php:346 public static function mixed_pastaba( $order, $sent_to_admin = false, $plain = false, $email = null ) {"
+  ],
+  "woocommerce_email_order_details": [
+   "MU/petshop-siuntu-laiskai.php:46 add_action( 'woocommerce_email_order_details', array( __CLASS__, 'mixed_pastaba' ), 5, 4 );"
+  ],
+  "_ps_shipments": [
+   "MU/petshop-siuntu-laiskai.php:135 * Veikia tik užsakymams su `_ps_shipments` > 1. Statusas grąžinamas į",
+   "MU/petshop-siuntu-laiskai.php:145 $tiketasi = (int) $order->get_meta( '_ps_shipments' );",
+   "MU/petshop-siuntu-laiskai.php:244 $tiketasi = (int) $o->get_meta( '_ps_shipments' );",
+   "MU/petshop-siuntu-laiskai.php:350 $n = max( 2, (int) $order->get_meta( '_ps_shipments' ) );",
+   "MU/petshop-av-sheets.php:112 'siuntos' => (int) $o->get_meta( '_ps_shipments' ),",
+   "MU/petshop-av-admin.php:75 $siuntos = (int) $order->get_meta( '_ps_shipments' );",
+   "MU/petshop-faktai.php:425 $siuntu = max( 1, (int) $order->get_meta( '_ps_shipments' ) );",
+   "MU/petshop-av-order.php:24 * _ps_shipments kiek siuntų išeis",
+   "MU/petshop-av-order.php:88 $order->update_meta_data( '_ps_shipments', count( $grupes ) );",
+   "MU/petshop-av-order.php:121 'siuntos' => (int) $order->get_meta( '_ps_shipments' ),"
+  ],
+  "_ps_order_type": [
+   "MU/petshop-siuntu-laiskai.php:349 if ( 'MIXED' !== $order->get_meta( '_ps_order_type' ) ) { return; }",
+   "MU/petshop-av-sheets.php:111 'tipas' => $o->get_meta( '_ps_order_type' ),",
+   "MU/petshop-av-admin.php:72 $tipas = $order->get_meta( '_ps_order_type' );",
+   "MU/petshop-av-admin.php:123 $mq[] = [ 'key' => '_ps_order_type', 'value' => strtoupper( $t ), 'compare' => '=' ];",
+   "MU/petshop-av-order.php:22 * _ps_order_type MAIN|DS|MIXED|REVIEW",
+   "MU/petshop-av-order.php:48 return ( $order && $order->get_meta( '_ps_order_type' ) );",
+   "MU/petshop-av-order.php:86 $order->update_meta_data( '_ps_order_type', $tipas );",
+   "MU/petshop-av-order.php:104 $tipas = $order->get_meta( '_ps_order_type' );"
+  ],
+  "Patvirtinti plan": [
+   "MU/petshop-desk.php:62 * po „Patvirtinti planą\" grįžtama su #inkaru tiesiai prie nuleistos kortelės.",
+   "MU/petshop-desk.php:115 * DABAR: „Patvirtinti planą“ tik UŽRAŠO (`_ps_misrus_sprendimas`). Nieko neperkelia,",
+   "MU/petshop-desk.php:2597 printf( '<div class=\"pd-mf\"><span class=\"pd-msum-t\"></span><span class=\"pd-mpay\">klientas už pristatymą sumokėjo %s</span><button type"
+  ]
+ },
+ "email_header_image": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+ "siteurl": "https://dev.avesa.lt",
+ "home": "https://dev.avesa.lt",
+ "email_from": "uzsakymai@petshop.lt",
+ "35100_faktas": {
+  "uzsakymas_id": "35100",
+  "statusas_galutinis": "processing",
+  "diena": "2026-08-26",
+  "apmoketa_at": "2026-08-26 13:21:56",
+  "prekiu_suma_ct": "3939",
+  "nuolaidu_ct": "0",
+  "pvm_ct": "827",
+  "viso_ct": "4766",
+  "savikaina_ct": "2684",
+  "marza_ct": "1255",
+  "kontribucija_ct": "1135",
+  "mokejimo_budas": "bacs",
+  "mokejimo_mokestis_ct": "0",
+  "utm_source": "testas",
+  "utm_medium": "cpc",
+  "utm_campaign": "e2-dod",
+  "kanalas_pirmas": "mokamas",
+  "kanalas_paskutinis": "mokamas",
+  "sutikimas_statistika": "1",
+  "sandeliu_kiekis": "3",
+  "misrus": "1",
+  "sandeliai": "vf,ambrosia,legacy",
+  "klientas_naujas": "0",
+  "klientas_uzsakymo_nr": "4",
+  "testinis": "1"
+ },
+ "35100_eiluciu": 4,
+ "35100_kontrole": {
+  "uzsakymas": {
+   "uzsakymas_id": "35100",
+   "sukurta_at": "2026-08-26 13:16:43",
+   "apmoketa_at": "2026-08-26 13:21:56",
+   "statusas_galutinis": "processing",
+   "statusas_at": "2026-08-26 13:21:57",
+   "klientas_id": "0",
+   "klientas_email_hash": "56c73d907cbb97befe91aef2e739f0085a420792fdc319945de9ce716e0bfc35",
+   "klientas_naujas": "0",
+   "klientas_uzsakymo_nr": "4",
+   "dienos_nuo_ankstesnio": "0",
+   "prekiu_suma_ct": "3939",
+   "nuolaidu_ct": "0",
+   "kuponu_kodai": "",
+   "tasku_panaudota_ct": "0",
+   "tasku_sukaupta_ct": "0",
+   "pristatymas_paimta_ct": "0",
+   "pristatymas_savikaina_ct": null,
+   "small_cart_fee_ct": "0",
+   "pvm_ct": "827",
+   "viso_ct": "4766",
+   "mokejimo_budas": "bacs",
+   "mokejimo_mokestis_ct": "0",
+   "pakuotes_savikaina_ct": "120",
+   "savikaina_ct": "2684",
+   "dovanu_savikaina_ct": "0",
+   "marza_ct": "1255",
+   "kontribucija_ct": "1135",
+   "sandeliu_kiekis": "3",
+   "misrus": "1",
+   "sandeliai": "vf,ambrosia,legacy",
+   "vezejai": "venipak",
+   "kanalas_pirmas": "mokamas",
+   "kanalas_paskutinis": "mokamas",
+   "utm_source": "testas",
+   "utm_medium": "cpc",
+   "utm_campaign": "e2-dod",
+   "gclid": "0",
+   "fbclid": "0",
+   "referer_domenas": "",
+   "landing_url": "https://dev.avesa.lt/?utm_source=testas&utm_medium=cpc&utm_campaign=e2-dod",
+   "irenginys": "desktop",
+   "sutikimas_statistika": "1",
+   "salis": "LT",
+   "miestas": "",
+   "pasto_kodas": "",
+   "anketa_id": null,
+   "rec_log_id": null,
+   "is_refill": "0",
+   "prenumerata_id": null,
+   "eiluciu_sk": "4",
+   "testinis": "1",
+   "saltinis_aplinka": "dev",
+   "fakt_versija": "2",
+   "irasyta_at": "2026-08-26 13:21:56",
+   "diena": "2026-08-26"
+  },
+  "eiluciu": 4,
+  "eilutes": [
+   {
+    "id": "22",
+    "uzsakymas_id": "35100",
+    "eilutes_id": "744",
+    "apmoketa_at": "2026-08-26 13:21:56",
+    "preke_id": "24377",
+    "variacija_id": "0",
+    "sku": "404842214457",
+    "gtin": "404842214457",
+    "pavadinimas_tuo_metu": "8in1 Flavours L trigubo skonio kaulas didelių veislių šunims, 1 vnt.",
+    "kategorija_id_giliausia": "95",
+    "kategoriju_kelias": "[\"sunims\",\"skanestai-sunims\"]",
+    "brendas_slug": "8in1",
+    "gyvunas": "",
+    "pa_uzsaldymas": "{\"pa_baltymu_saltinis\":[\"vistiena\"],\"pa_be_grudu\":[\"su-ryziais\"],\"pa_gyvuno_rusis\":[\"sunims\"],\"pa_kiekis_pakuoteje\":[\"1-vnt\"]}",
+    "sandelis": "vf",
+    "tiekejas": "vf",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "338",
+    "pvm_ct": "71",
+    "kaina_vnt_ct": "338",
+    "kaina_reguliari_ct": "338",
+    "savikaina_vnt_ct": "250",
+    "savikaina_ct": "250",
+    "savikainos_saltinis": "pardavimai",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "0",
+    "pakuotes_dydis": "",
+    "klientas_naujas": "0",
+    "testinis": "1",
+    "saltinis_aplinka": "dev",
+    "diena": "2026-08-26"
+   },
+   {
+    "id": "23",
+    "uzsakymas_id": "35100",
+    "eilutes_id": "745",
+    "apmoketa_at": "2026-08-26 13:21:56",
+    "preke_id": "18542",
+    "variacija_id": "0",
+    "sku": "NGCAB01",
+    "gtin": "801125900371",
+    "pavadinimas_tuo_metu": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jautiena, 1,5 kg",
+    "kategorija_id_giliausia": "81",
+    "kategoriju_kelias": "[\"katems\",\"maistas-katems\",\"sausas-maistas-katems\"]",
+    "brendas_slug": "exclusion",
+    "gyvunas": "",
+    "pa_uzsaldymas": "{\"pa_amzius\":[\"suaugusiems\"],\"pa_baltymu_saltinis\":[\"jautiena\"],\"pa_be_grudu\":[\"su-ryziais\"],\"pa_gyvuno_rusis\":[\"katems\"],\"pa_monoprotein\":[\"taip\"],\"pa_pakuotes_dydis\":[\"1-5-kg\"]}",
+    "sandelis": "vf",
+    "tiekejas": "vf",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "1346",
+    "pvm_ct": "283",
+    "kaina_vnt_ct": "1346",
+    "kaina_reguliari_ct": "1346",
+    "savikaina_vnt_ct": "1117",
+    "savikaina_ct": "1117",
+    "savikainos_saltinis": "pardavimai",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "1500",
+    "pakuotes_dydis": "1,5 kg",
+    "klientas_naujas": "0",
+    "testinis": "1",
+    "saltinis_aplinka": "dev",
+    "diena": "2026-08-26"
+   },
+   {
+    "id": "24",
+    "uzsakymas_id": "35100",
+    "eilutes_id": "746",
+    "apmoketa_at": "2026-08-26 13:21:56",
+    "preke_id": "19756",
+    "variacija_id": "0",
+    "sku": "AMLE02",
+    "gtin": "5214000583943",
+    "pavadinimas_tuo_metu": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg",
+    "kategorija_id_giliausia": "72",
+    "kategoriju_kelias": "[\"sunims\",\"maistas-sunims\",\"sausas-maistas-sunims\"]",
+    "brendas_slug": "ambrosia",
+    "gyvunas": "",
+    "pa_uzsaldymas": "{\"pa_baltymu_saltinis\":[\"eriena\",\"zveriena\"],\"pa_be_grudu\":[\"be-grudu\"],\"pa_gyvuno_rusis\":[\"sunims\"],\"pa_pakuotes_dydis\":[\"2-kg\"]}",
+    "sandelis": "ambrosia",
+    "tiekejas": "ambrosia",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "1181",
+    "pvm_ct": "248",
+    "kaina_vnt_ct": "1181",
+    "kaina_reguliari_ct": "1181",
+    "savikaina_vnt_ct": "777",
+    "savikaina_ct": "777",
+    "savikainos_saltinis": "pardavimai",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "2000",
+    "pakuotes_dydis": "2 kg",
+    "klientas_naujas": "0",
+    "testinis": "1",
+    "saltinis_aplinka": "dev",
+    "diena": "2026-08-26"
+   },
+   {
+    "id": "25",
+    "uzsakymas_id": "35100",
+    "eilutes_id": "747",
+    "apmoketa_at": "2026-08-26 13:21:56",
+    "preke_id": "35096",
+    "variacija_id": "0",
+    "sku": "Rink-rudos-knysles-20",
+    "gtin": "",
+    "pavadinimas_tuo_metu": "20 vnt. rudų kiaulės knyslių",
+    "kategorija_id_giliausia": "95",
+    "kategoriju_kelias": "[\"sunims\",\"skanestai-sunims\"]",
+    "brendas_slug": "gnatek",
+    "gyvunas": "",
+    "pa_uzsaldymas": "{\"pa_baltymu_saltinis\":[\"kiauliena\"],\"pa_be_grudu\":[\"be-grudu\"],\"pa_gyvuno_rusis\":[\"sunims\"],\"pa_kiekis_pakuoteje\":[\"1-vnt\"],\"pa_monoprotein\":[\"taip\"],\"pa_pakuotes_dydis\":[\"30-g\"]}",
+    "sandelis": "legacy",
+    "tiekejas": "legacy",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "1074",
+    "pvm_ct": "225",
+    "kaina_vnt_ct": "1074",
+    "kaina_reguliari_ct": "1074",
+    "savikaina_vnt_ct": "540",
+    "savikaina_ct": "540",
+    "savikainos_saltinis": "pardavimai",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "35096",
+    "rinkinio_tipas": "dp",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "600",
+    "pakuotes_dydis": "30 g",
+    "klientas_naujas": "0",
+    "testinis": "1",
+    "saltinis_aplinka": "dev",
+    "diena": "2026-08-26"
+   }
+  ],
+  "patikros": {
+   "eiluciu_bruto_vs_faktas": [
+    3939,
+    3939,
+    true
+   ],
+   "eiluciu_neto_vs_woo": [
+    3939,
+    3939,
+    true
+   ],
+   "neto_faktas_vs_woo": [
+    3939,
+    3939,
+    true
+   ],
+   "marza_perskaiciuota": [
+    1255,
+    1255,
+    true
+   ],
+   "pvm_faktas_vs_woo": [
+    827,
+    827,
+    true
+   ],
+   "viso_faktas_vs_woo": [
+    4766,
+    4766,
+    true
+   ],
+   "pristatymas_vs_woo": [
+    0,
+    0,
+    true
+   ],
+   "suvestine_bruto": {
+    "faktas": 4766,
+    "woo": 4766
+   }
+  },
+  "woo": {
+   "items_be_pvm": 3939,
+   "pvm": 827,
+   "pristatymas": 0,
+   "rinkliavos": 0,
+   "viso": 4766
+  }
+ },
+ "plan_meta": [
+  {
+   "meta_key": "_ps_irenginys",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_kanalai",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_order_type",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_groups",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_shipments",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_decided_at",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_partijos_nurasyta",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_faktas_irasytas",
+   "n": "4"
+  },
+  {
+   "meta_key": "_ps_stat_sesija",
+   "n": "3"
+  },
+  {
+   "meta_key": "_ps_av_reduced",
+   "n": "2"
+  },
+  {
+   "meta_key": "_ps_completed_at",
+   "n": "1"
+  },
+  {
+   "meta_key": "_ps_misrus_sprendimas",
+   "n": "1"
+  },
+  {
+   "meta_key": "_ps_misrus_sprestas",
+   "n": "1"
+  }
+ ],
+ "web_purchase": 0,
+ "web_aciu": 1
+}
