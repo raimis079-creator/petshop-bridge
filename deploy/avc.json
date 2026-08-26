@@ -1,0 +1,217 @@
+{
+ "v": "AVC",
+ "ts": "2026-08-26T14:56:18+00:00",
+ "sandelio_reiksmes": [
+  {
+   "meta_value": "av",
+   "hex": "6176",
+   "ilgis": "2",
+   "n": "1371"
+  },
+  {
+   "meta_value": "vf",
+   "hex": "7666",
+   "ilgis": "2",
+   "n": "1167"
+  },
+  {
+   "meta_value": "zb",
+   "hex": "7A62",
+   "ilgis": "2",
+   "n": "1059"
+  },
+  {
+   "meta_value": "quattro",
+   "hex": "7175617474726F",
+   "ilgis": "7",
+   "n": "65"
+  },
+  {
+   "meta_value": "belcor_tofu",
+   "hex": "62656C636F725F746F6675",
+   "ilgis": "11",
+   "n": "62"
+  },
+  {
+   "meta_value": "prins",
+   "hex": "7072696E73",
+   "ilgis": "5",
+   "n": "43"
+  },
+  {
+   "meta_value": "ambrosia",
+   "hex": "616D62726F736961",
+   "ilgis": "8",
+   "n": "15"
+  }
+ ],
+ "av_su_abiem": [
+  {
+   "ID": "17394",
+   "pav": "Monge Monoproteico Solo Tacchino –",
+   "own": "18",
+   "stock": "247"
+  },
+  {
+   "ID": "17400",
+   "pav": "Monge Monoproteico Solo Agnello – ",
+   "own": "0",
+   "stock": "356.000000"
+  },
+  {
+   "ID": "17397",
+   "pav": "Monge Monoproteico Solo Anatra – M",
+   "own": "13",
+   "stock": "296.000000"
+  },
+  {
+   "ID": "17406",
+   "pav": "Monge Fresh Pate and chunkies Veal",
+   "own": "14",
+   "stock": "357.000000"
+  },
+  {
+   "ID": "17415",
+   "pav": "Monge BWild begrūdžiai konservai š",
+   "own": "26",
+   "stock": "137"
+  },
+  {
+   "ID": "17412",
+   "pav": "Monge BWild begrūdžiai konservai š",
+   "own": "7",
+   "stock": "77.000000"
+  },
+  {
+   "ID": "17421",
+   "pav": "Monge BWild begrūdžiai konservai š",
+   "own": "19",
+   "stock": "624"
+  },
+  {
+   "ID": "17418",
+   "pav": "Monge BWild begrūdžiai konservai š",
+   "own": "23",
+   "stock": "90"
+  },
+  {
+   "ID": "17403",
+   "pav": "Monge Fresh Puppy Pate and chunkie",
+   "own": "9",
+   "stock": "276.000000"
+  },
+  {
+   "ID": "17409",
+   "pav": "Monge Fresh Pate and chunkies Chic",
+   "own": "14",
+   "stock": "320.000000"
+  },
+  {
+   "ID": "16953",
+   "pav": "Papildas gyvūnams Bioveterinary Od",
+   "own": "2",
+   "stock": "58.000000"
+  },
+  {
+   "ID": "16950",
+   "pav": "Papildas gyvūnams Bioveterinary Są",
+   "own": "9",
+   "stock": "55.000000"
+  },
+  {
+   "ID": "16956",
+   "pav": "Papildas gyvūnams Bioveterinary Mu",
+   "own": "2",
+   "stock": "79.000000"
+  },
+  {
+   "ID": "16959",
+   "pav": "Papildas gyvūnams Bioveterinary Ex",
+   "own": "10",
+   "stock": "62.000000"
+  },
+  {
+   "ID": "19107",
+   "pav": "BIOVETERINARY STRESS CONTROL – str",
+   "own": "2",
+   "stock": "59.000000"
+  }
+ ],
+ "av_su_abiem_sk": 15,
+ "av_su_abiem_sumos": {
+  "own": 168,
+  "stock": 3093,
+  "skirtumas": 2925
+ },
+ "keistos": [
+  {
+   "preke_id": "34997",
+   "likutis_av": null,
+   "likutis_tiekejo": "2",
+   "sandelis": "AV",
+   "zalias": "AV",
+   "hex": "4156"
+  },
+  {
+   "preke_id": "34999",
+   "likutis_av": null,
+   "likutis_tiekejo": "2",
+   "sandelis": "AV",
+   "zalias": "AV",
+   "hex": "4156"
+  },
+  {
+   "preke_id": "35074",
+   "likutis_av": null,
+   "likutis_tiekejo": "1",
+   "sandelis": "AV",
+   "zalias": "AV",
+   "hex": "4156"
+  }
+ ],
+ "partijos_250_270": [
+  "246: \t\t);",
+  "247: \t}",
+  "248: ",
+  "249: \t/* ============================================================",
+  "250: \t *  AV LIKUTIS — kur rasyti",
+  "251: \t * ============================================================ */",
+  "252: ",
+  "253: \t/**",
+  "254: \t * S590 taisykle: preke be tiekejo -> `_stock`; su tiekeju -> `_own_stock_qty`.",
+  "255: \t * Sis modulis ta pacia taisykle ir taiko, kad neatsirastu antro kelio.",
+  "256: \t */",
+  "257: \tpublic static function av_laukas( $pid ) {",
+  "258: \t\tforeach ( array( '_vf_qty', '_zb_qty' ) as $k ) {",
+  "259: \t\t\tif ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }",
+  "260: \t\t}",
+  "261: \t\treturn '_stock';",
+  "262: \t}",
+  "263: ",
+  "264: \tpublic static function av_likutis( $pid ) {",
+  "265: \t\t$v = get_post_meta( $pid, self::av_laukas( $pid ), true );",
+  "266: \t\treturn ( $v === '' || $v === null ) ? 0 : (int) $v;",
+  "267: \t}",
+  "268: ",
+  "269: \tprivate static function rasyti_av_likuti( $pid, $kiekis ) {",
+  "270: \t\t$kiekis = max( 0, (int) $kiekis );"
+ ],
+ "av_su_source": 1369,
+ "av_su_abiem_turi_source": {
+  "16950": 1,
+  "16953": 1,
+  "16956": 1,
+  "16959": 1,
+  "17394": 1,
+  "17397": 1,
+  "17400": 1,
+  "17403": 1,
+  "17406": 1,
+  "17409": 1,
+  "17412": 1,
+  "17415": 1,
+  "17418": 1,
+  "17421": 1,
+  "19107": 1
+ }
+}
