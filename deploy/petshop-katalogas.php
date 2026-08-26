@@ -386,6 +386,18 @@
  *   antkakliui matmenys ir medziaga yra pirkimo sprendima lemianti
  *   informacija. Pridetos DVI sekcijos, ne daugiau.
  *
+ * Petshop Katalogas v5.9 (S765) — DAUGIAU=PIGIAU PAKUOTES NEBE „BE SALTINIO".
+ *
+ * Savininkas: „kaip gali buti be saltinio, jei 20 ausu guli AV sandelyje?"
+ * Teisingai. DP pakuote (`_dp_base_product_id`) savo eilutes registre neturi ir
+ * niekada neturejo — ji parduoda bazine preke po N vnt. Iki siol kortele rode
+ * „Preke be saltinio", nors saltinis akivaizdus — tas pats, kaip bazines.
+ *
+ * Dabar pakuote PAVELDI bazines prekes saltinius: sandelis tas pats, likutis
+ * perskaiciuotas i pakuotes (floor(bazinis / N)), savikaina padauginta is N.
+ * Registras NEKEICIAMAS — likutis lieka vienoje vietoje (bazineje prekeje),
+ * todel dvigubo skaiciavimo nera. Kortele parodo, is kur skaicius atejo.
+ *
  * Petshop Katalogas v5.8 (E1, S764) — SAVIKAINOS SALTINIAI SUVIENODINTI.
  *   Savininko taisykle: „tiekejo man pateikta kaina yra mano savikaina".
  *   Katalogas eme savikaina TIK is `ps_sources` registro, todel preke, kurios
@@ -2455,6 +2467,28 @@ class Petshop_Katalogas {
 		$stock = class_exists( 'Petshop_Stock_Service' )
 			? Petshop_Stock_Service::parduodama( $pid ) : array( 'qty' => 0, 'kodel' => '—', 'saltiniai' => array(), 'perspejimai' => array() );
 
+		/* v5.9: DP pakuote paveldi bazines prekes saltinius (zr. failo antraste). */
+		$dp_baze = (int) ( $mv( '_dp_base_product_id' ) ?: 0 );
+		$dp_kiek = max( 1, (int) ( $mv( '_dp_pack_qty' ) ?: 1 ) );
+		$dp_paveldeta = false;
+		if ( $dp_baze && ! $saltiniai['saltiniai'] && class_exists( 'Petshop_Sources' ) ) {
+			$b = Petshop_Sources::saltiniai( $dp_baze );
+			if ( ! empty( $b['saltiniai'] ) ) {
+				foreach ( $b['saltiniai'] as $bs ) {
+					$bs['stock_qty'] = ( $bs['stock_qty'] === null ) ? null : (int) floor( (int) $bs['stock_qty'] / $dp_kiek );
+					$bs['cost_net']  = ( $bs['cost_net'] === null ) ? null : round( (float) $bs['cost_net'] * $dp_kiek, 4 );
+					$saltiniai['saltiniai'][] = $bs;
+				}
+				$saltiniai['is_lenteles'] = $b['is_lenteles'];
+				$dp_paveldeta = true;
+				if ( empty( $stock['qty'] ) && class_exists( 'Petshop_Stock_Service' ) ) {
+					$bst = Petshop_Stock_Service::parduodama( $dp_baze );
+					$stock['qty']   = (int) floor( (int) $bst['qty'] / $dp_kiek );
+					$stock['kodel'] = sprintf( '%s ÷ %d vnt.', $bst['kodel'], $dp_kiek );
+				}
+			}
+		}
+
 		$kats  = wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) );
 		$kats  = is_wp_error( $kats ) ? array() : $kats;
 		$slugs = wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'slugs' ) );
@@ -2491,7 +2525,7 @@ class Petshop_Katalogas {
 			'ean' => (string) ( $mv( '_vf_barcode' ) ?: ( $mv( '_zb_ean' ) ?: ( $mv( '_ean' ) ?: '' ) ) ),
 			'price' => $kaina, 'cost' => $cost, 'kat' => $kats,
 			'br' => '', 'sand' => (string) $mv( '_ps_sandelis' ),
-			'nesalt' => $mv( '_ps_be_saltinio' ) === '1',
+			'nesalt' => $mv( '_ps_be_saltinio' ) === '1' && ! $dp_paveldeta,
 		);
 		$br = wp_get_post_terms( $pid, 'pa_brendas', array( 'fields' => 'names' ) );
 		if ( ! is_wp_error( $br ) && $br ) { $r['br'] = $br[0]; }
@@ -2592,6 +2626,11 @@ class Petshop_Katalogas {
 		echo '<div class="kort-blokas"><div class="kort-antr">Šaltiniai'
 			. '<span class="kort-p ' . ( $saltiniai['is_lenteles'] ? 'ok' : 'warn' ) . '">'
 			. ( $saltiniai['is_lenteles'] ? 'iš registro' : 'iš laukų' ) . '</span></div>';
+		if ( $dp_paveldeta ) {
+			echo '<div class="kort-kodel">Pakuotė savo likučio neturi — šaltinis, likutis ir savikaina paimti iš bazinės prekės '
+				. '<a href="' . esc_url( admin_url( 'admin.php?page=ps-katalogas&kortele=' . $dp_baze ) ) . '">#' . (int) $dp_baze . '</a>'
+				. ' ir perskaičiuoti į pakuotes po ' . (int) $dp_kiek . ' vnt.</div>';
+		}
 		if ( ! $saltiniai['saltiniai'] ) { echo '<div class="tuscia">Prekė be šaltinio</div>'; }
 		else {
 			echo '<table class="kort-t"><tr><th>Šaltinis</th><th>Kodas</th><th class="n">Likutis</th><th class="n">Savikaina</th><th>Duomenys</th></tr>';
