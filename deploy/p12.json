@@ -1,0 +1,254 @@
+{
+ "v": "P12",
+ "sukurta": 3961,
+ "deploy": {
+  "v": "P12-D",
+  "md5_pries": "48f589a8864e241516bb3790b13da8dc",
+  "sintakse": "OK",
+  "irasyta": 40082,
+  "md5_po": "9a45a9648627565bff99efa4224c42c6",
+  "sutampa": true
+ },
+ "testas": {
+  "v": "P12-T",
+  "versija": "1.2",
+  "kontrole": {
+   "versija": "1.2",
+   "nuo": "2026-08-01",
+   "iki": "2026-08-31",
+   "aplinka": "dev",
+   "testiniai_rodomi": true,
+   "suvestine": {
+    "uzsakymu": 4,
+    "pajamos_ct": 17130,
+    "nuolaidu_ct": 687,
+    "bruto_ct": 17817,
+    "savikaina_ct": 12251,
+    "antkainis_ct": 4879,
+    "kontribucija_ct": 4631,
+    "pvm_ct": 3636,
+    "viso_ct": 20944,
+    "pristatymas_ct": 178,
+    "mokejimas_ct": 0,
+    "nauju": 1,
+    "nuostolingu": 0,
+    "vienetu": 32,
+    "grazinimu": 3,
+    "grazinta_ct": 4790
+   },
+   "antkainis_proc": 39.8,
+   "marza_proc": 28.5,
+   "patikra_pajamos": [
+    17130,
+    17130,
+    true
+   ],
+   "patikra_antkainis": [
+    4879,
+    4879,
+    true
+   ],
+   "pjuviai": [
+    "sandelis",
+    "tiekejas",
+    "kategorija",
+    "brendas",
+    "gyvunas",
+    "rinkinys",
+    "preke",
+    "vezejas",
+    "regionas",
+    "mokejimas",
+    "kanalas",
+    "irenginys",
+    "klientas"
+   ],
+   "granul": [
+    "diena",
+    "savaite",
+    "menuo"
+   ],
+   "xlsx": "ZipArchive",
+   "eiluciu_viso": 23
+  },
+  "pjuviai": {
+   "sandelis": 4,
+   "tiekejas": 4,
+   "kategorija": 6,
+   "brendas": 10,
+   "gyvunas": 3,
+   "rinkinys": 3,
+   "preke": 23,
+   "vezejas": 1,
+   "regionas": 1,
+   "mokejimas": 1,
+   "kanalas": 1,
+   "irenginys": 1,
+   "klientas": 2
+  },
+  "pvz": {
+   "sandelis": [
+    "legacy | uzs 3 | paj 5934 | sav 3857",
+    "ambrosia | uzs 2 | paj 5147 | sav 4213",
+    "vf | uzs 3 | paj 3867 | sav 3252"
+   ],
+   "tiekejas": [
+    "legacy | uzs 3 | paj 5934 | sav 3857",
+    "ambrosia | uzs 2 | paj 5147 | sav 4213",
+    "vf | uzs 3 | paj 3867 | sav 3252"
+   ],
+   "kategorija": [
+    "sausas-maistas-sunims | uzs 2 | paj 5147 | sav 4213",
+    "sausas-maistas-katems | uzs 3 | paj 4278 | sav 3307",
+    "konservai-sunims | uzs 1 | paj 4079 | sav 2712"
+   ],
+   "brendas": [
+    "ambrosia | uzs 2 | paj 5147 | sav 4213",
+    "animonda | uzs 1 | paj 4079 | sav 2712",
+    "exclusion | uzs 2 | paj 2783 | sav 2312"
+   ],
+   "gyvunas": [
+    "sunims | uzs 3 | paj 11384 | sav 8471",
+    "katems | uzs 3 | paj 4278 | sav 3307",
+    "zuvims | uzs 1 | paj 781 | sav 539"
+   ],
+   "rinkinys": [
+    "pavienė | uzs 4 | paj 11290 | sav 9065",
+    "mnm | uzs 1 | paj 4079 | sav 2712",
+    "dp | uzs 1 | paj 1074 | sav 540"
+   ],
+   "preke": [
+    "19760 | uzs 1 | paj 3966 | sav 3436",
+    "12837 | uzs 1 | paj 1495 | sav 995",
+    "18536 | uzs 1 | paj 1437 | sav 1195"
+   ],
+   "vezejas": [
+    "venipak | uzs 4 | paj 17130 | sav 12251"
+   ],
+   "regionas": [
+    "LT | uzs 4 | paj 17130 | sav 12251"
+   ],
+   "mokejimas": [
+    "bacs | uzs 4 | paj 17130 | sav 12251"
+   ],
+   "kanalas": [
+    "mokamas | uzs 4 | paj 17130 | sav 12251"
+   ],
+   "irenginys": [
+    "desktop | uzs 4 | paj 17130 | sav 12251"
+   ],
+   "klientas": [
+    "0 | uzs 3 | paj 11556 | sav 8544",
+    "1 | uzs 1 | paj 5574 | sav 3707"
+   ]
+  },
+  "drill": {
+   "sandelis": {
+    "dim": "legacy",
+    "pjuvis_ct": 5934,
+    "eiluciu": 16,
+    "eiluciu_ct": 5934,
+    "sutampa": true
+   },
+   "tiekejas": {
+    "dim": "legacy",
+    "pjuvis_ct": 5934,
+    "eiluciu": 16,
+    "eiluciu_ct": 5934,
+    "sutampa": true
+   },
+   "kategorija": {
+    "dim": "sausas-maistas-sunims",
+    "pjuvis_ct": 5147,
+    "eiluciu": 2,
+    "eiluciu_ct": 5147,
+    "sutampa": true
+   },
+   "brendas": {
+    "dim": "ambrosia",
+    "pjuvis_ct": 5147,
+    "eiluciu": 2,
+    "eiluciu_ct": 5147,
+    "sutampa": true
+   },
+   "gyvunas": {
+    "dim": "sunims",
+    "pjuvis_ct": 11384,
+    "eiluciu": 19,
+    "eiluciu_ct": 11384,
+    "sutampa": true
+   },
+   "rinkinys": {
+    "dim": "pavienė",
+    "pjuvis_ct": 11290,
+    "eiluciu": 9,
+    "eiluciu_ct": 11290,
+    "sutampa": true
+   },
+   "preke": {
+    "dim": "19760",
+    "pjuvis_ct": 3966,
+    "eiluciu": 1,
+    "eiluciu_ct": 3966,
+    "sutampa": true
+   },
+   "vezejas": {
+    "dim": "venipak",
+    "pjuvis_ct": 17130,
+    "eiluciu": 23,
+    "eiluciu_ct": 16443,
+    "sutampa": "n/d"
+   },
+   "regionas": {
+    "dim": "LT",
+    "pjuvis_ct": 17130,
+    "eiluciu": 23,
+    "eiluciu_ct": 16443,
+    "sutampa": "n/d"
+   },
+   "mokejimas": {
+    "dim": "bacs",
+    "pjuvis_ct": 17130,
+    "eiluciu": 23,
+    "eiluciu_ct": 16443,
+    "sutampa": "n/d"
+   },
+   "kanalas": {
+    "dim": "mokamas",
+    "pjuvis_ct": 17130,
+    "eiluciu": 23,
+    "eiluciu_ct": 16443,
+    "sutampa": "n/d"
+   },
+   "irenginys": {
+    "dim": "desktop",
+    "pjuvis_ct": 17130,
+    "eiluciu": 23,
+    "eiluciu_ct": 16443,
+    "sutampa": "n/d"
+   },
+   "klientas": {
+    "dim": "0",
+    "pjuvis_ct": 11556,
+    "eiluciu": 8,
+    "eiluciu_ct": 10869,
+    "sutampa": "n/d"
+   }
+  },
+  "granul": {
+   "diena": {
+    "tasku": 31,
+    "suma": 17130
+   },
+   "savaite": {
+    "tasku": 6,
+    "suma": 17130
+   },
+   "menuo": {
+    "tasku": 1,
+    "suma": 17130
+   }
+  },
+  "zip": true
+ }
+}
