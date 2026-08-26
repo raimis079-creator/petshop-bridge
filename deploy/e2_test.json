@@ -1,0 +1,198 @@
+{
+ "v": "E2T1",
+ "ts": "2026-08-26T11:58:53+00:00",
+ "md5_serveryje": "bea2614e8118cccea978546c4a9f4b4a",
+ "klase": "1.0",
+ "lenteles": {
+  "ps_web_ivykiai": {
+   "stulpeliu": 26,
+   "engine": "InnoDB",
+   "eiluciu": 0
+  },
+  "ps_web_dienos": {
+   "stulpeliu": 18,
+   "engine": "InnoDB",
+   "eiluciu": 0
+  }
+ },
+ "ps_web_v1": true,
+ "marsrutai": [
+  "/ps-web/v1",
+  "/ps-web/v1/i"
+ ],
+ "petshop_v1_nepaliestas": 38,
+ "irasymas": {
+  "purchase        -> lauk. draudziamas": "draudziamas",
+  "refund          -> lauk. draudziamas": "draudziamas",
+  "PURCHASE (didz) -> lauk. draudziamas": "draudziamas",
+  "nesamone        -> lauk. nezinomas": "nezinomas",
+  "pageview aciu   -> lauk. ok": "ok",
+  "view_item       -> lauk. ok": "ok",
+  "search 0 rez    -> lauk. ok": "ok"
+ },
+ "atmesta_skaitiklis": 3,
+ "purchase_lenteleje": 0,
+ "aciu_eilute": {
+  "tipas": "pageview",
+  "pusl_tipas": "aciu",
+  "url_kelias": "/uzsakymas-gautas/",
+  "raktas": null,
+  "reiksme": null,
+  "sutikimas": "0",
+  "testinis": "1",
+  "lankytojas_30": null
+ },
+ "lankytojas_d": {
+  "ilgis": 64,
+  "su_kita_druska_kitoks": true,
+  "ip_nesaugomas": true
+ },
+ "valymas_dry": {
+  "dry": true,
+  "dienu": 90,
+  "riba": "2026-05-28",
+  "zaliu_istrinta": 0,
+  "zaliu_butu": 1,
+  "agregato_pries": 1,
+  "agregato_po": 1,
+  "agregatas_nepaliestas": true
+ },
+ "valymas_real": {
+  "dry": false,
+  "dienu": 90,
+  "riba": "2026-05-28",
+  "zaliu_istrinta": 1,
+  "zaliu_butu": 1,
+  "agregato_pries": 1,
+  "agregato_po": 1,
+  "agregatas_nepaliestas": true
+ },
+ "sargas_liko": 1,
+ "senas_ivykis_istrintas": true,
+ "agregavimas": {
+  "diena": "2026-08-26",
+  "eiluciu": 10
+ },
+ "agregavimas2": {
+  "diena": "2026-08-26",
+  "eiluciu": 10
+ },
+ "agregatas": [
+  {
+   "pjuvis": "irenginys",
+   "raktas": "desktop",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "1",
+   "view_item": "1"
+  },
+  {
+   "pjuvis": "kampanija",
+   "raktas": "(none)",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "1",
+   "view_item": "1"
+  },
+  {
+   "pjuvis": "kanalas",
+   "raktas": "direct",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "1",
+   "view_item": "1"
+  },
+  {
+   "pjuvis": "paieska",
+   "raktas": "begrudis vistienai",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "0",
+   "view_item": "0"
+  },
+  {
+   "pjuvis": "puslapis",
+   "raktas": "",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "0",
+   "view_item": "1"
+  },
+  {
+   "pjuvis": "puslapis",
+   "raktas": "/uzsakymas-gautas/",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "1",
+   "view_item": "0"
+  },
+  {
+   "pjuvis": "salis",
+   "raktas": "",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "1",
+   "view_item": "1"
+  },
+  {
+   "pjuvis": "saltinis",
+   "raktas": "(none)",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "1",
+   "view_item": "1"
+  },
+  {
+   "pjuvis": "tipas",
+   "raktas": "",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "0",
+   "view_item": "1"
+  },
+  {
+   "pjuvis": "tipas",
+   "raktas": "aciu",
+   "apsilankymai": "1",
+   "lankytojai": "1",
+   "perziuros": "1",
+   "view_item": "0"
+  }
+ ],
+ "cron": {
+  "ps_web_agregavimas": "2026-08-27 00:10 UTC",
+  "ps_web_valymas": "2026-08-27 02:40 UTC"
+ },
+ "kontrole": {
+  "versija": "1.0",
+  "endpoint": "https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "atmesta_purchase": 3,
+  "purchase_lenteleje": 0,
+  "ivykiu_viso": 3,
+  "pagal_tipa": [
+   {
+    "tipas": "search",
+    "n": "1"
+   },
+   {
+    "tipas": "view_item",
+    "n": "1"
+   },
+   {
+    "tipas": "pageview",
+    "n": "1"
+   }
+  ],
+  "pagal_pusl": [
+   {
+    "pusl_tipas": "aciu",
+    "n": "1"
+   }
+  ],
+  "aciu_perziuros": 1
+ },
+ "po_valymo": {
+  "ivykiu": 0,
+  "agregato": 0
+ }
+}
