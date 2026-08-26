@@ -1,0 +1,50 @@
+{
+ "v": "V3",
+ "deploy": {
+  "v": "V3-D",
+  "moduliai": {
+   "petshop-ataskaitos-ui": {
+    "md5_pries": "160f9578096b82f3ef1828f0a4a33f2b",
+    "sintakse": "OK",
+    "irasyta": 44402,
+    "md5_po": "ebde8d64924daf314b31d81e7d7d69f6",
+    "sutampa": true
+   },
+   "petshop-ataskaita-pardavimai": {
+    "md5_pries": "bd17b3069e67c55508cc4e92490582ff",
+    "sintakse": "OK",
+    "irasyta": 52653,
+    "md5_po": "29f89707e7e940d22212abc978055223",
+    "sutampa": true
+   }
+  }
+ },
+ "testas": {
+  "v": "V3-T",
+  "ui": "1.3",
+  "pard": "3.0",
+  "auto_gran": {
+   "30d": "diena",
+   "90d": "savaite",
+   "365d": "menuo"
+  },
+  "tabai": [
+   "sandelis",
+   "tiekejas",
+   "brendas",
+   "kategorija",
+   "preke",
+   "kanalas",
+   "klientas"
+  ],
+  "paskutinis": null,
+  "metodai": {
+   "juosta_v2": true,
+   "kpi_juosta": true,
+   "tabai": true,
+   "tuscia": true,
+   "vaizdai": true
+  },
+  "kabliukas": "YRA"
+ }
+}
