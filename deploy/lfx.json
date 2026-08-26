@@ -1,0 +1,64 @@
+{
+ "v": "LFX1",
+ "ts": "2026-08-26T13:59:30+00:00",
+ "md5_pries": "bb2815448591b7e225417031cce51eec",
+ "dydis_pries": 16368,
+ "pakeista": true,
+ "sintakse": "OK",
+ "backup": "petshop-siuntu-laiskai.php.bak_laiskas_20260826_135930",
+ "irasyta": 17047,
+ "md5_po": "753f8c6c7f75ba1480ba21c752e48ed9",
+ "dydis_po": 17047,
+ "sutampa": true,
+ "naujas_kodas": [
+  "345: ",
+  "346: \tpublic static function mixed_pastaba( $order, $sent_to_admin = false, $plain = false, $email = null ) {",
+  "347: \t\tif ( $sent_to_admin || ! $order || ! is_object( $email ) ) { return; }",
+  "348: \t\tif ( ! in_array( $email->id, array( 'customer_processing_order', 'customer_on_hold_order' ), true ) ) { return; }",
+  "349: \t\tif ( 'MIXED' !== $order->get_meta( '_ps_order_type' ) ) { return; }",
+  "350: ",
+  "351: \t\t/* 🔴 2026-08-26 (Raimio sprendimas). KOL PLANAS NEPATVIRTINTAS —",
+  "352: \t\t   KLIENTUI APIE SIUNTAS NESAKOM.",
+  "353: \t\t   `_ps_shipments` yra sistemos PROGNOZE, irasoma apmokejimo momentu",
+  "354: \t\t   (`petshop-av-order.php:86`). Sprendima, kiek ir kaip siusti, priima",
+  "355: \t\t   Raimis darbalaukyje mygtuku „Patvirtinti plana\" — jis uzraso",
+  "356: \t\t   `_ps_misrus_sprendimas` (desk:115: „tik UZRASO... nieko neperkelia\").",
+  "357: \t\t   Iki tol laiskas turi buti TIK apie apmokejima: sistema uz savininka",
+  "358: \t\t   nesprendzia ir kliento nepazada to, kas dar nenusprensta.",
+  "359: \t\t   Patvirtinus plana ir persiuntus laiska ranka — pastaba atsiranda. */",
+  "360: \t\tif ( ! $order->get_meta( '_ps_misrus_sprendimas' ) ) { return; }",
+  "361: \t\t$n = max( 2, (int) $order->get_meta( '_ps_shipments' ) );",
+  "362: \t\t$tekstas = sprintf(",
+  "363: \t\t\t'Jūsų užsakymas bus pristatytas %d atskiromis siuntomis — jos gali atvykti skirtingomis dienomis. Visus siuntų sekimo numerius atsiųsime atskiru laišku.',",
+  "364: \t\t\t$n );",
+  "365: \t\tif ( $plain ) { echo \"\\n\" . $tekstas . \"\\n\\n\"; return; }",
+  "366: \t\techo '<p style=\"margin:0 0 16px;padding:10px 12px;background:#f6f6f6;border-left:4px solid #7a9a01\">'",
+  "367: \t\t\t. esc_html( $tekstas ) . '</p>';",
+  "368: \t}",
+  "369: }",
+  "370: Petshop_Siuntos::init();"
+ ],
+ "uzsakymai": {
+  "35087": {
+   "tipas": "MIXED",
+   "shipments": "2",
+   "sprendimas": "nera",
+   "sprestas": "",
+   "gautu_pastaba": "NE"
+  },
+  "35090": {
+   "tipas": "MIXED",
+   "shipments": "3",
+   "sprendimas": "YRA",
+   "sprestas": "2026-08-26 16:50:32 | Rai",
+   "gautu_pastaba": "TAIP"
+  },
+  "35100": {
+   "tipas": "MIXED",
+   "shipments": "3",
+   "sprendimas": "nera",
+   "sprestas": "",
+   "gautu_pastaba": "NE"
+  }
+ }
+}
