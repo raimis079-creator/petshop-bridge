@@ -1,0 +1,256 @@
+{
+ "v": "E1BG1",
+ "ts": "2026-08-26T08:47:07+00:00",
+ "pradzia": {
+  "statusas": "processing",
+  "total": "74.78",
+  "jau_grazinta": 0,
+  "refundu": 0
+ },
+ "eilutes": {
+  "734": {
+   "id": 734,
+   "pav": "AMBROSIA begrūdis su ėriena ir šviežia e",
+   "preke": 19760,
+   "kiekis": 1,
+   "subtotal": "49.578512",
+   "total": "44.619835",
+   "tax": "9.37",
+   "nuolaida": 4.9587,
+   "rates": {
+    "1": "9.370165"
+   }
+  },
+  "735": {
+   "id": 735,
+   "pav": "691756 FURminator deShedding šampūnas šu",
+   "preke": 22912,
+   "kiekis": 1,
+   "subtotal": "9.338843",
+   "total": "8.404959",
+   "tax": "1.77",
+   "nuolaida": 0.9339,
+   "rates": {
+    "1": "1.765041"
+   }
+  },
+  "736": {
+   "id": 736,
+   "pav": "Hikari  Cichlid Excel Mini, 250 g",
+   "preke": 18332,
+   "kiekis": 1,
+   "subtotal": "9.752066",
+   "total": "8.77686",
+   "tax": "1.84",
+   "nuolaida": 0.9752,
+   "rates": {
+    "1": "1.843141"
+   }
+  }
+ },
+ "fakto_eilutes": [
+  {
+   "id": "19",
+   "eilutes_id": "734",
+   "preke_id": "19760",
+   "pav": "AMBROSIA begrūdis su ėriena ir",
+   "sandelis": "ambrosia",
+   "kiekis": "1",
+   "kaina_ct": "4462",
+   "pvm_ct": "937",
+   "nuolaida_ct": "496",
+   "savikaina_vnt_ct": "3436"
+  },
+  {
+   "id": "20",
+   "eilutes_id": "735",
+   "preke_id": "22912",
+   "pav": "691756 FURminator deShedding š",
+   "sandelis": "vf",
+   "kiekis": "1",
+   "kaina_ct": "840",
+   "pvm_ct": "177",
+   "nuolaida_ct": "94",
+   "savikaina_vnt_ct": "690"
+  },
+  {
+   "id": "21",
+   "eilutes_id": "736",
+   "preke_id": "18332",
+   "pav": "Hikari  Cichlid Excel Mini, 25",
+   "sandelis": "legacy",
+   "kiekis": "1",
+   "kaina_ct": "878",
+   "pvm_ct": "184",
+   "nuolaida_ct": "97",
+   "savikaina_vnt_ct": "539"
+  }
+ ],
+ "pasirinkta_eilute": 734,
+ "planas": {
+  "eilute": 734,
+  "kiekis": 1,
+  "neto": 44.62,
+  "pvm": 9.37,
+  "bruto": 53.99,
+  "rates": {
+   "1": 9.37
+  }
+ },
+ "refund1": {
+  "id": 35091,
+  "amount": "53.99",
+  "reason": "E1b DoD (c) — nuolaidines eilutes grazinimas"
+ },
+ "refund2": {
+  "id": 35092,
+  "amount": "1.00"
+ },
+ "grazinimu_faktai": [
+  {
+   "id": "1",
+   "uzsakymas_id": "35090",
+   "refund_id": "35091",
+   "eilute_id": "19",
+   "wc_eilutes_id": "734",
+   "eilute_raktas": "734",
+   "preke_id": "19760",
+   "grazinta_at": "2026-08-26 08:47:07",
+   "diena": "2026-08-26",
+   "kiekis": "1",
+   "suma_ct": "4462",
+   "pvm_ct": "937",
+   "savikaina_ct": "3436",
+   "priezastis_kodas": null,
+   "priezastis_tekstas": "E1b DoD (c) — nuolaidines eilutes grazinimas",
+   "atsargos_grizo": "1",
+   "sandelis": "ambrosia",
+   "testinis": "1",
+   "saltinis_aplinka": "dev",
+   "fakt_versija": "1"
+  },
+  {
+   "id": "2",
+   "uzsakymas_id": "35090",
+   "refund_id": "35092",
+   "eilute_id": null,
+   "wc_eilutes_id": null,
+   "eilute_raktas": "0",
+   "preke_id": null,
+   "grazinta_at": "2026-08-26 08:47:08",
+   "diena": "2026-08-26",
+   "kiekis": "0",
+   "suma_ct": "100",
+   "pvm_ct": "0",
+   "savikaina_ct": null,
+   "priezastis_kodas": "kita",
+   "priezastis_tekstas": "E1b DoD (c) — dalinis pinigu grazinimas be prekiu",
+   "atsargos_grizo": "0",
+   "sandelis": null,
+   "testinis": "1",
+   "saltinis_aplinka": "dev",
+   "fakt_versija": "1"
+  }
+ ],
+ "kontrole": {
+  "faktai": [
+   {
+    "id": "1",
+    "uzsakymas_id": "35090",
+    "refund_id": "35091",
+    "eilute_id": "19",
+    "wc_eilutes_id": "734",
+    "eilute_raktas": "734",
+    "preke_id": "19760",
+    "grazinta_at": "2026-08-26 08:47:07",
+    "diena": "2026-08-26",
+    "kiekis": "1",
+    "suma_ct": "4462",
+    "pvm_ct": "937",
+    "savikaina_ct": "3436",
+    "priezastis_kodas": null,
+    "priezastis_tekstas": "E1b DoD (c) — nuolaidines eilutes grazinimas",
+    "atsargos_grizo": "1",
+    "sandelis": "ambrosia",
+    "testinis": "1",
+    "saltinis_aplinka": "dev",
+    "fakt_versija": "1"
+   },
+   {
+    "id": "2",
+    "uzsakymas_id": "35090",
+    "refund_id": "35092",
+    "eilute_id": null,
+    "wc_eilutes_id": null,
+    "eilute_raktas": "0",
+    "preke_id": null,
+    "grazinta_at": "2026-08-26 08:47:08",
+    "diena": "2026-08-26",
+    "kiekis": "0",
+    "suma_ct": "100",
+    "pvm_ct": "0",
+    "savikaina_ct": null,
+    "priezastis_kodas": "kita",
+    "priezastis_tekstas": "E1b DoD (c) — dalinis pinigu grazinimas be prekiu",
+    "atsargos_grizo": "0",
+    "sandelis": null,
+    "testinis": "1",
+    "saltinis_aplinka": "dev",
+    "fakt_versija": "1"
+   }
+  ],
+  "sumos": {
+   "neto_ct": 4562,
+   "pvm_ct": 937,
+   "savikaina_ct": 3436,
+   "bruto_ct": 5499
+  },
+  "woo": {
+   "total_refunded_ct": 5499
+  },
+  "patikros": {
+   "bruto_faktas_vs_woo": [
+    5499,
+    5499,
+    true
+   ]
+  }
+ },
+ "idempotencija": {
+  "uzsakymas": 35090,
+  "refund": 35091,
+  "eilutes": [
+   {
+    "wc_item": 734,
+    "kiekis": 1,
+    "suma_ct": 4462,
+    "sav_ct": 3436,
+    "st": "exists"
+   }
+  ],
+  "viso_bruto_ct": 5399,
+  "eiluciu_sk": 1
+ },
+ "po_idempotencijos_eiluciu": 2,
+ "rankinis": {
+  "fakto_kaina_ct": 4462,
+  "fakto_kiekis": 1,
+  "fakto_sav_vnt_ct": 3436,
+  "laukiama_grazinta_neto_ct": 4462,
+  "laukiama_savikaina_ct": 3436
+ },
+ "restock_meta": "1",
+ "pabaiga": {
+  "statusas": "processing",
+  "total_refunded": 54.99,
+  "refundu": 2
+ },
+ "pastabos": [
+  "Grazinimo faktai irasyti: 1 eilutes · grazinta bruto 53,99 € · refund #35091 · TESTINIS",
+  "Grazinimo faktai irasyti: 0 eilutes · grazinta bruto 1,00 € · refund #35092 · TESTINIS",
+  "Email \"Grąžintas užsakymas\" sent.",
+  "Grazinimo faktai irasyti: 1 eilutes · grazinta bruto 53,99 € · refund #35091 · TESTINIS",
+  "Email \"Grąžintas užsakymas\" sent.",
+  "Produkto #19760 kiekis padidėjo nuo 17 iki 18."
+ ]
+}
