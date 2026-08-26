@@ -1,0 +1,32 @@
+{
+ "v": "E2B2",
+ "sukurta": 3916,
+ "start": {
+  "v": "E2B2",
+  "faze": "start",
+  "deploy": {
+   "md5_pries": "bea2614e8118cccea978546c4a9f4b4a",
+   "sintakse": "OK",
+   "irasyta": 31786,
+   "md5_po": "f537cee6ea5185127333eab1235e9c6f",
+   "sutampa": true
+  },
+  "preke_id": 35099,
+  "preke_url": "https://dev.avesa.lt/product/20-vnt-baltu-jaucio-ausu/"
+ },
+ "beacon_yra": true,
+ "psWeb": "function",
+ "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+ "js": [],
+ "uzklausos": [
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i"
+ ],
+ "put": 201,
+ "irasyta": 1
+}
