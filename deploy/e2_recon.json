@@ -1,0 +1,889 @@
+{
+ "v": "E2R1",
+ "ts": "2026-08-26T11:45:40+00:00",
+ "rest_namespaces": [
+  "oembed/1.0",
+  "petshop/v1",
+  "code-snippets/v1",
+  "rankmath/v1",
+  "rankmath/v1/setupWizard",
+  "unisend",
+  "wcdn/v1",
+  "wc/v3",
+  "wc/v1",
+  "wc/pos/v1/catalog",
+  "wp-all-import/v1",
+  "paysera/v1",
+  "jetpack/v4",
+  "complianz/v1",
+  "wc-admin",
+  "wc/store",
+  "wc/store/v1",
+  "wc/private",
+  "wc/v2",
+  "rankmath/v1/status",
+  "wc-admin-email",
+  "wc-push-notifications",
+  "wc-telemetry",
+  "wccom-site/v3",
+  "wpforms/v1",
+  "wp-abilities/v1",
+  "mcp",
+  "wp/v2",
+  "wp-site-health/v1",
+  "wp-block-editor/v1"
+ ],
+ "petshop_v1_uzimtas": true,
+ "petshop_v1_routes": [
+  "/petshop/v1",
+  "/petshop/v1/feeding-calc",
+  "/petshop/v1/feeding-pet-weight",
+  "/petshop/v1/feeding-pet-activity",
+  "/petshop/v1/feeding-pet-wet-food",
+  "/petshop/v1/feeding-calc-for-pet",
+  "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+  "/petshop/v1/pet-food-assign",
+  "/petshop/v1/pet-food-brand",
+  "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+  "/petshop/v1/wet-food-search",
+  "/petshop/v1/wet-products-info",
+  "/petshop/v1/pet-wet-product",
+  "/petshop/v1/product-search",
+  "/petshop/v1/pet-claim-pending",
+  "/petshop/v1/pet-claim-resolve",
+  "/petshop/v1/pet-recommendations/(?P<id>\\d+)",
+  "/petshop/v1/newsletter-subscribe",
+  "/petshop/v1/feeding/calculate",
+  "/petshop/v1/pet-draft",
+  "/petshop/v1/magic-login/request",
+  "/petshop/v1/pet-profile",
+  "/petshop/v1/pet-profile/(?P<id>\\d+)",
+  "/petshop/v1/food-search",
+  "/petshop/v1/brands",
+  "/petshop/v1/pet-product-link",
+  "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+  "/petshop/v1/refill-feedback",
+  "/petshop/v1/pet-photo/(?P<id>\\d+)",
+  "/petshop/v1/pet-content/(?P<id>\\d+)",
+  "/petshop/v1/sender-webhook",
+  "/petshop/v1/reminders",
+  "/petshop/v1/reminders/(?P<id>\\d+)",
+  "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+  "/petshop/v1/pet-notes",
+  "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+  "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+  "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+ ],
+ "lenteles": {
+  "ps_web_ivykiai": "laisva",
+  "ps_web_dienos": "laisva",
+  "ps_islaidos": "laisva",
+  "ps_fakt_kanalai": "laisva"
+ },
+ "schema": {
+  "ps_carts": {
+   "stulpeliai": [
+    "id bigint(20) unsigned",
+    "cart_id varchar(64)",
+    "session_key varchar(191)",
+    "user_id bigint(20) unsigned",
+    "email varchar(191)",
+    "email_source varchar(16)",
+    "last_cart_activity_at datetime",
+    "cart_hash varchar(40)",
+    "snapshot_json longtext",
+    "snapshot_version smallint(5) unsigned",
+    "status varchar(16)",
+    "status_changed_at datetime",
+    "converted_order_id bigint(20) unsigned",
+    "created_at datetime",
+    "updated_at datetime"
+   ],
+   "eiluciu": 84
+  },
+  "ps_sources": {
+   "stulpeliai": [
+    "id bigint(20) unsigned",
+    "product_id bigint(20) unsigned",
+    "source varchar(32)",
+    "supplier_sku varchar(64)",
+    "ean varchar(32)",
+    "stock_qty int(11)",
+    "cost_net decimal(12,4)",
+    "synced_at datetime",
+    "is_active tinyint(1)",
+    "is_sellable tinyint(1)",
+    "priority smallint(6)",
+    "created_at datetime",
+    "updated_at datetime"
+   ],
+   "eiluciu": 3849
+  },
+  "ps_ivykiai": {
+   "stulpeliai": [
+    "id bigint(20) unsigned",
+    "product_id bigint(20) unsigned",
+    "laikas datetime",
+    "tipas varchar(24)",
+    "laukas varchar(64)",
+    "sena varchar(255)",
+    "nauja varchar(255)",
+    "saltinis varchar(24)",
+    "kas varchar(96)",
+    "op_nr varchar(24)",
+    "pastaba varchar(255)"
+   ],
+   "eiluciu": 2905
+  }
+ },
+ "aktyvus_snippetai": [
+  {
+   "id": "239",
+   "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1232"
+  },
+  {
+   "id": "329",
+   "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "21827"
+  },
+  {
+   "id": "332",
+   "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "7855"
+  },
+  {
+   "id": "375",
+   "name": "Baltymu Saltinis Dry-Run Konservai v2",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "6572"
+  },
+  {
+   "id": "461",
+   "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1745"
+  },
+  {
+   "id": "463",
+   "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "7585"
+  },
+  {
+   "id": "464",
+   "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "8137"
+  },
+  {
+   "id": "465",
+   "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "6656"
+  },
+  {
+   "id": "469",
+   "name": "Petshop Dev App Passwords v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "385"
+  },
+  {
+   "id": "472",
+   "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "10744"
+  },
+  {
+   "id": "492",
+   "name": "Petshop Filtru Atidarymas v2 (CSS+JS)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1619"
+  },
+  {
+   "id": "494",
+   "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "7696"
+  },
+  {
+   "id": "502",
+   "name": "Higienos Modulis v1.0",
+   "active": "1",
+   "scope": "global",
+   "priority": "11",
+   "ilgis": "7560"
+  },
+  {
+   "id": "503",
+   "name": "Grauziko Rusis Modulis v1.2",
+   "active": "1",
+   "scope": "global",
+   "priority": "11",
+   "ilgis": "5793"
+  },
+  {
+   "id": "507",
+   "name": "Paukscio Rusis Modulis v1.3",
+   "active": "1",
+   "scope": "global",
+   "priority": "11",
+   "ilgis": "4948"
+  },
+  {
+   "id": "509",
+   "name": "Zuvies Rusis Modulis v1.0",
+   "active": "1",
+   "scope": "global",
+   "priority": "11",
+   "ilgis": "5998"
+  },
+  {
+   "id": "510",
+   "name": "Pasaro Forma Modulis v1.1",
+   "active": "1",
+   "scope": "global",
+   "priority": "11",
+   "ilgis": "4984"
+  },
+  {
+   "id": "512",
+   "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "9895"
+  },
+  {
+   "id": "513",
+   "name": "Petshop Katalogo Auditas v1 (read-only)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "13522"
+  },
+  {
+   "id": "518",
+   "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "473"
+  },
+  {
+   "id": "520",
+   "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "99",
+   "ilgis": "439"
+  },
+  {
+   "id": "525",
+   "name": "Petshop UI: kortelės + mobile sticky ATC",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "4378"
+  },
+  {
+   "id": "532",
+   "name": "Petshop MnM Fiksuoti komponentų kiekiai v2",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "2057"
+  },
+  {
+   "id": "535",
+   "name": "Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "4158"
+  },
+  {
+   "id": "539",
+   "name": "Petshop Rinkinių Kūrimo Forma v2",
+   "active": "1",
+   "scope": "admin",
+   "priority": "10",
+   "ilgis": "40375"
+  },
+  {
+   "id": "547",
+   "name": "Petshop Susidėjimo Rinkinio Vitrina v19",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "33237"
+  },
+  {
+   "id": "550",
+   "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+   "active": "1",
+   "scope": "admin",
+   "priority": "10",
+   "ilgis": "52764"
+  },
+  {
+   "id": "558",
+   "name": "Petshop Choice Krepšelio Elgsena",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "3632"
+  },
+  {
+   "id": "560",
+   "name": "Petshop Rinkinio CTA Banneris kategorijose v10",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "6159"
+  },
+  {
+   "id": "561",
+   "name": "Petshop Rinkinių Gyvūno Filtras v1",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "3399"
+  },
+  {
+   "id": "562",
+   "name": "Petshop Sprendimai Shortcode Variklis v9",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "20479"
+  },
+  {
+   "id": "563",
+   "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "20",
+   "ilgis": "4634"
+  },
+  {
+   "id": "565",
+   "name": "Petshop VF Sync v1.1 (reprice+stock+publish)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "22047"
+  },
+  {
+   "id": "566",
+   "name": "Petshop Akcijos Shortcode v1.3",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "5910"
+  },
+  {
+   "id": "567",
+   "name": "Petshop Daugiau=Pigiau Stock Sync v1.2",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "4558"
+  },
+  {
+   "id": "568",
+   "name": "Petshop Daugiau=Pigiau Display v1.2",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "3248"
+  },
+  {
+   "id": "569",
+   "name": "Petshop Pack/Rinkinys Auto-Categories v1.3",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "5666"
+  },
+  {
+   "id": "570",
+   "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "4757"
+  },
+  {
+   "id": "572",
+   "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+   "active": "1",
+   "scope": "admin",
+   "priority": "10",
+   "ilgis": "42694"
+  },
+  {
+   "id": "573",
+   "name": "Petshop DP Kortelės Ženkliukas v4",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "3906"
+  },
+  {
+   "id": "582",
+   "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "753"
+  },
+  {
+   "id": "587",
+   "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "467"
+  },
+  {
+   "id": "594",
+   "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "890"
+  },
+  {
+   "id": "609",
+   "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "1740"
+  },
+  {
+   "id": "610",
+   "name": "Petshop Topbar v2",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "752"
+  },
+  {
+   "id": "613",
+   "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "5",
+   "ilgis": "494"
+  },
+  {
+   "id": "614",
+   "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "15512"
+  },
+  {
+   "id": "615",
+   "name": "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "5",
+   "ilgis": "1707"
+  },
+  {
+   "id": "619",
+   "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "1",
+   "ilgis": "4712"
+  },
+  {
+   "id": "628",
+   "name": "Petshop Complianz X = Atmesti v1",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "719"
+  },
+  {
+   "id": "632",
+   "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "575"
+  },
+  {
+   "id": "648",
+   "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "741"
+  },
+  {
+   "id": "653",
+   "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1974"
+  },
+  {
+   "id": "685",
+   "name": "Atrinktos Prekės Modulis v1 (rotacija)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "9102"
+  },
+  {
+   "id": "688",
+   "name": "Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "12849"
+  },
+  {
+   "id": "692",
+   "name": "Petshop Maisto Tipo Mygtukai v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "2261"
+  },
+  {
+   "id": "693",
+   "name": "Petshop Mobile Filtru Dublio Fix v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "910"
+  },
+  {
+   "id": "705",
+   "name": "Petshop Produktu Nuotrauku Vienodinimas v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1537"
+  },
+  {
+   "id": "707",
+   "name": "Petshop UI Lokalizacija v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1601"
+  },
+  {
+   "id": "709",
+   "name": "Petshop Build-a-box UI Valymas v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1009"
+  },
+  {
+   "id": "1357",
+   "name": "Feeding Calc REST v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1709"
+  },
+  {
+   "id": "2024",
+   "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1172"
+  },
+  {
+   "id": "2029",
+   "name": "Petshop MyAccount LT Slug 301 v1 (LIVE)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1764"
+  },
+  {
+   "id": "2037",
+   "name": "Petshop Paskyros Sablonas v1 (LIVE)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "1157"
+  },
+  {
+   "id": "2051",
+   "name": "Petshop UI Lokalizacija v1 (LIVE)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "3921"
+  },
+  {
+   "id": "2403",
+   "name": "Petshop Stock Service v1.3 (per registra)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "9763"
+  },
+  {
+   "id": "2515",
+   "name": "Petshop Sources v2.2 (registras + palaikymas + sandelio pildymas)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "ilgis": "35954"
+  },
+  {
+   "id": "2868",
+   "name": "PS Masinis Sudeliojimas v6 (tik prekyboje)",
+   "active": "1",
+   "scope": "global",
+   "priority": "5",
+   "ilgis": "4931"
+  },
+  {
+   "id": "2871",
+   "name": "Petshop Vitrina Dalinimasis v1.0 (isjungti social mygtukai)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "ilgis": "1139"
+  },
+  {
+   "id": "2880",
+   "name": "Petshop Admin Juosta v1.0 (parduotuve naujame lange)",
+   "active": "1",
+   "scope": "admin",
+   "priority": "10",
+   "ilgis": "1170"
+  },
+  {
+   "id": "3910",
+   "name": "TEMP E2 Recon v1",
+   "active": "1",
+   "scope": "global",
+   "priority": "5",
+   "ilgis": "4218"
+  }
+ ],
+ "snippetai": {
+  "614": {
+   "ilgis": 15512,
+   "b64": "LyoqCiAqIFBldHNob3AgRGF0YUxheWVyIHYxLjEgKEdBNCBlY29tbWVyY2UpCiAqCiAqIFNpdW5jaWEgR0E0IGUtY29tbWVyY2UgaXZ5a2l1cyBpIGRhdGFMYXllciwga3VyaXVvcyBwYWdhdW5hIEdUTS1NRjNHWkdULgogKiBJdnlraWFpOiB2aWV3X2l0ZW0sIGFkZF90b19jYXJ0LCB2aWV3X2NhcnQsIGJlZ2luX2NoZWNrb3V0LCBwdXJjaGFzZQogKgogKiBTY29wZTogZnJvbnQtZW5kIG9ubHkKICogUHJpa2xhdXNvbXliZXM6IFdvb0NvbW1lcmNlIChrbGFzaWtpbmlzIGNoZWNrb3V0LCBzaG9ydGNvZGUpCiAqIElkZW1wb3RlbmNpamE6IHB1cmNoYXNlIHNpdW5jaWFtYXMgdmllbmFrYXJ0IHBlciB1enNha3ltYSAoX3BldHNob3BfZGxfcHVyY2hhc2Vfc2VudCArIHN0YXRpYyBndWFyZCkKICoKICogdjEuMSBwYXRhaXN5bWFpOgogKiAgIC0gYWRkX3RvX2NhcnQ6IHByZWtlcyBwdXNsYXB5amUgbXlndHVrYXMgTkVUVVJJIGFqYXhfYWRkX3RvX2NhcnQgLT4gZm9ybWEgc3VibWl0J2luYSwKICogICAgIEpTIHB1c2gnYXMgZGluZ3N0YSBzdSBuYXZpZ2FjaWphLiBTcHJlbmRpbWFzOiBXQyBzZXNzaW9uIHF1ZXVlICsgZmx1c2gga2l0YW1lIHBhZ2UgbG9hZC4KICogICAgIEFKQVggYXR2ZWp1IChsb29wIG15Z3R1a2FpKSBxdWV1ZSBORXBpbGRvbWEg4oCUIHRlbiB2ZWlraWEgSlMgbGlzdGVuZXIuCiAqICAgLSBwdXJjaGFzZTogcHJpZGV0YXMgc3RhdGljIGd1YXJkIG51byBkdmlndWJvIGhvb2sga3ZpZXRpbW8gdGFtZSBwYWNpYW1lIHJlcXVlc3QnZS4KICovCgppZiAoICEgZGVmaW5lZCggJ0FCU1BBVEgnICkgKSB7IHJldHVybjsgfQppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAnV0MnICkgKSB7IHJldHVybjsgfQoKLyogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiAqIEhFTFBFUlMKICogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICovCgppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAncGV0c2hvcF9ndG1fYnJhbmQnICkgKSB7CgkvKioKCSAqIFByZWtlcyB6ZW5rbGFzLiBQaXJtYSBiYW5kb20gYnJhbmQgdGFrc29ub21pamEsIHRhZGEgX2xlZ2FjeV9tYW51ZmFjdHVyZXIuCgkgKi8KCWZ1bmN0aW9uIHBldHNob3BfZ3RtX2JyYW5kKCAkcHJvZHVjdF9pZCApIHsKCQlmb3JlYWNoICggYXJyYXkoICdwcm9kdWN0X2JyYW5kJywgJ3BhX3ByZWtpdV96ZW5rbGFzJywgJ3lpdGhfcHJvZHVjdF9icmFuZCcgKSBhcyAkdGF4ICkgewoJCQlpZiAoIHRheG9ub215X2V4aXN0cyggJHRheCApICkgewoJCQkJJHRlcm1zID0gd3BfZ2V0X29iamVjdF90ZXJtcyggJHByb2R1Y3RfaWQsICR0YXgsIGFycmF5KCAnZmllbGRzJyA9PiAnbmFtZXMnICkgKTsKCQkJCWlmICggISBpc193cF9lcnJvciggJHRlcm1zICkgJiYgISBlbXB0eSggJHRlcm1zWzBdICkgKSB7CgkJCQkJcmV0dXJuICR0ZXJtc1swXTsKCQkJCX0KCQkJfQoJCX0KCQkkbWFudWYgPSBnZXRfcG9zdF9tZXRhKCAkcHJvZHVjdF9pZCwgJ19sZWdhY3lfbWFudWZhY3R1cmVyJywgdHJ1ZSApOwoJCXJldHVybiAkbWFudWYgPyAkbWFudWYgOiAnJzsKCX0KfQoKaWYgKCAhIGZ1bmN0aW9uX2V4aXN0cyggJ3BldHNob3BfZ3RtX2NhdGVnb3J5JyApICkgewoJLyoqCgkgKiBQaXJtb2ppIHByZWtlcyBrYXRlZ29yaWphIChwYXZhZGluaW1hcykuCgkgKi8KCWZ1bmN0aW9uIHBldHNob3BfZ3RtX2NhdGVnb3J5KCAkcHJvZHVjdF9pZCApIHsKCQkkdGVybXMgPSB3cF9nZXRfb2JqZWN0X3Rlcm1zKCAkcHJvZHVjdF9pZCwgJ3Byb2R1Y3RfY2F0JywgYXJyYXkoICdmaWVsZHMnID0+ICduYW1lcycgKSApOwoJCWlmICggISBpc193cF9lcnJvciggJHRlcm1zICkgJiYgISBlbXB0eSggJHRlcm1zWzBdICkgKSB7CgkJCXJldHVybiAkdGVybXNbMF07CgkJfQoJCXJldHVybiAnJzsKCX0KfQoKaWYgKCAhIGZ1bmN0aW9uX2V4aXN0cyggJ3BldHNob3BfZ3RtX2l0ZW0nICkgKSB7CgkvKioKCSAqIFdDX1Byb2R1Y3QgLT4gR0E0IGl0ZW0gb2JqZWt0YXMuCgkgKiBLYWluYSDigJQgc3UgUFZNIChCMkMpLCBrYWQgYXRpdGlrdHUgdXpzYWt5bW8gc3VtYS4KCSAqLwoJZnVuY3Rpb24gcGV0c2hvcF9ndG1faXRlbSggJHByb2R1Y3QsICRxdHkgPSAxLCAkaW5kZXggPSAwICkgewoJCWlmICggISAkcHJvZHVjdCBpbnN0YW5jZW9mIFdDX1Byb2R1Y3QgKSB7IHJldHVybiBudWxsOyB9CgoJCSRwaWQgICA9ICRwcm9kdWN0LT5nZXRfaWQoKTsKCQkkcHJpY2UgPSAoZmxvYXQpIHdjX2dldF9wcmljZV9pbmNsdWRpbmdfdGF4KCAkcHJvZHVjdCApOwoKCQkkaXRlbSA9IGFycmF5KAoJCQknaXRlbV9pZCcgICA9PiAkcHJvZHVjdC0+Z2V0X3NrdSgpID8gJHByb2R1Y3QtPmdldF9za3UoKSA6IChzdHJpbmcpICRwaWQsCgkJCSdpdGVtX25hbWUnID0+IHdwX3N0cmlwX2FsbF90YWdzKCAkcHJvZHVjdC0+Z2V0X25hbWUoKSApLAoJCQkncHJpY2UnICAgICA9PiByb3VuZCggJHByaWNlLCAyICksCgkJCSdxdWFudGl0eScgID0+IChpbnQpICRxdHksCgkJCSdpbmRleCcgICAgID0+IChpbnQpICRpbmRleCwKCQkpOwoKCQkkYnJhbmQgPSBwZXRzaG9wX2d0bV9icmFuZCggJHBpZCApOwoJCWlmICggJGJyYW5kICkgeyAkaXRlbVsnaXRlbV9icmFuZCddID0gJGJyYW5kOyB9CgoJCSRjYXQgPSBwZXRzaG9wX2d0bV9jYXRlZ29yeSggJHBpZCApOwoJCWlmICggJGNhdCApIHsgJGl0ZW1bJ2l0ZW1fY2F0ZWdvcnknXSA9ICRjYXQ7IH0KCgkJcmV0dXJuICRpdGVtOwoJfQp9CgppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAncGV0c2hvcF9ndG1fcHVzaCcgKSApIHsKCS8qKgoJICogSXN2ZWRhIGRhdGFMYXllci5wdXNoLiBQcmllcyBraWVrdmllbmEgZWNvbW1lcmNlIGl2eWtpIGlzdmFsbyBlY29tbWVyY2Ugb2JqZWt0YQoJICogKEdvb2dsZSByZWtvbWVuZGFjaWphLCBrYWQgbmVwZXJzaWRlbmd0dSBkdW9tZW55cykuCgkgKi8KCWZ1bmN0aW9uIHBldHNob3BfZ3RtX3B1c2goICRwYXlsb2FkICkgewoJCWlmICggZW1wdHkoICRwYXlsb2FkICkgKSB7IHJldHVybjsgfQoJCSRqc29uID0gd3BfanNvbl9lbmNvZGUoICRwYXlsb2FkLCBKU09OX1VORVNDQVBFRF9VTklDT0RFIHwgSlNPTl9VTkVTQ0FQRURfU0xBU0hFUyApOwoJCWlmICggZmFsc2UgPT09ICRqc29uICkgeyByZXR1cm47IH0KCQllY2hvICJcbjxzY3JpcHQgZGF0YS1wZXRzaG9wLWd0bT1cIjFcIj5cbiI7CgkJZWNobyAid2luZG93LmRhdGFMYXllciA9IHdpbmRvdy5kYXRhTGF5ZXIgfHwgW107XG4iOwoJCWVjaG8gIndpbmRvdy5kYXRhTGF5ZXIucHVzaCh7IGVjb21tZXJjZTogbnVsbCB9KTtcbiI7CgkJZWNobyAid2luZG93LmRhdGFMYXllci5wdXNoKCIgLiAkanNvbiAuICIpO1xuIjsKCQllY2hvICI8L3NjcmlwdD5cbiI7Cgl9Cn0KCmlmICggISBmdW5jdGlvbl9leGlzdHMoICdwZXRzaG9wX2d0bV9jdXJyZW5jeScgKSApIHsKCWZ1bmN0aW9uIHBldHNob3BfZ3RtX2N1cnJlbmN5KCkgewoJCXJldHVybiBnZXRfd29vY29tbWVyY2VfY3VycmVuY3koKTsKCX0KfQoKLyogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiAqIDEuIHZpZXdfaXRlbSDigJQgcHJla2VzIHB1c2xhcGlzCiAqID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAqLwoKaWYgKCAhIGZ1bmN0aW9uX2V4aXN0cyggJ3BldHNob3BfZ3RtX3ZpZXdfaXRlbScgKSApIHsKCWZ1bmN0aW9uIHBldHNob3BfZ3RtX3ZpZXdfaXRlbSgpIHsKCQlpZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAnaXNfcHJvZHVjdCcgKSB8fCAhIGlzX3Byb2R1Y3QoKSApIHsgcmV0dXJuOyB9CgoJCWdsb2JhbCAkcHJvZHVjdDsKCQlpZiAoICEgJHByb2R1Y3QgaW5zdGFuY2VvZiBXQ19Qcm9kdWN0ICkgewoJCQkkcHJvZHVjdCA9IHdjX2dldF9wcm9kdWN0KCBnZXRfdGhlX0lEKCkgKTsKCQl9CgkJJGl0ZW0gPSBwZXRzaG9wX2d0bV9pdGVtKCAkcHJvZHVjdCwgMSwgMCApOwoJCWlmICggISAkaXRlbSApIHsgcmV0dXJuOyB9CgoJCXBldHNob3BfZ3RtX3B1c2goIGFycmF5KAoJCQknZXZlbnQnICAgICA9PiAndmlld19pdGVtJywKCQkJJ2Vjb21tZXJjZScgPT4gYXJyYXkoCgkJCQknY3VycmVuY3knID0+IHBldHNob3BfZ3RtX2N1cnJlbmN5KCksCgkJCQkndmFsdWUnICAgID0+ICRpdGVtWydwcmljZSddLAoJCQkJJ2l0ZW1zJyAgICA9PiBhcnJheSggJGl0ZW0gKSwKCQkJKSwKCQkpICk7Cgl9Cn0KYWRkX2FjdGlvbiggJ3dwX2Zvb3RlcicsICdwZXRzaG9wX2d0bV92aWV3X2l0ZW0nLCAyMCApOwoKLyogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiAqIDIuIGFkZF90b19jYXJ0IOKAlCBkdW9tZW55cyBpIG15Z3R1a3VzIChsb29wICsgc2luZ2xlKQogKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KCmlmICggISBmdW5jdGlvbl9leGlzdHMoICdwZXRzaG9wX2d0bV9sb29wX2F0Y19hcmdzJyApICkgewoJLyoqCgkgKiBQcmlzZWdhIGRhdGEtZ3RtLWl0ZW0gcHJpZSBrYXRlZ29yaWp1L2xvb3AgbXlndHVrdS4KCSAqLwoJZnVuY3Rpb24gcGV0c2hvcF9ndG1fbG9vcF9hdGNfYXJncyggJGFyZ3MsICRwcm9kdWN0ICkgewoJCSRpdGVtID0gcGV0c2hvcF9ndG1faXRlbSggJHByb2R1Y3QsIDEsIDAgKTsKCQlpZiAoICRpdGVtICkgewoJCQkkYXJnc1snYXR0cmlidXRlcyddWydkYXRhLWd0bS1pdGVtJ10gPSB3cF9qc29uX2VuY29kZSggJGl0ZW0sIEpTT05fVU5FU0NBUEVEX1VOSUNPREUgKTsKCQl9CgkJcmV0dXJuICRhcmdzOwoJfQp9CmFkZF9maWx0ZXIoICd3b29jb21tZXJjZV9sb29wX2FkZF90b19jYXJ0X2FyZ3MnLCAncGV0c2hvcF9ndG1fbG9vcF9hdGNfYXJncycsIDEwLCAyICk7CgppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAncGV0c2hvcF9ndG1fc2luZ2xlX2l0ZW1fZGF0YScgKSApIHsKCS8qKgoJICogUHJla2VzIHB1c2xhcHlqZSBpc3ZlZGEgd2luZG93LnBldHNob3BHdG1JdGVtIOKAlCBKUyBwYXNpaW1hIGppIEFKQVggYWRkLXRvLWNhcnQgbWV0dS4KCSAqLwoJZnVuY3Rpb24gcGV0c2hvcF9ndG1fc2luZ2xlX2l0ZW1fZGF0YSgpIHsKCQlpZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAnaXNfcHJvZHVjdCcgKSB8fCAhIGlzX3Byb2R1Y3QoKSApIHsgcmV0dXJuOyB9CgoJCWdsb2JhbCAkcHJvZHVjdDsKCQlpZiAoICEgJHByb2R1Y3QgaW5zdGFuY2VvZiBXQ19Qcm9kdWN0ICkgewoJCQkkcHJvZHVjdCA9IHdjX2dldF9wcm9kdWN0KCBnZXRfdGhlX0lEKCkgKTsKCQl9CgkJJGl0ZW0gPSBwZXRzaG9wX2d0bV9pdGVtKCAkcHJvZHVjdCwgMSwgMCApOwoJCWlmICggISAkaXRlbSApIHsgcmV0dXJuOyB9CgoJCWVjaG8gIlxuPHNjcmlwdCBkYXRhLXBldHNob3AtZ3RtPVwiMVwiPlxuIjsKCQllY2hvICJ3aW5kb3cucGV0c2hvcEd0bUl0ZW0gPSAiIC4gd3BfanNvbl9lbmNvZGUoICRpdGVtLCBKU09OX1VORVNDQVBFRF9VTklDT0RFIHwgSlNPTl9VTkVTQ0FQRURfU0xBU0hFUyApIC4gIjtcbiI7CgkJZWNobyAiPC9zY3JpcHQ+XG4iOwoJfQp9CmFkZF9hY3Rpb24oICd3cF9mb290ZXInLCAncGV0c2hvcF9ndG1fc2luZ2xlX2l0ZW1fZGF0YScsIDE5ICk7CgovKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KICogMmIuIGFkZF90b19jYXJ0IOKAlCBXQyBzZXNzaW9uIHF1ZXVlIChORS1BSkFYIGF0dmVqaXMpCiAqCiAqIFByZWtlcyBwdXNsYXB5amUgbXlndHVrYXMgbmV0dXJpIGFqYXhfYWRkX3RvX2NhcnQga2xhc2VzOgogKiAgIDxidXR0b24gdHlwZT0ic3VibWl0IiBjbGFzcz0ic2luZ2xlX2FkZF90b19jYXJ0X2J1dHRvbiBidXR0b24gYWx0Ij4KICogRm9ybWEgc3VibWl0J2luYSwgcHVzbGFwaXMgcGVyc2lrcmF1bmEsIEpTIHB1c2gnYXMgZGluZ3N0YS4KICogVG9kZWwgUEhQIHB1c2VqZSBpcmFzb20gaSBzZXNpamEsIG8gZmx1c2gnaW5hbSBraXRhbWUgcGFnZSBsb2FkLgogKgogKiBBSkFYIGF0dmVqdSAoa2F0ZWdvcmlqdSBsb29wIG15Z3R1a2FpKSBxdWV1ZSBORXBpbGRvbWEg4oCUCiAqIHRlbiBzdXZlaWtpYSBKUyBgYWRkZWRfdG9fY2FydGAgbGlzdGVuZXInaXMgKHpyLiAzIHNla2NpamEpLgogKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KCmlmICggISBmdW5jdGlvbl9leGlzdHMoICdwZXRzaG9wX2d0bV9xdWV1ZV9hdGMnICkgKSB7CglmdW5jdGlvbiBwZXRzaG9wX2d0bV9xdWV1ZV9hdGMoICRjYXJ0X2l0ZW1fa2V5LCAkcHJvZHVjdF9pZCwgJHF1YW50aXR5LCAkdmFyaWF0aW9uX2lkLCAkdmFyaWF0aW9uLCAkY2FydF9pdGVtX2RhdGEgKSB7CgkJaWYgKCB3cF9kb2luZ19hamF4KCkgKSB7IHJldHVybjsgfQoJCWlmICggISBmdW5jdGlvbl9leGlzdHMoICdXQycgKSB8fCAhIFdDKCktPnNlc3Npb24gKSB7IHJldHVybjsgfQoKCQkkcGlkICAgICA9ICR2YXJpYXRpb25faWQgPyAkdmFyaWF0aW9uX2lkIDogJHByb2R1Y3RfaWQ7CgkJJHByb2R1Y3QgPSB3Y19nZXRfcHJvZHVjdCggJHBpZCApOwoJCSRpdGVtICAgID0gcGV0c2hvcF9ndG1faXRlbSggJHByb2R1Y3QsICRxdWFudGl0eSwgMCApOwoJCWlmICggISAkaXRlbSApIHsgcmV0dXJuOyB9CgoJCSRxdWV1ZSAgID0gV0MoKS0+c2Vzc2lvbi0+Z2V0KCAncGV0c2hvcF9ndG1fYXRjX3F1ZXVlJywgYXJyYXkoKSApOwoJCWlmICggISBpc19hcnJheSggJHF1ZXVlICkgKSB7ICRxdWV1ZSA9IGFycmF5KCk7IH0KCQkkcXVldWVbXSA9ICRpdGVtOwoJCVdDKCktPnNlc3Npb24tPnNldCggJ3BldHNob3BfZ3RtX2F0Y19xdWV1ZScsICRxdWV1ZSApOwoJfQp9CmFkZF9hY3Rpb24oICd3b29jb21tZXJjZV9hZGRfdG9fY2FydCcsICdwZXRzaG9wX2d0bV9xdWV1ZV9hdGMnLCAxMCwgNiApOwoKaWYgKCAhIGZ1bmN0aW9uX2V4aXN0cyggJ3BldHNob3BfZ3RtX2ZsdXNoX2F0YycgKSApIHsKCWZ1bmN0aW9uIHBldHNob3BfZ3RtX2ZsdXNoX2F0YygpIHsKCQlpZiAoIGlzX2FkbWluKCkgKSB7IHJldHVybjsgfQoJCWlmICggISBmdW5jdGlvbl9leGlzdHMoICdXQycgKSB8fCAhIFdDKCktPnNlc3Npb24gKSB7IHJldHVybjsgfQoKCQkkcXVldWUgPSBXQygpLT5zZXNzaW9uLT5nZXQoICdwZXRzaG9wX2d0bV9hdGNfcXVldWUnLCBhcnJheSgpICk7CgkJaWYgKCBlbXB0eSggJHF1ZXVlICkgfHwgISBpc19hcnJheSggJHF1ZXVlICkgKSB7IHJldHVybjsgfQoKCQlXQygpLT5zZXNzaW9uLT5zZXQoICdwZXRzaG9wX2d0bV9hdGNfcXVldWUnLCBhcnJheSgpICk7CgoJCWZvcmVhY2ggKCAkcXVldWUgYXMgJGl0ZW0gKSB7CgkJCWlmICggZW1wdHkoICRpdGVtWydwcmljZSddICkgJiYgMCAhPT0gJGl0ZW1bJ3ByaWNlJ10gKSB7IGNvbnRpbnVlOyB9CgkJCSR2YWx1ZSA9IHJvdW5kKCAoZmxvYXQpICRpdGVtWydwcmljZSddICogKGludCkgJGl0ZW1bJ3F1YW50aXR5J10sIDIgKTsKCQkJcGV0c2hvcF9ndG1fcHVzaCggYXJyYXkoCgkJCQknZXZlbnQnICAgICA9PiAnYWRkX3RvX2NhcnQnLAoJCQkJJ2Vjb21tZXJjZScgPT4gYXJyYXkoCgkJCQkJJ2N1cnJlbmN5JyA9PiBwZXRzaG9wX2d0bV9jdXJyZW5jeSgpLAoJCQkJCSd2YWx1ZScgICAgPT4gJHZhbHVlLAoJCQkJCSdpdGVtcycgICAgPT4gYXJyYXkoICRpdGVtICksCgkJCQkpLAoJCQkpICk7CgkJfQoJfQp9CmFkZF9hY3Rpb24oICd3cF9mb290ZXInLCAncGV0c2hvcF9ndG1fZmx1c2hfYXRjJywgMTggKTsKCi8qID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQogKiAzLiBhZGRfdG9fY2FydCDigJQgSlMgbGlzdGVuZXIgKFRJSyBBSkFYIG15Z3R1a2FtcykKICogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICovCgppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAncGV0c2hvcF9ndG1fYXRjX2xpc3RlbmVyJyApICkgewoJZnVuY3Rpb24gcGV0c2hvcF9ndG1fYXRjX2xpc3RlbmVyKCkgewoJCWlmICggaXNfYWRtaW4oKSApIHsgcmV0dXJuOyB9CgoJCSRjdXJyZW5jeSA9IGVzY19qcyggcGV0c2hvcF9ndG1fY3VycmVuY3koKSApOwoKCQkkanMgPSA8PDwnUEVUU0hPUEpTJwo8c2NyaXB0IGRhdGEtcGV0c2hvcC1ndG09IjEiPgooZnVuY3Rpb24gKCkgewoJd2luZG93LmRhdGFMYXllciA9IHdpbmRvdy5kYXRhTGF5ZXIgfHwgW107Cgl2YXIgUEVUU0hPUF9DVVJSRU5DWSA9ICdfX0NVUlJFTkNZX18nOwoKCWZ1bmN0aW9uIHBldHNob3BQdXNoQXRjKGl0ZW0sIHF0eSkgewoJCWlmICghaXRlbSkgeyByZXR1cm47IH0KCQl2YXIgcSA9IHBhcnNlSW50KHF0eSwgMTApOwoJCWlmICghcSB8fCBxIDwgMSkgeyBxID0gMTsgfQoJCXZhciBpdCA9IEpTT04ucGFyc2UoSlNPTi5zdHJpbmdpZnkoaXRlbSkpOwoJCWl0LnF1YW50aXR5ID0gcTsKCQl2YXIgdmFsdWUgPSBNYXRoLnJvdW5kKChwYXJzZUZsb2F0KGl0LnByaWNlKSB8fCAwKSAqIHEgKiAxMDApIC8gMTAwOwoKCQl3aW5kb3cuZGF0YUxheWVyLnB1c2goeyBlY29tbWVyY2U6IG51bGwgfSk7CgkJd2luZG93LmRhdGFMYXllci5wdXNoKHsKCQkJZXZlbnQ6ICdhZGRfdG9fY2FydCcsCgkJCWVjb21tZXJjZTogewoJCQkJY3VycmVuY3k6IFBFVFNIT1BfQ1VSUkVOQ1ksCgkJCQl2YWx1ZTogdmFsdWUsCgkJCQlpdGVtczogW2l0XQoJCQl9CgkJfSk7Cgl9CgoJZnVuY3Rpb24gcGV0c2hvcFJlYWRJdGVtKGVsKSB7CgkJaWYgKCFlbCB8fCAhZWwuZ2V0QXR0cmlidXRlKSB7IHJldHVybiBudWxsOyB9CgkJdmFyIHJhdyA9IGVsLmdldEF0dHJpYnV0ZSgnZGF0YS1ndG0taXRlbScpOwoJCWlmICghcmF3KSB7IHJldHVybiBudWxsOyB9CgkJdHJ5IHsgcmV0dXJuIEpTT04ucGFyc2UocmF3KTsgfSBjYXRjaCAoZSkgeyByZXR1cm4gbnVsbDsgfQoJfQoKCS8qIEFKQVggYWRkLXRvLWNhcnQgKFdvb0NvbW1lcmNlIGpRdWVyeSBldmVudCkgKi8KCWlmICh3aW5kb3cualF1ZXJ5KSB7CgkJalF1ZXJ5KGRvY3VtZW50LmJvZHkpLm9uKCdhZGRlZF90b19jYXJ0JywgZnVuY3Rpb24gKGV2ZW50LCBmcmFnbWVudHMsIGNhcnRfaGFzaCwgYnV0dG9uKSB7CgkJCXZhciBidG4gPSAoYnV0dG9uICYmIGJ1dHRvbi5sZW5ndGgpID8gYnV0dG9uWzBdIDogbnVsbDsKCQkJdmFyIGl0ZW0gPSBwZXRzaG9wUmVhZEl0ZW0oYnRuKTsKCQkJdmFyIHF0eSA9IDE7CgoJCQlpZiAoYnRuKSB7CgkJCQl2YXIgcSA9IGJ0bi5nZXRBdHRyaWJ1dGUoJ2RhdGEtcXVhbnRpdHknKTsKCQkJCWlmIChxKSB7IHF0eSA9IHE7IH0KCQkJfQoKCQkJaWYgKCFpdGVtICYmIHdpbmRvdy5wZXRzaG9wR3RtSXRlbSkgewoJCQkJaXRlbSA9IHdpbmRvdy5wZXRzaG9wR3RtSXRlbTsKCQkJCXZhciBxdHlJbnB1dCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ2Zvcm0uY2FydCBpbnB1dC5xdHksIGZvcm0uY2FydCBpbnB1dFtuYW1lPSJxdWFudGl0eSJdJyk7CgkJCQlpZiAocXR5SW5wdXQgJiYgcXR5SW5wdXQudmFsdWUpIHsgcXR5ID0gcXR5SW5wdXQudmFsdWU7IH0KCQkJfQoJCQlwZXRzaG9wUHVzaEF0YyhpdGVtLCBxdHkpOwoJCX0pOwoJfQoKCS8qIE5lLUFKQVggZm9ybWEgcHJla2VzIHB1c2xhcHlqZSAoZmFsbGJhY2spICovCglkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdzdWJtaXQnLCBmdW5jdGlvbiAoZSkgewoJCXZhciBmb3JtID0gZS50YXJnZXQ7CgkJaWYgKCFmb3JtIHx8ICFmb3JtLmNsYXNzTGlzdCB8fCAhZm9ybS5jbGFzc0xpc3QuY29udGFpbnMoJ2NhcnQnKSkgeyByZXR1cm47IH0KCQlpZiAoIXdpbmRvdy5wZXRzaG9wR3RtSXRlbSkgeyByZXR1cm47IH0KCgkJdmFyIGJ0biA9IGZvcm0ucXVlcnlTZWxlY3RvcignLnNpbmdsZV9hZGRfdG9fY2FydF9idXR0b24nKTsKCQlpZiAoYnRuICYmIGJ0bi5jbGFzc0xpc3QuY29udGFpbnMoJ2FqYXhfYWRkX3RvX2NhcnQnKSkgeyByZXR1cm47IH0KCgkJdmFyIHF0eUlucHV0ID0gZm9ybS5xdWVyeVNlbGVjdG9yKCdpbnB1dC5xdHksIGlucHV0W25hbWU9InF1YW50aXR5Il0nKTsKCQl2YXIgcXR5ID0gKHF0eUlucHV0ICYmIHF0eUlucHV0LnZhbHVlKSA/IHF0eUlucHV0LnZhbHVlIDogMTsKCQlwZXRzaG9wUHVzaEF0Yyh3aW5kb3cucGV0c2hvcEd0bUl0ZW0sIHF0eSk7Cgl9LCB0cnVlKTsKfSkoKTsKPC9zY3JpcHQ+ClBFVFNIT1BKUzsKCgkJZWNobyAiXG4iIC4gc3RyX3JlcGxhY2UoICdfX0NVUlJFTkNZX18nLCAkY3VycmVuY3ksICRqcyApIC4gIlxuIjsKCX0KfQphZGRfYWN0aW9uKCAnd3BfZm9vdGVyJywgJ3BldHNob3BfZ3RtX2F0Y19saXN0ZW5lcicsIDIxICk7CgovKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KICogNC4gdmlld19jYXJ0IOKAlCBrcmVwc2VsaW8gcHVzbGFwaXMKICogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICovCgppZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAncGV0c2hvcF9ndG1fdmlld19jYXJ0JyApICkgewoJZnVuY3Rpb24gcGV0c2hvcF9ndG1fdmlld19jYXJ0KCkgewoJCWlmICggISBXQygpLT5jYXJ0IHx8IFdDKCktPmNhcnQtPmlzX2VtcHR5KCkgKSB7IHJldHVybjsgfQoKCQkkaXRlbXMgPSBhcnJheSgpOwoJCSRpICAgICA9IDA7CgkJZm9yZWFjaCAoIFdDKCktPmNhcnQtPmdldF9jYXJ0KCkgYXMgJGNhcnRfaXRlbSApIHsKCQkJJHByb2R1Y3QgPSBpc3NldCggJGNhcnRfaXRlbVsnZGF0YSddICkgPyAkY2FydF9pdGVtWydkYXRhJ10gOiBudWxsOwoJCQkkcXR5ICAgICA9IGlzc2V0KCAkY2FydF9pdGVtWydxdWFudGl0eSddICkgPyAkY2FydF9pdGVtWydxdWFudGl0eSddIDogMTsKCQkJJGl0ZW0gICAgPSBwZXRzaG9wX2d0bV9pdGVtKCAkcHJvZHVjdCwgJHF0eSwgJGkgKTsKCQkJaWYgKCAkaXRlbSApIHsgJGl0ZW1zW10gPSAkaXRlbTsgJGkrKzsgfQoJCX0KCQlpZiAoIGVtcHR5KCAkaXRlbXMgKSApIHsgcmV0dXJuOyB9CgoJCSR0b3RhbCA9IChmbG9hdCkgV0MoKS0+Y2FydC0+Z2V0X2NhcnRfY29udGVudHNfdG90YWwoKSArIChmbG9hdCkgV0MoKS0+Y2FydC0+Z2V0X2NhcnRfY29udGVudHNfdGF4KCk7CgoJCXBldHNob3BfZ3RtX3B1c2goIGFycmF5KAoJCQknZXZlbnQnICAgICA9PiAndmlld19jYXJ0JywKCQkJJ2Vjb21tZXJjZScgPT4gYXJyYXkoCgkJCQknY3VycmVuY3knID0+IHBldHNob3BfZ3RtX2N1cnJlbmN5KCksCgkJCQkndmFsdWUnICAgID0+IHJvdW5kKCAkdG90YWwsIDIgKSwKCQkJCSdpdGVtcycgICAgPT4gJGl0ZW1zLAoJCQkpLAoJCSkgKTsKCX0KfQphZGRfYWN0aW9uKCAnd29vY29tbWVyY2VfYmVmb3JlX2NhcnQnLCAncGV0c2hvcF9ndG1fdmlld19jYXJ0JywgMTAgKTsKCi8qID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQogKiA1LiBiZWdpbl9jaGVja291dCDigJQgYXBtb2tlamltbyBwdXNsYXBpcwogKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KCmlmICggISBmdW5jdGlvbl9leGlzdHMoICdwZXRzaG9wX2d0bV9iZWdpbl9jaGVja291dCcgKSApIHsKCWZ1bmN0aW9uIHBldHNob3BfZ3RtX2JlZ2luX2NoZWNrb3V0KCkgewoJCWlmICggISBXQygpLT5jYXJ0IHx8IFdDKCktPmNhcnQtPmlzX2VtcHR5KCkgKSB7IHJldHVybjsgfQoKCQkkaXRlbXMgPSBhcnJheSgpOwoJCSRpICAgICA9IDA7CgkJZm9yZWFjaCAoIFdDKCktPmNhcnQtPmdldF9jYXJ0KCkgYXMgJGNhcnRfaXRlbSApIHsKCQkJJHByb2R1Y3QgPSBpc3NldCggJGNhcnRfaXRlbVsnZGF0YSddICkgPyAkY2FydF9pdGVtWydkYXRhJ10gOiBudWxsOwoJCQkkcXR5ICAgICA9IGlzc2V0KCAkY2FydF9pdGVtWydxdWFudGl0eSddICkgPyAkY2FydF9pdGVtWydxdWFudGl0eSddIDogMTsKCQkJJGl0ZW0gICAgPSBwZXRzaG9wX2d0bV9pdGVtKCAkcHJvZHVjdCwgJHF0eSwgJGkgKTsKCQkJaWYgKCAkaXRlbSApIHsgJGl0ZW1zW10gPSAkaXRlbTsgJGkrKzsgfQoJCX0KCQlpZiAoIGVtcHR5KCAkaXRlbXMgKSApIHsgcmV0dXJuOyB9CgoJCSR0b3RhbCA9IChmbG9hdCkgV0MoKS0+Y2FydC0+Z2V0X2NhcnRfY29udGVudHNfdG90YWwoKSArIChmbG9hdCkgV0MoKS0+Y2FydC0+Z2V0X2NhcnRfY29udGVudHNfdGF4KCk7CgoJCSRwYXlsb2FkID0gYXJyYXkoCgkJCSdldmVudCcgICAgID0+ICdiZWdpbl9jaGVja291dCcsCgkJCSdlY29tbWVyY2UnID0+IGFycmF5KAoJCQkJJ2N1cnJlbmN5JyA9PiBwZXRzaG9wX2d0bV9jdXJyZW5jeSgpLAoJCQkJJ3ZhbHVlJyAgICA9PiByb3VuZCggJHRvdGFsLCAyICksCgkJCQknaXRlbXMnICAgID0+ICRpdGVtcywKCQkJKSwKCQkpOwoKCQkkY291cG9ucyA9IFdDKCktPmNhcnQtPmdldF9hcHBsaWVkX2NvdXBvbnMoKTsKCQlpZiAoICEgZW1wdHkoICRjb3Vwb25zICkgKSB7CgkJCSRwYXlsb2FkWydlY29tbWVyY2UnXVsnY291cG9uJ10gPSBpbXBsb2RlKCAnLCcsICRjb3Vwb25zICk7CgkJfQoKCQlwZXRzaG9wX2d0bV9wdXNoKCAkcGF5bG9hZCApOwoJfQp9CmFkZF9hY3Rpb24oICd3b29jb21tZXJjZV9iZWZvcmVfY2hlY2tvdXRfZm9ybScsICdwZXRzaG9wX2d0bV9iZWdpbl9jaGVja291dCcsIDEwICk7CgovKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KICogNi4gcHVyY2hhc2Ug4oCUIHRoYW5reW91IHB1c2xhcGlzIChpZGVtcG90ZW50aXNrYWkpCiAqID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAqLwoKaWYgKCAhIGZ1bmN0aW9uX2V4aXN0cyggJ3BldHNob3BfZ3RtX3B1cmNoYXNlJyApICkgewoJZnVuY3Rpb24gcGV0c2hvcF9ndG1fcHVyY2hhc2UoICRvcmRlcl9pZCApIHsKCQlpZiAoICEgJG9yZGVyX2lkICkgeyByZXR1cm47IH0KCgkJLyogR3VhcmQgMTogZHZpZ3ViYXMgaG9vayBrdmlldGltYXMgdGFtZSBwYWNpYW1lIHJlcXVlc3QnZSAqLwoJCXN0YXRpYyAkYWxyZWFkeV9zZW50ID0gYXJyYXkoKTsKCQlpZiAoIGlzc2V0KCAkYWxyZWFkeV9zZW50WyAkb3JkZXJfaWQgXSApICkgeyByZXR1cm47IH0KCgkJJG9yZGVyID0gd2NfZ2V0X29yZGVyKCAkb3JkZXJfaWQgKTsKCQlpZiAoICEgJG9yZGVyICkgeyByZXR1cm47IH0KCgkJLyogR3VhcmQgMjogSFBPUy1zYWZlIG1ldGEgenltYSAoYXBzYXVnbyBudW8gcHVzbGFwaW8gcGVya3JvdmltbykgKi8KCQlpZiAoICRvcmRlci0+Z2V0X21ldGEoICdfcGV0c2hvcF9kbF9wdXJjaGFzZV9zZW50JyApID09PSAneWVzJyApIHsgcmV0dXJuOyB9CgoJCSRhbHJlYWR5X3NlbnRbICRvcmRlcl9pZCBdID0gdHJ1ZTsKCgkJJGl0ZW1zID0gYXJyYXkoKTsKCQkkaSAgICAgPSAwOwoJCWZvcmVhY2ggKCAkb3JkZXItPmdldF9pdGVtcygpIGFzICRsaW5lICkgewoJCQkkcHJvZHVjdCA9ICRsaW5lLT5nZXRfcHJvZHVjdCgpOwoJCQlpZiAoICEgJHByb2R1Y3QgaW5zdGFuY2VvZiBXQ19Qcm9kdWN0ICkgeyBjb250aW51ZTsgfQoKCQkJJHF0eSA9IChpbnQpICRsaW5lLT5nZXRfcXVhbnRpdHkoKTsKCQkJaWYgKCAkcXR5IDwgMSApIHsgJHF0eSA9IDE7IH0KCgkJCSRsaW5lX3RvdGFsID0gKGZsb2F0KSAkbGluZS0+Z2V0X3RvdGFsKCkgKyAoZmxvYXQpICRsaW5lLT5nZXRfdG90YWxfdGF4KCk7CgkJCSR1bml0X3ByaWNlID0gcm91bmQoICRsaW5lX3RvdGFsIC8gJHF0eSwgMiApOwoKCQkJJHBpZCAgPSAkcHJvZHVjdC0+Z2V0X2lkKCk7CgkJCSRpdGVtID0gYXJyYXkoCgkJCQknaXRlbV9pZCcgICA9PiAkcHJvZHVjdC0+Z2V0X3NrdSgpID8gJHByb2R1Y3QtPmdldF9za3UoKSA6IChzdHJpbmcpICRwaWQsCgkJCQknaXRlbV9uYW1lJyA9PiB3cF9zdHJpcF9hbGxfdGFncyggJGxpbmUtPmdldF9uYW1lKCkgKSwKCQkJCSdwcmljZScgICAgID0+ICR1bml0X3ByaWNlLAoJCQkJJ3F1YW50aXR5JyAgPT4gJHF0eSwKCQkJCSdpbmRleCcgICAgID0+ICRpLAoJCQkpOwoKCQkJJGJyYW5kID0gcGV0c2hvcF9ndG1fYnJhbmQoICRwaWQgKTsKCQkJaWYgKCAkYnJhbmQgKSB7ICRpdGVtWydpdGVtX2JyYW5kJ10gPSAkYnJhbmQ7IH0KCgkJCSRjYXQgPSBwZXRzaG9wX2d0bV9jYXRlZ29yeSggJHBpZCApOwoJCQlpZiAoICRjYXQgKSB7ICRpdGVtWydpdGVtX2NhdGVnb3J5J10gPSAkY2F0OyB9CgoJCQkkaXRlbXNbXSA9ICRpdGVtOwoJCQkkaSsrOwoJCX0KCQlpZiAoIGVtcHR5KCAkaXRlbXMgKSApIHsgcmV0dXJuOyB9CgoJCSRlY29tbWVyY2UgPSBhcnJheSgKCQkJJ3RyYW5zYWN0aW9uX2lkJyA9PiAoc3RyaW5nKSAkb3JkZXItPmdldF9vcmRlcl9udW1iZXIoKSwKCQkJJ3ZhbHVlJyAgICAgICAgICA9PiByb3VuZCggKGZsb2F0KSAkb3JkZXItPmdldF90b3RhbCgpLCAyICksCgkJCSdjdXJyZW5jeScgICAgICAgPT4gJG9yZGVyLT5nZXRfY3VycmVuY3koKSwKCQkJJ3RheCcgICAgICAgICAgICA9PiByb3VuZCggKGZsb2F0KSAkb3JkZXItPmdldF90b3RhbF90YXgoKSwgMiApLAoJCQknc2hpcHBpbmcnICAgICAgID0+IHJvdW5kKCAoZmxvYXQpICRvcmRlci0+Z2V0X3NoaXBwaW5nX3RvdGFsKCksIDIgKSwKCQkJJ2l0ZW1zJyAgICAgICAgICA9PiAkaXRlbXMsCgkJKTsKCgkJJGNvdXBvbnMgPSAkb3JkZXItPmdldF9jb3Vwb25fY29kZXMoKTsKCQlpZiAoICEgZW1wdHkoICRjb3Vwb25zICkgKSB7CgkJCSRlY29tbWVyY2VbJ2NvdXBvbiddID0gaW1wbG9kZSggJywnLCAkY291cG9ucyApOwoJCX0KCgkJJHBheWxvYWQgPSBhcnJheSgKCQkJJ2V2ZW50JyAgICAgPT4gJ3B1cmNoYXNlJywKCQkJJ2Vjb21tZXJjZScgPT4gJGVjb21tZXJjZSwKCQkpOwoKCQkvKiBFbmhhbmNlZCBjb252ZXJzaW9uczogU0hBLTI1NiBoYXNoJ3VvdGFzIGVsLiBwYXN0YXMuCgkJICogR1RNIHRhZydhcyBzaXVzdGkgZ2FsaSB0aWsgc3UgYWRfdXNlcl9kYXRhIHN1dGlraW11LiAqLwoJCSRlbWFpbCA9ICRvcmRlci0+Z2V0X2JpbGxpbmdfZW1haWwoKTsKCQlpZiAoICRlbWFpbCApIHsKCQkJJHBheWxvYWRbJ3VzZXJfZGF0YSddID0gYXJyYXkoCgkJCQknc2hhMjU2X2VtYWlsX2FkZHJlc3MnID0+IGhhc2goICdzaGEyNTYnLCBzdHJ0b2xvd2VyKCB0cmltKCAkZW1haWwgKSApICksCgkJCSk7CgkJfQoKCQlwZXRzaG9wX2d0bV9wdXNoKCAkcGF5bG9hZCApOwoKCQkkb3JkZXItPnVwZGF0ZV9tZXRhX2RhdGEoICdfcGV0c2hvcF9kbF9wdXJjaGFzZV9zZW50JywgJ3llcycgKTsKCQkkb3JkZXItPnNhdmUoKTsKCX0KfQphZGRfYWN0aW9uKCAnd29vY29tbWVyY2VfdGhhbmt5b3UnLCAncGV0c2hvcF9ndG1fcHVyY2hhc2UnLCAxMCwgMSApOwo="
+  },
+  "615": {
+   "ilgis": 1707,
+   "b64": "LyoqCiAqIFBldHNob3AgR1RNIFNuaXBwZXQgdjEuMCAoR1RNLU1GM0daR1QpCiAqCiAqIElkaWVnaWEgR29vZ2xlIFRhZyBNYW5hZ2VyIGkgZnJvbnQtZW5kLgogKiBERVYgYXBzYXVnYTogYmxva2F2aW1hcyB2eWtzdGEgR1RNIHZpZHVqZSAodHJpZ2dlcidpYWkgMTcvMTgpLAogKiBuZSBjaWEg4oCUIHNuaXBwZXQnYXMga3JhdW5hIEdUTSB2aXN1ciB2aWVub2RhaS4KICoKICogU2NvcGU6IGZyb250LWVuZCBvbmx5CiAqIFNWQVJCVTogQ29tcGxpYW56IE5FVFVSSSBpZGV0aSBzYXZvIEdUTS9HQTQvTWV0YSBrb2RvLgogKi8KCmlmICggISBkZWZpbmVkKCAnQUJTUEFUSCcgKSApIHsgcmV0dXJuOyB9CgppZiAoICEgZGVmaW5lZCggJ1BFVFNIT1BfR1RNX0lEJyApICkgewoJZGVmaW5lKCAnUEVUU0hPUF9HVE1fSUQnLCAnR1RNLU1GM0daR1QnICk7Cn0KCmlmICggISBmdW5jdGlvbl9leGlzdHMoICdwZXRzaG9wX2d0bV9oZWFkJyApICkgewoJZnVuY3Rpb24gcGV0c2hvcF9ndG1faGVhZCgpIHsKCQlpZiAoIGlzX2FkbWluKCkgKSB7IHJldHVybjsgfQoJCSRpZCA9IFBFVFNIT1BfR1RNX0lEOwoJCWVjaG8gIlxuPCEtLSBHb29nbGUgVGFnIE1hbmFnZXIgLS0+XG4iOwoJCWVjaG8gIjxzY3JpcHQgZGF0YS1wZXRzaG9wLWd0bS1sb2FkZXI9XCIxXCI+IjsKCQllY2hvICIoZnVuY3Rpb24odyxkLHMsbCxpKXt3W2xdPXdbbF18fFtdO3dbbF0ucHVzaCh7J2d0bS5zdGFydCc6IjsKCQllY2hvICJuZXcgRGF0ZSgpLmdldFRpbWUoKSxldmVudDonZ3RtLmpzJ30pO3ZhciBmPWQuZ2V0RWxlbWVudHNCeVRhZ05hbWUocylbMF0sIjsKCQllY2hvICJqPWQuY3JlYXRlRWxlbWVudChzKSxkbD1sIT0nZGF0YUxheWVyJz8nJmw9JytsOicnO2ouYXN5bmM9dHJ1ZTtqLnNyYz0iOwoJCWVjaG8gIidodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbS9ndG0uanM/aWQ9JytpK2RsO2YucGFyZW50Tm9kZS5pbnNlcnRCZWZvcmUoaixmKTsiOwoJCWVjaG8gIn0pKHdpbmRvdyxkb2N1bWVudCwnc2NyaXB0JywnZGF0YUxheWVyJywnIiAuIGVzY19qcyggJGlkICkgLiAiJyk7IjsKCQllY2hvICI8L3NjcmlwdD5cbiI7CgkJZWNobyAiPCEtLSBFbmQgR29vZ2xlIFRhZyBNYW5hZ2VyIC0tPlxuIjsKCX0KfQphZGRfYWN0aW9uKCAnd3BfaGVhZCcsICdwZXRzaG9wX2d0bV9oZWFkJywgMSApOwoKaWYgKCAhIGZ1bmN0aW9uX2V4aXN0cyggJ3BldHNob3BfZ3RtX2JvZHknICkgKSB7CglmdW5jdGlvbiBwZXRzaG9wX2d0bV9ib2R5KCkgewoJCWlmICggaXNfYWRtaW4oKSApIHsgcmV0dXJuOyB9CgkJJGlkID0gZXNjX2F0dHIoIFBFVFNIT1BfR1RNX0lEICk7CgkJZWNobyAiXG48IS0tIEdvb2dsZSBUYWcgTWFuYWdlciAobm9zY3JpcHQpIC0tPlxuIjsKCQllY2hvICc8bm9zY3JpcHQgZGF0YS1wZXRzaG9wLWd0bS1ub3NjcmlwdD0iMSI+PGlmcmFtZSBzcmM9Imh0dHBzOi8vd3d3Lmdvb2dsZXRhZ21hbmFnZXIuY29tL25zLmh0bWw/aWQ9JyAuICRpZCAuICciJzsKCQllY2hvICcgaGVpZ2h0PSIwIiB3aWR0aD0iMCIgc3R5bGU9ImRpc3BsYXk6bm9uZTt2aXNpYmlsaXR5OmhpZGRlbiI+PC9pZnJhbWU+PC9ub3NjcmlwdD4nOwoJCWVjaG8gIlxuPCEtLSBFbmQgR29vZ2xlIFRhZyBNYW5hZ2VyIChub3NjcmlwdCkgLS0+XG4iOwoJfQp9CmFkZF9hY3Rpb24oICd3cF9ib2R5X29wZW4nLCAncGV0c2hvcF9ndG1fYm9keScsIDEgKTsK"
+  },
+  "619": {
+   "ilgis": 4712,
+   "b64": "LyoqCiAqIFBldHNob3AgQ29uc2VudCBCcmlkZ2UgdjEuMiAoQ29tcGxpYW56IC0+IEdUTSkKICoKICogVmllbmFzIGlubGluZSBibG9rYXMgd3BfaGVhZCdlLCBQUklFUyBHVE0gc25pcHBldCdhIChwcmlvIDAgPCBwcmlvIDEpOgogKiAgIDEuIEdvb2dsZSBDb25zZW50IE1vZGUgdjIgREVGQVVMVCAodmlzaSBkZW5pZWQpCiAqICAgMi4gSmVpIENvbXBsaWFueiBjb29raWVzIGphdSB5cmEgKHBha2FydG90aW5pcyBsYW5reXRvamFzKSAtPiBjb25zZW50IFVQREFURQogKiAgIDMuIExpc3RlbmVyJ2lhaSBjbXBsel9zdGF0dXNfY2hhbmdlIC8gY21wbHpfZmlyZV9jYXRlZ29yaWVzIC0+IGNvbnNlbnQgVVBEQVRFICsgZGF0YUxheWVyIGV2ZW50CiAqICAgNC4gdjEuMjogcG8gc3V0aWtpbW8gcGFrYXJ0b2phIGVjb21tZXJjZSBldmVudCdhIFRJSyBqZWkgY29uc2VudCBwYXNpa2VpdGUgZGVuaWVkIC0+IGdyYW50ZWQuCiAqICAgICAgQlVHIHYxLjE6IGNtcGx6X2ZpcmVfY2F0ZWdvcmllcyBmaXJlJ2luYSBraWVrdmllbmFtZSBwdXNsYXB5amUsIGt1ciBzdXRpa2ltYXMgamF1IGR1b3RhcywKICogICAgICB0b2RlbCByZXBsYXkgZHVibGl1b2Rhdm8gcHVyY2hhc2UgLT4gZHZpZ3Vib3Mga29udmVyc2lqb3MuCiAqCiAqIEtPREVMIGNpYSwgbyBuZSBHVE0gdGFnJ2U6CiAqICAgY29uc2VudCBkZWZhdWx0IHByaXZhbG8gYnV0aSBkYXRhTGF5ZXIneWplIFBSSUVTIGNvbnNlbnQgdXBkYXRlLgogKiAgIEdUTSBDb25zZW50IEluaXRpYWxpemF0aW9uIHRhZydhcyBmaXJlJ2luYSB0aWsgcG8gZ3RtLmpzIHV6c2lrcm92aW1vLAogKiAgIG8gc2lzIHNuaXBwZXQnYXMgdnlrZG9tYXMgc2luY2hyb25pc2thaSBhbmtzY2lhdS4gVHZhcmthIGdhcmFudHVvdGEgdGlrIGNpYS4KICoKICogU1ZBUkJVOiBHVE0gdGFnJ2FzICIwMCDigJQgQ29uc2VudCBNb2RlIHYyIERlZmF1bHQiIHR1cmkgYnV0aSBJU1RSSU5UQVMvUEFVWlVPVEFTLAogKiAgICAgICAgIGtpdGFpcCBkZWZhdWx0IHBlcnJhc3lzIHVwZGF0ZS4KICoKICogS2F0ZWdvcmlqdSBhdGl0aWttZW55czoKICogICBjbXBseiBzdGF0aXN0aWNzIC0+IGFuYWx5dGljc19zdG9yYWdlCiAqICAgY21wbHogbWFya2V0aW5nICAtPiBhZF9zdG9yYWdlLCBhZF91c2VyX2RhdGEsIGFkX3BlcnNvbmFsaXphdGlvbgogKgogKiBTY29wZTogZnJvbnQtZW5kIG9ubHkKICovCgppZiAoICEgZGVmaW5lZCggJ0FCU1BBVEgnICkgKSB7IHJldHVybjsgfQoKaWYgKCAhIGZ1bmN0aW9uX2V4aXN0cyggJ3BldHNob3BfY29uc2VudF9icmlkZ2UnICkgKSB7CglmdW5jdGlvbiBwZXRzaG9wX2NvbnNlbnRfYnJpZGdlKCkgewoJCWlmICggaXNfYWRtaW4oKSApIHsgcmV0dXJuOyB9CgoJCSRqcyA9IDw8PCdQRVRTSE9QQ09OU0VOVCcKPHNjcmlwdCBkYXRhLXBldHNob3AtY29uc2VudC1icmlkZ2U9IjEiPgooZnVuY3Rpb24gKCkgewoJd2luZG93LmRhdGFMYXllciA9IHdpbmRvdy5kYXRhTGF5ZXIgfHwgW107CglmdW5jdGlvbiBndGFnKCkgeyB3aW5kb3cuZGF0YUxheWVyLnB1c2goYXJndW1lbnRzKTsgfQoKCS8qIC0tLS0gMS4gQ09OU0VOVCBNT0RFIHYyIERFRkFVTFQgKHByaXZhbG8gYnV0aSBwaXJtYXMpIC0tLS0gKi8KCWd0YWcoJ2NvbnNlbnQnLCAnZGVmYXVsdCcsIHsKCQknYWRfc3RvcmFnZSc6ICdkZW5pZWQnLAoJCSdhZF91c2VyX2RhdGEnOiAnZGVuaWVkJywKCQknYWRfcGVyc29uYWxpemF0aW9uJzogJ2RlbmllZCcsCgkJJ2FuYWx5dGljc19zdG9yYWdlJzogJ2RlbmllZCcsCgkJJ2Z1bmN0aW9uYWxpdHlfc3RvcmFnZSc6ICdncmFudGVkJywKCQkncGVyc29uYWxpemF0aW9uX3N0b3JhZ2UnOiAnZ3JhbnRlZCcsCgkJJ3NlY3VyaXR5X3N0b3JhZ2UnOiAnZ3JhbnRlZCcsCgkJJ3dhaXRfZm9yX3VwZGF0ZSc6IDUwMAoJfSk7CglndGFnKCdzZXQnLCAnYWRzX2RhdGFfcmVkYWN0aW9uJywgdHJ1ZSk7CglndGFnKCdzZXQnLCAndXJsX3Bhc3N0aHJvdWdoJywgdHJ1ZSk7CgoJLyogLS0tLSAyLiBQYWdhbGJpbmVzIC0tLS0gKi8KCWZ1bmN0aW9uIGNvb2tpZVZhbChuYW1lKSB7CgkJdmFyIG0gPSBkb2N1bWVudC5jb29raWUubWF0Y2gobmV3IFJlZ0V4cCgnKD86Xnw7XFxzKiknICsgbmFtZS5yZXBsYWNlKC9bLV0vZywgJ1xcLScpICsgJz0oW147XSopJykpOwoJCXJldHVybiBtID8gZGVjb2RlVVJJQ29tcG9uZW50KG1bMV0pIDogbnVsbDsKCX0KCglmdW5jdGlvbiBoYXNDb25zZW50KGNhdCkgewoJCWlmICh0eXBlb2Ygd2luZG93LmNtcGx6X2hhc19jb25zZW50ID09PSAnZnVuY3Rpb24nKSB7CgkJCXRyeSB7IHJldHVybiAhIXdpbmRvdy5jbXBsel9oYXNfY29uc2VudChjYXQpOyB9IGNhdGNoIChlKSB7fQoJCX0KCQlyZXR1cm4gY29va2llVmFsKCdjbXBsel8nICsgY2F0KSA9PT0gJ2FsbG93JzsKCX0KCglmdW5jdGlvbiBzZW5kQ29uc2VudFVwZGF0ZShzb3VyY2UpIHsKCQl2YXIgc3RhdHMgPSBoYXNDb25zZW50KCdzdGF0aXN0aWNzJyk7CgkJdmFyIG1rdCAgID0gaGFzQ29uc2VudCgnbWFya2V0aW5nJyk7CgoJCWd0YWcoJ2NvbnNlbnQnLCAndXBkYXRlJywgewoJCQknYW5hbHl0aWNzX3N0b3JhZ2UnOiAgc3RhdHMgPyAnZ3JhbnRlZCcgOiAnZGVuaWVkJywKCQkJJ2FkX3N0b3JhZ2UnOiAgICAgICAgIG1rdCAgID8gJ2dyYW50ZWQnIDogJ2RlbmllZCcsCgkJCSdhZF91c2VyX2RhdGEnOiAgICAgICBta3QgICA/ICdncmFudGVkJyA6ICdkZW5pZWQnLAoJCQknYWRfcGVyc29uYWxpemF0aW9uJzogbWt0ICAgPyAnZ3JhbnRlZCcgOiAnZGVuaWVkJwoJCX0pOwoKCQl3aW5kb3cuZGF0YUxheWVyLnB1c2goewoJCQlldmVudDogJ2NtcGx6X2NvbnNlbnRfdXBkYXRlJywKCQkJY21wbHpfc3RhdGlzdGljczogc3RhdHMgPyAnZ3JhbnRlZCcgOiAnZGVuaWVkJywKCQkJY21wbHpfbWFya2V0aW5nOiAgbWt0ICAgPyAnZ3JhbnRlZCcgOiAnZGVuaWVkJywKCQkJY21wbHpfc291cmNlOiBzb3VyY2UgfHwgJ3Vua25vd24nCgkJfSk7Cgl9CgoJLyogLS0tLSAzLiBQYWthcnRvdGluaXMgbGFua3l0b2phczogc3V0aWtpbWFzIGphdSBpc3NhdWdvdGFzIC0tLS0gKi8KCXZhciBoYXNDb25zZW50U25hcHNob3QgPSBoYXNDb25zZW50KCdzdGF0aXN0aWNzJyk7CglpZiAoY29va2llVmFsKCdjbXBsel9iYW5uZXItc3RhdHVzJykgIT09IG51bGwpIHsKCQlzZW5kQ29uc2VudFVwZGF0ZSgnY29va2llJyk7Cgl9CgoJLyogLS0tLSA0LiBOYXVqYXMgc3V0aWtpbWFzIGFyYmEgcGFrZWl0aW1hcyAtLS0tICovCgl2YXIgdGltZXIgPSBudWxsOwoJZnVuY3Rpb24gc2NoZWR1bGUoKSB7CgkJaWYgKHRpbWVyKSB7IGNsZWFyVGltZW91dCh0aW1lcik7IH0KCQl0aW1lciA9IHNldFRpbWVvdXQoZnVuY3Rpb24gKCkgewoJCQl2YXIgd2FzR3JhbnRlZCA9IGhhc0NvbnNlbnRTbmFwc2hvdDsKCQkJc2VuZENvbnNlbnRVcGRhdGUoJ2V2ZW50Jyk7CgkJCXZhciBub3dHcmFudGVkID0gaGFzQ29uc2VudCgnc3RhdGlzdGljcycpOwoKCQkJLyogUmVwbGF5IFRJSyBqZWkgc3V0aWtpbWFzIGthIHRpayBwYXNpa2VpdGUgZGVuaWVkIC0+IGdyYW50ZWQuCgkJCSAqIEtpdGFpcCBjbXBsel9maXJlX2NhdGVnb3JpZXMgKGZpcmUnaW5hIGthcyBwdXNsYXBpKSBkdWJsaXVvdHUgaXZ5a2l1cy4gKi8KCQkJaWYgKCF3YXNHcmFudGVkICYmIG5vd0dyYW50ZWQpIHsgcmVwbGF5RWNvbW1lcmNlKCk7IH0KCQkJaGFzQ29uc2VudFNuYXBzaG90ID0gbm93R3JhbnRlZDsKCQl9LCA2MCk7Cgl9Cglkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdjbXBsel9zdGF0dXNfY2hhbmdlJywgc2NoZWR1bGUpOwoJZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignY21wbHpfZmlyZV9jYXRlZ29yaWVzJywgc2NoZWR1bGUpOwoKCS8qIC0tLS0gNS4gRWNvbW1lcmNlIHJlcGxheSAtLS0tCgkgKiB2aWV3X2l0ZW0gLyB2aWV3X2NhcnQgaXZ5a3N0YSBwdXNsYXBpbyB1emtyb3ZpbWUsIHByaWVzIHN1dGlraW1hLgoJICogUG8gc3V0aWtpbW8gR0E0IHRhZydhcyBqYXUgbmViZWZpcmUnaW5zLCBuZXMgdHJpZ2dlcidpcyBwcmFlam8uCgkgKiBUb2RlbCBwYXNrdXRpbmkgZWNvbW1lcmNlIGV2ZW50J2EgcGFrYXJ0b2phbSBWSUVOQSBrYXJ0YS4gKi8KCXZhciByZXBsYXllZCA9IGZhbHNlOwoJZnVuY3Rpb24gcmVwbGF5RWNvbW1lcmNlKCkgewoJCWlmIChyZXBsYXllZCkgeyByZXR1cm47IH0KCQl2YXIgZGwgPSB3aW5kb3cuZGF0YUxheWVyIHx8IFtdOwoJCXZhciBsYXN0ID0gbnVsbDsKCQlmb3IgKHZhciBpID0gZGwubGVuZ3RoIC0gMTsgaSA+PSAwOyBpLS0pIHsKCQkJdmFyIHggPSBkbFtpXTsKCQkJaWYgKHggJiYgeC5ldmVudCAmJiB4LmVjb21tZXJjZSAmJiB4LmV2ZW50ICE9PSAnY21wbHpfY29uc2VudF91cGRhdGUnKSB7IGxhc3QgPSB4OyBicmVhazsgfQoJCX0KCQlpZiAoIWxhc3QpIHsgcmV0dXJuOyB9CgkJcmVwbGF5ZWQgPSB0cnVlOwoJCXZhciBjb3B5ID0gSlNPTi5wYXJzZShKU09OLnN0cmluZ2lmeShsYXN0KSk7CgkJY29weS5jbXBsel9yZXBsYXkgPSB0cnVlOwoJCXdpbmRvdy5kYXRhTGF5ZXIucHVzaCh7IGVjb21tZXJjZTogbnVsbCB9KTsKCQl3aW5kb3cuZGF0YUxheWVyLnB1c2goY29weSk7Cgl9Cn0pKCk7Cjwvc2NyaXB0PgpQRVRTSE9QQ09OU0VOVDsKCgkJZWNobyAiXG4iIC4gJGpzIC4gIlxuIjsKCX0KfQphZGRfYWN0aW9uKCAnd3BfaGVhZCcsICdwZXRzaG9wX2NvbnNlbnRfYnJpZGdlJywgMCApOwo="
+  }
+ },
+ "cmplz": {
+  "cmplz_activation_time": "1783671622",
+  "cmplz_active_integrations": "2",
+  "cmplz_cbdb_version": "7.5.3.1",
+  "cmplz_changed_cookies": "1",
+  "cmplz_consent_newsletter_consent": "O:8:\"stdClass\":3:{s:2:\"id\";s:36:\"13ee7de9-f3be-4715-bb28-564e5b5ee988\";s:10:\"subject_id\";s:59:\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\";s:9:\"timestamp\";s:25:\"2026-07-10T08:21:55+00",
+  "cmplz_consent_wsc_consent": "O:8:\"stdClass\":3:{s:2:\"id\";s:36:\"1fa88d0b-c9ec-479f-bcd7-f47aa9f3538b\";s:10:\"subject_id\";s:59:\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\";s:9:\"timestamp\";s:25:\"2026-07-10T08:21:41+00",
+  "cmplz_cookie_data_verified_date": "1783673208",
+  "cmplz_cookietable_version": "7.5.3.1",
+  "cmplz_dismissed_warnings": "a:1:{i:0;s:13:\"upgraded_to_6\";}",
+  "cmplz_dnsmpd_db_version": "7.5.3.1",
+  "cmplz_documents_update_date": "1783673460",
+  "cmplz_excluded_posts_array": "a:0:{}",
+  "cmplz_first_version": "7.5.0",
+  "cmplz_generate_new_cookiepolicy_snapshot": "",
+  "cmplz_integrations_changed": "1",
+  "cmplz_newsletter_consent_consentdata": "{\"timestamp\":\"2026-07-10T08:21:55+00:00\",\"subject\":{\"id\":\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\",\"email\":\"terra@petshop.lt\"},\"preferences\":{\"newsletter_consent\":true},\"legal_noti",
+  "cmplz_options": "a:79:{s:11:\"use_cdb_api\";s:3:\"yes\";s:15:\"cmplz_wsc_email\";s:16:\"terra@petshop.lt\";s:27:\"notifications_email_address\";s:16:\"terra@petshop.lt\";s:24:\"send_notifications_email\";i:1;s:7:\"regions\";s:2:\"eu\";",
+  "cmplz_preloaded_privacy_info": "a:3:{i:0;a:3:{s:11:\"plugin_name\";s:9:\"WordPress\";s:11:\"policy_text\";s:5123:\"<h2 class=\"wp-block-heading\">Kas mes esame</h2><p><strong class=\"privacy-policy-tutorial\">Siūlomas tekstas: </strong>Mūsų ti",
+  "cmplz_privacy-statement_custom_page": "34525",
+  "cmplz_publish_date": "1783673460",
+  "cmplz_purposes_en": "a:5:{i:0;a:2:{s:5:\"value\";s:2:\"61\";s:5:\"label\";s:10:\"Functional\";}i:1;a:2:{s:5:\"value\";s:2:\"64\";s:5:\"label\";s:9:\"Marketing\";}i:2;a:2:{s:5:\"value\";s:4:\"1257\";s:5:\"label\";s:11:\"Preferences\";}i:3;a:2:{s:",
+  "cmplz_purposes_lt": "a:5:{i:0;a:2:{s:5:\"value\";s:4:\"6054\";s:5:\"label\";s:9:\"Funkcinis\";}i:1;a:2:{s:5:\"value\";s:4:\"6057\";s:5:\"label\";s:9:\"Parinktys\";}i:2;a:2:{s:5:\"value\";s:4:\"6056\";s:5:\"label\";s:9:\"Rinkodara\";}i:3;a:2:{s:5",
+  "cmplz_purposes_stored": "1",
+  "cmplz_review_notice_shown": "1",
+  "cmplz_serviceTypes_en": "a:54:{i:0;a:2:{s:5:\"value\";s:4:\"6088\";s:5:\"label\";s:13:\"accessibility\";}i:1;a:2:{s:5:\"value\";s:3:\"422\";s:5:\"label\";s:11:\"advertising\";}i:2;a:2:{s:5:\"value\";s:3:\"402\";s:5:\"label\";s:19:\"affiliate market",
+  "cmplz_serviceTypes_lt": "a:7:{i:0;a:2:{s:5:\"value\";s:4:\"6053\";s:5:\"label\";s:18:\"garso transliacija\";}i:1;a:2:{s:5:\"value\";s:4:\"6042\";s:5:\"label\";s:16:\"Kontaktų formos\";}i:2;a:2:{s:5:\"value\";s:4:\"6046\";s:5:\"label\";s:32:\"Paiešk",
+  "cmplz_serviceTypes_stored": "1",
+  "cmplz_transients": "a:3:{s:35:\"cmplz_shortcode_cookie-statement-eu\";a:2:{s:5:\"value\";s:5:\"34591\";s:7:\"expires\";i:1788211615;}s:45:\"cmplz_shortcode_privacy-statement-children-eu\";a:2:{s:5:\"value\";s:4:\"none\";s:7:\"expires\";",
+  "cmplz_wizard_completed_once": "1",
+  "cmplz_wsc_consent_consentdata": "{\"timestamp\":\"2026-07-10T08:21:41+00:00\",\"subject\":{\"id\":\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\",\"email\":\"terra@petshop.lt\"},\"preferences\":{\"wsc_consent\":true},\"legal_notices\":[{",
+  "cmplz_wsc_onboarding_status": "a:3:{s:5:\"terms\";b:0;s:10:\"newsletter\";b:1;s:7:\"plugins\";b:0;}",
+  "cmplz_wsc_signup_date": "1783671705",
+  "cmplz_wsc_signup_status": "pending",
+  "cmplz_wsc_status": "pending",
+  "cmplz-current-version": "7.5.3.1"
+ },
+ "cmplz_funkcijos": {
+  "cmplz_has_consent": true,
+  "cmplz_get_cookie": false
+ },
+ "wc_sesija": {
+  "klase": true,
+  "cookie_pref": "wp_woocommerce_session_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "session_lentele": "YRA",
+  "sesiju": 309
+ },
+ "grep_failu": 150,
+ "grep": {
+  "rest_route": [
+   "MU/petshop-m8-food.php:17 register_rest_route('petshop/v1','/pet-food-candidates/(?P<id>\\d+)',array(",
+   "MU/petshop-m8-food.php:19 register_rest_route('petshop/v1','/pet-food-assign',array(",
+   "MU/petshop-m8-food.php:21 register_rest_route('petshop/v1','/pet-food-brand',array(",
+   "MU/petshop-m8-food.php:23 register_rest_route('petshop/v1','/pet-suggestions/(?P<id>\\\\d+)',array(",
+   "MU/petshop-m8-food.php:30 register_rest_route('petshop/v1','/wet-food-search',array(",
+   "MU/petshop-m8-food.php:36 register_rest_route('petshop/v1','/wet-products-info',array(",
+   "MU/petshop-m8-food.php:40 register_rest_route('petshop/v1','/pet-wet-product',array(",
+   "MU/petshop-m8-food.php:44 register_rest_route('petshop/v1','/product-search',array(",
+   "MU/petshop-feeding-calc-rest.php:172 register_rest_route('petshop/v1', '/feeding-calc', array(",
+   "MU/petshop-feeding-calc-rest.php:203 register_rest_route('petshop/v1', '/feeding-pet-weight', array(",
+   "MU/petshop-feeding-calc-rest.php:225 register_rest_route('petshop/v1', '/feeding-pet-activity', array(",
+   "MU/petshop-feeding-calc-rest.php:243 register_rest_route('petshop/v1', '/feeding-pet-wet-food', array(",
+   "MU/petshop-feeding-calc-rest.php:267 register_rest_route('petshop/v1', '/feeding-calc-for-pet', array(",
+   "MU/petshop-rec-variklis.php:72 register_rest_route( 'petshop/v1', '/pet-recommendations/(?P<id>\\d+)', array(",
+   "MU/petshop-pet-claim.php:22 register_rest_route( 'petshop/v1', '/pet-claim-pending', array("
+  ],
+  "register_rest_route": [
+   "MU/petshop-m8-food.php:17 register_rest_route('petshop/v1','/pet-food-candidates/(?P<id>\\d+)',array(",
+   "MU/petshop-m8-food.php:19 register_rest_route('petshop/v1','/pet-food-assign',array(",
+   "MU/petshop-m8-food.php:21 register_rest_route('petshop/v1','/pet-food-brand',array(",
+   "MU/petshop-m8-food.php:23 register_rest_route('petshop/v1','/pet-suggestions/(?P<id>\\\\d+)',array(",
+   "MU/petshop-m8-food.php:30 register_rest_route('petshop/v1','/wet-food-search',array(",
+   "MU/petshop-m8-food.php:36 register_rest_route('petshop/v1','/wet-products-info',array(",
+   "MU/petshop-m8-food.php:40 register_rest_route('petshop/v1','/pet-wet-product',array(",
+   "MU/petshop-m8-food.php:44 register_rest_route('petshop/v1','/product-search',array(",
+   "MU/petshop-feeding-calc-rest.php:172 register_rest_route('petshop/v1', '/feeding-calc', array(",
+   "MU/petshop-feeding-calc-rest.php:203 register_rest_route('petshop/v1', '/feeding-pet-weight', array(",
+   "MU/petshop-feeding-calc-rest.php:225 register_rest_route('petshop/v1', '/feeding-pet-activity', array(",
+   "MU/petshop-feeding-calc-rest.php:243 register_rest_route('petshop/v1', '/feeding-pet-wet-food', array(",
+   "MU/petshop-feeding-calc-rest.php:267 register_rest_route('petshop/v1', '/feeding-calc-for-pet', array(",
+   "MU/petshop-rec-variklis.php:72 register_rest_route( 'petshop/v1', '/pet-recommendations/(?P<id>\\d+)', array(",
+   "MU/petshop-pet-claim.php:22 register_rest_route( 'petshop/v1', '/pet-claim-pending', array("
+  ],
+  "sendBeacon": [
+   "MU/petshop-anketa-ivykiai.php:19 * siunciantis i musu AJAX `ps_anketa_ivykis` (sendBeacon — veikia pagehide).",
+   "MU/petshop-anketa-ivykiai.php:271 if(navigator.sendBeacon&&navigator.sendBeacon(AJAX,fd))return;",
+   "MU/petshop-rec-ui.php:11 * rec_clicked (§4.2): paspaudus korta, pries navigacija sendBeacon",
+   "MU/petshop-rec-ui.php:41 if(!(navigator.sendBeacon&&navigator.sendBeacon(AJAX,fd)))fetch(AJAX,{method:'POST',body:fd,keepalive:true,credentials:'same-ori"
+  ],
+  "utm_": [
+   "MU/petshop-kanalai.php:7 * KODEL SIS MODULIS. E0 recon rado, kad `utm_` neminimas NE VIENAME is 137",
+   "MU/petshop-kanalai.php:42 const UTM = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term' );",
+   "MU/petshop-kanalai.php:143 'utm_medium' => array( 'cpc', 'ppc', 'paid', 'paidsocial', 'display', 'shopping', 'cpm' ),",
+   "MU/petshop-kanalai.php:144 'utm_source' => array( 'kaina24', 'kainos', 'kainos.lt', 'google_ads', 'facebook_ads' ),",
+   "MU/petshop-kanalai.php:150 'utm_medium' => array( 'email', 'e-mail', 'newsletter' ),",
+   "MU/petshop-kanalai.php:151 'utm_source' => array( 'sender', 'petshop' ),",
+   "MU/petshop-kanalai.php:154 'utm_medium' => array( 'organic' ),",
+   "MU/petshop-kanalai.php:158 'utm_medium' => array( 'social', 'social-organic' ),",
+   "MU/petshop-kanalai.php:170 $med = isset( $t['utm_medium'] ) ? strtolower( (string) $t['utm_medium'] ) : '';",
+   "MU/petshop-kanalai.php:171 $src = isset( $t['utm_source'] ) ? strtolower( (string) $t['utm_source'] ) : '';",
+   "MU/petshop-kanalai.php:179 if ( $med !== '' && ! empty( $r['utm_medium'] ) && in_array( $med, array_map( 'strtolower', (array) $r['utm_medium'] ), true )",
+   "MU/petshop-kanalai.php:180 if ( $src !== '' && ! empty( $r['utm_source'] ) && in_array( $src, array_map( 'strtolower', (array) $r['utm_source'] ), true )",
+   "MU/petshop-faktai.php:144 utm_source VARCHAR(96) NOT NULL DEFAULT '',",
+   "MU/petshop-faktai.php:145 utm_medium VARCHAR(96) NOT NULL DEFAULT '',",
+   "MU/petshop-faktai.php:146 utm_campaign VARCHAR(96) NOT NULL DEFAULT '',"
+  ],
+  "gclid": [
+   "MU/petshop-kanalai.php:16 * ka issaugoti (yra utm/gclid/isorinis referer) — ne kiekvienam lankytojui.",
+   "MU/petshop-kanalai.php:92 /* gclid/fbclid — TIK faktas 0/1, pati reiksme nesaugoma (planas §4.7). */",
+   "MU/petshop-kanalai.php:93 $t['gclid'] = isset( $_GET['gclid'] ) ? 1 : 0;",
+   "MU/petshop-kanalai.php:109 if ( ! $turi_utm && ! $t['gclid'] && ! $t['fbclid'] && $rd === '' ) {",
+   "MU/petshop-kanalai.php:146 'gclid' => 1,",
+   "MU/petshop-kanalai.php:165 * Eiles tvarka svarbi: mokamas tikrinamas PIRMAS (gclid ant google.com",
+   "MU/petshop-kanalai.php:177 if ( ! empty( $r['gclid'] ) && ! empty( $t['gclid'] ) ) { return $kanalas; }",
+   "MU/petshop-kanalai.php:210 'gclid' => 0,",
+   "MU/petshop-faktai.php:147 gclid TINYINT(1) NOT NULL DEFAULT 0,",
+   "MU/petshop-faktai.php:488 'gclid' => ! empty( $pa['gclid'] ) ? 1 : 0,"
+  ],
+  "fbclid": [
+   "MU/petshop-kanalai.php:92 /* gclid/fbclid — TIK faktas 0/1, pati reiksme nesaugoma (planas §4.7). */",
+   "MU/petshop-kanalai.php:94 $t['fbclid'] = isset( $_GET['fbclid'] ) ? 1 : 0;",
+   "MU/petshop-kanalai.php:109 if ( ! $turi_utm && ! $t['gclid'] && ! $t['fbclid'] && $rd === '' ) {",
+   "MU/petshop-kanalai.php:147 'fbclid' => 1,",
+   "MU/petshop-kanalai.php:178 if ( ! empty( $r['fbclid'] ) && ! empty( $t['fbclid'] ) ) { return $kanalas; }",
+   "MU/petshop-kanalai.php:211 'fbclid' => 0,",
+   "MU/petshop-faktai.php:148 fbclid TINYINT(1) NOT NULL DEFAULT 0,",
+   "MU/petshop-faktai.php:489 'fbclid' => ! empty( $pa['fbclid'] ) ? 1 : 0,"
+  ],
+  "landing": [
+   "MU/petshop-kanalai.php:113 $t['landing_url'] = mb_substr( self::dabartinis_url(), 0, 255 );",
+   "MU/petshop-faktai.php:150 landing_url VARCHAR(255) NOT NULL DEFAULT '',",
+   "MU/petshop-faktai.php:491 'landing_url' => mb_substr( (string) ( $pi['landing_url'] ?? '' ), 0, 255 ),",
+   "MU/petshop-kategorijos-aprasymas.php:14 * Hub kategorijos (ŠUNIMS, KATĖMS ir kt.) naudoja atskirą landing",
+   "MU/petshop-kategorijos-aprasymas.php:63 * Vieša, nes ją kviečia ir hub'ų landing šablonas (snippet 688), kuriame"
+  ]
+ },
+ "kanalai": {
+  "md5": "39c3fb61ece880d5ccd80fd1514fb3cf",
+  "dydis": 9934,
+  "b64": "PD9waHAKLyoqCiAqIFBsdWdpbiBOYW1lOiBQZXRzaG9wIEthbmFsYWkKICogRGVzY3JpcHRpb246IEthbmFsbyAoVVRNL3JlZmVyZXIpIGZpa3NhdmltYXMgV0Mgc2VzaWpvamUgaXIgcGVya2VsaW1hcyBpIHV6c2FreW1hLiBNYXN0ZXIgcGxhbmFzIHYxLjMgwqc0LjcgbWluaW11bWFzIChFMWEpLgogKiBWZXJzaW9uOiAxLjEKICoKICogS09ERUwgU0lTIE1PRFVMSVMuIEUwIHJlY29uIHJhZG8sIGthZCBgdXRtX2AgbmVtaW5pbWFzIE5FIFZJRU5BTUUgaXMgMTM3CiAqIHByb2pla3RvIGZhaWx1IOKAlCBrYW5hbG8gZmFrdGFzIG5ldXpmaWtzdW9qYW1hcyBuaWVrdXIuIEJlIGpvIE5vcnRoIFN0YXIKICogKOKAnm5lLW1va2FtdSBwYWphbXUgZGFsaXMiKSBuZW1hdHVvamFtYXMsIG8gR29vZ2xlIEFkcyDigJ5wcmlzaXJhc2EiIDcyLDUgJQogKiBwYWphbXUgKFRaIHYxLjM5KS4gU2lzIG1vZHVsaXMgZmlrc3VvamEgUElSTUEgaXIgUEFTS1VUSU5JIHByaXNpbGlldGltYQogKiBwYXJkYXZpbW8gbW9tZW50dSDigJQgcG8gbWV0dSBqaWUgbmViZWF0a3VyaWFtaS4KICoKICogUTEgU1BSRU5ESU1BUyAocGxhbmFzIMKnNC43KTogbmF1am8gc2xhcHVrbyBORUtVUklBTS4gTmF1ZG9qYW0gV29vQ29tbWVyY2UKICogc2VzaWphIOKAlCB0YWkgamF1IGVnemlzdHVvamFudGlzIEJVVElOQVMgc2xhcHVrYXMgKGtyZXBzZWxpdWkpLCBzdXRpa2ltbwogKiBuZXJlaWthbGF1amEuIFNlc2lqb3Mgc2xhcHVrYXMgcHJpdmVyc3RpbmFpIHN0YXJ0dW9qYW1hcyBUSUsgdGFkYSwga2FpIHlyYQogKiBrYSBpc3NhdWdvdGkgKHlyYSB1dG0vZ2NsaWQvaXNvcmluaXMgcmVmZXJlcikg4oCUIG5lIGtpZWt2aWVuYW0gbGFua3l0b2p1aS4KICoKICogVFJVS1VNQVMgKHNhbW9uaW5nYXMsIHBsYW5hcyDCpzQuNyk6IFdDIHNlc2lqYSBneXZlbmEgfjQ4IHZhbC4gS2xpZW50YXMsCiAqIGF0ZWplcyBpcyByZWtsYW1vcyBpciBwaXJrZXMgcG8gMyBkaWVudSwgdGFwcyDigJ5kaXJlY3QiLiAzMCBkLiBsYW5nYXMgc3UKICogc3V0aWtpbXUg4oCUIEUyIChgcGV0c2hvcC1hbmFsaXRpa2EucGhwYCkuCiAqCiAqIEUyIFBFUktFTElNQVM6IHNpcyBmYWlsYXMgeXJhIEUxYSBNSU5JTVVNQVMuIEUyIG1ldHUgYHBldHNob3AtYW5hbGl0aWthLnBocGAKICogcGVyaW1hIHJpbmtpbWE7IGNpYSBsaWtzIHRpayB1enNha3ltbyBtZXRhIHJhc3ltYXMuIEtvbnRyYWt0YXMKICogKGBfcHNfa2FuYWxhaWAgSlNPTiByYWt0YWkpIE5FU0lLRUlTLgogKgogKiBMQUlLTyBaT05BICh2MS4xKTogYGxhaWthc2AgaXIgYGZpa3N1b3RhX2F0YCDigJQgVVRDLCBrYWlwIGlyIGBwc19mYWt0XypgCiAqIGJlaSB2aXNhcyBwZXRzaG9wLWNvcmUgc2x1b2tzbmlzIChgcHNfY2FydHNgLCBgcHNfZW1haWxfam9ic2ApLgogKgogKiBAcGFja2FnZSBQZXRzaG9wCiAqLwoKaWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyBleGl0OyB9CgpjbGFzcyBQZXRzaG9wX0thbmFsYWkgewoKCWNvbnN0IFZFUlNJSkEgICA9ICcxLjEnOwoJY29uc3QgU0VTSUpBICAgID0gJ3BzX2thbmFsYWknOwoJY29uc3QgTUVUQSAgICAgID0gJ19wc19rYW5hbGFpJzsKCWNvbnN0IE9QVF9UQUlTWUtMRVMgPSAncHNfZmFrdF9rYW5hbHVfdGFpc3lrbGVzJzsKCgkvKiogVVRNIHJha3RhaSwga3VyaXVvcyBwcmlpbWFtLiBLaXRpIGlnbm9ydW9qYW1pIHNhbW9uaW5nYWkuICovCgljb25zdCBVVE0gPSBhcnJheSggJ3V0bV9zb3VyY2UnLCAndXRtX21lZGl1bScsICd1dG1fY2FtcGFpZ24nLCAndXRtX2NvbnRlbnQnLCAndXRtX3Rlcm0nICk7CgoJcHVibGljIHN0YXRpYyBmdW5jdGlvbiBpbml0KCkgewoJCWFkZF9hY3Rpb24oICd3b29jb21tZXJjZV9pbml0JywgYXJyYXkoIF9fQ0xBU1NfXywgJ3BhZ2F1dGknICksIDEgKTsKCQlhZGRfYWN0aW9uKCAnd29vY29tbWVyY2VfY2hlY2tvdXRfY3JlYXRlX29yZGVyJywgYXJyYXkoIF9fQ0xBU1NfXywgJ2lfdXpzYWt5bWEnICksIDIxLCAyICk7CgkJYWRkX2FjdGlvbiggJ3dvb2NvbW1lcmNlX3N0b3JlX2FwaV9jaGVja291dF9vcmRlcl9wcm9jZXNzZWQnLCBhcnJheSggX19DTEFTU19fLCAnaV91enNha3ltYV9hcGknICksIDIxLCAxICk7Cgl9CgoJLyogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICovCgkvKiAxKSBSSU5LSU1BUyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKi8KCS8qID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAqLwoKCS8qKgoJICogUGlybWFzIHByaXNpbGlldGltYXMgaXJhc29tYXMgVklFTkEgS0FSVEEgaXIgbmViZWtlaWNpYW1hcy4KCSAqIFBhc2t1dGluaXMgcGVycmFzb21hcyBraWVrdmllbm8gbmF1am8gc2FsdGluaW8gbWV0dS4KCSAqLwoJcHVibGljIHN0YXRpYyBmdW5jdGlvbiBwYWdhdXRpKCkgewoJCWlmICggaXNfYWRtaW4oKSB8fCB3cF9kb2luZ19jcm9uKCkgfHwgd3BfZG9pbmdfYWpheCgpICkgeyByZXR1cm47IH0KCQlpZiAoICEgZnVuY3Rpb25fZXhpc3RzKCAnV0MnICkgfHwgISBXQygpLT5zZXNzaW9uICkgeyByZXR1cm47IH0KCgkJJGRhYmFyID0gc2VsZjo6aXNfdXprbGF1c29zKCk7CgkJaWYgKCAkZGFiYXIgPT09IG51bGwgKSB7IHJldHVybjsgfSAgIC8qIG5lcmEga2Egc2F1Z290aSAqLwoKCQkvKiBTZXNpam9zIHNsYXB1a2FzIHN0YXJ0dW9qYW1hcyBUSUsgY2lhIOKAlCBrYWkgdGlrcmFpIHlyYSBkdW9tZW51LiAqLwoJCWlmICggISBXQygpLT5zZXNzaW9uLT5oYXNfc2Vzc2lvbigpICkgewoJCQlXQygpLT5zZXNzaW9uLT5zZXRfY3VzdG9tZXJfc2Vzc2lvbl9jb29raWUoIHRydWUgKTsKCQl9CgoJCSRrID0gV0MoKS0+c2Vzc2lvbi0+Z2V0KCBzZWxmOjpTRVNJSkEgKTsKCQlpZiAoICEgaXNfYXJyYXkoICRrICkgKSB7ICRrID0gYXJyYXkoKTsgfQoKCQlpZiAoIGVtcHR5KCAka1sncGlybWFzJ10gKSApIHsKCQkJJGtbJ3Bpcm1hcyddID0gJGRhYmFyOwoJCX0KCQkka1sncGFza3V0aW5pcyddID0gJGRhYmFyOwoJCVdDKCktPnNlc3Npb24tPnNldCggc2VsZjo6U0VTSUpBLCAkayApOwoJfQoKCS8qKgoJICogVmllbm8gcHJpc2lsaWV0aW1vIG1vbWVudGluZSBudW90cmF1a2EuCgkgKiBAcmV0dXJuIGFycmF5fG51bGwgbnVsbCA9IG5lcmEgbmlla28gdmVydG8gaXJhc3l0aSAodmlkaW5pcyBwZXJlamltYXMpCgkgKi8KCXByaXZhdGUgc3RhdGljIGZ1bmN0aW9uIGlzX3V6a2xhdXNvcygpIHsKCQkkdCA9IGFycmF5KCk7CgkJZm9yZWFjaCAoIHNlbGY6OlVUTSBhcyAkciApIHsKCQkJaWYgKCBpc3NldCggJF9HRVRbICRyIF0gKSApIHsKCQkJCSR2ID0gc2FuaXRpemVfdGV4dF9maWVsZCggd3BfdW5zbGFzaCggJF9HRVRbICRyIF0gKSApOwoJCQkJaWYgKCAkdiAhPT0gJycgKSB7ICR0WyAkciBdID0gbWJfc3Vic3RyKCAkdiwgMCwgOTYgKTsgfQoJCQl9CgkJfQoJCS8qIGdjbGlkL2ZiY2xpZCDigJQgVElLIGZha3RhcyAwLzEsIHBhdGkgcmVpa3NtZSBuZXNhdWdvbWEgKHBsYW5hcyDCpzQuNykuICovCgkJJHRbJ2djbGlkJ10gID0gaXNzZXQoICRfR0VUWydnY2xpZCddICkgPyAxIDogMDsKCQkkdFsnZmJjbGlkJ10gPSBpc3NldCggJF9HRVRbJ2ZiY2xpZCddICkgPyAxIDogMDsKCgkJJHJlZiA9IGlzc2V0KCAkX1NFUlZFUlsnSFRUUF9SRUZFUkVSJ10gKSA/IGVzY191cmxfcmF3KCB3cF91bnNsYXNoKCAkX1NFUlZFUlsnSFRUUF9SRUZFUkVSJ10gKSApIDogJyc7CgkJJHJkICA9ICcnOwoJCWlmICggJHJlZiAhPT0gJycgKSB7CgkJCSRoID0gd3BfcGFyc2VfdXJsKCAkcmVmLCBQSFBfVVJMX0hPU1QgKTsKCQkJJHMgPSB3cF9wYXJzZV91cmwoIGhvbWVfdXJsKCksIFBIUF9VUkxfSE9TVCApOwoJCQlpZiAoICRoICYmICRoICE9PSAkcyAmJiAkaCAhPT0gJ3d3dy4nIC4gJHMgJiYgKCAnd3d3LicgLiAkaCApICE9PSAkcyApIHsKCQkJCSRyZCA9IG1iX3N1YnN0ciggc3RydG9sb3dlciggJGggKSwgMCwgMTkwICk7CgkJCX0KCQl9CgkJJHRbJ3JlZmVyZXJfZG9tZW5hcyddID0gJHJkOwoKCQkkdHVyaV91dG0gPSBmYWxzZTsKCQlmb3JlYWNoICggc2VsZjo6VVRNIGFzICRyICkgeyBpZiAoICEgZW1wdHkoICR0WyAkciBdICkgKSB7ICR0dXJpX3V0bSA9IHRydWU7IGJyZWFrOyB9IH0KCQlpZiAoICEgJHR1cmlfdXRtICYmICEgJHRbJ2djbGlkJ10gJiYgISAkdFsnZmJjbGlkJ10gJiYgJHJkID09PSAnJyApIHsKCQkJcmV0dXJuIG51bGw7ICAgLyogdmlkaW5pcyBwZXJlamltYXMgYXJiYSB0aWVzaW9naW5pcyDigJQgbmlla28gbmVrZWljaWFtICovCgkJfQoKCQkkdFsnbGFuZGluZ191cmwnXSA9IG1iX3N1YnN0ciggc2VsZjo6ZGFiYXJ0aW5pc191cmwoKSwgMCwgMjU1ICk7CgkJJHRbJ2xhaWthcyddICAgICAgPSBjdXJyZW50X3RpbWUoICdteXNxbCcsIHRydWUgKTsKCQkkdFsna2FuYWxhcyddICAgICA9IHNlbGY6OmtsYXNpZmlrdW90aSggJHQgKTsKCQlyZXR1cm4gJHQ7Cgl9CgoJcHJpdmF0ZSBzdGF0aWMgZnVuY3Rpb24gZGFiYXJ0aW5pc191cmwoKSB7CgkJJHUgPSBpc3NldCggJF9TRVJWRVJbJ1JFUVVFU1RfVVJJJ10gKSA/IHdwX3Vuc2xhc2goICRfU0VSVkVSWydSRVFVRVNUX1VSSSddICkgOiAnLyc7CgkJcmV0dXJuIGVzY191cmxfcmF3KCBob21lX3VybCggJHUgKSApOwoJfQoKCS8qID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAqLwoJLyogMikgS0xBU0lGSUtBQ0lKQSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICovCgkvKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KCgkvKioKCSAqIFRhaXN5a2xlcyBneXZlbmEgTlVTVEFUWU1FLCBuZSBrb2RlIChwbGFuYXMgwqc0LjcpIOKAlCBSYWltaXMgZ2FsaSBrZWlzdGkKCSAqIGJlIGRlcGxveSdvLiBLb2RhcyB0dXJpIHRpayBhdHNhcmdpbmkgcmlua2luaS4KCSAqLwoJcHVibGljIHN0YXRpYyBmdW5jdGlvbiB0YWlzeWtsZXMoKSB7CgkJJGogPSBnZXRfb3B0aW9uKCBzZWxmOjpPUFRfVEFJU1lLTEVTLCAnJyApOwoJCSR0ID0gaXNfc3RyaW5nKCAkaiApID8ganNvbl9kZWNvZGUoICRqLCB0cnVlICkgOiAoIGlzX2FycmF5KCAkaiApID8gJGogOiBudWxsICk7CgkJaWYgKCBpc19hcnJheSggJHQgKSAmJiAhIGVtcHR5KCAkdCApICkgeyByZXR1cm4gJHQ7IH0KCQlyZXR1cm4gc2VsZjo6bnVtYXR5dG9zaW9zKCk7Cgl9CgoJcHVibGljIHN0YXRpYyBmdW5jdGlvbiBudW1hdHl0b3Npb3MoKSB7CgkJcmV0dXJuIGFycmF5KAoJCQkvKiBRMjogS2FpbmEyNCBpciBLYWlub3MubHQgPSBDUEMgMCwwOCBFVVIgKyBQVk0gLT4gTU9LQU1JLiAqLwoJCQknbW9rYW1hcycgICAgICA9PiBhcnJheSgKCQkJCSd1dG1fbWVkaXVtJyA9PiBhcnJheSggJ2NwYycsICdwcGMnLCAncGFpZCcsICdwYWlkc29jaWFsJywgJ2Rpc3BsYXknLCAnc2hvcHBpbmcnLCAnY3BtJyApLAoJCQkJJ3V0bV9zb3VyY2UnID0+IGFycmF5KCAna2FpbmEyNCcsICdrYWlub3MnLCAna2Fpbm9zLmx0JywgJ2dvb2dsZV9hZHMnLCAnZmFjZWJvb2tfYWRzJyApLAoJCQkJJ3JlZmVyZXInICAgID0+IGFycmF5KCAna2FpbmEyNC5sdCcsICd3d3cua2FpbmEyNC5sdCcsICdrYWlub3MubHQnLCAnd3d3LmthaW5vcy5sdCcgKSwKCQkJCSdnY2xpZCcgICAgICA9PiAxLAoJCQkJJ2ZiY2xpZCcgICAgID0+IDEsCgkJCSksCgkJCSdlbWFpbCcgICAgICAgID0+IGFycmF5KAoJCQkJJ3V0bV9tZWRpdW0nID0+IGFycmF5KCAnZW1haWwnLCAnZS1tYWlsJywgJ25ld3NsZXR0ZXInICksCgkJCQkndXRtX3NvdXJjZScgPT4gYXJyYXkoICdzZW5kZXInLCAncGV0c2hvcCcgKSwKCQkJKSwKCQkJJ29yZ2FuaWthJyAgICAgPT4gYXJyYXkoCgkJCQkndXRtX21lZGl1bScgPT4gYXJyYXkoICdvcmdhbmljJyApLAoJCQkJJ3JlZmVyZXInICAgID0+IGFycmF5KCAnZ29vZ2xlLmNvbScsICd3d3cuZ29vZ2xlLmNvbScsICdnb29nbGUubHQnLCAnd3d3Lmdvb2dsZS5sdCcsICdiaW5nLmNvbScsICdkdWNrZHVja2dvLmNvbScsICdzZWFyY2gueWFob28uY29tJywgJ2Vjb3NpYS5vcmcnICksCgkJCSksCgkJCSdzb2Nfb3JnYW5pa2EnID0+IGFycmF5KAoJCQkJJ3V0bV9tZWRpdW0nID0+IGFycmF5KCAnc29jaWFsJywgJ3NvY2lhbC1vcmdhbmljJyApLAoJCQkJJ3JlZmVyZXInICAgID0+IGFycmF5KCAnZmFjZWJvb2suY29tJywgJ20uZmFjZWJvb2suY29tJywgJ2wuZmFjZWJvb2suY29tJywgJ2luc3RhZ3JhbS5jb20nLCAnbC5pbnN0YWdyYW0uY29tJywgJ3lvdXR1YmUuY29tJywgJ3Rpa3Rvay5jb20nLCAnbG0uZmFjZWJvb2suY29tJyApLAoJCQkpLAoJCSk7Cgl9CgoJLyoqCgkgKiBFaWxlcyB0dmFya2Egc3ZhcmJpOiBtb2thbWFzIHRpa3JpbmFtYXMgUElSTUFTIChnY2xpZCBhbnQgZ29vZ2xlLmNvbQoJICogcmVmZXJlcidpbyB5cmEgcmVrbGFtYSwgbmUgb3JnYW5pa2EpLgoJICovCglwdWJsaWMgc3RhdGljIGZ1bmN0aW9uIGtsYXNpZmlrdW90aSggJHQgKSB7CgkJJHRhaXN5a2xlcyA9IHNlbGY6OnRhaXN5a2xlcygpOwoJCSRtZWQgPSBpc3NldCggJHRbJ3V0bV9tZWRpdW0nXSApID8gc3RydG9sb3dlciggKHN0cmluZykgJHRbJ3V0bV9tZWRpdW0nXSApIDogJyc7CgkJJHNyYyA9IGlzc2V0KCAkdFsndXRtX3NvdXJjZSddICkgPyBzdHJ0b2xvd2VyKCAoc3RyaW5nKSAkdFsndXRtX3NvdXJjZSddICkgOiAnJzsKCQkkcmVmID0gaXNzZXQoICR0WydyZWZlcmVyX2RvbWVuYXMnXSApID8gc3RydG9sb3dlciggKHN0cmluZykgJHRbJ3JlZmVyZXJfZG9tZW5hcyddICkgOiAnJzsKCgkJZm9yZWFjaCAoIGFycmF5KCAnbW9rYW1hcycsICdlbWFpbCcsICdzb2Nfb3JnYW5pa2EnLCAnb3JnYW5pa2EnICkgYXMgJGthbmFsYXMgKSB7CgkJCWlmICggZW1wdHkoICR0YWlzeWtsZXNbICRrYW5hbGFzIF0gKSApIHsgY29udGludWU7IH0KCQkJJHIgPSAkdGFpc3lrbGVzWyAka2FuYWxhcyBdOwoJCQlpZiAoICEgZW1wdHkoICRyWydnY2xpZCddICkgJiYgISBlbXB0eSggJHRbJ2djbGlkJ10gKSApIHsgcmV0dXJuICRrYW5hbGFzOyB9CgkJCWlmICggISBlbXB0eSggJHJbJ2ZiY2xpZCddICkgJiYgISBlbXB0eSggJHRbJ2ZiY2xpZCddICkgKSB7IHJldHVybiAka2FuYWxhczsgfQoJCQlpZiAoICRtZWQgIT09ICcnICYmICEgZW1wdHkoICRyWyd1dG1fbWVkaXVtJ10gKSAmJiBpbl9hcnJheSggJG1lZCwgYXJyYXlfbWFwKCAnc3RydG9sb3dlcicsIChhcnJheSkgJHJbJ3V0bV9tZWRpdW0nXSApLCB0cnVlICkgKSB7IHJldHVybiAka2FuYWxhczsgfQoJCQlpZiAoICRzcmMgIT09ICcnICYmICEgZW1wdHkoICRyWyd1dG1fc291cmNlJ10gKSAmJiBpbl9hcnJheSggJHNyYywgYXJyYXlfbWFwKCAnc3RydG9sb3dlcicsIChhcnJheSkgJHJbJ3V0bV9zb3VyY2UnXSApLCB0cnVlICkgKSB7IHJldHVybiAka2FuYWxhczsgfQoJCQlpZiAoICRyZWYgIT09ICcnICYmICEgZW1wdHkoICRyWydyZWZlcmVyJ10gKSAmJiBpbl9hcnJheSggJHJlZiwgYXJyYXlfbWFwKCAnc3RydG9sb3dlcicsIChhcnJheSkgJHJbJ3JlZmVyZXInXSApLCB0cnVlICkgKSB7IHJldHVybiAka2FuYWxhczsgfQoJCX0KCgkJaWYgKCAkbWVkICE9PSAnJyB8fCAkc3JjICE9PSAnJyApIHsgcmV0dXJuICdyZWZlcnJhbCc7IH0KCQlpZiAoICRyZWYgIT09ICcnICkgeyByZXR1cm4gJ3JlZmVycmFsJzsgfQoJCXJldHVybiAnZGlyZWN0JzsKCX0KCgkvKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KCS8qIDMpIEkgVVpTQUtZTUEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAqLwoJLyogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICovCgoJcHVibGljIHN0YXRpYyBmdW5jdGlvbiBpX3V6c2FreW1hKCAkb3JkZXIsICRkdW9tZW55cyA9IG51bGwgKSB7CgkJaWYgKCAhIGlzX29iamVjdCggJG9yZGVyICkgKSB7IHJldHVybjsgfQoJCWlmICggJG9yZGVyLT5nZXRfbWV0YSggc2VsZjo6TUVUQSApICkgeyByZXR1cm47IH0gICAvKiBqYXUgaXJhc3l0YSAqLwoKCQkkayA9IGFycmF5KCk7CgkJaWYgKCBmdW5jdGlvbl9leGlzdHMoICdXQycgKSAmJiBXQygpLT5zZXNzaW9uICkgewoJCQkkcyA9IFdDKCktPnNlc3Npb24tPmdldCggc2VsZjo6U0VTSUpBICk7CgkJCWlmICggaXNfYXJyYXkoICRzICkgKSB7ICRrID0gJHM7IH0KCQl9CgkJJGtbJ3N1dGlraW1hc19zdGF0aXN0aWthJ10gPSBzZWxmOjpzdXRpa2ltYXMoKSA/IDEgOiAwOwoJCSRrWydmaWtzdW90YV9hdCddICAgICAgICAgID0gY3VycmVudF90aW1lKCAnbXlzcWwnLCB0cnVlICk7CgkJJGtbJ21vZHVsaXMnXSAgICAgICAgICAgICAgPSAna2FuYWxhaS8nIC4gc2VsZjo6VkVSU0lKQTsKCgkJLyogVHVzY2lhcyBrYW5hbGFzIGlyZ2kgRkFLVEFTIOKAlCDigJ5kaXJlY3QiIHR1cmkgYnV0aSBpcmFzeXRhcywgbmUgTlVMTC4gKi8KCQlpZiAoIGVtcHR5KCAka1sncGFza3V0aW5pcyddICkgKSB7CgkJCSRrWydwYXNrdXRpbmlzJ10gPSBhcnJheSgKCQkJCSdrYW5hbGFzJyAgICAgICAgID0+ICdkaXJlY3QnLAoJCQkJJ2djbGlkJyAgICAgICAgICAgPT4gMCwKCQkJCSdmYmNsaWQnICAgICAgICAgID0+IDAsCgkJCQkncmVmZXJlcl9kb21lbmFzJyA9PiAnJywKCQkJCSdsYWlrYXMnICAgICAgICAgID0+IGN1cnJlbnRfdGltZSggJ215c3FsJywgdHJ1ZSApLAoJCQkpOwoJCX0KCQlpZiAoIGVtcHR5KCAka1sncGlybWFzJ10gKSApIHsgJGtbJ3Bpcm1hcyddID0gJGtbJ3Bhc2t1dGluaXMnXTsgfQoKCQkkb3JkZXItPnVwZGF0ZV9tZXRhX2RhdGEoIHNlbGY6Ok1FVEEsIHdwX2pzb25fZW5jb2RlKCAkaywgSlNPTl9VTkVTQ0FQRURfVU5JQ09ERSB8IEpTT05fVU5FU0NBUEVEX1NMQVNIRVMgKSApOwoJfQoKCXB1YmxpYyBzdGF0aWMgZnVuY3Rpb24gaV91enNha3ltYV9hcGkoICRvcmRlciApIHsKCQlzZWxmOjppX3V6c2FreW1hKCAkb3JkZXIgKTsKCQlpZiAoIGlzX29iamVjdCggJG9yZGVyICkgJiYgbWV0aG9kX2V4aXN0cyggJG9yZGVyLCAnc2F2ZScgKSApIHsgJG9yZGVyLT5zYXZlKCk7IH0KCX0KCgkvKiogQ29tcGxpYW56IHN0YXRpc3Rpa29zIHN1dGlraW1hcyDigJQgdGFzIHBhdHMgc2x1b2tzbmlzIGthaXAgc3RhdGlzdGlrb2plLiAqLwoJcHVibGljIHN0YXRpYyBmdW5jdGlvbiBzdXRpa2ltYXMoKSB7CgkJaWYgKCBjbGFzc19leGlzdHMoICdQZXRzaG9wX1N0YXRpc3Rpa2EnICkgJiYgbWV0aG9kX2V4aXN0cyggJ1BldHNob3BfU3RhdGlzdGlrYScsICdzdXRpa2ltYXMnICkgKSB7CgkJCXJldHVybiAoYm9vbCkgUGV0c2hvcF9TdGF0aXN0aWthOjpzdXRpa2ltYXMoKTsKCQl9CgkJcmV0dXJuIGZhbHNlOwoJfQoKCS8qKiBTa2FpdHltYXMgaXMgdXpzYWt5bW8g4oCUIG5hdWRvamEgYHBldHNob3AtZmFrdGFpLnBocGAuICovCglwdWJsaWMgc3RhdGljIGZ1bmN0aW9uIGlzX3V6c2FreW1vKCAkb3JkZXIgKSB7CgkJaWYgKCAhIGlzX29iamVjdCggJG9yZGVyICkgKSB7IHJldHVybiBhcnJheSgpOyB9CgkJJHJhdyA9ICRvcmRlci0+Z2V0X21ldGEoIHNlbGY6Ok1FVEEgKTsKCQlpZiAoIGlzX2FycmF5KCAkcmF3ICkgKSB7IHJldHVybiAkcmF3OyB9CgkJJGQgPSBqc29uX2RlY29kZSggKHN0cmluZykgJHJhdywgdHJ1ZSApOwoJCXJldHVybiBpc19hcnJheSggJGQgKSA/ICRkIDogYXJyYXkoKTsKCX0KfQoKUGV0c2hvcF9LYW5hbGFpOjppbml0KCk7Cg=="
+ },
+ "statistika": {
+  "konstantos": {
+   "VERSIJA": "2.2",
+   "SCHEMOS_RAKTAS": "ps_stat_schema",
+   "SCHEMOS_VERSIJA": 3,
+   "META_SAVIKAINA": "_ps_savikaina_vnt",
+   "META_SAV_SALTINIS": "_ps_savikaina_saltinis",
+   "META_KAINA_ATSK": "_ps_kaina_atskirai_vnt",
+   "META_UZS_SESIJA": "_ps_stat_sesija",
+   "META_UZS_IRENG": "_ps_irenginys",
+   "META_EIL_DYDIS": "_ps_dydis",
+   "OPT_PRADZIA": "ps_stat_pradzia",
+   "OPT_ZALIU_DIENOS": "ps_stat_zaliu_dienos",
+   "OPT_VALOMOS_SRITYS": "ps_stat_valomos_sritys",
+   "ZALIU_DIENOS": 90,
+   "VALOMOS_SRITYS": [
+    "laukai"
+   ],
+   "SAUGOMOS_SRITYS": [
+    "anketa",
+    "rec",
+    "refill"
+   ]
+  }
+ }
+}
