@@ -386,6 +386,11 @@
  *   antkakliui matmenys ir medziaga yra pirkimo sprendima lemianti
  *   informacija. Pridetos DVI sekcijos, ne daugiau.
  *
+ * Petshop Katalogas v6.0 (S766) — DP pakuoces paveldi saltini IR sarase.
+ * v5.9 pataise tik kortele; sarasas vis tiek rode „be saltinio", AV tuscia ir
+ * PARDUODAMA 0. Dabar bazines prekes registro eilute paveldima ir cia:
+ * likutis floor(bazinis / N), savikaina x N, sandelis tas pats.
+ *
  * Petshop Katalogas v5.9 (S765) — DAUGIAU=PIGIAU PAKUOTES NEBE „BE SALTINIO".
  *
  * Savininkas: „kaip gali buti be saltinio, jei 20 ausu guli AV sandelyje?"
@@ -4015,6 +4020,19 @@ class Petshop_Katalogas {
 
 			$s_list = self::saltiniai_prekei( $pid, isset( $reg[ $pid ] ) ? $reg[ $pid ] : array(), $m );
 
+			/* v6.0: DP pakuote savo eilutes registre neturi — paveldi bazines. */
+			$dp_b = isset( $m['_dp_base_product_id'] ) ? (int) $m['_dp_base_product_id'] : 0;
+			$dp_n = isset( $m['_dp_pack_qty'] ) ? max( 1, (int) $m['_dp_pack_qty'] ) : 1;
+			if ( $dp_b && ! $s_list && isset( $reg[ $dp_b ] ) ) {
+				$bm = isset( $meta[ $dp_b ] ) ? $meta[ $dp_b ] : array();
+				foreach ( self::saltiniai_prekei( $dp_b, $reg[ $dp_b ], $bm ) as $bs ) {
+					$bs['stock_qty'] = ( $bs['stock_qty'] === null ) ? null : (int) floor( (int) $bs['stock_qty'] / $dp_n );
+					$bs['cost_net']  = ( $bs['cost_net'] === null ) ? null : round( (float) $bs['cost_net'] * $dp_n, 4 );
+					$s_list[] = $bs;
+				}
+				if ( $s_list ) { $m['_ps_be_saltinio'] = ''; }
+			}
+
 			/* v8.4: BUVIMAS ir VYKDYMAS atskirti.
 			   `sand` = is kur siunciam (viena reiksme, kaip ir buvo).
 			   `turi_*` = ar TOJE vietoje yra likutis (kelios vienu metu).
@@ -4144,6 +4162,7 @@ class Petshop_Katalogas {
 				'tipas' => $tipas,
 				'delist'=> isset( $m['_ps_isimta'] ) && $m['_ps_isimta'] === '1',
 				'nesalt'=> isset( $m['_ps_be_saltinio'] ) && $m['_ps_be_saltinio'] === '1',
+				'dp_n'  => $dp_n > 1 ? $dp_n : 0,
 				/* v2.9: pardavimu greitis ir pilnumo balas */
 				'v30'   => isset( $m['_ps_sales_30d'] ) ? (int) $m['_ps_sales_30d'] : null,
 				'v365'  => isset( $m['_ps_sales_365d'] ) ? (int) $m['_ps_sales_365d'] : null,
@@ -4289,6 +4308,8 @@ class Petshop_Katalogas {
 			'_zb_qty','_zb_cost','_zb_last_sync','_zb_sku','_zb_barcode',
 			'_regular_price','_sale_price','_sku','_thumbnail_id',
 			'_ps_isimta','_ps_be_saltinio','_ean','_barcode','_wpm_gtin_code',
+			/* v6.0: DAUGIAU=PIGIAU pakuotes — saltinis paveldimas is bazines */
+			'_dp_base_product_id','_dp_pack_qty',
 			'_manual_price_override','_petshop_lock_pricing',
 			'petshop_desc_aprasymas','petshop_desc_sudetis',
 			'_ps_rinkinys','_petshop_dp_sablonas',
