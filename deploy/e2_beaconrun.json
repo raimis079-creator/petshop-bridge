@@ -1,0 +1,16 @@
+{
+ "v": "E2B1",
+ "sukurta": 3913,
+ "start": {
+  "v": "E2B1",
+  "faze": "start",
+  "isvalyta": 1,
+  "preke_id": 35099,
+  "preke_url": "https://dev.avesa.lt/product/20-vnt-baltu-jaucio-ausu/",
+  "preke_pav": "20 vnt. baltų jaučio ausų",
+  "endpoint": "https://dev.avesa.lt/?rest_route=/ps-web/v1/i"
+ },
+ "beacon_yra": false,
+ "psWeb": "undefined",
+ "klaida": "Error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://dev.avesa.lt/krepselis/\nCall log:\n  - navigating to \"https://dev.avesa.lt/krepselis/\", waiting until \"networkidle\"\n"
+}
