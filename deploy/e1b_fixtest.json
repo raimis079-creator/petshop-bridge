@@ -1,0 +1,106 @@
+{
+ "35088": {
+  "statusas": "completed",
+  "total": "19.54",
+  "ship": "1.78",
+  "jau_grazinta": 0
+ },
+ "v": "E1BP1",
+ "ts": "2026-08-26T09:26:13+00:00",
+ "versija": "1.2",
+ "metodas_yra": true,
+ "savikainos_testai": {
+  "1 NULL eilute (MnM konteineris), kiekis 1  -> lauk. NULL": null,
+  "2 zinoma 3436, kiekis 1                    -> lauk. 3436": 3436,
+  "3 zinoma 3436, kiekis 2                    -> lauk. 6872": 6872,
+  "4 zinoma, kiekis 0                         -> lauk. NULL": null,
+  "5 fakto eilutes nera (null)                -> lauk. NULL": null,
+  "6 tuscia eilute \"\"                         -> lauk. NULL": null,
+  "7 nulis 0 (tikras nulis!)                  -> lauk. 0": 0
+ },
+ "tipai": {
+  "1 NULL eilute (MnM konteineris), kiekis 1  -> lauk. NULL": "NULL",
+  "2 zinoma 3436, kiekis 1                    -> lauk. 3436": "integer",
+  "3 zinoma 3436, kiekis 2                    -> lauk. 6872": "integer",
+  "4 zinoma, kiekis 0                         -> lauk. NULL": "NULL",
+  "5 fakto eilutes nera (null)                -> lauk. NULL": "NULL",
+  "6 tuscia eilute \"\"                         -> lauk. NULL": "NULL",
+  "7 nulis 0 (tikras nulis!)                  -> lauk. 0": "integer"
+ },
+ "35088_ship_eilutes": {
+  "732": {
+   "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+   "total": "1.78",
+   "tax": "0.37",
+   "rates": {
+    "1": "0.3738"
+   }
+  }
+ },
+ "planas": {
+  "ship_neto": 1.78,
+  "ship_pvm": 0.37,
+  "extra": 0.5,
+  "refund_amount": 2.65
+ },
+ "refund": {
+  "id": 35093,
+  "amount": "2.65"
+ },
+ "faktai_35088": [
+  {
+   "id": "3",
+   "refund_id": "35093",
+   "eilute_id": null,
+   "wc_eilutes_id": null,
+   "kiekis": "0",
+   "suma_ct": "228",
+   "pvm_ct": "37",
+   "savikaina_ct": null,
+   "priezastis_kodas": "kita"
+  }
+ ],
+ "kontrole_35088": {
+  "faktai": [
+   {
+    "id": "3",
+    "uzsakymas_id": "35088",
+    "refund_id": "35093",
+    "eilute_id": null,
+    "wc_eilutes_id": null,
+    "eilute_raktas": "0",
+    "preke_id": null,
+    "grazinta_at": "2026-08-26 09:26:13",
+    "diena": "2026-08-26",
+    "kiekis": "0",
+    "suma_ct": "228",
+    "pvm_ct": "37",
+    "savikaina_ct": null,
+    "priezastis_kodas": "kita",
+    "priezastis_tekstas": "E1b v1.2 — pristatymas + papildoma suma (likucio sakos patikra)",
+    "atsargos_grizo": "0",
+    "sandelis": null,
+    "testinis": "1",
+    "saltinis_aplinka": "dev",
+    "fakt_versija": "1"
+   }
+  ],
+  "sumos": {
+   "neto_ct": 228,
+   "pvm_ct": 37,
+   "savikaina_ct": 0,
+   "savikaina_nezinoma_eil": 1,
+   "bruto_ct": 265
+  },
+  "woo": {
+   "total_refunded_ct": 265
+  },
+  "patikros": {
+   "bruto_faktas_vs_woo": [
+    265,
+    265,
+    true
+   ]
+  }
+ }
+}
