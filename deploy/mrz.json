@@ -1,0 +1,156 @@
+{
+ "v": "MRZ",
+ "ts": "2026-08-26T17:00:14+00:00",
+ "rasta": 22,
+ "eilutes": [
+  {
+   "f": "MU/petshop-paruostu-ataskaita.php",
+   "eil": 240,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "'dalis' => $parduotuve > 0 ? ( $paj / $parduotuve ) * 100 : 0,"
+  },
+  {
+   "f": "MU/petshop-paruostu-ataskaita.php",
+   "eil": 389,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "return array( $nuol, ( $nuol / $atsk_kaina ) * 100 );"
+  },
+  {
+   "f": "MU/petshop-fakt-siuntos.php",
+   "eil": 528,
+   "tipas": "ANTKAINIS (dauginama)",
+   "kodas": "$kaina = (int) round( $baze * ( 1 + $pct / 100 ) );"
+  },
+  {
+   "f": "MU/petshop-fakt-siuntos.php",
+   "eil": 937,
+   "tipas": "ANTKAINIS (dauginama)",
+   "kodas": "$su = (int) round( (int) $r['kaina_ct'] * ( 1 + $pct_viso / 100 ) );"
+  },
+  {
+   "f": "MU/petshop-pilnumas.php",
+   "eil": 453,
+   "tipas": "ANTKAINIS (dauginama)",
+   "kodas": "( (100 - pl.meta_value+0) * (1 + COALESCE(s.meta_value+0,0)) ) svoris"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 198,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "$marzos[] = ( $kaina_be - $sav ) / $kaina_be;"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 202,
+   "tipas": "MARZA (dalinama)",
+   "kodas": "$d = 1 - ( 1 - $silpn ) / ( 1 - self::MARZOS_RIBA / 100 );"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 3075,
+   "tipas": "MARZA (dalinama)",
+   "kodas": "$nauja_saugi = max( 0, (int) floor( ( 1 - ( 1 - $min / 100 ) / ( 1 - self::MARZOS_RIBA / 100 ) ) * 100 ) );"
+  },
+  {
+   "f": "MU/petshop-laukai.php",
+   "eil": 3205,
+   "tipas": "MARZA (dalinama)",
+   "kodas": "$nauja_saugi = max( 0, (int) floor( ( 1 - ( 1 - $min / 100 ) / ( 1 - self::MARZOS_RIBA / 100 ) ) * 100 ) );"
+  },
+  {
+   "f": "MU/petshop-rec-variklis.php",
+   "eil": 199,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "$marza = ( $kaina - $sav * 1.21 ) / $kaina * 100;"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2044,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "$proc = ( $r['marza'] !== null && $r['kaina'] > 0 ) ? round( $r['marza'] / $r['kaina'] * 100 ) : null;"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2664,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "var proc = (marza!==null && kaina>0) ? marza/kaina*100 : null;"
+  },
+  {
+   "f": "MU/petshop-rinkiniai.php",
+   "eil": 2665,
+   "tipas": "MARZA (dalinama)",
+   "kodas": "var rek = (!truksta && sav>0 && tikslas<100) ? sav/(1-tikslas/100) : null;"
+  },
+  {
+   "f": "PL/petshop-fbt/petshop-fbt.php",
+   "eil": 631,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "$pct = (int) round( ( $regular - $sale ) / $regular * 100 );"
+  },
+  {
+   "f": "PL/petshop-promotions/petshop-promotions.php",
+   "eil": 302,
+   "tipas": "ANTKAINIS (dalinama is SAVIKAINOS)",
+   "kodas": "$margin = ( ( $sale / self::VAT ) - $cost ) / $cost * 100;"
+  },
+  {
+   "f": "PL/petshop-promotions/petshop-promotions.php",
+   "eil": 309,
+   "tipas": "MARZA (dalinama is KAINOS)",
+   "kodas": "$disc = ( $regular - $sale ) / $regular * 100;"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-product-cost-resolver.php",
+   "eil": 297,
+   "tipas": "ANTKAINIS (dalinama is SAVIKAINOS)",
+   "kodas": "$audit['zb_cost_delta_pct'] = round( ( ( $cost_now - $cost_prev ) / $cost_prev ) * 100, 2 );"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-pricing-vf.php",
+   "eil": 413,
+   "tipas": "ANTKAINIS (dauginama)",
+   "kodas": "$regular_calculated = $cost_for_regular * ( 1 + $markup ) * self::VAT;"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-pricing-vf.php",
+   "eil": 423,
+   "tipas": "ANTKAINIS (dauginama)",
+   "kodas": "$sale_calculated = $real_base * ( 1 + $markup ) * self::VAT;"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-pricing.php",
+   "eil": 159,
+   "tipas": "ANTKAINIS (dauginama)",
+   "kodas": "return $cost_net * ( 1 + $this->get_markup( $cat_slugs ) ) * self::VAT;"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-pricing.php",
+   "eil": 262,
+   "tipas": "ANTKAINIS (dauginama)",
+   "kodas": "$min_margin = $cost_net * ( 1 + self::MIN_MARGIN_MARKUP ) * self::VAT;"
+  },
+  {
+   "f": "PL/petshop-xml/includes/class-product-cost-metabox.php",
+   "eil": 513,
+   "tipas": "ANTKAINIS (dalinama is SAVIKAINOS)",
+   "kodas": "$margin_pct = ( $margin_eur / $cost_net ) * 100;"
+  }
+ ],
+ "suvestine": {
+  "MU/petshop-laukai.php | MARZA (dalinama)": 3,
+  "MU/petshop-paruostu-ataskaita.php | MARZA (dalinama is KAINOS)": 2,
+  "MU/petshop-fakt-siuntos.php | ANTKAINIS (dauginama)": 2,
+  "MU/petshop-rinkiniai.php | MARZA (dalinama is KAINOS)": 2,
+  "PL/petshop-xml/includes/class-pricing-vf.php | ANTKAINIS (dauginama)": 2,
+  "PL/petshop-xml/includes/class-pricing.php | ANTKAINIS (dauginama)": 2,
+  "MU/petshop-pilnumas.php | ANTKAINIS (dauginama)": 1,
+  "MU/petshop-laukai.php | MARZA (dalinama is KAINOS)": 1,
+  "MU/petshop-rec-variklis.php | MARZA (dalinama is KAINOS)": 1,
+  "MU/petshop-rinkiniai.php | MARZA (dalinama)": 1,
+  "PL/petshop-fbt/petshop-fbt.php | MARZA (dalinama is KAINOS)": 1,
+  "PL/petshop-promotions/petshop-promotions.php | ANTKAINIS (dalinama is SAVIKAINOS)": 1,
+  "PL/petshop-promotions/petshop-promotions.php | MARZA (dalinama is KAINOS)": 1,
+  "PL/petshop-xml/includes/class-product-cost-resolver.php | ANTKAINIS (dalinama is SAVIKAINOS)": 1,
+  "PL/petshop-xml/includes/class-product-cost-metabox.php | ANTKAINIS (dalinama is SAVIKAINOS)": 1
+ }
+}
