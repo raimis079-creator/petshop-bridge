@@ -19,7 +19,8 @@ try{
   const st=JSON.parse(await s.text()); out.start=st;
 
   const {chromium}=await import('playwright'); const br=await chromium.launch();
-  const ctx=await br.newContext({viewport:{width:1400,height:900},ignoreHTTPSErrors:true,
+  const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
+  const ctx=await br.newContext({viewport:{width:1400,height:900},ignoreHTTPSErrors:true,userAgent:UA,
     extraHTTPHeaders:{'Referer':'https://kaina24.lt/'}});
   const pg=await ctx.newPage(); const kl=[];
   pg.on('pageerror',e=>kl.push(String(e).slice(0,140)));
@@ -30,6 +31,7 @@ try{
   await eik(WP+'/?utm_source=test&utm_medium=cpc&utm_campaign=e2test',1500);
   out.beacon_yra=await pg.$('#ps-web-beacon')!==null;
   out.psWeb=await pg.evaluate(()=>typeof window.psWeb).catch(()=>'?');
+  out.ua=await pg.evaluate(()=>navigator.userAgent).catch(()=>'?');
   await miegok(1200);
 
   // 2) preke
