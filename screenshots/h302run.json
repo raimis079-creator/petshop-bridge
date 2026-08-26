@@ -1,0 +1,91 @@
+{
+ "v": "H302A",
+ "sukurta": 3904,
+ "r": {
+  "v": "H302A",
+  "sources_yra": true,
+  "failas": "PLUG/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+  "metodai": [
+   "lentele()",
+   "kurti_lentele()",
+   "laukai(src)",
+   "suskaiciuoti(pid)",
+   "taisyti()",
+   "importas_vyksta()",
+   "sinchronizuoti(pid,rasyti_kopija)",
+   "naktinis()",
+   "be_saltinio_sarasas(limit)",
+   "registras(pid)",
+   "gyvi(pid,source)",
+   "saltiniai(pid)",
+   "yra_registre(pid)",
+   "sandelio_reiksmes()",
+   "uzpildyti_sandeli(pid)",
+   "sandelio_kandidatai()",
+   "pirmas(pid)"
+  ],
+  "rinkinys": {
+   "id": 35096,
+   "tipas": "simple",
+   "sandelis": "",
+   "stock": "",
+   "own": "",
+   "manage": "no",
+   "saltiniai": {
+    "saltiniai": [],
+    "is_lenteles": false
+   },
+   "parduodama": {
+    "qty": 0,
+    "av": 0,
+    "tiekejo": 0,
+    "kodel": "prekė be šaltinių",
+    "perspejimai": [],
+    "saltiniai": [],
+    "is_lenteles": false
+   }
+  },
+  "komponentas": {
+   "id": 16302,
+   "tipas": "simple",
+   "sandelis": "av",
+   "stock": "77",
+   "own": "",
+   "manage": "yes",
+   "saltiniai": {
+    "saltiniai": [
+     {
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": 77,
+      "cost_net": 0.27,
+      "synced_at": null,
+      "is_active": 1,
+      "is_sellable": 1,
+      "priority": 1
+     }
+    ],
+    "is_lenteles": true
+   },
+   "parduodama": {
+    "qty": 77,
+    "av": 77,
+    "tiekejo": 0,
+    "kodel": "AV 77",
+    "perspejimai": [],
+    "saltiniai": [
+     {
+      "source": "av",
+      "raw": 77,
+      "iskaityta": 77,
+      "kodel": "sava lentyna"
+     }
+    ],
+    "is_lenteles": true
+   }
+  },
+  "reg_lentele": 0,
+  "mnm_vaikai": []
+ }
+}
