@@ -1,0 +1,376 @@
+{
+ "v": "E1BT1",
+ "ts": "2026-08-26T08:43:26+00:00",
+ "klases": {
+  "Petshop_Fakt_Siuntos": "1.1",
+  "Petshop_Fakt_Grazinimai": "1.0",
+  "Petshop_Ataskaitu_Agregavimas": "1.1",
+  "Petshop_Faktai": "1.3"
+ },
+ "lenteles": {
+  "ps_fakt_siuntos": {
+   "yra": true,
+   "stulpeliu": 25,
+   "engine": "InnoDB",
+   "row_format": "Dynamic",
+   "eiluciu": 0
+  },
+  "ps_tarifai": {
+   "yra": true,
+   "stulpeliu": 11,
+   "engine": "InnoDB",
+   "row_format": "Dynamic",
+   "eiluciu": 0
+  },
+  "ps_fakt_grazinimai": {
+   "yra": true,
+   "stulpeliu": 20,
+   "engine": "InnoDB",
+   "row_format": "Dynamic",
+   "eiluciu": 0
+  }
+ },
+ "schema": {
+  "ps_fakt_siuntos": [
+   "id bigint(20) unsigned NN PRI",
+   "uzsakymas_id bigint(20) unsigned NN MUL",
+   "shipment_id varchar(64) MUL",
+   "sandelis varchar(20) MUL",
+   "vezejas varchar(20) NN",
+   "siuntos_nr varchar(64) NN",
+   "paketu_sk smallint(5) unsigned NN",
+   "pristatymo_tipas varchar(20)",
+   "sukurta_at datetime",
+   "diena date MUL",
+   "tiekejui_issiusta_at datetime",
+   "registruota_at datetime",
+   "isvezta_at datetime",
+   "pristatyta_at datetime",
+   "atsiimta_at datetime",
+   "svoris_deklaruotas_g int(10) unsigned",
+   "kaina_vezejo_ct int(11)",
+   "tarifo_id bigint(20) unsigned",
+   "statusas varchar(32)",
+   "problema_kodas varchar(20)",
+   "dienos_iki_pristatymo smallint(6)",
+   "saltinis varchar(12) NN",
+   "testinis tinyint(1) NN",
+   "saltinis_aplinka varchar(10) NN",
+   "fakt_versija smallint(5) unsigned NN"
+  ],
+  "ps_tarifai": [
+   "id bigint(20) unsigned NN PRI",
+   "vezejas varchar(20) NN MUL",
+   "tipas varchar(20) NN",
+   "svoris_nuo_g int(10) unsigned NN MUL",
+   "svoris_iki_g int(10) unsigned",
+   "kaina_ct int(11) NN",
+   "kintamas_pct decimal(6,3) NN",
+   "galioja_nuo date NN",
+   "galioja_iki date",
+   "pastaba varchar(190)",
+   "sukurta_at datetime"
+  ],
+  "ps_fakt_grazinimai": [
+   "id bigint(20) unsigned NN PRI",
+   "uzsakymas_id bigint(20) unsigned NN MUL",
+   "refund_id bigint(20) unsigned NN MUL",
+   "eilute_id bigint(20) unsigned",
+   "wc_eilutes_id bigint(20) unsigned",
+   "eilute_raktas bigint(20) unsigned NN",
+   "preke_id bigint(20) unsigned MUL",
+   "grazinta_at datetime",
+   "diena date MUL",
+   "kiekis int(11) NN",
+   "suma_ct int(11) NN",
+   "pvm_ct int(11) NN",
+   "savikaina_ct int(11)",
+   "priezastis_kodas varchar(32)",
+   "priezastis_tekstas varchar(255)",
+   "atsargos_grizo tinyint(1) NN",
+   "sandelis varchar(20)",
+   "testinis tinyint(1) NN",
+   "saltinis_aplinka varchar(10) NN",
+   "fakt_versija smallint(5) unsigned NN"
+  ]
+ },
+ "kabliukai": {
+  "petshop_siunta_sukurta": [
+   "10 :: Petshop_Fakt_Siuntos::is_desko"
+  ],
+  "woocommerce_order_refunded": [
+   "35 :: Petshop_Fakt_Grazinimai::rasyti"
+  ]
+ },
+ "cron": "2026-08-27 00:05 UTC",
+ "uzsakymai": {
+  "35087": {
+   "metodai": [
+    "shopup_venipak_shipping_pickup_method"
+   ],
+   "tipas": "pastomatas",
+   "svoris_visas_g": 10490,
+   "svoris_zb_g": 2000,
+   "svoris_legacy_g": 8490,
+   "svoris_vf_g": null
+  },
+  "35088": {
+   "metodai": [
+    "shopup_venipak_shipping_pickup_method"
+   ],
+   "tipas": "pastomatas",
+   "svoris_visas_g": 1500,
+   "svoris_zb_g": null,
+   "svoris_legacy_g": null,
+   "svoris_vf_g": 1500
+  },
+  "35090": {
+   "metodai": [
+    "shopup_venipak_shipping_pickup_method"
+   ],
+   "tipas": "pastomatas",
+   "svoris_visas_g": 12723,
+   "svoris_zb_g": null,
+   "svoris_legacy_g": 250,
+   "svoris_vf_g": 473
+  }
+ },
+ "sandeliai_faktuose": [
+  {
+   "uzsakymas_id": "35087",
+   "sandelis": "legacy",
+   "n": "14",
+   "sv": "8490"
+  },
+  {
+   "uzsakymas_id": "35087",
+   "sandelis": "zb",
+   "n": "1",
+   "sv": "2000"
+  },
+  {
+   "uzsakymas_id": "35088",
+   "sandelis": "vf",
+   "n": "1",
+   "sv": "1500"
+  },
+  {
+   "uzsakymas_id": "35090",
+   "sandelis": "ambrosia",
+   "n": "1",
+   "sv": "12000"
+  },
+  {
+   "uzsakymas_id": "35090",
+   "sandelis": "legacy",
+   "n": "1",
+   "sv": "250"
+  },
+  {
+   "uzsakymas_id": "35090",
+   "sandelis": "vf",
+   "n": "1",
+   "sv": "473"
+  }
+ ],
+ "tarifu_testai": {
+  "pastomatas 5kg 2026-08-26 (lauk. 250+8%=270)": [
+   270,
+   2
+  ],
+  "pastomatas 15kg 2026-08-26 (lauk. 420+8%=454)": [
+   454,
+   3
+  ],
+  "pastomatas 5kg 2026-06-15 (lauk. SENAS 199)": [
+   199,
+   4
+  ],
+  "kurjeris 5kg (tipo nera -> bendras 290)": [
+   290,
+   1
+  ],
+  "lp_express (tarifo nera -> NULL)": [
+   null,
+   null
+  ]
+ },
+ "rasymas": {
+  "1_be_sandelio": "added",
+  "2_kartojam": "exists",
+  "3_su_sandeliu": "updated",
+  "4_dar_karta": "exists",
+  "5_nera_uzsak": "invalid",
+  "6_be_nr": "invalid"
+ },
+ "rasymo_eilutes": [
+  {
+   "id": "1",
+   "uzsakymas_id": "35087",
+   "shipment_id": null,
+   "sandelis": "zb",
+   "vezejas": "venipak",
+   "siuntos_nr": "TEST-E1B-A",
+   "paketu_sk": "1",
+   "pristatymo_tipas": "pastomatas",
+   "sukurta_at": "2026-08-26 08:43:26",
+   "diena": "2026-08-26",
+   "tiekejui_issiusta_at": null,
+   "registruota_at": "2026-08-26 08:43:26",
+   "isvezta_at": null,
+   "pristatyta_at": null,
+   "atsiimta_at": null,
+   "svoris_deklaruotas_g": "10490",
+   "kaina_vezejo_ct": "454",
+   "tarifo_id": "3",
+   "statusas": "processing",
+   "problema_kodas": null,
+   "dienos_iki_pristatymo": null,
+   "saltinis": "desk",
+   "testinis": "1",
+   "saltinis_aplinka": "dev",
+   "fakt_versija": "1"
+  }
+ ],
+ "desk_simuliacija": [
+  {
+   "id": "2",
+   "uzsakymas_id": "35087",
+   "sandelis": "legacy",
+   "vezejas": "venipak",
+   "siuntos_nr": "TEST-E1B-C1",
+   "paketu_sk": "2",
+   "pristatymo_tipas": "pastomatas",
+   "svoris_deklaruotas_g": "8490",
+   "kaina_vezejo_ct": "270",
+   "tarifo_id": "2",
+   "diena": "2026-08-26",
+   "saltinis": "desk",
+   "testinis": "1"
+  },
+  {
+   "id": "3",
+   "uzsakymas_id": "35087",
+   "sandelis": "legacy",
+   "vezejas": "venipak",
+   "siuntos_nr": "TEST-E1B-C2",
+   "paketu_sk": "2",
+   "pristatymo_tipas": "pastomatas",
+   "svoris_deklaruotas_g": "8490",
+   "kaina_vezejo_ct": "270",
+   "tarifo_id": "2",
+   "diena": "2026-08-26",
+   "saltinis": "desk",
+   "testinis": "1"
+  }
+ ],
+ "sutikrinimas_dry": {
+  "dry": true,
+  "ts": "2026-08-26 08:43:27",
+  "eiluciu": 23,
+  "prideta": 0,
+  "atnaujinta": 0,
+  "buvo": 0,
+  "nasliaciai": 23,
+  "nezinomas_vezejas": 0,
+  "detales": []
+ },
+ "sutikrinimas_real": {
+  "dry": false,
+  "ts": "2026-08-26 08:43:27",
+  "eiluciu": 23,
+  "prideta": 0,
+  "atnaujinta": 0,
+  "buvo": 0,
+  "nasliaciai": 23,
+  "nezinomas_vezejas": 0,
+  "detales": []
+ },
+ "sutikrinimas_kartojam": {
+  "dry": false,
+  "ts": "2026-08-26 08:43:27",
+  "eiluciu": 23,
+  "prideta": 0,
+  "atnaujinta": 0,
+  "buvo": 0,
+  "nasliaciai": 23,
+  "nezinomas_vezejas": 0,
+  "detales": []
+ },
+ "valymas_siuntos": 3,
+ "valymas_tarifai": 4,
+ "po_valymo_siuntu": 0,
+ "po_valymo_tarifu": 0,
+ "agregatai_pries": [
+  {
+   "diena": "2026-08-05",
+   "sritis": "parduotuve",
+   "n": "1",
+   "s": "16774"
+  }
+ ],
+ "persk_blogas_formatas": {
+  "klaida": "blogas datos formatas — laukiama YYYY-MM-DD"
+ },
+ "persk_per_didelis": {
+  "klaida": "per didelis intervalas: 2409 d. (riba 400)"
+ },
+ "persk_dry": {
+  "nuo": "2026-08-01",
+  "iki": "2026-08-05",
+  "dienu": 5,
+  "dry": true,
+  "dienos": {
+   "2026-08-01": "dry",
+   "2026-08-02": "dry",
+   "2026-08-03": "dry",
+   "2026-08-04": "dry",
+   "2026-08-05": "dry"
+  },
+  "eiluciu": 0
+ },
+ "persk_1": {
+  "nuo": "2026-08-01",
+  "iki": "2026-08-05",
+  "dienu": 5,
+  "dry": false,
+  "dienos": {
+   "2026-08-01": 0,
+   "2026-08-02": 0,
+   "2026-08-03": 0,
+   "2026-08-04": 0,
+   "2026-08-05": 0
+  },
+  "eiluciu": 0
+ },
+ "persk_2": {
+  "nuo": "2026-08-01",
+  "iki": "2026-08-05",
+  "dienu": 5,
+  "dry": false,
+  "dienos": {
+   "2026-08-01": 0,
+   "2026-08-02": 0,
+   "2026-08-03": 0,
+   "2026-08-04": 0,
+   "2026-08-05": 0
+  },
+  "eiluciu": 0
+ },
+ "persk_atvirksciai": {
+  "nuo": "2026-08-01",
+  "iki": "2026-08-05",
+  "dienu": 5,
+  "dry": true,
+  "dienos": {
+   "2026-08-01": "dry",
+   "2026-08-02": "dry",
+   "2026-08-03": "dry",
+   "2026-08-04": "dry",
+   "2026-08-05": "dry"
+  },
+  "eiluciu": 0
+ },
+ "agregatai_po": [],
+ "persk_option": "2026-08-26 11:43:27 | 2026-08-01..2026-08-05 | 0 eil."
+}
