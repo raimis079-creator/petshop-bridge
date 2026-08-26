@@ -1,0 +1,84 @@
+{
+ "v": "E2F",
+ "faze": "rez",
+ "islaidos": {
+  "versija": "1.0",
+  "suvestine": {
+   "menuo": "2026-08",
+   "eilutes": [
+    {
+     "id": "2",
+     "menuo": "2026-08",
+     "kategorija": "kaina24",
+     "suma_ct": "120",
+     "kanalas": "mokamas",
+     "pastaba": "TEST-E2 kaina24",
+     "sukurta_at": "2026-08-26 13:07:09"
+    },
+    {
+     "id": "1",
+     "menuo": "2026-08",
+     "kategorija": "pakuotes",
+     "suma_ct": "12840",
+     "kanalas": null,
+     "pastaba": "TEST-E2 pakuotes",
+     "sukurta_at": "2026-08-26 13:07:04"
+    }
+   ],
+   "viso_ct": 12960,
+   "reklamos_ct": 120
+  },
+  "pakuotes": {
+   "vidurkis_ct": null,
+   "islaidos_ct": 12840,
+   "siuntu": 0,
+   "menesiai": [
+    "2026-08",
+    "2026-07",
+    "2026-06"
+   ]
+  },
+  "kaina24": {
+   "saltinis": "kaina24",
+   "paspaudimu": 12,
+   "suma_ct": 96,
+   "yra_duomenu": true
+  },
+  "kainos": {
+   "saltinis": "kainos",
+   "paspaudimu": 0,
+   "suma_ct": 0,
+   "yra_duomenu": true
+  },
+  "nustatymai": {
+   "ps_stat_pradzia": "",
+   "ps_fakt_paysera_fiks_ct": 5,
+   "ps_fakt_pakuote_vid_ct": 40,
+   "ps_stat_zaliu_dienos": 90
+  }
+ },
+ "sutikimo_ivykiai": [
+  {
+   "id": "46",
+   "tipas": "pageview",
+   "pusl_tipas": "home",
+   "sutikimas": "0",
+   "turi30": "0",
+   "ld": "c19c7ae1",
+   "ses": null
+  },
+  {
+   "id": "47",
+   "tipas": "pageview",
+   "pusl_tipas": "parduotuve",
+   "sutikimas": "1",
+   "turi30": "1",
+   "ld": "c19c7ae1",
+   "ses": null
+  }
+ ],
+ "su_sutikimu": 1,
+ "be_sutikimo": 13,
+ "lank30_uzpildyta": 1,
+ "lank30_be_sutikimo": 0
+}
