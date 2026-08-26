@@ -1,0 +1,198 @@
+{
+ "v": "E2BR",
+ "ts": "2026-08-26T14:38:14+00:00",
+ "lenteles": {
+  "ps_fakt_atsargos_d": "laisva",
+  "ps_fakt_kainos": "laisva",
+  "ps_dim_klientai": "laisva"
+ },
+ "sandeliai": [
+  {
+   "sandelis": "vf",
+   "prekiu": "978",
+   "turi_own": "1",
+   "turi_stock": "978",
+   "own_suma": "3",
+   "stock_suma": "149195"
+  },
+  {
+   "sandelis": "av",
+   "prekiu": "904",
+   "turi_own": "15",
+   "turi_stock": "894",
+   "own_suma": "168",
+   "stock_suma": "13874"
+  },
+  {
+   "sandelis": "zb",
+   "prekiu": "576",
+   "turi_own": "0",
+   "turi_stock": "576",
+   "own_suma": "0",
+   "stock_suma": "14991"
+  },
+  {
+   "sandelis": "quattro",
+   "prekiu": "64",
+   "turi_own": "1",
+   "turi_stock": "64",
+   "own_suma": "0",
+   "stock_suma": "2182"
+  },
+  {
+   "sandelis": "belcor_tofu",
+   "prekiu": "42",
+   "turi_own": "0",
+   "turi_stock": "42",
+   "own_suma": "0",
+   "stock_suma": "267"
+  },
+  {
+   "sandelis": "prins",
+   "prekiu": "23",
+   "turi_own": "0",
+   "turi_stock": "23",
+   "own_suma": "0",
+   "stock_suma": "337"
+  },
+  {
+   "sandelis": "(nera)",
+   "prekiu": "19",
+   "turi_own": "0",
+   "turi_stock": "9",
+   "own_suma": "0",
+   "stock_suma": "124"
+  },
+  {
+   "sandelis": "ambrosia",
+   "prekiu": "15",
+   "turi_own": "1",
+   "turi_stock": "15",
+   "own_suma": "0",
+   "stock_suma": "204"
+  }
+ ],
+ "ps_partijos": {
+  "stulpeliai": [
+   "id bigint(20) unsigned",
+   "product_id bigint(20) unsigned",
+   "gauta date",
+   "kiekis_gautas int(11)",
+   "kiekis_liko int(11)",
+   "savikaina_eur decimal(12,4)",
+   "savikaina_orig decimal(12,4)",
+   "valiuta varchar(3)",
+   "kursas decimal(12,6)",
+   "geriausia_iki date",
+   "tiekejas varchar(96)",
+   "importuota tinyint(1)",
+   "tiekimas_id bigint(20) unsigned",
+   "pastaba varchar(255)",
+   "sukurta datetime",
+   "user_id bigint(20) unsigned",
+   "atsaukta tinyint(1)"
+  ],
+  "eiluciu": 10,
+  "prekiu": 8
+ },
+ "kabliukai": {
+  "woocommerce_product_object_updated_props": [
+   "10 :: Closure",
+   "10 :: Closure"
+  ],
+  "woocommerce_update_product": [
+   "10 :: Closure",
+   "10 :: Automattic\\WooCommerce\\Admin\\ReportsSync::clear_stock_count_cache",
+   "10 :: WC_Brands::invalidate_wc_layered_nav_counts_cache",
+   "20 :: psac_apply_categories",
+   "20 :: ps_sources_sync_saugiai",
+   "99 :: Petshop_Katalogas::kesas_lauk"
+  ],
+  "pmxi_saved_post": [
+   "10 :: petshop_xml_after_import",
+   "99 :: Petshop_Vartai::po_importo"
+  ],
+  "pmxi_after_xml_import": [
+   "10 :: pmwi_pmxi_after_xml_import",
+   "20 :: Closure",
+   "20 :: Petshop_Seseliai::po_importo"
+  ],
+  "save_post_product": [
+   "10 :: Petshop_FBT::save_meta_box",
+   "10 :: Closure",
+   "10 :: Closure",
+   "20 :: Petshop_AV_Stock::quick_edit_save",
+   "20 :: Petshop_Product_Cost_Metabox::save_metabox"
+  ]
+ },
+ "grep": {
+  "ps_pets": [
+   "MU/petshop-rec-log.php:93 \"SELECT species, is_test FROM {$wpdb->prefix}ps_pets WHERE id=%d\", $pet_id ), ARRAY_A );",
+   "MU/petshop-anketos-ataskaita.php:49 * (ps_pets, ps_pet_field_log, ps_laukai_ivykiai, ps_rec_log);",
+   "MU/petshop-anketos-ataskaita.php:365 $p = self::t( 'ps_pets' );",
+   "MU/petshop-anketos-ataskaita.php:535 $p = self::t( 'ps_pets' );",
+   "MU/petshop-anketos-ataskaita.php:648 $p = self::t( 'ps_pets' );",
+   "MU/petshop-pet-kontraktas.php:8 * Cia gyvena: schema (ps_pets papildymai + 3 naujos lenteles), brand alias",
+   "MU/petshop-pet-kontraktas.php:47 * ps_pets +4 stulpeliai (IF NOT EXISTS — MariaDB 10.6 palaiko)",
+   "MU/petshop-pet-kontraktas.php:92 * dizaina). ps_pets eilute lieka analitikai, bet asmens laukai isvalomi.",
+   "MU/petshop-pet-kontraktas.php:104 $petai = $wpdb->get_col( $wpdb->prepare( \"SELECT id FROM {$P}ps_pets WHERE user_id=%d\", $uid ) );",
+   "MU/petshop-pet-kontraktas.php:111 $k['pets'] = (int) $wpdb->query( $wpdb->prepare( \"DELETE FROM {$P}ps_pets WHERE user_id=%d\", $uid ) );"
+  ],
+  "_own_stock_qty": [
+   "MU/petshop-partijos.php:52 * Likucio (`_stock`, `_own_stock_qty`) sis modulis NELIECIA — ten jau yra",
+   "MU/petshop-partijos.php:254 * S590 taisykle: preke be tiekejo -> `_stock`; su tiekeju -> `_own_stock_qty`.",
+   "MU/petshop-partijos.php:259 if ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }",
+   "MU/petshop-partijos.php:571 * TIK i `ps_partijos.kiekis_liko`. Jokio `_stock`, jokio `_own_stock_qty` —",
+   "MU/petshop-ivykiai.php:136 '_own_stock_qty' => array( 'likutis', 'AV likutis' ),",
+   "MU/petshop-ivykiai.php:452 'laukas' => isset( $e['laukas'] ) ? $e['laukas'] : '_own_stock_qty',",
+   "MU/petshop-av-reduce.php:9 * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus.",
+   "MU/petshop-av-reduce.php:12 * _ps_source = av → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM",
+   "MU/petshop-av-reduce.php:65 // GRYNAI AV prekės likutis gyvena `_stock`, ne `_own_stock_qty` —",
+   "MU/petshop-katalogas.php:102 * AV likutis (`_own_stock_qty`) kiek TU parsiveze i Avesos sandeli."
+  ],
+  "pmxi_": [
+   "MU/petshop-vartai.php:52 add_action( 'pmxi_saved_post', array( __CLASS__, 'po_importo' ), 99, 1 );",
+   "MU/petshop-vartai.php:118 remove_action( 'pmxi_saved_post', array( __CLASS__, 'po_importo' ), 99 );",
+   "MU/petshop-vartai.php:120 add_action( 'pmxi_saved_post', array( __CLASS__, 'po_importo' ), 99, 1 );",
+   "MU/petshop-import-log.php:5 * PRIEŽASTIS (DOD-09): WP All Import `pmxi_history` saugo tik ~19 paskutinių",
+   "MU/petshop-import-log.php:20 add_action( 'pmxi_after_xml_import', function ( $import_id, $import = null ) {",
+   "MU/petshop-import-log.php:32 \"SELECT name, created, updated, skipped, imported FROM {$wpdb->prefix}pmxi_imports WHERE id = %d\",",
+   "MU/petshop-ivykiai.php:171 if ( did_action( 'pmxi_before_xml_import' ) ) { return true; }",
+   "MU/petshop-ivykiai.php:172 if ( did_action( 'pmxi_saved_post' ) ) { return true; }",
+   "MU/petshop-ivykiai.php:174 if ( isset( $GLOBALS['pmxi_import_in_progress'] ) && $GLOBALS['pmxi_import_in_progress'] ) { return true; }",
+   "MU/petshop-seseliai.php:32 add_action( 'pmxi_after_xml_import', [ __CLASS__, 'po_importo' ], 20, 1 );"
+  ],
+  "_ps_refill": [
+   "MU/petshop-refill-ivykiai.php:26 * - IDEMPOTENCIJA: order meta _ps_refill_purchase_logged — hook'as gali",
+   "MU/petshop-refill-ivykiai.php:139 if ( $order->get_meta( '_ps_refill_purchase_logged' ) ) { return; } /* idempotencija */",
+   "MU/petshop-refill-ivykiai.php:154 $order->update_meta_data( '_ps_refill_purchase_logged', current_time( 'mysql', true ) );",
+   "PL/petshop-core/includes/class-refill-engine.php:12 * DB: gaj6_ps_refill_tracking (user_id + product_id + pet_id nullable).",
+   "PL/petshop-core/includes/class-refill-engine.php:49 const META_REFILL_PROCESSED = '_ps_refill_tracked'; // order meta (idempotencija)"
+  ]
+ },
+ "klientai": [
+  {
+   "klientas_id": "0",
+   "hash": "56c73d907c",
+   "uzs": "4",
+   "pajamos": "17130",
+   "marza": "4879",
+   "kontrib": "4631",
+   "pirmas": "2026-08-25 22:32:46",
+   "paskutinis": "2026-08-26 13:21:56"
+  }
+ ],
+ "faktu_uzsakymu": 4,
+ "saltiniai": {
+  "ps_pets": 69,
+  "ps_refill_tracking": 23,
+  "ps_akciju_prekes": 0
+ },
+ "brendu_tax": 136,
+ "cron_vakaras": {
+  "ps_stat_valymas": "21:41",
+  "petshop_attr_engine_run": "22:57",
+  "wpforms_email_summaries_cron": "21:00",
+  "wpforms_weekly_entries_count_cron": "21:00"
+ }
+}
