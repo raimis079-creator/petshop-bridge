@@ -1,157 +1,185 @@
-Slapukai ir privatumas
-Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir rinkodaros slapukus įjungiame tik jums sutikus.
-PRIIMTI
-ATMESTI
-NUOSTATOS
-Slapukų politika
-Privatumo politika
-Skip to content
-Nemokamas pristatymas į paštomatus nuo 30 €
-Ieškoti:
-PRISIJUNGTI
-KREPŠELIS /
-0,00 €
-0
-ŠUNIMS
-KATĖMS
-GRAUŽIKAMS
-PAUKŠČIAMS
-ŽUVIMS
-RINKINIAI
-PASIŪLYMAI
-SPRENDIMAI
-Nuo 2010 m.
-Prekės augintiniui pagal realų poreikį
+ZB NUOKRYPIAI + SNIPPETAI   2026-08-26 16:33
+====================================================================================================
 
-Maistas, priežiūra ir sprendimai šunims, katėms bei kitiems augintiniams. Nuo 2010 m. padedame išsirinkti ne pagal reklamą, o pagal sudėtį, gamintoją ir praktinį naudojimą.
+A) KAINODAROS FAILAI
+----------------------------------------------------------------------------------------------------
+/petshop-xml/includes/class-pricing-vf.php       20752 B
+/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php   19099 B
+/petshop-xml/includes/class-pricing.php          11475 B
 
-Peržiūrėti prekes →
-Rasti sprendimą →
-Hipoalerginis
-·
-Monoprotein
-·
-Be grūdų
-·
-Jautriam virškinimui
-Nemokamas pristatymas į paštomatus nuo 30 €
-·
-Konsultacija dėl produktų
-·
-Pagalba renkantis pagal poreikį
-·
-Saugus apmokėjimas
-Pagrindinės kategorijos
-Šunims
-Katėms
-Graužikams
-Paukščiams
-Žuvims
-Pirkėjų pamėgtos prekės
-Šunims
-Katėms
-Exclusion Hypoallergenic mažų veislių šunims
-7 kg
-Hipoalerginis, mažoms veislėms
-54,49 €
-Į krepšelį
-Josera SensiPlus 12,5 kg
-12,5 kg
-Jautriam virškinimui
-37,49 €
-Į krepšelį
-Animonda GranCarno jautiena ir ėriena
-800 g
-Jautiena ir ėriena
-3,59 €
-Į krepšelį
-Monge BWild konservai su ėriena
-400 g
-Begrūdžiai
-1,99 €
-Į krepšelį
-Ambrosia begrūdis su elniena
-12 kg
-Begrūdis, su elniena
-59,99 €
-Į krepšelį
-Ontario troškinys su antiena
-300 g
-Vienas gyvūninis baltymas
-2,55 €
-Į krepšelį
-›
-PIRMAI PRADŽIAI
-Naujam augintiniui
-Maistas, priežiūra ir svarbiausios priemonės pirmai pradžiai.
-Rasti, ko reikia →
-ATRINKTI PASIŪLYMAI
-Akcijos ir daugiau = pigiau
-Šiuo metu galiojančios akcijos ir kiekio pasiūlymai augintiniams.
-Peržiūrėti pasiūlymus →
-Rinkitės pagal poreikį
+VF LENTELE (class-pricing-vf.php):
+  167: const MIN_MARGIN_FLOOR = 0.10;       // 10% — zemesne nei ZB (25%) del konkurenciniu brand'u
+  185: 'Josera'       => 0.20,
+  186: 'Exclusion'    => 0.15,
+  187: 'GreenPetFood' => 0.15,
+  197: private array $brand_markups = [
+  198: 'Josera'       => 0.20,
+  199: 'Exclusion'    => 0.20,
+  200: 'GreenPetFood' => 0.20,
+  201: 'CHURU'        => 0.30,
+  209: private array $no_sale_brands = [
+  220: private array $category_markups = [
+  222: 'sausas-maistas-sunims'        => 0.23,
+  223: 'sausas-maistas-katems'        => 0.23,
+  224: 'hipoalerginis-maistas-sunims' => 0.23,
+  226: 'konservai-sunims' => 0.25,
+  227: 'konservai-katems' => 0.25,
+  229: 'skanestai-sunims'     => 0.35,
+  230: 'skanestai-katems'     => 0.35,
+  231: 'skanestai-grauzikams' => 0.45,
+  233: 'higienos-priemones-sunims'     => 0.35,
+  234: 'sampunai-sunims'               => 0.35,
+  235: 'sukos-sepeciai-zirkles-sunims' => 0.35,
+  236: 'prieziuros-priemones-katems'   => 0.35,
+  237: 'vitaminai-ir-papildai-sunims'  => 0.35,
+  238: 'vitaminai-ir-papildai-katems'  => 0.35,
+  240: 'kraikai-kaciu-tualetams' => 0.30,
+  242: 'pasaras-grauzikams' => 0.30,
+  244: 'antkakliai-pavadeliai-sunims' => 0.45,
+  245: 'guoliai-boksai-sunims'        => 0.45,
+  246: 'transportavimo-dezes-sunims'  => 0.45,
+  247: 'transportavimo-dezes-katems'  => 0.45,
+  248: 'apranga-sunims'               => 0.45,
+  249: 'dubeneliai-sunims'            => 0.45,
+  250: 'dubeneliai-katems'            => 0.45,
+  251: 'zaislai-sunims'               => 0.45,
+  252: 'zaislai-katems'               => 0.45,
+  253: 'draskykles-katems'            => 0.45,
+  254: 'narvai-grauzikams'            => 0.45,
+  256: 'tualetai-kraikai-semtuveliai' => 0.40,
+  258: 'akvariumai-iranga' => 0.40,
+  261: private float $default_markup = 0.40;
+  266: public function apply_supplier_discount( float $cost, string $normalized_brand ): float {
+  267: $discount = $this->supplier_discounts[ $normalized_brand ] ?? 0.0;
+  271: public function get_supplier_discount( string $normalized_brand ): float {
+  272: return $this->supplier_discounts[ $normalized_brand ] ?? 0.0;
+  280: public function get_markup( string $normalized_brand, array $cat_slugs ): array {
+  281: // 1. Brand override
+  282: if ( isset( $this->brand_markups[ $normalized_brand ] ) ) {
+  284: 'markup' => $this->brand_markups[ $normalized_brand ],
+  285: 'rule'   => 'BRAND:' . $normalized_brand,
+  288: // 2. Category markup
+  290: if ( isset( $this->category_markups[ $slug ] ) ) {
+  292: 'markup' => $this->category_markups[ $slug ],
+  297: // 3. Default
+  298: return [ 'markup' => $this->default_markup, 'rule' => 'DEFAULT' ];
+  390: public function calculate_final_price_from_xml( float $base_price, float $personal_price, string $normalized_brand, array $cat_slugs ): array {
+  393: $supplier_discount = $this->get_supplier_discount( $normalized_brand );
+  402: // 2) Markup
+  403: $markup_info = $this->get_markup( $normalized_brand, $cat_slugs );
+  404: $markup = $markup_info['markup'];
+  405: $rule = $markup_info['rule'];
+  410: // 3) Regular price = personal x markup x VAT
+  413: $regular_calculated = $cost_for_regular * ( 1 + $markup ) * self::VAT;
+  417: // 4) Sale price = base x markup x VAT (tik jei base < personal IR skirtumas reiksmingas)
+  423: $sale_calculated = $real_base * ( 1 + $markup ) * self::VAT;
+  437: // 4c) v1.7.0: NO-SALE BRAND saugiklis (Josera/Exclusion).
+  439: if ( in_array( $normalized_brand, $this->no_sale_brands, true ) && $sale_price > 0 ) {
+  455: $competitive_brands = [ 'Josera', 'Exclusion', 'GreenPetFood', 'CHURU' ];
+  456: if ( in_array( $normalized_brand, $competitive_brands, true ) ) {
+  457: $review_reasons[] = 'competitive_brand';
+  482: public function get_brand_markups(): array     { return $this->brand_markups; }
+  483: public function get_category_markups(): array  { return $this->category_markups; }
+  485: public function get_default_markup(): float     { return $this->default_markup; }
 
-Padedame išsirinkti pagal augintinio sveikatą ir poreikius, ne pagal reklamą.
 
-Hipoalerginis
-Aiškiai įvardintas baltymas, be dažniausiai jautrinančių ingredientų.
-Vienas baltymo šaltinis
-Monoproteinis maistas — viena rūšis, aiški sudėtis.
-Be grūdų
-Grain-free maistas — angliavandeniai iš daržovių ar ankštinių.
-Jautriam virškinimui
-Sudėtis švelnesniam skrandžiui ir stabilesniam virškinimui.
-Sterilizuotam augintiniui
-Svorio ir energijos balansas po sterilizacijos.
-Odai ir kailiui
-Omega rūgštys, papildai ir švelnios priežiūros priemonės.
-Nežinote, ką rinktis?
+B) ZB — NUOKRYPIS NUO LENTELES
+----------------------------------------------------------------------------------------------------
+Viso ZB su savikaina: 573   (be savikainos: 3)
 
-Parašykite arba paskambinkite — padėsime pasirinkti maistą, priežiūros priemones ar sprendimą pagal augintinio poreikį.
+  ZEMIAU 25% ribos (rizika)              47
+  zemiau lenteles (>5 p.p.)               3
+  SUTAMPA (+/- 5 p.p.)                   22
+  aukstesnis 5-25 p.p.                  118
+  aukstesnis >25 p.p.                   383   <- senas RRP modelis
 
-Paskambinti
-Parašyti
-Gaukite naudingus patarimus ir Petshop.lt pasiūlymus
-Retai, bet iš esmės: maisto naujienos, praktiniai patarimai ir aktualūs pasiūlymai.
-El. pašto adresas
-Prenumeruoti
-Sutinku gauti Petshop.lt naujienas el. paštu. Atsisakyti galėsiu bet kada.
-Duomenis tvarko UAB Avesa. Daugiau — privatumo politikoje.
-APIE
+Jei viskas kristu i lenteles lygi, apyvarta be PVM keistusi: -2898.01 EUR (vienam vnt.)
 
-Naminių gyvūnų prekės internetu: maistas, žaislai ir priežiūra.
+  ZEMIAU 25% — pilnas sarasas:
+   #12674   ant   11.1% (lent 25.0%)  savik   38.97  kaina   52.39  Gemon Adult visavertis pašaras suaugusio
+   #12915   ant   11.1% (lent 25.0%)  savik   59.80  kaina   80.39  Eukanuba Adult L/XL Breed Lamb &#038; Ri
+   #14478   ant   11.1% (lent 25.0%)  savik   59.80  kaina   80.39  Euk Adult S/M Breed Lamb &#038; Rice PFB
+   #12829   ant   11.1% (lent 25.0%)  savik   49.16  kaina   66.09  Monge BWild Large Breed (buivoliena, bul
+   #14221   ant   11.1% (lent 45.0%)  savik   44.10  kaina   59.29  DOGOTEKA FertiAdapt 60tabl.
+   #12675   ant   11.1% (lent 25.0%)  savik   48.34  kaina   64.99  Gemon Adult visavertis pašaras suaugusio
+   #12671   ant   11.1% (lent 25.0%)  savik   43.28  kaina   58.19  Gemon BFB &#8211; Dry Dog Adult Lamb &#0
+   #12664   ant   11.1% (lent 25.0%)  savik   52.06  kaina   69.99  Monge BFB BWILD &#8211; Adult pašaras ka
+   #14215   ant   11.1% (lent 45.0%)  savik   52.65  kaina   70.79  DOGOTEKA DOGOmaxy 60 tabl.
+   #14223   ant   11.1% (lent 45.0%)  savik   43.65  kaina   58.69  DOGOTEKA DiaGiar 60 tabl.
+   #14446   ant   11.1% (lent 45.0%)  savik   25.20  kaina   33.89  DOGOTEKA DogoRelax 100mg lašai
+   #12676   ant   11.1% (lent 25.0%)  savik   40.81  kaina   54.89  Gemon Sterilised light visavertis pašara
+   #14445   ant   11.2% (lent 45.0%)  savik   23.86  kaina   32.09  DOGOTEKA DogoRehydro 30 tabl.
+   #12459   ant   11.2% (lent 25.0%)  savik   40.66  kaina   54.69  Eukanuba Adult Large CKN EDB 16.5kg
+   #12670   ant   11.2% (lent 25.0%)  savik   42.15  kaina   56.69  Gemon BFB &#8211; Dry Dog Adult Tuna &#0
+   #14222   ant   11.2% (lent 45.0%)  savik   16.20  kaina   21.79  DOGOTEKA Celervis Pet 100ml
+   #12668   ant   11.2% (lent 25.0%)  savik   38.80  kaina   52.19  Gemon BFB &#8211; Dry Dog Mini Adult Sal
+   #12460   ant   11.2% (lent 25.0%)  savik   55.67  kaina   74.89  Eukanuba Puppy &#038; Junior Small Breed
+   #12461   ant   11.2% (lent 25.0%)  savik   55.67  kaina   74.89  Eukanuba Puppy &#038; Junior Medium Bree
+   #12462   ant   11.2% (lent 25.0%)  savik   55.67  kaina   74.89  Eukanuba Puppy &#038; Junior Large Breed
+   #12463   ant   11.2% (lent 25.0%)  savik   55.67  kaina   74.89  Eukanuba Adult Small Breed PFB 18kg
+   #12464   ant   11.2% (lent 25.0%)  savik   55.67  kaina   74.89  Eukanuba Adult Medium Breed 18kg
+   #14772   ant   11.2% (lent 25.0%)  savik   55.67  kaina   74.89  EUK Adult Large Breed PFB 18 kg šunų paš
+   #14231   ant   11.2% (lent 45.0%)  savik   24.30  kaina   32.69  DOGOTEKA DogoDigestive 30 tabl.
+   #12661   ant   11.2% (lent 25.0%)  savik   38.35  kaina   51.59  Monge Daily Line Sensitive sausas pašara
+   ... ir dar 22
 
-f
+  AUKSTESNIS >25 p.p. — 15 didziausiu:
+   #14103   ant   92.8% (lent 35.0%)  savik    9.86  kaina   22.99  Trixie BE NORDIC Husum lietpaltis, XS: 3
+   #14494   ant   92.8% (lent 35.0%)  savik    9.86  kaina   22.99  TRIXIE CityStyle Berlin megztinis, S: 33
+   #13863   ant   91.1% (lent 35.0%)  savik   12.11  kaina   27.99  Trixie Jesper kampinis namelis, 2 išėjim
+   #13901   ant   91.1% (lent 35.0%)  savik   12.11  kaina   27.99  Trixie Guolis prie radiatoriaus katei, p
+   #14076   ant   91.1% (lent 35.0%)  savik   12.11  kaina   27.99  Trixie Apsauginis rūbelis (bodis) šuniui
+   #14106   ant   91.1% (lent 35.0%)  savik   12.11  kaina   27.99  Trixie BE NORDIC Husum lietpaltis, M: 45
+   #14332   ant   91.1% (lent 35.0%)  savik   12.11  kaina   27.99  Trixie žieminė striukė Lesmont
+   #14333   ant   86.4% (lent 35.0%)  savik   14.62  kaina   32.99  TRIXIE Lesmont žieminė striukė, S: 33 cm
+   #14088   ant   84.6% (lent 35.0%)  savik    8.05  kaina   17.99  Trixie Orléans striukė šuniui, L 55 cm, 
+   #14111   ant   84.6% (lent 35.0%)  savik    8.05  kaina   17.99  TRIXIE CityStyle Berlin megztinis šuniui
+   #14144   ant   84.6% (lent 35.0%)  savik    8.05  kaina   17.99  TRIXIE CityStyle Berlin megztinis, XS: 2
+   #14146   ant   84.6% (lent 35.0%)  savik    8.05  kaina   17.99  Trixie CityStyle Berlin megztinis, XS: 2
+   #14177   ant   84.6% (lent 35.0%)  savik    8.05  kaina   17.99  Trixie Masažo, kailio priežiūros arka ka
+   #14343   ant   84.6% (lent 35.0%)  savik    8.05  kaina   17.99  TRIXIE Norwood megztinis, XS 30 cm, šv. 
+   #14493   ant   84.6% (lent 35.0%)  savik    8.05  kaina   17.99  TRIXIE BE NORDIC Flensburg bliuzonas, S:
 
-Apie mus
-Kontaktai
-KLIENTAMS
-Mano paskyra
-Užsakymų istorija
-Pristatymas
-Apmokėjimas
-Grąžinimas
-DUK
-Taisyklės
-Privatumo politika
-Slapukų politika
-KATEGORIJOS
-Šunims
-Katėms
-Graužikams
-Paukščiams
-Žuvims
-Akcijos
-Pasiūlymai
-KONTAKTAI
 
-+370 681 87787
+C) AKTYVUS SNIPPETAI
+----------------------------------------------------------------------------------------------------
+Aktyviu: 71
 
-Parašyti mums
+KANDIDATAI ISJUNGTI (vienkartiniai / auditai / diagnostika):
+   375    Baltymu Saltinis Dry-Run Konservai v2                      global      p10    6572 B
+   463    Petshop Atributu Auditas v2.0 (read-only, atributu detale  global      p10    7585 B
+   464    Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/appl global      p10    8137 B
+   465     Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)     global      p10    6656 B
+   469    Petshop Dev App Passwords v1                               global      p10     385 B
+   472    Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/ global      p10   10744 B
+   494    Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 ( global      p10    7696 B
+   513    Petshop Katalogo Auditas v1 (read-only)                    global      p10   13522 B
+   2868   PS Masinis Sudeliojimas v6 (tik prekyboje)                 global      p5     4931 B
+   3932   TEMP ZB Nuokrypiai v2                                      global      p5     6270 B
 
-I–V 09:00–18:00
-VI 10:00–15:00
+DUBLIAI (tas pats vardas kelis kartus):
+   petshop ui lokalizacija v1                                 -> ID 707, 2051
 
-Visa
-MasterCard
-Copyright 2026 © UAB Avesa | petshop.lt
+VISI aktyvus, pagal dydi:
+   550    Petshop Susidėjimo Rinkinio Kūrimo Forma v15             admin         52764 B
+   572    Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9           admin         42694 B
+   539    Petshop Rinkinių Kūrimo Forma v2                         admin         40375 B
+   2515   Petshop Sources v2.2 (registras + palaikymas + sandelio pi global        35954 B
+   547    Petshop Susidėjimo Rinkinio Vitrina v19                   global        33237 B
+   565    Petshop VF Sync v1.1 (reprice+stock+publish)               global        22047 B
+   329    Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]                global        21827 B
+   562    Petshop Sprendimai Shortcode Variklis v9                   front-end     20479 B
+   614    Petshop DataLayer v1.1 (GA4 ecommerce)                     front-end     15512 B
+   513    Petshop Katalogo Auditas v1 (read-only)                    global        13522 B
+   688    Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasy global        12849 B
+   472    Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/ global        10744 B
+   512    Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms ant global         9895 B
+   2403   Petshop Stock Service v1.3 (per registra)                  global         9763 B
+   685    Atrinktos Prekės Modulis v1 (rotacija)                    global         9102 B
+   464    Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/appl global         8137 B
+   332    Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]             global         7855 B
+   494    Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 ( global         7696 B
+   463    Petshop Atributu Auditas v2.0 (read-only, atributu detale  global         7585 B
+   502    Higienos Modulis v1.0                                      global         7560 B
+
+====================================================================================================
