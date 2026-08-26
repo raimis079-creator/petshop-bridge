@@ -1,0 +1,277 @@
+{
+ "v": "LPX1",
+ "ts": "2026-08-26T10:26:09+00:00",
+ "versija": "1.4",
+ "schema": {
+  "ps_fakt_siuntos": [
+   "id",
+   "uzsakymas_id",
+   "shipment_id",
+   "sandelis",
+   "vezejas",
+   "siuntos_nr",
+   "paketu_sk",
+   "pristatymo_tipas",
+   "sukurta_at",
+   "diena",
+   "tiekejui_issiusta_at",
+   "registruota_at",
+   "isvezta_at",
+   "pristatyta_at",
+   "atsiimta_at",
+   "svoris_deklaruotas_g",
+   "kaina_vezejo_ct",
+   "tarifo_id",
+   "statusas",
+   "problema_kodas",
+   "dienos_iki_pristatymo",
+   "saltinis",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "sandelio_saltinis",
+   "dydis"
+  ],
+  "ps_tarifai": [
+   "id",
+   "vezejas",
+   "tipas",
+   "svoris_nuo_g",
+   "svoris_iki_g",
+   "kaina_ct",
+   "kintamas_pct",
+   "galioja_nuo",
+   "galioja_iki",
+   "pastaba",
+   "sukurta_at",
+   "dydis",
+   "kaina_uz_kg_ct",
+   "uz_kg_nuo_g"
+  ]
+ },
+ "schemos_ver": 3,
+ "30kg_tarifo_id": 24,
+ "irasyta": 15,
+ "patikros": {
+  "pastomatas XS (135 +5,48% = 142)": [
+   142,
+   10
+  ],
+  "pastomatas S  (140 +5,48% = 148)": [
+   148,
+   11
+  ],
+  "pastomatas M  (145 +5,48% = 153)": [
+   153,
+   12
+  ],
+  "pastomatas L  (175 +5,48% = 185)": [
+   185,
+   13
+  ],
+  "pastomatas XL (290 +5,48% = 306)": [
+   306,
+   14
+  ],
+  "kurjeris 0,3 kg (300 -> 316)": [
+   316,
+   15
+  ],
+  "kurjeris 7 kg  (440 -> 464)": [
+   464,
+   20
+  ],
+  "kurjeris 12 kg (510 -> 538)": [
+   538,
+   21
+  ],
+  "kurjeris 25 kg (510 -> 538, be krovos)": [
+   538,
+   23
+  ],
+  "kurjeris 42 kg (807->851 + 42x6,0476=254 => 1105)": [
+   1105,
+   24
+  ],
+  "pastomatas be dydzio -> turi kristi i NULL": [
+   null,
+   null
+  ],
+  "kurjeris 0,02 kg (po juostomis) -> NULL": [
+   null,
+   null
+  ]
+ },
+ "saskaitos_kontrole": {
+  "pastomatu_baze_ct": 10485,
+  "laukiama_ct": 10485,
+  "sutampa": true
+ },
+ "tarifu_sarasas": [
+  {
+   "id": "15",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "50",
+   "svoris_iki_g": "500",
+   "kaina_ct": "300",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "16",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "501",
+   "svoris_iki_g": "1000",
+   "kaina_ct": "300",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "17",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "1001",
+   "svoris_iki_g": "2000",
+   "kaina_ct": "300",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "18",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "2001",
+   "svoris_iki_g": "3000",
+   "kaina_ct": "355",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "19",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "3001",
+   "svoris_iki_g": "5000",
+   "kaina_ct": "355",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "20",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "5001",
+   "svoris_iki_g": "10000",
+   "kaina_ct": "440",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "21",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "10001",
+   "svoris_iki_g": "15000",
+   "kaina_ct": "510",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "22",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "15001",
+   "svoris_iki_g": "20000",
+   "kaina_ct": "510",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "23",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "20001",
+   "svoris_iki_g": "30000",
+   "kaina_ct": "510",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "24",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "30001",
+   "svoris_iki_g": "1500000",
+   "kaina_ct": "807",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "6.0476",
+   "uz_kg_nuo_g": "30000"
+  },
+  {
+   "id": "13",
+   "tipas": "pastomatas",
+   "dydis": "L",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "175",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "12",
+   "tipas": "pastomatas",
+   "dydis": "M",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "145",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "11",
+   "tipas": "pastomatas",
+   "dydis": "S",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "140",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "14",
+   "tipas": "pastomatas",
+   "dydis": "XL",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "290",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  },
+  {
+   "id": "10",
+   "tipas": "pastomatas",
+   "dydis": "XS",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "135",
+   "kintamas_pct": "5.480",
+   "kaina_uz_kg_ct": "0.0000",
+   "uz_kg_nuo_g": null
+  }
+ ]
+}
