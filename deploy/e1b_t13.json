@@ -1,0 +1,156 @@
+{
+ "v": "E1BT3",
+ "ts": "2026-08-26T09:16:57+00:00",
+ "versija": "1.3",
+ "stulpeliu": 26,
+ "sandelio_saltinis_yra": true,
+ "sandelio_kodas": {
+  "legacy": "av",
+  "av": "av",
+  "LEGACY": "av",
+  "zb": "zb",
+  "belcor_tofu": "belcor_tofu",
+  "xxx": null,
+  "(tuscia)": null,
+  "vf": "vf"
+ },
+ "taisykle": {
+  "lp_express": "av",
+  "venipak": null
+ },
+ "svoriai": {
+  "35087_av": 8490,
+  "35087_legacy": 8490,
+  "35087_zb": 2000,
+  "35087_visas": 10490,
+  "35090_av": 250
+ },
+ "rasymas": {
+  "a_lp_cron": "added",
+  "b_vp_cron": "added",
+  "e_desk_perraso": "updated",
+  "f_taisykle_neperraso": "exists",
+  "g_blogas_kodas": "added"
+ },
+ "eilutes": [
+  {
+   "id": "9",
+   "uzsakymas_id": "35088",
+   "vezejas": "lp_express",
+   "siuntos_nr": "TEST-E1B-LP1",
+   "sandelis": "zb",
+   "sandelio_saltinis": "desk",
+   "saltinis": "desk",
+   "svoris_deklaruotas_g": "1500",
+   "kaina_vezejo_ct": null,
+   "tarifo_id": null,
+   "pristatymo_tipas": "pastomatas",
+   "diena": "2026-08-26"
+  },
+  {
+   "id": "10",
+   "uzsakymas_id": "35088",
+   "vezejas": "venipak",
+   "siuntos_nr": "TEST-E1B-VP1",
+   "sandelis": null,
+   "sandelio_saltinis": null,
+   "saltinis": "cron",
+   "svoris_deklaruotas_g": "1500",
+   "kaina_vezejo_ct": "270",
+   "tarifo_id": "8",
+   "pristatymo_tipas": "pastomatas",
+   "diena": "2026-08-26"
+  },
+  {
+   "id": "11",
+   "uzsakymas_id": "35087",
+   "vezejas": "venipak",
+   "siuntos_nr": "TEST-E1B-DL1",
+   "sandelis": "av",
+   "sandelio_saltinis": "desk",
+   "saltinis": "desk",
+   "svoris_deklaruotas_g": "8490",
+   "kaina_vezejo_ct": "270",
+   "tarifo_id": "8",
+   "pristatymo_tipas": "pastomatas",
+   "diena": "2026-08-26"
+  },
+  {
+   "id": "12",
+   "uzsakymas_id": "35087",
+   "vezejas": "venipak",
+   "siuntos_nr": "TEST-E1B-DZ1",
+   "sandelis": "zb",
+   "sandelio_saltinis": "desk",
+   "saltinis": "desk",
+   "svoris_deklaruotas_g": "2000",
+   "kaina_vezejo_ct": "270",
+   "tarifo_id": "8",
+   "pristatymo_tipas": "pastomatas",
+   "diena": "2026-08-26"
+  },
+  {
+   "id": "13",
+   "uzsakymas_id": "35087",
+   "vezejas": "venipak",
+   "siuntos_nr": "TEST-E1B-BAD",
+   "sandelis": null,
+   "sandelio_saltinis": null,
+   "saltinis": "cron",
+   "svoris_deklaruotas_g": "10490",
+   "kaina_vezejo_ct": null,
+   "tarifo_id": null,
+   "pristatymo_tipas": "pastomatas",
+   "diena": "2026-08-26"
+  }
+ ],
+ "sutikrinimas_dry": {
+  "dry": true,
+  "ts": "2026-08-26 09:16:57",
+  "eiluciu": 23,
+  "prideta": 0,
+  "atnaujinta": 0,
+  "buvo": 0,
+  "nasliaciai": 23,
+  "nezinomas_vezejas": 0,
+  "detales": []
+ },
+ "join": [
+  {
+   "siuntos_nr": "TEST-E1B-LP1",
+   "siunta": "zb",
+   "sandelio_saltinis": "desk",
+   "eiluciu": "0"
+  },
+  {
+   "siuntos_nr": "TEST-E1B-VP1",
+   "siunta": null,
+   "sandelio_saltinis": null,
+   "eiluciu": "0"
+  },
+  {
+   "siuntos_nr": "TEST-E1B-DL1",
+   "siunta": "av",
+   "sandelio_saltinis": "desk",
+   "eiluciu": "14"
+  },
+  {
+   "siuntos_nr": "TEST-E1B-DZ1",
+   "siunta": "zb",
+   "sandelio_saltinis": "desk",
+   "eiluciu": "1"
+  },
+  {
+   "siuntos_nr": "TEST-E1B-BAD",
+   "siunta": null,
+   "sandelio_saltinis": null,
+   "eiluciu": "0"
+  }
+ ],
+ "valyta_siuntu": 5,
+ "valyta_tarifu": 2,
+ "liko": [
+  0,
+  0
+ ]
+}
