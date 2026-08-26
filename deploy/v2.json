@@ -1,0 +1,150 @@
+{
+ "v": "V2",
+ "sukurta": 3965,
+ "deploy": {
+  "v": "V2-D",
+  "moduliai": {
+   "petshop-ataskaitos-ui": {
+    "md5_pries": "63d0ab078fd0d96817f5b23e37df6e47",
+    "sintakse": "OK",
+    "irasyta": 31957,
+    "md5_po": "9244ebe01641f90772aee2f06679091a",
+    "sutampa": true
+   },
+   "petshop-ataskaita-pardavimai": {
+    "md5_pries": "6c03d0b5a6b44a1673d7548268ceb2bd",
+    "sintakse": "OK",
+    "irasyta": 51049,
+    "md5_po": "f88463d5578a3f1d1158dff9633d3939",
+    "sutampa": true
+   }
+  }
+ },
+ "testas": {
+  "v": "V2-T",
+  "ui": "1.2",
+  "pard": "2.0",
+  "be_filtro": {
+   "uzsakymu": 4,
+   "pajamos_ct": 17130,
+   "nuolaidu_ct": 687,
+   "bruto_ct": 17817,
+   "savikaina_ct": 12251,
+   "antkainis_ct": 4879,
+   "kontribucija_ct": 4631,
+   "pvm_ct": 3636,
+   "viso_ct": 20944,
+   "pristatymas_ct": 178,
+   "mokejimas_ct": 0,
+   "nauju": 1,
+   "nuostolingu": 0,
+   "vienetu": 32,
+   "grazinimu": 3,
+   "grazinta_ct": 4790
+  },
+  "parinktys": {
+   "f_sandelis": {
+    "": "visi",
+    "ambrosia": "ambrosia",
+    "legacy": "legacy",
+    "vf": "vf",
+    "zb": "zb"
+   },
+   "f_tiekejas": {
+    "": "visi",
+    "ambrosia": "ambrosia",
+    "legacy": "legacy",
+    "vf": "vf",
+    "zb": "zb"
+   },
+   "f_brendas": {
+    "": "visi",
+    "8in1": "8in1",
+    "ambrosia": "ambrosia",
+    "animonda": "animonda",
+    "exclusion": "exclusion",
+    "furminator": "furminator",
+    "gnatek": "gnatek",
+    "hikari": "hikari",
+    "monge": "monge",
+    "romar": "romar"
+   },
+   "f_kategorija": {
+    "": "visi",
+    "konservai-sunims": "konservai-sunims",
+    "sausas-maistas-katems": "sausas-maistas-katems",
+    "sausas-maistas-sunims": "sausas-maistas-sunims"
+   },
+   "f_gyvunas": {
+    "": "visi",
+    "katems": "katems",
+    "sunims": "sunims",
+    "zuvims": "zuvims"
+   },
+   "f_kanalas": {
+    "": "visi",
+    "mokamas": "mokamas"
+   },
+   "f_mokejimas": {
+    "": "visi",
+    "bacs": "bacs"
+   },
+   "f_vezejas": {
+    "": "visi",
+    "venipak": "venipak"
+   }
+  },
+  "filtrai_matomi": {
+   "f_sandelis": "zb"
+  },
+  "salyga_uzs": "AND EXISTS ( SELECT 1 FROM gaj6_ps_fakt_eilutes e2 WHERE e2.uzsakymas_id = u.uzsakymas_id AND e2.sandelis = 'zb' )",
+  "salyga_eil": "AND e.sandelis = 'zb'",
+  "zb_suvestine": {
+   "uzsakymu": 1,
+   "pajamos_ct": 5574,
+   "nuolaidu_ct": 0,
+   "bruto_ct": 5574,
+   "savikaina_ct": 3707,
+   "antkainis_ct": 1867,
+   "kontribucija_ct": 1721,
+   "pvm_ct": 1172,
+   "viso_ct": 6746,
+   "pristatymas_ct": 0,
+   "mokejimas_ct": 0,
+   "nauju": 1,
+   "nuostolingu": 0,
+   "vienetu": 1,
+   "grazinimu": 3,
+   "grazinta_ct": 4790
+  },
+  "zb_pjuvis_brendas": [
+   {
+    "dim": "monge",
+    "uzsakymu": "1",
+    "vienetu": "1",
+    "pajamos_ct": "1495",
+    "savikaina_ct": "995",
+    "nauju": "1"
+   }
+  ],
+  "zb_eilutes": 1,
+  "zb_farmina_suvestine": {
+   "uzsakymu": 0,
+   "pajamos_ct": 0,
+   "nuolaidu_ct": 0,
+   "bruto_ct": 0,
+   "savikaina_ct": 0,
+   "antkainis_ct": 0,
+   "kontribucija_ct": 0,
+   "pvm_ct": 0,
+   "viso_ct": 0,
+   "pristatymas_ct": 0,
+   "mokejimas_ct": 0,
+   "nauju": 0,
+   "nuostolingu": 0,
+   "vienetu": 0,
+   "grazinimu": 3,
+   "grazinta_ct": 4790
+  }
+ }
+}
