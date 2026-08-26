@@ -2,9 +2,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqCiAqIFBsdWdpbiBOYW1lOiBURU1QIFByaXNpanVuZ2ltYXMKICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiBpZighaXNzZXQoJF9HRVRbJ3BzX2xnJ10pIHx8ICRfR0VUWydwc19sZyddIT09J0xHMjAyNjA4MjYnKSByZXR1cm47CiAkdT1nZXRfdXNlcnMoYXJyYXkoJ3JvbGUnPT4nYWRtaW5pc3RyYXRvcicsJ251bWJlcic9PjEsJ29yZGVyYnknPT4nSUQnKSk7CiBpZigkdSl7IHdwX3NldF9jdXJyZW50X3VzZXIoJHVbMF0tPklEKTsgd3Bfc2V0X2F1dGhfY29va2llKCR1WzBdLT5JRCx0cnVlLHRydWUpOyB9CiBnbG9iYWwgJHdwZGI7ICR3cGRiLT5xdWVyeSgiVVBEQVRFIHskd3BkYi0+cHJlZml4fXNuaXBwZXRzIFNFVCBhY3RpdmU9MCBXSEVSRSBuYW1lIExJS0UgJ1RFTVAlJyIpOwogaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZShhcnJheSgnb2snPT4xKSk7IGV4aXQ7Cn0sNSk7Cg=='; const VER='UX';
-const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
-const out={v:VER,zingsniai:[]}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
+const B64='PD9waHAKLyoqCiAqIFBsdWdpbiBOYW1lOiBURU1QIEUzIHYyCiAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpewogaWYoIWlzc2V0KCRfR0VUWydwc192MjEnXSkpIHJldHVybjsKIGdsb2JhbCAkd3BkYjsgJE1VPVdQTVVfUExVR0lOX0RJUjsgJEJBSz1XUF9DT05URU5UX0RJUi4nL3VwbG9hZHMvcHMtYmFja3Vwcyc7CiAkUj0naHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yYWltaXMwNzktY3JlYXRvci9wZXRzaG9wLWJyaWRnZS9jb250ZW50cy9kZXBsb3kvJzsKIGlmKCRfR0VUWydwc192MjEnXT09PSdEJyl7CiAgJFQ9YXJyYXkoJ3YnPT4nVjItRCcpOwogICRNPWFycmF5KAogICBhcnJheSgkTVUuJy9wZXRzaG9wLWF0YXNrYWl0b3MtdWkucGhwJywncGV0c2hvcC1hdGFza2FpdG9zLXVpJywnNTQ5Y2ZhYWY5OTMxMWRlMjhjMzlkMWJmYjlhNWZlNGEyMzVjM2QzZicsJzkyNDRlYmUwMTY0MWY5MDc3MmFlZTJmMDY2NzkwOTFhJywnMTYwZjk1NzgwOTZiODJmM2VmMTgyOGYwYTRhMzNmMmInKSwKICAgYXJyYXkoJE1VLicvcGV0c2hvcC1hdGFza2FpdGEtcGFyZGF2aW1haS5waHAnLCdwZXRzaG9wLWF0YXNrYWl0YS1wYXJkYXZpbWFpJywnNzUyYjQwY2ZmYmFhMTkxMjA4ZjFiYWZkZWFiOGZlZmE1NTkyZWFhNScsJ2Y4ODQ2M2Q1NTc4YTNmMWQxMTU4ZGZmOTYzM2QzOTM5JywnYmQxN2IzMDY5ZTY3YzU1NTA4Y2M0ZTkyNDkwNTgyZmYnKSwKICApOwogIGZvcmVhY2goJE0gYXMgJG0pewogICAgbGlzdCgkaywkdiwkc2hhLCRtcCwkbW8pPSRtOyAkbz1hcnJheSgnbWQ1X3ByaWVzJz0+bWQ1X2ZpbGUoJGspKTsKICAgIGlmKCRvWydtZDVfcHJpZXMnXSE9PSRtcCl7ICRvWydrbGFpZGEnXT0nU1RPUDogbmV0aWtldGFzIG1kNSc7ICRUWydtb2R1bGlhaSddWyR2XT0kbzsgY29udGludWU7IH0KICAgICRyPXdwX3JlbW90ZV9nZXQoJFIuJHYuJy5iNjQ/cmVmPScuJHNoYSxhcnJheSgndGltZW91dCc9PjI1LCdoZWFkZXJzJz0+YXJyYXkoJ0FjY2VwdCc9PidhcHBsaWNhdGlvbi92bmQuZ2l0aHViLnJhdycsJ1VzZXItQWdlbnQnPT4ncGV0c2hvcC1icmlkZ2UnKSkpOwogICAgaWYoaXNfd3BfZXJyb3IoJHIpfHx3cF9yZW1vdGVfcmV0cmlldmVfcmVzcG9uc2VfY29kZSgkcikhPT0yMDApeyAkb1sna2xhaWRhJ109J2ZldGNoJzsgJFRbJ21vZHVsaWFpJ11bJHZdPSRvOyBjb250aW51ZTsgfQogICAgJGtvZGFzPWJhc2U2NF9kZWNvZGUodHJpbSh3cF9yZW1vdGVfcmV0cmlldmVfYm9keSgkcikpLHRydWUpOwogICAgdHJ5eyB0b2tlbl9nZXRfYWxsKCRrb2RhcyxUT0tFTl9QQVJTRSk7ICRvWydzaW50YWtzZSddPSdPSyc7IH0KICAgIGNhdGNoKFBhcnNlRXJyb3IgJGUpeyAkb1sna2xhaWRhJ109J1BhcnNlRXJyb3I6ICcuJGUtPmdldE1lc3NhZ2UoKS4nIGVpbC4nLiRlLT5nZXRMaW5lKCk7ICRUWydtb2R1bGlhaSddWyR2XT0kbzsgY29udGludWU7IH0KICAgIEBjb3B5KCRrLCRCQUsuJy8nLmJhc2VuYW1lKCRrKS4nLmJha192MjFfJy5nbWRhdGUoJ1ltZF9IaXMnKSk7CiAgICAkb1snaXJhc3l0YSddPWZpbGVfcHV0X2NvbnRlbnRzKCRrLCRrb2Rhcyk7IGNsZWFyc3RhdGNhY2hlKHRydWUsJGspOwogICAgJG9bJ21kNV9wbyddPW1kNV9maWxlKCRrKTsgJG9bJ3N1dGFtcGEnXT0oJG9bJ21kNV9wbyddPT09JG1vKTsKICAgICRUWydtb2R1bGlhaSddWyR2XT0kbzsKICB9CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24nKTsgZWNobyBqc29uX2VuY29kZSgkVCxKU09OX1VORVNDQVBFRF9VTklDT0RFKTsgZXhpdDsKIH0KIGlmKCRfR0VUWydwc192MjEnXSE9PSdUJykgcmV0dXJuOwogJFVJPSdQZXRzaG9wX0F0YXNrYWl0dV9VSSc7ICRDPSdQZXRzaG9wX0F0YXNrYWl0YV9QYXJkYXZpbWFpJzsKICRUPWFycmF5KCd2Jz0+J1YyLVQnLCd1aSc9PiRVSTo6VkVSU0lKQSwncGFyZCc9PiRDOjpWRVJTSUpBKTsKICRfR0VUWyd0ZXN0aW5pYWknXT0nMSc7CiAkbnVvPScyMDI2LTA4LTAxJzsgJGlraT0nMjAyNi0wOC0zMSc7CiAkVFsnYmVfZmlsdHJvJ109JEM6OnN1dmVzdGluZSgkbnVvLCRpa2kpOwogJFRbJ3Bhcmlua3R5cyddPSRDOjpmaWx0cm9fcGFyaW5rdHlzKCRudW8sJGlraSk7CiAvKiBmaWx0cmFzIHNhbmRlbGlzPXpiICovCiAkX0dFVFsnZl9zYW5kZWxpcyddPSd6Yic7CiAkVFsnZmlsdHJhaV9tYXRvbWknXT0kVUk6OmZpbHRyYWkoKTsKICRUWydzYWx5Z2FfdXpzJ109dHJpbSgkQzo6YXRyYW5rb3Nfc2FseWdhKCd1enMnKSk7CiAkVFsnc2FseWdhX2VpbCddPXRyaW0oJEM6OmF0cmFua29zX3NhbHlnYSgnZWlsJykpOwogJFRbJ3piX3N1dmVzdGluZSddPSRDOjpzdXZlc3RpbmUoJG51bywkaWtpKTsKICRUWyd6Yl9wanV2aXNfYnJlbmRhcyddPSRDOjpwanV2aXMoJ2JyZW5kYXMnLCRudW8sJGlraSk7CiAkVFsnemJfZWlsdXRlcyddPWNvdW50KCRDOjp2aXNvc19laWx1dGVzKCRudW8sJGlraSw1MDApKTsKIC8qICsgemVua2xhcyAqLwogJF9HRVRbJ2ZfYnJlbmRhcyddPSdmYXJtaW5hJzsKICRUWyd6Yl9mYXJtaW5hX3N1dmVzdGluZSddPSRDOjpzdXZlc3RpbmUoJG51bywkaWtpKTsKIHVuc2V0KCRfR0VUWydmX3NhbmRlbGlzJ10sJF9HRVRbJ2ZfYnJlbmRhcyddLCRfR0VUWyd0ZXN0aW5pYWknXSk7CiAkd3BkYi0+cXVlcnkoIlVQREFURSB7JHdwZGItPnByZWZpeH1zbmlwcGV0cyBTRVQgYWN0aXZlPTAgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiBlY2hvIGpzb25fZW5jb2RlKCRULEpTT05fVU5FU0NBUEVEX1VOSUNPREV8SlNPTl9VTkVTQ0FQRURfU0xBU0hFUyk7IGV4aXQ7Cn0sNSk7Cg=='; const VER='V21';
+const out={v:VER}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){ const u='https://api.github.com/repos/'+REPO+'/contents/'+path; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:msg,content:buf.toString('base64')}; if(sha)b.sha=sha; return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
@@ -12,26 +11,13 @@ const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/
 async function fx(u,o,k){ for(let i=0;i<6;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(12000); } } throw new Error('fx:'+k); }
 let sid=null;
 try{
-  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP Prisijungimas',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP E3 v21',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
   sid=JSON.parse(await c.text()).id; await miegok(9000);
-  const {chromium}=await import('playwright'); const br=await chromium.launch();
-  const ctx=await br.newContext({viewport:{width:1500,height:2400},ignoreHTTPSErrors:true,userAgent:UA});
-  const pg=await ctx.newPage(); const js=[]; pg.on('pageerror',e=>js.push(String(e).slice(0,140)));
-  await pg.goto(WP+'/?ps_lg=LG20260826',{waitUntil:'domcontentloaded',timeout:45000}); await miegok(1200);
-
-  const B=WP+'/wp-admin/admin.php?page=ps-pardavimai&testiniai=1&preset=men';
-  async function zing(pav,url,failas){
-    await pg.goto(url,{waitUntil:'domcontentloaded',timeout:60000}); await miegok(2200);
-    const t=await pg.evaluate(()=>document.querySelector('.psru')?document.querySelector('.psru').innerText:'NERA');
-    await put('screenshots/'+failas+'.png', await pg.screenshot({fullPage:true}), VER);
-    out.zingsniai.push({pav:pav,url:url.replace(WP,''),tekstas:t.slice(0,2600)});
-  }
-  await zing('1. Atsidarau menesi', B, 'ux1');
-  await zing('2. Atrenku ZB', B+'&f_sandelis=zb', 'ux2');
-  await zing('3. ZB viduje - zenklai', B+'&f_sandelis=zb&pjuvis=brendas', 'ux3');
-  await zing('4. Rikiuoju pagal antkaini', B+'&pjuvis=brendas', 'ux4');
-  out.js=js;
-  await br.close();
+  const r1=await fx(WP+'/?ps_v21=D',{},'d'); const t1=await r1.text();
+  try{ out.deploy=JSON.parse(t1); }catch(e){ out.t1=t1.slice(0,500); }
+  await miegok(9000);
+  const r2=await fx(WP+'/?ps_v21=T',{},'t'); const t2=await r2.text();
+  try{ out.testas=JSON.parse(t2); }catch(e){ out.t2=t2.slice(0,600); }
   await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})});
 }catch(e){ out.klaida=String(e).slice(0,400); if(sid){ try{ await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(x){} } }
-await put('deploy/ux.json', Buffer.from(JSON.stringify(out,null,1)), VER);
+await put('deploy/v21.json', Buffer.from(JSON.stringify(out,null,1)), VER);
