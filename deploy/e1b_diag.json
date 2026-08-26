@@ -1,0 +1,64 @@
+{
+ "v": "E1BX1",
+ "schema": [
+  "id | bigint(20) unsigned | null=NO | def=NULL",
+  "uzsakymas_id | bigint(20) unsigned | null=NO | def=NULL",
+  "shipment_id | varchar(64) | null=YES | def=NULL",
+  "sandelis | varchar(20) | null=YES | def=NULL",
+  "vezejas | varchar(20) | null=NO | def=''",
+  "siuntos_nr | varchar(64) | null=NO | def=''",
+  "paketu_sk | smallint(5) unsigned | null=NO | def='1'",
+  "pristatymo_tipas | varchar(20) | null=YES | def=NULL",
+  "sukurta_at | datetime | null=YES | def=NULL",
+  "diena | date | null=YES | def=NULL",
+  "tiekejui_issiusta_at | datetime | null=YES | def=NULL",
+  "registruota_at | datetime | null=YES | def=NULL",
+  "isvezta_at | datetime | null=YES | def=NULL",
+  "pristatyta_at | datetime | null=YES | def=NULL",
+  "atsiimta_at | datetime | null=YES | def=NULL",
+  "svoris_deklaruotas_g | int(10) unsigned | null=YES | def=NULL",
+  "kaina_vezejo_ct | int(11) | null=YES | def=NULL",
+  "tarifo_id | bigint(20) unsigned | null=YES | def=NULL",
+  "statusas | varchar(32) | null=YES | def=NULL",
+  "problema_kodas | varchar(20) | null=YES | def=NULL",
+  "dienos_iki_pristatymo | smallint(6) | null=YES | def=NULL",
+  "saltinis | varchar(12) | null=NO | def='cron'",
+  "testinis | tinyint(1) | null=NO | def='0'",
+  "saltinis_aplinka | varchar(10) | null=NO | def='dev'",
+  "fakt_versija | smallint(5) unsigned | null=NO | def='1'",
+  "sandelio_saltinis | varchar(12) | null=YES | def=NULL"
+ ],
+ "sql_mode": "ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION",
+ "A": {
+  "ok": 1,
+  "klaida": "",
+  "sql": "INSERT INTO `gaj6_ps_fakt_siuntos` (`uzsakymas_id`, `shipment_id`, `sandelis`, `sandelio_saltinis`, `vezejas`, `siuntos_nr`, `paketu_sk`, `pristatymo_tipas`, `sukurta_at`, `diena`, `registruota_at`, `svoris_deklaruotas_g`, `kaina_vezejo_ct`, `tarifo_id`, `statusas`, `saltinis`, `testinis`, `saltinis_aplinka`, `fakt_versija`) VALUES ('35088', NULL, NULL, NULL, 'venipak', 'DIAG-1', '1', 'pastomatas'"
+ },
+ "B": {
+  "ok": 1,
+  "klaida": ""
+ },
+ "C": "failed",
+ "C_klaida": "Incorrect table name ''",
+ "C_sql": "SHOW FULL COLUMNS FROM ``",
+ "D": "failed",
+ "D_klaida": "Table 'gyvunai2_nbpe1.av' doesn't exist",
+ "D_sql": "SHOW FULL COLUMNS FROM `av`",
+ "eilutes": [
+  {
+   "id": "7",
+   "siuntos_nr": "DIAG-1",
+   "vezejas": "venipak",
+   "sandelis": null,
+   "sandelio_saltinis": null
+  },
+  {
+   "id": "8",
+   "siuntos_nr": "DIAG-2",
+   "vezejas": "venipak",
+   "sandelis": null,
+   "sandelio_saltinis": null
+  }
+ ],
+ "valyta": 2
+}
