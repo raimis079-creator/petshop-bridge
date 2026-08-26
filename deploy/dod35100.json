@@ -1,0 +1,85 @@
+{
+ "v": "DOD1",
+ "ts": "2026-08-26T13:18:51+00:00",
+ "uzsakymas": 35100,
+ "woo": {
+  "statusas": "on-hold",
+  "total": "47.66",
+  "mokejimas": "bacs",
+  "mokejimas_pav": "Bankinis pavedimas",
+  "apmoketa": null,
+  "email": "terra@gyvunai.lt"
+ },
+ "faktas": null,
+ "eilutes": [],
+ "meta_faktas": "",
+ "meta_kanalai": "{\"pirmas\":{\"utm_source\":\"testas\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"e2-dod\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"landing_url\":\"https://dev.avesa.lt/?utm_source=testas&utm_medium=cpc&utm_campaign=e2-dod\",\"laikas\":\"2026-08-26 13:12:05\",\"kanalas\":\"mokamas\"},\"paskutinis\":{\"utm_source\":\"testas\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"e2-dod\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"landing_url\":\"https://dev.avesa.lt/?utm_source=testas&utm_medium=cpc&utm_campaign=e2-dod\",\"laikas\":\"2026-08-26 13:12:05\",\"kanalas\":\"mokamas\"},\"sutikimas_statistika\":1,\"fiksuota_at\":\"2026-08-26 13:16:43\",\"modulis\":\"kanalai/1.1\"}",
+ "kontrole": {
+  "klaida": "nera fakto"
+ },
+ "web_viso": 17,
+ "web_pagal_tipa": [
+  {
+   "tipas": "pageview",
+   "n": "10"
+  },
+  {
+   "tipas": "add_to_cart",
+   "n": "4"
+  },
+  {
+   "tipas": "view_cart",
+   "n": "2"
+  },
+  {
+   "tipas": "begin_checkout",
+   "n": "1"
+  }
+ ],
+ "web_pagal_pusl": [
+  {
+   "pusl_tipas": "kategorija",
+   "n": "5"
+  },
+  {
+   "pusl_tipas": "krepselis",
+   "n": "2"
+  },
+  {
+   "pusl_tipas": "checkout",
+   "n": "1"
+  },
+  {
+   "pusl_tipas": "aciu",
+   "n": "1"
+  },
+  {
+   "pusl_tipas": "home",
+   "n": "1"
+  }
+ ],
+ "web_utm": [
+  {
+   "saltinis": "testas",
+   "medium": "cpc",
+   "kampanija": "e2-dod",
+   "kanalas": "mokamas"
+  }
+ ],
+ "web_sesiju": 1,
+ "web_su_sutikimu": 16,
+ "web_lank30": 16,
+ "aciu_perziuros": 1,
+ "PURCHASE": {
+  "serverio_faktas": 0,
+  "narsykles_ivykiai": 0,
+  "atmesta_skaitiklis": 0
+ },
+ "pastabos": [
+  "Email \"Naujas užsakymas\" sent.",
+  "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+  "Daugiau=pigiau: pack \"20 vnt. rudų kiaulės knyslių\" (x1) nurašė 20 vnt. iš bazinio produkto #16302 (Ruda kiaulės knyslė, 1 vnt.).",
+  "Likutis sumažintas: 8in1 Flavours L trigubo skonio kaulas didelių veislių šunims, 1 vnt. (502&rarr;501), Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jauti",
+  "Vykdymas: MIXED — VF 2 vnt · AMBROSIA 1 vnt · AV 1 vnt (3 siunta(-os))"
+ ]
+}
