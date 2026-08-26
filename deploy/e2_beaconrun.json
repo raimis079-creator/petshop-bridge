@@ -1,6 +1,6 @@
 {
  "v": "E2B1",
- "sukurta": 3914,
+ "sukurta": 3915,
  "start": {
   "v": "E2B1",
   "faze": "start",
@@ -10,10 +10,19 @@
   "preke_pav": "20 vnt. baltų jaučio ausų",
   "endpoint": "https://dev.avesa.lt/?rest_route=/ps-web/v1/i"
  },
- "beacon_yra": false,
- "psWeb": "undefined",
+ "beacon_yra": true,
+ "psWeb": "function",
+ "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
  "js": [],
- "uzklausos": [],
- "put": 201,
+ "uzklausos": [
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i",
+  "POST https://dev.avesa.lt/?rest_route=/ps-web/v1/i"
+ ],
+ "put": 200,
  "irasyta": 1
 }
