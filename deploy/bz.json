@@ -1,0 +1,39 @@
+{
+ "v": "BZ",
+ "BZ1": {
+  "v": "BZ1",
+  "faze": "pricing",
+  "md5_pries": "f35b2152c8b79c1f80456075419b642d",
+  "keitimai": [
+   "brand_markups lentele",
+   "get_markup(+brand)",
+   "calculate body",
+   "calculate signature x0",
+   "preview_price x0",
+   "calculate_final_price x1",
+   "get_brand_markups()"
+  ],
+  "sintakse": "OK",
+  "backup": "class-pricing.php.bak_v150_20260826_191141",
+  "irasyta": 13662,
+  "md5_po": "2e9f6fead25da344e1835aee3cfe3754",
+  "sutampa": true
+ },
+ "BZ2": {
+  "v": "BZ2",
+  "faze": "xml",
+  "md5_pries": "426498e4599dc605cb5a3931ffbee2ae",
+  "keitimai": [
+   "petshop_xml_get_brand_slug()",
+   ":787 x1",
+   ":1108 x1",
+   ":1123 x1"
+  ],
+  "sintakse": "OK",
+  "backup": "petshop-xml.php.bak_brand_20260826_191150",
+  "irasyta": 61382,
+  "md5_po": "ca71af52f52ec41e4cc9f2b9177bbd68",
+  "sutampa": true
+ },
+ "dryraw": "<br />\n<b>Warning</b>:  Undefined variable $brand_slug in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/includes/class-pricing.php</b> on line <b>191</b><br />\n<br />\n<b>Fatal error</b>:  Uncaught TypeError: Petshop_Pricing::get_markup(): Argument #2 ($brand_slug) must be of type string, null given, called in /home/gyvunai2/domains/petshop.lt/public_html/wp-conten"
+}
