@@ -1,0 +1,312 @@
+{
+ "v": "E2BT",
+ "ts": "2026-08-26T14:52:29+00:00",
+ "klases": {
+  "Petshop_Fakt_Atsargos": "1.0",
+  "Petshop_Fakt_Kainos": "1.0",
+  "Petshop_Dim_Klientai": "1.0"
+ },
+ "lenteles": {
+  "ps_fakt_atsargos_d": {
+   "stulpeliu": 18,
+   "engine": "InnoDB"
+  },
+  "ps_fakt_kainos": {
+   "stulpeliu": 12,
+   "engine": "InnoDB"
+  },
+  "ps_dim_klientai": {
+   "stulpeliu": 26,
+   "engine": "InnoDB"
+  }
+ },
+ "likuciu_pavyzdziai": [
+  {
+   "preke": 34942,
+   "sandelis": "av",
+   "_own_stock_qty": "",
+   "_stock": "",
+   "likutis_av": null,
+   "likutis_tiekejo": null
+  },
+  {
+   "preke": 27799,
+   "sandelis": "vf",
+   "_own_stock_qty": "",
+   "_stock": "0.000000",
+   "likutis_av": null,
+   "likutis_tiekejo": 0
+  },
+  {
+   "preke": 12483,
+   "sandelis": "zb",
+   "_own_stock_qty": "",
+   "_stock": "593.000000",
+   "likutis_av": null,
+   "likutis_tiekejo": 593
+  }
+ ],
+ "snapshot_siandien": {
+  "diena": "2026-08-26",
+  "dry": false,
+  "prekiu": 2621,
+  "irasyta": 2621,
+  "stockout": 390,
+  "verte_ct": 1972867,
+  "be_savikainos": 391
+ },
+ "snapshot_vakar": {
+  "diena": "2026-08-25",
+  "dry": false,
+  "prekiu": 2621,
+  "irasyta": 2621,
+  "stockout": 390,
+  "verte_ct": 1972867,
+  "be_savikainos": 391
+ },
+ "snapshot_kartojam": {
+  "diena": "2026-08-26",
+  "dry": false,
+  "prekiu": 2621,
+  "irasyta": 2621,
+  "stockout": 390,
+  "verte_ct": 1972867,
+  "be_savikainos": 391
+ },
+ "trukme_s": 18.1,
+ "atsargu_kontrole": {
+  "versija": "1.0",
+  "dienu_lenteleje": [
+   {
+    "data": "2026-08-26",
+    "n": "2621",
+    "verte": "1972867"
+   },
+   {
+    "data": "2026-08-25",
+    "n": "2621",
+    "verte": "1972867"
+   }
+  ],
+  "pagal_sandeli": [
+   {
+    "sandelis": "vf",
+    "prekiu": "978",
+    "su_av": "1",
+    "su_tiek": "978",
+    "av_suma": "3",
+    "tiek_suma": "149195",
+    "verte": "7986",
+    "stockout": "160"
+   },
+   {
+    "sandelis": "av",
+    "prekiu": "904",
+    "su_av": "891",
+    "su_tiek": "3",
+    "av_suma": "10944",
+    "tiek_suma": "5",
+    "verte": "1902623",
+    "stockout": "154"
+   },
+   {
+    "sandelis": "zb",
+    "prekiu": "576",
+    "su_av": "0",
+    "su_tiek": "576",
+    "av_suma": "0",
+    "tiek_suma": "14991",
+    "verte": "0",
+    "stockout": "43"
+   },
+   {
+    "sandelis": "quattro",
+    "prekiu": "64",
+    "su_av": "1",
+    "su_tiek": "64",
+    "av_suma": "0",
+    "tiek_suma": "2182",
+    "verte": "0",
+    "stockout": "2"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "prekiu": "42",
+    "su_av": "0",
+    "su_tiek": "42",
+    "av_suma": "0",
+    "tiek_suma": "267",
+    "verte": "0",
+    "stockout": "21"
+   },
+   {
+    "sandelis": "prins",
+    "prekiu": "23",
+    "su_av": "0",
+    "su_tiek": "23",
+    "av_suma": "0",
+    "tiek_suma": "337",
+    "verte": "0",
+    "stockout": "0"
+   },
+   {
+    "sandelis": null,
+    "prekiu": "19",
+    "su_av": "9",
+    "su_tiek": "0",
+    "av_suma": "124",
+    "tiek_suma": "0",
+    "verte": "62258",
+    "stockout": "10"
+   },
+   {
+    "sandelis": "ambrosia",
+    "prekiu": "15",
+    "su_av": "1",
+    "su_tiek": "15",
+    "av_suma": "0",
+    "tiek_suma": "204",
+    "verte": "0",
+    "stockout": "0"
+   }
+  ],
+  "savikainos_saltiniai": [
+   {
+    "s": "_vf_cost",
+    "n": "987"
+   },
+   {
+    "s": "_cost_price",
+    "n": "646"
+   },
+   {
+    "s": "_zb_cost",
+    "n": "591"
+   },
+   {
+    "s": "(NULL)",
+    "n": "391"
+   },
+   {
+    "s": "partijos",
+    "n": "6"
+   }
+  ],
+  "su_partijomis": 3,
+  "su_galiojimu": 1,
+  "su_dienu_atsargu": 13
+ },
+ "AV_PATIKRA": {
+  "prekiu": "904",
+  "su_av_reiksme": "891",
+  "av_suma": "10944",
+  "su_tiekejo": "3"
+ },
+ "AV_LAUKIAMA": {
+  "prekiu": 904,
+  "av_suma": 13874,
+  "komentaras": "pries pataisa butu buve 15 prekiu / 168"
+ },
+ "kainos_pradine": {
+  "rasta": 40,
+  "irasyta": 40,
+  "dry": false
+ },
+ "kainu_testas": {
+  "preke": 35099,
+  "sena": "25",
+  "pries": 0,
+  "po_keitimo": 1,
+  "po_grazinimo": 2,
+  "istorija": [
+   {
+    "id": "41",
+    "kaina_ct": "2158",
+    "reguliari_ct": "2158",
+    "savikaina_ct": "1318",
+    "akcijoje": "0",
+    "saltinis": "sistema"
+   },
+   {
+    "id": "42",
+    "kaina_ct": "2066",
+    "reguliari_ct": "2066",
+    "savikaina_ct": "1318",
+    "akcijoje": "0",
+    "saltinis": "sistema"
+   }
+  ],
+  "reg_meta_su_pvm": "25"
+ },
+ "kainu_kontrole": {
+  "versija": "1.0",
+  "viso": 42,
+  "prekiu": 41,
+  "saltiniai": [
+   {
+    "saltinis": "pradine",
+    "n": "40"
+   },
+   {
+    "saltinis": "sistema",
+    "n": "2"
+   }
+  ],
+  "be_kainos": 0
+ },
+ "klientai": {
+  "dry": false,
+  "klientu": 1,
+  "irasyta": 1,
+  "rfm": "praleista"
+ },
+ "klientu_kontrole": {
+  "versija": "1.0",
+  "klientu": 1,
+  "eilutes": [
+   {
+    "r": "56c73d907c",
+    "klientas_id": null,
+    "uzsakymu_sk": "4",
+    "pajamos_ct": "17130",
+    "marza_ct": "4879",
+    "kontribucija_ct": "4631",
+    "ltv_90_ct": "17130",
+    "ltv_365_ct": "17130",
+    "vid_intervalas_d": "0.2",
+    "kohorta": "2026-08",
+    "rfm_r": null,
+    "rfm_f": null,
+    "rfm_m": null,
+    "segmentas": "aktyvus",
+    "pagrindinis_brendas": "ambrosia",
+    "kanalas_pirmas": "mokamas",
+    "gyvunu_sk": "0",
+    "testinis": "1"
+   }
+  ],
+  "segmentai": [
+   {
+    "segmentas": "aktyvus",
+    "n": "1"
+   }
+  ],
+  "kohortos": [
+   {
+    "kohorta": "2026-08",
+    "n": "1",
+    "pajamos": "17130"
+   }
+  ],
+  "kontrole_su_faktais": {
+   "faktu_uzsakymu": 4,
+   "dim_uzsakymu": 4,
+   "faktu_pajamos": 17130,
+   "dim_pajamos": 17130
+  }
+ },
+ "cron": {
+  "ps_fakt_atsargu_snapshot": "2026-08-27 20:55 UTC",
+  "ps_dim_klientu_perskaiciavimas": "2026-08-27 20:40 UTC"
+ }
+}
