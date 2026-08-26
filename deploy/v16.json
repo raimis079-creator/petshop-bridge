@@ -1,0 +1,48 @@
+{
+ "v": "V16D",
+ "sukurta": 3909,
+ "deploy": {
+  "v": "V16D",
+  "md5_serveryje": "07f56fc5f5bd5e146d60459f8f57dbcd",
+  "deploy": {
+   "sintakse": "OK",
+   "backup": "OK",
+   "irasyta": 51189,
+   "md5_po": "a9be75c3ce78810909bda95e0f3878e9",
+   "sutampa": true
+  }
+ },
+ "eilutes": [
+  "15 | lp_express | kurjeris | — | 50 – 500 | 3,00 € | 0 | — | 3,16 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "16 | lp_express | kurjeris | — | 501 – 1000 | 3,00 € | 0 | — | 3,16 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "17 | lp_express | kurjeris | — | 1001 – 2000 | 3,00 € | 0 | — | 3,16 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "18 | lp_express | kurjeris | — | 2001 – 3000 | 3,55 € | 0 | — | 3,74 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "19 | lp_express | kurjeris | — | 3001 – 5000 | 3,55 € | 0 | — | 3,74 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "20 | lp_express | kurjeris | — | 5001 – 10000 | 4,40 € | 0 | — | 4,64 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "21 | lp_express | kurjeris | — | 10001 – 15000 | 5,10 € | 0 | — | 5,38 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "22 | lp_express | kurjeris | — | 15001 – 20000 | 5,10 € | 0 | — | 5,38 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "23 | lp_express | kurjeris | — | 20001 – 30000 | 5,10 € | 0 | — | 5,38 € | 2026-08-01 → … | S-2023/363 kurjeris | Uzdaryti",
+  "24 | lp_express | kurjeris | — | 30001 – 1500000 | 8,07 € | 0 | 6,0476 ct/kg nuo 30 kg | 8,51 € | 2026-08-01 → … | S-2023/363 kurjeris 30-1500kg + krovos darbai | Uzdaryti",
+  "10 | lp_express | pastomatas | XS | 0 – ∞ | 1,35 € | 0 | — | 1,42 € | 2026-08-01 → … | S-2023/363 pastomatas XS | Uzdaryti",
+  "11 | lp_express | pastomatas | S | 0 – ∞ | 1,40 € | 0 | — | 1,48 € | 2026-08-01 → … | S-2023/363 pastomatas S | Uzdaryti",
+  "12 | lp_express | pastomatas | M | 0 – ∞ | 1,45 € | 0 | — | 1,53 € | 2026-08-01 → … | S-2023/363 pastomatas M | Uzdaryti",
+  "13 | lp_express | pastomatas | L | 0 – ∞ | 1,75 € | 0 | — | 1,85 € | 2026-08-01 → … | S-2023/363 pastomatas L | Uzdaryti",
+  "14 | lp_express | pastomatas | XL | 0 – ∞ | 2,90 € | 0 | — | 3,06 € | 2026-08-01 → … | S-2023/363 pastomatas XL | Uzdaryti",
+  "26 | venipak | kurjeris | — | 0 – 2000 | 2,10 € | 0 | — | 3,01 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "27 | venipak | kurjeris | — | 2001 – 5000 | 2,31 € | 0 | — | 3,31 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "28 | venipak | kurjeris | — | 5001 – 10000 | 2,80 € | 0 | — | 4,02 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "29 | venipak | kurjeris | — | 10001 – 20000 | 3,85 € | 0 | — | 5,52 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "30 | venipak | kurjeris | — | 20001 – 30000 | 4,34 € | 0 | — | 6,23 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "31 | venipak | kurjeris | — | 30001 – 35000 | 5,27 € | 0 | — | 7,56 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "32 | venipak | kurjeris | — | 35001 – 50000 | 6,80 € | 0 | — | 9,76 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "33 | venipak | kurjeris | — | 50001 – 75000 | 9,18 € | 0 | — | 13,17 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "34 | venipak | kurjeris | — | 75001 – 100000 | 10,88 € | 0 | — | 15,61 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "35 | venipak | kurjeris | — | 100001 – 200000 | 14,20 € | 0 | — | 20,38 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "36 | venipak | kurjeris | — | 200001 – 300000 | 20,40 € | 0 | — | 29,27 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "37 | venipak | kurjeris | — | 300001 – 400000 | 23,80 € | 0 | — | 34,15 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "38 | venipak | kurjeris | — | 400001 – 500000 | 28,05 € | 0 | — | 40,25 € | 2026-07-01 → … | Venipak svorio lentele | Uzdaryti",
+  "25 | venipak | pastomatas | — | 0 – ∞ | 1,10 € | 0 | — | 1,58 € | 2026-07-01 → … | Raimis: pastomatai 1,10 EUR | Uzdaryti"
+ ],
+ "js": [],
+ "put": 201
+}
