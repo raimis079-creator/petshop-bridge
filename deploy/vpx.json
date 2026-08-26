@@ -1,0 +1,353 @@
+{
+ "v": "VPX1",
+ "ts": "2026-08-26T10:52:01+00:00",
+ "versija": "1.5",
+ "schemos_ver": 4,
+ "venipak_eil": 14,
+ "lp_eil": 15,
+ "priemokos_venipak": {
+  "suma_pct": 43.489999999999995,
+  "eilutes": {
+   "atlyginimas": 32.73,
+   "kuras": 25.76,
+   "nuolaida": 15
+  }
+ },
+ "priemokos_lp": {
+  "suma_pct": 5.48,
+  "eilutes": {
+   "kuras": 5.48
+  }
+ },
+ "venipak": {
+  "pastomatas (110 x1,4349 = 158)": [
+   158,
+   25
+  ],
+  "kurjeris 2 kg (210 -> 301)": [
+   301,
+   26
+  ],
+  "kurjeris 10 kg (280 -> 402)": [
+   402,
+   28
+  ],
+  "kurjeris 30 kg (434 -> 623)": [
+   623,
+   30
+  ],
+  "kurjeris 600 kg (virs lenteles) -> NULL": [
+   null,
+   null
+  ]
+ },
+ "lp_po_migracijos": {
+  "pastomatas XS (135 +5,48% = 142)": [
+   142,
+   10
+  ],
+  "kurjeris 42 kg (851 + 254 = 1105)": [
+   1105,
+   24
+  ]
+ },
+ "saskaita": {
+  "baze": 353.95,
+  "suma_pct": 43.489999999999995,
+  "apskaiciuota": 507.88,
+  "saskaitoje": 507.89,
+  "skirtumas": -0.01
+ },
+ "tarifai": [
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "50",
+   "svoris_iki_g": "500",
+   "kaina_ct": "300",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "501",
+   "svoris_iki_g": "1000",
+   "kaina_ct": "300",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "1001",
+   "svoris_iki_g": "2000",
+   "kaina_ct": "300",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "2001",
+   "svoris_iki_g": "3000",
+   "kaina_ct": "355",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "3001",
+   "svoris_iki_g": "5000",
+   "kaina_ct": "355",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "5001",
+   "svoris_iki_g": "10000",
+   "kaina_ct": "440",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "10001",
+   "svoris_iki_g": "15000",
+   "kaina_ct": "510",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "15001",
+   "svoris_iki_g": "20000",
+   "kaina_ct": "510",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "20001",
+   "svoris_iki_g": "30000",
+   "kaina_ct": "510",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "30001",
+   "svoris_iki_g": "1500000",
+   "kaina_ct": "807",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "6.0476"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "pastomatas",
+   "dydis": "L",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "175",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "pastomatas",
+   "dydis": "M",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "145",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "pastomatas",
+   "dydis": "S",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "140",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "pastomatas",
+   "dydis": "XL",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "290",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "lp_express",
+   "tipas": "pastomatas",
+   "dydis": "XS",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "135",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": "2000",
+   "kaina_ct": "210",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "2001",
+   "svoris_iki_g": "5000",
+   "kaina_ct": "231",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "5001",
+   "svoris_iki_g": "10000",
+   "kaina_ct": "280",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "10001",
+   "svoris_iki_g": "20000",
+   "kaina_ct": "385",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "20001",
+   "svoris_iki_g": "30000",
+   "kaina_ct": "434",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "30001",
+   "svoris_iki_g": "35000",
+   "kaina_ct": "527",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "35001",
+   "svoris_iki_g": "50000",
+   "kaina_ct": "680",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "50001",
+   "svoris_iki_g": "75000",
+   "kaina_ct": "918",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "75001",
+   "svoris_iki_g": "100000",
+   "kaina_ct": "1088",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "100001",
+   "svoris_iki_g": "200000",
+   "kaina_ct": "1420",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "200001",
+   "svoris_iki_g": "300000",
+   "kaina_ct": "2040",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "300001",
+   "svoris_iki_g": "400000",
+   "kaina_ct": "2380",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "kurjeris",
+   "dydis": "",
+   "svoris_nuo_g": "400001",
+   "svoris_iki_g": "500000",
+   "kaina_ct": "2805",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  },
+  {
+   "vezejas": "venipak",
+   "tipas": "pastomatas",
+   "dydis": "",
+   "svoris_nuo_g": "0",
+   "svoris_iki_g": null,
+   "kaina_ct": "110",
+   "kintamas_pct": "0.000",
+   "kaina_uz_kg_ct": "0.0000"
+  }
+ ]
+}
