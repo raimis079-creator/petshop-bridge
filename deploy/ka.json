@@ -1,0 +1,52 @@
+{
+ "v": "KA",
+ "ts": "2026-08-26T17:48:53+00:00",
+ "md5_pries": "4c8d25c083c5a4235831505ce138a920",
+ "keitimai": [
+  "marza() -> antkainis",
+  "grindys komentaras",
+  "etikete: <div class=\"kort-antr\">Kaina ir ma",
+  "etikete: <div class=\"kort-eil\"><span>Marža<",
+  "etikete: Savikaina nesuvesta — nematyti nei"
+ ],
+ "sintakse": "OK",
+ "backup": "petshop-katalogas.php.bak_antkainis_20260826_174853",
+ "irasyta": 448109,
+ "md5_po": "9b3d64faff69f90dfd96ae37568208a9",
+ "sutampa": true,
+ "liko_etiketes": [
+  "1241: /* Marža grąžinama iškart — kad eilutė persidažytų be perkrovimo. */",
+  "2857: ranka — kad įrašius skaičių marža užsipildytų GYVAI, be Enter.",
+  "3649: echo '<div class=\"kort-eil\"><span>Marža per metus</span><b>' . $eur( $m['marza365'] ) . ' €</b></div>';",
+  "3659: echo '<div class=\"kort-info-m\">Marža apytikslė: dabartinė savikaina × parduotas kiekis. '",
+  "3856: echo '<div><span>Marža per metus</span><b>' . $eur( $marza ) . ' €</b></div>';",
+  "3860: echo '<div class=\"kort-info-m\">Marža apytikslė: dabartinė savikaina × parduotas kiekis. '",
+  "4455: /** Marža eurais nuo vieneto. */",
+  "4869: 'marza' => array( 'g' => 'Pinigai', 'v' => 'Marža %', 't' => 'sk' ),",
+  "4870: 'pmarza' => array( 'g' => 'Pinigai', 'v' => 'Marža €', 't' => 'sk' ),",
+  "4930: /* palyginimas su KITU lauku — „marža žemiau savo kategorijos ribos\" */",
+  "5418: if ( ! empty( $f['marza'] ) ) { $akt[] = 'marža: ' . $f['marza']; }",
+  "5446: self::sel( 'marza', 'Marža', array( '' => 'visos', 'zem' => 'žemiau kategorijos ribos', 'lt10' => 'žemiau 10 %',",
+  "5520: <div class=\"p\"><span class=\"l\">Svertinė marža<i title=\"Svertinė pagal atsargų vertę, ne procentų vidurkis.\">ⓘ</i></span><span class=\"v\">' . ( $s['m",
+  "5522: <div class=\"p\"><span class=\"l\">Potenciali marža<i title=\"Kiek uždirbtumėte pardavę visas AV atsargas dabartinėmis kainomis. Tik prekės su žinoma sa",
+  "5686: self::th( 'marza', 'Marža', $sort, $kryp, 'num', '% · € vnt.' );",
+  "5719: if ( $r['marza'] !== null && $r['marza'] < $r['grind'] ) { $bkl = 'bad'; $kodel[] = 'marža ' . number_format( $r['marza'], 1, ',', ' ' ) . ' % žemi",
+  "5851: /* MARŽA PLOKŠTELE */",
+  "5873: if ( $r['pmarza'] !== null ) { $pp .= ' · marža ' . $eur( $r['pmarza'] ) . ' € (apytiksliai, pagal dabartinę savikainą)'; }",
+  "6399: /* v8.5: marža persiskaičiuoja iškart — vedant savikainas",
+  "6405: mm.textContent=\"marža \"+String(mp).replace(\".\",\",\")+\" %\";",
+  "6416: mm.textContent=\"marža \"+String(m.proc).replace(\".\",\",\")+\" %\";",
+  "8714: /* marža plokštele */"
+ ],
+ "liko_sk": 22,
+ "patikra": {
+  "preke": 17978,
+  "pav": "Josera Sensiplus 12,5 kg &#8211; sausas ",
+  "kaina_su_pvm": 37.49,
+  "savikaina": 20.6344,
+  "marza_funkcija": 33.4,
+  "marza_eur": 10.35,
+  "ranka_antkainis": 50.2,
+  "ranka_marza": 33.4
+ }
+}
