@@ -1,0 +1,227 @@
+{
+ "v": "PT",
+ "recon": {
+  "v": "PT",
+  "partijos_240_285": [
+   "241: \t\t\t'partijos_id' => $partijos_id,",
+   "242: \t\t\t'kiekis'      => $kiekis,",
+   "243: \t\t\t'savikaina'   => $sav_eur,",
+   "244: \t\t\t'likutis'     => $buvo + $kiekis,",
+   "245: \t\t\t'savikaina_prekes' => $nauja_sav,",
+   "246: \t\t);",
+   "247: \t}",
+   "248: ",
+   "249: \t/* ============================================================",
+   "250: \t *  AV LIKUTIS — kur rasyti",
+   "251: \t * ============================================================ */",
+   "252: ",
+   "253: \t/**",
+   "254: \t * S590 taisykle: preke be tiekejo -> `_stock`; su tiekeju -> `_own_stock_qty`.",
+   "255: \t * Sis modulis ta pacia taisykle ir taiko, kad neatsirastu antro kelio.",
+   "256: \t */",
+   "257: \tpublic static function av_laukas( $pid ) {",
+   "258: \t\tforeach ( array( '_vf_qty', '_zb_qty' ) as $k ) {",
+   "259: \t\t\tif ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }",
+   "260: \t\t}",
+   "261: \t\treturn '_stock';",
+   "262: \t}",
+   "263: ",
+   "264: \tpublic static function av_likutis( $pid ) {",
+   "265: \t\t$v = get_post_meta( $pid, self::av_laukas( $pid ), true );",
+   "266: \t\treturn ( $v === '' || $v === null ) ? 0 : (int) $v;",
+   "267: \t}",
+   "268: ",
+   "269: \tprivate static function rasyti_av_likuti( $pid, $kiekis ) {",
+   "270: \t\t$kiekis = max( 0, (int) $kiekis );",
+   "271: \t\t$laukas = self::av_laukas( $pid );",
+   "272: ",
+   "273: \t\tif ( $laukas === '_stock' ) {",
+   "274: \t\t\t/* Per WC CRUD, kad atsinaujintu lookup lentele ir transientai.",
+   "275: \t\t\t   `update_post_meta` cia paliktu parduotuve rodancia sena likuti. */",
+   "276: \t\t\t$prod = wc_get_product( $pid );",
+   "277: \t\t\tif ( $prod ) {",
+   "278: \t\t\t\t$prod->set_manage_stock( true );",
+   "279: \t\t\t\t$prod->set_stock_quantity( $kiekis );",
+   "280: \t\t\t\t$prod->save();",
+   "281: \t\t\t\treturn;",
+   "282: \t\t\t}",
+   "283: \t\t}",
+   "284: \t\tupdate_post_meta( $pid, $laukas, $kiekis );",
+   "285: \t}"
+  ],
+  "ps_sources": {
+   "stulpeliai": [
+    "id bigint(20) unsigned",
+    "product_id bigint(20) unsigned",
+    "source varchar(32)",
+    "supplier_sku varchar(64)",
+    "ean varchar(32)",
+    "stock_qty int(11)",
+    "cost_net decimal(12,4)",
+    "synced_at datetime",
+    "is_active tinyint(1)",
+    "is_sellable tinyint(1)",
+    "priority smallint(6)",
+    "created_at datetime",
+    "updated_at datetime"
+   ],
+   "eil": 3849
+  },
+  "sources_pjuvis": [
+   {
+    "id": "1",
+    "product_id": "6349",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-08-07 12:02:46",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-26 07:20:05"
+   },
+   {
+    "id": "2",
+    "product_id": "6350",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:09",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-26 07:20:05"
+   },
+   {
+    "id": "3",
+    "product_id": "6351",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:09",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-26 07:20:05"
+   },
+   {
+    "id": "4",
+    "product_id": "6379",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:10",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-26 07:20:05"
+   },
+   {
+    "id": "5",
+    "product_id": "6382",
+    "source": "zb",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": null,
+    "synced_at": "2026-07-02 22:02:10",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-26 07:20:05"
+   },
+   {
+    "id": "6",
+    "product_id": "12814",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "42",
+    "cost_net": null,
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-08-26 07:20:05"
+   }
+  ],
+  "reiksmes": {
+   "source": [
+    {
+     "source": "av",
+     "n": "1423"
+    },
+    {
+     "source": "vf",
+     "n": "1167"
+    },
+    {
+     "source": "zb",
+     "n": "1074"
+    },
+    {
+     "source": "quattro",
+     "n": "65"
+    },
+    {
+     "source": "belcor_tofu",
+     "n": "62"
+    },
+    {
+     "source": "prins",
+     "n": "43"
+    },
+    {
+     "source": "ambrosia",
+     "n": "15"
+    }
+   ]
+  },
+  "av_su_tiekejo_savikaina": 15,
+  "av_su_own": 15,
+  "partiju_metodai": [
+   "s pub lentele() @74",
+   "s pub pakuociu_lentele() @75",
+   "s pub uztikrinti_lenteles() @77",
+   "s priv lentele_yra($t) @134",
+   "s pub av_preke($pid) @140",
+   "s pub priimti($pid,$a) @165",
+   "s pub av_laukas($pid) @257",
+   "s pub av_likutis($pid) @264",
+   "s priv rasyti_av_likuti($pid,$kiekis) @269",
+   "s pub svertine_savikaina($pid) @292",
+   "s pub paskutine_savikaina($pid) @304",
+   "s pub perskaiciuoti_savikaina($pid) @319",
+   "s pub nurasyti($pid,$kiekis,$dry) @339",
+   "s pub partijos($pid,$tik_su_likuciu) @393",
+   "s pub artimiausias_galiojimas($pid) @404",
+   "s pub santrauka($pid) @413",
+   "s pub pakuotes($pid) @430",
+   "s pub medziagos() @443",
+   "s pub tipai() @457",
+   "s pub trinti_pakuote($id,$pid) @466",
+   "s pub irasyti_pakuote($pid,$a) @477",
+   "s pub pakuociu_svoris($pid,$vienetu) @508",
+   "s pub gpais_pagal_metus($pid) @539",
+   "s pub kabinti_uzsakymus() @580",
+   "s pub uzsakymo_nurasymas($order_id) @586",
+   "s pub grazinti_i_partija($partijos_id,$kiekis) @648",
+   "s pub sutapimo_patikra($pid) @665",
+   "s pub statistika() @681"
+  ]
+ }
+}
