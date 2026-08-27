@@ -1,0 +1,56 @@
+{
+ "v": "E3C",
+ "sid": 3979,
+ "dep": {
+  "v": "E3C27",
+  "k": "DEP_E3C27",
+  "petshop-ataskaita-pardavimai.php": {
+   "pries": "5979d0de3a4b1dbe03b148bf5b59cfe1",
+   "bak": true,
+   "rasyta": 55035,
+   "po": "c0381cf76978d0d8bc274cc7eed6570e"
+  },
+  "petshop-rytas.php": {
+   "pries": "76806bbc0e9f88bac09e289cb6849565",
+   "bak": true,
+   "rasyta": 40611,
+   "po": "7a2ed2a95bc7b0b59815688a64066bc1"
+  }
+ },
+ "ver": {
+  "v": "E3C27",
+  "k": "VER_E3C27",
+  "petshop-ataskaita-pardavimai.php": "c0381cf76978d0d8bc274cc7eed6570e",
+  "petshop-rytas.php": "7a2ed2a95bc7b0b59815688a64066bc1",
+  "ver": [
+   "3.2",
+   "1.0.1"
+  ],
+  "tiekejas_dim": [
+   "legacy",
+   "ambrosia",
+   "vf",
+   "zb"
+  ],
+  "vardai": [
+   "AV (savas)",
+   "Ambrosia",
+   "Vetfarmas",
+   "ZB (Žalioji banga)"
+  ],
+  "sandelis_pjuvis": "isimtas",
+  "tabai": [
+   "tiekejas",
+   "brendas",
+   "kategorija",
+   "preke",
+   "kanalas",
+   "klientas"
+  ]
+ },
+ "h1": "Pardavimai ir pelnas",
+ "tekstas": "Tiekėjas\nŽenklas\nKategorija\nPrekė\nKanalas\nNaujas / grįžtantis",
+ "p1": 201,
+ "p2": 201,
+ "js": []
+}
