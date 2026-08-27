@@ -1,0 +1,576 @@
+{
+ "v": "CR27A",
+ "zingsniai": [
+  "isjungta_TEMP:0",
+  "snip_id:3972"
+ ],
+ "http": 200,
+ "duom": {
+  "v": "CR27A",
+  "laikas": "2026-08-27 09:36:42",
+  "ts": 1787812602,
+  "disable_wp_cron": "nedef",
+  "alternate_wp_cron": "nedef",
+  "home": "https://dev.avesa.lt",
+  "site": "https://dev.avesa.lt",
+  "cron_kiekis": 66,
+  "cronai": [
+   {
+    "h": "action_scheduler_run_queue",
+    "kada": "2026-08-27 06:36",
+    "sch": "every_minute"
+   },
+   {
+    "h": "woo_lithuaniapost_sync_tracking_data",
+    "kada": "2026-08-27 06:36",
+    "sch": "once"
+   },
+   {
+    "h": "ps_esp_cron_process_pending",
+    "kada": "2026-08-27 06:37",
+    "sch": "ps_esp_5min"
+   },
+   {
+    "h": "cmplz_every_five_minutes_hook",
+    "kada": "2026-08-27 06:37",
+    "sch": "cmplz_five_minutes"
+   },
+   {
+    "h": "ps_email_dispatch_cron",
+    "kada": "2026-08-27 06:38",
+    "sch": "ps_esp_5min"
+   },
+   {
+    "h": "ps_post_purchase_check",
+    "kada": "2026-08-27 06:39",
+    "sch": "hourly"
+   },
+   {
+    "h": "ps_cart_abandon_check",
+    "kada": "2026-08-27 06:39",
+    "sch": "ps_esp_5min"
+   },
+   {
+    "h": "wp_privacy_delete_old_export_files",
+    "kada": "2026-08-27 06:43",
+    "sch": "hourly"
+   },
+   {
+    "h": "woo_lithuaniapost_terminal_service_update_terminals",
+    "kada": "2026-08-27 06:56",
+    "sch": "daily"
+   },
+   {
+    "h": "woo_lithuaniapost_api_oauth_refresh_token",
+    "kada": "2026-08-27 06:56",
+    "sch": "hourly"
+   },
+   {
+    "h": "woo_lithuaniapost_update_tracking_status",
+    "kada": "2026-08-27 06:56",
+    "sch": "hourly"
+   },
+   {
+    "h": "wc_admin_process_orders_milestone",
+    "kada": "2026-08-27 06:58",
+    "sch": "hourly"
+   },
+   {
+    "h": "wc_admin_unsnooze_admin_notes",
+    "kada": "2026-08-27 06:58",
+    "sch": "hourly"
+   },
+   {
+    "h": "petshop_vf_sync_stock_hourly",
+    "kada": "2026-08-27 06:59",
+    "sch": "hourly"
+   },
+   {
+    "h": "ps_refill_iv_veidrodis",
+    "kada": "2026-08-27 07:06",
+    "sch": "hourly"
+   },
+   {
+    "h": "ps_akcijos_valanda",
+    "kada": "2026-08-27 07:08",
+    "sch": "hourly"
+   },
+   {
+    "h": "ps_vartai_valanda",
+    "kada": "2026-08-27 07:13",
+    "sch": "hourly"
+   },
+   {
+    "h": "ps_seseliai_valandinis",
+    "kada": "2026-08-27 07:13",
+    "sch": "hourly"
+   },
+   {
+    "h": "ps_dropship_sargas",
+    "kada": "2026-08-27 07:13",
+    "sch": "hourly"
+   },
+   {
+    "h": "wpai_bridge_poll_remote_status",
+    "kada": "2026-08-27 07:19",
+    "sch": "twicedaily"
+   },
+   {
+    "h": "jetpack_clean_nonces",
+    "kada": "2026-08-27 07:21",
+    "sch": "hourly"
+   },
+   {
+    "h": "ps_refill_daily_check",
+    "kada": "2026-08-27 08:00",
+    "sch": "daily"
+   },
+   {
+    "h": "cmplz_every_day_hook",
+    "kada": "2026-08-27 08:12",
+    "sch": "cmplz_daily"
+   },
+   {
+    "h": "ps_reminders_daily_check",
+    "kada": "2026-08-27 09:00",
+    "sch": "daily"
+   },
+   {
+    "h": "petshop_attr_engine_run",
+    "kada": "2026-08-27 10:57",
+    "sch": "twicedaily"
+   },
+   {
+    "h": "recovery_mode_clean_expired_keys",
+    "kada": "2026-08-27 15:43",
+    "sch": "daily"
+   },
+   {
+    "h": "wp_scheduled_delete",
+    "kada": "2026-08-27 15:43",
+    "sch": "daily"
+   },
+   {
+    "h": "delete_expired_transients",
+    "kada": "2026-08-27 15:43",
+    "sch": "daily"
+   },
+   {
+    "h": "wp_update_user_counts",
+    "kada": "2026-08-27 15:43",
+    "sch": "twicedaily"
+   },
+   {
+    "h": "wp_scheduled_auto_draft_delete",
+    "kada": "2026-08-27 15:47",
+    "sch": "daily"
+   },
+   {
+    "h": "rank_math/content-ai/update_prompts",
+    "kada": "2026-08-27 16:03",
+    "sch": "daily"
+   },
+   {
+    "h": "yith_wcan_delete_expired_transients",
+    "kada": "2026-08-27 16:28",
+    "sch": "daily"
+   },
+   {
+    "h": "wp_version_check",
+    "kada": "2026-08-27 16:43",
+    "sch": "twicedaily"
+   },
+   {
+    "h": "jetpack_v2_heartbeat",
+    "kada": "2026-08-27 16:58",
+    "sch": "daily"
+   },
+   {
+    "h": "woocommerce_marketplace_cron_fetch_promotions",
+    "kada": "2026-08-27 16:58",
+    "sch": "twicedaily"
+   },
+   {
+    "h": "wp_update_plugins",
+    "kada": "2026-08-27 17:13",
+    "sch": "twicedaily"
+   },
+   {
+    "h": "jp_purge_transients_cron",
+    "kada": "2026-08-27 17:21",
+    "sch": "daily"
+   },
+   {
+    "h": "wp_update_themes",
+    "kada": "2026-08-27 17:43",
+    "sch": "twicedaily"
+   },
+   {
+    "h": "ps_dim_klientu_perskaiciavimas",
+    "kada": "2026-08-27 20:40",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_fakt_atsargu_snapshot",
+    "kada": "2026-08-27 20:55",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_stat_valymas",
+    "kada": "2026-08-27 21:41",
+    "sch": "daily"
+   },
+   {
+    "h": "rank_math/redirection/clean_trashed",
+    "kada": "2026-08-28 00:00",
+    "sch": "daily"
+   },
+   {
+    "h": "rank_math/links/internal_links",
+    "kada": "2026-08-28 00:00",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_fakt_siuntu_sutikrinimas",
+    "kada": "2026-08-28 00:05",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_web_agregavimas",
+    "kada": "2026-08-28 00:10",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_ataskaitu_agregavimas",
+    "kada": "2026-08-28 00:15",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_feeds_naktinis",
+    "kada": "2026-08-28 01:30",
+    "sch": "daily"
+   },
+   {
+    "h": "wcdn_ts_tracker_send_event",
+    "kada": "2026-08-28 02:23",
+    "sch": "once_in_week"
+   },
+   {
+    "h": "ps_pet_drafts_cleanup_daily",
+    "kada": "2026-08-28 02:40",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_web_valymas",
+    "kada": "2026-08-28 02:40",
+    "sch": "daily"
+   },
+   {
+    "h": "petshop_vf_sync_reprice_daily",
+    "kada": "2026-08-28 03:00",
+    "sch": "daily"
+   },
+   {
+    "h": "petshop_vf_sync_publish_daily",
+    "kada": "2026-08-28 04:00",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_sargas_kasdien",
+    "kada": "2026-08-28 04:00",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_sources_naktinis",
+    "kada": "2026-08-28 04:20",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_ivykiai_valymas",
+    "kada": "2026-08-28 04:40",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_pardavimai_naktinis",
+    "kada": "2026-08-28 04:50",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_pilnumas_naktinis",
+    "kada": "2026-08-28 05:00",
+    "sch": "daily"
+   },
+   {
+    "h": "ps_suppression_daily_reconcile",
+    "kada": "2026-08-28 05:30",
+    "sch": "daily"
+   },
+   {
+    "h": "cmplz_every_week_hook",
+    "kada": "2026-08-28 08:12",
+    "sch": "cmplz_weekly"
+   },
+   {
+    "h": "wpforms_email_summaries_cron",
+    "kada": "2026-08-30 21:00",
+    "sch": "once"
+   },
+   {
+    "h": "wpforms_weekly_entries_count_cron",
+    "kada": "2026-08-30 21:00",
+    "sch": "once"
+   },
+   {
+    "h": "ps_sargas_savaitinis",
+    "kada": "2026-09-01 05:00",
+    "sch": "weekly"
+   },
+   {
+    "h": "wp_delete_temp_updater_backups",
+    "kada": "2026-09-01 15:44",
+    "sch": "weekly"
+   },
+   {
+    "h": "wp_site_health_scheduled_check",
+    "kada": "2026-09-02 15:43",
+    "sch": "weekly"
+   },
+   {
+    "h": "petshop_pragma_monthly_export",
+    "kada": "2026-09-05 08:00",
+    "sch": "once"
+   },
+   {
+    "h": "cmplz_every_month_hook",
+    "kada": "2026-09-08 08:12",
+    "sch": "cmplz_monthly"
+   }
+  ],
+  "veluoja": [],
+  "schedules": [
+   "ps_esp_5min",
+   "monthly",
+   "fifteendays",
+   "cmplz_monthly",
+   "cmplz_weekly",
+   "cmplz_daily",
+   "cmplz_five_minutes",
+   "wp_convert_yoast_blocks_cron_interval",
+   "wp_convert_aioseo_blocks_cron_interval",
+   "every_minute",
+   "wp_1_wc_regenerate_images_cron_interval",
+   "wp_1_wc_privacy_cleanup_cron_interval",
+   "hourly",
+   "twicedaily",
+   "daily",
+   "weekly"
+  ],
+  "taikiniai": {
+   "ps_dim_klientu_perskaiciavimas": {
+    "next": "2026-08-27 20:40",
+    "has_action": 1
+   },
+   "ps_fakt_atsargu_snapshot": {
+    "next": "2026-08-27 20:55",
+    "has_action": 1
+   },
+   "wcdn_ts_tracker_send_event": {
+    "next": "2026-08-28 02:23",
+    "has_action": 1
+   },
+   "cmplz_every_week_hook": {
+    "next": "2026-08-28 08:12",
+    "has_action": 1
+   }
+  },
+  "mu_plugins": [
+   "automation-by-installatron.php (983 B, 05-05 15:43)",
+   "petshop-akcijos.php (96257 B, 08-11 07:10)",
+   "petshop-analitika.php (33556 B, 08-26 12:48)",
+   "petshop-anketa-ivykiai.php (16602 B, 08-16 17:51)",
+   "petshop-anketos-ataskaita.php (36615 B, 08-16 20:23)",
+   "petshop-ataskaita-pardavimai.php (52653 B, 08-26 21:34)",
+   "petshop-ataskaitos-ui.php (44711 B, 08-26 21:39)",
+   "petshop-ataskaitu-agregavimas.php (23457 B, 08-26 08:40)",
+   "petshop-ataskaitu-eksportas.php (37431 B, 08-16 09:54)",
+   "petshop-atsisakymas.php (7049 B, 08-22 13:23)",
+   "petshop-av-admin.php (7510 B, 08-05 11:03)",
+   "petshop-av-dropship.php (60432 B, 08-24 19:52)",
+   "petshop-av-expiry.php (8633 B, 08-05 11:21)",
+   "petshop-av-limit.php (3720 B, 08-05 10:08)",
+   "petshop-av-order.php (4923 B, 08-05 10:41)",
+   "petshop-av-reduce.php (5742 B, 08-05 10:43)",
+   "petshop-av-sheets.php (10335 B, 08-05 19:20)",
+   "petshop-av-source.php (5762 B, 08-05 09:59)",
+   "petshop-av-stock.php (12575 B, 08-05 10:14)",
+   "petshop-av-tiekimas.php (71429 B, 08-24 21:31)",
+   "petshop-code-search.php (5447 B, 08-03 17:24)",
+   "petshop-desk.php (180955 B, 08-24 21:51)",
+   "petshop-dev-veidrodis.php (878 B, 08-21 14:03)",
+   "petshop-dim-klientai.php (13499 B, 08-26 14:47)",
+   "petshop-dropship-sargas.php (2665 B, 08-22 13:08)",
+   "petshop-fakt-atsargos.php (16363 B, 08-26 19:50)",
+   "petshop-fakt-grazinimai.php (17391 B, 08-26 09:23)",
+   "petshop-fakt-kainos.php (8960 B, 08-26 14:47)",
+   "petshop-fakt-siuntos.php (51189 B, 08-26 11:28)",
+   "petshop-faktai.php (37122 B, 08-25 23:06)",
+   "petshop-feeding-calc-rest.php (19012 B, 08-03 11:36)",
+   "petshop-gavimas.php (97658 B, 08-12 20:13)",
+   "petshop-higiena.php (682 B, 08-19 16:07)",
+   "petshop-import-log.php (2826 B, 08-04 19:39)",
+   "petshop-innodb.php (2126 B, 08-17 11:45)",
+   "petshop-islaidos.php (20689 B, 08-26 12:57)",
+   "petshop-ivykiai.php (20773 B, 08-09 12:57)",
+   "petshop-kalendorius.php (7970 B, 08-12 17:06)",
+   "petshop-kanalai.php (9934 B, 08-25 22:26)",
+   "petshop-katalogas.php (448127 B, 08-26 17:51)",
+   "petshop-kategorijos-aprasymas.php (4950 B, 08-18 19:39)",
+   "petshop-laukai.php (185280 B, 08-26 17:34)",
+   "petshop-legacy-301.php (2881 B, 08-04 17:21)",
+   "petshop-login-sargas.php (5473 B, 08-19 17:52)",
+   "petshop-m8-food.php (35513 B, 07-28 08:31)",
+   "petshop-nepamoketi.php (2708 B, 08-19 20:33)",
+   "petshop-pardavimai.php (14549 B, 08-09 12:14)",
+   "petshop-parseris.php (25728 B, 08-10 11:26)",
+   "petshop-partijos.php (27850 B, 08-12 12:41)",
+   "petshop-paruostu-ataskaita.php (29816 B, 08-16 07:32)",
+   "petshop-payment-failed.php (3704 B, 08-04 18:12)",
+   "petshop-pet-claim.php (7126 B, 08-03 12:46)",
+   "petshop-pet-kontraktas.php (23204 B, 08-16 19:23)",
+   "petshop-pilnumas.php (19869 B, 08-18 10:30)",
+   "petshop-prieziura.php (6235 B, 08-19 15:23)",
+   "petshop-ps-pets-migration-freeze.php (7018 B, 07-20 14:15)",
+   "petshop-rankos.php (6887 B, 08-12 12:04)",
+   "petshop-rec-log.php (7374 B, 08-16 17:37)",
+   "petshop-rec-ui.php (4884 B, 08-16 17:51)",
+   "petshop-rec-variklis.php (12151 B, 08-26 17:34)",
+   "petshop-refill-ivykiai.php (7554 B, 08-16 18:42)",
+   "petshop-rinkiniai.php (211298 B, 08-25 18:11)",
+   "petshop-rinkiniu-ataskaita.php (41305 B, 08-16 08:56)",
+   "petshop-rinkiniu-likuciai.php (8750 B, 08-12 08:50)",
+   "petshop-rysiai.php (16535 B, 08-09 14:15)",
+   "petshop-sargas.php (15389 B, 08-17 19:23)",
+   "petshop-schema.php (3870 B, 08-19 17:00)",
+   "petshop-seo-aprasymas.php (1838 B, 08-18 17:22)",
+   "petshop-seseliai.php (3750 B, 08-20 18:03)",
+   "petshop-siuntu-laiskai.php (17047 B, 08-26 13:59)",
+   "petshop-statistika-vitrina.php (12755 B, 08-16 08:35)",
+   "petshop-statistika.php (22413 B, 08-16 16:46)",
+   "petshop-teises.php (11705 B, 08-10 20:25)",
+   "petshop-vartai.php (6748 B, 08-11 09:03)",
+   "petshop-wc-sync.php (10361 B, 08-08 08:20)"
+  ],
+  "kur_registruota": {
+   "ps_dim_klientu_perskaiciavimas": [
+    "petshop-dim-klientai.php"
+   ],
+   "ps_fakt_atsargu_snapshot": [
+    "petshop-fakt-atsargos.php"
+   ]
+  },
+  "snip_su_kabliuku": [
+   {
+    "id": "3927",
+    "name": "TEMP E2b Testai",
+    "active": "0"
+   },
+   {
+    "id": "3972",
+    "name": "TEMP Cron Recon v1",
+    "active": "1"
+   }
+  ],
+  "snip_temp_aktyvus": [
+   {
+    "id": "3972",
+    "name": "TEMP Cron Recon v1"
+   }
+  ],
+  "ps_lenteles": {
+   "gaj6_ps_action_tokens": 128,
+   "gaj6_ps_akcijos": 2,
+   "gaj6_ps_akciju_prekes": 0,
+   "gaj6_ps_ataskaitu_dienos": 381,
+   "gaj6_ps_av_zurnalas": 490,
+   "gaj6_ps_brand_alias": 140,
+   "gaj6_ps_carts": 91,
+   "gaj6_ps_consent_log": 11,
+   "gaj6_ps_dim_klientai": 1,
+   "gaj6_ps_email_jobs": 16,
+   "gaj6_ps_email_suppression": 1,
+   "gaj6_ps_event_log": 449,
+   "gaj6_ps_fakt_atsargos_d": 5242,
+   "gaj6_ps_fakt_eilutes": 23,
+   "gaj6_ps_fakt_grazinimai": 3,
+   "gaj6_ps_fakt_kainos": 1205,
+   "gaj6_ps_fakt_siuntos": 0,
+   "gaj6_ps_fakt_uzsakymai": 4,
+   "gaj6_ps_feeding_import_log": 5,
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f": 8,
+   "gaj6_ps_feeding_map": 561,
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1": 451,
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f": 451,
+   "gaj6_ps_feeding_rows": 5549,
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1": 3825,
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f": 3825,
+   "gaj6_ps_feeding_rows_bak_s304": 550,
+   "gaj6_ps_feeding_tables": 296,
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1": 223,
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f": 223,
+   "gaj6_ps_islaidos": 0,
+   "gaj6_ps_istrintos_prekes_s668": 32,
+   "gaj6_ps_ivykiai": 4115,
+   "gaj6_ps_laukai_ivykiai": 579,
+   "gaj6_ps_pakuotes": 4,
+   "gaj6_ps_partijos": 10,
+   "gaj6_ps_pet_field_log": 0,
+   "gaj6_ps_pet_notes": 7,
+   "gaj6_ps_pet_products": 36,
+   "gaj6_ps_pet_profile_drafts": 7,
+   "gaj6_ps_pets": 69,
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9": 23,
+   "gaj6_ps_pets_bak_20260722_181456_hint": 25,
+   "gaj6_ps_pets_bak_20260723_prof": 39,
+   "gaj6_ps_pets_bak_20260726": 61,
+   "gaj6_ps_pets_bak_20260726_ft": 62,
+   "gaj6_ps_pets_bak_20260727_wet": 62,
+   "gaj6_ps_pets_bak_20260731_pries_restore": 55,
+   "gaj6_ps_plan_events": 7,
+   "gaj6_ps_rec_log": 1,
+   "gaj6_ps_refill_tracking": 23,
+   "gaj6_ps_reminders": 10,
+   "gaj6_ps_sargas_klaidos": 72,
+   "gaj6_ps_shipments": 23,
+   "gaj6_ps_sources": 3849,
+   "gaj6_ps_tarifai": 29,
+   "gaj6_ps_tarifu_priemokos": 4,
+   "gaj6_ps_tiekimas": 0,
+   "gaj6_ps_tiekimas_eil": 0,
+   "gaj6_ps_web_dienos": 37,
+   "gaj6_ps_web_ivykiai": 53,
+   "gaj6_ps_webhook_log": 1
+  },
+  "sargo_optionai": [
+   {
+    "option_name": "ps_sargas_pastas",
+    "v": "terra@gyvunai.lt"
+   },
+   {
+    "option_name": "ps_sargas_cron_laukiam",
+    "v": "a:62:{s:26:\"action_scheduler_run_queue\";s:12:\"every_minute\";s:27:\"ps_esp_cron_process_pending\";s:11:\"ps_esp_5min\";s:29:\"cmplz_every_five_minutes_hook\";s:18:\"cmplz_five_minutes\";s:22:\"ps_email_dispatch_cron\";s:11:\"ps_esp_5min\";s:22:\"ps_post_purchase_check\";s:6:\"hourly\";s:21:\"ps_cart_abandon_check\";s:"
+   },
+   {
+    "option_name": "ps_sargas_cron_zinios",
+    "v": "a:59:{s:21:\"ps_cart_abandon_check\";i:1787812565;s:26:\"action_scheduler_run_queue\";i:1787812565;s:27:\"ps_esp_cron_process_pending\";i:1787812445;s:29:\"cmplz_every_five_minutes_hook\";i:1787812445;s:17:\"ps_vartai_valanda\";i:1787811307;s:22:\"ps_email_dispatch_cron\";i:1787812445;s:20:\"jetpack_clean_nonces"
+   },
+   {
+    "option_name": "ps_sargas_start",
+    "v": "1786994616"
+   },
+   {
+    "option_name": "ps_sargas_siusta",
+    "v": "a:8:{s:38:\"fatal:bcbdb6dd79f65bc31ebc909b7e4b49ba\";s:10:\"2026-08-17\";s:38:\"fatal:1076f1d971acc8014e8f225793a91a3c\";s:10:\"2026-08-18\";s:38:\"fatal:60704f445e77a72586805717f192bb7f\";s:10:\"2026-08-19\";s:37:\"cron:ebbd115a00f15f56ae4e2583f8b62115\";s:10:\"2026-08-22\";s:37:\"cron:fcd7c13a816a140d9ef6879cb1644"
+   }
+  ]
+ }
+}
