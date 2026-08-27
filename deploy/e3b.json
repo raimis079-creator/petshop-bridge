@@ -1,0 +1,214 @@
+{
+ "v": "E3B",
+ "sid": 3977,
+ "dep": {
+  "v": "E3B27",
+  "k": "DEP_E3B27",
+  "buvo": null,
+  "token": "ok",
+  "rasyta": 40607,
+  "md5_po": "76806bbc0e9f88bac09e289cb6849565"
+ },
+ "ver": {
+  "v": "E3B27",
+  "k": "VER_E3B27",
+  "md5": "76806bbc0e9f88bac09e289cb6849565",
+  "versija": "1.0",
+  "cron_next": "2026-08-28 03:30 UTC",
+  "lt30": {
+   "nuo": "2026-07-29",
+   "iki": "2026-08-27",
+   "p_nuo": "2026-06-29",
+   "p_iki": "2026-07-28",
+   "uzrasas": "Paskutinės 30 d. vs ankstesnės 30 d."
+  },
+  "sk30": {
+   "dabar": {
+    "kontribucija": 4631,
+    "pajamos": 17130,
+    "antkainis_p": 39.825320382009636,
+    "uzsakymai": 4,
+    "aov": 4283,
+    "nauji": 1,
+    "griztanciu_p": 75,
+    "nuostolingi": 0
+   },
+   "buvo": {
+    "kontribucija": 0,
+    "pajamos": 0,
+    "antkainis_p": null,
+    "uzsakymai": 0,
+    "aov": 0,
+    "nauji": 0,
+    "griztanciu_p": null,
+    "nuostolingi": 0
+   },
+   "buvo_uzs": 0
+  },
+  "sargas_rytas_eq_pard": [
+   4631,
+   4631,
+   true,
+   true,
+   true
+  ],
+  "lt_men": {
+   "nuo": "2026-08-01",
+   "iki": "2026-08-27",
+   "p_nuo": "2026-07-01",
+   "p_iki": "2026-07-27",
+   "uzrasas": "Šis mėnuo iki šiandien vs tas pats praėjusio mėnesio tarpsnis"
+  },
+  "lemputes": [
+   {
+    "pav": "Pajamos 7 d.",
+    "spalva": "pilka",
+    "tekstas": "bazinei linijai reikia 5 sav. duomenų",
+    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-pardavimai&preset=7&testiniai=1"
+   },
+   {
+    "pav": "Nauji klientai 7 d.",
+    "spalva": "pilka",
+    "tekstas": "bazinei linijai reikia 5 sav. duomenų",
+    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-pardavimai&preset=7&pjuvis=klientas&testiniai=1"
+   },
+   {
+    "pav": "Nuostolingi 7 d.",
+    "spalva": "zalia",
+    "tekstas": "0 užsakym. su neigiama kontribucija",
+    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-pardavimai&preset=7&testiniai=1#nuostolingi"
+   },
+   {
+    "pav": "A-prekių stockout",
+    "spalva": "geltona",
+    "tekstas": "1 A-prekės be likučio (2026-08-26)",
+    "url": ""
+   },
+   {
+    "pav": "Neišsiųsti",
+    "spalva": "zalia",
+    "tekstas": "0 apmokėti > 2 d. be siuntos",
+    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=petshop-desk"
+   }
+  ],
+  "veiksmai": [
+   {
+    "poveikis": 1181,
+    "tekstas": "Užsakyti <b>AMBROSIA begrūdis su ėriena ir šviežia elniena sau</b> ~1 vnt. — liko 0, užtenka 0 d.",
+    "url": "https://dev.avesa.lt/wp-admin/post.php?post=19756&action=edit"
+   },
+   {
+    "poveikis": 222,
+    "tekstas": "Užsakyti <b>Animonda GranCarno Adult Sensitive Turkey + Potato</b> ~1 vnt. — liko 0, užtenka 0 d.",
+    "url": "https://dev.avesa.lt/wp-admin/post.php?post=19530&action=edit"
+   }
+  ],
+  "patikros": [
+   {
+    "kodas": "import_2",
+    "lygis": "zalia",
+    "tekstas": "Importas #2 products.php: paskutinis prieš 6 val."
+   },
+   {
+    "kodas": "import_3",
+    "lygis": "zalia",
+    "tekstas": "Importas #3 stocks.php: paskutinis prieš 1 val."
+   },
+   {
+    "kodas": "import_7",
+    "lygis": "zalia",
+    "tekstas": "Importas #7 petshop-xml-vf-fetcher.php: paskutinis prieš 0 val."
+   },
+   {
+    "kodas": "feeds",
+    "lygis": "zalia",
+    "tekstas": "Feed'ai Kaina24/Kainos: generuoti prieš 4 val."
+   },
+   {
+    "kodas": "faktai",
+    "lygis": "zalia",
+    "tekstas": "Faktai: visi apmokėti užsakymai turi faktą"
+   },
+   {
+    "kodas": "agregatas",
+    "lygis": "zalia",
+    "tekstas": "Agregatas 2026-08-26: 19 eil."
+   },
+   {
+    "kodas": "siuntu_naslaiciai",
+    "lygis": "raudona",
+    "tekstas": "ps_shipments našlaičiai: 23"
+   },
+   {
+    "kodas": "neissiusti",
+    "lygis": "zalia",
+    "tekstas": "Apmokėti > 2 d. be siuntos: 0"
+   },
+   {
+    "kodas": "dropship_sla",
+    "lygis": "zalia",
+    "tekstas": "Dropship tiekėjas vėluoja > 24 val.: 0 užsak."
+   },
+   {
+    "kodas": "laiskai",
+    "lygis": "zalia",
+    "tekstas": "Laiškai 24 val.: išsiųsta 0, nepavyko 0"
+   },
+   {
+    "kodas": "eventai",
+    "lygis": "geltona",
+    "tekstas": "Eventai: failed 24 val. 0; nutilo 7 d.: consent_changed, pet_product_assigned, pet_profile_created, pet_profile_updated"
+   },
+   {
+    "kodas": "404",
+    "lygis": "zalia",
+    "tekstas": "404 vakar: 0 (7 d. vid. 0,0)"
+   },
+   {
+    "kodas": "beacon",
+    "lygis": "pilka",
+    "tekstas": "Web įvykiai vakar: 53 (iki launch nevertinama)"
+   }
+  ],
+  "laiskas_1": {
+   "raud": 2,
+   "siusta": true
+  },
+  "laiskas_2_ta_pati_para": {
+   "raud": 2,
+   "siusta": false
+  },
+  "patikra_svari": {
+   "raud": 1,
+   "siusta": false
+  },
+  "pask": {
+   "laikas": "2026-08-27 08:41:16",
+   "raudonos": [
+    {
+     "kodas": "siuntu_naslaiciai",
+     "lygis": "raudona",
+     "tekstas": "ps_shipments našlaičiai: 23"
+    }
+   ],
+   "geltonos": [
+    {
+     "kodas": "eventai",
+     "lygis": "geltona",
+     "tekstas": "Eventai: failed 24 val. 0; nutilo 7 d.: consent_changed, pet_product_assigned, pet_profile_created, pet_profile_updated"
+    }
+   ],
+   "zalios": 10,
+   "viso": 13
+  },
+  "hub_hook": {
+   "senas": false,
+   "naujas": false
+  }
+ },
+ "h1": "Rytas Ketvirtadienis, 2026-08-27",
+ "tekstas": "Rytas\nKetvirtadienis, 2026-08-27\nFlatsome issues\n\nFlatsome was unable to get the latest version. Your site might have changed domain after you registered it.\n\nManage registration\n\nManage your licenses \n\nRodomi IR testiniai įrašai. ✕ slėpti\n Sistema: 1 raudonos · 1 geltonos (08-27 11:41)detalės tikrinti dabar\nŠis mėnuo\n30 d.\nŠis mėnuo iki šiandien vs tas pats praėjusio mėnesio tarpsnis: 2026-08-01 – 2026-08-27 vs 2026-07-01 – 2026-07-27\nKONTRIBUCIJA\n46,31 €\n—\nPAJAMOS\n171,30 €\n—\nANTKAINIS %\n39,8 %\n—\nUŽSAKYMAI\n4\n—\nVID. UŽSAKYMAS\n42,83 €\n—\nNAUJI KLIENTAI\n1\n—\nGRĮŽTANČIŲ DALIS\n75 %\n—\nNUOSTOLINGI\n0\n—\n\nAnkstesniu laikotarpiu užsakymų nebuvo — pokyčiai nerodomi.\n\nKas dega\nPajamos 7 d.\nbazinei linijai reikia 5 sav. duomenų\nNauji klientai 7 d.\nbazinei linijai reikia 5 sav. duomenų\nNuostolingi 7 d.\n0 užsakym. su neigiama kontribucija\nA-prekių stockout\n1 A-prekės be likučio (2026-08-26)\nNeišsiųsti\n0 apmokėti > 2 d. be siuntos\nKą daryti\nUžsakyti AMBROSIA begrūdis su ėriena ir šviežia elniena sau ~1 vnt. — liko 0, užtenka 0 d. →\nUžsakyti Animonda GranCarno Adult Sensitive Turkey + Potato ~1 vnt. — liko 0, užtenka 0 d. →\nAnalizė\nPardavimai ir pelnas\nKontribucija, pajamos, antkainis, savikaina. Trylika pjūvių su gilinimusi iki prekės eilutės, nuostolingi užsakymai ir žali duomenys XLSX.\nNustatymai\nPristatymo tarifai\nIšlaidos ir nustatymai\nĮrankiai\nSurenkami rinkiniai\nSurenkamų rinkinių pardavimai, marža ir vitrinos elgsena.\nRinkiniai\nParuoštų rinkinių ataskaita.\nBrand zodynas\nKliento įvestų p",
+ "p1": 201,
+ "p2": 201,
+ "js": []
+}
