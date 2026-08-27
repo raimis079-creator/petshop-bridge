@@ -1,0 +1,56 @@
+{
+ "v": "E3D",
+ "sid": 3981,
+ "dep": {
+  "v": "E3D27",
+  "k": "DEP_E3D27",
+  "petshop-ataskaita-pardavimai.php": {
+   "pries": "c0381cf76978d0d8bc274cc7eed6570e",
+   "bak": true,
+   "rasyta": 55232,
+   "po": "c9ae0cfa677fa66331f92346fdfc1618"
+  },
+  "petshop-ataskaitos-ui.php": {
+   "pries": "e840481c28675ea2cbd2c6fc22151eb0",
+   "bak": true,
+   "rasyta": 44861,
+   "po": "ac3e392f1d6383dfa8317436413db58e"
+  }
+ },
+ "ver": {
+  "v": "E3D27",
+  "k": "VER_E3D27",
+  "petshop-ataskaita-pardavimai.php": "c9ae0cfa677fa66331f92346fdfc1618",
+  "petshop-ataskaitos-ui.php": "ac3e392f1d6383dfa8317436413db58e",
+  "ver": [
+   "3.2.1",
+   "1.3.1"
+  ],
+  "tiekejas_dim": [
+   "legacy",
+   "ambrosia",
+   "vf",
+   "zb"
+  ],
+  "vardai": [
+   "AV (savas)",
+   "Ambrosia",
+   "Vetfarmas",
+   "ZB (Žalioji banga)"
+  ],
+  "sandelis_pjuvis": "isimtas",
+  "tabai": [
+   "tiekejas",
+   "brendas",
+   "kategorija",
+   "preke",
+   "kanalas",
+   "klientas"
+  ]
+ },
+ "h1": "Pardavimai ir pelnas",
+ "tekstas": "Nuostolingi užsakymai",
+ "p1": 201,
+ "p2": 201,
+ "js": []
+}
