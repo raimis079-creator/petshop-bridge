@@ -1,0 +1,20 @@
+{
+ "v": "HT27",
+ "zingsniai": [],
+ "http_post": {
+  "st": 200,
+  "loc": null,
+  "b": "{\"ok\":1,\"st\":{\"new\":0,\"upd\":0,\"same\":0,\"bad\":0}}"
+ },
+ "http_get": {
+  "st": 301,
+  "loc": "https://dev.avesa.lt/",
+  "b": ""
+ },
+ "https_post": {
+  "st": 200,
+  "loc": null,
+  "b": "{\"ok\":1,\"st\":{\"new\":0,\"upd\":0,\"same\":0,\"bad\":0}}"
+ },
+ "cert": "subject=CN = *.serveriai.lt\nissuer=C = NL, O = PerfectSSL, CN = PerfectSSL\nnotBefore=Apr  2 00:00:00 2026 GMT\nnotAfter=Oct 17 23:59:59 2026 GMT\n"
+}
