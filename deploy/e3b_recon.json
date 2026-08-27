@@ -1,0 +1,2342 @@
+{
+ "v": "RC_E3B27",
+ "zingsniai": [
+  "isjungta_TEMP:0",
+  "snip_id:3976"
+ ],
+ "http": 200,
+ "duom": {
+  "v": "RC_E3B27",
+  "lent": {
+   "ps_email_jobs": {
+    "n": 16,
+    "st": [
+     "id",
+     "job_key",
+     "flow",
+     "flow_class",
+     "recipient_email",
+     "recipient_user_id",
+     "subject",
+     "payload",
+     "status",
+     "block_reason",
+     "provider",
+     "provider_message_id",
+     "attempts",
+     "last_error",
+     "scheduled_at",
+     "sent_at",
+     "created_at",
+     "updated_at",
+     "skip_reason",
+     "error_message",
+     "decision_at",
+     "next_attempt_at",
+     "context_json"
+    ]
+   },
+   "ps_event_log": {
+    "n": 449,
+    "st": [
+     "id",
+     "event_id",
+     "event_name",
+     "email",
+     "payload_json",
+     "emitted_at",
+     "status",
+     "adapter_name",
+     "attempts",
+     "next_retry_at",
+     "last_error",
+     "esp_response"
+    ]
+   },
+   "ps_shipments": {
+    "n": 23,
+    "st": [
+     "id",
+     "shipment_id",
+     "order_id",
+     "carrier",
+     "tracking_number",
+     "tracking_url",
+     "source",
+     "created_at",
+     "notified_at"
+    ]
+   },
+   "ps_ataskaitu_dienos": {
+    "n": 381,
+    "st": [
+     "id",
+     "diena",
+     "aplinka",
+     "sritis",
+     "deze_id",
+     "preke_id",
+     "dydis",
+     "skirtukas",
+     "irenginys",
+     "tipas",
+     "kiekis",
+     "sesiju",
+     "suma_ct",
+     "sav_ct"
+    ]
+   },
+   "ps_partijos": {
+    "n": 10,
+    "st": [
+     "id",
+     "product_id",
+     "gauta",
+     "kiekis_gautas",
+     "kiekis_liko",
+     "savikaina_eur",
+     "savikaina_orig",
+     "valiuta",
+     "kursas",
+     "geriausia_iki",
+     "tiekejas",
+     "importuota",
+     "tiekimas_id",
+     "pastaba",
+     "sukurta",
+     "user_id",
+     "atsaukta"
+    ]
+   },
+   "pmxi_imports": {
+    "n": 5,
+    "st": [
+     "id",
+     "parent_import_id",
+     "name",
+     "friendly_name",
+     "type",
+     "feed_type",
+     "path",
+     "xpath",
+     "options",
+     "registered_on",
+     "root_element",
+     "processing",
+     "executing",
+     "triggered",
+     "queue_chunk_number",
+     "first_import",
+     "count",
+     "imported",
+     "created",
+     "updated",
+     "skipped",
+     "deleted",
+     "changed_missing",
+     "canceled",
+     "canceled_on",
+     "failed",
+     "failed_on",
+     "settings_update_on",
+     "last_activity",
+     "iteration",
+     "is_preview"
+    ]
+   },
+   "ps_carts": {
+    "n": 91,
+    "st": [
+     "id",
+     "cart_id",
+     "session_key",
+     "user_id",
+     "email",
+     "email_source",
+     "last_cart_activity_at",
+     "cart_hash",
+     "snapshot_json",
+     "snapshot_version",
+     "status",
+     "status_changed_at",
+     "converted_order_id",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   "ps_sargas_klaidos": {
+    "n": 72,
+    "st": [
+     "id",
+     "laikas",
+     "lygis",
+     "parasas",
+     "zinute",
+     "failas",
+     "eilute",
+     "url",
+     "kiek"
+    ]
+   },
+   "ps_tiekimas": {
+    "n": 0,
+    "st": [
+     "id",
+     "tiekejas",
+     "busena",
+     "sukurta",
+     "uzsakyta",
+     "gauta",
+     "siuntos_kodas",
+     "pastaba",
+     "pristatymas",
+     "svoris",
+     "venipak_pack",
+     "venipak_manifest",
+     "dezes"
+    ]
+   },
+   "ps_tiekimas_eil": {
+    "n": 0,
+    "st": [
+     "id",
+     "partija_id",
+     "product_id",
+     "order_id",
+     "qty",
+     "qty_gauta",
+     "galiojimas",
+     "pastaba"
+    ]
+   }
+  },
+  "ej_status": [
+   {
+    "status": "sent",
+    "n": "12"
+   },
+   {
+    "status": "skipped",
+    "n": "4"
+   }
+  ],
+  "ev_key": "event_id",
+  "ev": [
+   {
+    "k": "cart_abandoned_c_06774bc04a9e8222f12402fda12cc5ee",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_08a6db4368554082373d4443151869e2",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_0b4237fca0e30183819efaecfcd82cc9",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_181d11f0a804eaa2f50301df5d0e40f5",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_1bd9914e95f54975f11554e0bc2fbd79",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_2f458c4687e070c61d49cb8504d5a47b",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_30af64dda1ddaa80c9f8670c41f277e2",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_35474529476a5218ddc7ebc72e61ccd9",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_38a610d36e5ad37de8e8e7ab81d928da",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_3c4334a4e9a803dab4629f45fd4aa9e7",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_4174ce163709d81b2e9632e81a62db15",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_42a68c15d944a6ecbeeffa2ea4aad98a",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_5756520bde49477fe1f349d3aae44b71",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_5bc9a74edbc14e973403ef0f06407605",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_5c47e4626e2fe7e60fe39940e37a85ef",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_642c783013703af9632bf23b8f5daa73",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_6f83dacc0c4f99345ff308b53b86d541",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_7266bdb2909c9979a10e1bc118766fd6",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_7808724d6a2b20e61e2a279848660134",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_7fd6a9f81e73ebab193fe22d5283bcd5",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_830dfcf055a715607a57d29f4cba3669",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_961eb0093811a452e4f0e1c496f608ca",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_9d2ad195d21cacfef2db91e56bf6a87c",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_9ebdd04ca39cc6e421b3c2dbd3c27d43",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_a1d55b17de64e5b871b6bdce2ea1976a",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_a3d8da8afcca8ed2beb563014b3282b7",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_a6d1f397adb5c5b2e58b6f50d4cdfa7f",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_a7118dc3b59dc4ed846eab9b9ca4fd21",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_ac5876497fafa790747e6e621fbc74b0",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_ad7d8c59ebd1732c7f2cbdaed19e9f81",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_d823cca0b494888c17e7f848169dde3e",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_df65a4a21fd59d4b34d7a5ab62fb288b",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_e64b249ef35e83c9fb89df9ad69e4562",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_f1c24bc2e112428376be4574fc459da2",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_f9695bfe31b9b6f56d84fea3864cdd3f",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_fc479729392fc1af56d082e84e38b085",
+    "n": "1"
+   },
+   {
+    "k": "cart_abandoned_c_ff2f0b8e8a70ced1549ca9f163c11c4f",
+    "n": "1"
+   },
+   {
+    "k": "consent_049522567da7d75bd5e40e6298537397",
+    "n": "1"
+   },
+   {
+    "k": "consent_079b8edc67933d2a83ff831e3fb815c4",
+    "n": "1"
+   },
+   {
+    "k": "consent_0a8bb2986684f5d8f637cecefc33b36f",
+    "n": "1"
+   },
+   {
+    "k": "consent_0ce416be22ea72112aaacb864973e248",
+    "n": "1"
+   },
+   {
+    "k": "consent_1f5f0e3d5b141d515b19549d3ad4d7cc",
+    "n": "1"
+   },
+   {
+    "k": "consent_20b396790c4af7c9e98e2f164cc9c22e",
+    "n": "1"
+   },
+   {
+    "k": "consent_265c264487582c8fdc245ca2e47ef304",
+    "n": "1"
+   },
+   {
+    "k": "consent_31de220497d0cee9f689436548c26301",
+    "n": "1"
+   },
+   {
+    "k": "consent_467ba8279fc604a9bd2be950ec3d87c9",
+    "n": "1"
+   },
+   {
+    "k": "consent_475fc286f3a0f253d2a1299a8eebb633",
+    "n": "1"
+   },
+   {
+    "k": "consent_626f882fcb9f9d187d3d14e1a81a1d1d",
+    "n": "1"
+   },
+   {
+    "k": "consent_6878596e6ea864515dffe403ef9067f5",
+    "n": "1"
+   },
+   {
+    "k": "consent_7721022ad96155f23d202fe0e62ff291",
+    "n": "1"
+   },
+   {
+    "k": "consent_7bf3e90808a33ade88b9d4ef368de833",
+    "n": "1"
+   },
+   {
+    "k": "consent_7f1a1b8bb2270c15b535d27401af4b96",
+    "n": "1"
+   },
+   {
+    "k": "consent_805aab50a3e059ac5a0ad860af199db0",
+    "n": "1"
+   },
+   {
+    "k": "consent_a68195bdcca9c71479d5c44b776121b7",
+    "n": "1"
+   },
+   {
+    "k": "consent_ac1e51730caaebf229dfcf46a5ee04ea",
+    "n": "1"
+   },
+   {
+    "k": "consent_c050890deec3e20ae4636ee14fcf2323",
+    "n": "1"
+   },
+   {
+    "k": "consent_d2be00a7e2bafbabe248f0d158a64646",
+    "n": "1"
+   },
+   {
+    "k": "consent_dcda1bdfce57e5641eff043742c4d3a6",
+    "n": "1"
+   },
+   {
+    "k": "consent_de6b2ed627827310db41e310627cc132",
+    "n": "1"
+   },
+   {
+    "k": "consent_e9dcfcb5b0bc877c2810396dc12da458",
+    "n": "1"
+   },
+   {
+    "k": "consent_ea9f9c1a8fb7713b05a90cab41f1296d",
+    "n": "1"
+   },
+   {
+    "k": "consent_fb0bb33244f7b68f872487d608041a93",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34674",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34675",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34720",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34729",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34730",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34731",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34732",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34733",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34734",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34735",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34736",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34737",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34738",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34739",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34740",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34741",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34742",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34743",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34744",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34745",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34746",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34747",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34748",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34749",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34750",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34751",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34752",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34753",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34754",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34755",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34756",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34757",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34759",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34833",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34834",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34835",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34836",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34837",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34838",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34839",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34840",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34841",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34842",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34843",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34844",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34845",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34846",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34847",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34848",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34849",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34850",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34851",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34852",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34855",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34856",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34857",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34858",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34859",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34860",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34861",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34862",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34863",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34864",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34865",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34866",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34867",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34868",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34869",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34870",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34871",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34872",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34873",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34874",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34875",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34876",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34877",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34878",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34879",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34881",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34882",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34883",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34884",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34886",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34887",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34890",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34898",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_34952",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35035",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35036",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35037",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35038",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35039",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35040",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35041",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35042",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35043",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35044",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35045",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35046",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35047",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35048",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35049",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35050",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35051",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35052",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35053",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35055",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35056",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35057",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35059",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35060",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35061",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35062",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35063",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35064",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35065",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35066",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35067",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35068",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35087",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35088",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35090",
+    "n": "1"
+   },
+   {
+    "k": "order_paid_35100",
+    "n": "1"
+   },
+   {
+    "k": "order_paid:99999",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34730",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34731",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34732",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34733",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34734",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34735",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34736",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34738",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34739",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34740",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34742",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34743",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34744",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34745",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34746",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34747",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34748",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34749",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34750",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34884",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_34886",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35036",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35037",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35038",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35041",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35055",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35056",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35059",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35060",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35061",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35062",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35063",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35064",
+    "n": "1"
+   },
+   {
+    "k": "order_shipped_35066",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_107",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_11",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_114",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_117",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_118",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_119",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_12",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_120",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_121",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_122",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_125",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_13",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_14",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_141",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_142",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_143",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_144",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_145",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_146",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_147",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_148",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_149",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_15",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_150",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_151",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_152",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_153",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_154",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_155",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_156",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_157",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_16",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_163",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_164",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_165",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_167",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_168",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_169",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_17",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_170",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_171",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_172",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_173",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_174",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_175",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_178",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_179",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_18",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_180",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_181",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_182",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_184",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_186",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_187",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_188",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_189",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_19",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_190",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_191",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_20",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_206",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_209",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_21",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_213",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_215",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_216",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_217",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_218",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_219",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_22",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_220",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_221",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_222",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_223",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_224",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_23",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_24",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_25",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_26",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_27",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_28",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_29",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_30",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_31",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_32",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_33",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_34",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_36",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_37",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_43",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_44",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_45",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_46",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_47",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_48",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_49",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_53",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_55",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_56",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_57",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_58",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_59",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_60",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_61",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_62",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_63",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_64",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_65",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_66",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_67",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_68",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_69",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_72",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_77",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_78",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_83",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_86",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_93",
+    "n": "1"
+   },
+   {
+    "k": "pet_created_98",
+    "n": "1"
+   },
+   {
+    "k": "pet_prod_105_34486_1784827773",
+    "n": "1"
+   },
+   {
+    "k": "pet_prod_118_19446_1784830821",
+    "n": "1"
+   },
+   {
+    "k": "pet_prod_125_34153_1784832297",
+    "n": "1"
+   },
+   {
+    "k": "pet_prod_131_19602_1784843800",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_107_1784829387",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_118_1784830696",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_125_1784832237",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_125_1784833071",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_125_1785178423",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_141_1784879922",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_144_1784919966",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_144_1785014608",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_144_1785015955",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_144_1785173369",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_144_1785218783",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_146_1784931421",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_147_1784974166",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_148_1784975112",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785012139",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785012827",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785012924",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785014853",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785015181",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785169582",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785169759",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785170181",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_149_1785170219",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_152_1785067614",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_152_1785067618",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_152_1785067622",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_152_1785067625",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785072643",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785078537",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785080063",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785091090",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785151743",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785155065",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785155198",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785165451",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785165548",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785165635",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785167839",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785168443",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785168598",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785168649",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785168911",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785169413",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785169991",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785172715",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785245572",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785247494",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785247536",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785247587",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_153_1785250212",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_154_1785078224",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_154_1785078228",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_154_1785078231",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_154_1785078235",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_154_1785078239",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_154_1785078243",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_155_1785231999",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_155_1785232036",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_155_1785232065",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_155_1785232332",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_155_1785233126",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_156_1785250299",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_157_1785315810",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_195_1785753267",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_198_1785754536",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_199_1785754562",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_201_1785757249",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_202_1785757274",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_203_1785757297",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_204_1785757687",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_205_1785757710",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_214_1785761281",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_215_1786898823",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_23_1784118870",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_29_1784111711",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_35_1784113470",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_36_1784114019",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_78_1784820303",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_78_1784820514",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_80_1784820500",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_82_1784820787",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_86_1784825081",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_86_1784828195",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_86_1784834580",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_86_1784835133",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_86_1784844215",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_93_1784828298",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_98_1784827130",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_98_1784827285",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_98_1784876805",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_98_1784876886",
+    "n": "1"
+   },
+   {
+    "k": "pet_updated_98_1784877174",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_17415_2026-08-20",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_18527_2026-07-30",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_18527_2026-08-25",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_19417_2026-08-29",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_19440_2026-08-29",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_19613_2026-08-29",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_19620_2026-08-29",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_19692_2026-08-29",
+    "n": "1"
+   },
+   {
+    "k": "refill_due_1_19708_2026-08-29",
+    "n": "1"
+   },
+   {
+    "k": "refill_due:483:EXCL-2KG:1",
+    "n": "1"
+   },
+   {
+    "k": "refill_due:483:EXCL-2KG:2",
+    "n": "1"
+   },
+   {
+    "k": "reminder_due_10_2026-08-20",
+    "n": "1"
+   },
+   {
+    "k": "reminder_due_24_2026-07-18",
+    "n": "1"
+   },
+   {
+    "k": "reminder_due_9_2026-08-10",
+    "n": "1"
+   }
+  ],
+  "pmxi": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "last_activity": "2026-05-27 11:14:21",
+    "imported": "0",
+    "updated": "0",
+    "skipped": "2045",
+    "failed": "0",
+    "executing": "0",
+    "processing": "0"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "last_activity": "2026-08-27 03:01:47",
+    "imported": "0",
+    "updated": "0",
+    "skipped": "2622",
+    "failed": "0",
+    "executing": "0",
+    "processing": "0"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "last_activity": "2026-08-27 08:03:03",
+    "imported": "464",
+    "updated": "464",
+    "skipped": "816",
+    "failed": "0",
+    "executing": "0",
+    "processing": "0"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "last_activity": "2026-08-22 03:30:01",
+    "imported": "0",
+    "updated": "0",
+    "skipped": "0",
+    "failed": "0",
+    "executing": "0",
+    "processing": "0"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "last_activity": "2026-08-27 08:15:02",
+    "imported": "0",
+    "updated": "0",
+    "skipped": "0",
+    "failed": "0",
+    "executing": "0",
+    "processing": "0"
+   }
+  ],
+  "ship_status": [],
+  "dienos_sritys": [
+   {
+    "sritis": "laukai",
+    "n": "306",
+    "mx": "2026-08-26"
+   },
+   {
+    "sritis": "pardavimai",
+    "n": "35",
+    "mx": "2026-08-26"
+   },
+   {
+    "sritis": "parduotuve",
+    "n": "3",
+    "mx": "2026-08-26"
+   },
+   {
+    "sritis": "piltuvelis",
+    "n": "34",
+    "mx": "2026-08-26"
+   },
+   {
+    "sritis": "refill",
+    "n": "3",
+    "mx": "2026-08-24"
+   }
+  ],
+  "opt": [
+   {
+    "option_name": "petshop_feeding_calc_enabled",
+    "v": "1"
+   },
+   {
+    "option_name": "petshop_feeding_calc_kill",
+    "v": "0"
+   },
+   {
+    "option_name": "ps_feeds_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-08-27 04:30:21\";s:10:\"statistika\";a:8:{s:7:\"versija\";s:5:\"2.2.0\";s:3:\"dry\";i:0;s:9:\"kandidatu"
+   },
+   {
+    "option_name": "ps_feeds_raktas",
+    "v": "UBRp7FXGgIp5eeKqp07uOzuK"
+   },
+   {
+    "option_name": "ps_paleidimo_data",
+    "v": "2026-10-01"
+   },
+   {
+    "option_name": "ps_sargas_cron_laukiam",
+    "v": "a:62:{s:26:\"action_scheduler_run_queue\";s:12:\"every_minute\";s:27:\"ps_esp_cron_process_pending\";s:11:\"ps_esp_5min\";s:29:\""
+   },
+   {
+    "option_name": "ps_sargas_cron_zinios",
+    "v": "a:59:{s:21:\"ps_cart_abandon_check\";i:1787819380;s:26:\"action_scheduler_run_queue\";i:1787819523;s:27:\"ps_esp_cron_process"
+   },
+   {
+    "option_name": "ps_sargas_pastas",
+    "v": "terra@gyvunai.lt"
+   },
+   {
+    "option_name": "ps_sargas_siusta",
+    "v": "a:8:{s:38:\"fatal:bcbdb6dd79f65bc31ebc909b7e4b49ba\";s:10:\"2026-08-17\";s:38:\"fatal:1076f1d971acc8014e8f225793a91a3c\";s:10:"
+   },
+   {
+    "option_name": "ps_sargas_start",
+    "v": "1786994616"
+   },
+   {
+    "option_name": "ps_stat_schema",
+    "v": "3"
+   },
+   {
+    "option_name": "ps_stat_zaliu_dienos",
+    "v": "180"
+   }
+  ],
+  "meta": [
+   {
+    "meta_key": "_legacy_manufacturer",
+    "n": "1514"
+   },
+   {
+    "meta_key": "_own_stock_qty",
+    "n": "19"
+   },
+   {
+    "meta_key": "_ps_abc",
+    "n": "20"
+   },
+   {
+    "meta_key": "_ps_dienu_atsargai",
+    "n": "20"
+   },
+   {
+    "meta_key": "_ps_margin_365d",
+    "n": "2957"
+   },
+   {
+    "meta_key": "_ps_publikuota",
+    "n": "2738"
+   },
+   {
+    "meta_key": "_ps_sales_30d",
+    "n": "3781"
+   },
+   {
+    "meta_key": "_ps_sales_365d",
+    "n": "3781"
+   },
+   {
+    "meta_key": "_ps_sandelis",
+    "n": "3782"
+   }
+  ],
+  "abc": [
+   {
+    "meta_value": "A",
+    "n": "10"
+   },
+   {
+    "meta_value": "B",
+    "n": "6"
+   },
+   {
+    "meta_value": "C",
+    "n": "4"
+   }
+  ],
+  "wc_orders": [
+   {
+    "status": "wc-completed",
+    "n": "4"
+   },
+   {
+    "status": "wc-processing",
+    "n": "3"
+   }
+  ],
+  "wc_cols": [
+   "id",
+   "status",
+   "currency",
+   "type",
+   "tax_amount",
+   "total_amount",
+   "customer_id",
+   "billing_email",
+   "date_created_gmt",
+   "date_updated_gmt",
+   "parent_order_id",
+   "payment_method",
+   "payment_method_title",
+   "transaction_id",
+   "ip_address",
+   "user_agent",
+   "customer_note"
+  ],
+  "web_tipai": [
+   {
+    "tipas": "add_to_cart",
+    "n": "4"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "1"
+   },
+   {
+    "tipas": "pageview",
+    "n": "38"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "2"
+   },
+   {
+    "tipas": "view_item",
+    "n": "8"
+   }
+  ],
+  "wclogs_paysera": [],
+  "mu": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-code-search.php",
+   "petshop-desk.php",
+   "petshop-dev-veidrodis.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-gavimas.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-ivykiai.php",
+   "petshop-kalendorius.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rysiai.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-vartai.php",
+   "petshop-wc-sync.php"
+  ],
+  "feeds_src": "nera",
+  "dropship_sargas": "<?php\n/**\n * Petshop Dropship Sargas v1.0 (H210) — tiekėjo vėlavimo (SLA) stebėjimas.\n *\n * PROBLEMA: perdavus užsakymą tiekėjui (`_ps_dropship_sent`) niekas neseka,\n * ar tiekėjas realiai išsiuntė. Užsakymas gali tyliai kaboti „vykdomas\" dienomis.\n *\n * SPRENDIMAS: valandinis cron. Jei nuo perdavimo praėjo daugiau nei 24 val.\n * (keičiama filtru `ps_dropship_sla_valandos`), o užsakymas vis dar\n * processing/on-hold — uždedama žymė `_ps_sla_velavimas` + pastaba istorijoje.\n * Darbalaukio `klausimas()` (desk v3.16) žymę paverčia kortele „Klausimuose\".\n *\n * SAUGUMO RIBA: sargas gali TIK uždėti žymę ir pastabą. Jokių statusų,\n * likučių, laiškų. Žymė dedama VIENĄ kartą (idempotencija per žymės buvimą).\n * Savaitgalio niuansas sprendžiamas žmogaus: kortelėje yra „Laukti\".\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nclass Petshop_Dropship_Sargas {\n\n\tconst ZYME   = '_ps_sla_velavimas';\n\tconst CRON   = 'ps_dropship_sargas';\n\tconst RIBA_H = 24;\n\n\tpublic static function init() {\n\t\tadd_action( 'init', array( __CLASS__, 'planuoti' ) );\n\t\tadd_action( self::CRON, array( __CLASS__, 'tikrinti' ) );\n\t}\n\n\tpublic static function planuoti() {\n\t\tif ( ! wp_next_scheduled( self::CRON ) ) {\n\t\t\twp_schedule_event( time() + 300, 'hourly', self::CRON );\n\t\t}\n\t}\n\n\t/** Valandinis patikrinimas. Grąžina pažymėtų skaičių (testams). */\n\tpublic static function tikrinti() {\n\t\tglobal $wpdb;\n\t\t$valandu = (int) apply_filters( 'ps_dropship_sla_valandos', self::RIBA_H );\n\t\t$riba    = gmdate( 'Y-m-d H:i:s', current_time( 'timestamp' ) - $valandu * HOUR_IN_SECONDS );\n\t\t$t  = $wpdb->prefix . 'wc_orders';\n\t\t$mt = $wpdb->prefix . 'wc_orders_meta';\n\n\t\t$ids = $wpdb->get_col( $wpdb->prepare(\n\t\t\t\"SELECT o.id\n\t\t\t FROM {$t} o\n\t\t\t JOIN {$mt} m ON m.order_id = o.id AND m.me",
+  "hub_src": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-admin-reports.php md5=83561b5aaafbba8b7dd88cac156c2963"
+ }
+}
