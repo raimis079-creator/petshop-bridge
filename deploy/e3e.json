@@ -1,0 +1,121 @@
+{
+ "v": "E3E",
+ "sid": 3983,
+ "dep": {
+  "v": "E3E27",
+  "k": "DEP_E3E27",
+  "petshop-fakt-reklama.php": {
+   "pries": null,
+   "rasyta": 9185,
+   "po": "cb89bf9b5d885851cf9071b8b87c12fb"
+  },
+  "petshop-ataskaita-pardavimai.php": {
+   "pries": "c9ae0cfa677fa66331f92346fdfc1618",
+   "bak": true,
+   "rasyta": 59770,
+   "po": "5a5ddbbfdc73d146b6c0ca693a9945b1"
+  },
+  "petshop-rytas.php": {
+   "pries": "7a2ed2a95bc7b0b59815688a64066bc1",
+   "bak": true,
+   "rasyta": 43754,
+   "po": "6d052a7bcb3e18e1dd30d1f7d60e4c1f"
+  }
+ },
+ "ver": {
+  "v": "E3E27",
+  "k": "VER_E3E27",
+  "ver": [
+   "1.0",
+   "3.3",
+   "1.1"
+  ],
+  "lentele": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at"
+  ],
+  "raktas_yra": 32,
+  "post1": [
+   200,
+   "{\"ok\":1,\"st\":{\"new\":2,\"upd\":0,\"same\":0,\"bad\":1}}"
+  ],
+  "post2_same": [
+   200,
+   "{\"ok\":1,\"st\":{\"new\":0,\"upd\":0,\"same\":2,\"bad\":1}}"
+  ],
+  "post3_upd": [
+   200,
+   "{\"ok\":1,\"st\":{\"new\":0,\"upd\":1,\"same\":1,\"bad\":1}}"
+  ],
+  "post4_blogas_raktas": 403,
+  "eilutes": [
+   {
+    "diena": "2026-08-25",
+    "kanalas": "google_ads",
+    "kampanija_id": "111",
+    "paspaudimai": "40",
+    "islaidos_ct": "1234",
+    "konversijos": "1.50",
+    "versija": "1"
+   },
+   {
+    "diena": "2026-08-26",
+    "kanalas": "google_ads",
+    "kampanija_id": "111",
+    "paspaudimai": "35",
+    "islaidos_ct": "1150",
+    "konversijos": "1.00",
+    "versija": "2"
+   }
+  ],
+  "islaidos_30": {
+   "viso_ct": 2384,
+   "per_kanala": {
+    "google_ads": 2384
+   },
+   "per_kampanija": {
+    "111": {
+     "kampanija": "TEST Search LT",
+     "islaidos_ct": 2384,
+     "paspaudimai": 75,
+     "konversijos": 2.5
+    }
+   }
+  },
+  "rytas_reklama_30": {
+   "isl": 2384,
+   "n": 4,
+   "paj": 17130,
+   "kontr": 4631,
+   "po": 2247,
+   "poas": 7.185402684563758,
+   "yra_isl": true
+  },
+  "lempute_reklama": {
+   "pav": "Reklama 7 d.",
+   "spalva": "zalia",
+   "tekstas": "išlaidos 23,84 € · po reklamos 22,47 € · POAS 7,2",
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-pardavimai&preset=7&pjuvis=kampanija&testiniai=1"
+  },
+  "pjuvis_kampanija": true,
+  "cron_portalai": "2026-08-28 01:20"
+ },
+ "h1": "Rytas Ketvirtadienis, 2026-08-27",
+ "tekstas": "NERA .psr",
+ "p1": 201,
+ "p2": 201,
+ "js": []
+}
