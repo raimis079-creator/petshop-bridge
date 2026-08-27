@@ -1,0 +1,101 @@
+{
+ "v": "E3A",
+ "sid": 3974,
+ "dep": {
+  "v": "E3A27",
+  "k": "DEP_E3A27",
+  "md5_pries": "29f89707e7e940d22212abc978055223",
+  "token": "ok",
+  "bak": "petshop-ataskaita-pardavimai.php.bak_e3a_20260827_0828",
+  "rasyta": 54853,
+  "md5_po": "5979d0de3a4b1dbe03b148bf5b59cfe1",
+  "opcache": "invalidate",
+  "zaliu_pries": 90,
+  "zaliu_po": 180
+ },
+ "ver": {
+  "v": "E3A27",
+  "k": "VER_E3A27",
+  "md5": "5979d0de3a4b1dbe03b148bf5b59cfe1",
+  "versija": "3.1",
+  "zaliu": 180,
+  "uzs": {
+   "n": "4",
+   "paj": "17130",
+   "nuol": "687",
+   "kontr": "4631"
+  },
+  "eil": {
+   "n": "23",
+   "paj": "17130",
+   "paj_v30": "16443",
+   "nuol": "687"
+  },
+  "sargas_SUM_eil_eq_uzs": true,
+  "skirtumas_ct": 0,
+  "v30_dvigubas_ct": 687,
+  "u35090": {
+   "prekiu_suma_ct": "6867",
+   "nuolaidu_ct": "687",
+   "neto": "6180",
+   "savikaina_ct": "4665",
+   "marza_ct": "1515",
+   "kontribucija_ct": "1395"
+  },
+  "e35090": [
+   {
+    "preke_id": "19760",
+    "kiekis": "1",
+    "kaina_ct": "4462",
+    "nuolaida_ct": "496",
+    "bruto": "4958"
+   },
+   {
+    "preke_id": "22912",
+    "kiekis": "1",
+    "kaina_ct": "840",
+    "nuolaida_ct": "94",
+    "bruto": "934"
+   },
+   {
+    "preke_id": "18332",
+    "kiekis": "1",
+    "kaina_ct": "878",
+    "nuolaida_ct": "97",
+    "bruto": "975"
+   }
+  ],
+  "suvestine": {
+   "uzsakymu": 4,
+   "pajamos_ct": 17130,
+   "nuolaidu_ct": 687,
+   "savikaina_ct": 12251,
+   "antkainis_ct": 4879,
+   "kontribucija_ct": 4631,
+   "pristatymas_ct": 178,
+   "mokejimas_ct": 0,
+   "prist_savikaina_ct": 0,
+   "prist_sav_nezinoma": 4,
+   "pakuote_ct": 360,
+   "taskai_ct": 0,
+   "dovanos_ct": 66,
+   "fee_ct": 0,
+   "nauju": 1,
+   "nuostolingu": 0
+  },
+  "skaidymas_eq_kontribucija": [
+   4631,
+   4631,
+   true
+  ],
+  "pjuvis_sandelis_sum": 17130,
+  "sargas_ekranas_eil_eq_uzs": true,
+  "diagrama_kontr_sum": 4631,
+  "diagrama_eq_kontribucija": true
+ },
+ "h1": "Pardavimai ir pelnas",
+ "skaid": "Antkainis 48,79 €\n+\nPristatymas iš kliento 1,78 €\n+\nMažo krepšelio mok. 0,00 €\n−\nPristatymo savikaina 0,00 €\n−\nMokėjimo mokestis 0,00 €\n−\nPakuotė 3,60 €\n−\nTaškai 0,00 €\n−\nDovanų savikaina 0,66 €\n=\nKontribucija 46,31 €\n(4 užs. be pristatymo savikainos — siunta dar neužregistruota)",
+ "p1": 201,
+ "p2": 201,
+ "js": []
+}
