@@ -1,0 +1,85 @@
+{
+ "v": "LA",
+ "zingsniai": [
+  "isjungta_TEMP:0",
+  "snip_id:4002"
+ ],
+ "http": 200,
+ "dep": {
+  "k": "RECON",
+  "map_n": 1099,
+  "kepenys": [
+   "dziovintos-galviju-kepenys-100-g",
+   "publish",
+   "https://dev.avesa.lt/product/dziovintos-galviju-kepenys-100-g/"
+  ],
+  "kategorijos": [
+   {
+    "term_id": "122",
+    "name": "Transportavimo dėžės šunims",
+    "slug": "transportavimo-dezes-sunims",
+    "count": "43"
+   },
+   {
+    "term_id": "121",
+    "name": "Transportavimo dėžės katėms",
+    "slug": "transportavimo-dezes-katems",
+    "count": "39"
+   }
+  ],
+  "esami": {
+   "kepenys-100-g": null,
+   "sunims/transportavimo-dezes-1552155967": null
+  }
+ },
+ "ver": {
+  "k": "APPLY",
+  "map_n": 1099,
+  "kepenys": [
+   "dziovintos-galviju-kepenys-100-g",
+   "publish",
+   "https://dev.avesa.lt/product/dziovintos-galviju-kepenys-100-g/"
+  ],
+  "kategorijos": [
+   {
+    "term_id": "122",
+    "name": "Transportavimo dėžės šunims",
+    "slug": "transportavimo-dezes-sunims",
+    "count": "43"
+   },
+   {
+    "term_id": "121",
+    "name": "Transportavimo dėžės katėms",
+    "slug": "transportavimo-dezes-katems",
+    "count": "39"
+   }
+  ],
+  "esami": {
+   "kepenys-100-g": null,
+   "sunims/transportavimo-dezes-1552155967": null
+  },
+  "rasyta": 147141,
+  "naujos": {
+   "kepenys-100-g": "product/dziovintos-galviju-kepenys-100-g",
+   "sunims/transportavimo-dezes-1552155967": "__TERM__122"
+  },
+  "map_n_po": 1101
+ },
+ "tikra": [
+  {
+   "p": "/kepenys-100-g",
+   "ch": "301>301>200",
+   "fin": "/product/dziovintos-galviju-kepenys-100-g/"
+  },
+  {
+   "p": "/sunims/transportavimo-dezes-1552155967",
+   "ch": "301>200",
+   "fin": "/kategorija/sunims/transportavimo-dezes-sunims/"
+  },
+  {
+   "p": "/athena-pienas-katems-200-ml",
+   "ch": "404",
+   "fin": "/athena-pienas-katems-200-ml"
+  }
+ ]
+}
