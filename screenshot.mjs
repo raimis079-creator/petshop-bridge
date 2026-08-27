@@ -15,13 +15,13 @@ for(const [p,cl] of PATHS){
   let url='https://dev.avesa.lt'+p, hops=0, chain=[], st=0, fin=url;
   try{
     for(let i=0;i<6;i++){
-      const r=await fetch(url,{redirect:'manual',headers:{'User-Agent':UA}});
+      const r=await fetch(url,{redirect:'manual'});
       st=r.status; chain.push(st);
       const loc=r.headers.get('location');
       if(st>=300&&st<400&&loc){ hops++; url=loc.startsWith('http')?loc:('https://dev.avesa.lt'+loc); fin=url; continue; }
       fin=url; break;
     }
-  }catch(e){ st=-1; chain.push('ERR'); }
+  }catch(e){ st=-1; chain.push('ERR:'+String(e).slice(0,60)); }
   out.r.push({p,cl,st,hops,fin:fin.replace('https://dev.avesa.lt',''),chain:chain.join('>')});
 }
 await put('deploy/seo_check.json', Buffer.from(JSON.stringify(out)), VER);
