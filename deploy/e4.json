@@ -1,0 +1,115 @@
+{
+ "v": "E4",
+ "sid": 3989,
+ "dep": {
+  "v": "E4",
+  "k": "DEP",
+  "buvo": null,
+  "rasyta": 27836,
+  "po": "43d1926546d2e8053f278e47abb37cb4"
+ },
+ "ver": {
+  "v": "E4",
+  "k": "VER",
+  "versija": "1.0",
+  "iterpta": 6,
+  "K1": {
+   "kohorta": "2026-06",
+   "uzs": 3,
+   "paj": 12000,
+   "kontr": 2200,
+   "iki2": 15,
+   "iki3": 66
+  },
+  "K3": {
+   "kohorta": "2026-07",
+   "uzs": 2,
+   "kontr": 700,
+   "iki2": 22
+  },
+  "koh_2026_06": {
+   "n": 2,
+   "M0_kl": 2,
+   "M0_kontr": 2300,
+   "M2_kl": 1,
+   "M2_kontr": 700,
+   "menesiai": [
+    0,
+    2
+   ]
+  },
+  "koh_2026_07": {
+   "n": 1,
+   "M0_kl": 1,
+   "menesiai": [
+    0
+   ]
+  },
+  "LAUKIAMA": {
+   "koh06": "n=2, M0_kl=2, M0_kontr=2300, M2_kl=1, M2_kontr=700",
+   "koh07": "n=1, M0_kl=1, menesiai=[0]",
+   "K1": "kohorta 2026-06, uzs 3, paj 12000, kontr 2200, iki2 15, iki3 66",
+   "K3": "iki2 22"
+  },
+  "ltv_kanalas": {
+   "mokamas": {
+    "90": [
+     0,
+     0
+    ],
+    "180": [
+     0,
+     0
+    ],
+    "365": [
+     0,
+     0
+    ],
+    "n": 2
+   },
+   "organika": {
+    "90": [
+     0,
+     0
+    ],
+    "180": [
+     0,
+     0
+    ],
+    "365": [
+     0,
+     0
+    ],
+    "n": 2
+   }
+  },
+  "apzvalga": {
+   "lt": {
+    "n": "10",
+    "nauji": "4",
+    "klientu": "4",
+    "paj": "39630",
+    "paj_grizt": "21056",
+    "kontr": "8331",
+    "kontr_grizt": "4510"
+   },
+   "klientu_viso": 4,
+   "pakartotinis_p": 75,
+   "iki2_med": 15,
+   "iki3_med": 33.00804398148148,
+   "dvi_i_tris_p": 66.66666666666666,
+   "legacy": 0
+  },
+  "rizika_n": 0
+ },
+ "h1": "Klientų analizė",
+ "tekstas": "Segmentai (šiandien)",
+ "p1": 201,
+ "p2": 201,
+ "p_ltv": 201,
+ "p_top": 201,
+ "p_rfm": 201,
+ "p_klientas": 201,
+ "js": [],
+ "clean": "SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+}
