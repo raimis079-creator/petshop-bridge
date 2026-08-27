@@ -6,7 +6,10 @@ const B64='PD9waHAKLyoqCiAqIFBsdWdpbiBOYW1lOiBURU1QIFByaXNpanVuZ2ltYXMKICovCmFkZ
 const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 const out={v:VER}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(path,buf,msg){ const u='https://api.github.com/repos/'+REPO+'/contents/'+path; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
-  let sha=null; 
+  let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
+  const b={message:msg,content:buf.toString('base64')}; if(sha)b.sha=sha; return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
+const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
+async function fx(u,o,k){ for(let i=0;i<6;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(12000); } } throw new Error('fx:'+k); }
 let sid=null;
 try{
   const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP Prisijungimas 2',code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'snip');
