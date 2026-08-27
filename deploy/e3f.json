@@ -1,87 +1,129 @@
 {
  "v": "E3F",
- "sukurta": 3963,
- "deploy": {
-  "v": "E3F-D",
-  "moduliai": {
-   "petshop-ataskaitos-ui": {
-    "md5_pries": "30a192b7d93eb436486d77d59810921f",
-    "sintakse": "OK",
-    "irasyta": 26658,
-    "md5_po": "63d0ab078fd0d96817f5b23e37df6e47",
-    "sutampa": true
-   },
-   "class-admin-reports": {
-    "md5_pries": "809fad298db64e0fe77cfbcf98d9fa72",
-    "sintakse": "OK",
-    "irasyta": 4860,
-    "md5_po": "83561b5aaafbba8b7dd88cac156c2963",
-    "sutampa": true
-   },
-   "petshop-ataskaita-pardavimai": {
-    "md5_pries": "9a45a9648627565bff99efa4224c42c6",
-    "sintakse": "OK",
-    "irasyta": 42301,
-    "md5_po": "6c03d0b5a6b44a1673d7548268ceb2bd",
-    "sutampa": true
-   }
+ "zingsniai": [
+  "isjungta_TEMP:0",
+  "snip_id:3988"
+ ],
+ "http": 200,
+ "dep": {
+  "v": "E3F",
+  "k": "DEP_E3F",
+  "petshop-fakt-reklama.php": {
+   "pries": "cb89bf9b5d885851cf9071b8b87c12fb",
+   "rasyta": 10365,
+   "po": "9834dd5a0d698b679706ca5b2e0b2a91"
+  },
+  "petshop-ataskaita-pardavimai.php": {
+   "pries": "5a5ddbbfdc73d146b6c0ca693a9945b1",
+   "rasyta": 60155,
+   "po": "bf5f48b0ba7b882686edbbef6f95c5f5"
   }
  },
- "testas": {
-  "v": "E3F-T",
-  "ui_versija": "1.1",
-  "pard_versija": "1.3",
-  "laikotarpiai": {
-   "7": "2026-08-20 .. 2026-08-26 (7 d.)",
-   "30": "2026-07-28 .. 2026-08-26 (30 d.)",
-   "90": "2026-05-29 .. 2026-08-26 (90 d.)",
-   "siandien": "2026-08-26 .. 2026-08-26 (1 d.)",
-   "men": "2026-08-01 .. 2026-08-26 (26 d.)",
-   "pmen": "2026-07-01 .. 2026-07-31 (31 d.)",
-   "metai": "2026-01-01 .. 2026-08-26 (238 d.)",
-   "visi": "2025-08-26 .. 2026-08-26 (366 d.)"
+ "ver": {
+  "v": "E3F",
+  "k": "VER_E3F",
+  "ver": [
+   "1.1",
+   "3.4"
+  ],
+  "stulpelis": [
+   "senoji_svetaine"
+  ],
+  "stat_pradzia_pries": "",
+  "zymos": [
+   {
+    "senoji_svetaine": "0",
+    "n": "4",
+    "c": "4768",
+    "nuo": "2026-08-26",
+    "iki": "2026-08-26"
+   },
+   {
+    "senoji_svetaine": "1",
+    "n": "7",
+    "c": "11320",
+    "nuo": "2026-08-24",
+    "iki": "2026-08-25"
+   }
+  ],
+  "islaidos_be_senos": {
+   "viso_ct": 4768,
+   "per_kanala": {
+    "google_ads": 4768
+   },
+   "per_kampanija": {
+    "111": {
+     "kampanija": "TEST Search LT",
+     "islaidos_ct": 1150,
+     "paspaudimai": 35,
+     "konversijos": 1
+    },
+    "21472017542": {
+     "kampanija": "P-max| All LT | Šunų maistas",
+     "islaidos_ct": 1567,
+     "paspaudimai": 29,
+     "konversijos": 1.71
+    },
+    "21565450990": {
+     "kampanija": "P-max| All LT | Kačių maistas",
+     "islaidos_ct": 1793,
+     "paspaudimai": 67,
+     "konversijos": 1.27
+    },
+    "23346712074": {
+     "kampanija": "petshop",
+     "islaidos_ct": 258,
+     "paspaudimai": 13,
+     "konversijos": 0
+    }
+   }
   },
-  "testiniai_pagal_nutylejima": false,
-  "stat_pradzia": "",
-  "suvestine_be_testiniu": {
-   "uzsakymu": 0,
-   "pajamos_ct": 0,
-   "nuolaidu_ct": 0,
-   "bruto_ct": 0,
-   "savikaina_ct": 0,
-   "antkainis_ct": 0,
-   "kontribucija_ct": 0,
-   "pvm_ct": 0,
-   "viso_ct": 0,
-   "pristatymas_ct": 0,
-   "mokejimas_ct": 0,
-   "nauju": 0,
-   "nuostolingu": 0,
-   "vienetu": 0,
-   "grazinimu": 0,
-   "grazinta_ct": 0
+  "islaidos_su_sena": {
+   "viso_ct": 16088,
+   "per_kanala": {
+    "google_ads": 16088
+   },
+   "per_kampanija": {
+    "111": {
+     "kampanija": "TEST Search LT",
+     "islaidos_ct": 2384,
+     "paspaudimai": 75,
+     "konversijos": 2.5
+    },
+    "21472017542": {
+     "kampanija": "P-max| All LT | Šunų maistas",
+     "islaidos_ct": 6653,
+     "paspaudimai": 181,
+     "konversijos": 4.72
+    },
+    "21565450990": {
+     "kampanija": "P-max| All LT | Kačių maistas",
+     "islaidos_ct": 5960,
+     "paspaudimai": 202,
+     "konversijos": 7.27
+    },
+    "23346712074": {
+     "kampanija": "petshop",
+     "islaidos_ct": 1091,
+     "paspaudimai": 57,
+     "konversijos": 2
+    }
+   }
   },
-  "suvestine_su_testiniais": {
-   "uzsakymu": 4,
-   "pajamos_ct": 17130,
-   "nuolaidu_ct": 687,
-   "bruto_ct": 17817,
-   "savikaina_ct": 12251,
-   "antkainis_ct": 4879,
-   "kontribucija_ct": 4631,
-   "pvm_ct": 3636,
-   "viso_ct": 20944,
-   "pristatymas_ct": 178,
-   "mokejimas_ct": 0,
-   "nauju": 1,
-   "nuostolingu": 0,
-   "vienetu": 32,
-   "grazinimu": 3,
-   "grazinta_ct": 4790
-  },
-  "hub_aprasai": {
-   "ps-pardavimai": "Pajamos, savikaina, antkainis ir kontribucija. Trylika pjūvių su gilinimusi iki prekės eilutės, nuostolingi užsakymai ir žali duomenys XLSX."
-  },
-  "hub_filtras_veikia": true
+  "rasymas_naujas": "new",
+  "rasymas_senas": "new",
+  "zymos_po": [
+   {
+    "diena": "2026-08-20",
+    "kampanija_id": "999",
+    "senoji_svetaine": "1"
+   },
+   {
+    "diena": "2026-08-27",
+    "kampanija_id": "999",
+    "senoji_svetaine": "0"
+   }
+  ],
+  "atstatyta": ""
  }
 }
