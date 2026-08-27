@@ -1,0 +1,52 @@
+{
+ "v": "AC27",
+ "zingsniai": [
+  "isjungta_TEMP:0",
+  "snip_id:3986"
+ ],
+ "http": 200,
+ "duom": {
+  "paskutinis_gavimas": {
+   "kada": "2026-08-27 16:44:31",
+   "eiluciu": 3,
+   "st": {
+    "new": 0,
+    "upd": 1,
+    "same": 1,
+    "bad": 1
+   }
+  },
+  "eilutes": [
+   {
+    "diena": "2026-08-26",
+    "kanalas": "google_ads",
+    "kampanija_id": "111",
+    "kampanija": "TEST Search LT",
+    "paspaudimai": "35",
+    "islaidos_ct": "1150",
+    "konversijos": "1.00",
+    "saltinis": "ads_script",
+    "versija": "2",
+    "irasyta_at": "2026-08-27 16:44:31"
+   },
+   {
+    "diena": "2026-08-25",
+    "kanalas": "google_ads",
+    "kampanija_id": "111",
+    "kampanija": "TEST Search LT",
+    "paspaudimai": "40",
+    "islaidos_ct": "1234",
+    "konversijos": "1.50",
+    "saltinis": "ads_script",
+    "versija": "1",
+    "irasyta_at": "2026-08-27 16:44:29"
+   }
+  ],
+  "viso": {
+   "n": "2",
+   "c": "2384",
+   "nuo": "2026-08-25",
+   "iki": "2026-08-26"
+  }
+ }
+}
