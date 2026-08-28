@@ -1,0 +1,113 @@
+{
+ "v": "SLUG-v1.0",
+ "dry": {
+  "v": "SL1",
+  "rezimas": "DRY",
+  "pries": {
+   "1,5 kg": {
+    "id": 505,
+    "name": "1,5 kg",
+    "slug": "1-5-kg",
+    "count": 70
+   },
+   "15 kg": {
+    "id": 422,
+    "name": "15 kg",
+    "slug": "15-kg",
+    "count": 31
+   }
+  },
+  "slug_savininkai": [
+   {
+    "term_id": "505",
+    "name": "1,5 kg",
+    "slug": "1-5-kg",
+    "taxonomy": "pa_pakuotes_dydis"
+   },
+   {
+    "term_id": "422",
+    "name": "15 kg",
+    "slug": "15-kg",
+    "taxonomy": "pa_pakuotes_dydis"
+   }
+  ],
+  "veiksmas": "BUTU DARYTA"
+ },
+ "apply": {
+  "v": "SL1",
+  "rezimas": "APPLY",
+  "pries": {
+   "1,5 kg": {
+    "id": 505,
+    "name": "1,5 kg",
+    "slug": "1-5-kg",
+    "count": 70
+   },
+   "15 kg": {
+    "id": 422,
+    "name": "15 kg",
+    "slug": "15-kg",
+    "count": 31
+   }
+  },
+  "slug_savininkai": [
+   {
+    "term_id": "505",
+    "name": "1,5 kg",
+    "slug": "1-5-kg",
+    "taxonomy": "pa_pakuotes_dydis"
+   },
+   {
+    "term_id": "422",
+    "name": "15 kg",
+    "slug": "15-kg",
+    "taxonomy": "pa_pakuotes_dydis"
+   }
+  ],
+  "zingsnis1": "jau buvo 1-5-kg",
+  "zingsnis2": "jau buvo 15-kg",
+  "spalvos": [
+   {
+    "id": 700,
+    "buvo": "šviesiai pilka",
+    "tapo": "Šviesiai pilka",
+    "slug": "sviesiai-pilka",
+    "bukle": "PAKEISTA"
+   },
+   {
+    "id": 705,
+    "buvo": "žalia",
+    "tapo": "Žalia",
+    "slug": "zalia",
+    "bukle": "PAKEISTA"
+   },
+   {
+    "id": 702,
+    "buvo": "žydra",
+    "tapo": "Žydra",
+    "slug": "zydra",
+    "bukle": "PAKEISTA"
+   }
+  ],
+  "po": {
+   "1,5 kg": {
+    "id": 505,
+    "name": "1,5 kg",
+    "slug": "1-5-kg",
+    "count": 70
+   },
+   "15 kg": {
+    "id": 422,
+    "name": "15 kg",
+    "slug": "15-kg",
+    "count": 31
+   }
+  },
+  "liko_koliziju": [
+   [
+    "1,5 kg",
+    "15 kg"
+   ]
+  ]
+ }
+}
