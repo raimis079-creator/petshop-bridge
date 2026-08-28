@@ -1,0 +1,75 @@
+{
+ "v": "FBTE1",
+ "zingsniai": [
+  "isjungta_TEMP:0",
+  "snip_id:4007",
+  "psl:/=200",
+  "psl:/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg=301",
+  "psl:/krepselis/=200",
+  "psl:/cart/=404"
+ ],
+ "http": 200,
+ "duom": {
+  "v": "FBTE1",
+  "md5_gauta": "6fa968db5c5b0848b05e81f819e233ec",
+  "dydis": 57320,
+  "sintakse": "OK",
+  "backup": "petshop-fbt.php.bak_v143_20260828_0730",
+  "rasyta": 57320,
+  "md5_diske": "6fa968db5c5b0848b05e81f819e233ec",
+  "dabar_pairs": {
+   "sausas-maistas-sunims": [
+    "skanestai-sunims"
+   ],
+   "sausas-maistas-katems": [
+    "skanestai-katems"
+   ]
+  },
+  "dabar_rules": {
+   "skanestai-sunims": 15,
+   "skanestai-katems": 15
+  },
+  "dabar_settings": {
+   "enabled": "1",
+   "discount": 0,
+   "maxc": 3,
+   "heading": "Dažnai perkama kartu",
+   "note": "Perkant kartu – papildomoms prekėms taikoma nuolaida!",
+   "precheck": "1"
+  },
+  "planas_pairs": {
+   "sausas-maistas-sunims": [
+    "skanestai-sunims",
+    "zaislai-sunims",
+    "higienos-priemones-sunims",
+    "vitaminai-ir-papildai-sunims"
+   ],
+   "maistas-sunims": [
+    "skanestai-sunims",
+    "zaislai-sunims",
+    "higienos-priemones-sunims",
+    "vitaminai-ir-papildai-sunims"
+   ],
+   "sausas-maistas-katems": [
+    "skanestai-katems",
+    "zaislai-katems",
+    "vitaminai-ir-papildai-katems"
+   ],
+   "maistas-katems": [
+    "skanestai-katems",
+    "zaislai-katems",
+    "vitaminai-ir-papildai-katems"
+   ]
+  },
+  "planas_rules": {
+   "skanestai-sunims": 10,
+   "skanestai-katems": 10,
+   "zaislai-sunims": 10,
+   "zaislai-katems": 10,
+   "higienos-priemones-sunims": 10,
+   "vitaminai-ir-papildai-sunims": 10,
+   "vitaminai-ir-papildai-katems": 10
+  },
+  "pastaba": "DRY: pairs/rules NEIRASYTA. Kacems higienos kategorijos be kraiko nera - praleista."
+ }
+}
