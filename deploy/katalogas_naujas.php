@@ -3312,6 +3312,29 @@ class Petshop_Katalogas {
 			$ff = Petshop_AV_Source::resolve( $pid );
 			$kurj_auto = is_array( $ff ) && ! empty( $ff['courier_only'] );
 		}
+		/* VARIACIJU JUNGIKLIS. Skirtukas „Variacijos" rodomas tik tada, kai
+		   zmogus pasako, kad si preke ju turi — kitaip 3 700 prekiu siulytu
+		   tai, ko joms niekada nereikes. Variacinei prekei jungiklis uzrakintas:
+		   isjungus ji variacijos liktu nematomos, bet gyvos. */
+		$var_tipas = wp_get_object_terms( $pid, 'product_type', array( 'fields' => 'slugs' ) );
+		$jau_var   = ! is_wp_error( $var_tipas ) && in_array( 'variable', (array) $var_tipas, true );
+		if ( self::var_galima( $pid ) ) {
+			echo '<div class="kort-eil"><span>Turi variacijų</span>';
+			if ( $jau_var ) {
+				echo '<span><input type="checkbox" checked disabled>'
+					. '<span class="vnt">prekė jau variacinė — skirtukas rodomas visada</span></span>';
+			} else {
+				echo '<span class="kort-red kort-varnele" data-laukas="_ps_var_ijungta" data-id="' . (int) $pid . '">'
+					. '<input type="checkbox" ' . checked( get_post_meta( $pid, '_ps_var_ijungta', true ), '1', false ) . '>'
+					. '<span class="vnt">pvz. ta pati prekė keliomis spalvomis</span>'
+					. '<span class="stat"></span></span>';
+			}
+			echo '</div>';
+			if ( ! $jau_var && get_post_meta( $pid, '_ps_var_ijungta', true ) === '1' ) {
+				echo '<div class="kort-info-m">Skirtukas <b>Variacijos</b> atsiras perkrovus kortelę.</div>';
+			}
+		}
+
 		echo '<div class="kort-eil"><span>Tik kurjeriu</span>'
 			. '<span class="kort-red kort-varnele" data-laukas="_ps_tik_kurjeriu" data-id="' . (int) $pid . '">'
 			. '<input type="checkbox" ' . checked( $kurj_rankinis, true, false ) . '>'
