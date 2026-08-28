@@ -1,0 +1,32 @@
+{
+ "v": "AUD-v1.0",
+ "r": {
+  "v": "AUD1",
+  "taksonomiju": 26,
+  "dublikatai": [],
+  "kolizijos": [],
+  "raidziu_marguma": [
+   {
+    "tax": "pa_brendas",
+    "didziaja": 61,
+    "mazaja": 1
+   },
+   {
+    "tax": "pa_spalva",
+    "didziaja": 18,
+    "mazaja": 3
+   }
+  ],
+  "terminu": 406,
+  "busimos_kolizijos": [
+   {
+    "tax": "pa_pakuotes_dydis",
+    "slug": "15-kg",
+    "is": [
+     "1,5 kg",
+     "15 kg"
+    ]
+   }
+  ]
+ }
+}
