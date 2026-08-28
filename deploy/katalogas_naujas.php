@@ -8087,16 +8087,17 @@ class Petshop_Katalogas {
 				var d={}; try{ d=JSON.parse(f.querySelector(".ps-var-terms").textContent); }catch(x){}
 				var sar=d[sel.value]||[], h="";
 				sar.forEach(function(t){
-					h+='<label class="'+(t.yra?"zym":"")+'"><input type="checkbox" value="'+t.id+'"'+(t.yra?" checked":"")+'>'
-					 + (t.hex?'<span class="sp" style="background:'+t.hex+'"></span>':'')
-					 + '<span>'+t.v+'</span></label>';
+					h += "<label class=\"" + (t.yra?"zym":"") + "\">"
+					   + "<input type=\"checkbox\" value=\"" + t.id + "\"" + (t.yra?" checked":"") + ">"
+					   + (t.hex ? ("<span class=\"sp\" style=\"background:" + t.hex + "\"></span>") : "")
+					   + "<span>" + t.v + "</span></label>";
 				});
-				zona.innerHTML=h||'<div class="kort-info-m">Ši ašis dar neturi reikšmių. Jos kuriamos lange Petshop prekės → Atributai.</div>';
+				zona.innerHTML = h || "<div class=\"kort-info-m\">Ši ašis dar neturi reikšmių. Jos kuriamos lange Petshop prekės → Atributai.</div>";
 				f.querySelector(".ps-var-vykdyti").disabled=true;
 				f.querySelector(".ps-var-perzt").innerHTML="";
 			}
 			/* Kortele ikeliama per innerHTML, todel reiksmes piesiamos tada, kai
-			   ji jau DOM'e — `korteleInit` yra ta vieta, kuria kviecia atidaryk(). */
+			   ji jau idėta i DOM — korteleInit yra ta vieta, kuria kviecia atidaryk(). */
 			(function(){
 				var senas = window.korteleInit;
 				window.korteleInit = function(){
