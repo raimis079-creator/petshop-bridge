@@ -857,6 +857,7 @@ class Petshop_Katalogas {
 		add_action( 'wp_ajax_ps_kat_sav', array( __CLASS__, 'ajax_sav_irasyti' ) );
 		add_action( 'wp_ajax_ps_kat_laukas', array( __CLASS__, 'ajax_laukas_irasyti' ) );
 		add_action( 'wp_ajax_ps_kat_variacija', array( __CLASS__, 'ajax_variacija' ) );
+		add_action( 'wp_ajax_ps_kat_var_kurti', array( __CLASS__, 'ajax_var_kurti' ) );
 		add_action( 'wp_ajax_ps_kat_aprasymas', array( __CLASS__, 'ajax_aprasymas' ) );
 		add_action( 'wp_ajax_ps_kat_isimti', array( __CLASS__, 'ajax_isimti' ) );
 		add_action( 'wp_ajax_ps_kat_masinis', array( __CLASS__, 'ajax_masinis' ) );
@@ -1362,6 +1363,168 @@ class Petshop_Katalogas {
 	 * funkcija tureti du skirtingus saugiklius rinkinius — o saugikliai cia
 	 * ir yra visa esme.
 	 */
+	/** Ar prekei apskritai taikomos variacijos. Rinkiniai ir DP pakai — ne. */
+	public static function var_galima( $pid ) {
+		$t = wp_get_object_terms( $pid, 'product_type', array( 'fields' => 'slugs' ) );
+		$t = is_wp_error( $t ) ? array() : $t;
+		$tipas = $t ? $t[0] : 'simple';
+		if ( ! in_array( $tipas, array( 'simple', 'variable' ), true ) ) { return false; }
+		if ( get_post_meta( $pid, '_ps_rinkinys', true ) || get_post_meta( $pid, '_petshop_dp_sablonas', true ) ) {
+			return false;
+		}
+		return $tipas;
+	}
+
+	/** Kokios taksonomijos tinka variacijoms. Sarasas is registro, ne is galvos. */
+	public static function var_asys() {
+		$out = array();
+		foreach ( array( 'pa_spalva', 'pa_dydis' ) as $tx ) {
+			if ( taxonomy_exists( $tx ) ) {
+				$o = get_taxonomy( $tx );
+				$out[ $tx ] = $o && $o->labels->singular_name ? $o->labels->singular_name : str_replace( 'pa_', '', $tx );
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * PADARYTI VARIACINE / PRIDETI REIKSMES.
+	 *
+	 * Du rezimai: „perziura" nieko nekeicia ir grazina, kas butu daroma;
+	 * „vykdyti" atlieka. Isemimas NERA trynimas — variacija gali kaboti
+	 * uzsakymuose, todel ji tampa `private` („nebeprekiaujam").
+	 */
+	public static function ajax_var_kurti() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
+		check_ajax_referer( 'ps_kat', 'nonce' );
+
+		$pid    = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0;
+		$tax    = isset( $_POST['tax'] ) ? sanitize_key( wp_unslash( $_POST['tax'] ) ) : '';
+		$rez    = isset( $_POST['rezimas'] ) ? sanitize_key( wp_unslash( $_POST['rezimas'] ) ) : 'perziura';
+		$modelis= isset( $_POST['likutis'] ) ? sanitize_key( wp_unslash( $_POST['likutis'] ) ) : 'tevas';
+		$ids    = isset( $_POST['terminai'] ) ? (array) json_decode( wp_unslash( $_POST['terminai'] ), true ) : array();
+		$ids    = array_values( array_unique( array_filter( array_map( 'intval', $ids ) ) ) );
+
+		if ( ! $pid || get_post_type( $pid ) !== 'product' ) { wp_send_json_error( 'nėra prekės' ); }
+		$tipas = self::var_galima( $pid );
+		if ( ! $tipas ) { wp_send_json_error( 'Šiai prekei variacijos netaikomos (rinkinys arba pakuotė).' ); }
+		$asys = self::var_asys();
+		if ( ! isset( $asys[ $tax ] ) ) { wp_send_json_error( 'netinkama ašis' ); }
+		if ( ! $ids ) { wp_send_json_error( 'Pažymėk bent vieną reikšmę.' ); }
+
+		foreach ( $ids as $tid ) {
+			$t = get_term( $tid );
+			if ( ! $t || is_wp_error( $t ) || $t->taxonomy !== $tax ) { wp_send_json_error( 'netinkama reikšmė #' . (int) $tid ); }
+		}
+
+		/* Jei preke JAU variacine — asies keisti neleidziam, ir likucio
+		   modelio taip pat. Keisti modeli reikstu perrasyti likucius, o
+		   kuris skaicius tada teisingas, nezino niekas. */
+		$esamos = array();   /* term_id => variacijos ID */
+		if ( $tipas === 'variable' ) {
+			global $wpdb;
+			$vids = $wpdb->get_col( $wpdb->prepare(
+				"SELECT ID FROM {$wpdb->posts} WHERE post_type='product_variation'
+				  AND post_parent=%d AND post_status<>'trash'", $pid ) );
+			foreach ( $vids as $vid ) {
+				$sl = get_post_meta( $vid, 'attribute_' . $tax, true );
+				if ( $sl === '' ) { continue; }
+				$t = get_term_by( 'slug', $sl, $tax );
+				if ( $t ) { $esamos[ (int) $t->term_id ] = (int) $vid; }
+			}
+			if ( ! $esamos ) {
+				$kita = wp_get_object_terms( $pid, 'pa_spalva', array( 'fields' => 'ids' ) );
+				if ( $tax !== 'pa_spalva' && ! is_wp_error( $kita ) && $kita ) {
+					wp_send_json_error( 'Ši prekė jau varijuoja pagal kitą ašį. Antros ašies nepridedame.' );
+				}
+			}
+			/* modelis paimamas is esamos praktikos, ne is formos */
+			$pirma = reset( $esamos );
+			$modelis = ( $pirma && get_post_meta( $pirma, '_manage_stock', true ) === 'yes' ) ? 'variacijos' : 'tevas';
+		}
+
+		/* Kaina imama PRIES konvertavima — WC ja tevui isvalo. */
+		$kaina = get_post_meta( $pid, '_regular_price', true );
+		if ( $kaina === '' && $esamos ) {
+			$kaina = get_post_meta( reset( $esamos ), '_regular_price', true );
+		}
+		if ( $kaina === '' ) { wp_send_json_error( 'Prekė neturi kainos — variacijos neturėtų iš ko jos paveldėti.' ); }
+
+		$kurti  = array_values( array_diff( $ids, array_keys( $esamos ) ) );
+		$isimti = array_values( array_diff( array_keys( $esamos ), $ids ) );
+
+		$vardas = function ( $tid ) { $t = get_term( $tid ); return $t && ! is_wp_error( $t ) ? $t->name : ('#'.$tid); };
+
+		if ( $rez === 'perziura' ) {
+			wp_send_json_success( array(
+				'tipas'    => $tipas,
+				'modelis'  => $modelis,
+				'kaina'    => $kaina,
+				'kurti'    => array_map( $vardas, $kurti ),
+				'isimti'   => array_map( $vardas, $isimti ),
+				'lieka'    => count( $ids ) - count( $kurti ),
+				'tevo_lik' => get_post_meta( $pid, '_stock', true ),
+			) );
+		}
+
+		/* ---------- VYKDOM ---------- */
+		if ( $tipas === 'simple' ) {
+			$reg = get_post_meta( $pid, '_product_attributes', true );
+			if ( ! is_array( $reg ) ) { $reg = array(); }
+			$reg[ $tax ] = array( 'name' => $tax, 'value' => '', 'position' => count( $reg ),
+				'is_visible' => 1, 'is_variation' => 1, 'is_taxonomy' => 1 );
+			update_post_meta( $pid, '_product_attributes', $reg );
+			wp_set_object_terms( $pid, 'variable', 'product_type' );
+		}
+		/* terminai TIK per term_id — lietuviski slug'ai per pavadinima nepatikimi */
+		$visi_terminai = array_values( array_unique( array_merge( $ids, array_keys( $esamos ) ) ) );
+		wp_set_object_terms( $pid, $visi_terminai, $tax, false );
+
+		if ( $modelis === 'tevas' ) {
+			update_post_meta( $pid, '_manage_stock', 'yes' );
+		} else {
+			update_post_meta( $pid, '_manage_stock', 'no' );
+		}
+
+		$sukurta = array(); $ismesta = array();
+		foreach ( $kurti as $tid ) {
+			$t = get_term( $tid );
+			$v = new WC_Product_Variation();
+			$v->set_parent_id( $pid );
+			$v->set_attributes( array( $tax => $t->slug ) );
+			$v->set_regular_price( $kaina );
+			$v->set_manage_stock( $modelis === 'variacijos' );
+			if ( $modelis === 'variacijos' ) { $v->set_stock_quantity( 0 ); $v->set_stock_status( 'outofstock' ); }
+			$v->set_status( 'publish' );
+			$vid = $v->save();
+			if ( $vid ) { $sukurta[] = array( 'id' => $vid, 'vardas' => $t->name ); }
+		}
+		foreach ( $isimti as $tid ) {
+			$vid = $esamos[ $tid ];
+			wp_update_post( array( 'ID' => $vid, 'post_status' => 'private' ) );
+			$ismesta[] = array( 'id' => $vid, 'vardas' => $vardas( $tid ) );
+		}
+
+		WC_Product_Variable::sync( $pid );
+		wc_delete_product_transients( $pid );
+		clean_post_cache( $pid );
+		self::kesas_lauk( $pid );
+		if ( class_exists( '\Automattic\WooCommerce\Internal\ProductAttributesLookup\LookupDataStore' ) ) {
+			try {
+				wc_get_container()->get( \Automattic\WooCommerce\Internal\ProductAttributesLookup\LookupDataStore::class )
+					->create_data_for_product( $pid );
+			} catch ( \Throwable $e ) { /* lookup nera kritine */ }
+		}
+		if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {
+			try {
+				Petshop_Ivykiai::irasyti( $pid, 'variacijos',
+					'Ašis ' . $tax . ' · sukurta ' . count( $sukurta ) . ', nebeprekiaujam ' . count( $ismesta ) );
+			} catch ( \Throwable $e ) { /* zurnalas neblokuoja */ }
+		}
+
+		wp_send_json_success( array( 'sukurta' => $sukurta, 'ismesta' => $ismesta, 'modelis' => $modelis ) );
+	}
+
 	public static function ajax_variacija() {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
 		check_ajax_referer( 'ps_kat', 'nonce' );
@@ -2720,7 +2883,7 @@ class Petshop_Katalogas {
 			. '<button data-t="prd">Pardavimai</button>'
 			. '<button data-t="ist">Istorija</button>'
 			. ( class_exists( 'Petshop_Partijos' ) ? '<button data-t="pak">GPAIS pakuotė</button>' : '' )
-			. ( self::variaciju_sarasas( $pid ) ? '<button data-t="var">Variacijos</button>' : '' )
+			. ( self::var_galima( $pid ) ? '<button data-t="var">Variacijos</button>' : '' )
 			. '</div>';
 
 		/* ---------- v2.9: PARDAVIMAI IR PILNUMAS VIRSUJE ----------
@@ -3811,9 +3974,80 @@ class Petshop_Katalogas {
 	}
 
 	private static function kort_variacijos( $pid ) {
+		$tipas = self::var_galima( $pid );
+		if ( ! $tipas ) { return; }
 		$v = self::variaciju_sarasas( $pid );
-		if ( ! $v ) { return; }
 		echo '<div class="kort-pane" data-p="var">';
+
+		/* ---- FORMA: padaryti variacine arba pridėti reikšmių ---- */
+		$asys = self::var_asys();
+		$esama_asis = '';
+		if ( $v ) {
+			foreach ( $v[0]['atr'] as $a ) { if ( isset( $asys[ $a['tax'] ] ) ) { $esama_asis = $a['tax']; break; } }
+		}
+		echo '<div class="kort-blokas ps-var-forma" data-id="' . (int) $pid . '">';
+		echo '<div class="kort-antr">' . ( $v ? 'Pridėti arba išimti reikšmes' : 'Padaryti variacine' ) . '</div>';
+		if ( ! $v ) {
+			echo '<div class="kort-info-m">Ši prekė kol kas paprasta. Pasirinkus ašį ir reikšmes ji taps '
+				. 'variacine: pirkėjas rinksis prekės puslapyje, o kaina bus paveldėta iš dabartinės.</div>';
+		}
+
+		echo '<div class="kort-eil"><span>Ašis</span><span>';
+		if ( $esama_asis ) {
+			echo '<b>' . esc_html( $asys[ $esama_asis ] ) . '</b> <span class="ps-var-pilk">— ašis nebekeičiama</span>'
+				. '<input type="hidden" class="ps-var-tax" value="' . esc_attr( $esama_asis ) . '">';
+		} else {
+			echo '<select class="ps-var-tax">';
+			foreach ( $asys as $tx => $vardas ) {
+				echo '<option value="' . esc_attr( $tx ) . '">' . esc_html( $vardas ) . '</option>';
+			}
+			echo '</select>';
+		}
+		echo '</span></div>';
+
+		if ( ! $v ) {
+			echo '<div class="kort-eil"><span>Likutis</span><span>'
+				. '<label><input type="radio" name="psvarlik' . (int) $pid . '" class="ps-var-lik" value="tevas" checked> '
+				. 'bendras visoms reikšmėms</label> '
+				. '<label><input type="radio" name="psvarlik' . (int) $pid . '" class="ps-var-lik" value="variacijos"> '
+				. 'atskiras kiekvienai</label></span></div>'
+				. '<div class="kort-info-m">Bendras tinka, kai lentynoje nerūšiuoji pagal spalvą. '
+				. 'Atskiras reiškia, kad kiekvienai reikšmei likutį suvesi pats — dabartinis prekės likutis '
+				. 'nebebus naudojamas. Vėliau šio pasirinkimo pakeisti nebus galima.</div>';
+		}
+
+		/* Terminai atiduodami JSON'u — kitaip kiekviena asis reikstu atskira
+		   uzklausa, o ju cia tik dvi. Pazymeti tie, kurie jau turi variacija. */
+		$duom = array();
+		$dabar = array();
+		if ( $v ) {
+			foreach ( $v as $x ) {
+				foreach ( $x['atr'] as $a ) {
+					if ( $x['st'] === 'publish' ) { $dabar[] = $a['vardas']; }
+				}
+			}
+		}
+		foreach ( $asys as $tx => $vardas ) {
+			$sar = array();
+			foreach ( (array) get_terms( array( 'taxonomy' => $tx, 'hide_empty' => false ) ) as $t ) {
+				$sar[] = array(
+					'id'  => (int) $t->term_id,
+					'v'   => $t->name,
+					'hex' => (string) get_term_meta( $t->term_id, 'product_attribute_color', true ),
+					'yra' => in_array( $t->name, $dabar, true ) ? 1 : 0,
+				);
+			}
+			$duom[ $tx ] = $sar;
+		}
+		echo '<script type="application/json" class="ps-var-terms">' . wp_json_encode( $duom ) . '</script>';
+		echo '<div class="ps-var-reiksmes"></div>';
+		echo '<div class="kort-atr-myg"><button type="button" class="ps-var-perz">Peržiūrėti</button> '
+			. '<button type="button" class="ps-var-vykdyti" disabled>Įrašyti</button>'
+			. '<span class="ps-var-stat"></span></div>';
+		echo '<div class="ps-var-perzt"></div>';
+		echo '</div>';
+
+		if ( ! $v ) { echo '</div>'; return; }
 
 		/* Kur gyvena likutis — tai pirmas dalykas, kuri reikia zinoti.
 		   Dvi schemos veikia vienu metu ir jos NEsuderinamos tarpusavyje. */
@@ -3902,6 +4136,17 @@ class Petshop_Katalogas {
 		.ps-var-lent .ps-var-siau input{max-width:74px;text-align:right}
 		.ps-var-lent .ps-var-mono input{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
 		.ps-var-lent .kort-red input.purvinas{background:#fff8e5;border-color:#d4ac0d}
+		.ps-var-forma{margin-bottom:16px}
+		.ps-var-reiksmes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+		.ps-var-reiksmes label{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;
+			border:1px solid #dfe3dd;border-radius:4px;font-size:13px;cursor:pointer;background:#fff}
+		.ps-var-reiksmes label.zym{border-color:#1f7a4d;background:#f3faf6}
+		.ps-var-reiksmes .sp{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
+		.ps-var-perzt{font-size:13px;margin-top:8px;line-height:1.6}
+		.ps-var-perzt b{color:#1d2422}
+		.ps-var-stat{margin-left:10px;font-size:13px}
+		.ps-var-stat.kl{color:#b3261e}
+		.ps-var-stat.ok{color:#1f7a4d}
 		</style>';
 		echo '</div>';
 	}
@@ -7782,6 +8027,83 @@ class Petshop_Katalogas {
 				purvini().forEach(function(inp){ inp.value=inp.dataset.buvo||""; inp.classList.remove("purvinas"); });
 				juostaAtnaujinti();
 			}
+
+			/* ---- VARIACIJU KURIMAS ---- */
+			document.addEventListener("click", function(e){
+				var f=e.target.closest(".ps-var-forma"); if(!f) return;
+				var sel=f.querySelector(".ps-var-tax"), zona=f.querySelector(".ps-var-reiksmes"),
+				    stat=f.querySelector(".ps-var-stat"), perzt=f.querySelector(".ps-var-perzt"),
+				    bv=f.querySelector(".ps-var-vykdyti");
+				function terminai(){
+					try{ return JSON.parse(f.querySelector(".ps-var-terms").textContent); }catch(x){ return {}; }
+				}
+				function pazymeti(){
+					return Array.prototype.map.call(zona.querySelectorAll("input:checked"),function(i){return +i.value;});
+				}
+				function likutis(){
+					var r=f.querySelector(".ps-var-lik:checked"); return r?r.value:"tevas";
+				}
+				if(e.target.closest(".ps-var-perz")||e.target.closest(".ps-var-vykdyti")){
+					var vykdom=!!e.target.closest(".ps-var-vykdyti");
+					var fd=new FormData();
+					fd.append("action","ps_kat_var_kurti"); fd.append("nonce",NONCE);
+					fd.append("id",f.dataset.id); fd.append("tax",sel.value);
+					fd.append("likutis",likutis());
+					fd.append("rezimas",vykdom?"vykdyti":"perziura");
+					fd.append("terminai",JSON.stringify(pazymeti()));
+					stat.className="ps-var-stat"; stat.textContent=vykdom?"Įrašoma…":"Skaičiuojama…";
+					fetch(AJAX,{method:"POST",credentials:"same-origin",body:fd})
+						.then(function(r){return r.json();})
+						.then(function(d){
+							if(!d||!d.success){ stat.className="ps-var-stat kl";
+								stat.textContent=(d&&d.data)?(d.data.zinute||d.data):"nepavyko"; bv.disabled=true; return; }
+							if(vykdom){ stat.className="ps-var-stat ok"; stat.textContent="Įrašyta.";
+								setTimeout(function(){ atidaryk(+f.dataset.id); },600); return; }
+							var r=d.data, h=[];
+							h.push("Kaina variacijoms: <b>"+r.kaina+" €</b>");
+							h.push("Likutis: <b>"+(r.modelis==="tevas"?"bendras":"atskiras kiekvienai")+"</b>");
+							h.push(r.kurti.length?("Bus sukurta ("+r.kurti.length+"): <b>"+r.kurti.join(", ")+"</b>"):"Naujų nebus.");
+							if(r.isimti.length) h.push("Nebeprekiaujam ("+r.isimti.length+"): <b>"+r.isimti.join(", ")+"</b>");
+							if(r.tipas==="simple"&&r.modelis==="variacijos"&&r.tevo_lik)
+								h.push("<span style=\"color:#b3261e\">Dabartinis likutis "+r.tevo_lik+" nebebus naudojamas.</span>");
+							perzt.innerHTML=h.join("<br>");
+							stat.textContent=""; bv.disabled=!(r.kurti.length||r.isimti.length);
+						})
+						.catch(function(){ stat.className="ps-var-stat kl"; stat.textContent="ryšio klaida"; });
+					return;
+				}
+				if(e.target.tagName==="INPUT"&&e.target.type==="checkbox"){
+					e.target.closest("label").classList.toggle("zym",e.target.checked);
+					bv.disabled=true; perzt.innerHTML="";
+				}
+			});
+			document.addEventListener("change", function(e){
+				var f=e.target.closest(".ps-var-forma"); if(!f) return;
+				if(!e.target.classList.contains("ps-var-tax")) return;
+				piestiReiksmes(f);
+			});
+			function piestiReiksmes(f){
+				var sel=f.querySelector(".ps-var-tax"), zona=f.querySelector(".ps-var-reiksmes");
+				var d={}; try{ d=JSON.parse(f.querySelector(".ps-var-terms").textContent); }catch(x){}
+				var sar=d[sel.value]||[], h="";
+				sar.forEach(function(t){
+					h+='<label class="'+(t.yra?"zym":"")+'"><input type="checkbox" value="'+t.id+'"'+(t.yra?" checked":"")+'>'
+					 + (t.hex?'<span class="sp" style="background:'+t.hex+'"></span>':'')
+					 + '<span>'+t.v+'</span></label>';
+				});
+				zona.innerHTML=h||'<div class="kort-info-m">Ši ašis dar neturi reikšmių. Jos kuriamos lange Petshop prekės → Atributai.</div>';
+				f.querySelector(".ps-var-vykdyti").disabled=true;
+				f.querySelector(".ps-var-perzt").innerHTML="";
+			}
+			/* Kortele ikeliama per innerHTML, todel reiksmes piesiamos tada, kai
+			   ji jau DOM'e — `korteleInit` yra ta vieta, kuria kviecia atidaryk(). */
+			(function(){
+				var senas = window.korteleInit;
+				window.korteleInit = function(){
+					if (typeof senas === "function") { try { senas(); } catch(x){} }
+					document.querySelectorAll(".ps-var-forma").forEach(piestiReiksmes);
+				};
+			})();
 
 			document.addEventListener("click", function(e){
 				var b=e.target;
