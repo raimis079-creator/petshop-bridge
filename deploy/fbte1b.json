@@ -1,0 +1,52 @@
+{
+ "v": "FBTE1B",
+ "zingsniai": [
+  "snip_id:4008",
+  "preke_fbt_blokas:yra",
+  "krepselio_blokas:1"
+ ],
+ "http": 200,
+ "duom": {
+  "v": "FBTE1B",
+  "irasyta_pairs": {
+   "sausas-maistas-sunims": [
+    "skanestai-sunims",
+    "zaislai-sunims",
+    "higienos-priemones-sunims",
+    "vitaminai-ir-papildai-sunims"
+   ],
+   "maistas-sunims": [
+    "skanestai-sunims",
+    "zaislai-sunims",
+    "higienos-priemones-sunims",
+    "vitaminai-ir-papildai-sunims"
+   ],
+   "sausas-maistas-katems": [
+    "skanestai-katems",
+    "zaislai-katems",
+    "vitaminai-ir-papildai-katems"
+   ],
+   "maistas-katems": [
+    "skanestai-katems",
+    "zaislai-katems",
+    "vitaminai-ir-papildai-katems"
+   ]
+  },
+  "irasyta_rules": {
+   "skanestai-sunims": 10,
+   "skanestai-katems": 10,
+   "zaislai-sunims": 10,
+   "zaislai-katems": 10,
+   "higienos-priemones-sunims": 10,
+   "vitaminai-ir-papildai-sunims": 10,
+   "vitaminai-ir-papildai-katems": 10
+  },
+  "hipo_pid": 26391,
+  "hipo_url": "https://dev.avesa.lt/product/josera-hypoallergenic-begrudis-sausas-jautriems-pasaras-sunims-su-vabzdziais-900-g/",
+  "hipo_baltymai": [
+   "vabzdziai"
+  ],
+  "test_pid": 35027,
+  "test_url": "https://dev.avesa.lt/product/exclusion-hydrolyzed-hypoallergenic-sausas-pasaras-vidutiniu-ir-dideliu-veisliu-sunims-su-zuvimi-m-l-2-kg/"
+ }
+}
