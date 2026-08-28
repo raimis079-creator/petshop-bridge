@@ -1657,8 +1657,16 @@ class Petshop_Katalogas {
 		$slugs = is_wp_error( $slugs ) ? array() : $slugs;
 		$kt    = self::sekciju_lukesciai( $slugs );
 		$leist = self::atributu_zemelapis( $kt['tipas'] );
-		if ( ! isset( $leist[ $tax ] ) ) {
+		/* Prekes zenklas galioja VISOMS prekems, nepriklausomai nuo kategorijos,
+		   todel i kategoriju zemelapi neieina ir iki siol kortelėje buvo
+		   neredaguojamas — vienintelis kelias buvo WooCommerce langas. */
+		if ( $tax !== 'product_brand' && ! isset( $leist[ $tax ] ) ) {
 			wp_send_json_error( 'šios kategorijos prekei šis atributas netaikomas' );
+		}
+		/* Brendas — TIK VIENA reiksme. Dvi prekes zenklo reiksmes reikstu,
+		   kad feed'as i Google nezino, ka siusti. */
+		if ( $tax === 'product_brand' && count( $ids ) > 1 ) {
+			wp_send_json_error( 'Prekės ženklas gali būti tik vienas.' );
 		}
 
 		/* Kiekvienas ID privalo priklausyti BŪTENT šiai taksonomijai. */
@@ -1676,7 +1684,10 @@ class Petshop_Katalogas {
 		$rez = wp_set_object_terms( $pid, $ids ? $ids : array(), $tax, false );
 		if ( is_wp_error( $rez ) ) { wp_send_json_error( $rez->get_error_message() ); }
 
-		self::registruoti_atributa( $pid, $tax, ! empty( $ids ) );
+		/* `_product_attributes` registras skirtas pa_* atributams. Brendas ten
+		   nekabinamas — jis atskira taksonomija, o irasas registre padarytu ji
+		   matoma kaip prekes savybe filtruose du kartus. */
+		if ( $tax !== 'product_brand' ) { self::registruoti_atributa( $pid, $tax, ! empty( $ids ) ); }
 		self::kesas_lauk( $pid );
 
 		$tapo_t = wp_get_post_terms( $pid, $tax, array( 'fields' => 'names' ) );
@@ -3060,8 +3071,14 @@ class Petshop_Katalogas {
 		$tipas_a       = $kat_tipas['tipas'];
 		$atr_zemelapis = self::atributu_zemelapis( $tipas_a );
 
+		/* Prekes zenklas — pirmas ir visada. Jis lemia Google feed'a ir
+		   parduotuves filtra, o iki v1.3 ji buvo galima pakeisti tik WooCommerce
+		   lange, kas priestaravo pagrindinei taisyklei: viskas musu languose. */
+		if ( taxonomy_exists( 'product_brand' ) ) {
+			$atr_zemelapis = array( 'product_brand' => 'Prekės ženklas' ) + (array) $atr_zemelapis;
+		}
 		if ( $atr_zemelapis ) {
-			echo '</div><div class="kort-blokas"><div class="kort-antr">Filtravimo atributai</div>';
+			echo '</div><div class="kort-blokas"><div class="kort-antr">Prekės ženklas ir filtravimo atributai</div>';
 			foreach ( $atr_zemelapis as $tax => $vardas ) {
 				if ( ! taxonomy_exists( $tax ) ) { continue; }
 
