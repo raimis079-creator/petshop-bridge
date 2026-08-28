@@ -1,0 +1,675 @@
+{
+ "v": "IU-v1.0",
+ "r": {
+  "v": "IU1",
+  "rasta": [
+   {
+    "f": "/mu-plugins/petshop-av-dropship.php",
+    "eil": 37,
+    "zodis": "paštomat",
+    "k": "* „sudėti visus į vieną laišką\". Paštomatas: dėžių laukelis grąžintas —"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-dropship.php",
+    "eil": 38,
+    "zodis": "paštomat",
+    "k": "* kelios dėžės = kelios siuntos tam pačiam paštomatui (desk v3.46)."
+   },
+   {
+    "f": "/mu-plugins/petshop-av-dropship.php",
+    "eil": 706,
+    "zodis": "pastomat",
+    "k": "<?php $pastomatas = $oo_d && $oo_d->get_meta( 'venipak_pickup_point' ); ?>"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-dropship.php",
+    "eil": 715,
+    "zodis": "pastomat",
+    "k": "<?php if ( $pastomatas ) : ?><span class=\"ps-lip\">paštomatas: kiekviena dėžė — atskira siunta tam pačiam paštomatui</span><?php endi"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-dropship.php",
+    "eil": 760,
+    "zodis": "paštomat",
+    "k": "<a href=\"<?php echo esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ); ?>\">Pasirink Tiekime</a> (paštomatas / kurjeris / tiekėjas"
+   },
+   {
+    "f": "/mu-plugins/petshop-ataskaitu-agregavimas.php",
+    "eil": 130,
+    "zodis": "per didel",
+    "k": "return array( 'klaida' => 'per didelis intervalas: ' . $dienu . ' d. (riba ' . self::PERSUKTI_MAX . ')' );"
+   },
+   {
+    "f": "/mu-plugins/petshop-rytas.php",
+    "eil": 362,
+    "zodis": "nemokamo pristatymo",
+    "k": "$v[] = array( 'poveikis' => abs( (int) $r['s'] ), 'tekstas' => '<b>' . (int) $r['n'] . ' nuostolingi užsakymai</b> per 7 d. (' . self::e"
+   },
+   {
+    "f": "/mu-plugins/petshop-fakt-siuntos.php",
+    "eil": 85,
+    "zodis": "pastomat",
+    "k": "*   1) PASTOMATU kaina priklauso nuo DYDZIO (XS/S/M/L/XL), ne nuo svorio."
+   },
+   {
+    "f": "/mu-plugins/petshop-fakt-siuntos.php",
+    "eil": 365,
+    "zodis": "pastomat",
+    "k": "*   shopup_venipak_shipping_pickup_method   -> pastomatas  (plugino pav."
+   },
+   {
+    "f": "/mu-plugins/petshop-fakt-siuntos.php",
+    "eil": 366,
+    "zodis": "pastomat",
+    "k": "*       „VENIPAK pastomatai/atsiemimo punktai\" — vienas metodas dengia abu;"
+   },
+   {
+    "f": "/mu-plugins/petshop-fakt-siuntos.php",
+    "eil": 378,
+    "zodis": "pastomat",
+    "k": "'shopup_venipak_shipping_pickup_method'  => 'pastomatas',"
+   },
+   {
+    "f": "/mu-plugins/petshop-fakt-siuntos.php",
+    "eil": 391,
+    "zodis": "pastomat",
+    "k": "if ( strpos( $id, 'pickup' ) !== false )  { return 'pastomatas'; }"
+   },
+   {
+    "f": "/mu-plugins/petshop-fakt-siuntos.php",
+    "eil": 826,
+    "zodis": "pastomat",
+    "k": "$tipai = array( '' => 'bet koks', 'kurjeris' => 'kurjeris', 'pastomatas' => 'pastomatas', 'terminalas' => 'terminalas', 'kurjeris_did' =>"
+   },
+   {
+    "f": "/mu-plugins/petshop-fakt-siuntos.php",
+    "eil": 903,
+    "zodis": "pastomat",
+    "k": "</select> <span class=\"description\">LP pastomatai kainuoja pagal DYDI, ne svori</span></td></tr>"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 644,
+    "zodis": "tik kurjeriu",
+    "k": "*   3) „TIK KURJERIU\" varnele: automatika sprendzia is svorio ir matmenu, bet"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 646,
+    "zodis": "pastomat",
+    "k": "*      resolveris grazina false ir preke pasiūloma i pastomata."
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 1216,
+    "zodis": "per didel",
+    "k": "if ( $tapo > 9999 ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'savikaina per didelė (riba 9999)' ); continue; }"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 1771,
+    "zodis": "tik kurjeriu",
+    "k": "'_ps_tik_kurjeriu' => array( 'tipas' => 'varnele', 'vardas' => 'Tik kurjeriu' ),"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3334,
+    "zodis": "tik kurjeriu",
+    "k": "/* v3.8: TIK KURJERIU — perjungiama varnele."
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3337,
+    "zodis": "pastomat",
+    "k": "grazina `courier_only: false` ir preke pasiūloma i pastomata, kur ji"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3366,
+    "zodis": "tik kurjeriu",
+    "k": "echo '<div class=\"kort-eil\"><span>Tik kurjeriu</span>'"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3369,
+    "zodis": "netelpa",
+    "k": ". '<span class=\"vnt\">' . ( $kurj_auto ? 'automatika irgi rodo „tik kurjeriu\"' : 'netelpa į paštomatą' ) . '</span>'"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3377,
+    "zodis": "netelpa",
+    "k": ". 'jei prekė į paštomatą netelpa, pažymėkite ranka.</div>';"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 5000,
+    "zodis": "per didel",
+    "k": "/* Transientas guli DB — jei masyvas pasirodytų per didelis, geriau"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 5,
+    "zodis": "paštomat",
+    "k": "* Petshop Desk v3.46 (H259) — PAŠTOMATAS: KELIOS DĖŽĖS = KELIOS SIUNTOS TAM PAČIAM KLIENTUI."
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 7,
+    "zodis": "paštomat",
+    "k": "* KODĖL (Raimis, H259): „jei į paštomatą — formuojamos kelios siuntos tam pačiam"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 8,
+    "zodis": "paštomat",
+    "k": "* klientui\". Venipak paštomatui priima tik 1 dėžę siuntai (API: „One package"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 10,
+    "zodis": "paštomat",
+    "k": "* venipak_registruoti(): paštomato užsakymui su n dėžių registruojama n kartų"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 134,
+    "zodis": "paštomat",
+    "k": "* nesvarbu, ar siuntos į paštomatą, ar kurjeriu (Raimis H237). Todėl rytinės"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 182,
+    "zodis": "paštomat",
+    "k": "*   Pristatymas (kas veža)       Venipak kurjeris/paštomatas · LP Express"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 547,
+    "zodis": "paštomat",
+    "k": "// H259: paštomatas + kelios dėžės → n atskirų siuntų po 1 dėžę (Venipak locker riba)."
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 575,
+    "zodis": "paštomat",
+    "k": "$oo->add_order_note( sprintf( 'Paštomatas: %d dėžės = %d siuntos: %s', count( $packs ), count( $visi ), implode( ', ', $visi ) ), false,"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 654,
+    "zodis": "pastomat",
+    "k": "if ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 655,
+    "zodis": "paštomat",
+    "k": "$praleisti[] = '#' . $oo->get_order_number() . ' be paštomato'; continue;"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 714,
+    "zodis": "paštomat",
+    "k": "// ir kuriems netrūksta paštomato — kitaip pakartotinis paspaudimas"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 740,
+    "zodis": "pastomat",
+    "k": "if ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 741,
+    "zodis": "paštomat",
+    "k": "$praleisti[] = '#' . $oo->get_order_number() . ' be paštomato'; return false;"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1107,
+    "zodis": "tik kurjeriu",
+    "k": "* Kiek dėžių šiai siuntai. Reikšmė reikalinga TIK kurjeriui —"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1108,
+    "zodis": "paštomat",
+    "k": "* paštomate siunta visada viena."
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1118,
+    "zodis": "paštomat",
+    "k": "// Venipak: ir kurjeriui, ir paštomatui — į paštomatą kiekviena dėžė"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1120,
+    "zodis": "pastomat",
+    "k": "return in_array( $v, array( 'venipak_kurjeris', 'venipak_pastomatas', 'lp' ), true )"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1161,
+    "zodis": "pastomat",
+    "k": "/** venipak_kurjeris | venipak_pastomatas | lp | kita */"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1165,
+    "zodis": "pastomat",
+    "k": "$pastomatas = ( false !== mb_strpos( $m, 'PAŠTOMAT' ) || false !== mb_strpos( $m, 'ATSIĖMIM' ) || false !== mb_strpos( $m, 'PICKUP' ) );"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1167,
+    "zodis": "pastomat",
+    "k": "if ( false !== mb_strpos( $m, 'VENIPAK' ) ) { return $pastomatas ? 'venipak_pastomatas' : 'venipak_kurjeris'; }"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1884,
+    "zodis": "pastomat",
+    "k": "protected static function siuntu_lentele( $ids, $pastomatu_tikrinti = true ) {"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1892,
+    "zodis": "pastomat",
+    "k": "$trukumas = ( $pastomatu_tikrinti && ! $e['kodas'] && false !== mb_stripos( $e['vez'], 'paštomat' ) && ! $e['vieta'] )"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1893,
+    "zodis": "paštomat",
+    "k": "? ' <span class=\"pd-rbad\">nenurodytas paštomatas</span>' : '';"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 2053,
+    "zodis": "pastomat",
+    "k": "if ( 'venipak_pastomatas' === self::vezejas( $o ) && ! $o->get_meta( 'venipak_pickup_point' ) ) {"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 2054,
+    "zodis": "paštomat",
+    "k": "return 'nenurodytas paštomatas';"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 2096,
+    "zodis": "paštomat",
+    "k": "$term ? 'paštomatas' : 'kurjeris',"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 2354,
+    "zodis": "pastomat",
+    "k": "'venipak_pastomatas' => 'Venipak paštomatas',"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 2607,
+    "zodis": "paštomat",
+    "k": "Kaip prekės atkeliaus į AV (paštomatu, kurjeriu ar tiekėjas atveš) — sprendžiama partijos lygmenyje.</div>';"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 2897,
+    "zodis": "pastomat",
+    "k": "'venipak_pastomatas' => 'Venipak paštomatas',"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 3616,
+    "zodis": "paštomat",
+    "k": "'<span class=\"pd-pak-p\">kurjeriui · paštomate visada viena</span></div>';"
+   },
+   {
+    "f": "/mu-plugins/petshop-laukai.php",
+    "eil": 336,
+    "zodis": "nemokamas pristatymas",
+    "k": "*   1) nemokamas pristatymas (jau veikia WooCommerce nustatymuose),"
+   },
+   {
+    "f": "/mu-plugins/petshop-laukai.php",
+    "eil": 812,
+    "zodis": "nemokamo pristatymo",
+    "k": "/** Nemokamo pristatymo riba. Vienaskaita — kalbam apie sio kliento siunta. */"
+   },
+   {
+    "f": "/mu-plugins/petshop-laukai.php",
+    "eil": 1186,
+    "zodis": "nemokamas pristatymas",
+    "k": "<div class=\"v\"><span class=\"ik\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round"
+   },
+   {
+    "f": "/mu-plugins/petshop-laukai.php",
+    "eil": 1208,
+    "zodis": "nemokamas pristatymas",
+    "k": "<div class=\"pslk-po\" id=\"pslk-po\">Nemokamas pristatymas į paštomatą nuo <?php echo esc_html( wc_format_decimal( $riba, 0 ) ); ?> €</d"
+   },
+   {
+    "f": "/mu-plugins/petshop-laukai.php",
+    "eil": 1542,
+    "zodis": "paštomat",
+    "k": "tikslas('pslk-tk-pr', D.riba, 'Pristatymas į paštomatą — nemokamas');"
+   },
+   {
+    "f": "/mu-plugins/petshop-laukai.php",
+    "eil": 1584,
+    "zodis": "nemokamo pristatymo",
+    "k": "? 'Dar <b>'+eur(D.riba-moka)+'</b> iki nemokamo pristatymo į paštomatą'"
+   },
+   {
+    "f": "/mu-plugins/petshop-laukai.php",
+    "eil": 1585,
+    "zodis": "nemokamas pristatymas",
+    "k": ": 'Nemokamas pristatymas į paštomatą nuo '+D.riba.toFixed(0)+' €');"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 188,
+    "zodis": "pastomat",
+    "k": "/** Virs sio svorio siunta i pastomata nebetelpa (savininko sprendimas 2026-08-13). */"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 189,
+    "zodis": "pastomat",
+    "k": "const PASTOMATO_RIBA = 25.0;"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 202,
+    "zodis": "pastomat",
+    "k": "add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 415,
+    "zodis": "netelpa",
+    "k": "* Sunki siunta i pastomata netelpa."
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 417,
+    "zodis": "pastomat",
+    "k": "* Virs PASTOMATO_RIBA kg klientui pastomatu pasirinkimas issijungia — lieka"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 418,
+    "zodis": "tik kurjeris",
+    "k": "* tik kurjeris. Tikrinam VISO krepselio svori, ne vienos prekes: du 15 kg"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 424,
+    "zodis": "pastomat",
+    "k": "public static function pastomato_sargas( $rates, $package ) {"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 434,
+    "zodis": "pastomat",
+    "k": "if ( $kg <= self::PASTOMATO_RIBA ) { return $rates; }"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 436,
+    "zodis": "pastomat",
+    "k": "$zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' );"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 1136,
+    "zodis": "pastomat",
+    "k": "* maisai siuntimui svere nuli, ir siunta „tilpdavo\" i pastomata, nors"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 1137,
+    "zodis": "netelpa",
+    "k": "* fiziskai netelpa."
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 1508,
+    "zodis": "per didel",
+    "k": "echo '<button class=\"psr-eile y\"><b>' . $sk['didelis'] . '</b><span>Krepšys per didelis</span></button>';"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 1748,
+    "zodis": "per didel",
+    "k": "if ( count( $krepsys ) > 8 ) { $a[] = array( 'y', 'Krepšys per didelis', count( $krepsys ) . ' prekės. Virš 8 dėžė pralaimi savo kategorij"
+   },
+   {
+    "f": "/mu-plugins/petshop-rinkiniai.php",
+    "eil": 2822,
+    "zodis": "per didel",
+    "k": "if(s.svoris>25) h+='<div class=\"psr-perspejimas r\"><b>Svoris '+String(s.svoris).replace('.',',')+' kg — per didelis paštomatui.</b> Klie"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 16,
+    "zodis": "paštomat",
+    "k": "* siunta su n pack'ų, paštomatui — n siuntų po 1. Registruojama į TĄ PATĮ"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 50,
+    "zodis": "paštomat",
+    "k": "*      Nemenčinės paštomatas. Kurjerį iš tiekėjo sandėlio Raimis kviečia pats"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 76,
+    "zodis": "paštomat",
+    "k": "*   paštomatas — Venipak paštomatas Nemenčinėje (AIBĖ, Švenčionių g. 72),"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 142,
+    "zodis": "pastomat",
+    "k": "const AV_PASTOMATAS = array("
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 144,
+    "zodis": "paštomat",
+    "k": "'vardas'  => 'Nemenčinės AIBĖ Venipak paštomatas',"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 149,
+    "zodis": "pastomat",
+    "k": "'pastomatas' => 'Venipak paštomatas (Nemenčinė)',"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 533,
+    "zodis": "pastomat",
+    "k": "$pst  = self::AV_PASTOMATAS;"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 555,
+    "zodis": "pastomat",
+    "k": "<?php if ( 'pastomatas' === $bud ) : ?>"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 559,
+    "zodis": "paštomat",
+    "k": "<span class=\"ps-tk-blogai\">Paštomato riba <?php echo (int) $pst['riba_kg']; ?> kg —"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 906,
+    "zodis": "paštomat",
+    "k": "* Registruoja siuntą: iš tiekėjo sandėlio → AV (kurjeris) arba → Nemenčinės paštomatas."
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 923,
+    "zodis": "paštomat",
+    "k": "// Paštomatas: Venipak leidžia 1 dėžę siuntai → n siuntų tame pačiame manifeste. Kurjeris: 1 siunta, n pack'ų."
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 924,
+    "zodis": "pastomat",
+    "k": "$siuntu = ( 'pastomatas' === $part->pristatymas ) ? $dezes : 1;"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 952,
+    "zodis": "paštomat",
+    "k": "// GAVĖJAS — AV sandėlis arba mūsų paštomatas."
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 955,
+    "zodis": "pastomat",
+    "k": "$pst = self::AV_PASTOMATAS;"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 956,
+    "zodis": "pastomat",
+    "k": "if ( 'pastomatas' === $part->pristatymas ) {"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 979,
+    "zodis": "pastomat",
+    "k": "if ( 'pastomatas' !== $part->pristatymas ) {"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 1056,
+    "zodis": "pastomat",
+    "k": "$reikia_vp = in_array( $part->pristatymas, array( 'kurjeris', 'pastomatas' ), true ) && ! self::rankinis( $part->tiekejas );"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 1097,
+    "zodis": "pastomat",
+    "k": "$h .= '<p style=\"font-size:12px;color:#444\">' . ( 'pastomatas' === $part->pristatymas ? 'Į paštomatą' : 'Kurjeriui' ) . ' — ' . $n . ' li"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 1133,
+    "zodis": "pastomat",
+    "k": "$pst = self::AV_PASTOMATAS;"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-tiekimas.php",
+    "eil": 1138,
+    "zodis": "pastomat",
+    "k": "$reikia_vp = in_array( $part->pristatymas, array( 'kurjeris', 'pastomatas' ), true )"
+   },
+   {
+    "f": "/themes/flatsome-child/woocommerce-pip/invoice.php",
+    "eil": 76,
+    "zodis": "paštomat",
+    "k": "// Paštomato tekstas (meta)"
+   },
+   {
+    "f": "/themes/flatsome-child/woocommerce-delivery-notes/base.php",
+    "eil": 99,
+    "zodis": "nemokamas pristatymas",
+    "k": "$shipping_method_label = 'Nemokamas pristatymas';"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 105,
+    "zodis": "netelpa",
+    "k": "neveike: preke, netelpanti i pastomata, ji vis tiek siule. */"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 167,
+    "zodis": "nemokamo pristatymo",
+    "k": "// Nemokamo pristatymo progreso juosta krepšelyje"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 193,
+    "zodis": "tik kurjeriu",
+    "k": "echo '🚚 Kai kurios prekės pristatomos tik kurjeriu dėl dydžio arba svorio.';"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 211,
+    "zodis": "nemokamas pristatymas",
+    "k": "echo '<div style=\"font-size:13px;font-weight:600;color:#365a51;margin-bottom:8px;\">🎉 Jums priklauso nemokamas pristatymas į paštomat"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 213,
+    "zodis": "nemokamo pristatymo",
+    "k": "echo '<div style=\"font-size:13px;color:#333;margin-bottom:8px;\">📦 Dar <strong>€' . number_format( $truksta, 2, ',', '' ) . '</strong"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 820,
+    "zodis": "pastomat",
+    "k": "// Checkout: pastomatas - slept adreso laukus + terminal blokai"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 854,
+    "zodis": "pastomat",
+    "k": "// PHP: adreso laukai neprivalomi kai pastomatas"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 980,
+    "zodis": "pastomat",
+    "k": "var PASTOMATAS_PATTERNS = ["
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 1001,
+    "zodis": "pastomat",
+    "k": "function isPastomatas(value) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 1004,
+    "zodis": "pastomat",
+    "k": "for (var i = 0; i < PASTOMATAS_PATTERNS.length; i++) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 1005,
+    "zodis": "pastomat",
+    "k": "if (value.indexOf(PASTOMATAS_PATTERNS[i]) !== -1) return true;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 1047,
+    "zodis": "pastomat",
+    "k": "var isParcel = isPastomatas(selected);"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 1050,
+    "zodis": "pastomat",
+    "k": "$('body').toggleClass('pastomatas-selected', isParcel);"
+   }
+  ],
+  "snippetai": [
+   {
+    "id": "4084",
+    "name": "TEMP PS Pastomato Uzrasu Paieska v1.0",
+    "active": "1"
+   }
+  ]
+ }
+}
