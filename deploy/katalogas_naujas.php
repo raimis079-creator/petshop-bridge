@@ -4005,6 +4005,17 @@ class Petshop_Katalogas {
 
 		$prekes = array(); $brendai = array(); $kategorijos = array();
 
+		/* VARIACIJU LIKUCIAI. Variacine preke parduodama pagal VARIACIJU
+		   likuti, o tevo `_stock` nuo migracijos stovi uzsales — jo
+		   WooCommerce nebejudina. Katalogas skaite butent ji, todel septyniose
+		   prekese ekranas ir lentyna sake skirtingus dalykus (#15914: rode 16,
+		   realiai 24). Skaiciuojam gyvai, o ne perrasom tevo lauka: perrasytas
+		   skaicius vel atsiliktu po pirmo pardavimo.
+		   Sumuojam TIK tas variacijas, kurios pacios valdo likuti
+		   (`_manage_stock=yes`). Siandien sukurtos variacijos likucio nevaldo —
+		   joms tiesa yra tevo skaicius, ir ji lieka nepaliesta. */
+		$var_likuciai = self::variaciju_likuciai( $ids );
+
 		/* Miniatiūros vienu SELECT — po vieną per prekę būtų 3 800 užklausų. */
 		$foto = self::miniatiuros( $ids, $meta );
 
@@ -4091,6 +4102,19 @@ class Petshop_Katalogas {
 				foreach ( array( '_cost_price', '_vf_cost', '_zb_cost' ) as $ck ) {
 					$cv = $mv( $ck, true );
 					if ( $cv !== null && (float) $cv > 0 ) { $cost = (float) $cv; break; }
+				}
+			}
+
+			/* Variacine preke: AV likutis = variaciju suma (zr. $var_likuciai).
+			   Pakeiciam ir $s_list irasa, kad Stock_Service skaiciuotu is to
+			   paties skaiciaus — kitaip „AV" ir „parduodama" vel issiskirtu. */
+			if ( isset( $var_likuciai[ $pid ] ) ) {
+				$av = (int) $var_likuciai[ $pid ];
+				$turi['av'] = ( $av > 0 );
+				foreach ( $s_list as $si => $sv ) {
+					if ( strtolower( trim( (string) $sv['source'] ) ) === 'av' ) {
+						$s_list[ $si ]['stock_qty'] = $av;
+					}
 				}
 			}
 
@@ -4494,6 +4518,34 @@ class Petshop_Katalogas {
 	}
 
 	/** Kiek prekių kiekvienoje krūvoje — perjungikliui. */
+	/**
+	 * Variaciju likuciu suma pagal tevine preke.
+	 *
+	 * Grazina TIK tas prekes, kuriu variacijos pacios valdo likuti. Jei
+	 * variacijos likucio nevaldo (taip sukurtos 2026-08-28 spalvines), tiesa
+	 * yra tevo `_stock`, ir tokios prekes i rezultata nepatenka — tada
+	 * katalogas elgiasi kaip anksciau.
+	 */
+	public static function variaciju_likuciai( $ids ) {
+		global $wpdb;
+		if ( ! $ids ) { return array(); }
+		$in = implode( ',', array_map( 'intval', $ids ) );
+		$r = $wpdb->get_results(
+			"SELECT v.post_parent AS pid, SUM( CAST( st.meta_value AS SIGNED ) ) AS suma
+			   FROM {$wpdb->posts} v
+			   JOIN {$wpdb->postmeta} ms ON ms.post_id = v.ID AND ms.meta_key = '_manage_stock'
+			   JOIN {$wpdb->postmeta} st ON st.post_id = v.ID AND st.meta_key = '_stock'
+			  WHERE v.post_type = 'product_variation'
+			    AND v.post_status = 'publish'
+			    AND v.post_parent IN ({$in})
+			    AND ms.meta_value = 'yes'
+			    AND st.meta_value IS NOT NULL AND st.meta_value <> ''
+			  GROUP BY v.post_parent", ARRAY_A );
+		$out = array();
+		foreach ( (array) $r as $x ) { $out[ (int) $x['pid'] ] = (int) $x['suma']; }
+		return $out;
+	}
+
 	public static function kruvu_skaiciai( $prekes ) {
 		$k = array( 'prekyboje'=>0, 'juodrasciai'=>0, 'isimtos'=>0, 'visos'=>0 );
 		foreach ( $prekes as $r ) {
