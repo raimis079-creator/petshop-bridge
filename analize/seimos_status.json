@@ -1,0 +1,310 @@
+{
+ "v": "SEIMOS-v1.0",
+ "dry": {
+  "v": "SM1",
+  "rezimas": "DRY",
+  "presetu": 18,
+  "presetu_su_pa_dydis": 0,
+  "baziniai": [
+   {
+    "id": 15306,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas rožinės sp",
+    "dydis": "S",
+    "kaina": "5.99",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   },
+   {
+    "id": 15309,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas melsvos sp",
+    "dydis": "S",
+    "kaina": "5.99",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   },
+   {
+    "id": 15312,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas baltos spa",
+    "dydis": "S",
+    "kaina": "5.99",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   },
+   {
+    "id": 15737,
+    "pav": "Zolux Anah šepetys šunims, plieniniais šerelia",
+    "dydis": "S",
+    "kaina": "6.19",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   },
+   {
+    "id": 15740,
+    "pav": "Zolux Anah šepetys šunims, minkštas",
+    "dydis": "S",
+    "kaina": "7.32",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   },
+   {
+    "id": 15734,
+    "pav": "Zolux Anah žirklutės šunų nagams kirpti",
+    "dydis": "XS",
+    "kaina": "7.28",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   },
+   {
+    "id": 18743,
+    "pav": "Dubenėlis gyvūnui Širdelė, Mon Amor",
+    "dydis": "S",
+    "kaina": "4.39",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   },
+   {
+    "id": 17309,
+    "pav": "Natūralūs skanėstai šunims - Elnio rago kramtu",
+    "dydis": "S",
+    "kaina": "5.23",
+    "buves": [],
+    "veiksmas": "BUTU PRISKIRTA"
+   }
+  ],
+  "katrinex_baze": "termino nera",
+  "seimos": [
+   {
+    "seima": "ebi-kaulas-rozines",
+    "nariu": 3,
+    "ok": 3,
+    "blogi": []
+   },
+   {
+    "seima": "ebi-kaulas-melsvos",
+    "nariu": 3,
+    "ok": 3,
+    "blogi": []
+   },
+   {
+    "seima": "ebi-kaulas-baltos",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "zolux-sepetys-sunims-plieniniais",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "zolux-sepetys-sunims-minkstas",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "zolux-zirklutes",
+    "nariu": 3,
+    "ok": 3,
+    "blogi": []
+   },
+   {
+    "seima": "mon-amor-sirdele",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "elnio-ragas-kietas",
+    "nariu": 5,
+    "ok": 5,
+    "blogi": []
+   },
+   {
+    "seima": "elnio-ragas-minkstas",
+    "nariu": 4,
+    "ok": 4,
+    "blogi": []
+   },
+   {
+    "seima": "katrinex-koi",
+    "nariu": 4,
+    "ok": 4,
+    "blogi": []
+   }
+  ],
+  "modulis": "BUTU IRASYTA"
+ },
+ "apply": {
+  "v": "SM1",
+  "rezimas": "APPLY",
+  "presetu": 18,
+  "presetu_su_pa_dydis": 0,
+  "baziniai": [
+   {
+    "id": 15306,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas rožinės sp",
+    "dydis": "S",
+    "kaina": "5.99",
+    "buves": [],
+    "po": [
+     "S"
+    ],
+    "veiksmas": "PRISKIRTA"
+   },
+   {
+    "id": 15309,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas melsvos sp",
+    "dydis": "S",
+    "kaina": "5.99",
+    "buves": [],
+    "po": [
+     "S"
+    ],
+    "veiksmas": "PRISKIRTA"
+   },
+   {
+    "id": 15312,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas baltos spa",
+    "dydis": "S",
+    "kaina": "5.99",
+    "buves": [],
+    "po": [
+     "S"
+    ],
+    "veiksmas": "PRISKIRTA"
+   },
+   {
+    "id": 15737,
+    "pav": "Zolux Anah šepetys šunims, plieniniais šerelia",
+    "dydis": "S",
+    "kaina": "6.19",
+    "buves": [],
+    "po": [
+     "S"
+    ],
+    "veiksmas": "PRISKIRTA"
+   },
+   {
+    "id": 15740,
+    "pav": "Zolux Anah šepetys šunims, minkštas",
+    "dydis": "S",
+    "kaina": "7.32",
+    "buves": [],
+    "po": [
+     "S"
+    ],
+    "veiksmas": "PRISKIRTA"
+   },
+   {
+    "id": 15734,
+    "pav": "Zolux Anah žirklutės šunų nagams kirpti",
+    "dydis": "XS",
+    "kaina": "7.28",
+    "buves": [],
+    "po": [
+     "XS"
+    ],
+    "veiksmas": "PRISKIRTA"
+   },
+   {
+    "id": 18743,
+    "pav": "Dubenėlis gyvūnui Širdelė, Mon Amor",
+    "dydis": "S",
+    "kaina": "4.39",
+    "buves": [],
+    "po": [
+     "S"
+    ],
+    "veiksmas": "PRISKIRTA"
+   },
+   {
+    "id": 17309,
+    "pav": "Natūralūs skanėstai šunims - Elnio rago kramtu",
+    "dydis": "S",
+    "kaina": "5.23",
+    "buves": [],
+    "po": [
+     "S"
+    ],
+    "veiksmas": "PRISKIRTA"
+   }
+  ],
+  "katrinex_baze": [
+   "3 l"
+  ],
+  "seimos": [
+   {
+    "seima": "ebi-kaulas-rozines",
+    "nariu": 3,
+    "ok": 3,
+    "blogi": []
+   },
+   {
+    "seima": "ebi-kaulas-melsvos",
+    "nariu": 3,
+    "ok": 3,
+    "blogi": []
+   },
+   {
+    "seima": "ebi-kaulas-baltos",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "zolux-sepetys-sunims-plieniniais",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "zolux-sepetys-sunims-minkstas",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "zolux-zirklutes",
+    "nariu": 3,
+    "ok": 3,
+    "blogi": []
+   },
+   {
+    "seima": "mon-amor-sirdele",
+    "nariu": 2,
+    "ok": 2,
+    "blogi": []
+   },
+   {
+    "seima": "elnio-ragas-kietas",
+    "nariu": 5,
+    "ok": 5,
+    "blogi": []
+   },
+   {
+    "seima": "elnio-ragas-minkstas",
+    "nariu": 4,
+    "ok": 4,
+    "blogi": []
+   },
+   {
+    "seima": "katrinex-koi",
+    "nariu": 4,
+    "ok": 4,
+    "blogi": []
+   }
+  ],
+  "modulis_md5": "2bed4cdc1671cb64ad549e2e81dd386d",
+  "sintakse": "ok",
+  "modulis": "IRASYTA",
+  "irasyta_md5": "2bed4cdc1671cb64ad549e2e81dd386d"
+ },
+ "frontend": {
+  "http": 404,
+  "blokas": false,
+  "dydziu": 0,
+  "fatal": false
+ }
+}
