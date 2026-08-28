@@ -1,0 +1,281 @@
+{
+ "v": "KW-v1.0",
+ "r": {
+  "v": "KW1",
+  "rasta": [
+   {
+    "f": "/mu-plugins/petshop-m8-food.php",
+    "eil": 105,
+    "k": "*   4. courier_only apsauga  5. savaitinė rotacija  6. iki 3 prekių"
+   },
+   {
+    "f": "/mu-plugins/petshop-m8-food.php",
+    "eil": 232,
+    "k": "// courier_only NIEKADA nesiūlom — jis apribotų pristatymo būdus."
+   },
+   {
+    "f": "/mu-plugins/petshop-m8-food.php",
+    "eil": 233,
+    "k": "if ( ! empty( $r['courier_only'] ) ) { continue; }"
+   },
+   {
+    "f": "/mu-plugins/petshop-m8-food.php",
+    "eil": 692,
+    "k": "$pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;"
+   },
+   {
+    "f": "/mu-plugins/petshop-m8-food.php",
+    "eil": 719,
+    "k": "$pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 1771,
+    "k": "'_ps_tik_kurjeriu' => array( 'tipas' => 'varnele', 'vardas' => 'Tik kurjeriu' ),"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3337,
+    "k": "grazina `courier_only: false` ir preke pasiūloma i pastomata, kur ji"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3339,
+    "k": "$kurj_rankinis = get_post_meta( $pid, '_ps_tik_kurjeriu', true ) === 'yes';"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3343,
+    "k": "$kurj_auto = is_array( $ff ) && ! empty( $ff['courier_only'] );"
+   },
+   {
+    "f": "/mu-plugins/petshop-katalogas.php",
+    "eil": 3367,
+    "k": ". '<span class=\"kort-red kort-varnele\" data-laukas=\"_ps_tik_kurjeriu\" data-id=\"' . (int) $pid . '\">'"
+   },
+   {
+    "f": "/mu-plugins/petshop-desk.php",
+    "eil": 1056,
+    "k": "* [source, carrier, courier_only, av_qty, av_uztenka, tiekejas, reason]."
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "eil": 41,
+    "k": "*   courier_only: bool,"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "eil": 54,
+    "k": ": [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "eil": 64,
+    "k": "'courier_only' => ! empty( $baze['courier_only'] ),"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "eil": 80,
+    "k": "'courier_only' => ! empty( $baze['courier_only'] ),"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "eil": 93,
+    "k": "'courier_only' => ! empty( $baze['courier_only'] ),"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "eil": 124,
+    "k": "$grupes[ $s ] = [ 'eilutes' => [], 'carrier' => $x['carrier'], 'courier_only' => false ];"
+   },
+   {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "eil": 132,
+    "k": "if ( $x['courier_only'] ) { $grupes[ $s ]['courier_only'] = true; }"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 80,
+    "k": "add_filter( 'woocommerce_package_rates', 'petshop_hide_parcel_if_courier_only', 10, 2 );"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 81,
+    "k": "function petshop_hide_parcel_if_courier_only( $rates, $package ) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 89,
+    "k": "$has_courier_only = false;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 98,
+    "k": "if ( ! empty( $res['courier_only'] ) ) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 99,
+    "k": "$has_courier_only = true;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 101,
+    "k": "if ( get_post_meta( $pid, '_fulfillment_courier_only', true ) === 'yes' ) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 102,
+    "k": "$has_courier_only = true;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 114,
+    "k": "if ( $has_courier_only && $method_id === $venipak_pickup ) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 127,
+    "k": "$has_courier_only = false;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 132,
+    "k": "if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes' ) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 133,
+    "k": "$has_courier_only = true;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 146,
+    "k": "if ( $has_courier_only && in_array( $method_id, $hide_if_courier ) ) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 168,
+    "k": "$has_courier_only = false;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 172,
+    "k": "if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes' ) {"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 173,
+    "k": "$has_courier_only = true;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 180,
+    "k": "$has_courier_only = true;"
+   },
+   {
+    "f": "/themes/flatsome-child/functions.php",
+    "eil": 183,
+    "k": "if ( $has_courier_only ) {"
+   }
+  ],
+  "snippetai": [
+   {
+    "id": "44",
+    "name": "Pataisyti prekes su per dideliais matmenimis - kurjeris",
+    "active": "0"
+   },
+   {
+    "id": "194",
+    "name": "Venipak Shipping Lock v3",
+    "active": "0"
+   },
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "active": "1"
+   },
+   {
+    "id": "1678",
+    "name": "FF (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "1679",
+    "name": "SH (temp)",
+    "active": "-1"
+   },
+   {
+    "id": "4070",
+    "name": "TEMP PS Kurjerio Zvalgyba v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4071",
+    "name": "TEMP PS Matmenys is Aprasymu v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4072",
+    "name": "TEMP PS Tik Kurjeriu Zymejimas v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4073",
+    "name": "TEMP PS Draskykliu Zvalgyba v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4074",
+    "name": "TEMP PS Draskykliu Kurjeris v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4075",
+    "name": "TEMP PS Matmenu Skenavimas v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4076",
+    "name": "TEMP PS Standus Daiktai Kurjeriu v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4079",
+    "name": "TEMP PS Colosseo ir Duck Pillow Kurjeriu v1.0",
+    "active": "0"
+   },
+   {
+    "id": "4080",
+    "name": "TEMP PS Kas Skaito Tik Kurjeriu v1.0",
+    "active": "1"
+   }
+  ],
+  "package_rates_kabliukai": [
+   {
+    "prioritetas": 10,
+    "f": "Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker"
+   },
+   {
+    "prioritetas": 10,
+    "f": "petshop_hide_parcel_if_courier_only"
+   },
+   {
+    "prioritetas": 20,
+    "f": "closure"
+   },
+   {
+    "prioritetas": 100,
+    "f": "Petshop_Rinkiniai::pastomato_sargas"
+   },
+   {
+    "prioritetas": 9999,
+    "f": "Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability"
+   },
+   {
+    "prioritetas": 9223372036854776000,
+    "f": "Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint"
+   }
+  ]
+ }
+}
