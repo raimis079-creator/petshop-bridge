@@ -1,0 +1,78 @@
+{
+ "v": "FBTE23",
+ "zingsniai": [
+  "snip_id:4014",
+  "perziuros_laukas:1"
+ ],
+ "deploy": {
+  "v": "FBTE23_DEP",
+  "sintakse": "OK",
+  "rasyta": 65326,
+  "md5_ok": "TAIP"
+ },
+ "test": {
+  "v": "FBTE23_TEST",
+  "t1_map": {
+   "10": [
+    50,
+    20,
+    70,
+    30,
+    80,
+    40
+   ],
+   "20": [
+    10
+   ]
+  },
+  "t1_ok": "TAIP",
+  "t2_cron": "2026-08-29 01:10:00 UTC",
+  "t3_kiek": 4,
+  "t3_sources": [
+   "vf"
+  ],
+  "t3_ctx": {
+   "strict": true,
+   "proteins": [
+    "vabzdziai"
+   ]
+  },
+  "t3_ok": "TAIP",
+  "t3_fail": [],
+  "t3_atmesta_pvz": [
+   {
+    "id": 15306,
+    "kodel": "kitas sandėlis: av"
+   },
+   {
+    "id": 24377,
+    "kodel": "baltymai: vistiena"
+   },
+   {
+    "id": 16953,
+    "kodel": "kitas sandėlis: av"
+   },
+   {
+    "id": 17386,
+    "kodel": "kitas sandėlis: av"
+   },
+   {
+    "id": 13378,
+    "kodel": "kitas sandėlis: zb"
+   },
+   {
+    "id": 24828,
+    "kodel": "baltymai nedeklaruoti"
+   }
+  ],
+  "t4_vist_pid": 32560,
+  "t4_zais_pid": 35074,
+  "t4": {
+   "skanestas_vist_ctx_vist": "true",
+   "skanestas_vist_ctx_jaut": "false",
+   "skanestas_vist_ctx_nestrict": "true",
+   "zaislas_ctx_strict": "true"
+  },
+  "t4_ok": "TAIP"
+ }
+}
