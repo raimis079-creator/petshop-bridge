@@ -1506,6 +1506,18 @@ class Petshop_Katalogas {
 		$modelis= isset( $_POST['likutis'] ) ? sanitize_key( wp_unslash( $_POST['likutis'] ) ) : 'tevas';
 		$ids    = isset( $_POST['terminai'] ) ? (array) json_decode( wp_unslash( $_POST['terminai'] ), true ) : array();
 		$ids    = array_values( array_unique( array_filter( array_map( 'intval', $ids ) ) ) );
+		/* Kaina ir likutis KIEKVIENAI reiksmei atskirai. Kaina nera privaloma —
+		   tuscia reiskia „kaip prekes". Likutis priimamas tik tada, kai ji valdo
+		   pacios variacijos; kitu atveju jis butu irasytas ir niekada nenaudotas. */
+		$detales = isset( $_POST['detales'] ) ? (array) json_decode( wp_unslash( $_POST['detales'] ), true ) : array();
+		$det = array();
+		foreach ( $detales as $d ) {
+			if ( ! isset( $d['id'] ) ) { continue; }
+			$det[ (int) $d['id'] ] = array(
+				'kaina' => isset( $d['kaina'] ) ? str_replace( array( ',', ' ' ), array( '.', '' ), trim( (string) $d['kaina'] ) ) : '',
+				'lik'   => isset( $d['lik'] ) ? trim( (string) $d['lik'] ) : '',
+			);
+		}
 
 		if ( ! $pid || get_post_type( $pid ) !== 'product' ) { wp_send_json_error( 'nėra prekės' ); }
 		$tipas = self::var_galima( $pid );
@@ -1552,6 +1564,15 @@ class Petshop_Katalogas {
 		}
 		if ( $kaina === '' ) { wp_send_json_error( 'Prekė neturi kainos — variacijos neturėtų iš ko jos paveldėti.' ); }
 
+		foreach ( $det as $tid => $d ) {
+			if ( $d['kaina'] !== '' && ( ! is_numeric( $d['kaina'] ) || (float) $d['kaina'] < 0 ) ) {
+				wp_send_json_error( 'Netinkama kaina prie reikšmės #' . (int) $tid );
+			}
+			if ( $d['lik'] !== '' && ! preg_match( '/^\d+$/', $d['lik'] ) ) {
+				wp_send_json_error( 'Likutis turi būti sveikas skaičius (reikšmė #' . (int) $tid . ')' );
+			}
+		}
+
 		$kurti  = array_values( array_diff( $ids, array_keys( $esamos ) ) );
 		$isimti = array_values( array_diff( array_keys( $esamos ), $ids ) );
 
@@ -1562,7 +1583,11 @@ class Petshop_Katalogas {
 				'tipas'    => $tipas,
 				'modelis'  => $modelis,
 				'kaina'    => $kaina,
-				'kurti'    => array_map( $vardas, $kurti ),
+				'kurti'    => array_map( function ( $tid ) use ( $vardas, $det, $kaina, $modelis ) {
+					$k = ( isset( $det[ $tid ] ) && $det[ $tid ]['kaina'] !== '' ) ? $det[ $tid ]['kaina'] : $kaina;
+					$l = ( $modelis === 'variacijos' && isset( $det[ $tid ] ) && $det[ $tid ]['lik'] !== '' ) ? $det[ $tid ]['lik'] : '0';
+					return $vardas( $tid ) . ' (' . $k . ' €' . ( $modelis === 'variacijos' ? ', ' . $l . ' vnt.' : '' ) . ')';
+				}, $kurti ),
 				'isimti'   => array_map( $vardas, $isimti ),
 				'lieka'    => count( $ids ) - count( $kurti ),
 				'tevo_lik' => get_post_meta( $pid, '_stock', true ),
@@ -1591,15 +1616,20 @@ class Petshop_Katalogas {
 		$sukurta = array(); $ismesta = array();
 		foreach ( $kurti as $tid ) {
 			$t = get_term( $tid );
+			$k = ( isset( $det[ $tid ] ) && $det[ $tid ]['kaina'] !== '' ) ? $det[ $tid ]['kaina'] : $kaina;
 			$v = new WC_Product_Variation();
 			$v->set_parent_id( $pid );
 			$v->set_attributes( array( $tax => $t->slug ) );
-			$v->set_regular_price( $kaina );
+			$v->set_regular_price( $k );
 			$v->set_manage_stock( $modelis === 'variacijos' );
-			if ( $modelis === 'variacijos' ) { $v->set_stock_quantity( 0 ); $v->set_stock_status( 'outofstock' ); }
+			if ( $modelis === 'variacijos' ) {
+				$l = ( isset( $det[ $tid ] ) && $det[ $tid ]['lik'] !== '' ) ? (int) $det[ $tid ]['lik'] : 0;
+				$v->set_stock_quantity( $l );
+				$v->set_stock_status( $l > 0 ? 'instock' : 'outofstock' );
+			}
 			$v->set_status( 'publish' );
 			$vid = $v->save();
-			if ( $vid ) { $sukurta[] = array( 'id' => $vid, 'vardas' => $t->name ); }
+			if ( $vid ) { $sukurta[] = array( 'id' => $vid, 'vardas' => $t->name, 'kaina' => $k ); }
 		}
 		foreach ( $isimti as $tid ) {
 			$vid = $esamos[ $tid ];
@@ -4197,6 +4227,13 @@ class Petshop_Katalogas {
 			border:1px solid #dfe3dd;border-radius:4px;font-size:13px;cursor:pointer;background:#fff}
 		.ps-var-reiksmes label.zym{border-color:#1f7a4d;background:#f3faf6}
 		.ps-var-reiksmes .sp{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
+		.ps-var-det{margin:10px 0}
+		.ps-var-det table{border-collapse:collapse;font-size:13px}
+		.ps-var-det th{text-align:left;font-size:12px;font-weight:600;color:#5b6660;padding:4px 8px}
+		.ps-var-det td{padding:4px 8px;border-bottom:1px solid #f2f4f1}
+		.ps-var-det input{width:88px;padding:4px 7px;font-size:13px;text-align:right}
+		.ps-var-det .sp{display:inline-block;width:12px;height:12px;border-radius:50%;
+			border:1px solid rgba(0,0,0,.2);margin-right:6px;vertical-align:-2px}
 		.ps-var-perzt{font-size:13px;margin-top:8px;line-height:1.6}
 		.ps-var-perzt b{color:#1d2422}
 		.ps-var-stat{margin-left:10px;font-size:13px}
@@ -4269,6 +4306,8 @@ class Petshop_Katalogas {
 		}
 		echo '<script type="application/json" class="ps-var-terms">' . wp_json_encode( $duom ) . '</script>';
 		echo '<div class="ps-var-eil"><b>Reikšmės</b><div class="ps-var-reiksmes"></div></div>';
+		echo '<div class="ps-var-det"></div>';
+		echo '<input type="hidden" class="ps-var-bazine" value="' . esc_attr( get_post_meta( $pid, '_regular_price', true ) ) . '">';
 		echo '<div class="kort-atr-myg"><button type="button" class="ps-var-perz">Peržiūrėti</button> '
 			. '<button type="button" class="ps-var-vykdyti" disabled>Įrašyti</button>'
 			. '<span class="ps-var-stat"></span></div>';
@@ -8334,6 +8373,12 @@ class Petshop_Katalogas {
 					fd.append("likutis",likutis());
 					fd.append("rezimas",vykdom?"vykdyti":"perziura");
 					fd.append("terminai",JSON.stringify(pazymeti()));
+					var det=[];
+					f.querySelectorAll(".ps-var-det tr[data-id]").forEach(function(tr){
+						var k=tr.querySelector(".dk"), l=tr.querySelector(".dl");
+						det.push({id:+tr.dataset.id, kaina:k?k.value:"", lik:l?l.value:""});
+					});
+					fd.append("detales",JSON.stringify(det));
 					stat.className="ps-var-stat"; stat.textContent=vykdom?"Įrašoma…":"Skaičiuojama…";
 					fetch(AJAX,{method:"POST",credentials:"same-origin",body:fd})
 						.then(function(r){return r.json();})
@@ -8358,6 +8403,10 @@ class Petshop_Katalogas {
 				if(e.target.tagName==="INPUT"&&e.target.type==="checkbox"){
 					e.target.closest("label").classList.toggle("zym",e.target.checked);
 					bv.disabled=true; perzt.innerHTML="";
+					piestiDetales(f);
+				}
+				if(e.target.classList && e.target.classList.contains("ps-var-lik")){
+					bv.disabled=true; perzt.innerHTML=""; piestiDetales(f);
 				}
 			});
 			document.addEventListener("change", function(e){
@@ -8365,6 +8414,36 @@ class Petshop_Katalogas {
 				if(!e.target.classList.contains("ps-var-tax")) return;
 				piestiReiksmes(f);
 			});
+			function piestiDetales(f){
+				var zona=f.querySelector(".ps-var-det"); if(!zona) return;
+				var atskirai=false;
+				var r=f.querySelector(".ps-var-lik:checked");
+				if(r && r.value==="variacijos") atskirai=true;
+				var bz=f.querySelector(".ps-var-bazine");
+				var baze=bz?bz.value:"";
+				var pazym=f.querySelectorAll(".ps-var-reiksmes input:checked");
+				if(!pazym.length){ zona.innerHTML=""; return; }
+				var h = "<table><thead><tr><th>Reikšmė</th><th>Kaina €</th>"
+				      + (atskirai?"<th>Likutis</th>":"") + "</tr></thead><tbody>";
+				pazym.forEach(function(inp){
+					var lab=inp.closest("label");
+					var sp=lab.querySelector(".sp");
+					var vardas=lab.querySelector("span:last-child").textContent;
+					var senas=zona.querySelector("tr[data-id=\"" + inp.value + "\"]");
+					var kv = senas ? senas.querySelector(".dk").value : baze;
+					var lv = (senas && senas.querySelector(".dl")) ? senas.querySelector(".dl").value : "";
+					h += "<tr data-id=\"" + inp.value + "\"><td>"
+					   + (sp ? ("<span class=\"sp\" style=\"" + sp.getAttribute("style") + "\"></span>") : "")
+					   + vardas + "</td>"
+					   + "<td><input type=\"text\" class=\"dk\" value=\"" + kv + "\"></td>"
+					   + (atskirai ? ("<td><input type=\"text\" class=\"dl\" value=\"" + lv + "\" placeholder=\"0\"></td>") : "")
+					   + "</tr>";
+				});
+				h += "</tbody></table>";
+				h += "<div class=\"kort-info-m\">Kaina užpildyta prekės kaina — keisk tik ten, kur ji tikrai kitokia. "
+				   + (atskirai ? "Likutį suvesk kiekvienai reikšmei; tuščia reiškia nulį." : "") + "</div>";
+				zona.innerHTML=h;
+			}
 			function piestiReiksmes(f){
 				var sel=f.querySelector(".ps-var-tax"), zona=f.querySelector(".ps-var-reiksmes");
 				var d={}; try{ d=JSON.parse(f.querySelector(".ps-var-terms").textContent); }catch(x){}
@@ -8378,6 +8457,7 @@ class Petshop_Katalogas {
 				zona.innerHTML = h || "<div class=\"kort-info-m\">Ši ašis dar neturi reikšmių. Jos kuriamos lange Petshop prekės → Atributai.</div>";
 				f.querySelector(".ps-var-vykdyti").disabled=true;
 				f.querySelector(".ps-var-perzt").innerHTML="";
+				piestiDetales(f);
 			}
 			/* Kortele ikeliama per innerHTML, todel reiksmes piesiamos tada, kai
 			   ji jau idėta i DOM — korteleInit yra ta vieta, kuria kviecia atidaryk(). */
