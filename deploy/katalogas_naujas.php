@@ -6963,6 +6963,10 @@ class Petshop_Katalogas {
 						busena("Nepavyko susisiekti su serveriu.", true, id);
 					});
 			}
+			/* Kortele atidaro ir kiti moduliai (dydziu seima, variacijos), o jie
+			   gyvena kitame uzdaryme — be sios nuorodos ju paspaudimai nieko nedaro. */
+			window.psKatAtidaryk = atidaryk;
+
 			function uzdaryk(){
 				/* v6.0: grizimas i TA PACIA vieta sarase.
 				   Savininko pastaba: „isejus is prekes korteles, kataloge mane
@@ -8250,14 +8254,14 @@ class Petshop_Katalogas {
 						fetch(AJAX,{method:"POST",credentials:"same-origin",body:fd})
 							.then(function(r){return r.json();})
 							.then(function(d){
-								if(d&&d.success){ atidaryk(+f.dataset.id); }
+								if(d&&d.success){ if(window.psKatAtidaryk) window.psKatAtidaryk(+f.dataset.id); }
 								else { stat.className="ps-seima-stat kl";
 									stat.textContent=(d&&d.data)?(d.data.zinute||d.data):"nepavyko"; }
 							})
 							.catch(function(){ stat.className="ps-seima-stat kl"; stat.textContent="ryšio klaida"; });
 					}
 					var eiti=e.target.closest(".ps-seima-eiti");
-					if(eiti){ e.preventDefault(); atidaryk(+eiti.dataset.eiti); return; }
+					if(eiti){ e.preventDefault(); if(window.psKatAtidaryk) window.psKatAtidaryk(+eiti.dataset.eiti); return; }
 					var atj=e.target.closest(".ps-seima-atj");
 					if(atj){ siusk("atjungti", atj.dataset.kitas); return; }
 					var pr=e.target.closest(".ps-seima-rez div[data-kitas]");
@@ -8302,7 +8306,7 @@ class Petshop_Katalogas {
 							if(!d||!d.success){ stat.className="ps-var-stat kl";
 								stat.textContent=(d&&d.data)?(d.data.zinute||d.data):"nepavyko"; bv.disabled=true; return; }
 							if(vykdom){ stat.className="ps-var-stat ok"; stat.textContent="Įrašyta.";
-								setTimeout(function(){ atidaryk(+f.dataset.id); },600); return; }
+								setTimeout(function(){ if(window.psKatAtidaryk) window.psKatAtidaryk(+f.dataset.id); },600); return; }
 							var r=d.data, h=[];
 							h.push("Kaina variacijoms: <b>"+r.kaina+" €</b>");
 							h.push("Likutis: <b>"+(r.modelis==="tevas"?"bendras":"atskiras kiekvienai")+"</b>");
