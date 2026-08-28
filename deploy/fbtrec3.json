@@ -1,0 +1,330 @@
+{
+ "v": "FBTREC3",
+ "zingsniai": [
+  "isjungta_TEMP:0",
+  "snip_id:4006"
+ ],
+ "http": 200,
+ "duom": {
+  "v": "FBTREC3",
+  "cats": [
+   [
+    "akvariumo-zuvyciu-maistas",
+    "Akvariumo žuvyčių maistas",
+    36,
+    93
+   ],
+   [
+    "higienos-priemones-sunims",
+    "Higienos priemonės šunims",
+    45,
+    70
+   ],
+   [
+    "hipoalerginis-maistas-sunims",
+    "Hipoalerginis maistas šunims",
+    33,
+    0
+   ],
+   [
+    "kraikai-kaciu-tualetams",
+    "Kraikai kačių tualetams",
+    69,
+    77
+   ],
+   [
+    "maistas-katems",
+    "Maistas katėms",
+    352,
+    77
+   ],
+   [
+    "maistas-sunims",
+    "Maistas šunims",
+    631,
+    70
+   ],
+   [
+    "sausas-maistas-katems",
+    "Sausas maistas katėms",
+    205,
+    78
+   ],
+   [
+    "sausas-maistas-sunims",
+    "Sausas maistas šunims",
+    510,
+    71
+   ],
+   [
+    "skanestai-katems",
+    "Skanėstai katėms",
+    88,
+    77
+   ],
+   [
+    "skanestai-pauksciams",
+    "Skanėstai paukščiams",
+    3,
+    89
+   ],
+   [
+    "skanestai-sunims",
+    "Skanėstai šunims",
+    288,
+    70
+   ],
+   [
+    "skanestu-rinkiniai",
+    "Skanėstų rinkiniai",
+    0,
+    679
+   ],
+   [
+    "super-premium-sunu-maistas",
+    "Super Premium šunų maistas",
+    5,
+    0
+   ],
+   [
+    "tualetai-kraikai-semtuveliai",
+    "Tualetai, semtuvėliai",
+    58,
+    77
+   ],
+   [
+    "tvenkiniu-zuvu-maistas",
+    "Tvenkinių žuvų maistas",
+    11,
+    93
+   ],
+   [
+    "vitaminai-ir-papildai-katems",
+    "Vitaminai ir papildai katėms",
+    17,
+    77
+   ],
+   [
+    "vitaminai-ir-papildai-sunims",
+    "Vitaminai ir papildai šunims",
+    73,
+    70
+   ],
+   [
+    "zaislai-katems",
+    "Žaislai katėms",
+    61,
+    77
+   ],
+   [
+    "zaislai-sunims",
+    "Žaislai šunims",
+    204,
+    70
+   ],
+   [
+    "skanestai-grauzikams",
+    "Skanėstai graužikams",
+    22,
+    87
+   ],
+   [
+    "kraikas-ir-sienas-grauzikams",
+    "Kraikas ir šienas graužikams",
+    3,
+    87
+   ]
+  ],
+  "tax": {
+   "pa_baltymu_saltinis": [
+    [
+     "buivoliena",
+     1
+    ],
+    [
+     "paukstiena",
+     12
+    ],
+    [
+     "putpeliena",
+     6
+    ],
+    [
+     "tunas",
+     21
+    ],
+    [
+     "versiena",
+     3
+    ],
+    [
+     "zasiena",
+     4
+    ],
+    [
+     "antiena",
+     149
+    ],
+    [
+     "arkliena",
+     6
+    ],
+    [
+     "eriena",
+     173
+    ],
+    [
+     "jautiena",
+     144
+    ],
+    [
+     "kalakutiena",
+     62
+    ],
+    [
+     "kiauliena",
+     48
+    ],
+    [
+     "lasisa",
+     143
+    ],
+    [
+     "triusiena",
+     35
+    ],
+    [
+     "vabzdziai",
+     3
+    ],
+    [
+     "vegetariskas",
+     2
+    ],
+    [
+     "vistiena",
+     408
+    ],
+    [
+     "zuvis-balta",
+     103
+    ],
+    [
+     "zveriena",
+     44
+    ]
+   ],
+   "pa_monoprotein": [
+    [
+     "ne",
+     65
+    ],
+    [
+     "taip",
+     438
+    ]
+   ],
+   "pa_speciali_mityba": [
+    [
+     "atsistatymui",
+     0
+    ],
+    [
+     "kepenims",
+     8
+    ],
+    [
+     "sirdziai",
+     1
+    ],
+    [
+     "dantims",
+     6
+    ],
+    [
+     "diabetui",
+     6
+    ],
+    [
+     "hipoalerginis",
+     55
+    ],
+    [
+     "inkstams",
+     7
+    ],
+    [
+     "jautriam-virskinimui",
+     45
+    ],
+    [
+     "plauku-gumulams",
+     7
+    ],
+    [
+     "odai-ir-kailiui",
+     16
+    ],
+    [
+     "sanariams",
+     1
+    ],
+    [
+     "slapimo-takams",
+     16
+    ],
+    [
+     "sterilizuotiems",
+     59
+    ],
+    [
+     "svorio-kontrolei",
+     36
+    ]
+   ],
+   "pa_be_grudu": [
+    [
+     "be-grudu",
+     443
+    ],
+    [
+     "su-grudais",
+     203
+    ],
+    [
+     "su-ryziais",
+     373
+    ]
+   ]
+  },
+  "visos_pa": [
+   "pa_amzius",
+   "pa_baltymu_saltinis",
+   "pa_be_grudu",
+   "pa_brendas",
+   "pa_dydis",
+   "pa_forma",
+   "pa_grauziko_rusis",
+   "pa_gyvuno_rusis",
+   "pa_ilgis",
+   "pa_kiekis_pakuoteje",
+   "pa_kraiko_tipas",
+   "pa_kvapas",
+   "pa_medziaga",
+   "pa_monoprotein",
+   "pa_pakuotes_dydis",
+   "pa_pasaro_forma",
+   "pa_paskirtis",
+   "pa_paukscio_rusis",
+   "pa_pavadelio_ilgis",
+   "pa_spalva",
+   "pa_speciali_mityba",
+   "pa_tipas",
+   "pa_veisle",
+   "pa_veisles_dydis",
+   "pa_zaislo_tipas",
+   "pa_zuvies_rusis"
+  ],
+  "fbt_precheck_hipo": []
+ }
+}
