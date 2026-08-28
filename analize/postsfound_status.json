@@ -1,0 +1,114 @@
+{
+ "v": "PF-v1.0",
+ "r": {
+  "v": "PF1",
+  "tema": {
+   "tevine": "flatsome",
+   "vaikas": "flatsome-child"
+  },
+  "rasta": [
+   {
+    "failas": "/themes/flatsome/inc/woocommerce/structure-wc-global.php",
+    "eil": 271,
+    "kodas": "echo '<hr/><h4 class=\"uppercase\">' . esc_html__( 'Posts found', 'flatsome' ) . '</h4>';"
+   },
+   {
+    "failas": "/themes/flatsome/languages/es_AR.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'es_AR','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:0"
+   },
+   {
+    "failas": "/themes/flatsome/languages/vi.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=1; plural=0;','language'=>'vi_VN','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-"
+   },
+   {
+    "failas": "/themes/flatsome/languages/pl_PL.l10n.php",
+    "eil": 4,
+    "kodas": "%1$s myśli o &ldquo;%2$s&rdquo;' . \"\\0\" . '%1$s myśli o &ldquo;%2$s&rdquo;' . \"\\0\" . '%1$s Myśli o &ldquo;%2$s&rdquo;','Comment navigation'=>'Nawigacja komentarzy','Older Comments'"
+   },
+   {
+    "failas": "/themes/flatsome/languages/de_DE.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'de_DE','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:0"
+   },
+   {
+    "failas": "/themes/flatsome/languages/cs_CZ.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;','language'=>'cs_CZ','project-id-version'=>'l10n-flatsome','pot-creation-date'"
+   },
+   {
+    "failas": "/themes/flatsome/languages/de_DE_formal.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n > 1);','language'=>'de_DE_f','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:"
+   },
+   {
+    "failas": "/themes/flatsome/languages/nl_NL.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'nl_NL','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:0"
+   },
+   {
+    "failas": "/themes/flatsome/languages/da_DK.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'da_DK','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:0"
+   },
+   {
+    "failas": "/themes/flatsome/languages/sl_SI.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;','language'=>'sl_SI','project-id-version'=>'l10n-flatso"
+   },
+   {
+    "failas": "/themes/flatsome/languages/it_IT.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'it_IT','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:0"
+   },
+   {
+    "failas": "/themes/flatsome/languages/uk.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>NULL,'plural-forms'=>'nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);','language'=>'uk','project-id-version"
+   },
+   {
+    "failas": "/themes/flatsome/languages/zh_CN.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=1; plural=0;','language'=>'zh_CN','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-"
+   },
+   {
+    "failas": "/themes/flatsome/languages/es_ES.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'es_ES','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:0"
+   },
+   {
+    "failas": "/themes/flatsome/languages/ar.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);','language'=>'ar_SA'"
+   },
+   {
+    "failas": "/themes/flatsome/languages/tr_TR.l10n.php",
+    "eil": 2,
+    "kodas": "return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'tr_TR','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:0"
+   }
+  ],
+  "gettext_bandymas": "Posts found",
+  "gettext_be_domeno": "Posts found",
+  "kalba": "lt_LT",
+  "temos_mo": [],
+  "blogo_datos": [
+   {
+    "d": "2019-07-08",
+    "n": "3"
+   },
+   {
+    "d": "2026-01-01",
+    "n": "2"
+   },
+   {
+    "d": "2023-10-18",
+    "n": "2"
+   },
+   {
+    "d": "2025-12-21",
+    "n": "1"
+   }
+  ]
+ }
+}
