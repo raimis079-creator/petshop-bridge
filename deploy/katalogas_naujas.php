@@ -3978,6 +3978,41 @@ class Petshop_Katalogas {
 		if ( ! $tipas ) { return; }
 		$v = self::variaciju_sarasas( $pid );
 		echo '<div class="kort-pane" data-p="var">';
+		echo '<style>
+		.ps-var-lent{width:100%;border-collapse:collapse;font-size:13px}
+		.ps-var-lent th{text-align:left;font-weight:600;color:#5b6660;padding:6px 8px;
+			border-bottom:1px solid #e8ebe6;white-space:nowrap}
+		.ps-var-lent th.d,.ps-var-lent td.d{text-align:right}
+		.ps-var-lent td{padding:6px 8px;border-bottom:1px solid #f2f4f1;vertical-align:middle}
+		.ps-var-lent tr:hover td{background:#f7f9f6}
+		.ps-var-sp{display:inline-block;width:12px;height:12px;border-radius:50%;
+			border:1px solid rgba(0,0,0,.2);margin-right:6px;vertical-align:-2px}
+		.ps-var-sku{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+		.ps-var-pilk{color:#9aa5a0}
+		.ps-var-ak{color:#1f7a4d}
+		.ps-var-eil{margin:10px 0}
+		.ps-var-eil>b{display:block;font-size:12px;font-weight:600;color:#5b6660;
+			text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+		.ps-var-eil select{min-width:180px}
+		.ps-var-lik-sar{display:flex;gap:16px;flex-wrap:wrap}
+		.ps-var-lik-sar label{display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer}
+		.ps-var-lent .kort-red input{width:100%;max-width:150px;padding:3px 6px;font-size:13px}
+		.ps-var-lent .ps-var-siau input{max-width:74px;text-align:right}
+		.ps-var-lent .ps-var-mono input{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+		.ps-var-lent .kort-red input.purvinas{background:#fff8e5;border-color:#d4ac0d}
+		.ps-var-forma{margin-bottom:16px}
+		.ps-var-reiksmes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+		.ps-var-reiksmes label{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;
+			border:1px solid #dfe3dd;border-radius:4px;font-size:13px;cursor:pointer;background:#fff}
+		.ps-var-reiksmes label.zym{border-color:#1f7a4d;background:#f3faf6}
+		.ps-var-reiksmes .sp{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
+		.ps-var-perzt{font-size:13px;margin-top:8px;line-height:1.6}
+		.ps-var-perzt b{color:#1d2422}
+		.ps-var-stat{margin-left:10px;font-size:13px}
+		.ps-var-stat.kl{color:#b3261e}
+		.ps-var-stat.ok{color:#1f7a4d}
+		</style>';
+
 
 		/* ---- FORMA: padaryti variacine arba pridėti reikšmių ---- */
 		$asys = self::var_asys();
@@ -3992,7 +4027,7 @@ class Petshop_Katalogas {
 				. 'variacine: pirkėjas rinksis prekės puslapyje, o kaina bus paveldėta iš dabartinės.</div>';
 		}
 
-		echo '<div class="kort-eil"><span>Ašis</span><span>';
+		echo '<div class="ps-var-eil"><b>Ašis</b><span>';
 		if ( $esama_asis ) {
 			echo '<b>' . esc_html( $asys[ $esama_asis ] ) . '</b> <span class="ps-var-pilk">— ašis nebekeičiama</span>'
 				. '<input type="hidden" class="ps-var-tax" value="' . esc_attr( $esama_asis ) . '">';
@@ -4006,11 +4041,13 @@ class Petshop_Katalogas {
 		echo '</span></div>';
 
 		if ( ! $v ) {
-			echo '<div class="kort-eil"><span>Likutis</span><span>'
-				. '<label><input type="radio" name="psvarlik' . (int) $pid . '" class="ps-var-lik" value="tevas" checked> '
-				. 'bendras visoms reikšmėms</label> '
-				. '<label><input type="radio" name="psvarlik' . (int) $pid . '" class="ps-var-lik" value="variacijos"> '
-				. 'atskiras kiekvienai</label></span></div>'
+			echo '<div class="ps-var-eil"><b>Kur gyvena likutis</b>'
+				. '<div class="ps-var-lik-sar">'
+				. '<label><input type="radio" name="psvarlik' . (int) $pid . '" class="ps-var-lik" value="tevas" checked>'
+				. '<span>bendras visoms reikšmėms</span></label>'
+				. '<label><input type="radio" name="psvarlik' . (int) $pid . '" class="ps-var-lik" value="variacijos">'
+				. '<span>atskiras kiekvienai</span></label>'
+				. '</div></div>'
 				. '<div class="kort-info-m">Bendras tinka, kai lentynoje nerūšiuoji pagal spalvą. '
 				. 'Atskiras reiškia, kad kiekvienai reikšmei likutį suvesi pats — dabartinis prekės likutis '
 				. 'nebebus naudojamas. Vėliau šio pasirinkimo pakeisti nebus galima.</div>';
@@ -4040,7 +4077,7 @@ class Petshop_Katalogas {
 			$duom[ $tx ] = $sar;
 		}
 		echo '<script type="application/json" class="ps-var-terms">' . wp_json_encode( $duom ) . '</script>';
-		echo '<div class="ps-var-reiksmes"></div>';
+		echo '<div class="ps-var-eil"><b>Reikšmės</b><div class="ps-var-reiksmes"></div></div>';
 		echo '<div class="kort-atr-myg"><button type="button" class="ps-var-perz">Peržiūrėti</button> '
 			. '<button type="button" class="ps-var-vykdyti" disabled>Įrašyti</button>'
 			. '<span class="ps-var-stat"></span></div>';
@@ -4120,34 +4157,7 @@ class Petshop_Katalogas {
 			. 'SKU ir EAN tikrinami, ar nepriklauso kitai prekei.</div>';
 		echo '</div>';
 
-		echo '<style>
-		.ps-var-lent{width:100%;border-collapse:collapse;font-size:13px}
-		.ps-var-lent th{text-align:left;font-weight:600;color:#5b6660;padding:6px 8px;
-			border-bottom:1px solid #e8ebe6;white-space:nowrap}
-		.ps-var-lent th.d,.ps-var-lent td.d{text-align:right}
-		.ps-var-lent td{padding:6px 8px;border-bottom:1px solid #f2f4f1;vertical-align:middle}
-		.ps-var-lent tr:hover td{background:#f7f9f6}
-		.ps-var-sp{display:inline-block;width:12px;height:12px;border-radius:50%;
-			border:1px solid rgba(0,0,0,.2);margin-right:6px;vertical-align:-2px}
-		.ps-var-sku{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
-		.ps-var-pilk{color:#9aa5a0}
-		.ps-var-ak{color:#1f7a4d}
-		.ps-var-lent .kort-red input{width:100%;max-width:150px;padding:3px 6px;font-size:13px}
-		.ps-var-lent .ps-var-siau input{max-width:74px;text-align:right}
-		.ps-var-lent .ps-var-mono input{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
-		.ps-var-lent .kort-red input.purvinas{background:#fff8e5;border-color:#d4ac0d}
-		.ps-var-forma{margin-bottom:16px}
-		.ps-var-reiksmes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
-		.ps-var-reiksmes label{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;
-			border:1px solid #dfe3dd;border-radius:4px;font-size:13px;cursor:pointer;background:#fff}
-		.ps-var-reiksmes label.zym{border-color:#1f7a4d;background:#f3faf6}
-		.ps-var-reiksmes .sp{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
-		.ps-var-perzt{font-size:13px;margin-top:8px;line-height:1.6}
-		.ps-var-perzt b{color:#1d2422}
-		.ps-var-stat{margin-left:10px;font-size:13px}
-		.ps-var-stat.kl{color:#b3261e}
-		.ps-var-stat.ok{color:#1f7a4d}
-		</style>';
+		/* stilius isvestas auksciau — jis reikalingas ir paprastai prekei */
 		echo '</div>';
 	}
 
