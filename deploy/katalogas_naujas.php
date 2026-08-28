@@ -2605,6 +2605,7 @@ class Petshop_Katalogas {
 			. '<button data-t="prd">Pardavimai</button>'
 			. '<button data-t="ist">Istorija</button>'
 			. ( class_exists( 'Petshop_Partijos' ) ? '<button data-t="pak">GPAIS pakuotė</button>' : '' )
+			. ( self::variaciju_sarasas( $pid ) ? '<button data-t="var">Variacijos</button>' : '' )
 			. '</div>';
 
 		/* ---------- v2.9: PARDAVIMAI IR PILNUMAS VIRSUJE ----------
@@ -3073,6 +3074,7 @@ class Petshop_Katalogas {
 
 		self::kort_aprasymai( $pid, $m );
 		self::kort_nuotraukos( $pid, $m );
+		self::kort_variacijos( $pid );
 		self::kort_pardavimai( $pid );
 		self::kort_istorija( $pid );
 		if ( class_exists( 'Petshop_Partijos' ) ) { self::kort_pakuote( $pid ); }
@@ -3622,6 +3624,148 @@ class Petshop_Katalogas {
 		if ( $men < 3 )  { return '<span class="z bad">' . $men . ' mėn.</span>'; }
 		if ( $men < 6 )  { return '<span class="z warn">' . $men . ' mėn.</span>'; }
 		return '<span class="z ok">' . $men . ' mėn.</span>';
+	}
+
+	/**
+	 * VARIACIJOS. Iki siol kortele rode tik tevine preke, o 241 variacija
+	 * buvo nematoma: nei SKU, nei likucio, nei kainos. Variacine preke
+	 * kortelėje buvo aklaviete — matai pavadinima ir nieko negali.
+	 *
+	 * Grazina variaciju masyva arba tuscia, jei preke ne variacine. Ta pati
+	 * funkcija sprendzia, ar rodyti skirtuka — kad mygtukas ir turinys
+	 * negaletu issiskirti.
+	 */
+	public static function variaciju_sarasas( $pid ) {
+		global $wpdb;
+		static $kesas = array();
+		if ( isset( $kesas[ $pid ] ) ) { return $kesas[ $pid ]; }
+
+		$ids = $wpdb->get_col( $wpdb->prepare(
+			"SELECT ID FROM {$wpdb->posts}
+			  WHERE post_type = 'product_variation' AND post_parent = %d
+			    AND post_status <> 'trash'
+			  ORDER BY menu_order, ID", (int) $pid ) );
+		if ( ! $ids ) { $kesas[ $pid ] = array(); return array(); }
+
+		$out = array();
+		foreach ( $ids as $vid ) {
+			$vid = (int) $vid;
+			$mv  = array();
+			foreach ( (array) $wpdb->get_results( $wpdb->prepare(
+				"SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d", $vid ), ARRAY_A ) as $r ) {
+				$mv[ $r['meta_key'] ] = $r['meta_value'];
+			}
+			/* Atributai — kiek ju bebutu, ne tik spalva. */
+			$atr = array();
+			foreach ( $mv as $k => $v ) {
+				if ( strpos( $k, 'attribute_' ) !== 0 || $v === '' ) { continue; }
+				$tax = substr( $k, 10 );
+				$vardas = $v; $spalva = '';
+				if ( taxonomy_exists( $tax ) ) {
+					$t = get_term_by( 'slug', $v, $tax );
+					if ( $t ) {
+						$vardas = $t->name;
+						$sp = get_term_meta( $t->term_id, 'product_attribute_color', true );
+						if ( $sp ) { $spalva = (string) $sp; }
+					}
+				}
+				$atr[] = array( 'tax' => $tax, 'vardas' => $vardas, 'hex' => $spalva );
+			}
+			$out[] = array(
+				'id'     => $vid,
+				'st'     => get_post_status( $vid ),
+				'atr'    => $atr,
+				'sku'    => isset( $mv['_sku'] ) ? $mv['_sku'] : '',
+				'ean'    => isset( $mv['_global_unique_id'] ) ? $mv['_global_unique_id'] : '',
+				'kaina'  => isset( $mv['_regular_price'] ) ? $mv['_regular_price'] : '',
+				'akcija' => isset( $mv['_sale_price'] ) ? $mv['_sale_price'] : '',
+				'valdo'  => ( isset( $mv['_manage_stock'] ) && $mv['_manage_stock'] === 'yes' ),
+				'lik'    => isset( $mv['_stock'] ) ? $mv['_stock'] : '',
+				'bukle'  => isset( $mv['_stock_status'] ) ? $mv['_stock_status'] : '',
+				'foto'   => ( ! empty( $mv['_thumbnail_id'] ) ),
+			);
+		}
+		$kesas[ $pid ] = $out;
+		return $out;
+	}
+
+	private static function kort_variacijos( $pid ) {
+		$v = self::variaciju_sarasas( $pid );
+		if ( ! $v ) { return; }
+		echo '<div class="kort-pane" data-p="var">';
+
+		/* Kur gyvena likutis — tai pirmas dalykas, kuri reikia zinoti.
+		   Dvi schemos veikia vienu metu ir jos NEsuderinamos tarpusavyje. */
+		$valdo = 0;
+		foreach ( $v as $x ) { if ( $x['valdo'] ) { $valdo++; } }
+		$tevo_lik = get_post_meta( $pid, '_stock', true );
+
+		echo '<div class="kort-blokas"><div class="kort-antr">Likučio schema</div>';
+		if ( $valdo === count( $v ) ) {
+			$suma = 0;
+			foreach ( $v as $x ) { $suma += (int) $x['lik']; }
+			echo '<div class="kort-eil"><span>Likutį valdo</span><b>kiekviena variacija atskirai</b></div>'
+				. '<div class="kort-eil"><span>Suma</span><b>' . (int) $suma . ' vnt.</b></div>';
+		} elseif ( $valdo === 0 ) {
+			echo '<div class="kort-eil"><span>Likutį valdo</span><b>tėvinė prekė</b></div>'
+				. '<div class="kort-eil"><span>Likutis</span><b>' . esc_html( $tevo_lik === '' ? '—' : $tevo_lik ) . ' vnt.</b></div>'
+				. '<div class="kort-persp-x">Spalva čia yra tik pasirinkimas — atskirai spalvai likučio nėra.</div>';
+		} else {
+			echo '<div class="kort-persp-x" style="color:#b3261e"><b>Sumaišyta schema:</b> '
+				. (int) $valdo . ' iš ' . count( $v ) . ' variacijų valdo likutį pačios, kitos ne. '
+				. 'Tai reiškia, kad dalis prekės parduodama pagal vieną skaičių, dalis pagal kitą.</div>';
+		}
+		echo '</div>';
+
+		echo '<div class="kort-blokas"><div class="kort-antr">Variacijos (' . count( $v ) . ')</div>';
+		echo '<table class="ps-var-lent"><thead><tr>'
+			. '<th>Variantas</th><th>SKU</th><th>EAN</th><th class="d">Kaina</th>'
+			. '<th class="d">Likutis</th><th>Būsena</th><th>Nr.</th></tr></thead><tbody>';
+		foreach ( $v as $x ) {
+			$et = array();
+			foreach ( $x['atr'] as $a ) {
+				$taskas = $a['hex']
+					? '<span class="ps-var-sp" style="background:' . esc_attr( $a['hex'] ) . '"></span>'
+					: '';
+				$et[] = $taskas . esc_html( $a['vardas'] );
+			}
+			$kaina = $x['kaina'] === '' ? '<span class="warn">—</span>'
+				: number_format( (float) $x['kaina'], 2, ',', ' ' ) . ' €';
+			if ( $x['akcija'] !== '' ) {
+				$kaina .= ' <span class="ps-var-ak">' . number_format( (float) $x['akcija'], 2, ',', ' ' ) . ' €</span>';
+			}
+			$lik = $x['valdo'] ? (int) $x['lik'] : '<span class="ps-var-pilk">tėvo</span>';
+			$bus = $x['bukle'] === 'instock' ? 'turime'
+				: ( $x['bukle'] === 'outofstock' ? '<span class="warn">nėra</span>' : esc_html( $x['bukle'] ) );
+			if ( $x['st'] !== 'publish' ) { $bus .= ' <span class="warn">(' . esc_html( $x['st'] ) . ')</span>'; }
+			echo '<tr>'
+				. '<td>' . implode( ' · ', $et ) . '</td>'
+				. '<td class="ps-var-sku">' . ( $x['sku'] !== '' ? esc_html( $x['sku'] ) : '<span class="warn">—</span>' ) . '</td>'
+				. '<td class="ps-var-sku">' . ( $x['ean'] !== '' ? esc_html( $x['ean'] ) : '<span class="warn">—</span>' ) . '</td>'
+				. '<td class="d">' . $kaina . '</td>'
+				. '<td class="d">' . $lik . '</td>'
+				. '<td>' . $bus . '</td>'
+				. '<td class="ps-var-pilk">' . (int) $x['id'] . '</td>'
+				. '</tr>';
+		}
+		echo '</tbody></table>';
+		echo '<div class="kort-persp-x">Variacijos kol kas tik rodomos. Redaguoti — WooCommerce lange.</div>';
+		echo '</div>';
+
+		echo '<style>
+		.ps-var-lent{width:100%;border-collapse:collapse;font-size:13px}
+		.ps-var-lent th{text-align:left;font-weight:600;color:#5b6660;padding:6px 8px;
+			border-bottom:1px solid #e8ebe6;white-space:nowrap}
+		.ps-var-lent th.d,.ps-var-lent td.d{text-align:right}
+		.ps-var-lent td{padding:6px 8px;border-bottom:1px solid #f2f4f1;vertical-align:middle}
+		.ps-var-lent tr:hover td{background:#f7f9f6}
+		.ps-var-sp{display:inline-block;width:12px;height:12px;border-radius:50%;
+			border:1px solid rgba(0,0,0,.2);margin-right:6px;vertical-align:-2px}
+		.ps-var-sku{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+		.ps-var-pilk{color:#9aa5a0}
+		.ps-var-ak{color:#1f7a4d}
+		</style>';
+		echo '</div>';
 	}
 
 	/**
