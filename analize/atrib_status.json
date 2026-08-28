@@ -1,0 +1,134 @@
+{
+ "v": "ATRIB-v1.0",
+ "dry": {
+  "suma": {
+   "prekiu": 24,
+   "padaryta": 0,
+   "be_donoro": 0
+  },
+  "terminai": [
+   {
+    "name": "10 l",
+    "bukle": "BUTU SUKURTAS"
+   },
+   {
+    "name": "25 l",
+    "bukle": "BUTU SUKURTAS"
+   },
+   {
+    "name": "5 l",
+    "bukle": "BUTU SUKURTAS"
+   }
+  ],
+  "pvz": [
+   {
+    "id": 35102,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas rožinės spalvo",
+    "don": 15306,
+    "prideta": {
+     "pa_gyvuno_rusis": [
+      "Šunims"
+     ],
+     "pa_medziaga": [
+      "Guma"
+     ],
+     "pa_zaislo_tipas": [
+      "Kramtymui"
+     ],
+     "pa_dydis": [
+      "M"
+     ]
+    },
+    "past": []
+   },
+   {
+    "id": 35104,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas rožinės spalvo",
+    "don": 15306,
+    "prideta": {
+     "pa_gyvuno_rusis": [
+      "Šunims"
+     ],
+     "pa_medziaga": [
+      "Guma"
+     ],
+     "pa_zaislo_tipas": [
+      "Kramtymui"
+     ],
+     "pa_dydis": [
+      "L"
+     ]
+    },
+    "past": []
+   },
+   {
+    "id": 35106,
+    "pav": "Žaislas šuniui - Coockoo guminis kamuoliukas Bumpi",
+    "don": 15336,
+    "prideta": {
+     "pa_gyvuno_rusis": [
+      "Šunims"
+     ],
+     "pa_medziaga": [
+      "Guma"
+     ],
+     "pa_zaislo_tipas": [
+      "Kamuoliai"
+     ],
+     "pa_dydis": [
+      "L"
+     ]
+    },
+    "past": []
+   },
+   {
+    "id": 35108,
+    "pav": "Žaislas šuniui - Ebi guminis kaulas melsvos spalvo",
+    "don": 15309,
+    "prideta": {
+     "pa_gyvuno_rusis": [
+      "Šunims"
+     ],
+     "pa_medziaga": [
+      "Guma"
+     ],
+     "pa_zaislo_tipas": [
+      "Kramtymui"
+     ],
+     "pa_dydis": [
+      "M"
+     ]
+    },
+    "past": []
+   }
+  ]
+ },
+ "apply": {
+  "suma": {
+   "prekiu": 24,
+   "padaryta": 24,
+   "be_donoro": 0
+  },
+  "terminai": [
+   {
+    "name": "10 l",
+    "bukle": "SUKURTAS",
+    "id": 759,
+    "slug": "10-l"
+   },
+   {
+    "name": "25 l",
+    "bukle": "SUKURTAS",
+    "id": 760,
+    "slug": "25-l"
+   },
+   {
+    "name": "5 l",
+    "bukle": "SUKURTAS",
+    "id": 761,
+    "slug": "5-l"
+   }
+  ],
+  "past": []
+ }
+}
