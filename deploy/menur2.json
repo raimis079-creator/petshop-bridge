@@ -1,0 +1,14 @@
+{
+ "v": "MENUR2",
+ "zingsniai": [
+  "snip_id:4018",
+  "psl:/=200",
+  "psl:/krepselis/=200"
+ ],
+ "http": 200,
+ "duom": {
+  "v": "MENUR2",
+  "katalogas_ist": "unction body_klase( $klases ) {\n\t\tif ( isset( $_GET['page'] ) && $_GET['page'] === 'ps-katalogas' ) {\n\t\t\t$klases .= ' petshop-katalogas';\n\t\t}\n\t\treturn $klases;\n\t}\n\n\tpublic static function meniu() {\n\t\tadd_menu_page(\n\t\t\t'Petshop prekės', 'Petshop prekės', 'manage_woocommerce',\n\t\t\t'ps-katalogas', array( __CLASS__, 'puslapis' ), 'dashicons-products', 3\n\t\t);\n\t}\n\n\t/** WooCommerce prekių punktas slepiamas CSS'u — puslapis lieka veikiantis. */\n\tpublic static function slepti_wc_prekes() {\n\t\techo '<style>\n\t\t#adminmenu li#menu-posts-product,\n\t\t#adminmenu li.menu-icon-product,\n\t\t#adminmenu a.menu-top[href=\"edit.php?post_type=product\"]{display:none!important}\n\t\t</style>';\n\t}\n\n\t/* ===================",
+  "katalogas_parents": []
+ }
+}
