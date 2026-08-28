@@ -176,7 +176,13 @@ function petshop_free_shipping_progress() {
     $total_weight     = 0;
     foreach ( WC()->cart->get_cart() as $item ) {
         $product_id = $item['product_id'];
-        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes' ) {
+        /* Ta pati dviejų laukų problema kaip pristatymo filtre (2026-08-28):
+           varnele kortelėje raso `_ps_tik_kurjeriu`, o cia buvo tikrinamas
+           tik senasis `_fulfillment_courier_only`. Del to krepselyje
+           kurjeriui skirta preke vis tiek matydavo „iki nemokamo pristatymo
+           i pastomata" — pazadas, kurio ivykdyti neimanoma. */
+        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'
+             || get_post_meta( $product_id, '_ps_tik_kurjeriu', true ) === 'yes' ) {
             $has_courier_only = true;
             break;
         }
