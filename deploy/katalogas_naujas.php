@@ -2987,7 +2987,7 @@ class Petshop_Katalogas {
 			. '<button data-t="ist">Istorija</button>'
 			. ( class_exists( 'Petshop_Partijos' ) ? '<button data-t="pak">GPAIS pakuotė</button>' : '' )
 			. ( ( self::var_galima( $pid ) && ( wp_get_object_terms( $pid, 'product_type', array( 'fields' => 'slugs' ) ) === array( 'variable' )
-				|| get_post_meta( $pid, '_ps_var_ijungta', true ) === '1' ) )
+				|| get_post_meta( $pid, '_ps_var_ijungta', true ) === 'yes' ) )
 				? '<button data-t="var">Variacijos</button>' : '' )
 			. '</div>';
 
@@ -3325,14 +3325,12 @@ class Petshop_Katalogas {
 					. '<span class="vnt">prekė jau variacinė — skirtukas rodomas visada</span></span>';
 			} else {
 				echo '<span class="kort-red kort-varnele" data-laukas="_ps_var_ijungta" data-id="' . (int) $pid . '">'
-					. '<input type="checkbox" ' . checked( get_post_meta( $pid, '_ps_var_ijungta', true ), '1', false ) . '>'
+					. '<input type="checkbox" ' . checked( get_post_meta( $pid, '_ps_var_ijungta', true ), 'yes', false ) . '>'
 					. '<span class="vnt">pvz. ta pati prekė keliomis spalvomis</span>'
 					. '<span class="stat"></span></span>';
 			}
 			echo '</div>';
-			if ( ! $jau_var && get_post_meta( $pid, '_ps_var_ijungta', true ) === '1' ) {
-				echo '<div class="kort-info-m">Skirtukas <b>Variacijos</b> atsiras perkrovus kortelę.</div>';
-			}
+
 		}
 
 		echo '<div class="kort-eil"><span>Tik kurjeriu</span>'
@@ -8053,10 +8051,24 @@ class Petshop_Katalogas {
 				var el=inp.closest(".kort-varnele");
 				if(!el) return;
 				var v = inp.checked ? "yes" : "";
+				var st = el.querySelector(".stat");
 				inp.disabled=true;
+				if(st){ st.className="stat"; st.textContent="Įrašoma…"; }
 				siusti(el, el.dataset.laukas, el.dataset.id, v, function(ok){
 					inp.disabled=false;
-					if(!ok){ inp.checked=!inp.checked; }
+					if(!ok){
+						inp.checked=!inp.checked;
+						if(st){ st.className="stat kl"; st.textContent="nepavyko"; }
+						return;
+					}
+					if(st){ st.className="stat ok"; st.textContent="įrašyta";
+						setTimeout(function(){ if(st) st.textContent=""; },2000); }
+					/* Laukai, keiciantys korteles STRUKTURA, negali likti be
+					   perpiesimo: zmogus uzdeda varnele ir laukia skirtuko, o jo
+					   nera iki perkrovimo — atrodo, kad neveikia. */
+					if(el.dataset.laukas==="_ps_var_ijungta" && window.psKatAtidaryk){
+						setTimeout(function(){ window.psKatAtidaryk(+el.dataset.id); },500);
+					}
 				});
 			});
 
@@ -9011,6 +9023,9 @@ class Petshop_Katalogas {
 		.kort-varnele { display:inline-flex; align-items:center; gap:8px; }
 		.kort-varnele input[type=checkbox] { width:17px; height:17px; margin:0; cursor:pointer; }
 		.kort-varnele .vnt { font-size:12.5px; }
+		.kort-varnele .stat { font-size:12px; color:#6b7280; }
+		.kort-varnele .stat.ok { color:#1e7a3c; }
+		.kort-varnele .stat.kl { color:#a52020; }
 		.kort-apr-txt { width:100%; min-height:210px; padding:11px 13px; font:inherit; font-size:13.5px;
 			line-height:1.6; border:1px solid #dfe4dd; border-radius:7px; resize:vertical;
 			font-family:ui-monospace,Menlo,Consolas,monospace; }
