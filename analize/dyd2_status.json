@@ -1,0 +1,123 @@
+{
+ "v": "DYD2-v1.0",
+ "r": {
+  "v": "DT1",
+  "pa_dydis": [
+   {
+    "id": 541,
+    "name": "L",
+    "slug": "l",
+    "count": 48
+   },
+   {
+    "id": 540,
+    "name": "M",
+    "slug": "m",
+    "count": 58
+   },
+   {
+    "id": 539,
+    "name": "S",
+    "slug": "s",
+    "count": 66
+   },
+   {
+    "id": 542,
+    "name": "XL",
+    "slug": "xl",
+    "count": 18
+   },
+   {
+    "id": 538,
+    "name": "XS",
+    "slug": "xs",
+    "count": 30
+   },
+   {
+    "id": 543,
+    "name": "XXL",
+    "slug": "xxl",
+    "count": 5
+   }
+  ],
+  "pa_ilgis": [
+   {
+    "id": 487,
+    "name": "10-15 cm",
+    "slug": "10-15-cm",
+    "count": 17
+   },
+   {
+    "id": 488,
+    "name": "16-25 cm",
+    "slug": "16-25-cm",
+    "count": 8
+   },
+   {
+    "id": 486,
+    "name": "Iki 10 cm",
+    "slug": "iki-10-cm",
+    "count": 8
+   }
+  ],
+  "pa_kiekis_pakuoteje": [
+   {
+    "id": 489,
+    "name": "1 vnt",
+    "slug": "1-vnt",
+    "count": 40
+   },
+   {
+    "id": 493,
+    "name": "11-25 vnt",
+    "slug": "11-25-vnt",
+    "count": 12
+   },
+   {
+    "id": 490,
+    "name": "2-5 vnt",
+    "slug": "2-5-vnt",
+    "count": 34
+   },
+   {
+    "id": 492,
+    "name": "26+ vnt",
+    "slug": "26-vnt",
+    "count": 10
+   },
+   {
+    "id": 491,
+    "name": "6-10 vnt",
+    "slug": "6-10-vnt",
+    "count": 23
+   }
+  ],
+  "pakuotes_litrai": [],
+  "kategoriju_praktika": [
+   {
+    "kat": "Skanėstai šunims",
+    "tax": "pa_dydis",
+    "su_atributu": 0,
+    "viso": 288
+   },
+   {
+    "kat": "Žaislai šunims",
+    "tax": "pa_dydis",
+    "su_atributu": 14,
+    "viso": 204
+   },
+   {
+    "kat": "Tvenkinių žuvų maistas",
+    "tax": "pa_pakuotes_dydis",
+    "su_atributu": 9,
+    "viso": 11
+   },
+   {
+    "kat": "Šukos, šepečiai, žirklės šunims",
+    "tax": "pa_dydis",
+    "su_atributu": 0,
+    "viso": 59
+   }
+  ]
+ }
+}
