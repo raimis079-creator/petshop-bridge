@@ -1,0 +1,20 @@
+{
+ "v": "MENUR",
+ "zingsniai": [
+  "snip_id:4017",
+  "psl:/=200",
+  "psl:/krepselis/=200"
+ ],
+ "http": 200,
+ "duom": {
+  "v": "MENUR",
+  "menu": {
+   "petshop-desk.php": [
+    "add_menu_page( 'Petshop užsakymai', 'Petshop užsakymai', 'edit_shop_orders',"
+   ],
+   "petshop-katalogas.php": [
+    "add_menu_page("
+   ]
+  }
+ }
+}
