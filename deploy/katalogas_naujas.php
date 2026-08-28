@@ -856,6 +856,7 @@ class Petshop_Katalogas {
 		/* v8.5: savikaina redaguojama ir sąraše, ne tik kortelėje. */
 		add_action( 'wp_ajax_ps_kat_sav', array( __CLASS__, 'ajax_sav_irasyti' ) );
 		add_action( 'wp_ajax_ps_kat_laukas', array( __CLASS__, 'ajax_laukas_irasyti' ) );
+		add_action( 'wp_ajax_ps_kat_variacija', array( __CLASS__, 'ajax_variacija' ) );
 		add_action( 'wp_ajax_ps_kat_aprasymas', array( __CLASS__, 'ajax_aprasymas' ) );
 		add_action( 'wp_ajax_ps_kat_isimti', array( __CLASS__, 'ajax_isimti' ) );
 		add_action( 'wp_ajax_ps_kat_masinis', array( __CLASS__, 'ajax_masinis' ) );
@@ -1353,6 +1354,109 @@ class Petshop_Katalogas {
 	 * SKU ir EAN: tikrinamas unikalumas. Dublikatas sulauzytu susiejima su
 	 * tiekejo XML ir gali sujungti dvi skirtingas prekes i viena.
 	 */
+	/**
+	 * VARIACIJOS LAUKAS.
+	 *
+	 * Atskiras nuo `ajax_laukas_irasyti`, nes tas priima tik `product`, o
+	 * variacija yra `product_variation`. Sujungti butu galima, bet tada viena
+	 * funkcija tureti du skirtingus saugiklius rinkinius — o saugikliai cia
+	 * ir yra visa esme.
+	 */
+	public static function ajax_variacija() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
+		check_ajax_referer( 'ps_kat', 'nonce' );
+
+		$vid    = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0;
+		$laukas = isset( $_POST['laukas'] ) ? sanitize_key( wp_unslash( $_POST['laukas'] ) ) : '';
+		$iv     = isset( $_POST['reiksme'] ) ? trim( (string) wp_unslash( $_POST['reiksme'] ) ) : '';
+
+		if ( ! $vid || get_post_type( $vid ) !== 'product_variation' ) {
+			wp_send_json_error( 'nėra variacijos' );
+		}
+		$tevas = (int) wp_get_post_parent_id( $vid );
+		if ( ! $tevas ) { wp_send_json_error( 'variacija be tėvinės prekės' ); }
+
+		$leistini = array( '_stock', '_regular_price', '_sale_price', '_sku', '_global_unique_id' );
+		if ( ! in_array( $laukas, $leistini, true ) ) { wp_send_json_error( 'šio lauko keisti negalima' ); }
+
+		$buvo = get_post_meta( $vid, $laukas, true );
+
+		/* --- LIKUTIS: tik jei likuti valdo pati variacija --- */
+		if ( $laukas === '_stock' ) {
+			if ( get_post_meta( $vid, '_manage_stock', true ) !== 'yes' ) {
+				wp_send_json_error( 'Šios prekės likutį valdo tėvinė prekė — čia įrašymas neturėtų poveikio.' );
+			}
+			if ( $iv === '' || ! preg_match( '/^-?\d+$/', $iv ) ) { wp_send_json_error( 'Likutis turi būti sveikas skaičius.' ); }
+			if ( (int) $iv < 0 ) { wp_send_json_error( 'Neigiamo likučio neįrašome.' ); }
+			$tapo = (int) $iv;
+			update_post_meta( $vid, '_stock', $tapo );
+			update_post_meta( $vid, '_stock_status', $tapo > 0 ? 'instock' : 'outofstock' );
+		}
+
+		/* --- KAINOS --- */
+		if ( $laukas === '_regular_price' || $laukas === '_sale_price' ) {
+			$tapo = str_replace( array( ',', ' ' ), array( '.', '' ), $iv );
+			if ( $tapo === '' ) {
+				if ( $laukas === '_regular_price' ) { wp_send_json_error( 'Kaina negali būti tuščia.' ); }
+				delete_post_meta( $vid, '_sale_price' );
+				$tapo = '';
+			} else {
+				if ( ! is_numeric( $tapo ) || (float) $tapo < 0 ) { wp_send_json_error( 'Netinkama kaina.' ); }
+				$reg = $laukas === '_regular_price' ? (float) $tapo : (float) get_post_meta( $vid, '_regular_price', true );
+				$sal = $laukas === '_sale_price'    ? (float) $tapo : (float) get_post_meta( $vid, '_sale_price', true );
+				if ( $sal > 0 && $reg > 0 && $sal >= $reg ) {
+					wp_send_json_error( 'Akcijinė kaina turi būti mažesnė už reguliarią.' );
+				}
+				update_post_meta( $vid, $laukas, wc_format_decimal( $tapo ) );
+			}
+			/* `_price` sinchronizuojam PATYS — WC to nepadaro, kai props nepasikeite (S72). */
+			$reg = get_post_meta( $vid, '_regular_price', true );
+			$sal = get_post_meta( $vid, '_sale_price', true );
+			update_post_meta( $vid, '_price', ( $sal !== '' && $sal !== null ) ? $sal : $reg );
+		}
+
+		/* --- SKU ir EAN: unikalumas --- */
+		if ( $laukas === '_sku' || $laukas === '_global_unique_id' ) {
+			global $wpdb;
+			if ( $iv !== '' ) {
+				$kitas = $wpdb->get_var( $wpdb->prepare(
+					"SELECT post_id FROM {$wpdb->postmeta}
+					  WHERE meta_key = %s AND meta_value = %s AND post_id <> %d LIMIT 1",
+					$laukas, $iv, $vid ) );
+				if ( $kitas ) {
+					wp_send_json_error( ( $laukas === '_sku' ? 'Toks SKU' : 'Toks EAN' )
+						. ' jau priklauso prekei #' . (int) $kitas . '.' );
+				}
+			}
+			if ( $laukas === '_global_unique_id' && $iv !== '' && ! preg_match( '/^\d{8,14}$/', $iv ) ) {
+				wp_send_json_error( 'EAN turi būti 8–14 skaitmenų.' );
+			}
+			$tapo = $iv;
+			if ( $iv === '' ) { delete_post_meta( $vid, $laukas ); } else { update_post_meta( $vid, $laukas, $iv ); }
+		}
+
+		/* --- po irasymo: tevas, kesai, lookup --- */
+		if ( class_exists( 'WC_Product_Variable' ) ) { WC_Product_Variable::sync( $tevas ); }
+		wc_delete_product_transients( $vid );
+		wc_delete_product_transients( $tevas );
+		clean_post_cache( $vid ); clean_post_cache( $tevas );
+		if ( class_exists( '\Automattic\WooCommerce\Internal\ProductAttributesLookup\LookupDataStore' ) ) {
+			try {
+				wc_get_container()->get( \Automattic\WooCommerce\Internal\ProductAttributesLookup\LookupDataStore::class )
+					->create_data_for_product( $tevas );
+			} catch ( \Throwable $e ) { /* lookup nera kritine */ }
+		}
+
+		if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {
+			try {
+				Petshop_Ivykiai::irasyti( $tevas, 'variacija',
+					'Variacija #' . $vid . ' · ' . $laukas . ': „' . $buvo . '" → „' . $iv . '"' );
+			} catch ( \Throwable $e ) { /* zurnalas neblokuoja irasymo */ }
+		}
+
+		wp_send_json_success( array( 'id' => $vid, 'laukas' => $laukas, 'reiksme' => $iv ) );
+	}
+
 	public static function ajax_laukas_irasyti() {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }
 		check_ajax_referer( 'ps_kat', 'nonce' );
@@ -3720,7 +3824,7 @@ class Petshop_Katalogas {
 		echo '<div class="kort-blokas"><div class="kort-antr">Variacijos (' . count( $v ) . ')</div>';
 		echo '<table class="ps-var-lent"><thead><tr>'
 			. '<th>Variantas</th><th>SKU</th><th>EAN</th><th class="d">Kaina</th>'
-			. '<th class="d">Likutis</th><th>Būsena</th><th>Nr.</th></tr></thead><tbody>';
+			. '<th class="d">Akcija</th><th class="d">Likutis</th><th>Būsena</th><th>Nr.</th></tr></thead><tbody>';
 		foreach ( $v as $x ) {
 			$et = array();
 			foreach ( $x['atr'] as $a ) {
@@ -3729,27 +3833,40 @@ class Petshop_Katalogas {
 					: '';
 				$et[] = $taskas . esc_html( $a['vardas'] );
 			}
-			$kaina = $x['kaina'] === '' ? '<span class="warn">—</span>'
-				: number_format( (float) $x['kaina'], 2, ',', ' ' ) . ' €';
-			if ( $x['akcija'] !== '' ) {
-				$kaina .= ' <span class="ps-var-ak">' . number_format( (float) $x['akcija'], 2, ',', ' ' ) . ' €</span>';
-			}
-			$lik = $x['valdo'] ? (int) $x['lik'] : '<span class="ps-var-pilk">tėvo</span>';
 			$bus = $x['bukle'] === 'instock' ? 'turime'
 				: ( $x['bukle'] === 'outofstock' ? '<span class="warn">nėra</span>' : esc_html( $x['bukle'] ) );
 			if ( $x['st'] !== 'publish' ) { $bus .= ' <span class="warn">(' . esc_html( $x['st'] ) . ')</span>'; }
+
+			/* Redaguojamas laukelis. Ta pati mechanika kaip visoje kortelėje:
+			   pakeitei — pageltonuoja, Enter įrašo, Esc atstato. */
+			$red = function ( $laukas, $reiksme, $klase = '' ) use ( $x ) {
+				return '<span class="kort-red kort-var ' . esc_attr( $klase ) . '"'
+					. ' data-laukas="' . esc_attr( $laukas ) . '" data-id="' . (int) $x['id'] . '">'
+					. '<input type="text" value="' . esc_attr( $reiksme ) . '"'
+					. ' data-buvo="' . esc_attr( $reiksme ) . '"></span>';
+			};
+
+			/* Likutis redaguojamas TIK ten, kur ji valdo pati variacija. Kitur
+			   laukelio nera — neveikiantis laukelis blogiau nei jokio. */
+			$lik = $x['valdo']
+				? $red( '_stock', $x['lik'], 'ps-var-siau' )
+				: '<span class="ps-var-pilk" title="Likutį valdo tėvinė prekė">tėvo</span>';
+
 			echo '<tr>'
 				. '<td>' . implode( ' · ', $et ) . '</td>'
-				. '<td class="ps-var-sku">' . ( $x['sku'] !== '' ? esc_html( $x['sku'] ) : '<span class="warn">—</span>' ) . '</td>'
-				. '<td class="ps-var-sku">' . ( $x['ean'] !== '' ? esc_html( $x['ean'] ) : '<span class="warn">—</span>' ) . '</td>'
-				. '<td class="d">' . $kaina . '</td>'
+				. '<td>' . $red( '_sku', $x['sku'], 'ps-var-mono' ) . '</td>'
+				. '<td>' . $red( '_global_unique_id', $x['ean'], 'ps-var-mono' ) . '</td>'
+				. '<td class="d">' . $red( '_regular_price', $x['kaina'], 'ps-var-siau' ) . '</td>'
+				. '<td class="d">' . $red( '_sale_price', $x['akcija'], 'ps-var-siau' ) . '</td>'
 				. '<td class="d">' . $lik . '</td>'
 				. '<td>' . $bus . '</td>'
 				. '<td class="ps-var-pilk">' . (int) $x['id'] . '</td>'
 				. '</tr>';
 		}
 		echo '</tbody></table>';
-		echo '<div class="kort-persp-x">Variacijos kol kas tik rodomos. Redaguoti — WooCommerce lange.</div>';
+		echo '<div class="kort-info-m">Laukeliai redaguojami vietoje: pakeitei — pageltonuoja, '
+			. '<b>Enter</b> įrašo, <b>Esc</b> atstato. Akcijinė kaina turi būti mažesnė už reguliarią; '
+			. 'SKU ir EAN tikrinami, ar nepriklauso kitai prekei.</div>';
 		echo '</div>';
 
 		echo '<style>
@@ -3764,6 +3881,10 @@ class Petshop_Katalogas {
 		.ps-var-sku{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
 		.ps-var-pilk{color:#9aa5a0}
 		.ps-var-ak{color:#1f7a4d}
+		.ps-var-lent .kort-red input{width:100%;max-width:150px;padding:3px 6px;font-size:13px}
+		.ps-var-lent .ps-var-siau input{max-width:74px;text-align:right}
+		.ps-var-lent .ps-var-mono input{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+		.ps-var-lent .kort-red input.purvinas{background:#fff8e5;border-color:#d4ac0d}
 		</style>';
 		echo '</div>';
 	}
@@ -7604,6 +7725,19 @@ class Petshop_Katalogas {
 				}
 				var el=inp.closest(".kort-red");
 				if(!el){ done(false,"nežinomas laukas"); return; }
+				if(el.classList.contains("kort-var")){
+					var fv=new FormData();
+					fv.append("action","ps_kat_variacija"); fv.append("nonce",NONCE);
+					fv.append("id",el.dataset.id); fv.append("laukas",el.dataset.laukas); fv.append("reiksme",v);
+					fetch(AJAX,{method:"POST",credentials:"same-origin",body:fv})
+						.then(function(r){return r.json();})
+						.then(function(d){
+							if(d&&d.success){ inp.dataset.buvo=v; inp.classList.remove("purvinas"); done(true); }
+							else { done(false,(d&&d.data)?(d.data.zinute||d.data):"nepavyko"); }
+						})
+						.catch(function(){ done(false,"ryšio klaida"); });
+					return;
+				}
 				if(el.classList.contains("kort-alt")){
 					nuotraukosSiusti(el.dataset.id,"alt",[+el.dataset.att],v,function(ok){
 						if(ok){ inp.dataset.buvo=v; inp.classList.remove("purvinas"); }
