@@ -1,4 +1,78 @@
 {
  "v": "BIS-E2E-v1.0",
- "klaida": "Error: fx:list"
+ "kurimas": 200,
+ "sid": 4094,
+ "faseA": {
+  "v": "BIS-E2E-v1.0",
+  "fase": "E2E_A",
+  "srautas_yra": {
+   "class": "transactional",
+   "template": "back-in-stock",
+   "delay": 0
+  },
+  "lentele_yra": true,
+  "test_preke": 35239,
+  "test_url": "https://dev.avesa.lt/product/test-bis-preke-trinti/",
+  "rest_ok": {
+   "kodas": 200,
+   "kunas": {
+    "ok": true,
+    "message": "Ačiū! Pranešime, kai prekė vėl bus prekyboje."
+   }
+  },
+  "eilute_po_rest": {
+   "id": "1",
+   "status": "waiting"
+  },
+  "neg_honeypot": {
+   "kodas": 200,
+   "eilute_sukurta": false
+  },
+  "neg_instock_kodas": 400
+ },
+ "forma_fronte": true,
+ "forma_mygtukas": true,
+ "faseB": {
+  "v": "BIS-E2E-v1.0",
+  "fase": "E2E_B",
+  "test_preke": 35239,
+  "eilute_po_instock": {
+   "id": "1",
+   "status": "notified",
+   "notified_at": "2026-08-29 09:19:58"
+  },
+  "job": {
+   "id": "48",
+   "flow": "back_in_stock",
+   "flow_class": "transactional",
+   "status": "pending",
+   "job_key": "bis:1"
+  },
+  "render": {
+   "subject": "Prekė vėl prekyboje: TEST BIS preke (trinti)",
+   "html_dydis": 2122,
+   "doctype": true,
+   "uab": true,
+   "mygtukas": true
+  },
+  "process_dry": {
+   "dry_run": true,
+   "picked": 1,
+   "results": [
+    {
+     "id": 48,
+     "flow": "back_in_stock",
+     "action": "WOULD_SEND",
+     "to": "bis_e2e_2026@example.com",
+     "subject": "Prekė vėl prekyboje: TEST BIS preke (trinti)",
+     "html_len": 2122
+    }
+   ]
+  },
+  "isvalyta": {
+   "watch": 0,
+   "jobs": 0,
+   "preke": "ISTRINTA"
+  }
+ }
 }
