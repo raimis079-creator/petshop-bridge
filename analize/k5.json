@@ -1,0 +1,111 @@
+{
+ "v": "K5-134030",
+ "kurimas": 200,
+ "sid": 4124,
+ "K5": {
+  "v": "K5-v1.0",
+  "consent_log_metodai": [
+   "static table_name",
+   "static install",
+   "static maybe_install",
+   "static record",
+   "static current_value",
+   "static history"
+  ],
+  "consent_insert_id": 35,
+  "has_consent": {
+   "A": 1,
+   "B": 0
+  },
+  "dry": {
+   "rezimas": "DRY (nieko neenqueue)",
+   "srautas": "founding_activation",
+   "srauto_klase": "marketing",
+   "saltinis": "csv:_e2e_k5.csv",
+   "job_key_pvz": "kamp_e2e134139_pavyzdys@petshop.lt",
+   "viso": 2,
+   "jau_eileje": 0,
+   "tinkami": 1,
+   "consent_missing": 1,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": [
+    {
+     "email": "ps.k5.a@example.invalid",
+     "sprendimas": "tinkamas"
+    }
+   ]
+  },
+  "banga": {
+   "rezimas": "BANGA PALEISTA",
+   "srautas": "founding_activation",
+   "saltinis": "csv:_e2e_k5.csv",
+   "bangos_dydis": 5,
+   "enqueue": 1,
+   "dublikatai": 0,
+   "klaidos": [],
+   "liko_tinkamu": 0,
+   "KITAS_ZINGSNIS": "Patikrinti busena(), tada Raimio GO kitai bangai",
+   "viso": 2,
+   "jau_eileje": 0,
+   "tinkami": 1,
+   "consent_missing": 1,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": [
+    {
+     "email": "ps.k5.a@example.invalid",
+     "sprendimas": "tinkamas"
+    }
+   ]
+  },
+  "banga_kartotine": {
+   "rezimas": "BANGA PALEISTA",
+   "srautas": "founding_activation",
+   "saltinis": "csv:_e2e_k5.csv",
+   "bangos_dydis": 5,
+   "enqueue": 0,
+   "dublikatai": 0,
+   "klaidos": [],
+   "liko_tinkamu": 0,
+   "KITAS_ZINGSNIS": "Patikrinti busena(), tada Raimio GO kitai bangai",
+   "viso": 2,
+   "jau_eileje": 1,
+   "tinkami": 0,
+   "consent_missing": 1,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": []
+  },
+  "busena": {
+   "srautas": "founding_activation",
+   "data": "e2e134139",
+   "pagal_busena": [
+    {
+     "status": "pending",
+     "n": "1"
+    }
+   ],
+   "priezastys": [
+    {
+     "pr": "",
+     "n": "1"
+    }
+   ],
+   "paskutine_banga": 1788010899
+  },
+  "eilute": {
+   "job_key": "kamp_e2e134139_ps.k5.a@example.invalid",
+   "flow": "founding_activation",
+   "flow_class": "marketing",
+   "recipient_email": "ps.k5.a@example.invalid",
+   "status": "pending",
+   "scheduled_at": "2026-08-29 13:41:39"
+  },
+  "istrinta_jobs": 1,
+  "istrinta_consent": 1,
+  "liko_jobs": 0,
+  "liko_consent": 0,
+  "csv_liko": "ne"
+ }
+}
