@@ -1,0 +1,20 @@
+{
+ "v": "e3_wh-203950",
+ "kurimas": 200,
+ "sid": 4157,
+ "W1": {
+  "v": "E3W1",
+  "klase": "Petshop_ESP_Webhook_Receiver",
+  "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-esp/includes/class-webhook-receiver.php",
+  "irasai": [
+   "* atnaujina ps_email_jobs.delivered_at/opened_at/clicked_at (first-touch,",
+   "return self::analitika( 'delivered_at', $email, $event );",
+   "return self::analitika( 'opened_at', $email, $event );",
+   "return self::analitika( 'clicked_at', $email, $event );",
+   "* @param string $stulpelis delivered_at|opened_at|clicked_at",
+   "if ( ! in_array( $stulpelis, array( 'delivered_at', 'opened_at', 'clicked_at' ), true ) ) {"
+  ],
+  "gmdate": 1,
+  "current_time": 1
+ }
+}
