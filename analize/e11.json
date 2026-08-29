@@ -1,0 +1,27 @@
+{
+ "v": "E11-162304",
+ "kurimas": 200,
+ "sid": 4128,
+ "E11": {
+  "v": "E11-v1.0",
+  "failas": "/plugins/petshop-core/includes/class-email-layout.php",
+  "eiluciu": 157,
+  "metodai": [
+   "static logo_url()",
+   "static open($subject, $preheader='')",
+   "static p($html, $size=15)",
+   "static muted($html, $size=12)",
+   "static button($url, $label)",
+   "static secondary($links)",
+   "static divider()",
+   "static close($flow_class='service', $email='', $reason='')",
+   "static wrap($args)"
+  ],
+  "src_wrap": "\tpublic static function wrap( $args ) {\n\t\t$a = wp_parse_args( $args, array(\n\t\t\t'subject'    => '',\n\t\t\t'preheader'  => '',\n\t\t\t'body'       => '',\n\t\t\t'flow_class' => 'service',\n\t\t\t'email'      => '',\n\t\t\t'reason'     => '',\n\t\t) );\n\t\treturn self::open( $a['subject'], $a['preheader'] )\n\t\t\t. $a['body']\n\t\t\t. self::close( $a['flow_class'], $a['email'], $a['reason'] );\n\t}\n",
+  "src_secondary": "\tpublic static function secondary( $links ) {\n\t\t$parts = array();\n\t\tforeach ( (array) $links as $label => $url ) {\n\t\t\tif ( ! $url ) { continue; }\n\t\t\t$parts[] = '<a href=\"' . esc_url( $url ) . '\" style=\"color:' . self::C_ACCENT . ';\">' . esc_html( $label ) . '</a>';\n\t\t}\n\t\tif ( ! $parts ) { return ''; }\n\t\treturn '<tr><td style=\"font-size:14px;line-height:1.6;padding-bottom:20px;\">' . implode( ' · ', $parts ) . '</td></tr>';\n\t}\n",
+  "src_button": "\tpublic static function button( $url, $label ) {\n\t\tif ( ! $url || ! $label ) { return ''; }\n\t\treturn '<tr><td style=\"padding:6px 0 22px;\">'\n\t\t\t. '<a href=\"' . esc_url( $url ) . '\" '\n\t\t\t. 'style=\"background:' . self::C_ACCENT . ';color:#FFFFFF;text-decoration:none;'\n\t\t\t. 'padding:14px 26px;border-radius:8px;font-weight:600;font-size:15px;display:inline-block;\">'\n\t\t\t. esc_html( $label ) . '</a></td></tr>';\n\t}\n",
+  "src_p": "\tpublic static function p( $html, $size = 15 ) {\n\t\treturn '<tr><td style=\"font-size:' . (int) $size . 'px;line-height:1.65;padding-bottom:16px;\">' . $html . '</td></tr>';\n\t}\n",
+  "lentele_yra": "ne",
+  "meniu_petshop": []
+ }
+}
