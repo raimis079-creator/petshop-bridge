@@ -1,0 +1,116 @@
+{
+ "v": "IMP0-170150",
+ "kurimas": 200,
+ "sid": 4133,
+ "IMP0": {
+  "v": "IMP0-v1.0",
+  "src_open": "\tpublic static function open( $subject, $preheader = '' ) {\n\t\t$logo = self::logo_url();\n\t\tob_start();\n\t\t?><!DOCTYPE html>\n<html lang=\"lt\"><head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<meta name=\"x-apple-disable-message-reformatting\">\n<title><?php echo esc_html( $subject ); ?></title>\n</head>\n<body style=\"margin:0;padding:0;background:<?php echo self::C_BG; ?>;font-family:Arial,Helvetica,sans-serif;color:<?php echo self::C_TEXT; ?>;-webkit-text-size-adjust:100%;\">\n<?php if ( $preheader ) : ?>\n<div style=\"display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;\"><?php echo esc_html( $preheader ); ?></div>\n<?php endif; ?>\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background:<?php echo self::C_BG; ?>;padding:24px 12px;\">\n<tr><td align=\"center\">\n<table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"max-width:600px;width:100%;background:<?php echo self::C_CARD; ?>;border-radius:12px;padding:32px 28px;\">\n<?php if ( $logo ) : ?>\n  <tr><td style=\"padding-bottom:22px;\">\n    <img src=\"<?php echo esc_url( $logo ); ?>\" alt=\"Petshop.lt\" width=\"150\" style=\"display:block;border:0;max-width:150px;height:auto;\">\n  </td></tr>\n<?php endif; ?>\n  <tr><td style=\"font-size:21px;font-weight:700;line-height:1.35;padding-bottom:14px;\"><?php echo esc_html( $subject ); ?></td></tr>\n\t\t<?php\n\t\treturn ob_get_clean();\n\t}\n",
+  "src_close": "\tpublic static function close( $flow_class = 'service', $email = '', $reason = '' ) {\n\t\t$out  = self::divider();\n\t\t$out .= '<tr><td style=\"font-size:12px;line-height:1.6;color:' . self::C_MUTED . ';padding-top:16px;\">';\n\t\t$out .= 'UAB Avesa, Liucionių g. 46, Liucionys, LT-15166<br>';\n\n\t\tif ( $reason ) {\n\t\t\t$out .= esc_html( $reason ) . '<br>';\n\t\t}\n\n\t\tif ( 'marketing' === $flow_class ) {\n\t\t\t// Teisinis reikalavimas: veikianti atsisakymo nuoroda kiekviename laiske.\n\t\t\t$u = class_exists( 'Petshop_Unsubscribe' ) ? Petshop_Unsubscribe::link( $email ) : '';\n\t\t\tif ( $u ) {\n\t\t\t\t$out .= '<a href=\"' . esc_url( $u ) . '\" style=\"color:' . self::C_MUTED . ';\">Atsisakyti pranešimų</a>';\n\t\t\t}\n\t\t} elseif ( 'service' === $flow_class ) {\n\t\t\t// S320: „Pranesimu nustatymai\" NERODOM kaip nuorodos — tokio puslapio\n\t\t\t// DAR NERA. Negyvas footerio linkas nera geresnis uz negyva CTA.\n\t\t\t// Kai atsiras realus destination — pakeisti i <a href>.\n\t\t\t$out .= 'Šis laiškas susijęs su jūsų užsakymu ar paskyra.';\n\t\t}\n\n\t\t$out .= '</td></tr>';\n\t\t$out .= '</table></td></tr></table></body></html>';\n\t\treturn $out;\n\t}\n",
+  "src_muted": "\tpublic static function muted( $html, $size = 12 ) {\n\t\treturn '<tr><td style=\"font-size:' . (int) $size . 'px;line-height:1.6;color:' . self::C_MUTED . ';padding-bottom:14px;\">' . $html . '</td></tr>';\n\t}\n",
+  "src_divider": "\tpublic static function divider() {\n\t\treturn '<tr><td style=\"border-top:1px solid ' . self::C_LINE . ';font-size:0;line-height:0;height:1px;\">&nbsp;</td></tr>';\n\t}\n",
+  "raktai": {
+   "order_paid": [
+    "order_number",
+    "total",
+    "order_url",
+    "name"
+   ],
+   "order_shipped": [
+    "order_number",
+    "tracking_number",
+    "tracking_url"
+   ],
+   "payment_failed": [
+    "order_number",
+    "total",
+    "name",
+    "pay_url",
+    "order_url",
+    "expires_at"
+   ],
+   "shipment_returned": [
+    "order_id",
+    "tracking_number",
+    "return_reason"
+   ],
+   "consent_changed": [
+    "name",
+    "granted",
+    "source",
+    "changed_at",
+    "prefs_url"
+   ],
+   "pet_reminder_due": [
+    "pet_name",
+    "reminder_type",
+    "reminder_label",
+    "due_date",
+    "confirm_url",
+    "reschedule_url"
+   ],
+   "subscription_t5_notice": [
+    "next_charge_date",
+    "next_charge_amount",
+    "product_name",
+    "confirm_url",
+    "skip_url",
+    "cancel_url"
+   ],
+   "refill_due": [
+    "reorder_url",
+    "feedback_url"
+   ],
+   "cart_abandoned": [
+    "cart_items",
+    "recovery_url"
+   ],
+   "cart_abandoned_2": [
+    "cart_items",
+    "recovery_url"
+   ],
+   "post_purchase_2d": [
+    "order_number",
+    "order_url",
+    "items"
+   ],
+   "post_purchase_7d": [
+    "order_number",
+    "order_url",
+    "items",
+    "review_url"
+   ],
+   "post_purchase_14d": [
+    "reorder_url",
+    "order_url"
+   ],
+   "win_back_60": [
+    "shop_url"
+   ],
+   "win_back_90": [],
+   "win_back_120": [
+    "shop_url"
+   ],
+   "legacy_reactivation_l1": [],
+   "founding_activation": [
+    "name",
+    "code",
+    "discount",
+    "valid_until",
+    "shop_url",
+    "unsubscribe_url"
+   ],
+   "back_in_stock": [
+    "product_name",
+    "product_url",
+    "price"
+   ],
+   "browse_abandoned": [
+    "products",
+    "first_url"
+   ]
+  },
+  "pvz_flow": "win_back_60",
+  "pvz_subject": "Gal jau metas papildyti atsargas?",
+  "pvz_html": "<!DOCTYPE html>\n<html lang=\"lt\"><head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<meta name=\"x-apple-disable-message-reformatting\">\n<title>Gal jau metas papildyti atsargas?</title>\n</head>\n<body style=\"margin:0;padding:0;background:#F3EFE5;font-family:Arial,Helvetica,sans-serif;color:#1F2A24;-webkit-text-size-adjust:100%;\">\n<div style=\"display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;\">Maistas ir augintinio priežiūros prekės — petshop.lt.</div>\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background:#F3EFE5;padding:24px 12px;\">\n<tr><td align=\"center\">\n<table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"max-width:600px;width:100%;background:#FFFFFF;border-radius:12px;padding:32px 28px;\">\n  <tr><td style=\"padding-bottom:22px;\">\n    <img src=\"https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg\" alt=\"Petshop.lt\" width=\"150\" style=\"display:block;border:0;max-width:150px;height:auto;\">\n  </td></tr>\n  <tr><td style=\"font-size:21px;font-weight:700;line-height:1.35;padding-bottom:14px;\">Gal jau metas papildyti atsargas?</td></tr>\n\t\t<tr><td style=\"font-size:15px;line-height:1.65;padding-bottom:16px;\">Jei augintinio maisto ar priežiūros priemonių atsargos jau senka, užsukite — viską rasite petshop.lt.</td></tr><tr><td style=\"padding:6px 0 22px;\"><a href=\"http://@@shop_url@@\" style=\"background:#2d6a35;color:#FFFFFF;text-decoration:none;padding:14px 26px;border-radius:8px;font-weight:600;font-size:15px;display:inline-block;\">Apsilankyti parduotuvėje</a></td></tr><tr><td style=\"border-top:1px solid #EEEEEE;font-size:0;line-height:0;height:1px;\">&nbsp;</td></tr><tr><td style=\"font-size:12px;line-height:1.6;color:#7A867C;padding-top:16px;\">UAB Avesa, Liucionių g. 46, Liucionys, LT-15166<br>Gavote šį laišką, nes esate petshop.lt klientas ir sutikote gauti mūsų naujienas.<br><a href=\"https://dev.avesa.lt/atsisakyti/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoidW5zdWJzY3JpYmVfbWFya2V0aW5nIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiJtYXJrZXRpbmciLCJhY3Rpb24iOiIiLCJleHBpcmVzX2F0IjoxNzk1Nzk4OTgwLCJub25jZSI6IjU0ZTExNGY5NWE3NTRiODUxZTdmYjNhMzAwODE4MzhlIiwia2V5X2lkIjoidjIifQ.563d2dac119ba6203a5b884e11c34dcfd5277b4cc35ae69364e339a0bbfc8f9f\" style=\"color:#7A867C;\">Atsisakyti pranešimų</a></td></tr></table></td></tr></table></body></html>"
+ }
+}
