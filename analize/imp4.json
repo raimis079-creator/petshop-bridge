@@ -1,0 +1,23 @@
+{
+ "v": "IMP4-171151",
+ "kurimas": 200,
+ "sid": 4137,
+ "IMP4": {
+  "v": "IMP4-v1.0",
+  "cart_abandoned": {
+   "foreach": 1,
+   "count(": 1
+  },
+  "cart_abandoned_2": {
+   "foreach": 1
+  },
+  "post_purchase_2d": {
+   "foreach": 1
+  },
+  "browse_abandoned": {
+   "foreach": 2,
+   "array_slice": 1,
+   "count(": 1
+  }
+ }
+}
