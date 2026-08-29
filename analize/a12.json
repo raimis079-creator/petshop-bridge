@@ -1,0 +1,63 @@
+{
+ "v": "A12-A13-184029",
+ "kurimas": 200,
+ "sid": 4149,
+ "A12": {
+  "v": "A12-v1.0",
+  "faze": "A12",
+  "pries": "f7574c166bf505fa39b242a048955a97",
+  "po": "ba438ae024d245bd9ccefba56138f308",
+  "irasyta": "OK"
+ },
+ "A13": {
+  "v": "A12-v1.0",
+  "faze": "A13",
+  "1_redaguojami": {
+   "taip": 16,
+   "ne": {
+    "order_paid": "šablonas su savo HTML",
+    "payment_failed": "šablonas su savo HTML",
+    "consent_changed": "šablonas su savo HTML",
+    "founding_activation": "šablonas su savo HTML"
+   }
+  },
+  "2_items_blokai": {
+   "cart_abandoned": "p · items:cart_items · button · muted",
+   "cart_abandoned_2": "p · items:cart_items · button · muted",
+   "post_purchase_2d": "p · items:items · p · muted · secondary"
+  },
+  "3_perziura": {
+   "ok": true,
+   "yra_ul": "TAIP",
+   "yra_preke": "TAIP",
+   "ilgis": 2924
+  },
+  "4_parseris": [
+   {
+    "t": "p",
+    "text": "Tekstas"
+   },
+   {
+    "t": "items",
+    "saltinis": "cart_items",
+    "stilius": "sarasas",
+    "kiekis": true
+   },
+   {
+    "t": "secondary",
+    "saltinis": "products",
+    "praleisti": 1
+   }
+  ],
+  "4_validacija": [],
+  "busena": {
+   "versija": "1.3",
+   "lentele": "gaj6_ps_email_content",
+   "renderio_failas": "yra",
+   "srautu_viso": 20,
+   "paskelbta_srautu": 0,
+   "juodrasciu": 15,
+   "irašu_viso": 15
+  }
+ }
+}
