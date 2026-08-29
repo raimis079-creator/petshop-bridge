@@ -1,0 +1,73 @@
+{
+ "v": "E14-E15-163520",
+ "kurimas": 200,
+ "sid": 4130,
+ "E14": {
+  "v": "E14-v1.0",
+  "faze": "E14",
+  "petshop-laiskai.php": {
+   "buvo": "94300211dfffe5995d9384acd81d56fb",
+   "irasyta": "OK"
+  },
+  "petshop-langai-admin.php": {
+   "buvo": "NERA",
+   "irasyta": "OK"
+  }
+ },
+ "E15": {
+  "v": "E14-v1.0",
+  "faze": "E15",
+  "klases": {
+   "turinys": "1.1",
+   "admin": "yra"
+  },
+  "1_atsargines": {
+   "yra_reiksme": "Sveiki, Raimondas!",
+   "nera_reiksmes": "Sveiki, bičiuli!",
+   "tuscia_reiksme": "Sveiki, bičiuli!",
+   "be_atsargines": "Sveiki, !",
+   "url_rezimas": "https://dev.avesa.lt/",
+   "escapinimas": "&lt;b&gt;X&lt;/b&gt;"
+  },
+  "2_meniu": {
+   "tevas": "Petshop langai"
+  },
+  "3_issaugota": {
+   "ok": true,
+   "id": 2,
+   "version": 1,
+   "status": "draft"
+  },
+  "4_perziura": {
+   "ok": true,
+   "subject": "Sveiki, Raimondas",
+   "ilgis": 2490,
+   "atsargine_neveikia_nes_yra_pvz": "pvz vardas naudotas",
+   "divideris": "yra"
+  },
+  "5_paskelbta": {
+   "ok": true,
+   "flow": "win_back_90",
+   "version": 1,
+   "status": "published"
+  },
+  "6_be_vardo": {
+   "subject": "Sveiki, bičiuli",
+   "ar_bicziuli": "TAIP"
+  },
+  "7_adapteris": "pasiekiamas",
+  "istrinta": 1,
+  "8_po_valymo": {
+   "subject": "Maisto rekomendacijos pagal jūsų augintinį",
+   "busena": {
+    "versija": "1.1",
+    "lentele": "gaj6_ps_email_content",
+    "renderio_failas": "yra",
+    "srautu_viso": 20,
+    "paskelbta_srautu": 0,
+    "juodrasciu": 0,
+    "irašu_viso": 0
+   }
+  }
+ }
+}
