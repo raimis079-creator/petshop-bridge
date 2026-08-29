@@ -1,4 +1,441 @@
 {
- "v": "I13-I14-182600",
- "klaida": "Error: fx:list"
+ "v": "I13-I14-182911",
+ "kurimas": 200,
+ "sid": 4148,
+ "I13": {
+  "v": "I13-v1.0",
+  "faze": "I13",
+  "pries": "16399efd1b66b88647645094c05cb37b",
+  "po": "70a2eb765151388afcb8446c133b6306",
+  "irasyta": "OK"
+ },
+ "I14": {
+  "v": "I13-v1.0",
+  "faze": "I14",
+  "isvalyta": 15,
+  "dry": {
+   "rezimas": "DRY",
+   "tinka": 15,
+   "netinka": 5,
+   "srautai": {
+    "order_paid": {
+     "sablonas": "order-paid.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "order_shipped": {
+     "sablonas": "order-shipped.php",
+     "klase": "transactional",
+     "blokai": 2,
+     "subject": "Jūsų užsakymas {order_number} išsiųstas",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: order_number, tracking_number, tracking_url"
+    },
+    "payment_failed": {
+     "sablonas": "dunning-1.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "shipment_returned": {
+     "sablonas": "shipment-returned.php",
+     "klase": "transactional",
+     "blokai": 3,
+     "subject": "Jūsų siunta grįžo mums — užsakymas {order_id}",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: order_id, tracking_number, return_reason"
+    },
+    "consent_changed": {
+     "sablonas": "consent-changed.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "pet_reminder_due": {
+     "sablonas": "pet-reminder.php",
+     "klase": "transactional",
+     "blokai": 3,
+     "subject": "Priminimas: {pet_name} — {reminder_label}",
+     "rezultatas": "sutampa (pilna saka) · sakos: 7",
+     "ispejimai": "tuscias: reminder_label, due_date, confirm_url, reschedule_url"
+    },
+    "subscription_t5_notice": {
+     "sablonas": "subscription-t5.php",
+     "klase": "transactional",
+     "blokai": 4,
+     "subject": "Jūsų reguliari siunta — po 5 dienų",
+     "rezultatas": "sutampa (pilna saka) · sakos: 7",
+     "ispejimai": "tuscias: next_charge_date, next_charge_amount, product_name, confirm_url, skip_url, cancel_url"
+    },
+    "refill_due": {
+     "sablonas": "refill.php",
+     "klase": "service",
+     "blokai": 3,
+     "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: reorder_url, feedback_url"
+    },
+    "cart_abandoned": {
+     "sablonas": "cart-abandoned-1.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Jūsų prekės vis dar laukia krepšelyje",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: recovery_url"
+    },
+    "cart_abandoned_2": {
+     "sablonas": "cart-abandoned-2.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Jūsų krepšelis vis dar laukia",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: recovery_url"
+    },
+    "post_purchase_2d": {
+     "sablonas": "post-purchase-2d.php",
+     "klase": "service",
+     "blokai": 5,
+     "subject": "Ar su užsakymu viskas gerai?",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: order_number, order_url, items"
+    },
+    "post_purchase_7d": {
+     "sablonas": "post-purchase-7d.php",
+     "klase": "service",
+     "blokai": 4,
+     "subject": "Kaip tiko jūsų pirkinys?",
+     "rezultatas": "sutampa (pilna saka) · sakos: 5",
+     "ispejimai": "tuscias: order_number, order_url, items, review_url"
+    },
+    "post_purchase_14d": {
+     "sablonas": "post-purchase-14d.php",
+     "klase": "service",
+     "blokai": 2,
+     "subject": "Ankstesnį užsakymą galite pakartoti",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: reorder_url"
+    },
+    "win_back_60": {
+     "sablonas": "win-back-60.php",
+     "klase": "marketing",
+     "blokai": 2,
+     "subject": "Gal jau metas papildyti atsargas?",
+     "rezultatas": "sutampa (pilna saka) · sakos: 2",
+     "ispejimai": "tuscias: shop_url"
+    },
+    "win_back_90": {
+     "sablonas": "win-back-90.php",
+     "klase": "marketing",
+     "blokai": 3,
+     "subject": "Maisto rekomendacijos pagal jūsų augintinį",
+     "rezultatas": "sutampa (pilna saka) · sakos: 1"
+    },
+    "win_back_120": {
+     "sablonas": "win-back-120.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Čia sustojame — jei prireiks, mus rasite",
+     "rezultatas": "sutampa (pilna saka) · sakos: 2",
+     "ispejimai": "tuscias: shop_url"
+    },
+    "legacy_reactivation_l1": {
+     "sablonas": "legacy-l1.php",
+     "klase": "marketing",
+     "blokai": 5,
+     "subject": "Petshop.lt atsinaujino",
+     "rezultatas": "sutampa (pilna saka) · sakos: 1"
+    },
+    "founding_activation": {
+     "sablonas": "founding.php",
+     "klase": "marketing",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "back_in_stock": {
+     "sablonas": "back-in-stock.php",
+     "klase": "transactional",
+     "blokai": 2,
+     "subject": "Prekė vėl prekyboje: {product_name}",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: product_name, product_url, price"
+    },
+    "browse_abandoned": {
+     "sablonas": "browse-abandoned.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Jūsų neseniai žiūrėtos prekės",
+     "rezultatas": "NETINKA",
+     "priezastis": "nesutampa (pilna saka, poz. 544 · originale „<tr><td style=\"font-size:14px;line-height:1.6\" · naujame „\")"
+    }
+   }
+  },
+  "apply": {
+   "rezimas": "IMPORTAS (juodrasciai)",
+   "tinka": 15,
+   "netinka": 5,
+   "srautai": {
+    "order_paid": {
+     "sablonas": "order-paid.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "order_shipped": {
+     "sablonas": "order-shipped.php",
+     "klase": "transactional",
+     "blokai": 2,
+     "subject": "Jūsų užsakymas {order_number} išsiųstas",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: order_number, tracking_number, tracking_url",
+     "irasyta": "juodrastis v1"
+    },
+    "payment_failed": {
+     "sablonas": "dunning-1.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "shipment_returned": {
+     "sablonas": "shipment-returned.php",
+     "klase": "transactional",
+     "blokai": 3,
+     "subject": "Jūsų siunta grįžo mums — užsakymas {order_id}",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: order_id, tracking_number, return_reason",
+     "irasyta": "juodrastis v1"
+    },
+    "consent_changed": {
+     "sablonas": "consent-changed.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "pet_reminder_due": {
+     "sablonas": "pet-reminder.php",
+     "klase": "transactional",
+     "blokai": 3,
+     "subject": "Priminimas: {pet_name} — {reminder_label}",
+     "rezultatas": "sutampa (pilna saka) · sakos: 7",
+     "ispejimai": "tuscias: reminder_label, due_date, confirm_url, reschedule_url",
+     "irasyta": "juodrastis v1"
+    },
+    "subscription_t5_notice": {
+     "sablonas": "subscription-t5.php",
+     "klase": "transactional",
+     "blokai": 4,
+     "subject": "Jūsų reguliari siunta — po 5 dienų",
+     "rezultatas": "sutampa (pilna saka) · sakos: 7",
+     "ispejimai": "tuscias: next_charge_date, next_charge_amount, product_name, confirm_url, skip_url, cancel_url",
+     "irasyta": "juodrastis v1"
+    },
+    "refill_due": {
+     "sablonas": "refill.php",
+     "klase": "service",
+     "blokai": 3,
+     "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: reorder_url, feedback_url",
+     "irasyta": "juodrastis v1"
+    },
+    "cart_abandoned": {
+     "sablonas": "cart-abandoned-1.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Jūsų prekės vis dar laukia krepšelyje",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: recovery_url",
+     "irasyta": "juodrastis v1"
+    },
+    "cart_abandoned_2": {
+     "sablonas": "cart-abandoned-2.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Jūsų krepšelis vis dar laukia",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: recovery_url",
+     "irasyta": "juodrastis v1"
+    },
+    "post_purchase_2d": {
+     "sablonas": "post-purchase-2d.php",
+     "klase": "service",
+     "blokai": 5,
+     "subject": "Ar su užsakymu viskas gerai?",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: order_number, order_url, items",
+     "irasyta": "juodrastis v1"
+    },
+    "post_purchase_7d": {
+     "sablonas": "post-purchase-7d.php",
+     "klase": "service",
+     "blokai": 4,
+     "subject": "Kaip tiko jūsų pirkinys?",
+     "rezultatas": "sutampa (pilna saka) · sakos: 5",
+     "ispejimai": "tuscias: order_number, order_url, items, review_url",
+     "irasyta": "juodrastis v1"
+    },
+    "post_purchase_14d": {
+     "sablonas": "post-purchase-14d.php",
+     "klase": "service",
+     "blokai": 2,
+     "subject": "Ankstesnį užsakymą galite pakartoti",
+     "rezultatas": "sutampa (pilna saka) · sakos: 3",
+     "ispejimai": "tuscias: reorder_url",
+     "irasyta": "juodrastis v1"
+    },
+    "win_back_60": {
+     "sablonas": "win-back-60.php",
+     "klase": "marketing",
+     "blokai": 2,
+     "subject": "Gal jau metas papildyti atsargas?",
+     "rezultatas": "sutampa (pilna saka) · sakos: 2",
+     "ispejimai": "tuscias: shop_url",
+     "irasyta": "juodrastis v1"
+    },
+    "win_back_90": {
+     "sablonas": "win-back-90.php",
+     "klase": "marketing",
+     "blokai": 3,
+     "subject": "Maisto rekomendacijos pagal jūsų augintinį",
+     "rezultatas": "sutampa (pilna saka) · sakos: 1",
+     "irasyta": "juodrastis v1"
+    },
+    "win_back_120": {
+     "sablonas": "win-back-120.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Čia sustojame — jei prireiks, mus rasite",
+     "rezultatas": "sutampa (pilna saka) · sakos: 2",
+     "ispejimai": "tuscias: shop_url",
+     "irasyta": "juodrastis v1"
+    },
+    "legacy_reactivation_l1": {
+     "sablonas": "legacy-l1.php",
+     "klase": "marketing",
+     "blokai": 5,
+     "subject": "Petshop.lt atsinaujino",
+     "rezultatas": "sutampa (pilna saka) · sakos: 1",
+     "irasyta": "juodrastis v1"
+    },
+    "founding_activation": {
+     "sablonas": "founding.php",
+     "klase": "marketing",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "back_in_stock": {
+     "sablonas": "back-in-stock.php",
+     "klase": "transactional",
+     "blokai": 2,
+     "subject": "Prekė vėl prekyboje: {product_name}",
+     "rezultatas": "sutampa (pilna saka) · sakos: 4",
+     "ispejimai": "tuscias: product_name, product_url, price",
+     "irasyta": "juodrastis v1"
+    },
+    "browse_abandoned": {
+     "sablonas": "browse-abandoned.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Jūsų neseniai žiūrėtos prekės",
+     "rezultatas": "NETINKA",
+     "priezastis": "nesutampa (pilna saka, poz. 544 · originale „<tr><td style=\"font-size:14px;line-height:1.6\" · naujame „\")"
+    }
+   }
+  },
+  "busena": {
+   "versija": "1.3",
+   "lentele": "gaj6_ps_email_content",
+   "renderio_failas": "yra",
+   "srautu_viso": 20,
+   "paskelbta_srautu": 0,
+   "juodrasciu": 15,
+   "irašu_viso": 15
+  },
+  "pvz": {
+   "cart_abandoned": {
+    "subject": "Jūsų prekės vis dar laukia krepšelyje",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "Sveiki, pastebėjome, kad krepšelyje liko prekių. Jis išsaugotas — galite tęsti, kai būsite pasiruošę."
+     },
+     {
+      "t": "items",
+      "saltinis": "cart_items",
+      "stilius": "sarasas",
+      "kiekis": true
+     },
+     {
+      "t": "button",
+      "url": "http://{recovery_url}",
+      "label": "Grįžti į krepšelį"
+     },
+     {
+      "t": "muted",
+      "text": "Kainos ir prekių prieinamumas gali būti pasikeitę — krepšelį atnaujinsime pagal dabartinį katalogą."
+     }
+    ]
+   },
+   "post_purchase_2d": {
+    "subject": "Ar su užsakymu viskas gerai?",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "Neseniai išsiuntėme jūsų užsakymą[jei items][jei order_url][jei order_number] Nr. {order_number}[/jei][kitaip] Nr. {order_number}[/jei][kitaip] Nr. {order_number}[/jei]."
+     },
+     {
+      "t": "items",
+      "saltinis": "items",
+      "stilius": "sarasas",
+      "kiekis": true
+     },
+     {
+      "t": "p",
+      "text": "Jei siunta dar neatvyko arba kažkas negerai, atsakykite į šį laišką — padėsime išspręsti."
+     },
+     {
+      "t": "muted",
+      "text": "Taip pat galite rašyti adresu uzsakymai@petshop.lt."
+     },
+     {
+      "t": "secondary",
+      "items": [
+       {
+        "label": "Peržiūrėti užsakymą",
+        "url": "http://{order_url}"
+       }
+      ]
+     }
+    ]
+   },
+   "browse_abandoned": {
+    "subject": "Jūsų neseniai žiūrėtos prekės",
+    "blocks": [
+     {
+      "t": "p",
+      "text": "Paliekame čia prekes, kurias neseniai žiūrėjote — jei norėsite prie jų grįžti."
+     },
+     {
+      "t": "items",
+      "saltinis": "products",
+      "stilius": "taskai"
+     },
+     {
+      "t": "button",
+      "url": "http://{first_url}",
+      "label": "Peržiūrėti prekę"
+     },
+     {
+      "t": "secondary",
+      "items": [
+       {
+        "label": "{preke2}",
+        "url": "http://{nuoroda2}"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
 }
