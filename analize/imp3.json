@@ -1,0 +1,40 @@
+{
+ "v": "IMP3-170720",
+ "kurimas": 200,
+ "sid": 4135,
+ "IMP3": {
+  "v": "IMP3-v1.0",
+  "order-paid": [
+   "5: * Nustato: $subject",
+   "15: $subject = $order_no ? sprintf( 'Užsakymas %s priimtas', $order_no ) : 'Jūsų užsakymas priimtas';",
+   "20: <html lang=\"lt\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title><?php echo esc_html( $subject ); ?></title></head>",
+   "25: <tr><td style=\"font-size:21px;font-weight:700;padding-bottom:8px;\"><?php echo esc_html( $subject ); ?></td></tr>"
+  ],
+  "dunning-1": [
+   "5: * Nustato: $subject",
+   "18: $subject = $order_no",
+   "26: <html lang=\"lt\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title><?php echo esc_html( $subject ); ?></title></head>",
+   "31: <tr><td style=\"font-size:21px;font-weight:700;padding-bottom:8px;\"><?php echo esc_html( $subject ); ?></td></tr>"
+  ],
+  "consent-changed": [
+   "5: * Nustato: $subject",
+   "27: $subject = $granted",
+   "34: <html lang=\"lt\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title><?php echo esc_html( $subject ); ?></title></head>",
+   "39: <tr><td style=\"font-size:21px;font-weight:700;padding-bottom:8px;\"><?php echo esc_html( $subject ); ?></td></tr>"
+  ],
+  "founding": [
+   "5: * Nustato: $subject",
+   "18: $subject = 'Petshop.lt atsidaro — jūs pirmieji';",
+   "22: <html lang=\"lt\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title><?php echo esc_html( $subject ); ?></title></head>",
+   "27: <tr><td style=\"font-size:21px;font-weight:700;padding-bottom:8px;\"><?php echo esc_html( $subject ); ?></td></tr>"
+  ],
+  "render_order_paid": {
+   "subject": "Jūsų užsakymas priimtas",
+   "antrasteje": "NERASTA"
+  },
+  "render_founding_activation": {
+   "subject": "Petshop.lt atsidaro — jūs pirmieji",
+   "antrasteje": "NERASTA"
+  }
+ }
+}
