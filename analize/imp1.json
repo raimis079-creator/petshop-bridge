@@ -1,11 +1,11 @@
 {
- "v": "IMP1-IMP2-170528",
+ "v": "IMP1-IMP2-170936",
  "kurimas": 200,
- "sid": 4134,
+ "sid": 4136,
  "IMP1": {
   "v": "IMP1-v1.0",
   "faze": "IMP1",
-  "buvo": "NERA",
+  "buvo": "bcce5824134d572d670a1106d8cdcb2d",
   "irasyta": "OK"
  },
  "IMP2": {
@@ -13,14 +13,14 @@
   "faze": "IMP2",
   "dry": {
    "rezimas": "DRY",
-   "tinka": 9,
-   "netinka": 11,
+   "tinka": 16,
+   "netinka": 4,
    "srautai": {
     "order_paid": {
      "sablonas": "order-paid.php",
      "klase": "transactional",
      "rezultatas": "NETINKA",
-     "priezastis": "nerasta antrastes eilute"
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
     },
     "order_shipped": {
      "sablonas": "order-shipped.php",
@@ -28,13 +28,13 @@
      "blokai": 2,
      "subject": "Jūsų užsakymas {order_number} išsiųstas",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 1993
+     "baitai": 419
     },
     "payment_failed": {
      "sablonas": "dunning-1.php",
      "klase": "transactional",
      "rezultatas": "NETINKA",
-     "priezastis": "nerasta antrastes eilute"
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
     },
     "shipment_returned": {
      "sablonas": "shipment-returned.php",
@@ -42,13 +42,13 @@
      "blokai": 3,
      "subject": "Jūsų siunta grįžo mums — užsakymas {order_id}",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2100
+     "baitai": 472
     },
     "consent_changed": {
      "sablonas": "consent-changed.php",
      "klase": "transactional",
      "rezultatas": "NETINKA",
-     "priezastis": "nerasta antrastes eilute"
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
     },
     "pet_reminder_due": {
      "sablonas": "pet-reminder.php",
@@ -56,7 +56,7 @@
      "blokai": 3,
      "subject": "Priminimas: {pet_name} — {reminder_label}",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2160
+     "baitai": 541
     },
     "subscription_t5_notice": {
      "sablonas": "subscription-t5.php",
@@ -64,7 +64,7 @@
      "blokai": 4,
      "subject": "Jūsų reguliari siunta — po 5 dienų",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2373
+     "baitai": 773
     },
     "refill_due": {
      "sablonas": "refill.php",
@@ -72,23 +72,23 @@
      "blokai": 3,
      "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2259
+     "baitai": 585
     },
     "cart_abandoned": {
      "sablonas": "cart-abandoned-1.php",
      "klase": "marketing",
      "blokai": 3,
      "subject": "Jūsų krepšelis vis dar laukia",
-     "rezultatas": "NETINKA",
-     "priezastis": "perrenderintas HTML nesutampa (pozicija 2373 · originale „mNhZWM5MmQ5MTJhZDhlYWE0MzA3OWQ3OGUwMWJjY\" · naujame „jBlYjUxMDk4ZjRiY2IwMjZlOTU3NTFiYTViZjRiZ\")"
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 647
     },
     "cart_abandoned_2": {
      "sablonas": "cart-abandoned-2.php",
      "klase": "marketing",
      "blokai": 3,
      "subject": "Jūsų krepšelis vis dar laukia",
-     "rezultatas": "NETINKA",
-     "priezastis": "perrenderintas HTML nesutampa (pozicija 2346 · originale „jFhMDgyZmQ0YzRjMjE4MmEwMmE4ZTU5MmQxMmYyM\" · naujame „mJiNjI4OWRmYzZlMGFkZGUwMDE3MTY0N2Y4MWRiN\")"
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 620
     },
     "post_purchase_2d": {
      "sablonas": "post-purchase-2d.php",
@@ -96,7 +96,7 @@
      "blokai": 4,
      "subject": "Ar su užsakymu viskas gerai?",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2254
+     "baitai": 623
     },
     "post_purchase_7d": {
      "sablonas": "post-purchase-7d.php",
@@ -104,7 +104,7 @@
      "blokai": 4,
      "subject": "Kaip tiko jūsų pirkinys?",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2377
+     "baitai": 778
     },
     "post_purchase_14d": {
      "sablonas": "post-purchase-14d.php",
@@ -112,45 +112,45 @@
      "blokai": 2,
      "subject": "Ankstesnį užsakymą galite pakartoti",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2029
+     "baitai": 419
     },
     "win_back_60": {
      "sablonas": "win-back-60.php",
      "klase": "marketing",
      "blokai": 2,
      "subject": "Gal jau metas papildyti atsargas?",
-     "rezultatas": "NETINKA",
-     "priezastis": "perrenderintas HTML nesutampa (pozicija 2203 · originale „Y5MDA1YTEzNDZkNmRhZmY2NjI1ZmJiNDAxYWMwMm\" · naujame „UxMmYxODg5ODU0MzA1Y2QwNzc5NzcyNjU3ZTNkYj\")"
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 443
     },
     "win_back_90": {
      "sablonas": "win-back-90.php",
      "klase": "marketing",
      "blokai": 3,
      "subject": "Maisto rekomendacijos pagal jūsų augintinį",
-     "rezultatas": "NETINKA",
-     "priezastis": "perrenderintas HTML nesutampa (pozicija 2401 · originale „mJkNDUxOWNhZWE4ZDhmMWM4YmI1M2Q0M2RlZTM5N\" · naujame „jgxNzAxZTRhNWJhMmRjMmQyM2JmY2E1YmE1MGRlY\")"
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 633
     },
     "win_back_120": {
      "sablonas": "win-back-120.php",
      "klase": "marketing",
      "blokai": 4,
      "subject": "Čia sustojame — jei prireiks, mus rasite",
-     "rezultatas": "NETINKA",
-     "priezastis": "perrenderintas HTML nesutampa (pozicija 2477 · originale „llZjY5YjQxNzcwYjA2YzAxYWFmOTM3NDM5YzQ3Zj\" · naujame „g2NWEyNDM0Nzc3ZTA3NjhkZGQxNDczZThhMzkwNz\")"
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 713
     },
     "legacy_reactivation_l1": {
      "sablonas": "legacy-l1.php",
      "klase": "marketing",
      "blokai": 5,
      "subject": "Petshop.lt atsinaujino",
-     "rezultatas": "NETINKA",
-     "priezastis": "perrenderintas HTML nesutampa (pozicija 2700 · originale „k2YzlhNTg4YzQ4OTJkMGYxZDZlNzhiOTYzY2RjMT\" · naujame „FlMjY0MGZlYjMxOWYyYTNkN2NhNjVlN2ZhZTI1ZD\")"
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 943
     },
     "founding_activation": {
      "sablonas": "founding.php",
      "klase": "marketing",
      "rezultatas": "NETINKA",
-     "priezastis": "nerasta antrastes eilute"
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
     },
     "back_in_stock": {
      "sablonas": "back-in-stock.php",
@@ -158,15 +158,15 @@
      "blokai": 2,
      "subject": "Prekė vėl prekyboje: {product_name}",
      "rezultatas": "sutampa byte-tiksliai",
-     "baitai": 2061
+     "baitai": 437
     },
     "browse_abandoned": {
      "sablonas": "browse-abandoned.php",
      "klase": "marketing",
      "blokai": 2,
      "subject": "Jūsų neseniai žiūrėtos prekės",
-     "rezultatas": "NETINKA",
-     "priezastis": "perrenderintas HTML nesutampa (pozicija 2177 · originale „I1Mjc4ZjU1ZTNhNGNiMjZlMDE5MzEwZjUwNTFjYz\" · naujame „AxYjZiNGFiYjFmNmIyNTMzYjgyNzE2YWFjODcyYW\")"
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 419
     }
    }
   }
