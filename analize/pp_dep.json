@@ -1,0 +1,71 @@
+{
+ "v": "PP-DEP-v1.0",
+ "kurimas": 200,
+ "sid": 4102,
+ "deploy": {
+  "v": "PP-DEP-v1.0",
+  "fase": "DEP4",
+  "irasyta": "OK"
+ },
+ "e2e": {
+  "v": "PP-DEP-v1.0",
+  "fase": "PPE2",
+  "uzsakymas": 35240,
+  "stamp": "2026-08-26 10:03:36",
+  "detect": {
+   "dry_run": false,
+   "cutoff": "2026-08-27 10:03:38",
+   "candidates": 2,
+   "queued": 3,
+   "skipped": [
+    [
+     35088,
+     "refunded_partially"
+    ]
+   ],
+   "details": [
+    {
+     "order": 35240,
+     "action": "QUEUED",
+     "items": 0
+    }
+   ]
+  },
+  "jobs": [
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "scheduled_at": "2026-09-09 10:03:36",
+    "job_key": "post_purchase_14d:35240"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "pending",
+    "scheduled_at": "2026-08-29 10:03:38",
+    "job_key": "post_purchase_2d:35240"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "scheduled_at": "2026-09-02 10:03:36",
+    "job_key": "post_purchase_7d:35240"
+   }
+  ],
+  "lauktina_7d": "2026-09-02 10:03:36",
+  "lauktina_14d": "2026-09-09 10:03:36",
+  "elig_gyvas": {
+   "allowed": true,
+   "reason": "",
+   "terminal": true
+  },
+  "elig_atsauktas": {
+   "allowed": false,
+   "reason": "order_dead_cancelled",
+   "terminal": true
+  },
+  "isvalyta": {
+   "jobs": 0,
+   "uzsakymas": "ISTRINTAS"
+  }
+ }
+}
