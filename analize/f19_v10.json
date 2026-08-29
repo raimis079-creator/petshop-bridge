@@ -1,0 +1,25 @@
+{
+ "v": "f19_diegimas-220350",
+ "kurimas": 200,
+ "sid": 4165,
+ "D1": {
+  "v": "F19V-1.0",
+  "faze": "D1",
+  "wpsub": "ISTRINTAS",
+  "pries": "NERA",
+  "po": "dc8ba9265bcf4bd22339510dc09e01cd",
+  "irasyta": "OK"
+ },
+ "T1": {
+  "v": "F19V-1.0",
+  "faze": "T1",
+  "lenteles": [
+   "subs OK",
+   "events OK"
+  ],
+  "cron": "NE",
+  "token_fn": "YRA",
+  "sukurta": 1,
+  "FATAL": "ps_generate_token(): Argument #1 ($args) must be of type array, string given, called in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-prenumerata.php on line 237 @ 337"
+ }
+}
