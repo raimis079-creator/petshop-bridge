@@ -1,0 +1,64 @@
+{
+ "v": "Q4-174314",
+ "kurimas": 200,
+ "sid": 4142,
+ "Q4": {
+  "v": "Q4-v1.0",
+  "order_paid": {
+   "failas": "order-paid.php",
+   "baitai": 2333,
+   "klase": "transactional",
+   "pakeista": "2026-08-01 08:17",
+   "komentaras": "Sablonas: order_paid — uzsakymas apmoketas.\nGauna: $payload (order_number, total, currency, name, order_url)\nNustato: $subject\nTZ §4.4.1: \"jus\" mazaja, siuntejas Petshop.lt, fallback be vardo.",
+   "patvirtinta": "ne",
+   "naudoja_layout": "NE",
+   "atsisakymo_nuoroda": "NERA",
+   "uab_avesa": "yra",
+   "tema": "Užsakymas ‹order_number› priimtas",
+   "baitai_html": 1497,
+   "tekstas": "Užsakymas ‹order_number› priimtas Sveiki, ‹name›, dėkojame už užsakymą. Gavome jūsų apmokėjimą (‹total›) ir jau ruošiame siuntą. Kai ji iškeliaus, atsiųsime sekimo numerį. Peržiūrėti užsakymą UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pateikėte užsakymą petshop.lt."
+  },
+  "payment_failed": {
+   "failas": "dunning-1.php",
+   "baitai": 3238,
+   "klase": "transactional",
+   "pakeista": "2026-08-04 08:41",
+   "komentaras": "Sablonas: payment_failed — apmokejimas neivyko (dunning, 1-as laiskas).\nGauna: $payload (order_number, total, name, pay_url, order_url, method, expires_at)\nNustato: $subject\nTZ §4.4.1: \"jus\" mazaja, siuntejas Petshop.lt, fallback be vardo.\nTONAS: NE kaltinimas. Dazniausia priezastis — nutruko rysys su banku.",
+   "patvirtinta": "ne",
+   "naudoja_layout": "NE",
+   "atsisakymo_nuoroda": "NERA",
+   "uab_avesa": "yra",
+   "tema": "Užsakymas ‹order_number› laukia apmokėjimo",
+   "baitai_html": 2055,
+   "tekstas": "Užsakymas ‹order_number› laukia apmokėjimo Sveiki, ‹name›, jūsų užsakymą gavome, bet apmokėjimas nepasiekė mūsų. Dažniausiai taip nutinka, kai mokėjimo lange nutrūksta ryšys su banku — pinigai tokiu atveju nenuskaitomi. Prekes laikome jums iki ‹expires_at›. Apmokėti galite paspaudę mygtuką žemiau — suma ‹total›. Apmokėti užsakymą Jei apmokėjimą jau atlikote arba užsakymo nebereikia — tiesiog atsakykite į šį laišką. Neapmokėtą užsakymą po kelių dienų atšauksime automatiškai, jokių įsipareigojimų neliks. UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pateikėte užsakymą petshop.lt."
+  },
+  "consent_changed": {
+   "failas": "consent-changed.php",
+   "baitai": 3630,
+   "klase": "transactional",
+   "pakeista": "2026-08-04 08:41",
+   "komentaras": "Sablonas: consent_changed — sutikimo busena pasikeite.\nGauna: $payload (name, channel, granted, source, changed_at, prefs_url)\nNustato: $subject\nTZ §4.4.1: \"jus\" mazaja, siuntejas Petshop.lt, fallback be vardo.\nTEISINIS PEDSAKAS: laiskas patvirtina pakeitima ir nurodo saltini bei laika.",
+   "patvirtinta": "ne",
+   "naudoja_layout": "NE",
+   "atsisakymo_nuoroda": "yra",
+   "uab_avesa": "yra",
+   "tema": "Patvirtiname: sutikote gauti mūsų naujienas",
+   "baitai_html": 1884,
+   "tekstas": "Patvirtiname: sutikote gauti mūsų naujienas Sveiki, ‹name›, nuo šiol siųsime pasiūlymus ir naudingą informaciją apie augintinių priežiūrą. Rašysime saikingai — tik tada, kai turėsime ką pasakyti. Pakeitimo įrašas Sprendimas: sutikimas duotas Laikas: ‹changed_at› Pakeisti nustatymus Jei šio pakeitimo nedarėte, praneškite mums adresu uzsakymai@petshop.lt. UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pasikeitė jūsų sutikimo būsena petshop.lt."
+  },
+  "founding_activation": {
+   "failas": "founding.php",
+   "baitai": 3555,
+   "klase": "marketing",
+   "pakeista": "2026-08-04 08:41",
+   "komentaras": "Sablonas: founding_activation — kvietimas pirmiesiems klientams.\nGauna: $payload (name, code, discount, valid_until, shop_url, unsubscribe_url)\nNustato: $subject\nTZ §4.4.1: \"jus\" mazaja, siuntejas Petshop.lt, fallback be vardo.\nMARKETINGINIS srautas — PRIVALO tureti atsisakymo nuoroda.",
+   "patvirtinta": "ne",
+   "naudoja_layout": "NE",
+   "atsisakymo_nuoroda": "yra",
+   "uab_avesa": "yra",
+   "tema": "Petshop.lt atsidaro — jūs pirmieji",
+   "baitai_html": 2338,
+   "tekstas": "Petshop.lt atsidaro — jūs pirmieji Sveiki, ‹name›, ačiū, kad užsirašėte laukti. Parduotuvė atidaryta, ir jūs galite užsukti pirmieji. Dvidešimt ketveri metai prekyboje gyvūnų prekėmis sudėti į vieną vietą: hipoalerginis ir monobaltyminis maistas, pašaro normos iš gamintojų lentelių ir kaina, matoma ne už pakuotę, o už dieną. Jūsų kodas pirmam užsakymui ‹code› ‹discount› Galioja iki ‹valid_until› Apžiūrėti parduotuvę UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes užsiregistravote laukti petshop.lt atidarymo. Atsisakyti naujienų"
+  }
+ }
+}
