@@ -1,0 +1,65 @@
+{
+ "v": "e3_recon2-203207",
+ "kurimas": 200,
+ "sid": 4153,
+ "R2": {
+  "v": "E3R2",
+  "yra": "TAIP",
+  "stulpeliai": [
+   "id",
+   "status",
+   "currency",
+   "type",
+   "tax_amount",
+   "total_amount",
+   "customer_id",
+   "billing_email",
+   "date_created_gmt",
+   "date_updated_gmt",
+   "parent_order_id",
+   "payment_method",
+   "payment_method_title",
+   "transaction_id",
+   "ip_address",
+   "user_agent",
+   "customer_note"
+  ],
+  "indeksai": [
+   "PRIMARY:id",
+   "status:status",
+   "date_created:date_created_gmt",
+   "customer_id_billing_email:customer_id",
+   "customer_id_billing_email:billing_email",
+   "customer_id_status:customer_id",
+   "customer_id_status:status",
+   "billing_email:billing_email",
+   "type_status_date:type",
+   "type_status_date:status",
+   "type_status_date:date_created_gmt",
+   "parent_order_id:parent_order_id",
+   "date_updated:date_updated_gmt",
+   "transaction_id:transaction_id"
+  ],
+  "statusai": [
+   {
+    "status": "wc-cancelled",
+    "c": "1"
+   },
+   {
+    "status": "wc-completed",
+    "c": "1"
+   },
+   {
+    "status": "wc-processing",
+    "c": "2"
+   }
+  ],
+  "pvz": {
+   "id": "35100",
+   "status": "wc-processing",
+   "total_amount": "47.66000000",
+   "billing_email": "terra@gyvunai.lt",
+   "date_created_gmt": "2026-08-26 13:16:43"
+  }
+ }
+}
