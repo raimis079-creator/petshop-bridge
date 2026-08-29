@@ -1,0 +1,31 @@
+{
+ "v": "f19_row-222604",
+ "list_praleistas": "SyntaxError: Unexpected end of JSON input",
+ "kurimas": 200,
+ "sid": 4173,
+ "RW": {
+  "v": "RW",
+  "gen_raktai": "string",
+  "peek": {
+   "valid": true,
+   "reason": "ok",
+   "row": {
+    "id": "418",
+    "token_hash": "dc931f2db59f0d0d782a13bf970320a427922d801279a8aaed9fb8437f4ec760",
+    "nonce": "2fd5ebb4863a98acd40847c405f819fd",
+    "purpose": "sub_confirm",
+    "purpose_group": null,
+    "subject_id": "0",
+    "subject_email": null,
+    "resource_id": "7",
+    "action": null,
+    "key_id": "v2",
+    "status": "active",
+    "created_at": "2026-08-29 22:27:10",
+    "expires_at": "2026-08-29 22:57:10",
+    "used_at": null,
+    "used_ip": null
+   }
+  }
+ }
+}
