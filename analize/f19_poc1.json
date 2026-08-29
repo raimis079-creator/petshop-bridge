@@ -1,0 +1,85 @@
+{
+ "v": "f19_poc1-213921",
+ "kurimas": 200,
+ "sid": 4164,
+ "I1": {
+  "v": "F19P-1.0",
+  "faze": "I1",
+  "versija_repo": "1.11.1",
+  "install": "OK",
+  "plugin": "Subscriptions for WooCommerce with Stripe Recurring Payments 1.11.1",
+  "aktyvavimas": "OK"
+ },
+ "R1": {
+  "v": "F19P-1.0",
+  "faze": "R1",
+  "lenteles": [
+   "gaj6_mailpoet_scheduled_task_subscribers",
+   "gaj6_mailpoet_statistics_unsubscribes",
+   "gaj6_mailpoet_subscriber_custom_field",
+   "gaj6_mailpoet_subscriber_ips",
+   "gaj6_mailpoet_subscriber_segment",
+   "gaj6_mailpoet_subscriber_tag",
+   "gaj6_mailpoet_subscribers",
+   "gaj6_wc_email_unsubscribes"
+  ],
+  "post_tipai": [],
+  "hpos_deklaracija": "declare_compatibility( 'custom_order_tables', __FILE__, true )",
+  "hookai": [
+   "subscrpt_split_payment_completed",
+   "subscrpt_order_activities",
+   "wc_gateway_stripe_process_payment_error",
+   "subscrpt_subscription_payment_failed",
+   "subscrpt_subscription_expired_email_notification",
+   "before_subscription_update_cron",
+   "after_subscription_update_cron",
+   "subscrpt_subscription_resumed",
+   "subscrpt_subscription_expired",
+   "subscrpt_subscription_activated",
+   "subscrpt_subscription_cancelled_email_notification",
+   "subscrpt_subscription_cancelled",
+   "subscrpt_split_payment_cancelled",
+   "subscrpt_subscription_pending_cancellation",
+   "subscrpt_cancellation_feedback_recorded",
+   "subscrpt_when_product_expired",
+   "subscrpt_split_payment_renewed",
+   "subscrpt_split_payment_created",
+   "subscrpt_after_create_renew_order",
+   "subscrpt_subscription_payment_completed"
+  ],
+  "cron": [
+   "subscrpt_hourly_cron"
+  ],
+  "meta_raktai": [
+   "SUBSCRPT_VERSION",
+   "SUBSCRPT_FILE",
+   "SUBSCRPT_PATH",
+   "SUBSCRPT_INCLUDES",
+   "SUBSCRPT_TEMPLATES",
+   "SUBSCRPT_URL",
+   "SUBSCRPT_ASSETS",
+   "subscrpt_hourly_cron",
+   "subscrpt_daily_cron",
+   "subscrpt_order",
+   "subscrpt_register_paypal_block",
+   "_subscrpt_product_id",
+   "_subscrpt_payment_type",
+   "_subscrpt_max_no_payment",
+   "_subscrpt_variation_id",
+   "_subscrpt_access_ends_timing",
+   "_subscrpt_custom_access_duration_time",
+   "_subscrpt_custom_access_duration_type",
+   "subscrpt_pro_activated",
+   "subscrpt_action_buttons",
+   "subscrpt_before_subscription_totals",
+   "_subscrpt_meta",
+   "_subscrpt_price",
+   "subscrpt_after_subscription_totals",
+   "_subscrpt_trial"
+  ],
+  "klases": [
+   "Sdevs_Subscription",
+   "Sdevs_Subscrpt_WC_Integration"
+  ]
+ }
+}
