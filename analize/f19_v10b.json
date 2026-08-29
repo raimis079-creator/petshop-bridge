@@ -1,0 +1,80 @@
+{
+ "v": "f19_diegimas-220723",
+ "kurimas": 200,
+ "sid": 4167,
+ "D1": {
+  "v": "F19V-1.0",
+  "faze": "D1",
+  "wpsub": "nerastas",
+  "pries": "dc8ba9265bcf4bd22339510dc09e01cd",
+  "po": "7e43ef117d445bff1068351bf59c3395",
+  "irasyta": "OK"
+ },
+ "T1": {
+  "v": "F19V-1.0",
+  "faze": "T1",
+  "lenteles": [
+   "subs OK",
+   "events OK"
+  ],
+  "cron": "suplanuotas",
+  "token_fn": "YRA",
+  "sukurta": 2,
+  "ciklas_t5": {
+   "t5": 2,
+   "uzsakymai": 0,
+   "sulaikyta": 0,
+   "dunning": 0,
+   "klaidos": []
+  },
+  "t5_jobas": {
+   "flow": "subscription_t5_notice",
+   "status": "pending",
+   "job_key": "sub_t5:2:20260903"
+  },
+  "sulaikymas": {
+   "r": 1,
+   "nauja_data": "2026-09-05"
+  },
+  "uzsakymas": {
+   "r": 1,
+   "order_id": 35266,
+   "statusas": "pending",
+   "meta_sid": 2,
+   "kita_data": "2026-09-26"
+  },
+  "apmoketa": {
+   "success": "1",
+   "pending": null
+  },
+  "notify_anksti": "notify_only tik po 2 sėkmingų ciklų",
+  "notify_po2": "OK",
+  "pauze": "paused",
+  "dunning": {
+   "att": "1",
+   "next": "2026-08-31"
+  },
+  "pf_jobas": "payment_failed",
+  "ivykiai": [
+   "created",
+   "notice_sent",
+   "date_changed",
+   "cycle_held",
+   "date_changed",
+   "confirmed",
+   "order_created",
+   "payment_completed",
+   "mode_changed",
+   "paused",
+   "resumed",
+   "skipped",
+   "payment_failed",
+   "cancelled"
+  ],
+  "po_valymo": [
+   1,
+   2,
+   1
+  ]
+ }
+}
