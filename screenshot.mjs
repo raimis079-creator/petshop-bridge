@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIEYxOSBsaWVrYW51IHZhbHltYXMgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYoKGlzc2V0KCRfR0VUWydwc19mMTknXSk/JF9HRVRbJ3BzX2YxOSddOicnKSE9PSdWMScpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogIGdsb2JhbCAkd3BkYjsgJG89YXJyYXkoJ3YnPT4nRjE5VjEnKTsKICAkd3BkYi0+cXVlcnkoIkRFTEVURSBGUk9NIHskd3BkYi0+cHJlZml4fXBzX3N1YnNjcmlwdGlvbnMiKTsKICAkd3BkYi0+cXVlcnkoIkRFTEVURSBGUk9NIHskd3BkYi0+cHJlZml4fXBzX3N1YnNjcmlwdGlvbl9ldmVudHMiKTsKICAkd3BkYi0+cXVlcnkoIkRFTEVURSBGUk9NIHskd3BkYi0+cHJlZml4fXBzX2VtYWlsX2pvYnMgV0hFUkUgam9iX2tleSBMSUtFICdzdWJcXF8lJyIpOwogICRvWydsaWtvJ109YXJyYXkoKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9cHNfc3Vic2NyaXB0aW9ucyIpLAogICAgKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9cHNfc3Vic2NyaXB0aW9uX2V2ZW50cyIpLAogICAgKGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyR3cGRiLT5wcmVmaXh9cHNfZW1haWxfam9icyBXSEVSRSBqb2Jfa2V5IExJS0UgJ3N1YlxcXyUnIikpOwogIGVjaG8ganNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
-const VER='f19_valymas-220909';
+const VER='f19_valymas-221020';
 const GKEY='ps_f19';
 const PHASES=["V1"];
-const OUT='analize/f19_valymas.json';
+const OUT='analize/f19_valymas2.json';
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
