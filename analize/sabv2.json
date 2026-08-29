@@ -1,0 +1,192 @@
+{
+ "v": "SABV2-v1.0",
+ "kurimas": 200,
+ "sid": 4103,
+ "rez": {
+  "v": "SABV2-v1.0",
+  "diegimas": {
+   "back-in-stock": "OK",
+   "browse-abandoned": "OK",
+   "post-purchase-7d": "OK",
+   "post-purchase-14d": "OK",
+   "win-back-60": "OK",
+   "win-back-90": "OK",
+   "win-back-120": "OK",
+   "legacy-l1": "OK",
+   "shipment-returned": "OK",
+   "pet-reminder": "OK",
+   "subscription-t5": "OK",
+   "order-shipped": "OK"
+  },
+  "render": {
+   "back_in_stock": {
+    "p": {
+     "s": "Prekė vėl prekyboje: Monge ėriena 12kg",
+     "d": 2054,
+     "ok": true,
+     "ats": false
+    },
+    "t": {
+     "s": "Jūsų laukta prekė vėl prekyboje",
+     "d": 1755,
+     "ok": true,
+     "ats": false
+    }
+   },
+   "browse_abandoned": {
+    "p": {
+     "s": "Jūsų neseniai žiūrėtos prekės",
+     "d": 2662,
+     "ok": true,
+     "ats": true
+    },
+    "t": {
+     "s": "Jūsų neseniai žiūrėtos prekės",
+     "d": 2167,
+     "ok": true,
+     "ats": true
+    }
+   },
+   "post_purchase_7d": {
+    "p": {
+     "s": "Kaip tiko jūsų pirkinys?",
+     "d": 2367,
+     "ok": true,
+     "ats": false
+    },
+    "t": {
+     "s": "Kaip tiko jūsų pirkinys?",
+     "d": 2090,
+     "ok": true,
+     "ats": false
+    }
+   },
+   "post_purchase_14d": {
+    "p": {
+     "s": "Ankstesnį užsakymą galite pakartoti",
+     "d": 2016,
+     "ok": true,
+     "ats": false
+    },
+    "t": {
+     "s": "Ankstesnį užsakymą galite pakartoti",
+     "d": 1775,
+     "ok": true,
+     "ats": false
+    }
+   },
+   "win_back_60": {
+    "p": {
+     "s": "Gal jau metas papildyti atsargas?",
+     "d": 2458,
+     "ok": true,
+     "ats": true
+    },
+    "t": {
+     "s": "Gal jau metas papildyti atsargas?",
+     "d": 2458,
+     "ok": true,
+     "ats": true
+    }
+   },
+   "win_back_90": {
+    "p": {
+     "s": "Maisto rekomendacijos pagal jūsų augintinį",
+     "d": 2644,
+     "ok": true,
+     "ats": true
+    },
+    "t": {
+     "s": "Maisto rekomendacijos pagal jūsų augintinį",
+     "d": 2644,
+     "ok": true,
+     "ats": true
+    }
+   },
+   "win_back_120": {
+    "p": {
+     "s": "Čia sustojame — jei prireiks, mus rasite",
+     "d": 2732,
+     "ok": true,
+     "ats": true
+    },
+    "t": {
+     "s": "Čia sustojame — jei prireiks, mus rasite",
+     "d": 2732,
+     "ok": true,
+     "ats": true
+    }
+   },
+   "legacy_reactivation_l1": {
+    "p": {
+     "s": "Petshop.lt atsinaujino",
+     "d": 2942,
+     "ok": true,
+     "ats": true
+    },
+    "t": {
+     "s": "Petshop.lt atsinaujino",
+     "d": 2942,
+     "ok": true,
+     "ats": true
+    }
+   },
+   "shipment_returned": {
+    "p": {
+     "s": "Jūsų siunta grįžo mums — užsakymas 34999",
+     "d": 2063,
+     "ok": true,
+     "ats": false
+    },
+    "t": {
+     "s": "Jūsų siunta grįžo mums",
+     "d": 2005,
+     "ok": true,
+     "ats": false
+    }
+   },
+   "pet_reminder_due": {
+    "p": {
+     "s": "Priminimas: Reksas — skiepai",
+     "d": 2084,
+     "ok": true,
+     "ats": false
+    },
+    "t": {
+     "s": "Priminimas jūsų augintiniui: suplanuotas priminimas",
+     "d": 2017,
+     "ok": true,
+     "ats": false
+    }
+   },
+   "subscription_t5_notice": {
+    "p": {
+     "s": "Jūsų reguliari siunta — po 5 dienų",
+     "d": 2351,
+     "ok": true,
+     "ats": false
+    },
+    "t": {
+     "s": "Jūsų reguliari siunta — po 5 dienų",
+     "d": 2195,
+     "ok": true,
+     "ats": false
+    }
+   },
+   "order_shipped": {
+    "p": {
+     "s": "Jūsų užsakymas AVPN-1043 išsiųstas",
+     "d": 1942,
+     "ok": true,
+     "ats": false
+    },
+    "t": {
+     "s": "Jūsų užsakymas išsiųstas",
+     "d": 1657,
+     "ok": true,
+     "ats": false
+    }
+   }
+  }
+ }
+}
