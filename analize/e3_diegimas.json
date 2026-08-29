@@ -1,0 +1,63 @@
+{
+ "v": "e3_diegimas-202047",
+ "kurimas": 200,
+ "sid": 4151,
+ "D1": {
+  "v": "E3D-1.0",
+  "faze": "D1",
+  "pries": "NERA",
+  "po": "a7c3d5a425d2f81fbe0d563013b3a25c",
+  "irasyta": "OK"
+ },
+ "V1": {
+  "v": "E3D-1.0",
+  "faze": "V1",
+  "submeniu": "TAIP",
+  "submeniu_visi": [
+   "petshop-langai",
+   "petshop-laiskai",
+   "petshop-rezultatai"
+  ],
+  "d30": {
+   "sent": 9,
+   "pending": 0,
+   "failed": 0,
+   "unsub": 1,
+   "bounce": 0,
+   "spam": 0,
+   "srautu": 3,
+   "bangu": 0
+  },
+  "d0": {
+   "sent": 12,
+   "pending": 0,
+   "failed": 0,
+   "unsub": 1,
+   "bounce": 0,
+   "spam": 0,
+   "srautu": 4,
+   "bangu": 0
+  },
+  "sviesa_maza": [
+   "pilka",
+   "per mažai duomenų (12 išsiųsta)"
+  ],
+  "sviesa_stop": [
+   "raudona",
+   "STOP — virš 5%"
+  ],
+  "sviesa_gelt": [
+   "geltona",
+   "stebėti — virš 0.1%"
+  ],
+  "sviesa_ok": [
+   "zalia",
+   "norma"
+  ],
+  "html_ilgis": 11725,
+  "yra_stopgo": "TAIP",
+  "yra_srautai": 26,
+  "yra_refill": "TAIP",
+  "yra_woo_pastaba": "TAIP"
+ }
+}
