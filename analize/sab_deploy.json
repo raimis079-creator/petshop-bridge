@@ -1,0 +1,222 @@
+{
+ "v": "SAB-DEPLOY-v1.0",
+ "kurimas": 200,
+ "sid": 4099,
+ "rez": {
+  "v": "SAB-DEPLOY-v1.0",
+  "diegimas": {
+   "post-purchase-7d": "OK",
+   "post-purchase-14d": "OK",
+   "win-back-60": "OK",
+   "win-back-90": "OK",
+   "win-back-120": "OK",
+   "legacy-l1": "OK",
+   "shipment-returned": "OK",
+   "pet-reminder": "OK",
+   "subscription-t5": "OK",
+   "order-shipped": "OK"
+  },
+  "render": {
+   "post_purchase_7d": {
+    "pilnas": {
+     "s": "Kaip sekasi jūsų augintiniui su naujomis prekėmis?",
+     "dydis": 2475,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Kaip sekasi jūsų augintiniui su naujomis prekėmis?",
+     "dydis": 2192,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    }
+   },
+   "post_purchase_14d": {
+    "pilnas": {
+     "s": "Jei prekės tiko — pakartoti užsakymą užtruks minutę",
+     "dydis": 2289,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Jei prekės tiko — pakartoti užsakymą užtruks minutę",
+     "dydis": 2030,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    }
+   },
+   "win_back_60": {
+    "pilnas": {
+     "s": "Seniai nesimatėme — kaip laikosi jūsų augintinis?",
+     "dydis": 2490,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Seniai nesimatėme — kaip laikosi jūsų augintinis?",
+     "dydis": 2490,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    }
+   },
+   "win_back_90": {
+    "pilnas": {
+     "s": "Vienas įrankis, kuris taupo laiką renkantis maistą",
+     "dydis": 2719,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Vienas įrankis, kuris taupo laiką renkantis maistą",
+     "dydis": 2719,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    }
+   },
+   "win_back_120": {
+    "pilnas": {
+     "s": "Paskutinis mūsų priminimas — toliau nebetrukdysime",
+     "dydis": 2655,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Paskutinis mūsų priminimas — toliau nebetrukdysime",
+     "dydis": 2655,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    }
+   },
+   "legacy_reactivation_l1": {
+    "pilnas": {
+     "s": "Petshop.lt atsinaujino — jūsų paskyra jau laukia",
+     "dydis": 2963,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Petshop.lt atsinaujino — jūsų paskyra jau laukia",
+     "dydis": 2963,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": true,
+     "undefined": false
+    }
+   },
+   "shipment_returned": {
+    "pilnas": {
+     "s": "Jūsų siunta grįžo mums (užsakymas 34999)",
+     "dydis": 2002,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Jūsų siunta grįžo mums",
+     "dydis": 1943,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    }
+   },
+   "pet_reminder_due": {
+    "pilnas": {
+     "s": "Priminimas: Reksas — skiepai",
+     "dydis": 2103,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Priminimas jūsų augintiniui: suplanuotas priminimas",
+     "dydis": 2031,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    }
+   },
+   "subscription_t5_notice": {
+    "pilnas": {
+     "s": "Jūsų reguliari siunta — po 5 dienų",
+     "dydis": 2402,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Jūsų reguliari siunta — po 5 dienų",
+     "dydis": 2111,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    }
+   },
+   "order_shipped": {
+    "pilnas": {
+     "s": "Jūsų užsakymas AVPN-1043 išsiųstas",
+     "dydis": 1941,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    },
+    "tuscias": {
+     "s": "Jūsų užsakymas išsiųstas",
+     "dydis": 1639,
+     "doctype": true,
+     "uab": true,
+     "lt": true,
+     "atsisakymas": false,
+     "undefined": false
+    }
+   }
+  }
+ }
+}
