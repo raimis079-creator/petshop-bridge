@@ -1,31 +1,315 @@
 {
- "v": "SIUNT-v1.0",
+ "v": "SIUNT-v1.1",
  "kurimas": 200,
- "sid": 4110,
+ "sid": 4111,
  "rez": {
-  "v": "SIUNT-v1.0",
+  "v": "SIUNT-v1.1",
   "eile": {
-   "order_paid": 53,
-   "order_shipped": 54,
-   "payment_failed": 55,
-   "shipment_returned": 56,
-   "consent_changed": 57,
-   "pet_reminder_due": 58,
-   "subscription_t5_notice": 59,
-   "refill_due": 60,
-   "cart_abandoned": 61,
-   "cart_abandoned_2": 62,
-   "post_purchase_2d": 63,
-   "post_purchase_7d": 64,
-   "post_purchase_14d": 65,
-   "win_back_60": 66,
-   "win_back_90": 67,
-   "win_back_120": 68,
-   "legacy_reactivation_l1": 69,
-   "founding_activation": 70,
-   "back_in_stock": 71,
-   "browse_abandoned": 72
+   "order_paid": 73,
+   "order_shipped": 74,
+   "payment_failed": 75,
+   "shipment_returned": 76,
+   "consent_changed": 77,
+   "pet_reminder_due": 78,
+   "subscription_t5_notice": 79,
+   "refill_due": 80,
+   "cart_abandoned": 81,
+   "cart_abandoned_2": 82,
+   "post_purchase_2d": 83,
+   "post_purchase_7d": 84,
+   "post_purchase_14d": 85,
+   "win_back_60": 86,
+   "win_back_90": 87,
+   "win_back_120": 88,
+   "legacy_reactivation_l1": 89,
+   "founding_activation": 90,
+   "back_in_stock": 91,
+   "browse_abandoned": 92
   },
-  "FATAL": "Call to protected method Petshop_Email_Dispatch::process_one() from global scope @ /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:47"
+  "siuntimas": {
+   "order_paid": {
+    "action": "SENT",
+    "error": ""
+   },
+   "order_shipped": {
+    "action": "SENT",
+    "error": ""
+   },
+   "payment_failed": {
+    "action": "SENT",
+    "error": ""
+   },
+   "shipment_returned": {
+    "action": "SENT",
+    "error": ""
+   },
+   "consent_changed": {
+    "action": "SENT",
+    "error": ""
+   },
+   "pet_reminder_due": {
+    "action": "SENT",
+    "error": ""
+   },
+   "subscription_t5_notice": {
+    "action": "SENT",
+    "error": ""
+   },
+   "refill_due": {
+    "action": "SENT",
+    "error": ""
+   },
+   "cart_abandoned": {
+    "action": "SENT",
+    "error": ""
+   },
+   "cart_abandoned_2": {
+    "action": "SENT",
+    "error": ""
+   },
+   "post_purchase_2d": {
+    "action": "SENT",
+    "error": ""
+   },
+   "post_purchase_7d": {
+    "action": "SENT",
+    "error": ""
+   },
+   "post_purchase_14d": {
+    "action": "SENT",
+    "error": ""
+   },
+   "win_back_60": {
+    "action": "SENT",
+    "error": ""
+   },
+   "win_back_90": {
+    "action": "SENT",
+    "error": ""
+   },
+   "win_back_120": {
+    "action": "SENT",
+    "error": ""
+   },
+   "legacy_reactivation_l1": {
+    "action": "SENT",
+    "error": ""
+   },
+   "founding_activation": {
+    "action": "SENT",
+    "error": ""
+   },
+   "back_in_stock": {
+    "action": "SENT",
+    "error": ""
+   },
+   "browse_abandoned": {
+    "action": "SENT",
+    "error": ""
+   }
+  },
+  "busenos": [
+   {
+    "flow": "order_paid",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "order_shipped",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "payment_failed",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "shipment_returned",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "consent_changed",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "pet_reminder_due",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "subscription_t5_notice",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "refill_due",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "win_back_60",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "win_back_90",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "win_back_120",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "legacy_reactivation_l1",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "founding_activation",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "back_in_stock",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "pending",
+    "s": null
+   },
+   {
+    "flow": "order_paid",
+    "status": "sent",
+    "s": "Užsakymas AVPN-1042 priimtas"
+   },
+   {
+    "flow": "order_shipped",
+    "status": "sent",
+    "s": "Jūsų užsakymas AVPN-1042 išsiųstas"
+   },
+   {
+    "flow": "payment_failed",
+    "status": "sent",
+    "s": "Užsakymas AVPN-1042 laukia apmokėjimo"
+   },
+   {
+    "flow": "shipment_returned",
+    "status": "sent",
+    "s": "Jūsų siunta grįžo mums — užsakymas 1042"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "s": "Patvirtiname: sutikote gauti mūsų naujienas"
+   },
+   {
+    "flow": "pet_reminder_due",
+    "status": "sent",
+    "s": "Priminimas: Reksas — skiepai"
+   },
+   {
+    "flow": "subscription_t5_notice",
+    "status": "sent",
+    "s": "Jūsų reguliari siunta — po 5 dienų"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "s": "Jūsų augintinio maisto gali netrukus pritrūkti"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "s": "Jūsų krepšelis vis dar laukia"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "s": "Jūsų krepšelis vis dar laukia"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "s": "Ar su užsakymu viskas gerai?"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "s": "Kaip tiko jūsų pirkinys?"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "s": "Ankstesnį užsakymą galite pakartoti"
+   },
+   {
+    "flow": "win_back_60",
+    "status": "sent",
+    "s": "Gal jau metas papildyti atsargas?"
+   },
+   {
+    "flow": "win_back_90",
+    "status": "sent",
+    "s": "Maisto rekomendacijos pagal jūsų augintinį"
+   },
+   {
+    "flow": "win_back_120",
+    "status": "sent",
+    "s": "Čia sustojame — jei prireiks, mus rasite"
+   },
+   {
+    "flow": "legacy_reactivation_l1",
+    "status": "sent",
+    "s": "Petshop.lt atsinaujino"
+   },
+   {
+    "flow": "founding_activation",
+    "status": "sent",
+    "s": "Petshop.lt atsidaro — jūs pirmieji"
+   },
+   {
+    "flow": "back_in_stock",
+    "status": "sent",
+    "s": "Prekė vėl prekyboje: Monge medium adult su vištien"
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "sent",
+    "s": "Jūsų neseniai žiūrėtos prekės"
+   }
+  ],
+  "isvalyta_eiluciu": 40
  }
 }
