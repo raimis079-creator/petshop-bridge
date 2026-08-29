@@ -1,0 +1,32 @@
+{
+ "v": "E16-163711",
+ "kurimas": 200,
+ "sid": 4131,
+ "E16": {
+  "v": "E16-v1.0",
+  "admin_id": 1,
+  "gali": "TAIP",
+  "tevas": {
+   "pav": "Petshop langai",
+   "slug": "petshop-langai",
+   "cap": "manage_options"
+  },
+  "submeniu": [
+   {
+    "pav": "Apžvalga",
+    "slug": "petshop-langai"
+   },
+   {
+    "pav": "Laiškų šablonai",
+    "slug": "petshop-laiskai"
+   }
+  ],
+  "kiti_petshop": [
+   "petshop-langai"
+  ],
+  "metodai": {
+   "apzvalga": "yra",
+   "laiskai": "yra"
+  }
+ }
+}
