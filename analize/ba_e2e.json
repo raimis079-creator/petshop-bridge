@@ -1,0 +1,93 @@
+{
+ "v": "BA-E2E-v1.0",
+ "kurimas": 200,
+ "sid": 4097,
+ "rez": {
+  "v": "BA-E2E-v1.0",
+  "srautas": {
+   "class": "marketing",
+   "template": "browse-abandoned",
+   "delay": 0
+  },
+  "lentele": true,
+  "cron": true,
+  "prekes": [
+   "12483",
+   "12484"
+  ],
+  "dry": {
+   "dry_run": true,
+   "candidates": 2,
+   "jobs": 0,
+   "skipped": [
+    [
+     "ba_b_2026@example.com",
+     "cart_flow_owns"
+    ]
+   ],
+   "details": [
+    {
+     "email": "ba_a_2026@example.com",
+     "action": "WOULD_ENQUEUE",
+     "prekiu": 2
+    }
+   ]
+  },
+  "apply": {
+   "dry_run": false,
+   "candidates": 2,
+   "jobs": 1,
+   "skipped": [
+    [
+     "ba_b_2026@example.com",
+     "cart_flow_owns"
+    ]
+   ],
+   "details": [
+    {
+     "email": "ba_a_2026@example.com",
+     "action": "ENQUEUED",
+     "prekiu": 2
+    }
+   ]
+  },
+  "job": {
+   "id": "49",
+   "flow": "browse_abandoned",
+   "flow_class": "marketing",
+   "status": "pending",
+   "job_key": "browse:b55003718b9b6461dc5ffaad28a3388d:20260829"
+  },
+  "A_busenos": [
+   "sent",
+   "sent"
+  ],
+  "render": {
+   "subject": "Prekės, kurias neseniai žiūrėjote",
+   "html_dydis": 3152,
+   "atsisakymo_nuoroda": true,
+   "doctype": true,
+   "uab": true
+  },
+  "eligibility_be_consent": {
+   "allowed": false,
+   "reason": "consent_missing",
+   "terminal": true
+  },
+  "daznio_riba": [
+   [
+    "ba_a_2026@example.com",
+    "frequency_cap"
+   ],
+   [
+    "ba_b_2026@example.com",
+    "cart_flow_owns"
+   ]
+  ],
+  "isvalyta": {
+   "browse": 0,
+   "jobs": 0,
+   "carts": 0
+  }
+ }
+}
