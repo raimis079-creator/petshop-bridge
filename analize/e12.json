@@ -1,0 +1,107 @@
+{
+ "v": "E12-E13-162725",
+ "kurimas": 200,
+ "sid": 4129,
+ "E12": {
+  "v": "E12-v1.0",
+  "faze": "E12",
+  "dst": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laiskai.php",
+  "buvo": "NERA",
+  "irasyta": "OK"
+ },
+ "E13": {
+  "v": "E12-v1.0",
+  "faze": "E13",
+  "renderis": "irašyta",
+  "busena_pries": {
+   "versija": "1.0",
+   "lentele": "gaj6_ps_email_content",
+   "renderio_failas": "yra",
+   "srautu_viso": 20,
+   "paskelbta_srautu": 0,
+   "juodrasciu": 0,
+   "irašu_viso": 0
+  },
+  "1_fallback": {
+   "subject": "Gal jau metas papildyti atsargas?",
+   "html_ilgis": 2458
+  },
+  "2_validacija": {
+   "ok": false,
+   "klaidos": [
+    "Antraste (subject) privaloma",
+    "Reikia bent vieno turinio bloko"
+   ]
+  },
+  "3_juodrastis": {
+   "ok": true,
+   "id": 1,
+   "version": 1,
+   "status": "draft"
+  },
+  "4_po_juodrascio": {
+   "subject": "Gal jau metas papildyti atsargas?",
+   "tas_pats_kaip_failas": "TAIP"
+  },
+  "5_paskelbimas": {
+   "ok": true,
+   "flow": "win_back_60",
+   "version": 1,
+   "status": "published"
+  },
+  "6_po_paskelbimo": {
+   "subject": "Pasiilgome, Raimondas",
+   "html_ilgis": 2654,
+   "vardas_pakeistas": "TAIP",
+   "sablonas_pasikeite": "TAIP",
+   "mygtukas_yra": "TAIP",
+   "tuscias_mygtukas_praleistas": "TAIP",
+   "likutinis_skliaustas": "ne"
+  },
+  "7_be_payload": {
+   "subject": "Pasiilgome, ",
+   "html_ilgis": 2186,
+   "mygtuku_nera": "TAIP"
+  },
+  "8_kiti_srautai": {
+   "order_paid_subject": "Užsakymas 35012 priimtas",
+   "html_ilgis": 1462
+  },
+  "9_versijos": [
+   {
+    "id": "1",
+    "version": "1",
+    "status": "published",
+    "subject": "Pasiilgome, {vardas}",
+    "author_id": "1",
+    "created_at": "2026-08-29 16:28:38",
+    "published_at": "2026-08-29 16:28:38"
+   }
+  ],
+  "9_perziura": {
+   "ok": true,
+   "subject": "Pasiilgome, Raimondas",
+   "ilgis": 2654
+  },
+  "10_atjungimas": {
+   "ok": true,
+   "atjungta": 1,
+   "pastaba": "srautas grizo i failini sablona"
+  },
+  "10_po_atjungimo": {
+   "subject": "Gal jau metas papildyti atsargas?",
+   "grizo_i_faila": "TAIP"
+  },
+  "istrinta_irasu": 1,
+  "busena_po": {
+   "versija": "1.0",
+   "lentele": "gaj6_ps_email_content",
+   "renderio_failas": "yra",
+   "srautu_viso": 20,
+   "paskelbta_srautu": 0,
+   "juodrasciu": 0,
+   "irašu_viso": 0
+  },
+  "po_valymo_subject": "Gal jau metas papildyti atsargas?"
+ }
+}
