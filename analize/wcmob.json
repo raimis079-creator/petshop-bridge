@@ -1,0 +1,24 @@
+{
+ "v": "WCMOB-RECON-v1.0",
+ "kurimas": 200,
+ "sid": 4108,
+ "rez": {
+  "v": "WCMOB-RECON-v1.0",
+  "failai": {
+   "templates/emails/email-mobile-messaging.php": [
+    "3: * Email mobile messaging",
+    "5: * This template can be overridden by copying it to yourtheme/woocommerce/emails/email-mobile-messaging.php.",
+    "18: use Automattic\\WooCommerce\\Internal\\Orders\\MobileMessagingHandler;",
+    "20: echo wp_kses_post( MobileMessagingHandler::prepare_mobile_message( $order, $blog_id, $now, $domain ) );"
+   ],
+   "includes/emails/class-wc-email.php": [],
+   "templates/emails/email-footer.php": []
+  },
+  "includes": {
+   "class-wc-email-new-order.php": [
+    "52: add_action( 'woocommerce_email_footer', array( $this, 'mobile_messaging' ), 9 ); // Run before the default email footer.",
+    "277: public function mobile_messaging( $email ) {"
+   ]
+  }
+ }
+}
