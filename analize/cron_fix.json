@@ -1,0 +1,53 @@
+{
+ "v": "CRONFIX-v1.0",
+ "snip_id": 4089,
+ "dry": {
+  "v": "FIX-v1.0",
+  "rezimas": "DRY",
+  "sargas_esamas_md5": "cc82a77f1de59939d894c6e3a355626e",
+  "sargas_sutampa": true,
+  "valymas_jau_yra": false,
+  "konfliktai": [],
+  "sargas_b64_md5": "a36d9d9209a79e6fa06af1411bb1254a",
+  "valymas_b64_md5": "268d0a807dd46d1a564b14af7d130ab4",
+  "md5_ok": true,
+  "sintakse_sargas": "ok (3472)",
+  "sintakse_valymas": "ok (346)",
+  "naslaiciu_sk": 23,
+  "sh_viso": 23,
+  "ribos_importai_dabar": "(numatyta 2,3,7)",
+  "stabdis": false,
+  "veiksmas": "BUTU VYKDOMA"
+ },
+ "apply": {
+  "v": "FIX-v1.0",
+  "rezimas": "APPLY",
+  "sargas_esamas_md5": "cc82a77f1de59939d894c6e3a355626e",
+  "sargas_sutampa": true,
+  "valymas_jau_yra": false,
+  "konfliktai": [],
+  "sargas_b64_md5": "a36d9d9209a79e6fa06af1411bb1254a",
+  "valymas_b64_md5": "268d0a807dd46d1a564b14af7d130ab4",
+  "md5_ok": true,
+  "sintakse_sargas": "ok (3472)",
+  "sintakse_valymas": "ok (346)",
+  "naslaiciu_sk": 23,
+  "sh_viso": 23,
+  "ribos_importai_dabar": "(numatyta 2,3,7)",
+  "stabdis": false,
+  "kopijos_raktas": "ps_shipments_naslaiciai_bak_20260829_082044",
+  "kopijoje_eil": 23,
+  "istrinta": 23,
+  "sargas_kopija": "ok",
+  "sargas_po": "a36d9d9209a79e6fa06af1411bb1254a",
+  "valymas_po": "268d0a807dd46d1a564b14af7d130ab4",
+  "sargas_ok": true,
+  "valymas_ok": true,
+  "ribos_importai_po": "2,3"
+ },
+ "svetaine": {
+  "http": 200,
+  "fatal": false
+ },
+ "ataskaitos_http": 200
+}
