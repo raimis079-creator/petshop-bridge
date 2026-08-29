@@ -1,0 +1,27 @@
+{
+ "v": "K4-133842",
+ "kurimas": 200,
+ "sid": 4123,
+ "K4": {
+  "v": "K4-v1.0",
+  "failas": "/plugins/petshop-core/includes/class-contact-policy.php",
+  "metodai": [
+   "static has_consent",
+   "static normalize",
+   "static compute",
+   "static is_marketable",
+   "static sync_transactional_only",
+   "static on_contact_used",
+   "static queue",
+   "static unqueue",
+   "static pending",
+   "static drain",
+   "static init",
+   "static on_consent_changed"
+  ],
+  "src_has_consent": "\tpublic static function has_consent( $email ) {\n\t\tif ( ! function_exists( 'ps_get_marketing_consent' ) ) { return false; }\n\t\t$raw = ps_get_marketing_consent( $email );\n\t\treturn self::normalize( $raw );\n\t}\n",
+  "ps_get_marketing_consent_failas": "/plugins/petshop-core/petshop-core.php",
+  "src_ps_get_marketing_consent": "\tfunction ps_get_marketing_consent( $email ) {\n\t\t$val = Petshop_Consent_Log::current_value( $email, 'marketing_consent' );\n\t\treturn ( $val === null ) ? '' : $val;\n\t}\n",
+  "meta_raktai": []
+ }
+}
