@@ -1,0 +1,51 @@
+{
+ "v": "e2_recon-204950",
+ "kurimas": 200,
+ "sid": 4160,
+ "R1": {
+  "v": "E2R1",
+  "dispatch": {
+   "render": "flow,payload,?row",
+   "process_one": "row,?dry_run",
+   "enqueue": "flow,email,?payload,?args",
+   "flows": "",
+   "check_eligibility": "flow_class,email,?flow,?context"
+  },
+  "flow_pvz": {
+   "refill_due": {
+    "class": "service",
+    "template": "refill",
+    "delay": 0
+   },
+   "founding_activation": {
+    "class": "marketing",
+    "template": "founding",
+    "delay": 0
+   }
+  },
+  "flows_filtras": "TAIP",
+  "template_filtras": "TAIP",
+  "render_kodas": "function render( $flow, $payload, $row = array() ) {\n\t\t$flows = self::flows();\n\t\tif ( ! isset( $flows[ $flow ] ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\t\t$slug = $flows[ $flow ]['template'];\n\t\t$file = PETSHOP_CORE_DIR . 'templates/emails/' . $slug . '.php';\n\n\t\t$custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );\n\t\tif ( ! file_exists( $custom ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\n\t\t$subject    = '';\n\t\t$flow_class = isset( $row['flow_class'] ) ? $row['flow_class'] : 'service';\n\t\t$recipient  = isset( $row['recipient_email'] ) ? $row['recipient_email'] : '';\n\t\tob_start();\n\t\tinclude $custom; // sablonas gali nustatyti $subject; mato $payload, $flow_class, $recipient\n\t\t$html = ob_get_clean();\n\n\t\tif ( $subject === '' && ! empty( $row['subject'] ) ) {\n\t\t\t$subject = $row['subject'];\n\t\t}\n\t\treturn array( 'subject' => $subject, 'htm",
+  "layout": {
+   "logo_url": "",
+   "open": "subject,preheader",
+   "p": "html,size",
+   "muted": "html,size",
+   "button": "url,label",
+   "secondary": "links",
+   "divider": "",
+   "close": "flow_class,email,reason",
+   "wrap": "args"
+  },
+  "laiskai_md5": "2c0d6a074dc6031caa5f79665b2cd954",
+  "bloku_tipai": [],
+  "renderis_yra": "TAIP",
+  "kamp_md5": "d16559be5caadc85de38c60b04f61daa",
+  "kamp_whitelist": "array('founding_activation', 'legacy_reactivation_l1')",
+  "unsub_paieska": {
+   "atsisakym": 4,
+   "unsubscribe": 0,
+   "token": 0
+  }
+ }
+}
