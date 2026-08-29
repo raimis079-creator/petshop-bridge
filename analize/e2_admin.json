@@ -1,0 +1,44 @@
+{
+ "v": "e2_admin_diegimas-210313",
+ "kurimas": 200,
+ "sid": 4163,
+ "D2": {
+  "v": "E2A-1.0",
+  "faze": "D2",
+  "pries": "NERA",
+  "po": "4ff31ac22cff45d3b5efecbae290a836",
+  "irasyta": "OK"
+ },
+ "P2": {
+  "v": "E2A-1.0",
+  "faze": "P2",
+  "nl_id": 3,
+  "sarasas": {
+   "http": 200,
+   "ilgis": 311796,
+   "warning": "NERA",
+   "naujas_mygtukas": "TAIP",
+   "eilute": "TAIP"
+  },
+  "redaktorius": {
+   "http": 200,
+   "ilgis": 324451,
+   "warning": "NERA",
+   "perziura_iframe": "TAIP",
+   "siuntimo_blokas": "TAIP",
+   "blokai_json": "TAIP",
+   "go_confirm": "TAIP"
+  },
+  "is_posto": {
+   "bloku": 2,
+   "ids": [
+    35147
+   ]
+  },
+  "gyva_html": {
+   "ilgis": 2905,
+   "preke": "TAIP"
+  },
+  "po_valymo": 0
+ }
+}
