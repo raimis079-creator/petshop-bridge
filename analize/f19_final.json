@@ -1,0 +1,37 @@
+{
+ "v": "f19_veiksmas-222902",
+ "kurimas": 200,
+ "sid": 4175,
+ "D2": {
+  "v": "F19W-1.0",
+  "faze": "D2",
+  "pries": "f84759e0481c4cd46e6dd64eb7e6ea5d",
+  "irasyta": "OK"
+ },
+ "T2": {
+  "v": "F19W-1.0",
+  "faze": "T2",
+  "token": "sugeneruotas",
+  "GET": {
+   "http": 200,
+   "forma": "TAIP",
+   "mygtukas": "TAIP",
+   "noindex": "TAIP"
+  },
+  "po_GET_confirmed": 0,
+  "GET2_forma": "TAIP",
+  "POST": {
+   "http": 200,
+   "patvirtinta_tekstas": "TAIP"
+  },
+  "po_POST_confirmed": 1,
+  "POST2_nebegalioja": "TAIP",
+  "skip": {
+   "pries": "2026-09-03",
+   "po": "2026-10-01",
+   "praleista_tekstas": "TAIP"
+  },
+  "blogas": "TAIP",
+  "po_valymo": 0
+ }
+}
