@@ -1,0 +1,46 @@
+{
+ "v": "PB0-180837",
+ "kurimas": 200,
+ "sid": 4143,
+ "PB0": {
+  "v": "PB0-v1.0",
+  "cart_abandoned": {
+   "failas": "cart-abandoned-1.php",
+   "baitai": 3328,
+   "ciklas": "tshop_Email_Layout::p(\n\t\t'Sveiki, pastebėjome, kad krepšelyje liko <strong>'\n\t\t. esc_html( (string) $items[0]['name'] ) . '</strong>. '\n\t\t. 'Jis išsaugotas — galite tęsti, kai būsite pasiruošę.'\n\t);\n} else {\n\t$body .= Petshop_Email_Layout::p(\n\t\t'Sveiki, pastebėjome, kad krepšelyje liko prekių. '\n\t\t. 'Jis išsaugotas — galite tęsti, kai būsite pasiruošę.'\n\t);\n}\n\n/* Prekiu sarasas — be kainu akcentavimo, be nuolaidos tono */\nif ( $items ) {\n\t$li = '';\n\tforeach ( $items as $i ) {\n\t\t$nm = isset( $i['name'] ) ? (string) $i['name'] : '';\n\t\t$q  = isset( $i['quantity'] ) ? (float) $i['quantity'] : 0;\n\t\tif ( '' === $nm ) { continue; }\n\t\t$li .= '<li style=\"margin-bottom:6px;\">' . esc_html( $nm );\n\t\tif ( $q > 0 ) {\n\t\t\t$li .= ' — ' . esc_html( rtrim( rtrim( number_format( $q, 2, ',', '' ), '0' ), ',' ) ) . ' vnt.';\n\t\t}\n\t\t$li .= '</li>';\n\t}\n\tif ( $li ) {\n\t\t$body .= '<tr><td style=\"font-size:14px;line-height:1.6;padding-bottom:18px;\">'\n\t\t\t. '<ul style=\"margin:0;padding-left:18px;\">' . $li . '</ul></td></tr>';\n\t}\n}\n\n/* VIENAS CTA */\nif ( $cta ) {\n\t$body .= Petshop_Email_Layout::button( $cta, 'Grįžti į krepšelį' );\n} else {\n\t// Be veikiancios nuorodos mygtuko NERODOM — geriau nieko, nei negyvas CTA.\n\t$body .= Petshop_Email_Layout::muted( 'Krepšelį rasite prisijungę prie petshop.lt.' );\n}\n\n$body .= Petshop_Email_Layout::muted( 'Kainos ir prekių prieinamumas gali būti pasikeitę — krepšelį atnauji"
+  },
+  "cart_abandoned_2": {
+   "failas": "cart-abandoned-2.php",
+   "baitai": 2505,
+   "ciklas": "et( $payload['cart_items'] ) && is_array( $payload['cart_items'] ) ? $payload['cart_items'] : array();\n$cta   = ! empty( $payload['recovery_url'] ) ? $payload['recovery_url'] : '';\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n$subject = 'Jūsų krepšelis vis dar laukia';\n\n$body = Petshop_Email_Layout::p(\n\t'Krepšelis vis dar laukia. Jei kilo klausimų dėl pasirinkimo — mielai padėsime.'\n);\n\nif ( $items ) {\n\t$li = '';\n\tforeach ( $items as $i ) {\n\t\t$nm = isset( $i['name'] ) ? (string) $i['name'] : '';\n\t\t$q  = isset( $i['quantity'] ) ? (float) $i['quantity'] : 0;\n\t\tif ( '' === $nm ) { continue; }\n\t\t$li .= '<li style=\"margin-bottom:6px;\">' . esc_html( $nm );\n\t\tif ( $q > 0 ) {\n\t\t\t$li .= ' — ' . esc_html( rtrim( rtrim( number_format( $q, 2, ',', '' ), '0' ), ',' ) ) . ' vnt.';\n\t\t}\n\t\t$li .= '</li>';\n\t}\n\tif ( $li ) {\n\t\t$body .= '<tr><td style=\"font-size:14px;line-height:1.6;padding-bottom:18px;\">'\n\t\t\t. '<ul style=\"margin:0;padding-left:18px;\">' . $li . '</ul></td></tr>';\n\t}\n}\n\n// VIENAS kelias, be antriniu (saltinis).\nif ( $cta ) {\n\t$body .= Petshop_Email_Layout::button( $cta, 'Grįžti į krepšelį' );\n} else {\n\t$body .= Petshop_Email_Layout::muted( 'Krepšelį rasite prisijungę prie petshop.lt.' );\n}\n\n$body .= Petshop_Email_Layout::muted( 'Kainos ir prekių prieinamumas gali būti pasikeitę — krepšelį atnaujinsime pagal dabartinį kat"
+  },
+  "post_purchase_2d": {
+   "failas": "post-purchase-2d.php",
+   "baitai": 3940,
+   "ciklas": "t : '';\n$fc        = isset( $flow_class ) ? $flow_class : 'service';\n\n$subject = 'Ar su užsakymu viskas gerai?';\n\n// Uzsakymo numeris — atpazinimui. Jei numerio nera, sakinys lieka be jo.\n$body = Petshop_Email_Layout::p(\n\t$nr\n\t\t? 'Neseniai išsiuntėme jūsų užsakymą Nr. ' . esc_html( $nr ) . '.'\n\t\t: 'Neseniai išsiuntėme jūsų užsakymą.'\n);\n\n// Prekiu sarasas — kad zmogus is karto atpazintu, apie kuri uzsakyma kalbama.\nif ( $items ) {\n\t$li = '';\n\tforeach ( $items as $i ) {\n\t\t$nm = isset( $i['name'] ) ? (string) $i['name'] : '';\n\t\t$q  = isset( $i['quantity'] ) ? (float) $i['quantity'] : 0;\n\t\tif ( '' === $nm ) { continue; }\n\t\t$li .= '<li style=\"margin-bottom:6px;\">' . esc_html( $nm );\n\t\tif ( $q > 0 ) {\n\t\t\t$li .= ' — ' . esc_html( rtrim( rtrim( number_format( $q, 2, ',', '' ), '0' ), ',' ) ) . ' vnt.';\n\t\t}\n\t\t$li .= '</li>';\n\t}\n\tif ( $li ) {\n\t\t$body .= '<tr><td style=\"font-size:14px;line-height:1.6;padding-bottom:18px;\">'\n\t\t\t. '<ul style=\"margin:0;padding-left:18px;\">' . $li . '</ul></td></tr>';\n\t}\n}\n\n// PAGRINDINE ZINUTE — Raimio patvirtinto teksto ANTRA eilute.\n// ★ Pirma eilute („Ar su uzsakymu viskas gerai?\") yra ANTRASTE (subject),\n//   todel CIA jos NEKARTOJAM. S327 pirmoje versijoje ji buvo abiejose\n//   vietose — antraste ir tekstas skambejo identiskai.\n$body .= Petshop_Email_Layout::p(\n\t'Jei siunta dar neatvyko arba kažkas negerai, '\n\t. 'atsakykite į šį laišką — padėsime išspr"
+  },
+  "browse_abandoned": {
+   "failas": "browse-abandoned.php",
+   "baitai": 1877,
+   "ciklas": "_array( $payload['products'] ) ? $payload['products'] : array();\n$pirma  = isset( $payload['first_url'] ) ? $payload['first_url'] : ( $prekes ? $prekes[0]['url'] : '' );\n$email  = isset( $recipient ) ? $recipient : '';\n$fc     = isset( $flow_class ) ? $flow_class : 'marketing';\n\n$subject = 'Jūsų neseniai žiūrėtos prekės';\n\n$body = Petshop_Email_Layout::p(\n\t'Paliekame čia prekes, kurias neseniai žiūrėjote — jei norėsite prie jų grįžti.'\n);\n\nif ( $prekes ) {\n\t$sarasas = '';\n\tforeach ( $prekes as $pr ) {\n\t\t$sarasas .= '&bull; ' . esc_html( $pr['name'] ) . '<br />';\n\t}\n\t$body .= Petshop_Email_Layout::p( $sarasas );\n}\n\nif ( $pirma ) {\n\t$body .= Petshop_Email_Layout::button( $pirma, 'Peržiūrėti prekę' );\n}\n\n// Antriniai TEKSTINIAI linkai i likusias prekes (ne konkuruojantys mygtukai).\nif ( count( $prekes ) > 1 ) {\n\t$antriniai = array();\n\tforeach ( array_slice( $prekes, 1 ) as $pr ) {\n\t\t$antriniai[ $pr['name'] ] = $pr['url'];\n\t}\n\t$body .= Petshop_Email_Layout::secondary( $antriniai );\n}\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Kad nereikėtų jų ieškoti iš naujo.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes esate prisijungęs petshop.lt klientas ir sutikote gauti mūsų naujienas.',\n) );\n"
+  },
+  "schemos_katalogas": "yra",
+  "schemu_failai": [
+   "cart_abandoned.schema.json",
+   "consent_changed.schema.json",
+   "legacy_contact_imported.schema.json",
+   "order_paid.schema.json",
+   "order_shipped.schema.json",
+   "payment_failed.schema.json",
+   "pet_product_assigned.schema.json",
+   "pet_profile_created.schema.json",
+   "pet_profile_updated.schema.json",
+   "pet_reminder_due.schema.json",
+   "refill_due.schema.json",
+   "refill_feedback_submitted.schema.json",
+   "shipment_returned.schema.json",
+   "subscription_t2_sms_needed.schema.json",
+   "subscription_t5_notice.schema.json"
+  ]
+ }
+}
