@@ -1,0 +1,35 @@
+{
+ "v": "V13-V14-181303",
+ "kurimas": 200,
+ "sid": 4144,
+ "V13": {
+  "v": "V13-v1.0",
+  "faze": "V13",
+  "pries": "c02ade5d9e25aa8a062342eaff04413e",
+  "po": "2c0d6a074dc6031caa5f79665b2cd954",
+  "irasyta": "OK"
+ },
+ "V14": {
+  "v": "V13-v1.0",
+  "faze": "V14",
+  "versija": "1.3",
+  "1_sarasas": "SUTAMPA byte-tiksliai",
+  "2_tuscias": "tuscia (gerai)",
+  "3_taskai": "gerai",
+  "4_salyga": {
+   "su": "Išsiuntėme užsakymą Nr. 35012.",
+   "be": "Išsiuntėme užsakymą."
+  },
+  "5_kitaip": {
+   "su": "Krepšelyje liko Josera Help Sensitive 12,5 kg.",
+   "be": "Krepšelyje liko prekių."
+  },
+  "6_antrines": {
+   "yra_farmina": "taip",
+   "nera_exclusion": "taip"
+  },
+  "7_validacija": [
+   "Blokas #1: prekiu sarašui reikia šaltinio"
+  ]
+ }
+}
