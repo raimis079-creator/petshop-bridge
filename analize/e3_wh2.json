@@ -1,0 +1,12 @@
+{
+ "v": "e3_wh2-204105",
+ "kurimas": 200,
+ "sid": 4158,
+ "W2": {
+  "v": "E3W2",
+  "eil": {
+   "212": "$now = current_time( 'mysql', true );",
+   "227": "$email, gmdate( 'Y-m-d H:i:s', time() - 14 * DAY_IN_SECONDS ) ) );"
+  }
+ }
+}
