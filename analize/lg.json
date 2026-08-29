@@ -1,0 +1,186 @@
+{
+ "v": "L1-L2-L3-132901",
+ "kurimas": 200,
+ "sid": 4119,
+ "L1": {
+  "v": "L-v1.0",
+  "faze": "L1",
+  "dst": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-legacy-importas.php",
+  "buvo": "NERA",
+  "irasyta": "OK"
+ },
+ "L2": {
+  "v": "L-v1.0",
+  "faze": "L2",
+  "antraste": {
+   "failas": "_e2e_testas.csv",
+   "skirtukas": ";",
+   "stulpeliai": [
+    "E-mail",
+    "Vardas",
+    "Pavarde",
+    "Telefonas",
+    "Miestas"
+   ],
+   "eiluciu": 5,
+   "pavyzdziai": [
+    [
+     "ps.e2e.a@example.invalid",
+     "Ana",
+     "Antaite",
+     "+37060000001",
+     "Vilnius"
+    ],
+    [
+     "ps.e2e.b@example.invalid",
+     "Bronius",
+     "Bagdonas",
+     "+37060000002",
+     "Kaunas"
+    ],
+    [
+     "nera-pasto",
+     "Cezaris",
+     "Cepas",
+     "+37060000003",
+     "Klaipeda"
+    ],
+    [
+     "ps.e2e.a@example.invalid",
+     "Ana",
+     "Antaite",
+     "+37060000001",
+     "Vilnius"
+    ],
+    [
+     "ps.e2e.c@example.invalid",
+     "Cilija",
+     "Cirvinskaite",
+     "+37060000004",
+     "Siauliai"
+    ]
+   ]
+  },
+  "dry": {
+   "rezimas": "DRY (nieko nerasyta)",
+   "failas": "_e2e_testas.csv",
+   "eiluciu": 5,
+   "kurtu_butu": 3,
+   "jau_yra_wp": 0,
+   "dublikatai_csv": 1,
+   "blogas_el_pastas": 1,
+   "tuscias_el_pastas": 0,
+   "partijos_dydis": 200,
+   "partiju": 1,
+   "pavyzdziai": [
+    {
+     "email": "ps.e2e.a@example.invalid",
+     "first_name": "Ana",
+     "last_name": "Antaite",
+     "phone": "+37060000001",
+     "city": "Vilnius"
+    },
+    {
+     "email": "ps.e2e.b@example.invalid",
+     "first_name": "Bronius",
+     "last_name": "Bagdonas",
+     "phone": "+37060000002",
+     "city": "Kaunas"
+    },
+    {
+     "email": "ps.e2e.c@example.invalid",
+     "first_name": "Cilija",
+     "last_name": "Cirvinskaite",
+     "phone": "+37060000004",
+     "city": "Siauliai"
+    }
+   ]
+  },
+  "apply_be_jungiklio": {
+   "KLAIDA": "Jungiklis isjungtas: option ps_legacy_import_enabled != 1"
+  },
+  "apply": {
+   "rezimas": "APPLY",
+   "offset": 0,
+   "limitas": 10,
+   "perziureta_eil": 5,
+   "sukurta": 3,
+   "praleista_yra": 1,
+   "blogas_el_pastas": 1,
+   "klaidos": [],
+   "pvz_id": [
+    84,
+    85,
+    86
+   ],
+   "kitas_offset": 10
+  },
+  "laisku_ivykiu_delta": 0,
+  "apply_kartotinis": {
+   "rezimas": "APPLY",
+   "offset": 0,
+   "limitas": 10,
+   "perziureta_eil": 5,
+   "sukurta": 0,
+   "praleista_yra": 4,
+   "blogas_el_pastas": 1,
+   "klaidos": [],
+   "pvz_id": [],
+   "kitas_offset": 10
+  },
+  "patikra": {
+   "id": 84,
+   "role": "customer",
+   "_ps_source": "legacy_customer",
+   "imported": "2026-08-29 13:30:12",
+   "tel": "+37060000001",
+   "vardas": "Ana",
+   "consent_irasu": 0
+  },
+  "busena": {
+   "importuota_viso": 3,
+   "jungiklis": 1,
+   "katalogas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/ps-import",
+   "failai": [
+    "_e2e_testas.csv"
+   ]
+  },
+  "isvalyta_vartotoju": 3,
+  "liko_testiniu": 0,
+  "csv_liko": "ne",
+  "jungiklis_po": 0
+ },
+ "L3": {
+  "v": "L-v1.0",
+  "faze": "L3",
+  "be_brand": [
+   {
+    "id": "000332",
+    "title": "Šampūnas alergiškiems šunims Dr Seidel, 220 ml",
+    "link": "https://dev.avesa.lt/product/sampunas-alergiskiems-sunims-dr-seidel-220-ml/",
+    "gtin": "5901742000332",
+    "mpn": "000332"
+   }
+  ],
+  "be_gtin_pvz": [
+   {
+    "id": "ZVP-2195",
+    "title": "Vitapol Visavertis lesalas bang. papūgėlėms 20kg",
+    "brand": "Vitapol",
+    "mpn": "ZVP-2195"
+   },
+   {
+    "id": "01DOG0402",
+    "title": "DOGOTEKA LactoAdapt 60 tabl.",
+    "brand": "Dogoteka",
+    "mpn": "01DOG0402"
+   },
+   {
+    "id": "01DOG0301",
+    "title": "DOGOTEKA CortiAdapt skystis 100ml",
+    "brand": "Dogoteka",
+    "mpn": "01DOG0301"
+   }
+  ]
+ }
+}
