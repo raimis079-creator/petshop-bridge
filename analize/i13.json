@@ -1,12 +1,4 @@
 {
- "v": "I13-I14-182409",
- "kurimas": 200,
- "sid": 4147,
- "I13": {
-  "v": "I13-v1.0",
-  "faze": "I13",
-  "pries": "16399efd1b66b88647645094c05cb37b",
-  "STOP": "CDN sena: 16399efd1b66b88647645094c05cb37b"
- },
- "zalias_I14": "<br />\n<b>Warning</b>:  Undefined array key \"saka\" in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laiskai-importas.php</b> on line <b>369</b><br />\n<br />\n<b>Warning</b>:  Undefined array key \"saka\" in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laiskai-importas.php</b> on line <b>369</b><br />\n{\"v\":\"I13-v1.0\",\"faze\":\"I14\",\"isvalyta\":15,\"dry\":{\"rezimas\":\"DRY\",\"tinka\":15,\"netinka\":5,\"srautai\":{\"order_paid\":{\"sablonas\":\"order-paid.php\",\"klase\":\"transactional\",\"rezultatas\":\"NETINKA\",\"priezastis\":\"sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML\"},\"order_shipped\":{\"sablonas\":\"order-shipped.php\",\"klase\":\"transactional\",\"blokai\":2,\"subject\":\"Jūsų užsakymas {order_number} išsiųstas\",\"rezultatas\":\"sutampa (pilna saka) · sakos: 4\",\"ispejimai\":\"tuscias: order_number, tracking_number, tracking_url\"},\"payment_failed\":{\"sablonas\":\"dunning-1.php\",\"klase\":\"transactional\",\"rezultatas\":\"NETINKA\",\"priezastis\":\"sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML\"},\"shipment_returned\":{\"sablonas\":\"shipment-returned.php\",\"klase\":\"transactional\",\"blokai\":3,\"subject\":\"Jūsų siunta grįžo mums — užsakymas {order_id}\",\"rezultatas\":\"sutampa (pilna saka) · sakos: 4\",\"ispejimai\":\"tuscias: order_id, tracking_number, return_reason\"},\"consent_changed\":{\"sablonas\":\"consent-changed.php\",\"klase\":\"transactional\",\"rezultatas\":\"NETINKA\",\"priezastis\":\"sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML\"},\"pet_reminder_due\":{\"sab"
+ "v": "I13-I14-182600",
+ "klaida": "Error: fx:list"
 }
