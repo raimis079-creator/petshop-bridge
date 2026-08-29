@@ -1,0 +1,24 @@
+{
+ "v": "e3_ret-204549",
+ "kurimas": 200,
+ "sid": 4159,
+ "RT": {
+  "v": "E3RT",
+  "radiniai": {
+   "petshop-perziuru-priminimas.php": "retencij",
+   "class-consent-log.php": "retencij",
+   "class-event-log.php": "Retencij",
+   "class-pet-drafts.php": "RETENCIJ"
+  },
+  "cron_valymai": [
+   "jetpack_clean_nonces",
+   "ps_stat_valymas",
+   "rank_math/redirection/clean_trashed",
+   "ps_pet_drafts_cleanup_daily",
+   "ps_web_valymas",
+   "ps_ivykiai_valymas",
+   "recovery_mode_clean_expired_keys",
+   "jp_purge_transients_cron"
+  ]
+ }
+}
