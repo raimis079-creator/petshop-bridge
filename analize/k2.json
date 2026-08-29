@@ -1,0 +1,141 @@
+{
+ "v": "K2-K3-133633",
+ "kurimas": 200,
+ "sid": 4122,
+ "K2": {
+  "v": "K2-v1.0",
+  "faze": "K2",
+  "dst": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-kampaniju-langas.php",
+  "buvo": "NERA",
+  "irasyta": "OK"
+ },
+ "K3": {
+  "v": "K2-v1.0",
+  "faze": "K3",
+  "segmentai": {
+   "legacy": 0,
+   "klientai": 34,
+   "consent_log": 4,
+   "csv_failai": []
+  },
+  "blogas_srautas": {
+   "KLAIDA": "Leidziami tik: founding_activation, legacy_reactivation_l1"
+  },
+  "dry_founding": {
+   "rezimas": "DRY (nieko neenqueue)",
+   "srautas": "founding_activation",
+   "srauto_klase": "marketing",
+   "saltinis": "csv:_e2e_kamp.csv",
+   "job_key_pvz": "kamp_e2e0829_pavyzdys@petshop.lt",
+   "viso": 3,
+   "jau_eileje": 0,
+   "tinkami": 0,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": []
+  },
+  "dry_legacy_l1": {
+   "rezimas": "DRY (nieko neenqueue)",
+   "srautas": "legacy_reactivation_l1",
+   "srauto_klase": "marketing",
+   "saltinis": "csv:_e2e_kamp.csv",
+   "job_key_pvz": "kamp_e2e0829_pavyzdys@petshop.lt",
+   "viso": 3,
+   "jau_eileje": 0,
+   "tinkami": 0,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": []
+  },
+  "perziura": {
+   "rezimas": "PERZIURA (go=false, nieko neenqueue)",
+   "srautas": "founding_activation",
+   "saltinis": "csv:_e2e_kamp.csv",
+   "bangos_dydis": 2,
+   "sioje_bangoje": 0,
+   "viso": 3,
+   "jau_eileje": 0,
+   "tinkami": 0,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": []
+  },
+  "sukurti_vartotojai": [
+   87,
+   88
+  ],
+  "ar_sutikimas_veikia": {
+   "a": 0,
+   "c": 0
+  },
+  "dry_po_sutikimo": {
+   "rezimas": "DRY (nieko neenqueue)",
+   "srautas": "founding_activation",
+   "srauto_klase": "marketing",
+   "saltinis": "csv:_e2e_kamp.csv",
+   "job_key_pvz": "kamp_e2e0829_pavyzdys@petshop.lt",
+   "viso": 3,
+   "jau_eileje": 0,
+   "tinkami": 0,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": []
+  },
+  "banga_1": {
+   "rezimas": "BANGA PALEISTA",
+   "srautas": "founding_activation",
+   "saltinis": "csv:_e2e_kamp.csv",
+   "bangos_dydis": 1,
+   "enqueue": 0,
+   "dublikatai": 0,
+   "klaidos": [],
+   "liko_tinkamu": 0,
+   "KITAS_ZINGSNIS": "Patikrinti busena(), tada Raimio GO kitai bangai",
+   "viso": 3,
+   "jau_eileje": 0,
+   "tinkami": 0,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": []
+  },
+  "banga_1_kartotine": {
+   "rezimas": "BANGA PALEISTA",
+   "srautas": "founding_activation",
+   "saltinis": "csv:_e2e_kamp.csv",
+   "bangos_dydis": 1,
+   "enqueue": 0,
+   "dublikatai": 0,
+   "klaidos": [],
+   "liko_tinkamu": 0,
+   "KITAS_ZINGSNIS": "Patikrinti busena(), tada Raimio GO kitai bangai",
+   "viso": 3,
+   "jau_eileje": 0,
+   "tinkami": 0,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": []
+  },
+  "banga_su_pauze": {
+   "KLAIDA": "Pauze tarp bangu: liko 1800 s",
+   "kitas_leidimas_po_s": 1800
+  },
+  "busena": {
+   "srautas": "founding_activation",
+   "data": "e2e0829",
+   "pagal_busena": [],
+   "priezastys": [],
+   "paskutine_banga": 1788010674
+  },
+  "istrinta_jobs": 0,
+  "isvalyta_vartotoju": 2,
+  "liko_jobs": 0,
+  "liko_vartotoju": 0,
+  "csv_liko": "ne"
+ }
+}
