@@ -1,0 +1,13 @@
+{
+ "v": "IMP5-171543",
+ "kurimas": 200,
+ "sid": 4139,
+ "IMP5": {
+  "v": "IMP5-v1.0",
+  "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laiskai-importas.php",
+  "md5_diske": "d6ba86fe2d5f226d11f6ce660abece29",
+  "turi_dinaminis": "NE",
+  "isskaidyti_pradzia": "\tpublic static function isskaidyti( $flow ) {\n\t\t$flows = Petshop_Email_Dispatch::flows();\n\t\tif ( ! isset( $flows[ $flow ] ) ) { return array( 'ok' => false, 'priezastis' => 'nezinomas srautas' ); }\n\t\t$fc  = $flows[ $flow ]['class'];\n\t\t$snt = self::sentineles( $flow );\n\n\t\t$r = Petshop_Email_Dispatch::render( $flow, $snt, array( 'flow_class' => $fc, 'recipient_email' => 'importas@petshop.lt' ) );\n\t\tif ( empty( $r['html'] ) ) { return array( 'ok' => false, 'priezastis' => 'sablonas negrazino HTML' ); }\n\n\t\t$html    = $r['html'];\n",
+  "opcache": "yra"
+ }
+}
