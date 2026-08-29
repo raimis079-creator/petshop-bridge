@@ -1,40 +1,114 @@
 {
-  "VERSIJA": "G3",
-  "deploy": {
-    "VERSIJA": "G3",
-    "gavimas": {
-      "dydis": 50890,
-      "ok": true
-    }
+ "v": "G3A-132507",
+ "kurimas": 200,
+ "sid": 4118,
+ "G3A": {
+  "v": "G3-v1.0",
+  "faze": "G3A",
+  "url": "https://dev.avesa.lt/feed/google/",
+  "http": 200,
+  "baitai": 5050442,
+  "viso_item": 2238,
+  "kanalas": {
+   "title": "Petshop.lt",
+   "link": "https://dev.avesa.lt/"
   },
-  "rez": {
-    "tekstas": "Tokios prekės sistemoje dar nėra.\n+ Sukurti naują prekę",
-    "yra_mygtukas": true
+  "truksta": {
+   "id": 0,
+   "title": 0,
+   "description": 0,
+   "link": 0,
+   "image_link": 0,
+   "availability": 0,
+   "price": 0,
+   "condition": 0,
+   "brand": 1,
+   "gtin": 454,
+   "mpn": 0,
+   "identifier_exists": 1784,
+   "shipping": 2238,
+   "google_product_category": 0,
+   "product_type": 0,
+   "sale_price": 2238,
+   "item_group_id": 2238
   },
-  "forma": {
-    "pav": "Testinis skanestas XYZ",
-    "laukai": [
-      "n-pav",
-      "n-sku",
-      "n-ean",
-      "n-kaina",
-      "n-kat",
-      "n-brendas",
-      "n-rusis",
-      "n-pak",
-      "n-svoris",
-      "n-apras"
-    ],
-    "kategoriju": 1,
-    "brendu": 1,
-    "pilnumas": "Trūksta: kainos, kategorijos, nuotraukos, aprašymo. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras."
-  },
-  "pilnumas_pries": "Trūksta: nuotraukos. Prekė bus sukurta, gaus likutį ir savikainą, bet liks juodraštyje, kol tai atsiras.",
-  "po_kurimo": {
-    "modalas_uzdarytas": true,
-    "stat": "kuriama…",
-    "lentele": "TESTAS Skanėstas šunims 100 g | GAVTEST001 · 4770000999123 · juodraštis | \t\t\t—\t\tAV 0\t×"
-  },
-  "js_klaidos": [],
-  "liko_temp": []
+  "be_gtin_ir_be_mpn": 0,
+  "be_gtin_ir_be_identifier_exists": 0,
+  "kaina_be_valiutos": 0,
+  "pavyzdziai": [
+   {
+    "id": "01A1B01030",
+    "title": "Eukanuba Active Small Adult (vištiena) 3kg",
+    "description": "Išskirtinė pašaro sudėtis yra specialiai sukurta palaikyti o",
+    "link": "https://dev.avesa.lt/product/eukanuba-active-small-adult-vistiena-3kg/",
+    "image_link": "https://dev.avesa.lt/wp-content/uploads/2026/06/0006346_e20072-euk-adult-small-breed-maintenance-3-kg.webp",
+    "availability": "in_stock",
+    "price": "15.49 EUR",
+    "condition": "new",
+    "brand": "Eukanuba",
+    "gtin": "8710255120072",
+    "mpn": "01A1B01030",
+    "identifier_exists": "",
+    "shipping": "",
+    "google_product_category": "3530",
+    "product_type": "Sausas maistas šunims",
+    "sale_price": "",
+    "item_group_id": ""
+   },
+   {
+    "id": "01A1B02031",
+    "title": "Eukanuba Medium Adult visavertis pašaras su vištiena 3kg",
+    "description": "Speciali granulės forma ir unikali DentaDefence dantų apsaug",
+    "link": "https://dev.avesa.lt/product/eukanuba-medium-adult-visavertis-pasaras-su-vistiena-3kg/",
+    "image_link": "https://dev.avesa.lt/wp-content/uploads/2026/06/0006334_e19786-euk-adult-medium-breed-maintenance-3-kg.jpeg",
+    "availability": "in_stock",
+    "price": "15.49 EUR",
+    "condition": "new",
+    "brand": "Eukanuba",
+    "gtin": "8710255119786",
+    "mpn": "01A1B02031",
+    "identifier_exists": "",
+    "shipping": "",
+    "google_product_category": "3530",
+    "product_type": "Sausas maistas šunims",
+    "sale_price": "",
+    "item_group_id": ""
+   },
+   {
+    "id": "01A1C04030",
+    "title": "Eukanuba Daily Care Sensitive Skin Adult (žuvis) 12kg",
+    "description": "„Eukanuba Daily Care“ sausas šunų ėdalas jautriai odai; suku",
+    "link": "https://dev.avesa.lt/product/eukanuba-daily-care-sensitive-skin-adult-zuvis-12kg/",
+    "image_link": "https://dev.avesa.lt/wp-content/uploads/2026/06/0006310_e19717-euk-daily-care-sensitive-skin-all-breeds-12-kg.webp",
+    "availability": "in_stock",
+    "price": "57.09 EUR",
+    "condition": "new",
+    "brand": "Eukanuba",
+    "gtin": "8710255119717",
+    "mpn": "01A1C04030",
+    "identifier_exists": "",
+    "shipping": "",
+    "google_product_category": "3530",
+    "product_type": "Sausas maistas šunims",
+    "sale_price": "",
+    "item_group_id": ""
+   }
+  ],
+  "tagai_pirmame": [
+   "g:id",
+   "g:image_link",
+   "g:availability",
+   "g:condition",
+   "g:price",
+   "g:brand",
+   "g:gtin",
+   "g:mpn",
+   "g:google_product_category",
+   "g:product_type",
+   "g:shipping_weight",
+   "title",
+   "description",
+   "link"
+  ]
+ }
 }
