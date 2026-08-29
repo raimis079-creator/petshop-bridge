@@ -1,0 +1,60 @@
+{
+ "v": "IMP6-IMP7-171745",
+ "kurimas": 200,
+ "sid": 4140,
+ "IMP6": {
+  "v": "IMP6-v1.0",
+  "faze": "IMP6",
+  "md5_pries": "d6ba86fe2d5f226d11f6ce660abece29",
+  "gauta_md5": "7e015f26d9be850ce44d5f5bf72fdd42",
+  "md5_po": "7e015f26d9be850ce44d5f5bf72fdd42",
+  "irasyta": "OK"
+ },
+ "IMP7": {
+  "v": "IMP6-v1.0",
+  "faze": "IMP7",
+  "metodas_yra": "TAIP",
+  "dinaminiai": {
+   "cart_abandoned": "foreach",
+   "cart_abandoned_2": "foreach",
+   "post_purchase_2d": "foreach",
+   "browse_abandoned": "foreach"
+  },
+  "istrinta_klaidingu": 4,
+  "dry_tinka": 12,
+  "dry_netinka": 8,
+  "atmesti": {
+   "order_paid": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML",
+   "payment_failed": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML",
+   "consent_changed": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML",
+   "cart_abandoned": "dinaminis turinys (foreach) — blokai ciklu neturi",
+   "cart_abandoned_2": "dinaminis turinys (foreach) — blokai ciklu neturi",
+   "post_purchase_2d": "dinaminis turinys (foreach) — blokai ciklu neturi",
+   "founding_activation": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML",
+   "browse_abandoned": "dinaminis turinys (foreach) — blokai ciklu neturi"
+  },
+  "busena": {
+   "versija": "1.1",
+   "lentele": "gaj6_ps_email_content",
+   "renderio_failas": "yra",
+   "srautu_viso": 20,
+   "paskelbta_srautu": 0,
+   "juodrasciu": 12,
+   "irašu_viso": 12
+  },
+  "juodrasciai": [
+   "back_in_stock",
+   "legacy_reactivation_l1",
+   "order_shipped",
+   "pet_reminder_due",
+   "post_purchase_14d",
+   "post_purchase_7d",
+   "refill_due",
+   "shipment_returned",
+   "subscription_t5_notice",
+   "win_back_120",
+   "win_back_60",
+   "win_back_90"
+  ]
+ }
+}
