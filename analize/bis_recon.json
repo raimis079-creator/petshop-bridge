@@ -1,5 +1,366 @@
 {
- "v": "BIS-RECON-v1.1",
- "kurimas": 500,
- "zalias": "<!DOCTYPE html>\n<html lang=\"lt-LT\" prefix=\"og: https://ogp.me/ns#\" class=\"loading-site no-js\">\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n\t<link rel=\"pingback\" href=\"https://dev.avesa.lt/xmlrpc.php\" />\n\n\t\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments); }\n\n\t/* ---- 1. CONSENT MODE v2 DEFAULT (privalo buti pirmas) ---- */\n\tgtag('consent', 'default', {\n\t\t'ad_storage': 'denied',\n\t\t'ad_user_data': 'denied',\n\t\t'ad_personalization': 'denied',\n\t\t'analytics_storage': 'denied',\n\t\t'functionality_storage': 'granted',\n\t\t'personalization_storage': 'granted',\n\t\t'security_storage': 'granted',\n\t\t'wait_for_update': 500\n\t});\n\tgtag('set', 'ads_data_redaction', true);\n\tgtag('set', 'url_passthrough', true);\n\n\t/* ---- 2. Pagalbines ---- */\n\tfunction cookieVal(name) {\n\t\tvar m = document.cookie.match(new RegExp('(?:^|;\\\\s*)' + name.replace(/[-]/g, '\\\\-') + '=([^;]*)'));\n\t\treturn m ? decodeURIComponent(m[1]) : null;\n\t}\n\n\tfunction hasConsent(cat) {\n\t\tif (typeof window.cmplz_has_consent === 'function') {\n\t\t\ttry { return !!window.cmplz_has_consent(cat); } catch (e) {}\n\t\t}\n\t\treturn cookieVal('cmplz_' + cat) === 'allow';\n\t}\n\n\tfunction sendConsentUpdate(source) {\n\t\tvar stats = hasConsent('statistics');\n\t\tvar mkt   = hasConsent('marketing');\n\n\t\tgtag('consent', 'update', {\n\t\t\t'analytics_storage':  stats ? 'granted' : 'denied',\n\t\t\t'ad_storage':         mkt   ? 'granted' : 'denied',\n\t\t\t'ad_user_data':       mkt   ? 'granted' : 'denied',\n\t\t\t'ad_personalization': mkt   ? 'granted' : 'denied'\n\t\t});\n\n\t\twindow.dataLayer.push({\n\t\t\tevent: 'cmplz_consent_update',\n\t\t\tcmplz_statistics: stats ? 'granted' : 'denied',\n\t\t\tcmplz_marketing:  mkt   ? 'granted' : 'denied',\n\t\t\tcmplz_source: source || 'unknown'\n\t\t});\n\t}\n\n\t/* ---- 3. Pakartotinis lankytojas: sutikimas jau issaugotas ---- */\n\tvar hasConsentSnapshot = hasConsent('statistics');\n\tif (cookieVal('cmplz_banner-status') !== null) {\n\t\tsendConsentUpdate('cookie');\n\t}\n\n\t/* ---- 4. Naujas sutikimas arba pakeitimas ---- */\n\tvar timer = null;\n\tfunction schedule() {\n\t\tif (timer) { clearTimeout(timer); }\n\t\ttimer = setTimeout(function () {\n\t\t\tvar wasGranted = hasConsentSnapshot;\n\t\t\tsendConsentUpdate('event');\n\t\t\tvar nowGranted = hasConsent('statistics');\n\n\t\t\t/* Replay TIK jei sutikimas ka tik pasikeite denied -> granted.\n\t\t\t * Kitaip cmplz_fire_categories (fire'ina kas puslapi) dubliuotu ivykius. */\n\t\t\tif (!wasGrant"
+ "v": "BIS-RECON-v1.2",
+ "kurimas": 200,
+ "sid": 4091,
+ "rez": {
+  "v": "BIS-RECON-v1.0",
+  "flows": {
+   "order_paid": {
+    "class": "transactional",
+    "template": "order-paid",
+    "delay": 0
+   },
+   "order_shipped": {
+    "class": "transactional",
+    "template": "order-shipped",
+    "delay": 0
+   },
+   "payment_failed": {
+    "class": "transactional",
+    "template": "dunning-1",
+    "delay": 0
+   },
+   "shipment_returned": {
+    "class": "transactional",
+    "template": "shipment-returned",
+    "delay": 0
+   },
+   "consent_changed": {
+    "class": "transactional",
+    "template": "consent-changed",
+    "delay": 0
+   },
+   "pet_reminder_due": {
+    "class": "transactional",
+    "template": "pet-reminder",
+    "delay": 0
+   },
+   "subscription_t5_notice": {
+    "class": "transactional",
+    "template": "subscription-t5",
+    "delay": 0
+   },
+   "refill_due": {
+    "class": "service",
+    "template": "refill",
+    "delay": 0
+   },
+   "cart_abandoned": {
+    "class": "marketing",
+    "template": "cart-abandoned-1",
+    "delay": 0
+   },
+   "cart_abandoned_2": {
+    "class": "marketing",
+    "template": "cart-abandoned-2",
+    "delay": 0
+   },
+   "post_purchase_2d": {
+    "class": "service",
+    "template": "post-purchase-2d",
+    "delay": 0
+   },
+   "post_purchase_7d": {
+    "class": "service",
+    "template": "post-purchase-7d",
+    "delay": 604800
+   },
+   "post_purchase_14d": {
+    "class": "service",
+    "template": "post-purchase-14d",
+    "delay": 1209600
+   },
+   "win_back_60": {
+    "class": "marketing",
+    "template": "win-back-60",
+    "delay": 0
+   },
+   "win_back_90": {
+    "class": "marketing",
+    "template": "win-back-90",
+    "delay": 0
+   },
+   "win_back_120": {
+    "class": "marketing",
+    "template": "win-back-120",
+    "delay": 0
+   },
+   "legacy_reactivation_l1": {
+    "class": "marketing",
+    "template": "legacy-l1",
+    "delay": 0
+   },
+   "founding_activation": {
+    "class": "marketing",
+    "template": "founding",
+    "delay": 0
+   }
+  },
+  "dispatch_failas": "wp-content/plugins/petshop-core/includes/class-email-dispatch.php",
+  "dispatch_metodai": [
+   "flows()",
+   "table()",
+   "install()",
+   "maybe_install()",
+   "enqueue($flow,$email,$payload,$args)",
+   "check_eligibility($flow_class,$email,$flow,$context)",
+   "is_suppressed($email)",
+   "is_transactional_only($email)",
+   "suppress($email,$channel,$reason,$source)",
+   "process_pending($limit,$dry_run)",
+   "process_one($row,$dry_run)",
+   "render($flow,$payload,$row)",
+   "stats()",
+   "init()",
+   "cron_run()"
+  ],
+  "event_failas": "wp-content/plugins/petshop-core/includes/class-event-registry.php",
+  "event_metodai": [
+   "is_canonical($event_name)",
+   "load_schema($event_name)",
+   "validate($event_name,$payload)",
+   "emit($event_name,$email,$payload,$opts)",
+   "active_events()"
+  ],
+  "sablonu_kelias": "wp-content/plugins/petshop-core/templates/emails",
+  "sablonai": [
+   "cart-abandoned-1.php",
+   "cart-abandoned-2.php",
+   "consent-changed.php",
+   "dunning-1.php",
+   "founding.php",
+   "order-paid.php",
+   "post-purchase-2d.php",
+   "refill.php"
+  ],
+  "core_kelias": "wp-content/plugins/petshop-core",
+  "core_includes": [
+   "class-account-avatar.php",
+   "class-account-company.php",
+   "class-account-dashboard.php",
+   "class-action-tokens.php",
+   "class-admin-reports.php",
+   "class-cart-abandonment.php",
+   "class-cart-recovery.php",
+   "class-cart-tracker.php",
+   "class-condition-mapper.php",
+   "class-consent-log.php",
+   "class-consent-sync.php",
+   "class-contact-policy.php",
+   "class-email-dispatch.php",
+   "class-email-layout.php",
+   "class-email-suppression.php",
+   "class-event-emitters.php",
+   "class-event-log.php",
+   "class-event-registry.php",
+   "class-feeding-calculator.php",
+   "class-feeding-package-provider.php",
+   "class-feeding-package-resolver.php",
+   "class-feeding-repository.php",
+   "class-feeding-service.php",
+   "class-feeding-ui.php",
+   "class-magic-login.php",
+   "class-mixed-feeding-estimator.php",
+   "class-newsletter-footer.php",
+   "class-newsletter.php",
+   "class-pet-content.php",
+   "class-pet-dashboard.php",
+   "class-pet-drafts.php",
+   "class-pet-notes.php",
+   "class-pet-photo.php",
+   "class-pet-products.php",
+   "class-pet-profile.php",
+   "class-pet-ui.php",
+   "class-plan-attribution.php",
+   "class-post-purchase.php",
+   "class-product-calc.php",
+   "class-refill-engine.php",
+   "class-refill-feedback.php",
+   "class-reminders.php",
+   "class-retry-queue.php",
+   "class-shipments.php",
+   "class-unsubscribe.php",
+   "class-weight-filter.php",
+   "class-welcome-modal.php",
+   "interface-message-provider.php",
+   "tpl-myaccount-dashboard.php",
+   "tpl-myaccount-my-address.php"
+  ],
+  "klase_Petshop_Contact_Policy": {
+   "failas": "wp-content/plugins/petshop-core/includes/class-contact-policy.php",
+   "public": [
+    "has_consent",
+    "normalize",
+    "compute",
+    "is_marketable",
+    "sync_transactional_only",
+    "on_contact_used",
+    "queue",
+    "unqueue",
+    "pending",
+    "drain",
+    "init",
+    "on_consent_changed"
+   ]
+  },
+  "klase_Petshop_Sender_Adapter": {
+   "failas": "wp-content/plugins/petshop-esp/includes/class-sender-adapter.php",
+   "public": [
+    "get_name",
+    "__construct",
+    "get_stored_token",
+    "store_token",
+    "is_configured",
+    "is_retriable_code",
+    "upsert_contact",
+    "emit_event",
+    "send_transactional_email",
+    "send_transactional_sms",
+    "verify_webhook",
+    "get_health_status",
+    "is_operational",
+    "get_contact_field",
+    "get_contact_status"
+   ]
+  },
+  "klase_Petshop_Newsletter": {
+   "failas": "wp-content/plugins/petshop-core/includes/class-newsletter.php",
+   "public": [
+    "init",
+    "assets",
+    "shortcode",
+    "routes",
+    "subscribe"
+   ]
+  },
+  "kabliukas_woocommerce_product_set_stock_status": 1,
+  "kabliukas_woocommerce_variation_set_stock_status": 0,
+  "kabliukas_woocommerce_product_set_stock": 1,
+  "kabliukas_woocommerce_no_stock": 1,
+  "kabliukas_woocommerce_product_is_in_stock": 2,
+  "outofstock_publish": 391,
+  "pavyzdys": {
+   "ID": "12532",
+   "post_title": "Monge medium adult visavertis sausas pašaras su vištiena 12kg"
+  },
+  "ps_lenteles": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_akcijos",
+   "gaj6_ps_akciju_prekes",
+   "gaj6_ps_ataskaitu_dienos",
+   "gaj6_ps_av_zurnalas",
+   "gaj6_ps_brand_alias",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_dim_klientai",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_fakt_atsargos_d",
+   "gaj6_ps_fakt_eilutes",
+   "gaj6_ps_fakt_grazinimai",
+   "gaj6_ps_fakt_kainos",
+   "gaj6_ps_fakt_reklama",
+   "gaj6_ps_fakt_siuntos",
+   "gaj6_ps_fakt_uzsakymai",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_islaidos",
+   "gaj6_ps_istrintos_prekes_s668",
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_pakuotes",
+   "gaj6_ps_partijos",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_sargas_klaidos",
+   "gaj6_ps_shipments",
+   "gaj6_ps_sources",
+   "gaj6_ps_tarifai",
+   "gaj6_ps_tarifu_priemokos",
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil",
+   "gaj6_ps_web_dienos",
+   "gaj6_ps_web_ivykiai",
+   "gaj6_ps_webhook_log"
+  ],
+  "jobs_stulpeliai": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json"
+  ],
+  "event_log_stulpeliai": [
+   "id",
+   "event_id",
+   "event_name",
+   "email",
+   "payload_json",
+   "emitted_at",
+   "status",
+   "adapter_name",
+   "attempts",
+   "next_retry_at",
+   "last_error",
+   "esp_response"
+  ],
+  "summary_prioritetai": {
+   "0": 1,
+   "1": 1,
+   "5": 1,
+   "7": 1,
+   "10": 2,
+   "11": 3,
+   "20": 2,
+   "25": 2,
+   "30": 2,
+   "31": 1,
+   "40": 1,
+   "50": 1,
+   "60": 1
+  }
+ }
 }
