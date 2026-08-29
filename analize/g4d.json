@@ -1,0 +1,55 @@
+{
+ "v": "G4D-v1.0",
+ "kurimas": 200,
+ "sid": 4117,
+ "deploy": {
+  "v": "G4D-v1.0",
+  "fase": "G4D",
+  "stulpeliai": [
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "irasyta": "OK"
+ },
+ "testas": {
+  "v": "G4D-v1.0",
+  "fase": "G4T",
+  "job": 93,
+  "delivered": {
+   "ok": true,
+   "action": "recorded",
+   "metric": "delivered_at",
+   "job_id": 93
+  },
+  "opened": {
+   "ok": true,
+   "action": "recorded",
+   "metric": "opened_at",
+   "job_id": 93
+  },
+  "opened_antras": {
+   "ok": true,
+   "action": "already_set",
+   "metric": "opened_at",
+   "job_id": 93
+  },
+  "clicked": {
+   "ok": true,
+   "action": "recorded",
+   "metric": "clicked_at",
+   "job_id": 93
+  },
+  "nezinomas": {
+   "ok": true,
+   "action": "ignored",
+   "type": "kazkas/naujo"
+  },
+  "eilute": {
+   "delivered_at": "2026-08-29 13:09:32",
+   "opened_at": "2026-08-29 13:09:32",
+   "clicked_at": "2026-08-29 13:09:32"
+  },
+  "isvalyta": 0
+ }
+}
