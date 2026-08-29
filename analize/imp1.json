@@ -1,12 +1,12 @@
 {
- "v": "IMP1-IMP2-170936",
+ "v": "IMP1-IMP2-171348",
  "kurimas": 200,
- "sid": 4136,
+ "sid": 4138,
  "IMP1": {
   "v": "IMP1-v1.0",
   "faze": "IMP1",
-  "buvo": "bcce5824134d572d670a1106d8cdcb2d",
-  "irasyta": "OK"
+  "buvo": "d6ba86fe2d5f226d11f6ce660abece29",
+  "STOP": "MD5: d6ba86fe2d5f226d11f6ce660abece29"
  },
  "IMP2": {
   "v": "IMP1-v1.0",
@@ -169,6 +169,190 @@
      "baitai": 419
     }
    }
+  },
+  "apply": {
+   "rezimas": "IMPORTAS (juodrasciai)",
+   "tinka": 16,
+   "netinka": 4,
+   "srautai": {
+    "order_paid": {
+     "sablonas": "order-paid.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "order_shipped": {
+     "sablonas": "order-shipped.php",
+     "klase": "transactional",
+     "blokai": 2,
+     "subject": "Jūsų užsakymas {order_number} išsiųstas",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 419,
+     "irasyta": "juodrastis v1"
+    },
+    "payment_failed": {
+     "sablonas": "dunning-1.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "shipment_returned": {
+     "sablonas": "shipment-returned.php",
+     "klase": "transactional",
+     "blokai": 3,
+     "subject": "Jūsų siunta grįžo mums — užsakymas {order_id}",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 472,
+     "irasyta": "juodrastis v1"
+    },
+    "consent_changed": {
+     "sablonas": "consent-changed.php",
+     "klase": "transactional",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "pet_reminder_due": {
+     "sablonas": "pet-reminder.php",
+     "klase": "transactional",
+     "blokai": 3,
+     "subject": "Priminimas: {pet_name} — {reminder_label}",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 541,
+     "irasyta": "juodrastis v1"
+    },
+    "subscription_t5_notice": {
+     "sablonas": "subscription-t5.php",
+     "klase": "transactional",
+     "blokai": 4,
+     "subject": "Jūsų reguliari siunta — po 5 dienų",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 773,
+     "irasyta": "juodrastis v1"
+    },
+    "refill_due": {
+     "sablonas": "refill.php",
+     "klase": "service",
+     "blokai": 3,
+     "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 585,
+     "irasyta": "juodrastis v1"
+    },
+    "cart_abandoned": {
+     "sablonas": "cart-abandoned-1.php",
+     "klase": "marketing",
+     "blokai": 3,
+     "subject": "Jūsų krepšelis vis dar laukia",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 647,
+     "irasyta": "juodrastis v1"
+    },
+    "cart_abandoned_2": {
+     "sablonas": "cart-abandoned-2.php",
+     "klase": "marketing",
+     "blokai": 3,
+     "subject": "Jūsų krepšelis vis dar laukia",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 620,
+     "irasyta": "juodrastis v1"
+    },
+    "post_purchase_2d": {
+     "sablonas": "post-purchase-2d.php",
+     "klase": "service",
+     "blokai": 4,
+     "subject": "Ar su užsakymu viskas gerai?",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 623,
+     "irasyta": "juodrastis v1"
+    },
+    "post_purchase_7d": {
+     "sablonas": "post-purchase-7d.php",
+     "klase": "service",
+     "blokai": 4,
+     "subject": "Kaip tiko jūsų pirkinys?",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 778,
+     "irasyta": "juodrastis v1"
+    },
+    "post_purchase_14d": {
+     "sablonas": "post-purchase-14d.php",
+     "klase": "service",
+     "blokai": 2,
+     "subject": "Ankstesnį užsakymą galite pakartoti",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 419,
+     "irasyta": "juodrastis v1"
+    },
+    "win_back_60": {
+     "sablonas": "win-back-60.php",
+     "klase": "marketing",
+     "blokai": 2,
+     "subject": "Gal jau metas papildyti atsargas?",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 443,
+     "irasyta": "juodrastis v1"
+    },
+    "win_back_90": {
+     "sablonas": "win-back-90.php",
+     "klase": "marketing",
+     "blokai": 3,
+     "subject": "Maisto rekomendacijos pagal jūsų augintinį",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 633,
+     "irasyta": "juodrastis v1"
+    },
+    "win_back_120": {
+     "sablonas": "win-back-120.php",
+     "klase": "marketing",
+     "blokai": 4,
+     "subject": "Čia sustojame — jei prireiks, mus rasite",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 713,
+     "irasyta": "juodrastis v1"
+    },
+    "legacy_reactivation_l1": {
+     "sablonas": "legacy-l1.php",
+     "klase": "marketing",
+     "blokai": 5,
+     "subject": "Petshop.lt atsinaujino",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 943,
+     "irasyta": "juodrastis v1"
+    },
+    "founding_activation": {
+     "sablonas": "founding.php",
+     "klase": "marketing",
+     "rezultatas": "NETINKA",
+     "priezastis": "sablonas NENAUDOJA Petshop_Email_Layout — rašo savo HTML"
+    },
+    "back_in_stock": {
+     "sablonas": "back-in-stock.php",
+     "klase": "transactional",
+     "blokai": 2,
+     "subject": "Prekė vėl prekyboje: {product_name}",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 437,
+     "irasyta": "juodrastis v1"
+    },
+    "browse_abandoned": {
+     "sablonas": "browse-abandoned.php",
+     "klase": "marketing",
+     "blokai": 2,
+     "subject": "Jūsų neseniai žiūrėtos prekės",
+     "rezultatas": "sutampa byte-tiksliai",
+     "baitai": 419,
+     "irasyta": "juodrastis v1"
+    }
+   }
+  },
+  "busena": {
+   "versija": "1.1",
+   "lentele": "gaj6_ps_email_content",
+   "renderio_failas": "yra",
+   "srautu_viso": 20,
+   "paskelbta_srautu": 0,
+   "juodrasciu": 16,
+   "irašu_viso": 16
   }
  }
 }
