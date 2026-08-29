@@ -1,0 +1,124 @@
+{
+ "v": "E10-162038",
+ "kurimas": 200,
+ "sid": 4127,
+ "E10": {
+  "v": "E10-v1.0",
+  "katalogas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/templates/emails/",
+  "yra": "TAIP",
+  "failai": {
+   "back-in-stock.php": 1686,
+   "browse-abandoned.php": 1877,
+   "cart-abandoned-1.php": 3328,
+   "cart-abandoned-1.php.bak_S322": 3328,
+   "cart-abandoned-2.php": 2505,
+   "cart-abandoned-2.php.bak_S324": 2629,
+   "consent-changed.php": 3630,
+   "dunning-1.php": 3238,
+   "founding.php": 3555,
+   "legacy-l1.php": 1641,
+   "order-paid.php": 2333,
+   "order-paid.php.bak_S329": 2327,
+   "order-shipped.php": 1465,
+   "pet-reminder.php": 2373,
+   "post-purchase-14d.php": 1280,
+   "post-purchase-2d.php": 3940,
+   "post-purchase-7d.php": 2077,
+   "refill.php": 2870,
+   "refill.php.bak_S311": 3660,
+   "refill.php.bak_S323": 3660,
+   "refill.php.bak_S325": 2269,
+   "shipment-returned.php": 1967,
+   "subscription-t5.php": 2492,
+   "win-back-120.php": 1309,
+   "win-back-60.php": 1134,
+   "win-back-90.php": 1069
+  },
+  "flows": {
+   "order_paid": {
+    "template": "order-paid",
+    "class": "transactional"
+   },
+   "order_shipped": {
+    "template": "order-shipped",
+    "class": "transactional"
+   },
+   "payment_failed": {
+    "template": "dunning-1",
+    "class": "transactional"
+   },
+   "shipment_returned": {
+    "template": "shipment-returned",
+    "class": "transactional"
+   },
+   "consent_changed": {
+    "template": "consent-changed",
+    "class": "transactional"
+   },
+   "pet_reminder_due": {
+    "template": "pet-reminder",
+    "class": "transactional"
+   },
+   "subscription_t5_notice": {
+    "template": "subscription-t5",
+    "class": "transactional"
+   },
+   "refill_due": {
+    "template": "refill",
+    "class": "service"
+   },
+   "cart_abandoned": {
+    "template": "cart-abandoned-1",
+    "class": "marketing"
+   },
+   "cart_abandoned_2": {
+    "template": "cart-abandoned-2",
+    "class": "marketing"
+   },
+   "post_purchase_2d": {
+    "template": "post-purchase-2d",
+    "class": "service"
+   },
+   "post_purchase_7d": {
+    "template": "post-purchase-7d",
+    "class": "service"
+   },
+   "post_purchase_14d": {
+    "template": "post-purchase-14d",
+    "class": "service"
+   },
+   "win_back_60": {
+    "template": "win-back-60",
+    "class": "marketing"
+   },
+   "win_back_90": {
+    "template": "win-back-90",
+    "class": "marketing"
+   },
+   "win_back_120": {
+    "template": "win-back-120",
+    "class": "marketing"
+   },
+   "legacy_reactivation_l1": {
+    "template": "legacy-l1",
+    "class": "marketing"
+   },
+   "founding_activation": {
+    "template": "founding",
+    "class": "marketing"
+   },
+   "back_in_stock": {
+    "template": "back-in-stock",
+    "class": "transactional"
+   },
+   "browse_abandoned": {
+    "template": "browse-abandoned",
+    "class": "marketing"
+   }
+  },
+  "turinys": {
+   "refill": "<?php\n/**\n * Sablonas: refill_due — maisto gali netrukus pritrukti.\n *\n * TEKSTAS PATVIRTINTAS 2026-07-31 (Raimis). Saltinis\n * `petshop_445_pirmi_sablonai_v1.md` (2026-07-06) SABLONAS 2 numate\n * automatinio papildymo pazadus — jie SAMONINGAI PASALINTI, zr. zemiau.\n *\n * ============================================================\n * M10 recurring replenishment NEIGYVENDINTAS.\n * Automatinio papildymo tekstai ir nuorodos SAMONINGAI NERODOMI,\n * kol nera prenumeratos valdymo ir pasikartojanciu mokejimu.\n *\n * Patikrinta 2026-07-31: ps_subscriptions lenteles NERA · Petshop_Subscriptions\n * klases NERA · subscription plugin'u NERA · prenumeratos puslapiu NERA ·\n * WC `subscription` produkto tipo NERA · Paysera supports=['products'],\n * pasikartojanciu mokejimu NEPALAIKO.\n *\n * PASALINTA is saltinio: „leiskite mums pasirupinti automatiskai\" (preheader),\n * antras teksto sakinys apie regulariu papildyma, antrinis linkas\n * „Nustatyti regulariu papildyma\". Tai butu netikras produkto pazadas.\n * ============================================================\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$reorder = isset( $payload['reorder_url'] ) ? $payload['reorder_url'] : '';\n$fb_url  = isset( $payload['feedback_url'] ) ? $payload['feedback_url'] : '';\n$email   = isset( $recipient ) ? $recipient : '';\n$fc      = isset( $flow_class ) ? $flow_class : 'service';\n\n// AUGINTINIO VARDAS SIAME SABLONE NENAUDOJAMAS (Raimio sprendimas 2026-07-31).\n// Lietuviu kalba reikalauja kilmininko: „Rekso maisto\", ne „Reksas maisto\".\n// Automatinis linksniavimas NEPATIKIMAS — luztu ties uzsienietiskais vardais,\n// trumpiniais, nelinksniuojamais vardais ir neteisingai nustatyta gimine.\n// Atskiro kilmininko prasyti anketoje — per sunku del vieno sakinio.\n// Universali forma visada taisyklinga; 5% maziau personalizacijos geriau\n// nei „Reksas maisto\", kuris primena pigų mail merge, ne rupesti klientu.\n// Varda galima naudoti TIK konstrukcijose, kur linksniuoti nereikia.\n\n$subject = 'Jūsų augintinio maisto gali netrukus pritrūkti';\n\n$body = Petshop_Email_Layout::p(\n\t'Pagal ankstesnį pirkimą apskaičiavome, kad jūsų augintinio maisto gali netrukus pritrūkti.'\n);\n\nif ( $reorder ) {\n\t$body .= Petshop_Email_Layout::button( $reorder, 'Pakartoti dabar' );\n}\n\n// Antrinis TEKSTINIS veiksmas — S323 scanner-safe kalibravimo puslapis.\nif ( $fb_url ) {\n\t$body .= Petshop_Email_Layout::secondary( array( 'Patikslinti priminimą' => $fb_url ) );\n}\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Maisto gali netrukus pritrūkti — pakartokite užsakymą, kai bus patogu.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes pirkote šį maistą petshop.lt.',\n) );\n",
+   "order-shipped": "<?php\n/**\n * Sablonas: order_shipped — REZERVINIS.\n * ⚪ Srautas SAMONINGAI neaktyvus: issiuntimo laiska siuncia WooCommerce\n * (REGISTRAS §5). Sablonas padetas, kad registro eilute nebutu akla —\n * jei kada perimtume is WC, kodo keisti nereiktu. NEJUNGTI be sprendimo:\n * dvigubo laisko rizika (payment_failed pamoka, §14).\n * Payload: order_number, carrier, tracking_number, tracking_url.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$nr    = isset( $payload['order_number'] ) ? (string) $payload['order_number'] : '';\n$track = isset( $payload['tracking_number'] ) ? (string) $payload['tracking_number'] : '';\n$turl  = isset( $payload['tracking_url'] ) ? (string) $payload['tracking_url'] : '';\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'transactional';\n\n$subject = $nr ? 'Jūsų užsakymas ' . $nr . ' išsiųstas' : 'Jūsų užsakymas išsiųstas';\n\n$body = Petshop_Email_Layout::p(\n\t'Jūsų užsakymas' . ( $nr ? ' Nr. ' . esc_html( $nr ) : '' ) . ' perduotas kurjeriui.'\n\t. ( $track ? ' Siuntos Nr. ' . esc_html( $track ) . '.' : '' )\n);\nif ( $turl ) {\n\t$body .= Petshop_Email_Layout::button( $turl, 'Sekti siuntą' );\n}\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Sekimo nuoroda — šiame laiške.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes pateikėte užsakymą petshop.lt.',\n) );\n"
+  }
+ }
+}
