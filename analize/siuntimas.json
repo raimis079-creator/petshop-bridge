@@ -1,0 +1,31 @@
+{
+ "v": "SIUNT-v1.0",
+ "kurimas": 200,
+ "sid": 4110,
+ "rez": {
+  "v": "SIUNT-v1.0",
+  "eile": {
+   "order_paid": 53,
+   "order_shipped": 54,
+   "payment_failed": 55,
+   "shipment_returned": 56,
+   "consent_changed": 57,
+   "pet_reminder_due": 58,
+   "subscription_t5_notice": 59,
+   "refill_due": 60,
+   "cart_abandoned": 61,
+   "cart_abandoned_2": 62,
+   "post_purchase_2d": 63,
+   "post_purchase_7d": 64,
+   "post_purchase_14d": 65,
+   "win_back_60": 66,
+   "win_back_90": 67,
+   "win_back_120": 68,
+   "legacy_reactivation_l1": 69,
+   "founding_activation": 70,
+   "back_in_stock": 71,
+   "browse_abandoned": 72
+  },
+  "FATAL": "Call to protected method Petshop_Email_Dispatch::process_one() from global scope @ /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:47"
+ }
+}
