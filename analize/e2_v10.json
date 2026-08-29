@@ -1,0 +1,86 @@
+{
+ "v": "e2_diegimas-205717",
+ "kurimas": 200,
+ "sid": 4162,
+ "D1": {
+  "v": "E2D-1.0",
+  "faze": "D1",
+  "petshop-naujienlaiskiai.php": {
+   "pries": "NERA",
+   "po": "43615fcf4755a758f3a2ead930c7e6b7",
+   "irasyta": "OK"
+  },
+  "petshop-kampaniju-langas.php": {
+   "pries": "d16559be5caadc85de38c60b04f61daa",
+   "po": "af4c283384a97e95b9800f072a323ed4",
+   "irasyta": "OK"
+  }
+ },
+ "T1": {
+  "v": "E2D-1.0",
+  "faze": "T1",
+  "flows_newsletter": {
+   "class": "marketing",
+   "template": "newsletter",
+   "delay": 0
+  },
+  "db_lentele": "TAIP",
+  "test_preke": "35147 · Dubenėlis gyvūnui Širdelė, Mon Amor, M",
+  "nl_id": 1,
+  "html": {
+   "ilgis": 3318,
+   "preke": "TAIP",
+   "img": "TAIP",
+   "mygtukas": "TAIP",
+   "kaina_eur": "NERA(GERAI)",
+   "atsisakymas": "TAIP"
+  },
+  "dispatch_render": {
+   "subject": "E2 testinis naujienlaiskis",
+   "ilgis": 3318,
+   "sutampa_su_html": "TAIP"
+  },
+  "blogas_nl": {
+   "subject": "",
+   "ilgis": 0
+  },
+  "kamp_atmeta_order_paid": {
+   "KLAIDA": "Leidziami tik: founding_activation, legacy_reactivation_l1, newsletter"
+  },
+  "kamp_be_id": {
+   "KLAIDA": "newsletter srautui privalomas payload.newsletter_id"
+  },
+  "kamp_dry": {
+   "rezimas": "DRY (nieko neenqueue)",
+   "srautas": "newsletter",
+   "srauto_klase": "marketing",
+   "saltinis": "consent_log",
+   "job_key_pvz": "kamp_nl1_20260829_pavyzdys@petshop.lt",
+   "viso": 4,
+   "jau_eileje": 0,
+   "tinkami": 1,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": [],
+   "pavyzdziai": "(1)"
+  },
+  "kamp_perziura": {
+   "rezimas": "PERZIURA (go=false, nieko neenqueue)",
+   "srautas": "newsletter",
+   "saltinis": "consent_log",
+   "bangos_dydis": 5,
+   "sioje_bangoje": 1,
+   "viso": 4,
+   "jau_eileje": 0,
+   "tinkami": 1,
+   "consent_missing": 3,
+   "suppressed": 0,
+   "kitos_priezastys": []
+  },
+  "jobs_po": 0,
+  "kamp_issiustas": {
+   "KLAIDA": "Naujienlaiskis #1 jau pazymetas issiustu"
+  },
+  "po_valymo": 0
+ }
+}
