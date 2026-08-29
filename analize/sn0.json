@@ -1,0 +1,92 @@
+{
+ "v": "SN0-140522",
+ "kurimas": 200,
+ "sid": 4126,
+ "SN0": {
+  "v": "SN0-v1.0",
+  "process_one": "\tprotected static function process_one( $row, $dry_run = false ) {\n\t\tglobal $wpdb;\n\t\t$id    = (int) $row['id'];\n\t\t$flow  = $row['flow'];\n\t\t$email = $row['recipient_email'];\n\n\t\t$context = json_decode( (string) $row['context_json'], true );\n\t\tif ( ! is_array( $context ) ) { $context = array(); }\n\n\t\t$elig = self::check_eligibility( $row['flow_class'], $email, $flow, $context );\n\t\tif ( ! $elig['allowed'] ) {\n\t\t\t$terminal = ! isset( $elig['terminal'] ) || $elig['terminal'];\n\t\t\t$now2     = current_time( 'mysql', true );\n\n\t\t\t// Atidejimo langas: po MAX_DEFER_DAYS atidėti nebeprasminga.\n\t\t\tif ( ! $terminal ) {\n\t\t\t\t$age_days = ( time() - strtotime( $row['created_at'] ) ) / 86400;\n\t\t\t\tif ( $age_days > self::MAX_DEFER_DAYS ) {\n\t\t\t\t\t$terminal = true;\n\t\t\t\t\t$elig['reason'] = 'deferral_expired';\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tif ( ! $dry_run ) {\n\t\t\t\t$upd = array(\n\t\t\t\t\t'status'       => $terminal ? 'skipped' : 'deferred',\n\t\t\t\t\t'skip_reason'  => substr( (string) $elig['reason'], 0, 64 ),\n\t\t\t\t\t'block_reason' => substr( (string) $elig['reason'], 0, 64 ), // suderinamumui\n\t\t\t\t\t'decision_at'  => $now2,\n\t\t\t\t\t'updated_at'   => $now2,\n\t\t\t\t);\n\t\t\t\tif ( ! $terminal ) {\n\t\t\t\t\t$upd['next_attempt_at'] = gmdate( 'Y-m-d H:i:s', time() + self::DEFER_RETRY_SECONDS );\n\t\t\t\t}\n\t\t\t\t$wpdb->update( self::table(), $upd, array( 'id' => $id ) );\n\t\t\t}\n\t\t\treturn array(\n\t\t\t\t'id' => $id, 'flow' => $flow,\n\t\t\t\t'action' => $terminal ? 'SKIPPED' : 'DEFERRED',\n\t\t\t\t'reason' => $elig['reason'],\n\t\t\t);\n\t\t}\n\n\t\t$payload = json_decode( (string) $row['payload'], true );\n\t\tif ( ! is_array( $payload ) ) { $payload = array(); }\n\n\t\t// S322: srautas gali paruosti papildoma konteksta (pvz. recovery tokena)\n\t\t// TIK PO sekmingos eligibility ir TIK VIENA KARTA — rezultatas issaugomas\n\t\t// context_json. Retry naudoja TA PATI konteksta, todel nesukuriami\n\t\t// keli galiojantys tokenai tam paciam krepseliui.\n\t\t$prepared = apply_filters( 'petshop_email_prepare_context', $context, $flow, $row );\n\t\tif ( is_array( $prepared ) && $prepared !== $context ) {\n\t\t\t$context = $prepared;\n\t\t\tif ( ! $dry_run ) {\n\t\t\t\t$wpdb->update( self::table(),\n\t\t\t\t\tarray( 'context_json' => wp_json_encode( $context ), 'updated_at' => current_time( 'mysql', true ) ),\n\t\t\t\t\tarray( 'id' => $id ) );\n\t\t\t}\n\t\t}\n\t\t// sablonas mato ir payload, ir paruosta konteksta\n\t\t$payload = array_merge( $payload, $context );\n\n\t\t$rendered = self::render( $flow, $payload, $row );\n\t\tif ( empty( $rendered['html'] ) ) {\n\t\t\tif ( ! $dry_run ) {\n\t\t\t\t$wpdb->update( self::table(), array(\n\t\t\t\t\t'status'        => 'failed',\n\t\t\t\t\t'last_error'    => 'template_missing: ' . $flow,\n\t\t\t\t\t'error_message' => 'template_missing: ' . $flow,\n\t\t\t\t\t'decision_at'   => current_time( 'mysql', true ),\n\t\t\t\t\t'updated_at'    => current_time( 'mysql', true ),\n\t\t\t\t), array( 'id' => $id ) );\n\t\t\t}\n\t\t\treturn array( 'id' => $id, 'flow' => $flow, 'action' => 'FAILED', 'reason' => 'template_missing' );\n\t\t}\n\n\t\tif ( $dry_run ) {\n\t\t\treturn array(\n\t\t\t\t'id' => $id, 'flow' => $flow, 'action' => 'WOULD_SEND',\n\t\t\t\t'to' => $email, 'subject' => $rendered['subject'],\n\t\t\t\t'html_len' => strlen( $rendered['html'] ),\n\t\t\t);\n\t\t}\n\n\t\t// Provider: pirma filtras (ateities SMS/kitas ESP), tada esama core konvencija.\n\t\t$provider = apply_filters( 'petshop_email_provider', null );\n\t\tif ( ! $provider && function_exists( 'ps_esp_adapter' ) ) {\n\t\t\t$provider = ps_esp_adapter();\n\t\t}\n\t\tif ( ! $provider || ! is_object( $provider ) || ! method_exists( $provider, 'send_transactional_email' ) ) {\n\t\t\t$wpdb->update( self::table(), array(\n\t\t\t\t'status'        => 'failed',\n\t\t\t\t'last_error'    => 'no_provider',\n\t\t\t\t'error_message' => 'no_provider',\n\t\t\t\t'attempts'      => (int) $row['attempts'] + 1,\n\t\t\t\t'decision_at'   => current_time( 'mysql', true ),\n\t\t\t\t'updated_at'    => current_time( 'mysql', true ),\n\t\t\t), array( 'id' => $id ) );\n\t\t\treturn array( 'id' => $id, 'flow' => $flow, 'action' => 'FAILED', 'reason' => 'no_provider' );\n\t\t}\n\n\t\t$res = $provider->send_transactional_email(\n\t\t\t$email, $rendered['subject'], $rendered['html'],\n\t\t\tarray( 'to_name' => isset( $payload['name'] ) ? $payload['name'] : '' )\n\t\t);\n\n\t\t$ok = ! empty( $res['ok'] );\n\t\t$wpdb->update( self::table(), array(\n\t\t\t'status'              => $ok ? 'sent' : ( ! empty( $res['should_retry'] ) ? 'pending' : 'failed' ),\n\t\t\t'provider'            => 'sender',\n\t\t\t'provider_message_id' => isset( $res['esp_message_id'] ) ? substr( (string) $res['esp_message_id'], 0, 191 ) : null,\n\t\t\t'subject'             => substr( $rendered['subject'], 0, 255 ),\n\t\t\t'attempts'            => (int) $row['attempts'] + 1,\n\t\t\t'last_error'          => $ok ? null : ( isset( $res['error'] ) ? substr( (string) $res['error'], 0, 500 ) : 'unknown' ),\n\t\t\t'error_message'       => $ok ? null : ( isset( $res['error'] ) ? substr( (string) $res['error'], 0, 500 ) : 'unknown' ),\n\t\t\t'decision_at'         => current_time( 'mysql', true ),\n\t\t\t'sent_at'             => $ok ? current_time( 'mysql', true ) : null,\n\t\t\t'updated_at'          => current_time( 'mysql', true ),\n\t\t), array( 'id' => $id ) );\n\n\t\t// S315: pranešam, kad kontaktas panaudotas. Politikos reikšmę skaičiuoja\n\t\t// Petshop_Contact_Policy, ne dispatch. Nesekme CIA NEGALI paversti\n\t\t// issiusto laisko failed — todel apgaubta ir rezultatas ignoruojamas.\n\t\tif ( $ok ) {\n\t\t\ttry {\n\t\t\t\tdo_action( 'petshop_contact_used', $email, $flow );\n\t\t\t} catch ( Exception $e ) {\n\t\t\t\t// tyliai — laiskas jau issiustas\n\t\t\t}\n\t\t}\n\n\t\treturn array(\n\t\t\t'id' => $id, 'flow' => $flow, 'action' => $ok ? 'SENT' : 'FAILED',\n\t\t\t'msg_id' => isset( $res['esp_message_id'] ) ? $res['esp_message_id'] : '',\n\t\t\t'error'  => $ok ? '' : ( isset( $res['error'] ) ? $res['error'] : '' ),\n\t\t);\n\t}\n",
+  "klases": {
+   "DOMNameSpaceNode": "",
+   "Phalcon\\Http\\Response": "",
+   "Phalcon\\Http\\Response\\Cookies": "",
+   "Phalcon\\Http\\Response\\Exception": "",
+   "Phalcon\\Http\\Response\\Headers": "",
+   "WP_Ajax_Response": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-ajax-response.php",
+   "WP_HTTP_Response": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-http-response.php",
+   "WP_HTTP_Requests_Response": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-http-requests-response.php",
+   "WP_REST_Response": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-response.php",
+   "Petshop_Email_Suppression": "/plugins/petshop-core/includes/class-email-suppression.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\RegisterAutoconfigureAttributesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/RegisterAutoconfigureAttributesPass.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\AutowireRequiredPropertiesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/AutowireRequiredPropertiesPass.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\ResolveReferencesToAliasesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/ResolveReferencesToAliasesPass.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\ResolveInvalidReferencesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/ResolveInvalidReferencesPass.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\AnalyzeServiceReferencesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/AnalyzeServiceReferencesPass.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\CheckCircularReferencesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/CheckCircularReferencesPass.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\RemovePrivateAliasesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/RemovePrivateAliasesPass.php",
+   "Paysera\\Scoped\\Symfony\\Component\\DependencyInjection\\Compiler\\AliasDeprecatedPublicServicesPass": "/plugins/woo-payment-gateway-paysera/vendor-scoped/symfony/dependency-injection/Compiler/AliasDeprecatedPublicServicesPass.php",
+   "Paysera\\Service\\SelfDiagnosis\\Library\\Util\\ResponseHeadersUtil": "/plugins/woo-payment-gateway-paysera/src/Service/SelfDiagnosis/Library/Util/ResponseHeadersUtil.php",
+   "Paysera\\Provider\\PayseraRatesProvider": "/plugins/woo-payment-gateway-paysera/src/Provider/PayseraRatesProvider.php",
+   "WC_Webhook_Data_Store": "/plugins/woocommerce/includes/data-stores/class-wc-webhook-data-store.php",
+   "Automattic\\WooCommerce\\Internal\\Utilities\\WebhookUtil": "/plugins/woocommerce/src/Internal/Utilities/WebhookUtil.php",
+   "Automattic\\Jetpack\\Connection\\Webhooks": "/plugins/woocommerce/vendor/automattic/jetpack-connection/src/class-webhooks.php",
+   "Petshop_Sender_Adapter": "/plugins/petshop-esp/includes/class-sender-adapter.php",
+   "Petshop_ESP_Webhook_Receiver": "/plugins/petshop-esp/includes/class-webhook-receiver.php",
+   "petshop_esp_event_log": "/plugins/petshop-core/includes/class-event-log.php",
+   "petshop_esp_consent_log": "/plugins/petshop-core/includes/class-consent-log.php",
+   "petshop_esp_consent_sync": "/plugins/petshop-core/includes/class-consent-sync.php",
+   "petshop_esp_retry_queue": "/plugins/petshop-core/includes/class-retry-queue.php",
+   "Automattic\\WooCommerce\\Admin\\RemoteSpecs\\RemoteSpecsEngine": "/plugins/woocommerce/src/Admin/RemoteSpecs/RemoteSpecsEngine.php",
+   "Automattic\\WooCommerce\\Internal\\Admin\\Notes\\ScheduledUpdatesPromotion": "/plugins/woocommerce/src/Internal/Admin/Notes/ScheduledUpdatesPromotion.php",
+   "WPForms\\Integrations\\Stripe\\Api\\WebhookRoute": "/plugins/wpforms-lite/src/Integrations/Stripe/Api/WebhookRoute.php",
+   "WPForms\\Integrations\\Stripe\\WebhooksHealthCheck": "/plugins/wpforms-lite/src/Integrations/Stripe/WebhooksHealthCheck.php",
+   "WPForms\\Integrations\\Stripe\\Api\\WebhooksManager": "/plugins/wpforms-lite/src/Integrations/Stripe/Api/WebhooksManager.php",
+   "WPForms\\Integrations\\Square\\Api\\WebhooksManager": "/plugins/wpforms-lite/src/Integrations/Square/Api/WebhooksManager.php",
+   "WPForms\\Integrations\\Square\\Api\\WebhookRoute": "/plugins/wpforms-lite/src/Integrations/Square/Api/WebhookRoute.php",
+   "WPForms\\Integrations\\Square\\WebhooksHealthCheck": "/plugins/wpforms-lite/src/Integrations/Square/WebhooksHealthCheck.php",
+   "WPForms\\Integrations\\PayPalCommerce\\Api\\WebhookRoute": "/plugins/wpforms-lite/src/Integrations/PayPalCommerce/Api/WebhookRoute.php",
+   "WPForms\\Integrations\\PayPalCommerce\\WebhooksHealthCheck": "/plugins/wpforms-lite/src/Integrations/PayPalCommerce/WebhooksHealthCheck.php",
+   "WPForms\\Integrations\\PayPalCommerce\\Api\\WebhooksManager": "/plugins/wpforms-lite/src/Integrations/PayPalCommerce/Api/WebhooksManager.php",
+   "WPForms\\Tasks\\Actions\\PurgeSpamTask": "/plugins/wpforms-lite/src/Tasks/Actions/PurgeSpamTask.php"
+  },
+  "adapteris": "Petshop_Sender_Adapter",
+  "adapterio_failas": "/plugins/petshop-esp/includes/class-sender-adapter.php",
+  "adapterio_metodai": [
+   "get_name",
+   "is_blocked_by_dev_allowlist",
+   "log_dev_blocked",
+   "__construct",
+   "static get_stored_token",
+   "static store_token",
+   "is_configured",
+   "request",
+   "static is_retriable_code",
+   "upsert_contact",
+   "emit_event",
+   "send_transactional_email",
+   "send_transactional_sms",
+   "verify_webhook",
+   "get_health_status",
+   "is_operational",
+   "get_contact_field",
+   "get_contact_status"
+  ],
+  "src_request": "\tprivate function request( $method, $path, $body = null, $token = null ) {\n\t\t$token = $token ?: $this->marketing_token;\n\t\t$args = array(\n\t\t\t'method'  => $method,\n\t\t\t'timeout' => self::HTTP_TIMEOUT,\n\t\t\t'headers' => array(\n\t\t\t\t'Authorization' => 'Bearer ' . $token,\n\t\t\t\t'Accept'        => 'application/json',\n\t\t\t\t'Content-Type'  => 'application/json',\n\t\t\t),\n\t\t);\n\t\tif ( $body !== null ) {\n\t\t\t$args['body'] = wp_json_encode( $body );\n\t\t}\n\n\t\t$response = wp_remote_request( self::API_BASE . $path, $args );\n\n\t\tif ( is_wp_error( $response ) ) {\n\t\t\treturn array(\n\t\t\t\t'code'    => 0,\n\t\t\t\t'body'    => array(),\n\t\t\t\t'raw'     => '',\n\t\t\t\t'ok'      => false,\n\t\t\t\t'headers' => array(),\n\t\t\t\t'error'   => $response->get_error_message(),\n\t\t\t);\n\t\t}\n\n\t\t$code = (int) wp_remote_retrieve_response_code( $response );\n\t\t$raw = wp_remote_retrieve_body( $response );\n\t\t$decoded = json_decode( $raw, true );\n\n\t\treturn array(\n\t\t\t'code'    => $code,\n\t\t\t'body'    => is_array( $decoded ) ? $decoded : array(),\n\t\t\t'raw'     => $raw,\n\t\t\t'ok'      => ( $code >= 200 && $code < 300 ),\n\t\t\t'headers' => wp_remote_retrieve_headers( $response ),\n\t\t\t'error'   => ( $code >= 400 ) ? ( isset( $decoded['message'] ) ? $decoded['message'] : 'HTTP ' . $code ) : '',\n\t\t);\n\t}\n",
+  "endpointai": {
+   "/plugins/petshop-esp/includes/class-sender-adapter.php": [
+    "https://api.sender.net/v2"
+   ],
+   "/plugins/petshop-core/includes/class-email-suppression.php": [
+    "https://api.sender.net/v2/subscribers"
+   ]
+  },
+  "wp_mail_filtrai": {
+   "phpmailer_init": 1,
+   "wp_mail": 3,
+   "pre_wp_mail": 0,
+   "wp_mail_from": 1
+  },
+  "smtp_pluginai": [
+   "wp-mail-smtp/wp_mail_smtp.php"
+  ]
+ }
+}
