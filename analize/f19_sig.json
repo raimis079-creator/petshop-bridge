@@ -1,0 +1,10 @@
+{
+ "v": "f19_sig-220521",
+ "kurimas": 200,
+ "sid": 4166,
+ "S1": {
+  "v": "F19S1",
+  "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/petshop-core.php:337",
+  "kodas": "\tfunction ps_generate_token( array $args ) {\n\t\treturn Petshop_Action_Tokens::generate( $args );\n\t}\n}\n\nif ( ! function_exists( 'ps_peek_token' ) ) {\n\t/**\n\t * Nuskaityti token'a BE side-effect (scanner-safe, GET/confirmation page kontekstui).\n\t * @return array {valid, reason, row}\n\t */\n\tfunction ps_peek_token( $raw_token ) {\n\t\treturn Petshop_Action_Tokens::peek( $raw_token );\n\t}\n}\n\nif ( ! function_exists( 'ps_consume_token' ) ) {\n\t/**\n\t * Patikrinti + atlikti veiksma (status→used, invaliduoti susijusius).\n\t * TIK POST kontekste (negrįžtamas veiksmas).\n\t * @return array {valid, reason, row}\n\t */\n\tfunction ps_consume_token( $raw_token ) {\n\t\treturn Petshop_Action_Tokens::consume( $raw_token );\n\t}\n}\n"
+ }
+}
