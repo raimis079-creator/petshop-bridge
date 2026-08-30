@@ -1,0 +1,64 @@
+{
+ "v": "dep-193550",
+ "kurimas": 200,
+ "sid": 4269,
+ "GO": {
+  "v": "S1528-REC",
+  "klase": "Petshop_Magic_Login",
+  "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-magic-login.php",
+  "metodai": [
+   "static pub init()",
+   "static pub register_routes()",
+   "static prot claim_draft(user_id,email,draft_id)",
+   "static prot resolve_draft_for_email(draft_id,email)",
+   "static pub handle_request(request)",
+   "static pub handle_login_page()",
+   "static prot render_confirmation(token)",
+   "static prot process_login(token)",
+   "static prot send_login_email(email,user,token)",
+   "static prot unique_login_from_email(email)",
+   "static prot check_rate_limit(email,ip)",
+   "static prot get_client_ip()",
+   "static prot is_login_path()",
+   "static prot render_retry(msg)",
+   "static prot render_error(msg)",
+   "static prot render_page(title,content)"
+  ],
+  "konstantos": {
+   "TOKEN_PURPOSE": "magic_login",
+   "TOKEN_TTL": 900,
+   "RATE_LIMIT_WINDOW": 900,
+   "RATE_LIMIT_MAX_EMAIL": 3,
+   "RATE_LIMIT_MAX_IP": 10,
+   "LOGIN_PATH": "petshop-login",
+   "META_EMAIL_VERIFIED": "_ps_email_verified",
+   "META_CLAIM_PENDING": "_ps_pet_claim_pending"
+  },
+  "paskyra": {
+   "endpointai": [],
+   "veiksmai": [
+    "item_kiekis",
+    "item_salinti",
+    "daznis",
+    "pristatymas",
+    "pastomatas",
+    "kurjeris",
+    "sms",
+    "testi",
+    "praleisti",
+    "patvirtinti",
+    "pauzuoti",
+    "atsaukti",
+    "sukurti",
+    "item_prideti"
+   ],
+   "dydis": 44908,
+   "md5": "d7685fb241dbdef75b4d57af6504371d"
+  },
+  "account_url": "https://dev.avesa.lt/paskyra/prenumeratos/",
+  "t5_parametrai": [
+   "s"
+  ],
+  "pren_flows": []
+ }
+}
