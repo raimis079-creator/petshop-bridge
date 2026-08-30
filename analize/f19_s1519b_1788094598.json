@@ -1,0 +1,28 @@
+{
+ "v": "f19_s1519b-125638",
+ "kurimas": 200,
+ "sid": 4225,
+ "DN": {
+  "v": "S1519-1.1",
+  "faze": "DN",
+  "po": "b9dfbf73a89e61b59a5aa043d3d506f7"
+ },
+ "UC": {
+  "v": "S1519-1.1",
+  "faze": "UC",
+  "su_pren": {
+   "landing_nera": "T",
+   "parinkiklio_nera": "T",
+   "lt_data": "T",
+   "centras": "T"
+  },
+  "be_pren": {
+   "parinkiklis": "T",
+   "landing_nera": "T"
+  },
+  "valymas": [
+   0,
+   "ne"
+  ]
+ }
+}
