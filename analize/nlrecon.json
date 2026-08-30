@@ -1,0 +1,273 @@
+{
+ "v": "dep-213028",
+ "kurimas": 200,
+ "sid": 4284,
+ "GO": {
+  "v": "nlrecon",
+  "mu": [
+   {
+    "f": "petshop-kampaniju-langas.php",
+    "dydis": 11212,
+    "md5": "af4c283384a97e95b9800f072a323ed4",
+    "ver": "1.0",
+    "name": "Petshop Kampaniju Langas v1.1"
+   },
+   {
+    "f": "petshop-laiskai-importas.php",
+    "dydis": 16005,
+    "md5": "70a2eb765151388afcb8446c133b6306",
+    "ver": "1.5",
+    "name": "Petshop Laiskai — importas is failiniu sablonu"
+   },
+   {
+    "f": "petshop-laiskai.php",
+    "dydis": 23371,
+    "md5": "2c0d6a074dc6031caa5f79665b2cd954",
+    "ver": "1.3",
+    "name": "Petshop Laiskai — turinio sluoksnis"
+   },
+   {
+    "f": "petshop-naujienlaiskiai-admin.php",
+    "dydis": 22001,
+    "md5": "4ff31ac22cff45d3b5efecbae290a836",
+    "ver": "?",
+    "name": "Petshop Naujienlaiskiai Admin v1.0"
+   },
+   {
+    "f": "petshop-naujienlaiskiai.php",
+    "dydis": 8041,
+    "md5": "43615fcf4755a758f3a2ead930c7e6b7",
+    "ver": "?",
+    "name": "Petshop Naujienlaiskiai v1.0 (variklis)"
+   },
+   {
+    "f": "petshop-rezultatai.php",
+    "dydis": 17818,
+    "md5": "276d052207d678f518d8e4079c31ad6b",
+    "ver": "?",
+    "name": "Petshop Rezultatai v1.1 (laiškų skydelis + stop/go + pajamų priskyrimas)"
+   },
+   {
+    "f": "petshop-siuntu-laiskai.php",
+    "dydis": 17047,
+    "md5": "753f8c6c7f75ba1480ba21c752e48ed9",
+    "ver": "?",
+    "name": "?"
+   }
+  ],
+  "ps_lenteles": {
+   "ps_action_tokens": 411,
+   "ps_akcijos": 2,
+   "ps_akciju_prekes": 0,
+   "ps_ataskaitu_dienos": 365,
+   "ps_av_zurnalas": 547,
+   "ps_brand_alias": 140,
+   "ps_browse_log": 0,
+   "ps_carts": 104,
+   "ps_consent_log": 11,
+   "ps_dim_klientai": 3,
+   "ps_email_content": 15,
+   "ps_email_jobs": 17,
+   "ps_email_suppression": 1,
+   "ps_event_log": 456,
+   "ps_fakt_atsargos_d": 15794,
+   "ps_fakt_eilutes": 25,
+   "ps_fakt_grazinimai": 3,
+   "ps_fakt_kainos": 1319,
+   "ps_fakt_reklama": 17,
+   "ps_fakt_siuntos": 0,
+   "ps_fakt_uzsakymai": 11,
+   "ps_feeding_import_log": 5,
+   "ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f": 8,
+   "ps_feeding_map": 561,
+   "ps_feeding_map_bak_s212b_20260717_fb3eeae1": 451,
+   "ps_feeding_map_bak_s212b_engine_20260717_c4861c6f": 451,
+   "ps_feeding_rows": 5549,
+   "ps_feeding_rows_bak_s212b_20260717_fb3eeae1": 3825,
+   "ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f": 3825,
+   "ps_feeding_rows_bak_s304": 550,
+   "ps_feeding_tables": 296,
+   "ps_feeding_tables_bak_s212b_20260717_fb3eeae1": 223,
+   "ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f": 223,
+   "ps_islaidos": 0,
+   "ps_istrintos_prekes_s668": 32,
+   "ps_ivykiai": 4697,
+   "ps_laukai_ivykiai": 579,
+   "ps_naujienlaiskiai": 0,
+   "ps_pakuotes": 4,
+   "ps_partijos": 10,
+   "ps_pet_field_log": 0,
+   "ps_pet_notes": 7,
+   "ps_pet_products": 36,
+   "ps_pet_profile_drafts": 7,
+   "ps_pets": 69,
+   "ps_pets_bak_20260720_193704_f6d1f3c9": 23,
+   "ps_pets_bak_20260722_181456_hint": 25,
+   "ps_pets_bak_20260723_prof": 39,
+   "ps_pets_bak_20260726": 61,
+   "ps_pets_bak_20260726_ft": 62,
+   "ps_pets_bak_20260727_wet": 62,
+   "ps_pets_bak_20260731_pries_restore": 55,
+   "ps_plan_events": 7,
+   "ps_rec_log": 1,
+   "ps_refill_tracking": 23,
+   "ps_reminders": 10,
+   "ps_sargas_klaidos": 92,
+   "ps_shipments": 0,
+   "ps_sources": 3873,
+   "ps_stock_watch": 0,
+   "ps_subscription_events": 0,
+   "ps_subscription_items": 0,
+   "ps_subscriptions": 0,
+   "ps_tarifai": 29,
+   "ps_tarifu_priemokos": 4,
+   "ps_tiekimas": 0,
+   "ps_tiekimas_eil": 0,
+   "ps_web_dienos": 132,
+   "ps_web_ivykiai": 364,
+   "ps_webhook_log": 1
+  },
+  "nl_stulpeliai": [
+   "id",
+   "pavadinimas",
+   "subject",
+   "preheader",
+   "blocks_json",
+   "status",
+   "author_id",
+   "created_at",
+   "updated_at",
+   "sent_at"
+  ],
+  "nl_eilutes": [],
+  "email_jobs_pagal_klase": [],
+  "ej_stulpeliai": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "klases": {
+   "Petshop_Sender_Adapter": true,
+   "Petshop_Email_Dispatch": true,
+   "Petshop_Event_Registry": true
+  },
+  "sender_metodai": [
+   "get_name",
+   "is_blocked_by_dev_allowlist",
+   "log_dev_blocked",
+   "__construct",
+   "get_stored_token",
+   "store_token",
+   "is_configured",
+   "request",
+   "is_retriable_code",
+   "upsert_contact",
+   "emit_event",
+   "send_transactional_email",
+   "send_transactional_sms",
+   "verify_webhook",
+   "get_health_status",
+   "is_operational",
+   "get_contact_field",
+   "get_contact_status"
+  ],
+  "cron": {
+   "ps_email_dispatch_cron": "2026-08-30 21:33",
+   "wpforms_email_summaries_cron": "2026-09-06 21:00"
+  },
+  "options": [
+   {
+    "option_name": "jetpack_sync_settings_sync_sender_enabled",
+    "len": "1"
+   },
+   {
+    "option_name": "jetpack_sync_settings_full_sync_sender_enabled",
+    "len": "1"
+   },
+   {
+    "option_name": "lpsettings_sender_name",
+    "len": "9"
+   },
+   {
+    "option_name": "lpsettings_sender_company_name",
+    "len": "9"
+   },
+   {
+    "option_name": "lpsettings_sender_phone",
+    "len": "12"
+   },
+   {
+    "option_name": "lpsettings_sender_email",
+    "len": "16"
+   },
+   {
+    "option_name": "lpsettings_sender_country",
+    "len": "2"
+   },
+   {
+    "option_name": "lpsettings_sender_city",
+    "len": "9"
+   },
+   {
+    "option_name": "lpsettings_sender_street",
+    "len": "13"
+   },
+   {
+    "option_name": "lpsettings_sender_building",
+    "len": "2"
+   },
+   {
+    "option_name": "lpsettings_sender_apartment",
+    "len": "0"
+   },
+   {
+    "option_name": "lpsettings_sender_postcode",
+    "len": "5"
+   },
+   {
+    "option_name": "ps_sender_webhook_log",
+    "len": "6"
+   },
+   {
+    "option_name": "petshop_esp_sender_mk",
+    "len": "1320"
+   },
+   {
+    "option_name": "petshop_esp_sender_tk",
+    "len": "1316"
+   },
+   {
+    "option_name": "petshop_esp_sender_webhook_secret",
+    "len": "40"
+   },
+   {
+    "option_name": "ps_naujienlaiskiai_db",
+    "len": "1"
+   }
+  ],
+  "consent_meta": []
+ }
+}
