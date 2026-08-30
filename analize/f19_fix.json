@@ -1,4 +1,22 @@
 {
- "v": "f19_diegimas-221812",
- "klaida": "SyntaxError: Unexpected end of JSON input"
+ "v": "f19_fix-080805",
+ "kurimas": 200,
+ "sid": 4185,
+ "D6": {
+  "v": "F19FIX-1.0",
+  "sablonas": "344affa56dc4e257eb1b9afe2e16243b",
+  "langai_yra": "TAIP",
+  "langai_md5": "ba438ae024d245bd9ccefba56138f308",
+  "langai_dydis": 34634,
+  "submeniu": [],
+  "pagr_meniu": [
+   "Petshop langai"
+  ],
+  "pagr_slug": "?",
+  "slugai": [
+   "petshop-langai",
+   "petshop-laiskai"
+  ],
+  "klase": "Petshop_Langai_Admin"
+ }
 }
