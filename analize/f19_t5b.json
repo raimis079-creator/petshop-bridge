@@ -1,0 +1,59 @@
+{
+ "v": "f19_t5b-075806",
+ "kurimas": 200,
+ "sid": 4180,
+ "T6": {
+  "v": "F19T5-1.1",
+  "parasai": {
+   "render": "pub (flow, payload, ?row)",
+   "enqueue": "pub (flow, email, ?payload, ?args)",
+   "process_one": "prot (row, ?dry_run)"
+  },
+  "ciklas": {
+   "t5": 1,
+   "uzsakymai": 0,
+   "sulaikyta": 0,
+   "dunning": 0,
+   "klaidos": []
+  },
+  "ivykiai": [
+   "created",
+   "notice_sent"
+  ],
+  "lentele": "gaj6_ps_email_jobs",
+  "eileje": "NERASTA",
+  "stulpeliai": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "valymas": {
+   "subs": 0,
+   "ivykiai": 0,
+   "eile": 0
+  }
+ }
+}
