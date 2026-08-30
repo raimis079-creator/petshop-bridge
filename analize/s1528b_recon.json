@@ -1,0 +1,38 @@
+{
+ "v": "dep-193756",
+ "kurimas": 200,
+ "sid": 4270,
+ "GO": {
+  "v": "S1528b",
+  "frag": {
+   "generate": [
+    "shop/v1/magic-login/request * 2. Jei email turi WP user: generate token, siusti laiska su nuoroda * /petshop-login?token=XXX. Visais atvejais atsakymas",
+    "$request->get_param( 'draft_id' ), $email ); $token = ps_generate_token( array( 'purpose' => self::TOKEN_PURPOSE, 'subject_id' => $user ? (int",
+    " self::unique_login_from_email( $token_email ), wp_generate_password( 24 ), $token_email ); if ( is_wp_error( $new_id ) ) { self::ren"
+   ],
+   "set_transient": [
+    "ount >= self::RATE_LIMIT_MAX_IP ) { return false; } set_transient( $email_key, $email_count + 1, self::RATE_LIMIT_WINDOW ); set_transient( $ip_key, $i",
+    " $email_key, $email_count + 1, self::RATE_LIMIT_WINDOW ); set_transient( $ip_key, $ip_count + 1, self::RATE_LIMIT_WINDOW ); return true; } private static"
+   ],
+   "get_transient": [
+    " $ip_key = 'ps_ml_i_' . md5( $ip ); $email_count = (int) get_transient( $email_key ); $ip_count = (int) get_transient( $ip_key ); if ( $email_count >= s",
+    "nt = (int) get_transient( $email_key ); $ip_count = (int) get_transient( $ip_key ); if ( $email_count >= self::RATE_LIMIT_MAX_EMAIL ) { return false; "
+   ],
+   "hash": [
+    "UID v4; * 2. draftas EGZISTUOJA; * 3. drafto `email_hash` SUTAMPA su normalizuoto pateikto el. pasto HMAC; * 4. statusas `active` (NE claiming/claim",
+    " return ''; } // 3) savininkas — HMAC palyginimas, hash_equals (timing-safe) $hash = Petshop_Pet_Drafts::email_hash( $email ); if ( '' === $hash ||",
+    "vininkas — HMAC palyginimas, hash_equals (timing-safe) $hash = Petshop_Pet_Drafts::email_hash( $email ); if ( '' === $hash || ! hash_equals( (string) $row"
+   ],
+   "wp_set_auth_cookie": [
+    "i\" mygtuka su POST forma). * 4. POST -> consume token -> wp_set_auth_cookie + session regen -> redirect MyAccount. */ if ( ! defined( 'ABSPATH' ) ) { exit",
+    " // Session fixation apsauga: wp_clear_auth_cookie + naujas wp_set_auth_cookie // zemiau duoda nauja auth cookie (sena negalioja). WP neturi PHP session'u /",
+    "p_clear_auth_cookie(); wp_set_current_user( $user_id ); wp_set_auth_cookie( $user_id, true ); // remember=true do_action( 'wp_login', $user->user_login, "
+   ],
+   "token_": [
+    "ion_url = esc_url( home_url( '/' . self::LOGIN_PATH ) ); $token_esc = esc_attr( $token ); $nonce = wp_create_nonce( 'ps_magic_login' ); self::render_page",
+    "p:24px;\"> <input type=\"hidden\" name=\"token\" value=\"' . $token_esc . '\"> <input type=\"hidden\" name=\"ps_nonce\" value=\"' . esc_attr( $nonce ) . '\"> <bu",
+    "t_id=0) — paskyra kuriama TIK cia. if ( ! $user ) { $token_email = isset( $result['row']->subject_email ) ? sanitize_email( $result['row']->subject_email"
+   ]
+  }
+ }
+}
