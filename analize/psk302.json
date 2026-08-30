@@ -1,34 +1,20 @@
 {
- "v": "psk302-e2e-5",
+ "v": "psk302-jsdiag-1",
  "kurimas": 200,
- "E2E": {
-  "v": "PSK302-E2E",
-  "uid": 99,
-  "post_kodas": 302,
-  "sub": {
-   "id": "44",
-   "status": "active",
-   "next_cycle_date": "2026-09-06",
-   "interval_days": "28"
-  },
-  "items": [
-   {
-    "product_id": "35096",
-    "qty": "1"
-   }
-  ],
-  "zinute": {
-   "t": "Prenumerata sukurta! Pirmoji siunta — 2026-09-06 („20 vnt. rudų kiaulės knyslių“, 1 vnt.). Likus 5 dienoms atsiųsime laišką patvirtinimui — be jūsų „taip“ nieko nesiųsime ir neskaičiuosime.",
-   "tipas": "gerai"
-  },
-  "puslapyje_zinute": true,
-  "puslapyje_panele": true,
-  "puslapyje_prekes_pav": true
+ "PREP": {
+  "v": "JSD-PREP3",
+  "uid": 100,
+  "cookie_name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "cookie_val": "psn3vizual|1788111325|Pl1l0EAWN7phzzHZyCjjPPBqItBWJjMDJznATNBkjJZ|0c829ef0976bcc338def14e3fcb0df7b88cca1d972a1f030e3d9ad232b780bdc",
+  "url": "https://dev.avesa.lt/paskyra/prenumeratos/"
  },
- "CL2": {
-  "v": "PSK302-CL2",
-  "istrinta": 1,
-  "user_istrintas": true,
-  "likutis": 0
+ "script_yra": "function",
+ "mygtuku": 3,
+ "drawer_klase": "psn3-drawer psn3-rod",
+ "drawer_matomas": true,
+ "konsole": [],
+ "CLEAN": {
+  "v": "JSD-CL3",
+  "istrinta": 0
  }
 }
