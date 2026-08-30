@@ -1,0 +1,55 @@
+{
+ "v": "dep-194406",
+ "kurimas": 200,
+ "sid": 4273,
+ "DEP": {
+  "v": "S1528",
+  "faze": "DEP",
+  "buvo": "NAUJAS",
+  "OK": true
+ },
+ "E2E": {
+  "v": "S1528",
+  "faze": "E2E",
+  "versija": "1.0",
+  "sid": 64,
+  "uid": 116,
+  "url_yra": true,
+  "T1_nuoroda": "OK",
+  "peek_raktai": [
+   "valid",
+   "reason",
+   "row"
+  ],
+  "peek_row": {
+   "purpose": "pren_veiksmas",
+   "subject_id": "116",
+   "resource_id": "64",
+   "action": "atsaukti",
+   "status": "active",
+   "expires_at": "2026-09-29 19:45:15"
+  },
+  "peek_valid_raktas": true,
+  "T3_get_puslapis": "OK",
+  "T4_get_nesuvartojo": "OK",
+  "consume_raktai": [
+   "valid",
+   "reason",
+   "row"
+  ],
+  "T5_vienkartinis": "OK",
+  "c2": [
+   "valid",
+   "reason",
+   "row"
+  ],
+  "T6_pasibaiges": "OK",
+  "T7_be_userio": "OK"
+ },
+ "CL": {
+  "v": "S1528",
+  "faze": "CL",
+  "likutis": 0,
+  "tokenu_likutis": 0
+ }
+}
