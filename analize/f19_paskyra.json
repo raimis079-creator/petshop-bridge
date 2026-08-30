@@ -1,0 +1,60 @@
+{
+ "v": "f19_paskyra-074547",
+ "kurimas": 200,
+ "sid": 4177,
+ "D1": {
+  "v": "F19PASK-1.0",
+  "faze": "D1",
+  "variklis_pries": "9360c583617fd48ff431f44da8cac6f4",
+  "variklis_po": "e48446b9cc5b810194047d5448243642",
+  "ui_pries": "NERA",
+  "ui_po": "95ed451ce1e434ac61d30bb4c6f958b4"
+ },
+ "T1": {
+  "v": "F19PASK-1.0",
+  "faze": "T1",
+  "klases": {
+   "variklis": true,
+   "ui": true
+  },
+  "metodai": {
+   "keisti_kieki": true,
+   "keisti_rezima_confirm": true
+  },
+  "endpointai": [
+   "dashboard",
+   "augintinis",
+   "orders",
+   "prenumeratos",
+   "edit-address",
+   "edit-account"
+  ],
+  "uid": 89,
+  "sid": 7,
+  "logika": {
+   "kiekis_ok": 3,
+   "kiekis_ribos": "ATMESTA",
+   "notify_per_anksti": "ATMESTA",
+   "notify_po2": "notify_only",
+   "atgal_confirm": "confirm_required",
+   "pauze": "paused",
+   "testi": "active"
+  },
+  "url": "https://dev.avesa.lt/paskyra/prenumeratos/",
+  "HTTP": {
+   "kodas": 200,
+   "yra_kortele": "TAIP",
+   "yra_pauze": "TAIP",
+   "atsaukimas_slepiamas": "TAIP",
+   "meniu_punktas": "TAIP",
+   "ilgis": 194825
+  },
+  "nonce_apsauga": "VEIKIA",
+  "svetimas_sid": "APSAUGOTA",
+  "valymas": {
+   "subs": 0,
+   "ivykiai": 0,
+   "vartotojas": "ISTRINTAS"
+  }
+ }
+}
