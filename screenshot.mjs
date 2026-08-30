@@ -1,13 +1,19 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
-const VER='sutikimas-klik-1';
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
+const A={Authorization:AUTH,'Content-Type':'application/json'};
+const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
+const VER='sutikimas-klik-2';
 const out={v:VER,zingsniai:[]};
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha;
   return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
 try{
+  const akt=await fetch(SNIP+'/4276',{method:'POST',headers:A,body:JSON.stringify({id:4276,active:true})});
+  out.aktyvavimas=akt.status;
+  await new Promise(r=>setTimeout(r,6000));
   const {chromium}=await import('playwright');
   const br=await chromium.launch();
   const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:1100}});
@@ -51,6 +57,7 @@ try{
   await br.close();
   out.VISKAS_ZALIA=out.zingsniai.every(z=>z.ok);
 }catch(e){ out.klaida=String(e).slice(0,400); }
-try{ await fetch(WP+'/?ps_st=CL',{headers:{'User-Agent':'Mozilla/5.0'}}); }catch(e){}
+try{ await fetch(WP+'/?ps_st=CL',{headers:{'User-Agent':'Mozilla/5.0'}}); await fetch(SNIP+'/4276',{method:'POST',headers:A,body:JSON.stringify({id:4276,active:false})}); }catch(e){}
+try{ await fetch(WP+'/?ps_st=NIEKO',{headers:{'User-Agent':'Mozilla/5.0'}}); }catch(e){}
 await put('analize/sutikimas_klik.json',Buffer.from(JSON.stringify(out,null,1)),VER);
 console.log('ok');
