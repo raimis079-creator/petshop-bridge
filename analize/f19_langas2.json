@@ -1,0 +1,69 @@
+{
+ "v": "f19_langas2-085145",
+ "list_praleistas": "SyntaxError: Unexpected end of JSON input",
+ "kurimas": 200,
+ "sid": 4188,
+ "D8": {
+  "v": "F19LNG-2.0",
+  "faze": "D8",
+  "variklis": "96aec324fcafc1bb714eb129d58ae74e",
+  "langas": "1525fab0a761783886acb13e1223dae5"
+ },
+ "TB": {
+  "v": "F19LNG-2.0",
+  "faze": "TB",
+  "metodai": {
+   "t5_dabar": true,
+   "paleisti": true
+  },
+  "t5_dabar_rez": "OK",
+  "t5_eileje": {
+   "job_key": "sub_t5m:17:1788079974",
+   "status": "pending"
+  },
+  "paleisti_rez": "order#35272",
+  "po_paleidimo": {
+   "pending": 35272,
+   "kita": "2026-09-30"
+  },
+  "antras_paleidimas": "ATMESTA: jau_laukia",
+  "ciklas_log": {
+   "kada": "2026-08-30 08:52:54",
+   "diena": "2026-08-30"
+  },
+  "apzvalga": {
+   "kodas": 200,
+   "mrr": "T",
+   "confirm_rate": "T",
+   "cron": "T",
+   "dinamika": "T",
+   "priezastis_kaina": "T",
+   "branda_auto": "T",
+   "be_klaidu": "T"
+  },
+  "eile": {
+   "kodas": 200,
+   "laukia_s1": "N",
+   "sulaikytos_s2": "T",
+   "sulaikyta_2k": "T",
+   "dunning_s3": "T",
+   "persiusti_mygtukas": "T",
+   "be_klaidu": "T"
+  },
+  "detale": {
+   "kodas": 200,
+   "ciklo_uzsakymai": "T",
+   "t5_lentele": "T",
+   "t5_rankinis": "T",
+   "pristatymas": "T",
+   "zurnalas": "T",
+   "be_klaidu": "T"
+  },
+  "valymas": [
+   0,
+   0,
+   0,
+   "order_istrintas"
+  ]
+ }
+}
