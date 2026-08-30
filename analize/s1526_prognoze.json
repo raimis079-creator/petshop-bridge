@@ -1,0 +1,66 @@
+{
+ "v": "dep-191602",
+ "kurimas": 200,
+ "sid": 4265,
+ "DEP": {
+  "v": "S1526",
+  "faze": "DEP",
+  "buvo": "NAUJAS",
+  "dabar": "f3963ad59564b6c02d078c7bc151b447",
+  "tikimasi": "f3963ad59564b6c02d078c7bc151b447",
+  "OK": true
+ },
+ "E2E": {
+  "v": "S1526",
+  "faze": "E2E",
+  "versija": "1.0",
+  "esami_aktyvus": [
+   {
+    "id": "43",
+    "email": "raimundas@gyvunai.lt",
+    "product_id": "35098",
+    "qty": "3",
+    "interval_days": "28",
+    "next_cycle_date": "2026-09-06"
+   }
+  ],
+  "sA": 58,
+  "sB": 59,
+  "pro_35098": {
+   "d30": 5,
+   "d45": 8,
+   "d60": 10,
+   "ciklai": 6
+  },
+  "pro_35099": {
+   "d30": 1,
+   "d45": 5,
+   "d60": 5,
+   "ciklai": 3
+  },
+  "T1_projekcija_A": "FAIL",
+  "T2_projekcija_B": "FAIL",
+  "T3_nesekamos_praleistos": "OK",
+  "def_35098": {
+   "likutis": 1,
+   "d30": 5,
+   "truksta": 4
+  },
+  "T4_deficitas": "FAIL",
+  "T5_cron": "OK",
+  "sC": 60,
+  "T6_pradelstas": "FAIL",
+  "VISKAS": false
+ },
+ "CL": {
+  "v": "S1526",
+  "faze": "CL",
+  "likutis": 0,
+  "aktyvus_liko": [
+   {
+    "id": "43",
+    "email": "raimundas@gyvunai.lt"
+   }
+  ]
+ }
+}
