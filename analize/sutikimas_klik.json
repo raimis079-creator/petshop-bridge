@@ -1,31 +1,31 @@
 {
- "v": "sutikimas-klik-2",
+ "v": "sutikimas-klik-3",
  "zingsniai": [
   {
    "nr": 1,
    "vardas": "krepselio uzpildymas + checkout",
    "ok": false,
-   "klaida": "Error: ne checkout: https://dev.avesa.lt/krepselis/"
+   "klaida": "Error: ne checkout: https://dev.avesa.lt/kasa/"
   },
   {
    "nr": 2,
    "vardas": "varnele matoma su tekstu",
-   "ok": false,
-   "klaida": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('#ps_pren_sutikimas')\n"
+   "ok": true,
+   "rez": "Sutinku su prenumeratos taisyklėmis — reguliarūs užsakymai pasirinktu dažnumu, kainos fiks"
   },
   {
    "nr": 3,
    "vardas": "bandymas be varneles -> musu klaida",
-   "ok": false,
-   "klaida": "TimeoutError: page.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#place_order')\n"
+   "ok": true,
+   "rez": "klaida parodyta"
   },
   {
    "nr": 4,
    "vardas": "pazymejus varnele klaidos neber",
-   "ok": false,
-   "klaida": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('.ps-pren-sutikimas label')\n"
+   "ok": true,
+   "rez": "pazymeta + nuotrauka"
   }
  ],
- "aktyvavimas": 200,
+ "sid": 4277,
  "VISKAS_ZALIA": false
 }
