@@ -1,0 +1,44 @@
+{
+ "v": "nuorodos-klik-1",
+ "zingsniai": [
+  {
+   "nr": 1,
+   "vardas": "atidaryti laisko nuoroda (be slapuku)",
+   "ok": true,
+   "rez": "patvirtinimo puslapis"
+  },
+  {
+   "nr": 2,
+   "vardas": "paspausti Testi -> prisijungimas -> paskyra",
+   "ok": true,
+   "rez": "https://dev.avesa.lt/paskyra/prenumeratos/?sid=66&fokus=atsaukti"
+  },
+  {
+   "nr": 3,
+   "vardas": "detale atsidariusi ir prisijungta",
+   "ok": false,
+   "klaida": "Error: nera detales"
+  },
+  {
+   "nr": 4,
+   "vardas": "pakartotinis nuorodos paspaudimas (jau prisijungus) -> tiesiai i paskyra",
+   "ok": true,
+   "rez": "https://dev.avesa.lt/paskyra/prenumeratos/?sid=66&fokus=atsaukti"
+  }
+ ],
+ "sid": 4274,
+ "P": {
+  "v": "NRK-1",
+  "faze": "P",
+  "sid": 66,
+  "uid": 117,
+  "url": "https://dev.avesa.lt/pren-veiksmas/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoicHJlbl92ZWlrc21hcyIsInN1YmplY3RfaWQiOjExNywicmVzb3VyY2VfaWQiOiI2NiIsImFjdGlvbiI6ImF0c2F1a3RpIiwiZXhwaXJlc19hdCI6MTc5MDcxMTI2Miwibm9uY2UiOiI0MjAwN2I3N2E1MzJhMDc0ZWVjNWQ5OGIxMDEzZjBmOCIsImtleV9pZCI6InYyIn0.0b27c89d700064241919347aa93bbf70d1ec7d3bc942ff5b0ac41a89fe938470"
+ },
+ "VISKAS_ZALIA": false,
+ "CL": {
+  "v": "NRK-1",
+  "faze": "CL",
+  "likutis": 0,
+  "tokenai": 0
+ }
+}
