@@ -1,5 +1,5 @@
 {
- "v": "psk305-klik-5",
+ "v": "psk31-klik-7",
  "zingsniai": [
   {
    "z": "atidarymas",
@@ -42,7 +42,12 @@
    "d": ""
   },
   {
-   "z": "Pristatymas Keisti + kurjeris",
+   "z": "Pastomato keitimas (miestas->terminalas)",
+   "ok": true,
+   "d": "terminalu: 567"
+  },
+  {
+   "z": "Kurjeris (adresas is WC)",
    "ok": true,
    "d": ""
   },
@@ -55,12 +60,12 @@
  "kurimas": 200,
  "DEP3": {
   "v": "K-DEP3",
-  "buves": "03995c39fb6ef44d316e19ba3d131b43",
-  "naujas": "3f2cceb230659bf3bfce182a9e6226d4"
+  "buves": "3f2cceb230659bf3bfce182a9e6226d4",
+  "naujas": "22d37b7180f121d1cbc7e21f0c1decb2"
  },
  "P4": {
-  "sid": 48,
-  "uid": 104
+  "sid": 49,
+  "uid": 105
  },
  "pageerrors": [],
  "CL4": {
