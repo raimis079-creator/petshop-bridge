@@ -2,41 +2,37 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTI2YyBjb29raWUgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYoIWlzc2V0KCRfR0VUWydwc19jayddKXx8JF9HRVRbJ3BzX2NrJ10hPT0nR08nKSByZXR1cm47CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAkYWRtPWdldF91c2VycyhhcnJheSgncm9sZSc9PidhZG1pbmlzdHJhdG9yJywnbnVtYmVyJz0+MSwnZmllbGRzJz0+J0lEJykpOwogICRhaWQ9JGFkbT8oaW50KSRhZG1bMF06MTsKICAkc3NsPWZvcmNlX3NzbF9hZG1pbigpfHxpc19zc2woKTsKICBlY2hvIGpzb25fZW5jb2RlKGFycmF5KAogICAgJ2Nvb2tpZV9uYW1lJz0+TE9HR0VEX0lOX0NPT0tJRSwKICAgICdjb29raWUnPT53cF9nZW5lcmF0ZV9hdXRoX2Nvb2tpZSgkYWlkLHRpbWUoKSsxMjAwLCdsb2dnZWRfaW4nKSwKICAgICdhdXRoX25hbWUnPT4kc3NsP1NFQ1VSRV9BVVRIX0NPT0tJRTpBVVRIX0NPT0tJRSwKICAgICdhdXRoX2Nvb2tpZSc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCRhaWQsdGltZSgpKzEyMDAsJHNzbD8nc2VjdXJlX2F1dGgnOidhdXRoJyksCiAgICAnYXV0aF9zZWN1cmUnPT4kc3NsLAogICAgJ3VybCc9PmFkbWluX3VybCgnYWRtaW4ucGhwP3BhZ2U9cHMtcHJvZ25vemUnKQogICkpOyBleGl0Owp9KTsK';
-const VER='prognoze-shot';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTI3IHRyaW50aSB0ZXN0aW5pIHBsYW5hIDQzICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpewogIGlmKCFpc3NldCgkX0dFVFsncHNfdDQzJ10pfHwkX0dFVFsncHNfdDQzJ10hPT0nR08nKSByZXR1cm47CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAkbz1hcnJheSgndic9PidTMTUyNycpOwogIHRyeXsKICAgIGdsb2JhbCAkd3BkYjsKICAgICRFTT0ncmFpbXVuZGFzQGd5dnVuYWkubHQnOwogICAgJGlkcz0kd3BkYi0+Z2V0X2NvbCgkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIGlkIEZST00geyR3cGRiLT5wcmVmaXh9cHNfc3Vic2NyaXB0aW9ucyBXSEVSRSBlbWFpbD0lcyIsJEVNKSk7CiAgICAkb1sncmFzdGEnXT0kaWRzOwogICAgZm9yZWFjaCgkaWRzIGFzICR4KXsKICAgICAgJHdwZGItPnF1ZXJ5KCR3cGRiLT5wcmVwYXJlKCJERUxFVEUgRlJPTSB7JHdwZGItPnByZWZpeH1wc19zdWJzY3JpcHRpb25faXRlbXMgV0hFUkUgc3Vic2NyaXB0aW9uX2lkPSVkIiwkeCkpOwogICAgICAkd3BkYi0+cXVlcnkoJHdwZGItPnByZXBhcmUoIkRFTEVURSBGUk9NIHskd3BkYi0+cHJlZml4fXBzX3N1YnNjcmlwdGlvbl9ldmVudHMgV0hFUkUgc3Vic2NyaXB0aW9uX2lkPSVkIiwkeCkpOwogICAgICAkd3BkYi0+cXVlcnkoJHdwZGItPnByZXBhcmUoIkRFTEVURSBGUk9NIHskd3BkYi0+cHJlZml4fXBzX3N1YnNjcmlwdGlvbnMgV0hFUkUgaWQ9JWQiLCR4KSk7CiAgICB9CiAgICAvLyBWYXJ0b3Rvam8gTkVUUklOQU1FIOKAlCB0YWkgdGlrcmEgUmFpbWlvIHBhc2t5cmEsIHRpayBwbGFuYWkKICAgICRvWydsaWt1dGlzX3Zpc28nXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHdwZGItPnByZWZpeH1wc19zdWJzY3JpcHRpb25zIik7CiAgICAkb1snYWt0eXZ1cyddPShpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskd3BkYi0+cHJlZml4fXBzX3N1YnNjcmlwdGlvbnMgV0hFUkUgc3RhdHVzPSdhY3RpdmUnIik7CiAgfWNhdGNoKFRocm93YWJsZSAkZSl7ICRvWydGQVRBTCddPSRlLT5nZXRNZXNzYWdlKCk7IH0KICBlY2hvIGpzb25fZW5jb2RlKCRvLEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9KTsK';
+const VER='dep-192639';
+const GKEY='ps_t43';
+const PHASES=["GO"];
+const OUT='analize/s1527_trinti43.json';
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha;
   return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
+async function fx(u,o,k){ for(let i=0;i<5;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(8000);} } throw new Error('fx:'+k); }
 const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
+const UA={'Cache-Control':'no-cache','User-Agent':'Mozilla/5.0'};
 let sid=null;
 try{
-  const l=await fetch(SNIP,{headers:A}); const arr=JSON.parse(await l.text());
+  try{ const l=await fx(SNIP,{headers:A},'list'); const arr=JSON.parse(await l.text());
   for(const s of (Array.isArray(arr)?arr:[]).filter(s=>s.active&&/^TEMP/.test(s.name||''))){
-    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); }
-  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
-    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
-  sid=JSON.parse(await c.text()).id; out.sid=sid;
+    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); } }catch(e){ out.list_praleistas=String(e).slice(0,80); }
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
+    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'create');
+  const ct=await c.text(); out.kurimas=c.status; try{sid=JSON.parse(ct).id; out.sid=sid;}catch(e){out.kurimo_atsakas=ct.slice(0,400);}
   await miegok(9000);
-  const d=await fetch(WP+'/?ps_ck=GO',{headers:{'User-Agent':'Mozilla/5.0'}});
-  const P=JSON.parse(await d.text()); out.P_ok=!!P.cookie;
-  const {chromium}=await import('playwright');
-  const br=await chromium.launch();
-  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1440,height:1000}});
-  await ctx.addCookies([
-    {name:P.cookie_name,value:P.cookie,domain:'dev.avesa.lt',path:'/'},
-    {name:P.auth_name,value:P.auth_cookie,domain:'dev.avesa.lt',path:'/wp-admin',secure:!!P.auth_secure}]);
-  const pg=await ctx.newPage();
-  await pg.goto(P.url,{waitUntil:'domcontentloaded',timeout:60000});
-  await pg.waitForTimeout(1800);
-  const h1=await pg.textContent('h1').catch(()=>null);
-  out.h1=h1?h1.trim():null;
-  const b=await pg.screenshot({fullPage:true});
-  await put('analize/prognoze_admin.png',b,VER);
-  await br.close();
-}catch(e){ out.klaida=String(e).slice(0,400); }
+  for(let i=0;i<PHASES.length;i++){
+    const f=PHASES[i];
+    if(i>0) await miegok(5000);
+    const d=await fx(WP+'/?'+GKEY+'='+encodeURIComponent(f),{headers:UA},'faze_'+f);
+    const t=await d.text();
+    try{ out[f]=JSON.parse(t); }catch(e){ out['zalias_'+f]=t.slice(0,3000); }
+  }
+}catch(e){ out.klaida=String(e).slice(0,500); }
 try{ if(sid) await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(e){}
-await put('analize/prognoze_shot.json',Buffer.from(JSON.stringify(out,null,1)),VER);
+await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER);
 console.log('ok');
