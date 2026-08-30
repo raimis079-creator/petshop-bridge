@@ -1,0 +1,42 @@
+{
+ "v": "f19_s1516-113507",
+ "kurimas": 200,
+ "sid": 4216,
+ "DG2": {
+  "v": "S1516-1.0",
+  "faze": "DG2",
+  "petshop-prenumerata.php": "4298cfec0b833e989a807b59a4d6b229",
+  "petshop-prenumerata-katalogas.php": "ea5aee566cce0ca270888478902d1613",
+  "petshop-prenumerata-paskyra.php": "c4d1568d227c29d2d13cf569265a99a0"
+ },
+ "TT": {
+  "v": "S1516-1.0",
+  "faze": "TT",
+  "konstanta": 8,
+  "label_14": "kas 2 savaites",
+  "sukurti_56": 56,
+  "sukurti_13_fallback": 28,
+  "parinkiklis": {
+   "select_opciju": 8,
+   "default_28": "T",
+   "kas_12_sav": "T",
+   "pasitikejimo_eilute": "T",
+   "data_max": "T"
+  },
+  "sukurta_14": 14,
+  "kortele_label": "N",
+  "preke": {
+   "vienkartinis": "T",
+   "prenumeruoti": "T",
+   "select": "T",
+   "opciju": 8,
+   "slepiamas_default": "T"
+  },
+  "krepselis_56": 56,
+  "valymas": [
+   0,
+   0,
+   "ne"
+  ]
+ }
+}
