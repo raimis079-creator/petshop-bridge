@@ -1,0 +1,69 @@
+{
+ "v": "dep-184346",
+ "kurimas": 200,
+ "sid": 4259,
+ "DEP": {
+  "v": "S1524-2",
+  "faze": "DEP",
+  "failai": {
+   "petshop-prenumerata.php": {
+    "buvo": "d4ff5e5739ab50a806b151f8a9e7c5f7",
+    "dabar": "46657a60f530555844850ff5de986eac",
+    "statusas": "OK"
+   },
+   "petshop-prenumeratos-langas.php": {
+    "buvo": "a9ed4c84068be2eeb7ee3650176e3521",
+    "statusas": "jau_naujas"
+   }
+  }
+ },
+ "E2E": {
+  "v": "S1524-2",
+  "faze": "E2E",
+  "versijos": {
+   "variklis": "2.1",
+   "langas": "2.5"
+  },
+  "stulpelis_yra": true,
+  "db_versija": "4",
+  "sid": 54,
+  "T1_bruto_ct": 4600,
+  "T1_be_nuolaidos": {
+   "nuolaida": 0,
+   "suma": 4600
+  },
+  "T2_klientas10": {
+   "nuolaida": 10,
+   "saltinis": "klientas",
+   "suma": 4140,
+   "tikimasi": 4140
+  },
+  "T3_sub15_permusa": {
+   "nuolaida": 15,
+   "saltinis": "prenumerata",
+   "suma": 3910,
+   "tikimasi": 3910
+  },
+  "T4_sub0_isjungia": {
+   "nuolaida": 0,
+   "saltinis": "prenumerata",
+   "suma": 4600,
+   "tikimasi": 4600
+  },
+  "T5_isvalius_grizta": {
+   "nuolaida": 10,
+   "saltinis": "klientas"
+  },
+  "T6_uzsakymas": {
+   "id": 35280,
+   "subtotal": 38.02,
+   "total": "41.40",
+   "meta_nuolaida": "10",
+   "saltinis": "klientas"
+  },
+  "T7_ribos": {
+   "150_virsta": 90
+  },
+  "likutis": 0
+ }
+}
