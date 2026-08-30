@@ -1,20 +1,36 @@
 {
- "v": "psk302-jsdiag-1",
+ "v": "psk303-klik-1",
+ "zingsniai": [
+  {
+   "z": "atidarymas",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "drawer atidarymas (+Prideti preke)",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "Prideti is drawer",
+   "ok": false,
+   "d": "Error: prekiu eiluciu 1"
+  }
+ ],
  "kurimas": 200,
- "PREP": {
-  "v": "JSD-PREP3",
-  "uid": 100,
-  "cookie_name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
-  "cookie_val": "psn3vizual|1788111325|Pl1l0EAWN7phzzHZyCjjPPBqItBWJjMDJznATNBkjJZ|0c829ef0976bcc338def14e3fcb0df7b88cca1d972a1f030e3d9ad232b780bdc",
-  "url": "https://dev.avesa.lt/paskyra/prenumeratos/"
+ "DEP3": {
+  "v": "K-DEP3",
+  "buves": "c63bb956f037b9dd151486617fd4c188",
+  "naujas": "1ce6f7bcef4a597af9d8dddabdb6d536"
  },
- "script_yra": "function",
- "mygtuku": 3,
- "drawer_klase": "psn3-drawer psn3-rod",
- "drawer_matomas": true,
- "konsole": [],
- "CLEAN": {
-  "v": "JSD-CL3",
-  "istrinta": 0
+ "P4": {
+  "sid": 45,
+  "uid": 101
+ },
+ "klaida": "Error: prekiu eiluciu 1",
+ "CL4": {
+  "v": "K-CL4",
+  "istrinta": 1,
+  "likutis": 0
  }
 }
