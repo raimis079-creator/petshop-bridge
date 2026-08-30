@@ -1,11 +1,67 @@
 {
- "v": "psk304-klik-3",
- "zingsniai": [],
+ "v": "psk304-klik-4",
+ "zingsniai": [
+  {
+   "z": "atidarymas",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "drawer atidarymas (+Prideti preke)",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "Prideti is drawer",
+   "ok": true,
+   "d": "prekiu: 2"
+  },
+  {
+   "z": "Keisti prekes (redagavimas)",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "kiekis +1",
+   "ok": true,
+   "d": "2 vnt."
+  },
+  {
+   "z": "Daznumas Keisti",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "Daznumas -> kas 6 sav.",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "Pristatymas Keisti + kurjeris",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "SMS jungiklis",
+   "ok": true,
+   "d": ""
+  }
+ ],
  "kurimas": 200,
- "klaida": "Error: DEP3 GUARD 03995c39fb6ef44d316e19ba3d131b43",
+ "DEP3": {
+  "v": "K-DEP3",
+  "buves": "03995c39fb6ef44d316e19ba3d131b43",
+  "jau": 1
+ },
+ "P4": {
+  "sid": 47,
+  "uid": 103
+ },
+ "pageerrors": [],
  "CL4": {
   "v": "K-CL4",
-  "istrinta": 0,
+  "istrinta": 1,
   "likutis": 0
- }
+ },
+ "VISKAS_ZALIA": true
 }
