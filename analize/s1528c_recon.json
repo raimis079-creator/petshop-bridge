@@ -1,0 +1,35 @@
+{
+ "v": "dep-193921",
+ "kurimas": 200,
+ "sid": 4271,
+ "GO": {
+  "v": "S1528c",
+  "fn": {
+   "ps_generate_token": {
+    "failas": "petshop-core.php",
+    "par": [
+     "args"
+    ]
+   },
+   "ps_consume_token": {
+    "failas": "petshop-core.php",
+    "par": [
+     "raw_token"
+    ]
+   },
+   "ps_verify_token": "NERA",
+   "ps_peek_token": {
+    "failas": "petshop-core.php",
+    "par": [
+     "raw_token"
+    ]
+   }
+  },
+  "kodas": {
+   "ps_generate_token": " function ps_generate_token( array $args ) { return Petshop_Action_Tokens::generate( $args ); } } ",
+   "ps_consume_token": " function ps_consume_token( $raw_token ) { return Petshop_Action_Tokens::consume( $raw_token ); } } ",
+   "ps_peek_token": " function ps_peek_token( $raw_token ) { return Petshop_Action_Tokens::peek( $raw_token ); } } "
+  },
+  "lentele": "NERA"
+ }
+}
