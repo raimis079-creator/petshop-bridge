@@ -1,0 +1,50 @@
+{
+ "v": "f19_wl-091508",
+ "kurimas": 200,
+ "sid": 4190,
+ "D9": {
+  "v": "F19WL-1.1",
+  "faze": "D9",
+  "katalogas": "8672d834d013c0fbd4da94396f3822c0",
+  "langas": "5e62295f7eaba94441ab51fc5f051701",
+  "meta_likuciai": 0
+ },
+ "TD": {
+  "v": "F19WL-1.1",
+  "faze": "TD",
+  "wc_kabliai": {
+   "options_general": false,
+   "process_product": false,
+   "stulpelis": false
+  },
+  "issaugota_ids": [
+   35147,
+   35146
+  ],
+  "ataskaitos_busenos": [
+   "OK",
+   "OK",
+   "NETINKAMAS_TIPAS",
+   "NERASTA"
+  ],
+  "galima_itraukta": "T",
+  "galima_neitraukta": "ATMESTA",
+  "fronte": {
+   "kodas": 200,
+   "pasirinkimas": "N",
+   "kas4": "N"
+  },
+  "fronte_neitraukta": "NERODOMA",
+  "prekes_skirtukas": {
+   "kodas": 200,
+   "textarea": "T",
+   "sarase_sku": "T",
+   "sandelio_stulpelis": "T",
+   "wc_neliecia_tekstas": "T",
+   "be_klaidu": "T"
+  },
+  "valymas": {
+   "opcija": "ISVALYTA"
+  }
+ }
+}
