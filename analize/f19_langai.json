@@ -1,0 +1,38 @@
+{
+ "v": "f19_langai-080942",
+ "kurimas": 200,
+ "sid": 4186,
+ "L1": {
+  "v": "L-1.1",
+  "meniu_kodas": [
+   "63: add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 9 );",
+   "   add_action( 'admin_init', array( __CLASS__, 'anksti' ) );",
+   "   add_action( 'wp_ajax_ps_laiskai_gyva', array( __CLASS__, 'ajax_gyva' ) );",
+   "   }",
+   "   ",
+   "   public static function meniu() {",
+   "   add_menu_page( 'Petshop langai', 'Petshop langai', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ), 'dashicons-sc",
+   "69: add_menu_page( 'Petshop langai', 'Petshop langai', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ), 'dashicons-screenoptions', 56 );",
+   "   add_submenu_page( self::TEVAS, 'Apžvalga', 'Apžvalga', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ) );",
+   "   add_submenu_page( self::TEVAS, 'Laiškų šablonai', 'Laiškų šablonai', self::CAP, self::PSL_LAISKAI, array( __CLASS__, 'ekranas_la",
+   "   }",
+   "   ",
+   "   protected static function nuoroda( $args = array() ) {",
+   "   return add_query_arg( array_merge( array( 'page' => self::PSL_LAISKAI ), $args ), admin_url( 'admin.php' ) );",
+   "70: add_submenu_page( self::TEVAS, 'Apžvalga', 'Apžvalga', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ) );",
+   "   add_submenu_page( self::TEVAS, 'Laiškų šablonai', 'Laiškų šablonai', self::CAP, self::PSL_LAISKAI, array( __CLASS__, 'ekranas_la",
+   "   }",
+   "   ",
+   "   protected static function nuoroda( $args = array() ) {",
+   "   return add_query_arg( array_merge( array( 'page' => self::PSL_LAISKAI ), $args ), admin_url( 'admin.php' ) );",
+   "   }",
+   "71: add_submenu_page( self::TEVAS, 'Laiškų šablonai', 'Laiškų šablonai', self::CAP, self::PSL_LAISKAI, array( __CLASS__, 'ekranas_laiskai' ) );",
+   "   }",
+   "   ",
+   "   protected static function nuoroda( $args = array() ) {",
+   "   return add_query_arg( array_merge( array( 'page' => self::PSL_LAISKAI ), $args ), admin_url( 'admin.php' ) );",
+   "   }",
+   "   "
+  ]
+ }
+}
