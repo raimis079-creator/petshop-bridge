@@ -1,0 +1,50 @@
+{
+ "v": "f19_sab2-080546",
+ "kurimas": 200,
+ "sid": 4184,
+ "D5": {
+  "v": "F19SAB-2.0",
+  "faze": "D5",
+  "variklis": "212141c345735824ca3d7cd72a8e50db",
+  "sablonas": "96750ea7edc53785956dbccfe8c514b6"
+ },
+ "T9": {
+  "v": "F19SAB-2.0",
+  "faze": "T9",
+  "confirm_required": {
+   "tema": "Ar siunčiame? Jūsų reguliari siunta — po 5 dienų",
+   "mode_payload": "confirm_required",
+   "qty_payload": 3,
+   "data_matoma": "T",
+   "kiekis_matomas": "T",
+   "sako_patvirtinti": "T",
+   "sako_nieko_nereikia": "N",
+   "confirm_nuoroda": "T",
+   "skip_nuoroda": "T",
+   "paskyros_nuoroda": "T",
+   "placeholder": "NE",
+   "ilgis": 3353
+  },
+  "confirm_required_tekstas": "Ar siunčiame? Jūsų reguliari siunta — po 5 dienų Patvirtinkite, praleiskite arba pakeiskite — kaip jums patogiau. Ar siunčiame? Jūsų reguliari siunta — po 5 dienų 2026-09-04 paruošime jūsų reguliarų užsakymą — Dubenėlis gyvūnui Širdelė, Mon Amor, M, 3 vnt..Prieš siųsdami visada pasiklausiame. Jei viskas tinka, paspauskite „Patvirtinti siuntą“ — be patvirtinimo siuntos neruošiame.Patvirtinti siuntąŠį kartą praleisti · Keisti datą ar kiekįJei nespėsite atsakyti, nieko blogo nea",
+  "notify_only": {
+   "tema": "Jūsų reguliari siunta — po 5 dienų",
+   "mode_payload": "notify_only",
+   "qty_payload": 3,
+   "data_matoma": "T",
+   "kiekis_matomas": "T",
+   "sako_patvirtinti": "N",
+   "sako_nieko_nereikia": "T",
+   "confirm_nuoroda": "N",
+   "skip_nuoroda": "T",
+   "paskyros_nuoroda": "T",
+   "placeholder": "NE",
+   "ilgis": 2739
+  },
+  "notify_only_tekstas": "Jūsų reguliari siunta — po 5 dienų Jei reikia, galite ją pakeisti arba praleisti. Jūsų reguliari siunta — po 5 dienų 2026-09-04 paruošime jūsų reguliarų užsakymą — Dubenėlis gyvūnui Širdelė, Mon Amor, M, 3 vnt..Jei viskas tinka, nieko daryti nereikia — siuntą paruošime. Jei norite ką nors pakeisti ar šį kartą praleisti, tai galite padaryti čia.Valdyti siuntąŠį kartą praleisti&nbsp;UAB Avesa, Liucionių g. 46, Liucionys, LT-15166Gavote šį laišką, nes turite aktyvią reguliarių s",
+  "valymas": [
+   0,
+   0,
+   0
+  ]
+ }
+}
