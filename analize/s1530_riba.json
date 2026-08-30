@@ -1,0 +1,91 @@
+{
+ "v": "dep-202758",
+ "kurimas": 200,
+ "sid": 4278,
+ "GO": {
+  "v": "S1530",
+  "kiti": [
+   {
+    "zona": "Neringos savivaldybe",
+    "id": "shopup_venipak_shipping_pickup_method",
+    "pavad": "VENIPAK paštomatai/atsiėmimo punktai",
+    "enabled": true
+   },
+   {
+    "zona": "Neringos savivaldybe",
+    "id": "shopup_venipak_shipping_courier_method",
+    "pavad": "VENIPAK Kurjeris",
+    "enabled": true
+   },
+   {
+    "zona": "Neringos savivaldybe",
+    "id": "woo_lithuaniapost_lpexpress_terminal",
+    "pavad": "LP Express",
+    "enabled": true
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "pavad": "VENIPAK Kurjeris",
+    "enabled": true
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_pickup_method",
+    "pavad": "VENIPAK paštomatai/atsiėmimo punktai",
+    "enabled": true
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "pavad": "VENIPAK Kurjeris",
+    "enabled": true
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "pavad": "VENIPAK Kurjeris",
+    "enabled": true
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "pavad": "VENIPAK Kurjeris",
+    "enabled": true
+   },
+   {
+    "zona": "Lietuva",
+    "id": "woo_lithuaniapost_lpexpress_terminal",
+    "pavad": "LP Express",
+    "enabled": true
+   },
+   {
+    "zona": "Lietuva",
+    "id": "woo_lithuaniapost_lpexpress_terminal",
+    "pavad": "LP Express kurjeris",
+    "enabled": true
+   },
+   {
+    "zona": "Baltijos šalys, be LIetuvos",
+    "id": "shopup_venipak_shipping_pickup_method",
+    "pavad": "VENIPAK paštomatai/atsiėmimo punktai",
+    "enabled": true
+   }
+  ],
+  "free": [
+   {
+    "zona": "Lietuva",
+    "pavad": "Nemokamas pristatymas",
+    "min": "0",
+    "enabled": false
+   }
+  ],
+  "topbar": {
+   "topbar_left": "<span class=\"petshop-topbar-shipping\">Nemokamas pristatymas į paštomatą nuo €30</span>"
+  },
+  "functions_uzuominos": [
+   "Nemokam",
+   "nemokam"
+  ]
+ }
+}
