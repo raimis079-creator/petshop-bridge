@@ -2,37 +2,41 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTI2YiBwcm9nbm96ZXMgZTJlIGRlbHRhICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpewogICRmPShpc3NldCgkX0dFVFsncHNfcHJnMiddKT8kX0dFVFsncHNfcHJnMiddOicnKTsgaWYoJGYhPT0nRTJFJyYmJGYhPT0nQ0wnKSByZXR1cm47CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAkbz1hcnJheSgndic9PidTMTUyNmInLCdmYXplJz0+JGYpOwogICRFTUE9J3BzbjNwcm9nQGd5dnVuYWkubHQnOwogIHRyeXsKICAgIGdsb2JhbCAkd3BkYjsKICAgIGlmKCRmPT09J0UyRScpewogICAgICAkZz1mdW5jdGlvbigkcHJvLCRwaWQsJGspeyByZXR1cm4gaXNzZXQoJHByb1skcGlkXVska10pPyhpbnQpJHByb1skcGlkXVska106MDsgfTsKICAgICAgLy8gQkFTRUxJTkUgcHJpZXMgc2ludGV0aWthCiAgICAgICRiPVBldHNob3BfUHJlbnVtZXJhdHVfUHJvZ25vemU6OnByb2pla2NpamEoKTsKICAgICAgJG9bJ2Jhc2VsaW5lJ109YXJyYXkoJzM1MDk4Jz0+aXNzZXQoJGJbMzUwOThdKT8kYlszNTA5OF06bnVsbCwnMzUwOTknPT5pc3NldCgkYlszNTA5OV0pPyRiWzM1MDk5XTpudWxsLCczNTA5Nic9Pmlzc2V0KCRiWzM1MDk2XSk/JGJbMzUwOTZdOm51bGwpOwogICAgICAkdWlkPWVtYWlsX2V4aXN0cygkRU1BKTsgaWYoISR1aWQpICR1aWQ9d3BfY3JlYXRlX3VzZXIoJ3BzbjNwcm9nJyx3cF9nZW5lcmF0ZV9wYXNzd29yZCgyMCksJEVNQSk7CiAgICAgICRzQT1QZXRzaG9wX1ByZW51bWVyYXRhOjpzdWt1cnRpKGFycmF5KCdlbWFpbCc9PiRFTUEsJ3VzZXJfaWQnPT4kdWlkLAogICAgICAgICdpdGVtcyc9PmFycmF5KGFycmF5KCdwcm9kdWN0X2lkJz0+MzUwOTgsJ3F0eSc9PjIpKSwnaW50ZXJ2YWxfZGF5cyc9PjE0LAogICAgICAgICduZXh0X2N5Y2xlX2RhdGUnPT5nbWRhdGUoJ1ktbS1kJyx0aW1lKCkrNSpEQVlfSU5fU0VDT05EUykpKTsKICAgICAgJHNCPVBldHNob3BfUHJlbnVtZXJhdGE6OnN1a3VydGkoYXJyYXkoJ2VtYWlsJz0+JEVNQSwndXNlcl9pZCc9PiR1aWQsCiAgICAgICAgJ2l0ZW1zJz0+YXJyYXkoYXJyYXkoJ3Byb2R1Y3RfaWQnPT4zNTA5OSwncXR5Jz0+MykpLCdpbnRlcnZhbF9kYXlzJz0+MjgsCiAgICAgICAgJ25leHRfY3ljbGVfZGF0ZSc9PmdtZGF0ZSgnWS1tLWQnLHRpbWUoKSs0MCpEQVlfSU5fU0VDT05EUykpKTsKICAgICAgJHNDPVBldHNob3BfUHJlbnVtZXJhdGE6OnN1a3VydGkoYXJyYXkoJ2VtYWlsJz0+JEVNQSwndXNlcl9pZCc9PiR1aWQsCiAgICAgICAgJ2l0ZW1zJz0+YXJyYXkoYXJyYXkoJ3Byb2R1Y3RfaWQnPT4zNTA5NiwncXR5Jz0+MSkpLCdpbnRlcnZhbF9kYXlzJz0+ODQsCiAgICAgICAgJ25leHRfY3ljbGVfZGF0ZSc9PmdtZGF0ZSgnWS1tLWQnLHRpbWUoKS0zKkRBWV9JTl9TRUNPTkRTKSkpOwogICAgICAkb1snc2lkcyddPWFycmF5KCRzQSwkc0IsJHNDKTsKICAgICAgJHA9UGV0c2hvcF9QcmVudW1lcmF0dV9Qcm9nbm96ZTo6cHJvamVrY2lqYSgpOwogICAgICAkb1sncG8nXT1hcnJheSgnMzUwOTgnPT4kcFszNTA5OF0sJzM1MDk5Jz0+JHBbMzUwOTldLCczNTA5Nic9Pmlzc2V0KCRwWzM1MDk2XSk/JHBbMzUwOTZdOm51bGwpOwogICAgICAvLyBERUxUT1M6IEEoMzUwOTggcXR5MiBrYXMxNCArNSk6IGNpa2xhaSBkNSwxOSwzMyw0NyAtPiBkMzAgKzQsIGQ0NSArNiwgZDYwICs4CiAgICAgICR0MT0oJGcoJHAsMzUwOTgsJ2QzMCcpLSRnKCRiLDM1MDk4LCdkMzAnKT09PTQgJiYgJGcoJHAsMzUwOTgsJ2Q0NScpLSRnKCRiLDM1MDk4LCdkNDUnKT09PTYgJiYgJGcoJHAsMzUwOTgsJ2Q2MCcpLSRnKCRiLDM1MDk4LCdkNjAnKT09PTgpOwogICAgICAvLyBCKDM1MDk5IHF0eTMga2FzMjggKzQwKTogZDQwIC0+IGQzMCArMCwgZDQ1ICszLCBkNjAgKzMKICAgICAgJHQyPSgkZygkcCwzNTA5OSwnZDMwJyktJGcoJGIsMzUwOTksJ2QzMCcpPT09MCAmJiAkZygkcCwzNTA5OSwnZDQ1JyktJGcoJGIsMzUwOTksJ2Q0NScpPT09MyAmJiAkZygkcCwzNTA5OSwnZDYwJyktJGcoJGIsMzUwOTksJ2Q2MCcpPT09Myk7CiAgICAgIC8vIEMoMzUwOTYgcXR5MSBrYXM4NCwgZGF0YSAtM2QgLT4gc2lhbmRpZW4pOiBkMzAgKzEsIGQ2MCArMQogICAgICAkdDY9KCRnKCRwLDM1MDk2LCdkMzAnKS0kZygkYiwzNTA5NiwnZDMwJyk9PT0xICYmICRnKCRwLDM1MDk2LCdkNjAnKS0kZygkYiwzNTA5NiwnZDYwJyk9PT0xKTsKICAgICAgJG9bJ1QxX2RlbHRhX0EnXT0kdDE/J09LJzonRkFJTCc7ICRvWydUMl9kZWx0YV9CJ109JHQyPydPSyc6J0ZBSUwnOyAkb1snVDZfcHJhZGVsc3RhcyddPSR0Nj8nT0snOidGQUlMJzsKICAgICAgLy8gRGVmaWNpdGFzOiBmaWx0cmFzIGxpa3V0aXMoMzUwOTYpPTAsIHBvcmVpa2lzIGQzMCA9IGJhc2VsaW5lMCsxIC0+IHRydWtzdGEgbHlnaWFpIHBvcmVpa2l1aQogICAgICBhZGRfZmlsdGVyKCdwc19wcm9nbm96ZV9saWt1dGlzJyxmdW5jdGlvbigkdiwkcGlkKXtyZXR1cm4gJHBpZD09PTM1MDk2PzA6JHY7fSwxMCwyKTsKICAgICAgJGRlZj1QZXRzaG9wX1ByZW51bWVyYXR1X1Byb2dub3plOjpkZWZpY2l0YWkoKTsKICAgICAgJG9bJ2RlZl8zNTA5NiddPWlzc2V0KCRkZWZbMzUwOTZdKT8kZGVmWzM1MDk2XTpudWxsOwogICAgICAkdDQ9KGlzc2V0KCRkZWZbMzUwOTZdKSYmJGRlZlszNTA5Nl1bJ3RydWtzdGEnXT09PSRnKCRwLDM1MDk2LCdkMzAnKSk7CiAgICAgICRvWydUNF9kZWZpY2l0YXMnXT0kdDQ/J09LJzonRkFJTCc7CiAgICAgICRvWydUM19uZXNla2Ftb3MnXT0oIWlzc2V0KCRkZWZbMzUwOTldKSk/J09LJzonRkFJTCc7CiAgICAgICRvWydUNV9jcm9uJ109d3BfbmV4dF9zY2hlZHVsZWQoUGV0c2hvcF9QcmVudW1lcmF0dV9Qcm9nbm96ZTo6Q1JPTik/J09LJzonRkFJTCc7CiAgICAgICRvWydWSVNLQVMnXT0oJHQxJiYkdDImJiR0NCYmJHQ2JiYkb1snVDNfbmVzZWthbW9zJ109PT0nT0snJiYkb1snVDVfY3JvbiddPT09J09LJyk7CiAgICB9IGVsc2UgewogICAgICAkaWRzPSR3cGRiLT5nZXRfY29sKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgaWQgRlJPTSB7JHdwZGItPnByZWZpeH1wc19zdWJzY3JpcHRpb25zIFdIRVJFIGVtYWlsPSVzIiwkRU1BKSk7CiAgICAgIGZvcmVhY2goJGlkcyBhcyAkeCl7CiAgICAgICAgJHdwZGItPnF1ZXJ5KCR3cGRiLT5wcmVwYXJlKCJERUxFVEUgRlJPTSB7JHdwZGItPnByZWZpeH1wc19zdWJzY3JpcHRpb25faXRlbXMgV0hFUkUgc3Vic2NyaXB0aW9uX2lkPSVkIiwkeCkpOwogICAgICAgICR3cGRiLT5xdWVyeSgkd3BkYi0+cHJlcGFyZSgiREVMRVRFIEZST00geyR3cGRiLT5wcmVmaXh9cHNfc3Vic2NyaXB0aW9uX2V2ZW50cyBXSEVSRSBzdWJzY3JpcHRpb25faWQ9JWQiLCR4KSk7CiAgICAgICAgJHdwZGItPnF1ZXJ5KCR3cGRiLT5wcmVwYXJlKCJERUxFVEUgRlJPTSB7JHdwZGItPnByZWZpeH1wc19zdWJzY3JpcHRpb25zIFdIRVJFIGlkPSVkIiwkeCkpOwogICAgICB9CiAgICAgICR1PWVtYWlsX2V4aXN0cygkRU1BKTsgaWYoJHUpeyByZXF1aXJlX29uY2UgQUJTUEFUSC4nd3AtYWRtaW4vaW5jbHVkZXMvdXNlci5waHAnOyB3cF9kZWxldGVfdXNlcigkdSk7IH0KICAgICAgJG9bJ2xpa3V0aXMnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHdwZGItPnByZWZpeH1wc19zdWJzY3JpcHRpb25zIFdIRVJFIGVtYWlsPSVzIiwkRU1BKSk7CiAgICAgICRvWydha3R5dnVzX2xpa28nXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBpZCxlbWFpbCBGUk9NIHskd3BkYi0+cHJlZml4fXBzX3N1YnNjcmlwdGlvbnMgV0hFUkUgc3RhdHVzPSdhY3RpdmUnIixBUlJBWV9BKTsKICAgIH0KICB9Y2F0Y2goVGhyb3dhYmxlICRlKXsgJG9bJ0ZBVEFMJ109JGUtPmdldE1lc3NhZ2UoKS4nIEAnLiRlLT5nZXRMaW5lKCk7IH0KICBlY2hvIGpzb25fZW5jb2RlKCRvLEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9KTsK';
-const VER='dep-191824';
-const GKEY='ps_prg2';
-const PHASES=["E2E", "CL"];
-const OUT='analize/s1526b_prognoze.json';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTI2YyBjb29raWUgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYoIWlzc2V0KCRfR0VUWydwc19jayddKXx8JF9HRVRbJ3BzX2NrJ10hPT0nR08nKSByZXR1cm47CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAkYWRtPWdldF91c2VycyhhcnJheSgncm9sZSc9PidhZG1pbmlzdHJhdG9yJywnbnVtYmVyJz0+MSwnZmllbGRzJz0+J0lEJykpOwogICRhaWQ9JGFkbT8oaW50KSRhZG1bMF06MTsKICAkc3NsPWZvcmNlX3NzbF9hZG1pbigpfHxpc19zc2woKTsKICBlY2hvIGpzb25fZW5jb2RlKGFycmF5KAogICAgJ2Nvb2tpZV9uYW1lJz0+TE9HR0VEX0lOX0NPT0tJRSwKICAgICdjb29raWUnPT53cF9nZW5lcmF0ZV9hdXRoX2Nvb2tpZSgkYWlkLHRpbWUoKSsxMjAwLCdsb2dnZWRfaW4nKSwKICAgICdhdXRoX25hbWUnPT4kc3NsP1NFQ1VSRV9BVVRIX0NPT0tJRTpBVVRIX0NPT0tJRSwKICAgICdhdXRoX2Nvb2tpZSc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCRhaWQsdGltZSgpKzEyMDAsJHNzbD8nc2VjdXJlX2F1dGgnOidhdXRoJyksCiAgICAnYXV0aF9zZWN1cmUnPT4kc3NsLAogICAgJ3VybCc9PmFkbWluX3VybCgnYWRtaW4ucGhwP3BhZ2U9cHMtcHJvZ25vemUnKQogICkpOyBleGl0Owp9KTsK';
+const VER='prognoze-shot';
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha;
   return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
-async function fx(u,o,k){ for(let i=0;i<5;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(8000);} } throw new Error('fx:'+k); }
 const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
-const UA={'Cache-Control':'no-cache','User-Agent':'Mozilla/5.0'};
 let sid=null;
 try{
-  try{ const l=await fx(SNIP,{headers:A},'list'); const arr=JSON.parse(await l.text());
+  const l=await fetch(SNIP,{headers:A}); const arr=JSON.parse(await l.text());
   for(const s of (Array.isArray(arr)?arr:[]).filter(s=>s.active&&/^TEMP/.test(s.name||''))){
-    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); } }catch(e){ out.list_praleistas=String(e).slice(0,80); }
-  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
-    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'create');
-  const ct=await c.text(); out.kurimas=c.status; try{sid=JSON.parse(ct).id; out.sid=sid;}catch(e){out.kurimo_atsakas=ct.slice(0,400);}
+    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); }
+  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
+    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  sid=JSON.parse(await c.text()).id; out.sid=sid;
   await miegok(9000);
-  for(let i=0;i<PHASES.length;i++){
-    const f=PHASES[i];
-    if(i>0) await miegok(5000);
-    const d=await fx(WP+'/?'+GKEY+'='+encodeURIComponent(f),{headers:UA},'faze_'+f);
-    const t=await d.text();
-    try{ out[f]=JSON.parse(t); }catch(e){ out['zalias_'+f]=t.slice(0,3000); }
-  }
-}catch(e){ out.klaida=String(e).slice(0,500); }
+  const d=await fetch(WP+'/?ps_ck=GO',{headers:{'User-Agent':'Mozilla/5.0'}});
+  const P=JSON.parse(await d.text()); out.P_ok=!!P.cookie;
+  const {chromium}=await import('playwright');
+  const br=await chromium.launch();
+  const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1440,height:1000}});
+  await ctx.addCookies([
+    {name:P.cookie_name,value:P.cookie,domain:'dev.avesa.lt',path:'/'},
+    {name:P.auth_name,value:P.auth_cookie,domain:'dev.avesa.lt',path:'/wp-admin',secure:!!P.auth_secure}]);
+  const pg=await ctx.newPage();
+  await pg.goto(P.url,{waitUntil:'domcontentloaded',timeout:60000});
+  await pg.waitForTimeout(1800);
+  const h1=await pg.textContent('h1').catch(()=>null);
+  out.h1=h1?h1.trim():null;
+  const b=await pg.screenshot({fullPage:true});
+  await put('analize/prognoze_admin.png',b,VER);
+  await br.close();
+}catch(e){ out.klaida=String(e).slice(0,400); }
 try{ if(sid) await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(e){}
-await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER);
+await put('analize/prognoze_shot.json',Buffer.from(JSON.stringify(out,null,1)),VER);
 console.log('ok');
