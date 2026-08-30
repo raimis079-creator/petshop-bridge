@@ -1,0 +1,232 @@
+{
+ "v": "dep-213216",
+ "list_praleistas": "SyntaxError: Unexpected end of JSON input",
+ "kurimas": 200,
+ "sid": 4285,
+ "GO": {
+  "v": "nlrecon2",
+  "petshop-laiskai-importas.php": {
+   "header": "<?php\n/**\n * Plugin Name: Petshop Laiskai — importas is failiniu sablonu\n * Description: Perkelia PHP sablonu tekstus i redaktoriu JUODRASCIAIS. Tikrina VISAS saly.gines sakas byte-tiksliai.\n * Version: 1.5\n *\n * METODAS\n *   1. Sablonas renderinamas su SENTINELEMIS (@@raktas@@) — gaunama „pilna\" saka.\n *   2. Tada renderinamas dar karta KIEKVIENAM raktui atskirai ji istustinus.\n *   3. Pastraipa, kuri pasikeicia istustinus VIENA rakta, virsta\n *      [jei raktas]…[kitaip]…[/jei]; bendra pradzia ir pabaiga NEKARTOJAMOS.\n *   4. Blokai renderinami is naujo su KIEKVIENU is tu payload'u ir lyginami\n *      su originalu. Nesutampa bent viena saka — NEIMPORTUOJAMA.\n *\n * Prekiu ciklai (cart_items / items / products) NEBERA kliutis: juos atstoja\n * bloko tipas „items\", kurio zymejimas sutampa su sablonu byte-tiksliai.\n */\n\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_La",
+   "funkcijos": [
+    "spalva",
+    "skirtukas_html",
+    "raktai",
+    "naudoja_maketa",
+    "dinaminis",
+    "pilnas",
+    "be_rakto",
+    "renderis",
+    "iskirpti",
+    "atgal",
+    "blokai",
+    "is_masyvo",
+    "sulieti",
+    "isskaidyti",
+    "tekstai",
+    "ideti",
+    "patikrinti",
+    "vykdyti"
+   ],
+   "kabliai": [],
+   "rest": []
+  },
+  "petshop-naujienlaiskiai.php": {
+   "header": "<?php\n/**\n * Plugin Name: Petshop Naujienlaiskiai v1.0 (variklis)\n * Description: E2 — vienkartiniai naujienlaiškiai: lentelė, 'newsletter' srautas,\n * renderis su Layout marketing poraštę, blokas 'korteles' (prekės be kainos).\n * Siuntimas — per kampanijų langą (whitelist v1.1). UI — atskiras modulis.\n */\nif (!defined('ABSPATH')) exit;\n\nclass Petshop_Naujienlaiskiai {\n\n  const VERSIJA = '1.0';\n\n  public static function lentele() {\n    global $wpdb;\n    return $wpdb->prefix . 'ps_naujienlaiskiai';\n  }\n\n  public static function init() {\n    add_action('init', array(__CLASS__, 'maybe_install'), 5);\n    add_filter('petshop_email_flows', array(__CLASS__, 'flow'));\n    add_filter('petshop_email_template_path', array(__CLASS__, 'kelias'), 10, 3);\n  }\n\n  public static function maybe_install() {\n    if (get_option('ps_naujienlaiskiai_db') === '1') return;\n    global $wpdb;\n    $t = ",
+   "funkcijos": [
+    "lentele",
+    "init",
+    "maybe_install",
+    "flow",
+    "kelias",
+    "irasyti",
+    "gauti",
+    "patikrinti",
+    "pazymeti_issiusta",
+    "html",
+    "saugus",
+    "korteles",
+    "uztikrinti_renderi"
+   ],
+   "kabliai": [
+    "init"
+   ],
+   "rest": []
+  },
+  "petshop-naujienlaiskiai-admin.php": {
+   "header": "<?php\n/**\n * Plugin Name: Petshop Naujienlaiskiai Admin v1.0\n * Description: E2 UI — sąrašas, blokų redaktorius su gyva peržiūra ir prekių\n * parinkikliu, siuntimo ekranas (dry → peržiūra → GO bangomis per\n * Petshop_Kampaniju_Langas). Skelbimo mygtukų nėra — siuntimas visada per GO.\n */\nif (!defined('ABSPATH')) exit;\n\nclass Petshop_NL_Admin {\n\n  const VERSIJA = '1.0';\n  const TEISE   = 'manage_woocommerce';\n\n  public static function init() {\n    add_action('admin_menu', array(__CLASS__, 'meniu'), 31);\n    foreach (array('gyva', 'irasyti', 'preke', 'testas', 'dry', 'banga', 'uzdaryti') as $a) {\n      add_action('wp_ajax_ps_nl_' . $a, array(__CLASS__, 'ajax_' . $a));\n    }\n  }\n\n  public static function meniu() {\n    add_submenu_page('petshop-langai', 'Naujienlaiškiai', 'Naujienlaiškiai',\n      self::TEISE, 'petshop-naujienlaiskiai', array(__CLASS__, 'puslapis'));\n  }\n\n",
+   "funkcijos": [
+    "init",
+    "meniu",
+    "ok",
+    "is_posto",
+    "ajax_gyva",
+    "ajax_irasyti",
+    "ajax_preke",
+    "ajax_testas",
+    "ajax_dry",
+    "ajax_banga",
+    "ajax_uzdaryti",
+    "puslapis",
+    "sarasas",
+    "redaktorius",
+    "esc",
+    "blokoHtml",
+    "pridetiBloka",
+    "atnaujintiPrekes",
+    "surinkti",
+    "perziura",
+    "velinta",
+    "siunt"
+   ],
+   "kabliai": [
+    "admin_menu",
+    "wp_ajax_ps_nl_"
+   ],
+   "rest": []
+  },
+  "petshop-rezultatai.php": {
+   "header": "<?php\n/**\n * Plugin Name: Petshop Rezultatai v1.1 (laiškų skydelis + stop/go + pajamų priskyrimas)\n * Description: E3 — srautų rezultatai, stop/go šviesoforas, bangos, suppression, email→pajamos (last-click, 7 d.). Tik skaito.\n */\nif (!defined('ABSPATH')) exit;\n\nclass Petshop_Rezultatai {\n\n  const VERSIJA = '1.1';\n\n  public static function init() {\n    add_action('admin_menu', array(__CLASS__, 'meniu'), 30);\n  }\n\n  public static function meniu() {\n    add_submenu_page(\n      'petshop-langai',\n      'Laiškų rezultatai',\n      'Laiškų rezultatai',\n      'manage_woocommerce',\n      'petshop-rezultatai',\n      array(__CLASS__, 'puslapis')\n    );\n  }\n\n  /* ---------- žodynas (S1490) ---------- */\n  public static function vardas($flow) {\n    $z = array(\n      'order_paid'=>'Užsakymas priimtas','order_shipped'=>'Užsakymas išsiųstas',\n      'payment_failed'=>'Mokėjimas nepavyk",
+   "funkcijos": [
+    "init",
+    "meniu",
+    "vardas",
+    "sviesa",
+    "duomenys",
+    "priskyrimas",
+    "puslapis"
+   ],
+   "kabliai": [
+    "admin_menu"
+   ],
+   "rest": []
+  },
+  "petshop-kampaniju-langas.php": {
+   "header": "<?php\n/**\n * Plugin Name: Petshop Kampaniju Langas v1.1\n * Description: Founding / legacy / naujienlaiskiu bangu paleidimas be rankinio SQL. v1.1: +newsletter srautas (payload.newsletter_id privalomas, job_key su nl{id}). Enqueue per Petshop_Email_Dispatch, idempotencija per job_key, STOP/GO po kiekvienos bangos.\n * Version: 1.0\n *\n * Naudojimas:\n *   Petshop_Kampaniju_Langas::segmentai()\n *   Petshop_Kampaniju_Langas::dry('founding_activation', 'legacy')\n *   Petshop_Kampaniju_Langas::banga('founding_activation', 'legacy', 50, true)   // true = GO\n *   Petshop_Kampaniju_Langas::busena('founding_activation')\n *\n * Sutikimo logika NEKEICIAMA: naudojamas Petshop_Email_Dispatch::check_eligibility().\n * Marketingo srautams be sutikimo gavejai NEENQUEUE'inami ir rodomi atskirai (consent_missing).\n */\n\nif (!defined('ABSPATH')) exit;\n\nclass Petshop_Kampaniju_Langas {\n\n\tconst LEIDZIAMI = array('",
+   "funkcijos": [
+    "tikrinti_srauta",
+    "job_key",
+    "segmentai",
+    "gaveju_sarasas",
+    "ivertinti",
+    "nl_data",
+    "nl_patikra",
+    "dry",
+    "banga",
+    "busena"
+   ],
+   "kabliai": [],
+   "rest": []
+  },
+  "consent_log_stulp": [
+   "id",
+   "customer_id",
+   "email",
+   "field",
+   "from_value",
+   "to_value",
+   "source",
+   "ip",
+   "user_agent",
+   "changed_at"
+  ],
+  "consent_log": [
+   {
+    "id": "18",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "true",
+    "to_value": "false",
+    "source": "unsubscribe_link",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:09"
+   },
+   {
+    "id": "17",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "false",
+    "to_value": "true",
+    "source": "test_setup",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:09"
+   },
+   {
+    "id": "16",
+    "customer_id": "0",
+    "email": "other-user@example.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "test",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:08"
+   },
+   {
+    "id": "15",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "true",
+    "to_value": "false",
+    "source": "unsubscribe_link",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:08"
+   },
+   {
+    "id": "14",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "test_setup",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:08"
+   }
+  ],
+  "email_content": [],
+  "email_jobs": [
+   {
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "status": "skipped",
+    "n": "3"
+   },
+   {
+    "flow": "order_paid",
+    "flow_class": "transactional",
+    "status": "sent",
+    "n": "2"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "flow_class": "service",
+    "status": "sent",
+    "n": "3"
+   },
+   {
+    "flow": "refill_due",
+    "flow_class": "service",
+    "status": "sent",
+    "n": "7"
+   },
+   {
+    "flow": "refill_due",
+    "flow_class": "service",
+    "status": "skipped",
+    "n": "2"
+   }
+  ],
+  "import_lenteles": [
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f"
+  ]
+ }
+}
