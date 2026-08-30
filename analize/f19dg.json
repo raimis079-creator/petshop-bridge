@@ -1,0 +1,132 @@
+{
+ "v": "diag-183243",
+ "kurimas": 200,
+ "sid": 4256,
+ "DG": {
+  "v": "DG-1",
+  "failai": {
+   "petshop-prenumerata-katalogas.php": {
+    "md5": "d474d5466d5e3590e420a5826ff0b1df",
+    "dydis": 16053
+   },
+   "petshop-prenumerata-paskyra.php": {
+    "md5": "d7685fb241dbdef75b4d57af6504371d",
+    "dydis": 44908
+   },
+   "petshop-prenumerata-veiksmas.php": {
+    "md5": "dcb7c4c1ad0b03010c2745fb068ded70",
+    "dydis": 4326
+   },
+   "petshop-prenumerata.php": {
+    "md5": "a39d3605f65de30a14b9c6252bb72cc4",
+    "dydis": 23552
+   },
+   "petshop-prenumeratos-langas.php": {
+    "md5": "1a11caa57d16f1cb8b4a47d5ec4cfb72",
+    "dydis": 34378
+   }
+  },
+  "klases": {
+   "Petshop_Prenumerata": true,
+   "Petshop_Prenumerata_Paskyra": true,
+   "Petshop_Prenumerata_Admin": false,
+   "Petshop_Prenumerata_Katalogas": true,
+   "Petshop_Prenumerata_Ciklas": false
+  },
+  "pren_failas": "petshop-prenumerata.php",
+  "pren_metodai": [
+   "intervalo_label(d)",
+   "t()",
+   "t_items()",
+   "te()",
+   "init()",
+   "maybe_install()",
+   "ivykis(sid,event,payload)",
+   "sukurti(d)",
+   "gauti(id)",
+   "keisti(id,laukai,event,payload)",
+   "pauzuoti(id)",
+   "testi(id)",
+   "praleisti(id)",
+   "keisti_data(id,data)",
+   "atsaukti(id,priezastis)",
+   "patvirtinti(id)",
+   "perjungti_notify(id)",
+   "keisti_rezima_confirm(id)",
+   "keisti_kieki(id,qty)",
+   "keisti_dazni(id,d)",
+   "keisti_pristatyma(id,arr)",
+   "items(sid)",
+   "sinchronizuoti_santrauka(sid)",
+   "prideti_preke(sid,pid,qty)",
+   "salinti_preke(sid,item_id)",
+   "keisti_item_kieki(sid,item_id,qty)",
+   "siuntos_suma_ct(sid)",
+   "ciklas(siandien)",
+   "siusti_t5_dabar(sid)",
+   "admin_paleisti(sid)",
+   "t5_payload(s)",
+   "kurti_uzsakyma(s)",
+   "mokejimas_nepavyko(sid,oid,klaida)",
+   "apmoketa(order_id)"
+  ],
+  "pren_konstantos": {
+   "VERSIJA": "2.0",
+   "INTERVALAI": {
+    "7": "Kas 1 savaitę",
+    "14": "Kas 2 savaites",
+    "21": "Kas 3 savaites",
+    "28": "Kas 4 savaites",
+    "35": "Kas 5 savaites",
+    "42": "Kas 6 savaites",
+    "56": "Kas 8 savaites",
+    "84": "Kas 12 savaičių"
+   },
+   "CRON": "ps_prenumerata_diena"
+  },
+  "grep": {
+   "petshop-prenumerata-paskyra.php": {
+    "price_locked": 1
+   },
+   "petshop-prenumerata.php": {
+    "price_locked": 11
+   },
+   "petshop-prenumeratos-langas.php": {
+    "price_locked": 9
+   }
+  },
+  "stulpeliai": [
+   "id",
+   "user_id",
+   "email",
+   "pet_id",
+   "product_id",
+   "qty",
+   "interval_days",
+   "mode",
+   "status",
+   "next_cycle_date",
+   "cycle_confirmed",
+   "success_cycles",
+   "dunning_attempts",
+   "dunning_next",
+   "pending_order_id",
+   "price_locked",
+   "price_locked_until",
+   "payment_method",
+   "delivery_json",
+   "created_at",
+   "updated_at",
+   "paused_at",
+   "cancelled_at"
+  ],
+  "item_stulpeliai": [
+   "id",
+   "subscription_id",
+   "product_id",
+   "qty",
+   "created_at"
+  ],
+  "kiek_sub": 1
+ }
+}
