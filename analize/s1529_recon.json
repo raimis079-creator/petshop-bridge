@@ -1,0 +1,39 @@
+{
+ "v": "dep-195308",
+ "kurimas": 200,
+ "sid": 4275,
+ "GO": {
+  "v": "S1529-REC",
+  "cart": {
+   "petshop-prenumerata-katalogas.php": [
+    "ps_prenumerata_sku",
+    "ps_prenumerata_ijungta",
+    "ps_pren_sku_id",
+    "ps_pren_sku",
+    "ps_pren_rezimas",
+    "ps_pren_intervalas",
+    "_ps_pren_intervalas",
+    "_ps_pren_sukurta",
+    "_ps_pren_ids"
+   ]
+  },
+  "checkout_kabliai": {
+   "petshop-prenumerata-katalogas.php": true
+  },
+  "variklio_kabliai": [
+   "woocommerce_payment_complete"
+  ],
+  "variklio_meta": [
+   "_ps_pren_nuolaida",
+   "_ps_pren_nuolaidos_saltinis"
+  ],
+  "prenumeruoti_failuose": [
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumeratos-langas.php"
+  ],
+  "taisykliu_psl": "NERA",
+  "apmoketa_par": [
+   "order_id"
+  ]
+ }
+}
