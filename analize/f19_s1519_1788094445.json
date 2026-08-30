@@ -1,0 +1,51 @@
+{
+ "v": "f19_s1519-125405",
+ "list_praleistas": "SyntaxError: Unexpected end of JSON input",
+ "kurimas": 200,
+ "sid": 4224,
+ "DM": {
+  "v": "S1519-1.0",
+  "faze": "DM",
+  "petshop-prenumerata.php": "a39d3605f65de30a14b9c6252bb72cc4",
+  "petshop-prenumerata-paskyra.php": "a8053d7478b828a27111621337ceb9c1"
+ },
+ "UB": {
+  "v": "S1519-1.0",
+  "faze": "UB",
+  "ui": {
+   "kodas": 200,
+   "virsus": "T",
+   "sen_landing_nera": "N",
+   "kita_siunta": "T",
+   "lt_data": "N",
+   "dvi_prekes_eil": "T",
+   "prideti_preke": "T",
+   "pristatymas": "T",
+   "grafikas": "T",
+   "pranesimai_sms": "T",
+   "priminsime": "T",
+   "patvirtinti_nera_ne_lange": "T",
+   "atsisakymas": "T",
+   "be_klaidu": "T"
+  },
+  "veiksmai": {
+   "qty3": "T",
+   "items3": "T",
+   "daznis42": "T",
+   "sms": "T",
+   "pastomatas": "T"
+  },
+  "po": {
+   "pastomatas_rodomas": "T",
+   "trys_eil": "T"
+  },
+  "t5_mygtukas": "T",
+  "po_patvirtinimo": "T",
+  "valymas": [
+   0,
+   0,
+   0,
+   "ne"
+  ]
+ }
+}
