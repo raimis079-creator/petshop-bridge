@@ -1,0 +1,35 @@
+{
+ "v": "f19_flag-102106",
+ "kurimas": 200,
+ "sid": 4208,
+ "DD": {
+  "v": "F19FLG-1.0",
+  "faze": "DD",
+  "petshop-prenumerata-katalogas.php": "21cefe3c6de0819347a97fd3066e548d",
+  "petshop-prenumerata-paskyra.php": "2e7b0ad995ceee779bf29a32acd2c0bc",
+  "petshop-prenumeratos-langas.php": "1a11caa57d16f1cb8b4a47d5ec4cfb72"
+ },
+ "TL": {
+  "v": "F19FLG-1.0",
+  "faze": "TL",
+  "off_front": {
+   "kodas": 200,
+   "blokas": "NERODOMAS(gerai)"
+  },
+  "off_krepselis": "IGNORUOJA(gerai)",
+  "off_meniu": "NERA(gerai)",
+  "off_su_pren_meniu": "YRA(gerai)",
+  "off_admin_kortele": "VEIKIA",
+  "juosta_off": "T",
+  "po_ijungimo_db": "taip",
+  "on_front": "NERODOMAS(blogai)",
+  "valymas": {
+   "subs": 0,
+   "ivykiai": 0,
+   "flag": "taip",
+   "sku": 0,
+   "front_vel_be_bloko": "T",
+   "vartotojas": "ISTRINTAS"
+  }
+ }
+}
