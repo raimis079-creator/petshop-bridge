@@ -1,0 +1,47 @@
+{
+ "v": "f19_psk12-104833",
+ "kurimas": 200,
+ "sid": 4214,
+ "DF": {
+  "v": "PSK12-1.0",
+  "faze": "DF",
+  "po": "c8f5ded74f70243801ccb3d0d7c9c7fe"
+ },
+ "TR": {
+  "v": "PSK12-1.0",
+  "faze": "TR",
+  "psl": {
+   "kodas": 200,
+   "parinkiklis": "T",
+   "preke": "T",
+   "kaina": "T",
+   "shop_nuorodos_nebera": "T",
+   "nonce": "T"
+  },
+  "sukurta": {
+   "qty": 2,
+   "int": 42,
+   "data": "2026-09-09",
+   "data_ok": "T",
+   "rezimas": "confirm_required",
+   "adresas": "T"
+  },
+  "ivykis_account": 1,
+  "dublikatas": "ATMESTA",
+  "bloga_data": "ATMESTA",
+  "po_sukurimo": {
+   "kortele": "T",
+   "parinkiklio_nebera_tai_prekei": "N"
+  },
+  "off": {
+   "parinkiklis_nera": "T",
+   "valdymas_yra": "T"
+  },
+  "valymas": [
+   0,
+   0,
+   "ne",
+   "ISTRINTAS"
+  ]
+ }
+}
