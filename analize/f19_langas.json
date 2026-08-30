@@ -1,0 +1,45 @@
+{
+ "v": "f19_langas-083139",
+ "kurimas": 200,
+ "sid": 4187,
+ "D7": {
+  "v": "F19LNG-1.0",
+  "faze": "D7",
+  "pries": "NERA",
+  "po": "b61bbd6cf1ef7e994e5237abb07eb870"
+ },
+ "TA": {
+  "v": "F19LNG-1.0",
+  "faze": "TA",
+  "klase": true,
+  "tevas": "petshop-langai",
+  "sarasas": {
+   "kodas": 200,
+   "ilgis": 315334,
+   "antraste": "T",
+   "suvestine": "T",
+   "yra_irasas": "T",
+   "meniu_tevas": "T",
+   "be_klaidu": "T"
+  },
+  "filtras_pauze": {
+   "yra_s2": "T",
+   "nera_s1": "T"
+  },
+  "detale": {
+   "kodas": 200,
+   "zurnalas": "T",
+   "ivykis_created": "T",
+   "mygtukas_pauze": "T",
+   "be_klaidu": "T"
+  },
+  "paieska": {
+   "rado": "T",
+   "nerado_kitu": "T"
+  },
+  "valymas": [
+   0,
+   0
+  ]
+ }
+}
