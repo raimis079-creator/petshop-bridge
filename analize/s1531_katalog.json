@@ -1,0 +1,52 @@
+{
+ "v": "dep-210317",
+ "kurimas": 200,
+ "sid": 4283,
+ "GO": {
+  "v": "S1531",
+  "faze": "GO",
+  "kabliai": [
+   "petshop_kortele_blokai -> korteles_blokas",
+   "wp_ajax_ps_pren_sku -> ajax_sku",
+   "admin_footer -> korteles_js",
+   "woocommerce_before_add_to_cart_button -> pasirinkimas",
+   "woocommerce_add_cart_item_data -> i_krepseli",
+   "woocommerce_get_item_data -> krepselyje",
+   "woocommerce_checkout_create_order_line_item -> i_uzsakyma",
+   "woocommerce_payment_complete -> is_uzsakymo",
+   "woocommerce_order_status_processing -> is_uzsakymo",
+   "woocommerce_order_status_completed -> is_uzsakymo"
+  ],
+  "dydis": 16053,
+  "oid": 35288,
+  "ord_meta": {
+   "intervalas": "",
+   "sukurta": "",
+   "ids": "",
+   "rezimas": ""
+  },
+  "pren_pries": 0,
+  "pren_po": 1,
+  "prenumeratos": [
+   {
+    "id": "67",
+    "status": "active",
+    "interval_days": "28",
+    "next_cycle_date": "2026-09-27",
+    "mode": "confirm_required"
+   }
+  ],
+  "T_AKTYVACIJA": "OK",
+  "items": [
+   {
+    "product_id": "35098",
+    "qty": "2"
+   }
+  ]
+ },
+ "CL": {
+  "v": "S1531",
+  "faze": "CL",
+  "likutis": 0
+ }
+}
