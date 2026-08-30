@@ -1,0 +1,26 @@
+{
+ "v": "f19_v32-100534",
+ "kurimas": 200,
+ "sid": 4207,
+ "DC": {
+  "v": "F19V32-1.0",
+  "faze": "DC",
+  "po": "7033dadce46f2e010ad8ff519572ef0d"
+ },
+ "TK": {
+  "v": "F19V32-1.0",
+  "faze": "TK",
+  "korteleje_script": "NERA(gerai)",
+  "checkbox": "T",
+  "kat_slug": "ps-katalogas",
+  "kat_psl": {
+   "kodas": 200,
+   "klausytojas": "T"
+  },
+  "pren_psl_klausytojas": "T",
+  "svetimame_nera": "T",
+  "ajax": "T",
+  "db_irasyta": "T",
+  "valymas_db": "ISVALYTA"
+ }
+}
