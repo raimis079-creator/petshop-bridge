@@ -1,0 +1,51 @@
+{
+ "v": "f19_s1518c-124153",
+ "kurimas": 200,
+ "sid": 4221,
+ "DL": {
+  "v": "S1518-1.2",
+  "faze": "DL",
+  "po": "e4f40962e2c0cd1e8614697d29c573f4",
+  "charset": "OK"
+ },
+ "TY": {
+  "v": "S1518-1.2",
+  "faze": "TY",
+  "sukurti": {
+   "items": 2,
+   "qty": 3,
+   "pid_pirmas": "T"
+  },
+  "payload": {
+   "items": 2,
+   "suma_ok": "T"
+  },
+  "uzsakymas": {
+   "eiluciu": 2,
+   "sub_meta": "T"
+  },
+  "merge_qty5": "T",
+  "keisti_4": "T",
+  "santrauka_po": 9,
+  "salinti": "T",
+  "paskutine_atmesta": "T",
+  "jau_yra_antra": "T",
+  "grupavimas": [
+   {
+    "int": 28,
+    "items": 2,
+    "qty": 3
+   },
+   {
+    "int": 42,
+    "items": 1,
+    "qty": 1
+   }
+  ],
+  "valymas": [
+   1,
+   2,
+   1
+  ]
+ }
+}
