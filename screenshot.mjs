@@ -4,16 +4,21 @@ const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const A={Authorization:AUTH,'Content-Type':'application/json'};
 const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
-const VER='sutikimas-klik-2';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTI5ayBjYXJ0K2NsICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgJGY9KGlzc2V0KCRfR0VUWydwc19zdDInXSk/JF9HRVRbJ3BzX3N0MiddOicnKTsgaWYoJGYhPT0nQ0FSVCcmJiRmIT09J0NMJykgcmV0dXJuOwogIGlmKCRmPT09J0NBUlQnKXsKICAgIGlmKGZ1bmN0aW9uX2V4aXN0cygnV0MnKSYmV0MoKS0+Y2FydCl7CiAgICAgIGlmKFdDKCktPnNlc3Npb24mJiFXQygpLT5zZXNzaW9uLT5oYXNfc2Vzc2lvbigpKSBXQygpLT5zZXNzaW9uLT5zZXRfY3VzdG9tZXJfc2Vzc2lvbl9jb29raWUodHJ1ZSk7CiAgICAgIFdDKCktPmNhcnQtPmVtcHR5X2NhcnQoKTsKICAgICAgJGs9V0MoKS0+Y2FydC0+YWRkX3RvX2NhcnQoMzUwOTgsMSwwLGFycmF5KCksYXJyYXkoJ3BzX3ByZW5fcmV6aW1hcyc9Pidjb25maXJtJywncHNfcHJlbl9pbnRlcnZhbGFzJz0+MjgpKTsKICAgICAgV0MoKS0+Y2FydC0+Y2FsY3VsYXRlX3RvdGFscygpOwogICAgICBpZigkayl7IHdwX3NhZmVfcmVkaXJlY3Qod2NfZ2V0X2NoZWNrb3V0X3VybCgpKTsgZXhpdDsgfQogICAgICB3cF9kaWUoJ2FkZF90b19jYXJ0IEZBSUwnKTsKICAgIH0KICAgIHdwX2RpZSgnV0MgbmVyYScpOwogIH0KICBpZihmdW5jdGlvbl9leGlzdHMoJ1dDJykmJldDKCktPmNhcnQpIFdDKCktPmNhcnQtPmVtcHR5X2NhcnQoKTsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvICd7IkNMIjoib2sifSc7IGV4aXQ7Cn0sIDIwKTsK';
+const VER='sutikimas-klik-3';
 const out={v:VER,zingsniai:[]};
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha;
   return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
 try{
-  const akt=await fetch(SNIP+'/4276',{method:'POST',headers:A,body:JSON.stringify({id:4276,active:true})});
-  out.aktyvavimas=akt.status;
-  await new Promise(r=>setTimeout(r,6000));
+  const l=await fetch(SNIP,{headers:A}); const arr=JSON.parse(await l.text());
+  for(const s of (Array.isArray(arr)?arr:[]).filter(s=>s.active&&/^TEMP/.test(s.name||''))){
+    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); }
+  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
+    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
+  out.sid=JSON.parse(await c.text()).id;
+  await new Promise(r=>setTimeout(r,9000));
   const {chromium}=await import('playwright');
   const br=await chromium.launch();
   const ctx=await br.newContext({ignoreHTTPSErrors:true,viewport:{width:1200,height:1100}});
@@ -24,7 +29,7 @@ try{
       try{ const b=await pg.screenshot(); await put('analize/sut_fail_'+nr+'.png',b,VER); }catch(x){} } };
 
   await Z('krepselio uzpildymas + checkout',async p=>{
-    await p.goto(WP+'/?ps_st=CART',{waitUntil:'domcontentloaded',timeout:60000});
+    await p.goto(WP+'/?ps_st2=CART',{waitUntil:'domcontentloaded',timeout:60000});
     await p.waitForTimeout(2500);
     try{ await p.click('button:has-text("PRIIMTI")',{timeout:4000}); await p.waitForTimeout(800);}catch(e){}
     const u=p.url();
@@ -57,7 +62,7 @@ try{
   await br.close();
   out.VISKAS_ZALIA=out.zingsniai.every(z=>z.ok);
 }catch(e){ out.klaida=String(e).slice(0,400); }
-try{ await fetch(WP+'/?ps_st=CL',{headers:{'User-Agent':'Mozilla/5.0'}}); await fetch(SNIP+'/4276',{method:'POST',headers:A,body:JSON.stringify({id:4276,active:false})}); }catch(e){}
-try{ await fetch(WP+'/?ps_st=NIEKO',{headers:{'User-Agent':'Mozilla/5.0'}}); }catch(e){}
+try{ await fetch(WP+'/?ps_st2=CL',{headers:{'User-Agent':'Mozilla/5.0'}}); }catch(e){}
+try{ if(out.sid) await fetch(SNIP+'/'+out.sid,{method:'POST',headers:A,body:JSON.stringify({id:out.sid,active:false})}); }catch(e){}
 await put('analize/sutikimas_klik.json',Buffer.from(JSON.stringify(out,null,1)),VER);
 console.log('ok');
