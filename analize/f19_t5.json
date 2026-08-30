@@ -1,5 +1,33 @@
 {
- "v": "f19_t5-075130",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "v": "f19_t5-075621",
+ "kurimas": 200,
+ "sid": 4179,
+ "T5": {
+  "v": "F19T5-1.0",
+  "dispatch_metodai": [
+   "flows",
+   "table",
+   "install",
+   "maybe_install",
+   "enqueue",
+   "check_eligibility",
+   "is_suppressed",
+   "is_transactional_only",
+   "suppress",
+   "process_pending",
+   "process_one",
+   "render",
+   "stats",
+   "init",
+   "cron_run"
+  ],
+  "flow_yra": "TAIP",
+  "flow_apr": {
+   "class": "transactional",
+   "template": "subscription-t5",
+   "delay": 0
+  },
+  "t5_payload_matomumas": "protected",
+  "FATAL": "Too few arguments to function Petshop_Laiskai_Turinys::kelias(), 2 passed in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php on line 341 and exactly 3 expected @ /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laiskai.php:524"
+ }
 }
