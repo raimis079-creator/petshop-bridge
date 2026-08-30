@@ -1,0 +1,20 @@
+{
+ "v": "dep-194052",
+ "kurimas": 200,
+ "sid": 4272,
+ "GO": {
+  "v": "S1528d",
+  "failas": "class-action-tokens.php",
+  "generate": " public static function generate( array $args ) { if ( empty( $args['purpose'] ) ) { return false; } global $wpdb; $key_id = self::ensure_keys(); $secret = self::get_key( $key_id ); if ( ! $secret ) { return false; } $nonce = bin2hex( random_bytes( 16 ) ); // 32 hex $ttl = isset( $args['ttl_seconds'] ) ? (int) $args['ttl_seconds'] : 1800; // 30 min $now = time(); $expires_ts = $now + $ttl; $payload = array( 'version' => self::TOKEN_VERSION, 'purpose' => $args['purpose'], 'subject_id' => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0, 'resource_id' => isset( $args['resource_id'] ) ? (string) $args['resource_id'] : '', 'action' => isset( $args['action'] ) ? (string) $args['action'] : '', 'expires_at' => $expires_ts, 'nonce' => $nonce, 'key_id' => $key_id, ); $payload_json = wp_json_encode( $payload, JSON_UNESCAPED_SLASHES ); $payload_b64 = self::b64url_encode( $payload_json ); $signature = hash_hmac( 'sha256', $payload_b64, $secret ); $raw_token = $payload_b64 . '.' . $signature; $token_hash = hash( 'sha256', $raw_token ); $inserted = $wpdb->insert( self::table_name(), array( 'token_hash' => $token_hash, 'nonce' => $nonce, 'purpose' => substr( $args['purpose'], 0, 48 ), 'purpose_group' => isset( $args['purpose_group'] ) ? substr( $args['purpose_group'], 0, 48 ) : null, 'subject_id' => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0, 'subject_email' => isset( $args['subject_email'] ) ? sanitize_email( $args['subject_email'] ) : null, 'resource_id' => isset( $args['resource_id'] ) ? substr( (string) $args['resource_id'], 0, 64 ) : null, 'action' => isset( $args['action'] ) ? substr( (string) $args['action'], 0, 48 ) : null, 'key_id' => $key_id, 'status' => 'active', 'created_at' => gmdate( 'Y-m-d H:i:s', $now ), 'expires_at' => gmdate( 'Y-m-d H:i:s', $expires_ts ), ), array( '%s','%s','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s' ) ); if ( ! $inserted ) { return false; } return $raw_token; } ",
+  "consume": " public static function consume( $raw_token ) { $result = self::validate_internal( $raw_token, true ); return $result; } ",
+  "peek": " public static function peek( $raw_token ) { return self::validate_internal( $raw_token, false ); } ",
+  "konstantos": {
+   "TOKEN_VERSION": 1,
+   "OPTION_KEYS": "petshop_action_token_keys",
+   "OPTION_CURRENT_KEY": "petshop_action_token_current_key"
+  },
+  "lenteles": [
+   "gaj6_ps_action_tokens"
+  ]
+ }
+}
