@@ -1,0 +1,77 @@
+{
+ "v": "dep-191824",
+ "kurimas": 200,
+ "sid": 4266,
+ "E2E": {
+  "v": "S1526b",
+  "faze": "E2E",
+  "baseline": {
+   "35096": {
+    "d30": 1,
+    "d45": 2,
+    "d60": 2,
+    "ciklai": 2
+   },
+   "35098": {
+    "d30": 1,
+    "d45": 2,
+    "d60": 2,
+    "ciklai": 2
+   },
+   "35099": {
+    "d30": 1,
+    "d45": 2,
+    "d60": 2,
+    "ciklai": 2
+   }
+  },
+  "sids": [
+   61,
+   62,
+   63
+  ],
+  "po": {
+   "35096": {
+    "d30": 2,
+    "d45": 3,
+    "d60": 3,
+    "ciklai": 3
+   },
+   "35098": {
+    "d30": 5,
+    "d45": 8,
+    "d60": 10,
+    "ciklai": 6
+   },
+   "35099": {
+    "d30": 1,
+    "d45": 5,
+    "d60": 5,
+    "ciklai": 3
+   }
+  },
+  "T1_delta_A": "OK",
+  "T2_delta_B": "OK",
+  "T6_pradelstas": "OK",
+  "def_35096": {
+   "likutis": 0,
+   "d30": 2,
+   "truksta": 2
+  },
+  "T4_deficitas": "OK",
+  "T3_nesekamos": "OK",
+  "T5_cron": "OK",
+  "VISKAS": true
+ },
+ "CL": {
+  "v": "S1526b",
+  "faze": "CL",
+  "likutis": 0,
+  "aktyvus_liko": [
+   {
+    "id": "43",
+    "email": "raimundas@gyvunai.lt"
+   }
+  ]
+ }
+}
