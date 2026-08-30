@@ -1,5 +1,5 @@
 {
- "v": "psk303-klik-1",
+ "v": "psk304-klik-2",
  "zingsniai": [
   {
    "z": "atidarymas",
@@ -13,21 +13,51 @@
   },
   {
    "z": "Prideti is drawer",
+   "ok": true,
+   "d": "prekiu: 2"
+  },
+  {
+   "z": "Keisti prekes (redagavimas)",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "kiekis +1",
+   "ok": true,
+   "d": "2 vnt."
+  },
+  {
+   "z": "Daznumas Keisti",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "Daznumas -> kas 6 sav.",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "Pristatymas Keisti + kurjeris",
+   "ok": true,
+   "d": ""
+  },
+  {
+   "z": "SMS jungiklis",
    "ok": false,
-   "d": "Error: prekiu eiluciu 1"
+   "d": "Error: locator.check: Element is outside of the viewport\nCall log:\n  - waiting for locator('.psn3-jung-l input')\n    - locator resolved to <input value=\"1\" type=\"checkbox\" name=\"sms_ijungti\" onchange="
   }
  ],
  "kurimas": 200,
  "DEP3": {
   "v": "K-DEP3",
-  "buves": "c63bb956f037b9dd151486617fd4c188",
-  "naujas": "1ce6f7bcef4a597af9d8dddabdb6d536"
+  "buves": "1ce6f7bcef4a597af9d8dddabdb6d536",
+  "naujas": "03995c39fb6ef44d316e19ba3d131b43"
  },
  "P4": {
-  "sid": 45,
-  "uid": 101
+  "sid": 46,
+  "uid": 102
  },
- "klaida": "Error: prekiu eiluciu 1",
+ "klaida": "Error: locator.check: Element is outside of the viewport\nCall log:\n  - waiting for locator('.psn3-jung-l input')\n    - locator resolved to <input value=\"1\" type=\"checkbox\" name=\"sms_ijungti\" onchange=\"this.form.submit()\"/>\n  - attempting click action\n    - scrolling into view if needed\n    - done scrolling\n",
  "CL4": {
   "v": "K-CL4",
   "istrinta": 1,
