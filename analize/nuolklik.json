@@ -1,59 +1,59 @@
 {
- "v": "nuolklik-184708",
+ "v": "nuolklik-v2",
  "zingsniai": [
   {
    "nr": 1,
    "vardas": "atidaryti detale",
-   "ok": false,
-   "klaida": "TimeoutError: page.textContent: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('h2')\n"
+   "ok": true,
+   "rez": "Prenumerata #57 — psn3klik@gyvunai.lt"
   },
   {
    "nr": 2,
    "vardas": "abu nuolaidu blokai matomi",
-   "ok": false,
-   "klaida": "Error: nera kliento bloko"
+   "ok": true,
+   "rez": true
   },
   {
    "nr": 3,
    "vardas": "pradzioje nuolaidos nera, suma bruto",
-   "ok": false,
-   "klaida": "Error: nerasta bruto 46,00"
+   "ok": true,
+   "rez": "46,00"
   },
   {
    "nr": 4,
    "vardas": "kliento nuolaida 10 issaugoti",
-   "ok": false,
-   "klaida": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('form:has(input[value=\"nuolaida_klientas\"])').locator('input[name=nuolaida_pct]')\n"
+   "ok": true,
+   "rez": true
   },
   {
    "nr": 5,
    "vardas": "kliento lygis taikomas: -10% ir suma",
-   "ok": false,
-   "klaida": "Error: nera saltinio"
+   "ok": true,
+   "rez": "41,40"
   },
   {
    "nr": 6,
    "vardas": "prenumeratos 15% permusa kliento lygi",
-   "ok": false,
-   "klaida": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('form:has(input[value=\"nuolaida_sub\"])').locator('input[name=nuolaida_pct]')\n"
+   "ok": true,
+   "rez": "39,10"
   },
   {
    "nr": 7,
    "vardas": "sub 0 isjungia nors klientas turi 10",
-   "ok": false,
-   "klaida": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('form:has(input[value=\"nuolaida_sub\"])').locator('input[name=nuolaida_pct]')\n"
+   "ok": true,
+   "rez": "46,00"
   },
   {
    "nr": 8,
    "vardas": "istustinus sub grizta kliento lygis",
-   "ok": false,
-   "klaida": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('form:has(input[value=\"nuolaida_sub\"])').locator('input[name=nuolaida_pct]')\n"
+   "ok": true,
+   "rez": "41,40"
   },
   {
    "nr": 9,
    "vardas": "sarase yra nuolaidos stulpelis",
-   "ok": false,
-   "klaida": "Error: nera stulpelio antrastes"
+   "ok": true,
+   "rez": true
   },
   {
    "nr": 10,
@@ -62,19 +62,22 @@
    "rez": "analize/nuolaidos_admin.png"
   }
  ],
- "sid": 4262,
+ "sid": 4263,
  "P": {
   "v": "KLIK-1",
   "faze": "P",
-  "sid": 56,
-  "uid": 112,
+  "sid": 57,
+  "uid": 113,
   "aid": 1,
   "bruto_ct": 4600,
   "cookie_name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
-  "cookie": "bdz487|1788117992|yEK3fohO6iBgCpXmqvBog7S4uBBBmh1yg45ewIfjr2m|f73da43142740a0b8d407c9565bb3e5006ef6cb7b8827744b4012358dbfc5e12",
-  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=petshop-prenumeratos&sid=56"
+  "cookie": "bdz487|1788118365|qEZGHHlHgXwmaBracLCpXwyrMEsmkGTjTdfDaMUGSvN|ee16e2f70adeef933040f5a3c602b5fce51fbf2718eadc102c83994555b0d186",
+  "auth_name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "auth_cookie": "bdz487|1788118365|vQs2xhHIFCwkvHFOyydFvJMLQea48mn2S5XmLScv5lY|588ef99726b4ce0f4f7db520ef7658a7127fe0f262ec52b87b2fc931637bc84c",
+  "auth_secure": true,
+  "url": "https://dev.avesa.lt/wp-admin/admin.php?page=petshop-prenumeratos&sid=57"
  },
- "VISKAS_ZALIA": false,
+ "VISKAS_ZALIA": true,
  "CL": {
   "v": "KLIK-1",
   "faze": "CL",
