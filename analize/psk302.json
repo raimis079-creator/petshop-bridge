@@ -1,77 +1,11 @@
 {
- "v": "psk31-klik-7",
- "zingsniai": [
-  {
-   "z": "atidarymas",
-   "ok": true,
-   "d": ""
-  },
-  {
-   "z": "drawer atidarymas (+Prideti preke)",
-   "ok": true,
-   "d": ""
-  },
-  {
-   "z": "Prideti is drawer",
-   "ok": true,
-   "d": "prekiu: 2"
-  },
-  {
-   "z": "Keisti prekes (redagavimas)",
-   "ok": true,
-   "d": ""
-  },
-  {
-   "z": "kiekis +1",
-   "ok": true,
-   "d": "2 vnt."
-  },
-  {
-   "z": "Daznumas Keisti",
-   "ok": true,
-   "d": ""
-  },
-  {
-   "z": "Prideti mygtuko tekstas matomas",
-   "ok": true,
-   "d": ""
-  },
-  {
-   "z": "Daznumas -> kas 6 sav.",
-   "ok": true,
-   "d": ""
-  },
-  {
-   "z": "Pastomato keitimas (miestas->terminalas)",
-   "ok": true,
-   "d": "terminalu: 567"
-  },
-  {
-   "z": "Kurjeris (adresas is WC)",
-   "ok": true,
-   "d": ""
-  },
-  {
-   "z": "SMS jungiklis",
-   "ok": true,
-   "d": ""
-  }
- ],
+ "v": "psk32-klik-9",
+ "zingsniai": [],
  "kurimas": 200,
- "DEP3": {
-  "v": "K-DEP3",
-  "buves": "22d37b7180f121d1cbc7e21f0c1decb2",
-  "jau": 1
- },
- "P4": {
-  "sid": 50,
-  "uid": 106
- },
- "pageerrors": [],
+ "klaida": "Error: DEP3 GUARD 22d37b7180f121d1cbc7e21f0c1decb2",
  "CL4": {
   "v": "K-CL4",
-  "istrinta": 1,
+  "istrinta": 0,
   "likutis": 0
- },
- "VISKAS_ZALIA": true
+ }
 }
