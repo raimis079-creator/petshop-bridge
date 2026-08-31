@@ -1,0 +1,98 @@
+{
+ "v": "dep-205340",
+ "kurimas": 200,
+ "sid": 4349,
+ "D5": {
+  "v": "S1547fb",
+  "faze": "D5",
+  "kl": {
+   "md5": "9335e06e89ab8f544747b13dc79bb258",
+   "B": 32444
+  },
+  "at": {
+   "md5": "ab84bacfadff0e14ad532a1d2a6c9cfb",
+   "B": 22344
+  }
+ },
+ "VER2": {
+  "v": "S1547c",
+  "faze": "VER2",
+  "sandeliai": [
+   "ambrosia",
+   "av",
+   "belcor_tofu",
+   "prins",
+   "quattro",
+   "vf",
+   "zb"
+  ],
+  "winback_min3": {
+   "dim": 348,
+   "uzs": 1670
+  },
+  "era_legacy_kl": 5431,
+  "era_wc_kl": 0,
+  "sandelio_pvz": {
+   "sandelis": "ambrosia",
+   "eil": 102
+  },
+  "dropship": [
+   {
+    "t": "av",
+    "n": 1434,
+    "be": 540,
+    "paj30": 4250,
+    "rizika": 503,
+    "so": null
+   },
+   {
+    "t": "vf",
+    "n": 1164,
+    "be": 234,
+    "paj30": 1835,
+    "rizika": 213,
+    "so": null
+   },
+   {
+    "t": "ambrosia",
+    "n": 15,
+    "be": 0,
+    "paj30": 305,
+    "rizika": 0,
+    "so": null
+   },
+   {
+    "t": "belcor_tofu",
+    "n": 62,
+    "be": 22,
+    "paj30": 77,
+    "rizika": 0,
+    "so": null
+   },
+   {
+    "t": "prins",
+    "n": 43,
+    "be": 20,
+    "paj30": 27,
+    "rizika": 0,
+    "so": null
+   },
+   {
+    "t": "quattro",
+    "n": 65,
+    "be": 2,
+    "paj30": 288,
+    "rizika": 0,
+    "so": null
+   },
+   {
+    "t": "zb",
+    "n": 1059,
+    "be": 147,
+    "paj30": 180,
+    "rizika": 0,
+    "so": null
+   }
+  ]
+ }
+}
