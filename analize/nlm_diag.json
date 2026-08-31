@@ -1,0 +1,295 @@
+{
+ "v": "dep-073606",
+ "list_praleistas": "SyntaxError: Unexpected end of JSON input",
+ "kurimas": 200,
+ "sid": 4296,
+ "D": {
+  "v": "NLM1",
+  "now_utc": "2026-08-31 07:37:13",
+  "consent_last": [
+   {
+    "id": "36",
+    "email": "terra@gyvunai.lt",
+    "from_value": "",
+    "to_value": "true",
+    "source": "footer_form",
+    "changed_at": "2026-08-31 07:34:04"
+   },
+   {
+    "id": "18",
+    "email": "unsub-test@example.com",
+    "from_value": "true",
+    "to_value": "false",
+    "source": "unsubscribe_link",
+    "changed_at": "2026-07-31 08:51:09"
+   },
+   {
+    "id": "17",
+    "email": "unsub-test@example.com",
+    "from_value": "false",
+    "to_value": "true",
+    "source": "test_setup",
+    "changed_at": "2026-07-31 08:51:09"
+   }
+  ],
+  "jobs_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "jobs_last": [
+   {
+    "id": "108",
+    "job_key": "nl_687cc0a79c0276f62db33c87e5921cc0",
+    "flow": "consent_changed",
+    "flow_class": "transactional",
+    "recipient_email": "terra@gyvunai.lt",
+    "recipient_user_id": null,
+    "subject": null,
+    "payload": "{\"name\":\"\",\"granted\":true,\"source\":\"footer_form\",\"changed_at\":\"2026-08-31 10:34:05\",\"prefs_url\":\"https:\\/\\/dev.avesa.lt\\/paskyra\\/\"}",
+    "status": "pending",
+    "block_reason": null,
+    "provider": null,
+    "provider_message_id": null,
+    "attempts": "0",
+    "last_error": null,
+    "scheduled_at": "2026-08-31 07:34:05",
+    "sent_at": null,
+    "created_at": "2026-08-31 07:34:05",
+    "updated_at": "2026-08-31 07:34:05",
+    "skip_reason": null,
+    "error_message": null,
+    "decision_at": null,
+    "next_attempt_at": null,
+    "context_json": null,
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "47",
+    "job_key": "cart_abandoned:c_83afcb5524222d6af91b3b8a8d61a7ba:stage1",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "recipient_email": "raimundas@gyvunai.lt",
+    "recipient_user_id": "1",
+    "subject": null,
+    "payload": "{\"cart_id\":\"c_83afcb5524222d6af91b3b8a8d61a7ba\",\"cart_total\":37.6,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":19417,\"variation_id\":0,\"quantity\":1,\"name\":\"Animonda Vom Feinsten Adult with Poultry and Veal \\u2013 konservai kat\\u0117ms su pauk\\u0161tiena ir ver\\u0161iena, 100 g\",\"price\":0.96},{\"product_id\":35076,\"variation_id\":0,\"quantity\":1,\"name\":\"Rinkinys Gurmanams - skan\\u0117stai \\u0161uni…",
+    "status": "skipped",
+    "block_reason": "consent_missing",
+    "provider": null,
+    "provider_message_id": null,
+    "attempts": "0",
+    "last_error": null,
+    "scheduled_at": "2026-08-28 10:29:55",
+    "sent_at": null,
+    "created_at": "2026-08-28 10:29:55",
+    "updated_at": "2026-08-28 10:34:03",
+    "skip_reason": "consent_missing",
+    "error_message": null,
+    "decision_at": "2026-08-28 10:34:03",
+    "next_attempt_at": null,
+    "context_json": "{\"cart_id\":\"c_83afcb5524222d6af91b3b8a8d61a7ba\"}",
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "46",
+    "job_key": "cart_abandoned:c_181d11f0a804eaa2f50301df5d0e40f5:stage1",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "recipient_email": "raimundas@gyvunai.lt",
+    "recipient_user_id": "1",
+    "subject": null,
+    "payload": "{\"cart_id\":\"c_181d11f0a804eaa2f50301df5d0e40f5\",\"cart_total\":33.61,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":19417,\"variation_id\":0,\"quantity\":1,\"name\":\"Animonda Vom Feinsten Adult with Poultry and Veal \\u2013 konservai kat\\u0117ms su pauk\\u0161tiena ir ver\\u0161iena, 100 g\",\"price\":0.96},{\"product_id\":35076,\"variation_id\":0,\"quantity\":1,\"name\":\"Rinkinys Gurmanams - skan\\u0117stai \\u0161un…",
+    "status": "skipped",
+    "block_reason": "consent_missing",
+    "provider": null,
+    "provider_message_id": null,
+    "attempts": "0",
+    "last_error": null,
+    "scheduled_at": "2026-08-25 18:50:05",
+    "sent_at": null,
+    "created_at": "2026-08-25 18:50:05",
+    "updated_at": "2026-08-25 18:54:03",
+    "skip_reason": "consent_missing",
+    "error_message": null,
+    "decision_at": "2026-08-25 18:54:03",
+    "next_attempt_at": null,
+    "context_json": "{\"cart_id\":\"c_181d11f0a804eaa2f50301df5d0e40f5\"}",
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "45",
+    "job_key": "refill_due:1:19417:2026-08-29",
+    "flow": "refill_due",
+    "flow_class": "service",
+    "recipient_email": "raimundas@gyvunai.lt",
+    "recipient_user_id": "1",
+    "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
+    "payload": "{\"pet_name\":\"\",\"product_id\":19417,\"product_name\":\"Animonda Vom Feinsten Adult with Poultry and Veal \\u2013 konservai kat\\u0117ms su pauk\\u0161tiena ir ver\\u0161iena, 100 g\",\"product_url\":\"https:\\/\\/dev.avesa.lt\\/product\\/animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-katems-su-paukstiena-ir-versiena-100-g\\/\",\"reorder_url\":\"https:\\/\\/dev.avesa.lt\\/krepselis\\/?add-to-cart=19417\",\"confid…",
+    "status": "sent",
+    "block_reason": null,
+    "provider": "sender",
+    "provider_message_id": "azv2GY-.eE9p2l-j09zEZv-Y52RO22A7A62-4bZuAT",
+    "attempts": "1",
+    "last_error": null,
+    "scheduled_at": "2026-08-24 08:00:47",
+    "sent_at": "2026-08-24 08:15:10",
+    "created_at": "2026-08-24 08:00:47",
+    "updated_at": "2026-08-24 08:15:10",
+    "skip_reason": null,
+    "error_message": null,
+    "decision_at": "2026-08-24 08:15:10",
+    "next_attempt_at": null,
+    "context_json": "{\"user_id\":1,\"product_id\":19417,\"last_purchase_date\":\"2026-08-22\",\"refill_id\":38,\"cycle\":\"2026-08-29\",\"feedback_url\":\"https:\\/\\/dev.avesa.lt\\/refill-feedback\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoicmVmaWxsX2ZlZWRiYWNrIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiIzOCIsImFjdGlvbiI6ImZlZWRiYWNrIiwiZXhwaXJlc19hdCI6MTc4ODc2ODkwOSwibm9uY2UiOiJiMzViMzEyODUyNzUxM2NmNmE2MmQ0MWUyOWVkYTUwNyIsImtleV9pZCI6InYyIn0.14…",
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   }
+  ],
+  "jobs_by_status": [
+   {
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "status": "sent",
+    "n": "12"
+   },
+   {
+    "status": "skipped",
+    "n": "5"
+   }
+  ],
+  "suppression": [
+   {
+    "id": "7",
+    "email": "terra@gyvunai.lt",
+    "channel": "marketing",
+    "reason": "unsubscribe",
+    "source": "sender_reconcile",
+    "note": null,
+    "suppressed_at": "2026-07-31 05:30:03",
+    "released_at": null
+   }
+  ],
+  "cron_dispatch": 1788161919,
+  "cron_dispatch_h": "2026-08-31 07:38:39",
+  "cron_schedules": [
+   "07:38:39 ps_email_dispatch_cron",
+   "21:00:00 wpforms_email_summaries_cron"
+  ],
+  "disable_cron": null,
+  "sender_keys": {
+   "mk": 1320,
+   "tk": 1316
+  },
+  "esp_opts": [
+   {
+    "option_name": "petshop_email_dispatch_db",
+    "v": "1.2.0"
+   },
+   {
+    "option_name": "petshop_email_suppression_db",
+    "v": "1.0.0"
+   },
+   {
+    "option_name": "petshop_esp_event_log_db_version",
+    "v": "0.1.0"
+   },
+   {
+    "option_name": "petshop_esp_sender_mk",
+    "v": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1FpT2lJeElpd2lhblJwSWpv"
+   },
+   {
+    "option_name": "petshop_esp_sender_tk",
+    "v": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1FpT2lJeElpd2lhblJwSWpv"
+   },
+   {
+    "option_name": "petshop_esp_sender_webhook_secret",
+    "v": "uD5RdRkIjPorxrlouQDahacEyHxxoEO0TcemLKnX"
+   },
+   {
+    "option_name": "ps_laiskai_db_versija",
+    "v": "1.3"
+   },
+   {
+    "option_name": "ps_laisku_archyvas",
+    "v": "a:7:{i:0;a:6:{s:6:\"laikas\";s:19:\"2026-08-24 22:53:31\";s:3:\"kam\";s:16:\"terra@pets"
+   }
+  ],
+  "content_consent": [],
+  "content_cols": [
+   "id",
+   "flow",
+   "version",
+   "status",
+   "subject",
+   "preheader",
+   "reason",
+   "blocks_json",
+   "notes",
+   "author_id",
+   "created_at",
+   "published_at"
+  ],
+  "webhook_last": [
+   {
+    "id": "1",
+    "dedup_key": "9f253bdb3ecd37d1ab131d8aca849306",
+    "topic": "subscribers/updated",
+    "email": "chan-test@example.com",
+    "marketing_status": "unsubscribed",
+    "transactional_status": "active",
+    "payload_json": "{\"type\":\"subscribers\\/updated\",\"email\":\"chan-test@example.com\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"}}",
+    "processing_result": "test",
+    "received_at": "2026-07-30 20:24:52"
+   }
+  ],
+  "sargas": [],
+  "dispatch_methods": [
+   "flows",
+   "table",
+   "install",
+   "maybe_install",
+   "enqueue",
+   "check_eligibility",
+   "is_suppressed",
+   "is_transactional_only",
+   "suppress",
+   "process_pending",
+   "process_one",
+   "render",
+   "stats",
+   "init",
+   "cron_run"
+  ]
+ }
+}
