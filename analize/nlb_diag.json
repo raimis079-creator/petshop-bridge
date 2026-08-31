@@ -1,0 +1,25 @@
+{
+ "v": "dep-072906",
+ "kurimas": 200,
+ "sid": 4294,
+ "D": {
+  "v": "NLB3",
+  "uri": "/?ps_nlb=D",
+  "is_front": true,
+  "queue_nl": false,
+  "queue_n": 12,
+  "registered_nl": false,
+  "footer_class": true,
+  "has_filter_force": false,
+  "js_exists": true,
+  "js_md5": "2d9325225287c8d544b7ef1104cfa884",
+  "js": "/* Petshop Newsletter v1.0 — forma be perkrovimo. */\n(function () {\n\t'use strict';\n\tfunction init(root) {\n\t\tvar email = root.querySelector('.psnl-email');\n\t\tvar btn   = root.querySelector('.psnl-btn');\n\t\tvar chk   = root.querySelector('.psnl-check');\n\t\tvar hp    = root.querySelector('.psnl-website');\n\t\tvar msg   = root.querySelector('.psnl-msg');\n\t\tif (!email || !btn || !chk || !msg) { return; }\n\n\t\tfunction rodyk(tekstas, tipas) {\n\t\t\tmsg.textContent = tekstas;\n\t\t\tmsg.className = 'psnl-msg ' + (tipas === 'ok' ? 'ok' : 'er');\n\t\t}\n\n\t\tfunction siusk() {\n\t\t\tmsg.className = 'psnl-msg';\n\t\t\tvar adresas = (email.value || '').trim();\n\t\t\tif (!adresas) { rodyk('Įveskite el. pašto adresą.', 'er'); email.focus(); return; }\n\t\t\tif (!chk.checked) { rodyk('Pažymėkite, kad sutinkate gauti naujienas.', 'er'); chk.focus(); return; }\n\n\t\t\tbtn.disabled = true;\n\t\t\tvar senas = btn.textContent;\n\t\t\tbtn.textContent = 'Siunčiama...';\n\n\t\t\tfetch(PS_NL.rest, {\n\t\t\t\tmethod: 'POST',\n\t\t\t\theaders: { 'Content-Type': 'application/json', 'X-WP-Nonce': PS_NL.nonce },\n\t\t\t\tcredentials: 'same-origin',\n\t\t\t\tbody: JSON.stringify({\n\t\t\t\t\temail: adresas,\n\t\t\t\t\tconsent: chk.checked ? 1 : 0,\n\t\t\t\t\twebsite: hp ? hp.value : '',\n\t\t\t\t\tsource: root.getAttribute('data-source') || 'newsletter_form'\n\t\t\t\t})\n\t\t\t})\n\t\t\t.then(function (r) { return r.json().then(function (d) { return { st: r.status, d: d }; }); })\n\t\t\t.then(function (x) {\n\t\t\t\tif (x.d && x.d.ok) {\n\t\t\t\t\trodyk(x.d.message || 'Ačiū!', 'ok');\n\t\t\t\t\temail.value = '';\n\t\t\t\t\tchk.checked = false;\n\t\t\t\t\tbtn.textContent = senas;\n\t\t\t\t\tbtn.disabled = true;          // pakartotinai nespaudžiam\n\t\t\t\t} else {\n\t\t\t\t\trodyk((x.d && x.d.message) || 'Nepavyko. Pabandykite vėliau.', 'er');\n\t\t\t\t\tbtn.textContent = senas;\n\t\t\t\t\tbtn.disabled = false;\n\t\t\t\t}\n\t\t\t})\n\t\t\t.catch(function () {\n\t\t\t\trodyk('Nepavyko susisiekti. Patikrinkite ryšį.', 'er');\n\t\t\t\tbtn.textContent = senas;\n\t\t\t\tbtn.disabled = false;\n\t\t\t});\n\t\t}\n\n\t\tbtn.addEventListener('click', siusk);\n\t\temail.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); siusk(); } });\n\t}\n\n\tfunction start() {\n\t\tvar v = document.querySelectorAll('.psnl');\n\t\tfor (var i = 0; i < v.length; i++) { init(v[i]); }\n\t}\n\tif (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', start); }\n\telse { start(); }\n})();\n",
+  "footer_md5": "44607298c50b99998deeb8e0d2c8b987",
+  "rest_status": 400,
+  "rest_body": {
+   "ok": false,
+   "message": "Pažymėkite, kad sutinkate gauti naujienas."
+  },
+  "consent_sync": true
+ }
+}
