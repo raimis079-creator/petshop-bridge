@@ -2,11 +2,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIGtsaWVudGFpIGNvb2tpZXMgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYoIWlzc2V0KCRfR0VUWydwc19rbCddKXx8JF9HRVRbJ3BzX2tsJ10hPT0nQ0snKSByZXR1cm47CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsgJGV4cD10aW1lKCkrMzYwMDsgJHVpZD0xOwogIGVjaG8ganNvbl9lbmNvZGUoYXJyYXkoJ2xpX25hbWUnPT5MT0dHRURfSU5fQ09PS0lFLCdsaSc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCR1aWQsJGV4cCwnbG9nZ2VkX2luJyksJ2F1dGhfbmFtZSc9PlNFQ1VSRV9BVVRIX0NPT0tJRSwnYXV0aCc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCR1aWQsJGV4cCwnc2VjdXJlX2F1dGgnKSwndWlkX3B2eic9PihpbnQpZ2V0X3VzZXJfYnkoJ2VtYWlsJywnZXJpLm1hemVpa2FpdGVAZ21haWwuY29tJyktPklEKSk7IGV4aXQ7Cn0pOwo=';
-const VER='dep-162257';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIGtsaWVudGFpIGF1ZGl0b3JpamEgdGVzdCAqLwphZGRfYWN0aW9uKCdpbml0JywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX2tsJ10pfHwkX0dFVFsncHNfa2wnXSE9PSdBVUQnKSByZXR1cm47CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsgJG89YXJyYXkoKTsKICB0cnl7ICRfUkVRVUVTVFsnc2VnbWVudGFzJ109J3JlZmlsbF9sYWlrYXMnOyAkX1JFUVVFU1RbJ3BpcmtvJ109JzEyJzsKICAgICRtPW5ldyBSZWZsZWN0aW9uTWV0aG9kKCdQZXRzaG9wX0tsaWVudGFpJywnc3VrdXJ0aV9hdWRpdG9yaWphJyk7ICRtLT5zZXRBY2Nlc3NpYmxlKHRydWUpOyAkb1snbXNnJ109d3Bfc3RyaXBfYWxsX3RhZ3MoJG0tPmludm9rZShudWxsKSk7CiAgICAka2w9YXJyYXlfdmFsdWVzKGFycmF5X2ZpbHRlcihnZXRfZGVjbGFyZWRfY2xhc3NlcygpLGZ1bmN0aW9uKCRjKXtyZXR1cm4gc3RyaXBvcygkYywna2FtcGFuJykhPT1mYWxzZTt9KSk7ICRvWydrYW1wX2tsYXNlcyddPSRrbDsKICAgIGZvcmVhY2goJGtsIGFzICRjKXsgaWYobWV0aG9kX2V4aXN0cygkYywnc2VnbWVudGFpJykpeyAkcz1jYWxsX3VzZXJfZnVuYyhhcnJheSgkYywnc2VnbWVudGFpJykpOyAkb1snY3N2X2ZhaWxhaSddPSRzWydjc3ZfZmFpbGFpJ10/P251bGw7IH0gfQogICAgJGQ9d3BfdXBsb2FkX2RpcigpWydiYXNlZGlyJ10uJy9wcy1pbXBvcnQnOyAkZj1nbG9iKCRkLicva2xpZW50YWlfKi5jc3YnKTsgJG9bJ2ZhaWxhcyddPSRmP2FycmF5KGJhc2VuYW1lKGVuZCgkZikpLGNvdW50KGZpbGUoZW5kKCRmKSkpLTEsZmlsZShlbmQoJGYpKVsxXT8/JycpOm51bGw7CiAgICAkb1sna2FtcF91cmxfbSddPShuZXcgUmVmbGVjdGlvbk1ldGhvZCgnUGV0c2hvcF9LbGllbnRhaScsJ2thbXBhbmlqdV91cmwnKSktPmdldE5hbWUoKTsKICB9Y2F0Y2goVGhyb3dhYmxlICRlKXsgJG9bJ0ZBVEFMJ109JGUtPmdldE1lc3NhZ2UoKS4nIEAnLiRlLT5nZXRMaW5lKCk7IH0KICBlY2hvIGpzb25fZW5jb2RlKCRvLEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9KTsK';
+const VER='dep-162600';
 const GKEY='ps_kl';
-const PHASES=["CK"];
-const OUT='analize/kl_shot.json';
+const PHASES=["AUD"];
+const OUT='analize/kl_aud.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -39,16 +39,6 @@ try{
     const t=await d.text();
     try{ out[f]=JSON.parse(t); }catch(e){ out['zalias_'+f]=t.slice(0,3000); }
   }
-  const ck=out['CK']; if(ck&&ck.li){
-    const { chromium } = await import('playwright');
-    const br=await chromium.launch(); const ctx=await br.newContext({viewport:{width:1500,height:1000},ignoreHTTPSErrors:true});
-    const host=new URL(WP).hostname;
-    await ctx.addCookies([{name:ck.li_name,value:ck.li,domain:host,path:'/',secure:true},{name:ck.auth_name,value:ck.auth,domain:host,path:'/wp-admin',secure:true}]);
-    const pg=await ctx.newPage();
-    const shots=[['klientai_sarasas','/wp-admin/admin.php?page=petshop-klientai'],['klientai_filtras','/wp-admin/admin.php?page=petshop-klientai&segmentas=refill_laikas'],['klientai_kortele','/wp-admin/admin.php?page=petshop-klientai&uid='+ck.uid_pvz]];
-    out.shots={};
-    for(const [n,u] of shots){ try{ const r=await pg.goto(WP+u,{waitUntil:'domcontentloaded',timeout:60000}); await pg.waitForTimeout(2500); const url=pg.url(); const h1=await pg.locator('h1').first().textContent().catch(()=>''); const buf=await pg.screenshot({fullPage:true}); const st=await put('analize/'+n+'.png',buf,VER); out.shots[n]={status:r?r.status():null,url,h1:(h1||'').trim().slice(0,80),put:st,bytes:buf.length}; }catch(e){ out.shots[n]={err:String(e).slice(0,200)}; } }
-    await br.close(); }
 }catch(e){ out.klaida=String(e).slice(0,500); }
 try{ if(sid) await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(e){}
 await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER);
