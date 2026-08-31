@@ -1,0 +1,152 @@
+{
+ "v": "dep-152425",
+ "kurimas": 200,
+ "sid": 4311,
+ "data": {
+  "nl_klientai.txt": {
+   "id": 35297,
+   "status": 201
+  }
+ },
+ "DRY": {
+  "v": "PK1",
+  "nl": 563,
+  "nl_blogas_email": [
+   "ptomas887@gmail.com",
+   "edvinasvalak@gmail.com",
+   "tomassitass1@gmail.com",
+   "augustyterimante@gmail.com",
+   "nijole.seduikiene@gmail.com",
+   "gk@gima.lt",
+   "editux.35@gmail.com",
+   "gagiliene@yahoo.com",
+   "modesta.gymplius@gmail.com",
+   "ernestabroma@gmail.com",
+   "evaldasgag@gmail.com",
+   "info@emasolutions.eu",
+   "lnering@gmail.com",
+   "marius.mariusk1@gmail.com",
+   "mindaugaslasavic@gmail.com",
+   "arvis77@gmail.com",
+   "augu.tamo@gmail.com",
+   "donataskilbauskas@gmail.com",
+   "egle.jurkunaite@gmail.com",
+   "lena24v@gmail.com",
+   "vitaskasp322@gmail.com",
+   "j.sosniene@gmail.com",
+   "jaroslav@tonerta.lt",
+   "jorunyte8@gmail.com",
+   "karkalaitep@gmail.com",
+   "kestutis.tarasevicius64@gmail.com",
+   "naglip@gmail.com",
+   "piriazeviene78@gmail.com",
+   "rusne.petraityte@gmail.com",
+   "rytuliepa@inbox.lt",
+   "stasysfin@gmail.com",
+   "valaitegintare@gmail.com",
+   "valdasu8@gmail.com",
+   "zarskaitedeimante@gmail.com",
+   "alinasys@gmail.comcom"
+  ],
+  "istorija_emailai": 5589,
+  "nl_tik_be_pirkimu": 79,
+  "nl_su_istorija": 484,
+  "viso_paskyru": 5668,
+  "negaliojanciu_email": 1,
+  "negaliojanciu_pvz": [
+   "tepalai@gmail.com - ne tas. telefonu patikslinta į tepalas@gmail.com"
+  ],
+  "jau_wp": 1,
+  "be_vardo": 9,
+  "imoniu": 27,
+  "pirko_12men": 2298,
+  "nl_su_suppression": [],
+  "consent_jau_nl": 0,
+  "kabliai": {
+   "user_register": [
+    "Automattic\\Jetpack\\Connection\\User_Account_Status::clean_account_mismatch_transients",
+    "wp_maybe_update_user_counts",
+    "closure"
+   ],
+   "woocommerce_created_customer": [
+    "Automattic\\WooCommerce\\Admin\\API\\Reports\\Customers\\DataStore::merge_guest_customer_on_delayed_account_creation",
+    "WC_Emails::send_transactional_email"
+   ],
+   "woocommerce_new_customer": [
+    "Automattic\\WooCommerce\\Admin\\API\\Reports\\Customers\\DataStore::update_registered_customer"
+   ],
+   "profile_update": [
+    "Automattic\\Jetpack\\Connection\\User_Account_Status::clean_account_mismatch_transients",
+    "wc_update_profile_last_update_time",
+    "Automattic\\WooCommerce\\Admin\\API\\Reports\\Customers\\DataStore::update_registered_customer"
+   ],
+   "wp_new_user_notification_email": [],
+   "added_user_meta": [
+    "wp_cache_set_users_last_changed",
+    "Automattic\\WooCommerce\\Admin\\API\\Reports\\Customers\\DataStore::update_registered_customer_via_last_active"
+   ]
+  },
+  "set_marketing_consent": {
+   "static": true,
+   "params": [
+    "$email",
+    "$consent",
+    "$source=opt",
+    "$customer_id=opt"
+   ],
+   "file": "class-consent-sync.php",
+   "L": 58
+  },
+  "smc_src": "\tpublic static function set_marketing_consent( $email, $consent, $source = 'unknown', $customer_id = 0 ) {\n\t\t$email = sanitize_email( $email );\n\t\tif ( ! $email ) {\n\t\t\treturn array( 'ok' => false, 'error' => 'invalid_email' );\n\t\t}\n\t\t$new_value = $consent ? 'true' : 'false';\n\n\t\t// buvusi reiksme (is consent_log arba user_meta)\n\t\t$from = Petshop_Consent_Log::current_value( $email, 'marketing_consent' );\n\t\tif ( $from === null && $customer_id ) {\n\t\t\t$from = get_user_meta( $customer_id, self::META_MARKETING, true );\n\t\t}\n\t\t$from = ( $from === '' || $from === null ) ? '' : $from;\n\n\t\t// jei nepasikeite — nedaryti nieko (idempotencija)\n\t\tif ( $from === $new_value ) {\n\t\t\treturn array( 'ok' => true, 'from' => $from, 'to' => $new_value, 'pushed_to_sender' => false, 'unchanged' => true );\n\t\t}\n\n\t\t// 1. Irasyti i consent_log (teisinis irodymas)\n\t\tPetshop_Consent_Log::record( array(\n\t\t\t'customer_id' => $customer_id,\n\t\t\t'email'       => $email,\n\t\t\t'field'       => 'marketing_consent',\n\t\t\t'from_value'  => $from,\n\t\t\t'to_value'    => $new_value,\n\t\t\t'source'      => $source,\n\t\t) );\n\n\t\t// 2. Irasyti i user_meta (jei zinom customer_id)\n\t\tif ( $customer_id ) {\n\t\t\tupdate_user_meta( $customer_id, self::META_MARKETING, $new_value );\n\t\t}\n\n\t\t// 3. Push i Sender (PS_MARKETING_CONSENT + jei atsisake, PS_UNSUBSCRIBED_AT)\n\t\t$attributes = array( 'PS_MARKETING_CONSENT' => $new_value );\n\t\tif ( ! $consent ) {\n\t\t\t$attributes['PS_UNSUBSCRIBED_AT'] = gmdate( 'Y-m-d' );\n\t\t}\n\t\t$pushed = false;\n\t\tif ( function_exists( 'ps_esp_adapter' ) ) {\n\t\t\t$adapter = ps_esp_adapter();\n\t\t\tif ( $adapter->is_configured() ) {\n\t\t\t\t$res = $adapter->upsert_contact( $email, $attributes );\n\t\t\t\t$pushed = ! empty( $res['ok'] );\n\t\t\t}\n\t\t}\n\n\t\t// 4. Emit consent_changed event (jei Registry yra)\n\t\tif ( class_exists( 'Petshop_Event_Registry' ) ) {\n\t\t\tPetshop_Event_Registry::emit( 'consent_changed', $email, array(\n\t\t\t\t'field'      => 'marketing_consent',\n\t\t\t\t'from_value' => $from,\n\t\t\t\t'to_value'   => $new_value,\n\t\t\t\t'source'     => $source,\n\t\t\t), array( 'event_id' => 'consent_' . md5( $email . $source . microtime() ) ) );\n\t\t}\n\n\t\treturn array(\n\t\t\t'ok'               => true,\n",
+  "pvz": [
+   {
+    "email": "05-state.bred@icloud.com",
+    "n": "1",
+    "iv": "1",
+    "suma": "39.60",
+    "pask": "2025-11-16 19:55:24",
+    "pirm": "2025-11-16 19:55:24",
+    "vardas": "Ignas",
+    "pavarde": "Liepinis",
+    "tel": "37063973805",
+    "imone": "0"
+   },
+   {
+    "email": "0rmgd0@gmail.com",
+    "n": "16",
+    "iv": "14",
+    "suma": "679.48",
+    "pask": "2025-11-10 15:16:33",
+    "pirm": "2025-02-09 06:15:42",
+    "vardas": "Remigijus",
+    "pavarde": "Dižerskis",
+    "tel": "37068791641",
+    "imone": "0"
+   },
+   {
+    "email": "1130jurgita@gmail.com",
+    "n": "1",
+    "iv": "1",
+    "suma": "69.00",
+    "pask": "2026-06-01 09:05:38",
+    "pirm": "2026-06-01 09:05:38",
+    "vardas": "Jurgita",
+    "pavarde": "Sliuzaite",
+    "tel": "37067189656",
+    "imone": "0"
+   }
+  ],
+  "consent_log_cols": [
+   "id",
+   "customer_id",
+   "email",
+   "field",
+   "from_value",
+   "to_value",
+   "source",
+   "ip",
+   "user_agent",
+   "changed_at"
+  ]
+ }
+}
