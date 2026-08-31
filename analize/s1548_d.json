@@ -1,0 +1,87 @@
+{
+ "v": "dep-212001",
+ "kurimas": 200,
+ "sid": 4353,
+ "DIEGTI": {
+  "v": "S1548d",
+  "faze": "DIEGTI",
+  "cs": {
+   "md5": "dbc0b67bd8b435809787049bc5759441",
+   "B": 11075
+  },
+  "op": {
+   "md5": "efabb3a9879378b7e11aad6c38a682b5",
+   "B": 1768
+  },
+  "du": {
+   "md5": "57cc9d13de07d2a09d9da9f071363558",
+   "B": 2506
+  },
+  "fo": {
+   "md5": "8f383a47396b2484657cba3a02bb2362",
+   "B": 2872
+  }
+ },
+ "TEST": {
+  "v": "S1548d",
+  "faze": "TEST",
+  "sintetinis": {
+   "optout": {
+    "inserted": 1
+   },
+   "optin": {
+    "released": 1
+   },
+   "aktyviu_liko": 0
+  },
+  "bounce_lieka": {
+   "released": {
+    "released": 0
+   },
+   "aktyviu": 1
+  },
+  "terra": {
+   "rez": {
+    "ok": true,
+    "from": "true",
+    "to": "true",
+    "pushed_to_sender": false,
+    "unchanged": true,
+    "suppression": {
+     "released": 1
+    }
+   },
+   "eilute": {
+    "id": "7",
+    "reason": "unsubscribe",
+    "suppressed_at": "2026-07-31 05:30:03",
+    "released_at": "2026-08-31 21:21:19",
+    "note": " [released: opt-in via s1548_fix 2026-08-31]"
+   },
+   "marketable": true
+  },
+  "tpl": {
+   "order-paid": {
+    "B": 2037,
+    "subject": "Užsakymas #TST-1 priimtas",
+    "logo": true,
+    "imone": true,
+    "unsub": false
+   },
+   "dunning-1": {
+    "B": 2554,
+    "subject": "Užsakymas #TST-2 laukia apmokėjimo",
+    "logo": true,
+    "imone": true,
+    "unsub": false
+   },
+   "founding": {
+    "B": 3321,
+    "subject": "Petshop.lt atsidaro — jūs pirmieji",
+    "logo": true,
+    "imone": true,
+    "unsub": true
+   }
+  }
+ }
+}
