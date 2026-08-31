@@ -1,0 +1,52 @@
+{
+ "v": "dep-074318",
+ "kurimas": 200,
+ "sid": 4299,
+ "L": {
+  "v": "LG2",
+  "md5": "8efe42599ff865deb2cfbde565b3c3b8",
+  "size": 5980,
+  "ver": null,
+  "logo_fn": " C_MUTED   = '#7A867C';\n\tconst C_ACCENT  = '#2d6a35';\n\tconst C_LINE    = '#EEEEEE';\n\n\tpublic static function logo_url() {\n\t\t$u = wp_get_attachment_image_url( self::LOGO_ID, 'full' );\n\t\treturn $u ? $u : '';\n\t}\n\n\t/**\n\t * Laisko pradzia: doctype, head, fonas, kortele, logotipas, antraste.\n\t */\n\tpublic static function open( $subject, $preheader = '' ) {\n\t\t$logo = self::logo_url();\n\t\tob_start();\n\t\t?><!DOCTYPE html>\n<html lang=\"lt\"><head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<meta name=\"x-apple-disable-message-reformatting\">\n<title><?php echo esc_html( $subject ); ?></title>\n</head>\n<body style=\"margin:0;padding:0;background:<?php echo self::C_",
+  "header_use": "rl( self::LOGO_ID, 'full' );\n\t\treturn $u ? $u : '';\n\t}\n\n\t/**\n\t * Laisko pradzia: doctype, head, fonas, kortele, logotipas, antraste.\n\t */\n\tpublic static function open( $subject, $preheader = '' ) {\n\t\t$logo = self::logo_url();\n\t\tob_start();\n\t\t?><!DOCTYPE html>\n<html lang=\"lt\"><head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<meta name=\"x-apple-disable-message-reformatting\">\n<title><?php echo esc_html( $subject ); ?></title>\n</head>\n<body style=\"margin:0;padding:0;background:<?php echo self::C_BG; ?>;font-family:Arial,Helvetica,sans-serif;color:<?php echo self::C_TEXT; ?>;-webkit-text-size-adjust:100%;\">\n<?php if ( $preheader ) : ?>\n<div style=\"display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;\"><?php echo esc_html( $preheader ); ?></div>\n<?php endif; ?>\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background:<?php echo self::C_BG; ?>;padding:24px 12px;\">\n<tr><td align=\"center\">\n<table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"max-width:600px;width:100%;background:<?php echo self::C_CARD; ?>;border-radius:12px;padding:32px 28px;\">\n<?php ",
+  "att": {
+   "308": {
+    "exists": true,
+    "type": "attachment",
+    "mime": "image/jpeg",
+    "title": "logo",
+    "url": "https://dev.avesa.lt/wp-content/uploads/2026/05/logo.jpg",
+    "file": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/2026/05/logo.jpg",
+    "file_exists": true,
+    "meta": {
+     "width": 272,
+     "height": 110,
+     "file": "2026/05/logo.jpg"
+    }
+   },
+   "3257": {
+    "exists": true,
+    "type": "attachment",
+    "mime": "image/jpeg",
+    "title": "Pilno logotipo spalvota versija-100",
+    "url": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+    "file": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+    "file_exists": true,
+    "meta": {
+     "width": 1000,
+     "height": 1001,
+     "file": "2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg"
+    }
+   }
+  },
+  "wc_hdr": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+  "wc_hdr_exists": true,
+  "logo_att": [
+   "34561:upl_logo-mark-v2:https://dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mark-v2.png",
+   "3257:Pilno logotipo spalvota versija-100:https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+   "308:logo:https://dev.avesa.lt/wp-content/uploads/2026/05/logo.jpg",
+   "303:Pilno logotipo spalvota versija-100:https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-1.jpg",
+   "273:Pilno logotipo spalvota versija-100:https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100.jpg"
+  ]
+ }
+}
