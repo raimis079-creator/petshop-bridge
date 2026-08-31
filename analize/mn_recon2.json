@@ -1,0 +1,6 @@
+{
+ "v": "dep-164438",
+ "kurimas": 200,
+ "sid": 4326,
+ "zalias_R2": "<br />\n<b>Warning</b>:  file_get_contents(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-langai.php): Failed to open stream: No such file or directory in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>8</b><br />\n{\"petshop-klientai.php\":[],\"petshop-naujienlaiskiai-admin.php\":[\"Petshop_Kampaniju_Langas::dry\",\"Petshop_Kampaniju_Langas::banga\",\"Petshop_Kampaniju_Langas::busena\",\"Petshop_Kampaniju_Langas::nl_data\",\"Petshop_Kampaniju_Langas::segmentai\"],\"kamp_metodai\":[\"job_key\",\"segmentai\",\"gaveju_sarasas\",\"nl_data\",\"dry\",\"banga\",\"busena\"],\"kamp_hdr\":\"Plugin Name: Petshop Kampaniju Langas v1.1\\n * Description: Founding \\/ legacy \\/ naujienlaiskiu bangu paleidimas be rankinio SQL. v1.1: +newsletter srautas (payload.newsletter_id privalomas, job_key su nl{id}). Enqueue per Petshop_Email_Dispatch, idempotencija per job_key, STOP\\/GO po kiekvienos bangos.\",\"langai_menu\":[],\"langai_tabs\":[]}"
+}
