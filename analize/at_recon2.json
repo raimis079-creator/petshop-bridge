@@ -1,0 +1,57 @@
+{
+ "v": "dep-165212",
+ "kurimas": 200,
+ "sid": 4329,
+ "R2": {
+  "wp-content/mu-plugins/petshop-ataskaita-atsargos.php": {
+   "size": 18875,
+   "ver": "1.0",
+   "menu": [
+    " self::TEVAS, 'Atsargos ir pirkimas', 'Atsargos ir pirkimas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ]
+  },
+  "wp-content/mu-plugins/petshop-ataskaita-klientai.php": {
+   "size": 27855,
+   "ver": "1.0.1",
+   "menu": [
+    " self::TEVAS, 'Klientų analizė', 'Klientų analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ]
+  },
+  "wp-content/mu-plugins/petshop-ataskaita-prekes.php": {
+   "size": 16600,
+   "ver": "1.0",
+   "menu": [
+    " self::TEVAS, 'Prekių analizė', 'Prekių analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ]
+  },
+  "wp-content/mu-plugins/petshop-paruostu-ataskaita.php": {
+   "size": 29816,
+   "ver": "1.0",
+   "menu": [
+    " self::PARENT, 'Rinkiniai', 'Rinkiniai', self::CAP, self::SLUG, array( __CLASS__, 'render' ) )"
+   ]
+  },
+  "wp-content/mu-plugins/petshop-pet-kontraktas.php": {
+   "size": 23204,
+   "ver": "1.2",
+   "menu": [
+    " 'petshop-reports', 'Brand zodynas', 'Brand zodynas', 'manage_woocommerce', self::ADMIN_SLUG, array( __CLASS__, 'admin_render' ) )"
+   ]
+  },
+  "wp-content/mu-plugins/petshop-rinkiniu-ataskaita.php": {
+   "size": 41305,
+   "ver": "2.0",
+   "menu": [
+    " self::PARENT, 'Surenkami rinkiniai', 'Surenkami rinkiniai', self::CAP, self::SLUG, array( __CLASS__, 'render' ) )"
+   ]
+  },
+  "wp-content/plugins/petshop-core/includes/class-admin-reports.php": {
+   "size": 4860,
+   "ver": null,
+   "menu": [
+    " self::PARENT, ... ), kad viskas butu * vienoje vietoje, o ne issibarste po WP meniu. */ public static function menu() { add_menu_page( 'Petshop ataskaitos', 'Petshop ataskaitos', self::CAP, self::PARENT, ar",
+    " self::PARENT, 'Ataskaitos', 'Visos ataskaitos', self::CAP, self::PARENT, array( __CLASS__, 'render' ) )"
+   ]
+  }
+ }
+}
