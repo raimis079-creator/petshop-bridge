@@ -1,0 +1,150 @@
+{
+ "v": "dep-161414",
+ "kurimas": 200,
+ "sid": 4319,
+ "R": {
+  "menu": {
+   "petshop-kampaniju-langas.php": [],
+   "petshop-prenumeratos-langas.php": [
+    "self::tevas(), 'Prenumeratos', 'Prenumeratos', self::CAP, self::PSL, array(__CLASS__, 'ekranas'))"
+   ],
+   "petshop-rezultatai.php": [
+    " 'petshop-langai', 'Laiškų rezultatai', 'Laiškų rezultatai', 'manage_woocommerce', 'petshop-rezultatai', array(__CLASS__, 'puslapis') )"
+   ],
+   "petshop-prenumeratu-prognoze.php": [
+    "$parent, 'Prenumeratu prognoze', 'Prognozes', 'manage_woocommerce', 'ps-prognoze', array(__CLASS__, 'puslapis'))"
+   ]
+  },
+  "kamp_params": [],
+  "kamp_segmentai": "function segmentai() {\n\t\tglobal $wpdb;\n\t\t$out = array();\n\t\t$out['legacy'] = (int) $wpdb->get_var(\n\t\t\t\"SELECT COUNT(DISTINCT u.user_email) FROM {$wpdb->users} u\n\t\t\t INNER JOIN {$wpdb->usermeta} m ON m.user_id=u.ID\n\t\t\t WHERE m.meta_key='_ps_source' AND m.meta_value='legacy_customer'\");\n\t\t$out['klientai'] = (int) $wpdb->get_var(\n\t\t\t\"SELECT COUNT(DISTINCT u.user_email) FROM {$wpdb->users} u\n\t\t\t INNER JOIN {$wpdb->usermeta} m ON m.user_id=u.ID\n\t\t\t WHERE m.meta_key='{$wpdb->prefix}capabilities' AND m.meta_value LIKE '%customer%'\");\n\t\t$ct = $wpdb->prefix . 'ps_consent_log';\n\t\t$out['consent_log'] = ($wpdb->get_var(\"SHOW TABLES LIKE '$ct'\") === $ct)\n\t\t\t? (int) $wpdb->get_var(\"SELECT COUNT(DISTINCT email) FROM `$ct` WHERE email <> ''\") : 0;\n\t\t$u = wp_upload_dir();\n\t\t$d = trailingslashit($u['basedir']) . self::KATALOGAS;\n\t\t$out['csv_failai'] = is_dir($d) ? array_values(array_diff(scandir($d), array('.', '..'))) : array();\n\t\treturn $out;\n\t}\n\n\t/**\n\t * $saltinis: 'legacy' | 'klientai' | 'consent_log' | 'csv:failas.csv'\n\t * Grazina masyva el. pastu (mazosiomis, unikalius).\n\t */\n\tpublic static function gaveju_sarasas($saltinis) {\n\t\tglobal $wpdb;\n\t\t$el = array();\n\n\t\tif (strpos($saltinis, 'csv:') === 0) {\n\t\t\t$u = wp_upload_dir();\n\t\t\t$p = trailingslashit($u['basedir']) . self::KATALOGAS . '/' . basename(substr($saltinis, 4));\n\t\t\tif (!file_exists($p)) return new WP_Error('nera_failo', 'Nerastas: ' . $p);\n\t\t\t$fh = fopen($p, 'r');\n\t\t\t$pirma = fgets($fh);\n\t\t\t$sk = (substr_count($pirma, ';') > substr_count($pirma, ',')) ",
+  "prognoze_parent": " prenumeratu poreikio:\\n\\n\".implode(\"\\n\",$eil).\n      \"\\n\\nPrognoze: \".admin_url('admin.php?page=ps-prognoze'));\n  }\n\n  /* ---------- admin ---------- */\n\n  public static function menu() {\n    global $submenu;\n    $parent = null;\n    if (is_array($submenu)) foreach ($submenu as $ps => $items) {\n      foreach ((array)$items as $it) if (isset($it[2]) && $it[2] === 'petshop-prenumeratos') { $parent = $ps; break 2; }\n    }\n    if (!$parent) return;\n    add_submenu_page($parent, 'Prenumeratu prognoze', 'Prognozes', 'manage_woocommerce', 'ps-prognoze', array(__CLASS__, 'puslapis'));\n  }\n\n  public static function puslapis() {\n    echo '<div class=\"wrap\"><h1>Prenumeratu prognoze — likuciu poreikis '.self::HORIZONTAS.' d.</h1>';\n    $planai = self::aktyvus_planai();\n    if (!$planai) {\n      echo '<div c",
+  "prognoze_style": null,
+  "pet_tables": [
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore"
+  ],
+  "pet_cpt": [],
+  "hpos": true,
+  "cat_animals": [
+   {
+    "term_id": "16",
+    "name": "Kita",
+    "slug": "uncategorized",
+    "parent": "0"
+   },
+   {
+    "term_id": "70",
+    "name": "ŠUNIMS",
+    "slug": "sunims",
+    "parent": "0"
+   },
+   {
+    "term_id": "77",
+    "name": "KATĖMS",
+    "slug": "katems",
+    "parent": "0"
+   },
+   {
+    "term_id": "80",
+    "name": "Miamor katėms",
+    "slug": "miamor-katems",
+    "parent": "0"
+   },
+   {
+    "term_id": "83",
+    "name": "Super Premium šunų maistas",
+    "slug": "super-premium-sunu-maistas",
+    "parent": "0"
+   },
+   {
+    "term_id": "84",
+    "name": "Kitos prekes Žalios Bangos",
+    "slug": "kitos-prekes-zalios-bangos",
+    "parent": "0"
+   },
+   {
+    "term_id": "85",
+    "name": "Hipoalerginis maistas šunims",
+    "slug": "hipoalerginis-maistas-sunims",
+    "parent": "0"
+   },
+   {
+    "term_id": "86",
+    "name": "Animonda konservai šunims",
+    "slug": "animonda-konservai-sunims",
+    "parent": "0"
+   },
+   {
+    "term_id": "87",
+    "name": "GRAUŽIKAMS",
+    "slug": "grauzikams",
+    "parent": "0"
+   },
+   {
+    "term_id": "89",
+    "name": "PAUKŠČIAMS",
+    "slug": "pauksciams",
+    "parent": "0"
+   },
+   {
+    "term_id": "91",
+    "name": "DAUGIAU=PIGIAU",
+    "slug": "daugiau-pigiau",
+    "parent": "0"
+   },
+   {
+    "term_id": "93",
+    "name": "ŽUVIMS",
+    "slug": "zuvims",
+    "parent": "0"
+   },
+   {
+    "term_id": "119",
+    "name": "DOVANOS",
+    "slug": "dovanos",
+    "parent": "0"
+   },
+   {
+    "term_id": "120",
+    "name": "Ypatingi pasiūlymai",
+    "slug": "ypatingi-pasiulymai",
+    "parent": "0"
+   },
+   {
+    "term_id": "131",
+    "name": "kita",
+    "slug": "kita",
+    "parent": "0"
+   },
+   {
+    "term_id": "679",
+    "name": "RINKINIAI",
+    "slug": "rinkiniai",
+    "parent": "0"
+   },
+   {
+    "term_id": "680",
+    "name": "SPRENDIMAI",
+    "slug": "sprendimai",
+    "parent": "0"
+   },
+   {
+    "term_id": "681",
+    "name": "PASIŪLYMAI",
+    "slug": "pasiulymai",
+    "parent": "0"
+   }
+  ],
+  "admin_uid1": "bdz487"
+ }
+}
