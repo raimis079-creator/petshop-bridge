@@ -1,0 +1,35 @@
+{
+ "v": "dep-162257",
+ "kurimas": 200,
+ "sid": 4322,
+ "CK": {
+  "li_name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "li": "bdz487|1788197065|v3hE71U6V9zVb5I9NSdfgS3jt6h5qcGr8XjjZR6kF9w|3f4d6abc56d50bedcd2242f4cb5e6af79febd45fd65e9fd043c4bb06f40d42b9",
+  "auth_name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+  "auth": "bdz487|1788197065|a0N6AYP7SNUTioRN5Z1KJ07MoYe5XwTOJHmcWX2Cp5h|e20c383895f5bab70bf67f776450d37be10adc972f59ccb9f2c99d46e45806a8",
+  "uid_pvz": 1540
+ },
+ "shots": {
+  "klientai_sarasas": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=petshop-klientai",
+   "h1": "Klientai suvestinė 2026-08-31 19:22\n\t\t\tPerskaičiuoti dabar",
+   "put": 201,
+   "bytes": 908002
+  },
+  "klientai_filtras": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=petshop-klientai&segmentas=refill_laikas",
+   "h1": "Klientai suvestinė 2026-08-31 19:22\n\t\t\tPerskaičiuoti dabar",
+   "put": 201,
+   "bytes": 1073397
+  },
+  "klientai_kortele": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=petshop-klientai&uid=1540",
+   "h1": "",
+   "put": 201,
+   "bytes": 1154816
+  }
+ }
+}
