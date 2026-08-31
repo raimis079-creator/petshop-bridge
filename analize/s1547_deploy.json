@@ -1,0 +1,79 @@
+{
+ "v": "dep-192532",
+ "kurimas": 200,
+ "sid": 4336,
+ "data": {
+  "adapteris.txt": {
+   "id": 35299,
+   "status": 201
+  },
+  "dim.txt": {
+   "id": 35300,
+   "status": 201
+  },
+  "kl.txt": {
+   "id": 35301,
+   "status": 201
+  },
+  "pr.txt": {
+   "id": 35302,
+   "status": 201
+  },
+  "at.txt": {
+   "id": 35303,
+   "status": 201
+  }
+ },
+ "DIEGTI": {
+  "v": "S1547dp",
+  "faze": "DIEGTI",
+  "irasyta": {
+   "petshop-istorijos-adapteris.php": {
+    "dydis": 16504,
+    "md5": "e7f0678503c4a02a97940d05b7c02c08"
+   },
+   "petshop-dim-klientai.php": {
+    "dydis": 14968,
+    "md5": "831d9d465aa63aaf41d42c96c36c7436"
+   },
+   "petshop-ataskaita-klientai.php": {
+    "dydis": 29929,
+    "md5": "6b7f4f157841b67e47b372998ed55972"
+   },
+   "petshop-ataskaita-prekes.php": {
+    "dydis": 17810,
+    "md5": "79fcbc058a627bc446d23659a498a7dd"
+   },
+   "petshop-ataskaita-atsargos.php": {
+    "dydis": 19357,
+    "md5": "1dab64250de46dfeb2830decf9b371cb"
+   }
+  }
+ },
+ "DRY": {
+  "v": "S1547dp",
+  "faze": "DRY",
+  "klases": {
+   "adapteris": "1.0",
+   "dim": "1.1",
+   "kl": "1.1",
+   "pr": "1.1",
+   "at": "1.1"
+  },
+  "dry": {
+   "dry": true,
+   "versija": "1.0",
+   "laukiama": {
+    "uzsakymai": 9528,
+    "eilutes": 23174,
+    "suma_ct": 39315587,
+    "klientu": 5431
+   },
+   "fakt_create": "CREATE TABLE `gaj6_ps_fakt_uzsakymai` (\n  `uzsakymas_id` bigint(20) unsigned NOT NULL,\n  `sukurta_at` datetime DEFAULT NULL,\n  `apmoketa_at` datetime DEFAULT NULL,\n  `statusas_galutinis` varchar(32) NOT NULL DEFAULT '',\n  `statusas_at` datetime DEFAULT NULL,\n  `klientas_id` bigint(20) unsigned NOT NULL DEFAULT 0,\n  `klientas_email_hash` char(64) NOT NULL DEFAULT '',\n  `klientas_naujas` tinyint(1) NOT NULL DEFAULT 1,\n  `klientas_uzsakymo_nr` int(11) NOT NULL DEFAULT 1,\n  `dienos_nuo_ankstesnio` int(11) DEFAULT NULL,\n  `prekiu_suma_ct` bigint(20) NOT NULL DEFAULT 0,\n  `nuolaidu_ct` bigint(20) NOT NULL DEFAULT 0,\n  `kuponu_kodai` varchar(255) NOT NULL DEFAULT '',\n  `tasku_panaudota_ct` bigint(20) NOT NULL DEFAULT 0,\n  `tasku_sukaupta_ct` bigint(20) NOT NULL DEFAULT 0,\n  `pristatymas_paimta_ct` bigint(20) NOT NULL DEFAULT 0,\n  `pristatymas_savikaina_ct` bigint(20) DEFAULT NULL,\n  `small_cart_fee_ct` bigint(20) NOT NULL DEFAULT 0,\n  `pvm_ct` bigint(20) NOT NULL DEFAULT 0,\n  `viso_ct` bigint(20) NOT NULL DEFAULT 0,\n  `mokejimo_budas` varchar(48) NOT NULL DEFAULT '',\n  `mokejimo_mokestis_ct` bigint(20) NOT NULL DEFAULT 0,\n  `pakuotes_savikaina_ct` bigint(20) NOT NULL DEFAULT 0,\n  `savikai",
+   "brand_tax": [
+    "pa_brendas",
+    "product_brand"
+   ]
+  }
+ }
+}
