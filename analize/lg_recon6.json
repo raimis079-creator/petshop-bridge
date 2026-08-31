@@ -1,0 +1,32 @@
+{
+ "v": "dep-074949",
+ "kurimas": 200,
+ "sid": 4303,
+ "V": {
+  "tpl": [
+   "back-in-stock.php 1686 layout=Y",
+   "browse-abandoned.php 1877 layout=Y",
+   "cart-abandoned-1.php 3328 layout=Y",
+   "cart-abandoned-2.php 2505 layout=Y",
+   "consent-changed.php 3630 layout=N",
+   "dunning-1.php 3238 layout=N",
+   "founding.php 3555 layout=N",
+   "legacy-l1.php 1641 layout=Y",
+   "order-paid.php 2333 layout=N",
+   "order-shipped.php 1465 layout=Y",
+   "pet-reminder.php 2373 layout=Y",
+   "post-purchase-14d.php 1280 layout=Y",
+   "post-purchase-2d.php 3940 layout=Y",
+   "post-purchase-7d.php 2077 layout=Y",
+   "refill.php 2870 layout=Y",
+   "shipment-returned.php 1967 layout=Y",
+   "subscription-t5.php 3871 layout=Y",
+   "win-back-120.php 1309 layout=Y",
+   "win-back-60.php 1134 layout=Y",
+   "win-back-90.php 1069 layout=Y"
+  ],
+  "example_name": "win-back-90.php",
+  "example": "<?php\n/**\n * Sablonas: win_back_90 — antras gryzimo laiskas (vertes kampas: anketa + skaiciuokle).\n * MARKETING. BE nuolaidu. Kintamieji: $payload, $flow_class, $recipient.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n$subject = 'Maisto rekomendacijos pagal jūsų augintinį';\n\n$body = Petshop_Email_Layout::p(\n\t'Trumpa augintinio anketa padės atrinkti jam tinkamesnį maistą ir palyginti variantus pagal kainą eurais per dieną.'\n);\n$body .= Petshop_Email_Layout::button( home_url( '/augintinis/' ), 'Užpildyti anketą' );\n$body .= Petshop_Email_Layout::secondary( array(\n\t'Apsilankyti parduotuvėje' => home_url( '/parduotuve/' ),\n) );\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Kartu matysite ir kainą eurais per dieną.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes esate petshop.lt klientas ir sutikote gauti mūsų naujienas.',\n) );\n",
+  "dispatch_include": "\treturn array(\n\t\t\t'id' => $id, 'flow' => $flow, 'action' => $ok ? 'SENT' : 'FAILED',\n\t\t\t'msg_id' => isset( $res['esp_message_id'] ) ? $res['esp_message_id'] : '',\n\t\t\t'error'  => $ok ? '' : ( isset( $res['error'] ) ? $res['error'] : '' ),\n\t\t);\n\t}\n\n\t/* ---------------------------------------------------------------- */\n\t/* Sablonai                                                         */\n\t/* ---------------------------------------------------------------- */\n\n\t/**\n\t * Renderina sablona is repo (templates/emails/{slug}.php).\n\t * Sablonas gauna $payload ir turi nustatyti $subject bei grazinti HTML.\n\t */\n\tpublic static function render( $flow, $payload, $row = array() ) {\n\t\t$flows = self::flows();\n\t\tif ( ! isset( $flows[ $flow ] ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\t\t$slug = $flows[ $flow ]['template'];\n\t\t$file = PETSHOP_CORE_DIR . 'templates/emails/' . $slug . '.php';\n\n\t\t$custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );\n\t\tif ( ! file_exists( $custom ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\n\t\t$subject    = '';\n\t\t$flow_class = isset( $row['flow_class'] ) ? $row['flow_class'] : 'service';\n\t\t$recipient  = isset( $row['recipient_email"
+ }
+}
