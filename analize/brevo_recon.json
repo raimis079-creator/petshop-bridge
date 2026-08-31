@@ -1,0 +1,55 @@
+{
+ "v": "dep-071156",
+ "kurimas": 200,
+ "sid": 4286,
+ "RECON": {
+  "v": "BRV1",
+  "faze": "RECON",
+  "posts": [
+   {
+    "ID": 34525,
+    "type": "page",
+    "status": "publish",
+    "title": "Privatumo politika",
+    "slug": "privatumo-politika",
+    "url": "https://dev.avesa.lt/privatumo-politika/",
+    "n_brevo": 1,
+    "n_sib": 1,
+    "ctx": [
+     "l – reklamos efektyvumui matuoti), gavus sutikimą; El. pašto rinkodaros paslaugos – „Brevo\" (Sendinblue) (naujienlaiškių siuntimui), gavus sutikimą; IT ir prieglobos (hostingo) paslaug",
+     "lamos efektyvumui matuoti), gavus sutikimą; El. pašto rinkodaros paslaugos – „Brevo\" (Sendinblue) (naujienlaiškių siuntimui), gavus sutikimą; IT ir prieglobos (hostingo) paslaugų teikė"
+    ]
+   },
+   {
+    "ID": 34526,
+    "type": "page",
+    "status": "draft",
+    "title": "Slapukų naudojimas",
+    "slug": "slapuku-politika-old",
+    "url": "https://dev.avesa.lt/?page_id=34526",
+    "n_brevo": 1,
+    "n_sib": 0,
+    "ctx": [
+     "Paysera – mokėjimų apdorojimo metu, saugiam atsiskaitymui užtikrinti; Brevo – el. pašto rinkodaros funkcionalumui (jei naudojama), tik su sutikimu. Trečiųjų šal"
+    ]
+   }
+  ],
+  "posts_n": 2,
+  "revisions_n": 4,
+  "postmeta": [],
+  "options": [
+   {
+    "name": "wp_mail_smtp",
+    "len": 2743,
+    "ctx": [
+     "is_shared_domain\";b:0;s:13:\"sender_domain\";s:0:\"\";}s:7:\"smtpcom\";a:2:{s:7:\"api_key\";s:0:\"\";s:7:\"channel\";s:0:\"\";}s:10:\"sendinblue\";a:2:{s:7:\"api_key\";s:0:\"\";s:6:\"domain\";s:0:\"\";}s:10:\"mailersend\";a:2:{s:7:\"api_key\";s:0:\"\";s:12:\"has_pro_plan"
+    ]
+   }
+  ],
+  "options_n": 1,
+  "files": [
+   "wp-content/plugins/petshop-core/includes/interface-message-provider.php (1/0)"
+  ],
+  "sender_posts": []
+ }
+}
