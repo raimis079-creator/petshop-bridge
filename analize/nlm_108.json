@@ -1,0 +1,80 @@
+{
+ "v": "dep-073759",
+ "kurimas": 200,
+ "sid": 4297,
+ "J": {
+  "v": "NLM2",
+  "now_utc": "2026-08-31 07:39:07",
+  "pries": {
+   "id": "108",
+   "status": "sent",
+   "provider": "sender",
+   "provider_message_id": "azv2GY-.eE9p2l-AMYvBNl-q2RWvmPvVGvr-4AOzIq",
+   "attempts": "1",
+   "last_error": null,
+   "error_message": null,
+   "skip_reason": null,
+   "block_reason": null,
+   "sent_at": "2026-08-31 07:38:55",
+   "decision_at": "2026-08-31 07:38:55",
+   "next_attempt_at": null,
+   "subject": "Patvirtiname: sutikote gauti mūsų naujienas"
+  },
+  "cron_next": "2026-08-31 07:43:39",
+  "suppression_terra": [
+   {
+    "id": "7",
+    "channel": "marketing",
+    "reason": "unsubscribe",
+    "source": "sender_reconcile",
+    "suppressed_at": "2026-07-31 05:30:03",
+    "released_at": null
+   }
+  ],
+  "event_log": [
+   {
+    "id": "609",
+    "event_id": "consent_88cd268afc96a18ab26eb55d22bc98cc",
+    "event_name": "consent_changed",
+    "email": "terra@gyvunai.lt",
+    "payload_json": "{\"field\":\"marketing_consent\",\"from_value\":\"\",\"to_value\":\"true\",\"source\":\"footer_form\"}",
+    "emitted_at": "2026-08-31 07:34:05",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+   },
+   {
+    "id": "608",
+    "event_id": "cart_abandoned_c_5995676bcf91ad7a0856661b6b7e426d",
+    "event_name": "cart_abandoned",
+    "email": "",
+    "payload_json": "{\"cart_id\":\"c_5995676bcf91ad7a0856661b6b7e426d\",\"cart_total\":23,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":35098,\"variation_id\":0,\"quantity\":1,\"name\":\"20 vnt. rudų jaučio ausų\",\"price\":23}],\"last_activity_at\":\"2026-08-30T20:05:07+00:00\"}",
+    "emitted_at": "2026-08-30 22:15:07",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "skipped: dev_allowlist"
+   },
+   {
+    "id": "607",
+    "event_id": "cart_abandoned_c_0a7157d7aee63cdba3672a471e0c2cbb",
+    "event_name": "cart_abandoned",
+    "email": "",
+    "payload_json": "{\"cart_id\":\"c_0a7157d7aee63cdba3672a471e0c2cbb\",\"cart_total\":23,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":35098,\"variation_id\":0,\"quantity\":1,\"name\":\"20 vnt. rudų jaučio ausų\",\"price\":23}],\"last_activity_at\":\"2026-08-30T20:00:37+00:00\"}",
+    "emitted_at": "2026-08-30 22:00:49",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "skipped: dev_allowlist"
+   }
+  ],
+  "sargas": []
+ }
+}
