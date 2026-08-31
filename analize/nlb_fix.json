@@ -1,0 +1,23 @@
+{
+ "v": "dep-073110",
+ "kurimas": 200,
+ "sid": 4295,
+ "FIX": {
+  "v": "NLB4",
+  "faze": "FIX",
+  "md5_live": "44607298c50b99998deeb8e0d2c8b987",
+  "backup": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/ps-backups/class-newsletter-footer.php.bak_S1535",
+  "md5_new": "b51a7ce0e73c8a76a83d6b6e6536351a",
+  "md5_expected": "b51a7ce0e73c8a76a83d6b6e6536351a"
+ },
+ "VER": {
+  "v": "NLB4",
+  "faze": "VER",
+  "md5": "b51a7ce0e73c8a76a83d6b6e6536351a",
+  "has_filter": true,
+  "queue_nl": true,
+  "src": "https://dev.avesa.lt/wp-content/plugins/petshop-core/assets/newsletter.js",
+  "localized": "var PS_NL = {\"rest\":\"https://dev.avesa.lt/wp-json/petshop/v1/newsletter-subscribe\",\"nonce\":\"48d4a18e28\"};",
+  "uri": "/?ps_nlb=VER"
+ }
+}
