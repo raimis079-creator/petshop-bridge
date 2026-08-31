@@ -1,0 +1,124 @@
+{
+ "v": "dep-192757",
+ "kurimas": 200,
+ "sid": 4337,
+ "data": {
+  "adapteris.txt": {
+   "id": 35304,
+   "status": 201
+  }
+ },
+ "FIX": {
+  "v": "S1547ap",
+  "faze": "FIX",
+  "irasyta": "bcbe2654d9dc57525a08e592c95ad1c7"
+ },
+ "APPLY": {
+  "v": "S1547ap",
+  "faze": "APPLY",
+  "apply": {
+   "dry": false,
+   "versija": "1.0",
+   "laukiama": {
+    "uzsakymai": 9528,
+    "eilutes": 23174,
+    "suma_ct": 39315587,
+    "klientu": 5431
+   },
+   "uzs_irasyta": 9528,
+   "eil_irasyta": 23174,
+   "praturtinta": {
+    "prekiu": 1415,
+    "kateg": 1366,
+    "brand_tax": "product_brand"
+   },
+   "rodiniai": "atnaujinti",
+   "ver": {
+    "uzs": 9528,
+    "eil": 23174,
+    "viso_ct": 39315587,
+    "prekiu_ct": 31705635,
+    "klientu": 5431,
+    "nauji": 5431,
+    "su_paskyra": 9528,
+    "su_brendu_eil": 23174,
+    "su_gyvunu_eil": 22362,
+    "nesusieta_eil": 569
+   }
+  },
+  "view_test": {
+   "vu": 9528,
+   "ve": 23174,
+   "metai": [
+    {
+     "m": "2023",
+     "n": "172",
+     "paj": "5019"
+    },
+    {
+     "m": "2024",
+     "n": "3485",
+     "paj": "115521"
+    },
+    {
+     "m": "2025",
+     "n": "3431",
+     "paj": "116167"
+    },
+    {
+     "m": "2026",
+     "n": "2440",
+     "paj": "80350"
+    }
+   ]
+  }
+ },
+ "DIM": {
+  "v": "S1547ap",
+  "faze": "DIM",
+  "dim": {
+   "dry": false,
+   "klientu": 5431,
+   "irasyta": 5431,
+   "rfm": "skaiciuota",
+   "b1_suvienodinta": 5431
+  },
+  "kontrole": {
+   "klientu": 5431,
+   "segmentai": [
+    {
+     "segmentas": "aktyvus",
+     "n": "276"
+    },
+    {
+     "segmentas": "pirmas",
+     "n": "725"
+    },
+    {
+     "segmentas": "reaktyvacija",
+     "n": "146"
+    },
+    {
+     "segmentas": "refill_arteja",
+     "n": "34"
+    },
+    {
+     "segmentas": "refill_laikas",
+     "n": "98"
+    },
+    {
+     "segmentas": "win_back",
+     "n": "4152"
+    }
+   ],
+   "kohortu": 34,
+   "sutikrinimas": {
+    "faktu_uzsakymu": 11,
+    "dim_uzsakymu": 9528,
+    "faktu_pajamos": 21369,
+    "dim_pajamos": 31705635
+   }
+  },
+  "rizikoje_n": 545
+ }
+}
