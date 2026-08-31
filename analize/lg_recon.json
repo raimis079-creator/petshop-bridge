@@ -1,0 +1,78 @@
+{
+ "v": "dep-074144",
+ "kurimas": 200,
+ "sid": 4298,
+ "R": {
+  "v": "LG1",
+  "logo_lines": {
+   "wp-content/mu-plugins/petshop-laiskai-importas.php": [
+    "\t\t$blogos = array();",
+    "\t\t\t$blogos[] = $s['raktas'];",
+    "rn array( 'sutampa' => true, 'saku' => count( $isk['sakos'] ), 'ispejimai' => $blogos );"
+   ],
+   "wp-content/mu-plugins/petshop-naujienlaiskiai.php": [
+    "          . ($img ? '<a href=\"' . esc_url($url) . '\"><img src=\"' . esc_url($img) . '\" width=\"120\" alt=\"' . esc_attr($pav) . '\" style=\"display:block;border-radius:6px;border:0;max-width:120px;height:auto;\" /></a>' : '')"
+   ],
+   "wp-content/mu-plugins/petshop-naujienlaiskiai-admin.php": [
+    "                  d.innerHTML=(p.img?'<img src=\"'+esc(p.img)+'\" style=\"width:26px;height:26px;vertical-align:middle;margin-right:6px\" />':'')+esc(p.pav);"
+   ],
+   "wp-content/plugins/petshop-core/templates/emails/subscription-t5.php": [
+    "\t\t'Jei nespėsite atsakyti, nieko blogo neatsitiks — siuntos neruošime ir priminsime po savaitės.'"
+   ],
+   "wp-content/plugins/petshop-core/includes/class-email-layout.php": [
+    " * Viena vieta: header, logotipas, tipografija, CTA mygtukas, footeris,",
+    " * KODEL: be sito po 17 sablonu turetume 17 logotipo, footerio ir mygtuko",
+    " * Logotipas imamas per attachment ID, NE absoliutu URL — po domeno",
+    "\tconst LOGO_ID = 3257;",
+    "\tpublic static function logo_url() {",
+    "\t\t$u = wp_get_attachment_image_url( self::LOGO_ID, 'full' );",
+    "\t * Laisko pradzia: doctype, head, fonas, kortele, logotipas, antraste.",
+    "\t\t$logo = self::logo_url();"
+   ]
+  },
+  "consent_tpl": [
+   "wp-content/plugins/petshop-core/templates/emails/consent-changed.php"
+  ],
+  "archyvas_n": 7,
+  "archyvas_keys": [
+   "laikas",
+   "kam",
+   "tema",
+   "kont",
+   "priedai",
+   "html"
+  ],
+  "logo_opts": [
+   {
+    "option_name": "woocommerce_logout_endpoint",
+    "v": "atsijungti"
+   },
+   {
+    "option_name": "petshop_email_dispatch_db",
+    "v": "1.2.0"
+   },
+   {
+    "option_name": "petshop_email_suppression_db",
+    "v": "1.0.0"
+   },
+   {
+    "option_name": "ps_laisku_archyvas",
+    "v": "a:7:{i:0;a:6:{s:6:\"laikas\";s:19:\"2026-08-24 22:53:31\";s:3:\"kam\";s:16:\"terra@petshop.lt\";s:4:\"tema\";s:49:\"[PERSIŲSTI Prins Petfoods] užsakymas 2026-08-24\";s:4:\"kont\";s:68:\"Perdavimas tiekėjui: Prins Pe"
+   },
+   {
+    "option_name": "ps_laiskai_db_versija",
+    "v": "1.3"
+   }
+  ],
+  "theme_logo": {
+   "site_logo": 308,
+   "logo_position": "left",
+   "logo_max_width": "180",
+   "logo_padding": "0",
+   "logo_width": "168"
+  },
+  "custom_logo": null,
+  "site_icon": "",
+  "wc_email_header_image": "https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg"
+ }
+}
