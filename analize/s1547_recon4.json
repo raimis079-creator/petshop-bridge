@@ -1,0 +1,24 @@
+{
+ "v": "dep-191625",
+ "kurimas": 200,
+ "sid": 4335,
+ "GO": {
+  "v": "S1547r4",
+  "prekiu_suma_ct": [
+   "\t\t\t'prekiu_suma_ct'           => $prekiu_suma,   /* BRUTO, pries nuolaida */"
+  ],
+  "pvm_ct": [
+   "\t\t\t'pvm_ct'                   => $pvm_ct,",
+   "\t\t\t\t'pvm_ct'                  => $pvm_ct,"
+  ],
+  "viso_ct": [
+   "\t\t\t'viso_ct'                  => $viso,"
+  ],
+  "kaina_ct": [
+   "\t\t\t\t'kaina_ct'                => $kaina_ct,"
+  ],
+  "nuolaidu_ct": [
+   "\t\t\t'nuolaidu_ct'              => $nuolaidos,"
+  ]
+ }
+}
