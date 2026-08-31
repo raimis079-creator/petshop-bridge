@@ -2,56 +2,44 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const VER='S1547vis';
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTQ3IGNvb2tpZSAoYWRtaW4gc2VzaWphIFBsYXl3cmlnaHQpICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpewogIGlmKCFpc3NldCgkX0dFVFsncHNfY2snXSl8fCRfR0VUWydwc19jayddIT09J0dPJykgcmV0dXJuOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7CiAgJG89YXJyYXkoJ3YnPT4nUzE1NDdjaycpOwogIHRyeXsKICAgICR1cz1nZXRfdXNlcnMoYXJyYXkoJ3JvbGUnPT4nYWRtaW5pc3RyYXRvcicsJ251bWJlcic9PjEsJ29yZGVyYnknPT4nSUQnKSk7CiAgICBpZighJHVzKXsgJG9bJ2tsYWlkYSddPSduZXJhIGFkbWluJzsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7IH0KICAgICR1PSR1c1swXTsgJGV4cD10aW1lKCkrMzYwMDsKICAgICRtPVdQX1Nlc3Npb25fVG9rZW5zOjpnZXRfaW5zdGFuY2UoJHUtPklEKTsgJHRvaz0kbS0+Y3JlYXRlKCRleHApOwogICAgJG9bJ2Nvb2tpZXMnXT1hcnJheSgKICAgICAgYXJyYXkoJ25hbWUnPT5TRUNVUkVfQVVUSF9DT09LSUUsJ3ZhbHVlJz0+d3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoJHUtPklELCRleHAsJ3NlY3VyZV9hdXRoJywkdG9rKSwncGF0aCc9Picvd3AtYWRtaW4nKSwKICAgICAgYXJyYXkoJ25hbWUnPT5MT0dHRURfSU5fQ09PS0lFLCd2YWx1ZSc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCR1LT5JRCwkZXhwLCdsb2dnZWRfaW4nLCR0b2spLCdwYXRoJz0+Jy8nKSwKICAgICk7CiAgICAkb1sndXNlciddPSR1LT51c2VyX2xvZ2luOwogIH1jYXRjaChUaHJvd2FibGUgJGUpeyAkb1sna2xhaWRhJ109JGUtPmdldE1lc3NhZ2UoKTsgfQogIGVjaG8ganNvbl9lbmNvZGUoJG8pOyBleGl0Owp9KTsK';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTQ3IHByIGZpeCAoQW50a2FpbmlzIOKCrCBicsWra8WhbnlzKSAqLwphZGRfYWN0aW9uKCdpbml0JywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX3BmJ10pKSByZXR1cm47CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsKICAkbz1hcnJheSgndic9PidTMTU0N3BmJywnZmF6ZSc9PiRfR0VUWydwc19wZiddKTsKICB0cnl7CiAgICAka2VsaWFzID0gV1BNVV9QTFVHSU5fRElSLicvcGV0c2hvcC1hdGFza2FpdGEtcHJla2VzLnBocCc7CiAgICAkZ3l2YXMgPSBtZDVfZmlsZSgka2VsaWFzKTsKICAgIGlmKCRneXZhcyE9PSc3OWZjYmMwNThhNjI3YmM0NDZkMjM2NTlhNDk4YTdkZCcpeyAkb1snU1RPUCddPSdNRDUgbmVzdXRhbXBhOiAnLiRneXZhczsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7IH0KICAgICRhaWQgPSBpc3NldCgkX0dFVFsnZF9wcl90eHQnXSkgPyAoaW50KSRfR0VUWydkX3ByX3R4dCddIDogMDsKICAgIGlmKCEkYWlkKXsgJG9bJ1NUT1AnXT0nbmVyYSBkX3ByX3R4dCc7IGVjaG8ganNvbl9lbmNvZGUoJG8pOyBleGl0OyB9CiAgICAkZiA9IGdldF9hdHRhY2hlZF9maWxlKCRhaWQpOwogICAgJGtvZGFzID0gYmFzZTY0X2RlY29kZSh0cmltKGZpbGVfZ2V0X2NvbnRlbnRzKCRmKSkpOwogICAgaWYoc3RycG9zKCRrb2RhcywnVmVyc2lvbjogMS4xLjEnKT09PWZhbHNlKXsgJG9bJ1NUT1AnXT0nbmUgdjEuMS4xJzsgZWNobyBqc29uX2VuY29kZSgkbyk7IGV4aXQ7IH0KICAgICR0b2sgPSB0b2tlbl9nZXRfYWxsKCRrb2RhcywgVE9LRU5fUEFSU0UpOwogICAgJGJkaXIgPSBXUF9DT05URU5UX0RJUi4nL3VwbG9hZHMvcHMtYmFja3Vwcyc7CiAgICBpZighaXNfZGlyKCRiZGlyKSkgd3BfbWtkaXJfcCgkYmRpcik7CiAgICBjb3B5KCRrZWxpYXMsICRiZGlyLicvcGV0c2hvcC1hdGFza2FpdGEtcHJla2VzLnBocC5iYWtfUzE1NDdiJyk7CiAgICBmaWxlX3B1dF9jb250ZW50cygka2VsaWFzLCAka29kYXMpOwogICAgaWYoZnVuY3Rpb25fZXhpc3RzKCdvcGNhY2hlX2ludmFsaWRhdGUnKSkgb3BjYWNoZV9pbnZhbGlkYXRlKCRrZWxpYXMsIHRydWUpOwogICAgd3BfZGVsZXRlX2F0dGFjaG1lbnQoJGFpZCwgdHJ1ZSk7CiAgICAkb1snaXJhc3l0YSddPW1kNV9maWxlKCRrZWxpYXMpOyAkb1snZHlkaXMnXT1maWxlc2l6ZSgka2VsaWFzKTsKICB9Y2F0Y2goVGhyb3dhYmxlICRlKXsgJG9bJ2tsYWlkYSddPSRlLT5nZXRNZXNzYWdlKCk7IH0KICBlY2hvIGpzb25fZW5jb2RlKCRvKTsgZXhpdDsKfSk7Cg==';
+const VER='dep-194154';
+const GKEY='ps_pf';
+const PHASES=["GO"];
+const OUT='analize/s1547_prfix.json';
+const DATA=["duomenys/pr.txt"];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha;
   return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
+async function fx(u,o,k){ for(let i=0;i<5;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(8000);} } throw new Error('fx:'+k); }
 const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
+const UA={'Cache-Control':'no-cache','User-Agent':'Mozilla/5.0'};
 let sid=null;
 try{
-  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
-  const ct=await c.text(); try{sid=JSON.parse(ct).id; out.sid=sid;}catch(e){out.kurimo_atsakas=ct.slice(0,300);}
+  try{ const l=await fx(SNIP,{headers:A},'list'); const arr=JSON.parse(await l.text());
+  for(const s of (Array.isArray(arr)?arr:[]).filter(s=>s.active&&/^TEMP/.test(s.name||''))){
+    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); } }catch(e){ out.list_praleistas=String(e).slice(0,80); }
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
+    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'create');
+  const ct=await c.text(); out.kurimas=c.status; try{sid=JSON.parse(ct).id; out.sid=sid;}catch(e){out.kurimo_atsakas=ct.slice(0,400);}
+  let dq='';
+  if(DATA.length){ out.data={}; for(const p of DATA){ const name=p.split('/').pop();
+      const g=await fx('https://api.github.com/repos/'+REPO+'/contents/'+p,{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw+json'}},'gh_'+name);
+      const buf=Buffer.from(await g.arrayBuffer());
+      const m=await fx(WP+'/wp-json/wp/v2/media',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain','Content-Disposition':'attachment; filename="'+name+'"'},body:buf},'media_'+name);
+      const mt=await m.text(); try{ const j=JSON.parse(mt); out.data[name]={id:j.id,status:m.status}; dq+='&d_'+name.replace(/\W/g,'_')+'='+j.id; }catch(e){ out.data[name]={status:m.status,err:mt.slice(0,200)}; } } }
   await miegok(9000);
-  const d=await fetch(WP+'/?ps_ck=GO',{headers:{'User-Agent':'Mozilla/5.0'}});
-  const ck=JSON.parse(await d.text());
-  out.cookies_gauta=ck.cookies?ck.cookies.length:0;
-  const host=new URL(WP).hostname;
-  const puslapiai=[
-    ['s1547_kl_abu','/wp-admin/admin.php?page=ps-klientai&saltinis=abu'],
-    ['s1547_kl_wc','/wp-admin/admin.php?page=ps-klientai&saltinis=wc'],
-    ['s1547_pr_abu','/wp-admin/admin.php?page=ps-prekes&saltinis=abu'],
-    ['s1547_at_abu','/wp-admin/admin.php?page=ps-atsargos&saltinis=abu'],
-    ['s1547_kl_rizika','/wp-admin/admin.php?page=ps-klientai&tab=rizika&saltinis=abu'],
-  ];
-  let pw=null; try{ pw=await import('playwright'); }catch(e){ out.playwright='nera: '+String(e).slice(0,80); }
-  if(pw){
-    const br=await pw.chromium.launch(); const ctx=await br.newContext({viewport:{width:1440,height:1000},ignoreHTTPSErrors:true});
-    await ctx.addCookies(ck.cookies.map(c=>({name:c.name,value:c.value,domain:host,path:c.path||'/',secure:true})));
-    const pg=await ctx.newPage();
-    for(const [nm,u] of puslapiai){
-      try{
-        await pg.goto(WP+u,{waitUntil:'domcontentloaded',timeout:60000}); await pg.waitForTimeout(4000);
-        const png=await pg.screenshot({fullPage:false});
-        out[nm]=await put('screenshots/'+nm+'.png',png,VER+' '+nm);
-        const body=await pg.content();
-        out[nm+'_zymes']={saltinis:body.includes('Šaltinis:'),eshop:body.includes('eShoprent'),login:body.includes('wp-login')};
-      }catch(e){ out[nm+'_klaida']=String(e).slice(0,200); }
-    }
-    await br.close();
-  } else {
-    const CK=ck.cookies.map(c=>c.name+'='+c.value).join('; ');
-    for(const [nm,u] of puslapiai){
-      const r=await fetch(WP+u,{headers:{Cookie:CK,'User-Agent':'Mozilla/5.0'},redirect:'manual'});
-      const t=await r.text();
-      out[nm+'_zymes']={status:r.status,saltinis:t.includes('Šaltinis:'),eshop:t.includes('eShoprent'),b1:t.includes('B1 taisyklės'),nebep:t.includes('Nebeparduodamos'),pernai:t.includes('eShoprent pernai')};
-      await put('analize/'+nm+'.html',Buffer.from(t.slice(0,120000)),VER+' html '+nm);
-    }
+  for(let i=0;i<PHASES.length;i++){
+    const f=PHASES[i];
+    if(i>0) await miegok(5000);
+    const d=await fx(WP+'/?'+GKEY+'='+encodeURIComponent(f)+dq,{headers:UA},'faze_'+f);
+    const t=await d.text();
+    try{ out[f]=JSON.parse(t); }catch(e){ out['zalias_'+f]=t.slice(0,3000); }
   }
 }catch(e){ out.klaida=String(e).slice(0,500); }
 try{ if(sid) await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(e){}
-await put('analize/s1547_vis.json', Buffer.from(JSON.stringify(out,null,1)), VER);
+await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER);
 console.log('ok');
