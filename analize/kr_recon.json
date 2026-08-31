@@ -1,0 +1,118 @@
+{
+ "v": "dep-151601",
+ "kurimas": 200,
+ "sid": 4309,
+ "R": {
+  "render": "\tpublic static function render( $flow, $payload, $row = array() ) {\n\t\t$flows = self::flows();\n\t\tif ( ! isset( $flows[ $flow ] ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\t\t$slug = $flows[ $flow ]['template'];\n\t\t$file = PETSHOP_CORE_DIR . 'templates/emails/' . $slug . '.php';\n\n\t\t$custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );\n\t\tif ( ! file_exists( $custom ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\n\t\t$subject    = '';\n\t\t$flow_class = isset( $row['flow_class'] ) ? $row['flow_class'] : 'service';\n\t\t$recipient  = isset( $row['recipient_email'] ) ? $row['recipient_email'] : '';\n\t\tob_start();\n\t\tinclude $custom; // sablonas gali nustatyti $subject; mato $payload, $flow_class, $recipient\n\t\t$html = ob_get_clean();\n\n\t\tif ( $subject === '' && ! empty( $row['subject'] ) ) {\n\t\t\t$subject = $row['subject'];\n\t\t}\n\t\treturn array( 'subject' => $subject, 'html' => $html );\n\t}",
+  "tpl": {
+   "cart-abandoned-1.php": [
+    "Sveiki, pastebėjome, kad krepšelyje liko <strong>'\n\t\t. esc_html(",
+    "Sveiki, pastebėjome, kad krepšelyje liko prekių. '\n\t\t. 'Jis iš"
+   ],
+   "consent-changed.php": [
+    "$payload['name']",
+    "Sveiki, %s,', esc_html( $name ) ) : 'Sveiki,'"
+   ],
+   "dunning-1.php": [
+    "$payload['name']",
+    "Sveiki, %s,', esc_html( $name ) ) : 'Sveiki,'"
+   ],
+   "founding.php": [
+    "$payload['name']",
+    "Sveiki, %s,', esc_html( $name ) ) : 'Sveiki,'"
+   ],
+   "legacy-l1.php": [
+    "Sveiki! Petshop.lt atsinaujino.'\n)"
+   ],
+   "order-paid.php": [
+    "$payload['name']",
+    "Sveiki, %s,', esc_html( $name ) ) : 'Sveiki,'"
+   ],
+   "post-purchase-2d.php": [
+    "Sveiki, Raimondai\"), automatinis linksniavimas nepatikimas — ta "
+   ]
+  },
+  "emitters_name": {
+   "class-account-dashboard.php": [
+    "'Užsakyti dar kartą'"
+   ],
+   "class-cart-abandonment.php": [
+    "(string) $i['_name']"
+   ],
+   "class-cart-recovery.php": [
+    "''",
+    "$name"
+   ],
+   "class-event-emitters.php": [
+    "$item->get_name()"
+   ],
+   "class-newsletter.php": [
+    "''"
+   ],
+   "class-pet-dashboard.php": [
+    "$p->get_name()"
+   ],
+   "class-pet-products.php": [
+    "$p->get_name()"
+   ],
+   "class-pet-profile.php": [
+    "$post->post_title",
+    "$t->name );",
+    "$t->name"
+   ],
+   "class-post-purchase.php": [
+    "$it->get_name()"
+   ],
+   "petshop-atributai.php": [
+    "$naujas ) );"
+   ],
+   "petshop-av-tiekimas.php": [
+    "$n['shopup_venipak_shipping_field_sendername'] ?? ''"
+   ],
+   "petshop-gavimas.php": [
+    "$tax"
+   ],
+   "petshop-katalogas.php": [
+    "$tax"
+   ],
+   "petshop-laiskai-importas.php": [
+    "'@@preke1@@'",
+    "'@@preke2@@'"
+   ],
+   "petshop-laiskai.php": [
+    "'Josera Help Sensitive 12",
+    "'CHURU vištienos skanėstas 4 vnt.'",
+    "'Exclusion Hydrolyzed 12 kg'",
+    "'Farmina N&D Ocean 2"
+   ],
+   "petshop-m8-food.php": [
+    "$p->get_name()"
+   ],
+   "petshop-parseris.php": [
+    "$tax"
+   ],
+   "petshop-payment-failed.php": [
+    "trim( $order->get_billing_first_name() )"
+   ],
+   "petshop-perziuru-priminimas.php": [
+    "$pr->get_name()"
+   ],
+   "petshop-pet-kontraktas.php": [
+    "..]]. */",
+    "$t->name );",
+    "$t->name ); }"
+   ],
+   "petshop-prenumerata.php": [
+    "$pp ? $pp->get_name() : ('#' . $it['product_id'])"
+   ],
+   "petshop-rec-variklis.php": [
+    "$pr->get_name()"
+   ],
+   "petshop-schema.php": [
+    "__('Pradžia'",
+    "self::tekstas($t->name)",
+    "self::tekstas(get_the_title($id))"
+   ]
+  }
+ }
+}
