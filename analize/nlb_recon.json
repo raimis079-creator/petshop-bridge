@@ -1,0 +1,252 @@
+{
+ "v": "dep-072536",
+ "kurimas": 200,
+ "sid": 4292,
+ "R": {
+  "v": "NLB1",
+  "hits": {
+   "files": [
+    "wp-content/mu-plugins/petshop-atsargu-laukimas.php [jusu@pastas.lt]",
+    "wp-content/plugins/petshop-core/includes/class-newsletter-footer.php [Gaukite naudingus patarimus]",
+    "wp-content/plugins/petshop-core/includes/class-newsletter.php [jusu@pastas.lt]"
+   ],
+   "snippets": {
+    "Gaukite naudingus patarimus": [
+     {
+      "id": "4292",
+      "name": "TEMP PS dep-072536",
+      "active": "1",
+      "scope": "global"
+     }
+    ],
+    "jusu@pastas.lt": [
+     {
+      "id": "4292",
+      "name": "TEMP PS dep-072536",
+      "active": "1",
+      "scope": "global"
+     }
+    ],
+    "Sutinku gauti Petshop.lt naujienas": [
+     {
+      "id": "4292",
+      "name": "TEMP PS dep-072536",
+      "active": "1",
+      "scope": "global"
+     }
+    ]
+   }
+  },
+  "src": {
+   "wp-content/mu-plugins/petshop-atsargu-laukimas.php [jusu@pastas.lt]": {
+    "size": 11507,
+    "ver": "1.0.0",
+    "tokens": [
+     "add_action",
+     "add_filter",
+     "fetch(\"<?php echo $rest; ?>\", {\n\t\t\t\t\tmethod: \"POST\",\n\t\t\t\t\theaders: { \"Content-Type\": \"application/json\" },\n\t\t\t\t\tbody: JSON.str",
+     "register_rest_route"
+    ]
+   },
+   "wp-content/plugins/petshop-core/includes/class-newsletter-footer.php [Gaukite naudingus patarimus]": {
+    "size": 2247,
+    "ver": null,
+    "tokens": [
+     "add_action"
+    ]
+   },
+   "wp-content/plugins/petshop-core/includes/class-newsletter.php [jusu@pastas.lt]": {
+    "size": 8841,
+    "ver": null,
+    "tokens": [
+     "add_action",
+     "register_rest_route"
+    ]
+   }
+  },
+  "snip_src": {
+   "4292": {
+    "size": 3406,
+    "tokens": [
+     "add_action('init'",
+     "rest_route|wp_ajax_[a-z_]+|admin_post_[a-z_]+|action=[",
+     "rest_route|wp-json[^",
+     "rest_route[^",
+     "wp-json[^",
+     "rest_route\\([^,]+,[^,]+)/"
+    ]
+   }
+  },
+  "consent_n": 11,
+  "consent_last": [
+   {
+    "id": "18",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "true",
+    "to_value": "false",
+    "source": "unsubscribe_link",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:09"
+   },
+   {
+    "id": "17",
+    "customer_id": "0",
+    "email": "unsub-test@example.com",
+    "field": "marketing_consent",
+    "from_value": "false",
+    "to_value": "true",
+    "source": "test_setup",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:09"
+   },
+   {
+    "id": "16",
+    "customer_id": "0",
+    "email": "other-user@example.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "test",
+    "ip": "20.171.55.60",
+    "user_agent": "curl/8.5.0",
+    "changed_at": "2026-07-31 08:51:08"
+   }
+  ],
+  "tables_nl": [
+   "gaj6_ps_naujienlaiskiai"
+  ],
+  "tables_c": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_akcijos",
+   "gaj6_ps_akciju_prekes",
+   "gaj6_ps_ataskaitu_dienos",
+   "gaj6_ps_av_zurnalas",
+   "gaj6_ps_brand_alias",
+   "gaj6_ps_browse_log",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_dim_klientai",
+   "gaj6_ps_email_content",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_fakt_atsargos_d",
+   "gaj6_ps_fakt_eilutes",
+   "gaj6_ps_fakt_grazinimai",
+   "gaj6_ps_fakt_kainos",
+   "gaj6_ps_fakt_reklama",
+   "gaj6_ps_fakt_siuntos",
+   "gaj6_ps_fakt_uzsakymai",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_islaidos",
+   "gaj6_ps_istrintos_prekes_s668",
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_naujienlaiskiai",
+   "gaj6_ps_pakuotes",
+   "gaj6_ps_partijos",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_sargas_klaidos",
+   "gaj6_ps_shipments",
+   "gaj6_ps_sources",
+   "gaj6_ps_stock_watch",
+   "gaj6_ps_subscription_events",
+   "gaj6_ps_subscription_items",
+   "gaj6_ps_subscriptions",
+   "gaj6_ps_tarifai",
+   "gaj6_ps_tarifu_priemokos",
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil",
+   "gaj6_ps_web_dienos",
+   "gaj6_ps_web_ivykiai",
+   "gaj6_ps_webhook_log"
+  ],
+  "sargas_klaidos": [
+   {
+    "id": "93",
+    "laikas": "2026-08-30 23:40:04",
+    "lygis": "warning",
+    "parasas": "a7d5dce18bcc1147fd4c4e415c1d8aad",
+    "zinute": "Undefined array key \"rfm_m\"",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-dim-klientai.php",
+    "eilute": "280",
+    "url": "/wp-cron.php?doing_wp_cron=1788122403.2572720050811767578125",
+    "kiek": "1"
+   },
+   {
+    "id": "92",
+    "laikas": "2026-08-30 23:14:20",
+    "lygis": "deprecated",
+    "parasas": "ca9d0998413218cdd969cdfa0f8dab6d",
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-meta-box.php",
+    "eilute": "119",
+    "url": "/wp-admin/post.php?post=35281&action=edit",
+    "kiek": "1"
+   },
+   {
+    "id": "91",
+    "laikas": "2026-08-30 19:04:15",
+    "lygis": "warning",
+    "parasas": "6b475082619816252d852676f25f607d",
+    "zinute": "Undefined array key \"price_ct\"",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-prenumerata-paskyra.php",
+    "eilute": "385",
+    "url": "/paskyra/prenumeratos/",
+    "kiek": "2"
+   },
+   {
+    "id": "90",
+    "laikas": "2026-08-30 19:04:15",
+    "lygis": "warning",
+    "parasas": "2b06039664f96747f422289793791c8a",
+    "zinute": "Undefined array key \"product_name\"",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-prenumerata-paskyra.php",
+    "eilute": "375",
+    "url": "/paskyra/prenumeratos/",
+    "kiek": "2"
+   },
+   {
+    "id": "89",
+    "laikas": "2026-08-30 19:09:32",
+    "lygis": "warning",
+    "parasas": "dd1c7511e363abb3c4e703cd9cd2016c",
+    "zinute": "mkdir(): File exists",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "14",
+    "url": "/?ps_f19=DEPLOY",
+    "kiek": "2"
+   }
+  ]
+ }
+}
