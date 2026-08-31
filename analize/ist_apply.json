@@ -1,0 +1,88 @@
+{
+ "v": "dep-150405",
+ "kurimas": 200,
+ "sid": 4307,
+ "data": {
+  "ist_uzsakymai.txt": {
+   "id": 35295,
+   "status": 201
+  },
+  "ist_eilutes.txt": {
+   "id": 35296,
+   "status": 201
+  }
+ },
+ "APPLY": {
+  "v": "IST2",
+  "faze": "APPLY",
+  "lenteles_pries": [
+   0,
+   0
+  ],
+  "irasyta_uzsakymu": 10076,
+  "irasyta_eiluciu": 24338,
+  "susieta_sku": 20853,
+  "istrinti_failai": [
+   true,
+   true
+  ]
+ },
+ "VER": {
+  "v": "IST2",
+  "faze": "VER",
+  "uzsakymai": 10076,
+  "eilutes": 24338,
+  "ivykdyti_suma": {
+   "n": "9528",
+   "s": "393156"
+  },
+  "emailai": 5589,
+  "susieta": {
+   "su": "20853",
+   "n": "24338",
+   "pct_sumos": "72.9"
+  },
+  "be_tevo": 0,
+  "eiluciu_sutampa": 0,
+  "pvz_klientas": [
+   {
+    "pavadinimas": "Džiovinta kiaulės uodega, 1 vnt.",
+    "kartu": "36",
+    "paskutinis": "2026-03-25 14:50:07",
+    "suma": "553.44",
+    "wc_product_id": "18655"
+   },
+   {
+    "pavadinimas": "Ruda jaučio ausis, 1 vnt.",
+    "kartu": "29",
+    "paskutinis": "2026-04-17 13:19:48",
+    "suma": "598.02",
+    "wc_product_id": "16311"
+   },
+   {
+    "pavadinimas": "20 vnt. rudų kiaulės knyslių",
+    "kartu": "27",
+    "paskutinis": "2026-06-16 11:21:50",
+    "suma": "260.33",
+    "wc_product_id": "19881"
+   },
+   {
+    "pavadinimas": "20 vnt. rudų jaučio ausų",
+    "kartu": "22",
+    "paskutinis": "2026-07-24 10:37:29",
+    "suma": "741.38",
+    "wc_product_id": "19884"
+   },
+   {
+    "pavadinimas": "8 VNT. - Kraikas katėms TOFU BeloCat, levandų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "kartu": "9",
+    "paskutinis": "2026-04-17 13:19:48",
+    "suma": "289.43",
+    "wc_product_id": "19824"
+   }
+  ],
+  "top_klientas_uzsak": 57,
+  "dydis_MB": "0.13",
+  "uploads_liko": 2
+ }
+}
