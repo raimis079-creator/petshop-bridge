@@ -1,0 +1,488 @@
+<?php
+/**
+ * Plugin Name: Petshop Istorijos Adapteris
+ * Description: ps_ist_* (eShoprent) paduodama ps_fakt_* forma analizės langams (S1546 #2). Užšaldytos lentelės ps_ist_fakt_* + rodiniai „Abu" + šaltinio jungiklis [eShoprent | petshop.lt | Abu].
+ * Version: 1.0.1
+ *
+ * ARCHITEKTŪRA (S1546, Raimio sprendimai):
+ * - ps_ist_fakt_uzsakymai / ps_ist_fakt_eilutes — CREATE TABLE ... LIKE ps_fakt_*,
+ *   užpildomos VIENĄ kartą per perstatyti() iš ps_ist_*. Užšaldyta: istorija nesikeičia.
+ * - Rodiniai ps_v_analize_uzsakymai / _eilutes: kol `ps_perjungimo_data` nenustatyta —
+ *   TIK istorija (faktai karantine, S1546 #5); nustačius — ist iki ribos + fakt nuo ribos.
+ * - Jungiklis: GET saltinis=ist|wc|abu, įsimenamas user meta. Default: abu.
+ * - eShoprent NĖRA: savikainos/maržos/kontribucijos (0), kanalai (NULL), nuolaidų
+ *   detalės (0 — nuolaidos jau kainose). prekiu_suma_ct = eilučių suma (BRUTO su PVM,
+ *   kaip faktuose); pristatymas_paimta_ct = užsakymo suma − eilučių suma.
+ * - uzsakymas_id = 900000000 + eShoprent id (nesikerta su WC).
+ * - klientas_id — per wp_users el. paštą (S1539 importas), klientas_email_hash —
+ *   SHA2(LOWER(TRIM(email)),256) — identiškas Petshop_Faktai::email_hash().
+ *
+ * @package Petshop
+ */
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+class Petshop_Ist_Adapteris {
+
+	const VERSIJA    = '1.1';
+	const OPT_RIBA   = 'ps_perjungimo_data';
+	const OPT_RODINIU = 'ps_ist_adapt_rodiniai'; // hash, kad rodiniai atitiktų ribą
+	const OFFSET     = 900000000;
+	const META_SALT  = '_ps_analize_saltinis';
+
+	public static function init() {
+		add_action( 'admin_init', array( __CLASS__, 'gal_atnaujinti_rodinius' ) );
+	}
+
+	/* ---------- lentelės ---------- */
+	public static function fu() { global $wpdb; return $wpdb->prefix . 'ps_fakt_uzsakymai'; }
+	public static function fe() { global $wpdb; return $wpdb->prefix . 'ps_fakt_eilutes'; }
+	public static function iu() { global $wpdb; return $wpdb->prefix . 'ps_ist_fakt_uzsakymai'; }
+	public static function ie() { global $wpdb; return $wpdb->prefix . 'ps_ist_fakt_eilutes'; }
+	public static function vu() { global $wpdb; return $wpdb->prefix . 'ps_v_analize_uzsakymai'; }
+	public static function ve() { global $wpdb; return $wpdb->prefix . 'ps_v_analize_eilutes'; }
+	private static function yra( $t ) { global $wpdb; return $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $t ) ) === $t; }
+	public static function paruostas() { return self::yra( self::iu() ) && self::yra( self::ie() ); }
+	public static function riba() { return (string) get_option( self::OPT_RIBA, '' ); }
+
+	/* ---------- šaltinio jungiklis ---------- */
+
+	/** Dabartinis šaltinis: ist | wc | abu. GET turi pirmenybę ir įsimenamas. */
+	public static function saltinis() {
+		static $s = null; if ( null !== $s ) { return $s; }
+		$leist = array( 'ist', 'wc', 'abu' );
+		if ( isset( $_GET['saltinis'] ) && in_array( $_GET['saltinis'], $leist, true ) ) {
+			$s = $_GET['saltinis'];
+			if ( get_current_user_id() ) { update_user_meta( get_current_user_id(), self::META_SALT, $s ); }
+			return $s;
+		}
+		$m = get_current_user_id() ? get_user_meta( get_current_user_id(), self::META_SALT, true ) : '';
+		$s = in_array( $m, $leist, true ) ? $m : 'abu';
+		return $s;
+	}
+
+	/**
+	 * Lentelės vardas analizės užklausai. $kas: 'u' (užsakymai) arba 'e' (eilutės).
+	 * Adapterio nėra / neužpildyta → faktai (saugus atsitraukimas).
+	 */
+	public static function lentele( $kas ) {
+		$fakt = 'u' === $kas ? self::fu() : self::fe();
+		if ( ! self::paruostas() ) { return $fakt; }
+		switch ( self::saltinis() ) {
+			case 'ist': return 'u' === $kas ? self::iu() : self::ie();
+			case 'wc':  return $fakt;
+			default:
+				$v = 'u' === $kas ? self::vu() : self::ve();
+				return self::yra( $v ) ? $v : $fakt;
+		}
+	}
+
+	/** Jungiklio HTML — trys mygtukai, išlaiko esamus GET parametrus. */
+	public static function jungiklis_html() {
+		if ( ! self::paruostas() ) { return ''; }
+		$s = self::saltinis(); $riba = self::riba();
+		$m = array( 'ist' => 'eShoprent', 'wc' => 'petshop.lt', 'abu' => 'Abu' );
+		$h = '<div class="ps-salt" style="margin:6px 0 14px;display:flex;gap:6px;align-items:center;flex-wrap:wrap">';
+		$h .= '<span style="color:#787c82;font-size:12px">Šaltinis:</span>';
+		foreach ( $m as $k => $v ) {
+			$u = esc_url( add_query_arg( 'saltinis', $k ) );
+			$akt = $k === $s ? 'background:#135e96;color:#fff;border-color:#135e96' : 'background:#fff';
+			$h .= '<a href="' . $u . '" style="' . $akt . ';border:1px solid #c3c4c7;border-radius:14px;padding:3px 12px;font-size:12px;text-decoration:none;color:' . ( $k === $s ? '#fff' : '#1d2327' ) . '">' . $v . '</a>';
+		}
+		if ( 'abu' === $s ) {
+			$h .= '<span style="color:#787c82;font-size:12px">' . ( $riba ? 'iki ' . esc_html( $riba ) . ' — eShoprent, toliau — petshop.lt' : 'perjungimo data nenustatyta — rodoma tik eShoprent istorija (faktai karantine iki T-0)' ) . '</span>';
+		} elseif ( 'wc' === $s && ! $riba ) {
+			$h .= '<span style="color:#b32d2e;font-size:12px">perjungimo data nenustatyta — tai dev faktai</span>';
+		} elseif ( 'ist' === $s ) {
+			$h .= '<span style="color:#787c82;font-size:12px">užšaldyta istorija: be savikainų/maržų, kanalų ir nuolaidų detalių (S1546)</span>';
+		}
+		return $h . '</div>';
+	}
+
+	/* ---------- rodiniai ---------- */
+
+	public static function atnaujinti_rodinius() {
+		global $wpdb;
+		if ( ! self::paruostas() ) { return false; }
+		$riba = self::riba();
+		foreach ( array( array( self::vu(), self::iu(), self::fu() ), array( self::ve(), self::ie(), self::fe() ) ) as $x ) {
+			list( $v, $i, $f ) = $x;
+			if ( $riba ) {
+				$sql = "CREATE OR REPLACE VIEW $v AS SELECT * FROM $i WHERE diena < '" . esc_sql( $riba ) . "' UNION ALL SELECT * FROM $f WHERE diena >= '" . esc_sql( $riba ) . "'";
+			} else {
+				$sql = "CREATE OR REPLACE VIEW $v AS SELECT * FROM $i";
+			}
+			$wpdb->query( $sql );
+		}
+		update_option( self::OPT_RODINIU, md5( $riba . '|1' ), false );
+		return true;
+	}
+
+	public static function gal_atnaujinti_rodinius() {
+		if ( self::paruostas() && get_option( self::OPT_RODINIU ) !== md5( self::riba() . '|1' ) ) { self::atnaujinti_rodinius(); }
+	}
+
+	/** T-0: nustatyti perjungimo datą ir perkurti rodinius. */
+	public static function nustatyti_riba( $data ) {
+		update_option( self::OPT_RIBA, $data, false );
+		return self::atnaujinti_rodinius();
+	}
+
+	/* ---------- perstatymas iš ps_ist_* ---------- */
+
+	/** Stulpelių sąrašas + išraiškos INSERT'ui: visi tikslo stulpeliai, kad strict mode nesulūžtų. */
+	private static function stulpeliu_map( $lentele, $map ) {
+		global $wpdb;
+		$cols = $wpdb->get_results( $wpdb->prepare(
+			'SELECT COLUMN_NAME n, IS_NULLABLE nn, COLUMN_DEFAULT d, DATA_TYPE t FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=%s ORDER BY ORDINAL_POSITION', $lentele ), ARRAY_A );
+		$names = array(); $expr = array();
+		$skaic = array( 'tinyint', 'smallint', 'int', 'bigint', 'decimal', 'float', 'double' );
+		foreach ( $cols as $c ) {
+			$n = $c['n']; $names[] = "`$n`";
+			if ( isset( $map[ $n ] ) ) { $expr[] = $map[ $n ]; continue; }
+			if ( 'YES' === $c['nn'] ) { $expr[] = 'NULL'; continue; }
+			if ( null !== $c['d'] && 'NULL' !== strtoupper( (string) $c['d'] ) ) {
+				/* MariaDB 10.2.7+ COLUMN_DEFAULT — SQL išraiška: tekstai grįžta SU kabutėmis ('' → literalus ''). Nuimam. */
+				$d = (string) $c['d'];
+				if ( strlen( $d ) >= 2 && "'" === $d[0] && "'" === substr( $d, -1 ) ) { $d = str_replace( "''", "'", substr( $d, 1, -1 ) ); }
+				$expr[] = "'" . esc_sql( $d ) . "'"; continue;
+			}
+			$expr[] = in_array( $c['t'], $skaic, true ) ? '0' : "''";
+		}
+		return array( implode( ',', $names ), implode( ',', $expr ) );
+	}
+
+	/**
+	 * Užšaldytų lentelių perstatymas iš ps_ist_*. $dry — tik skaičiai, nieko nerašo.
+	 * Idempotentiška: DROP + CREATE LIKE + INSERT. Istorija nesikeičia, tad saugu.
+	 */
+	public static function perstatyti( $dry = true ) {
+		global $wpdb; @set_time_limit( 280 );
+		$p = $wpdb->prefix; $TU = $p . 'ps_ist_uzsakymai'; $TE = $p . 'ps_ist_eilutes';
+		$o = array( 'dry' => (bool) $dry, 'versija' => self::VERSIJA );
+		if ( ! self::yra( $TU ) || ! self::yra( $TE ) ) { return array( 'klaida' => 'nera ps_ist_*' ); }
+		if ( ! self::yra( self::fu() ) || ! self::yra( self::fe() ) ) { return array( 'klaida' => 'nera ps_fakt_*' ); }
+
+		$o['laukiama'] = array(
+			'uzsakymai' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $TU WHERE ivykdytas=1" ),
+			'eilutes'   => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $TE e JOIN $TU u ON u.id=e.uzsakymo_id WHERE u.ivykdytas=1" ),
+			'suma_ct'   => (int) $wpdb->get_var( "SELECT ROUND(SUM(suma)*100) FROM $TU WHERE ivykdytas=1" ),
+			'klientu'   => (int) $wpdb->get_var( "SELECT COUNT(DISTINCT LOWER(TRIM(email))) FROM $TU WHERE ivykdytas=1" ),
+		);
+		if ( $dry ) {
+			$o['fakt_create'] = $wpdb->get_row( 'SHOW CREATE TABLE ' . self::fu(), ARRAY_N );
+			$o['fakt_create'] = isset( $o['fakt_create'][1] ) ? substr( $o['fakt_create'][1], 0, 1200 ) : null;
+			$o['brand_tax'] = $wpdb->get_col( "SELECT DISTINCT taxonomy FROM {$wpdb->term_taxonomy} WHERE taxonomy LIKE '%brand%' OR taxonomy LIKE '%brend%'" );
+			return $o;
+		}
+
+		$IU = self::iu(); $IE = self::ie();
+		$wpdb->query( "DROP TABLE IF EXISTS $IU" );
+		$wpdb->query( "DROP TABLE IF EXISTS $IE" );
+		$wpdb->query( 'CREATE TABLE ' . $IU . ' LIKE ' . self::fu() );
+		$wpdb->query( 'CREATE TABLE ' . $IE . ' LIKE ' . self::fe() );
+
+		/* --- užsakymai --- */
+		list( $un, $ue ) = self::stulpeliu_map( $IU, array(
+			'uzsakymas_id'          => self::OFFSET . '+x.id',
+			'sukurta_at'            => 'x.data',
+			'apmoketa_at'           => 'x.data',
+			'statusas_galutinis'    => 'LEFT(x.statusas,32)',
+			'statusas_at'           => 'x.data',
+			'klientas_id'           => 'COALESCE(us.ID,0)',
+			'klientas_email_hash'   => "SHA2(LOWER(TRIM(x.email)),256)",
+			'klientas_naujas'       => 'IF(x.rn=1,1,0)',
+			'klientas_uzsakymo_nr'  => 'x.rn',
+			'dienos_nuo_ankstesnio' => 'x.dna',
+			'prekiu_suma_ct'        => 'COALESCE(x.eil_ct, ROUND(x.suma*100))',
+			'nuolaidu_ct'           => '0',
+			'pristatymas_paimta_ct' => 'GREATEST(ROUND(x.suma*100)-COALESCE(x.eil_ct,ROUND(x.suma*100)),0)',
+			'pvm_ct'                => 'ROUND((x.suma-x.suma_be)*100)',
+			'viso_ct'               => 'ROUND(x.suma*100)',
+			'mokejimo_budas'        => 'LEFT(x.apmokejimas,48)',
+			'miestas'               => 'LEFT(x.miestas,96)',
+			'eiluciu_sk'            => 'x.eiluciu',
+			'testinis'              => '0',
+			'saltinis_aplinka'      => "'ist'",
+			'fakt_versija'          => '1',
+			'irasyta_at'            => 'UTC_TIMESTAMP()',
+			'diena'                 => 'DATE(x.data)',
+		) );
+		$sql = "INSERT INTO $IU ($un) SELECT $ue FROM (
+			SELECT u.*, ROW_NUMBER() OVER w rn, DATEDIFF(u.data, LAG(u.data) OVER w) dna,
+			       (SELECT ROUND(SUM(e.suma)*100) FROM $TE e WHERE e.uzsakymo_id=u.id) eil_ct
+			FROM $TU u WHERE u.ivykdytas=1
+			WINDOW w AS (PARTITION BY LOWER(TRIM(u.email)) ORDER BY u.data, u.id)
+		) x LEFT JOIN {$wpdb->users} us ON LOWER(us.user_email)=LOWER(TRIM(x.email))";
+		$wpdb->query( $sql );
+		$o['uzs_irasyta'] = (int) $wpdb->rows_affected;
+		if ( $wpdb->last_error ) { $o['uzs_klaida'] = $wpdb->last_error; return $o; }
+
+		/* --- eilutės --- */
+		list( $en, $ee ) = self::stulpeliu_map( $IE, array(
+			'id'                  => 'NULL',
+			'uzsakymas_id'        => self::OFFSET . '+e.uzsakymo_id',
+			'eilutes_id'          => 'e.id',
+			'apmoketa_at'         => 'u.data',
+			'preke_id'            => 'COALESCE(e.wc_product_id,0)',
+			'variacija_id'        => '0',
+			'sku'                 => 'LEFT(e.modelis,64)',
+			'pavadinimas_tuo_metu' => "LEFT(CONCAT(e.pavadinimas, IF(e.variantas IS NULL OR e.variantas='', '', CONCAT(' — ', e.variantas))),255)",
+			'kiekis'              => 'e.kiekis',
+			'kaina_ct'            => 'ROUND(e.suma*100)',
+			'kaina_vnt_ct'        => 'ROUND(e.kaina*100)',
+			'testinis'            => '0',
+			'saltinis_aplinka'    => "'ist'",
+			'diena'               => 'DATE(u.data)',
+		) );
+		$wpdb->query( "INSERT INTO $IE ($en) SELECT $ee FROM $TE e JOIN $TU u ON u.id=e.uzsakymo_id WHERE u.ivykdytas=1" );
+		$o['eil_irasyta'] = (int) $wpdb->rows_affected;
+		if ( $wpdb->last_error ) { $o['eil_klaida'] = $wpdb->last_error; return $o; }
+		$wpdb->query( "UPDATE $IE e JOIN $IU u ON u.uzsakymas_id=e.uzsakymas_id SET e.klientas_naujas=u.klientas_naujas" );
+
+		/* --- praturtinimas: brendas / kategorija / gyvūnas iš dabartinių WC prekių --- */
+		$o['praturtinta'] = self::praturtinti();
+
+		self::atnaujinti_rodinius();
+		$o['rodiniai'] = 'atnaujinti';
+
+		/* --- VER --- */
+		$o['ver'] = array(
+			'uzs'     => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $IU" ),
+			'eil'     => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $IE" ),
+			'viso_ct' => (int) $wpdb->get_var( "SELECT SUM(viso_ct) FROM $IU" ),
+			'prekiu_ct' => (int) $wpdb->get_var( "SELECT SUM(prekiu_suma_ct) FROM $IU" ),
+			'klientu' => (int) $wpdb->get_var( "SELECT COUNT(DISTINCT klientas_email_hash) FROM $IU" ),
+			'nauji'   => (int) $wpdb->get_var( "SELECT SUM(klientas_naujas) FROM $IU" ),
+			'su_paskyra' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $IU WHERE klientas_id>0" ),
+			'su_brendu_eil' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $IE WHERE brendas_slug<>''" ),
+			'su_gyvunu_eil' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $IE WHERE gyvunas IS NOT NULL AND gyvunas<>''" ),
+			'nesusieta_eil' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $IE WHERE preke_id=0" ),
+		);
+		update_option( 'ps_ist_adapt_perstatyta', current_time( 'mysql', true ), false );
+		return $o;
+	}
+
+	/** Brendas + giliausia kategorija + kelias + gyvūnas (šaknys 70=šuo / 77=katė) susietoms prekėms. */
+	private static function praturtinti() {
+		global $wpdb; $IE = self::ie();
+		$pids = $wpdb->get_col( "SELECT DISTINCT preke_id FROM $IE WHERE preke_id>0" );
+		if ( ! $pids ) { return array( 'prekiu' => 0 ); }
+
+		/* Renkamės pagal REALŲ užpildymą — WC 9+ registruoja tuščią product_brand šalia gyvos pa_brendas. */
+		$btax = (string) $wpdb->get_var( "SELECT tt.taxonomy FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id WHERE tt.taxonomy LIKE '%brand%' OR tt.taxonomy LIKE '%brend%' GROUP BY tt.taxonomy ORDER BY COUNT(*) DESC LIMIT 1" );
+		if ( $btax ) {
+			$wpdb->query( $wpdb->prepare( "UPDATE $IE e JOIN (
+				SELECT tr.object_id pid, MIN(t.slug) slug FROM {$wpdb->term_relationships} tr
+				JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id AND tt.taxonomy=%s
+				JOIN {$wpdb->terms} t ON t.term_id=tt.term_id GROUP BY tr.object_id
+			) b ON b.pid=e.preke_id SET e.brendas_slug=LEFT(b.slug,96)", $btax ) );
+		}
+
+		/* kategorijų medis atmintyje */
+		$med = array(); // term_id => [parent, name]
+		foreach ( $wpdb->get_results( "SELECT tt.term_id, tt.parent, t.name FROM {$wpdb->term_taxonomy} tt JOIN {$wpdb->terms} t ON t.term_id=tt.term_id WHERE tt.taxonomy='product_cat'", ARRAY_A ) as $r ) {
+			$med[ (int) $r['term_id'] ] = array( (int) $r['parent'], $r['name'] );
+		}
+		$saknis = function ( $tid ) use ( $med ) { $s = 0; while ( isset( $med[ $tid ] ) ) { if ( ! $med[ $tid ][0] ) { return $tid; } $tid = $med[ $tid ][0]; if ( ++$s > 12 ) { break; } } return $tid; };
+		$gylis = function ( $tid ) use ( $med ) { $g = 0; while ( isset( $med[ $tid ] ) && $med[ $tid ][0] ) { $tid = $med[ $tid ][0]; if ( ++$g > 12 ) { break; } } return $g; };
+		$kelias = function ( $tid ) use ( $med ) { $k = array(); $s = 0; while ( isset( $med[ $tid ] ) ) { array_unshift( $k, $med[ $tid ][1] ); if ( ! $med[ $tid ][0] ) { break; } $tid = $med[ $tid ][0]; if ( ++$s > 12 ) { break; } } return implode( ' > ', $k ); };
+
+		$pk = array(); // pid => cat term_ids
+		$in = implode( ',', array_map( 'intval', $pids ) );
+		foreach ( $wpdb->get_results( "SELECT tr.object_id pid, tt.term_id FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id AND tt.taxonomy='product_cat' WHERE tr.object_id IN ($in)", ARRAY_A ) as $r ) {
+			$pk[ (int) $r['pid'] ][] = (int) $r['term_id'];
+		}
+		$n = 0;
+		foreach ( $pk as $pid => $tids ) {
+			$giliausia = 0; $gmax = -1; $suo = false; $kate = false;
+			foreach ( $tids as $t ) {
+				$g = $gylis( $t ); if ( $g > $gmax ) { $gmax = $g; $giliausia = $t; }
+				$s = $saknis( $t ); if ( 70 === $s ) { $suo = true; } if ( 77 === $s ) { $kate = true; }
+			}
+			$gyv = $suo && $kate ? 'abu' : ( $suo ? 'suo' : ( $kate ? 'kate' : '' ) );
+			$wpdb->query( $wpdb->prepare( "UPDATE $IE SET kategorija_id_giliausia=%d, kategoriju_kelias=%s, gyvunas=%s WHERE preke_id=%d", $giliausia, $kelias( $giliausia ), $gyv, $pid ) );
+			$n++;
+		}
+		return array( 'prekiu' => count( $pids ), 'kateg' => $n, 'brand_tax' => $btax );
+	}
+}
+Petshop_Ist_Adapteris::init();
+
+/**
+ * Bendra analizės filtrų juosta (S1547b): laikotarpis + brendas + gyvūnas +
+ * kategorija visuose trijuose languose. Filtrai gyvena TIK URL'e (f_nuo,
+ * f_iki, f_brendas, f_gyvunas, f_kat) — bookmark'inami, nepersistuojami, kad
+ * pamirštas filtras nemeluotų skaičiais. Deriniai veikia kartu su šaltinio
+ * jungikliu.
+ *
+ * DU KELIAI į prekes:
+ *  - eil_where()      — per praturtintus eilučių stulpelius (greita, veikia
+ *                       ir istorijai; nesusietoms eShoprent eilutėms atributų
+ *                       nėra — jos iškrenta, moduliai tai pažymi).
+ *  - preke_tax_where() — per gyvą taksonomiją (prekėms be pardavimų:
+ *                       neparduodamos, atsargos, kainos).
+ */
+class Petshop_Analize_Filtrai {
+
+	private static $f = null;
+
+	public static function f() {
+		if ( null !== self::$f ) { return self::$f; }
+		$g = function ( $k ) { return isset( $_GET[ $k ] ) ? sanitize_text_field( wp_unslash( $_GET[ $k ] ) ) : ''; };
+		$d = function ( $v ) { return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $v ) ? $v : ''; };
+		$gy = $g( 'f_gyvunas' );
+		self::$f = array(
+			'nuo'     => $d( $g( 'f_nuo' ) ),
+			'iki'     => $d( $g( 'f_iki' ) ),
+			'brendas' => sanitize_title( $g( 'f_brendas' ) ),
+			'gyvunas' => in_array( $gy, array( 'suo', 'kate' ), true ) ? $gy : '',
+			'kat'     => max( 0, (int) $g( 'f_kat' ) ),
+		);
+		if ( self::$f['nuo'] && self::$f['iki'] && self::$f['nuo'] > self::$f['iki'] ) { $t = self::$f['nuo']; self::$f['nuo'] = self::$f['iki']; self::$f['iki'] = $t; }
+		return self::$f;
+	}
+
+	public static function aktyvus() { $f = self::f(); return '' !== $f['nuo'] || '' !== $f['iki'] || '' !== $f['brendas'] || '' !== $f['gyvunas'] || 0 !== $f['kat']; }
+	public static function atributinis() { $f = self::f(); return '' !== $f['brendas'] || '' !== $f['gyvunas'] || 0 !== $f['kat']; }
+	public static function periodinis() { $f = self::f(); return '' !== $f['nuo'] || '' !== $f['iki']; }
+
+	/** [nuo, iki] — filtro datos, o kur tuščia — numatytosios. */
+	public static function periodas( $nuo_def, $iki_def ) { $f = self::f(); return array( $f['nuo'] ? $f['nuo'] : $nuo_def, $f['iki'] ? $f['iki'] : $iki_def ); }
+
+	private static function kat_ids() {
+		$f = self::f(); if ( ! $f['kat'] ) { return array(); }
+		$ids = array( (int) $f['kat'] );
+		$ch  = get_term_children( $f['kat'], 'product_cat' );
+		if ( is_array( $ch ) ) { foreach ( $ch as $c ) { $ids[] = (int) $c; } }
+		return $ids;
+	}
+
+	/** Atributiniai WHERE fragmentai eilučių aliasui (praturtinti stulpeliai). Be periodo. */
+	public static function eil_where( $a ) {
+		global $wpdb; $f = self::f(); $w = '';
+		if ( $f['brendas'] ) { $w .= $wpdb->prepare( " AND {$a}.brendas_slug = %s ", $f['brendas'] ); }
+		if ( $f['gyvunas'] ) { $w .= $wpdb->prepare( " AND {$a}.gyvunas IN (%s,'abu') ", $f['gyvunas'] ); }
+		if ( $f['kat'] )     { $w .= " AND {$a}.kategorija_id_giliausia IN (" . implode( ',', self::kat_ids() ) . ') '; }
+		return $w;
+	}
+
+	/** Periodo WHERE fragmentas bet kokiam aliasui su `diena`. */
+	public static function eil_periodas( $a ) {
+		global $wpdb; $f = self::f(); $w = '';
+		if ( $f['nuo'] ) { $w .= $wpdb->prepare( " AND {$a}.diena >= %s ", $f['nuo'] ); }
+		if ( $f['iki'] ) { $w .= $wpdb->prepare( " AND {$a}.diena <= %s ", $f['iki'] ); }
+		return $w;
+	}
+
+	/** Užsakymo aliasui: atributai per EXISTS eilutėse (pagal aktyvų šaltinį). */
+	public static function uzs_atributai( $a ) {
+		if ( ! self::atributinis() ) { return ''; }
+		$e = Petshop_Ist_Adapteris::lentele( 'e' );
+		return " AND EXISTS (SELECT 1 FROM $e psf WHERE psf.uzsakymas_id = {$a}.uzsakymas_id " . self::eil_where( 'psf' ) . ') ';
+	}
+
+	/** Užsakymo aliasui: periodas + atributai. */
+	public static function uzs_where( $a ) { return self::eil_periodas( $a ) . self::uzs_atributai( $a ); }
+
+	/** dim/klientų raktui ($kol = pilnas stulpelio pavadinimas): atributinis EXISTS per užsakymus. */
+	public static function dim_where( $kol ) {
+		if ( ! self::atributinis() ) { return ''; }
+		$u = Petshop_Ist_Adapteris::lentele( 'u' ); $e = Petshop_Ist_Adapteris::lentele( 'e' );
+		return " AND EXISTS (SELECT 1 FROM $u psu JOIN $e psf ON psf.uzsakymas_id = psu.uzsakymas_id WHERE psu.klientas_email_hash = $kol " . self::eil_where( 'psf' ) . ') ';
+	}
+
+	/** Prekės ID stulpeliui — per gyvą taksonomiją (veikia ir be pardavimų). */
+	public static function preke_tax_where( $pid ) {
+		global $wpdb; $f = self::f(); $w = '';
+		$tr = $wpdb->term_relationships; $tt = $wpdb->term_taxonomy; $tm = $wpdb->terms;
+		if ( $f['brendas'] ) {
+			$bt = self::brand_tax();
+			if ( $bt ) { $w .= $wpdb->prepare( " AND $pid IN (SELECT tr1.object_id FROM $tr tr1 JOIN $tt tt1 ON tt1.term_taxonomy_id = tr1.term_taxonomy_id AND tt1.taxonomy = %s JOIN $tm t1 ON t1.term_id = tt1.term_id WHERE t1.slug = %s) ", $bt, $f['brendas'] ); }
+			else { $w .= " AND 1=0 "; }
+		}
+		if ( $f['gyvunas'] ) {
+			$root = 'suo' === $f['gyvunas'] ? 70 : 77;
+			$ids  = array( $root ); $ch = get_term_children( $root, 'product_cat' );
+			if ( is_array( $ch ) ) { foreach ( $ch as $c ) { $ids[] = (int) $c; } }
+			$w .= " AND $pid IN (SELECT tr2.object_id FROM $tr tr2 JOIN $tt tt2 ON tt2.term_taxonomy_id = tr2.term_taxonomy_id AND tt2.taxonomy = 'product_cat' WHERE tt2.term_id IN (" . implode( ',', $ids ) . ')) ';
+		}
+		if ( $f['kat'] ) {
+			$w .= " AND $pid IN (SELECT tr3.object_id FROM $tr tr3 JOIN $tt tt3 ON tt3.term_taxonomy_id = tr3.term_taxonomy_id AND tt3.taxonomy = 'product_cat' WHERE tt3.term_id IN (" . implode( ',', self::kat_ids() ) . ')) ';
+		}
+		return $w;
+	}
+
+	/** Brand taksonomija pagal realų užpildymą (product_brand vs pa_brendas — pamoka S1547). */
+	public static function brand_tax() {
+		static $b = null; if ( null !== $b ) { return $b; }
+		$b = get_transient( 'ps_analize_btax' );
+		if ( false === $b ) {
+			global $wpdb;
+			$b = (string) $wpdb->get_var( "SELECT tt.taxonomy FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id = tr.term_taxonomy_id WHERE tt.taxonomy LIKE '%brand%' OR tt.taxonomy LIKE '%brend%' GROUP BY tt.taxonomy ORDER BY COUNT(*) DESC LIMIT 1" );
+			set_transient( 'ps_analize_btax', $b, DAY_IN_SECONDS );
+		}
+		return $b;
+	}
+
+	/** Brendų sąrašas select'ui — iš visos juostos (view), kad matytum ir istorinius. */
+	public static function brendai() {
+		$c = get_transient( 'ps_analize_brendai' );
+		if ( is_array( $c ) ) { return $c; }
+		global $wpdb; $c = array();
+		if ( Petshop_Ist_Adapteris::paruostas() ) {
+			$c = $wpdb->get_col( 'SELECT DISTINCT brendas_slug FROM ' . Petshop_Ist_Adapteris::ve() . " WHERE brendas_slug <> '' ORDER BY brendas_slug" );
+		}
+		$gyvi = $wpdb->get_col( 'SELECT DISTINCT brendas_slug FROM ' . Petshop_Ist_Adapteris::fe() . " WHERE brendas_slug <> '' AND brendas_slug IS NOT NULL" );
+		$c = array_values( array_unique( array_merge( (array) $c, (array) $gyvi ) ) ); sort( $c );
+		set_transient( 'ps_analize_brendai', $c, HOUR_IN_SECONDS );
+		return $c;
+	}
+
+	/** Žmogiškas aktyvaus filtro aprašas. */
+	public static function zenklas() {
+		$f = self::f(); $d = array();
+		if ( $f['nuo'] || $f['iki'] ) { $d[] = ( $f['nuo'] ? $f['nuo'] : '…' ) . ' – ' . ( $f['iki'] ? $f['iki'] : 'šiandien' ); }
+		if ( $f['brendas'] ) { $d[] = $f['brendas']; }
+		if ( $f['gyvunas'] ) { $d[] = 'suo' === $f['gyvunas'] ? 'šunims' : 'katėms'; }
+		if ( $f['kat'] ) { $t = get_term( $f['kat'], 'product_cat' ); $d[] = $t && ! is_wp_error( $t ) ? $t->name : 'kat #' . $f['kat']; }
+		return implode( ' · ', $d );
+	}
+
+	/**
+	 * Filtrų juosta. $periodas=false — datos laukai slepiami (snapshot ekranai).
+	 * Formos GET išlaiko page/tab/saltinis/testiniai; „✕" nuima tik f_*.
+	 */
+	public static function juosta_html( $periodas = true ) {
+		$f = self::f();
+		$h = '<form method="get" class="ps-analize-filtrai" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 4px;padding:10px 12px;background:#fff;border:1px solid #dcdcde;border-radius:4px">';
+		foreach ( array( 'page', 'tab', 'saltinis', 'testiniai' ) as $k ) {
+			if ( isset( $_GET[ $k ] ) && '' !== $_GET[ $k ] ) { $h .= '<input type="hidden" name="' . esc_attr( $k ) . '" value="' . esc_attr( sanitize_text_field( wp_unslash( $_GET[ $k ] ) ) ) . '">'; }
+		}
+		if ( $periodas ) {
+			$h .= '<label class="psru-mut" style="display:flex;gap:4px;align-items:center">Nuo <input type="date" name="f_nuo" value="' . esc_attr( $f['nuo'] ) . '"></label>';
+			$h .= '<label class="psru-mut" style="display:flex;gap:4px;align-items:center">iki <input type="date" name="f_iki" value="' . esc_attr( $f['iki'] ) . '"></label>';
+			$sm = array( '30 d.' => array( gmdate( 'Y-m-d', time() - 30 * DAY_IN_SECONDS ), gmdate( 'Y-m-d' ) ), '90 d.' => array( gmdate( 'Y-m-d', time() - 90 * DAY_IN_SECONDS ), gmdate( 'Y-m-d' ) ), '2024' => array( '2024-01-01', '2024-12-31' ), '2025' => array( '2025-01-01', '2025-12-31' ), '2026' => array( '2026-01-01', gmdate( 'Y-m-d' ) ), 'Viskas' => array( '', '' ) );
+			$h .= '<span style="display:flex;gap:2px">';
+			foreach ( $sm as $lb => $dd ) {
+				$url = add_query_arg( array( 'f_nuo' => $dd[0] ? $dd[0] : false, 'f_iki' => $dd[1] ? $dd[1] : false ) );
+				$akt = $f['nuo'] === $dd[0] && $f['iki'] === $dd[1];
+				$h  .= '<a href="' . esc_url( $url ) . '" class="button button-small' . ( $akt ? ' button-primary' : '' ) . '">' . esc_html( $lb ) . '</a>';
+			}
+			$h .= '</span>';
+		}
+		$h .= '<select name="f_brendas"><option value="">— brendas —</option>';
+		foreach ( self::brendai() as $b ) { $h .= '<option value="' . esc_attr( $b ) . '"' . selected( $f['brendas'], $b, false ) . '>' . esc_html( $b ) . '</option>'; }
+		$h .= '</select>';
+		$h .= '<select name="f_gyvunas"><option value="">— gyvūnas —</option><option value="suo"' . selected( $f['gyvunas'], 'suo', false ) . '>Šunims</option><option value="kate"' . selected( $f['gyvunas'], 'kate', false ) . '>Katėms</option></select>';
+		$kat = wp_dropdown_categories( array( 'taxonomy' => 'product_cat', 'hierarchical' => 1, 'hide_empty' => 0, 'echo' => 0, 'name' => 'f_kat', 'selected' => $f['kat'], 'show_option_all' => '— kategorija —', 'orderby' => 'name' ) );
+		$h .= is_string( $kat ) ? str_replace( "value='0' selected='selected'", "value=''", $kat ) : '';
+		$h .= '<button class="button button-primary" type="submit">Filtruoti</button>';
+		if ( self::aktyvus() ) {
+			$h .= '<a class="button" href="' . esc_url( remove_query_arg( array( 'f_nuo', 'f_iki', 'f_brendas', 'f_gyvunas', 'f_kat' ) ) ) . '">✕ Išvalyti</a>';
+			$h .= '<span class="psru-mut" style="margin-left:4px"><b>Filtras:</b> ' . esc_html( self::zenklas() ) . '</span>';
+		}
+		$h .= '</form>';
+		return $h;
+	}
+}
+
