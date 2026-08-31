@@ -1,0 +1,74 @@
+{
+ "v": "dep-152708",
+ "kurimas": 200,
+ "sid": 4312,
+ "data": {
+  "nl_klientai.txt": {
+   "id": 35298,
+   "status": 201
+  }
+ },
+ "APPLY": {
+  "v": "PK2",
+  "faze": "APPLY",
+  "nl": 563,
+  "viso": 5668,
+  "jau_buvo": 5668,
+  "sukurta": 0,
+  "sutikimu": 0,
+  "praleista": 0,
+  "klaidos": [],
+  "klaidu_n": 0,
+  "s": 0,
+  "liko": 0
+ },
+ "VER": {
+  "v": "PK2",
+  "faze": "VER",
+  "vartotoju": 5703,
+  "importuotu": 5667,
+  "bangos": [
+   {
+    "banga": "eshoprent_istorija",
+    "n": "5105"
+   },
+   {
+    "banga": "eshoprent_naujienlaiskis",
+    "n": "562"
+   }
+  ],
+  "consent_import": 562,
+  "snapshot": 563,
+  "ist_emailai_be_paskyros": 0,
+  "email_jobs_nauji": 0,
+  "event_log_nauji": 0,
+  "role_customer": 5701,
+  "pvz": [
+   {
+    "ID": "120",
+    "user_email": "0rmgd0@gmail.com",
+    "display_name": "Remigijus",
+    "banga": "eshoprent_naujienlaiskis",
+    "n": "14",
+    "tel": "+37068791641"
+   },
+   {
+    "ID": "1540",
+    "user_email": "eri.mazeikaite@gmail.com",
+    "display_name": "Erika",
+    "banga": "eshoprent_naujienlaiskis",
+    "n": "57",
+    "tel": "+37064660855"
+   },
+   {
+    "ID": "4944",
+    "user_email": "tepalas@gmail.com",
+    "display_name": "Žaneta",
+    "banga": "eshoprent_istorija",
+    "n": "1",
+    "tel": "+37069977076"
+   }
+  ],
+  "be_vardo": 9
+ }
+}
