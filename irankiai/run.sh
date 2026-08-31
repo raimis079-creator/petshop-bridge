@@ -20,6 +20,8 @@ tpl=re.sub(r"const VER='[^']*'","const VER='%s'"%ver,tpl)
 tpl=re.sub(r"const GKEY='[^']*'","const GKEY='%s'"%gkey,tpl)
 tpl=re.sub(r"const PHASES=\[[^\]]*\]","const PHASES=%s"%json.dumps(phases.split(',')),tpl)
 tpl=re.sub(r"const OUT='[^']*'","const OUT='%s'"%out,tpl)
+import os
+tpl=re.sub(r"const DATA=\[[^\]]*\]","const DATA=%s"%json.dumps([x for x in os.environ.get("DATA","").split(",") if x]),tpl)
 open('/tmp/mjs_out.mjs','w').write(tpl)
 PYEOF
 
