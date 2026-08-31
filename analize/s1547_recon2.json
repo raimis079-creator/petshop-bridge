@@ -1,0 +1,39 @@
+{
+ "v": "dep-191304",
+ "kurimas": 200,
+ "sid": 4333,
+ "GO": {
+  "v": "S1547r2",
+  "radiniai": {
+   "petshop-ataskaita-klientai.php": {
+    "kas": [
+     "dim"
+    ],
+    "dydis": 27855
+   },
+   "petshop-dim-klientai.php": {
+    "kas": [
+     "dim"
+    ],
+    "dydis": 13499
+   },
+   "petshop-faktai.php": {
+    "kas": [
+     "hash"
+    ],
+    "dydis": 37122
+   },
+   "petshop-rytas.php": {
+    "kas": [
+     "dim"
+    ],
+    "dydis": 44366
+   }
+  },
+  "hash_kodas": {
+   "petshop-faktai.php": [
+    "\t\treturn $e === '' ? '' : hash( 'sha256', $e );"
+   ]
+  }
+ }
+}
