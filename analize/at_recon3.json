@@ -1,0 +1,74 @@
+{
+ "v": "dep-165341",
+ "kurimas": 200,
+ "sid": 4330,
+ "R3": {
+  "petshop-ataskaita-klientai.php": {
+   "hdr": "<?php\n/**\nPlugin Name: Petshop Ataskaita Klientai\nDescription: Klientų analizė (planas v2.0 §4.3) — apžvalga, kohortos, LTV, top, rizikoje, RFM, vieno kliento kortelė.\nVersion: 1.0.1\nŠALTINIAI. Pinigai ir datos — TIESIOGIAI iš `ps_fakt_uzsakymai` (klientas =\n`klientas_email_hash`); segmentai / RFM / refill — iš `ps_dim_klientai`\n(perskaičiuojama naktį). Kohortos ir LTV skaičiuojami iš faktų čia pat,\nnes dim'e LTV yra pajamų, o planas (S2) reikalauja KONTRIBUCIJOS.\nKOHORTA = mėnuo, kurį klientas pirko pirmą kartą (`klientas_uzsakymo_nr=1`).\nKohortų lentelė: % kohortos klientų, pirkusių N-ąjį mėnesį po pirmo, ir\nkumuliatyvi kontribucija vienam kohortos klientui.\nLAIKOTARPIS taikomas tik apžvalgai ir top'ui; kohortos/LTV — visa istorija\nnuo `ps_stat_pradzia` (kitaip kohorta būtų nupjauta).\nEL. PAŠTAS ekrane nerodomas (faktuose tik hash). Rizikos CSV į Sender ima\npaštą iš paskutinio užsakymo `wc_orders.billing_email` — tik eksportui.\n/\nif ( ! defined( 'ABSPATH' ) ) { exit; }",
+   "lenteles": [
+    "FROM u",
+    "FROM ",
+    "FROM wc_orders",
+    "JOIN u",
+    "FROM d",
+    "FROM e"
+   ],
+   "h": [
+    "Segmentai (šiandien)",
+    "' . esc_html( $pav ) . '",
+    "' . esc_html( self::kliento_vardas( $h, $c['kid'] ) ) . ( $c['kid'] ? ' ",
+    "Užsakymai",
+    "Ką perka"
+   ],
+   "kort": [],
+   "th": [
+    "Kohorta",
+    "Klientų",
+    "M' . $m . '",
+    "R \\\\ F",
+    "F' . $f . '",
+    "R' . $r . '"
+   ]
+  },
+  "petshop-ataskaita-prekes.php": {
+   "hdr": "<?php\n/**\nPlugin Name: Petshop Ataskaita Prekes\nDescription: Prekių analizė (planas v2.0 §4.2 E5 skirtukai) — ABC×XYZ, neparduodama, kainų istorija × pardavimai, akcijų uplift.\nVersion: 1.0\nŠALTINIAI: `ps_fakt_eilutes` (365 d.), `ps_fakt_kainos`, `ps_akcijos` +\n`ps_akciju_prekes`, `ps_fakt_atsargos_d`. Viskas skaičiuojama iš faktų.\nABC — pagal pajamas per 365 d.: A = pirmieji 80 %, B = iki 95 %, C = likę.\nXYZ — paklausos stabilumas: savaitinių kiekių variacijos koef. (σ/μ):\nX < 0,5 (stabili), Y < 1,0, Z ≥ 1,0 (nereguliari). AX — laikyti visada,\nCZ — neužsakinėti į sandėlį.\nAKCIJŲ UPLIFT — pardavimai/d. akcijos metu vs 28 d. PRIEŠ (bazinė), tos\npačios prekės. Kontribucija irgi: pigiau parduota daugiau nereiškia uždirbta.\nKAINŲ ISTORIJA — kiekvienam kainos pokyčiui: vnt./d. 14 d. prieš ir po.\n/\nif ( ! defined( 'ABSPATH' ) ) { exit; }",
+   "lenteles": [
+    "FROM e",
+    "FROM a",
+    "FROM ",
+    "FROM k",
+    "FROM AP",
+    "FROM A"
+   ],
+   "h": [
+    "' . ( $kl ? 'Klasė ' . esc_html( $kl ) : 'Visos prekės' ) . ( $kl ? ' · "
+   ],
+   "kort": [],
+   "th": [
+    "X stabili",
+    "Y svyruoja",
+    "Z nereguliari",
+    "Iš viso",
+    "' . $r . '"
+   ]
+  },
+  "petshop-ataskaita-atsargos.php": {
+   "hdr": "<?php\n/**\nPlugin Name: Petshop Ataskaita Atsargos\nDescription: Atsargos ir pirkimas (planas v2.0 §4.4) — ką užsakyti, stockout €, apyvartumas, sell-through, galiojimas, dropship prieinamumas.\nVersion: 1.0\nŠALTINIAI. `ps_fakt_atsargos_d` (naktinis snapshot: likutis_av, pardavimai\n7/30 d., dienų atsargų, stockout, vertė) · `ps_partijos` (gavimai, likę,\ngaliojimas) · `ps_sources` (tiekėjas, tiekėjo likutis) · `ps_fakt_eilutes`\n(COGS). Ekranas NIEKO neužsako — siūlo kiekį, sprendžia žmogus (§2 rule).\nAV vs DROPSHIP: snapshot'e `likutis_av IS NULL` = prekė ne AV lentynoje.\nPirkimo siūlymai — tik AV. Dropship'ui — atskiras skirtukas apie tiekėjo\nprieinamumą (kiek dienų per 30 tiekėjas neturėjo).\nSIŪLOMAS KIEKIS = paklausa per (lead + buferis) − likutis − rezervuota +\natsarga 30 d. Paklausa = `pardavimai_vnt_30d / 30`. Be duomenų (30 d. = 0)\n— nesiūlom nieko: geriau tyla nei išgalvotas skaičius.\n/\nif ( ! defined( 'ABSPATH' ) ) { exit; }",
+   "lenteles": [
+    "FROM ",
+    "FROM s",
+    "FROM a",
+    "FROM postmeta",
+    "FROM e",
+    "FROM pt",
+    "JOIN s"
+   ],
+   "h": [
+    "Kiek dienų užteks (AV prekės su likučiu)",
+    "Istorija (30 paskutinių snapshot\\'ų)"
+   ],
+   "kort": [],
+   "th": []
+  }
+ }
+}
