@@ -1,0 +1,6 @@
+{
+ "v": "dep-205055",
+ "put_status": 200,
+ "put_resp": "{\n  \"accountId\": \"5321054797\",\n  \"services\": [\n    {\n      \"name\": \"Pristatymas Lietuvoje (paštomatas / kurjeris)\",\n      \"active\": true,\n      \"deliveryCountry\": \"LT\",\n      \"currency\": \"EUR\",\n      \"deliveryTime\": {\n        \"minTransitTimeInDays\": 1,\n        \"maxTransitTimeInDays\": 3,\n        \"minHandlingTimeInDays\": 0,\n        \"maxHandlingTimeInDays\": 1\n      },\n      \"shipmentType\": \"delivery\",\n      \"rateGroups\": [\n        {\n          \"mainTable\": {\n            \"rowHeaders\": {\n              \"weights\": [\n                {\n                  \"value\": \"25\",\n                  \"unit\": \"kg\"\n                },\n                {\n                  \"value\": \"50\",\n                  \"unit\": \"kg\"\n                },\n                {\n                  \"value\": \"70\",\n                  \"unit\": \"kg\"\n                },\n                {\n                  \"value\": \"100\",\n                  \"unit\": \"kg\"\n",
+ "get": "{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"item not found\",\n    \"errors\": [\n      {\n        \"message\": \"item not found\",\n        \"domain\": \"global\",\n        \"reason\": \"notFound\"\n      }\n    ]\n  }\n}\n"
+}
