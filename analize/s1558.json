@@ -1,0 +1,50 @@
+{
+ "v": "dep-111716",
+ "kurimas": 200,
+ "sid": 4383,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1558",
+  "faze": "DIEGTI",
+  "B": 3763,
+  "md5": "0816cc133b331247150df6cc20bafa20",
+  "hero_snip": [
+   {
+    "id": "4383",
+    "name": "TEMP PS dep-111716"
+   }
+  ],
+  "hero_home_content": [
+   ";background:#2D5F3F;}.ph-hero-bg{position:absolute;inset:0;background-image:url(//dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b);background-size:cover;background-position:center right;}.ph-hero-scrim{position:absolu"
+  ],
+  "hero_file": [
+   "hero-augintiniai-pagrindinis-100x100.webp 1KB",
+   "hero-augintiniai-pagrindinis-1400x560.webp 38KB",
+   "hero-augintiniai-pagrindinis-280x280.webp 5KB",
+   "hero-augintiniai-pagrindinis-300x120.webp 4KB",
+   "hero-augintiniai-pagrindinis-768x307.webp 16KB",
+   "hero-augintiniai-pagrindinis-800x320.webp 18KB",
+   "hero-augintiniai-pagrindinis.webp 49KB"
+  ],
+  "hero_html": [
+   "margin:0 0 40px;min-height:420px;display:flex;align-items:center;overflow:hidden;background:#2D5F3F;}.ph-hero-bg{position:absolute;inset:0;background-image:url(//dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b);background-size:cover;background-position:center right;}.ph-hero-scrim{position:absolu"
+  ],
+  "preloads": [
+   "<link rel=\"preload\" href=\"https://dev.avesa.lt/wp-content/plugins/petshop-fonts/fonts/OpenSans-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>",
+   "<link rel=\"preload\" href=\"https://dev.avesa.lt/wp-content/plugins/petshop-fonts/fonts/OpenSans-Semibold.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>"
+  ]
+ },
+ "TEST": {
+  "v": "S1558",
+  "faze": "TEST",
+  "ver": "1.0",
+  "failas_pries": true,
+  "failas_po_set": false,
+  "likutis_atstatytas": true,
+  "preke": 35132,
+  "home_failas_po": false
+ }
+}
