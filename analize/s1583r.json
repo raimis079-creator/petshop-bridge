@@ -1,0 +1,33 @@
+{
+ "v": "dep-170437",
+ "kurimas": 200,
+ "sid": 4423,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1583",
+  "snips": [
+   {
+    "id": "4423",
+    "name": "TEMP PS dep-170437",
+    "active": "1",
+    "len": "1997"
+   }
+  ],
+  "src_len": 1997,
+  "klases": [
+   "tabai",
+   "tabus",
+   "tab",
+   "seg",
+   "toggle",
+   "switch",
+   "pill",
+   "gyvun",
+   "filtr"
+  ],
+  "html_apie": "\n/** Plugin Name: TEMP PS S1583 recon (pamegtos prekes tabai) */\nadd_action('init', function(){\n  if(!isset($_GET['ps_r83'])||$_GET['ps_r83']!=='GO') return;\n  header('Content-Type: application/json; charset=utf-8'); global $wpdb; $o=array('v'=>'S1583');\n  $o['snips']=$wpdb->get_results(\"SELECT id,name,active,LENGTH(code) len FROM {$wpdb->prefix}snippets WHERE code LIKE '%pamėgtos%' OR code LIKE '%pamegtos%'\",ARRAY_A);\n  foreach(glob(WPMU_PLUGIN_DIR.'/*.php') as $p){ $c=file_get_contents($p); if(stripos($c,'pamėgtos')!==false||stripos($c,'pamegtos')!==false) $o['mu'][]=basename($p).' '.strlen($c).' '.md5($c); }\n  foreach(glob(WP_PLUGIN_DIR.'/petshop-*/*.php') as $p){ $c=file_get_contents($p); if(stripos($c,'pamėgtos')!==false) $o['pl'][]=str_replace(WP_PLUGIN_DIR,'',$p).' '.md5($c); }\n  foreach(glob(WP_PLUGIN_DIR.'/petshop-*/includes/*.php') as $p){ $c=file_get_contents($p); if(stripos($c,'pamėgtos')!==false) $o['pl'][]=str_replace(WP_PLUGIN_DIR,'',$p).' '.md5($c); }\n  $th=get_stylesheet_directory(); foreach(glob($th.'/*.php') as $p){ $c=file_get_contents($p); if(stripos($c,'pamėgtos')!==false) $o['theme'][]=basename($p); }\n  // pirmas radinys — ištraukti CSS/HTML fragmentą aplink tabus\n  $src=null; if(!empty($o['snips'])){ $src=$wpdb->get_var($wpdb->prepare(\"SELECT code FROM {$wpdb->prefix}snippets WHERE id=%d\",$o['snips'][0]['id'])); }\n  elseif(!empty($o['mu'])){ $src=file_get_contents(WPMU_PLUGIN_DIR.'/'.strtok($o['mu'][0],' ')); }\n  if($src){ $o['src_len']=strlen($src); preg_match_all('/[a-z0-9_-]*(tab|seg|toggle|switch|pill|gyvun|filtr)[a-z0-9_-]*/i',$src,$m); $o['klases']=array_slice(array_values(array_unique($m[0])),0,40);\n    $i=stripos($src,'pamėgtos'); $o['html_apie']=substr($src,max(0,$i-1500),3500); }\n  $wpdb->query(\"UPDATE {$wpdb->prefix}snippets SET active=0 WHERE name LIKE 'TEMP%'\"); $wpdb->query(\"DELETE FROM {$wpdb->prefix}snippets WHERE name LIKE 'TEMP%'\");\n  echo json_encode($o,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES); exit;\n});\n"
+ }
+}
