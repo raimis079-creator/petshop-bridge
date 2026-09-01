@@ -1,0 +1,29 @@
+{
+ "v": "dep-094151",
+ "kurimas": 200,
+ "sid": 4374,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "FIX": {
+  "v": "S1554",
+  "faze": "FIX",
+  "B": 211717,
+  "md5": "b8aa4437e85f90b115bb4f8f84f60896",
+  "grep_send_headers": 0,
+  "wp_config_writable": true,
+  "wp_content_writable": true,
+  "htaccess_writable": true,
+  "plugins_dir_writable": true,
+  "super_cache_installed": false
+ },
+ "VER": {
+  "v": "S1554",
+  "faze": "VER",
+  "preke_cc": "(nėra)",
+  "preke_code": 200,
+  "klase": true,
+  "has_send_headers": false
+ }
+}
