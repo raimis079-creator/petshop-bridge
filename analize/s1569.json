@@ -1,48 +1,34 @@
 {
- "v": "dep-131944",
+ "v": "dep-145200",
  "kurimas": 200,
- "sid": 4406,
+ "sid": 4411,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "DIEGTI": {
+ "R": {
   "v": "S1569",
-  "faze": "DIEGTI",
-  "md5": "f5e1e991df916b0617f188d517545b55",
-  "ht_md5": "b52902abeef5ae47437c7eb447916735",
-  "ht_B": 1779,
-  "home": 200
- },
- "BATCH": {
-  "v": "S1569",
-  "faze": "BATCH",
-  "batch": {
-   "sukurta": 1554,
-   "praleista": 0,
-   "klaidos": 70,
-   "sutaupyta_kb": 316711,
-   "att": 0,
-   "busena": {
-    "cursor": 8240,
-    "viso_att": 8240,
-    "apdoroti_att": 8240,
-    "sukurta": 18478,
-    "praleista": 1257,
-    "klaidos": 1085,
-    "sutaupyta_kb": 824663,
-    "baigta": true,
-    "legacy_done": false,
-    "paskutinis_s": 200
-   }
-  },
-  "webperr_n_2026": 2,
-  "webperr_sample": [
-   "/2026/06/0003407_m07320-monge-delicate-wet-cat-chicken-with-asparagus-80-g-1-768x512.jpeg.webperr | imagecreatefromjpeg (CMYK/progressive/sugadintas?) 2026-09-01T13:24:15+00:00",
-   "/2026/06/0003407_m07320-monge-delicate-wet-cat-chicken-with-asparagus-80-g-1-100x100.jpeg.webperr | imagecreatefromjpeg (CMYK/progressive/sugadintas?) 2026-09-01T13:24:01+00:00"
+  "ht_avesa": [],
+  "ht_full_len": 1779,
+  "wpconfig_dev_block": "/* R194 dev veidrodis — laikinas iki DNS perjungimo, po jo istrinti */\ndefine('WP_CACHE', true);\ndefine( 'WPCACHEHOME', '/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/' );\nif ( isset( $_SERVER['HTTP_HOST'] ) && strtolower( $_SERVER['HTTP_HOST'] ) === 'dev.avesa.lt' ) {\n\tdefine( 'WP_HOME', 'https://dev.avesa.lt' );\n\tdefine( 'WP_SITEURL', 'https://dev.avesa.lt' );\n}\n",
+  "wpconfig_avesa_lines": [
+   "if ( isset( $_SERVER['HTTP_HOST'] ) && strtolower( $_SERVER['HTTP_HOST'] ) === 'dev.avesa.lt' ) {",
+   "\tdefine( 'WP_HOME', 'https://dev.avesa.lt' );",
+   "\tdefine( 'WP_SITEURL', 'https://dev.avesa.lt' );"
   ],
-  "kinds": {
-   "imagecreatefromjpeg (CMYK/progressive/sugadintas?)": 2
-  }
+  "veidrodis": "<?php\n/**\n * Plugin Name: Petshop Dev Veidrodis v1.0 (R194)\n * Description: dev.avesa.lt lankytojams perraso petshop.lt nuorodas i dev.avesa.lt ir prideda noindex. LAIKINAS — trinti po DNS perjungimo.\n */\nif (!defined('ABSPATH')) exit;\nif (isset($_SERVER['HTTP_HOST']) && strtolower($_SERVER['HTTP_HOST']) === 'dev.avesa.lt') {\n  header('X-Robots-Tag: noindex, nofollow', true);\n  ob_start(function($html){\n    if (!is_string($html) || $html === '') return $html;\n    $html = str_replace('https://dev.avesa.lt', 'https://dev.avesa.lt', $html);\n    $html = str_replace('https://dev.avesa.lt', 'https://dev.avesa.lt', $html);\n    $html = str_replace('https:\\/\\/petshop.lt', 'https:\\/\\/dev.avesa.lt', $html);\n    $html = str_replace('http:\\/\\/petshop.lt', 'https:\\/\\/dev.avesa.lt', $html);\n    $html = str_replace('//dev.avesa.lt/', '//dev.avesa.lt/', $html);\n    return $html;\n  });\n}\n",
+  "dev_router_root": false,
+  "dev_docroot_files": [
+   "backup-run.php",
+   "dev-router.php",
+   "index.php",
+   "watch-run.php",
+   "wp-load.php"
+  ],
+  "dev_router": "<?php\n/* R194 dev.avesa.lt marsrutizatorius v1.1 — laikinas iki DNS perjungimo.\n   Aptarnauja visa svetaine (statika + PHP) is petshop.lt katalogo. */\n$base = '/home/gyvunai2/domains/petshop.lt/public_html';\n$uri  = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);\n$uri  = rawurldecode((string)$uri);\nif ($uri === '' || $uri[0] !== '/') { $uri = '/'.$uri; }\n$kelias = realpath($base . $uri);\nif ($kelias !== false && is_dir($kelias)) { $kelias = realpath($kelias . '/index.php'); $uri = rtrim($uri,'/').'/index.php'; }\n/* saugikliai */\n$blogas = ($kelias === false)\n  || strncmp($kelias, $base, strlen($base)) !== 0\n  || basename($kelias) === 'wp-config.php'\n  || strpos(basename($kelias), '.ht') === 0\n  || basename($kelias) === 'perkelti-r186.php';\nif ($blogas) {\n  /* ne failas — perduodam WordPress front controlleriui (grazus URL, wp-json, 404 psl.) */\n  $kelias = $base . '/index.php';\n  $_SERVER['SCRIPT_FILENAME'] = $kelias;\n  $_SERVER['SCRIPT_NAME'] = '/index.php';\n  $_SERVER['PHP_SELF'] = '/index.php';\n  chdir($base);\n  require $kelias;\n  exit;\n}\n\n$ext = strtolower(pathinfo($kelias, PATHINFO_EXTENSION));\nif ($ext === 'php') {\n  $_SERVER['SCRIPT_FILENAME'] = $kelias;\n  $_SERVER['SCRIPT_NAME'] = $uri;\n  $_SERVER['PHP_SELF'] = $uri;\n  chdir(dirname($kelias));\n  require $kelias;\n  exit;\n}\n$mime = array(\n 'css'=>'text/css','js'=>'application/javascript','mjs'=>'application/javascript',\n 'png'=>'image/png','jpg'=>'image/jpeg','jpeg'=>'image/jpeg','gif'=>'image/gif','webp'=>",
+  "dev_index": "<?php define('WP_USE_THEMES', true); require '/home/gyvunai2/domains/petshop.lt/public_html/wp-blog-header.php';\n",
+  "dev_ht": "RewriteEngine On\nRewriteBase /\nRewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule . /dev-router.php [L]\n",
+  "siteurl": "https://dev.avesa.lt",
+  "home": "https://dev.avesa.lt"
  }
 }
