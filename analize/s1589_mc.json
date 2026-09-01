@@ -1,13 +1,26 @@
 {
- "v": "dep-203548",
- "authinfo": "{\"error\":{\"code\":403,\"message\":\"Content API for Shopping has not been used in project 683712074632 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/shoppingcontent.googleapis.com/overview?project=683712074632 then retry. If you enabled this API recently,",
+ "v": "dep-203919",
+ "authinfo": "{\"error\":{\"code\":400,\"message\":\"Invalid value at 'account_id' (TYPE_UINT64), \\\"authinfo\\\"\",\"errors\":[{\"message\":\"Invalid value at 'account_id' (TYPE_UINT64), \\\"authinfo\\\"\",\"reason\":\"invalid\"}],\"status\":\"INVALID_ARGUMENT\",\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.BadRequest\",\"fieldViolation",
  "account": {
-  "users": []
+  "name": "Petshop.lt - Gyvūnų prekių parduotuvė",
+  "website": "https://www.petshop.lt",
+  "adsLinks": [
+   {
+    "adsId": "7541530584",
+    "status": "active"
+   }
+  ],
+  "users": [
+   "raimis079@gmail.com:admin",
+   "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com:std"
+  ]
  },
  "status": {
-  "issues": [],
+  "issues": [
+   "invalid_store_name:suggestion"
+  ],
   "products": null
  },
  "feeds": [],
- "shipping": "{\"error\":{\"code\":403,\"message\":\"Content API for Shopping has not been used in project 683712074632 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/shoppingcontent.googleapis.com/overview?project=683712074632 then retry. If you enabled this API recently,"
+ "shipping": "{\"error\":{\"code\":401,\"message\":\"User is not an administrator of account 5321054797.\",\"errors\":[{\"message\":\"User is not an administrator of account 5321054797.\",\"domain\":\"content.ContentErrorDomain\",\"reason\":\"auth/account_access_denied\"}]}}"
 }
