@@ -1,0 +1,61 @@
+{
+ "v": "dep-123951",
+ "kurimas": 200,
+ "sid": 4397,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1566",
+  "gd_webp": true,
+  "imagick": null,
+  "exec": false,
+  "basedir": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads",
+  "disk_free_gb": 391.3,
+  "failai": {
+   "jpg": 53618,
+   "png": 31887,
+   "webp": 33096,
+   "jpg_mb": 2349,
+   "png_mb": 4557,
+   "webp_has_jpg": 17050
+  },
+  "sample": [
+   "/hero-prenumerata.jpg",
+   "/petshop-legacy/images/dalmantinas/petshop-1748282699-1170x350_crop_0.jpg",
+   "/petshop-legacy/images/dalmantinas/petshop-1748282699-1200x630_crop_0.jpg"
+  ],
+  "scan_s": 2.1,
+  "test": {
+   "src_kb": 129,
+   "webp_kb": 66,
+   "ms": 154
+  },
+  "ht_webp": 2,
+  "ht_markers": [
+   "# BEGIN Petshop Cache (H089, 2026-08-19)",
+   "# END Petshop Cache",
+   "# BEGIN WordPress",
+   "# END WordPress",
+   "# BEGIN ShortPixelWebp",
+   "# END ShortPixelWebp"
+  ],
+  "apache_modules": "n/a (php-fpm)",
+  "server_sw": "Apache",
+  "php_mem": "256M",
+  "max_exec": "250",
+  "image_sizes": {
+   "thumbnail": "280x280",
+   "medium": "800x400",
+   "medium_large": "768x0",
+   "large": "1400x800",
+   "1536x1536": "1536x1536",
+   "2048x2048": "2048x2048",
+   "woocommerce_thumbnail": "300x0",
+   "woocommerce_single": "800x0",
+   "woocommerce_gallery_thumbnail": "100x100"
+  },
+  "attachments_jpgpng": 8240
+ }
+}
