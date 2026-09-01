@@ -1,0 +1,150 @@
+{
+ "v": "dep-114518",
+ "kurimas": 200,
+ "sid": 4388,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1563",
+  "faze": "DIEGTI",
+  "greitis_md5": "53f59123000999f2d84b3745925f8b58",
+  "mods_backup_B": 3179,
+  "mods_po": {
+   "type_headings": {
+    "font-family": "Open Sans",
+    "variant": "700"
+   },
+   "type_texts": {
+    "font-family": "Open Sans",
+    "variant": "regular"
+   },
+   "type_nav": {
+    "font-family": "Open Sans",
+    "variant": "600"
+   },
+   "type_alt": {
+    "font-family": "Open Sans",
+    "variant": "regular"
+   },
+   "disable_fonts": 1
+  },
+  "gtm_updated": 1
+ },
+ "VER": {
+  "v": "S1563",
+  "faze": "VER",
+  "klase": true,
+  "p": {
+   "pradinis": {
+    "head_src": [
+     "/wp-includes/js/jquery/jquery.min.js",
+     "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockU [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js [defer]"
+    ],
+    "fonts": [
+     "OpenSans-Regular.woff2",
+     "OpenSans-Semibold.woff2",
+     "OpenSans-Bold.woff2",
+     "fl-icons.woff2?v=3.20.7",
+     "fl-icons.woff?v=3.20.7"
+    ],
+    "families": {
+     "Open Sans": 8
+    },
+    "gtm_loader": "v2",
+    "emoji": false,
+    "migrate": false,
+    "lp": false,
+    "select2": false,
+    "kb": 228
+   },
+   "kategorija": {
+    "head_src": [
+     "/wp-includes/js/jquery/jquery.min.js",
+     "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockU [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js [defer]"
+    ],
+    "fonts": [
+     "OpenSans-Regular.woff2",
+     "OpenSans-Semibold.woff2",
+     "OpenSans-Bold.woff2",
+     "fl-icons.woff2?v=3.20.7",
+     "fl-icons.woff?v=3.20.7"
+    ],
+    "families": {
+     "Open Sans": 8
+    },
+    "gtm_loader": "v2",
+    "emoji": false,
+    "migrate": false,
+    "lp": false,
+    "select2": false,
+    "kb": 316
+   },
+   "preke": {
+    "head_src": [
+     "/wp-includes/js/jquery/jquery.min.js",
+     "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockU [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-def [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min. [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js [defer]"
+    ],
+    "fonts": [
+     "OpenSans-Regular.woff2",
+     "OpenSans-Semibold.woff2",
+     "OpenSans-Bold.woff2",
+     "fl-icons.woff2?v=3.20.7",
+     "fl-icons.woff?v=3.20.7"
+    ],
+    "families": {
+     "Open Sans": 8
+    },
+    "gtm_loader": "v2",
+    "emoji": false,
+    "migrate": false,
+    "lp": false,
+    "select2": false,
+    "kb": 273
+   },
+   "kasa": {
+    "head_src": [
+     "/wp-includes/js/jquery/jquery.min.js",
+     "/wp-content/plugins/wc-venipak-shipping/public/js/woocommerce-shopup-v",
+     "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost",
+     "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockU [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min. [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/cart.min.js [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min [defer]"
+    ],
+    "fonts": [
+     "OpenSans-Regular.woff2",
+     "OpenSans-Semibold.woff2",
+     "OpenSans-Bold.woff2",
+     "fl-icons.woff2?v=3.20.7",
+     "fl-icons.woff?v=3.20.7"
+    ],
+    "families": {
+     "Open Sans": 8
+    },
+    "gtm_loader": "v2",
+    "emoji": false,
+    "migrate": false,
+    "lp": true,
+    "select2": true,
+    "kb": 215
+   }
+  }
+ }
+}
