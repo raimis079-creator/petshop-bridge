@@ -1,0 +1,37 @@
+{
+ "v": "dep-115258",
+ "kurimas": 200,
+ "sid": 4389,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1564",
+  "B": 878,
+  "ctx": [
+   "HTTP_HOST']) && strtolower($_SERVER['HTTP_HOST']) === 'dev.avesa.lt') {",
+   "ob_start(function($html){",
+   "str_replace('https://dev.avesa.lt', 'https://dev.avesa.lt', $html);",
+   "str_replace('https://dev.avesa.lt', 'https://dev.avesa.lt', $html);",
+   "str_replace('https:\\/\\/petshop.lt', 'https:\\/\\/dev.avesa.lt', $html);",
+   "str_replace('http:\\/\\/petshop.lt', 'https:\\/\\/dev.avesa.lt', $html);",
+   "str_replace('//dev.avesa.lt/', '//dev.avesa.lt/', $html);"
+  ],
+  "cache_home": {
+   "mtime": "11:46:31",
+   "dev": 334,
+   "prod": 20
+  },
+  "live": {
+   "dev": 334,
+   "prod": 20,
+   "cc": null
+  },
+  "prod_urls": [
+   "https://dev.avesa.lt/kategorija/rinkiniai/",
+   "https://dev.avesa.lt/pasiulymai/",
+   "https://dev.avesa.lt/daugiau-pigiau/"
+  ]
+ }
+}
