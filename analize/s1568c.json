@@ -1,8 +1,70 @@
 {
- "home": "200 text/html; charset=UTF-8 0 \n48545450",
- "jpg_webp": "200 image/webp 64408 \n52494646",
- "jpg_plain": "200 image/jpeg 149478 \nffd8ffe0",
- "jpg_hdrs": "HTTP/2 200 \nvary: Accept\nlast-modified: Tue, 01 Sep 2026 12:57:19 GMT\netag: \"fb98-65a6b75771e49\"\naccept-ranges: bytes\ncontent-length: 64408\ncache-control: public, max-age=31536000\nexpires: Wed, 01 Sep 2027 13:18:01 GMT\ncontent-type: image/webp\ndate: Tue, 01 Sep 2026 13:18:01 GMT\nserver: Apache\n\n",
- "taksas": "200 text/html; charset=UTF-8 0 \n48545450",
- "font": "200  0 \n48545450"
+ "v": "dep-144932",
+ "kurimas": 200,
+ "sid": 4410,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1568c",
+  "79.98.29.24": {
+   "jpg_webp": [
+    200,
+    "image/webp",
+    64408,
+    "RIFF(webp)",
+    "Accept",
+    "Apache",
+    null
+   ],
+   "jpg_plain": [
+    200,
+    "image/jpeg",
+    149478,
+    "ffd8ff",
+    "Accept",
+    "Apache",
+    null
+   ],
+   "home": [
+    301,
+    "text/html; charset=UTF-8",
+    0,
+    "",
+    "Accept-Encoding,Cookie",
+    "Apache",
+    "https://dev.avesa.lt/"
+   ]
+  },
+  "127.0.0.1": {
+   "jpg_webp": [
+    200,
+    "text/html",
+    665,
+    "3c6874",
+    "Accept-Encoding",
+    "Apache",
+    null
+   ],
+   "jpg_plain": [
+    200,
+    "text/html",
+    665,
+    "3c6874",
+    "Accept-Encoding",
+    "Apache",
+    null
+   ],
+   "home": [
+    200,
+    "text/html",
+    665,
+    "Svetainė neegzistuoja",
+    "Accept-Encoding",
+    "Apache",
+    null
+   ]
+  }
+ }
 }
