@@ -1,0 +1,96 @@
+{
+ "v": "dep-095236",
+ "kurimas": 200,
+ "sid": 4377,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "ON": {
+  "v": "S1555c",
+  "faze": "ON",
+  "log": {
+   "wp_cache_debug_log": "ps_s1555c_debug.php",
+   "wp_cache_debug_username": "ps1555"
+  },
+  "dev_router": "",
+  "htaccess": "# BEGIN Petshop Cache (H089, 2026-08-19)\n<IfModule mod_expires.c>\n  ExpiresActive On\n  ExpiresByType text/css \"access plus 1 year\"\n  ExpiresByType application/javascript \"access plus 1 year\"\n  ExpiresByType text/javascript \"access plus 1 year\"\n  ExpiresByType image/jpeg \"access plus 1 year\"\n  ExpiresByType image/png \"access plus 1 year\"\n  ExpiresByType image/gif \"access plus 1 year\"\n  ExpiresByType image/webp \"access plus 1 year\"\n  ExpiresByType image/svg+xml \"access plus 1 year\"\n  ExpiresByType font/woff2 \"access plus 1 year\"\n</IfModule>\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">\n    Header set Cache-Control \"public, max-age=31536000\"\n  </FilesMatch>\n</IfModule>\n# END Petshop Cache\n\n# Block the include-only files.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^wp-admin/includes/ - [F,L]\nRewriteRule !^wp-includes/ - [S=3]\nRewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\nRewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\nRewriteRule ^wp-includes/theme-compat/ - [F,L]\n</IfModule>\n<Files wp-config.php>\n<IfModule !mod_authz_core.c>\norder allow,deny\ndeny from all\n</IfModule>\n<IfModule mod_authz_core.c>\nrequire all denied\n</IfModule>\n</Files>\n\n# BEGIN WordPress\n# Instrukcijos (eilutės) tarp \"BEGIN WordPress\" ir \"END WordPress\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n",
+  "adv": "<?php\n// WP SUPER CACHE 1.2\nfunction wpcache_broken_message() {\n\tglobal $wp_cache_config_file;\n\tif ( isset( $wp_cache_config_file ) == false ) {\n\t\treturn '';\n\t}\n\n\t$doing_ajax     = defined( 'DOING_AJAX' ) && DOING_AJAX;\n\t$xmlrpc_request = defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST;\n\t$rest_request   = defined( 'REST_REQUEST' ) && REST_REQUEST;\n\t$robots_request = strpos( $_SERVER['REQUEST_URI'], 'robots.txt' ) != false;\n\n\t$skip_output = ( $doing_ajax || $xmlrpc_request || $rest_request || $robots_request );\n\tif ( false == strpos( $_SERVER['REQUEST_URI'], 'wp-admin' ) && ! $skip_output ) {\n\t\te"
+ },
+ "READ": {
+  "v": "S1555c",
+  "faze": "READ",
+  "ms": [
+   1024,
+   1569,
+   1220,
+   1204
+  ],
+  "logs": [
+   "ps_s1555c_debug.php",
+   "view_ps_s1555c_debug.php"
+  ],
+  "log_tail": [
+   "if ( !isset( $_SERVER[ \"PHP_AUTH_USER\" ] ) || ( $_SERVER[ \"PHP_AUTH_USER\" ] != \"ps1555\" && $_SERVER[ \"PHP_AUTH_PW\" ] != \"ps1555\" ) ) {",
+   "\theader( \"WWW-Authenticate: Basic realm=\\\"WP-Super-Cache Debug Log\\\"\" );",
+   "\theader( $_SERVER[ \"SERVER_PROTOCOL\" ] . \" 401 Unauthorized\" );",
+   "\techo \"You must login to view the debug log\";",
+   "\texit( 0 );",
+   "}",
+   "$debug_log = file( \"./ps_s1555c_debug.php\" );",
+   "$start_log = 1 + array_search( \"\" . PHP_EOL, $debug_log );",
+   "if ( $start_log > 1 ) {",
+   "\t$debug_log = array_slice( $debug_log, $start_log );",
+   "}",
+   "$checks = array( \"wp-admin\", \"exclude_filter\", \"wp-content\", \"wp-json\" );",
+   "foreach( $checks as $check ) {",
+   "\tif ( isset( $_GET[ $check ] ) ) {",
+   "\t\t$$check = 1;",
+   "\t} else {",
+   "\t\t$$check = 0;",
+   "\t}",
+   "}",
+   "if ( isset( $_GET[ \"filter\" ] ) ) {",
+   "\t$filter = htmlspecialchars( $_GET[ \"filter\" ] );",
+   "} else {",
+   "\t$filter = \"\";",
+   "}",
+   "unset( $checks[1] ); // exclude_filter",
+   "WP Super Cache Log Viewer",
+   "Warning! Do not copy and paste this log file to a public website!",
+   "This log file contains sensitive information about your website such as cookies and directories.",
+   "If you must share it please remove any cookies and remove any directories such as /home/gyvunai2/domains/petshop.lt/public_html/.",
+   "Exclude requests: ",
+   "",
+   "Text to filter by:",
+   "",
+   "",
+   "$path_to_site = \"/home/gyvunai2/domains/petshop.lt/public_html/\";",
+   "foreach ( $debug_log as $t => $line ) {",
+   "\t$line = str_replace( $path_to_site, \"ABSPATH/\", $line );",
+   "\t$debug_log[ $t ] = $line;",
+   "\tforeach( $checks as $check ) {",
+   "\t\tif ( $$check && str_contains( $line, \" /$check/\" ) ) {",
+   "\t\t\tunset( $debug_log[ $t ] );",
+   "\t\t}",
+   "\t}",
+   "\tif ( $filter ) {",
+   "\t\tif ( str_contains( $line, $filter ) && $exclude_filter ) {",
+   "\t\t\tunset( $debug_log[ $t ] );",
+   "\t\t} elseif ( ! str_contains( $line, $filter ) && ! $exclude_filter ) {",
+   "\t\t\tunset( $debug_log[ $t ] );",
+   "\t\t}",
+   "\t}",
+   "}",
+   "echo \"\";",
+   "foreach( $debug_log as $line ) {",
+   "\techo htmlspecialchars( $line );",
+   "}",
+   "echo \"\";"
+  ],
+  "files_now": [
+   "dev.avesa.lt/taksas/index-https.html",
+   "dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/index-https.html"
+  ]
+ }
+}
