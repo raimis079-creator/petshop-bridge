@@ -1,0 +1,294 @@
+{
+ "v": "dep-082105",
+ "kurimas": 200,
+ "sid": 4366,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1549d",
+  "faze": "DIEGTI",
+  "B": 42699,
+  "md5": "82ed883520dc60e47d59b103daef021b"
+ },
+ "VER": {
+  "v": "S1549d",
+  "faze": "VER",
+  "ver": "1.2",
+  "qa": [
+   {
+    "id": "6",
+    "data_at": "2026-09-01 08:20:19",
+    "tipas": "redirect",
+    "tikrinta": "1101",
+    "ok": "787",
+    "santrauka": "runner: visas žemėlapis 1101 · ok 787 · klaidų 314 · 446s",
+    "kb": "33258"
+   },
+   {
+    "id": "5",
+    "data_at": "2026-09-01 08:14:20",
+    "tipas": "cwv",
+    "tikrinta": "3",
+    "ok": "0",
+    "santrauka": "ERR · ERR · ERR",
+    "kb": "570"
+   },
+   {
+    "id": "4",
+    "data_at": "2026-09-01 08:07:09",
+    "tipas": "sitemap",
+    "tikrinta": "1",
+    "ok": "1",
+    "santrauka": "url 2861 · failai 18/18 · blog_public 0",
+    "kb": "52"
+   },
+   {
+    "id": "3",
+    "data_at": "2026-09-01 08:06:40",
+    "tipas": "redirect",
+    "tikrinta": "100",
+    "ok": "18",
+    "santrauka": "S1549 top 60 + rotacija nuo 0 · iš 1101 · ok 18 · klaidų 1",
+    "kb": "57"
+   },
+   {
+    "id": "2",
+    "data_at": "2026-09-01 08:05:54",
+    "tipas": "gsc",
+    "tikrinta": "1",
+    "ok": "1",
+    "santrauka": "S1549 backfill 2026-06-01..2026-08-29",
+    "kb": "18"
+   },
+   {
+    "id": "1",
+    "data_at": "2026-09-01 08:05:44",
+    "tipas": "gsc_sitemap",
+    "tikrinta": "9",
+    "ok": "3",
+    "santrauka": "9 sitemap GSC, su klaidomis: 6",
+    "kb": "1206"
+   }
+  ],
+  "redirect_klaidos": [
+   {
+    "k": "katems/skanestai-katems",
+    "p": "grandinė 301→302 wp-admin"
+   },
+   {
+    "k": "kita-446007278/daugiau-pigiau/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g",
+    "p": "301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g"
+   },
+   {
+    "k": "sienas-grauzikams-ekologiskas-450-g",
+    "p": "301→404 product/sienas-grauzikams-ekologiskas-450-g"
+   },
+   {
+    "k": "24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g",
+    "p": "301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g"
+   },
+   {
+    "k": "20-vnt-kiaules-ausu",
+    "p": "301→404 product/20-vnt-kiaules-ausu"
+   },
+   {
+    "k": "gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g",
+    "p": "301→404 product/gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g"
+   },
+   {
+    "k": "24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g",
+    "p": "301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g"
+   },
+   {
+    "k": "zirkles-gyvuno-kailiui-filiruoti-16-cm",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "zirklutes-gyvuno-nagams-kirpti-gimdog-nailclipper-7x14-cm",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "zaislas-suniui-pliusinis-ananasas-17-cm-su-cypliuku-ir-cezanciais-lapais",
+    "p": "301→429 product/zaislas-suniui-pliusinis-ananasas-17-cm-su-cypliuku-ir-cezanciais-lapais"
+   },
+   {
+    "k": "zaislas-suniui-stanga-su-juostele",
+    "p": "301→429 product/zaislas-suniui-stanga-su-juostele"
+   },
+   {
+    "k": "zirklutes-gyvuno-nagams-kirpti-vidutines-m-zolux",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "zaislas-suniui-skanestams-deti-9-cm",
+    "p": "301→429 product/zaislas-suniui-skanestams-deti-9-cm"
+   },
+   {
+    "k": "zaislas-suniui-vinilinis-frankensteinas-12-cm",
+    "p": "301→429 product/zaislas-suniui-vinilinis-frankensteinas-12-cm"
+   },
+   {
+    "k": "zolux-anah-dvigubos-rotacines-sukos-sunims-universalaus-dydzio",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "zolux-anah-sepetys-katems-minkstas",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "20-vnt-rudu-jaucio-ausu",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-kalmarais-100-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-carny-adult-beef-heart-konservai-katems-su-sviezia-jautiena-ir-sirdimis-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "20-vnt-baltu-jaucio-ausu",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-beef-konservai-sunims-su-sviezia-jautiena-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-beef-chicken-konservai-sunims-su-sviezia-jautiena-ir-vistiena-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-beef-chicken-konservai-sunims-su-sviezia-jautiena-ir-vistiena-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-beef-lamb-konservai-sunims-su-sviezia-jautiena-ir-eriena-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-beef-rabbit-with-herbs-konservai-suaugusiems-sunims-su-sviezia-jautiena-ir-triusiena-paskaninta-zolelemis-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-carny-adult-beef-turkey-shrimp-konservai-katems-su-sviezia-jautiena-kalakutiena-ir-krevetemis-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-suaugusiems-sunims-su-kalakutiena-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-suaugusiems-sunims-su-kalakutiena-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-suaugusiems-sunims-su-zveriena-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-sunims-su-elniena-pagardinta-obuoliais-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-suaugusiems-sunims-su-zveriena-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-duck-konservai-suaugusiems-sunims-su-sviezia-antiena-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-sunims-su-sirdimis-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-sunims-su-elniena-pagardinta-obuoliais-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-konservai-sunims-su-lasisa-praturtinta-spinatais-400g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-multi-meat-coctail-konservai-suaugusiems-sunims-mesos-kokteilis-800-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-poultry-hearts-konservai-suaugusiems-sunims-su-paukstienos-sirdelemis-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   },
+   {
+    "k": "animonda-grancarno-adult-multi-meat-coctail-konservai-suaugusiems-sunims-mesos-kokteilis-400-g",
+    "p": "HTTP 429 (laukta 301)"
+   }
+  ],
+  "n404": [
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": ""
+   },
+   {
+    "kelias": "product/gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": ""
+   },
+   {
+    "kelias": "product/20-vnt-kiaules-ausu",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": ""
+   },
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": ""
+   },
+   {
+    "kelias": "product/sienas-grauzikams-ekologiskas-450-g",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": ""
+   },
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": ""
+   }
+  ],
+  "temp": [
+   "4352 TEMP PS dep-211603 a=0",
+   "4353 TEMP PS dep-212001 a=0",
+   "4354 TEMP PS S1548h a=0",
+   "4355 TEMP PS dep-212837 a=0",
+   "4356 TEMP PS dep-213138 a=0",
+   "4357 TEMP PS S1549vis a=0",
+   "4358 TEMP PS dep-072906 a=0",
+   "4359 TEMP PS dep-073107 a=0",
+   "4360 TEMP PS dep-073323 a=0",
+   "4361 TEMP PS dep-073459 a=0",
+   "4362 TEMP PS dep-075524 a=0",
+   "4363 TEMP PS dep-080423 a=0",
+   "4364 TEMP PS dep-080925 a=0",
+   "4365 TEMP PS S1549c ck+cwv a=0",
+   "4366 TEMP PS dep-082105 a=1"
+  ],
+  "perj": ""
+ }
+}
