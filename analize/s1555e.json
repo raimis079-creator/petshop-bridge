@@ -1,0 +1,33 @@
+{
+ "v": "dep-095806",
+ "kurimas": 200,
+ "sid": 4379,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1555e",
+  "ob_hits": [
+   "petshop-desk.php",
+   "petshop-dev-veidrodis.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php"
+  ],
+  "wpconfig_ob": false,
+  "wpconfig_dev": [
+   "/* R194 dev veidrodis — laikinas iki DNS perjungimo, po jo istrinti */",
+   "define('WP_CACHE', true);",
+   "if ( isset( $_SERVER['HTTP_HOST'] ) && strtolower( $_SERVER['HTTP_HOST'] ) === 'dev.avesa.lt' ) {",
+   "\tdefine( 'WP_HOME', 'https://dev.avesa.lt' );",
+   "\tdefine( 'WP_SITEURL', 'https://dev.avesa.lt' );",
+   " * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/",
+   " * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#table-prefix",
+   " * For developers: WordPress debugging mode.",
+   " * Change this to true to enable the display of notices during development.",
+   " * It is strongly recommended that plugin and theme developers use WP_DEBUG",
+   " * in their development environments.",
+   " * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/"
+  ]
+ }
+}
