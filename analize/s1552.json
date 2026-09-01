@@ -1,0 +1,319 @@
+{
+ "v": "dep-092601",
+ "kurimas": 200,
+ "sid": 4371,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1552",
+  "puslapiai": {
+   "/": {
+    "ttfb_ms": [
+     1064,
+     1335
+    ],
+    "html_kb": 237,
+    "cache_hdr": {
+     "server": "Apache",
+     "content-encoding": "gzip"
+    },
+    "scripts": 20,
+    "inline_scripts": 25,
+    "css_links": 11,
+    "imgs": 20,
+    "imgs_lazy": 15,
+    "fetchpriority_high": 0,
+    "preload": 2,
+    "fonts_google": 0,
+    "gtm": true,
+    "script_hosts": {
+     "dev.avesa.lt": 19,
+     "cdn.jsdelivr.net": 1
+    },
+    "img_top": [
+     {
+      "src": "/wp-content/uploads/2026/05/logo.jpg",
+      "w": "272",
+      "kb": 6,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "/wp-content/uploads/2026/05/logo.jpg",
+      "w": "272",
+      "kb": 6,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "//dev.avesa.lt/wp-content/uploads/2026/07/upl_logo-mark-v2.png?v=20260709-e5b",
+      "w": "22",
+      "kb": null,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "//dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-sunims-v2.webp?v=20260709-e5b",
+      "w": "96",
+      "kb": null,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "//dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-katems-v2.webp?v=20260709-e5b",
+      "w": "96",
+      "kb": null,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "//dev.avesa.lt/wp-content/uploads/2026/07/upl_cat-grauzikams-v2.webp?v=20260709-e5b",
+      "w": "96",
+      "kb": null,
+      "lazy": true,
+      "srcset": false
+     }
+    ],
+    "bg_imgs": [
+     "data:image/svg+xml,%3Csvg xmlns=",
+     "//dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b",
+     "//dev.avesa.lt/wp-content/uploads/2026/07/banner-starter.webp?v=20260709-e5b",
+     "//dev.avesa.lt/wp-content/uploads/2026/07/banner-deals.webp?v=20260709-e5b"
+    ]
+   },
+   "kategorija/animonda-konservai-sunims": {
+    "ttfb_ms": [
+     1419,
+     2033
+    ],
+    "html_kb": 324,
+    "cache_hdr": {
+     "server": "Apache",
+     "content-encoding": "gzip"
+    },
+    "scripts": 31,
+    "inline_scripts": 31,
+    "css_links": 11,
+    "imgs": 48,
+    "imgs_lazy": 43,
+    "fetchpriority_high": 1,
+    "preload": 2,
+    "fonts_google": 0,
+    "gtm": true,
+    "script_hosts": {
+     "dev.avesa.lt": 30,
+     "cdn.jsdelivr.net": 1
+    },
+    "img_top": [
+     {
+      "src": "/wp-content/uploads/2026/05/logo.jpg",
+      "w": "272",
+      "kb": 6,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "/wp-content/uploads/2026/05/logo.jpg",
+      "w": "272",
+      "kb": 6,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "/wp-content/uploads/2026/06/vistiena-82741-animonda-grancarno-adult_1774536313-300x300.jpg",
+      "w": "300",
+      "kb": 12,
+      "lazy": false,
+      "srcset": true
+     },
+     {
+      "src": "/wp-content/uploads/2026/06/82741-animonda-grancarno-adult-jautiena-su-vistiena-konservai-",
+      "w": "300",
+      "kb": 26,
+      "lazy": false,
+      "srcset": true
+     },
+     {
+      "src": "/wp-content/uploads/2026/06/anciu-sirdeles-82746-animonda-grancarno-adult_1774520097-300x3",
+      "w": "300",
+      "kb": 12,
+      "lazy": false,
+      "srcset": true
+     },
+     {
+      "src": "/wp-content/uploads/2026/06/82746-animonda-grancarno-adult-jautiena-su-anciu-sirdelemis-ko",
+      "w": "300",
+      "kb": 31,
+      "lazy": true,
+      "srcset": true
+     }
+    ],
+    "bg_imgs": [
+     "data:image/svg+xml,%3Csvg xmlns="
+    ]
+   },
+   "product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems": {
+    "ttfb_ms": [
+     1476,
+     1200
+    ],
+    "html_kb": 281,
+    "cache_hdr": {
+     "server": "Apache",
+     "cache-control": "no-cache, must-revalidate, max-age=0, no-store, private",
+     "content-encoding": "gzip"
+    },
+    "scripts": 27,
+    "inline_scripts": 35,
+    "css_links": 14,
+    "imgs": 27,
+    "imgs_lazy": 17,
+    "fetchpriority_high": 1,
+    "preload": 2,
+    "fonts_google": 0,
+    "gtm": true,
+    "script_hosts": {
+     "dev.avesa.lt": 26,
+     "cdn.jsdelivr.net": 1
+    },
+    "img_top": [
+     {
+      "src": "",
+      "w": null,
+      "kb": null,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "/wp-content/uploads/2026/05/logo.jpg",
+      "w": "272",
+      "kb": 6,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "/wp-content/uploads/2026/05/logo.jpg",
+      "w": "272",
+      "kb": 6,
+      "lazy": false,
+      "srcset": false
+     },
+     {
+      "src": "/wp-content/uploads/2026/06/royal-canin-fussy-exigent-sausas-maistas-katems_1773739829.jpg",
+      "w": "460",
+      "kb": 11,
+      "lazy": false,
+      "srcset": true
+     },
+     {
+      "src": "/wp-content/uploads/2026/06/royal-canin-fussy-exigent-sausas-maistas-katems_1773739829-1.j",
+      "w": "460",
+      "kb": 11,
+      "lazy": false,
+      "srcset": true
+     },
+     {
+      "src": "/wp-content/uploads/2026/06/royal-canin-fussy-exigent-sausas-maistas-katems_1773739829-300",
+      "w": "300",
+      "kb": 6,
+      "lazy": false,
+      "srcset": false
+     }
+    ],
+    "bg_imgs": [
+     "data:image/svg+xml,%3Csvg xmlns=",
+     "/wp-content/uploads/2026/06/royal-canin-fussy-exigent-sausas-maistas-katems_1773739829.jpg"
+    ]
+   }
+  },
+  "php": "8.3.20",
+  "opcache": true,
+  "object_cache": null,
+  "object_cache_file": false,
+  "advanced_cache": false,
+  "WP_CACHE": false,
+  "plugins_n": 26,
+  "cache_plugins": [],
+  "plugins": {
+   "0": "code-snippets",
+   "1": "complianz-gdpr",
+   "2": "loco-translate",
+   "3": "petshop-attributes",
+   "4": "petshop-core",
+   "5": "petshop-esp",
+   "6": "petshop-fbt",
+   "7": "petshop-feeds",
+   "8": "petshop-fonts",
+   "9": "petshop-pragma",
+   "10": "petshop-promotions",
+   "11": "petshop-xml",
+   "12": "seo-by-rank-math",
+   "14": "wc-venipak-shipping",
+   "15": "woo-lithuaniapost-main",
+   "16": "woo-payment-gateway-paysera",
+   "17": "woo-update-manager",
+   "18": "woocommerce-delivery-notes",
+   "19": "woocommerce-mix-and-match-products",
+   "20": "woocommerce-xml-csv-product-import",
+   "21": "woocommerce",
+   "22": "wordpress-importer",
+   "23": "wp-all-import-pro",
+   "24": "wp-mail-smtp",
+   "25": "wpforms-lite",
+   "26": "yith-woocommerce-ajax-navigation"
+  },
+  "mu_n": 107,
+  "snippets_active": 71,
+  "autoload_kb": 81,
+  "autoload_top": [
+   {
+    "n": "_transient_wp_core_block_css_files",
+    "kb": "22"
+   },
+   {
+    "n": "cron",
+    "kb": "13"
+   },
+   {
+    "n": "gaj6_user_roles",
+    "kb": "10"
+   },
+   {
+    "n": "_transient_wc_attribute_taxonomies",
+    "kb": "6"
+   },
+   {
+    "n": "theme_mods_flatsome-child",
+    "kb": "4"
+   },
+   {
+    "n": "jetpack_sync_settings_taxonomies_blacklist",
+    "kb": "4"
+   },
+   {
+    "n": "jetpack_sync_settings_post_meta_whitelist",
+    "kb": "3"
+   },
+   {
+    "n": "active_plugins",
+    "kb": "1"
+   }
+  ],
+  "transients_n": 381,
+  "postmeta_rows": 237166,
+  "db_mb": 396.5,
+  "webp_n": 192,
+  "jpgpng_n": 8240,
+  "flatsome_lazy": 0,
+  "flatsome_opt": {
+   "minify": false,
+   "jquery_footer": false,
+   "flatsome_lightbox": false
+  },
+  "home_id": "34543",
+  "dev_router": false,
+  "htaccess_gzip": true
+ }
+}
