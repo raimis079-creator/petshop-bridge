@@ -1,0 +1,53 @@
+{
+ "v": "dep-121845",
+ "kurimas": 200,
+ "sid": 4394,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1565",
+  "faze": "DIEGTI",
+  "old_B": 2758,
+  "old_md5": "c3b670e438ccfb8d1beaee5bb4ddaa53",
+  "old_hooks": [
+   "add_action('wp_head', 'petshop_fonts_inject_css', 5)",
+   "add_action('wp_head', 'petshop_fonts_preload', 1)",
+   "add_action('admin_notices', 'petshop_fonts_admin_notice')"
+  ],
+  "old_fns": [
+   "petshop_fonts_inject_css",
+   "petshop_fonts_preload",
+   "petshop_fonts_activate",
+   "petshop_fonts_admin_notice"
+  ],
+  "md5": "61f4a0801d40c44fd887de7dcbf37253",
+  "fonts_dir": [
+   "OpenSans-Bold-lt.woff2 18KB",
+   "OpenSans-Bold.woff2 60KB",
+   "OpenSans-Regular-lt.woff2 17KB",
+   "OpenSans-Regular.woff2 59KB",
+   "OpenSans-Semibold-lt.woff2 18KB",
+   "OpenSans-Semibold.woff2 60KB"
+  ]
+ },
+ "VER": {
+  "v": "S1565",
+  "faze": "VER",
+  "fonts": [
+   "OpenSans-Regular-lt.woff2",
+   "OpenSans-Semibold-lt.woff2",
+   "OpenSans-Bold-lt.woff2",
+   "fl-icons.woff2?v=3.20.7",
+   "fl-icons.woff?v=3.20.7"
+  ],
+  "preload": 2,
+  "preload_lt": 2,
+  "http": {
+   "Regular": "200 17568B",
+   "Semibold": "200 18348B",
+   "Bold": "200 18292B"
+  }
+ }
+}
