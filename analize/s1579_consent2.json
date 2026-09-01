@@ -1,0 +1,86 @@
+{
+ "v": "S1579",
+ "mob_priimti": {
+  "errs": [],
+  "pries": [
+   "gtm.js"
+  ],
+  "po": [
+   "gtag.js",
+   "fb:js",
+   "ads:ad.doubleclick.net",
+   "ga4:G111:page_view",
+   "ads:stats.g.doubleclick.net",
+   "ads:googleads.g.doubleclick.net",
+   "ads:www.google.com",
+   "fb:PageView",
+   "gtm.js",
+   "ga4:G111:",
+   "ga4:G111:add_to_cart"
+  ],
+  "docs": [
+   "/ 200 234083",
+   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/ 200 282508"
+  ],
+  "po_veiksmo": {
+   "banner_matomas": false,
+   "consent_update": "[{\"analytics_storage\":\"granted\",\"ad_storage\":\"granted\",\"ad_user_data\":\"granted\",\"ad_personalization\":\"granted\"}]",
+   "cmplz": [
+    "cmplz_marketing=allow",
+    "cmplz_statistics=allow",
+    "cmplz_banner-status=dismissed"
+   ]
+  },
+  "cart_fragment": "1",
+  "po_prekes": {
+   "dl": [
+    "cmplz_consent_update",
+    "add_to_cart",
+    "view_item",
+    "cmplz_consent_update"
+   ],
+   "banner_matomas": false,
+   "gtag": "undefined"
+  },
+  "cookies_po": [
+   "_gcl_au",
+   "_ga",
+   "_fbp",
+   "_ga_FMTKEGGLMG"
+  ]
+ },
+ "mob_atmesti": {
+  "errs": [],
+  "pries": [
+   "gtm.js"
+  ],
+  "po": [
+   "gtm.js"
+  ],
+  "docs": [
+   "/ 200 234083",
+   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/ 200 279788"
+  ],
+  "po_veiksmo": {
+   "banner_matomas": false,
+   "consent_update": "[{\"analytics_storage\":\"denied\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\"}]",
+   "cmplz": [
+    "cmplz_banner-status=dismissed",
+    "cmplz_marketing=deny",
+    "cmplz_statistics=deny"
+   ]
+  },
+  "cart_fragment": "1",
+  "po_prekes": {
+   "dl": [
+    "cmplz_consent_update",
+    "add_to_cart",
+    "view_item",
+    "cmplz_consent_update"
+   ],
+   "banner_matomas": false,
+   "gtag": "undefined"
+  },
+  "cookies_po": []
+ }
+}
