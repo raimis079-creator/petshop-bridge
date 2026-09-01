@@ -1,0 +1,92 @@
+{
+ "v": "dep-155002",
+ "kurimas": 200,
+ "sid": 4418,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1574",
+  "legacy_kodas": "<?php\n/**\n * Petshop Legacy 301 v2.0 (S436) — senos platformos adresų nukreipimas.\n *\n * Vienas mechanizmas visiems seniems adresams. Žemėlapis laikomas ATSKIRAME\n * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena\n * užklausa neparsintų 137 KB PHP masyvo.\n *\n * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL / 19 735 clicks / 16 mėn.):\n *   1. kategorijos be /kategorija/ priešdėlio          34 · 1 596\n *   2. seni URL su ID uodegomis                        42 ·   666\n *   3. pervadinti slug                                 10 ·    30\n *   4. produktai iš šaknies → /product/                805 · 2 968\n *   5. likusios kategorijos                            24 ·   102\n *   6. brendai → /gamintojas/                          22 ·   501\n *\n * KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion\n * (218 clicks) SPĖJIMU 301-ina į ATSITIKTINĮ SKU. TŽ v1.56 tai įspėjo, ir\n * 2026-08-04 tai vis dar vyko.\n *\n * VARTAI:\n *   - TIK tiksliam adresui iš žemėlapio, TIK kai jis DABAR 404\n *   - vienas 301 tiesiai į galutinį 200, jokių grandinių\n *   - JOKIO „panašiausio URL\" spėjimo\n *   - redirect_canonical išjungiamas TIK mūsų atpažintam adresui\n *   - X-Redirect-By: Petshop-Legacy-Category\n *\n * ĮŠALDYTA, NE DINAMINIS. Naujoms kategorijoms/prekėms taisyklės NEKURIAMOS.\n * Naujas įrašas — tik rankiniu būdu su GSC pagrindimu.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nconst PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';\n\nfunction petshop_legacy_301_map() {\n\tstatic $m = null;\n\tif ( null !== $m ) { return $m; }\n\t$raw = @file_get_contents( PS_LEGACY_301_MAP );\n\t$m   = ( false === $raw ) ? array() : (array) json_decode( $raw, true );\n\treturn $m;\n}\n\nfunction petshop_legacy_301_path() {\n\t$p = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );\n\treturn strtolower( trim( rawurldecode( $p ), '/' ) );\n}\n\nadd_action( 'template_redirect', function () {\n\tif ( is_admin() || wp_doing_ajax() || is_robots() || is_feed() ) { return; }\n\tif ( ! is_404() ) { return; }          // esami puslapiai NELIEČIAMI\n\n\t$kelias = petshop_legacy_301_path();\n\tif ( '' === $kelias ) { return; }\n\n\t$map = petshop_legacy_301_map();\n\tif ( ! isset( $map[ $kelias ] ) ) { return; }   // jokio spėjimo\n\n\t$t = $map[ $kelias ];\n\tif ( 0 === strpos( $t, '__TERM__' ) ) {\n\t\t$term = get_term( (int) substr( $t, 8 ), 'product_cat' );\n\t\tif ( ! $term || is_wp_error( $term ) ) { return; }\n\t\t$url = get_term_link( $term );\n\t\tif ( is_wp_error( $url ) || ! $url ) { return; }\n\t} else {\n\t\t$url = home_url( $t );\n\t}\n\n\t// Apsauga nuo kilpos\n\tif ( strtolower( trim( (string) parse_url( $url, PHP_URL_PATH ), '/' ) ) === $kelias ) { return; }\n\n\tremove_action( 'template_redirect', 'redirect_canonical' );\n\twp_redirect( $url, 301, 'Petshop-Legacy-Category' );\n\texit;\n}, 1 );\n",
+  "term_link_96": "https://dev.avesa.lt/kategorija/katems/skanestai-katems/",
+  "kat_tiesiai": [
+   200,
+   ""
+  ],
+  "kat_tiesiai_be_slash": [
+   301,
+   "https://dev.avesa.lt/kategorija/katems/skanestai-katems/"
+  ],
+  "kita_kat": [
+   200,
+   ""
+  ],
+  "kitas_map_kelias": [
+   301,
+   "https://dev.avesa.lt/kategorija/katems/"
+  ],
+  "kitas_map_kelias2": [
+   301,
+   "https://dev.avesa.lt/kategorija/sunims/skanestai-sunims/"
+  ],
+  "atsitiktinis_404": [
+   404,
+   ""
+  ],
+  "mu_admin_redirect": [
+   "petshop-ataskaitos-ui.php",
+   "petshop-av-dropship.php",
+   "petshop-desk.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-islaidos.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rytas.php",
+   "petshop-teises.php"
+  ],
+  "mu_skanestai": [
+   "petshop-katalogas.php",
+   "petshop-laukai.php",
+   "petshop-m8-food.php",
+   "petshop-pilnumas.php"
+  ],
+  "snip_skanestai": [
+   "332 Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+   "539 Petshop Rinkinių Kūrimo Forma v2",
+   "550 Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+   "560 Petshop Rinkinio CTA Banneris kategorijose v10",
+   "569 Petshop Pack/Rinkinys Auto-Categories v1.3",
+   "572 Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+   "685 Atrinktos Prekės Modulis v1 (rotacija)",
+   "4418 TEMP PS dep-155002"
+  ],
+  "snip_redirect_hooks": [
+   "613 Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+   "632 Petshop Slapuku Politika ES 301 v1 (LIVE)",
+   "2024 Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+   "2029 Petshop MyAccount LT Slug 301 v1 (LIVE)",
+   "4418 TEMP PS dep-155002"
+  ],
+  "att35005": {
+   "ID": "35005",
+   "post_parent": "0",
+   "post_title": "skanestai katems",
+   "guid": "https://dev.avesa.lt/wp-content/uploads/2026/08/skanestai-katems.jpg",
+   "post_date": "2026-08-19 21:08:48"
+  },
+  "att_meta": "2026/08/skanestai-katems.jpg",
+  "rm_redirects_table": null,
+  "rm_modules": [
+   "sitemap",
+   "rich-snippet",
+   "woocommerce"
+  ],
+  "rm_attachment": {
+   "attachment_redirect_urls": "on",
+   "attachment_redirect_default": "https://dev.avesa.lt",
+   "redirections_header_code": "301"
+  }
+ }
+}
