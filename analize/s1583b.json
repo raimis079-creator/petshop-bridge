@@ -1,559 +1,430 @@
 {
- "v": "dep-170623",
+ "v": "dep-174234",
  "kurimas": 200,
- "sid": 4424,
+ "sid": 4430,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "GO": {
   "v": "S1583b",
-  "front": {
-   "id": "34543",
-   "len": 16535
+  "moduliai_su_raktais": {
+   "petshop-analitika.php": "ps_web_ivykiai,GA4",
+   "petshop-anketos-ataskaita.php": "Sveikata",
+   "petshop-av-tiekimas.php": "Srautas",
+   "petshop-fakt-reklama.php": "ps_web_ivykiai",
+   "petshop-islaidos.php": "ps_web_ivykiai",
+   "petshop-kampaniju-langas.php": "Srautas",
+   "petshop-klientai.php": "Srautas",
+   "petshop-laiskai-importas.php": "Srautas",
+   "petshop-laiskai.php": "Srautas",
+   "petshop-langai-admin.php": "Srautas",
+   "petshop-m8-food.php": "Srautas",
+   "petshop-naujienlaiskiai.php": "Srautas",
+   "petshop-payment-failed.php": "Srautas",
+   "petshop-perziuru-priminimas.php": "Srautas",
+   "petshop-prenumeratos-langas.php": "Sveikata",
+   "petshop-rezultatai.php": "Srautas,viesofor",
+   "petshop-rytas.php": "ps_web_ivykiai",
+   "petshop-seo.php": "Srautas,viesofor"
   },
-  "front_pam_pos": false,
-  "front_shortcodes": [
-   "petshop_popular_products"
+  "mu_sarasas": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-atsargos.php",
+   "petshop-ataskaita-klientai.php",
+   "petshop-ataskaita-menuo.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaita-prekes.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atributai.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-cache.php",
+   "petshop-code-search.php",
+   "petshop-desk.php",
+   "petshop-dev-veidrodis.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-dydziai.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-reklama.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-gavimas.php",
+   "petshop-greitis.php",
+   "petshop-hero-preload.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-istorijos-adapteris.php",
+   "petshop-ivykiai.php",
+   "petshop-kalendorius.php",
+   "petshop-kampaniju-langas.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-klientai.php",
+   "petshop-kreipinys.php",
+   "petshop-laiskai-importas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-naujienlaiskiai-admin.php",
+   "petshop-naujienlaiskiai.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-pren-nuorodos.php",
+   "petshop-pren-sutikimas.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prenumerata.php",
+   "petshop-prenumeratos-langas.php",
+   "petshop-prenumeratu-prognoze.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rezultatai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rysiai.php",
+   "petshop-rytas.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seo.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-siuntu-valymas.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-vartai.php",
+   "petshop-vertimai.php",
+   "petshop-wc-sync.php",
+   "petshop-webp.php"
   ],
-  "snips": [
-   {
-    "id": "5",
-    "name": "petshop kategorijos v2",
-    "active": "0"
-   },
-   {
-    "id": "9",
-    "name": "etshop sunims menu v1",
-    "active": "0"
-   },
-   {
-    "id": "10",
-    "name": "petshop sunims menu v2",
-    "active": "0"
-   },
-   {
-    "id": "16",
-    "name": "Petshop reset menu options v1 ",
-    "active": "0"
-   },
-   {
-    "id": "41",
-    "name": "Sausas maistas: ištrinti matmenis, svoris iš pavadinimo + 0.2kg",
-    "active": "0"
-   },
-   {
-    "id": "70",
-    "name": "Tikri slug",
-    "active": "0"
-   },
-   {
-    "id": "71",
-    "name": "Masinis pa_gyvuno_rusis priskyrimas — v3 (galutinis)",
-    "active": "0"
-   },
-   {
-    "id": "84",
-    "name": "Priskiria WC kategorijas \"Kita\" prekėms pagal ZB XML <category> kelią",
-    "active": "0"
-   },
-   {
-    "id": "90",
-    "name": "FBT pradinis konfigūravimas — sausas maistas → skanėstai",
-    "active": "0"
-   },
-   {
-    "id": "134",
-    "name": " assign_categories v3",
-    "active": "0"
-   },
-   {
-    "id": "136",
-    "name": "assign_categories v2",
-    "active": "0"
-   },
-   {
-    "id": "155",
-    "name": "petshop_brand_apply v7",
-    "active": "0"
-   },
-   {
-    "id": "258",
-    "name": "ZB Pricing State Check v1 (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "291",
-    "name": "Kategoriju Zemelapis v1",
-    "active": "0"
-   },
-   {
-    "id": "303",
-    "name": "Maisto Atributu Rasymas v1",
-    "active": "0"
-   },
-   {
-    "id": "317",
-    "name": "Skanestu Gyvuno Ikelimas v1",
-    "active": "0"
-   },
-   {
-    "id": "332",
-    "name": "Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
-    "active": "1"
-   },
-   {
-    "id": "348",
-    "name": "Nepriskirtu Prekiu Patikra v2",
-    "active": "0"
-   },
-   {
-    "id": "364",
-    "name": "Aksesuaru Grupes v1",
-    "active": "0"
-   },
-   {
-    "id": "365",
-    "name": "Kategoriju Turinys v1",
-    "active": "0"
-   },
-   {
-    "id": "366",
-    "name": "Aksesuaru Grupes v2",
-    "active": "0"
-   },
-   {
-    "id": "367",
-    "name": "Kita Liko Diagnostika v2",
-    "active": "0"
-   },
-   {
-    "id": "368",
-    "name": "Kita Finalas v1",
-    "active": "0"
-   },
-   {
-    "id": "369",
-    "name": "Draft Publish Patikra v1",
-    "active": "0"
-   },
-   {
-    "id": "370",
-    "name": "Draft Publish Patikra v2",
-    "active": "0"
-   },
-   {
-    "id": "371",
-    "name": "Draft Publish Vykdymas v1",
-    "active": "0"
-   },
-   {
-    "id": "405",
-    "name": "Gyvuno rusis is kategorijos - DRY RUN (visas katalogas)",
-    "active": "0"
-   },
-   {
-    "id": "406",
-    "name": "Gyvuno rusis is kategorijos - APPLY (visas katalogas)",
-    "active": "0"
-   },
-   {
-    "id": "428",
-    "name": "Vitaminai/papildai - dry-run v1 (paskirtis+forma)",
-    "active": "0"
-   },
-   {
-    "id": "429",
-    "name": "Vitaminai/papildai - dry-run v1 (paskirtis+forma)",
-    "active": "0"
-   },
-   {
-    "id": "435",
-    "name": "Kategoriju medis - prieziura (zvalgyba)",
-    "active": "0"
-   },
-   {
-    "id": "436",
-    "name": "Vitaminu MOVE-OUT - kategoriju perkelimas",
-    "active": "0"
-   },
-   {
-    "id": "437",
-    "name": "Antkakliai/pavadeliai sunims (116) - zvalgyba",
-    "active": "0"
-   },
-   {
-    "id": "442",
-    "name": "Antkakliu MOVE-OUT - kategoriju perkelimas",
-    "active": "0"
-   },
-   {
-    "id": "443",
-    "name": "Dubeneliai sunims (111) - zvalgyba",
-    "active": "0"
-   },
-   {
-    "id": "447",
-    "name": "Guoliai (sunims + katems) - zvalgyba",
-    "active": "0"
-   },
-   {
-    "id": "448",
-    "name": "Kategoriju zemelapis - guoliai/boksai/transportavimas",
-    "active": "0"
-   },
-   {
-    "id": "451",
-    "name": "Guoliai/transportas/narvai - PERKELIMO DRY-RUN (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "452",
-    "name": "Guoliai/transportas/narvai - PERKELIMO DRY-RUN v2 (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "455",
-    "name": "Guoliai katems - gyvuno_rusis fix",
-    "active": "0"
-   },
-   {
-    "id": "458",
-    "name": "233 pervadinimas: Guoliai sunims",
-    "active": "0"
-   },
-   {
-    "id": "460",
-    "name": "Transportavimo dezes rename - sunims/katems galune",
-    "active": "0"
-   },
-   {
-    "id": "464",
-    "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
-    "active": "1"
-   },
-   {
-    "id": "465",
-    "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
-    "active": "1"
-   },
-   {
-    "id": "468",
-    "name": "Petshop Attr Modulis: Zaislai Sunims v1.1 (parseris + dry/apply)",
-    "active": "0"
-   },
-   {
-    "id": "472",
-    "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
-    "active": "1"
-   },
-   {
-    "id": "476",
-    "name": "Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)",
-    "active": "0"
-   },
-   {
-    "id": "477",
-    "name": "Petshop Attr Modulis: Apranga Sunims v1.0 (parseris + dry/apply)",
-    "active": "0"
-   },
-   {
-    "id": "484",
-    "name": "Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)",
-    "active": "0"
-   },
-   {
-    "id": "485",
-    "name": "Petshop Menu: Apranga -> SUNIMS/AKSESUARAI v1.0 (dry/apply)",
-    "active": "0"
-   },
-   {
-    "id": "486",
-    "name": "Petshop Attr Modulis: Sampunai Sunims v1.0 (parseris + dry/apply)",
-    "active": "0"
-   },
-   {
-    "id": "494",
-    "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
-    "active": "1"
-   },
-   {
-    "id": "495",
-    "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
-    "active": "0"
-   },
-   {
-    "id": "502",
-    "name": "Higienos Modulis v1.0",
-    "active": "1"
-   },
-   {
-    "id": "539",
-    "name": "Petshop Rinkinių Kūrimo Forma v2",
-    "active": "1"
-   },
-   {
-    "id": "550",
-    "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
-    "active": "1"
-   },
-   {
-    "id": "560",
-    "name": "Petshop Rinkinio CTA Banneris kategorijose v10",
-    "active": "1"
-   },
-   {
-    "id": "561",
-    "name": "Petshop Rinkinių Gyvūno Filtras v1",
-    "active": "1"
-   },
-   {
-    "id": "562",
-    "name": "Petshop Sprendimai Shortcode Variklis v9",
-    "active": "1"
-   },
-   {
-    "id": "566",
-    "name": "Petshop Akcijos Shortcode v1.3",
-    "active": "1"
-   },
-   {
-    "id": "569",
-    "name": "Petshop Pack/Rinkinys Auto-Categories v1.3",
-    "active": "1"
-   },
-   {
-    "id": "570",
-    "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
-    "active": "1"
-   },
-   {
-    "id": "571",
-    "name": "Petshop Pasiulymai Bendras Shortcode v1.0",
-    "active": "0"
-   },
-   {
-    "id": "572",
-    "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
-    "active": "1"
-   },
-   {
-    "id": "587",
-    "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
-    "active": "1"
-   },
-   {
-    "id": "594",
-    "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
-    "active": "1"
-   },
-   {
-    "id": "678",
-    "name": "Petshop Sunims Recon v1",
-    "active": "0"
-   },
-   {
-    "id": "679",
-    "name": "Petshop CatImg Recon v1",
-    "active": "0"
-   },
-   {
-    "id": "680",
-    "name": "Petshop Prod Fetch v1",
-    "active": "0"
-   },
-   {
-    "id": "683",
-    "name": "Petshop Atrinktos Proto v1",
-    "active": "0"
-   },
-   {
-    "id": "684",
-    "name": "Petshop Atrinktos Proto v1",
-    "active": "0"
-   },
-   {
-    "id": "685",
-    "name": "Atrinktos Prekės Modulis v1 (rotacija)",
-    "active": "1"
-   },
-   {
-    "id": "686",
-    "name": "Petshop Atrinktos Verify tmp",
-    "active": "0"
-   },
-   {
-    "id": "688",
-    "name": "Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)",
-    "active": "1"
-   },
-   {
-    "id": "692",
-    "name": "Petshop Maisto Tipo Mygtukai v1",
-    "active": "1"
-   },
-   {
-    "id": "704",
-    "name": "Petshop ImgRecon tmp",
-    "active": "0"
-   },
-   {
-    "id": "785",
-    "name": "M11 Test tmp",
-    "active": "0"
-   },
-   {
-    "id": "1005",
-    "name": "Exclusion HY Feeding v1 (Vetfarmas OCR + PL HTML)",
-    "active": "0"
-   },
-   {
-    "id": "1008",
-    "name": "Exclusion NG Feeding v1 (Vetfarmas OCR + IT razioni)",
-    "active": "0"
-   },
-   {
-    "id": "1013",
-    "name": "Quattro Feeding v1 (kgshop+petirvet HTML)",
-    "active": "0"
-   },
-   {
-    "id": "1026",
-    "name": "Ontario Feeding v2 (post_content parseris, bendras prefiksas)",
-    "active": "0"
-   },
-   {
-    "id": "1028",
-    "name": "Ontario Feeding v4 (wpdb->delete, reason<=60, tid sargas)",
-    "active": "0"
-   },
-   {
-    "id": "1031",
-    "name": "Exclusion post_content Feeding v1 (parseris)",
-    "active": "0"
-   },
-   {
-    "id": "1032",
-    "name": "Exclusion post_content Feeding v2 (visos lenteles)",
-    "active": "0"
-   },
-   {
-    "id": "1034",
-    "name": "Exclusion Gramai v1 (post_content, patikrinta ranka)",
-    "active": "0"
-   },
-   {
-    "id": "1053",
-    "name": "Scope Fields Recon v1 (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1054",
-    "name": "Pkg QA Audit v3 (kanoninis scope, read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1062",
-    "name": "S212-A Pkg Fix v1 (dry-run)",
-    "active": "0"
-   },
-   {
-    "id": "1063",
-    "name": "S212-A Pkg Fix v1 APPLY",
-    "active": "0"
-   },
-   {
-    "id": "1064",
-    "name": "Pkg QA Audit v4 (po korekcijos, read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1072",
-    "name": "Pkg QA Audit v5 (B tik verified)",
-    "active": "0"
-   },
-   {
-    "id": "1082",
-    "name": "Pkg QA Audit v5 (B tik verified)",
-    "active": "0"
-   },
-   {
-    "id": "1147",
-    "name": "S212-C Create Tables DryRun (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1148",
-    "name": "S212-C Create Tables DryRun (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1150",
-    "name": "S212-C Fix Tables (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1152",
-    "name": "S212-C Fix Tables v2 (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1163",
-    "name": "S212-C Reimport Dry (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1164",
-    "name": "S212-C Reimport APPLY (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1184",
-    "name": "S212-C Coverage (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1197",
-    "name": "F1 Write Files (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "1198",
-    "name": "F1 Write Files2 (read-only)",
-    "active": "0"
-   },
-   {
-    "id": "2041",
-    "name": "S330 i18n Auditas",
-    "active": "0"
-   },
-   {
-    "id": "2042",
-    "name": "S330 Meniu Patikra",
-    "active": "0"
-   },
-   {
-    "id": "2070",
-    "name": "UI Localization Runtime Audit",
-    "active": "0"
-   },
-   {
-    "id": "2387",
-    "name": "Petshop Stock Service v1.2 (parduodamas kiekis)",
-    "active": "0"
-   },
-   {
-    "id": "2403",
-    "name": "Petshop Stock Service v1.3 (per registra)",
-    "active": "1"
-   },
-   {
-    "id": "2868",
-    "name": "PS Masinis Sudeliojimas v6 (tik prekyboje)",
-    "active": "1"
+  "tarifai": [
+   {
+    "id": "38",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "400001",
+    "svoris_iki_g": "500000",
+    "kaina_ct": "2805",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "37",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "300001",
+    "svoris_iki_g": "400000",
+    "kaina_ct": "2380",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "36",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "200001",
+    "svoris_iki_g": "300000",
+    "kaina_ct": "2040",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "35",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "100001",
+    "svoris_iki_g": "200000",
+    "kaina_ct": "1420",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "34",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "75001",
+    "svoris_iki_g": "100000",
+    "kaina_ct": "1088",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "33",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "50001",
+    "svoris_iki_g": "75000",
+    "kaina_ct": "918",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
    }
   ],
-  "options": [],
-  "posts": []
+  "islaidos": [],
+  "web": {
+   "ivykiai": 707,
+   "dienos": 189,
+   "ivykiai_7d": 707
+  },
+  "web_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "ps_options": [
+   {
+    "option_name": "ps_fakt_pakuote_vid_ct",
+    "v": "40"
+   },
+   {
+    "option_name": "ps_feeds_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-09-01 04:30:21\";s:10:\"statistika\";a:8:{s:7:\"versija\";"
+   },
+   {
+    "option_name": "ps_paleidimo_data",
+    "v": "2026-10-01"
+   },
+   {
+    "option_name": "ps_stat_pradzia",
+    "v": ""
+   },
+   {
+    "option_name": "ps_tiekeju_pastai",
+    "v": "a:5:{s:2:\"vf\";s:64:\"ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarma"
+   }
+  ],
+  "be_kainos_ids": [
+   "14274:Monge Cat 4x10kg Kitten+Adult+Urinary+Ra",
+   "14824:GIMCAT GRAS BITS 425G"
+  ],
+  "be_nuotraukos_ids": [
+   "34942:TEST Konservu deze 800 Be vistienos",
+   "34943:TEST Konservu deze 800 Visi skoniai",
+   "34944:Konservu deze 400 Be vistienos",
+   "34945:TEST Konservu deze 400 Monoproteinas",
+   "34946:TEST Konservu deze 400 Visi skoniai",
+   "34947:TEST Konservu deze katei Isrankioms",
+   "34948:TEST Konservu deze katei Be vistienos",
+   "34938:Skanėstų dėžutė katei"
+  ],
+  "be_sandelio_ids": [
+   "35007:Bogar antpirštis kačių dantims valyti, N",
+   "35009:Bogar DENTAL LIPO- GEL DOG dantų valymo ",
+   "35011:Bogar Clean šukos nuo blusų, 1vnt",
+   "35013:BOGADENT DENTAL ENZYME CHIPS kramtomasis",
+   "35015:BOGADENT PLAQUE-STOP kramtomasis užkandi",
+   "35017:BOGADENT DENTAL ENZYME STRIPES kramtomas",
+   "35021:Bogadent dental fibre flexies skanėstas ",
+   "35023:BOGACLEAN CLEAN SMELL FREE valymo priemo",
+   "35027:Exclusion Hydrolyzed Hypoallergenic saus",
+   "34938:Skanėstų dėžutė katei",
+   "35070:Stirnos ir avies kojų rinkinys šunims · ",
+   "35076:Rinkinys Gurmanams - skanėstai šunims",
+   "35079:Animonda GranCarno Adult konservų rinkin",
+   "35081:Animonda GranCarno Adult konservų rinkin",
+   "35085:Galvijų ir kiaulės ausų rinkinys",
+   "35094:Rinkinys katėms mėsos ir salyklo (malt) ",
+   "35096:20 vnt. rudų kiaulės knyslių",
+   "35098:20 vnt. rudų jaučio ausų",
+   "35099:20 vnt. baltų jaučio ausų",
+   "35291:Skanėstų kačių dantims rinkinys",
+   "35306:20 vnt. baltų kiaulės knyslių"
+  ],
+  "av_stock_neliestos_nuo_06": 440,
+  "av_zurnalas": {
+   "n": 550,
+   "max": "552",
+   "cols": [
+    "id",
+    "operacija",
+    "product_id",
+    "laukas",
+    "buvo",
+    "tapo",
+    "pokytis",
+    "priezastis",
+    "user_id",
+    "sukurta",
+    "atsaukta"
+   ]
+  },
+  "legacy_kaina_keista_08_09": 1322,
+  "fakt_kainos_cols": [
+   "id",
+   "preke_id",
+   "nuo_at",
+   "diena",
+   "kaina_ct",
+   "reguliari_ct",
+   "savikaina_ct",
+   "akcijoje",
+   "saltinis",
+   "vartotojas_id",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "wp_updates": {
+   "core": "transient",
+   "plugins_needing_update": 9
+  },
+  "sargas_email_opt": [
+   {
+    "option_name": "ps_sargas_cron_laukiam"
+   },
+   {
+    "option_name": "ps_sargas_cron_zinios"
+   },
+   {
+    "option_name": "ps_sargas_pastas"
+   },
+   {
+    "option_name": "ps_sargas_siusta"
+   },
+   {
+    "option_name": "ps_sargas_start"
+   },
+   {
+    "option_name": "ps_sargas_svara"
+   }
+  ],
+  "snippets_temp": [
+   "4427:0",
+   "4428:0",
+   "4429:0",
+   "4430:1"
+  ],
+  "temp_istrinta": 3,
+  "woocommerce_wp_subscription_paypal_settings": "{\"enabled\":\"no\",\"testmode\":\"no\",\"title\":\"PayPal\",\"description\":\"Pay via PayPal; you can pay with your credit card if you do not have a PayPal account.\",\"paypal_creds_title\":\"\",\"paypal_sandbox_creds_ti",
+  "active_plugins_list": [
+   "code-snippets",
+   "complianz-gdpr",
+   "loco-translate",
+   "petshop-attributes",
+   "petshop-core",
+   "petshop-esp",
+   "petshop-fbt",
+   "petshop-feeds",
+   "petshop-fonts",
+   "petshop-pragma",
+   "petshop-promotions",
+   "petshop-xml",
+   "seo-by-rank-math",
+   "wc-venipak-shipping",
+   "woo-lithuaniapost-main",
+   "woo-payment-gateway-paysera",
+   "woo-update-manager",
+   "woocommerce-delivery-notes",
+   "woocommerce-mix-and-match-products",
+   "woocommerce-xml-csv-product-import",
+   "woocommerce",
+   "wordpress-importer",
+   "wp-all-import-pro",
+   "wp-mail-smtp",
+   "wp-super-cache",
+   "wpforms-lite",
+   "yith-woocommerce-ajax-navigation"
+  ]
  }
 }
