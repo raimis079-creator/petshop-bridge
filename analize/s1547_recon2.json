@@ -1,39 +1,283 @@
 {
- "v": "dep-191304",
+ "v": "dep-073107",
  "kurimas": 200,
- "sid": 4333,
+ "sid": 4359,
  "GO": {
-  "v": "S1547r2",
-  "radiniai": {
-   "petshop-ataskaita-klientai.php": {
-    "kas": [
-     "dim"
-    ],
-    "dydis": 27855
-   },
-   "petshop-dim-klientai.php": {
-    "kas": [
-     "dim"
-    ],
-    "dydis": 13499
-   },
-   "petshop-faktai.php": {
-    "kas": [
-     "hash"
-    ],
-    "dydis": 37122
-   },
-   "petshop-rytas.php": {
-    "kas": [
-     "dim"
-    ],
-    "dydis": 44366
-   }
-  },
-  "hash_kodas": {
+  "v": "S1547b",
+  "opt_perstatyta": "2026-08-31 19:35:02",
+  "opt_rodiniai": "a27ca1f4662ab7dcb9d265875e6269d0",
+  "mu_visi": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-atsargos.php",
+   "petshop-ataskaita-klientai.php",
+   "petshop-ataskaita-menuo.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaita-prekes.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atributai.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-code-search.php",
+   "petshop-desk.php",
+   "petshop-dev-veidrodis.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-dydziai.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-reklama.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-gavimas.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-istorijos-adapteris.php",
+   "petshop-ivykiai.php",
+   "petshop-kalendorius.php",
+   "petshop-kampaniju-langas.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-klientai.php",
+   "petshop-kreipinys.php",
+   "petshop-laiskai-importas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-naujienlaiskiai-admin.php",
+   "petshop-naujienlaiskiai.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-pren-nuorodos.php",
+   "petshop-pren-sutikimas.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prenumerata.php",
+   "petshop-prenumeratos-langas.php",
+   "petshop-prenumeratu-prognoze.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rezultatai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rysiai.php",
+   "petshop-rytas.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-siuntu-valymas.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-vartai.php",
+   "petshop-vertimai.php",
+   "petshop-wc-sync.php"
+  ],
+  "grep": {
+   "petshop-ataskaita-atsargos.php": [
+    "private static function e() { global $wpdb; return class_exists( 'Petshop_Ist_Adapteris' ) ? Petshop_Ist_Adapteris::lentele( 'e' ) : $wpdb->prefix . 'ps_fakt_ei",
+    "if ( class_exists( 'Petshop_Ist_Adapteris' ) ) { echo Petshop_Ist_Adapteris::jungiklis_html(); echo '<p class=\"psru-mut\" style=\"margin-top:-8px\">Atsargų istorij"
+   ],
+   "petshop-ataskaita-klientai.php": [
+    "* v1.1 (S1547): šaltinio jungiklis [eShoprent | petshop.lt | Abu] per",
+    "* Petshop_Ist_Adapteris — u()/e() gali rodyti į užšaldytą istoriją, faktus arba",
+    "* eShoprent pernai\" (S1546 #3). Segmentai — B1 taisyklės (S1546 #1).",
+    "private static function u() { global $wpdb; return class_exists( 'Petshop_Ist_Adapteris' ) ? Petshop_Ist_Adapteris::lentele( 'u' ) : $wpdb->prefix . 'ps_fakt_uz",
+    "private static function e() { global $wpdb; return class_exists( 'Petshop_Ist_Adapteris' ) ? Petshop_Ist_Adapteris::lentele( 'e' ) : $wpdb->prefix . 'ps_fakt_ei",
+    "(SELECT i.email FROM {$wpdb->prefix}ps_ist_fakt_uzsakymai f2 JOIN {$wpdb->prefix}ps_ist_uzsakymai i ON i.id = f2.uzsakymas_id - 900000000 WHERE f2.klientas_emai",
+    "$UI::antraste( 'Klientų analizė', 'Kas grįžta, kiek klientas atneša per gyvenimą ir ką reikia pasivyti. Pinigai — kontribucija, ne pajamos (eShoprent istorijoje",
+    "if ( class_exists( 'Petshop_Ist_Adapteris' ) ) { echo Petshop_Ist_Adapteris::jungiklis_html(); }",
+    "if ( class_exists( 'Petshop_Ist_Adapteris' ) && 'wc' === Petshop_Ist_Adapteris::saltinis() && Petshop_Ist_Adapteris::paruostas() ) {",
+    "global $wpdb; $iu = Petshop_Ist_Adapteris::iu();",
+    "echo '<p class=\"psru-pastaba\" style=\"margin-top:8px\"><b>Tas pats laikotarpis eShoprent pernai</b> (' . esc_html( $pn ) . ' – ' . esc_html( $pi ) . '): ' . (int)",
+    "$nuoroda = $oid >= 900000000 ? '<span title=\"eShoprent istorija\">eShop #' . ( $oid - 900000000 ) . '</span>' : '<a href=\"' . esc_url( admin_url( 'admin.php?page"
+   ],
+   "petshop-ataskaita-prekes.php": [
+    "* ŠALTINIAI: eilutės per Petshop_Ist_Adapteris (jungiklis eShoprent | petshop.lt |",
+    "* jų nėra, S1546 #4). eShoprent eilutėse nėra savikainų — antkainis tuščias.",
+    "private static function e() { global $wpdb; return class_exists( 'Petshop_Ist_Adapteris' ) ? Petshop_Ist_Adapteris::lentele( 'e' ) : $wpdb->prefix . 'ps_fakt_ei",
+    "if ( class_exists( 'Petshop_Ist_Adapteris' ) ) { echo Petshop_Ist_Adapteris::jungiklis_html(); }",
+    "if ( ! empty( $d['nesusieta'] ) && (int) $d['nesusieta']['n'] ) { $fa = class_exists( 'Petshop_Analize_Filtrai' ) && Petshop_Analize_Filtrai::atributinis(); ech"
+   ],
+   "petshop-dim-klientai.php": [
+    "* Description: Kliento busena (ps_dim_klientai) — kohortos, LTV, RFM. Perskaiciuojama kas nakti IS VISOS JUOSTOS (istorija + faktai per Petshop_Ist_Adapteris). ",
+    "$U = class_exists( 'Petshop_Ist_Adapteris' ) && Petshop_Ist_Adapteris::paruostas() ? Petshop_Ist_Adapteris::vu() : $wpdb->prefix . 'ps_fakt_uzsakymai';",
+    "$E = class_exists( 'Petshop_Ist_Adapteris' ) && Petshop_Ist_Adapteris::paruostas() ? Petshop_Ist_Adapteris::ve() : $wpdb->prefix . 'ps_fakt_eilutes';"
+   ],
    "petshop-faktai.php": [
-    "\t\treturn $e === '' ? '' : hash( 'sha256', $e );"
+    "* saltinis (planas §0). Q6: eShoprent istorijos nera, kohortos nuo Woo."
+   ],
+   "petshop-istorijos-adapteris.php": [
+    "* Description: ps_ist_* (eShoprent) paduodama ps_fakt_* forma analizės langams (S1546 #2). Užšaldytos lentelės ps_ist_fakt_* + rodiniai „Abu\" + šaltinio jungikl",
+    "* - ps_ist_fakt_uzsakymai / ps_ist_fakt_eilutes — CREATE TABLE ... LIKE ps_fakt_*,",
+    "*   užpildomos VIENĄ kartą per perstatyti() iš ps_ist_*. Užšaldyta: istorija nesikeičia.",
+    "* - eShoprent NĖRA: savikainos/maržos/kontribucijos (0), kanalai (NULL), nuolaidų",
+    "* - uzsakymas_id = 900000000 + eShoprent id (nesikerta su WC).",
+    "class Petshop_Ist_Adapteris {",
+    "const OPT_RODINIU = 'ps_ist_adapt_rodiniai'; // hash, kad rodiniai atitiktų ribą",
+    "public static function iu() { global $wpdb; return $wpdb->prefix . 'ps_ist_fakt_uzsakymai'; }",
+    "public static function ie() { global $wpdb; return $wpdb->prefix . 'ps_ist_fakt_eilutes'; }",
+    "$m = array( 'ist' => 'eShoprent', 'wc' => 'petshop.lt', 'abu' => 'Abu' );",
+    "$h .= '<span style=\"color:#787c82;font-size:12px\">' . ( $riba ? 'iki ' . esc_html( $riba ) . ' — eShoprent, toliau — petshop.lt' : 'perjungimo data nenustatyta ",
+    "/* ---------- perstatymas iš ps_ist_* ---------- */",
+    "* Užšaldytų lentelių perstatymas iš ps_ist_*. $dry — tik skaičiai, nieko nerašo.",
+    "$p = $wpdb->prefix; $TU = $p . 'ps_ist_uzsakymai'; $TE = $p . 'ps_ist_eilutes';",
+    "if ( ! self::yra( $TU ) || ! self::yra( $TE ) ) { return array( 'klaida' => 'nera ps_ist_*' ); }",
+    "update_option( 'ps_ist_adapt_perstatyta', current_time( 'mysql', true ), false );",
+    "Petshop_Ist_Adapteris::init();",
+    "*                       ir istorijai; nesusietoms eShoprent eilutėms atributų",
+    "$e = Petshop_Ist_Adapteris::lentele( 'e' );",
+    "$u = Petshop_Ist_Adapteris::lentele( 'u' ); $e = Petshop_Ist_Adapteris::lentele( 'e' );",
+    "if ( Petshop_Ist_Adapteris::paruostas() ) {",
+    "$c = $wpdb->get_col( 'SELECT DISTINCT brendas_slug FROM ' . Petshop_Ist_Adapteris::ve() . \" WHERE brendas_slug <> '' ORDER BY brendas_slug\" );",
+    "$gyvi = $wpdb->get_col( 'SELECT DISTINCT brendas_slug FROM ' . Petshop_Ist_Adapteris::fe() . \" WHERE brendas_slug <> '' AND brendas_slug IS NOT NULL\" );",
+    "if ( $f['era'] ) { $d[] = 'legacy' === $f['era'] ? 'eShoprent klientai' : 'petshop.lt klientai'; }",
+    "$h .= $sel( 'f_era', '— era —', array( 'legacy' => 'eShoprent klientai', 'wc' => 'Nauji petshop.lt' ), $f['era'] );"
+   ],
+   "petshop-klientai.php": [
+    "* Description: Petshop langai → Klientai. Vienas žmogus = viena eilutė: banga, sutikimas, pirkimai (eShoprent istorija + WC), segmentas taisyklėmis, kortelė. Au",
+    "* sprendimas — išvedamas taisyklėmis iš ps_ist_* + WC ir perskaičiuojamas kas naktį į",
+    "'eshoprent_istorija'      => 'eShoprent istorija',",
+    "'eshoprent_naujienlaiskis'=> 'eShoprent naujienlaiškis',",
+    "$TU = $p . 'ps_ist_uzsakymai'; $TE = $p . 'ps_ist_eilutes';",
+    "global $wpdb; $p = $wpdb->prefix; $T = self::lentele(); $TU = $p . 'ps_ist_uzsakymai'; $TE = $p . 'ps_ist_eilutes';",
+    "if ( $r['ist_n'] ) $sak[] = '<b>' . (int) $r['ist_n'] . '</b> užsak. / <b>' . number_format_i18n( (float) $r['ist_suma'], 2 ) . ' €</b> per eShoprent';",
+    "foreach ( $uz as $x ) $all[] = array( 'd' => substr( $x['data'], 0, 10 ), 's' => 'eShoprent', 'nr' => $x['id'], 'p' => $x['prekes'], 'suma' => $x['suma'], 'b' =",
+    "if ( ( $s = $wpdb->get_row( $wpdb->prepare( \"SELECT segmentas,nba,gyvunas,brandas FROM {$p}ps_nl_snapshot WHERE email=%s\", $e ), ARRAY_A ) ) ) echo '<p class=\"m"
+   ],
+   "petshop-kreipinys.php": [
+    "* ne „Sveiki, Martynas“. Taisyklės patikrintos su 964 unikaliais vardais iš eShoprent"
+   ],
+   "petshop-legacy-importas.php": [
+    "* Description: eShoprent kliento bazes importas i WP vartotojus. TYLUS (jokiu laisku), be sutikimu perkelimo, be Sender sinchronizacijos."
    ]
+  },
+  "views": [
+   "gaj6_ps_v_analize_eilutes",
+   "gaj6_ps_v_analize_uzsakymai"
+  ],
+  "tables_ist": [
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668"
+  ],
+  "tables_adapt": [],
+  "snippets": [
+   {
+    "id": "1061",
+    "name": "S212-A Import Run History v1 (read-only)",
+    "active": "0"
+   },
+   {
+    "id": "4339",
+    "name": "TEMP PS S1547vis",
+    "active": "0"
+   },
+   {
+    "id": "4345",
+    "name": "TEMP PS S1547fvis",
+    "active": "0"
+   },
+   {
+    "id": "4347",
+    "name": "TEMP PS S1547fvis2",
+    "active": "0"
+   },
+   {
+    "id": "4350",
+    "name": "TEMP PS S1547hvis",
+    "active": "0"
+   },
+   {
+    "id": "4354",
+    "name": "TEMP PS S1548h",
+    "active": "0"
+   },
+   {
+    "id": "4357",
+    "name": "TEMP PS S1549vis",
+    "active": "0"
+   }
+  ],
+  "backups": [
+   "class-consent-sync.php.bak_S1548",
+   "dunning-1.php.bak_S1548",
+   "founding.php.bak_S1548",
+   "order-paid.php.bak_S1548",
+   "petshop-ataskaita-atsargos.php.bak_S1547",
+   "petshop-ataskaita-atsargos.php.bak_S1547b",
+   "petshop-ataskaita-klientai.php.bak_S1547",
+   "petshop-ataskaita-klientai.php.bak_S1547b",
+   "petshop-ataskaita-prekes.php.bak_S1547",
+   "petshop-ataskaita-prekes.php.bak_S1547b",
+   "petshop-dim-klientai.php.bak_S1547",
+   "petshop-istorijos-adapteris.php.bak_S1547b",
+   "petshop-klientai.php.bak_S1544"
+  ],
+  "bak_all_recent": [
+   "class-consent-sync.php.bak_S1548",
+   "consent-changed.php.bak_S1538",
+   "dunning-1.php.bak_S1548",
+   "founding.php.bak_S1548",
+   "order-paid.php.bak_S1548",
+   "petshop-ataskaita-atsargos.php.bak_S1547",
+   "petshop-ataskaita-atsargos.php.bak_S1547b",
+   "petshop-ataskaita-klientai.php.bak_S1547",
+   "petshop-ataskaita-klientai.php.bak_S1547b",
+   "petshop-ataskaita-prekes.php.bak_S1547",
+   "petshop-ataskaita-prekes.php.bak_S1547b",
+   "petshop-dim-klientai.php.bak_S1547",
+   "petshop-istorijos-adapteris.php.bak_S1547b",
+   "petshop-klientai.php.bak_S1544"
+  ],
+  "mtime": {
+   "petshop-ataskaita-atsargos": "2026-08-31 21:32 v1.4",
+   "petshop-ataskaita-klientai": "2026-08-31 20:54 v1.1",
+   "petshop-ataskaita-prekes": "2026-08-31 20:53 v1.3",
+   "petshop-dim-klientai": "2026-08-31 19:26 v1.1"
   }
  }
 }
