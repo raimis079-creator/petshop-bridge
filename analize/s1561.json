@@ -1,0 +1,209 @@
+{
+ "v": "dep-113738",
+ "kurimas": 200,
+ "sid": 4386,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1561",
+  "p": {
+   "pradinis": {
+    "jq_in_head": true,
+    "head_inline_n": 6,
+    "head_inline_jq": [],
+    "body_inline_n": 19,
+    "body_inline_jq": [
+     "(function () { window.dataLayer = window.dataLayer || []; var PETSHOP_CURRENCY = 'EUR'; function petshopPushAt",
+     "(function() { 'use strict'; function parseSize(txt) { txt = txt.trim(); var m = txt.match(/^([\\d]+(?:[.,]\\d+)?"
+    ],
+    "head_src": [
+     "/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+     "/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+     "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=4.1.0-rc.0",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost-lpexpress",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost-shipping-",
+     "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?v [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.0.1 [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-w [defer]"
+    ],
+    "head_css": [
+     "/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/css/woo-lithuaniapost-public.c",
+     "/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+     "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/mnm-f",
+     "/wp-content/plugins/complianz-gdpr/assets/css/cookieblocker.min.css",
+     "/wp-content/plugins/yith-woocommerce-ajax-navigation/assets/css/shortcodes.css",
+     "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/block",
+     "/wp-content/themes/flatsome/assets/css/flatsome.css",
+     "/wp-content/themes/flatsome/assets/css/flatsome-shop.css",
+     "/wp-content/themes/flatsome-child/style.css",
+     "/wp-content/uploads/complianz/css/banner-1-optin.css"
+    ],
+    "inline_css_kb": 81,
+    "inline_css_n": 32,
+    "font_urls": [
+     "OpenSans-Regular.woff2",
+     "OpenSans-Semibold.woff2",
+     "OpenSans-Bold.woff2",
+     "fl-icons.woff2?v=3.20.7",
+     "fl-icons.woff?v=3.20.7",
+     "S6uyw4BMUTPHjxAwXjeu.woff2",
+     "S6uyw4BMUTPHjx4wXg.woff2",
+     "S6u9w4BMUTPHh6UVSwaPGR_p.woff2",
+     "S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3Rep8ltA.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3ROp8ltA.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3Sup8.woff2"
+    ],
+    "gtm_pos": "head"
+   },
+   "kategorija": {
+    "jq_in_head": true,
+    "head_inline_n": 6,
+    "head_inline_jq": [],
+    "body_inline_n": 25,
+    "body_inline_jq": [
+     "(function () { window.dataLayer = window.dataLayer || []; var PETSHOP_CURRENCY = 'EUR'; function petshopPushAt",
+     "(function() { 'use strict'; function parseSize(txt) { txt = txt.trim(); var m = txt.match(/^([\\d]+(?:[.,]\\d+)?"
+    ],
+    "head_src": [
+     "/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+     "/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+     "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=4.1.0-rc.0",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost-lpexpress",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost-shipping-",
+     "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?v [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.0.1 [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-w [defer]"
+    ],
+    "head_css": [
+     "/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/css/woo-lithuaniapost-public.c",
+     "/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+     "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/mnm-f",
+     "/wp-content/plugins/complianz-gdpr/assets/css/cookieblocker.min.css",
+     "/wp-content/plugins/yith-woocommerce-ajax-navigation/assets/css/shortcodes.css",
+     "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/block",
+     "/wp-content/themes/flatsome/assets/css/flatsome.css",
+     "/wp-content/themes/flatsome/assets/css/flatsome-shop.css",
+     "/wp-content/themes/flatsome-child/style.css",
+     "/wp-content/uploads/complianz/css/banner-1-optin.css"
+    ],
+    "inline_css_kb": 60,
+    "inline_css_n": 31,
+    "font_urls": [
+     "OpenSans-Regular.woff2",
+     "OpenSans-Semibold.woff2",
+     "OpenSans-Bold.woff2",
+     "fl-icons.woff2?v=3.20.7",
+     "fl-icons.woff?v=3.20.7",
+     "S6uyw4BMUTPHjxAwXjeu.woff2",
+     "S6uyw4BMUTPHjx4wXg.woff2",
+     "S6u9w4BMUTPHh6UVSwaPGR_p.woff2",
+     "S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3Rep8ltA.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3ROp8ltA.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3Sup8.woff2"
+    ],
+    "gtm_pos": "head"
+   },
+   "preke": {
+    "jq_in_head": true,
+    "head_inline_n": 8,
+    "head_inline_jq": [
+     "/* <![CDATA[ */ jQuery(function($){ function fmt(n){return n.toFixed(2).replace(\".\",\",\")+\" \\u20ac\";} function "
+    ],
+    "body_inline_n": 27,
+    "body_inline_jq": [
+     "(function () { window.dataLayer = window.dataLayer || []; var PETSHOP_CURRENCY = 'EUR'; function petshopPushAt",
+     "(function(){ var MAP = {\"avietine\":\"#c2547a\",\"balta\":\"#f2f2f2\",\"garstyciu\":\"#d4ac0d\",\"geltona\":\"#f2c521\",\"juod",
+     "(function() { 'use strict'; function parseSize(txt) { txt = txt.trim(); var m = txt.match(/^([\\d]+(?:[.,]\\d+)?"
+    ],
+    "head_src": [
+     "/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+     "/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+     "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=4.1.0-rc.0",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost-lpexpress",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/js/woo-lithuaniapost-shipping-",
+     "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?v [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.0.1 [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1 [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.j [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=11. [defer]",
+     "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-w [defer]"
+    ],
+    "head_css": [
+     "/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css",
+     "/wp-content/plugins/woo-lithuaniapost-main/public/css/woo-lithuaniapost-public.c",
+     "/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+     "/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min.css",
+     "/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.",
+     "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/mnm-f",
+     "/wp-content/plugins/complianz-gdpr/assets/css/cookieblocker.min.css",
+     "/wp-content/plugins/yith-woocommerce-ajax-navigation/assets/css/shortcodes.css",
+     "/wp-content/plugins/woocommerce/assets/css/brands.css",
+     "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/block",
+     "/wp-content/themes/flatsome/assets/css/flatsome.css",
+     "/wp-content/themes/flatsome/assets/css/flatsome-shop.css",
+     "/wp-content/themes/flatsome-child/style.css",
+     "/wp-content/uploads/complianz/css/banner-1-optin.css"
+    ],
+    "inline_css_kb": 78,
+    "inline_css_n": 34,
+    "font_urls": [
+     "OpenSans-Regular.woff2",
+     "OpenSans-Semibold.woff2",
+     "OpenSans-Bold.woff2",
+     "fl-icons.woff2?v=3.20.7",
+     "fl-icons.woff?v=3.20.7",
+     "S6uyw4BMUTPHjxAwXjeu.woff2",
+     "S6uyw4BMUTPHjx4wXg.woff2",
+     "S6u9w4BMUTPHh6UVSwaPGR_p.woff2",
+     "S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3Rep8ltA.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3ROp8ltA.woff2",
+     "If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3Sup8.woff2"
+    ],
+    "gtm_pos": "head"
+   }
+  },
+  "fonts": [
+   "OpenSans-Bold.woff2 60KB",
+   "OpenSans-Regular.woff2 59KB",
+   "OpenSans-Semibold.woff2 60KB"
+  ],
+  "fonts_css": "<?php\n/**\n * Plugin Name: Petshop.lt Open Sans (Self-hosted)\n * Plugin URI: https://dev.avesa.lt\n * Description: Self-hosted Open Sans font (Regular 400, Semibold 600, Bold 700). GDPR compliant — no Google Fonts CDN. Generated 2026-05-07 per Karkasas v1.3 specifikacijos.\n * Version: 1.0\n * Author: petshop.lt\n * License: GPL v2 or later\n * Text Domain: petshop-fonts\n */\n\nif (!defined('ABSPATH')) {\n    exit;\n}\n\n/**\n * Inject @font-face declarations into <head>\n * Priority 5 — runs early so fonts are available before any styles use them\n */\nadd_action('wp_head', 'petshop_fonts_inject_css', 5);\nfunction petshop_fonts_inject_css() {\n    $fonts_url = plugin_dir_url(__FILE__) . 'fonts/';\n    ?>\n    <style id=\"petshop-fonts-css\">\n    @font-face {\n        font-family: 'Open Sans';\n        font-style: normal;\n        font-weight: 400;\n        font-display: swap;\n        src: url('<?php echo esc_url($fonts_url); ?>OpenSans-Regular.woff2') format('woff2');\n    }\n    @font-face {\n        font-family: 'Open Sans';\n        font-style: normal;\n        font-weight: 600;\n        font-display: swap;\n        src: url('<?php echo esc_url($fonts_url); ?>OpenSans-Semibold.woff2') format('woff2');\n    }\n    @font-face {\n        font-family: 'Open Sans';\n        font-style: normal;\n        font-weight: 700;\n        font-display: swap;\n        src: url('<?php echo esc_url($fonts_url); ?>OpenSans-Bold.woff2') format('woff2');\n    }\n    </style>\n    <?php\n}\n\n/**\n * Preload Regular and Semibold weights",
+  "flatsome_mods": {
+   "type_headings": {
+    "font-family": "Lato",
+    "variant": "700"
+   },
+   "type_texts": {
+    "font-family": "Lato",
+    "variant": "regular"
+   },
+   "lazy_load_images": 0,
+   "disable_emoji": 0
+  },
+  "gtm_snip": [
+   {
+    "id": "614",
+    "name": "Petshop DataLayer v1.1 (GA4 ecommerce)"
+   },
+   {
+    "id": "615",
+    "name": "Petshop GTM Snippet v1.0 (GTM-MF3GZGT)"
+   },
+   {
+    "id": "4386",
+    "name": "TEMP PS dep-113738"
+   }
+  ],
+  "gtm_plugin": null,
+  "head_jq_snip": [
+   "4386 TEMP PS dep-113738"
+  ]
+ }
+}
