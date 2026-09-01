@@ -1,0 +1,703 @@
+{
+ "v": "dep-173506",
+ "sid": 4429,
+ "cookies_n": 3,
+ "url": "https://dev.avesa.lt/wp-admin/",
+ "title": "Skydelis ‹ Petshop.lt — WordPress",
+ "menu": [
+  {
+   "top": "Skydelis",
+   "subs": [
+    "Pradžia → index.php",
+    "Atnaujinimai 10 → update-core.php"
+   ]
+  },
+  {
+   "top": "Petshop užsakymai",
+   "subs": [
+    "Petshop užsakymai → admin.php?page=ps-desk",
+    "Laiškai → admin.php?page=ps-laiskai",
+    "Tiekimas → admin.php?page=ps-tiekimas"
+   ]
+  },
+  {
+   "top": "Flatsome",
+   "subs": [
+    "Flatsome → admin.php?page=flatsome-panel",
+    "Theme Registration → admin.php?page=flatsome-panel",
+    "Help & Guides → admin.php?page=flatsome-panel-support",
+    "Status → admin.php?page=flatsome-panel-status",
+    "Features → admin.php?page=flatsome-panel-features",
+    "Change log → admin.php?page=flatsome-panel-changelog",
+    "License → admin.php?page=flatsome-panel-license",
+    "Theme Options → customize.php",
+    "Advanced → admin.php?page=optionsframework",
+    "Setup Wizard → admin.php?page=flatsome-setup"
+   ]
+  },
+  {
+   "top": "Petshop prekės",
+   "subs": [
+    "Petshop prekės → admin.php?page=ps-katalogas",
+    "Gavimas → admin.php?page=ps-gavimas",
+    "Akcijos → admin.php?page=ps-akcijos",
+    "Rinkiniai → admin.php?page=ps-rinkiniai",
+    "Perkame kartu → admin.php?page=petshop-fbt",
+    "Surenkami rinkiniai → admin.php?page=ps-laukai",
+    "Atributai → admin.php?page=ps-atributai"
+   ]
+  },
+  {
+   "top": "Įrašai",
+   "subs": [
+    "Visi įrašai → edit.php",
+    "Pridėti įrašą → post-new.php",
+    "Kategorijos → edit-tags.php?taxonomy=category",
+    "Žymos → edit-tags.php?taxonomy=post_tag"
+   ]
+  },
+  {
+   "top": "Portfolio",
+   "subs": [
+    "Portfolio → edit.php?post_type=featured_item",
+    "Add New → post-new.php?post_type=featured_item",
+    "Categories → edit-tags.php?taxonomy=featured_item_category&post_type=featured_item",
+    "Tags → edit-tags.php?taxonomy=featured_item_tag&post_type=featured_item"
+   ]
+  },
+  {
+   "top": "Failai",
+   "subs": [
+    "Failų saugykla → upload.php",
+    "Įkelti failą → media-new.php"
+   ]
+  },
+  {
+   "top": "Puslapiai",
+   "subs": [
+    "Visi puslapiai → edit.php?post_type=page",
+    "Pridėti puslapį → post-new.php?post_type=page"
+   ]
+  },
+  {
+   "top": "Komentarai 0Moderuojama 0 komentarų",
+   "subs": []
+  },
+  {
+   "top": "UX Blocks",
+   "subs": [
+    "UX Blocks → edit.php?post_type=blocks",
+    "Add New Block → post-new.php?post_type=blocks",
+    "Kategorijos → edit-tags.php?taxonomy=block_categories&post_type=blocks"
+   ]
+  },
+  {
+   "top": "Complianz 4",
+   "subs": [
+    "Prietaisų skydelis 4 → admin.php?page=complianz",
+    "Vedlys → admin.php?page=complianz#wizard",
+    "Sutikimo reklamjuostė → admin.php?page=complianz#banner",
+    "Integracijos → admin.php?page=complianz#integrations",
+    "Nustatymai → admin.php?page=complianz#settings",
+    "Įrankiai → admin.php?page=complianz#tools",
+    "Atnaujinkite į premium versiją → https://complianz.io/l/pricing/?utm_source=cmplz_free&utm_medium=plugin_menu&utm_content=admin-submenu&utm_campaign=upgrade"
+   ]
+  },
+  {
+   "top": "Rank Math SEO",
+   "subs": [
+    "Dashboard → admin.php?page=rank-math",
+    "General Settings → admin.php?page=rank-math-options-general",
+    "Titles & Meta → admin.php?page=rank-math-options-titles",
+    "Sitemap Settings → admin.php?page=rank-math-options-sitemap",
+    "Status & Tools → admin.php?page=rank-math-status",
+    "Help & Support → https://rankmath.com/kb/?utm_source=Plugin&utm_medium=Sidebar%20Help%20Link&utm_campaign=WP",
+    "Unlock PRO → https://rankmath.com/pricing/?utm_source=Plugin&utm_medium=upgrade-dashboard-notifications-menu&utm_campaign=WP"
+   ]
+  },
+  {
+   "top": "WooCommerce",
+   "subs": [
+    "WooCommerce Skydelis → admin.php?page=wc-admin",
+    "Užsakymai 2 → admin.php?page=wc-orders",
+    "Pragma eksportas → admin.php?page=petshop-pragma",
+    "🏷️ Masines akcijos → admin.php?page=petshop-promotions",
+    "Petshop XML → admin.php?page=petshop-xml",
+    "Venipak → admin.php?page=shopup_venipak_shipping",
+    "UNISEND → admin.php?page=lp-orders",
+    "Print Invoices & Delivery Notes → admin.php?page=wcdn_page",
+    "Pirkėjai → admin.php?page=wc-admin&path=/customers",
+    "Nuolaidos → admin.php?page=coupons-moved",
+    "Tiekėjų el. paštai → admin.php?page=ps-dropship-nustatymai",
+    "Ataskaitos → admin.php?page=wc-reports",
+    "Nustatymai → admin.php?page=wc-settings",
+    "Statusas → admin.php?page=wc-status",
+    " → admin.php?page=wc-addons",
+    "Plėtiniai 1 → admin.php?page=wc-admin&path=/extensions"
+   ]
+  },
+  {
+   "top": "Produktai",
+   "subs": [
+    "Visi produktai → edit.php?post_type=product",
+    "Pridėti naują produktą → post-new.php?post_type=product",
+    "Prekių ženklai → edit-tags.php?taxonomy=product_brand&post_type=product",
+    "Kategorijos → edit-tags.php?taxonomy=product_cat&post_type=product",
+    "Žymos → edit-tags.php?taxonomy=product_tag&post_type=product",
+    "Požymiai → edit.php?post_type=product&page=product_attributes",
+    "➕ Sukurti rinkinį → edit.php?post_type=product&page=petshop-sukurti-rinkini",
+    "➕ Susidėjimo rinkinys → edit.php?post_type=product&page=petshop-susidejimo-rinkinys",
+    "➕ Daugiau=pigiau → edit.php?post_type=product&page=petshop-dp-forma",
+    "Atsiliepimai → edit.php?post_type=product&page=product-reviews"
+   ]
+  },
+  {
+   "top": "Petshop langai",
+   "subs": [
+    "Apžvalga → admin.php?page=petshop-langai",
+    "Prenumeratos → admin.php?page=petshop-prenumeratos",
+    "Prognozes → admin.php?page=ps-prognoze"
+   ]
+  },
+  {
+   "top": "Petshop klientai",
+   "subs": [
+    "Klientai → admin.php?page=petshop-klientai",
+    "Naujienlaiškiai ir kampanijos → admin.php?page=petshop-naujienlaiskiai",
+    "Laiškų šablonai → admin.php?page=petshop-laiskai",
+    "Laiškų rezultatai → admin.php?page=petshop-rezultatai"
+   ]
+  },
+  {
+   "top": "Petshop ataskaitos",
+   "subs": [
+    "Rytas → admin.php?page=petshop-reports",
+    "Atsargos ir pirkimas → admin.php?page=ps-atsargos",
+    "Klientų analizė → admin.php?page=ps-klientai",
+    "Mėnesio uždarymas → admin.php?page=ps-menuo",
+    "Pardavimai ir pelnas → admin.php?page=ps-pardavimai",
+    "Prekių analizė → admin.php?page=ps-prekes",
+    "Pristatymo tarifai → admin.php?page=ps-tarifai",
+    "Surenkami rinkiniai → admin.php?page=petshop-reports-rinkiniai",
+    "Išlaidos ir nustatymai → admin.php?page=ps-islaidos",
+    "Rinkiniai → admin.php?page=petshop-reports-paruosti",
+    "SEO → admin.php?page=ps-seo",
+    "Brand zodynas → admin.php?page=petshop-reports-brandai",
+    "Augintinio anketa → admin.php?page=petshop-reports-anketa"
+   ]
+  },
+  {
+   "top": "Mokėjimai",
+   "subs": []
+  },
+  {
+   "top": "Statistika",
+   "subs": [
+    "Apžvalga → admin.php?page=wc-admin&path=/analytics/overview",
+    "Produktai → admin.php?page=wc-admin&path=/analytics/products",
+    "Pajamos → admin.php?page=wc-admin&path=/analytics/revenue",
+    "Užsakymai → admin.php?page=wc-admin&path=/analytics/orders",
+    "Variantai → admin.php?page=wc-admin&path=/analytics/variations",
+    "Kategorijos → admin.php?page=wc-admin&path=/analytics/categories",
+    "Nuolaidos → admin.php?page=wc-admin&path=/analytics/coupons",
+    "Mokesčiai → admin.php?page=wc-admin&path=/analytics/taxes",
+    "Atsisiuntimai → admin.php?page=wc-admin&path=/analytics/downloads",
+    "Atsargos → admin.php?page=wc-admin&path=/analytics/stock",
+    "Nustatymai → admin.php?page=wc-admin&path=/analytics/settings"
+   ]
+  },
+  {
+   "top": "Marketingas",
+   "subs": [
+    "Apžvalga → admin.php?page=wc-admin&path=/marketing",
+    "Nuolaidos → edit.php?post_type=shop_coupon"
+   ]
+  },
+  {
+   "top": "WPForms",
+   "subs": [
+    "All Forms → admin.php?page=wpforms-overview",
+    "Setup Checklist33% complete → admin.php?page=wpforms-setup-checklist",
+    "Add New Form → admin.php?page=wpforms-builder",
+    "Entries → admin.php?page=wpforms-entries",
+    "Payments NEW! → admin.php?page=wpforms-payments",
+    "Form Templates → admin.php?page=wpforms-templates",
+    "Settings → admin.php?page=wpforms-settings",
+    "Tools → admin.php?page=wpforms-tools",
+    "Addons → admin.php?page=wpforms-addons",
+    "Privacy Compliance → admin.php?page=wpforms-wpconsent",
+    "SMTP → admin.php?page=wpforms-smtp",
+    "About Us → admin.php?page=wpforms-about",
+    "Community → admin.php?page=wpforms-community",
+    "Upgrade to Pro → https://wpforms.com/lite-upgrade/?utm_campaign=liteplugin&utm_source=WordPress&utm_medium=admin-menu&utm_locale=lt_LT&utm_content=Upgrade%20to%20Pro%20-%20dashboard"
+   ]
+  },
+  {
+   "top": "Paysera",
+   "subs": [
+    "Apie → admin.php?page=paysera",
+    "Pristatymas → admin.php?page=paysera-delivery",
+    "Mokėjimai → admin.php?page=paysera-payments",
+    "Diagnostika → admin.php?page=paysera-self-diagnosis"
+   ]
+  },
+  {
+   "top": "Išvaizda",
+   "subs": [
+    "Temos 0 → themes.php",
+    "Išvaizda → site-editor.php",
+    "Konfigūruoti → customize.php?return=%2Fwp-admin%2F",
+    "Valdikliai → widgets.php",
+    "Meniu → nav-menus.php",
+    "Install Plugins → themes.php?page=tgmpa-install-plugins"
+   ]
+  },
+  {
+   "top": "YITH",
+   "subs": [
+    "Ajax Product Filter → admin.php?page=yith_wcan_panel",
+    "System Status → admin.php?page=yith_system_info",
+    "How to install premium version → //support.yithemes.com/hc/en-us/articles/217840988"
+   ]
+  },
+  {
+   "top": "Įskiepiai 9",
+   "subs": [
+    "Įdiegti įskiepiai → plugins.php",
+    "Pridėti įskiepį → plugin-install.php"
+   ]
+  },
+  {
+   "top": "Snippets",
+   "subs": [
+    "All Snippets → admin.php?page=snippets",
+    "Add New → admin.php?page=add-snippet",
+    "Import → admin.php?page=import-code-snippets",
+    "Settings → admin.php?page=snippets-settings",
+    "What’s New → admin.php?page=code-snippets-welcome",
+    "Go Pro → admin.php?page=code_snippets_upgrade"
+   ]
+  },
+  {
+   "top": "Vartotojai",
+   "subs": [
+    "Visi vartotojai → users.php",
+    "Pridėti vartotoją → user-new.php",
+    "Profilis → profile.php"
+   ]
+  },
+  {
+   "top": "Įrankiai",
+   "subs": [
+    "Prieinami įrankiai → tools.php",
+    "Importavimas → import.php",
+    "Eksportavimas → export.php",
+    "Tinklalapio būklė 2 → site-health.php",
+    "Eksportuoti asmeninius duomenis → export-personal-data.php",
+    "Ištrinti asmeninius duomenis → erase-personal-data.php",
+    "Suplanuoti veiksmai → tools.php?page=action-scheduler"
+   ]
+  },
+  {
+   "top": "Nuostatos",
+   "subs": [
+    "Pagrindinės → options-general.php",
+    "Rašymas → options-writing.php",
+    "Skaitymas → options-reading.php",
+    "Diskusija → options-discussion.php",
+    "Failai → options-media.php",
+    "Nuorodų struktūra → options-permalink.php",
+    "Privatumas → options-privacy.php",
+    "WP Super Cache → options-general.php?page=wpsupercache"
+   ]
+  },
+  {
+   "top": "WP Mail SMTP",
+   "subs": [
+    "Settings → admin.php?page=wp-mail-smtp",
+    "Email Log → admin.php?page=wp-mail-smtp-logs",
+    "Email Reports → admin.php?page=wp-mail-smtp-reports",
+    "Tools → admin.php?page=wp-mail-smtp-tools",
+    "Privacy Compliance → admin.php?page=wp-mail-smtp-recommended-wpconsent",
+    "About Us → admin.php?page=wp-mail-smtp-about",
+    "Upgrade to Pro → https://wpmailsmtp.com/lite-upgrade/?utm_source=WordPress&utm_medium=admin-menu&utm_campaign=liteplugin&utm_locale=lt_lt&utm_content=Upgrade%20to%20Pro%20-%20dashboard"
+   ]
+  },
+  {
+   "top": "All Import",
+   "subs": [
+    "New Import → admin.php?page=pmxi-admin-import",
+    "Manage Imports → admin.php?page=pmxi-admin-manage",
+    "Settings → admin.php?page=pmxi-admin-settings",
+    "Partner Discounts → admin.php?page=pmxi-admin-partners"
+   ]
+  },
+  {
+   "top": "Loco Translate",
+   "subs": [
+    "Home → admin.php?page=loco",
+    "Themes → admin.php?page=loco-theme",
+    "Plugins → admin.php?page=loco-plugin",
+    "WordPress → admin.php?page=loco-core",
+    "Languages → admin.php?page=loco-lang",
+    "Settings → admin.php?page=loco-config"
+   ]
+  }
+ ],
+ "langai": {
+  "admin.php?page=ps-desk": {
+   "h": "",
+   "tables": 1,
+   "rows": 1,
+   "tabs": [],
+   "empty": true,
+   "len": 1707,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-laiskai": {
+   "h": "Laiškai tiekėjams",
+   "tables": 2,
+   "rows": 9,
+   "tabs": [
+    "Laukia išsiuntimo (2)",
+    "Išsiųsti (7)"
+   ],
+   "empty": false,
+   "len": 2648,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar.",
+    "Siunta neregistruota: #35100, #35090. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registr",
+    "Siunta neregistruota: #35100, #35090. Laiške lipdukų nebūtų — tiekėjas neturėtų ko klijuoti. Registr"
+   ]
+  },
+  "admin.php?page=ps-tiekimas": {
+   "h": "Tiekimas",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [
+    "Kaupiama",
+    "Užsakyta · laukiam",
+    "Laukia prekių",
+    "Gautos partijos"
+   ],
+   "empty": false,
+   "len": 195,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-katalogas": {
+   "h": "",
+   "tables": 1,
+   "rows": 50,
+   "tabs": [],
+   "empty": false,
+   "len": 10662,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-gavimas": {
+   "h": "",
+   "tables": 1,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 772,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-akcijos": {
+   "h": "",
+   "tables": 2,
+   "rows": 6,
+   "tabs": [],
+   "empty": false,
+   "len": 577,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-rinkiniai": {
+   "h": "Rinkiniai",
+   "tables": 1,
+   "rows": 11,
+   "tabs": [],
+   "empty": false,
+   "len": 3830,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-fbt": {
+   "h": "Dažnai perkama kartu",
+   "tables": 4,
+   "rows": 20,
+   "tabs": [],
+   "empty": false,
+   "len": 10670,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-laukai": {
+   "h": "Rinkiniai",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 2830,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-atributai": {
+   "h": "Atributai",
+   "tables": 1,
+   "rows": 4,
+   "tabs": [],
+   "empty": false,
+   "len": 760,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-langai": {
+   "h": "Petshop langai",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 281,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-prenumeratos": {
+   "h": "Prenumeratos",
+   "tables": 3,
+   "rows": 3,
+   "tabs": [
+    "Apžvalga",
+    "Darbo eilė",
+    "Sąrašas",
+    "Prekės"
+   ],
+   "empty": false,
+   "len": 633,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-prognoze": {
+   "h": "Prenumeratu prognoze — likuciu poreikis 60 d.",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 233,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar.",
+    "Aktyviu prenumeratu dar nera. Prognoze ir deficitu aliarmai pasileis automatiskai, kai atsiras pirma"
+   ]
+  },
+  "admin.php?page=petshop-klientai": {
+   "h": "Klientai suvestinė 2026-09-01 05:30\n\t\t\tPerskaičiuoti dabar",
+   "tables": 1,
+   "rows": 50,
+   "tabs": [],
+   "empty": false,
+   "len": 8667,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-naujienlaiskiai": {
+   "h": "Naujienlaiškiai Naujas",
+   "tables": 1,
+   "rows": 1,
+   "tabs": [],
+   "empty": false,
+   "len": 157,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-laiskai": {
+   "h": "Laiškų šablonai",
+   "tables": 3,
+   "rows": 21,
+   "tabs": [],
+   "empty": false,
+   "len": 2680,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-rezultatai": {
+   "h": "Laiškų rezultatai v1.1",
+   "tables": 2,
+   "rows": 25,
+   "tabs": [],
+   "empty": false,
+   "len": 2585,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-reports": {
+   "h": "Rytas Antradienis, 2026-09-01",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 1961,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-atsargos": {
+   "h": "Atsargos ir pirkimas",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 3434,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-klientai": {
+   "h": "Klientų analizė",
+   "tables": 1,
+   "rows": 6,
+   "tabs": [],
+   "empty": false,
+   "len": 4062,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-menuo": {
+   "h": "Mėnesio uždarymas",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 572,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-pardavimai": {
+   "h": "Pardavimai ir pelnas",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [],
+   "empty": false,
+   "len": 454,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-prekes": {
+   "h": "Prekių analizė",
+   "tables": 2,
+   "rows": 303,
+   "tabs": [],
+   "empty": false,
+   "len": 26722,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-tarifai": {
+   "h": "Pristatymo tarifai",
+   "tables": 3,
+   "rows": 44,
+   "tabs": [],
+   "empty": false,
+   "len": 4968,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-reports-rinkiniai": {
+   "h": "Surenkami rinkiniai",
+   "tables": 4,
+   "rows": 91,
+   "tabs": [],
+   "empty": false,
+   "len": 16873,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-islaidos": {
+   "h": "Išlaidos ir ataskaitų nustatymai",
+   "tables": 3,
+   "rows": 9,
+   "tabs": [],
+   "empty": false,
+   "len": 1560,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-reports-paruosti": {
+   "h": "Rinkiniai",
+   "tables": 2,
+   "rows": 2,
+   "tabs": [],
+   "empty": false,
+   "len": 2051,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=ps-seo": {
+   "h": "SEO v1.3 · GSC prijungta · duomenys iki 2026-08-29 (vėlavimas ~3 d.)",
+   "tables": 4,
+   "rows": 75,
+   "tabs": [],
+   "empty": false,
+   "len": 6590,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-reports-brandai": {
+   "h": "Brand žodynas",
+   "tables": 1,
+   "rows": 1,
+   "tabs": [],
+   "empty": false,
+   "len": 577,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  },
+  "admin.php?page=petshop-reports-anketa": {
+   "h": "Augintinio anketa · Piltuvėlis",
+   "tables": 0,
+   "rows": 0,
+   "tabs": [
+    "Piltuvėlis",
+    "Rekomendacijos",
+    "Paklausa",
+    "Duomenų kokybė",
+    "Refill",
+    "Pinigai"
+   ],
+   "empty": false,
+   "len": 534,
+   "notice": [
+    "Išleistas WordPress 7.1! Prašome atsinaujinti dabar."
+   ]
+  }
+ },
+ "pageerrors": []
+}
