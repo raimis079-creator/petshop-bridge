@@ -1,6 +1,99 @@
 {
- "v": "dep-073323",
+ "v": "dep-073459",
  "kurimas": 200,
- "sid": 4360,
- "zalias_GO": "<br />\n<b>Warning</b>:  md5_file(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-core/includes/class-consent-sync.php): Failed to open stream: No such file or directory in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>14</b><br />\n<br />\n<b>Warning</b>:  file_get_contents(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-core/templates/emails/order-paid.php): Failed to open stream: No such file or directory in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>15</b><br />\n<br />\n<b>Warning</b>:  file_get_contents(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-core/templates/emails/dunning-1.php): Failed to open stream: No such file or directory in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>15</b><br />\n<br />\n<b>Warning</b>:  file_get_contents(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-core/templates/emails/founding.php): Failed to open stream: No such file or directory in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>15</b><br />\n{\"v\":\"S1550r\",\"hdr\":{\"petshop-istorijos-adapteris\":{\"md5\":\"591a199ce819b8cf47626cba76d19f4b\",\"B\":32482,\"hdr\":\"\\/**\\n * Plugin Name: Petshop Istorijos Adapteris\\n * Description: ps_ist_* (eShoprent) paduodama ps_fakt_* forma analizės langams (S1546 #2). Užšaldytos lentelės ps_ist_fakt_* + rodiniai „Abu\\\" + šaltinio jungiklis [eShoprent | petshop.lt | Abu].\\n * Version: 1.0.1\\n *\\n * ARCHITEKTŪRA (S1546, Raimio sprendimai):\\n * - ps_ist_fakt_uzsakymai \\/ ps_ist_fakt_eilutes — CREATE TABLE ... LIKE ps_fakt_*,\\n *   užpildomos VIENĄ kartą per perstatyti() iš ps_ist_*. Užšaldyta: istorija nesikeičia.\\n * - Rodiniai ps_v_analize_uzsakymai \\/ _eilutes: kol `ps_perjungimo_data` nenustatyta —\\n *   TIK istorija (faktai karantine, S1546 #5); nustačius — ist iki ribos + fakt nuo ribos.\\n * - Jungiklis: GET saltinis=ist|wc|abu, įsimenamas user meta. Default: abu.\\n * - eShoprent NĖRA: savikainos\\/maržos\\/kontribucijos (0), kanalai (NULL), nuolaidų\\n *   detalės (0 — nuolaidos jau kainose). prekiu_suma_ct = eilučių suma (BRUTO su PVM,\\n *   kaip faktuose); pristatymas_paimta_ct = užsakymo suma − eilučių suma.\\n * - uzsakymas_id = 900000000 + eShoprent id (nesikerta su WC).\\n * - klientas_id — per wp_users el. paštą (S1539 importas), klientas_email_hash —\\n *   SHA2(LOWER(TRIM(email)),256) — identiškas Petshop_Faktai::email_hash().\\n *\\n * @package Petshop\\n *\\/\"},\"petshop-ataskaita-atsargos\":{\"md5\":\"21bc085aafa5207f5d64c35bca00779c\",\"B\":29887,\"hdr\":\"\\/**\\n * Plugin Name: Petshop Ataskaita Atsargos\\n * Description: Atsargos ir pirkimas (planas v2.0 §4.4) — ką "
+ "sid": 4361,
+ "GO": {
+  "v": "S1550r",
+  "hdr": {
+   "petshop-istorijos-adapteris": {
+    "md5": "591a199ce819b8cf47626cba76d19f4b",
+    "B": 32482,
+    "hdr": "/**\n * Plugin Name: Petshop Istorijos Adapteris\n * Description: ps_ist_* (eShoprent) paduodama ps_fakt_* forma analizės langams (S1546 #2). Užšaldytos lentelės ps_ist_fakt_* + rodiniai „Abu\" + šaltinio jungiklis [eShoprent | petshop.lt | Abu].\n * Version: 1.0.1\n *\n * ARCHITEKTŪRA (S1546, Raimio sprendimai):\n * - ps_ist_fakt_uzsakymai / ps_ist_fakt_eilutes — CREATE TABLE ... LIKE ps_fakt_*,\n *   užpildomos VIENĄ kartą per perstatyti() iš ps_ist_*. Užšaldyta: istorija nesikeičia.\n * - Rodiniai ps_v_analize_uzsakymai / _eilutes: kol `ps_perjungimo_data` nenustatyta —\n *   TIK istorija (faktai karantine, S1546 #5); nustačius — ist iki ribos + fakt nuo ribos.\n * - Jungiklis: GET saltinis=ist|wc|abu, įsimenamas user meta. Default: abu.\n * - eShoprent NĖRA: savikainos/maržos/kontribucijos (0), kanalai (NULL), nuolaidų\n *   detalės (0 — nuolaidos jau kainose). prekiu_suma_ct = eilučių suma (BRUTO su PVM,\n *   kaip faktuose); pristatymas_paimta_ct = užsakymo suma − eilučių suma.\n * - uzsakymas_id = 900000000 + eShoprent id (nesikerta su WC).\n * - klientas_id — per wp_users el. paštą (S1539 importas), klientas_email_hash —\n *   SHA2(LOWER(TRIM(email)),256) — identiškas Petshop_Faktai::email_hash().\n *\n * @package Petshop\n */"
+   },
+   "petshop-ataskaita-atsargos": {
+    "md5": "21bc085aafa5207f5d64c35bca00779c",
+    "B": 29887,
+    "hdr": "/**\n * Plugin Name: Petshop Ataskaita Atsargos\n * Description: Atsargos ir pirkimas (planas v2.0 §4.4) — ką užsakyti, stockout €, apyvartumas, sell-through, galiojimas, dropship prieinamumas.\n * Version: 1.4\n *\n * ŠALTINIAI. `ps_fakt_atsargos_d` (naktinis snapshot: likutis_av, pardavimai\n * 7/30 d., dienų atsargų, stockout, vertė) · `ps_partijos` (gavimai, likę,\n * galiojimas) · `ps_sources` (tiekėjas, tiekėjo likutis) · `ps_fakt_eilutes`\n * (COGS). Ekranas NIEKO neužsako — siūlo kiekį, sprendžia žmogus (§2 rule).\n *\n * AV vs DROPSHIP: snapshot'e `likutis_av IS NULL` = prekė ne AV lentynoje.\n * Pirkimo siūlymai — tik AV. Dropship'ui — atskiras skirtukas apie tiekėjo\n * prieinamumą (kiek dienų per 30 tiekėjas neturėjo).\n *\n * SIŪLOMAS KIEKIS = paklausa per (lead + buferis) − likutis − rezervuota +\n * atsarga 30 d. Paklausa = `pardavimai_vnt_30d / 30`. Be duomenų (30 d. = 0)\n * — nesiūlom nieko: geriau tyla nei išgalvotas skaičius.\n */"
+   },
+   "petshop-ataskaita-klientai": {
+    "md5": "9335e06e89ab8f544747b13dc79bb258",
+    "B": 32444,
+    "hdr": "/**\n * Plugin Name: Petshop Ataskaita Klientai\n * Description: Klientų analizė (planas v2.0 §4.3) — apžvalga, kohortos, LTV, top, rizikoje, RFM, vieno kliento kortelė.\n * Version: 1.1\n *\n * ŠALTINIAI. Pinigai ir datos — TIESIOGIAI iš `ps_fakt_uzsakymai` (klientas =\n * `klientas_email_hash`); segmentai / RFM / refill — iš `ps_dim_klientai`\n * (perskaičiuojama naktį). Kohortos ir LTV skaičiuojami iš faktų čia pat,\n * nes dim'e LTV yra pajamų, o planas (S2) reikalauja KONTRIBUCIJOS.\n *\n * KOHORTA = mėnuo, kurį klientas pirko pirmą kartą (`klientas_uzsakymo_nr=1`).\n * Kohortų lentelė: % kohortos klientų, pirkusių N-ąjį mėnesį po pirmo, ir\n * kumuliatyvi kontribucija vienam kohortos klientui.\n *\n * LAIKOTARPIS taikomas tik apžvalgai ir top'ui; kohortos/LTV — visa istorija\n * nuo `ps_stat_pradzia` (kitaip kohorta būtų nupjauta).\n *\n * EL. PAŠTAS ekrane nerodomas (faktuose tik hash). Rizikos CSV į Sender ima\n * paštą iš paskutinio užsakymo `wc_orders.billing_email` — tik eksportui.\n *\n * v1.1 (S1547): šaltinio jungiklis [eShoprent | petshop.lt | Abu] per\n * Petshop_Ist_Adapteris — u()/e() gali rodyti į užšaldytą istoriją, faktus arba\n * suvienytą rodinį. petshop.lt režime — palyginimo eilutė „tas pats laikotarpis\n * eShoprent pernai\" (S1546 #3). Segmentai — B1 taisyklės (S1546 #1).\n */"
+   },
+   "petshop-ataskaita-prekes": {
+    "md5": "687d7daa01e9d0cef2d69f9c96fb7a82",
+    "B": 19922,
+    "hdr": "/**\n * Plugin Name: Petshop Ataskaita Prekes\n * Description: Prekių analizė (planas v2.0 §4.2 E5 skirtukai) — ABC×XYZ, neparduodama, kainų istorija × pardavimai, akcijų uplift.\n * Version: 1.3\n *\n * ŠALTINIAI: eilutės per Petshop_Ist_Adapteris (jungiklis eShoprent | petshop.lt |\n * Abu — S1546 #3), `ps_fakt_kainos`, `ps_akcijos` + `ps_akciju_prekes`,\n * `ps_fakt_atsargos_d`. Kainų pokyčiai ir akcijos — tik petshop.lt (istorijoje\n * jų nėra, S1546 #4). eShoprent eilutėse nėra savikainų — antkainis tuščias.\n * Nesusietos istorijos eilutės (preke_id=0) — „nebeparduodamos\" suma po matrica.\n *\n * ABC — pagal pajamas per 365 d.: A = pirmieji 80 %, B = iki 95 %, C = likę.\n * XYZ — paklausos stabilumas: savaitinių kiekių variacijos koef. (σ/μ):\n * X < 0,5 (stabili), Y < 1,0, Z ≥ 1,0 (nereguliari). AX — laikyti visada,\n * CZ — neužsakinėti į sandėlį.\n *\n * AKCIJŲ UPLIFT — pardavimai/d. akcijos metu vs 28 d. PRIEŠ (bazinė), tos\n * pačios prekės. Kontribucija irgi: pigiau parduota daugiau nereiškia uždirbta.\n * KAINŲ ISTORIJA — kiekvienam kainos pokyčiui: vnt./d. 14 d. prieš ir po.\n */"
+   },
+   "petshop-dim-klientai": {
+    "md5": "831d9d465aa63aaf41d42c96c36c7436",
+    "B": 14968,
+    "hdr": "/**\n * Plugin Name: Petshop Dim — Klientai\n * Description: Kliento busena (ps_dim_klientai) — kohortos, LTV, RFM. Perskaiciuojama kas nakti IS VISOS JUOSTOS (istorija + faktai per Petshop_Ist_Adapteris). Master planas v1.8 §4.8; B1 segmentai — S1546 #1.\n * Version: 1.1\n *\n * KODEL: maistas yra periodinis pirkimas. Be kohortu ir pakartotinio pirkimo\n * rodikliu refill variklis aklas, o „nauji vs grizatantys\" pjuvis neimanomas.\n * Chewy ir zooplus tai laiko PAGRINDINE metrika (planas §2).\n *\n * ══════════════════════════════════════════════════════════════════════\n * SI LENTELE — IsVESTINE, NE FAKTAS\n * ══════════════════════════════════════════════════════════════════════\n * Skirtingai nuo `ps_fakt_*`, ji **perskaiciuojama nuo nulio** kas nakti is\n * `ps_fakt_uzsakymai`. Todel ja galima trinti be nuostoliu — tai tik greitesnis\n * budas atsakyti i klausima, o ne istorijos saltinis. Faktai lieka faktais.\n *\n * RAKTAS: `email_hash`, ne `klientas_id`. Priezastis — dev'e visi 4 uzsakymai\n * turi `klientas_id=0` (sveciai), ir taip bus daugumai realiu pirkimu.\n * `klientas_id` saugomas SALIA, kai jis yra.\n * GDPR (`ps_gdpr_rezimas=anonimizuoti`): `klientas_id` -> NULL, hash lieka.\n * Hash yra vienkryptis, todel anonimizavimas kohortu nesugriauna.\n *\n * RFM — KVINTILIAI, ne fiksuotos ribos. Su mazu klientu skaiciumi kvintiliai\n * issigimsta (visi patenka i ta pati), todel:\n *   < 5 klientai -> visiems `rfm_* = NULL`, `segmentas` skaiciuojamas TIK is\n *   uzsakymu skaiciaus ir senumo. Melagingas „VIP\" is vieno kliento butu\n *   blogiau nei tuscias laukas (§7 taisykle 15).\n *\n * `refill_laukiama_at` — SAMONINGAI NULL. E2b recon (#5010) rado, kad\n * `refill_laukiama` neminimas ne viename faile; `ps_refill_tracking` lentele\n * yra (23 eilutes), bet jos schemos dar netikrinom. Geriau tuscia nei atspeta;\n * prijungiama atskirai, kai schema bus perskaityta.\n *\n * @package Petshop\n */"
+   }
+  },
+  "opt_saltinis": [
+   {
+    "user_id": "1",
+    "meta_value": "abu"
+   }
+  ],
+  "riba": {
+   "perj": false,
+   "adapt_riba": false
+  },
+  "opts": [
+   {
+    "option_name": "ps_ist_adapt_perstatyta",
+    "v": "2026-08-31 19:35:02"
+   },
+   {
+    "option_name": "ps_ist_adapt_rodiniai",
+    "v": "a27ca1f4662ab7dcb9d265875e6269d0"
+   }
+  ],
+  "cron": [
+   "ps_browse_abandon_check",
+   "ps_esp_cron_process_pending",
+   "ps_email_dispatch_cron",
+   "ps_post_purchase_check",
+   "ps_cart_abandon_check",
+   "ps_refill_daily_check",
+   "ps_refill_iv_veidrodis",
+   "ps_akcijos_valanda",
+   "ps_vartai_valanda",
+   "ps_seseliai_valandinis",
+   "ps_dropship_sargas",
+   "ps_reminders_daily_check",
+   "ps_dim_klientu_perskaiciavimas",
+   "ps_fakt_atsargu_snapshot",
+   "ps_stat_valymas",
+   "ps_fakt_siuntu_sutikrinimas",
+   "ps_web_agregavimas",
+   "ps_ataskaitu_agregavimas",
+   "ps_fakt_reklama_portalai",
+   "ps_feeds_naktinis",
+   "ps_klientai_perskaiciuoti",
+   "ps_pet_drafts_cleanup_daily",
+   "ps_web_valymas",
+   "ps_rytas_sargas",
+   "ps_prognoze_diena",
+   "ps_sargas_kasdien",
+   "ps_sources_naktinis",
+   "ps_ivykiai_valymas",
+   "ps_pardavimai_naktinis",
+   "ps_pilnumas_naktinis",
+   "ps_suppression_daily_reconcile",
+   "ps_prenumerata_diena",
+   "ps_sargas_savaitinis"
+  ],
+  "consent_sync": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-consent-sync.php",
+   "dbc0b67bd8b435809787049bc5759441"
+  ],
+  "tpl": {
+   "order-paid": "layout sveiki efabb3a9879378b7e11aad6c38a682b5",
+   "dunning-1": "layout sveiki 57cc9d13de07d2a09d9da9f071363558",
+   "founding": "layout sveiki 8f383a47396b2484657cba3a02bb2362"
+  }
+ }
 }
