@@ -1,0 +1,83 @@
+{
+ "v": "dep-122554",
+ "kurimas": 200,
+ "sid": 4395,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "PSI": {
+  "v": "S1560",
+  "score": 87,
+  "m": {
+   "server-response-time": 39,
+   "first-contentful-paint": 1823,
+   "largest-contentful-paint": 3534,
+   "total-blocking-time": 19,
+   "speed-index": 4402,
+   "interactive": 4531
+  },
+  "lcp_el": [],
+  "lcp_el_snippet": "",
+  "lcp_phases": [],
+  "render_blocking": [],
+  "render_blocking_ms": null,
+  "bootup": [
+   [
+    "/",
+    203
+   ],
+   [
+    "/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+    117
+   ],
+   [
+    "/gtm.js?id=GTM-MF3GZGT",
+    113
+   ],
+   [
+    "Unattributable",
+    73
+   ]
+  ],
+  "unused_js_kb": 0,
+  "unused_js": [
+   [
+    "/gtm.js?id=GTM-MF3GZGT",
+    87
+   ]
+  ],
+  "unused_css": [
+   [
+    "/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.20.7",
+    27
+   ]
+  ],
+  "third_party": [],
+  "total_kb": 576,
+  "requests": 50,
+  "kb_by_type": {
+   "Document": 51,
+   "Image": 105,
+   "Font": 61,
+   "Stylesheet": 54,
+   "Script": 240,
+   "Other": 58,
+   "XHR": 2,
+   "Ping": 0
+  },
+  "font_display": 0,
+  "lcp_lazy": null,
+  "prioritize_lcp": "null",
+  "diag": {
+   "numScripts": 16,
+   "mainDocumentTransferSize": 52578,
+   "maxRtt": 5.6785049999999995,
+   "numStylesheets": 9,
+   "numRequests": 50,
+   "totalByteWeight": 589650,
+   "throughput": 16765369238.154938,
+   "numFonts": 4
+  }
+ }
+}
