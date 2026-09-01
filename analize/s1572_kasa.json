@@ -1,0 +1,382 @@
+{
+ "v": "S1572",
+ "mob": {
+  "errs": [],
+  "failed": [],
+  "resp": {
+   "/": {
+    "st": 200,
+    "cc": "",
+    "wpsc": ""
+   },
+   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/": {
+    "st": 200,
+    "cc": "no-cache, must-revalidate, max-age=0, no-store, private",
+    "wpsc": ""
+   },
+   "/kasa/": {
+    "st": 200,
+    "cc": "no-cache, must-revalidate, max-age=0, private",
+    "wpsc": ""
+   },
+   "/kasa/order-received/35308/": {
+    "st": 200,
+    "cc": "no-cache, must-revalidate, max-age=0, no-store, private",
+    "wpsc": ""
+   }
+  },
+  "baneris": {
+   "yra": true,
+   "matomas": true,
+   "klases": "cmplz-cookiebanner banner-1 baneris-a optin cmplz-bottom-right cmplz-categories-type-view-preferences cmplz-show",
+   "mygtukai": [
+    "PRIIMTI",
+    "ATMESTI",
+    "NUOSTATOS",
+    "Išsaugoti nuostatas"
+   ]
+  },
+  "gtm_pries_sutikima": {
+   "gtm": true,
+   "dl": [
+    "consent",
+    "set",
+    "set",
+    "gtm.js",
+    "gtm.dom",
+    "consent",
+    "cmplz_consent_update",
+    "gtm.load"
+   ],
+   "consent_default": "[[\"default\",{\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\",\"analytics_storage\":\"denied\",\"functionality_storage\":\"granted\",\"personalization_storage\":\"granted\",\"security_storage\":\"granted\",\"wait_for_update\":500}],[\"update\",{\"analytics_storage\":\"denied\",\"ad_storage\":\"denie"
+  },
+  "po_sutikimo": {
+   "banner_dismissed": true,
+   "cookie": [
+    "cmplz_consented_services",
+    "cmplz_policy_id",
+    "cmplz_marketing",
+    "cmplz_statistics",
+    "cmplz_preferences",
+    "cmplz_functional",
+    "cmplz_banner-status"
+   ],
+   "gtm": true,
+   "dl_events": [
+    "consent:default",
+    "?",
+    "?",
+    "gtm.js",
+    "gtm.dom",
+    "consent:update",
+    "cmplz_consent_update",
+    "gtm.load",
+    "consent:update",
+    "cmplz_consent_update"
+   ],
+   "consent_update": "[{\"analytics_storage\":\"denied\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\"},{\"analytics_storage\":\"granted\",\"ad_storage\":\"granted\",\"ad_user_data\":\"granted\",\"ad_personalization\":\"granted\"}]"
+  },
+  "cart_fragment": "1",
+  "kasa": {
+   "url": "/kasa/",
+   "h1": "Pirkimo sąlygos ir taisyklės",
+   "form": true,
+   "laukai": [
+    "billing_first_name",
+    "billing_last_name",
+    "billing_is_company",
+    "billing_company",
+    "billing_vat_code",
+    "billing_company_code",
+    "billing_company_address",
+    "billing_country",
+    "billing_address_1",
+    "billing_address_2",
+    "billing_city",
+    "billing_state",
+    "billing_postcode",
+    "billing_phone",
+    "billing_email",
+    "createaccount",
+    "ship_to_different_address",
+    "shipping_first_name",
+    "shipping_last_name",
+    "shipping_country",
+    "shipping_address_1",
+    "shipping_address_2",
+    "shipping_city",
+    "shipping_state",
+    "shipping_postcode",
+    "shipping_phone",
+    "order_comments",
+    "shipping_method[0]",
+    "shipping_method[0]",
+    "shipping_method[0]",
+    "shipping_method[0]",
+    "payment_method",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]"
+   ],
+   "siuntimas": [
+    "VENIPAK Kurjeris: 3,99 €",
+    "VENIPAK paštomatai/atsiėmimo punktai",
+    "LP Express",
+    "LP Express kurjeris: 3,99 €"
+   ],
+   "mokejimai": [
+    "paysera:Mokėjimas internetu",
+    "bacs:Bankinis pavedimas"
+   ],
+   "lp_js": 3,
+   "lp_css": 1,
+   "select2_src": [
+    "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=4.1.0-rc.0",
+    "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=4.1.0"
+   ],
+   "select2_fn": "function",
+   "selectwoo": "function",
+   "jq": "function",
+   "defer_head": 12,
+   "head_scripts": 15,
+   "mygtukas": true,
+   "pren": 0,
+   "dl": [
+    "cmplz_consent_update",
+    "gtm.js",
+    "begin_checkout",
+    "cmplz_consent_update",
+    "gtm.dom",
+    "gtm.load"
+   ],
+   "console_klaidos_kasoje": []
+  },
+  "lp": {
+   "select": {
+    "name": "woo_lithuaniapost_lpexpress_terminal_id",
+    "opt": 532
+   },
+   "select2_container": true,
+   "s2_visible": true,
+   "dropdown": {
+    "open": true,
+    "opts": 3
+   }
+  },
+  "uzpildyta": {
+   "billing_first_name": true,
+   "billing_last_name": true,
+   "billing_email": true,
+   "billing_phone": true,
+   "billing_address_1": true,
+   "billing_city": true,
+   "billing_postcode": true
+  },
+  "uzsakymas": {
+   "url": "/kasa/order-received/35308/",
+   "klaidos": [],
+   "received": true,
+   "order_id": "Užsakymo numeris: 35308",
+   "dl": [
+    "cmplz_consent_update",
+    "gtm.js",
+    "purchase",
+    "cmplz_consent_update"
+   ],
+   "purchase": "{\"transaction_id\":\"35308\",\"value\":77.79,\"currency\":\"EUR\",\"tax\":13.5,\"shipping\":3.3,\"items\":[{\"item_id\":\"149820\",\"item_name\":\"ROYAL CANIN CAT FUSSY EXIGENT - 10 kg, sausas pašaras išrankioms katėms\",\"price\":73.8,\"quantity\":1,\"index\":0,\"item_brand\":\"Royal Canin\",\"item_category\":\"Maistas katėms\"}]}"
+  }
+ },
+ "desk": {
+  "errs": [],
+  "failed": [],
+  "resp": {
+   "/": {
+    "st": 200,
+    "cc": "",
+    "wpsc": ""
+   },
+   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/": {
+    "st": 200,
+    "cc": "no-cache, must-revalidate, max-age=0, no-store, private",
+    "wpsc": ""
+   },
+   "/kasa/": {
+    "st": 200,
+    "cc": "no-cache, must-revalidate, max-age=0, private",
+    "wpsc": ""
+   }
+  },
+  "baneris": {
+   "yra": true,
+   "matomas": true,
+   "klases": "cmplz-cookiebanner banner-1 baneris-a optin cmplz-bottom-right cmplz-categories-type-view-preferences cmplz-show",
+   "mygtukai": [
+    "PRIIMTI",
+    "ATMESTI",
+    "NUOSTATOS",
+    "Išsaugoti nuostatas"
+   ]
+  },
+  "gtm_pries_sutikima": {
+   "gtm": false,
+   "dl": [
+    "consent",
+    "set",
+    "set",
+    "gtm.js",
+    "consent",
+    "cmplz_consent_update"
+   ],
+   "consent_default": "[[\"default\",{\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\",\"analytics_storage\":\"denied\",\"functionality_storage\":\"granted\",\"personalization_storage\":\"granted\",\"security_storage\":\"granted\",\"wait_for_update\":500}],[\"update\",{\"analytics_storage\":\"denied\",\"ad_storage\":\"denie"
+  },
+  "po_sutikimo": {
+   "banner_dismissed": true,
+   "cookie": [
+    "cmplz_consented_services",
+    "cmplz_policy_id",
+    "cmplz_marketing",
+    "cmplz_statistics",
+    "cmplz_preferences",
+    "cmplz_functional",
+    "cmplz_banner-status"
+   ],
+   "gtm": true,
+   "dl_events": [
+    "consent:default",
+    "?",
+    "?",
+    "gtm.js",
+    "consent:update",
+    "cmplz_consent_update",
+    "consent:update",
+    "cmplz_consent_update",
+    "gtm.dom",
+    "gtm.load"
+   ],
+   "consent_update": "[{\"analytics_storage\":\"denied\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\"},{\"analytics_storage\":\"granted\",\"ad_storage\":\"granted\",\"ad_user_data\":\"granted\",\"ad_personalization\":\"granted\"}]"
+  },
+  "cart_fragment": "1",
+  "kasa": {
+   "url": "/kasa/",
+   "h1": "Pirkimo sąlygos ir taisyklės",
+   "form": true,
+   "laukai": [
+    "billing_first_name",
+    "billing_last_name",
+    "billing_is_company",
+    "billing_company",
+    "billing_vat_code",
+    "billing_company_code",
+    "billing_company_address",
+    "billing_country",
+    "billing_address_1",
+    "billing_address_2",
+    "billing_city",
+    "billing_state",
+    "billing_postcode",
+    "billing_phone",
+    "billing_email",
+    "createaccount",
+    "ship_to_different_address",
+    "shipping_first_name",
+    "shipping_last_name",
+    "shipping_country",
+    "shipping_address_1",
+    "shipping_address_2",
+    "shipping_city",
+    "shipping_state",
+    "shipping_postcode",
+    "shipping_phone",
+    "order_comments",
+    "shipping_method[0]",
+    "shipping_method[0]",
+    "shipping_method[0]",
+    "shipping_method[0]",
+    "payment_method",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]",
+    "payment[pay_type]"
+   ],
+   "siuntimas": [
+    "VENIPAK Kurjeris: 3,99 €",
+    "VENIPAK paštomatai/atsiėmimo punktai",
+    "LP Express",
+    "LP Express kurjeris: 3,99 €"
+   ],
+   "mokejimai": [
+    "paysera:Mokėjimas internetu",
+    "bacs:Bankinis pavedimas"
+   ],
+   "lp_js": 3,
+   "lp_css": 1,
+   "select2_src": [
+    "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=4.1.0-rc.0",
+    "/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=4.1.0"
+   ],
+   "select2_fn": "function",
+   "selectwoo": "function",
+   "jq": "function",
+   "defer_head": 12,
+   "head_scripts": 15,
+   "mygtukas": true,
+   "pren": 0,
+   "dl": [
+    "cmplz_consent_update",
+    "gtm.js",
+    "begin_checkout",
+    "cmplz_consent_update",
+    "gtm.dom",
+    "gtm.load"
+   ],
+   "console_klaidos_kasoje": []
+  },
+  "lp": {
+   "select": {
+    "name": "woo_lithuaniapost_lpexpress_terminal_id",
+    "opt": 532
+   },
+   "select2_container": true,
+   "s2_visible": true,
+   "dropdown": {
+    "open": true,
+    "opts": 3
+   }
+  },
+  "uzpildyta": {
+   "billing_first_name": true,
+   "billing_last_name": true,
+   "billing_email": true,
+   "billing_phone": true,
+   "billing_address_1": true,
+   "billing_city": true,
+   "billing_postcode": true
+  },
+  "uzsakymas": {
+   "url": "/kasa/",
+   "klaidos": [
+    "Paskyra su tokiu el. pašto adresu jau yra sukurta. Prisijunkite."
+   ],
+   "received": false,
+   "order_id": "",
+   "dl": [
+    "cmplz_consent_update",
+    "gtm.js",
+    "begin_checkout",
+    "cmplz_consent_update",
+    "gtm.dom",
+    "gtm.load"
+   ],
+   "purchase": "null"
+  }
+ }
+}
