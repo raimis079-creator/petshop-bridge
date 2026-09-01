@@ -1,0 +1,110 @@
+{
+ "v": "dep-100051",
+ "kurimas": 200,
+ "sid": 4380,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "EXPERT": {
+  "v": "S1556",
+  "faze": "EXPERT",
+  "ht_md5_pries": "88b959a54e41574fb8d488d2a08d7746",
+  "rules_len": 2775,
+  "rules": "<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\n#If you serve pages from behind a proxy you may want to change 'RewriteCond %{HTTPS} on' to something more sensible\nAddDefaultCharset UTF-8\nRewriteCond %{REQUEST_URI} !^.*[^/]$\nRewriteCond %{REQUEST_URI} !^.*//.*$\nRewriteCond %{REQUEST_METHOD} !POST\nRewriteCond %{QUERY_STRING} ^$\nRewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$\nRewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Accept-Encoding} gzip\nRewriteCond %{HTTPS} on\nRewriteCond %{DOCUMENT_ROOT}/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html.gz -f\nRewriteRule ^(.*) \"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html.gz\" [L]\n\nRewriteCond %{REQUEST_URI} !^.*[^/]$\nRewriteCond %{REQUEST_URI} !^.*//.*$\nRewriteCond %{REQUEST_METHOD} !POST\nRewriteCond %{QUERY_STRING} ^$\nRewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$\nRewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Accept-Encoding} gzip\nRewriteCond %{HTTPS} !on\nRewriteCond %{DOCUMENT_ROOT}/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html.gz -f\nRewriteRule ^(.*) \"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html.gz\" [L]\n\nRewriteCond %{REQUEST_URI} !^.*[^/]$\nRewriteCond %{REQUEST_URI} !^.*//.*$\nRewriteCond %{REQUEST_METHOD} !POST\nRewriteCond %{QUERY_STRING} ^$\nRewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$\nRewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\\\"]+",
+  "insert": true,
+  "gz": true,
+  "pos": {
+   "WPSuperCache": 1537,
+   "WordPress": false,
+   "PetshopCache": 0,
+   "WordPress_po_flush": false
+  },
+  "ht_B": 4584,
+  "ht_md5_po": "037560c2710e0e34d3512f66e549f371",
+  "ht_tail": "# BEGIN WPSuperCache\n# The directives (lines) between \"BEGIN WPSuperCache\" and \"END WPSuperCache\" are\n# dynamically generated, and should only be modified via WordPress filters.\n# Any changes to the directives between these markers will be overwritten.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\n#If you serve pages from behind a proxy you may want to change 'RewriteCond %{HTTPS} on' to something more sensible\nAddDefaultCharset UTF-8\nRewriteCond %{REQUEST_URI} !^.*[^/]$\nRewriteCond %{REQUEST_URI} !^.*//.*$\nRewriteCond %{REQUEST_METHOD} !POST\nRewriteCond %{QUERY_STRING} ^$\nRewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$\nRewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Accept-Encoding} gzip\nRewriteCond %{HTTPS} on\nRewriteCond %{DOCUMENT_ROOT}/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html.gz -f\nRewriteRule ^(.*) \"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html.gz\" [L]\n\nRewriteCond %{REQUEST_URI} !^.*[^/]$\nRewriteCond %{REQUEST_URI} !^.*//.*$\nRewriteCond %{REQUEST_METHOD} !POST\nRewriteCond %{QUERY_STRING} ^$\nRewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$\nRewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Accept-Encoding} gzip\nRewriteCond %{HTTPS} !on\nRewriteCond %{DOCUMENT_ROOT}/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html.gz -f\nRewriteRule ^(.*) \"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html.gz\" [L]\n\nRewriteCond %{REQUEST_URI} !^.*[^/]$\nRewriteCond %{REQUEST_URI} !^.*//.*$\nRewriteCond %{REQUEST_METHOD} !POST\nRewriteCond %{QUERY_STRING} ^$\nRewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$\nRewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTP:Profile} !^[a-z0-9\\\"]+ [NC]\nRewriteCond %{HTTPS} on\nRewriteCond %{DOCUMENT_ROOT}/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html -f\nRewriteRule ^(.*) \"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html\" [L]\n\nRewriteCond %{REQUEST_URI} !^.*[^/]$\nRewriteCond %{REQUEST_URI} !^.*//.*$\nRewriteCond %{REQUEST_METHOD} !POST\nRewriteCond %{QUERY_STRING} ^$\nRewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpre"
+ },
+ "VER": {
+  "v": "S1556",
+  "faze": "VER",
+  "t": {
+   "pradinis": {
+    "ms": [
+     1818,
+     64,
+     1206
+    ],
+    "code": 200,
+    "served_static": false,
+    "cc": null,
+    "lm": null,
+    "enc": "gzip",
+    "kb": 237,
+    "ok_html": true
+   },
+   "kategorija": {
+    "ms": [
+     1467,
+     1580,
+     1486
+    ],
+    "code": 200,
+    "served_static": false,
+    "cc": null,
+    "lm": null,
+    "enc": "gzip",
+    "kb": 325,
+    "ok_html": true
+   },
+   "preke": {
+    "ms": [
+     1259,
+     1203,
+     1860
+    ],
+    "code": 200,
+    "served_static": false,
+    "cc": null,
+    "lm": null,
+    "enc": "gzip",
+    "kb": 258,
+    "ok_html": true
+   },
+   "taksas": {
+    "ms": [
+     1108,
+     1108,
+     1122
+    ],
+    "code": 200,
+    "served_static": false,
+    "cc": null,
+    "lm": null,
+    "enc": "gzip",
+    "kb": 198,
+    "ok_html": true
+   }
+  },
+  "ne_cache": {
+   "cart": {
+    "code": 200,
+    "lm": false,
+    "cached_comment": 0
+   },
+   "checkout": {
+    "code": 200,
+    "lm": false,
+    "cached_comment": 0
+   },
+   "account": {
+    "code": 200,
+    "lm": false,
+    "cached_comment": 0
+   },
+   "query_lm": false,
+   "wc_cookie_lm": false
+  },
+  "admin": 302,
+  "rest": 200
+ }
+}
