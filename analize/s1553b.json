@@ -1,0 +1,108 @@
+{
+ "v": "dep-093829",
+ "kurimas": 200,
+ "sid": 4373,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1553b",
+  "B": 211298,
+  "md5": "11e97b8e806b0c76e57e9a3090a09cea",
+  "head": "<?php\n/**\n * Petshop Rinkiniai v1.42 (H301) — greita perziura GRAZINTA (savininkas: neisjungti),\n * modale rodoma ta pati vitrina: selektoriai per form.mnm_form (nepriklauso nuo\n * body klases), kiekis imamas is #532 fiksuoto input max, antrastes verciamos,\n * nuorodos i preke nuimamos.\n *\n * Petshop Rinkiniai v1.41 (H300) — RADAU: savininkas ziurejo ne prekes puslapi,\n * o GREITA PERZIURA (Flatsome quick view) kategorijoje /kategorija/rinkiniai/.\n * Body klase ten yra `archive`, ne `single-product`, todel vitrinos stilius\n * (is_product) nespausdinamas, o modale rodoma pliki MnM lentele.\n",
+  "ctx": [
+   [
+    "11:  * (is_product) nespausdinamas, o modale rodoma pliki MnM lentele.",
+    "12:  *",
+    "13:  * MANO REGRESIJA: #524 slepe quick view rinkiniu kortelems VISUOSE puslapiuose;",
+    "14:  * v1.29 ta CSS perkeliau i front_stilius, kuris veikia TIK prekes puslapyje —",
+    "15:  * kategorijose quick view atgijo. Dabar: (a) quick view visoms mix-and-match",
+    "16:  * kortelems slepiamas visur (CSS + JS nuima Flatsome kabliuka, kad paveikslo",
+    "17:  * paspaudimas vestu i preke), (b) vitrinos CSS papildomai galioja ir modalo",
+    "18:  * viduje (.product-lightbox / .mfp-content), jei kada nors vis tiek atsidarytu.",
+    "19:  *",
+    "20:  * Petshop Rinkiniai v1.40 (H298) — prekes puslapiai be narsykles keso.",
+    "21:  *",
+    "22:  * Serveris grazina teisinga HTML (tikrinta anonimiskai, be slapuku), bet",
+    "23:  * savininko narsykle rode sena versija. Puslapiai neturejo jokio Cache-Control,",
+    "24:  * todel narsykle galejo laikyti HTML euristiskai. Dabar prekes puslapiams",
+    "25:  * siunciamas nocache_headers() — narsykle visada perklausia serverio.",
+    "26:  * Statiniai failai (css/js/img) lieka kesuojami per .htaccess kaip buvo.",
+    "27:  *"
+   ],
+   [
+    "13:  * MANO REGRESIJA: #524 slepe quick view rinkiniu kortelems VISUOSE puslapiuose;",
+    "14:  * v1.29 ta CSS perkeliau i front_stilius, kuris veikia TIK prekes puslapyje —",
+    "15:  * kategorijose quick view atgijo. Dabar: (a) quick view visoms mix-and-match",
+    "16:  * kortelems slepiamas visur (CSS + JS nuima Flatsome kabliuka, kad paveikslo",
+    "17:  * paspaudimas vestu i preke), (b) vitrinos CSS papildomai galioja ir modalo",
+    "18:  * viduje (.product-lightbox / .mfp-content), jei kada nors vis tiek atsidarytu.",
+    "19:  *",
+    "20:  * Petshop Rinkiniai v1.40 (H298) — prekes puslapiai be narsykles keso.",
+    "21:  *",
+    "22:  * Serveris grazina teisinga HTML (tikrinta anonimiskai, be slapuku), bet",
+    "23:  * savininko narsykle rode sena versija. Puslapiai neturejo jokio Cache-Control,",
+    "24:  * todel narsykle galejo laikyti HTML euristiskai. Dabar prekes puslapiams",
+    "25:  * siunciamas nocache_headers() — narsykle visada perklausia serverio.",
+    "26:  * Statiniai failai (css/js/img) lieka kesuojami per .htaccess kaip buvo.",
+    "27:  *",
+    "28:  * Petshop Rinkiniai v1.39 (H295) — nuorodu nuemimas nebepriklauso nuo nuotrauku.",
+    "29:  *"
+   ],
+   [
+    "185: \tconst META_KAT_OFF = '_ps_rink_kat_off';   /* v1.36: rankomis nuimtos automatines vietos */",
+    "186: \tconst NAUDA_MIN_PROC = 3;                  /* v1.36: mazesne nauda nerodoma */",
+    "187: ",
+    "188: \t/** Virs sio svorio siunta i pastomata nebetelpa (savininko sprendimas 2026-08-13). */",
+    "189: \tconst PASTOMATO_RIBA = 25.0;",
+    "190: ",
+    "191: \t/* ==================== PALEIDIMAS ==================== */",
+    "192: ",
+    "193: \tpublic static function init() {",
+    "194: \t\tadd_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );",
+    "195: \t\tadd_action( 'wp_head', array( __CLASS__, 'front_stilius' ), 100 ); /* v1.29: po #524 ir temos */",
+    "196: \t\tadd_filter( 'body_class', array( __CLASS__, 'front_klase' ) );",
+    "197: \t\tadd_action( 'send_headers', array( __CLASS__, 'be_keso' ) ); /* v1.40 */",
+    "198: \t\tadd_filter( 'woocommerce_single_product_image_gallery_classes', array( __CLASS__, 'galerijos_klases' ) );",
+    "199: \t\t/* 200, nes aprasymu akordeonas (512) kabinasi prio 98 — su mazesniu",
+    "200: \t\t   prioritetu jis perrasytu musu skirtuka atgal i savo psdp_render. */",
+    "201: \t\tadd_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 200 );"
+   ],
+   [
+    "594: \t\t\t$pr = $post ? wc_get_product( $post->ID ) : null;",
+    "595: \t\t\tif ( $pr && ( $pr->is_type( 'mix-and-match' ) || get_post_meta( $post->ID, self::META_KIEKIAI, true ) ) ) {",
+    "596: \t\t\t\t$klases[] = 'ps-fiksuotas-rinkinys';",
+    "597: \t\t\t\tif ( ! self::nauda_verta( (int) $post->ID ) ) { $klases[] = 'ps-rink-be-naudos'; }",
+    "598: \t\t\t}",
+    "599: \t\t}",
+    "600: \t\treturn $klases;",
+    "601: \t}",
+    "602: ",
+    "603: \t/** v1.40: prekes puslapio HTML narsykle nekesuoja — visada perklausia serverio. */",
+    "604: \tpublic static function be_keso() {",
+    "605: \t\tif ( is_admin() || ! function_exists( 'is_product' ) ) { return; }",
+    "606: \t\tif ( is_product() ) { nocache_headers(); }",
+    "607: \t}",
+    "608: ",
+    "609: \t/** v1.36: ar nauda verta rodyti (>= 3 %). Ta pati riba naudojama ir CSS klasei. */",
+    "610: \tpublic static function nauda_verta( $pid ) {"
+   ]
+  ],
+  "snip": {
+   "2403": [
+    "add_action('wp_loaded', function () {\n    $v = isset($_GET['ps_stock']) ? sanitize_key($_GET['ps_stock']) : '';\n    if ($v === '') return;\n    $ok = current_user_can('manage_options') || ( isset($_GET['k']) && $_GET['k'] === 'ps2026' );\n    if (!$ok) return;\n    if (!headers_sent()) { nocache_headers(); header('Content-Type: application/json; charset=utf-8'); }\n    @set_time_limit(280);\n    global $wpdb; $p = $wpdb->prefix;"
+   ],
+   "2515": [
+    "    if ($veiksmas === '') return;\n\n    $ok = current_user_can('manage_options') || ( isset($_GET['k']) && $_GET['k'] === 'ps2026' );\n    if (!$ok) return;\n\n    if (!headers_sent()) { nocache_headers(); header('Content-Type: application/json; charset=utf-8'); }\n    @set_time_limit(280);\n    global $wpdb; $p = $wpdb->prefix;"
+   ]
+  },
+  "hdr": {
+   "gb": "no-cache, must-revalidate, max-age=0, no-store, private",
+   "chrome": "no-cache, must-revalidate, max-age=0, no-store, private",
+   "kategorija": null,
+   "pradinis": null
+  },
+  "cat_link": "https://dev.avesa.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/"
+ }
+}
