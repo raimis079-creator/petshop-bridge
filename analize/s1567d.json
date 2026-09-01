@@ -1,0 +1,54 @@
+{
+ "v": "dep-130136",
+ "kurimas": 200,
+ "sid": 4402,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1567d",
+  "jpg": {
+   "code": 200,
+   "server": "Apache",
+   "cache-control": [
+    "public, max-age=3600",
+    "max-age=604800"
+   ],
+   "last-modified": "Mon, 31 Aug 2026 10:49:17 GMT",
+   "expires": "Tue, 08 Sep 2026 13:02:52 GMT",
+   "content-type": "image/jpeg"
+  },
+  "webp_direct": {
+   "code": 200,
+   "server": "Apache",
+   "cache-control": "public, max-age=3600",
+   "last-modified": "Tue, 01 Sep 2026 12:57:19 GMT",
+   "content-type": "image/webp"
+  },
+  "css": {
+   "code": 200,
+   "server": "Apache",
+   "cache-control": [
+    "public, max-age=3600",
+    "max-age=604800"
+   ],
+   "last-modified": "Tue, 05 May 2026 16:58:22 GMT",
+   "expires": "Tue, 08 Sep 2026 13:02:52 GMT",
+   "vary": "Accept-Encoding",
+   "content-type": "text/css"
+  },
+  "html": {
+   "code": 200,
+   "server": "Apache",
+   "vary": "Accept-Encoding,Cookie",
+   "content-type": "text/html; charset=UTF-8"
+  },
+  "uploads_htaccess": "\n# BEGIN ShortPixelWebp\n# Instrukcijos (eilutės) tarp \"BEGIN ShortPixelWebp\" ir \"END ShortPixelWebp\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n\n# END ShortPixelWebp",
+  "wpcontent_htaccess": "\n# BEGIN ShortPixelWebp\n# Instrukcijos (eilutės) tarp \"BEGIN ShortPixelWebp\" ir \"END ShortPixelWebp\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n\n# END ShortPixelWebp",
+  "server_vars": {
+   "SERVER_SOFTWARE": "Apache",
+   "SERVER_PORT": "443"
+  }
+ }
+}
