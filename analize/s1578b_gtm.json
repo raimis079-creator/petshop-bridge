@@ -1,0 +1,216 @@
+{
+ "v": "S1578b",
+ "17 BLOCK — DEV (pageview)": {
+  "type": "pageview",
+  "filter": [
+   {
+    "type": "contains",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{Page Hostname}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "dev.avesa.lt"
+     }
+    ]
+   },
+   {
+    "type": "matchRegex",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{Page URL}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "gtm_test=1"
+     },
+     {
+      "type": "boolean",
+      "key": "negate",
+      "value": "true"
+     }
+    ]
+   }
+  ]
+ },
+ "18 BLOCK — DEV (visi custom events)": {
+  "type": "customEvent",
+  "customEventFilter": [
+   {
+    "type": "matchRegex",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{_event}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": ".*"
+     }
+    ]
+   }
+  ],
+  "filter": [
+   {
+    "type": "contains",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{Page Hostname}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "dev.avesa.lt"
+     }
+    ]
+   },
+   {
+    "type": "matchRegex",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{Page URL}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "gtm_test=1"
+     },
+     {
+      "type": "boolean",
+      "key": "negate",
+      "value": "true"
+     }
+    ]
+   }
+  ]
+ },
+ "38 CE — marketing granted": {
+  "type": "customEvent",
+  "customEventFilter": [
+   {
+    "type": "equals",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{_event}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "cmplz_consent_update"
+     }
+    ]
+   }
+  ],
+  "filter": [
+   {
+    "type": "equals",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{DLV — cmplz_marketing}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "granted"
+     }
+    ]
+   }
+  ]
+ },
+ "39 BLOCK — marketing nesutikta (events)": {
+  "type": "customEvent",
+  "customEventFilter": [
+   {
+    "type": "matchRegex",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{_event}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": ".*"
+     }
+    ]
+   }
+  ],
+  "filter": [
+   {
+    "type": "equals",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{DLV — cmplz_marketing}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "granted"
+     },
+     {
+      "type": "boolean",
+      "key": "negate",
+      "value": "true"
+     }
+    ]
+   }
+  ]
+ },
+ "40 CE — statistics granted": {
+  "type": "customEvent",
+  "customEventFilter": [
+   {
+    "type": "equals",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{_event}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "cmplz_consent_update"
+     }
+    ]
+   }
+  ],
+  "filter": [
+   {
+    "type": "equals",
+    "parameter": [
+     {
+      "type": "template",
+      "key": "arg0",
+      "value": "{{DLV — cmplz_statistics}}"
+     },
+     {
+      "type": "template",
+      "key": "arg1",
+      "value": "granted"
+     }
+    ]
+   }
+  ]
+ }
+}
