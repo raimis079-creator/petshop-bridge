@@ -1,0 +1,85 @@
+{
+ "v": "dep-111334",
+ "kurimas": 200,
+ "sid": 4382,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "SET": {
+  "v": "S1557",
+  "faze": "SET",
+  "slash": 1,
+  "mod_rewrite": 0,
+  "home_path": "/"
+ },
+ "VER": {
+  "v": "S1557",
+  "faze": "VER",
+  "t": {
+   "pradinis": {
+    "ms": [
+     1155,
+     53,
+     65
+    ],
+    "code": 200,
+    "cc": "max-age=3, must-revalidate",
+    "kb": 237,
+    "html_ok": true,
+    "dev_urls": 349,
+    "prod_urls": 7
+   },
+   "kategorija": {
+    "ms": [
+     1972,
+     41,
+     37
+    ],
+    "code": 200,
+    "cc": "max-age=3, must-revalidate",
+    "kb": 325,
+    "html_ok": true,
+    "dev_urls": 600,
+    "prod_urls": 6
+   },
+   "preke": {
+    "ms": [
+     1409,
+     35,
+     35
+    ],
+    "code": 200,
+    "cc": "max-age=3, must-revalidate",
+    "kb": 259,
+    "html_ok": true,
+    "dev_urls": 365,
+    "prod_urls": 6
+   },
+   "taksas": {
+    "ms": [
+     1214,
+     32,
+     69
+    ],
+    "code": 200,
+    "cc": "max-age=3, must-revalidate",
+    "kb": 198,
+    "html_ok": true,
+    "dev_urls": 242,
+    "prod_urls": 7
+   }
+  },
+  "ne_cache": {
+   "cart": "no-cache, must-revalidate, max-age=0, private",
+   "checkout": "no-cache, must-revalidate, max-age=0, private",
+   "account": "no-cache, must-revalidate, max-age=0, private",
+   "wc_cookie": "dinaminis",
+   "augintinis": [
+    200,
+    "dinaminis"
+   ]
+  },
+  "files": 3
+ }
+}
