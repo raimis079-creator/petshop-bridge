@@ -1,0 +1,71 @@
+{
+ "pradinis": {
+  "dcl": 1773,
+  "errs": [],
+  "failed": [
+   "https://petshop.lt/wp-content/uploads/2026/07/upl_logo-mark-v2.png?v=20260709-e5b",
+   "https://petshop.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b",
+   "https://petshop.lt/wp-content/uploads/2026/07/banner-starter.webp?v=20260709-e5b",
+   "https://petshop.lt/wp-content/uploads/2026/07/upl_cat-katems-v2.webp?v=20260709-e5b",
+   "https://petshop.lt/wp-content/uploads/2026/07/banner-deals.webp?v=20260709-e5b",
+   "https://petshop.lt/wp-content/uploads/2026/07/upl_cat-sunims-v2.webp?v=20260709-e5b",
+   "https://petshop.lt/wp-content/uploads/2026/07/upl_cat-grauzikams-v2.webp?v=20260709-e5b",
+   "https://petshop.lt/wp-content/uploads/2026/07/upl_cat-pauksciams-v2.webp?v=20260709-e5b"
+  ],
+  "font": "\"Open Sans\", system-ui, -apple-system, sans-serif",
+  "h1": "Prekės augintiniui pagal realų poreikį",
+  "jq": "function",
+  "gtm": true,
+  "dl": 8,
+  "addToCart": 12,
+  "imgs": 20,
+  "lcpCandidates": [
+   "logo.jpg",
+   "logo.jpg",
+   "upl_logo-mark-v2.png?v=20260709-e5b"
+  ],
+  "gtm_po_scroll": true
+ },
+ "kategorija": {
+  "dcl": 1603,
+  "errs": [],
+  "failed": [],
+  "font": "\"Open Sans\", Arial, \"Helvetica Neue\", sans-serif",
+  "h1": "",
+  "jq": "function",
+  "gtm": true,
+  "dl": 8,
+  "addToCart": 24,
+  "imgs": 41,
+  "lcpCandidates": [
+   "logo.jpg",
+   "logo.jpg",
+   "ambrosiapuppylargevitienalaia12_1731679388-2.jpg"
+  ],
+  "gtm_po_scroll": true
+ },
+ "preke": {
+  "dcl": 1587,
+  "errs": [],
+  "failed": [],
+  "font": "\"Open Sans\", Arial, \"Helvetica Neue\", sans-serif",
+  "h1": "ROYAL CANIN CAT FUSSY EXIGENT – 10 kg, sausas pašaras išrankioms katėms",
+  "jq": "function",
+  "gtm": true,
+  "dl": 10,
+  "addToCart": 8,
+  "imgs": 26,
+  "lcpCandidates": [
+   "logo.jpg",
+   "logo.jpg",
+   "royal-canin-fussy-exigent-sausas-maistas-katems_1773739829.jpg"
+  ],
+  "gtm_po_scroll": true,
+  "cart_count": 1,
+  "cart_fragment": "1"
+ },
+ "krepselis": {
+  "klaida": "Error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://dev.avesa.lt/krepselis/\nCall log:\n  - navigating to \"https://dev.avesa.lt/krepselis/\", waiting until \"domcontentloaded\"\n",
+  "errs": []
+ }
+}
