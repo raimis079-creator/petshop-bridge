@@ -1,0 +1,394 @@
+{
+ "v": "S1578",
+ "live_status": 200,
+ "versija": {
+  "id": "7",
+  "name": "v5 — GA4 Config fire tik po statistics sutikimo",
+  "desc": "GA4 Config: All Pages pasalintas, firing = CE statistics granted. Bridge v1.1 prideda ecommerce replay. S167.",
+  "tags": 13,
+  "triggers": 11,
+  "vars": 12
+ },
+ "triggers": {
+  "17": {
+   "name": "BLOCK — DEV (pageview)",
+   "type": "pageview",
+   "filt": [
+    "{{Page Hostname}} dev.avesa.lt",
+    "{{Page URL}} gtm_test=1 true"
+   ]
+  },
+  "18": {
+   "name": "BLOCK — DEV (visi custom events)",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} .*"
+   ]
+  },
+  "19": {
+   "name": "CE — view_item",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} view_item"
+   ]
+  },
+  "20": {
+   "name": "CE — add_to_cart",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} add_to_cart"
+   ]
+  },
+  "21": {
+   "name": "CE — view_cart",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} view_cart"
+   ]
+  },
+  "22": {
+   "name": "CE — begin_checkout",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} begin_checkout"
+   ]
+  },
+  "23": {
+   "name": "CE — purchase",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} purchase"
+   ]
+  },
+  "37": {
+   "name": "CE — cmplz_consent_update",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} cmplz_consent_update"
+   ]
+  },
+  "38": {
+   "name": "CE — marketing granted",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} cmplz_consent_update"
+   ]
+  },
+  "39": {
+   "name": "BLOCK — marketing nesutikta (events)",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} .*"
+   ]
+  },
+  "40": {
+   "name": "CE — statistics granted",
+   "type": "customEvent",
+   "filt": [
+    "{{_event}} cmplz_consent_update"
+   ]
+  }
+ },
+ "tags": [
+  {
+   "id": "15",
+   "name": "00 — Consent Mode v2 Default",
+   "type": "html",
+   "paused": true,
+   "fire": [
+    "2147479573"
+   ],
+   "block": [],
+   "consent": {
+    "s": "notSet"
+   },
+   "params": [
+    "html=<script>\nwindow.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.pu"
+   ]
+  },
+  {
+   "id": "16",
+   "name": "01 — Conversion Linker",
+   "type": "gclidw",
+   "paused": false,
+   "fire": [
+    "CE — marketing granted"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "ad_storage"
+    ]
+   },
+   "params": []
+  },
+  {
+   "id": "24",
+   "name": "02 — GA4 Config",
+   "type": "googtag",
+   "paused": false,
+   "fire": [
+    "CE — statistics granted"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "analytics_storage"
+    ]
+   },
+   "params": [
+    "tagId={{Const — GA4 ID}}"
+   ]
+  },
+  {
+   "id": "25",
+   "name": "GA4 — view_item",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — view_item"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "analytics_storage"
+    ]
+   },
+   "params": [
+    "measurementIdOverride={{Const — GA4 ID}}"
+   ]
+  },
+  {
+   "id": "26",
+   "name": "GA4 — add_to_cart",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — add_to_cart"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "analytics_storage"
+    ]
+   },
+   "params": [
+    "measurementIdOverride={{Const — GA4 ID}}"
+   ]
+  },
+  {
+   "id": "27",
+   "name": "GA4 — view_cart",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — view_cart"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "analytics_storage"
+    ]
+   },
+   "params": [
+    "measurementIdOverride={{Const — GA4 ID}}"
+   ]
+  },
+  {
+   "id": "28",
+   "name": "GA4 — begin_checkout",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — begin_checkout"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "analytics_storage"
+    ]
+   },
+   "params": [
+    "measurementIdOverride={{Const — GA4 ID}}"
+   ]
+  },
+  {
+   "id": "29",
+   "name": "GA4 — purchase",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — purchase"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "analytics_storage"
+    ]
+   },
+   "params": [
+    "measurementIdOverride={{Const — GA4 ID}}"
+   ]
+  },
+  {
+   "id": "30",
+   "name": "03 — Google Ads Conversion (Purchase)",
+   "type": "awct",
+   "paused": false,
+   "fire": [
+    "CE — purchase"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "ad_storage",
+     "ad_user_data"
+    ]
+   },
+   "params": [
+    "conversionId={{Const — Ads Conversion ID}}"
+   ]
+  },
+  {
+   "id": "31",
+   "name": "04 — Meta Pixel Base + PageView",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — marketing granted"
+   ],
+   "block": [
+    "17",
+    "18"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "ad_storage",
+     "ad_personalization"
+    ]
+   },
+   "params": [
+    "html=<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMeth"
+   ]
+  },
+  {
+   "id": "32",
+   "name": "Meta — add_to_cart",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — add_to_cart"
+   ],
+   "block": [
+    "17",
+    "18",
+    "39"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "ad_storage",
+     "ad_personalization"
+    ]
+   },
+   "params": [
+    "html=<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window"
+   ]
+  },
+  {
+   "id": "33",
+   "name": "Meta — begin_checkout",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — begin_checkout"
+   ],
+   "block": [
+    "17",
+    "18",
+    "39"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "ad_storage",
+     "ad_personalization"
+    ]
+   },
+   "params": [
+    "html=<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window"
+   ]
+  },
+  {
+   "id": "34",
+   "name": "Meta — purchase",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — purchase"
+   ],
+   "block": [
+    "17",
+    "18",
+    "39"
+   ],
+   "consent": {
+    "s": "needed",
+    "t": [
+     "ad_storage",
+     "ad_personalization"
+    ]
+   },
+   "params": [
+    "html=<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window"
+   ]
+  }
+ ],
+ "workspaces": [
+  "Default Workspace"
+ ],
+ "ws_pakeitimai": {
+  "tags": 0,
+  "status": 200
+ },
+ "version_headers": [
+  "3 v2 — Conversion Linker consent + DEV blocking",
+  "4 v3 — consent default perkeltas i snippet",
+  "5 v3 — consent default perkeltas i snippet",
+  "6 v4 — consent-based triggers",
+  "7 v5 — GA4 Config fire tik po statistics sutikimo"
+ ]
+}
