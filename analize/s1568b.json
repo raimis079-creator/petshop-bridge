@@ -1,66 +1,70 @@
 {
- "v": "dep-131440",
+ "v": "dep-144722",
  "kurimas": 200,
- "sid": 4405,
+ "sid": 4409,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "R": {
   "v": "S1568b",
-  "home_head": {
-   "code": 421,
-   "ct": "text/html; charset=iso-8859-1",
-   "cc": null,
-   "vary": null,
-   "loc": null,
-   "magic": "",
-   "len": 0
+  "79.98.29.24": {
+   "jpg_webp": [
+    421,
+    "text/html; charset=iso-8859-1",
+    362,
+    "3c2144",
+    null,
+    "Apache",
+    null
+   ],
+   "jpg_plain": [
+    421,
+    "text/html; charset=iso-8859-1",
+    362,
+    "3c2144",
+    null,
+    "Apache",
+    null
+   ],
+   "home": [
+    421,
+    "text/html; charset=iso-8859-1",
+    362,
+    "421 Misdirected Request",
+    null,
+    "Apache",
+    null
+   ]
   },
-  "jpg_webp": {
-   "code": 421,
-   "ct": "text/html; charset=iso-8859-1",
-   "cc": null,
-   "vary": null,
-   "loc": null,
-   "magic": "\n\n421 Misdirected Request\n\nMisdirected Request\nThe client ne",
-   "len": 362
-  },
-  "jpg_plain": {
-   "code": 421,
-   "ct": "text/html; charset=iso-8859-1",
-   "cc": null,
-   "vary": null,
-   "loc": null,
-   "magic": "\n\n421 Misdirected Request\n\nMisdirected Request\nThe client ne",
-   "len": 362
-  },
-  "css": {
-   "code": 421,
-   "ct": "text/html; charset=iso-8859-1",
-   "cc": null,
-   "vary": null,
-   "loc": null,
-   "magic": "",
-   "len": 0
-  },
-  "taksas": {
-   "code": 421,
-   "ct": "text/html; charset=iso-8859-1",
-   "cc": null,
-   "vary": null,
-   "loc": null,
-   "magic": "",
-   "len": 0
-  },
-  "dev_docroot_files": [
-   "backup-run.php",
-   "dev-router.php",
-   "index.php",
-   "watch-run.php",
-   "wp-load.php"
-  ],
-  "dev_index": "<?php define('WP_USE_THEMES', true); require '/home/gyvunai2/domains/petshop.lt/public_html/wp-blog-header.php';\n",
-  "dev_htaccess": "RewriteEngine On\nRewriteBase /\nRewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule . /dev-router.php [L]\n"
+  "127.0.0.1": {
+   "jpg_webp": [
+    301,
+    "text/html; charset=iso-8859-1",
+    330,
+    "3c2144",
+    null,
+    "Apache",
+    "https://dev.avesa.lt/wp-content/uploads/2026/08/rink-kompozicija-35291-1788173357.jpg"
+   ],
+   "jpg_plain": [
+    301,
+    "text/html; charset=iso-8859-1",
+    330,
+    "3c2144",
+    null,
+    "Apache",
+    "https://dev.avesa.lt/wp-content/uploads/2026/08/rink-kompozicija-35291-1788173357.jpg"
+   ],
+   "home": [
+    301,
+    "text/html; charset=iso-8859-1",
+    266,
+    "301 Moved Permanently",
+    null,
+    "Apache",
+    "https://dev.avesa.lt/"
+   ]
+  }
  }
 }
