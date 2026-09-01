@@ -1,0 +1,120 @@
+{
+ "v": "dep-114057",
+ "kurimas": 200,
+ "sid": 4387,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1562",
+  "fs_fonts": {
+   "/inc/functions/function-fonts.php": [
+    "google_fonts_link() {",
+    "fonts.googleapis.com/css?family=';",
+    "flatsome_google_fonts() {",
+    "google_fonts_cdn' ) || get_theme_mod( 'disable_fonts', 0 ) ) {",
+    "google_fonts_link(), array(), '3.9' );",
+    "flatsome_google_fonts', 9999 );"
+   ],
+   "/inc/admin/kirki-config.php": [
+    "google_fonts_cdn' ) ) {"
+   ],
+   "/inc/classes/class-flatsome-upgrade.php": [
+    "google_fonts' );"
+   ]
+  },
+  "fs_fonts_fns": [
+   "flatsome_get_google_fonts_link",
+   "flatsome_google_fonts",
+   "wp_enqueue_scripts"
+  ],
+  "fs_fonts_head": "<?php // @codingStandardsIgnoreLine\n\n/**\n * Parses the Google Font api link.\n *\n * @return string The link\n */\nfunction flatsome_get_google_fonts_link() {\n\t$type_headings = get_theme_mod( 'type_headings', array( 'font-family' => 'Lato', 'variant' => '700' ) );\n\t$type_texts    = get_theme_mod( 'type_texts', array( 'font-family' => 'Lato', 'variant' => 'regular' ) );\n\t$type_nav      = get_theme_mod( 'type_nav', array( 'font-family' => 'Lato', 'variant' => '700' ) );\n\t$type_alt      = get_theme_mod( 'type_alt', array( 'font-family' => 'Dancing Script', 'variant' => 'regular' ) );\n\n\t// Fix old.\n\tif ( ! is_array( $type_nav ) ) {\n\t\t$type_nav = array( 'font-family' => $type_nav, 'variant' => 'default' );\n\t}\n\tif ( ! is_array( $type_texts ) ) {\n\t\t$type_texts = array( 'font-family' => $type_texts, 'variant' => 'default' );\n\t}\n\tif ( ! is_array( $type_alt ) ) {\n\t\t$type_alt = array( 'font-family' => $type_alt, 'variant' => 'default' );\n\t}\n\tif ( ! is_array( $type_headings ) ) {\n\t\t$type_headings = array( 'font-family' => $type_headings, 'variant' => 'default' );\n\t}\n\n\t$fonts     = array( $type_headings, $type_texts, $type_nav, $type_alt );\n\t$font_list = array();\n\t$subsets   = array();\n\n\t// Insert fonts.\n\tforeach ( $fonts as $font ) {\n\t\t// Add Fonts.\n\t\tif ( isset( $font['font-family'] ) && ! empty( $font['font-family'] ) ) {\n\t\t\tif ( ! isset( $font['variant'] ) ) {\n\t\t\t\t$font['variant'] = 'default';\n\t\t\t}\n\t\t\t$font_list[ $font['font-family'] ][] = $font['variant'];\n\t\t}\n\n\t\t// Add Subsets.\n\t\tif ( isset( $font['subset'] ) ) {\n\t\t\tif ( ! is_array( $font['subset'] ) ) {\n\t\t\t\t$subsets[] = $font['subset'];\n\t\t\t} else {\n\t\t\t\tforeach ( $font['subset'] as $subset ) {\n\t\t\t\t\t$subsets[] = $subset;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\t$link_fonts = array();\n\tforeach ( $font_list as $font => $variants ) {\n\t\t$variants = implode( ',', $variants );\n\n\t\t$link_font = str_replace( ' ', '+', $font );\n\t\tif ( ! empty( $variants ) ) {\n\t\t\t// Always include regular variant as a workaround for Kirki\n\t\t\t// not updating the variant when font has only one variant.\n\t\t\t$link_font .= ':regular,' . $variants;\n\t\t}\n\t\t$link_fonts[] = $link_font;\n\t}\n\n\t$link  = '//fonts.googleapis.com/css?family=';\n\t$link .= implode( '|', $link_fonts );\n\n\tif ( ! empty( $subsets ) ) {\n\t\t$subsets = array_unique( $subsets );\n\t\t$link   .= '&subset=' . implode( ',', $subsets );\n\t}\n\n\t$link .= '&display=' . get_theme_mod( 'googlefonts_font_display', 'swap' );\n\n\treturn $link;\n}\n\n/**\n * Add google font style when not disabled.\n */\nfunction flatsome_google_fonts() ",
+  "type_mods": {
+   "type_headings": {
+    "font-family": "Lato",
+    "variant": "700"
+   },
+   "type_texts": {
+    "font-family": "Lato",
+    "variant": "regular"
+   },
+   "type_nav": {
+    "font-family": "Lato",
+    "variant": "700"
+   },
+   "type_alt": {
+    "font-family": "Dancing Script",
+    "variant": "regular"
+   }
+  },
+  "gf_links": [],
+  "imports": [],
+  "families": {
+   "Open Sans": 8,
+   "Lato": 8
+  },
+  "style_ids": {
+   "petshop-fonts-css": 1,
+   "wp-img-auto-sizes-contain-inline-css": 1,
+   "wp-emoji-styles-inline-css": 1,
+   "wp-block-library-inline-css": 1,
+   "global-styles-inline-css": 1,
+   "woocommerce-inline-inline-css": 1,
+   "wc-mnm-frontend-inline-css": 1,
+   "yith-wcan-shortcodes-inline-css": 1,
+   "flatsome-main-inline-css": 1,
+   "ps-menu-group": 1,
+   "psc-qty-badge-css": 1,
+   "psc-ui-css": 1,
+   "ps-img-uniform": 1,
+   "ps-login-popup-css": 1,
+   "ps-rink-qv": 1,
+   "custom-css": 1,
+   "wp-custom-css": 1,
+   "kirki-inline-styles": 1,
+   "ps-open-filter": 1
+  },
+  "src": {
+   "fmt": [
+    "4387 TEMP PS dep-114057"
+   ],
+   "datalayer": [
+    "614 Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "4387 TEMP PS dep-114057"
+   ],
+   "swatch": [
+    "4387 TEMP PS dep-114057"
+   ],
+   "parseSize": [
+    "329 Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+    "4387 TEMP PS dep-114057"
+   ]
+  },
+  "gtm_code": "/**\n * Petshop GTM Snippet v1.0 (GTM-MF3GZGT)\n *\n * Idiegia Google Tag Manager i front-end.\n * DEV apsauga: blokavimas vyksta GTM viduje (trigger'iai 17/18),\n * ne cia — snippet'as krauna GTM visur vienodai.\n *\n * Scope: front-end only\n * SVARBU: Complianz NETURI ideti savo GTM/GA4/Meta kodo.\n */\n\nif ( ! defined( 'ABSPATH' ) ) { return; }\n\nif ( ! defined( 'PETSHOP_GTM_ID' ) ) {\n\tdefine( 'PETSHOP_GTM_ID', 'GTM-MF3GZGT' );\n}\n\nif ( ! function_exists( 'petshop_gtm_head' ) ) {\n\tfunction petshop_gtm_head() {\n\t\tif ( is_admin() ) { return; }\n\t\t$id = PETSHOP_GTM_ID;\n\t\techo \"\\n<!-- Google Tag Manager -->\\n\";\n\t\techo \"<script data-petshop-gtm-loader=\\\"1\\\">\";\n\t\techo \"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\";\n\t\techo \"new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\";\n\t\techo \"j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\";\n\t\techo \"'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\";\n\t\techo \"})(window,document,'script','dataLayer','\" . esc_js( $id ) . \"');\";\n\t\techo \"</script>\\n\";\n\t\techo \"<!-- End Google Tag Manager -->\\n\";\n\t}\n}\nadd_action( 'wp_head', 'petshop_gtm_head', 1 );\n\nif ( ! function_exists( 'petshop_gtm_body' ) ) {\n\tfunction petshop_gtm_body() {\n\t\tif ( is_admin() ) { return; }\n\t\t$id = esc_attr( PETSHOP_GTM_ID );\n\t\techo \"\\n<!-- Google Tag Manager (noscript) -->\\n\";\n\t\techo '<noscript data-petshop-gtm-noscript=\"1\"><iframe src=\"https://www.googletagmanager.com/ns.html?id=' . $id . '\"';\n\t\techo ' height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>';\n\t\techo \"\\n<!-- End Google Tag Manager (noscript) -->\\n\";\n\t}\n}\nadd_action( 'wp_body_open', 'petshop_gtm_body', 1 );\n",
+  "dl_len": 15512,
+  "dl_hooks": [
+   "add_action( 'wp_footer', 'petshop_gtm_view_item', 20 )",
+   "add_action( 'wp_footer', 'petshop_gtm_single_item_data', 19 )",
+   "add_action( 'woocommerce_add_to_cart', 'petshop_gtm_queue_atc', 10, 6 )",
+   "add_action( 'wp_footer', 'petshop_gtm_flush_atc', 18 )",
+   "add_action( 'wp_footer', 'petshop_gtm_atc_listener', 21 )",
+   "add_action( 'woocommerce_before_cart', 'petshop_gtm_view_cart', 10 )",
+   "add_action( 'woocommerce_before_checkout_form', 'petshop_gtm_begin_checkout', 10 )",
+   "add_action( 'woocommerce_thankyou', 'petshop_gtm_purchase', 10, 1 )"
+  ],
+  "dl_jq": 3,
+  "select2_snip": [
+   "4387 TEMP PS dep-114057"
+  ],
+  "lp_enqueue": {
+   "class-woo-lithuaniapost-public.php": [
+    "wp_enqueue_style('select2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css"
+   ]
+  },
+  "lp_conditional": [
+   "class-woo-lithuaniapost-public.php"
+  ],
+  "flatsome_ver": "3.20.7"
+ }
+}
