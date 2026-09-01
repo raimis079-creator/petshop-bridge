@@ -1,0 +1,54 @@
+{
+ "v": "dep-124348",
+ "kurimas": 200,
+ "sid": 4398,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1566c",
+  "sp_block": "# BEGIN ShortPixelWebp\n# Instrukcijos (eilutės) tarp \"BEGIN ShortPixelWebp\" ir \"END ShortPixelWebp\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n\n# END ShortPixelWebp",
+  "sp_plugin": true,
+  "sp_active": false,
+  "test_url": "https://dev.avesa.lt/wp-content/uploads/2026/08/rink-kompozicija-35291-1788173357-300x300.jpg",
+  "orig_has_webp": false,
+  "orig_webp_name": "nera",
+  "serve": {
+   "webp": {
+    "code": 200,
+    "ct": "image/jpeg",
+    "len": "17248",
+    "vary": null
+   },
+   "no": {
+    "code": 200,
+    "ct": "image/jpeg",
+    "len": "17248",
+    "vary": null
+   }
+  },
+  "naming_2026_06": {
+   "x.jpg.webp": 0,
+   "x.webp_su_jpg": 217,
+   "jpg_viso": 17481,
+   "png_viso": 19328
+  },
+  "naming_legacy": {
+   "jpg.webp": 0,
+   "webp": 0,
+   "jpg": 99
+  },
+  "png_big": [],
+  "png_by_dir_mb": {
+   "/ShortpixelBackups/wp-content": 2856,
+   "/2026/06": 1304,
+   "/petshop-legacy/products": 376,
+   "/2026/08": 12,
+   "/petshop-legacy/images": 6,
+   "/2026/05": 3,
+   "/": 1,
+   "/2026/07": 0
+  }
+ }
+}
