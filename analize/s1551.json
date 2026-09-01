@@ -1,0 +1,52 @@
+{
+ "v": "dep-091713",
+ "kurimas": 200,
+ "sid": 4370,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "KEY": {
+  "v": "S1551",
+  "faze": "KEY",
+  "key": "AIzaSyCa…",
+  "urls": [
+   "https://dev.avesa.lt/",
+   "https://dev.avesa.lt/kategorija/animonda-konservai-sunims/",
+   "https://dev.avesa.lt/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/"
+  ]
+ },
+ "CWV": {
+  "v": "S1551",
+  "faze": "CWV",
+  "cwv": [
+   {
+    "url": "https://dev.avesa.lt/",
+    "lcp_ms": 5851,
+    "cls": 0,
+    "inp_ms": 0,
+    "score": 48,
+    "crux_lcp_ms": null
+   },
+   {
+    "url": "https://dev.avesa.lt/kategorija/animonda-konservai-sunims/",
+    "lcp_ms": 4201,
+    "cls": 0,
+    "inp_ms": 0,
+    "score": 61,
+    "crux_lcp_ms": null
+   },
+   {
+    "url": "https://dev.avesa.lt/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/",
+    "lcp_ms": 3826,
+    "cls": 0,
+    "inp_ms": 0,
+    "score": 57,
+    "crux_lcp_ms": null
+   }
+  ],
+  "santrauka": "5.9s · 4.2s · 3.8s",
+  "sviesa": "raud",
+  "temp_istrinta": 1
+ }
+}
