@@ -1,0 +1,46 @@
+{
+ "v": "dep-121600",
+ "kurimas": 200,
+ "sid": 4393,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1565",
+  "faze": "DIEGTI",
+  "old_B": 2758,
+  "old_md5": "c3b670e438ccfb8d1beaee5bb4ddaa53",
+  "old_hooks": [
+   "add_action('wp_head', 'petshop_fonts_inject_css', 5)",
+   "add_action('wp_head', 'petshop_fonts_preload', 1)",
+   "add_action('admin_notices', 'petshop_fonts_admin_notice')"
+  ],
+  "old_fns": [
+   "petshop_fonts_inject_css",
+   "petshop_fonts_preload",
+   "petshop_fonts_activate",
+   "petshop_fonts_admin_notice"
+  ],
+  "STOP": "netikėti hookai",
+  "old": "<?php\n/**\n * Plugin Name: Petshop.lt Open Sans (Self-hosted)\n * Plugin URI: https://dev.avesa.lt\n * Description: Self-hosted Open Sans font (Regular 400, Semibold 600, Bold 700). GDPR compliant — no Google Fonts CDN. Generated 2026-05-07 per Karkasas v1.3 specifikacijos.\n * Version: 1.0\n * Author: petshop.lt\n * License: GPL v2 or later\n * Text Domain: petshop-fonts\n */\n\nif (!defined('ABSPATH')) {\n    exit;\n}\n\n/**\n * Inject @font-face declarations into <head>\n * Priority 5 — runs early so fonts are available before any styles use them\n */\nadd_action('wp_head', 'petshop_fonts_inject_css', 5);\nfunction petshop_fonts_inject_css() {\n    $fonts_url = plugin_dir_url(__FILE__) . 'fonts/';\n    ?>\n    <style id=\"petshop-fonts-css\">\n    @font-face {\n        font-family: 'Open Sans';\n        font-style: normal;\n        font-weight: 400;\n        font-display: swap;\n        src: url('<?php echo esc_url($fonts_url); ?>OpenSans-Regular.woff2') format('woff2');\n    }\n    @font-face {\n        font-family: 'Open Sans';\n        font-style: normal;\n        font-weight: 600;\n        font-display: swap;\n        src: url('<?php echo esc_url($fonts_url); ?>OpenSans-Semibold.woff2') format('woff2');\n    }\n    @font-face {\n        font-family: 'Open Sans';\n        font-style: normal;\n        font-weight: 700;\n        font-display: swap;\n        src: url('<?php echo esc_url($fonts_url); ?>OpenSans-Bold.woff2') format('woff2');\n    }\n    </style>\n    <?php\n}\n\n/**\n * Preload Regular and Semibold weights for faster initial render\n * Bold is deferred since H1/H2 typically appear below the fold\n */\nadd_action('wp_head', 'petshop_fonts_preload', 1);\nfunction petshop_fonts_preload() {\n    $fonts_url = plugin_dir_url(__FILE__) . 'fonts/';\n    echo '<link rel=\"preload\" href=\"' . esc_url($fonts_url) . 'OpenSans-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>' . \"\\n\";\n    echo '<link rel=\"preload\" href=\"' . esc_url($fonts_url) . 'OpenSans-Semibold.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>' . \"\\n\";\n}\n\n/**\n * Add admin notice on activation confirming setup\n */\nregister_activation_hook(__FILE__, 'petshop_fonts_activate');\nfunction petshop_fonts_activate() {\n    set_transient('petshop_fonts_activated', true, 30);\n}\n\nadd_action('admin_notices', 'petshop_fonts_admin_notice');\nfunction petshop_fonts_admin_notice() {\n    if (get_transient('petshop_fonts_activated')) {\n        delete_transient('petshop_fonts_activated');\n        ?>\n        <div class=\"notice notice-success is-dismissible\">\n            <p><strong>Petshop.lt Open Sans aktyvuotas.</strong> Dabar pereikite į Flatsome → Theme Options → Papildomas CSS ir įklijuokite Open Sans override CSS bloką, kad fontas būtų pritaikytas visur.</p>\n        </div>\n        <?php\n    }\n}\n"
+ },
+ "VER": {
+  "v": "S1565",
+  "faze": "VER",
+  "fonts": [
+   "OpenSans-Regular.woff2",
+   "OpenSans-Semibold.woff2",
+   "OpenSans-Bold.woff2",
+   "fl-icons.woff2?v=3.20.7",
+   "fl-icons.woff?v=3.20.7"
+  ],
+  "preload": 2,
+  "preload_lt": 0,
+  "http": {
+   "Regular": "200 17568B",
+   "Semibold": "200 18348B",
+   "Bold": "200 18292B"
+  }
+ }
+}
