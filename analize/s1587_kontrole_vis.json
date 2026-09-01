@@ -1,0 +1,9 @@
+{
+ "v": "dep-184326",
+ "title": "Kontrolė ‹ Petshop.lt — WordPress",
+ "h1": "Kontrolė — ar Google mato mūsų užsakymus",
+ "rows": 8,
+ "text": "Išleistas WordPress 7.1! Prašome atsinaujinti dabar.\nKontrolė — ar Google mato mūsų užsakymus\nFlatsome issues\n\nFlatsome was unable to get the latest version. Your site might have changed domain after you registered it.\n\nManage registration\n\nManage your licenses \n\nVienas užsakymas = vienas purchase. Woo apmokėti (processing/on-hold/completed) turi sutapti su ps_fakt ir su GA4. Serveris siunčia kiekvieną; GA4 stulpelis vėluoja ~1–2 d.\n\nAplinka\tdev — nesiunčia (tik validacija)\nGA4 Measurement Protocol raktas\tNĖRA — GA4 Admin → Data Streams → Web → Measurement Protocol API secrets → Create → įrašyti į option ps_ga4_mp_secret\nGA4 skaitymas (SA)\tok · 2026-09-01 18:42:38 UTC\nGoogle Ads\tAds paskyroje konversija purchase importuojama iš GA4 (Tools → Conversions → GA4 key event „purchase“) — tada serverio siuntimas pasiekia ir Ads algoritmą.\n\nPerskaičiuoti 14 d. dabar\n\nDiena\tWoo apmokėti\tWoo suma\tps_fakt\tMP išsiųsta\tMP laukia rakto\tGA4 purchase\tGA4 pajamos\tBūklė\n2026-08-31\t0\t0,00 €\t0\t0\t0\t7\t365,73 €\t—\n2026-08-30\t0\t0,00 €\t0\t0\t0\t8\t490,49 €\t—\n2026-08-29\t0\t0,00 €\t0\t0\t0\t2\t50,53 €\t—\n2026-08-28\t0\t0,00 €\t0\t0\t0\t3\t102,27 €\t—\n\nRiba: ±2 % žalia (TŽ v1.39 priėmimo kriterijus), iki 10 % geltona, daugiau — raudona (matavimas lūžo: Paysera redirect, consent, GTM). Dev aplinkoje eilutės tuščios — norma.",
+ "pageerrors": [],
+ "hub_kortele": []
+}
