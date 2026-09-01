@@ -1,0 +1,33 @@
+{
+ "v": "dep-112028",
+ "kurimas": 200,
+ "sid": 4384,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1559",
+  "faze": "DIEGTI",
+  "md5": "bcd8d4d065930b6501c628398425c283"
+ },
+ "PSI": {
+  "v": "S1559",
+  "faze": "PSI",
+  "preload_img": [
+   "<link rel=\"preload\" as=\"image\" href=\"https://dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b\" fetchpriority=\"high\">"
+  ],
+  "css_url": "//dev.avesa.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp?v=20260709-e5b",
+  "ms_cached": 50,
+  "psi": [
+   {
+    "url": "https://dev.avesa.lt/",
+    "lcp_ms": 6991,
+    "cls": 0,
+    "inp_ms": 0,
+    "score": 38,
+    "crux_lcp_ms": null
+   }
+  ]
+ }
+}
