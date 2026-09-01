@@ -1,0 +1,30 @@
+{
+ "v": "dep-145949",
+ "kurimas": 200,
+ "sid": 4413,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1569c",
+  "md5": "f5e1e991df916b0617f188d517545b55",
+  "B": 8530,
+  "mtime": "2026-09-01 13:20:55",
+  "head": "<?php\n/**\n * Plugin Name: Petshop WebP v1.0 (paveikslėlių konversija į WebP + automatinis naujų failų apdorojimas)\n * Description: TŽ Sk. 28 skola. GD `imagewebp` (q82) sukuria `x.webp` šalia kiekvieno `x.jpg/png` (originalas + visi\n *   dydžiai); Apache atiduoda .webp, kai naršyklė siunčia `Accept: image/webp` ir failas egzistuoja (.htaccess blokas\n *   „Petshop WebP“, S1567) — HTML nekeičiamas, cache nekenkia (Vary: Accept). Eilė: WP attachment'ai pagal ID\n *   (prekės pirmos: rikiuojama pagal post_parent tipą), cron kas 5 min po ≤45 s; nauji upload'ai — iš karto per\n *   `wp_generate_attachment_metadata`. Jei WebP ne bent 10 % mažesnis — rašomas `.nowebp` žymeklis, failas praleidžiamas.\n * Version: 1.1\n *\n * v1.1 (S1568): klaidos žymimos `.webperr` (su priežastimi) ir nekartojamos; serve patikrinta prod vhost'e per\n *   `curl --resolve petshop.lt:443:79.98.29.24` — image/webp 64 KB vietoje 149 KB, Vary: Accept (dev routeris .htaccess apeina).\n * S1567 (2026-09-01). Saugikliai: tik uploads katalogas; ne cache/ps-backups/ShortpixelBackups; >24 MP praleidžiama\n * (256M limitas); niekada netrina ir nekeičia originalų. Būsena — option `ps_webp_busena`.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_WebP {\n\tconst VERSIJA  = '1.1';\n\tconst CRON     = 'ps_webp_batch';\n\tconst OPT      = 'ps_webp_busena';\n\tconst KOKYBE   = 82;\n\tconst MIN_NAUDA = 0.10;   // webp turi būti ≥10 % mažesnis\n\tconst MAX_PIX  = 24000000;\n\n\tpublic static function init() {\n\t\tadd_action( self::CRON, array( __CLASS__, 'cron' ) );\n\t\tadd_action( 'init', function () { if ( ! wp_next_scheduled( self::CRON ) ) { wp_schedule_event( time() + 120, 'ps_5min', self::CRON ); } } );\n\t\tadd_filter( 'cron_schedules', function ( $s ) { $s['ps_5min'] = array( 'interval' => 300, 'display' => 'Kas 5 min (Petshop)' ); return $s; } );\n\t\tadd_filter( 'wp_generate_attachment_metadata', array( __CLASS__, 'naujas_attachment' ), 99, 2 );\n\t\tadd_action( 'delete_attachment', array( __CLASS__, 'trinti_webp' ) );\n\t}\n\n\t/* ---------- būsena ---------- */\n\tpublic static function busena() {\n\t\treturn wp_parse_args( (array) get_option( self::OPT, array() ), array( 'cursor' => 0",
+  "home_is_petshop": false,
+  "siteurl_is_petshop": false,
+  "mu_recent": {
+   "110": "petshop-webp.php 13:20"
+  },
+  "snippets_recent": [
+   "4407 TEMP PS dep-132559 a=0",
+   "4408 TEMP PS dep-144454 a=0",
+   "4409 TEMP PS dep-144722 a=0",
+   "4410 TEMP PS dep-144932 a=0",
+   "4411 TEMP PS dep-145200 a=0",
+   "4412 TEMP PS dep-145440 a=0",
+   "4413 TEMP PS dep-145949 a=1"
+  ]
+ }
+}
