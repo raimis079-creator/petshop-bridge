@@ -1,0 +1,48 @@
+{
+ "v": "dep-131944",
+ "kurimas": 200,
+ "sid": 4406,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1569",
+  "faze": "DIEGTI",
+  "md5": "f5e1e991df916b0617f188d517545b55",
+  "ht_md5": "b52902abeef5ae47437c7eb447916735",
+  "ht_B": 1779,
+  "home": 200
+ },
+ "BATCH": {
+  "v": "S1569",
+  "faze": "BATCH",
+  "batch": {
+   "sukurta": 1554,
+   "praleista": 0,
+   "klaidos": 70,
+   "sutaupyta_kb": 316711,
+   "att": 0,
+   "busena": {
+    "cursor": 8240,
+    "viso_att": 8240,
+    "apdoroti_att": 8240,
+    "sukurta": 18478,
+    "praleista": 1257,
+    "klaidos": 1085,
+    "sutaupyta_kb": 824663,
+    "baigta": true,
+    "legacy_done": false,
+    "paskutinis_s": 200
+   }
+  },
+  "webperr_n_2026": 2,
+  "webperr_sample": [
+   "/2026/06/0003407_m07320-monge-delicate-wet-cat-chicken-with-asparagus-80-g-1-768x512.jpeg.webperr | imagecreatefromjpeg (CMYK/progressive/sugadintas?) 2026-09-01T13:24:15+00:00",
+   "/2026/06/0003407_m07320-monge-delicate-wet-cat-chicken-with-asparagus-80-g-1-100x100.jpeg.webperr | imagecreatefromjpeg (CMYK/progressive/sugadintas?) 2026-09-01T13:24:01+00:00"
+  ],
+  "kinds": {
+   "imagecreatefromjpeg (CMYK/progressive/sugadintas?)": 2
+  }
+ }
+}
