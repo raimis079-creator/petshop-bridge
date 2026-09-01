@@ -1,0 +1,406 @@
+{
+ "v": "dep-153442",
+ "kurimas": 200,
+ "sid": 4416,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1571",
+  "home_raw": "https://dev.avesa.lt",
+  "siteurl_raw": "https://dev.avesa.lt",
+  "temp_snips": [
+   {
+    "id": "4416",
+    "name": "TEMP PS dep-153442",
+    "active": "1"
+   }
+  ],
+  "snips_viso": 871,
+  "gtm615": {
+   "id": "615",
+   "name": "Petshop GTM Snippet v2.0 (GTM-MF3GZGT, atidėtas)",
+   "active": "1",
+   "priority": "5",
+   "len": "2170"
+  },
+  "snips_gtm_cmplz": [
+   {
+    "id": "614",
+    "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "active": "1"
+   },
+   {
+    "id": "615",
+    "name": "Petshop GTM Snippet v2.0 (GTM-MF3GZGT, atidėtas)",
+    "active": "1"
+   },
+   {
+    "id": "619",
+    "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+    "active": "1"
+   },
+   {
+    "id": "626",
+    "name": "Petshop Complianz Mobile Baris v1 (sticky juosta)",
+    "active": "0"
+   },
+   {
+    "id": "627",
+    "name": "Petshop Complianz Close Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "628",
+    "name": "Petshop Complianz X = Atmesti v1",
+    "active": "1"
+   },
+   {
+    "id": "629",
+    "name": "Petshop Complianz Cookie Page Mapping v1",
+    "active": "0"
+   },
+   {
+    "id": "630",
+    "name": "Petshop Complianz Cookie Page Konsolidacija v1",
+    "active": "0"
+   },
+   {
+    "id": "631",
+    "name": "Petshop Complianz ES Redirect Fix v1",
+    "active": "0"
+   },
+   {
+    "id": "726",
+    "name": "Petshop Consent Recon tmp",
+    "active": "0"
+   }
+  ],
+  "mu": {
+   "petshop-greitis.php": {
+    "md5": "53f59123000999f2d84b3745925f8b58",
+    "size": 3892,
+    "ver": "1.0"
+   },
+   "petshop-cache.php": {
+    "md5": "0816cc133b331247150df6cc20bafa20",
+    "size": 3763,
+    "ver": "1.0"
+   },
+   "petshop-webp.php": {
+    "md5": "f5e1e991df916b0617f188d517545b55",
+    "size": 8530,
+    "ver": "1.1"
+   },
+   "petshop-seo.php": {
+    "md5": "95bca2c4835e81b2c1bbe95229f8244a",
+    "size": 42710,
+    "ver": "1.3"
+   },
+   "petshop-hero-preload.php": {
+    "md5": "bcd8d4d065930b6501c628398425c283",
+    "size": 1533,
+    "ver": "1.0"
+   },
+   "petshop-rinkiniai.php": {
+    "md5": "b8aa4437e85f90b115bb4f8f84f60896",
+    "size": 211717,
+    "ver": ""
+   },
+   "petshop-legacy-301.php": {
+    "md5": "1516e611f0822f3c5b65927bff426e30",
+    "size": 2881,
+    "ver": ""
+   },
+   "petshop-dev-veidrodis.php": {
+    "md5": "e1396f4a0d5571b9683c0dbf00f695d1",
+    "size": 878,
+    "ver": ""
+   }
+  },
+  "mu_count": 111,
+  "map": {
+   "md5": "5f869051e7c00a3cfb242181ae509ccf",
+   "n": 1091
+  },
+  "fonts_md5": "61f4a0801d40c44fd887de7dcbf37253",
+  "active_plugins": [
+   "code-snippets/code-snippets.php",
+   "complianz-gdpr/complianz-gpdr.php",
+   "loco-translate/loco.php",
+   "petshop-attributes/petshop-attributes.php",
+   "petshop-core/petshop-core.php",
+   "petshop-esp/petshop-esp.php",
+   "petshop-fbt/petshop-fbt.php",
+   "petshop-feeds/petshop-feeds.php",
+   "petshop-fonts/petshop-fonts.php",
+   "petshop-pragma/petshop-pragma.php",
+   "petshop-promotions/petshop-promotions.php",
+   "petshop-xml/petshop-xml.php",
+   "seo-by-rank-math/rank-math.php",
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php",
+   "woo-payment-gateway-paysera/paysera.php",
+   "woo-update-manager/woo-update-manager.php",
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+   "woocommerce-xml-csv-product-import/plugin.php",
+   "woocommerce/woocommerce.php",
+   "wordpress-importer/wordpress-importer.php",
+   "wp-all-import-pro/wp-all-import-pro.php",
+   "wp-mail-smtp/wp_mail_smtp.php",
+   "wp-super-cache/wp-cache.php",
+   "wpforms-lite/wpforms.php",
+   "yith-woocommerce-ajax-navigation/init.php"
+  ],
+  "cmplz_ver": "?",
+  "wpsc": {
+   "WP_CACHE": true,
+   "adv": true,
+   "slash": 1,
+   "rej_uri": [
+    "wp-.*\\.php",
+    "index\\.php",
+    "krepselis",
+    "cart",
+    "checkout",
+    "atsiskaitymas",
+    "my-account",
+    "mano-paskyra",
+    "augintinis",
+    "prenumerata",
+    "wp-json",
+    "feed"
+   ]
+  },
+  "wc": {
+   "checkout": "https://dev.avesa.lt/kasa/",
+   "cart": "https://dev.avesa.lt/krepselis/",
+   "account": "https://dev.avesa.lt/paskyra/"
+  },
+  "gateways": {
+   "paysera": {
+    "title": "Mokėjimas internetu",
+    "enabled": "yes"
+   },
+   "bacs": {
+    "title": "Bankinis pavedimas",
+    "enabled": "yes"
+   }
+  },
+  "gateways_enabled": [
+   "paysera",
+   "bacs"
+  ],
+  "shipping_methods": [
+   "flat_rate",
+   "free_shipping",
+   "local_pickup",
+   "shopup_venipak_shipping_courier_method",
+   "shopup_venipak_shipping_pickup_method",
+   "woo_lithuaniapost_lpexpress_terminal"
+  ],
+  "zones": {
+   "Neringos savivaldybe": {
+    "9": "shopup_venipak_shipping_pickup_method:VENIPAK paštomatai/atsiėmimo punktai:yes",
+    "10": "shopup_venipak_shipping_courier_method:VENIPAK Kurjeris:yes",
+    "13": "woo_lithuaniapost_lpexpress_terminal:LP Express:yes"
+   },
+   "Lietuva": {
+    "1": "free_shipping:Nemokamas pristatymas:no",
+    "2": "shopup_venipak_shipping_courier_method:VENIPAK Kurjeris:yes",
+    "3": "shopup_venipak_shipping_pickup_method:VENIPAK paštomatai/atsiėmimo punktai:yes",
+    "6": "shopup_venipak_shipping_courier_method:VENIPAK Kurjeris:yes",
+    "7": "shopup_venipak_shipping_courier_method:VENIPAK Kurjeris:yes",
+    "8": "shopup_venipak_shipping_courier_method:VENIPAK Kurjeris:yes",
+    "12": "woo_lithuaniapost_lpexpress_terminal:LP Express:yes",
+    "15": "woo_lithuaniapost_lpexpress_terminal:LP Express kurjeris:yes"
+   },
+   "Baltijos šalys, be LIetuvos": {
+    "5": "shopup_venipak_shipping_pickup_method:VENIPAK paštomatai/atsiėmimo punktai:yes"
+   }
+  },
+  "paysera_opts": [
+   {
+    "enabled": "yes"
+   },
+   null
+  ],
+  "seo_qa": [],
+  "seo_qa_cols": [
+   "id",
+   "data_at",
+   "tipas",
+   "tikrinta",
+   "ok",
+   "klaidos",
+   "santrauka"
+  ],
+  "seo_qa_raw": [
+   {
+    "id": "8",
+    "data_at": "2026-09-01 09:19:28",
+    "tipas": "cwv",
+    "tikrinta": "3",
+    "ok": "0",
+    "klaidos": "[{\"url\":\"https://dev.avesa.lt/\",\"lcp_ms\":5851,\"cls\":0,\"inp_ms\":0,\"score\":48,\"crux_lcp_ms\":null},{\"url\":\"https://dev.avesa.lt/kategorija/animonda-konservai-sunims/\",\"lcp_ms\":4201,\"cls\":0,\"inp_ms\":0,\"score\":61,\"crux_lcp_ms\":null},{\"url\":\"https://dev.avesa.lt/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/\",\"lcp_ms\":3826,\"cls\":0,\"inp_ms\":0,\"score\":57,\"crux_lcp_ms\":null}]",
+    "santrauka": "5.9s · 4.2s · 3.8s"
+   },
+   {
+    "id": "7",
+    "data_at": "2026-09-01 08:56:56",
+    "tipas": "redirect",
+    "tikrinta": "1101",
+    "ok": "1089",
+    "klaidos": "[{\"k\":\"katems/skanestai-katems\",\"p\":\"grandinė 301→302 wp-admin\"},{\"k\":\"kita-446007278/daugiau-pigiau/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\"},{\"k\":\"sienas-grauzikams-ekologiskas-450-g\",\"p\":\"301→404 product/sienas-grauzikams-ekologiskas-450-g\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g\"},{\"k\":\"20-vnt-kiaules-ausu\",\"p\":\"301→404 product/20-vnt-kiaules-ausu\"},{\"k\":\"gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g\",\"p\":\"301→404 product/gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-kalmarais-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-kalmarais-100-g\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g\"},{\"k\":\"daugiau-pigiau/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\"},{\"k\":\"skanestai-katems\",\"p\":\"grandinė 301→302 wp-admin\"}]",
+    "santrauka": "runner: visas žemėlapis 1101 · ok 1089 · klaidų 12 · 1898s"
+   },
+   {
+    "id": "6",
+    "data_at": "2026-09-01 08:20:19",
+    "tipas": "redirect",
+    "tikrinta": "1101",
+    "ok": "787",
+    "klaidos": "[{\"k\":\"katems/skanestai-katems\",\"p\":\"grandinė 301→302 wp-admin\"},{\"k\":\"kita-446007278/daugiau-pigiau/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\"},{\"k\":\"sienas-grauzikams-ekologiskas-450-g\",\"p\":\"301→404 product/sienas-grauzikams-ekologiskas-450-g\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g\"},{\"k\":\"20-vnt-kiaules-ausu\",\"p\":\"301→404 product/20-vnt-kiaules-ausu\"},{\"k\":\"gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g\",\"p\":\"301→404 product/gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g\",\"p\":\"301→404 product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g\"},{\"k\":\"zirkles-gyvuno-kailiui-filiruoti-16-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"zirklutes-gyvuno-nagams-kirpti-gimdog-nailclipper-7x14-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"zaislas-suniui-pliusinis-ananasas-17-cm-su-cypliuku-ir-cezanciais-lapais\",\"p\":\"301→429 product/zaislas-suniui-pliusinis-ananasas-17-cm-su-cypliuku-ir-cezanciais-lapais\"},{\"k\":\"zaislas-suniui-stanga-su-juostele\",\"p\":\"301→429 product/zaislas-suniui-stanga-su-juostele\"},{\"k\":\"zirklutes-gyvuno-nagams-kirpti-vidutines-m-zolux\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"zaislas-suniui-skanestams-deti-9-cm\",\"p\":\"301→429 product/zaislas-suniui-skanestams-deti-9-cm\"},{\"k\":\"zaislas-suniui-vinilinis-frankensteinas-12-cm\",\"p\":\"301→429 product/zaislas-suniui-vinilinis-frankensteinas-12-cm\"},{\"k\":\"zolux-anah-dvigubos-rotacines-sukos-sunims-universalaus-dydzio\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"zolux-anah-sepetys-katems-minkstas\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"20-vnt-rudu-jaucio-ausu\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-kalmarais-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-carny-adult-beef-heart-konservai-katems-su-sviezia-jautiena-ir-sirdimis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"20-vnt-baltu-jaucio-ausu\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-beef-konservai-sunims-su-sviezia-jautiena-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-beef-chicken-konservai-sunims-su-sviezia-jautiena-ir-vistiena-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-beef-chicken-konservai-sunims-su-sviezia-jautiena-ir-vistiena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-beef-lamb-konservai-sunims-su-sviezia-jautiena-ir-eriena-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-beef-rabbit-with-herbs-konservai-suaugusiems-sunims-su-sviezia-jautiena-ir-triusiena-paskaninta-zolelemis-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-carny-adult-beef-turkey-shrimp-konservai-katems-su-sviezia-jautiena-kalakutiena-ir-krevetemis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-suaugusiems-sunims-su-kalakutiena-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-suaugusiems-sunims-su-kalakutiena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-suaugusiems-sunims-su-zveriena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-sunims-su-elniena-pagardinta-obuoliais-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-suaugusiems-sunims-su-zveriena-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-duck-konservai-suaugusiems-sunims-su-sviezia-antiena-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-sunims-su-sirdimis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-sunims-su-elniena-pagardinta-obuoliais-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-konservai-sunims-su-lasisa-praturtinta-spinatais-400g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-multi-meat-coctail-konservai-suaugusiems-sunims-mesos-kokteilis-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-poultry-hearts-konservai-suaugusiems-sunims-su-paukstienos-sirdelemis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-multi-meat-coctail-konservai-suaugusiems-sunims-mesos-kokteilis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-rumen-konservai-suaugusiems-sunims-su-galviju-prieskrandziais-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-sensitive-turkey-potato-konservai-jautriems-sunims-su-gryna-kalakutiena-ir-bulvemis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-grancarno-adult-sensitive-beef-potato-konservai-jautriems-sunims-su-gryna-jautiena-ir-bulvemis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-skanestai-katems-su-omega-3-milkies-adult-balance-30-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-skanestai-katems-gerai-savijautai-milkies-adult-wellness-30-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-vom-feinsten-adult-pate-mild-menu-with-turkey-and-salmon-konservai-katems-svelnusis-meniu-su-kalakutiena-ir-lasisa-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-katems-su-paukstiena-ir-versiena-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-vom-feinsten-adult-with-rabbit-konservai-suaugusiems-sunims-su-triusiena-150-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-vom-feinsten-adult-with-turkey-and-lamb-konservai-suaugusiems-sunims-su-kalakutiena-ir-eriena-150-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-vom-feinsten-adult-with-salmon-and-shrimp-konservai-katems-su-lasisa-ir-krevetemis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-vom-feinsten-adult-with-turkey-hearts-konservai-katems-su-kalakutu-sirdimis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"animonda-vom-feinsten-adult-with-turkey-in-yougurt-sauce-konservai-katems-su-kalakutiena-jogurto-padaze-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"antienos-griezineliai-500-g-naturalus-skanestai-sunims-haumiau\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"antkaklis-katei-su-varpeliu-ir-sirdelemis-24-30cm-10mm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"antkaklis-sunims-su-svieciancia-sagtimi-kava-20-mm-20-35-cm-led-matteo\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"apollo-happie-duo-kramtomos-juosteles-su-jautiena-ir-kepenelemis-200g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"aquaris-ki-ja-ko-wheatgerm-6mm-10-kg-maistas-koi-karpiams-ir-kitoms-tvenkiniu-zuvims\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"churu-kitten-su-tunu-kreminis-skanestas-kaciukams-4-x-14-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"churu-nuo-plauku-gumuliuku-susidarymo-su-tunu-kreminis-skanestas-katems-churu-hairball-4-x-14-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"churu-su-vistiena-ir-krabu-kreminis-skanestas-katems-4-x-14-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"churu-su-tunu-ir-jautiena-kreminis-skanestas-katems-4-x-14-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"daugiau-pigiau/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"deli-nature-lesalas-afrikos-papugoms-15-kg-20-parrots-serengeti\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"deli-nature-menu-super-premium-pasaras-sinsiloms-25-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"deli-nature-menu-super-premium-pasaras-ziurkems-750-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"deli-nature-premium-pasaras-grauzikams-15-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"deli-nature-premium-lesalas-tropiniams-pauksciukams-1-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"deli-nature-premium-pasaras-smulkiems-grauzikams-15-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dolina-noteci-kitten-konservai-kaciukams-su-kalakutiena-185-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dolina-noteci-konservai-katems-su-antiena-185-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dolina-noteci-konservai-katems-su-eriena-185-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dolina-noteci-konservai-katems-su-lasisa-185-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubeneliai-katei-su-stovu-barry-king-12-cm-skersmens\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubeneliai-sunims/dubenelis-gyvunui-su-minkstu-kilimeliu-volcano-inox-big-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-dvigubas-su-minkstu-kilimeliu-georplast-volcano-pp-double\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-dvigubas-su-minkstu-kilimeliu-georplast-volcano-inox-double\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-dvigubas-su-minkstu-kilimeliu-soft-touch-inox-double\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-dvigubas-su-minkstu-kilimeliu-soft-touch-pp-double\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-kampinis-20-x-15-x-8-cm-corner-lux-small\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-sirdele-mon-amor\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-soft-touch-inox-small-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-soft-touch-inox-big\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-soft-touch-pp-big\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-volcano-inox-big-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-soft-touch-pp-small-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-volcano-inox-small-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-volcano-pp-big-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-su-minkstu-kilimeliu-volcano-pp-small-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-sulankstomas-15-x-12-x-45-cm-squeeze-small\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-gyvunui-sulankstomas-165-x-145-x-75-cm-squeeze-big\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-katei-keraminis-180-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-katei-keraminis-ant-mediniu-kojeliu-200-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-katei-keraminis-su-kates-piesiniu-300-ml-11-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-katei-keraminis-kates-snukucio-formos-baltas-175-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-katei-metalinis-zuvies-formos-160-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-keraminis-1000-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-katei-keraminis-zvilgantis-300-ml-11-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"dubenelis-keraminis-800-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"exclusion-hypoallergenic-konservai-sunims-su-antiena-ir-bulvemis-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"exclusion-hypoallergenic-konservai-sunims-su-kiauliena-ir-zirniais-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"exclusion-hypoallergenic-konservai-sunims-su-triusiena-ir-bulvemis-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-eriena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-jautiena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-versiena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"frendi-slapias-maistas-katems-gabaliukai-padaze-su-kalakutiena-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"frendi-slapias-maistas-katems-gabaliukai-padaze-su-triusiena-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"frendi-slapias-maistas-katems-gabaliukai-padaze-su-vistiena-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"frendi-slapias-maistas-katems-gabaliukai-padaze-su-zuvimi-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"gerimas-kaciukams-miamor-trinkfein-vitaldrink-kitten-su-vistiena-135-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"gimcat-nutri-malt-bites-traskus-skanestai-katems-nuo-plauku-gumuliuku-40-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"gimcat-duo-malt-pasta-salyklo-pasta-katems-nuo-plauku-gumuliuku-su-vistiena-50-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"green-petfood-insectdog-sensitive-sausas-pasaras-sunims-su-vabzdziais-ir-ryziais-10-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"green-petfood-veggiedog-grainfree-begrudis-sausas-pasaras-sunims-10-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-bio-gold-plus-mini-250-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"gimcat-skanestai-katems-nutri-pockets-maltmultivitamin-mix-150-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-gold-baby-250-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-excel-mini-sinking-342-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-gold-mini-250-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-gold-mini-57-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-staple-baby-57-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-gold-medium-250-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-staple-mini-57-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-cichlid-staple-medium-250-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-tropical-algae-wafers-82-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-tropical-algae-wafers-250-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-tropical-micro-pellets-45-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-tropical-micro-wafers-1-kg-pasaras-tropinems-zuvims\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"hikari-tropical-mini-algae-wafers-1-kg-pasaras-dugninems-zuvelems\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ivairiaspalvis-svieciantis-antkaklis-sunims-seecurity-usb-tpu-m-45-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"josera-kitten-salmon-begrudis-konservuotas-pasaras-jaunoms-katems-su-lasisa-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"josera-kitten-duck-begrudis-konservuotas-pasaras-jaunoms-katems-su-antiena-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"josidog-active-15-kg-sausas-maistas-aktyviems-sunims\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"josicat-crispy-duck-sausas-pasaras-katems-su-antiena-10kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"josidog-adult-sensitive-15-kg-sausas-maistas-jautriems-sunims\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"josidog-family-15-kg-sausas-maistas-kalems-ir-suniukams\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"josidog-junior-15-kg-sausas-maistas-suniukams\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kaciu-tualeto-kilimelis-duvo-6037-cm-pilkas\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kaciu-tualeto-kilimelis-pusapvalis-4125-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kaciu-tualeto-kilimelis-melyna-letenele-6045-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kampinis-tualetas-katems-shuttle\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kamuoliukas-sunims-pailgas-indoor-tumble-bumper-chuckit-20-x-7-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/animonda-vom-feinsten-adult-with-turkey-hearts-konservai-katems-su-kalakutu-sirdimis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/dubeneliai-katems/tualetai-kraiku-semtuveliai-kilimeliai/semtuvelis-kaciu-kraikui-georplast-diapason\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/konservai-katems/animonda-carny-adult-beef-lamb-konservai-katems-su-sviezia-jautiena-ir-eriena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/kaciu-tualeto-kilimelis-plastikinis-su-dugnu-genius-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/maistas-katems/konservai-katems/miamor-super-premium-konservai-katems-su-tunu-ir-darzovemis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/maistas-katems/miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/maistas-katems/royal-canin-hairball-care-10-kg-sausas-maistas-suaugusioms-katems-nuo-plauku-gumuliuku\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/prins-diet-skin-intestinal-hypoallergic-sausas-maistas-katems-15-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/sausas-maistas-isrankioms-katems-su-vistiena-ontario-exigent-65-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/silikoninis-kaciu-kraikas-belocat-18-l-7-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/semtuvelis-sausam-edalui-semti\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/silikoninis-kaciu-kraikas-belocat-8-l-3-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/tualetai-kraiku-semtuveliai-kilimeliai/uzdaras-tualetas-katems-galaxy-deluxe-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/uzdaras-tualetas-katems-galaxy-deluxe-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/zaislai-katems/zaislas-katei-blizgantis-pauksciukas\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/zaislai-katems/zaislas-katei-tutti-frutti-apelsinas-gimcat\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"katems/zaislas-katei-tutti-frutti-apelsinas-gimcat\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kavamedzio-zaislas-suniui-su-virve-dingo-kawka-lasso-39-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"keraminis-dubenelis-suniui-125-cm-dog-fantasy-melynas\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kiaules-ausies-ziedas-1-vnt\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kietas-himalaju-surio-skanestas-su-metomis-sunims-4dogs-s-dydis\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kietas-himalaju-surio-skanestas-sunims-4dogs-m-dydis\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kietas-himalaju-surio-skanestas-su-uogomis-sunims-4dogs-m-dydis\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kilimelis-prie-kaciu-tualeto-aladdin\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kietas-himalaju-surio-skanestas-sunims-4dogs-xl-dydis\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"konservai-katems-frendi-mesos-gabaliukai-su-lasisa-svelniame-padaze-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"konservai-katems-frendi-mesos-gabaliukai-su-kalakutiena-svelniame-padaze-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kramtukas-sunims-is-juodmedzio-l-dydzio\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kramtukas-sunims-is-galviju-odos-baltas-1-vnt\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kramtukas-sunims-is-juodmedzio-m-dydzio\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"kramtukas-sunims-is-kavamedzio-xs-dydzio\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"lavinamasis-zaislas-suniui-nina-ottoson-dog-treat-maze-green\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"lavinamasis-zaislas-suniui-nina-ottoson-dog-treat-tumble\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"lavinamasis-zaislas-suniui-nina-ottosson-dog-brick\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"lavinamasis-zaislas-suniui-nina-ottosson-dog-smart\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"lavinamasis-zaislas-suniui-nina-ottosson-dog-tornado\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"maistas-katems/miamor-feine-filets-konservai-katems-tunas-su-krabais-drebuciuose-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"liucernos-riestainiai-grauzikams-300-g-ziarnko\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"maistas-katems/konservai-katems/miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"miamor-feine-filets-konservai-katems-tunas-krabu-drebuciuose-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"maistas-sunims/konservai-sunims/animonda-grancarno-adult-poultry-hearts-konservai-suaugusiems-sunims-su-paukstienos-sirdelemis-800-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"miamor-feine-filets-konservai-katems-tunas-su-kalmarais-drebuciuose-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"miamor-feine-filets-konservai-katems-tunas-su-krabais-drebuciuose-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"miamor-fillet-naturelle-konservai-katems-su-tunu-ir-krabais-80-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"miamor-super-premium-konservai-katems-su-tunu-ir-darzovemis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"mini-ryziu-kauliukai-su-antiena-500-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"minksta-gumine-pirstine-gyvuno-kailiui-sukuoti-ir-masazuoti-trixie\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"minkstas-sepetys-gyvunui-su-dvieju-ilgiu-sereliais-19-cm-trixie\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"monge-bwild-begrudziai-konservai-sunims-su-eriena-moliugu-ir-cukinija-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"monge-bwild-begrudziai-konservai-suniukams-su-antiena-moliugu-ir-cukinija-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"monge-fresh-pate-and-chunkies-chicken-konservai-sunims-su-vistienos-gabaliukais-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"naturalus-bentonitinis-susokantis-kraikas-katems-belaclean-obuoliu-kvapo-10l-8-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"monge-fresh-pate-and-chunkies-veal-konservai-sunims-su-versienos-gabaliukais-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-konservai-sunims-su-eriena-ir-saltalankiu-400-g-lamb-pate-with-sea-buckthorn\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-konservai-sunims-su-versiena-ir-ciberzole-400-g-veal-pate-flavoured-with-turmeric\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-konservai-sunims-su-zasiena-spanguolemis-ir-linu-semenu-aliejumi-200-g-adult-goose-with-cranberries\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-konservai-sunims-su-zuvimis-ir-zolelemis-200-g-adult-fish-with-herbs\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-monoproteino-konservai-sunims-su-antiena-ir-moliugais-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-monoproteino-konservai-sunims-su-jautiena-ir-morkomis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-monoproteino-konservai-sunims-su-jautiena-ir-morkomis-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-monoproteino-konservai-sunims-su-eriena-ir-rudaisiais-ryziais-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-monoproteino-konservai-sunims-su-kalakutiena-ir-saldziosiomis-bulvemis-200-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-monoproteino-konservai-sunims-su-kalakutiena-ir-saldziosiomis-bulvemis-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-super-premium-konservai-kaciukams-su-vistiena-krevetemis-ir-lasisu-aliejumi-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-super-premium-konservai-katems-su-jautiena-lasisa-ir-saulegrazu-aliejumi-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-super-premium-konservai-katems-su-vistiena-triusiena-ir-lasisu-aliejumi-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-troskinys-sunims-is-antienos-ir-darzoviu-sultinyje-300-g-pouch-duck-with-vegetables-in-broth\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-troskinys-sunims-is-elnienos-ir-darzoviu-sultinyje-300-g-pouch-venison-with-vegetables-in-broth\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-troskinys-sunims-is-karpio-ir-darzoviu-sultinyje-300-g-pouch-carp-with-vegetables-in-broth\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ontario-troskinys-sunims-is-lasisos-ir-darzoviu-sultinyje-300-g-pouch-salmon-with-vegetables-in-broth\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ovalus-sepetys-kailiui-su-plauku-isvalymu-11-x-195-cm-gimdog-oval-slicker\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ovalus-guminis-sepetys-gyvunui-ant-delno-9-x-13-cm-lessie-land\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ovalus-guminis-sepetys-gyvunui-ant-delno-9-x-13-cm-trixie-oval-brush\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"pasta-katems-su-eriena-ontario-lamb-fresh-meat-paste-90-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prilimpantis-kramtukas-su-virve-melynas-40-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prilimpantis-kramtukas-su-virve-zalias-40-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-diet-skin-intestinal-hypoallergic-sausas-maistas-katems-15-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-grainfree-adult-pro-energy-begrudis-sausas-maistas-aktyviems-suaugusiems-sunims-3-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-grainfree-puppy-junior-begrudis-sausas-maistas-suniukams-ir-jauniems-sunims-3-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-grainfree-sensible-hypoallergic-begrudis-sausas-maistas-suaugusiems-sunims-turintiems-jautria-virskinimo-sistema-3-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-grainfree-skin-coat-begrudis-sausas-pasaras-suaugusiems-sunims-12-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-grainfree-skin-coat-begrudis-sausas-pasaras-suaugusiems-sunims-3-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-mini-lamb-rice-hypoallergic-sausas-maistas-suaugusiems-mazu-veisliu-sunims-turintiems-jautria-oda-ir-kaili-12-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-mini-senior-support-sausas-maistas-vyresnio-amziaus-mazu-veisliu-sunims-12kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-protection-lamb-hypoallergic-sausas-maistas-suaugusiems-sunims-su-eriena-15-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-protection-lamb-hypoallergic-sausas-maistas-suaugusiems-sunims-su-eriena-3-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-protection-puppy-sausas-maistas-suniukams-ir-jauniems-sunims-3-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-protection-puppy-sausas-maistas-suniukams-ir-jauniems-sunims-75-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"prins-procare-super-active-sausas-maistas-augantiems-ir-aktyviems-sunims-20-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-12kg-begrudis-su-antiena-dideliu-veisliu-suaugusiu-sunu-pasaras\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-12kg-begrudis-su-antiena-visu-veisliu-jaunu-sunu-pasaras\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-12kg-begrudis-visu-veisliu-senjoru-dietinis-sunu-pasaras-su-balta-zuvimi-ir-kriliu\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-begrudis-su-antiena-dideliu-veisliu-suaugusiu-sunu-pasaras-3kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-begrudis-su-antiena-visu-veisliu-suaugusiu-sunu-pasaras-3kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-begrudis-visu-veisliu-suaugusiu-sunu-pasaras-weight-loss-su-balta-zuvimi-ir-kriliumi-12kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-begrudis-su-eriena-visu-veisliu-suaugusiu-sunu-pasaras-monoproteinas-3kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-begrudis-visu-veisliu-suaugusiu-sunu-pasaras-weight-loss-su-balta-zuvimi-ir-kriliumi-3kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-extra-lamb-su-eriena-sausas-sunu-pasaras-3kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-extra-poultry-su-paukstiena-sausas-kaciu-pasaras-7kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-extra-salmon-su-lasisa-sausas-sunu-pasaras-3kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-maxi-poultry-su-paukstiena-sausas-dideliu-veisliu-sunu-pasaras-12kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-junior-su-paukstiena-sausas-jaunu-sunu-pasaras-7kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-mini-lamb-su-eriena-sausas-mazu-veisliu-sunu-pasaras-7kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-mini-salmon-su-lasisa-sausas-mazu-veisliu-sunu-pasaras-7kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-sb-7kg-su-antiena-sausas-pasaras-mazu-veisliu-suniukams-maitinancioms-kalems\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-sb-7kg-su-antiena-sausas-suaugusiu-mazu-veisliu-sunu-pasaras\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-sb-7kg-su-balta-zuvimi-ir-kriliu-sausas-seniems-dietinis-mazu-veisliu-sunims-pasaras\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-sport-su-paukstiena-sausas-aktyviu-sunu-pasaras-12kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-sb-7kg-su-lasisa-ir-kriliu-sausas-suaugusiu-mazu-veisliu-sunu-pasaras\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-sterilised-su-paukstiena-sausas-sterilizuotu-kaciu-pasaras-7kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-visavertis-sausas-dietinis-senstanciu-kaciu-pasaras-su-balta-zuvimi-ir-kriliu-7-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"quattro-visavertis-sausas-pasaras-suaugusioms-sterilizuotoms-katems-su-vistiena-7-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"rasco-konservai-katems-su-antiena-ir-saltalankiu-padaze-85-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"rasco-konservai-katems-su-versiena-ir-zolelemis-padaze-85-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"rasco-konservai-katems-su-kalakutiena-ir-saltalankiu-padaze-85-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"royal-canin-hairball-care-10-kg-sausas-maistas-suaugusioms-katems-nuo-plauku-gumuliuku\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"royal-canin-indoor-2-kg-sausas-maistas-kambarinems-nejudrioms-katems\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"royal-canin-kitten-sterilised-2-kg-sausas-maistas-jauniems-augantiems-sterilizuotiems-kastruotiems-kaciukams\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"royal-canin-maxi-adult-12-kg-sausas-maistas-suaugusiems-dideliu-veisliu-sunims\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"royal-canin-persian-adult-10-kg-sausas-maistas-katems\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"royal-canin-sterilised-37-1-kg-sausas-pasaras-sterilizuotoms-katems\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"ryziu-kauliukai-su-antiena-500-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sampunas-jorksyro-terjerams-one-wish-250-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sampunas-jorksyro-terjeru-suniukams-champ-richer-junior-250-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sampunas-vakaru-skotijos-baltiesiems-terjerams-super-beno-professional-250-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sausas-maistas-jautrioms-katems-1-kg-ontario-cat-sensitive-derma\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sausas-maistas-trumpaplaukems-katems-1-kg-ontario-cat-shorthair\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"semtuvelis-kaciu-kraikui-didelis-georplast-benna\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"semtuvelis-kaciu-kraikui-georplast-sonar\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sepetys-gyvunui-9-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"semtuvelis-kaciu-kraikui-mazas-georplast-simple\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sepetys-su-nerudijancio-plieno-sereliais-gyvunui-noir-s-22-x-6-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skambanti-pliusine-pelyte-zaislas-katei\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-sunims-lazdeles-su-eukaliptu-1-vnt-bw428\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-sunims-mesos-fantazija-300-g-adbi\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-sunims-mesos-kasneliai-su-vistiena-ir-eriena-300-g-adbi\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-sunims-sausainiai-su-vistiena-10-vnt-p50\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-sunims-triusio-ausys-su-antiena-500-g-al68\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-sunims-triusio-ausys-su-vistiena-500-g-al64\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skraidanti-lekste-dog-activity-23-cm-melyna-zaislas-suniui\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-sunims/dziovinti-galviju-plauciai\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skraidanti-lekste-sunims-frisbee-roger-17-cm-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/dubeneliai-sunims/dubenelis-gyvuno-pasarui-ir-vandeniui-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/maistas-sunims/konservai-sunims/monge-monoproteico-solo-anatra-monoproteininiai-konservai-sunims-su-gryna-antiena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/maistas-sunims/sausas-maistas-sunims/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/monge-monoproteico-solo-anatra-monoproteininiai-konservai-sunims-su-gryna-antiena-400-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/prins-procare-puppy-junior-perfect-start-sausas-pasaras-suniukams-ir-jauniems-sunims-20kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/quattro-extra-lamb-su-eriena-sausas-sunu-pasaras-12kg\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/rudos-vistos-kojeles-5-vnt\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/skraidanti-lekste-medziagine-245-cm-skersmens\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/zaislai-sunims/zaislas-suniui-pliusinis-ponas-zaliasis-40-cm-pet-nova-mr-green\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"sunims/zaislas-suniui-guminis-kvepiantis-kaulas-dantu-prieziurai-14-cm-dent-a-chew-ribbed-bone-medium\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"super-benek-konservai-kaciukams-su-kalakutiena-100-g-professional-line\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"super-benek-world-cuisines-konservai-katems-olandiskas-skonis-su-vistiena-kiausiniu-drebuciuose-100-g\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"svieciantis-antkaklis-sunims-seecurity-nailoninis-usb-zalias-45-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"svieciantis-antkaklis-sunims-seecurity-nailoninis-usb-zalias-35-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"svieciantis-antkaklis-sunims-seecurity-nailoninis-usb-zalias-65-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"svieciantis-ir-sviesa-atspindintis-antkaklis-sunims-seecurity-nailoninis-usb-geltonas-40-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"svieciantis-ir-sviesa-atspindintis-antkaklis-sunims-seecurity-nailoninis-usb-geltonas-50-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"tempimo-zaislas-suniui-su-rankena-ir-kamuoliuku-bungee-tuger-su-amortizatoriumi-85-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"transportavimo-deze-boksas-gyvunams-rocket-transparent-georplast\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"transportavimo-deze-boksas-gyvunams-pratiko-1-metal\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"trixie-girdykla-grauzikams-plastikine-450-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"trixie-girdykla-grauzikams-plastikine-50-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"trixie-girdykla-grauzikams-plastikine-600-ml\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"tualetas-katems-su-remeliu-didelis-lettiera-big-50x40x145\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"uostymo-kilimelis-garden-sunims-duvo-plius-78x58-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"uostymo-zaislas-sunims-burrito-14-cm\",\"p\":\"HTTP 429 (laukta 301)\"},{\"k\":\"skanestai-katems\",\"p\":\"grandinė 301→302 wp-admin\"}]",
+    "santrauka": "runner: visas žemėlapis 1101 · ok 787 · klaidų 314 · 446s"
+   },
+   {
+    "id": "5",
+    "data_at": "2026-09-01 08:14:20",
+    "tipas": "cwv",
+    "tikrinta": "3",
+    "ok": "0",
+    "klaidos": "[{\"url\":\"https://dev.avesa.lt/\",\"p\":\"Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for co\"},{\"url\":\"https://dev.avesa.lt/kategorija/animonda-konservai-sunims/\",\"p\":\"Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for co\"},{\"url\":\"https://dev.avesa.lt/product/eukanuba-dog-senior-virs-9-m-l-xl-breeds-15-kg/\",\"p\":\"Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for co\"}]",
+    "santrauka": "ERR · ERR · ERR"
+   }
+  ],
+  "seo_404_vakar": {
+   "n": "0",
+   "h": null,
+   "b": null
+  },
+  "seo_404_siandien": [
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g",
+    "hits": "3",
+    "bot_hits": "3"
+   },
+   {
+    "kelias": "product/sienas-grauzikams-ekologiskas-450-g",
+    "hits": "1",
+    "bot_hits": "1"
+   },
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-krevetemis-100-g",
+    "hits": "1",
+    "bot_hits": "1"
+   },
+   {
+    "kelias": "product/20-vnt-kiaules-ausu",
+    "hits": "1",
+    "bot_hits": "1"
+   },
+   {
+    "kelias": "product/gimcat-skanestai-katems-nutri-pockets-insect-su-vabzdziais-ir-katzole-60-g",
+    "hits": "1",
+    "bot_hits": "1"
+   },
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g",
+    "hits": "1",
+    "bot_hits": "1"
+   },
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-kalmarais-100-g",
+    "hits": "1",
+    "bot_hits": "1"
+   },
+   {
+    "kelias": "product/24-vnt-miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g",
+    "hits": "1",
+    "bot_hits": "1"
+   }
+  ],
+  "cron": {
+   "ps_webp_batch": "09-01 15:36",
+   "ps_browse_abandon_check": "09-01 15:37",
+   "ps_esp_cron_process_pending": "09-01 15:37",
+   "ps_email_dispatch_cron": "09-01 15:38",
+   "ps_post_purchase_check": "09-01 15:39",
+   "ps_cart_abandon_check": "09-01 15:39",
+   "petshop_vf_sync_stock_hourly": "09-01 15:59",
+   "ps_refill_iv_veidrodis": "09-01 16:06",
+   "ps_akcijos_valanda": "09-01 16:08",
+   "ps_vartai_valanda": "09-01 16:13",
+   "ps_seseliai_valandinis": "09-01 16:13",
+   "ps_dropship_sargas": "09-01 16:13",
+   "ps_dim_klientu_perskaiciavimas": "09-01 20:40",
+   "ps_fakt_atsargu_snapshot": "09-01 20:55",
+   "ps_stat_valymas": "09-01 21:41",
+   "petshop_attr_engine_run": "09-01 22:57",
+   "ps_fakt_siuntu_sutikrinimas": "09-02 00:05",
+   "ps_web_agregavimas": "09-02 00:10",
+   "ps_ataskaitu_agregavimas": "09-02 00:15",
+   "petshop_fbt_copurchase_rebuild": "09-02 01:10",
+   "ps_fakt_reklama_portalai": "09-02 01:20",
+   "ps_feeds_naktinis": "09-02 01:30",
+   "ps_klientai_perskaiciuoti": "09-02 02:30",
+   "ps_pet_drafts_cleanup_daily": "09-02 02:40",
+   "ps_web_valymas": "09-02 02:40",
+   "petshop_vf_sync_reprice_daily": "09-02 03:00",
+   "ps_rytas_sargas": "09-02 03:30",
+   "ps_prognoze_diena": "09-02 03:40",
+   "petshop_vf_sync_publish_daily": "09-02 04:00",
+   "ps_sargas_kasdien": "09-02 04:00",
+   "ps_seo_cwv_diena": "09-02 04:00",
+   "ps_sources_naktinis": "09-02 04:20",
+   "ps_ivykiai_valymas": "09-02 04:40",
+   "ps_pardavimai_naktinis": "09-02 04:50",
+   "ps_pilnumas_naktinis": "09-02 05:00",
+   "ps_seo_qa_diena": "09-02 05:00",
+   "ps_suppression_daily_reconcile": "09-02 05:30",
+   "ps_gsc_diena": "09-02 06:00",
+   "ps_prenumerata_diena": "09-02 06:10",
+   "ps_refill_daily_check": "09-02 08:00",
+   "ps_reminders_daily_check": "09-02 09:00",
+   "petshop_pragma_monthly_export": "09-05 08:00",
+   "ps_sargas_savaitinis": "09-08 05:00"
+  },
+  "psi_key": "YRA",
+  "perjungimo_data": false,
+  "webp": {
+   "cursor": 8240,
+   "viso_att": 8240,
+   "apdoroti_att": 8240,
+   "sukurta": 21610,
+   "praleista": 1257,
+   "klaidos": 1104,
+   "sutaupyta_kb": 1055454,
+   "baigta": true,
+   "paskutinis_at": "2026-09-01 15:32:04",
+   "legacy_done": true,
+   "paskutinis_s": 0
+  },
+  "options": {
+   "blog_public": "0",
+   "wc_ver": "11.0.1",
+   "wp": "6.9.4",
+   "php": "8.3.20"
+  },
+  "debug_log": "NERA",
+  "wp_debug": false,
+  "theme_mods": {
+   "type_texts": {
+    "font-family": "Open Sans",
+    "variant": "regular"
+   },
+   "disable_emoji": 1,
+   "disable_fonts": 1
+  },
+  "htaccess_root_md5": "b52902abeef5ae47437c7eb447916735",
+  "htaccess_uploads": "a1a96fc7750068184778be1c51021472",
+  "shortpixel_dir": "YRA",
+  "uzsakymai_24h": 0
+ }
+}
