@@ -20,7 +20,7 @@
   ],
   "docs": [
    "/ 200 234083",
-   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/ 200 282508"
+   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/ 200 280602"
   ],
   "po_veiksmo": {
    "banner_matomas": false,
@@ -59,7 +59,7 @@
   ],
   "docs": [
    "/ 200 234083",
-   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/ 200 279788"
+   "/product/royal-canin-cat-fussy-exigent-10-kg-sausas-pasaras-isrankioms-katems/ 200 279442"
   ],
   "po_veiksmo": {
    "banner_matomas": false,
@@ -70,14 +70,10 @@
     "cmplz_statistics=deny"
    ]
   },
-  "cart_fragment": "1",
+  "atc_err": "TimeoutError: page.click: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator('.single_add_to",
+  "cart_fragment": "",
   "po_prekes": {
-   "dl": [
-    "cmplz_consent_update",
-    "add_to_cart",
-    "view_item",
-    "cmplz_consent_update"
-   ],
+   "dl": [],
    "banner_matomas": false,
    "gtag": "undefined"
   },
