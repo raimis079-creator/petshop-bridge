@@ -1,0 +1,134 @@
+{
+ "v": "dep-094521",
+ "kurimas": 200,
+ "sid": 4375,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "INSTALL": {
+  "v": "S1555",
+  "faze": "INSTALL",
+  "versija": "3.1.3",
+  "install": true,
+  "exists": true,
+  "activate": "ok",
+  "active": true
+ },
+ "CONF": {
+  "v": "S1555",
+  "faze": "CONF",
+  "config_file": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/wp-cache-config.php",
+  "config_exists": true,
+  "verify_cfg": true,
+  "verify_dir": true,
+  "global_cfg": true,
+  "adv": true,
+  "set": {
+   "cache_enabled": "ok",
+   "super_cache_enabled": "ok",
+   "wp_cache_mod_rewrite": "ok",
+   "wp_cache_not_logged_in": "ok",
+   "wp_cache_no_cache_for_get": "ok",
+   "cache_compression": "ok",
+   "wp_cache_mobile_enabled": "ok",
+   "wp_cache_mfunc_enabled": "ok",
+   "cache_max_time": "ok",
+   "wp_cache_clear_on_post_edit": "ok",
+   "wp_cache_front_page_checks": "ok",
+   "wp_cache_refresh_single_only": "ok",
+   "wp_super_cache_late_init": "ok",
+   "wp_cache_make_known_anon": "ok",
+   "cache_rebuild_files": "ok",
+   "wp_supercache_304": "ok",
+   "wp_cache_shutdown_gc": "ok",
+   "cache_rejected_uri": "ok",
+   "wpsc_rejected_cookies": "ok",
+   "cache_acceptable_files": "ok"
+  },
+  "WP_CACHE_in_config": true,
+  "advanced_cache": true,
+  "cache_dir": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/",
+  "cache_dir_ok": true,
+  "cfg_tail": {
+   "7": "$wpsc_rejected_cookies = array ( 0 => 'wp_woocommerce_session_', 1 => 'woocommerce_items_in_cart', 2 => 'woocommerce_cart_hash', 3 => 'comment_author_', 4 => 'wordpress_logged_in_', );",
+   "13": "$cache_enabled = 1;",
+   "14": "$super_cache_enabled = 1;",
+   "15": "$cache_max_time = 3600;",
+   "24": "$cache_rejected_uri = array ( 0 => 'wp-.*\\\\.php', 1 => 'index\\\\.php', 2 => 'krepselis', 3 => 'cart', 4 => 'checkout', 5 => 'atsiskaitymas', 6 => 'my-account', 7 => 'mano-paskyra', 8 => 'augintinis', 9 => 'prenumerata', 10 => 'wp-json', 11 => 'feed', );",
+   "77": "$wp_cache_not_logged_in = 2;",
+   "85": "$wp_cache_mod_rewrite = 0;",
+   "89": "$wp_cache_no_cache_for_get = 1;"
+  }
+ },
+ "VER": {
+  "v": "S1555",
+  "faze": "VER",
+  "t": {
+   "pradinis": {
+    "ms": [
+     1894,
+     75,
+     46
+    ],
+    "code": 200,
+    "cached": 1,
+    "cc": "max-age=3, must-revalidate",
+    "kb": 237
+   },
+   "kategorija": {
+    "ms": [
+     1299,
+     1247,
+     1269
+    ],
+    "code": 200,
+    "cached": 1,
+    "cc": null,
+    "kb": 325
+   },
+   "preke": {
+    "ms": [
+     1078,
+     1080,
+     1046
+    ],
+    "code": 200,
+    "cached": 1,
+    "cc": null,
+    "kb": 259
+   },
+   "taksas": {
+    "ms": [
+     961,
+     895,
+     938
+    ],
+    "code": 200,
+    "cached": 1,
+    "cc": null,
+    "kb": 198
+   }
+  },
+  "ne_cache": {
+   "cart": {
+    "url": "/krepselis/",
+    "cached": 0,
+    "code": 200
+   },
+   "checkout": {
+    "url": "/kasa/",
+    "cached": 0,
+    "code": 200
+   },
+   "account": {
+    "url": "/paskyra/",
+    "cached": 0,
+    "code": 200
+   },
+   "query": 0
+  },
+  "cache_files": 3,
+  "plugins_active": true
+ }
+}
