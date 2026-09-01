@@ -1,0 +1,145 @@
+{
+ "v": "dep-075524",
+ "kurimas": 200,
+ "sid": 4362,
+ "R": {
+  "v": "S1549R",
+  "failai": {
+   "petshop-rezultatai.php": {
+    "B": 17818,
+    "md5": "276d052207d678f518d8e4079c31ad6b"
+   },
+   "petshop-faktai.php": {
+    "B": 37122,
+    "md5": "a0587d1fac6273083516816a62467105"
+   },
+   "petshop-legacy-301.php": {
+    "B": 2881,
+    "md5": "1516e611f0822f3c5b65927bff426e30"
+   },
+   "petshop-sargas.php": {
+    "B": 19899,
+    "md5": "a0a7336c3c726f4fa28ad646f50f7cd9"
+   },
+   "petshop-ataskaitu-agregavimas.php": {
+    "B": 23457,
+    "md5": "6793324496b87a122f5b1e0c6555739f"
+   },
+   "petshop-istorijos-adapteris.php": {
+    "B": 32482,
+    "md5": "591a199ce819b8cf47626cba76d19f4b"
+   }
+  },
+  "rez_menu": [
+   " 'petshop-langai', 'Laiškų rezultatai', 'Laiškų rezultatai', 'manage_woocommerce', 'petshop-rezultatai', array(__CLASS__, 'puslapis') ); } /* ---------"
+  ],
+  "rez_klases": [
+   "Petshop_Rezultatai"
+  ],
+  "rez_fn": [
+   "init",
+   "meniu",
+   "vardas",
+   "sviesa",
+   "duomenys",
+   "priskyrimas",
+   "puslapis"
+  ],
+  "rez_tabs": [],
+  "rez_head": "<?php\n/**\n * Plugin Name: Petshop Rezultatai v1.1 (laiškų skydelis + stop/go + pajamų priskyrimas)\n * Description: E3 — srautų rezultatai, stop/go šviesoforas, bangos, suppression, email→pajamos (last-click, 7 d.). Tik skaito.\n */\nif (!defined('ABSPATH')) exit;\n\nclass Petshop_Rezultatai {\n\n  const VERSIJA = '1.1';\n\n  public static function init() {\n    add_action('admin_menu', array(__CLASS__, 'meniu'), 30);\n  }\n\n  public static function meniu() {\n    add_submenu_page(\n      'petshop-langai',\n      'Laiškų rezultatai',\n      'Laiškų rezultatai',\n      'manage_woocommerce',\n      'petshop-rezultatai',\n      array(__CLASS__, 'puslapis')\n    );\n  }\n\n  /* ---------- žodynas (S1490) ---------- */\n  public static function vardas($flow) {\n    $z = array(\n      'order_paid'=>'Užsakymas priimtas','order_shipped'=>'Užsakymas išsiųstas',\n      'payment_failed'=>'Mokėjimas nepavyko','shipment_returned'=>'Siunta grįžo',\n      'consent_changed'=>'Sutikimas pakeistas','pet_reminder_due'=>'Augintinio priminimas',\n      'subscription_t5_notice'=>'Reguliari siunta po 5 d.','refill_due'=>'Maisto gali pritrūkti',\n      'cart_abandoned'=>'Paliktas krepšelis 1','cart_abandoned_2'=>'Paliktas krepšelis 2',\n      'post_purchase_2d'=>'Po pirkimo 2 diena','post_purchase_7d'=>'Po pirkimo 7 diena',\n      'post_purchase_14d'=>'Po pirkimo 14 diena','win_back_60'=>'Sugrąžinimas 60 d.',\n      'win_back_90'=>'Sugrąžinimas 90 d.','win_back_120'=>'Sugrąžinimas 120 d.',\n      'legac",
+  "ad_menu": [],
+  "kl_menu": [
+   " self::TEVAS, 'Klientų analizė', 'Klientų analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } /* ---------- pagalbos ---------- */ private static function u() {"
+  ],
+  "kl_head": "<?php\n/**\n * Plugin Name: Petshop Ataskaita Klientai\n * Description: Klientų analizė (planas v2.0 §4.3) — apžvalga, kohortos, LTV, top, rizikoje, RFM, vieno kliento kortelė.\n * Version: 1.1\n *\n * ŠALTINIAI. Pinigai ir datos — TIESIOGIAI iš `ps_fakt_uzsakymai` (klientas =\n * `klientas_email_hash`); segmentai / RFM / refill — iš `ps_dim_klientai`\n * (perskaičiuojama naktį). Kohortos ir LTV skaičiuojami iš faktų čia pat,\n * nes dim'e LTV yra pajamų, o planas (S2) reikalauja KONTRIBUCIJOS.\n *\n * KOHORTA = mėnuo, kurį klientas pirko pirmą kartą (`klientas_uzsakymo_nr=1`).\n * Kohortų lentelė: % kohortos klientų, pirkusių N-ąjį mėnesį po pirmo, ir\n * kumuliatyvi kontribucija vienam kohortos klientui.\n *\n * LAIKOTARPIS taikomas tik apžvalgai ir top'ui; kohortos/LTV — visa istorija\n * nuo `ps_stat_pradzia` (kitaip kohorta būtų nupjauta).\n *\n * EL. PAŠTAS ekrane nerodomas (faktuose tik hash). Rizikos CSV į Sender ima\n * paštą iš paskutinio užsakymo `wc_orders.billing_email` — tik eksportui.\n *\n * v1.1 (S1547): šaltinio jungiklis [eShoprent | petshop.lt | Abu] per\n * Petshop_Ist_Adapteris — u()/e() gali rodyti į užšaldytą istoriją, faktus arba\n * suvienytą rodinį. petshop.lt režime — palyginimo eilutė „tas pats laikotarpis\n * eShoprent pernai\" (S1546 #3). Segmentai — B1 taisyklės (S1546 #1).\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Ataskaita_Klientai {\n\tconst VERSIJA  = '1.3';\n\tconst TEVAS    = 'petshop-reports';\n\tconst PUSLAPIS = 'ps-klientai';\n\n\tpublic static function init() {\n\t\tadd_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );\n\t\tadd_filter( 'petshop_ataskaitu_aprasai', function ( $a ) { $a[ self::PUSLAPIS ] = 'Kohortos, LTV pagal kontribuciją, pakartotiniai pirkimai, top klientai, rizikos sąrašas į Sender, RFM ir vieno kliento istorija.'; return $a; } );\n\t\tadd_action( 'admin_post_ps_klientai_csv', array( __CLASS__, 'rizikos_csv' ) );\n\t}\n\tpublic static function meniu() {\n\t\tadd_submenu_page( self::TEVAS, 'Klientų analizė', 'Klientų analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) );\n\t}\n\n\t/* ---------- pagalbos ---------- */\n\tprivate static function u() { global $wpdb; return class_exists( 'Petshop_Ist_Adapteris' ) ? Petshop_Ist_Adapteris::lentele( 'u' ) : $wpdb->prefix . 'ps_fakt_uzsakymai'; }\n\tprivate static function e() { global $wpdb; return class_exists( 'Petshop_Ist_Adapteris' ) ? Petshop_Ist_Adapteris::lentele( 'e' ) : $wpdb->pref",
+  "submenus": [
+   "petshop-akcijos.php: ps-katalogas → Akcijos [ps-akcijos]",
+   "petshop-atributai.php: ps-katalogas → Atributai [ps-atributai]",
+   "petshop-av-dropship.php: ps-desk → Laiškai [ps-laiskai]",
+   "petshop-av-dropship.php: woocommerce → Tiekėjų el. paštai [ps-dropship-nustatymai]",
+   "petshop-gavimas.php: ps-katalogas → Gavimas [ps-gavimas]",
+   "petshop-laukai.php: ps-katalogas → Surenkami rinkiniai [ps-laukai]",
+   "petshop-rezultatai.php: petshop-langai → Laiškų rezultatai [petshop-rezultatai]"
+  ],
+  "ddl_fakt_siuntos": "CREATE TABLE `gaj6_ps_fakt_siuntos` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `uzsakymas_id` bigint(20) unsigned NOT NULL,\n  `shipment_id` varchar(64) DEFAULT NULL,\n  `sandelis` varchar(20) DEFAULT NULL,\n  `vezejas` varchar(20) NOT NULL DEFAULT '',\n  `siuntos_nr` varchar(64) NOT NULL DEFAULT '',\n  `paketu_sk` smallint(5) unsigned NOT NULL DEFAULT 1,\n  `pristatymo_tipas` varchar(20) DEFAULT NULL,\n  `sukurta_at` datetime DEFAULT NULL,\n  `diena` date DEFAULT NULL,\n  `tiekejui_issiusta_at` datetime DEFAULT NULL,\n  `registruota_at` datetime DEFAULT NULL,\n  `isvezta_at` datetime DEFAULT NULL,\n  `pristatyta_at` datetime DEFAULT NULL,\n  `atsiimta_at` datetime DEFAULT NULL,\n  `svoris_deklaruotas_g` int(10) unsigned DEFAULT NULL,\n  `kaina_vezejo_ct` int(11) DEFAULT NULL,\n  `tarifo_id` bigint(20) unsigned DEFAULT NULL,\n  `statusas` varchar(32) DEFAULT NULL,\n  `problema_kodas` varchar(20) DEFAULT NULL,\n  `dienos_iki_pristatymo` smallint(6) DEFAULT NULL,\n  `saltinis` varchar(12) NOT NULL DEFAULT 'cron',\n  `testinis` tinyint(1) NOT NULL DEFAULT 0,\n  `saltinis_aplinka` varchar(10) NOT NULL DEFAULT 'dev',\n  `fakt_versija` smallint(5) unsigned NOT NULL DEFAULT 1,\n  `sandelio_saltinis` varchar(12) DEFAULT NULL,\n  `dydis` varchar(4) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `uzs_vez_nr` (`uzsakymas_id`,`vezejas`,`siuntos_nr`),\n  KEY `ship` (`shipment_id`),\n  KEY `uzs` (`uzsakymas_id`),\n  KEY `d` (`diena`),\n  KEY `sand` (`sandelis`)\n) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci ROW_FORMAT=DYNAMIC",
+  "map_n": 1101,
+  "map_sample": {
+   "sunims/antiparazitines-priemones-sunims": "__TERM__108",
+   "katems/antiparazitines-priemones-katems": "__TERM__109",
+   "hipoalerginis-maistas-sunims": "__TERM__85"
+  },
+  "map_assoc": true,
+  "legacy301_src": "<?php\n/**\n * Petshop Legacy 301 v2.0 (S436) — senos platformos adresų nukreipimas.\n *\n * Vienas mechanizmas visiems seniems adresams. Žemėlapis laikomas ATSKIRAME\n * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena\n * užklausa neparsintų 137 KB PHP masyvo.\n *\n * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL / 19 735 clicks / 16 mėn.):\n *   1. kategorijos be /kategorija/ priešdėlio          34 · 1 596\n *   2. seni URL su ID uodegomis                        42 ·   666\n *   3. pervadinti slug                                 10 ·    30\n *   4. produktai iš šaknies → /product/                805 · 2 968\n *   5. likusios kategorijos                            24 ·   102\n *   6. brendai → /gamintojas/                          22 ·   501\n *\n * KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion\n * (218 clicks) SPĖJIMU 301-ina į ATSITIKTINĮ SKU. TŽ v1.56 tai įspėjo, ir\n * 2026-08-04 tai vis dar vyko.\n *\n * VARTAI:\n *   - TIK tiksliam adresui iš žemėlapio, TIK kai jis DABAR 404\n *   - vienas 301 tiesiai į galutinį 200, jokių grandinių\n *   - JOKIO „panašiausio URL\" spėjimo\n *   - redirect_canonical išjungiamas TIK mūsų atpažintam adresui\n *   - X-Redirect-By: Petshop-Legacy-Category\n *\n * ĮŠALDYTA, NE DINAMINIS. Naujoms kategorijoms/prekėms taisyklės NEKURIAMOS.\n * Naujas įrašas — tik rankiniu būdu su GSC pagrindimu.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nconst PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';\n\nfunction petshop_legacy_301_map() {\n\tstatic $m = null;\n\tif ( null !== $m ) { return $m; }\n\t$raw = @file_get_contents( PS_LEGACY_301_MAP );\n\t$m   = ( false === $raw ) ? array() : (array) json_decode( $raw, true );\n\treturn $m;\n}\n\nfunction petshop_legacy_301_path() {\n\t$p = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );\n\treturn strtolower( trim( rawurldecode( $p ), '/' ) );\n}\n\nadd_action( 'template_redirect', function () {\n\tif ( is_admin() || wp_doing_ajax() || is_robots() || is_feed() ) { return; }\n\tif ( ! is_404() ) { return; }          // esami puslapiai NELIEČIAMI\n\n\t$kelias = petshop_legacy_301_path();\n\tif ( '' === $kelias ) { return; }\n\n\t$map = petshop_legacy_301_map();\n\tif ( ! isset( $map[ $kelias ] ) ) { return; }   // jokio spėjimo\n\n\t$t = $map[ $kelias ];\n\tif ( 0 === strpos( $t, '__TERM__' ) ) {\n\t\t$term = get_term( (int) substr( $t, 8 ), 'product_cat' );\n\t\tif ( ! $term || is_wp_error( $term ) ) { return; }\n\t\t$url = get_term_link( $term );\n\t\tif ( is_wp_error( $url ) || ! $url ) { return; }\n\t} else {\n\t\t$url = home_url( $t );\n\t}\n\n\t// Apsauga nuo kilpos\n\tif ( strtolower( trim( (string) parse_url( $url, PHP_URL_PATH ), '/' ) ) === $kelias ) { return; }\n\n\tremove_action( 'template_redirect', 'redirect_canonical' );\n\twp_redirect( $url, 301, 'Petshop-Legacy-Category' );\n\texit;\n}, 1 );\n",
+  "tables_404": [],
+  "tables_seo": [],
+  "tables_gsc": [],
+  "mu_404_hits": [
+   "petshop-analitika.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-av-dropship.php",
+   "petshop-code-search.php",
+   "petshop-katalogas.php",
+   "petshop-legacy-301.php",
+   "petshop-m8-food.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prieziura.php",
+   "petshop-rec-variklis.php",
+   "petshop-rytas.php"
+  ],
+  "sargas_cron": [
+   "wp_schedule_event( self::rytoj( 7 ), 'daily', 'ps_sargas_kasdien' );",
+   "wp_schedule_event( self::rytoj( 8 ), 'weekly', 'ps_sargas_savaitinis' );",
+   "wp_schedule_event dirba su UTC */"
+  ],
+  "rm_sitemap": {
+   "exists": true,
+   "links_per_sitemap": 200
+  },
+  "blog_public": "0",
+  "home": "https://dev.avesa.lt",
+  "sitemap_http": "",
+  "ps_crons": [
+   "ps_esp_cron_process_pending",
+   "ps_email_dispatch_cron",
+   "petshop_vf_sync_stock_hourly",
+   "ps_cart_abandon_check",
+   "ps_refill_daily_check",
+   "ps_refill_iv_veidrodis",
+   "ps_akcijos_valanda",
+   "ps_vartai_valanda",
+   "ps_seseliai_valandinis",
+   "ps_dropship_sargas",
+   "ps_browse_abandon_check",
+   "ps_post_purchase_check",
+   "ps_reminders_daily_check",
+   "petshop_attr_engine_run",
+   "ps_dim_klientu_perskaiciavimas",
+   "ps_fakt_atsargu_snapshot",
+   "ps_stat_valymas",
+   "ps_fakt_siuntu_sutikrinimas",
+   "ps_web_agregavimas",
+   "ps_ataskaitu_agregavimas",
+   "petshop_fbt_copurchase_rebuild",
+   "ps_fakt_reklama_portalai",
+   "ps_feeds_naktinis",
+   "ps_klientai_perskaiciuoti",
+   "ps_pet_drafts_cleanup_daily",
+   "ps_web_valymas",
+   "petshop_vf_sync_reprice_daily",
+   "ps_rytas_sargas",
+   "ps_prognoze_diena",
+   "petshop_vf_sync_publish_daily",
+   "ps_sargas_kasdien",
+   "ps_sources_naktinis",
+   "ps_ivykiai_valymas",
+   "ps_pardavimai_naktinis",
+   "ps_pilnumas_naktinis",
+   "ps_suppression_daily_reconcile",
+   "ps_prenumerata_diena",
+   "petshop_pragma_monthly_export",
+   "ps_sargas_savaitinis"
+  ]
+ }
+}
