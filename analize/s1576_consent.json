@@ -1,0 +1,151 @@
+{
+ "v": "S1576",
+ "mob_atmesti": {
+  "errs": [],
+  "pries": [
+   "gtm.js"
+  ],
+  "po": [
+   "gtm.js"
+  ],
+  "baneris": {
+   "yra": true,
+   "x_yra": true,
+   "x_matomas": true,
+   "nuoroda": [
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper"
+   ]
+  },
+  "cookies_pries": [],
+  "po_veiksmo": {
+   "banner_matomas": false,
+   "consent_update": "[{\"analytics_storage\":\"denied\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\"}]",
+   "cmplz": [
+    "cmplz_banner-status=dismissed",
+    "cmplz_marketing=deny",
+    "cmplz_statistics=deny",
+    "cmplz_preferences=deny"
+   ]
+  },
+  "po_prekes": {
+   "dl": [
+    "cmplz_consent_update",
+    "add_to_cart",
+    "view_item",
+    "cmplz_consent_update"
+   ],
+   "banner_matomas": false
+  },
+  "cookies_po": []
+ },
+ "mob_x": {
+  "errs": [],
+  "pries": [
+   "gtm.js"
+  ],
+  "po": [
+   "gtm.js"
+  ],
+  "baneris": {
+   "yra": true,
+   "x_yra": true,
+   "x_matomas": true,
+   "nuoroda": [
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper"
+   ]
+  },
+  "cookies_pries": [],
+  "po_veiksmo": {
+   "banner_matomas": false,
+   "consent_update": "[{\"analytics_storage\":\"denied\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\"}]",
+   "cmplz": [
+    "cmplz_banner-status=dismissed",
+    "cmplz_marketing=deny",
+    "cmplz_statistics=deny",
+    "cmplz_preferences=deny"
+   ]
+  },
+  "po_prekes": {
+   "dl": [],
+   "banner_matomas": false
+  },
+  "cookies_po": []
+ },
+ "mob_niekas": {
+  "errs": [],
+  "pries": [
+   "gtm.js"
+  ],
+  "po": [
+   "gtm.js"
+  ],
+  "baneris": {
+   "yra": true,
+   "x_yra": true,
+   "x_matomas": true,
+   "nuoroda": [
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper"
+   ]
+  },
+  "cookies_pries": [],
+  "po_veiksmo": {
+   "banner_matomas": true,
+   "consent_update": "[{\"analytics_storage\":\"denied\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\"}]",
+   "cmplz": []
+  },
+  "po_prekes": {
+   "dl": [],
+   "banner_matomas": false
+  },
+  "cookies_po": [],
+  "kasa_baneris": {
+   "btn": false
+  }
+ },
+ "desk_atmesti": {
+  "errs": [],
+  "pries": [
+   "gtm.js"
+  ],
+  "po": [
+   "gtm.js"
+  ],
+  "baneris": {
+   "yra": true,
+   "x_yra": true,
+   "x_matomas": true,
+   "nuoroda": [
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-manage-consent-container",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-cookies-overview",
+    "https://dev.avesa.lt/slapuku-politika/#cmplz-tcf-wrapper"
+   ]
+  },
+  "cookies_pries": [],
+  "po_veiksmo": {
+   "banner_matomas": false,
+   "consent_update": "[{\"analytics_storage\":\"denied\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\"}]",
+   "cmplz": [
+    "cmplz_banner-status=dismissed",
+    "cmplz_marketing=deny",
+    "cmplz_statistics=deny",
+    "cmplz_preferences=deny"
+   ]
+  },
+  "po_prekes": {
+   "dl": [
+    "cmplz_consent_update",
+    "add_to_cart",
+    "view_item",
+    "cmplz_consent_update"
+   ],
+   "banner_matomas": false
+  },
+  "cookies_po": []
+ }
+}
