@@ -1,0 +1,140 @@
+{
+ "v": "dep-184125",
+ "kurimas": 200,
+ "sid": 4433,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DIEGTI": {
+  "v": "S1587d",
+  "faze": "DIEGTI",
+  "tokens": 5142,
+  "bytes": 19296,
+  "md5": "136e9be3af440f84dd190741e5643ab2"
+ },
+ "VER": {
+  "v": "S1587d",
+  "faze": "VER",
+  "klase": true,
+  "md5": "136e9be3af440f84dd190741e5643ab2",
+  "ver": "1.0",
+  "parent_const": "petshop-reports",
+  "lentele": "gaj6_ps_kontrole_dienos",
+  "cron": "2026-09-02 04:30",
+  "prod": false,
+  "secret": "nera",
+  "dry_35100": {
+   "payload": {
+    "client_id": "ps.2037836797.1787750203",
+    "non_personalized_ads": true,
+    "events": [
+     {
+      "name": "purchase",
+      "params": {
+       "transaction_id": "35100",
+       "value": 47.66,
+       "tax": 8.27,
+       "shipping": 0,
+       "currency": "EUR",
+       "payment_type": "bacs",
+       "ps_saltinis": "serveris",
+       "engagement_time_msec": 1,
+       "items": [
+        {
+         "item_id": "404842214457",
+         "item_name": "8in1 Flavours L trigubo skonio kaulas didelių veislių šunims, 1 vnt.",
+         "quantity": 1,
+         "price": 4.09,
+         "item_brand": "8in1",
+         "item_category": "Skanėstai šunims"
+        },
+        {
+         "item_id": "NGCAB01",
+         "item_name": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jautiena, 1,5 kg",
+         "quantity": 1,
+         "price": 16.29,
+         "item_brand": "Exclusion",
+         "item_category": "Sausas maistas katėms"
+        },
+        {
+         "item_id": "AMLE02",
+         "item_name": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg",
+         "quantity": 1,
+         "price": 14.29,
+         "item_brand": "Ambrosia",
+         "item_category": "Sausas maistas šunims"
+        },
+        {
+         "item_id": "Rink-rudos-knysles-20",
+         "item_name": "20 vnt. rudų kiaulės knyslių",
+         "quantity": 1,
+         "price": 12.99,
+         "item_brand": "Gnatek",
+         "item_category": "DAUGIAU=PIGIAU"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "http": 200,
+   "atsakas": {
+    "validationMessages": []
+   }
+  },
+  "kontrole": [
+   {
+    "diena": "2026-08-31",
+    "woo_apmoketi": "0",
+    "woo_suma_ct": "0",
+    "fakt": "0",
+    "mp_issiusta": "0",
+    "mp_laukia": "0",
+    "ga4_purchase": "7",
+    "ga4_pajamos_ct": "36573",
+    "atnaujinta": "2026-09-01 18:42:38"
+   },
+   {
+    "diena": "2026-08-30",
+    "woo_apmoketi": "0",
+    "woo_suma_ct": "0",
+    "fakt": "0",
+    "mp_issiusta": "0",
+    "mp_laukia": "0",
+    "ga4_purchase": "8",
+    "ga4_pajamos_ct": "49049",
+    "atnaujinta": "2026-09-01 18:42:38"
+   },
+   {
+    "diena": "2026-08-29",
+    "woo_apmoketi": "0",
+    "woo_suma_ct": "0",
+    "fakt": "0",
+    "mp_issiusta": "0",
+    "mp_laukia": "0",
+    "ga4_purchase": "2",
+    "ga4_pajamos_ct": "5053",
+    "atnaujinta": "2026-09-01 18:42:38"
+   },
+   {
+    "diena": "2026-08-28",
+    "woo_apmoketi": "0",
+    "woo_suma_ct": "0",
+    "fakt": "0",
+    "mp_issiusta": "0",
+    "mp_laukia": "0",
+    "ga4_purchase": "3",
+    "ga4_pajamos_ct": "10227",
+    "atnaujinta": "2026-09-01 18:42:38"
+   }
+  ],
+  "kontrole_pask": {
+   "kada": "2026-09-01 18:42:38",
+   "ga4": "ok"
+  },
+  "cid_test": {
+   "ga": "1234567890.1700000000"
+  }
+ }
+}
