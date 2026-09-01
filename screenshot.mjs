@@ -1,38 +1,46 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import { chromium } from 'playwright';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTgzIGFkbWluIGNvb2tpZSAqLwphZGRfYWN0aW9uKCdpbml0JywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX2NrJ10pIHx8ICRfR0VUWydwc19jayddIT09J0s3djJzMTU4MycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogICR1aWQ9MTsgJGV4cD10aW1lKCkrMTgwMDsKICBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNTgzJywnY29va2llcyc9PmFycmF5KAogICAgYXJyYXkoJ25hbWUnPT5MT0dHRURfSU5fQ09PS0lFLCd2YWx1ZSc9PndwX2dlbmVyYXRlX2F1dGhfY29va2llKCR1aWQsJGV4cCwnbG9nZ2VkX2luJykpLAogICAgYXJyYXkoJ25hbWUnPT5TRUNVUkVfQVVUSF9DT09LSUUsJ3ZhbHVlJz0+d3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoJHVpZCwkZXhwLCdzZWN1cmVfYXV0aCcpKSwKICAgIGFycmF5KCduYW1lJz0+QVVUSF9DT09LSUUsJ3ZhbHVlJz0+d3BfZ2VuZXJhdGVfYXV0aF9jb29raWUoJHVpZCwkZXhwLCdhdXRoJykpLAogICkpKTsgZXhpdDsKfSk7Cg=='; const VER='dep-173506'; const OUT='analize/s1583_admin_menu.json';
-const out={v:VER}; const miegok=ms=>new Promise(r=>setTimeout(r,ms));
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNTgzYiByZWNvbiAyICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpewogIGlmKCFpc3NldCgkX0dFVFsncHNfZGcyJ10pIHx8ICRfR0VUWydwc19kZzInXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOwogIGdsb2JhbCAkd3BkYjsgJHA9JHdwZGItPnByZWZpeDsgJG89YXJyYXkoJ3YnPT4nUzE1ODNiJyk7CiAgdHJ5ewogICAgJG11PWFycmF5KCk7IGZvcmVhY2goZ2xvYihXUE1VX1BMVUdJTl9ESVIuJy8qLnBocCcpIGFzICRmKXsgJGM9ZmlsZV9nZXRfY29udGVudHMoJGYpOyAkaGl0cz1hcnJheSgpOwogICAgICBmb3JlYWNoKGFycmF5KCdTdmVpa2F0YScsJ1NyYXV0YXMnLCd2aWVzb2ZvcicsJ3BzX3dlYl9pdnlraWFpJywnR0E0JywnYW5vbWFsJykgYXMgJGspIGlmKHN0cmlwb3MoJGMsJGspIT09ZmFsc2UpICRoaXRzW109JGs7CiAgICAgIGlmKCRoaXRzKSAkbXVbYmFzZW5hbWUoJGYpXT1pbXBsb2RlKCcsJywkaGl0cyk7IH0KICAgICRvWydtb2R1bGlhaV9zdV9yYWt0YWlzJ109JG11OwogICAgJG9bJ211X3NhcmFzYXMnXT1hcnJheV9tYXAoJ2Jhc2VuYW1lJyxnbG9iKFdQTVVfUExVR0lOX0RJUi4nLyoucGhwJykpOwogICAgJG9bJ3RhcmlmYWknXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCAqIEZST00geyRwfXBzX3RhcmlmYWkgT1JERVIgQlkgMSBERVNDIExJTUlUIDYiLEFSUkFZX0EpOwogICAgJG9bJ2lzbGFpZG9zJ109JHdwZGItPmdldF9yZXN1bHRzKCJTRUxFQ1QgKiBGUk9NIHskcH1wc19pc2xhaWRvcyBMSU1JVCAxMCIsQVJSQVlfQSk7CiAgICAkb1snd2ViJ109YXJyYXkoJ2l2eWtpYWknPT4oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHB9cHNfd2ViX2l2eWtpYWkiKSwnZGllbm9zJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwfXBzX3dlYl9kaWVub3MiKSwnaXZ5a2lhaV83ZCc9PihpbnQpJHdwZGItPmdldF92YXIoIlNFTEVDVCBDT1VOVCgqKSBGUk9NIHskcH1wc193ZWJfaXZ5a2lhaSBXSEVSRSAxIikpOwogICAgJG9bJ3dlYl9jb2xzJ109JHdwZGItPmdldF9jb2woIlNIT1cgQ09MVU1OUyBGUk9NIHskcH1wc193ZWJfaXZ5a2lhaSIpOwogICAgJG9bJ3BzX29wdGlvbnMnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBvcHRpb25fbmFtZSwgTEVGVChvcHRpb25fdmFsdWUsODApIHYgRlJPTSB7JHB9b3B0aW9ucyBXSEVSRSBvcHRpb25fbmFtZSBJTiAoJ3BzX3BhbGVpZGltb19kYXRhJywncHNfc3RhdF9wcmFkemlhJywncHNfcGVyanVuZ2ltb19kYXRhJywncHNfZmFrdF9wYWt1b3RlX3ZpZF9jdCcsJ3BzX3RpZWtlanVfcGFzdGFpJywncHNfZmVlZHNfcGFza3V0aW5pcycsJ3BzX3Nhcmdhc19lbWFpbCcsJ3BzX2thbmFsdV90YWlzeWtsZXMnKSBPUiBvcHRpb25fbmFtZSBMSUtFICdwc19rYW5hbCUnIE9SIG9wdGlvbl9uYW1lIExJS0UgJ3BzX2F0YXNrYWl0JSciLEFSUkFZX0EpOwogICAgJG9bJ2JlX2thaW5vc19pZHMnXT0kd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIENPTkNBVChwby5JRCwnOicsTEVGVChwby5wb3N0X3RpdGxlLDQwKSkgRlJPTSB7JHB9cG9zdHMgcG8gTEVGVCBKT0lOIHskcH1wb3N0bWV0YSBwbSBPTiBwbS5wb3N0X2lkPXBvLklEIEFORCBwbS5tZXRhX2tleT0nX3ByaWNlJyBXSEVSRSBwby5wb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwby5wb3N0X3N0YXR1cz0ncHVibGlzaCcgQU5EIChwbS5tZXRhX3ZhbHVlIElTIE5VTEwgT1IgcG0ubWV0YV92YWx1ZT0nJyBPUiBwbS5tZXRhX3ZhbHVlKzA8PTApIik7CiAgICAkb1snYmVfbnVvdHJhdWtvc19pZHMnXT0kd3BkYi0+Z2V0X2NvbCgiU0VMRUNUIENPTkNBVChwby5JRCwnOicsTEVGVChwby5wb3N0X3RpdGxlLDQwKSkgRlJPTSB7JHB9cG9zdHMgcG8gTEVGVCBKT0lOIHskcH1wb3N0bWV0YSBwbSBPTiBwbS5wb3N0X2lkPXBvLklEIEFORCBwbS5tZXRhX2tleT0nX3RodW1ibmFpbF9pZCcgV0hFUkUgcG8ucG9zdF90eXBlPSdwcm9kdWN0JyBBTkQgcG8ucG9zdF9zdGF0dXM9J3B1Ymxpc2gnIEFORCAocG0ubWV0YV92YWx1ZSBJUyBOVUxMIE9SIHBtLm1ldGFfdmFsdWU9JycgT1IgcG0ubWV0YV92YWx1ZT0nMCcpIik7CiAgICAkb1snYmVfc2FuZGVsaW9faWRzJ109JHdwZGItPmdldF9jb2woIlNFTEVDVCBDT05DQVQocG8uSUQsJzonLExFRlQocG8ucG9zdF90aXRsZSw0MCkpIEZST00geyRwfXBvc3RzIHBvIFdIRVJFIHBvLnBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJyBBTkQgTk9UIEVYSVNUUyAoU0VMRUNUIDEgRlJPTSB7JHB9cG9zdG1ldGEgcG0gV0hFUkUgcG0ucG9zdF9pZD1wby5JRCBBTkQgcG0ubWV0YV9rZXk9J19wc19zYW5kZWxpcycgQU5EIHBtLm1ldGFfdmFsdWU8PicnKSBMSU1JVCAyNSIpOwogICAgLy8gQVY6IHByZWvEl3Mgc3UgbGlrdcSNaXUgPjAgcGFnYWwgcGFza3V0aW7EryBtb2RpZmlrYXZpbcSFIOKAlCBraWVrIG5lc2lrZWl0xJcgbnVvIGJpcsW+ZWxpbwogICAgJG9bJ2F2X3N0b2NrX25lbGllc3Rvc19udW9fMDYnXT0oaW50KSR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgQ09VTlQoKikgRlJPTSB7JHB9cG9zdHMgcG8gSk9JTiB7JHB9cG9zdG1ldGEgbG0gT04gbG0ucG9zdF9pZD1wby5JRCBBTkQgbG0ubWV0YV9rZXk9J19sZWdhY3lfbWFudWZhY3R1cmVyJyBBTkQgbG0ubWV0YV92YWx1ZTw+JycgSk9JTiB7JHB9cG9zdG1ldGEgc3QgT04gc3QucG9zdF9pZD1wby5JRCBBTkQgc3QubWV0YV9rZXk9J19zdG9jaycgQU5EIHN0Lm1ldGFfdmFsdWUrMD4wIFdIRVJFIHBvLnBvc3RfdHlwZT0ncHJvZHVjdCcgQU5EIHBvLnBvc3Rfc3RhdHVzPSdwdWJsaXNoJyBBTkQgcG8ucG9zdF9tb2RpZmllZDwnMjAyNi0wNy0wMSciKTsKICAgICRvWydhdl96dXJuYWxhcyddPWFycmF5KCduJz0+KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwfXBzX2F2X3p1cm5hbGFzIiksJ21heCc9PiR3cGRiLT5nZXRfdmFyKCJTRUxFQ1QgTUFYKGlkKSBGUk9NIHskcH1wc19hdl96dXJuYWxhcyIpLCdjb2xzJz0+JHdwZGItPmdldF9jb2woIlNIT1cgQ09MVU1OUyBGUk9NIHskcH1wc19hdl96dXJuYWxhcyIpKTsKICAgICRvWydsZWdhY3lfa2FpbmFfa2Vpc3RhXzA4XzA5J109KGludCkkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIENPVU5UKCopIEZST00geyRwfXBzX2Zha3Rfa2Fpbm9zIikgOwogICAgJG9bJ2Zha3Rfa2Fpbm9zX2NvbHMnXT0kd3BkYi0+Z2V0X2NvbCgiU0hPVyBDT0xVTU5TIEZST00geyRwfXBzX2Zha3Rfa2Fpbm9zIik7CiAgICAkb1snd3BfdXBkYXRlcyddPWFycmF5KCdjb3JlJz0+Z2V0X29wdGlvbignX3NpdGVfdHJhbnNpZW50X3VwZGF0ZV9jb3JlJyk/J3RyYW5zaWVudCc6JycsICdwbHVnaW5zX25lZWRpbmdfdXBkYXRlJz0+Y291bnQoKGFycmF5KShnZXRfc2l0ZV90cmFuc2llbnQoJ3VwZGF0ZV9wbHVnaW5zJyktPnJlc3BvbnNlPz9hcnJheSgpKSkpOwogICAgJG9bJ3Nhcmdhc19lbWFpbF9vcHQnXT0kd3BkYi0+Z2V0X3Jlc3VsdHMoIlNFTEVDVCBvcHRpb25fbmFtZSBGUk9NIHskcH1vcHRpb25zIFdIRVJFIG9wdGlvbl9uYW1lIExJS0UgJ3BzX3NhcmdhcyUnIE9SIG9wdGlvbl9uYW1lIExJS0UgJ3BzX2JhY2t1cCUnIE9SIG9wdGlvbl9uYW1lIExJS0UgJ3BzX2JrcCUnIixBUlJBWV9BKTsKICAgICRvWydzbmlwcGV0c190ZW1wJ109JHdwZGItPmdldF9jb2woIlNFTEVDVCBDT05DQVQoaWQsJzonLGFjdGl2ZSkgRlJPTSB7JHB9c25pcHBldHMgV0hFUkUgbmFtZSBMSUtFICdURU1QJSciKTsKICAgICR3cGRiLT5xdWVyeSgiREVMRVRFIEZST00geyRwfXNuaXBwZXRzIFdIRVJFIG5hbWUgTElLRSAnVEVNUCUnIEFORCBhY3RpdmU9MCIpOwogICAgJG9bJ3RlbXBfaXN0cmludGEnXT0kd3BkYi0+cm93c19hZmZlY3RlZDsKICAgICRvWyd3b29jb21tZXJjZV93cF9zdWJzY3JpcHRpb25fcGF5cGFsX3NldHRpbmdzJ109c3Vic3RyKGpzb25fZW5jb2RlKGdldF9vcHRpb24oJ3dvb2NvbW1lcmNlX3dwX3N1YnNjcmlwdGlvbl9wYXlwYWxfc2V0dGluZ3MnKSksMCwyMDApOwogICAgJG9bJ2FjdGl2ZV9wbHVnaW5zX2xpc3QnXT1hcnJheV9tYXAoZnVuY3Rpb24oJHgpe3JldHVybiBkaXJuYW1lKCR4KT86JHg7fSwoYXJyYXkpZ2V0X29wdGlvbignYWN0aXZlX3BsdWdpbnMnKSk7CiAgfWNhdGNoKFRocm93YWJsZSAkZSl7ICRvWydGQVRBTCddPSRlLT5nZXRNZXNzYWdlKCkuJyBAJy4kZS0+Z2V0TGluZSgpOyB9CiAgZWNobyBqc29uX2VuY29kZSgkbyxKU09OX1VORVNDQVBFRF9VTklDT0RFKTsgZXhpdDsKfSk7Cg==';
+const VER='dep-174234';
+const GKEY='ps_dg2';
+const PHASES=["GO"];
+const OUT='analize/s1583b.json';
+const DATA=[];
+const out={v:VER};
+const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
-  const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha; return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
-const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets'; let sid=null;
+  const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha;
+  return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
+async function fx(u,o,k){ for(let i=0;i<5;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(8000);} } throw new Error('fx:'+k); }
+const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
+const UA={'Cache-Control':'no-cache','User-Agent':'Mozilla/5.0'};
+let sid=null;
 try{
-  try{ const l=await fetch(SNIP,{headers:A}); const arr=JSON.parse(await l.text()); for(const s of (Array.isArray(arr)?arr:[]).filter(s=>s.active&&/^TEMP/.test(s.name||''))){ await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); } }catch(e){}
-  const c=await fetch(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})});
-  try{sid=JSON.parse(await c.text()).id; out.sid=sid;}catch(e){}
+  try{ const l=await fx(SNIP,{headers:A},'list'); const arr=JSON.parse(await l.text());
+  for(const s of (Array.isArray(arr)?arr:[]).filter(s=>s.active&&/^TEMP/.test(s.name||''))){
+    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); } }catch(e){ out.list_praleistas=String(e).slice(0,80); }
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
+    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'create');
+  const ct=await c.text(); out.kurimas=c.status; try{sid=JSON.parse(ct).id; out.sid=sid;}catch(e){out.kurimo_atsakas=ct.slice(0,400);}
+  let dq='';
+  if(DATA.length){ out.data={}; for(const p of DATA){ const name=p.split('/').pop();
+      const g=await fx('https://api.github.com/repos/'+REPO+'/contents/'+p,{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw+json'}},'gh_'+name);
+      const buf=Buffer.from(await g.arrayBuffer());
+      const m=await fx(WP+'/wp-json/wp/v2/media',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain','Content-Disposition':'attachment; filename="'+name+'"'},body:buf},'media_'+name);
+      const mt=await m.text(); try{ const j=JSON.parse(mt); out.data[name]={id:j.id,status:m.status}; dq+='&d_'+name.replace(/\W/g,'_')+'='+j.id; }catch(e){ out.data[name]={status:m.status,err:mt.slice(0,200)}; } } }
   await miegok(9000);
-  const ck=JSON.parse(await (await fetch(WP+'/?ps_ck=K7v2s1583',{headers:{'User-Agent':'Mozilla/5.0 petshopseo','Cache-Control':'no-cache'}})).text());
-  out.cookies_n=(ck.cookies||[]).length;
-  const br=await chromium.launch(); const ctx=await br.newContext({viewport:{width:1400,height:900},ignoreHTTPSErrors:true,userAgent:'Mozilla/5.0 (X11; Linux x86_64) petshopseo Chrome/120'});
-  const host=new URL(WP).hostname;
-  await ctx.addCookies(ck.cookies.map(x=>({name:x.name,value:x.value,domain:host,path:'/',secure:true,httpOnly:true})));
-  const pg=await ctx.newPage(); const errs=[]; pg.on('pageerror',e=>errs.push(String(e).slice(0,120)));
-  await pg.goto(WP+'/wp-admin/',{waitUntil:'domcontentloaded',timeout:60000}); await pg.waitForTimeout(4000);
-  out.url=pg.url(); out.title=await pg.title();
-  out.menu=await pg.evaluate(()=>{ const r=[]; document.querySelectorAll('#adminmenu > li.menu-top').forEach(li=>{ const t=(li.querySelector('.wp-menu-name')||{}).textContent||''; const subs=[...li.querySelectorAll('.wp-submenu li a')].map(a=>a.textContent.trim()+' → '+a.getAttribute('href')); r.push({top:t.trim(),subs}); }); return r; });
-  // Petshop langai + ataskaitos: atidaryti kiekvieną pirmą puslapį ir paimti h1 + lentelių/eilučių skaičių
-  const targets=out.menu.filter(m=>/Petshop/i.test(m.top)).flatMap(m=>m.subs).filter(s=>/page=/.test(s)).map(s=>s.split(' → ')[1]).slice(0,40);
-  out.langai={};
-  for(const href of targets){ try{ const u=href.startsWith('http')?href:WP+'/wp-admin/'+href.replace(/^\//,''); await pg.goto(u,{waitUntil:'domcontentloaded',timeout:45000}); await pg.waitForTimeout(2500);
-      out.langai[href]=await pg.evaluate(()=>{ const h=(document.querySelector('#wpbody-content h1, #wpbody-content h2')||{}).textContent||''; const tables=document.querySelectorAll('#wpbody-content table').length; const rows=document.querySelectorAll('#wpbody-content table tbody tr').length; const tabs=[...document.querySelectorAll('#wpbody-content .nav-tab, #wpbody-content .ps-tab, #wpbody-content .subsubsub a')].map(a=>a.textContent.trim()).slice(0,20); const txt=(document.querySelector('#wpbody-content')||{}).innerText||''; const empty=/nėra duomenų|nera duomenu|tuščia|0 įrašų|Nėra įrašų/i.test(txt); return {h:h.trim().slice(0,80),tables,rows,tabs,empty,len:txt.length,notice:[...document.querySelectorAll('#wpbody-content .notice, #wpbody-content .error')].map(n=>n.innerText.trim().slice(0,100))}; });
-      await pg.waitForTimeout(2000); }catch(e){ out.langai[href]={klaida:String(e).slice(0,120)}; } }
-  out.pageerrors=errs.slice(0,10);
-  await pg.goto(WP+'/wp-admin/',{waitUntil:'domcontentloaded',timeout:45000}); await pg.waitForTimeout(3000);
-  const shot=await pg.screenshot({fullPage:false}); await put('screenshots/s1583_admin_dash.png',shot,VER+' dash');
-  await br.close();
-}catch(e){ out.klaida=String(e).slice(0,600); }
+  if(process.env.GTM_SA_JSON){ try{ const sr=await fx(WP+'/wp-json/ps-seo-temp/v1/sa',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain'},body:process.env.GTM_SA_JSON},'sa'); out.sa_push={status:sr.status,body:(await sr.text()).slice(0,200)}; }catch(e){ out.sa_push=String(e).slice(0,200);} }
+  for(let i=0;i<PHASES.length;i++){
+    const f=PHASES[i];
+    if(i>0) await miegok(5000);
+    const d=await fx(WP+'/?'+GKEY+'='+encodeURIComponent(f)+dq,{headers:UA},'faze_'+f);
+    const t=await d.text();
+    try{ out[f]=JSON.parse(t); }catch(e){ out['zalias_'+f]=t.slice(0,3000); }
+  }
+}catch(e){ out.klaida=String(e).slice(0,500); }
 try{ if(sid) await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(e){}
-await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER); console.log('ok');
+await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER);
+console.log('ok');
