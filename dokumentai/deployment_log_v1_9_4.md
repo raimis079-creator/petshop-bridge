@@ -9,7 +9,7 @@
 
 ---
 
-### S1591–S1595 (2026-09-02, rytas–diena)
+### S1591–S1596 (2026-09-02, rytas–diena)
 
 > Pridėti po S1590. Tema: Exclusion Hypo konservai → VF sandėlis; radinys — VF importas negyvas nuo 08-22; Sources v2.3 dviejų sandėlių eilutės; radinys — ZB likučių Import #3 buvo tuščias (no-op).
 
@@ -63,6 +63,10 @@ Raimio nurodymas „pakeisk serveryje": hosting cron panelio bridge neturi (shel
 
 Raimio radinys (ekranas 14:30): susidėjimo dėžės prekių rinkiklyje kategorijų sąraše tik skanėstai — konservų šunims/katėms nėra. Kodas: `filtru_reiksmes()` turėjo įrašytą sąrašą `95,96,97,98` (tik skanėstai) — konservų dėžių grupės (`kons_sunims`/`kons_kates`) egzistuoja nuo 08-15, bet jų kategorijos filtre nebuvo (prekes buvo galima rasti tik paieška). Fix: `const RINKIKLIO_KATEGORIJOS = [95,96,73,79,97,98]` (Skanėstai šunims/katėms, **Konservai šunims 73 (132), Konservai katėms 79 (149)**, graužikams, paukščiams); numatytoji kategorija pagal dėžės grupę (`kons_sunims`→73, `kons_kates`→79, `kates`→96, kitos 95); atributų (baltymai/mityba/grūdai) skaičiai dabar iš visų šešių kategorijų. Transient `ps_laukai_filtrai` išvalytas. Deploy per `deploy/petshop-laukai.php.b64` (186 KB — per didelis payload'ui), backup `ps-backups/petshop-laukai-v143-BACKUP-2026-09-02.php`, md5 `88b1fc3c69a474d50ad59f5e068c8dd8`. Patikra `rinkiklis()` per ReflectionMethod visoms 17 dėžėms: 7 opcijos, konservų dėžėms selected=73, katių — 96.
 
+#### S1596 — `petshop-laukai.php` v1.45: meniu „Susidėk…“ nuorodos dinamiškos
+
+Raimio radinys: RINKINIAI → „Susidėk konservų rinkinį katėms“ → 404. Priežastis: penki meniu punktai (34248–34252) buvo **custom URL į konkrečias TEST dėžes**; Raimis dėžę 34948 ištrynė (trash) ir sukūrė naujas — meniu liko į mirusį slug'ą. Kiti trys punktai vedė į **draft** dėžes (34937, 34936, 34933) — anonimui taip pat 404. Fix: filtras `wp_nav_menu_objects` → `meniu_nuorodos()`: punkto pavadinimas → grupė (`kons_sunims/kons_kates/sunys/kates/kramtalai`) → `iejimas($grupe)` (dėžė su `_ps_laukas_iejimas=yes`, kitaip pirma publish) → permalink; grupei be publish dėžės → `/kategorija/rinkiniai/` (ne 404). Meniu DB nekeistas. Patikra: 5/5 nuorodos → 200; konservai šunims → 34944, katėms → **34947 (Išrankioms, įėjimas)**, skanėstai katėms → 34938; skanėstai šunims ir kramtalai → RINKINIAI kategorija, nes **tų grupių publish dėžių nėra** (34935/34937/35101 ir 34933/34934 — draft; Raimio sprendimas publikuoti). md5 `6fb77a24b5d1f7c61ed6e1b4faed2740`.
+
 #### Pamokos
 63. **„0 vėluojančių cron" ≠ importai veikia.** pmxi grąžina HTTP 200 su `{"status":500}` — sargas turi tikrinti `pmxi_history` `time_run`/summary ir cache mtime, ne cron URL kodą. → kandidatas į sargą (`petshop-sargas`): pmxi #2/#3/#5/#7 paskutinis sėkmingas <36 h, `ps_vf_feed_paskutinis.ok`.
 64. `_vf_last_sync` = „bandyta sinchronizuoti", ne „duomenys švieži" — tikrinti šaltinio failo mtime.
@@ -83,13 +87,13 @@ Raimio radinys (ekranas 14:30): susidėjimo dėžės prekių rinkiklyje kategori
 plugins/petshop-xml/includes/class-import-rules-vf.php  v1.1  191637c6d58e661f8e7ed0d352c2556a
 mu-plugins/petshop-vf-feed.php                          v1.0  1ee413b1dd1000dcf77e395a7b270486  (NAUJAS)
 mu-plugins/petshop-import-tempas.php                    v1.2  5461ff5abfaa53a559fcf0f9c3b0b982  (NAUJAS, S1594)
-mu-plugins/petshop-laukai.php                           v1.44 88b1fc3c69a474d50ad59f5e068c8dd8  (S1595)
+mu-plugins/petshop-laukai.php                           v1.45 6fb77a24b5d1f7c61ed6e1b4faed2740  (S1595–S1596)
 analize/s1591_recon*.json · s1591_a.json · s1591_deploy*.json · s1591_verify.json · s1591_finish.json · s1592_recon.json · s1592_apply.json · s1592_dump.json · s1592_deploy.json · s1593_recon.json · s1593_r2..r6.json · s1593_fix.json · s1593_fix2.json · s1593_v.json
 moduliai/petshop-sources-snippet2515.php  v2.3  681bef7ec50a143ffdcf7035dfa0e524
 ps-backups (serveris): class-import-rules-vf-v10-BACKUP-2026-09-02.php · exclusion-hypo-kons-BACKUP-2026-09-02.json · sources-v22-snippet2515-BACKUP-2026-09-02.php
 options: ps_pmxi_vf_backup_20260902 · ps_vf_feed_paskutinis · ps_pmxi3_backup_20260902
 ```
-TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1595**.
+TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1596**.
 
 ---
 
