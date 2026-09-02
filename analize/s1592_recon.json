@@ -1,0 +1,194 @@
+{
+ "v": "dep-084420",
+ "kurimas": 200,
+ "sid": 4453,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1592-R1",
+  "pmxi7": {
+   "processing": "0",
+   "triggered": "0",
+   "queue_chunk_number": "0",
+   "imported": "713",
+   "updated": "713",
+   "skipped": "1678",
+   "count": "2391",
+   "last_activity": "2026-09-02 08:40:34"
+  },
+  "hist7": [
+   {
+    "type": "processing",
+    "time_run": "355",
+    "date": "2026-09-02 08:34:39",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 713 updated 1678 skipped"
+   },
+   {
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-02 08:34:31",
+    "summary": "triggered by cron"
+   },
+   {
+    "type": "processing",
+    "time_run": null,
+    "date": "2026-08-27 08:16:02",
+    "summary": "cron processing"
+   }
+  ],
+  "vf_feed": {
+   "versija": "1.0",
+   "paskutinis": {
+    "laikas": "2026-09-02 11:30:23",
+    "ok": true,
+    "klaida": "",
+    "eilutes": 2391,
+    "baitai": 8510508,
+    "sek": 6.6,
+    "http": 200
+   },
+   "failas": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T08:30:29+00:00"
+   },
+   "cache": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T08:30:29+00:00"
+   },
+   "cron_kitas": "2026-09-02T09:05:00+00:00"
+  },
+  "vf_viso": "1202",
+  "vf_be_eilutes": 41,
+  "vf_be_pagal_men": {
+   "2026-08|draft": 5,
+   "2026-08|publish": 9,
+   "2026-06|publish": 8,
+   "2026-09|publish": 16,
+   "2026-09|draft": 3
+  },
+  "zb_viso": "1091",
+  "zb_be_eilutes": "32",
+  "ps_sources_stat": [
+   {
+    "source": "ambrosia",
+    "n": "15",
+    "mx_created": "2026-08-07 13:36:26",
+    "mx_synced": null
+   },
+   {
+    "source": "av",
+    "n": "1447",
+    "mx_created": "2026-08-28 16:27:00",
+    "mx_synced": null
+   },
+   {
+    "source": "belcor_tofu",
+    "n": "62",
+    "mx_created": "2026-08-07 15:14:31",
+    "mx_synced": null
+   },
+   {
+    "source": "prins",
+    "n": "43",
+    "mx_created": "2026-08-07 13:36:26",
+    "mx_synced": null
+   },
+   {
+    "source": "quattro",
+    "n": "65",
+    "mx_created": "2026-08-07 16:42:06",
+    "mx_synced": null
+   },
+   {
+    "source": "vf",
+    "n": "1167",
+    "mx_created": "2026-08-14 22:41:38",
+    "mx_synced": "2026-08-07 14:59:35"
+   },
+   {
+    "source": "zb",
+    "n": "1074",
+    "mx_created": "2026-08-20 21:17:59",
+    "mx_synced": "2026-08-20 21:17:59"
+   }
+  ],
+  "sn2515": [
+   "55:public static function lentele() {",
+   "60:public static function kurti_lentele() {",
+   "89:public static function laukai($src) {",
+   "101:public static function suskaiciuoti($pid) {",
+   "148:private static function sk($v){ return ($v === '' || $v === null) ? null : round((float)$v, 4); }",
+   "151:private static function val($v){ return ($v === null || $v === '') ? 'NULL' : '%s'; }",
+   "153:private static function num($v){ return ($v === null) ? 'NULL' : '%f'; }",
+   "156:public static function taisyti() {",
+   "208:public static function importas_vyksta() {",
+   "222:public static function sinchronizuoti($pid, $rasyti_kopija = false) {",
+   "281:\"INSERT INTO {$t} (product_id,source,supplier_sku,ean,stock_qty,cost_net,synced_at,",
+   "303:public static function naktinis() {",
+   "321:public static function be_saltinio_sarasas($limit = 200) {",
+   "336:public static function registras($pid) {",
+   "347:public static function gyvi($pid, $source) {",
+   "378:public static function saltiniai($pid) {",
+   "402:public static function yra_registre($pid) {",
+   "411:public static function sandelio_reiksmes() {",
+   "422:public static function uzpildyti_sandeli($pid) {",
+   "447:public static function sandelio_kandidatai() {",
+   "462:public static function pirmas($pid) {",
+   "482:function ps_sources_sync_saugiai( $pid ) {",
+   "497:add_action('woocommerce_update_product', 'ps_sources_sync_saugiai', 20, 1);",
+   "498:add_action('woocommerce_new_product',    'ps_sources_sync_saugiai', 20, 1);",
+   "501:add_action('updated_post_meta', function( $mid, $pid, $key ) {",
+   "504:add_action('added_post_meta', function( $mid, $pid, $key ) {",
+   "509:add_action('ps_sources_naktinis', function () {",
+   "512:add_action('init', function () {",
+   "519:add_action('wp_loaded', function () {",
+   "706:$sql = \"INSERT INTO {$lent}"
+  ],
+  "sync_saugiai": [
+   "function ps_sources_sync_saugiai( $pid ) {",
+   "static $dirba = array();",
+   "$pid = (int) $pid;",
+   "if ( ! $pid || isset($dirba[$pid]) ) return;",
+   "if ( ! class_exists('Petshop_Sources') ) return;",
+   "if ( Petshop_Sources::importas_vyksta() ) return;",
+   "if ( get_post_type($pid) !== 'product' ) return;",
+   "if ( wp_is_post_revision($pid) || wp_is_post_autosave($pid) ) return;",
+   "$dirba[$pid] = 1;",
+   "try { Petshop_Sources::sinchronizuoti($pid, false); }",
+   "catch ( Throwable $e ) { /* registro klaida NEGALI sustabdyti prekės išsaugojimo */ }",
+   "unset($dirba[$pid]);",
+   "}",
+   "}",
+   "",
+   "add_action('woocommerce_update_product', 'ps_sources_sync_saugiai', 20, 1);",
+   "add_action('woocommerce_new_product',    'ps_sources_sync_saugiai', 20, 1);",
+   "",
+   "/* Sandėlio lauko pakeitimas — svarbiausias registro signalas. */",
+   "add_action('updated_post_meta', function( $mid, $pid, $key ) {",
+   "if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid );",
+   "}, 20, 3);",
+   "add_action('added_post_meta', function( $mid, $pid, $key ) {",
+   "if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid );",
+   "}, 20, 3);",
+   "",
+   "/* Naktinis pilnas resync — saugiklis viskam, ką hook'ai praleido. */",
+   "add_action('ps_sources_naktinis', function () {",
+   "if ( class_exists('Petshop_Sources') ) Petshop_Sources::naktinis();",
+   "});",
+   "add_action('init', function () {",
+   "if ( ! wp_next_scheduled('ps_sources_naktinis') ) {",
+   "wp_schedule_event( strtotime('tomorrow 04:20') , 'daily', 'ps_sources_naktinis' );",
+   "}",
+   "}, 20);",
+   "",
+   "/* ---------------- ENDPOINT'AI ---------------- */",
+   "add_action('wp_loaded', function () {",
+   "$veiksmas = isset($_GET['ps_src']) ? sanitize_key($_GET['ps_src']) : '';",
+   "if ($veiksmas === '') return;"
+  ],
+  "seseliai_head": "<?php\n/**\n * Petshop Seseliu Sinchronas v1.0 (ZB šešėlis → AV prekė)\n *\n * KONTEKSTAS (2026-08-20, Monge sujungimas):\n *   Prekė gali gyventi dviem įrašais: AV prekė (publish, klientui) ir ZB\n *   „šešėlis\" (draft + hidden, `_ps_shadow_of` = AV prekės ID). Šešėlis\n *   NETRINAMAS, nes ZB Import #2/#3 prekes atpažįsta pagal ZB kodą `_sku` —\n *   ištrynus jį naktinis importas sukurtų iš naujo. Vietoj to importas toliau\n *   atnaujina ŠEŠĖLĮ, o šis modulis kiekius perkelia į AV prekę.\n *\n * KĄ DARO po kiekvieno ZB importo (#2/#3) ir kas valandą (saugiklis):\n *   - šešėlio `_zb_qty`/`_zb_cost`/`_zb_last_sync` → AV prekės meta\n *   - AV prekės `ps_sources` zb eilutė (stock_qty, cost_net, synced_at)\n *   - Petshop_Fulfillment::recalculate() — WC `_stock` = tiekėjo kiekis\n *     (AV lentynos kiekį rodymui prideda Petshop_AV_Limit, S590)\n *\n * KO NEDARO:\n *   - nekeičia šešėlio būsenos/matomumo (draft+hidden lieka)\n *   - neliečia kainos (`_price`) — ji AV prekės, savininko sprendimas\n *   - nekuria porų — pora fiksuojama tik ranka (`_ps_shadow_of`)\n *\n * Paskutinio paleidimo santrauka: option `ps_seseliai_paskutinis`.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Seseliai {\n\n",
+  "seseliai_vf": 0
+ }
+}
