@@ -1,5 +1,18 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.9.3 (S1602, K2+K3) — PRIĖMIMAS PERKELIA EILUTĘ Į AV; PAŠTOMATO KODAS.
+ *
+ * K2 (auditas 2026-09-02): po partijos priėmimo užsakymo eilutė liko `_ps_source=quattro`
+ * (+`_ps_konsolidacija`) → surinkimo lape jos NEBUVO, `vykdymas()` rodė „MIŠRUS 3 siuntos“,
+ * `_ps_shipments`=3, nors fiziškai išeina 2. Dabar priimti(), kai užsakymui prekių užteko,
+ * konsoliduotoms eilutėms rašo `_ps_source=av`, `_ps_source_reason='parsivežta partija #N'`,
+ * nurašo gautą kiekį iš AV (AV_Stock::decrease — prekė iš karto rezervuota šiam užsakymui,
+ * `_ps_av_reduced`), ir perskaičiuoja `_ps_groups` / `_ps_shipments` / `_ps_order_type`.
+ * `_ps_konsolidacija` lieka kaip istorija (dropship ir SLA jos nebeliečia, nes šaltinis jau av).
+ *
+ * K3: Venipak paštomatui consignee `company_code` turi būti paštomato KODAS (300906055),
+ * ne plugino vidinis ID (3648) — API atsakė „Pickup/Locker not found“. AV_PASTOMATAS papildytas `kodas`.
+ *
  * Petshop AV Tiekimas v1.9.2 (H264) — vizualinis atskyrimas: kortelė su šešėliu, pristatymo
  * ir laiškų blokai ant tonuoto fono, žingsnių numeriai, spalvota tiekėjo juosta (Raimis: „viskas susilieja").
  *
@@ -141,6 +154,8 @@ class Petshop_AV_Tiekimas {
 	const AV_ADRESAS   = 'UAB Avesa, Liucionių g. 46, Liucionys, Nemenčinės sen., Vilniaus r., LT-15166';
 	const AV_PASTOMATAS = array(
 		'id'      => 3648,
+		'kodas'   => '300906055', // K3: Venipak API company_code paštomatui = jo code, ne id
+		'api_vardas' => 'Venipak locker, AIBĖ Venipak paštomatas', // K3: name kaip get_pickup_points
 		'vardas'  => 'Nemenčinės AIBĖ Venipak paštomatas',
 		'adresas' => 'Švenčionių g. 72, Nemenčinė, LT-15168',
 		'riba_kg' => 25,
@@ -954,8 +969,10 @@ class Petshop_AV_Tiekimas {
 		$sh->appendChild( $co );
 		$pst = self::AV_PASTOMATAS;
 		if ( 'pastomatas' === $part->pristatymas ) {
-			$co->appendChild( $d->createElement( 'name', $pst['vardas'] ) );
-			$co->appendChild( $d->createElement( 'company_code', (string) $pst['id'] ) );
+			// K3: lygiai kaip Venipak pluginas (admin-dispatch.php): company_code = paštomato `code`,
+			// PIRMAS elementas, name = API `name` („Venipak locker, …“), ne display_name.
+			$co->appendChild( $d->createElement( 'company_code', (string) ( $pst['kodas'] ?? $pst['id'] ) ) );
+			$co->appendChild( $d->createElement( 'name', $pst['api_vardas'] ?? $pst['vardas'] ) );
 			$co->appendChild( $d->createElement( 'country', 'LT' ) );
 			$co->appendChild( $d->createElement( 'city', 'Nemenčinė' ) );
 			$co->appendChild( $d->createElement( 'address', 'Švenčionių g. 72' ) );
@@ -1286,11 +1303,56 @@ class Petshop_AV_Tiekimas {
 				continue;
 			}
 			$oo->delete_meta_data( self::META_LAUK );
-			$oo->add_order_note( sprintf( 'Tiekimas: visos prekės gautos (partija #%d). Užsakymas paruoštas surinkimui iš AV.', $pid ), false, true );
+			$perkelta = self::eilutes_i_av( $oo, $pid ); // K2
+			$oo->add_order_note( sprintf( 'Tiekimas: visos prekės gautos (partija #%d). Užsakymas paruoštas surinkimui iš AV.%s', $pid,
+				$perkelta ? ' Į AV perkeltos eilutės: ' . implode( ', ', $perkelta ) . '.' : '' ), false, true );
 			$oo->save();
 		}
 
 		return 'priimta';
+	}
+
+	/**
+	 * K2 (S1602): kai VISOS užsakymo tiekimo eilutės gautos — konsoliduotos eilutės tampa AV.
+	 * Grąžina perkeltų eilučių pavadinimus. Užsakymo NEsaugo — kviečiantysis.
+	 */
+	public static function eilutes_i_av( $oo, $pid ) {
+		$perkelta = array(); $grupes = array();
+		foreach ( $oo->get_items() as $iid => $it ) {
+			$src = (string) $it->get_meta( '_ps_source' );
+			if ( $src && 'av' !== $src && $it->get_meta( '_ps_konsolidacija' ) ) {
+				$qty = max( 1, (int) $it->get_quantity() );
+				$it->update_meta_data( '_ps_source', 'av' );
+				$it->update_meta_data( '_ps_carrier', 'any' );
+				$it->update_meta_data( '_ps_source_reason', sprintf( 'parsivežta iš %s, partija #%d', mb_strtoupper( $src ), (int) $pid ) );
+				$it->update_meta_data( '_ps_source_at', current_time( 'mysql' ) );
+				// Gautas kiekis ką tik įrašytas į AV (increase) — iš karto rezervuojam šiam užsakymui.
+				if ( ! $it->get_meta( '_ps_av_reduced' ) && class_exists( 'Petshop_AV_Stock' ) && method_exists( 'Petshop_AV_Stock', 'decrease' ) ) {
+					Petshop_AV_Stock::decrease( (int) $it->get_product_id(), $qty, sprintf( 'Tiekimas: rezervuota užsakymui #%s (partija #%d)', $oo->get_order_number(), (int) $pid ) );
+					$it->update_meta_data( '_ps_av_reduced', current_time( 'mysql' ) );
+				}
+				$it->save();
+				$perkelta[] = $it->get_name();
+			}
+		}
+		if ( ! $perkelta ) { return array(); }
+		// Perskaičiuojam grupes taip pat, kaip Petshop_AV_Order::fiksuoti().
+		foreach ( $oo->get_items() as $it ) {
+			$s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { continue; }
+			$c = (string) $it->get_meta( '_ps_carrier' ); if ( ! $c ) { $c = 'av' === $s ? 'any' : 'venipak'; }
+			if ( ! isset( $grupes[ $s ] ) ) { $grupes[ $s ] = array( 'carrier' => $c, 'eilutes' => 0, 'vienetai' => 0 ); }
+			$grupes[ $s ]['eilutes']++;
+			$grupes[ $s ]['vienetai'] += max( 1, (int) $it->get_quantity() );
+		}
+		$tipas = ( class_exists( 'Petshop_AV_Source' ) && method_exists( 'Petshop_AV_Source', 'order_type' ) )
+			? Petshop_AV_Source::order_type( $grupes )
+			: ( count( $grupes ) > 1 ? 'MIXED' : ( isset( $grupes['av'] ) ? 'MAIN' : 'DS' ) );
+		$oo->update_meta_data( '_ps_order_type', $tipas );
+		$oo->update_meta_data( '_ps_groups', wp_json_encode( $grupes ) );
+		$oo->update_meta_data( '_ps_shipments', count( $grupes ) );
+		// Mišraus planas (`_ps_misrus_sprendimas`) paliekamas kaip įrašytas — kons_laukia() ir
+		// eile() perkeltą eilutę praleidžia, nes jos šaltinis jau av.
+		return $perkelta;
 	}
 
 	/* ==================== LIKUČIŲ ATNAUJINIMAS ====================
