@@ -222,7 +222,7 @@ function veiksmas(nr,i,k){
   if(k==='laukiam') return;
   if(k==='surinkta'||k==='lipdukas'&&l.kel!=='tk'||k==='issiusta'&&l.kel!=='tk'){ o.eil.forEach(x=>{ if(avesoje(x)&&!x.zing[k]) x.zing[k]=1; }); }
   else { o.eil.forEach(x=>{ const kx=kitas(x,o); if(kx&&kx.k===k&&x.kel===l.kel&&x.tiek===l.tiek) x.zing[k]=1; }); }
-  if(o.eil.every(x=>!kitas(x,o))) o.issiusta=true;
+  if(o.eil.every(x=>x.kel&&!kitas(x,o))) o.issiusta=true;
   o.zur.push(hh()+' '+ZODIS[k].split(' — ')[0]+' · Testuotojas'); laikas+=3;
   pranesti(ZODIS[k]); piesti(); if($('#skydas').classList.contains('on')) atidaryti(nr,true);
 }
