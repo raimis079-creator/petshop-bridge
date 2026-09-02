@@ -1,0 +1,53 @@
+{
+ "v": "dep-113729",
+ "kurimas": 200,
+ "sid": 4479,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1595-R3",
+  "hits": [
+   "petshop-av-tiekimas.php:1289:$oo->add_order_note( sprintf( 'Tiekimas: visos prekės gautos (partija #%d). Užsakymas paruoštas surinkimui iš AV.', $pid ), false, true );",
+   "petshop-gavimas.php:577:/* VISI kiti `pa_*` atributai — „be grudu\", „monoproteinas\", amzius ir t.t.",
+   "petshop-gavimas.php:930:'pa_monoprotein'      => 'Monoprotein',",
+   "petshop-gavimas.php:931:'pa_speciali_mityba'  => 'Speciali mityba',",
+   "petshop-katalogas.php:599:*      amžius, grūdai, monoprotein, spec. mityba, veislės dydis) kortelėje",
+   "petshop-katalogas.php:1895:'pa_monoprotein'      => 'Monoprotein',",
+   "petshop-katalogas.php:1896:'pa_speciali_mityba'  => 'Speciali mityba',",
+   "petshop-laukai.php:1039:(800 g monoproteino nera ir nebus — tada vedam i pirma to dydzio lauka). */",
+   "petshop-laukai.php:1052:/* Laukai rodomi TIK to paties dydzio — kitaip 400 g monoproteinas kabetu",
+   "petshop-laukai.php:3157:* kategorija, baltymu saltinis, speciali mityba, monoproteinas, grudai.",
+   "petshop-laukai.php:3172:'mono' => 'pa_monoprotein', 'grudai' => 'pa_be_grudu' ) as $raktas => $tax ) {",
+   "petshop-laukai.php:3321:echo '<option value=\"0\">— visos prekės —</option></select></span>';",
+   "petshop-laukai.php:3325:echo '<span class=\"pslka-f\"><label>Speciali mityba</label><select id=\"r-mityba\"><option value=\"\">— bet kokia —</option>';",
+   "petshop-laukai.php:3331:echo '<span class=\"pslka-f\"><label><input type=\"checkbox\" id=\"r-mono\"> Tik monoproteinas</label></span>';",
+   "petshop-laukai.php:3348:echo '<span class=\"pslka-f\"><label><input type=\"checkbox\" id=\"r-turim\" checked> Tik tai, ką turime</label></span>';",
+   "petshop-m8-food.php:474:'monoprotein'     => self::mono_flag( $p->get_id() ),",
+   "petshop-m8-food.php:506:/** true=monoproteininis, false=ne, null=nezymeta. */",
+   "petshop-m8-food.php:508:$t = self::term_names( $pid, 'pa_monoprotein' );",
+   "petshop-parseris.php:48:*   SPRENDIMAS: grudai, baltymo saltinis ir monoprotein ieskomi TIK sudeties",
+   "petshop-parseris.php:293:(2026-06-15): monoprotein = vienas baltymas IR be glitimo.",
+   "petshop-parseris.php:296:if ( ! $laukai || in_array( 'pa_monoprotein', $laukai, true ) ) {",
+   "petshop-parseris.php:297:$out['pa_monoprotein'] = null;",
+   "petshop-parseris.php:298:$mz = self::rasti( $visas, array( 'monoprotein', 'monoproteico', 'mono protein',",
+   "petshop-parseris.php:299:'single protein', 'monoproteinowa', 'vienas baltymo šaltinis' ) );",
+   "petshop-parseris.php:311:$out['pa_monoprotein'] = $glitimas === null",
+   "petshop-rec-variklis.php:28:*  (sterilizuotiems, kai is_sterilised=yes), mono +1 (pa_monoprotein, kai",
+   "petshop-rec-variklis.php:187:$mono = wp_get_object_terms( $pid, 'pa_monoprotein', array( 'fields' => 'slugs' ) );",
+   "petshop-rinkiniu-ataskaita.php:420:$spalvos = array( 'be_vistienos' => '#2271b1', 'monoproteinas' => '#72aee6', 'isrankioms' => '#8c5e9e', 'visi' => '#c3c4c7' );",
+   "petshop-statistika.php:212:'monoproteinas' => array( 'monoprotein' ),",
+   "petshop-statistika.php:228:'monoproteinas' => 'Monoproteinas',"
+  ],
+  "snips": [
+   "329 Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+   "547 Petshop Susidėjimo Rinkinio Vitrina v19",
+   "550 Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+   "587 Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+   "594 Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+   "688 Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)",
+   "4479 TEMP PS dep-113729"
+  ]
+ }
+}
