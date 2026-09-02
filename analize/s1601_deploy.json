@@ -1,0 +1,61 @@
+{
+ "v": "dep-140204",
+ "kurimas": 200,
+ "sid": 4509,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1601-D1",
+  "md5": "b90c520641336b9db53e8313a8bcd8eb",
+  "tokens": 33768,
+  "backup": "ok",
+  "write": 213053,
+  "disk_md5": "b90c520641336b9db53e8313a8bcd8eb"
+ },
+ "V": {
+  "VERSIJA": "S1601-D1",
+  "versija": "1.44",
+  "tualetas_15928": [
+   "venipak_courier:3"
+  ],
+  "kraikas_16132": [
+   "venipak_pickup:1",
+   "lpexpress_terminal:2",
+   "venipak_courier:3"
+  ],
+  "pav": {
+   "35396": [
+    false,
+    "",
+    [
+     16979,
+     16996,
+     16976,
+     19228
+    ]
+   ],
+   "35400": [
+    true,
+    "yes",
+    [
+     15928,
+     16132,
+     16178
+    ]
+   ],
+   "35402": [
+    false,
+    "",
+    [
+     19140,
+     18508
+    ]
+   ]
+  },
+  "rink_35400": [
+   "venipak_courier:3"
+  ]
+ }
+}
