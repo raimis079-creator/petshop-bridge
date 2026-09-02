@@ -135,12 +135,12 @@ function eile(o){
   if(!o.rusiuota || o.eil.some(l=>!l.kel)) return 'rusiuoti';
   const kit=o.eil.map(l=>kitas(l,o)).filter(Boolean);
   if(!kit.length) return 'issiusti';
-  if(kit.some(x=>x.k==='uzsakyta')) return 'laukiam';
-  if(kit.some(x=>x.k==='surinkta')) return 'surinkti';
-  if(kit.some(x=>x.k==='laiskas'||(x.k==='lipdukas'&&o.eil.some(l=>l.kel==='tk'&&kitas(l,o)&&kitas(l,o).k==='lipdukas')))) return 'laiskai';
-  if(kit.some(x=>x.k==='laukiam'||x.k==='gauta')) return 'laukiam';
-  if(kit.every(x=>x.k==='issiusta'||x.k==='lipdukas')) return 'paruosta';
-  return 'surinkti';
+  const pv=pirmasVeiksmas(o); if(!pv) return 'issiusti';
+  if(pv.k==='uzsakyta'||pv.pasyvus) return 'laukiam';
+  if(pv.k==='surinkta') return 'surinkti';
+  if(pv.k==='laiskas'||(pv.k==='lipdukas'&&o.eil[pv.i].kel==='tk')) return 'laiskai';
+  if(pv.k==='lipdukas') return 'surinkti';
+  return 'paruosta';
 }
 const EILES=[['rusiuoti','Rūšiuoti','r'],['laukiam','Laukiam iš tiekėjų','g'],['surinkti','Surinkti Avesoje','z'],['laiskai','Laiškai tiekėjams','m'],['paruosta','Paruošta siųsti','z'],['issiusti','Išsiųsti','']];
 const PAAISK={rusiuoti:'Kiekvienas naujas užsakymas pirma čia. Peržiūri, iš kur eina kiekviena prekė (sistema pasiūlo), pataisai jei reikia, spaudi „Surūšiuota“. Tik tada užsakymas keliauja į darbą.',laukiam:'Kažkas dar turi atvažiuoti: tiekėjui neužsakyta arba užsakyta ir laukiam. Avesos siunta nerenkama, kol visos jos prekės neatvyko.',surinkti:'Visos Avesos siuntos prekės jau vietoje — galima rinkti. Surinkti → Lipdukas → Išsiųsta. Prekės, kurias tiekėjas siunčia pats, čia nerodomos.',laiskai:'Tiekėjas siunčia tiesiai klientui. Lipdukas → laiškas tiekėjui (visi jo užsakymai viename laiške).',paruosta:'Supakuota su lipduku arba perduota tiekėjui. „Išsiųsta“ uždaro ir išsiunčia klientui sekimo numerius.',issiusti:'Šiandien įvykdyti.'};
@@ -157,7 +157,7 @@ function piesti(){
   if(!s.length){ $('#sarasas').innerHTML='<div class="tuscia">Čia tuščia — nieko daryti nereikia.</div>'; return; }
   $('#sarasas').innerHTML='<table><thead><tr><th>Užsakymas</th><th>Klientas</th><th>Prekės ir keliai</th><th>Pristatymas</th><th class="d">Suma</th><th class="d">Kitas žingsnis</th></tr></thead><tbody>'+s.map(o=>{
     const kit=pirmasVeiksmas(o);
-    return '<tr class="eil'+(o.naujas?' naujas':'')+'" data-nr="'+o.nr+'"><td><span class="nr">#'+o.nr+'</span><br><span class="pilkas maz">'+(o.laikas||'08:02')+'</span></td><td>'+o.kl+'</td><td>'+o.eil.map(l=>'<div>'+kelZyme(l)+' '+l.q+'× '+l.pav++bukle(l)+'</div>').join('')+'</td><td>'+o.pr+'</td><td class="d">'+o.suma.toFixed(2).replace('.',',')+' €</td><td class="d">'+(kit?(kit.pasyvus?'<span class="kel ts"><i></i>'+kit.p+'</span>':'<button class="v p" data-v="'+kit.k+'" data-nr="'+o.nr+'" data-i="'+kit.i+'">'+kit.p+'</button>'):'<span class="pilkas">—</span>')+'</td></tr>'; }).join('')+'</tbody></table>';
+    return '<tr class="eil'+(o.naujas?' naujas':'')+'" data-nr="'+o.nr+'"><td><span class="nr">#'+o.nr+'</span><br><span class="pilkas maz">'+(o.laikas||'08:02')+'</span></td><td>'+o.kl+'</td><td>'+o.eil.map(l=>'<div>'+kelZyme(l)+' '+l.q+'× '+l.pav+bukle(l)+'</div>').join('')+'</td><td>'+o.pr+'</td><td class="d">'+o.suma.toFixed(2).replace('.',',')+' €</td><td class="d">'+(kit?(kit.pasyvus?'<span class="kel ts"><i></i>'+kit.p+'</span>':'<button class="v p" data-v="'+kit.k+'" data-nr="'+o.nr+'" data-i="'+kit.i+'">'+kit.p+'</button>'):'<span class="pilkas">—</span>')+'</td></tr>'; }).join('')+'</tbody></table>';
   U.forEach(o=>o.naujas=false);
 }
 function kelZyme(l){ if(!l.kel) return '<span class="kel klaus"><i></i>kur?</span>'; return '<span class="kel '+l.kel+'"><i></i>'+kelPav(l,l.kel)+'</span>'; }
@@ -166,10 +166,10 @@ function pirmasVeiksmas(o){
   if(o.issiusta) return null;
   const i=o.eil.findIndex(l=>!l.kel); if(i>=0) return {k:'kelias',p:'Pasirinkti kelią',i};
   if(!o.rusiuota) return {k:'rusiuota',p:'Surūšiuota',i:0};
-  const tvarka=['uzsakyta','gauta','surinkta','lipdukas','laiskas','issiusta'];
-  for(const t of tvarka){ const j=o.eil.findIndex(l=>{const k=kitas(l,o);return k&&k.k===t;}); if(j>=0){ const k=kitas(o.eil[j],o); return {k:k.k,p:k.p,i:j}; } }
-  const j=o.eil.findIndex(l=>{const k=kitas(l,o);return k&&k.k==='laukiam';}); if(j>=0) return {k:'laukiam',p:kitas(o.eil[j],o).p,i:j,pasyvus:true};
-  return null;
+  // aktyvūs žingsniai: pirma tiekėjo → klientui lipdukas/laiškas (jų laukti nereikia), tada Avesos siunta; „gauta“ ir „laukiam“ — pasyvūs (atsiranda iš Gavimo/Tiekimo)
+  const rasti=(t,kel)=>{ const j=o.eil.findIndex(l=>{const k=kitas(l,o);return k&&k.k===t&&(!kel||(kel==='av'?l.kel!=='tk':l.kel===kel));}); return j>=0?{k:kitas(o.eil[j],o).k,p:kitas(o.eil[j],o).p,i:j}:null; };
+  const laukiam=()=>{ const j=o.eil.findIndex(l=>{const k=kitas(l,o);return k&&(k.k==='laukiam'||k.k==='gauta');}); if(j<0) return null; const k=kitas(o.eil[j],o); return {k:'laukiam',p:k.k==='gauta'?'Laukiam '+TIEK[o.eil[j].tiek]:k.p,i:j,pasyvus:true}; };
+  return rasti('uzsakyta')||rasti('lipdukas','tk')||rasti('laiskas','tk')||rasti('surinkta')||rasti('lipdukas','av')||rasti('issiusta','av')||laukiam()||rasti('issiusta','tk')||null;
 }
 /* --- veiksmai --- */
 const ZODIS={rusiuota:'Surūšiuota — užsakymas darbe',surinkta:'Surinkta — surinkimo lapas atspausdintas',lipdukas:'Lipdukas — siunta registruota Venipak, lipdukas spausdinamas',laiskas:'Laiškas tiekėjui išsiųstas su lipduku ir manifestu',uzsakyta:'Užsakyta iš tiekėjo — laiškas išsiųstas, laukiam',gauta:'Gauta — prekė sandėlyje, pereina į „Surinkti“',issiusta:'Išsiųsta — klientui išsiųsti sekimo numeriai'};
@@ -197,7 +197,7 @@ function atidaryti(nr,tyliai){
   $('#s-eil').innerHTML=o.eil.map((l,i)=>{ const g=galimi(l); const z=zingsniai(l); const k=kitas(l,o);
     return '<div class="eilute"><div class="virsus"><div class="k">'+l.q+'×</div><div class="p">'+l.pav+' <span class="pilkas maz">'+l.sku+'</span></div></div>'
     +'<div class="keliai">'+['sandelis','tk','ts'].map(kel=>'<button data-kel="'+kel+'" data-nr="'+o.nr+'" data-i="'+i+'" class="'+kel+(l.kel===kel?' on':'')+'"'+(g[kel]&&!o.issiusta?'':' disabled')+'><i style="width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block"></i>'+kelPav(l,kel)+'</button>').join('')+'</div>'
-    +'<div class="kodel">'+kodel(l)+'</div>'
+    +'<div class="kodel">'+kodel(l)+(l.kel==='ts'&&l.zing.uzsakyta&&!l.zing.gauta&&!o.issiusta?' <button class="v t" data-v="gauta" data-nr="'+o.nr+'" data-i="'+i+'">Gauta į Avesą (iš Tiekimo)</button>':'')+'</div>'
     +(z.length?'<div class="zingsneliai" style="margin-top:6px">'+z.map(([kk,p])=>'<span class="'+(l.zing[kk]?'ok':(k&&k.k===kk?'dabar':''))+'">'+(l.zing[kk]?'✓ ':'')+p+'</span>').join('')+'</div>':'')+'</div>'; }).join('');
   $('#s-zur').innerHTML=o.zur.slice().reverse().map(z=>'<div>'+z+'</div>').join('');
   const kit=pirmasVeiksmas(o);
