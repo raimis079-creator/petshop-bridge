@@ -32,7 +32,7 @@ class Petshop_Laukai {
 
 	/** v1.44: rinkiklio kategoriju filtro sarasas (product_cat term_id, tvarka = rodymo tvarka). */
 	const RINKIKLIO_KATEGORIJOS = array( 95, 96, 73, 79, 97, 98 );
-	const VERSIJA = '1.44';   /* v1.44 (S1595): rinkiklio kategoriju sarase + Konservai sunims (73) ir Konservai katems (79); numatytoji pagal deze grupe */
+	const VERSIJA = '1.45';   /* v1.44 (S1595): rinkiklio kategorijos + konservai. v1.45 (S1596): meniu „Susidek…“ nuorodos dinamiskai -> iejimo deze pagal grupe (buvo irasyti URL i TEST dezes -> 404 po trynimo) */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -967,6 +967,36 @@ class Petshop_Laukai {
 	 * imam pirma publish deze grupeje, kad banneris niekada neliktu tuscias.
 	 * Grazina 0, jei grupeje nera nei vienos publikuotos dezes.
 	 */
+	/**
+	 * v1.45: „RINKINIAI -> Susidek savo rinkini“ meniu punktai. Buvo irasyti URL
+	 * i konkrecias TEST dezes; savininkas TEST dezes trina/kuria naujas, ir
+	 * meniu tampa 404 (S1596: „konservu rinkini katems“ -> istrinta 34948).
+	 * Dabar nuoroda skaiciuojama is punkto pavadinimo -> grupe -> iejimas().
+	 * Jei grupeje publish dezes nera — vedam i RINKINIU kategorija, ne i 404.
+	 */
+	public static function meniu_nuorodos( $items ) {
+		$zem = array(
+			'/konserv\w*.*(šun|sun)/iu'  => 'kons_sunims',
+			'/konserv\w*.*kat/iu'         => 'kons_kates',
+			'/kramtal/iu'                  => 'kramtalai',
+			'/skan\w*.*(šun|sun)/iu'      => 'sunys',
+			'/skan\w*.*kat/iu'            => 'kates',
+		);
+		$kesas = array();
+		foreach ( $items as $it ) {
+			if ( $it->type !== 'custom' || ! preg_match( '/susid[ėe]k/iu', (string) $it->title ) ) { continue; }
+			if ( strpos( (string) $it->url, '/product/' ) === false ) { continue; }
+			$grupe = '';
+			foreach ( $zem as $re => $g ) { if ( preg_match( $re, (string) $it->title ) ) { $grupe = $g; break; } }
+			if ( $grupe === '' ) { continue; }
+			if ( ! isset( $kesas[ $grupe ] ) ) { $kesas[ $grupe ] = self::iejimas( $grupe ); }
+			$id = $kesas[ $grupe ];
+			$it->url = $id ? get_permalink( $id ) : get_term_link( 679, 'product_cat' );
+			if ( is_wp_error( $it->url ) ) { $it->url = home_url( '/kategorija/rinkiniai/' ); }
+		}
+		return $items;
+	}
+
 	public static function iejimas( $grupe ) {
 		$q = new WP_Query( array(
 			'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 40,
@@ -3598,4 +3628,5 @@ class Petshop_Laukai {
 	}
 }
 
+add_filter( 'wp_nav_menu_objects', array( 'Petshop_Laukai', 'meniu_nuorodos' ), 20 );  /* v1.45 */
 Petshop_Laukai::init();
