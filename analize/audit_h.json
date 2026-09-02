@@ -1,0 +1,138 @@
+{
+ "v": "dep-145721",
+ "kurimas": 200,
+ "sid": 4520,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "H": {
+  "H0_klaida": "Pickup/Locker not found",
+  "H0_tk_txt": "Tiekimas← Petshop užsakymaiKaupiamaUžsakyta · laukiamLaukia prekių (1)Gautos partijos Quattro / Kauno grūdai partija #10 · atidaryta 09-02 17:46 užsakyti iki 09:00 PrekėSKUKiekisKam QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, 2.011761 #35421 trinti Pridėti prekę: Pridėti Kaip prekės atkeliaus į AV Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža pats Bendras svoris kg Dėžių / lipdukų Gavėjas: Nemenčinės AIBĖ Venipak paštomatas · Švenčionių g. 72, Nemenčinė, LT-15168 · ID 3648. Kam siųsti laišką užsakant: Siųsti laišką tiekėjui Siųsti man (terra@petshop.lt) Pasirinkimas įsimenamas. Nuėmus abi — laiškas neišeis niekam. Išsaugoti kiekius Užsakyti iš tiekėjo → Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. P",
+  "H1_uzsakyti_kurjeris": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "uzsakyta"
+   },
+   "txt": ""
+  },
+  "H1_klaida": "Pickup/Locker not found",
+  "H1_partija": {
+   "id": "10",
+   "busena": "uzsakyta",
+   "uzsakyta": "2026-09-02 17:58:35",
+   "pristatymas": "kurjeris",
+   "venipak_pack": "V07267E1000043",
+   "venipak_manifest": "07267260902004"
+  },
+  "H2_tk_txt": "Tiekimas← Petshop užsakymaiKaupiamaUžsakyta · laukiamLaukia prekių (1)Gautos partijos Quattro / Kauno grūdai partija #10 · užsakyta 09-02 17:58 siunta V07267E1000043 Lipdukas PDF Sąrašas suvedimui į tiekėjo sistemą (SKU · kiekis) 2.011761 1 QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, Kopijuoti sąrašą Suvesk faktinius kiekius. Numatyta tai, kas užsakyta — kur sutampa, nieko keisti nereikia. PrekėUžsakytaGautaGaliojimasKam QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, 2.011761 1 + galiojimas #35421 Prekės gautos — priimti → Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį.",
+  "H2_gauta_ids": [
+   "17"
+  ],
+  "H2_priimti": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "gauta"
+   },
+   "txt": ""
+  },
+  "H2_partija": {
+   "id": "10",
+   "busena": "gauta",
+   "gauta": "2026-09-02 17:58:37"
+  },
+  "H2_35421": {
+   "st": "processing",
+   "eile": "nauji",
+   "kl": "",
+   "siunta": [
+    "",
+    0
+   ],
+   "pak": 1,
+   "ds_sent": "",
+   "siuntos": "",
+   "vpd": "",
+   "notes": [
+    "Tiekimas: visos prekės gautos (partija #10). Užsakymas paruoštas surinkimui iš AV.",
+    "Tiekimas: prekės užsakytos iš Quattro / Kauno grūdai (partija #10). Kelias į AV: Venipak kurjeris į AV. Laukiam.",
+    "Tiekimas: „QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,“ (1 vnt) įtraukta į Quattro",
+    "Mišraus užsakymo PLANAS: QUA — į AV · PRI — tiesiai. Dar neįvykdyta — laukia paleidimo. Vartotojas: Testuotojas.",
+    "Email \"Užsakymas vykdomas\" sent."
+   ]
+  },
+  "H2_quattro": {
+   "_stock": "7",
+   "own": "1",
+   "resolve": {
+    "source": "av",
+    "carrier": "any",
+    "courier_only": false,
+    "av_qty": 1,
+    "av_uztenka": true,
+    "tiekejas": "quattro",
+    "reason": "AV turi 1, reikia 1"
+   }
+  },
+  "H2_items": [
+   [
+    19708,
+    "av",
+    "grynai AV prekė (be tiekėjo)"
+   ],
+   [
+    16727,
+    "quattro",
+    "AV šios prekės neturi"
+   ],
+   [
+    16889,
+    "prins",
+    "AV šios prekės neturi"
+   ]
+  ],
+  "H3_row_35421": "&quot;,&quot;pav&quot;:&quot;pavojus&quot;,&quot;d&quot;:{&quot;antraste&quot;:&quot;U\\u017esakymas #35421 \\u00b7 54,03&nbsp;&euro;&quot;,&quot;tekstas&quot;:&quot;At\\u0161aukti \\u0161\\u012f APMOK\\u0116T\\u0104 u\\u017esakym\\u0105? Prek\\u0117s gr\\u012f\\u0161 \\u012f likut\\u012f. Pinigai NEGR\\u0104\\u017dINAMI automati\\u0161kai \\u2014 gr\\u0105\\u017einim\\u0105 ir kreditin\\u0119 tvarkysi atskirai.&quot;,&quot;ok&quot;:&quot;At\\u0161aukti u\\u017esakym\\u0105&quot;,&quot;opt&quot;:{&quot;vardas&quot;:&quot;su_laisku&quot;,&quot;tekstas&quot;:&quot;Prane\\u0161ti klientui lai\\u0161ku&quot;,&quot;def&quot;",
+  "mail": [
+   [
+    "17:53:22",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35430 — 2026-09-02",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "17:53:22",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35430 — apmokėjimas gautas",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "17:56:20",
+    "terra@petshop.lt",
+    "Jūsų užsakymo Nr. 35427 siuntų sekimo numeriai",
+    1,
+    [
+     ":?"
+    ],
+    "web"
+   ],
+   [
+    "17:58:35",
+    "terra@petshop.lt",
+    "[PERSIŲSTI Quattro / Kauno grūdai] UAB Avesa · prekių užsakymas 2026-09-02",
+    1,
+    [
+     "lipdukas-V07267E1000043.pdf:102249"
+    ],
+    "web"
+   ]
+  ]
+ }
+}
