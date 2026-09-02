@@ -225,7 +225,7 @@ function veiksmas(nr,i,k){
   if(k==='surinkta'){ rodytiLapa(o); }
   if(k==='surinkta'||k==='lipdukas'&&l.kel!=='tk'||k==='issiusta'&&l.kel!=='tk'){ o.eil.forEach(x=>{ if(avesoje(x)&&!x.zing[k]) x.zing[k]=1; }); }
   else { o.eil.forEach(x=>{ const kx=kitas(x,o); if(kx&&kx.k===k&&x.kel===l.kel&&x.tiek===l.tiek) x.zing[k]=1; }); }
-  if(o.eil.every(x=>!kitas(x,o))) o.issiusta=true;
+  if(o.eil.every(x=>x.kel&&!kitas(x,o))) o.issiusta=true;
   o.zur.push(hh()+' '+ZODIS[k].split(' — ')[0]+' · Testuotojas'); laikas+=3;
   pranesti(ZODIS[k]); piesti(); if($('#skydas').classList.contains('on')) atidaryti(nr,true);
 }
@@ -302,7 +302,7 @@ document.addEventListener('click',e=>{ const b=e.target.closest('[data-ek]'); if
 let n=35440; const banga=[[ 'Rūta K.','Venipak paštomatas',[e(2,'Josera Kids, 900 g','JOS-K9','vf',5)]],['Tomas P.','LP Express',[e(1,'Royal Canin Indoor 27, 2 kg','RC-I2',null,7),e(1,'Šukos katėms','SK-1','zb',0)]],['Lina M.','Venipak kurjeris',[e(1,'Monge Puppy, 12 kg','MG-P12','vf',0)]]];
 $('#ateina').onclick=()=>{ const b=banga[(n-35440)%banga.length]; const o=uz(n++,b[0],b[1],24.9,b[2].map(x=>({...x,zing:{}}))); o.eil.forEach(l=>l.kel=siulymas(l)); o.rusiuota=false; laikas+=7; o.laikas=hh(); o.naujas=true; o.zur=[hh()+' Apmokėta · kelias pasiūlytas']; U.unshift(o); dabar=eile(o); piesti(); pranesti('Naujas užsakymas #'+o.nr+' — iš karto eilėje „'+EILES.find(x=>x[0]===dabar)[1]+'“'); };
 document.getElementById('rik').onchange=piesti;
-$('#venipak').onclick=()=>{ let n=0, blogi=0; U.forEach(o=>{ if(o.issiusta) return; o.eil.forEach((l,i)=>{ if(l.zing.lipdukas&&!l.zing.issiusta&&(l.kel!=='tk'||l.zing.laiskas)&&!o.klaus){ if(o.nr===35090&&l.kel==='tk'&&l.tiek==='amb'){ o.klaus='Venipak: siunta V…040 „grįžta siuntėjui — gavėjas nerastas“. Susisiek su klientu: +370 600 00000.'; blogi++; return; } l.zing.issiusta=1; n++; o.zur.push(hh()+' auto: Venipak „Picked up“ → '+(l.kel==='tk'?TIEK[l.tiek]+' išsiuntė':'Išsiųsta')+' · klientui sekimo laiškas'); } }); if(o.eil.every(x=>!kitas(x,o))) o.issiusta=true; }); laikas+=30; pranesti('Venipak sekimas: '+n+' siunt. paimtos → pažymėta pačios, klientams sekimo laiškai'+(blogi?' · '+blogi+' siunta grįžta → Klausimai':'')); piesti(); };
+$('#venipak').onclick=()=>{ let n=0, blogi=0; U.forEach(o=>{ if(o.issiusta) return; o.eil.forEach((l,i)=>{ if(l.zing.lipdukas&&!l.zing.issiusta&&(l.kel!=='tk'||l.zing.laiskas)&&!o.klaus){ if(o.nr===35090&&l.kel==='tk'&&l.tiek==='amb'){ o.klaus='Venipak: siunta V…040 „grįžta siuntėjui — gavėjas nerastas“. Susisiek su klientu: +370 600 00000.'; blogi++; return; } l.zing.issiusta=1; n++; o.zur.push(hh()+' auto: Venipak „Picked up“ → '+(l.kel==='tk'?TIEK[l.tiek]+' išsiuntė':'Išsiųsta')+' · klientui sekimo laiškas'); } }); if(o.eil.every(x=>x.kel&&!kitas(x,o))) o.issiusta=true; }); laikas+=30; pranesti('Venipak sekimas: '+n+' siunt. paimtos → pažymėta pačios, klientams sekimo laiškai'+(blogi?' · '+blogi+' siunta grįžta → Klausimai':'')); piesti(); };
 $('#veluoja').onclick=()=>{ let n=0; U.forEach(o=>{ if(o.apmoketa&&!o.issiusta&&!o.klaus&&o.rusiuota&&!o.velavo){ o.velavo=true; o.klaus='Vėluoja klientui: apmokėta prieš 3 d.d., dar neišsiųsta. Klientui automatiškai išsiųstas laiškas „atsiprašome, siunta vėluoja“ '+hh()+'. Pažiūrėk, kur užstrigo.'; n++; o.zur.push(hh()+' auto: vėlavimo laiškas klientui · Klausimas darbuotojui'); } }); pranesti('Vėlavimo sargas: '+n+' užs. — klientams laiškai, darbuotojui Klausimai'); piesti(); };
 $('#atstatyti').onclick=()=>{pradzia();dabar='rusiuoti';piesti();};
 pradzia(); piesti();
