@@ -1,0 +1,53 @@
+{
+ "v": "dep-170633",
+ "kurimas": 200,
+ "sid": 4526,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "petshop-desk.php": {
+   "cur_md5": "b606c244",
+   "guard": true,
+   "new_len": 185134,
+   "lint": "ok 36535",
+   "header_v": "3.48"
+  },
+  "petshop-av-tiekimas.php": {
+   "cur_md5": "08a79af0",
+   "guard": true,
+   "new_len": 75202,
+   "lint": "ok 15635",
+   "header_v": "1.9.3"
+  }
+ },
+ "A": {
+  "petshop-desk.php": {
+   "cur_md5": "b606c244",
+   "guard": true,
+   "new_len": 185134,
+   "lint": "ok 36535",
+   "header_v": "3.48",
+   "written": 185134,
+   "new_md5": "33c9b1fe"
+  },
+  "petshop-av-tiekimas.php": {
+   "cur_md5": "08a79af0",
+   "guard": true,
+   "new_len": 75202,
+   "lint": "ok 15635",
+   "header_v": "1.9.3",
+   "written": 75202,
+   "new_md5": "b0c4a073"
+  },
+  "ping": [
+   200
+  ],
+  "metodai": {
+   "desk_isvalyti": false,
+   "tk_i_av": false,
+   "pst": null
+  }
+ }
+}
