@@ -1,0 +1,647 @@
+{
+ "v": "dep-121341",
+ "kurimas": 200,
+ "sid": 4487,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1597-R1",
+  "sn329_len": 21827,
+  "sn329": [
+   "10:*    nisa VISADA kur rodomas. Preset si filtra rodo TIK aksesuaru kategorijose",
+   "12:*    naujo isXPage() kiekvienai kategorijai. Zaislai (pa_zaislo_tipas) +",
+   "27:*    YITH AJAX perpiesia turinio bloka ir SUNAIKINA #shop-sidebar (off-canvas",
+   "30:*  - FIX: pakrovus puslapi #shop-sidebar perkeliamas i <body>, kad YITH AJAX",
+   "31:*    jo nebepasiektu/nesunaikintu. YITH atnaujina filtru widget'a JO VIDUJE",
+   "79:.yith-wcan-filters .yith-wcan-filter {",
+   "84:.yith-wcan-filters .yith-wcan-filter:last-child { border-bottom: none; }",
+   "87:.yith-wcan-filters .yith-wcan-filter .filter-title {",
+   "99:.yith-wcan-filters .yith-wcan-filter .filter-title::after {",
+   "109:.yith-wcan-filters .yith-wcan-filter.ps-collapsed .filter-title::after {",
+   "112:.yith-wcan-filters .yith-wcan-filter.ps-collapsed .filter-content {",
+   "115:.yith-wcan-filters .filter-content { margin-top: 4px; }",
+   "118:.yith-wcan-filters .yith-wcan-filter.ps-niche {",
+   "126:.yith-wcan-filters .yith-wcan-filter.ps-niche::before {",
+   "136:.yith-wcan-filters ul.filter-label,",
+   "137:.yith-wcan-filters .filter-items.filter-label {",
+   "141:/* PANAIKINTI YITH kvadratini remа nuo li */",
+   "142:.yith-wcan-filters ul.filter-label li.filter-item,",
+   "143:.yith-wcan-filters ul.filter-label li.label {",
+   "153:.yith-wcan-filters ul.filter-label li a {",
+   "166:.yith-wcan-filters ul.filter-label li a .term-label {",
+   "170:.yith-wcan-filters ul.filter-label li a:hover {",
+   "173:.yith-wcan-filters ul.filter-label li a:hover .term-label { color: var(--ps-green); }",
+   "175:.yith-wcan-filters ul.filter-label li.chosen a,",
+   "176:.yith-wcan-filters ul.filter-label li a.active,",
+   "177:.yith-wcan-filters ul.filter-label li.yith-wcan-active a {",
+   "180:.yith-wcan-filters ul.filter-label li.chosen a .term-label,",
+   "181:.yith-wcan-filters ul.filter-label li a.active .term-label {",
+   "186:.yith-wcan-filter[data-taxonomy=\"filter_be_grudu\"] ul.filter-label li a,",
+   "187:.yith-wcan-filter[data-taxonomy*=\"grudu\"] ul.filter-label li a {",
+   "191:.yith-wcan-filter[data-taxonomy=\"filter_be_grudu\"] ul.filter-label li a .term-label,",
+   "192:.yith-wcan-filter[data-taxonomy*=\"grudu\"] ul.filter-label li a .term-label {",
+   "195:.yith-wcan-filter[data-taxonomy*=\"grudu\"] ul.filter-label li a:hover {",
+   "198:.yith-wcan-filter[data-taxonomy*=\"grudu\"] ul.filter-label li.chosen a,",
+   "199:.yith-wcan-filter[data-taxonomy*=\"grudu\"] ul.filter-label li a.active {",
+   "202:.yith-wcan-filter[data-taxonomy*=\"grudu\"] ul.filter-label li.chosen a .term-label,",
+   "203:.yith-wcan-filter[data-taxonomy*=\"grudu\"] ul.filter-label li a.active .term-label {",
+   "207:/* AMZIUS - neutralus */",
+   "208:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li a {",
+   "212:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li a .term-label {",
+   "215:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li a:hover {",
+   "218:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li a:hover .term-label {",
+   "221:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li.chosen a,",
+   "222:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li a.active {",
+   "225:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li.chosen a .term-label,",
+   "226:.yith-wcan-filter[data-taxonomy*=\"amzius\"] ul.filter-label li a.active .term-label {",
+   "231:.yith-wcan-filters ul.filter-checkbox,",
+   "232:.yith-wcan-filters .checkbox-design ul { list-style: none; margin: 0; padding: 0; }",
+   "233:.yith-wcan-filters ul.filter-checkbox li,",
+   "234:.yith-wcan-filters .checkbox-design ul li {",
+   "238:.yith-wcan-filters ul.filter-checkbox li a,",
+   "239:.yith-wcan-filters ul.filter-checkbox li label,",
+   "240:.yith-wcan-filters .checkbox-design ul li label {",
+   "246:.yith-wcan-filters ul.filter-checkbox li a:hover,",
+   "247:.yith-wcan-filters .checkbox-design ul li label:hover { color: var(--ps-green); }",
+   "248:.yith-wcan-filters ul.filter-checkbox li.chosen a,",
+   "249:.yith-wcan-filters .checkbox-design ul li.chosen label {",
+   "252:.yith-wcan-filters input[type=\"checkbox\"] {",
+   "258:.yith-wcan-filters .show-more,",
+   "259:.yith-wcan-filters a.shorten-link {",
+   "264:.yith-wcan-filters .show-more:hover { text-decoration: underline; }",
+   "267:.yith-wcan-filters select {",
+   "272:.yith-wcan-filters .yith-wcan-dropdown ul li { margin: 0 0 3px; }",
+   "273:.yith-wcan-filters .yith-wcan-dropdown ul li label {",
+   "278:.yith-wcan-active-filters { margin-bottom: 12px; }",
+   "281:.yith-wcan-filters .yith-wcan-filter {",
+   "285:.yith-wcan-filters .filter-content { margin-top: 4px !important; }",
+   "286:.yith-wcan-filters .filter-content ul:not(.filter-label) li {",
+   "292:.yith-wcan-filters .filter-content ul:not(.filter-label) li label,",
+   "293:.yith-wcan-filters .filter-content ul:not(.filter-label) li > a {",
+   "303:.yith-wcan-filters .filter-content ul:not(.filter-label) input[type=\"checkbox\"] {",
+   "383:else if (tax.indexOf('amzius') !== -1) applyOrder(filterEl, ageWeight);",
+   "389:document.querySelectorAll('.yith-wcan-filter[data-taxonomy]').forEach(orderOne);",
+   "395:// skanestu kategorijos puslapis (URL ar body klase)",
+   "402:// vitaminu/papildu kategorijos puslapis (URL ar body klase)",
+   "409:// antkakliu/pavadeliu kategorijos puslapis (URL ar body klase)",
+   "416:// dubeneliu kategorijos puslapis (URL ar body klase)",
+   "422:// guoliu/transporto/narvu/kelioniu kategorijos puslapis",
+   "444:// Preset si \"tipo\" filtra rodo tik aksesuaru kategorijose (ne maiste),",
+   "476:document.querySelectorAll('.yith-wcan-filters .yith-wcan-filter').forEach(function(f) {",
+   "483:// ===== v11: MOBILE off-canvas (#shop-sidebar) islaikymas per YITH AJAX =====",
+   "484:// SAKNIS (patvirtinta gyvai per DevTools): YITH AJAX perpiesia turinio",
+   "488:// #shop-sidebar i <body>, kad YITH AJAX jo nebepasiektu/nesunaikintu.",
+   "489:// YITH atnaujina filtru widget'a JO VIDUJE (busena lieka teisinga).",
+   "502:// Po YITH AJAX: uztikrinam taikini + perstilizuojam widget'a (innerHTML pasikeite)",
+   "523:// v11: po YITH AJAX - islaikom #shop-sidebar taikini + perstilizuojam",
+   "526:'yith-wcan-ajax-loaded yith_wcan_ajax_loaded yith-wcan-ajax-success ajaxComplete',"
+  ],
+  "sn329_head": "\n/**\n * Petshop Filtrai PILNAS v14 (CSS + JS viename)\n *\n * Code Snippets pavadinimas: Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]\n * Tipas: \"Run snippet everywhere\" (front-end)\n *\n * v14 PATAISA (niche TAKSONOMIJOS-AGNOSTISKAS - PILNAS uzsaldomas):\n *  - \"Tipo\" filtras (pa_tipas, pa_zaislo_tipas, bet koks pa_*_tipas) gauna\n *    nisa VISADA kur rodomas. Preset si filtra rodo TIK aksesuaru kategorijose\n *    (ne maiste - ten Monoprotein/Grudu/Baltymu), todel saugu ir nereikia\n *    naujo isXPage() kiekvienai kategorijai. Zaislai (pa_zaislo_tipas) +\n *    ateities aksesuarai automatiskai gauna musu stiliaus nisa be PILNAS keitimo.\n *\n * v13 PATAISA (filtro tarpu sutraukimas - pamatuota tiltu: rowPitch 41px,\n *  label display:block su temos line-height 28.8px -> musu CSS nepataike):\n *  - Pridetas stipresnis (!important, platesnis) tarpu sutraukimas checkbox\n *    sarasams. Label-pill sarasai (filter-label) NEPALIESTI.\n *\n * v12 PATAISA (desktop filtro regreso fix - patvirtinta tiltu 2026-06-19):\n *  - v11 perkele #shop-sidebar i <body> VISADA -> desktop'e filtras dingo is\n *    kairio sono ir nukrito i puslapio apacia. FIX: perkelima leisti TIK\n *    off-canvas plociuose (innerWidth < 850). Desktop nepaliestas.\n *\n * v11 PRIDETA (mobile off-canvas TIKRAS fix - patvirtinta gyvai per DevTools):\n *  - SAKNIS (v10 prielaida buvo NETEISINGA): mygtuko event listener NEMIRSTA.\n *    YITH AJAX perpiesia turinio bloka ir SUNAIKINA #shop-sidebar (off-canvas\n *    taikini). Flatsome \"Filtruoti\" handleris suveikia, bet Magnific Popup\n *    nebeturi i ka nukreipti (#shop-sidebar = null) -> tyliai neatsidaro.\n *  - FIX: pakrovus puslapi #shop-sidebar perkeliamas i <body>, kad YITH AJAX\n *    jo nebepasiektu/nesunaikintu. YITH atnaujina filtru widget'a JO VIDUJE\n *    (filtru busena li",
+  "yith_presets": [
+   {
+    "ID": "34102",
+    "post_title": "Žaislų filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34103",
+    "post_title": "Kraikų filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34104",
+    "post_title": "Aprangos filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34105",
+    "post_title": "Draskyklių filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34107",
+    "post_title": "Šampūnų filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34108",
+    "post_title": "Šukų filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34114",
+    "post_title": "Tevines kategorijos filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34115",
+    "post_title": "Grauziko rusis filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34117",
+    "post_title": "Paukscio rusis filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34118",
+    "post_title": "Akvariumo zuvu filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34433",
+    "post_title": "Tualetų filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "6644",
+    "post_title": "Pagrindinis",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34063",
+    "post_title": "Maisto filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34070",
+    "post_title": "Skanėstų filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34080",
+    "post_title": "Vitaminų filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34081",
+    "post_title": "Antkaklių filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34082",
+    "post_title": "Dubenėlių filtras",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34083",
+    "post_title": "Guolių/transporto filtras",
+    "post_status": "publish"
+   }
+  ],
+  "preset_filters": {
+   "6644": {
+    "1": {
+     "title": "Prekių ženklai",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    },
+    "3": {
+     "title": "Gyvūno rūšis",
+     "type": "tax",
+     "tax": "pa_gyvuno_rusis",
+     "terms": 0
+    },
+    "4": {
+     "title": "Pakuotės dydis",
+     "type": "tax",
+     "tax": "pa_pakuotes_dydis",
+     "terms": 0
+    }
+   },
+   "34063": {
+    "1": {
+     "title": "Vienas baltymo šaltinis",
+     "type": "tax",
+     "tax": "pa_monoprotein",
+     "terms": 1
+    },
+    "3": {
+     "title": "Grūdų tipas",
+     "type": "tax",
+     "tax": "pa_be_grudu",
+     "terms": 0
+    },
+    "4": {
+     "title": "Speciali mityba",
+     "type": "tax",
+     "tax": "pa_speciali_mityba",
+     "terms": 0
+    },
+    "5": {
+     "title": "Baltymų šaltinis",
+     "type": "tax",
+     "tax": "pa_baltymu_saltinis",
+     "terms": 0
+    },
+    "6": {
+     "title": "Amžius",
+     "type": "tax",
+     "tax": "pa_amzius",
+     "terms": 0
+    },
+    "7": {
+     "title": "Pakuotės dydis",
+     "type": "tax",
+     "tax": "pa_pakuotes_dydis",
+     "terms": 0
+    },
+    "8": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34070": {
+    "1": {
+     "title": "Vienas baltymo šaltinis",
+     "type": "tax",
+     "tax": "pa_monoprotein",
+     "terms": 1
+    },
+    "2": {
+     "title": "Baltymų šaltinis",
+     "type": "tax",
+     "tax": "pa_baltymu_saltinis",
+     "terms": 0
+    },
+    "3": {
+     "title": "Pakuotės svoris",
+     "type": "tax",
+     "tax": "pa_pakuotes_dydis",
+     "terms": 0
+    },
+    "4": {
+     "title": "Kiekis pakuotėje",
+     "type": "tax",
+     "tax": "pa_kiekis_pakuoteje",
+     "terms": 0
+    },
+    "6": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    },
+    "7": {
+     "title": "Kramtuko dydis",
+     "type": "tax",
+     "tax": "pa_ilgis",
+     "terms": 0
+    }
+   },
+   "34080": {
+    "1": {
+     "title": "Gyvūno rūšis",
+     "type": "tax",
+     "tax": "pa_gyvuno_rusis",
+     "terms": 0
+    },
+    "2": {
+     "title": "Paskirtis",
+     "type": "tax",
+     "tax": "pa_paskirtis",
+     "terms": 0
+    },
+    "3": {
+     "title": "Forma",
+     "type": "tax",
+     "tax": "pa_forma",
+     "terms": 0
+    },
+    "4": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34081": {
+    "1": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Dydis",
+     "type": "tax",
+     "tax": "pa_dydis",
+     "terms": 0
+    },
+    "3": {
+     "title": "Pavadėlio ilgis",
+     "type": "tax",
+     "tax": "pa_pavadelio_ilgis",
+     "terms": 0
+    },
+    "4": {
+     "title": "Medžiaga",
+     "type": "tax",
+     "tax": "pa_medziaga",
+     "terms": 0
+    },
+    "5": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34082": {
+    "1": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Medžiaga",
+     "type": "tax",
+     "tax": "pa_medziaga",
+     "terms": 0
+    },
+    "3": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34083": {
+    "1": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Dydis",
+     "type": "tax",
+     "tax": "pa_dydis",
+     "terms": 0
+    },
+    "3": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34102": {
+    "1": {
+     "title": "Žaislo tipas",
+     "type": "tax",
+     "tax": "pa_zaislo_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Medžiaga",
+     "type": "tax",
+     "tax": "pa_medziaga",
+     "terms": 0
+    },
+    "3": {
+     "title": "Dydis",
+     "type": "tax",
+     "tax": "pa_dydis",
+     "terms": 0
+    },
+    "4": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34103": {
+    "1": {
+     "title": "Kraiko tipas",
+     "type": "tax",
+     "tax": "pa_kraiko_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Kvapas",
+     "type": "tax",
+     "tax": "pa_kvapas",
+     "terms": 0
+    },
+    "3": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    },
+    "4": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    }
+   },
+   "34104": {
+    "1": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Dydis",
+     "type": "tax",
+     "tax": "pa_dydis",
+     "terms": 0
+    },
+    "3": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34105": {
+    "1": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34107": {
+    "1": {
+     "title": "Paskirtis",
+     "type": "tax",
+     "tax": "pa_paskirtis",
+     "terms": 0
+    },
+    "2": {
+     "title": "Veislė",
+     "type": "tax",
+     "tax": "pa_veisle",
+     "terms": 0
+    },
+    "3": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34108": {
+    "1": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34114": {
+    "1": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34115": {
+    "1": {
+     "title": "Graužiko rūšis",
+     "type": "tax",
+     "tax": "pa_grauziko_rusis",
+     "terms": 0
+    },
+    "2": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34117": {
+    "1": {
+     "title": "Paukščio rūšis",
+     "type": "tax",
+     "tax": "pa_paukscio_rusis",
+     "terms": 0
+    },
+    "2": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34118": {
+    "1": {
+     "title": "Žuvies rūšis",
+     "type": "tax",
+     "tax": "pa_zuvies_rusis",
+     "terms": 0
+    },
+    "2": {
+     "title": "Pašaro forma",
+     "type": "tax",
+     "tax": "pa_pasaro_forma",
+     "terms": 0
+    },
+    "3": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   },
+   "34433": {
+    "1": {
+     "title": "Tipas",
+     "type": "tax",
+     "tax": "pa_tipas",
+     "terms": 0
+    },
+    "2": {
+     "title": "Prekės ženklas",
+     "type": "tax",
+     "tax": "product_brand",
+     "terms": 0
+    }
+   }
+  },
+  "gyvunas_tax": [
+   {
+    "taxonomy": "pa_gyvuno_rusis",
+    "n": "6"
+   }
+  ],
+  "rink_kat_children": [
+   {
+    "term_id": "682",
+    "name": "Konservų rinkiniai",
+    "count": "11"
+   },
+   {
+    "term_id": "683",
+    "name": "Skanėstų rinkiniai",
+    "count": "2"
+   },
+   {
+    "term_id": "684",
+    "name": "Kramtalų rinkiniai",
+    "count": "3"
+   }
+  ],
+  "sidebars": {
+   "wp_inactive_widgets": [
+    "block-2",
+    "block-3",
+    "block-4",
+    "block-5",
+    "block-6",
+    "pages-3",
+    "pages-5",
+    "pages-6",
+    "pages-8",
+    "calendar-3"
+   ],
+   "sidebar-main": [
+    "text-13",
+    "flatsome_recent_posts-17",
+    "recent-comments-5",
+    "tag_cloud-9",
+    "categories-14",
+    "archives-7"
+   ],
+   "sidebar-footer-1": [],
+   "sidebar-footer-2": [
+    "custom_html-2",
+    "custom_html-3",
+    "custom_html-4",
+    "custom_html-5"
+   ],
+   "shop-sidebar": [
+    "woocommerce_layered_nav_filters-10",
+    "woocommerce_layered_nav-11",
+    "yith-woocommerce-ajax-navigation-filters-2",
+    "woocommerce_price_filter-9"
+   ],
+   "product-sidebar": [],
+   "array_version": 3
+  }
+ }
+}
