@@ -1,0 +1,3397 @@
+{
+ "v": "dep-075433",
+ "kurimas": 200,
+ "sid": 4438,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1591-R1",
+  "viso": 90,
+  "stat": {
+   "publish|kons|vfsku|vfqty|legacy": 4,
+   "publish|sausas|vfsku|vfqty|legacy": 20,
+   "publish|sausas|-|-|legacy": 6,
+   "publish|kons|-|-|legacy": 8,
+   "trash|sausas|-|-|legacy": 1,
+   "publish|kons|vfsku|vfqty|-": 7,
+   "draft|sausas|vfsku|vfqty|-": 8,
+   "draft|kons|vfsku|vfqty|-": 1,
+   "publish|sausas|vfsku|vfqty|-": 31,
+   "draft|sausas|-|-|-": 1,
+   "trash|kons|-|-|-": 1,
+   "trash|sausas|-|-|-": 2
+  },
+  "cols": "ID,status,title,_sku,_vf_supplier_sku,_vf_qty,_stock,_own,_ps_sandelis,_legacy_manuf,ean,_price,pmxi_id",
+  "list": [
+   [
+    "18512",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun",
+    "NGALA40",
+    "NGALA40",
+    "654",
+    "654.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259003522",
+    "2.49",
+    ""
+   ],
+   [
+    "18515",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun",
+    "NGAVA40",
+    "NGAVA40",
+    "327",
+    "327.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259003515",
+    "2.49",
+    ""
+   ],
+   [
+    "18518",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun",
+    "NGAUA40",
+    "NGAUA40",
+    "642",
+    "642.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259003553",
+    "2.49",
+    ""
+   ],
+   [
+    "18521",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun",
+    "NGABA40",
+    "NGABA40",
+    "498",
+    "498.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259003508",
+    "2.49",
+    ""
+   ],
+   [
+    "18524",
+    "publish",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuo",
+    "NGCST12",
+    "NGCST12",
+    "12",
+    "12.000000",
+    "",
+    "vf",
+    "EXCL MEDITER",
+    "8011259004208",
+    "61.79",
+    ""
+   ],
+   [
+    "18527",
+    "publish",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuo",
+    "NGCST01",
+    "NGCST01",
+    "46",
+    "46.000000",
+    "",
+    "vf",
+    "EXCL MEDITER",
+    "8011259003805",
+    "16.29",
+    ""
+   ],
+   [
+    "18530",
+    "publish",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuo",
+    "NGCSB01",
+    "NGCSB01",
+    "51",
+    "51.000000",
+    "",
+    "vf",
+    "EXCL MEDITER",
+    "8011259003782",
+    "16.29",
+    ""
+   ],
+   [
+    "18533",
+    "publish",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuo",
+    "NGCGC01",
+    "NGCGC01",
+    "84",
+    "84.000000",
+    "",
+    "vf",
+    "EXCL MEDITER",
+    "8011259003829",
+    "16.29",
+    ""
+   ],
+   [
+    "18536",
+    "publish",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras kačiukams ",
+    "NGCKC01",
+    "NGCKC01",
+    "97",
+    "97.000000",
+    "",
+    "vf",
+    "EXCL MEDITER",
+    "8011259003669",
+    "17.39",
+    ""
+   ],
+   [
+    "18539",
+    "publish",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su ",
+    "NGCAC01",
+    "NGCAC01",
+    "20",
+    "20.000000",
+    "",
+    "vf",
+    "EXCL MEDITER",
+    "8011259003683",
+    "16.29",
+    ""
+   ],
+   [
+    "18542",
+    "publish",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su ",
+    "NGCAB01",
+    "NGCAB01",
+    "87",
+    "87.000000",
+    "",
+    "vf",
+    "EXCL MEDITER",
+    "8011259003713",
+    "16.29",
+    ""
+   ],
+   [
+    "18545",
+    "publish",
+    "Exclusion Intestinal Monoprotein sausas šunų maistas su kiau",
+    "INPM11",
+    "",
+    "",
+    "18",
+    "",
+    "av",
+    "EXCLUSION",
+    "",
+    "75.8",
+    ""
+   ],
+   [
+    "18548",
+    "publish",
+    "Exclusion Intestinal Monoprotein sausas šuniukų maistas su k",
+    "INPA11",
+    "",
+    "",
+    "39",
+    "",
+    "av",
+    "EXCLUSION",
+    "",
+    "80.9",
+    ""
+   ],
+   [
+    "18551",
+    "publish",
+    "Exclusion Intestinal Monoprotein mažų veislių šunų maistas s",
+    "INPS06",
+    "",
+    "",
+    "41",
+    "",
+    "av",
+    "EXCLUSION",
+    "",
+    "58.89",
+    ""
+   ],
+   [
+    "18554",
+    "publish",
+    "Exclusion Hypoallergenic sausas šunų maistas su vabzdžiais i",
+    "HYIM11",
+    "HYIM11",
+    "63",
+    "63.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259002556",
+    "95.69",
+    ""
+   ],
+   [
+    "18557",
+    "publish",
+    "Exclusion Hypoallergenic sausas šunų maistas su triušiena ir",
+    "HYRM11",
+    "HYRM11",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259002631",
+    "78.19",
+    ""
+   ],
+   [
+    "18560",
+    "publish",
+    "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir",
+    "HYPM11",
+    "HYPM11",
+    "120",
+    "120.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259002594",
+    "78.19",
+    ""
+   ],
+   [
+    "18563",
+    "publish",
+    "Exclusion Hypoallergenic sausas šunų maistas su elniena ir b",
+    "HYVM11",
+    "",
+    "",
+    "0",
+    "",
+    "av",
+    "EXCLUSION",
+    "",
+    "74.4",
+    ""
+   ],
+   [
+    "18566",
+    "publish",
+    "Exclusion Hypoallergenic sausas šunų maistas su arkliena ir ",
+    "HYHM11",
+    "HYHM11",
+    "34",
+    "34.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259002570",
+    "78.19",
+    ""
+   ],
+   [
+    "18569",
+    "publish",
+    "Exclusion Hypoallergenic sausas šunų maistas su antiena ir b",
+    "HYDM11",
+    "",
+    "",
+    "0",
+    "",
+    "av",
+    "EXCLUSION",
+    "",
+    "70.4",
+    ""
+   ],
+   [
+    "18572",
+    "publish",
+    "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena",
+    "HYPA11",
+    "HYPA11",
+    "70",
+    "70.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259002532",
+    "80.29",
+    ""
+   ],
+   [
+    "18575",
+    "publish",
+    "Exclusion Hypoallergenic mini sausas mažų veislių šunų maist",
+    "HYFS02",
+    "HYFS02",
+    "15",
+    "15.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259000262",
+    "20.89",
+    ""
+   ],
+   [
+    "18578",
+    "publish",
+    "Exclusion Hypoallergenic mini mažų veislių šunų maistas su t",
+    "HYRS02",
+    "HYRS02",
+    "50",
+    "50.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259000170",
+    "20.89",
+    ""
+   ],
+   [
+    "18581",
+    "publish",
+    "Exclusion Hypoallergenic mini mažų veislių šunų maistas su a",
+    "HYHS02",
+    "HYHS02",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259000040",
+    "20.89",
+    ""
+   ],
+   [
+    "18584",
+    "publish",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "HYPS08",
+    "HYPS08",
+    "32",
+    "32.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259000071",
+    "9.89",
+    ""
+   ],
+   [
+    "18587",
+    "publish",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "HYPS06",
+    "HYPS06",
+    "273",
+    "273.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259002846",
+    "54.49",
+    ""
+   ],
+   [
+    "18590",
+    "publish",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "HYPS02",
+    "HYPS02",
+    "320",
+    "320.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259000088",
+    "20.89",
+    ""
+   ],
+   [
+    "18593",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su triušiena ir bu",
+    "AM20",
+    "",
+    "",
+    "22",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259011374",
+    "2.95",
+    ""
+   ],
+   [
+    "18596",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su putpelėmis ir ž",
+    "QM37",
+    "",
+    "",
+    "4",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259213754",
+    "3.98",
+    ""
+   ],
+   [
+    "18599",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su kiauliena ir ži",
+    "PM37",
+    "",
+    "",
+    "32",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259193759",
+    "3.98",
+    ""
+   ],
+   [
+    "18602",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su kiauliena ir ži",
+    "PM20",
+    "",
+    "",
+    "20",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259011350",
+    "2.95",
+    ""
+   ],
+   [
+    "18605",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su elniena ir bulv",
+    "VM37",
+    "",
+    "",
+    "17",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259153753",
+    "3.98",
+    ""
+   ],
+   [
+    "18608",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su arkliena ir bul",
+    "HM37",
+    "",
+    "",
+    "0",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259203755",
+    "3.98",
+    ""
+   ],
+   [
+    "18611",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su antiena ir bulv",
+    "DM37",
+    "",
+    "",
+    "19",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259173751",
+    "3.98",
+    ""
+   ],
+   [
+    "18614",
+    "publish",
+    "Exclusion Hypoallergenic konservai šunims su antiena ir bulv",
+    "DM20",
+    "",
+    "",
+    "22",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259011381",
+    "2.84",
+    ""
+   ],
+   [
+    "18617",
+    "publish",
+    "Exclusion Hypoallergenic dietinis sausas pašaras katėms su k",
+    "CHYP01",
+    "CHYP01",
+    "44",
+    "44.000000",
+    "",
+    "vf",
+    "EXCL HYPO",
+    "8011259004277",
+    "20.79",
+    ""
+   ],
+   [
+    "18620",
+    "publish",
+    "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrol",
+    "HHFM11",
+    "HHFM11",
+    "41",
+    "41.000000",
+    "",
+    "vf",
+    "EXCLUSION",
+    "8011259003973",
+    "80.79",
+    ""
+   ],
+   [
+    "18623",
+    "publish",
+    "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena,",
+    "HEPM11",
+    "",
+    "",
+    "0",
+    "",
+    "av",
+    "EXCLUSION",
+    "",
+    "73.9",
+    ""
+   ],
+   [
+    "19899",
+    "trash",
+    "2 vnt. - Exclusion Hypoallergenic mažų veislių šunų maistas ",
+    "HYPS02-2",
+    "",
+    "",
+    "17",
+    "",
+    "av",
+    "EXCLUSION",
+    "8011259000088",
+    "40.8",
+    ""
+   ],
+   [
+    "20517",
+    "publish",
+    "Exclusion Mediterraneo Mono Protein konservas kačiukams su v",
+    "NGCKCW85",
+    "NGCKCW85",
+    "5",
+    "5.000000",
+    "",
+    "vf",
+    "",
+    "8011259004000",
+    "1.39",
+    ""
+   ],
+   [
+    "20521",
+    "draft",
+    "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras ",
+    "NGCSB03",
+    "NGCSB03",
+    "32",
+    "32.000000",
+    "",
+    "vf",
+    "",
+    "801125900377",
+    "5.29",
+    ""
+   ],
+   [
+    "20523",
+    "publish",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras ste",
+    "NGCSBW85",
+    "NGCSBW85",
+    "587",
+    "587.000000",
+    "",
+    "vf",
+    "",
+    "8011259004055",
+    "1.39",
+    ""
+   ],
+   [
+    "20525",
+    "publish",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras ste",
+    "NGCSCW85",
+    "NGCSCW85",
+    "471",
+    "471.000000",
+    "",
+    "vf",
+    "",
+    "8011259004048",
+    "1.39",
+    ""
+   ],
+   [
+    "20529",
+    "draft",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras sterilizu",
+    "NGCST03",
+    "NGCST03",
+    "45",
+    "45.000000",
+    "",
+    "vf",
+    "",
+    "801125900379",
+    "5.29",
+    ""
+   ],
+   [
+    "20533",
+    "draft",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras ste",
+    "NGCSTW85",
+    "NGCSTW85",
+    "73",
+    "73.000000",
+    "",
+    "vf",
+    "",
+    "801125900406",
+    "1.39",
+    ""
+   ],
+   [
+    "20535",
+    "draft",
+    "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras ",
+    "NGPBM03",
+    "NGPBM03",
+    "25",
+    "25.000000",
+    "",
+    "vf",
+    "",
+    "801125900444",
+    "19.39",
+    ""
+   ],
+   [
+    "20537",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras ",
+    "NGPBM12",
+    "NGPBM12",
+    "20",
+    "20.000000",
+    "",
+    "vf",
+    "",
+    "8011259004451",
+    "56.39",
+    ""
+   ],
+   [
+    "20539",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras ",
+    "NGPBS02",
+    "NGPBS02",
+    "31",
+    "31.000000",
+    "",
+    "vf",
+    "",
+    "8011259004437",
+    "16.59",
+    ""
+   ],
+   [
+    "20541",
+    "publish",
+    "Exclusion Mono Protein begrūdis sausas pašaras mažų veislių ",
+    "NGPBS07",
+    "NGPBS07",
+    "14",
+    "14.000000",
+    "",
+    "vf",
+    "",
+    "8011259004482",
+    "41.99",
+    ""
+   ],
+   [
+    "20543",
+    "publish",
+    "Exclusion Mono Protein begrūdis sausas pašaras šuniukams, su",
+    "NGPTM03",
+    "NGPTM03",
+    "15",
+    "15.000000",
+    "",
+    "vf",
+    "",
+    "8011259003065",
+    "19.39",
+    ""
+   ],
+   [
+    "20545",
+    "publish",
+    "Exclusion ME MONO NOBLE GRAIN  sausas pašaras šuniukams,su t",
+    "NGPTS05",
+    "NGPTS05",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "",
+    "8011259002884",
+    "4.49",
+    ""
+   ],
+   [
+    "20941",
+    "publish",
+    "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims ",
+    "HHFS02",
+    "HHFS02",
+    "52",
+    "52.000000",
+    "",
+    "vf",
+    "",
+    "8011259003959",
+    "26.09",
+    ""
+   ],
+   [
+    "20943",
+    "publish",
+    "Exclusion Hypoallergenic sausas pašaras Duck Potato Small br",
+    "HYDS02",
+    "HYDS02",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "",
+    "8011259000224",
+    "19.89",
+    ""
+   ],
+   [
+    "20947",
+    "publish",
+    "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių",
+    "HYHM02",
+    "HYHM02",
+    "17",
+    "17.000000",
+    "",
+    "vf",
+    "",
+    "8011259002563",
+    "20.89",
+    ""
+   ],
+   [
+    "20955",
+    "draft",
+    "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims ",
+    "HYIS02",
+    "HYIS02",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "",
+    "801125900181",
+    "25.79",
+    ""
+   ],
+   [
+    "20957",
+    "publish",
+    "Exclusion Hypoallergenic sausas pašaras šuniukams su kiaulie",
+    "HYPA02",
+    "HYPA02",
+    "35",
+    "35.000000",
+    "",
+    "vf",
+    "",
+    "8011259002525",
+    "23.69",
+    ""
+   ],
+   [
+    "20961",
+    "publish",
+    "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių",
+    "HYPM02",
+    "HYPM02",
+    "93",
+    "93.000000",
+    "",
+    "vf",
+    "",
+    "8011259002587",
+    "20.89",
+    ""
+   ],
+   [
+    "20971",
+    "draft",
+    "Exclusion Hypo sausas pašaras šunims su triušiena ir bulvėmi",
+    "d0ef54405833",
+    "",
+    "",
+    "",
+    "",
+    "av",
+    "",
+    "",
+    "",
+    ""
+   ],
+   [
+    "20977",
+    "publish",
+    "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims ",
+    "HYVS02",
+    "HYVS02",
+    "21",
+    "21.000000",
+    "",
+    "vf",
+    "",
+    "8011259000132",
+    "20.89",
+    ""
+   ],
+   [
+    "21115",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras didelių v",
+    "NGABL12",
+    "NGABL12",
+    "9",
+    "9.000000",
+    "",
+    "vf",
+    "",
+    "8011259003232",
+    "51.69",
+    ""
+   ],
+   [
+    "21117",
+    "publish",
+    "Exclusion ME MONO NOBLE GRAIN sausas pašaras šunims M, su ja",
+    "NGABM03",
+    "NGABM03",
+    "4",
+    "4.000000",
+    "",
+    "vf",
+    "",
+    "8011259003102",
+    "17.89",
+    ""
+   ],
+   [
+    "21119",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių",
+    "NGABM12",
+    "NGABM12",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "",
+    "8011259003119",
+    "51.69",
+    ""
+   ],
+   [
+    "21121",
+    "draft",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veis",
+    "NGABS02",
+    "NGABS02",
+    "8",
+    "8.000000",
+    "",
+    "vf",
+    "",
+    "801125900294",
+    "14.79",
+    ""
+   ],
+   [
+    "21123",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veis",
+    "NGABS05",
+    "NGABS05",
+    "48",
+    "48.000000",
+    "",
+    "vf",
+    "",
+    "8011259002938",
+    "4.49",
+    ""
+   ],
+   [
+    "21125",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun",
+    "NGACA40",
+    "NGACA40",
+    "295",
+    "295.000000",
+    "",
+    "vf",
+    "",
+    "8011259003492",
+    "2.49",
+    ""
+   ],
+   [
+    "21129",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras didelių v",
+    "NGALL12",
+    "NGALL12",
+    "31",
+    "31.000000",
+    "",
+    "vf",
+    "",
+    "8011259003249",
+    "51.69",
+    ""
+   ],
+   [
+    "21131",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių",
+    "NGALM03",
+    "NGALM03",
+    "135",
+    "135.000000",
+    "",
+    "vf",
+    "",
+    "8011259003126",
+    "17.89",
+    ""
+   ],
+   [
+    "21133",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių",
+    "NGALM12",
+    "NGALM12",
+    "39",
+    "39.000000",
+    "",
+    "vf",
+    "",
+    "8011259003133",
+    "51.69",
+    ""
+   ],
+   [
+    "21135",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veis",
+    "NGALS02",
+    "NGALS02",
+    "137",
+    "137.000000",
+    "",
+    "vf",
+    "",
+    "8011259002969",
+    "14.79",
+    ""
+   ],
+   [
+    "21137",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veis",
+    "NGALS05",
+    "NGALS05",
+    "49",
+    "49.000000",
+    "",
+    "vf",
+    "",
+    "8011259002952",
+    "4.49",
+    ""
+   ],
+   [
+    "21139",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun",
+    "NGASA40",
+    "NGASA40",
+    "173",
+    "173.000000",
+    "",
+    "vf",
+    "",
+    "8011259003546",
+    "2.49",
+    ""
+   ],
+   [
+    "21141",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun",
+    "NGATA40",
+    "NGATA40",
+    "343",
+    "343.000000",
+    "",
+    "vf",
+    "",
+    "8011259003539",
+    "2.49",
+    ""
+   ],
+   [
+    "21143",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras didelių v",
+    "NGATL12",
+    "NGATL12",
+    "5",
+    "5.000000",
+    "",
+    "vf",
+    "",
+    "8011259003256",
+    "51.69",
+    ""
+   ],
+   [
+    "21145",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių",
+    "NGATM03",
+    "NGATM03",
+    "31",
+    "31.000000",
+    "",
+    "vf",
+    "",
+    "8011259003140",
+    "17.89",
+    ""
+   ],
+   [
+    "21147",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių",
+    "NGATM12",
+    "NGATM12",
+    "34",
+    "34.000000",
+    "",
+    "vf",
+    "",
+    "8011259003157",
+    "51.69",
+    ""
+   ],
+   [
+    "21149",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veis",
+    "NGATS02",
+    "NGATS02",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "",
+    "8011259002983",
+    "14.79",
+    ""
+   ],
+   [
+    "21151",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veis",
+    "NGATS05",
+    "NGATS05",
+    "18",
+    "18.000000",
+    "",
+    "vf",
+    "",
+    "8011259002976",
+    "4.49",
+    ""
+   ],
+   [
+    "21153",
+    "publish",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veis",
+    "NGATS07",
+    "NGATS07",
+    "2",
+    "2.000000",
+    "",
+    "vf",
+    "",
+    "8011259002990",
+    "38.09",
+    ""
+   ],
+   [
+    "21161",
+    "draft",
+    "Exclusion Mono Protein Mediterraneo  begrūdis pašaras katėms",
+    "NGCAB03",
+    "NGCAB03",
+    "107",
+    "107.000000",
+    "",
+    "vf",
+    "",
+    "801125900370",
+    "5.29",
+    ""
+   ],
+   [
+    "21165",
+    "publish",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras kat",
+    "NGCATW85",
+    "NGCATW85",
+    "44",
+    "44.000000",
+    "",
+    "vf",
+    "",
+    "8011259004031",
+    "1.39",
+    ""
+   ],
+   [
+    "21171",
+    "draft",
+    "Exclusion ME MONO NOBLE GRAIN sausas pašaras kačiukams, su v",
+    "NGCKC03",
+    "NGCKC03",
+    "77",
+    "77.000000",
+    "",
+    "vf",
+    "",
+    "801125900365",
+    "5.39",
+    ""
+   ],
+   [
+    "21531",
+    "publish",
+    "Exclusion Hypoallergenic dietinis sausas pašaras katėms su k",
+    "CHYP03",
+    "CHYP03",
+    "0",
+    "0.000000",
+    "",
+    "vf",
+    "",
+    "8011259004413",
+    "5.99",
+    ""
+   ],
+   [
+    "25165",
+    "publish",
+    "Exclusion Mono Protein, begrūdis sausas pašaras mažų veislių",
+    "NGPBS05",
+    "NGPBS05",
+    "29",
+    "29.000000",
+    "",
+    "vf",
+    "",
+    "8011259004420",
+    "4.49",
+    ""
+   ],
+   [
+    "25227",
+    "publish",
+    "Exclusion Mediterraneo Mono Noble sausas pašaras šunims S, s",
+    "NGALS07",
+    "NGALS07",
+    "8",
+    "8.000000",
+    "",
+    "vf",
+    "",
+    "8011259004536",
+    "38.09",
+    ""
+   ],
+   [
+    "25265",
+    "publish",
+    "Exclusion Mediterraneo Mono Noble sausas pašaras šuniukams L",
+    "NGPTL12",
+    "NGPTL12",
+    "3",
+    "3.000000",
+    "",
+    "vf",
+    "",
+    "8011259003218",
+    "53.09",
+    ""
+   ],
+   [
+    "34498",
+    "trash",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras kat",
+    "DP-NGCATW85-10",
+    "",
+    "",
+    "",
+    "",
+    "av",
+    "",
+    "",
+    "13.2",
+    ""
+   ],
+   [
+    "34899",
+    "trash",
+    "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir",
+    "HYPM11 x2",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "148.56",
+    ""
+   ],
+   [
+    "34917",
+    "trash",
+    "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir",
+    "HYPM11 x2",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "148.56",
+    ""
+   ],
+   [
+    "35025",
+    "draft",
+    "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių",
+    "HYIM02",
+    "HYIM02",
+    "0",
+    "0.000000",
+    "",
+    "",
+    "",
+    "8011259002549",
+    "25.79",
+    ""
+   ],
+   [
+    "35027",
+    "publish",
+    "Exclusion Hydrolyzed Hypoallergenic sausas pašaras vidutinių",
+    "HHFM02",
+    "HHFM02",
+    "6",
+    "6.000000",
+    "",
+    "",
+    "",
+    "8011259003966",
+    "26.09",
+    ""
+   ]
+  ],
+  "ps_sources": [
+   [
+    "18512",
+    "vf",
+    "NGALA40",
+    "654",
+    "1.6830"
+   ],
+   [
+    "18515",
+    "vf",
+    "NGAVA40",
+    "327",
+    "1.6830"
+   ],
+   [
+    "18518",
+    "vf",
+    "NGAUA40",
+    "642",
+    "1.6830"
+   ],
+   [
+    "18521",
+    "vf",
+    "NGABA40",
+    "498",
+    "1.6830"
+   ],
+   [
+    "18524",
+    "vf",
+    "NGCST12",
+    "12",
+    "42.4915"
+   ],
+   [
+    "18527",
+    "vf",
+    "NGCST01",
+    "46",
+    "11.1690"
+   ],
+   [
+    "18530",
+    "vf",
+    "NGCSB01",
+    "51",
+    "11.1690"
+   ],
+   [
+    "18533",
+    "vf",
+    "NGCGC01",
+    "84",
+    "11.1690"
+   ],
+   [
+    "18536",
+    "vf",
+    "NGCKC01",
+    "97",
+    "11.9510"
+   ],
+   [
+    "18539",
+    "vf",
+    "NGCAC01",
+    "20",
+    "11.1690"
+   ],
+   [
+    "18542",
+    "vf",
+    "NGCAB01",
+    "87",
+    "11.1690"
+   ],
+   [
+    "18545",
+    "av",
+    "",
+    "18",
+    "45.0500"
+   ],
+   [
+    "18548",
+    "av",
+    "",
+    "39",
+    "50.1500"
+   ],
+   [
+    "18551",
+    "av",
+    "",
+    "41",
+    "34.0000"
+   ],
+   [
+    "18554",
+    "vf",
+    "HYIM11",
+    "63",
+    "65.8835"
+   ],
+   [
+    "18557",
+    "vf",
+    "HYRM11",
+    "0",
+    "53.8050"
+   ],
+   [
+    "18560",
+    "vf",
+    "HYPM11",
+    "120",
+    "53.8050"
+   ],
+   [
+    "18563",
+    "av",
+    "",
+    "0",
+    "49.3000"
+   ],
+   [
+    "18566",
+    "vf",
+    "HYHM11",
+    "34",
+    "53.8050"
+   ],
+   [
+    "18569",
+    "av",
+    "",
+    "0",
+    "45.0500"
+   ],
+   [
+    "18572",
+    "vf",
+    "HYPA11",
+    "70",
+    "55.2415"
+   ],
+   [
+    "18575",
+    "vf",
+    "HYFS02",
+    "15",
+    "14.3565"
+   ],
+   [
+    "18578",
+    "vf",
+    "HYRS02",
+    "50",
+    "14.3565"
+   ],
+   [
+    "18581",
+    "vf",
+    "HYHS02",
+    "0",
+    "14.3565"
+   ],
+   [
+    "18584",
+    "vf",
+    "HYPS08",
+    "32",
+    "6.7745"
+   ],
+   [
+    "18587",
+    "vf",
+    "HYPS06",
+    "273",
+    "37.4850"
+   ],
+   [
+    "18590",
+    "vf",
+    "HYPS02",
+    "320",
+    "14.3565"
+   ],
+   [
+    "18593",
+    "av",
+    "",
+    "22",
+    "2.0000"
+   ],
+   [
+    "18596",
+    "av",
+    "",
+    "4",
+    "2.3800"
+   ],
+   [
+    "18599",
+    "av",
+    "",
+    "32",
+    "2.3800"
+   ],
+   [
+    "18602",
+    "av",
+    "",
+    "20",
+    "2.0000"
+   ],
+   [
+    "18605",
+    "av",
+    "",
+    "17",
+    "2.3800"
+   ],
+   [
+    "18608",
+    "av",
+    "",
+    "0",
+    "2.3800"
+   ],
+   [
+    "18611",
+    "av",
+    "",
+    "19",
+    "2.3800"
+   ],
+   [
+    "18614",
+    "av",
+    "",
+    "22",
+    "1.9000"
+   ],
+   [
+    "18617",
+    "vf",
+    "CHYP01",
+    "44",
+    "14.2545"
+   ],
+   [
+    "18620",
+    "vf",
+    "HHFM11",
+    "41",
+    "55.5900"
+   ],
+   [
+    "18623",
+    "av",
+    null,
+    "0",
+    "49.6500"
+   ],
+   [
+    "19899",
+    "av",
+    "",
+    "17",
+    "13.1800"
+   ],
+   [
+    "20517",
+    "vf",
+    "NGCKCW85",
+    "5",
+    "0.9350"
+   ],
+   [
+    "20521",
+    "vf",
+    "NGCSB03",
+    "32",
+    "3.6295"
+   ],
+   [
+    "20523",
+    "vf",
+    "NGCSBW85",
+    "587",
+    "0.9350"
+   ],
+   [
+    "20525",
+    "vf",
+    "NGCSCW85",
+    "471",
+    "0.9350"
+   ],
+   [
+    "20529",
+    "vf",
+    "NGCST03",
+    "45",
+    "3.6295"
+   ],
+   [
+    "20533",
+    "vf",
+    "NGCSTW85",
+    "73",
+    "0.9350"
+   ],
+   [
+    "20535",
+    "vf",
+    "NGPBM03",
+    "25",
+    "13.3195"
+   ],
+   [
+    "20537",
+    "vf",
+    "NGPBM12",
+    "20",
+    "38.8110"
+   ],
+   [
+    "20539",
+    "vf",
+    "NGPBS02",
+    "31",
+    "11.4155"
+   ],
+   [
+    "20541",
+    "vf",
+    "NGPBS07",
+    "14",
+    "28.9085"
+   ],
+   [
+    "20543",
+    "vf",
+    "NGPTM03",
+    "15",
+    "13.3450"
+   ],
+   [
+    "20545",
+    "vf",
+    "NGPTS05",
+    "0",
+    "3.0685"
+   ],
+   [
+    "20941",
+    "vf",
+    "HHFS02",
+    "52",
+    "17.9095"
+   ],
+   [
+    "20943",
+    "vf",
+    "HYDS02",
+    "0",
+    "13.6765"
+   ],
+   [
+    "20947",
+    "vf",
+    "HYHM02",
+    "17",
+    "14.3565"
+   ],
+   [
+    "20955",
+    "vf",
+    "HYIS02",
+    "0",
+    "17.7565"
+   ],
+   [
+    "20957",
+    "vf",
+    "HYPA02",
+    "35",
+    "16.2690"
+   ],
+   [
+    "20961",
+    "vf",
+    "HYPM02",
+    "93",
+    "14.3565"
+   ],
+   [
+    "20971",
+    "av",
+    "",
+    null,
+    null
+   ],
+   [
+    "20977",
+    "vf",
+    "HYVS02",
+    "21",
+    "14.3565"
+   ],
+   [
+    "21115",
+    "vf",
+    "NGABL12",
+    "9",
+    "35.5980"
+   ],
+   [
+    "21117",
+    "vf",
+    "NGABM03",
+    "4",
+    "12.2655"
+   ],
+   [
+    "21119",
+    "vf",
+    "NGABM12",
+    "0",
+    "35.5980"
+   ],
+   [
+    "21121",
+    "vf",
+    "NGABS02",
+    "8",
+    "10.1320"
+   ],
+   [
+    "21123",
+    "vf",
+    "NGABS05",
+    "48",
+    "3.0685"
+   ],
+   [
+    "21125",
+    "vf",
+    "NGACA40",
+    "295",
+    "1.6830"
+   ],
+   [
+    "21129",
+    "vf",
+    "NGALL12",
+    "31",
+    "35.5980"
+   ],
+   [
+    "21131",
+    "vf",
+    "NGALM03",
+    "135",
+    "12.2655"
+   ],
+   [
+    "21133",
+    "vf",
+    "NGALM12",
+    "39",
+    "35.5980"
+   ],
+   [
+    "21135",
+    "vf",
+    "NGALS02",
+    "137",
+    "10.1320"
+   ],
+   [
+    "21137",
+    "vf",
+    "NGALS05",
+    "49",
+    "3.0685"
+   ],
+   [
+    "21139",
+    "vf",
+    "NGASA40",
+    "173",
+    "1.6830"
+   ],
+   [
+    "21141",
+    "vf",
+    "NGATA40",
+    "343",
+    "1.6830"
+   ],
+   [
+    "21143",
+    "vf",
+    "NGATL12",
+    "5",
+    "35.5980"
+   ],
+   [
+    "21145",
+    "vf",
+    "NGATM03",
+    "31",
+    "12.2655"
+   ],
+   [
+    "21147",
+    "vf",
+    "NGATM12",
+    "34",
+    "35.5980"
+   ],
+   [
+    "21149",
+    "vf",
+    "NGATS02",
+    "0",
+    "10.1320"
+   ],
+   [
+    "21151",
+    "vf",
+    "NGATS05",
+    "18",
+    "3.0685"
+   ],
+   [
+    "21153",
+    "vf",
+    "NGATS07",
+    "2",
+    "26.2310"
+   ],
+   [
+    "21161",
+    "vf",
+    "NGCAB03",
+    "107",
+    "3.6295"
+   ],
+   [
+    "21165",
+    "vf",
+    "NGCATW85",
+    "44",
+    "0.9350"
+   ],
+   [
+    "21171",
+    "vf",
+    "NGCKC03",
+    "77",
+    "3.6635"
+   ],
+   [
+    "21531",
+    "vf",
+    "CHYP03",
+    "0",
+    "4.1225"
+   ],
+   [
+    "25165",
+    "vf",
+    "NGPBS05",
+    "29",
+    "3.0685"
+   ],
+   [
+    "25227",
+    "vf",
+    "NGALS07",
+    "8",
+    "26.2310"
+   ],
+   [
+    "25265",
+    "vf",
+    "NGPTL12",
+    "3",
+    "36.5415"
+   ],
+   [
+    "34498",
+    "av",
+    "",
+    null,
+    null
+   ]
+  ],
+  "pmxi": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "path": "/wpallimport/files/goods_clean.xml",
+    "xpath": "/item",
+    "count": "2045",
+    "registered_on": "2026-05-27 11:14:21",
+    "last_activity": "2026-05-27 11:14:21"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+    "xpath": "/item",
+    "count": "2656",
+    "registered_on": "2026-09-02 03:02:03",
+    "last_activity": "2026-09-02 03:02:03"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "path": "https://zaliojibanga.lt/integrations/services/stocks.php?key=bAF0OY6Sz9H3AgAF",
+    "xpath": "/item",
+    "count": "2659",
+    "registered_on": "2026-09-02 07:03:02",
+    "last_activity": "2026-09-02 07:03:02"
+   },
+   {
+    "id": "5",
+    "name": "petshop-xml-vf-fetcher.php",
+    "path": "https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+    "xpath": "/data/row",
+    "count": "2355",
+    "registered_on": "2026-08-21 03:32:05",
+    "last_activity": "2026-08-22 03:30:01"
+   },
+   {
+    "id": "7",
+    "name": "petshop-xml-vf-fetcher.php",
+    "path": "https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+    "xpath": "/row",
+    "count": "2355",
+    "registered_on": "2026-08-27 07:32:03",
+    "last_activity": "2026-08-27 08:15:02"
+   }
+  ],
+  "kodas": [
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    9,
+    "* v1.5.18 (2026-06-15): KLASES PAVADINIMO FIX — block_zb_create excluded_brand"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    13,
+    "*   class_exists() grazindavo FALSE -> visas excluded_brand blokas PRALEIDZIAMAS"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    20,
+    "*   excluded_brand pagaunamas PRIE VARTU (kaip ir buvo planuota v1.5.17), preke"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    21,
+    "*   nebesukuriama. is_excluded_brand() logika veike teisingai — tik klase buvo"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    30,
+    "*   PROBLEMA: is_excluded_brand() veike tik PO sukurimo (initial_import) -> ZB"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    32,
+    "*   reason=excluded_brand. Rezultatas: siuksles draft'uose + ShortPixel kreditai +"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    36,
+    "*   SPRENDIMAS: block_zb_create papildytas — excluded_brand tikrinamas PRIE VARTU"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    37,
+    "*   (pries konservas/qty/aksesuaras patikras). Jei brandas excluded -> NEKURTI."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    39,
+    "*   is_excluded_brand(). Analogiska ZB skip-before-create (S97) ir VF (S100)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    42,
+    "*   Esami ZB excluded_brand draft isvalomi atskirai (vienkartinis snippet)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    46,
+    "*   KONTEKSTAS: VF prekes (Josera, Exclusion, Churu), kurios YRA Legacy sandelyje"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    55,
+    "*   Josera/Exclusion/Churu — visa monoprotein/hipoalergine nisa). block_vf_create"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    58,
+    "*   SPRENDIMAS: block_vf_create papildytas — jei VF sku_id JAU egzistuoja kaip"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    87,
+    "*      kuriama). Konservai qty=0 — isimtis, LEIDZIAMI (box rinkiniai)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    106,
+    "*   KARTELE (8 EUR) NEPAKEISTA. Konservu->draft, esamu pigiu update blokavimas"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    110,
+    "*     konservai -> draft; qty=0 buve-publish -> publish; aksesuarai/pigus -> trinti."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    119,
+    "*     2. ESAMOS pigios prekes (< 8 EUR, NE konservas, pvz. Vitapol graužikams"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    129,
+    "*      (tik ZB Import #2,#3). ESAMA preke, kuri < 8 EUR IR NE konservas ->"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    137,
+    "*      LEISTI (jei _zb_cost tuscias/0 arba konservas -> nestabdom)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    143,
+    "*      (konservas->draft, ne konservas->trash/blokuota)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    145,
+    "*   C. initial_import KARTELE (< 8 EUR) + ne konservas + ESAMA: jau nebepateks"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    148,
+    "*      netinka (ciklas). Todel esamoms (is_update) < 8 EUR ne konservas ->"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    153,
+    "*   KARTELE (8 EUR) NEPAKEISTA. Konservu/qty_zero->draft logika (v1.5.13)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    156,
+    "* v1.5.13 (2026-06-14): ZB SKIP-BEFORE-CREATE + KONSERVAI/QTY_ZERO -> DRAFT (S97)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    168,
+    "*     2. KONSERVAI — net pigus (< 8 EUR) NEISMETAMI, o -> DRAFT su formules"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    169,
+    "*        kaina. Priezastis: konservai bus parduodami BOX RINKINIAIS (12-24 vnt),"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    170,
+    "*        kurie praeina kartele. 112 ZB konservu (beveik visi monoprotein/"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    177,
+    "*     4. AKSESUARAI (pigus, NE konservas, qty>0) -> NEKURTI VISAI (kartele)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    181,
+    "*   A. NAUJAS petshop_xml_block_zb_create() ant wp_all_import_is_post_to_create"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    183,
+    "*        - Konservas (is category ARBA name)            -> LEISTI (taps draft)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    185,
+    "*        - savikaina (price) < 8 IR NE konservas IR qty>0 -> NEKURTI (aksesuaras)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    193,
+    "*        - cost_below_minimum + KONSERVAS -> DRAFT (su formules kaina), NE trash."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    194,
+    "*        - cost_below_minimum + NE konservas -> kaip iki siol (bet sukurimas jau"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    197,
+    "*      Konservo detekcija: petshop_xml_is_konservas() / _text_is_konservas() —"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    198,
+    "*      is kategorijos ARBA pavadinimo (konserv|wet|pate|mousse|pouch|flakes|chunks)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    201,
+    "*   Kartele (8 EUR) nepakeista — tik konservams ir qty_zero pakeistas"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    205,
+    "*     esami 503 trash -> konservai+qty_zero atkurti i draft, aksesuarai istrinti."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    210,
+    "*   neatpazista kaip esamu -> kuria is naujo kas importa. petshop_xml_block_vf_create()"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    211,
+    "*   ant wp_all_import_is_post_to_create iskviecia vf_should_import() +"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    248,
+    "// konservai/qty_zero -> draft. Vienoje vietoje, kad ateity butu lengva keisti."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    289,
+    "* v1.5.13: KONSERVO DETEKCIJA is teksto (kategorija + pavadinimas)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    292,
+    "function petshop_xml_text_is_konservas( string $category, string $name ): bool {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    294,
+    "if ( mb_strpos( $cat, 'konserv' ) !== false ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    298,
+    "if ( preg_match( '/konserv|\\bwet\\b|pate|paštet|pastet|mousse|pouch|flakes|chunks|gabal.*padaž|drebučiuose|drebuciuose/iu', $title ) ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    305,
+    "* v1.5.13: KONSERVO DETEKCIJA pagal post_id (WC kategorija + meta + title)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    307,
+    "function petshop_xml_is_konservas( int $post_id ): bool {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    312,
+    "return petshop_xml_text_is_konservas( $cat_str . ' ' . $zbcat, $title );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    318,
+    "* Hook: wp_all_import_is_post_to_create (analogiska VF v1.5.12)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    321,
+    "*   - Konservas (category ARBA name)              -> LEISTI (initial_import -> draft)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    323,
+    "*   - price < MIN_COST IR NE konservas IR qty>0    -> NEKURTI (aksesuaras, kartele)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    329,
+    "add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_zb_create', 10, 3 );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    358,
+    "//   sukuriami ir tik po to metami i draft (excluded_brand). Anksciau"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    359,
+    "//   is_excluded_brand() veike tik PO sukurimo (initial_import) -> preke buvo"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    361,
+    "//   Dabar blokuojam PRIES sukurima (kaip konservas/qty/aksesuaras patikros)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    364,
+    "//   nes is_excluded_brand() moka atpazinti pagal pavadinima."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    369,
+    "if ( $brand_check !== '' && $rules_gate->is_excluded_brand( $brand_check ) ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    374,
+    "'reason'    => 'excluded_brand',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    382,
+    "// Konservas -> LEISTI (taps draft per initial_import, box rinkiniams)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    383,
+    "if ( petshop_xml_text_is_konservas( $category, $name ) ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    411,
+    "// Aksesuaras: pigus (< kartele) IR NE konservas IR turi likuti -> NEKURTI"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    435,
+    "* ESAMA preke, kuri < PETSHOP_XML_ZB_MIN_COST IR NE konservas -> BLOKUOTI update."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    443,
+    "* konservas -> NEBLOKUOJAM (status quo). Tik gryni atvejai blokuojami."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    478,
+    "// Konservas -> NEBLOKUOJAM (konservai leidziami net pigus, box rinkiniai)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    479,
+    "if ( petshop_xml_is_konservas( $post_id ) ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    483,
+    "// Pigi (< kartele) IR ne konservas IR esama -> BLOKUOTI update"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    491,
+    "'note'      => 'ZB update prevented for existing cheap non-konservas (no image reload, v1.5.14)',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    498,
+    "add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_vf_create', 10, 3 );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    500,
+    "function petshop_xml_block_vf_create( $continue_import, $data, $import_id ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    644,
+    "$protected_reasons = [ 'cost_below_minimum', 'excluded_brand', 'qty_zero_on_new', 'duplicate_ean', 'konservas_below_minimum' ];"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    765,
+    "* v1.5.13: KONSERVAS/QTY_ZERO -> DRAFT (vietoj trash)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    767,
+    "* Konservams (su $set_konservas_price=true) papildomai skaiciuoja formules"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    771,
+    "function petshop_xml_zb_to_draft( int $post_id, string $reason, bool $set_konservas_price = false ): void {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    778,
+    "if ( $set_konservas_price ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    798,
+    "petshop_xml_log( \"ZB KONSERVAS->DRAFT post {$post_id} | formule kaina={$final} (initialized, A)\" );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    910,
+    "if ( $rules->is_excluded_brand( $check_brand ) ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    912,
+    "$trashed = petshop_xml_safe_trash( $post_id, $is_update, 'excluded_brand', ["
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    917,
+    "update_post_meta( $post_id, '_petshop_review_reason', 'excluded_brand' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    918,
+    "update_post_meta( $post_id, '_zb_skip_reason', 'excluded_brand' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    923,
+    "$trashed = petshop_xml_safe_trash( $post_id, true, 'excluded_brand', ["
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    929,
+    "update_post_meta( $post_id, '_petshop_review_reason', 'excluded_brand' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    930,
+    "update_post_meta( $post_id, '_zb_skip_reason', 'excluded_brand' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    931,
+    "petshop_xml_log( \"FALLBACK DRAFT: excluded_brand existing zb junk post {$post_id} (safe_trash failed)\" );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    936,
+    "update_post_meta( $post_id, '_petshop_review_reason', 'excluded_brand' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    937,
+    "update_post_meta( $post_id, '_zb_skip_reason', 'excluded_brand' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    945,
+    "//   - KONSERVAS -> DRAFT su formules kaina (NE trash). Box rinkiniai (S97)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    946,
+    "//   - NE konservas (aksesuaras) -> kaip iki siol (draft/trash). Naujo"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    952,
+    "if ( petshop_xml_is_konservas( $post_id ) ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    953,
+    "// KONSERVAS -> DRAFT su formules kaina (A: viena karta)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    958,
+    "petshop_xml_zb_to_draft( $post_id, 'konservas_below_minimum', true );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    959,
+    "petshop_xml_log( \"KONSERVAS DRAFT post {$post_id} | zb_cost={$zb_cost} (box rinkiniams, S97)\" );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    963,
+    "// NE konservas (aksesuaras)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    975,
+    "petshop_xml_log( \"DRAFT (existing): cost_below_minimum non-konservas post {$post_id} | zb_cost={$zb_cost} (no trash, v1.5.14)\" );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    1312,
+    "$vf_skip_reason  = get_post_meta( $post_id, '_vf_skip_reason', true );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    1314,
+    "if ( ! empty( $vf_duplicate_of ) || ! empty( $vf_skip_reason ) ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/petshop-xml.php",
+    1320,
+    "'vf_skip_reason'   => $vf_skip_reason,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    16,
+    "*   B) NO-SALE BRANDS (Josera + Exclusion):"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    42,
+    "*   Josera/Exclusion/GreenPetFood brand override (20%) — brand override neturi"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    53,
+    "*     konservai-sunims                        22%  -> 25%      +3pp"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    54,
+    "*     konservai-katems                        22%  -> 25%      +3pp"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    68,
+    "*   BRAND OVERRIDE NEPAKEICIAM (Josera/Exclusion/GreenPetFood 20%, CHURU 30%)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    127,
+    "*        Exclusion grupe     -> 15%"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    132,
+    "*      Exclusion Hypo/Mediter -> \"Exclusion\") vyksta normalize_brand()"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    137,
+    "*        Josera/Exclusion/GreenPetFood lieka 20%"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    142,
+    "*      (Josera/Exclusion/GreenPetFood ir taip gauna 20% per brand override)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    146,
+    "*   - VF turi brand override sluoksni (Josera, Exclusion, GreenPetFood, CHURU)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    186,
+    "'Exclusion'    => 0.15,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    199,
+    "'Exclusion'    => 0.20,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    211,
+    "'Exclusion',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    225,
+    "// KONSERVAI — 25% (v1.5.5, buvo 22%)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    226,
+    "'konservai-sunims' => 0.25,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    227,
+    "'konservai-katems' => 0.25,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    386,
+    "* @param string $normalized_brand  Konsoliduotas brand (Josera, Exclusion, etc.)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    437,
+    "// 4c) v1.7.0: NO-SALE BRAND saugiklis (Josera/Exclusion)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.php",
+    455,
+    "$competitive_brands = [ 'Josera', 'Exclusion', 'GreenPetFood', 'CHURU' ];"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing.php",
+    28,
+    "*     konservai (sunims/katems)              40% -> 35%"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing.php",
+    112,
+    "// KONSERVAI — 35% (v1.3.5)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing.php",
+    113,
+    "'konservai-sunims'  => 0.35,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing.php",
+    114,
+    "'konservai-katems'  => 0.35,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing.php",
+    161,
+    "'konservai-sunims', 'konservai-katems',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules.php",
+    9,
+    "private array $excluded_brands = ["
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules.php",
+    53,
+    "public function is_excluded_brand( string $brand_or_title ): bool {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules.php",
+    55,
+    "foreach ( $this->excluded_brands as $e ) {"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-vf-import.php",
+    183,
+    "update_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-vf-import.php",
+    187,
+    "update_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-vf-import.php",
+    205,
+    "update_post_meta( $post_id, '_vf_skip_reason', 'no_category_mapping' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-vf-import.php",
+    208,
+    "update_post_meta( $post_id, '_vf_skip_reason', 'no_category_mapping' );"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    29,
+    "*   Josera/Exclusion/GreenPetFood brand override (20%) — brand override neturi"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    40,
+    "*     konservai-sunims                        22%  -> 25%      +3pp"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    41,
+    "*     konservai-katems                        22%  -> 25%      +3pp"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    55,
+    "*   BRAND OVERRIDE NEPAKEICIAM (Josera/Exclusion/GreenPetFood 20%, CHURU 30%)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    114,
+    "*        Exclusion grupe     -> 15%"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    119,
+    "*      Exclusion Hypo/Mediter -> \"Exclusion\") vyksta normalize_brand()"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    124,
+    "*        Josera/Exclusion/GreenPetFood lieka 20%"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    129,
+    "*      (Josera/Exclusion/GreenPetFood ir taip gauna 20% per brand override)."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    133,
+    "*   - VF turi brand override sluoksni (Josera, Exclusion, GreenPetFood, CHURU)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    173,
+    "'Exclusion'    => 0.15,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    186,
+    "'Exclusion'    => 0.20,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    202,
+    "// KONSERVAI — 25% (v1.5.5, buvo 22%)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    203,
+    "'konservai-sunims' => 0.25,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    204,
+    "'konservai-katems' => 0.25,"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    363,
+    "* @param string $normalized_brand  Konsoliduotas brand (Josera, Exclusion, etc.)"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php",
+    419,
+    "$competitive_brands = [ 'Josera', 'Exclusion', 'GreenPetFood', 'CHURU' ];"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    11,
+    "*   - normalize_brand() — JOSERA EXCLU → Josera, EXCL MEDITER → Exclusion, etc."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    56,
+    "'konservai'  => [ 'konserv', 'drėgn' ],"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    71,
+    "'EXCL MEDITER'  => 'Exclusion',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    72,
+    "'EXCL HYPO'     => 'Exclusion',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    88,
+    "'Reg. konservuotas suaugusių šunų maistas' => 'konservai-sunims',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    89,
+    "'Reg. konservuotas jaunų šunų maistas'     => 'konservai-sunims',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    90,
+    "'Reguliarus konservuotas šuniukų maistas'  => 'konservai-sunims',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    165,
+    "'Reg. konservuotas suaugusių kačių maista' => 'konservai-katems',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    166,
+    "'Reg. konservuotas kačiukų maistas'        => 'konservai-katems',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    167,
+    "'Reg. konservuotas pagyven.kačių maistas'  => 'konservai-katems',"
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    225,
+    "* JOSERA EXCLU → Josera, EXCL MEDITER → Exclusion, etc."
+   ],
+   [
+    "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php",
+    302,
+    "case 'konservai':"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-parseris.php",
+    45,
+    "*      inkstu veikla\", ir inkstus SUDETYJE (subproduktai konservuose). Isimta."
+   ],
+   [
+    "wp-content/mu-plugins/petshop-parseris.php",
+    95,
+    "inkstus SUDETYJE (gyvuniniai subproduktai konservuose). Dry-run"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-parseris.php",
+    96,
+    "parode 240 preku — beveik visi konservai su subproduktais. */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-partijos.php",
+    45,
+    "* konservu desimtyje dezuciu po 6, pirmine pakuote dauginama is 60, o grupine"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-anketos-ataskaita.php",
+    735,
+    "$lbl = array( 'plan_dry' => 'Sausas maistas', 'plan_wet' => 'Konservai', 'calc_product' => 'Prekės skaičiuoklė' );"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    26,
+    "//  - konservu kategorijos (ne sausas maistas)"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    365,
+    "/** Maisto pošakiai (sausas/konservai/pašaras/lesalas) po rusies saknim. Fallback — visa saka. */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    373,
+    "if ( preg_match( '/maist|konserv|pa\\x{0161}ar|lesal|sausas|\\x{0161}lapias/iu', $t->name ) ) {"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    394,
+    "* S232: konservu (slapio maisto) kategoriju slug'ai."
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    395,
+    "* 'konservu-rinkiniai' SAMONINGAI NEITRAUKTA: mix-and-match rinkiniuose turini"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    401,
+    "return array( 'konservai-katems', 'konservai-sunims', 'animonda-konservai-sunims', 'miamor-katems' );"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    465,
+    "// (3% konservu) — tada nieko neteigiam ir kiekio neribojam, WooCommerce"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    625,
+    "// S222: paieska TIK maisto pošakiuose (sausas + konservai/šlapias) pagal gyvūną —"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-ataskaita-atsargos.php",
+    115,
+    "/** Stockout laikotarpyje: dienos be likučio × dienos paklausa × kaina = prarastos pajamos (konservatyviai). */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-ataskaita-atsargos.php",
+    258,
+    "echo '<p class=\"psru-aprasas\">Prarastos pajamos = dienos be likučio × vidutinė dienos paklausa × kaina. Konservatyvu: dalis pirkėjų būtų nusipirkę kitą prekę."
+   ],
+   [
+    "wp-content/mu-plugins/petshop-legacy-301.php",
+    17,
+    "* KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-akcijos.php",
+    439,
+    "* kiekvienai prekei (jaucio ausiai reikia −46 %, Exclusion −18 %)."
+   ],
+   [
+    "wp-content/mu-plugins/petshop-anketa-ivykiai.php",
+    61,
+    "'is_sterilised','feeding_type','feeding_type_other','wet_food_g',"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laiskai.php",
+    477,
+    "array( 'name' => 'Exclusion Hydrolyzed 12 kg', 'url' => home_url( '/parduotuve/' ) ),"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    50,
+    "'wet_food_g'   => isset($in['wet_food_g']) ? $in['wet_food_g'] : null,"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    241,
+    "// SVARBU: raso i TA PATI ps_pets.wet_food_g — antro duomenu saltinio NEKURIAM."
+   ],
+   [
+    "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    250,
+    "$raw = isset($p['wet_food_g']) ? $p['wet_food_g'] : null;"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    263,
+    "$wpdb->update($pf.'ps_pets', array('wet_food_g'=>$g,'updated_at'=>current_time('mysql')), array('id'=>$pet_id));"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    264,
+    "return new WP_REST_Response(array('ok'=>true,'wet_food_g'=>$g),200);"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    293,
+    "\"SELECT primary_product_id, current_weight_kg, activity_hint, birth_date, adult_expected_weight_kg, species, feeding_type, wet_food_g, user_id FROM {$pf}ps"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-feeding-calc-rest.php",
+    300,
+    "$in['wet_food_g']   = ( isset( $row->wet_food_g ) && $row->wet_food_g !== null && $row->wet_food_g !== '' ) ? (int) $row->wet_food_g : null;"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-katalogas.php",
+    840,
+    "'konservai'      => 15,"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-katalogas.php",
+    3552,
+    "$maistas = ( strpos( $t, 'maistas' ) !== false || strpos( $t, 'konserv' ) !== false"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-katalogas.php",
+    5261,
+    "if ( mb_strpos( $t, 'konserv' ) !== false ) { return (float) $g['konservai']; }"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-pilnumas.php",
+    174,
+    "if ( strpos( $t, 'maistas' ) !== false || strpos( $t, 'konserv' ) !== false"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    45,
+    "/** Dovanu prekiu ID (JSON, iki 3). Konservu dezems. */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    59,
+    "/* 12, ne 9: savininko sprendimas 2026-08-15 — konservu dezei devyniu"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    333,
+    "* Konservu dezems pakopu NEDAROM — savininko sprendimas 2026-08-15:"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    340,
+    "* pakopas ir neturi dovanos, konservu deze — atvirksciai. Techniskai"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    584,
+    "skanestams 3, konservams 6 (savininko sprendimas 2026-08-15)."
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    759,
+    "/* Konservu pavadinimai kito rasto („…: konservai šunims su X, 800 g\") —"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    869,
+    "/* Grupuojam pagal dydi — konservams tai duoda dvi eilutes (400/800). */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    908,
+    "if ( preg_match( '/maistas|konservai|kraikai|tualet/ui', $t->name ) ) { continue; }"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    935,
+    "* Adult Beef: konservai šunims su šviežia jautiena, 800 g\") kortelei per"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    946,
+    "$t = preg_replace( '/^.*?(konservai|šlapias maistas)\\s+(suaugusiems\\s+)?(šunims|katėms|kačiukams|šuniukams)\\s*(su\\s+)?/iu', '', $t );"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    948,
+    "/* Kataloge pasitaiko nukirstu pavadinimu („…Beef + Lamb: konserv\") —"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    951,
+    "if ( $t === '' || mb_strlen( $t ) < 3 || preg_match( '/^(konserv\\w*|šlapias( maistas)?|maistas)$/iu', $t ) ) {"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    1036,
+    "/* Dydzio lygmuo (konservu dezes). Jei nė vienas grupes laukas dydzio"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    1308,
+    "/* Konservu dezems (dydis nustatytas) — 4 stulpeliai ir mazesne foto:"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    1819,
+    "/* Konservu dezes — atskiros grupes, nes vitrinoje jos jungiamos"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    1821,
+    "'kons_sunims' => 'Konservai šunims',"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    1822,
+    "'kons_kates'  => 'Konservai katėms',"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    1826,
+    "/** Palyginimui: be diakritiku, mazosiomis — „Konservai sunims\" = „Konservai šunims\". */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    2045,
+    "echo '<div class=\"pslka-laukas\"><label>Pakuotė <span>konservams: 400 g, 800 g, 100 g; skanėstams palik tuščią</span></label>'"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    2112,
+    "/* Pakuotes dydis — tik konservu dezems. Tuscias = dydzio eilutes vitrinoje"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    2115,
+    "echo '<div class=\"pslka-laukas\"><label>Pakuotė <span>konservams; tuščia — eilutės nerodom</span></label>'"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    2770,
+    "dydzio eilute vitrinoje ir gauna konservu minimuma. */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-laukai.php",
+    2805,
+    "/* Konservu dezems: pakuotes dydis (vitrinoje virsutine eilute) ir"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-av-expiry.php",
+    18,
+    "* Iš ~960 AV prekių galiojimas svarbus ~300 (konservai, skanėstai, sausas maistas,"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-gavimas.php",
+    653,
+    "Exclusion prekes aprasyma — i „Aprasyma\" pateko `.b2b-black { ... }`. */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-rysiai.php",
+    271,
+    "konservu ir sauso maisto klaidina: konservuose ~80 % vandens,"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-rysiai.php",
+    317,
+    "/** Ar tai slapias maistas (konservai, paštetas, padazas). */"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-rysiai.php",
+    320,
+    "foreach ( array( 'wet', 'konserv', 'pastet', 'paštet', 'padaž', 'padaz', 'sultin', 'želė', 'zele', 'mousse' ) as $z ) {"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-rinkiniai.php",
+    123,
+    "*   Rinkinys gali buti IS BET KOKIU prekiu — ne tik konservu/skanestu/kramtalu."
+   ],
+   [
+    "wp-content/mu-plugins/petshop-rinkiniai.php",
+    1122,
+    "if ( mb_strpos( $nm, 'konserv' ) !== false ) { $out[] = 682; }"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-rinkiniai.php",
+    2693,
+    "if(nm.indexOf('konserv')>=0) res.porusis=682;"
+   ]
+  ],
+  "opt": {
+   "cmplz_excluded_posts_array": "a:0:{}"
+  },
+  "snippets": [
+   [
+    "92",
+    "VetFarmas inventorizacija v3",
+    "0"
+   ],
+   [
+    "94",
+    "SKU \\u2192 EAN matching i\\u0161 VetFarmas XML",
+    "0"
+   ],
+   [
+    "95",
+    "Vetocanis matching pagal pavadinim\\u0105",
+    "0"
+   ],
+   [
+    "98",
+    "vf_desc_peek",
+    "0"
+   ],
+   [
+    "101",
+    "vf_parser_v3",
+    "0"
+   ],
+   [
+    "155",
+    "petshop_brand_apply v7",
+    "0"
+   ],
+   [
+    "158",
+    " WC Categories — pre-VF-mapping cleanup",
+    "0"
+   ],
+   [
+    "161",
+    " VF Brands List",
+    "0"
+   ],
+   [
+    "163",
+    "VF Raw XML Sample",
+    "0"
+   ],
+   [
+    "187",
+    "VF Price Sync",
+    "0"
+   ],
+   [
+    "190",
+    "VF Price Repair v2",
+    "0"
+   ],
+   [
+    "193",
+    "Petshop SKU Supplier Info Lookup v1 (prekiu savikainai ieskoti)",
+    "0"
+   ],
+   [
+    "234",
+    "VF Gallery Dup Clean v1",
+    "0"
+   ],
+   [
+    "254",
+    "VF Block Before Create v2.0",
+    "0"
+   ],
+   [
+    "284",
+    "VF Supplier SKU Backfill v1",
+    "0"
+   ],
+   [
+    "286",
+    "VF Dublikatu Valymas v1",
+    "0"
+   ],
+   [
+    "296",
+    "Brandu Priskyrimas pagal Pavadinima v1",
+    "0"
+   ],
+   [
+    "298",
+    "Brandu Priskyrimas pagal Pavadinima v1",
+    "0"
+   ],
+   [
+    "306",
+    "Trash 2 Diagnoze v1",
+    "0"
+   ],
+   [
+    "396",
+    "Monoprotein Dry-Run v4 (brendai + riebalu fix)",
+    "0"
+   ],
+   [
+    "399",
+    "Monoprotein Dry-Run v7 (Family / Monge kons. / Animonda VF / kt.)",
+    "0"
+   ],
+   [
+    "514",
+    "Petshop Import-Risk Recon v1 (read-only)",
+    "0"
+   ],
+   [
+    "565",
+    "Petshop VF Sync v1.1 (reprice+stock+publish)",
+    "1"
+   ],
+   [
+    "572",
+    "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+    "1"
+   ],
+   [
+    "635",
+    "Petshop Recon Pries Testini Uzsakyma v1",
+    "0"
+   ],
+   [
+    "662",
+    "Petshop Attr Diag v1",
+    "0"
+   ],
+   [
+    "663",
+    "Petshop Attr Mech v1",
+    "0"
+   ],
+   [
+    "1005",
+    "Exclusion HY Feeding v1 (Vetfarmas OCR + PL HTML)",
+    "0"
+   ],
+   [
+    "1008",
+    "Exclusion NG Feeding v1 (Vetfarmas OCR + IT razioni)",
+    "0"
+   ],
+   [
+    "1016",
+    "Exclusion Recon v1 (read-only, likutis)",
+    "0"
+   ],
+   [
+    "1030",
+    "Exclusion Status Check v1 (read-only)",
+    "0"
+   ],
+   [
+    "1031",
+    "Exclusion post_content Feeding v1 (parseris)",
+    "0"
+   ],
+   [
+    "1032",
+    "Exclusion post_content Feeding v2 (visos lenteles)",
+    "0"
+   ],
+   [
+    "1034",
+    "Exclusion Gramai v1 (post_content, patikrinta ranka)",
+    "0"
+   ],
+   [
+    "1035",
+    "Exclusion Verify v1 (read-only, nepriklausomas)",
+    "0"
+   ],
+   [
+    "1036",
+    "Exclusion Verify v2 (read-only, nepriklausomas)",
+    "0"
+   ],
+   [
+    "1056",
+    "Anomaly Provenance v1 (read-only)",
+    "0"
+   ],
+   [
+    "1119",
+    "S212-C Baseline (read-only)",
+    "0"
+   ],
+   [
+    "1137",
+    "S212-C XML Audit (read-only)",
+    "0"
+   ],
+   [
+    "1140",
+    "S212-C HYHS02 Debug (read-only)",
+    "0"
+   ],
+   [
+    "1141",
+    "S212-C Exclusion Diag (read-only)",
+    "0"
+   ],
+   [
+    "1142",
+    "S212-C Exclusion Plan (read-only)",
+    "0"
+   ],
+   [
+    "1147",
+    "S212-C Create Tables DryRun (read-only)",
+    "0"
+   ],
+   [
+    "1148",
+    "S212-C Create Tables DryRun (read-only)",
+    "0"
+   ],
+   [
+    "1149",
+    "S212-C Check State (read-only)",
+    "0"
+   ],
+   [
+    "1150",
+    "S212-C Fix Tables (read-only)",
+    "0"
+   ],
+   [
+    "1152",
+    "S212-C Fix Tables v2 (read-only)",
+    "0"
+   ],
+   [
+    "1154",
+    "S212-C Cleanup3 (read-only)",
+    "0"
+   ],
+   [
+    "1163",
+    "S212-C Reimport Dry (read-only)",
+    "0"
+   ],
+   [
+    "1164",
+    "S212-C Reimport APPLY (read-only)",
+    "0"
+   ],
+   [
+    "1178",
+    "S212-C Cleanup5 (read-only)",
+    "0"
+   ],
+   [
+    "2384",
+    "Petshop Sources v1.1 (ps_sources lentele + NULL)",
+    "0"
+   ],
+   [
+    "2402",
+    "Petshop Sources v2.0 (registras + gyvi skaiciai)",
+    "0"
+   ],
+   [
+    "2404",
+    "Petshop Sources v2.1 (registras + palaikymas)",
+    "0"
+   ],
+   [
+    "2515",
+    "Petshop Sources v2.2 (registras + palaikymas + sandelio pildymas)",
+    "1"
+   ],
+   [
+    "4438",
+    "TEMP PS dep-075433",
+    "1"
+   ]
+  ],
+  "vf_path": "https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+  "vf_feed_bytes": 153,
+  "vf_exclusion_cnt": 0,
+  "vf_exclusion_pvz": []
+ }
+}
