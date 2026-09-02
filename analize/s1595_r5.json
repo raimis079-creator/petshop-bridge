@@ -1,0 +1,220 @@
+{
+ "v": "dep-114040",
+ "kurimas": 200,
+ "sid": 4481,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1595-R5",
+  "k3270": [
+   "\t\twc_delete_product_transients( $lid );",
+   "\t\t$sv = self::svarios_pakopos( $lid, self::pakopos( $lid ) );",
+   "\t\tupdate_post_meta( $lid, self::META_PAKOPOS, wp_json_encode( $sv['pakopos'] ) );",
+   "",
+   "\t\t$zinute = 'Pridėta prekių: ' . $prideta . '.';",
+   "\t\tif ( $praleista ) { $zinute .= ' Praleista dėl kito sandėlio: ' . implode( ', ', array_slice( $praleista, 0, 3 ) ) . '.'; }",
+   "\t\tif ( $sv['perspejimai'] ) { $zinute .= ' ' . implode( ' ', $sv['perspejimai'] ); }",
+   "\t\twp_send_json_success( array( 'zinute' => $zinute, 'prideta' => $prideta ) );",
+   "\t}",
+   "",
+   "\t/** Filtru reiksmes su kiekiais — imamos is realiu prekiu, ne rasomos ranka. */",
+   "\tpublic static function filtru_reiksmes() {",
+   "\t\t$kesas = get_transient( 'ps_laukai_filtrai' );",
+   "\t\tif ( is_array( $kesas ) ) { return $kesas; }",
+   "\t\t$r = array( 'kategorijos' => array(), 'baltymai' => array(), 'mityba' => array(), 'grudai' => array() );",
+   "\t\tforeach ( array( 95, 96, 97, 98 ) as $tid ) {",
+   "\t\t\t$t = get_term( $tid, 'product_cat' );",
+   "\t\t\tif ( $t && ! is_wp_error( $t ) ) { $r['kategorijos'][] = array( (string) $tid, $t->name, (int) $t->count ); }",
+   "\t\t}",
+   "\t\t$q = new WP_Query( array( 'post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => -1, 'fields' => 'ids',",
+   "\t\t\t'tax_query' => array( array( 'taxonomy' => 'product_cat', 'field' => 'term_id',",
+   "\t\t\t\t'terms' => array( 95, 96, 97, 98 ), 'include_children' => true ) ) ) );",
+   "\t\t$sk = array( 'pa_baltymu_saltinis' => array(), 'pa_speciali_mityba' => array(), 'pa_be_grudu' => array() );",
+   "\t\tforeach ( $q->posts as $pid ) {",
+   "\t\t\tforeach ( $sk as $tax => $x ) {",
+   "\t\t\t\tforeach ( (array) wp_get_post_terms( $pid, $tax, array( 'fields' => 'names' ) ) as $n ) {",
+   "\t\t\t\t\t$sk[ $tax ][ $n ] = ( $sk[ $tax ][ $n ] ?? 0 ) + 1;",
+   "\t\t\t\t}",
+   "\t\t\t}",
+   "\t\t}",
+   "\t\tforeach ( array( 'baltymai' => 'pa_baltymu_saltinis', 'mityba' => 'pa_speciali_mityba', 'grudai' => 'pa_be_grudu' ) as $k => $tax ) {",
+   "\t\t\tarsort( $sk[ $tax ] );",
+   "\t\t\tforeach ( $sk[ $tax ] as $n => $c ) { if ( $c >= 3 ) { $r[ $k ][] = array( $n, $n, $c ); } }",
+   "\t\t}"
+  ],
+  "tr": {
+   "kategorijos": [
+    [
+     "95",
+     "Skanėstai šunims",
+     295
+    ],
+    [
+     "96",
+     "Skanėstai katėms",
+     90
+    ],
+    [
+     "97",
+     "Skanėstai graužikams",
+     22
+    ],
+    [
+     "98",
+     "Skanėstai paukščiams",
+     3
+    ]
+   ],
+   "baltymai": [
+    [
+     "Vištiena",
+     "Vištiena",
+     124
+    ],
+    [
+     "Jautiena",
+     "Jautiena",
+     54
+    ],
+    [
+     "Antiena",
+     "Antiena",
+     37
+    ],
+    [
+     "Lašiša",
+     "Lašiša",
+     23
+    ],
+    [
+     "Žuvis (balta)",
+     "Žuvis (balta)",
+     20
+    ],
+    [
+     "Žvėriena",
+     "Žvėriena",
+     17
+    ],
+    [
+     "Triušiena",
+     "Triušiena",
+     17
+    ],
+    [
+     "Ėriena",
+     "Ėriena",
+     17
+    ],
+    [
+     "Kiauliena",
+     "Kiauliena",
+     10
+    ],
+    [
+     "Tunas",
+     "Tunas",
+     7
+    ],
+    [
+     "Kalakutiena",
+     "Kalakutiena",
+     4
+    ]
+   ],
+   "mityba": [
+    [
+     "Svorio kontrolei",
+     "Svorio kontrolei",
+     16
+    ],
+    [
+     "Dantims",
+     "Dantims",
+     5
+    ]
+   ],
+   "grudai": [
+    [
+     "Be grūdų",
+     "Be grūdų",
+     90
+    ],
+    [
+     "Su ryžiais",
+     "Su ryžiais",
+     30
+    ],
+    [
+     "Su grūdais",
+     "Su grūdais",
+     27
+    ]
+   ]
+  },
+  "k1770": [
+   "\t * Grupe = lango skirstymas: skanestai sunims, skanestai katems, kramtalai.",
+   "\t * Imama is krepsio prekiu kategoriju, ne rasoma ranka — kitaip savininkas",
+   "\t * turetu prizieti dar viena lauka, kuris gali nesutapti su tikrove.",
+   "\t */",
+   "\tpublic static function grupe( $lid ) {",
+   "\t\t$rankinis = get_post_meta( $lid, '_ps_laukas_grupe', true );",
+   "\t\tif ( $rankinis ) {",
+   "\t\t\t/* Meta gali buti irasyta ne raktu, o grupes VARDU (taip nutiko kuriant",
+   "\t\t\t   testines dezes per koda). Filtrai lygina raktus, tad vardas duotu",
+   "\t\t\t   tuscia sarasa. Priimam abu — ir grazinam rakta. */",
+   "\t\t\t$vardai = self::grupiu_vardai();",
+   "\t\t\tif ( isset( $vardai[ $rankinis ] ) ) { return $rankinis; }",
+   "\t\t\tforeach ( $vardai as $rakt => $vard ) {",
+   "\t\t\t\tif ( self::sulyginti( $vard ) === self::sulyginti( $rankinis ) ) { return $rakt; }",
+   "\t\t\t}",
+   "\t\t\treturn $rankinis;",
+   "\t\t}",
+   "",
+   "\t\t/* Pirma — pats rinkinys: jo pavadinimas ir kategorijos. Kramtalai guli",
+   "\t\t   „Skanestu sunims\" kategorijoje, todel is vien krepsio prekiu ju",
+   "\t\t   atskirti neimanoma — rinkinys pats pasako, kas jis toks. */",
+   "\t\t$savo = get_the_title( $lid ) . ' ' . implode( ' ',",
+   "\t\t\t(array) wp_get_post_terms( $lid, 'product_cat', array( 'fields' => 'names' ) ) );",
+   "\t\tif ( preg_match( '/kramt/iu', $savo ) ) { return 'kramtalai'; }",
+   "\t\tif ( preg_match( '/kat[ėe]/iu', $savo ) ) { return 'kates'; }",
+   "",
+   "\t\t$kramtalas = false; $kates = false; $sunys = false;",
+   "\t\tforeach ( self::krepsys( $lid ) as $cid ) {",
+   "\t\t\t$kat = wp_get_post_terms( $cid, 'product_cat', array( 'fields' => 'names' ) );",
+   "\t\t\tforeach ( (array) $kat as $k ) {",
+   "\t\t\t\tif ( preg_match( '/kramt/iu', $k ) ) { $kramtalas = true; }",
+   "\t\t\t\tif ( preg_match( '/kat[ėe]ms/iu', $k ) ) { $kates = true; }",
+   "\t\t\t\tif ( preg_match( '/šunims|sunims/iu', $k ) ) { $sunys = true; }",
+   "\t\t\t}",
+   "\t\t\t$pav = get_the_title( $cid );",
+   "\t\t\tif ( preg_match( '/kramt/iu', $pav ) ) { $kramtalas = true; }",
+   "\t\t\tif ( preg_match( '/kat[ėe]ms/iu', $pav ) ) { $kates = true; }",
+   "\t\t\tif ( preg_match( '/šunims|sunims/iu', $pav ) ) { $sunys = true; }",
+   "\t\t}",
+   "\t\tif ( $kramtalas ) { return 'kramtalai'; }",
+   "\t\tif ( $kates && ! $sunys ) { return 'kates'; }",
+   "\t\treturn 'sunys';",
+   "\t}",
+   "",
+   "\tpublic static function grupiu_vardai() {",
+   "\t\treturn array(",
+   "\t\t\t'sunys'      => 'Skanėstai šunims',",
+   "\t\t\t'kates'      => 'Skanėstai katėms',",
+   "\t\t\t'kramtalai'  => 'Kramtalai',",
+   "\t\t\t/* Konservu dezes — atskiros grupes, nes vitrinoje jos jungiamos",
+   "\t\t\t   i dydzio + poreikio eilutes ir su skanestais nesimaiso. */",
+   "\t\t\t'kons_sunims' => 'Konservai šunims',",
+   "\t\t\t'kons_kates'  => 'Konservai katėms',",
+   "\t\t);",
+   "\t}",
+   "",
+   "\t/** Palyginimui: be diakritiku, mazosiomis — „Konservai sunims\" = „Konservai šunims\". */",
+   "\tprivate static function sulyginti( $t ) {",
+   "\t\t$t = mb_strtolower( trim( (string) $t ) );",
+   "\t\treturn strtr( $t, array( 'ą'=>'a','č'=>'c','ę'=>'e','ė'=>'e','į'=>'i','š'=>'s','ų'=>'u','ū'=>'u','ž'=>'z' ) );"
+  ]
+ }
+}
