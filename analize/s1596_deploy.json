@@ -1,0 +1,77 @@
+{
+ "v": "dep-120203",
+ "kurimas": 200,
+ "sid": 4486,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1596-D1",
+  "md5": "6fb77a24b5d1f7c61ed6e1b4faed2740",
+  "tokens": 29441,
+  "old_md5": "88b1fc3c69a474d50ad59f5e068c8dd8",
+  "write": 187519,
+  "disk_md5": "6fb77a24b5d1f7c61ed6e1b4faed2740"
+ },
+ "V": {
+  "VERSIJA": "S1596-D1",
+  "versija": "1.45",
+  "meniu": [
+   [
+    "Susidėk konservų rinkinį šunims",
+    "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+    "34944 publish Konservu deze 400 Be vistienos"
+   ],
+   [
+    "Susidėk konservų rinkinį katėms",
+    "https://dev.avesa.lt/product/test-konservu-deze-katei-isrankioms/",
+    "34947 publish Konservų rinkinys katėms"
+   ],
+   [
+    "Susidėk skanėstų rinkinį šunims",
+    "https://dev.avesa.lt/kategorija/rinkiniai/",
+    "—"
+   ],
+   [
+    "Susidėk skanėstų rinkinį katėms",
+    "https://dev.avesa.lt/product/skanestai-katems2/",
+    "34938 publish Skanėstų dėžutė katei"
+   ],
+   [
+    "Susidėk kramtalų rinkinį šunims",
+    "https://dev.avesa.lt/kategorija/rinkiniai/",
+    "—"
+   ]
+  ],
+  "iejimas": {
+   "kons_kates": 34947,
+   "kons_sunims": 34944,
+   "sunys": 0,
+   "kates": 34938,
+   "kramtalai": 0
+  },
+  "http": [
+   [
+    "Susidėk konservų rinkinį šunims",
+    200
+   ],
+   [
+    "Susidėk konservų rinkinį katėms",
+    200
+   ],
+   [
+    "Susidėk skanėstų rinkinį šunims",
+    200
+   ],
+   [
+    "Susidėk skanėstų rinkinį katėms",
+    200
+   ],
+   [
+    "Susidėk kramtalų rinkinį šunims",
+    200
+   ]
+  ]
+ }
+}
