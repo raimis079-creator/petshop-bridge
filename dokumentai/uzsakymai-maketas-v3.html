@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Užsakymai · trys keliai — maketas v3</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--fonas:#EEF1EF;--popierius:#fff;--rasalas:#1B2620;--pilka:#66716B;--linija:#D7DDD9;
+--zalia:#2E7D4F;--zalia-s:#E3F1E8;--melyna:#2B5F8A;--melyna-s:#E2ECF5;--gintaras:#B9731A;--gintaras-s:#FBEFD9;--raudona:#B23A3A;--raudona-s:#F8E3E3}
+*{box-sizing:border-box}html,body{margin:0;background:var(--fonas);color:var(--rasalas);font:14px/1.45 "IBM Plex Sans",system-ui,sans-serif}
+button{font:inherit;cursor:pointer}a{color:var(--melyna);text-decoration:none}a:hover{text-decoration:underline}:focus-visible{outline:2px solid var(--melyna);outline-offset:2px}
+.wp{position:fixed;left:0;top:0;bottom:0;width:36px;background:#1d2327;display:flex;flex-direction:column;align-items:center;padding-top:14px;gap:14px}.wp i{width:18px;height:18px;border-radius:4px;background:#3c434a;display:block}.wp i.on{background:#7a8b82}
+.juosta{position:sticky;top:0;z-index:20;margin-left:36px;background:var(--popierius);border-bottom:1px solid var(--linija);height:54px;display:flex;align-items:stretch;padding:0 18px 0 14px}
+.zenklas{display:flex;align-items:center;gap:8px;font-weight:600;margin-right:22px;white-space:nowrap;color:var(--rasalas)}.zenklas:hover{color:var(--zalia);text-decoration:none}
+.juosta nav{display:flex;flex:1}.juosta nav button{background:none;border:0;border-bottom:3px solid transparent;padding:0 12px;color:var(--pilka);display:flex;align-items:center;gap:7px;white-space:nowrap}.juosta nav button.on{color:var(--rasalas);border-bottom-color:var(--zalia);font-weight:600}
+.sk{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--fonas);color:var(--pilka);font-size:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
+.sk.z{background:var(--zalia-s);color:var(--zalia)}.sk.m{background:var(--melyna-s);color:var(--melyna)}.sk.g{background:var(--gintaras-s);color:var(--gintaras)}.sk.r{background:var(--raudona-s);color:var(--raudona)}
+.paieska{display:flex;align-items:center;gap:8px;margin-left:auto}.paieska input{width:230px;height:32px;border:1px solid var(--linija);border-radius:6px;padding:0 10px;font:inherit;background:var(--fonas)}
+main{margin-left:36px;padding:14px 24px 80px;max-width:1240px}
+h1{font-size:20px;font-weight:600;margin:6px 0 12px;display:flex;align-items:baseline;gap:12px}h1 small{font-weight:400;color:var(--pilka);font-size:14px}
+.eiles{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}.eiles button{border:1px solid var(--linija);background:var(--popierius);border-radius:20px;padding:5px 12px;display:flex;gap:7px;align-items:center;color:var(--pilka)}.eiles button.on{border-color:var(--rasalas);color:var(--rasalas);font-weight:600}.eiles .sk{height:18px;font-size:11px}
+table{width:100%;border-collapse:collapse;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;overflow:hidden}
+th{font-weight:500;color:var(--pilka);text-align:left;padding:9px 12px;border-bottom:1px solid var(--linija);font-size:12px}td{padding:10px 12px;border-bottom:1px solid var(--linija);vertical-align:top}tr:last-child td{border-bottom:0}tr.eil:hover td{background:#FAFBFA;cursor:pointer}
+.nr{font-weight:600}.pilkas{color:var(--pilka)}.maz{font-size:12px}
+.kel{display:inline-flex;align-items:center;gap:5px;border-radius:4px;padding:2px 7px;font-size:12px;font-weight:600;white-space:nowrap}
+.kel.sandelis{background:var(--zalia-s);color:var(--zalia)}.kel.tk{background:var(--melyna-s);color:var(--melyna)}.kel.ts{background:var(--gintaras-s);color:var(--gintaras)}.kel.klaus{background:var(--raudona-s);color:var(--raudona)}
+.kel i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.v{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--linija);background:var(--popierius);border-radius:6px;padding:6px 12px;font-weight:500;white-space:nowrap}.v.p{background:var(--zalia);border-color:var(--zalia);color:#fff}.v.p:hover{background:#25683F}.v:hover{border-color:var(--rasalas)}.v.t{border:0;color:var(--melyna);padding:6px 4px}.v[disabled]{opacity:.45;cursor:default}
+td.d{text-align:right;white-space:nowrap}
+.pastaba{color:var(--pilka);font-size:13px}.kortele{background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:16px 18px;margin-bottom:14px}
+.tuscia{background:var(--popierius);border:1px dashed var(--linija);border-radius:8px;padding:28px;text-align:center;color:var(--pilka)}
+/* skydas */
+.uzdanga{position:fixed;inset:0;background:rgba(27,38,32,.25);z-index:30;display:none}.uzdanga.on{display:block}
+.skydas{position:fixed;top:0;right:0;bottom:0;width:600px;background:var(--popierius);z-index:31;transform:translateX(100%);transition:transform .18s ease-out;box-shadow:-8px 0 30px rgba(27,38,32,.12);display:flex;flex-direction:column}.skydas.on{transform:none}
+@media (prefers-reduced-motion:reduce){.skydas{transition:none}}
+.skydas header{padding:16px 20px 12px;border-bottom:1px solid var(--linija);display:flex;gap:12px;align-items:flex-start}.skydas header h2{margin:0;font-size:18px}
+.uzdaryti{margin-left:auto;background:none;border:0;font-size:22px;color:var(--pilka);line-height:1}
+.kunas{padding:14px 20px;overflow:auto;flex:1}
+.eilute{padding:10px 0;border-bottom:1px solid var(--linija)}.eilute:last-child{border-bottom:0}
+.eilute .virsus{display:flex;gap:10px;align-items:baseline}.eilute .k{width:30px;text-align:right;color:var(--pilka)}.eilute .p{flex:1;font-weight:500}
+.keliai{display:flex;gap:6px;margin:8px 0 6px 40px;flex-wrap:wrap}
+.keliai button{border:1px solid var(--linija);background:var(--popierius);border-radius:6px;padding:5px 10px;color:var(--pilka);display:inline-flex;gap:6px;align-items:center}
+.keliai button.on.sandelis{border-color:var(--zalia);background:var(--zalia-s);color:var(--zalia);font-weight:600}
+.keliai button.on.tk{border-color:var(--melyna);background:var(--melyna-s);color:var(--melyna);font-weight:600}
+.keliai button.on.ts{border-color:var(--gintaras);background:var(--gintaras-s);color:var(--gintaras);font-weight:600}
+.keliai button[disabled]{opacity:.4;cursor:not-allowed}
+.zingsneliai{margin-left:40px;display:flex;gap:6px;flex-wrap:wrap;font-size:12px}
+.zingsneliai span{padding:2px 8px;border-radius:10px;background:var(--fonas);color:var(--pilka)}
+.zingsneliai span.ok{background:var(--zalia-s);color:var(--zalia)}.zingsneliai span.dabar{background:var(--rasalas);color:#fff}
+.kodel{margin-left:40px;font-size:12px;color:var(--pilka)}
+.blokas{background:var(--fonas);border-radius:8px;padding:10px 12px;margin:10px 0}.blokas b{display:block;font-size:12px;color:var(--pilka);font-weight:500;margin-bottom:3px}
+.skydas footer{padding:12px 20px;border-top:1px solid var(--linija);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.zurnalas{font-size:12px;color:var(--pilka)}.zurnalas div{padding:2px 0}
+.tostas{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--rasalas);color:#fff;padding:10px 16px;border-radius:8px;z-index:40;display:none;box-shadow:0 8px 24px rgba(0,0,0,.2)}.tostas.on{display:block}
+.legenda{display:flex;gap:14px;align-items:center;margin:0 0 14px;font-size:13px;color:var(--pilka)}
+.gyvas{position:fixed;right:18px;bottom:18px;z-index:25;display:flex;gap:8px}
+.gyvas button{border:1px solid var(--linija);background:var(--popierius);border-radius:20px;padding:6px 12px;color:var(--pilka)}
+.naujas td{animation:nauj 1.2s ease-out}@keyframes nauj{from{background:var(--zalia-s)}to{background:transparent}}
+</style>
+</head>
+<body>
+<div class="wp" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+<header class="juosta">
+  <a class="zenklas" href="https://petshop.lt" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z"/></svg>petshop.lt</a>
+  <nav><button class="on">Užsakymai <span class="sk z" id="sk-visi">0</span></button><button>Prekės <span class="sk g">438</span></button><button>Gavimas</button><button>Tiekimas <span class="sk" id="sk-tiek">0</span></button><button>Rinkiniai</button><button>Akcijos</button><button>Laiškai <span class="sk" id="sk-laisk">0</span></button></nav>
+  <div class="paieska"><input placeholder="Nr., klientas, prekė, SKU…"></div>
+</header>
+
+<main>
+<h1>Užsakymai <small id="antr"></small></h1>
+<div class="legenda">Kelias: <span class="kel sandelis"><i></i>Avesa sandėlis</span> <span class="kel tk"><i></i>Prins → klientui</span> <span class="kel ts"><i></i>Prins → Avesa sandėlį</span> <span class="pilkas">· kiekviena prekė savo keliu; viskas, kas išeina iš Avesos, renkama ir siunčiama kartu</span></div>
+<div class="eiles" id="eiles"></div>
+<div id="sarasas"></div>
+<p class="pastaba" id="paaisk"></p>
+</main>
+
+<div class="uzdanga" id="uzdanga"></div>
+<aside class="skydas" id="skydas">
+  <header><div><h2 id="s-nr"></h2><div class="pilkas maz" id="s-kl"></div></div><button class="uzdaryti" id="s-uzd">×</button></header>
+  <div class="kunas">
+    <div class="pastaba" style="margin-bottom:6px">Kiekvienai prekei — kelias. Sistema pažymi, ką siūlo; keisk bet kada, kol neišsiųsta. Viskas, kas eina iš Avesos, renkama viena siunta, kai visos jos prekės vietoje.</div>
+    <div id="s-eil"></div>
+    <div class="blokas"><b>Pristatymas klientui</b><span id="s-pr"></span></div>
+    <div class="blokas"><b>Žurnalas</b><div class="zurnalas" id="s-zur"></div></div>
+  </div>
+  <footer id="s-v"></footer>
+</aside>
+<div class="tostas" id="tostas"></div>
+<div class="gyvas"><button id="ateina">＋ Atėjo naujas užsakymas</button><button id="atstatyti">Atstatyti maketą</button></div>
+
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEL={sandelis:'Avesa sandėlis',tk:'→ klientui',ts:'→ Avesa sandėlį'};
+function kelPav(l,kel){ if(kel==='sandelis') return 'Avesa sandėlis'; const t=l.tiek?TIEK[l.tiek]:'Tiekėjas'; return kel==='tk'?t+' → klientui':t+' → Avesa sandėlį'; }
+const TIEK={vf:'Vetfarmas',zb:'Žalioji Banga',amb:'Ambrosia',qua:'Quattro',pri:'Prins',bel:'Belacor'};
+/* Eilutė: {q,pav,sku,tiek:null|'vf'..., av:likutis sandėlyje, kel:null|'sandelis'|'tk'|'ts', zing:{} } */
+let U, laikas;
+function pradzia(){
+  laikas=8*60+2;
+  U=[
+    uz(35434,'AUDITAS Testas 21','Venipak kurjeris',37.03,[e(1,'Animonda Carny Adult Beef, 400 g','83722',null,24),e(1,'Prins Diet Skin & Intestinal, 1,5 kg','73007','pri',0)]),
+    uz(35422,'AUDITAS Testas 9','Venipak paštomatas',16.44,[e(1,'Ambrosia Lamb & Fresh Venison, 2 kg','AMLE02','amb',0)]),
+    uz(35420,'AUDITAS Testas 7','Venipak kurjeris',37.11,[e(1,'Churu Popn Serve, 35 g','EU754','vf',0),e(1,'Trixie stovas su dubenėliais','0TR163','zb',0)]),
+    uz(35421,'AUDITAS Testas 8','Venipak kurjeris',54.03,[e(1,'Animonda Carny Adult Beef, 400 g','83722',null,24),e(1,'Quattro Adult Salmon & Krill, 1,5 kg','2.011761','qua',0),e(1,'Prins Diet Skin & Intestinal, 1,5 kg','73007','pri',0)]),
+    uz(35428,'AUDITAS Testas 15','Venipak kurjeris · 3 dėžės',69.79,[e(3,'Animonda Carny Adult Beef, 400 g','83722',null,24)]),
+    uz(35423,'AUDITAS Testas 10','Venipak paštomatas',19.13,[e(3,'Žaislas šuniui — kaktusas Fernando','35074',null,0)]),
+    uz(35090,'Sart tr','Venipak paštomatas',19.79,[e(1,'Ambrosia Lamb & Venison, 12 kg','AMLE12','amb',0),e(1,'FURminator šampūnas, 473 ml','691756','vf',0),e(1,'Hikari Cichlid Excel Mini, 250 g','HK-1',null,3)]),
+  ];
+  // sistema pasiūlo kelią
+  U.forEach(o=>o.eil.forEach(l=>{ l.kel=siulymas(l); l.zing={}; }));
+  // pora jau pažengusių, kad matytųsi visos eilės
+  U[1].rusiuota=true; U[1].eil[0].zing={lipdukas:1}; U[3].rusiuota=true; U[3].eil[1].kel='ts'; U[3].eil[1].zing={uzsakyta:1}; U[4].rusiuota=true; U[4].eil[0].zing={surinkta:1,lipdukas:1}; U[6].rusiuota=true;
+  U.forEach(o=>o.zur=['08:02 Apmokėta · kelias pasiūlytas']);
+  U[3].zur.push('08:05 Quattro → sandėlis · užsakyta (partija #10)');
+}
+function uz(nr,kl,pr,suma,eil){return{nr,kl,pr,suma,eil,issiusta:false,rusiuota:false,zur:[]}}
+function e(q,pav,sku,tiek,av){return{q,pav,sku,tiek,av,kel:null,zing:{}}}
+function siulymas(l){ if(l.av>=l.q) return 'sandelis'; if(l.tiek) return 'tk'; return null; }
+function galimi(l){ return {sandelis:true, tk:!!l.tiek, ts:!!l.tiek}; }
+/* --- būsena --- */
+function zingsniai(l){
+  if(l.kel==='sandelis') return [['surinkta','Surinkti'],['lipdukas','Lipdukas'],['issiusta','Išsiųsta']];
+  if(l.kel==='tk') return [['lipdukas','Lipdukas'],['laiskas','Laiškas '+(l.tiek?TIEK[l.tiek]:'tiekėjui')],['issiusta',(l.tiek?TIEK[l.tiek]:'Tiekėjas')+' išsiuntė']];
+  if(l.kel==='ts') return [['uzsakyta','Užsakyti iš '+(l.tiek?TIEK[l.tiek]:'tiekėjo')],['gauta','Gauta į Avesą'],['surinkta','Surinkti'],['lipdukas','Lipdukas'],['issiusta','Išsiųsta']];
+  return [];
+}
+/* Avesos siunta = visos eilutės, kurios išeina iš Avesos (sandelis + ts). Ji viena: renkama tik kai VISOS jos prekės Avesoje. */
+function avesoje(l){ return l.kel==='sandelis' || (l.kel==='ts' && l.zing.gauta); }
+function avesosLaukia(o){ return o.eil.some(l=>l.kel==='ts' && !l.zing.gauta); }
+function kitas(l,o){ const z=zingsniai(l); for(const [k,p] of z){ if(l.zing[k]) continue; if(o&&(k==='surinkta')&&avesosLaukia(o)) return {k:'laukiam',p:'Laukiam '+o.eil.filter(x=>x.kel==='ts'&&!x.zing.gauta).map(x=>TIEK[x.tiek]).join(', ')}; return {k,p}; } return null; }
+function eile(o){
+  if(o.issiusta) return 'issiusti';
+  if(!o.rusiuota || o.eil.some(l=>!l.kel)) return 'rusiuoti';
+  const kit=o.eil.map(l=>kitas(l,o)).filter(Boolean);
+  if(!kit.length) return 'issiusti';
+  if(kit.some(x=>x.k==='uzsakyta')) return 'laukiam';
+  if(kit.some(x=>x.k==='surinkta')) return 'surinkti';
+  if(kit.some(x=>x.k==='laiskas'||(x.k==='lipdukas'&&o.eil.some(l=>l.kel==='tk'&&kitas(l,o)&&kitas(l,o).k==='lipdukas')))) return 'laiskai';
+  if(kit.some(x=>x.k==='laukiam'||x.k==='gauta')) return 'laukiam';
+  if(kit.every(x=>x.k==='issiusta'||x.k==='lipdukas')) return 'paruosta';
+  return 'surinkti';
+}
+const EILES=[['rusiuoti','Rūšiuoti','r'],['laukiam','Laukiam iš tiekėjų','g'],['surinkti','Surinkti Avesoje','z'],['laiskai','Laiškai tiekėjams','m'],['paruosta','Paruošta siųsti','z'],['issiusti','Išsiųsti','']];
+const PAAISK={rusiuoti:'Kiekvienas naujas užsakymas pirma čia. Peržiūri, iš kur eina kiekviena prekė (sistema pasiūlo), pataisai jei reikia, spaudi „Surūšiuota“. Tik tada užsakymas keliauja į darbą.',laukiam:'Kažkas dar turi atvažiuoti: tiekėjui neužsakyta arba užsakyta ir laukiam. Avesos siunta nerenkama, kol visos jos prekės neatvyko.',surinkti:'Visos Avesos siuntos prekės jau vietoje — galima rinkti. Surinkti → Lipdukas → Išsiųsta. Prekės, kurias tiekėjas siunčia pats, čia nerodomos.',laiskai:'Tiekėjas siunčia tiesiai klientui. Lipdukas → laiškas tiekėjui (visi jo užsakymai viename laiške).',paruosta:'Supakuota su lipduku arba perduota tiekėjui. „Išsiųsta“ uždaro ir išsiunčia klientui sekimo numerius.',issiusti:'Šiandien įvykdyti.'};
+let dabar='rusiuoti';
+function piesti(){
+  const grup={}; EILES.forEach(([k])=>grup[k]=[]);
+  U.forEach(o=>{ grup[eile(o)].push(o); });
+  $('#eiles').innerHTML=EILES.map(([k,p,c])=>'<button data-e="'+k+'" class="'+(k===dabar?'on':'')+'">'+p+' <span class="sk '+(grup[k].length?c:'')+'">'+grup[k].length+'</span></button>').join('');
+  $$('#eiles button').forEach(b=>b.onclick=()=>{dabar=b.dataset.e;piesti();});
+  $('#sk-visi').textContent=U.filter(o=>!o.issiusta).length; $('#sk-tiek').textContent=U.flatMap(o=>o.eil).filter(l=>l.kel==='ts'&&!l.zing.gauta).length; $('#sk-laisk').textContent=grup.laiskai.length;
+  $('#antr').textContent='trečiadienis · '+hh()+' · užsakymai krenta nuolat, partijos nėra';
+  $('#paaisk').textContent=PAAISK[dabar];
+  const s=grup[dabar];
+  if(!s.length){ $('#sarasas').innerHTML='<div class="tuscia">Čia tuščia — nieko daryti nereikia.</div>'; return; }
+  $('#sarasas').innerHTML='<table><thead><tr><th>Užsakymas</th><th>Klientas</th><th>Prekės ir keliai</th><th>Pristatymas</th><th class="d">Suma</th><th class="d">Kitas žingsnis</th></tr></thead><tbody>'+s.map(o=>{
+    const kit=pirmasVeiksmas(o);
+    return '<tr class="eil'+(o.naujas?' naujas':'')+'" data-nr="'+o.nr+'"><td><span class="nr">#'+o.nr+'</span><br><span class="pilkas maz">'+(o.laikas||'08:02')+'</span></td><td>'+o.kl+'</td><td>'+o.eil.map(l=>'<div>'+kelZyme(l)+' '+l.q+'× '+l.pav++bukle(l)+'</div>').join('')+'</td><td>'+o.pr+'</td><td class="d">'+o.suma.toFixed(2).replace('.',',')+' €</td><td class="d">'+(kit?(kit.pasyvus?'<span class="kel ts"><i></i>'+kit.p+'</span>':'<button class="v p" data-v="'+kit.k+'" data-nr="'+o.nr+'" data-i="'+kit.i+'">'+kit.p+'</button>'):'<span class="pilkas">—</span>')+'</td></tr>'; }).join('')+'</tbody></table>';
+  U.forEach(o=>o.naujas=false);
+}
+function kelZyme(l){ if(!l.kel) return '<span class="kel klaus"><i></i>kur?</span>'; return '<span class="kel '+l.kel+'"><i></i>'+kelPav(l,l.kel)+'</span>'; }
+function bukle(l){ const k=kitas(l); if(!l.kel) return ''; if(!k) return ' <span class="pilkas maz">✓ išsiųsta</span>'; const z=zingsniai(l); const pad=z.filter(([kk])=>l.zing[kk]).map(([,p])=>p.toLowerCase()); return pad.length?' <span class="pilkas maz">✓ '+pad.join(', ')+'</span>':''; }
+function pirmasVeiksmas(o){
+  if(o.issiusta) return null;
+  const i=o.eil.findIndex(l=>!l.kel); if(i>=0) return {k:'kelias',p:'Pasirinkti kelią',i};
+  if(!o.rusiuota) return {k:'rusiuota',p:'Surūšiuota',i:0};
+  const tvarka=['uzsakyta','gauta','surinkta','lipdukas','laiskas','issiusta'];
+  for(const t of tvarka){ const j=o.eil.findIndex(l=>{const k=kitas(l,o);return k&&k.k===t;}); if(j>=0){ const k=kitas(o.eil[j],o); return {k:k.k,p:k.p,i:j}; } }
+  const j=o.eil.findIndex(l=>{const k=kitas(l,o);return k&&k.k==='laukiam';}); if(j>=0) return {k:'laukiam',p:kitas(o.eil[j],o).p,i:j,pasyvus:true};
+  return null;
+}
+/* --- veiksmai --- */
+const ZODIS={rusiuota:'Surūšiuota — užsakymas darbe',surinkta:'Surinkta — surinkimo lapas atspausdintas',lipdukas:'Lipdukas — siunta registruota Venipak, lipdukas spausdinamas',laiskas:'Laiškas tiekėjui išsiųstas su lipduku ir manifestu',uzsakyta:'Užsakyta iš tiekėjo — laiškas išsiųstas, laukiam',gauta:'Gauta — prekė sandėlyje, pereina į „Surinkti“',issiusta:'Išsiųsta — klientui išsiųsti sekimo numeriai'};
+function veiksmas(nr,i,k){
+  const o=U.find(x=>x.nr==nr); const l=o.eil[i];
+  if(k==='kelias'){ atidaryti(nr); return; }
+  if(k==='rusiuota'){ o.rusiuota=true; o.zur.push(hh()+' Surūšiuota: '+o.eil.map(x=>x.pav.split(',')[0]+' — '+kelPav(x,x.kel)).join('; ')+' · Testuotojas'); laikas+=2; pranesti(ZODIS[k]); piesti(); uzdaryti(); return; }
+  if(k==='laukiam') return;
+  if(k==='surinkta'||k==='lipdukas'&&l.kel!=='tk'||k==='issiusta'&&l.kel!=='tk'){ o.eil.forEach(x=>{ if(avesoje(x)&&!x.zing[k]) x.zing[k]=1; }); }
+  else { o.eil.forEach(x=>{ const kx=kitas(x,o); if(kx&&kx.k===k&&x.kel===l.kel&&x.tiek===l.tiek) x.zing[k]=1; }); }
+  if(o.eil.every(x=>!kitas(x,o))) o.issiusta=true;
+  o.zur.push(hh()+' '+ZODIS[k].split(' — ')[0]+' · Testuotojas'); laikas+=3;
+  pranesti(ZODIS[k]); piesti(); if($('#skydas').classList.contains('on')) atidaryti(nr,true);
+}
+function keisti(nr,i,kel){ const o=U.find(x=>x.nr==nr); const l=o.eil[i]; if(!galimi(l)[kel]) return; const buvo=l.kel; l.kel=kel; l.zing={}; o.zur.push(hh()+' '+l.pav+': '+(buvo?kelPav(l,buvo):'?')+' → '+kelPav(l,kel)+' · Testuotojas'); laikas+=1; piesti(); atidaryti(nr,true); pranesti('Kelias pakeistas: '+kelPav(l,kel)); }
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-v]'); if(b){ e.stopPropagation(); veiksmas(b.dataset.nr,+b.dataset.i,b.dataset.v); return; }
+  const kb=e.target.closest('[data-kel]'); if(kb){ keisti(kb.dataset.nr,+kb.dataset.i,kb.dataset.kel); return; }
+  const r=e.target.closest('tr.eil'); if(r) atidaryti(r.dataset.nr);
+});
+/* --- skydas --- */
+function atidaryti(nr,tyliai){
+  const o=U.find(x=>x.nr==nr);
+  $('#s-nr').textContent='#'+o.nr+(o.issiusta?' · išsiųstas':''); $('#s-kl').textContent=o.kl+' · '+o.suma.toFixed(2).replace('.',',')+' € · apmokėta'; $('#s-pr').textContent=o.pr;
+  $('#s-eil').innerHTML=o.eil.map((l,i)=>{ const g=galimi(l); const z=zingsniai(l); const k=kitas(l,o);
+    return '<div class="eilute"><div class="virsus"><div class="k">'+l.q+'×</div><div class="p">'+l.pav+' <span class="pilkas maz">'+l.sku+'</span></div></div>'
+    +'<div class="keliai">'+['sandelis','tk','ts'].map(kel=>'<button data-kel="'+kel+'" data-nr="'+o.nr+'" data-i="'+i+'" class="'+kel+(l.kel===kel?' on':'')+'"'+(g[kel]&&!o.issiusta?'':' disabled')+'><i style="width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block"></i>'+kelPav(l,kel)+'</button>').join('')+'</div>'
+    +'<div class="kodel">'+kodel(l)+'</div>'
+    +(z.length?'<div class="zingsneliai" style="margin-top:6px">'+z.map(([kk,p])=>'<span class="'+(l.zing[kk]?'ok':(k&&k.k===kk?'dabar':''))+'">'+(l.zing[kk]?'✓ ':'')+p+'</span>').join('')+'</div>':'')+'</div>'; }).join('');
+  $('#s-zur').innerHTML=o.zur.slice().reverse().map(z=>'<div>'+z+'</div>').join('');
+  const kit=pirmasVeiksmas(o);
+  $('#s-v').innerHTML=(kit&&kit.k!=='kelias'?(kit.pasyvus?'<span class="kel ts"><i></i>'+kit.p+'</span>':'<button class="v p" data-v="'+kit.k+'" data-nr="'+o.nr+'" data-i="'+kit.i+'">'+kit.p+'</button>'):'')+(o.issiusta?'<span class="pilkas">Įvykdytas. Sekimo laiškas išsiųstas.</span>':'')+'<span style="margin-left:auto"></span><button class="v t">Sąskaita</button><button class="v t">Parašyti klientui</button>'+(o.issiusta?'':'<button class="v t" style="color:var(--raudona)">Atšaukti</button>');
+  if(!tyliai){ $('#skydas').classList.add('on'); $('#uzdanga').classList.add('on'); }
+}
+function kodel(l){ if(l.av>=l.q) return 'Avesoje '+l.av+' vnt. — siūloma siųsti iš Avesos.'; if(l.tiek) return 'Avesoje '+l.av+', '+TIEK[l.tiek]+' turi. Siūloma: '+TIEK[l.tiek]+' siunčia klientui. Jei nori supakuoti kartu su kitomis Avesos prekėmis — „'+TIEK[l.tiek]+' → Avesa sandėlį“.'; return 'Avesoje '+l.av+', reikia '+l.q+', tiekėjo šiai prekei nėra. Užsakyk rankiniu būdu ir pažymėk „Avesa sandėlis“, kai turėsi, arba atšauk / parašyk klientui.'; }
+function uzdaryti(){ $('#skydas').classList.remove('on'); $('#uzdanga').classList.remove('on'); }
+$('#s-uzd').onclick=uzdaryti; $('#uzdanga').onclick=uzdaryti; document.addEventListener('keydown',e=>{if(e.key==='Escape')uzdaryti();});
+let tt; function pranesti(t){ const x=$('#tostas'); x.textContent=t; x.classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>x.classList.remove('on'),2600); }
+function hh(){ return String(Math.floor(laikas/60)).padStart(2,'0')+':'+String(laikas%60).padStart(2,'0'); }
+/* --- nuolatinis srautas --- */
+let n=35440; const banga=[[ 'Rūta K.','Venipak paštomatas',[e(2,'Josera Kids, 900 g','JOS-K9','vf',5)]],['Tomas P.','LP Express',[e(1,'Royal Canin Indoor 27, 2 kg','RC-I2',null,7),e(1,'Šukos katėms','SK-1','zb',0)]],['Lina M.','Venipak kurjeris',[e(1,'Monge Puppy, 12 kg','MG-P12','vf',0)]]];
+$('#ateina').onclick=()=>{ const b=banga[(n-35440)%banga.length]; const o=uz(n++,b[0],b[1],24.9,b[2].map(x=>({...x,zing:{}}))); o.eil.forEach(l=>l.kel=siulymas(l)); o.rusiuota=false; laikas+=7; o.laikas=hh(); o.naujas=true; o.zur=[hh()+' Apmokėta · kelias pasiūlytas']; U.unshift(o); dabar=eile(o); piesti(); pranesti('Naujas užsakymas #'+o.nr+' — iš karto eilėje „'+EILES.find(x=>x[0]===dabar)[1]+'“'); };
+$('#atstatyti').onclick=()=>{pradzia();dabar='rusiuoti';piesti();};
+pradzia(); piesti();
+})();
+</script>
+</body>
+</html>
