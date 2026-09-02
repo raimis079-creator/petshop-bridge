@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Petshop · vienas namas — interaktyvus maketas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fonas:#EEF1EF; --popierius:#FFFFFF; --rasalas:#1B2620; --pilka:#66716B; --linija:#D7DDD9;
+  --zalia:#2E7D4F; --zalia-sviesi:#E3F1E8; --gintaras:#B9731A; --gintaras-sviesus:#FBEFD9; --raudona:#B23A3A; --raudona-sviesi:#F8E3E3;
+  --melyna:#2B5F8A; --melyna-sviesi:#E2ECF5;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fonas);color:var(--rasalas);font:14px/1.45 "IBM Plex Sans",system-ui,sans-serif}
+button{font:inherit;cursor:pointer}
+a{color:var(--melyna);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--melyna);outline-offset:2px}
+
+/* WP kairė juosta — sutraukta iki ikonų (imitacija) */
+.wp{position:fixed;left:0;top:0;bottom:0;width:36px;background:#1d2327;display:flex;flex-direction:column;align-items:center;padding-top:14px;gap:14px}
+.wp i{width:18px;height:18px;border-radius:4px;background:#3c434a;display:block}
+.wp i.on{background:#7a8b82}
+
+/* ======= JUOSTA ======= */
+.juosta{position:sticky;top:0;z-index:20;margin-left:36px;background:var(--popierius);border-bottom:1px solid var(--linija);height:54px;display:flex;align-items:stretch;padding:0 18px 0 14px}
+.zenklas{display:flex;align-items:center;gap:8px;font-weight:600;margin-right:22px;white-space:nowrap}
+.zenklas b{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--zalia)}
+.juosta nav{display:flex;align-items:stretch;flex:1}
+.juosta nav button{background:none;border:0;border-bottom:3px solid transparent;padding:0 12px;color:var(--pilka);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.juosta nav button:hover{color:var(--rasalas)}
+.juosta nav button.on{color:var(--rasalas);border-bottom-color:var(--zalia);font-weight:600}
+.sk{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--fonas);color:var(--pilka);font-size:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
+.sk.darbas{background:var(--zalia-sviesi);color:var(--zalia)}
+.sk.demesio{background:var(--gintaras-sviesus);color:var(--gintaras)}
+.sk.zmogus{background:var(--raudona-sviesi);color:var(--raudona)}
+.paieska{display:flex;align-items:center;gap:8px;margin-left:auto}
+.paieska input{width:250px;height:32px;border:1px solid var(--linija);border-radius:6px;padding:0 10px;font:inherit;background:var(--fonas)}
+.paieska kbd{font:12px/1 "IBM Plex Sans";color:var(--pilka);border:1px solid var(--linija);border-radius:4px;padding:2px 5px}
+.vartotojas{display:flex;align-items:center;gap:8px;margin-left:16px;color:var(--pilka)}
+.vartotojas b{width:26px;height:26px;border-radius:50%;background:var(--zalia-sviesi);color:var(--zalia);display:inline-flex;align-items:center;justify-content:center;font-size:12px}
+
+/* ======= KELIAS (breadcrumb, atsimena iš kur) ======= */
+.kelias{margin-left:36px;padding:10px 24px 0;display:flex;align-items:center;gap:10px;min-height:32px;color:var(--pilka)}
+.kelias button{background:none;border:0;padding:4px 8px 4px 0;color:var(--melyna)}
+.kelias button:hover{text-decoration:underline}
+
+/* ======= TURINYS ======= */
+main{margin-left:36px;padding:8px 24px 60px;max-width:1240px}
+h1{font-size:20px;font-weight:600;margin:6px 0 14px;display:flex;align-items:baseline;gap:12px}
+h1 small{font-weight:400;color:var(--pilka);font-size:14px}
+.ekranas{display:none}.ekranas.on{display:block}
+
+.eiles{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}
+.eiles button{border:1px solid var(--linija);background:var(--popierius);border-radius:20px;padding:5px 12px;display:flex;gap:7px;align-items:center;color:var(--pilka)}
+.eiles button.on{border-color:var(--rasalas);color:var(--rasalas);font-weight:600}
+.eiles .sk{height:18px;font-size:11px}
+
+table{width:100%;border-collapse:collapse;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;overflow:hidden}
+th{font-weight:500;color:var(--pilka);text-align:left;padding:9px 12px;border-bottom:1px solid var(--linija);font-size:12px}
+td{padding:11px 12px;border-bottom:1px solid var(--linija);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tr.eil:hover td{background:#FAFBFA}
+.nr{font-weight:600}
+.pilkas{color:var(--pilka)}
+.zyme{display:inline-block;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600;letter-spacing:.2px;margin-right:4px;background:var(--fonas);color:var(--pilka)}
+.zyme.av{background:var(--zalia-sviesi);color:var(--zalia)}
+.zyme.ds{background:var(--melyna-sviesi);color:var(--melyna)}
+.zyme.laukia{background:var(--gintaras-sviesus);color:var(--gintaras)}
+.zyme.klaus{background:var(--raudona-sviesi);color:var(--raudona)}
+.preke{display:block}
+.preke a{color:var(--rasalas)}
+.preke a:hover{color:var(--melyna)}
+.veiksmas{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--linija);background:var(--popierius);border-radius:6px;padding:6px 12px;font-weight:500;white-space:nowrap}
+.veiksmas.pirmas{background:var(--zalia);border-color:var(--zalia);color:#fff}
+.veiksmas.pirmas:hover{background:#25683F}
+.veiksmas:hover{border-color:var(--rasalas)}
+.veiksmas.tylus{border:0;color:var(--melyna);padding-left:4px;padding-right:4px}
+td.d{text-align:right;white-space:nowrap}
+
+.kortele{background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:16px 18px;margin-bottom:14px}
+.kortele h2{font-size:15px;margin:0 0 8px;font-weight:600}
+.dvi{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tris{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pastaba{color:var(--pilka);font-size:13px}
+.zingsniai{display:flex;gap:0;border:1px solid var(--linija);border-radius:8px;overflow:hidden;background:var(--popierius);margin-bottom:16px}
+.zingsniai button{flex:1;border:0;border-right:1px solid var(--linija);background:none;padding:12px 10px;text-align:left;color:var(--pilka)}
+.zingsniai button:last-child{border-right:0}
+.zingsniai button.atlikta{color:var(--zalia)}
+.zingsniai button.dabar{background:var(--zalia-sviesi);color:var(--rasalas);font-weight:600}
+.zingsniai b{display:block;font-size:11px;font-weight:500;margin-bottom:2px}
+.ilga{max-width:720px}
+
+.filtras{display:flex;gap:16px;align-items:flex-start}
+.filtras aside{width:220px;flex:none}
+.filtras aside button{display:flex;justify-content:space-between;width:100%;background:none;border:0;padding:7px 10px;border-radius:6px;color:var(--rasalka);text-align:left}
+.filtras aside button:hover{background:var(--popierius)}
+.filtras aside button.on{background:var(--popierius);font-weight:600;box-shadow:inset 3px 0 0 var(--zalia)}
+.filtras .lentele{flex:1}
+tr.pazymeta td{background:var(--gintaras-sviesus)}
+
+/* ======= ŠONINIS SKYDELIS (užsakymas) ======= */
+.uzdanga{position:fixed;inset:0;background:rgba(27,38,32,.25);z-index:30;display:none}
+.uzdanga.on{display:block}
+.skydas{position:fixed;top:0;right:0;bottom:0;width:520px;background:var(--popierius);z-index:31;transform:translateX(100%);transition:transform .18s ease-out;box-shadow:-8px 0 30px rgba(27,38,32,.12);display:flex;flex-direction:column}
+.skydas.on{transform:none}
+@media (prefers-reduced-motion:reduce){.skydas{transition:none}}
+.skydas header{padding:16px 20px 12px;border-bottom:1px solid var(--linija);display:flex;align-items:flex-start;gap:12px}
+.skydas header h2{margin:0;font-size:18px}
+.skydas header .pilkas{font-size:13px}
+.uzdaryti{margin-left:auto;background:none;border:0;font-size:20px;color:var(--pilka);line-height:1}
+.skydas .kunas{padding:14px 20px;overflow:auto;flex:1}
+.skydas .eilute{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--linija)}
+.skydas .eilute:last-child{border-bottom:0}
+.skydas .eilute .k{width:34px;text-align:right;color:var(--pilka)}
+.skydas .eilute .p{flex:1}
+.skydas footer{padding:12px 20px;border-top:1px solid var(--linija);display:flex;gap:8px;flex-wrap:wrap}
+.blokas{background:var(--fonas);border-radius:8px;padding:10px 12px;margin:10px 0}
+.blokas b{display:block;font-size:12px;color:var(--pilka);font-weight:500;margin-bottom:3px}
+.zurnalas{font-size:12px;color:var(--pilka)}
+.zurnalas div{padding:3px 0}
+
+/* ======= PRANEŠIMAS ======= */
+.tostas{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--rasalas);color:#fff;padding:10px 16px;border-radius:8px;z-index:40;display:none;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.tostas.on{display:block}
+
+/* ======= PASTABOS APIE MAKETĄ ======= */
+.apie{position:fixed;right:18px;bottom:18px;z-index:25}
+.apie button{border:1px solid var(--linija);background:var(--popierius);border-radius:20px;padding:6px 12px;color:var(--pilka)}
+.apie .langas{display:none;position:absolute;right:0;bottom:40px;width:380px;background:var(--popierius);border:1px solid var(--linija);border-radius:10px;padding:14px 16px;box-shadow:0 12px 30px rgba(27,38,32,.15);font-size:13px}
+.apie.on .langas{display:block}
+.apie ol{padding-left:18px;margin:6px 0}
+.apie li{margin:4px 0}
+</style>
+</head>
+<body>
+
+<div class="wp" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<!-- ============ JUOSTA ============ -->
+<header class="juosta">
+  <div class="zenklas"><b></b>petshop.lt</div>
+  <nav id="nav">
+    <button data-ek="uzsakymai" class="on">Užsakymai <span class="sk darbas" data-sk="uzs">6</span></button>
+    <button data-ek="rytas">Rytinė eiga</button>
+    <button data-ek="prekes">Prekės <span class="sk demesio">438</span></button>
+    <button data-ek="gavimas">Gavimas</button>
+    <button data-ek="tiekimas">Tiekimas <span class="sk darbas">1</span></button>
+    <button data-ek="rinkiniai">Rinkiniai</button>
+    <button data-ek="akcijos">Akcijos</button>
+    <button data-ek="laiskai">Laiškai <span class="sk darbas">2</span></button>
+  </nav>
+  <div class="paieska"><input id="paieska" placeholder="Užsakymo nr., klientas, prekė, SKU…" aria-label="Paieška"><kbd>/</kbd></div>
+  <div class="vartotojas"><b>T</b>Testuotojas</div>
+</header>
+
+<div class="kelias" id="kelias"></div>
+
+<main>
+
+<!-- ============ UŽSAKYMAI ============ -->
+<section class="ekranas on" id="ek-uzsakymai">
+  <h1>Užsakymai <small>trečiadienis, rugsėjo 2</small></h1>
+  <div class="eiles" id="eiles">
+    <button data-e="nauji" class="on">Nauji <span class="sk darbas">3</span></button>
+    <button data-e="misrus">Mišrūs <span class="sk demesio">1</span></button>
+    <button data-e="laukia">Laukia prekių <span class="sk">1</span></button>
+    <button data-e="paruosta">Paruošta siųsti <span class="sk">3</span></button>
+    <button data-e="klausimai">Klausimai <span class="sk zmogus">2</span></button>
+    <button data-e="issiusti">Išsiųsti <span class="sk">4</span></button>
+    <button data-e="visi">Visi</button>
+  </div>
+
+  <div class="eile-turinys on" data-e="nauji">
+  <table>
+    <thead><tr><th>Užsakymas</th><th>Klientas</th><th>Ką pirko</th><th>Iš kur</th><th>Pristatymas</th><th class="d">Suma</th><th class="d"></th></tr></thead>
+    <tbody>
+      <tr class="eil" data-uz="35434">
+        <td><span class="nr">#35434</span><br><span class="pilkas">šiandien 20:11</span></td>
+        <td>AUDITAS Testas 21<br><span class="pilkas">Vilnius</span></td>
+        <td><span class="preke">1× <a href="#" data-preke="83722">Animonda Carny Adult Beef, 400 g</a></span><span class="preke">1× <a href="#" data-preke="73007">Prins Diet Skin & Intestinal, 1,5 kg</a></span></td>
+        <td><span class="zyme av">Sandėlis</span><br><span class="pilkas" style="font-size:12px">Prins parsivežtas (partija #11)</span></td>
+        <td>Venipak kurjeris</td>
+        <td class="d">37,03 €<br><span class="pilkas">apmokėta</span></td>
+        <td class="d"><button class="veiksmas pirmas" data-v="Surinkti" data-uz="35434">Surinkti</button></td>
+      </tr>
+      <tr class="eil" data-uz="35431">
+        <td><span class="nr">#35431</span><br><span class="pilkas">šiandien 20:10</span></td>
+        <td>AUDITAS Testas 18<br><span class="pilkas">Vilnius</span></td>
+        <td><span class="preke">1× <a href="#" data-preke="83722">Animonda Carny Adult Beef, 400 g</a></span><span class="preke">1× <a href="#" data-preke="2.011761">Quattro Adult Salmon & Krill, 1,5 kg</a></span></td>
+        <td><span class="zyme av">Sandėlis</span></td>
+        <td>Venipak kurjeris</td>
+        <td class="d">37,03 €<br><span class="pilkas">apmokėta</span></td>
+        <td class="d"><button class="veiksmas pirmas" data-v="Surinkti" data-uz="35431">Surinkti</button></td>
+      </tr>
+      <tr class="eil" data-uz="35422">
+        <td><span class="nr">#35422</span><br><span class="pilkas">šiandien 17:41</span></td>
+        <td>AUDITAS Testas 9<br><span class="pilkas">Vilnius</span></td>
+        <td><span class="preke">1× <a href="#" data-preke="AMLE02">Ambrosia Lamb & Fresh Venison, 2 kg</a></span></td>
+        <td><span class="zyme ds">Ambrosia</span> siunčia pats<br><span class="pilkas" style="font-size:12px">siunta registruota V…038</span></td>
+        <td>Venipak paštomatas</td>
+        <td class="d">16,44 €<br><span class="pilkas">apmokėta</span></td>
+        <td class="d"><button class="veiksmas pirmas" data-v="Perduoti" data-uz="35422">Perduoti</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="pastaba">Sąrašas atsinaujina pats. Paspaudus eilutę atsidaro užsakymas šone — iš bet kurio lango tas pats skydelis.</p>
+  </div>
+
+  <div class="eile-turinys" data-e="misrus">
+    <div class="kortele ilga">
+      <h2>#35420 · AUDITAS Testas 7 · 37,11 € · Venipak kurjeris</h2>
+      <p class="pastaba">Dviejų tiekėjų prekės. Nuspręsk, kaip kiekviena keliauja — paskutinį kartą šiems tiekėjams rinkaisi taip pat.</p>
+      <table>
+        <tr><td><span class="zyme ds">Vetfarmas</span> 1× Churu Popn Serve, 35 g</td><td class="d"><label><input type="radio" name="s-vf" checked> siunčia pats</label> &nbsp; <label><input type="radio" name="s-vf"> parsivežam</label></td></tr>
+        <tr><td><span class="zyme ds">Žalioji Banga</span> 1× Trixie stovas su dubenėliais</td><td class="d"><label><input type="radio" name="s-zb" checked> siunčia pats</label> &nbsp; <label><input type="radio" name="s-zb"> parsivežam</label></td></tr>
+      </table>
+      <p style="margin:12px 0 0"><button class="veiksmas pirmas" data-v="Patvirtinti" data-uz="35420">Patvirtinti</button> <span class="pastaba">Po patvirtinimo užsakymas grįžta į Nauji su mygtuku „Perduoti“.</span></p>
+    </div>
+  </div>
+
+  <div class="eile-turinys" data-e="laukia">
+    <table><thead><tr><th>Užsakymas</th><th>Klientas</th><th>Ko laukiam</th><th>Iš kur</th><th class="d"></th></tr></thead>
+    <tbody><tr class="eil" data-uz="35421"><td><span class="nr">#35421</span></td><td>AUDITAS Testas 8</td><td>1× Quattro Adult Salmon & Krill — <a href="#" data-partija="10">partija #10</a>, užsakyta 17:58, Venipak kurjeriu į AV</td><td><span class="zyme av">Sandėlis</span> <span class="zyme ds">Quattro</span> <span class="zyme ds">Prins</span></td><td class="d"><button class="veiksmas" data-ek="tiekimas">Tiekimas</button></td></tr></tbody></table>
+  </div>
+
+  <div class="eile-turinys" data-e="paruosta">
+    <table><thead><tr><th>Užsakymas</th><th>Klientas</th><th>Siunta</th><th>Kas siunčia</th><th class="d"></th></tr></thead>
+    <tbody>
+      <tr class="eil" data-uz="35428"><td><span class="nr">#35428</span></td><td>AUDITAS Testas 15</td><td>V…033, V…034, V…035 · 3 dėžės</td><td><span class="zyme av">Sandėlis</span> kurjeris</td><td class="d"><button class="veiksmas" data-v="Lipdukai" data-uz="35428">Lipdukai</button> <button class="veiksmas pirmas" data-v="Išsiųsta" data-uz="35428">Išsiųsta</button></td></tr>
+      <tr class="eil" data-uz="35429"><td><span class="nr">#35429</span></td><td>AUDITAS Testas 16</td><td>V…031, V…032 · 2 siuntos į paštomatą</td><td><span class="zyme av">Sandėlis</span></td><td class="d"><button class="veiksmas" data-v="Lipdukai" data-uz="35429">Lipdukai</button> <button class="veiksmas pirmas" data-v="Išsiųsta" data-uz="35429">Išsiųsta</button></td></tr>
+      <tr class="eil" data-uz="35418"><td><span class="nr">#35418</span></td><td>AUDITAS Testas 5</td><td>V…037</td><td><span class="zyme ds">Žalioji Banga</span> perduota 17:50</td><td class="d"><button class="veiksmas pirmas" data-v="Išsiųsta" data-uz="35418">Išsiųsta</button></td></tr>
+    </tbody></table>
+    <p class="pastaba">„Išsiųsta“ uždaro užsakymą ir išsiunčia klientui sekimo numerius — vienas paspaudimas, vienas žodis.</p>
+  </div>
+
+  <div class="eile-turinys" data-e="klausimai">
+    <div class="kortele ilga">
+      <h2>#35423 · AUDITAS Testas 10 · 19,13 €</h2>
+      <p><span class="zyme klaus">Trūksta sandėlyje</span> <a href="#" data-preke="35074">Žaislas šuniui — medžiaginis kaktusas Fernando</a> — reikia 3, sandėlyje 0, tiekėjo šiai prekei nėra.</p>
+      <p class="pastaba">Ką gali padaryti: užsakyti rankiniu būdu ir palaukti, pasiūlyti klientui pakaitalą arba atšaukti. Paspaudus prekę atsidarys jos kortelė su likučiais ir tiekėjais.</p>
+      <p><button class="veiksmas" data-v="Laukti" data-uz="35423">Laukti</button> <button class="veiksmas" data-v="Atšaukti" data-uz="35423">Atšaukti užsakymą</button> <button class="veiksmas tylus" data-uz="35423">Parašyti klientui</button></p>
+    </div>
+  </div>
+
+  <div class="eile-turinys" data-e="issiusti"><p class="pastaba">#35427, #35419, #35417 — įvykdyti šiandien; sekimo laiškai išsiųsti 2 iš 3 (<a href="#" data-uz="35417">#35417 — be laiško</a>).</p></div>
+  <div class="eile-turinys" data-e="visi"><p class="pastaba">Visi užsakymai su filtrais (data, pristatymas, mokėjimas, tiekėjas) — kaip dabar.</p></div>
+</section>
+
+<!-- ============ RYTINĖ EIGA ============ -->
+<section class="ekranas" id="ek-rytas">
+  <h1>Rytinė eiga <small>partija sudaryta 08:02 · 6 užsakymai</small></h1>
+  <div class="zingsniai" id="zingsniai">
+    <button class="atlikta" data-z="1"><b>1</b>Peržiūra</button>
+    <button class="dabar" data-z="2"><b>2</b>Surinkimo lapai</button>
+    <button data-z="3"><b>3</b>Registruoti</button>
+    <button data-z="4"><b>4</b>LP Express</button>
+    <button data-z="5"><b>5</b>Perduoti</button>
+    <button data-z="6"><b>6</b>Gavimai</button>
+    <button data-z="7"><b>7</b>Klausimai</button>
+  </div>
+  <div class="kortele ilga" id="z-turinys">
+    <h2>Surinkimo lapai</h2>
+    <p>4 užsakymai su prekėmis iš sandėlio — 7 vienetai. Venipak ir LP Express atskiruose lapuose, kad lapas eitų kartu su savo lipdukų krūvele.</p>
+    <p><button class="veiksmas pirmas" data-v="Spausdinti lapus">Spausdinti lapus</button> <button class="veiksmas" data-z="3">Toliau</button></p>
+  </div>
+  <p class="pastaba">Du nauji žingsniai — Gavimai ir Klausimai — kad viskas, ko reikia per dieną, būtų viename kelyje su ✓, o ne „šone“.</p>
+</section>
+
+<!-- ============ PREKĖS ============ -->
+<section class="ekranas" id="ek-prekes">
+  <h1>Prekės <small>2 663 prekyboje</small></h1>
+  <div class="filtras">
+    <aside>
+      <button class="on">Visos <span class="sk">2663</span></button>
+      <button>Reikia užsakyti <span class="sk demesio">438</span></button>
+      <button>Sandėlyje pasibaigę <span class="sk">164</span></button>
+      <button>Be savikainos <span class="sk">383</span></button>
+      <button>Žemiau maržos ribos <span class="sk">7</span></button>
+      <button>Baigiasi galiojimas <span class="sk">0</span></button>
+    </aside>
+    <div class="lentele">
+      <table>
+        <thead><tr><th>Prekė</th><th>SKU</th><th class="d">Sandėlis</th><th>Tiekėjai</th><th>Laukia</th><th class="d">Kaina</th></tr></thead>
+        <tbody>
+          <tr id="pr-83722" class="eil"><td>Animonda Carny Adult Beef + Chicken + Duck Heart, 400 g</td><td class="pilkas">83722</td><td class="d">24</td><td>—</td><td><a href="#" data-uzs="35434,35431">2 užsakymuose</a></td><td class="d">5,61 €</td></tr>
+          <tr id="pr-73007" class="eil"><td>Prins Diet Skin & Intestinal Hypoallergic, 1,5 kg</td><td class="pilkas">73007</td><td class="d">0</td><td><span class="zyme ds">Prins</span></td><td><a href="#" data-uzs="35434">1 užsakyme</a></td><td class="d">31,42 €</td></tr>
+          <tr id="pr-2.011761" class="eil"><td>Quattro Adult Salmon & Krill, 1,5 kg</td><td class="pilkas">2.011761</td><td class="d">0</td><td><span class="zyme ds">Quattro</span></td><td><a href="#" data-uzs="35431,35421">2 užsakymuose</a></td><td class="d">14,61 €</td></tr>
+          <tr id="pr-AMLE02" class="eil"><td>Ambrosia Lamb & Fresh Venison, 2 kg</td><td class="pilkas">AMLE02</td><td class="d">0</td><td><span class="zyme ds">Ambrosia</span> 10</td><td><a href="#" data-uzs="35422">1 užsakyme</a></td><td class="d">16,44 €</td></tr>
+          <tr id="pr-35074" class="eil"><td>Žaislas šuniui — medžiaginis kaktusas Fernando</td><td class="pilkas">35074</td><td class="d">0</td><td>—</td><td><a href="#" data-uzs="35423"><span class="zyme klaus">trūksta</span> 1 užsakyme</a></td><td class="d">5,66 €</td></tr>
+        </tbody>
+      </table>
+      <p class="pastaba">„Laukia“ stulpelis — naujas: iš prekės matai, kuriems užsakymams jos reikia, ir vienu paspaudimu atsidarai užsakymą.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GAVIMAS ============ -->
+<section class="ekranas" id="ek-gavimas">
+  <h1>Gavimas <small>prekių priėmimas į sandėlį</small></h1>
+  <div class="kortele ilga"><h2>Naujas gavimas</h2><p class="pastaba">Sąskaita, tiekėjas, prekės su kiekiais ir galiojimu — kaip dabar. Jei prekė laukia užsakymuose, priėmus ji iš karto pažymima kaip paruošta surinkimui.</p><p><button class="veiksmas pirmas" data-v="Priimti">Priimti</button></p></div>
+</section>
+
+<!-- ============ TIEKIMAS ============ -->
+<section class="ekranas" id="ek-tiekimas">
+  <h1>Tiekimas <small>užsakymai tiekėjams į sandėlį</small></h1>
+  <div class="eiles"><button class="on">Kaupiama <span class="sk">0</span></button><button>Užsakyta · laukiam <span class="sk darbas">1</span></button><button>Gautos</button></div>
+  <div class="kortele ilga" id="partija-10">
+    <h2>Quattro / Kauno grūdai · partija #10 <span class="zyme laukia">užsakyta 17:58</span></h2>
+    <table><thead><tr><th>Prekė</th><th class="d">Užsakyta</th><th class="d">Gauta</th><th>Kam</th></tr></thead>
+    <tbody><tr><td><a href="#" data-preke="2.011761">Quattro Adult Salmon & Krill, 1,5 kg</a> <span class="pilkas">2.011761</span></td><td class="d">1</td><td class="d"><input type="number" value="1" style="width:56px;font:inherit;padding:3px 6px;border:1px solid var(--linija);border-radius:4px"></td><td><a href="#" data-uz="35421">#35421 AUDITAS Testas 8</a></td></tr></tbody></table>
+    <p style="margin:12px 0 0"><span class="pastaba">Atvyksta Venipak kurjeriu, siunta V…043. </span><button class="veiksmas pirmas" data-v="Priimti" data-partija="10">Priimti</button></p>
+    <p class="pastaba">Priėmus: prekė į sandėlį, užsakymas #35421 grįžta į Nauji, surinkimo lape atsiranda abi prekės.</p>
+  </div>
+</section>
+
+<!-- ============ RINKINIAI / AKCIJOS ============ -->
+<section class="ekranas" id="ek-rinkiniai"><h1>Rinkiniai <small>11 juodraščių laukia publikavimo</small></h1><p class="pastaba">Kaip dabar — tik su ta pačia juosta viršuje ir tuo pačiu „← Atgal“.</p></section>
+<section class="ekranas" id="ek-akcijos"><h1>Akcijos</h1><p class="pastaba">Kaip dabar.</p></section>
+
+<!-- ============ LAIŠKAI ============ -->
+<section class="ekranas" id="ek-laiskai">
+  <h1>Laiškai tiekėjams <small>siunčiama iš terra@petshop.lt</small></h1>
+  <div class="eiles"><button class="on">Laukia išsiuntimo <span class="sk darbas">2</span></button><button>Išsiųsti <span class="sk">10</span></button></div>
+  <div class="dvi">
+    <div class="kortele"><h2>Ambrosia <span class="pilkas">· 1 užsakymas</span></h2><p>#35422 — 1× Ambrosia Lamb & Fresh Venison 2 kg · siunta V…038 registruota, lipdukas bus laiške.</p><p><button class="veiksmas pirmas" data-v="Perduoti" data-uz="35422">Perduoti</button> <button class="veiksmas tylus">Peržiūrėti laišką</button></p></div>
+    <div class="kortele"><h2>Vetfarmas <span class="pilkas">· 1 užsakymas</span></h2><p>#35090 — 1× FURminator šampūnas · siunta neregistruota.</p><p><button class="veiksmas" data-v="Registruoti" data-uz="35090">Registruoti</button> <button class="veiksmas pirmas" disabled style="opacity:.5">Perduoti</button></p><p class="pastaba">Perduoti galima tik su registruota siunta — kitaip tiekėjas neturės lipduko.</p></div>
+  </div>
+  <p class="pastaba">Čia tik užsakymai, kurių planas patvirtintas. Mišrūs be sprendimo čia nepatenka — jie laukia „Užsakymai → Mišrūs“.</p>
+</section>
+
+</main>
+
+<!-- ============ ŠONINIS SKYDELIS ============ -->
+<div class="uzdanga" id="uzdanga"></div>
+<aside class="skydas" id="skydas" aria-label="Užsakymas">
+  <header>
+    <div><h2 id="sk-nr">#35434</h2><div class="pilkas" id="sk-kl">AUDITAS Testas 21 · Vilnius · +370 600 00000</div></div>
+    <button class="uzdaryti" id="sk-uzd" aria-label="Uždaryti">×</button>
+  </header>
+  <div class="kunas">
+    <div class="blokas"><b>Būsena</b><span id="sk-bus">Naujas · apmokėta · Venipak kurjeris · 1 siunta iš sandėlio</span></div>
+    <div id="sk-eil"></div>
+    <div class="blokas"><b>Pristatymas</b><span id="sk-pr">Venipak kurjeris · Testų g. 21, Vilnius 01100</span></div>
+    <div class="blokas"><b>Žurnalas</b><div class="zurnalas" id="sk-zur"></div></div>
+  </div>
+  <footer id="sk-veiksmai"></footer>
+</aside>
+
+<div class="tostas" id="tostas"></div>
+
+<div class="apie" id="apie">
+  <button id="apie-mygtukas">Apie šį maketą</button>
+  <div class="langas">
+    <b>Kas čia keičiasi, palyginti su dabartimi</b>
+    <ol>
+      <li><b>Viena juosta</b> visuose languose — Užsakymai · Rytinė eiga · Prekės · Gavimas · Tiekimas · Rinkiniai · Akcijos · Laiškai. Skaitliukas tik ten, kur laukia darbas.</li>
+      <li><b>Kelias viršuje atsimena, iš kur atėjai</b>: iš užsakymo į prekę, iš prekės atgal į tą patį užsakymą. Vienas „← Atgal“ visur.</li>
+      <li><b>Užsakymas atsidaro šone iš bet kurio lango</b> — Prekių, Tiekimo, Laiškų — ne tik iš sąrašo.</li>
+      <li><b>Vienas veiksmas = vienas žodis</b>: Surinkti · Registruoti · Lipdukai · Perduoti · Išsiųsta · Priimti.</li>
+      <li><b>Rytinė eiga</b> gauna 6 „Gavimai“ ir 7 „Klausimai“ — visa diena viename kelyje.</li>
+      <li><b>Prekėje matosi „laukia N užsakymuose“</b> — ir iš klausimo „trūksta“ vienu paspaudimu patenki į prekę.</li>
+      <li><b>Laiškuose</b> tik patvirtinti planai; mišrūs be sprendimo ten nepatenka.</li>
+    </ol>
+    <p class="pastaba">Duomenys — iš šiandienos audito užsakymų. Spausk viską: eilutes, prekes, skaitliukus, žingsnius.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const pav={uzsakymai:'Užsakymai',rytas:'Rytinė eiga',prekes:'Prekės',gavimas:'Gavimas',tiekimas:'Tiekimas',rinkiniai:'Rinkiniai',akcijos:'Akcijos',laiskai:'Laiškai'};
+  let dabar='uzsakymai', istorija=[];
+
+  /* --- užsakymų duomenys (iš audito) --- */
+  const UZ={
+    35434:{kl:'AUDITAS Testas 21 · Vilnius · +370 600 00000',bus:'Naujas · apmokėta · Venipak kurjeris · 1 siunta iš sandėlio',pr:'Venipak kurjeris · Testų g. 21, Vilnius 01100',eil:[[1,'Animonda Carny Adult Beef, 400 g','83722','Sandėlis'],[1,'Prins Diet Skin & Intestinal, 1,5 kg','73007','Sandėlis (parsivežta, partija #11)']],zur:['20:20 Prekės gautos (partija #11) — paruošta surinkimui','20:12 Planas: Prins parsivežam · Testuotojas','20:11 Apmokėta · laiškas klientui'],v:['Surinkti','Registruoti','Lipdukai']},
+    35431:{kl:'AUDITAS Testas 18 · Vilnius',bus:'Naujas · apmokėta · Venipak kurjeris · 1 siunta iš sandėlio',pr:'Venipak kurjeris · Testų g. 18, Vilnius',eil:[[1,'Animonda Carny Adult Beef, 400 g','83722','Sandėlis'],[1,'Quattro Adult Salmon & Krill, 1,5 kg','2.011761','Sandėlis']],zur:['20:10 Apmokėta'],v:['Surinkti','Registruoti','Lipdukai']},
+    35422:{kl:'AUDITAS Testas 9 · Vilnius',bus:'Naujas · apmokėta · Venipak paštomatas · siunčia Ambrosia',pr:'Venipak paštomatas ANC, Vilnius · siunta V07267E1000038',eil:[[1,'Ambrosia Lamb & Fresh Venison, 2 kg','AMLE02','Ambrosia siunčia pats']],zur:['17:49 Siunta registruota V…038 (manifestas Ambrosia)','17:46 Pažymėta apmokėtu (pavedimas) · Testuotojas'],v:['Perduoti','Lipdukai']},
+    35421:{kl:'AUDITAS Testas 8 · Vilnius',bus:'Laukia prekių · Quattro parsivežam (partija #10) · Prins siunčia pats',pr:'Venipak kurjeris',eil:[[1,'Animonda Carny Adult Beef, 400 g','83722','Sandėlis'],[1,'Quattro Adult Salmon & Krill, 1,5 kg','2.011761','Laukia — partija #10'],[1,'Prins Diet Skin & Intestinal, 1,5 kg','73007','Prins siunčia pats']],zur:['17:58 Partija #10 užsakyta, atvyks Venipak kurjeriu V…043','17:46 Planas: Quattro parsivežam · Prins siunčia'],v:['Tiekimas']},
+    35428:{kl:'AUDITAS Testas 15',bus:'Paruošta siųsti · 3 dėžės · V…033, V…034, V…035',pr:'Venipak kurjeris',eil:[[3,'Animonda Carny Adult Beef, 400 g','83722','Sandėlis']],zur:['17:49 Registruota 3 dėžės'],v:['Lipdukai','Išsiųsta']},
+    35429:{kl:'AUDITAS Testas 16',bus:'Paruošta siųsti · 2 siuntos į paštomatą · V…031, V…032',pr:'Venipak paštomatas ANC',eil:[[2,'Animonda Carny Adult Beef, 400 g','83722','Sandėlis']],zur:['17:49 Registruota 2 siuntos'],v:['Lipdukai','Išsiųsta']},
+    35418:{kl:'AUDITAS Testas 5',bus:'Paruošta siųsti · perduota Žaliajai Bangai 17:50',pr:'Venipak kurjeris · V…037',eil:[[1,'Trixie stovas su dubenėliais','0TR163_24922','Žalioji Banga siunčia pats']],zur:['17:50 Perduota ZB (suvesta į jų sistemą)'],v:['Išsiųsta']},
+    35423:{kl:'AUDITAS Testas 10',bus:'Klausimas · trūksta sandėlyje · laukiama nuo 17:46',pr:'Venipak paštomatas',eil:[[3,'Žaislas šuniui — kaktusas Fernando','35074','Sandėlyje 0, reikia 3']],zur:['17:46 Pažymėta LAUKTI · Testuotojas'],v:['Laukti','Atšaukti užsakymą']},
+    35420:{kl:'AUDITAS Testas 7',bus:'Mišrus · reikia sprendimo',pr:'Venipak kurjeris',eil:[[1,'Churu Popn Serve, 35 g','EU754','Vetfarmas'],[1,'Trixie stovas su dubenėliais','0TR163_24922','Žalioji Banga']],zur:['17:41 Apmokėta'],v:['Spręsti']},
+    35417:{kl:'AUDITAS Testas 4',bus:'Įvykdytas 17:52 · sekimo laiškas klientui NEIŠSIŲSTAS',pr:'Venipak paštomatas · V…036',eil:[[3,'Churu Popn Serve, 35 g','EU754','Vetfarmas siuntė']],zur:['17:52 Išsiųsta · Testuotojas','17:49 Perduota Vetfarmui'],v:['Siųsti sekimo laišką']},
+    35090:{kl:'Sart tr',bus:'Mišrus su planu · AMB siunčia · VF siunčia · AV surinkti',pr:'Venipak paštomatas ANC',eil:[[1,'Ambrosia Lamb & Venison, 12 kg','AMLE12','Ambrosia'],[1,'FURminator šampūnas, 473 ml','691756','Vetfarmas'],[1,'Hikari Cichlid Excel Mini, 250 g','—','Sandėlis']],zur:['08-26 Planas patvirtintas'],v:['Surinkti','Registruoti','Perduoti']},
+  };
+
+  /* --- navigacija --- */
+  function rodyti(ek,opt={}){
+    if(!opt.atgal && ek!==dabar) istorija.push({ek:dabar,y:window.scrollY,zyme:opt.isKur||null});
+    dabar=ek;
+    $$('.ekranas').forEach(e=>e.classList.toggle('on',e.id==='ek-'+ek));
+    $$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.ek===ek));
+    piestiKelia(opt.kelias);
+    window.scrollTo({top:opt.y||0});
+  }
+  function piestiKelia(prid){
+    const k=$('#kelias'); k.innerHTML='';
+    const pask=istorija[istorija.length-1];
+    if(pask){ const b=document.createElement('button'); b.textContent='← '+(pask.zyme||pav[pask.ek]); b.onclick=()=>{ istorija.pop(); rodyti(pask.ek,{atgal:true,y:pask.y}); }; k.appendChild(b); }
+    const s=document.createElement('span'); s.textContent=pav[dabar]+(prid?' · '+prid:''); k.appendChild(s);
+  }
+  $$('#nav button').forEach(b=>b.onclick=()=>{ istorija=[]; rodyti(b.dataset.ek); });
+  document.addEventListener('click',e=>{
+    const t=e.target.closest('[data-ek]:not(#nav button)'); if(t){ e.preventDefault(); rodyti(t.dataset.ek); }
+  });
+
+  /* --- eilės --- */
+  $$('#eiles button').forEach(b=>b.onclick=()=>{ $$('#eiles button').forEach(x=>x.classList.toggle('on',x===b)); $$('.eile-turinys').forEach(x=>x.classList.toggle('on',x.dataset.e===b.dataset.e)); });
+  const st=document.createElement('style'); st.textContent='.eile-turinys{display:none}.eile-turinys.on{display:block}'; document.head.appendChild(st);
+
+  /* --- rytinės eigos žingsniai --- */
+  const Z={1:['Peržiūra','6 užsakymai į partiją: 4 iš sandėlio (3 Venipak · 1 LP), 2 tiekėjams (Ambrosia, Vetfarmas). 2 klausimai į partiją nepatenka.','Pradėti'],2:['Surinkimo lapai','4 užsakymai su prekėmis iš sandėlio — 7 vienetai. Venipak ir LP Express atskiruose lapuose.','Spausdinti lapus'],3:['Registruoti','Sandėlis — 3 siuntos, vienas manifestas. Ambrosia — 1 siunta, registruota. Mišrūs registruojami iš užsakymo skydelio.','Registruoti 3 siuntas'],4:['LP Express','1 siunta · 500 g. Lipduko formavimas LP iškart iškviečia kurjerį — sistema paklaus dar kartą prieš spausdinant.','Spausdinti LP lipduką'],5:['Perduoti','Ambrosia 1 užsakymas · Vetfarmas 1 užsakymas. Laiškas išeina tik tau paspaudus.','Atidaryti Laiškus'],6:['Gavimai','Laukiam 1 partijos: Quattro #10, V…043, Venipak kurjeriu. Kai atvyks — Priimti.','Atidaryti Tiekimą'],7:['Klausimai','2 užsakymai laukia tavo sprendimo: #35423 trūksta sandėlyje, #35100 trūksta sandėlyje.','Atidaryti Klausimus']};
+  function zingsnis(n){ $$('#zingsniai button').forEach(b=>{ const z=+b.dataset.z; b.className=z<n?'atlikta':(z===n?'dabar':''); }); const d=Z[n]; $('#z-turinys').innerHTML='<h2>'+d[0]+'</h2><p>'+d[1]+'</p><p><button class="veiksmas pirmas" data-v="'+d[2]+'">'+d[2]+'</button> '+(n<7?'<button class="veiksmas" data-z="'+(n+1)+'">Toliau</button>':'<button class="veiksmas" data-ek="uzsakymai">Baigta ✓</button>')+'</p>'; }
+  document.addEventListener('click',e=>{ const t=e.target.closest('[data-z]'); if(t) zingsnis(+t.dataset.z); });
+
+  /* --- skydelis --- */
+  function atidaryti(id){
+    const u=UZ[id]; if(!u) return;
+    $('#sk-nr').textContent='#'+id; $('#sk-kl').textContent=u.kl; $('#sk-bus').textContent=u.bus; $('#sk-pr').textContent=u.pr;
+    $('#sk-eil').innerHTML=u.eil.map(r=>'<div class="eilute"><div class="k">'+r[0]+'×</div><div class="p"><a href="#" data-preke="'+r[2]+'">'+r[1]+'</a><br><span class="pilkas" style="font-size:12px">'+r[3]+'</span></div></div>').join('');
+    $('#sk-zur').innerHTML=u.zur.map(z=>'<div>'+z+'</div>').join('');
+    $('#sk-veiksmai').innerHTML=u.v.map((v,i)=>'<button class="veiksmas'+(i===0?' pirmas':'')+'" data-v="'+v+'" data-uz="'+id+'">'+v+'</button>').join('')+'<button class="veiksmas tylus" style="margin-left:auto" data-wc="'+id+'">WooCommerce</button>';
+    $('#skydas').classList.add('on'); $('#uzdanga').classList.add('on');
+  }
+  function uzdaryti(){ $('#skydas').classList.remove('on'); $('#uzdanga').classList.remove('on'); }
+  $('#sk-uzd').onclick=uzdaryti; $('#uzdanga').onclick=uzdaryti;
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') uzdaryti(); if(e.key==='/'&&document.activeElement.tagName!=='INPUT'){ e.preventDefault(); $('#paieska').focus(); } });
+  document.addEventListener('click',e=>{
+    if(e.target.closest('[data-v],[data-preke],[data-uzs],[data-partija],[data-wc],button')) return;
+    const r=e.target.closest('tr.eil[data-uz]'); if(r){ atidaryti(r.dataset.uz); return; }
+    const a=e.target.closest('a[data-uz]'); if(a){ e.preventDefault(); atidaryti(a.dataset.uz); }
+  });
+
+  /* --- kryžminės nuorodos --- */
+  document.addEventListener('click',e=>{
+    const p=e.target.closest('[data-preke]'); if(p){ e.preventDefault(); const isKur=$('#skydas').classList.contains('on')?'Užsakymas '+$('#sk-nr').textContent:null; uzdaryti(); rodyti('prekes',{isKur,kelias:p.textContent.trim()}); $$('tr.pazymeta').forEach(x=>x.classList.remove('pazymeta')); const row=document.getElementById('pr-'+p.dataset.preke); if(row){ row.classList.add('pazymeta'); row.scrollIntoView({block:'center'}); } return; }
+    const u=e.target.closest('[data-uzs]'); if(u){ e.preventDefault(); const ids=u.dataset.uzs.split(','); if(ids.length===1){ atidaryti(ids[0]); } else { rodyti('uzsakymai',{isKur:'Prekės',kelias:'laukia prekės'}); $$('#eiles button').find(b=>b.dataset.e==='visi').click(); pranesti('Rodomi užsakymai #'+ids.join(', #')); } return; }
+    const pa=e.target.closest('a[data-partija]'); if(pa){ e.preventDefault(); rodyti('tiekimas',{isKur:'Užsakymas #35421'}); document.getElementById('partija-10').scrollIntoView({block:'center'}); return; }
+    const w=e.target.closest('[data-wc]'); if(w){ pranesti('Atsidarytų WooCommerce užsakymas #'+w.dataset.wc+' toje pačioje kortelėje, su „← Užsakymas“ grįžimu'); }
+  });
+
+  /* --- veiksmai: vienas žodis → tas pats žodis pranešime --- */
+  const po={Surinkti:'Surinkimo lapas paruoštas spausdinti',Registruoti:'Siunta registruota Venipak',Lipdukai:'Lipdukai atidaryti spausdinimui',Perduoti:'Laiškas tiekėjui išsiųstas — užsakymas paruoštas siųsti',Išsiųsta:'Išsiųsta · klientui išsiųsti sekimo numeriai',Priimti:'Priimta · prekės sandėlyje, užsakymas #35421 grįžo į Nauji',Patvirtinti:'Patvirtinta · #35420 grįžo į Nauji su „Perduoti“',Laukti:'Pažymėta laukti — priminimo nebus',Spręsti:'Atidaryta Mišrūs'};
+  document.addEventListener('click',e=>{ const b=e.target.closest('[data-v]'); if(!b) return; const v=b.dataset.v; pranesti(po[v]||v+' — atlikta'); if(v==='Spręsti'){ uzdaryti(); rodyti('uzsakymai'); $$('#eiles button').find(x=>x.dataset.e==='misrus').click(); } if(v==='Tiekimas'){ uzdaryti(); rodyti('tiekimas'); } });
+  let tt; function pranesti(t){ const x=$('#tostas'); x.textContent=t; x.classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>x.classList.remove('on'),2600); }
+
+  $('#apie-mygtukas').onclick=()=>$('#apie').classList.toggle('on');
+  piestiKelia();
+})();
+</script>
+</body>
+</html>
