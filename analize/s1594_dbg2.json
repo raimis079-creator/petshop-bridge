@@ -1,0 +1,44 @@
+{
+ "v": "dep-112208",
+ "kurimas": 200,
+ "sid": 4475,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1594-DBG2",
+  "key": "1",
+  "url": "https://dev.avesa.lt/wp-load.php?import_key=1&import_id=3&action=processing",
+  "r1": [
+   200,
+   "",
+   0.8,
+   {
+    "date": "Wed, 02 Sep 2026 11:23:21 GMT",
+    "server": "Apache",
+    "x-robots-tag": "noindex, nofollow",
+    "vary": "Accept-Encoding,Cookie",
+    "content-encoding": "gzip",
+    "content-type": "text/html"
+   }
+  ],
+  "pmxi3": {
+   "processing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "1901",
+   "last_activity": "2026-09-02 11:14:51"
+  },
+  "r2": [
+   200,
+   "{\"status\":200,\"message\":\"Records Processed 2361. Records imported 970 of 2659.\"}",
+   62.6
+  ],
+  "pmxi3b": {
+   "processing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "2361",
+   "last_activity": "2026-09-02 11:24:23"
+  }
+ }
+}
