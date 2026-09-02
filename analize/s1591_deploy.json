@@ -1,0 +1,143 @@
+{
+ "v": "dep-081714",
+ "kurimas": 200,
+ "sid": 4445,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1591-D1",
+  "cron_key_len": 1,
+  "new_len": 16879,
+  "new_md5": "529dd13b45b007125b9b748329e116c6",
+  "tokens": 2552,
+  "backup": "ok",
+  "old_md5": "4a4ef2b1f6735c64260e5da019624582",
+  "write": 16879,
+  "disk_md5": "529dd13b45b007125b9b748329e116c6",
+  "own": {
+   "18593": {
+    "_stock": "22",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "2.95",
+    "status": "publish",
+    "_own_after": "22"
+   },
+   "18596": {
+    "_stock": "4",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "3.98",
+    "status": "publish",
+    "_own_after": "4"
+   },
+   "18599": {
+    "_stock": "32",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "3.98",
+    "status": "publish",
+    "_own_after": "32"
+   },
+   "18602": {
+    "_stock": "20",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "2.95",
+    "status": "publish",
+    "_own_after": "20"
+   },
+   "18605": {
+    "_stock": "17",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "3.98",
+    "status": "publish",
+    "_own_after": "17"
+   },
+   "18608": {
+    "_stock": "0",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "3.98",
+    "status": "publish",
+    "_own_after": "0"
+   },
+   "18611": {
+    "_stock": "19",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "3.98",
+    "status": "publish",
+    "_own_after": "19"
+   },
+   "18614": {
+    "_stock": "22",
+    "_own_before": "",
+    "_ps_sandelis": "av",
+    "_price": "2.84",
+    "status": "publish",
+    "_own_after": "22"
+   }
+  },
+  "pmxi5_pries": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "imported": "0",
+   "created": "0",
+   "updated": "0",
+   "skipped": "0",
+   "last_activity": "2026-08-22 03:30:01"
+  },
+  "trigger": [
+   404,
+   "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx/1.22.1</center>\r\n</body>\r\n</html>\r\n"
+  ],
+  "pmxi5_po": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "last_activity": "2026-08-22 03:30:01"
+  }
+ },
+ "V": {
+  "VERSIJA": "S1591-D1",
+  "cron_key_len": 1,
+  "map_sun": "konservai-sunims",
+  "map_kat": "konservai-katems",
+  "dec": {
+   "import": false,
+   "reason": "aksesuarai_below_6eur"
+  },
+  "disk_md5": "529dd13b45b007125b9b748329e116c6",
+  "ver_head": "1.1"
+ },
+ "P": {
+  "VERSIJA": "S1591-D1",
+  "cron_key_len": 1,
+  "proc": [
+   404,
+   "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx/1.22.1</center>\r\n</body>\r\n</html>\r\n",
+   0
+  ],
+  "pmxi5": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "imported": "0",
+   "created": "0",
+   "updated": "0",
+   "skipped": "0",
+   "count": "2355",
+   "last_activity": "2026-08-22 03:30:01"
+  },
+  "vf_sku_8": [],
+  "nauji_hypo": []
+ }
+}
