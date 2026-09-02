@@ -1,0 +1,318 @@
+{
+ "v": "dep-220233",
+ "kurimas": 200,
+ "sid": 4541,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "f": "D",
+  "petshop-uzsakymu-ivykiai.php": {
+   "buvo": null,
+   "dabar": "fbd6061ffd66307c9d58e954b1b658ec",
+   "dydis": 27218,
+   "ok": true
+  },
+  "petshop-juosta.php": {
+   "buvo": null,
+   "dabar": "3e31ae05957a8d7aa86ecf53f9743c9d",
+   "dydis": 15606,
+   "ok": true
+  },
+  "mu_ivykiai": [
+   "petshop-anketa-ivykiai.php",
+   "petshop-ivykiai.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-uzsakymu-ivykiai.php"
+  ]
+ },
+ "T": {
+  "f": "T",
+  "lentele": "gaj6_ps_uzsakymu_ivykiai",
+  "db_opt": "1.0",
+  "klases": {
+   "iv": true,
+   "ju": true
+  },
+  "pg": {
+   "ps-desk": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 1
+   },
+   "ps-desk&view=rytas": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 1
+   },
+   "ps-tiekimas": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 0
+   },
+   "ps-katalogas": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 1
+   },
+   "ps-laiskai&b=laukia": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 0
+   },
+   "ps-gavimas": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 0
+   },
+   "ps-ivykiai": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 0
+   },
+   "ps-rinkiniai": {
+    "code": 200,
+    "psj": 10,
+    "psj_css": true,
+    "psj_js": true,
+    "juosta": "⌂ Užsakymai16Rytinė eigaPrekėsGavimasTiekimasRinkiniaiAkcijosLaiškai13 Žalioji Banga 09:00 — liko 7 val 55 min Žurnalas Testuotojas ⏻",
+    "sena_nav": 1
+   }
+  },
+  "a1": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "pakuotes",
+    "pd_nr": "2"
+   },
+   "psj": 0,
+   "psj_css": false,
+   "psj_js": false,
+   "sena_nav": 0
+  },
+  "a2": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "pakuotes",
+    "pd_nr": "1"
+   },
+   "psj": 0,
+   "psj_css": false,
+   "psj_js": false,
+   "sena_nav": 0
+  },
+  "a3_blogas_nonce": {
+   "code": 403,
+   "psj": 0,
+   "psj_css": false,
+   "psj_js": false,
+   "sena_nav": 0
+  },
+  "pak_dabar": "1",
+  "zurnalas": [
+   "09-03 01:04 · Testuotojas — Būsena: būsena on-hold → processing · mokėjimas / svetainė",
+   "09-03 01:04 · Testuotojas — Būsena: būsena processing → on-hold · mokėjimas / svetainė",
+   "09-03 01:04 · Testuotojas — Dėžių skaičius ✗: Jūsų ieškomas adresas neegzistuoja.",
+   "09-03 01:04 · Testuotojas — Dėžių skaičius: dėžės 2 → 1 · pakuotes 1",
+   "09-03 01:04 · Testuotojas — Dėžių skaičius: dėžės 0 → 2 · pakuotes 2"
+  ],
+  "zurnalas_raw": [
+   {
+    "id": "5",
+    "laikas": "2026-09-02 22:04:40",
+    "diena": "2026-09-03",
+    "uzsakymas": "35434",
+    "eilute": "0",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "web",
+    "kas": "75",
+    "kas_vardas": "Testuotojas",
+    "po": "{\"status\":\"processing\"}",
+    "pastaba": "mokėjimas / svetainė"
+   },
+   {
+    "id": "4",
+    "laikas": "2026-09-02 22:04:39",
+    "diena": "2026-09-03",
+    "uzsakymas": "35434",
+    "eilute": "0",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "web",
+    "kas": "75",
+    "kas_vardas": "Testuotojas",
+    "po": "{\"status\":\"on-hold\"}",
+    "pastaba": "mokėjimas / svetainė"
+   },
+   {
+    "id": "3",
+    "laikas": "2026-09-02 22:04:39",
+    "diena": "2026-09-03",
+    "uzsakymas": "35434",
+    "eilute": "0",
+    "sritis": "desk",
+    "veiksmas": "pakuotes",
+    "rezultatas": "klaida",
+    "busena": "",
+    "kanalas": "web",
+    "kas": "75",
+    "kas_vardas": "Testuotojas",
+    "po": "{\"status\":\"processing\",\"tipas\":\"MAIN\",\"pak\":1,\"siuntos\":[],\"vp\":\"\",\"misrus\":\"{\\\"prins\\\":\\\"av\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-02 20:11:55\",\"eil\":{\"849\":{\"pid\":19708,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"24",
+    "pastaba": null
+   },
+   {
+    "id": "2",
+    "laikas": "2026-09-02 22:04:38",
+    "diena": "2026-09-03",
+    "uzsakymas": "35434",
+    "eilute": "0",
+    "sritis": "desk",
+    "veiksmas": "pakuotes",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "web",
+    "kas": "75",
+    "kas_vardas": "Testuotojas",
+    "po": "{\"status\":\"processing\",\"tipas\":\"MAIN\",\"pak\":1,\"siuntos\":[],\"vp\":\"\",\"misrus\":\"{\\\"prins\\\":\\\"av\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-02 20:11:55\",\"eil\":{\"849\":{\"pid\":19708,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"24",
+    "pastaba": null
+   }
+  ],
+  "html": "<div class=\"psuz-zurnalas\"><ol><li class=\"psuz-ok psuz-k-web\">09-03 01:04 · Testuotojas — Būsena: būsena on-hold → processing · mokėjimas / svetainė</li><li class=\"psuz-ok psuz-k-web\">09-03 01:04 · Testuotojas — Būsena: būsena processing → on-hold · mokėjimas / svetainė</li><li class=\"psuz-klaida psuz-k-web\">09-03 01:04 · Testuotojas — Dėžių skaičius ✗: Jūsų ieškomas adresas neegzistuoja.</li></ol></div>",
+  "skaiciai": {
+   "uzs": 16,
+   "neapm": 0,
+   "kaup": 0,
+   "lauk": 0,
+   "laiskai": 13,
+   "reikia": null,
+   "riba": {
+    "k": "speji",
+    "t": "Žalioji Banga 09:00 — liko 7 val 55 min"
+   },
+   "gavimas": null
+  },
+  "temp": [
+   {
+    "id": "4539",
+    "name": "TEMP PS dep-215158",
+    "active": "0"
+   },
+   {
+    "id": "4540",
+    "name": "TEMP PS dep-215419",
+    "active": "0"
+   },
+   {
+    "id": "4541",
+    "name": "TEMP PS dep-220233",
+    "active": "1"
+   }
+  ],
+  "temp_po": [
+   "4541"
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788390262|JuVX5DXw7dtie84Hv4k3QTCIwFFRjP0G7VtQuzy9i0w|ed6d6a51b39dcac525c7e3a6fc9c0cceee98540610a936756fc1d797737b182f"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788390262|JuVX5DXw7dtie84Hv4k3QTCIwFFRjP0G7VtQuzy9i0w|5fd4b4985139d5fa8e9f11d400bab7af8b770dd2ca18487a76435d43a38af89f"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788390262|JuVX5DXw7dtie84Hv4k3QTCIwFFRjP0G7VtQuzy9i0w|506e5e7f6f12d35e65526aaacbd69d1f57dce488ee9347a6761f547cbb26d298"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e1_desk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk"
+   },
+   {
+    "n": "e1_tiekimas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-tiekimas"
+   },
+   {
+    "n": "e1_katalogas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas"
+   },
+   {
+    "n": "e1_laiskai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-laiskai&b=laukia"
+   },
+   {
+    "n": "e1_zurnalas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-ivykiai&uzs=35434"
+   },
+   {
+    "n": "e1_desk_mob",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+    "w": 420,
+    "h": 800
+   }
+  ]
+ },
+ "shots": {
+  "e1_desk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e1_tiekimas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-tiekimas",
+   "title": "Tiekimas ‹ Petshop.lt — WordPress"
+  },
+  "e1_katalogas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress"
+  },
+  "e1_laiskai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-laiskai&b=laukia",
+   "title": "Laiškai ‹ Petshop.lt — WordPress"
+  },
+  "e1_zurnalas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-ivykiai&uzs=35434",
+   "title": "‹ Petshop.lt — WordPress"
+  },
+  "e1_desk_mob": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  }
+ }
+}
