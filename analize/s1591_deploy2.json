@@ -1,0 +1,75 @@
+{
+ "v": "dep-081936",
+ "kurimas": 200,
+ "sid": 4446,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1591-D2",
+  "key_len": 1,
+  "cron_job_key_len": 1,
+  "new_md5": "191637c6d58e661f8e7ed0d352c2556a",
+  "tokens": 2557,
+  "write": 17116,
+  "disk_md5": "191637c6d58e661f8e7ed0d352c2556a"
+ },
+ "V": {
+  "VERSIJA": "S1591-D2",
+  "key_len": 1,
+  "cron_job_key_len": 1,
+  "dec_sun": {
+   "import": true,
+   "group": "konservai"
+  },
+  "dec_kat": {
+   "import": true,
+   "group": "konservai"
+  },
+  "slug_sun": "konservai-sunims",
+  "disk_md5": "191637c6d58e661f8e7ed0d352c2556a",
+  "pmxi5_pries": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "last_activity": "2026-08-22 03:30:01"
+  },
+  "trigger": [
+   200,
+   ""
+  ],
+  "pmxi5_po": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "last_activity": "2026-08-22 03:30:01"
+  }
+ },
+ "P": {
+  "VERSIJA": "S1591-D2",
+  "key_len": 1,
+  "cron_job_key_len": 1,
+  "proc": [
+   200,
+   "",
+   0.9
+  ],
+  "pmxi5": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "imported": "0",
+   "created": "0",
+   "updated": "0",
+   "skipped": "0",
+   "count": "2355",
+   "last_activity": "2026-08-22 03:30:01"
+  },
+  "vf_sku_8": [],
+  "nauji": []
+ }
+}
