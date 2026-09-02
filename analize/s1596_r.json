@@ -1,0 +1,264 @@
+{
+ "v": "dep-115757",
+ "kurimas": 200,
+ "sid": 4484,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1596-R1",
+  "slug": [
+   {
+    "ID": "34936",
+    "post_status": "draft",
+    "post_name": "skanestu-dezute-katei",
+    "post_title": "Skanėstų dėžutė katei",
+    "post_modified": "2026-09-01 21:13:35"
+   },
+   {
+    "ID": "34938",
+    "post_status": "publish",
+    "post_name": "skanestai-katems2",
+    "post_title": "Skanėstų dėžutė katei",
+    "post_modified": "2026-09-01 20:47:33"
+   },
+   {
+    "ID": "34947",
+    "post_status": "publish",
+    "post_name": "test-konservu-deze-katei-isrankioms",
+    "post_title": "Konservų rinkinys katėms",
+    "post_modified": "2026-09-02 13:40:22"
+   },
+   {
+    "ID": "34948",
+    "post_status": "trash",
+    "post_name": "test-konservu-deze-katei-be-vistienos__trashed",
+    "post_title": "TEST Konservu deze katei Be vistienos",
+    "post_modified": "2026-09-01 21:45:47"
+   }
+  ],
+  "meniu": [
+   [
+    34129,
+    "Konservų rinkiniai",
+    "taxonomy",
+    "product_cat",
+    682,
+    "https://dev.avesa.lt/kategorija/rinkiniai/konservu-rinkiniai/",
+    null
+   ],
+   [
+    34130,
+    "Skanėstų rinkiniai",
+    "taxonomy",
+    "product_cat",
+    683,
+    "https://dev.avesa.lt/kategorija/rinkiniai/skanestu-rinkiniai/",
+    null
+   ],
+   [
+    34131,
+    "Kramtalų rinkiniai",
+    "taxonomy",
+    "product_cat",
+    684,
+    "https://dev.avesa.lt/kategorija/rinkiniai/kramtalu-rinkiniai/",
+    null
+   ],
+   [
+    34126,
+    "RINKINIAI",
+    "taxonomy",
+    "product_cat",
+    679,
+    "https://dev.avesa.lt/kategorija/rinkiniai/",
+    null
+   ],
+   [
+    34246,
+    "Paruošti rinkiniai",
+    "custom",
+    "custom",
+    34246,
+    "https://dev.avesa.lt/kategorija/rinkiniai/",
+    "NERASTA"
+   ],
+   [
+    34247,
+    "Susidėk savo rinkinį",
+    "custom",
+    "custom",
+    34247,
+    "#",
+    "draft #14927"
+   ],
+   [
+    34248,
+    "Susidėk konservų rinkinį šunims",
+    "custom",
+    "custom",
+    34248,
+    "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+    "publish #34944"
+   ],
+   [
+    34249,
+    "Susidėk konservų rinkinį katėms",
+    "custom",
+    "custom",
+    34249,
+    "https://dev.avesa.lt/product/test-konservu-deze-katei-be-vistienos/",
+    "NERASTA"
+   ],
+   [
+    34250,
+    "Susidėk skanėstų rinkinį šunims",
+    "custom",
+    "custom",
+    34250,
+    "https://dev.avesa.lt/product/kramtalu-deze-suniui/",
+    "draft #34937"
+   ],
+   [
+    34251,
+    "Susidėk skanėstų rinkinį katėms",
+    "custom",
+    "custom",
+    34251,
+    "https://dev.avesa.lt/product/skanestu-dezute-katei/",
+    "draft #34936"
+   ],
+   [
+    34252,
+    "Susidėk kramtalų rinkinį šunims",
+    "custom",
+    "custom",
+    34252,
+    "https://dev.avesa.lt/product/skanestu-deze-suniui-hipoalergine/",
+    "draft #34933"
+   ]
+  ],
+  "dezes": [
+   {
+    "ID": "34933",
+    "post_status": "draft",
+    "post_name": "skanestu-deze-suniui-hipoalergine",
+    "post_title": "Kramtalų dėžė šuniui — hipoalerginė",
+    "g": "kramtalai"
+   },
+   {
+    "ID": "34934",
+    "post_status": "draft",
+    "post_name": "skanestu-deze-suniui-jautriam-virskinimui",
+    "post_title": "Kramtalų dėžė šuniui — jautriam virškinimui",
+    "g": "kramtalai"
+   },
+   {
+    "ID": "34935",
+    "post_status": "draft",
+    "post_name": "skanestu-deze-suniui-monoproteinas",
+    "post_title": "Skanėstų dėžė šuniui — monoproteinas",
+    "g": "sunys"
+   },
+   {
+    "ID": "34936",
+    "post_status": "draft",
+    "post_name": "skanestu-dezute-katei",
+    "post_title": "Skanėstų dėžutė katei",
+    "g": "kates"
+   },
+   {
+    "ID": "34937",
+    "post_status": "draft",
+    "post_name": "kramtalu-deze-suniui",
+    "post_title": "Skanėstų dėžė šuniui",
+    "g": "sunys"
+   },
+   {
+    "ID": "34938",
+    "post_status": "publish",
+    "post_name": "skanestai-katems2",
+    "post_title": "Skanėstų dėžutė katei",
+    "g": "kates"
+   },
+   {
+    "ID": "34942",
+    "post_status": "publish",
+    "post_name": "test-konservu-deze-800-be-vistienos",
+    "post_title": "TEST Konservu deze 800 Be vistienos",
+    "g": "kons_sunims"
+   },
+   {
+    "ID": "34943",
+    "post_status": "publish",
+    "post_name": "test-konservu-deze-800-visi-skoniai",
+    "post_title": "TEST Konservu deze 800 Visi skoniai",
+    "g": "kons_sunims"
+   },
+   {
+    "ID": "34944",
+    "post_status": "publish",
+    "post_name": "test-konservu-deze-400-be-vistienos",
+    "post_title": "Konservu deze 400 Be vistienos",
+    "g": "kons_sunims"
+   },
+   {
+    "ID": "34945",
+    "post_status": "publish",
+    "post_name": "test-konservu-deze-400-monoproteinas",
+    "post_title": "TEST Konservu deze 400 Monoproteinas",
+    "g": "kons_sunims"
+   },
+   {
+    "ID": "34946",
+    "post_status": "publish",
+    "post_name": "test-konservu-deze-400-visi-skoniai",
+    "post_title": "TEST Konservu deze 400 Visi skoniai",
+    "g": "kons_sunims"
+   },
+   {
+    "ID": "34947",
+    "post_status": "publish",
+    "post_name": "test-konservu-deze-katei-isrankioms",
+    "post_title": "Konservų rinkinys katėms",
+    "g": "kons_kates"
+   },
+   {
+    "ID": "34948",
+    "post_status": "trash",
+    "post_name": "test-konservu-deze-katei-be-vistienos__trashed",
+    "post_title": "TEST Konservu deze katei Be vistienos",
+    "g": "kons_kates"
+   },
+   {
+    "ID": "35101",
+    "post_status": "draft",
+    "post_name": "",
+    "post_title": "Skanėstų dėžutė šuniui",
+    "g": "sunys"
+   },
+   {
+    "ID": "35309",
+    "post_status": "publish",
+    "post_name": "konservu-deze-katei",
+    "post_title": "Konservų rinkinys katėms",
+    "g": "kons_kates"
+   },
+   {
+    "ID": "35389",
+    "post_status": "trash",
+    "post_name": "__trashed-12",
+    "post_title": "Konservų rinkinys katėms",
+    "g": "kons_kates"
+   },
+   {
+    "ID": "35390",
+    "post_status": "publish",
+    "post_name": "konservu-rinkinys-katems",
+    "post_title": "Konservų rinkinys katėms",
+    "g": "kons_kates"
+   }
+  ]
+ }
+}
