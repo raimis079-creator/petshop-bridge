@@ -1,0 +1,147 @@
+{
+ "v": "dep-135622",
+ "kurimas": 200,
+ "sid": 4506,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1601-R2",
+  "sargas": [
+   "\t\techo '</div>';",
+   "\t}",
+   "\tpublic static function pastomato_sargas( $rates, $package ) {",
+   "\t\tif ( is_admin() && ! wp_doing_ajax() ) { return $rates; }",
+   "\t\t$kg = 0.0;",
+   "\t\tforeach ( (array) ( $package['contents'] ?? array() ) as $eil ) {",
+   "\t\t\tif ( ! empty( $eil['mnm_child_id'] ) ) { continue; }   /* vaikai — kad nesidubliuotu */",
+   "\t\t\t$p = $eil['data'] ?? null;",
+   "\t\t\tif ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; }",
+   "\t\t\t$w = (float) $p->get_weight();",
+   "\t\t\tif ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; }",
+   "\t\t}",
+   "\t\tif ( $kg <= self::PASTOMATO_RIBA ) { return $rates; }",
+   "\t\t$zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' );",
+   "\t\tforeach ( $rates as $raktas => $tarifas ) {",
+   "\t\t\t$tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() );",
+   "\t\t\tforeach ( $zodziai as $z ) {",
+   "\t\t\t\tif ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; }",
+   "\t\t\t}",
+   "\t\t}",
+   "\t\treturn $rates;",
+   "\t}",
+   "\tprivate static function rinkinio_puslapis() {",
+   "\t\tstatic $atsakymas = null;",
+   "\t\tif ( $atsakymas !== null ) { return $atsakymas; }",
+   "\t\tif ( ! function_exists( 'is_product' ) || ! is_product() ) { return $atsakymas = false; }",
+   "\t\tglobal $post;",
+   "\t\tif ( ! $post ) { return $atsakymas = false; }",
+   "\t\t$atsakymas = ( get_post_meta( $post->ID, self::META_KIEKIAI, true ) !== '' )",
+   "\t\t\t|| ( get_post_meta( $post->ID, '_dp_base_product_id', true ) !== '' );",
+   "\t\treturn $atsakymas;",
+   "\t}",
+   "\tpublic static function vertimai( $vertimas, $tekstas, $domenas ) {"
+  ],
+  "kiti": [
+   "petshop-av-source.php:41:*   courier_only: bool,",
+   "petshop-av-source.php:54:: [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];",
+   "petshop-av-source.php:64:'courier_only' => ! empty( $baze['courier_only'] ),",
+   "petshop-av-source.php:80:'courier_only' => ! empty( $baze['courier_only'] ),",
+   "petshop-av-source.php:93:'courier_only' => ! empty( $baze['courier_only'] ),",
+   "petshop-av-source.php:124:$grupes[ $s ] = [ 'eilutes' => [], 'carrier' => $x['carrier'], 'courier_only' => false ];",
+   "petshop-av-source.php:132:if ( $x['courier_only'] ) { $grupes[ $s ]['courier_only'] = true; }",
+   "petshop-desk.php:1056:* [source, carrier, courier_only, av_qty, av_uztenka, tiekejas, reason].",
+   "petshop-m8-food.php:105:*   4. courier_only apsauga  5. savaitinė rotacija  6. iki 3 prekių",
+   "petshop-m8-food.php:232:// courier_only NIEKADA nesiūlom — jis apribotų pristatymo būdus.",
+   "petshop-m8-food.php:233:if ( ! empty( $r['courier_only'] ) ) { continue; }",
+   "petshop-m8-food.php:692:$pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;",
+   "petshop-m8-food.php:719:$pl['courier_only'] = is_array($ff) ? (bool) $ff['courier_only'] : false;"
+  ],
+  "kat": [
+   "3337:grazina `courier_only: false` ir preke pasiūloma i pastomata, kur ji",
+   "3343:$kurj_auto = is_array( $ff ) && ! empty( $ff['courier_only'] );"
+  ],
+  "flag": {
+   "15870": [
+    "Uždaras tualetas katėms, Vicky",
+    "yes"
+   ],
+   "15920": [
+    "Tualetas katėms labai aukštu r",
+    "yes"
+   ],
+   "15928": [
+    "Tualetas katėms aukštu rėmeliu",
+    "yes"
+   ],
+   "19140": [
+    "Automatinė vandens gertuvė fon",
+    ""
+   ],
+   "35396": [
+    "Apsauga nuo parazitų šuniui — ",
+    ""
+   ],
+   "35400": [
+    "Kačių tualeto starteris — tual",
+    ""
+   ],
+   "35402": [
+    "Katei, kuri mažai geria — vand",
+    ""
+   ]
+  },
+  "kurjeriu_pvz": [
+   [
+    "20260",
+    "Comfy atviras tualetas katei cleo, kampi"
+   ],
+   [
+    "13103",
+    "Trixie Vežimėlis-kuprinė, 32x45x25 cm, j"
+   ],
+   [
+    "13104",
+    "Trixie Ryan transportavimo krepšys, 30x3"
+   ],
+   [
+    "13105",
+    "TRIXIE Madison transportavimo krepšys, 1"
+   ],
+   [
+    "13106",
+    "Trixie Wings transportavimo krepšys į lė"
+   ],
+   [
+    "13107",
+    "Trixie Timon kuprinė, 34x44x30 cm, juoda"
+   ],
+   [
+    "13108",
+    "Trixie Helen transportavimo krepšys, 19x"
+   ],
+   [
+    "13115",
+    "Trixie Skudo 1 boksas, XS 30x32x49 cm, s"
+   ],
+   [
+    "13116",
+    "Trixie Skudo 2 boksas, XS-S 35x36x55 cm,"
+   ],
+   [
+    "13118",
+    "Trixie Skudo 3 boksas, S 40x39x60 cm, sm"
+   ],
+   [
+    "13120",
+    "Trixie Skudo 5 boksas, M 59x65x79 cm, sm"
+   ],
+   [
+    "13121",
+    "Trixie Skudo 6 boksas, M-L 63x70x92 cm, "
+   ]
+  ],
+  "kurjeriu_n": "162"
+ }
+}
