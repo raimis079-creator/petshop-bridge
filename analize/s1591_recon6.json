@@ -1,0 +1,189 @@
+{
+ "v": "dep-082157",
+ "kurimas": 200,
+ "sid": 4447,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1591-R6",
+  "hist5": [
+   {
+    "id": "4820",
+    "type": "processing",
+    "time_run": null,
+    "date": "2026-08-22 03:31:02",
+    "summary": "cron processing"
+   },
+   {
+    "id": "4819",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-22 03:30:01",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "4788",
+    "type": "processing",
+    "time_run": "63",
+    "date": "2026-08-21 03:31:02",
+    "summary": "import finished & cron un-triggered<br>2 Produktai created 200 updated 2153 skipped"
+   },
+   {
+    "id": "4787",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-21 03:30:02",
+    "summary": "triggered by cron"
+   }
+  ],
+  "hist7": [
+   {
+    "id": "4884",
+    "type": "processing",
+    "time_run": null,
+    "date": "2026-08-27 08:16:02",
+    "summary": "cron processing"
+   },
+   {
+    "id": "4883",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-08-27 08:15:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "4812",
+    "type": "processing",
+    "time_run": null,
+    "date": "2026-08-21 13:16:01",
+    "summary": "cron processing"
+   }
+  ],
+  "hist2": [
+   {
+    "id": "4948",
+    "type": "processing",
+    "time_run": "61",
+    "date": "2026-09-02 03:01:02"
+   },
+   {
+    "id": "4947",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-02 03:00:04"
+   }
+  ],
+  "sn565_head": "/**\n * Petshop VF Sync v1.1 (dry-run/apply + WP cron)\n *\n * Trys sync keliai esamoms ir naujoms VF prekėms:\n *   A. REPRICE — kainos + akcijos (kartą per parą 03:00)\n *   B. STOCK   — likučiai (kas valandą)\n *   C. PUBLISH — auto-publish naujoms VF prekėms, kurios praėjo VISUS\n *                saugos filtrus (kartą per parą 04:00, po reprice)\n *\n * Visi trys naudoja tą patį VF feed cache'ą, tas pačias plugin'o klases.\n *\n * SAUGA (griežtos ribos, visiems trims):\n *   - Neliečia post_content (aprašymo)\n *   - Neliečia post_title (pavadinimo)\n *   - Neliečia paveikslų, kategorijų, atributų, terminų\n *   - Reprice gerbia: _manual_price_override / _petshop_lock_pricing /\n *     _petshop_sale_batch -> praleidžiama\n *   - Publish reikalauja: paveikslėlis + aprašymas + kaina>0 + likutis>0 +\n *     nėra review flag'ų + nėra SKU/EAN konfliktų\n *\n * Paleidimas rankomis (per bridge token-gate):\n *   ?psc_vf_sync=1&k=ps2026&path=reprice&mode=dryrun\n *   ?psc_vf_sync=1&k=ps2026&path=stock&mode=dryrun\n *   ?psc_vf_sync=1&k=ps2026&path=publish&mode=dryrun\n *   ?psc_vf_sync=1&k=ps2026&path=[reprice|stock|publish]&mode=apply&confirm=YES\n *   Papildomai: &limit=100&offset=0&only_sku=JOS1007,JOS1012\n *\n * Cron valdymas:\n *   ?psc_vf_sync=1&k=ps2026&cron=register / unregister / status\n */\n\n// =============================================================================\n// HTTP ENTRY\n// =============================================================================\nadd_action( 'init', function() {\n\n\tif ( ( $_GET['psc_vf_sync'] ?? '' ) !== '1' ) return;\n\tif ( ( $_GET['k'] ?? '' ) !== 'ps2026' && ! current_user_can( 'manage_options' ) ) return;\n\n\t// Cron valdymas\n\t$cron = (string) ( $_GET['cron'] ?? '' );\n\tif ( $cron !== '' ) {\n\t\twp_send_json( petshop_vf_sync_cron_manage( $cron ) );\n\t}\n\n\t$path = ( $_GET['path'] ?? 'reprice' );\n\tif ( ! in_array( $path, array( 'reprice', 'stock', 'publish' ), true ) ) $path = 'reprice';\n\t$mode      = ( $_GET['mode'] ?? 'dryrun' ) === 'apply' ? 'apply' : 'dryrun';\n\t$confirm   = (string) ( $_GET['confirm'] ?? '' );\n\t$limit     = max( 1, min( 2000, (int) ( $_GET['limit']  ?? 100 ) ) );\n\t$offset    = max( 0, (int) ( $_GET['offset'] ?? 0 ) );\n\t$only_sku  = array_filter( array_map( 'trim', explode( ',', (string) ( $_GET['only_sku'] ?? '' ) ) ) );\n\n\tif ( $mode === 'apply' && $confirm !== 'YES' ) {\n\t\twp_send_json( array( 'error' => 'APPLY reikia &confirm=YES' ) );\n\t}\n\n\tif ( $path === 'stock' )   $result = petshop_vf_sync_stock( $mode, $limit, $offset, $onl",
+  "active": [
+   "239 Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)",
+   "329 Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+   "332 Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]",
+   "375 Baltymu Saltinis Dry-Run Konservai v2",
+   "461 Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+   "463 Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+   "464 Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+   "465  Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+   "469 Petshop Dev App Passwords v1",
+   "472 Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+   "492 Petshop Filtru Atidarymas v2 (CSS+JS)",
+   "494 Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+   "502 Higienos Modulis v1.0",
+   "503 Grauziko Rusis Modulis v1.2",
+   "507 Paukscio Rusis Modulis v1.3",
+   "509 Zuvies Rusis Modulis v1.0",
+   "510 Pasaro Forma Modulis v1.1",
+   "512 Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+   "513 Petshop Katalogo Auditas v1 (read-only)",
+   "518 Petshop Slėpti svorį ir dimensijas v1 (display only)",
+   "520 Petshop Meniu Grupavimas v1 (komerciniai 3)",
+   "525 Petshop UI: kortelės + mobile sticky ATC",
+   "532 Petshop MnM Fiksuoti komponentų kiekiai v2",
+   "535 Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)",
+   "539 Petshop Rinkinių Kūrimo Forma v2",
+   "547 Petshop Susidėjimo Rinkinio Vitrina v19",
+   "550 Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+   "558 Petshop Choice Krepšelio Elgsena",
+   "560 Petshop Rinkinio CTA Banneris kategorijose v10",
+   "561 Petshop Rinkinių Gyvūno Filtras v1",
+   "562 Petshop Sprendimai Shortcode Variklis v9",
+   "563 Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)",
+   "565 Petshop VF Sync v1.1 (reprice+stock+publish)",
+   "566 Petshop Akcijos Shortcode v1.3",
+   "567 Petshop Daugiau=Pigiau Stock Sync v1.2",
+   "568 Petshop Daugiau=Pigiau Display v1.2",
+   "569 Petshop Pack/Rinkinys Auto-Categories v1.3",
+   "570 Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+   "572 Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+   "573 Petshop DP Kortelės Ženkliukas v4",
+   "582 Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+   "587 Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+   "594 Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+   "609 SEO Auto H1 v1 (page fallback + _petshop_h1)",
+   "610 Petshop Topbar v2",
+   "613 Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+   "614 Petshop DataLayer v1.1 (GA4 ecommerce)",
+   "615 Petshop GTM Snippet v2.0 (GTM-MF3GZGT, atidėtas)",
+   "619 Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+   "628 Petshop Complianz X = Atmesti v1",
+   "632 Petshop Slapuku Politika ES 301 v1 (LIVE)",
+   "648 Petshop Invoice Doc Type Fix v2 (LIVE)",
+   "653 Petshop Invoice Completed Attach Fix v3 (LIVE)",
+   "685 Atrinktos Prekės Modulis v1 (rotacija)",
+   "688 Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)",
+   "692 Petshop Maisto Tipo Mygtukai v1",
+   "693 Petshop Mobile Filtru Dublio Fix v1",
+   "705 Petshop Produktu Nuotrauku Vienodinimas v1",
+   "707 Petshop UI Lokalizacija v1",
+   "709 Petshop Build-a-box UI Valymas v1",
+   "1357 Feeding Calc REST v1",
+   "2024 Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+   "2029 Petshop MyAccount LT Slug 301 v1 (LIVE)",
+   "2037 Petshop Paskyros Sablonas v1 (LIVE)",
+   "2051 Petshop UI Lokalizacija v1 (LIVE)",
+   "2403 Petshop Stock Service v1.3 (per registra)",
+   "2515 Petshop Sources v2.2 (registras + palaikymas + sandelio pildymas)",
+   "2868 PS Masinis Sudeliojimas v6 (tik prekyboje)",
+   "2871 Petshop Vitrina Dalinimasis v1.0 (isjungti social mygtukai)",
+   "2880 Petshop Admin Juosta v1.0 (parduotuve naujame lange)",
+   "4447 TEMP PS dep-082157"
+  ],
+  "proc": [
+   200,
+   "{\"status\":500,\"message\":[\"No data was returned. This can happen if you try to download from a private IP or if an unknown error has occurred.\"]}",
+   {
+    "date": "Wed, 02 Sep 2026 08:23:03 GMT",
+    "server": "Apache",
+    "x-robots-tag": "noindex, nofollow",
+    "vary": "Accept-Encoding,Cookie",
+    "cache-control": [
+     "no-store, no-cache, must-revalidate, max-age=0, s-maxage=0, no-transform",
+     "post-check=0, pre-check=0"
+    ],
+    "cdn-cache-control": "no-store, no-cache, must-revalidate, max-age=0, s-maxage=0, no-transform",
+    "cloudflare-cdn-cache-control": "no-store, no-cache, must-revalidate, max-age=0, s-maxage=0, no-transform",
+    "pragma": "no-cache",
+    "content-encoding": "gzip",
+    "content-type": "application/json; charset=UTF-8"
+   }
+  ],
+  "pmxi5": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "imported": "0",
+   "created": "0",
+   "updated": "0",
+   "skipped": "0",
+   "last_activity": "2026-08-22 03:30:01",
+   "registered_on": "2026-08-21 03:32:05"
+  },
+  "cron_pmxi": [
+   "petshop_vf_sync_stock_hourly",
+   "petshop_vf_sync_reprice_daily",
+   "petshop_vf_sync_publish_daily"
+  ]
+ }
+}
