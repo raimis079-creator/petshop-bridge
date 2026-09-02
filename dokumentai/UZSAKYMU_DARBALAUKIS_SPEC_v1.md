@@ -1,4 +1,4 @@
-# UŽSAKYMŲ DARBALAUKIS — SPECIFIKACIJA v1 (2026-09-03)
+# UŽSAKYMŲ DARBALAUKIS — SPECIFIKACIJA v1.1 (2026-09-03)
 
 > Sujungia: auditą 2026-09-02 (17 testinių užsakymų, K1–K3 pataisyti), logikos registrą v1 (52 taisyklės iš desk/dropship/tiekimo/siuntų laiškų kodo ir TŽ §35), langų žemėlapį, maketus v1–v5 ir visus Raimio sprendimus 2026-09-02/03. Tiesos šaltiniai kodui: `dokumentai/UZSAKYMU_LOGIKOS_REGISTRAS_v1.md` (taisyklės), `AUDITAS_UZSAKYMAI_2026-09-02.md` (defektai), šis failas (sprendimai ir apimtis).
 > Atsarginė kopija prieš pradedant: `ps-backups/SNAPSHOT-2026-09-02-pries-juosta.zip` (14,1 MB, md5 `a6a51695…`, 1 436 failai + 870 snippet'ų) ir git žymė `pries-juosta-2026-09-02`. Grįžimas — 5 min.
@@ -101,6 +101,43 @@ Dabartinė skylė (auditas): AV → tiekėjas per Klausimą likučio negrąžina
 | 10 | Atšaukimas, grąžinimai, kelio keitimas neaiškiems, LP lipdukas | tik žmogus | negrįžtama / kviečia kurjerį |
 
 Įvykių žurnalas (ps_ivykiai: užsakymas, eilutė, veiksmas, kas, kada, prieš/po, siūlyta/priimta/atmesta) — pagrindas 2, 8, SLA ataskaitai ir būsimam AI (siūlymai į esamą „Siūlymai" lizdą, žmogus tvirtina).
+
+---
+
+## 6a. Automatika — kaip veiks kasdien (išrašyta)
+
+**Venipak sekimas** (`petshop-sekimas.php`). Cron kas 30 min ima visus atvirus užsakymus su `_ps_siuntos` numeriais ir partijų `venipak_pack`, kiekvienam numeriui kviečia `ws/tracking?code=` (patikrinta 09-02: atsakymas CSV su Status). Rezultatą rašo į `ps_siuntu_busenos` (numeris, statusas, laikas) ir į įvykių žurnalą.
+- **At sender / Shipment created** — nieko.
+- **Paimta** (bet koks kitas ne-galutinis statusas): Avesos siunta → užsakymo dalis „Išsiųsta"; tiekėjo siunta → „[T] išsiuntė". Kai visos dalys paimtos → `completed` + **vienas sekimo laiškas klientui** su visais numeriais (esamas `Petshop_Siuntos`). Žurnale „auto: Venipak Picked up".
+- **Delivered**: Visuose „pristatyta"; partijai — Tiekime siūlymas „atvyko — priimti"; po 3 d. → Sender.net „kaip patiko" (esamas šablonas).
+- **Blogi** (nepristatyta, grįžta siuntėjui, nepaimta iš paštomato): → Klausimas „siunta grįžta — susisiek" su kliento telefonu; veiksmai: skambinti · persiųsti iš naujo (naujas lipdukas) · atšaukti ir grąžinti pinigus.
+- **Nežinomas statusas**: rodomas tekstu, užsakymas neliečiamas, įrašas žurnale — žodyną pildom po T-0.
+- LP Express: statusai iš plugino `wc-lp-*` tuo pačiu mechanizmu.
+- Rankinis „Kurjeris paėmė" / „[T] išsiuntė" lieka — jei sekimas vėluoja.
+
+**Vėlavimo sargas.** Apmokėtas, surūšiuotas, per N darbo dienų (N ir tekstas — Raimio, siūlau 3) nė viena dalis neišsiųsta → klientui automatinis laiškas „atsiprašome, siunta vėluoja" (Sender.net šablonas), užsakymas į Klausimus „vėluoja klientui" su veiksmais „Atidaryti" / „Išspręsta". Vieną kartą per užsakymą.
+
+**Auto rūšiavimas.** Apmokėjus, jei visos eilutės turi pasiūlymą ir visos vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`, žurnale priežastys, eilutėje „surūšiuota auto"; keičiama iki pirmo lipduko. Kitaip — „Nauji — rūšiuoti".
+
+**Dovanėlės kortelė.** Surinkimo lape prie užsakymo — kortelė spausdinimui: „{Augintinio vardas} nuo petshop.lt — skanaus!" iš M8 profilio (`ps_pets` pagal klientą), be vardo — „Jūsų augintiniui". Taisyklė, kam dedama (visiems / virš X € / tik su vardu) — Raimio (§11.4). Lape — EAN barkodai kiekvienai prekei (skenavimui po paleidimo) ir langelis ✓.
+
+**Kliento takelis.** Paskyroje ir laiške (nuoroda be prisijungimo, kaip sekimo laiške): Užsakymas gautas · Apmokėta · Ruošiama · Išsiųsta · Pas kurjerį · Pristatyta; kiekviena siunta su numeriu ir „sekti"; mišriam — „gali būti pristatytos skirtingu metu"; apačioje „Užsakyti dar kartą" (patikrinti esamą) ir „Grąžinti prekę" (6b).
+
+## 6b. Grąžinimai (po paleidimo, bet numatyta struktūroje)
+
+1. Klientas paskyroje (arba per nuorodą laiške) pažymi prekes ir priežastį: **apsigalvojo** (14 d., CK 6.228¹⁰) arba **brokas / ne ta prekė**.
+2. Sistema registruoja Venipak siuntą **mūsų sutartimi** (kaip Tiekime, gavėjas — Avesa arba Nemenčinės paštomatas) ir duoda klientui lipduką.
+3. Kaina: apsigalvojo — lipduko kaina **atskaitoma iš grąžinamos sumos** (taisyklėse parašyta; grąžinam prekės kainą + pradinį standartinį pristatymą); brokas — mūsų sąskaita, grąžinam viską.
+4. Darbalaukyje eilė/kortelė „Grąžinimai": laukiam siuntos (sekimas) → gauta → prekė į Avesą (+q) arba nurašyti (brokas) → kreditinė (esamas AVPN/IAPV variklis) → „pinigai grąžinti rankomis (Paysera)" pažymi darbuotojas.
+5. Dropship prekės grįžta į Avesą, ne tiekėjui — likutis Avesoje, parduodama iš naujo.
+
+## 6c. Redagavimas be WooCommerce — taisyklės
+
+- Adresas, telefonas, paštomatas — bet kada iki Avesos lipduko / tiekėjo laiško; po jų — su perregistravimu (senas nr. lieka pastaboje, kaip H258).
+- Kiekis, išimti prekę, dalinis atšaukimas — iki lipduko; likutis pagal kelią (§5); suma/PVM per WC (`wc_update_order`, `calculate_totals`), sąskaita perrašoma (kreditinė senai, nauja).
+- Pridėti prekę — paieška pagal pavadinimą/SKU, šaltinis priskiriamas kaip apmokant (A2); suma didėja → nuoroda apmokėti skirtumą arba pastaba „sumokės kurjeriui" (§11.3).
+- Suma mažėja → pastaba „grąžinti X € rankomis (Paysera)" ir Klausimas, kol nepažymėta.
+- Viskas rašoma į žurnalą su prieš/po; klientui laiškas apie pakeitimą — varnelė (numatyta ON adresui/paštomatui).
 
 ---
 
