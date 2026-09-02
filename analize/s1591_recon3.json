@@ -1,0 +1,195 @@
+{
+ "v": "dep-075920",
+ "kurimas": 200,
+ "sid": 4440,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1591-R3",
+  "rules_head": "<?php\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Petshop_Import_Rules_VF v1.0\n *\n * VF (Vetfarmas) importo taisyklės. ATSKIRA NUO ZB.\n *\n * Funkcijos:\n *   - vf_should_import() — pilna filter logika (blocked/medication/kainos ribos/etc)\n *   - normalize_brand() — JOSERA EXCLU → Josera, EXCL MEDITER → Exclusion, etc.\n *   - get_wc_category_slug() — VF kategorija → WC slug per vf_category_map[]\n */\nclass Petshop_Import_Rules_VF {\n\n\t/**\n\t * Blocked brand'ai — nei vienas vf_should_import nepraeina.\n\t * Medikamentai, akvariumo chemija, veterinariniai.\n\t */\n\tprivate array $blocked_now_brands = [\n\t\t'AQUAEL', 'ARISTA LATIN', 'BAVARO', 'BIOWET DRWAL', 'BIOWET-PULAW',\n\t\t'CLASSEUR', 'COSYFLOCK', 'CP-PHARMA', 'ELANCO',\n\t\t'HUVEPHARMA', 'KRKA', 'MED. EQUIOM.', 'MSD',\n\t\t'MSSCHIPPER', 'PERFECTO', 'RICHTER', 'RIO', 'VETFARMAS',\n\t\t'VETVIVA RICH', 'ZOETIS',\n\t];\n\n\t/**\n\t * Review later — atmesti dabar, peržiūrėti po launch'o.\n\t */\n\tprivate array $review_later_brands = [ 'EXCL VETDIET', 'JOSERA HELP' ];\n\n\t/**\n\t * Specifiniai SKU, kurių neimportuojam.\n\t */\n\tprivate array $excluded_skus = [ 'VET1400' ];\n\n\t/**\n\t * Medikamentų raktažodžiai — jei VF kategorijoje randamas, atmetama.\n\t */\n\tprivate array $medication_keywords = [\n\t\t'antimikrob', 'endoparaz', 'ektoparaz', 'vakcin', 'nvnu',\n\t\t'hormon', 'insektici', 'akarici', 'gydomi', 'oraliai naudoj',\n\t\t'injekcin', 'infuzin', 'apsauginiai žaizd', 'antibakterini',\n\t\t'priešgrybeli', 'tepalai turintys antimikrob',\n\t\t'kontaktiniai insekticidai', 'priemonės nuo dumblių',\n\t\t'kateteriai', 'šlapimo pūslės kateteri', 'kita instrumentika',\n\t\t'kartūs bintai', 'nekartūs bintai', 'vienkartinės pirštinės',\n\t];\n\n\t/**\n\t * VF kategorijos → grupė (kainų ribų patikrai).\n\t */\n\tprivate array $category_groups_map = [\n\t\t'sausas'     => [ 'sausas' ],\n\t\t'konservai'  => [ 'konserv', 'drėgn' ],\n\t\t'skanestai'  => [ 'skanėst', 'skaneast', 'lazdel', 'pagalvel', 'subprodukt' ],\n\t\t'kraikai'    => [ 'kraikas', 'kraik' ],\n\t\t'higiena'    => [ 'šampūn', 'sampun', 'priežiūr', 'prieziur', 'pokail', 'šuk', 'epec', 'higien', 'dezinfek', 'kvap', 'dėmi' ],\n\t\t'vitaminai'  => [ 'vitamin', 'papild', 'mineral' ],\n\t\t'aksesuarai' => [ 'žaisl', 'zaisl', 'pavadž', 'pavad', 'antkakl', 'guoli', 'krepš', 'transport', 'narvas', 'narv', 'inda', 'dubenel', 'draskykl', 'apyka', 'pala', 'petneš', 'meškr', 'apranga', 'akvariu', 'filtra', 'grunt' ],\n\t];\n\n\t/**\n\t * Brand normalization: VF XML brand → konsoliduotas brand (taksonomija).\n\t */\n\tprivate array $brand_normalize = [\n\t\t'JOSERA'        => 'Josera',\n\t\t'JOSERA JOSI'   => 'Josera',\n\t\t'JOSERA EXCLU'  => 'Josera',\n\t\t'EXCL MEDITER'  => 'Exclusion',\n\t\t'EXCL HYPO'     => 'Exclusion',\n\t\t'GREENPETFOOD'  => 'GreenPetFood',\n\t\t// Kiti VF brand'ai → naudoja XML pavadinimą kaip yra (per fallback)\n\t];\n\n\t/**\n\t * VF → WC kategorijų mapping (galutinis, iš v3 audit).\n\t * 132 įrašai. NEMAPINTI VF cat'ai (medication, terariumai, chemija) → skip importo.\n\t */\n\tprivate array $vf_category_map = [\n\t\t// ŠUNIMS / MAISTAS\n\t\t'Reguliarus sausas suaugusių šunų maista'  => 'sausas-maistas-sunims',\n\t\t'Reguliarus sausas šuniukų maistas'        => 'sausas-maistas-sunims',\n\t\t'Reguliarus sausas jaunų šunų maistas'     => 'sausas-maistas-sunims',\n\t\t'Reguliarus sausas pagyven. šunų maistas'  => 'sausas-maistas-sunims',\n\t\t'VET sausas hipoalerginis maistas šunims'  => 'sausas-maistas-sunims',\n\t\t'Reg. konservuotas suaugusių šunų maistas' => 'konservai-sunims',\n\t\t'Reg. konservuotas jaunų šunų maistas'     => 'konservai-sunims',\n\t\t'Reguliarus konservuotas šuniukų maista",
+  "rules_grep": {
+   "excluded": [
+    "private array $excluded_skus = [ 'VET1400' ];",
+    "// 3. Excluded SKU",
+    "if ( in_array( $sku, $this->excluded_skus, true ) ) {",
+    "return [ 'import' => false, 'reason' => 'excluded_sku' ];"
+   ],
+   "skip": [
+    "* 132 įrašai. NEMAPINTI VF cat'ai (medication, terariumai, chemija) → skip importo.",
+    "// SKIP (intentionally unmapped):",
+    "* NULL jei nėra mapping (prekė bus skip'inama)."
+   ],
+   "block": [
+    "*   - vf_should_import() — pilna filter logika (blocked/medication/kainos ribos/etc)",
+    "* Blocked brand'ai — nei vienas vf_should_import nepraeina.",
+    "private array $blocked_now_brands = [",
+    "// 1. Blocked brands",
+    "if ( in_array( $brand_trimmed, $this->blocked_now_brands, true ) ) {",
+    "return [ 'import' => false, 'reason' => 'brand_blocked_now' ];",
+    "return [ 'import' => false, 'reason' => 'medication_blocked' ];",
+    "// 5. Paukš/žirg blocked",
+    "return [ 'import' => false, 'reason' => 'pauks_blocked' ];",
+    "return [ 'import' => false, 'reason' => 'zirg_blocked' ];"
+   ],
+   "HYPO": [
+    "'EXCL HYPO'     => 'Exclusion',"
+   ],
+   "konserv": [
+    "'konservai'  => [ 'konserv', 'drėgn' ],",
+    "'Reg. konservuotas suaugusių šunų maistas' => 'konservai-sunims',",
+    "'Reg. konservuotas jaunų šunų maistas'     => 'konservai-sunims',",
+    "'Reguliarus konservuotas šuniukų maistas'  => 'konservai-sunims',",
+    "'Reg. konservuotas suaugusių kačių maista' => 'konservai-katems',",
+    "'Reg. konservuotas kačiukų maistas'        => 'konservai-katems',",
+    "'Reg. konservuotas pagyven.kačių maistas'  => 'konservai-katems',",
+    "case 'konservai':"
+   ]
+  },
+  "vf_import_head": "<?php\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * VF (Vetfarmas) Import Logic v1.5.7\n *\n * v1.5.7 (2026-08-17) pakeitimai (G825 — GTIN normalizavimas):\n *   RADINYS: VF XML <barcode> lauke VISOS 2 326 reiksmes yra lygiai 12 simboliu.\n *   Tai nukirstas EAN-13 (trukstamas paskutinis = kontrolinis skaitmuo).\n *   Tiekejo puses apribojimas, mums nepasiekiamas.\n *\n *   PASEKME (iki sio taisymo): sis failas rase zalia 12 simboliu barkoda i\n *   _ean ir _global_unique_id. WooCommerce standartinis GTIN laukas gaudavo\n *   negaliojanti koda -> Google Merchant Center tokias prekes atmeta.\n *\n *   SPRENDIMAS: petshop_xml_gtin_normalize() priskaiciuoja kontrolini skaitmeni\n *   (GS1 mod-10). Empirinis patikrinimas: 27 is 41 atveju, kur salia buvo\n *   zinomas pilnas 13 zenklu EAN is Legacy, atkurta reiksme sutapo tiksliai.\n *\n *   SVARBU: _vf_barcode lieka ZALIAS (nekeiciamas). Jis yra suporavimo raktas\n *   Petshop_EAN_Lookup::find_by_ean() uzklausoje — pakeitus sugriutu VF prekiu\n *   dublikatu aptikimas.\n *\n * v1.5.6 (2026-06-10) pakeitimai (S86 — VF kaina seka savikaina):\n *   KONTEKSTAS: iki siol VF prekiu kainos po pirmo skaiciavimo buvo amzinai\n *   FROZEN (_vf_price_initialized). Savininko sprendimas (2026-06-10, simetrija\n *   su ZB S85): neuzrakintos VF prekes kaina turi automatiskai atitikti\n *   taisykles; pasikeitus savikainai — persiskaiciuoti.\n *\n *   MODELIS (skiriasi nuo ZB S85 'cost changed' detekcijos):\n *     VF naudoja 'kaina = taisykles(savikaina)' patikra KIEKVIENO importo metu:\n *     perskaiciuojama is dabartiniu XML kainu ir rasoma TIK jei rezultatas\n *     skiriasi nuo esamos kainos (churn guard). Priezastis: _vf_cost_xml\n *     perrasomas importo metu PRIES si koda, tad 'pokycio' detekcija praleistu\n *     savikainu drifta tarp importu. Self-healing modelis atitinka principa\n *     'viskas is vieno taisykliu rinkinio'.\n *\n *   TAIKOMA TIK Scenarijui B (VF sukurtos prekes, petshop_xml_vf_create_new).\n *   Scenarijus A (VF match i esama Legacy/ZB/own preke) — kainos NIEKADA\n *   nelieciamos (architekturos taisykle, savininko sprendimas 2026-06-05).\n *\n *   SAUGIKLIAI:\n *     1. Lock: _manual_price_override / _petshop_lock_pricing -> kaina neliesta.\n *     2. Promo guard: jei preke turi aktyvu akciju batch (_petshop_sale_batch\n *        + _sale_price > 0) -> reprice BLOKUOJAMAS + review flag\n *        'vf_reprice_blocked_by_promo' (petshop-promotions sale neperrasoma).\n *     3. Churn guard: jei nauja regular IR sale sutampa su esamomis -> nerasoma.\n *   Logas: VF-REPRICED (atskirai nuo VF-NEW-PRICED).\n *\n * v1.5.5 (2026-06-08) pakeitimai (po S72 sprendimo):\n *   1. _PRICE SINCHRONIZACIJA (S72 prevencija importo metu):\n *      Anksciau: update_post_meta('_price', regular) + jei sale > 0, update_post_meta('_sale_price', sale).\n *        PROBLEMA: _price likdavo = regular, net kai _sale_price < _regular_price. Frontend per\n *        wp_wc_product_meta_lookup rodydavo \"regular -> regular\" (netikra akcija). 99 prekes 2026-06-08\n *        rank",
+  "vf_import_fns": [
+   "function petshop_xml_vf_stock_sync( int $post_id )",
+   "function petshop_xml_vf_initial_import( int $post_id, bool $is_update )",
+   "function petshop_xml_vf_attach_to_existing(\n\tint $matched_id,\n\tint $new_post_id,\n\tstring $match_type,\n\tstring $vf_brand_raw,\n\tstring $brand_normalized,\n\tstring $vf_sku,\n\tstring $vf_barcode,\n\tfloat $vf_cost_xml,\n\tfloat $vf_personal_xml,\n\tint $vf_qty,\n\tstring $wc_slug\n)",
+   "function petshop_xml_vf_create_new(\n\tint $post_id,\n\tbool $is_update,\n\tstring $vf_brand_raw,\n\tstring $brand_normalized,\n\tstring $vf_sku,\n\tstring $vf_barcode,\n\tfloat $vf_cost_xml,\n\tfloat $vf_personal_xml,\n\tint $vf_qty,\n\tstring $wc_slug,\n\tstring $vf_category\n)",
+   "function petshop_xml_vf_write_price_and_sync( int $post_id, float $regular, float $sale )",
+   "function petshop_xml_gtin_normalize( string $kodas )",
+   "function petshop_xml_gtin_check_digit( string $d12 )",
+   "function petshop_xml_vf_find_by_sku( string $sku, int $skip_id = 0 )",
+   "function petshop_xml_vf_is_price_locked( int $post_id )"
+  ],
+  "log_tables": [],
+  "log_files": [],
+  "log_fn": "function petshop_xml_log_structured( array $data ): void {\n    $parts = [];\n    foreach ( $data as $key => $val ) {\n        $parts[] = $key . '=' . (string) $val;\n    }\n    $msg = '[STRUCT] ' . implode( ' | ', $parts );\n    petshop_xml_log( $msg );\n}\n",
+  "cache": {
+   "exists": true,
+   "size": 8457286,
+   "mtime": "2026-08-21T12:16:14+00:00",
+   "head": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<data><row><id>22479</id><sku_id>10039</sku_id><product_name>Antos skanėstas šunims jaučių trachėjos 5 kg</product_name><brand>ANTOS</brand><barcode>871441400856</barcode><category>Grynos mėsos skanėstai šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48c3R5bGU+LmIyYi1ibGFjaywgLmIyYi1ibGFjayAqIHsgY29sb3I6IzAwMCAhaW1wb3J0YW50OyB9PC9zdHlsZT48ZGl2IGNsYXNzPSJiMmItYmxhY2siPjxwPjxiPlN1ZMSXdGlzOjwvYj4gbcSXc2EgaXIgbcSXc29zIHBlcmRpcmJpbW8gcHJvZHVrdGFpIDEwMCAlLjwvcD4NCjxwPjxiPktpZWtpczo8L2I+IDUga2c8L3A+PC9kaXY+PC9kaXY+PGRpdiBzdHlsZT0ibWFyZ2luLXRvcDoxNXB4OyBjb2xvcjpibGFjayAhaW1wb3J0YW50OyI+PGg0IHN0eWxlPSJjb2xvcjpibGFjayAhaW1wb3J0YW50OyI+QW5hbGl0aW7El3Mgc3VkZWRhbW9zaW9zIGRhbHlzPC9oND48c3R5bGU+LmIyYi1ibGFjaywgLmIyYi1ibGFjayAqIHsgY29sb3I6IzAwMCAhaW1wb3J0YW50OyB9PC9zdHlsZT48ZGl2IGNsYXNzPSJiMmItYmxhY2siPjx0YWJsZSBzdHlsZT0id2lkdGg6NDUwcHg7IiBjZWxsc3BhY2luZz0iMCI+DQogICAgPC90cj4NCiAgICA8dHI+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+xb5hbGkgYmFsdHltYWk8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjU3LDkgJTwvdGQ+DQogICAgPC90cj4NCiAgICA8dHI+DQogICAgICAgIDx0ZCBzdHlsZT0iYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICNkM2QzZDM7cGFkZGluZzogN3B4OyI+xb5hbGkgcmllYmFsYWk8L3RkPg0KICAgICAgICA8dGQgc3R5bGU9ImJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZDNkM2QzO3BhZGRpbmc6IDdweDsiPjM3LDEgJTwvdGQ+DQogICAgPC",
+   "sku": {
+    "AM20": "e6797-ee32-4b66-9957-8243407eb7a4.bin</url></images><base_price>2.51</base_price><personal_price>2.51</personal_price></row><row><id>22600</id><sku_id>AM20</sku_id><product_name>Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 200 g</product_name><brand>EXCL HYPO</brand><barcode>801125901137</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24gaGlwb2FsZXJnaW5pcyDFoWxhcGlhcyBtYWlzdGFzIMWhdW5pbXMgc3UgdHJpdcWhaWVuYSBpciBidWx2xJdtaXMuIFN1YmFsYW5zdW90YXMgc3VhdWd1c2llbXMgxaF1bmltcywga3VyaWVtcyBwYXNpcmVpxaFrxJcgYWxl",
+    "QM37": "38148-b6f4-4499-b04b-0c5a160af11f.bin</url></images><base_price>1.94</base_price><personal_price>1.94</personal_price></row><row><id>22935</id><sku_id>QM37</sku_id><product_name>Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 400g</product_name><brand>EXCL HYPO</brand><barcode>801125921375</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24gaGlwb2FsZXJnaW5pcyDFoWxhcGlhcyBtYWlzdGFzIMWhdW5pbXMgc3UgcHV0cGVsacWzIG3El3NhIGlyIMW+aXJuaWFpcy4gU3ViYWxhbnN1b3RhcyBzdWF1Z3VzaWVtcyDFoXVuaW1zLCBrdXJpZW1zIHBhc2lyZWnFoWvElyBhbGVyZ2lq",
+    "PM37": "61f8a-dab0-4638-b107-aa630a36b28e.bin</url></images><base_price>1.94</base_price><personal_price>1.94</personal_price></row><row><id>22930</id><sku_id>PM37</sku_id><product_name>Exclusion Hypo konservuotas pašaras šunims su kiauliena ir žirneliais, 400 g</product_name><brand>EXCL HYPO</brand><barcode>801125919375</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24gaGlwb2FsZXJnaW5pcywgxaFsYXBpYXMgbWFpc3RhcyDFoXVuaW1zIHN1IGtpYXVsaWVuYSBpciDFvmlybmlhaXMuIFN1YmFsYW5zdW90YXMgc3VhdWd1c2llbXMsIHZpc8WzIHZlaXNsacWzIMWhdW5pbXMsIGt1cmllbXM",
+    "PM20": "8087e-da07-469e-80ee-9f697e2dfa31.bin</url></images><base_price>3.06</base_price><personal_price>3.06</personal_price></row><row><id>22929</id><sku_id>PM20</sku_id><product_name>Exclusion Hypo konservuotas pašaras šunims su kiauliena ir žirneliais, 200 g</product_name><brand>EXCL HYPO</brand><barcode>801125901135</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5IaXBvYWxlcmdpbmlzLCDFoWxhcGlhcyBtYWlzdGFzIMWhdW5pbXMgc3Uga2lhdWxpZW5hIGlyIMW+aXJuaWFpcy4gU3ViYWxhbnN1b3RhcyBzdWF1Z3VzaWVtcywgdmlzxbMgdmVpc2xpxbMgxaF1bmltcywga3VyaWVtcyBwYXNpcmVpxaF",
+    "VM37": "555dd-d1c1-417d-9db4-f76b353968aa.bin</url></images><base_price>1.94</base_price><personal_price>1.94</personal_price></row><row><id>23414</id><sku_id>VM37</sku_id><product_name>Exclusion Hypo konservuotas pašaras šunims su elniena ir bulvėmis, 400 g</product_name><brand>EXCL HYPO</brand><barcode>801125915375</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24gaGlwb2FsZXJnaW5pcyDFoWxhcGlhcyBtYWlzdGFzIMWhdW5pbXMgc3UgZWxuaWVuYSBpciBidWx2xJdtaXMuIFN1YmFsYW5zdW90YXMgc3VhdWd1c2llbXMgxaF1bmltcywga3VyaWVtcyBwYXNpcmVpxaFrxJcgYWxlcmdpam9",
+    "HM37": "84d5e-aad4-49a4-8331-b317d43670d9.bin</url></images><base_price>2.38</base_price><personal_price>2.38</personal_price></row><row><id>23195</id><sku_id>HM37</sku_id><product_name>Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 400 g</product_name><brand>EXCL HYPO</brand><barcode>801125920375</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24gaGlwb2FsZXJnaW5pcyDFoWxhcGlhcyBtYWlzdGFzIMWhdW5pbXMgc3UgYXJrbGllbmEgaXIgYnVsdsSXbWlzLiBTdWJhbGFuc3VvdGFzIHN1YXVndXNpZW1zIMWhdW5pbXMsIGt1cmllbXMgcGFzaXJlacWha8SXIGFsZXJnaW",
+    "DM37": "b62b4-ff04-4c6f-aceb-778fcc78d448.bin</url></images><base_price>1.85</base_price><personal_price>1.85</personal_price></row><row><id>23534</id><sku_id>DM37</sku_id><product_name>Exclusion Hypo konservuotas pašaras šunims su antiena ir bulvėmis, 400 g</product_name><brand>EXCL HYPO</brand><barcode>801125917375</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24gaGlwb2FsZXJnaW5pcyBtYWlzdGFzIMWhdW5pbXMgc3UgYW50aWVuYSBpciBidWx2xJdtaXMuIFN1YmFsYW5zdW90YXMgc3VhdWd1c2llbXMgxaF1bmltcywga3VyaWVtcyBwYXNpcmVpxaFrxJcgYWxlcmdpam9zIG1haXN0dWk",
+    "DM20": "3c0d8-b4a7-42c2-911a-7a5ec5b95701.bin</url></images><base_price>1.22</base_price><personal_price>1.22</personal_price></row><row><id>23533</id><sku_id>DM20</sku_id><product_name>Exclusion Hypoallergenic kons. pašaras Duck Potato 200g</product_name><brand>EXCL HYPO</brand><barcode>801125901138</barcode><category>VET kons. hipoalerginis maistas šunims</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24gaGlwb2FsZXJnaW5pcyBtYWlzdGFzIMWhdW5pbXMgc3UgYW50aWVuYSBpciBidWx2xJdtaXMuIFN1YmFsYW5zdW90YXMgc3VhdWd1c2llbXMgxaF1bmltcywga3VyaWVtcyBwYXNpcmVpxaFrxJcgYWxlcmdpam9zIG1haXN0dWkgc2ltcHRvbWFpLjwvcD",
+    "INPM11": null,
+    "NGALA40": "ce17e-ced1-461a-98d8-8949035f87bf.bin</url></images><base_price>1.98</base_price><personal_price>1.98</personal_price></row><row><id>23260</id><sku_id>NGALA40</sku_id><product_name>Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g</product_name><brand>EXCL MEDITER</brand><barcode>801125900352</barcode><category>Reg. konservuotas suaugusių šunų maistas</category><supply/><description>PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5iMmItYmxhY2ssIC5iMmItYmxhY2sgKiB7IGNvbG9yOiMwMDAgIWltcG9ydGFudDsgfTwvc3R5bGU+PGRpdiBjbGFzcz0iYjJiLWJsYWNrIj48cD5FeGNsdXNpb24ga29uc2VydmFpIMWhdW5pbXMgc3UgxJdyaWVuYSwgc3ViYWxhbnN1b3RpIHN1YXVndXNpZW1zLCB2aXPFsyB2ZWlzbGnFsyDFoXVuaW1zLiBLb25zZXJ2YWkgcGFwaWxkeXRpIGnFoXNraXJ0aW5pYWlzI"
+   },
+   "rows": 2355,
+   "excl_hypo_konserv": [
+    [
+     "AM20",
+     "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 2",
+     "82",
+     "801125901137"
+    ],
+    [
+     "AM37",
+     "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 4",
+     "27",
+     "801125916375"
+    ],
+    [
+     "PA20",
+     "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 200",
+     "2",
+     "801125900283"
+    ],
+    [
+     "PA37",
+     "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400",
+     "311",
+     "801125900282"
+    ],
+    [
+     "PM20",
+     "Exclusion Hypo konservuotas pašaras šunims su kiauliena ir žirneliais,",
+     "151",
+     "801125901135"
+    ],
+    [
+     "PM37",
+     "Exclusion Hypo konservuotas pašaras šunims su kiauliena ir žirneliais,",
+     "1588",
+     "801125919375"
+    ],
+    [
+     "QM20",
+     "Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 200g",
+     "140",
+     "801125901140"
+    ],
+    [
+     "QM37",
+     "Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 400g",
+     "147",
+     "801125921375"
+    ],
+    [
+     "FM20",
+     "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 200 ",
+     "68",
+     "801125901139"
+    ],
+    [
+     "FM37",
+     "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 400 ",
+     "7",
+     "801125918375"
+    ],
+    [
+     "HM20",
+     "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 20",
+     "64",
+     "801125901134"
+    ],
+    [
+     "HM37",
+     "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 40",
+     "90",
+     "801125920375"
+    ],
+    [
+     "VM20",
+     "Exclusion Hypo konservuotas pašaras šunims su elniena ir bulvėmis, 200",
+     "51",
+     "801125901136"
+    ],
+    [
+     "VM37",
+     "Exclusion Hypo konservuotas pašaras šunims su elniena ir bulvėmis, 400",
+     "179",
+     "801125915375"
+    ],
+    [
+     "BM20",
+     "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 20",
+     "177",
+     "801125901141"
+    ],
+    [
+     "BM37",
+     "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 40",
+     "86",
+     "801125922375"
+    ],
+    [
+     "CHYP85",
+     "Exclusion Hypoalergenic dietinis konservuotas pašaras katėms su kiauli",
+     "111",
+     "801125900434"
+    ],
+    [
+     "DM37",
+     "Exclusion Hypo konservuotas pašaras šunims su antiena ir bulvėmis, 400",
+     "113",
+     "801125917375"
+    ]
+   ]
+  }
+ }
+}
