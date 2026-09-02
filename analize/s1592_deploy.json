@@ -1,0 +1,294 @@
+{
+ "v": "dep-085726",
+ "kurimas": 200,
+ "sid": 4457,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1592-D1",
+  "md5": "681bef7ec50a143ffdcf7035dfa0e524",
+  "tokens": 8387,
+  "old_md5": "357c92a70367d8b6d1d853c05cc74a34",
+  "backup": "ok",
+  "upd": 1,
+  "disk_md5": "681bef7ec50a143ffdcf7035dfa0e524",
+  "transients": 2
+ },
+ "V": {
+  "VERSIJA": "S1592-D1",
+  "versija": "2.3",
+  "s18593": [
+   {
+    "source": "av",
+    "supplier_sku": null,
+    "ean": null,
+    "stock_qty": 22,
+    "cost_net": 2,
+    "synced_at": null,
+    "is_active": 1,
+    "is_sellable": 1,
+    "priority": 1
+   },
+   {
+    "source": "vf",
+    "supplier_sku": "AM20",
+    "ean": "801125901137",
+    "stock_qty": 76,
+    "cost_net": 1.649,
+    "synced_at": "2026-09-02 11:30:52",
+    "is_active": 1,
+    "is_sellable": 1,
+    "priority": 2
+   }
+  ],
+  "s35312": [
+   {
+    "source": "vf",
+    "supplier_sku": "AM37",
+    "ean": "801125916375",
+    "stock_qty": 24,
+    "cost_net": 2.601,
+    "synced_at": "2026-09-02 11:34:45",
+    "is_active": 1,
+    "is_sellable": 1,
+    "priority": 2
+   }
+  ],
+  "s17394_monge": [
+   {
+    "source": "av",
+    "supplier_sku": null,
+    "ean": null,
+    "stock_qty": 18,
+    "cost_net": null,
+    "synced_at": null,
+    "is_active": 1,
+    "is_sellable": 1,
+    "priority": 1
+   },
+   {
+    "source": "zb",
+    "supplier_sku": null,
+    "ean": null,
+    "stock_qty": 247,
+    "cost_net": 1.836,
+    "synced_at": null,
+    "is_active": 1,
+    "is_sellable": 1,
+    "priority": 2
+   }
+  ],
+  "s18512": [
+   {
+    "source": "vf",
+    "supplier_sku": "NGALA40",
+    "ean": "801125900352",
+    "stock_qty": 577,
+    "cost_net": 1.683,
+    "synced_at": "2026-09-02 11:35:17",
+    "is_active": 1,
+    "is_sellable": 1,
+    "priority": 2
+   }
+  ],
+  "tiek_35312": [
+   "vf"
+  ],
+  "kand": 0
+ },
+ "N": {
+  "VERSIJA": "S1592-D1",
+  "naktinis": {
+   "prekiu": 3833,
+   "prideta": 26,
+   "atnaujinta": 3817,
+   "isjungta": 11,
+   "be_saltinio": 15
+  },
+  "sek": 12.8,
+  "be_sandelio_pries": 15,
+  "uzpildyta": 0,
+  "vf_be": "0",
+  "zb_be": "0",
+  "sandelis_tuscias_publish": "13",
+  "likę_be_sandelio": [
+   [
+    "34889",
+    "draft",
+    "PS-TEST-001 (testinė prekė, neliesti)"
+   ],
+   [
+    "35101",
+    "draft",
+    "Skanėstų dėžutė šuniui"
+   ],
+   [
+    "34938",
+    "publish",
+    "Skanėstų dėžutė katei"
+   ],
+   [
+    "35070",
+    "publish",
+    "Stirnos ir avies kojų rinkinys šunims · 12 vn"
+   ],
+   [
+    "35076",
+    "publish",
+    "Rinkinys Gurmanams - skanėstai šunims"
+   ],
+   [
+    "35079",
+    "publish",
+    "Animonda GranCarno Adult konservų rinkinys 6 "
+   ],
+   [
+    "35081",
+    "publish",
+    "Animonda GranCarno Adult konservų rinkinys 6 "
+   ],
+   [
+    "35085",
+    "publish",
+    "Galvijų ir kiaulės ausų rinkinys"
+   ],
+   [
+    "35094",
+    "publish",
+    "Rinkinys katėms mėsos ir salyklo (malt) pasto"
+   ],
+   [
+    "35096",
+    "publish",
+    "20 vnt. rudų kiaulės knyslių"
+   ],
+   [
+    "35098",
+    "publish",
+    "20 vnt. rudų jaučio ausų"
+   ],
+   [
+    "35099",
+    "publish",
+    "20 vnt. baltų jaučio ausų"
+   ],
+   [
+    "35291",
+    "publish",
+    "Skanėstų kačių dantims rinkinys"
+   ],
+   [
+    "35306",
+    "publish",
+    "20 vnt. baltų kiaulės knyslių"
+   ],
+   [
+    "35309",
+    "publish",
+    "Konservų rinkinys katėms"
+   ]
+  ],
+  "stat": [
+   {
+    "source": "ambrosia",
+    "n": "15",
+    "akt": "15",
+    "p3": "0"
+   },
+   {
+    "source": "av",
+    "n": "1447",
+    "akt": "1436",
+    "p3": "0"
+   },
+   {
+    "source": "belcor_tofu",
+    "n": "62",
+    "akt": "62",
+    "p3": "0"
+   },
+   {
+    "source": "prins",
+    "n": "43",
+    "akt": "43",
+    "p3": "0"
+   },
+   {
+    "source": "quattro",
+    "n": "65",
+    "akt": "65",
+    "p3": "0"
+   },
+   {
+    "source": "vf",
+    "n": "1208",
+    "akt": "1206",
+    "p3": "0"
+   },
+   {
+    "source": "zb",
+    "n": "1107",
+    "akt": "1107",
+    "p3": "0"
+   }
+  ],
+  "ps8": [
+   [
+    "17394",
+    "av",
+    "",
+    "18",
+    null,
+    "1"
+   ],
+   [
+    "17394",
+    "zb",
+    "01M210202",
+    "247",
+    "1.8360",
+    "2"
+   ],
+   [
+    "18593",
+    "av",
+    "",
+    "22",
+    "2.0000",
+    "1"
+   ],
+   [
+    "18593",
+    "vf",
+    "AM20",
+    null,
+    null,
+    "2"
+   ],
+   [
+    "35312",
+    "vf",
+    "AM37",
+    "24",
+    "2.6010",
+    "2"
+   ],
+   [
+    "35342",
+    "vf",
+    "CHYP85",
+    "81",
+    "1.0370",
+    "2"
+   ]
+  ],
+  "sandelis": {
+   "35312": "vf",
+   "35314": "vf",
+   "35342": "vf"
+  },
+  "zurnalas": 427
+ }
+}
