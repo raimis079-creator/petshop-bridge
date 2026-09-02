@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Import Tempas v1.0 (WP All Import #3 processing kas 2 min)
+ * Petshop Import Tempas v1.2 (WP All Import #3 processing kas 2 min)
  *
  * PRIEŽASTIS (S1594, 2026-09-02): hosting cron ZB likučiams (Import #3) kviečia
  * `action=processing` TIK 1 kartą per valandą (`2 *`) → vienas kvietimas ~59 s
@@ -10,7 +10,7 @@
  * VEIKIMAS: WP-cron `petshop_import_tempas` kas 120 s (WP-cron pažadinamas
  * kiekvienu hosting cron `wp-load.php` kvietimu — 12 užduočių/val + lankytojai).
  * Jei pmxi #3 `triggered=1` ir `processing=0` → nebloguojantis GET į
- * `<hostas>/wp-load.php?import_key=<secure>&import_id=3&action=processing`.
+ * `<hostas>/wp-load.php?import_key=<cron_job_key>&import_id=3&action=processing`.
  * Tai tas pats kelias, kuriuo eina hosting cron — pmxi užraktai (processing
  * flag) apsaugo nuo dubliavimo. Trigger'io NEKVIEČIA — jį duoda hosting cron `0 *`.
  *
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class Petshop_Import_Tempas {
 
-	const VERSIJA  = '1.0';
+	const VERSIJA  = '1.2';
 	const HOOK     = 'petshop_import_tempas';
 	const INTERVAL = 'petshop_2min';
 	const IMPORTAI = [ 3 ];
@@ -53,7 +53,7 @@ final class Petshop_Import_Tempas {
 
 	public static function raktas(): string {
 		$o = get_option( 'PMXI_Plugin_Options' );
-		return is_array( $o ) ? (string) ( $o['secure'] ?? '' ) : '';
+		return is_array( $o ) ? (string) ( $o['cron_job_key'] ?? '' ) : ''; // v1.2: 'secure' yra bool flag ("1"), tikras raktas — cron_job_key
 	}
 
 	public static function vykdyti(): void {
@@ -63,9 +63,14 @@ final class Petshop_Import_Tempas {
 		foreach ( self::IMPORTAI as $id ) {
 			$r = $wpdb->get_row( $wpdb->prepare( "SELECT triggered, processing, executing FROM {$wpdb->prefix}pmxi_imports WHERE id=%d", $id ), ARRAY_A );
 			if ( ! $r || (int) $r['triggered'] !== 1 || (int) $r['processing'] === 1 || (int) $r['executing'] === 1 ) continue;
+			if ( get_transient( 'ps_import_tempas_lock_' . $id ) ) continue;
+			set_transient( 'ps_import_tempas_lock_' . $id, 1, 90 );
 			$url = self::hostas() . '/wp-load.php?import_key=' . rawurlencode( $key ) . '&import_id=' . $id . '&action=processing';
-			wp_remote_get( $url, [ 'timeout' => 1, 'blocking' => false, 'sslverify' => false ] );
-			update_option( self::OPT, [ 'laikas' => current_time( 'mysql' ), 'import_id' => $id, 'veiksmas' => 'processing', 'hostas' => self::hostas() ], false );
+			$t0  = microtime( true );
+			$r   = wp_remote_get( $url, [ 'timeout' => 75, 'sslverify' => false ] );
+			$ats = is_wp_error( $r ) ? $r->get_error_message() : mb_substr( (string) wp_remote_retrieve_body( $r ), 0, 120 );
+			delete_transient( 'ps_import_tempas_lock_' . $id );
+			update_option( self::OPT, [ 'laikas' => current_time( 'mysql' ), 'import_id' => $id, 'veiksmas' => 'processing', 'hostas' => self::hostas(), 'sek' => round( microtime( true ) - $t0, 1 ), 'atsakymas' => $ats ], false );
 		}
 	}
 
