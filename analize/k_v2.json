@@ -1,0 +1,161 @@
+{
+ "v": "dep-171048",
+ "kurimas": 200,
+ "sid": 4528,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "V0": {
+   "desk": true,
+   "tk": true,
+   "pst": "300906055"
+  },
+  "V1_snap0": {
+   "st": "processing",
+   "eile": "misrus",
+   "kl": "",
+   "siunta": [
+    "",
+    0
+   ],
+   "pak": 1,
+   "ds_sent": "",
+   "siuntos": "",
+   "vpd": "",
+   "notes": [
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent.",
+    "Faktai irasyti: 2 eilutes · pajamos 26,61 EUR (be PVM, po nuolaidu) · PVM 6,43 EUR · marza 6,97 EUR · kontribucija (be pristatymo) 10,11 EUR · TESTINI",
+    "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+    "AV nurašymas: #19708 grynai AV 25 -> 24"
+   ]
+  },
+  "V1_misrus": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "misrus_cia",
+    "pd_nr": "35434|PRI — į AV"
+   },
+   "txt": ""
+  },
+  "V1_kons": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "kons_ok",
+    "pd_nr": "35434|1"
+   },
+   "txt": ""
+  },
+  "V1_partija": 11,
+  "V1_uzsakyti_pastomatas": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "kaupiama"
+   },
+   "txt": ""
+  },
+  "V1_klaida": "Pickup/Locker not found",
+  "V1_partija_po": {
+   "id": "11",
+   "busena": "kaupiama",
+   "pristatymas": "pastomatas",
+   "venipak_pack": null,
+   "venipak_manifest": null
+  },
+  "V1_priimti": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "gauta"
+   },
+   "txt": ""
+  },
+  "V1_own_stock": {
+   "pries": "",
+   "po": ""
+  },
+  "V1_po": {
+   "eile": "laukia",
+   "vykdymas": [
+    "MIŠRUS",
+    2
+   ],
+   "type": "MIXED",
+   "ships": "2",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+   "items": [
+    [
+     19708,
+     "av",
+     "grynai AV prekė (be tiekėjo)",
+     "",
+     ""
+    ],
+    [
+     16889,
+     "prins",
+     "AV šios prekės neturi",
+     "1",
+     ""
+    ]
+   ],
+   "notes": [
+    "Tiekimas: „Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg“ (1 vnt) įtraukta į Prins / Faunas partiją #11 — parsivežam į AV.",
+    "Mišraus užsakymo PLANAS: PRI — į AV. Dar neįvykdyta — laukia paleidimo. Vartotojas: Testuotojas.",
+    "Email \"Užsakymas vykdomas\" sent."
+   ]
+  },
+  "V1_lapai": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-lapai"
+   },
+   "txt": ""
+  },
+  "V1_lapai_txt": "lipdukų krūvele. VENIPAK 2026-09-02 20:12 · 1 užsakymas · 1 vnt. #35434 AUDITAS Testas 21 VENIPAK Kurjeris dalis siuntos (2 siuntos) 1 Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g 83722 Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį.",
+  "V1_neperduotos": [],
+  "V1_dropship_lauk": [
+   "ambrosia",
+   "belcor_tofu",
+   "prins",
+   "vf",
+   "zb"
+  ],
+  "mail": [
+   [
+    "20:10:13",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35433 atšauktas — Petshop.lt",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "20:11:56",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35434 — 2026-09-02",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "20:11:56",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35434 — apmokėjimas gautas",
+    0,
+    [],
+    "run"
+   ]
+  ]
+ }
+}
