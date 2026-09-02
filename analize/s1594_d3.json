@@ -1,0 +1,37 @@
+{
+ "v": "dep-112502",
+ "kurimas": 200,
+ "sid": 4476,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1594-D3",
+  "tokens": 1022,
+  "write": 4080,
+  "md5": "5461ff5abfaa53a559fcf0f9c3b0b982"
+ },
+ "V": {
+  "VERSIJA": "S1594-D3",
+  "versija": "1.2",
+  "pries": {
+   "processing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "2361"
+  },
+  "paskutinis": {
+   "laikas": "2026-09-02 14:26:42",
+   "import_id": 3,
+   "veiksmas": "processing",
+   "hostas": "https://dev.avesa.lt",
+   "sek": 27.1,
+   "atsakymas": "{\"status\":200,\"message\":\"Import #3 complete\"}"
+  },
+  "po": {
+   "processing": "0",
+   "triggered": "0",
+   "queue_chunk_number": "0"
+  }
+ }
+}
