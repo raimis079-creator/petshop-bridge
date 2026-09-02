@@ -1,0 +1,373 @@
+{
+ "v": "dep-082912",
+ "kurimas": 200,
+ "sid": 4450,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1591-D3",
+  "md5": "1ee413b1dd1000dcf77e395a7b270486",
+  "tokens": 2047,
+  "exists_before": false,
+  "write": 7075,
+  "disk_md5": "1ee413b1dd1000dcf77e395a7b270486",
+  "pmxi_backup": [
+   {
+    "id": "5",
+    "type": "url",
+    "path": "https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+    "name": "petshop-xml-vf-fetcher.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "1",
+    "queue_chunk_number": "0"
+   },
+   {
+    "id": "7",
+    "type": "url",
+    "path": "https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz",
+    "name": "petshop-xml-vf-fetcher.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "1",
+    "queue_chunk_number": "0"
+   }
+  ]
+ },
+ "F": {
+  "VERSIJA": "S1591-D3",
+  "klase": true,
+  "cfg": {
+   "user": "terra@petshop.lt",
+   "url": "https://admin.b2b.vetfarmas.lt/api/products/xml/get/auth",
+   "pass_len": 14,
+   "key_len": 66
+  },
+  "refresh": {
+   "laikas": "2026-09-02 11:30:23",
+   "ok": true,
+   "klaida": "",
+   "eilutes": 2391,
+   "baitai": 8510508,
+   "sek": 6.6,
+   "http": 200
+  },
+  "busena": {
+   "versija": "1.0",
+   "paskutinis": {
+    "laikas": "2026-09-02 11:30:23",
+    "ok": true,
+    "klaida": "",
+    "eilutes": 2391,
+    "baitai": 8510508,
+    "sek": 6.6,
+    "http": 200
+   },
+   "failas": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T08:30:29+00:00"
+   },
+   "cache": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T08:30:29+00:00"
+   },
+   "cron_kitas": "2026-09-02T09:05:00+00:00"
+  },
+  "upd5": 1,
+  "upd7": 1,
+  "pmxi": [
+   {
+    "id": "5",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "triggered": "0",
+    "processing": "0"
+   },
+   {
+    "id": "7",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "triggered": "0",
+    "processing": "0"
+   }
+  ],
+  "AM20_qty_dabar": "76"
+ },
+ "T": {
+  "VERSIJA": "S1591-D3",
+  "trigger": [
+   200,
+   "{\"status\":200,\"message\":\"#5 Cron job triggered.\"}"
+  ],
+  "pmxi5": {
+   "processing": "0",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "0",
+   "last_activity": "2026-09-02 08:30:37"
+  }
+ },
+ "P": {
+  "VERSIJA": "S1591-D3",
+  "proc": [
+   200,
+   "{\"status\":403,\"message\":\"Import #5 already processing. Request skipped.\"}",
+   1
+  ],
+  "pmxi5": {
+   "processing": "1",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "1",
+   "imported": "0",
+   "created": "0",
+   "updated": "0",
+   "skipped": "0",
+   "count": "2391",
+   "last_activity": "2026-09-02 08:30:37"
+  },
+  "hist": [
+   {
+    "type": "processing",
+    "time_run": null,
+    "date": "2026-09-02 08:30:45",
+    "summary": "cron processing"
+   },
+   {
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-02 08:30:37",
+    "summary": "triggered by cron"
+   }
+  ],
+  "vf_sku_8": [
+   [
+    "18593",
+    "22"
+   ],
+   [
+    "18593",
+    "76.000000"
+   ],
+   [
+    "18593",
+    "76"
+   ],
+   [
+    "18593",
+    "AM20"
+   ],
+   [
+    "18596",
+    "4"
+   ],
+   [
+    "18596",
+    "140.000000"
+   ],
+   [
+    "18596",
+    "140"
+   ],
+   [
+    "18596",
+    "QM37"
+   ],
+   [
+    "18599",
+    "32"
+   ],
+   [
+    "18599",
+    "1411.000000"
+   ],
+   [
+    "18599",
+    "1411"
+   ],
+   [
+    "18599",
+    "PM37"
+   ],
+   [
+    "18602",
+    "20"
+   ],
+   [
+    "18602",
+    "88.000000"
+   ],
+   [
+    "18602",
+    "88"
+   ],
+   [
+    "18602",
+    "PM20"
+   ],
+   [
+    "18605",
+    "17"
+   ],
+   [
+    "18605",
+    "169.000000"
+   ],
+   [
+    "18605",
+    "169"
+   ],
+   [
+    "18605",
+    "VM37"
+   ],
+   [
+    "18608",
+    "0"
+   ],
+   [
+    "18608",
+    "81.000000"
+   ],
+   [
+    "18608",
+    "81"
+   ],
+   [
+    "18608",
+    "HM37"
+   ],
+   [
+    "18611",
+    "19"
+   ],
+   [
+    "18611",
+    "107.000000"
+   ],
+   [
+    "18611",
+    "107"
+   ],
+   [
+    "18611",
+    "DM37"
+   ],
+   [
+    "18614",
+    "22"
+   ],
+   [
+    "18614",
+    "40.000000"
+   ],
+   [
+    "18614",
+    "40"
+   ],
+   [
+    "18614",
+    "DM20"
+   ]
+  ],
+  "nauji": [
+   [
+    "35310",
+    "trash",
+    "Exclusion Hypo konservuotas pašaras šunims su triušiena"
+   ],
+   [
+    "35312",
+    "publish",
+    "Exclusion Hypo konservuotas pašaras šunims su triušiena"
+   ],
+   [
+    "35314",
+    "draft",
+    "Exclusion diet hypo konservai šuniukams, su kiauliena i"
+   ],
+   [
+    "35316",
+    "publish",
+    "Exclusion diet hypo konservai šuniukams, su kiauliena i"
+   ],
+   [
+    "35318",
+    "trash",
+    "Exclusion Hypo konservuotas pašaras šunims su kiauliena"
+   ],
+   [
+    "35320",
+    "trash",
+    "Exclusion Hypo konservuotas pašaras šunims su kiauliena"
+   ],
+   [
+    "35322",
+    "publish",
+    "Exclusion Hypo konservai šunims su putpelėmis ir žirnia"
+   ],
+   [
+    "35324",
+    "trash",
+    "Exclusion Hypo konservai šunims su putpelėmis ir žirnia"
+   ],
+   [
+    "35326",
+    "publish",
+    "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir"
+   ],
+   [
+    "35328",
+    "publish",
+    "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir"
+   ],
+   [
+    "35330",
+    "publish",
+    "Exclusion Hypo konservuotas pašaras šunims su arkliena "
+   ],
+   [
+    "35332",
+    "trash",
+    "Exclusion Hypo konservuotas pašaras šunims su arkliena "
+   ],
+   [
+    "35334",
+    "publish",
+    "Exclusion Hypo konservuotas pašaras šunims su elniena i"
+   ],
+   [
+    "35336",
+    "trash",
+    "Exclusion Hypo konservuotas pašaras šunims su elniena i"
+   ],
+   [
+    "35338",
+    "publish",
+    "Exclusion Hypo konservuotas pašaras šunims su šerniena "
+   ],
+   [
+    "35340",
+    "publish",
+    "Exclusion Hypo konservuotas pašaras šunims su šerniena "
+   ],
+   [
+    "35342",
+    "publish",
+    "Exclusion Hypoalergenic dietinis konservuotas pašaras k"
+   ],
+   [
+    "35344",
+    "trash",
+    "Exclusion Hypoallergenic kons. pašaras Duck Potato 200g"
+   ],
+   [
+    "35346",
+    "trash",
+    "Exclusion Hypo konservuotas pašaras šunims su antiena i"
+   ]
+  ]
+ }
+}
