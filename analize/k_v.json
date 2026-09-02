@@ -1,0 +1,228 @@
+{
+ "v": "dep-170844",
+ "kurimas": 200,
+ "sid": 4527,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "V0": {
+   "desk": true,
+   "tk": true,
+   "pst": "300906055"
+  },
+  "V1_snap0": {
+   "st": "processing",
+   "eile": "nauji",
+   "kl": "",
+   "siunta": [
+    "",
+    0
+   ],
+   "pak": 1,
+   "ds_sent": "",
+   "siuntos": "",
+   "vpd": "",
+   "notes": [
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent.",
+    "Faktai irasyti: 2 eilutes · pajamos 16,20 EUR (be PVM, po nuolaidu) · PVM 4,24 EUR · marza 6,07 EUR · kontribucija (be pristatymo) 9,61 EUR · TESTINIS",
+    "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+    "AV nurašymas: #19708 grynai AV 27 -> 26 · #16727 AV 1 -> 0"
+   ]
+  },
+  "V1_misrus": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "misrus_ok",
+    "pd_nr": "35431|"
+   },
+   "txt": ""
+  },
+  "V1_kons": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "kons_nieko",
+    "pd_nr": "35431|0"
+   },
+   "txt": ""
+  },
+  "V1_partija": 0,
+  "V1_uzsakyti_pastomatas": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "uzsakyta"
+   },
+   "txt": ""
+  },
+  "V1_klaida": false,
+  "V1_partija_po": null,
+  "V1_priimti": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "gauta"
+   },
+   "txt": ""
+  },
+  "V1_own_stock": {
+   "pries": "0",
+   "po": "0"
+  },
+  "V1_po": {
+   "eile": "nauji",
+   "vykdymas": [
+    "SAVA",
+    1
+   ],
+   "type": "MAIN",
+   "ships": "1",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+   "items": [
+    [
+     19708,
+     "av",
+     "grynai AV prekė (be tiekėjo)",
+     "",
+     ""
+    ],
+    [
+     16727,
+     "av",
+     "AV turi 1, reikia 1",
+     "",
+     ""
+    ]
+   ],
+   "notes": [
+    "Mišraus užsakymo PLANAS: . Dar neįvykdyta — laukia paleidimo. Vartotojas: Testuotojas.",
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent."
+   ]
+  },
+  "V1_lapai": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-lapai"
+   },
+   "txt": ""
+  },
+  "V1_lapai_txt": "lipdukų krūvele. VENIPAK 2026-09-02 20:10 · 1 užsakymas · 2 vnt. #35431 AUDITAS Testas 18 VENIPAK Kurjeris 1 Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g 83722 1 QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, 2.011761 Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį.",
+  "V1_neperduotos": [],
+  "V1_dropship_lauk": [
+   "ambrosia",
+   "belcor_tofu",
+   "prins",
+   "vf",
+   "zb"
+  ],
+  "V2_naujai": "Petshop · rytinė eiga 1Peržiūra › 2Surinkimo lapai › 3Venipak › 4LP Express › 5Tiekėjams › 6Baigta ✕ Išeiti Į rytinę partiją patenka6iš sandėlio (AV)6 Venipak · 1 LP3tiekėjamsAMB 2 · PRI 1 · VF 12klausimaiį partiją NEPATENKANr.KlientasKeliasPristatymasTiekėjai#35433AUDITAS Testas 20SAVAVenipak paštomatas—#35432AUDITAS Testas 19SAVAVenipak paštomatas—#35431AUDITAS Testas 18SAVAVenipak kurjeris—#35422AUDITAS Testas 9DROPSHIPVenipak paštomatasAMB#35421AUDITAS Testas 8MIŠRUSVenipak kurjerisQUAPRI#35",
+  "V2_atsaukti_19": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "atsaukta",
+    "pd_nr": "35432"
+   },
+   "txt": ""
+  },
+  "V2_z1": "Petshop · rytinė eiga 1Peržiūra › 2Surinkimo lapai › 3Venipak › 4LP Express › 5Tiekėjams › 6Baigta ✕ Išeiti Į rytinę partiją patenka4iš sandėlio (AV)4 Venipak · 1 LP3tiekėjamsAMB 2 · PRI 1 · VF 12klausimaiį partiją NEPATENKANr.KlientasKeliasPristatymasTiekėjai#35431AUDITAS Testas 18SAVAVenipak kurjeris—#35422AUDITAS Testas 9DROPSHIPVenipak paštomatasAMB#35421AUDITAS Testas 8MIŠRUSVenipak kurjerisQUAPRI#35416AUDITAS Testas 3SAVALP Express—#35090Sart trMIŠRUSVenipak paštomatasAMBVFPartija sudaryta 20:10. Perskaičiuoti iš naujoPartija užrakinama — vėliau atėję užsakymai jos nepakeis.Pradėti Ačiū,",
+  "V2_z3": "Petshop · rytinė eiga ✓Peržiūra › ✓Surinkimo lapai › 3Venipak › 4LP Express › 5Tiekėjams › 6Baigta ✕ Išeiti VenipakKiekvienas sandėlis registruojamas atskirai — taip gaunamas savas manifestas tam kurjerio paėmimui. Siuntėjas visose siuntose lieka UAB Avesa.Savas sandėlismanifestas 0726726090200111:00 · praėjo, keliaus rytoj1 siunta · viso 2 kgregistruota 0 iš 1Registruoti 1 siuntąLipdukai 10×15#35431AUDITAS Testas 18Venipak kurjeris dėžių — nėraAmbrosiamanifestas 0726726090200610:00 · praėjo, keliaus rytoj1 siunta · viso 2 kgregistruota 1 iš 1✓ visos registruotos Lipdukai 10×15Manifestas PDF#35422AUDITAS Testas 9Venipak paštomatas✓ V07267E1000038Mišrūs užsakymai registruojami rankomis Šie už",
+  "V2_vp_reg_atsauktas": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "vp_nieko",
+    "pd_nr": "#35432 atšauktas, #35433 atšauktas"
+   },
+   "txt": ""
+  },
+  "V2_vp_bulk_atsauktas": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "vp_nieko",
+    "pd_nr": "#35433 atšauktas"
+   },
+   "txt": ""
+  },
+  "V2_snap19": {
+   "st": "cancelled",
+   "eile": "atsaukti",
+   "kl": "",
+   "siunta": [
+    "",
+    0
+   ],
+   "pak": 1,
+   "ds_sent": "",
+   "siuntos": "",
+   "vpd": "",
+   "notes": [
+    "Užsakymo statusas pakeistas iš Vykdomas į Atšauktas.",
+    "AV grąžinimas: #19708 grynai AV +1",
+    "Atšaukta darbalaukyje. Vartotojas: Testuotojas. Laiškas klientui: NESIŲSTAS.",
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent."
+   ]
+  },
+  "V2_snap20": {
+   "st": "cancelled",
+   "eile": "atsaukti",
+   "kl": "",
+   "siunta": [
+    "",
+    0
+   ],
+   "pak": 1,
+   "ds_sent": "",
+   "siuntos": "",
+   "vpd": "",
+   "notes": [
+    "Email \"Atšauktas užsakymas\" sent.",
+    "Email \"Atšauktas užsakymas\" sent.",
+    "AUDITAS WC kelias Užsakymo statusas pakeistas iš Vykdomas į Atšauktas.",
+    "AV grąžinimas: #19708 grynai AV +1",
+    "Email \"Užsakymas vykdomas\" sent."
+   ]
+  },
+  "mail": [
+   [
+    "20:10:10",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35433 — apmokėjimas gautas",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "20:10:13",
+    "uzsakymai@petshop.lt",
+    "[Petshop.lt]: Užsakymas #35433 buvo atšauktas",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "20:10:13",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35433 atšauktas — Petshop.lt",
+    0,
+    [],
+    "run"
+   ]
+  ]
+ }
+}
