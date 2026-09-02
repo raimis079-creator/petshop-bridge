@@ -9,7 +9,7 @@
 
 ---
 
-### S1591–S1597 (2026-09-02, rytas–diena)
+### S1591–S1598 (2026-09-02, rytas–diena)
 
 > Pridėti po S1590. Tema: Exclusion Hypo konservai → VF sandėlis; radinys — VF importas negyvas nuo 08-22; Sources v2.3 dviejų sandėlių eilutės; radinys — ZB likučių Import #3 buvo tuščias (no-op).
 
@@ -71,6 +71,10 @@ Raimio radinys: RINKINIAI → „Susidėk konservų rinkinį katėms“ → 404.
 
 Raimio radinys: /kategorija/rinkiniai/ šone tik Amžius/Prekės ženklas/kaina. Dvi priežastys: (1) snippet 332 „Filtrų kontekstas“ rinkiniams preset'o neturėjo → widget numatytasis `maisto-filtras` (be Gyvūno rūšies); (2) **13 iš 16 rinkinių be `pa_gyvuno_rusis`** (turėjo tik 3 DP pakai, paveldėję iš bazinės prekės) — YITH slepia filtrą be terminų. Fix: (a) naujas YITH preset **„Rinkinių filtras“ #35391** (`rinkiniu-filtras`: Gyvūno rūšis + Prekės ženklas, klonuota iš `default-preset` 6644); (b) snippet 332 **v20**: `rinkiniai` ir `*-rinkiniai` → `rinkiniu-filtras` (backup `ps-backups/snippet332-v19-BACKUP-2026-09-02.php`); (c) naujas mu-plugin **`petshop-rinkiniu-rusis.php` v1.0** (4 427 B, md5 `d35fdeb48f54f2a63ddb1accec24801e`): prekėms 679 medyje išveda rūšį iš kategorijų/pavadinimo (šunims 252, katėms 253, graužikams 255, paukščiams 254, žuvims 256), rašo `_product_attributes` + terminus, TIK kai atributas tuščias; hook `woocommerce_update_product`/`new_product`; backfill `?ps_rink_rusis=backfill` (manage_woocommerce). Backfill: 22 rinkiniai (publish+draft) → 19 įrašyta / 3 jau buvo. Frontas: `filter_gyvuno_rusis` su Šunims/Katėms rodomas.
 
+#### S1598 — `petshop-laukai.php` v1.46: susidėjimo dėžės nebe „Paruoštų rinkinių“ sąraše
+
+Raimio logika: „Paruošti rinkiniai“ (RINKINIAI 679 medis) ir „Susidėk savo rinkinį“ — du skirtingi keliai; dėžės sąraše nerodomos. `pre_get_posts` (main query, product_cat 679 arba jo palikuonis) → `meta_query _ps_laukas NOT EXISTS`. Kitose kategorijose (Konservai šunims ir pan.) įėjimo dėžė lieka matoma — tai jos įėjimas iš kategorijos (sprendimas 2026-08-15, nekeista). Paieška neliesta. Patikra: /kategorija/rinkiniai/ 10 → **7**, /konservu-rinkiniai/ → 3, /konservai-sunims/ 130 (nepakitę). md5 `201ceffcf3b8ab16c08eb1237112b107`. Pastaba: pirmas deploy runas krito `fx:list/fx:create` (REST laikinai neatsakė) — pakartota po 20 s, sėkmė.
+
 #### Pamokos
 63. **„0 vėluojančių cron" ≠ importai veikia.** pmxi grąžina HTTP 200 su `{"status":500}` — sargas turi tikrinti `pmxi_history` `time_run`/summary ir cache mtime, ne cron URL kodą. → kandidatas į sargą (`petshop-sargas`): pmxi #2/#3/#5/#7 paskutinis sėkmingas <36 h, `ps_vf_feed_paskutinis.ok`.
 64. `_vf_last_sync` = „bandyta sinchronizuoti", ne „duomenys švieži" — tikrinti šaltinio failo mtime.
@@ -91,7 +95,7 @@ Raimio radinys: /kategorija/rinkiniai/ šone tik Amžius/Prekės ženklas/kaina.
 plugins/petshop-xml/includes/class-import-rules-vf.php  v1.1  191637c6d58e661f8e7ed0d352c2556a
 mu-plugins/petshop-vf-feed.php                          v1.0  1ee413b1dd1000dcf77e395a7b270486  (NAUJAS)
 mu-plugins/petshop-import-tempas.php                    v1.2  5461ff5abfaa53a559fcf0f9c3b0b982  (NAUJAS, S1594)
-mu-plugins/petshop-laukai.php                           v1.45 6fb77a24b5d1f7c61ed6e1b4faed2740  (S1595–S1596)
+mu-plugins/petshop-laukai.php                           v1.46 201ceffcf3b8ab16c08eb1237112b107  (S1595–S1598)
 mu-plugins/petshop-rinkiniu-rusis.php                   v1.0  d35fdeb48f54f2a63ddb1accec24801e  (NAUJAS, S1597)
 snippet 332 Petshop Filtru Kontekstas v20 · YITH preset #35391 rinkiniu-filtras (S1597)
 analize/s1591_recon*.json · s1591_a.json · s1591_deploy*.json · s1591_verify.json · s1591_finish.json · s1592_recon.json · s1592_apply.json · s1592_dump.json · s1592_deploy.json · s1593_recon.json · s1593_r2..r6.json · s1593_fix.json · s1593_fix2.json · s1593_v.json
@@ -99,7 +103,7 @@ moduliai/petshop-sources-snippet2515.php  v2.3  681bef7ec50a143ffdcf7035dfa0e524
 ps-backups (serveris): class-import-rules-vf-v10-BACKUP-2026-09-02.php · exclusion-hypo-kons-BACKUP-2026-09-02.json · sources-v22-snippet2515-BACKUP-2026-09-02.php
 options: ps_pmxi_vf_backup_20260902 · ps_vf_feed_paskutinis · ps_pmxi3_backup_20260902
 ```
-TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1597**.
+TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1598**.
 
 ---
 
