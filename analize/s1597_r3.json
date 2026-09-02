@@ -1,0 +1,49 @@
+{
+ "v": "dep-121728",
+ "kurimas": 200,
+ "sid": 4489,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1597-R3",
+  "len": 244,
+  "head": "/**\n * Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]\n *\n * Code Snippets pavadinimas: Petshop Filtru Kontekstas v19 [VISADA AKTYVUS]\n * Tipas: \"Run snippet everywhere\"\n *\n * Parenka YITH preset pagal kategorija:\n *   - skanestu kategorijos    -> skanestu-filtras\n *   - vitaminu/papildu kat.   -> vitaminu-filtras\n *   - antkakliu/pavadeliu kat -> antkakliu-filtras\n *   - dubeneliu kat           -> dubeneliu-filtras\n *   - guoliu/transp/narvu kat -> guoliu-transporto-filtras  (NAUJA v5)\n *   - zaislu kategorijos      -> zaislu-filtras              (NAUJA v6)\n *   - kraiku kategorija        -> kraiku-filtras              (NAUJA v7)\n *   - apranga sunims           -> apranga-filtras             (NAUJA v8)\n *   - draskykles katems        -> draskykliu-filtras          (NAUJA v9)\n *   - sampunai sunims          -> sampunu-filtras             (NAUJA v10)\n *   - sukos/sepeciai/zirkles   -> suku-filtras                (NAUJA v11)\n *   - higienos priemones sunims-> suku-filtras (pa_tipas reuse)  (NAUJA v12)\n *   - display=subcategories kat-> filtras SLEPIAMAS (return false) (NAUJA v13)\n *   - grauzikams tevine (misri) -> tevine-filtras (tik brand)    (NAUJA v14)\n *   - pasaras grauzikams        -> grauziko-rusis-filtras       (NAUJA v15)\n *   - lesalas pauksciams        -> paukscio-rusis-filtras       (NAUJA v16)\n *   - akvariumo zuvu maistas    -> akvariumo-zuvu-filtras       (NAUJA v17)\n *   - tualetai/kraikai/semtuv.  -> tualetu-filtras (dedikuotas, Tipas+Brand)     (NAUJA v18/v19)\n *   - maisto kategorijos      -> maisto-filtras\n *   - kitos                   -> NEKEICIA (lieka widget numatytasis)\n *\n * Veikia per widget_display_callback: kai renderinamas YITH preset\n * widget, pakeicia preset slug pagal dabartine kategorija.\n *\n * Tvarko maista + skanestus + papildus. Aksesuarai / dp misri -\n * nepaliesta, kol joms bus sukurti atskiri preset'ai.\n *\n * Slug'ai: maisto-filtras, skanestu-filtras, vitaminu-filtras, antkakliu-filtras, dubeneliu-filtras, guoliu-transporto-filtras, zaislu-filtras, kraiku-filtras, apranga-filtras, draskykliu-filtras, sampunu-filtras.\n * ASCII-only PHP komentarai.\n */\n\ndefined( 'ABSPATH' ) || exit;\n",
+  "grep": [
+   "7:* Parenka YITH preset pagal kategorija:",
+   "21:*   - grauzikams tevine (misri) -> tevine-filtras (tik brand)    (NAUJA v14)",
+   "29:* Veikia per widget_display_callback: kai renderinamas YITH preset",
+   "30:* widget, pakeicia preset slug pagal dabartine kategorija.",
+   "33:* nepaliesta, kol joms bus sukurti atskiri preset'ai.",
+   "42:* Nustato, kuris preset slug tinka dabartinei kategorijai.",
+   "45:function petshop_filter_preset_for_current() {",
+   "56:// TEVINE GRAUZIKAMS (misri kategorija: maistas+aksesuarai) -> tik brand (v14)",
+   "58:return 'tevine-filtras';",
+   "133:// TUALETAI/KRAIKAI/SEMTUVELIAI (NAUJA v18, v19 dedikuotas preset)",
+   "135:// Dedikuotas preset su Tipas(pa_tipas) + Brand, svarus (be tusciu kraiko bloku).",
+   "193:* YITH widget renderina preset pagal pasirinkta slug.",
+   "198:// tik YITH Ajax filter preset widget",
+   "218:$want = petshop_filter_preset_for_current();",
+   "223:// rasti preset ID pagal slug",
+   "224:$preset = get_page_by_path( $want, OBJECT, 'yith_wcan_preset' );",
+   "225:if ( ! $preset ) {",
+   "229:// YITH instance laukas gali buti 'preset', 'preset_id' arba 'preset_slug'",
+   "230:if ( array_key_exists('preset', $instance) ) {",
+   "231:$instance['preset'] = $preset->ID;",
+   "233:if ( array_key_exists('preset_id', $instance) ) {",
+   "234:$instance['preset_id'] = $preset->ID;",
+   "236:if ( array_key_exists('preset_slug', $instance) ) {",
+   "237:$instance['preset_slug'] = $want;"
+  ],
+  "petshop-rinkiniai.php": [
+   "3470:if ( $atributai ) { $prod->set_attributes( $atributai ); }",
+   "3478:/* Taksonominiai atributai neislieka be `_product_attributes` — todel",
+   "3479:set_attributes() PRIES save(), o terminai priskiriami PO jo. */"
+  ],
+  "petshop-laukai.php": [
+   "2970:$tax[] = array( 'taxonomy' => 'pa_gyvuno_rusis', 'field' => 'name',",
+   "3002:$atributo_nera = ( trim( (string) $p->get_attribute( 'pa_gyvuno_rusis' ) ) === '' );"
+  ]
+ }
+}
