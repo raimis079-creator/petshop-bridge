@@ -1,0 +1,137 @@
+{
+ "v": "dep-094113",
+ "kurimas": 200,
+ "sid": 4466,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P": {
+  "VERSIJA": "S1593-V1",
+  "proc": "{\"status\":200,\"message\":\"Import #3 complete\"}",
+  "pmxi3": {
+   "processing": "0",
+   "triggered": "0",
+   "queue_chunk_number": "0",
+   "updated": "1061",
+   "skipped": "1598"
+  }
+ },
+ "V": {
+  "VERSIJA": "S1593-V1",
+  "zb_qty_vs_feed": {
+   "sutampa": 1056,
+   "skiriasi": 0,
+   "nera_feede": 35
+  },
+  "pvz": [],
+  "seseliai": {
+   "kada": "2026-09-02 12:42:51",
+   "kas": "S1593",
+   "poru": 15,
+   "atnaujinta": 0,
+   "praleista": 15,
+   "klaidos": []
+  },
+  "monge": {
+   "17394": {
+    "zb_sku": "01M210202",
+    "feed": 480,
+    "shadow_qty": "480",
+    "av_zb_qty": "480",
+    "av_stock": "480.000000",
+    "own": "18",
+    "klientas": 498
+   },
+   "17397": {
+    "zb_sku": "01M210205",
+    "feed": 1460,
+    "shadow_qty": "1460",
+    "av_zb_qty": "1460",
+    "av_stock": "1460.000000",
+    "own": "13",
+    "klientas": 1473
+   },
+   "17400": {
+    "zb_sku": "01M210203",
+    "feed": 1270,
+    "shadow_qty": "1270",
+    "av_zb_qty": "1270",
+    "av_stock": "1270.000000",
+    "own": "0",
+    "klientas": 1270
+   },
+   "17403": {
+    "zb_sku": "01M210629",
+    "feed": 250,
+    "shadow_qty": "250",
+    "av_zb_qty": "250",
+    "av_stock": "250.000000",
+    "own": "9",
+    "klientas": 259
+   },
+   "17406": {
+    "zb_sku": "01M210630",
+    "feed": 496,
+    "shadow_qty": "496",
+    "av_zb_qty": "496",
+    "av_stock": "496.000000",
+    "own": "14",
+    "klientas": 510
+   },
+   "17409": {
+    "zb_sku": "01M210632",
+    "feed": 185,
+    "shadow_qty": "185",
+    "av_zb_qty": "185",
+    "av_stock": "185.000000",
+    "own": "14",
+    "klientas": 199
+   },
+   "17412": {
+    "zb_sku": "01M230102",
+    "feed": 206,
+    "shadow_qty": "206",
+    "av_zb_qty": "206",
+    "av_stock": "206.000000",
+    "own": "7",
+    "klientas": 213
+   },
+   "17415": {
+    "zb_sku": "01M230101",
+    "feed": 309,
+    "shadow_qty": "309",
+    "av_zb_qty": "309",
+    "av_stock": "309.000000",
+    "own": "26",
+    "klientas": 335
+   },
+   "17418": {
+    "zb_sku": "01M230105",
+    "feed": 233,
+    "shadow_qty": "233",
+    "av_zb_qty": "233",
+    "av_stock": "233.000000",
+    "own": "23",
+    "klientas": 256
+   },
+   "17421": {
+    "zb_sku": "01M230103",
+    "feed": 390,
+    "shadow_qty": "390",
+    "av_zb_qty": "390",
+    "av_stock": "390.000000",
+    "own": "19",
+    "klientas": 409
+   }
+  },
+  "pmxi3": {
+   "processing": "0",
+   "triggered": "0",
+   "queue_chunk_number": "0",
+   "updated": "1061",
+   "skipped": "1598",
+   "last_activity": "2026-09-02 09:42:41"
+  }
+ }
+}
