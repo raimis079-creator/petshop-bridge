@@ -1,0 +1,132 @@
+{
+ "v": "dep-113418",
+ "kurimas": 200,
+ "sid": 4477,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1595-R1",
+  "eil": 4049,
+  "md5": "b8aa4437e85f90b115bb4f8f84f60896",
+  "ver": "1.43",
+  "grep": [
+   "13:* o GREITA PERZIURA (Flatsome quick view) kategorijoje /kategorija/rinkiniai/.",
+   "19:* kategorijose quick view atgijo. Dabar: (a) quick view visoms mix-and-match",
+   "100:*     (JS autoVieta atitikmuo): tipo kategorija (dauguma) + porūšis 682/683/684.",
+   "126:*   filtrais: kategorija (medis su palikuonimis) · svoris (pa_pakuotes_dydis) ·",
+   "155:*      Kategorija taip pat kita — DAUGIAU=PIGIAU (91), ne RINKINIAI (679).",
+   "160:*   - Kategoriju auto-priskyrimas issaugant — snippet 569 (cia tik parodoma,",
+   "938:/** Kategoriju medis su palikuoniu skaiciais. Kesuojamas — 2 500 prekiu. */",
+   "943:$terms = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false ) );",
+   "969:WHERE tt.taxonomy='product_cat'\", ARRAY_A );",
+   "985:if ( (int) $it->menu_item_parent === 0 && $it->object === 'product_cat' ) {",
+   "1024:* pagal komponentu kategorijas, o ne pagal pavadinima — „Churu\" pavadinime",
+   "1036:if ( (int) $it->menu_item_parent !== 0 || $it->object !== 'product_cat' ) { continue; }",
+   "1051:/** Kuriai rusiai priklauso rinkinys — balsuoja komponentu kategorijos. */",
+   "1057:foreach ( wc_get_product_term_ids( $cid, 'product_cat' ) as $kid ) {",
+   "1090:private static function kategorijos( $komponentu_ids, $rankiniu = array(), $isjungti = array() ) {",
+   "1109:foreach ( wc_get_product_term_ids( (int) $cid, 'product_cat' ) as $k ) {",
+   "1120:$t  = get_term( $best, 'product_cat' );",
+   "1231:'kat' => wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) ),",
+   "1235:'rusis' => self::rusis( array( $bid ), wc_get_product_term_ids( $pid, 'product_cat' ) ),",
+   "1325:'kat'       => wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) ),",
+   "1328:'rusis'     => self::rusis( $vaikai, wc_get_product_term_ids( $pid, 'product_cat' ) ),",
+   "1752:if ( count( $krepsys ) > 8 ) { $a[] = array( 'y', 'Krepšys per didelis', count( $krepsys ) . ' prekės. Virš 8 dėžė pralaimi savo kategorijai.' ); }",
+   "1982:wp_send_json_error( 'Krepšyje jau 8 prekės. Virš 8 dėžė pralaimi savo kategorijai — pirma išimk kurią nors.' );",
+   "2039:/* kategorijos filtrui — tik tos, kurios realiai naudojamos */",
+   "2138:private static function sarasas_js( $duomenys, $rusys, $kategorijos ) {",
+   "2147:var KAT=<?php echo wp_json_encode( $kategorijos ); ?>;",
+   "2249:h+='<span class=\"psr-f\"><label>Kategorija</label><select data-l=\"kat\"><option value=\"\">— visos —</option>'",
+   "2263:if(f.kat) akt.push(['Kategorija: '+f.kat,'kat']);",
+   "2497:/* v1.27: rankines vietos = prekes kategorijos be automatiniu */",
+   "2502:foreach ( array_map( 'intval', wc_get_product_term_ids( $saltinis, 'product_cat' ) ) as $kid ) {",
+   "2523:echo '<tr><th><label>Pavadinimas *</label></th><td><input type=\"text\" id=\"psr-pav\" class=\"large-text\" value=\"' . esc_attr( $d['pav'] ) . '\" placeholder=\"Pvz. Startas šu",
+   "2534:echo '<p class=\"description\">Pilkos žymos priskiriamos automatiškai pagal pridėtas prekes. Klientas rinkinį ras šiose katalogo kategorijose.</p>';",
+   "2542:echo '<span class=\"psr-f\"><label>Kategorija</label><select id=\"psr-f-kat\"><option value=\"\">— visos —</option>';",
+   "2547:echo '</optgroup><optgroup label=\"Senos kategorijos (ne meniu)\">';",
+   "2720:else if(dp) h+='<p class=\"description\">Pakas paveldi bazinės prekės kategorijas ir DAUGIAU=PIGIAU.</p>';",
+   "2782:+'Iš bazinės prekės perimama: aprašymas, nuotrauka, atributai (filtrams), kategorijos ir brendas. '",
+   "2786:+'<div class=\"psr-mut\">Klientas matys sudėties sąrašą. Nuotrauka sugeneruojama iš komponentų. Kategorija: RINKINIAI + porūšis.</div></div>';",
+   "3091:'kat'       => array_map( 'intval', wc_get_product_term_ids( $pid, 'product_cat' ) ),",
+   "3119:$tax[] = array( 'taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $ids );",
+   "3315:$prod->set_category_ids( self::kategorijos( array_keys( $kiekiai ), $kat, $kat_off ) );",
+   "3429:/* kategorijos: bazines prekes + DAUGIAU=PIGIAU (91) */",
+   "3430:$kategorijos = wc_get_product_term_ids( $bid, 'product_cat' );",
+   "3431:$kategorijos[] = 91;",
+   "3432:if ( $kat ) { $kategorijos = array_merge( $kategorijos, $kat ); }",
+   "3433:$kategorijos = array_diff( array_map( 'intval', (array) $kategorijos ), array_map( 'intval', (array) $kat_off ) );",
+   "3434:$prod->set_category_ids( array_values( array_unique( $kategorijos ) ) );",
+   "3625:'kat' => wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) ),"
+  ],
+  "opt": {
+   "ps_rink_cumulative_bak_0814": "a:36:{i:34190;s:2:\"no\";i:34191;s:2:\"no\";i:34192;s:2:\"no\";i:34193;s:2:\"no\";i:34194;s:2:\"no\";i:34195;s:2:\"no\";i:34209;s:2:\"no\";i:34210;s:2:\"no\";i:34211;s:2:\"no\";i:34208;s:2:\"no\";i:34212;s:2:\"no\";i:34213;s:2:\"no\";i:34214;s:2:\"no\";i:34215;s:2:\"no\";i:34216;s:2:\"no\";i:34218;s:2:\"no\";i:34219;s:2:\"no\";i:34220;s:2:\"no\";i:34221;s:2:\"no\";i:34222;s:2:\"no\";i:34223;s:2:\"no\";i:34229;s:2:\"no\";i:34230;s:2:\"no\";i:3"
+  },
+  "kats": [
+   {
+    "term_id": "86",
+    "slug": "animonda-konservai-sunims",
+    "name": "Animonda konservai šunims",
+    "count": "39",
+    "parent": "0"
+   },
+   {
+    "term_id": "79",
+    "slug": "konservai-katems",
+    "name": "Konservai katėms",
+    "count": "149",
+    "parent": "78"
+   },
+   {
+    "term_id": "73",
+    "slug": "konservai-sunims",
+    "name": "Konservai šunims",
+    "count": "132",
+    "parent": "71"
+   },
+   {
+    "term_id": "682",
+    "slug": "konservu-rinkiniai",
+    "name": "Konservų rinkiniai",
+    "count": "11",
+    "parent": "679"
+   },
+   {
+    "term_id": "97",
+    "slug": "skanestai-grauzikams",
+    "name": "Skanėstai graužikams",
+    "count": "22",
+    "parent": "87"
+   },
+   {
+    "term_id": "96",
+    "slug": "skanestai-katems",
+    "name": "Skanėstai katėms",
+    "count": "90",
+    "parent": "77"
+   },
+   {
+    "term_id": "98",
+    "slug": "skanestai-pauksciams",
+    "name": "Skanėstai paukščiams",
+    "count": "3",
+    "parent": "89"
+   },
+   {
+    "term_id": "95",
+    "slug": "skanestai-sunims",
+    "name": "Skanėstai šunims",
+    "count": "295",
+    "parent": "70"
+   },
+   {
+    "term_id": "683",
+    "slug": "skanestu-rinkiniai",
+    "name": "Skanėstų rinkiniai",
+    "count": "2",
+    "parent": "679"
+   }
+  ]
+ }
+}
