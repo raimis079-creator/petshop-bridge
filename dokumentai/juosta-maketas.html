@@ -26,7 +26,8 @@ a:hover{text-decoration:underline}
 
 /* ======= JUOSTA ======= */
 .juosta{position:sticky;top:0;z-index:20;margin-left:36px;background:var(--popierius);border-bottom:1px solid var(--linija);height:54px;display:flex;align-items:stretch;padding:0 18px 0 14px}
-.zenklas{display:flex;align-items:center;gap:8px;font-weight:600;margin-right:22px;white-space:nowrap}
+.zenklas{display:flex;align-items:center;gap:8px;font-weight:600;margin-right:22px;white-space:nowrap;color:var(--rasalas)}
+.zenklas:hover{text-decoration:none;color:var(--zalia)}
 .zenklas b{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--zalia)}
 .juosta nav{display:flex;align-items:stretch;flex:1}
 .juosta nav button{background:none;border:0;border-bottom:3px solid transparent;padding:0 12px;color:var(--pilka);display:flex;align-items:center;gap:7px;white-space:nowrap}
@@ -141,7 +142,7 @@ tr.pazymeta td{background:var(--gintaras-sviesus)}
 
 <!-- ============ JUOSTA ============ -->
 <header class="juosta">
-  <div class="zenklas"><b></b>petshop.lt</div>
+  <a class="zenklas" href="https://petshop.lt" target="_blank" rel="noopener" title="Atidaryti svetainę kliento akimis"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z"/></svg>petshop.lt</a>
   <nav id="nav">
     <button data-ek="uzsakymai" class="on">Užsakymai <span class="sk darbas" data-sk="uzs">6</span></button>
     <button data-ek="rytas">Rytinė eiga</button>
@@ -356,9 +357,10 @@ tr.pazymeta td{background:var(--gintaras-sviesus)}
   <div class="langas">
     <b>Kas čia keičiasi, palyginti su dabartimi</b>
     <ol>
+      <li><b>Namukas</b> kairėje — svetainė kliento akimis, naujoje kortelėje.</li>
       <li><b>Viena juosta</b> visuose languose — Užsakymai · Rytinė eiga · Prekės · Gavimas · Tiekimas · Rinkiniai · Akcijos · Laiškai. Skaitliukas tik ten, kur laukia darbas.</li>
       <li><b>Kelias viršuje atsimena, iš kur atėjai</b>: iš užsakymo į prekę, iš prekės atgal į tą patį užsakymą. Vienas „← Atgal“ visur.</li>
-      <li><b>Užsakymas atsidaro šone iš bet kurio lango</b> — Prekių, Tiekimo, Laiškų — ne tik iš sąrašo.</li>
+      <li><b>Užsakymas atsidaro šone iš bet kurio lango</b> — Prekių, Tiekimo, Laiškų. WooCommerce langų darbuotojui nėra niekur.</li>
       <li><b>Vienas veiksmas = vienas žodis</b>: Surinkti · Registruoti · Lipdukai · Perduoti · Išsiųsta · Priimti.</li>
       <li><b>Rytinė eiga</b> gauna 6 „Gavimai“ ir 7 „Klausimai“ — visa diena viename kelyje.</li>
       <li><b>Prekėje matosi „laukia N užsakymuose“</b> — ir iš klausimo „trūksta“ vienu paspaudimu patenki į prekę.</li>
@@ -424,7 +426,7 @@ tr.pazymeta td{background:var(--gintaras-sviesus)}
     $('#sk-nr').textContent='#'+id; $('#sk-kl').textContent=u.kl; $('#sk-bus').textContent=u.bus; $('#sk-pr').textContent=u.pr;
     $('#sk-eil').innerHTML=u.eil.map(r=>'<div class="eilute"><div class="k">'+r[0]+'×</div><div class="p"><a href="#" data-preke="'+r[2]+'">'+r[1]+'</a><br><span class="pilkas" style="font-size:12px">'+r[3]+'</span></div></div>').join('');
     $('#sk-zur').innerHTML=u.zur.map(z=>'<div>'+z+'</div>').join('');
-    $('#sk-veiksmai').innerHTML=u.v.map((v,i)=>'<button class="veiksmas'+(i===0?' pirmas':'')+'" data-v="'+v+'" data-uz="'+id+'">'+v+'</button>').join('')+'<button class="veiksmas tylus" style="margin-left:auto" data-wc="'+id+'">WooCommerce</button>';
+    $('#sk-veiksmai').innerHTML=u.v.map((v,i)=>'<button class="veiksmas'+(i===0?' pirmas':'')+'" data-v="'+v+'" data-uz="'+id+'">'+v+'</button>').join('');
     $('#skydas').classList.add('on'); $('#uzdanga').classList.add('on');
   }
   function uzdaryti(){ $('#skydas').classList.remove('on'); $('#uzdanga').classList.remove('on'); }
@@ -441,7 +443,6 @@ tr.pazymeta td{background:var(--gintaras-sviesus)}
     const p=e.target.closest('[data-preke]'); if(p){ e.preventDefault(); const isKur=$('#skydas').classList.contains('on')?'Užsakymas '+$('#sk-nr').textContent:null; uzdaryti(); rodyti('prekes',{isKur,kelias:p.textContent.trim()}); $$('tr.pazymeta').forEach(x=>x.classList.remove('pazymeta')); const row=document.getElementById('pr-'+p.dataset.preke); if(row){ row.classList.add('pazymeta'); row.scrollIntoView({block:'center'}); } return; }
     const u=e.target.closest('[data-uzs]'); if(u){ e.preventDefault(); const ids=u.dataset.uzs.split(','); if(ids.length===1){ atidaryti(ids[0]); } else { rodyti('uzsakymai',{isKur:'Prekės',kelias:'laukia prekės'}); $$('#eiles button').find(b=>b.dataset.e==='visi').click(); pranesti('Rodomi užsakymai #'+ids.join(', #')); } return; }
     const pa=e.target.closest('a[data-partija]'); if(pa){ e.preventDefault(); rodyti('tiekimas',{isKur:'Užsakymas #35421'}); document.getElementById('partija-10').scrollIntoView({block:'center'}); return; }
-    const w=e.target.closest('[data-wc]'); if(w){ pranesti('Atsidarytų WooCommerce užsakymas #'+w.dataset.wc+' toje pačioje kortelėje, su „← Užsakymas“ grįžimu'); }
   });
 
   /* --- veiksmai: vienas žodis → tas pats žodis pranešime --- */
