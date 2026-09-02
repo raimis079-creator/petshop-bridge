@@ -1,0 +1,178 @@
+{
+ "v": "dep-083751",
+ "kurimas": 200,
+ "sid": 4452,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P": {
+  "VERSIJA": "S1591-F1",
+  "p5": [
+   "{\"status\":403,\"message\":\"Import #5 is not triggered. Request skipped.\"}",
+   0.8
+  ],
+  "pmxi5": {
+   "processing": "0",
+   "triggered": "0",
+   "queue_chunk_number": "0",
+   "imported": "85",
+   "created": "8",
+   "updated": "77",
+   "skipped": "2306",
+   "count": "2391",
+   "last_activity": "2026-09-02 08:39:52"
+  },
+  "hist5": [
+   {
+    "type": "processing",
+    "time_run": "547",
+    "date": "2026-09-02 08:30:45",
+    "summary": "import finished & cron un-triggered<br>8 Produktai created 77 updated 2306 skipped"
+   },
+   {
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-02 08:30:37",
+    "summary": "triggered by cron"
+   }
+  ]
+ },
+ "S": {
+  "VERSIJA": "S1591-F1",
+  "fn": {
+   "sync": true,
+   "fill": true
+  },
+  "fill": {
+   "35312": false,
+   "35314": false,
+   "35316": false,
+   "35322": false,
+   "35326": false,
+   "35328": false,
+   "35330": false,
+   "35334": false,
+   "35338": false,
+   "35340": false,
+   "35342": false
+  },
+  "ps_sources": [
+   [
+    "18593",
+    "av",
+    "",
+    "22",
+    "2.0000"
+   ],
+   [
+    "18596",
+    "av",
+    "",
+    "4",
+    "2.3800"
+   ],
+   [
+    "18599",
+    "av",
+    "",
+    "32",
+    "2.3800"
+   ],
+   [
+    "18602",
+    "av",
+    "",
+    "20",
+    "2.0000"
+   ],
+   [
+    "18605",
+    "av",
+    "",
+    "17",
+    "2.3800"
+   ],
+   [
+    "18608",
+    "av",
+    "",
+    "0",
+    "2.3800"
+   ],
+   [
+    "18611",
+    "av",
+    "",
+    "19",
+    "2.3800"
+   ],
+   [
+    "18614",
+    "av",
+    "",
+    "22",
+    "1.9000"
+   ]
+  ],
+  "sandelis": {
+   "35312": "",
+   "35314": "",
+   "35316": "",
+   "35322": "",
+   "35326": "",
+   "35328": "",
+   "35330": "",
+   "35334": "",
+   "35338": "",
+   "35340": "",
+   "35342": ""
+  },
+  "pmxi": [
+   {
+    "id": "5",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "processing": "0",
+    "triggered": "0",
+    "queue_chunk_number": "0",
+    "imported": "85",
+    "count": "2391",
+    "last_activity": "2026-09-02 08:39:52"
+   },
+   {
+    "id": "7",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "processing": "1",
+    "triggered": "1",
+    "queue_chunk_number": "2021",
+    "imported": "637",
+    "count": "2391",
+    "last_activity": "2026-09-02 08:40:05"
+   }
+  ],
+  "vf_feed": {
+   "versija": "1.0",
+   "paskutinis": {
+    "laikas": "2026-09-02 11:30:23",
+    "ok": true,
+    "klaida": "",
+    "eilutes": 2391,
+    "baitai": 8510508,
+    "sek": 6.6,
+    "http": 200
+   },
+   "failas": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T08:30:29+00:00"
+   },
+   "cache": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T08:30:29+00:00"
+   },
+   "cron_kitas": "2026-09-02T09:05:00+00:00"
+  },
+  "temp_active": "1"
+ }
+}
