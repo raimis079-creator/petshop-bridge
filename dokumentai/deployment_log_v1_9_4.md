@@ -9,7 +9,7 @@
 
 ---
 
-### S1591–S1598 (2026-09-02, rytas–diena)
+### S1591–S1600 (2026-09-02, rytas–popietė)
 
 > Pridėti po S1590. Tema: Exclusion Hypo konservai → VF sandėlis; radinys — VF importas negyvas nuo 08-22; Sources v2.3 dviejų sandėlių eilutės; radinys — ZB likučių Import #3 buvo tuščias (no-op).
 
@@ -75,6 +75,16 @@ Raimio radinys: /kategorija/rinkiniai/ šone tik Amžius/Prekės ženklas/kaina.
 
 Raimio logika: „Paruošti rinkiniai“ (RINKINIAI 679 medis) ir „Susidėk savo rinkinį“ — du skirtingi keliai; dėžės sąraše nerodomos. `pre_get_posts` (main query, product_cat 679 arba jo palikuonis) → `meta_query _ps_laukas NOT EXISTS`. Kitose kategorijose (Konservai šunims ir pan.) įėjimo dėžė lieka matoma — tai jos įėjimas iš kategorijos (sprendimas 2026-08-15, nekeista). Paieška neliesta. Patikra: /kategorija/rinkiniai/ 10 → **7**, /konservu-rinkiniai/ → 3, /konservai-sunims/ 130 (nepakitę). md5 `201ceffcf3b8ab16c08eb1237112b107`. Pastaba: pirmas deploy runas krito `fx:list/fx:create` (REST laikinai neatsakė) — pakartota po 20 s, sėkmė.
 
+#### S1599 — Paruoštų rinkinių analizė iš savų duomenų
+
+Raimio užduotis: kokių paruoštų rinkinių reikia; taisyklės — viskas iš vieno sandėlio, nedubliuoti dėžių, be 10 % nuolaidos (kainos mažos). Šaltinis `ps_ist_fakt_eilutes` 2025-06..2026-08: 4 461 apmokėti užsakymai, 148,7 k€; 42 % užsakymų ≥2 skirtingos prekės. Pajamos: sausas šunims 46 %, sausas katėms 11 %, konservai šunims 10 % / katėms 8 %, skanėstai šunims 6 %, kraikai 2,7 %, žuvų maistas 3,5 %. Kartu-pirkimai už dėžių ribų: Exclusion Hypo sausas+konservai 69 užsakymai (Mini kiauliena+konservai 21), PESS antiparazitiniai 13/9/5, Hikari 7/6/6 (atmesta), Catit fontanas+filtrai 6, Miamor/GimCat hairball 4/4/3 (dubliuoja 35094 — atmesta), Quattro 2 sausi 5/4/4. Asortimento skenas pagal sandėlį×antkainį: AV natūralūs kramtalai 77 %, kačių tualetai 200 %+, žaislai katėms 52 %, Quattro 67–82 %; VF skanėstai šunims 127 prekių ~36 %. Raimio sprendimai: 1 tik Mini (2 variantai), 2a su kitu skanėstu (natūralių rinkinukas baigiasi), 2b taip, 3 ne, 4 ne (dubliuoja), 5–6 taip su iki 6 % nuolaida, plius keli VF skanėstų rinkiniai ~30 € (nemokamas paštomatas), ne po 2 prekes. `analize/s1599_a.json · s1599_b.json · s1599_c.json`.
+
+#### S1600 — 11 paruoštų rinkinių sukurta (DRAFT, Raimio peržiūrai)
+
+Per `Petshop_Rinkiniai::ajax_issaugoti()` (simuliuotas AJAX: `DOING_AJAX`, nonce, `wp_die_ajax_handler` → exception; pamoka: be `DOING_AJAX` `wp_send_json` daro `die` ir kuria tik pirmą). Kaina = suma (5–6: −6 %). Visi vieno sandėlio, kompozicijos nuotraukos sugeneruotos, rūšis priskirta (S1597 modulis; 35400 ranka — „Kačių“ ≠ „katėms“, į modulį pridėti `kaci`):
+35392 Exclusion Hypo Mini kiauliena 2 kg + 4×kiauliena 400 g 36,81 € VF 35 % · 35394 tas pats + 4×elniena 36,81 € VF · 35396 Apsauga nuo parazitų šuniui (PESS ×3 + 2×Apollo kepenėlės) 15,09 € AV · 35398 katei (PESS ×3 + GimCat Catnip) 14,50 € AV · 35400 Kačių tualeto starteris (Sonic Big + SILICA 3,8 l + semtuvėlis) 18,18→17,09 € AV · 35402 Fontanas Catit + filtrai 56,75→53,35 € AV 49 % · 35404 Vytintų skanėstų 8 rūšys 30,62 € VF 40 % · 35406 Kramtymui ir dantims 7 vnt. 32,43 € VF 40 % · 35408 Mažų veislių šuniukui 8 vnt. 30,92 € VF 39 % · 35410 Alergiškam vieno baltymo 7 vnt. 31,23 € VF 39 % · 35412 Dresūrai minkšti 6 vnt. 30,24 € VF 38 %.
+**Radiniai pakeliui:** PESS lašiukų `_weight` buvo 20 ir 10 (kg — svorio laukas naudotas šuns svoriui) → rinkinys 20,65 kg, kurjerio tarifas 20,65 €; ištaisyta 16996/16999 → 0,05 kg, rinkiniai 0,4/0,35 kg. Kačių tualetai (15928/15920/15870) be svorio ir be siuntimo klasės; **klasės „tik kurjeris“ sistemoje NĖRA** (yra tik 4 svorio pakopos) → gabaritinės prekės į paštomatą — Q-GABARITAS Raimiui. PESS savikainos 0 → 35396/35398 marža nežinoma.
+
 #### Pamokos
 63. **„0 vėluojančių cron" ≠ importai veikia.** pmxi grąžina HTTP 200 su `{"status":500}` — sargas turi tikrinti `pmxi_history` `time_run`/summary ir cache mtime, ne cron URL kodą. → kandidatas į sargą (`petshop-sargas`): pmxi #2/#3/#5/#7 paskutinis sėkmingas <36 h, `ps_vf_feed_paskutinis.ok`.
 64. `_vf_last_sync` = „bandyta sinchronizuoti", ne „duomenys švieži" — tikrinti šaltinio failo mtime.
@@ -103,7 +113,7 @@ moduliai/petshop-sources-snippet2515.php  v2.3  681bef7ec50a143ffdcf7035dfa0e524
 ps-backups (serveris): class-import-rules-vf-v10-BACKUP-2026-09-02.php · exclusion-hypo-kons-BACKUP-2026-09-02.json · sources-v22-snippet2515-BACKUP-2026-09-02.php
 options: ps_pmxi_vf_backup_20260902 · ps_vf_feed_paskutinis · ps_pmxi3_backup_20260902
 ```
-TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1598**.
+TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1600**.
 
 ---
 
