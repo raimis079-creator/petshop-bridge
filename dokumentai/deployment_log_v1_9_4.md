@@ -9,7 +9,7 @@
 
 ---
 
-### S1591–S1600 (2026-09-02, rytas–popietė)
+### S1591–S1601 (2026-09-02, rytas–popietė)
 
 > Pridėti po S1590. Tema: Exclusion Hypo konservai → VF sandėlis; radinys — VF importas negyvas nuo 08-22; Sources v2.3 dviejų sandėlių eilutės; radinys — ZB likučių Import #3 buvo tuščias (no-op).
 
@@ -85,6 +85,10 @@ Per `Petshop_Rinkiniai::ajax_issaugoti()` (simuliuotas AJAX: `DOING_AJAX`, nonce
 35392 Exclusion Hypo Mini kiauliena 2 kg + 4×kiauliena 400 g 36,81 € VF 35 % · 35394 tas pats + 4×elniena 36,81 € VF · 35396 Apsauga nuo parazitų šuniui (PESS ×3 + 2×Apollo kepenėlės) 15,09 € AV · 35398 katei (PESS ×3 + GimCat Catnip) 14,50 € AV · 35400 Kačių tualeto starteris (Sonic Big + SILICA 3,8 l + semtuvėlis) 18,18→17,09 € AV · 35402 Fontanas Catit + filtrai 56,75→53,35 € AV 49 % · 35404 Vytintų skanėstų 8 rūšys 30,62 € VF 40 % · 35406 Kramtymui ir dantims 7 vnt. 32,43 € VF 40 % · 35408 Mažų veislių šuniukui 8 vnt. 30,92 € VF 39 % · 35410 Alergiškam vieno baltymo 7 vnt. 31,23 € VF 39 % · 35412 Dresūrai minkšti 6 vnt. 30,24 € VF 38 %.
 **Radiniai pakeliui:** PESS lašiukų `_weight` buvo 20 ir 10 (kg — svorio laukas naudotas šuns svoriui) → rinkinys 20,65 kg, kurjerio tarifas 20,65 €; ištaisyta 16996/16999 → 0,05 kg, rinkiniai 0,4/0,35 kg. Kačių tualetai (15928/15920/15870) be svorio ir be siuntimo klasės; **klasės „tik kurjeris“ sistemoje NĖRA** (yra tik 4 svorio pakopos) → gabaritinės prekės į paštomatą — Q-GABARITAS Raimiui. PESS savikainos 0 → 35396/35398 marža nežinoma.
 
+#### S1601 — „Tik kurjeriu“ varnelė pagaliau veikia kasoje (`petshop-rinkiniai.php` v1.44)
+
+Raimis: gabaritinės klasės nesiūlyti — „tik kurjeriu“ jau yra (prieš siūlant tikrinti). Patikrinta: varnelė `_ps_tik_kurjeriu` (katalogo kortelė v3.8, 162 prekės, tualetai pažymėti) egzistuoja, bet **kasoje jos niekas neskaitė** — `pastomato_sargas()` slėpė paštomatus tik pagal svorį (>25 kg); `courier_only` naudojo tik AV resolveris/desk/M8. Fix v1.44: sargas tikrina visų krepšelio eilučių (įsk. MnM vaikų) `_ps_tik_kurjeriu=yes` → paštomatų/terminalų tarifai nerodomi; `paveldeti_kurjeri()` — MnM ir DP pakai varnelę paveldi iš sudedamųjų išsaugant. Backup `ps-backups/petshop-rinkiniai-v143-BACKUP-2026-09-02.php`, md5 `b90c520641336b9db53e8313a8bcd8eb`. Testas su netikru paketu: tualetas 15928 → lieka tik kurjeris; kraikas → visi 3; rinkinys 35400 (paveldėjo yes) → tik kurjeris. 35402 (fontanas 19140) varnelės neturi — Raimio sprendimas kortelėje. Pamoka 70: **ekrano varnelė be vartotojo kelio patikros = žyma, ne taisyklė** — tikrinti iki kasos.
+
 #### Pamokos
 63. **„0 vėluojančių cron" ≠ importai veikia.** pmxi grąžina HTTP 200 su `{"status":500}` — sargas turi tikrinti `pmxi_history` `time_run`/summary ir cache mtime, ne cron URL kodą. → kandidatas į sargą (`petshop-sargas`): pmxi #2/#3/#5/#7 paskutinis sėkmingas <36 h, `ps_vf_feed_paskutinis.ok`.
 64. `_vf_last_sync` = „bandyta sinchronizuoti", ne „duomenys švieži" — tikrinti šaltinio failo mtime.
@@ -107,13 +111,14 @@ mu-plugins/petshop-vf-feed.php                          v1.0  1ee413b1dd1000dcf7
 mu-plugins/petshop-import-tempas.php                    v1.2  5461ff5abfaa53a559fcf0f9c3b0b982  (NAUJAS, S1594)
 mu-plugins/petshop-laukai.php                           v1.46 201ceffcf3b8ab16c08eb1237112b107  (S1595–S1598)
 mu-plugins/petshop-rinkiniu-rusis.php                   v1.0  d35fdeb48f54f2a63ddb1accec24801e  (NAUJAS, S1597)
+mu-plugins/petshop-rinkiniai.php                        v1.44 b90c520641336b9db53e8313a8bcd8eb  (S1601)
 snippet 332 Petshop Filtru Kontekstas v20 · YITH preset #35391 rinkiniu-filtras (S1597)
 analize/s1591_recon*.json · s1591_a.json · s1591_deploy*.json · s1591_verify.json · s1591_finish.json · s1592_recon.json · s1592_apply.json · s1592_dump.json · s1592_deploy.json · s1593_recon.json · s1593_r2..r6.json · s1593_fix.json · s1593_fix2.json · s1593_v.json
 moduliai/petshop-sources-snippet2515.php  v2.3  681bef7ec50a143ffdcf7035dfa0e524
 ps-backups (serveris): class-import-rules-vf-v10-BACKUP-2026-09-02.php · exclusion-hypo-kons-BACKUP-2026-09-02.json · sources-v22-snippet2515-BACKUP-2026-09-02.php
 options: ps_pmxi_vf_backup_20260902 · ps_vf_feed_paskutinis · ps_pmxi3_backup_20260902
 ```
-TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1600**.
+TEMP: 4430–4437 (S1583–S1590) + 4430–4467 ištrinti DB (S1593); liko 4468+ einamieji (deaktyvuoti) → trinti kitą runą. Aukščiausias decision Nr.: **S1601**.
 
 ---
 
