@@ -1,0 +1,86 @@
+{
+ "v": "dep-104650",
+ "kurimas": 200,
+ "sid": 4467,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1593-ST",
+  "vf_feed": {
+   "versija": "1.0",
+   "paskutinis": {
+    "laikas": "2026-09-02 13:05:51",
+    "ok": true,
+    "klaida": "",
+    "eilutes": 2391,
+    "baitai": 8510508,
+    "sek": 8.8,
+    "http": 200
+   },
+   "failas": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T10:06:00+00:00"
+   },
+   "cache": {
+    "baitai": 8510508,
+    "mtime": "2026-09-02T10:06:00+00:00"
+   },
+   "cron_kitas": "2026-09-02T11:05:00+00:00"
+  },
+  "now_utc": "2026-09-02T10:47:56+00:00",
+  "pmxi": [
+   {
+    "id": "2",
+    "type": "url",
+    "processing": "0",
+    "triggered": "1",
+    "updated": "55",
+    "skipped": "425",
+    "last_activity": "2026-09-02 03:02:03"
+   },
+   {
+    "id": "3",
+    "type": "url",
+    "processing": "0",
+    "triggered": "1",
+    "updated": "268",
+    "skipped": "212",
+    "last_activity": "2026-09-02 10:03:02"
+   },
+   {
+    "id": "5",
+    "type": "file",
+    "processing": "0",
+    "triggered": "0",
+    "updated": "77",
+    "skipped": "2306",
+    "last_activity": "2026-09-02 08:39:52"
+   },
+   {
+    "id": "7",
+    "type": "file",
+    "processing": "0",
+    "triggered": "0",
+    "updated": "42",
+    "skipped": "2349",
+    "last_activity": "2026-09-02 10:20:12"
+   }
+  ],
+  "hist7": [
+   {
+    "type": "processing",
+    "date": "2026-09-02 10:16:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 42 updated 2349 skipped"
+   },
+   {
+    "type": "trigger",
+    "date": "2026-09-02 10:15:02",
+    "summary": "triggered by cron"
+   }
+  ],
+  "temp_active": "1",
+  "sargas_fatal": 0
+ }
+}
