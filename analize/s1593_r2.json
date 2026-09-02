@@ -1,0 +1,275 @@
+{
+ "v": "dep-092340",
+ "kurimas": 200,
+ "sid": 4459,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1593-R2",
+  "eil": 99,
+  "kodas": [
+   "7:*   „šešėlis\" (draft + hidden, `_ps_shadow_of` = AV prekės ID). Šešėlis",
+   "13:*   - šešėlio `_zb_qty`/`_zb_cost`/`_zb_last_sync` → AV prekės meta",
+   "21:*   - nekuria porų — pora fiksuojama tik ranka (`_ps_shadow_of`)",
+   "29:const ZYME = '_ps_shadow_of';",
+   "31:public static function init() {",
+   "40:public static function po_importo( $import_id ) {",
+   "46:public static function sync( $kas = 'cron' ) {",
+   "59:'poru' => count( $poros ), 'atnaujinta' => 0, 'praleista' => 0, 'klaidos' => array() );",
+   "67:if ( ! $a || ! get_post( $a ) || ! get_post( $z ) ) { $s['praleista']++; continue; }",
+   "69:$qty  = (int) get_post_meta( $z, '_zb_qty', true );",
+   "71:$sync = (string) get_post_meta( $z, '_zb_last_sync', true );",
+   "73:$sena_q = (int) get_post_meta( $a, '_zb_qty', true );",
+   "76:if ( $sena_q === $qty && $sena_c === $cost ) { $s['praleista']++; continue; }",
+   "78:update_post_meta( $a, '_zb_qty', $qty );",
+   "80:if ( $sync !== '' ) { update_post_meta( $a, '_zb_last_sync', $sync ); }",
+   "96:return $s;"
+  ],
+  "av": {
+   "16950": {
+    "_sku": "B29194",
+    "_stock": "55.000000",
+    "_stock_status": "instock",
+    "_own_stock_qty": "9",
+    "_zb_qty": "55",
+    "_zb_cost": "8.415",
+    "_active_fulfillment_source": "zb_dropship"
+   },
+   "16953": {
+    "_sku": "2704",
+    "_stock": "58.000000",
+    "_stock_status": "instock",
+    "_own_stock_qty": "2",
+    "_zb_qty": "58",
+    "_zb_cost": "8.415",
+    "_active_fulfillment_source": "zb_dropship"
+   },
+   "16956": {
+    "_sku": "2703",
+    "_stock": "79.000000",
+    "_stock_status": "instock",
+    "_own_stock_qty": "2",
+    "_zb_qty": "79",
+    "_zb_cost": "8.415",
+    "_active_fulfillment_source": "zb_dropship"
+   },
+   "16959": {
+    "_sku": "2702",
+    "_stock": "62.000000",
+    "_stock_status": "instock",
+    "_own_stock_qty": "10",
+    "_zb_qty": "62",
+    "_zb_cost": "9.639",
+    "_active_fulfillment_source": "zb_dropship"
+   },
+   "17394": {
+    "_sku": "M14229",
+    "_stock": "247",
+    "_stock_status": "instock",
+    "_zb_qty": "247",
+    "_zb_cost": "1.836",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "18"
+   },
+   "17397": {
+    "_sku": "M14434",
+    "_stock": "296.000000",
+    "_stock_status": "instock",
+    "_zb_qty": "296",
+    "_zb_cost": "1.836",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "13"
+   },
+   "17400": {
+    "_sku": "M14236",
+    "_stock": "356.000000",
+    "_stock_status": "instock",
+    "_zb_qty": "356",
+    "_zb_cost": "1.836",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "0"
+   },
+   "17403": {
+    "_sku": "m14441",
+    "_stock": "276.000000",
+    "_stock_status": "instock",
+    "_zb_qty": "276",
+    "_zb_cost": "1.044",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "9"
+   },
+   "17406": {
+    "_sku": "m14458",
+    "_stock": "357.000000",
+    "_stock_status": "instock",
+    "_zb_qty": "357",
+    "_zb_cost": "1.044",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "14"
+   },
+   "17409": {
+    "_sku": "m14472",
+    "_stock": "320.000000",
+    "_stock_status": "instock",
+    "_zb_qty": "320",
+    "_zb_cost": "1.044",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "14"
+   },
+   "17412": {
+    "_sku": "m12607",
+    "_stock": "77.000000",
+    "_stock_status": "instock",
+    "_zb_qty": "77",
+    "_zb_cost": "1.053",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "7"
+   },
+   "17415": {
+    "_sku": "m12614",
+    "_stock": "137",
+    "_stock_status": "instock",
+    "_zb_qty": "137",
+    "_zb_cost": "1.053",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "26"
+   },
+   "17418": {
+    "_sku": "m12621",
+    "_stock": "90",
+    "_stock_status": "instock",
+    "_zb_qty": "90",
+    "_zb_cost": "1.053",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "23"
+   },
+   "17421": {
+    "_sku": "m12638",
+    "_stock": "624",
+    "_stock_status": "instock",
+    "_zb_qty": "624",
+    "_zb_cost": "1.053",
+    "_active_fulfillment_source": "zb_dropship",
+    "_own_stock_qty": "19"
+   },
+   "19107": {
+    "_sku": "b43849",
+    "_stock": "59.000000",
+    "_stock_status": "instock",
+    "_own_stock_qty": "2",
+    "_zb_qty": "59",
+    "_zb_cost": "11.538",
+    "_active_fulfillment_source": "zb_dropship"
+   }
+  },
+  "shadow": {
+   "13015": {
+    "av": "16953",
+    "zb_qty": "58",
+    "sync": "2026-09-02 09:02:09",
+    "stock": "58.000000",
+    "status": "draft"
+   },
+   "13016": {
+    "av": "16950",
+    "zb_qty": "55",
+    "sync": "2026-09-02 09:02:09",
+    "stock": "55.000000",
+    "status": "draft"
+   },
+   "13017": {
+    "av": "16956",
+    "zb_qty": "79",
+    "sync": "2026-09-02 09:02:09",
+    "stock": "79.000000",
+    "status": "draft"
+   },
+   "13018": {
+    "av": "16959",
+    "zb_qty": "62",
+    "sync": "2026-09-02 09:02:09",
+    "stock": "62.000000",
+    "status": "draft"
+   },
+   "13870": {
+    "av": "19107",
+    "zb_qty": "59",
+    "sync": "2026-09-02 10:02:05",
+    "stock": "59.000000",
+    "status": "draft"
+   },
+   "33550": {
+    "av": "17394",
+    "zb_qty": "247",
+    "sync": "2026-09-02 08:02:21",
+    "stock": "247.000000",
+    "status": "draft"
+   },
+   "33552": {
+    "av": "17400",
+    "zb_qty": "356",
+    "sync": "2026-09-02 08:02:21",
+    "stock": "356.000000",
+    "status": "draft"
+   },
+   "33554": {
+    "av": "17397",
+    "zb_qty": "296",
+    "sync": "2026-09-02 08:02:22",
+    "stock": "296.000000",
+    "status": "draft"
+   },
+   "33574": {
+    "av": "17406",
+    "zb_qty": "357",
+    "sync": "2026-09-02 08:02:24",
+    "stock": "357.000000",
+    "status": "draft"
+   },
+   "33704": {
+    "av": "17415",
+    "zb_qty": "137",
+    "sync": "2026-09-02 08:02:50",
+    "stock": "137.000000",
+    "status": "draft"
+   },
+   "33706": {
+    "av": "17412",
+    "zb_qty": "77",
+    "sync": "2026-09-02 08:02:50",
+    "stock": "77.000000",
+    "status": "draft"
+   },
+   "33708": {
+    "av": "17421",
+    "zb_qty": "624",
+    "sync": "2026-09-02 08:02:50",
+    "stock": "624.000000",
+    "status": "draft"
+   },
+   "33818": {
+    "av": "17418",
+    "zb_qty": "90",
+    "sync": "2026-09-02 09:02:04",
+    "stock": "90.000000",
+    "status": "draft"
+   },
+   "33864": {
+    "av": "17403",
+    "zb_qty": "276",
+    "sync": "2026-09-02 09:02:10",
+    "stock": "276.000000",
+    "status": "draft"
+   },
+   "33868": {
+    "av": "17409",
+    "zb_qty": "320",
+    "sync": "2026-09-02 09:02:10",
+    "stock": "320.000000",
+    "status": "draft"
+   }
+  }
+ }
+}
