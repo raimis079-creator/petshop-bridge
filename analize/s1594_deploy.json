@@ -1,0 +1,45 @@
+{
+ "v": "dep-110126",
+ "kurimas": 200,
+ "sid": 4469,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1594-D",
+  "tokens": 888,
+  "write": 3616,
+  "md5": "6858c0522ad10d54c7a7c727eaa186e0"
+ },
+ "V": {
+  "VERSIJA": "S1594-D",
+  "klase": true,
+  "hostas": "https://dev.avesa.lt",
+  "kitas": "2026-09-02T11:03:40+00:00",
+  "intervalas": {
+   "interval": 120,
+   "display": "Petshop kas 2 min"
+  },
+  "trigger": "",
+  "paskutinis": false,
+  "pmxi3": {
+   "processing": "1",
+   "triggered": "1",
+   "queue_chunk_number": "1101",
+   "last_activity": "2026-09-02 11:02:51"
+  },
+  "hist3": [
+   {
+    "type": "processing",
+    "date": "2026-09-02 10:02:02",
+    "summary": "0 Produktai created 268 updated 212 skipped"
+   },
+   {
+    "type": "trigger",
+    "date": "2026-09-02 10:00:02",
+    "summary": "triggered by cron"
+   }
+  ]
+ }
+}
