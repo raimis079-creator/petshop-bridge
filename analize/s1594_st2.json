@@ -1,0 +1,66 @@
+{
+ "v": "dep-111108",
+ "kurimas": 200,
+ "sid": 4471,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1594-ST",
+  "now": "2026-09-02 14:12:12",
+  "tempas": {
+   "laikas": "2026-09-02 14:11:58",
+   "import_id": 3,
+   "veiksmas": "processing",
+   "hostas": "https://dev.avesa.lt"
+  },
+  "kitas": "2026-09-02 14:13:40",
+  "pmxi3": {
+   "processing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "1181",
+   "last_activity": "2026-09-02 11:03:03"
+  },
+  "hist3": [
+   {
+    "type": "processing",
+    "date": "2026-09-02 10:02:02",
+    "summary": "0 Produktai created 429 updated 751 skipped"
+   },
+   {
+    "type": "trigger",
+    "date": "2026-09-02 10:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "type": "processing",
+    "date": "2026-09-02 09:34:37",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 1061 updated 1598 skipped"
+   },
+   {
+    "type": "trigger",
+    "date": "2026-09-02 09:34:30",
+    "summary": "triggered by cron"
+   }
+  ],
+  "temp": [
+   [
+    "4468",
+    "0"
+   ],
+   [
+    "4469",
+    "0"
+   ],
+   [
+    "4470",
+    "0"
+   ],
+   [
+    "4471",
+    "1"
+   ]
+  ]
+ }
+}
