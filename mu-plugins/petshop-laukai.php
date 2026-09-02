@@ -32,7 +32,7 @@ class Petshop_Laukai {
 
 	/** v1.44: rinkiklio kategoriju filtro sarasas (product_cat term_id, tvarka = rodymo tvarka). */
 	const RINKIKLIO_KATEGORIJOS = array( 95, 96, 73, 79, 97, 98 );
-	const VERSIJA = '1.45';   /* v1.44 (S1595): rinkiklio kategorijos + konservai. v1.45 (S1596): meniu „Susidek…“ nuorodos dinamiskai -> iejimo deze pagal grupe (buvo irasyti URL i TEST dezes -> 404 po trynimo) */
+	const VERSIJA = '1.46';   /* v1.46 (S1598): susidejimo dezes NEBERODOMOS RINKINIAI (679) kategorijos sarase — tik paruosti rinkiniai; dezes pasiekiamos per meniu „Susidek…“, kategoriju banneri ir tiesiogines nuorodas */   /* v1.44 (S1595): rinkiklio kategorijos + konservai. v1.45 (S1596): meniu „Susidek…“ nuorodos dinamiskai -> iejimo deze pagal grupe (buvo irasyti URL i TEST dezes -> 404 po trynimo) */
 
 	/** Ar preke yra laukas. */
 	const META_LAUKAS = '_ps_laukas';
@@ -974,6 +974,25 @@ class Petshop_Laukai {
 	 * Dabar nuoroda skaiciuojama is punkto pavadinimo -> grupe -> iejimas().
 	 * Jei grupeje publish dezes nera — vedam i RINKINIU kategorija, ne i 404.
 	 */
+	/**
+	 * v1.46 (S1598): RINKINIAI (679) medzio sarase rodomi TIK paruosti rinkiniai.
+	 * Susidejimo dezes (`_ps_laukas=yes`) is sio saraso islaikomos — savininko
+	 * logika: „Paruosti rinkiniai“ ir „Susidek savo rinkini“ yra du skirtingi
+	 * keliai (meniu, banneris). Kitose kategorijose (pvz. Konservai sunims) iejimo
+	 * deze lieka matoma — tai jos iejimas is kategorijos (sprendimas 2026-08-15).
+	 * Tik pagrindine uzklausa (ir YITH AJAX, kuris ja kartoja); paieska neliesta.
+	 */
+	public static function slepti_dezes_rinkiniuose( $q ) {
+		if ( is_admin() || ! $q->is_main_query() || ! $q->is_tax( 'product_cat' ) ) { return; }
+		$t = $q->get_queried_object();
+		if ( ! $t || empty( $t->term_id ) ) { return; }
+		$tid = (int) $t->term_id;
+		if ( $tid !== 679 && ! in_array( 679, array_map( 'intval', get_ancestors( $tid, 'product_cat' ) ), true ) ) { return; }
+		$mq = (array) $q->get( 'meta_query' );
+		$mq[] = array( 'key' => self::META_LAUKAS, 'compare' => 'NOT EXISTS' );
+		$q->set( 'meta_query', $mq );
+	}
+
 	public static function meniu_nuorodos( $items ) {
 		$zem = array(
 			'/konserv\w*.*(šun|sun)/iu'  => 'kons_sunims',
@@ -3629,4 +3648,5 @@ class Petshop_Laukai {
 }
 
 add_filter( 'wp_nav_menu_objects', array( 'Petshop_Laukai', 'meniu_nuorodos' ), 20 );  /* v1.45 */
+add_action( 'pre_get_posts', array( 'Petshop_Laukai', 'slepti_dezes_rinkiniuose' ), 20 );  /* v1.46 */
 Petshop_Laukai::init();
