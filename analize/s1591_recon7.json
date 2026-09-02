@@ -1,0 +1,115 @@
+{
+ "v": "dep-082400",
+ "kurimas": 200,
+ "sid": 4448,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1591-R7",
+  "dns": {
+   "dev.avesa.lt": "79.98.29.24",
+   "petshop.lt": "213.226.161.16",
+   "server": "79.98.29.24"
+  },
+  "get": [
+   404,
+   153,
+   0
+  ],
+  "safe_get": [
+   404,
+   153,
+   0
+  ],
+  "cache_mtime": "2026-08-21T12:16:14+00:00",
+  "cache_size": 8457286,
+  "fetcher": [
+   "8:*   URL: https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=KEY_HERE",
+   "33:const VF_USERNAME = 'terra@petshop.lt';",
+   "36:const VF_API_URL  = 'https://admin.b2b.vetfarmas.lt/api/products/xml/get/auth';",
+   "39:const FETCHER_SECRET_KEY = 'dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz';",
+   "42:const CACHE_FILE = __DIR__ . '/uploads/petshop-vf-cache.xml';",
+   "43:const CACHE_TTL  = 300;          // 5 min — kol grąžina cache vietoj API call",
+   "44:const CACHE_FALLBACK_MAX = 86400; // 24h — kiek senas cache priimtinas, jei API down",
+   "47:const API_TIMEOUT = 60;",
+   "73:if ( ! $force_refresh && file_exists( CACHE_FILE ) ) {",
+   "74:$cache_age = time() - filemtime( CACHE_FILE );",
+   "76:if ( $cache_age < CACHE_TTL ) {",
+   "81:readfile( CACHE_FILE );",
+   "87:$ch = curl_init();",
+   "88:curl_setopt( $ch, CURLOPT_URL, VF_API_URL );",
+   "89:curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );",
+   "91:curl_setopt( $ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC );",
+   "92:curl_setopt( $ch, CURLOPT_TIMEOUT, API_TIMEOUT );",
+   "93:curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, 10 );",
+   "94:curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );",
+   "95:curl_setopt( $ch, CURLOPT_MAXREDIRS, 3 );",
+   "98:curl_setopt( $ch, CURLOPT_ENCODING, 'gzip,deflate' );",
+   "100:$xml = curl_exec( $ch );",
+   "101:$http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );",
+   "102:$curl_err  = curl_error( $ch );",
+   "103:curl_close( $ch );",
+   "109:error_log( \"[VF Fetcher] API failure: HTTP {$http_code}, curl error: {$curl_err}\" );",
+   "111:if ( file_exists( CACHE_FILE ) ) {",
+   "112:$cache_age = time() - filemtime( CACHE_FILE );",
+   "114:if ( $cache_age < CACHE_FALLBACK_MAX ) {",
+   "120:readfile( CACHE_FILE );",
+   "129:if ( $curl_err ) {",
+   "130:echo \"cURL error: \" . $curl_err . \"\\n\";",
+   "136:$cache_dir = dirname( CACHE_FILE );",
+   "142:file_put_contents( CACHE_FILE, $xml, LOCK_EX );"
+  ],
+  "sn565_feed": [
+   "10:* Visi trys naudoja tą patį VF feed cache'ą, tas pačias plugin'o klases.",
+   "69:$cache = WP_CONTENT_DIR . '/uploads/petshop-vf-cache.xml';",
+   "70:if ( ! file_exists( $cache ) ) return array( 'error' => 'VF cache nerastas' );",
+   "73:$xml = simplexml_load_file( $cache );",
+   "88:'cache_mtime' => date( 'Y-m-d H:i:s', filemtime( $cache ) ),",
+   "89:'cache_age_h' => round( ( time() - filemtime( $cache ) ) / 3600, 2 ),",
+   "127:'cache_mtime'   => $loaded['cache_mtime'],",
+   "128:'cache_age_h'   => $loaded['cache_age_h'],",
+   "291:'cache_mtime'      => $loaded['cache_mtime'],",
+   "292:'cache_age_h'      => $loaded['cache_age_h'],",
+   "390:'cache_mtime'      => $loaded['cache_mtime'],",
+   "391:'cache_age_h'      => $loaded['cache_age_h'],"
+  ],
+  "ps_sources_vf_synced": {
+   "mx": "2026-08-07 14:59:35",
+   "mn": "2026-08-07 13:00:03",
+   "n": "1167"
+  },
+  "vf_last_sync_dist": [
+   [
+    "2026-09-02",
+    "1175"
+   ]
+  ],
+  "pmxi_log": [
+   "0392d5b329fdaff480241617bc43d77c",
+   "0cf0bb0c7ef84d54930d21a3773e80b0",
+   "10da7cd309c99acfb59bc46ea14be63f",
+   "19d20fc851d6c1ba98920d89769a29d8",
+   "26056638b9caf94674096474ce6f795b",
+   "2cf4ea21526caf56d83cdd1f0024c629",
+   "2eab829746d0990e02f929aa4f879b24",
+   "340ef4436f6fec814a2e83a4776f0f18",
+   "3499f74d00076bb6e4a3a6369d57fa5b",
+   "6ddd2e73d9dac9e3568862f8c0f35144",
+   "993c27231686268717b0f69145067b46",
+   "a3760f82580bc91c9ef25dff7b6e8959",
+   "b5fe3ac89fa0f44aeaa2f6eed3fc841d",
+   "b7468e67c19005cac49353456f5320d9",
+   "c11c55562ad36540e9cfd00fda454605",
+   "c728f5b423fb997b18f79f0eb64b01dc",
+   "d26920ce5e0e2eccf40575a32cd16398",
+   "d508bab70764e2da88f4d608e6d74052",
+   "e756d94d8f387de40c6e65c80d82851b",
+   "e9159316c6efe41a2aba4952cc995b72",
+   "e9a921c64bca4c462bd220a17a00b976",
+   "eac1e135ad6c9feb728fc4f27581330a",
+   "index.php"
+  ]
+ }
+}
