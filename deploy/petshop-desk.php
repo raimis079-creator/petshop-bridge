@@ -1,5 +1,15 @@
 <?php
 /**
+ * Petshop Desk v3.48 (S1602, K1) — RYTINĖ PARTIJA IR REGISTRACIJA NEBELIEČIA ATŠAUKTŲ.
+ *
+ * KODĖL (auditas 2026-09-02, K1): užsakymas #35430 atšauktas PO partijos užrakinimo liko
+ * 3 žingsnyje su „registruota 0 iš 1“ → „Registruoti“ sukūrė realią Venipak siuntą
+ * (V07267E1000041) atšauktam užsakymui. Dabar: (1) ryto_partija() grąžindama užrakintą
+ * partiją PERFILTRUOJA ją pagal esamą statusą — atšaukti/įvykdyti/grąžinti dingsta iš
+ * visų sąrašų (visi, av, ds, vp, lp, vp_grupes, vp_misrus, klausimai, eil, tiekejai);
+ * (2) vp_reg/vp_bulk praleidžia ne-processing/on-hold užsakymus su pranešimu „#N atšauktas“;
+ * (3) „Atšaukti“ darbalaukyje iš karto išima ID iš visų vartotojų ryto partijų.
+ *
  * Petshop Desk v3.47 (H265) — viršutinėje juostoje mygtukas „Prekių katalogas“ (ps-katalogas), šalia „Rytinė eiga“ ir „WooCommerce sąrašas“.
  *
  * Petshop Desk v3.46 (H259) — PAŠTOMATAS: KELIOS DĖŽĖS = KELIOS SIUNTOS TAM PAČIAM KLIENTUI.
@@ -650,6 +660,7 @@ class Petshop_Desk {
 			foreach ( $ids as $oid ) {
 				$oo = wc_get_order( $oid );
 				if ( ! $oo ) { continue; }
+				if ( ! in_array( $oo->get_status(), array( 'processing', 'on-hold' ), true ) ) { $praleisti[] = '#' . $oo->get_order_number() . ' ' . ( in_array( $oo->get_status(), array( 'cancelled', 'lp-cancelled' ), true ) ? 'atšauktas' : wc_get_order_status_name( $oo->get_status() ) ); continue; } // K1
 				if ( self::turi_siunta( $oo ) ) { $praleisti[] = '#' . $oo->get_order_number() . ' jau registruotas'; continue; }
 				if ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {
 					$praleisti[] = '#' . $oo->get_order_number() . ' be paštomato'; continue;
@@ -735,6 +746,10 @@ class Petshop_Desk {
 						$perreg_n ?: self::pakuociu( $oo ), $senas ?: '—' ), false, true );
 					$oo->save();
 					return true;
+				}
+				// K1 (S1602): atšauktam / įvykdytam / grąžintam siuntos neregistruojam.
+				if ( ! in_array( $oo->get_status(), array( 'processing', 'on-hold' ), true ) ) {
+					$praleisti[] = '#' . $oo->get_order_number() . ' ' . ( in_array( $oo->get_status(), array( 'cancelled', 'lp-cancelled' ), true ) ? 'atšauktas' : wc_get_order_status_name( $oo->get_status() ) ); return false;
 				}
 				if ( self::turi_siunta( $oo ) ) { $praleisti[] = '#' . $oo->get_order_number() . ' jau registruotas'; return false; }
 				if ( 'venipak_pastomatas' === self::vezejas( $oo ) && ! $oo->get_meta( 'venipak_pickup_point' ) ) {
@@ -890,6 +905,7 @@ class Petshop_Desk {
 				if ( ! $su_laisku ) { self::laiskai_off(); }
 				$o->update_status( 'cancelled', '' );
 				if ( ! $su_laisku ) { self::laiskai_on(); }
+				self::ryto_partija_ismesti( $o->get_id() ); // K1
 				$zinute = $su_laisku ? 'atsaukta_laiskas' : 'atsaukta';
 			}
 		}
@@ -1641,7 +1657,7 @@ class Petshop_Desk {
 		$raktas = 'ps_rytas_' . get_current_user_id();
 		if ( ! $naujai ) {
 			$k = get_transient( $raktas );
-			if ( is_array( $k ) && ! empty( $k['ts'] ) ) { return $k; }
+			if ( is_array( $k ) && ! empty( $k['ts'] ) ) { return self::ryto_partija_isvalyti( $k, $raktas ); }
 		}
 
 		$orders = wc_get_orders( array(
@@ -1718,6 +1734,64 @@ class Petshop_Desk {
 
 		set_transient( $raktas, $p, 3 * HOUR_IN_SECONDS );
 		return $p;
+	}
+
+	/**
+	 * K1 (S1602): užrakinta partija perfiltruojama pagal ESAMĄ užsakymo statusą.
+	 * Partija lieka užrakinta (nauji užsakymai į ją nepatenka), bet atšaukti,
+	 * įvykdyti ar grąžinti per tą laiką užsakymai iš jos dingsta — kitaip 3 žingsnis
+	 * siūlo registruoti siuntą užsakymui, kurio nebėra.
+	 */
+	protected static function ryto_partija_isvalyti( $p, $raktas = '' ) {
+		$blogi = array();
+		foreach ( (array) ( $p['visi'] ?? array() ) as $id ) {
+			$o = wc_get_order( $id );
+			if ( ! $o || ! in_array( $o->get_status(), array( 'processing', 'on-hold' ), true ) || ! $o->is_paid() ) {
+				$blogi[] = (int) $id;
+			}
+		}
+		foreach ( (array) ( $p['klausimai'] ?? array() ) as $id ) {
+			$o = wc_get_order( $id );
+			if ( ! $o || ! in_array( $o->get_status(), array( 'processing', 'on-hold' ), true ) ) { $blogi[] = (int) $id; }
+		}
+		if ( ! $blogi ) { return $p; }
+		$p = self::ryto_partija_be( $p, $blogi );
+		if ( $raktas ) { set_transient( $raktas, $p, 3 * HOUR_IN_SECONDS ); }
+		return $p;
+	}
+
+	/** Išima nurodytus užsakymų ID iš visų partijos sąrašų. */
+	protected static function ryto_partija_be( $p, $ids ) {
+		$ids = array_map( 'intval', (array) $ids );
+		$be  = function ( $arr ) use ( $ids ) {
+			return array_values( array_filter( (array) $arr, function ( $x ) use ( $ids ) { return ! in_array( (int) $x, $ids, true ); } ) );
+		};
+		foreach ( array( 'visi', 'av', 'ds', 'vp', 'lp', 'klausimai', 'vp_misrus' ) as $k ) {
+			if ( isset( $p[ $k ] ) ) { $p[ $k ] = $be( $p[ $k ] ); }
+		}
+		foreach ( (array) ( $p['vp_grupes'] ?? array() ) as $g => $arr ) {
+			$p['vp_grupes'][ $g ] = $be( $arr );
+			if ( ! $p['vp_grupes'][ $g ] ) { unset( $p['vp_grupes'][ $g ] ); }
+		}
+		$tiek = array();
+		$p['eil'] = array_values( array_filter( (array) ( $p['eil'] ?? array() ), function ( $e ) use ( $ids ) { return ! in_array( (int) ( $e['id'] ?? 0 ), $ids, true ); } ) );
+		foreach ( $p['eil'] as $e ) {
+			foreach ( (array) ( $e['liko'] ?? array() ) as $t ) { $tiek[ $t ] = ( $tiek[ $t ] ?? 0 ) + 1; }
+		}
+		$p['tiekejai'] = $tiek;
+		return $p;
+	}
+
+	/** K1: atšaukus darbalaukyje — išimti iš VISŲ vartotojų ryto partijų iš karto. */
+	protected static function ryto_partija_ismesti( $id ) {
+		global $wpdb;
+		$names = $wpdb->get_col( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '_transient_ps_rytas_%'" );
+		foreach ( (array) $names as $n ) {
+			$raktas = substr( $n, strlen( '_transient_' ) );
+			$p = get_transient( $raktas );
+			if ( ! is_array( $p ) ) { continue; }
+			set_transient( $raktas, self::ryto_partija_be( $p, array( $id ) ), 3 * HOUR_IN_SECONDS );
+		}
 	}
 
 	protected static function ryto_url( $z, $extra = array() ) {
