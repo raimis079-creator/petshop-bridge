@@ -1,0 +1,1589 @@
+{
+ "v": "dep-125128",
+ "kurimas": 200,
+ "sid": 4494,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1599-A1",
+  "apimtis": {
+   "u": "4461",
+   "e": "10267",
+   "suma": "148684.6400"
+  },
+  "multi": {
+   "multi": "1865",
+   "viso": "4461"
+  },
+  "kat": [
+   {
+    "k": "ŠUNIMS > Maistas šunims > Sausas maistas šunims",
+    "u": "1658",
+    "vnt": "1923",
+    "suma": "67844"
+   },
+   {
+    "k": "KATĖMS > Maistas katėms > Sausas maistas katėms",
+    "u": "496",
+    "vnt": "589",
+    "suma": "16459"
+   },
+   {
+    "k": "ŠUNIMS > Maistas šunims > Konservai šunims",
+    "u": "646",
+    "vnt": "7590",
+    "suma": "15062"
+   },
+   {
+    "k": "KATĖMS > Maistas katėms > Konservai katėms",
+    "u": "525",
+    "vnt": "10882",
+    "suma": "11865"
+   },
+   {
+    "k": "ŠUNIMS > Skanėstai šunims",
+    "u": "561",
+    "vnt": "4305",
+    "suma": "9310"
+   },
+   {
+    "k": null,
+    "u": "282",
+    "vnt": "408",
+    "suma": "6195"
+   },
+   {
+    "k": "KATĖMS > Kraikai kačių tualetams",
+    "u": "193",
+    "vnt": "375",
+    "suma": "4053"
+   },
+   {
+    "k": "ŽUVIMS > Akvariumo žuvyčių maistas",
+    "u": "168",
+    "vnt": "437",
+    "suma": "3118"
+   },
+   {
+    "k": "KATĖMS > Skanėstai katėms",
+    "u": "222",
+    "vnt": "1122",
+    "suma": "2483"
+   },
+   {
+    "k": "ŽUVIMS > Tvenkinių žuvų maistas",
+    "u": "84",
+    "vnt": "111",
+    "suma": "2135"
+   },
+   {
+    "k": "ŠUNIMS",
+    "u": "60",
+    "vnt": "102",
+    "suma": "1405"
+   },
+   {
+    "k": "ŠUNIMS > Žaislai šunims",
+    "u": "103",
+    "vnt": "203",
+    "suma": "1201"
+   },
+   {
+    "k": "KATĖMS > Dubenėliai katėms",
+    "u": "71",
+    "vnt": "95",
+    "suma": "1167"
+   },
+   {
+    "k": "ŠUNIMS > Antiparazitinės priemonės šunims",
+    "u": "145",
+    "vnt": "297",
+    "suma": "947"
+   },
+   {
+    "k": "KATĖMS > Vitaminai ir papildai katėms",
+    "u": "80",
+    "vnt": "136",
+    "suma": "711"
+   },
+   {
+    "k": "KATĖMS > Tualetai, semtuvėliai",
+    "u": "74",
+    "vnt": "91",
+    "suma": "710"
+   },
+   {
+    "k": "ŠUNIMS > Vitaminai ir papildai šunims",
+    "u": "32",
+    "vnt": "36",
+    "suma": "449"
+   },
+   {
+    "k": "Miamor katėms",
+    "u": "6",
+    "vnt": "14",
+    "suma": "444"
+   },
+   {
+    "k": "KATĖMS > Antiparazitinės priemonės katėms",
+    "u": "61",
+    "vnt": "138",
+    "suma": "407"
+   },
+   {
+    "k": "ŠUNIMS > Šampūnai šunims",
+    "u": "58",
+    "vnt": "65",
+    "suma": "360"
+   },
+   {
+    "k": "KATĖMS > Žaislai katėms",
+    "u": "58",
+    "vnt": "152",
+    "suma": "345"
+   },
+   {
+    "k": "KATĖMS > Transportavimo dėžės katėms",
+    "u": "13",
+    "vnt": "14",
+    "suma": "271"
+   },
+   {
+    "k": "ŠUNIMS > Higienos priemonės šunims",
+    "u": "21",
+    "vnt": "51",
+    "suma": "255"
+   },
+   {
+    "k": "ŠUNIMS > Dubenėliai šunims",
+    "u": "14",
+    "vnt": "17",
+    "suma": "166"
+   },
+   {
+    "k": "ŠUNIMS > Antkakliai, pavadėliai šunims",
+    "u": "13",
+    "vnt": "13",
+    "suma": "154"
+   }
+  ],
+  "kat_poros": {
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Skanėstai katėms": 768,
+   "KATĖMS > Maistas katėms > Konservai katėms + ŠUNIMS > Maistas šunims > Konservai šunims": 602,
+   "ŠUNIMS > Maistas šunims > Konservai šunims + ŠUNIMS > Skanėstai šunims": 555,
+   "ŠUNIMS > Maistas šunims > Konservai šunims + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 394,
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Maistas katėms > Sausas maistas katėms": 271,
+   "KATĖMS > Kraikai kačių tualetams + KATĖMS > Maistas katėms > Konservai katėms": 190,
+   "ŠUNIMS > Maistas šunims > Sausas maistas šunims + ŠUNIMS > Skanėstai šunims": 181,
+   "ŠUNIMS > Skanėstai šunims + ŠUNIMS > Žaislai šunims": 106,
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Žaislai katėms": 106,
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Vitaminai ir papildai katėms": 94,
+   "KATĖMS > Maistas katėms > Sausas maistas katėms + KATĖMS > Skanėstai katėms": 92,
+   "ŠUNIMS + ŠUNIMS > Skanėstai šunims": 78,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Skanėstai šunims": 62,
+   "KATĖMS > Maistas katėms > Sausas maistas katėms + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 60,
+   "KATĖMS > Skanėstai katėms + KATĖMS > Žaislai katėms": 57,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Maistas šunims > Konservai šunims": 56,
+   "KATĖMS > Maistas katėms > Konservai katėms + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 49,
+   "KATĖMS > Maistas katėms > Konservai katėms + Miamor katėms": 47,
+   "KATĖMS > Antiparazitinės priemonės katėms + ŠUNIMS > Antiparazitinės priemonės šunims": 44,
+   "KATĖMS > Maistas katėms > Sausas maistas katėms + ŠUNIMS > Maistas šunims > Konservai šunims": 43,
+   "KATĖMS > Skanėstai katėms + KATĖMS > Vitaminai ir papildai katėms": 38,
+   "KATĖMS > Kraikai kačių tualetams + KATĖMS > Maistas katėms > Sausas maistas katėms": 38,
+   "KATĖMS > Kraikai kačių tualetams + KATĖMS > Skanėstai katėms": 34,
+   "KATĖMS > Maistas katėms > Konservai katėms + ŠUNIMS > Antiparazitinės priemonės šunims": 34,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Antiparazitinės priemonės šunims": 34,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 34,
+   "ŠUNIMS > Antiparazitinės priemonės šunims + ŠUNIMS > Skanėstai šunims": 33,
+   "ŠUNIMS > Maistas šunims > Konservai šunims + ŠUNIMS > Žaislai šunims": 31,
+   "KATĖMS > Dubenėliai katėms + KATĖMS > Maistas katėms > Konservai katėms": 27,
+   "ŠUNIMS > Maistas šunims > Sausas maistas šunims + ŠUNIMS > Žaislai šunims": 25
+  },
+  "poros": [
+   {
+    "n": 45,
+    "a": "18369",
+    "b": "18372",
+    "A": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 1",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "katA": "konservai-katems/maistas-katems/miamor-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.9,
+    "sav": 1.64,
+    "deze": 1
+   },
+   {
+    "n": 44,
+    "a": "19396",
+    "b": "19411",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+    "B": "Animonda Vom Feinsten Adult with Rabbit - konservai sua",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.62,
+    "deze": 1
+   },
+   {
+    "n": 44,
+    "a": "19393",
+    "b": "19396",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+    "B": "Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+    "katA": "konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.66,
+    "sav": 1.62,
+    "deze": 1
+   },
+   {
+    "n": 39,
+    "a": "18366",
+    "b": "18369",
+    "A": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištien",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 1",
+    "katA": "konservai-katems/maistas-katems/miamor-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.9,
+    "sav": 1.64,
+    "deze": 1
+   },
+   {
+    "n": 39,
+    "a": "19488",
+    "b": "19496",
+    "A": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "B": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.8,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 38,
+    "a": "19562",
+    "b": "19570",
+    "A": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "B": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.88,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 38,
+    "a": "19496",
+    "b": "19598",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Beef + Chicken: konservai šuni",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.8,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 37,
+    "a": "19496",
+    "b": "19570",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.84,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 37,
+    "a": "19396",
+    "b": "19446",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+    "B": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 35,
+    "a": "19396",
+    "b": "19425",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+    "B": "Animonda Vom Feinsten Adult with Deer - konservai suaug",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.66,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 35,
+    "a": "19387",
+    "b": "19417",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.01,
+    "sav": 1.17,
+    "deze": 1
+   },
+   {
+    "n": 35,
+    "a": "19488",
+    "b": "19598",
+    "A": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "B": "Animonda GranCarno Adult Beef + Chicken: konservai šuni",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.7,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 34,
+    "a": "19393",
+    "b": "19411",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+    "B": "Animonda Vom Feinsten Adult with Rabbit - konservai sua",
+    "katA": "konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.62,
+    "deze": 1
+   },
+   {
+    "n": 33,
+    "a": "19417",
+    "b": "19440",
+    "A": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "B": "Animonda Vom Feinsten Adult with Chicken Liver – konser",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.01,
+    "sav": 1.17,
+    "deze": 1
+   },
+   {
+    "n": 33,
+    "a": "19496",
+    "b": "19562",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.94,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 33,
+    "a": "19387",
+    "b": "19399",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+    "B": "Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.1,
+    "sav": 1.26,
+    "deze": 1
+   },
+   {
+    "n": 33,
+    "a": "19399",
+    "b": "19417",
+    "A": "Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.01,
+    "sav": 1.17,
+    "deze": 1
+   },
+   {
+    "n": 33,
+    "a": "19692",
+    "b": "19708",
+    "A": "Animonda Carny Adult Beef + Heart – konservai katėms su",
+    "B": "Animonda Carny Adult Beef + Chicken + Duck Heart – kons",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.2,
+    "sav": 3.4,
+    "deze": 1
+   },
+   {
+    "n": 32,
+    "a": "19387",
+    "b": "19440",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+    "B": "Animonda Vom Feinsten Adult with Chicken Liver – konser",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.1,
+    "sav": 1.26,
+    "deze": 1
+   },
+   {
+    "n": 32,
+    "a": "19545",
+    "b": "19570",
+    "A": "Animonda GranCarno Adult Poultry Hearts: konservai suau",
+    "B": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.78,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 31,
+    "a": "19496",
+    "b": "19578",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.94,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 31,
+    "a": "19570",
+    "b": "19582",
+    "A": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.98,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 31,
+    "a": "19393",
+    "b": "19446",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+    "B": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts",
+    "katA": "konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 30,
+    "a": "19411",
+    "b": "19425",
+    "A": "Animonda Vom Feinsten Adult with Rabbit - konservai sua",
+    "B": "Animonda Vom Feinsten Adult with Deer - konservai suaug",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 30,
+    "a": "18366",
+    "b": "18372",
+    "A": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištien",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "katA": "konservai-katems/maistas-katems/miamor-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.9,
+    "sav": 1.64,
+    "deze": 1
+   },
+   {
+    "n": 30,
+    "a": "19399",
+    "b": "19440",
+    "A": "Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+    "B": "Animonda Vom Feinsten Adult with Chicken Liver – konser",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.1,
+    "sav": 1.26,
+    "deze": 1
+   },
+   {
+    "n": 30,
+    "a": "19411",
+    "b": "19446",
+    "A": "Animonda Vom Feinsten Adult with Rabbit - konservai sua",
+    "B": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.56,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 29,
+    "a": "19411",
+    "b": "19414",
+    "A": "Animonda Vom Feinsten Adult with Rabbit - konservai sua",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.62,
+    "deze": 1
+   },
+   {
+    "n": 29,
+    "a": "19508",
+    "b": "19594",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.72,
+    "sav": 2.74,
+    "deze": 1
+   },
+   {
+    "n": 29,
+    "a": "19393",
+    "b": "19425",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+    "B": "Animonda Vom Feinsten Adult with Deer - konservai suaug",
+    "katA": "konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.66,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 28,
+    "a": "19396",
+    "b": "19414",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.66,
+    "sav": 1.62,
+    "deze": 1
+   },
+   {
+    "n": 28,
+    "a": "19496",
+    "b": "19582",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.04,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 28,
+    "a": "19562",
+    "b": "19582",
+    "A": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.08,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 28,
+    "a": "19479",
+    "b": "19488",
+    "A": "Animonda GranCarno Adult: konservai šunims su lašiša, p",
+    "B": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.8,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 28,
+    "a": "19545",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult Poultry Hearts: konservai suau",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.74,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 28,
+    "a": "19582",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.94,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 27,
+    "a": "19500",
+    "b": "19594",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.72,
+    "sav": 2.6,
+    "deze": 1
+   },
+   {
+    "n": 27,
+    "a": "19417",
+    "b": "19449",
+    "A": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "B": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Tu",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.19,
+    "sav": 1.25,
+    "deze": 1
+   },
+   {
+    "n": 27,
+    "a": "19504",
+    "b": "19562",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.88,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 27,
+    "a": "19545",
+    "b": "19562",
+    "A": "Animonda GranCarno Adult Poultry Hearts: konservai suau",
+    "B": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.88,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 27,
+    "a": "19425",
+    "b": "19446",
+    "A": "Animonda Vom Feinsten Adult with Deer - konservai suaug",
+    "B": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.58,
+    "deze": 1
+   },
+   {
+    "n": 26,
+    "a": "19355",
+    "b": "19358",
+    "A": "Animonda Vom Feinsten Kitten with Poultry – konservai k",
+    "B": "Animonda Vom Feinsten Kitten with Lamb – konservai kači",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.24,
+    "sav": 1.26,
+    "deze": 1
+   },
+   {
+    "n": 26,
+    "a": "19488",
+    "b": "19578",
+    "A": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "B": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.84,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19479",
+    "b": "19582",
+    "A": "Animonda GranCarno Adult: konservai šunims su lašiša, p",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.04,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19590",
+    "b": "19598",
+    "A": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "B": "Animonda GranCarno Adult Beef + Chicken: konservai šuni",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.7,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19387",
+    "b": "19449",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+    "B": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Tu",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.28,
+    "sav": 1.34,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19488",
+    "b": "19562",
+    "A": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "B": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.84,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19488",
+    "b": "19570",
+    "A": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "B": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.74,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19496",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.8,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19562",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.84,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19570",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.74,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 25,
+    "a": "19672",
+    "b": "19708",
+    "A": "Animonda Carny Adult Beef + Turkey + Shrimp – konservai",
+    "B": "Animonda Carny Adult Beef + Chicken + Duck Heart – kons",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.2,
+    "sav": 3.4,
+    "deze": 1
+   },
+   {
+    "n": 24,
+    "a": "19488",
+    "b": "19582",
+    "A": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.94,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 24,
+    "a": "19545",
+    "b": "19598",
+    "A": "Animonda GranCarno Adult Poultry Hearts: konservai suau",
+    "B": "Animonda GranCarno Adult Beef + Chicken: konservai šuni",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.74,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 24,
+    "a": "19578",
+    "b": "19582",
+    "A": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.08,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 24,
+    "a": "19578",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.84,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 24,
+    "a": "19672",
+    "b": "19685",
+    "A": "Animonda Carny Adult Beef + Turkey + Shrimp – konservai",
+    "B": "Animonda Carny Adult Beef + Lamb – konservai katėms su ",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.29,
+    "sav": 3.4,
+    "deze": 1
+   },
+   {
+    "n": 24,
+    "a": "19578",
+    "b": "19598",
+    "A": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+    "B": "Animonda GranCarno Adult Beef + Chicken: konservai šuni",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.84,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 24,
+    "a": "19414",
+    "b": "19446",
+    "A": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "B": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.61,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19414",
+    "b": "19425",
+    "A": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "B": "Animonda Vom Feinsten Adult with Deer - konservai suaug",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.66,
+    "sav": 1.6,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "16305",
+    "b": "18655",
+    "A": "Ruda kiaulės ausis, 1 vnt.",
+    "B": "Džiovinta kiaulės uodega, 1 vnt.",
+    "katA": "skanestai-sunims",
+    "katB": "skanestai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.84,
+    "sav": 1.33,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19479",
+    "b": "19496",
+    "A": "Animonda GranCarno Adult: konservai šunims su lašiša, p",
+    "B": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.9,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19405",
+    "b": "19417",
+    "A": "Animonda Vom Feinsten Adult with Salmon and Shrimp – ko",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 1.95,
+    "sav": 1.17,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19471",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult: konservai šunims su širdimis,",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.7,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19562",
+    "b": "19578",
+    "A": "Animonda GranCarno Adult Duck: konservai suaugusiems šu",
+    "B": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.98,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19570",
+    "b": "19578",
+    "A": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "B": "Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.88,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19538",
+    "b": "19570",
+    "A": "Animonda GranCarno Adult Rumen: konservai suaugusiems š",
+    "B": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.98,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19685",
+    "b": "19692",
+    "A": "Animonda Carny Adult Beef + Lamb – konservai katėms su ",
+    "B": "Animonda Carny Adult Beef + Heart – konservai katėms su",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.29,
+    "sav": 3.4,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19393",
+    "b": "19414",
+    "A": "Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.66,
+    "sav": 1.62,
+    "deze": 1
+   },
+   {
+    "n": 23,
+    "a": "19449",
+    "b": "19452",
+    "A": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Tu",
+    "B": "Animonda Vom Feinsten Adult Pate Mild Menu with Turkey ",
+    "katA": "konservai-katems",
+    "katB": "animonda-konservai-sunims/konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.46,
+    "sav": 1.42,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "16933",
+    "b": "16942",
+    "A": "Pasta kačiukams su tunu - Ontario Kitten Tuna Fresh Mea",
+    "B": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Past",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.3,
+    "sav": 1,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "19542",
+    "b": "19594",
+    "A": "Animonda GranCarno Adult Rumen: konservai suaugusiems š",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.72,
+    "sav": 2.6,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "19557",
+    "b": "19594",
+    "A": "Animonda GranCarno Adult Multi-Meat Coctail: konservai ",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.72,
+    "sav": 2.6,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "19586",
+    "b": "19594",
+    "A": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.72,
+    "sav": 2.6,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "19488",
+    "b": "19504",
+    "A": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "B": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.74,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "19553",
+    "b": "19582",
+    "A": "Animonda GranCarno Adult Multi-Meat Coctail: konservai ",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.94,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "19553",
+    "b": "19590",
+    "A": "Animonda GranCarno Adult Multi-Meat Coctail: konservai ",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.7,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "19496",
+    "b": "19545",
+    "A": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "B": "Animonda GranCarno Adult Poultry Hearts: konservai suau",
+    "katA": "animonda-konservai-sunims/konservai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 6.84,
+    "sav": 4.02,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "16942",
+    "b": "16945",
+    "A": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Past",
+    "B": "Pasta katėms su antiena - Ontario Duck Fresh Meat Paste",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.3,
+    "sav": 1,
+    "deze": 1
+   },
+   {
+    "n": 22,
+    "a": "16939",
+    "b": "16945",
+    "A": "Pasta katėms su vištiena - Ontario Chicken Fresh Meat P",
+    "B": "Pasta katėms su antiena - Ontario Duck Fresh Meat Paste",
+    "katA": "konservai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.3,
+    "sav": 1,
+    "deze": 1
+   }
+  ],
+  "brand_multi": {
+   "exclusion": 69,
+   "ontario": 33,
+   "animonda": 29,
+   "josera": 28,
+   "pess": 20,
+   "miamor": 18,
+   "gnatek": 12,
+   "romar": 12,
+   "gimcat": 7,
+   "trixie": 5,
+   "quattro": 4,
+   "georplast": 3,
+   "super-benek": 3,
+   "vetocanis": 3,
+   "apollo": 1,
+   "belocat": 1,
+   "duvo": 1,
+   "hikari": 1,
+   "barry-king": 1,
+   "zolux": 1
+  }
+ }
+}
