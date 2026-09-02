@@ -1,0 +1,171 @@
+{
+ "v": "dep-092736",
+ "kurimas": 200,
+ "sid": 4461,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1593-R4",
+  "pmxi_posts_cols": [
+   "id",
+   "post_id",
+   "import_id",
+   "unique_key",
+   "product_key",
+   "iteration",
+   "specified"
+  ],
+  "pp_32463": [
+   {
+    "id": "21746",
+    "post_id": "32463",
+    "import_id": "2",
+    "unique_key": "01M220801",
+    "product_key": "",
+    "iteration": "53",
+    "specified": "0"
+   },
+   {
+    "id": "21829",
+    "post_id": "32463",
+    "import_id": "3",
+    "unique_key": "",
+    "product_key": "",
+    "iteration": "606",
+    "specified": "0"
+   }
+  ],
+  "pp_key": [],
+  "pp3_stat": [
+   {
+    "post_status": null,
+    "post_type": null,
+    "n": "4459"
+   },
+   {
+    "post_status": "draft",
+    "post_type": "product",
+    "n": "581"
+   },
+   {
+    "post_status": "publish",
+    "post_type": "product",
+    "n": "583"
+   }
+  ],
+  "pp3_dup_keys": "1",
+  "opt3": {
+   "unique_key": "",
+   "custom_name": "[]",
+   "custom_value": "[]",
+   "is_update_custom_fields": "0",
+   "update_custom_fields_logic": "full_update",
+   "custom_fields_list": "0",
+   "is_update_menu_order": "0",
+   "update_all_data": "no",
+   "product_stock_status": "auto",
+   "is_keep_former_posts": "no",
+   "create_new_records": "0",
+   "is_selective_hashing": "0"
+  },
+  "m32463": [
+   [
+    "_sku",
+    "01M220801"
+   ],
+   [
+    "_stock",
+    "745.000000"
+   ],
+   [
+    "_zb_cost",
+    "1.215"
+   ],
+   [
+    "_zb_rrp",
+    "2.19"
+   ],
+   [
+    "_zb_qty",
+    "745"
+   ],
+   [
+    "_zb_ean",
+    "8009470006835"
+   ],
+   [
+    "_zb_brand",
+    "Monge"
+   ],
+   [
+    "_zb_supplier_sku",
+    "01M220801"
+   ],
+   [
+    "_zb_enabled",
+    "yes"
+   ],
+   [
+    "_zb_weight",
+    "0,0800"
+   ],
+   [
+    "_zb_length",
+    "0,0000"
+   ],
+   [
+    "_zb_width",
+    "0,0000"
+   ],
+   [
+    "_zb_height",
+    "0,0000"
+   ],
+   [
+    "_zb_category",
+    "Katėms / Kačių maistas ir skanėstai / Ko"
+   ],
+   [
+    "_zb_skip_reason",
+    "cost_below_minimum"
+   ],
+   [
+    "_zb_last_sync",
+    "2026-09-02 10:02:22"
+   ],
+   [
+    "_active_fulfillment_source",
+    "zb_dropship"
+   ],
+   [
+    "_zb_draft_reason",
+    "konservas_below_minimum"
+   ]
+  ],
+  "hook": [
+   "241:define( 'PETSHOP_XML_ZB_IMPORT_IDS',    [ 2 ] );        // ZB initial",
+   "242:define( 'PETSHOP_XML_ZB_STOCK_IDS',     [ 3 ] );        // ZB stock sync",
+   "245:define( 'PETSHOP_XML_ZB_ALL_IMPORT_IDS', [ 2, 3 ] );",
+   "249:define( 'PETSHOP_XML_ZB_MIN_COST', 8.0 );",
+   "663:add_action( 'pmxi_saved_post', 'petshop_xml_after_import', 10, 3 );",
+   "861:update_post_meta( $post_id, '_zb_last_sync', current_time( 'mysql' ) );",
+   "1082:update_post_meta( $post_id, '_zb_last_sync', current_time( 'mysql' ) );"
+  ],
+  "inc": {
+   "class-ean-lookup.php": [
+    "update_post_meta( $post_id, '_zb_last_sync', current_time( 'mysql' ) );"
+   ],
+   "class-fulfillment.php": [
+    "public function update_zb_qty( int $post_id, int $qty ): void {"
+   ],
+   "class-product-cost-resolver.php": [
+    "$data['last_sync']      = ( (string) get_post_meta( $product_id, '_zb_last_sync', true ) ) ?: null;"
+   ],
+   "class-vf-import.php": [
+    "// Vienas point of truth: update_vf_qty() simetriskas update_zb_qty()"
+   ]
+  }
+ }
+}
