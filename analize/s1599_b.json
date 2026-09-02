@@ -1,0 +1,1582 @@
+{
+ "v": "dep-125311",
+ "kurimas": 200,
+ "sid": 4495,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1599-A2",
+  "apimtis": {
+   "u": "4461",
+   "e": "10267",
+   "suma": "148684.6400"
+  },
+  "multi": {
+   "multi": "1865",
+   "viso": "4461"
+  },
+  "kat": [
+   {
+    "k": "ŠUNIMS > Maistas šunims > Sausas maistas šunims",
+    "u": "1658",
+    "vnt": "1923",
+    "suma": "67844"
+   },
+   {
+    "k": "KATĖMS > Maistas katėms > Sausas maistas katėms",
+    "u": "496",
+    "vnt": "589",
+    "suma": "16459"
+   },
+   {
+    "k": "ŠUNIMS > Maistas šunims > Konservai šunims",
+    "u": "646",
+    "vnt": "7590",
+    "suma": "15062"
+   },
+   {
+    "k": "KATĖMS > Maistas katėms > Konservai katėms",
+    "u": "525",
+    "vnt": "10882",
+    "suma": "11865"
+   },
+   {
+    "k": "ŠUNIMS > Skanėstai šunims",
+    "u": "561",
+    "vnt": "4305",
+    "suma": "9310"
+   },
+   {
+    "k": null,
+    "u": "282",
+    "vnt": "408",
+    "suma": "6195"
+   },
+   {
+    "k": "KATĖMS > Kraikai kačių tualetams",
+    "u": "193",
+    "vnt": "375",
+    "suma": "4053"
+   },
+   {
+    "k": "ŽUVIMS > Akvariumo žuvyčių maistas",
+    "u": "168",
+    "vnt": "437",
+    "suma": "3118"
+   },
+   {
+    "k": "KATĖMS > Skanėstai katėms",
+    "u": "222",
+    "vnt": "1122",
+    "suma": "2483"
+   },
+   {
+    "k": "ŽUVIMS > Tvenkinių žuvų maistas",
+    "u": "84",
+    "vnt": "111",
+    "suma": "2135"
+   },
+   {
+    "k": "ŠUNIMS",
+    "u": "60",
+    "vnt": "102",
+    "suma": "1405"
+   },
+   {
+    "k": "ŠUNIMS > Žaislai šunims",
+    "u": "103",
+    "vnt": "203",
+    "suma": "1201"
+   },
+   {
+    "k": "KATĖMS > Dubenėliai katėms",
+    "u": "71",
+    "vnt": "95",
+    "suma": "1167"
+   },
+   {
+    "k": "ŠUNIMS > Antiparazitinės priemonės šunims",
+    "u": "145",
+    "vnt": "297",
+    "suma": "947"
+   },
+   {
+    "k": "KATĖMS > Vitaminai ir papildai katėms",
+    "u": "80",
+    "vnt": "136",
+    "suma": "711"
+   },
+   {
+    "k": "KATĖMS > Tualetai, semtuvėliai",
+    "u": "74",
+    "vnt": "91",
+    "suma": "710"
+   },
+   {
+    "k": "ŠUNIMS > Vitaminai ir papildai šunims",
+    "u": "32",
+    "vnt": "36",
+    "suma": "449"
+   },
+   {
+    "k": "Miamor katėms",
+    "u": "6",
+    "vnt": "14",
+    "suma": "444"
+   },
+   {
+    "k": "KATĖMS > Antiparazitinės priemonės katėms",
+    "u": "61",
+    "vnt": "138",
+    "suma": "407"
+   },
+   {
+    "k": "ŠUNIMS > Šampūnai šunims",
+    "u": "58",
+    "vnt": "65",
+    "suma": "360"
+   },
+   {
+    "k": "KATĖMS > Žaislai katėms",
+    "u": "58",
+    "vnt": "152",
+    "suma": "345"
+   },
+   {
+    "k": "KATĖMS > Transportavimo dėžės katėms",
+    "u": "13",
+    "vnt": "14",
+    "suma": "271"
+   },
+   {
+    "k": "ŠUNIMS > Higienos priemonės šunims",
+    "u": "21",
+    "vnt": "51",
+    "suma": "255"
+   },
+   {
+    "k": "ŠUNIMS > Dubenėliai šunims",
+    "u": "14",
+    "vnt": "17",
+    "suma": "166"
+   },
+   {
+    "k": "ŠUNIMS > Antkakliai, pavadėliai šunims",
+    "u": "13",
+    "vnt": "13",
+    "suma": "154"
+   }
+  ],
+  "kat_poros": {
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Skanėstai katėms": 768,
+   "KATĖMS > Maistas katėms > Konservai katėms + ŠUNIMS > Maistas šunims > Konservai šunims": 602,
+   "ŠUNIMS > Maistas šunims > Konservai šunims + ŠUNIMS > Skanėstai šunims": 555,
+   "ŠUNIMS > Maistas šunims > Konservai šunims + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 394,
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Maistas katėms > Sausas maistas katėms": 271,
+   "KATĖMS > Kraikai kačių tualetams + KATĖMS > Maistas katėms > Konservai katėms": 190,
+   "ŠUNIMS > Maistas šunims > Sausas maistas šunims + ŠUNIMS > Skanėstai šunims": 181,
+   "ŠUNIMS > Skanėstai šunims + ŠUNIMS > Žaislai šunims": 106,
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Žaislai katėms": 106,
+   "KATĖMS > Maistas katėms > Konservai katėms + KATĖMS > Vitaminai ir papildai katėms": 94,
+   "KATĖMS > Maistas katėms > Sausas maistas katėms + KATĖMS > Skanėstai katėms": 92,
+   "ŠUNIMS + ŠUNIMS > Skanėstai šunims": 78,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Skanėstai šunims": 62,
+   "KATĖMS > Maistas katėms > Sausas maistas katėms + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 60,
+   "KATĖMS > Skanėstai katėms + KATĖMS > Žaislai katėms": 57,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Maistas šunims > Konservai šunims": 56,
+   "KATĖMS > Maistas katėms > Konservai katėms + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 49,
+   "KATĖMS > Maistas katėms > Konservai katėms + Miamor katėms": 47,
+   "KATĖMS > Antiparazitinės priemonės katėms + ŠUNIMS > Antiparazitinės priemonės šunims": 44,
+   "KATĖMS > Maistas katėms > Sausas maistas katėms + ŠUNIMS > Maistas šunims > Konservai šunims": 43,
+   "KATĖMS > Skanėstai katėms + KATĖMS > Vitaminai ir papildai katėms": 38,
+   "KATĖMS > Kraikai kačių tualetams + KATĖMS > Maistas katėms > Sausas maistas katėms": 38,
+   "KATĖMS > Kraikai kačių tualetams + KATĖMS > Skanėstai katėms": 34,
+   "KATĖMS > Maistas katėms > Konservai katėms + ŠUNIMS > Antiparazitinės priemonės šunims": 34,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Antiparazitinės priemonės šunims": 34,
+   "KATĖMS > Skanėstai katėms + ŠUNIMS > Maistas šunims > Sausas maistas šunims": 34,
+   "ŠUNIMS > Antiparazitinės priemonės šunims + ŠUNIMS > Skanėstai šunims": 33,
+   "ŠUNIMS > Maistas šunims > Konservai šunims + ŠUNIMS > Žaislai šunims": 31,
+   "KATĖMS > Dubenėliai katėms + KATĖMS > Maistas katėms > Konservai katėms": 27,
+   "ŠUNIMS > Maistas šunims > Sausas maistas šunims + ŠUNIMS > Žaislai šunims": 25
+  },
+  "poros": [
+   {
+    "n": 21,
+    "a": "18590",
+    "b": "18599",
+    "A": "Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+    "B": "Exclusion Hypoallergenic konservai šunims su kiauliena ",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 24.87,
+    "sav": 16.74,
+    "deze": 0
+   },
+   {
+    "n": 13,
+    "a": "16987",
+    "b": "16999",
+    "A": "PESS biologinis antkaklis nuo parazitų katėms, 35 cm",
+    "B": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims",
+    "katA": "antiparazitines-priemones-katems",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.56,
+    "sav": 1.08,
+    "deze": 0
+   },
+   {
+    "n": 12,
+    "a": "18587",
+    "b": "18599",
+    "A": "Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+    "B": "Exclusion Hypoallergenic konservai šunims su kiauliena ",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 58.47,
+    "sav": 39.87,
+    "deze": 0
+   },
+   {
+    "n": 9,
+    "a": "16976",
+    "b": "16999",
+    "A": "PESS biologinis apsauginis purškiklis nuo erkių katėms ",
+    "B": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims",
+    "katA": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 8.91,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 7,
+    "a": "18191",
+    "b": "18197",
+    "A": "Hikari Tropical Micro Pellets, 45 g",
+    "B": "Hikari Tropical Fancy Guppy, 22 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 12.1,
+    "sav": 5.33,
+    "deze": 0
+   },
+   {
+    "n": 6,
+    "a": "18032",
+    "b": "18077",
+    "A": "Josera Mini Chicken&Rice 10 kg - sausas maistas suaugus",
+    "B": "Josera Kitten 10 kg - sausas maistas kačiukams",
+    "katA": "sausas-maistas-sunims",
+    "katB": "sausas-maistas-katems",
+    "sandA": "vf",
+    "sandB": "vf",
+    "bendras": [],
+    "suma": 81.48,
+    "sav": 56.06,
+    "deze": 0
+   },
+   {
+    "n": 6,
+    "a": "18178",
+    "b": "18206",
+    "A": "Hikari Tropical Sinking Wafers, 110 g",
+    "B": "Hikari Tropical Algae Wafers, 250 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 23.69,
+    "sav": 11.42,
+    "deze": 0
+   },
+   {
+    "n": 6,
+    "a": "18191",
+    "b": "18203",
+    "A": "Hikari Tropical Micro Pellets, 45 g",
+    "B": "Hikari Tropical Algae Wafers, 82 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 13.7,
+    "sav": 6.24,
+    "deze": 0
+   },
+   {
+    "n": 6,
+    "a": "18590",
+    "b": "18605",
+    "A": "Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+    "B": "Exclusion Hypoallergenic konservai šunims su elniena ir",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 24.87,
+    "sav": 16.74,
+    "deze": 0
+   },
+   {
+    "n": 6,
+    "a": "18508",
+    "b": "19140",
+    "A": "Filtrai automatinei vandens gertuvei fontanui katėms, C",
+    "B": "Automatinė vandens gertuvė fontanas katėms ir kitiems g",
+    "katA": "dubeneliai-katems",
+    "katB": "dubeneliai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 56.75,
+    "sav": 27.28,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "18560",
+    "b": "18599",
+    "A": "Exclusion Hypoallergenic sausas šunų maistas su kiaulie",
+    "B": "Exclusion Hypoallergenic konservai šunims su kiauliena ",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 82.17,
+    "sav": 56.19,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "16672",
+    "b": "16684",
+    "A": "QUATTRO Extra Poultry su paukštiena sausas šunų pašaras",
+    "B": "QUATTRO Extra Lamb su ėriena sausas šunų pašaras, 3kg",
+    "katA": "sausas-maistas-sunims",
+    "katB": "sausas-maistas-sunims",
+    "sandA": "quattro",
+    "sandB": "quattro",
+    "bendras": [
+     "quattro"
+    ],
+    "suma": 26,
+    "sav": 11.82,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "16115",
+    "b": "19396",
+    "A": "Skanėstai šunims - Maži minkšti kauliukai, Mini MIX, 30",
+    "B": "Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 4.78,
+    "sav": 0.81,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "15848",
+    "b": "16999",
+    "A": "Vetocanis atbaidantis biologinis antkaklis šunims virš ",
+    "B": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 10.95,
+    "sav": 2.88,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "16996",
+    "b": "16999",
+    "A": "PESS biologiniai lašiukai nuo parazitų šunims, sveriant",
+    "B": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 9.3,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "16939",
+    "b": "17481",
+    "A": "Pasta katėms su vištiena - Ontario Chicken Fresh Meat P",
+    "B": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g,",
+    "katA": "konservai-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4,
+    "sav": 2,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "16979",
+    "b": "16984",
+    "A": "PESS biologinis antkaklis su pelargonijų ir kedrų aliej",
+    "B": "PESS biologinis antkaklis su eteriniais aliejais nuo pa",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.55,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "16976",
+    "b": "16987",
+    "A": "PESS biologinis apsauginis purškiklis nuo erkių katėms ",
+    "B": "PESS biologinis antkaklis nuo parazitų katėms, 35 cm",
+    "katA": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.55,
+    "sav": 1.08,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "18590",
+    "b": "18596",
+    "A": "Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+    "B": "Exclusion Hypoallergenic konservai šunims su putpelėmis",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 24.87,
+    "sav": 16.74,
+    "deze": 0
+   },
+   {
+    "n": 5,
+    "a": "18278",
+    "b": "18290",
+    "A": "Hikari Cichlid Gold Sinking Medium, 342 g",
+    "B": "Hikari Cichlid Gold Medium, 250 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 19.35,
+    "sav": 9.1,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "19321",
+    "b": "19417",
+    "A": "Animonda skanėstai katėms dantų priežiūrai - Milkies Ad",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "skanestai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.35,
+    "sav": 1.32,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16936",
+    "b": "17115",
+    "A": "Pasta katėms su ėriena – Ontario Lamb Fresh Meat Paste,",
+    "B": "Ontario skanėstai katėms su vitaminais Malt Bits, 75 g",
+    "katA": "konservai-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 3.6,
+    "sav": 1.8,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16245",
+    "b": "18366",
+    "A": "Sausas maistas katėms nuo plaukų gumuliukų susidarymo, ",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištien",
+    "katA": "sausas-maistas-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 9.04,
+    "sav": 0.82,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16115",
+    "b": "19411",
+    "A": "Skanėstai šunims - Maži minkšti kauliukai, Mini MIX, 30",
+    "B": "Animonda Vom Feinsten Adult with Rabbit - konservai sua",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 4.73,
+    "sav": 0.81,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "18197",
+    "b": "18203",
+    "A": "Hikari Tropical Fancy Guppy, 22 g",
+    "B": "Hikari Tropical Algae Wafers, 82 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 11.2,
+    "sav": 5.31,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16984",
+    "b": "16987",
+    "A": "PESS biologinis antkaklis su eteriniais aliejais nuo pa",
+    "B": "PESS biologinis antkaklis nuo parazitų katėms, 35 cm",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.95,
+    "sav": 1.08,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17475",
+    "b": "18369",
+    "A": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*1",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 1",
+    "katA": "miamor-katems/skanestai-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.3,
+    "sav": 2.32,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17475",
+    "b": "18372",
+    "A": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*1",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "katA": "miamor-katems/skanestai-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.3,
+    "sav": 2.32,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17481",
+    "b": "18372",
+    "A": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g,",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "katA": "skanestai-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.3,
+    "sav": 2.32,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16979",
+    "b": "16987",
+    "A": "PESS biologinis antkaklis su pelargonijų ir kedrų aliej",
+    "B": "PESS biologinis antkaklis nuo parazitų katėms, 35 cm",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.8,
+    "sav": 1.08,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16311",
+    "b": "19553",
+    "A": "Ruda jaučio ausis, 1 vnt.",
+    "B": "Animonda GranCarno Adult Multi-Meat Coctail: konservai ",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.64,
+    "sav": 2.62,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16317",
+    "b": "19553",
+    "A": "Ruda avies koja, 1 vnt.",
+    "B": "Animonda GranCarno Adult Multi-Meat Coctail: konservai ",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.94,
+    "sav": 2.51,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "18206",
+    "b": "18323",
+    "A": "Hikari Tropical Algae Wafers, 250 g",
+    "B": "Hikari  Tropical Micro Wafers, 45 g, pašaras tropinėms ",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 20.88,
+    "sav": 9.76,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16603",
+    "b": "16672",
+    "A": "QUATTRO begrūdis su antiena visų veislių suaugusių šunų",
+    "B": "QUATTRO Extra Poultry su paukštiena sausas šunų pašaras",
+    "katA": "sausas-maistas-sunims",
+    "katB": "sausas-maistas-sunims",
+    "sandA": "quattro",
+    "sandB": "quattro",
+    "bendras": [
+     "quattro"
+    ],
+    "suma": 33,
+    "sav": 15.91,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "19036",
+    "b": "19620",
+    "A": "Churu Kitten su tunu - kreminis skanėstas kačiukams, 4 ",
+    "B": "Animonda Carny Kitten – konservai kačiukams su jautiena",
+    "katA": "skanestai-katems",
+    "katB": "konservai-katems",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 4.08,
+    "sav": 2.5,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "18233",
+    "b": "18236",
+    "A": "Hikari Goldfish wheat-Germ, 100 g",
+    "B": "Hikari Goldfish Staple, baby pellet, 100 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.38,
+    "sav": 3.41,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16979",
+    "b": "16999",
+    "A": "PESS biologinis antkaklis su pelargonijų ir kedrų aliej",
+    "B": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.16,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16976",
+    "b": "16979",
+    "A": "PESS biologinis apsauginis purškiklis nuo erkių katėms ",
+    "B": "PESS biologinis antkaklis su pelargonijų ir kedrų aliej",
+    "katA": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.15,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16976",
+    "b": "16984",
+    "A": "PESS biologinis apsauginis purškiklis nuo erkių katėms ",
+    "B": "PESS biologinis antkaklis su eteriniais aliejais nuo pa",
+    "katA": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 7.3,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "16537",
+    "b": "16540",
+    "A": "Quattro SB su ėriena sausas suaugusių mažų veislių šunų",
+    "B": "Quattro SB su lašiša ir kriliu sausas suaugusių mažų ve",
+    "katA": "hipoalerginis-maistas-sunims/sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/sausas-maistas-sunims",
+    "sandA": "quattro",
+    "sandB": "quattro",
+    "bendras": [
+     "quattro"
+    ],
+    "suma": 25,
+    "sav": 12.4,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17644",
+    "b": "19479",
+    "A": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+    "B": "Animonda GranCarno Adult: konservai šunims su lašiša, p",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.68,
+    "sav": 2.61,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17644",
+    "b": "19488",
+    "A": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+    "B": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.58,
+    "sav": 2.61,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17644",
+    "b": "19496",
+    "A": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+    "B": "Animonda GranCarno Adult: konservai suaugusiems šunims ",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.68,
+    "sav": 2.61,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17644",
+    "b": "19582",
+    "A": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+    "B": "Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.82,
+    "sav": 2.61,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "18191",
+    "b": "18323",
+    "A": "Hikari Tropical Micro Pellets, 45 g",
+    "B": "Hikari  Tropical Micro Wafers, 45 g, pašaras tropinėms ",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 12.29,
+    "sav": 5.47,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "17475",
+    "b": "17493",
+    "A": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*1",
+    "B": "Miamor Super premium konservai katėms su tunu ir krevet",
+    "katA": "miamor-katems/skanestai-katems",
+    "katB": "konservai-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.64,
+    "sav": 2.4,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "18266",
+    "b": "18290",
+    "A": "Hikari Cichlid Staple Medium, 250 g",
+    "B": "Hikari Cichlid Gold Medium, 250 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 14.5,
+    "sav": 6.7,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "18584",
+    "b": "18599",
+    "A": "Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+    "B": "Exclusion Hypoallergenic konservai šunims su kiauliena ",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 13.87,
+    "sav": 9.15,
+    "deze": 0
+   },
+   {
+    "n": 4,
+    "a": "18587",
+    "b": "18602",
+    "A": "Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+    "B": "Exclusion Hypoallergenic konservai šunims su kiauliena ",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 57.44,
+    "sav": 39.49,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16357",
+    "b": "17659",
+    "A": "Rasco konservai katėms (sterilizuotoms) su kalakutiena ",
+    "B": "Kraikas katėms TOFU BeloCat, žaliosios arbatos kvapo, 6",
+    "katA": "konservai-katems",
+    "katB": "kraikai-kaciu-tualetams",
+    "sandA": "av",
+    "sandB": "belcor_tofu",
+    "bendras": [],
+    "suma": 5.34,
+    "sav": 2.72,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "19297",
+    "b": "19570",
+    "A": "Antienos filė juostelės, 500 g, natūralūs skanėstai šun",
+    "B": "Animonda GranCarno Adult Beef: konservai šunims su švie",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 15.98,
+    "sav": 9.67,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "19312",
+    "b": "19417",
+    "A": "Animonda skanėstai katėms su Omega-3 - Milkies Adult Ba",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "skanestai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.35,
+    "sav": 1.32,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16942",
+    "b": "17115",
+    "A": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Past",
+    "B": "Ontario skanėstai katėms su vitaminais Malt Bits, 75 g",
+    "katA": "konservai-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 3.6,
+    "sav": 1.8,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16245",
+    "b": "18372",
+    "A": "Sausas maistas katėms nuo plaukų gumuliukų susidarymo, ",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "katA": "sausas-maistas-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 9.04,
+    "sav": 0.82,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "19315",
+    "b": "19405",
+    "A": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milki",
+    "B": "Animonda Vom Feinsten Adult with Salmon and Shrimp – ko",
+    "katA": "skanestai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.38,
+    "sav": 1.44,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "19315",
+    "b": "19417",
+    "A": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milki",
+    "B": "Animonda Vom Feinsten Adult with Poultry and Veal – kon",
+    "katA": "skanestai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.35,
+    "sav": 1.35,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "15848",
+    "b": "16976",
+    "A": "Vetocanis atbaidantis biologinis antkaklis šunims virš ",
+    "B": "PESS biologinis apsauginis purškiklis nuo erkių katėms ",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 10.94,
+    "sav": 2.88,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16976",
+    "b": "16996",
+    "A": "PESS biologinis apsauginis purškiklis nuo erkių katėms ",
+    "B": "PESS biologiniai lašiukai nuo parazitų šunims, sveriant",
+    "katA": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 9.29,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18590",
+    "b": "18611",
+    "A": "Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+    "B": "Exclusion Hypoallergenic konservai šunims su antiena ir",
+    "katA": "sausas-maistas-sunims",
+    "katB": "hipoalerginis-maistas-sunims/konservai-sunims/maistas-sunims",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [
+     "vf"
+    ],
+    "suma": 24.87,
+    "sav": 16.74,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18366",
+    "b": "19315",
+    "A": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištien",
+    "B": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milki",
+    "katA": "konservai-katems/maistas-katems/miamor-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.84,
+    "sav": 1.63,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18369",
+    "b": "19315",
+    "A": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 1",
+    "B": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milki",
+    "katA": "konservai-katems/maistas-katems/miamor-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.84,
+    "sav": 1.63,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18043",
+    "b": "18369",
+    "A": "Josera Marinesse 10 kg - sausas maistas katėms su lašiš",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 1",
+    "katA": "sausas-maistas-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 51.44,
+    "sav": 35.19,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18043",
+    "b": "18372",
+    "A": "Josera Marinesse 10 kg - sausas maistas katėms su lašiš",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "katA": "sausas-maistas-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "vf",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 51.44,
+    "sav": 35.19,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18372",
+    "b": "18411",
+    "A": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "B": "GimCat skanėstai katėms - Nutri Pockets Malt&Multivitam",
+    "katA": "konservai-katems/maistas-katems/miamor-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.34,
+    "sav": 2.72,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18206",
+    "b": "18326",
+    "A": "Hikari Tropical Algae Wafers, 250 g",
+    "B": "Hikari  Cichlid Staple Large, 250 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 20.69,
+    "sav": 9.84,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16939",
+    "b": "17475",
+    "A": "Pasta katėms su vištiena - Ontario Chicken Fresh Meat P",
+    "B": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*1",
+    "katA": "konservai-katems",
+    "katB": "miamor-katems/skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4,
+    "sav": 2,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16939",
+    "b": "17478",
+    "A": "Pasta katėms su vištiena - Ontario Chicken Fresh Meat P",
+    "B": "Miamor skanėstai katėms - salyklo ekstrakto kremas su s",
+    "katA": "konservai-katems",
+    "katB": "miamor-katems/skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4,
+    "sav": 2,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16942",
+    "b": "17481",
+    "A": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Past",
+    "B": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g,",
+    "katA": "konservai-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4,
+    "sav": 2,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "17057",
+    "b": "17484",
+    "A": "Ontario super premium konservai katėms su vištiena ir l",
+    "B": "Miamor skanėstai katėms - kepenų pašteto kremas, 6*15 g",
+    "katA": "konservai-katems",
+    "katB": "miamor-katems/skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.84,
+    "sav": 2.27,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "17475",
+    "b": "18366",
+    "A": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*1",
+    "B": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištien",
+    "katA": "miamor-katems/skanestai-katems",
+    "katB": "konservai-katems/maistas-katems/miamor-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.3,
+    "sav": 2.32,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18372",
+    "b": "19315",
+    "A": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena",
+    "B": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milki",
+    "katA": "konservai-katems/maistas-katems/miamor-katems",
+    "katB": "skanestai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.84,
+    "sav": 1.63,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18260",
+    "b": "18272",
+    "A": "Hikari Cichlid Staple Mini, 250 g",
+    "B": "Hikari Cichlid Gold Sinking Mini, 342 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 15.09,
+    "sav": 7.76,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16522",
+    "b": "19594",
+    "A": "ROYAL CANIN HAIR&SKIN CARE 2 KG - sausas maistas suaugu",
+    "B": "Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+    "katA": "sausas-maistas-katems",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 29.15,
+    "sav": 18.75,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "15860",
+    "b": "16999",
+    "A": "Vetocanis atbaidantis biologinis antkaklis katėms",
+    "B": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims",
+    "katA": "antiparazitines-priemones-katems",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 9.55,
+    "sav": 2.99,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "15844",
+    "b": "16999",
+    "A": "Vetocanis atbaidantis biologinis antkaklis šuniukams ir",
+    "B": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims",
+    "katA": "antiparazitines-priemones-sunims",
+    "katB": "antiparazitines-priemones-katems/antiparazitines-priemones-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [],
+    "suma": 10.06,
+    "sav": 2.51,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "17574",
+    "b": "18626",
+    "A": "Liucernos riestainiai graužikams, 300 g, Ziarnko",
+    "B": "Džiovintų daržovių mišinys graužikams, 300 g, Ziarnko",
+    "katA": "pasaras-grauzikams",
+    "katB": "pasaras-grauzikams",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 5.48,
+    "sav": 0,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "19321",
+    "b": "19399",
+    "A": "Animonda skanėstai katėms dantų priežiūrai - Milkies Ad",
+    "B": "Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+    "katA": "skanestai-katems",
+    "katB": "konservai-katems",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 2.44,
+    "sav": 1.41,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "18227",
+    "b": "18233",
+    "A": "Hikari Oranda Gold mini pellet, 100 g",
+    "B": "Hikari Goldfish wheat-Germ, 100 g",
+    "katA": "akvariumo-zuvyciu-maistas",
+    "katB": "akvariumo-zuvyciu-maistas",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 8.98,
+    "sav": 4.24,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16311",
+    "b": "19488",
+    "A": "Ruda jaučio ausis, 1 vnt.",
+    "B": "Animonda GranCarno Adult: konservai šunims su elniena, ",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.64,
+    "sav": 2.62,
+    "deze": 0
+   },
+   {
+    "n": 3,
+    "a": "16311",
+    "b": "19538",
+    "A": "Ruda jaučio ausis, 1 vnt.",
+    "B": "Animonda GranCarno Adult Rumen: konservai suaugusiems š",
+    "katA": "skanestai-sunims",
+    "katB": "animonda-konservai-sunims/konservai-sunims",
+    "sandA": "av",
+    "sandB": "av",
+    "bendras": [
+     "av"
+    ],
+    "suma": 4.88,
+    "sav": 2.62,
+    "deze": 0
+   }
+  ],
+  "brand_multi": {
+   "exclusion": 69,
+   "ontario": 33,
+   "animonda": 29,
+   "josera": 28,
+   "pess": 20,
+   "miamor": 18,
+   "gnatek": 12,
+   "romar": 12,
+   "gimcat": 7,
+   "trixie": 5,
+   "quattro": 4,
+   "georplast": 3
+  },
+  "brand_kat": {
+   "exclusion: Konservai šunims + Sausas maistas šunims": 69,
+   "josera: Sausas maistas katėms + Sausas maistas šunims": 27,
+   "pess: Antiparazitinės priemonės katėms + Antiparazitinės priemonės šunims": 20,
+   "animonda: Konservai katėms + Konservai šunims": 15,
+   "miamor: Konservai katėms + Skanėstai katėms": 14,
+   "animonda: Konservai katėms + Skanėstai katėms": 11,
+   "ontario: Konservai katėms + Skanėstai katėms": 8,
+   "ontario: Konservai šunims + Sausas maistas šunims": 8,
+   "ontario: Sausas maistas katėms + Skanėstai katėms": 5,
+   "ontario: Konservai katėms + Sausas maistas katėms": 5,
+   "miamor: Konservai katėms + Miamor katėms": 3,
+   "animonda: Konservai katėms + Konservai šunims + Skanėstai katėms": 2,
+   "ontario: Konservai katėms + Konservai šunims": 2,
+   "ontario: Konservai katėms + Konservai šunims + Sausas maistas šunims + Skanėstai šunims": 1,
+   "ontario: Konservai katėms + Sausas maistas katėms + Skanėstai katėms": 1,
+   "ontario: Konservai katėms + Konservai šunims + Sausas maistas katėms": 1,
+   "ontario: Konservai katėms + Konservai šunims + Sausas maistas šunims": 1,
+   "josera: Konservai katėms + Sausas maistas katėms": 1,
+   "ontario: Konservai katėms + Konservai šunims + Sausas maistas katėms + Sausas maistas šunims": 1,
+   "animonda: Konservai šunims + Skanėstai katėms": 1,
+   "miamor: Konservai katėms + Miamor katėms + Skanėstai katėms": 1
+  }
+ }
+}
